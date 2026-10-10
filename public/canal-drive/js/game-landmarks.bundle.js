@@ -26197,6 +26197,255 @@ Map source: ${osmUrl(places[i][0])}`);
       },
       status: "held",
       heldReason: "Integrator 2026-10-10: 3DBAG link core/annex on the tower west face likely belongs to the demolished 1990 Abma satellite (blank fin with no counterpart in 2025 photos); tower stubby; facade counts pending"
+    },
+    {
+      id: "hotel-jakarta",
+      name: "Hotel Jakarta",
+      landmarkId: "hotel-jakarta",
+      modelUrl: "./models/hotel-jakarta.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012247056"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.922250805530242,
+          52.37935368222358
+        ],
+        headingDegrees: 79.5,
+        lengthMetres: 92.23,
+        widthMetres: 62.74
+      },
+      surveyed: {
+        anchor: [
+          4.921889467933162,
+          52.37939697615155
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012247056 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        slate: "#34383d",
+        copper: "#8d7a5a",
+        ochre: "#c99a5b",
+        bronze: "#9a6f3e",
+        glass: "#6e8497",
+        green: "#6f8f84",
+        frame: "#1f2226",
+        dark: "#1a1c1f",
+        concrete: "#8d8d89",
+        red: "#7a4328",
+        white: "#e8e4d8",
+        greyBrick: "#6f6044"
+      },
+      attribution: {
+        title: "Hotel Jakarta",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Hotel_Jakarta",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry on the BAG footprint and 3DBAG LoD2.2 massing; glazed plinth, timber-lined loggia grid, perforated copper-coloured panels, rotating-door drum and timber-and-glass atrium roof measured by eye from Commons photographs (2022, 2023) and municipal panoramas (2024, 2025), no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.92283265274615,
+              52.37970610378996
+            ],
+            [
+              4.921569692886544,
+              52.379560900834925
+            ],
+            [
+              4.921620392273514,
+              52.3793957358503
+            ],
+            [
+              4.921559692334415,
+              52.37938874744056
+            ],
+            [
+              4.921558064260973,
+              52.37938854330987
+            ],
+            [
+              4.9215565407826745,
+              52.37938816882449
+            ],
+            [
+              4.921555136679927,
+              52.3793876150549
+            ],
+            [
+              4.92155393969147,
+              52.37938691829681
+            ],
+            [
+              4.921552979000637,
+              52.379386096640346
+            ],
+            [
+              4.921552269010357,
+              52.379385177105185
+            ],
+            [
+              4.92155186808728,
+              52.379384195871566
+            ],
+            [
+              4.9215517611678985,
+              52.37938318883096
+            ],
+            [
+              4.9215519626551245,
+              52.379382183003045
+            ],
+            [
+              4.921552472171481,
+              52.37938121433708
+            ],
+            [
+              4.9215532745591,
+              52.37938032771186
+            ],
+            [
+              4.921554310885123,
+              52.379379540870985
+            ],
+            [
+              4.921555580772097,
+              52.37937888976371
+            ],
+            [
+              4.921557025192814,
+              52.37937840112091
+            ],
+            [
+              4.921558600089208,
+              52.37937807476941
+            ],
+            [
+              4.921831360351688,
+              52.37933047868784
+            ],
+            [
+              4.922910521701663,
+              52.379142171592356
+            ],
+            [
+              4.922912051957368,
+              52.37914189897395
+            ],
+            [
+              4.92296859259806,
+              52.37926280720122
+            ],
+            [
+              4.922883303727314,
+              52.37954092011667
+            ],
+            [
+              4.92283265274615,
+              52.37970610378996
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "odessa",
+      name: "Odessa",
+      landmarkId: "n4594648817",
+      modelUrl: "./models/odessa.glb",
+      suppressOsmIds: [
+        "w277087161"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.937697934691669,
+          52.37449992491744
+        ],
+        headingDegrees: 106.25,
+        lengthMetres: 30.88,
+        widthMetres: 6.16
+      },
+      surveyed: {
+        anchor: [
+          4.937697934691669,
+          52.37449992491744
+        ],
+        northOffsetDegrees: 0,
+        source: `OSM building=yes way w277087161 (note 'ship "Odessa"', ref:bag 0363020000998904, a berth object: BAG has no live pand for the vessel) fitted with an oriented rectangle, native east/south metres from its centre. Hull, screens, dome and lounge measured by eye from the 2025-06-16 municipal panoramas.`
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        dark: "#292623",
+        slate: "#3a3f42",
+        ochre: "#7d705a",
+        glass: "#a3b3ab",
+        green: "#7b8a78",
+        frame: "#1d1f21",
+        white: "#d9d5c8",
+        gold: "#c9a24a",
+        bronze: "#6b5b3e"
+      },
+      attribution: {
+        title: "Odessa",
+        author: "Map Recall",
+        sourceUrl: "https://www.inyourpocket.com/netherlands/amsterdam/venues/Odessa",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free geometry on the OSM ship outline: black plank hull, bamboo-screened bow and stern decks with glass dome, funnel and ODESSA lettering, and a glazed lounge with six scalloped roof segments; measured by eye from municipal panoramas, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.937475,
+              52.374512
+            ],
+            [
+              4.93734,
+              52.374562
+            ],
+            [
+              4.937342,
+              52.374567
+            ],
+            [
+              4.937491,
+              52.374563
+            ],
+            [
+              4.937811,
+              52.374509
+            ],
+            [
+              4.937921,
+              52.374478
+            ],
+            [
+              4.937911,
+              52.37445
+            ],
+            [
+              4.937799,
+              52.374453
+            ],
+            [
+              4.937475,
+              52.374512
+            ]
+          ]
+        ]
+      }
     }
   ];
 
@@ -55197,6 +55446,28 @@ Map source: ${osmUrl(places[i][0])}`);
         "https://www.amsterdamsebinnenstad.nl/binnenstad/297/nederlandsche-bank.php",
         "https://www.architectuur.org/bouwwerk/658/De_Nederlandsche_Bank.html",
         "https://www.archdaily.com/1039156/de-nederlandsche-bank-mecanoo"
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "hotel-jakarta",
+      landmarkId: "hotel-jakarta",
+      name: "Hotel Jakarta",
+      description: "Hotel Jakarta fills the western tip of Java-eiland with an eight-storey V-shaped block, designed by the architecture firm SeARCH and opened in summer 2018. Its upper floors are dark panels pierced by a grid of timber-lined loggias, one for each room, and its two-storey glass plinth faces the water. The glazed point of the V shelters a subtropical garden, partly open to the public and planted with the Hortus Botanicus. Behind a timber structure of columns and walls, the rooms were prefabricated off site and hoisted into place, and the building is energy neutral.",
+      funFact: "The Javakade name recalls the harbour's old trade with the Dutch East Indies, and so does the hotel: a perforated aluminium panel on the east facade shows the silhouette of a VOC ship. The building won the public prize at the Amsterdam Architecture Prize in 2019.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Hotel_Jakarta",
+      preferDescription: true
+    },
+    {
+      modelId: "odessa",
+      landmarkId: "n4594648817",
+      name: "Odessa",
+      description: "Odessa is a former Ukrainian cargo ship moored on the Veemkade quay in the former Eastern Docklands, converted into a restaurant and party boat. Its black tarred-plank hull carries tall woven-bamboo screens round the bow and stern decks, hung with barrels of climbing plants, and a glass geodesic dome on the bow block. A low glass lounge with a row of scalloped roof segments sits amidships, and the sun deck above offers a view over the IJ and the skyline.",
+      funFact: "The ship cannot sail any more: it is permanently berthed at Veemkade 259, and because it is a vessel the Dutch BAG register holds no building for it, only a berth object. Today the operator, Odessa Journey, runs ecstatic dance nights on board.",
+      sourceUrl: "https://www.inyourpocket.com/netherlands/amsterdam/venues/Odessa",
+      additionalSources: [
+        "https://www.odessa.amsterdam/",
+        "https://www.timeout.com/amsterdam/restaurants-and-cafes/odessa"
       ],
       preferDescription: true
     }

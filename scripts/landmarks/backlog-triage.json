@@ -252,6 +252,10 @@
   "OBA Roelof Hartplein": {
    "kind": "skip",
    "note": "Neighbourhood library occupying part of an ordinary plain building; not a distinctive standalone building."
+  },
+  "Odessa": {
+   "kind": "duplicate",
+   "note": "Covered by installed model odessa (ship at Veemkade 259, still moored per 2025-06 panoramas)."
   }
  }
 }
