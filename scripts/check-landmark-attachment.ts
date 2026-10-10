@@ -25,6 +25,8 @@ import {buildSeaPalace} from './landmarks/sea-palace-builder';
 import {buildDeSchool} from './landmarks/de-school-builder';
 import {buildWestIndischPakhuis} from './landmarks/west-indisch-pakhuis-builder';
 import {discoveryACases} from './landmarks/attachment-cases-discovery-a';
+import {buildChristChurchGroenburgwal} from './landmarks/christ-church-groenburgwal-builder';
+import {buildLjgSynagoge} from './landmarks/ljg-synagoge-builder';
 
 const cases: Record<string, {build: (w: number, d: number, b: never) => void; ring: () => number[][]; top: () => number; topSlack: number}> = {
   'ij-toren': {build: buildIjToren, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')).nativeRing, top: () => { const f = JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')); return Math.max(...f.surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))); }, topSlack: 8},
@@ -52,6 +54,10 @@ cases['de-school'] = {build: buildDeSchool, ring: () => deSchool().nativeRing, t
 const wip = () => JSON.parse(fs.readFileSync('scripts/landmarks/west-indisch-pakhuis-footprints.json', 'utf8'));
 cases['west-indisch-pakhuis'] = {build: buildWestIndischPakhuis, ring: () => wip().nativeRing, top: () => Math.max(...wip().surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 1.0};
 Object.assign(cases, discoveryACases);
+const christChurch = () => JSON.parse(fs.readFileSync('scripts/landmarks/christ-church-groenburgwal-footprints.json', 'utf8'));
+cases['christ-church-groenburgwal'] = {build: buildChristChurchGroenburgwal, ring: () => christChurch().nativeRing, top: () => Math.max(...christChurch().surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 3.0};
+const ljg = () => JSON.parse(fs.readFileSync('scripts/landmarks/ljg-synagoge-footprints.json', 'utf8'));
+cases['ljg-synagoge'] = {build: buildLjgSynagoge, ring: () => ljg().nativeRing, top: () => Math.max(...ljg().surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 1.0};
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(cases);
 for (const id of ids) {
   const c = cases[id];

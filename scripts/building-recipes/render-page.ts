@@ -5,7 +5,7 @@ import {MeshoptDecoder} from 'three/examples/jsm/libs/meshopt_decoder.module.js'
 import {createRecipeLook, SOUTH_Z_ENU, type RecipeLook} from '../../src/canalRecall/buildingRecipe/recipeLook.ts';
 
 interface Model { base64: string; position?: number[]; rotationY?: number; scale?: number[] }
-interface View { eye: number[]; target: number[]; fov: number; width: number; height: number }
+interface View { eye: number[]; target: number[]; fov: number; width: number; height: number; ortho?: [number, number, number, number]; background?: string; noGround?: boolean }
 
 const renderer = new T.WebGLRenderer({antialias: true, preserveDrawingBuffer: true});
 document.body.appendChild(renderer.domElement);
@@ -55,7 +55,9 @@ async function render(models: Model[], views: View[], textures?: Record<string, 
   const out: string[] = [];
   for (const v of views) {
     renderer.setSize(v.width, v.height, false);
-    const camera = new T.PerspectiveCamera(v.fov, v.width / v.height, 0.5, 2000);
+    // Orthographic [left, right, top, bottom] in camera units: elevations at a fixed metre scale (block-face strip review).
+    const camera = v.ortho ? new T.OrthographicCamera(v.ortho[0], v.ortho[1], v.ortho[2], v.ortho[3], 0.1, 2000) : new T.PerspectiveCamera(v.fov, v.width / v.height, 0.5, 2000);
+    scene.background = new T.Color(v.background ?? '#c9d6e0'); ground.visible = !v.noGround;
     camera.position.fromArray(v.eye); camera.lookAt(new T.Vector3().fromArray(v.target));
     renderer.render(scene, camera);
     out.push(renderer.domElement.toDataURL('image/png'));

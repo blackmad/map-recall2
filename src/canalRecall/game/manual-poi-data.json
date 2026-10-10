@@ -2146,78 +2146,102 @@
       }
     ]
   },
-{
-  "modelId": "sea-palace",
-  "landmarkId": "n13404202880",
-  "name": "Sea Palace",
-  "description": "Sea Palace is a three-storey Chinese restaurant afloat on a pontoon beside Oosterdokskade, a short walk from Centraal Station. Its three stacked green-glazed-tile roofs, each with a red rim and corners swept sharply upward, and its red columns and gold-medallion balustrades follow the Cantonese pavilion style. Guests dine on the lower floors, and the top floor opens onto a roof terrace.",
-  "funFact": "Sea Palace has floated beside Oosterdokskade since 1984 and is known for handmade dim sum. It is a vessel rather than a building, so the Dutch BAG register holds no pand for it.",
-  "sourceUrl": "https://seapalace.nl/en/about-us/",
-  "additionalSources": [
-    "https://seapalace.nl/en/",
-    "https://seapalace.nl/en/directions/"
-  ],
-  "preferDescription": true
-},
-{
-  "modelId": "de-school",
-  "landmarkId": "n2811980599",
-  "name": "De School (Tilla Tec)",
-  "description": "This long concrete slab with ribbons of red-framed windows is a former technical school from the late 1960s, on Dr. Jan van Breemenstraat. A low saw-tooth workshop wing runs off its north side, and the entrance sits under a flat canopy beside a green-framed concrete pavilion. From 2016 it housed De School, a club, restaurant, gallery and gym, and the Tilla Tec venue now uses the same building.",
-  "funFact": "The club De School ran its 24-hour dance floor in the school's old bicycle store in the basement, and closed in January 2024 when its municipal permits expired.",
-  "sourceUrl": "https://en.wikipedia.org/wiki/De_School",
-  "additionalSources": [
-    "https://djmag.com/top100clubs/2019/57/De-School",
-    "https://www.tillatec.com/"
-  ],
-  "preferDescription": true
-},
-{
-  "modelId": "west-indisch-pakhuis",
-  "landmarkId": "extract_landmarks_76787173",
-  "name": "West Indian Warehouse",
-  "description": "The West India Company's warehouse of 1641-1642 at 's-Gravenhekje 1A is a four-storey red-brick block banded with cream natural stone. Its long front carries two trapezium gables with oeils-de-boeuf and date stones reading ANNO and 1642, split by a triangular pediment with the company's monogram, and the lower tier still has the barred windows and tall loading doors of a working warehouse. Upper floors keep their blue shutters.",
-  "funFact": "The two gables each carry a plaque, one reading ANNO and the other 1642, so the building spells out its own date across the roofline.",
-  "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1222",
-  "additionalSources": [
-    "https://commons.wikimedia.org/wiki/Category:West-Indisch_Pakhuis"
-  ],
-  "preferDescription": true
-},
-{
-  "modelId": "trippenhuis",
-  "landmarkId": "trippenhuis",
-  "name": "Trippenhuis",
-  "description": "The Trippenhuis (Kloveniersburgwal 29) was built in 1660-1662 by Justus Vingboons for the arms-trading brothers Louys and Hendrick Trip. It is two full houses behind one palace-like sandstone front, seven windows wide, with eight giant fluted Corinthian pilasters, a triangular pediment on four of them and chimneys shaped like mortars as a nod to the family's guns and munitions. The Royal Netherlands Academy of Arts and Sciences has owned it since 1887.",
-  "funFact": "The pilasters come in an even number, because classical rules forbade one in the axis of a house, so the dividing wall between the two homes sits behind the middle row of windows, which were originally blind. From 1817 to 1885 the building also housed the national museum, where Rembrandt's Night Watch hung before it moved to the Rijksmuseum.",
-  "sourceUrl": "https://en.wikipedia.org/wiki/Trippenhuis",
-  "additionalSources": [
-    "https://nl.wikipedia.org/wiki/Trippenhuis"
-  ],
-  "preferDescription": true
-},
-{
-  "modelId": "american-hotel",
-  "landmarkId": "american-hotel",
-  "name": "American Hotel",
-  "description": "The American Hotel on Leidseplein (Leidseplein 28) was built in 1900-1902 to designs by Willem Kromhout and H.G. Jansen, replacing a first American Hotel of 1882 by Cornelis Steinigeweg. Its brick-and-stone corner block with a turreted tower is a landmark of Dutch Jugendstil (Art Nouveau) in the Berlage manner and is a national monument, as is the 1927-1928 extension. Its Cafe Americain, with the Jugendstil interior, is still the hotel's public living room.",
-  "funFact": "The cafe holds what is described as the oldest reading table in Amsterdam, a long table where guests browse the newspapers and magazines. Dancer Mata Hari is said to have spent her wedding night in the hotel in July 1895, and a Mata Hari suite is still let there.",
-  "sourceUrl": "https://en.wikipedia.org/wiki/American_Hotel,_Amsterdam",
-  "additionalSources": [
-    "https://nl.wikipedia.org/wiki/American_Hotel"
-  ],
-  "preferDescription": true
-},
-{
-  "modelId": "hotel-de-l-europe",
-  "landmarkId": "hotel-de-l-europe",
-  "name": "Hotel de l'Europe",
-  "description": "Hotel de l'Europe (now De L'Europe Amsterdam, Nieuwe Doelenstraat 2-14) opened in 1896, designed in neo-Renaissance style by Willem Hamer Jr. It stands on the site of the Rondeel, a round tower of the 1480s city wall that guarded the Amstel, and the curved river front still echoes that tower. Red brick banded with white stone, turreted corners and a mansard roof with stone-framed dormers overlook the Munt, where the Amstel flows into the Rokin. It has been a national monument since 2001.",
-  "funFact": "Alfred Hitchcock used the hotel as a location for Foreign Correspondent (1940), just before the Second World War, and Freddy's Bar is named after the brewer Freddy Heineken. The hotel took its name from an older Hotel de l'Europe on the Prins Hendrikkade, which belonged to the same company.",
-  "sourceUrl": "https://en.wikipedia.org/wiki/De_L%27Europe_Amsterdam",
-  "additionalSources": [
-    "https://nl.wikipedia.org/wiki/De_L%27Europe_Amsterdam"
-  ],
-  "preferDescription": true
-}
+  {
+    "modelId": "sea-palace",
+    "landmarkId": "n13404202880",
+    "name": "Sea Palace",
+    "description": "Sea Palace is a three-storey Chinese restaurant afloat on a pontoon beside Oosterdokskade, a short walk from Centraal Station. Its three stacked green-glazed-tile roofs, each with a red rim and corners swept sharply upward, and its red columns and gold-medallion balustrades follow the Cantonese pavilion style. Guests dine on the lower floors, and the top floor opens onto a roof terrace.",
+    "funFact": "Sea Palace has floated beside Oosterdokskade since 1984 and is known for handmade dim sum. It is a vessel rather than a building, so the Dutch BAG register holds no pand for it.",
+    "sourceUrl": "https://seapalace.nl/en/about-us/",
+    "additionalSources": [
+      "https://seapalace.nl/en/",
+      "https://seapalace.nl/en/directions/"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "de-school",
+    "landmarkId": "n2811980599",
+    "name": "De School (Tilla Tec)",
+    "description": "This long concrete slab with ribbons of red-framed windows is a former technical school from the late 1960s, on Dr. Jan van Breemenstraat. A low saw-tooth workshop wing runs off its north side, and the entrance sits under a flat canopy beside a green-framed concrete pavilion. From 2016 it housed De School, a club, restaurant, gallery and gym, and the Tilla Tec venue now uses the same building.",
+    "funFact": "The club De School ran its 24-hour dance floor in the school's old bicycle store in the basement, and closed in January 2024 when its municipal permits expired.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/De_School",
+    "additionalSources": [
+      "https://djmag.com/top100clubs/2019/57/De-School",
+      "https://www.tillatec.com/"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "west-indisch-pakhuis",
+    "landmarkId": "extract_landmarks_76787173",
+    "name": "West Indian Warehouse",
+    "description": "The West India Company's warehouse of 1641-1642 at 's-Gravenhekje 1A is a four-storey red-brick block banded with cream natural stone. Its long front carries two trapezium gables with oeils-de-boeuf and date stones reading ANNO and 1642, split by a triangular pediment with the company's monogram, and the lower tier still has the barred windows and tall loading doors of a working warehouse. Upper floors keep their blue shutters.",
+    "funFact": "The two gables each carry a plaque, one reading ANNO and the other 1642, so the building spells out its own date across the roofline.",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1222",
+    "additionalSources": [
+      "https://commons.wikimedia.org/wiki/Category:West-Indisch_Pakhuis"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "christ-church-groenburgwal",
+    "landmarkId": "extract_landmarks_369277545",
+    "name": "Church of England (Christ Church)",
+    "description": "Christ Church, the Anglican church at Groenburgwal 42, hides a much older building: a cloth hall of 1626 from the Staalhof, which the Episcopal congregation took over in 1771. Its pointed-arch brick front of 1829, with a tall four-lancet window in the central gable, two-lancet and three-lancet side windows, stone-capped piers and copper pinnacles, is among the first neo-Gothic facades in the Netherlands.",
+    "funFact": "Rembrandt's 'Staalmeesters' was painted for the Staalhof, the cloth-sampling hall this building was once part of; the Anglican congregation later used the room where the sampling officials met.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Christ_Church_(Amsterdam)",
+    "additionalSources": [
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/1269"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "ljg-synagoge",
+    "landmarkId": "extract_landmarks_1186428295",
+    "name": "LJG Synagogue",
+    "description": "The Liberal Jewish Congregation of Amsterdam (LJG) moved into this synagogue and cultural centre on the Zuidelijke Wandelweg in August 2010, after its 1966 building on Graafschapstraat was sold and demolished. A free-standing four-storey grey block on its own islet beside the Rivierenbuurt, it is skinned in a scatter of white perforation dots that thicken into clouds near the parapet, with a star-shaped glazed opening cut into the long walls.",
+    "funFact": "The north end wall carries three lines of Hebrew text written in the same white dots as the perforation pattern; since 2014 the islet it stands on has been called Jacob Soetendorpeiland, after the congregation's postwar rabbi.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Liberaal_Joodse_Gemeente_Amsterdam",
+    "additionalSources": [
+      "https://commons.wikimedia.org/wiki/File:Kop_Zuidas_41.jpg"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "trippenhuis",
+    "landmarkId": "trippenhuis",
+    "name": "Trippenhuis",
+    "description": "The Trippenhuis (Kloveniersburgwal 29) was built in 1660-1662 by Justus Vingboons for the arms-trading brothers Louys and Hendrick Trip. It is two full houses behind one palace-like sandstone front, seven windows wide, with eight giant fluted Corinthian pilasters, a triangular pediment on four of them and chimneys shaped like mortars as a nod to the family's guns and munitions. The Royal Netherlands Academy of Arts and Sciences has owned it since 1887.",
+    "funFact": "The pilasters come in an even number, because classical rules forbade one in the axis of a house, so the dividing wall between the two homes sits behind the middle row of windows, which were originally blind. From 1817 to 1885 the building also housed the national museum, where Rembrandt's Night Watch hung before it moved to the Rijksmuseum.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Trippenhuis",
+    "additionalSources": [
+      "https://nl.wikipedia.org/wiki/Trippenhuis"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "american-hotel",
+    "landmarkId": "american-hotel",
+    "name": "American Hotel",
+    "description": "The American Hotel on Leidseplein (Leidseplein 28) was built in 1900-1902 to designs by Willem Kromhout and H.G. Jansen, replacing a first American Hotel of 1882 by Cornelis Steinigeweg. Its brick-and-stone corner block with a turreted tower is a landmark of Dutch Jugendstil (Art Nouveau) in the Berlage manner and is a national monument, as is the 1927-1928 extension. Its Cafe Americain, with the Jugendstil interior, is still the hotel's public living room.",
+    "funFact": "The cafe holds what is described as the oldest reading table in Amsterdam, a long table where guests browse the newspapers and magazines. Dancer Mata Hari is said to have spent her wedding night in the hotel in July 1895, and a Mata Hari suite is still let there.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/American_Hotel,_Amsterdam",
+    "additionalSources": [
+      "https://nl.wikipedia.org/wiki/American_Hotel"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "hotel-de-l-europe",
+    "landmarkId": "hotel-de-l-europe",
+    "name": "Hotel de l'Europe",
+    "description": "Hotel de l'Europe (now De L'Europe Amsterdam, Nieuwe Doelenstraat 2-14) opened in 1896, designed in neo-Renaissance style by Willem Hamer Jr. It stands on the site of the Rondeel, a round tower of the 1480s city wall that guarded the Amstel, and the curved river front still echoes that tower. Red brick banded with white stone, turreted corners and a mansard roof with stone-framed dormers overlook the Munt, where the Amstel flows into the Rokin. It has been a national monument since 2001.",
+    "funFact": "Alfred Hitchcock used the hotel as a location for Foreign Correspondent (1940), just before the Second World War, and Freddy's Bar is named after the brewer Freddy Heineken. The hotel took its name from an older Hotel de l'Europe on the Prins Hendrikkade, which belonged to the same company.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/De_L%27Europe_Amsterdam",
+    "additionalSources": [
+      "https://nl.wikipedia.org/wiki/De_L%27Europe_Amsterdam"
+    ],
+    "preferDescription": true
+  }
 ]
