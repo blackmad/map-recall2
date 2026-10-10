@@ -195,3 +195,29 @@ test('a low open stair or stoop in front of a closed wall is not a see-through g
   const open = analyseSoup(soup(house(['south']), cornice, stoop));
   assert.ok(open.seeThrough.rays > 0, JSON.stringify(open.seeThrough));
 });
+
+// Two 4 m blocks joined by a deck, leaving a 2 m x 4 m roofed passage through the 24 m footprint (a roadway portal).
+const passage = (plugged = false) => {
+  // a tall deck (soffit 7.5 m) when plugged, so the blocked passage is a hollow gap rather than a low porch
+  const dk = plugged ? 7.5 : 4;
+  const sets = [boxQuads(0, 0, 0, 4, 12, 24), boxQuads(6, 0, 0, 10, 12, 24), boxQuads(4, dk, 0, 6, 12, 24)];
+  if (plugged) sets.push(boxQuads(4, 0, 22, 6, dk, 24));
+  return soup(...sets);
+};
+
+test('a roofed passage that runs clear through the building is not a see-through wall gap', () => {
+  const r = analyseSoup(passage());
+  assert.equal(r.seeThrough.rays, 0, JSON.stringify(r.seeThrough));
+});
+
+test('the same passage blocked at the far end is still a gap into a hollow body', () => {
+  const r = analyseSoup(passage(true));
+  assert.ok(r.seeThrough.rays > 0, JSON.stringify(r.seeThrough));
+});
+
+test('a porch soffit modelled at exactly the 6 m cap is judged like one at 5.9 m (float noise tolerance)', () => {
+  // 10 m deep block whose ground floor is recessed 3 m behind an overhang
+  const at = (y: number) => analyseSoup(soup(boxQuads(0, y, 0, 10, 14, 10), boxQuads(0, 0, 0, 10, y, 7)));
+  assert.equal(at(6.0).seeThrough.rays, at(5.9).seeThrough.rays);
+  assert.ok(at(6.5).seeThrough.rays > at(5.9).seeThrough.rays, 'a soffit clearly above the porch cap still counts as a gap');
+});
