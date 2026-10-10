@@ -116,9 +116,20 @@
       "cornice": "bracketed",
       "hoist": false,
       "gable": "cornice",
+      "crownCap": "pediment",
+      "crownCapSpan": "medium",
+      "crownBays": {
+       "from": 0,
+       "to": 0
+      },
+      "crownRise": 1.6,
       "storeys": 4,
       "bays": 3,
-      "dormers": 1,
+      "bayWidths": [
+       0.62,
+       1,
+       1
+      ],
       "doorBay": 0,
       "windows": "arched",
       "archRings": "band",
@@ -138,11 +149,10 @@
        "fascia": true,
        "displayWindows": 1,
        "stallriser": "none",
-       "residentialDoor": {
-        "side": "left",
-        "colour": "black"
-       },
-       "shopShare": 0.8,
+       "bays": [
+        1,
+        2
+       ],
        "evidence": "pano 2024-11-29 + OSM node 11576187585"
       }
      }
@@ -191,8 +201,7 @@
     ],
     "photoGables": 2,
     "schemaLimits": [
-     "bays are equal width; photo: narrow tower bay left, wide windows right",
-     "the tower above the left bay is not modelled",
+     "tower above the left bay is a pedimented crown over bay 0 with a finial (no pyramid roof)",
      "balcony platform is continuous across 2 windows on the photo, two separate balconies in the model"
     ]
    }
@@ -210,9 +219,21 @@
       "cornice": "bracketed",
       "hoist": false,
       "gable": "cornice",
+      "crownCap": "pediment",
+      "crownCapSpan": "medium",
+      "crownBays": {
+       "from": 2,
+       "to": 2
+      },
+      "crownRise": 1.6,
       "storeys": 4,
       "bays": 3,
-      "dormers": 1,
+      "bayWidths": [
+       1,
+       1,
+       0.62
+      ],
+      "atticWindows": 1,
       "doorBay": null,
       "windows": "arched",
       "archRings": "band",
@@ -281,8 +302,7 @@
     ],
     "photoGables": 2,
     "schemaLimits": [
-     "bays are equal width; photo: two wide windows left, narrow tower bay right",
-     "the tower over the right bay is not modelled",
+     "tower over the right bay is a pedimented crown over bay 2 with a finial (no pyramid roof)",
      "thin awning not modelled"
     ]
    }
@@ -371,7 +391,6 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "INTERFERENCE FAIL on the 162836|235892 joint (z-fight 0.37 m2): 235892 has native frontage jogs (intake warning); not fixable in the intent",
      "plain windows and balconies on storeys 1-2 only for the triangle budget (full detail 3,900 triangles)",
      "blind arcade frieze and fan-light top windows not modelled",
      "dormers are plain",

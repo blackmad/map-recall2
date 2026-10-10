@@ -163,6 +163,13 @@
       "cornice": "simple",
       "hoist": false,
       "gable": "step",
+      "crownAt": {
+       "from": 0.15,
+       "to": 0.45
+      },
+      "crownRise": 1,
+      "crownSteps": 3,
+      "crownFinial": true,
       "storeys": 4,
       "bays": 3,
       "atticWindows": 1,
@@ -241,7 +248,6 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "gable is centred in the model; on the photo left of centre (~0.3)",
      "script lettering is drawn as block capitals"
     ]
    }
@@ -259,10 +265,19 @@
       "cornice": "simple",
       "hoist": false,
       "gable": "cornice",
-      "crownCap": "flat",
-      "crownCapSpan": "narrow",
+      "crownCap": "pediment",
+      "crownCapSpan": "medium",
+      "crownBays": {
+       "from": 0,
+       "to": 0
+      },
+      "crownRise": 1.6,
       "storeys": 4,
       "bays": 2,
+      "bayWidths": [
+       0.62,
+       0.38
+      ],
       "atticWindows": 1,
       "doorBay": null,
       "windows": "sash",
@@ -331,10 +346,8 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "INTERFERENCE FAIL on the 236188|157174 and 157174|166159 joints (z-fight 0.01 and 0.14 m2, depth step -0.038 m): survey fronts overlap by ~2 cm; not fixable in the intent",
-     "tower with pediment and finial over the left bay is not modelled (crown is a flat cap)",
-     "bays are equal width; photo: wide 3-light left, narrow single right",
-     "tower gable is centred in the model; on the photo it sits over the left bay",
+     "tower with pediment and finial over the left bay modelled as a pedimented crown over bay 0 (crownBays, rise 1.6, finial)",
+     "wide left bay is one plain window pair (3-light on the photo)",
      "top-storey arched window at the right is a rectangular window"
     ]
    }
