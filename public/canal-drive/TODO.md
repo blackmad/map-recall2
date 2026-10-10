@@ -115,6 +115,10 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   de-gooyer and huis-bartolotti now pass under the cantilever rules (rays
   hit a wall <= 2.5 m behind an overhang >= 6 m up); whether those recesses
   match the photos is still unchecked.
+  Booking.com HQ held (2026-10-10): flat 3DBAG glass box; rework on
+  big/p-20261010 for the stepped/offset floor plates, terraces, entrance
+  link and reflective glass. Shell Technology Centre installed with only two
+  photographed views (south, east); north half, west and courtyards inferred.
   Krasnapolsky held (2026-10-10): old Dam front matches; the modern wing and
   lower brick building need photo counts and the dark glass bays.
   Pakhuis de Zwijger held (2026-10-10): colour fixed (dark weathered brick,
