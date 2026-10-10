@@ -88,6 +88,9 @@ function inPolygon(x: number, z: number, poly: [number, number][]): boolean {
   return inside;
 }
 
+/** Deepest upper-storey protrusion (m) treated as architecture rather than a gap in the wall below it. */
+const SHALLOW_PROTRUSION_M = 1.6;
+
 export const DEFAULT_THRESHOLDS: Thresholds = {
   weld: 1e-3,
   detachGap: 0.05,
@@ -279,7 +282,7 @@ class TriGrid {
       const ix0 = Math.floor((x0 - expand) / cell), ix1 = Math.floor((x1 + expand) / cell);
       const iy0 = Math.floor((y0 - expand) / cell), iy1 = Math.floor((y1 + expand) / cell);
       const iz0 = Math.floor((z0 - expand) / cell), iz1 = Math.floor((z1 + expand) / cell);
-      if ((ix1 - ix0 + 1) * (iy1 - iy0 + 1) * (iz1 - iz0 + 1) > 40000) continue; // giant ground plane: skip
+      if ((ix1 - ix0 + 1) * (iy1 - iy0 + 1) * (iz1 - iz0 + 1) > 120000) continue; // giant ground plane: skip (a 90 m x 28 m wall triangle spans ~46k cells and must stay in the grid)
       for (let ix = ix0; ix <= ix1; ix++) for (let iy = iy0; iy <= iy1; iy++) for (let iz = iz0; iz <= iz1; iz++) {
         const key = this.key(ix, iy, iz);
         let list = this.cells.get(key);
@@ -929,6 +932,10 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
                 if (firstHit([px, h, pz], [-dz, 0, dx], 6) > 0 && firstHit([px, h, pz], [dz, 0, -dx], 6) > 0) columns = true;
               }
               if (covered && (columns || deep - 3 <= 1.5)) hit = deep;
+              // A shallow upper-storey protrusion (balcony, loggia, oriel: wall within SHALLOW_PROTRUSION_M of the
+              // outermost edge) is not a wall gap at street height at ANY elevation: the 1 m inside target stays in
+              // front of the wall behind it. The 16 m cover cap above is for deep porticoes, not 1.5 m balconies.
+              else if (deep - 3 <= SHALLOW_PROTRUSION_M) hit = deep;
             }
           }
           if (hit < 0 && th.throughPassages.length) {

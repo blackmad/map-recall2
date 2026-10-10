@@ -11,6 +11,7 @@
     "compare:facades": "node --import tsx scripts/landmarks/facade-compare.ts",
     "check:landmark-lods": "node --import tsx scripts/landmarks/check-landmark-lods.ts",
     "build:landmark-lods": "node --import tsx scripts/landmarks/build-landmark-lods.ts",
+    "test:landmark-shading": "node --import tsx --test src/canalRecall/landmarks/landmarkShading.test.ts",
     "build:street-surveys": "esbuild src/canalRecall/streetSurveys/page.ts --bundle --format=iife --outfile=public/canal-drive/js/street-surveys.bundle.js --minify",
     "test:building-taxonomy": "node --import tsx --test src/canalRecall/buildingCategory.test.ts src/canalRecall/streetSurveys/classify.test.ts",
     "street-surveys": "node --import tsx scripts/street-surveys/build.ts",
