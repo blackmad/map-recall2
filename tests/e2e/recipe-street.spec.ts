@@ -34,7 +34,7 @@ test('recipe street: installed Bilderdijkstraat houses render in the game from t
   expect(houses.length).toBeGreaterThan(10);
   const glbRequests: string[] = [];
   page.on('request', r => { if (/recipe-bilder-[0-9]+\.glb/.test(r.url())) glbRequests.push(r.url().split('?')[0].split('/').pop()!); });
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: '?streetChunks=0' }); // per-house path; the chunked path is street-chunks.spec.ts
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 });
   // Street direction = frontage direction of the first house; the rider starts at one end, 9 m out on the street side, looking along it.
   const along = (h: any) => 90 + h.instance.northOffsetDegrees;
