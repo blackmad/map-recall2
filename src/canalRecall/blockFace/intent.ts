@@ -48,6 +48,10 @@ export interface RhythmSpec {
   citation: string;
   /** Machine-checkable counts from the photo for facade-compare: glazed openings per row bottom→top (ground row = shop glass + fanlights), silhouette peaks. */
   photoRows?: number[];
+  /** How many leading `photoRows` entries belong to the ground band (ground floor/pui incl. its transom or mezzanine row,
+   * and a basement). Default: 1, or 2 when the second row is a lone transom/mezzanine row (fewer openings than the rows
+   * on either side, e.g. `[2, 1, 3, 3, 3, 1]`). See `blockFace/openingCount.ts`. */
+  photoGroundRows?: number;
   photoGables?: number;
   /** Things the schema cannot express that the model will therefore get wrong (shown on the review sheet). */
   schemaLimits?: string[];
@@ -91,6 +95,13 @@ export interface BlockFaceIntent {
      * scale and ground); `front` names the front of a multi-front pand (default: every front of the pand).
      */
     measuredEaves?: {pand: string; front?: string; stripRow: number; evidence: string}[];
+    /**
+     * Crowns read off the strip instead of authored (blockFace/gableFromStrip.ts): the photo's gable type, step count,
+     * rise and (when it differs from the authored placement) span replace the front's crown fields at compile time.
+     * `front` names one front of a multi-front pand (default: every front). A front whose photo reading abstains keeps
+     * its authored crown (reported). Absent = the authored crown, byte-identical.
+     */
+    crownFromPhoto?: {pand: string; front?: string; evidence: string}[];
     /** Clip street-side details at oblique party walls on every house of the face (FrontIntent `partyClip`). */
     partyClip?: boolean;
     notes?: string[];
@@ -166,6 +177,16 @@ export function validateBlockFace(input: unknown, order?: string[]): BlockFaceIn
     if (measuredSeen.has(key)) problems.push(`${at}: ${key} measured twice`);
     measuredSeen.add(key);
     if (face.continuity.corniceGroups.some(g => g.pands.includes(m.pand))) problems.push(`${at}: ${m.pand.slice(-6)} is also in a cornice group; measure it or group it, not both`);
+  }
+  const photoSeen = new Set<string>();
+  for (const [k, c] of (face?.continuity?.crownFromPhoto ?? []).entries()) {
+    const at = `continuity.crownFromPhoto[${k}]`, i = face.houses.findIndex(h => h.pandId === c?.pand);
+    if (i < 0) { problems.push(`${at}: pand ${c?.pand} is not on this face`); continue; }
+    if (!c.evidence) problems.push(`${at}: needs evidence (why the photo crown beats the authored one)`);
+    if (c.front !== undefined && intents[i] && !intents[i].fronts.some(f => f.id === c.front)) problems.push(`${at}.front: ${c.front} is not a front of ${c.pand.slice(-6)}`);
+    const key = `${c.pand}/${c.front ?? '*'}`;
+    if (photoSeen.has(key)) problems.push(`${at}: ${key} listed twice`);
+    photoSeen.add(key);
   }
   if (face?.continuity?.partyClip !== undefined && typeof face.continuity.partyClip !== 'boolean') problems.push('continuity.partyClip must be boolean');
   if (problems.length) throw Error(`Invalid block face ${face?.id ?? '?'}:\n - ${problems.join('\n - ')}`);

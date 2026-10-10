@@ -1,0 +1,126 @@
+{
+ "street": "Oudezijds Voorburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T10:28:06.646Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171880",
+   "addresses": [
+    "Oudezijds Voorburgwal 115",
+    "Oudezijds Voorburgwal 115B",
+    "Oudezijds Voorburgwal 115C",
+    "Oudezijds Voorburgwal 115A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Voorburgwal 115",
+     "use": "woonfunctie",
+     "areaM2": 315,
+     "bagId": "0363010000759556"
+    },
+    {
+     "address": "Oudezijds Voorburgwal 115B",
+     "use": "woonfunctie",
+     "areaM2": 276,
+     "bagId": "0363010012155771"
+    },
+    {
+     "address": "Oudezijds Voorburgwal 115C",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010012572542"
+    },
+    {
+     "address": "Oudezijds Voorburgwal 115A",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010012155770"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171878",
+   "addresses": [
+    "Oudezijds Voorburgwal 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Voorburgwal 117-H",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010001027591"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178729",
+   "addresses": [
+    "Oudezijds Voorburgwal 119"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Voorburgwal 119",
+     "use": "woonfunctie",
+     "areaM2": 290,
+     "bagId": "0363010000759559"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178728",
+   "addresses": [
+    "Oudezijds Voorburgwal 121"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Voorburgwal 121-H",
+     "use": "industriefunctie",
+     "areaM2": 74,
+     "bagId": "0363010000759560"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179002",
+   "addresses": [
+    "Oudezijds Voorburgwal 123"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Voorburgwal 123-H",
+     "use": "industriefunctie",
+     "areaM2": 70,
+     "bagId": "0363010000759564"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171879",
+   "addresses": [
+    "Oudezijds Voorburgwal 125"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Voorburgwal 125-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000759567"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

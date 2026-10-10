@@ -1,0 +1,23 @@
+{
+  "id": "de-bazel",
+  "status": "ready-pending-integrator-blind-count",
+  "identity": {
+    "bagPandId": "0363100012165077",
+    "addresses": ["Vijzelstraat 32"],
+    "name": "De Bazel (Stadsarchief Amsterdam), K.P.C. de Bazel 1919-26, Amsterdam School, rijksmonument 46509",
+    "policy": "landmark-level building: full recipe and an English POI card drafted (de-bazel-poi.json); NOT registered as a route destination"
+  },
+  "sources": [
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012165077&f=json", "kind": "BAG pand attributes", "retrievedOn": "2026-10-10", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165077", "kind": "3DBAG LoD2.2 massing", "retrievedOn": "2026-10-10", "licence": "CC BY 4.0 (3DBAG)"},
+    {"url": "https://nl.wikipedia.org/wiki/De_Bazel_(Amsterdam)", "kind": "history and facts for the POI card", "retrievedOn": "2026-10-10", "licence": "CC BY-SA 4.0"},
+    {"file": "artifacts/landmark-lanes/de-bazel/rect-*.jpg, ref-e2-*.jpg", "kind": "rectified municipal panoramas (scripts/landmarks/big-rectify.ts): TMX7316010203-002619_pano_0015_000170 (2022-06-22), b_20241203_1333_Track15_Sphere_00215, recording_2025-06-16_06-42-40_01100, TMX7316010203-001975_pano_0000_000583 (2021-01-22), TMX7316010203-002970_pano_0008_000022 (2023-02-13)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0", "retrievedOn": "2026-10-10"}
+  ],
+  "faces": {
+    "east (Vijzelstraat, wall 10)": "evidence: rect-e1/e2/e3.jpg at 40 px/m, window groups, slits, entrance slots and shopfronts positioned by metre",
+    "north (Keizersgracht, wall 352)": "evidence: rect-n1.jpg, 7 window pairs per floor, 4 floors plus attic, oriel and arched entrance at the east end",
+    "south (wall 8)": "partial: rect-s1.jpg, 4 pairs per floor counted, vertical scale of that rectification doubtful so rows use the north pitch",
+    "west (wall 152)": "INFERRED from the north rhythm, no photograph"
+  },
+  "limits": ["sculptures over the entrance, relief ornament panels, stepped corbel courses and roof terraces not modelled", "recess of the central east block is flattened to the wall plane", "window pitches read to about 0.1 m from the rectified images", "checker change: glbQuality TriGrid cell cap raised 40,000 to 120,000 so a 90 m x 28 m wall triangle stays in the detached-part grid"]
+}

@@ -20,7 +20,7 @@ export const streetChunksEnabled = (search: string): boolean => !/^(0|false|off|
 export function chunkSpecFor(c: ChunkManifestEntry): SignatureModelSpec {
   const length = c.bounds.max[0] - c.bounds.min[0], width = c.bounds.max[2] - c.bounds.min[2];
   return {
-    id: c.id, assetKind: 'ordinary-building', name: c.name, landmarkId: '',
+    id: c.id, assetKind: 'ordinary-building', buildingCategory: 'street-survey', name: c.name, landmarkId: '',
     modelUrl: c.modelUrl, suppressOsmIds: [...c.suppress], spatialSuppression: false,
     buildingFootprint: c.footprint, heightMetres: c.height, heightToleranceMetres: 0.5, groundAltitudeMetres: 0, facingOffsetDegrees: 0,
     // Radius is used for visibility/loading only; suppression always uses exact IDs.

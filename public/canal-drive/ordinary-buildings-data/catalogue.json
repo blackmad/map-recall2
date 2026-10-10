@@ -3,6 +3,7 @@
   "models": [
     {
       "id": "ordinary-0363100012242125",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012242125",
       "name": "Simple gray metal industrial shed",
       "anchor": [
@@ -156,6 +157,7 @@
     },
     {
       "id": "ordinary-0363100012074248",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012074248",
       "name": "Dark brick commercial block",
       "anchor": [
@@ -292,6 +294,7 @@
     },
     {
       "id": "ordinary-0363100012223044",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012223044",
       "name": "Gray factory hall with high narrow glazing",
       "anchor": [
@@ -448,6 +451,7 @@
     },
     {
       "id": "ordinary-0363100012123231",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012123231",
       "name": "Dark ribbed hall with red loading doors",
       "anchor": [
@@ -563,6 +567,7 @@
     },
     {
       "id": "ordinary-0363100012183449",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012183449",
       "name": "Charcoal port warehouse behind containers",
       "anchor": [
@@ -684,6 +689,7 @@
     },
     {
       "id": "ordinary-0363100012191215",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012191215",
       "name": "Pale gray warehouse beyond canal scrub",
       "anchor": [
@@ -792,6 +798,7 @@
     },
     {
       "id": "ordinary-0363100012224669",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012224669",
       "name": "Dark metal warehouse with red delivery portals",
       "anchor": [
@@ -928,6 +935,7 @@
     },
     {
       "id": "ordinary-0363100012067126",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012067126",
       "name": "Pale corrugated shed with faded coral stripes",
       "anchor": [
@@ -1056,6 +1064,7 @@
     },
     {
       "id": "ordinary-0363100012159282",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012159282",
       "name": "White metal industrial box with concrete lower wall",
       "anchor": [
@@ -1216,6 +1225,7 @@
     },
     {
       "id": "ordinary-0363100012238052",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012238052",
       "name": "Tall charcoal ribbed industrial box with low southwest strip",
       "anchor": [
@@ -1449,6 +1459,7 @@
     },
     {
       "id": "ordinary-0363100012177576",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012177576",
       "name": "Koning David / De David",
       "anchor": [
@@ -1965,6 +1976,7 @@
     },
     {
       "id": "ordinary-0363100012177571",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012177571",
       "name": "Groene Valk / Grauwe Valk",
       "anchor": [
@@ -2474,6 +2486,7 @@
     },
     {
       "id": "ordinary-0363100012165119",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165119",
       "name": "Pale glazed commercial corner on Spuistraat",
       "anchor": [
@@ -3484,6 +3497,7 @@
     },
     {
       "id": "ordinary-0363100012167569",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012167569",
       "name": "Modern commercial facade on Kalverstraat48–52",
       "anchor": [
@@ -3825,6 +3839,7 @@
     },
     {
       "id": "ordinary-0363100012168534",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012168534",
       "name": "Pale modern former university library on Singel425",
       "anchor": [
@@ -4630,6 +4645,7 @@
     },
     {
       "id": "ordinary-0363100012167770",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012167770",
       "name": "Triple warehouse, Brouwersgracht 174–178",
       "anchor": [
@@ -6812,6 +6828,7 @@
     },
     {
       "id": "ordinary-0363100012167736",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012167736",
       "name": "Keysersveste apartments, Keizersgracht 28–36",
       "anchor": [
@@ -9036,6 +9053,7 @@
     },
     {
       "id": "ordinary-0363100012168028",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012168028",
       "name": "Spuistraat 110–116 / Singel 151 office-warehouse conversion",
       "anchor": [
@@ -9824,6 +9842,7 @@
     },
     {
       "id": "ordinary-0363100012176271",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012176271",
       "name": "Singel 152–158 / Bergstraat 1–3 former Twentsche Bank archive",
       "anchor": [
@@ -10206,6 +10225,7 @@
     },
     {
       "id": "ordinary-0363100012176244",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012176244",
       "name": "Herengracht 459–463 / Reguliersdwarsstraat 12–16 modern office block",
       "anchor": [
@@ -10544,6 +10564,7 @@
     },
     {
       "id": "ordinary-0363100012165204",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165204",
       "name": "Haarlemmerdijk 1–7 / Korte Prinsengracht 22–34 ordinary modern block",
       "anchor": [
@@ -11476,6 +11497,7 @@
     },
     {
       "id": "ordinary-0363100012168482",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012168482",
       "name": "Singel 532–540 / Reguliersdwarsstraat 59–63 gray stone office block",
       "anchor": [
@@ -11904,6 +11926,7 @@
     },
     {
       "id": "ordinary-0363100012168201",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012168201",
       "name": "Kalverstraat 99 — brick core and glazed commercial flank",
       "anchor": [
@@ -12445,6 +12468,7 @@
     },
     {
       "id": "ordinary-0363100012175754",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012175754",
       "name": "Spuistraat 242–250 ordinary residential/shop block",
       "anchor": [
@@ -13471,6 +13495,7 @@
     },
     {
       "id": "ordinary-0363100012254471",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012254471",
       "name": "Rokin 21 / current Rokin 49 north office-retail block",
       "anchor": [
@@ -14498,6 +14523,7 @@
     },
     {
       "id": "ordinary-0363100012243483",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012243483",
       "name": "Rokin 49 southern block — curved glass front and dark-brick Nes side",
       "anchor": [
@@ -16166,6 +16192,7 @@
     },
     {
       "id": "ordinary-0363100012167975",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012167975",
       "name": "Keizersgracht 603 / Vijzelstraat 79 office block",
       "anchor": [
@@ -18558,6 +18585,7 @@
     },
     {
       "id": "ordinary-0363100012175018",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012175018",
       "name": "Kerkstraat 206–210 ordinary modern row",
       "anchor": [
@@ -19579,6 +19607,7 @@
     },
     {
       "id": "ordinary-0363100012171370",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012171370",
       "name": "Amstelstraat 16–22",
       "anchor": [
@@ -19711,6 +19740,7 @@
     },
     {
       "id": "ordinary-0363100012177101",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012177101",
       "url": "/models/ordinary-buildings/0363100012177101.glb",
       "anchor": [
@@ -19947,6 +19977,7 @@
       "sourcePack": "experiments/canal-belt-continuation-20261007/next-large-box-source-26-followup/0363100012167897",
       "reviewState": "Independent source/gallery and native desktop/touch PASS; startup/source-stage pauses and approximation limits preserved.",
       "id": "ordinary-0363100012167897",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012167897",
       "modelUrl": "./models/ordinary-buildings/0363100012167897.glb",
       "anchor": [
@@ -20158,6 +20189,7 @@
     },
     {
       "id": "ordinary-0363100012169456",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012169456",
       "label": "Prinsengracht 211–213",
       "url": "/models/ordinary-buildings/0363100012169456.glb",
@@ -20271,6 +20303,7 @@
     },
     {
       "id": "ordinary-0363100012169457",
+      "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012169457",
       "label": "Prinsengracht 215–217",
       "url": "/models/ordinary-buildings/0363100012169457.glb",
@@ -20379,6 +20412,7 @@
     {
       "buildingId": "NL.IMBAG.Pand.0363100012174397",
       "id": "ordinary-0363100012174397",
+      "category": "ordinary",
       "url": "/models/ordinary-buildings/0363100012174397.glb",
       "anchor": [
         4.8833109,
@@ -20510,6 +20544,7 @@
     },
     {
       "id": "ordinary-0363100012185424",
+      "category": "ordinary",
       "bytes": 287136,
       "sha256": "a680a2ac3c81fe9e4b5018ce088a1154dee3b00178a0fc9148fa0bf6c2d9fa5d",
       "materials": 3,
@@ -21156,6 +21191,7 @@
     },
     {
       "id": "ordinary-0363100012176752",
+      "category": "ordinary",
       "bytes": 459636,
       "sha256": "5ecc5194b38f88ad9aa4862a81565b0216f5010dfeb17054246a093c6aa796b9",
       "materials": 3,
@@ -21439,6 +21475,7 @@
     },
     {
       "id": "ordinary-0363100012171101",
+      "category": "ordinary",
       "bytes": 394296,
       "sha256": "056e443a76e89238c8309e7f65819cddbad179b6cb3bb23f45020c233fcd3c4b",
       "materials": 3,
@@ -21754,6 +21791,7 @@
     },
     {
       "id": "ordinary-0363100012172459",
+      "category": "ordinary",
       "bytes": 106156,
       "sha256": "bb1bcea2396bac298bcfbadbb55012c9a99f6aa2e75181cfc807cd648b114ce1",
       "materials": 3,
@@ -21908,6 +21946,7 @@
     },
     {
       "id": "ordinary-0363100012079721",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012079721",
       "name": "Bilderdijkstraat (1894 yellow brick, scaffolded)",
       "hash": "e4a8519cb4d0b639fe9dc6d693ec930f24ed4798a2cddc35aa9efbec1685b4bd",
@@ -22052,6 +22091,7 @@
     },
     {
       "id": "ordinary-0363100012080336",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012080336",
       "name": "Bilderdijkstraat (1939 bay-window block, bay left)",
       "hash": "0da44dccdcbfbe0d86b01bd9db45210ca49ea3441b9b2b56da21c33f7d844691",
@@ -22171,6 +22211,7 @@
     },
     {
       "id": "ordinary-0363100012090492",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012090492",
       "name": "Bilderdijkstraat (1939 bay-window block, bay right)",
       "hash": "9f48cc367c90d725a6fc9a05754389f4582b2fd23ec49db491a9cea57d64a640",
@@ -22270,6 +22311,7 @@
     },
     {
       "id": "ordinary-0363100012092394",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012092394",
       "name": "Bilderdijkstraat (1939 plain block)",
       "hash": "0cbe0be9c3c39f0cef1d048535fc682a60468df45494ffbe830604e567ab37e5",
@@ -22385,6 +22427,7 @@
     },
     {
       "id": "ordinary-0363100012092395",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012092395",
       "name": "Bilderdijkstraat (twin of 092394)",
       "hash": "0f28a5effd7405782921acf6be07c42409bf4649dd0a12dc5c9a447775faded6",
@@ -22484,6 +22527,7 @@
     },
     {
       "id": "ordinary-0363100012152363",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012152363",
       "name": "Bilderdijkstraat (1881 dark brick, pedimented dormer)",
       "hash": "d1b96841ca8d04dfb297805a6c6698e1a84ab39139c735a34eefc0c0894d6232",
@@ -22583,6 +22627,7 @@
     },
     {
       "id": "ordinary-0363100012152669",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012152669",
       "name": "Bilderdijkstraat (1894 arched windows, pedimented dormer)",
       "hash": "05f00c2cf6823e684eb03576dfc1689625c001f11ac551126bbfb4179176d285",
@@ -22706,6 +22751,7 @@
     },
     {
       "id": "ordinary-0363100012153622",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012153622",
       "name": "Bilderdijkstraat (1887 orange brick, white bosses)",
       "hash": "f57a47e6f527f6a60b7fdf84e87ca95d4254b05249d17af8f281f9ec8a283690",
@@ -22810,6 +22856,7 @@
     },
     {
       "id": "ordinary-0363100012153782",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012153782",
       "name": "Bilderdijkstraat (1891 red brick, white bosses)",
       "hash": "3eaa55a965a7b5600ded46e7cffdb6f37305e817387ad29e065dcc59bc45c23f",
@@ -22917,6 +22964,7 @@
     },
     {
       "id": "ordinary-0363100012154127",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012154127",
       "name": "Bilderdijkstraat (1889 dark brick, shop window)",
       "hash": "d9e687abd3c7a692130190356a545593718e3f63dfee1537918556624888c427",
@@ -23032,6 +23080,7 @@
     },
     {
       "id": "ordinary-0363100012156732",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012156732",
       "name": "Bilderdijkstraat (1881 painted plum, heavy cornice)",
       "hash": "35be23d7a852f7c99606e209ee2f92a8fcf4b1c861fa70680fdf61d5c0599165",
@@ -23131,6 +23180,7 @@
     },
     {
       "id": "ordinary-0363100012081118",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012081118",
       "name": "Bilderdijkstraat (1909, arched top storey, balconies)",
       "hash": "00eda548bbbbe5b5fd64962428273c5d4e883f79c6a378826484e6760e18c4ad",
@@ -23231,6 +23281,7 @@
     },
     {
       "id": "ordinary-0363100012087959",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012087959",
       "name": "Bilderdijkstraat (1909 dark brick, balconies, arched top)",
       "hash": "efb316ecc253b1e8c3be278a9baf075c52499708a7be6f7c5b9ff1c4c296c46b",
@@ -23331,6 +23382,7 @@
     },
     {
       "id": "ordinary-0363100012155417",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012155417",
       "name": "Bilderdijkstraat (1902 arched windows, balconies, mansard dormer)",
       "hash": "6dd59dc021dc865cb242b2736dc453226ad33d1285b58cf1872653963b50a746",
@@ -23439,6 +23491,7 @@
     },
     {
       "id": "ordinary-0363100012155418",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012155418",
       "name": "Bilderdijkstraat (1903 behind a tree, gabled)",
       "hash": "982d16a574a9d05d45e02e19f6af67280c152153414702ef0852dbd4766e4ff3",
@@ -23542,6 +23595,7 @@
     },
     {
       "id": "ordinary-0363100012156286",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012156286",
       "name": "Bilderdijkstraat (1903 yellow brick, stepped gable, balconies)",
       "hash": "c3272ca9130c9d8aac7ef868cd33ba2ecefd84ebde63359a23aebca2517071ba",
@@ -23673,6 +23727,7 @@
     },
     {
       "id": "ordinary-0363100012157650",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012157650",
       "name": "Bilderdijkstraat (1908 dark red brick, big cross windows)",
       "hash": "4179d37955207f42125a300a61fb4720e17e572ac7ad1e266acd7cd0b5f47f95",
@@ -23781,6 +23836,7 @@
     },
     {
       "id": "ordinary-0363100012156287",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012156287",
       "name": "Bilderdijkstraat (1903 orange brick, stepped gable, balconies)",
       "hash": "84efe969c249563bedebcaae28cb2caeb746876c6812c249919b84f7c7c212b6",
@@ -23896,6 +23952,7 @@
     },
     {
       "id": "ordinary-0363100012157154",
+      "category": "street-survey",
       "buildingId": "NL.IMBAG.Pand.0363100012157154",
       "name": "Bilderdijkstraat (1902 dark brick, raised neck, balconies)",
       "hash": "992bdfe3ec25b9c9272db5538ed37e395d4558856b073c5154f7c5557a83d0ca",

@@ -52,7 +52,8 @@ const entries = summary.instances.map(inst => {
   const ring = r.facts.bagFootprintRD.map(ring => ring.map(p => { const ll = rdToLngLat({x: p[0], y: p[1]}); return [+ll[0].toFixed(7), +ll[1].toFixed(7)]; }));
   const height = Math.max(r.facts.heights.roofMaxM, ...r.report.fit.fronts.map(f => f.crownTopM));
   return {
-    id: `ordinary-${inst.pandId}`, buildingId: `NL.IMBAG.Pand.${inst.pandId}`, name: intent.address, hash: mesh.hash, sha256: mesh.hash,
+    // Taxonomy (src/canalRecall/buildingCategory.ts): recipe houses are street-survey work, never landmarks.
+    id: `ordinary-${inst.pandId}`, category: 'street-survey' as const, buildingId: `NL.IMBAG.Pand.${inst.pandId}`, name: intent.address, hash: mesh.hash, sha256: mesh.hash,
     bytes: mesh.bytes, triangles: mesh.triangles, materials: r.report.materials, textures: 0, scale: 1, bounds: mesh.bounds,
     anchor: inst.anchor, footprint: {type: 'Polygon', coordinates: ring}, nativeHeight: +r.facts.heights.roofMaxM.toFixed(2), height: +height.toFixed(2),
     modelUrl: mesh.url, suppress: [`NL.IMBAG.Pand.${inst.pandId}`],

@@ -73,6 +73,9 @@ import {buildMediamatic} from './mediamatic-builder';
 import {buildHaparandaweg13} from './haparandaweg-13-builder';
 import {buildHaparandaweg11} from './haparandaweg-11-builder';
 import {buildHaparandaweg9} from './haparandaweg-9-builder';
+import {buildDeBazel} from './de-bazel-builder';
+import {buildMotorkade1} from './motorkade-1-builder';
+import {buildVocKade600} from './voc-kade-600-builder';
 import {buildHaparandaweg8338} from './haparandaweg-8-338-builder';
 import {buildAfrikahuis} from './afrikahuis-builder';
 import {buildHaparandaweg24} from './haparandaweg-2-4-builder';
@@ -576,6 +579,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='haparandaweg-2-4')buildHaparandaweg24(w,d,helpers);
     else if(id==='haparandaweg-8-338')buildHaparandaweg8338(w,d,helpers);
     else if(id==='haparandaweg-9')buildHaparandaweg9(w,d,helpers);
+    else if(id==='de-bazel')buildDeBazel(w,d,helpers);
+    else if(id==='motorkade-1')buildMotorkade1(w,d,helpers);
+    else if(id==='voc-kade-600')buildVocKade600(w,d,helpers);
     else if(id==='haparandaweg-11')buildHaparandaweg11(w,d,helpers);
     else if(id==='mediamatic')buildMediamatic(w,d,helpers);
     else if(id==='haparandaweg-13')buildHaparandaweg13(w,d,helpers);
@@ -583,11 +589,13 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='ndsm-warehouse-complex')buildNdsmWarehouseComplex(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
-  manifest.models[id]=await save(id);
+  {const lod1=manifest.models[id]?.lod1;manifest.models[id]=await save(id);if(lod1)manifest.models[id].lod1=lod1;}// keep the lod1 record; build:landmark-lods / check:landmark-lods catch it going stale
 }
 // Held models keep their manifest entry (rebuildable) but are flagged so
 // listing pages like whats-new.html leave them out.
-for(const spec of MANUAL_LANDMARKS){const entry=manifest.models?.[spec.id];if(!entry)continue;if((spec as {status?:string}).status==='held')entry.held=true;else delete entry.held;}
+for(const spec of MANUAL_LANDMARKS){const entry=manifest.models?.[spec.id];if(!entry)continue;if((spec as {status?:string}).status==='held')entry.held=true;else delete entry.held;
+ // Taxonomy (src/canalRecall/buildingCategory.ts): listing pages must not count ordinary blocks as landmarks.
+ if(spec.buildingCategory&&spec.buildingCategory!=='landmark')entry.category=spec.buildingCategory;else delete entry.category;}
 fs.writeFileSync(path.join(out,'signature-landmarks.json'),JSON.stringify(manifest,null,2)+'\n');
 // Model URLs stay stable; a content fingerprint prevents a cached old imported
 // mesh being loaded with the new original model's native placement.

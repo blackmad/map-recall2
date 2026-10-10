@@ -13,13 +13,24 @@
 // three.js is shared across the 3D bundles — see three-runtime-source.js.
 import { createRecipeLook, RECIPE_LOOK_SHARED } from '../../../src/canalRecall/buildingRecipe/recipeLook.ts';
 import { plainBounds, withinView } from '../../../src/canalRecall/rendererShared/residency.ts';
+import { normaliseLandmarkMaterials } from '../../../src/canalRecall/landmarks/landmarkShading.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
+
+const lodApi = () => window.CanalRecallSignatureLandmarks;
 
 const assetUrl = (path, id) => {
   const url = new URL(path, window.location.href);
   const version = window.CanalRecallSignatureLandmarks.MODEL_ASSET_VERSIONS?.[id];
   if (version && !url.searchParams.has('asset')) url.searchParams.set('asset', version);
+  return url.href;
+};
+
+/** URL of one level of a model that has a lod1 sibling. lod1 is versioned by its own fingerprint. */
+const levelUrl = (spec, level) => {
+  if (level !== 'lod1') return assetUrl(spec.modelUrl, spec.id);
+  const url = new URL(lodApi().lod1Url(spec.modelUrl), window.location.href);
+  url.searchParams.set('asset', lodApi().MODEL_LODS[spec.id].sourceHash);
   return url.href;
 };
 
@@ -76,7 +87,7 @@ export class SignatureLandmarks {
     this._sharedAssets = new window.CanalRecallSignatureLandmarks.SharedAssetCache();
     this._generation = 0;
     this._removed = false;
-    this._onMove = () => this._requestModels();
+    this._onMove = () => { this._requestModels(); this._updateLevels(); };
     this.enabled = true;
     this.suppressing = true;
     /** Specs whose model has loaded and is in the scene. */
@@ -118,7 +129,7 @@ export class SignatureLandmarks {
     const dropped = (this._entries || []).filter(entry => ids.has(entry.spec.id));
     if (!dropped.length) return;
     this._entries = this._entries.filter(entry => !ids.has(entry.spec.id));
-    for (const entry of dropped) { this.shown.delete(entry.spec.id); entry.holder?.parent?.remove(entry.holder); this._disposeModel(entry.group, entry.spec, entry.url); }
+    for (const entry of dropped) { this.shown.delete(entry.spec.id); entry.holder?.parent?.remove(entry.holder); this._disposeModel(entry.group, entry.spec, entry.url); this._disposeSpare(entry); }
     this._applySuppression();
     this.map.triggerRepaint();
   }
@@ -393,7 +404,8 @@ export class SignatureLandmarks {
         this._pending.delete(spec.id);
         this._requestModels();
       };
-      const url = assetUrl(spec.modelUrl, spec.id), loader = this._loader;
+      const level = this._startLevel(spec);
+      const url = levelUrl(spec, level), loader = this._loader;
       const onLoaded = gltf => {
         if (this._removed || generation !== this._generation) {
           this._disposeModel(gltf.scene, spec, url);
@@ -401,7 +413,7 @@ export class SignatureLandmarks {
         }
         // Replaced by a street chunk while it was loading.
         if (!this.models.includes(spec)) { this._disposeModel(gltf.scene, spec, url); finish(); return; }
-        try { this._add(this._lightScene, spec, gltf.scene, this.map, url); }
+        try { this._add(this._lightScene, spec, gltf.scene, this.map, url, level); }
         catch (error) {
           this._failed.add(spec.id);
           // Placement or the host callback can fail after insertion. Give the
@@ -423,10 +435,24 @@ export class SignatureLandmarks {
       };
       if (spec.sharedModel) {
         // Shared mesh: decode once, then clone per instance (geometry and materials stay shared).
-        this._sharedAssets.acquire(url, () => loader.loadAsync(url).then(gltf => this._dress(gltf) ?? gltf))
+        this._sharedAssets.acquire(url, () => loader.loadAsync(url).then(gltf => this._dress(gltf) ?? gltf).then(gltf => this._shade(gltf)))
           .then(gltf => onLoaded({ scene: gltf.scene.clone(true) }), onError);
-      } else loader.load(url, gltf => { const dressing = this._dress(gltf); if (dressing) dressing.then(onLoaded, onError); else onLoaded(gltf); }, undefined, onError);
+      } else loader.load(url, gltf => { const dressing = this._dress(gltf); if (dressing) dressing.then(dressed => onLoaded(this._shade(dressed)), onError); else onLoaded(this._shade(gltf)); }, undefined, onError);
     }
+  }
+
+  /**
+   * Diffuse-only shading for every landmark (see landmarks/landmarkShading.ts):
+   * the legacy layer's camera sits at the model origin, so any specular term
+   * was a hotspot computed for an eye inside the building. Runs once per
+   * decoded GLB (a shared mesh's master, before it is cloned).
+   * `?landmarkSpecular=1` keeps the GLB's own materials, for A/B shots.
+   */
+  _shade(gltf) {
+    let keep = window.__canalRecallLandmarkSpecular === true;
+    try { keep ||= new URLSearchParams(window.location.search).get('landmarkSpecular') === '1'; } catch { /* no location */ }
+    if (!keep) normaliseLandmarkMaterials(THREE, gltf.scene);
+    return gltf;
   }
 
   /**
@@ -520,7 +546,7 @@ export class SignatureLandmarks {
         owner.onHostWallOpeningsChanged();
         map.off('moveend', owner._onMove);
         owner._pending.clear();
-        for (const entry of owner._entries) owner._disposeModel(entry.group, entry.spec, entry.url);
+        for (const entry of owner._entries) { owner._disposeModel(entry.group, entry.spec, entry.url); owner._disposeSpare(entry); }
         owner._entries = [];
         owner.shown.clear();
         owner._loader = null;
@@ -575,7 +601,7 @@ export class SignatureLandmarks {
   /** Normalises a loaded model onto its anchor and builds its fixed transform.
    *  Buildings do not move, so the matrix is computed once here rather than
    *  every frame. */
-  _add(scene, spec, imported, map, url) {
+  _add(scene, spec, imported, map, url, level = 'full') {
     const bounds = new THREE.Box3().setFromObject(imported);
     const min = bounds.min;
     const max = bounds.max;
@@ -653,7 +679,11 @@ export class SignatureLandmarks {
       holder.matrixWorldNeedsUpdate = true;
       this._sharedRoot.add(holder);
     }
-    const entry = { spec, group, scene: modelScene, holder, transform, units, groundBase: 0, highlighted: false, placement, url, enuFromWorld };
+    const size = bounds.getSize(new THREE.Vector3());
+    const entry = { spec, group, scene: modelScene, holder, transform, units, groundBase: 0, highlighted: false, placement, url, enuFromWorld,
+      // Level of detail: `level` is what `group` holds now; `spare` is the other level once loaded (detached, kept for reuse).
+      level, imported, spare: null, spareLevel: null, levelLoading: false,
+      radiusMetres: Math.hypot(size.x, size.z) / 2 * placement.scale };
     this._entries.push(entry);
     if (this._groundBase) this._applyGroundBase(entry);
     this.shown.add(spec.id);
@@ -663,12 +693,92 @@ export class SignatureLandmarks {
     map.triggerRepaint();
   }
 
+  /** Whether this spec has a lod1 sibling the loader may use. */
+  _hasLod(spec) {
+    const api = lodApi();
+    // Only a lod1 built from the GLB that is deployed now; a stale one would show old geometry.
+    return !spec.sharedModel && api.lod1IsCurrent(api.MODEL_LODS?.[spec.id], api.MODEL_ASSET_VERSIONS?.[spec.id]);
+  }
+
+  /** Footprint radius of a model in screen pixels at the current zoom. */
+  _radiusPixels(radiusMetres, anchor) {
+    return lodApi().footprintRadiusPixels(radiusMetres, this.map.getZoom(), anchor[1]);
+  }
+
+  /** Level to load first: lod1 for models that are small on screen. Unknown size or no lod1 means full. */
+  _startLevel(spec) {
+    if (!this._hasLod(spec) || window.__canalRecallLandmarkLod === false) return 'full';
+    const anchor = spec.surveyed?.anchor || spec.footprint?.centre;
+    const radius = Math.hypot(spec.footprint?.lengthMetres || 0, spec.footprint?.widthMetres || 0) / 2;
+    if (!anchor || !radius) return 'full';
+    return lodApi().initialLevel(this._radiusPixels(radius, anchor));
+  }
+
+  /**
+   * Swaps drawn models between lod1 and the full GLB as their on-screen size
+   * crosses the (hysteretic) thresholds. The other level is loaded first and
+   * only then swapped in, in one step, so a model is never missing or doubled.
+   */
+  _updateLevels() {
+    if (this._removed || !this.enabled || !this._loader || window.__canalRecallLandmarkLod === false) return;
+    for (const entry of this._entries) {
+      if (!this._hasLod(entry.spec) || entry.levelLoading || entry.lodFailed) continue;
+      if (!this._nearby(entry.spec, entry.placement.anchor)) continue;
+      const wanted = lodApi().chooseLevel(entry.level, this._radiusPixels(entry.radiusMetres, entry.placement.anchor));
+      if (wanted === entry.level) continue;
+      if (entry.spare && entry.spareLevel === wanted) { this._swapLevel(entry, entry.spare, wanted); continue; }
+      if (this._lodLoads >= 2) continue;
+      this._loadLevel(entry, wanted);
+    }
+  }
+
+  _loadLevel(entry, level) {
+    entry.levelLoading = true;
+    this._lodLoads = (this._lodLoads || 0) + 1;
+    const generation = this._generation, spec = entry.spec, url = levelUrl(spec, level);
+    const done = () => { if (generation === this._generation) { entry.levelLoading = false; this._lodLoads--; } };
+    this._loader.load(url, gltf => {
+      if (this._removed || generation !== this._generation || !this._entries.includes(entry)) { this._disposeResources(gltf.scene); done(); return; }
+      this._swapLevel(entry, this._shade(gltf).scene, level);
+      done();
+      this._updateLevels();
+    }, undefined, error => {
+      // Keep what is drawn; never retry a level that will not load.
+      entry.lodFailed = true; done();
+      console.warn(`LOD ${level} for ${spec.name} unavailable; keeping ${entry.level}.`, error);
+    });
+  }
+
+  /** Puts `incoming` (already loaded) in place of the drawn level in one step, aligned with it. */
+  _swapLevel(entry, incoming, level) {
+    const outgoing = entry.imported;
+    // Same normalisation as the first level, so the two overlay exactly.
+    incoming.position.copy(outgoing.position);
+    entry.group.add(incoming);
+    entry.group.remove(outgoing);
+    entry.imported = incoming;
+    entry.spare = outgoing; entry.spareLevel = entry.level;
+    entry.level = level;
+    // Highlight, depth bias and shadows are per material: reapply to the new level.
+    const active = entry.highlighted;
+    entry.highlighted = false; entry.depthBias = null;
+    this._applySuppression();
+    if (active) this.setActiveLandmark({ id: this.activeLandmarkId });
+    if (this.sharedFrame) this.sharedFrame.constructor.setShadows(entry.group, true, true);
+    this.map.triggerRepaint();
+  }
+
+  _disposeSpare(entry) {
+    if (entry.spare) { this._disposeResources(entry.spare); entry.spare = null; }
+  }
+
   /** What is actually on screen, for tests and for the demo readout. */
   describe() {
     return (this._entries || []).map(entry => ({
       id: entry.spec.id,
       name: entry.spec.name,
       placement: entry.placement,
+      level: entry.level,
       attribution: entry.spec.attribution,
     }));
   }

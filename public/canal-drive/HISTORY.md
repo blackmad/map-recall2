@@ -1,5 +1,107 @@
 # Canal Recall — what is built
 
+## Landmarks are diffuse-only: the specular glare was a camera bug (2026-10-10)
+
+User: "weird specular highlights on our landmark buildings" (a smeared white
+blob on Hotel Jakarta's glass, spotlights on dark roofs). Not the GLBs: of
+4,606 materials in 631 GLBs almost all are metallic 0 / roughness 0.9. The
+legacy landmark layer folds MapLibre's view-projection × model transform
+into `camera.projectionMatrix` with an identity camera, so three.js puts
+the eye at the model origin (footprint centre, ground level) and computes
+highlights for a viewer inside the building. `landmarkShading.ts` converts
+landmark materials to Lambert once per source material (glass keeps a small
+sky tint), matching the highlight-free city buildings; `?landmarkSpecular=1`
+restores the old look for A/B. Dark slate roofs read darker now — that is
+their authored colour. GLB material range audited in a unit test.
+Integrator viewed Hotel Jakarta after.
+
+## Home review rides no longer converge on De Dolphijn; next home ride rides on (2026-10-10)
+
+User: still "always" De Dolphijn from Da Costakade, after the 2026-10-09
+fixes. The signed-in profile (Firestore `users/{uid}/reviewStates`, 134 due)
+has Plan review on, so every home launch is a review ride, and
+`pickReviewRoute` took only the pairs passing the most due names (17) within
+1.3x the shortest. From a fixed home that is one corner: De Dolphijn,
+Multatuli, Magna Plaza and Huis Bartolotti sit within 200 m at Torensluis.
+With empty recents (any new device or browser) it was De Dolphijn 40/40;
+with recents it moved one door along. The planner's runner-ups were the same
+corner, and recents recorded the launch pick, not the post-planning swap.
+Now, from a fixed start: any pair with at least half the best count is a
+candidate, weighted 1/(landmarks within 350 m), with the share cap;
+runner-ups must end within 600 m of the pick; the last 4 destinations exclude
+their 350 m surroundings (`recentRankNear`, also used by the home weighted
+picker); every swap is recorded. On the real due set (fixture
+`scripts/fixtures/home-review-due-da-costakade.json`) the top fresh-device
+share is ~11% across 10+ landmarks.
+Also by request: Next ride in home mode no longer rides back home. It starts
+at the arrival and picks another landmark inside the learning ring round
+home (at least 500 m away), so the ring still widens with what you learn.
+
+## Three building categories; Street surveys page (2026-10-10)
+
+User: landmarks are the curated list; ordinary buildings are one-off
+medium-fidelity reconstructions of large non-landmark buildings; street
+surveys are the repetitive canal-house / block work aiming at reusable
+geometry. Root cause of Bilderdijkstraat houses on the landmark page:
+`signatureModels.ts` spread every ordinary-catalogue entry into
+`SIGNATURE_MODELS`, which feeds the landmark page and the landmark,
+route-selection and presentation bundles. Every catalogue/chunk entry now
+carries a typed `category` (`buildingCategory.ts`, writers set it);
+SIGNATURE_MODELS is landmarks only; the game still draws everything via
+GAME_BUILDING_MODELS. 13 non-POI Haparandaweg blocks are ordinary; Het 4e
+Gymnasium stays a landmark. New `street-surveys.html`: street → face →
+house, status, strip vs model, limits, superseded per-house models link
+to their face, and a full Bilderdijkstraat pand table (124 pands; 37 by
+faces, 81 still generic). Pand …156732 is Jacob van Lennepstraat 66, not
+Bilderdijkstraat.
+
+## Block-face review counts storey bands; street shots show the gables (2026-10-10)
+
+The opening counter mixed arcade transoms, fanlights and mezzanines with
+storeys. `blockFace/openingCount.ts` splits each front into a ground band
+(basement + ground storey, compiled heights), upper storeys and attic rows;
+stacked openings in a band count once. Hand-checked counts for 34 pands are
+pinned (`fixtures/opening-profiles.json`), and real errors still fail (no.
+45 with 4 rows above its arcade, 157154's 3-light gable, 236206's ground
+bays). It caught an integrator misread: no. 45 has three rows above the
+arcade, not four. Street shots now stand across the street/canal at 1.7 m
+eye height with gables in frame (`BLOCK_FACES=a,b` subsets).
+
+## Oudezijds Voorburgwal 115–125 installed (2026-10-10)
+
+Six pands, five Rijksmonuments (6062–6066), two bell gables between cornice
+fronts. Capture chosen by hand: 2021-01-25 from a boat on the canal (15–22 m,
+pitch/roll ≤ 0.8°); the default 2021-12-27 and 2021-03-08 street captures at
+5–6 m shear and ghost the gables (03-08 used only for ground floors). Lean
+measured on a level boat view: ≤ 0.5°, noise, not modelled. 117: 3DBAG eaves
+5.61 m vs photo cornice 14.4 m (measured eaves), and a 3DBAG wedge/notch plus
+a BAG stoop block crossing into 115 broke the party line — corrected by a
+face-local `fix-facts.ts` (no shared code changed). 113 and 127–129 left out:
+BAG stoop projections are taken as the front. Integrator viewed the
+across-the-canal shot.
+
+## Photo gable identifier connected to block faces; Marnixstraat crowns from photo (2026-10-10)
+
+The September roofline classifier/fitter (`facade/gable.ts`, `gableFit.ts`,
+written by the roofline lanes, not Sol) was never wired in ("Do not wire
+classifyGable yet"). `blockFace/gableFromStrip.ts` reads a per-column skyline
+from each face strip (deterministic sky test; the Mask2Former venv is not on
+this machine), classifies and fits each crown, compares it with the authored
+crown (`npm run block-face:gables`), and `continuity.crownFromPhoto` lets
+the photo drive gable/steps/rise/position (byte-identical when absent).
+It abstains when a roof shows above the cornice or trees cover the crown —
+57 of 87 fronts, mostly Bilderdijkstraat. Marnixstraat 124–138 and marnix-c
+were authored with 5 uniform steps ~0.7 m right of the photo crown; the
+photo has 2–4. Integrator viewed the gables sheet and the recompiled strip
+overlay and set each Marnixstraat row's shared house type (sameAs) to the
+median photo crown (124–138: 2 steps/side; 106–122: 3), baked into the
+intents with evidence — `crownFromPhoto` reads the gitignored strip at
+compile time, so committed faces must not depend on it (tests compile
+without the strip). Per-house readings vary 2–4 steps and drift left to
+right (strip registration), so one type crown beats eight noisy ones. Sol's
+branches have no better identifier (Blender `gables.py` only draws presets).
+Also reinstalled utrechtse-48-76, whose installed GLB predated recipe fixes.
+
 ## Historic canal-house library; De Wallen OZA 41–57 installed (2026-10-10)
 
 New optional, validated recipe fields (byte-identical when absent; all 33
@@ -17,9 +119,10 @@ throwing, and continuity.measuredEaves. 3DBAG read nos. 45, 49, 57 eaves
 missing from LoD2.2); the gate now records it as a source limit when the
 model matches BAG (IoU ≥ 0.9). Audit "holes elsewhere" were trimmed party
 walls past the end of a shared edge (`partyLoops.ts`). Integrator viewed the
-strip sheet, corrected no. 45 (177924) from 4 to 5 storeys (the photo shows
-four rows above the arcade, confirmed by the reviewer's row heights), and
-reinstalled. Lean is not measurable from the rectified strip, so none is applied.
+strip sheet. (Correction, same day: the integrator briefly set no. 45 to 5
+storeys from a misread overlay; the photo shows three window rows above the
+arcade, so 4 storeys was right. Restored, and the new band-aware counter
+pins it.) Lean is not measurable from the rectified strip, so none is applied.
 
 ## Bilderdijkstraat even side 72–166 installed as block faces (2026-10-10)
 
@@ -255,6 +358,22 @@ except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
 `?streetChunks=1` (`ordinary-buildings-data/chunks.json`); the visual win
 (continuous ground and cornice line) does not need chunking. Unmeasured on a
 real phone GPU.
+
+## Landmark LOD (2026-10-10)
+
+Every curated landmark over 3,000 triangles now has a simplified sibling,
+`<id>.lod1.glb` (~15% of the triangles; flat-shaded GLBs are welded before
+simplify, then re-split; 236 models, +11.5 MB), built by
+`npm run build:landmark-lods` and gated by `npm run check:landmark-lods`
+(inside check:canal). The loader starts a model at lod1 when its footprint
+radius is under 45 px and swaps to full above 45 px / back below 30 px, and
+uses lod1 only when its sourceHash equals the model's current asset version,
+so a rebuilt GLB with a stale lod1 draws full. Measured (iPhone project, 4x
+CPU throttle): overview triangles 3.36M -> 0.84M, landmark geometry 134 -> 51
+MB, frames over 50 ms 22 -> 10; mid zoom 1.25M -> 0.39M triangles; street
+unchanged. Overview render time fell only ~13%: the remaining cost is ~300
+separate per-model draws, so batching is the next lever. With distance LOD in
+place the full-detail cap rises from 30,000 to 40,000 triangles.
 
 ## IJ-toren re-held by a stale merge, released again (2026-10-10)
 

@@ -38,7 +38,7 @@
   },
   {
    "pandId": "0363100012177924", "slug": "wface-177924", "address": "Oudezijds Achterburgwal 45",
-   "design": {"fronts": [{"id": "front0", "street": "Oudezijds Achterburgwal", "gable": "cornice", "storeys": 5, "bays": 3, "doorBay": null, "basement": "none", "cornice": "heavy", "windows": "cross", "hoist": false, "tallGround": true,
+   "design": {"fronts": [{"id": "front0", "street": "Oudezijds Achterburgwal", "gable": "cornice", "storeys": 4, "bays": 3, "doorBay": null, "basement": "none", "cornice": "heavy", "windows": "cross", "hoist": false, "tallGround": true,
       "gableOrnament": {"gablet": "crest"},
       "groundFront": {"kind": "arcade", "bays": ["window", "door", "glazed-door", "door"], "colour": "#d9ccaa", "evidence": "strip 2025-01-14 rows 585-778 (g1 x 990-1716): five cream pilasters, four bays: dark window, black door, glazed door, black door"}}],
     "roof": {"material": "bitumen"}, "palette": {"brick": "#6a4030", "frame": "#2e2a26", "door": "#2a2a2a", "stone": "cream", "cornice": "#d9ccaa"}},

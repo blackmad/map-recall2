@@ -29,9 +29,9 @@
 </head>
 <body>
 <header>
-  <h1>Amsterdam custom models</h1>
-  <p><a href="whats-new.html"><strong>What's new</strong></a> &middot; <a href="landmark-queue.html">Building queue</a> &middot; <a href="manual-ordinary-buildings.html">Ordinary building models</a> &middot; <a href="park-landscape.html">Park views</a> &middot; <a href="tree-models.html">Tree models</a> &middot; <a href="model-reuse-review.html">Reusable model review</a></p>
-  <p>Manually placed POI landmarks and ordinary building models, read live from <code>SIGNATURE_MODELS</code> — the surveyed 3D Warehouse batch and the original flat-colour reconstructions. Drag to orbit &middot; scroll to zoom. Screenshot contract: <code>window.review</code>.</p>
+  <h1>Amsterdam landmark models</h1>
+  <p><a href="whats-new.html"><strong>What's new</strong></a> &middot; <a href="landmark-queue.html">Building queue</a> &middot; <a href="manual-ordinary-buildings.html">Ordinary building models</a> &middot; <a href="street-surveys.html">Street surveys</a> &middot; <a href="park-landscape.html">Park views</a> &middot; <a href="tree-models.html">Tree models</a> &middot; <a href="model-reuse-review.html">Reusable model review</a></p>
+  <p>The curated landmark list, read live from <code>SIGNATURE_MODELS</code> — the surveyed 3D Warehouse batch and the original flat-colour reconstructions. Only these become destinations, cards and quiz items. Large one-off buildings are under <a href="manual-ordinary-buildings.html">Ordinary building models</a>; repetitive canal-house and block-face work under <a href="street-surveys.html">Street surveys</a>. Drag to orbit &middot; scroll to zoom. Screenshot contract: <code>window.review</code>.</p>
   <div class="sort-controls"><label for="model-sort">Sort models</label><select id="model-sort">
     <option value="default">Catalogue order</option><option value="newest" selected>Newest updated</option>
     <option value="oldest">Oldest updated</option><option value="name">Name</option>
@@ -47,7 +47,10 @@
 // sixteen listed here finished loading.
 const { THREE: T, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const selectedIds = new Set((new URLSearchParams(location.search).get('only') || '').split(',').filter(Boolean));
-const MODELS = ((window.CanalRecallSignatureLandmarks || {}).SIGNATURE_MODELS || []).filter(spec => !selectedIds.size || selectedIds.has(spec.id));
+// Landmarks only (src/canalRecall/buildingCategory.ts). SIGNATURE_MODELS is
+// already landmark-only; the filter also guards against an older bundle.
+const isLandmark = spec => spec.assetKind !== 'ordinary-building' && (spec.buildingCategory ?? 'landmark') === 'landmark';
+const MODELS = ((window.CanalRecallSignatureLandmarks || {}).SIGNATURE_MODELS || []).filter(isLandmark).filter(spec => !selectedIds.size || selectedIds.has(spec.id));
 const main = document.querySelector('main');
 
 window.review = { loaded: [], errors: [], total: MODELS.length, done: MODELS.length === 0 };
@@ -131,7 +134,7 @@ function build(spec) {
   const attribution = spec.attribution || {};
   const meta = document.createElement('p');
   meta.className = 'meta';
-  meta.textContent = [spec.landmarkId ? 'POI landmark' : 'Ordinary building', attribution.author, attribution.licence].filter(Boolean).join(' \u00b7 ');
+  meta.textContent = [spec.landmarkId ? 'POI landmark' : 'Landmark (no POI identity)', attribution.author, attribution.licence].filter(Boolean).join(' \u00b7 ');
   if (attribution.title) meta.title = attribution.title;
   article.append(meta);
 

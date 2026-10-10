@@ -196,6 +196,20 @@ test('a low open stair or stoop in front of a closed wall is not a see-through g
   assert.ok(open.seeThrough.rays > 0, JSON.stringify(open.seeThrough));
 });
 
+test('a shallow high balcony slab over a closed wall is not a see-through gap; a deep one or a missing wall still is', () => {
+  // 1.4 m deep balcony floor 20 m up (above the 16 m porch-cover cap): eye-height rays aimed at its edge stop short of the wall.
+  const balcony = boxQuads(2, 20, 10, 8, 20.2, 11.4);
+  const tall = boxQuads(0, 0, 0, 10, 24, 10);
+  const shallow = analyseSoup(soup(tall, balcony));
+  assert.equal(shallow.seeThrough.rays, 0, JSON.stringify(shallow.seeThrough));
+  // 4 m deep slab at the same height is a real canopy over a gap, not a balcony.
+  const deep = analyseSoup(soup(tall, boxQuads(2, 20, 10, 8, 20.2, 14)));
+  assert.ok(deep.seeThrough.rays > 0, JSON.stringify(deep.seeThrough));
+  // The balcony does not hide a missing wall behind it.
+  const open = analyseSoup(soup(boxQuads(0, 0, 0, 10, 24, 10, ['south']), balcony));
+  assert.ok(open.seeThrough.rays > 0, JSON.stringify(open.seeThrough));
+});
+
 /** Tetrastyle portico: 4 columns on the z=10..10.6 line, entablature slab at 9 m on top, optional back wall 4 m behind. */
 function portico(backWall: boolean) {
   const parts: Record<string, Quad>[] = [];
