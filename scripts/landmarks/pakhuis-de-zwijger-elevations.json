@@ -1,0 +1,9 @@
+{
+  "id": "pakhuis-de-zwijger",
+  "countedBy": "pending blind count",
+  "facades": [
+    {"name": "south (Piet Heinkade side, small windows, two stair towers)", "bearing": 197.5, "photo": "artifacts/landmark-lanes/pakhuis-de-zwijger/ref-south.jpg", "depthBand": 6},
+    {"name": "north (IJhaven side, tall glazed strips)", "bearing": 17.5, "photo": "artifacts/landmark-lanes/pakhuis-de-zwijger/ref-north.jpg", "depthBand": 6},
+    {"name": "east (blank lettered brick, oblique)", "bearing": 107.5, "photo": "artifacts/landmark-lanes/pakhuis-de-zwijger/ref-east.jpg", "depthBand": 6}
+  ]
+}

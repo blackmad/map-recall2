@@ -2353,5 +2353,35 @@
     "https://www.wikidata.org/wiki/Q2189632"
   ],
   "preferDescription": true
+},
+{
+  "modelId": "pakhuis-de-zwijger",
+  "landmarkId": "n6933045932",
+  "name": "Pakhuis de Zwijger",
+  "description": "Pakhuis de Zwijger on Piet Heinkade was built in 1933-34 as a cold store for perishable goods, in the Nieuwe Bouwen style, to a design by J. de Bie Leuveling Tjeenk and K. Bakker. Its brick box of small square windows overhangs the quay on cantilevered concrete columns, and tall stair towers with projecting caps run up the front. It stood empty and was threatened with demolition before it was made a national monument in 2001 and restored by Stadsherstel Amsterdam. Since 2006 it has housed cultural organisations and the public programme that carries its name.",
+  "funFact": "A bridge over the IJhaven was planned straight through the warehouse; in the end the Jan Schaeferbrug (opened 2001) was built with the monument kept, and its roadway still runs through the building.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Pakhuis_de_Zwijger",
+  "additionalSources": [
+    "https://dezwijger.nl/"
+  ],
+  "preferDescription": true
+},
+{
+  "modelId": "victoria-hotel",
+  "landmarkId": "n237912528",
+  "name": "Park Plaza Victoria Amsterdam",
+  "description": "The Victoria Hotel stands on the corner of Damrak and Prins Hendrikkade, opposite Centraal Station. It opened on 19 August 1890 to a design by the German-born architect Johann Friedrich Henkenhaf, who also ran the company, and it was the first hotel in the Netherlands with electric light in every guest room and double windows against street noise. Its neo-Renaissance natural-stone front, mansard roof and domed corner tower made it a landmark of the new station district, and it has been a protected monument since 2001. Today it is the Park Plaza Victoria.",
+  "funFact": "Henkenhaf could not buy two small old houses on Prins Hendrikkade, so he simply built the hotel around them; their two little gables are still enclosed by the hotel's front.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Victoria_Hotel",
+  "preferDescription": true
+},
+{
+  "modelId": "woongebouw-wladiwostok",
+  "landmarkId": "woongebouw-wladiwostok",
+  "name": "Woongebouw Wladiwostok",
+  "description": "Wladiwostok closes the west side of Azartplein on Java-eiland with a nine-storey wall of anthracite brick whose facade is bent into an arc that follows the tram turning loop in front of it. Jo Crepain designed it for the housing association Het Oosten and its future residents, who formed their own association; it was built around 1994 with 72 rental flats and maisonnettes and 13 business units. A facade-wide flight of steps leads up to the business units, and a stack of planted balconies marks the centre of the front. It won the Pyramide Wonen prize in 1998, and since about 2014 its roof has been covered with solar panels.",
+  "funFact": "The name is the Dutch spelling of Vladivostok, the Russian port whose name means 'rule the East' - a pun on the corporation Het Oosten. In May 2026 residents put a vane on the roof mast in the shape of the theatre ship Azart, the square's namesake.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Woongebouw_Wladiwostok",
+  "preferDescription": true
 }
 ]

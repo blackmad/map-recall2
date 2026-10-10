@@ -1,0 +1,331 @@
+{
+  "canonicalModelId": "pakhuis-de-zwijger",
+  "researchedOn": "2026-10-10",
+  "state": "built",
+  "destination": {
+    "landmarkId": "n6933045932",
+    "name": "Pakhuis de Zwijger",
+    "address": "Piet Heinkade 179, 1019 HC Amsterdam",
+    "bagPand": "NL.IMBAG.Pand.0363100012088034",
+    "note": "No installed model, landmarks.json entry, native-kit POI or poi-work-queue task covered this pand. The OSM theatre point n6933045932 (click-poi-info.json) is reused as landmarkId. The brief's architect name 'Jan de Bie Leuvelink' is J. de Bie Leuveling Tjeenk (with K. Bakker) on nl.wikipedia."
+  },
+  "architecture": {
+    "sources": [
+      {
+        "url": "https://nl.wikipedia.org/wiki/Pakhuis_de_Zwijger",
+        "retrieved": "2026-10-10"
+      },
+      {
+        "url": "https://dezwijger.nl/",
+        "retrieved": "2026-10-10"
+      }
+    ],
+    "facts": [
+      "Built 1933-34 for storage of perishable goods (cold store) in the Nieuwe Bouwen style; architects J. de Bie Leuveling Tjeenk and K. Bakker.",
+      "A bridge over the IJhaven was planned straight through the warehouse; the Jan Schaeferbrug (opened 2001) was built with the monument kept. Rijksmonument since 2001, restored by Stadsherstel Amsterdam, in use again September 2006 (reuse project André van Stigt)."
+    ]
+  },
+  "measuredBy": {
+    "3dbag": "NL.IMBAG.Pand.0363100012088034 LoD2.2: ground 0.52 m NAP, roofMax 27.99 m NAP; ring 35.5 x 28.8 m rotated 16 degrees. 3DBAG fuses the overhang into solid walls to the ground, and carries a 0.5 m chimney stack to 34.4 m (capped at roofMax).",
+    "faces": "south 196 deg (35.5 m): four rows of 0.76 m windows in blocks of 3 / 3 / 4 columns, two orange-shuttered stair towers (3DBAG tower walls at u 11.0-15.0 and 22.25-25.25 m from the west end), DE ZWYGER lettering at the east end; north 16 deg (34.4 m): five tall glazed strips (narrow, wide, narrow, wide, narrow), converted 2006; east 106 deg (28.8 m): blank brick with six staggered pale lettering bands; west 286 deg: not photographed.",
+    "portal": "Roadway of the Jan Schaeferbrug passes through the ground floor on the OSM road line, centred 11.4 m from the west end of both the north and south faces (panoramas run along it at x -3..1 m, aerial confirms), 13 m wide, soffit about 6.0 m (estimated 5.5-6.5).",
+    "scale": "Window pitch calibrated on the south face with the tower walls of the 3DBAG shell (tower centres 13.0 and 23.75 m from the west end matched the 2005 photo to 0.3 m)."
+  },
+  "photos": [
+    {
+      "file": "ref-2014.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Pakhuis_de_Zwijger,_2014.JPG",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Pakhuis_de_Zwijger%2C_2014.JPG",
+      "author": "Jorinde",
+      "date": "2014-09-04 12:49:50",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "3ac391215a92af2ab00ac4cade68292045fd2239ef32ba51b31d7665c01df777",
+      "retrieved": "2026-10-10",
+      "feature": "south face with towers, east face, bridge at right"
+    },
+    {
+      "file": "ref-2019.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Pakhuis_De_Zwijger_Amsterdam_2019.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/4/48/Pakhuis_De_Zwijger_Amsterdam_2019.jpg",
+      "author": "Steven Lek",
+      "date": "2019-01-21 15:28:51",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "554e3cdbf2581b1f617e80792e87afe81ec53bcd55e48dea2def540279bff966",
+      "retrieved": "2026-10-10",
+      "feature": "south-west corner lettering and overhang"
+    },
+    {
+      "file": "ref-bridge-2019.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Pakhuis_De_Zwijger_Jan_Schaeferbrug_Amsterdam_2019.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Pakhuis_De_Zwijger_Jan_Schaeferbrug_Amsterdam_2019.jpg",
+      "author": "Steven Lek",
+      "date": "2019-01-21 15:26:16",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "40722c2381e85eeecbba0501785948b4986dcc74324644f588a73f11ab04630b",
+      "retrieved": "2026-10-10",
+      "feature": "north face from the bridge"
+    },
+    {
+      "file": "ref-rce-2005-bridge.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Overzicht_pakhuis_met_overkragend_betonskelet_gezien_vanaf_de_Jan_Schaeferbrug_die_dwars_door_het_gebouw_loopt_-_Amsterdam_-_20409081_-_RCE.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Overzicht_pakhuis_met_overkragend_betonskelet_gezien_vanaf_de_Jan_Schaeferbrug_die_dwars_door_het_gebouw_loopt_-_Amsterdam_-_20409081_-_RCE.jpg",
+      "author": "Sergé Technau",
+      "date": "2005-06",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "3b49d6ef821dc0028d43363f0b6844fd53807bdf59326d7d286d98849cf7b7a7",
+      "retrieved": "2026-10-10",
+      "feature": "south face frontal with portal"
+    },
+    {
+      "file": "ref-rce-1981-front.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Pakhuis_\"De_Zwijger\",_voorzijde_-_Amsterdam_-_20019729_-_RCE.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Pakhuis_%22De_Zwijger%22%2C_voorzijde_-_Amsterdam_-_20019729_-_RCE.jpg",
+      "author": "Gerard Dukker",
+      "date": "1981-04",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "994f3d4bfe3b8eeef38441187d1aaf51e0c22f6fe084be15ca82d1a42252462c",
+      "retrieved": "2026-10-10",
+      "feature": "south and east faces with piers"
+    },
+    {
+      "file": "ref-2019b.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Pakhuis_de_Zwijger_Amsterdam_2019_2.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Pakhuis_de_Zwijger_Amsterdam_2019_2.jpg",
+      "author": "Steven Lek",
+      "date": "2019-01-21 15:23:52",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "f2a92a89bd6a2b5f91d527913e316a497bafa5e20f25a047ed12555c4ce9999e",
+      "retrieved": "2026-10-10",
+      "feature": "south face"
+    },
+    {
+      "file": "ref-flickr-a.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Pakhuis_de_Zwijger_(29668984294).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Amsterdam_-_Pakhuis_de_Zwijger_%2829668984294%29.jpg",
+      "author": "Fred Romero from Paris, France",
+      "date": "Taken on 6 May 2016, 11:13",
+      "licence": "CC BY 2.0",
+      "sha256": "02c59b746bf7ada1be1f769680c7e4152eae77d294786dc78a262979822c3193",
+      "retrieved": "2026-10-10",
+      "feature": "neighbouring building (not used)"
+    },
+    {
+      "file": "ref-flickr-b.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Pakhuis_de_Zwijger_(30183808372).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Amsterdam_-_Pakhuis_de_Zwijger_%2830183808372%29.jpg",
+      "author": "Fred Romero from Paris, France",
+      "date": "Taken on 6 May 2016, 11:22",
+      "licence": "CC BY 2.0",
+      "sha256": "1c84347fe088bf40f22e1f97a9593e324dc7ff635dfc6dcaa1e1473f56ca7433",
+      "retrieved": "2026-10-10",
+      "feature": "south face towers"
+    },
+    {
+      "file": "ref-flickr-c.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Pakhuis_de_Zwijger_(30213606191).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Amsterdam_-_Pakhuis_de_Zwijger_%2830213606191%29.jpg",
+      "author": "Fred Romero from Paris, France",
+      "date": "Taken on 6 May 2016, 11:07",
+      "licence": "CC BY 2.0",
+      "sha256": "f396993eca99a5459a00965d38dd8d7f96d52bd87693a9935794c84a4e9b31a1",
+      "retrieved": "2026-10-10",
+      "feature": "north strips and west face corner"
+    },
+    {
+      "file": "ref-flickr-d.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Pakhuis_de_Zwijger_(30213610301).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Amsterdam_-_Pakhuis_de_Zwijger_%2830213610301%29.jpg",
+      "author": "Fred Romero from Paris, France",
+      "date": "Taken on 6 May 2016, 11:09",
+      "licence": "CC BY 2.0",
+      "sha256": "205a7f22610acf2eb73071516ee7fb0e9a640f33c5d03d90b1b4d30e67c658c3",
+      "retrieved": "2026-10-10",
+      "feature": "east and north faces from the south-west"
+    },
+    {
+      "file": "ref-flickr-e.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Pakhuis_de_Zwijger_(30213615681).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Amsterdam_-_Pakhuis_de_Zwijger_%2830213615681%29.jpg",
+      "author": "Fred Romero from Paris, France",
+      "date": "Taken on 6 May 2016, 11:11",
+      "licence": "CC BY 2.0",
+      "sha256": "1df72b599336ff73069081ab7851601eee03c159ef0b7ffff0231b36d98f3747",
+      "retrieved": "2026-10-10",
+      "feature": "south face with banner"
+    },
+    {
+      "file": "ref-flickr-f.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Pakhuis_de_Zwijger_(30213618711).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Amsterdam_-_Pakhuis_de_Zwijger_%2830213618711%29.jpg",
+      "author": "Fred Romero from Paris, France",
+      "date": "Taken on 6 May 2016, 11:11",
+      "licence": "CC BY 2.0",
+      "sha256": "41a2f6d90331e287c10878cc1a4c972d9d28e556c93e81238d7697f75a46f466",
+      "retrieved": "2026-10-10",
+      "feature": "south face towers"
+    },
+    {
+      "file": "ref-2009-a.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Pakhuis_De_Zwijger_-_De_Zwijger_Warehouse_(5709124425).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/3/37/Pakhuis_De_Zwijger_-_De_Zwijger_Warehouse_%285709124425%29.jpg",
+      "author": "Het Nieuwe Instituut - Architecture Collection",
+      "date": "2009-11-12 12:21:00",
+      "licence": "No restrictions",
+      "sha256": "43c2b8a41e92d95e0f2d657043090d56fcc823b6f9813a8057fe37e23c665ba3",
+      "retrieved": "2026-10-10",
+      "feature": "1930s architects' collection photo from the IJhaven"
+    },
+    {
+      "file": "ref-2009-b.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Pakhuis_De_Zwijger_-_De_Zwijger_Warehouse_(5709688692).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Pakhuis_De_Zwijger_-_De_Zwijger_Warehouse_%285709688692%29.jpg",
+      "author": "Het Nieuwe Instituut - Architecture Collection",
+      "date": "2009-11-09 11:31:00",
+      "licence": "No restrictions",
+      "sha256": "a8ac4f25067b871d9285ceaa9a71e9665c464f4cbf8bb73d717c7299170e6e3d",
+      "retrieved": "2026-10-10",
+      "feature": "1930s photo showing the piers"
+    },
+    {
+      "file": "ref-rce-2005-b.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Overzicht_pakhuis_met_overkragend_betonskelet_gezien_vanaf_de_Jan_Schaeferbrug_-_Amsterdam_-_20409077_-_RCE.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/2/24/Overzicht_pakhuis_met_overkragend_betonskelet_gezien_vanaf_de_Jan_Schaeferbrug_-_Amsterdam_-_20409077_-_RCE.jpg",
+      "author": "Sergé Technau",
+      "date": "2005-06",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "e7f539579ee4dd1480b2d5c8d39f1308b2b0ccb2f475c687c2acaa64e4913c58",
+      "retrieved": "2026-10-10",
+      "feature": "distant north view"
+    },
+    {
+      "file": "ref-south.jpg",
+      "copyOf": "ref-rce-2005-bridge.jpg",
+      "retrieved": "2026-10-10",
+      "feature": "south facade comparison (frontal, pre-conversion state, windows boarded)"
+    },
+    {
+      "file": "ref-north.jpg",
+      "copyOf": "ref-bridge-2019.jpg",
+      "retrieved": "2026-10-10",
+      "feature": "north facade comparison (oblique)"
+    },
+    {
+      "file": "ref-east.jpg",
+      "copyOf": "ref-pano-e1.jpg",
+      "retrieved": "2026-10-10",
+      "feature": "east facade comparison (oblique, municipal panorama crop)"
+    },
+    {
+      "file": "ref-pano-north-portal.jpg",
+      "copyOf": "ref-pano-n-2018.jpg",
+      "retrieved": "2026-10-10",
+      "feature": "portal and north strips"
+    }
+  ],
+  "panoramas": [
+    {
+      "file": "ref-pano-n-2018.jpg",
+      "id": "TMX7316010203-000724_pano_0000_000012",
+      "captured": "2018-05-16",
+      "heading": 196,
+      "fov": 110,
+      "pitch": 25,
+      "note": "north face and portal from the roadway",
+      "source": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-000724_pano_0000_000012/",
+      "licence": "CC0 (Gemeente Amsterdam open data)",
+      "retrieved": "2026-10-10"
+    },
+    {
+      "file": "ref-pano-n-2019.jpg",
+      "id": "TMX7316010203-001651_pano_0000_000363",
+      "captured": "2020-02-18",
+      "heading": 195,
+      "fov": 110,
+      "pitch": 25,
+      "note": "north face (second view)",
+      "source": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001651_pano_0000_000363/",
+      "licence": "CC0 (Gemeente Amsterdam open data)",
+      "retrieved": "2026-10-10"
+    },
+    {
+      "file": "ref-pano-n1.jpg",
+      "id": "TMX7316010203-001587_pano_0000_000489",
+      "captured": "2020-01-23",
+      "heading": 218,
+      "fov": 60,
+      "pitch": 15,
+      "note": "north face from across the IJhaven quay",
+      "source": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001587_pano_0000_000489/",
+      "licence": "CC0 (Gemeente Amsterdam open data)",
+      "retrieved": "2026-10-10"
+    },
+    {
+      "file": "ref-pano-n2.jpg",
+      "id": "TMX7316010203-001587_pano_0000_000490",
+      "captured": "2020-01-23",
+      "heading": 225,
+      "fov": 70,
+      "pitch": 20,
+      "note": "north face and west end",
+      "source": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001587_pano_0000_000490/",
+      "licence": "CC0 (Gemeente Amsterdam open data)",
+      "retrieved": "2026-10-10"
+    },
+    {
+      "file": "ref-pano-e1.jpg",
+      "id": "TMX7316010203-001195_pano_0000_002677",
+      "captured": "2019-05-21",
+      "heading": 270,
+      "fov": 80,
+      "pitch": 20,
+      "note": "east face and piers",
+      "source": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001195_pano_0000_002677/",
+      "licence": "CC0 (Gemeente Amsterdam open data)",
+      "retrieved": "2026-10-10"
+    },
+    {
+      "file": "ref-pano-s1.jpg",
+      "id": "TMX7316010203-001651_pano_0000_000410",
+      "captured": "2020-02-18",
+      "heading": 352,
+      "fov": 60,
+      "pitch": 15,
+      "note": "south face with towers and banner",
+      "source": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001651_pano_0000_000410/",
+      "licence": "CC0 (Gemeente Amsterdam open data)",
+      "retrieved": "2026-10-10"
+    },
+    {
+      "file": "ref-pano-s2.jpg",
+      "id": "TMX7316010203-001651_pano_0000_000407",
+      "captured": "2020-02-18",
+      "heading": 350,
+      "fov": 70,
+      "pitch": 20,
+      "note": "south-east corner, piers and DE ZWYGER lettering",
+      "source": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001651_pano_0000_000407/",
+      "licence": "CC0 (Gemeente Amsterdam open data)",
+      "retrieved": "2026-10-10"
+    }
+  ],
+  "raw": [
+    {
+      "file": "artifacts/landmark-lanes/pakhuis-de-zwijger/raw/3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012088034",
+      "retrieved": "2026-10-10",
+      "licence": "CC BY 4.0"
+    },
+    {
+      "file": "artifacts/landmark-lanes/pakhuis-de-zwijger/raw/aerial.jpg",
+      "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0 (Actueel_orthoHR, bbox 52.37612,4.92083,52.37772,4.92327)",
+      "retrieved": "2026-10-10",
+      "licence": "CC0"
+    }
+  ],
+  "uncertain": [
+    "Soffit height 6.0 m is an estimate (photo ratio), +-0.5 m.",
+    "West face has no photograph; modelled as plain brick shell (inferred).",
+    "North strip positions are by fractions of the face in the 2019 photo (oblique), +-0.5 m. Glazed steel link and portal beam inside the portal are simplified to one beam.",
+    "East face lettering bands are placed from the 1981 photo; the city names themselves are not modelled."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Woongebouw Wladiwostok",
+  "landmarkId": "woongebouw-wladiwostok",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Woongebouw_Wladiwostok",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012089568"
+  ],
+  "pandId": "0363100012089568",
+  "materialOverrides": {
+    "greyBrick": "#565a60",
+    "slate": "#55585d",
+    "brick": "#7a4a3c",
+    "concrete": "#8d8d89",
+    "dark": "#1f2125",
+    "glass": "#9ab6cc",
+    "frame": "#d0d5da"
+  },
+  "surveySource": "Current BAG 0363100012089568 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint and 3DBAG LoD2.2 massing; arc facade window columns, storey rows and balcony stack measured by eye from Commons photographs (2018, 2019, 2023, 2026), no pixels or meshes imported."
+}

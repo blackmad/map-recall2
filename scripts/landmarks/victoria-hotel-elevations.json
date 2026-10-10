@@ -1,0 +1,8 @@
+{
+  "id": "victoria-hotel",
+  "countedBy": "pending blind count",
+  "facades": [
+    {"name": "damrak (south-east, five bays and a pavilion beside the tower)", "bearing": 130, "photo": "artifacts/landmark-lanes/victoria-hotel/ref-damrak.jpg", "depthBand": 8},
+    {"name": "prins hendrikkade (north-east, tower, left block, old houses, right block)", "bearing": 42.5, "photo": "artifacts/landmark-lanes/victoria-hotel/ref-northeast.jpg", "depthBand": 8}
+  ]
+}

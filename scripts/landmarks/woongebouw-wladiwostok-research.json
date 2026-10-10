@@ -1,0 +1,172 @@
+{
+  "canonicalModelId": "woongebouw-wladiwostok",
+  "researchedOn": "2026-10-10",
+  "state": "built",
+  "destination": {
+    "landmarkId": "woongebouw-wladiwostok",
+    "name": "Woongebouw Wladiwostok",
+    "address": "Azartplein, Java-eiland, Amsterdam",
+    "bagPand": "NL.IMBAG.Pand.0363100012089568",
+    "note": "No installed model, native-kit POI or poi-work-queue task covered this pand (checked by name and landmarkId). No OSM POI exists for it, so a model-local landmarkId is used. It is a genuinely distinctive housing block (curved anthracite front), so the Hotel Jakarta fallback was not needed."
+  },
+  "architecture": {
+    "sources": [
+      {
+        "url": "https://nl.wikipedia.org/wiki/Woongebouw_Wladiwostok",
+        "retrieved": "2026-10-10"
+      }
+    ],
+    "facts": [
+      "Designed by Jo Crepain for housing association Het Oosten; built c. 1994 on Java-eiland with 72 rental flats and maisonnettes plus 13 business units.",
+      "Nine storeys; the east front on Azartplein is a concave arc of anthracite brick following the tram loop; a stack of planted balconies marks the centre; steps run along the foot of the front.",
+      "Pyramide Wonen prize 1998. The name is the Dutch spelling of Vladivostok, a pun on Het Oosten."
+    ]
+  },
+  "measuredBy": {
+    "3dbag": "NL.IMBAG.Pand.0363100012089568 LoD2.2: ground 1.5 m NAP, roof 27.6 m above ground, roofMax 29.8 m NAP (mast). The east arc is the ring run from vertex 1 to 57 (about 38 m long); window frames sit on the real 3DBAG wall planes (up to 0.3 m proud of the ring).",
+    "front": "twelve window columns (five south of the stack, three in it, four north), eight storey rows above the ground-floor door openings, four balcony levels at 4.8, 10.3, 15.6 and 21.0 m, counted and scaled on the 2018 and 2023 frontal photographs (facade spans 55..1230 px).",
+    "rear": "the 2019 rear photograph shows red brick with curved balconies and a stair tower, so the non-front faces are red brick."
+  },
+  "photos": [
+    {
+      "file": "ref-2026-a.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:2026_Gebouw_Wladiwostok,_Asd_(A).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/7/73/2026_Gebouw_Wladiwostok%2C_Asd_%28A%29.jpg",
+      "author": "Ceescamel",
+      "date": "2026-08-11 10:49:10",
+      "licence": "CC0",
+      "sha256": "1b335c4865034669728ca7d4b6f91b8db1d89842afba6d4f5d303ebb7de5c1aa",
+      "retrieved": "2026-10-10",
+      "feature": "east front across the loop"
+    },
+    {
+      "file": "ref-2026-b.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:2026_Gebouw_Wladiwostok,_Asd_(B).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/c/cd/2026_Gebouw_Wladiwostok%2C_Asd_%28B%29.jpg",
+      "author": "Ceescamel",
+      "date": "2026-08-11 10:49:36",
+      "licence": "CC0",
+      "sha256": "de23b4410818c2e6114363ec30239656b87ac8bb3797f51468cba60e731cffd8",
+      "retrieved": "2026-10-10",
+      "feature": "upper windows and balcony"
+    },
+    {
+      "file": "ref-2026-c.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:2026_Gebouw_Wladiwostok,_Asd_(C).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/1/16/2026_Gebouw_Wladiwostok%2C_Asd_%28C%29.jpg",
+      "author": "Ceescamel",
+      "date": "2026-08-11 10:50:39",
+      "licence": "CC0",
+      "sha256": "2f0ce343426adf24a9adea2f1ca6e7bde6109140ed97780d47bbce2e86f90593",
+      "retrieved": "2026-10-10",
+      "feature": "oblique east front"
+    },
+    {
+      "file": "ref-2026-d.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:2026_Gebouw_Wladiwostok,_Asd_(D).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/f/ff/2026_Gebouw_Wladiwostok%2C_Asd_%28D%29.jpg",
+      "author": "Ceescamel",
+      "date": "2026-08-11 10:50:46",
+      "licence": "CC0",
+      "sha256": "47c17ecccab196bef9f7102b24f8a8bbc1884575cfff112dfe72991bbafd09f1",
+      "retrieved": "2026-10-10",
+      "feature": "roof mast and vane"
+    },
+    {
+      "file": "ref-2026-f.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:2026_Gebouw_Wladiwostok,_Asd_(F).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/7/78/2026_Gebouw_Wladiwostok%2C_Asd_%28F%29.jpg",
+      "author": "Ceescamel",
+      "date": "2026-08-11 10:50:54",
+      "licence": "CC0",
+      "sha256": "ed36d43de3990897d4b272a295f05f64845473fbed5ecc24f23c5f2ec26551c1",
+      "retrieved": "2026-10-10",
+      "feature": "roof vane"
+    },
+    {
+      "file": "ref-2018.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Wladiwostok_-_Azartplein_Amsterdam_(43375759502).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Wladiwostok_-_Azartplein_Amsterdam_%2843375759502%29.jpg",
+      "author": "FaceMePLS from The Hague, The Netherlands",
+      "date": "2018-06-27 13:28",
+      "licence": "CC BY 2.0",
+      "sha256": "5a72362bfadd7eed964f72c017356274cbdb30ce0691a9cb56f4e2056620f659",
+      "retrieved": "2026-10-10",
+      "feature": "frontal east front"
+    },
+    {
+      "file": "ref-2019-1.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Wladiwostok_2019_(1).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/0/05/Wladiwostok_2019_%281%29.jpg",
+      "author": "Ceescamel",
+      "date": "2019-08-23 12:31:46",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "a2c7e64ec9c5a487d8165da283af8565065be06f452ac5f24a1881d8ef54bf5d",
+      "retrieved": "2026-10-10",
+      "feature": "east front"
+    },
+    {
+      "file": "ref-2019-2.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Wladiwostok_2019_(2).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/5/57/Wladiwostok_2019_%282%29.jpg",
+      "author": "Ceescamel",
+      "date": "2019-08-23 12:33:02",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "6cb1306bd7befc4e2c20b4f294cda98121a46ee1f46fc9a462aebb92ad3df90c",
+      "retrieved": "2026-10-10",
+      "feature": "rear courtyard"
+    },
+    {
+      "file": "ref-2019-3.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Wladiwostok_2019_(3).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Wladiwostok_2019_%283%29.jpg",
+      "author": "Ceescamel",
+      "date": "2019-08-23 12:33:08",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "ef9890c9c1a42ee69772020b2e292bf68fdfe221f61681e25c1e2ddb668ee82e",
+      "retrieved": "2026-10-10",
+      "feature": "rear courtyard, red brick tower and curved balconies"
+    },
+    {
+      "file": "ref-2023-1.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:2023_Amsterdam,_Java-eiland,_Azartplein_(01).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/5/5d/2023_Amsterdam%2C_Java-eiland%2C_Azartplein_%2801%29.jpg",
+      "author": "Kleon3",
+      "date": "2023-06-07 12:39:20",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "262559e0a75d457acc2dfc6959374be65bde2eac1be01ac1416277b9a32d1fdd",
+      "retrieved": "2026-10-10",
+      "feature": "east front with tram"
+    },
+    {
+      "file": "ref-2023-3.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:2023_Amsterdam,_Java-eiland,_Azartplein_(03).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/f/fc/2023_Amsterdam%2C_Java-eiland%2C_Azartplein_%2803%29.jpg",
+      "author": "Kleon3",
+      "date": "2023-06-10 06:45:25",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "5510311c8589e609b606f32ba521ce3f14da4e91a026d39d974d929bf91c76ae",
+      "retrieved": "2026-10-10",
+      "feature": "east front doors and balcony stack"
+    },
+    {
+      "file": "ref-east.jpg",
+      "copyOf": "ref-2018.jpg",
+      "retrieved": "2026-10-10",
+      "feature": "east front facade comparison"
+    }
+  ],
+  "panoramas": [],
+  "raw": [
+    {
+      "file": "artifacts/landmark-lanes/woongebouw-wladiwostok/raw/3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012089568",
+      "retrieved": "2026-10-10",
+      "licence": "CC BY 4.0"
+    }
+  ],
+  "uncertain": [
+    "The north, south and west faces have no frontal photograph: their window grid (3 m pitch, same storey rows as the front) is INFERRED, and the rear balconies and stair towers of the courtyard side are not modelled.",
+    "The roof mast vane is a simple two-block silhouette of the Azart ship vane; the solar panels on the roof are not modelled."
+  ]
+}
