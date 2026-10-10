@@ -344,7 +344,7 @@
       "gable": "step",
       "storeys": 4,
       "bays": 3,
-      "atticWindows": 1,
+      "atticWindows": 3,
       "doorBay": 2,
       "basement": "none",
       "cornice": "simple",
@@ -416,7 +416,7 @@
     "roofline": "stepped gable with curved shoulders, centred, on a cream cornice; slate roof visible either side",
     "citation": "strip.jpg pand 4 (x 832-1073 px)",
     "schemaLimits": [
-     "the gable window is three lights in one frame; modelled as one attic window"
+     "the gable window is three lights in one stone frame; modelled as three separate lights side by side"
     ],
     "photoRows": [
      2,
