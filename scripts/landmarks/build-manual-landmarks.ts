@@ -73,6 +73,7 @@ import {buildMediamatic} from './mediamatic-builder';
 import {buildHaparandaweg13} from './haparandaweg-13-builder';
 import {buildHaparandaweg11} from './haparandaweg-11-builder';
 import {buildHaparandaweg9} from './haparandaweg-9-builder';
+import {buildGrasweg116} from './grasweg-116-builder';
 import {buildWillemDeZwijgerlaan350} from './willem-de-zwijgerlaan-350-builder';
 import {buildOvertoom197} from './overtoom-197-builder';
 import {buildDeBazel} from './de-bazel-builder';
@@ -581,6 +582,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='haparandaweg-2-4')buildHaparandaweg24(w,d,helpers);
     else if(id==='haparandaweg-8-338')buildHaparandaweg8338(w,d,helpers);
     else if(id==='haparandaweg-9')buildHaparandaweg9(w,d,helpers);
+    else if(id==='grasweg-116')buildGrasweg116(w,d,helpers);
     else if(id==='willem-de-zwijgerlaan-350')buildWillemDeZwijgerlaan350(w,d,helpers);
     else if(id==='overtoom-197')buildOvertoom197(w,d,helpers);
     else if(id==='de-bazel')buildDeBazel(w,d,helpers);
