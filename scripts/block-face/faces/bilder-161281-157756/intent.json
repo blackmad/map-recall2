@@ -1,0 +1,217 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bilder-161281-157756",
+ "street": "Bilderdijkstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-12",
+   "image": "staging/block-face/bilder-161281-157756/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012161281",
+   "slug": "bface-161281",
+   "address": "Bilderdijkstraat 113",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "heavy",
+      "hoist": false,
+      "gable": "cornice",
+      "storeys": 4,
+      "bays": [
+       5,
+       3,
+       3,
+       3
+      ],
+      "axisGrid": 5,
+      "storeyAxes": {
+       "1": [
+        2,
+        3,
+        4
+       ],
+       "2": [
+        2,
+        3,
+        4
+       ],
+       "3": [
+        2,
+        3,
+        4
+       ]
+      },
+      "dormers": 2,
+      "doorBay": null,
+      "windows": "sash",
+      "bands": "both",
+      "shopfront": {
+       "colour": "white",
+       "fascia": true,
+       "name": "Skina",
+       "displayWindows": 1,
+       "stallriser": "low",
+       "shopShare": 0.4,
+       "evidence": "pano 2023-01-12 + OSM node 11381117868"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#6b3a2c",
+     "frame": "white",
+     "door": "white",
+     "stone": "cream",
+     "band": "#e4dcc4"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2023-01-12",
+    "use": "cafe",
+    "name": "Skina",
+    "category": "amenity=cafe",
+    "osm": {
+     "type": "node",
+     "id": 11381117868,
+     "name": "Skina",
+     "tags": "amenity=cafe"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "Cream-painted ground floor: a large window at the left under a lettered band (\"YES FUTURE\" repeated, not the cafe name) and graffiti-tagged residential windows at the right. The name Skina is not legible on the photo; it comes from OSM."
+   },
+   "rhythm": {
+    "bays": "wide 1890 front: blind left third (cream-banded brick, no windows), 3 window axes in the right two thirds",
+    "identicalBays": "storeys 1-3 identical",
+    "windowsPerStorey": "ground: large window left + 3 windows right | 1-3: 3 windows at the right, none at the left | roof: 2 dormers",
+    "symmetry": "none",
+    "groundFloor": "cream-painted ground floor, large glazed opening at the far left",
+    "signage": "lettered band (YES FUTURE), not the trading name",
+    "roofline": "heavy cornice, mansard with 2 dormers and a roof-terrace edge between",
+    "citation": "bilder-161281-157756 strip.jpg pand 1",
+    "photoRows": [
+     4,
+     3,
+     3,
+     3,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "blind left third is modelled by using only the right 3 of 5 axes (axisGrid trick); pitch differs slightly from the photo",
+     "cream and brick banding is a two-colour approximation",
+     "ground-floor residential windows at the right are not modelled; the shopfront spans the full width (shopShare has no effect without a residential door)",
+     "the 14 m front reads like two builds joined (jogs); one front plane in the model"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012157756",
+   "slug": "bface-157756",
+   "address": "Bilderdijkstraat 115",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "heavy",
+      "hoist": false,
+      "gable": "cornice",
+      "storeys": 4,
+      "bays": 3,
+      "dormers": 1,
+      "doorBay": null,
+      "windows": "sash",
+      "bands": "both",
+      "shopfront": {
+       "colour": "dark-brown",
+       "fascia": true,
+       "name": "First Vintage Fashion",
+       "displayWindows": 1,
+       "stallriser": "low",
+       "evidence": "pano 2023-01-12 + OSM node 11381139492"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#6b3a2c",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "cream",
+     "band": "#e4dcc4"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2023-01-12",
+    "use": "shop",
+    "name": "First Vintage Fashion",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 11381139492,
+     "name": "First Vintage Fashion",
+     "tags": "shop=clothes"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "Narrow shopfront with a cream fascia band carrying small script lettering (illegible), glazed door at the right."
+   },
+   "rhythm": {
+    "bays": "3 identical window axes, brick with cream bands, dormer on the roof",
+    "windowsPerStorey": "ground: shop | 1-3: 3 | roof: 1 dormer",
+    "symmetry": "mirror-symmetric",
+    "groundFloor": "shop glass and door under a cream fascia band",
+    "signage": "illegible script on the fascia band",
+    "roofline": "heavy cornice, mansard with one dormer",
+    "citation": "bilder-161281-157756 strip.jpg pand 2",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "tree branches hide the upper storeys on the strip: window rows read through twigs",
+     "sign text is illegible: none modelled",
+     "cream and brick banding is approximated"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "notes": [
+   "Leaf-off capture 2023-01-12: the 2024-11-29 strip is hidden behind a plane tree.",
+   "Joined to 157757 by a ~0.65 m gap/jog (no shared party wall), so the odd side is two faces here."
+  ]
+ },
+ "authoring": {
+  "author": "claude-sonnet-5.5 (block-face lane), from strip-labelled.png + 2x zoomed ground/roof crops",
+  "passes": 1,
+  "note": "Bilderdijkstraat 113-115 (odd side, 1890)."
+ }
+}

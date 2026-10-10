@@ -1,0 +1,76 @@
+{
+ "street": "Bilderdijkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T07:43:54.257Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161281",
+   "addresses": [
+    "Bilderdijkstraat 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 113",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001042726"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11381117868,
+     "lngLat": [
+      4.8712947,
+      52.3689039
+     ],
+     "tags": {
+      "amenity": "cafe",
+      "contact:instagram": "https://www.instagram.com/skina.amsterdam/",
+      "cuisine": "coffee_shop",
+      "name": "Skina"
+     },
+     "fetchedAt": "2026-10-10T07:43:54.257Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157756",
+   "addresses": [
+    "Bilderdijkstraat 115"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 115-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000586114"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11381139492,
+     "lngLat": [
+      4.8713707,
+      52.3687867
+     ],
+     "tags": {
+      "name": "First Vintage Fashion",
+      "second_hand": "only",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-10T07:43:54.257Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

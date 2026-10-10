@@ -1,0 +1,270 @@
+{
+ "street": "Bilderdijkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T07:38:11.582Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236022",
+   "addresses": [
+    "Bilderdijkstraat 135",
+    "Bilderdijkstraat 137",
+    "Bilderdijkstraat 139"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 135-H",
+     "use": "winkelfunctie",
+     "areaM2": 305,
+     "bagId": "0363010000586163"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9437347215,
+     "lngLat": [
+      4.8715528,
+      52.3686104
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "135-139",
+      "addr:postcode": "1053KN",
+      "addr:street": "Bilderdijkstraat",
+      "brand": "Intertoys",
+      "brand:wikidata": "Q1891407",
+      "name": "Intertoys",
+      "opening_hours": "Tu-Sa 10:00-18:00; Mo 12:00-18:00; Su 12:00-17:00",
+      "phone": "+31 88 334 3657",
+      "shop": "toys",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-10T07:38:11.582Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159868",
+   "addresses": [
+    "Bilderdijkstraat 141"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 141-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000586186"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809205497,
+     "lngLat": [
+      4.8715759,
+      52.3684962
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "141-H",
+      "addr:postcode": "1053KN",
+      "addr:street": "Bilderdijkstraat",
+      "amenity": "restaurant",
+      "check_date:opening_hours": "2023-11-28",
+      "contact:facebook": "SOILVeganCafe",
+      "diet:vegan": "only",
+      "diet:vegetarian": "only",
+      "indoor_seating": "yes",
+      "name": "SOIL Vegan Cafe",
+      "opening_hours": "Mo-Sa 12:00-22:00; Su 12:00-21:00",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "website": "https://nl.soilvegancafe.com",
+      "website:menu": "https://www.soilvegancafe.com/soil-menu#1",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-10T07:38:11.582Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236711",
+   "addresses": [
+    "Bilderdijkstraat 143"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 143-H",
+     "use": "winkelfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000586191"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11381115950,
+     "lngLat": [
+      4.8716253,
+      52.3684535
+     ],
+     "tags": {
+      "name": "Smart Beauty Lab",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-10T07:38:11.582Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162572",
+   "addresses": [
+    "Bilderdijkstraat 145"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 145-H",
+     "use": "winkelfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000586198"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11381148205,
+     "lngLat": [
+      4.8716507,
+      52.3683896
+     ],
+     "tags": {
+      "name": "Charlton Hair Salon",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-10T07:38:11.582Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012237294",
+   "addresses": [
+    "Bilderdijkstraat 147"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 147-H",
+     "use": "winkelfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000586205"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11381167110,
+     "lngLat": [
+      4.8717073,
+      52.3683464
+     ],
+     "tags": {
+      "name": "Tutti Frutti",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-10T07:38:11.582Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236474",
+   "addresses": [
+    "Bilderdijkstraat 149",
+    "Bilderdijkstraat 151"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 149-H",
+     "use": "winkelfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000586210"
+    },
+    {
+     "address": "Bilderdijkstraat 151-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000586215"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11381148206,
+     "lngLat": [
+      4.8717222,
+      52.3682948
+     ],
+     "tags": {
+      "contact:website": "https://www.treatwell.nl/en/place/rafael-hairstudio/",
+      "name": "Rafael Hairstudio",
+      "opening_hours": "Mo 12:00-19:00; Tu-Sa 09:30-19:00",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-10T07:38:11.582Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167243",
+   "addresses": [
+    "Bilderdijkstraat 153"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 153-H",
+     "use": "winkelfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000586222"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11381162865,
+     "lngLat": [
+      4.8718005,
+      52.3681963
+     ],
+     "tags": {
+      "amenity": "pub",
+      "name": "Cafe Duzz Dat!"
+     },
+     "fetchedAt": "2026-10-10T07:38:11.582Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
