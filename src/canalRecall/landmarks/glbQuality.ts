@@ -881,15 +881,32 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
           const target: V3 = [ex + dx, h, ez + dz];
           if (target[1] > bmax[1] || !castUp(target, -1)) continue;
           seeThrough.tested++;
-          const o: V3 = [ex - dx * 3, h, ez - dz * 3];
-          let hit = firstHit(o, [dx, 0, dz], 4 - 0.01);
-          if (hit < 0) {
-            const ext = firstHit(o, [dx, 0, dz], 7 - 0.01);
+          // Is the opening at `target` closed (a wall within 4 m; a wall within 7 m behind a low porch soffit)?
+          const closedAlong = (ux: number, uz: number): boolean => {
+            const o: V3 = [target[0] - ux * 4, h, target[2] - uz * 4];
+            if (firstHit(o, [ux, 0, uz], 4 - 0.01) >= 0) return true;
+            const ext = firstHit(o, [ux, 0, uz], 7 - 0.01);
             if (ext > 0) {
               const cap = Math.max(minY + 6, h + 4);
-              for (let s = 3; s < ext - 0.2; s += 0.5) if (lowestAbove([o[0] + dx * s, h, o[2] + dz * s]) <= cap) { hit = ext; break; }
+              for (let q = 3; q < ext - 0.2; q += 0.5) if (lowestAbove([o[0] + ux * q, h, o[2] + uz * q]) <= cap + 0.05) return true;   // 5 cm: a soffit modelled at exactly 6.0 m must not fail on float noise
             }
+            return false;
+          };
+          // Or the mouth of a genuine through-passage (a roadway portal, an open arcade): within 15 degrees of the normal a
+          // ray stays under a roof for at least 15 m and leaves the roofed footprint on the far side without touching
+          // anything. A wall gap into a hollow body, or under a canopy with a wall behind it, ends on that wall.
+          const passageAlong = (ux: number, uz: number): boolean => {
+            const o: V3 = [target[0] - ux * 4, h, target[2] - uz * 4];
+            let exit = -1;
+            for (let q = 4; q <= 120; q += 0.5) if (!castUp([o[0] + ux * q, h, o[2] + uz * q], -1)) { exit = q; break; }
+            return exit >= 0 && exit - 3 >= 15 && firstHit(o, [ux, 0, uz], exit + 1) < 0;
+          };
+          let closed = closedAlong(dx, dz);
+          for (const deg of closed ? [] : [0, 5, -5, 10, -10, 15, -15]) {
+            const a = deg * Math.PI / 180;
+            if (passageAlong(dx * Math.cos(a) - dz * Math.sin(a), dx * Math.sin(a) + dz * Math.cos(a))) { closed = true; break; }
           }
+          const hit = closed ? 1 : -1;
           if (hit < 0) {
             seeThrough.rays++;
             if (seeThrough.points.length < 40) seeThrough.points.push(target);
