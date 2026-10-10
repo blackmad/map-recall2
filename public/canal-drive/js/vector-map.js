@@ -23,6 +23,13 @@ const GENERIC_FACADES_DEFAULT = true;
 const CANAL_ELEVATION_DEFAULT = false;
 const CANAL_ELEVATION_BUNDLE = 'js/canal-elevation.bundle.js';
 const STYLISED_TREES_DEFAULT = true;
+// Phase 1 of docs/research/own-renderer-spike-20261009.md (2026-10-10): every
+// three.js layer (facades, landmarks, trees, pyramidal roofs, ARTIS, vehicles)
+// draws through one renderer / scene / light rig (src/canalRecall/
+// rendererShared/), with lit facades and sun shadows. Off by default while it
+// is measured; `?sharedFrame=1` or window.__canalRecallSharedFrame = true.
+// Inside it, `?shadows=0` and `?litFacades=0` turn those two parts off.
+const SHARED_FRAME_DEFAULT = false;
 function canalRecallLookFlag(param, global, fallback) {
   try {
     if (typeof window !== 'undefined' && typeof window[global] === 'boolean') return window[global];
@@ -65,6 +72,8 @@ class VectorBasemap {
     this._facadesEnabled = canalRecallLookFlag('facades', '__canalRecallFacades', GENERIC_FACADES_DEFAULT);
     this._trees3dEnabled = canalRecallLookFlag('trees3d', '__canalRecallTrees3d', STYLISED_TREES_DEFAULT);
     this._elevationEnabled = canalRecallLookFlag('elevation', '__canalRecallElevation', CANAL_ELEVATION_DEFAULT);
+    this._sharedFrameEnabled = canalRecallLookFlag('sharedFrame', '__canalRecallSharedFrame', SHARED_FRAME_DEFAULT);
+    this._sharedFrame = null;
     this._elevation = null;
     this._riderSurfaceM = 0;
     this._rawTrees = null;
@@ -154,6 +163,7 @@ class VectorBasemap {
       this._ensureLandmarkLayers();
       this._styleLandmarks();
       this._raisePoiLayers();
+      this._ensureSharedFrame();
       if (window.CanalRecallDetailed3D && window.CanalRecallDetailed3D.DetailedBuildings) {
         this._detailedBuildings = new window.CanalRecallDetailed3D.DetailedBuildings(this.map, maplibregl, () => {
           this._syncDetailedBuildingLayers();
@@ -168,10 +178,12 @@ class VectorBasemap {
         this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
       }
       const signature = window.CanalRecallSignature3D;
-      if (window.CanalRecallArtisAnimals) this._artisAnimals = new window.CanalRecallArtisAnimals.ArtisAnimals(this.map, maplibregl, this._extractPath);
+      const shared = this._sharedFrame ? { sharedFrame: this._sharedFrame } : {};
+      if (window.CanalRecallArtisAnimals) this._artisAnimals = new window.CanalRecallArtisAnimals.ArtisAnimals(this.map, maplibregl, this._extractPath, shared);
       const manualModels = window.CanalRecallSignatureLandmarks?.GAME_BUILDING_MODELS || window.CanalRecallSignatureLandmarks?.MANUAL_LANDMARKS;
       if (signature?.SignatureLandmarks && manualModels) {
         this._signatureLandmarks = new signature.SignatureLandmarks(this.map, maplibregl, {
+          ...shared,
           models: manualModels,
           streetChunks: true,
           loadVisibleOnly: true,
@@ -199,7 +211,7 @@ class VectorBasemap {
       this.ready = true;
       if (this._elevationEnabled) void this._ensureElevation();
       if (window.CanalRecallInventoryTrees && this._trees3dEnabled) {
-        this._inventoryTrees = new window.CanalRecallInventoryTrees.InventoryTrees(this.map, maplibregl, () => this._syncTreeVisibility());
+        this._inventoryTrees = new window.CanalRecallInventoryTrees.InventoryTrees(this.map, maplibregl, () => this._syncTreeVisibility(), this._sharedFrame ? { sharedFrame: this._sharedFrame } : {});
         this._inventoryTrees.setEnabled(this._treesVisible);
         this._inventoryTrees.load(this._extractPath);
       }
@@ -212,6 +224,31 @@ class VectorBasemap {
         this.setTransitNetwork(pending.load, pending.visible);
       }
     });
+  }
+
+  /**
+   * The one three.js frame every 3D layer draws through (`?sharedFrame=1`).
+   * Its main pass takes the slot the facade layer had — under the coloured
+   * building layers and the game's labels — and its overlay pass (the
+   * vehicles) stays last. Participants find it on `map._canalSharedFrame`.
+   */
+  _ensureSharedFrame() {
+    if (!this._sharedFrameEnabled || this._sharedFrame) return this._sharedFrame;
+    const api = window.CanalRecallThree;
+    if (!api || !api.SharedFrame || !api.THREE) return null;
+    const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const slotIds = ['city-building-overview', 'osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs'];
+    this._sharedFrame = new api.SharedFrame(api.THREE, this.map, {
+      shadows: canalRecallLookFlag('shadows', '__canalRecallShadows', true),
+      shadowMapSize: coarse ? 1024 : 2048,
+      beforeId: () => {
+        const order = this.map.getLayersOrder ? this.map.getLayersOrder() : [];
+        return order.find(id => slotIds.includes(id));
+      },
+    });
+    this._sharedFrame.attach();
+    this.map._canalSharedFrame = this._sharedFrame;
+    return this._sharedFrame;
   }
 
   /** Point building / tile fetches at the active city's extract root. */
@@ -620,7 +657,8 @@ class VectorBasemap {
     const api = window.CanalRecallPyramidalRoofs;
     if (!api || !api.PyramidalRoofs || !this.map) return;
     if (!this._pyramidalRoofs) {
-      this._pyramidalRoofs = new api.PyramidalRoofs(this.map, maplibregl);
+      this._ensureSharedFrame();
+      this._pyramidalRoofs = new api.PyramidalRoofs(this.map, maplibregl, this._sharedFrame ? { sharedFrame: this._sharedFrame } : {});
     }
     this._pyramidFeatures = features || [];
     // In the three.js looks a landmark kit draws its own cones (the Waag's towers): no second cone.
@@ -917,7 +955,13 @@ class VectorBasemap {
       this._threeBuildings = new api.ThreeBuildings(this.map, window.maplibregl, this._buildings3dLook);
       if (this._streetFrontWays && this._threeBuildings.setStreets) this._threeBuildings.setStreets(this._streetFrontWays);
     }
-    if (!this.map.getLayer(this._threeBuildings.layer.id)) {
+    this._ensureSharedFrame();
+    if (this._sharedFrame && this._threeBuildings.attachToSharedFrame) {
+      if (!this._threeBuildings.inSharedFrame) {
+        this._threeBuildings.attachToSharedFrame(this._sharedFrame, { lit: canalRecallLookFlag('litFacades', '__canalRecallLitFacades', true) });
+        if (this._tileFeatures.length) this._threeBuildings.setFeatures(this._tileFeatures);
+      }
+    } else if (!this.map.getLayer(this._threeBuildings.layer.id)) {
       this.map.addLayer(this._threeBuildings.layer, this.map.getLayer('osm-colored-building-roofs') ? 'osm-colored-building-roofs' : undefined);
       if (this._tileFeatures.length) this._threeBuildings.setFeatures(this._tileFeatures);
     }
@@ -1428,7 +1472,7 @@ class VectorBasemap {
     if (!this.map || !this._poiLayerIds || typeof this.map.getLayersOrder !== 'function') return;
     const order = this.map.getLayersOrder();
     let topBuilding = -1;
-    order.forEach((id, index) => { if (/^osm-colored-building|^building-3d|^three-building|detailed|signature/.test(id)) topBuilding = index; });
+    order.forEach((id, index) => { if (/^osm-colored-building|^building-3d|^three-building|^shared-frame-main|detailed|signature/.test(id)) topBuilding = index; });
     if (topBuilding < 0) return;
     const buried = this._poiLayerIds.filter(id => { const index = order.indexOf(id); return index >= 0 && index < topBuilding; });
     for (const id of buried) this.map.moveLayer(id);

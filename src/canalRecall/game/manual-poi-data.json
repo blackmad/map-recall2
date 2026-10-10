@@ -2064,5 +2064,86 @@
     "funFact": "The building was named after Chief Rabbi Aron Schuster (1907-1994) only in 1973, when he retired and left Amsterdam for Jerusalem; he had served here since 1942. The first service after the war was held on Rosh Hashanah 1945.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Raw_Aron_Schuster_Synagoge",
     "preferDescription": true
+  },
+  {
+    "modelId": "zevenlandenhuizen",
+    "landmarkId": "requested-zevenlandenhuizen",
+    "name": "Zevenlandenhuizen",
+    "description": "The Zevenlandenhuizen (Seven Countries Houses) are a row of seven houses at Roemer Visscherstraat 20-30a in the Vondelpark neighbourhood, designed by Tjeerd Kuipers in 1894 for the Amsterdam businessman Sam van Eeghen. Each house borrows the architecture of a different country: Germany (no. 20, pointed-arch Romantic windows), France (22, a Loire chateau), Spain (24, a Moorish villa in the manner of Granada), Italy (26, a palazzo), Russia (28, a church tower with an onion dome), the Netherlands (30, a Renaissance gabled house) and England (30a, a half-timbered cottage). The row is a national monument and a showpiece of the 19th-century taste for exotic styles.",
+    "funFact": "Every house carries its country's name carved into the facade, and the Russian house even has a little onion-domed tower rising over a Dutch street.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Zevenlandenhuizen",
+    "additionalSources": [
+      "https://commons.wikimedia.org/wiki/Category:Zevenlandenhuizen"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "klimhal",
+    "landmarkId": "requested-klimhal-amsterdam",
+    "name": "Klimhal Amsterdam",
+    "description": "Klimhal Amsterdam is a climbing hall on Naritaweg beside Sloterdijk station, built in 1996. Its steel frame is clad in dark brown standing-seam panels that lean in from both flanks to a ridge about 21 m up, so the whole hall reads as a curved, pointed sail. The glazed ends carry a white climbing wall standing proud of the glass; the interior offers several thousand square metres of climbing surface, among the largest in the Benelux.",
+    "funFact": "The hall is about 21 m tall, so its climbing routes are as high as a seven-storey building.",
+    "sourceUrl": "https://www.fijnuit.nl/3680/klimhal-amsterdam",
+    "preferDescription": true,
+    "center": [
+      52.38817,
+      4.82791
+    ],
+    "additionalSources": [
+      {
+        "title": "Klimhal Amsterdam (Fijn Uit)",
+        "url": "https://www.fijnuit.nl/3680/klimhal-amsterdam"
+      },
+      {
+        "title": "BAG pand 0363100012150166 (built 1996, sports use)",
+        "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012150166&f=json"
+      }
+    ]
+  },
+  {
+    "modelId": "symphony",
+    "landmarkId": "requested-symphony",
+    "name": "Symphony",
+    "description": "Symphony is a block on the south side of Gustav Mahlerplein in the Zuidas business district: a 29-storey, 105 m residential tower and a wider 97 m office tower, standing on a shared low-rise base with shops, a hotel and an art centre. Pi de Bruijn of De Architekten Cie designed the towers with INBO architecten, and AWG architecten designed the base. Both towers are clad in banded orange-red brick, so the pair reads as one composition.",
+    "funFact": "The towers are nicknamed the orange giants of the Zuidas, because their brick bands glow orange in low sun.",
+    "sourceUrl": "https://zuidas.nl/en/threesixty_info/amsterdam-symphony-2/",
+    "preferDescription": true,
+    "center": [
+      52.33618,
+      4.87385
+    ],
+    "additionalSources": [
+      {
+        "title": "Zuidas: Amsterdam Symphony",
+        "url": "https://zuidas.nl/en/threesixty_info/amsterdam-symphony-2/"
+      },
+      {
+        "title": "De Architekten Cie: Amsterdam Symphony",
+        "url": "https://www.cie.nl/Amsterdam-Symphony?lang=nl"
+      },
+      {
+        "title": "BAG pand 0363100012128931 (built 2010)",
+        "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012128931&f=json"
+      }
+    ]
+  },
+  {
+    "modelId": "ij-toren",
+    "landmarkId": "extract_landmarks_1963830588",
+    "name": "IJ-toren",
+    "description": "The IJ-toren on Piet Heinkade is a glass office tower rising from the same podium as Amsterdam's Passenger Terminal, beside the IJ. It was finished in 2002, first meant for Bank Labouchere as the Labouchere tower, then briefly the Dexia tower, before being named after the waterway. Since a 2013 refit it trades as the UP Office Building. Stepped glass volumes with green-tinted horizontal bands make it one of the tallest buildings of the eastern docklands.",
+    "funFact": "Architecture critic Hans Ibelings called it extraordinarily flat in 2003, one of the two low points of the Eastern Docklands; it is the second Amsterdam tower called IJ-toren, after a 1998 apartment tower on the Veemkade.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/IJ-toren_(Piet_Heinkade)",
+    "preferDescription": true,
+    "additionalSources": [
+      {
+        "title": "Wikipedia: IJ-toren (Piet Heinkade)",
+        "url": "https://nl.wikipedia.org/wiki/IJ-toren_(Piet_Heinkade)"
+      },
+      {
+        "title": "BAG pand 0363100012090447 (built 2002)",
+        "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012090447&f=json"
+      }
+    ]
   }
 ]

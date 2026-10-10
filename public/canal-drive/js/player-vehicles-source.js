@@ -108,6 +108,11 @@ class Vehicle3D {
     /** Set per frame by the game for the camera zoom; see vehicleZoomScale.ts. */
     this.zoomScale = 1;
     this.layer = this._makeLayer();
+    // `?sharedFrame=1`: draw in the shared frame's overlay pass, which runs
+    // last in MapLibre's frame (so the x-ray still sees every building's
+    // depth) and is lit by the same rig as the city.
+    this.sharedFrame = map._canalSharedFrame || null;
+    if (this.sharedFrame) { this._attachShared(); return; }
     map.addLayer(this.layer);
     // Buildings and other 3D layers are added after the vehicles. Keep the
     // vehicle last so their depth is already in the buffer: that is what lets
@@ -122,6 +127,61 @@ class Vehicle3D {
       map.moveLayer(this.layer.id);
     };
     map.on('styledata', this._keepOnTop);
+  }
+
+  _attachShared() {
+    const { id, modelUrl } = this.options;
+    this._scene = new THREE.Group();
+    this._scene.name = id;
+    this._occlusionMaterial = this._makeOcclusionMaterial();
+    const order = { 'player-bike-3d': 100, 'player-ferry-3d': 110, 'player-boat-3d': 120, 'player-transit-3d': 130 }[id] ?? 100;
+    this.sharedFrame.register(id, {
+      root: this._scene,
+      onAttach: frame => { this._renderer = frame.renderer; this._loadModel(modelUrl); },
+      beforeRender: () => {
+        if (!this.ready || !this.visible || !this.lngLat || !this._modelRoot) return false;
+        this._modelRoot.scale.setScalar(this.options.gameScale * this.viewportScale() * (this.zoomScale || 1));
+        this._pose(this._modelRoot);
+        this.map.triggerRepaint();
+        return true;
+      },
+      mercatorFromLocal: () => this._transform().elements,
+      xrayMaterial: () => this._occlusionMaterial,
+    }, { pass: 'overlay', order });
+  }
+
+  /** A second depth pass paints only model fragments that failed the normal
+   *  pass because nearer map geometry covered them. The bike stays
+   *  depth-correct in the open, while a building turns it into a restrained
+   *  cartoon x-ray instead of making the whole city glassy. */
+  _makeOcclusionMaterial() {
+    if (this.options.occlusionColor == null) return null;
+    return new THREE.MeshBasicMaterial({
+      color: this.options.occlusionColor,
+      opacity: 0.82,
+      transparent: true,
+      depthTest: true,
+      depthWrite: false,
+      depthFunc: THREE.GreaterDepth,
+      side: THREE.DoubleSide,
+      toneMapped: false,
+    });
+  }
+
+  /** Model → Mercator for this frame's position, heading and ramp pitch. */
+  _transform() {
+    const coordinate = this.maplibregl.MercatorCoordinate.fromLngLat(
+      this.lngLat,
+      Number.isFinite(this.altitudeM) ? this.altitudeM : 0.22,
+    );
+    const units = coordinate.meterInMercatorCoordinateUnits();
+    return new THREE.Matrix4()
+      .makeTranslation(coordinate.x, coordinate.y, coordinate.z)
+      .scale(new THREE.Vector3(units, -units, units))
+      .multiply(new THREE.Matrix4().makeRotationZ(this.options.headingOffset - this.angle))
+      // In the Z-up map frame, negative Y rotation raises native +X (the bike's nose).
+      .multiply(new THREE.Matrix4().makeRotationY(-(this.surfacePitch || 0)))
+      .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
   }
 
   setAltitude(metres) {
@@ -212,6 +272,7 @@ class Vehicle3D {
   /** Compile the model's shaders (and the x-ray's) now, while the ride is
    *  still loading, instead of on the first frame the vehicle is visible. */
   _precompile() {
+    if (this.sharedFrame) { this.sharedFrame.compile(this._scene); return; }
     const renderer = this._renderer;
     if (!renderer || !this._scene) return;
     try {
@@ -245,7 +306,7 @@ class Vehicle3D {
 
   _makeLayer() {
     const owner = this;
-    const { id, modelUrl, headingOffset, label } = this.options;
+    const { id, modelUrl, label } = this.options;
     let camera, renderer, occlusionMaterial;
     return {
       id,
@@ -258,22 +319,7 @@ class Vehicle3D {
         const sun = new THREE.DirectionalLight(0xffffff, 4.2);
         sun.position.set(-3, -4, 8);
         owner._scene.add(sun);
-        if (owner.options.occlusionColor != null) {
-          // A second depth pass paints only model fragments that failed the
-          // normal pass because nearer map geometry covered them. The bike
-          // stays depth-correct in the open, while a building turns it into a
-          // restrained cartoon x-ray instead of making the whole city glassy.
-          occlusionMaterial = new THREE.MeshBasicMaterial({
-            color: owner.options.occlusionColor,
-            opacity: 0.82,
-            transparent: true,
-            depthTest: true,
-            depthWrite: false,
-            depthFunc: THREE.GreaterDepth,
-            side: THREE.DoubleSide,
-            toneMapped: false,
-          });
-        }
+        occlusionMaterial = owner._makeOcclusionMaterial();
         renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
         renderer.autoClear = false;
         owner._renderer = renderer;
@@ -284,18 +330,7 @@ class Vehicle3D {
         if (!owner.ready || !owner.visible || !owner.lngLat || !owner._modelRoot) return;
         owner._modelRoot.scale.setScalar(owner.options.gameScale * owner.viewportScale() * (owner.zoomScale || 1));
         owner._pose(owner._modelRoot);
-        const coordinate = owner.maplibregl.MercatorCoordinate.fromLngLat(
-          owner.lngLat,
-          Number.isFinite(owner.altitudeM) ? owner.altitudeM : 0.22,
-        );
-        const units = coordinate.meterInMercatorCoordinateUnits();
-        const transform = new THREE.Matrix4()
-          .makeTranslation(coordinate.x, coordinate.y, coordinate.z)
-          .scale(new THREE.Vector3(units, -units, units))
-          .multiply(new THREE.Matrix4().makeRotationZ(headingOffset - owner.angle))
-          // In the Z-up map frame, negative Y rotation raises native +X (the bike's nose).
-          .multiply(new THREE.Matrix4().makeRotationY(-(owner.surfacePitch || 0)))
-          .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
+        const transform = owner._transform();
         camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(transform);
         renderer.resetState();
         // X-ray first, against the map's depth alone: it paints only where

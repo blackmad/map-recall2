@@ -1,0 +1,9 @@
+{
+  "name": "Symphony",
+  "landmarkId": "requested-symphony",
+  "sourceUrl": "https://zuidas.nl/en/threesixty_info/amsterdam-symphony-2/",
+  "pandId": "0363100012128931",
+  "suppressOsmIds": ["w159188976", "w754594743", "w754594744", "w754594745", "w754594746", "w754594747", "w985991438", "w985991439", "w985991440", "w985991441", "w985991442", "w985991443", "w985991444", "w985991445", "w985991446", "w985991447", "NL.IMBAG.Pand.0363100012128931"],
+  "surveySource": "Current BAG 0363100012128931 footprint and merged 3DBAG LoD2.2 building parts, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry: towers and office wing rebuilt as clean volumes on planes fitted to the 3DBAG walls, banded brick facades with window grids counted from municipal panoramas; hotel and apartment blocks keep the 3DBAG shell with measured colours and approximate window grids; no pixels or meshes imported."
+}
