@@ -150,6 +150,18 @@ except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
 (continuous ground and cornice line) does not need chunking. Unmeasured on a
 real phone GPU.
 
+## Fatih replaced by a bespoke model (2026-10-10)
+
+The Haiku discovery sweep checked only manualCatalogue.json and the backlog,
+so it proposed Fatih, which already had an accepted procedural treatment
+(native-kit-pois.json; work-queue task fatih-side-texture, 2026-10-08:
+brick texture, tower-height fix, pin admission; side windows and rear still
+unmatched). The bespoke fatih-moskee GLB (twin slate-pyramid towers, rose,
+door arches) supersedes it: same landmarkId, pand suppressed, and an in-game
+shot shows one building. The lane brief now requires checking native kits
+and the work queue before modelling. Chassékerk held on its towers; Post CS
+was demolished in 2009.
+
 ## Portico and deep-cornice see-through rule; Okura, Coymanshuis, Artis Aquarium (2026-10-10)
 
 A ray that misses under the low-soffit rule is closed if it hits a wall

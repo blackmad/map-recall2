@@ -55,6 +55,8 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   pinnacles. Leaf-off panorama frames: scripts/landmarks/panolist.mjs.
   Krasnapolsky held (2026-10-10): old Dam front matches; the modern wing and
   lower brick building need photo counts and the dark glass bays.
+  Chassékerk held (2026-10-10): towers must be tall and slender, well above
+  the gable (they are stubby belfries); SE wing is a flat box.
   World Trade Center Amsterdam held (2026-10-10): towers A–G are ONE BAG
   pand (0363100012096613, ~200 x 95 m); a recognizable model needs a photo
   of each tower face (Commons has only atrium/logo/tower H). Footprints and
