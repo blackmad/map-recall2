@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Map without MapLibre</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#f4f0e8;font:13px/1.35 "Helvetica Neue",Arial,sans-serif;color:#1e293b}
+  #gl,#overlay{position:fixed;inset:0;width:100vw;height:100vh;display:block}
+  #gl{touch-action:none}
+  #overlay{pointer-events:none}
+  #minimap{position:fixed;left:16px;bottom:22px;width:168px;height:168px;border-radius:50%;box-shadow:0 4px 14px rgba(15,23,42,.25);pointer-events:none}
+  #hud{position:fixed;left:16px;top:16px;right:16px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;pointer-events:none}
+  #hud button{pointer-events:auto;border:1px solid rgba(15,23,42,.18);background:rgba(255,255,255,.92);border-radius:6px;padding:6px 10px;font:inherit;color:inherit;cursor:pointer}
+  #stats{font:11px ui-monospace,Menlo,monospace;color:#334155;background:rgba(255,255,255,.8);border-radius:4px;padding:3px 6px;width:max-content;max-width:100%}
+  @media (max-width:600px){#minimap{width:112px;height:112px;left:12px;bottom:18px}#hud{left:12px;right:12px;top:12px}#hud button{padding:5px 8px}}
+</style>
+</head>
+<body>
+<!-- Proof: the map views without MapLibre. docs/research/drop-maplibre-20261010.md -->
+<canvas id="gl"></canvas>
+<canvas id="overlay"></canvas>
+<canvas id="minimap"></canvas>
+<div id="hud">
+  <button data-view="city">City</button>
+  <button data-view="district">District</button>
+  <button data-view="route">Route preview</button>
+  <button data-view="street">Street</button>
+  <button data-view="path">Play path</button>
+  <i style="flex-basis:100%;height:0"></i><div id="stats"></div>
+</div>
+<script type="module" src="js/no-maplibre.bundle.js"></script>
+</body>
+</html>
