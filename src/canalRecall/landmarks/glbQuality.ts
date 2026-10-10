@@ -65,6 +65,27 @@ export interface Thresholds {
   blankWallFailArea: number;
   /** Compass bearings (deg, clockwise from north, -Z = north) of walls known to be party / blind walls; matches within 15 deg are exempt. */
   blankWallExemptBearings: number[];
+  /**
+   * Declared, evidenced roadways/passages that really run through the building. A missed see-through ray is exempt ONLY when its
+   * target lies inside a declared `corridor` (polygon of [x, z] in model-local metres) AND its direction is within 15 deg of
+   * `axisBearing` (either sense). Nothing is inferred from the geometry: a roofed box missing two walls is still a failure.
+   */
+  throughPassages: ThroughPassage[];
+}
+
+export interface ThroughPassage {
+  axisBearing: number;
+  corridor: [number, number][];
+  evidence?: string;
+}
+
+function inPolygon(x: number, z: number, poly: [number, number][]): boolean {
+  let inside = false;
+  for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+    const [xi, zi] = poly[i], [xj, zj] = poly[j];
+    if ((zi > z) !== (zj > z) && x < (xj - xi) * (z - zi) / (zj - zi) + xi) inside = !inside;
+  }
+  return inside;
 }
 
 export const DEFAULT_THRESHOLDS: Thresholds = {
@@ -88,6 +109,7 @@ export const DEFAULT_THRESHOLDS: Thresholds = {
   blankWallMinOpeningFraction: 0.02,
   blankWallFailArea: 600,
   blankWallExemptBearings: [],
+  throughPassages: [],
 };
 
 export interface DetachedPart {
@@ -908,6 +930,11 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
               }
               if (covered && (columns || deep - 3 <= 1.5)) hit = deep;
             }
+          }
+          if (hit < 0 && th.throughPassages.length) {
+            const rayBearing = (Math.atan2(dx, -dz) * 180) / Math.PI;
+            if (th.throughPassages.some(p => inPolygon(target[0], target[2], p.corridor)
+              && Math.min(bearingDelta(p.axisBearing, rayBearing), bearingDelta(p.axisBearing + 180, rayBearing)) <= 15)) hit = 1;
           }
           if (hit < 0) {
             seeThrough.rays++;

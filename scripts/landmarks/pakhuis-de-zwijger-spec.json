@@ -24,14 +24,21 @@
     "northOffsetDegrees": 0,
     "source": "Current BAG 0363100012088034 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
   },
+  "throughPassages": [
+    {
+      "axisBearing": 17,
+      "corridor": [[9.2, -8.7], [-6, -13.5], [-17, 21.4], [-1.8, 26.2]],
+      "evidence": "OSM routing extract (streets-routing.json): Jan Schaeferbrug / Piet Heinkade carriageway routing_10374 runs (0.4,-7.3) -> (-8.2,20.0) m in model-local east/south metres, bearing 17.5 deg, straight through the 1934 cold-store; flanking cycleways routing_12505 (bearing 15.3 deg) and routing_23078 sit about 5 m either side. Corridor = carriageway plus both cycleways, centreline +/- 8 m (the roadway flares into the bridge approach at the north end, where the west cycleway starts 5.8 m off the centreline), extended 4 m past each end. Photo: ref-rce-2005-b.jpg shows the roadway running under the overhanging upper floors."
+    }
+  ],
   "groundAltitudeMetres": 0,
   "facingOffsetDegrees": 0,
   "materialOverrides": {
-    "brick": "#a58c60",
-    "stone": "#c4c0b4",
-    "concrete": "#8e9195",
-    "greyBrick": "#7d6a52",
-    "red": "#cf6a2c",
+    "brick": "#5c5540",
+    "stone": "#85827a",
+    "concrete": "#6e6c62",
+    "greyBrick": "#4a4535",
+    "red": "#7d4a2b",
     "glass": "#5d7585",
     "bronze": "#2c2e30"
   },
