@@ -1,7 +1,7 @@
 /**
  * Block-face compile: intent.json + pand facts → one chunk GLB, gates, interference report.
  *
- *   node --import tsx scripts/block-face/compile.ts --face=bilder-081118-155417 [--install]
+ *   node --import tsx scripts/block-face/compile.ts --face=bilder-081118-155417 [--install] [--roof=recipe|survey]
  *
  * Writes staging/block-face/<face>/{chunk.glb,report.json,manifest-entry.json} and runs the GLB audit
  * (scripts/audit-glb-quality.ts --file). --install (only when every gate and interference check passes,
@@ -39,7 +39,10 @@ export async function compileFace(faceId: string) {
   if (face.continuity.measuredEaves?.length || face.continuity.crownFromPhoto?.length) { const s = JSON.parse(await fs.readFile(path.join(dir, 'strip.json'), 'utf8')); strip = {heightPx: s.height, pixelsPerMetre: s.pixelsPerMetre, groundNAP: s.groundNAP}; }
   // Crowns read off the strip (continuity.crownFromPhoto): only loaded when asked for, so other faces compile unchanged.
   const photoGables = face.continuity.crownFromPhoto?.length ? await photoReadings(faceId) : undefined;
-  const result = await compileBlockFace(face, facts, name, {inferRears: !process.argv.includes('--no-rears'), strip, photoGables});
+  const roofArg = arg('roof') as 'recipe' | 'survey' | undefined;
+  if (roofArg && !['recipe', 'survey'].includes(roofArg)) throw Error('--roof=recipe|survey');
+  const result = await compileBlockFace(face, facts, name, {inferRears: !process.argv.includes('--no-rears'), strip, photoGables, roofSource: roofArg});
+  if (result.recipeRoofs) for (const r of result.recipeRoofs) console.log(`  recipe roof ${r.pandId.slice(-6)}: ${r.form} eaves ${r.eavesM} -> ridge ${r.ridgeM} m (3DBAG p95 ${r.capM}, max ${r.surveyMaxM}); main depth ${r.mainDepthM}/${r.plotDepthM} m; wings ${r.wings.map(w => `${w.areaM2} m2 @${w.heightM}`).join(' ') || 'none'}; surfaces ${r.surfacesBefore} -> ${r.surfacesAfter}${r.notes.length ? ' | ' + r.notes.join('; ') : ''}`);
   if (result.photoCrowns) console.log(`  crowns from photo: ${result.photoCrowns.patches.map(p => `${p.pandId.slice(-6)}/${p.frontId} ${JSON.stringify(p.set)}`).join('; ') || 'none'}${result.photoCrowns.kept.length ? ` | kept authored: ${result.photoCrowns.kept.map(k => `${k.pand.slice(-6)}/${k.front} (${k.why})`).join('; ')}` : ''}`);
   const out = path.join(STAGING, faceId);
   await fs.mkdir(out, {recursive: true});
@@ -67,7 +70,7 @@ export async function compileFace(faceId: string) {
   const entry = buildChunkManifest([result.chunk], n => `./models/ordinary-buildings/chunks/chunk-${n}.glb`).chunks[0];
   const r = result.chunk.report;
   const report = {face: faceId, name, passed: result.passed && audit.passWithPartyExemption, seconds: +((performance.now() - t0) / 1000).toFixed(1),
-    ...(result.photoCrowns ? {photoCrowns: result.photoCrowns} : {}),
+    ...(result.photoCrowns ? {photoCrowns: result.photoCrowns} : {}), ...(result.recipeRoofs ? {recipeRoofs: result.recipeRoofs} : {}),
     triangles: r.triangles, primitives: r.primitives, bytes: r.bytes, gzipBytes: r.gzipBytes,
     ground: {sharedNapM: result.ground.sharedNapM, shiftsM: result.ground.shiftsM, eavesBefore: result.ground.eavesBefore, eavesAfter: result.ground.eavesAfter, groups: result.ground.groups},
     instancing: result.instancing, slitsClosed: result.slitsClosed, frontSnaps: result.frontSnaps, rears: result.rears, perPand: result.perPand, gates: result.gates, interference: result.interference, partyWalls: r.partyWalls, joints: r.joints, warnings: r.warnings, audit,

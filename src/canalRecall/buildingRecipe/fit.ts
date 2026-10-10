@@ -402,7 +402,8 @@ function crownProfile(f: FrontIntent, width: number, eaves: number, top: number,
 
 export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts): {recipe: CanalHouseRecipe; anchorRD: [number, number]; report: FitReport; facts: BuildingFacts} {
   if (intent.pandId !== surveyFacts.pandId) throw Error('Intent and facts describe different Pand');
-  const cleanup = cleanRoof(surveyFacts, {horizontalFronts: intent.fronts.filter(f => f.gable === 'cornice' || f.gable === 'flat' || (f.cornice !== 'none' && f.crownRise !== undefined && (f.crownAt || f.crownBays))).map(f => f.street)});
+  // A generated (recipe) roof has no LoD2.2 artefacts to clean.
+  const cleanup = surveyFacts.roofSource ? {facts: surveyFacts, report: {actions: [], surveyRoofMaxM: surveyFacts.heights.roofMaxM, roofMaxM: surveyFacts.heights.roofMaxM, removedAreaM2: 0, roofAreaM2: 0} as RoofCleanupReport} : cleanRoof(surveyFacts, {horizontalFronts: intent.fronts.filter(f => f.gable === 'cornice' || f.gable === 'flat' || (f.cornice !== 'none' && f.crownRise !== undefined && (f.crownAt || f.crownBays))).map(f => f.street)});
   let facts = cleanup.facts;
   const warnings: string[] = [];
   const bagObservation: Observation = {id: '3dbag', pandId: intent.pandId, kind: 'registry-record', elevation: 'roof', capturedAt: facts.source.fetchedAt.length === 10 ? facts.source.fetchedAt : '2025-01-01', sourceUrl: facts.source.threeDBag, license: 'CC BY 4.0 (3DBAG)'};
