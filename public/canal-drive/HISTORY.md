@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Haparandaweg 952-1002, 746-786, 870-900 rebuilt from review sheets (2026-10-10)
+
+Rhythm specs with photo pixel citations (`scripts/haparandaweg/<id>-rhythm.json`)
+and lane-counted (not blind) facade-compare specs; block-kit additions are
+opt-in (`panes`/`items` rows, `bays.reach`, `piers.segments`) and the other
+five specs still rebuild byte-identical. 870-900 (live): SE side is now beige
+render with large windows, doors and a set-back roof storey; NW pier boxes
+split, which fixed a 49 m open loop. 746-786 (held): flat stone frame with
+flush glass balustrades and dark recesses, no projecting slabs. 952-1002
+(held): the red building is a strict 3-module × 10-row grid and lines up frame
+by frame; the grey building beside it reads as nearly uniform dark grey where
+the photo shows a light-grey framed grid, and the SE/NE faces are plain walls
+(rectified crops mixed depths). Integrator viewed the 952 after-sheet.
+
 ## Recipe window axes and real shops on Bilderdijkstraat (2026-10-10)
 
 User: 087959 had "weird window rhythm"; ground floors looked like a green
