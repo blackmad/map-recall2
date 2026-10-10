@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Own ground in the riding view, flag-gated (2026-10-10)
+
+`?ownGround=1` streams our own ground (AHN relief + OSM streets, cycle
+tracks, sidewalks, quays, sunken water, bridge decks) from a worker in
+1 km cells (LOD 0 within 350 m, LOD 1 to 1.4 km), registers it in the shared
+frame, hides MapLibre's road/landuse/water-line fills near the rider (back
+below zoom 15), drapes the route, question highlight and destination ring on
+it, re-bases buildings, trees, landmarks, chunks and the bike on the relief
+(bike follows deck profiles; rider surface 1.28 m on BRU0166, 1.49 m on
+BRU0044), and never loads the `?elevation=1` stencil path. Ground code calls
+no MapLibre API (two-method `GroundHost` adapter), per the user's plan to
+drop MapLibre. Integrator viewed desktop and iPhone ride shots: route
+continuous over decks, no floating buildings. iPhone 4×: +1.7 ms map render.
+
 ## Recipe schema: bay widths, off-centre crowns, shop spans, stucco, tall gables (2026-10-10)
 
 New optional intent fields (byte-identical output when absent; `fit-golden`

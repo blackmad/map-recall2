@@ -170,6 +170,8 @@ export class GroundField {
     this.tiles.set(tileKey(tx, ty), heights);
   }
 
+  removeTile(tx: number, ty: number): void { this.tiles.delete(tileKey(tx, ty)); }
+
   /** Grid sample by global column/row index, NaN if its tile is not loaded. */
   sampleAt(gi: number, gj: number): number {
     const n = this.samples, tx = Math.floor(gi / n), ty = Math.floor(gj / n);

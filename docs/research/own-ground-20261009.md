@@ -158,6 +158,61 @@ Not yet good enough to ship as is:
 Total to a flag-gated riding view with our ground: **~3 weeks**, plus BGT if
 widths must be honest before it is a learning tool.
 
+## In the game behind `?ownGround=1` (2026-10-10)
+
+Branch `render/own-ground-game-20261010`. `?ownGround=1` (or
+`window.__canalRecallOwnGround = true`) implies `?sharedFrame=1` and replaces
+the `?elevation=1` stencil layer (that layer is not loaded at all).
+
+| Part | Where | What |
+|---|---|---|
+| Data | `ground-height-v1` (25 RD tiles, 3.4 MB gz) and `own-ground-osm-v1/cells/` (39 elevation-v1 cells, 1.1 MB gz) | area `west` in `boxes.ts`: canal belt, Jordaan, Oud-West, Westerpark; `--area west` on both build scripts, via staging, reports in the extract dirs |
+| Store | `groundStore.ts` (DOM-free) | one `GroundSurface` for the streamed area (local→RD quadratic about the origin over ±9 km, < 5 mm residual at 8 km); per cell: relief + 350 m pad, its decks (and neighbours' decks that reach in), water and OSM of the 3×3 neighbourhood |
+| Cell | `groundCell.ts` | the prototype's layers restricted to what the cell owns (land grid on the cell rectangle on global step multiples, its water/quays/decks, ways by midpoint, areas by bbox centre) + mask; LOD 1 = 10 m land, carriageways only; normals in the worker |
+| Worker | `groundWorker.ts` → `own-ground-worker.bundle.js` | builds cells nearest first |
+| Game | `gameGround.ts` → `own-ground-game.bundle.js` (`CanalRecallOwnGround`) | residency (LOD 0 ≤ 350 m from the rider to a cell's edge, LOD 1 ≤ 1.4 km, one install per frame, relief evicted beyond 3.6 km), shared-frame participant (order −10), per-cell mask materials, draped route/casing, question-street highlight (geometry only), destination ring; rider pose and model bases on the same surface |
+| Adapter | `vector-map.js` | the only MapLibre-touching code: `GroundHost` (repaint; basemap ground fills/lines of transportation/landuse/landcover/park/aeroway/waterway and the flat route/active-street/cycle-track overlays to opacity 0 while the ground covers the rider's 3×3 cells — water stays, `isWater()` queries it; restored below z 15, i.e. start flight/overview/minimap) |
+| Models | `ThreeBuildings.setGroundBase`, `InventoryTrees.setGroundBase`, `SignatureLandmarks.setGroundBase` | buildings lifted per building (lowest footprint relief) before upload, CPU positions kept only while a building waits for its relief; trees at the trunk; landmark GLBs and street chunks at the lowest relief in a 6 m square round the anchor; bike pose from `riderPose` (contacts), boat at −1.77 |
+
+Measured (`scripts/own-ground/check-ground-cells.ts --all`, node, unthrottled):
+16 fully covered cells, **265 k triangles / 13.5 MB per LOD 0 cell**, LOD 1
+71 k / 4.4 MB, worker build median 238 ms (max 331). In the browser the
+worker reports 78–92 ms per cell (CDP throttling probably does not reach the
+worker — unverified). Install (geometry upload) median 2.5 ms per cell.
+Resident on the fixed route: **1.31 M triangles, 59 MB** geometry.
+
+Ride cost (`scripts/ride-perf-fixed-route.mjs`, Anne Frank Huis → Rijksmuseum,
+iPhone 13 profile, 4× CPU, 12 s, 3 interleaved runs each):
+
+| | frame median / p95 | `map._render` median (runs) | shared-frame passes / frame | draw calls | heap |
+|---|---|---|---|---|---|
+| off | 16.7 / 16.8 | 7.6, 8.2, 9.3 | 3.1–3.7 ms (own layers) | 310–327 | 575–681 MB |
+| `?sharedFrame=1` | 16.7 / 16.8 | 7.6, 9.2, 8.1 | 3.6–4.6 ms | 310–327 | 373–660 MB |
+| `?ownGround=1` | 16.7 / 16.8 (one run p95 33.2) | 8.7, 10.7, 10.8 | 4.9–6.2 ms | 301–318 | 477–639 MB |
+
+Desktop: `map._render` 2.1 → 2.5 ms. So the ground costs **~+1.7 ms** of
+throttled-phone CPU per frame over `sharedFrame` (mostly three's per-mesh
+overhead: ~15 meshes per resident cell); frames stay vsync-bound. GPU time on
+a real iPhone is still unmeasured.
+
+Verified: `tests/e2e/own-ground-game.spec.ts` (OWN_GROUND=1; desktop + iphone):
+BRU0166 and BRU0044 in game (rider surface on the crown 1.28 / 1.49 m vs the
+surface crown 1.28 / 1.50 m), a chase ride over BRU0166, BRU0044 and BRU0067
+(rider surface step per frame ≤ 0.045 m, route ribbon continuous over each
+deck), the question street draped with no rendered label spelling it, the
+start flight (basemap over the overview, ground on landing, no
+`canal-elevation` layer even with `?elevation=1`). Screenshots in
+`artifacts/own-ground-game/`.
+
+Still open: labels stay MapLibre symbol layers (they draw over our ground);
+widths are OSM priors (BGT not done); one water level (polder banks get quay
+walls); street chunks/block faces take one base at the anchor (not per pand);
+landmark kits inside facade chunks and the tram/ferry stay at street level;
+partly covered cells at the area's edge are not drawn (basemap shows); the
+canvas destination pin and question-feature overlay project at z = 0 (the
+draped destination ring gives the ground contact); city-wide relief/OSM build
+not run (area `west` only).
+
 ## Commands
 
 ```sh

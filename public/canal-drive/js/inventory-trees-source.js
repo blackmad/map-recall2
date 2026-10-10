@@ -70,6 +70,10 @@ export class InventoryTrees {
       this.ready=true;this.onReady(true);this.update();
     } catch (error) {console.warn('Municipal trees unavailable; retaining OSM trees.',error);}
   }
+  // Own ground (`?ownGround=1`): trees stand on the relief under the trunk.
+  // `fn([lng, lat])` → metres, or undefined while that relief is not resident.
+  setGroundBase(fn) {this.groundBase=fn||null;this.refreshGroundBases();}
+  refreshGroundBases() {this.residency.invalidate();if(this.enabled&&this.ready&&this.meshes.length)this.rebuild();this.map.triggerRepaint();}
   setAllotmentCanopyEnabled(value) {this.allotmentCanopyEnabled=!!value;this.residency.invalidate();if(this.enabled&&this.ready)this.rebuild();this.map.triggerRepaint();}
   setEnabled(value) {this.enabled=!!value;if(this.enabled)this.update();else this.clear();this.map.triggerRepaint();}
   setTheme(value) {
@@ -134,18 +138,20 @@ export class InventoryTrees {
       const x=(point.x-this.origin.x)/this.scale,south=(point.y-this.origin.y)/this.scale;
       const native=treeTypology({...tree,position:[x,south]});const t=this.allotmentCanopyEnabled?scopeAllotmentCrown(tree,native):native;if(!t)continue;
       trees++;if(tree.source==='allotment-prior')authoredTrees++;archetypes.add(t.archetype);
-      append('wood',{p:[x,-south,t.trunkHeight/2],s:[t.trunkWidth*2,t.trunkWidth*2,t.trunkHeight],color:t.bark});
+      // A few centimetres into the relief, so a trunk never shows a gap on a slope.
+      const z0=this.groundBase?(this.groundBase([tree.lng,tree.lat])??0)-.05:0;
+      append('wood',{p:[x,-south,z0+t.trunkHeight/2],s:[t.trunkWidth*2,t.trunkWidth*2,t.trunkHeight],color:t.bark});
       const co=Math.cos(t.rotation),si=Math.sin(t.rotation);
       for(const l of t.lobes){
         const dx=l.offset[0]*co-l.offset[2]*si,dz=l.offset[0]*si+l.offset[2]*co;
         color.set(t.foliage).multiplyScalar([1,1.10,.86][l.tone]);
         // The map-to-scene south-axis flip also reverses crown yaw.
-        append(`${t.crownGeometry}-${l.tone}`,{p:[x+dx,-(south+dz),l.offset[1]],s:[l.scale[0],l.scale[2],l.scale[1]],rotation:-(t.rotation+(l.rotation??0)),color:color.clone()});
+        append(`${t.crownGeometry}-${l.tone}`,{p:[x+dx,-(south+dz),z0+l.offset[1]],s:[l.scale[0],l.scale[2],l.scale[1]],rotation:-(t.rotation+(l.rotation??0)),color:color.clone()});
         // A short fork connects each offset crown to the recorded trunk position.
         // All forks share the trunk draw call; no per-tree meshes or materials.
         if(t.crownGeometry==='faceted'&&t.archetype!=='fan-palm'&&Math.hypot(dx,dz)>.1){
-          const from=new THREE.Vector3(x,-south,t.trunkHeight*.72);
-          const to=new THREE.Vector3(x+dx*.75,-(south+dz*.75),l.offset[1]);
+          const from=new THREE.Vector3(x,-south,z0+t.trunkHeight*.72);
+          const to=new THREE.Vector3(x+dx*.75,-(south+dz*.75),z0+l.offset[1]);
           const delta=to.clone().sub(from),length=delta.length();
           append('wood',{p:from.add(to).multiplyScalar(.5).toArray(),s:[t.trunkWidth,t.trunkWidth,length],q:new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),delta.divideScalar(length)),color:t.bark});
         }

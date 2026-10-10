@@ -259,14 +259,15 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   fusion from `build-pano-facade.ts`; washed-out/foliage thresholds (0.3) are
   untuned; `roofShape` is null outside `buildings-colored.geojson`; Beeldbank
   and monument-register facts are not yet joined in.
-- **Own ground into the riding view** (prototype merged, `own-ground.html`,
-  `docs/research/own-ground-20261009.md`): stream it from the chunk worker,
-  register in the shared frame (`groundParticipant`, order −10), hide MapLibre
-  fills/lines inside the radius, drape route/question overlays, labels,
-  re-base models and vehicles; measure GPU on a real iPhone. Known: junction
-  band overlaps (widths mostly priors; consider BGT), one water level (polder
-  banks get quay walls), detail-chunk builder throws `reading 'c19'` on a
-  Leidsegracht feature (falls back to coarse chunk).
+- **Own ground in game behind `?ownGround=1`** (area `west`: canal belt,
+  Jordaan, Oud-West, Westerpark): next — run the city-wide relief + OSM ground
+  builds; draw partly covered edge cells (16 of 39 cells fully covered); BGT
+  road widths (only 2,459 of 15,583 ways tag a width); per-building bases for
+  street chunks; landmark kits in facade chunks, tram and ferry still at
+  street level; polder water levels; stair-stepped water edges on phone (1 m
+  mask); BRU0067 deck top shows deck grey; destination pin projects at z=0;
+  labels still MapLibre symbol layers; measure GPU on a real iPhone; decide
+  default-on. Cost: +1.7 ms map render per frame (iPhone 4×), vsync-bound.
 - **Elevation follow-ups** (`?elevation=1`, `docs/elevation.md`): no AHN
   ground relief; one water level everywhere (polders, IJ shore get the same
   quay wall); route line hidden on humped decks and ramps paint over ~20 m of
