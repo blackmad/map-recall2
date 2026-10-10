@@ -13,6 +13,7 @@
 // three.js is shared across the 3D bundles — see three-runtime-source.js.
 import { createRecipeLook, RECIPE_LOOK_SHARED } from '../../../src/canalRecall/buildingRecipe/recipeLook.ts';
 import { plainBounds, withinView } from '../../../src/canalRecall/rendererShared/residency.ts';
+import { normaliseLandmarkMaterials } from '../../../src/canalRecall/landmarks/landmarkShading.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
 
@@ -434,10 +435,24 @@ export class SignatureLandmarks {
       };
       if (spec.sharedModel) {
         // Shared mesh: decode once, then clone per instance (geometry and materials stay shared).
-        this._sharedAssets.acquire(url, () => loader.loadAsync(url).then(gltf => this._dress(gltf) ?? gltf))
+        this._sharedAssets.acquire(url, () => loader.loadAsync(url).then(gltf => this._dress(gltf) ?? gltf).then(gltf => this._shade(gltf)))
           .then(gltf => onLoaded({ scene: gltf.scene.clone(true) }), onError);
-      } else loader.load(url, gltf => { const dressing = this._dress(gltf); if (dressing) dressing.then(onLoaded, onError); else onLoaded(gltf); }, undefined, onError);
+      } else loader.load(url, gltf => { const dressing = this._dress(gltf); if (dressing) dressing.then(dressed => onLoaded(this._shade(dressed)), onError); else onLoaded(this._shade(gltf)); }, undefined, onError);
     }
+  }
+
+  /**
+   * Diffuse-only shading for every landmark (see landmarks/landmarkShading.ts):
+   * the legacy layer's camera sits at the model origin, so any specular term
+   * was a hotspot computed for an eye inside the building. Runs once per
+   * decoded GLB (a shared mesh's master, before it is cloned).
+   * `?landmarkSpecular=1` keeps the GLB's own materials, for A/B shots.
+   */
+  _shade(gltf) {
+    let keep = window.__canalRecallLandmarkSpecular === true;
+    try { keep ||= new URLSearchParams(window.location.search).get('landmarkSpecular') === '1'; } catch { /* no location */ }
+    if (!keep) normaliseLandmarkMaterials(THREE, gltf.scene);
+    return gltf;
   }
 
   /**
@@ -724,7 +739,7 @@ export class SignatureLandmarks {
     const done = () => { if (generation === this._generation) { entry.levelLoading = false; this._lodLoads--; } };
     this._loader.load(url, gltf => {
       if (this._removed || generation !== this._generation || !this._entries.includes(entry)) { this._disposeResources(gltf.scene); done(); return; }
-      this._swapLevel(entry, gltf.scene, level);
+      this._swapLevel(entry, this._shade(gltf).scene, level);
       done();
       this._updateLevels();
     }, undefined, error => {
