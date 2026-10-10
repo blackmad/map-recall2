@@ -1,14 +1,34 @@
 import {treeTypology} from '../da-costa-block/tree-typology.js';
 import {allotmentCanopyTrees,scopeAllotmentCrown} from './allotment-canopy.js';
 import {ViewResidency} from '../../../src/canalRecall/viewResidency.ts';
+import {roseBushInstances,roseBushVertexColours} from '../../../src/canalRecall/roseBeds.ts';
+import roseGardens from './rose-garden-data.js';
 const {THREE} = window.CanalRecallThree;
 const MIN_ZOOM = 15.5;
 const BUDGET = 12;
+// Rose bushes are ~0.7 m wide: draw them only once a bed reads as more than a speck.
+const ROSE_MIN_ZOOM = 16.5;
 // Include crowns whose trunks sit just beyond the viewport (max proxy radius <24m).
 function crownBounds(map) {
   const bounds=map.getBounds(),lat=(bounds.getNorth()+bounds.getSouth())/2;
   const dy=24/111320,dx=dy/Math.max(.1,Math.cos(lat*Math.PI/180));
   return {west:bounds.getWest()-dx,east:bounds.getEast()+dx,south:bounds.getSouth()-dy,north:bounds.getNorth()+dy};
+}
+
+// One 20-triangle shrub; its upper faces take the instance (bed) bloom colour,
+// the rest a foliage green, so a rose bush costs no extra flower geometry.
+function roseBushGeometry() {
+  const geometry=new THREE.IcosahedronGeometry(1,0);
+  geometry.setAttribute('color',new THREE.BufferAttribute(roseBushVertexColours(geometry.attributes.position.array),3));
+  return geometry;
+}
+function roseBushMaterial() {
+  const material=new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.85,flatShading:true,vertexColors:true});
+  // color.r masks bloom faces, color.g shades foliage (linear #4a7a3a).
+  material.onBeforeCompile=shader=>{shader.vertexShader=shader.vertexShader.replace('#include <color_vertex>',
+    '#include <color_vertex>\n#ifdef USE_INSTANCING_COLOR\n vColor.rgb = mix(vec3(0.07,0.19,0.045)*color.g, instanceColor.rgb, color.r);\n#endif');};
+  material.customProgramCacheKey=()=>'canal-rose-bush';
+  return material;
 }
 
 /** Stream real municipal tree positions; at most seven instanced draws for the visible canopy. */
@@ -110,7 +130,7 @@ export class InventoryTrees {
     if(this.residency.needsRebuild(b,this.buildKey()))this.rebuild();
     this.pump();
   }
-  buildKey() {return `${this.map.getZoom()>=18}|${this.allotmentCanopyEnabled}`;}
+  buildKey() {const z=this.map.getZoom();return `${z>=18}|${z>=ROSE_MIN_ZOOM}|${this.allotmentCanopyEnabled}`;}
   pump() {
     while(this.pending.size<2&&this.queue?.length){const key=this.queue.shift();void this.fetchTile(key);}
   }
@@ -157,16 +177,27 @@ export class InventoryTrees {
         }
       }
     }
+    // Mapped rose gardens: every visible bush in one instanced draw.
+    let roses=0;
+    if(this.map.getZoom()>=ROSE_MIN_ZOOM)for(const garden of roseGardens.gardens)for(const r of roseBushInstances(garden,b)){
+      const point=this.maplibregl.MercatorCoordinate.fromLngLat([r.lng,r.lat],0);
+      const x=(point.x-this.origin.x)/this.scale,north=-(point.y-this.origin.y)/this.scale;
+      const z0=this.groundBase?(this.groundBase([r.lng,r.lat])??0):0;
+      roses++;
+      // An icosahedron sunk a third into the bed reads as a rounded shrub.
+      append('rose-bush',{p:[x,north,z0+r.height*.3],s:[r.radius,r.radius*.92,r.height*.7],rotation:r.rotation,color:r.bloom});
+    }
     const dummy=new THREE.Object3D();
     for(const [key,items] of groups){
-      const wood=key==='wood',cone=key.startsWith('cone-');
-      const geometryKey=wood?'wood':cone?'cone':this.map.getZoom()>=18?'faceted-detail':'faceted';
+      const wood=key==='wood',cone=key.startsWith('cone-'),rose=key.startsWith('rose-');
+      const geometryKey=wood?'wood':cone?'cone':rose?key:this.map.getZoom()>=18?'faceted-detail':'faceted';
       if(!this.geometries.has(geometryKey))this.geometries.set(geometryKey,
         wood?new THREE.CylinderGeometry(.22,.28,1,7).rotateX(Math.PI/2)
           :cone?new THREE.ConeGeometry(1,2,8).rotateX(Math.PI/2)
+          :rose?roseBushGeometry()
           :new THREE.IcosahedronGeometry(1,this.map.getZoom()>=18?1:0));
-      const materialKey=wood?'wood':'foliage';
-      if(!this.materials.has(materialKey))this.materials.set(materialKey,new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.93,flatShading:true}));
+      const materialKey=wood?'wood':rose?'rose':'foliage';
+      if(!this.materials.has(materialKey))this.materials.set(materialKey,rose?roseBushMaterial():new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.93,flatShading:true}));
       const m=new THREE.InstancedMesh(this.geometries.get(geometryKey),this.materials.get(materialKey),items.length);
       m.userData.wood=wood;
       items.forEach((v,j)=>{
@@ -178,6 +209,7 @@ export class InventoryTrees {
       if(this.sharedFrame){m.castShadow=true;m.receiveShadow=true;}
       this.scene.add(m);this.meshes.push(m);
     }
+    this.debugRoses=roses;this.debugRoseTriangles=roses*20;
     this.debugTrees=trees;this.debugAuthoredTrees=authoredTrees;this.debugTiles=this.tiles.size;this.debugArchetypes=[...archetypes];this.debugDraws=this.meshes.length;this.setTheme(this.theme);
   }
 }
