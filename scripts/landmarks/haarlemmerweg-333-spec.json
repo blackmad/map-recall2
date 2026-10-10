@@ -1,0 +1,111 @@
+{
+  "id": "haarlemmerweg-333",
+  "name": "Haarlemmerweg 333",
+  "category": "ordinary",
+  "modelUrl": "./models/haarlemmerweg-333.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012088027"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.864429751307691,
+      52.384856989980285
+    ],
+    "headingDegrees": 88.5,
+    "lengthMetres": 92.77,
+    "widthMetres": 60.07
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.864487335264384,
+      52.38490553598121
+    ],
+    "northOffsetDegrees": 0,
+    "source": "PDOK BAG 0363100012088027 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+  },
+  "materialOverrides": {
+    "red": "#b25a3e",
+    "slate": "#58595b",
+    "concrete": "#8c8b8a",
+    "frame": "#d4d2cb",
+    "glass": "#6f8397",
+    "dark": "#34363a",
+    "white": "#eeeeea",
+    "gold": "#e6b830"
+  },
+  "preservePositionPrecision": true,
+  "attribution": {
+    "title": "Haarlemmerweg 333 original architecture",
+    "author": "Map Recall",
+    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012088027",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.8651167441728,
+          52.38473405407729
+        ],
+        [
+          4.865100652873602,
+          52.38513760292098
+        ],
+        [
+          4.864381359659045,
+          52.38512576548968
+        ],
+        [
+          4.863785362001152,
+          52.38511524162868
+        ],
+        [
+          4.86373594532434,
+          52.38511435811918
+        ],
+        [
+          4.863743409731686,
+          52.38493621886732
+        ],
+        [
+          4.864007915016937,
+          52.384940443534155
+        ],
+        [
+          4.864493793696076,
+          52.384948197416605
+        ],
+        [
+          4.86449194209055,
+          52.384991878471716
+        ],
+        [
+          4.864565766991679,
+          52.3849931030663
+        ],
+        [
+          4.864577482190176,
+          52.38471822989342
+        ],
+        [
+          4.864582964782918,
+          52.38458955016389
+        ],
+        [
+          4.865122610997599,
+          52.38459880601029
+        ],
+        [
+          4.8651167441728,
+          52.38473405407729
+        ]
+      ]
+    ]
+  }
+}
