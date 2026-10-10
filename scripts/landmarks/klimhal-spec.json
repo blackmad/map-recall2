@@ -1,0 +1,129 @@
+{
+  "id": "klimhal",
+  "name": "Klimhal Amsterdam",
+  "landmarkId": "requested-klimhal-amsterdam",
+  "modelUrl": "./models/klimhal.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012150166"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.82790838404145,
+      52.38817512669936
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 21,
+    "widthMetres": 33
+  },
+  "surveyed": {
+    "anchor": [
+      4.82790838404145,
+      52.38817512669936
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012150166 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "bronze": "#4a3629",
+    "glass": "#7f959b",
+    "frame": "#e4e2da",
+    "white": "#ece8dc",
+    "concrete": "#aab0ad",
+    "dark": "#3a3f43",
+    "red": "#a8261f"
+  },
+  "attribution": {
+    "title": "Klimhal Amsterdam",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.fijnuit.nl/3680/klimhal-amsterdam",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.828043530335051,
+          52.388348049576116
+        ],
+        [
+          4.827951858398406,
+          52.38834753583005
+        ],
+        [
+          4.827951694111821,
+          52.38835823044246
+        ],
+        [
+          4.827843732471995,
+          52.38835762171313
+        ],
+        [
+          4.827843896784628,
+          52.38834692710089
+        ],
+        [
+          4.8277522542308535,
+          52.38834641333906
+        ],
+        [
+          4.8277564673885625,
+          52.38808471078966
+        ],
+        [
+          4.827849958821586,
+          52.38808534113515
+        ],
+        [
+          4.82785031030379,
+          52.38806563272144
+        ],
+        [
+          4.827852909982438,
+          52.38806566297533
+        ],
+        [
+          4.827854114345009,
+          52.388065677651255
+        ],
+        [
+          4.827854202147288,
+          52.38806803284907
+        ],
+        [
+          4.82795064632213,
+          52.388068650097836
+        ],
+        [
+          4.827950691506888,
+          52.388066232614065
+        ],
+        [
+          4.827952821713074,
+          52.38806621571021
+        ],
+        [
+          4.827954525832675,
+          52.388066205781946
+        ],
+        [
+          4.827954379018831,
+          52.38808599605177
+        ],
+        [
+          4.828047772737483,
+          52.38808622133216
+        ],
+        [
+          4.828043530335051,
+          52.388348049576116
+        ]
+      ]
+    ]
+  }
+}

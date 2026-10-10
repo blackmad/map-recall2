@@ -14870,8 +14870,6 @@
     },
     {
       id: "haparandaweg-902-950",
-      status: "held",
-      heldReason: "Five identical gabled bays with symmetric window grids, HET PAKHUIS band and double-height glazed ground floor; model has scattered windows and invented setbacks (user review 2026-10-09).",
       name: "Het Pakhuis, Haparandaweg 902-950",
       modelUrl: "./models/haparandaweg-902-950.glb",
       suppressOsmIds: [
@@ -14900,15 +14898,16 @@
       materialOverrides: {
         wall: "#43302c",
         roof: "#58534f",
-        frame: "#7a726a",
-        glass: "#5d6f79",
+        frame: "#5f5a54",
+        glass: "#5f6f78",
         slab: "#a9a398",
-        rail: "#7b746b",
-        glassRail: "#7f9097",
+        rail: "#6b655d",
+        glassRail: "#8a9aa0",
         dark: "#2b2a2b",
-        door: "#5a4f48",
+        door: "#6b645c",
         stone: "#d9d0bd",
-        sign: "#d7d3c8"
+        sign: "#d7d3c8",
+        louvre: "#6e5a45"
       },
       preservePositionPrecision: true,
       attribution: {
@@ -14917,7 +14916,7 @@
         sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012244558",
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
-        modifications: "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 2277 triangles. Rear and party walls are unmeasured. No invented POI."
+        modifications: "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 2817 triangles. Rear and party walls are unmeasured. No invented POI."
       },
       buildingFootprint: {
         type: "Polygon",
@@ -15467,6 +15466,8 @@
     },
     {
       id: "haparandaweg-746-786",
+      status: "held",
+      heldReason: "Photo shows a flat stone-framed grid with recessed glass balconies; model has deep slab balconies projecting across the front and the SE side (review sheet 2026-10-10).",
       name: "Haparandaweg 746-786",
       modelUrl: "./models/haparandaweg-746-786.glb",
       suppressOsmIds: [
@@ -15785,6 +15786,8 @@
     },
     {
       id: "haparandaweg-952-1002",
+      status: "held",
+      heldReason: "Windows read as a random patchwork of panes and grey panels instead of a regular grid (user review 2026-10-10).",
       name: "Haparandaweg 952-1002",
       modelUrl: "./models/haparandaweg-952-1002.glb",
       suppressOsmIds: [
@@ -17671,7 +17674,7 @@
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#8a5a47",
+        brick: "#9b7556",
         stone: "#c9bfa8",
         slate: "#4f4d4a",
         glass: "#6f8590",
@@ -17820,9 +17823,1073 @@
             ]
           ]
         ]
+      }
+    },
+    {
+      id: "zevenlandenhuizen",
+      name: "Zevenlandenhuizen",
+      landmarkId: "requested-zevenlandenhuizen",
+      modelUrl: "./models/zevenlandenhuizen.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012137523",
+        "NL.IMBAG.Pand.0363100012164367",
+        "NL.IMBAG.Pand.0363100012152737",
+        "NL.IMBAG.Pand.0363100012158859",
+        "NL.IMBAG.Pand.0363100012166749",
+        "NL.IMBAG.Pand.0363100012237158",
+        "NL.IMBAG.Pand.0363100012236664"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.877325054160503,
+          52.36159894207329
+        ],
+        headingDegrees: 66,
+        lengthMetres: 41.3,
+        widthMetres: 17.8
+      },
+      surveyed: {
+        anchor: [
+          4.877325054160503,
+          52.36159894207329
+        ],
+        northOffsetDegrees: 0,
+        source: "Seven current BAG panden (Roemer Visscherstraat 20, 22, 24, 26, 28, 30, 30a) and their 3DBAG LoD2.2 surfaces in one native east/south frame from the row centroid."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#6e4033",
+        red: "#9d4a38",
+        greyBrick: "#4a4546",
+        stone: "#ece7da",
+        white: "#e7dfbd",
+        concrete: "#e9e4d3",
+        pink: "#b8606b",
+        slate: "#585a60",
+        glass: "#5c7480",
+        frame: "#f3f0e8",
+        dark: "#212325",
+        bronze: "#566549",
+        green: "#78967f",
+        blue: "#8091a6",
+        gold: "#caa24c",
+        ochre: "#7d3a2c",
+        copper: "#8c8b86"
+      },
+      attribution: {
+        title: "Zevenlandenhuizen",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Zevenlandenhuizen",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free geometry on the seven BAG footprints and 3DBAG LoD2.2 massing; the seven national front compositions (Germany, France, Spain, Italy, Russia, the Netherlands, England) measured by eye from RCE and Commons photographs, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "MultiPolygon",
+        coordinates: [
+          [
+            [
+              [
+                4.8774961978633735,
+                52.36174827491604
+              ],
+              [
+                4.877492529565729,
+                52.36175322035336
+              ],
+              [
+                4.877418391615101,
+                52.36173275061552
+              ],
+              [
+                4.877428651884807,
+                52.36171883684065
+              ],
+              [
+                4.8775163485545106,
+                52.361603110839084
+              ],
+              [
+                4.877523580168594,
+                52.3616049125581
+              ],
+              [
+                4.877524178520675,
+                52.3616039444585
+              ],
+              [
+                4.877527646546485,
+                52.361604930065106
+              ],
+              [
+                4.877550492813702,
+                52.36160211639534
+              ],
+              [
+                4.877552162375516,
+                52.36159991259934
+              ],
+              [
+                4.877596781506746,
+                52.361612328003496
+              ],
+              [
+                4.8774961978633735,
+                52.36174827491604
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                4.877428651884807,
+                52.36171883684065
+              ],
+              [
+                4.877349494136049,
+                52.36169700627038
+              ],
+              [
+                4.877433737936584,
+                52.36158026781928
+              ],
+              [
+                4.877436619892057,
+                52.361581152039754
+              ],
+              [
+                4.877440600270588,
+                52.36158226568348
+              ],
+              [
+                4.877442685336737,
+                52.36158095346428
+              ],
+              [
+                4.877441529086535,
+                52.36157809038468
+              ],
+              [
+                4.877446087957403,
+                52.36157740897155
+              ],
+              [
+                4.877447258061927,
+                52.36158034401266
+              ],
+              [
+                4.877469606992778,
+                52.361579927943126
+              ],
+              [
+                4.877470696892571,
+                52.36157706554749
+              ],
+              [
+                4.877475592287599,
+                52.36157776070616
+              ],
+              [
+                4.877474502594599,
+                52.36158060512726
+              ],
+              [
+                4.877495080602396,
+                52.3615861043473
+              ],
+              [
+                4.87749801347724,
+                52.36158383408942
+              ],
+              [
+                4.877501911372099,
+                52.361585738296895
+              ],
+              [
+                4.877498800684766,
+                52.36158815159312
+              ],
+              [
+                4.87751356661156,
+                52.36159863195584
+              ],
+              [
+                4.877517679589639,
+                52.361597148711525
+              ],
+              [
+                4.877519983574325,
+                52.36159978305055
+              ],
+              [
+                4.877516485713411,
+                52.36160139477163
+              ],
+              [
+                4.8775163485545106,
+                52.361603110839084
+              ],
+              [
+                4.877428651884807,
+                52.36171883684065
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                4.877349494136049,
+                52.36169700627038
+              ],
+              [
+                4.877267468051021,
+                52.36167439034612
+              ],
+              [
+                4.8773556362846975,
+                52.361552150382536
+              ],
+              [
+                4.8773615777953125,
+                52.36155379376383
+              ],
+              [
+                4.877359191087881,
+                52.36155708198497
+              ],
+              [
+                4.877407098470776,
+                52.361570787881355
+              ],
+              [
+                4.877410497255641,
+                52.36156629966061
+              ],
+              [
+                4.877441434859797,
+                52.36157479147896
+              ],
+              [
+                4.877436619892057,
+                52.361581152039754
+              ],
+              [
+                4.877433737936584,
+                52.36158026781928
+              ],
+              [
+                4.877349494136049,
+                52.36169700627038
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                4.877267468051021,
+                52.36167439034612
+              ],
+              [
+                4.8771916324056415,
+                52.361653481741
+              ],
+              [
+                4.877277413784227,
+                52.36153455701498
+              ],
+              [
+                4.877279800703071,
+                52.36153125082092
+              ],
+              [
+                4.877289869482154,
+                52.36153399949982
+              ],
+              [
+                4.877288974323302,
+                52.361535244939724
+              ],
+              [
+                4.8773507471062105,
+                52.36155219224019
+              ],
+              [
+                4.877351568037274,
+                52.36155101838204
+              ],
+              [
+                4.8773556362846975,
+                52.361552150382536
+              ],
+              [
+                4.877267468051021,
+                52.36167439034612
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                4.8771916324056415,
+                52.361653481741
+              ],
+              [
+                4.877107045528232,
+                52.361630153629015
+              ],
+              [
+                4.877196471318452,
+                52.361507101316256
+              ],
+              [
+                4.87723190249231,
+                52.36151675399114
+              ],
+              [
+                4.877228561173799,
+                52.36152135030724
+              ],
+              [
+                4.877277413784227,
+                52.36153455701498
+              ],
+              [
+                4.8771916324056415,
+                52.361653481741
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                4.877107045528232,
+                52.361630153629015
+              ],
+              [
+                4.877093310372308,
+                52.36164877995382
+              ],
+              [
+                4.877015779508647,
+                52.36162720782599
+              ],
+              [
+                4.877035044282625,
+                52.36160136122253
+              ],
+              [
+                4.877121034316127,
+                52.361486023614574
+              ],
+              [
+                4.877196471318452,
+                52.361507101316256
+              ],
+              [
+                4.877107045528232,
+                52.361630153629015
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                4.877035044282625,
+                52.36160136122253
+              ],
+              [
+                4.877027727398788,
+                52.36159931643717
+              ],
+              [
+                4.877014127336637,
+                52.36161768269074
+              ],
+              [
+                4.87695733527117,
+                52.361601673431515
+              ],
+              [
+                4.876971066335561,
+                52.3615834066141
+              ],
+              [
+                4.876956345430232,
+                52.361579235769774
+              ],
+              [
+                4.876962489211483,
+                52.361570948591805
+              ],
+              [
+                4.877044969011126,
+                52.36145958646464
+              ],
+              [
+                4.877124241353237,
+                52.36148161546536
+              ],
+              [
+                4.877121034316127,
+                52.361486023614574
+              ],
+              [
+                4.877035044282625,
+                52.36160136122253
+              ]
+            ]
+          ]
+        ]
       },
       status: "held",
-      heldReason: "Integrator 2026-10-10: brick too dark, banded rounded volumes and pale roof edges missing, bumpy 3DBAG roof"
+      heldReason: "Integrator 2026-10-10: fronts accepted on review, but audit see-through FAIL 11/42 street rays"
+    },
+    {
+      id: "klimhal",
+      name: "Klimhal Amsterdam",
+      landmarkId: "requested-klimhal-amsterdam",
+      modelUrl: "./models/klimhal.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012150166"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.82790838404145,
+          52.38817512669936
+        ],
+        headingDegrees: 0,
+        lengthMetres: 21,
+        widthMetres: 33
+      },
+      surveyed: {
+        anchor: [
+          4.82790838404145,
+          52.38817512669936
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012150166 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        bronze: "#4a3629",
+        glass: "#7f959b",
+        frame: "#e4e2da",
+        white: "#ece8dc",
+        concrete: "#aab0ad",
+        dark: "#3a3f43",
+        red: "#a8261f"
+      },
+      attribution: {
+        title: "Klimhal Amsterdam",
+        author: "Map Recall",
+        sourceUrl: "https://www.fijnuit.nl/3680/klimhal-amsterdam",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.828043530335051,
+              52.388348049576116
+            ],
+            [
+              4.827951858398406,
+              52.38834753583005
+            ],
+            [
+              4.827951694111821,
+              52.38835823044246
+            ],
+            [
+              4.827843732471995,
+              52.38835762171313
+            ],
+            [
+              4.827843896784628,
+              52.38834692710089
+            ],
+            [
+              4.8277522542308535,
+              52.38834641333906
+            ],
+            [
+              4.8277564673885625,
+              52.38808471078966
+            ],
+            [
+              4.827849958821586,
+              52.38808534113515
+            ],
+            [
+              4.82785031030379,
+              52.38806563272144
+            ],
+            [
+              4.827852909982438,
+              52.38806566297533
+            ],
+            [
+              4.827854114345009,
+              52.388065677651255
+            ],
+            [
+              4.827854202147288,
+              52.38806803284907
+            ],
+            [
+              4.82795064632213,
+              52.388068650097836
+            ],
+            [
+              4.827950691506888,
+              52.388066232614065
+            ],
+            [
+              4.827952821713074,
+              52.38806621571021
+            ],
+            [
+              4.827954525832675,
+              52.388066205781946
+            ],
+            [
+              4.827954379018831,
+              52.38808599605177
+            ],
+            [
+              4.828047772737483,
+              52.38808622133216
+            ],
+            [
+              4.828043530335051,
+              52.388348049576116
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "symphony",
+      name: "Symphony",
+      landmarkId: "requested-symphony",
+      modelUrl: "./models/symphony.glb",
+      suppressOsmIds: [
+        "w159188976",
+        "w754594743",
+        "w754594744",
+        "w754594745",
+        "w754594746",
+        "w754594747",
+        "w985991438",
+        "w985991439",
+        "w985991440",
+        "w985991441",
+        "w985991442",
+        "w985991443",
+        "w985991444",
+        "w985991445",
+        "w985991446",
+        "w985991447",
+        "NL.IMBAG.Pand.0363100012128931"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.873177378136285,
+          52.33571188018314
+        ],
+        headingDegrees: 0,
+        lengthMetres: 167,
+        widthMetres: 117
+      },
+      surveyed: {
+        anchor: [
+          4.873177378136285,
+          52.33571188018314
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012128931 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        ochre: "#d6aa7c",
+        red: "#c4895c",
+        greyBrick: "#5c4b46",
+        brick: "#8a4a3d",
+        glass: "#6d8ea5",
+        frame: "#3b4650",
+        dark: "#33373b",
+        slate: "#4d5054",
+        concrete: "#b9b8b2",
+        stone: "#c8c1b3",
+        white: "#e6e4dc"
+      },
+      attribution: {
+        title: "Symphony",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Zuidas",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.872494493605147,
+              52.33550342001315
+            ],
+            [
+              4.873089428164437,
+              52.335505287235655
+            ],
+            [
+              4.873089559890548,
+              52.33552305666388
+            ],
+            [
+              4.873184075326997,
+              52.33552328750139
+            ],
+            [
+              4.87318400032186,
+              52.3355323019264
+            ],
+            [
+              4.874943594851254,
+              52.33553567194285
+            ],
+            [
+              4.874935976311843,
+              52.33655344275087
+            ],
+            [
+              4.872515936227063,
+              52.33654463155876
+            ],
+            [
+              4.872525521252928,
+              52.33555313160548
+            ],
+            [
+              4.872494079941918,
+              52.3355530308029
+            ],
+            [
+              4.872494493605147,
+              52.33550342001315
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "ij-toren",
+      name: "IJ-toren",
+      landmarkId: "extract_landmarks_1963830588",
+      modelUrl: "./models/ij-toren.glb",
+      suppressOsmIds: [
+        "w277087203",
+        "w277087217",
+        "w755504254",
+        "w755504255",
+        "w755504256",
+        "w755504257",
+        "w755504258",
+        "w755504259",
+        "w755504260",
+        "w755504261",
+        "w755504262",
+        "NL.IMBAG.Pand.0363100012090447"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.916074695114315,
+          52.37778382202628
+        ],
+        headingDegrees: 0,
+        lengthMetres: 295,
+        widthMetres: 109
+      },
+      surveyed: {
+        anchor: [
+          4.916074695114315,
+          52.37778382202628
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012090447 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        glass: "#56797f",
+        frame: "#a9c7bd",
+        concrete: "#c9c6bc",
+        dark: "#2f3a40",
+        white: "#bdc3bf",
+        brick: "#a9553a",
+        stone: "#c8c1b3",
+        slate: "#555b61"
+      },
+      attribution: {
+        title: "IJ-toren",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/IJ-toren_%28Piet_Heinkade%29",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.915965869724061,
+              52.37804846807459
+            ],
+            [
+              4.915959470838084,
+              52.378034242067045
+            ],
+            [
+              4.915947318017676,
+              52.37803631479831
+            ],
+            [
+              4.915750453792258,
+              52.378070457343696
+            ],
+            [
+              4.915760357943397,
+              52.37809203126933
+            ],
+            [
+              4.915838351740891,
+              52.378078653504154
+            ],
+            [
+              4.916039167119352,
+              52.37804445463223
+            ],
+            [
+              4.916829852244597,
+              52.37790645536574
+            ],
+            [
+              4.9179345215658055,
+              52.37771568850528
+            ],
+            [
+              4.9186538723785675,
+              52.37759086691175
+            ],
+            [
+              4.918660693576132,
+              52.37760550787722
+            ],
+            [
+              4.918670045107686,
+              52.3776252998096
+            ],
+            [
+              4.91684712070193,
+              52.37794130629996
+            ],
+            [
+              4.916075759669758,
+              52.378075383044695
+            ],
+            [
+              4.9154133298395495,
+              52.37819076301858
+            ],
+            [
+              4.915123520874098,
+              52.378240927726125
+            ],
+            [
+              4.914348833743383,
+              52.37837467439792
+            ],
+            [
+              4.9143326525773166,
+              52.37833994427904
+            ],
+            [
+              4.914414594782157,
+              52.37832547773157
+            ],
+            [
+              4.914434412972442,
+              52.37832212355826
+            ],
+            [
+              4.914843344452203,
+              52.37825119786038
+            ],
+            [
+              4.9148324711731135,
+              52.3782296469548
+            ],
+            [
+              4.914729550696379,
+              52.37824749035156
+            ],
+            [
+              4.914523679903504,
+              52.377803665704576
+            ],
+            [
+              4.914458287583844,
+              52.37766266647138
+            ],
+            [
+              4.914921004680352,
+              52.37758239232401
+            ],
+            [
+              4.91492353141397,
+              52.37758783995206
+            ],
+            [
+              4.915992178144696,
+              52.377402439007426
+            ],
+            [
+              4.9160023287656545,
+              52.37742431049023
+            ],
+            [
+              4.916101083130783,
+              52.37740717741921
+            ],
+            [
+              4.916153804314474,
+              52.37752070390348
+            ],
+            [
+              4.91616236735043,
+              52.37751921904683
+            ],
+            [
+              4.916169720192522,
+              52.37753488686937
+            ],
+            [
+              4.916280804009653,
+              52.37751564564622
+            ],
+            [
+              4.916275389231998,
+              52.3775110853309
+            ],
+            [
+              4.916272597140493,
+              52.37750571756599
+            ],
+            [
+              4.916272730497306,
+              52.37750007382915
+            ],
+            [
+              4.916275753536786,
+              52.37749475615323
+            ],
+            [
+              4.9162813670152845,
+              52.37749028463373
+            ],
+            [
+              4.916289007829854,
+              52.37748713337843
+            ],
+            [
+              4.9162978649443545,
+              52.37748561373072
+            ],
+            [
+              4.916307070203923,
+              52.377485884016394
+            ],
+            [
+              4.916315654660046,
+              52.37748791341928
+            ],
+            [
+              4.916322768660051,
+              52.37749150083182
+            ],
+            [
+              4.916327652475932,
+              52.37749627473816
+            ],
+            [
+              4.9163298265464075,
+              52.37750175688424
+            ],
+            [
+              4.916329076696357,
+              52.37750737120659
+            ],
+            [
+              4.916355677798532,
+              52.37750277642007
+            ],
+            [
+              4.916418711876095,
+              52.37763820184029
+            ],
+            [
+              4.916481934859897,
+              52.37777523676886
+            ],
+            [
+              4.916533059923715,
+              52.37776667699055
+            ],
+            [
+              4.916548852392936,
+              52.37780081207635
+            ],
+            [
+              4.916627511438086,
+              52.37778695110157
+            ],
+            [
+              4.9167375546410295,
+              52.37776755252366
+            ],
+            [
+              4.916796513368243,
+              52.37789411765743
+            ],
+            [
+              4.91680082103382,
+              52.37790337410998
+            ],
+            [
+              4.915965869724061,
+              52.37804846807459
+            ]
+          ],
+          [
+            [
+              4.918466727987684,
+              52.37763951361008
+            ],
+            [
+              4.918527447367951,
+              52.37762910353491
+            ],
+            [
+              4.918602629474945,
+              52.377616198158606
+            ],
+            [
+              4.91859650993397,
+              52.37760325863885
+            ],
+            [
+              4.918460973434558,
+              52.37762678224481
+            ],
+            [
+              4.918466727987684,
+              52.37763951361008
+            ]
+          ],
+          [
+            [
+              4.916884793074023,
+              52.37790092146692
+            ],
+            [
+              4.916890532524087,
+              52.377913652849244
+            ],
+            [
+              4.917026435675242,
+              52.37789033921059
+            ],
+            [
+              4.917020316652241,
+              52.377877390623325
+            ],
+            [
+              4.916962243500782,
+              52.37788747789073
+            ],
+            [
+              4.916884793074023,
+              52.37790092146692
+            ]
+          ],
+          [
+            [
+              4.917805258999858,
+              52.377754128818616
+            ],
+            [
+              4.9178659787865255,
+              52.377743710096
+            ],
+            [
+              4.917941161184081,
+              52.37773081412791
+            ],
+            [
+              4.917935041915645,
+              52.3777178655872
+            ],
+            [
+              4.917799519307492,
+              52.3777413974799
+            ],
+            [
+              4.917805258999858,
+              52.377754128818616
+            ]
+          ],
+          [
+            [
+              4.914936318580296,
+              52.37821163639937
+            ],
+            [
+              4.914945456703531,
+              52.37823339607996
+            ],
+            [
+              4.915180633274187,
+              52.37819286455658
+            ],
+            [
+              4.915453553626088,
+              52.378145373675146
+            ],
+            [
+              4.915443474532467,
+              52.378123691174515
+            ],
+            [
+              4.914936318580296,
+              52.37821163639937
+            ]
+          ]
+        ]
+      },
+      status: "held",
+      heldReason: "Integrator 2026-10-10: blue curtain-wall banding and set-backs missing; terminal podium renders as long flat slabs"
     }
   ];
 
@@ -46495,6 +47562,87 @@
       funFact: "The building was named after Chief Rabbi Aron Schuster (1907-1994) only in 1973, when he retired and left Amsterdam for Jerusalem; he had served here since 1942. The first service after the war was held on Rosh Hashanah 1945.",
       sourceUrl: "https://nl.wikipedia.org/wiki/Raw_Aron_Schuster_Synagoge",
       preferDescription: true
+    },
+    {
+      modelId: "zevenlandenhuizen",
+      landmarkId: "requested-zevenlandenhuizen",
+      name: "Zevenlandenhuizen",
+      description: "The Zevenlandenhuizen (Seven Countries Houses) are a row of seven houses at Roemer Visscherstraat 20-30a in the Vondelpark neighbourhood, designed by Tjeerd Kuipers in 1894 for the Amsterdam businessman Sam van Eeghen. Each house borrows the architecture of a different country: Germany (no. 20, pointed-arch Romantic windows), France (22, a Loire chateau), Spain (24, a Moorish villa in the manner of Granada), Italy (26, a palazzo), Russia (28, a church tower with an onion dome), the Netherlands (30, a Renaissance gabled house) and England (30a, a half-timbered cottage). The row is a national monument and a showpiece of the 19th-century taste for exotic styles.",
+      funFact: "Every house carries its country's name carved into the facade, and the Russian house even has a little onion-domed tower rising over a Dutch street.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Zevenlandenhuizen",
+      additionalSources: [
+        "https://commons.wikimedia.org/wiki/Category:Zevenlandenhuizen"
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "klimhal",
+      landmarkId: "requested-klimhal-amsterdam",
+      name: "Klimhal Amsterdam",
+      description: "Klimhal Amsterdam is a climbing hall on Naritaweg beside Sloterdijk station, built in 1996. Its steel frame is clad in dark brown standing-seam panels that lean in from both flanks to a ridge about 21 m up, so the whole hall reads as a curved, pointed sail. The glazed ends carry a white climbing wall standing proud of the glass; the interior offers several thousand square metres of climbing surface, among the largest in the Benelux.",
+      funFact: "The hall is about 21 m tall, so its climbing routes are as high as a seven-storey building.",
+      sourceUrl: "https://www.fijnuit.nl/3680/klimhal-amsterdam",
+      preferDescription: true,
+      center: [
+        52.38817,
+        4.82791
+      ],
+      additionalSources: [
+        {
+          title: "Klimhal Amsterdam (Fijn Uit)",
+          url: "https://www.fijnuit.nl/3680/klimhal-amsterdam"
+        },
+        {
+          title: "BAG pand 0363100012150166 (built 1996, sports use)",
+          url: "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012150166&f=json"
+        }
+      ]
+    },
+    {
+      modelId: "symphony",
+      landmarkId: "requested-symphony",
+      name: "Symphony",
+      description: "Symphony is a block on the south side of Gustav Mahlerplein in the Zuidas business district: a 29-storey, 105 m residential tower and a wider 97 m office tower, standing on a shared low-rise base with shops, a hotel and an art centre. Pi de Bruijn of De Architekten Cie designed the towers with INBO architecten, and AWG architecten designed the base. Both towers are clad in banded orange-red brick, so the pair reads as one composition.",
+      funFact: "The towers are nicknamed the orange giants of the Zuidas, because their brick bands glow orange in low sun.",
+      sourceUrl: "https://zuidas.nl/en/threesixty_info/amsterdam-symphony-2/",
+      preferDescription: true,
+      center: [
+        52.33618,
+        4.87385
+      ],
+      additionalSources: [
+        {
+          title: "Zuidas: Amsterdam Symphony",
+          url: "https://zuidas.nl/en/threesixty_info/amsterdam-symphony-2/"
+        },
+        {
+          title: "De Architekten Cie: Amsterdam Symphony",
+          url: "https://www.cie.nl/Amsterdam-Symphony?lang=nl"
+        },
+        {
+          title: "BAG pand 0363100012128931 (built 2010)",
+          url: "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012128931&f=json"
+        }
+      ]
+    },
+    {
+      modelId: "ij-toren",
+      landmarkId: "extract_landmarks_1963830588",
+      name: "IJ-toren",
+      description: "The IJ-toren on Piet Heinkade is a glass office tower rising from the same podium as Amsterdam's Passenger Terminal, beside the IJ. It was finished in 2002, first meant for Bank Labouchere as the Labouchere tower, then briefly the Dexia tower, before being named after the waterway. Since a 2013 refit it trades as the UP Office Building. Stepped glass volumes with green-tinted horizontal bands make it one of the tallest buildings of the eastern docklands.",
+      funFact: "Architecture critic Hans Ibelings called it extraordinarily flat in 2003, one of the two low points of the Eastern Docklands; it is the second Amsterdam tower called IJ-toren, after a 1998 apartment tower on the Veemkade.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/IJ-toren_(Piet_Heinkade)",
+      preferDescription: true,
+      additionalSources: [
+        {
+          title: "Wikipedia: IJ-toren (Piet Heinkade)",
+          url: "https://nl.wikipedia.org/wiki/IJ-toren_(Piet_Heinkade)"
+        },
+        {
+          title: "BAG pand 0363100012090447 (built 2002)",
+          url: "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012090447&f=json"
+        }
+      ]
     }
   ];
 
