@@ -1,0 +1,24 @@
+{
+  "name": "Artis Aquarium",
+  "landmarkId": "requested-artis-aquarium",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Aquariumgebouw",
+  "suppressOsmIds": [
+    "w57863296",
+    "NL.IMBAG.Pand.0363100012170226"
+  ],
+  "pandId": "0363100012170226",
+  "materialOverrides": {
+    "stone": "#b9ac94",
+    "sandstone": "#8f8573",
+    "white": "#d9d3c3",
+    "red": "#a67768",
+    "slate": "#5a6663",
+    "glass": "#566672",
+    "frame": "#cfcabb",
+    "dark": "#26282a",
+    "blue": "#86b4b8",
+    "gold": "#c8a24a"
+  },
+  "surveySource": "Current BAG 0363100012170226 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the portico, stairs, wings and pavilions measured by eye from the 2016 municipal panoramas of Plantage Middenlaan, no pixels or meshes imported; the inscription follows the real frieze lettering."
+}

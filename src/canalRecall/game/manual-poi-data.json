@@ -2293,5 +2293,17 @@
     "https://monumentenregister.cultureelerfgoed.nl/monumenten/2271"
   ],
   "preferDescription": true
+},
+{
+  "modelId": "artis-aquarium",
+  "landmarkId": "requested-artis-aquarium",
+  "name": "Artis Aquarium",
+  "description": "The Aquarium building of Artis, at Plantage Middenlaan 53, was designed by Gerlof Bartholomeus Salm and his son Abraham and opened in 1882. It is a neoclassical hall with a tetrastyle Corinthian portico, a double flight of stairs, a pediment with a painted fish mural and the motto Natura Artis Magistra on the frieze. Behind the street front the aquaria face the garden, and a dome at the east end once held a lecture hall. In the twentieth century it housed the University of Amsterdam's Zoological Museum; after a restoration from 2021 to 2025 the aquarium reopened to the public in June 2026.",
+  "funFact": "The weight of the tanks and their glass panes required 1,740 wooden piles, and the cellars hold huge reservoirs of gravel and coarse sand that purified the water; the first fresh- and salt-water basins were filled in 1882 with North Sea fish and Dutch freshwater species.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Aquariumgebouw",
+  "additionalSources": [
+    "https://nl.wikipedia.org/wiki/Artis"
+  ],
+  "preferDescription": true
 }
 ]
