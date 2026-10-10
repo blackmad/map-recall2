@@ -1,0 +1,394 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "marnix-124-138",
+ "street": "Marnixstraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-30",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-30",
+   "image": "staging/block-face/marnix-124-138/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-sonnet-5.5 (marnix-faces lane), from strip-labelled.png + 2 zoomed crops",
+  "passes": 2
+ },
+ "houses": [
+  {
+   "pandId": "0363100012174914",
+   "slug": "mface-174914",
+   "address": "Marnixstraat 138",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Marnixstraat",
+      "gable": "cornice",
+      "crownCap": "pediment",
+      "crownCapSpan": "narrow",
+      "storeys": 4,
+      "bays": 3,
+      "doorBay": 1,
+      "basement": "none",
+      "cornice": "simple",
+      "windows": "sash",
+      "hoist": false,
+      "bands": "storey",
+      "windowSurround": "stone-lintel",
+      "atticWindows": 1
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6e4638",
+     "frame": "white",
+     "door": "dark-green",
+     "stone": "sandstone"
+    },
+    "notes": [
+     "1876-78 municipal row (B. de Greef): flat bracketed cornice, 3 window axes x 4 storeys, central door, narrow stepped crown over the middle axis (approximated by a pediment cap), pilaster strips at the party walls (not modelled)."
+    ]
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-30",
+    "agreement": "photo-only",
+    "note": "Residential: house door in the middle axis, 2 windows."
+   },
+   "rhythm": {
+    "bays": "3 window axes over a central door axis; pilaster strips at both party walls",
+    "identicalBays": "all 3 axes identical on storeys 1-3; ground floor: 2 windows + central door",
+    "windowsPerStorey": "ground: 2 + door | 1: 3 | 2: 3 | 3: 3 | gable: 1",
+    "symmetry": "mirror-symmetric about the middle axis (door, gable)",
+    "groundFloor": "green door with stone surround and side lights, 2 windows",
+    "signage": "none",
+    "roofline": "flat bracketed cornice; narrow stepped (trap) gable with finial over the middle axis, one attic window",
+    "citation": "strip.jpg pand 1",
+    "photoRows": [
+     2,
+     1,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "stepped gable with finial is a pediment cap",
+     "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012168510",
+   "slug": "mface-168510",
+   "address": "Marnixstraat 136",
+   "sameAs": "0363100012174914",
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-30",
+    "agreement": "photo-only",
+    "note": "Residential: house door in the middle axis, 2 windows."
+   },
+   "rhythm": {
+    "bays": "3 window axes over a central door axis; pilaster strips at both party walls",
+    "identicalBays": "all 3 axes identical on storeys 1-3; ground floor: 2 windows + central door",
+    "windowsPerStorey": "ground: 2 + door | 1: 3 | 2: 3 | 3: 3 | gable: 1",
+    "symmetry": "mirror-symmetric about the middle axis (door, gable)",
+    "groundFloor": "green door with stone surround and side lights, 2 windows",
+    "signage": "none",
+    "roofline": "flat bracketed cornice; narrow stepped (trap) gable with finial over the middle axis, one attic window",
+    "citation": "strip.jpg pand 2",
+    "photoRows": [
+     2,
+     1,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "stepped gable with finial is a pediment cap",
+     "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012173514",
+   "slug": "mface-173514",
+   "address": "Marnixstraat 134",
+   "sameAs": "0363100012174914",
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-30",
+    "agreement": "photo-only",
+    "note": "Residential: house door in the middle axis, 2 windows."
+   },
+   "rhythm": {
+    "bays": "3 window axes over a central door axis; pilaster strips at both party walls",
+    "identicalBays": "all 3 axes identical on storeys 1-3; ground floor: 2 windows + central door",
+    "windowsPerStorey": "ground: 2 + door | 1: 3 | 2: 3 | 3: 3 | gable: 1",
+    "symmetry": "mirror-symmetric about the middle axis (door, gable)",
+    "groundFloor": "green door with stone surround and side lights, 2 windows",
+    "signage": "none",
+    "roofline": "flat bracketed cornice; narrow stepped (trap) gable with finial over the middle axis, one attic window",
+    "citation": "strip.jpg pand 3",
+    "photoRows": [
+     2,
+     1,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "stepped gable with finial is a pediment cap",
+     "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012173515",
+   "slug": "mface-173515",
+   "address": "Marnixstraat 132",
+   "sameAs": "0363100012174914",
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-30",
+    "agreement": "photo-only",
+    "note": "Residential: house door in the middle axis, 2 windows."
+   },
+   "rhythm": {
+    "bays": "3 window axes over a central door axis; pilaster strips at both party walls",
+    "identicalBays": "all 3 axes identical on storeys 1-3; ground floor: 2 windows + central door",
+    "windowsPerStorey": "ground: 2 + door | 1: 3 | 2: 3 | 3: 3 | gable: 1",
+    "symmetry": "mirror-symmetric about the middle axis (door, gable)",
+    "groundFloor": "green door with stone surround and side lights, 2 windows",
+    "signage": "none",
+    "roofline": "flat bracketed cornice; narrow stepped (trap) gable with finial over the middle axis, one attic window",
+    "citation": "strip.jpg pand 4",
+    "photoRows": [
+     2,
+     1,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "stepped gable with finial is a pediment cap",
+     "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012174104",
+   "slug": "mface-174104",
+   "address": "Marnixstraat 130",
+   "sameAs": "0363100012174914",
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-30",
+    "agreement": "photo-only",
+    "note": "Residential: house door in the middle axis, 2 windows."
+   },
+   "rhythm": {
+    "bays": "3 window axes over a central door axis; pilaster strips at both party walls",
+    "identicalBays": "all 3 axes identical on storeys 1-3; ground floor: 2 windows + central door",
+    "windowsPerStorey": "ground: 2 + door | 1: 3 | 2: 3 | 3: 3 | gable: 1",
+    "symmetry": "mirror-symmetric about the middle axis (door, gable)",
+    "groundFloor": "green door with stone surround and side lights, 2 windows",
+    "signage": "none",
+    "roofline": "flat bracketed cornice; narrow stepped (trap) gable with finial over the middle axis, one attic window",
+    "citation": "strip.jpg pand 5",
+    "photoRows": [
+     2,
+     1,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "stepped gable with finial is a pediment cap",
+     "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012174105",
+   "slug": "mface-174105",
+   "address": "Marnixstraat 128",
+   "sameAs": "0363100012174914",
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-30",
+    "agreement": "photo-only",
+    "note": "Residential: house door in the middle axis, 2 windows."
+   },
+   "rhythm": {
+    "bays": "3 window axes over a central door axis; pilaster strips at both party walls",
+    "identicalBays": "all 3 axes identical on storeys 1-3; ground floor: 2 windows + central door",
+    "windowsPerStorey": "ground: 2 + door | 1: 3 | 2: 3 | 3: 3 | gable: 1",
+    "symmetry": "mirror-symmetric about the middle axis (door, gable)",
+    "groundFloor": "green door with stone surround and side lights, 2 windows",
+    "signage": "none",
+    "roofline": "flat bracketed cornice; narrow stepped (trap) gable with finial over the middle axis, one attic window",
+    "citation": "strip.jpg pand 6",
+    "photoRows": [
+     2,
+     1,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "stepped gable with finial is a pediment cap",
+     "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012174935",
+   "slug": "mface-174935",
+   "address": "Marnixstraat 126",
+   "sameAs": "0363100012174914",
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-30",
+    "agreement": "photo-only",
+    "note": "Residential: house door in the middle axis, 2 windows."
+   },
+   "rhythm": {
+    "bays": "3 window axes over a central door axis; pilaster strips at both party walls",
+    "identicalBays": "all 3 axes identical on storeys 1-3; ground floor: 2 windows + central door",
+    "windowsPerStorey": "ground: 2 + door | 1: 3 | 2: 3 | 3: 3 | gable: 1",
+    "symmetry": "mirror-symmetric about the middle axis (door, gable)",
+    "groundFloor": "green door with stone surround and side lights, 2 windows",
+    "signage": "none",
+    "roofline": "flat bracketed cornice; narrow stepped (trap) gable with finial over the middle axis, one attic window",
+    "citation": "strip.jpg pand 7",
+    "photoRows": [
+     2,
+     1,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "stepped gable with finial is a pediment cap",
+     "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012173530",
+   "slug": "mface-173530",
+   "address": "Marnixstraat 124",
+   "sameAs": "0363100012174914",
+   "groundFloor": {
+    "use": "residential",
+    "name": "NiDA Wasserij Stomerij",
+    "category": "shop=laundry",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-30",
+    "agreement": "conflict",
+    "note": "Photo: white NiDA WASSERIJ STOMERIJ sign over the right-hand ground window (laundry in the right bay only; OSM node exists). The schema shopfront spans the whole width, so the ground floor is modelled residential and the laundry is a schema limit."
+   },
+   "rhythm": {
+    "bays": "3 window axes over a central door axis; pilaster strips at both party walls",
+    "identicalBays": "all 3 axes identical on storeys 1-3; ground floor: 2 windows + central door",
+    "windowsPerStorey": "ground: 2 + door | 1: 3 | 2: 3 | 3: 3 | gable: 1",
+    "symmetry": "mirror-symmetric about the middle axis (door, gable)",
+    "groundFloor": "green door with stone surround and side lights, 2 windows",
+    "signage": "none",
+    "roofline": "flat bracketed cornice; narrow stepped (trap) gable with finial over the middle axis, one attic window",
+    "citation": "strip.jpg pand 8",
+    "photoRows": [
+     2,
+     1,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "stepped gable with finial is a pediment cap",
+     "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled",
+     "laundry shopfront (NiDA, right bay only) not expressible: shopfront spans the whole width"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [
+   {
+    "pands": [
+     "0363100012174914",
+     "0363100012168510",
+     "0363100012173514",
+     "0363100012173515",
+     "0363100012174104",
+     "0363100012174105",
+     "0363100012174935",
+     "0363100012173530"
+    ],
+    "evidence": "strip: one unbroken cornice line across all 8 pands (y ~200 px at 40 px/m); gables rise above it at the middle of every house"
+   }
+  ],
+  "identical": [
+   {
+    "pands": [
+     "0363100012174914",
+     "0363100012168510",
+     "0363100012173514",
+     "0363100012173515",
+     "0363100012174104",
+     "0363100012174105",
+     "0363100012174935",
+     "0363100012173530"
+    ],
+    "evidence": "strip: 8 identical fronts, 3 axes x 4 storeys, central door, central stepped gable; houses differ only by parked vehicles"
+   }
+  ]
+ }
+}

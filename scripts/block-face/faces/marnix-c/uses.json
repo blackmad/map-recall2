@@ -1,0 +1,594 @@
+{
+ "street": "Marnixstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T07:32:52.959Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169033",
+   "addresses": [
+    "Marnixstraat 122C",
+    "Marnixstraat 122D",
+    "Marnixstraat 122G",
+    "Marnixstraat 122H",
+    "Marnixstraat 122B",
+    "Marnixstraat 122E",
+    "Marnixstraat 122A",
+    "Marnixstraat 122F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Marnixstraat 122C",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737132"
+    },
+    {
+     "address": "Marnixstraat 122D",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737133"
+    },
+    {
+     "address": "Marnixstraat 122G",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737136"
+    },
+    {
+     "address": "Marnixstraat 122H",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737137"
+    },
+    {
+     "address": "Marnixstraat 122B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737131"
+    },
+    {
+     "address": "Marnixstraat 122E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737134"
+    },
+    {
+     "address": "Marnixstraat 122A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737130"
+    },
+    {
+     "address": "Marnixstraat 122F",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737135"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174107",
+   "addresses": [
+    "Marnixstraat 120B",
+    "Marnixstraat 120D",
+    "Marnixstraat 120F",
+    "Marnixstraat 120G",
+    "Marnixstraat 120H",
+    "Marnixstraat 120A",
+    "Marnixstraat 120C",
+    "Marnixstraat 120E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Marnixstraat 120B",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737114"
+    },
+    {
+     "address": "Marnixstraat 120D",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737116"
+    },
+    {
+     "address": "Marnixstraat 120F",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737118"
+    },
+    {
+     "address": "Marnixstraat 120G",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737119"
+    },
+    {
+     "address": "Marnixstraat 120H",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737120"
+    },
+    {
+     "address": "Marnixstraat 120A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737113"
+    },
+    {
+     "address": "Marnixstraat 120C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737115"
+    },
+    {
+     "address": "Marnixstraat 120E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737117"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174112",
+   "addresses": [
+    "Marnixstraat 118F",
+    "Marnixstraat 118G",
+    "Marnixstraat 118H",
+    "Marnixstraat 118D",
+    "Marnixstraat 118E",
+    "Marnixstraat 118C",
+    "Marnixstraat 118A",
+    "Marnixstraat 118B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Marnixstraat 118F",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737103"
+    },
+    {
+     "address": "Marnixstraat 118G",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737104"
+    },
+    {
+     "address": "Marnixstraat 118H",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737105"
+    },
+    {
+     "address": "Marnixstraat 118D",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737101"
+    },
+    {
+     "address": "Marnixstraat 118E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737102"
+    },
+    {
+     "address": "Marnixstraat 118C",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000737100"
+    },
+    {
+     "address": "Marnixstraat 118A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737098"
+    },
+    {
+     "address": "Marnixstraat 118B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737099"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174116",
+   "addresses": [
+    "Marnixstraat 116B",
+    "Marnixstraat 116C",
+    "Marnixstraat 116D",
+    "Marnixstraat 116F",
+    "Marnixstraat 116G",
+    "Marnixstraat 116H",
+    "Marnixstraat 116A",
+    "Marnixstraat 116E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Marnixstraat 116B",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737084"
+    },
+    {
+     "address": "Marnixstraat 116C",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737085"
+    },
+    {
+     "address": "Marnixstraat 116D",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737086"
+    },
+    {
+     "address": "Marnixstraat 116F",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737088"
+    },
+    {
+     "address": "Marnixstraat 116G",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737089"
+    },
+    {
+     "address": "Marnixstraat 116H",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737090"
+    },
+    {
+     "address": "Marnixstraat 116A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737083"
+    },
+    {
+     "address": "Marnixstraat 116E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737087"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174121",
+   "addresses": [
+    "Marnixstraat 114B",
+    "Marnixstraat 114C",
+    "Marnixstraat 114D",
+    "Marnixstraat 114F",
+    "Marnixstraat 114H",
+    "Marnixstraat 114G",
+    "Marnixstraat 114A",
+    "Marnixstraat 114E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Marnixstraat 114B",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737069"
+    },
+    {
+     "address": "Marnixstraat 114C",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737070"
+    },
+    {
+     "address": "Marnixstraat 114D",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737071"
+    },
+    {
+     "address": "Marnixstraat 114F",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737073"
+    },
+    {
+     "address": "Marnixstraat 114H",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737075"
+    },
+    {
+     "address": "Marnixstraat 114G",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737074"
+    },
+    {
+     "address": "Marnixstraat 114A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737068"
+    },
+    {
+     "address": "Marnixstraat 114E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737072"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174192",
+   "addresses": [
+    "Marnixstraat 112B",
+    "Marnixstraat 112D",
+    "Marnixstraat 112F",
+    "Marnixstraat 112G",
+    "Marnixstraat 112H",
+    "Marnixstraat 112A",
+    "Marnixstraat 112E",
+    "Marnixstraat 112C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Marnixstraat 112B",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737053"
+    },
+    {
+     "address": "Marnixstraat 112D",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737055"
+    },
+    {
+     "address": "Marnixstraat 112F",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737057"
+    },
+    {
+     "address": "Marnixstraat 112G",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737058"
+    },
+    {
+     "address": "Marnixstraat 112H",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737059"
+    },
+    {
+     "address": "Marnixstraat 112A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737052"
+    },
+    {
+     "address": "Marnixstraat 112E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737056"
+    },
+    {
+     "address": "Marnixstraat 112C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737054"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174292",
+   "addresses": [
+    "Marnixstraat 110C",
+    "Marnixstraat 110D",
+    "Marnixstraat 110G",
+    "Marnixstraat 110H",
+    "Marnixstraat 110E",
+    "Marnixstraat 110B",
+    "Marnixstraat 110F",
+    "Marnixstraat 110A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Marnixstraat 110C",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737039"
+    },
+    {
+     "address": "Marnixstraat 110D",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737040"
+    },
+    {
+     "address": "Marnixstraat 110G",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737043"
+    },
+    {
+     "address": "Marnixstraat 110H",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737044"
+    },
+    {
+     "address": "Marnixstraat 110E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737041"
+    },
+    {
+     "address": "Marnixstraat 110B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737038"
+    },
+    {
+     "address": "Marnixstraat 110F",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737042"
+    },
+    {
+     "address": "Marnixstraat 110A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737037"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168167",
+   "addresses": [
+    "Marnixstraat 108B",
+    "Marnixstraat 108C",
+    "Marnixstraat 108D",
+    "Marnixstraat 108F",
+    "Marnixstraat 108G",
+    "Marnixstraat 108H",
+    "Marnixstraat 108E",
+    "Marnixstraat 108A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Marnixstraat 108B",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737023"
+    },
+    {
+     "address": "Marnixstraat 108C",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737024"
+    },
+    {
+     "address": "Marnixstraat 108D",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737025"
+    },
+    {
+     "address": "Marnixstraat 108F",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737027"
+    },
+    {
+     "address": "Marnixstraat 108G",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737028"
+    },
+    {
+     "address": "Marnixstraat 108H",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737029"
+    },
+    {
+     "address": "Marnixstraat 108E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737026"
+    },
+    {
+     "address": "Marnixstraat 108A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737022"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168218",
+   "addresses": [
+    "Marnixstraat 106D",
+    "Marnixstraat 106F",
+    "Marnixstraat 106G",
+    "Marnixstraat 106H",
+    "Marnixstraat 106A",
+    "Marnixstraat 106B",
+    "Marnixstraat 106E",
+    "Marnixstraat 106C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Marnixstraat 106D",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737011"
+    },
+    {
+     "address": "Marnixstraat 106F",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737013"
+    },
+    {
+     "address": "Marnixstraat 106G",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737014"
+    },
+    {
+     "address": "Marnixstraat 106H",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000737015"
+    },
+    {
+     "address": "Marnixstraat 106A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737008"
+    },
+    {
+     "address": "Marnixstraat 106B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737009"
+    },
+    {
+     "address": "Marnixstraat 106E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737012"
+    },
+    {
+     "address": "Marnixstraat 106C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000737010"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}
