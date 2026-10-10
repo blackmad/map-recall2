@@ -45,6 +45,16 @@ except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
 (continuous ground and cornice line) does not need chunking. Unmeasured on a
 real phone GPU.
 
+## Klimhal and Symphony (2026-10-10)
+
+Klimhal Amsterdam (Naritaweg, lofted ogive hall with glazed flanks) and
+Symphony (Zuidas; two stepped orange-brick towers, hotel and apartment
+blocks on one BAG pand) installed after review. IJ-toren and
+Zevenlandenhuizen held (see TODO). The integrator rejected two audit
+workarounds (fake doorway panels on hidden palace partitions, a shortened
+Concertgebouw canopy): a model is never changed to satisfy a check; false
+positives are fixed in the check with a regression test.
+
 ## Zuiderkerk, Muiderkerk, Van Gendt Hallen; Palace and De Balie reworked (2026-10-10)
 
 Zuiderkerk replaces its procedural kit (the kit's OSM tower and roof ways are

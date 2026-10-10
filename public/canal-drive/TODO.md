@@ -46,6 +46,15 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   loops and 24/42 see-through rays from its glass promenade. Aron Schuster
   synagogue held (brick too dark; banded rounded volumes, pale roof edges,
   garden wall missing; rework in flight).
+- **Lanes cut off by the usage limit (2026-10-10)**, resume from their branches:
+  Aron Schuster synagogue rework committed at 763c54ae (unreviewed); the
+  glbQuality false-positive fix (blank-wall only on outside-visible area,
+  see-through closed under a roofed porch) is written and unit-tested but
+  uncommitted in worktree agent-a9751763df4f4ceab, with palace doorway
+  panels removed and the Concertgebouw canopy restored — rebuild, run the
+  full audit diff, then commit; Bellevue not started. Held: IJ-toren
+  (curtain-wall banding, terminal slabs), Zevenlandenhuizen (see-through
+  11/42).
   Elevation skeletons with photos exist for 25 landmarks
   (`scripts/landmarks/*-elevations.json`, photos in `artifacts/landmark-lanes/`);
   counts are not filled: Haiku blind counts were too noisy — use a stronger
