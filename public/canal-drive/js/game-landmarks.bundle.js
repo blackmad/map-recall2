@@ -19345,16 +19345,16 @@ Map source: ${osmUrl(places[i][0])}`);
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        concrete: "#b5b1a7",
-        greyBrick: "#8d8a82",
+        concrete: "#c3c0b6",
+        greyBrick: "#b4b1a7",
         slate: "#5a5e60",
-        glass: "#587783",
+        glass: "#6d8b98",
         red: "#7d3a2e",
         green: "#47624d",
         ochre: "#d6a03a",
         pink: "#d49a8c",
         dark: "#2b2f31",
-        stone: "#bdb8a8"
+        stone: "#cbc8bd"
       },
       attribution: {
         title: "De School (Tilla Tec)",
@@ -19422,9 +19422,7 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      },
-      status: "held",
-      heldReason: "Integrator 2026-10-10: concrete too dark, rounded drum pavilion missing, ribbon glazing panes too small"
+      }
     },
     {
       id: "west-indisch-pakhuis",
