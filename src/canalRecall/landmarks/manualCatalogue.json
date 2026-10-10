@@ -25375,218 +25375,380 @@
       ]
     }
   },
-{
-  "id": "voc-kade-600",
-  "name": "VOC-kade 600",
-  "modelUrl": "./models/voc-kade-600.glb",
-  "suppressOsmIds": [
-    "NL.IMBAG.Pand.0363100012252518"
-  ],
-  "spatialSuppression": false,
-  "footprint": {
-    "centre": [
-      4.928439042282152,
-      52.37325371816068
+  {
+    "id": "voc-kade-600",
+    "name": "VOC-kade 600",
+    "modelUrl": "./models/voc-kade-600.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012252518"
     ],
-    "headingDegrees": 135,
-    "lengthMetres": 44.85,
-    "widthMetres": 39.17
-  },
-  "groundAltitudeMetres": 0,
-  "facingOffsetDegrees": 0,
-  "surveyed": {
-    "anchor": [
-      4.928444788102771,
-      52.37330698352181
-    ],
-    "northOffsetDegrees": 0,
-    "source": "PDOK BAG 0363100012252518 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
-  },
-  "materialOverrides": {
-    "brick": "#b88a64",
-    "concrete": "#a9a69e",
-    "dark": "#25292b",
-    "glass": "#5d6f78",
-    "frame": "#2a2e30",
-    "slate": "#55595b",
-    "stone": "#a9a69e"
-  },
-  "preservePositionPrecision": true,
-  "attribution": {
-    "title": "VOC-kade 600 original architecture",
-    "author": "Map Recall",
-    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012252518",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
-    "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
-  },
-  "buildingFootprint": {
-    "type": "Polygon",
-    "coordinates": [
-      [
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.928439042282152,
+        52.37325371816068
+      ],
+      "headingDegrees": 135,
+      "lengthMetres": 44.85,
+      "widthMetres": 39.17
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.928444788102771,
+        52.37330698352181
+      ],
+      "northOffsetDegrees": 0,
+      "source": "PDOK BAG 0363100012252518 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+    },
+    "materialOverrides": {
+      "brick": "#b88a64",
+      "concrete": "#a9a69e",
+      "dark": "#25292b",
+      "glass": "#5d6f78",
+      "frame": "#2a2e30",
+      "slate": "#55595b",
+      "stone": "#a9a69e"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "VOC-kade 600 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012252518",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
         [
-          4.92846778917961,
-          52.373520041600415
-        ],
-        [
-          4.9280040667646245,
-          52.3732344130145
-        ],
-        [
-          4.9284103012427565,
-          52.372987388261954
-        ],
-        [
-          4.928873994147254,
-          52.373273033131774
-        ],
-        [
-          4.92846778917961,
-          52.373520041600415
+          [
+            4.92846778917961,
+            52.373520041600415
+          ],
+          [
+            4.9280040667646245,
+            52.3732344130145
+          ],
+          [
+            4.9284103012427565,
+            52.372987388261954
+          ],
+          [
+            4.928873994147254,
+            52.373273033131774
+          ],
+          [
+            4.92846778917961,
+            52.373520041600415
+          ]
         ]
       ]
-    ]
-  }
-},
-{
-  "id": "motorkade-1",
-  "name": "Motorkade 1",
-  "modelUrl": "./models/motorkade-1.glb",
-  "suppressOsmIds": [
-    "NL.IMBAG.Pand.0363100012247879"
-  ],
-  "spatialSuppression": false,
-  "footprint": {
-    "centre": [
-      4.919829419833952,
-      52.3841948367538
+    }
+  },
+  {
+    "id": "motorkade-1",
+    "name": "Motorkade 1",
+    "modelUrl": "./models/motorkade-1.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012247879"
     ],
-    "headingDegrees": 169,
-    "lengthMetres": 49,
-    "widthMetres": 44.18
-  },
-  "groundAltitudeMetres": 0,
-  "facingOffsetDegrees": 0,
-  "surveyed": {
-    "anchor": [
-      4.919683354485995,
-      52.384234752019374
-    ],
-    "northOffsetDegrees": 0,
-    "source": "PDOK BAG 0363100012247879 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
-  },
-  "materialOverrides": {
-    "gold": "#b9a05a",
-    "glass": "#6a8c9c",
-    "frame": "#a8924f",
-    "dark": "#2b2f31",
-    "concrete": "#b5b0a4",
-    "brick": "#c9b277",
-    "slate": "#5a5e60"
-  },
-  "preservePositionPrecision": true,
-  "attribution": {
-    "title": "Motorkade 1 original architecture",
-    "author": "Map Recall",
-    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012247879",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
-    "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
-  },
-  "buildingFootprint": {
-    "type": "Polygon",
-    "coordinates": [
-      [
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.919829419833952,
+        52.3841948367538
+      ],
+      "headingDegrees": 169,
+      "lengthMetres": 49,
+      "widthMetres": 44.18
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.919683354485995,
+        52.384234752019374
+      ],
+      "northOffsetDegrees": 0,
+      "source": "PDOK BAG 0363100012247879 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+    },
+    "materialOverrides": {
+      "gold": "#b9a05a",
+      "glass": "#6a8c9c",
+      "frame": "#a8924f",
+      "dark": "#2b2f31",
+      "concrete": "#b5b0a4",
+      "brick": "#c9b277",
+      "slate": "#5a5e60"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "Motorkade 1 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012247879",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
         [
-          4.920176763770926,
-          52.38425506260694
-        ],
-        [
-          4.920121382154497,
-          52.38443141600011
-        ],
-        [
-          4.919868045661283,
-          52.38440144033579
-        ],
-        [
-          4.91975473457346,
-          52.38438803292593
-        ],
-        [
-          4.919641423554515,
-          52.384374625407645
-        ],
-        [
-          4.919560782627217,
-          52.38436508565991
-        ],
-        [
-          4.919488606284046,
-          52.38435654995496
-        ],
-        [
-          4.919489730616524,
-          52.384353004264725
-        ],
-        [
-          4.919491690451211,
-          52.384346837473785
-        ],
-        [
-          4.919421582647178,
-          52.38433854357644
-        ],
-        [
-          4.919436644585972,
-          52.38429059092227
-        ],
-        [
-          4.919433050567361,
-          52.38429015430627
-        ],
-        [
-          4.919449875590371,
-          52.384236582330765
-        ],
-        [
-          4.919453484387247,
-          52.38423701001695
-        ],
-        [
-          4.919493775551268,
-          52.38410877125323
-        ],
-        [
-          4.91949018145203,
-          52.38410834362627
-        ],
-        [
-          4.919528724650153,
-          52.383985661314206
-        ],
-        [
-          4.919532333427377,
-          52.383986088998
-        ],
-        [
-          4.919540875124736,
-          52.38395888109171
-        ],
-        [
-          4.9202437255809945,
-          52.38404184247269
-        ],
-        [
-          4.920239621662586,
-          52.3840549572805
-        ],
-        [
-          4.920176763770926,
-          52.38425506260694
+          [
+            4.920176763770926,
+            52.38425506260694
+          ],
+          [
+            4.920121382154497,
+            52.38443141600011
+          ],
+          [
+            4.919868045661283,
+            52.38440144033579
+          ],
+          [
+            4.91975473457346,
+            52.38438803292593
+          ],
+          [
+            4.919641423554515,
+            52.384374625407645
+          ],
+          [
+            4.919560782627217,
+            52.38436508565991
+          ],
+          [
+            4.919488606284046,
+            52.38435654995496
+          ],
+          [
+            4.919489730616524,
+            52.384353004264725
+          ],
+          [
+            4.919491690451211,
+            52.384346837473785
+          ],
+          [
+            4.919421582647178,
+            52.38433854357644
+          ],
+          [
+            4.919436644585972,
+            52.38429059092227
+          ],
+          [
+            4.919433050567361,
+            52.38429015430627
+          ],
+          [
+            4.919449875590371,
+            52.384236582330765
+          ],
+          [
+            4.919453484387247,
+            52.38423701001695
+          ],
+          [
+            4.919493775551268,
+            52.38410877125323
+          ],
+          [
+            4.91949018145203,
+            52.38410834362627
+          ],
+          [
+            4.919528724650153,
+            52.383985661314206
+          ],
+          [
+            4.919532333427377,
+            52.383986088998
+          ],
+          [
+            4.919540875124736,
+            52.38395888109171
+          ],
+          [
+            4.9202437255809945,
+            52.38404184247269
+          ],
+          [
+            4.920239621662586,
+            52.3840549572805
+          ],
+          [
+            4.920176763770926,
+            52.38425506260694
+          ]
         ]
       ]
-    ]
+    }
+  },
+  {
+    "id": "de-bazel",
+    "name": "De Bazel",
+    "modelUrl": "./models/de-bazel.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012165077"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.892201604796647,
+        52.36457885814682
+      ],
+      "headingDegrees": 12,
+      "lengthMetres": 102.95,
+      "widthMetres": 31.93
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.892212410610806,
+        52.36466581599025
+      ],
+      "northOffsetDegrees": 0,
+      "source": "PDOK BAG 0363100012165077 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+    },
+    "materialOverrides": {
+      "brick": "#8a7566",
+      "sandstone": "#a89a8c",
+      "greyBrick": "#2c2f31",
+      "glass": "#6f8796",
+      "frame": "#5b3326",
+      "dark": "#1f2123",
+      "ochre": "#7d6a5c",
+      "slate": "#585c5e"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "De Bazel original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165077",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.892382464589033,
+            52.364409442190336
+          ],
+          [
+            4.89241215151248,
+            52.3644949676194
+          ],
+          [
+            4.892448807983026,
+            52.36460063669109
+          ],
+          [
+            4.892478409980771,
+            52.36468590110058
+          ],
+          [
+            4.89258135477692,
+            52.36498256659512
+          ],
+          [
+            4.892561505913477,
+            52.36500354190291
+          ],
+          [
+            4.8925315838432715,
+            52.365007524273615
+          ],
+          [
+            4.8922069848392935,
+            52.36505066578384
+          ],
+          [
+            4.892204014718219,
+            52.365051057813254
+          ],
+          [
+            4.892171313619358,
+            52.36505540595816
+          ],
+          [
+            4.8921636235012524,
+            52.365056434354464
+          ],
+          [
+            4.892131084088662,
+            52.365060765188886
+          ],
+          [
+            4.892080922353152,
+            52.36492205460332
+          ],
+          [
+            4.892119165691846,
+            52.36491705558073
+          ],
+          [
+            4.8921518953541145,
+            52.364912770483876
+          ],
+          [
+            4.892155497659912,
+            52.364912300209745
+          ],
+          [
+            4.892135891361852,
+            52.36485626065899
+          ],
+          [
+            4.892133715239649,
+            52.36485654815414
+          ],
+          [
+            4.891953634921339,
+            52.364341625265986
+          ],
+          [
+            4.891957238888248,
+            52.36434100221362
+          ],
+          [
+            4.891937156544218,
+            52.36428425060044
+          ],
+          [
+            4.891893516781748,
+            52.364290035881574
+          ],
+          [
+            4.891845182870388,
+            52.36415344493231
+          ],
+          [
+            4.892185418413816,
+            52.36410837453124
+          ],
+          [
+            4.892250436498878,
+            52.3640997664984
+          ],
+          [
+            4.892279649957784,
+            52.36411319046034
+          ],
+          [
+            4.892382464589033,
+            52.364409442190336
+          ]
+        ]
+      ]
+    }
   }
-}
 ]

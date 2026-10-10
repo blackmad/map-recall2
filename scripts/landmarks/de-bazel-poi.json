@@ -1,0 +1,17 @@
+{
+  "modelId": "de-bazel",
+  "poiId": null,
+  "name": "De Bazel",
+  "routeDestination": false,
+  "status": "card-drafted-no-destination",
+  "note": "Drafted on the coordinator's request; deliberately NOT registered in manual-poi-data.json and not a route destination (lane brief: no invented destinations). The integrator decides whether to promote it.",
+  "mapPin": [52.36457885814682, 4.892201604796647],
+  "pinPolicy": "BAG pand 0363100012165077 footprint centre (Vijzelstraat 32).",
+  "funFact": "De Bazel on Vijzelstraat was built in 1919-26 as the head office of the Nederlandsche Handel-Maatschappij, to a design by K.P.C. de Bazel, who died in 1923 before it was finished. A concrete frame is clad in brick banded with granite, which earned the ten-storey Amsterdam School block the nickname 'De Spekkoek' (layer cake). Sculptures over the entrance honour J.P. Coen, H.W. Daendels and J.B. van Heutsz. It has housed the city archives (Stadsarchief Amsterdam) since 2007.",
+  "sourceLinks": [
+    {"label": "Wikipedia (nl): De Bazel (Amsterdam), construction dates, architects, materials, sculptures, nickname, Stadsarchief", "url": "https://nl.wikipedia.org/wiki/De_Bazel_(Amsterdam)"},
+    {"label": "BAG pand 0363100012165077 (PDOK)", "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012165077&f=json"}
+  ],
+  "retrievedOn": "2026-10-10",
+  "originalTextPolicy": "Facts paraphrased in English from the Dutch Wikipedia article; no foreign text is shipped in the card."
+}
