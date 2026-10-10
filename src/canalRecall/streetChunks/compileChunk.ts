@@ -67,6 +67,7 @@ export async function compileChunk(inputs: ChunkHouseInput[], options: ChunkOpti
 
   // Compile, bake into the frame.
   const compiled = houses.map((h, i) => compileBuilding(h.intent, plan.facts[i]));
+  if (options.decorate) compiled.forEach((built, i) => options.decorate!(built, houses[i], i));
   const buckets: BucketMap[] = compiled.map((built, i) => groupToBuckets(built.group, matrixFor(frame, built.anchorRD), recipeSlotFor(houses[i].intent)));
   const merged = buckets.reduce((s, b) => s + triangleCount(b), 0);
   const tCompile = performance.now();
