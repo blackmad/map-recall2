@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+## Landmarks are diffuse-only: the specular glare was a camera bug (2026-10-10)
+
+User: "weird specular highlights on our landmark buildings" (a smeared white
+blob on Hotel Jakarta's glass, spotlights on dark roofs). Not the GLBs: of
+4,606 materials in 631 GLBs almost all are metallic 0 / roughness 0.9. The
+legacy landmark layer folds MapLibre's view-projection × model transform
+into `camera.projectionMatrix` with an identity camera, so three.js puts
+the eye at the model origin (footprint centre, ground level) and computes
+highlights for a viewer inside the building. `landmarkShading.ts` converts
+landmark materials to Lambert once per source material (glass keeps a small
+sky tint), matching the highlight-free city buildings; `?landmarkSpecular=1`
+restores the old look for A/B. Dark slate roofs read darker now — that is
+their authored colour. GLB material range audited in a unit test.
+Integrator viewed Hotel Jakarta after.
+
 ## Home review rides no longer converge on De Dolphijn; next home ride rides on (2026-10-10)
 
 User: still "always" De Dolphijn from Da Costakade, after the 2026-10-09
