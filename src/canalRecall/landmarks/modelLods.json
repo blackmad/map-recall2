@@ -1414,5 +1414,23 @@
   "buildVersion": 2,
   "bytes": 23084,
   "triangles": 808
+ },
+ "voc-kade-600": {
+  "sourceHash": "e025cb21d3c9917c",
+  "buildVersion": 2,
+  "bytes": 93380,
+  "triangles": 4885
+ },
+ "motorkade-1": {
+  "sourceHash": "0e0bc548e60872da",
+  "buildVersion": 2,
+  "bytes": 90872,
+  "triangles": 4425
+ },
+ "de-bazel": {
+  "sourceHash": "0f0d28a0b10dc329",
+  "buildVersion": 2,
+  "bytes": 108152,
+  "triangles": 5537
  }
 }

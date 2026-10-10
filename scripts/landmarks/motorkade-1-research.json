@@ -1,0 +1,24 @@
+{
+  "id": "motorkade-1",
+  "status": "ready-pending-integrator-blind-count",
+  "identity": {
+    "bagPandId": "0363100012247879",
+    "bouwjaar": 2020,
+    "addresses": ["Motorkade 1", "Gedempt Hamerkanaal 104", "Gedempt Hamerkanaal 106"],
+    "gebruiksdoel": "logiesfunctie, overige gebruiksfunctie (Motorkade 1: 8,006 m2 lodging)",
+    "name": "Holiday Inn Express Amsterdam - North Riverside (signage seen at the entrance, ref-n-2025-09-04-b214-d54.jpg)",
+    "policy": "ordinary large building: no route destination, no POI card"
+  },
+  "sources": [
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012247879&f=json", "kind": "BAG pand attributes", "retrievedOn": "2026-10-10", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012247879", "kind": "3DBAG LoD2.2 massing", "retrievedOn": "2026-10-10", "licence": "CC BY 4.0 (3DBAG)"},
+    {"file": "artifacts/landmark-lanes/motorkade-1/ref-*.jpg", "kind": "aimed panorama thumbnails from recording_2025-09-04_06-44-53_02652/02654/02655/02660/02661/02662/02668/02669/02670/02671/02672/02677/02683 and recording_2025-09-04_07-46-10_00244/00261", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0", "retrievedOn": "2026-10-10"}
+  ],
+  "faces": {
+    "south tower south face / south podium": "evidence: ref-south.jpg (b195 d15), ref-up-e.jpg, ref-s-...-b243-d25.jpg: 12 floors counted on ref-up-e.jpg, 11 columns on the 48.6 m chord (counted on ref-south.jpg and ref-w-...-b313-d15.jpg), louvred east bays, doors in bay 6",
+    "west ends": "evidence: ref-west.jpg, ref-w-...-b158-d42.jpg (colonnade turns the corner)",
+    "east end": "partial: ref-e-...-b167-d31.jpg shows louvre panels and doors on the south tower east end; the north tower east podium is inferred",
+    "north faces of both towers and the north podium": "INFERRED from the south ribbon rhythm; only the north-west podium corner is photographed (ref-n-...-b255-d38.jpg)"
+  },
+  "limits": ["real colonnade glass line is set back 1-3 m behind the columns: drawn flush", "north tower roof crown of vertical gold fins not modelled", "LoD2.2 shell has faceted arcs and a slanted roof plane across the slot between the towers (3DBAG)", "12 floors x 3.2 m from height and photo counts; ribbon pane pitch 2.45 m estimated"]
+}
