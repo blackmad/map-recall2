@@ -2195,5 +2195,18 @@
     "https://commons.wikimedia.org/wiki/Category:Vondelkerk"
   ],
   "preferDescription": true
+},
+{
+  "modelId": "lloyd-hotel",
+  "landmarkId": "n331837646",
+  "name": "Lloyd Hotel",
+  "description": "The Lloyd Hotel on Oostelijke Handelskade is a large brick complex that Evert Breman designed for the Koninklijke Hollandsche Lloyd shipping line. Built between 1918 and 1921, it was meant as a hostel for emigrants waiting to sail to South America and doubled as advertising for the line. Its steep tiled roof, the stepped Dutch gables lettered LLOYD:HOTEL and the slender entrance tower with a clock, lantern and dome make it one of the best-known buildings on the Eastern Docklands. It later served as a refugee shelter, a prison and artists' studios before reopening as a hotel in 2004, and it has been a national monument since 2001.",
+  "funFact": "The building ended up costing eight times its original estimate, which helped bankrupt the shipping line in 1936; the city bought it, and over the following decades it held Jewish refugees, wartime detainees and, from 1963, a youth detention centre.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Lloyd_Hotel_(hotel)",
+  "additionalSources": [
+    "https://en.wikipedia.org/wiki/Lloyd_Hotel",
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/523289"
+  ],
+  "preferDescription": true
 }
 ]
