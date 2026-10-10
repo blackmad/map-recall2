@@ -51,8 +51,7 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   see-through closed under a roofed porch) is written and unit-tested but
   uncommitted in worktree agent-a9751763df4f4ceab, with palace doorway
   panels removed and the Concertgebouw canopy restored — rebuild, run the
-  full audit diff, then commit; Bellevue not started. Held: IJ-toren
-  (curtain-wall banding, terminal slabs), Zevenlandenhuizen (see-through
+  full audit diff, then commit; Bellevue not started. Held: Zevenlandenhuizen (see-through
   11/42).
   Elevation skeletons with photos exist for 25 landmarks
   (`scripts/landmarks/*-elevations.json`, photos in `artifacts/landmark-lanes/`);
