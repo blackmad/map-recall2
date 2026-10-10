@@ -26,32 +26,38 @@
      {
       "id": "front0",
       "street": "Marnixstraat",
-      "gable": "cornice",
-      "crownCap": "pediment",
-      "crownCapSpan": "narrow",
+      "gable": "step",
       "storeys": 4,
       "bays": 3,
       "doorBay": 1,
       "basement": "none",
       "cornice": "simple",
-      "windows": "sash",
+      "windows": "two-light",
       "hoist": false,
       "bands": "storey",
       "windowSurround": "stone-lintel",
-      "atticWindows": 1
+      "atticWindows": 1,
+      "crownAt": {
+       "from": 0.35,
+       "to": 0.65
+      },
+      "crownSteps": 5,
+      "crownRise": 1.1,
+      "crownFinial": true,
+      "windowProportion": "tall"
      }
     ],
     "roof": {
      "material": "slate"
     },
     "palette": {
-     "brick": "#6e4638",
+     "brick": "#6a5a50",
      "frame": "white",
      "door": "dark-green",
      "stone": "sandstone"
     },
     "notes": [
-     "1876-78 municipal row (B. de Greef): flat bracketed cornice, 3 window axes x 4 storeys, central door, narrow stepped crown over the middle axis (approximated by a pediment cap), pilaster strips at the party walls (not modelled)."
+     "1876-78 municipal row (B. de Greef): flat bracketed cornice, 3 window axes x 4 storeys, central door, narrow tall stepped gable with finial over the middle axis (crownAt/crownRise/crownSteps/crownFinial), tall two-light windows; pilaster strips at the party walls (not modelled). Brick colour measured from the strip wall (review sheet wall check)."
     ]
    },
    "groundFloor": {
@@ -82,7 +88,6 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "stepped gable with finial is a pediment cap",
      "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
     ]
    }
@@ -120,7 +125,6 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "stepped gable with finial is a pediment cap",
      "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
     ]
    }
@@ -158,7 +162,6 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "stepped gable with finial is a pediment cap",
      "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
     ]
    }
@@ -196,7 +199,6 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "stepped gable with finial is a pediment cap",
      "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
     ]
    }
@@ -234,7 +236,6 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "stepped gable with finial is a pediment cap",
      "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
     ]
    }
@@ -272,7 +273,6 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "stepped gable with finial is a pediment cap",
      "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
     ]
    }
@@ -310,7 +310,6 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "stepped gable with finial is a pediment cap",
      "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
     ]
    }
@@ -321,7 +320,7 @@
    "address": "Marnixstraat 124",
    "sameAs": "0363100012174914",
    "groundFloor": {
-    "use": "residential",
+    "use": "services",
     "name": "NiDA Wasserij Stomerij",
     "category": "shop=laundry",
     "bag": [
@@ -329,8 +328,8 @@
      "woonfunctie"
     ],
     "photoDate": "2023-01-30",
-    "agreement": "conflict",
-    "note": "Photo: white NiDA WASSERIJ STOMERIJ sign over the right-hand ground window (laundry in the right bay only; OSM node exists). The schema shopfront spans the whole width, so the ground floor is modelled residential and the laundry is a schema limit."
+    "agreement": "osm-and-photo",
+    "note": "Photo: white NiDA WASSERIJ STOMERIJ board over the right-hand ground window (laundry in the right bay only; OSM node exists). The shopfront takes bay 2 only (shopfront.bays); the left window and the central door stay residential."
    },
    "rhythm": {
     "bays": "3 window axes over a central door axis; pilaster strips at both party walls",
@@ -351,9 +350,29 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "stepped gable with finial is a pediment cap",
-     "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled",
-     "laundry shopfront (NiDA, right bay only) not expressible: shopfront spans the whole width"
+     "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+    ]
+   },
+   "overrides": {
+    "fronts": [
+     {
+      "shopfront": {
+       "colour": "dark-green",
+       "fascia": false,
+       "bays": [
+        2,
+        2
+       ],
+       "displayWindows": 1,
+       "stallriser": "low",
+       "sign": {
+        "text": "NIDA WASSERIJ STOMERIJ",
+        "textColour": "#1c3f7a",
+        "background": "white",
+        "mount": "wall"
+       }
+      }
+     }
     ]
    }
   }

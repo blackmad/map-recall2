@@ -58,13 +58,15 @@ export async function compileFace(faceId: string) {
   const report = {face: faceId, name, passed: result.passed && audit.passWithPartyExemption, seconds: +((performance.now() - t0) / 1000).toFixed(1),
     triangles: r.triangles, primitives: r.primitives, bytes: r.bytes, gzipBytes: r.gzipBytes,
     ground: {sharedNapM: result.ground.sharedNapM, shiftsM: result.ground.shiftsM, eavesBefore: result.ground.eavesBefore, eavesAfter: result.ground.eavesAfter, groups: result.ground.groups},
-    slitsClosed: result.slitsClosed, perPand: result.perPand, gates: result.gates, interference: result.interference, partyWalls: r.partyWalls, joints: r.joints, warnings: r.warnings, audit,
+    instancing: result.instancing, slitsClosed: result.slitsClosed, perPand: result.perPand, gates: result.gates, interference: result.interference, partyWalls: r.partyWalls, joints: r.joints, warnings: r.warnings, audit,
     order: result.chunk.order, frame: result.chunk.frame, pands: result.chunk.pands.map(p => ({pandId: p.pandId, recipeId: p.recipeId, frontage: p.frontage, triangles: p.triangles, eavesM: p.eavesM}))};
   await fs.writeFile(path.join(out, 'report.json'), JSON.stringify(report, null, 1) + '\n');
   await fs.writeFile(path.join(out, 'manifest-entry.json'), JSON.stringify(entry, null, 1) + '\n');
   const failed = result.gates.filter(g => !g.pass), bad = result.interference.filter(i => !i.pass);
   console.log(`${name}: ${face.houses.length} houses | ${r.triangles.chunk} tris (per-house ${r.triangles.individual}) | ${r.primitives.chunk} primitives | ${r.bytes.chunk} B (gzip ${r.gzipBytes.chunk}) | ${report.seconds} s`);
   console.log(`  gates: ${failed.length ? 'FAIL ' + failed.map(g => `${g.pand}/${g.id}=${JSON.stringify(g.value)}`).join('; ') : 'all pass'}`);
+  const inst = result.instancing;
+  console.log(`  instancing plan: ${inst.groups.length} groups (${inst.groups.map(g => g.members.length + 'x ' + g.master.slice(-6)).join(', ') || 'none'}); ${inst.savedTriangles} of ${inst.totalTriangles} tris (${inst.savedPercent} %) would be shared; chunk GLB is NOT instanced (loader contract, see blockFace/instancing.ts)`);
   for (const i of result.interference) console.log(`  ${i.left.slice(-6)}|${i.right.slice(-6)}: gap ${i.frontGapM} m, depth step ${i.frontDepthStepM} m, penetration ${i.penetrationM2.leftIntoRight}/${i.penetrationM2.rightIntoLeft} m2, overhang ${i.detailOverhangM.left}/${i.detailOverhangM.right} m, z-fight ${i.zFightM2} m2 (roof ${i.roofZFightM2}), eaves step ${i.eavesStepM} m (${i.corniceVerdict}) ${i.pass ? 'ok' : 'FAIL'}`);
   console.log(`  cornice groups: ${result.ground.groups.map(g => `${g.pands.map(p => p.slice(-6)).join('+')} spread ${g.spreadM} m ${g.snapped ? 'snapped' : 'NOT snapped'}`).join(' | ')}`);
   if (result.slitsClosed.length) console.log(`  front slits closed: ${result.slitsClosed.map(c => `${c.left.slice(-6)}|${c.right.slice(-6)} ${c.gapM} m`).join(', ')}`);

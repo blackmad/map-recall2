@@ -19,7 +19,9 @@ export const SHOP_ENTRANCES = ['none', 'centre-recessed', 'centre', 'left', 'rig
 export const SHOP_GLAZING = ['single', 'split', 'transom'] as const;
 export const STALLRISERS = ['none', 'low', 'medium', 'high'] as const;
 export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as const;
-export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop'] as const;
+export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light'] as const;
+export const WINDOW_PROPORTIONS = ['standard', 'tall'] as const;
+export const ATTIC_SHAPES = ['rectangular', 'round'] as const;
 export const ROOF_MATERIALS = ['slate', 'black-tile', 'red-tile', 'bitumen', 'zinc', 'copper'] as const;
 export const WINDOW_SURROUNDS = ['none', 'stone-lintel', 'full-frame', 'keystone'] as const;
 export const QUOINS = ['none', 'stone'] as const;
@@ -85,6 +87,20 @@ export interface FrontIntent {
    * left (`{from: 0.4, to: 1}` = the right 60 %). Gable windows, the hoist and the crown cap follow it. Default: the whole front.
    */
   crownAt?: {from: number; to: number};
+  /**
+   * Crown height in upper-storey heights above the eaves (`1.1` = a gable about one storey tall: a tall stepped Marnixstraat
+   * gable is ~1.1). Default: the fitted proportion (about 0.9 of the crown width, capped by the 3DBAG ridge).
+   * Works for gables and for cornice crowns with a cap.
+   */
+  crownRise?: number;
+  /** Number of steps per side of a `step` gable (default from its height, 2..5). */
+  crownSteps?: number;
+  /** A small finial block on the flat top of a step/neck/bell crown. */
+  crownFinial?: boolean;
+  /** `round`: the attic window is a round oculus instead of a rectangular light. */
+  atticShape?: typeof ATTIC_SHAPES[number];
+  /** `tall`: windows about 1.25x as high as the default for their width and set lower in the storey (two-light sashes of the 1870s). */
+  windowProportion?: typeof WINDOW_PROPORTIONS[number];
   /** Same as `crownAt`, but as the inclusive range of bay axes the crown stands over (`{from: 2, to: 2}` = the third axis); follows `bayWidths`. Not together with `crownAt`. */
   crownBays?: {from: number; to: number};
   /** Full storeys below the crown, including the ground storey. */
@@ -313,6 +329,13 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       else if (!Array.isArray(v) || v.length !== per || v.some(w => !(w >= 0.15 && w <= 8))) problems.push(`${at}.storeyBayWidths.${k}: ${per} relative widths (one per window of that storey), each 0.15..8`);
       else if (f.storeyAxes?.[k] || (s === f.storeys - 1 && f.storeyAxes?.last)) problems.push(`${at}.storeyBayWidths.${k}: not together with storeyAxes for the same storey`);
     }
+    if (f.crownRise !== undefined && !(f.crownRise >= 0.3 && f.crownRise <= 3)) problems.push(`${at}.crownRise: 0.3..3 upper-storey heights`);
+    if (f.crownSteps !== undefined) { count(f.crownSteps, `${at}.crownSteps`, 1, 6); if (f.gable !== 'step') problems.push(`${at}.crownSteps: only a step gable has steps`); }
+    if (f.crownFinial !== undefined && typeof f.crownFinial !== 'boolean') problems.push(`${at}.crownFinial must be boolean`);
+    if (f.crownFinial && !['step', 'neck', 'raised-neck', 'bell'].includes(f.gable)) problems.push(`${at}.crownFinial: needs a step, neck or bell gable (a flat top to stand on)`);
+    if (f.atticShape !== undefined) oneOf(f.atticShape, ATTIC_SHAPES, `${at}.atticShape`);
+    if (f.atticShape === 'round' && !f.atticWindows) problems.push(`${at}.atticShape: round needs atticWindows >= 1`);
+    if (f.windowProportion !== undefined) oneOf(f.windowProportion, WINDOW_PROPORTIONS, `${at}.windowProportion`);
     if (f.crownAt !== undefined && f.crownBays !== undefined) problems.push(`${at}: crownAt and crownBays are alternatives`);
     if (f.crownAt !== undefined || f.crownBays !== undefined) {
       if (f.gable === 'flat' || (f.gable === 'cornice' && (!f.crownCap || f.crownCap === 'flat'))) problems.push(`${at}.crownAt/crownBays: the front has no crown to place (gable ${f.gable}${f.gable === 'cornice' ? ' needs a crownCap' : ''})`);

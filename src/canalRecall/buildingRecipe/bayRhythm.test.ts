@@ -171,6 +171,39 @@ test('wallMaterial stucco puts the wall surfaces in the stucco slot; brick house
   assert.throws(() => variant({}, {palette: {...base.palette, wallMaterial: 'marble'}}), /wallMaterial/);
 });
 
+test('tall stepped gable: crownRise, crownSteps and crownFinial control height, steps and the finial block', () => {
+  const plain = compileBuilding(variant({gable: 'step', atticWindows: 1, crownAt: {from: 0.35, to: 0.65}}), facts);
+  const tall = compileBuilding(variant({gable: 'step', atticWindows: 1, crownAt: {from: 0.35, to: 0.65}, crownRise: 1.1, crownSteps: 3, crownFinial: true}), facts);
+  const eaves = tall.fit.fronts[0].eavesM, p = tall.recipe.elevations[0].crown!.value.profile, top = Math.max(...p.map(q => q[1])), upper = tall.fit.fronts[0].storeyHeightsM.at(-1)!;
+  assert.ok(Math.abs(top - eaves - 0.4 - 1.1 * upper) < 0.02, `crown top = eaves + 1.1 upper storeys + finial (${top - eaves})`);
+  const steps = (b: ReturnType<typeof compileBuilding>) => new Set(b.recipe.elevations[0].crown!.value.profile.map(q => q[1].toFixed(3))).size;
+  assert.ok(steps(tall) > steps(plain) - 1, 'three steps per side');
+  const finial = p.filter(q => q[1] >= top - 1e-6);
+  assert.equal(finial.length, 2, 'a finial block with a flat top');
+  assert.ok(finial[1][0] - finial[0][0] < 0.7, 'finial is a small block');
+  assert.throws(() => variant({gable: 'point', crownSteps: 3}), /only a step gable has steps/);
+  assert.throws(() => variant({gable: 'point', crownFinial: true}), /flat top/);
+  assert.throws(() => variant({gable: 'step', crownRise: 5}), /crownRise/);
+});
+
+test('round oculus in the gable and tall two-light windows', () => {
+  const b = compileBuilding(variant({gable: 'step', atticWindows: 1, atticShape: 'round', crownAt: {from: 0.35, to: 0.65}, crownRise: 1.1}), facts), W = width(b);
+  const o = b.recipe.elevations[0].openings.value.find(x => x.id.startsWith('attic'))!;
+  assert.equal(o.head, 'oval'); assert.ok(Math.abs(o.widthM - o.heightM) < 1e-9, 'round');
+  assert.ok(Math.abs(o.leftM + o.widthM / 2 - W / 2) < 0.02, 'centred under the gable');
+  assert.throws(() => variant({atticShape: 'round'}), /needs atticWindows/);
+  const std = compileBuilding(variant({windows: 'sash'}), facts), tall = compileBuilding(variant({windows: 'two-light', windowProportion: 'tall'}), facts);
+  const w = (x: ReturnType<typeof compileBuilding>) => x.recipe.elevations[0].openings.value.find(o => o.id === 's2-b1')!;
+  assert.ok(w(tall).heightM > w(std).heightM * 1.15, 'taller');
+  assert.deepEqual(w(tall).verticalBars, [0.5]); assert.deepEqual(w(tall).horizontalBars, [0.8]);
+  assert.ok(w(tall).bottomM - tall.fit.fronts[0].storeyHeightsM[0] >= 0, 'sits on the storey');
+});
+
+test('a shopfront limited to bays keeps the ground storey proportions of its neighbours', () => {
+  const full = compileBuilding(variant({bays: 3, axisGrid: 3, doorBay: 1, shopfront: {...shopFront, bays: [2, 2]}}), facts), none = compileBuilding(variant({bays: 3, axisGrid: 3, doorBay: 1}), facts);
+  assert.deepEqual(full.fit.fronts[0].storeyHeightsM, none.fit.fronts[0].storeyHeightsM, 'partial shop does not stretch the ground storey (rows keep lining up along the row)');
+});
+
 test('per-house recipes that do not opt in fit byte-identically (fit-golden.json)', () => {
   assert.deepEqual(fitHashes(), readGolden());
 });
