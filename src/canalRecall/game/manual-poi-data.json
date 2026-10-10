@@ -2281,16 +2281,53 @@
     ],
     "preferDescription": true
   },
-{
-  "modelId": "hotel-okura",
-  "landmarkId": "n2817713466",
-  "name": "Hotel Okura Amsterdam",
-  "description": "Hotel Okura Amsterdam stands on Ferdinand Bolstraat beside the Amstelkanaal and was the first European hotel of the Japanese Okura chain. The Dutch architects Bernard Bijvoet and Gerard Holt designed it with the Japanese architects Yoshiro Taniguchi and Yozo Shibata, and Prince Claus opened it in September 1971. Its 23 storeys rise 78 metres from a wide low podium, and the slab tower ends in a broad overhanging flat canopy that gives the skyline of De Pijp a Japanese roof silhouette. When it opened it was the second-tallest building in Amsterdam, after Toren Overhoeks. The rooftop restaurant Ciel Bleu on the 23rd floor has held two Michelin stars.",
-  "funFact": "The lit canopy at about 75 metres works as a weather barometer for the neighbourhood: its lighting shows blue for sunny weather tomorrow, green for bad weather and white for changeable conditions. There is also no 13th floor.",
-  "sourceUrl": "https://nl.wikipedia.org/wiki/Hotel_Okura_Amsterdam",
-  "additionalSources": [
-    "https://en.wikipedia.org/wiki/Hotel_Okura_Amsterdam"
-  ],
-  "preferDescription": true
-}
+  {
+    "modelId": "hotel-okura",
+    "landmarkId": "n2817713466",
+    "name": "Hotel Okura Amsterdam",
+    "description": "Hotel Okura Amsterdam stands on Ferdinand Bolstraat beside the Amstelkanaal and was the first European hotel of the Japanese Okura chain. The Dutch architects Bernard Bijvoet and Gerard Holt designed it with the Japanese architects Yoshiro Taniguchi and Yozo Shibata, and Prince Claus opened it in September 1971. Its 23 storeys rise 78 metres from a wide low podium, and the slab tower ends in a broad overhanging flat canopy that gives the skyline of De Pijp a Japanese roof silhouette. When it opened it was the second-tallest building in Amsterdam, after Toren Overhoeks. The rooftop restaurant Ciel Bleu on the 23rd floor has held two Michelin stars.",
+    "funFact": "The lit canopy at about 75 metres works as a weather barometer for the neighbourhood: its lighting shows blue for sunny weather tomorrow, green for bad weather and white for changeable conditions. There is also no 13th floor.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Hotel_Okura_Amsterdam",
+    "additionalSources": [
+      "https://en.wikipedia.org/wiki/Hotel_Okura_Amsterdam"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "coymanshuis",
+    "landmarkId": "requested-coymanshuis",
+    "name": "Coymanshuis",
+    "description": "The Coymanshuis at Keizersgracht 177 is the first known architectural design by Jacob van Campen, drawn in 1625 for the trader-banker Balthasar Coymans and his brother Johannes. Its eight-bay brick front is organised by pilasters, Ionic on the bel-etage and Composite on the floor above, a classical vocabulary that was new to Amsterdam's canal houses. The cross windows were replaced by sashes around 1780, and in 1876 the attic became a full storey when the house turned into a secondary school. Since 2003 it has been the Dutch head office of Amnesty International.",
+    "funFact": "In 1631 the architects Cornelis Danckerts and Salomon de Bray published the front and plan in Architectura Moderna and claimed that every visitor to the city who values architecture should come and see it; Van Campen went on to design Amsterdam's Town Hall, now the Royal Palace on the Dam.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Coymanshuis",
+    "additionalSources": [
+      "https://en.wikipedia.org/wiki/Coymanshuis",
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/2271"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "artis-aquarium",
+    "landmarkId": "requested-artis-aquarium",
+    "name": "Artis Aquarium",
+    "description": "The Aquarium building of Artis, at Plantage Middenlaan 53, was designed by Gerlof Bartholomeus Salm and his son Abraham and opened in 1882. It is a neoclassical hall with a tetrastyle Corinthian portico, a double flight of stairs, a pediment with a painted fish mural and the motto Natura Artis Magistra on the frieze. Behind the street front the aquaria face the garden, and a dome at the east end once held a lecture hall. In the twentieth century it housed the University of Amsterdam's Zoological Museum; after a restoration from 2021 to 2025 the aquarium reopened to the public in June 2026.",
+    "funFact": "The weight of the tanks and their glass panes required 1,740 wooden piles, and the cellars hold huge reservoirs of gravel and coarse sand that purified the water; the first fresh- and salt-water basins were filled in 1882 with North Sea fish and Dutch freshwater species.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Aquariumgebouw",
+    "additionalSources": [
+      "https://nl.wikipedia.org/wiki/Artis"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "krasnapolsky",
+    "landmarkId": "n251150450",
+    "name": "Grand Hotel Krasnapolsky",
+    "description": "The Grand Hotel Krasnapolsky, now the Anantara Grand Hotel Krasnapolsky, fills a long block on the east side of the Dam. It began in 1865 when Adolph Wilhelm Krasnapolsky bought the failing Nieuwe Poolse Koffiehuis on the Warmoesstraat and turned it into a popular restaurant with a billiard room. He bought the neighbouring houses, added hotel rooms around 1879, and built a glass-and-iron Winter Garden with a domed roof in the back garden to a design by G.B. Salm. After the Second World War the hotel grew south to the Pijlsteeg and north to the Sint Jansstraat, and its address changed from Warmoesstraat 187-205 to Dam 9-15.",
+    "funFact": "The Winter Garden, with its electric lighting, was so novel that it is said to have inspired Gerard Philips to start a light-bulb factory; by the end of the 19th century the hotel was the only one in Amsterdam with hot water and a telephone in every room.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Grand_Hotel_Krasnapolsky",
+    "additionalSources": [
+      "https://en.wikipedia.org/wiki/Grand_Hotel_Krasnapolsky"
+    ],
+    "preferDescription": true
+  }
 ]

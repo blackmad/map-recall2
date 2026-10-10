@@ -25,6 +25,7 @@ import {buildSeaPalace} from './landmarks/sea-palace-builder';
 import {buildDeSchool} from './landmarks/de-school-builder';
 import {buildWestIndischPakhuis} from './landmarks/west-indisch-pakhuis-builder';
 import {discoveryACases} from './landmarks/attachment-cases-discovery-a';
+import {discoveryCCases} from './landmarks/attachment-cases-discovery-c';
 import {buildChristChurchGroenburgwal} from './landmarks/christ-church-groenburgwal-builder';
 import {buildLjgSynagoge} from './landmarks/ljg-synagoge-builder';
 import {buildVondelkerk} from './landmarks/vondelkerk-builder';
@@ -57,7 +58,7 @@ const deSchool = () => JSON.parse(fs.readFileSync('scripts/landmarks/de-school-f
 cases['de-school'] = {build: buildDeSchool, ring: () => deSchool().nativeRing, top: () => Math.max(...deSchool().surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 1.0};
 const wip = () => JSON.parse(fs.readFileSync('scripts/landmarks/west-indisch-pakhuis-footprints.json', 'utf8'));
 cases['west-indisch-pakhuis'] = {build: buildWestIndischPakhuis, ring: () => wip().nativeRing, top: () => Math.max(...wip().surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 1.0};
-Object.assign(cases, discoveryACases);
+Object.assign(cases, discoveryACases, discoveryCCases);
 const christChurch = () => JSON.parse(fs.readFileSync('scripts/landmarks/christ-church-groenburgwal-footprints.json', 'utf8'));
 cases['christ-church-groenburgwal'] = {build: buildChristChurchGroenburgwal, ring: () => christChurch().nativeRing, top: () => Math.max(...christChurch().surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 3.0};
 const ljg = () => JSON.parse(fs.readFileSync('scripts/landmarks/ljg-synagoge-footprints.json', 'utf8'));
