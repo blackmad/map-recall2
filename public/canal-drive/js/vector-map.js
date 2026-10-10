@@ -173,6 +173,7 @@ class VectorBasemap {
       if (signature?.SignatureLandmarks && manualModels) {
         this._signatureLandmarks = new signature.SignatureLandmarks(this.map, maplibregl, {
           models: manualModels,
+          streetChunks: true,
           loadVisibleOnly: true,
           depthBiasEnabled: !this._completeCityHasBuildings,
           manageBasemapFilter: false,

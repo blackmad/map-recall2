@@ -293,8 +293,8 @@ stone lintels on the top storey + black straight awning over the left shop (fron
 ## Street chunks: one mesh per block face (pilot, 2026-10-09)
 
 `src/canalRecall/streetChunks/` compiles a block face (houses that share party walls and front the same way) into
-ONE glTF mesh, one primitive per material, from the houses' intent recipes + 3DBAG facts. Nothing is installed by
-default; the loader path is opt-in (`?streetChunks=1`).
+ONE glTF mesh, one primitive per material, from the houses' intent recipes + 3DBAG facts. The installed chunks are the game default;
+`?streetChunks=0` draws the individual houses. Demo: `street-chunks.html`; fidelity gates: `scripts/street-chunks/gates.ts [--install]`.
 
 ```sh
 node --import tsx scripts/street-chunks/build.ts [--prefix=bilder-] [--min=2] [--install]   # -> artifacts/street-chunks/
@@ -326,9 +326,9 @@ What a chunk does that the individual houses do not:
 height, suppress: [BAG pand ids], replaces: ["ordinary-<pand>", ...], footprint: MultiPolygon, pands: [...]}]}`.
 `src/canalRecall/landmarks/ordinaryChunks.ts` turns each entry into ONE `SignatureModelSpec` (surveyed placement in the
 chunk frame, `suppressOsmIds` = every covered pand, `chunkPands` for hover) and `applyStreetChunks` removes the per-house
-specs in `replaces` from the model list. `signature-landmarks-source.js` fetches the manifest only with `?streetChunks=1`,
+specs in `replaces` from the model list. `signature-landmarks-source.js` fetches the manifest (game host only, `options.streetChunks`; skipped with `?streetChunks=0`),
 swaps the list, drops already-drawn replaced houses and answers `inspectAtScreen` with the pand under the cursor.
-Without the flag or the manifest nothing changes. Rebuild after merging: `npm run build:canal-signature-landmarks`,
+With `?streetChunks=0` or without the manifest nothing changes. Rebuild after merging: `npm run build:canal-signature-landmarks`,
 `npm run build:canal-3d`.
 
 ### Measured (Bilderdijkstraat, 15 of 19 houses in 4 chunks; 4 houses stand alone, 5-12 m from a neighbour)

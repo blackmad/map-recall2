@@ -2,10 +2,10 @@ import { test, expect, type Page } from '@playwright/test';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
 
-// Street chunks (one mesh per block face) vs the installed per-house models, same camera.
+// Street chunks (one mesh per block face, the default) vs ?streetChunks=0 (per-house models), same camera.
 //   node --import tsx scripts/street-chunks/build.ts --install     (stages + installs the chunks)
 //   PW_PORT=4403 npx playwright test street-chunks --project=desktop --project=iphone
-// Each mode (off = per-house models, on = ?streetChunks=1) screenshots the same free-camera views and
+// Each mode (off = ?streetChunks=0, per-house models; on = the default) screenshots the same free-camera views and
 // records what the layer holds: entries, meshes, triangles, requests, suppression, hover resolution, frame times.
 const OUT = 'artifacts/street-chunks/in-game';
 const manifest = JSON.parse(readFileSync('public/canal-drive/ordinary-buildings-data/chunks.json', 'utf8'));
@@ -36,7 +36,7 @@ for (const mode of ['off', 'on'] as const) {
     mkdirSync(OUT, { recursive: true });
     const requests: string[] = [];
     page.on('request', r => { if (/\.glb/.test(r.url()) && /recipe-bilder|chunk-/.test(r.url())) requests.push(r.url().split('?')[0].split('/').pop()!); });
-    await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: mode === 'on' ? '?streetChunks=1' : '' });
+    await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: mode === 'off' ? '?streetChunks=0' : '' });
     await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 });
     const at = ahead(ahead(chunk.instance.anchor, bearing, -12), outward, 9);
     await parkAt(page, at, ahead(at, bearing, 40));
