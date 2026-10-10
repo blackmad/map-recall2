@@ -261,6 +261,24 @@ sun shadows for buildings/trees/landmarks in that single pass; shadows land on
 our own meshes (not yet on MapLibre's ground). This removes most "draw order
 fights" between our own layers and is valuable even if we never go further.
 
+*Status 2026-10-10 (branch `render/shared-frame-20261009`): built behind
+`?sharedFrame=1`, default off.* `src/canalRecall/rendererShared/` (frameMath,
+shadowFit, lightRig, layerRegistry, residency, litFacadeMaterial, sharedFrame
++ tests). The nine default-ride layers (facades, landmarks, municipal trees,
+pyramidal roofs, ARTIS, four vehicles) register with it; MapLibre now sees two
+custom layers on one renderer: `shared-frame-main` at the old facade slot and
+`shared-frame-overlay` (vehicles, kept last for the x-ray). World = ENU metres
+about the eye recovered from MapLibre's matrix; one 1024/2048 sun shadow map,
+16 m texel-aligned steps, redrawn only when the box steps or casters change
+(~24 redraws per 12 s ride). Still own layers: elevation (opt-in), 3DBAG
+detailed buildings, Google tiles, study pages. Fixed-route ride (Anne Frank
+Huis → Rijksmuseum, iPhone 13, 4× CPU, 3 interleaved pairs): frames 16.7 ms
+median in both, `map._render` median 6.5 → 7.1 ms and p95 8.3 → 9.6 ms with
+shadows (~+0.6 ms, ~+9%); `shadows=0` runs were within run-to-run noise
+of off (±0.6 ms) but not clearly cheaper. Desktop 2.0 → 2.2 ms. Picking,
+draw order of ground/water/bridges vs buildings and label order unchanged.
+Re-run: `PORT=… node scripts/ride-perf-fixed-route.mjs on "?sharedFrame=1"`.
+
 **Phase 2 — three.js owns the ground near the rider (1–2 weeks).** Add
 street ribbons, parks and paved ground from our extracts within the
 streaming radius; the canal opening becomes our own stencil (no more private

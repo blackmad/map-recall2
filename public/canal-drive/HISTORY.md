@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+## Audit hole fixes: one real hole, mostly false positives (2026-10-10)
+
+Gerard Dou synagogue had its east hall wall and west clerestory missing:
+survey walls starting with three collinear points gave a zero normal and
+triangulated to nothing (Newell normal now). Stadsschouwburg's two glass
+ribbon strips hovered 3.4 m off the stage house; now seated on the measured
+flank. He Hua temple and NEMO were re-wound only (no visible change; manual
+materials are double-sided). Most other top audit see-through findings are
+convex-hull artefacts: rays start 3 m outside the hull and reach 4 m, so on
+concave footprints the real wall is out of reach. Open structures (Pontsteiger
+arch, Haarlemmerpoort colonnade, cranes) are intentional.
+
+## Het Pakhuis v2 released (2026-10-10)
+
+Released on user instruction after review of the v2 contact sheet.
+Integrator record: viewed the contact sheet (photo | front | 3/4); facade
+compare passes all checks on the NW street front against the recounted spec
+(9 rows × 5, 5 axes, symmetry 0.81, 5 gables, bays 1–3 identical); audit
+passes with warns (two party walls, inferred SE rear with no photo, 27 small
+open loops, 19 degenerate triangles); block-kit gates: height Δ 0.28 m, max
+gap 3.3 cm, 2,798 tris. Inferred faces: SE rear (enclosed courtyard), side
+party walls. Known differences: lettering lighter, balconies 0.95 m deep,
+bay 0 ~0.35 m narrow.
+
 ## Review harness: blank walls, per-bay rhythm, camera-matched sheets (2026-10-10)
 
 - `glbQuality.ts` + `wallPlanes.ts`: walls ≥25 m² whose openings (enclosed
@@ -32,6 +56,16 @@ except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
 `?streetChunks=1` (`ordinary-buildings-data/chunks.json`); the visual win
 (continuous ground and cornice line) does not need chunking. Unmeasured on a
 real phone GPU.
+
+## Klimhal and Symphony (2026-10-10)
+
+Klimhal Amsterdam (Naritaweg, lofted ogive hall with glazed flanks) and
+Symphony (Zuidas; two stepped orange-brick towers, hotel and apartment
+blocks on one BAG pand) installed after review. IJ-toren and
+Zevenlandenhuizen held (see TODO). The integrator rejected two audit
+workarounds (fake doorway panels on hidden palace partitions, a shortened
+Concertgebouw canopy): a model is never changed to satisfy a check; false
+positives are fixed in the check with a regression test.
 
 ## Zuiderkerk, Muiderkerk, Van Gendt Hallen; Palace and De Balie reworked (2026-10-10)
 

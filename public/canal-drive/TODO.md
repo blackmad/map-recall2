@@ -44,8 +44,16 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   N and S fronts are blank (audit blank-wall FAIL, 45 x 25 m each); De Balie's
   front is straight where the real one is bowed; Concertgebouw has 151 open
   loops and 24/42 see-through rays from its glass promenade. Aron Schuster
-  synagogue held (brick too dark; banded rounded volumes, pale roof edges,
-  garden wall missing; rework in flight).
+  synagogue installed after rework; its rounded corner is still squared.
+- **Lanes cut off by the usage limit (2026-10-10)**, resume from their branches:
+  the
+  glbQuality false-positive fix (blank-wall only on outside-visible area,
+  see-through closed under a roofed porch) is written and unit-tested but
+  uncommitted in worktree agent-a9751763df4f4ceab, with palace doorway
+  panels removed and the Concertgebouw canopy restored — rebuild, run the
+  full audit diff, then commit; Bellevue not started. Held: IJ-toren
+  (curtain-wall banding, terminal slabs), Zevenlandenhuizen (see-through
+  11/42).
   Elevation skeletons with photos exist for 25 landmarks
   (`scripts/landmarks/*-elevations.json`, photos in `artifacts/landmark-lanes/`);
   counts are not filled: Haiku blind counts were too noisy — use a stronger
@@ -163,13 +171,17 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   minimap/overview, dropping the live OpenFreeMap dependency. Gaps: no road
   widths/sidewalks in our extracts (centrelines only), humped bridges render
   as grey slabs, no route line/labels/HUD in the spike.
-- **Haparandaweg held/skipped**: Het Pakhuis (902–950) held 2026-10-09 by
-  user review — five identical gables with symmetric window grids, HET
-  PAKHUIS band, double-height glazed ground floor; the model scattered
-  windows and invented setbacks. Rebuild against a facade-rhythm spec. Review 65 (needs the terracotta upper volume),
+- **Haparandaweg held/skipped**: 952-1002 and 746-786 held 2026-10-10 after
+  review sheets (patchwork panes and an invented red stripe vs a regular red
+  curtain-wall grid; projecting slab balconies vs a flat stone grid with
+  recessed glass balconies); 870-900 SE side should be beige render, not
+  glass. Review 65 (needs the terracotta upper volume),
   650–706 (paired casements, stone bands), 708–744, 788–868 (glass bays);
   retry 940–950 with another photo source; 582–648 after scaffolding. The
   street sheet framing was poor (bike drawn over a roof) — reshoot.
+- **Audit see-through test is hull-limited**: cast rays fully through the
+  bbox (or from outside the footprint) in `glbQuality.ts`; today concave
+  footprints flag false holes. Madame Tussauds has small roof-junction gaps.
 - **Review harness follow-ups**: `review-sheet.ts` needs ordinary-house
   support (no catalogue entry/anchor) before Bilderdijkstraat re-review; ground
   NAP offset not applied to the matched camera; record party-wall bearings per

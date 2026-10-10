@@ -1,0 +1,35 @@
+{
+ "id": "symphony",
+ "facades": [
+  {
+   "name": "tower A south (block and shaft)",
+   "bearing": 180,
+   "photo": "artifacts/landmark-lanes/symphony/ref-south-towers.jpg",
+   "span": [
+    15,
+    43.5
+   ],
+   "depthBand": 60
+  },
+  {
+   "name": "tower B south (wing, stage, core)",
+   "bearing": 180,
+   "photo": "artifacts/landmark-lanes/symphony/ref-south-towers.jpg",
+   "span": [
+    56,
+    74.5
+   ],
+   "depthBand": 90
+  },
+  {
+   "name": "hotel south",
+   "bearing": 180,
+   "photo": "artifacts/landmark-lanes/symphony/ref-hotel-south.jpg",
+   "span": [
+    74,
+    121
+   ],
+   "depthBand": 12
+  }
+ ]
+}

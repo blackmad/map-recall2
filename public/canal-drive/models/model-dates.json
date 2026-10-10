@@ -72,8 +72,8 @@
       "dateSource": "git-history"
     },
     "aron-schuster-synagoge": {
-      "updatedAt": "2026-10-09T22:24:10.575Z",
-      "version": "366d8c7f8f20c6e4",
+      "updatedAt": "2026-10-10T02:13:44.056Z",
+      "version": "ebb16aa5aa077ad3",
       "dateSource": "asset-update"
     },
     "artis-entrance": {
@@ -402,8 +402,8 @@
       "dateSource": "git-history"
     },
     "gerard-dou-synagogue": {
-      "updatedAt": "2026-10-09T18:02:14.038Z",
-      "version": "ecd622637264da57",
+      "updatedAt": "2026-10-10T02:13:27.260Z",
+      "version": "de8c17041c88fa89",
       "dateSource": "asset-update"
     },
     "groot-melkhuis": {
@@ -512,9 +512,9 @@
       "dateSource": "git-history"
     },
     "he-hua-temple": {
-      "updatedAt": "2026-10-04T00:18:08+02:00",
-      "version": "fcf36613652d62ca",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-10T02:13:27.146Z",
+      "version": "7a42a11a10b61fd2",
+      "dateSource": "asset-update"
     },
     "heineken-experience-amsterdam": {
       "updatedAt": "2026-10-04T19:31:25+02:00",
@@ -606,6 +606,11 @@
       "version": "666d6b58ad29572a",
       "dateSource": "git-history"
     },
+    "ij-toren": {
+      "updatedAt": "2026-10-10T02:12:05.651Z",
+      "version": "c0341634b2815d2d",
+      "dateSource": "asset-update"
+    },
     "ing-house": {
       "updatedAt": "2026-10-04T23:51:03+02:00",
       "version": "411fcd990d5e838a",
@@ -660,6 +665,11 @@
       "updatedAt": "2026-10-04T00:07:10+02:00",
       "version": "4b55df2562dcf809",
       "dateSource": "git-history"
+    },
+    "klimhal": {
+      "updatedAt": "2026-10-10T02:12:05.575Z",
+      "version": "1a7194d721ba40c4",
+      "dateSource": "asset-update"
     },
     "klimmuur-centraal": {
       "updatedAt": "2026-10-06T07:57:51.485Z",
@@ -832,9 +842,9 @@
       "dateSource": "asset-update"
     },
     "nemo": {
-      "updatedAt": "2026-10-04T13:28:28+02:00",
-      "version": "31386d84a4793626",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-10T02:13:27.234Z",
+      "version": "9ae65e782c7796ca",
+      "dateSource": "asset-update"
     },
     "nieuw-dakota": {
       "updatedAt": "2026-10-06T20:56:05.320Z",
@@ -1102,9 +1112,9 @@
       "dateSource": "git-history"
     },
     "stadsschouwburg": {
-      "updatedAt": "2026-10-04T17:40:44+02:00",
-      "version": "1bd50d002bf9bb79",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-10T02:13:27.194Z",
+      "version": "f950482a184edc53",
+      "dateSource": "asset-update"
     },
     "stedelijk-museum": {
       "updatedAt": "2026-10-04T00:13:31+02:00",
@@ -1120,6 +1130,11 @@
       "updatedAt": "2026-10-04T03:30:16+02:00",
       "version": "c41ea486ca160306",
       "dateSource": "git-history"
+    },
+    "symphony": {
+      "updatedAt": "2026-10-10T02:12:05.621Z",
+      "version": "045947226436ce65",
+      "dateSource": "asset-update"
     },
     "the-movies": {
       "updatedAt": "2026-10-03T23:59:52+02:00",
@@ -1259,6 +1274,11 @@
     "wine-guildhall": {
       "updatedAt": "2026-10-06T17:58:05.515Z",
       "version": "1e475780392acc9f",
+      "dateSource": "asset-update"
+    },
+    "zevenlandenhuizen": {
+      "updatedAt": "2026-10-10T02:12:05.566Z",
+      "version": "94a74a79aba636cc",
       "dateSource": "asset-update"
     },
     "zuiderkerk": {

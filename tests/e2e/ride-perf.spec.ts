@@ -35,7 +35,7 @@ async function instrument(page: Page) {
     const w = window as any;
     const vm = w.canalRecallGame.vectorMap;
     const map = vm.map;
-    const t: Record<string, number[]> = { frame: [], mapRender: [], landmarkRender: [], moveend: [], move: [] };
+    const t: Record<string, number[]> = { frame: [], mapRender: [], landmarkRender: [], threeLayers: [], moveend: [], move: [] };
     w.__perf = t;
     const wrap = (obj: any, key: string, bucket: string) => {
       const original = obj[key].bind(obj);
@@ -43,7 +43,13 @@ async function instrument(page: Page) {
     };
     wrap(map, '_render', 'mapRender');
     const layer = vm._signatureLandmarks?.layer;
-    if (layer?.render) wrap(layer, 'render', 'landmarkRender');
+    if (layer?.render && !vm._sharedFrame) wrap(layer, 'render', 'landmarkRender');
+    // All of our three.js drawing, either as the legacy per-feature layers or
+    // as the shared frame's two passes (SHARED_FRAME=1), for a like-for-like total.
+    const own = vm._sharedFrame ? [vm._sharedFrame.mainLayer, vm._sharedFrame.overlayLayer]
+      : [vm._threeBuildings?.layer, vm._signatureLandmarks?.layer, vm._inventoryTrees?.layer, vm._artisAnimals?.layer, vm._pyramidalRoofs?.layer,
+        vm._playerBike?.layer, vm._playerFerry?.layer, vm._playerBoat?.layer, vm._playerTransit?.layer];
+    for (const l of own) if (l?.render && map.getLayer(l.id)) wrap(l, 'render', 'threeLayers');
     const fire = map.fire.bind(map);
     map.fire = (event: any, ...rest: unknown[]) => {
       const type = typeof event === 'string' ? event : event?.type;
@@ -64,6 +70,9 @@ for (const variant of variants) {
     test.setTimeout(300_000);
     // CANAL_ELEVATION=1|0 forces the opt-in elevation layer on or off (docs/elevation.md).
     if (process.env.CANAL_ELEVATION) await page.addInitScript((on: boolean) => { (window as any).__canalRecallElevation = on; }, process.env.CANAL_ELEVATION === '1');
+    // SHARED_FRAME=1|0 forces the shared three.js frame (rendererShared/) on or off; SHADOWS=0 drops its sun shadows.
+    if (process.env.SHARED_FRAME) await page.addInitScript((on: boolean) => { (window as any).__canalRecallSharedFrame = on; }, process.env.SHARED_FRAME === '1');
+    if (process.env.SHADOWS) await page.addInitScript((on: boolean) => { (window as any).__canalRecallShadows = on; }, process.env.SHADOWS === '1');
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
     await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 });
     await page.evaluate(async (mode) => {
@@ -111,14 +120,14 @@ for (const variant of variants) {
     const sample = {
       label: variant.label, project: info.project.name, throttle,
       frames: { ...summary(frames), p99: +pick(frames, 0.99).toFixed(2), over50: frames.filter((f: number) => f > 50).length, over100: frames.filter((f: number) => f > 100).length },
-      mapRender: summary(raw.t.mapRender), landmarkRender: summary(raw.t.landmarkRender),
+      mapRender: summary(raw.t.mapRender), landmarkRender: summary(raw.t.landmarkRender), threeLayers: summary(raw.t.threeLayers),
       moveend: summary(raw.t.moveend), move: summary(raw.t.move),
       landmarksShown: raw.shown, heapMB: raw.heapMB, threeBuildings: raw.three, hot,
     };
     results.push(sample);
     console.log(JSON.stringify(sample));
     mkdirSync('artifacts/perf', { recursive: true });
-    writeFileSync(`artifacts/perf/ride-perf-${info.project.name}${process.env.CANAL_ELEVATION ? `-elevation${process.env.CANAL_ELEVATION}` : ''}.json`, JSON.stringify(results, null, 2));
+    writeFileSync(`artifacts/perf/ride-perf-${info.project.name}${process.env.CANAL_ELEVATION ? `-elevation${process.env.CANAL_ELEVATION}` : ''}${process.env.SHARED_FRAME ? `-shared${process.env.SHARED_FRAME}` : ''}${process.env.SHADOWS ? `-shadows${process.env.SHADOWS}` : ''}.json`, JSON.stringify(results, null, 2));
     expect(frames.length).toBeGreaterThan(20);
   });
 }
