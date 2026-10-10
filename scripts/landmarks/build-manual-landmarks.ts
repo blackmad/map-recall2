@@ -73,6 +73,7 @@ import {buildMediamatic} from './mediamatic-builder';
 import {buildHaparandaweg13} from './haparandaweg-13-builder';
 import {buildHaparandaweg11} from './haparandaweg-11-builder';
 import {buildHaparandaweg9} from './haparandaweg-9-builder';
+import {buildHiltonAmsterdam} from './hilton-amsterdam-builder';
 import {buildBlankenstraat15} from './blankenstraat-15-builder';
 import {buildBogortuin101} from './bogortuin-101-builder';
 import {buildHaarlemmerweg333} from './haarlemmerweg-333-builder';
@@ -588,6 +589,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='haparandaweg-2-4')buildHaparandaweg24(w,d,helpers);
     else if(id==='haparandaweg-8-338')buildHaparandaweg8338(w,d,helpers);
     else if(id==='haparandaweg-9')buildHaparandaweg9(w,d,helpers);
+    else if(id==='hilton-amsterdam')buildHiltonAmsterdam(w,d,helpers);
     else if(id==='blankenstraat-15')buildBlankenstraat15(w,d,helpers);
     else if(id==='bogortuin-101')buildBogortuin101(w,d,helpers);
     else if(id==='haarlemmerweg-333')buildHaarlemmerweg333(w,d,helpers);
