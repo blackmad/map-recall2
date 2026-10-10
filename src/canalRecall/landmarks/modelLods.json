@@ -1492,5 +1492,11 @@
   "buildVersion": 2,
   "bytes": 64764,
   "triangles": 3294
+ },
+ "shell-technology-centre": {
+  "sourceHash": "f79ab119a1c5f566",
+  "buildVersion": 2,
+  "bytes": 88760,
+  "triangles": 4423
  }
 }

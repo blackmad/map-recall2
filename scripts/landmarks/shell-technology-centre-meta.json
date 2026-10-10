@@ -1,0 +1,10 @@
+{
+  "name": "Shell Technology Centre Amsterdam",
+  "landmarkId": "shell-technology-centre",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Energy_Transition_Campus_Amsterdam",
+  "suppressOsmIds": ["NL.IMBAG.Pand.0363100012202175"],
+  "pandId": "0363100012202175",
+  "materialOverrides": {"brick": "#665554", "glass": "#6f8798", "concrete": "#8a8a86", "frame": "#4a3835", "dark": "#2e2a29", "white": "#e9e8e2"},
+  "surveySource": "BAG 0363100012202175 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean.",
+  "modifications": "Original texture-free geometry on the 3DBAG LoD2.2 massing; window ribbons, brick piers and the glazed atrium measured by eye from two municipal panoramas, remaining faces inferred, no pixels or meshes imported."
+}
