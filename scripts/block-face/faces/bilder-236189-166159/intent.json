@@ -1,0 +1,454 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bilder-236189-166159",
+ "street": "Bilderdijkstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-12",
+   "image": "staging/block-face/bilder-236189-166159/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012236189",
+   "slug": "bface-236189",
+   "address": "Bilderdijkstraat 102-106",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "heavy",
+      "hoist": false,
+      "gable": "cornice",
+      "storeys": 4,
+      "bays": [
+       9,
+       8,
+       8,
+       8
+      ],
+      "axisGrid": 9,
+      "storeyAxes": {
+       "1": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+       ],
+       "2": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+       ],
+       "3": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+       ]
+      },
+      "dormers": 3,
+      "doorBay": null,
+      "windows": "plain",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1
+       ],
+       "bays": [
+        3,
+        6
+       ]
+      },
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "name": "Sunika",
+       "sign": {
+        "text": "SUNIKA",
+        "textColour": "#e8352b",
+        "mount": "fascia",
+        "align": "right",
+        "span": 0.3
+       },
+       "displayWindows": 3,
+       "stallriser": "low",
+       "evidence": "pano 2023-01-12 + OSM nodes 2809198387, 2809213010"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#8a5646",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2023-01-12",
+    "use": "shop",
+    "name": "Sunika",
+    "category": "shop=shoes",
+    "osm": {
+     "type": "node",
+     "id": 2809198387,
+     "name": "Sunika",
+     "tags": "shop=shoes"
+    },
+    "bag": [
+     "winkelfunctie",
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Three houses with one ground floor: at the right a black Sunika front (multicolour neon-style letters, glazed double door), at the left cafe Karavaan (OSM amenity=cafe; large cream-framed windows, Kwakersplein side) and two wooden doors. Only Sunika is signed and modelled."
+   },
+   "rhythm": {
+    "bays": "8 window axes in storeys 1-3 on a 9-slot grid (the 9th slot belongs to the neighbour), irregular pitch: 2 + 3 + 3",
+    "identicalBays": "storeys 1-3 identical; balconies at axes 3 and 6 on every storey",
+    "windowsPerStorey": "ground: cafe glazing | doors | Sunika | 1-3: 8 | roof: 3 stepped dormer gables with 1 window each",
+    "symmetry": "none",
+    "groundFloor": "brown cafe front and doors at the left, black Sunika front at the right",
+    "signage": "SUNIKA multicolour",
+    "roofline": "three crow-stepped dormer gables (left small, middle, right with a finial) on a dark mansard",
+    "citation": "bilder-236189-166159 strip.jpg pand 1",
+    "photoRows": [
+     3,
+     8,
+     8,
+     8,
+     3
+    ],
+    "photoGables": 3,
+    "schemaLimits": [
+     "three stepped gables are modelled as 3 plain dormers",
+     "unequal pitch between the 2-, 3- and 3-window groups is modelled as an equal 9-slot grid",
+     "cafe Karavaan front and its sign are not modelled (one shopfront)",
+     "multicolour lettering is one colour",
+     "segmental window heads and balconies above storey 1 dropped for the triangle budget (full detail ~4,900 triangles)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236188",
+   "slug": "bface-236188",
+   "address": "Bilderdijkstraat 100",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "step",
+      "storeys": 4,
+      "bays": 3,
+      "atticWindows": 1,
+      "doorBay": null,
+      "windows": "arched",
+      "archRings": "band",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "#6e2430",
+       "fascia": true,
+       "name": "Spax Vitamineshop",
+       "sign": {
+        "text": "SPAX VITAMINESHOP",
+        "textColour": "white",
+        "mount": "fascia",
+        "align": "centre",
+        "span": 0.85
+       },
+       "displayWindows": 2,
+       "stallriser": "low",
+       "evidence": "pano 2023-01-12 + OSM node 11576142492"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#8a5646",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2023-01-12",
+    "use": "shop",
+    "name": "Spax Vitamineshop",
+    "category": "shop=nutrition_supplements",
+    "osm": {
+     "type": "node",
+     "id": 11576142492,
+     "name": "Spax",
+     "tags": "shop=nutrition_supplements"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Dark-red fascia with white script \"Spax Vitamineshop\"; dark glazing with posters and a side door."
+   },
+   "rhythm": {
+    "bays": "3 identical bays, balcony on the middle window of every storey",
+    "windowsPerStorey": "ground: shop | 1-3: 3 segmental-arched (balcony middle) | gable: 1",
+    "symmetry": "upper storeys mirror-symmetric; small crow-stepped gable left of centre",
+    "groundFloor": "dark-red fascia over a glazed shop",
+    "signage": "Spax Vitamineshop (script)",
+    "roofline": "small crow-stepped gable with a finial left of the middle",
+    "citation": "bilder-236189-166159 strip.jpg pand 2",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "gable is centred in the model; on the photo left of centre (~0.3)",
+     "script lettering is drawn as block capitals"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012157174",
+   "slug": "bface-157174",
+   "address": "Bilderdijkstraat 96",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "cornice",
+      "crownCap": "flat",
+      "crownCapSpan": "narrow",
+      "storeys": 4,
+      "bays": 2,
+      "atticWindows": 1,
+      "doorBay": null,
+      "windows": "sash",
+      "archRings": "band",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        0
+       ]
+      },
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "name": "Back",
+       "displayWindows": 2,
+       "stallriser": "none",
+       "evidence": "pano 2023-01-12 + OSM node 11576168837"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#7a4030",
+     "frame": "white",
+     "door": "black",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2023-01-12",
+    "use": "restaurant",
+    "name": "Back",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 11576168837,
+     "name": "Back",
+     "tags": "amenity=restaurant"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "Black fascia and dark glazing; no legible sign on 2023-01-12. On 2024-11-29 a parked lorry with a green wrap hid the whole ground floor and the lower storeys, so the 2023 leaf-off capture is used for this face."
+   },
+   "rhythm": {
+    "bays": "2 unequal bays: wide left bay (3-light window with balcony), narrow right bay (single window, arched on the top storey)",
+    "windowsPerStorey": "ground: shop | 1-3: 3-light + single (balcony left on storeys 1-2) | roof: tower window",
+    "symmetry": "none",
+    "groundFloor": "black fascia and dark glass",
+    "signage": "none legible",
+    "roofline": "narrow brick tower over the left bay with a window, pediment and a finial",
+    "citation": "bilder-236189-166159 strip.jpg pand 3",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "INTERFERENCE FAIL on the 236188|157174 and 157174|166159 joints (z-fight 0.01 and 0.14 m2, depth step -0.038 m): survey fronts overlap by ~2 cm; not fixable in the intent",
+     "tower with pediment and finial over the left bay is not modelled (crown is a flat cap)",
+     "bays are equal width; photo: wide 3-light left, narrow single right",
+     "tower gable is centred in the model; on the photo it sits over the left bay",
+     "top-storey arched window at the right is a rectangular window"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012166159",
+   "slug": "bface-166159",
+   "address": "Bilderdijkstraat 94",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "cornice",
+      "storeys": 4,
+      "bays": 3,
+      "dormers": 1,
+      "doorBay": null,
+      "windows": "sash",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "#2f6b45",
+       "fascia": true,
+       "displayWindows": 3,
+       "stallriser": "low",
+       "evidence": "pano 2023-01-12"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#9a5a48",
+     "frame": "#2a2a2a",
+     "door": "dark-green",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2023-01-12",
+    "use": "shop",
+    "category": "BAG winkelfunctie",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "Green timber shopfront with three glazed bays and two doors; no sign legible. The upper floors are flats (94A-D). A lorry hid the front on 2024-11-29."
+   },
+   "rhythm": {
+    "bays": "3 identical bays with tall black-framed windows, balcony on the middle window of storeys 1-2",
+    "windowsPerStorey": "ground: shop | 1-3: 3 segmental-arched | roof: pointed dormer",
+    "symmetry": "upper storeys mirror-symmetric; pointed dormer right of centre",
+    "groundFloor": "green shopfront",
+    "signage": "none legible",
+    "roofline": "blind arcade frieze under the cornice, dark mansard with small flanking dormers and a pointed central dormer",
+    "citation": "bilder-236189-166159 strip.jpg pand 4",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "blind arcade frieze is not modelled",
+     "three dormers (2 small + a pointed one) are modelled as 1",
+     "black window frames are approximated"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [
+   {
+    "pands": [
+     "0363100012236189",
+     "0363100012236188"
+    ],
+    "trust": "photo",
+    "reference": "0363100012236189",
+    "evidence": "strip: the cornice of 236189 and 236188 on one line (y ~410 px); 3DBAG gives 236188 the gable top (15.4 m)"
+   },
+   {
+    "pands": [
+     "0363100012157174",
+     "0363100012166159"
+    ],
+    "evidence": "strip: 96 and 94 cornices at the same height; 3DBAG spread 0.04 m"
+   }
+  ],
+  "identical": [],
+  "notes": [
+   "Capture 2023-01-12: the 2024-11-29 strip is hidden by street trees (102-106) and a green-wrapped lorry in front of 94-96."
+  ]
+ },
+ "authoring": {
+  "author": "claude-sonnet-5.5 (block-face lane), from strip-labelled.png + 2x zoomed ground/roof crops",
+  "passes": 1,
+  "note": "Bilderdijkstraat 94-106 (even side, first block after the cross street toward Bilderdijkpark)."
+ }
+}
