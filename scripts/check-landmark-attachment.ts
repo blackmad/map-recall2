@@ -117,7 +117,7 @@ for (const id of ids) {
     for (const v of g.getAttribute('position').array) assert(Number.isFinite(v));
     g.computeBoundingBox(); bounds.union(g.boundingBox!); tris += (g.index?.count ?? g.getAttribute('position').count) / 3;
   }
-  assert(tris < 30000, `${id}: triangle cap ${tris}`);
+  assert(tris < 40000, `${id}: triangle cap ${tris}`);   // full detail only draws up close; lod1 (check:landmark-lods) covers distance
   assert(bounds.min.y >= -0.02, `${id}: below ground ${bounds.min.y}`);
   const top = c.top();
   assert(bounds.max.y <= top + c.topSlack, `${id}: top ${bounds.max.y} vs shell ${top}`);

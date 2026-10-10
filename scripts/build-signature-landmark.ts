@@ -516,6 +516,8 @@ async function main(): Promise<void> {
         droppedAttributes,
         maxTextureSize: MAX_TEXTURE_SIZE,
         attribution: spec.attribution,
+        // Keep the lod1 record; a stale one is caught by check:landmark-lods and ignored by the loader.
+        ...((readExistingManifest()[id] as { lod1?: unknown } | undefined)?.lod1 ? { lod1: (readExistingManifest()[id] as { lod1?: unknown }).lod1 } : {}),
       },
     },
   };

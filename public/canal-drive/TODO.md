@@ -19,6 +19,18 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
+- **Building taxonomy (user, 2026-10-10)**, in progress on the street-surveys
+  lane: (1) landmark buildings = curated list only (only these count for
+  discovery/quiz/What's new/route selection); (2) ordinary buildings = one-off
+  medium-fidelity reconstructions of large non-landmark buildings; (3) street
+  surveys = repetitive canal-house / block-face work aiming at reusable
+  geometry (faces, per-house recipes, street chunks). Galleries today show
+  stale per-house Bilderdijkstraat models the game no longer draws.
+- **Reuse Sol's canal-house work**: ~10 unmerged `agent/sol-*` / backup
+  branches (Blender building library, component/head-on facade geometry,
+  silhouette roof repair); main's photo gable identifier (`facade/gable.ts`,
+  `gableFit.ts`, `scripts/roofline-eval`) is not used by recipes or faces.
+  Salvage inventory and gable-from-photo lanes running.
 - **UvA Roeterseiland held**: builder simplified 37.2k → 21.9k tris but not
   installed — its spec says `do-not-suppress` (composite BAG parent not
   partitioned; bridge underside height estimated). Needs a suppression
@@ -49,14 +61,8 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   audit see-through now back to FAIL on real gaps: adam-tower, de-gooyer,
   haarlemmermeerstation, hart-museum, huis-bartolotti, pulitzer-amsterdam
   (footprint-edge rays; check each against photos).
-  American Hotel held (2026-10-10, after one rework): colour, SE axes and
-  clock-tower cap are fixed; the roofline is still plain 3DBAG planes where
-  the real hotel has its cluster of ornate gables, dormer towers and
-  pinnacles. Leaf-off panorama frames: scripts/landmarks/panolist.mjs.
   Krasnapolsky held (2026-10-10): old Dam front matches; the modern wing and
   lower brick building need photo counts and the dark glass bays.
-  Chassékerk held (2026-10-10): towers must be tall and slender, well above
-  the gable (they are stubby belfries); SE wing is a flat box.
   Pakhuis de Zwijger held (2026-10-10): colour fixed (dark weathered brick,
   rust strips). Specs can now declare `throughPassages` (corridor + axis +
   evidence); its Piet Heinkade roadway is declared. Still FAILs see-through
@@ -70,6 +76,9 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   2025 west-side photo, drop it, fix tower proportions, then blind-count.
   Bloemgrachtkerk (tower removed 2019, redevelopment) and Gemaal
   Mercatorstraat (tiny kiosk) skipped.
+  Chassékerk towers follow the 3DBAG lidar (23.5 m, ~2 m over the ridge);
+  lidar truncates slender towers (Vondelkerk spire was 12 m short), so
+  check the real tower height in a source and raise if needed.
   World Trade Center Amsterdam held (2026-10-10): towers A–G are ONE BAG
   pand (0363100012096613, ~200 x 95 m); a recognizable model needs a photo
   of each tower face (Commons has only atrium/logo/tower H). Footprints and
@@ -262,7 +271,9 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   fusion from `build-pano-facade.ts`; washed-out/foliage thresholds (0.3) are
   untuned; `roofShape` is null outside `buildings-colored.geojson`; Beeldbank
   and monument-register facts are not yet joined in.
-- **Drop MapLibre** (go; ~3–4 weeks after city-wide own ground;
+- **Drop MapLibre** — lives on its own long-lived branch
+  `render/drop-maplibre-step1-20261010` (own worktree), merging main in;
+  not merged to main until ready (user, 2026-10-10). (go; ~3–4 weeks after city-wide own ground;
   `docs/research/drop-maplibre-20261010.md` §6, prototype `no-maplibre.html`):
   overview/route preview/street labels from our own extracts match the game's
   MapLibre cameras within 1.1–3.2 px; iPhone 4× 5.8 ms frame CPU. Remaining:

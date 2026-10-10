@@ -43,7 +43,31 @@
       "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-000076_pano_0000_006430/?width=1600&fov=45&heading=264",
       "use": "ref-tower.jpg: corner tower top from Leidsekade side, 2016-08-17: square clock box with low pointed cap in pale stone",
       "licence": "Amsterdam municipal panorama (CC0)"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Americain_hotel.JPG",
+      "file": "ref-commons-americain.jpg",
+      "use": "Leidseplein roofline: counted 5 stepped dormer gables with crenellated corbel ledges, pinnacles and flagpoles, the big pointed NE corner gable with blue ceramic star and zig-zag, the round stone turret and chimney beside the clock tower; crops crop-roof-2007-*.jpg",
+      "licence": "CC BY-SA 3.0 (Wikimedia Commons, 2007, user Marcvanderlinden); reference only, no pixels imported"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Leidseplein_-_Hotel_Am%C3%A9ricain_1902_by_Willem_Kromhout_%26_H.G._Jansen_-_Art_Nouveau.jpg",
+      "file": "ref-commons-artnouveau.jpg",
+      "use": "Roofline silhouette from the south: dormer gables, tower and corner gable proportions",
+      "licence": "CC BY-SA 4.0 (Wikimedia Commons, Txllxt TxllxT); reference only"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Leidseplein_-_Hotel_Am%C3%A9ricain_1902_by_Willem_Kromhout_%26_H.G._Jansen_-_Stadsschouwburg_1894_by_Jan_Springer,_Jacobus_Bernardus_Springer,_en_Adolf_Leonard_van_Gendt.jpg",
+      "file": "ref-commons-stadsschouwburg.jpg",
+      "use": "Clock tower with turret from the west; tower proportions",
+      "licence": "CC BY-SA 4.0 (Wikimedia Commons, Txllxt TxllxT); reference only"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002857_pano_0006_000034/?width=1600&fov=70&heading=323",
+      "file": "crop-roof-sun.jpg / crop-roof-winter.jpg",
+      "use": "leaf-off crops of ref-se-sun.jpg and ref-se-winter.jpg: dormer gable axes (t = 13, 19, 25.5, 31.5 by eye)",
+      "licence": "Amsterdam municipal panorama (CC0)"
     }
   ],
-  "notes": "Colour: panorama exposure varies a lot; sampled medians are cream-yellow (#faeec5, clipped) where sunlit and grey-brown (#6b6252, #6c6251) in shade/overcast, hue 38-43 deg. Wall set to a warmer, darker buff #c4975f with pale stone #e0d0a8 bands; the brown-orange read of the integrator could not be confirmed on the Leidseplein front (it matches the 1927 canal wing, which stays dark brown). Window axes counted from ref-se-winter.jpg. Tower cap is pale stone with clock faces. Temporary cafe awnings are not modelled. Upper storeys of the SE front stand 1.2 m behind the ring line in the 3DBAG shell, windows sit on that plane. Gable silhouettes remain the 3DBAG roof planes."
+  "notes": "Colour: panorama exposure varies a lot; sampled medians are cream-yellow (#faeec5, clipped) where sunlit and grey-brown (#6b6252, #6c6251) in shade/overcast, hue 38-43 deg. Wall set to a warmer, darker buff #c4975f with pale stone #e0d0a8 bands; the brown-orange read of the integrator could not be confirmed on the Leidseplein front (it matches the 1927 canal wing, which stays dark brown). Window axes counted from ref-se-winter.jpg. Tower cap is pale stone with clock faces. Temporary cafe awnings are not modelled. Upper storeys of the SE front stand 1.2 m behind the ring line in the 3DBAG shell, windows sit on that plane. Gable silhouettes remain the 3DBAG roof planes. Roofline rework 2026-10-10: dormer gable axes t = 9.0, 15.9, 21.0, 26.8, 32.7 m along the Leidseplein front (frame of ring edge 58) are taken from the 3DBAG dormer gable walls (plane 2.0 m behind the ring line, apex 25.6 m); five stepped gables with crenellated ledges, pinnacles and flagpoles; the NE corner gable (frame of ring edge 12, t -5.4..-0.6, base 21.0, apex 29.4 plus finial) and the turret beside the tower (r 1.15 m) are placed by eye from the 2007 photo. Not modelled: the row of six small dormers on the Marnixstraat roof (roof geometry there is ambiguous) and the SW canal-side roofline."
 }
