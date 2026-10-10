@@ -22,10 +22,10 @@
    "basement": "none",
    "cornice": "bracketed",
    "gable": "cornice",
-   "storeys": 5,
+   "storeys": 4,
    "bays": 3,
    "dormers": 1,
-   "doorBay": null,
+   "doorBay": 0,
    "shopfront": {
     "colour": "black",
     "fascia": true,
@@ -39,18 +39,19 @@
     "entrance": "right",
     "glazing": "single",
     "stallriser": "low",
-    "residentialDoor": {
-     "side": "left",
-     "colour": "black"
-    },
     "evidence": "front.jpg 2024-11-29: white fascia \"MUSSCHER VERLICHTING\" in dark capitals, dark-grey awning, lamp-filled window, doors at both ends (left taken as the street door). Not in OSM today (Mensink bakery, New York Pizza 12 m are neighbours) so it may have closed.",
     "awning": {
      "style": "fabric-straight",
      "colour": "grey"
-    }
+    },
+    "bays": [
+     1,
+     2
+    ]
    },
    "bands": "lintel",
-   "windowSurround": "keystone"
+   "windowSurround": "keystone",
+   "dormerStyle": "pediment"
   }
  ],
  "roof": {
@@ -63,6 +64,7 @@
   "stone": "cream"
  },
  "notes": [
-  "2026-10-09 surrounds: cream keystone blocks over every window head (front.jpg)."
+  "2026-10-09 surrounds: cream keystone blocks over every window head (front.jpg).",
+  "2026-10-10 shopfront.bays [1,2] + doorBay 0 replace residentialDoor; storeys 4 (ground + 3 + slate mansard, 2024 strip); superseded in game by face bilder-133467-159649."
  ]
 }

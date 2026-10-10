@@ -1,0 +1,460 @@
+{
+ "street": "De Clercqstraat",
+ "seed": "0363100012236681",
+ "members": [
+  "0363100012153066",
+  "0363100012236262",
+  "0363100012158603",
+  "0363100012159182",
+  "0363100012236681",
+  "0363100012157618",
+  "0363100012156454",
+  "0363100012156960",
+  "0363100012116526"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012077314 129.3 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012075947",
+   "reason": "frontage 45.4 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012152464",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012152484",
+   "reason": "frontage 52.8 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012152562",
+   "reason": "sightline to De Clercqstraat crosses 0363100012152977"
+  },
+  {
+   "pandId": "0363100012152665",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012152724",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012152883",
+   "reason": "frontage 96.0 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012152977",
+   "reason": "sightline to De Clercqstraat crosses 0363100012166975"
+  },
+  {
+   "pandId": "0363100012154129",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012154294",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012155377",
+   "reason": "frontage 40.2 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012155777",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012155995",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012156131",
+   "reason": "frontage 90.5 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012156215",
+   "reason": "sightline to De Clercqstraat crosses 0363100012236815"
+  },
+  {
+   "pandId": "0363100012156901",
+   "reason": "frontage 84.7 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012157005",
+   "reason": "frontage 73.5 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012157075",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012157171",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012157426",
+   "reason": "frontage 30.8 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012157610",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012157952",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012158555",
+   "reason": "frontage 100.4 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012158653",
+   "reason": "sightline to De Clercqstraat crosses 0363100012236262"
+  },
+  {
+   "pandId": "0363100012158752",
+   "reason": "frontage 79.1 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012158889",
+   "reason": "frontage 58.9 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012159037",
+   "reason": "frontage 51.5 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012159114",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012159173",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012159278",
+   "reason": "frontage 56.1 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012159538",
+   "reason": "frontage 62.0 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012159694",
+   "reason": "frontage 50.1 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012160092",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012160273",
+   "reason": "frontage 36.9 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012160483",
+   "reason": "frontage 44.7 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012160704",
+   "reason": "frontage 44.3 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012160733",
+   "reason": "frontage 64.9 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012161143",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012169825",
+   "reason": "frontage 58.7 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012161400",
+   "reason": "frontage 46.8 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012161422",
+   "reason": "sightline to De Clercqstraat crosses 0363100012116526"
+  },
+  {
+   "pandId": "0363100012162078",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012162168",
+   "reason": "frontage 32.5 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012162435",
+   "reason": "sightline to De Clercqstraat crosses 0363100012152830"
+  },
+  {
+   "pandId": "0363100012162614",
+   "reason": "sightline to De Clercqstraat crosses 0363100012162435"
+  },
+  {
+   "pandId": "0363100012162782",
+   "reason": "frontage 67.8 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012163064",
+   "reason": "frontage 102.3 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012163177",
+   "reason": "frontage 102.9 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012163403",
+   "reason": "frontage 33.2 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012163874",
+   "reason": "frontage 40.7 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012164247",
+   "reason": "sightline to De Clercqstraat crosses 0363100012165242"
+  },
+  {
+   "pandId": "0363100012164290",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012164841",
+   "reason": "sightline to De Clercqstraat crosses 0363100012156215"
+  },
+  {
+   "pandId": "0363100012164843",
+   "reason": "sightline to De Clercqstraat crosses 0363100012116526"
+  },
+  {
+   "pandId": "0363100012165211",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012165239",
+   "reason": "frontage 71.3 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012165242",
+   "reason": "sightline to De Clercqstraat crosses 0363100012164219"
+  },
+  {
+   "pandId": "0363100012165792",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012166246",
+   "reason": "frontage 100.4 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012167295",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012167334",
+   "reason": "sightline to De Clercqstraat crosses 0363100012166975"
+  },
+  {
+   "pandId": "0363100012184780",
+   "reason": "frontage 50.7 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012184865",
+   "reason": "frontage 50.4 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012193938",
+   "reason": "frontage 62.8 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012195413",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012201941",
+   "reason": "frontage 56.6 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012202690",
+   "reason": "sightline to De Clercqstraat crosses 0363100012157068"
+  },
+  {
+   "pandId": "0363100012223314",
+   "reason": "sightline to De Clercqstraat crosses 0363100012236681"
+  },
+  {
+   "pandId": "0363100012227008",
+   "reason": "frontage 56.6 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012234277",
+   "reason": "frontage 32.4 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012236521",
+   "reason": "no frontage on De Clercqstraat: No footprint edge faces De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012236641",
+   "reason": "frontage 34.0 m from De Clercqstraat"
+  },
+  {
+   "pandId": "0363100012152830",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157068",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157746",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157989",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158909",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162190",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164219",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165505",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166189",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166975",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236141",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236815",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012571959",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012153066",
+   "alongM": -45.78,
+   "widthM": 8.69,
+   "eavesM": 15.75,
+   "roofMaxM": 16.21,
+   "storeys3dbag": 5,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236262",
+   "alongM": -27,
+   "widthM": 17.92,
+   "eavesM": 12.09,
+   "roofMaxM": 18.13,
+   "storeys3dbag": 5,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158603",
+   "alongM": -15.05,
+   "widthM": 5.98,
+   "eavesM": 15.66,
+   "roofMaxM": 16.02,
+   "storeys3dbag": 5,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159182",
+   "alongM": -8.99,
+   "widthM": 6.15,
+   "eavesM": 12.28,
+   "roofMaxM": 16.28,
+   "storeys3dbag": 5,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236681",
+   "alongM": 0,
+   "widthM": 11.82,
+   "eavesM": 12.18,
+   "roofMaxM": 16.71,
+   "storeys3dbag": 5,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157618",
+   "alongM": 8.62,
+   "widthM": 5.42,
+   "eavesM": 17.44,
+   "roofMaxM": 17.65,
+   "storeys3dbag": 5,
+   "builtYear": 1898,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156454",
+   "alongM": 14.09,
+   "widthM": 5.52,
+   "eavesM": 14.96,
+   "roofMaxM": 17.9,
+   "storeys3dbag": 5,
+   "builtYear": 1898,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156960",
+   "alongM": 19.62,
+   "widthM": 5.53,
+   "eavesM": 17.58,
+   "roofMaxM": 17.64,
+   "storeys3dbag": 0,
+   "builtYear": 1898,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012116526",
+   "alongM": 24.49,
+   "widthM": 4.23,
+   "eavesM": 14.7,
+   "roofMaxM": 18.45,
+   "storeys3dbag": 5,
+   "builtYear": 1898,
+   "uncertainty": []
+  }
+ ]
+}

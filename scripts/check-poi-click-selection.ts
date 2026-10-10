@@ -20,9 +20,24 @@ const host: any = { raceTime: 37, player: {}, landmarks: [poi], quizFeedback: 'F
   _cardForClickedBuilding: GameLandmarkRuntime.prototype._cardForClickedBuilding,
   _showLandmarkNotice: (value: any) => { shown = value; } };
 GameLandmarkRuntime.prototype._inspectBuildingAt.call(host, 400, 300);
-assert.equal(shown, null, 'an ordinary neighboring house with only a built year gets no card');
-assert.equal(active, null, 'ordinary click clears stale highlight');
+// Every drawn building answers a click (user report 2026-10-10): the
+// neighbouring house opens its own register card, never the museum's.
+assert.equal(shown?.name, 'Built 1895', 'an ordinary neighbouring house tells its own year');
+assert.equal(shown?.id, 'clicked-neighbor');
+assert.equal(active?.id, 'clicked-neighbor', 'the highlight moves to the clicked house');
+host.vectorMap.inspectBuilding = () => null;
+shown = null;
+GameLandmarkRuntime.prototype._inspectBuildingAt.call(host, 400, 300);
+assert.equal(shown, null, 'a click on open ground opens nothing');
+assert.equal(active, null, 'open-ground click clears stale highlight');
 assert.equal(host._lastDriveByAt, host.raceTime, 'deliberate deselection defers unrelated automatic cards');
+// An address-named street-chunk pand must not print the street it stands on.
+host.vectorMap._spoils = (name: string) => /Prinsengracht/.test(name);
+host.vectorMap.inspectBuilding = () => ({ id: 'pand', name: 'Prinsengracht 263', lngLat: [4.88, 52.37], featureTarget: null });
+GameLandmarkRuntime.prototype._inspectBuildingAt.call(host, 400, 300);
+assert.equal(shown?.name, 'Built 1895', 'a spoiling address is not the title');
+assert.doesNotMatch(`${shown?.name} ${shown?.detail}`, /Prinsengracht/);
+delete host.vectorMap._spoils;
 host.vectorMap.inspectBuilding = () => ({ id: 'own', lngLat: [4.9, 52.37], featureTarget: null });
 GameLandmarkRuntime.prototype._inspectBuildingAt.call(host, 400, 300);
 assert.equal(shown.id, 'museum', 'exact POI owner gets its researched card');
@@ -80,26 +95,11 @@ GameLandmarkRuntime.prototype._showLandmarkNotice.call(noticeHost, poi, { kind: 
 assert.equal(noticeHost._landmarkNoticeAlpha, 0, 'automatic card keeps its fade-in');
 assert.equal(noticeHost._landmarkNoticeState.elapsed, 0);
 
-// Real pitched projection: intersect an upper facade whose ground centroid
-// is elsewhere on screen. Hidden replacement geometry cannot swallow it.
-const camera = new THREE.PerspectiveCamera(55, 800 / 600, 1, 1000);
-camera.position.set(45, 50, 70); camera.lookAt(0, 10, 0); camera.updateMatrixWorld();
-const projection = camera.projectionMatrix.clone().multiply(camera.matrixWorldInverse);
-const geometry = new THREE.BoxGeometry(16, 28, 12).toNonIndexed();
-geometry.translate(0, 14, 0);
-geometry.setAttribute('hidden', new THREE.Float32BufferAttribute(new Float32Array(geometry.getAttribute('position').count), 1));
-const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ side: THREE.DoubleSide }));
-const feature = { properties: { id: 'own', name: 'Museum' }, geometry: { type: 'Polygon', coordinates: [] } };
-const picker: any = Object.create(ThreeBuildings.prototype);
-Object.assign(picker, { visible: true, ready: true, camera: { projectionMatrix: projection }, THREE,
-  hidden: new Set(), map: { unproject: () => ({ lng: 4.9, lat: 52.37 }) },
-  chunks: new Map([['one', { mesh, source: [feature], ranges: new Map([['own', { start: 0, count: geometry.getAttribute('position').count }]]) }]]) });
-const point = new THREE.Vector3(0, 23, 6).applyMatrix4(projection);
-const x = (point.x + 1) / 2 * 800, y = (1 - point.y) / 2 * 600;
-assert.equal(picker.inspectAtScreen(x, y, 800, 600)?.id, 'own', 'pitched upper facade picks actual mesh owner');
-geometry.getAttribute('hidden').array.fill(1);
-assert.equal(picker.inspectAtScreen(x, y, 800, 600), null, 'shader-hidden original does not pick');
-
+// Real pitched projection on an installed chunk whose CPU buffers were
+// released after upload: intersect an upper facade whose ground centroid is
+// elsewhere on screen. The click resolves through the footprint prism index
+// (`prismPick.ts`) without rebuilding the chunk (that cost ~2 s per click,
+// 2026-10-10), and hidden replacement geometry cannot swallow it.
 const installed: any = { properties: { id: 'released', height: 20, minHeight: 0, building: 'yes' },
   geometry: { type: 'Polygon', coordinates: [[[4.8999, 52.3699], [4.9001, 52.3699], [4.9001, 52.3701], [4.8999, 52.3701], [4.8999, 52.3699]]] } };
 const built = buildFeatureChunk([installed], 'untextured', 'walls');
@@ -114,12 +114,20 @@ rootCamera.up.set(0, 0, 1); rootCamera.position.set(45, -50, 60); rootCamera.loo
 const rootProjection = rootCamera.projectionMatrix.clone().multiply(rootCamera.matrixWorldInverse);
 const facade = new THREE.Vector3(0, -11, 12).applyMatrix4(rootProjection);
 const px = (facade.x + 1) * 400, py = (1 - facade.y) * 300;
-Object.assign(picker, { look: 'photo', camera: { projectionMatrix: rootProjection },
+const picker: any = Object.create(ThreeBuildings.prototype);
+Object.assign(picker, { visible: true, ready: true, THREE, look: 'photo', hidden: new Set(), pickIndex: new WeakMap(),
+  map: { unproject: () => ({ lng: 4.9, lat: 52.37 }) }, camera: { projectionMatrix: rootProjection },
   chunks: new Map([['wall', { mesh: live, source: [installed], ranges: new Map(built.ranges.map(r => [r.id, { start: r.start, count: r.count }])) }]]) });
 (uploaded.getAttribute('position') as any).array = null;
 (uploaded.index as any).array = null;
-assert.equal(picker.inspectAtScreen(px, py, 800, 600)?.id, 'released', 'GPU-freed positions/indices rebuild with installed look, not requested photo look');
+assert.equal(picker.inspectAtScreen(px, py, 800, 600)?.id, 'released', 'pitched upper facade picks its building with GPU-freed buffers');
 assert.equal(uploaded.getAttribute('position').array, null, 'picking retains original CPU-buffer release');
+const centre = new THREE.Vector3(0, 0, 0).applyMatrix4(rootProjection);
+assert.equal(picker.inspectAtScreen((centre.x + 1) * 400 + 300, (1 - centre.y) * 300, 800, 600), null, 'open ground beside it picks nothing');
+(uploaded.getAttribute('hidden').array as Uint8Array).fill(1);
+assert.equal(picker.inspectAtScreen(px, py, 800, 600), null, 'shader-hidden original does not pick');
+(uploaded.getAttribute('hidden').array as Uint8Array).fill(2);
+assert.equal(picker.inspectAtScreen(px, py, 800, 600)?.id, 'released', 'the highlighted (yellow) building stays clickable');
 
 // Execute the shipped JS adapter, including setRoute: misplaced picker
 // guards previously referenced poiResult from an unrelated method.
@@ -131,4 +139,4 @@ Object.assign(v, { _completeCityHasBuildings: true, _threeBuildings: { ready: tr
   getStyle: () => ({ layers: [] }), unproject: () => ({ lng: 4.9, lat: 52.37 }) }, ready: true });
 assert.doesNotThrow(() => v.setRoute(null, {}, false), 'route updates cannot reference picker-local variables');
 assert.equal(v.inspectBuilding(400, 300, { width: 800, height: 600 }), null, 'empty complete-city click has no arbitrary fallback');
-console.log('POI click selection passed: researched owner/card/highlight, generic-year rejection, pitched facade raycast, hidden-mesh and empty-click regressions.');
+console.log('POI click selection passed: researched owner/card/highlight, own-year card for every building, spoiler-safe addresses, pitched facade prism pick, hidden-mesh and empty-click regressions.');

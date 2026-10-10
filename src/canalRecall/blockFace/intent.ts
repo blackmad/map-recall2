@@ -12,6 +12,7 @@
  * coordinates or metres: everything metric comes from facts.
  */
 import {validateIntent, type CanalHouseIntent, type IntentSource} from '../buildingRecipe/intent.ts';
+import {placementProblems, resolvePlacement, typeProblems, type HousePlacement, type HouseTypeIntent} from './houseType.ts';
 
 export const GROUND_USES = ['residential', 'shop', 'restaurant', 'cafe', 'bar', 'services', 'office', 'vacant', 'other'] as const;
 export const USE_AGREEMENT = ['osm-and-photo', 'photo-only', 'osm-only', 'conflict', 'bag-only'] as const;
@@ -62,11 +63,14 @@ export interface BlockFaceHouse {
   /** Slug for the pand (`<face prefix>-<last 6 digits>`). */
   slug: string;
   address: string;
-  /** Either a full design, or `sameAs` another pand of this face with overrides (a declared identical design). */
+  /** A full design, or `sameAs` another pand of this face with overrides (a declared identical design), or a house
+   * `type` placement (blockFace/houseType.ts: one of the face's `types` plus crown/ground/palette/mirror variants). */
   design?: HouseDesign;
   sameAs?: string;
   overrides?: Partial<HouseDesign> & {fronts?: Partial<HouseDesign['fronts'][number]>[]};
+  type?: HousePlacement;
   groundFloor: GroundFloorUse;
+  /** Required for `design`/`sameAs` houses; a typed house inherits its type's rhythm and gives only what differs. */
   rhythm: RhythmSpec;
 }
 
@@ -77,6 +81,8 @@ export interface BlockFaceIntent {
   street: string;
   /** The strip and panoramas the author looked at. */
   sources: IntentSource[];
+  /** House types the houses place (blockFace/houseType.ts). Absent = every house has its own design or sameAs. */
+  types?: HouseTypeIntent[];
   houses: BlockFaceHouse[];
   continuity: {
     /** `shared`: one street level for the face (median 3DBAG ground). */
@@ -93,8 +99,13 @@ export interface BlockFaceIntent {
      * Eaves read off the rectified strip where 3DBAG misreads them (a cornice front hiding a gabled roof, a gable foot
      * under a dormer): `stripRow` is the pixel row of the cornice top / gable foot on `strip.jpg` (strip.json gives the
      * scale and ground); `front` names the front of a multi-front pand (default: every front of the pand).
+     * `frontRoof` (a front whose cornice sits BELOW 3DBAG's eaves; on a multi-front pand only that front's stretch): LoD2.2 carries a mansard's flat top, or a
+     * dormer merged into the roof, out to the facade (Bilderdijkstraat 133, 145, 147, 153: eaves 2.5-3.5 m above the photo
+     * cornice). The front strip of the roof is re-pitched from the measured eaves at `pitchDeg` (default 72, a mansard
+     * face) up to the survey's height (blockFace/compile.ts repitchFrontRoof), so the shell stops at the cornice; `topRow`
+     * first caps the front roof at that strip row (the roof top beside a dormer 3DBAG merged into the roof).
      */
-    measuredEaves?: {pand: string; front?: string; stripRow: number; evidence: string}[];
+    measuredEaves?: {pand: string; front?: string; stripRow: number; frontRoof?: {topRow?: number; pitchDeg?: number}; evidence: string}[];
     /**
      * Crowns read off the strip instead of authored (blockFace/gableFromStrip.ts): the photo's gable type, step count,
      * rise and (when it differs from the authored placement) span replace the front's crown fields at compile time.
@@ -118,9 +129,15 @@ const merge = (a: any, b: any): any => {
 /** Resolve every house to a validated canal-house intent (identity from the face, design from itself or its `sameAs`). */
 export function houseIntents(face: BlockFaceIntent): CanalHouseIntent[] {
   const byPand = new Map(face.houses.map(h => [h.pandId, h]));
+  const types = new Map((face.types ?? []).map(t => [t.id, t]));
   const designOf = (h: BlockFaceHouse, depth = 0): HouseDesign => {
     if (h.design) return h.design;
-    if (!h.sameAs || depth > 4) throw Error(`${h.pandId}: needs design or sameAs`);
+    if (h.type) {
+      const t = types.get(h.type.type);
+      if (!t) throw Error(`${h.pandId}: unknown house type ${h.type.type}`);
+      return resolvePlacement(t, h.type, face.street).design;
+    }
+    if (!h.sameAs || depth > 4) throw Error(`${h.pandId}: needs design, sameAs or type`);
     const base = byPand.get(h.sameAs);
     if (!base) throw Error(`${h.pandId}: sameAs ${h.sameAs} is not on this face`);
     return merge(designOf(base, depth + 1), h.overrides ?? {});
@@ -137,6 +154,17 @@ export function validateBlockFace(input: unknown, order?: string[]): BlockFaceIn
   if (face?.kind !== 'block-face' || face.schemaVersion !== 1) problems.push('kind must be "block-face", schemaVersion 1');
   if (!Array.isArray(face?.houses) || face.houses.length < 2) problems.push('a block face needs at least two houses');
   const pands = new Set(face?.houses?.map(h => h.pandId) ?? []);
+  // House types: definitions, then placements; a typed house's rhythm is its type's plus what the house states.
+  const types = new Map((face?.types ?? []).map(t => [t?.id, t]));
+  if (face?.types !== undefined && !Array.isArray(face.types)) problems.push('types must be a list of house types');
+  for (const t of face?.types ?? []) problems.push(...typeProblems(t));
+  if (types.size !== (face?.types?.length ?? 0)) problems.push('types: duplicate type ids');
+  problems.push(...placementProblems(types, face?.houses ?? []));
+  for (const h of face?.houses ?? []) {
+    if ([h.design, h.sameAs, h.type].filter(x => x !== undefined).length > 1) problems.push(`house ${h.pandId?.slice(-6)}: design, sameAs and type are alternatives`);
+    if (h.type && types.has(h.type.type)) h.rhythm = {...types.get(h.type.type)!.rhythm, ...(h.rhythm ?? {})} as RhythmSpec;
+  }
+  for (const t of face?.types ?? []) if (!(face?.houses ?? []).some(h => h.type?.type === t.id)) problems.push(`type ${t.id} is placed by no house`);
   if (order && face?.houses && face.houses.map(h => h.pandId).join() !== order.join()) problems.push(`houses must be listed left to right in street order: ${order.map(p => p.slice(-6)).join(' ')}`);
   let intents: CanalHouseIntent[] = [];
   try { intents = houseIntents(face); } catch (e) { problems.push((e as Error).message); }
@@ -172,6 +200,12 @@ export function validateBlockFace(input: unknown, order?: string[]): BlockFaceIn
     if (i < 0) { problems.push(`${at}: pand ${m?.pand} is not on this face`); continue; }
     if (!(Number.isInteger(m.stripRow) && m.stripRow >= 0)) problems.push(`${at}.stripRow: a pixel row on strip.jpg`);
     if (!m.evidence) problems.push(`${at}: needs evidence (what on the strip marks the line)`);
+    if (m.frontRoof !== undefined) {
+      const r = m.frontRoof;
+      if (r.topRow !== undefined && !(Number.isInteger(r.topRow) && r.topRow >= 0 && r.topRow < m.stripRow)) problems.push(`${at}.frontRoof.topRow: a pixel row above stripRow (the roof top is higher than the eaves)`);
+      if (r.pitchDeg !== undefined && !(r.pitchDeg >= 30 && r.pitchDeg <= 80)) problems.push(`${at}.frontRoof.pitchDeg: 30..80`);
+      if (intents[i] && intents[i].fronts.length > 1 && m.front === undefined) problems.push(`${at}.frontRoof: name the front of a multi-front pand`);
+    }
     if (m.front !== undefined && intents[i] && !intents[i].fronts.some(f => f.id === m.front)) problems.push(`${at}.front: ${m.front} is not a front of ${m.pand.slice(-6)}`);
     const key = `${m.pand}/${m.front ?? '*'}`;
     if (measuredSeen.has(key)) problems.push(`${at}: ${key} measured twice`);

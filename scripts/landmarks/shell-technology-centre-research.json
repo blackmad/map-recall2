@@ -1,0 +1,21 @@
+{
+  "canonicalModelId": "shell-technology-centre",
+  "landmarkId": "shell-technology-centre",
+  "researchedOn": "2026-10-10",
+  "state": "built as massing plus a brick/window-ribbon module; ONLY two panoramas look at the campus (south-south-east and east), so the whole north half, the west side and all courtyard faces are INFERRED; the real windows are paired and framed in brick bands, the model has single ribbons",
+  "destination": {
+    "name": "Shell Technology Centre Amsterdam (since 2021 Energy Transition Campus Amsterdam)",
+    "address": "Grasweg 31, 1031 HW Amsterdam",
+    "bagPand": "NL.IMBAG.Pand.0363100012202175",
+    "note": "Identity: nummeraanduiding 0363200012063437 (Grasweg 31) -> verblijfsobject 0363010012063313 (industriefunctie, 65,321 m2, 6 storeys) in the single pand 0363100012202175 (built 2009, 22,444 m2 footprint). The Shell pecten is visible on the entrance block in the 2021-12-23 panorama. The campus is fenced; the public panoramas are from the surrounding green strips. No installed model, native-kit POI, work-queue task or backlog entry covered it (checked by name and BAG id)."
+  },
+  "sources": [
+    {"url": "https://nl.wikipedia.org/wiki/Energy_Transition_Campus_Amsterdam", "retrieved": "2026-10-10", "note": "Redirect from Shell_Technology_Centre_Amsterdam. Built 2005-2009 by Arcadis Architecten and Van Mourik, opened September 2009, about 80,000 m2, lab history from 1914, first Dutch company with an electronic computer in 1954, renamed 2021, about 1,300 test rigs. CC BY-SA."},
+    {"url": "https://nl.wikipedia.org/wiki/Overhoeks_(Amsterdam)", "retrieved": "2026-10-10", "note": "Shell research terrain and Overhoeks context."},
+    {"url": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012063313/", "retrieved": "2026-10-10", "note": "BAG verblijfsobject at Grasweg 31."}
+  ],
+  "panoramas": [
+    {"id": "recording_2025-06-30_12-53-56_00456", "date": "2025-06-30", "file": "ref-south.jpg", "licence": "Gemeente Amsterdam panorama API (CC0)"},
+    {"id": "TMX7316010203-002336_pano_0000_000062", "date": "2021-12-23", "file": "ref-east.jpg", "licence": "Gemeente Amsterdam panorama API (CC0)"}
+  ]
+}

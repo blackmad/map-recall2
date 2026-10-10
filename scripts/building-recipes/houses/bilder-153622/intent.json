@@ -25,7 +25,7 @@
    "storeys": 5,
    "bays": 3,
    "dormers": 1,
-   "doorBay": null,
+   "doorBay": 0,
    "shopfront": {
     "colour": "dark-blue",
     "fascia": true,
@@ -33,25 +33,15 @@
     "fasciaColour": "#8bbcd8",
     "glazing": "single",
     "stallriser": "none",
-    "residentialDoor": {
-     "side": "left",
-     "colour": "white"
-    },
-    "shopShare": 0.62,
-    "evidence": "front.jpg 2024-11-29: light-blue painted fascia with a Japan/airliner/skyline mural (no readable name), white louvred street door at the left, one dark display opening. OSM has no match (Alex Bikes 5 m, Riaz 19 m not asserted)."
-   },
-   "bands": "lintel",
-   "balconies": {
-    "storeys": [
-     1,
-     2
-    ],
+    "evidence": "front.jpg 2024-11-29: light-blue painted fascia with a Japan/airliner/skyline mural (no readable name), white louvred street door at the left, one dark display opening. OSM has no match (Alex Bikes 5 m, Riaz 19 m not asserted).",
     "bays": [
      1,
      2
     ]
    },
-   "windowSurround": "keystone"
+   "bands": "lintel",
+   "windowSurround": "keystone",
+   "dormerStyle": "pediment"
   }
  ],
  "roof": {
@@ -60,10 +50,11 @@
  "palette": {
   "brick": "orange-brick",
   "frame": "white",
-  "door": "dark-green",
+  "door": "white",
   "stone": "cream"
  },
  "notes": [
-  "2026-10-09 surrounds: cream keystone bosses over every upper window head (front.jpg)."
+  "2026-10-09 surrounds: cream keystone bosses over every upper window head (front.jpg).",
+  "2026-10-10 shopfront.bays [1,2] + doorBay 0 (white street door) replace residentialDoor/shopShare; balconies dropped (the 2024 strip shows low rails inside equal-size sash frames, not French windows); superseded in game by face bilder-153622-156732."
  ]
 }

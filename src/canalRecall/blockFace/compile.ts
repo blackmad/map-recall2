@@ -10,10 +10,11 @@
  * otherwise left as surveyed and reported, because photo and survey disagree).
  */
 import {NodeIO} from '@gltf-transform/core';
+import * as T from 'three';
 import {KHRMeshQuantization} from '@gltf-transform/extensions';
 import type {BuildingFacts} from '../buildingRecipe/facts.ts';
 import {pointInRing} from '../buildingRecipe/facts.ts';
-import {fitIntent} from '../buildingRecipe/fit.ts';
+import {fitIntent, splitChain} from '../buildingRecipe/fit.ts';
 import type {CompiledBuilding} from '../buildingRecipe/compile.ts';
 import {BUDGET_TRIANGLES} from '../buildingRecipe/gates.ts';
 import {ringToFrame, type FrontFrame} from '../buildingRecipe/instances.ts';
@@ -90,11 +91,98 @@ export function planFaceGround(face: BlockFaceIntent, facts: BuildingFacts[], ma
   const withMeasured = out.map((f, i) => {
     const mine = measured[face.houses[i].pandId];
     if (!mine) return f;
+    for (const pitch of measuredList.filter(m => m.pand === face.houses[i].pandId && m.frontRoof)) {
+      const row = (r: number) => strip.groundNAP + (strip.heightPx - r) / strip.pixelsPerMetre, fr = pitch.frontRoof!;
+      const fronts = intents[i].fronts, k = pitch.front === undefined ? 0 : fronts.findIndex(x => x.id === pitch.front), value = mine[fronts[k].id];
+      // One front of several: re-pitch only along its stretch of the frontage (the fit's own split of the chain).
+      let along: [number, number] | undefined;
+      if (fronts.length > 1) {
+        const ff = f.fronts[0], shares = fronts.map(x => x.share ?? 1 / fronts.length), cut = splitChain(ff, shares.map(x => x / shares.reduce((t, y) => t + y, 0))), [p0] = ff.endpointsRD, wv = [ff.endpointsRD[1][0] - p0[0], ff.endpointsRD[1][1] - p0[1]], wl = Math.hypot(wv[0], wv[1]);
+        const at = (q: number[]) => ((q[0] - p0[0]) * wv[0] + (q[1] - p0[1]) * wv[1]) / wl;
+        along = [at(cut.pairs[k][0]), at(cut.pairs[k][1])];
+      }
+      // The survey roof must stand clear above the measured eaves at the facade (a mansard top, a dormer, or a ridge run out
+      // to the front: Bilderdijkstraat 199, ridge end 18.8 m over a 15.9 m cornice), else there is nothing to re-pitch.
+      const ff0 = f.fronts[0], [q0] = ff0.endpointsRD, nq = ff0.outwardNormalRD, onFront = (v: number[]) => Math.abs((v[0] - q0[0]) * nq[0] + (v[1] - q0[1]) * nq[1]) <= 0.05;
+      const facadeTop = Math.max(...f.roofsRD.flatMap(r => r.vertices).filter(onFront).map(v => v[2] - f.attributes.b3_h_maaiveld));
+      if (!(facadeTop > value + 0.5)) throw Error(`${m6(face.houses[i].pandId)}: frontRoof needs survey roof above the measured eaves at the facade; roof ${cm(facadeTop)} m vs eaves ${value} m`);
+      // The eaves in this pand's own height datum (the fit reads roof heights above b3_h_maaiveld), rounded as the fit rounds it.
+      f = repitchFrontRoof(f, value + f.attributes.b3_h_maaiveld, {topNap: fr.topRow === undefined ? undefined : row(fr.topRow), pitchDeg: fr.pitchDeg, along});
+    }
     // The first front's line drives the party-line eaves verdicts.
     eavesAfter[i] = mine[intents[i].fronts[0].id] ?? eavesAfter[i];
     return {...f, measuredEavesM: {...(f.measuredEavesM ?? {}), ...mine}};
   });
   return {sharedNapM, shiftsM, eavesBefore, eavesAfter, groups, facts: withMeasured, measured};
+}
+
+const m6 = (p: string) => p.slice(-6);
+
+/**
+ * The roof behind a photo-measured cornice that sits BELOW 3DBAG's eaves. LoD2.2 carries the flat (or dormer-raised) top
+ * of a mansard roof out to the facade line, so the fit's eaves read 2.5-3.5 m above the cornice (Bilderdijkstraat 133,
+ * 145, 147, 153). Every roof surface with a vertex on the frontage line is split at depth d = (top - eaves) / tan(pitch):
+ * the front strip becomes a steep roof face rising from the measured eaves (NAP) at the facade to the surface's own height
+ * at d; the rest keeps the survey heights. `topNap` (the photo's roof top beside a dormer) first caps those surfaces, for a
+ * dormer that 3DBAG merged into the roof. The shell top (lowest roof vertex) then falls to the eaves.
+ */
+export function repitchFrontRoof(f: BuildingFacts, eavesNap: number, opts: {topNap?: number; pitchDeg?: number; tolM?: number; along?: [number, number]} = {}): BuildingFacts {
+  const out = structuredClone(f), fr = out.fronts[0], [a, b] = fr.endpointsRD, n = fr.outwardNormalRD, tol = opts.tolM ?? 0.05;
+  const tan = Math.tan((opts.pitchDeg ?? 72) * Math.PI / 180), w = Math.hypot(b[0] - a[0], b[1] - a[1]), u = [(b[0] - a[0]) / w, (b[1] - a[1]) / w];
+  const depth = (v: number[]) => -((v[0] - a[0]) * n[0] + (v[1] - a[1]) * n[1]);
+  // Metres along the frontage from its first (viewer's left) endpoint; `along` limits the re-pitch to one front of a pand.
+  const alongOf = (v: number[]) => (v[0] - a[0]) * u[0] + (v[1] - a[1]) * u[1];
+  const [a0, a1] = opts.along ?? [-Infinity, Infinity];
+  // Sutherland-Hodgman against one half-plane (keep where sign * (fn - c) <= 0); z interpolated along cut edges.
+  const clip = (ring: number[][], fn: (v: number[]) => number, c: number, sign: 1 | -1) => {
+    const res: number[][] = [];
+    for (let k = 0; k < ring.length; k++) {
+      const p = ring[k], q = ring[(k + 1) % ring.length], fp = sign * (fn(p) - c), fq = sign * (fn(q) - c);
+      if (fp <= 0) res.push([...p]);
+      if ((fp < 0 && fq > 0) || (fp > 0 && fq < 0)) { const t = fp / (fp - fq); res.push(p.map((x, i) => x + (q[i] - x) * t)); }
+    }
+    return res.length >= 3 ? res : null;
+  };
+  const area = (r: number[][]) => Math.abs(r.reduce((s, p, k) => { const q = r[(k + 1) % r.length]; return s + p[0] * q[1] - q[0] * p[1]; }, 0) / 2);
+  // Cut a convex ring by fn = c when both sides keep more than a sliver; else keep it whole.
+  const split = (ring: number[][], fn: (v: number[]) => number, c: number): number[][][] => {
+    const lo = clip(ring, fn, c, 1), hi = clip(ring, fn, c, -1);
+    return lo && hi && area(lo) >= 0.01 && area(hi) >= 0.01 ? [lo, hi] : [ring];
+  };
+  const mean = (ring: number[][], fn: (v: number[]) => number) => ring.reduce((s, v) => s + fn(v), 0) / ring.length;
+  const roofs: BuildingFacts['roofsRD'] = [];
+  for (const r of out.roofsRD) {
+    // Touches the frontage inside the front's stretch: an edge on the facade line overlapping [a0, a1].
+    const onFacade = r.vertices.filter(v => depth(v) <= tol).map(alongOf);
+    if (!onFacade.length || Math.max(...onFacade) < a0 - tol || Math.min(...onFacade) > a1 + tol) { roofs.push(r); continue; }
+    if (r.ringsRD.length > 1) throw Error(`${r.surfaceId}: a front roof surface with holes cannot be re-pitched`);
+    const ring = r.vertices.map(v => [v[0], v[1], opts.topNap === undefined ? v[2] : Math.min(v[2], opts.topNap)]);
+    // A face 3DBAG already pitches up from the facade (Bilderdijkstraat 113's mansard, 57 degrees): only its foot moves.
+    if (r.slopeDeg >= 30 && !opts.along) {
+      const moved = ring.map(v => depth(v) <= tol ? [v[0], v[1], eavesNap] : v);
+      roofs.push({...r, vertices: moved, ringsRD: [moved]});
+      continue;
+    }
+    // A flat top carried out to the facade: the strip in front of depth d (and inside `along`) becomes a steep face,
+    // z' = eaves + (z - eaves) * depth / d. Non-convex surfaces are cut triangle by triangle (a half-plane clip of a
+    // non-convex ring bridges its disjoint parts with zero-width spikes); a cut that would leave a sliver keeps the piece
+    // whole. Pieces outside the front's range keep their heights; the library closes the step between them with a wall.
+    const d = Math.max(0.3, (Math.max(...ring.map(v => v[2])) - eavesNap) / tan);
+    const pitch = (v: number[]) => { const s = depth(v); return s >= d ? v : [v[0], v[1], eavesNap + (v[2] - eavesNap) * Math.max(0, s) / d]; };
+    const turn = (k: number) => { const p = ring[k], q = ring[(k + 1) % ring.length], s = ring[(k + 2) % ring.length]; return (q[0] - p[0]) * (s[1] - q[1]) - (q[1] - p[1]) * (s[0] - q[0]); };
+    const turns = ring.map((_, k) => turn(k)).filter(x => Math.abs(x) > 1e-9), convex = turns.every(x => x > 0) || turns.every(x => x < 0);
+    let pieces = convex ? [ring] : T.ShapeUtils.triangulateShape(ring.map(v => new T.Vector2(v[0], v[1])), []).map(t => t.map(k => ring[k]));
+    pieces = pieces.flatMap(t => split(t, depth, d));
+    if (opts.along) pieces = pieces.flatMap(t => mean(t, depth) < d ? split(t, alongOf, a0).flatMap(x => split(x, alongOf, a1)) : [t]);
+    pieces.forEach((t, k) => {
+      const front = mean(t, depth) < d && (!opts.along || (mean(t, alongOf) > a0 && mean(t, alongOf) < a1)), v = front ? t.map(pitch) : t;
+      roofs.push({...r, surfaceId: `${r.surfaceId}:${front ? 'f' : 'r'}${k}`, vertices: v, ringsRD: [v], areaM2: area(v), ...(front ? {slopeDeg: Math.round(Math.atan(tan) * 180 / Math.PI)} : {})});
+    });
+  }
+  out.roofsRD = roofs;
+  const z = roofs.flatMap(r => r.vertices.map(v => v[2] - out.attributes.b3_h_maaiveld));
+  out.heights = {...out.heights, roofMinM: Math.min(...z)};
+  return out;
 }
 
 interface Tri { p: number[][]; n: number[]; slot: string; surface: string }
@@ -320,13 +408,20 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
   const groupOf = (p: string) => face.continuity.corniceGroups.findIndex(gr => gr.pands.includes(p));
   const interference: Interference[] = [];
   const contacts = findContacts(rings.map(r => r as [number, number][][]), 0.1);
+  // Each house's front plane: the most street-ward street-facing wall (frame z), clamped to the frame line, so a straight
+  // face measures exactly as before (fronts at z ~ 0) and a bent face measures every house against its own front.
+  const frontZ = tris.map(ts => Math.min(0, Math.max(-Infinity, ...ts.filter(t => isWall(t.slot) && t.n[2] > 0.9).map(t => Math.max(...t.p.map(v => v[2]))))));
   for (let i = 0; i + 1 < intents.length; i++) {
     const L = tris[i], R = tris[i + 1], joint = chunk.report.joints[i];
     const xLine = (chunk.pands[i].frontage.x1 + chunk.pands[i + 1].frontage.x0) / 2;
     const inside = (v: number[], rr: number[][][]) => rr.some(r => pointInRing([v[0], v[2]], r));
     // Surface of one house lying inside the neighbour's footprint even after a 5 cm step back towards its own side
     // (faces ON the shared party line do not count; they are trimmed or exposed walls).
-    const penetration = (a: Tri[], rr: number[][][], toward: number) => a.filter(t => t.p.every(v => inside([v[0] - toward * 0.05, v[1], v[2]], rr))).reduce((s, t) => s + area3(t), 0);
+    // A wall lying ON the neighbour's footprint boundary (a corner pand wrapping behind its neighbour shares that rear edge)
+    // is a party wall too: its centroid must be > 3 cm inside, not just a millimetre past the edge.
+    const boundaryDist = (x: number, z: number, rr: number[][][]) => Math.min(...rr.flatMap(r => r.map((p, k) => { const q = r[(k + 1) % r.length], dx = q[0] - p[0], dz = q[1] - p[1], l2 = dx * dx + dz * dz || 1, u = Math.max(0, Math.min(1, ((x - p[0]) * dx + (z - p[1]) * dz) / l2)); return Math.hypot(x - p[0] - u * dx, z - p[1] - u * dz); })));
+    const deepInside = (t: Tri, rr: number[][][]) => boundaryDist((t.p[0][0] + t.p[1][0] + t.p[2][0]) / 3, (t.p[0][2] + t.p[1][2] + t.p[2][2]) / 3, rr) > 0.03;
+    const penetration = (a: Tri[], rr: number[][][], toward: number) => a.filter(t => t.p.every(v => inside([v[0] - toward * 0.05, v[1], v[2]], rr)) && deepInside(t, rr)).reduce((s, t) => s + area3(t), 0);
     const leftIntoRight = penetration(L, rings[i + 1], 1), rightIntoLeft = penetration(R, rings[i], -1);
     // Street-side details: in front of the frontage plane (z > 0.02), reaching past the party line.
     // Street-side details (not the shell or roof, which end on the party wall by construction) that reach past the
@@ -334,11 +429,13 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     // are rarely square to the averaged face axis.
     const pairContacts = contacts.filter(c => (c.a === i && c.b === i + 1));
     const front = pairContacts.sort((p, q) => Math.max(q.oz, q.oz + q.dz * q.s1) - Math.max(p.oz, p.oz + p.dz * p.s1))[0];
-    const detail = (a: Tri[]) => a.filter(t => !(isWall(t.slot) || ['roofTile', 'slate', 'bitumen'].includes(t.slot)) && t.p.some(v => v[2] > -1));
+    // "Street side" is relative to each house's own front plane (street-facing wall), not the chunk frame's z = 0: on a
+    // face that bends a few degrees the middle houses stand more than 1 m behind the frame line (Nassaukade 312-307).
+    const detail = (a: Tri[], k: number) => a.filter(t => !(isWall(t.slot) || ['roofTile', 'slate', 'bitumen'].includes(t.slot)) && t.p.some(v => v[2] > frontZ[k] - 1));
     // Signed distance across the contact line, positive towards the right-hand house.
     const across = (v: number[]) => front ? ((v[0] - front.ox) * -front.dz + (v[2] - front.oz) * front.dx) * sideSign : v[0] - xLine;
     const sideSign = front ? Math.sign((rings[i + 1][0].reduce((s, q) => s + q[0], 0) / rings[i + 1][0].length - front.ox) * -front.dz + (rings[i + 1][0].reduce((s, q) => s + q[1], 0) / rings[i + 1][0].length - front.oz) * front.dx) || 1 : 1;
-    const overL = Math.max(0, ...detail(L).flatMap(t => t.p.map(v => across(v)))), overR = Math.max(0, ...detail(R).flatMap(t => t.p.map(v => -across(v))));
+    const overL = Math.max(0, ...detail(L, i).flatMap(t => t.p.map(v => across(v)))), overR = Math.max(0, ...detail(R, i + 1).flatMap(t => t.p.map(v => -across(v))));
     const near = (a: Tri[]) => a.filter(t => t.p.some(v => Math.abs(v[0] - xLine) < 1.5));
     // Facade z-fighting fails at 1 dm2; roof planes (3DBAG partitions that overlap by centimetres at the party line) at 5 dm2.
     const roofSlot = (t: Tri) => ['roofTile', 'slate', 'bitumen'].includes(t.slot);
@@ -346,8 +443,8 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     const step = cm(ground.eavesAfter[i + 1] - ground.eavesAfter[i]), same = groupOf(face.houses[i].pandId) >= 0 && groupOf(face.houses[i].pandId) === groupOf(face.houses[i + 1].pandId);
     const verdict = same ? (Math.abs(step) <= 0.15 ? 'aligned' : 'step-not-supported') : (Math.abs(step) >= 0.1 ? 'step-supported' : 'missing-step');
     // Facade ends measured on the street front only (street-facing brick within 1 m of the frontage plane; rear wings can be wider).
-    const frontBrick = (a: Tri[]) => a.filter(t => isWall(t.slot) && t.n[2] > 0.9 && Math.max(...t.p.map(v => v[2])) > -1).flatMap(t => t.p.map(v => v[0]));
-    const gap = cm(Math.min(...frontBrick(R)) - Math.max(...frontBrick(L)));
+    const frontBrick = (a: Tri[], k: number) => a.filter(t => isWall(t.slot) && t.n[2] > 0.9 && Math.max(...t.p.map(v => v[2])) > frontZ[k] - 1).flatMap(t => t.p.map(v => v[0]));
+    const gap = cm(Math.min(...frontBrick(R, i + 1)) - Math.max(...frontBrick(L, i)));
     const item: Interference = {left: face.houses[i].pandId, right: face.houses[i + 1].pandId, frontGapM: gap, frontDepthStepM: joint.depthStepM,
       penetrationM2: {leftIntoRight: cm(leftIntoRight), rightIntoLeft: cm(rightIntoLeft)}, detailOverhangM: {left: cm(overL), right: cm(overR)}, zFightM2: cm(zf), roofZFightM2: cm(zfRoof), eavesStepM: step, sameCorniceGroup: same, corniceVerdict: verdict,
       pass: Math.abs(gap) <= 0.05 && leftIntoRight + rightIntoLeft <= 0.05 && overL <= 0.03 && overR <= 0.03 && zf <= 0.01 && zfRoof <= 0.05 && verdict !== 'step-not-supported'};

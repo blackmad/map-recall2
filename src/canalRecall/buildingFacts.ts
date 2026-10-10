@@ -203,6 +203,7 @@ export class BuildingFactStore {
     this.base = base;
     this.rows.clear();
     this.requested.clear();
+    this.loads.clear();
     this.lastCentre = '';
   }
 
@@ -219,8 +220,23 @@ export class BuildingFactStore {
     return id == null ? null : this.rows.get(shortBuildingId(String(id))) ?? null;
   }
 
-  private async load(x: number, y: number): Promise<void> {
+  /** The tile under a point, for a click outside the prefetched 3×3 or before
+   *  it has arrived. Resolves when that tile's rows are in (or known absent). */
+  ensureAt(lng: number, lat: number): Promise<void> {
+    const { x, y } = factTileOf(lng, lat);
+    return this.load(x, y);
+  }
+
+  private readonly loads = new Map<string, Promise<void>>();
+
+  private load(x: number, y: number): Promise<void> {
     const key = `${x}/${y}`;
+    let pending = this.loads.get(key);
+    if (!pending) this.loads.set(key, pending = this.fetchTile(key));
+    return pending;
+  }
+
+  private async fetchTile(key: string): Promise<void> {
     if (this.requested.has(key)) return;
     this.requested.add(key);
     try {
