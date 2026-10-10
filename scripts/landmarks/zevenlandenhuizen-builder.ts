@@ -234,7 +234,7 @@ export function buildZevenlandenhuizen(_w: number, _d: number, b: BuildingTools 
     // tower roof: wide hipped eave with fretwork fascia, slate hip, blue scaled cap
     g.slab(4.9, 15.0, 3.7, 0.3, 1.2, 'stone', -0.2);
     for (let k = 0; k < 14; k++) g.slab(3.2 + k * 0.245, 14.78, 0.14, 0.24, 0.06, 'stone', 1.0);
-    g.pyramid(4.9, 15.3, 0.3, 3.4, 2.4, 0.9, 'slate');
+    g.pyramid(4.9, 15.3, 0.0, 3.4, 1.8, 0.9, 'slate');
     {
       const f = g.fr(4.9, 16);
       put(b, f, new T.SphereGeometry(0.85, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2).scale(1, 0.55, 0.8), 4.9, 16.1, 0.65, 'blue');
