@@ -591,9 +591,12 @@ export class SignatureLandmarks {
         const ranges = object.isMesh && object.geometry?.userData?.pandRanges;
         if (!ranges || !object.geometry.index) return;
         const g = object.geometry, sep = api.separatePands(g.index.array, g.attributes.position.count, ranges);
+        // Through the accessors (glTF attributes may be interleaved or quantized): plain float copies.
+        const getters = ['getX', 'getY', 'getZ', 'getW'];
         for (const name of Object.keys(g.attributes)) {
-          const a = g.attributes[name];
-          g.setAttribute(name, new THREE.BufferAttribute(api.remapAttribute(a.array, a.itemSize, sep.source), a.itemSize, a.normalized));
+          const a = g.attributes[name], size = a.itemSize, out = new Float32Array(sep.source.length * size);
+          for (let v = 0; v < sep.source.length; v++) for (let c = 0; c < size; c++) out[v * size + c] = a[getters[c]](sep.source[v]);
+          g.setAttribute(name, new THREE.BufferAttribute(out, size, false));
         }
         g.setIndex(new THREE.BufferAttribute(sep.index, 1));
         // mesh-local → Mercator (holder space = Mercator; the holder's own lift stays 0 for chunks).
