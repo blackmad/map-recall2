@@ -1,0 +1,22 @@
+{
+  "name": "Odessa",
+  "landmarkId": "n4594648817",
+  "sourceUrl": "https://www.inyourpocket.com/netherlands/amsterdam/venues/Odessa",
+  "suppressOsmIds": [
+    "w277087161"
+  ],
+  "pandId": null,
+  "materialOverrides": {
+    "dark": "#292623",
+    "slate": "#3a3f42",
+    "ochre": "#7d705a",
+    "glass": "#a3b3ab",
+    "green": "#7b8a78",
+    "frame": "#1d1f21",
+    "white": "#d9d5c8",
+    "gold": "#c9a24a",
+    "bronze": "#6b5b3e"
+  },
+  "surveySource": "OSM building=yes way w277087161 (note 'ship \"Odessa\"', ref:bag 0363020000998904, a berth object: BAG has no live pand for the vessel) fitted with an oriented rectangle, native east/south metres from its centre. Hull, screens, dome and lounge measured by eye from the 2025-06-16 municipal panoramas.",
+  "modifications": "Original texture-free geometry on the OSM ship outline: black plank hull, bamboo-screened bow and stern decks with glass dome, funnel and ODESSA lettering, and a glazed lounge with six scalloped roof segments; measured by eye from municipal panoramas, no pixels or meshes imported."
+}

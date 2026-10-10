@@ -13,6 +13,7 @@ import type {BuildingFacts} from './facts.ts';
 import {fitIntent, ROOF_COLOURS, type FitReport} from './fit.ts';
 import {addLettering} from './signage.ts';
 import {swatch, validateIntent, type CanalHouseIntent} from './intent.ts';
+import {applyHistoricPasses} from './historicPasses.ts';
 
 /** `{sameAs, overrides}` recipes: deep-merge onto the named neighbour; fronts merge by index. */
 export function resolveIntent(raw: any, load: (id: string) => any, depth = 0): CanalHouseIntent {
@@ -188,6 +189,8 @@ export function compileBuilding(intent: CanalHouseIntent, facts: BuildingFacts):
   const vergeTriangles = crownVerges(built.group, recipe, intent.roof.material);
   const roofClasses = dressRoofs(built.group, intent.roof.material);
   dressShopfronts(built.group, intent, report);
+  // Historic fronts (opt-in): cornice/shutter paint, mansards, towers, party-wall clipping, lean.
+  applyHistoricPasses(built.group, intent, recipe, report);
   return {group: built.group, recipe, anchorRD, fit: report, roofClasses, vergeTriangles, facts: fitted};
 }
 

@@ -26,10 +26,20 @@
       "cornice": "simple",
       "hoist": false,
       "gable": "neck",
+      "crownBays": {
+       "from": 1,
+       "to": 1
+      },
+      "crownRise": 1.3,
+      "crownFinial": true,
       "storeys": 4,
       "bays": 2,
+      "bayWidths": [
+       0.4,
+       0.6
+      ],
       "atticWindows": 1,
-      "doorBay": null,
+      "doorBay": 0,
       "windows": "arched",
       "archRings": "band",
       "bands": "storey",
@@ -48,11 +58,10 @@
        "name": "The Champ",
        "displayWindows": 1,
        "stallriser": "low",
-       "residentialDoor": {
-        "side": "left",
-        "colour": "dark-brown"
-       },
-       "shopShare": 0.6,
+       "bays": [
+        1,
+        1
+       ],
        "evidence": "pano 2024-11-29 + OSM node 11576156399"
       }
      }
@@ -101,8 +110,6 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "bays equal width; photo: wide single left, tripartite right",
-     "gable centred; photo right of centre (~0.65)",
      "tripartite window is three equal windows in the model",
      "ornate scrolled pediment is a plain neck gable: a wide dome rising ~2 m too high and too broad, versus the narrow tall pedimented gable on the photo",
      "arched door head and steps not modelled"
@@ -152,11 +159,10 @@
        },
        "displayWindows": 1,
        "stallriser": "low",
-       "residentialDoor": {
-        "side": "right",
-        "colour": "black"
-       },
-       "shopShare": 0.65,
+       "bays": [
+        0,
+        1
+       ],
        "evidence": "pano 2024-11-29 + OSM node 8679796305"
       }
      }
@@ -223,8 +229,18 @@
       "cornice": "simple",
       "hoist": false,
       "gable": "neck",
+      "crownBays": {
+       "from": 1,
+       "to": 1
+      },
+      "crownRise": 1.1,
+      "crownFinial": true,
       "storeys": 4,
       "bays": 2,
+      "bayWidths": [
+       0.32,
+       0.68
+      ],
       "atticWindows": 1,
       "doorBay": null,
       "windows": "arched",
@@ -302,8 +318,6 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "bays equal width; photo: narrow left, wide arched triple window right",
-     "gable centred; photo over the right bay",
      "a tree hides the left half of the upper storeys"
     ]
    }
@@ -321,11 +335,20 @@
       "cornice": "simple",
       "hoist": false,
       "gable": "cornice",
-      "crownCap": "flat",
+      "crownCap": "pediment",
       "crownCapSpan": "narrow",
+      "crownBays": {
+       "from": 0,
+       "to": 0
+      },
+      "crownRise": 1,
       "storeys": 4,
       "bays": 2,
-      "dormers": 1,
+      "bayWidths": [
+       0.65,
+       0.35
+      ],
+      "atticWindows": 1,
       "doorBay": 0,
       "windows": "arched",
       "archRings": "band",
@@ -345,11 +368,10 @@
        "fascia": true,
        "displayWindows": 1,
        "stallriser": "none",
-       "residentialDoor": {
-        "side": "right",
-        "colour": "dark-brown"
-       },
-       "shopShare": 0.65,
+       "bays": [
+        1,
+        1
+       ],
        "evidence": "pano 2024-11-29"
       }
      }
@@ -391,8 +413,6 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "bays equal width; photo: wide left, narrow right",
-     "dormer centred; photo over the left bay",
      "arched ground-floor openings are a plain shopfront"
     ]
    }
@@ -440,11 +460,10 @@
        },
        "displayWindows": 1,
        "stallriser": "medium",
-       "residentialDoor": {
-        "side": "left",
-        "colour": "dark-brown"
-       },
-       "shopShare": 0.62,
+       "bays": [
+        1,
+        2
+       ],
        "evidence": "pano 2024-11-29 + OSM node 11576157880"
       }
      }
@@ -537,11 +556,10 @@
        "fascia": true,
        "displayWindows": 1,
        "stallriser": "low",
-       "residentialDoor": {
-        "side": "right",
-        "colour": "white"
-       },
-       "shopShare": 0.8,
+       "bays": [
+        0,
+        1
+       ],
        "evidence": "pano 2024-11-29"
       }
      }

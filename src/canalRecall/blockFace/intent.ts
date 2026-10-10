@@ -85,6 +85,14 @@ export interface BlockFaceIntent {
       trust?: 'photo'; reference?: string}[];
     /** Houses with the same design (the later ones use `sameAs`); evidence on the strip. */
     identical: {pands: string[]; evidence: string}[];
+    /**
+     * Eaves read off the rectified strip where 3DBAG misreads them (a cornice front hiding a gabled roof, a gable foot
+     * under a dormer): `stripRow` is the pixel row of the cornice top / gable foot on `strip.jpg` (strip.json gives the
+     * scale and ground); `front` names the front of a multi-front pand (default: every front of the pand).
+     */
+    measuredEaves?: {pand: string; front?: string; stripRow: number; evidence: string}[];
+    /** Clip street-side details at oblique party walls on every house of the face (FrontIntent `partyClip`). */
+    partyClip?: boolean;
     notes?: string[];
   };
   authoring?: {author: string; startedAt?: string; finishedAt?: string; passes: number; note?: string};
@@ -106,7 +114,9 @@ export function houseIntents(face: BlockFaceIntent): CanalHouseIntent[] {
     if (!base) throw Error(`${h.pandId}: sameAs ${h.sameAs} is not on this face`);
     return merge(designOf(base, depth + 1), h.overrides ?? {});
   };
-  return face.houses.map(h => validateIntent({schemaVersion: 1, kind: 'canal-house', id: h.slug, pandId: h.pandId, address: h.address, sources: face.sources, ...designOf(h),
+  // Face-wide party-wall clipping: every front opts in unless it says otherwise.
+  const withClip = (d: HouseDesign): HouseDesign => face.continuity?.partyClip ? {...d, fronts: d.fronts.map(f => ({partyClip: true, ...f}))} : d;
+  return face.houses.map(h => validateIntent({schemaVersion: 1, kind: 'canal-house', id: h.slug, pandId: h.pandId, address: h.address, sources: face.sources, ...withClip(designOf(h)),
     notes: [...(designOf(h).notes ?? []), ...(h.sameAs ? [`sameAs ${h.sameAs} (block face ${face.id})`] : [])]}));
 }
 
@@ -129,7 +139,7 @@ export function validateBlockFace(input: unknown, order?: string[]): BlockFaceIn
     if (front && g) {
       const trading = !['residential', 'office', 'vacant'].includes(g.use);
       if (g.use === 'residential' && front.shopfront) problems.push(`${at}: residential ground floor must not have a shopfront`);
-      if (trading && !front.shopfront) problems.push(`${at}: ${g.use} ground floor needs a shopfront`);
+      if (trading && !front.shopfront && !front.groundFront) problems.push(`${at}: ${g.use} ground floor needs a shopfront (or a historic groundFront)`);
       if (front.shopfront?.sign && g.name && !g.name.toUpperCase().replace(/[^A-Z0-9]/g, '').includes(front.shopfront.sign.text.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 4))) problems.push(`${at}: sign "${front.shopfront.sign.text}" does not match the use name "${g.name}"`);
     }
     for (const k of ['bays', 'windowsPerStorey', 'symmetry', 'groundFloor', 'signage', 'roofline', 'citation'] as const) if (!h.rhythm?.[k]) problems.push(`${at}.rhythm.${k} required (acceptance checklist: rhythm spec before modelling)`);
@@ -145,6 +155,19 @@ export function validateBlockFace(input: unknown, order?: string[]): BlockFaceIn
   }
   const seen = new Set<string>();
   for (const g of face?.continuity?.corniceGroups ?? []) for (const p of g.pands) { if (seen.has(p)) problems.push(`${p} in two cornice groups`); seen.add(p); }
+  const measuredSeen = new Set<string>();
+  for (const [k, m] of (face?.continuity?.measuredEaves ?? []).entries()) {
+    const at = `continuity.measuredEaves[${k}]`, i = face.houses.findIndex(h => h.pandId === m?.pand);
+    if (i < 0) { problems.push(`${at}: pand ${m?.pand} is not on this face`); continue; }
+    if (!(Number.isInteger(m.stripRow) && m.stripRow >= 0)) problems.push(`${at}.stripRow: a pixel row on strip.jpg`);
+    if (!m.evidence) problems.push(`${at}: needs evidence (what on the strip marks the line)`);
+    if (m.front !== undefined && intents[i] && !intents[i].fronts.some(f => f.id === m.front)) problems.push(`${at}.front: ${m.front} is not a front of ${m.pand.slice(-6)}`);
+    const key = `${m.pand}/${m.front ?? '*'}`;
+    if (measuredSeen.has(key)) problems.push(`${at}: ${key} measured twice`);
+    measuredSeen.add(key);
+    if (face.continuity.corniceGroups.some(g => g.pands.includes(m.pand))) problems.push(`${at}: ${m.pand.slice(-6)} is also in a cornice group; measure it or group it, not both`);
+  }
+  if (face?.continuity?.partyClip !== undefined && typeof face.continuity.partyClip !== 'boolean') problems.push('continuity.partyClip must be boolean');
   if (problems.length) throw Error(`Invalid block face ${face?.id ?? '?'}:\n - ${problems.join('\n - ')}`);
   return face;
 }

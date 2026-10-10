@@ -303,9 +303,16 @@
       "basement": "none",
       "cornice": "simple",
       "hoist": false,
-      "gable": "bell",
+      "gable": "neck",
+      "crownRise": 0.9,
+      "crownFinial": true,
       "storeys": 4,
       "bays": 3,
+      "bayWidths": [
+       1,
+       0.7,
+       1
+      ],
       "atticWindows": 1,
       "doorBay": 0,
       "windows": "sash",
@@ -334,11 +341,10 @@
        },
        "displayWindows": 1,
        "stallriser": "low",
-       "residentialDoor": {
-        "side": "left",
-        "colour": "dark-brown"
-       },
-       "shopShare": 0.58,
+       "bays": [
+        1,
+        2
+       ],
        "evidence": "pano 2024-11-29 + OSM node 3680268345"
       }
      }
@@ -387,10 +393,10 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "bays are equal width; photo: narrow middle bay between wide windows",
+     "narrow middle bay modelled with bayWidths 1/0.7/1",
      "arched door head and steps are a plain stoop",
      "script lettering drawn as block capitals; text read at low resolution",
-     "tall neck gable with ogee shoulders is a shallow rounded cap on a straight parapet (bell gable); its attic window is not drawn",
+     "tall ogee neck gable is a bell gable with crownRise 1.5 and a finial; shape approximate",
      "dark-brick bluish cast is one brick colour"
     ]
    }

@@ -206,26 +206,19 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 - **Audit see-through test is hull-limited**: cast rays fully through the
   bbox (or from outside the footprint) in `glbQuality.ts`; today concave
   footprints flag false holes. Madame Tussauds has small roof-junction gaps.
-- **Historic canal-house library (De Wallen, after the schema lane merges)**:
-  staged face `wallen-oza-41-57` (Oudezijds Achterburgwal 41–57, gable types
-  from the Rijksmonument register) fails gates. Needs: 3DBAG roof masses must
-  not show above cornices (also on Bilderdijkstraat/Marnixstraat ortho
-  sheets); volute wing pieces, finials, cartouches, rooftop gablets; front
-  lean; pier arcades and mixed door/shutter ground floors; separate cornice
-  colour; clip cornice details at oblique party walls (3–11 cm overhang);
-  mansards with pedimented dormers; 177915 footprint IoU 0.76. Voorburgwal
-  strips (2021 panoramas, oblique) rectify badly — pick dates by hand.
-- **Bilderdijkstraat faces staged (10 faces, 41 pands, not installed)**:
-  waiting for the schema lane, then phase 2 (adopt bay widths/off-centre
-  gables/shop spans/stucco, re-author the per-house chunks and standalone
-  recipes inside their faces, install). Further library gaps found: several
-  houses in one BAG pand (162443, 236022, 236189), two or three gables on one
-  front, brick towers and ornate pointed dormers, triple gable windows throw
-  "Opening escapes its wall", blind arcade friezes, script lettering; 3DBAG
-  eaves read a dormer/tower top as eaves (photo-trusted cornice groups up to
-  2.5 m spread; 164549, 162572, 237294, 167243 sit ~3 m high). Joint
-  z-fights from 2–7 cm survey-front offsets on 157757|164549, E1, E2 — snap
-  near-coplanar fronts. 155–167 (70 m, pand 236799) and 169 are large-tier.
+- **De Wallen next**: OZA 41–57 installed. Next — an Oudezijds Voorburgwal
+  face with a hand-picked capture date (2021 panoramas rectify badly);
+  lean from a non-rectified photo; adopt crownGroups/tower/split fronts on
+  Bilderdijkstraat 102–106, 149–151, 88–90, 162443, 236022, 236189; reviewer
+  row counts confuse mezzanines and arcade bays with storeys (177922/23/43/46).
+- **Bilderdijkstraat faces**: even side 72–166 installed. Held: 113–115,
+  131–133, 135–153 — need a way to override 3DBAG eaves >2.5 m from the photo
+  cornice (dormer/tower read as eaves). Not yet faces: chunk-bilder-079721-x2,
+  chunk-bilder-152363-x2, standalone 153622/153782/154127; 66–70 (pand
+  167348); 155–167 and 169 are large-tier. Library gaps (several houses per
+  pand, multiple gables per front, towers, triple gable windows) are on the
+  historic-library lane. iPhone e2e street shots frame a single shop window —
+  move the camera back.
 - **Inferred rears**: the rear window grid is generic (2.5 m pitch); use rear
   photos (`pand-reference --prefer-bearing`) where they exist. Raw audit still
   reports party-wall "holes" on several faces (exempted by the compile).
@@ -269,7 +262,9 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   fusion from `build-pano-facade.ts`; washed-out/foliage thresholds (0.3) are
   untuned; `roofShape` is null outside `buildings-colored.geojson`; Beeldbank
   and monument-register facts are not yet joined in.
-- **Drop MapLibre** (go; ~3–4 weeks after city-wide own ground;
+- **Drop MapLibre** — lives on its own long-lived branch
+  `render/drop-maplibre-step1-20261010` (own worktree), merging main in;
+  not merged to main until ready (user, 2026-10-10). (go; ~3–4 weeks after city-wide own ground;
   `docs/research/drop-maplibre-20261010.md` §6, prototype `no-maplibre.html`):
   overview/route preview/street labels from our own extracts match the game's
   MapLibre cameras within 1.1–3.2 px; iPhone 4× 5.8 ms frame CPU. Remaining:

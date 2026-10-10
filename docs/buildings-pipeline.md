@@ -553,3 +553,34 @@ corner-standing buildings with several street sides (the face covers one street;
 streets with obliquity > 45 deg, all dates scaffolded). Next: per-bay widths and off-centre gables in the schema
 (the biggest remaining mismatch class), residential bays inside a shopfront, a stucco material that the recipe look
 leaves white, and a full-face run (Bilderdijkstraat's 24 pands between the cross streets).
+
+### Historic canal houses: De Wallen library (2026-10-10, `wallen-oza-41-57`)
+
+All optional and byte-identical when absent (fit-golden all identical; every other face's GLB unchanged). Tests:
+`buildingRecipe/historicCanalHouse.test.ts`, `blockFace/historicFace.test.ts` (named regression OZA 41-57).
+Front fields:
+- `gableOrnament` (`buildingRecipe/gableOrnament.ts`): `wings` `volutes|scrolls` (stone bands under the neck/bell shoulders,
+  volute or scroll at the foot), `ears` (volutes at the cap base), `cartouche` (oval on the cap), `finial`
+  `crab|vase|ball`, `gablet` `crest|pediment` (rooftop piece on a cornice/flat front). Placed from the fitted crown
+  profile (`crownLandmarks`), so they follow `crownRise`/`crownAt`.
+- `leanDegrees` 0..3 (voorover): shear along the interpolated party directions, ground fixed, fades out 4 m behind the
+  front, max shift 0.6 m, so party lines stay closed. Not measurable from a rectified strip; OZA 41-57 does not use it.
+- `groundFront` `{kind: arcade|pui|wall, bays: [door|glazed-door|window|shutter|panel], colour?, shutterColour?}`:
+  stone/timber piers + beam + risers as blocks (`shop` slot), each bay its own opening (no shop glass, no storey-0 grid).
+  Not with `shopfront`; basement must be `none`.
+- `roofFront: "mansard"` (cornice/flat): 72-degree slate wedge behind the cornice, its ends on the party planes;
+  `dormerStyle` `plain|pediment|pointed` (pediment = projecting trim gable; on a mansard the dormer stands on its face).
+- `crownGroups` (2-4 `{from, to}` axis ranges: several gables on one front), `tower` `{bays, rise, cap: pyramid|flat}`.
+- `partyClip`: cornice/ornament/detail vertices near the front corners are clamped to the oblique party plane (OZA had
+  3-11 cm overhang into neighbours at ~17 degrees). Block faces set it for all fronts with `continuity.partyClip`.
+- `palette.cornice`: cornice paint apart from window frames (cream cornice over dark frames is the Wallen norm).
+Fit: a front `share` with no footprint vertex within 1.5 m of the cut inserts one (several houses in one straight BAG
+pand: Bilderdijk 162443, 236022, 236189); side-by-side gable lights that escape the crown shrink (x0.92 steps) or fall
+back to one centred light instead of throwing "Opening escapes its wall".
+Block face: `continuity.measuredEaves` (`{pand, front?, stripRow, evidence}`; scaled by `strip.json`) for cornice fronts
+that hide a gabled roof (3DBAG's eaves percentile read 45/49/57 1.6-1.9 m low). The footprint gate passes as a source
+limit when 3DBAG LoD2.2 is >=10 % short of BAG and the model matches the survey (IoU >= 0.9): 177915's 0.76 IoU is a
+12.5 m2 rear wedge missing from 3DBAG itself (b3_opp_grond 40.28 vs BAG 52.77; no neighbour covers it). The CLI's audit
+classifies hole loops past the end of a shared edge by their open edges (`blockFace/partyLoops.ts`): all on a party plane
+= trimming artefact.
+Result: 8 pands, 17,303 tris, 1.13 MB (281 KB gzip); gates, interference (0 overhang) and audit (party exemption) pass.

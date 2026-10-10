@@ -1,3 +1,5 @@
+import {buildOdessa} from './odessa-builder';
+import {buildHotelJakarta} from './hotel-jakarta-builder';
 import {buildDeNederlandscheBank} from './de-nederlandsche-bank-builder';
 import {buildChassekerk} from './chassekerk-builder';
 import {buildFatihMoskee} from './fatih-moskee-builder';
@@ -369,7 +371,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='de-nederlandsche-bank')buildDeNederlandscheBank(w,d,helpers);
+    if(id==='odessa')buildOdessa(w,d,helpers);
+    else if(id==='hotel-jakarta')buildHotelJakarta(w,d,helpers);
+    else if(id==='de-nederlandsche-bank')buildDeNederlandscheBank(w,d,helpers);
     else if(id==='chassekerk')buildChassekerk(w,d,helpers);
     else if(id==='fatih-moskee')buildFatihMoskee(w,d,helpers);
     else if(id==='woongebouw-wladiwostok')buildWoongebouwWladiwostok(w,d,helpers);
