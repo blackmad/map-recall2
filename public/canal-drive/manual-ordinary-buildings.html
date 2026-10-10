@@ -30,8 +30,8 @@
 <body>
 <header>
   <h1>Amsterdam ordinary building models</h1>
-  <p><a href="whats-new.html"><strong>What's new</strong></a> &middot; <a href="landmark-queue.html">Building queue</a> &middot; <a href="manual-landmarks.html">Landmark models</a> &middot; <a href="ordinary-buildings.html">Source comparisons</a> &middot; <a href="park-landscape.html">Park views</a> &middot; <a href="tree-models.html">Tree models</a> &middot; <a href="model-reuse-review.html">Reusable model review</a></p>
-  <p>Custom ordinary buildings placed on their surveyed footprints. Drag to orbit &middot; scroll to zoom. Open a source comparison or add feedback on any model.</p>
+  <p><a href="whats-new.html"><strong>What's new</strong></a> &middot; <a href="landmark-queue.html">Building queue</a> &middot; <a href="manual-landmarks.html">Landmark models</a> &middot; <a href="street-surveys.html">Street surveys</a> &middot; <a href="ordinary-buildings.html">Source comparisons</a> &middot; <a href="park-landscape.html">Park views</a> &middot; <a href="tree-models.html">Tree models</a> &middot; <a href="model-reuse-review.html">Reusable model review</a></p>
+  <p>One-off reconstructions of large non-landmark buildings (offices, warehouses, the Haparandaweg blocks), placed on their surveyed footprints. They are drawn in the game but are never destinations. Repetitive canal-house and block-face work lives on <a href="street-surveys.html">Street surveys</a>. Drag to orbit &middot; scroll to zoom.</p>
   <div class="sort-controls"><label for="model-sort">Sort models</label><select id="model-sort">
     <option value="default">Catalogue order</option><option value="newest" selected>Newest updated</option>
     <option value="oldest">Oldest updated</option><option value="name">Name</option>
@@ -40,6 +40,7 @@
 <main></main>
 <script src="./js/feedback/browser.js"></script>
 <script src="./js/three.bundle.js"></script>
+<script src="./js/signature-placement.bundle.js"></script>
 
 <script type="module">
 // One WebGL context for the whole page, blitted into a 2D canvas per model.
@@ -56,7 +57,19 @@ const catalogue = await fetch('./ordinary-buildings-data/catalogue.json', { cach
   return null;
 });
 if (!catalogue) throw new Error('Building catalogue unavailable');
-const MODELS = catalogue.models.filter(spec => !selectedIds.size || selectedIds.has(spec.id) || selectedIds.has(spec.buildingId.split('.').at(-1)));
+// Category `ordinary` only (src/canalRecall/buildingCategory.ts): street-survey
+// recipe houses belong on street-surveys.html, landmarks on manual-landmarks.html.
+const isOrdinary = spec => (spec.category ?? (spec.source === 'building-recipes' ? 'street-survey' : 'ordinary')) === 'ordinary';
+// Manual-catalogue ordinary blocks (Haparandaweg): specs from the signature bundle, sizes from its manifest.
+const signature = window.CanalRecallSignatureLandmarks || {};
+const manualOrdinary = signature.MANUAL_ORDINARY_BUILDINGS || (signature.MANUAL_LANDMARKS || []).filter(spec => spec.buildingCategory === 'ordinary');
+const sigManifest = manualOrdinary.length ? await fetch('./models/signature-landmarks.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : { models: {} }).catch(() => ({ models: {} })) : { models: {} };
+const manualEntries = manualOrdinary.map(spec => {
+  const m = sigManifest.models?.[spec.id] || {};
+  return { id: spec.id, category: 'ordinary', manual: true, name: spec.name, buildingId: spec.suppressOsmIds?.[0] || spec.id, modelUrl: spec.modelUrl,
+    triangles: m.triangles || 0, bytes: m.bytes || 0, hash: signature.MODEL_ASSET_VERSIONS?.[spec.id] || null, cameraBearing: 0, attribution: spec.attribution };
+});
+const MODELS = [...catalogue.models.filter(isOrdinary), ...manualEntries].filter(spec => !selectedIds.size || selectedIds.has(spec.id) || selectedIds.has(spec.buildingId.split('.').at(-1)));
 const main = document.querySelector('main');
 
 window.review = { loaded: [], errors: [], total: MODELS.length, done: MODELS.length === 0 };
@@ -151,8 +164,8 @@ function build(spec) {
   const links = document.createElement('p');
   links.className = 'links';
   const link = document.createElement('a');
-  link.href = `./ordinary-buildings.html?building=${encodeURIComponent(spec.id)}`;
-  link.textContent = 'Inspect source comparison \u2192';
+  link.href = spec.manual ? `./signature-landmark-demo.html?only=${encodeURIComponent(spec.id)}` : `./ordinary-buildings.html?building=${encodeURIComponent(spec.id)}`;
+  link.textContent = spec.manual ? 'Inspect map placement \u2192' : 'Inspect source comparison \u2192';
   links.append(link);
   article.append(links);
 
