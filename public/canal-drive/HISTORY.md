@@ -150,6 +150,20 @@ except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
 (continuous ground and cornice line) does not need chunking. Unmeasured on a
 real phone GPU.
 
+## Portico and deep-cornice see-through rule; Okura, Coymanshuis, Artis Aquarium (2026-10-10)
+
+A ray that misses under the low-soffit rule is closed if it hits a wall
+within 6 m of the footprint edge under continuous cover (at most 16 m above
+the ray) AND either columns flank it at ray height (an open portico) or the
+wall is within 1.5 m of the edge (a deep cornice over a solid base). The
+Artis Aquarium lane had trimmed its cornice to pass; the overhang is back to
+the photographed 0.8 m. Full audit: no PASS→FAIL; FAIL→PASS for
+haarlemmermeerstation, haparandaweg-902-950 and hart-museum, each traced to
+eaves or colonnades over a wall about 1 m back. Installed Hotel Okura,
+Coymanshuis (Keizersgracht 177 plus its two neighbours in the same pand) and
+the Artis Aquarium; Krasnapolsky held. Koepelkerk is the Ronde Lutherse Kerk;
+Marnixbad is a plain 2006 rebuild.
+
 ## New landmarks from discovery; stoop rule (2026-10-10)
 
 A Haiku sweep of Dutch Wikipedia geosearch around the Dam proposed 30
