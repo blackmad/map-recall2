@@ -144,14 +144,17 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   (bin by plane, or rasterise only the triangle) and re-run the baseline.
   Kohnstammhuis stone reads too warm/tan against the grey photo.
 - **Nieuw-West building types (2026-10-11)**: opt-in `?buildingTypes=1`
-  draws 40 photo-confirmed instances (Sonderbuur type 1 portiekflat: 13
-  brick-cream + 11 clad-panel; Comeniusstraat type 6: 9 closed-ground + 7
-  centre-balcony pilotis) as shared InstancedMesh units with a box LOD past
-  140 m. Next: extend to the other 333 type-1 and 54 type-6 pands (each area
-  needs a photo survey; a control area's 12 "type 6" matches were a
-  different design), model types 2-5, inferred backs/gables need photos,
-  three.js render counters read 0 in the perf spec (no all-layer draw-call
-  comparison yet), then decide default-on. Review renders live in the source
+  draws 125 photo-confirmed instances: type 1 portiekflat in Sonderbuur,
+  Wildeman/Notweg, Slotermeer hofs (variants brick-cream, clad-panel,
+  clad-full, 4-storey brick, brick-yellow) and type 6 on Comeniusstraat, as
+  shared InstancedMesh units with a box LOD past 140 m. All 444 type-1
+  cluster panden were surveyed by photo; 359 held as other designs. Biggest
+  follow-ups: the 4-storey hof sub-design (balcony pairs outside a wide core,
+  ~16), Beek en Hoff / Osdorper Ban wide-core (~60), Slotermeerlaan wide core
+  (36), Clauskindereweg hip roofs (36); 4-storey brick reads red where the
+  photos are brown; 54 more type-6 pands; types 2-5; inferred backs/gables need photos,
+  then decide default-on (densest view, Wildeman street: 66.5k tris, 43
+  draw calls; iPhone 4x median 16.7 ms). Review renders live in the source
   repo under building-types/.
   Booking.com HQ held (2026-10-10): the plate rework (stepped bands,
   terrace cut, lower-case sign, teal glass) still reads as a gridded box.
