@@ -2330,133 +2330,145 @@
     ],
     "preferDescription": true
   },
-{
-  "modelId": "fatih-moskee",
-  "landmarkId": "extract_landmarks_1997051448",
-  "name": "Fatih Mosque",
-  "description": "The Fatih Mosque on the Rozengracht occupies the former Sint-Ignatiuskerk, a Jesuit church designed by H.W. Valk and opened in 1929 with a double-tower front 40 metres high and room for 600 worshippers. Its brick front keeps three pointed door arches under a gable with a star-patterned rose window, flanked by the two towers. Since 1981 it has been a mosque of the Islamic Foundation of the Netherlands, named after the Ottoman sultan Mehmed II.",
-  "funFact": "The congregation now prays towards the old main entrance, where the mihrab stands, so people enter through a small side door, and shops fill the three pointed doorways on the Rozengracht; the most visible change outside is that crescents replaced the crosses on the towers.",
-  "sourceUrl": "https://nl.wikipedia.org/wiki/Fatih-moskee_(Amsterdam)",
-  "additionalSources": [
-    "https://www.wikidata.org/wiki/Q674125"
-  ],
-  "preferDescription": true
-},
-{
-  "modelId": "chassekerk",
-  "landmarkId": "requested-chassekerk",
-  "name": "Chassékerk",
-  "description": "The Chassékerk, Karel Petrus Tholens's former Roman Catholic Church of Our Lady of Perpetual Help, was built in 1924-26 on Chasséstraat in a style influenced by the Amsterdam School: large plain brick surfaces, a broad column-free nave with narrow aisles under one great roof, and two slender towers flanking a porch of round arches. Closed in 1998 and nearly demolished, it was saved by neighbourhood opposition and now houses Chassé Dance Studios, a ballet school and a hotel in the old rectory.",
-  "funFact": "Squatters occupied the church in 2004, and after the housing corporation's demolition plans were dropped, its crypt was dug out in the 2010s to make one of the largest cellars in an existing Amsterdam building.",
-  "sourceUrl": "https://nl.wikipedia.org/wiki/Chass%C3%A9kerk",
-  "additionalSources": [
-    "https://www.wikidata.org/wiki/Q2189632"
-  ],
-  "preferDescription": true
-},
-{
-  "modelId": "pakhuis-de-zwijger",
-  "landmarkId": "n6933045932",
-  "name": "Pakhuis de Zwijger",
-  "description": "Pakhuis de Zwijger on Piet Heinkade was built in 1933-34 as a cold store for perishable goods, in the Nieuwe Bouwen style, to a design by J. de Bie Leuveling Tjeenk and K. Bakker. Its brick box of small square windows overhangs the quay on cantilevered concrete columns, and tall stair towers with projecting caps run up the front. It stood empty and was threatened with demolition before it was made a national monument in 2001 and restored by Stadsherstel Amsterdam. Since 2006 it has housed cultural organisations and the public programme that carries its name.",
-  "funFact": "A bridge over the IJhaven was planned straight through the warehouse; in the end the Jan Schaeferbrug (opened 2001) was built with the monument kept, and its roadway still runs through the building.",
-  "sourceUrl": "https://nl.wikipedia.org/wiki/Pakhuis_de_Zwijger",
-  "additionalSources": [
-    "https://dezwijger.nl/"
-  ],
-  "preferDescription": true
-},
-{
-  "modelId": "victoria-hotel",
-  "landmarkId": "n237912528",
-  "name": "Park Plaza Victoria Amsterdam",
-  "description": "The Victoria Hotel stands on the corner of Damrak and Prins Hendrikkade, opposite Centraal Station. It opened on 19 August 1890 to a design by the German-born architect Johann Friedrich Henkenhaf, who also ran the company, and it was the first hotel in the Netherlands with electric light in every guest room and double windows against street noise. Its neo-Renaissance natural-stone front, mansard roof and domed corner tower made it a landmark of the new station district, and it has been a protected monument since 2001. Today it is the Park Plaza Victoria.",
-  "funFact": "Henkenhaf could not buy two small old houses on Prins Hendrikkade, so he simply built the hotel around them; their two little gables are still enclosed by the hotel's front.",
-  "sourceUrl": "https://nl.wikipedia.org/wiki/Victoria_Hotel",
-  "preferDescription": true
-},
-{
-  "modelId": "woongebouw-wladiwostok",
-  "landmarkId": "woongebouw-wladiwostok",
-  "name": "Woongebouw Wladiwostok",
-  "description": "Wladiwostok closes the west side of Azartplein on Java-eiland with a nine-storey wall of anthracite brick whose facade is bent into an arc that follows the tram turning loop in front of it. Jo Crepain designed it for the housing association Het Oosten and its future residents, who formed their own association; it was built around 1994 with 72 rental flats and maisonnettes and 13 business units. A facade-wide flight of steps leads up to the business units, and a stack of planted balconies marks the centre of the front. It won the Pyramide Wonen prize in 1998, and since about 2014 its roof has been covered with solar panels.",
-  "funFact": "The name is the Dutch spelling of Vladivostok, the Russian port whose name means 'rule the East' - a pun on the corporation Het Oosten. In May 2026 residents put a vane on the roof mast in the shape of the theatre ship Azart, the square's namesake.",
-  "sourceUrl": "https://nl.wikipedia.org/wiki/Woongebouw_Wladiwostok",
-  "preferDescription": true
-},
-{
-  "modelId": "de-nederlandsche-bank",
-  "landmarkId": "de-nederlandsche-bank",
-  "name": "De Nederlandsche Bank",
-  "description": "The head office of the Dutch central bank stands on the Frederiksplein, where the Westeinde meets the Singelgracht. Marius Duintjer won the commission in a competition and built it between 1961 and 1968: a low, square block of about 110 by 120 metres raised on columns, with a slender office tower of roughly 70 metres beside it. Its concrete walls are clad in red-brown stoneware tiles meant to echo the brickwork of Amsterdam, and the tower's window strips get shorter as it rises. Mecanoo restored the building and reopened it to the public in 2025, and the round glass tower added to the courtyard in 1990 has been demolished.",
-  "funFact": "Some residents said the red-brown facade tiles looked like bathroom tiles, but the architect chose them to match Amsterdam brick, and the renovation kept the colour. The tower was also deliberately aligned with the long view down the Utrechtsestraat.",
-  "sourceUrl": "https://arcam.nl/architectuur-gids/de-nederlandsche-bank-2/",
-  "additionalSources": [
-    "https://www.amsterdamsebinnenstad.nl/binnenstad/297/nederlandsche-bank.php",
-    "https://www.architectuur.org/bouwwerk/658/De_Nederlandsche_Bank.html",
-    "https://www.archdaily.com/1039156/de-nederlandsche-bank-mecanoo"
-  ],
-  "preferDescription": true
-},
-{
-  "modelId": "hotel-jakarta",
-  "landmarkId": "hotel-jakarta",
-  "name": "Hotel Jakarta",
-  "description": "Hotel Jakarta fills the western tip of Java-eiland with an eight-storey V-shaped block, designed by the architecture firm SeARCH and opened in summer 2018. Its upper floors are dark panels pierced by a grid of timber-lined loggias, one for each room, and its two-storey glass plinth faces the water. The glazed point of the V shelters a subtropical garden, partly open to the public and planted with the Hortus Botanicus. Behind a timber structure of columns and walls, the rooms were prefabricated off site and hoisted into place, and the building is energy neutral.",
-  "funFact": "The Javakade name recalls the harbour's old trade with the Dutch East Indies, and so does the hotel: a perforated aluminium panel on the east facade shows the silhouette of a VOC ship. The building won the public prize at the Amsterdam Architecture Prize in 2019.",
-  "sourceUrl": "https://nl.wikipedia.org/wiki/Hotel_Jakarta",
-  "preferDescription": true
-},
-{
-  "modelId": "odessa",
-  "landmarkId": "n4594648817",
-  "name": "Odessa",
-  "description": "Odessa is a former Ukrainian cargo ship moored on the Veemkade quay in the former Eastern Docklands, converted into a restaurant and party boat. Its black tarred-plank hull carries tall woven-bamboo screens round the bow and stern decks, hung with barrels of climbing plants, and a glass geodesic dome on the bow block. A low glass lounge with a row of scalloped roof segments sits amidships, and the sun deck above offers a view over the IJ and the skyline.",
-  "funFact": "The ship cannot sail any more: it is permanently berthed at Veemkade 259, and because it is a vessel the Dutch BAG register holds no building for it, only a berth object. Today the operator, Odessa Journey, runs ecstatic dance nights on board.",
-  "sourceUrl": "https://www.inyourpocket.com/netherlands/amsterdam/venues/Odessa",
-  "additionalSources": [
-    "https://www.odessa.amsterdam/",
-    "https://www.timeout.com/amsterdam/restaurants-and-cafes/odessa"
-  ],
-  "preferDescription": true
-},
-{
-  "modelId": "hilton-amsterdam",
-  "landmarkId": "hilton-amsterdam",
-  "name": "Hilton Amsterdam",
-  "description": "The Hilton on Apollolaan is a gently kinked, nine-storey slab of hotel rooms, designed by Huig Maaskant with the firm De Vlaming en Salm and opened in May 1962 as the first Dutch hotel of an international chain. Its concrete floor slabs show as white bands over ribbons of windows between dark piers, a windowless grey-brick lift and stair house breaks the front, and the entrance sits under a far-projecting flat canopy. A low podium of lobby, restaurant and ballroom stretches towards the Noorder Amstelkanaal. The hotel is a national monument (rijksmonument 532205) from the post-war reconstruction programme.",
-  "funFact": "John Lennon and Yoko Ono held their 1969 Bed-In for Peace here: after their wedding on 20 March they stayed in the presidential suite from 25 to 31 March, receiving the world's press in bed. The suite was room 902 then and was renumbered 702 during a later renovation.",
-  "sourceUrl": "https://en.wikipedia.org/wiki/Hilton_Amsterdam",
-  "additionalSources": [
-    "https://kennis.cultureelerfgoed.nl/index.php/Monumenten/532205",
-    "https://nl.wikipedia.org/wiki/Hilton_Amsterdam_Hotel"
-  ],
-  "preferDescription": true
-},
-{
-  "modelId": "booking-hq",
-  "landmarkId": "booking-hq",
-  "name": "Booking.com headquarters",
-  "description": "The head office of Booking.com on Oosterdokskade 163 fills the eastern tip of Oosterdokseiland, a quarter-circle plot between Ton de Leeuwstraat, Oosterdoksstraat and the quay. Ben van Berkel's UNStudio designed it as a glass campus meant to mirror the water of the Oosterdok, its glazing broken by recesses, ramps, terraces and walkways, with a rectangular residential tower of 41 apartments (and the Club 11 venue on top) at one end. Construction ran from July 2018 until the building was delivered in December 2022, and about 5,000 staff work on 63,500 m2 of office space. It replaced the 1968 Post CS building of Merkelbach and Elling.",
-  "funFact": "The whole complex hangs from a steel structure of about 6,000 tonnes, the same amount as the Erasmus Bridge, and designed like a tree: slim at the base and branching further up. Club 11 on top of the tower is a nod to the old Post CS building that stood on almost the same spot.",
-  "sourceUrl": "https://nl.wikipedia.org/wiki/Hoofdkantoor_van_Booking.com",
-  "additionalSources": [
-    "https://nl.wikipedia.org/wiki/Oosterdokseiland",
-    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012250152/"
-  ],
-  "preferDescription": true
-},
-{
-  "modelId": "shell-technology-centre",
-  "landmarkId": "shell-technology-centre",
-  "name": "Shell Technology Centre Amsterdam",
-  "description": "This dark-brick research campus on the Grasweg in Amsterdam-Noord was built between 2005 and 2009 by Arcadis Architecten and Van Mourik as the new home of Shell's Amsterdam laboratory, with about 80,000 m2 of offices, laboratories, test halls and workshops. Crown Prince Willem-Alexander opened it in September 2009. The lab itself goes back to 1914, when the Bataafsche Petroleum Maatschappij started it with nine people on a 27-hectare site; since 2021 the complex is open to start-ups, universities and companies as the Energy Transition Campus Amsterdam, with around a thousand people working here.",
-  "funFact": "In 1954 the Shell laboratory in Amsterdam became the first Dutch company to put an electronic computer into service, the second computer in the whole country after the ARRA I. Today its engineers design and build most of the roughly 1,300 test rigs on the campus themselves.",
-  "sourceUrl": "https://nl.wikipedia.org/wiki/Energy_Transition_Campus_Amsterdam",
-  "additionalSources": [
-    "https://nl.wikipedia.org/wiki/Overhoeks_(Amsterdam)",
-    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012202175/"
-  ],
-  "preferDescription": true
-}
+  {
+    "modelId": "fatih-moskee",
+    "landmarkId": "extract_landmarks_1997051448",
+    "name": "Fatih Mosque",
+    "description": "The Fatih Mosque on the Rozengracht occupies the former Sint-Ignatiuskerk, a Jesuit church designed by H.W. Valk and opened in 1929 with a double-tower front 40 metres high and room for 600 worshippers. Its brick front keeps three pointed door arches under a gable with a star-patterned rose window, flanked by the two towers. Since 1981 it has been a mosque of the Islamic Foundation of the Netherlands, named after the Ottoman sultan Mehmed II.",
+    "funFact": "The congregation now prays towards the old main entrance, where the mihrab stands, so people enter through a small side door, and shops fill the three pointed doorways on the Rozengracht; the most visible change outside is that crescents replaced the crosses on the towers.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Fatih-moskee_(Amsterdam)",
+    "additionalSources": [
+      "https://www.wikidata.org/wiki/Q674125"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "chassekerk",
+    "landmarkId": "requested-chassekerk",
+    "name": "Chassékerk",
+    "description": "The Chassékerk, Karel Petrus Tholens's former Roman Catholic Church of Our Lady of Perpetual Help, was built in 1924-26 on Chasséstraat in a style influenced by the Amsterdam School: large plain brick surfaces, a broad column-free nave with narrow aisles under one great roof, and two slender towers flanking a porch of round arches. Closed in 1998 and nearly demolished, it was saved by neighbourhood opposition and now houses Chassé Dance Studios, a ballet school and a hotel in the old rectory.",
+    "funFact": "Squatters occupied the church in 2004, and after the housing corporation's demolition plans were dropped, its crypt was dug out in the 2010s to make one of the largest cellars in an existing Amsterdam building.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Chass%C3%A9kerk",
+    "additionalSources": [
+      "https://www.wikidata.org/wiki/Q2189632"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "pakhuis-de-zwijger",
+    "landmarkId": "n6933045932",
+    "name": "Pakhuis de Zwijger",
+    "description": "Pakhuis de Zwijger on Piet Heinkade was built in 1933-34 as a cold store for perishable goods, in the Nieuwe Bouwen style, to a design by J. de Bie Leuveling Tjeenk and K. Bakker. Its brick box of small square windows overhangs the quay on cantilevered concrete columns, and tall stair towers with projecting caps run up the front. It stood empty and was threatened with demolition before it was made a national monument in 2001 and restored by Stadsherstel Amsterdam. Since 2006 it has housed cultural organisations and the public programme that carries its name.",
+    "funFact": "A bridge over the IJhaven was planned straight through the warehouse; in the end the Jan Schaeferbrug (opened 2001) was built with the monument kept, and its roadway still runs through the building.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Pakhuis_de_Zwijger",
+    "additionalSources": [
+      "https://dezwijger.nl/"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "victoria-hotel",
+    "landmarkId": "n237912528",
+    "name": "Park Plaza Victoria Amsterdam",
+    "description": "The Victoria Hotel stands on the corner of Damrak and Prins Hendrikkade, opposite Centraal Station. It opened on 19 August 1890 to a design by the German-born architect Johann Friedrich Henkenhaf, who also ran the company, and it was the first hotel in the Netherlands with electric light in every guest room and double windows against street noise. Its neo-Renaissance natural-stone front, mansard roof and domed corner tower made it a landmark of the new station district, and it has been a protected monument since 2001. Today it is the Park Plaza Victoria.",
+    "funFact": "Henkenhaf could not buy two small old houses on Prins Hendrikkade, so he simply built the hotel around them; their two little gables are still enclosed by the hotel's front.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Victoria_Hotel",
+    "preferDescription": true
+  },
+  {
+    "modelId": "woongebouw-wladiwostok",
+    "landmarkId": "woongebouw-wladiwostok",
+    "name": "Woongebouw Wladiwostok",
+    "description": "Wladiwostok closes the west side of Azartplein on Java-eiland with a nine-storey wall of anthracite brick whose facade is bent into an arc that follows the tram turning loop in front of it. Jo Crepain designed it for the housing association Het Oosten and its future residents, who formed their own association; it was built around 1994 with 72 rental flats and maisonnettes and 13 business units. A facade-wide flight of steps leads up to the business units, and a stack of planted balconies marks the centre of the front. It won the Pyramide Wonen prize in 1998, and since about 2014 its roof has been covered with solar panels.",
+    "funFact": "The name is the Dutch spelling of Vladivostok, the Russian port whose name means 'rule the East' - a pun on the corporation Het Oosten. In May 2026 residents put a vane on the roof mast in the shape of the theatre ship Azart, the square's namesake.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Woongebouw_Wladiwostok",
+    "preferDescription": true
+  },
+  {
+    "modelId": "de-nederlandsche-bank",
+    "landmarkId": "de-nederlandsche-bank",
+    "name": "De Nederlandsche Bank",
+    "description": "The head office of the Dutch central bank stands on the Frederiksplein, where the Westeinde meets the Singelgracht. Marius Duintjer won the commission in a competition and built it between 1961 and 1968: a low, square block of about 110 by 120 metres raised on columns, with a slender office tower of roughly 70 metres beside it. Its concrete walls are clad in red-brown stoneware tiles meant to echo the brickwork of Amsterdam, and the tower's window strips get shorter as it rises. Mecanoo restored the building and reopened it to the public in 2025, and the round glass tower added to the courtyard in 1990 has been demolished.",
+    "funFact": "Some residents said the red-brown facade tiles looked like bathroom tiles, but the architect chose them to match Amsterdam brick, and the renovation kept the colour. The tower was also deliberately aligned with the long view down the Utrechtsestraat.",
+    "sourceUrl": "https://arcam.nl/architectuur-gids/de-nederlandsche-bank-2/",
+    "additionalSources": [
+      "https://www.amsterdamsebinnenstad.nl/binnenstad/297/nederlandsche-bank.php",
+      "https://www.architectuur.org/bouwwerk/658/De_Nederlandsche_Bank.html",
+      "https://www.archdaily.com/1039156/de-nederlandsche-bank-mecanoo"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "hotel-jakarta",
+    "landmarkId": "hotel-jakarta",
+    "name": "Hotel Jakarta",
+    "description": "Hotel Jakarta fills the western tip of Java-eiland with an eight-storey V-shaped block, designed by the architecture firm SeARCH and opened in summer 2018. Its upper floors are dark panels pierced by a grid of timber-lined loggias, one for each room, and its two-storey glass plinth faces the water. The glazed point of the V shelters a subtropical garden, partly open to the public and planted with the Hortus Botanicus. Behind a timber structure of columns and walls, the rooms were prefabricated off site and hoisted into place, and the building is energy neutral.",
+    "funFact": "The Javakade name recalls the harbour's old trade with the Dutch East Indies, and so does the hotel: a perforated aluminium panel on the east facade shows the silhouette of a VOC ship. The building won the public prize at the Amsterdam Architecture Prize in 2019.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Hotel_Jakarta",
+    "preferDescription": true
+  },
+  {
+    "modelId": "odessa",
+    "landmarkId": "n4594648817",
+    "name": "Odessa",
+    "description": "Odessa is a former Ukrainian cargo ship moored on the Veemkade quay in the former Eastern Docklands, converted into a restaurant and party boat. Its black tarred-plank hull carries tall woven-bamboo screens round the bow and stern decks, hung with barrels of climbing plants, and a glass geodesic dome on the bow block. A low glass lounge with a row of scalloped roof segments sits amidships, and the sun deck above offers a view over the IJ and the skyline.",
+    "funFact": "The ship cannot sail any more: it is permanently berthed at Veemkade 259, and because it is a vessel the Dutch BAG register holds no building for it, only a berth object. Today the operator, Odessa Journey, runs ecstatic dance nights on board.",
+    "sourceUrl": "https://www.inyourpocket.com/netherlands/amsterdam/venues/Odessa",
+    "additionalSources": [
+      "https://www.odessa.amsterdam/",
+      "https://www.timeout.com/amsterdam/restaurants-and-cafes/odessa"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "hilton-amsterdam",
+    "landmarkId": "hilton-amsterdam",
+    "name": "Hilton Amsterdam",
+    "description": "The Hilton on Apollolaan is a gently kinked, nine-storey slab of hotel rooms, designed by Huig Maaskant with the firm De Vlaming en Salm and opened in May 1962 as the first Dutch hotel of an international chain. Its concrete floor slabs show as white bands over ribbons of windows between dark piers, a windowless grey-brick lift and stair house breaks the front, and the entrance sits under a far-projecting flat canopy. A low podium of lobby, restaurant and ballroom stretches towards the Noorder Amstelkanaal. The hotel is a national monument (rijksmonument 532205) from the post-war reconstruction programme.",
+    "funFact": "John Lennon and Yoko Ono held their 1969 Bed-In for Peace here: after their wedding on 20 March they stayed in the presidential suite from 25 to 31 March, receiving the world's press in bed. The suite was room 902 then and was renumbered 702 during a later renovation.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hilton_Amsterdam",
+    "additionalSources": [
+      "https://kennis.cultureelerfgoed.nl/index.php/Monumenten/532205",
+      "https://nl.wikipedia.org/wiki/Hilton_Amsterdam_Hotel"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "booking-hq",
+    "landmarkId": "booking-hq",
+    "name": "Booking.com headquarters",
+    "description": "The head office of Booking.com on Oosterdokskade 163 fills the eastern tip of Oosterdokseiland, a quarter-circle plot between Ton de Leeuwstraat, Oosterdoksstraat and the quay. Ben van Berkel's UNStudio designed it as a glass campus meant to mirror the water of the Oosterdok, its glazing broken by recesses, ramps, terraces and walkways, with a rectangular residential tower of 41 apartments (and the Club 11 venue on top) at one end. Construction ran from July 2018 until the building was delivered in December 2022, and about 5,000 staff work on 63,500 m2 of office space. It replaced the 1968 Post CS building of Merkelbach and Elling.",
+    "funFact": "The whole complex hangs from a steel structure of about 6,000 tonnes, the same amount as the Erasmus Bridge, and designed like a tree: slim at the base and branching further up. Club 11 on top of the tower is a nod to the old Post CS building that stood on almost the same spot.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Hoofdkantoor_van_Booking.com",
+    "additionalSources": [
+      "https://nl.wikipedia.org/wiki/Oosterdokseiland",
+      "https://api.data.amsterdam.nl/v1/bag/panden/0363100012250152/"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "shell-technology-centre",
+    "landmarkId": "shell-technology-centre",
+    "name": "Shell Technology Centre Amsterdam",
+    "description": "This dark-brick research campus on the Grasweg in Amsterdam-Noord was built between 2005 and 2009 by Arcadis Architecten and Van Mourik as the new home of Shell's Amsterdam laboratory, with about 80,000 m2 of offices, laboratories, test halls and workshops. Crown Prince Willem-Alexander opened it in September 2009. The lab itself goes back to 1914, when the Bataafsche Petroleum Maatschappij started it with nine people on a 27-hectare site; since 2021 the complex is open to start-ups, universities and companies as the Energy Transition Campus Amsterdam, with around a thousand people working here.",
+    "funFact": "In 1954 the Shell laboratory in Amsterdam became the first Dutch company to put an electronic computer into service, the second computer in the whole country after the ARRA I. Today its engineers design and build most of the roughly 1,300 test rigs on the campus themselves.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Energy_Transition_Campus_Amsterdam",
+    "additionalSources": [
+      "https://nl.wikipedia.org/wiki/Overhoeks_(Amsterdam)",
+      "https://api.data.amsterdam.nl/v1/bag/panden/0363100012202175/"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "kohnstammhuis",
+    "landmarkId": "kohnstammhuis",
+    "name": "Kohnstammhuis",
+    "description": "The Kohnstammhuis closes the head of Wibautstraat, a ten-storey block of yellow brick and exposed concrete designed by the state architect Gijsbert Friedhoff with M. Bolten and built in 1954-1958 as the Amsterdam tax office on the site of the old Weesperpoort railway station. Its symmetrical street front has a double-height entrance hall behind a colonnade of round concrete pilasters and tall windows, brick end pavilions with stairs and coats of arms, a patterned frieze under a pent roof, and a plain slab of small windows above. A seven-storey cross wing was added in 1970 (Bolten and Jo Vegter). The tax authority left in 1994; the Hogeschool van Amsterdam took the building over and named it after the educationalist Philip Kohnstamm. It has been a national monument (rijksmonument 530868) since 2009.",
+    "funFact": "When it opened in 1958 it was the tallest office building in Amsterdam, about 48 m, and insiders nicknamed the grey tax office \"het grijze monument van de richtige heffing\" (the grey monument of the proper levy); the ninth-floor canteen still has stained glass by H. Telkamp, Frans Nols and K. Wenckebach.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Kohnstammhuis",
+    "additionalSources": [
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/530868"
+    ],
+    "preferDescription": true
+  }
 ]
