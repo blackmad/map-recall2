@@ -30,6 +30,7 @@ import { decorateShopfront, setShopfronts } from './shopfronts.js';
 import { boatForLandmark, houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetSegments } from './streetFronts.js';
+import { buildPrismIndex, pickPrism, type PrismEntry } from './prismPick.js';
 import { ORIGIN, ROOF_TONES, asPolygons, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
 export { ORIGIN, ROOF_TONES, type BuildingLook };
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
@@ -273,6 +274,8 @@ export class ThreeBuildings {
   private renderer: any;
   private camera: any;
   private readonly chunks = new Map<string, { source: Feature[]; mesh: any; info: ChunkInfo; ranges: Map<string, { start: number; count: number }>; lift?: GroundLift }>();
+  /** Click index per installed chunk, built on its first click (`prismPick.ts`). */
+  private readonly pickIndex = new WeakMap<object, PrismEntry[]>();
   /** Own ground (`?ownGround=1`): a building's base on the relief; undefined = not known yet, null = no relief there. */
   private groundBase: GroundBaseFn | null = null;
   /** Ids hidden per reason (the answer building, signature models); a facade is hidden while any reason holds it. */
@@ -320,9 +323,11 @@ export class ThreeBuildings {
     this.layer = this.makeLayer();
   }
 
-  /** Raycast the rendered mesh and resolve its vertex range to an exact
-   * building ID. Shader-hidden replacement meshes must never intercept a
-   * click on the manual model that replaced them. */
+  /** Resolve the building under a screen point to an exact building ID.
+   * Each chunk's buildings are tested as extruded footprints (`prismPick.ts`):
+   * the drawn buffers are released on the CPU, and rebuilding a chunk's whole
+   * facade layout per click cost ~2 s. Shader-hidden replacement meshes must
+   * never intercept a click on the manual model that replaced them. */
   inspectAtScreen(x: number, y: number, width: number, height: number): any {
     if (!this.visible || !this.ready || !this.camera || !this.THREE || !width || !height) return null;
     const T = this.THREE;
@@ -331,54 +336,39 @@ export class ThreeBuildings {
     const nx = x / width * 2 - 1, ny = 1 - y / height * 2;
     const near = new T.Vector3(nx, ny, -1).applyMatrix4(inverse);
     const far = new T.Vector3(nx, ny, 1).applyMatrix4(inverse);
-    const ray = new T.Raycaster(near, far.sub(near).normalize());
+    const ray = new T.Ray(near.clone(), far.clone().sub(near).normalize());
+    const toLocal = new T.Matrix4();
     let result: any = null;
     for (const [key, chunk] of this.chunks) {
-      if (!chunk.mesh || !chunk.source.length) continue;
-      chunk.mesh.updateWorldMatrix(true, true);
+      // Extras (dormers, chimneys) belong to buildings their walls chunk already holds.
+      if (!chunk.mesh || !chunk.source.length || key.startsWith(EXTRAS_PREFIX)) continue;
+      chunk.mesh.updateWorldMatrix(true, false);
       const sphere = chunk.mesh.geometry.boundingSphere?.clone().applyMatrix4(chunk.mesh.matrixWorld);
-      if (sphere && !ray.ray.intersectsSphere(sphere)) continue;
-      let pickMesh = chunk.mesh, temporary: any = null;
-      // Uploaded buffers are intentionally released on the CPU. Rebuild
-      // only a ray-intersecting chunk, with its installed build inputs, and
-      // discard it after the click rather than retaining city-wide buffers.
-      if (!chunk.mesh.geometry.getAttribute('position')?.array || chunk.mesh.geometry.index && !chunk.mesh.geometry.index.array) {
-        const installedLook = chunk.mesh.userData.installedLook as BuildingLook | undefined;
-        if (!installedLook) continue;
-        const rebuilt = key === KIT_KEY ? this.buildKits(chunk.source, installedLook)
-          : buildTransportedEnvelopeChunk(chunk.source, {look:installedLook,mode:chunkMode(key),streets:chunk.mesh.userData.installedStreets,profiles:chunk.mesh.userData.installedProfiles ?? [],contextFeatures:chunk.mesh.userData.installedContextFeatures ?? [],hostOpenings:chunk.mesh.userData.installedHostOpenings ?? [],surveyedEnvelopeData:chunk.mesh.userData.installedSurveyedEnvelopeData ?? []}).chunk;
-        if (rebuilt.vertexCount !== chunk.mesh.geometry.getAttribute('position').count
-          || rebuilt.ranges.length !== chunk.ranges.size
-          || rebuilt.ranges.some(range => {
-            const drawn = chunk.ranges.get(range.id);
-            return !drawn || drawn.start !== range.start || drawn.count !== range.count;
-          })) continue;
-        temporary = new T.BufferGeometry();
-        temporary.setAttribute('position', new T.BufferAttribute(rebuilt.positions, 3));
-        temporary.setIndex(new T.BufferAttribute(rebuilt.indices, 1));
-        temporary.boundingSphere = chunk.mesh.geometry.boundingSphere;
-        pickMesh = new T.Mesh(temporary, chunk.mesh.material);
-        pickMesh.matrixAutoUpdate = false;
-        pickMesh.matrixWorld.copy(chunk.mesh.matrixWorld);
-      }
-      try { for (const hit of ray.intersectObject(pickMesh, false)) {
-        const vertex = hit.face?.a;
-        if (vertex == null) continue;
-        const hidden = chunk.mesh.geometry.getAttribute('hidden')?.getX(vertex);
-        if (hidden > 0.5 && hidden < 1.5) continue;
-        const pair = [...chunk.ranges].find(([, range]) => vertex >= range.start && vertex < range.start + range.count);
-        if (!pair || this.hidden.has(pair[0])) continue;
-        const feature = chunk.source.find(feature => String(feature.properties.id) === pair[0]);
-        if (!feature) continue;
-        const depth = hit.point.clone().applyMatrix4(projection).z;
-        if (depth < -1 || depth > 1 || result && depth >= result.depth) continue;
-        const p = feature.properties || {};
-        const at = (this.map as any).unproject([x, y]);
-        result = { id: pair[0], name: p.name || p['name:en'] || '',
-          height: Number(p.height) || undefined, lngLat: [at.lng, at.lat], depth,
-          footprint: feature.geometry,
-          featureTarget: { source: 'osm-building-appearance', id: pair[0] } };
-      } } finally { temporary?.dispose(); }
+      if (sphere && !ray.intersectsSphere(sphere)) continue;
+      let index = this.pickIndex.get(chunk);
+      if (!index) this.pickIndex.set(chunk, index = buildPrismIndex(chunk.source, ORIGIN));
+      toLocal.copy(chunk.mesh.matrixWorld).invert();
+      const o = near.clone().applyMatrix4(toLocal), d = far.clone().applyMatrix4(toLocal).sub(o);
+      const hiddenAttribute = chunk.mesh.geometry.getAttribute('hidden');
+      const lift = chunk.lift?.applied;
+      const hit = pickPrism(index, [o.x, o.y, o.z], [d.x, d.y, d.z], id => lift?.get(id) ?? 0, id => {
+        const range = chunk.ranges.get(id);
+        if (!range || this.hidden.has(id)) return true;
+        const hidden = hiddenAttribute?.getX(range.start);
+        return hidden > 0.5 && hidden < 1.5;
+      });
+      if (!hit) continue;
+      const point = o.clone().addScaledVector(d, hit.t).applyMatrix4(chunk.mesh.matrixWorld);
+      const depth = point.applyMatrix4(projection).z;
+      if (depth < -1 || depth > 1 || result && depth >= result.depth) continue;
+      const feature = chunk.source.find(feature => String(feature.properties.id) === hit.entry.id);
+      if (!feature) continue;
+      const p = feature.properties || {};
+      const at = (this.map as any).unproject([x, y]);
+      result = { id: hit.entry.id, name: p.name || p['name:en'] || '',
+        height: Number(p.height) || undefined, lngLat: [at.lng, at.lat], depth,
+        footprint: feature.geometry,
+        featureTarget: { source: 'osm-building-appearance', id: hit.entry.id } };
     }
     return result;
   }

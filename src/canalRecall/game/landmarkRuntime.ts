@@ -207,10 +207,17 @@ export class GameLandmarkRuntime {
       const { n: _hidden, ...rest } = monument;
       row = [row[0], row[1], row[2], rest];
     }
-    const facts = describeBuilding(row, building.height, buildingName);
-    // A year, generic category or height alone is not a teaching card. A
-    // named/described heritage entry can still provide meaningful context.
-    if (!monument || !(monument.a || (monument.f != null && monument.f > 0))) return null;
+    // A street-chunk pand reports its address as its name; an address names
+    // a street the game may be about to ask for.
+    const safeName = buildingName && spoils?.call(this.vectorMap, buildingName) ? '' : buildingName;
+    const facts = describeBuilding(row, building.height, safeName);
+    // Every drawn building answers a click (user report 2026-10-10, "why does
+    // this building not let me click on it?" — a post-war tower with only a
+    // year and a height). From 2026-10-04 only listed monuments with an
+    // architect or function opened a card, so a click on most of the city
+    // did nothing at all, which reads as broken. The year, period, type and
+    // size are what the register knows; `describeBuilding` never invents more.
+    if (!row) this._requestBuildingFacts(building);
     return {
       id: `clicked-${building.id || building.lngLat.join('-')}`,
       name: facts.name,
@@ -219,6 +226,19 @@ export class GameLandmarkRuntime {
       lngLat: building.lngLat,
       featureTarget: building.featureTarget,
     };
+  }
+
+  /** The card opens at once with what is known; when the clicked building's
+   *  fact tile was not resident yet, its year and type fill in on arrival. */
+  _requestBuildingFacts(building: BuildingHit): void {
+    const store = this._buildingFacts;
+    if (!store || !building.lngLat) return;
+    const cardId = `clicked-${building.id || building.lngLat.join('-')}`;
+    void store.ensureAt(building.lngLat[0], building.lngLat[1]).then(() => {
+      if (this._landmarkNotice?.id !== cardId || !store.lookup(building.id)) return;
+      const card = this._cardForClickedBuilding(building);
+      if (card && this._landmarkNotice?.id === cardId) this._landmarkNotice = { ...this._landmarkNotice, name: card.name, detail: card.detail };
+    });
   }
 
   // ---- Encyclopedia text ----
