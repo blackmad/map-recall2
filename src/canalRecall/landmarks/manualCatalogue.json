@@ -17432,7 +17432,9 @@
           ]
         ]
       ]
-    }
+    },
+    "status": "held",
+    "heldReason": "Integrator 2026-10-10: fronts accepted on review, but audit see-through FAIL 11/42 street rays"
   },
   {
     "id": "klimhal",
@@ -18075,6 +18077,8 @@
           ]
         ]
       ]
-    }
+    },
+    "status": "held",
+    "heldReason": "Integrator 2026-10-10: blue curtain-wall banding and set-backs missing; terminal podium renders as long flat slabs"
   }
 ]
