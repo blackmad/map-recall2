@@ -1,0 +1,46 @@
+{
+  "id": "ljg-synagoge",
+  "name": "LJG Synagogue",
+  "landmarkId": "extract_landmarks_1186428295",
+  "modelUrl": "./models/ljg-synagoge.glb",
+  "suppressOsmIds": [
+    "w277313909",
+    "NL.IMBAG.Pand.0363100012241744"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.897877253887066,
+      52.33788412459366
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 22,
+    "widthMetres": 59
+  },
+  "surveyed": {
+    "anchor": [
+      4.897877253887066,
+      52.33788412459366
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012241744 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "concrete": "#b0b3b6",
+    "frame": "#7d8085",
+    "dark": "#2f3338",
+    "glass": "#4d6b82",
+    "slate": "#6b6d70",
+    "white": "#f4f4f2"
+  },
+  "attribution": {
+    "title": "LJG Synagogue",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Liberaal_Joodse_Gemeente_Amsterdam",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+  }
+}

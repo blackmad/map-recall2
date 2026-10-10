@@ -1,0 +1,18 @@
+{
+  "id": "world-trade-center-amsterdam",
+  "status": "held-not-installed",
+  "bagPand": "0363100012096613",
+  "osmWay": "w277173529",
+  "retrieved": "2026-10-10",
+  "identity": "WTC Amsterdam, Strawinskylaan 1 (Zuidas): the 1985 complex of towers A-G (B/C 61 m, E 65 m, Tower Ten 78 m added 2018-22) is ONE BAG pand 0363100012096613 (OSM way w277173529, ref:bag matches), about 200 x 95 m, 119 ring vertices, 718 wall facets and ~1,780 roof facets in the 3DBAG LoD2.2 item, heights 7 m to 68 m. The H tower (2004, 105 m, pand 0363100012065344, OSM w27679943) and the I tower lie across the Zuidplein and are separate buildings.",
+  "why_held": "The 3DBAG shell alone is 5,911 triangles / 74 KB and reads as a stepped grey mass; making it recognisable needs a per-tower facade inventory (reclad glass curtain walls of 2002-04, the glass atrium wall with the WTC logo and the light steel-and-glass canopy) with photographs of each street- and quay-facing face. Only three Commons photographs (atrium wall obliquely, logo close-up, tower H) were found and none shows a whole facade or tells which tower or side it is, so any window grid would be the generic kind the brief rejects. Footprints were prepared (world-trade-center-amsterdam-footprints.json) but no spec, builder, catalogue entry or GLB was committed.",
+  "sources": [
+    {"url": "https://commons.wikimedia.org/wiki/File:World_Trade_Center_Amsterdam.jpg", "file": "artifacts/landmark-lanes/world-trade-center-amsterdam/ref-ensemble.jpg", "use": "oblique view of the glass atrium wall and grey-clad tower beyond, under the steel-and-glass canopy", "licence": "Wikimedia Commons (see file page)"},
+    {"url": "https://commons.wikimedia.org/wiki/File:WTCAmsterdam2.jpg", "file": "artifacts/landmark-lanes/world-trade-center-amsterdam/ref-2.jpg", "use": "WTC logo on the atrium glass wall", "licence": "Wikimedia Commons (see file page)"},
+    {"url": "https://commons.wikimedia.org/wiki/File:World_Trade_Center_Amsterdam_2.jpg", "file": "artifacts/landmark-lanes/world-trade-center-amsterdam/ref-wtc2.jpg", "use": "second view of the complex", "licence": "Wikimedia Commons (see file page)"},
+    {"url": "https://commons.wikimedia.org/wiki/File:World_Trade_Center_Amsterdam_Toren_H.jpg", "file": "artifacts/landmark-lanes/world-trade-center-amsterdam/ref-h.jpg", "use": "tower H (not part of this pand)", "licence": "Wikimedia Commons (see file page)"},
+    {"url": "https://nl.wikipedia.org/wiki/World_Trade_Center_(Amsterdam)", "use": "tower list, 2002-04 reconstruction (towers stripped and reclad in glass), 144,000 m2", "licence": "CC BY-SA, facts only"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012096613", "use": "LoD2.2 shell", "licence": "CC BY 4.0 (3DBAG)"},
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.8695,52.3392,4.8765,52.3414&f=json", "use": "BAG pand identification (bouwjaar 1985)", "licence": "CC0 (BAG)"}
+  ]
+}
