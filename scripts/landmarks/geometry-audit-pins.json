@@ -1,11 +1,11 @@
 {
   "note": "Named geometry regressions reported by the user and verified by looking at the model (2026-10-10, qa/landmark-geometry-audit-20261010). status 'open': the audit must still detect it at this place (proves the detector works). When a fix lands, flip status to 'fixed': the audit must then NOT detect it there (guards the fix). Boxes are GLB-frame metres [x0,y0,z0,x1,y1,z1]. Checked by src/canalRecall/landmarks/geometryAudit.test.ts (npm run test:glb-quality runs glbQuality only; run node --import tsx --test src/canalRecall/landmarks/geometryAudit.test.ts).",
   "pins": [
-    {"id": "oude-lutherse-kerk", "kind": "opening-buried", "status": "open", "box": [11.0, 1.5, -1.0, 12.5, 11.0, 4.0],
+    {"id": "oude-lutherse-kerk", "kind": "opening-buried", "status": "fixed", "box": [11.0, 1.5, -1.0, 12.5, 11.0, 4.0],
       "evidence": "East side window at zz 1.5 lies wholly inside the skewed east wall: invisible, the wall shows blank (artifacts/geometry-audit/manual/olk-east-zz1.png). Builder: pending-venues-builders.ts 'side' boxes at x = 11.75 are axis-aligned, the wall is skewed."},
-    {"id": "oude-lutherse-kerk", "kind": "opening-floating", "status": "open", "box": [11.0, 1.5, 15.0, 12.5, 11.0, 19.5],
+    {"id": "oude-lutherse-kerk", "kind": "opening-floating", "status": "fixed", "box": [11.0, 1.5, 15.0, 12.5, 11.0, 19.5],
       "evidence": "East side window at zz 17.4 stands 0.27-0.46 m proud of the same wall: sky between window and wall in a grazing view. Together: 'windows not attached to building on both sides'."},
-    {"id": "hart-museum", "kind": "zfight", "status": "open", "box": [-7.5, 10.0, 38.5, 7.5, 10.8, 43.0], "minArea": 20,
+    {"id": "hart-museum", "kind": "zfight", "status": "fixed", "box": [-7.5, 10.0, 38.5, 7.5, 10.8, 43.0], "minArea": 20,
       "evidence": "Front portico: brick mass top and stone entablature top both at y = 10.4 over 32 m2 (front roof texture fighting)."},
     {"id": "rijksmuseum", "kind": "zfight", "status": "fixed", "orientation": "roof", "box": [-11, 5, 40, 11, 30, 62], "minArea": 1,
       "evidence": "Entrance canopy between the front towers: the GLB has no visible horizontal coplanar overlap here (< 0.1 m2). The in-game striping is the landmark depth bias (signature-landmarks-source.js _applySuppression, polygonOffsetFactor -32 scales with each triangle's depth slope), reproduced with geometry-audit-shots.ts --game-bias and gone with --bias=0,-4096. This pin keeps the GLB clean here."},

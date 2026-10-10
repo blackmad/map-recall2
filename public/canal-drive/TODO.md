@@ -24,10 +24,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   `geometry-audit-pins.json`): 200 of 281 GLBs have ≥0.25 m² visible coplanar
   overlap; mixed-material ones are visible (brick/stone 43, stone/white 16,
   frame/glass 18) — trim placed flush on wall/roof planes. Open pins: Oude
-  Lutherse Kerk east windows (axis-aligned boxes on a skewed wall), H'ART
-  portico top (32 m² at y 10.4), Rijksmuseum tower pilaster, Hotel de l'Europe
-  missing window column + mansard cut, American Hotel bay rhythm (the
-  landmark-fixes lane is on these). After a fix: flip the pin to `fixed` and
+  Lutherse Kerk zz 17.4 east window still detected floating after the rebuild
+  (zz 1.5 buried and H'ART portico now fixed), Rijksmuseum tower pilaster,
+  Hotel de l'Europe and American Hotel window-rhythm pins still detected after
+  their rework (rhythm is a warning; review whether the pins or the models are
+  wrong). Hotel de l'Europe lettering and roofscape, OLK south court and RLK
+  aisle south of 141° are inferred; Hendrik keeps its pre-existing detached-
+  parts fail; the six models' sources are not yet archived. After a fix: flip the pin to `fixed` and
   lower the baseline with `--only-geometry --write-baseline`; never raise it.
   Overhang over-flags glass curtain walls; "buried" over-flags curved drums.
   Confirm the in-game depth-bias fix by a close drive past the Rijksmuseum

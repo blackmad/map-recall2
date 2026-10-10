@@ -4250,6 +4250,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -51.5706672668457,
@@ -4278,14 +4279,14 @@
         "depthMetres": 86.35271453857422,
         "depthCoverage": 1.0663538591979367
       },
-      "triangles": 34598,
-      "bytes": 432904,
+      "triangles": 34468,
+      "bytes": 432048,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "a3a3d83088d38859",
+        "sourceHash": "e6d94f744bcef2a8",
         "buildVersion": 2,
-        "bytes": 95080,
-        "triangles": 5445
+        "bytes": 94696,
+        "triangles": 5398
       }
     },
     "amsterdam-museum": {
@@ -9287,14 +9288,15 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free architectural reconstruction; no imported mesh or photograph. Exact current parent scope, neighboring narrow houses and mapped courts preserved."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -18.014537811279297,
+          -18.2007999420166,
           -3.814697322468419e-7,
-          -26.299999237060547
+          -26.324113845825195
         ],
         "max": [
-          22.571815490722656,
+          22.78001594543457,
           22.459999084472656,
           30.95823860168457
         ]
@@ -9310,19 +9312,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 57.25823783874512,
+        "widthMetres": 57.282352447509766,
         "heightMetres": 22.45999946594239,
-        "depthMetres": 40.58635330200195,
-        "depthCoverage": 0.9931366235918841
+        "depthMetres": 40.98081588745117,
+        "depthCoverage": 1.0027890118547893
       },
-      "triangles": 7928,
-      "bytes": 88616,
+      "triangles": 13430,
+      "bytes": 162248,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "2e6def813b1db07e",
+        "sourceHash": "9270966bfc969f17",
         "buildVersion": 2,
-        "bytes": 28232,
-        "triangles": 1306
+        "bytes": 45440,
+        "triangles": 2166
       }
     },
     "kattenkabinet": {
@@ -15899,11 +15901,12 @@
         "glass": "#415763",
         "blue": "#263e53"
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -32.36106872558594,
           -1.4495849143258965e-7,
-          -35.39617156982422
+          -35.5670280456543
         ],
         "max": [
           13.79544734954834,
@@ -15922,19 +15925,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 58.341352462768555,
+        "widthMetres": 58.51220893859863,
         "heightMetres": 17.34050002288818,
         "depthMetres": 46.15651607513428,
         "depthCoverage": 1.0034025233724844
       },
-      "triangles": 10796,
-      "bytes": 143572,
+      "triangles": 12116,
+      "bytes": 162164,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "a28a910251f361f8",
+        "sourceHash": "f96f68e92d15fd35",
         "buildVersion": 2,
-        "bytes": 39020,
-        "triangles": 1705
+        "bytes": 42880,
+        "triangles": 1904
       }
     },
     "fire-station-dirk": {
@@ -29803,6 +29806,7 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -16.899999618530273,
@@ -29812,7 +29816,7 @@
         "max": [
           23.139999389648438,
           45.900001525878906,
-          19.729999542236328
+          19.871042251586914
         ]
       },
       "placement": {
@@ -29826,19 +29830,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 46.489999771118164,
+        "widthMetres": 46.63104248046875,
         "heightMetres": 45.900001525878906,
         "depthMetres": 40.03999900817871,
         "depthCoverage": 0.8519148725144406
       },
-      "triangles": 8934,
-      "bytes": 108104,
+      "triangles": 13242,
+      "bytes": 175336,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "f76a71a32b465c37",
+        "sourceHash": "43e37468e5ac16c9",
         "buildVersion": 2,
-        "bytes": 36156,
-        "triangles": 1402
+        "bytes": 51820,
+        "triangles": 2164
       }
     },
     "american-hotel": {
@@ -30185,6 +30189,7 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -38.32979202270508,
@@ -30213,14 +30218,14 @@
         "depthMetres": 56.85222816467285,
         "depthCoverage": 0.9974075116609272
       },
-      "triangles": 26866,
-      "bytes": 370364,
+      "triangles": 33842,
+      "bytes": 459516,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "1a976c8e5d314f14",
+        "sourceHash": "0bc8d03b8c6c57d0",
         "buildVersion": 2,
-        "bytes": 104008,
-        "triangles": 4957
+        "bytes": 122884,
+        "triangles": 6005
       }
     },
     "hotel-de-l-europe": {
@@ -30786,11 +30791,12 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -9.087714195251465,
-          0,
-          -27.458999633789062
+          -4.7683716530855236e-8,
+          -27.5003604888916
         ],
         "max": [
           43.582000732421875,
@@ -30810,18 +30816,18 @@
       },
       "extent": {
         "widthMetres": 52.66971492767334,
-        "heightMetres": 29.8799991607666,
-        "depthMetres": 47.38643264770508,
-        "depthCoverage": 1.0082219712277676
+        "heightMetres": 29.879999208450318,
+        "depthMetres": 47.42779350280762,
+        "depthCoverage": 1.0091019894214386
       },
-      "triangles": 24118,
-      "bytes": 340956,
+      "triangles": 25350,
+      "bytes": 372736,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "27a5c0ac34aef374",
+        "sourceHash": "ea1213b9dcf2a56d",
         "buildVersion": 2,
-        "bytes": 83444,
-        "triangles": 4042
+        "bytes": 95328,
+        "triangles": 4556
       }
     },
     "trippenhuis": {
