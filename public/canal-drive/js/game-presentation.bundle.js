@@ -18252,9 +18252,7 @@
             ]
           ]
         ]
-      },
-      status: "held",
-      heldReason: "Integrator 2026-10-10: fronts accepted on review, but audit see-through FAIL 11/42 street rays"
+      }
     },
     {
       id: "klimhal",
