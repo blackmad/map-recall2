@@ -37,16 +37,18 @@ export interface WallClusterOptions {
   splitGap?: number;
   /** Segments smaller than this (m^2) are dropped. */
   minArea?: number;
+  /** Keep only segments facing away from the model's plan centre (default true). Courtyard and re-entrant walls need false. */
+  outwardOnly?: boolean;
 }
 
 export const bearingOf = (nx: number, nz: number): number => ((Math.atan2(nx, -nz) * 180) / Math.PI + 360) % 360;
 export const bearingDelta = (a: number, b: number): number => { const d = Math.abs(a - b) % 360; return d > 180 ? 360 - d : d; };
 export const wallUV = (seg: Pick<WallSegment, 't'>, x: number, y: number, z: number): [number, number] => [x * seg.t[0] + z * seg.t[1], y];
 
-/** Clusters near-vertical triangles into planar wall segments, keeping only those facing outward from the model centre. */
+/** Clusters near-vertical triangles into planar wall segments, by default keeping only those facing outward from the model centre. */
 export function clusterWalls(soup: TriSoup, opts: WallClusterOptions = {}): WallSegment[] {
   const maxSkew = opts.maxVerticalSkew ?? 0.2, planeTol = opts.planeTolerance ?? 0.03, angTol = opts.angleToleranceDeg ?? 2.5;
-  const splitGap = opts.splitGap ?? 1.0, minArea = opts.minArea ?? 1;
+  const splitGap = opts.splitGap ?? 1.0, minArea = opts.minArea ?? 1, outwardOnly = opts.outwardOnly ?? true;
   const P = soup.positions, I = soup.indices, nTri = I.length / 3;
   let minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
   for (let i = 0; i < P.length; i += 3) {
@@ -111,7 +113,7 @@ export function clusterWalls(soup: TriSoup, opts: WallClusterOptions = {}): Wall
       if (area >= minArea) {
         const centre: [number, number, number] = [gx / area, gy / area, gz / area];
         // Outward = normal points away from the model's plan centre.
-        if ((centre[0] - cx) * cl.n[0] + (centre[2] - cz) * cl.n[1] > 0) {
+        if (!outwardOnly || (centre[0] - cx) * cl.n[0] + (centre[2] - cz) * cl.n[1] > 0) {
           out.push({tris: group.map(g => g.tr), n: cl.n, t, d: cl.d, bearingDeg: cl.bearing, area, uMin, uMax, vMin, vMax, centre});
         }
       }

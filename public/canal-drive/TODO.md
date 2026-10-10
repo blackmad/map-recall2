@@ -19,6 +19,22 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
+- **Landmark geometry audit offenders** (`audit:glb` geometry checks, baseline
+  `scripts/landmarks/geometry-audit-baseline.json`, pins
+  `geometry-audit-pins.json`): 200 of 281 GLBs have ≥0.25 m² visible coplanar
+  overlap; mixed-material ones are visible (brick/stone 43, stone/white 16,
+  frame/glass 18) — trim placed flush on wall/roof planes. Open pins: Oude
+  Lutherse Kerk zz 17.4 east window still detected floating after the rebuild
+  (zz 1.5 buried and H'ART portico now fixed), Rijksmuseum tower pilaster,
+  Hotel de l'Europe and American Hotel window-rhythm pins still detected after
+  their rework (rhythm is a warning; review whether the pins or the models are
+  wrong). Hotel de l'Europe lettering and roofscape, OLK south court and RLK
+  aisle south of 141° are inferred; Hendrik keeps its pre-existing detached-
+  parts fail; the six models' sources are not yet archived. After a fix: flip the pin to `fixed` and
+  lower the baseline with `--only-geometry --write-baseline`; never raise it.
+  Overhang over-flags glass curtain walls; "buried" over-flags curved drums.
+  Confirm the in-game depth-bias fix by a close drive past the Rijksmuseum
+  entrance.
 - **Landmark filler audit offenders (measured, unconfirmed in game)**:
   `npm run audit:landmark-filler` lists models that hide buildings they do not
   cover (hotel-jakarta BAG …247056 1,640 m², sint-agneskerk, national-holocaust-
@@ -28,11 +44,17 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Review each in game. Also: kiosks under 14 m² draw as bare boxes (Westermarkt
   76/78/82); the Muziekgebouw model's Bimhuis box is half off its OSM part;
   Mövenpick could get an ordinary one-off later.
-- **Discard 3DBAG roof geometry on faces (user, 2026-10-10)**: on
-  street-surveys.html (bilder-081118-155417) dark 3DBAG roof masses stand
-  above and beside the gables where the photo shows none. Generate roofs
-  from the recipe (pitched behind cornice/gable, real dormers) and use 3DBAG
-  only as a height clue. Not started — next lane.
+- **Recipe roofs on the remaining faces**: `continuity.roof.source:
+  'recipe'` is on for bilder-081118-155417, bilder-233645-236975, marnix-124-138
+  and marnix-c (30°). Off again for bilder-161259-236206, -164451-156126,
+  -166802-235892, -233580-162444, -236189-166159: combined with the
+  Bilderdijkstraat towers/split gables they fail the GLB hole audit (26–57
+  open loops, up to 56 m; survey roofs pass). Not tried: utrechtse-48-76
+  (178705 over triangle budget), wallen-oza-41-57 (54 m open loops),
+  wallen-ozv-115-125 (171879 above 3DBAG max), bilder-080336-090492 (1920s
+  overhanging eave), the newer frontRoof and house-type faces. The 70° attic
+  comes from one strip; rear wings flattened to median 3DBAG are unchecked
+  against aerials; cornice groups use a 2 cm stagger workaround.
 - **Rosarium follow-ups**: low box hedges around each bed; check Noord
   "Rozentuin" (a36994921, ~1,500 bushes on 1,380 m², maybe over-planted) and
   a288299874 in game; park-landscape draws the paved centre hex green;
@@ -115,9 +137,19 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   de-gooyer and huis-bartolotti now pass under the cantilever rules (rays
   hit a wall <= 2.5 m behind an overhang >= 6 m up); whether those recesses
   match the photos is still unchecked.
-  Booking.com HQ held (2026-10-10): flat 3DBAG glass box; rework on
-  big/p-20261010 for the stepped/offset floor plates, terraces, entrance
-  link and reflective glass. Shell Technology Centre installed with only two
+  geometryAudit.ts proximity grid skips any triangle spanning > 20,000 1 m
+  cells ("pathological sliver", line ~199): a large diagonal wall reads as
+  absent, so its windows FAIL opening-floating. HvA lane worked around it by
+  tessellating shell faces (big-facade.ts addShellTess); fix the grid
+  (bin by plane, or rasterise only the triangle) and re-run the baseline.
+  Kohnstammhuis stone reads too warm/tan against the grey photo.
+  Booking.com HQ held (2026-10-10): the plate rework (stepped bands,
+  terrace cut, lower-case sign, teal glass) still reads as a gridded box.
+  Needs the curved, stepped south front cantilevered over the entrance plaza
+  (BAG ring is straight there), thinner bronze plates, and a measured lobby
+  recess: 2.0 m was picked because >= 2.4 m fails see-through (59/186 rays),
+  photos bound it to 2-4 m. A glazed lobby recessed under a deep cantilever
+  with no columns is a see-through false-positive class worth a checker rule. Shell Technology Centre installed with only two
   photographed views (south, east); north half, west and courtyards inferred.
   Krasnapolsky held (2026-10-10): old Dam front matches; the modern wing and
   lower brick building need photo counts and the dark glass bays.
@@ -372,15 +404,15 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   tram, footways, landuse, piers missing from extracts; Utrecht/Rotterdam/Den
   Haag need extracts; footprint tiles to a worker; the Leaflet map picker
   (`map-picker.js:243`) also loads live OSM tiles — replace it too.
-- **Own ground in game behind `?ownGround=1`** (area `west`: canal belt,
-  Jordaan, Oud-West, Westerpark): next — run the city-wide relief + OSM ground
-  builds; draw partly covered edge cells (16 of 39 cells fully covered); BGT
-  road widths (only 2,459 of 15,583 ways tag a width); per-building bases for
-  street chunks; landmark kits in facade chunks, tram and ferry still at
-  street level; polder water levels; stair-stepped water edges on phone (1 m
-  mask); BRU0067 deck top shows deck grey; destination pin projects at z=0;
-  labels still MapLibre symbol layers; measure GPU on a real iPhone; decide
-  default-on. Cost: +1.7 ms map render per frame (iPhone 4×), vsync-bound.
+- **Own ground in game behind `?ownGround=1`** (city-wide, 294 cells, 29.1 MB
+  gzip): blockers for default-on — per-polder water levels (Osdorp land −2.17 m
+  under water at −1.77 m); GPU time on a real iPhone (1.35M tris resident);
+  labels still MapLibre symbol layers; road widths from OSM (BGT: store one
+  measured width per way offline, not polygons). Recommendation: default-on in
+  the canal belt first after a real-iPhone measurement. Per-building chunk
+  bases verified only on flat streets. Size cuts if needed: 4 m relief
+  everywhere (−4 MB), drop pad tiles. Firebase deploy grows ~24.6 MB net —
+  hosting storage is already over quota.
 - **Elevation follow-ups** (`?elevation=1`, `docs/elevation.md`): no AHN
   ground relief; one water level everywhere (polders, IJ shore get the same
   quay wall); route line hidden on humped decks and ramps paint over ~20 m of

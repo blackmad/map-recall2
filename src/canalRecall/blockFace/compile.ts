@@ -26,6 +26,7 @@ import {houseIntents, type BlockFaceIntent} from './intent.ts';
 import {addInferredRear, type RearReport} from './rear.ts';
 import {planInstancing, type FitSize, type InstancingPlan} from './instancing.ts';
 import {applyPhotoCrowns, facePhotoPatches, type PhotoCrownPatch, type PhotoGable} from './gableFromStrip.ts';
+import {recipeRoofFacts, type RecipeRoofReport} from './recipeRoof.ts';
 
 export interface FaceGate { pand: string; id: string; pass: boolean; value: unknown; limit: string }
 export interface Interference {
@@ -53,6 +54,8 @@ export interface FaceGroundPlan { sharedNapM: number; shiftsM: number[]; eavesBe
 /** The strip's vertical scale (strip.json): pixel rows to metres above the strip's ground line. */
 export interface StripScale { heightPx: number; pixelsPerMetre: number; groundNAP: number }
 export interface BlockFaceResult {
+  /** Roofs generated from the recipe (`continuity.roof.source = recipe`), per pand; pands that kept 3DBAG are absent. */
+  recipeRoofs?: RecipeRoofReport[];
   /** Crowns taken from the photo (`continuity.crownFromPhoto`): applied patches and fronts that kept their authored crown. */
   photoCrowns?: {patches: PhotoCrownPatch[]; kept: {pand: string; front: string; why: string}[]};
   instancing: InstancingPlan; slitsClosed: {left: string; right: string; gapM: number}[]; frontSnaps: FrontSnap[]; rears: RearReport[]; chunk: ChunkResult; ground: FaceGroundPlan; gates: FaceGate[]; interference: Interference[]; perPand: {pand: string; slug: string; triangles: number; eavesM: number; roofMaxM: number; roofMaxFactsM: number; storeyHeightsM: number[]; fronts: {id: string; widthM: number; eavesM: number; storeyHeightsM: number[]}[]}[]; passed: boolean }
@@ -338,7 +341,9 @@ export function snapFrontSteps(facts: BuildingFacts[], steps: {i: number; stepM:
 
 export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, name = `face-${face.id}`, options: {inferRears?: boolean; strip?: StripScale;
   /** Photo gable readings keyed `<pandId>/<frontId>` (scripts/block-face/gable-from-photo.ts), used for `continuity.crownFromPhoto`. */
-  photoGables?: Map<string, PhotoGable>} = {}): Promise<BlockFaceResult> {
+  photoGables?: Map<string, PhotoGable>;
+  /** Override the intent's `continuity.roof.source` (before/after comparisons). */
+  roofSource?: 'recipe' | 'survey'} = {}): Promise<BlockFaceResult> {
   let intents = houseIntents(face);
   const facts = face.houses.map(h => { const f = factsByPand.get(h.pandId); if (!f) throw Error(`no facts for ${h.pandId}`); return f; });
   const slits = closeFrontSlits(facts);
@@ -350,6 +355,34 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     rears.set(input.id, addInferredRear(built.group, f, built.anchorRD, report.storeyHeightsM, report.eavesM, built.recipe.palette.value.glass, built.recipe.palette.value.trim, ground.facts.filter((_, j) => j !== i)));
   };
   const compile = () => compileChunk(intents.map((intent, i) => ({id: intent.id, intent, facts: ground.facts[i]})), {name, maxRegroundM: 0, eavesSnapStepM: 0, decorate});
+  const roofSource = options.roofSource ?? face.continuity.roof?.source ?? 'survey', keepSurvey = new Set(face.continuity.roof?.keepSurvey ?? []);
+  let recipeRoofs: RecipeRoofReport[] | undefined;
+  /** Recipe roofs: fit once on the 3DBAG facts for the front eaves and storeys, then replace the roof (blockFace/recipeRoof.ts). */
+  const withRoofs = (plan: FaceGroundPlan): FaceGroundPlan => {
+    if (roofSource !== 'recipe') return plan;
+    const make = (i: number, ridgeCapM?: number) => {
+      const f = plan.facts[i], fit = fitIntent(intents[i], f), f0 = fit.report.fronts[0];
+      const pitch = face.continuity.roof?.pitchDeg;
+      return recipeRoofFacts(fit.facts, {eavesM: f0.eavesM, storeyHeightsM: f0.storeyHeightsM, street: intents[i].fronts[0].street, ridgeCapM,
+        // Dormers stand 0.35 m behind the frontage (fit.ts): the attic face starts behind them, not through them.
+        faceSetbackM: intents[i].fronts.some(fr => fr.street === intents[i].fronts[0].street && fr.dormers && fr.roofFront !== 'mansard') ? 0.4 : 0}, pitch ? {frontPitchDeg: pitch} : {});
+    };
+    let made = plan.facts.map((f, i) => keepSurvey.has(f.pandId) ? null : make(i));
+    // One attic line per cornice group (the photo reads them as one roof): the lowest member's top, in NAP.
+    for (const g of face.continuity.corniceGroups) {
+      const ids = g.pands.map(p => face.houses.findIndex(h => h.pandId === p)).filter(i => made[i]?.report.form === 'attic');
+      if (ids.length < 2) continue;
+      const nap = Math.min(...ids.map(i => made[i]!.report.ridgeM + plan.facts[i].heights.groundNAP));
+      // Every other member sits 2 cm lower: neighbouring footprints overlap by 1-6 cm along the party line, and two
+      // identical flat tops there z-fight (bilder-081118 156286|155418: 0.05 m2). 2 cm clears the 1 cm coplanarity test.
+      ids.sort((a, b) => a - b).forEach((i, k) => {
+        const cap = nap - (k % 2 ? 0.02 : 0);
+        if (made[i]!.report.ridgeM + plan.facts[i].heights.groundNAP > cap + 0.005) made[i] = make(i, cap - plan.facts[i].heights.groundNAP);
+      });
+    }
+    recipeRoofs = made.filter((m): m is NonNullable<typeof m> => !!m).map(m => m.report);
+    return {...plan, facts: plan.facts.map((f, i) => made[i]?.facts ?? f)};
+  };
   let current = slits.facts, ground = planFaceGround(face, current, undefined, options.strip);
   let photoCrowns: BlockFaceResult['photoCrowns'];
   if (face.continuity.crownFromPhoto?.length) {
@@ -358,6 +391,7 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     intents = applyPhotoCrowns(intents, patches);
     photoCrowns = {patches, kept};
   }
+  ground = withRoofs(ground);
   let chunk = await compile();
   const frontSnaps: FrontSnap[] = [];
   for (let pass = 0; pass < 2; pass++) {
@@ -366,7 +400,7 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     if (!todo.length) break;
     current = snapFrontSteps(current, todo.map(x => ({i: x.i, stepM: x.stepM!})), chunk.frame.nRD);
     for (const x of todo) frontSnaps.push({left: face.houses[x.i].pandId, right: face.houses[x.i + 1].pandId, stepBeforeM: cm(x.stepM!), pass: pass + 1});
-    ground = planFaceGround(face, current, undefined, options.strip);
+    ground = withRoofs(planFaceGround(face, current, undefined, options.strip));
     chunk = await compile();
   }
   const stepsAfter = groundCornerSteps(await decodePands(chunk.glb, intents.length));
@@ -384,7 +418,9 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     // A pand with several historic fronts (one owner behind four facades) gets the house budget per front.
     const budget = BUDGET_TRIANGLES * intent.fronts.length;
     g(pand, 'triangle-budget', t.length <= budget, t.length, `<= ${BUDGET_TRIANGLES} per front (${intent.fronts.length})`);
-    g(pand, 'height-vs-3dbag', roofMax - factsMax <= 0.5 + allowance && factsMax - roofMax <= 0.5, {modelM: cm(roofMax), threeDBagM: cm(factsMax), surveyM: cm(ground.facts[i].heights.roofMaxM)}, '|Δ| <= 0.5 m (roof max vs LoD2.2 after roofCleanup; dormers +1.9 m)');
+    const recipe = ground.facts[i].roofSource;
+    if (recipe) g(pand, 'height-vs-3dbag', roofMax - recipe.surveyRoofMaxM <= 0.5 + allowance && roofMax >= fit.report.fronts[0].eavesM - 0.05, {modelM: cm(roofMax), threeDBagM: cm(recipe.surveyRoofMaxM), capM: recipe.capM, roof: 'recipe'}, 'recipe roof: max <= LoD2.2 roof max + 0.5 m (dormers +1.9 m) and >= the front eaves; 3DBAG is an upper bound only');
+    else g(pand, 'height-vs-3dbag', roofMax - factsMax <= 0.5 + allowance && factsMax - roofMax <= 0.5, {modelM: cm(roofMax), threeDBagM: cm(factsMax), surveyM: cm(ground.facts[i].heights.roofMaxM)}, '|Δ| <= 0.5 m (roof max vs LoD2.2 after roofCleanup; dormers +1.9 m)');
     const f0 = fit.report.fronts[0];
     const trusted = ground.groups.find(gr => gr.trust === 'photo' && gr.snapped && gr.pands.includes(intent.pandId));
     const measured = ground.measured?.[intent.pandId], measuredOk = !!measured && fit.report.fronts.every(f => measured[f.id] === undefined || Math.abs(f.eavesM - measured[f.id]) <= 0.05);
@@ -451,6 +487,6 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     interference.push(item);
   }
   const instancing = planInstancing(intents, sizes, perPand.map(p => p.triangles));
-  return {...(photoCrowns ? {photoCrowns} : {}), instancing, slitsClosed: slits.closed, frontSnaps, rears: intents.map(x => rears.get(x.id)).filter((r): r is RearReport => !!r), chunk, ground, gates, interference, perPand, passed: gates.every(x => x.pass) && interference.every(x => x.pass)};
+  return {...(photoCrowns ? {photoCrowns} : {}), ...(recipeRoofs ? {recipeRoofs} : {}), instancing, slitsClosed: slits.closed, frontSnaps, rears: intents.map(x => rears.get(x.id)).filter((r): r is RearReport => !!r), chunk, ground, gates, interference, perPand, passed: gates.every(x => x.pass) && interference.every(x => x.pass)};
 }
 export {chunkFrame};

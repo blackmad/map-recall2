@@ -430,6 +430,11 @@
     ],
     "evidence": "strip: same 3 axes x 4 storeys, central door, central stepped gable on every house"
    }
-  ]
+  ],
+  "roof": {
+   "source": "recipe",
+   "evidence": "strip.jpg: sky directly above the cornice between the stepped gables; no roof shows from the street. A 30 degree attic keeps it out of sight; 3DBAG's flat dark slab at ridge height becomes a pitched roof capped by its p95 (review 2026-10-10).",
+   "pitchDeg": 30
+  }
  }
 }

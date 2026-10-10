@@ -251,6 +251,55 @@ Both were judged as "recognisable from its best side". That is not the bar.
    facade-rhythm check against the spec (`npm run compare:facades -- --id=<id>`:
    openings per storey, window axes, mirror symmetry, gable peaks), attachment ≤5 cm, height ±0.5 m vs
    3DBAG, triangle budget.
+   Landmark geometry audit (2026-10-10, part of `audit:glb`, logic in
+   `src/canalRecall/landmarks/geometryAudit.ts`). Look at each finding; the
+   numbers say where, the shots say whether:
+   - **Detached openings.** Window/door/trim parts (materials glass, frame,
+     door, louvre, blind, white, dark; parts ≤ 14 m) are grouped into
+     assemblies (touching boxes) and measured against the vertical wall plane
+     they face. *Floating*: no geometry within 3 cm (fail beyond 10 cm, e.g.
+     Oude Lutherse Kerk east window 0.27–0.46 m proud of a skewed wall).
+     *Overhang*: more than 12 % of the face projects outside the wall's
+     silhouette, i.e. past a wall end, corner or gable edge (fail beyond 35 %).
+     *Buried*: more than 30 % of the face sits behind solid wall with geometry
+     in front of it, so the window never shows (Oude Lutherse Kerk's other
+     east window; warn only — curved drums can trip it, Ronde Lutherse Kerk).
+     Railings standing on the ground are ignored.
+   - **Window rhythm** per facade (the elevations spec facades when
+     `<id>-elevations.json` exists, else the four largest wall bearings):
+     within a storey row, openings more than 25 % / 0.3 m off the row's median
+     width or height, or 0.35 m off its sill/head; a gap of 2–3× the row's
+     spacing between regular windows ("predicted missing"); columns more than
+     0.25 m off the axis of an equal-count row below. Always a warning — some
+     facades are irregular on purpose — so compare with the photo.
+   - **Coplanar z-fighting.** Same-facing triangles of different parts or
+     materials within 1 cm of one plane and overlapping by more than the
+     block-face abutment shrink (5 mm), counted only where at least one of
+     seven rays from the overlap escapes the model (overlaps buried inside a
+     mass or under a dome are never drawn). Warn ≥ 0.25 m², fail ≥ 2 m²
+     (H'ART portico: brick top and stone entablature both at y 10.4, 32 m²).
+     Faces 1–3 cm apart are reported as `zfight-near`.
+   - **Baseline, not a free pass.** Existing offenders are recorded in
+     `scripts/landmarks/geometry-audit-baseline.json`; `audit:glb --id=<id>`
+     fails only when `opening-floating-fail`, `opening-overhang-fail` or
+     `zfight-m2` grows past the entry (new models have no entry, so must be
+     clean). After a fix, lower the entry (`--write-baseline` on that id);
+     never raise one to pass. Named regressions live in
+     `scripts/landmarks/geometry-audit-pins.json` (status `open` = must still
+     be detected, flip to `fixed` with the fix) and run in
+     `src/canalRecall/landmarks/geometryAudit.test.ts`.
+   - **Evidence.** `audit:glb -- --geometry-shots --top=12` writes close-ups
+     (square-on + grazing for openings, plain + tinted for z-fight) and
+     `artifacts/glb-audit/geometry/contact.png`. One-off views:
+     `node --import tsx scripts/landmarks/geometry-audit-shots.ts --id=<id>
+     --eye=x,y,z --target=x,y,z [--game-bias]` (`--game-bias` applies the
+     game's landmark polygon offset, see below).
+   - **In-game depth bias.** A model that is clean here can still stripe in
+     game: `signature-landmarks-source.js` gives every landmark material
+     `polygonOffsetFactor -32` (scaled by each triangle's depth slope), which
+     reorders a model's own faces at grazing angles — hidden slab tops and
+     band ends show through walls (Rijksmuseum entrance, reproduced with
+     `--game-bias`, gone with `--bias=0,-4096`).
 5. **Street-level in-game shot** from where riders actually pass it.
 6. **Uncertainty blocks acceptance.** Anything a lane lists as unverified or
    uncertain is a hold until resolved; it is never merged "for now".

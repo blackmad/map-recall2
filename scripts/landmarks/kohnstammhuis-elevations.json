@@ -1,0 +1,10 @@
+{
+  "id": "kohnstammhuis",
+  "countedBy": "pending blind count by integrator",
+  "facades": [
+    {"name": "wibautstraat colonnade hall (east, wall 240)", "bearing": 69.9, "photo": "artifacts/landmark-lanes/kohnstammhuis/ref-wibautstraat.jpg", "span": [0, 63]},
+    {"name": "north pavilion east end (wall 185)", "bearing": 69.8, "photo": "artifacts/landmark-lanes/kohnstammhuis/ref-pavilion-north.jpg"},
+    {"name": "south pavilion west face (wall 72)", "bearing": 250.2, "photo": "artifacts/landmark-lanes/kohnstammhuis/ref-pavilion-south-west.jpg"},
+    {"name": "low south block (wall 41)", "bearing": 159.8, "photo": "artifacts/landmark-lanes/kohnstammhuis/ref-south-low.jpg"}
+  ]
+}

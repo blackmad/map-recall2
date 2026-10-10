@@ -34,11 +34,32 @@ export function groundMercatorFromLocal(): number[] {
  * the ground meshes (as built by ownGround/main.ts); `visible` lets the game
  * hide it (e.g. overview zoom, where MapLibre's flat cartography stays).
  */
-export function groundParticipant(root: any, opts: { visible?: (zoom: number) => boolean } = {}): FrameParticipant {
+export function groundParticipant(root: any, opts: { visible?: (zoom: number) => boolean; onMainPass?: (clipFromLocal: Float64Array) => void } = {}): FrameParticipant {
   const m: Mat4 = groundMercatorFromLocal();
   return {
     root,
     mercatorFromLocal: () => m,
-    beforeRender: ctx => (opts.visible ? opts.visible(ctx.zoom) : ctx.pass === 'main'),
+    beforeRender: ctx => {
+      if (ctx.pass === 'main' && opts.onMainPass) opts.onMainPass(mul4(mul4(ctx.clipFromWorld.elements, ctx.worldFromMercator.elements), m));
+      return opts.visible ? opts.visible(ctx.zoom) : ctx.pass === 'main';
+    },
   };
+}
+
+/** Column-major 4×4 product a·b (float64). */
+export function mul4(a: ArrayLike<number>, b: ArrayLike<number>): Float64Array {
+  const o = new Float64Array(16);
+  for (let c = 0; c < 4; c++) for (let r = 0; r < 4; r++) {
+    let s = 0;
+    for (let k = 0; k < 4; k++) s += a[k * 4 + r] * b[c * 4 + k];
+    o[c * 4 + r] = s;
+  }
+  return o;
+}
+
+/** Normalised device x/y of a local point under a column-major clip ← local matrix (null behind the eye). */
+export function ndcOf(clipFromLocal: ArrayLike<number>, x: number, y: number, z: number): [number, number] | null {
+  const m = clipFromLocal, w = m[3] * x + m[7] * y + m[11] * z + m[15];
+  if (w <= 1e-9) return null;
+  return [(m[0] * x + m[4] * y + m[8] * z + m[12]) / w, (m[1] * x + m[5] * y + m[9] * z + m[13]) / w];
 }
