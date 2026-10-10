@@ -19,7 +19,7 @@ export function buildCivicLandmark(id:string,w:number,d:number,b:BuildingTools){
   // their corners lift upward; a small grid preserves the concave low-poly form.
   const cols=12,rows=8,verts:number[]=[];
   function p(i:number,j:number):number[]{const xx=-a/2+a*i/cols,zz=-c/2+c*j/rows,t=Math.abs(zz)/(c/2),u=Math.abs(xx)/(a/2);return [xx,h*(1-t)**1.65+u**4*t*h*.32,zz];}
-  for(let i=0;i<cols;i++)for(let j=0;j<rows;j++){const q=[p(i,j),p(i+1,j),p(i+1,j+1),p(i,j+1)];verts.push(...q[0],...q[1],...q[2],...q[0],...q[2],...q[3]);}
+  for(let i=0;i<cols;i++)for(let j=0;j<rows;j++){const q=[p(i,j),p(i+1,j),p(i+1,j+1),p(i,j+1)];verts.push(...q[0],...q[2],...q[1],...q[0],...q[3],...q[2]);}
   const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(verts,3));g.computeVertexNormals();add(g,'gold',x,y,z);
   box(x,y+h,z,a*.96,.16,.18,'red');
   for(const side of [-1,1])for(let i=0;i<=cols;i++){const v=p(i,side<0?0:rows);box(x+v[0],y+v[1]-.18,z+v[2],.22,.28,.4,'red');}

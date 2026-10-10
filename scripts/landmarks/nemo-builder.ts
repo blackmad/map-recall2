@@ -3,13 +3,17 @@ import type {BuildingTools} from './cultural-builders';
 import source from './nemo-footprints.json';
 type Colour=Parameters<BuildingTools['add']>[1];
 type Point=[number,number];
+/** Every footprint ring in nemo-footprints.json is clockwise in (x,z); the triangles were emitted facing inward, so each triangle is re-wound (b<->c). */
+function faceOutward(v:number[]){const o=v.slice();for(let i=0;i+8<o.length;i+=9)for(let k=0;k<3;k++){const t=o[i+3+k];o[i+3+k]=o[i+6+k];o[i+6+k]=t;}return o;}
+/** ShapeGeometry faces are CCW in XY; mapping Y onto Z reflects them to face down, so re-wind to face up. */
+function flipFaces(g:T.BufferGeometry){const ix=g.index!;for(let i=0;i<ix.count;i+=3){const t=ix.getX(i+1);ix.setX(i+1,ix.getX(i+2));ix.setX(i+2,t);}}
 /** Original copper shell; surveyed outlines and maxima, photo-guided profiles. */
 export function buildNemo(_w:number,_d:number,b:BuildingTools){
  const {add,box}=b;
- function mesh(v:number[],colour:Colour){if(!v.length)return;const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.computeVertexNormals();add(g,colour);}
+ function mesh(v:number[],colour:Colour){if(!v.length)return;v=faceOutward(v);const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.computeVertexNormals();add(g,colour);}
  function clipped(ring:number[][],z:number,keepNorth:boolean){const out:Point[]=[];for(let i=0;i<ring.length;i++){const a=ring[i],q=ring[(i+1)%ring.length],ina=keepNorth?a[1]<=z:a[1]>=z,inq=keepNorth?q[1]<=z:q[1]>=z;if(ina)out.push([a[0],a[1]]);if(ina!==inq){const t=(z-a[1])/(q[1]-a[1]);out.push([a[0]+(q[0]-a[0])*t,z]);}}return out;}
  function roof(ring:number[][],height:(z:number)=>number,colour:Colour,z0:number,z1:number,bands:number,steps=false){
-  for(let i=0;i<bands;i++){const lo=z0+(z1-z0)*i/bands,hi=z0+(z1-z0)*(i+1)/bands,p=clipped(clipped(ring,lo,false),hi,true);if(p.length<3)continue;const g=new T.ShapeGeometry(new T.Shape(p.map(q=>new T.Vector2(...q)))),v=g.getAttribute('position'),y=height(lo);for(let j=0;j<v.count;j++){const x=v.getX(j),z=v.getY(j);v.setXYZ(j,x,steps?y:height(z),z);}g.computeVertexNormals();add(g,colour);
+  for(let i=0;i<bands;i++){const lo=z0+(z1-z0)*i/bands,hi=z0+(z1-z0)*(i+1)/bands,p=clipped(clipped(ring,lo,false),hi,true);if(p.length<3)continue;const g=new T.ShapeGeometry(new T.Shape(p.map(q=>new T.Vector2(...q)))),v=g.getAttribute('position'),y=height(lo);for(let j=0;j<v.count;j++){const x=v.getX(j),z=v.getY(j);v.setXYZ(j,x,steps?y:height(z),z);}flipFaces(g);g.computeVertexNormals();add(g,colour);
    if(steps&&i<bands-1){const onEdge=p.filter(q=>Math.abs(q[1]-hi)<1e-5).sort((a,q)=>a[0]-q[0]);if(onEdge.length>=2){const a=onEdge[0],q=onEdge.at(-1)!,next=height(hi);mesh([a[0],y,hi,q[0],y,hi,q[0],next,hi,a[0],y,hi,q[0],next,hi,a[0],next,hi],colour);}}
   }
  }
