@@ -71,7 +71,11 @@ export async function auditFile(file: string, th: Partial<Thresholds> = {}): Pro
 function modelThresholds(id: string): Partial<Thresholds> {
   try {
     const spec = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/landmarks', `${id}-spec.json`), 'utf8'));
-    return Array.isArray(spec.partyWallBearings) ? {blankWallExemptBearings: spec.partyWallBearings} : {};
+    const out: Partial<Thresholds> = {};
+    if (Array.isArray(spec.partyWallBearings)) out.blankWallExemptBearings = spec.partyWallBearings;
+    // Declared roadways/passages through the building ({axisBearing, corridor: [[x,z],...], evidence}); see Thresholds.throughPassages.
+    if (Array.isArray(spec.throughPassages)) out.throughPassages = spec.throughPassages;
+    return out;
   } catch { return {}; }
 }
 
