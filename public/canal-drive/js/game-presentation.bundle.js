@@ -19730,8 +19730,8 @@
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        sandstone: "#c9a96b",
-        stone: "#dccfa9",
+        sandstone: "#c4975f",
+        stone: "#e0d0a8",
         greyBrick: "#6e4c37",
         slate: "#8a5442",
         ochre: "#dfb44f",
@@ -20046,7 +20046,7 @@
         ]
       },
       status: "held",
-      heldReason: "Integrator 2026-10-10: brick reads pale yellow (photo is warm brown-orange), SE upper rhythm and gables approximate"
+      heldReason: "Integrator 2026-10-10 (after rework): roofline is still plain 3DBAG roof planes; the signature cluster of ornate gables, dormer towers and pinnacles is missing"
     },
     {
       id: "hotel-de-l-europe",
@@ -20610,9 +20610,7 @@
             ]
           ]
         ]
-      },
-      status: "held",
-      heldReason: "Integrator 2026-10-10: white-stone bays, dormers, central gable and glazed terrace missing; even window rhythm"
+      }
     },
     {
       id: "vondelkerk",
