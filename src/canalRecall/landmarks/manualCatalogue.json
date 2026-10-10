@@ -14685,11 +14685,11 @@
       "wall": "#cdcbc3",
       "roof": "#8a8e90",
       "frame": "#e7e8e4",
-      "glass": "#7b949b",
+      "glass": "#8fb0b8",
       "slab": "#d7d5cd",
       "rail": "#a9b9bb",
       "glassRail": "#a8d0d1",
-      "dark": "#2f3436",
+      "dark": "#4a4f50",
       "door": "#50585a",
       "stone": "#c2c0b8",
       "sign": "#e7e8e4",
@@ -14702,7 +14702,7 @@
       "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012242477",
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE",
-      "modifications": "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 5055 triangles. Rear and party walls are unmeasured. No invented POI."
+      "modifications": "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 1671 triangles. Rear and party walls are unmeasured. No invented POI."
     },
     "buildingFootprint": {
       "type": "Polygon",
@@ -14832,7 +14832,12 @@
       "door": "#26292b",
       "stone": "#505455",
       "sign": "#d8d6cd",
-      "red": "#7e3a33"
+      "red": "#7e3a33",
+      "render": "#c9baa6",
+      "glassS": "#a8bcc8",
+      "blind": "#8e8c84",
+      "doorB": "#2a2527",
+      "frameS": "#2d2f33"
     },
     "preservePositionPrecision": true,
     "attribution": {
@@ -14841,7 +14846,7 @@
       "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012243309",
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE",
-      "modifications": "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 2630 triangles. Rear and party walls are unmeasured. No invented POI."
+      "modifications": "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 3082 triangles. Rear and party walls are unmeasured. No invented POI."
     },
     "buildingFootprint": {
       "type": "Polygon",
@@ -15002,15 +15007,20 @@
       "source": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012244592 (ground 0.73 m NAP)"
     },
     "materialOverrides": {
-      "wall": "#7b1422",
+      "wall": "#bdb8ae",
       "roof": "#6a6d70",
       "frame": "#7b1422",
       "glass": "#3b434c",
-      "slab": "#6e1220",
-      "rail": "#6e1220",
-      "glassRail": "#5a6269",
-      "dark": "#2a2c30",
+      "glassG": "#7f8c97",
+      "greyFrame": "#86888a",
+      "red": "#7b1422",
       "door": "#661020",
+      "doorG": "#7a7c7e",
+      "dark": "#2a2c30",
+      "render": "#d9d5ca",
+      "slab": "#6e1220",
+      "rail": "#2a2c30",
+      "glassRail": "#5a6269",
       "stone": "#6e1220",
       "sign": "#e8e2d8",
       "glass2": "#5c646c"
@@ -15022,7 +15032,7 @@
       "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012244592",
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE",
-      "modifications": "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 2249 triangles. Rear and party walls are unmeasured. No invented POI."
+      "modifications": "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 5451 triangles. Rear and party walls are unmeasured. No invented POI."
     },
     "buildingFootprint": {
       "type": "Polygon",
@@ -17430,9 +17440,7 @@
           ]
         ]
       ]
-    },
-    "status": "held",
-    "heldReason": "Integrator 2026-10-10: fronts accepted on review, but audit see-through FAIL 11/42 street rays"
+    }
   },
   {
     "id": "klimhal",

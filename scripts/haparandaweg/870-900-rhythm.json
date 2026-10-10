@@ -1,0 +1,22 @@
+{
+  "id": "haparandaweg-870-900",
+  "building": "Haparandaweg 870-900 (BAG NL.IMBAG.Pand.0363100012243309, 3DBAG ridge 31.9 m)",
+  "scope": "Only the SE side was rebuilt (2026-10-10). The NW front is unchanged (it matched the photo); the NE side is unchanged (dark glass, UNVERIFIED).",
+  "units": "metres; px from artifacts/haparandaweg/ref/NL.IMBAG.Pand.0363100012243309/wall-140-0.jpg (50 px/m, 1001 x 1519, 2021 pano TMX7316010203-002057_pano_0000_000342, 8 m, obliquity 31 deg); x = (t + 9.5) * 50 along the wall, v = (1490 - y_px)/50.",
+  "walls": [
+    {
+      "name": "SE side (panels 9, 48, 44 + set-back roof storey panel 0)", "bearing": 140, "photographed": true,
+      "material": "beige/greige render (#c9baa6 in the model; photo 178,163,146) with dark-grey window frames and sky-reflecting glass; NOT dark glass",
+      "width": "14 m beige block (x 0-702 px) then a 3.4 m dark low garage wall (right part of panel 44, not modelled further)",
+      "storeys": "4: ground (doors 37, 39/41, 43 = black doors), first floor (balcony door, roller blinds), two upper storeys sharing one window field",
+      "left bay (x 5-290 px)": "ground: 3 glass panes + a narrow one (x 5-240) and two black door panels (x 245-295, 308-362); first floor: 4 panes in a band (y 1252-1362); upper: 2 rows x 4 panes (x 8-288; y 975-1080 and 1100-1208)",
+      "pier": "2.1 m of blank render (x 293-397)",
+      "right bay (x 397-692 px)": "ground: black door 43 (x 398-445) + glass (x 448-486) + two low windows under the blinds (x 497-683, y 1428-1462); first floor: balcony door (x 402-485, 2 panes) + two grey roller blinds (x 497-585, 595-683; solid, not glass); upper: 2 rows x 4 panes (x 402-682)",
+      "roofStorey": "set back 2.9 m (panel 0, 4.8 m wide, v 11.8-14.8): beige with two large windows (INFERRED proportions: the straight-on rectification cannot see this plane; positions from the sheet photo only)",
+      "leftPilaster": "0.7 m render pilaster at the NE end (panel 100) continues the render"
+    },
+    { "name": "NW front", "unchanged": true },
+    { "name": "NE side", "unchanged": true, "note": "dark glass as before; photo shows brick/curtain wall; UNVERIFIED, not in scope" }
+  ],
+  "audit": "the original NW piers were single 24.7 m boxes whose open back edges made a 49.3 m boundary loop (audit-glb-quality FAIL 'holes'); piers are now 4 stacked boxes (opt-in piers.segments=4), loops <= 24.9 m, audit PASS."
+}

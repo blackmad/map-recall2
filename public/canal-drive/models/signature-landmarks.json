@@ -555,8 +555,8 @@
         "depthMetres": 67.39957809448242,
         "depthCoverage": 0.8180758572061129
       },
-      "triangles": 23124,
-      "bytes": 324220,
+      "triangles": 30372,
+      "bytes": 424916,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "rijksmuseum": {
@@ -950,8 +950,8 @@
         "depthMetres": 68.57587814331055,
         "depthCoverage": 1.0674536036841187
       },
-      "triangles": 15846,
-      "bytes": 192700,
+      "triangles": 19473,
+      "bytes": 269448,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "heineken-experience-amsterdam": {
@@ -24901,8 +24901,6 @@
           ]
         ]
       },
-      "status": "held",
-      "heldReason": "Integrator 2026-10-10: fronts accepted on review, but audit see-through FAIL 11/42 street rays",
       "bounds": {
         "min": [
           -24.885000228881836,
@@ -24933,8 +24931,7 @@
       },
       "triangles": 27908,
       "bytes": 350256,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "klimhal": {
       "id": "klimhal",

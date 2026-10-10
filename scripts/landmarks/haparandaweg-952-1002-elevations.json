@@ -1,0 +1,30 @@
+{
+  "id": "haparandaweg-952-1002",
+  "source": "Gemeente Amsterdam panoramas (CC BY 4.0): TMX7316010203-002216_pano_0002_000283 (2021, 15 m, obliquity 1 deg) rectified to 50 px/m (artifacts/haparandaweg/ref/0363100012244592/front.jpg); TMX7316060226-000463_pano_0000_003365 (2019, 19 m) for the grey building",
+  "countedBy": "Claude Sonnet 5.5 (Haparandaweg rebuild lane), 2026-10-10, from the rectified photos before the model was rebuilt. NOT a blind count. Rule used (the gate closes gaps up to 0.4 m between panes): one opening = the glazed unit between heavy frame posts; glazing bars and the thin intermediate red posts do not split it.",
+  "facades": [
+    {
+      "name": "red building (NW front, 952-1002 NE part)",
+      "bearing": 320,
+      "span": [-24.3, -5.5],
+      "rows": [3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
+      "columns": 4,
+      "symmetric": false,
+      "gables": 0,
+      "photo": "artifacts/haparandaweg/ref/0363100012244592/front.jpg",
+      "note": "Photo (front.jpg x 20-890, y 66-1471): the ground floor has a solid red door panel (no. 1002, x 232-300 px) beside glazing, so the ground-floor opening axis sits ~1 m off the three module axes above it: 3 module axes + 1 = 4 distinct axes. Photo: 3 heavy-post modules of 5.8 m, each carrying 2 half-bays (6 half-bays of 2.9 m); ground floor + 9 storeys (the top storey is 3.7 m incl. the red roof beam); strict grid, uniform floor bands every 2.6-2.9 m."
+    },
+    {
+      "name": "grey building (NW front, 952 SW part)",
+      "bearing": 320,
+      "span": [-5.5, 6.3],
+      "rows": [2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+      "columns": 3,
+      "symmetric": false,
+      "gables": 0,
+      "openings": ["glassG"],
+      "photo": "artifacts/haparandaweg/ref/NL.IMBAG.Pand.0363100012244592/wall-320-1.jpg",
+      "note": "Photo (wall-320-1.jpg, 2019 pano, 9.2 m wall + the 2.5 m jog panel): 2 heavy-post modules of 5.6 m carrying 4 bays of 2.76 m; ground floor + 9 storeys on the same floor lines as the red building. Same ground-floor rule as the red building: the solid grey door panel (no. 952) shifts the ground-floor opening axis, so 2 module axes + 1 = 3. The grey building is NOT symmetric."
+    }
+  ]
+}
