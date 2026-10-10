@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+## Recipe window axes and real shops on Bilderdijkstraat (2026-10-10)
+
+User: 087959 had "weird window rhythm"; ground floors looked like a green
+stand-in instead of the local retail. Cause of the rhythm: every storey built
+its own grid with 9% side margins, so a 3-window top row beside 4-window rows
+bunched and drifted off-axis. A front now has one shared axis grid with equal
+piers; `storeyAxes` names the axes a reduced row uses; balcony windows are
+~15% wider; `crownCapRise: low` + pediment gives shallow pointed gables.
+Shopfronts take `name`, `sign` (stroke-font geometry, ~10 tris per letter),
+`fasciaColour`, `entrance`, `stallriser`, `residentialDoor`, `evidence`.
+Named from photo + OSM: Verloskundigen (080336), BENU (092395), De Japanner
+(152363/156732), COLORS (152669), Musscher Verlichting (153782, not in OSM),
+Toko Bersama (157154); four houses have no verifiable name and stay unsigned.
+Green: not reproduced as a bug — 157650/156287/155417 intents really say
+dark-green — but dark paint lifted in HSL got a teal cast (near-blacks now
+stay neutral) and fascia lettering took the frame colour (removed unless a
+sign is authored). Street chunks rebuilt from the new recipes; gates 15/15.
+`test:building-recipes` now runs every recipe test file (it ran one).
+
 ## Street chunks on by default; demo page (2026-10-10)
 
 The user's point: chunks are about making modelling correct and efficient

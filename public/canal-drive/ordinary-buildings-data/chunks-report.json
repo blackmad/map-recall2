@@ -17,16 +17,16 @@
    ]
   ],
   "triangles": {
-   "individual": 27581,
-   "chunk": 27570
+   "individual": 28271,
+   "chunk": 28260
   },
   "primitives": {
-   "individual": 121,
-   "chunk": 58
+   "individual": 136,
+   "chunk": 68
   },
   "bytes": {
-   "individual": 1917036,
-   "chunk": 1839052
+   "individual": 1970888,
+   "chunk": 1892000
   }
  },
  "chunks": [
@@ -34,9 +34,9 @@
    "name": "bilder-081118-x7",
    "houses": 7,
    "triangles": {
-    "individual": 14578,
-    "merged": 14519,
-    "chunk": 14462,
+    "individual": 14482,
+    "merged": 14423,
+    "chunk": 14366,
     "partyWallDropped": 57
    },
    "primitives": {
@@ -44,12 +44,12 @@
     "chunk": 25
    },
    "bytes": {
-    "individual": 1009208,
-    "chunk": 957136
+    "individual": 1002708,
+    "chunk": 950640
    },
    "gzipBytes": {
-    "individual": 239335,
-    "chunk": 206332
+    "individual": 238835,
+    "chunk": 205508
    },
    "partyWalls": [
     {
@@ -794,31 +794,31 @@
    },
    "warnings": [],
    "timingsMs": {
-    "compile": 64.9,
-    "trim": 7.7,
-    "write": 40.6
+    "compile": 65.2,
+    "trim": 7.5,
+    "write": 39.1
    }
   },
   {
    "name": "bilder-080336-x4",
    "houses": 4,
    "triangles": {
-    "individual": 6721,
-    "merged": 6721,
-    "chunk": 6697,
+    "individual": 7269,
+    "merged": 7269,
+    "chunk": 7245,
     "partyWallDropped": 24
    },
    "primitives": {
-    "individual": 31,
-    "chunk": 10
+    "individual": 44,
+    "chunk": 18
    },
    "bytes": {
-    "individual": 472468,
-    "chunk": 452640
+    "individual": 515844,
+    "chunk": 494640
    },
    "gzipBytes": {
-    "individual": 106957,
-    "chunk": 90789
+    "individual": 116733,
+    "chunk": 99745
    },
    "partyWalls": [
     {
@@ -1204,31 +1204,31 @@
    },
    "warnings": [],
    "timingsMs": {
-    "compile": 13.3,
-    "trim": 4,
-    "write": 15.5
+    "compile": 24.1,
+    "trim": 3.9,
+    "write": 20.3
    }
   },
   {
    "name": "bilder-079721-x2",
    "houses": 2,
    "triangles": {
-    "individual": 4529,
-    "merged": 4673,
-    "chunk": 4661,
+    "individual": 4691,
+    "merged": 4835,
+    "chunk": 4823,
     "partyWallDropped": 12
    },
    "primitives": {
     "individual": 17,
-    "chunk": 12
+    "chunk": 13
    },
    "bytes": {
-    "individual": 308764,
-    "chunk": 304344
+    "individual": 319156,
+    "chunk": 315504
    },
    "gzipBytes": {
-    "individual": 74036,
-    "chunk": 69149
+    "individual": 77277,
+    "chunk": 70660
    },
    "partyWalls": [
     {
@@ -1323,31 +1323,31 @@
    },
    "warnings": [],
    "timingsMs": {
-    "compile": 18.6,
-    "trim": 1,
-    "write": 20
+    "compile": 14.4,
+    "trim": 0.5,
+    "write": 11
    }
   },
   {
    "name": "bilder-152363-x2",
    "houses": 2,
    "triangles": {
-    "individual": 1753,
-    "merged": 1753,
-    "chunk": 1750,
+    "individual": 1829,
+    "merged": 1829,
+    "chunk": 1826,
     "partyWallDropped": 3
    },
    "primitives": {
-    "individual": 15,
-    "chunk": 11
+    "individual": 17,
+    "chunk": 12
    },
    "bytes": {
-    "individual": 126596,
-    "chunk": 124932
+    "individual": 133180,
+    "chunk": 131216
    },
    "gzipBytes": {
-    "individual": 29919,
-    "chunk": 29495
+    "individual": 32787,
+    "chunk": 31729
    },
    "partyWalls": [
     {
@@ -1427,9 +1427,9 @@
    },
    "warnings": [],
    "timingsMs": {
-    "compile": 3.9,
+    "compile": 4.5,
     "trim": 0.2,
-    "write": 4.8
+    "write": 6.4
    }
   }
  ]
