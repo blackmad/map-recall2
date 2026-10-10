@@ -11,9 +11,15 @@ export function buildHistoricMuseumLandmark(id:string,w:number,d:number,b:Buildi
  const rings=polygons.flat(),height=hart?10:10.6;
  function geometry(vertices:number[],colour:'slate'|'stone'|'brick'){const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(vertices,3));g.computeVertexNormals();add(g,colour);}
  function panel(x:number,y:number,z:number,width:number,h:number,angle:number,blind=false){const nx=Math.sin(angle),nz=Math.cos(angle);if(hart){box(x,y,z,width+.22,h+.22,.16,'stone',angle);box(x+nx*.13,y+.12,z+nz*.13,width,h,.2,blind?'dark':'glass',angle);}else{add(new T.PlaneGeometry(width+.22,h+.22),'stone',x,y+(h+.22)/2,z,angle);add(new T.PlaneGeometry(width,h),blind?'dark':'glass',x+nx*.035,y+.12+h/2,z+nz*.035,angle);}if(!blind){box(x+nx*.26,y+.13,z+nz*.26,.09,h,.12,'white',angle);for(let yy of [h*.33,h*.66])box(x+nx*.25,y+.12+yy,z+nz*.25,width,.08,.12,'white',angle);}}
- function hip(x:number,y:number,z:number,length:number,width:number,rise:number,angle=0){const vertices:number[]=[],ridge=Math.max(0,(length-width)/2);const xyz=(a:number,h:number,c:number)=>[x+a*Math.cos(angle)+c*Math.sin(angle),h,z-a*Math.sin(angle)+c*Math.cos(angle)];for(let side of [-1,1]){vertices.push(...xyz(-length/2,y,side*width/2),...xyz(length/2,y,side*width/2),...xyz(ridge,y+rise,0),...xyz(-length/2,y,side*width/2),...xyz(ridge,y+rise,0),...xyz(-ridge,y+rise,0));vertices.push(...xyz(side*length/2,y,-width/2),...xyz(side*length/2,y,width/2),...xyz(side*ridge,y+rise,0));}geometry(vertices,'slate');}
+ /** Rewinds roof triangles so every face normal points up (the hip slopes were half downward-facing). */
+ function upward(v:number[]){for(let i=0;i<v.length;i+=9){const ax=v[i+3]-v[i],az=v[i+5]-v[i+2],bx=v[i+6]-v[i],bz=v[i+8]-v[i+2];if(az*bx-ax*bz<0)for(let k=0;k<3;k++){const t=v[i+3+k];v[i+3+k]=v[i+6+k];v[i+6+k]=t;}}return v;}
+ /** Gabled roof with its ridge along z (x centre xc, z0..z1; eave heights ea at -x, ec at +x), slate slopes and ends. */
+ function gableRoofZ(xc:number,z0:number,z1:number,width:number,ea:number,ec:number,ridge:number){const a=xc-width/2,c=xc+width/2,v=[a,ea,z0, xc,ridge,z0, xc,ridge,z1, a,ea,z0, xc,ridge,z1, a,ea,z1, c,ec,z0, c,ec,z1, xc,ridge,z1, c,ec,z0, xc,ridge,z1, xc,ridge,z0, a,ea,z0, c,ec,z0, xc,ridge,z0, a,ea,z1, xc,ridge,z1, c,ec,z1];geometry(upward(v),'slate');}
+ function hip(x:number,y:number,z:number,length:number,width:number,rise:number,angle=0){const vertices:number[]=[],ridge=Math.max(0,(length-width)/2);const xyz=(a:number,h:number,c:number)=>[x+a*Math.cos(angle)+c*Math.sin(angle),h,z-a*Math.sin(angle)+c*Math.cos(angle)];for(let side of [-1,1]){vertices.push(...xyz(-length/2,y,side*width/2),...xyz(length/2,y,side*width/2),...xyz(ridge,y+rise,0),...xyz(-length/2,y,side*width/2),...xyz(ridge,y+rise,0),...xyz(-ridge,y+rise,0));vertices.push(...xyz(side*length/2,y,-width/2),...xyz(side*length/2,y,width/2),...xyz(side*ridge,y+rise,0));}geometry(upward(vertices),'slate');}
  for(const poly of polygons){const shape=new T.Shape(poly[0]);shape.holes=poly.slice(1).map(r=>new T.Path(r));const body=new T.ExtrudeGeometry(shape,{depth:height,bevelEnabled:false});body.rotateX(Math.PI/2);body.translate(0,height,0);add(body,'brick');
-  const floor=new T.ShapeGeometry(shape);floor.rotateX(Math.PI/2);add(floor,'slate',0,height+.01,0);
+  // H'ART: no slate cap. It lay 1 cm over the brick body's own top face across the whole footprint (4,700 m2 of
+  // brick/slate z-fighting wherever a viewer looked down past the hip eaves) and is fully covered by the hip roofs.
+  if(!hart){const floor=new T.ShapeGeometry(shape);floor.rotateX(Math.PI/2);add(floor,'slate',0,height+.01,0);}
   // The normal follows each real exterior/courtyard edge. Small cadastral
   // offsets are left undecorated so windows stay on genuine wall planes.
   for(let ri=0;ri<poly.length;ri++){const r=poly[ri];let area=0;for(let i=0;i<r.length;i++)area+=r[i].x*r[(i+1)%r.length].y-r[(i+1)%r.length].x*r[i].y;
@@ -27,11 +33,16 @@ export function buildHistoricMuseumLandmark(id:string,w:number,d:number,b:Buildi
   // Four piles enclose a real 56 × 50m garden. The deeper side ranges have
   // paired parallel roofs rather than one pyramid stretched across the wing.
   for(let z of [34.4,-25.0])hip(0,10,z,102.2,9.6,4.5);
-  for(let x of [-45.45,-34.05,34.1,45.5])hip(x,10,4.5,68.5,11.4,4.5,Math.PI/2);
+  // Side wings: paired gabled roofs running between the two range ridges, so their gable ends are buried in the
+  // range roofs. Until 2026-10-10 they were 68.5 m hips overlapping the ranges' corners: their +z/-z hip ends lay
+  // within centimetres of the long range slopes at the shared front/rear eaves, and the outer slopes within
+  // centimetres of the range end hips - a z-fighting band along the long Amstel roof seen from above.
+  // The outer pair sits 0.08 m lower at the street eave only, so the range end hips stay clearly above it.
+  for(const [x,ea,ec] of [[-45.45,9.92,10],[-34.05,10,10],[34.1,10,10],[45.5,10,9.92]] as const)gableRoofZ(x,-25.0,34.4,11.4,ea,ec,14.5);
   // Lower service/entrance annex on the eastern garden side.
   hip(0,10,-33.8,38.8,8.3,3.0);box(0,10,-38.6,9,1.6,3.5,'brick');hip(0,11.6,-38.6,9,3.6,2.0);
   const front=40.55;
-  box(0,0,front,12,10.4,2.7,'brick');for(let x of [-5.1,5.1])box(x,.2,front+1.38,.55,10.2,.28,'stone');
+  box(0,0,front,12,10.0,2.7,'brick');for(let x of [-5.1,5.1])box(x,.2,front+1.38,.55,10.2,.28,'stone');
   box(0,10,front+.3,14,.4,3.7,'stone');prism(0,10.4,front+1.8,14,.4,5,'stone');prism(0,10.65,front+2.03,12.7,.12,4.1,'brick');
   box(0,0,front+1.43,3.7,2.8,.2,'dark');box(0,3.35,front+1.46,2.8,3.4,.18,'stone');box(0,3.52,front+1.64,2.3,3.1,.16,'dark');
   box(0,7.6,front+1.48,4.1,.35,.3,'stone');sign('HART',0,8.25,front+1.65,.17,'stone');
