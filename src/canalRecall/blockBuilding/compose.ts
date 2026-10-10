@@ -8,7 +8,7 @@ import * as T from 'three';
 import type { SurfaceSet } from './types.ts';
 import { MeshBuilder, type V3, cross, sub, add, scale, norm } from './mesh.ts';
 import { buildHost, fitsPanel, rectPoly, pt, type Panel } from './panels.ts';
-import type { BlockSpec, System, Row, WinParams, BalconyParams, Band, Slot, Sign } from './spec.ts';
+import type { BlockSpec, System, Row, WinParams, BalconyParams, Band, Slot, Sign, PanesParams } from './spec.ts';
 
 export interface TextShaper { (text: string, font?: string): { shapes: T.Shape[]; width: number; ascent: number } }
 export interface ComposeOptions { shaper?: TextShaper }
@@ -58,7 +58,10 @@ function drawOpening(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: 
   part = c.part();
   c.quad(glassSlot, u0 + fw, v0 + fw, u1 - fw, v1 - fw, 0.035, part);
   const n = w.mull ?? 0;
-  if (n > 0) {
+  if (w.mullAt?.length) {
+    part = c.part();
+    for (const f of w.mullAt) { const u = u0 + (u1 - u0) * f; c.quad(frameSlot, u - fw / 2, v0 + fw, u + fw / 2, v1 - fw, 0.05, part); }
+  } else if (n > 0) {
     part = c.part();
     for (let k = 1; k <= n; k++) { const u = u0 + (u1 - u0) * k / (n + 1); c.quad(frameSlot, u - fw / 2, v0 + fw, u + fw / 2, v1 - fw, 0.05, part); }
   }
@@ -68,7 +71,10 @@ function drawOpening(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: 
     c.quad(frameSlot, u0 + fw, v - fw / 2, u1 - fw, v + fw / 2, 0.05, part);
   }
   const rn = w.rows ?? 0;
-  if (rn > 0) {
+  if (w.rowsAt?.length) {
+    part = c.part();
+    for (const f of w.rowsAt) { const v = v0 + (v1 - v0) * f; c.quad(frameSlot, u0 + fw, v - fw / 2, u1 - fw, v + fw / 2, 0.05, part); }
+  } else if (rn > 0) {
     part = c.part();
     for (let k = 1; k <= rn; k++) { const v = v0 + (v1 - v0) * k / (rn + 1); c.quad(frameSlot, u0 + fw, v - fw / 2, u1 - fw, v + fw / 2, 0.05, part); }
   }
@@ -138,6 +144,19 @@ function drawRow(c: Ctx, row: Row, cell: Cell, seed: number) {
       });
       return;
     }
+    case 'panes': return drawPanes(c, row.panes!, cell);
+    case 'items': {
+      const lists = row.items ?? [], list = lists[Math.min(cell.floor, lists.length - 1)] ?? [];
+      for (const it of list) {
+        const a = u0 + it.u[0], b = u0 + it.u[1], lo = v0 + it.v[0], hi = v0 + it.v[1];
+        if (!fitsPanel(c.p, rectPoly(a, b, lo, hi))) { if (process.env.KIT_DEBUG) console.warn(`items skip panel${c.p.index} f${cell.floor} ${it.kind} ${it.slot} u${a.toFixed(2)}-${b.toFixed(2)} v${lo.toFixed(2)}-${hi.toFixed(2)}`); continue; }
+        const part = c.part();
+        if (it.kind === 'quad') c.quad(it.slot ?? 'glass', a, lo, b, hi, it.d ?? 0.02, part);
+        else if (it.kind === 'box') c.box(it.slot ?? 'slab', a, b, lo, hi, 0, it.d ?? 0.1, part);
+        else drawOpening(c, a, b, lo, hi, it.win ?? {}, seed);
+      }
+      return;
+    }
     case 'shopfront': return drawShopfront(c, row.shopfront!, cell);
     case 'pointed': return drawPointed(c, row.pointed!, cell);
     case 'gable': {
@@ -155,6 +174,32 @@ function drawRow(c: Ctx, row: Row, cell: Cell, seed: number) {
       c.quad(g.frame ?? 'frame', uc - ww / 2 + fw, shoulder - 0.03, uc + ww / 2 - fw, shoulder + 0.03, 0.05, part);
       return;
     }
+  }
+}
+
+function drawPanes(c: Ctx, pa: PanesParams, cell: Cell) {
+  const table = pa.table, rowT = table[Math.min(cell.floor, table.length - 1)], code = rowT[Math.min(cell.bay, rowT.length - 1)];
+  const cols = pa.layouts[code]; if (!cols) throw new Error(`panes: unknown layout "${code}"`);
+  const he = pa.heavyEvery ?? 2, sh = pa.heavyShift ?? 0, left = he > 0 && (cell.bay + sh) % he === 0 ? pa.heavy : pa.light, right = he > 0 && (cell.bay + sh) % he === he - 1 ? pa.heavy : pa.light;
+  const x0 = cell.u0 + left / 2, x1 = cell.u1 - right / 2, y0 = cell.v0 + (pa.beam ?? pa.light) / 2, y1 = cell.v1 - (pa.beam ?? pa.light) / 2, inset = pa.inset ?? 0.04;
+  if (x1 - x0 < 0.4 || y1 - y0 < 0.4 || !fitsPanel(c.p, rectPoly(x0, x1, y0, y1))) return;
+  const total = cols.reduce<number>((t, k) => t + Math.abs(Array.isArray(k) ? k[0] : k), 0);
+  const frame = pa.frame ?? 'frame', out = pa.frameOut ?? 0;
+  let u = x0;
+  cols.forEach((k, i) => {
+    const frac = Array.isArray(k) ? k[0] : k, n = Array.isArray(k) ? k[1] : 1, w = (x1 - x0) * Math.abs(frac) / total, a = u, b = u + w; u = b;
+    const m = pa.mull / 2, ga = i === 0 ? a : a + m, gb = i === cols.length - 1 ? b : b - m;
+    for (let r = 0; r < n; r++) {
+      const lo = y0 + (y1 - y0) * r / n + (r === 0 ? 0 : m), hi = y0 + (y1 - y0) * (r + 1) / n - (r === n - 1 ? 0 : m);
+      const part = c.part();
+      c.quad(frac < 0 ? (pa.solid ?? 'door') : (pa.glass2 && (i + r) % 5 === 4 ? pa.glass2 : pa.glass), ga, lo, gb, hi, inset, part);
+    }
+    if (i > 0 && out > 0) { const part = c.part(); c.box(frame, a - m, a + m, y0, y1, 0, out * 0.6, part); }
+  });
+  if (out > 0) {
+    const part = c.part(), l = cell.u0, r = cell.u1;
+    c.box(frame, l, x0, cell.v0, cell.v1, 0, out, part); c.box(frame, x1, r, cell.v0, cell.v1, 0, out, part);
+    c.box(frame, x0, x1, cell.v0, y0, 0, out, part); c.box(frame, x0, x1, y1, cell.v1, 0, out, part);
   }
 }
 
@@ -318,7 +363,10 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
     if (W < (sys.minWidth ?? sys.pitch * 0.6) || p.vMax - p.vMin < 2.5) continue;
     const c = new Ctx(mesh, p, panels);
     // storey boundaries
-    const levels: number[] = [0, g]; for (let L = g + s; L < p.vMax - 1.0; L += s) levels.push(L); levels.push(Math.max(p.vMax, levels[levels.length - 1] + 0.01));
+    const lineSet = sys.lines ?? spec.levels.lines;
+    const levels: number[] = lineSet ? lineSet.slice(0, -1).filter((L, i) => i === 0 || L < p.vMax - 0.8) : [0, g];
+    if (!lineSet) for (let L = g + s; L < p.vMax - 1.0; L += s) levels.push(L);
+    levels.push(Math.max(p.vMax, levels[levels.length - 1] + 0.01));
     const floors = levels.length - 1, nb = Math.max(1, Math.round(W / sys.pitch)), nbays = sys.bays ? sys.bays.count : nb;
     for (let f = 0; f < floors; f++) {
       const v0 = levels[f], v1 = levels[f + 1];
@@ -329,7 +377,7 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
       for (let b = 0; b < nbays; b++) {
         const lay = sys.bays;
         const cell: Cell = lay
-          ? { u0: p.uMin + lay.first + lay.pitch * (b - 0.5), u1: p.uMin + lay.first + lay.pitch * (b + 0.5), v0: Math.max(v0, p.vMin), v1, bay: b, floor: f, bays: nbays }
+          ? { u0: p.uMin + lay.first + lay.pitch * (b - 0.5) - (b === 0 ? lay.reach?.[0] ?? 0 : 0), u1: p.uMin + lay.first + lay.pitch * (b + 0.5) + (b === nbays - 1 ? lay.reach?.[1] ?? 0 : 0), v0: Math.max(v0, p.vMin), v1, bay: b, floor: f, bays: nbays }
           : { u0: p.uMin + W * b / nb, u1: p.uMin + W * (b + 1) / nb, v0: Math.max(v0, p.vMin), v1, bay: b, floor: f, bays: nb };
         drawRow(c, row, cell, p.index * 31 + 7);
       }
@@ -339,7 +387,10 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
     if (sys.piers) {
       for (let b = 0; b <= nb; b++) {
         const u = p.uMin + W * b / nb, w = sys.piers.w, a = Math.max(p.uMin, u - w / 2), bb = Math.min(p.uMax, u + w / 2);
-        if (fitsPanel(p, rectPoly(a, bb, g, Math.max(g + 0.5, p.vMax - 0.3)))) { const part = c.part(); c.box(sys.piers.slot, a, bb, g, p.vMax - 0.3, 0, sys.piers.out, part); }
+        if (fitsPanel(p, rectPoly(a, bb, g, Math.max(g + 0.5, p.vMax - 0.3)))) {
+          const nseg = Math.max(1, sys.piers.segments ?? 1), top = p.vMax - 0.3;
+          for (let k = 0; k < nseg; k++) { const part = c.part(); c.box(sys.piers.slot, a, bb, g + (top - g) * k / nseg, g + (top - g) * (k + 1) / nseg, 0, sys.piers.out, part); }
+        }
       }
     }
   }
