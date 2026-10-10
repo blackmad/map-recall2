@@ -170,11 +170,10 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   minimap/overview, dropping the live OpenFreeMap dependency. Gaps: no road
   widths/sidewalks in our extracts (centrelines only), humped bridges render
   as grey slabs, no route line/labels/HUD in the spike.
-- **Haparandaweg held/skipped**: 952-1002 and 746-786 held 2026-10-10 after
-  review sheets (patchwork panes and an invented red stripe vs a regular red
-  curtain-wall grid; projecting slab balconies vs a flat stone grid with
-  recessed glass balconies); 870-900 SE side should be beige render, not
-  glass. Review 65 (needs the terracotta upper volume),
+- **Haparandaweg held/skipped**: 952-1002 rebuilt but held — grey
+  neighbour building needs its light-grey framed grid, SE/NE faces plain;
+  746-786 rebuilt, held for user review of its sheet; 870-900 NE side still
+  dark glass, unverified. Review 65 (needs the terracotta upper volume),
   650–706 (paired casements, stone bands), 708–744, 788–868 (glass bays);
   retry 940–950 with another photo source; 582–648 after scaffolding. The
   street sheet framing was poor (bike drawn over a roof) — reshoot.
