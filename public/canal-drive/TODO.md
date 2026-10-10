@@ -19,6 +19,18 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
+- **Building taxonomy (user, 2026-10-10)**, in progress on the street-surveys
+  lane: (1) landmark buildings = curated list only (only these count for
+  discovery/quiz/What's new/route selection); (2) ordinary buildings = one-off
+  medium-fidelity reconstructions of large non-landmark buildings; (3) street
+  surveys = repetitive canal-house / block-face work aiming at reusable
+  geometry (faces, per-house recipes, street chunks). Galleries today show
+  stale per-house Bilderdijkstraat models the game no longer draws.
+- **Reuse Sol's canal-house work**: ~10 unmerged `agent/sol-*` / backup
+  branches (Blender building library, component/head-on facade geometry,
+  silhouette roof repair); main's photo gable identifier (`facade/gable.ts`,
+  `gableFit.ts`, `scripts/roofline-eval`) is not used by recipes or faces.
+  Salvage inventory and gable-from-photo lanes running.
 - **UvA Roeterseiland held**: builder simplified 37.2k → 21.9k tris but not
   installed — its spec says `do-not-suppress` (composite BAG parent not
   partitioned; bridge underside height estimated). Needs a suppression
