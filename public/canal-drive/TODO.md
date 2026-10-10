@@ -262,7 +262,9 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   fusion from `build-pano-facade.ts`; washed-out/foliage thresholds (0.3) are
   untuned; `roofShape` is null outside `buildings-colored.geojson`; Beeldbank
   and monument-register facts are not yet joined in.
-- **Drop MapLibre** (go; ~3–4 weeks after city-wide own ground;
+- **Drop MapLibre** — lives on its own long-lived branch
+  `render/drop-maplibre-step1-20261010` (own worktree), merging main in;
+  not merged to main until ready (user, 2026-10-10). (go; ~3–4 weeks after city-wide own ground;
   `docs/research/drop-maplibre-20261010.md` §6, prototype `no-maplibre.html`):
   overview/route preview/street labels from our own extracts match the game's
   MapLibre cameras within 1.1–3.2 px; iPhone 4× 5.8 ms frame CPU. Remaining:
