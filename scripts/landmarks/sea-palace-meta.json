@@ -1,0 +1,25 @@
+{
+  "name": "Sea Palace",
+  "landmarkId": "n13404202880",
+  "sourceUrl": "https://seapalace.nl/en/about-us/",
+  "suppressOsmIds": [
+    "w454006714"
+  ],
+  "pandId": null,
+  "materialOverrides": {
+    "brick": "#8a5a43",
+    "stone": "#cdbc90",
+    "slate": "#3a3330",
+    "glass": "#3a4954",
+    "frame": "#2a2e32",
+    "dark": "#1d2024",
+    "white": "#efe9db",
+    "red": "#b3201a",
+    "green": "#2f5f46",
+    "bronze": "#234a37",
+    "gold": "#c8a24a",
+    "concrete": "#2e2a28"
+  },
+  "surveySource": "OSM building=houseboat way w454006714 (the floating restaurant; BAG has no live pand for it) fitted with an oriented rectangle, native east/south metres from its centre. Storey heights, eaves and ornament measured by eye from the 2021 and 2025 municipal panoramas.",
+  "modifications": "Original texture-free geometry on the OSM houseboat outline: pontoon deck and balustrades, three storeys of columns and glazing, and three curved green-tile eaves with upswept corners; measured by eye from municipal panoramas, no pixels or meshes imported."
+}

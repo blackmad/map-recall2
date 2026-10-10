@@ -21,6 +21,7 @@ import {buildVanGendtHallen} from './landmarks/van-gendt-hallen-builder';
 import {buildVrijburg} from './landmarks/vrijburg-builder';
 import {buildWestIndiaHouse} from './landmarks/west-india-house-builder';
 import {buildZevenlandenhuizen} from './landmarks/zevenlandenhuizen-builder';
+import {buildSeaPalace} from './landmarks/sea-palace-builder';
 
 const cases: Record<string, {build: (w: number, d: number, b: never) => void; ring: () => number[][]; top: () => number; topSlack: number}> = {
   'ij-toren': {build: buildIjToren, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')).nativeRing, top: () => { const f = JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')); return Math.max(...f.surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))); }, topSlack: 8},
@@ -40,6 +41,9 @@ const cases: Record<string, {build: (w: number, d: number, b: never) => void; ri
 };
 const zlRow = () => JSON.parse(fs.readFileSync('scripts/landmarks/zevenlandenhuizen-footprints.json', 'utf8')).houses as {nativeRing: number[][]; surfaces: any[]}[];
 cases['zevenlandenhuizen'] = {build: buildZevenlandenhuizen, ring: () => zlRow().flatMap(h => h.nativeRing), top: () => Math.max(...zlRow().flatMap(h => h.surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1])))), topSlack: 2.5};
+const seaPalace = () => JSON.parse(fs.readFileSync('scripts/landmarks/sea-palace-footprints.json', 'utf8'));
+// A floating vessel has no 3DBAG shell: the hull rectangle is the ring and the mapped OSM height (9 m + 4 m roof) the top.
+cases['sea-palace'] = {build: buildSeaPalace, ring: () => seaPalace().nativeRing, top: () => seaPalace().topMetres, topSlack: 1.6};
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(cases);
 for (const id of ids) {
   const c = cases[id];
