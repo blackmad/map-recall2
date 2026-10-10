@@ -289,7 +289,9 @@ test('a click opens the building clicked, not the landmark next door', async ({ 
       marker: clickOn('house-next-door', marker, landmark.id),
     };
   });
-  expect(result.neighbour, '80 px from the marker, on an ordinary building').toBeUndefined();
+  // Every drawn building answers a click (2026-10-10): the house next door
+  // opens its own card, never the museum's.
+  expect(result.neighbour, '80 px from the marker, on an ordinary building').toBe('clicked-house-next-door');
   expect(result.own, 'the landmark\'s own building').toBe('museum-landmark');
   expect(result.marker, 'on the marker itself').toBe('museum-landmark');
 });
