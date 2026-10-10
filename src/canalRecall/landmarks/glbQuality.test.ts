@@ -51,6 +51,17 @@ test('closed box passes with no findings that fail', () => {
   assert.ok(r.seeThrough.tested > 0, 'wall rays must actually be tested');
 });
 
+test('two grounded tall volumes of one pand are not far-outside geometry; a small far mast still is', () => {
+  // A 20 x 30 x 40 m tower and a 20 x 30 x 23 m wing 25 m apart (Oostenburgermiddenstraat 228 shape). Each box has 20 x 30 x 2 + 2 x 50 x h > 400 m2.
+  const tower = boxQuads(0, 0, 0, 20, 40, 30), wing = boxQuads(45, 0, 0, 65, 23, 30);
+  const two = analyseSoup(soup(tower, wing));
+  assert.equal(two.farOutside.vertices, 0, JSON.stringify(two.farOutside));
+  assert.ok(!two.findings.some(f => f.kind === 'far-outside'), JSON.stringify(two.findings));
+  // A small detached mast / junk box far from the body stays a far-outside failure.
+  const junk = analyseSoup(soup(tower, boxQuads(60, 0, 0, 62, 6, 2)));
+  assert.ok(junk.farOutside.vertices > 0, JSON.stringify(junk.farOutside));
+});
+
 test('box with a missing wall fails (hole loop and see-through rays)', () => {
   const r = analyseSoup(soup(house(['south'])));
   assert.equal(r.pass, false);
@@ -207,6 +218,28 @@ test('a shallow high balcony slab over a closed wall is not a see-through gap; a
   assert.ok(deep.seeThrough.rays > 0, JSON.stringify(deep.seeThrough));
   // The balcony does not hide a missing wall behind it.
   const open = analyseSoup(soup(boxQuads(0, 0, 0, 10, 24, 10, ['south']), balcony));
+  assert.ok(open.seeThrough.rays > 0, JSON.stringify(open.seeThrough));
+});
+
+test('a narrow high balcony in the middle of a facade: its lateral ends are not see-through; a missing wall behind it still is', () => {
+  const tall = boxQuads(0, 0, 0, 20, 24, 10);
+  const balcony = boxQuads(7, 8, 10, 13, 8.3, 11.3);   // 6 m wide, 1.3 m deep, 8 m up
+  const ok = analyseSoup(soup(tall, balcony));
+  assert.equal(ok.seeThrough.rays, 0, JSON.stringify(ok.seeThrough));
+  const open = analyseSoup(soup(boxQuads(0, 0, 0, 20, 24, 10, ['south']), balcony));
+  assert.ok(open.seeThrough.rays > 3, JSON.stringify(open.seeThrough));
+  // A 3 m deep slab is a canopy over a gap, not a balcony: still flagged.
+  const deep = analyseSoup(soup(tall, boxQuads(7, 8, 10, 13, 8.3, 13)));
+  assert.ok(deep.seeThrough.rays > 0, JSON.stringify(deep.seeThrough));
+});
+
+test('a 2 m terrace cantilever high on a tower is architecture; a 4 m slab or a missing wall behind it is not', () => {
+  const tall = boxQuads(0, 0, 0, 10, 40, 10);
+  const terrace = analyseSoup(soup(tall, boxQuads(2, 24, 10, 8, 24.5, 12)));
+  assert.equal(terrace.seeThrough.rays, 0, JSON.stringify(terrace.seeThrough));
+  const deep = analyseSoup(soup(tall, boxQuads(2, 24, 10, 8, 24.5, 14)));
+  assert.ok(deep.seeThrough.rays > 0, JSON.stringify(deep.seeThrough));
+  const open = analyseSoup(soup(boxQuads(0, 0, 0, 10, 40, 10, ['south']), boxQuads(2, 24, 10, 8, 24.5, 12)));
   assert.ok(open.seeThrough.rays > 0, JSON.stringify(open.seeThrough));
 });
 
