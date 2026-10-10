@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## Own ground city-wide (2026-10-10)
+
+Relief (`ground-height-v1`, 413 tiles: 2 m within 4 km of the Dam, 4 m beyond,
+upsampled on load; 20.6 MB) and OSM ground (`own-ground-osm-v1/cells`, 8.5 MB)
+now cover all 294 1 km cells the routing network touches (29.1 MB gzip total,
+under the 30 MB cap; replaces the 4.5 MB `west` area). Missing edge tiles extend
+from neighbours. Fixes: BRU0067 deck-start step capped at 20% slope (the "grey
+deck" is OSM-tagged sidewalks); a 0.35 m coping cap closes the stair-stepped
+see-through quay seam on phone; each street-chunk building stands on its own
+lowest ground; destination pin, question marker, tram and ferry sit on the
+surface. BGT road polygons were measured too big for the budget. Ride cost on
+iPhone 4× stays vsync-bound. Detail: the research doc's "City-wide" section.
+
 ## Mövenpick restored; Westerkerk lean-to shops take the church brick (2026-10-10)
 
 The Mövenpick hotel and the Muziekgebouw are one BAG pand; the
