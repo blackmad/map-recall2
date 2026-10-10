@@ -370,6 +370,20 @@ except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
 (continuous ground and cornice line) does not need chunking. Unmeasured on a
 real phone GPU.
 
+## First large ordinary buildings (2026-10-10)
+
+The landmark candidates ran thin, so a Haiku pass identified the 30 largest
+unreviewed panden within 3 km of the Dam (scratch list; most are 2000s-2020s
+housing/office blocks). Installed as `category: ordinary` (drawn, never a
+destination): VOC-kade 600 (Inntel tower), Motorkade 1 (Holiday Inn Express
+gold towers) and De Bazel (Vijzelstraat 32; window rhythm placed from
+rectified panoramas, piers/banding/sculpture still missing). Two audit
+changes came with them: a wall within 1.6 m behind an upper balcony edge is
+not a see-through gap, and the detached-part grid no longer skips triangles
+over 40k cells (a 90 x 28 m wall made its own windows look detached). Full
+audit after both: no verdict change on any existing model; total time
+551 -> 696 s (van-gendt-hallen 1 -> 30 s).
+
 ## Landmark LOD (2026-10-10)
 
 Every curated landmark over 3,000 triangles now has a simplified sibling,
