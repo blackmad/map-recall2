@@ -1,6 +1,6 @@
 {
- "generatedAt": "2026-10-10T08:33:50.476Z",
- "pands": 4,
+ "generatedAt": "2026-10-10T09:06:50.292Z",
+ "pands": 15,
  "failed": 0,
  "rows": [
   {
@@ -50,6 +50,468 @@
    "recipeId": "bilder-079721",
    "address": "Bilderdijkstraat (1894 yellow brick, scaffolded)",
    "groundShiftM": -0.16,
+   "individual": {
+    "passed": true,
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0,
+    "footprintIoU": 1
+   },
+   "chunk": {
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0,
+    "footprintIoU": 0.99
+   },
+   "movedByChunkM": {
+    "ridge": 0,
+    "eaves": 0
+   },
+   "gates": [
+    {
+     "id": "footprint-vs-bag",
+     "pass": true,
+     "value": 0.99,
+     "limit": ">= 0.90"
+    },
+    {
+     "id": "ridge-vs-3dbag",
+     "pass": true,
+     "value": 0,
+     "limit": "<= +2.2 / >= -0.30 m"
+    },
+    {
+     "id": "eaves-vs-3dbag",
+     "pass": true,
+     "value": 0,
+     "limit": "|d| <= 0.30 m"
+    }
+   ],
+   "passed": true
+  },
+  {
+   "chunkName": "bilder-080336-x4",
+   "recipeId": "bilder-080336",
+   "address": "Bilderdijkstraat (1939 bay-window block, bay left)",
+   "groundShiftM": -0.49,
+   "individual": {
+    "passed": true,
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0,
+    "footprintIoU": 1
+   },
+   "chunk": {
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0,
+    "footprintIoU": 0.99
+   },
+   "movedByChunkM": {
+    "ridge": 0,
+    "eaves": 0
+   },
+   "gates": [
+    {
+     "id": "footprint-vs-bag",
+     "pass": true,
+     "value": 0.99,
+     "limit": ">= 0.90"
+    },
+    {
+     "id": "ridge-vs-3dbag",
+     "pass": true,
+     "value": 0,
+     "limit": "<= +0.3 / >= -0.30 m"
+    },
+    {
+     "id": "eaves-vs-3dbag",
+     "pass": true,
+     "value": 0,
+     "limit": "|d| <= 0.30 m"
+    }
+   ],
+   "passed": true
+  },
+  {
+   "chunkName": "bilder-080336-x4",
+   "recipeId": "bilder-092394",
+   "address": "Bilderdijkstraat (1939 plain block)",
+   "groundShiftM": 0.04,
+   "individual": {
+    "passed": true,
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0,
+    "footprintIoU": 1
+   },
+   "chunk": {
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0,
+    "footprintIoU": 0.99
+   },
+   "movedByChunkM": {
+    "ridge": 0,
+    "eaves": 0
+   },
+   "gates": [
+    {
+     "id": "footprint-vs-bag",
+     "pass": true,
+     "value": 0.99,
+     "limit": ">= 0.90"
+    },
+    {
+     "id": "ridge-vs-3dbag",
+     "pass": true,
+     "value": 0,
+     "limit": "<= +0.3 / >= -0.30 m"
+    },
+    {
+     "id": "eaves-vs-3dbag",
+     "pass": true,
+     "value": 0,
+     "limit": "|d| <= 0.30 m"
+    }
+   ],
+   "passed": true
+  },
+  {
+   "chunkName": "bilder-080336-x4",
+   "recipeId": "bilder-092395",
+   "address": "Bilderdijkstraat (twin of 092394)",
+   "groundShiftM": 0.04,
+   "individual": {
+    "passed": true,
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0,
+    "footprintIoU": 1
+   },
+   "chunk": {
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0,
+    "footprintIoU": 0.99
+   },
+   "movedByChunkM": {
+    "ridge": 0,
+    "eaves": 0
+   },
+   "gates": [
+    {
+     "id": "footprint-vs-bag",
+     "pass": true,
+     "value": 0.99,
+     "limit": ">= 0.90"
+    },
+    {
+     "id": "ridge-vs-3dbag",
+     "pass": true,
+     "value": 0,
+     "limit": "<= +0.3 / >= -0.30 m"
+    },
+    {
+     "id": "eaves-vs-3dbag",
+     "pass": true,
+     "value": 0,
+     "limit": "|d| <= 0.30 m"
+    }
+   ],
+   "passed": true
+  },
+  {
+   "chunkName": "bilder-080336-x4",
+   "recipeId": "bilder-090492",
+   "address": "Bilderdijkstraat (1939 bay-window block, bay right)",
+   "groundShiftM": -0.03,
+   "individual": {
+    "passed": true,
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0,
+    "footprintIoU": 1
+   },
+   "chunk": {
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": -0.01,
+    "footprintIoU": 0.99
+   },
+   "movedByChunkM": {
+    "ridge": 0,
+    "eaves": -0.01
+   },
+   "gates": [
+    {
+     "id": "footprint-vs-bag",
+     "pass": true,
+     "value": 0.99,
+     "limit": ">= 0.90"
+    },
+    {
+     "id": "ridge-vs-3dbag",
+     "pass": true,
+     "value": 0,
+     "limit": "<= +0.3 / >= -0.30 m"
+    },
+    {
+     "id": "eaves-vs-3dbag",
+     "pass": true,
+     "value": -0.01,
+     "limit": "|d| <= 0.30 m"
+    }
+   ],
+   "passed": true
+  },
+  {
+   "chunkName": "bilder-081118-x7",
+   "recipeId": "bilder-081118",
+   "address": "Bilderdijkstraat (1909, arched top storey, balconies)",
+   "groundShiftM": 0.4,
+   "individual": {
+    "passed": true,
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0,
+    "footprintIoU": 1
+   },
+   "chunk": {
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0.1,
+    "footprintIoU": 0.99
+   },
+   "movedByChunkM": {
+    "ridge": 0,
+    "eaves": 0.1
+   },
+   "gates": [
+    {
+     "id": "footprint-vs-bag",
+     "pass": true,
+     "value": 0.99,
+     "limit": ">= 0.90"
+    },
+    {
+     "id": "ridge-vs-3dbag",
+     "pass": true,
+     "value": 0,
+     "limit": "<= +0.3 / >= -0.30 m"
+    },
+    {
+     "id": "eaves-vs-3dbag",
+     "pass": true,
+     "value": 0.1,
+     "limit": "|d| <= 0.30 m"
+    }
+   ],
+   "passed": true
+  },
+  {
+   "chunkName": "bilder-081118-x7",
+   "recipeId": "bilder-087959",
+   "address": "Bilderdijkstraat (1909 dark brick, balconies, arched top)",
+   "groundShiftM": 0,
+   "individual": {
+    "passed": true,
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0,
+    "footprintIoU": 1
+   },
+   "chunk": {
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": -0.1,
+    "footprintIoU": 0.99
+   },
+   "movedByChunkM": {
+    "ridge": 0,
+    "eaves": -0.1
+   },
+   "gates": [
+    {
+     "id": "footprint-vs-bag",
+     "pass": true,
+     "value": 0.99,
+     "limit": ">= 0.90"
+    },
+    {
+     "id": "ridge-vs-3dbag",
+     "pass": true,
+     "value": 0,
+     "limit": "<= +0.3 / >= -0.30 m"
+    },
+    {
+     "id": "eaves-vs-3dbag",
+     "pass": true,
+     "value": -0.1,
+     "limit": "|d| <= 0.30 m"
+    }
+   ],
+   "passed": true
+  },
+  {
+   "chunkName": "bilder-081118-x7",
+   "recipeId": "bilder-157650",
+   "address": "Bilderdijkstraat (1908 dark red brick, big cross windows)",
+   "groundShiftM": -0.01,
+   "individual": {
+    "passed": true,
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0,
+    "footprintIoU": 0.999
+   },
+   "chunk": {
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0.01,
+    "footprintIoU": 0.98
+   },
+   "movedByChunkM": {
+    "ridge": 0,
+    "eaves": 0.01
+   },
+   "gates": [
+    {
+     "id": "footprint-vs-bag",
+     "pass": true,
+     "value": 0.98,
+     "limit": ">= 0.90"
+    },
+    {
+     "id": "ridge-vs-3dbag",
+     "pass": true,
+     "value": 0,
+     "limit": "<= +0.3 / >= -0.30 m"
+    },
+    {
+     "id": "eaves-vs-3dbag",
+     "pass": true,
+     "value": 0.01,
+     "limit": "|d| <= 0.30 m"
+    }
+   ],
+   "passed": true
+  },
+  {
+   "chunkName": "bilder-081118-x7",
+   "recipeId": "bilder-156287",
+   "address": "Bilderdijkstraat (1903 orange brick, stepped gable, balconies)",
+   "groundShiftM": -0.09,
+   "individual": {
+    "passed": true,
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0,
+    "footprintIoU": 1
+   },
+   "chunk": {
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0.05,
+    "footprintIoU": 0.96
+   },
+   "movedByChunkM": {
+    "ridge": 0,
+    "eaves": 0.05
+   },
+   "gates": [
+    {
+     "id": "footprint-vs-bag",
+     "pass": true,
+     "value": 0.96,
+     "limit": ">= 0.90"
+    },
+    {
+     "id": "ridge-vs-3dbag",
+     "pass": true,
+     "value": 0,
+     "limit": "<= +0.3 / >= -0.30 m"
+    },
+    {
+     "id": "eaves-vs-3dbag",
+     "pass": true,
+     "value": 0.05,
+     "limit": "|d| <= 0.30 m"
+    }
+   ],
+   "passed": true
+  },
+  {
+   "chunkName": "bilder-081118-x7",
+   "recipeId": "bilder-156286",
+   "address": "Bilderdijkstraat (1903 yellow brick, stepped gable, balconies)",
+   "groundShiftM": 0.09,
+   "individual": {
+    "passed": true,
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0,
+    "footprintIoU": 0.941
+   },
+   "chunk": {
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": -0.02,
+    "footprintIoU": 0.93
+   },
+   "movedByChunkM": {
+    "ridge": 0,
+    "eaves": -0.02
+   },
+   "gates": [
+    {
+     "id": "footprint-vs-bag",
+     "pass": true,
+     "value": 0.93,
+     "limit": ">= 0.90"
+    },
+    {
+     "id": "ridge-vs-3dbag",
+     "pass": true,
+     "value": 0,
+     "limit": "<= +0.3 / >= -0.30 m"
+    },
+    {
+     "id": "eaves-vs-3dbag",
+     "pass": true,
+     "value": -0.02,
+     "limit": "|d| <= 0.30 m"
+    }
+   ],
+   "passed": true
+  },
+  {
+   "chunkName": "bilder-081118-x7",
+   "recipeId": "bilder-155418",
+   "address": "Bilderdijkstraat (1903 behind a tree, gabled)",
+   "groundShiftM": 0.36,
+   "individual": {
+    "passed": true,
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0,
+    "footprintIoU": 1
+   },
+   "chunk": {
+    "ridgeDeltaM": 0,
+    "eavesDeltaM": 0.01,
+    "footprintIoU": 0.99
+   },
+   "movedByChunkM": {
+    "ridge": 0,
+    "eaves": 0.01
+   },
+   "gates": [
+    {
+     "id": "footprint-vs-bag",
+     "pass": true,
+     "value": 0.99,
+     "limit": ">= 0.90"
+    },
+    {
+     "id": "ridge-vs-3dbag",
+     "pass": true,
+     "value": 0,
+     "limit": "<= +0.3 / >= -0.30 m"
+    },
+    {
+     "id": "eaves-vs-3dbag",
+     "pass": true,
+     "value": 0.01,
+     "limit": "|d| <= 0.30 m"
+    }
+   ],
+   "passed": true
+  },
+  {
+   "chunkName": "bilder-081118-x7",
+   "recipeId": "bilder-155417",
+   "address": "Bilderdijkstraat (1902 arched windows, balconies, mansard dormer)",
+   "groundShiftM": -0.34,
    "individual": {
     "passed": true,
     "ridgeDeltaM": 0,

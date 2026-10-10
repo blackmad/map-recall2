@@ -42,6 +42,11 @@ export interface BuildingFacts {
   roofsRD: {surfaceId: string; vertices: number[][]; ringsRD: number[][][]; slopeDeg: number; areaM2: number}[];
   heights: {groundNAP: number; roofMinM: number; roofMaxM: number; ridgeM: number; dak50pM: number; dak70pM: number; storeys: number | null; builtYear: number | null};
   fronts: FrontFacts[];
+  /**
+   * Eaves (cornice top / gable foot) per intent front id, in metres above this pand's ground, measured on a rectified
+   * photo (block-face `continuity.measuredEaves` on the strip). Replaces the 3DBAG profile estimate in the fit.
+   */
+  measuredEavesM?: Record<string, number>;
 }
 
 const dist = (a: number[], b: number[]) => Math.hypot(a[0] - b[0], a[1] - b[1]);

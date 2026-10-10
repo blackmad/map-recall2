@@ -868,7 +868,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
       for(const d of details){
         positive(d.widthM,d.heightM,d.depthM);finite(d.leftM,d.bottomM);
         if(!d.id.trim()||ids.has(d.id))throw new Error('Duplicate facade detail');ids.add(d.id);
-        if(d.leftM<0||d.bottomM<0||d.leftM+d.widthM>length+EPS||!withinWall(d.leftM,d.widthM,d.bottomM+d.heightM))throw new Error('Facade detail escapes its supported wall');
+        if(d.leftM<0||d.bottomM<0||d.leftM+d.widthM>length+EPS||!withinWall(d.leftM,d.widthM,d.bottomM+d.heightM))throw new Error(`Facade detail escapes its supported wall: ${d.id}`);
         if(d.surface!==undefined&&!['wall','trim','stone','accent','shop'].includes(d.surface))throw new Error('Unsupported facade detail surface');
         // A projected plinth/risalit is masonry around apertures, not an opaque
         // plate across them. Subtract opening rectangles into disjoint piers

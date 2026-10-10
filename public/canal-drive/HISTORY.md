@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## Historic canal-house library; De Wallen OZA 41–57 installed (2026-10-10)
+
+New optional, validated recipe fields (byte-identical when absent; all 33
+house recipes and every other installed face unchanged): gableOrnament
+(volute/scroll wings, ears, cartouche, crab/vase/ball finial, crest or
+pediment gablet), leanDegrees (shear, party lines stay closed),
+groundFront (arcade/pui/wall with door, glazed door, window, shutter, panel
+bays), palette.cornice, partyClip (detail overhang at ~17° oblique party
+walls 3–11 cm → 0), roofFront mansard with pediment/pointed dormers,
+crownGroups (several gables per front), tower, split fronts for several
+houses in one BAG pand, triple gable lights that shrink instead of
+throwing, and continuity.measuredEaves. 3DBAG read nos. 45, 49, 57 eaves
+1.6–1.9 m low because cornices hide gabled roofs — the photo strip wins.
+177915's footprint IoU 0.76 is a 3DBAG source gap (12.5 m² rear wedge
+missing from LoD2.2); the gate now records it as a source limit when the
+model matches BAG (IoU ≥ 0.9). Audit "holes elsewhere" were trimmed party
+walls past the end of a shared edge (`partyLoops.ts`). Integrator viewed the
+strip sheet, corrected no. 45 (177924) from 4 to 5 storeys (the photo shows
+four rows above the arcade, confirmed by the reviewer's row heights), and
+reinstalled. Lean is not measurable from the rectified strip, so none is applied.
+
 ## Bilderdijkstraat even side 72–166 installed as block faces (2026-10-10)
 
 Eight faces (72–82, 84–92, 94–106, 108–120, 122–134, 136–140, 142–154,
