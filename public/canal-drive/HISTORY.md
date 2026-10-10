@@ -222,6 +222,17 @@ except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
 (continuous ground and cornice line) does not need chunking. Unmeasured on a
 real phone GPU.
 
+## IJ-toren re-held by a stale merge, released again (2026-10-10)
+
+IJ-toren was released after its rework (183b4139), but a later merge of a
+branch cut before that release (landmark/haparandaweg-rebuild-20261010)
+restored the old status/heldReason, so the reworked model sat hidden from
+the game and What's new for hours. Audited every hold on main: IJ-toren was
+the only unintended one. Catalogue merge rule: when both sides changed an
+entry, merge field by field against the merge base (a branch that did not
+touch `status` cannot revert it), and print every status transition the
+merge causes.
+
 ## Fatih replaced by a bespoke model (2026-10-10)
 
 The Haiku discovery sweep checked only manualCatalogue.json and the backlog,
