@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+## Photo gable identifier connected to block faces; Marnixstraat crowns from photo (2026-10-10)
+
+The September roofline classifier/fitter (`facade/gable.ts`, `gableFit.ts`,
+written by the roofline lanes, not Sol) was never wired in ("Do not wire
+classifyGable yet"). `blockFace/gableFromStrip.ts` reads a per-column skyline
+from each face strip (deterministic sky test; the Mask2Former venv is not on
+this machine), classifies and fits each crown, compares it with the authored
+crown (`npm run block-face:gables`), and `continuity.crownFromPhoto` lets
+the photo drive gable/steps/rise/position (byte-identical when absent).
+It abstains when a roof shows above the cornice or trees cover the crown —
+57 of 87 fronts, mostly Bilderdijkstraat. Marnixstraat 124–138 and marnix-c
+were authored with 5 uniform steps ~0.7 m right of the photo crown; the
+photo has 2–4. Integrator viewed the gables sheet and the recompiled strip
+overlay and switched all 16 stepped crowns to crownFromPhoto. Sol's
+branches have no better identifier (Blender `gables.py` only draws presets).
+Also reinstalled utrechtse-48-76, whose installed GLB predated recipe fixes.
+
 ## Historic canal-house library; De Wallen OZA 41–57 installed (2026-10-10)
 
 New optional, validated recipe fields (byte-identical when absent; all 33
