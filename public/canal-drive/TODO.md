@@ -44,11 +44,17 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Review each in game. Also: kiosks under 14 m² draw as bare boxes (Westermarkt
   76/78/82); the Muziekgebouw model's Bimhuis box is half off its OSM part;
   Mövenpick could get an ordinary one-off later.
-- **Discard 3DBAG roof geometry on faces (user, 2026-10-10)**: on
-  street-surveys.html (bilder-081118-155417) dark 3DBAG roof masses stand
-  above and beside the gables where the photo shows none. Generate roofs
-  from the recipe (pitched behind cornice/gable, real dormers) and use 3DBAG
-  only as a height clue. Not started — next lane.
+- **Recipe roofs on the remaining faces**: `continuity.roof.source:
+  'recipe'` is on for bilder-081118-155417, bilder-233645-236975, marnix-124-138
+  and marnix-c (30°). Off again for bilder-161259-236206, -164451-156126,
+  -166802-235892, -233580-162444, -236189-166159: combined with the
+  Bilderdijkstraat towers/split gables they fail the GLB hole audit (26–57
+  open loops, up to 56 m; survey roofs pass). Not tried: utrechtse-48-76
+  (178705 over triangle budget), wallen-oza-41-57 (54 m open loops),
+  wallen-ozv-115-125 (171879 above 3DBAG max), bilder-080336-090492 (1920s
+  overhanging eave), the newer frontRoof and house-type faces. The 70° attic
+  comes from one strip; rear wings flattened to median 3DBAG are unchecked
+  against aerials; cornice groups use a 2 cm stagger workaround.
 - **Rosarium follow-ups**: low box hedges around each bed; check Noord
   "Rozentuin" (a36994921, ~1,500 bushes on 1,380 m², maybe over-planted) and
   a288299874 in game; park-landscape draws the paved centre hex green;
