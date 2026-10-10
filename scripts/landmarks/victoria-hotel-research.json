@@ -1,0 +1,147 @@
+{
+  "canonicalModelId": "victoria-hotel",
+  "researchedOn": "2026-10-10",
+  "state": "built",
+  "destination": {
+    "landmarkId": "n237912528",
+    "name": "Park Plaza Victoria Amsterdam",
+    "address": "Damrak 1-5, 1012 LG Amsterdam",
+    "bagPand": "NL.IMBAG.Pand.0363100012185508",
+    "note": "No installed model, native-kit POI or poi-work-queue task covered this pand. The OSM hotel point n237912528 (click-poi-info.json) is reused as landmarkId. The brief's address 'Damrak 1-5 / Prins Hendrikkade' is confirmed by the POI record and nl.wikipedia. The two narrow old houses are the small separate BAG pands ending 77705, 77707 and 77708 (placeholder construction year 1005 on two of them); they are not suppressed and stay in the notch of the Prins Hendrikkade front."
+  },
+  "architecture": {
+    "sources": [
+      {
+        "url": "https://nl.wikipedia.org/wiki/Victoria_Hotel",
+        "retrieved": "2026-10-10"
+      }
+    ],
+    "facts": [
+      "Opened 19 August 1890; design and initiative by the German-born architect Johann Friedrich Henkenhaf, who also designed the Kurhaus Hotel in Scheveningen (1885).",
+      "The company bought five houses on Damrak and three on Prins Hendrikkade, including the 1633 'Huis-met-het-torentje' on the Damrak corner; two old houses on Prins Hendrikkade could not be bought, so the hotel was built around them (the two enclosed gables).",
+      "First hotel in the Netherlands with electric light in every guest room, double windows from the start; protected monument since 2001; Park Plaza group since 1993; on the corner of Damrak and Prins Hendrikkade opposite the Prins Hendrikplantsoen."
+    ]
+  },
+  "measuredBy": {
+    "3dbag": "NL.IMBAG.Pand.0363100012185508 LoD2.2: ground 1.58 m NAP, roofMax 30.68 m NAP (dome lantern), 112-vertex ring 52 x 41 m. 3DBAG carries the mansard as a vertical wall to its 25.5 m ridge and the dome as a few facets; the model splits walls at the eave (17.9 m: stone below, slate above) and replaces the dome with a lathe dome and lantern (top 29.1 m above ground).",
+    "fronts": "Damrak front (bearing 129-133, walls 31 and 34, t 13-31 m from the south-west end of the edge): five regular bays at 2.4 m pitch plus a pavilion bay beside the tower, counted on the 2017 photo. Prins Hendrikkade front (bearing 43-44): window rows laid on every tall 3DBAG wall segment at 2.4 m pitch.",
+    "storeys": "heights from the 2017 photo scaled to 3DBAG's 25.5 m ridge: ground arched windows 2.2 m, bel-etage 6.9 m, second 11.7 m, third 15.3 m, eave 17.9 m, mansard dormer rows 20.4 and 23.9 m.",
+    "tower": "round tower centred (11.2, 1.4) m from the BAG centroid, radius 3.9 m (3DBAG arc of the ring), balcony ring at 6.3 m, cornice at 17.5 m, dome from 21.8 m."
+  },
+  "photos": [
+    {
+      "file": "ref-2017.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Victoria_Hotel,_Amsterdam_7337.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Victoria_Hotel%2C_Amsterdam_7337.jpg",
+      "author": "C messier",
+      "date": "2017-02-04 11:34:47",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "f31bb71c93c4c57068cc2a425ae6add1bd4ce2f66f0a25abfa1f2acaa14e4b10",
+      "retrieved": "2026-10-10",
+      "feature": "Damrak front, tower, dome, mansard dormers, roof sign"
+    },
+    {
+      "file": "ref-damrak-2011.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Damrak_1.JPG",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Damrak_1.JPG",
+      "author": "Elisa.rolle",
+      "date": "2011-04-23 21:13:40",
+      "licence": "CC BY-SA 3.0 nl",
+      "sha256": "8cf785b56a22f1b4a4197ea5d1d9fa21d7b18b5468e04514a320b5c9474ff504",
+      "retrieved": "2026-10-10",
+      "feature": "Damrak front at night, ground floor"
+    },
+    {
+      "file": "ref-rce-2005-tower.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Met_natuursteen_beklede_gevels_en_een_hoektoren_met_koepel_-_Amsterdam_-_20409002_-_RCE.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/6/62/Met_natuursteen_beklede_gevels_en_een_hoektoren_met_koepel_-_Amsterdam_-_20409002_-_RCE.jpg",
+      "author": "Sergé Technau",
+      "date": "2005-06",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "7006d9bc7ed4967eeb03d0cbbcc44ab621eee6bd5f6aa29a83ae18a8273caf63",
+      "retrieved": "2026-10-10",
+      "feature": "Prins Hendrikkade front with tower, old houses and sign"
+    },
+    {
+      "file": "ref-rce-2005-corner.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Overzicht_hotel,_hoekpartij_met_hoektoren_en_koepel_-_Amsterdam_-_20409003_-_RCE.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/8/89/Overzicht_hotel%2C_hoekpartij_met_hoektoren_en_koepel_-_Amsterdam_-_20409003_-_RCE.jpg",
+      "author": "Sergé Technau",
+      "date": "2005-06",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "4522a6b8a06bbfcf4f334893b2f9351ded2049b510542a427754ee7d2924736a",
+      "retrieved": "2026-10-10",
+      "feature": "corner tower and both fronts"
+    },
+    {
+      "file": "ref-junction-2016.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:View_of_Stationsbrug_and_T-junction_of_Prins_Hendrikkade_and_Damrak.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/f/fa/View_of_Stationsbrug_and_T-junction_of_Prins_Hendrikkade_and_Damrak.jpg",
+      "author": "Vasyatka1",
+      "date": "2016-04-16 15:38:22",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "e6e584404dee7611bf81b3a7616e124d19c62544897eaeabc6ae886187e772fb",
+      "retrieved": "2026-10-10",
+      "feature": "hotel seen across the junction"
+    },
+    {
+      "file": "ref-2007.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Victoriahotel.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/0/05/Victoriahotel.jpg",
+      "author": "Marion Golsteijn",
+      "date": "2007-01-15",
+      "licence": "CC BY-SA 3.0",
+      "sha256": "729fa5553a4ed23ebdee418185fdf25d1cbf344153b35b9533d479aaba2513fe",
+      "retrieved": "2026-10-10",
+      "feature": "tower and fronts from the junction"
+    },
+    {
+      "file": "ref-rce-1979.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Overzicht_-_Amsterdam_-_20016394_-_RCE.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/4/46/Overzicht_-_Amsterdam_-_20016394_-_RCE.jpg",
+      "author": "Gerard Dukker",
+      "date": "1979-07",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "88212ea5ef6059dbac11f65f97e209e36c9c1df7ced3916cba6990608aabeb2b",
+      "retrieved": "2026-10-10",
+      "feature": "1979 corner view"
+    },
+    {
+      "file": "ref-rce-1930-victoriastraat.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Overzicht_eerste_deel_rechts_Victoriastraat_-_Amsterdam_-_20016395_-_RCE.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Overzicht_eerste_deel_rechts_Victoriastraat_-_Amsterdam_-_20016395_-_RCE.jpg",
+      "author": "Prentenkabinet (Fotograaf)",
+      "date": "1930",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "06693c63207248609505544064f51d9ba08140076ff418dbc93ecc5cbf1a1209",
+      "retrieved": "2026-10-10",
+      "feature": "1930 view along the Damrak"
+    },
+    {
+      "file": "ref-damrak.jpg",
+      "copyOf": "ref-2017.jpg",
+      "retrieved": "2026-10-10",
+      "feature": "Damrak facade comparison (oblique, from the Stationsbrug side)"
+    },
+    {
+      "file": "ref-northeast.jpg",
+      "copyOf": "ref-rce-2005-tower.jpg",
+      "retrieved": "2026-10-10",
+      "feature": "Prins Hendrikkade facade comparison (near frontal)"
+    }
+  ],
+  "panoramas": [],
+  "raw": [
+    {
+      "file": "artifacts/landmark-lanes/victoria-hotel/raw/3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012185508",
+      "retrieved": "2026-10-10",
+      "licence": "CC BY 4.0"
+    }
+  ],
+  "uncertain": [
+    "The Prins Hendrikkade front is simplified: the 2005 photo shows pilastered blocks with pedimented dormers beside the old houses, modelled only as window rows and bands on the 3DBAG walls (the left block between tower and old houses has no detailed treatment).",
+    "The VICTORIA HOTEL roof sign is placed on the central roof about 3 m east of the BAG centroid facing east-north-east (bearing 70) from the 2005 and 2017 photos; its exact position and orientation are approximate.",
+    "Window axes were counted by me on the 2017 photo; the integrator's blind count may differ. The low annex on the south-west part of the Damrak edge (14-16 m high 3DBAG walls) is left as plain shell."
+  ]
+}

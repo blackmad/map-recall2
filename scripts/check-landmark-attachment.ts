@@ -32,6 +32,7 @@ import {buildLloydHotel} from './landmarks/lloyd-hotel-builder';
 import {buildRondeLutherseKerk} from './landmarks/ronde-lutherse-kerk-builder';
 import {buildHotelOkura} from './landmarks/hotel-okura-builder';
 import {buildPakhuisDeZwijger} from './landmarks/pakhuis-de-zwijger-builder';
+import {buildVictoriaHotel} from './landmarks/victoria-hotel-builder';
 
 const cases: Record<string, {build: (w: number, d: number, b: never) => void; ring: () => number[][]; top: () => number; topSlack: number}> = {
   'ij-toren': {build: buildIjToren, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')).nativeRing, top: () => { const f = JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')); return Math.max(...f.surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))); }, topSlack: 8},
@@ -79,6 +80,9 @@ cases['hotel-okura'] = {build: buildHotelOkura, ring: () => ok().nativeRing, top
 // Pakhuis de Zwijger: 3DBAG roofMax 28.0 m NAP (rooftop block) on 0.52 m ground; the model adds hoods only below that.
 const pz = () => JSON.parse(fs.readFileSync('scripts/landmarks/pakhuis-de-zwijger-footprints.json', 'utf8'));
 cases['pakhuis-de-zwijger'] = {build: buildPakhuisDeZwijger, ring: () => pz().nativeRing, top: () => pz().attributes.roofMaxNAP - pz().groundNAP, topSlack: 3.5};
+// Victoria Hotel: 3DBAG roofMax 30.7 m NAP (dome lantern) on 1.58 m ground; the model's finial ends at 30.7 m above ground.
+const vh = () => JSON.parse(fs.readFileSync('scripts/landmarks/victoria-hotel-footprints.json', 'utf8'));
+cases['victoria-hotel'] = {build: buildVictoriaHotel, ring: () => vh().nativeRing, top: () => vh().attributes.roofMaxNAP - vh().groundNAP, topSlack: 3.5};
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(cases);
 for (const id of ids) {
   const c = cases[id];
