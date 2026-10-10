@@ -25,6 +25,7 @@ import {buildSeaPalace} from './landmarks/sea-palace-builder';
 import {buildDeSchool} from './landmarks/de-school-builder';
 import {buildWestIndischPakhuis} from './landmarks/west-indisch-pakhuis-builder';
 import {buildVondelkerk} from './landmarks/vondelkerk-builder';
+import {buildLloydHotel} from './landmarks/lloyd-hotel-builder';
 
 const cases: Record<string, {build: (w: number, d: number, b: never) => void; ring: () => number[][]; top: () => number; topSlack: number}> = {
   'ij-toren': {build: buildIjToren, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')).nativeRing, top: () => { const f = JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')); return Math.max(...f.surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))); }, topSlack: 8},
@@ -55,6 +56,9 @@ cases['west-indisch-pakhuis'] = {build: buildWestIndischPakhuis, ring: () => wip
 // before the 1904 rebuild, and measures about 47-48 m against the ridge in the photographs, so the top slack covers that gap only.
 const vk = () => JSON.parse(fs.readFileSync('scripts/landmarks/vondelkerk-footprints.json', 'utf8'));
 cases['vondelkerk'] = {build: buildVondelkerk, ring: () => vk().nativeRing, top: () => Math.max(...vk().surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 13};
+// Lloyd Hotel: 3DBAG roofMax 27.42 m NAP on a 1.45 m ground gives 26.0 m for the dome; the model adds the finial and ship vane (28.8 m).
+const lh = () => JSON.parse(fs.readFileSync('scripts/landmarks/lloyd-hotel-footprints.json', 'utf8'));
+cases['lloyd-hotel'] = {build: buildLloydHotel, ring: () => lh().nativeRing, top: () => lh().attributes.roofMaxNAP - lh().groundNAP, topSlack: 3.5};
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(cases);
 for (const id of ids) {
   const c = cases[id];

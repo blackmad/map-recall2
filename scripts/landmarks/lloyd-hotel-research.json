@@ -1,0 +1,50 @@
+{
+  "canonicalModelId": "lloyd-hotel",
+  "researchedOn": "2026-10-10",
+  "state": "built",
+  "destination": {
+    "landmarkId": "n331837646",
+    "name": "Lloyd Hotel (The Hoxton, Lloyd Amsterdam since 2023)",
+    "address": "Oostelijke Handelskade 34, 1019 BN Amsterdam",
+    "bagPand": "NL.IMBAG.Pand.0363100012118149",
+    "note": "No installed model or landmarks.json entry covered this pand; the OSM point n331837646 exists in click-poi-info.json and is reused as landmarkId."
+  },
+  "architecture": {
+    "sources": [
+      {"url": "https://nl.wikipedia.org/wiki/Lloyd_Hotel_(hotel)", "retrieved": "2026-10-10"},
+      {"url": "https://en.wikipedia.org/wiki/Lloyd_Hotel", "retrieved": "2026-10-10"},
+      {"url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/523289", "retrieved": "2026-10-10", "licence": "register text, cited not copied"}
+    ],
+    "facts": [
+      "Designed by Evert Breman for the Koninklijke Hollandsche Lloyd; register dates the design 1917-1920, Wikipedia 1918-1921 (opened 1 June 1921); cost eight times the estimate.",
+      "Register: symmetric H-shaped plan, protruding central tower and two projecting end wings; souterrain, main floor, two further floors and an attic; central block under a hipped tiled roof, end wings under inset gabled tiled roofs; dormers with three-sided tops; eaves on corbels; brick facades with stone corner accents and cordon course, dark plinth.",
+      "Register: north front has, per storey on each side of the tower, two coupled pairs and one triple window with brick mullions; entrance with steps and a heavy canopy with coffered soffit carried on carved consoles.",
+      "Monument since 2001; hotel 2004-2021 (Lloyd Hotel), reopened 2023 as The Hoxton, Lloyd Amsterdam."
+    ]
+  },
+  "measuredBy": {
+    "3dbag": "NL.IMBAG.Pand.0363100012118149 LoD2.2: ground 1.449 m NAP, roofMax 27.42 NAP (tower dome), mansard-like main roof: 52-53 degree slopes from eave about 15 m to a flat top at 22.4 m; gabled wing roofs ridge about 22.9 m; flat annex roofs 3.7 m.",
+    "axisFrame": "origin at the BAG centroid (4.9347433, 52.3742511); a along bearing 105.8 degrees, b to the right (south-south-west); core a -25.1..30.7, b -6.6..11.6; wing gables at b -11.6 (north) and b 14.4/14.3 (south); tower shaft a -0.7..6.1, b -9.4..-0.5.",
+    "heights": "From ref-north.jpg (RCE 20409072; tower base about 36 px/m): plaque 6.2 m, shaft top 18.3, clock stage to 21.3, lantern to 23.9, dome tip 26.7 (3DBAG 26.0), vane about 29.",
+    "uncertain": [
+      "The tower reads taller and heavier in the photographs than the 3DBAG dome height allows; the model follows 3DBAG, so it is visibly squatter than the reference.",
+      "Window sizes on the gable ends and the south front are read from oblique photographs; the east and west end walls and the annexes have no square-on photo (inferred).",
+      "Roof dormers are placed by eye, not counted."
+    ]
+  },
+  "photos": [
+    {"file": "ref-north.jpg", "url": "https://commons.wikimedia.org/wiki/File:Overzicht_op_voorgevel,_middenrisaliet_met_achtkantige_toren,_gezien_vanaf_het_plein_-_Amsterdam_-_20409072_-_RCE.jpg", "author": "Sergé Technau (RCE)", "date": "2005-06", "licence": "CC BY-SA 4.0", "retrieved": "2026-10-10", "feature": "north front with tower"},
+    {"file": "ref-north-b.jpg", "url": "https://commons.wikimedia.org/wiki/File:Aanzicht_voorgevel,_middenrisaliet_met_achtkantige_toren,_gezien_vanaf_het_plein_-_Amsterdam_-_20409076_-_RCE.jpg", "author": "Sergé Technau (RCE)", "date": "2005-06", "licence": "CC BY-SA 4.0", "retrieved": "2026-10-10", "feature": "north front, second view"},
+    {"file": "ref-south.jpg", "url": "https://commons.wikimedia.org/wiki/File:Lloyd_Hotel_Oostelijke_Handelskade_Amsterdam_(5635517070).jpg", "author": "FaceMePLS", "date": "2011-04-11", "licence": "CC BY 2.0", "retrieved": "2026-10-10", "feature": "south front (garden side), seven bays, wall dormers"},
+    {"file": "ref-tower-low.jpg", "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Lloyd_Hotel_(29669084804).jpg", "author": "Fred Romero", "date": "2016-05-06", "licence": "CC BY 2.0", "retrieved": "2026-10-10", "feature": "tower front, plaque, canopy, slit windows"},
+    {"file": "ref-water.jpg", "url": "https://commons.wikimedia.org/wiki/File:2023_Amsterdam,_Oostelijk_Havengebied,_Lloydhotel_(01).jpg", "author": "Kleon3", "date": "2023-06-10", "licence": "CC BY-SA 4.0", "retrieved": "2026-10-10", "feature": "view across the harbour: gables and lantern"},
+    {"file": "ref-street-3q.jpg", "url": "https://commons.wikimedia.org/wiki/File:Lloyd_Hotel.jpg", "author": "Picasdre", "date": "2011-07-27", "licence": "CC BY-SA 3.0", "retrieved": "2026-10-10", "feature": "north-west three-quarter: wing gable and tower"},
+    {"file": "ref-1979.jpg", "url": "https://commons.wikimedia.org/wiki/File:Lloydhotel_-_Amsterdam_-_20019768_-_RCE.jpg", "author": "Gerard Dukker (RCE)", "date": "1979-09", "licence": "CC BY-SA 4.0", "retrieved": "2026-10-10", "feature": "historic street view with the stepped gable"},
+    {"file": "ref-wlm2007.jpg", "url": "https://commons.wikimedia.org/wiki/File:Loydd_hotel_-_WLM_2011_-_drobm.jpg", "author": "drobm", "date": "2007-12-08", "licence": "CC BY-SA 2.0", "retrieved": "2026-10-10", "feature": "tower and gables"}
+  ],
+  "raw": [
+    {"file": "artifacts/landmark-lanes/lloyd-hotel/raw/3dbag-NL.IMBAG.Pand.0363100012118149.json", "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012118149", "retrieved": "2026-10-10", "licence": "CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/lloyd-hotel/raw/register-523289.html", "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/523289", "retrieved": "2026-10-10"},
+    {"file": "artifacts/landmark-lanes/lloyd-hotel/raw/wikipedia-nl-lloyd-hotel.json", "url": "https://nl.wikipedia.org/wiki/Lloyd_Hotel_(hotel)", "retrieved": "2026-10-10", "licence": "CC BY-SA 4.0"}
+  ]
+}
