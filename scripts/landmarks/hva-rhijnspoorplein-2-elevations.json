@@ -1,0 +1,11 @@
+{
+  "id": "hva-rhijnspoorplein-2",
+  "countedBy": "pending blind count by integrator",
+  "facades": [
+    {"name": "north-west front, west part (wall 55, t 0-22)", "bearing": 323, "photo": "artifacts/landmark-lanes/hva-rhijnspoorplein-2/ref-nw-a.jpg"},
+    {"name": "north-west front, east part (wall 55, t 44-66)", "bearing": 323, "photo": "artifacts/landmark-lanes/hva-rhijnspoorplein-2/ref-nw-b.jpg"},
+    {"name": "tower north (wall 37)", "bearing": 340, "photo": "artifacts/landmark-lanes/hva-rhijnspoorplein-2/ref-tower-north.jpg"},
+    {"name": "tower east (wall 167)", "bearing": 70, "photo": "artifacts/landmark-lanes/hva-rhijnspoorplein-2/ref-tower-east.jpg"},
+    {"name": "south-west (wall 34)", "bearing": 233, "photo": "artifacts/landmark-lanes/hva-rhijnspoorplein-2/ref-sw.jpg"}
+  ]
+}
