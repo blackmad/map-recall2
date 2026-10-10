@@ -47,18 +47,18 @@ export function buildPalaceDam(_w:number,_d:number,b:BuildingTools){
  // pilastered storey groups, each a tall window under a small mezzanine window,
  // split by a strong cornice, under a crowning cornice. 21 axes on the Dam front.
  const archShape=(aw:number,ah:number)=>{const s=new T.Shape();s.moveTo(-aw/2,0);s.lineTo(aw/2,0);s.lineTo(aw/2,ah-aw/2);s.absarc(0,ah-aw/2,aw/2,0,Math.PI,false);s.closePath();return new T.ShapeGeometry(s,6);};
- for(let i=0;i<outer.length-1;i++){
-  const p=outer[i],q=outer[i+1],dx=q[0]-p[0],dz=q[1]-p[1],len=Math.hypot(dx,dz);if(len<3)continue;
+ for(const [ri,ring] of source.facadePolygons[0].entries())for(let i=0;i<ring.length-1;i++){
+  const p=ring[i],q=ring[i+1],dx=q[0]-p[0],dz=q[1]-p[1],len=Math.hypot(dx,dz);if(len<3)continue;
   const a=-Math.atan2(dz,dx)+(winding>0?Math.PI:0),nx=Math.sin(a),nz=Math.cos(a);
-  const risalit=len>22,count=risalit?7:Math.max(1,Math.round(len/3.9)),damRisalit=risalit&&nx>.9;
+  const risalit=len>22,count=risalit?7:Math.max(1,Math.round(len/3.9)),damRisalit=ri===0&&risalit&&nx>.9;
   const at=(t:number,o:number):[number,number]=>[p[0]+dx*t+nx*o,p[1]+dz*t+nz*o];
   const slab=(y:number,h:number,d:number,c:Colour)=>{const [x,z]=at(.5,d/2);box(x,y,z,len,h,d,c,a);};
-  slab(0,5.0,.45,sand);slab(5.0,.5,.5,stone);slab(16.0,.8,.5,stone);slab(24.6,.9,.55,stone);
-  for(let j=0;j<=count;j++){const [px,pz]=at(j/count,.12);box(px,5.5,pz,.62,10.5,.3,sand,a);box(px,17,pz,.62,7.6,.3,sand,a);box(px,15.6,pz,.95,.4,.45,stone,a);box(px,24.2,pz,.95,.4,.45,stone,a);}
+  slab(0,5.0,.45,sand);slab(5.0,.5,.5,stone);slab(16.0,.8,.5,stone);if(ri===0)slab(24.6,.9,.55,stone);
+  for(let j=0;j<=count;j++){const [px,pz]=at(j/count,.12);box(px,5.5,pz,.62,10.5,.3,sand,a);box(px,17,pz,.62,ri===0?7.6:4.8,.3,sand,a);box(px,15.6,pz,.95,.4,.45,stone,a);if(ri===0)box(px,24.2,pz,.95,.4,.45,stone,a);}
   for(let j=0;j<count;j++){
    const t=(j+.5)/count,[x,z]=at(t,.05),[wx,wz]=at(t,.16),[fx,fz]=at(t,.5),[gx2,gz2]=at(t,.56),w=Math.min(1.5,len/count*.4);
    const win=(y:number,h:number,ww:number)=>{if(y<5){box(fx,y-.15,fz,ww+.5,h+.4,.1,stone,a);box(gx2,y,gz2,ww,h,.08,'glass',a);return;}box(x,y-.15,z,ww+.5,h+.4,.14,stone,a);box(wx,y,wz,ww,h,.1,'glass',a);const [cx,cz]=at(t,.22);box(cx,y+h*.55,cz,ww,.08,.06,stone,a);box(cx,y,cz,.08,h,.06,stone,a);};
-   win(6.3,3.4,w);win(11.0,1.6,w*.95);win(17.7,3.2,w);win(22.5,1.4,w*.95);
+   win(6.3,3.4,w);win(11.0,1.6,w*.95);win(17.7,3.2,w);if(ri===0)win(22.5,1.4,w*.95);
    if(damRisalit){const [ax,az]=at(t,.58),[bx,bz]=at(t,.47),aw=2.1,ah=3.9;
     box(bx,0,bz,aw+.9,ah+.5,.1,stone,a);
     add(archShape(aw,ah),'dark',ax,.05,az,a);

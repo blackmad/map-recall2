@@ -316,6 +316,9 @@ function distToHull(pt: [number, number], hull: [number, number][]): number {
  *     behind the plane and at least 0.3 m inside the wall's extent (recessed or protruding glazing, frames, doors,
  *     overlay quads).
  * Walls whose opening fraction is below `blankWallMinOpeningFraction` are reported; exempt bearings are skipped.
+ * Only wall area visible from outside counts: a sample point on the wall is visible when a horizontal ray along the
+ * outward normal leaves the model without meeting any other surface more than `blankWallReach` in front of the wall.
+ * Fully enclosed internal partitions (overlapping building parts) are therefore never reported.
  */
 export function findBlankWalls(soup: TriSoup, th: Thresholds = DEFAULT_THRESHOLDS, walls: WallSegment[] = clusterWalls(soup, {minArea: th.blankWallMinArea})): BlankWall[] {
   const P = soup.positions, I = soup.indices, nTri = I.length / 3;
@@ -334,12 +337,54 @@ export function findBlankWalls(soup: TriSoup, th: Thresholds = DEFAULT_THRESHOLD
     area[t] = len / 2;
     horiz[t] = len > 1e-9 && Math.abs(ny / len) > 0.85 ? 1 : 0;
   }
+  // 2D (x, z) triangle grid for horizontal visibility rays.
+  const GRID = 2;
+  const grid = new Map<number, number[]>();
+  const gk = (ix: number, iz: number) => (ix + 32768) * 65536 + (iz + 32768);
+  let bx0 = Infinity, bx1 = -Infinity, bz0 = Infinity, bz1 = -Infinity;
+  for (let t = 0; t < nTri; t++) {
+    let x0 = Infinity, x1 = -Infinity, z0 = Infinity, z1 = -Infinity;
+    for (let k = 0; k < 3; k++) { const i = I[t * 3 + k] * 3; x0 = Math.min(x0, P[i]); x1 = Math.max(x1, P[i]); z0 = Math.min(z0, P[i + 2]); z1 = Math.max(z1, P[i + 2]); }
+    bx0 = Math.min(bx0, x0); bx1 = Math.max(bx1, x1); bz0 = Math.min(bz0, z0); bz1 = Math.max(bz1, z1);
+    for (let ix = Math.floor(x0 / GRID); ix <= Math.floor(x1 / GRID); ix++) for (let iz = Math.floor(z0 / GRID); iz <= Math.floor(z1 / GRID); iz++) {
+      const key = gk(ix, iz); const l = grid.get(key); if (l) l.push(t); else grid.set(key, [t]);
+    }
+  }
+  const diag = Math.hypot(bx1 - bx0, bz1 - bz0) + 2;
+  /** True when something other than `own` blocks the outward horizontal ray beyond the wall's own front zone. */
+  const occluded = (ox: number, oy: number, oz: number, dx: number, dz: number, own: Set<number>): boolean => {
+    const seen = new Set<number>();
+    for (let s = 0; s <= diag; s += GRID * 0.5) {
+      const l = grid.get(gk(Math.floor((ox + dx * s) / GRID), Math.floor((oz + dz * s) / GRID)));
+      if (!l) continue;
+      for (const t of l) {
+        if (seen.has(t) || own.has(t)) continue;
+        seen.add(t);
+        const a = I[t * 3] * 3, b = I[t * 3 + 1] * 3, c = I[t * 3 + 2] * 3;
+        const e1x = P[b] - P[a], e1y = P[b + 1] - P[a + 1], e1z = P[b + 2] - P[a + 2], e2x = P[c] - P[a], e2y = P[c + 1] - P[a + 1], e2z = P[c + 2] - P[a + 2];
+        // Moller-Trumbore with direction (dx, 0, dz).
+        const px = -dz * e2y, py = dz * e2x - dx * e2z, pz = dx * e2y;
+        const det = e1x * px + e1y * py + e1z * pz;
+        if (Math.abs(det) < 1e-9) continue;
+        const inv = 1 / det, tx = ox - P[a], ty = oy - P[a + 1], tz = oz - P[a + 2];
+        const u = (tx * px + ty * py + tz * pz) * inv;
+        if (u < 0 || u > 1) continue;
+        const qx = ty * e1z - tz * e1y, qy = tz * e1x - tx * e1z, qz = tx * e1y - ty * e1x;
+        const v = (dx * qx + dz * qz) * inv;
+        if (v < 0 || u + v > 1) continue;
+        const tt = (e2x * qx + e2y * qy + e2z * qz) * inv;
+        if (tt > th.blankWallReach + 0.02) return true;
+      }
+    }
+    return false;
+  };
   for (const w of candidates) {
     const own = new Set(w.tris);
     const W = w.uMax - w.uMin, H = w.vMax - w.vMin;
     const cell = Math.max(CELL, Math.sqrt((W * H) / 150_000));
     const nu = Math.max(1, Math.ceil(W / cell)), nv = Math.max(1, Math.ceil(H / cell));
     const filled = new Uint8Array(nu * nv);
+    let visibleFraction = 1;
     for (const t of w.tris) {
       const pts: [number, number][] = [0, 1, 2].map(k => { const i = I[t * 3 + k] * 3; return [P[i] * w.t[0] + P[i + 2] * w.t[1] - w.uMin, P[i + 1] - w.vMin] as [number, number]; });
       const [A, B, C] = pts;
@@ -354,6 +399,20 @@ export function findBlankWalls(soup: TriSoup, th: Thresholds = DEFAULT_THRESHOLD
         const eps = -0.02;
         if (l1 >= eps && l2 >= eps && 1 - l1 - l2 >= eps) filled[iv * nu + iu] = 1;
       }
+    }
+    // Visible fraction: sample filled cells at about 1 m and keep only walls with enough area seen from outside.
+    {
+      // About 2 m samples, and never more than ~120 rays per wall, so install-time audits stay fast.
+      const stride = Math.max(1, Math.round(2 / cell), Math.ceil(Math.sqrt((nu * nv) / 120)));
+      let samples = 0, seenN = 0;
+      for (let iu = 0; iu < nu; iu += stride) for (let iv = 0; iv < nv; iv += stride) {
+        if (!filled[iv * nu + iu]) continue;
+        samples++;
+        const u = w.uMin + (iu + 0.5) * cell, y = w.vMin + (iv + 0.5) * cell;
+        if (!occluded(w.n[0] * w.d + w.t[0] * u, y, w.n[1] * w.d + w.t[1] * u, w.n[0], w.n[1], own)) seenN++;
+      }
+      visibleFraction = samples ? seenN / samples : 1;
+      if (visibleFraction * w.area < th.blankWallMinArea) continue;
     }
     // Enclosed empty cells: flood the outside from the grid border; whatever empty is unreached is a hole in the wall.
     const reach = new Uint8Array(nu * nv);
@@ -383,7 +442,7 @@ export function findBlankWalls(soup: TriSoup, th: Thresholds = DEFAULT_THRESHOLD
     }
     const openingFraction = Math.min(1, opening / w.area);
     if (openingFraction < th.blankWallMinOpeningFraction) {
-      out.push({bearingDeg: w.bearingDeg, area: w.area, widthM: W, heightM: H, openingFraction, centre: w.centre});
+      out.push({bearingDeg: w.bearingDeg, area: w.area * visibleFraction, widthM: W, heightM: H, openingFraction, centre: w.centre});
     }
   }
   return out.sort((a, b) => b.area - a.area);
@@ -708,6 +767,23 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
     }
     return false;
   };
+  /** Height of the lowest surface directly above `o` (Infinity when none). */
+  const lowestAbove = (o: V3): number => {
+    const seen = new Set<number>();
+    let best = Infinity;
+    for (let y = o[1]; y <= bmax[1] + 1 && best === Infinity; y += 1) {
+      const list = rayGrid.at(o[0], y, o[2]);
+      if (!list) continue;
+      for (const u of list) {
+        if (seen.has(u)) continue;
+        seen.add(u);
+        const [a, b, c] = tri(soup, u);
+        const t = rayTriangle([o[0], o[1] + 0.02, o[2]], [0, 1, 0], a, b, c, 1e4);
+        if (t >= 0) best = Math.min(best, o[1] + 0.02 + t);
+      }
+    }
+    return best;
+  };
   const firstHit = (o: V3, d: V3, tMax: number): number => {
     let best = -1;
     const seen = new Set<number>();
@@ -743,25 +819,72 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   }
 
   // --- see-through wall gaps ---
-  // Walk the hull of the main body. At each ring sample aim a street-height ray inward; only count it
-  // when the point 1 m inside is roofed (so a wall had to be crossed) and the ray hits nothing before it.
+  // Footprint-based: rasterise the main body's XZ projection (walls as lines, roofs and floors as areas) at 25 cm,
+  // take its boundary (outer edge and courtyards) with outward normals, and at each ~2 m sample aim a street-height
+  // ray from 3 m outside the edge to 1 m inside it. A ray counts as see-through only when the point 1 m inside is
+  // roofed (a wall had to be crossed) and the ray hits nothing. A ray that misses is still closed when it runs under
+  // a LOW soffit (a porch or canopy at most max(6 m, ray + 4 m) above ground) and meets a wall within 4 m of the edge.
+  // Main roofs and upper storeys never qualify, so deep gaps under a tall roof stay gaps.
   const seeThrough = {rays: 0, tested: 0, points: [] as V3[]};
-  if (hull.length >= 3 && !site) {
-    for (let i = 0; i < hull.length; i++) {
-      const a = hull[i], b = hull[(i + 1) % hull.length];
-      const ex = b[0] - a[0], ez = b[1] - a[1];
-      const len = Math.hypot(ex, ez);
-      if (len < 1e-6) continue;
-      const nIn: [number, number] = [-ez / len, ex / len]; // CCW hull: left of edge is interior
-      const n = Math.max(1, Math.floor(len / th.rayStep));
-      for (let s = 0; s < n; s++) {
-        const u = (s + 0.5) / n;
-        const px = a[0] + ex * u, pz = a[1] + ez * u;
+  if (mainPts.length >= 3 && !site) {
+    const CELL = 0.25;
+    let gx0 = Infinity, gx1 = -Infinity, gz0 = Infinity, gz1 = -Infinity;
+    for (const [x, z] of mainPts) { gx0 = Math.min(gx0, x); gx1 = Math.max(gx1, x); gz0 = Math.min(gz0, z); gz1 = Math.max(gz1, z); }
+    gx0 -= 1; gz0 -= 1;
+    const cw = Math.ceil((gx1 - gx0 + 2) / CELL), ch = Math.ceil((gz1 - gz0 + 2) / CELL);
+    if (cw * ch <= 16_000_000) {
+      const occ = new Uint8Array(cw * ch);
+      const mark = (x: number, z: number) => { const ix = Math.floor((x - gx0) / CELL), iz = Math.floor((z - gz0) / CELL); if (ix >= 0 && iz >= 0 && ix < cw && iz < ch) occ[iz * cw + ix] = 1; };
+      for (let t = 0; t < nTri; t++) {
+        if (!inMain(t)) continue;
+        const [A, B, C] = [0, 1, 2].map(k => { const i = soup.indices[t * 3 + k] * 3; return [soup.positions[i], soup.positions[i + 2]] as [number, number]; });
+        const edges: [[number, number], [number, number]][] = [[A, B], [B, C], [C, A]];
+        for (const [p0, p1] of edges) {
+          const L = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]), n = Math.max(1, Math.ceil(L / (CELL / 2)));
+          for (let k = 0; k <= n; k++) mark(p0[0] + (p1[0] - p0[0]) * k / n, p0[1] + (p1[1] - p0[1]) * k / n);
+        }
+        const den = (B[1] - C[1]) * (A[0] - C[0]) + (C[0] - B[0]) * (A[1] - C[1]);
+        if (Math.abs(den) < 1e-9) continue;
+        const ix0 = Math.max(0, Math.floor((Math.min(A[0], B[0], C[0]) - gx0) / CELL)), ix1 = Math.min(cw - 1, Math.floor((Math.max(A[0], B[0], C[0]) - gx0) / CELL));
+        const iz0 = Math.max(0, Math.floor((Math.min(A[1], B[1], C[1]) - gz0) / CELL)), iz1 = Math.min(ch - 1, Math.floor((Math.max(A[1], B[1], C[1]) - gz0) / CELL));
+        for (let iz = iz0; iz <= iz1; iz++) for (let ix = ix0; ix <= ix1; ix++) {
+          const px = gx0 + (ix + 0.5) * CELL, pz = gz0 + (iz + 0.5) * CELL;
+          const l1 = ((B[1] - C[1]) * (px - C[0]) + (C[0] - B[0]) * (pz - C[1])) / den, l2 = ((C[1] - A[1]) * (px - C[0]) + (A[0] - C[0]) * (pz - C[1])) / den;
+          if (l1 >= 0 && l2 >= 0 && 1 - l1 - l2 >= 0) occ[iz * cw + ix] = 1;
+        }
+      }
+      const at = (ix: number, iz: number) => (ix < 0 || iz < 0 || ix >= cw || iz >= ch ? 0 : occ[iz * cw + ix]);
+      const kept = new Map<string, [number, number][]>();
+      const SP = th.rayStep;
+      const R = 3;
+      for (let iz = 0; iz < ch; iz++) for (let ix = 0; ix < cw; ix++) {
+        if (!occ[iz * cw + ix] || (at(ix - 1, iz) && at(ix + 1, iz) && at(ix, iz - 1) && at(ix, iz + 1))) continue;
+        let nx = 0, nz = 0;
+        for (let dz = -R; dz <= R; dz++) for (let dx = -R; dx <= R; dx++) if (!at(ix + dx, iz + dz)) { nx += dx; nz += dz; }
+        const nl = Math.hypot(nx, nz);
+        if (nl < 1e-6) continue;
+        nx /= nl; nz /= nl;
+        const ex = gx0 + (ix + 0.5) * CELL + nx * CELL / 2, ez = gz0 + (iz + 0.5) * CELL + nz * CELL / 2;
+        const key = `${Math.floor(ex / SP)},${Math.floor(ez / SP)}`;
+        let near = false;
+        for (let a = -1; a <= 1 && !near; a++) for (let b = -1; b <= 1 && !near; b++) for (const q of kept.get(`${Math.floor(ex / SP) + a},${Math.floor(ez / SP) + b}`) ?? []) if (Math.hypot(q[0] - ex, q[1] - ez) < SP) { near = true; break; }
+        if (near) continue;
+        const list = kept.get(key); if (list) list.push([ex, ez]); else kept.set(key, [[ex, ez]]);
+        // Aim inward (against the outward normal).
+        const dx = -nx, dz = -nz;
         for (const h of th.rayHeights) {
-          const target: V3 = [px + nIn[0], h, pz + nIn[1]];
+          const target: V3 = [ex + dx, h, ez + dz];
           if (target[1] > bmax[1] || !castUp(target, -1)) continue;
           seeThrough.tested++;
-          const hit = firstHit([px - nIn[0] * 3, h, pz - nIn[1] * 3], [nIn[0], 0, nIn[1]], 4 - 0.01);
+          const o: V3 = [ex - dx * 3, h, ez - dz * 3];
+          let hit = firstHit(o, [dx, 0, dz], 4 - 0.01);
+          if (hit < 0) {
+            const ext = firstHit(o, [dx, 0, dz], 7 - 0.01);
+            if (ext > 0) {
+              const cap = Math.max(minY + 6, h + 4);
+              for (let s = 3; s < ext - 0.2; s += 0.5) if (lowestAbove([o[0] + dx * s, h, o[2] + dz * s]) <= cap) { hit = ext; break; }
+            }
+          }
           if (hit < 0) {
             seeThrough.rays++;
             if (seeThrough.points.length < 40) seeThrough.points.push(target);
