@@ -1,0 +1,344 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bilder-133467-159649",
+ "street": "Bilderdijkstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/block-face/bilder-133467-159649/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012133467",
+   "slug": "bface-133467",
+   "address": "Bilderdijkstraat 169-171 (Mensink)",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "storeys": 4,
+      "bays": [
+       1,
+       4,
+       4,
+       4
+      ],
+      "axisGrid": 6,
+      "storeyAxes": {
+       "0": [
+        3
+       ],
+       "1": [
+        2,
+        3,
+        4,
+        5
+       ],
+       "2": [
+        2,
+        3,
+        4,
+        5
+       ],
+       "3": [
+        2,
+        3,
+        4,
+        5
+       ]
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "doorBay": null,
+      "windows": "sash",
+      "bands": "both",
+      "windowSurround": "keystone",
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "name": "Bakery Cafe Mensink",
+       "sign": {
+        "text": "BAKERY CAFE MENSINK",
+        "textColour": "white",
+        "span": 0.45,
+        "align": "left"
+       },
+       "glazing": "split",
+       "displayWindows": 4,
+       "stallriser": "low",
+       "evidence": "strip 2024-11-29 rows 555-751: black fascia BAKERY CAFE MENSINK in white over a full-width black cafe front; OSM node 11411936971 Mensink (bakery)"
+      }
+     }
+    ],
+    "roof": {
+     "material": "red-tile"
+    },
+    "palette": {
+     "brick": "#6a4a36",
+     "frame": "white",
+     "door": "black",
+     "stone": "cream",
+     "cornice": "white"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Bakery Cafe Mensink",
+    "category": "shop=bakery",
+    "osm": {
+     "type": "node",
+     "id": 11411936971,
+     "name": "Mensink",
+     "tags": "shop=bakery"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "osm-and-photo",
+    "note": "Bakery cafe across the whole 12.4 m front."
+   },
+   "rhythm": {
+    "bays": "6 axes: the left 2 are blind (brick with white bosses, a billboard on storey 1), the right 4 carry windows",
+    "identicalBays": "axes 2-5 on storeys 1-3",
+    "windowsPerStorey": "ground: black cafe front | 1-3: 4 sash windows on axes 2-5 | roof: 1 pedimented dormer over axis 4",
+    "symmetry": "none",
+    "groundFloor": "black cafe front full width",
+    "signage": "BAKERY CAFE MENSINK white on black",
+    "roofline": "white bracketed cornice, top at strip row ~165 (3DBAG eaves row 169); red-tile mansard (rows 110-165) with one pedimented dormer (rows 50-160)",
+    "citation": "bilder-133467-159649 strip.jpg pand 1 (zoom z0, x 0-500)",
+    "photoRows": [
+     1,
+     4,
+     4,
+     4,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the blind left axes are plain wall: their white header bosses and the billboard are not modelled",
+     "the dormer sits centred, not over axis 4",
+     "the protest banner on storey 3 is not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012153782",
+   "slug": "bface-153782",
+   "address": "Bilderdijkstraat 173",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "storeys": 4,
+      "bays": 3,
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "doorBay": 0,
+      "windows": "sash",
+      "bands": "lintel",
+      "windowSurround": "keystone",
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "name": "Musscher Verlichting",
+       "sign": {
+        "text": "MUSSCHER VERLICHTING",
+        "textColour": "#1f2a3a",
+        "background": "#e9e6dc",
+        "span": 0.92
+       },
+       "awning": {
+        "style": "fabric-straight",
+        "colour": "grey"
+       },
+       "entrance": "right",
+       "glazing": "single",
+       "stallriser": "low",
+       "bays": [
+        1,
+        2
+       ],
+       "evidence": "strip 2024-11-29 rows 580-751: white fascia MUSSCHER VERLICHTING in dark capitals, grey awning, lamp-filled window, dark street door at the left; OSM node 11411933553 Musscher (lighting)"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6a4a36",
+     "frame": "white",
+     "door": "black",
+     "stone": "cream",
+     "cornice": "white"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Musscher",
+    "category": "shop=lighting",
+    "osm": {
+     "type": "node",
+     "id": 11411933553,
+     "name": "Musscher",
+     "tags": "shop=lighting"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "osm-and-photo",
+    "note": "Lighting shop; the street door to the dwellings at the left."
+   },
+   "rhythm": {
+    "bays": "3 identical axes",
+    "identicalBays": "storeys 1-3",
+    "windowsPerStorey": "ground: street door (bay 0) + lighting shop (bays 1-2) | 1-3: 3 equal sash windows with white keystone bosses | roof: slate mansard with 1 pedimented dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "dark door left, lamp shop with white fascia",
+    "signage": "MUSSCHER VERLICHTING",
+    "roofline": "white bracketed cornice, top at strip row 188; black slate mansard rows 130-188 (3DBAG flat top 15.5-16.0 m stands on the facade line); pedimented dormer rows 70-185",
+    "citation": "bilder-133467-159649 strip.jpg pand 2 (zoom z1, x 480-967)",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": []
+   }
+  },
+  {
+   "pandId": "0363100012159649",
+   "slug": "bface-159649",
+   "address": "Bilderdijkstraat 175",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "simple",
+      "storeys": 4,
+      "bays": 3,
+      "dormers": 0,
+      "doorBay": 0,
+      "windows": "arched",
+      "bands": "none",
+      "shopfront": {
+       "colour": "white",
+       "fascia": true,
+       "fasciaColour": "#e9e6dc",
+       "name": "Gallery 3",
+       "glazing": "single",
+       "stallriser": "low",
+       "entrance": "right",
+       "bays": [
+        1,
+        2
+       ],
+       "evidence": "strip 2024-11-29 rows 575-751: white-painted shop front with a pale fascia (lettering not legible), dark doors at both ends; OSM node 11411962826 Gallery 3 (restaurant)"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6a4a36",
+     "frame": "white",
+     "door": "black",
+     "stone": "cream",
+     "cornice": "white"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Gallery 3",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 11411962826,
+     "name": "Gallery 3",
+     "tags": "amenity=restaurant"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "osm-and-photo",
+    "note": "Fascia lettering not legible at strip resolution: no sign modelled."
+   },
+   "rhythm": {
+    "bays": "3 identical axes",
+    "identicalBays": "storeys 1-3",
+    "windowsPerStorey": "ground: street door (bay 0) + restaurant (bays 1-2) | 1-3: 3 segmental-arched windows with brick hood moulds | roof: dark mansard (dormer not modelled)",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "white shop front, doors at both ends",
+    "signage": "illegible",
+    "roofline": "white cornice top at strip row ~200 (3DBAG eaves row 203); dark rounded mansard rows 145-195; pedimented dormer rows 120-190",
+    "citation": "bilder-133467-159649 strip.jpg pand 3 (zoom z1)",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the brick hood moulds over the arched windows are not modelled",
+     "the second door at the right is the shop entrance, not a separate street door",
+     "the pedimented dormer is not modelled: the 3DBAG footprint jogs at the front right (a hip and a raised block reach the facade) and a dormer there crosses the footprint boundary"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012153782",
+    "stripRow": 188,
+    "evidence": "top of the white bracketed cornice (zoom z1); 3DBAG's 15.52 m eaves (row 130) is the flat top of the slate mansard, which 3DBAG stands on the facade line",
+    "frontRoof": {}
+   },
+   {
+    "pand": "0363100012159649",
+    "stripRow": 200,
+    "evidence": "top of the white cornice (zoom z1); 3DBAG has the front at 13.0-14.3 m with a hip and a raised block (16.2 m) reaching the facade at the left; the photo shows a dark mansard rising from the cornice",
+    "frontRoof": {}
+   }
+  ],
+  "notes": [
+   "2024-11-29 capture. Folds the standalone recipe bilder-153782 into a face with its neighbours 169-171 (Mensink) and 175, which had no model."
+  ]
+ },
+ "authoring": {
+  "author": "claude-opus-5.5 (bilder-limits lane), from strip-labelled.png and zooms z0/z1",
+  "passes": 1,
+  "note": "Bilderdijkstraat 169-175 (odd side)."
+ }
+}

@@ -1,0 +1,412 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bilder-153622-156732",
+ "street": "Bilderdijkstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/block-face/bilder-153622-156732/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012153622",
+   "slug": "bface-153622",
+   "address": "Bilderdijkstraat 199",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "storeys": 5,
+      "bays": 3,
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "doorBay": 0,
+      "windows": "sash",
+      "bands": "lintel",
+      "windowSurround": "keystone",
+      "shopfront": {
+       "colour": "dark-blue",
+       "fascia": true,
+       "fasciaColour": "#8bbcd8",
+       "name": "RA travel",
+       "glazing": "single",
+       "stallriser": "none",
+       "bays": [
+        1,
+        2
+       ],
+       "evidence": "strip 2024-11-29 rows 700-835: light-blue fascia with a painted travel mural (no legible name), white street door at the left (residential entrance), one dark display opening; OSM node 11411974200 RA travel (travel_agency)"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "orange-brick",
+     "frame": "white",
+     "door": "white",
+     "stone": "cream",
+     "cornice": "white"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "RA travel",
+    "category": "shop=travel_agency",
+    "osm": {
+     "type": "node",
+     "id": 11411974200,
+     "name": "RA travel",
+     "tags": "shop=travel_agency"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "osm-and-photo",
+    "note": "Light-blue fascia with an airliner/skyline mural and no legible lettering: no sign modelled. White street door to the dwellings at the left, outside the shop bays."
+   },
+   "rhythm": {
+    "bays": "3 identical axes",
+    "identicalBays": "storeys 1-4",
+    "windowsPerStorey": "ground: residential door (bay 0) + shop (bays 1-2) | 1-4: 3 equal sash windows, low iron rails inside the frames on storeys 1, 2 and 4 | roof: 1 pedimented dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "white street door left, blue mural fascia over one dark shop opening",
+    "signage": "mural fascia, no legible name",
+    "roofline": "white bracketed cornice, top at strip row ~203; one centred pedimented dormer (rows 111-203) with chimneys left and right; the roof behind rises toward the dormer and is barely visible",
+    "citation": "bilder-153622-156732 strip.jpg pand 1 (zoom h1, x 0-440, rows 80-835)",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the low iron rails inside the window frames (storeys 1, 2, 4) are not modelled: the windows stay one size (balconies would make them French windows)",
+     "travel mural on the fascia is a plain light-blue fascia",
+     "chimneys beside the dormer are not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012161613",
+   "slug": "bface-161613",
+   "address": "Bilderdijkstraat 201",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "storeys": 4,
+      "bays": 3,
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "doorBay": 2,
+      "windows": "sash",
+      "bands": "none",
+      "shopfront": {
+       "colour": "#e8b4b0",
+       "fascia": true,
+       "fasciaColour": "#e8c84a",
+       "glazing": "single",
+       "stallriser": "medium",
+       "stallriserColour": "white",
+       "bays": [
+        0,
+        1
+       ],
+       "evidence": "strip 2024-11-29 rows 760-835: pink-painted shop front with a yellow fascia board, one large window at the left, black street door at the right"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#5e3a2e",
+     "frame": "white",
+     "door": "black",
+     "stone": "cream",
+     "cornice": "white"
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 11411961406,
+     "tags": "shop=hairdresser (unnamed)"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "osm-and-photo",
+    "note": "Pink shop front with a yellow fascia (no legible name); black door to the dwellings at the right."
+   },
+   "rhythm": {
+    "bays": "3 identical axes",
+    "identicalBays": "storeys 1-3",
+    "windowsPerStorey": "ground: shop window (bays 0-1) + street door (bay 2) | 1-3: 3 sash windows | roof: 1 pedimented dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "pink shop front, yellow fascia, black door right",
+    "signage": "none legible",
+    "roofline": "white cornice, top at strip row ~280; one pedimented dormer behind it (rows ~205-270)",
+    "citation": "bilder-153622-156732 strip.jpg pand 2 (zoom h1)",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the dark brick piers and anchor bosses between the windows are not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012152363",
+   "slug": "bface-152363",
+   "address": "Bilderdijkstraat 203",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "simple",
+      "storeys": 4,
+      "bays": 3,
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "doorBay": 0,
+      "windows": "sash",
+      "shopfront": {
+       "colour": "dark-blue",
+       "fascia": true,
+       "name": "De Japanner",
+       "sign": {
+        "text": "DE JAPANNER",
+        "textColour": "white",
+        "span": 0.6
+       },
+       "glazing": "split",
+       "stallriser": "high",
+       "stallriserColour": "white",
+       "bays": [
+        1,
+        2
+       ],
+       "evidence": "strip 2024-11-29 rows 690-835: black street door in a white surround at the left; navy fascia DE JAPANNER over two navy-framed windows on white-painted walls"
+      }
+     }
+    ],
+    "roof": {
+     "material": "red-tile"
+    },
+    "palette": {
+     "brick": "#5a3b30",
+     "frame": "white",
+     "door": "black",
+     "stone": "cream-painted",
+     "cornice": "white"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "De Japanner",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 9207039660,
+     "name": "De Japanner",
+     "tags": "amenity=restaurant"
+    },
+    "photoDate": "2024-11-29",
+    "agreement": "osm-and-photo",
+    "note": "De Japanner's fascia runs over 203 and the corner house; the black door at the left is the entrance to the dwellings."
+   },
+   "rhythm": {
+    "bays": "3 identical axes",
+    "identicalBays": "storeys 1-3",
+    "windowsPerStorey": "ground: street door (bay 0) + 2 restaurant windows | 1-3: 3 sash windows | roof: 1 pedimented dormer",
+    "symmetry": "symmetric above the ground floor",
+    "groundFloor": "black door in a white surround, navy restaurant front",
+    "signage": "DE JAPANNER white on navy",
+    "roofline": "white cornice, top at strip row ~300, red-tile roof, one pedimented dormer (rows ~215-290)",
+    "citation": "bilder-153622-156732 strip.jpg pand 3 (zoom h2, x 420-977, rows 180-835)",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "Heineken marks on the fascia are not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012156732",
+   "slug": "bface-156732",
+   "address": "Bilderdijkstraat 203 (corner)",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "heavy",
+      "storeys": 4,
+      "bays": [
+       2,
+       2,
+       2,
+       2
+      ],
+      "axisGrid": 3,
+      "bayWidths": [
+       1,
+       1,
+       1.6
+      ],
+      "storeyAxes": {
+       "1": [
+        0,
+        1
+       ],
+       "2": [
+        0,
+        1
+       ],
+       "3": [
+        0,
+        1
+       ]
+      },
+      "doorBay": null,
+      "windows": "sash",
+      "shopfront": {
+       "colour": "dark-blue",
+       "fascia": true,
+       "name": "De Japanner",
+       "sign": {
+        "text": "DE JAPANNER",
+        "textColour": "white",
+        "span": 0.5
+       },
+       "glazing": "single",
+       "displayWindows": 2,
+       "stallriser": "medium",
+       "evidence": "strip 2024-11-29 rows 690-835: navy fascia DE JAPANNER over two large windows with round logos on white-painted walls"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6a3038",
+     "frame": "white",
+     "door": "black",
+     "stone": "cream-painted",
+     "cornice": "white"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "De Japanner",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 9207039660,
+     "name": "De Japanner",
+     "tags": "amenity=restaurant"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "osm-and-photo",
+    "note": "Corner house: the restaurant front with round window logos."
+   },
+   "rhythm": {
+    "bays": "2 window axes at the left; the right 40 % is blank wall with a framed picture",
+    "windowsPerStorey": "ground: 2 restaurant windows | 1-3: 2 sash windows at the left",
+    "symmetry": "none",
+    "groundFloor": "navy restaurant front, two large windows",
+    "signage": "DE JAPANNER white on navy",
+    "roofline": "white cornice on the line of 203 (top row ~300); no dormer seen (tree)",
+    "citation": "bilder-153622-156732 strip.jpg pand 4 (zoom h2)",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "corner house: the side-street front is not modelled",
+     "the framed picture on the blank right wall is not modelled",
+     "a tree hides the roof: no dormer modelled"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [
+   {
+    "pands": [
+     "0363100012152363",
+     "0363100012156732"
+    ],
+    "evidence": "strip: one white cornice over 203 and the corner house (row ~300)"
+   }
+  ],
+  "identical": [],
+  "notes": [
+   "2024-11-29 capture. Folds the standalone recipe bilder-153622 and the street chunk chunk-bilder-152363-x2 (152363 + 156732) into one face with 201 (161613), which had no model."
+  ],
+  "measuredEaves": [
+   {
+    "pand": "0363100012153622",
+    "stripRow": 203,
+    "evidence": "top of the white bracketed cornice (zoom h1); 3DBAG eaves 14.81 m reads the side slopes of the roof behind (ridge runs front to back), 1.1 m below the cornice; the ridge 3DBAG runs out to the facade (18.8 m) is hipped back from the cornice (the photo shows only a low roof rising toward the dormer)",
+    "frontRoof": {}
+   }
+  ]
+ },
+ "authoring": {
+  "author": "claude-opus-5.5 (bilder-limits lane), from strip-labelled.png and zooms h1/h2",
+  "passes": 1,
+  "note": "Bilderdijkstraat 199-203 (odd side)."
+ }
+}

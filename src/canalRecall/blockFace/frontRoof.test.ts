@@ -65,6 +65,25 @@ test('Bilderdijkstraat 133: the dormer 3DBAG read as eaves (17.0 m) is a tower o
   assert.ok(r.gates.find(g => g.pand === '164549' && g.id === 'height-vs-3dbag')!.pass);
 });
 
+test('Bilderdijkstraat 199 and 173: eaves above 3DBAG (199: side slopes) or below it (173: a mansard flat top on the facade line) re-pitch the front; the face passes', async () => {
+  // 199: 3DBAG eaves 14.81 m reads the side slopes; the cornice is at 15.9 m and the ridge runs out to the facade at 18.8 m.
+  for (const [id, pand] of [['bilder-153622-156732', '153622'], ['bilder-133467-159649', '153782']]) {
+    const {face, facts, strip} = load(id);
+    const plan = planFaceGround(face, face.houses.map(h => facts.get(h.pandId)!), undefined, strip);
+    const i = face.houses.findIndex(h => h.pandId.endsWith(pand));
+    assert.ok(Math.abs(plan.eavesAfter[i] - plan.eavesBefore[i]) > 0.4, `${pand}: strip cornice ${plan.eavesAfter[i]} vs 3DBAG ${plan.eavesBefore[i]}`);
+    const r = await compileBlockFace(face, facts, `face-${pand}-test`, {strip});
+    assert.deepEqual(r.gates.filter(g => !g.pass).map(g => `${g.pand}/${g.id}`), []);
+    const eaves = r.gates.find(g => g.pand === pand && g.id === 'eaves-vs-3dbag')!;
+    assert.ok(Math.abs((eaves.value as any).modelM - plan.eavesAfter[i]) < 0.05, `${pand}: model eaves on the cornice ${JSON.stringify(eaves.value)}`);
+  }
+  // No survey roof standing above the measured eaves at the facade (200: a 26-degree roof from 13.8 m): nothing to re-pitch, refuse.
+  const {raw, facts, strip} = load('bilder-159426-165632'), bad = structuredClone(raw);
+  bad.continuity.corniceGroups = []; bad.continuity.measuredEaves = [{pand: '0363100012154127', stripRow: 222, evidence: 'test', frontRoof: {}}];
+  const face = validateBlockFace(bad, JSON.parse(fs.readFileSync('scripts/block-face/faces/bilder-159426-165632/discovery.json', 'utf8')).members);
+  assert.throws(() => planFaceGround(face, face.houses.map(h => facts.get(h.pandId)!), undefined, strip), /frontRoof needs survey roof above/);
+});
+
 test('Bilderdijkstraat 135|137|139 (one pand): fronts are cut at the drainpipes, not snapped to a dormer-ring vertex 1.2 m away', async () => {
   const {splitChain} = await import('../buildingRecipe/fit.ts');
   const f: BuildingFacts = JSON.parse(fs.readFileSync('scripts/block-face/faces/bilder-236022-167243/pands/0363100012236022/facts.json', 'utf8'));

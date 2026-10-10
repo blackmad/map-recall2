@@ -1,0 +1,123 @@
+{
+ "street": "Bilderdijkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T13:38:06.932Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159426",
+   "addresses": [
+    "Bilderdijkstraat 202"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 202-H",
+     "use": "winkelfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000586440"
+    },
+    {
+     "address": "Jacob van Lennepstraat 70-H",
+     "use": "winkelfunctie",
+     "areaM2": 24,
+     "bagId": "0363010012077413"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11411974224,
+     "lngLat": [
+      4.8725449,
+      52.3662839
+     ],
+     "tags": {
+      "addr:housenumber": "202",
+      "addr:postcode": "1053LE",
+      "addr:street": "Bilderdijkstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-09-20",
+      "check_date:opening_hours": "2026-09-20",
+      "cuisine": "italian",
+      "indoor_seating": "yes",
+      "name": "MastroSupplì",
+      "opening_hours": "Tu-Su 11:00-21:00",
+      "outdoor_seating": "yes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-10T13:38:06.932Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154127",
+   "addresses": [
+    "Bilderdijkstraat 200"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 200-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000586433"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11411962635,
+     "lngLat": [
+      4.8725169,
+      52.3663512
+     ],
+     "tags": {
+      "name": "WoodHouse",
+      "shop": "beauty",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-10T13:38:06.932Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165632",
+   "addresses": [
+    "Bilderdijkstraat 198"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 198-H",
+     "use": "winkelfunctie",
+     "areaM2": 61,
+     "bagId": "0363010001030045"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11411958351,
+     "lngLat": [
+      4.8724844,
+      52.3663893
+     ],
+     "tags": {
+      "name": "Menspire",
+      "shop": "hairdresser",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-10T13:38:06.932Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

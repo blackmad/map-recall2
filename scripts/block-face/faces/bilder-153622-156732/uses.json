@@ -1,0 +1,120 @@
+{
+ "street": "Bilderdijkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T13:28:07.021Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153622",
+   "addresses": [
+    "Bilderdijkstraat 199"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 199-H",
+     "use": "winkelfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000586424"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11411974200,
+     "lngLat": [
+      4.8729748,
+      52.3664941
+     ],
+     "tags": {
+      "name": "RA travel",
+      "shop": "travel_agency"
+     },
+     "fetchedAt": "2026-10-10T13:28:07.021Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161613",
+   "addresses": [
+    "Bilderdijkstraat 201"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 201-H",
+     "use": "winkelfunctie",
+     "areaM2": 26,
+     "bagId": "0363010000586436"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11411961406,
+     "lngLat": [
+      4.8730059,
+      52.366439
+     ],
+     "tags": {
+      "shop": "hairdresser",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-10T13:28:07.021Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012152363",
+   "addresses": [
+    "Bilderdijkstraat 203"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156732",
+   "addresses": [],
+   "groundUnits": [
+    {
+     "address": "Jacob van Lennepstraat 66A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000586445"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9207039660,
+     "lngLat": [
+      4.8730849,
+      52.3663172
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "203",
+      "addr:postcode": "1053KS",
+      "addr:street": "Bilderdijkstraat",
+      "amenity": "restaurant",
+      "branch": "West",
+      "cuisine": "japanese",
+      "name": "De Japanner",
+      "website": "https://dejapanner.com/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-10T13:28:07.021Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
