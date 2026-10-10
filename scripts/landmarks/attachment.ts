@@ -54,7 +54,8 @@ function pierces(a: Piece, b: Piece) {
 export function distance(a: Piece, b: Piece, cap = Infinity) {
   if (boxGap(a.box, b.box) >= cap) return cap;
   const d = Math.min(oneWay(a, b, cap), oneWay(b, a, cap));
-  if (d > 0.01 && d < cap && (pierces(a, b) || pierces(b, a))) return 0;
+  // A piercing part is attached even when `cap` (the best hop found so far) hides a farther surface it passes through.
+  if (d > 0.01 && cap > 0.01 && (pierces(a, b) || pierces(b, a))) return 0;
   return d;
 }
 

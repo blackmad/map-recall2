@@ -2064,5 +2064,17 @@
     "funFact": "The building was named after Chief Rabbi Aron Schuster (1907-1994) only in 1973, when he retired and left Amsterdam for Jerusalem; he had served here since 1942. The first service after the war was held on Rosh Hashanah 1945.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Raw_Aron_Schuster_Synagoge",
     "preferDescription": true
+  },
+  {
+    "modelId": "zevenlandenhuizen",
+    "landmarkId": "requested-zevenlandenhuizen",
+    "name": "Zevenlandenhuizen",
+    "description": "The Zevenlandenhuizen (Seven Countries Houses) are a row of seven houses at Roemer Visscherstraat 20-30a in the Vondelpark neighbourhood, designed by Tjeerd Kuipers in 1894 for the Amsterdam businessman Sam van Eeghen. Each house borrows the architecture of a different country: Germany (no. 20, pointed-arch Romantic windows), France (22, a Loire chateau), Spain (24, a Moorish villa in the manner of Granada), Italy (26, a palazzo), Russia (28, a church tower with an onion dome), the Netherlands (30, a Renaissance gabled house) and England (30a, a half-timbered cottage). The row is a national monument and a showpiece of the 19th-century taste for exotic styles.",
+    "funFact": "Every house carries its country's name carved into the facade, and the Russian house even has a little onion-domed tower rising over a Dutch street.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Zevenlandenhuizen",
+    "additionalSources": [
+      "https://commons.wikimedia.org/wiki/Category:Zevenlandenhuizen"
+    ],
+    "preferDescription": true
   }
 ]
