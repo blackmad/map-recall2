@@ -28,6 +28,16 @@
       "gable": "step",
       "storeys": 4,
       "bays": 2,
+      "bayWidths": [
+       0.62,
+       0.38
+      ],
+      "crownBays": {
+       "from": 0,
+       "to": 0
+      },
+      "crownRise": 1.3,
+      "crownSteps": 3,
       "atticWindows": 1,
       "doorBay": 1,
       "windows": "arched",
@@ -52,11 +62,10 @@
        "fasciaColour": "#e7b5cb",
        "displayWindows": 1,
        "stallriser": "low",
-       "residentialDoor": {
-        "side": "right",
-        "colour": "dark-brown"
-       },
-       "shopShare": 0.6,
+       "bays": [
+        0,
+        0
+       ],
        "evidence": "pano 2024-11-29"
       }
      }
@@ -105,9 +114,8 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "bays are equal width in the model; photo: wide left (three-light) and narrow right bay",
-     "stepped gable is centred in the model; on the photo it is over the left bay",
-     "top-storey wide arched window of the left bay is two arched windows in the model"
+     "top-storey wide arched window of the left bay is a single arched window in the model; wide left bay modelled with bayWidths 0.62/0.38, gable over the left bay with crownBays",
+     "left bay window is 3-light on the photo, one plain window pair in the model"
     ]
    }
   },
@@ -146,11 +154,10 @@
        "fascia": true,
        "displayWindows": 1,
        "stallriser": "none",
-       "residentialDoor": {
-        "side": "left",
-        "colour": "dark-brown"
-       },
-       "shopShare": 0.55,
+       "bays": [
+        1,
+        2
+       ],
        "evidence": "pano 2024-11-29"
       }
      }
@@ -246,11 +253,10 @@
        },
        "displayWindows": 2,
        "stallriser": "low",
-       "residentialDoor": {
-        "side": "left",
-        "colour": "dark-brown"
-       },
-       "shopShare": 0.72,
+       "bays": [
+        1,
+        2
+       ],
        "evidence": "pano 2024-11-29 + OSM node 11395810277"
       }
      }
@@ -340,11 +346,10 @@
        "fascia": true,
        "displayWindows": 2,
        "stallriser": "medium",
-       "residentialDoor": {
-        "side": "left",
-        "colour": "natural-wood"
-       },
-       "shopShare": 0.8,
+       "bays": [
+        1,
+        2
+       ],
        "evidence": "pano 2024-11-29"
       }
      }
@@ -406,8 +411,18 @@
       "gable": "step",
       "storeys": 4,
       "bays": 2,
+      "bayWidths": [
+       0.32,
+       0.68
+      ],
+      "crownBays": {
+       "from": 1,
+       "to": 1
+      },
+      "crownRise": 1.1,
+      "crownSteps": 3,
       "atticWindows": 1,
-      "doorBay": 0,
+      "doorBay": null,
       "windows": "sash",
       "balconies": {
        "storeys": [
@@ -475,9 +490,8 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "bays are equal width; photo: narrow left, wide right",
-     "gable centred; photo: right of centre",
-     "tree and mural hide ground floor and gable: both inferred"
+     "tree and mural hide ground floor and gable: both inferred",
+     "wide right window is one window with a balcony, three lights on the photo"
     ]
    }
   },
@@ -497,8 +511,15 @@
       "crownCap": "flat",
       "storeys": 4,
       "bays": 5,
+      "bayWidths": [
+       1,
+       1,
+       1,
+       1.05,
+       1.05
+      ],
       "dormers": 2,
-      "doorBay": 2,
+      "doorBay": 3,
       "windows": "sash",
       "archRings": "none",
       "balconies": {
@@ -525,6 +546,10 @@
        },
        "displayWindows": 2,
        "stallriser": "low",
+       "bays": [
+        0,
+        2
+       ],
        "awning": {
         "style": "fabric-straight",
         "colour": "#2f8f6a",
@@ -582,8 +607,8 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "the pointed gable at the far right is not an off-centre gable in the schema (modelled as cornice + dormers)",
-     "two black doors between the shop windows: only one residential door is modelled",
+     "the pointed gable at the far right is modelled only as dormers (gable + dormers do not combine)",
+     "two black doors between the shop windows: only one residential entrance is modelled",
      "second awning over the right shop and the heritage lettering band are not modelled",
      "unequal axes (pairs at the right) modelled as equal",
      "segmental heads on the top-storey right windows are plain rectangles (arch budget: the front exceeds 3,000 triangles with arched windows)",
