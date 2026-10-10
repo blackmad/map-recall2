@@ -2208,5 +2208,17 @@
     "https://monumentenregister.cultureelerfgoed.nl/monumenten/523289"
   ],
   "preferDescription": true
+},
+{
+  "modelId": "ronde-lutherse-kerk",
+  "landmarkId": "requested-ronde-lutherse-kerk",
+  "name": "Ronde Lutherse Kerk",
+  "description": "The Ronde Lutherse Kerk, also called the Koepelkerk, stands where the Singel meets the Kattengat. Adriaan Dortsman built it in 1668-1671 for the growing Lutheran congregation as a round church under a copper dome, with a small lantern on top where the Lutheran swan is shown. Lutherans were not allowed a church tower, so the dome took its place on the skyline. Fire destroyed it in 1822 and again damaged the dome in 1993; the rebuilt dome is copper-coloured rather than green. The church later became a concert and congress hall linked to the hotel across the street.",
+  "funFact": "After the 1822 fire only the walls were left; the church was rebuilt in 1823-1826 with a higher dome and Roman-style coffers, and it is still counted as the most Baroque building of the seventeenth century in the Netherlands.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Ronde_Lutherse_Kerk",
+  "additionalSources": [
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/2207"
+  ],
+  "preferDescription": true
 }
 ]
