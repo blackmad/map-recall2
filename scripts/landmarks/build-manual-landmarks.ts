@@ -583,7 +583,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='ndsm-warehouse-complex')buildNdsmWarehouseComplex(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
-  manifest.models[id]=await save(id);
+  {const lod1=manifest.models[id]?.lod1;manifest.models[id]=await save(id);if(lod1)manifest.models[id].lod1=lod1;}// keep the lod1 record; build:landmark-lods / check:landmark-lods catch it going stale
 }
 // Held models keep their manifest entry (rebuildable) but are flagged so
 // listing pages like whats-new.html leave them out.

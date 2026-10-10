@@ -680,7 +680,9 @@ export class SignatureLandmarks {
 
   /** Whether this spec has a lod1 sibling the loader may use. */
   _hasLod(spec) {
-    return !spec.sharedModel && !!lodApi().MODEL_LODS?.[spec.id];
+    const api = lodApi();
+    // Only a lod1 built from the GLB that is deployed now; a stale one would show old geometry.
+    return !spec.sharedModel && api.lod1IsCurrent(api.MODEL_LODS?.[spec.id], api.MODEL_ASSET_VERSIONS?.[spec.id]);
   }
 
   /** Footprint radius of a model in screen pixels at the current zoom. */
