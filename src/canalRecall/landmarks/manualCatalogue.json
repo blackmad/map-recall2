@@ -18529,5 +18529,177 @@
         ]
       ]
     }
+  },
+{
+  "id": "christ-church-groenburgwal",
+  "name": "Church of England (Christ Church)",
+  "landmarkId": "extract_landmarks_369277545",
+  "modelUrl": "./models/christ-church-groenburgwal.glb",
+  "suppressOsmIds": [
+    "w266927240",
+    "NL.IMBAG.Pand.0363100012171165"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.897725647929925,
+      52.36857274042456
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 28,
+    "widthMetres": 23
+  },
+  "surveyed": {
+    "anchor": [
+      4.897725647929925,
+      52.36857274042456
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012171165 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#a65a3c",
+    "stone": "#bdb6a2",
+    "slate": "#8a4e3e",
+    "glass": "#56666f",
+    "frame": "#ece8da",
+    "white": "#ece8da",
+    "dark": "#1f2326",
+    "copper": "#7e9a8c",
+    "sandstone": "#a9a89f"
+  },
+  "attribution": {
+    "title": "Church of England (Christ Church)",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Christ_Church_(Amsterdam)",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.897657707504446,
+          52.368646917814154
+        ],
+        [
+          4.897453432416576,
+          52.368715089670246
+        ],
+        [
+          4.897401922547467,
+          52.36865803829176
+        ],
+        [
+          4.8976487209573785,
+          52.368577774128205
+        ],
+        [
+          4.8976215357091535,
+          52.36854646536586
+        ],
+        [
+          4.897722140834807,
+          52.36851216179048
+        ],
+        [
+          4.897727168266611,
+          52.36851296450575
+        ],
+        [
+          4.8977301292627855,
+          52.36851607750808
+        ],
+        [
+          4.897728455284781,
+          52.3685187489263
+        ],
+        [
+          4.89774622186587,
+          52.368537373015045
+        ],
+        [
+          4.8977508864056984,
+          52.36853779674516
+        ],
+        [
+          4.897753470025798,
+          52.36854051272743
+        ],
+        [
+          4.897752158745276,
+          52.36854358110468
+        ],
+        [
+          4.897754742464946,
+          52.36854628809963
+        ],
+        [
+          4.897754940801418,
+          52.368550935567406
+        ],
+        [
+          4.897748852676158,
+          52.36855311238934
+        ],
+        [
+          4.89776105997234,
+          52.36856590743083
+        ],
+        [
+          4.897767148098759,
+          52.368563730608265
+        ],
+        [
+          4.897771797959158,
+          52.36856415427686
+        ],
+        [
+          4.897774381681222,
+          52.36856686127136
+        ],
+        [
+          4.897779394338616,
+          52.36856767291101
+        ],
+        [
+          4.89778237012366,
+          52.36857077698538
+        ],
+        [
+          4.897781044161828,
+          52.36857384530229
+        ],
+        [
+          4.897798085193091,
+          52.36859169344036
+        ],
+        [
+          4.897803112635288,
+          52.368592496152395
+        ],
+        [
+          4.897806073741241,
+          52.36859560016548
+        ],
+        [
+          4.8978046391450825,
+          52.368597868127125
+        ],
+        [
+          4.897804489643942,
+          52.36859811017741
+        ],
+        [
+          4.897657707504446,
+          52.368646917814154
+        ]
+      ]
+    ]
   }
+}
 ]

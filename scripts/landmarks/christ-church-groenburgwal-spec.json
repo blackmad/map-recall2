@@ -1,0 +1,49 @@
+{
+  "id": "christ-church-groenburgwal",
+  "name": "Church of England (Christ Church)",
+  "landmarkId": "extract_landmarks_369277545",
+  "modelUrl": "./models/christ-church-groenburgwal.glb",
+  "suppressOsmIds": [
+    "w266927240",
+    "NL.IMBAG.Pand.0363100012171165"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.897725647929925,
+      52.36857274042456
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 28,
+    "widthMetres": 23
+  },
+  "surveyed": {
+    "anchor": [
+      4.897725647929925,
+      52.36857274042456
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012171165 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#a65a3c",
+    "stone": "#bdb6a2",
+    "slate": "#8a4e3e",
+    "glass": "#56666f",
+    "frame": "#ece8da",
+    "white": "#ece8da",
+    "dark": "#1f2326",
+    "copper": "#7e9a8c",
+    "sandstone": "#a9a89f"
+  },
+  "attribution": {
+    "title": "Church of England (Christ Church)",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Christ_Church_(Amsterdam)",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+  }
+}
