@@ -38,14 +38,15 @@
   "groundAltitudeMetres": 0,
   "facingOffsetDegrees": 0,
   "materialOverrides": {
-    "glass": "#56797f",
-    "frame": "#a9c7bd",
-    "concrete": "#c9c6bc",
-    "dark": "#2f3a40",
-    "white": "#bdc3bf",
+    "glass": "#3f6272",
+    "frame": "#8db6bf",
+    "dark": "#2a3d49",
+    "slate": "#43586e",
+    "copper": "#4f93a0",
+    "concrete": "#7d8283",
+    "white": "#cfd5d6",
     "brick": "#a9553a",
-    "stone": "#c8c1b3",
-    "slate": "#555b61"
+    "stone": "#c8c1b3"
   },
   "attribution": {
     "title": "IJ-toren",

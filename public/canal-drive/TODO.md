@@ -51,8 +51,7 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   see-through closed under a roofed porch) is written and unit-tested but
   uncommitted in worktree agent-a9751763df4f4ceab, with palace doorway
   panels removed and the Concertgebouw canopy restored — rebuild, run the
-  full audit diff, then commit; Bellevue not started. Held: IJ-toren
-  (curtain-wall banding, terminal slabs), Zevenlandenhuizen (see-through
+  full audit diff, then commit; Bellevue not started. Held: Zevenlandenhuizen (see-through
   11/42).
   Elevation skeletons with photos exist for 25 landmarks
   (`scripts/landmarks/*-elevations.json`, photos in `artifacts/landmark-lanes/`);
@@ -182,6 +181,9 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 - **Audit see-through test is hull-limited**: cast rays fully through the
   bbox (or from outside the footprint) in `glbQuality.ts`; today concave
   footprints flag false holes. Madame Tussauds has small roof-junction gaps.
+- **Street chunk fallback**: if a chunk GLB fails to load, its houses are
+  already out of the model list and the OSM extrusion shows; restore the
+  per-house specs on failure. Demo page stats table scrolls sideways on phone.
 - **Review harness follow-ups**: `review-sheet.ts` needs ordinary-house
   support (no catalogue entry/anchor) before Bilderdijkstraat re-review; ground
   NAP offset not applied to the matched camera; record party-wall bearings per
@@ -211,12 +213,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   fusion from `build-pano-facade.ts`; washed-out/foliage thresholds (0.3) are
   untuned; `roofShape` is null outside `buildings-colored.geojson`; Beeldbank
   and monument-register facts are not yet joined in.
-- **Own ground for the riding view (lane render/own-ground-20261009)**:
-  elevation exposed that MapLibre paints roads and the route flat at z=0, so
-  street lines cross water and bridge slabs do not join roads or quays
-  (user screenshot, Nassaukade). Prototype: AHN DTM relief, our own
-  streets/bridges/quays/water mesh draped on it, route ribbon, models
-  re-based; measure, then decide replacing MapLibre ground near the rider.
+- **Own ground into the riding view** (prototype merged, `own-ground.html`,
+  `docs/research/own-ground-20261009.md`): stream it from the chunk worker,
+  register in the shared frame (`groundParticipant`, order −10), hide MapLibre
+  fills/lines inside the radius, drape route/question overlays, labels,
+  re-base models and vehicles; measure GPU on a real iPhone. Known: junction
+  band overlaps (widths mostly priors; consider BGT), one water level (polder
+  banks get quay walls), detail-chunk builder throws `reading 'c19'` on a
+  Leidsegracht feature (falls back to coarse chunk).
 - **Elevation follow-ups** (`?elevation=1`, `docs/elevation.md`): no AHN
   ground relief; one water level everywhere (polders, IJ shore get the same
   quay wall); route line hidden on humped decks and ramps paint over ~20 m of

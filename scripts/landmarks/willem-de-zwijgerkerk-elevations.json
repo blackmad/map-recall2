@@ -1,5 +1,8 @@
-{"id": "willem-de-zwijgerkerk", "facades": [
-  {"name": "north gable", "bearing": 337.5, "photo": "artifacts/landmark-lanes/willem-de-zwijgerkerk/ref-north.jpg"},
-  {"name": "east aisle", "bearing": 67.5, "photo": "artifacts/landmark-lanes/willem-de-zwijgerkerk/ref-east.jpg"},
-  {"name": "south gable and tower", "bearing": 157.5, "photo": "artifacts/landmark-lanes/willem-de-zwijgerkerk/ref-south.jpg"}
+{"id": "willem-de-zwijgerkerk", "countedBy": "Claude (Sonnet 5.5) from the photos, 2026-10-10; NOT blind (same agent fixed the builder), integrator should re-count blind. East ground row counts 7 windows + the slim slit + the north wing's arched door; clerestory 9. South: arched door + 2 small slit windows, 3-light group, apex slit.", "facades": [
+  {"name": "north gable", "bearing": 337.5, "photo": "artifacts/landmark-lanes/willem-de-zwijgerkerk/ref-north.jpg", "span": [-3.5, 4.9],
+   "rows": [6, 3], "columns": 7, "symmetric": true, "gables": 1},
+  {"name": "east aisle", "bearing": 67.5, "photo": "artifacts/landmark-lanes/willem-de-zwijgerkerk/ref-east.jpg",
+   "rows": [9, 9], "symmetric": false},
+  {"name": "south gable", "bearing": 157.5, "photo": "artifacts/landmark-lanes/willem-de-zwijgerkerk/ref-south.png", "span": [-6.3, 4.7],
+   "rows": [3, 3, 1], "symmetric": false}
 ]}
