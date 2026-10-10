@@ -87,7 +87,7 @@ const bakedRaw = await writeBakedGlb(area, placed, {compress: 'none'}), mergedRa
 const median = (xs: number[]) => [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)];
 const groupKey = (b: Built) => [b.type, b.variant, b.report.storeys, b.report.roofForm, b.report.ridge, b.report.groundMode].join('|');
 const groups = new Map<string, Built[]>();
-for (const b of built) groups.set(groupKey(b), [...(groups.get(groupKey(b)) ?? []), b]);
+for (const b of built.filter(b => !b.held)) groups.set(groupKey(b), [...(groups.get(groupKey(b)) ?? []), b]);
 const instanced: InstancedGroup[] = [], groupInfo: any[] = [];
 let maxScaleDev = 0;
 for (const [key, members] of groups) {

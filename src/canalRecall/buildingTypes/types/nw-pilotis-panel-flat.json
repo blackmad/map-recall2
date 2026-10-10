@@ -429,7 +429,7 @@
         "bays": 4,
         "openingsPerUpperStorey": 10,
         "groundDoors": 3,
-        "balconiesPerUpperStorey": 1
+        "balconiesPerUpperStorey": 0
       },
       "bays": [
         {
@@ -437,13 +437,6 @@
           "w": 1.6,
           "role": "corner",
           "elements": [
-            {
-              "kind": "balcony",
-              "levels": "upper",
-              "w": 1.3,
-              "depth": 1,
-              "railing": "slats"
-            },
             {
               "kind": "window",
               "levels": "upper",
