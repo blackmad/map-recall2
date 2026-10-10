@@ -5,6 +5,21 @@
       "name": "west front (plaza, WNW)",
       "bearing": 297.5,
       "photo": "artifacts/landmark-lanes/chassekerk/ref-front.jpg"
+    },
+    {
+      "name": "ESE wing wall (terrace and arcade)",
+      "bearing": 117.5,
+      "photo": "artifacts/landmark-lanes/chassekerk/ref-wing-169.jpg"
+    },
+    {
+      "name": "NNE copper block and arched base",
+      "bearing": 27.5,
+      "photo": "artifacts/landmark-lanes/chassekerk/ref-wing-169.jpg"
+    },
+    {
+      "name": "SSW copper block (south end)",
+      "bearing": 207.5,
+      "photo": "artifacts/landmark-lanes/chassekerk/ref-sw-towers.jpg"
     }
   ]
 }
