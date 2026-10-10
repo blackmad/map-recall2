@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-10T12:50:50.867Z",
+ "generatedAt": "2026-10-10T12:57:21.375Z",
  "chunks": [
   {
    "id": "chunk-bilder-079721-x2",
@@ -8190,12 +8190,241 @@
    ]
   },
   {
+   "id": "chunk-face-bilder-161281-157756",
+   "name": "face-bilder-161281-157756",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-161281-157756.glb?asset=de4ca26d49b713e7",
+   "sha256": "de4ca26d49b713e742284b5ffd0fb611bd1ef7a5325ec4ae74bce5f19ccf6fe4",
+   "bytes": 175904,
+   "triangles": 2556,
+   "primitives": 9,
+   "instance": {
+    "anchor": [
+     4.871312227025089,
+     52.368815594733704
+    ],
+    "northOffsetDegrees": 67.1588,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -12.768,
+     0,
+     -13.021
+    ],
+    "max": [
+     7.736,
+     17.295,
+     0.401
+    ]
+   },
+   "height": 17.295,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012161281",
+    "NL.IMBAG.Pand.0363100012157756"
+   ],
+   "replaces": [
+    "ordinary-0363100012161281",
+    "ordinary-0363100012157756"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8713026,
+        52.368937
+       ],
+       [
+        4.8712555,
+        52.3689255
+       ],
+       [
+        4.8712458,
+        52.3689118
+       ],
+       [
+        4.8713259,
+        52.3687958
+       ],
+       [
+        4.8713854,
+        52.3688104
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8715319,
+        52.3687969
+       ],
+       [
+        4.8715174,
+        52.368818
+       ],
+       [
+        4.8714789,
+        52.3688086
+       ],
+       [
+        4.8714649,
+        52.3688299
+       ],
+       [
+        4.8713259,
+        52.3687958
+       ],
+       [
+        4.871355,
+        52.3687535
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "bface-161281",
+     "pandId": "0363100012161281",
+     "buildingId": "NL.IMBAG.Pand.0363100012161281",
+     "address": "Bilderdijkstraat 113",
+     "frontage": {
+      "x0": -11.62,
+      "x1": 2.393,
+      "widthM": 14.014
+     },
+     "bounds": {
+      "min": [
+       -12.768,
+       0,
+       -4.668
+      ],
+      "max": [
+       2.475,
+       17.295,
+       0.401
+      ]
+     },
+     "triangles": 1472,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 876
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 116
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 27
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "bface-157756",
+     "pandId": "0363100012157756",
+     "buildingId": "NL.IMBAG.Pand.0363100012157756",
+     "address": "Bilderdijkstraat 115",
+     "frontage": {
+      "x0": 2.393,
+      "x1": 6.834,
+      "widthM": 4.44
+     },
+     "bounds": {
+      "min": [
+       2.393,
+       0,
+       -13.021
+      ],
+      "max": [
+       7.736,
+       15.552,
+       0.4
+      ]
+     },
+     "triangles": 1084,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 60,
+       "triangleCount": 65
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 108,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 60,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 876,
+       "triangleCount": 656
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 104
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 216,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 27,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 9,
+       "triangleCount": 15
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "chunk-face-bilder-157757-164549",
    "name": "face-bilder-157757-164549",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-157757-164549.glb?asset=2e33172cb8b60a98",
-   "sha256": "2e33172cb8b60a9846b6aebc183989aa0c85655350bba8d8846d24dad99bcae3",
-   "bytes": 220320,
-   "triangles": 3161,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-157757-164549.glb?asset=015fb1ea22fbc74b",
+   "sha256": "015fb1ea22fbc74bbbc6eeff3f876330765d43328ba91e2275e88342973d2642",
+   "bytes": 221536,
+   "triangles": 3176,
    "primitives": 12,
    "instance": {
     "anchor": [
@@ -8365,12 +8594,12 @@
        0.241
       ]
      },
-     "triangles": 1524,
+     "triangles": 1539,
      "ranges": [
       {
        "primitive": 0,
        "firstTriangle": 0,
-       "triangleCount": 50
+       "triangleCount": 62
       },
       {
        "primitive": 2,
@@ -8405,7 +8634,7 @@
       {
        "primitive": 8,
        "firstTriangle": 0,
-       "triangleCount": 12
+       "triangleCount": 15
       }
      ]
     }
@@ -8414,10 +8643,10 @@
   {
    "id": "chunk-face-bilder-236022-167243",
    "name": "face-bilder-236022-167243",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-236022-167243.glb?asset=1ada01585b474749",
-   "sha256": "1ada01585b4747493cd23b08102e4e2a4e0d06019ce3a2d9879cf57f1a9ebf04",
-   "bytes": 1170496,
-   "triangles": 17655,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-236022-167243.glb?asset=c8e92a0e464a6fc2",
+   "sha256": "c8e92a0e464a6fc2faba9dd488512c4e36f11941974629c82a4c1556fb8ea71f",
+   "bytes": 1171108,
+   "triangles": 17661,
    "primitives": 30,
    "instance": {
     "anchor": [
@@ -8873,7 +9102,7 @@
        1
       ]
      },
-     "triangles": 1814,
+     "triangles": 1818,
      "ranges": [
       {
        "primitive": 0,
@@ -8913,12 +9142,12 @@
       {
        "primitive": 27,
        "firstTriangle": 20,
-       "triangleCount": 16
+       "triangleCount": 18
       },
       {
        "primitive": 29,
        "firstTriangle": 17,
-       "triangleCount": 2
+       "triangleCount": 4
       }
      ]
     },
@@ -8944,7 +9173,7 @@
        0.176
       ]
      },
-     "triangles": 2022,
+     "triangles": 2024,
      "ranges": [
       {
        "primitive": 5,
@@ -8983,8 +9212,8 @@
       },
       {
        "primitive": 27,
-       "firstTriangle": 36,
-       "triangleCount": 2
+       "firstTriangle": 38,
+       "triangleCount": 3
       },
       {
        "primitive": 28,
@@ -8993,8 +9222,8 @@
       },
       {
        "primitive": 29,
-       "firstTriangle": 19,
-       "triangleCount": 6
+       "firstTriangle": 21,
+       "triangleCount": 7
       }
      ]
     },
@@ -9074,7 +9303,7 @@
       },
       {
        "primitive": 27,
-       "firstTriangle": 38,
+       "firstTriangle": 41,
        "triangleCount": 24
       },
       {
@@ -9084,7 +9313,7 @@
       },
       {
        "primitive": 29,
-       "firstTriangle": 25,
+       "firstTriangle": 28,
        "triangleCount": 14
       }
      ]
@@ -9150,12 +9379,12 @@
       },
       {
        "primitive": 27,
-       "firstTriangle": 62,
+       "firstTriangle": 65,
        "triangleCount": 2
       },
       {
        "primitive": 29,
-       "firstTriangle": 39,
+       "firstTriangle": 42,
        "triangleCount": 2
       }
      ]

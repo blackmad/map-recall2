@@ -25,15 +25,15 @@ test('repitchFrontRoof: the front strip rises from the eaves at 72 degrees, the 
   const g = f.attributes.b3_h_maaiveld, eaves = g + 13.7, out = repitchFrontRoof(f, eaves);
   const area = (r: BuildingFacts['roofsRD']) => r.reduce((s, x) => s + x.areaM2, 0);
   assert.ok(Math.abs(area(out.roofsRD) - area(f.roofsRD)) < 0.05, `roof area kept: ${area(out.roofsRD)} vs ${area(f.roofsRD)}`);
-  const front = out.roofsRD.find(r => r.surfaceId.endsWith(':front'))!;
-  assert.ok(front, 'a front strip surface');
-  const zs = front.vertices.map(v => v[2] - g), depth = (17.3 - 13.7) / Math.tan(72 * Math.PI / 180);
+  const front = out.roofsRD.filter(r => /:f\d+$/.test(r.surfaceId));
+  assert.ok(front.length, 'front strip pieces');
+  const zs = front.flatMap(r => r.vertices.map(v => v[2] - g)), depth = (17.3 - 13.7) / Math.tan(72 * Math.PI / 180);
   assert.ok(Math.abs(Math.min(...zs) - 13.7) < 0.01 && Math.max(...zs) > 17, `front strip 13.7 -> ~17.3 m: ${zs.map(z => z.toFixed(2))}`);
   assert.ok(Math.abs(out.heights.roofMinM - 13.7) < 0.01, 'the shell top falls to the eaves');
   assert.ok(depth > 1 && depth < 1.3);
   // A cap (topRow) lowers a dormer that 3DBAG merged into the roof before the re-pitch.
   const capped = repitchFrontRoof(f, eaves, {topNap: g + 16});
-  assert.ok(Math.max(...capped.roofsRD.find(r => r.surfaceId.endsWith(':front'))!.vertices.map(v => v[2] - g)) <= 16.001);
+  assert.ok(Math.max(...capped.roofsRD.filter(r => /:f\d+$/.test(r.surfaceId)).flatMap(r => r.vertices.map(v => v[2] - g))) <= 16.001);
 });
 
 test('validator: frontRoof only under a single-front pand, topRow above the eaves row', () => {
@@ -71,4 +71,15 @@ test('Bilderdijkstraat 135|137|139 (one pand): fronts are cut at the drainpipes,
   const cut = splitChain(f.fronts[0], [0.328, 0.329, 0.343]);
   const w = cut.pairs.map(([a, b]) => Math.hypot(b[0] - a[0], b[1] - a[1]));
   assert.ok(Math.abs(w[0] - 0.328 * f.fronts[0].widthM) < 0.25 && cut.inserted.length >= 1, `widths ${w.map(x => x.toFixed(2))}`);
+});
+
+test('Bilderdijkstraat 113: a mansard 3DBAG already pitches (57 deg) keeps its faces, only the foot moves; a non-convex flat top is cut without spikes', async () => {
+  const {face, facts, strip} = load('bilder-161281-157756');
+  const f = facts.get('0363100012161281')!, g = f.attributes.b3_h_maaiveld, out = repitchFrontRoof(f, g + 13.6);
+  const steep = out.roofsRD.filter(r => r.slopeDeg >= 30 && !/:[fr]\d+$/.test(r.surfaceId));
+  assert.ok(steep.length >= 2 && steep.every(r => r.vertices.length === f.roofsRD.find(x => x.surfaceId === r.surfaceId)!.vertices.length), 'steep faces kept whole');
+  const r = await compileBlockFace(face, facts, 'face-113-test', {strip});
+  assert.deepEqual(r.gates.filter(x => !x.pass).map(x => `${x.pand}/${x.id}`), []);
+  const e = Object.fromEntries(r.perPand.map(p => [p.pand.slice(-6), p.eavesM]));
+  assert.ok(e['161281'] - e['157756'] > 1.2, `115 sits ~1.6 m below 113 on both capture dates: ${JSON.stringify(e)}`);
 });
