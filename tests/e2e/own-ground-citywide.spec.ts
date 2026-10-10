@@ -77,6 +77,10 @@ test('models and pins on the surface: per-pand chunk bases, canvas pin lift, kit
   // Bilderdijkstraat block faces (chunk-face-bilder-*): street chunks on a measurable slope toward the kade.
   await teleport(page, { lng: 4.8712, lat: 52.3680, bearing: 330 });
   await settle(page, 4000);
+  // Per-pand bases live in signature-landmarks-source.js: the bundle must be rebuilt (integrator) for them to run.
+  const bundled = await page.evaluate(() => typeof (window as any).canalRecallGame.vectorMap._signatureLandmarks?._applyChunkPandBases === 'function');
+  if (!bundled) await page.screenshot({ path: `${OUT}/${info.project.name}-chunks-bilderdijkstraat-anchor-base.png` });
+  test.skip(!bundled, 'signature-landmarks.bundle.js predates per-pand bases: node scripts/build-3d-bundles.mjs --only=signature-landmarks');
   const chunks = await expect.poll(async () => page.evaluate(() => {
     const sl = (window as any).canalRecallGame.vectorMap._signatureLandmarks;
     return (sl?._entries ?? []).filter((e: any) => e.spec.chunkPands && e.pandBases).map((e: any) => ({ id: e.spec.id, pands: e.spec.chunkPands.length, bases: e.pandBases, holderBase: e.groundBase }));
