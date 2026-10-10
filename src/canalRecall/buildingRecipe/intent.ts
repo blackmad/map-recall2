@@ -127,6 +127,8 @@ export interface FrontIntent {
   /** Ground storey noticeably taller than upper storeys (bel-etage / shop level). */
   tallGround?: boolean;
   basement: typeof BASEMENTS[number];
+  /** The basement is a souterrain: a full storey (half below the street) under a bel-etage reached by the stoop, with storey-sized windows, instead of a 0.7-1.2 m plinth. Needs a basement. */
+  souterrain?: boolean;
   cornice: typeof CORNICES[number];
   windows: typeof WINDOWS[number];
   /** 0-based storeys whose windows have round-arched heads (often the top storey under a parapet). */
@@ -182,6 +184,15 @@ export interface FrontIntent {
    * `continuity.partyClip`.
    */
   partyClip?: boolean;
+  /**
+   * The window grid (axes, piers, balconies, door) spans only `{from, to}` of the front, as fractions from the viewer's
+   * left (-0.5..1.5): the visual house module where its party wall (a pilaster, a downpipe) is not where BAG puts it.
+   * The rest of the front is plain wall; cornice, bands, crown and dormers still run the whole front. Set by a house-type
+   * placement's `visualSpan` (blockFace/houseType.ts).
+   */
+  gridAt?: {from: number; to: number};
+  /** Dormers at these spans (fractions of the front from the viewer's left; one entry per dormer) instead of evenly spaced: a dormer against a party wall is one half of a dormer shared with the neighbour. */
+  dormerAt?: {from: number; to: number}[];
 }
 
 /**
@@ -547,5 +558,12 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     oneOf(t?.cap, TOWER_CAPS, `${at}.tower.cap`);
   }
   if (f.partyClip !== undefined && typeof f.partyClip !== 'boolean') problems.push(`${at}.partyClip must be boolean`);
+  if (f.souterrain !== undefined && (typeof f.souterrain !== 'boolean' || (f.souterrain && f.basement === 'none'))) problems.push(`${at}.souterrain: boolean, and needs a basement`);
+  if (f.gridAt !== undefined && !(f.gridAt && f.gridAt.from >= -0.5 && f.gridAt.to <= 1.5 && f.gridAt.to - f.gridAt.from >= 0.5)) problems.push(`${at}.gridAt: {from, to} fractions of the front, -0.5 <= from, to <= 1.5, at least 0.5 wide`);
+  if (f.dormerAt !== undefined) {
+    const list = Array.isArray(f.dormerAt) ? f.dormerAt : [];
+    if (list.length !== (f.dormers ?? 0)) problems.push(`${at}.dormerAt: one span per dormer (dormers ${f.dormers ?? 0})`);
+    list.forEach((d, i) => { if (!d || !(d.from >= 0 && d.to <= 1 && d.to - d.from >= 0.1 && (i === 0 || d.from >= list[i - 1].to))) problems.push(`${at}.dormerAt[${i}]: {from, to} ascending, non-overlapping fractions of the front within 0..1, at least 0.1 wide`); });
+  }
   return problems;
 }
