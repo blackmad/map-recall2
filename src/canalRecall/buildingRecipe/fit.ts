@@ -30,6 +30,7 @@ const GLASS = '#2a3a42';
 const GABLE_TYPE: Record<GableIntent, GableType> = {spout: 'tuit', neck: 'hals', 'raised-neck': 'verhoogde-hals', bell: 'klok', step: 'trap', point: 'punt', cornice: 'lijst', flat: 'lijst'};
 const WINDOW_BARS: Record<FrontIntent['windows'], Pick<CanalhouseOpening, 'verticalBars' | 'horizontalBars'>> = {
   sash: {verticalBars: [.5], horizontalBars: [.55]},
+  'two-light': {verticalBars: [.5], horizontalBars: [.8]},
   'sash-small-panes': {verticalBars: [1 / 3, 2 / 3], horizontalBars: [.25, .5, .75]},
   cross: {verticalBars: [.5], horizontalBars: [.36]},
   plain: {},
@@ -82,7 +83,7 @@ const SHOP = {pierM: 0.3, glassBottomM: 0.55, fasciaM: 0.62, fasciaGapM: 0.08};
 /** Regular bay grid fitted to width/height. `heightTop` is where full storeys end. */
 function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   const basement = f.basement !== 'none' ? clamp(heightTop * 0.07, 0.7, 1.2) : 0;
-  const n = f.storeys, groundFactor = f.tallGround || f.shopfront ? 1.32 : 1.1;
+  const n = f.storeys, groundFactor = f.tallGround || (f.shopfront && !f.shopfront.bays) ? 1.32 : 1.1;
   // Upper storeys diminish by 4% each; solve for the first upper storey height.
   const factors = [groundFactor, ...Array.from({length: n - 1}, (_, k) => 0.96 ** k)];
   const unit = (heightTop - basement) / factors.reduce((s, x) => s + x, 0);
@@ -100,7 +101,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   const grid = f.axisGrid ?? Math.max(...bays.slice(n > 1 ? 1 : 0));
   const equalPiers = f.piers !== 'margin';
   const gridOf = (g: number) => {
-    if (equalPiers) { const w = clamp(0.58 * width / (g + 0.42), 0.6, 1.5), gap = (width - g * w) / (g + 1); return {winW: w, pitch: w + gap, first: gap + w / 2}; }
+    if (equalPiers) { const w = clamp(0.58 * width / (g + 0.42), 0.6, f.windowProportion === 'tall' ? 1.9 : 1.5), gap = (width - g * w) / (g + 1); return {winW: w, pitch: w + gap, first: gap + w / 2}; }
     const margin = clamp(width * 0.09, 0.3, 1.2), pitch = g ? (width - 2 * margin) / g : 0;
     return {winW: clamp(pitch * 0.58, 0.6, 1.5), pitch, first: margin + pitch / 2};
   };
@@ -143,7 +144,8 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   for (let s = 0; s < n; s++) {
     const h = heights[s], count = bays[s];
     const plan = storeyPlan(s, count);
-    const winH = s === 0 ? h * 0.62 : h * (0.6 - 0.02 * s), sill = s === 0 ? h * 0.2 : h * 0.22;
+    const tall = f.windowProportion === 'tall';
+    const winH = tall ? h * (0.72 - 0.015 * s) : s === 0 ? h * 0.62 : h * (0.6 - 0.02 * s), sill = tall ? h * 0.16 : s === 0 ? h * 0.2 : h * 0.22;
     for (let b = 0; b < count; b++) {
       const centre = plan.centre(b), winW = plan.w(b), pitch = plan.pitch(b);
       if (s === 0 && f.doorBay === b && !rd) {
@@ -257,7 +259,7 @@ function crownProfile(f: FrontIntent, width: number, eaves: number, top: number,
   switch (f.gable) {
     case 'point': return canalhouseCrownProfile('punt', width, eaves, top, 0, eaves, 0);
     case 'spout': return canalhouseCrownProfile('tuit', width, eaves, top, width * 0.34, top - Math.min(0.7, rise * 0.15), 0);
-    case 'step': return canalhouseCrownProfile('trap', width, eaves, top, width * 0.3, eaves, clamp(Math.round(rise / 1.4), 2, 5));
+    case 'step': return canalhouseCrownProfile('trap', width, eaves, top, width * 0.3, eaves, f.crownSteps ?? clamp(Math.round(rise / 1.4), 2, 5));
     case 'neck': case 'raised-neck': return canalhouseCrownProfile('hals', width, eaves, top, width * 0.5, eaves + rise * (f.gable === 'neck' ? 0.45 : 0.25), 0, {cap: f.crownCap ?? 'pediment', capRiseM: Math.min(0.45, rise * 0.1), crestWidthM: width * 0.5, shoulderCurve: 0.6});
     case 'bell': return canalhouseCrownProfile('klok', width, eaves, top, width * 0.46, eaves + rise * 0.55, 0, {cap: f.crownCap ?? 'rounded', capRiseM: Math.min(0.6, rise * 0.15), crestWidthM: width * 0.46});
     case 'cornice': {
@@ -275,7 +277,7 @@ function crownProfile(f: FrontIntent, width: number, eaves: number, top: number,
 
 export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts): {recipe: CanalHouseRecipe; anchorRD: [number, number]; report: FitReport; facts: BuildingFacts} {
   if (intent.pandId !== surveyFacts.pandId) throw Error('Intent and facts describe different Pand');
-  const cleanup = cleanRoof(surveyFacts, {horizontalFronts: intent.fronts.filter(f => f.gable === 'cornice' || f.gable === 'flat').map(f => f.street)}), facts = cleanup.facts;
+  const cleanup = cleanRoof(surveyFacts, {horizontalFronts: intent.fronts.filter(f => f.gable === 'cornice' || f.gable === 'flat' || (f.cornice !== 'none' && f.crownRise !== undefined && (f.crownAt || f.crownBays))).map(f => f.street)}), facts = cleanup.facts;
   const warnings: string[] = [];
   const bagObservation: Observation = {id: '3dbag', pandId: intent.pandId, kind: 'registry-record', elevation: 'roof', capturedAt: facts.source.fetchedAt.length === 10 ? facts.source.fetchedAt : '2025-01-01', sourceUrl: facts.source.threeDBag, license: 'CC BY 4.0 (3DBAG)'};
   const photoObservations: Observation[] = intent.sources.map(s => ({id: s.id, pandId: intent.pandId, kind: s.kind === 'monument-record' ? 'monument-record' : s.kind === 'archive-photo' ? 'archive-photo' : s.kind === 'human-review' ? 'human-review' : 'street-panorama', elevation: 'front', capturedAt: s.capturedAt, sourceUrl: s.url ?? null, license: s.license ?? null}));
@@ -349,7 +351,9 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     const crownSpan: [number, number] | null = front.crownAt ? [front.crownAt.from * mw, front.crownAt.to * mw]
       : front.crownBays ? [layout.bayEdges[front.crownBays.from], layout.bayEdges[front.crownBays.to + 1]] : null;
     const crownW = crownSpan ? crownSpan[1] - crownSpan[0] : mw;
-    const crownTop = gabled ? Math.max(profileTop + 0.3, Math.min(facts.heights.ridgeM + 0.3, eaves + crownW * (front.gable === 'step' ? 1 : 0.9))) : eaves + (front.crownCap && front.crownCap !== 'flat' ? (front.crownCapRise === 'low' ? 0.55 : 1.1) : 0);
+    const upperStoreyM = layout.storeyHeights.at(-1)!;
+    const crownTop = front.crownRise !== undefined ? eaves + front.crownRise * upperStoreyM
+      : gabled ? Math.max(profileTop + 0.3, Math.min(facts.heights.ridgeM + 0.3, eaves + crownW * (front.gable === 'step' ? 1 : 0.9))) : eaves + (front.crownCap && front.crownCap !== 'flat' ? (front.crownCapRise === 'low' ? 0.55 : 1.1) : 0);
     const moduleOpenings = Array.from({length: count}, (_, k) => layout.openings.map(o => ({...o, id: count > 1 ? `${o.id}-m${k}` : o.id, leftM: place(k, o.leftM, o.widthM)}))).flat();
     let lintelBands: NonNullable<CanalhouseElevation['bands']>['value'] = [];
     let fasciaRect: FasciaRect | undefined, signBand: SignBand | undefined;
@@ -396,7 +400,16 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     if (corniceH > 0) elevation.cornice = seen({bottomM: round(eaves - corniceH), heightM: corniceH, depthM: round(corniceH * 0.5), brackets: front.cornice === 'bracketed' ? Math.max(2, Math.round(width / 1.6)) : 0});
     // Non-straight frontages need an explicit wall top (the library only reads
     // roof edges lying on the chord); a flat crown at the eaves supplies it.
-    const rawProfile = crownProfile(front, crownW, eaves, crownTop, !!crownSpan);
+    let rawProfile = crownProfile(front, crownW, eaves, crownTop, !!crownSpan);
+    if (rawProfile && front.crownFinial) {
+      // A finial block on the flat top: widen the longest top-level segment into a small plinth + block.
+      const topY = Math.max(...rawProfile.map(p => p[1])), at = rawProfile.findIndex((p, i) => i + 1 < rawProfile!.length && p[1] >= topY - 1e-6 && rawProfile![i + 1][1] >= topY - 1e-6 && rawProfile![i + 1][0] - p[0] > 0.3);
+      if (at < 0) warnings.push(`${front.id}: crownFinial needs a flat top segment; none on this crown`);
+      else {
+        const [a, b] = [rawProfile[at], rawProfile[at + 1]], cx = (a[0] + b[0]) / 2, half = Math.min(0.28, (b[0] - a[0]) * 0.3), fh = 0.4;
+        rawProfile = [...rawProfile.slice(0, at + 1), [cx - half, topY], [cx - half, topY + fh], [cx + half, topY + fh], [cx + half, topY], ...rawProfile.slice(at + 1)];
+      }
+    }
     // A partial crown stands between two stretches of plain eaves line.
     const moduleProfile = rawProfile && crownSpan ? [...(crownSpan[0] > 0.01 ? [[0, eaves] as CanalhousePoint] : []), ...rawProfile.map(([x, y]) => [x + crownSpan[0], y] as CanalhousePoint), ...(crownSpan[1] < mw - 0.01 ? [[mw, eaves] as CanalhousePoint] : [])] : rawProfile;
     const profile = moduleProfile ? Array.from({length: count}, (_, k) => moduleProfile.map(([x, y]) => [place(k, x), y] as CanalhousePoint)).flat() : [[0, eaves], [width, eaves]] as CanalhousePoint[];
@@ -409,10 +422,12 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         // Gable lights follow a partial crown: on its bay axes when there is one light per bay, else centred on it.
         const onAxes = front.crownBays && front.crownBays.to - front.crownBays.from + 1 === attic ? layout.axisCentres.slice(front.crownBays.from, front.crownBays.to + 1) : null;
         const crownCentre = crownSpan ? (crownSpan[0] + crownSpan[1]) / 2 : mw / 2;
+        const round = front.atticShape === 'round', od = clamp(Math.min(crownW * 0.22, rise * 0.28), 0.5, 0.95);
         const atticLeft = (k: number) => onAxes ? onAxes[k] - w / 2 : stack ? (crownSpan ? crownCentre - w / 2 : (mw - w) / 2) : crownSpan ? crownCentre - total / 2 + k * (w + gap) : (mw - total) / 2 + k * (w + gap);
         // Neck gables stack their attic lights up the neck; other crowns set them side by side.
         const stack = front.gable === 'neck' || front.gable === 'raised-neck', hh = stack ? Math.min(h, (rise - 0.8) / attic - 0.3) : h;
-        for (let m = 0; m < count; m++) for (let k = 0; k < attic; k++) elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: flipX(place(m, atticLeft(k), w), w), bottomM: eaves + 0.25 + (stack ? k * (hh + 0.3) : 0), widthM: w, heightM: stack ? hh : h, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'});
+        if (round) for (let m = 0; m < count; m++) for (let k = 0; k < attic; k++) elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', head: 'oval', leftM: flipX(place(m, (onAxes ? onAxes[k] : crownCentre) - od / 2, od), od), bottomM: eaves + Math.min(rise - od - 0.3, rise * 0.3), widthM: od, heightM: od, trimWidthM: 0.06, frameSurface: 'trim', barSurface: 'trim'});
+        else for (let m = 0; m < count; m++) for (let k = 0; k < attic; k++) elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: flipX(place(m, atticLeft(k), w), w), bottomM: eaves + 0.25 + (stack ? k * (hh + 0.3) : 0), widthM: w, heightM: stack ? hh : h, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'});
       }
     }
     if (front.dormers) {

@@ -21,6 +21,7 @@ import {findContacts} from '../streetChunks/party.ts';
 import {fitEaves, shiftFactsHeights} from '../streetChunks/ground.ts';
 import type {ChunkResult} from '../streetChunks/types.ts';
 import {houseIntents, type BlockFaceIntent} from './intent.ts';
+import {planInstancing, type FitSize, type InstancingPlan} from './instancing.ts';
 
 export interface FaceGate { pand: string; id: string; pass: boolean; value: unknown; limit: string }
 export interface Interference {
@@ -43,7 +44,7 @@ export interface Interference {
   pass: boolean;
 }
 export interface FaceGroundPlan { sharedNapM: number; shiftsM: number[]; eavesBefore: number[]; eavesAfter: number[]; groups: {pands: string[]; spreadM: number; snapped: boolean; trust?: 'photo'; reference?: string}[]; facts: BuildingFacts[] }
-export interface BlockFaceResult { slitsClosed: {left: string; right: string; gapM: number}[]; chunk: ChunkResult; ground: FaceGroundPlan; gates: FaceGate[]; interference: Interference[]; perPand: {pand: string; slug: string; triangles: number; eavesM: number; roofMaxM: number; roofMaxFactsM: number; storeyHeightsM: number[]}[]; passed: boolean }
+export interface BlockFaceResult { instancing: InstancingPlan; slitsClosed: {left: string; right: string; gapM: number}[]; chunk: ChunkResult; ground: FaceGroundPlan; gates: FaceGate[]; interference: Interference[]; perPand: {pand: string; slug: string; triangles: number; eavesM: number; roofMaxM: number; roofMaxFactsM: number; storeyHeightsM: number[]}[]; passed: boolean }
 
 const median = (v: number[]) => { const s = [...v].sort((a, b) => a - b); return s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2; };
 const cm = (v: number) => Math.round(v * 100) / 100;
@@ -71,7 +72,7 @@ export function planFaceGround(face: BlockFaceIntent, facts: BuildingFacts[], ma
 
 interface Tri { p: number[][]; n: number[]; slot: string; surface: string }
 
-async function decodePands(glb: Uint8Array, pandCount: number): Promise<Tri[][]> {
+export async function decodePands(glb: Uint8Array, pandCount: number): Promise<Tri[][]> {
   const doc = await new NodeIO().registerExtensions([KHRMeshQuantization]).readBinary(glb);
   const out: Tri[][] = Array.from({length: pandCount}, () => []);
   for (const mesh of doc.getRoot().listMeshes()) for (const prim of mesh.listPrimitives()) {
@@ -178,7 +179,7 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
   const frame: FrontFrame = {midRD: chunk.frame.midRD, uRD: chunk.frame.uRD, nRD: chunk.frame.nRD};
   const rings = facts.map(f => f.bagFootprintRD.map(r => ringToFrame(r, frame)));
   const gates: FaceGate[] = [], g = (pand: string, id: string, pass: boolean, value: unknown, limit: string) => gates.push({pand, id, pass, value, limit});
-  const perPand: BlockFaceResult['perPand'] = [];
+  const perPand: BlockFaceResult['perPand'] = [], sizes: FitSize[][] = [];
   for (const [i, intent] of intents.entries()) {
     const pand = intent.pandId.slice(-6), fit = fitIntent(intent, ground.facts[i]), t = tris[i];
     const roof = t.filter(x => ['roofTile', 'slate', 'bitumen'].includes(x.slot)).flatMap(x => x.p.map(v => v[1]));
@@ -196,6 +197,7 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     g(pand, 'footprint-vs-bag', iou >= 0.9, cm(iou), 'plan IoU of shell+roof >= 0.90 against BAG LoD0');
     const minY = Math.min(...t.flatMap(x => x.p.map(v => v[1])));
     g(pand, 'grounded', Math.abs(minY) <= 0.05, cm(minY), 'lowest vertex within 5 cm of the shared street level');
+    sizes.push(fit.report.fronts.map(f => ({widthM: f.widthM, eavesM: f.eavesM, crownTopM: f.crownTopM})));
     perPand.push({pand: intent.pandId, slug: intent.id, triangles: t.length, eavesM: f0.eavesM, roofMaxM: cm(roofMax), roofMaxFactsM: cm(factsMax), storeyHeightsM: f0.storeyHeightsM});
   }
   // Interference along each party line.
@@ -235,6 +237,7 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
       pass: Math.abs(gap) <= 0.05 && leftIntoRight + rightIntoLeft <= 0.05 && overL <= 0.03 && overR <= 0.03 && zf <= 0.01 && zfRoof <= 0.05 && verdict !== 'step-not-supported'};
     interference.push(item);
   }
-  return {slitsClosed: slits.closed, chunk, ground, gates, interference, perPand, passed: gates.every(x => x.pass) && interference.every(x => x.pass)};
+  const instancing = planInstancing(intents, sizes, perPand.map(p => p.triangles));
+  return {instancing, slitsClosed: slits.closed, chunk, ground, gates, interference, perPand, passed: gates.every(x => x.pass) && interference.every(x => x.pass)};
 }
 export {chunkFrame};

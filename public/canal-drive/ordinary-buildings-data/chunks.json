@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-10T07:32:55.243Z",
+ "generatedAt": "2026-10-10T07:53:35.460Z",
  "chunks": [
   {
    "id": "chunk-bilder-080336-x4",
@@ -1006,8 +1006,8 @@
   {
    "id": "chunk-face-bilder-081118-155417",
    "name": "face-bilder-081118-155417",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-081118-155417.glb?asset=ed650443481292ce",
-   "sha256": "ed650443481292ceaaedca8c01c3d73cd5c9732bf11d1eaa6968a1aad29e99a3",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-081118-155417.glb?asset=0c5e4cf527a219fb",
+   "sha256": "0c5e4cf527a219fb70715fc73856ac699544184eff6b6039f5fef891c98be98d",
    "bytes": 1048032,
    "triangles": 16020,
    "primitives": 23,

@@ -464,6 +464,17 @@ from the viewer's left) or `crownBays` (`{from, to}` inclusive axes); gable wind
 Shopfront: `bays` (`[first, last]` axes the shop occupies; `doorBay` is then a residential entrance beside it with its own
 wall; the validator rejects overlap) and `storeys: 2` (double-height glass, mezzanine transom + band, fascia at the top,
 storey-1 windows in the span dropped). Palette: `wallMaterial: "stucco"` puts the wall in the `stucco` look slot.
+Marnixstraat additions (same day): `crownRise` (crown height in upper-storey heights, e.g. 1.1 for the 3.3 m Marnix
+gables), `crownSteps` (1..6 per side of a step gable), `crownFinial` (block on the flat top), `atticShape: "round"`
+(oculus), `windows: "two-light"` + `windowProportion: "tall"`. A partial shopfront (`shopfront.bays`) keeps the ground
+storey at the neighbours' proportions (no 1.32 shop stretch), so window rows keep lining up along the row. The review
+sheet now prints a wall-colour check per pand (photo median vs model median on the same wall pixels,
+`blockFace/wallColour.ts`); it is advisory (a strip with a strong colour cast, like Bilderdijkstraat's golden-hour strip,
+over-reports) and found Marnixstraat's brick intent 0.18 too saturated (#6e4638 rendered orange; measured wall #6a5a50).
+`block-face:compile` prints an instancing plan (`blockFace/instancing.ts`): which houses are the same design and size
+(Marnix: 6 of 8 and 8 of 9) and how many triangles an instanced chunk would save (61 % / 76 %); the chunk GLB itself is
+not instanced because that changes the loader contract (instance -> pand table for picking/suppression).
+
 Why white stucco read beige: it shared the `brick` slot, whose tint clamps lightness to 0.30-0.60 and floors saturation
 at 0.12 on a mid-grey brick texture; the `stucco` slot keeps authored hue/saturation on a plain plaster texture.
 

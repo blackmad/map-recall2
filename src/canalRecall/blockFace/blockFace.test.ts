@@ -149,3 +149,26 @@ test('strip-review regressions (schema 2026-10-10): off-centre gables, unequal b
   assert.equal(concerto.fronts.find(f => f.id === 'b')!.shopfront!.storeys, 2);
   assert.deepEqual(ui.filter(i => i.palette.wallMaterial === 'stucco').map(i => i.pandId.slice(-6)), ['178705', '169208']);
 });
+
+test('Marnixstraat regressions: wall-colour check catches an orange-for-brown cast; identical houses form one instancing group', async () => {
+  const {measureWallColour} = await import('./wallColour.ts');
+  const {planInstancing} = await import('./instancing.ts');
+  // 60x60 images: photo wall brown-grey (108,88,79), model wall orange-brown (122,78,62) with a sky corner.
+  const W = 60, photo = new Uint8Array(W * W * 3), model = new Uint8Array(W * W * 3);
+  for (let i = 0; i < W * W; i++) { photo.set([108, 88, 79], i * 3); model.set(i < 300 ? [159, 184, 207] : [122, 78, 62], i * 3); }
+  const bad = measureWallColour({photo, model, width: W, height: W, box: {x0: 0, x1: W, y0: 0, y1: W}})!;
+  assert.equal(bad.pass, false); assert.match(bad.note, /too saturated/);
+  for (let i = 0; i < W * W; i++) model.set([112, 90, 80], i * 3);
+  assert.equal(measureWallColour({photo, model, width: W, height: W, box: {x0: 0, x1: W, y0: 0, y1: W}})!.pass, true);
+  // Instancing plan on the committed Marnix faces: the identical sameAs fronts group, a shop-bay house with a different design does not.
+  const dir = 'scripts/block-face/faces/marnix-124-138', face = validateBlockFace(JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8')));
+  const intents = houseIntents(face), size = {widthM: 11.9, eavesM: 12.9, crownTopM: 16};
+  const plan = planInstancing(intents, intents.map(() => [size]), intents.map(() => 1500));
+  assert.equal(plan.groups.length, 1); assert.equal(plan.groups[0].members.length, 7, 'seven plain fronts; the NiDA front has its own shop bay');
+  assert.equal(plan.savedTriangles, 6 * 1500);
+  const wider = planInstancing(intents, intents.map((_, i) => [{...size, widthM: i === 3 ? 12.5 : 11.9}]), intents.map(() => 1500));
+  assert.equal(wider.groups[0].members.length, 6); assert.ok(wider.notShared.length >= 1);
+  // The NiDA laundry takes the right bay only; the central door and left window stay residential.
+  const nida = intents.find(i => i.pandId.endsWith('173530'))!.fronts[0];
+  assert.deepEqual(nida.shopfront!.bays, [2, 2]); assert.equal(nida.doorBay, 1);
+});
