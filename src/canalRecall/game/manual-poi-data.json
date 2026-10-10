@@ -2183,5 +2183,41 @@
     "https://commons.wikimedia.org/wiki/Category:West-Indisch_Pakhuis"
   ],
   "preferDescription": true
+},
+{
+  "modelId": "trippenhuis",
+  "landmarkId": "trippenhuis",
+  "name": "Trippenhuis",
+  "description": "The Trippenhuis (Kloveniersburgwal 29) was built in 1660-1662 by Justus Vingboons for the arms-trading brothers Louys and Hendrick Trip. It is two full houses behind one palace-like sandstone front, seven windows wide, with eight giant fluted Corinthian pilasters, a triangular pediment on four of them and chimneys shaped like mortars as a nod to the family's guns and munitions. The Royal Netherlands Academy of Arts and Sciences has owned it since 1887.",
+  "funFact": "The pilasters come in an even number, because classical rules forbade one in the axis of a house, so the dividing wall between the two homes sits behind the middle row of windows, which were originally blind. From 1817 to 1885 the building also housed the national museum, where Rembrandt's Night Watch hung before it moved to the Rijksmuseum.",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Trippenhuis",
+  "additionalSources": [
+    "https://nl.wikipedia.org/wiki/Trippenhuis"
+  ],
+  "preferDescription": true
+},
+{
+  "modelId": "american-hotel",
+  "landmarkId": "american-hotel",
+  "name": "American Hotel",
+  "description": "The American Hotel on Leidseplein (Leidseplein 28) was built in 1900-1902 to designs by Willem Kromhout and H.G. Jansen, replacing a first American Hotel of 1882 by Cornelis Steinigeweg. Its brick-and-stone corner block with a turreted tower is a landmark of Dutch Jugendstil (Art Nouveau) in the Berlage manner and is a national monument, as is the 1927-1928 extension. Its Cafe Americain, with the Jugendstil interior, is still the hotel's public living room.",
+  "funFact": "The cafe holds what is described as the oldest reading table in Amsterdam, a long table where guests browse the newspapers and magazines. Dancer Mata Hari is said to have spent her wedding night in the hotel in July 1895, and a Mata Hari suite is still let there.",
+  "sourceUrl": "https://en.wikipedia.org/wiki/American_Hotel,_Amsterdam",
+  "additionalSources": [
+    "https://nl.wikipedia.org/wiki/American_Hotel"
+  ],
+  "preferDescription": true
+},
+{
+  "modelId": "hotel-de-l-europe",
+  "landmarkId": "hotel-de-l-europe",
+  "name": "Hotel de l'Europe",
+  "description": "Hotel de l'Europe (now De L'Europe Amsterdam, Nieuwe Doelenstraat 2-14) opened in 1896, designed in neo-Renaissance style by Willem Hamer Jr. It stands on the site of the Rondeel, a round tower of the 1480s city wall that guarded the Amstel, and the curved river front still echoes that tower. Red brick banded with white stone, turreted corners and a mansard roof with stone-framed dormers overlook the Munt, where the Amstel flows into the Rokin. It has been a national monument since 2001.",
+  "funFact": "Alfred Hitchcock used the hotel as a location for Foreign Correspondent (1940), just before the Second World War, and Freddy's Bar is named after the brewer Freddy Heineken. The hotel took its name from an older Hotel de l'Europe on the Prins Hendrikkade, which belonged to the same company.",
+  "sourceUrl": "https://en.wikipedia.org/wiki/De_L%27Europe_Amsterdam",
+  "additionalSources": [
+    "https://nl.wikipedia.org/wiki/De_L%27Europe_Amsterdam"
+  ],
+  "preferDescription": true
 }
 ]
