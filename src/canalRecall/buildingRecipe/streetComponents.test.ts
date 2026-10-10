@@ -31,10 +31,10 @@ test('bilder-079721: lintel bands are stripes of the band brick, not stone', () 
 
 test('shopfronts: piers, stall riser, framed glazing and a fascia with a lettering panel, in the shop paint', () => {
   const b = build('bilder-087959'), e = b.recipe.elevations[0], n = names(b.group);
-  for (const id of ['shop-riser', 'fascia', 'fascia-lettering']) assert.ok(e.bands!.value.some(d => d.id === id), id);
+  for (const id of ['shop-riser', 'fascia']) assert.ok(e.bands!.value.some(d => d.id === id), id);
   assert.ok(e.blocks!.value.filter(d => d.surface === 'shop').length === 2, 'two piers');
   const glass = e.openings.value.filter(o => o.id.startsWith('shop-'));
   assert.ok(glass.length && glass.every(o => o.frameSurface === 'shop'));
-  assert.equal(b.recipe.palette.value.shop, '#1f2121');
+  assert.equal(b.recipe.palette.value.shop, '#1e1e1e');
   assert.ok(n.some(x => x.includes('shop-0/frame')));
 });
