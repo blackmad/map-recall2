@@ -1,0 +1,334 @@
+{
+ "street": "Nassaukade",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T12:46:49.347Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165898",
+   "addresses": [
+    "Nassaukade 318"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 318-H",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000748500"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154241",
+   "addresses": [
+    "Nassaukade 317"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 317-H",
+     "use": "woonfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000748495"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162368",
+   "addresses": [
+    "Nassaukade 316"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 316-H",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000748490"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164663",
+   "addresses": [
+    "Nassaukade 315"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 315-H",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000748485"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156130",
+   "addresses": [
+    "Nassaukade 314"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 314-H",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000748480"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157238",
+   "addresses": [
+    "Nassaukade 313"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162083",
+   "addresses": [
+    "Nassaukade 312"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 312-H",
+     "use": "woonfunctie",
+     "areaM2": 170,
+     "bagId": "0363010012067115"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161701",
+   "addresses": [
+    "Nassaukade 311"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 311-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000748467"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156556",
+   "addresses": [
+    "Nassaukade 310"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 310-H",
+     "use": "kantoorfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000748462"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156555",
+   "addresses": [
+    "Nassaukade 309"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 309-H",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000748457"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162089",
+   "addresses": [
+    "Nassaukade 308"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 308-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000748452"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162090",
+   "addresses": [
+    "Nassaukade 307"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 307-H",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000748447"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166290",
+   "addresses": [
+    "Nassaukade 306"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 306-H",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000748442"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159934",
+   "addresses": [
+    "Nassaukade 305"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 305-H",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000748437"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157131",
+   "addresses": [
+    "Nassaukade 304A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 304A-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000748433"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166694",
+   "addresses": [
+    "Nassaukade 304"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 304-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000748428"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157568",
+   "addresses": [
+    "Nassaukade 303"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 303-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000748423"
+    },
+    {
+     "address": "Nassaukade 303-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010011290881"
+    },
+    {
+     "address": "Nassaukade 303-H",
+     "use": "woonfunctie",
+     "areaM2": 139,
+     "bagId": "0363010012147228"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162289",
+   "addresses": [
+    "Nassaukade 302"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 302-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000748418"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162529",
+   "addresses": [
+    "Nassaukade 301"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 301-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000748413"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162530",
+   "addresses": [
+    "Nassaukade 300"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 300-H",
+     "use": "winkelfunctie",
+     "areaM2": 147,
+     "bagId": "0363010000748409"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

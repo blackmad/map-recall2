@@ -19,6 +19,15 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
+- **Landmark filler audit offenders (measured, unconfirmed in game)**:
+  `npm run audit:landmark-filler` lists models that hide buildings they do not
+  cover (hotel-jakarta BAG …247056 1,640 m², sint-agneskerk, national-holocaust-
+  museum) and generic boxes inside/above models (OBA Oosterdok 48 m vs 37 m
+  model, RAI ~11,000 m² above the roof, Sloterdijk, Melkweg, Felix Meritis,
+  Stadsschouwburg, Pathé City — the Pathé shot shows a grey box in front).
+  Review each in game. Also: kiosks under 14 m² draw as bare boxes (Westermarkt
+  76/78/82); the Muziekgebouw model's Bimhuis box is half off its OSM part;
+  Mövenpick could get an ordinary one-off later.
 - **Discard 3DBAG roof geometry on faces (user, 2026-10-10)**: on
   street-surveys.html (bilder-081118-155417) dark 3DBAG roof masses stand
   above and beside the gables where the photo shows none. Generate roofs
@@ -62,20 +71,18 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   surveys = repetitive canal-house / block-face work aiming at reusable
   geometry (faces, per-house recipes, street chunks). Galleries today show
   stale per-house Bilderdijkstraat models the game no longer draws.
-- **Street-survey house types (pilot running)**: design in
-  `docs/research/sol-canalhouse-salvage-20261010.md`. Author a type once
-  (upper body + crown variants + per-house ground floor/shop), place it N
-  times with mirror/variant params; resolves to today's intent so gates are
-  unchanged. Stage 1 generator reuse; Stage 2 instancing only pays at district
-  scale (block scale adds draws). Pilot: Nassaukade 318–300 (by eye 4 types
-  cover 16/20; mirrored pairs share a straddling dormer) and De Clercqstraat
-  22–2 north (2 upper types cover 10/12; every shop differs). Detector needs
-  visual party walls (BAG widths ≠ houses at 304–301) and the roofline
-  classifier for crowns. Sol's code: none ported as-is; reuse the VLM ID-only
-  classifier contract, streaming/budget modules (district instancing), ground
-  and gable presets, wall-colour gold crops, `openingLattice.ts`.
-  `facadeBands.ts` (11/46) not usable; `facade/blockFaces.ts` duplicates
-  `blockFace/discover.ts`.
+- **Street-survey house types — Stage 2 and follow-ups**: Stage 1 landed
+  (Nassaukade 318–300 and De Clercqstraat 22–2 installed with
+  `blockFace/houseType.ts`). Next: `scripts/street-surveys/build.ts` must call
+  `validateBlockFace` before reading `rhythm.schemaLimits` (typed houses show no
+  limits in the gallery). Stage 2 instancing needs slot-level hashing (whole-
+  house equality finds 28% on Nassaukade, 0% on De Clercqstraat),
+  `EXT_mesh_gpu_instancing` in `streetChunks/gltf.ts`, loader support in
+  `signature-landmarks-source.js`, mirrored geometry nodes; pays only once types
+  recur across ~20 faces. Limits: pair dormers are two halves with a 0.5 m gap;
+  3DBAG LoD2.2 dormer masses show as brick boxes (154241, 162368/164663,
+  236262 — see the roof lane); Nassaukade white stucco storeys and tympana not
+  modelled; De Clercqstraat strip is 2021 (shops may have changed).
 - **UvA Roeterseiland held**: builder simplified 37.2k → 21.9k tris but not
   installed — its spec says `do-not-suppress` (composite BAG parent not
   partitioned; bridge underside height estimated). Needs a suppression
@@ -108,6 +115,10 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   de-gooyer and huis-bartolotti now pass under the cantilever rules (rays
   hit a wall <= 2.5 m behind an overhang >= 6 m up); whether those recesses
   match the photos is still unchecked.
+  Booking.com HQ held (2026-10-10): flat 3DBAG glass box; rework on
+  big/p-20261010 for the stepped/offset floor plates, terraces, entrance
+  link and reflective glass. Shell Technology Centre installed with only two
+  photographed views (south, east); north half, west and courtyards inferred.
   Krasnapolsky held (2026-10-10): old Dam front matches; the modern wing and
   lower brick building need photo counts and the dark glass bays.
   Pakhuis de Zwijger held (2026-10-10): colour fixed (dark weathered brick,
@@ -297,14 +308,16 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   lean from a non-rectified photo; adopt crownGroups/tower/split fronts on
   Bilderdijkstraat 102–106, 149–151, 88–90, 162443, 236022, 236189; reviewer
   row counts confuse mezzanines and arcade bays with storeys (177922/23/43/46).
-- **Bilderdijkstraat faces**: even side 72–166 installed. Held: 113–115,
-  131–133, 135–153 — need a way to override 3DBAG eaves >2.5 m from the photo
-  cornice (dormer/tower read as eaves). Not yet faces: chunk-bilder-079721-x2,
-  chunk-bilder-152363-x2, standalone 153622/153782/154127; 66–70 (pand
-  167348); 155–167 and 169 are large-tier. Library gaps (several houses per
-  pand, multiple gables per front, towers, triple gable windows) are on the
-  historic-library lane. iPhone e2e street shots frame a single shop window —
-  move the camera back.
+- **Bilderdijkstraat faces**: even side 72–166, 113–115, 131–153, 169–175,
+  198–202, 199–203 installed (standalone 153622/153782/154127 folded into
+  faces). Left: chunk-bilder-079721-x2 is not a face; 66–70 (pand 167348);
+  155–167 large-tier. Limits: 175 roof reads as a hip with no dormer (footprint
+  jog fails the dormer check); 200/198 cornice kept 0.55 m above the photo;
+  tower lights vanish when the rise is < 0.88 storey; the 2021 and 2023 strips
+  differ ~1.5 m in vertical registration. Gallery recipes
+  `recipe-bilder-{153622,153782,154127}.glb` are stale (game draws the faces);
+  reinstall via `scripts/building-recipes/install.ts`. Document `frontRoof` in
+  docs/buildings-pipeline.md. iPhone e2e street shots frame too close.
 - **Inferred rears**: the rear window grid is generic (2.5 m pitch); use rear
   photos (`pand-reference --prefer-bearing`) where they exist. Raw audit still
   reports party-wall "holes" on several faces (exempted by the compile).

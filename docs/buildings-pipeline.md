@@ -620,3 +620,36 @@ limit when 3DBAG LoD2.2 is >=10 % short of BAG and the model matches the survey 
 classifies hole loops past the end of a shared edge by their open edges (`blockFace/partyLoops.ts`): all on a party plane
 = trimming artefact.
 Result: 8 pands, 17,303 tris, 1.13 MB (281 KB gzip); gates, interference (0 overhang) and audit (party exemption) pass.
+
+### House types for street surveys (Stage 1, 2026-10-10, `nassau-162289`, `clercq-236681`)
+
+Design: `docs/research/sol-canalhouse-salvage-20261010.md` §4. Code: `src/canalRecall/blockFace/houseType.ts` (+ test).
+A face may carry `types: HouseTypeIntent[]` (body written once; named `crowns` (may also set `cornice`), `grounds`,
+`palettes`; type rhythm spec and strip evidence). A house then says `type: {type, crown, ground | {shopfront} |
+{groundFront}, palette, mirror, storeys, doorBay, visualSpan, modules: [...], pair: left|right, overrides}` instead of
+`design`/`sameAs`, and gives only the rhythm fields that differ (its citation). `houseIntents()` resolves placements to
+ordinary designs before fit, so fit/compile/gates/interference/audit/review are unchanged; absent types, all 16 earlier
+faces recompile byte-identically and fit-golden is identical. Mirroring flips door bay, bay widths, storey axes, crown
+spans/bays/groups, tower, balconies, bay windows, dormer spans and grid span; per-house shops are written as seen and
+never mirrored. `pair` halves must be adjacent, use the same type and crown, and exactly one is mirrored; a crown marked
+`pair` is authored for the left half. `overrides` are reported as type deviations in the house notes.
+New optional front fields (byte-identical when absent): `gridAt` (window grid on a visual module, from `visualSpan`:
+Nassaukade 304-301 pilasters stand 0.5-0.7 m off the BAG party walls), `dormerAt` (dormer spans; half dormers meet at a
+party wall), `souterrain` (the basement is a full storey under a bel-etage; Nassaukade souterrains are ~3 m, the default
+plinth is 0.7-1.2 m). A measured cornice under a mansard lowers the shell top (3DBAG draws De Clercqstraat's mansards as
+wall). Interference now measures front gaps/overhangs against each house's own front plane (Nassaukade bends: the middle
+houses stand > 1 m behind the chord) and ignores walls lying on a neighbour's footprint edge (corner pand wrapping behind).
+
+| | Nassaukade 318-300 | De Clercqstraat 22-2 |
+| --- | --- | --- |
+| Pands / modules | 20 / 20 | 9 / 12 (16-18 = 3 modules, 8-10 = 2) |
+| Types (placements) | 4: B pair x4, C x3, A x6, D x4 | 3: E x7 modules in 4 pands, F x3, corner x1 |
+| Own designs | 3 (314, 304A, corner 300) | 1 (153066 corner block) |
+| Crown variants | 5 (pair dormer, dormer, step gable, spire dormer, Neo-Renaissance bell gable) | 6 (none, tower, arched tower, step gable, 3-dormer mansard, 2-dormer mansard) |
+| Triangles / primitives | 43,873 / 20 (2,250 KB, 614 KB gzip) | 24,524 / 26 (1,252 KB, 328 KB gzip) |
+| Gates, interference, audit | pass, installed | pass, installed |
+
+Remaining errors (on the strip sheets, listed as `schemaLimits` in the types): the pair dormer is two plain half
+dormers with a gap at the party wall (a dormer reaching the party wall fails the library's footprint check), white
+stucco top storeys and tympana are not modelled, the tower-dormers have no light, De Clercqstraat corbel tables are a
+bracketed cornice, D dormers are centred on the BAG front rather than the visual module.

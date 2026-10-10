@@ -2432,5 +2432,31 @@
     "https://nl.wikipedia.org/wiki/Hilton_Amsterdam_Hotel"
   ],
   "preferDescription": true
+},
+{
+  "modelId": "booking-hq",
+  "landmarkId": "booking-hq",
+  "name": "Booking.com headquarters",
+  "description": "The head office of Booking.com on Oosterdokskade 163 fills the eastern tip of Oosterdokseiland, a quarter-circle plot between Ton de Leeuwstraat, Oosterdoksstraat and the quay. Ben van Berkel's UNStudio designed it as a glass campus meant to mirror the water of the Oosterdok, its glazing broken by recesses, ramps, terraces and walkways, with a rectangular residential tower of 41 apartments (and the Club 11 venue on top) at one end. Construction ran from July 2018 until the building was delivered in December 2022, and about 5,000 staff work on 63,500 m2 of office space. It replaced the 1968 Post CS building of Merkelbach and Elling.",
+  "funFact": "The whole complex hangs from a steel structure of about 6,000 tonnes, the same amount as the Erasmus Bridge, and designed like a tree: slim at the base and branching further up. Club 11 on top of the tower is a nod to the old Post CS building that stood on almost the same spot.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Hoofdkantoor_van_Booking.com",
+  "additionalSources": [
+    "https://nl.wikipedia.org/wiki/Oosterdokseiland",
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012250152/"
+  ],
+  "preferDescription": true
+},
+{
+  "modelId": "shell-technology-centre",
+  "landmarkId": "shell-technology-centre",
+  "name": "Shell Technology Centre Amsterdam",
+  "description": "This dark-brick research campus on the Grasweg in Amsterdam-Noord was built between 2005 and 2009 by Arcadis Architecten and Van Mourik as the new home of Shell's Amsterdam laboratory, with about 80,000 m2 of offices, laboratories, test halls and workshops. Crown Prince Willem-Alexander opened it in September 2009. The lab itself goes back to 1914, when the Bataafsche Petroleum Maatschappij started it with nine people on a 27-hectare site; since 2021 the complex is open to start-ups, universities and companies as the Energy Transition Campus Amsterdam, with around a thousand people working here.",
+  "funFact": "In 1954 the Shell laboratory in Amsterdam became the first Dutch company to put an electronic computer into service, the second computer in the whole country after the ARRA I. Today its engineers design and build most of the roughly 1,300 test rigs on the campus themselves.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Energy_Transition_Campus_Amsterdam",
+  "additionalSources": [
+    "https://nl.wikipedia.org/wiki/Overhoeks_(Amsterdam)",
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012202175/"
+  ],
+  "preferDescription": true
 }
 ]

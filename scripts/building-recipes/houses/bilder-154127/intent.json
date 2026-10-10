@@ -31,12 +31,11 @@
     "fascia": true,
     "glazing": "transom",
     "stallriser": "medium",
-    "residentialDoor": {
-     "side": "left",
-     "colour": "black"
-    },
-    "evidence": "front.jpg 2023-01-12: vacant unit (TE HUUR / VERHUURD), no.200, large pane with leaded transom lights, black street door at the left. OSM Soytasty (7 m) / Kazik (202A) are later or neighbouring tenants, not asserted."
-   }
+    "evidence": "front.jpg 2023-01-12: vacant unit (TE HUUR / VERHUURD), no.200, large pane with leaded transom lights, black street door at the left. OSM Soytasty (7 m) / Kazik (202A) are later or neighbouring tenants, not asserted.",
+    "storeys": 2,
+    "entrance": "right"
+   },
+   "dormerStyle": "pediment"
   }
  ],
  "roof": {
@@ -48,5 +47,7 @@
   "door": "black",
   "stone": "sandstone"
  },
- "notes": []
+ "notes": [
+  "2026-10-10 two-storey transom shop front with its door at the right replaces residentialDoor (2024 strip); superseded in game by face bilder-159426-165632."
+ ]
 }

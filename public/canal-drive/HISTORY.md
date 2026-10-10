@@ -1,5 +1,64 @@
 # Canal Recall — what is built
 
+## Mövenpick restored; Westerkerk lean-to shops take the church brick (2026-10-10)
+
+The Mövenpick hotel and the Muziekgebouw are one BAG pand; the
+`muziekgebouw-bimhuis` landmark suppressed all its OSM parts though its model
+covers only the hall, so the hotel tower vanished. The suppress list now holds
+only the hall, roof, foyer and Bimhuis parts. The coloured boxes round the
+Westerkerk are the church's own lean-to shops (Westermarkt 60–74, 8–11 m²,
+too small for a facade); they are now part of the Westerkerk kit body. Nothing
+duplicated the church. `scripts/audit-landmark-filler.ts` (in `check:canal` as
+`audit:landmark-filler`) maps every model's mass and pins both places.
+
+## Street-survey house types, Stage 1: Nassaukade 318–300 and De Clercqstraat 22–2 (2026-10-10)
+
+The user asked that repetitive blocks be built by a generator or model reuse. A
+`HouseTypeIntent` (one body, named crown/ground variants, palettes, rhythm spec)
+is placed per house with mirror, variant, door bay, visual span and module
+params; `houseIntents()` resolves placements to ordinary designs before fitting,
+so gates, audit and review are unchanged and the 16 existing faces recompile
+byte-identical. Nassaukade uses 4 types for 17 of 20 houses (mirrored pairs share
+a straddling dormer); De Clercqstraat 3 types for 12 modules in 9 pands. New front
+fields `gridAt`, `dormerAt`, `souterrain`. Marginal cost per typed house is one
+placement line (~10–20 s) versus ~2 min for a new design. Instancing (Stage 2) is
+deferred: whole-house equality finds little to share; it needs slot hashing.
+
+## Bilderdijkstraat held faces installed; measured eaves re-pitch the front roof (2026-10-10)
+
+Faces 113–115, 131–133 and 135–153 were held because 3DBAG eaves stood 2.5–3.5 m
+above the photo cornice (LoD2.2 carries a mansard's flat top, or a dormer merged
+into the roof, out to the facade). Instead of raising the limit, `measuredEaves`
+takes a `frontRoof` that re-pitches the front strip of the roof from the cornice
+row on the strip (`blockFace/compile.ts` repitchFrontRoof; needs the survey roof
+to stand > 0.5 m above the measured eaves at the facade; on a multi-front pand
+name the `front`). The library features were adopted: towers on 88/90, 102–106
+split into three stepped-gable fronts, 158–162 one pand with two houses, triple
+gable lights, pointed/pedimented dormers. The standalone houses the user flagged
+(153622 balconies, blank ground floors, 3DBAG pyramid roof) are now inside the
+new faces 199–203, 169–175 and 198–202 with photo-measured cornices, uniform
+sash windows and their doors and shops; chunk-bilder-152363-x2 is retired. The
+validator now rejects `shopShare` without `residentialDoor` (a silent drop).
+
+## Building clicks: prism picking, a card for every building (2026-10-10)
+
+The user asked why clicking a building to get its card was so slow, and why the
+De Nederlandsche Bank tower on Frederiksplein (w1533847438) could not be clicked.
+- **Slow:** building meshes keep no CPU geometry, so every click rebuilt the facade
+  geometry of every chunk the ray crossed (1.2–2.2 s desktop, ~5.9 s iPhone 4×).
+  A rebuild that did not match the installed mesh skipped the chunk entirely.
+  `src/canalRecall/prismPick.ts` now indexes each chunk's buildings as extruded
+  footprints on first click (pitched roofs use their bounding block). Cards now
+  appear in 7–40 ms desktop, 21–118 ms iPhone 4×; the highlight is applied in the
+  same step. `setActiveLandmark` re-filters MapLibre layers only when kit ids change.
+- **Unclickable:** since 2026-10-04 `_cardForClickedBuilding` returned nothing unless
+  a building was a listed monument with architect or function. That rule is reversed
+  at the user's request: every drawn building opens a card with year, period, type,
+  listing and size; address names that would reveal a street are dropped.
+- Pinned: `tests/e2e/building-click-perf.spec.ts` (budgets, DNB tower, 95% sampled
+  click accuracy) and `test:prism-pick` in `check:canal`.
+- Open: houseboats and the Homomonument mesh are still not clickable as meshes.
+
 ## Rose bushes in the Vondelpark Rosarium (2026-10-10)
 
 OSM maps the Rosarium as one garden polygon; the hex beds exist only as the

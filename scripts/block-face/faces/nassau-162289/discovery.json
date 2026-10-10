@@ -1,0 +1,1359 @@
+{
+ "street": "Nassaukade",
+ "seed": "0363100012162289",
+ "members": [
+  "0363100012165898",
+  "0363100012154241",
+  "0363100012162368",
+  "0363100012164663",
+  "0363100012156130",
+  "0363100012157238",
+  "0363100012162083",
+  "0363100012161701",
+  "0363100012156556",
+  "0363100012156555",
+  "0363100012162089",
+  "0363100012162090",
+  "0363100012166290",
+  "0363100012159934",
+  "0363100012157131",
+  "0363100012166694",
+  "0363100012157568",
+  "0363100012162289",
+  "0363100012162529",
+  "0363100012162530"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012165898 (face continues: 154100 158533 161762 155657)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012166093 27.7 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012103619",
+   "reason": "frontage 33.1 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012062980",
+   "reason": "no frontage on Nassaukade: No footprint edge faces Nassaukade"
+  },
+  {
+   "pandId": "0363100012065246",
+   "reason": "frontage 88.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012066589",
+   "reason": "frontage 116.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012067323",
+   "reason": "frontage 87.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012074481",
+   "reason": "no frontage on Nassaukade: No footprint edge faces Nassaukade"
+  },
+  {
+   "pandId": "0363100012074982",
+   "reason": "frontage 105.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012075947",
+   "reason": "frontage 73.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012076000",
+   "reason": "frontage 104.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012076436",
+   "reason": "frontage 102.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012078225",
+   "reason": "no frontage on Nassaukade: No footprint edge faces Nassaukade"
+  },
+  {
+   "pandId": "0363100012080331",
+   "reason": "frontage 88.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012083574",
+   "reason": "frontage 106.1 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012085290",
+   "reason": "frontage 125.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012087403",
+   "reason": "frontage 41.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012089346",
+   "reason": "sightline to Nassaukade crosses 0363100012153048"
+  },
+  {
+   "pandId": "0363100012089614",
+   "reason": "frontage 38.1 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012094907",
+   "reason": "frontage 132.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012098532",
+   "reason": "no frontage on Nassaukade: No footprint edge faces Nassaukade"
+  },
+  {
+   "pandId": "0363100012100222",
+   "reason": "frontage 125.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012104275",
+   "reason": "frontage 55.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012109707",
+   "reason": "no frontage on Nassaukade: No footprint edge faces Nassaukade"
+  },
+  {
+   "pandId": "0363100012117310",
+   "reason": "no frontage on Nassaukade: No footprint edge faces Nassaukade"
+  },
+  {
+   "pandId": "0363100012117447",
+   "reason": "frontage 87.1 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012117971",
+   "reason": "frontage 87.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012122240",
+   "reason": "frontage 115.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012125327",
+   "reason": "frontage 76.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012127426",
+   "reason": "no frontage on Nassaukade: No footprint edge faces Nassaukade"
+  },
+  {
+   "pandId": "0363100012128480",
+   "reason": "no frontage on Nassaukade: No footprint edge faces Nassaukade"
+  },
+  {
+   "pandId": "0363100012129233",
+   "reason": "frontage 88.1 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012132160",
+   "reason": "frontage 117.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012134129",
+   "reason": "frontage 36.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012138334",
+   "reason": "no frontage on Nassaukade: No footprint edge faces Nassaukade"
+  },
+  {
+   "pandId": "0363100012143088",
+   "reason": "frontage 112.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012145150",
+   "reason": "frontage 88.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012149984",
+   "reason": "no frontage on Nassaukade: No footprint edge faces Nassaukade"
+  },
+  {
+   "pandId": "0363100012150550",
+   "reason": "frontage 124.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012152051",
+   "reason": "frontage 87.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012062260",
+   "reason": "frontage 197.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012067309",
+   "reason": "frontage 132.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012073508",
+   "reason": "frontage 129.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012091205",
+   "reason": "frontage 197.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012093049",
+   "reason": "frontage 129.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012102399",
+   "reason": "frontage 197.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012119844",
+   "reason": "frontage 125.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012137280",
+   "reason": "frontage 97.1 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012141037",
+   "reason": "frontage 224.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012149258",
+   "reason": "frontage 197.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012152521",
+   "reason": "frontage 68.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012153200",
+   "reason": "sightline to Nassaukade crosses 0363100012158533"
+  },
+  {
+   "pandId": "0363100012155541",
+   "reason": "frontage 34.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012156139",
+   "reason": "sightline to Nassaukade crosses 0363100012158478"
+  },
+  {
+   "pandId": "0363100012157476",
+   "reason": "frontage 77.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012152388",
+   "reason": "frontage 131.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012152562",
+   "reason": "frontage 109.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012152977",
+   "reason": "frontage 104.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012153000",
+   "reason": "frontage 54.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012153048",
+   "reason": "sightline to Nassaukade crosses 0363100012162529"
+  },
+  {
+   "pandId": "0363100012153319",
+   "reason": "frontage 138.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012153436",
+   "reason": "frontage 127.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012153613",
+   "reason": "frontage 49.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012154205",
+   "reason": "frontage 136.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012154336",
+   "reason": "frontage 138.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012154346",
+   "reason": "frontage 53.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012154369",
+   "reason": "frontage 45.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012154426",
+   "reason": "frontage 75.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012155377",
+   "reason": "frontage 36.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012155539",
+   "reason": "frontage 127.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012155666",
+   "reason": "frontage 66.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012156116",
+   "reason": "frontage 201.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012156117",
+   "reason": "frontage 200.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012156171",
+   "reason": "frontage 141.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012156172",
+   "reason": "frontage 135.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012156446",
+   "reason": "frontage 52.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012156576",
+   "reason": "frontage 83.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012156735",
+   "reason": "frontage 141.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012156985",
+   "reason": "frontage 32.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012157393",
+   "reason": "frontage 58.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012157413",
+   "reason": "frontage 43.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012152383",
+   "reason": "frontage 57.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012153311",
+   "reason": "frontage 55.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012157590",
+   "reason": "frontage 55.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012157807",
+   "reason": "frontage 59.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012158140",
+   "reason": "frontage 67.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012158478",
+   "reason": "sightline to Nassaukade crosses 0363100012166843"
+  },
+  {
+   "pandId": "0363100012160746",
+   "reason": "frontage 56.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012157700",
+   "reason": "frontage 131.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012157742",
+   "reason": "frontage 131.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012157746",
+   "reason": "frontage 97.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012158178",
+   "reason": "frontage 65.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012158179",
+   "reason": "frontage 47.1 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012158339",
+   "reason": "no frontage on Nassaukade: No footprint edge faces Nassaukade"
+  },
+  {
+   "pandId": "0363100012158443",
+   "reason": "frontage 142.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012158497",
+   "reason": "frontage 66.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012158667",
+   "reason": "frontage 129.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012158742",
+   "reason": "frontage 43.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012158909",
+   "reason": "frontage 92.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012159032",
+   "reason": "frontage 141.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012159037",
+   "reason": "frontage 41.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012159117",
+   "reason": "frontage 40.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012159131",
+   "reason": "frontage 119.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012159336",
+   "reason": "sightline to Nassaukade crosses 0363100012166093"
+  },
+  {
+   "pandId": "0363100012159407",
+   "reason": "frontage 143.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012159457",
+   "reason": "sightline to Nassaukade crosses 0363100012159336"
+  },
+  {
+   "pandId": "0363100012159634",
+   "reason": "frontage 54.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012159787",
+   "reason": "frontage 123.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012160065",
+   "reason": "frontage 107.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012160115",
+   "reason": "frontage 128.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012160415",
+   "reason": "frontage 141.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012160443",
+   "reason": "frontage 137.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012160463",
+   "reason": "frontage 50.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012160483",
+   "reason": "frontage 41.1 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012160622",
+   "reason": "frontage 69.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012160912",
+   "reason": "frontage 115.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012161223",
+   "reason": "frontage 142.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012161265",
+   "reason": "frontage 53.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012161304",
+   "reason": "frontage 142.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012161418",
+   "reason": "frontage 34.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012159360",
+   "reason": "frontage 55.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012159577",
+   "reason": "frontage 107.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012160755",
+   "reason": "frontage 83.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012161656",
+   "reason": "frontage 55.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012162482",
+   "reason": "sightline to Nassaukade crosses 0363100012157055"
+  },
+  {
+   "pandId": "0363100012163174",
+   "reason": "frontage 37.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012163325",
+   "reason": "sightline to Nassaukade crosses 0363100012161331"
+  },
+  {
+   "pandId": "0363100012164188",
+   "reason": "sightline to Nassaukade crosses 0363100012157055"
+  },
+  {
+   "pandId": "0363100012161828",
+   "reason": "frontage 134.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012162013",
+   "reason": "frontage 65.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012162168",
+   "reason": "frontage 71.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012162271",
+   "reason": "frontage 104.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012162280",
+   "reason": "frontage 130.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012162435",
+   "reason": "frontage 67.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012162468",
+   "reason": "frontage 133.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012162614",
+   "reason": "frontage 69.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012162796",
+   "reason": "sightline to Nassaukade crosses 0363100012159530"
+  },
+  {
+   "pandId": "0363100012162870",
+   "reason": "sightline to Nassaukade crosses 0363100012163545"
+  },
+  {
+   "pandId": "0363100012163027",
+   "reason": "frontage 121.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012163171",
+   "reason": "frontage 55.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012163403",
+   "reason": "frontage 38.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012163821",
+   "reason": "frontage 138.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012163832",
+   "reason": "frontage 55.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012163843",
+   "reason": "frontage 121.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012164023",
+   "reason": "frontage 140.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012164050",
+   "reason": "frontage 126.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012164129",
+   "reason": "frontage 128.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012164150",
+   "reason": "frontage 58.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012164186",
+   "reason": "frontage 131.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012164475",
+   "reason": "frontage 44.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012164499",
+   "reason": "frontage 138.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012164754",
+   "reason": "frontage 119.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012164805",
+   "reason": "frontage 58.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012165180",
+   "reason": "frontage 49.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012165198",
+   "reason": "sightline to Nassaukade crosses 0363100012162870"
+  },
+  {
+   "pandId": "0363100012165269",
+   "reason": "sightline to Nassaukade crosses 0363100012159530"
+  },
+  {
+   "pandId": "0363100012163461",
+   "reason": "frontage 57.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012164420",
+   "reason": "frontage 55.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012168367",
+   "reason": "frontage 178.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012168370",
+   "reason": "frontage 172.1 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012168371",
+   "reason": "frontage 159.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012168372",
+   "reason": "frontage 157.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012168907",
+   "reason": "frontage 95.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012168911",
+   "reason": "frontage 96.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012169342",
+   "reason": "frontage 47.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012169716",
+   "reason": "frontage 184.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012169819",
+   "reason": "frontage 46.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012170725",
+   "reason": "frontage 96.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012170726",
+   "reason": "frontage 97.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012170727",
+   "reason": "no frontage on Nassaukade: No footprint edge faces Nassaukade"
+  },
+  {
+   "pandId": "0363100012170728",
+   "reason": "frontage 103.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012170729",
+   "reason": "frontage 104.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166562",
+   "reason": "frontage 59.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166689",
+   "reason": "sightline to Nassaukade crosses 0363100012158478"
+  },
+  {
+   "pandId": "0363100012169550",
+   "reason": "frontage 33.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012165523",
+   "reason": "frontage 128.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012165670",
+   "reason": "frontage 60.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012165783",
+   "reason": "frontage 54.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012165927",
+   "reason": "frontage 199.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012165988",
+   "reason": "frontage 54.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166000",
+   "reason": "frontage 56.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166078",
+   "reason": "sightline to Nassaukade crosses 0363100012153048"
+  },
+  {
+   "pandId": "0363100012166084",
+   "reason": "frontage 124.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166306",
+   "reason": "frontage 107.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166335",
+   "reason": "frontage 142.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166397",
+   "reason": "frontage 146.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166453",
+   "reason": "frontage 128.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166462",
+   "reason": "frontage 78.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166499",
+   "reason": "no frontage on Nassaukade: No footprint edge faces Nassaukade"
+  },
+  {
+   "pandId": "0363100012166516",
+   "reason": "frontage 133.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166587",
+   "reason": "frontage 58.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166588",
+   "reason": "frontage 59.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166625",
+   "reason": "frontage 53.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166650",
+   "reason": "frontage 35.1 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166736",
+   "reason": "frontage 136.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166777",
+   "reason": "frontage 40.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166817",
+   "reason": "frontage 132.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166933",
+   "reason": "frontage 198.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166975",
+   "reason": "frontage 103.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012167024",
+   "reason": "frontage 56.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012167025",
+   "reason": "frontage 56.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012167334",
+   "reason": "frontage 101.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012166934",
+   "reason": "frontage 198.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012170730",
+   "reason": "frontage 104.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012170731",
+   "reason": "frontage 105.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012170732",
+   "reason": "frontage 61.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012170795",
+   "reason": "frontage 65.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012170798",
+   "reason": "frontage 96.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012170799",
+   "reason": "frontage 97.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012174197",
+   "reason": "frontage 175.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012174199",
+   "reason": "frontage 160.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012174212",
+   "reason": "frontage 174.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012174290",
+   "reason": "frontage 164.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012174291",
+   "reason": "frontage 161.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012174294",
+   "reason": "frontage 162.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012174295",
+   "reason": "frontage 166.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012174296",
+   "reason": "frontage 166.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012174301",
+   "reason": "frontage 174.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012185421",
+   "reason": "frontage 119.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012185422",
+   "reason": "frontage 55.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012210308",
+   "reason": "frontage 33.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012224253",
+   "reason": "sightline to Nassaukade crosses 0363100012156130"
+  },
+  {
+   "pandId": "0363100012225200",
+   "reason": "frontage 33.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012229187",
+   "reason": "frontage 33.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012233799",
+   "reason": "frontage 34.1 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012205646",
+   "reason": "frontage 35.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012235988",
+   "reason": "frontage 61.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012184271",
+   "reason": "frontage 34.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012184780",
+   "reason": "sightline to Nassaukade crosses 0363100012152484"
+  },
+  {
+   "pandId": "0363100012184865",
+   "reason": "frontage 33.1 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012192610",
+   "reason": "frontage 34.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012193938",
+   "reason": "sightline to Nassaukade crosses 0363100012160733"
+  },
+  {
+   "pandId": "0363100012194179",
+   "reason": "frontage 117.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012194934",
+   "reason": "frontage 35.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012197182",
+   "reason": "frontage 43.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012197285",
+   "reason": "frontage 54.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012199375",
+   "reason": "frontage 117.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012201941",
+   "reason": "frontage 33.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012203639",
+   "reason": "frontage 121.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012203675",
+   "reason": "frontage 30.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012206277",
+   "reason": "frontage 48.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012208420",
+   "reason": "no frontage on Nassaukade: No footprint edge faces Nassaukade"
+  },
+  {
+   "pandId": "0363100012212729",
+   "reason": "frontage 48.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012221704",
+   "reason": "sightline to Nassaukade crosses 0363100012165239"
+  },
+  {
+   "pandId": "0363100012223494",
+   "reason": "frontage 31.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012223495",
+   "reason": "sightline to Nassaukade crosses 0363100012235971"
+  },
+  {
+   "pandId": "0363100012227008",
+   "reason": "frontage 30.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012235901",
+   "reason": "frontage 53.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012219988",
+   "reason": "frontage 118.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012243632",
+   "reason": "frontage 60.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012243633",
+   "reason": "frontage 68.8 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012243634",
+   "reason": "frontage 73.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012245310",
+   "reason": "frontage 91.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012251648",
+   "reason": "frontage 104.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012252153",
+   "reason": "frontage 46.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012236360",
+   "reason": "frontage 45.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012236379",
+   "reason": "frontage 40.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012236383",
+   "reason": "sightline to Nassaukade crosses 0363100012157055"
+  },
+  {
+   "pandId": "0363100012236471",
+   "reason": "frontage 71.7 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012236814",
+   "reason": "frontage 49.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012237211",
+   "reason": "frontage 41.5 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012237357",
+   "reason": "sightline to Nassaukade crosses 0363100012157055"
+  },
+  {
+   "pandId": "0363100012243757",
+   "reason": "no frontage on Nassaukade: No footprint edge faces Nassaukade"
+  },
+  {
+   "pandId": "0363100012236335",
+   "reason": "frontage 83.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012236381",
+   "reason": "frontage 202.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012236416",
+   "reason": "frontage 87.3 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012236663",
+   "reason": "frontage 52.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012236674",
+   "reason": "frontage 53.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012236917",
+   "reason": "frontage 110.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012236993",
+   "reason": "frontage 89.4 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012237167",
+   "reason": "frontage 53.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012237300",
+   "reason": "frontage 53.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012570817",
+   "reason": "frontage 124.0 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012571959",
+   "reason": "frontage 86.1 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012236235",
+   "reason": "frontage 197.6 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012236603",
+   "reason": "frontage 86.9 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012236799",
+   "reason": "frontage 199.2 m from Nassaukade"
+  },
+  {
+   "pandId": "0363100012157054",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157055",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161331",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012202239",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012165898",
+   "alongM": -97.6,
+   "widthM": 6.15,
+   "eavesM": 18.43,
+   "roofMaxM": 21.04,
+   "storeys3dbag": 0,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012154241",
+   "alongM": -91.72,
+   "widthM": 6.13,
+   "eavesM": 18.34,
+   "roofMaxM": 20.98,
+   "storeys3dbag": 0,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162368",
+   "alongM": -85.86,
+   "widthM": 6.03,
+   "eavesM": 18.27,
+   "roofMaxM": 18.39,
+   "storeys3dbag": 5,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164663",
+   "alongM": -80.01,
+   "widthM": 6.05,
+   "eavesM": 18.4,
+   "roofMaxM": 20.72,
+   "storeys3dbag": 0,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156130",
+   "alongM": -74.14,
+   "widthM": 6.04,
+   "eavesM": 17.66,
+   "roofMaxM": 20.57,
+   "storeys3dbag": 0,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157238",
+   "alongM": -68.24,
+   "widthM": 6.02,
+   "eavesM": 17.44,
+   "roofMaxM": 19.76,
+   "storeys3dbag": 5,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162083",
+   "alongM": -62.42,
+   "widthM": 5.8,
+   "eavesM": 17.44,
+   "roofMaxM": 17.47,
+   "storeys3dbag": 5,
+   "builtYear": 1896,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012161701",
+   "alongM": -56.56,
+   "widthM": 6.14,
+   "eavesM": 17.47,
+   "roofMaxM": 20.26,
+   "storeys3dbag": 0,
+   "builtYear": 1896,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156556",
+   "alongM": -50.45,
+   "widthM": 6.24,
+   "eavesM": 16.45,
+   "roofMaxM": 18.87,
+   "storeys3dbag": 5,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156555",
+   "alongM": -44.17,
+   "widthM": 6.35,
+   "eavesM": 18.76,
+   "roofMaxM": 18.82,
+   "storeys3dbag": 5,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162089",
+   "alongM": -37.87,
+   "widthM": 6.38,
+   "eavesM": 16.61,
+   "roofMaxM": 18.97,
+   "storeys3dbag": 5,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162090",
+   "alongM": -31.53,
+   "widthM": 6.32,
+   "eavesM": 18.9,
+   "roofMaxM": 19.32,
+   "storeys3dbag": 0,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166290",
+   "alongM": -25.2,
+   "widthM": 6.3,
+   "eavesM": 18.78,
+   "roofMaxM": 18.78,
+   "storeys3dbag": 0,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159934",
+   "alongM": -18.88,
+   "widthM": 6.36,
+   "eavesM": 16.64,
+   "roofMaxM": 18.85,
+   "storeys3dbag": 0,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157131",
+   "alongM": -13.61,
+   "widthM": 4.19,
+   "eavesM": 18.34,
+   "roofMaxM": 18.88,
+   "storeys3dbag": 5,
+   "builtYear": 1897,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166694",
+   "alongM": -9.33,
+   "widthM": 4.35,
+   "eavesM": 18.43,
+   "roofMaxM": 18.5,
+   "storeys3dbag": 0,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157568",
+   "alongM": -4.76,
+   "widthM": 4.8,
+   "eavesM": 16.01,
+   "roofMaxM": 18.47,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162289",
+   "alongM": 0,
+   "widthM": 4.71,
+   "eavesM": 15.8,
+   "roofMaxM": 18.99,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162529",
+   "alongM": 5.28,
+   "widthM": 5.85,
+   "eavesM": 15.83,
+   "roofMaxM": 19.17,
+   "storeys3dbag": 0,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162530",
+   "alongM": 10.28,
+   "widthM": 4.13,
+   "eavesM": 14.18,
+   "roofMaxM": 17.65,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  }
+ ]
+}
