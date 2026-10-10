@@ -19056,6 +19056,291 @@
           ]
         ]
       }
+    },
+    {
+      id: "de-school",
+      name: "De School (Tilla Tec)",
+      landmarkId: "n2811980599",
+      modelUrl: "./models/de-school.glb",
+      suppressOsmIds: [
+        "w57856852",
+        "NL.IMBAG.Pand.0363100012121682"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.843457755044436,
+          52.36990797367651
+        ],
+        headingDegrees: 88.96647204627857,
+        lengthMetres: 82.79,
+        widthMetres: 29.99
+      },
+      surveyed: {
+        anchor: [
+          4.84350756126421,
+          52.36989283378276
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012121682 footprint (OSM w57856852) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        concrete: "#b5b1a7",
+        greyBrick: "#8d8a82",
+        slate: "#5a5e60",
+        glass: "#587783",
+        red: "#7d3a2e",
+        green: "#47624d",
+        ochre: "#d6a03a",
+        pink: "#d49a8c",
+        dark: "#2b2f31",
+        stone: "#bdb8a8"
+      },
+      attribution: {
+        title: "De School (Tilla Tec)",
+        author: "Map Recall",
+        sourceUrl: "https://en.wikipedia.org/wiki/De_School",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; glazing ribbons, stair core, fascia, entrance porch and pavilion measured by eye from the 2017 and 2025 municipal panoramas, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.84375179935437,
+              52.36990670552744
+            ],
+            [
+              4.843748841067073,
+              52.37001633344199
+            ],
+            [
+              4.8437480383326825,
+              52.37004589943583
+            ],
+            [
+              4.842984481363753,
+              52.37003703546938
+            ],
+            [
+              4.842989439601439,
+              52.3698686728601
+            ],
+            [
+              4.842960091132066,
+              52.36986834921274
+            ],
+            [
+              4.842850126060341,
+              52.36986714263268
+            ],
+            [
+              4.842852828451187,
+              52.36976658218864
+            ],
+            [
+              4.844070369189017,
+              52.369779993138884
+            ],
+            [
+              4.844070210776845,
+              52.36978573558089
+            ],
+            [
+              4.8440676695580835,
+              52.36988055361419
+            ],
+            [
+              4.8437526021934945,
+              52.3698771305455
+            ],
+            [
+              4.84375179935437,
+              52.36990670552744
+            ]
+          ]
+        ]
+      },
+      status: "held",
+      heldReason: "Integrator 2026-10-10: concrete too dark, rounded drum pavilion missing, ribbon glazing panes too small"
+    },
+    {
+      id: "west-indisch-pakhuis",
+      name: "West Indian Warehouse",
+      landmarkId: "extract_landmarks_76787173",
+      modelUrl: "./models/west-indisch-pakhuis.glb",
+      suppressOsmIds: [
+        "w268782366",
+        "NL.IMBAG.Pand.0363100012170633"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.908064193854087,
+          52.37220636090467
+        ],
+        headingDegrees: 131.22986910852484,
+        lengthMetres: 36.72,
+        widthMetres: 31.07
+      },
+      surveyed: {
+        anchor: [
+          4.908084419995939,
+          52.37221650948196
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012170633 footprint (OSM w268782366) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#8f4a36",
+        stone: "#e3d6aa",
+        slate: "#4b4a4d",
+        glass: "#46535d",
+        frame: "#e9e3cf",
+        dark: "#23262a",
+        white: "#ece6d2",
+        blue: "#8fa6bf",
+        concrete: "#9fb0c0",
+        greyBrick: "#46443f",
+        ochre: "#d9c690"
+      },
+      attribution: {
+        title: "West Indian Warehouse",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/1222",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; window axes, shutters, loading doors, string courses, trapezium gables with oeils-de-boeuf, the WIC pediment and cartouche measured by eye from municipal panoramas and the photographs listed in the research record, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.908318013150391,
+              52.37224499913557
+            ],
+            [
+              4.908311551927349,
+              52.372247732227656
+            ],
+            [
+              4.908292950173896,
+              52.37225559313172
+            ],
+            [
+              4.908286444799795,
+              52.37225833503153
+            ],
+            [
+              4.908173609753654,
+              52.37230601672127
+            ],
+            [
+              4.908167148512833,
+              52.372308749805406
+            ],
+            [
+              4.908148546805288,
+              52.37231660169931
+            ],
+            [
+              4.908142041316253,
+              52.372319352578465
+            ],
+            [
+              4.908056924356497,
+              52.37235531848438
+            ],
+            [
+              4.90805658507861,
+              52.37235546091467
+            ],
+            [
+              4.907955286497574,
+              52.37231389627353
+            ],
+            [
+              4.907954086536732,
+              52.37231487107614
+            ],
+            [
+              4.907832799801911,
+              52.37226543308916
+            ],
+            [
+              4.907833912147811,
+              52.372264412994596
+            ],
+            [
+              4.9078308565716675,
+              52.37226316930902
+            ],
+            [
+              4.907725023390649,
+              52.37222002225034
+            ],
+            [
+              4.9077242769540526,
+              52.372219794535134
+            ],
+            [
+              4.907918990524282,
+              52.372119219561576
+            ],
+            [
+              4.907911427515909,
+              52.37211384126569
+            ],
+            [
+              4.907964676022443,
+              52.37208633872565
+            ],
+            [
+              4.907954825168964,
+              52.372079333386424
+            ],
+            [
+              4.907983324794549,
+              52.372064610040304
+            ],
+            [
+              4.908119074105539,
+              52.37199449806736
+            ],
+            [
+              4.908236415141801,
+              52.37207613172469
+            ],
+            [
+              4.9081689753514235,
+              52.372112393908665
+            ],
+            [
+              4.908288487185221,
+              52.372195654079775
+            ],
+            [
+              4.908355912321317,
+              52.37215939176897
+            ],
+            [
+              4.908418000825401,
+              52.37220260405411
+            ],
+            [
+              4.908318013150391,
+              52.37224499913557
+            ]
+          ]
+        ]
+      }
     }
   ];
 
@@ -47816,6 +48101,31 @@
       additionalSources: [
         "https://seapalace.nl/en/",
         "https://seapalace.nl/en/directions/"
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "de-school",
+      landmarkId: "n2811980599",
+      name: "De School (Tilla Tec)",
+      description: "This long concrete slab with ribbons of red-framed windows is a former technical school from the late 1960s, on Dr. Jan van Breemenstraat. A low saw-tooth workshop wing runs off its north side, and the entrance sits under a flat canopy beside a green-framed concrete pavilion. From 2016 it housed De School, a club, restaurant, gallery and gym, and the Tilla Tec venue now uses the same building.",
+      funFact: "The club De School ran its 24-hour dance floor in the school's old bicycle store in the basement, and closed in January 2024 when its municipal permits expired.",
+      sourceUrl: "https://en.wikipedia.org/wiki/De_School",
+      additionalSources: [
+        "https://djmag.com/top100clubs/2019/57/De-School",
+        "https://www.tillatec.com/"
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "west-indisch-pakhuis",
+      landmarkId: "extract_landmarks_76787173",
+      name: "West Indian Warehouse",
+      description: "The West India Company's warehouse of 1641-1642 at 's-Gravenhekje 1A is a four-storey red-brick block banded with cream natural stone. Its long front carries two trapezium gables with oeils-de-boeuf and date stones reading ANNO and 1642, split by a triangular pediment with the company's monogram, and the lower tier still has the barred windows and tall loading doors of a working warehouse. Upper floors keep their blue shutters.",
+      funFact: "The two gables each carry a plaque, one reading ANNO and the other 1642, so the building spells out its own date across the roofline.",
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/1222",
+      additionalSources: [
+        "https://commons.wikimedia.org/wiki/Category:West-Indisch_Pakhuis"
       ],
       preferDescription: true
     }
