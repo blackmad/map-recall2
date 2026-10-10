@@ -1,0 +1,214 @@
+{
+ "street": "Marnixstraat",
+ "seed": "0363100012169393",
+ "members": [
+  "0363100012169393"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012168218 38.7 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012173498 81.3 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012168300",
+   "reason": "no frontage on Marnixstraat: No footprint edge faces Marnixstraat"
+  },
+  {
+   "pandId": "0363100012168301",
+   "reason": "frontage 41.1 m from Marnixstraat"
+  },
+  {
+   "pandId": "0363100012168309",
+   "reason": "frontage 43.9 m from Marnixstraat"
+  },
+  {
+   "pandId": "0363100012168311",
+   "reason": "frontage 40.1 m from Marnixstraat"
+  },
+  {
+   "pandId": "0363100012169394",
+   "reason": "frontage 58.6 m from Marnixstraat"
+  },
+  {
+   "pandId": "0363100012173497",
+   "reason": "sightline to Marnixstraat crosses 0363100012174989"
+  },
+  {
+   "pandId": "0363100012173499",
+   "reason": "sightline to Marnixstraat crosses 0363100012173498"
+  },
+  {
+   "pandId": "0363100012173500",
+   "reason": "sightline to Marnixstraat crosses 0363100012185765"
+  },
+  {
+   "pandId": "0363100012173501",
+   "reason": "sightline to Marnixstraat crosses 0363100012185764"
+  },
+  {
+   "pandId": "0363100012174812",
+   "reason": "frontage 49.9 m from Marnixstraat"
+  },
+  {
+   "pandId": "0363100012174904",
+   "reason": "frontage 50.3 m from Marnixstraat"
+  },
+  {
+   "pandId": "0363100012174905",
+   "reason": "frontage 60.6 m from Marnixstraat"
+  },
+  {
+   "pandId": "0363100012174906",
+   "reason": "sightline to Marnixstraat crosses 0363100012168300"
+  },
+  {
+   "pandId": "0363100012174907",
+   "reason": "sightline to Marnixstraat crosses 0363100012168300"
+  },
+  {
+   "pandId": "0363100012174908",
+   "reason": "frontage 54.3 m from Marnixstraat"
+  },
+  {
+   "pandId": "0363100012174990",
+   "reason": "sightline to Marnixstraat crosses 0363100012185766"
+  },
+  {
+   "pandId": "0363100012168165",
+   "reason": "sightline to Marnixstraat crosses 0363100012168167"
+  },
+  {
+   "pandId": "0363100012168217",
+   "reason": "sightline to Marnixstraat crosses 0363100012168218"
+  },
+  {
+   "pandId": "0363100012168231",
+   "reason": "sightline to Marnixstraat crosses 0363100012168230"
+  },
+  {
+   "pandId": "0363100012168233",
+   "reason": "frontage 43.0 m from Marnixstraat"
+  },
+  {
+   "pandId": "0363100012168234",
+   "reason": "no frontage on Marnixstraat: No footprint edge faces Marnixstraat"
+  },
+  {
+   "pandId": "0363100012168237",
+   "reason": "no frontage on Marnixstraat: No footprint edge faces Marnixstraat"
+  },
+  {
+   "pandId": "0363100012168290",
+   "reason": "no frontage on Marnixstraat: No footprint edge faces Marnixstraat"
+  },
+  {
+   "pandId": "0363100012174190",
+   "reason": "sightline to Marnixstraat crosses 0363100012174192"
+  },
+  {
+   "pandId": "0363100012174191",
+   "reason": "sightline to Marnixstraat crosses 0363100012174192"
+  },
+  {
+   "pandId": "0363100012174193",
+   "reason": "sightline to Marnixstraat crosses 0363100012174292"
+  },
+  {
+   "pandId": "0363100012174194",
+   "reason": "sightline to Marnixstraat crosses 0363100012174292"
+  },
+  {
+   "pandId": "0363100012174195",
+   "reason": "sightline to Marnixstraat crosses 0363100012168167"
+  },
+  {
+   "pandId": "0363100012174635",
+   "reason": "frontage 49.0 m from Marnixstraat"
+  },
+  {
+   "pandId": "0363100012174798",
+   "reason": "frontage 44.2 m from Marnixstraat"
+  },
+  {
+   "pandId": "0363100012174799",
+   "reason": "no frontage on Marnixstraat: No footprint edge faces Marnixstraat"
+  },
+  {
+   "pandId": "0363100012174800",
+   "reason": "frontage 64.3 m from Marnixstraat"
+  },
+  {
+   "pandId": "0363100012174804",
+   "reason": "sightline to Marnixstraat crosses 0363100012174803"
+  },
+  {
+   "pandId": "0363100012174805",
+   "reason": "sightline to Marnixstraat crosses 0363100012174802"
+  },
+  {
+   "pandId": "0363100012174816",
+   "reason": "no frontage on Marnixstraat: No footprint edge faces Marnixstraat"
+  },
+  {
+   "pandId": "0363100012174991",
+   "reason": "sightline to Marnixstraat crosses 0363100012173498"
+  },
+  {
+   "pandId": "0363100012168305",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012173503",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174813",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168230",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174802",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174803",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174814",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174815",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174992",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012169393",
+   "alongM": 0,
+   "widthM": 31.47,
+   "eavesM": 14.48,
+   "roofMaxM": 17.07,
+   "storeys3dbag": 0,
+   "builtYear": 2006,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}
