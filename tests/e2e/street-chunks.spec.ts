@@ -7,7 +7,8 @@ import { openRoute } from './helpers';
 //   PW_PORT=4403 npx playwright test street-chunks --project=desktop --project=iphone
 // Each mode (off = ?streetChunks=0, per-house models; on = the default) screenshots the same free-camera views and
 // records what the layer holds: entries, meshes, triangles, requests, suppression, hover resolution, frame times.
-const OUT = 'artifacts/street-chunks/in-game';
+// SHARED_FRAME=1 repeats the run with ?sharedFrame=1 (one three.js frame for the page).
+const OUT = process.env.SHARED_FRAME ? 'artifacts/street-chunks/in-game-shared' : 'artifacts/street-chunks/in-game';
 const manifest = JSON.parse(readFileSync('public/canal-drive/ordinary-buildings-data/chunks.json', 'utf8'));
 const chunk = manifest.chunks.slice().sort((a: any, b: any) => b.pands.length - a.pands.length)[0];
 
@@ -36,7 +37,7 @@ for (const mode of ['off', 'on'] as const) {
     mkdirSync(OUT, { recursive: true });
     const requests: string[] = [];
     page.on('request', r => { if (/\.glb/.test(r.url()) && /recipe-bilder|chunk-/.test(r.url())) requests.push(r.url().split('?')[0].split('/').pop()!); });
-    await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: mode === 'off' ? '?streetChunks=0' : '' });
+    await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: [mode === 'off' ? 'streetChunks=0' : '', process.env.SHARED_FRAME ? 'sharedFrame=1' : ''].filter(Boolean).map((q, i, a) => (i ? '&' : '?') + q).join('') });
     await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 });
     const at = ahead(ahead(chunk.instance.anchor, bearing, -12), outward, 9);
     await parkAt(page, at, ahead(at, bearing, 40));
@@ -103,6 +104,7 @@ for (const mode of ['off', 'on'] as const) {
     // Layer render cost: the custom layer's own render(), CPU submit time and with a GPU sync (gl.finish).
     const layerCost = await page.evaluate(async () => {
       const vm = (window as any).canalRecallGame.vectorMap, layer = vm._signatureLandmarks.layer, map = vm.map;
+      if (!layer || vm._signatureLandmarks.sharedFrame) return null; // ?sharedFrame=1: no own custom layer to time
       const original = layer.render, submit: number[] = [], synced: number[] = [];
       layer.render = function (gl: WebGLRenderingContext, args: unknown) {
         const t0 = performance.now(); original.call(this, gl, args); const t1 = performance.now(); gl.finish(); const t2 = performance.now();
@@ -110,7 +112,7 @@ for (const mode of ['off', 'on'] as const) {
       };
       await new Promise<void>(resolve => { let n = 0; const tick = () => { map.triggerRepaint(); if (++n < 150) requestAnimationFrame(tick); else resolve(); }; tick(); });
       layer.render = original;
-      const q = (v: number[], f: number) => { const a = [...v].sort((x, y) => x - y); return +a[Math.floor(a.length * f)].toFixed(3); };
+      const q = (v: number[], f: number) => { if (!v.length) return 0; const a = [...v].sort((x, y) => x - y); return +a[Math.floor(a.length * f)].toFixed(3); };
       const mean = (v: number[]) => +(v.reduce((a, b) => a + b, 0) / v.length).toFixed(3);
       return { frames: submit.length, submitMeanMs: mean(submit), syncedMeanMs: mean(synced), submitMedianMs: q(submit, 0.5), submitP95Ms: q(submit, 0.95), syncedMedianMs: q(synced, 0.5), syncedP95Ms: q(synced, 0.95) };
     });
