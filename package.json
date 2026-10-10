@@ -24,6 +24,7 @@
     "build:own-map": "node --import tsx scripts/own-map/build-own-map.ts",
     "check:own-ground-cells": "node --import tsx scripts/own-ground/check-ground-cells.ts",
     "test:fit-golden": "node --import tsx scripts/building-recipes/fit-golden.ts",
+    "audit:landmark-filler": "node --max-old-space-size=8192 --import tsx scripts/audit-landmark-filler.ts --check",
     "test:prism-pick": "node --import tsx --test src/canalRecall/prismPick.test.ts && tsx scripts/check-poi-click-selection.ts",
     "test:block-face": "node --import tsx --test src/canalRecall/blockFace/*.test.ts",
     "block-face:intake": "node --import tsx scripts/block-face/intake.ts",

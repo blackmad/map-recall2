@@ -19,6 +19,15 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
+- **Landmark filler audit offenders (measured, unconfirmed in game)**:
+  `npm run audit:landmark-filler` lists models that hide buildings they do not
+  cover (hotel-jakarta BAG …247056 1,640 m², sint-agneskerk, national-holocaust-
+  museum) and generic boxes inside/above models (OBA Oosterdok 48 m vs 37 m
+  model, RAI ~11,000 m² above the roof, Sloterdijk, Melkweg, Felix Meritis,
+  Stadsschouwburg, Pathé City — the Pathé shot shows a grey box in front).
+  Review each in game. Also: kiosks under 14 m² draw as bare boxes (Westermarkt
+  76/78/82); the Muziekgebouw model's Bimhuis box is half off its OSM part;
+  Mövenpick could get an ordinary one-off later.
 - **Discard 3DBAG roof geometry on faces (user, 2026-10-10)**: on
   street-surveys.html (bilder-081118-155417) dark 3DBAG roof masses stand
   above and beside the gables where the photo shows none. Generate roofs
