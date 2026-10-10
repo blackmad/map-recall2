@@ -113,6 +113,15 @@ export interface BlockFaceIntent {
      * its authored crown (reported). Absent = the authored crown, byte-identical.
      */
     crownFromPhoto?: {pand: string; front?: string; evidence: string}[];
+    /**
+     * Roof mass source (blockFace/recipeRoof.ts). `recipe`: generated from the design (front eaves, attic storey, plot
+     * depth) with 3DBAG as footprint and upper bound only; `keepSurvey` lists pands that keep their 3DBAG roof (with a
+     * reason in `evidence`). Absent = `survey` (3DBAG LoD2.2 after roofCleanup), byte-identical to before.
+     */
+    roof?: {source: 'recipe' | 'survey'; keepSurvey?: string[]; evidence?: string;
+      /** Pitch of the attic face (degrees, default 70: a steep tiled attic over the eaves, Bilderdijkstraat). A low pitch
+       * (about 30) keeps the roof out of sight from the street, for fronts where the photo shows sky above the cornice. */
+      pitchDeg?: number};
     /** Clip street-side details at oblique party walls on every house of the face (FrontIntent `partyClip`). */
     partyClip?: boolean;
     notes?: string[];
@@ -221,6 +230,13 @@ export function validateBlockFace(input: unknown, order?: string[]): BlockFaceIn
     const key = `${c.pand}/${c.front ?? '*'}`;
     if (photoSeen.has(key)) problems.push(`${at}: ${key} listed twice`);
     photoSeen.add(key);
+  }
+  const roof = face?.continuity?.roof;
+  if (roof !== undefined) {
+    if (!['recipe', 'survey'].includes(roof?.source)) problems.push('continuity.roof.source must be "recipe" or "survey"');
+    for (const p of roof?.keepSurvey ?? []) if (!pands.has(p)) problems.push(`continuity.roof.keepSurvey lists ${p}, not on this face`);
+    if (roof?.pitchDeg !== undefined && !(roof.pitchDeg >= 15 && roof.pitchDeg <= 80)) problems.push('continuity.roof.pitchDeg: 15-80 degrees');
+    if (roof?.keepSurvey?.length && !roof.evidence) problems.push('continuity.roof.keepSurvey needs evidence (why those pands keep the 3DBAG roof)');
   }
   if (face?.continuity?.partyClip !== undefined && typeof face.continuity.partyClip !== 'boolean') problems.push('continuity.partyClip must be boolean');
   if (problems.length) throw Error(`Invalid block face ${face?.id ?? '?'}:\n - ${problems.join('\n - ')}`);
