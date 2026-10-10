@@ -47,7 +47,8 @@ for (const chunk of faces) {
     // Street level from across the street (pedestrian/rider height), and an oblique along the face.
     const half = (chunk.bounds.max[0] - chunk.bounds.min[0]) / 2;
     const views: [string, number[], number[], number][] = [
-      ['street', ahead(chunk.instance.anchor, outward, Math.max(16, half * 0.9)), ahead(chunk.instance.anchor, outward, -1), 2.5],
+      // Mid-street (7 m out): on narrow streets (Utrechtsestraat ~12 m) further out is inside the facing building.
+      ['street', ahead(chunk.instance.anchor, outward, 7), ahead(chunk.instance.anchor, outward, -1), 1.7],
       ['oblique', ahead(ahead(chunk.instance.anchor, outward, 10), bearing, -half - 12), ahead(chunk.instance.anchor, bearing, half * 0.3), 3],
     ];
     for (const [name, eye, target, height] of views) {
