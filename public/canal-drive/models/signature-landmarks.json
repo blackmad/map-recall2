@@ -37521,10 +37521,11 @@
         "source": "PDOK BAG 0363100012250152 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
       },
       "materialOverrides": {
-        "dark": "#343b40",
-        "glass": "#86a3b3",
-        "concrete": "#8c8d8a",
-        "frame": "#4a5258",
+        "dark": "#1f282d",
+        "glass": "#5f90ab",
+        "concrete": "#7d8082",
+        "frame": "#2c363c",
+        "red": "#a0663a",
         "white": "#f1f1ee"
       },
       "preservePositionPrecision": true,
@@ -37680,18 +37681,18 @@
         ]
       },
       "status": "held",
-      "heldReason": "2026-10-10: flat 3DBAG glass box; needs the stepped/offset floor plates, terraces, entrance link and reflective glass (rework on big/p-20261010).",
+      "heldReason": "2026-10-10: plate rework (2b5bbec4) still reads as a gridded glass box: needs the curved, stepped south front cantilevered over the deep entrance plaza (BAG ring is straight there; photos are not), thinner bronze plates, and a measured lobby recess (2.0 m was chosen to pass see-through, photos bound it to 2-4 m).",
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -37.73691940307617,
-          -8.544922138753464e-7,
-          -86.99185180664062
+          -37.4379997253418,
+          -9.155273232863692e-7,
+          -86.78833770751953
         ],
         "max": [
-          59.27531051635742,
+          59.05560302734375,
           50.637001037597656,
-          32.66707229614258
+          32.59450149536133
         ]
       },
       "placement": {
@@ -37705,21 +37706,21 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 119.6589241027832,
-        "heightMetres": 50.63700189208987,
-        "depthMetres": 97.0122299194336,
-        "depthCoverage": 0.9957121001686707
+        "widthMetres": 119.38283920288086,
+        "heightMetres": 50.63700195312498,
+        "depthMetres": 96.49360275268555,
+        "depthCoverage": 0.990389025481736
       },
-      "triangles": 18292,
-      "bytes": 263884,
+      "triangles": 26947,
+      "bytes": 378924,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true,
       "lod1": {
-        "sourceHash": "9b5c3333e5a00eba",
+        "sourceHash": "4b31782adaa00c66",
         "buildVersion": 2,
-        "bytes": 64764,
-        "triangles": 3294
-      }
+        "bytes": 90108,
+        "triangles": 4833
+      },
+      "held": true
     },
     "shell-technology-centre": {
       "id": "shell-technology-centre",
