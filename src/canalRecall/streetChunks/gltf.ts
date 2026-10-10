@@ -21,7 +21,7 @@ export interface ChunkGlbInput {
   maxBytes?: number;
 }
 
-const SLOT_ORDER = ['brick', 'accent', 'stone', 'frame', 'door', 'glass', 'roofTile', 'slate', 'bitumen'];
+const SLOT_ORDER = ['brick', 'stucco', 'accent', 'stone', 'frame', 'door', 'glass', 'roofTile', 'slate', 'bitumen'];
 
 export async function writeChunkGlb(input: ChunkGlbInput): Promise<{bytes: Uint8Array; triangles: number; primitives: number; quantized: boolean}> {
   const doc = new Document(), buffer = doc.createBuffer(), scene = doc.createScene(input.name), mesh = doc.createMesh(input.name);

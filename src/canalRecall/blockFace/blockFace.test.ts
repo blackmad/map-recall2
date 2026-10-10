@@ -124,3 +124,28 @@ test('Utrechtsestraat 48-76: 4-front pand, photo-trusted twin gables, front slit
   assert.ok(r.interference.every(i => Math.abs(i.frontGapM) <= 0.05));
   assert.equal(houseIntents(face).find(i => i.pandId.endsWith('178875'))!.fronts.length, 4);
 });
+
+test('strip-review regressions (schema 2026-10-10): off-centre gables, unequal bays, entrance bay beside the shop, two-storey shop, stucco', () => {
+  const bilder = load(), bf = facts(bilder), bi = houseIntents(bilder);
+  const build = (intents: typeof bi, suffix: string, facts: Map<string, BuildingFacts>) => { const i = intents.find(x => x.pandId.endsWith(suffix))!; return compileBuilding(i, facts.get(i.pandId)!); };
+  const peakAt = (b: ReturnType<typeof compileBuilding>) => { const p = b.recipe.elevations[0].crown!.value.profile, top = Math.max(...p.map(q => q[1])), xs = p.filter(q => q[1] >= top - 1e-6).map(q => q[0]); return (Math.min(...xs) + Math.max(...xs)) / 2 / b.fit.fronts[0].widthM; };
+  // 081118 (strip pand 1): gable over the right two-thirds. 156286 (pand 5): over the right bay. Not centred.
+  assert.ok(peakAt(build(bi, '081118', bf)) > 0.62, '081118 gable right of centre');
+  assert.ok(peakAt(build(bi, '156286', bf)) > 0.6, '156286 gable over the right bay');
+  // 157650: narrow left entrance bay with its own door and wall, the shop only in the wide right bay; unequal windows.
+  const bike = build(bi, '157650', bf), e = bike.recipe.elevations[0], W = bike.fit.fronts[0].widthM, door = e.openings.value.find(o => o.id === 'door')!;
+  const glass = e.openings.value.filter(o => o.id.startsWith('shop-'));
+  assert.ok(door.leftM + door.widthM < W * 0.39 && glass.every(o => o.leftM >= W * 0.39 - 0.01), 'entrance bay has no shop glass');
+  const row = e.openings.value.filter(o => /^s2-b\d$/.test(o.id)).sort((a, b) => a.leftM - b.leftM);
+  assert.ok(row[1].widthM > row[0].widthM * 1.4, 'wide studio window vs narrow left window');
+  // 156286: the left bay holds a pair of narrow windows, the right bay one wide window.
+  const dirk = build(bi, '156286', bf).recipe.elevations[0].openings.value.filter(o => /^s2-b\d$/.test(o.id)).sort((a, b) => a.leftM - b.leftM);
+  assert.equal(dirk.length, 3); assert.ok(dirk[2].widthM > dirk[0].widthM * 2.5);
+  // Utrechtsestraat: 76's gable over the left two-thirds; Concerto b's shop is two storeys; 70-72 and 62 are stucco.
+  const dir = 'scripts/block-face/faces/utrechtse-48-76', ut = validateBlockFace(JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8')));
+  const uf = new Map(ut.houses.map(h => [h.pandId, JSON.parse(fs.readFileSync(path.join(dir, 'pands', h.pandId, 'facts.json'), 'utf8')) as BuildingFacts])), ui = houseIntents(ut);
+  assert.ok(peakAt(build(ui, '178784', uf)) < 0.45, '76 gable left of centre');
+  const concerto = ui.find(i => i.pandId.endsWith('178875'))!;
+  assert.equal(concerto.fronts.find(f => f.id === 'b')!.shopfront!.storeys, 2);
+  assert.deepEqual(ui.filter(i => i.palette.wallMaterial === 'stucco').map(i => i.pandId.slice(-6)), ['178705', '169208']);
+});

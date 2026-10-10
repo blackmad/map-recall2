@@ -38,7 +38,7 @@ const matrixFor = (frame: FrontFrame, anchorRD: P2) => { const m = localToFrameM
 
 /** Extent along X of a house's street-facing brick faces, and the depth (Z) of that facade plane near x. */
 function facadeProbe(buckets: BucketMap) {
-  const brick = [...buckets.values()].filter(b => b.slot === 'brick');
+  const brick = [...buckets.values()].filter(b => b.slot === 'brick' || b.slot === 'stucco');
   let minX = Infinity, maxX = -Infinity;
   const faces: {x: number; z: number}[] = [];
   for (const b of brick) for (let t = 0; t < b.positions.length / 9; t++) {

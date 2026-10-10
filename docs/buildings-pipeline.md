@@ -454,6 +454,19 @@ windows; 156286's paired windows), a shopfront spans the whole width even where 
 (Utrechtsestraat 62, 70-72), 3DBAG hip roofs show above cornices in the orthographic view, lettering on glass is low
 contrast, and facade-compare's gable-peak count reads 0 on chunk spans (unreliable there; window rows are reliable).
 
+### Schema additions (2026-10-10, strip-review limits fixed)
+
+All optional; houses that do not use them fit byte-identically (`node --import tsx scripts/building-recipes/fit-golden.ts`
+checks every per-house recipe against `fit-golden.json`; re-record with `--write` only for an intended change).
+Front: `bayWidths` (relative widths per axis, `axisGrid` entries; windows centre in their bay, 58 % of its width),
+`storeyBayWidths` (own weights for one storey, `{"4": [0.34, 0.28, 0.38]}`), `crownAt` (`{from, to}` fractions of the front
+from the viewer's left) or `crownBays` (`{from, to}` inclusive axes); gable windows and hoist follow the crown.
+Shopfront: `bays` (`[first, last]` axes the shop occupies; `doorBay` is then a residential entrance beside it with its own
+wall; the validator rejects overlap) and `storeys: 2` (double-height glass, mezzanine transom + band, fascia at the top,
+storey-1 windows in the span dropped). Palette: `wallMaterial: "stucco"` puts the wall in the `stucco` look slot.
+Why white stucco read beige: it shared the `brick` slot, whose tint clamps lightness to 0.30-0.60 and floors saturation
+at 0.12 on a mid-grey brick texture; the `stucco` slot keeps authored hue/saturation on a plain plaster texture.
+
 ### Recommendation
 
 Make the block face the default authoring unit for ordinary attached buildings. The author sees what decides

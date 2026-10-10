@@ -11,7 +11,7 @@
  * untextured blocks.
  *
  * This module makes them share that look: GLB materials carrying a
- * `materialSlot` extra (brick, accent, stone, frame, door, glass, roofTile,
+ * `materialSlot` extra (brick, stucco, accent, stone, frame, door, glass, roofTile,
  * slate, bitumen) are replaced by one small shader that samples the same kind
  * of cell texture, multiplies by the slot tint mapped into the city palette
  * range, and applies the city's fixed-light shade from the ENU normal.
@@ -22,8 +22,8 @@
  */
 import {paintRoofCell} from '../roofCells.ts';
 
-export type RecipeSlot = 'brick' | 'accent' | 'stone' | 'frame' | 'door' | 'glass' | 'roofTile' | 'slate' | 'bitumen';
-export const RECIPE_SLOTS: readonly RecipeSlot[] = ['brick', 'accent', 'stone', 'frame', 'door', 'glass', 'roofTile', 'slate', 'bitumen'];
+export type RecipeSlot = 'brick' | 'stucco' | 'accent' | 'stone' | 'frame' | 'door' | 'glass' | 'roofTile' | 'slate' | 'bitumen';
+export const RECIPE_SLOTS: readonly RecipeSlot[] = ['brick', 'stucco', 'accent', 'stone', 'frame', 'door', 'glass', 'roofTile', 'slate', 'bitumen'];
 
 type RGB = [number, number, number];
 const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
@@ -70,6 +70,17 @@ export function cityWallTint(hex: string): string {
   const lifted = clamp(0.12 + l * 0.9, CITY_BRICK_LIGHTNESS[0], CITY_BRICK_LIGHTNESS[1]);
   return rgbToHex(hslToRgb([h, clamp(s, 0.12, 0.5), lifted]));
 }
+/**
+ * Rendered/painted plaster (`stucco` slot, intent `palette.wallMaterial: 'stucco'`). The brick tint is wrong for it twice:
+ * it clamps lightness to the city brick range (L <= 0.6, so a white wall lands at tan) and floors saturation at 0.12
+ * (so any neutral gains a warm cast), and the brick texture is a mid-grey photo. Stucco keeps the authored hue and
+ * saturation and only lifts lightness a little (the city multiplies tint x texture x shade, which darkens a pale
+ * wall by about 10 %), so white stays white, cream cream and grey grey.
+ */
+export function cityStuccoTint(hex: string): string {
+  const [h, s, l] = rgbToHsl(hexToRgb(hex));
+  return rgbToHex(hslToRgb([h, clamp(s, 0, 0.55), clamp(l * 1.06 + 0.03, 0.4, 0.97)]));
+}
 /** Light frames take the city's cream-white; dark painted frames stay dark but readable. */
 export function cityFrameTint(hex: string): string {
   const rgb = hexToRgb(hex), [h, s, l] = rgbToHsl(rgb);
@@ -102,6 +113,7 @@ export function cityRoofTint(slot: 'roofTile' | 'slate' | 'bitumen', hex: string
 export function cityTint(slot: RecipeSlot, hex: string): string {
   switch (slot) {
     case 'brick': case 'accent': return cityWallTint(hex);
+    case 'stucco': return cityStuccoTint(hex);
     case 'stone': return cityStoneTint(hex);
     case 'frame': return cityFrameTint(hex);
     case 'door': return cityDoorTint(hex);
@@ -121,7 +133,7 @@ export function cityShade([e, n, u]: RGB): number {
 }
 
 /** Texture repeat per slot in metres (UVs are metres; glass UVs are 0..1 per pane). */
-export const SLOT_TILE_M: Record<RecipeSlot, number> = {brick: 3.36, accent: 3.36, stone: 1.28, frame: 1, door: 1, glass: 1, roofTile: 1.2, slate: 1.2, bitumen: 1.2};
+export const SLOT_TILE_M: Record<RecipeSlot, number> = {brick: 3.36, stucco: 2.4, accent: 3.36, stone: 1.28, frame: 1, door: 1, glass: 1, roofTile: 1.2, slate: 1.2, bitumen: 1.2};
 
 const VERTEX = /* glsl */ `
 uniform mat3 enuFromWorld;
@@ -200,6 +212,21 @@ function paintDoorCanvas(doc: Document): HTMLCanvasElement {
   for (let x = 0; x < 128; x += 16) ctx.fillRect(x, 0, 1.5, 128);
   return canvas;
 }
+/** Plaster: near-white fine grain with a few darker specks and faint trowel streaks (no mortar courses, no brick photo). */
+export function paintStuccoCanvas(doc: Document): HTMLCanvasElement {
+  const canvas = doc.createElement('canvas'); canvas.width = canvas.height = 128;
+  const ctx = canvas.getContext('2d')!, image = ctx.createImageData(128, 128);
+  let seed = 23; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let y = 0; y < 128; y++) {
+    const streak = (rnd() - 0.5) * 3;
+    for (let x = 0; x < 128; x++) {
+      const i = (y * 128 + x) * 4, speck = rnd() < 0.012 ? -14 : 0, v = 243 + (rnd() - 0.5) * 8 + streak + speck;
+      image.data[i] = image.data[i + 1] = image.data[i + 2] = v; image.data[i + 3] = 255;
+    }
+  }
+  ctx.putImageData(image, 0, 0);
+  return canvas;
+}
 function paintStoneCanvas(doc: Document): HTMLCanvasElement {
   const canvas = doc.createElement('canvas'); canvas.width = canvas.height = 128;
   const ctx = canvas.getContext('2d')!, image = ctx.createImageData(128, 128);
@@ -250,6 +277,7 @@ export function createRecipeLook(THREE: any, options: {document?: Document; bric
     switch (slot) {
       case 'brick': case 'accent': return texture('brick', () => paintBrickCanvas(doc, options.brick));
       case 'glass': { const t = texture('glass', () => paintGlassCanvas(doc)); t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping; return t; }
+      case 'stucco': return texture('stucco', () => paintStuccoCanvas(doc));
       case 'door': return texture('door', () => paintDoorCanvas(doc));
       case 'stone': return texture('stone', () => paintStoneCanvas(doc));
       case 'frame': return texture('flat-white', () => { const c = doc.createElement('canvas'); c.width = c.height = 4; const x = c.getContext('2d')!; x.fillStyle = '#fff'; x.fillRect(0, 0, 4, 4); return c; });

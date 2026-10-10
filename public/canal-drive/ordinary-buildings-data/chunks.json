@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-10T03:23:17.756Z",
+ "generatedAt": "2026-10-10T07:32:55.243Z",
  "chunks": [
   {
    "id": "chunk-bilder-080336-x4",
@@ -1006,10 +1006,10 @@
   {
    "id": "chunk-face-bilder-081118-155417",
    "name": "face-bilder-081118-155417",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-081118-155417.glb?asset=92dd0404a8fbd1d4",
-   "sha256": "92dd0404a8fbd1d44d6b81e879a473f1a045501314d0b1b2d9bb434830d8199c",
-   "bytes": 1014180,
-   "triangles": 15468,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-081118-155417.glb?asset=ed650443481292ce",
+   "sha256": "ed650443481292ceaaedca8c01c3d73cd5c9732bf11d1eaa6968a1aad29e99a3",
+   "bytes": 1048032,
+   "triangles": 16020,
    "primitives": 23,
    "instance": {
     "anchor": [
@@ -1282,16 +1282,16 @@
       ],
       "max": [
        -16.076,
-       17.913,
+       17.917,
        0.175
       ]
      },
-     "triangles": 2200,
+     "triangles": 2276,
      "ranges": [
       {
        "primitive": 2,
        "firstTriangle": 0,
-       "triangleCount": 125
+       "triangleCount": 153
       },
       {
        "primitive": 7,
@@ -1301,7 +1301,7 @@
       {
        "primitive": 9,
        "firstTriangle": 0,
-       "triangleCount": 1120
+       "triangleCount": 1168
       },
       {
        "primitive": 10,
@@ -1356,7 +1356,7 @@
      "ranges": [
       {
        "primitive": 2,
-       "firstTriangle": 125,
+       "firstTriangle": 153,
        "triangleCount": 188
       },
       {
@@ -1366,7 +1366,7 @@
       },
       {
        "primitive": 9,
-       "firstTriangle": 1120,
+       "firstTriangle": 1168,
        "triangleCount": 1144
       },
       {
@@ -1424,16 +1424,16 @@
       ],
       "max": [
        -2.377,
-       17.265,
+       17.605,
        0.175
       ]
      },
-     "triangles": 1205,
+     "triangles": 1303,
      "ranges": [
       {
        "primitive": 1,
        "firstTriangle": 0,
-       "triangleCount": 53
+       "triangleCount": 111
       },
       {
        "primitive": 7,
@@ -1442,8 +1442,8 @@
       },
       {
        "primitive": 9,
-       "firstTriangle": 2264,
-       "triangleCount": 548
+       "firstTriangle": 2312,
+       "triangleCount": 656
       },
       {
        "primitive": 10,
@@ -1458,12 +1458,12 @@
       {
        "primitive": 18,
        "firstTriangle": 42,
-       "triangleCount": 184
+       "triangleCount": 128
       },
       {
        "primitive": 19,
        "firstTriangle": 552,
-       "triangleCount": 132
+       "triangleCount": 120
       },
       {
        "primitive": 20,
@@ -1518,7 +1518,7 @@
       },
       {
        "primitive": 9,
-       "firstTriangle": 2812,
+       "firstTriangle": 2968,
        "triangleCount": 1020
       },
       {
@@ -1528,12 +1528,12 @@
       },
       {
        "primitive": 18,
-       "firstTriangle": 226,
+       "firstTriangle": 170,
        "triangleCount": 452
       },
       {
        "primitive": 19,
-       "firstTriangle": 684,
+       "firstTriangle": 672,
        "triangleCount": 252
       },
       {
@@ -1575,17 +1575,17 @@
        0.646
       ]
      },
-     "triangles": 2385,
+     "triangles": 2763,
      "ranges": [
       {
        "primitive": 4,
        "firstTriangle": 0,
-       "triangleCount": 187
+       "triangleCount": 185
       },
       {
        "primitive": 6,
        "firstTriangle": 288,
-       "triangleCount": 300
+       "triangleCount": 432
       },
       {
        "primitive": 7,
@@ -1594,8 +1594,8 @@
       },
       {
        "primitive": 9,
-       "firstTriangle": 3832,
-       "triangleCount": 780
+       "firstTriangle": 3988,
+       "triangleCount": 996
       },
       {
        "primitive": 12,
@@ -1605,7 +1605,7 @@
       {
        "primitive": 14,
        "firstTriangle": 0,
-       "triangleCount": 172
+       "triangleCount": 140
       },
       {
        "primitive": 17,
@@ -1614,13 +1614,13 @@
       },
       {
        "primitive": 19,
-       "firstTriangle": 936,
-       "triangleCount": 192
+       "firstTriangle": 924,
+       "triangleCount": 252
       },
       {
        "primitive": 20,
        "firstTriangle": 25,
-       "triangleCount": 18
+       "triangleCount": 22
       },
       {
        "primitive": 22,
@@ -1660,7 +1660,7 @@
       },
       {
        "primitive": 6,
-       "firstTriangle": 588,
+       "firstTriangle": 720,
        "triangleCount": 432
       },
       {
@@ -1670,7 +1670,7 @@
       },
       {
        "primitive": 9,
-       "firstTriangle": 4612,
+       "firstTriangle": 4984,
        "triangleCount": 1068
       },
       {
@@ -1680,17 +1680,17 @@
       },
       {
        "primitive": 18,
-       "firstTriangle": 678,
+       "firstTriangle": 622,
        "triangleCount": 372
       },
       {
        "primitive": 19,
-       "firstTriangle": 1128,
+       "firstTriangle": 1176,
        "triangleCount": 252
       },
       {
        "primitive": 20,
-       "firstTriangle": 43,
+       "firstTriangle": 47,
        "triangleCount": 13
       },
       {
@@ -1741,7 +1741,7 @@
       },
       {
        "primitive": 9,
-       "firstTriangle": 5680,
+       "firstTriangle": 6052,
        "triangleCount": 932
       },
       {
@@ -1756,17 +1756,17 @@
       },
       {
        "primitive": 18,
-       "firstTriangle": 1050,
+       "firstTriangle": 994,
        "triangleCount": 92
       },
       {
        "primitive": 19,
-       "firstTriangle": 1380,
+       "firstTriangle": 1428,
        "triangleCount": 252
       },
       {
        "primitive": 20,
-       "firstTriangle": 56,
+       "firstTriangle": 60,
        "triangleCount": 14
       },
       {
@@ -1786,10 +1786,10 @@
   {
    "id": "chunk-face-utrechtse-48-76",
    "name": "face-utrechtse-48-76",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-utrechtse-48-76.glb?asset=269dbbdcc948fa7b",
-   "sha256": "269dbbdcc948fa7b3f9507f823c065b2e6e637b27fdb40fb7624bdddeb28b139",
-   "bytes": 1288716,
-   "triangles": 18877,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-utrechtse-48-76.glb?asset=3c6281c46683d159",
+   "sha256": "3c6281c46683d15977f6d90c50df20d26357bd41f6eda6f074c7ca1642a1f24e",
+   "bytes": 1275564,
+   "triangles": 18653,
    "primitives": 43,
    "instance": {
     "anchor": [
@@ -2172,12 +2172,12 @@
        0.161
       ]
      },
-     "triangles": 1049,
+     "triangles": 1077,
      "ranges": [
       {
        "primitive": 9,
        "firstTriangle": 0,
-       "triangleCount": 67
+       "triangleCount": 77
       },
       {
        "primitive": 12,
@@ -2187,7 +2187,7 @@
       {
        "primitive": 18,
        "firstTriangle": 0,
-       "triangleCount": 680
+       "triangleCount": 692
       },
       {
        "primitive": 24,
@@ -2207,7 +2207,7 @@
       {
        "primitive": 32,
        "firstTriangle": 0,
-       "triangleCount": 15
+       "triangleCount": 21
       },
       {
        "primitive": 34,
@@ -2394,7 +2394,7 @@
       },
       {
        "primitive": 18,
-       "firstTriangle": 680,
+       "firstTriangle": 692,
        "triangleCount": 716
       },
       {
@@ -2414,7 +2414,7 @@
       },
       {
        "primitive": 32,
-       "firstTriangle": 15,
+       "firstTriangle": 21,
        "triangleCount": 7
       },
       {
@@ -2465,7 +2465,7 @@
       },
       {
        "primitive": 18,
-       "firstTriangle": 1396,
+       "firstTriangle": 1408,
        "triangleCount": 716
       },
       {
@@ -2490,7 +2490,7 @@
       },
       {
        "primitive": 32,
-       "firstTriangle": 22,
+       "firstTriangle": 28,
        "triangleCount": 14
       },
       {
@@ -2536,7 +2536,7 @@
       },
       {
        "primitive": 18,
-       "firstTriangle": 2112,
+       "firstTriangle": 2124,
        "triangleCount": 932
       },
       {
@@ -2598,7 +2598,7 @@
        0.489
       ]
      },
-     "triangles": 5172,
+     "triangles": 4920,
      "ranges": [
       {
        "primitive": 1,
@@ -2618,7 +2618,7 @@
       {
        "primitive": 7,
        "firstTriangle": 0,
-       "triangleCount": 362
+       "triangleCount": 326
       },
       {
        "primitive": 14,
@@ -2627,22 +2627,22 @@
       },
       {
        "primitive": 18,
-       "firstTriangle": 3044,
-       "triangleCount": 2476
+       "firstTriangle": 3056,
+       "triangleCount": 2308
       },
       {
        "primitive": 23,
        "firstTriangle": 0,
-       "triangleCount": 500
+       "triangleCount": 488
       },
       {
        "primitive": 31,
        "firstTriangle": 804,
-       "triangleCount": 456
+       "triangleCount": 420
       },
       {
        "primitive": 32,
-       "firstTriangle": 36,
+       "firstTriangle": 42,
        "triangleCount": 82
       },
       {
@@ -2693,12 +2693,12 @@
       },
       {
        "primitive": 18,
-       "firstTriangle": 5520,
+       "firstTriangle": 5364,
        "triangleCount": 604
       },
       {
        "primitive": 23,
-       "firstTriangle": 500,
+       "firstTriangle": 488,
        "triangleCount": 104
       },
       {
@@ -2708,12 +2708,12 @@
       },
       {
        "primitive": 31,
-       "firstTriangle": 1260,
+       "firstTriangle": 1224,
        "triangleCount": 132
       },
       {
        "primitive": 32,
-       "firstTriangle": 118,
+       "firstTriangle": 124,
        "triangleCount": 32
       },
       {
@@ -2764,7 +2764,7 @@
       },
       {
        "primitive": 18,
-       "firstTriangle": 6124,
+       "firstTriangle": 5968,
        "triangleCount": 640
       },
       {
@@ -2784,7 +2784,7 @@
       },
       {
        "primitive": 31,
-       "firstTriangle": 1392,
+       "firstTriangle": 1356,
        "triangleCount": 132
       },
       {
@@ -2840,7 +2840,7 @@
       },
       {
        "primitive": 18,
-       "firstTriangle": 6764,
+       "firstTriangle": 6608,
        "triangleCount": 868
       },
       {
@@ -2855,7 +2855,7 @@
       },
       {
        "primitive": 31,
-       "firstTriangle": 1524,
+       "firstTriangle": 1488,
        "triangleCount": 168
       },
       {

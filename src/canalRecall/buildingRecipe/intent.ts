@@ -71,6 +71,22 @@ export interface FrontIntent {
   storeyAxes?: Record<string, number[]>;
   /** `equal` (default): the outer piers equal the inner ones. `margin`: legacy 9% side margins. */
   piers?: 'equal' | 'margin';
+  /**
+   * Unequal bays. Relative widths (weights; `[1, 2]` = the right bay twice as wide, metres work too: they are
+   * normalised to the front) of the `axisGrid` bays left to right. Every window sits in the middle of its bay and is
+   * as wide as the bay allows, so axes, window widths, balconies and the crown/shop spans below follow the bays.
+   * Default: the shared equal-pier grid. Needs one entry per axis (`axisGrid`, else the widest upper storey).
+   */
+  bayWidths?: number[];
+  /** A storey whose windows do not sit on the shared bays gives its own weights (one per window of that storey; key = storey index from the ground, or "last"), e.g. `{"4": [1, 0.6, 0.6]}` for one far-left and a close pair. */
+  storeyBayWidths?: Record<string, number[]>;
+  /**
+   * Gable/crown that covers only part of the front: `{from, to}` as fractions of the front width from the viewer's
+   * left (`{from: 0.4, to: 1}` = the right 60 %). Gable windows, the hoist and the crown cap follow it. Default: the whole front.
+   */
+  crownAt?: {from: number; to: number};
+  /** Same as `crownAt`, but as the inclusive range of bay axes the crown stands over (`{from: 2, to: 2}` = the third axis); follows `bayWidths`. Not together with `crownAt`. */
+  crownBays?: {from: number; to: number};
   /** Full storeys below the crown, including the ground storey. */
   storeys: number;
   /** Window bays per full storey (one number, or one per storey from the ground up). */
@@ -139,6 +155,15 @@ export interface ShopfrontIntent {
   residentialDoor?: {side: 'left' | 'right'; colour?: string};
   /** Share of the front width the shop occupies from the side opposite the residential door (default 1 without a residential door). */
   shopShare?: number;
+  /**
+   * The shop occupies only these bay axes (inclusive `[first, last]` on the front's grid, see `bayWidths`). The other
+   * ground-floor bays stay wall: `doorBay` then is a residential entrance beside the shop with its own door and wall,
+   * and the other bays keep their windows. The entrance bay must lie outside the range (the validator rejects an overlap).
+   * Not together with `residentialDoor`/`shopShare`.
+   */
+  bays?: [number, number];
+  /** Shop height in storeys: 1 (default) or 2, a double-height display with a mezzanine transom, the fascia at the top; the storey-1 windows in the shop span are dropped. */
+  storeys?: 1 | 2;
   evidence?: string;
 }
 
@@ -159,14 +184,23 @@ export interface ShopSign {
 export const SIGN_MOUNTS = ['fascia', 'wall', 'glazing'] as const;
 /** Characters the sign lettering can draw (signage.ts GLYPHS, case-folded). */
 export const SIGN_TEXT = /^[A-Za-z0-9&'.\- ]{1,40}$/;
-const SHOPFRONT_KEYS = ['colour', 'fascia', 'awning', 'name', 'sign', 'entrance', 'glazing', 'displayWindows', 'stallriser', 'stallriserColour', 'fasciaColour', 'residentialDoor', 'shopShare', 'evidence'];
+const SHOPFRONT_KEYS = ['colour', 'fascia', 'awning', 'name', 'sign', 'entrance', 'glazing', 'displayWindows', 'stallriser', 'stallriserColour', 'fasciaColour', 'residentialDoor', 'shopShare', 'bays', 'storeys', 'evidence'];
 const SIGN_KEYS = ['text', 'textColour', 'mount', 'background', 'span', 'align'];
 
 /** Fabric awning over the shop glass: `extent` is the covered share of the front width, as fractions from the viewer's left (default the whole shop front). */
 export interface ShopAwningIntent { style: typeof AWNING_STYLES[number]; colour: string; extent?: { from: number; to: number } }
 
 /** `band`: a second brick colour for banding and relieving arches (lintel bands become brick stripes). */
-export interface PaletteIntent { brick: string; frame: string; door: string; shutters?: string; stone?: string; band?: string }
+export interface PaletteIntent {
+  brick: string; frame: string; door: string; shutters?: string; stone?: string; band?: string;
+  /**
+   * What `brick` (the wall colour) is made of: `brick` (default; the brick texture) or `stucco` (rendered/painted plaster:
+   * a fine-grain plaster texture that keeps white, cream or grey light, see recipeLook `stucco` slot). House palette only
+   * (a front's palette cannot change the material).
+   */
+  wallMaterial?: typeof WALL_MATERIALS[number];
+}
+export const WALL_MATERIALS = ['brick', 'stucco'] as const;
 
 /** Ordinary canal house: crown/gable family plus a regular bay grid per front. */
 export interface CanalHouseIntent {
@@ -268,6 +302,29 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       if (!Array.isArray(v) || !v.length || v.some((a, i) => !Number.isInteger(a) || a < 0 || a >= grid || (i > 0 && a <= v[i - 1]))) problems.push(`${at}.storeyAxes.${k}: ascending axes within 0..${grid - 1}`);
       else if (Array.isArray(f.bays) && f.bays[k === 'last' ? f.storeys - 1 : Number(k)] !== v.length) problems.push(`${at}.storeyAxes.${k}: ${v.length} axes but bays says ${f.bays[k === 'last' ? f.storeys - 1 : Number(k)]}`);
     }
+    if (f.bayWidths !== undefined) {
+      const grid = f.axisGrid ?? Math.max(...(Array.isArray(f.bays) ? f.bays.slice(f.storeys > 1 ? 1 : 0) : [f.bays]));
+      if (!Array.isArray(f.bayWidths) || f.bayWidths.length !== grid || f.bayWidths.some(w => !(w >= 0.15 && w <= 8))) problems.push(`${at}.bayWidths: ${grid} relative widths (one per axis), each 0.15..8`);
+      else if (Math.max(...f.bayWidths) / Math.min(...f.bayWidths) > 8) problems.push(`${at}.bayWidths: widest bay more than 8x the narrowest`);
+    }
+    for (const [k, v] of Object.entries(f.storeyBayWidths ?? {})) {
+      const s = k === 'last' ? f.storeys - 1 : Number(k), per = Array.isArray(f.bays) ? f.bays[s] : f.bays;
+      if (k !== 'last' && !(Number.isInteger(s) && s >= 0 && s < f.storeys)) problems.push(`${at}.storeyBayWidths.${k}: key must be a storey index or "last"`);
+      else if (!Array.isArray(v) || v.length !== per || v.some(w => !(w >= 0.15 && w <= 8))) problems.push(`${at}.storeyBayWidths.${k}: ${per} relative widths (one per window of that storey), each 0.15..8`);
+      else if (f.storeyAxes?.[k] || (s === f.storeys - 1 && f.storeyAxes?.last)) problems.push(`${at}.storeyBayWidths.${k}: not together with storeyAxes for the same storey`);
+    }
+    if (f.crownAt !== undefined && f.crownBays !== undefined) problems.push(`${at}: crownAt and crownBays are alternatives`);
+    if (f.crownAt !== undefined || f.crownBays !== undefined) {
+      if (f.gable === 'flat' || (f.gable === 'cornice' && (!f.crownCap || f.crownCap === 'flat'))) problems.push(`${at}.crownAt/crownBays: the front has no crown to place (gable ${f.gable}${f.gable === 'cornice' ? ' needs a crownCap' : ''})`);
+    }
+    if (f.crownAt !== undefined) {
+      const c = f.crownAt;
+      if (!c || !(c.from >= 0 && c.to <= 1 && c.to - c.from >= 0.2)) problems.push(`${at}.crownAt: {from, to} fractions with 0 <= from < to <= 1 covering at least 0.2`);
+    }
+    if (f.crownBays !== undefined) {
+      const grid = f.axisGrid ?? Math.max(...(Array.isArray(f.bays) ? f.bays.slice(f.storeys > 1 ? 1 : 0) : [f.bays])), c = f.crownBays;
+      if (!c || !Number.isInteger(c.from) || !Number.isInteger(c.to) || c.from < 0 || c.to >= grid || c.from > c.to) problems.push(`${at}.crownBays: {from, to} bay axes with 0 <= from <= to < ${grid}`);
+    }
     if (f.archedStoreys !== undefined) { if (!Array.isArray(f.archedStoreys)) problems.push(`${at}.archedStoreys must be a list`); else f.archedStoreys.forEach(v => count(v, `${at}.archedStoreys`, 0, f.storeys - 1)); }
     if (f.archRings !== undefined) oneOf(f.archRings, ['stone', 'band', 'none'], `${at}.archRings`);
     if (f.repeat) { if (f.repeat.count !== 'fit') count(f.repeat.count, `${at}.repeat.count`, 1, 20); }
@@ -296,6 +353,21 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       if (sf.fasciaColour) colour(sf.fasciaColour, `${at}.shopfront.fasciaColour`);
       if (sf.stallriserColour) colour(sf.stallriserColour, `${at}.shopfront.stallriserColour`);
       if (sf.residentialDoor) { oneOf(sf.residentialDoor.side, ['left', 'right'], `${at}.shopfront.residentialDoor.side`); if (sf.residentialDoor.colour) colour(sf.residentialDoor.colour, `${at}.shopfront.residentialDoor.colour`); }
+      if (sf.storeys !== undefined && sf.storeys !== 1 && sf.storeys !== 2) problems.push(`${at}.shopfront.storeys: 1 or 2`);
+      if (sf.storeys === 2 && f.storeys < 3) problems.push(`${at}.shopfront.storeys: a two-storey shop needs at least 3 storeys on the front`);
+      if (sf.bays !== undefined) {
+        const grid = f.axisGrid ?? Math.max(...(Array.isArray(f.bays) ? f.bays.slice(f.storeys > 1 ? 1 : 0) : [f.bays])), [a, b] = Array.isArray(sf.bays) ? sf.bays : [NaN, NaN];
+        if (!Number.isInteger(a) || !Number.isInteger(b) || a < 0 || b >= grid || a > b) problems.push(`${at}.shopfront.bays: [first, last] bay axes with 0 <= first <= last < ${grid}`);
+        else {
+          if (sf.residentialDoor || sf.shopShare !== undefined) problems.push(`${at}.shopfront.bays: not together with residentialDoor/shopShare (the bays say where the shop is)`);
+          if (a === 0 && b === grid - 1 && f.doorBay !== null) problems.push(`${at}.shopfront.bays: the shop covers every bay, so doorBay ${f.doorBay} has no wall of its own; narrow the shop span or drop bays`);
+          if (f.doorBay !== null) {
+            const axes = storeyAxesOf(f, 0), axis = axes ? axes[f.doorBay] : undefined;
+            if (axis === undefined) problems.push(`${at}.shopfront.bays: doorBay ${f.doorBay} is not on the shared grid (give the ground storey storeyAxes) so its overlap with the shop cannot be checked`);
+            else if (axis >= a && axis <= b) problems.push(`${at}.shopfront.bays: shop bays ${a}..${b} cover the entrance bay (doorBay ${f.doorBay} = axis ${axis}); the residential entrance keeps its own door and wall`);
+          }
+        }
+      }
       if (sf.shopShare !== undefined && !(sf.shopShare >= 0.4 && sf.shopShare <= 1)) problems.push(`${at}.shopfront.shopShare: 0.4..1`);
     }
     if (f.windowSurround !== undefined) oneOf(f.windowSurround, WINDOW_SURROUNDS, `${at}.windowSurround`);
@@ -307,13 +379,32 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       colour(aw.colour, `${at}.shopfront.awning.colour`);
       if (aw.extent && !(aw.extent.from >= 0 && aw.extent.to <= 1 && aw.extent.to - aw.extent.from >= 0.15)) problems.push(`${at}.shopfront.awning.extent: need 0 <= from < to <= 1 covering at least 0.15`);
     } else if ((f as {awning?: unknown}).awning !== undefined) problems.push(`${at}.awning: awnings belong under shopfront.awning`);
-    for (const [k, v] of Object.entries(f.palette ?? {})) colour(v, `${at}.palette.${k}`);
+    for (const [k, v] of Object.entries(f.palette ?? {})) {
+      if (k === 'wallMaterial') problems.push(`${at}.palette.wallMaterial: set the wall material on the house palette (one material per house)`);
+      else colour(v, `${at}.palette.${k}`);
+    }
   }
   oneOf(intent?.roof?.material, ROOF_MATERIALS, 'roof.material');
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
   for (const k of ['shutters', 'stone', 'band'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
+  if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');
   if (problems.length) throw new Error(`Invalid intent ${intent?.id ?? '?'}:\n - ${problems.join('\n - ')}`);
   return intent;
+}
+
+/** Bay axes of a front's shared grid: `axisGrid`, else the widest upper storey. */
+export function frontGrid(f: FrontIntent): number {
+  const bays = Array.isArray(f.bays) ? f.bays : Array(f.storeys).fill(f.bays);
+  return f.axisGrid ?? Math.max(...bays.slice(f.storeys > 1 ? 1 : 0));
+}
+/** The shared-grid axes storey `s` (0 = ground) uses, or null when its windows are spaced on their own (see `storeyAxes`). */
+export function storeyAxesOf(f: FrontIntent, s: number): number[] | null {
+  const bays = Array.isArray(f.bays) ? f.bays : Array(f.storeys).fill(f.bays), count = bays[s], grid = frontGrid(f);
+  const named = f.storeyAxes?.[String(s)] ?? (s === f.storeys - 1 ? f.storeyAxes?.last : undefined);
+  if (named) return named;
+  if (count === grid) return Array.from({length: count}, (_, k) => k);
+  if (count > 0 && count < grid && (grid - count) % 2 === 0) { const k0 = (grid - count) / 2; return Array.from({length: count}, (_, k) => k0 + k); }
+  return null;
 }
 
 export const swatch = (value: string): string => SWATCHES[value] ?? value;

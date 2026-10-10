@@ -74,7 +74,7 @@ function splitChain(front: FrontFacts, shares: number[]): [number[], number[]][]
   return cuts.slice(1).map((c, i) => [chain[cuts[i]], chain[c]] as [number[], number[]]);
 }
 
-interface Layout { openings: CanalhouseOpening[]; glazedBays: CanalhouseGlazedBay[]; balconies: {storey: number; bay: number}[]; storeyHeights: number[]; groundBase: number; doorLeft: number | null; doorWidth: number; shopSpans: [number, number][]; shopGlass: [number, number] | null; warnings: string[]; /** Shop zone and riser top in viewer-left-to-right metres. */ shopZone: [number, number] | null; riserTopM: number; entrance: {leftM: number; widthM: number} | null }
+interface Layout { openings: CanalhouseOpening[]; glazedBays: CanalhouseGlazedBay[]; balconies: {storey: number; bay: number}[]; storeyHeights: number[]; groundBase: number; doorLeft: number | null; doorWidth: number; shopSpans: [number, number][]; shopGlass: [number, number] | null; warnings: string[]; /** Shop zone and riser top in viewer-left-to-right metres. */ shopZone: [number, number] | null; riserTopM: number; entrance: {leftM: number; widthM: number} | null; /** Bay boundaries of the shared grid, viewer-left to right. */ bayEdges: number[]; axisCentres: number[]; shopStoreys: 1 | 2 }
 
 /** Shopfront proportions: pier width, stall riser top, fascia depth below the ground-storey top. */
 const SHOP = {pierM: 0.3, glassBottomM: 0.55, fasciaM: 0.62, fasciaGapM: 0.08};
@@ -105,6 +105,15 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     return {winW: clamp(pitch * 0.58, 0.6, 1.5), pitch, first: margin + pitch / 2};
   };
   const sharedGrid = gridOf(grid);
+  /** Unequal bays: every cell holds one window, centred, 58 % of the cell (the equal-pier ratio), never wider than the cell allows. */
+  const weighted = (weights: number[]) => {
+    const total = weights.reduce((t, x) => t + x, 0), edges = [0];
+    for (const w of weights) edges.push(edges.at(-1)! + width * w / total);
+    const cell = (a: number) => edges[a + 1] - edges[a];
+    return {edges, cell, centre: (a: number) => (edges[a] + edges[a + 1]) / 2, w: (a: number) => Math.min(clamp(0.58 * cell(a), 0.5, 2.8), 0.82 * cell(a))};
+  };
+  const sharedWeighted = f.bayWidths ? weighted(f.bayWidths) : null;
+  const ownWeights = (s: number) => f.storeyBayWidths?.[String(s)] ?? (s === n - 1 ? f.storeyBayWidths?.last : undefined);
   /** The axes storey `s` uses on the shared grid, or null when it has to space its windows on its own. */
   const axesFor = (s: number, count: number): number[] | null => {
     const named = f.storeyAxes?.[String(s)] ?? (s === n - 1 ? f.storeyAxes?.last : undefined);
@@ -114,14 +123,29 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     if (s > 0 && count > 0) warnings.push(`${f.id}: storey ${s} has ${count} windows on a ${grid}-axis front; add storeyAxes or windows drift off the axes`);
     return null;
   };
-  const storeyPlan = (s: number, count: number) => { const axes = axesFor(s, count), g = axes ? sharedGrid : gridOf(count); return {g, centre: (b: number) => g.first + g.pitch * (axes ? axes[b] : b)}; };
+  /** Window `b` of a storey: centre, window width and the width of the cell around it. */
+  const storeyPlan = (s: number, count: number) => {
+    const own = ownWeights(s);
+    if (own) { const wg = weighted(own); return {centre: wg.centre, w: wg.w, pitch: wg.cell}; }
+    const axes = axesFor(s, count);
+    if (axes && sharedWeighted) return {centre: (b: number) => sharedWeighted.centre(axes[b]), w: (b: number) => sharedWeighted.w(axes[b]), pitch: (b: number) => sharedWeighted.cell(axes[b])};
+    const g = axes ? sharedGrid : gridOf(count);
+    return {centre: (b: number) => g.first + g.pitch * (axes ? axes[b] : b), w: () => g.winW, pitch: () => g.pitch};
+  };
+  // Bay boundaries of the shared grid (left to right, `grid + 1` values): crown and shop spans follow them.
+  const bayEdges = sharedWeighted ? sharedWeighted.edges : [0, ...Array.from({length: grid - 1}, (_, a) => { const g = sharedGrid; return g.first + g.pitch * a + g.pitch / 2; }), width];
+  const axisCentres = Array.from({length: grid}, (_, a) => sharedWeighted ? sharedWeighted.centre(a) : sharedGrid.first + sharedGrid.pitch * a);
+  // A shopfront limited to some bays: its zone runs between the boundaries of those bays.
+  const shopBays = sf?.bays ?? null;
+  const shopEdge: [number, number] | null = shopBays ? [bayEdges[shopBays[0]], bayEdges[shopBays[1] + 1]] : null;
+  const twoStorey = !!sf && sf.storeys === 2;
   let y = basement;
   for (let s = 0; s < n; s++) {
     const h = heights[s], count = bays[s];
-    const plan = storeyPlan(s, count), winW = plan.g.winW, pitch = plan.g.pitch;
+    const plan = storeyPlan(s, count);
     const winH = s === 0 ? h * 0.62 : h * (0.6 - 0.02 * s), sill = s === 0 ? h * 0.2 : h * 0.22;
     for (let b = 0; b < count; b++) {
-      const centre = plan.centre(b);
+      const centre = plan.centre(b), winW = plan.w(b), pitch = plan.pitch(b);
       if (s === 0 && f.doorBay === b && !rd) {
         doorLeft = clamp(centre - doorWidth / 2, 0.05, width - doorWidth - 0.05);
         const doorH = Math.min(h * 0.78, 2.7);
@@ -130,7 +154,8 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
         if (transomH > 0.2) openings.push({id: 'door-transom', kind: 'window', leftM: doorLeft, bottomM: y + doorH + 0.06, widthM: doorWidth, heightM: transomH, trimWidthM: 0.06, frameSurface: 'trim', barSurface: 'trim'});
         continue;
       }
-      if (s === 0 && f.shopfront) continue;
+      if (s === 0 && f.shopfront && (!shopEdge || (centre > shopEdge[0] && centre < shopEdge[1]))) continue;
+      if (s === 1 && twoStorey && (shopEdge ? centre > shopEdge[0] && centre < shopEdge[1] : !rd)) continue;
       if (f.bayWindows?.bay === b && f.bayWindows.storeys.includes(s)) {
         const bw = clamp(pitch * 1.05, 1.3, 2.7), bh = h * 0.74;
         glazedBays.push({id: `bay-s${s}-b${b}`, leftM: centre - bw / 2, bottomM: y + h * 0.12, widthM: bw, heightM: bh, depthM: 0.55, frontWidthM: bw * 0.72, lowerPanelM: 0.28, upperPanelM: 0.22, frameWidthM: 0.05, frameDepthM: 0.06, glassDepthM: 0.02, verticalBars: [.5], horizontalBars: [.3]});
@@ -155,8 +180,9 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   const shopSpans: [number, number][] = [];
   let shopGlass: [number, number] | null = null, shopZone: [number, number] | null = null, entrance: Layout['entrance'] = null, riserTopM = 0;
   if (sf) {
-    const h = heights[0], pier = SHOP.pierM + 0.02;
+    const h = heights[0], pier = SHOP.pierM + 0.02, shopH = h + (twoStorey ? heights[1] : 0);
     let left = pier, right = width - pier;
+    if (shopEdge) { left = shopEdge[0] + pier; right = shopEdge[1] - pier; }
     if (rd) {
       // A separate street door to the dwellings at one end; the shop takes the rest.
       const edge = 0.12, resLeft = rd.side === 'right' ? width - doorWidth - edge : edge;
@@ -171,7 +197,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     shopZone = [left, right];
     const zw = right - left, entr = sf.entrance ?? (rd ? 'none' : 'none');
     let door: [number, number] | null = null;
-    if (!rd && doorLeft !== null) door = [doorLeft - 0.1, doorLeft + doorWidth + 0.1]; // legacy: the doorBay door stands in the shopfront
+    if (!rd && !shopEdge && doorLeft !== null) door = [doorLeft - 0.1, doorLeft + doorWidth + 0.1]; // legacy: the doorBay door stands in the shopfront
     else if (entr !== 'none') {
       const ew = clamp(zw * 0.26, 0.95, 1.5), pos = entr.startsWith('centre') ? left + (zw - ew) / 2 : entr.startsWith('left') ? left + 0.15 : right - ew - 0.15;
       const recessed = entr.endsWith('recessed');
@@ -183,8 +209,15 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     const riserH = {none: 0.12, low: 0.3, medium: SHOP.glassBottomM, high: 0.9}[sf.stallriser ?? 'medium'];
     riserTopM = riserH;
     // A sign on the wall above the glass (no fascia board) needs a band of wall: lower the glass head.
-    const bottom = basement + riserH, top = basement + h - (sf.fascia ? SHOP.fasciaM + SHOP.fasciaGapM + 0.04 : sf.sign?.mount === 'wall' ? 0.75 : 0.3);
+    const bottom = basement + riserH, top = basement + shopH - (sf.fascia ? SHOP.fasciaM + SHOP.fasciaGapM + 0.04 : sf.sign?.mount === 'wall' ? 0.75 : 0.3);
     shopGlass = [bottom, top];
+    // Double-height shop: a transom bar at the mezzanine floor (storey 1 bottom) and one over the ground-floor door height.
+    const mezzanineBars = (glassH: number) => [round((basement + h - bottom) / glassH, 4)].filter(v => v > 0.1 && v < 0.9);
+    if (twoStorey && rd) {
+      // Storey-1 windows standing in front of the shop zone belong to the shop glass.
+      const inZone = (o: CanalhouseOpening) => o.leftM + o.widthM / 2 > left - pier && o.leftM + o.widthM / 2 < right + pier;
+      for (let i = openings.length - 1; i >= 0; i--) if (/^s1-b\d+$/.test(openings[i].id) && inZone(openings[i])) openings.splice(i, 1);
+    }
     if (!door) shopSpans.push([left, right]);
     else { if (door[0] - left > 0.6) shopSpans.push([left, door[0]]); if (right - door[1] > 0.6) shopSpans.push([door[1], right]); }
     const glazing = sf.glazing ?? 'split';
@@ -194,19 +227,19 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
       const w = b - a, panes = sf.displayWindows ? Math.max(1, Math.round(sf.displayWindows * w / totalGlass)) : glazing === 'split' ? Math.round(w / 1.6) : 1;
       const mullions = Math.max(0, panes - 1), glassH = top - bottom;
       openings.push({id: `shop-${i}`, kind: 'window', leftM: a, bottomM: bottom, widthM: w, heightM: glassH, trimWidthM: 0.08,
-        verticalBars: Array.from({length: mullions}, (_, k) => round((k + 1) / (mullions + 1), 4)), horizontalBars: glazing === 'single' ? [] : glazing === 'transom' ? [0.8] : glassH > 1.9 ? [0.8] : [], frameSurface: 'shop', barSurface: 'shop'} as CanalhouseOpening);
+        verticalBars: Array.from({length: mullions}, (_, k) => round((k + 1) / (mullions + 1), 4)), horizontalBars: twoStorey ? mezzanineBars(glassH) : glazing === 'single' ? [] : glazing === 'transom' ? [0.8] : glassH > 1.9 ? [0.8] : [], frameSurface: 'shop', barSurface: 'shop'} as CanalhouseOpening);
     });
   }
   // Basement lights below the ground-storey windows, away from the stoop.
   if (f.basement === 'windows' || f.basement === 'stoop-and-windows') {
-    const count = bays[0], bp = storeyPlan(0, count), pitch = bp.g.pitch;
+    const count = bays[0], bp = storeyPlan(0, count);
     for (let b = 0; b < count; b++) {
-      const centre = bp.centre(b), w = clamp(pitch * 0.5, 0.5, 1.2);
+      const centre = bp.centre(b), w = clamp(bp.pitch(b) * 0.5, 0.5, 1.2);
       if (doorLeft !== null && centre + w / 2 > doorLeft - 0.9 && centre - w / 2 < doorLeft + doorWidth + 0.9) continue;
       openings.push({id: `basement-b${b}`, kind: 'window', leftM: centre - w / 2, bottomM: 0.12, widthM: w, heightM: Math.max(0.35, basement - 0.3), trimWidthM: 0.05, verticalBars: [.5], frameSurface: 'trim', barSurface: 'trim'});
     }
   }
-  return {openings, glazedBays, balconies, storeyHeights: [basement, ...heights].filter(h => h > 0).map(h => round(h)), groundBase: basement, doorLeft, doorWidth, shopSpans, shopGlass, warnings, shopZone, riserTopM, entrance};
+  return {openings, glazedBays, balconies, storeyHeights: [basement, ...heights].filter(h => h > 0).map(h => round(h)), groundBase: basement, doorLeft, doorWidth, shopSpans, shopGlass, warnings, shopZone, riserTopM, entrance, bayEdges, axisCentres, shopStoreys: twoStorey ? 2 : 1};
 }
 
 /** A voussoir ring over a segmental/round head: outer arc left to right, inner arc back. */
@@ -217,7 +250,8 @@ function archRing(left: number, top: number, w: number, rise: number, ringM: num
   return [...arc(radius + ringM), ...arc(radius + 0.005).reverse()];
 }
 
-function crownProfile(f: FrontIntent, width: number, eaves: number, top: number): CanalhousePoint[] | null {
+/** `fill`: the crown stands on a part of the front (`crownAt`/`crownBays`) and fills that part; wide cornice caps by default. */
+function crownProfile(f: FrontIntent, width: number, eaves: number, top: number, fill = false): CanalhousePoint[] | null {
   const rise = top - eaves;
   if (f.gable === 'flat' || rise < 0.3) return null;
   switch (f.gable) {
@@ -229,7 +263,7 @@ function crownProfile(f: FrontIntent, width: number, eaves: number, top: number)
     case 'cornice': {
       if (f.crownCap && f.crownCap !== 'flat') {
         // Wide: a parapet over nearly the whole front with the cap across it (1900s fronts, 081118/087959).
-        const spanK = {narrow: [0.3, 0.3], medium: [0.62, 0.56], wide: [0.94, 0.86]}[f.crownCapSpan ?? 'narrow'];
+        const spanK = {narrow: [0.3, 0.3], medium: [0.62, 0.56], wide: [0.94, 0.86]}[f.crownCapSpan ?? (fill ? 'wide' : 'narrow')];
         const capRise = f.crownCapRise === 'low' ? 0.38 : f.crownCapSpan === 'wide' ? 0.8 : 0.7;
         return canalhouseCrownProfile('lijst', width, eaves, top, width * spanK[0], eaves, 0, {cap: f.crownCap, capRiseM: Math.min(capRise, rise), crestWidthM: width * spanK[1]});
       }
@@ -309,9 +343,13 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     const count = front.repeat ? (front.repeat.count === 'fit' ? Math.max(1, Math.round(width / 6)) : front.repeat.count) : 1;
     const mw = width / count, alternate = !!front.repeat?.mirrorAlternate;
     const place = (k: number, x: number, w = 0) => k * mw + (alternate && k % 2 ? mw - x - w : x);
-    const crownTop = gabled ? Math.max(profileTop + 0.3, Math.min(facts.heights.ridgeM + 0.3, eaves + mw * (front.gable === 'step' ? 1 : 0.9))) : eaves + (front.crownCap && front.crownCap !== 'flat' ? (front.crownCapRise === 'low' ? 0.55 : 1.1) : 0);
     const corniceH = {none: 0, simple: 0.35, bracketed: 0.55, heavy: 0.8}[front.cornice];
     const layout = layoutFront(front, mw, eaves - (gabled ? 0.2 : corniceH + 0.15));
+    // A crown on part of the front: [x0, x1] in module metres from the viewer's left (`crownAt` fractions or `crownBays` axes).
+    const crownSpan: [number, number] | null = front.crownAt ? [front.crownAt.from * mw, front.crownAt.to * mw]
+      : front.crownBays ? [layout.bayEdges[front.crownBays.from], layout.bayEdges[front.crownBays.to + 1]] : null;
+    const crownW = crownSpan ? crownSpan[1] - crownSpan[0] : mw;
+    const crownTop = gabled ? Math.max(profileTop + 0.3, Math.min(facts.heights.ridgeM + 0.3, eaves + crownW * (front.gable === 'step' ? 1 : 0.9))) : eaves + (front.crownCap && front.crownCap !== 'flat' ? (front.crownCapRise === 'low' ? 0.55 : 1.1) : 0);
     const moduleOpenings = Array.from({length: count}, (_, k) => layout.openings.map(o => ({...o, id: count > 1 ? `${o.id}-m${k}` : o.id, leftM: place(k, o.leftM, o.widthM)}))).flat();
     let lintelBands: NonNullable<CanalhouseElevation['bands']>['value'] = [];
     let fasciaRect: FasciaRect | undefined, signBand: SignBand | undefined;
@@ -358,24 +396,30 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     if (corniceH > 0) elevation.cornice = seen({bottomM: round(eaves - corniceH), heightM: corniceH, depthM: round(corniceH * 0.5), brackets: front.cornice === 'bracketed' ? Math.max(2, Math.round(width / 1.6)) : 0});
     // Non-straight frontages need an explicit wall top (the library only reads
     // roof edges lying on the chord); a flat crown at the eaves supplies it.
-    const moduleProfile = crownProfile(front, mw, eaves, crownTop);
+    const rawProfile = crownProfile(front, crownW, eaves, crownTop, !!crownSpan);
+    // A partial crown stands between two stretches of plain eaves line.
+    const moduleProfile = rawProfile && crownSpan ? [...(crownSpan[0] > 0.01 ? [[0, eaves] as CanalhousePoint] : []), ...rawProfile.map(([x, y]) => [x + crownSpan[0], y] as CanalhousePoint), ...(crownSpan[1] < mw - 0.01 ? [[mw, eaves] as CanalhousePoint] : [])] : rawProfile;
     const profile = moduleProfile ? Array.from({length: count}, (_, k) => moduleProfile.map(([x, y]) => [place(k, x), y] as CanalhousePoint)).flat() : [[0, eaves], [width, eaves]] as CanalhousePoint[];
     if (profile) {
       elevation.crown = seen({profile: profile.map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => p[0] - q[0]), depthM: 0.18, trimWidthM: 0.08, surface: 'wall'});
       // Attic windows inside the crown.
       const attic = front.atticWindows ?? 0, rise = crownTop - eaves;
       if (attic > 0 && rise > 1.2) {
-        const w = clamp(mw * 0.14, 0.5, 0.9), h = clamp(rise * 0.4, 0.6, 1.4), gap = w * 0.5, total = attic * w + (attic - 1) * gap;
+        const w = clamp((crownSpan ? crownW * 0.2 : mw * 0.14), 0.5, 0.9), h = clamp(rise * 0.4, 0.6, 1.4), gap = w * 0.5, total = attic * w + (attic - 1) * gap;
+        // Gable lights follow a partial crown: on its bay axes when there is one light per bay, else centred on it.
+        const onAxes = front.crownBays && front.crownBays.to - front.crownBays.from + 1 === attic ? layout.axisCentres.slice(front.crownBays.from, front.crownBays.to + 1) : null;
+        const crownCentre = crownSpan ? (crownSpan[0] + crownSpan[1]) / 2 : mw / 2;
+        const atticLeft = (k: number) => onAxes ? onAxes[k] - w / 2 : stack ? (crownSpan ? crownCentre - w / 2 : (mw - w) / 2) : crownSpan ? crownCentre - total / 2 + k * (w + gap) : (mw - total) / 2 + k * (w + gap);
         // Neck gables stack their attic lights up the neck; other crowns set them side by side.
         const stack = front.gable === 'neck' || front.gable === 'raised-neck', hh = stack ? Math.min(h, (rise - 0.8) / attic - 0.3) : h;
-        for (let m = 0; m < count; m++) for (let k = 0; k < attic; k++) elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: flipX(place(m, stack ? (mw - w) / 2 : (mw - total) / 2 + k * (w + gap), w), w), bottomM: eaves + 0.25 + (stack ? k * (hh + 0.3) : 0), widthM: w, heightM: stack ? hh : h, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'});
+        for (let m = 0; m < count; m++) for (let k = 0; k < attic; k++) elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: flipX(place(m, atticLeft(k), w), w), bottomM: eaves + 0.25 + (stack ? k * (hh + 0.3) : 0), widthM: w, heightM: stack ? hh : h, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'});
       }
     }
     if (front.dormers) {
       const k = front.dormers, w = clamp(mw / (k * 2.2), 0.9, 1.6), gap = (mw - k * w) / (k + 1);
       elevation.dormers = seen(Array.from({length: k * count}, (_, j) => ({id: `dormer-${j}`, leftM: round(flipX(place(Math.floor(j / k), gap + (j % k) * (w + gap), w), w)), widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + 0.05), heightM: 1.45, depthM: 1.3, roofRiseM: 0.45, setbackM: 0.35, trimWidthM: 0.07, verticalBars: [.5], wallSurface: 'trim' as const, roofSurface: 'roof' as const})));
     }
-    if (front.hoist) elevation.hoists = seen(Array.from({length: count}, (_, m) => ({id: count > 1 ? `hoist-m${m}` : 'hoist', centerM: flipX(place(m, mw / 2), 0), heightM: round(gabled ? crownTop - 0.9 : eaves + 0.1), widthM: 0.14, beamHeightM: 0.18, projectionM: 1.1, setbackM: 0.1, surface: 'door' as const})));
+    if (front.hoist) elevation.hoists = seen(Array.from({length: count}, (_, m) => ({id: count > 1 ? `hoist-m${m}` : 'hoist', centerM: flipX(place(m, crownSpan ? (crownSpan[0] + crownSpan[1]) / 2 : mw / 2), 0), heightM: round(gabled ? crownTop - 0.9 : eaves + 0.1), widthM: 0.14, beamHeightM: 0.18, projectionM: 1.1, setbackM: 0.1, surface: 'door' as const})));
     if ((front.basement === 'stoop' || front.basement === 'stoop-and-windows') && layout.doorLeft !== null && layout.groundBase > 0) {
       // The library admits one entrance per elevation: the first module's stoop.
       const dl = flipX(place(0, layout.doorLeft, layout.doorWidth), layout.doorWidth);
@@ -389,9 +433,10 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     elevation.bands.value.push(...lintelBands);
     if (front.palette?.brick) elevation.bands.value.push({id: 'facing', leftM: 0, bottomM: round(plinth), widthM: Math.floor(width * 1000) / 1000, heightM: round(eaves - plinth - 0.02), depthM: 0.03, surface: 'wall'});
     if (front.shopfront && layout.shopGlass && layout.shopZone) {
-      const top = layout.groundBase + layout.storeyHeights[layout.groundBase > 0 ? 1 : 0], full = Math.floor(width * 1000) / 1000;
-      // The shop band spans the whole front, or only the shop zone when a residential door stands beside it.
-      const zone: [number, number] = front.shopfront.residentialDoor ? [Math.max(0, layout.shopZone[0] - SHOP.pierM - 0.02), Math.min(mw, layout.shopZone[1] + SHOP.pierM + 0.02)] : [0, mw];
+      const g0 = layout.groundBase > 0 ? 1 : 0, floor = layout.groundBase + layout.storeyHeights[g0];
+      const top = floor + (layout.shopStoreys === 2 ? layout.storeyHeights[g0 + 1] : 0), full = Math.floor(width * 1000) / 1000;
+      // The shop band spans the whole front, or only the shop zone when a residential door or wall bays stand beside it.
+      const zone: [number, number] = front.shopfront.residentialDoor || front.shopfront.bays ? [Math.max(0, layout.shopZone[0] - SHOP.pierM - 0.02), Math.min(mw, layout.shopZone[1] + SHOP.pierM + 0.02)] : [0, mw];
       const zw = Math.floor((zone[1] - zone[0]) * 1000 - 1) / 1000, at = (x: number, w: number) => round(flipX(place(0, x, w), w));
       const sign = front.shopfront.sign;
       // Piers and stall riser in the shopfront paint.
@@ -400,6 +445,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         {id: 'shop-pier-right', leftM: at(zone[1] - SHOP.pierM - 0.001, SHOP.pierM), bottomM: round(plinth), widthM: SHOP.pierM, heightM: pierH, depthM: 0.1, surface: 'shop' as const}];
       elevation.blocks = seen([...(elevation.blocks?.value ?? []), ...blocks]);
       elevation.bands.value.push({id: 'shop-riser', leftM: at(zone[0], zw), bottomM: round(plinth), widthM: zw, heightM: round(Math.max(0.05, layout.shopGlass[0] - plinth - 0.01)), depthM: 0.05, surface: 'shop'});
+      if (layout.shopStoreys === 2) elevation.bands.value.push({id: 'shop-mezzanine', leftM: at(zone[0], zw), bottomM: round(floor - 0.12), widthM: zw, heightM: 0.24, depthM: 0.06, surface: 'shop'});
       if (front.shopfront.fascia) {
         elevation.bands.value.push({id: 'fascia', leftM: at(zone[0], zw), bottomM: round(top - SHOP.fasciaM - SHOP.fasciaGapM), widthM: zw, heightM: SHOP.fasciaM, depthM: 0.12, surface: 'shop'});
         fasciaRect = {leftM: zone[0], widthM: zw, bottomM: round(top - SHOP.fasciaM - SHOP.fasciaGapM), heightM: SHOP.fasciaM, depthM: 0.12, frontLeftM: at(zone[0], zw), mirrored, sign};
