@@ -767,6 +767,23 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
     }
     return false;
   };
+  /** Height of the lowest surface directly above `o` (Infinity when none). */
+  const lowestAbove = (o: V3): number => {
+    const seen = new Set<number>();
+    let best = Infinity;
+    for (let y = o[1]; y <= bmax[1] + 1 && best === Infinity; y += 1) {
+      const list = rayGrid.at(o[0], y, o[2]);
+      if (!list) continue;
+      for (const u of list) {
+        if (seen.has(u)) continue;
+        seen.add(u);
+        const [a, b, c] = tri(soup, u);
+        const t = rayTriangle([o[0], o[1] + 0.02, o[2]], [0, 1, 0], a, b, c, 1e4);
+        if (t >= 0) best = Math.min(best, o[1] + 0.02 + t);
+      }
+    }
+    return best;
+  };
   const firstHit = (o: V3, d: V3, tMax: number): number => {
     let best = -1;
     const seen = new Set<number>();
@@ -802,32 +819,71 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   }
 
   // --- see-through wall gaps ---
-  // Rays that pass beneath a roofed canopy and meet a wall within 8 m in total count as closed (genuine porch recess).
-  // Walk the hull of the main body. At each ring sample aim a street-height ray inward; only count it
-  // when the point 1 m inside is roofed (so a wall had to be crossed) and the ray hits nothing before it.
+  // Footprint-based: rasterise the main body's XZ projection (walls as lines, roofs and floors as areas) at 25 cm,
+  // take its boundary (outer edge and courtyards) with outward normals, and at each ~2 m sample aim a street-height
+  // ray from 3 m outside the edge to 1 m inside it. A ray counts as see-through only when the point 1 m inside is
+  // roofed (a wall had to be crossed) and the ray hits nothing. A ray that misses is still closed when it runs under
+  // a LOW soffit (a porch or canopy at most max(6 m, ray + 4 m) above ground) and meets a wall within 4 m of the edge.
+  // Main roofs and upper storeys never qualify, so deep gaps under a tall roof stay gaps.
   const seeThrough = {rays: 0, tested: 0, points: [] as V3[]};
-  if (hull.length >= 3 && !site) {
-    for (let i = 0; i < hull.length; i++) {
-      const a = hull[i], b = hull[(i + 1) % hull.length];
-      const ex = b[0] - a[0], ez = b[1] - a[1];
-      const len = Math.hypot(ex, ez);
-      if (len < 1e-6) continue;
-      const nIn: [number, number] = [-ez / len, ex / len]; // CCW hull: left of edge is interior
-      const n = Math.max(1, Math.floor(len / th.rayStep));
-      for (let s = 0; s < n; s++) {
-        const u = (s + 0.5) / n;
-        const px = a[0] + ex * u, pz = a[1] + ez * u;
+  if (mainPts.length >= 3 && !site) {
+    const CELL = 0.25;
+    let gx0 = Infinity, gx1 = -Infinity, gz0 = Infinity, gz1 = -Infinity;
+    for (const [x, z] of mainPts) { gx0 = Math.min(gx0, x); gx1 = Math.max(gx1, x); gz0 = Math.min(gz0, z); gz1 = Math.max(gz1, z); }
+    gx0 -= 1; gz0 -= 1;
+    const cw = Math.ceil((gx1 - gx0 + 2) / CELL), ch = Math.ceil((gz1 - gz0 + 2) / CELL);
+    if (cw * ch <= 16_000_000) {
+      const occ = new Uint8Array(cw * ch);
+      const mark = (x: number, z: number) => { const ix = Math.floor((x - gx0) / CELL), iz = Math.floor((z - gz0) / CELL); if (ix >= 0 && iz >= 0 && ix < cw && iz < ch) occ[iz * cw + ix] = 1; };
+      for (let t = 0; t < nTri; t++) {
+        if (!inMain(t)) continue;
+        const [A, B, C] = [0, 1, 2].map(k => { const i = soup.indices[t * 3 + k] * 3; return [soup.positions[i], soup.positions[i + 2]] as [number, number]; });
+        const edges: [[number, number], [number, number]][] = [[A, B], [B, C], [C, A]];
+        for (const [p0, p1] of edges) {
+          const L = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]), n = Math.max(1, Math.ceil(L / (CELL / 2)));
+          for (let k = 0; k <= n; k++) mark(p0[0] + (p1[0] - p0[0]) * k / n, p0[1] + (p1[1] - p0[1]) * k / n);
+        }
+        const den = (B[1] - C[1]) * (A[0] - C[0]) + (C[0] - B[0]) * (A[1] - C[1]);
+        if (Math.abs(den) < 1e-9) continue;
+        const ix0 = Math.max(0, Math.floor((Math.min(A[0], B[0], C[0]) - gx0) / CELL)), ix1 = Math.min(cw - 1, Math.floor((Math.max(A[0], B[0], C[0]) - gx0) / CELL));
+        const iz0 = Math.max(0, Math.floor((Math.min(A[1], B[1], C[1]) - gz0) / CELL)), iz1 = Math.min(ch - 1, Math.floor((Math.max(A[1], B[1], C[1]) - gz0) / CELL));
+        for (let iz = iz0; iz <= iz1; iz++) for (let ix = ix0; ix <= ix1; ix++) {
+          const px = gx0 + (ix + 0.5) * CELL, pz = gz0 + (iz + 0.5) * CELL;
+          const l1 = ((B[1] - C[1]) * (px - C[0]) + (C[0] - B[0]) * (pz - C[1])) / den, l2 = ((C[1] - A[1]) * (px - C[0]) + (A[0] - C[0]) * (pz - C[1])) / den;
+          if (l1 >= 0 && l2 >= 0 && 1 - l1 - l2 >= 0) occ[iz * cw + ix] = 1;
+        }
+      }
+      const at = (ix: number, iz: number) => (ix < 0 || iz < 0 || ix >= cw || iz >= ch ? 0 : occ[iz * cw + ix]);
+      const kept = new Map<string, [number, number][]>();
+      const SP = th.rayStep;
+      const R = 3;
+      for (let iz = 0; iz < ch; iz++) for (let ix = 0; ix < cw; ix++) {
+        if (!occ[iz * cw + ix] || (at(ix - 1, iz) && at(ix + 1, iz) && at(ix, iz - 1) && at(ix, iz + 1))) continue;
+        let nx = 0, nz = 0;
+        for (let dz = -R; dz <= R; dz++) for (let dx = -R; dx <= R; dx++) if (!at(ix + dx, iz + dz)) { nx += dx; nz += dz; }
+        const nl = Math.hypot(nx, nz);
+        if (nl < 1e-6) continue;
+        nx /= nl; nz /= nl;
+        const ex = gx0 + (ix + 0.5) * CELL + nx * CELL / 2, ez = gz0 + (iz + 0.5) * CELL + nz * CELL / 2;
+        const key = `${Math.floor(ex / SP)},${Math.floor(ez / SP)}`;
+        let near = false;
+        for (let a = -1; a <= 1 && !near; a++) for (let b = -1; b <= 1 && !near; b++) for (const q of kept.get(`${Math.floor(ex / SP) + a},${Math.floor(ez / SP) + b}`) ?? []) if (Math.hypot(q[0] - ex, q[1] - ez) < SP) { near = true; break; }
+        if (near) continue;
+        const list = kept.get(key); if (list) list.push([ex, ez]); else kept.set(key, [[ex, ez]]);
+        // Aim inward (against the outward normal).
+        const dx = -nx, dz = -nz;
         for (const h of th.rayHeights) {
-          const target: V3 = [px + nIn[0], h, pz + nIn[1]];
+          const target: V3 = [ex + dx, h, ez + dz];
           if (target[1] > bmax[1] || !castUp(target, -1)) continue;
           seeThrough.tested++;
-          const o: V3 = [px - nIn[0] * 3, h, pz - nIn[1] * 3];
-          let hit = firstHit(o, [nIn[0], 0, nIn[1]], 4 - 0.01);
-          // A roofed porch/canopy: the ray runs under roof geometry and meets a wall within a further ~4 m (real recess, not a gap).
+          const o: V3 = [ex - dx * 3, h, ez - dz * 3];
+          let hit = firstHit(o, [dx, 0, dz], 4 - 0.01);
           if (hit < 0) {
-            let roofed = false;
-            for (let s = 0.5; s <= 4 && !roofed; s += 0.5) roofed = castUp([o[0] + nIn[0] * s, h, o[2] + nIn[1] * s], -1);
-            if (roofed) hit = firstHit(o, [nIn[0], 0, nIn[1]], 8 - 0.01);
+            const ext = firstHit(o, [dx, 0, dz], 7 - 0.01);
+            if (ext > 0) {
+              const cap = Math.max(minY + 6, h + 4);
+              for (let s = 3; s < ext - 0.2; s += 0.5) if (lowestAbove([o[0] + dx * s, h, o[2] + dz * s]) <= cap) { hit = ext; break; }
+            }
           }
           if (hit < 0) {
             seeThrough.rays++;

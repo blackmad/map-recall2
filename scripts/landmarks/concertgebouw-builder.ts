@@ -16,7 +16,7 @@ export function buildConcertgebouw(_w:number,_d:number,b:BuildingTools):void{
  // Main hall is separate from the oval Small Hall at the rear; neither
  // volume crosses the surveyed courts around z=-18m.
  b.box(8.1,13.4,10.3,31.0,5.4,45.0,'brick');
- b.box(6.2,13.4,-28.9,20.2,7.5,15.2,'brick');
+ b.box(6.2,13.4,-28.35,20.2,7.5,14.1,'brick'); // rear face on the core's rear wall (z=-35.4), no 1.1 m overhang
  for(const z of[-12.2,32.8]){const g=new T.ExtrudeGeometry(new T.Shape([new T.Vector2(-15.5,0),new T.Vector2(15.5,0),new T.Vector2(0,6.75)]),{depth:.16,bevelEnabled:false});b.add(g,'brick',8.1,18.8,z)}
  // Roof surfaces use measured planar contours rebuilt here as original
  // triangle fans/triangulations, not a downloaded render mesh.
@@ -89,6 +89,9 @@ b.add(sg,x<-10&&z>-27&&z<29?'glass':'slate');
  for(const x of[-.4,0,.4])b.box(lx+x,ly+.28,lz,.055,1.4,.07,'gold');b.box(lx,ly+1.62,lz,1.65,.13,.18,'gold');
  // Pi de Bruijn's added promenade remains glass with slender columns,
  // including the lower hospitality level; no backing opaque prism.
- for(let z=-27;z<=28;z+=3.9){b.box(-20.3,.55,z,.12,12.5,.12,'frame');b.box(-10.3,.55,z,.14,12.5,.14,'white');}
- for(const x of[-20.3,-10.3]){b.box(x,.55,.5,.09,12.8,55,'glass');for(const y of[.55,6.2,13.0])b.box(x,y,.5,.22,.2,55,'frame');}
+ // West glazing stands at the cantilevered roof edge (x=-24.5, photo ref-w); the inner glass line at -10.3 is kept.
+ for(let z=-27;z<=28;z+=3.9)b.box(-10.3,.55,z,.14,12.5,.14,'white');
+ for(let z=-17;z<=34.2;z+=3.9)b.box(-24.5,.55,z,.12,8.25,.12,'frame');
+ b.box(-24.5,.55,8.6,.09,8.25,51.6,'glass');for(const y of[.55,4.5,8.6])b.box(-24.5,y,8.6,.22,.2,51.6,'frame');
+ b.box(-10.3,.55,.5,.09,12.8,55,'glass');for(const y of[.55,6.2,13.0])b.box(-10.3,y,.5,.22,.2,55,'frame');
 }
