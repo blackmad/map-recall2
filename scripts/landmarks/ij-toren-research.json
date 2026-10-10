@@ -1,0 +1,16 @@
+{
+  "id": "ij-toren",
+  "retrieved": "2026-10-10",
+  "licence": "Amsterdam panorama thumbnails are municipal open data; used as private measurement references only, no pixels in the GLB.",
+  "bag": {"pand": "0363100012090447", "bouwjaar": 2002, "note": "one pand: Passenger Terminal Amsterdam podium, glazed hall, quay canopy and the tower; footprint has 4 inner rings", "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012090447&f=json"},
+  "threeDBag": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012090447 (all 4 building parts merged by modern-prepare.mjs)",
+  "webpages": [{"url": "https://nl.wikipedia.org/wiki/IJ-toren_(Piet_Heinkade)", "used": "name history (Labouchere/Dexia tower), 2002, UP Office Building 2013, Ibelings quote, neighbours"}],
+  "measured": {"slab": "57.2 x 15.7 m, long axis bearing 106 deg, 79.8 m", "floors": "pitch 3.12 m (22 floors from the 11.3 m podium), 2.0 m bays, from the 8-bay x 8-floor lobby wing on the south end", "wing": "16 m wide, 31.4 m high wing projecting south over a 2-floor lobby"},
+  "photos": [
+    {"file": "artifacts/landmark-lanes/ij-toren/ref-north.jpg", "panorama": "TMX7316010203-000172_pano_0000_001014", "captured": "2016", "pitch": 38, "fov": 90, "facade": "north, IJ quay"},
+    {"file": "artifacts/landmark-lanes/ij-toren/ref-south.jpg", "panorama": "recording_2025-06-16_08-26-12_00345", "captured": "2025-06-16", "pitch": 40, "fov": 60, "facade": "south, Piet Heinkade"},
+    {"file": "artifacts/landmark-lanes/ij-toren/ref-east.jpg", "panorama": "TMX7316010203-002532_pano_0000_002471", "captured": "2022", "heading": 279, "pitch": 18, "fov": 70, "facade": "east quay view"},
+    {"file": "artifacts/landmark-lanes/ij-toren/ref-west.jpg", "panorama": "TMX7316010203-001587_pano_0000_000366", "captured": "2020", "heading": 79, "pitch": 18, "fov": 70, "facade": "west view across the water"}
+  ],
+  "inferred": ["glazed barrel hall roof profile (3DBAG stepped planes)", "quay canopy and glass-block wall (3DBAG massing, recoloured)", "tower west and east end faces, crown details", "NE open pilotis notch of the tower is not modelled", "a sliver of the Moevenpick hotel inside the BAG ring is deliberately dropped"]
+}
