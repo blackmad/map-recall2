@@ -149,11 +149,10 @@
        "name": "SOIL Vegan Cafe",
        "displayWindows": 1,
        "stallriser": "none",
-       "residentialDoor": {
-        "side": "left",
-        "colour": "white"
-       },
-       "shopShare": 0.9,
+       "bays": [
+        1,
+        2
+       ],
        "evidence": "pano 2023-01-12 + OSM node 2809205497"
       }
      }
@@ -243,11 +242,10 @@
        "name": "Smart Beauty Lab",
        "displayWindows": 1,
        "stallriser": "low",
-       "residentialDoor": {
-        "side": "left",
-        "colour": "white"
-       },
-       "shopShare": 0.85,
+       "bays": [
+        1,
+        2
+       ],
        "evidence": "pano 2023-01-12 + OSM node 11381115950"
       }
      }
@@ -319,6 +317,11 @@
       "crownCapSpan": "medium",
       "storeys": 4,
       "bays": 3,
+      "bayWidths": [
+       1,
+       1.5,
+       1
+      ],
       "atticWindows": 1,
       "doorBay": 0,
       "windows": "sash",
@@ -340,11 +343,10 @@
        "name": "Charlton Hair Salon",
        "displayWindows": 1,
        "stallriser": "none",
-       "residentialDoor": {
-        "side": "left",
-        "colour": "dark-brown"
-       },
-       "shopShare": 0.7,
+       "bays": [
+        1,
+        2
+       ],
        "awning": {
         "style": "fabric-straight",
         "colour": "#e4dcc4",
@@ -402,7 +404,7 @@
     "photoGables": 1,
     "schemaLimits": [
      "cornice ~3.4 m above the photo line: 3DBAG eaves 17.3 m is the dormer-gable top, the strip cornice is at ~13.9 m; a photo-trusted group cannot bridge > 2.5 m",
-     "middle bay is wider than the sides on the photo (3-light with side lights); modelled as equal bays",
+     "middle 3-light bay modelled with bayWidths 1/1.5/1 (side lights not drawn)",
      "gable carries 3 windows in a dormer block, modelled as a 1-window cornice crown",
      "arched door head not modelled"
     ]
@@ -451,11 +453,10 @@
        },
        "displayWindows": 1,
        "stallriser": "low",
-       "residentialDoor": {
-        "side": "right",
-        "colour": "white"
-       },
-       "shopShare": 0.8,
+       "bays": [
+        0,
+        1
+       ],
        "evidence": "pano 2023-01-12 + OSM node 11381167110"
       }
      }
