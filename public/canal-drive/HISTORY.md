@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## Audit hole fixes: one real hole, mostly false positives (2026-10-10)
+
+Gerard Dou synagogue had its east hall wall and west clerestory missing:
+survey walls starting with three collinear points gave a zero normal and
+triangulated to nothing (Newell normal now). Stadsschouwburg's two glass
+ribbon strips hovered 3.4 m off the stage house; now seated on the measured
+flank. He Hua temple and NEMO were re-wound only (no visible change; manual
+materials are double-sided). Most other top audit see-through findings are
+convex-hull artefacts: rays start 3 m outside the hull and reach 4 m, so on
+concave footprints the real wall is out of reach. Open structures (Pontsteiger
+arch, Haarlemmerpoort colonnade, cranes) are intentional.
+
 ## Het Pakhuis v2 released (2026-10-10)
 
 Released on user instruction after review of the v2 contact sheet.

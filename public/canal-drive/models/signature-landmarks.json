@@ -24301,7 +24301,7 @@
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "materialOverrides": {
-        "brick": "#9b7556",
+        "brick": "#8a5a47",
         "stone": "#c9bfa8",
         "slate": "#4f4d4a",
         "glass": "#6f8590",
@@ -24451,16 +24451,18 @@
           ]
         ]
       },
+      "status": "held",
+      "heldReason": "Integrator 2026-10-10: brick too dark, banded rounded volumes and pale roof edges missing, bumpy 3DBAG roof",
       "bounds": {
         "min": [
-          -17.205801010131836,
+          -17.118999481201172,
           -2.3841858265427618e-8,
-          -12.208999633789062
+          -12.33112621307373
         ],
         "max": [
           18.062000274658203,
-          22.780000686645508,
-          20.080772399902344
+          22.638999938964844,
+          19.979000091552734
         ]
       },
       "placement": {
@@ -24474,14 +24476,15 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 35.26780128479004,
-        "heightMetres": 22.780000710487364,
-        "depthMetres": 32.289772033691406,
-        "depthCoverage": 0.9784779404148911
+        "widthMetres": 35.180999755859375,
+        "heightMetres": 22.6389999628067,
+        "depthMetres": 32.310126304626465,
+        "depthCoverage": 0.9790947365038323
       },
-      "triangles": 3000,
-      "bytes": 49836,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 2008,
+      "bytes": 37072,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "zevenlandenhuizen": {
       "id": "zevenlandenhuizen",
@@ -24931,8 +24934,7 @@
       },
       "triangles": 27908,
       "bytes": 350256,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "klimhal": {
       "id": "klimhal",
