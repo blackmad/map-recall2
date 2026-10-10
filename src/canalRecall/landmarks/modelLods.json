@@ -1474,5 +1474,11 @@
   "buildVersion": 2,
   "bytes": 78800,
   "triangles": 4010
+ },
+ "blankenstraat-15": {
+  "sourceHash": "e8dd3e952fcd95b0",
+  "buildVersion": 2,
+  "bytes": 66016,
+  "triangles": 3224
  }
 }
