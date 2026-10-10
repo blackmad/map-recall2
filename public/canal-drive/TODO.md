@@ -231,8 +231,11 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 - **Audit see-through test is hull-limited**: cast rays fully through the
   bbox (or from outside the footprint) in `glbQuality.ts`; today concave
   footprints flag false holes. Madame Tussauds has small roof-junction gaps.
-- **De Wallen next**: OZA 41–57 installed. Next — an Oudezijds Voorburgwal
-  face with a hand-picked capture date (2021 panoramas rectify badly);
+- **De Wallen next**: OZA 41–57 and OZV 115–125 installed. Next — a
+  frontage override for BAG stoop projections (OZV 113, 127–129); a face-level
+  3DBAG/BAG geometry correction field instead of per-face fix scripts; bell
+  gables with flat moulded caps; basements > 1.2 m and taller ground floors;
+  label depth (Casa Rosso floats over OZV);
   lean from a non-rectified photo; adopt crownGroups/tower/split fronts on
   Bilderdijkstraat 102–106, 149–151, 88–90, 162443, 236022, 236189; reviewer
   row counts confuse mezzanines and arcade bays with storeys (177922/23/43/46).

@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## Oudezijds Voorburgwal 115–125 installed (2026-10-10)
+
+Six pands, five Rijksmonuments (6062–6066), two bell gables between cornice
+fronts. Capture chosen by hand: 2021-01-25 from a boat on the canal (15–22 m,
+pitch/roll ≤ 0.8°); the default 2021-12-27 and 2021-03-08 street captures at
+5–6 m shear and ghost the gables (03-08 used only for ground floors). Lean
+measured on a level boat view: ≤ 0.5°, noise, not modelled. 117: 3DBAG eaves
+5.61 m vs photo cornice 14.4 m (measured eaves), and a 3DBAG wedge/notch plus
+a BAG stoop block crossing into 115 broke the party line — corrected by a
+face-local `fix-facts.ts` (no shared code changed). 113 and 127–129 left out:
+BAG stoop projections are taken as the front. Integrator viewed the
+across-the-canal shot.
+
 ## Photo gable identifier connected to block faces; Marnixstraat crowns from photo (2026-10-10)
 
 The September roofline classifier/fitter (`facade/gable.ts`, `gableFit.ts`,
