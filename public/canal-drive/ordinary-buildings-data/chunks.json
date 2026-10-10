@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-10T09:06:11.452Z",
+ "generatedAt": "2026-10-10T13:02:01.163Z",
  "chunks": [
   {
    "id": "chunk-bilder-079721-x2",
@@ -8182,6 +8182,647 @@
       },
       {
        "primitive": 21,
+       "firstTriangle": 27,
+       "triangleCount": 11
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-wallen-ozv-115-125",
+   "name": "face-wallen-ozv-115-125",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-wallen-ozv-115-125.glb?asset=c431f49d8eee609e",
+   "sha256": "c431f49d8eee609ed1693582ab0009fe7dd7a8e423ecf34cb533c057e9c0c658",
+   "bytes": 589288,
+   "triangles": 8627,
+   "primitives": 22,
+   "instance": {
+    "anchor": [
+     4.8975709552643085,
+     52.37297156134601
+    ],
+    "northOffsetDegrees": 129.6705,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -19.533,
+     0,
+     -24.788
+    ],
+    "max": [
+     13.555,
+     18.997,
+     1.284
+    ]
+   },
+   "height": 18.997,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012171880",
+    "NL.IMBAG.Pand.0363100012171878",
+    "NL.IMBAG.Pand.0363100012178729",
+    "NL.IMBAG.Pand.0363100012178728",
+    "NL.IMBAG.Pand.0363100012179002",
+    "NL.IMBAG.Pand.0363100012171879"
+   ],
+   "replaces": [
+    "ordinary-0363100012171880",
+    "ordinary-0363100012171878",
+    "ordinary-0363100012178729",
+    "ordinary-0363100012178728",
+    "ordinary-0363100012179002",
+    "ordinary-0363100012171879"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8977009,
+        52.3730698
+       ],
+       [
+        4.8976507,
+        52.3730299
+       ],
+       [
+        4.8979287,
+        52.3729486
+       ],
+       [
+        4.8979023,
+        52.3729147
+       ],
+       [
+        4.8979486,
+        52.3729011
+       ],
+       [
+        4.8980082,
+        52.3729774
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8976507,
+        52.3730299
+       ],
+       [
+        4.8976377,
+        52.37302
+       ],
+       [
+        4.8976113,
+        52.3729998
+       ],
+       [
+        4.8978078,
+        52.3729423
+       ],
+       [
+        4.8978254,
+        52.3729649
+       ],
+       [
+        4.8978491,
+        52.3729579
+       ],
+       [
+        4.8978315,
+        52.3729354
+       ],
+       [
+        4.8979023,
+        52.3729147
+       ],
+       [
+        4.8979287,
+        52.3729486
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8977772,
+        52.3729513
+       ],
+       [
+        4.8976113,
+        52.3729998
+       ],
+       [
+        4.8975714,
+        52.372971
+       ],
+       [
+        4.8978589,
+        52.3728856
+       ],
+       [
+        4.8978869,
+        52.3729192
+       ],
+       [
+        4.8978164,
+        52.3729398
+       ],
+       [
+        4.8977998,
+        52.3729186
+       ],
+       [
+        4.8977607,
+        52.3729301
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8975714,
+        52.372971
+       ],
+       [
+        4.8975308,
+        52.3729416
+       ],
+       [
+        4.8978298,
+        52.3728505
+       ],
+       [
+        4.8978589,
+        52.3728856
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8975308,
+        52.3729416
+       ],
+       [
+        4.89749,
+        52.3729128
+       ],
+       [
+        4.8977805,
+        52.3728135
+       ],
+       [
+        4.897815,
+        52.3728551
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.89749,
+        52.3729128
+       ],
+       [
+        4.8974421,
+        52.3728787
+       ],
+       [
+        4.8976216,
+        52.3728233
+       ],
+       [
+        4.8976114,
+        52.3728109
+       ],
+       [
+        4.8977442,
+        52.3727698
+       ],
+       [
+        4.8977805,
+        52.3728135
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "wface-171880",
+     "pandId": "0363100012171880",
+     "buildingId": "NL.IMBAG.Pand.0363100012171880",
+     "address": "Oudezijds Voorburgwal 115",
+     "frontage": {
+      "x0": -14.062,
+      "x1": -8.463,
+      "widthM": 5.599
+     },
+     "bounds": {
+      "min": [
+       -19.533,
+       0,
+       -24.788
+      ],
+      "max": [
+       -8.456,
+       18.997,
+       1.099
+      ]
+     },
+     "triangles": 2036,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 233
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 284
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 1320
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 16
+      }
+     ]
+    },
+    {
+     "recipeId": "wface-171878",
+     "pandId": "0363100012171878",
+     "buildingId": "NL.IMBAG.Pand.0363100012171878",
+     "address": "Oudezijds Voorburgwal 117",
+     "frontage": {
+      "x0": -8.463,
+      "x1": -4.174,
+      "widthM": 4.29
+     },
+     "bounds": {
+      "min": [
+       -13.608,
+       0,
+       -21.395
+      ],
+      "max": [
+       -4.167,
+       15.488,
+       1.284
+      ]
+     },
+     "triangles": 1211,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 116
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 284,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1320,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 752
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 144,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 26
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "wface-178729",
+     "pandId": "0363100012178729",
+     "buildingId": "NL.IMBAG.Pand.0363100012178729",
+     "address": "Oudezijds Voorburgwal 119",
+     "frontage": {
+      "x0": -4.174,
+      "x1": 0.028,
+      "widthM": 4.201
+     },
+     "bounds": {
+      "min": [
+       -9.275,
+       0,
+       -21.197
+      ],
+      "max": [
+       0.028,
+       16.895,
+       1.129
+      ]
+     },
+     "triangles": 1612,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 404,
+       "triangleCount": 308
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1332,
+       "triangleCount": 880
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 304,
+       "triangleCount": 116
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 11,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 16,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 16,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "wface-178728",
+     "pandId": "0363100012178728",
+     "buildingId": "NL.IMBAG.Pand.0363100012178728",
+     "address": "Oudezijds Voorburgwal 121",
+     "frontage": {
+      "x0": 0.027,
+      "x1": 4.315,
+      "widthM": 4.288
+     },
+     "bounds": {
+      "min": [
+       -5.179,
+       0,
+       -22.164
+      ],
+      "max": [
+       4.315,
+       14.892,
+       0.247
+      ]
+     },
+     "triangles": 1148,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 91
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 712,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 2212,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 752,
+       "triangleCount": 628
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 420,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 18
+      }
+     ]
+    },
+    {
+     "recipeId": "wface-179002",
+     "pandId": "0363100012179002",
+     "buildingId": "NL.IMBAG.Pand.0363100012179002",
+     "address": "Oudezijds Voorburgwal 123",
+     "frontage": {
+      "x0": 4.315,
+      "x1": 8.548,
+      "widthM": 4.233
+     },
+     "bounds": {
+      "min": [
+       -0.658,
+       0,
+       -22.217
+      ],
+      "max": [
+       8.548,
+       16.07,
+       0.459
+      ]
+     },
+     "triangles": 1467,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 95
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 724,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 2260,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 1380,
+       "triangleCount": 692
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 184,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 564,
+       "triangleCount": 200
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 26,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 2,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 11,
+       "triangleCount": 16
+      }
+     ]
+    },
+    {
+     "recipeId": "wface-171879",
+     "pandId": "0363100012171879",
+     "buildingId": "NL.IMBAG.Pand.0363100012171879",
+     "address": "Oudezijds Voorburgwal 125",
+     "frontage": {
+      "x0": 8.548,
+      "x1": 13.555,
+      "widthM": 5.007
+     },
+     "bounds": {
+      "min": [
+       4.405,
+       0,
+       -23.422
+      ],
+      "max": [
+       13.555,
+       13.17,
+       0.416
+      ]
+     },
+     "triangles": 1153,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 85
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 808,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 2272,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 2072,
+       "triangleCount": 760
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 764,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 36,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 12,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 20,
        "firstTriangle": 27,
        "triangleCount": 11
       }
