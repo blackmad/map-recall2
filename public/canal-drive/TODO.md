@@ -53,8 +53,7 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   vs the pre-change baseline 16 FAIL→PASS (two spot-checked visually: no
   holes) and 2 PASS→FAIL: concertgebouw (canopy restored to its real depth)
   and haparandaweg-902-950 (Het Pakhuis v2, see-through from the footprint
-  edge — owner: Haparandaweg lane). De School held (pale concrete, rounded
-  drum pavilion, ribbon panes; rework in flight).
+  edge — owner: Haparandaweg lane).
   Elevation skeletons with photos exist for 25 landmarks
   (`scripts/landmarks/*-elevations.json`, photos in `artifacts/landmark-lanes/`);
   counts are not filled: Haiku blind counts were too noisy — use a stronger
