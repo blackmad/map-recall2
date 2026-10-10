@@ -1499,22 +1499,22 @@
   "bytes": 88760,
   "triangles": 4423
  },
- "hva-rhijnspoorplein-2": {
-  "sourceHash": "5029a39620a7ac6d",
-  "buildVersion": 2,
-  "bytes": 22736,
-  "triangles": 1357
- },
  "kohnstammhuis": {
-  "sourceHash": "65b16af61f4bf592",
+  "sourceHash": "c5a23ee839c95c33",
   "buildVersion": 2,
-  "bytes": 39232,
-  "triangles": 2150
+  "bytes": 39204,
+  "triangles": 2155
  },
  "hva-wibautstraat-3": {
-  "sourceHash": "0f3bfaf0a1c074f9",
+  "sourceHash": "c4722e7167c48980",
   "buildVersion": 2,
-  "bytes": 63548,
-  "triangles": 2907
+  "bytes": 57464,
+  "triangles": 4833
+ },
+ "hva-rhijnspoorplein-2": {
+  "sourceHash": "ff70134e689eae1a",
+  "buildVersion": 2,
+  "bytes": 21216,
+  "triangles": 1271
  }
 }

@@ -1,9 +1,8 @@
 import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
-import {addShell} from './worship-shell';
 import {setSink, slab, archSlab, disc, put} from './nearbar-kit';
 import {rawWall} from './big-kit';
-import {quad, windowGrid, sillsFromTop, centredColumns} from './big-facade';
+import {quad, windowGrid, sillsFromTop, centredColumns, beginFacade, claimOpening, addShellTess} from './big-facade';
 import source from './kohnstammhuis-footprints.json';
 
 /**
@@ -27,9 +26,10 @@ const surfaces = (source as {surfaces: {type: string; rings: number[][][]}[]}).s
 const WIN = {w: 1.0, h: 2.2};
 
 export function buildKohnstammhuis(_w: number, _d: number, b: BuildingTools & {mark?: (n: string) => void}) {
-  addShell(b, source as never, {wall: 'brick', roof: 'concrete'});
+  addShellTess(b, source as never, {wall: 'brick', roof: 'concrete'});
   b.mark?.('shell');
   if (process.env.BIG_SHELL_ONLY) return;
+  beginFacade(source as never);
   setSink(0.3);
   const SPECIAL = new Set([240, 185, 153, 72, 41, 262]);
 
@@ -39,16 +39,17 @@ export function buildKohnstammhuis(_w: number, _d: number, b: BuildingTools & {m
     const T0 = 8.6, T1 = 54.35, N = 26, P = (T1 - T0) / N;
     slab(b, f, (T0 - 0.2 + T1 + 0.2) / 2, 0, T1 - T0 + 0.4, 2.0, 0.18, 'concrete'); // plinth
     slab(b, f, (T0 - 0.4 + T1 + 0.4) / 2, 11.7, T1 - T0 + 0.8, 1.6, 0.45, 'concrete'); // patterned frieze
-    slab(b, f, (T0 - 0.4 + T1 + 0.4) / 2, 11.5, T1 - T0 + 0.8, 0.2, 0.55, 'dark');
+    slab(b, f, (T0 - 0.4 + T1 + 0.4) / 2, 11.42, T1 - T0 + 0.8, 0.22, 0.52, 'dark');
     for (let k = 0; k <= N; k++) {
       const t = T0 + k * P;
       put(b, f, new T.CylinderGeometry(0.42, 0.42, 9.7, 10).translate(0, 4.85, 0), t, 2.0, 0.05, 'concrete');
     }
     for (let k = 0; k < N; k++) {
       const t = T0 + (k + 0.5) * P;
+      if (!claimOpening(w, t - 0.48, t + 0.48, 2.15, 11.35, 0.08)) continue;
       quad(b, f, t, 2.05, 1.12, 9.4, 'frame', 0.02);
       quad(b, f, t, 2.15, 0.96, 9.2, 'glass', 0.04);
-      for (let m = 1; m <= 5; m++) quad(b, f, t, 2.15 + m * 9.2 / 6 - 0.03, 1.0, 0.06, 'frame', 0.045);
+      for (let m = 1; m <= 5; m++) quad(b, f, t, 2.15 + m * 9.2 / 6 - 0.03, 1.0, 0.06, 'frame', 0.06);
       archSlab(b, f, t, 0.55, 0.9, 0.7, 0.06, 'dark', 0.15);
     }
     // end pavilions: door at the head of a stair, coat of arms, tall window, leaded window

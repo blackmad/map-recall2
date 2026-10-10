@@ -1,8 +1,7 @@
 import type {BuildingTools} from './cultural-builders';
-import {addShell} from './worship-shell';
 import {setSink} from './nearbar-kit';
 import {rawWall} from './big-kit';
-import {quad, ribbon} from './big-facade';
+import {ribbon, beginFacade, addShellTess} from './big-facade';
 import source from './hva-wibautstraat-3-footprints.json';
 
 /**
@@ -26,9 +25,10 @@ const surfaces = (source as {surfaces: {type: string; rings: number[][][]}[]}).s
 const S0 = 14.5, P = 3.5, H = 2.4;
 
 export function buildHvaWibautstraat3(_w: number, _d: number, b: BuildingTools & {mark?: (n: string) => void}) {
-  addShell(b, source as never, {wall: 'red', roof: 'concrete'});
+  addShellTess(b, source as never, {wall: 'red', roof: 'concrete'});
   b.mark?.('shell');
   if (process.env.BIG_SHELL_ONLY) return;
+  beginFacade(source as never);
   setSink(0.3);
   const rows = (w: ReturnType<typeof rawWall>, t0: number, t1: number, mullion = 2.1) => {
     for (let y = S0; y + H <= w.top; y += P) if (y >= w.base + 0.6) ribbon(b, w, t0, t1, y, H, {mullion, frame: 'frame', glass: 'glass'});
@@ -56,8 +56,7 @@ export function buildHvaWibautstraat3(_w: number, _d: number, b: BuildingTools &
     if (w.base < 0.5) {
       const gh = Math.min(w.top - 1.4, 11.0);
       for (const [a, c] of segs) {
-        ribbon(b, w, a, c, 0.8, gh, {mullion: 1.9, frame: 'frame', glass: 'glass'});
-        if (gh > 9) { quad(b, w.f, (a + c) / 2, 5.6, c - a, 0.5, 'dark', 0.045); quad(b, w.f, (a + c) / 2, 9.7, c - a, 0.6, 'dark', 0.045); }
+        ribbon(b, w, a, c, 0.8, gh, {frame: 'frame', glass: 'glass', louvres: gh > 9 ? [[5.6, 0.5], [9.7, 0.6]] : []});
       }
     }
     if (w.top > 16.5) for (const [a, c] of segs) rows(w, a, c);

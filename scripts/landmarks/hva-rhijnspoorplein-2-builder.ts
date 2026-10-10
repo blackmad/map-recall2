@@ -1,8 +1,7 @@
 import type {BuildingTools} from './cultural-builders';
-import {addShell} from './worship-shell';
 import {setSink} from './nearbar-kit';
 import {rawWall} from './big-kit';
-import {windowGrid, planeDeviation} from './big-facade';
+import {windowGrid, beginFacade, addShellTess} from './big-facade';
 import source from './hva-rhijnspoorplein-2-footprints.json';
 
 /**
@@ -23,14 +22,15 @@ const surfaces = (source as {surfaces: {type: string; rings: number[][][]}[]}).s
 const S0 = 3.5, P = 3.5, H = 2.4;
 
 export function buildHvaRhijnspoorplein2(_w: number, _d: number, b: BuildingTools & {mark?: (n: string) => void}) {
-  addShell(b, source as never, {wall: 'stone', roof: 'concrete'});
+  addShellTess(b, source as never, {wall: 'stone', roof: 'concrete'});
   b.mark?.('shell');
   if (process.env.BIG_SHELL_ONLY) return;
+  beginFacade(source as never);
   setSink(0.3);
   surfaces.forEach((s, i) => {
     if (s.type !== 'WallSurface') return;
     const w = rawWall(source as never, i);
-    if (!(w.len >= 2.5) || !Number.isFinite(w.f.n[0]) || w.top - w.base < 4 || planeDeviation(source as never, w) > 0.12) return;
+    if (!(w.len >= 2.5) || !Number.isFinite(w.f.n[0]) || w.top - w.base < 4) return;
     const inner = w.len - 0.8, n = Math.max(1, Math.round(inner / 3.75)), bay = inner / n;
     for (let k = 0, y = S0; y + H <= w.top - 0.6; k++, y += P) {
       if (y < w.base + 0.5) continue;
