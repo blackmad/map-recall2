@@ -220,6 +220,9 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   2.5 m spread; 164549, 162572, 237294, 167243 sit ~3 m high). Joint
   z-fights from 2–7 cm survey-front offsets on 157757|164549, E1, E2 — snap
   near-coplanar fronts. 155–167 (70 m, pand 236799) and 169 are large-tier.
+- **Inferred rears**: the rear window grid is generic (2.5 m pitch); use rear
+  photos (`pand-reference --prefer-bearing`) where they exist. Raw audit still
+  reports party-wall "holes" on several faces (exempted by the compile).
 - **Block faces next** (`docs/buildings-pipeline.md` "Block-face authoring";
   now the default unit for attached ordinary buildings): schema for per-bay
   widths and off-centre gables (081118, 156286, Utrechtse 76), a shopfront

@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+## Marnixstraat 106–138 installed as block faces; rears inferred (2026-10-10)
+
+The audit refused Marnixstraat 124–138 for a 1,224 m² blank rear plane and
+12.9 m² of inverted roof. Fixes: every pand gets an inferred rear window grid
+(`blockFace/rear.ts`; never on shared walls, below the real wall top; marked
+"inferred" in report.json and on the strip sheet); the inverted strip was a
+narrow stepped crown whose profile lay on the eaves line, extruded as one
+zero-height polygon — crowns are now one solid per run above the eaves; the
+marnix-c z-fight was `backJogs` side walls wound by footprint orientation.
+Party-line front steps of 5 mm–9 cm are snapped half each side (real
+setbacks kept); the z-fight measure ignores ≤5 mm abutment overlap (a
+measure fix, not a threshold raise). 3DBAG roof volumes only look like dark
+masses on orthographic sheets; in game they read as pitched roofs behind the
+cornice. Installed: face-marnix-124-138 and face-marnix-c (17 pands).
+Integrator viewed the 124–138 overlay and the 106–122 in-game street shot.
+
 ## MapLibre-free views prototype: go (2026-10-10)
 
 User: "why would we still keep MapLibre at all?" Inventory of every MapLibre
