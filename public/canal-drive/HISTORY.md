@@ -370,6 +370,22 @@ except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
 (continuous ground and cornice line) does not need chunking. Unmeasured on a
 real phone GPU.
 
+## Large ordinary buildings, batch 3, and two audit rules (2026-10-10)
+
+Asterweg 23 (1923 hall, one photographed gable), Oostenburgermiddenstraat 228
+(2023 corten tower + glazed-brick wing) and Céramiquelaan 437 (2021 courtyard
+block) installed as ordinary. `worship-prepare.mjs` now reads every 3DBAG
+BuildingPart (it read only -0 and dropped the tower). Audit rules, each with
+a synthetic test (24/24): (1) a grounded non-main cluster >= 4 m tall,
+>= 400 m2 and >= 8 m across is a separate volume of the pand, not far-outside
+stray geometry (a far mast still fails); (2) a ray that hits a wall <= 2.5 m
+behind an overhang whose underside is >= 6 m up is a recess, and a ray along
+the lateral end of an overhang with a wall beside it is closed. Full audit vs
+the previous run: only adam-tower (37/93 rays -> 0), de-gooyer (12/21 -> 1)
+and huis-bartolotti (5/49 -> 3) flip FAIL -> PASS; every closed ray hits real
+wall, so these are recessed ground floors, not hollow models. Whether the
+recess depths match the photos is a fidelity question left in TODO.
+
 ## First large ordinary buildings (2026-10-10)
 
 The landmark candidates ran thin, so a Haiku pass identified the 30 largest
