@@ -88,6 +88,9 @@ function inPolygon(x: number, z: number, poly: [number, number][]): boolean {
   return inside;
 }
 
+/** Deepest upper-storey protrusion (m) treated as architecture rather than a gap in the wall below it. */
+const SHALLOW_PROTRUSION_M = 1.6;
+
 export const DEFAULT_THRESHOLDS: Thresholds = {
   weld: 1e-3,
   detachGap: 0.05,
@@ -929,6 +932,10 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
                 if (firstHit([px, h, pz], [-dz, 0, dx], 6) > 0 && firstHit([px, h, pz], [dz, 0, -dx], 6) > 0) columns = true;
               }
               if (covered && (columns || deep - 3 <= 1.5)) hit = deep;
+              // A shallow upper-storey protrusion (balcony, loggia, oriel: wall within SHALLOW_PROTRUSION_M of the
+              // outermost edge) is not a wall gap at street height at ANY elevation: the 1 m inside target stays in
+              // front of the wall behind it. The 16 m cover cap above is for deep porticoes, not 1.5 m balconies.
+              else if (deep - 3 <= SHALLOW_PROTRUSION_M) hit = deep;
             }
           }
           if (hit < 0 && th.throughPassages.length) {
