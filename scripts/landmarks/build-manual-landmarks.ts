@@ -1,3 +1,4 @@
+import {buildKrasnapolsky} from './krasnapolsky-builder';
 import {buildArtisAquarium} from './artis-aquarium-builder';
 import {buildCoymanshuis} from './coymanshuis-builder';
 import {buildHotelDeLEurope} from './hotel-de-l-europe-builder';
@@ -370,6 +371,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='lloyd-hotel')buildLloydHotel(w,d,helpers);
     else if(id==='coymanshuis')buildCoymanshuis(w,d,helpers);
     else if(id==='artis-aquarium')buildArtisAquarium(w,d,helpers);
+    else if(id==='krasnapolsky')buildKrasnapolsky(w,d,helpers);
     else if(id==='vondelkerk')buildVondelkerk(w,d,helpers);
     else if(id==='west-indisch-pakhuis')buildWestIndischPakhuis(w,d,helpers);
     else if(id==='de-school')buildDeSchool(w,d,helpers);
