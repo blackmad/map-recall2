@@ -1,0 +1,22 @@
+{
+ "name": "Hotel Okura Amsterdam",
+ "landmarkId": "n2817713466",
+ "sourceUrl": "https://nl.wikipedia.org/wiki/Hotel_Okura_Amsterdam",
+ "suppressOsmIds": [
+  "NL.IMBAG.Pand.0363100012150422"
+ ],
+ "pandId": "0363100012150422",
+ "materialOverrides": {
+  "stone": "#cdbf9f",
+  "concrete": "#bdbab2",
+  "greyBrick": "#968c85",
+  "pink": "#c39d95",
+  "glass": "#7d93a0",
+  "white": "#e9e5da",
+  "ochre": "#a9704a",
+  "dark": "#3a3633",
+  "frame": "#34383b"
+ },
+ "surveySource": "Current BAG 0363100012150422 footprint (83-vertex ring) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+ "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; tower facade rhythm, crown and podium measured by eye from Commons photographs, no pixels or meshes imported."
+}

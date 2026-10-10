@@ -1,0 +1,20 @@
+{
+  "id": "hotel-okura",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "south (Amstelkanaal side, oblique, tower slab)",
+      "bearing": 184.95,
+      "photo": "artifacts/landmark-lanes/hotel-okura/ref-south.jpg",
+      "span": [-8, 28],
+      "depthBand": 80
+    },
+    {
+      "name": "west (Ferdinand Bolstraat side, oblique, balcony stack)",
+      "bearing": 274.95,
+      "photo": "artifacts/landmark-lanes/hotel-okura/ref-west.jpg",
+      "span": [-31, 4],
+      "depthBand": 80
+    }
+  ]
+}
