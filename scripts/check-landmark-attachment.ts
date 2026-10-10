@@ -23,6 +23,7 @@ import {buildWestIndiaHouse} from './landmarks/west-india-house-builder';
 import {buildZevenlandenhuizen} from './landmarks/zevenlandenhuizen-builder';
 import {buildSeaPalace} from './landmarks/sea-palace-builder';
 import {buildDeSchool} from './landmarks/de-school-builder';
+import {buildWestIndischPakhuis} from './landmarks/west-indisch-pakhuis-builder';
 
 const cases: Record<string, {build: (w: number, d: number, b: never) => void; ring: () => number[][]; top: () => number; topSlack: number}> = {
   'ij-toren': {build: buildIjToren, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')).nativeRing, top: () => { const f = JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')); return Math.max(...f.surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))); }, topSlack: 8},
@@ -47,6 +48,8 @@ const seaPalace = () => JSON.parse(fs.readFileSync('scripts/landmarks/sea-palace
 cases['sea-palace'] = {build: buildSeaPalace, ring: () => seaPalace().nativeRing, top: () => seaPalace().topMetres, topSlack: 1.6};
 const deSchool = () => JSON.parse(fs.readFileSync('scripts/landmarks/de-school-footprints.json', 'utf8'));
 cases['de-school'] = {build: buildDeSchool, ring: () => deSchool().nativeRing, top: () => Math.max(...deSchool().surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 1.0};
+const wip = () => JSON.parse(fs.readFileSync('scripts/landmarks/west-indisch-pakhuis-footprints.json', 'utf8'));
+cases['west-indisch-pakhuis'] = {build: buildWestIndischPakhuis, ring: () => wip().nativeRing, top: () => Math.max(...wip().surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 1.0};
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(cases);
 for (const id of ids) {
   const c = cases[id];
