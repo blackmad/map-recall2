@@ -36,7 +36,7 @@ test('repitchFrontRoof: the front strip rises from the eaves at 72 degrees, the 
   assert.ok(Math.max(...capped.roofsRD.filter(r => /:f\d+$/.test(r.surfaceId)).flatMap(r => r.vertices.map(v => v[2] - g))) <= 16.001);
 });
 
-test('validator: frontRoof only under a single-front pand, topRow above the eaves row', () => {
+test('validator: frontRoof topRow above the eaves row, pitch 30-80', () => {
   const {raw} = load('bilder-157757-164549');
   const bad = structuredClone(raw); bad.continuity.measuredEaves[0].frontRoof = {topRow: 400};
   assert.throws(() => validateBlockFace(bad), /frontRoof.topRow/);
@@ -82,4 +82,17 @@ test('Bilderdijkstraat 113: a mansard 3DBAG already pitches (57 deg) keeps its f
   assert.deepEqual(r.gates.filter(x => !x.pass).map(x => `${x.pand}/${x.id}`), []);
   const e = Object.fromEntries(r.perPand.map(p => [p.pand.slice(-6), p.eavesM]));
   assert.ok(e['161281'] - e['157756'] > 1.2, `115 sits ~1.6 m below 113 on both capture dates: ${JSON.stringify(e)}`);
+});
+
+test('Bilderdijkstraat 158-162 (one pand, four fronts): frontRoof re-pitches only its own stretch; the tower bays keep the survey roof', () => {
+  const {face, facts, strip} = load('bilder-233580-162444');
+  const plan = planFaceGround(face, face.houses.map(h => facts.get(h.pandId)!), undefined, strip);
+  const i = face.houses.findIndex(h => h.pandId.endsWith('162443')), f = plan.facts[i], g = f.attributes.b3_h_maaiveld;
+  const [a, b] = f.fronts[0].endpointsRD, n = f.fronts[0].outwardNormalRD, w = Math.hypot(b[0] - a[0], b[1] - a[1]);
+  const along = (v: number[]) => ((v[0] - a[0]) * (b[0] - a[0]) + (v[1] - a[1]) * (b[1] - a[1])) / w, depth = (v: number[]) => -((v[0] - a[0]) * n[0] + (v[1] - a[1]) * n[1]);
+  const m = plan.measured!['0363100012162443'];
+  const pitched = f.roofsRD.filter(r => /:f\d+$/.test(r.surfaceId)).flatMap(r => r.vertices).filter(v => depth(v) < 0.02 && along(v) > 6.2);
+  assert.ok(pitched.length >= 2 && pitched.every(v => Math.abs(v[2] - g - m.m) < 0.02 && along(v) > 7.4 && along(v) < 16.1), `middle stretch at its cornice ${m.m}`);
+  const towers = f.roofsRD.filter(r => !/:f\d+$/.test(r.surfaceId)).flatMap(r => r.vertices).filter(v => depth(v) < 0.02 && along(v) > 6.2);
+  assert.ok(towers.length >= 2 && towers.every(v => v[2] - g > 15.5), 'tower bays keep the survey roof');
 });

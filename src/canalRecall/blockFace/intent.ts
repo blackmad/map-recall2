@@ -89,7 +89,7 @@ export interface BlockFaceIntent {
      * Eaves read off the rectified strip where 3DBAG misreads them (a cornice front hiding a gabled roof, a gable foot
      * under a dormer): `stripRow` is the pixel row of the cornice top / gable foot on `strip.jpg` (strip.json gives the
      * scale and ground); `front` names the front of a multi-front pand (default: every front of the pand).
-     * `frontRoof` (single-front pands whose cornice sits BELOW 3DBAG's eaves): LoD2.2 carries a mansard's flat top, or a
+     * `frontRoof` (a front whose cornice sits BELOW 3DBAG's eaves; on a multi-front pand only that front's stretch): LoD2.2 carries a mansard's flat top, or a
      * dormer merged into the roof, out to the facade (Bilderdijkstraat 133, 145, 147, 153: eaves 2.5-3.5 m above the photo
      * cornice). The front strip of the roof is re-pitched from the measured eaves at `pitchDeg` (default 72, a mansard
      * face) up to the survey's height (blockFace/compile.ts repitchFrontRoof), so the shell stops at the cornice; `topRow`
@@ -170,7 +170,7 @@ export function validateBlockFace(input: unknown, order?: string[]): BlockFaceIn
       const r = m.frontRoof;
       if (r.topRow !== undefined && !(Number.isInteger(r.topRow) && r.topRow >= 0 && r.topRow < m.stripRow)) problems.push(`${at}.frontRoof.topRow: a pixel row above stripRow (the roof top is higher than the eaves)`);
       if (r.pitchDeg !== undefined && !(r.pitchDeg >= 30 && r.pitchDeg <= 80)) problems.push(`${at}.frontRoof.pitchDeg: 30..80`);
-      if (intents[i] && (intents[i].fronts.length !== 1 || m.front !== undefined)) problems.push(`${at}.frontRoof: only for a single-front pand`);
+      if (intents[i] && intents[i].fronts.length > 1 && m.front === undefined) problems.push(`${at}.frontRoof: name the front of a multi-front pand`);
     }
     if (m.front !== undefined && intents[i] && !intents[i].fronts.some(f => f.id === m.front)) problems.push(`${at}.front: ${m.front} is not a front of ${m.pand.slice(-6)}`);
     const key = `${m.pand}/${m.front ?? '*'}`;

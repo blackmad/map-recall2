@@ -14,7 +14,7 @@ import * as T from 'three';
 import {KHRMeshQuantization} from '@gltf-transform/extensions';
 import type {BuildingFacts} from '../buildingRecipe/facts.ts';
 import {pointInRing} from '../buildingRecipe/facts.ts';
-import {fitIntent} from '../buildingRecipe/fit.ts';
+import {fitIntent, splitChain} from '../buildingRecipe/fit.ts';
 import type {CompiledBuilding} from '../buildingRecipe/compile.ts';
 import {BUDGET_TRIANGLES} from '../buildingRecipe/gates.ts';
 import {ringToFrame, type FrontFrame} from '../buildingRecipe/instances.ts';
@@ -87,12 +87,19 @@ export function planFaceGround(face: BlockFaceIntent, facts: BuildingFacts[], ma
   const withMeasured = out.map((f, i) => {
     const mine = measured[face.houses[i].pandId];
     if (!mine) return f;
-    const pitch = measuredList.find(m => m.pand === face.houses[i].pandId && m.frontRoof);
-    if (pitch) {
+    for (const pitch of measuredList.filter(m => m.pand === face.houses[i].pandId && m.frontRoof)) {
       const row = (r: number) => strip.groundNAP + (strip.heightPx - r) / strip.pixelsPerMetre, fr = pitch.frontRoof!;
-      if (mine[intents[i].fronts[0].id] > eavesBefore[i] - 0.5) throw Error(`${m6(face.houses[i].pandId)}: frontRoof re-pitches the roof under eaves BELOW 3DBAG's; measured ${mine[intents[i].fronts[0].id]} m vs 3DBAG ${eavesBefore[i]} m`);
+      const fronts = intents[i].fronts, k = pitch.front === undefined ? 0 : fronts.findIndex(x => x.id === pitch.front), value = mine[fronts[k].id];
+      // One front of several: re-pitch only along its stretch of the frontage (the fit's own split of the chain).
+      let along: [number, number] | undefined;
+      if (fronts.length > 1) {
+        const ff = f.fronts[0], shares = fronts.map(x => x.share ?? 1 / fronts.length), cut = splitChain(ff, shares.map(x => x / shares.reduce((t, y) => t + y, 0))), [p0] = ff.endpointsRD, wv = [ff.endpointsRD[1][0] - p0[0], ff.endpointsRD[1][1] - p0[1]], wl = Math.hypot(wv[0], wv[1]);
+        const at = (q: number[]) => ((q[0] - p0[0]) * wv[0] + (q[1] - p0[1]) * wv[1]) / wl;
+        along = [at(cut.pairs[k][0]), at(cut.pairs[k][1])];
+      }
+      if (!along && value > eavesBefore[i] - 0.5) throw Error(`${m6(face.houses[i].pandId)}: frontRoof re-pitches the roof under eaves BELOW 3DBAG's; measured ${value} m vs 3DBAG ${eavesBefore[i]} m`);
       // The eaves in this pand's own height datum (the fit reads roof heights above b3_h_maaiveld), rounded as the fit rounds it.
-      f = repitchFrontRoof(f, mine[intents[i].fronts[0].id] + f.attributes.b3_h_maaiveld, {topNap: fr.topRow === undefined ? undefined : row(fr.topRow), pitchDeg: fr.pitchDeg});
+      f = repitchFrontRoof(f, value + f.attributes.b3_h_maaiveld, {topNap: fr.topRow === undefined ? undefined : row(fr.topRow), pitchDeg: fr.pitchDeg, along});
     }
     // The first front's line drives the party-line eaves verdicts.
     eavesAfter[i] = mine[intents[i].fronts[0].id] ?? eavesAfter[i];
@@ -111,50 +118,57 @@ const m6 = (p: string) => p.slice(-6);
  * at d; the rest keeps the survey heights. `topNap` (the photo's roof top beside a dormer) first caps those surfaces, for a
  * dormer that 3DBAG merged into the roof. The shell top (lowest roof vertex) then falls to the eaves.
  */
-export function repitchFrontRoof(f: BuildingFacts, eavesNap: number, opts: {topNap?: number; pitchDeg?: number; tolM?: number} = {}): BuildingFacts {
-  const out = structuredClone(f), fr = out.fronts[0], [a] = fr.endpointsRD, n = fr.outwardNormalRD, tol = opts.tolM ?? 0.05;
-  const tan = Math.tan((opts.pitchDeg ?? 72) * Math.PI / 180);
+export function repitchFrontRoof(f: BuildingFacts, eavesNap: number, opts: {topNap?: number; pitchDeg?: number; tolM?: number; along?: [number, number]} = {}): BuildingFacts {
+  const out = structuredClone(f), fr = out.fronts[0], [a, b] = fr.endpointsRD, n = fr.outwardNormalRD, tol = opts.tolM ?? 0.05;
+  const tan = Math.tan((opts.pitchDeg ?? 72) * Math.PI / 180), w = Math.hypot(b[0] - a[0], b[1] - a[1]), u = [(b[0] - a[0]) / w, (b[1] - a[1]) / w];
   const depth = (v: number[]) => -((v[0] - a[0]) * n[0] + (v[1] - a[1]) * n[1]);
-  // Sutherland-Hodgman against one half-plane (keep where sign * (depth - d) <= 0); z interpolated along cut edges.
-  const clip = (ring: number[][], d: number, sign: 1 | -1) => {
+  // Metres along the frontage from its first (viewer's left) endpoint; `along` limits the re-pitch to one front of a pand.
+  const alongOf = (v: number[]) => (v[0] - a[0]) * u[0] + (v[1] - a[1]) * u[1];
+  const [a0, a1] = opts.along ?? [-Infinity, Infinity];
+  // Sutherland-Hodgman against one half-plane (keep where sign * (fn - c) <= 0); z interpolated along cut edges.
+  const clip = (ring: number[][], fn: (v: number[]) => number, c: number, sign: 1 | -1) => {
     const res: number[][] = [];
     for (let k = 0; k < ring.length; k++) {
-      const p = ring[k], q = ring[(k + 1) % ring.length], fp = sign * (depth(p) - d), fq = sign * (depth(q) - d);
+      const p = ring[k], q = ring[(k + 1) % ring.length], fp = sign * (fn(p) - c), fq = sign * (fn(q) - c);
       if (fp <= 0) res.push([...p]);
       if ((fp < 0 && fq > 0) || (fp > 0 && fq < 0)) { const t = fp / (fp - fq); res.push(p.map((x, i) => x + (q[i] - x) * t)); }
     }
     return res.length >= 3 ? res : null;
   };
   const area = (r: number[][]) => Math.abs(r.reduce((s, p, k) => { const q = r[(k + 1) % r.length]; return s + p[0] * q[1] - q[0] * p[1]; }, 0) / 2);
+  // Cut a convex ring by fn = c when both sides keep more than a sliver; else keep it whole.
+  const split = (ring: number[][], fn: (v: number[]) => number, c: number): number[][][] => {
+    const lo = clip(ring, fn, c, 1), hi = clip(ring, fn, c, -1);
+    return lo && hi && area(lo) >= 0.01 && area(hi) >= 0.01 ? [lo, hi] : [ring];
+  };
+  const mean = (ring: number[][], fn: (v: number[]) => number) => ring.reduce((s, v) => s + fn(v), 0) / ring.length;
   const roofs: BuildingFacts['roofsRD'] = [];
   for (const r of out.roofsRD) {
-    if (!r.vertices.some(v => depth(v) <= tol)) { roofs.push(r); continue; }
+    // Touches the frontage inside the front's stretch: an edge on the facade line overlapping [a0, a1].
+    const onFacade = r.vertices.filter(v => depth(v) <= tol).map(alongOf);
+    if (!onFacade.length || Math.max(...onFacade) < a0 - tol || Math.min(...onFacade) > a1 + tol) { roofs.push(r); continue; }
     if (r.ringsRD.length > 1) throw Error(`${r.surfaceId}: a front roof surface with holes cannot be re-pitched`);
     const ring = r.vertices.map(v => [v[0], v[1], opts.topNap === undefined ? v[2] : Math.min(v[2], opts.topNap)]);
     // A face 3DBAG already pitches up from the facade (Bilderdijkstraat 113's mansard, 57 degrees): only its foot moves.
-    if (r.slopeDeg >= 30) {
+    if (r.slopeDeg >= 30 && !opts.along) {
       const moved = ring.map(v => depth(v) <= tol ? [v[0], v[1], eavesNap] : v);
       roofs.push({...r, vertices: moved, ringsRD: [moved]});
       continue;
     }
-    // A flat top carried out to the facade: the strip in front of depth d becomes a steep face. The height change is a
-    // function of position only (z' = eaves + (z - eaves) * depth / d inside the strip), so pieces agree at shared
-    // vertices. Non-convex surfaces are cut triangle by triangle (a half-plane clip of a non-convex ring bridges its
-    // disjoint parts with zero-width spikes); a cut that would leave a sliver keeps the triangle whole instead.
+    // A flat top carried out to the facade: the strip in front of depth d (and inside `along`) becomes a steep face,
+    // z' = eaves + (z - eaves) * depth / d. Non-convex surfaces are cut triangle by triangle (a half-plane clip of a
+    // non-convex ring bridges its disjoint parts with zero-width spikes); a cut that would leave a sliver keeps the piece
+    // whole. Pieces outside the front's range keep their heights; the library closes the step between them with a wall.
     const d = Math.max(0.3, (Math.max(...ring.map(v => v[2])) - eavesNap) / tan);
     const pitch = (v: number[]) => { const s = depth(v); return s >= d ? v : [v[0], v[1], eavesNap + (v[2] - eavesNap) * Math.max(0, s) / d]; };
     const turn = (k: number) => { const p = ring[k], q = ring[(k + 1) % ring.length], s = ring[(k + 2) % ring.length]; return (q[0] - p[0]) * (s[1] - q[1]) - (q[1] - p[1]) * (s[0] - q[0]); };
     const turns = ring.map((_, k) => turn(k)).filter(x => Math.abs(x) > 1e-9), convex = turns.every(x => x > 0) || turns.every(x => x < 0);
-    const tris = convex ? [ring] : T.ShapeUtils.triangulateShape(ring.map(v => new T.Vector2(v[0], v[1])), []).map(t => t.map(k => ring[k]));
-    const pieces: {ring: number[][]; front: boolean}[] = [];
-    for (const t of tris) {
-      const front = clip(t, d, 1), rear = clip(t, d, -1);
-      if (front && rear && area(front) >= 0.01 && area(rear) >= 0.01) pieces.push({ring: front, front: true}, {ring: rear, front: false});
-      else pieces.push({ring: t, front: t.reduce((s, v) => s + depth(v), 0) / 3 < d});
-    }
-    pieces.forEach((p, k) => {
-      const v = p.ring.map(pitch);
-      roofs.push({...r, surfaceId: `${r.surfaceId}:${p.front ? 'f' : 'r'}${k}`, vertices: v, ringsRD: [v], areaM2: area(v), ...(p.front ? {slopeDeg: Math.round(Math.atan(tan) * 180 / Math.PI)} : {})});
+    let pieces = convex ? [ring] : T.ShapeUtils.triangulateShape(ring.map(v => new T.Vector2(v[0], v[1])), []).map(t => t.map(k => ring[k]));
+    pieces = pieces.flatMap(t => split(t, depth, d));
+    if (opts.along) pieces = pieces.flatMap(t => mean(t, depth) < d ? split(t, alongOf, a0).flatMap(x => split(x, alongOf, a1)) : [t]);
+    pieces.forEach((t, k) => {
+      const front = mean(t, depth) < d && (!opts.along || (mean(t, alongOf) > a0 && mean(t, alongOf) < a1)), v = front ? t.map(pitch) : t;
+      roofs.push({...r, surfaceId: `${r.surfaceId}:${front ? 'f' : 'r'}${k}`, vertices: v, ringsRD: [v], areaM2: area(v), ...(front ? {slopeDeg: Math.round(Math.atan(tan) * 180 / Math.PI)} : {})});
     });
   }
   out.roofsRD = roofs;

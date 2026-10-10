@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-10T13:02:01.919Z",
+ "generatedAt": "2026-10-10T13:06:12.580Z",
  "chunks": [
   {
    "id": "chunk-bilder-079721-x2",
@@ -3860,510 +3860,6 @@
    ]
   },
   {
-   "id": "chunk-face-bilder-233580-162444",
-   "name": "face-bilder-233580-162444",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-233580-162444.glb?asset=92924561c95de2be",
-   "sha256": "92924561c95de2be039d0ea95b0e3fd7640f0a4b618cc8b5bf49bb1a94aab41f",
-   "bytes": 528272,
-   "triangles": 7872,
-   "primitives": 17,
-   "instance": {
-    "anchor": [
-     4.8717851386976685,
-     52.36744061508152
-    ],
-    "northOffsetDegrees": 247.1251,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -21.384,
-     0,
-     -24.549
-    ],
-    "max": [
-     20.469,
-     20.968,
-     1.001
-    ]
-   },
-   "height": 20.968,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012233580",
-    "NL.IMBAG.Pand.0363100012236055",
-    "NL.IMBAG.Pand.0363100012162443",
-    "NL.IMBAG.Pand.0363100012162444"
-   ],
-   "replaces": [
-    "ordinary-0363100012233580",
-    "ordinary-0363100012236055",
-    "ordinary-0363100012162443",
-    "ordinary-0363100012162444"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.8718509,
-        52.3673454
-       ],
-       [
-        4.8717703,
-        52.3673255
-       ],
-       [
-        4.8717593,
-        52.367341
-       ],
-       [
-        4.8717222,
-        52.3673309
-       ],
-       [
-        4.8717899,
-        52.3672332
-       ],
-       [
-        4.8718923,
-        52.3672625
-       ],
-       [
-        4.8718996,
-        52.3672749
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8718035,
-        52.367414
-       ],
-       [
-        4.8716049,
-        52.3673617
-       ],
-       [
-        4.8716108,
-        52.367354
-       ],
-       [
-        4.8716289,
-        52.3673589
-       ],
-       [
-        4.8716358,
-        52.3673488
-       ],
-       [
-        4.8716743,
-        52.3673589
-       ],
-       [
-        4.871685,
-        52.3673434
-       ],
-       [
-        4.8716989,
-        52.367347
-       ],
-       [
-        4.8717083,
-        52.3673347
-       ],
-       [
-        4.8717188,
-        52.3673352
-       ],
-       [
-        4.8717222,
-        52.3673309
-       ],
-       [
-        4.8717593,
-        52.367341
-       ],
-       [
-        4.8717703,
-        52.3673255
-       ],
-       [
-        4.8718509,
-        52.3673454
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8717023,
-        52.3675606
-       ],
-       [
-        4.8715068,
-        52.3675093
-       ],
-       [
-        4.8714042,
-        52.3674818
-       ],
-       [
-        4.8714582,
-        52.3674058
-       ],
-       [
-        4.8714239,
-        52.367397
-       ],
-       [
-        4.8714412,
-        52.3673726
-       ],
-       [
-        4.8714738,
-        52.3673806
-       ],
-       [
-        4.8715058,
-        52.3673366
-       ],
-       [
-        4.8716049,
-        52.3673617
-       ],
-       [
-        4.8718035,
-        52.367414
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8717023,
-        52.3675606
-       ],
-       [
-        4.8716681,
-        52.36761
-       ],
-       [
-        4.8714718,
-        52.3675581
-       ],
-       [
-        4.8715068,
-        52.3675093
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "bface-233580",
-     "pandId": "0363100012233580",
-     "buildingId": "NL.IMBAG.Pand.0363100012233580",
-     "address": "Kinkerstraat 86H / Bilderdijkstraat (corner)",
-     "frontage": {
-      "x0": -20.014,
-      "x1": -11.504,
-      "widthM": 8.51
-     },
-     "bounds": {
-      "min": [
-       -21.384,
-       0,
-       -8.749
-      ],
-      "max": [
-       -9.521,
-       17.068,
-       0.4
-      ]
-     },
-     "triangles": 1555,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 84
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 60
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 924
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 128
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 0,
-       "triangleCount": 86
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 0,
-       "triangleCount": 220
-      },
-      {
-       "primitive": 14,
-       "firstTriangle": 0,
-       "triangleCount": 27
-      },
-      {
-       "primitive": 15,
-       "firstTriangle": 0,
-       "triangleCount": 2
-      },
-      {
-       "primitive": 16,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      }
-     ]
-    },
-    {
-     "recipeId": "bface-236055",
-     "pandId": "0363100012236055",
-     "buildingId": "NL.IMBAG.Pand.0363100012236055",
-     "address": "Bilderdijkstraat 164-166",
-     "frontage": {
-      "x0": -11.504,
-      "x1": -3.216,
-      "widthM": 8.288
-     },
-     "bounds": {
-      "min": [
-       -11.504,
-       0,
-       -14.726
-      ],
-      "max": [
-       -3.216,
-       16.869,
-       0.4
-      ]
-     },
-     "triangles": 1861,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 84,
-       "triangleCount": 79
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 60,
-       "triangleCount": 48
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 924,
-       "triangleCount": 1256
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 116
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 86,
-       "triangleCount": 80
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 220,
-       "triangleCount": 252
-      },
-      {
-       "primitive": 14,
-       "firstTriangle": 27,
-       "triangleCount": 8
-      },
-      {
-       "primitive": 15,
-       "firstTriangle": 2,
-       "triangleCount": 2
-      },
-      {
-       "primitive": 16,
-       "firstTriangle": 12,
-       "triangleCount": 20
-      }
-     ]
-    },
-    {
-     "recipeId": "bface-162443",
-     "pandId": "0363100012162443",
-     "buildingId": "NL.IMBAG.Pand.0363100012162443",
-     "address": "Bilderdijkstraat 158-162",
-     "frontage": {
-      "x0": -3.216,
-      "x1": 14.493,
-      "widthM": 17.709
-     },
-     "bounds": {
-      "min": [
-       -3.311,
-       0,
-       -24.549
-      ],
-      "max": [
-       14.493,
-       16.873,
-       1.001
-      ]
-     },
-     "triangles": 2637,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 163,
-       "triangleCount": 113
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 48
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 2180,
-       "triangleCount": 1604
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 12,
-       "triangleCount": 360
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 0,
-       "triangleCount": 128
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 0,
-       "triangleCount": 20
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 472,
-       "triangleCount": 300
-      },
-      {
-       "primitive": 14,
-       "firstTriangle": 35,
-       "triangleCount": 23
-      },
-      {
-       "primitive": 15,
-       "firstTriangle": 4,
-       "triangleCount": 18
-      },
-      {
-       "primitive": 16,
-       "firstTriangle": 32,
-       "triangleCount": 23
-      }
-     ]
-    },
-    {
-     "recipeId": "bface-162444",
-     "pandId": "0363100012162444",
-     "buildingId": "NL.IMBAG.Pand.0363100012162444",
-     "address": "Bilderdijkstraat 156",
-     "frontage": {
-      "x0": 14.493,
-      "x1": 20.469,
-      "widthM": 5.976
-     },
-     "bounds": {
-      "min": [
-       14.42,
-       0,
-       -14.601
-      ],
-      "max": [
-       20.469,
-       20.968,
-       0.175
-      ]
-     },
-     "triangles": 1819,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 180
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 60
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 3784,
-       "triangleCount": 906
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 104
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 372,
-       "triangleCount": 372
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 166,
-       "triangleCount": 30
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 772,
-       "triangleCount": 162
-      },
-      {
-       "primitive": 14,
-       "firstTriangle": 58,
-       "triangleCount": 1
-      },
-      {
-       "primitive": 15,
-       "firstTriangle": 22,
-       "triangleCount": 2
-      },
-      {
-       "primitive": 16,
-       "firstTriangle": 55,
-       "triangleCount": 2
-      }
-     ]
-    }
-   ]
-  },
-  {
    "id": "chunk-face-bilder-080336-090492",
    "name": "face-bilder-080336-090492",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-080336-090492.glb?asset=01cefc9e2cb620f8",
@@ -7288,235 +6784,6 @@
    ]
   },
   {
-   "id": "chunk-face-bilder-161281-157756",
-   "name": "face-bilder-161281-157756",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-161281-157756.glb?asset=de4ca26d49b713e7",
-   "sha256": "de4ca26d49b713e742284b5ffd0fb611bd1ef7a5325ec4ae74bce5f19ccf6fe4",
-   "bytes": 175904,
-   "triangles": 2556,
-   "primitives": 9,
-   "instance": {
-    "anchor": [
-     4.871312227025089,
-     52.368815594733704
-    ],
-    "northOffsetDegrees": 67.1588,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -12.768,
-     0,
-     -13.021
-    ],
-    "max": [
-     7.736,
-     17.295,
-     0.401
-    ]
-   },
-   "height": 17.295,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012161281",
-    "NL.IMBAG.Pand.0363100012157756"
-   ],
-   "replaces": [
-    "ordinary-0363100012161281",
-    "ordinary-0363100012157756"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.8713026,
-        52.368937
-       ],
-       [
-        4.8712555,
-        52.3689255
-       ],
-       [
-        4.8712458,
-        52.3689118
-       ],
-       [
-        4.8713259,
-        52.3687958
-       ],
-       [
-        4.8713854,
-        52.3688104
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8715319,
-        52.3687969
-       ],
-       [
-        4.8715174,
-        52.368818
-       ],
-       [
-        4.8714789,
-        52.3688086
-       ],
-       [
-        4.8714649,
-        52.3688299
-       ],
-       [
-        4.8713259,
-        52.3687958
-       ],
-       [
-        4.871355,
-        52.3687535
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "bface-161281",
-     "pandId": "0363100012161281",
-     "buildingId": "NL.IMBAG.Pand.0363100012161281",
-     "address": "Bilderdijkstraat 113",
-     "frontage": {
-      "x0": -11.62,
-      "x1": 2.393,
-      "widthM": 14.014
-     },
-     "bounds": {
-      "min": [
-       -12.768,
-       0,
-       -4.668
-      ],
-      "max": [
-       2.475,
-       17.295,
-       0.401
-      ]
-     },
-     "triangles": 1472,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 60
-      },
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 108
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 60
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 876
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 116
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 216
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 27
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 9
-      }
-     ]
-    },
-    {
-     "recipeId": "bface-157756",
-     "pandId": "0363100012157756",
-     "buildingId": "NL.IMBAG.Pand.0363100012157756",
-     "address": "Bilderdijkstraat 115",
-     "frontage": {
-      "x0": 2.393,
-      "x1": 6.834,
-      "widthM": 4.44
-     },
-     "bounds": {
-      "min": [
-       2.393,
-       0,
-       -13.021
-      ],
-      "max": [
-       7.736,
-       15.552,
-       0.4
-      ]
-     },
-     "triangles": 1084,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 60,
-       "triangleCount": 65
-      },
-      {
-       "primitive": 1,
-       "firstTriangle": 108,
-       "triangleCount": 36
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 60,
-       "triangleCount": 48
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 876,
-       "triangleCount": 656
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 104
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 216,
-       "triangleCount": 148
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 27,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 9,
-       "triangleCount": 15
-      }
-     ]
-    }
-   ]
-  },
-  {
    "id": "chunk-face-bilder-157757-164549",
    "name": "face-bilder-157757-164549",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-157757-164549.glb?asset=015fb1ea22fbc74b",
@@ -9391,6 +8658,739 @@
        "primitive": 17,
        "firstTriangle": 67,
        "triangleCount": 17
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-bilder-161281-157756",
+   "name": "face-bilder-161281-157756",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-161281-157756.glb?asset=4495333a6e2d6358",
+   "sha256": "4495333a6e2d6358de24aae12bd36c8330be1e5c4490ecf492fb9d600e6a38e2",
+   "bytes": 175800,
+   "triangles": 2555,
+   "primitives": 9,
+   "instance": {
+    "anchor": [
+     4.871312227025089,
+     52.368815594733704
+    ],
+    "northOffsetDegrees": 67.1588,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -12.768,
+     0,
+     -13.021
+    ],
+    "max": [
+     7.736,
+     17.295,
+     0.401
+    ]
+   },
+   "height": 17.295,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012161281",
+    "NL.IMBAG.Pand.0363100012157756"
+   ],
+   "replaces": [
+    "ordinary-0363100012161281",
+    "ordinary-0363100012157756"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8713026,
+        52.368937
+       ],
+       [
+        4.8712555,
+        52.3689255
+       ],
+       [
+        4.8712458,
+        52.3689118
+       ],
+       [
+        4.8713259,
+        52.3687958
+       ],
+       [
+        4.8713854,
+        52.3688104
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8715319,
+        52.3687969
+       ],
+       [
+        4.8715174,
+        52.368818
+       ],
+       [
+        4.8714789,
+        52.3688086
+       ],
+       [
+        4.8714649,
+        52.3688299
+       ],
+       [
+        4.8713259,
+        52.3687958
+       ],
+       [
+        4.871355,
+        52.3687535
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "bface-161281",
+     "pandId": "0363100012161281",
+     "buildingId": "NL.IMBAG.Pand.0363100012161281",
+     "address": "Bilderdijkstraat 113",
+     "frontage": {
+      "x0": -11.62,
+      "x1": 2.393,
+      "widthM": 14.014
+     },
+     "bounds": {
+      "min": [
+       -12.768,
+       0,
+       -4.668
+      ],
+      "max": [
+       2.475,
+       17.295,
+       0.401
+      ]
+     },
+     "triangles": 1471,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 59
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 876
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 116
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 27
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "bface-157756",
+     "pandId": "0363100012157756",
+     "buildingId": "NL.IMBAG.Pand.0363100012157756",
+     "address": "Bilderdijkstraat 115",
+     "frontage": {
+      "x0": 2.393,
+      "x1": 6.834,
+      "widthM": 4.44
+     },
+     "bounds": {
+      "min": [
+       2.393,
+       0,
+       -13.021
+      ],
+      "max": [
+       7.736,
+       15.552,
+       0.4
+      ]
+     },
+     "triangles": 1084,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 59,
+       "triangleCount": 65
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 108,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 60,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 876,
+       "triangleCount": 656
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 104
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 216,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 27,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 9,
+       "triangleCount": 15
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-bilder-233580-162444",
+   "name": "face-bilder-233580-162444",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-233580-162444.glb?asset=d6a8061206f787da",
+   "sha256": "d6a8061206f787da05235dc387648ccfc8af4c29b26bd96050ad55c60493b029",
+   "bytes": 603436,
+   "triangles": 9015,
+   "primitives": 18,
+   "instance": {
+    "anchor": [
+     4.8717851386976685,
+     52.36744061508152
+    ],
+    "northOffsetDegrees": 247.1251,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -21.384,
+     0,
+     -24.549
+    ],
+    "max": [
+     20.469,
+     20.968,
+     1.001
+    ]
+   },
+   "height": 20.968,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012233580",
+    "NL.IMBAG.Pand.0363100012236055",
+    "NL.IMBAG.Pand.0363100012162443",
+    "NL.IMBAG.Pand.0363100012162444"
+   ],
+   "replaces": [
+    "ordinary-0363100012233580",
+    "ordinary-0363100012236055",
+    "ordinary-0363100012162443",
+    "ordinary-0363100012162444"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8718509,
+        52.3673454
+       ],
+       [
+        4.8717703,
+        52.3673255
+       ],
+       [
+        4.8717593,
+        52.367341
+       ],
+       [
+        4.8717222,
+        52.3673309
+       ],
+       [
+        4.8717899,
+        52.3672332
+       ],
+       [
+        4.8718923,
+        52.3672625
+       ],
+       [
+        4.8718996,
+        52.3672749
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8718035,
+        52.367414
+       ],
+       [
+        4.8716049,
+        52.3673617
+       ],
+       [
+        4.8716108,
+        52.367354
+       ],
+       [
+        4.8716289,
+        52.3673589
+       ],
+       [
+        4.8716358,
+        52.3673488
+       ],
+       [
+        4.8716743,
+        52.3673589
+       ],
+       [
+        4.871685,
+        52.3673434
+       ],
+       [
+        4.8716989,
+        52.367347
+       ],
+       [
+        4.8717083,
+        52.3673347
+       ],
+       [
+        4.8717188,
+        52.3673352
+       ],
+       [
+        4.8717222,
+        52.3673309
+       ],
+       [
+        4.8717593,
+        52.367341
+       ],
+       [
+        4.8717703,
+        52.3673255
+       ],
+       [
+        4.8718509,
+        52.3673454
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8717023,
+        52.3675606
+       ],
+       [
+        4.8715068,
+        52.3675093
+       ],
+       [
+        4.8714042,
+        52.3674818
+       ],
+       [
+        4.8714582,
+        52.3674058
+       ],
+       [
+        4.8714239,
+        52.367397
+       ],
+       [
+        4.8714412,
+        52.3673726
+       ],
+       [
+        4.8714738,
+        52.3673806
+       ],
+       [
+        4.8715058,
+        52.3673366
+       ],
+       [
+        4.8716049,
+        52.3673617
+       ],
+       [
+        4.8718035,
+        52.367414
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8717023,
+        52.3675606
+       ],
+       [
+        4.8716681,
+        52.36761
+       ],
+       [
+        4.8714718,
+        52.3675581
+       ],
+       [
+        4.8715068,
+        52.3675093
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "bface-233580",
+     "pandId": "0363100012233580",
+     "buildingId": "NL.IMBAG.Pand.0363100012233580",
+     "address": "Kinkerstraat 86H / Bilderdijkstraat (corner)",
+     "frontage": {
+      "x0": -20.014,
+      "x1": -11.504,
+      "widthM": 8.51
+     },
+     "bounds": {
+      "min": [
+       -21.384,
+       0,
+       -8.749
+      ],
+      "max": [
+       -9.521,
+       17.068,
+       0.4
+      ]
+     },
+     "triangles": 1555,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 924
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 128
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 86
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 27
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "bface-236055",
+     "pandId": "0363100012236055",
+     "buildingId": "NL.IMBAG.Pand.0363100012236055",
+     "address": "Bilderdijkstraat 164-166",
+     "frontage": {
+      "x0": -11.504,
+      "x1": -3.216,
+      "widthM": 8.288
+     },
+     "bounds": {
+      "min": [
+       -11.504,
+       0,
+       -14.726
+      ],
+      "max": [
+       -3.216,
+       16.869,
+       0.4
+      ]
+     },
+     "triangles": 1862,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 84,
+       "triangleCount": 80
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 60,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 924,
+       "triangleCount": 1256
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 116
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 86,
+       "triangleCount": 80
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 220,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 27,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 12,
+       "triangleCount": 20
+      }
+     ]
+    },
+    {
+     "recipeId": "bface-162443",
+     "pandId": "0363100012162443",
+     "buildingId": "NL.IMBAG.Pand.0363100012162443",
+     "address": "Bilderdijkstraat 158-162",
+     "frontage": {
+      "x0": -3.216,
+      "x1": 14.493,
+      "widthM": 17.709
+     },
+     "bounds": {
+      "min": [
+       -3.311,
+       0,
+       -24.549
+      ],
+      "max": [
+       14.493,
+       17.082,
+       1.001
+      ]
+     },
+     "triangles": 3779,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 164,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 2180,
+       "triangleCount": 2280
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 500
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 472,
+       "triangleCount": 468
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 35,
+       "triangleCount": 32
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 4,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 32,
+       "triangleCount": 37
+      }
+     ]
+    },
+    {
+     "recipeId": "bface-162444",
+     "pandId": "0363100012162444",
+     "buildingId": "NL.IMBAG.Pand.0363100012162444",
+     "address": "Bilderdijkstraat 156",
+     "frontage": {
+      "x0": 14.493,
+      "x1": 20.469,
+      "widthM": 5.976
+     },
+     "bounds": {
+      "min": [
+       14.42,
+       0,
+       -14.601
+      ],
+      "max": [
+       20.469,
+       20.968,
+       0.175
+      ]
+     },
+     "triangles": 1819,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 4460,
+       "triangleCount": 906
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 104
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 12,
+       "triangleCount": 372
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 166,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 940,
+       "triangleCount": 162
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 67,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 18,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 69,
+       "triangleCount": 2
       }
      ]
     }
