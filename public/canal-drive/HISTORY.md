@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## Marnixstraat: per-house vs block face ties on time; the library is the bottleneck (2026-10-10)
+
+User asked why block faces looked slower. Timed on Marnixstraat 124–138 and
+106–122: ~12–17 s/house for a face vs ~12–19 s/house per-house once review is
+counted for both; the second face was faster (derived from the first).
+Neither path produced an acceptable house: both share library gaps — tall
+stepped gables (~3.2 m) come out as a 0.9 m pediment, the gable attic window
+is missing, tall 2-light sashes render as square 4-pane, brick reads orange.
+Per-house additionally skipped 3 of 8 houses and kept a 0.3–0.5 m eaves step.
+Faces repeat geometry for identical houses (+30% tris/house) — instancing
+needed. Library gaps queued on the schema lane. Faces staged, not installed.
+
 ## Block-face authoring becomes the default for attached buildings (2026-10-10)
 
 The user's point about chunks was modelling, not frame time. One intent per
@@ -149,6 +161,18 @@ except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
 `?streetChunks=1` (`ordinary-buildings-data/chunks.json`); the visual win
 (continuous ground and cornice line) does not need chunking. Unmeasured on a
 real phone GPU.
+
+## Fatih replaced by a bespoke model (2026-10-10)
+
+The Haiku discovery sweep checked only manualCatalogue.json and the backlog,
+so it proposed Fatih, which already had an accepted procedural treatment
+(native-kit-pois.json; work-queue task fatih-side-texture, 2026-10-08:
+brick texture, tower-height fix, pin admission; side windows and rear still
+unmatched). The bespoke fatih-moskee GLB (twin slate-pyramid towers, rose,
+door arches) supersedes it: same landmarkId, pand suppressed, and an in-game
+shot shows one building. The lane brief now requires checking native kits
+and the work queue before modelling. Chassékerk held on its towers; Post CS
+was demolished in 2009.
 
 ## Portico and deep-cornice see-through rule; Okura, Coymanshuis, Artis Aquarium (2026-10-10)
 
