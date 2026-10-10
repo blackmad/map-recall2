@@ -362,6 +362,9 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
     const hostGap = Number.isFinite(gapSq) ? Math.sqrt(gapSq) : 99;
     // Standing on the ground without touching the building: a freestanding railing or gate, not an opening.
     if (bb.min[1] <= 0.02 && hostGap > tol) continue;
+    // Nothing at all within 0.6 m: free-standing glazing (a curtain-wall panel, a glass canopy), not a window that
+    // came off its wall. Real detached windows stand centimetres to decimetres off.
+    if (hostGap > 0.6) continue;
     const gap = hostGap;
     // Facing axis: principal direction of the area-weighted horizontal normals (sign-free, so a box's front and back agree).
     let mxx = 0, mxz = 0, mzz = 0;
