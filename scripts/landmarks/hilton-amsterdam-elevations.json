@@ -1,0 +1,11 @@
+{
+  "id": "hilton-amsterdam",
+  "countedBy": "pending blind count",
+  "facades": [
+    {"name": "south-east arm (entrance front, east of the lift core)", "bearing": 187.5, "photo": "artifacts/landmark-lanes/hilton-amsterdam/ref-south-east.jpg"},
+    {"name": "south-west arm (entrance front, west of the lift core)", "bearing": 167.5, "photo": "artifacts/landmark-lanes/hilton-amsterdam/ref-south-west.jpg"},
+    {"name": "north-west arm (canal front)", "bearing": 347.5, "photo": "artifacts/landmark-lanes/hilton-amsterdam/ref-north-b.jpg"},
+    {"name": "north-east arm (canal front)", "bearing": 7.5, "photo": "artifacts/landmark-lanes/hilton-amsterdam/ref-north-a.jpg"},
+    {"name": "east end (concrete gable and ballroom podium)", "bearing": 97.5, "photo": "artifacts/landmark-lanes/hilton-amsterdam/ref-east.jpg"}
+  ]
+}
