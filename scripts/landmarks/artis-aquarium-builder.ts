@@ -157,8 +157,8 @@ export function buildArtisAquarium(_w: number, _d: number, bld: BuildingTools & 
     // entablature (architrave, lettered frieze, cornice) over the whole portico
     const eY = colBase + colH + 0.32;
     slab(b, f, cc, eY, 16.2, 1.1, DEP + 0.3, 'stone');                     // architrave + frieze block
-    slab(b, f, cc, eY + 1.1, 16.8, 0.5, DEP + 0.45, 'white');               // cornice
-    slab(b, f, cc, eY + 1.6, 17.0, 0.18, DEP + 0.6, 'stone');
+    slab(b, f, cc, eY + 1.1, 16.8, 0.5, DEP + 1.05, 'white');               // cornice, 0.8 m beyond the platform front (DEP + 0.25) as in the photos
+    slab(b, f, cc, eY + 1.6, 17.0, 0.18, DEP + 1.15, 'stone');
     // gilded lettering on the frieze
     const text = 'NATURA ARTIS MAGISTRA', px = 0.055, pitch = 6 * px;
     let u = cc - (text.length * pitch) / 2;
