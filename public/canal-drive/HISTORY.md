@@ -256,6 +256,22 @@ except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
 (continuous ground and cornice line) does not need chunking. Unmeasured on a
 real phone GPU.
 
+## Landmark LOD (2026-10-10)
+
+Every curated landmark over 3,000 triangles now has a simplified sibling,
+`<id>.lod1.glb` (~15% of the triangles; flat-shaded GLBs are welded before
+simplify, then re-split; 236 models, +11.5 MB), built by
+`npm run build:landmark-lods` and gated by `npm run check:landmark-lods`
+(inside check:canal). The loader starts a model at lod1 when its footprint
+radius is under 45 px and swaps to full above 45 px / back below 30 px, and
+uses lod1 only when its sourceHash equals the model's current asset version,
+so a rebuilt GLB with a stale lod1 draws full. Measured (iPhone project, 4x
+CPU throttle): overview triangles 3.36M -> 0.84M, landmark geometry 134 -> 51
+MB, frames over 50 ms 22 -> 10; mid zoom 1.25M -> 0.39M triangles; street
+unchanged. Overview render time fell only ~13%: the remaining cost is ~300
+separate per-model draws, so batching is the next lever. With distance LOD in
+place the full-detail cap rises from 30,000 to 40,000 triangles.
+
 ## IJ-toren re-held by a stale merge, released again (2026-10-10)
 
 IJ-toren was released after its rework (183b4139), but a later merge of a

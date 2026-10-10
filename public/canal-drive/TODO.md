@@ -76,9 +76,6 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   2025 west-side photo, drop it, fix tower proportions, then blind-count.
   Bloemgrachtkerk (tower removed 2019, redevelopment) and Gemaal
   Mercatorstraat (tiny kiosk) skipped.
-  Landmark triangle budget disagrees: the lane brief allows 40,000 but
-  scripts/check-landmark-attachment.ts caps at 30,000 (American Hotel cut its
-  arch segments from 8 to 4 to fit). Decide which is right and align them.
   Chassékerk towers follow the 3DBAG lidar (23.5 m, ~2 m over the ridge);
   lidar truncates slender towers (Vondelkerk spire was 12 m short), so
   check the real tower height in a source and raise if needed.
