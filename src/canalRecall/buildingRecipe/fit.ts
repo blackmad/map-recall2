@@ -433,6 +433,13 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
   }
   // The first front seeds the shared footprint/roof conversion.
   const survey = surveyRecipe({attributes: facts.attributes, roofsRD: facts.roofsRD}, facts.surveyFootprintPolygonsRD, pieces[0].endpoints);
+  // A photo-measured cornice under a mansard can sit below 3DBAG's lowest roof point (LoD2.2 draws the steep mansard as
+  // wall, De Clercqstraat 2-6): the shell then stops at the cornice and the roof skirt closes the walls behind the mansard.
+  const mansardEaves = intent.fronts.filter(f => f.roofFront === 'mansard').map(f => facts.measuredEavesM?.[f.id]).filter((v): v is number => v !== undefined);
+  if (mansardEaves.length && round(Math.min(...mansardEaves)) < survey.shellTopM) {
+    warnings.push(`shell top lowered from ${round(survey.shellTopM)} m (3DBAG) to the measured cornice ${round(Math.min(...mansardEaves))} m under the mansard`);
+    (survey as {shellTopM: number}).shellTopM = round(Math.min(...mansardEaves));
+  }
   const anchor = survey.anchorRD, toLocal = (p: number[]): CanalhousePoint => [p[0] - anchor[0], anchor[1] - p[1]];
   const polygons = survey.polygons;
   const house = unobservedHouse(intent.pandId);

@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-10T13:07:51.379Z",
+ "generatedAt": "2026-10-10T20:31:56.878Z",
  "chunks": [
   {
    "id": "chunk-bilder-079721-x2",
@@ -8840,6 +8840,2955 @@
        "primitive": 21,
        "firstTriangle": 27,
        "triangleCount": 11
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-nassau-162289",
+   "category": "street-survey",
+   "name": "face-nassau-162289",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-nassau-162289.glb?asset=4fdf9c4fa31f4963",
+   "sha256": "4fdf9c4fa31f4963a5829ae808d9e16ceab13f31de391efbdb0a79b5a2ae5211",
+   "bytes": 2248656,
+   "triangles": 43873,
+   "primitives": 20,
+   "instance": {
+    "anchor": [
+     4.875039457071271,
+     52.369321384667145
+    ],
+    "northOffsetDegrees": 248.8905,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -60.246,
+     0,
+     -20.674
+    ],
+    "max": [
+     55.629,
+     21.099,
+     4.276
+    ]
+   },
+   "height": 21.099,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012165898",
+    "NL.IMBAG.Pand.0363100012154241",
+    "NL.IMBAG.Pand.0363100012162368",
+    "NL.IMBAG.Pand.0363100012164663",
+    "NL.IMBAG.Pand.0363100012156130",
+    "NL.IMBAG.Pand.0363100012157238",
+    "NL.IMBAG.Pand.0363100012162083",
+    "NL.IMBAG.Pand.0363100012161701",
+    "NL.IMBAG.Pand.0363100012156556",
+    "NL.IMBAG.Pand.0363100012156555",
+    "NL.IMBAG.Pand.0363100012162089",
+    "NL.IMBAG.Pand.0363100012162090",
+    "NL.IMBAG.Pand.0363100012166290",
+    "NL.IMBAG.Pand.0363100012159934",
+    "NL.IMBAG.Pand.0363100012157131",
+    "NL.IMBAG.Pand.0363100012166694",
+    "NL.IMBAG.Pand.0363100012157568",
+    "NL.IMBAG.Pand.0363100012162289",
+    "NL.IMBAG.Pand.0363100012162529",
+    "NL.IMBAG.Pand.0363100012162530"
+   ],
+   "replaces": [
+    "ordinary-0363100012165898",
+    "ordinary-0363100012154241",
+    "ordinary-0363100012162368",
+    "ordinary-0363100012164663",
+    "ordinary-0363100012156130",
+    "ordinary-0363100012157238",
+    "ordinary-0363100012162083",
+    "ordinary-0363100012161701",
+    "ordinary-0363100012156556",
+    "ordinary-0363100012156555",
+    "ordinary-0363100012162089",
+    "ordinary-0363100012162090",
+    "ordinary-0363100012166290",
+    "ordinary-0363100012159934",
+    "ordinary-0363100012157131",
+    "ordinary-0363100012166694",
+    "ordinary-0363100012157568",
+    "ordinary-0363100012162289",
+    "ordinary-0363100012162529",
+    "ordinary-0363100012162530"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8754049,
+        52.3688344
+       ],
+       [
+        4.875381,
+        52.3688578
+       ],
+       [
+        4.8753574,
+        52.3688814
+       ],
+       [
+        4.8750892,
+        52.3688127
+       ],
+       [
+        4.8751031,
+        52.3687925
+       ],
+       [
+        4.8751797,
+        52.3688124
+       ],
+       [
+        4.8752029,
+        52.3687795
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8753574,
+        52.3688814
+       ],
+       [
+        4.8753343,
+        52.368905
+       ],
+       [
+        4.8753116,
+        52.3689288
+       ],
+       [
+        4.8751204,
+        52.3688813
+       ],
+       [
+        4.875139,
+        52.368853
+       ],
+       [
+        4.8750735,
+        52.3688358
+       ],
+       [
+        4.8750892,
+        52.3688127
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8753116,
+        52.3689288
+       ],
+       [
+        4.8752896,
+        52.3689523
+       ],
+       [
+        4.875268,
+        52.368976
+       ],
+       [
+        4.875003,
+        52.3689075
+       ],
+       [
+        4.875015,
+        52.3688901
+       ],
+       [
+        4.8750801,
+        52.3689066
+       ],
+       [
+        4.8751018,
+        52.368876
+       ],
+       [
+        4.8751204,
+        52.3688813
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.875268,
+        52.368976
+       ],
+       [
+        4.8752467,
+        52.3689998
+       ],
+       [
+        4.8752258,
+        52.3690238
+       ],
+       [
+        4.8750314,
+        52.3689719
+       ],
+       [
+        4.8750526,
+        52.3689428
+       ],
+       [
+        4.8749901,
+        52.3689264
+       ],
+       [
+        4.875003,
+        52.3689075
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8752258,
+        52.3690238
+       ],
+       [
+        4.8751844,
+        52.3690718
+       ],
+       [
+        4.8749815,
+        52.3690178
+       ],
+       [
+        4.8749694,
+        52.3690147
+       ],
+       [
+        4.8749868,
+        52.3689896
+       ],
+       [
+        4.8749438,
+        52.3689784
+       ],
+       [
+        4.8749373,
+        52.3689682
+       ],
+       [
+        4.8749486,
+        52.3689523
+       ],
+       [
+        4.8750314,
+        52.3689719
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8751844,
+        52.3690718
+       ],
+       [
+        4.875147,
+        52.3691208
+       ],
+       [
+        4.8749682,
+        52.3690739
+       ],
+       [
+        4.8749899,
+        52.3690432
+       ],
+       [
+        4.8749669,
+        52.3690379
+       ],
+       [
+        4.8749815,
+        52.3690178
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.875147,
+        52.3691208
+       ],
+       [
+        4.8751346,
+        52.369137
+       ],
+       [
+        4.8751359,
+        52.3691375
+       ],
+       [
+        4.8751132,
+        52.3691686
+       ],
+       [
+        4.8751118,
+        52.369168
+       ],
+       [
+        4.8749099,
+        52.369114
+       ],
+       [
+        4.874927,
+        52.3690891
+       ],
+       [
+        4.8748921,
+        52.3690801
+       ],
+       [
+        4.8749081,
+        52.3690584
+       ],
+       [
+        4.8749682,
+        52.3690739
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8751118,
+        52.369168
+       ],
+       [
+        4.8750761,
+        52.3692186
+       ],
+       [
+        4.8748934,
+        52.3691711
+       ],
+       [
+        4.8748741,
+        52.3691665
+       ],
+       [
+        4.8749099,
+        52.369114
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8750403,
+        52.3692702
+       ],
+       [
+        4.8748003,
+        52.3692076
+       ],
+       [
+        4.8748132,
+        52.3691873
+       ],
+       [
+        4.8748706,
+        52.3692027
+       ],
+       [
+        4.8748934,
+        52.3691711
+       ],
+       [
+        4.8750761,
+        52.3692186
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8747878,
+        52.3692273
+       ],
+       [
+        4.8748003,
+        52.3692076
+       ],
+       [
+        4.875042,
+        52.3692708
+       ],
+       [
+        4.8750087,
+        52.3693241
+       ],
+       [
+        4.8748217,
+        52.3692767
+       ],
+       [
+        4.8747876,
+        52.3692685
+       ],
+       [
+        4.8748109,
+        52.3692328
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8749756,
+        52.3693776
+       ],
+       [
+        4.8747274,
+        52.3693171
+       ],
+       [
+        4.8747449,
+        52.369291
+       ],
+       [
+        4.8748015,
+        52.3693067
+       ],
+       [
+        4.8748217,
+        52.3692767
+       ],
+       [
+        4.8750068,
+        52.3693236
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.874717,
+        52.369371
+       ],
+       [
+        4.8747391,
+        52.3693364
+       ],
+       [
+        4.874718,
+        52.3693312
+       ],
+       [
+        4.8747274,
+        52.3693171
+       ],
+       [
+        4.8749756,
+        52.3693776
+       ],
+       [
+        4.8749468,
+        52.3694316
+       ],
+       [
+        4.8747544,
+        52.36938
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8746617,
+        52.3694185
+       ],
+       [
+        4.874679,
+        52.3693928
+       ],
+       [
+        4.8747361,
+        52.3694071
+       ],
+       [
+        4.8747544,
+        52.36938
+       ],
+       [
+        4.8749468,
+        52.3694316
+       ],
+       [
+        4.8749482,
+        52.3694322
+       ],
+       [
+        4.8749216,
+        52.3694864
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8749202,
+        52.3694861
+       ],
+       [
+        4.8748956,
+        52.3695412
+       ],
+       [
+        4.8746971,
+        52.3694873
+       ],
+       [
+        4.8747197,
+        52.3694541
+       ],
+       [
+        4.8746498,
+        52.3694363
+       ],
+       [
+        4.8746617,
+        52.3694185
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8748956,
+        52.3695412
+       ],
+       [
+        4.8748968,
+        52.3695414
+       ],
+       [
+        4.8748802,
+        52.3695777
+       ],
+       [
+        4.8748784,
+        52.3695775
+       ],
+       [
+        4.8747095,
+        52.3695324
+       ],
+       [
+        4.8746757,
+        52.3695239
+       ],
+       [
+        4.8746863,
+        52.3695093
+       ],
+       [
+        4.8746435,
+        52.3694981
+       ],
+       [
+        4.8746571,
+        52.369477
+       ],
+       [
+        4.8746971,
+        52.3694873
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8748784,
+        52.3695775
+       ],
+       [
+        4.8748624,
+        52.3696153
+       ],
+       [
+        4.8746326,
+        52.3695577
+       ],
+       [
+        4.8746463,
+        52.369538
+       ],
+       [
+        4.874697,
+        52.3695506
+       ],
+       [
+        4.8747095,
+        52.3695324
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8748624,
+        52.3696153
+       ],
+       [
+        4.8748447,
+        52.369657
+       ],
+       [
+        4.8746962,
+        52.369619
+       ],
+       [
+        4.8746547,
+        52.3696091
+       ],
+       [
+        4.8746059,
+        52.3695971
+       ],
+       [
+        4.8746203,
+        52.3695754
+       ],
+       [
+        4.8746326,
+        52.3695577
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8748273,
+        52.3696981
+       ],
+       [
+        4.8746689,
+        52.3696591
+       ],
+       [
+        4.8746962,
+        52.369619
+       ],
+       [
+        4.8748447,
+        52.369657
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8748057,
+        52.369749
+       ],
+       [
+        4.8746367,
+        52.3697058
+       ],
+       [
+        4.8746467,
+        52.3696917
+       ],
+       [
+        4.8746689,
+        52.3696591
+       ],
+       [
+        4.8748273,
+        52.3696981
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8748057,
+        52.3697491
+       ],
+       [
+        4.8747907,
+        52.369785
+       ],
+       [
+        4.8747655,
+        52.3697926
+       ],
+       [
+        4.8745573,
+        52.3697405
+       ],
+       [
+        4.8745993,
+        52.3696796
+       ],
+       [
+        4.8746467,
+        52.3696918
+       ],
+       [
+        4.8746367,
+        52.3697059
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "nassau-165898",
+     "pandId": "0363100012165898",
+     "buildingId": "NL.IMBAG.Pand.0363100012165898",
+     "address": "Nassaukade 318",
+     "frontage": {
+      "x0": -59.515,
+      "x1": -53.472,
+      "widthM": 6.043
+     },
+     "bounds": {
+      "min": [
+       -60.246,
+       0,
+       -17.294
+      ],
+      "max": [
+       -53.462,
+       18.612,
+       4.276
+      ]
+     },
+     "triangles": 2448,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 75
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 624
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 1020
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 244
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 17
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-154241",
+     "pandId": "0363100012154241",
+     "buildingId": "NL.IMBAG.Pand.0363100012154241",
+     "address": "Nassaukade 317",
+     "frontage": {
+      "x0": -53.472,
+      "x1": -47.425,
+      "widthM": 6.047
+     },
+     "bounds": {
+      "min": [
+       -54.004,
+       0,
+       -17.365
+      ],
+      "max": [
+       -47.419,
+       19.551,
+       3.822
+      ]
+     },
+     "triangles": 2513,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 75,
+       "triangleCount": 112
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 624,
+       "triangleCount": 624
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 1020,
+       "triangleCount": 1020
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 444,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 244,
+       "triangleCount": 244
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 24,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 17,
+       "triangleCount": 47
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-162368",
+     "pandId": "0363100012162368",
+     "buildingId": "NL.IMBAG.Pand.0363100012162368",
+     "address": "Nassaukade 316",
+     "frontage": {
+      "x0": -47.425,
+      "x1": -41.459,
+      "widthM": 5.966
+     },
+     "bounds": {
+      "min": [
+       -47.752,
+       0,
+       -18.936
+      ],
+      "max": [
+       -41.447,
+       18.57,
+       2.321
+      ]
+     },
+     "triangles": 2435,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 187,
+       "triangleCount": 74
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1248,
+       "triangleCount": 624
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 2040,
+       "triangleCount": 1016
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 888,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 488,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 44,
+       "triangleCount": 21
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 64,
+       "triangleCount": 16
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-164663",
+     "pandId": "0363100012164663",
+     "buildingId": "NL.IMBAG.Pand.0363100012164663",
+     "address": "Nassaukade 315",
+     "frontage": {
+      "x0": -41.459,
+      "x1": -35.458,
+      "widthM": 6.001
+     },
+     "bounds": {
+      "min": [
+       -42.054,
+       0,
+       -19.027
+      ],
+      "max": [
+       -35.441,
+       20.732,
+       1.971
+      ]
+     },
+     "triangles": 2446,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 261,
+       "triangleCount": 70
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1872,
+       "triangleCount": 624
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 3056,
+       "triangleCount": 1020
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 1332,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 728,
+       "triangleCount": 244
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 65,
+       "triangleCount": 21
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 80,
+       "triangleCount": 23
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-156130",
+     "pandId": "0363100012156130",
+     "buildingId": "NL.IMBAG.Pand.0363100012156130",
+     "address": "Nassaukade 314",
+     "frontage": {
+      "x0": -35.458,
+      "x1": -29.462,
+      "widthM": 5.996
+     },
+     "bounds": {
+      "min": [
+       -36.064,
+       0,
+       -20.674
+      ],
+      "max": [
+       -29.455,
+       20.598,
+       1.217
+      ]
+     },
+     "triangles": 2243,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 226
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 2496,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 4076,
+       "triangleCount": 1076
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 1776,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 972,
+       "triangleCount": 176
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 86,
+       "triangleCount": 37
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 103,
+       "triangleCount": 20
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-157238",
+     "pandId": "0363100012157238",
+     "buildingId": "NL.IMBAG.Pand.0363100012157238",
+     "address": "Nassaukade 313",
+     "frontage": {
+      "x0": -29.462,
+      "x1": -23.456,
+      "widthM": 6.006
+     },
+     "bounds": {
+      "min": [
+       -30.078,
+       0,
+       -16.006
+      ],
+      "max": [
+       -23.442,
+       18.368,
+       0.546
+      ]
+     },
+     "triangles": 2512,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 47
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 828
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 5152,
+       "triangleCount": 946
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 2220,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 1148,
+       "triangleCount": 210
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 123,
+       "triangleCount": 22
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 2,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 123,
+       "triangleCount": 14
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-162083",
+     "pandId": "0363100012162083",
+     "buildingId": "NL.IMBAG.Pand.0363100012162083",
+     "address": "Nassaukade 312",
+     "frontage": {
+      "x0": -23.456,
+      "x1": -17.679,
+      "widthM": 5.778
+     },
+     "bounds": {
+      "min": [
+       -24.061,
+       0,
+       -19.051
+      ],
+      "max": [
+       -17.667,
+       18.494,
+       0.214
+      ]
+     },
+     "triangles": 2642,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 47,
+       "triangleCount": 135
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 828,
+       "triangleCount": 852
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 6098,
+       "triangleCount": 984
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 2664,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 1358,
+       "triangleCount": 196
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 145,
+       "triangleCount": 19
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 3,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 137,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-161701",
+     "pandId": "0363100012161701",
+     "buildingId": "NL.IMBAG.Pand.0363100012161701",
+     "address": "Nassaukade 311",
+     "frontage": {
+      "x0": -17.679,
+      "x1": -11.562,
+      "widthM": 6.116
+     },
+     "bounds": {
+      "min": [
+       -18.334,
+       0,
+       -16.759
+      ],
+      "max": [
+       -11.549,
+       20.215,
+       -0.132
+      ]
+     },
+     "triangles": 2498,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 182,
+       "triangleCount": 39
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 1680,
+       "triangleCount": 828
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 7082,
+       "triangleCount": 946
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 3108,
+       "triangleCount": 444
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 1554,
+       "triangleCount": 210
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 164,
+       "triangleCount": 17
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 144,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-156556",
+     "pandId": "0363100012156556",
+     "buildingId": "NL.IMBAG.Pand.0363100012156556",
+     "address": "Nassaukade 310",
+     "frontage": {
+      "x0": -11.562,
+      "x1": -5.319,
+      "widthM": 6.244
+     },
+     "bounds": {
+      "min": [
+       -12.003,
+       0,
+       -19.805
+      ],
+      "max": [
+       -5.31,
+       20.46,
+       -0.49
+      ]
+     },
+     "triangles": 2531,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 57
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 2508,
+       "triangleCount": 804
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 8028,
+       "triangleCount": 1026
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 3552,
+       "triangleCount": 372
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 1764,
+       "triangleCount": 250
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 181,
+       "triangleCount": 16
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 156,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-156555",
+     "pandId": "0363100012156555",
+     "buildingId": "NL.IMBAG.Pand.0363100012156555",
+     "address": "Nassaukade 309",
+     "frontage": {
+      "x0": -5.319,
+      "x1": 1.036,
+      "widthM": 6.355
+     },
+     "bounds": {
+      "min": [
+       -5.93,
+       0,
+       -19.809
+      ],
+      "max": [
+       1.036,
+       21.099,
+       -0.529
+      ]
+     },
+     "triangles": 2916,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 57,
+       "triangleCount": 280
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 3312,
+       "triangleCount": 768
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 9054,
+       "triangleCount": 1256
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 3924,
+       "triangleCount": 372
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 2014,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 197,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 162,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-162089",
+     "pandId": "0363100012162089",
+     "buildingId": "NL.IMBAG.Pand.0363100012162089",
+     "address": "Nassaukade 308",
+     "frontage": {
+      "x0": 1.036,
+      "x1": 7.407,
+      "widthM": 6.371
+     },
+     "bounds": {
+      "min": [
+       0.719,
+       0,
+       -19.991
+      ],
+      "max": [
+       7.407,
+       20.39,
+       -0.408
+      ]
+     },
+     "triangles": 2541,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 337,
+       "triangleCount": 82
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 4080,
+       "triangleCount": 804
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 10310,
+       "triangleCount": 1016
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 4296,
+       "triangleCount": 372
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 2218,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 225,
+       "triangleCount": 17
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 10,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 170,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-162090",
+     "pandId": "0363100012162090",
+     "buildingId": "NL.IMBAG.Pand.0363100012162090",
+     "address": "Nassaukade 307",
+     "frontage": {
+      "x0": 7.407,
+      "x1": 13.728,
+      "widthM": 6.321
+     },
+     "bounds": {
+      "min": [
+       7.225,
+       0,
+       -20.023
+      ],
+      "max": [
+       13.728,
+       20.39,
+       -0.269
+      ]
+     },
+     "triangles": 2505,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 419,
+       "triangleCount": 46
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 4884,
+       "triangleCount": 804
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 11326,
+       "triangleCount": 1016
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 4668,
+       "triangleCount": 372
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 2458,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 242,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 179,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-166290",
+     "pandId": "0363100012166290",
+     "buildingId": "NL.IMBAG.Pand.0363100012166290",
+     "address": "Nassaukade 306",
+     "frontage": {
+      "x0": 13.728,
+      "x1": 20.021,
+      "widthM": 6.293
+     },
+     "bounds": {
+      "min": [
+       13.091,
+       0,
+       -20.091
+      ],
+      "max": [
+       20.021,
+       21.062,
+       0.444
+      ]
+     },
+     "triangles": 2891,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 465,
+       "triangleCount": 285
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 5688,
+       "triangleCount": 768
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 12342,
+       "triangleCount": 1242
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 5040,
+       "triangleCount": 372
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 2698,
+       "triangleCount": 190
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 260,
+       "triangleCount": 26
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 11,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 188,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-159934",
+     "pandId": "0363100012159934",
+     "buildingId": "NL.IMBAG.Pand.0363100012159934",
+     "address": "Nassaukade 305",
+     "frontage": {
+      "x0": 20.021,
+      "x1": 26.344,
+      "widthM": 6.323
+     },
+     "bounds": {
+      "min": [
+       19.365,
+       0,
+       -20.134
+      ],
+      "max": [
+       26.344,
+       20.39,
+       0.695
+      ]
+     },
+     "triangles": 2535,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 750,
+       "triangleCount": 79
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 6456,
+       "triangleCount": 804
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 13584,
+       "triangleCount": 1016
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 5412,
+       "triangleCount": 372
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 2888,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 286,
+       "triangleCount": 17
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 13,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 194,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-157131",
+     "pandId": "0363100012157131",
+     "buildingId": "NL.IMBAG.Pand.0363100012157131",
+     "address": "Nassaukade 304A",
+     "frontage": {
+      "x0": 26.344,
+      "x1": 30.519,
+      "widthM": 4.175
+     },
+     "bounds": {
+      "min": [
+       25.556,
+       0,
+       -18.05
+      ],
+      "max": [
+       30.532,
+       20.517,
+       0.231
+      ]
+     },
+     "triangles": 1693,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 307
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 7260,
+       "triangleCount": 252
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 14600,
+       "triangleCount": 776
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 3128,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 303,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 200,
+       "triangleCount": 14
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-166694",
+     "pandId": "0363100012166694",
+     "buildingId": "NL.IMBAG.Pand.0363100012166694",
+     "address": "Nassaukade 304",
+     "frontage": {
+      "x0": 30.519,
+      "x1": 34.848,
+      "widthM": 4.329
+     },
+     "bounds": {
+      "min": [
+       30.01,
+       0,
+       -16.374
+      ],
+      "max": [
+       34.848,
+       18.877,
+       0.83
+      ]
+     },
+     "triangles": 1315,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 45
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 7512,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 15376,
+       "triangleCount": 762
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 3248,
+       "triangleCount": 142
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 323,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 214,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-157568",
+     "pandId": "0363100012157568",
+     "buildingId": "NL.IMBAG.Pand.0363100012157568",
+     "address": "Nassaukade 303",
+     "frontage": {
+      "x0": 34.848,
+      "x1": 39.617,
+      "widthM": 4.768
+     },
+     "bounds": {
+      "min": [
+       34.528,
+       0,
+       -16.465
+      ],
+      "max": [
+       39.617,
+       18.877,
+       1.383
+      ]
+     },
+     "triangles": 1319,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 45,
+       "triangleCount": 69
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 7836,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 16138,
+       "triangleCount": 752
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 3390,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 343,
+       "triangleCount": 21
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 14,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 224,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-162289",
+     "pandId": "0363100012162289",
+     "buildingId": "NL.IMBAG.Pand.0363100012162289",
+     "address": "Nassaukade 302",
+     "frontage": {
+      "x0": 39.617,
+      "x1": 44.3,
+      "widthM": 4.684
+     },
+     "bounds": {
+      "min": [
+       39.322,
+       0,
+       -10.008
+      ],
+      "max": [
+       44.3,
+       18.963,
+       1.926
+      ]
+     },
+     "triangles": 1339,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 114,
+       "triangleCount": 52
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 8160,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 16890,
+       "triangleCount": 772
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 3522,
+       "triangleCount": 152
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 364,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 15,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 232,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-162529",
+     "pandId": "0363100012162529",
+     "buildingId": "NL.IMBAG.Pand.0363100012162529",
+     "address": "Nassaukade 301",
+     "frontage": {
+      "x0": 44.3,
+      "x1": 50.12,
+      "widthM": 5.819
+     },
+     "bounds": {
+      "min": [
+       44.152,
+       0,
+       -10.139
+      ],
+      "max": [
+       50.12,
+       19.17,
+       2.601
+      ]
+     },
+     "triangles": 1398,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 166,
+       "triangleCount": 92
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 8484,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 17662,
+       "triangleCount": 780
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 3674,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 384,
+       "triangleCount": 26
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 17,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 237,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-162530",
+     "pandId": "0363100012162530",
+     "buildingId": "NL.IMBAG.Pand.0363100012162530",
+     "address": "Nassaukade 300",
+     "frontage": {
+      "x0": 50.12,
+      "x1": 54.22,
+      "widthM": 4.101
+     },
+     "bounds": {
+      "min": [
+       47.992,
+       0,
+       -13.825
+      ],
+      "max": [
+       55.629,
+       17.62,
+       2.976
+      ]
+     },
+     "triangles": 1153,
+     "ranges": [
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 106
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 8808,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 18442,
+       "triangleCount": 572
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 5784,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 204,
+       "triangleCount": 116
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 3822,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 21
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-clercq-236681",
+   "category": "street-survey",
+   "name": "face-clercq-236681",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-clercq-236681.glb?asset=06d739190e9ac88f",
+   "sha256": "06d739190e9ac88f4dddef2f8e9f8edbc7d1f9978aada5c487ff624ce35ad2a0",
+   "bytes": 1252224,
+   "triangles": 24524,
+   "primitives": 26,
+   "instance": {
+    "anchor": [
+     4.873450301959339,
+     52.37176734875895
+    ],
+    "northOffsetDegrees": 338.9669,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -48.539,
+     0,
+     -24.095
+    ],
+    "max": [
+     33.807,
+     18.388,
+     1.236
+    ]
+   },
+   "height": 18.388,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012153066",
+    "NL.IMBAG.Pand.0363100012236262",
+    "NL.IMBAG.Pand.0363100012158603",
+    "NL.IMBAG.Pand.0363100012159182",
+    "NL.IMBAG.Pand.0363100012236681",
+    "NL.IMBAG.Pand.0363100012157618",
+    "NL.IMBAG.Pand.0363100012156454",
+    "NL.IMBAG.Pand.0363100012156960",
+    "NL.IMBAG.Pand.0363100012116526"
+   ],
+   "replaces": [
+    "ordinary-0363100012153066",
+    "ordinary-0363100012236262",
+    "ordinary-0363100012158603",
+    "ordinary-0363100012159182",
+    "ordinary-0363100012236681",
+    "ordinary-0363100012157618",
+    "ordinary-0363100012156454",
+    "ordinary-0363100012156960",
+    "ordinary-0363100012116526"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8729634,
+        52.3717275
+       ],
+       [
+        4.8729321,
+        52.3717457
+       ],
+       [
+        4.8728295,
+        52.3717703
+       ],
+       [
+        4.8727542,
+        52.3716524
+       ],
+       [
+        4.8728067,
+        52.3716206
+       ],
+       [
+        4.8729177,
+        52.3716466
+       ],
+       [
+        4.8729192,
+        52.3716454
+       ],
+       [
+        4.8730017,
+        52.3716643
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8731818,
+        52.3718302
+       ],
+       [
+        4.8731299,
+        52.3718183
+       ],
+       [
+        4.873123,
+        52.3718298
+       ],
+       [
+        4.8730927,
+        52.3718228
+       ],
+       [
+        4.8731279,
+        52.3717651
+       ],
+       [
+        4.8729634,
+        52.3717275
+       ],
+       [
+        4.8730017,
+        52.3716643
+       ],
+       [
+        4.8732482,
+        52.3717207
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8732589,
+        52.3718575
+       ],
+       [
+        4.8731767,
+        52.3718387
+       ],
+       [
+        4.8732482,
+        52.3717207
+       ],
+       [
+        4.8733304,
+        52.3717395
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8733066,
+        52.3719379
+       ],
+       [
+        4.8732357,
+        52.3718956
+       ],
+       [
+        4.8733304,
+        52.3717395
+       ],
+       [
+        4.8734151,
+        52.3717588
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8733047,
+        52.3719404
+       ],
+       [
+        4.8733066,
+        52.3719379
+       ],
+       [
+        4.8734151,
+        52.3717588
+       ],
+       [
+        4.8735777,
+        52.371796
+       ],
+       [
+        4.8735,
+        52.371927
+       ],
+       [
+        4.8734173,
+        52.3719081
+       ],
+       [
+        4.873373,
+        52.3719811
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8735859,
+        52.3719226
+       ],
+       [
+        4.8735125,
+        52.3719059
+       ],
+       [
+        4.8735777,
+        52.371796
+       ],
+       [
+        4.8736522,
+        52.3718131
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8736618,
+        52.37194
+       ],
+       [
+        4.8735859,
+        52.3719226
+       ],
+       [
+        4.8736522,
+        52.3718131
+       ],
+       [
+        4.8737282,
+        52.3718304
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8737398,
+        52.3719542
+       ],
+       [
+        4.8736638,
+        52.3719368
+       ],
+       [
+        4.8737282,
+        52.3718304
+       ],
+       [
+        4.8738042,
+        52.3718478
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.873842,
+        52.3719907
+       ],
+       [
+        4.8737218,
+        52.3719839
+       ],
+       [
+        4.8738042,
+        52.3718478
+       ],
+       [
+        4.8738624,
+        52.3718611
+       ],
+       [
+        4.873864,
+        52.3718606
+       ],
+       [
+        4.8738783,
+        52.3718767
+       ],
+       [
+        4.8738768,
+        52.3718772
+       ],
+       [
+        4.8738538,
+        52.3719438
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "clercq-153066",
+     "pandId": "0363100012153066",
+     "buildingId": "NL.IMBAG.Pand.0363100012153066",
+     "address": "De Clercqstraat 22",
+     "frontage": {
+      "x0": -46.774,
+      "x1": -38.101,
+      "widthM": 8.673
+     },
+     "bounds": {
+      "min": [
+       -48.539,
+       0,
+       -15.447
+      ],
+      "max": [
+       -32.548,
+       16.406,
+       0.871
+      ]
+     },
+     "triangles": 1059,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 95
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 436
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 21
+      }
+     ]
+    },
+    {
+     "recipeId": "clercq-236262",
+     "pandId": "0363100012236262",
+     "buildingId": "NL.IMBAG.Pand.0363100012236262",
+     "address": "De Clercqstraat 18",
+     "frontage": {
+      "x0": -32.632,
+      "x1": -14.709,
+      "widthM": 17.924
+     },
+     "bounds": {
+      "min": [
+       -32.635,
+       0,
+       -14.527
+      ],
+      "max": [
+       -14.565,
+       18.237,
+       0.547
+      ]
+     },
+     "triangles": 6520,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 214
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 192,
+       "triangleCount": 1404
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 2530
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 1404
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 12,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 96,
+       "triangleCount": 814
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 3,
+       "triangleCount": 51
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 21,
+       "triangleCount": 36
+      }
+     ]
+    },
+    {
+     "recipeId": "clercq-158603",
+     "pandId": "0363100012158603",
+     "buildingId": "NL.IMBAG.Pand.0363100012158603",
+     "address": "De Clercqstraat 14",
+     "frontage": {
+      "x0": -14.709,
+      "x1": -8.732,
+      "widthM": 5.976
+     },
+     "bounds": {
+      "min": [
+       -14.711,
+       0,
+       -14.122
+      ],
+      "max": [
+       -8.577,
+       16.375,
+       0.6
+      ]
+     },
+     "triangles": 2435,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 214,
+       "triangleCount": 57
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 1596,
+       "triangleCount": 492
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 2530,
+       "triangleCount": 940
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1404,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 172,
+       "triangleCount": 128
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 68,
+       "triangleCount": 80
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 910,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 54,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 11,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 57,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "clercq-159182",
+     "pandId": "0363100012159182",
+     "buildingId": "NL.IMBAG.Pand.0363100012159182",
+     "address": "De Clercqstraat 12",
+     "frontage": {
+      "x0": -8.732,
+      "x1": -2.578,
+      "widthM": 6.154
+     },
+     "bounds": {
+      "min": [
+       -8.735,
+       0,
+       -21.226
+      ],
+      "max": [
+       -2.34,
+       16.393,
+       0.652
+      ]
+     },
+     "triangles": 2289,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 271,
+       "triangleCount": 75
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 2088,
+       "triangleCount": 480
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 3470,
+       "triangleCount": 846
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1836,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 148,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 1174,
+       "triangleCount": 234
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 68,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 59,
+       "triangleCount": 6
+      }
+     ]
+    },
+    {
+     "recipeId": "clercq-236681",
+     "pandId": "0363100012236681",
+     "buildingId": "NL.IMBAG.Pand.0363100012236681",
+     "address": "De Clercqstraat 10",
+     "frontage": {
+      "x0": -2.578,
+      "x1": 9.245,
+      "widthM": 11.823
+     },
+     "bounds": {
+      "min": [
+       -2.581,
+       0,
+       -24.095
+      ],
+      "max": [
+       9.519,
+       16.986,
+       0.754
+      ]
+     },
+     "triangles": 4914,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 346,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 2568,
+       "triangleCount": 936
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 4316,
+       "triangleCount": 2044
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 2268,
+       "triangleCount": 576
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 190
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 1408,
+       "triangleCount": 528
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 80,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 13,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 65,
+       "triangleCount": 35
+      }
+     ]
+    },
+    {
+     "recipeId": "clercq-157618",
+     "pandId": "0363100012157618",
+     "buildingId": "NL.IMBAG.Pand.0363100012157618",
+     "address": "De Clercqstraat 6",
+     "frontage": {
+      "x0": 9.245,
+      "x1": 14.661,
+      "widthM": 5.416
+     },
+     "bounds": {
+      "min": [
+       9.241,
+       0,
+       -12.913
+      ],
+      "max": [
+       14.806,
+       17.645,
+       0.802
+      ]
+     },
+     "triangles": 1993,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 436,
+       "triangleCount": 956
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 300,
+       "triangleCount": 560
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 1936,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 25
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "clercq-156454",
+     "pandId": "0363100012156454",
+     "buildingId": "NL.IMBAG.Pand.0363100012156454",
+     "address": "De Clercqstraat 4",
+     "frontage": {
+      "x0": 14.661,
+      "x1": 20.184,
+      "widthM": 5.523
+     },
+     "bounds": {
+      "min": [
+       14.657,
+       0,
+       -12.867
+      ],
+      "max": [
+       20.331,
+       17.916,
+       0.851
+      ]
+     },
+     "triangles": 2099,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 24,
+       "triangleCount": 39
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 240,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 1392,
+       "triangleCount": 956
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 860,
+       "triangleCount": 604
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 2120,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 25,
+       "triangleCount": 32
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 4,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "clercq-156960",
+     "pandId": "0363100012156960",
+     "buildingId": "NL.IMBAG.Pand.0363100012156960",
+     "address": "De Clercqstraat 2",
+     "frontage": {
+      "x0": 20.184,
+      "x1": 25.712,
+      "widthM": 5.527
+     },
+     "bounds": {
+      "min": [
+       20.181,
+       0,
+       -12.441
+      ],
+      "max": [
+       25.853,
+       17.644,
+       1.236
+      ]
+     },
+     "triangles": 2078,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 63,
+       "triangleCount": 19
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 504,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 2348,
+       "triangleCount": 956
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 2844,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 1464,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 340,
+       "triangleCount": 128
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 2304,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 57,
+       "triangleCount": 25
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 11,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "clercq-116526",
+     "pandId": "0363100012116526",
+     "buildingId": "NL.IMBAG.Pand.0363100012116526",
+     "address": "Nassaukade 152",
+     "frontage": {
+      "x0": 25.712,
+      "x1": 29.942,
+      "widthM": 4.231
+     },
+     "bounds": {
+      "min": [
+       25.708,
+       0,
+       -15.88
+      ],
+      "max": [
+       33.807,
+       18.388,
+       0.707
+      ]
+     },
+     "triangles": 1137,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 82,
+       "triangleCount": 75
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 744,
+       "triangleCount": 108
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 3304,
+       "triangleCount": 616
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 2856,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 2488,
+       "triangleCount": 152
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 82,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 1,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 13,
+       "triangleCount": 12
       }
      ]
     }

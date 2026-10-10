@@ -1,0 +1,326 @@
+{
+ "street": "De Clercqstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T12:48:57.887Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153066",
+   "addresses": [
+    "De Clercqstraat 20",
+    "De Clercqstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Clercqstraat 20-H",
+     "use": "winkelfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000616822"
+    },
+    {
+     "address": "De Clercqstraat 22-H",
+     "use": "winkelfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000616830"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4738035264,
+     "lngLat": [
+      4.8728334,
+      52.3716472
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "22HS",
+      "addr:postcode": "1052ND",
+      "addr:street": "De Clercqstraat",
+      "amenity": "cafe",
+      "brand": "Bagels & Beans",
+      "brand:wikidata": "Q13433690",
+      "cuisine": "coffee_shop",
+      "name": "Bagels & Beans",
+      "not:brand:wikidata": "Q5140923",
+      "opening_hours": "Mo-Fr 08:00-17:00",
+      "phone": "+31 20 760 2868",
+      "source": "BAG",
+      "takeaway": "yes",
+      "website": "https://www.bagelsbeans.nl/winkel_amsterdam_clercqstraat.shtml",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-10T12:48:57.887Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236262",
+   "addresses": [
+    "De Clercqstraat 16",
+    "De Clercqstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Clercqstraat 16-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000616806"
+    },
+    {
+     "address": "De Clercqstraat 18-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000616814"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158603",
+   "addresses": [
+    "De Clercqstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Clercqstraat 14-H",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000616801"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159182",
+   "addresses": [
+    "De Clercqstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Clercqstraat 12-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000616793"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809202247,
+     "lngLat": [
+      4.8733584,
+      52.3717664
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12-H",
+      "addr:postcode": "1052NC",
+      "addr:street": "De Clercqstraat",
+      "amenity": "restaurant",
+      "check_date": "2023-08-13",
+      "cuisine": "italian_pizza",
+      "name": "Fuoco Vivo",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "http://www.fuocovivo.nl"
+     },
+     "fetchedAt": "2026-10-10T12:48:57.887Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236681",
+   "addresses": [
+    "De Clercqstraat 8",
+    "De Clercqstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Clercqstraat 8-H",
+     "use": "winkelfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000616780"
+    },
+    {
+     "address": "De Clercqstraat 10-H",
+     "use": "winkelfunctie",
+     "areaM2": 124,
+     "bagId": "0363010012085159"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157618",
+   "addresses": [
+    "De Clercqstraat 6C",
+    "De Clercqstraat 6D",
+    "De Clercqstraat 6E",
+    "De Clercqstraat 6A",
+    "De Clercqstraat 6F",
+    "De Clercqstraat 6B"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Clercqstraat 6C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000616774"
+    },
+    {
+     "address": "De Clercqstraat 6D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000616775"
+    },
+    {
+     "address": "De Clercqstraat 6E",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000616776"
+    },
+    {
+     "address": "De Clercqstraat 6A",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001027103"
+    },
+    {
+     "address": "De Clercqstraat 6F",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001027111"
+    },
+    {
+     "address": "De Clercqstraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010001027114"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156454",
+   "addresses": [
+    "De Clercqstraat 4C",
+    "De Clercqstraat 4D",
+    "De Clercqstraat 4E",
+    "De Clercqstraat 4A",
+    "De Clercqstraat 4B",
+    "De Clercqstraat 4F"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Clercqstraat 4C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000616769"
+    },
+    {
+     "address": "De Clercqstraat 4D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000616770"
+    },
+    {
+     "address": "De Clercqstraat 4E",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000616771"
+    },
+    {
+     "address": "De Clercqstraat 4A",
+     "use": "winkelfunctie",
+     "areaM2": 178,
+     "bagId": "0363010001027122"
+    },
+    {
+     "address": "De Clercqstraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010001027123"
+    },
+    {
+     "address": "De Clercqstraat 4F",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010001027124"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156960",
+   "addresses": [
+    "De Clercqstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Clercqstraat 2-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000616761"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809213006,
+     "lngLat": [
+      4.8737524,
+      52.3718604
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2-H",
+      "addr:postcode": "1052NC",
+      "addr:street": "De Clercqstraat",
+      "amenity": "restaurant",
+      "contact:facebook": "parsa.restaurant",
+      "contact:instagram": "parsa.amsterdam.restaurant",
+      "cuisine": "persian",
+      "description": "Persian Restaurant",
+      "email": "info@parsarestaurant.nl",
+      "name": "Parsa Persian",
+      "phone": "+31 6 27320222",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://parsarestaurant.nl/"
+     },
+     "fetchedAt": "2026-10-10T12:48:57.887Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012116526",
+   "addresses": [],
+   "groundUnits": [
+    {
+     "address": "Nassaukade 152",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001000154"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}
