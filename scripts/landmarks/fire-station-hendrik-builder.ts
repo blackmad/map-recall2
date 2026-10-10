@@ -3,6 +3,7 @@ import type {BuildingTools} from './cultural-builders';
 import {openTopPrism,upwardRoofPlane} from './house-geometry';
 import source from './fire-station-hendrik-footprints.json';
 import letters from './fire-station-hendrik-lettering.json';
+import {getSink,poly,ringFrame,setSink,slab} from './nearbar-kit';
 type C=Parameters<BuildingTools['add']>[1];
 /** Original surveyed native-plan station, current2025 renovated front. No imported meshes/textures. */
 export function buildFireStationHendrik(_w:number,_d:number,b:BuildingTools){
@@ -10,12 +11,14 @@ export function buildFireStationHendrik(_w:number,_d:number,b:BuildingTools){
  const ring=source.nativeRing.slice(0,-1),shape=(r:number[][])=>new T.Shape(r.map(p=>new T.Vector2(p[0],p[1])));
  // Each measured roof polygon owns its upper face. Shells use the minimum eave,
  // with a vertical skirt to the measured plane, avoiding wall-coloured top caps.
+ const planes:{ring:number[][];at:(x:number,z:number)=>number}[]=[];
  for(const part of source.surveyRoofParts){
   const ps=part.rings[0].map(p=>{const ridge=currentRidge.find(q=>Math.hypot(q[0]-p[0],q[2]-p[2])<.015);return ridge&&[117,120,121].includes(part.index)?[p[0],ridge[1]-1.42,p[2]]:p;}),rr=ps.map(p=>[p[0],p[2]]),sh=shape(rr),lo=Math.min(...ps.map(p=>p[1]));
   b.add(openTopPrism(sh,0,lo),'brick');
   const origin=ps.reduce((v,p)=>v.add(new T.Vector3(...p)),new T.Vector3()).multiplyScalar(1/ps.length);
   let xx=0,zz=0,xz=0,xy=0,zy=0;for(const p of ps){const x=p[0]-origin.x,z=p[2]-origin.z,y=p[1]-origin.y;xx+=x*x;zz+=z*z;xz+=x*z;xy+=x*y;zy+=z*y;}
   const det=xx*zz-xz*xz,sx=(xy*zz-zy*xz)/det,sz=(zy*xx-xy*xz)/det,at=(x:number,z:number)=>origin.y+sx*(x-origin.x)+sz*(z-origin.z);
+  planes.push({ring:rr,at});
   const g=upwardRoofPlane(sh);const pos=g.attributes.position;for(let i=0;i<pos.count;i++)pos.setY(i,ps.reduce((best,p)=>Math.hypot(p[0]-pos.getX(i),p[2]-pos.getZ(i))<Math.hypot(best[0]-pos.getX(i),best[2]-pos.getZ(i))?p:best,ps[0])[1]);g.computeVertexNormals();g.userData={role:'source-roof',sourceIndex:part.index};b.add(g,part.index===114?'stone':'slate');
   const skirt:number[]=[];for(let i=0;i<ps.length;i++){const p=ps[i],q=ps[(i+1)%ps.length];for(const v of [[p[0],lo,p[2]],[q[0],lo,q[2]],[q[0],q[1],q[2]],[p[0],lo,p[2]],[q[0],q[1],q[2]],[p[0],p[1],p[2]]])skirt.push(...v);}
   const walls=new T.BufferGeometry();walls.setAttribute('position',new T.Float32BufferAttribute(skirt,3));walls.computeVertexNormals();b.add(walls,'brick');
@@ -65,4 +68,41 @@ export function buildFireStationHendrik(_w:number,_d:number,b:BuildingTools){
  const a=ring.reduce((best,p)=>Math.abs(p[0]+23.5)+Math.abs(p[1]-10.7)<Math.abs(best[0]+23.5)+Math.abs(best[1]-10.7)?p:best,ring[0]);
  const end=[[-23.5,10.8],[-12.8,22.1]],dx=end[1][0]-end[0][0],dz=end[1][1]-end[0][1],l=Math.hypot(dx,dz),nx=-dz/l,nz=dx/l,angle=Math.atan2(-dz,dx);
  for(const y of [2.4,7.0])for(const t of [.73,.79]){const x=end[0][0]+t*dx+nx*.14,z=end[0][1]+t*dz+nz*.14;b.box(x,y,z,.50,.65,.08,'white',angle);b.box(x+nx*.08,y+.07,z+nz*.08,.37,.51,.07,'glass',angle);}
+
+ // ---- Rear block (Marnixstraat/Singelgracht side). Until 2026-10-10 the north and west walls were blank brick.
+ // Spec from panoramas TMX7316010203-002619_pano_0032_000004 (north wall, 9 m, 2022-06-22),
+ // TMX7316010203-001967_pano_0000_001086 (north + west from across the Singelgracht, 2021-01-18) and
+ // TMX7316010203-001967_pano_0000_001083 (west wall square-on, 2021-01-18):
+ //  north wall (24 m, faces ~10 deg): a white concrete frame over the ground storey - seven equal bays between white
+ //   pilasters under a beam at ~4.4 m, each bay brick below a band of white-framed lights (~3.3-4.35 m); above it brick,
+ //   with a ribbon of seven windows, one per bay, climbing from the east end to the west end under a white raking band.
+ //  west wall (12.6 m, faces ~281 deg): blank brick under a white coping; the same concrete frame over the ground storey
+ //   with six window units.
+ {
+  const sink0=getSink();setSink(0.12);
+  const inside=(x:number,z:number,r:number[][])=>{let yes=false;for(let i=0,j=r.length-1;i<r.length;j=i++){const a=r[i],c=r[j];if((a[1]>z)!==(c[1]>z)&&x<(c[0]-a[0])*(z-a[1])/(c[1]-a[1])+a[0])yes=!yes;}return yes;};
+  /** Wall-top (roof plane) height 0.3 m inside the wall at frame position t. */
+  const top=(f:{origin:number[];tangent:number[];n:number[]},t:number)=>{const x=f.origin[0]+f.tangent[0]*t-f.n[0]*.3,z=f.origin[1]+f.tangent[1]*t-f.n[1]*.3;let best=0;for(const p of planes)if(inside(x,z,p.ring))best=Math.max(best,p.at(x,z));return best;};
+  const lights=(f:any,t:number,y:number,w:number,h:number,cols:number)=>{slab(b,f,t,y-.06,w+.14,h+.12,.06,'white');slab(b,f,t,y,w,h,.09,'glass');for(let i=1;i<cols;i++)slab(b,f,t-w/2+w*i/cols,y,.06,h,.12,'white');};
+  const frameStorey=(f:any,len:number,bays:number,cols:number)=>{
+   slab(b,f,len/2,4.4,len,.38,.16,'white');                                   // concrete beam
+   for(let k=0;k<=bays;k++)slab(b,f,Math.min(len-.18,Math.max(.18,len*k/bays)),0,.36,4.4,.16,'white');   // pilasters
+   for(let k=0;k<bays;k++)lights(f,len*(k+.5)/bays,3.3,len/bays-.62,1.02,cols);
+  };
+  // north wall: edges 3 and 4 are collinear within 1 degree; treat as one 24 m run from the NE corner
+  const ring2=ring.map(p=>[p[0],p[1]]);
+  const e3=ringFrame(ring2,3),e4=ringFrame(ring2,4);
+  // The ribbon does not follow the eave: it climbs from ~7.2 m at the east end to ~10.6 m at the west end (panorama 001086),
+  // under a white raking band. u runs east -> west (edge 3 then edge 4; frame t is the viewer's right = west).
+  const run=e3.len+e4.len,ribbon=(u:number)=>7.2+3.4*u/run;
+  for(const [e,bays,u0] of [[e3,1,0],[e4,6,e3.len]] as const){
+   frameStorey(e.f,e.len,bays,bays===1?3:4);
+   for(let k=0;k<bays;k++){const t=e.len*(k+.5)/bays,y=ribbon(u0+t);if(y+1.6<top(e.f,t))lights(e.f,t,y,Math.min(2.3,e.len/bays-.9),1.15,3);}
+   {const y0=Math.min(ribbon(u0)+1.4,top(e.f,.3)-.5),y1=Math.min(ribbon(u0+e.len)+1.4,top(e.f,e.len-.3)-.5),L=e.len/2;poly(b,e.f,L,0,[[-L,y0],[L,y1],[L,y1+.16],[-L,y0+.16]],.1,'white');}
+  }
+  const w6=ringFrame(ring2,6);
+  frameStorey(w6.f,w6.len,6,2);
+  for(let t=.5;t<w6.len;t+=1){const y=top(w6.f,t);if(y>5)slab(b,w6.f,t,y-.35,1.02,.35,.12,'white');}
+  setSink(sink0);
+ }
 }
