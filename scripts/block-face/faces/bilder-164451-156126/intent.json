@@ -1,0 +1,629 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bilder-164451-156126",
+ "street": "Bilderdijkstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/block-face/bilder-164451-156126/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012164451",
+   "slug": "bface-164451",
+   "address": "Bilderdijkstraat 82",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "neck",
+      "storeys": 4,
+      "bays": 2,
+      "atticWindows": 1,
+      "doorBay": null,
+      "windows": "arched",
+      "archRings": "band",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "#e8c22a",
+       "fascia": true,
+       "name": "The Champ",
+       "displayWindows": 1,
+       "stallriser": "low",
+       "residentialDoor": {
+        "side": "left",
+        "colour": "dark-brown"
+       },
+       "shopShare": 0.6,
+       "evidence": "pano 2024-11-29 + OSM node 11576156399"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#b8704a",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "bar",
+    "name": "The Champ",
+    "category": "amenity=bar",
+    "osm": {
+     "type": "node",
+     "id": 11576156399,
+     "name": "The Champ",
+     "tags": "amenity=bar"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "conflict",
+    "note": "Yellow-painted ground floor: dark arched entrance with steps at the left, a white-framed glazed unit at the right under a small dark sign band reading \"... AFRIKA\" (an African shop/restaurant), not The Champ. OSM and photo disagree; modelled as photographed without a sign."
+   },
+   "rhythm": {
+    "bays": "2 unequal bays: wide left single window, right a tripartite window (wide centre + 2 narrow flanks) with a balcony",
+    "windowsPerStorey": "ground: arched door + shop | 1-3: single wide + tripartite (balcony right bay on storeys 1-2) | gable: tripartite window",
+    "symmetry": "none; tall pedimented gable with a finial right of centre",
+    "groundFloor": "yellow painted: arched dwelling door left, glazed unit right",
+    "signage": "small dark band \"... AFRIKA\" (not modelled)",
+    "roofline": "tall pedimented gable with scroll shoulders and a finial",
+    "citation": "bilder-164451-156126 strip.jpg pand 1",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "bays equal width; photo: wide single left, tripartite right",
+     "gable centred; photo right of centre (~0.65)",
+     "tripartite window is three equal windows in the model",
+     "ornate scrolled pediment is a plain neck gable: a wide dome rising ~2 m too high and too broad, versus the narrow tall pedimented gable on the photo",
+     "arched door head and steps not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012165444",
+   "slug": "bface-165444",
+   "address": "Bilderdijkstraat 80",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "step",
+      "storeys": 4,
+      "bays": 3,
+      "atticWindows": 1,
+      "doorBay": 2,
+      "windows": "arched",
+      "archRings": "band",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "white",
+       "fascia": false,
+       "name": "Beeldverhaal",
+       "sign": {
+        "text": "BEELDVERHAAL",
+        "textColour": "white",
+        "mount": "glazing",
+        "align": "centre",
+        "span": 0.5
+       },
+       "displayWindows": 1,
+       "stallriser": "low",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "black"
+       },
+       "shopShare": 0.65,
+       "evidence": "pano 2024-11-29 + OSM node 8679796305"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#c47a52",
+     "frame": "white",
+     "door": "black",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "shop",
+    "name": "Beeldverhaal",
+    "category": "shop=books",
+    "osm": {
+     "type": "node",
+     "id": 8679796305,
+     "name": "Beeldverhaal",
+     "tags": "shop=books"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Comic bookshop: white lettering \"Beeldverhaal\" on the left shop window under a dark band, glazed door and house door at the right."
+   },
+   "rhythm": {
+    "bays": "3 identical bays, balcony on the middle window of every storey",
+    "windowsPerStorey": "ground: shop + 2 doors | 1-3: 3 (balcony middle) | gable: 3 arched windows",
+    "symmetry": "mirror-symmetric; stepped gable centred",
+    "groundFloor": "white-framed shop window left, doors right under a dark band",
+    "signage": "BEELDVERHAAL white on the glass",
+    "roofline": "crow-stepped gable with a triple arched window and a finial",
+    "citation": "bilder-164451-156126 strip.jpg pand 2",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "ornamental gable crest/figure not modelled",
+     "gable carries a triple arched window; 3 attic windows do not fit the gable (Opening escapes its wall), 1 modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012159739",
+   "slug": "bface-159739",
+   "address": "Bilderdijkstraat 78",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "neck",
+      "storeys": 4,
+      "bays": 2,
+      "atticWindows": 1,
+      "doorBay": null,
+      "windows": "arched",
+      "archRings": "band",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "#2f3a44",
+       "fascia": true,
+       "name": "Beter Horen",
+       "sign": {
+        "text": "BETER HOREN",
+        "textColour": "white",
+        "background": "#d9302a",
+        "mount": "fascia",
+        "align": "centre",
+        "span": 0.5
+       },
+       "displayWindows": 2,
+       "stallriser": "low",
+       "evidence": "pano 2024-11-29 + OSM node 1328375472"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#c8855a",
+     "frame": "white",
+     "door": "black",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "shop",
+    "name": "Beter Horen",
+    "category": "shop=hearing_aids",
+    "osm": {
+     "type": "node",
+     "id": 1328375472,
+     "name": "Beter Horen",
+     "tags": "shop=hearing_aids"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Dark-grey shopfront with a red \"Beter Horen\" sign (white letters) and warmly lit glazing."
+   },
+   "rhythm": {
+    "bays": "2 unequal bays: narrow left single window, wide right bay with an arched triple window and balcony",
+    "windowsPerStorey": "ground: shop | 1-3: single (left, partly hidden by a tree) + wide arched with balcony (right) | gable: 1 arched window",
+    "symmetry": "none; ornate gable over the right bay",
+    "groundFloor": "dark-grey shopfront under a red sign board",
+    "signage": "Beter Horen, white on red",
+    "roofline": "ornate scrolled gable with a small arched window, right of centre",
+    "citation": "bilder-164451-156126 strip.jpg pand 3",
+    "photoRows": [
+     3,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "bays equal width; photo: narrow left, wide arched triple window right",
+     "gable centred; photo over the right bay",
+     "a tree hides the left half of the upper storeys"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012064444",
+   "slug": "bface-064444",
+   "address": "Bilderdijkstraat 76",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "cornice",
+      "crownCap": "flat",
+      "crownCapSpan": "narrow",
+      "storeys": 4,
+      "bays": 2,
+      "dormers": 1,
+      "doorBay": 0,
+      "windows": "arched",
+      "archRings": "band",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        0
+       ]
+      },
+      "shopfront": {
+       "colour": "#2f3a44",
+       "fascia": true,
+       "displayWindows": 1,
+       "stallriser": "none",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "dark-brown"
+       },
+       "shopShare": 0.65,
+       "evidence": "pano 2024-11-29"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#c8855a",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "shop",
+    "category": "BAG winkelfunctie",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "Arched glazed entrance (double door with side lights) at the left and a second arched opening at the right; no sign legible, no OSM business."
+   },
+   "rhythm": {
+    "bays": "2 unequal bays: wide left (arched triple window with balcony), narrow right (single window)",
+    "windowsPerStorey": "ground: arched glazed entrance + arched door | 1-3: wide arched + single | roof: pedimented dormer at the left",
+    "symmetry": "none",
+    "groundFloor": "arched glazed entrance at the left, arched opening at the right",
+    "signage": "none legible",
+    "roofline": "brick cornice frieze, dark mansard with a pedimented dormer over the left bay",
+    "citation": "bilder-164451-156126 strip.jpg pand 4",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "bays equal width; photo: wide left, narrow right",
+     "dormer centred; photo over the left bay",
+     "arched ground-floor openings are a plain shopfront"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012157866",
+   "slug": "bface-157866",
+   "address": "Bilderdijkstraat 74",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "step",
+      "storeys": 4,
+      "bays": 3,
+      "atticWindows": 1,
+      "doorBay": 0,
+      "windows": "sash",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "white",
+       "fascia": true,
+       "fasciaColour": "#f0e4c0",
+       "name": "Pagode",
+       "sign": {
+        "text": "PAGODE",
+        "textColour": "#c8321f",
+        "mount": "fascia",
+        "align": "centre",
+        "span": 0.7
+       },
+       "displayWindows": 1,
+       "stallriser": "medium",
+       "residentialDoor": {
+        "side": "left",
+        "colour": "dark-brown"
+       },
+       "shopShare": 0.62,
+       "evidence": "pano 2024-11-29 + OSM node 11576157880"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#9a5a3a",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "restaurant",
+    "name": "Pagode",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 11576157880,
+     "name": "Pagode",
+     "tags": "amenity=restaurant"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Chinese-Indisch restaurant: red \"PAGODE\" script on a cream board, a small green tiled canopy over the wooden house door at the left."
+   },
+   "rhythm": {
+    "bays": "3 bays (left narrow behind a tree, middle with balcony, right wide)",
+    "windowsPerStorey": "ground: door + restaurant | 1-3: 3 (balcony middle) | gable: tripartite bay window",
+    "symmetry": "none",
+    "groundFloor": "wooden house door with a tile canopy left, cream sign board over the restaurant glass right",
+    "signage": "PAGODE, red on cream",
+    "roofline": "small crow-stepped gable with a bay window and a chimney",
+    "citation": "bilder-164451-156126 strip.jpg pand 5",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "bays equal width; photo: narrow left, middle, wide right",
+     "gable window is a projecting bay window (3 windows do not fit the gable); modelled as 1 attic window",
+     "tree in front of the left half of the front",
+     "green tile canopy not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012156126",
+   "slug": "bface-156126",
+   "address": "Bilderdijkstraat 72",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "cornice",
+      "crownCap": "flat",
+      "crownCapSpan": "narrow",
+      "storeys": 4,
+      "bays": 3,
+      "dormers": 1,
+      "doorBay": 2,
+      "windows": "arched",
+      "archRings": "band",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "white",
+       "fascia": true,
+       "displayWindows": 1,
+       "stallriser": "low",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "white"
+       },
+       "shopShare": 0.8,
+       "evidence": "pano 2024-11-29"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#9a6a52",
+     "frame": "white",
+     "door": "white",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "shop",
+    "category": "BAG winkelfunctie",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "White shopfront with a lettered cream board (illegible), glazed shop window and white house door at the right; a green wrap on the neighbouring side. No OSM business."
+   },
+   "rhythm": {
+    "bays": "3 bays, balcony on the middle window of every storey",
+    "windowsPerStorey": "ground: shop + door | 1-3: 3 (balcony middle) | roof: tower window",
+    "symmetry": "upper storeys mirror-symmetric; tower gable over the middle bay",
+    "groundFloor": "white shopfront with board, door right",
+    "signage": "illegible",
+    "roofline": "brick tower gable with a window over the middle bay, dark mansard with a chimney",
+    "citation": "bilder-164451-156126 strip.jpg pand 6",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "tower gable is a narrow flat cap",
+     "board lettering illegible: none modelled"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [
+   {
+    "pands": [
+     "0363100012164451",
+     "0363100012165444"
+    ],
+    "evidence": "strip: cornice frieze of 82 and 80 at the same height (y ~295 px, 14.0 m; 3DBAG spread 0.55 m)"
+   },
+   {
+    "pands": [
+     "0363100012159739",
+     "0363100012064444"
+    ],
+    "evidence": "strip: cornices of 78 and 76 at ~13 m (3DBAG spread 0.01 m)"
+   },
+   {
+    "pands": [
+     "0363100012157866",
+     "0363100012156126"
+    ],
+    "trust": "photo",
+    "reference": "0363100012157866",
+    "evidence": "strip: cornice lines of 74 and 72 at ~13.2 m (y ~320 px); 3DBAG gives 72 the mansard top (15.4 m)"
+   }
+  ],
+  "identical": [],
+  "notes": [
+   "2024-11-29 capture; a tree hides parts of 78 and 74."
+  ]
+ },
+ "authoring": {
+  "author": "claude-sonnet-5.5 (block-face lane), from strip-labelled.png + 2x zoomed ground/roof crops",
+  "passes": 1,
+  "note": "Bilderdijkstraat 72-82 (even side)."
+ }
+}
