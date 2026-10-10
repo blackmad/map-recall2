@@ -1,0 +1,8 @@
+{
+  "id": "hotel-jakarta",
+  "countedBy": "pending blind count",
+  "facades": [
+    {"name": "south (IJ quay: glazed plinth, loggia grid)", "bearing": 197.5, "photo": "artifacts/landmark-lanes/hotel-jakarta/ref-south.jpg"},
+    {"name": "north (entrance drum, copper wall, glazed prow)", "bearing": 347.5, "photo": "artifacts/landmark-lanes/hotel-jakarta/ref-north.jpg"}
+  ]
+}

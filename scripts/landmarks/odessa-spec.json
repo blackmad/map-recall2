@@ -1,0 +1,91 @@
+{
+  "id": "odessa",
+  "name": "Odessa",
+  "landmarkId": "n4594648817",
+  "modelUrl": "./models/odessa.glb",
+  "suppressOsmIds": [
+    "w277087161"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.937697934691669,
+      52.37449992491744
+    ],
+    "headingDegrees": 106.25,
+    "lengthMetres": 30.88,
+    "widthMetres": 6.16
+  },
+  "surveyed": {
+    "anchor": [
+      4.937697934691669,
+      52.37449992491744
+    ],
+    "northOffsetDegrees": 0,
+    "source": "OSM building=yes way w277087161 (note 'ship \"Odessa\"', ref:bag 0363020000998904, a berth object: BAG has no live pand for the vessel) fitted with an oriented rectangle, native east/south metres from its centre. Hull, screens, dome and lounge measured by eye from the 2025-06-16 municipal panoramas."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "dark": "#292623",
+    "slate": "#3a3f42",
+    "ochre": "#7d705a",
+    "glass": "#a3b3ab",
+    "green": "#7b8a78",
+    "frame": "#1d1f21",
+    "white": "#d9d5c8",
+    "gold": "#c9a24a",
+    "bronze": "#6b5b3e"
+  },
+  "attribution": {
+    "title": "Odessa",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.inyourpocket.com/netherlands/amsterdam/venues/Odessa",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free geometry on the OSM ship outline: black plank hull, bamboo-screened bow and stern decks with glass dome, funnel and ODESSA lettering, and a glazed lounge with six scalloped roof segments; measured by eye from municipal panoramas, no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.937475,
+          52.374512
+        ],
+        [
+          4.93734,
+          52.374562
+        ],
+        [
+          4.937342,
+          52.374567
+        ],
+        [
+          4.937491,
+          52.374563
+        ],
+        [
+          4.937811,
+          52.374509
+        ],
+        [
+          4.937921,
+          52.374478
+        ],
+        [
+          4.937911,
+          52.37445
+        ],
+        [
+          4.937799,
+          52.374453
+        ],
+        [
+          4.937475,
+          52.374512
+        ]
+      ]
+    ]
+  }
+}

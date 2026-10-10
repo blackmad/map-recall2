@@ -35,6 +35,8 @@ import {buildRondeLutherseKerk} from './landmarks/ronde-lutherse-kerk-builder';
 import {buildHotelOkura} from './landmarks/hotel-okura-builder';
 import {buildPakhuisDeZwijger} from './landmarks/pakhuis-de-zwijger-builder';
 import {buildVictoriaHotel} from './landmarks/victoria-hotel-builder';
+import {buildHotelJakarta} from './landmarks/hotel-jakarta-builder';
+import {buildOdessa} from './landmarks/odessa-builder';
 import {buildDeNederlandscheBank} from './landmarks/de-nederlandsche-bank-builder';
 import {buildWoongebouwWladiwostok} from './landmarks/woongebouw-wladiwostok-builder';
 
@@ -93,6 +95,12 @@ cases['woongebouw-wladiwostok'] = {build: buildWoongebouwWladiwostok, ring: () =
 // De Nederlandsche Bank: the model top is the 3DBAG plant block on the tower roof (71.7 m above ground); the roof plate stays below it.
 const dnb = () => JSON.parse(fs.readFileSync('scripts/landmarks/de-nederlandsche-bank-footprints.json', 'utf8'));
 cases['de-nederlandsche-bank'] = {build: buildDeNederlandscheBank, ring: () => dnb().nativeRing, top: () => Math.max(...dnb().surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 1};
+// Hotel Jakarta: 3DBAG roofMax 33.6 m NAP (rooftop plant) on 1.3 m ground; the glazed prow roof ribs add 0.3 m over the 32 m roof.
+const hj = () => JSON.parse(fs.readFileSync('scripts/landmarks/hotel-jakarta-footprints.json', 'utf8'));
+cases['hotel-jakarta'] = {build: buildHotelJakarta, ring: () => hj().nativeRing, top: () => hj().attributes.roofMaxNAP - hj().groundNAP, topSlack: 1.5};
+// Odessa: a floating vessel with no 3DBAG shell; the ring is the OSM berth outline and the top the funnel cap (8.7 m above the waterline).
+const od = () => JSON.parse(fs.readFileSync('scripts/landmarks/odessa-footprints.json', 'utf8'));
+cases['odessa'] = {build: buildOdessa, ring: () => od().nativeRing, top: () => 8.7, topSlack: 0.6};
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(cases);
 for (const id of ids) {
   const c = cases[id];

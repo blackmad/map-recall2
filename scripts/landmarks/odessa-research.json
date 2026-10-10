@@ -1,0 +1,86 @@
+{
+  "canonicalModelId": "odessa",
+  "researchedOn": "2026-10-10",
+  "state": "built (south/quay side, stern and bow quarter measured; north side inferred)",
+  "destination": {
+    "landmarkId": "n4594648817",
+    "name": "Odessa",
+    "address": "Veemkade 259, 1019 CZ Amsterdam",
+    "bagPand": null,
+    "backlogId": "requested-odessa",
+    "note": "Backlog destination requested-odessa has null coordinates; the OSM nightclub node n4594648817 (52.3745071, 4.9376457) is used as the POI. No installed model, native-kit POI or poi-work-queue task covered it. The 2025-06-16 municipal panoramas show the ship (ODESSA AMSTERDAM lettering, no. 259) still moored; the operator site shows a 2026 copyright. OSM way w277087161 (building=yes, note ship \"Odessa\", ref:bag 0363020000998904, a berth object) is the only way suppressed; the glass houseboat moored beside it to the west is a separate neighbour and is not modelled."
+  },
+  "architecture": {
+    "sources": [
+      {
+        "url": "https://www.inyourpocket.com/netherlands/amsterdam/venues/Odessa",
+        "retrieved": "2026-10-10"
+      },
+      {
+        "url": "https://www.timeout.com/amsterdam/restaurants-and-cafes/odessa",
+        "retrieved": "2026-10-10"
+      },
+      {
+        "url": "https://www.odessa.amsterdam/",
+        "retrieved": "2026-10-10"
+      }
+    ],
+    "facts": [
+      "In Your Pocket: a former Ukrainian cargo ship (Time Out calls it a Ukrainian fishing boat); the bottom deck is renovated, there is a middle deck with flexible walls and a top sun deck with skyline views.",
+      "The operator site (Odessa Journey B.V., 2026) lists ecstatic dance sessions on board.",
+      "Hull dimensions are those of the OSM berth way (about 31 m x 6.2 m); build year and original length are not stated by the sources."
+    ]
+  },
+  "measuredBy": {
+    "panoramas": "municipal panoramas 2025-06-16 (CC0): black plank hull, five small windows on the stern half, gold ODESSA lettering near the stern, bamboo screens round bow and stern decks with barrels and wire arches, glass geodesic dome on the bow block, funnel on the stern deck, glazed lounge with six scalloped slate roof segments on a green-painted hull section.",
+    "outline": "OSM way w277087161 is a crude sliver (3.2 m wide at the stern end); the footprint ring used by the attachment check is the ship plan measured from the panoramas, the OSM ring is kept as osmRing in odessa-footprints.json."
+  },
+  "limitations": [
+    "North (water) side has no photograph and is inferred as a mirror of the quay side; the stern is drawn with a flat transom with small chamfers although photographs show a slightly rounded counter."
+  ],
+  "photos": [
+    {
+      "file": "ref-south.jpg",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_08-26-12_01694/?width=1400&fov=90&heading=8",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "date": "2025-06-16",
+      "panoramaId": "recording_2025-06-16_08-26-12_01694",
+      "sha256": "df0fe6b36090f6cd27b8e07f9227d487fc663b69dd2786f0d1678af13133e463",
+      "feature": "quay side: glazed lounge beside the stern block"
+    },
+    {
+      "file": "ref-stern-quarter.jpg",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_08-26-12_01694/?width=1400&fov=60&heading=40",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "date": "2025-06-16",
+      "panoramaId": "recording_2025-06-16_08-26-12_01694",
+      "sha256": "d6af57c42828b725b086546a5811ff205d7adad3901006d8307364cb38ef78ea",
+      "feature": "stern quarter: windows, lettering, barrels, bamboo screen"
+    },
+    {
+      "file": "ref-stern.jpg",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_08-26-12_01703/?width=1400&fov=70&heading=300",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "date": "2025-06-16",
+      "panoramaId": "recording_2025-06-16_08-26-12_01703",
+      "sha256": "a70109fc37e46026f3b68859437738c7847a782bc92d4c3ec56ca767d343c8bf",
+      "feature": "stern from the east end of the quay"
+    },
+    {
+      "file": "ref-bow-quarter.jpg",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_08-26-12_01685/?width=1400&fov=70&heading=84",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "date": "2025-06-16",
+      "panoramaId": "recording_2025-06-16_08-26-12_01685",
+      "sha256": "964652b0aa0214f41ab2c83dba3cbaf880f4626519abf73a7c94246b01a2813b",
+      "feature": "bow and lounge from the west along the quay"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://overpass.kumi.systems/api/interpreter (way 277087161, node 4594648817)",
+      "use": "berth outline and POI node",
+      "licence": "ODbL (OpenStreetMap contributors)"
+    }
+  ]
+}

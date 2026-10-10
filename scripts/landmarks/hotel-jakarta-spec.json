@@ -1,0 +1,51 @@
+{
+  "id": "hotel-jakarta",
+  "name": "Hotel Jakarta",
+  "landmarkId": "hotel-jakarta",
+  "modelUrl": "./models/hotel-jakarta.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012247056"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.922250805530242,
+      52.37935368222358
+    ],
+    "headingDegrees": 79.5,
+    "lengthMetres": 92.23,
+    "widthMetres": 62.74
+  },
+  "surveyed": {
+    "anchor": [
+      4.921889467933162,
+      52.37939697615155
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012247056 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "slate": "#34383d",
+    "copper": "#8d7a5a",
+    "ochre": "#c99a5b",
+    "bronze": "#9a6f3e",
+    "glass": "#6e8497",
+    "green": "#6f8f84",
+    "frame": "#1f2226",
+    "dark": "#1a1c1f",
+    "concrete": "#8d8d89",
+    "red": "#7a4328",
+    "white": "#e8e4d8",
+    "greyBrick": "#6f6044"
+  },
+  "attribution": {
+    "title": "Hotel Jakarta",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Hotel_Jakarta",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry on the BAG footprint and 3DBAG LoD2.2 massing; glazed plinth, timber-lined loggia grid, perforated copper-coloured panels, rotating-door drum and timber-and-glass atrium roof measured by eye from Commons photographs (2022, 2023) and municipal panoramas (2024, 2025), no pixels or meshes imported."
+  }
+}
