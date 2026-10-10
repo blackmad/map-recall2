@@ -49,6 +49,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   audit see-through now back to FAIL on real gaps: adam-tower, de-gooyer,
   haarlemmermeerstation, hart-museum, huis-bartolotti, pulitzer-amsterdam
   (footprint-edge rays; check each against photos).
+  Full audit with the new rules (2026-10-10, 259 models): 88 pass, 171 fail;
+  vs the pre-change baseline 16 FAIL→PASS (two spot-checked visually: no
+  holes) and 2 PASS→FAIL: concertgebouw (canopy restored to its real depth)
+  and haparandaweg-902-950 (Het Pakhuis v2, see-through from the footprint
+  edge — owner: Haparandaweg lane). De School held (pale concrete, rounded
+  drum pavilion, ribbon panes; rework in flight).
   Elevation skeletons with photos exist for 25 landmarks
   (`scripts/landmarks/*-elevations.json`, photos in `artifacts/landmark-lanes/`);
   counts are not filled: Haiku blind counts were too noisy — use a stronger
