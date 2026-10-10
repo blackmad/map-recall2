@@ -1,0 +1,244 @@
+{
+  "area": "west",
+  "ways": 15583,
+  "areas": 4719,
+  "counts": {
+    "way:footway": 5132,
+    "way:cycleway": 2012,
+    "way:pedestrian": 751,
+    "way:steps": 597,
+    "area:square": 272,
+    "area:park": 1847,
+    "way:residential": 3005,
+    "way:tertiary": 906,
+    "way:living_street": 77,
+    "way:secondary": 374,
+    "way:unclassified": 475,
+    "way:service": 1063,
+    "area:grass": 1630,
+    "way:path": 288,
+    "way:platform": 56,
+    "way:busway": 400,
+    "area:parking": 724,
+    "way:secondary_link": 6,
+    "area:wood": 184,
+    "way:construction": 16,
+    "area:paved": 62,
+    "way:corridor": 12,
+    "way:primary": 331,
+    "way:bridleway": 7,
+    "way:track": 10,
+    "way:primary_link": 17,
+    "way:tertiary_link": 8,
+    "way:trunk": 31,
+    "way:footpath": 1,
+    "way:elevator": 1,
+    "way:trunk_link": 7
+  },
+  "tagCoverage": {
+    "width": 2459,
+    "sidewalk": 3118,
+    "cycleway": 977,
+    "lanes": 3196
+  },
+  "cells": 39,
+  "gzBytes": 1123700,
+  "osmBase": "2026-10-10T07:41:00Z",
+  "perCell": {
+    "-1_-1": {
+      "ways": 562,
+      "areas": 72,
+      "gzBytes": 31168
+    },
+    "-1_-2": {
+      "ways": 638,
+      "areas": 344,
+      "gzBytes": 56674
+    },
+    "-1_-3": {
+      "ways": 179,
+      "areas": 173,
+      "gzBytes": 21490
+    },
+    "-1_0": {
+      "ways": 861,
+      "areas": 82,
+      "gzBytes": 52639
+    },
+    "-1_1": {
+      "ways": 555,
+      "areas": 79,
+      "gzBytes": 28655
+    },
+    "-1_2": {
+      "ways": 122,
+      "areas": 25,
+      "gzBytes": 8092
+    },
+    "-1_3": {
+      "ways": 1,
+      "areas": 0,
+      "gzBytes": 316
+    },
+    "-2_-1": {
+      "ways": 675,
+      "areas": 56,
+      "gzBytes": 39881
+    },
+    "-2_-2": {
+      "ways": 551,
+      "areas": 176,
+      "gzBytes": 49751
+    },
+    "-2_-3": {
+      "ways": 169,
+      "areas": 68,
+      "gzBytes": 12589
+    },
+    "-2_0": {
+      "ways": 714,
+      "areas": 90,
+      "gzBytes": 37421
+    },
+    "-2_1": {
+      "ways": 563,
+      "areas": 164,
+      "gzBytes": 40657
+    },
+    "-2_2": {
+      "ways": 500,
+      "areas": 160,
+      "gzBytes": 37829
+    },
+    "-2_3": {
+      "ways": 1,
+      "areas": 1,
+      "gzBytes": 1206
+    },
+    "-3_-1": {
+      "ways": 337,
+      "areas": 86,
+      "gzBytes": 21490
+    },
+    "-3_-2": {
+      "ways": 465,
+      "areas": 107,
+      "gzBytes": 37976
+    },
+    "-3_-3": {
+      "ways": 286,
+      "areas": 40,
+      "gzBytes": 15352
+    },
+    "-3_0": {
+      "ways": 625,
+      "areas": 177,
+      "gzBytes": 42404
+    },
+    "-3_1": {
+      "ways": 440,
+      "areas": 182,
+      "gzBytes": 31972
+    },
+    "-3_2": {
+      "ways": 386,
+      "areas": 262,
+      "gzBytes": 53164
+    },
+    "-4_-1": {
+      "ways": 187,
+      "areas": 95,
+      "gzBytes": 17245
+    },
+    "-4_-2": {
+      "ways": 295,
+      "areas": 49,
+      "gzBytes": 17147
+    },
+    "-4_-3": {
+      "ways": 66,
+      "areas": 3,
+      "gzBytes": 3810
+    },
+    "-4_0": {
+      "ways": 192,
+      "areas": 90,
+      "gzBytes": 16074
+    },
+    "-4_1": {
+      "ways": 270,
+      "areas": 66,
+      "gzBytes": 15935
+    },
+    "-4_2": {
+      "ways": 127,
+      "areas": 52,
+      "gzBytes": 11546
+    },
+    "0_-1": {
+      "ways": 836,
+      "areas": 184,
+      "gzBytes": 48811
+    },
+    "0_-2": {
+      "ways": 612,
+      "areas": 267,
+      "gzBytes": 43786
+    },
+    "0_-3": {
+      "ways": 134,
+      "areas": 173,
+      "gzBytes": 17950
+    },
+    "0_0": {
+      "ways": 1441,
+      "areas": 110,
+      "gzBytes": 61620
+    },
+    "0_1": {
+      "ways": 1012,
+      "areas": 695,
+      "gzBytes": 113686
+    },
+    "0_2": {
+      "ways": 605,
+      "areas": 167,
+      "gzBytes": 38574
+    },
+    "0_3": {
+      "ways": 7,
+      "areas": 0,
+      "gzBytes": 1246
+    },
+    "1_-1": {
+      "ways": 277,
+      "areas": 138,
+      "gzBytes": 28990
+    },
+    "1_-2": {
+      "ways": 170,
+      "areas": 65,
+      "gzBytes": 14881
+    },
+    "1_-3": {
+      "ways": 116,
+      "areas": 15,
+      "gzBytes": 5867
+    },
+    "1_0": {
+      "ways": 225,
+      "areas": 53,
+      "gzBytes": 13300
+    },
+    "1_1": {
+      "ways": 197,
+      "areas": 78,
+      "gzBytes": 13208
+    },
+    "1_2": {
+      "ways": 184,
+      "areas": 75,
+      "gzBytes": 19298
+    }
+  }
+}
