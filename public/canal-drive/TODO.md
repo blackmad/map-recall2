@@ -181,11 +181,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 - **Audit see-through test is hull-limited**: cast rays fully through the
   bbox (or from outside the footprint) in `glbQuality.ts`; today concave
   footprints flag false holes. Madame Tussauds has small roof-junction gaps.
-- **Recipe shops follow-ups**: apply `proposals/bilder-087959-front.json`
-  (axes [0,1,3] arched top row, low pediment, Thai Thara sign) via the
-  block-face lane, then update `streetComponents.test.ts`'s rounded-parapet
-  assertion; lowercase/logos in the stroke font; 157154 recessed door is flush;
-  verify BENU is 092395 not 090492.
+- **Block faces next** (`docs/buildings-pipeline.md` "Block-face authoring";
+  now the default unit for attached ordinary buildings): schema for per-bay
+  widths and off-centre gables (081118, 156286, Utrechtse 76), a shopfront
+  that must not cover a residential entrance bay (157650), two-storey
+  shopfronts (Concerto), white stucco reads beige under the recipe look;
+  facade-compare gable count is unreliable on chunk spans; small/faint signs
+  (KROM, TUI); 087959 strip vs proposal disagree on the ground-floor panes.
+  Re-author the rest of Bilderdijkstraat (24 pands on that face) as faces.
 - **Street chunk fallback**: if a chunk GLB fails to load, its houses are
   already out of the model list and the OSM extrusion shows; restore the
   per-house specs on failure. Demo page stats table scrolls sideways on phone.
