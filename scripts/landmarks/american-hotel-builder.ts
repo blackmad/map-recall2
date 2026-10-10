@@ -2,9 +2,43 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {addShell} from './worship-shell';
 import type {Surface} from './worship-shell';
-import {archBand, archSlab, archWindows, poly, put, ringFrame, segBand, setSink, slab} from './nearbar-kit';
+import {poly, put, ringFrame, setSink, slab} from './nearbar-kit';
 import type {Frame} from './nearbar-kit';
 import source from './american-hotel-footprints.json';
+
+// Local round-head primitives with 4 curve segments per half circle (the shared kit uses 8). The Hotel carries several hundred
+// round-headed openings and the lane budget is < 30000 triangles; at window scale (0.5-1.3 m wide) the polygonal head is invisible.
+const SINK = 0.5, CS = 4;
+const archSlab = (b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, d: number, colour: string, out = 0) => {
+  const s = new T.Shape(), r = w / 2;
+  s.moveTo(-r, 0); s.lineTo(r, 0); s.lineTo(r, h - r); s.absarc(0, h - r, r, 0, Math.PI, false); s.lineTo(-r, 0);
+  put(b, f, new T.ExtrudeGeometry(s, {depth: d + SINK, bevelEnabled: false, curveSegments: CS}), t, y, out - SINK, colour);
+};
+const archBand = (b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, th: number, d: number, colour: string, out = 0) => {
+  const r = w / 2, ri = r - th, s = new T.Shape();
+  s.moveTo(-r, 0); s.lineTo(-r, h - r); s.absarc(0, h - r, r, Math.PI, 0, true); s.lineTo(r, 0);
+  s.lineTo(ri, 0); s.lineTo(ri, h - r); s.absarc(0, h - r, ri, 0, Math.PI, false); s.lineTo(-ri, 0); s.lineTo(-r, 0);
+  put(b, f, new T.ExtrudeGeometry(s, {depth: d + SINK, bevelEnabled: false, curveSegments: CS}), t, y, out - SINK, colour);
+};
+const segBand = (b: BuildingTools, f: Frame, t: number, y: number, W: number, rise: number, th: number, d: number, colour: string, out = 0) => {
+  const R = (W * W / 4 + rise * rise) / (2 * rise), n = 6, pts: [number, number][] = [];
+  const yo = (x: number) => rise - R + Math.sqrt(R * R - x * x);
+  for (let i = 0; i <= n; i++) { const x = -W / 2 + W * i / n; pts.push([x, yo(x)]); }
+  for (let i = n; i >= 0; i--) { const x = -W / 2 + W * i / n; pts.push([x, yo(x) - th]); }
+  poly(b, f, t, y, pts, d, colour, out);
+};
+const archWindows = (b: BuildingTools, f: Frame, ts: number[], o: {y: number; w: number; h: number; frame?: string; glass?: string; sill?: string; bars?: number; rows?: number}) => {
+  const frame = o.frame ?? 'white', glass = o.glass ?? 'glass';
+  for (const t of ts) {
+    archSlab(b, f, t, o.y - 0.04, o.w + 0.2, o.h + 0.12, 0.08, frame);
+    archSlab(b, f, t, o.y, o.w, o.h, 0.11, glass);
+    const bars = o.bars ?? 1;
+    for (let k = 1; k <= bars; k++) slab(b, f, t - o.w / 2 + o.w * k / (bars + 1), o.y, 0.05, o.h - o.w / 2, 0.14, frame);
+    const rows = o.rows ?? 2;
+    for (let r = 1; r <= rows; r++) slab(b, f, t, o.y + (o.h - o.w / 2) * r / (rows + 1), o.w, 0.05, 0.14, frame);
+    if (o.sill) slab(b, f, t, o.y - 0.14, o.w + 0.45, 0.1, 0.2, o.sill);
+  }
+};
 
 /**
  * American Hotel (Leidseplein 28, Willem Kromhout and H.G. Jansen, 1900-02, extended 1927-28 by G.J. Rutgers):
@@ -226,5 +260,78 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
       for (const dx of [-0.23, 0.23]) slab(b, f, t + dx, 19.45, 0.05, 0.85, 0.14, 'frame');
       segBand(b, f, t, 20.2, 1.9, 0.45, 0.18, 0.2, 'stone');
     }
+  }
+
+  // =============================== Roofline (Kromhout's ornate skyline) ===============================
+  // Counted from the 2007 Commons photo (ref-commons-americain.jpg: 5 stepped dormer gables along the Leidseplein roof, the big
+  // pointed corner gable over Marnixstraat with its blue ceramic star and zig-zag, the round stone turret beside the clock tower)
+  // and the 2022 leaf-off panorama crops. Dormer gable walls stand 2.0 m behind the ring line (3DBAG wall planes n = -2.0);
+  // axes t = 9.0, 15.9, 21.0, 26.8 and 32.7 from the 3DBAG dormer gable walls (the leftmost is the small one by the tower).
+  {
+    const Fd = ringFrame(ring, 58, -2.0).f;
+    /** Stair-stepped gable silhouette, half-width hw at the base, step height sh, n steps, apex height = n * sh. */
+    const stepGable = (hw: number, sh: number, n: number): [number, number][] => {
+      const right: [number, number][] = [[hw, 0]];
+      let w = hw;
+      for (let k = 0; k < n; k++) { right.push([w, (k + 1) * sh]); w -= hw / n; if (k < n - 1) right.push([w, (k + 1) * sh]); }
+      right.push([0.0, n * sh]);
+      const left = right.slice(1, -1).reverse().map(([x, y]) => [-x, y] as [number, number]);
+      return [[-hw, 0], ...right, ...left];
+    };
+    for (const c of [9.0, 15.9, 21.0, 26.8, 32.7]) {
+      // crenellated corbel ledge with merlons, three tall windows over it
+      slab(b, Fd, c, 18.9, 3.9, 0.45, 0.55, 'stone');
+      for (let k = 0; k < 6; k++) slab(b, Fd, c - 1.6 + k * 0.64, 19.35, 0.34, 0.32, 0.22, 'stone', 0.33);
+      for (const dx of [-1.2, 1.2]) archWindows(b, Fd, [c + dx], {y: 19.8, w: 0.55, h: 1.7, bars: 0, rows: 2, frame: 'white', sill: 'stone'});
+      slab(b, Fd, c, 19.8, 1.0, 1.5, 0.1, 'glass');
+      slab(b, Fd, c, 19.8, 1.15, 0.12, 0.18, 'stone'); slab(b, Fd, c, 21.3, 1.3, 0.14, 0.22, 'stone');
+      slab(b, Fd, c, 19.8, 0.05, 1.5, 0.14, 'frame');
+      // stepped gable: stone coping silhouette with a sandstone field, two small arched windows, pinnacle and flagpole
+      const sil = stepGable(1.75, 0.8, 5);
+      poly(b, Fd, c, 21.55, sil, 0.28, 'stone', 0.0);
+      poly(b, Fd, c, 21.6, sil.map(([x, y]) => [x * 0.8, y * 0.86] as [number, number]), 0.34, 'sandstone', 0.0);
+      for (const dx of [-0.42, 0.42]) archWindows(b, Fd, [c + dx], {y: 22.3, w: 0.38, h: 1.25, bars: 0, rows: 1, frame: 'white', glass: 'dark'});
+      slab(b, Fd, c, 25.5, 0.45, 1.2, 0.4, 'stone', 0.0);
+      slab(b, Fd, c, 26.7, 0.62, 0.18, 0.5, 'stone', 0.0);
+      slab(b, Fd, c, 26.7, 0.05, 3.4, 0.05, 'frame', 0.1);
+    }
+    // big pointed corner gable over the Marnixstraat corner (NE wall, frame of ring edge 12, t = -5.4 .. -1.6, base 21.2 m)
+    const Fn = ringFrame(ring, 12, 0.3).f;
+    const gc = -3.0, gw = 2.4, base = 21.0, apex = 29.4;
+    const tri: [number, number][] = [[-gw, 0], [gw, 0], [0, apex - base]];
+    poly(b, Fn, gc, base, tri, 0.45, 'stone', 0.0);
+    poly(b, Fn, gc, base + 0.05, tri.map(([x, y]) => [x * 0.9, y * 0.92 + 0.0] as [number, number]), 0.52, 'sandstone', 0.0);
+    // blue ceramic star-and-zig-zag field with a small triangle at the top
+    poly(b, Fn, gc, base + 4.3, [[-0.8, 0], [0.8, 0], [0, 1.3]], 0.58, 'blue', 0.0);
+    poly(b, Fn, gc, base + 2.2, [[-1.7, 0], [1.7, 0], [1.5, 0.5], [1.1, 0.0], [0.7, 0.5], [0.3, 0.0], [-0.1, 0.5], [-0.5, 0.0], [-0.9, 0.5], [-1.3, 0.0], [-1.5, 0.5]], 0.56, 'blue', 0.0);
+    // loggia opening under the apex, then rows of arched windows
+    archSlab(b, Fn, gc, base + 3.6, 1.0, 1.0, 0.5, 'dark');
+    for (let k = 0; k < 4; k++) archWindows(b, Fn, [gc - 1.5 + k * 1.0], {y: base + 0.9, w: 0.55, h: 1.3, bars: 0, rows: 1, frame: 'white', sill: 'stone'});
+    for (const dx of [-1.5, 0, 1.5]) archWindows(b, Fn, [gc + dx], {y: base - 2.0, w: 0.6, h: 1.4, bars: 0, rows: 1, frame: 'white', sill: 'stone'});
+    slab(b, Fn, gc, apex - 0.05, 0.5, 1.5, 0.5, 'stone', 0.0);        // finial pinnacle
+    slab(b, Fn, gc, apex + 1.4, 0.7, 0.2, 0.6, 'stone', 0.0);
+    // the little pointed gablet on the bay beside it
+    poly(b, Fn, -0.7, 21.9, [[-1.0, 0], [1.0, 0], [0, 1.9]], 0.4, 'stone', 0.0);
+    poly(b, Fn, -0.7, 21.95, [[-0.8, 0], [0.8, 0], [0, 1.5]], 0.45, 'blue', 0.0);
+
+    // round stone turret beside the clock tower (slits and a dome cap) and a slit chimney
+    const Ft = ringFrame(ring, 58, 0).f;
+    const tcx = Ft.origin[0] + Ft.tangent[0] * 4.7 + Ft.n[0] * -3.4, tcz = Ft.origin[1] + Ft.tangent[1] * 4.7 + Ft.n[1] * -3.4;
+    const turret = (x: number, z: number, r: number, y0: number, h: number) => {
+      const g = new T.CylinderGeometry(r, r, h, 18).translate(x, y0 + h / 2, z);
+      b.add(g, 'stone' as never);
+      const dome = new T.SphereGeometry(r * 1.05, 14, 8, 0, Math.PI * 2, 0, Math.PI / 2).scale(1, 0.7, 1).translate(x, y0 + h, z);
+      b.add(dome, 'slate' as never);
+      b.add(new T.SphereGeometry(0.16, 8, 6).translate(x, y0 + h + r * 0.74 + 0.1, z), 'stone' as never);
+      for (let k = 0; k < 8; k++) {
+        const a = k * Math.PI / 4;
+        b.add(new T.BoxGeometry(0.14, 1.2, 0.14).translate(x + Math.cos(a) * (r + 0.02), y0 + h - 1.2, z + Math.sin(a) * (r + 0.02)), 'dark' as never);
+      }
+    };
+    turret(tcx, tcz, 1.15, 24.5, 6.4);
+    const cx = Ft.origin[0] + Ft.tangent[0] * 7.6 + Ft.n[0] * -3.6, cz = Ft.origin[1] + Ft.tangent[1] * 7.6 + Ft.n[1] * -3.6;
+    b.add(new T.BoxGeometry(1.0, 4.6, 1.0).translate(cx, 26.3, cz), 'sandstone' as never);
+    for (const dx of [-0.25, 0.25]) b.add(new T.BoxGeometry(0.14, 0.9, 1.04).translate(cx + dx, 28.0, cz), 'dark' as never);
+    b.add(new T.BoxGeometry(1.3, 0.2, 1.3).translate(cx, 28.7, cz), 'stone' as never);
   }
 }
