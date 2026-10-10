@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+## Recipe schema: bay widths, off-centre crowns, shop spans, stucco, tall gables (2026-10-10)
+
+New optional intent fields (byte-identical output when absent; `fit-golden`
+pins all 33 per-house recipes): `bayWidths`, `storeyBayWidths`, `crownAt` /
+`crownBays`, `crownRise`, `crownSteps`, `crownFinial`, `atticShape: round`,
+`windows: two-light`, `windowProportion: tall`, `shopfront.bays` (a partial
+shop; the residential entrance keeps its own door and wall), `shopfront.storeys:
+2`, `palette.wallMaterial: stucco`. White stucco read beige because it shared
+the brick slot, whose tint clamps lightness to 0.30–0.60 on a grey brick
+texture; it now has its own `stucco` slot and plaster texture. Advisory
+wall-colour check on block-face sheets (photo vs model median). Marnixstraat
+124–138 now overlays the photo house by house (stepped gables with attic
+window, tall two-light sashes, brown brick), but install is refused by the
+audit: one 1,224 m² blank rear plane (faces model only the street side) and
+12.9 m² of inverted roof triangles. Instancing of identical houses is planned
+in compile output but not applied (needs the loader).
+
 ## Marnixstraat: per-house vs block face ties on time; the library is the bottleneck (2026-10-10)
 
 User asked why block faces looked slower. Timed on Marnixstraat 124–138 and

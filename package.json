@@ -11,6 +11,7 @@
     "compare:facades": "node --import tsx scripts/landmarks/facade-compare.ts",
     "review:sheet": "node --import tsx scripts/landmarks/review-sheet.ts",
     "test:facade-compare": "node --import tsx --test src/canalRecall/landmarks/facadeCompare.test.ts",
+    "test:fit-golden": "node --import tsx scripts/building-recipes/fit-golden.ts",
     "test:block-face": "node --import tsx --test src/canalRecall/blockFace/blockFace.test.ts",
     "block-face:intake": "node --import tsx scripts/block-face/intake.ts",
     "block-face:compile": "node --import tsx scripts/block-face/compile.ts",
