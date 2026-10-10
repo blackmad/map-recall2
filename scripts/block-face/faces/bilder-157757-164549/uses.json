@@ -1,0 +1,50 @@
+{
+ "street": "Bilderdijkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T07:44:14.758Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012157757",
+   "addresses": [
+    "Bilderdijkstraat 131"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 131-H",
+     "use": "winkelfunctie",
+     "areaM2": 243,
+     "bagId": "0363010000586148"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11381176151,
+     "lngLat": [
+      4.8714295,
+      52.3687426
+     ],
+     "tags": {
+      "name": "Daily Paper",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-10T07:44:14.758Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164549",
+   "addresses": [
+    "Bilderdijkstraat 133"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}
