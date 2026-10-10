@@ -1,11 +1,15 @@
 /**
  * Shop-sign lettering as real geometry: a small single-stroke capital font
  * (each stroke is one flat quad, about 8-16 triangles per letter) laid on the
- * fascia. Legible at street distance, no textures, no font files.
+ * sign band fit.ts reports (fascia, wall above the glass, or the head of the
+ * glass). Legible at street distance, no textures, no font files. Chosen over
+ * the 5x7 block capitals of blockLetters.ts after an in-game comparison on
+ * Bilderdijkstraat (2026-10-10): the block letters break up at 20-40 m.
  *
  * Glyph cells are 4 wide x 6 high; strokes are polylines in that grid.
  */
 import * as T from 'three';
+import type {ShopSign} from './intent.ts';
 
 type Stroke = [number, number][];
 const O: Stroke = [[1, 0], [0, 1], [0, 5], [1, 6], [3, 6], [4, 5], [4, 1], [3, 0], [1, 0]];
@@ -46,7 +50,7 @@ export const GLYPHS: Record<string, {w: number; s: Stroke[]}> = {
   '7': {w: 4, s: [[[0, 6], [4, 6], [1.5, 0]]]},
   '8': {w: 4, s: [[[1, 3], [0, 4], [0, 5], [1, 6], [3, 6], [4, 5], [4, 4], [3, 3], [1, 3], [0, 2], [0, 1], [1, 0], [3, 0], [4, 1], [4, 2], [3, 3]]]},
   '9': {w: 4, s: [[[0, 1], [1, 0], [3, 0], [4, 1], [4, 5], [3, 6], [1, 6], [0, 5], [0, 4], [1, 3], [4, 3]]]},
-  '-': {w: 3, s: [[[0, 3], [3, 3]]]}, '.': {w: 0, s: [[[0, 0], [0, 0.4]]]}, '&': {w: 4, s: [[[4, 0], [0, 4], [1, 6], [3, 6], [3, 4], [0, 1], [1, 0], [3, 0], [4, 2]]]},
+  '-': {w: 3, s: [[[0, 3], [3, 3]]]}, '.': {w: 0, s: [[[0, 0], [0, 0.4]]]}, "'": {w: 0, s: [[[0, 6], [0, 4.6]]]}, '&': {w: 4, s: [[[4, 0], [0, 4], [1, 6], [3, 6], [3, 4], [0, 1], [1, 0], [3, 0], [4, 2]]]},
   ' ': {w: 3, s: []},
 };
 const GAP = 1.6, STROKE = 0.85;
@@ -90,13 +94,14 @@ export function letteringGeometry(o: LetteringOptions, mirrorX = false): Letteri
   return {positions, widthM, heightM: h, triangles: positions.length / 9};
 }
 
-export interface SignPlacement { leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; frontLeftM: number; mirrored: boolean; sign?: {text: string; textColour: string; background?: string; span?: number; align?: 'left' | 'centre' | 'right'} }
+/** Where the lettering goes: a band in viewer metres (`leftM` from the viewer's left) at `frontLeftM` in the elevation frame, its face `depthM` proud of the wall. */
+export interface SignPlacement { leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; frontLeftM: number; mirrored: boolean; mount?: 'fascia' | 'wall' | 'glazing'; sign?: ShopSign | null }
 
-/** Add lettering meshes to the named elevation group; returns the triangle count added. */
+/** Add the sign's lettering mesh to the elevation group; returns the triangle count added. */
 export function addLettering(elevation: T.Object3D, f: SignPlacement, colour: string, pandId: string): number {
   const sign = f.sign; if (!sign) return 0;
   const pad = 0.12, avail = f.widthM - 2 * pad, span = sign.span ?? 0.8;
-  const lettering = letteringGeometry({text: sign.text, heightM: Math.min(0.34, f.heightM * 0.55), maxWidthM: avail * span, align: sign.align}, f.mirrored);
+  const lettering = letteringGeometry({text: sign.text, heightM: f.mount && f.mount !== 'fascia' ? Math.min(0.45, f.heightM * 0.6) : Math.min(0.34, f.heightM * 0.55), maxWidthM: avail * span, align: sign.align}, f.mirrored);
   const align = sign.align ?? 'centre';
   // x of the block centre in viewer metres from the viewer's left of the fascia.
   const cx = align === 'left' ? pad + lettering.widthM / 2 : align === 'right' ? f.widthM - pad - lettering.widthM / 2 : f.widthM / 2;
