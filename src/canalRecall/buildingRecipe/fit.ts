@@ -9,6 +9,7 @@
  */
 import type {CanalHouseRecipe, CanalhouseDressing, CanalhouseElevation, CanalhouseOpening, CanalhousePoint} from '../canalhouseRecipes.ts';
 import type {CanalhouseGlazedBay} from '../canalhouseGlazedBay.ts';
+import {wordRects} from '../blockLetters.ts';
 import {canalhouseCrownProfile} from '../canalhouseRecipes.ts';
 import {surveyRecipe} from '../../../scripts/canalhouse-recipes/survey-recipe.ts';
 import {unobservedHouse, type GableType} from '../facade/houseRecord.ts';
@@ -128,10 +129,15 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     const h = heights[0], left = SHOP.pierM + 0.02, right = width - SHOP.pierM - 0.02;
     if (doorLeft === null) shopSpans.push([left, right]);
     else { if (doorLeft - 0.1 - left > 0.6) shopSpans.push([left, doorLeft - 0.1]); if (right - (doorLeft + doorWidth + 0.1) > 0.6) shopSpans.push([doorLeft + doorWidth + 0.1, right]); }
-    const bottom = basement + SHOP.glassBottomM, top = basement + h - (f.shopfront.fascia ? SHOP.fasciaM + SHOP.fasciaGapM + 0.04 : 0.3);
+    // Glass bottom above the ground: the 0.3 m stone plinth always stays, so `none` is glass straight off the plinth.
+    const riser = {none: 0.32, low: 0.42, standard: SHOP.glassBottomM}[f.shopfront.stallRiser ?? 'standard'];
+    // A sign on the wall above the glass needs a band of wall: lower the glass head.
+    const head = f.shopfront.fascia ? SHOP.fasciaM + SHOP.fasciaGapM + 0.04 : f.shopfront.sign?.mount === 'wall' ? 0.75 : 0.3;
+    const bottom = basement + riser, top = basement + h - head;
     shopGlass = [bottom, top];
+    const totalGlass = shopSpans.reduce((s, [a, b]) => s + b - a, 0);
     shopSpans.forEach(([a, b], i) => {
-      const w = b - a, mullions = Math.max(0, Math.round(w / 1.6) - 1), glassH = top - bottom;
+      const w = b - a, panes = f.shopfront!.displayWindows ? Math.max(1, Math.round(f.shopfront!.displayWindows * w / totalGlass)) : Math.round(w / 1.6), mullions = Math.max(0, panes - 1), glassH = top - bottom;
       openings.push({id: `shop-${i}`, kind: 'window', leftM: a, bottomM: bottom, widthM: w, heightM: glassH, trimWidthM: 0.08,
         verticalBars: Array.from({length: mullions}, (_, k) => round((k + 1) / (mullions + 1), 4)), horizontalBars: glassH > 1.9 ? [0.8] : [], frameSurface: 'shop', barSurface: 'shop'} as CanalhouseOpening);
     });
@@ -330,10 +336,10 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       const blocks = [{id: 'shop-pier-left', leftM: 0, bottomM: round(plinth), widthM: SHOP.pierM, heightM: round(top - plinth - 0.02), depthM: 0.1, surface: 'shop' as const},
         {id: 'shop-pier-right', leftM: round(width - SHOP.pierM - 0.001), bottomM: round(plinth), widthM: SHOP.pierM, heightM: round(top - plinth - 0.02), depthM: 0.1, surface: 'shop' as const}];
       elevation.blocks = seen([...(elevation.blocks?.value ?? []), ...blocks]);
-      elevation.bands.value.push({id: 'shop-riser', leftM: 0, bottomM: round(plinth), widthM: full, heightM: round(layout.shopGlass[0] - plinth - 0.01), depthM: 0.05, surface: 'shop'});
+      if (layout.shopGlass[0] - plinth - 0.01 > 0.03) elevation.bands.value.push({id: 'shop-riser', leftM: 0, bottomM: round(plinth), widthM: full, heightM: round(layout.shopGlass[0] - plinth - 0.01), depthM: 0.05, surface: 'shop'});
       if (front.shopfront.fascia) {
         elevation.bands.value.push({id: 'fascia', leftM: 0, bottomM: round(top - SHOP.fasciaM - SHOP.fasciaGapM), widthM: full, heightM: SHOP.fasciaM, depthM: 0.12, surface: 'shop'});
-        elevation.bands.value.push({id: 'fascia-lettering', leftM: round(width * 0.2), bottomM: round(top - SHOP.fasciaGapM - SHOP.fasciaM / 2 - 0.12), widthM: round(width * 0.6), heightM: 0.24, depthM: 0.135, surface: 'trim'});
+        if (!front.shopfront.sign) elevation.bands.value.push({id: 'fascia-lettering', leftM: round(width * 0.2), bottomM: round(top - SHOP.fasciaGapM - SHOP.fasciaM / 2 - 0.12), widthM: round(width * 0.6), heightM: 0.24, depthM: 0.135, surface: 'trim'});
       }
     }
     // Stone dressings (window surrounds, quoins) and the shop awning: attached slabs/canopies, see CanalhouseDressing.
@@ -373,6 +379,16 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       const attach = Math.max(top, 2.1 + drop + valance);
       dressings.push({id: 'awning', kind: 'awning', style: awning.style === 'fabric-dutch' ? 'dutch' : 'straight', leftM: round(left), widthM: round(right - left), topM: round(attach), dropM: drop, projectM: awning.style === 'fabric-dutch' ? 0.9 : 1.0, valanceM: valance, surface: 'awning'});
     }
+    const sign = front.shopfront?.sign;
+    if (sign && layout.shopGlass) {
+      const top = layout.groundBase + layout.storeyHeights[layout.groundBase > 0 ? 1 : 0], mount = sign.mount ?? 'fascia';
+      // Letter band: the fascia board (its face stands depth + 1.5 cm proud: 0.135 m), the wall band above the glass, or the head of the glass (in front of the shop frames).
+      const [bandBottom, bandH, offset] = mount === 'fascia' ? [top - SHOP.fasciaGapM - SHOP.fasciaM, SHOP.fasciaM, 0.145]
+        : mount === 'wall' ? [layout.shopGlass[1] + 0.06, top - layout.shopGlass[1] - 0.14, 0.02] : [layout.shopGlass[1] - 0.55, 0.45, 0.1];
+      const span = (layout.shopSpans.length && mount === 'glazing') ? layout.shopSpans.reduce((a, b) => (b[1] - b[0] > a[1] - a[0] ? b : a)) : [0.35, width - 0.35] as [number, number];
+      // Mirrored elevations run right→left: flipping every rect mirrors the word back to reading order.
+      dressings.push(...signDecals(sign.text, span[0], span[1], bandBottom, bandH, offset).map((d, i) => ({...d, leftM: round(flipX(d.leftM, d.widthM), 4), id: `sign-${i}`})));
+    }
     if (dressings.length) elevation.dressings = seen(dressings);
     mainEaves = Math.min(mainEaves, eaves);
     elevation.bodyEavesM = surveyed(round(eaves));
@@ -395,5 +411,16 @@ export function paletteFor(intent: CanalHouseIntent, front?: FrontIntent) {
   const shopFront = (front ?? intent.fronts.find(f => f.shopfront))?.shopfront, shop = shopFront?.colour;
   const awningFront = (front ?? intent.fronts.find(f => f.shopfront?.awning && f.shopfront.awning.style !== 'none'))?.shopfront?.awning, awning = awningFront && awningFront.style !== 'none' ? awningFront.colour : undefined;
   return {wall: swatch(p.brick), roof: roof.steep, trim: swatch(p.frame), glass: GLASS, door: swatch(p.door), stone: swatch(p.stone ?? 'sandstone'), joinery: swatch(p.frame),
-    ...(p.band ? {accent: swatch(p.band)} : {}), ...(shop ? {shop: swatch(shop)} : {}), ...(awning ? {awning: swatch(awning)} : {})};
+    ...(p.band ? {accent: swatch(p.band)} : {}), ...(shop ? {shop: swatch(shop)} : {}), ...(awning ? {awning: swatch(awning)} : {}), ...(shopFront?.sign ? {sign: swatch(shopFront.sign.colour)} : {})};
+}
+
+/**
+ * Sign lettering as flat decals: 5x7 block capitals (blockLetters.ts), runs merged into rectangles, centred in
+ * [left, right] x [bottom, bottom + height] with letters 60% of the band height, shrunk to fit the width.
+ */
+export function signDecals(text: string, left: number, right: number, bottom: number, height: number, offsetM: number) {
+  const {rects, width: cells} = wordRects(text);
+  if (!cells) return [];
+  const cell = Math.min(height * 0.6 / 7, (right - left) * 0.92 / cells), w = cells * cell, x0 = (left + right) / 2 - w / 2, y0 = bottom + height / 2 + 3.5 * cell;
+  return rects.map(r => ({kind: 'decal' as const, leftM: round(x0 + r.c0 * cell, 4), bottomM: round(y0 - (r.row1) * cell, 4), widthM: round((r.c1 - r.c0) * cell, 4), heightM: round((r.row1 - r.row0) * cell, 4), offsetM, surface: 'sign' as const}));
 }
