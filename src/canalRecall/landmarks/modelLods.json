@@ -1498,5 +1498,23 @@
   "buildVersion": 2,
   "bytes": 88760,
   "triangles": 4423
+ },
+ "hva-rhijnspoorplein-2": {
+  "sourceHash": "5029a39620a7ac6d",
+  "buildVersion": 2,
+  "bytes": 22736,
+  "triangles": 1357
+ },
+ "kohnstammhuis": {
+  "sourceHash": "65b16af61f4bf592",
+  "buildVersion": 2,
+  "bytes": 39232,
+  "triangles": 2150
+ },
+ "hva-wibautstraat-3": {
+  "sourceHash": "0f3bfaf0a1c074f9",
+  "buildVersion": 2,
+  "bytes": 63548,
+  "triangles": 2907
  }
 }

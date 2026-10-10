@@ -11,6 +11,18 @@ import {topOf, type RawWall} from './big-kit';
 export function quad(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, colour: string, out: number) {
   put(b, f, new T.PlaneGeometry(w, h).translate(0, h / 2, 0), t, y, out, colour);
 }
+/** Lowest wall y at tangent position t (NaN outside the wall); walls cut by a sloping neighbour roof have a slanted base. */
+export function bottomOf(w: RawWall, t: number): number {
+  let best = Infinity;
+  const p = w.poly;
+  for (let i = 0; i < p.length; i++) {
+    const a = p[i], q = p[(i + 1) % p.length];
+    if ((a[0] - t) * (q[0] - t) > 0) continue;
+    if (Math.abs(a[0] - q[0]) < 1e-6) { best = Math.min(best, a[1], q[1]); continue; }
+    best = Math.min(best, a[1] + (q[1] - a[1]) * (t - a[0]) / (q[0] - a[0]));
+  }
+  return Number.isFinite(best) ? best : NaN;
+}
 export type Grid = {
   /** First column centre and pitch along t; count of columns. */
   t0: number; pitch: number; n: number;
@@ -23,7 +35,8 @@ export function windowGrid(b: BuildingTools, wall: RawWall, g: Grid) {
   for (let c = 0; c < g.n; c++) {
     const t = g.t0 + c * g.pitch, top = topOf(wall, t);
     for (const y of g.sills) {
-      if (!(y + g.h <= (Number.isFinite(top) ? top : wall.top) - 0.25) || y < wall.base + 0.2) continue;
+      const bot = bottomOf(wall, t);
+      if (!(y + g.h <= (Number.isFinite(top) ? top : wall.top) - 0.25) || y < (Number.isFinite(bot) ? bot : wall.base) + 0.2) continue;
       quad(b, wall.f, t, y - ring, g.w + 2 * ring, g.h + 2 * ring, frame, 0.02);
       quad(b, wall.f, t, y, g.w, g.h, glass, 0.04);
     }
@@ -35,7 +48,8 @@ export function windowGrid(b: BuildingTools, wall: RawWall, g: Grid) {
  */
 export function ribbon(b: BuildingTools, wall: RawWall, t0: number, t1: number, y: number, h: number, o: {mullion?: number; frame?: string; glass?: string; ring?: number} = {}) {
   const top = Math.min(topOf(wall, t0 + 0.05), topOf(wall, t1 - 0.05), topOf(wall, (t0 + t1) / 2));
-  if (!Number.isFinite(top) || y + h > top - 0.25 || y < wall.base + 0.2 || t1 - t0 < 0.5) return;
+  const bot = Math.max(bottomOf(wall, t0 + 0.05), bottomOf(wall, t1 - 0.05), bottomOf(wall, (t0 + t1) / 2));
+  if (!Number.isFinite(top) || !Number.isFinite(bot) || y + h > top - 0.25 || y < bot + 0.2 || t1 - t0 < 0.5) return;
   const ring = o.ring ?? 0.1, c = (t0 + t1) / 2, w = t1 - t0;
   // Closed thin boxes (not open quads): long ribbons would otherwise read as open shell holes in the GLB audit.
   slab(b, wall.f, c, y - ring, w + 2 * ring, h + 2 * ring, 0.025, o.frame ?? 'frame');
@@ -57,4 +71,14 @@ export function centredColumns(len: number, pitch: number, margin: number) {
   // returns {n, t0, pitch}
   const n = Math.max(0, Math.floor((len - 2 * margin) / pitch) + 1);
   return {n, pitch, t0: (len - (n - 1) * pitch) / 2};
+}
+
+/** Largest distance (m) of the wall polygon's vertices from the plane its frame defines; walls that are not planar enough get no windows. */
+export function planeDeviation(src: {surfaces: {rings: number[][][]}[]}, wall: RawWall): number {
+  let worst = 0;
+  for (const p of src.surfaces[wall.index].rings[0]) {
+    const d = (p[0] - wall.f.origin[0]) * wall.f.n[0] + (p[2] - wall.f.origin[1]) * wall.f.n[1];
+    worst = Math.max(worst, Math.abs(d));
+  }
+  return worst;
 }
