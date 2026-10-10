@@ -454,6 +454,68 @@ windows; 156286's paired windows), a shopfront spans the whole width even where 
 (Utrechtsestraat 62, 70-72), 3DBAG hip roofs show above cornices in the orthographic view, lettering on glass is low
 contrast, and facade-compare's gable-peak count reads 0 on chunk spans (unreliable there; window rows are reliable).
 
+### Marnixstraat: per-house vs block face (2026-10-10)
+
+Same houses, same strip photo (2023-01-30), Marnixstraat even side. The face `marnix-124-138` is 8 pands (124-138, 3DBAG
+ids 174914 168510 173514 173515 174104 174105 174935 173530); the earlier per-house batch (`marnixstraat-row-1..5`) covered only
+the first five. All eight fronts are ONE design: 4 storeys, 3 window axes, central door, flat cornice, narrow stepped (trap)
+gable with one attic window, pilaster strips at the party walls. Wall-clock is tool time from timestamps; the thinking time of
+the authoring agent is inside it (one look at the strip plus two zoomed crops).
+
+| Phase | Per-house (5 existing recipes + 3 not done) | Block face `marnix-124-138` (8) | Block face `marnix-c` 106-122 (9) |
+| --- | --- | --- | --- |
+| Intake / facts | 7 s facts (5 houses, earlier batch); 8 pands = ~11 s | 68 s (discover 17, uses 8, strip 43) | 65 s (Overpass failed once; 90 s wait, re-run) |
+| Authoring | 1 drafted intent + 4 sameAs, within 26 s incl. compile | 1 intent (design + 7 sameAs) ~24 s | ~0 s: script derived from the first face, one look at the strip, one quirk (round oculus on 114) |
+| Compile + gates + audit | included above | 1.2 s | 1.5 s |
+| Review (one sheet) | 54 s to build the baseline chunk + ortho sheet (not part of the 39 s batch) | 6 s | 4 s |
+| Repair round | n/a (errors listed, not repairable in schema) | 1 round, 13 s (cornice `simple`, darker brick, photoRows with the door fanlight) | 1 diagnostic round, 11 s, did not clear the failing party line |
+| Total to a reviewed model | ~39 s + 54 s review = 93 s for 5 houses = 19 s/house (8 houses ~ 2.5 min) | 140 s = 17 s/house | ~110 s = 12 s/house |
+| Accepted houses | 0 of 5 (see errors) | 0 of 8 (gates pass, strip review fails on the gable, see errors) | 0 of 9 (same, plus one z-fight at a party line) |
+
+Honest verdict: on raw minutes per reviewed house the two paths tie (the per-house batch is about 8 s/house of drafting;
+adding the review it does not otherwise have, 12-19 s/house vs 12-17 s/house for the face). Neither path reaches an ACCEPTED
+house on this street because the dominant visible error is a schema limit that both share (stepped gable). The face removes
+errors the per-house path could not see: 3 of 8 houses never drafted, a 0.3-0.5 m eaves step on 173515 (parent 4's eaves differ), one
+street level, and the party-line gates. Time-to-accepted is therefore undefined for both until the crown/pilaster/off-centre
+features land; the face is the cheaper place to apply them because one change fixes 8-9 houses.
+
+Errors visible on the strip sheet (`staging/block-face/marnix-124-138/review/strip-sheet.png`, baseline
+`per-house-before-sheet.png`, same folder):
+
+| Error | Per-house (5 houses) | Block face (8) |
+| --- | --- | --- |
+| Stepped trap gable, ~3.2 m tall and 3.3 m wide with a finial, replaced by a 0.9 m wide pediment cap (schema) | all 5 | all 8 |
+| Attic window in the gable missing (cap rise < 1.2 m) | all 5 | all 8 (facade-compare FAIL, photo 2,1,3,3,3,1 vs model 2,1,3,3,3) |
+| Gable peak not on the silhouette (facade-compare "1 vs 0") | all 5 | all 8 |
+| Pilaster strips between houses, drainpipes, brick frieze, door surround with side lights not modelled | all | all |
+| Windows near-square 4-pane vs tall 2-light sashes (1.7 x 2.3 m; centre axis narrower) | all | all |
+| Brick reads orange-red (recipe texture multiply) vs brown on the strip | all | all (darker swatch helps only a little) |
+| Houses missing entirely (126, 128, 124) | 3 | 0 |
+| Eaves step against neighbours (173515, 0.3-0.5 m) | visible | gone (cornice group snapped, spread 0.04 m) |
+| NiDA laundry shopfront in the right bay of 124 | not modelled | not modelled (shopfront spans the whole width; listed as a limit) |
+| 3DBAG roof slab above the cornice in ortho | visible | visible (ortho artefact: the street view hides it) |
+| Z-fight on a party line | n/a | none on 124-138; 169033|174107 0.07-0.08 m2 on 106-122 (limit 0.01 m2), cause not found, not the storey bands |
+
+| Metric | Per-house, 5 houses | Block face, 8 houses | Block face `marnix-c`, 9 houses |
+| --- | --- | --- | --- |
+| Triangles | 5,288 (1,058/house) | 10,935 (1,367/house) | 12,451 (1,383/house) |
+| Bytes (gzip) | 350,260 as a chunk (368,684 as 5 GLBs) | 730,272 (157,413) | 830,228 (182,720) |
+| Draw calls (primitives) | 31 as 5 houses; 7 as a chunk | 8 | 6 |
+| Mesh sharing | 4 of 5 houses share one mesh (2 meshes) | none: one GLB, geometry repeated per house (an instanced chunk would be 1 house mesh + joins) | none |
+| Party-wall triangles saved | 18 | 32 | 47 |
+
+The face spends about 30 percent more triangles per house than the per-house recipes (bracketed/lintel detail from the face
+design, ground re-grounding) and gives up the shared-mesh win: eight identical houses are eight copies in one GLB. For a repeated
+row, per-house instancing wins on bytes (2 meshes for 5 houses); the face wins on draw calls and on gates. The cheap hybrid is
+a face that instances identical `sameAs` houses, which compile.ts does not do yet.
+
+Faces not authored: `marnix-b` (140-142 + 138K, mixed pub/hairdresser/copy shop/offices: the first intake produced a grey strip,
+only 4 pands, not repetitive), the 169393 block (a single pand, not a face). Install: neither authored face is installed in
+chunks.json, because the stepped gable and attic window are visibly wrong, and `marnix-c` fails one interference gate. The
+`marnixstraat-row-1..5` recipes were never installed (no catalogue entry, no chunk), so there is nothing to replace today; if
+`marnix-124-138` is installed later, `scripts/street-chunks/build.ts` already skips pands covered by a face
+(`chunk-face-marnix-124-138`), and the five per-house recipes should be kept only as `sameAs` sources or removed.
+
 ### Recommendation
 
 Make the block face the default authoring unit for ordinary attached buildings. The author sees what decides
