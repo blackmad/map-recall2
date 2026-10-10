@@ -1,0 +1,683 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bilder-081118-155417",
+ "street": "Bilderdijkstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/block-face/bilder-081118-155417/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (block-face lane), from strip-labelled.png + 3 zoomed crops",
+  "passes": 2,
+  "note": "Bilderdijkstraat 122-134, even side. The whole face between the cross streets is 24 pands (discovery.json); this pilot keeps the 7 the per-house chunk covered."
+ },
+ "houses": [
+  {
+   "pandId": "0363100012081118",
+   "slug": "bface-081118",
+   "address": "Bilderdijkstraat 134",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "gable": "cornice",
+      "crownCap": "pediment",
+      "storeys": 5,
+      "bays": [
+       3,
+       4,
+       4,
+       4,
+       3
+      ],
+      "doorBay": 0,
+      "basement": "none",
+      "cornice": "simple",
+      "windows": "sash",
+      "archedStoreys": [
+       4
+      ],
+      "hoist": false,
+      "balconies": {
+       "storeys": [
+        2,
+        3
+       ],
+       "bays": [
+        2
+       ]
+      },
+      "bands": "storey",
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "sign": {
+        "text": "PLTS",
+        "textColour": "white",
+        "mount": "fascia"
+       },
+       "displayWindows": 3
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "red-brown",
+     "frame": "white",
+     "door": "black",
+     "stone": "grey-painted"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "PLTS",
+    "bag": [
+     "bijeenkomstfunctie",
+     "winkelfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only",
+    "note": "Photo 2024-11-29: black shopfront, white 'PLTS' letters on the fascia, plants behind the glass. OSM (fetched 2026-10-10) has no business on no. 134 (its nearest node, an unnamed shop=vacant, belongs to no. 136); BAG lists bijeenkomstfunctie + winkelfunctie. Modelled as photographed; recheck against a newer capture."
+   },
+   "rhythm": {
+    "bays": "4 window axes on the three rectangular storeys, 3 arched windows on the top storey (1 left, 2 under the gable)",
+    "identicalBays": "storeys 1-3 identical",
+    "windowsPerStorey": "ground: shop | 1: 4 | 2: 4 (balcony bay 2) | 3: 4 (balcony bay 2) | 4: 3 arched",
+    "symmetry": "none: the low pointed gable with curved shoulders sits right of centre over the two right arched windows",
+    "groundFloor": "full-width black shopfront, recessed entrance at the left",
+    "signage": "PLTS, white capitals on a black fascia",
+    "roofline": "flat brick parapet with a low pointed gable (curved shoulders) over the right two-thirds",
+    "citation": "strip.jpg pand 1 (x 0-274 px)",
+    "schemaLimits": [
+     "gable is centred in the model; on the photo it is off-centre to the right",
+     "top-storey arched windows are evenly spaced in the model; photo: 1 far left + 2 paired"
+    ],
+    "photoRows": [
+     1,
+     4,
+     4,
+     4,
+     3
+    ],
+    "photoGables": 1
+   }
+  },
+  {
+   "pandId": "0363100012087959",
+   "slug": "bface-087959",
+   "address": "Bilderdijkstraat 132",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "gable": "cornice",
+      "storeys": 5,
+      "bays": [
+       4,
+       4,
+       4,
+       4,
+       3
+      ],
+      "doorBay": 3,
+      "basement": "none",
+      "cornice": "simple",
+      "windows": "sash",
+      "archedStoreys": [
+       4
+      ],
+      "hoist": false,
+      "balconies": {
+       "storeys": [
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "bands": "storey",
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "name": "Thai Thara - Thaise massage, spa & wellness",
+       "sign": {
+        "text": "Thai Thara",
+        "textColour": "#c8a24a",
+        "span": 0.7,
+        "mount": "fascia"
+       },
+       "entrance": "centre-recessed",
+       "stallriser": "low",
+       "glazing": "split",
+       "residentialDoor": {
+        "side": "right"
+       },
+       "evidence": "pano 2022-04-29 + 2025-07-31"
+      },
+      "axisGrid": 4,
+      "storeyAxes": {
+       "4": [
+        0,
+        1,
+        3
+       ]
+      },
+      "crownCap": "pediment",
+      "crownCapSpan": "medium",
+      "crownCapRise": "low"
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "red-brown",
+     "frame": "white",
+     "door": "natural-wood",
+     "stone": "grey-painted"
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "name": "Thai Thara",
+    "category": "shop=massage",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "osm": {
+     "type": "node",
+     "id": 11395804993,
+     "name": "Thai Thara",
+     "tags": "shop=massage"
+    },
+    "photoDate": "2024-11-29",
+    "agreement": "osm-and-photo",
+    "note": "Thai massage, spa & wellness: yellow 'Thai Thara' on a black fascia with a pink flower mark; one wide display window; the wooden door on the right is the entrance to the upper floors."
+   },
+   "rhythm": {
+    "bays": "4 window axes on storeys 1-3, 3 arched windows on the top storey",
+    "identicalBays": "storeys 1-3 identical; same window rhythm and storey lines as 081118 (one 1909 build)",
+    "windowsPerStorey": "ground: shop + door | 1: 4 | 2: 4 (balcony bay 1) | 3: 4 (balcony bay 1) | 4: 3 arched",
+    "symmetry": "none",
+    "groundFloor": "black shopfront: recessed glazed entrance between two display windows, low stall riser; wooden street door to the upper floors at the right (bilder-087959 proposal, pano 2022-04-29 + 2025-07-31)",
+    "signage": "THAI THARA (yellow) on a black fascia, smaller subline not modelled",
+    "roofline": "low pointed pediment over the middle of a flat parapet (proposal from front-alt.jpg 2022-04-29; tree hides it on the strip)",
+    "citation": "strip.jpg pand 2 (x 274-565 px); ground floor and roofline from scripts/building-recipes/houses/bilder-087959 front.jpg 2025-07-31 + front-alt.jpg 2022-04-29",
+    "schemaLimits": [
+     "subline 'Thaise massage, spa & wellness' and the flower logo are not modelled"
+    ],
+    "photoRows": [
+     1,
+     4,
+     4,
+     4,
+     3
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012157650",
+   "slug": "bface-157650",
+   "address": "Bilderdijkstraat 130",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "gable": "flat",
+      "storeys": 5,
+      "bays": [
+       2,
+       2,
+       2,
+       2,
+       2
+      ],
+      "doorBay": 0,
+      "basement": "none",
+      "cornice": "simple",
+      "windows": "cross",
+      "hoist": false,
+      "bands": "storey",
+      "shopfront": {
+       "colour": "white",
+       "fascia": true,
+       "sign": {
+        "text": "AMSTERDAM BIKE STORE",
+        "textColour": "#b0302a",
+        "mount": "fascia"
+       },
+       "displayWindows": 3,
+       "stallriser": "low"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#7a3a30",
+     "frame": "white",
+     "door": "black",
+     "stone": "grey-painted"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Amsterdam Bike Store",
+    "category": "shop=bicycle",
+    "bag": [
+     "woonfunctie",
+     "winkelfunctie"
+    ],
+    "osm": {
+     "type": "node",
+     "id": 11395804992,
+     "name": "Amsterdam Bike Store",
+     "tags": "shop=bicycle"
+    },
+    "photoDate": "2024-11-29",
+    "agreement": "osm-and-photo",
+    "note": "Shop in the right bay (white board with red 'Amsterdam Bike Store' ribbon, glazed doors); the left bay is a residential entrance under a tall stone arch with steps."
+   },
+   "rhythm": {
+    "bays": "2 unequal bays: narrow left (single windows, arched entrance) and wide right (wide multi-light windows)",
+    "windowsPerStorey": "right bay: shop + 4 wide windows (the top one a tall studio window); left bay: arched entrance (ground+mezzanine) + 3 single windows + a blind arch",
+    "symmetry": "none",
+    "groundFloor": "left: residential door in a stone arch; right: low-riser shopfront",
+    "signage": "AMSTERDAM BIKE STORE, red on a white board",
+    "roofline": "flat brick parapet with stone coping, small stepped piece over the left bay",
+    "citation": "strip.jpg pand 3 (x 565-832 px)",
+    "schemaLimits": [
+     "bays are equal width in the model; photo: narrow left, wide right",
+     "storey 1 of the left bay is the top of the arched entrance on the photo, a window in the model",
+     "the stepped piece over the left bay is not modelled (gable flat)"
+    ],
+    "photoRows": [
+     2,
+     1,
+     2,
+     2,
+     2
+    ],
+    "photoGables": 0
+   }
+  },
+  {
+   "pandId": "0363100012156287",
+   "slug": "bface-156287",
+   "address": "Bilderdijkstraat 128",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "gable": "step",
+      "storeys": 4,
+      "bays": 3,
+      "atticWindows": 1,
+      "doorBay": 2,
+      "basement": "none",
+      "cornice": "simple",
+      "windows": "arched",
+      "archRings": "band",
+      "hoist": false,
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "bands": "both",
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "sign": {
+        "text": "DANSWINKEL",
+        "textColour": "white",
+        "mount": "fascia"
+       },
+       "displayWindows": 2
+      },
+      "windowSurround": "stone-lintel",
+      "surroundStoreys": [
+       3
+      ]
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "orange-brick",
+     "frame": "white",
+     "door": "white",
+     "stone": "cream",
+     "band": "#8c3b2c"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Danswinkel Amsterdam",
+    "category": "shop=clothes (dancewear)",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "osm": {
+     "type": "node",
+     "id": 10768566963,
+     "name": "Danswinkel Amsterdam",
+     "tags": "opening_hours=Tu-Sa 11:00-17:00;shop=clothes;website=https://www.danswinkelamsterdam.nl"
+    },
+    "photoDate": "2024-11-29",
+    "agreement": "osm-and-photo",
+    "note": "White 'Danswinkel' on a black fascia, red-painted piers, glazed shop door left of centre; white house door with '128' at the right. No awning on this date (the 2024 per-house intent had a black awning from another capture; retractable)."
+   },
+   "rhythm": {
+    "bays": "3 bays",
+    "identicalBays": "storeys 1-3 identical; mirror twin of 155418 (ground floor mirrored)",
+    "windowsPerStorey": "ground: shop + door | 1: 3 (balcony middle) | 2: 3 (balcony middle) | 3: 3 (balcony middle) | gable: 1 three-light window",
+    "symmetry": "upper storeys mirror-symmetric about the middle bay",
+    "groundFloor": "shopfront over the left two bays, house door right",
+    "signage": "DANSWINKEL, white on black fascia",
+    "roofline": "stepped gable with curved shoulders, centred, on a cream cornice; slate roof visible either side",
+    "citation": "strip.jpg pand 4 (x 832-1073 px)",
+    "schemaLimits": [
+     "the gable window is three lights in one frame; modelled as one attic window"
+    ],
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1
+   }
+  },
+  {
+   "pandId": "0363100012156286",
+   "slug": "bface-156286",
+   "address": "Bilderdijkstraat 126",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "gable": "step",
+      "storeys": 4,
+      "bays": 2,
+      "atticWindows": 1,
+      "doorBay": 0,
+      "basement": "none",
+      "cornice": "simple",
+      "windows": "arched",
+      "archRings": "band",
+      "hoist": false,
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ],
+       "projecting": true
+      },
+      "bands": "lintel",
+      "shopfront": {
+       "colour": "#a8322b",
+       "fascia": false,
+       "sign": {
+        "text": "DIRK VAN DEN BROEK",
+        "textColour": "#e8352b",
+        "mount": "wall"
+       },
+       "displayWindows": 2,
+       "stallriser": "low"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "yellow-brick",
+     "frame": "white",
+     "door": "dark-red",
+     "stone": "grey-painted",
+     "band": "#8c3b2c"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Dirk van den Broek",
+    "category": "shop=supermarket",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "osm": {
+     "type": "node",
+     "id": 34045955,
+     "name": "Dirk",
+     "tags": "opening_hours=Mo-Su 08:00-22:00; Su 09:00-22:00;shop=supermarket;website=https://www.dirk.nl/winkels/amsterdam/bilderdijkstraat/27"
+    },
+    "photoDate": "2024-11-29",
+    "agreement": "osm-and-photo",
+    "note": "Red illuminated 'Dirk van den Broek' letters on the wall above the glass (no fascia board), red-framed glazing between grey stone piers; house door at the left."
+   },
+   "rhythm": {
+    "bays": "2 bays: left a pair of narrow round-arched windows, right one wide three-light window with a projecting balcony",
+    "windowsPerStorey": "ground: shop + door | 1-3: 2 narrow + 1 wide (balcony) | gable: 1 window",
+    "symmetry": "none: the gable and the wide bay sit right of centre",
+    "groundFloor": "supermarket glazing between stone piers, door left",
+    "signage": "DIRK VAN DEN BROEK, red letters on the wall",
+    "roofline": "yellow stepped neck gable with curved shoulders over the right bay; arched brick frieze under the cornice",
+    "citation": "strip.jpg pand 5 (x 1073-1327 px)",
+    "schemaLimits": [
+     "the left bay's paired narrow windows are one window in the model",
+     "gable centred in the model, over the right bay on the photo"
+    ],
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1
+   }
+  },
+  {
+   "pandId": "0363100012155418",
+   "slug": "bface-155418",
+   "address": "Bilderdijkstraat 124",
+   "sameAs": "0363100012156287",
+   "overrides": {
+    "fronts": [
+     {
+      "doorBay": 0,
+      "shopfront": {
+       "colour": "black",
+       "fascia": false,
+       "sign": null,
+       "displayWindows": 2
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "bag-only",
+    "note": "Shop window with posters and a yellow round sticker between grey stone piers; no legible sign and no OSM business on this pand; BAG has two shop units. House door at the left."
+   },
+   "rhythm": {
+    "bays": "3 bays",
+    "identicalBays": "same design as 156287 (upper storeys, gable, balconies, banding); ground floor mirrored",
+    "windowsPerStorey": "ground: door + shop | 1-3: 3 (balcony middle) | gable: 1 window",
+    "symmetry": "upper storeys mirror-symmetric",
+    "groundFloor": "house door left, shop glass right, grey stone piers",
+    "signage": "none legible",
+    "roofline": "stepped gable with curved shoulders, centred",
+    "citation": "strip.jpg pand 6 (x 1326-1549 px)",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1
+   }
+  },
+  {
+   "pandId": "0363100012155417",
+   "slug": "bface-155417",
+   "address": "Bilderdijkstraat 122",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "gable": "cornice",
+      "storeys": 4,
+      "bays": 3,
+      "dormers": 1,
+      "doorBay": 0,
+      "basement": "none",
+      "cornice": "simple",
+      "windows": "arched",
+      "archRings": "band",
+      "hoist": false,
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "bands": "lintel",
+      "shopfront": {
+       "colour": "white",
+       "fascia": false,
+       "sign": {
+        "text": "ONLY DIVA'S",
+        "textColour": "#3a2f2a",
+        "mount": "glazing"
+       },
+       "displayWindows": 1
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#5a3f38",
+     "frame": "white",
+     "door": "black",
+     "stone": "grey-painted",
+     "band": "#7a4434"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Only Diva's",
+    "category": "shop=clothes",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "osm": {
+     "type": "node",
+     "id": 11395775540,
+     "name": "Only Diva's",
+     "tags": "shop=clothes"
+    },
+    "photoDate": "2024-11-29",
+    "agreement": "osm-and-photo",
+    "note": "White-framed shop window with transom lights at the right, 'Only Diva's' lettered on the glass; two black doors at the left."
+   },
+   "rhythm": {
+    "bays": "3 bays",
+    "identicalBays": "storeys 1-3 identical",
+    "windowsPerStorey": "ground: doors + shop window | 1-3: 3 segmental-arched windows (balcony middle) | roof: 1 dormer",
+    "symmetry": "upper storeys mirror-symmetric",
+    "groundFloor": "two doors left, one white-framed display window right",
+    "signage": "ONLY DIVA'S on the glass",
+    "roofline": "flat cornice, mansard roof with one centred dormer",
+    "citation": "strip.jpg pand 7 (x 1550-1796 px)",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [
+   {
+    "pands": [
+     "0363100012081118",
+     "0363100012087959",
+     "0363100012157650"
+    ],
+    "evidence": "strip: parapet tops of 081118 and 157650 within ~0.3 m (y 190-197 px at 40 px/m); 081118 and 087959 share every storey line"
+   },
+   {
+    "pands": [
+     "0363100012156287",
+     "0363100012156286",
+     "0363100012155418"
+    ],
+    "evidence": "strip: eaves/cornice of 156287, 156286 and 155418 on one line at y ~275 px (14.8 m); their gables rise above it"
+   },
+   {
+    "pands": [
+     "0363100012155417"
+    ],
+    "evidence": "strip: 155417's cornice under its mansard sits at y ~313 px, ~0.9 m below its neighbours' (compile pass 1 snapped it into the 1903 group and the eaves gate failed: 3DBAG 14.06 vs 14.65 m; re-read on a zoomed crop)"
+   }
+  ],
+  "identical": [
+   {
+    "pands": [
+     "0363100012156287",
+     "0363100012155418"
+    ],
+    "evidence": "strip: same 3-bay front, middle balconies on storeys 1-3, orange brick with cream bands, centred stepped gable; ground floors mirrored"
+   }
+  ],
+  "notes": [
+   "2.5 m eaves step between 157650 (1908) and 156287 (1903) is on the photo: the 1903 row is a storey lower.",
+   "Pass 2 (after the first compile): 155417 moved out of the 1903 cornice group; 156287 (and its twin 155418) given stone lintels on the top storey, visible as cream slabs on the zoomed eaves crop."
+  ]
+ }
+}

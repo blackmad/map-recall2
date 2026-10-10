@@ -21907,770 +21907,6 @@
       "acceptance": "Scoped full architectural loop passed; hosted verification pending."
     },
     {
-      "id": "ordinary-0363100012081118",
-      "buildingId": "NL.IMBAG.Pand.0363100012081118",
-      "name": "Bilderdijkstraat (1909, arched top storey, balconies)",
-      "hash": "b75af7c080c9c8c3ab46cd17fb51e8a0c12651bc4624a39bf6f66645b5d2573f",
-      "sha256": "b75af7c080c9c8c3ab46cd17fb51e8a0c12651bc4624a39bf6f66645b5d2573f",
-      "bytes": 135972,
-      "triangles": 1939,
-      "materials": 7,
-      "textures": 0,
-      "scale": 1,
-      "bounds": {
-        "min": [
-          -3.615,
-          0,
-          -30.186
-        ],
-        "max": [
-          3.776,
-          17.497,
-          0.175
-        ]
-      },
-      "anchor": [
-        4.871396624778641,
-        52.36800301105978
-      ],
-      "footprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.8714162,
-              52.3679746
-            ],
-            [
-              4.871377,
-              52.3680314
-            ],
-            [
-              4.8709667,
-              52.3679288
-            ],
-            [
-              4.8710092,
-              52.3678677
-            ]
-          ]
-        ]
-      },
-      "nativeHeight": 16.38,
-      "height": 17.46,
-      "modelUrl": "./models/ordinary-buildings/recipe-bilder-081118.glb",
-      "suppress": [
-        "NL.IMBAG.Pand.0363100012081118"
-      ],
-      "instance": {
-        "anchor": [
-          4.871396624778641,
-          52.36800301105978
-        ],
-        "northOffsetDegrees": 247.169,
-        "mirror": false
-      },
-      "source": "building-recipes",
-      "recipe": {
-        "id": "bilder-081118",
-        "mesh": "bilder-081118",
-        "shared": false,
-        "intentSources": [
-          "staging/pand-reference/0363100012081118/front.jpg"
-        ],
-        "footprintIoU": 1,
-        "frontZoneIoU": 1,
-        "maxDimDeltaM": 0,
-        "gates": [
-          "triangle-budget:pass",
-          "finite:pass",
-          "non-metallic:pass",
-          "footprint-vs-bag:pass",
-          "ridge-vs-3dbag:pass",
-          "roof-cleanup:pass",
-          "eaves-vs-3dbag/front0:pass",
-          "storey-height/front0:pass",
-          "no-floating-parts:pass",
-          "open-edges:pass"
-        ]
-      },
-      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
-      "limitations": [
-        "Facade proportions are rule-fitted, not rectified from the photograph.",
-        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
-      ],
-      "reviewState": "recipe-draft-gates-pass",
-      "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012081118",
-        "https://data.amsterdam.nl/"
-      ],
-      "updatedAt": "2026-10-09T21:24:05.908Z"
-    },
-    {
-      "id": "ordinary-0363100012087959",
-      "buildingId": "NL.IMBAG.Pand.0363100012087959",
-      "name": "Bilderdijkstraat (1909 dark brick, balconies, arched top)",
-      "hash": "e398acc36383a533169dfcf2f440b778a8b0892c08a512ea82cb85b993391d32",
-      "sha256": "e398acc36383a533169dfcf2f440b778a8b0892c08a512ea82cb85b993391d32",
-      "bytes": 166508,
-      "triangles": 2398,
-      "materials": 9,
-      "textures": 0,
-      "scale": 1,
-      "bounds": {
-        "min": [
-          -3.633,
-          0,
-          -30.212
-        ],
-        "max": [
-          4.034,
-          18.101,
-          0.175
-        ]
-      },
-      "anchor": [
-        4.871356315591538,
-        52.36806148936908
-      ],
-      "footprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.871377,
-              52.3680314
-            ],
-            [
-              4.8713356,
-              52.3680916
-            ],
-            [
-              4.8709246,
-              52.3679894
-            ],
-            [
-              4.8709667,
-              52.3679288
-            ]
-          ]
-        ]
-      },
-      "nativeHeight": 17.98,
-      "height": 18.06,
-      "modelUrl": "./models/ordinary-buildings/recipe-bilder-087959.glb",
-      "suppress": [
-        "NL.IMBAG.Pand.0363100012087959"
-      ],
-      "instance": {
-        "anchor": [
-          4.871356315591538,
-          52.36806148936908
-        ],
-        "northOffsetDegrees": 247.1802,
-        "mirror": false
-      },
-      "source": "building-recipes",
-      "recipe": {
-        "id": "bilder-087959",
-        "mesh": "bilder-087959",
-        "shared": false,
-        "intentSources": [
-          "staging/pand-reference/0363100012087959/front-alt.jpg"
-        ],
-        "footprintIoU": 1,
-        "frontZoneIoU": 1,
-        "maxDimDeltaM": 0,
-        "gates": [
-          "triangle-budget:pass",
-          "finite:pass",
-          "non-metallic:pass",
-          "footprint-vs-bag:pass",
-          "ridge-vs-3dbag:pass",
-          "eaves-vs-3dbag/front0:pass",
-          "storey-height/front0:pass",
-          "no-floating-parts:pass",
-          "open-edges:pass"
-        ]
-      },
-      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
-      "limitations": [
-        "Facade proportions are rule-fitted, not rectified from the photograph.",
-        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
-      ],
-      "reviewState": "recipe-draft-gates-pass",
-      "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012087959",
-        "https://data.amsterdam.nl/"
-      ],
-      "updatedAt": "2026-10-09T21:24:05.908Z"
-    },
-    {
-      "id": "ordinary-0363100012155417",
-      "buildingId": "NL.IMBAG.Pand.0363100012155417",
-      "name": "Bilderdijkstraat (1902 arched windows, balconies, mansard dormer)",
-      "hash": "c9eef6bf0ae1ae12133a3c44996dbd93c2c50d0846a228badd00710dee8f5990",
-      "sha256": "c9eef6bf0ae1ae12133a3c44996dbd93c2c50d0846a228badd00710dee8f5990",
-      "bytes": 172376,
-      "triangles": 2495,
-      "materials": 9,
-      "textures": 0,
-      "scale": 1,
-      "bounds": {
-        "min": [
-          -3.08,
-          0,
-          -18.203
-        ],
-        "max": [
-          3.331,
-          16.493,
-          0.177
-        ]
-      },
-      "anchor": [
-        4.8711774766725835,
-        52.36832094976646
-      ],
-      "footprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.871195,
-              52.3682954
-            ],
-            [
-              4.8711599,
-              52.3683465
-            ],
-            [
-              4.8709744,
-              52.368301
-            ],
-            [
-              4.8709913,
-              52.3682756
-            ],
-            [
-              4.8709289,
-              52.3682607
-            ],
-            [
-              4.8709489,
-              52.3682326
-            ]
-          ]
-        ]
-      },
-      "nativeHeight": 16.49,
-      "height": 16.49,
-      "modelUrl": "./models/ordinary-buildings/recipe-bilder-155417.glb",
-      "suppress": [
-        "NL.IMBAG.Pand.0363100012155417"
-      ],
-      "instance": {
-        "anchor": [
-          4.8711774766725835,
-          52.36832094976646
-        ],
-        "northOffsetDegrees": 247.1839,
-        "mirror": false
-      },
-      "source": "building-recipes",
-      "recipe": {
-        "id": "bilder-155417",
-        "mesh": "bilder-155417",
-        "shared": false,
-        "intentSources": [
-          "staging/pand-reference/0363100012155417/front.jpg"
-        ],
-        "footprintIoU": 1,
-        "frontZoneIoU": 1,
-        "maxDimDeltaM": 0,
-        "gates": [
-          "triangle-budget:pass",
-          "finite:pass",
-          "non-metallic:pass",
-          "footprint-vs-bag:pass",
-          "ridge-vs-3dbag:pass",
-          "roof-cleanup:pass",
-          "eaves-vs-3dbag/front0:pass",
-          "storey-height/front0:pass",
-          "no-floating-parts:pass",
-          "open-edges:pass"
-        ]
-      },
-      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
-      "limitations": [
-        "Facade proportions are rule-fitted, not rectified from the photograph.",
-        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
-      ],
-      "reviewState": "recipe-draft-gates-pass",
-      "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012155417",
-        "https://data.amsterdam.nl/"
-      ],
-      "updatedAt": "2026-10-09T21:24:05.908Z"
-    },
-    {
-      "id": "ordinary-0363100012155418",
-      "buildingId": "NL.IMBAG.Pand.0363100012155418",
-      "name": "Bilderdijkstraat (1903 behind a tree, gabled)",
-      "hash": "8201f75ba1662b54cb4683391dc49cf727bab1bfe1a8f88c5a2e80cbcfc8f211",
-      "sha256": "8201f75ba1662b54cb4683391dc49cf727bab1bfe1a8f88c5a2e80cbcfc8f211",
-      "bytes": 113596,
-      "triangles": 1615,
-      "materials": 8,
-      "textures": 0,
-      "scale": 1,
-      "bounds": {
-        "min": [
-          -2.793,
-          0,
-          -14.113
-        ],
-        "max": [
-          2.857,
-          19.48,
-          0.176
-        ]
-      },
-      "anchor": [
-        4.871210998361137,
-        52.36827231945404
-      ],
-      "footprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.8712269,
-              52.3682492
-            ],
-            [
-              4.871195,
-              52.3682954
-            ],
-            [
-              4.8710038,
-              52.3682467
-            ],
-            [
-              4.8710273,
-              52.3682126
-            ],
-            [
-              4.871047,
-              52.3682034
-            ]
-          ]
-        ]
-      },
-      "nativeHeight": 19.23,
-      "height": 19.44,
-      "modelUrl": "./models/ordinary-buildings/recipe-bilder-155418.glb",
-      "suppress": [
-        "NL.IMBAG.Pand.0363100012155418"
-      ],
-      "instance": {
-        "anchor": [
-          4.871210998361137,
-          52.36827231945404
-        ],
-        "northOffsetDegrees": 247.1641,
-        "mirror": false
-      },
-      "source": "building-recipes",
-      "recipe": {
-        "id": "bilder-155418",
-        "mesh": "bilder-155418",
-        "shared": false,
-        "intentSources": [
-          "staging/pand-reference/0363100012155418/front-alt.jpg"
-        ],
-        "footprintIoU": 1,
-        "frontZoneIoU": 1,
-        "maxDimDeltaM": 0,
-        "gates": [
-          "triangle-budget:pass",
-          "finite:pass",
-          "non-metallic:pass",
-          "footprint-vs-bag:pass",
-          "ridge-vs-3dbag:pass",
-          "eaves-vs-3dbag/front0:pass",
-          "storey-height/front0:pass",
-          "no-floating-parts:pass",
-          "open-edges:pass"
-        ]
-      },
-      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
-      "limitations": [
-        "Facade proportions are rule-fitted, not rectified from the photograph.",
-        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
-      ],
-      "reviewState": "recipe-draft-gates-pass",
-      "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012155418",
-        "https://data.amsterdam.nl/"
-      ],
-      "updatedAt": "2026-10-09T21:24:05.908Z"
-    },
-    {
-      "id": "ordinary-0363100012156286",
-      "buildingId": "NL.IMBAG.Pand.0363100012156286",
-      "name": "Bilderdijkstraat (1903 yellow brick, stepped gable, balconies)",
-      "hash": "63a3cc15bfead36cf253c7b59800333f852ea7e83083d4f4aefcfe1bd7f9de7b",
-      "sha256": "63a3cc15bfead36cf253c7b59800333f852ea7e83083d4f4aefcfe1bd7f9de7b",
-      "bytes": 200856,
-      "triangles": 2945,
-      "materials": 8,
-      "textures": 0,
-      "scale": 1,
-      "bounds": {
-        "min": [
-          -3.172,
-          0,
-          -30.286
-        ],
-        "max": [
-          3.452,
-          18.674,
-          0.645
-        ]
-      },
-      "anchor": [
-        4.871245042739555,
-        52.36822292745265
-      ],
-      "footprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.8712631,
-              52.3681967
-            ],
-            [
-              4.8712269,
-              52.3682492
-            ],
-            [
-              4.8710596,
-              52.3682066
-            ],
-            [
-              4.8710494,
-              52.3681939
-            ],
-            [
-              4.8710618,
-              52.3681736
-            ],
-            [
-              4.8710281,
-              52.3681656
-            ],
-            [
-              4.8710235,
-              52.3681717
-            ],
-            [
-              4.8708928,
-              52.368138
-            ],
-            [
-              4.8708773,
-              52.3681606
-            ],
-            [
-              4.8708156,
-              52.3681457
-            ],
-            [
-              4.8708526,
-              52.3680925
-            ],
-            [
-              4.8710047,
-              52.3681305
-            ]
-          ]
-        ]
-      },
-      "nativeHeight": 18.67,
-      "height": 18.67,
-      "modelUrl": "./models/ordinary-buildings/recipe-bilder-156286.glb",
-      "suppress": [
-        "NL.IMBAG.Pand.0363100012156286"
-      ],
-      "instance": {
-        "anchor": [
-          4.871245042739555,
-          52.36822292745265
-        ],
-        "northOffsetDegrees": 247.1862,
-        "mirror": false
-      },
-      "source": "building-recipes",
-      "recipe": {
-        "id": "bilder-156286",
-        "mesh": "bilder-156286",
-        "shared": false,
-        "intentSources": [
-          "staging/pand-reference/0363100012156286/front.jpg"
-        ],
-        "footprintIoU": 1,
-        "frontZoneIoU": 1,
-        "maxDimDeltaM": 0,
-        "gates": [
-          "triangle-budget:pass",
-          "finite:pass",
-          "non-metallic:pass",
-          "footprint-vs-bag:pass",
-          "ridge-vs-3dbag:pass",
-          "eaves-vs-3dbag/front0:pass",
-          "storey-height/front0:pass",
-          "no-floating-parts:pass",
-          "open-edges:pass"
-        ]
-      },
-      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
-      "limitations": [
-        "Facade proportions are rule-fitted, not rectified from the photograph.",
-        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
-      ],
-      "reviewState": "recipe-draft-gates-pass",
-      "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012156286",
-        "https://data.amsterdam.nl/"
-      ],
-      "updatedAt": "2026-10-09T21:24:05.908Z"
-    },
-    {
-      "id": "ordinary-0363100012157650",
-      "buildingId": "NL.IMBAG.Pand.0363100012157650",
-      "name": "Bilderdijkstraat (1908 dark red brick, big cross windows)",
-      "hash": "785bee01915f5840752a52b258d63f6ce1107c28a1046d487ba28c1261b6de6a",
-      "sha256": "785bee01915f5840752a52b258d63f6ce1107c28a1046d487ba28c1261b6de6a",
-      "bytes": 71420,
-      "triangles": 983,
-      "materials": 7,
-      "textures": 0,
-      "scale": 1,
-      "bounds": {
-        "min": [
-          -3.335,
-          0,
-          -19.364
-        ],
-        "max": [
-          3.444,
-          17.281,
-          0.4
-        ]
-      },
-      "anchor": [
-        4.871316543950226,
-        52.36811918807401
-      ],
-      "footprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.8713356,
-              52.3680916
-            ],
-            [
-              4.8712975,
-              52.3681468
-            ],
-            [
-              4.8711137,
-              52.3681004
-            ],
-            [
-              4.8711332,
-              52.368072
-            ],
-            [
-              4.8710545,
-              52.3680528
-            ],
-            [
-              4.8710722,
-              52.368026
-            ]
-          ]
-        ]
-      },
-      "nativeHeight": 17.28,
-      "height": 17.28,
-      "modelUrl": "./models/ordinary-buildings/recipe-bilder-157650.glb",
-      "suppress": [
-        "NL.IMBAG.Pand.0363100012157650"
-      ],
-      "instance": {
-        "anchor": [
-          4.871316543950226,
-          52.36811918807401
-        ],
-        "northOffsetDegrees": 247.1691,
-        "mirror": false
-      },
-      "source": "building-recipes",
-      "recipe": {
-        "id": "bilder-157650",
-        "mesh": "bilder-157650",
-        "shared": false,
-        "intentSources": [
-          "staging/pand-reference/0363100012157650/front.jpg"
-        ],
-        "footprintIoU": 1,
-        "frontZoneIoU": 1,
-        "maxDimDeltaM": 0,
-        "gates": [
-          "triangle-budget:pass",
-          "finite:pass",
-          "non-metallic:pass",
-          "footprint-vs-bag:pass",
-          "ridge-vs-3dbag:pass",
-          "roof-cleanup:pass",
-          "eaves-vs-3dbag/front0:pass",
-          "storey-height/front0:pass",
-          "no-floating-parts:pass",
-          "open-edges:pass"
-        ]
-      },
-      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
-      "limitations": [
-        "Facade proportions are rule-fitted, not rectified from the photograph.",
-        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
-      ],
-      "reviewState": "recipe-draft-gates-pass",
-      "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012157650",
-        "https://data.amsterdam.nl/"
-      ],
-      "updatedAt": "2026-10-09T21:24:05.908Z"
-    },
-    {
-      "id": "ordinary-0363100012156287",
-      "buildingId": "NL.IMBAG.Pand.0363100012156287",
-      "name": "Bilderdijkstraat (1903 orange brick, stepped gable, balconies)",
-      "hash": "cfd1206a67d9ecb5e22a91a29263275d045e19cb63b27a7d5c5d878ed3b8c047",
-      "sha256": "cfd1206a67d9ecb5e22a91a29263275d045e19cb63b27a7d5c5d878ed3b8c047",
-      "bytes": 154716,
-      "triangles": 2203,
-      "materials": 10,
-      "textures": 0,
-      "scale": 1,
-      "bounds": {
-        "min": [
-          -3.011,
-          0,
-          -19.08
-        ],
-        "max": [
-          3.073,
-          19.194,
-          1.001
-        ]
-      },
-      "anchor": [
-        4.871280319334681,
-        52.368171734276956
-      ],
-      "footprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.8712631,
-              52.3681967
-            ],
-            [
-              4.8710047,
-              52.3681305
-            ],
-            [
-              4.8710232,
-              52.3681036
-            ],
-            [
-              4.8710673,
-              52.3681146
-            ],
-            [
-              4.8710627,
-              52.3681205
-            ],
-            [
-              4.8710949,
-              52.3681276
-            ],
-            [
-              4.8711137,
-              52.3681004
-            ],
-            [
-              4.8712975,
-              52.3681468
-            ]
-          ]
-        ]
-      },
-      "nativeHeight": 18.89,
-      "height": 19.15,
-      "modelUrl": "./models/ordinary-buildings/recipe-bilder-156287.glb",
-      "suppress": [
-        "NL.IMBAG.Pand.0363100012156287"
-      ],
-      "instance": {
-        "anchor": [
-          4.871280319334681,
-          52.368171734276956
-        ],
-        "northOffsetDegrees": 247.1759,
-        "mirror": false
-      },
-      "source": "building-recipes",
-      "recipe": {
-        "id": "bilder-156287",
-        "mesh": "bilder-156287",
-        "shared": false,
-        "intentSources": [
-          "staging/pand-reference/0363100012156287/front-alt.jpg"
-        ],
-        "footprintIoU": 1,
-        "frontZoneIoU": 1,
-        "maxDimDeltaM": 0,
-        "gates": [
-          "triangle-budget:pass",
-          "finite:pass",
-          "non-metallic:pass",
-          "footprint-vs-bag:pass",
-          "ridge-vs-3dbag:pass",
-          "eaves-vs-3dbag/front0:pass",
-          "storey-height/front0:pass",
-          "no-floating-parts:pass",
-          "open-edges:pass"
-        ]
-      },
-      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
-      "limitations": [
-        "Facade proportions are rule-fitted, not rectified from the photograph.",
-        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
-      ],
-      "reviewState": "recipe-draft-gates-pass",
-      "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012156287",
-        "https://data.amsterdam.nl/"
-      ],
-      "updatedAt": "2026-10-09T21:54:25.230Z"
-    },
-    {
       "id": "ordinary-0363100012079721",
       "buildingId": "NL.IMBAG.Pand.0363100012079721",
       "name": "Bilderdijkstraat (1894 yellow brick, scaffolded)",
@@ -23894,11 +23130,776 @@
       "updatedAt": "2026-10-10T02:49:09.763Z"
     },
     {
+      "id": "ordinary-0363100012081118",
+      "buildingId": "NL.IMBAG.Pand.0363100012081118",
+      "name": "Bilderdijkstraat (1909, arched top storey, balconies)",
+      "hash": "00eda548bbbbe5b5fd64962428273c5d4e883f79c6a378826484e6760e18c4ad",
+      "sha256": "00eda548bbbbe5b5fd64962428273c5d4e883f79c6a378826484e6760e18c4ad",
+      "bytes": 135132,
+      "triangles": 1927,
+      "materials": 7,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -3.615,
+          0,
+          -30.186
+        ],
+        "max": [
+          3.776,
+          17.497,
+          0.175
+        ]
+      },
+      "anchor": [
+        4.871396624778641,
+        52.36800301105978
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8714162,
+              52.3679746
+            ],
+            [
+              4.871377,
+              52.3680314
+            ],
+            [
+              4.8709667,
+              52.3679288
+            ],
+            [
+              4.8710092,
+              52.3678677
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 16.38,
+      "height": 17.46,
+      "modelUrl": "./models/ordinary-buildings/recipe-bilder-081118.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012081118"
+      ],
+      "instance": {
+        "anchor": [
+          4.871396624778641,
+          52.36800301105978
+        ],
+        "northOffsetDegrees": 247.169,
+        "mirror": false
+      },
+      "source": "building-recipes",
+      "recipe": {
+        "id": "bilder-081118",
+        "mesh": "bilder-081118",
+        "shared": false,
+        "intentSources": [
+          "staging/pand-reference/0363100012081118/front.jpg"
+        ],
+        "footprintIoU": 1,
+        "frontZoneIoU": 1,
+        "maxDimDeltaM": 0,
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "roof-cleanup:pass",
+          "eaves-vs-3dbag/front0:pass",
+          "storey-height/front0:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass"
+        ]
+      },
+      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
+      "limitations": [
+        "Facade proportions are rule-fitted, not rectified from the photograph.",
+        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
+      ],
+      "reviewState": "recipe-draft-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012081118",
+        "https://data.amsterdam.nl/"
+      ],
+      "updatedAt": "2026-10-10T03:19:14.770Z"
+    },
+    {
+      "id": "ordinary-0363100012087959",
+      "buildingId": "NL.IMBAG.Pand.0363100012087959",
+      "name": "Bilderdijkstraat (1909 dark brick, balconies, arched top)",
+      "hash": "efb316ecc253b1e8c3be278a9baf075c52499708a7be6f7c5b9ff1c4c296c46b",
+      "sha256": "efb316ecc253b1e8c3be278a9baf075c52499708a7be6f7c5b9ff1c4c296c46b",
+      "bytes": 169468,
+      "triangles": 2456,
+      "materials": 10,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -3.633,
+          0,
+          -30.212
+        ],
+        "max": [
+          4.034,
+          17.985,
+          0.175
+        ]
+      },
+      "anchor": [
+        4.871356315591538,
+        52.36806148936908
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.871377,
+              52.3680314
+            ],
+            [
+              4.8713356,
+              52.3680916
+            ],
+            [
+              4.8709246,
+              52.3679894
+            ],
+            [
+              4.8709667,
+              52.3679288
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 17.98,
+      "height": 17.98,
+      "modelUrl": "./models/ordinary-buildings/recipe-bilder-087959.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012087959"
+      ],
+      "instance": {
+        "anchor": [
+          4.871356315591538,
+          52.36806148936908
+        ],
+        "northOffsetDegrees": 247.1802,
+        "mirror": false
+      },
+      "source": "building-recipes",
+      "recipe": {
+        "id": "bilder-087959",
+        "mesh": "bilder-087959",
+        "shared": false,
+        "intentSources": [
+          "staging/pand-reference/0363100012087959/front-alt.jpg",
+          "staging/pand-reference/0363100012087959/front.jpg"
+        ],
+        "footprintIoU": 1,
+        "frontZoneIoU": 1,
+        "maxDimDeltaM": 0,
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/front0:pass",
+          "storey-height/front0:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass"
+        ]
+      },
+      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
+      "limitations": [
+        "Facade proportions are rule-fitted, not rectified from the photograph.",
+        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
+      ],
+      "reviewState": "recipe-draft-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012087959",
+        "https://data.amsterdam.nl/"
+      ],
+      "updatedAt": "2026-10-10T03:19:14.770Z"
+    },
+    {
+      "id": "ordinary-0363100012155417",
+      "buildingId": "NL.IMBAG.Pand.0363100012155417",
+      "name": "Bilderdijkstraat (1902 arched windows, balconies, mansard dormer)",
+      "hash": "6dd59dc021dc865cb242b2736dc453226ad33d1285b58cf1872653963b50a746",
+      "sha256": "6dd59dc021dc865cb242b2736dc453226ad33d1285b58cf1872653963b50a746",
+      "bytes": 172376,
+      "triangles": 2495,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -3.08,
+          0,
+          -18.203
+        ],
+        "max": [
+          3.331,
+          16.493,
+          0.177
+        ]
+      },
+      "anchor": [
+        4.8711774766725835,
+        52.36832094976646
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.871195,
+              52.3682954
+            ],
+            [
+              4.8711599,
+              52.3683465
+            ],
+            [
+              4.8709744,
+              52.368301
+            ],
+            [
+              4.8709913,
+              52.3682756
+            ],
+            [
+              4.8709289,
+              52.3682607
+            ],
+            [
+              4.8709489,
+              52.3682326
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 16.49,
+      "height": 16.49,
+      "modelUrl": "./models/ordinary-buildings/recipe-bilder-155417.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012155417"
+      ],
+      "instance": {
+        "anchor": [
+          4.8711774766725835,
+          52.36832094976646
+        ],
+        "northOffsetDegrees": 247.1839,
+        "mirror": false
+      },
+      "source": "building-recipes",
+      "recipe": {
+        "id": "bilder-155417",
+        "mesh": "bilder-155417",
+        "shared": false,
+        "intentSources": [
+          "staging/pand-reference/0363100012155417/front.jpg"
+        ],
+        "footprintIoU": 1,
+        "frontZoneIoU": 1,
+        "maxDimDeltaM": 0,
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "roof-cleanup:pass",
+          "eaves-vs-3dbag/front0:pass",
+          "storey-height/front0:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass"
+        ]
+      },
+      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
+      "limitations": [
+        "Facade proportions are rule-fitted, not rectified from the photograph.",
+        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
+      ],
+      "reviewState": "recipe-draft-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012155417",
+        "https://data.amsterdam.nl/"
+      ],
+      "updatedAt": "2026-10-10T03:19:14.770Z"
+    },
+    {
+      "id": "ordinary-0363100012155418",
+      "buildingId": "NL.IMBAG.Pand.0363100012155418",
+      "name": "Bilderdijkstraat (1903 behind a tree, gabled)",
+      "hash": "982d16a574a9d05d45e02e19f6af67280c152153414702ef0852dbd4766e4ff3",
+      "sha256": "982d16a574a9d05d45e02e19f6af67280c152153414702ef0852dbd4766e4ff3",
+      "bytes": 112044,
+      "triangles": 1591,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -2.793,
+          0,
+          -14.113
+        ],
+        "max": [
+          2.857,
+          19.48,
+          0.176
+        ]
+      },
+      "anchor": [
+        4.871210998361137,
+        52.36827231945404
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8712269,
+              52.3682492
+            ],
+            [
+              4.871195,
+              52.3682954
+            ],
+            [
+              4.8710038,
+              52.3682467
+            ],
+            [
+              4.8710273,
+              52.3682126
+            ],
+            [
+              4.871047,
+              52.3682034
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 19.23,
+      "height": 19.44,
+      "modelUrl": "./models/ordinary-buildings/recipe-bilder-155418.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012155418"
+      ],
+      "instance": {
+        "anchor": [
+          4.871210998361137,
+          52.36827231945404
+        ],
+        "northOffsetDegrees": 247.1641,
+        "mirror": false
+      },
+      "source": "building-recipes",
+      "recipe": {
+        "id": "bilder-155418",
+        "mesh": "bilder-155418",
+        "shared": false,
+        "intentSources": [
+          "staging/pand-reference/0363100012155418/front-alt.jpg"
+        ],
+        "footprintIoU": 1,
+        "frontZoneIoU": 1,
+        "maxDimDeltaM": 0,
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/front0:pass",
+          "storey-height/front0:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass"
+        ]
+      },
+      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
+      "limitations": [
+        "Facade proportions are rule-fitted, not rectified from the photograph.",
+        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
+      ],
+      "reviewState": "recipe-draft-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012155418",
+        "https://data.amsterdam.nl/"
+      ],
+      "updatedAt": "2026-10-10T03:19:14.770Z"
+    },
+    {
+      "id": "ordinary-0363100012156286",
+      "buildingId": "NL.IMBAG.Pand.0363100012156286",
+      "name": "Bilderdijkstraat (1903 yellow brick, stepped gable, balconies)",
+      "hash": "c3272ca9130c9d8aac7ef868cd33ba2ecefd84ebde63359a23aebca2517071ba",
+      "sha256": "c3272ca9130c9d8aac7ef868cd33ba2ecefd84ebde63359a23aebca2517071ba",
+      "bytes": 198504,
+      "triangles": 2921,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -3.172,
+          0,
+          -30.286
+        ],
+        "max": [
+          3.452,
+          18.674,
+          0.645
+        ]
+      },
+      "anchor": [
+        4.871245042739555,
+        52.36822292745265
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8712631,
+              52.3681967
+            ],
+            [
+              4.8712269,
+              52.3682492
+            ],
+            [
+              4.8710596,
+              52.3682066
+            ],
+            [
+              4.8710494,
+              52.3681939
+            ],
+            [
+              4.8710618,
+              52.3681736
+            ],
+            [
+              4.8710281,
+              52.3681656
+            ],
+            [
+              4.8710235,
+              52.3681717
+            ],
+            [
+              4.8708928,
+              52.368138
+            ],
+            [
+              4.8708773,
+              52.3681606
+            ],
+            [
+              4.8708156,
+              52.3681457
+            ],
+            [
+              4.8708526,
+              52.3680925
+            ],
+            [
+              4.8710047,
+              52.3681305
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 18.67,
+      "height": 18.67,
+      "modelUrl": "./models/ordinary-buildings/recipe-bilder-156286.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012156286"
+      ],
+      "instance": {
+        "anchor": [
+          4.871245042739555,
+          52.36822292745265
+        ],
+        "northOffsetDegrees": 247.1862,
+        "mirror": false
+      },
+      "source": "building-recipes",
+      "recipe": {
+        "id": "bilder-156286",
+        "mesh": "bilder-156286",
+        "shared": false,
+        "intentSources": [
+          "staging/pand-reference/0363100012156286/front.jpg"
+        ],
+        "footprintIoU": 1,
+        "frontZoneIoU": 1,
+        "maxDimDeltaM": 0,
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/front0:pass",
+          "storey-height/front0:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass"
+        ]
+      },
+      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
+      "limitations": [
+        "Facade proportions are rule-fitted, not rectified from the photograph.",
+        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
+      ],
+      "reviewState": "recipe-draft-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012156286",
+        "https://data.amsterdam.nl/"
+      ],
+      "updatedAt": "2026-10-10T03:19:14.770Z"
+    },
+    {
+      "id": "ordinary-0363100012157650",
+      "buildingId": "NL.IMBAG.Pand.0363100012157650",
+      "name": "Bilderdijkstraat (1908 dark red brick, big cross windows)",
+      "hash": "4179d37955207f42125a300a61fb4720e17e572ac7ad1e266acd7cd0b5f47f95",
+      "sha256": "4179d37955207f42125a300a61fb4720e17e572ac7ad1e266acd7cd0b5f47f95",
+      "bytes": 71420,
+      "triangles": 983,
+      "materials": 7,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -3.335,
+          0,
+          -19.364
+        ],
+        "max": [
+          3.444,
+          17.281,
+          0.4
+        ]
+      },
+      "anchor": [
+        4.871316543950226,
+        52.36811918807401
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8713356,
+              52.3680916
+            ],
+            [
+              4.8712975,
+              52.3681468
+            ],
+            [
+              4.8711137,
+              52.3681004
+            ],
+            [
+              4.8711332,
+              52.368072
+            ],
+            [
+              4.8710545,
+              52.3680528
+            ],
+            [
+              4.8710722,
+              52.368026
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 17.28,
+      "height": 17.28,
+      "modelUrl": "./models/ordinary-buildings/recipe-bilder-157650.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012157650"
+      ],
+      "instance": {
+        "anchor": [
+          4.871316543950226,
+          52.36811918807401
+        ],
+        "northOffsetDegrees": 247.1691,
+        "mirror": false
+      },
+      "source": "building-recipes",
+      "recipe": {
+        "id": "bilder-157650",
+        "mesh": "bilder-157650",
+        "shared": false,
+        "intentSources": [
+          "staging/pand-reference/0363100012157650/front.jpg"
+        ],
+        "footprintIoU": 1,
+        "frontZoneIoU": 1,
+        "maxDimDeltaM": 0,
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "roof-cleanup:pass",
+          "eaves-vs-3dbag/front0:pass",
+          "storey-height/front0:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass"
+        ]
+      },
+      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
+      "limitations": [
+        "Facade proportions are rule-fitted, not rectified from the photograph.",
+        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
+      ],
+      "reviewState": "recipe-draft-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012157650",
+        "https://data.amsterdam.nl/"
+      ],
+      "updatedAt": "2026-10-10T03:19:14.770Z"
+    },
+    {
+      "id": "ordinary-0363100012156287",
+      "buildingId": "NL.IMBAG.Pand.0363100012156287",
+      "name": "Bilderdijkstraat (1903 orange brick, stepped gable, balconies)",
+      "hash": "84efe969c249563bedebcaae28cb2caeb746876c6812c249919b84f7c7c212b6",
+      "sha256": "84efe969c249563bedebcaae28cb2caeb746876c6812c249919b84f7c7c212b6",
+      "bytes": 153164,
+      "triangles": 2179,
+      "materials": 10,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -3.011,
+          0,
+          -19.08
+        ],
+        "max": [
+          3.073,
+          19.194,
+          1.001
+        ]
+      },
+      "anchor": [
+        4.871280319334681,
+        52.368171734276956
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8712631,
+              52.3681967
+            ],
+            [
+              4.8710047,
+              52.3681305
+            ],
+            [
+              4.8710232,
+              52.3681036
+            ],
+            [
+              4.8710673,
+              52.3681146
+            ],
+            [
+              4.8710627,
+              52.3681205
+            ],
+            [
+              4.8710949,
+              52.3681276
+            ],
+            [
+              4.8711137,
+              52.3681004
+            ],
+            [
+              4.8712975,
+              52.3681468
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 18.89,
+      "height": 19.15,
+      "modelUrl": "./models/ordinary-buildings/recipe-bilder-156287.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012156287"
+      ],
+      "instance": {
+        "anchor": [
+          4.871280319334681,
+          52.368171734276956
+        ],
+        "northOffsetDegrees": 247.1759,
+        "mirror": false
+      },
+      "source": "building-recipes",
+      "recipe": {
+        "id": "bilder-156287",
+        "mesh": "bilder-156287",
+        "shared": false,
+        "intentSources": [
+          "staging/pand-reference/0363100012156287/front-alt.jpg"
+        ],
+        "footprintIoU": 1,
+        "frontZoneIoU": 1,
+        "maxDimDeltaM": 0,
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/front0:pass",
+          "storey-height/front0:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass"
+        ]
+      },
+      "scope": "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
+      "limitations": [
+        "Facade proportions are rule-fitted, not rectified from the photograph.",
+        "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
+      ],
+      "reviewState": "recipe-draft-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012156287",
+        "https://data.amsterdam.nl/"
+      ],
+      "updatedAt": "2026-10-10T03:19:14.770Z"
+    },
+    {
       "id": "ordinary-0363100012157154",
       "buildingId": "NL.IMBAG.Pand.0363100012157154",
       "name": "Bilderdijkstraat (1902 dark brick, raised neck, balconies)",
-      "hash": "472769d2911408c697b0f53a4488fa68410f959d920a64282414aab607cdd19d",
-      "sha256": "472769d2911408c697b0f53a4488fa68410f959d920a64282414aab607cdd19d",
+      "hash": "992bdfe3ec25b9c9272db5538ed37e395d4558856b073c5154f7c5557a83d0ca",
+      "sha256": "992bdfe3ec25b9c9272db5538ed37e395d4558856b073c5154f7c5557a83d0ca",
       "bytes": 137956,
       "triangles": 1948,
       "materials": 8,
@@ -23906,7 +23907,7 @@
       "scale": 1,
       "bounds": {
         "min": [
-          -3.176,
+          -3.138,
           0,
           -15.862
         ],
@@ -23998,7 +23999,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012157154",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T02:49:09.763Z"
+      "updatedAt": "2026-10-10T03:19:14.770Z"
     }
   ]
 }
