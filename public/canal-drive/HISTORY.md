@@ -370,6 +370,19 @@ except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
 (continuous ground and cornice line) does not need chunking. Unmeasured on a
 real phone GPU.
 
+## Audit "site model" needs separate volumes (2026-10-10)
+
+A bounding diagonal over 150 m used to make any model a site, which skipped
+see-through, far-outside and blank-wall checks; a 137 m housing slab
+(Blankenstraat 15) got none of them. A site now also needs >= 2 grounded
+volumes (same test as the far-outside separate-volume rule), or an explicit
+spec `siteModel: true|false`. Site models fell from 29 to 8 (beest-boulders,
+centraal-station, hortus-greenhouses, monk-amsterdam, olvg-oost/west,
+rai-amsterdam, symphony). Verdicts: ij-toren, asterweg-23 and krasnapolsky
+PASS -> FAIL; six already-failing models gained see-through fails (see
+TODO); the ordinary-buildings set changed findings on 3 panden, no verdict.
+Audit time about unchanged (rays are spaced along the boundary).
+
 ## Large ordinary buildings, batch 3, and two audit rules (2026-10-10)
 
 Asterweg 23 (1923 hall, one photographed gable), Oostenburgermiddenstraat 228
