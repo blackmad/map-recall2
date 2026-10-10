@@ -18887,9 +18887,7 @@
             ]
           ]
         ]
-      },
-      status: "held",
-      heldReason: "Integrator 2026-10-10: blue curtain-wall banding and set-backs missing; terminal podium renders as long flat slabs"
+      }
     }
   ];
 
