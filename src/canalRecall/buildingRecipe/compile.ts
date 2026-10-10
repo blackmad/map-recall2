@@ -184,7 +184,7 @@ export function compileBuilding(intent: CanalHouseIntent, facts: BuildingFacts):
 
 /**
  * Shop details the library has one paint for: the fascia takes the sign background, the stall riser its own
- * colour, and the business name becomes real lettering on the fascia.
+ * colour, and the sign becomes real lettering on its band (fascia, wall above the glass, or the glass).
  */
 export function dressShopfronts(group: T.Group, intent: CanalHouseIntent, fit: FitReport): number {
   let lettering = 0;
@@ -198,7 +198,7 @@ export function dressShopfronts(group: T.Group, intent: CanalHouseIntent, fit: F
     if (fasciaPaint) paint(/bands\/fascia\/piece-\d+$/, swatch(fasciaPaint), elevation);
     if (sf.residentialDoor?.colour) paint(/opening\/(\S*-)?door\/pane$/, swatch(sf.residentialDoor.colour), elevation);
     if (sf.stallriserColour) paint(/bands\/shop-riser\/piece-\d+$/, swatch(sf.stallriserColour), elevation);
-    if (f.fascia && sf.sign) lettering += addLettering(elevation, f.fascia, swatch(sf.sign.textColour), intent.pandId);
+    if (f.signBand) lettering += addLettering(elevation, f.signBand, swatch(f.signBand.sign.textColour), intent.pandId);
   }
   return lettering;
 }

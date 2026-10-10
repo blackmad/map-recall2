@@ -1,0 +1,498 @@
+{
+ "street": "Utrechtsestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T02:54:18.930Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178784",
+   "addresses": [
+    "Utrechtsestraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Utrechtsestraat 76",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000834547"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 513521940,
+     "lngLat": [
+      4.8985161,
+      52.3629227
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "76",
+      "addr:postcode": "1017VR",
+      "addr:street": "Utrechtsestraat",
+      "amenity": "pub",
+      "check_date": "2024-08-18",
+      "contact:facebook": "https://www.facebook.com/cafekrom",
+      "contact:instagram": "https://www.instagram.com/cafekrom/",
+      "email": "info@cafekrom.nl",
+      "name": "Krom",
+      "opening_hours": "Mo-Th 09:00-01:00, Fr 09:00-02:00, Sa 10:00-02:00, Su 10:00-01:00",
+      "phone": "+31 20 624 5343",
+      "smoking": "outside",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "toilets:wheelchair": "no",
+      "website": "https://cafekrom.com",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-10T02:54:18.930Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178704",
+   "addresses": [
+    "Utrechtsestraat 74A",
+    "Utrechtsestraat 74B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Utrechtsestraat 74A",
+     "use": "winkelfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001039999"
+    },
+    {
+     "address": "Utrechtsestraat 74B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001040000"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178705",
+   "addresses": [
+    "Utrechtsestraat 70A",
+    "Utrechtsestraat 70B",
+    "Utrechtsestraat 70C",
+    "Utrechtsestraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Utrechtsestraat 72",
+     "use": "winkelfunctie",
+     "areaM2": 166,
+     "bagId": "0363010001009209"
+    },
+    {
+     "address": "Utrechtsestraat 70A",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010001009210"
+    },
+    {
+     "address": "Utrechtsestraat 70B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001009211"
+    },
+    {
+     "address": "Utrechtsestraat 70C",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001009212"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2737809165,
+     "lngLat": [
+      4.898424,
+      52.3630354
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "70C",
+      "addr:postcode": "1017VR",
+      "addr:street": "Utrechtsestraat",
+      "check_date": "2023-04-11",
+      "clothes": "unisex",
+      "name": "Bellarose",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "toilets:wheelchair": "no",
+      "website": "https://www.bellerose.be",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-10T02:54:18.930Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178707",
+   "addresses": [
+    "Utrechtsestraat 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Utrechtsestraat 68-H",
+     "use": "winkelfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001007554"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2737809038,
+     "lngLat": [
+      4.8984406,
+      52.363102
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "68-H",
+      "addr:postcode": "1017VR",
+      "addr:street": "Utrechtsestraat",
+      "name": "We Are Labels",
+      "not:brand:wikidata": "Q1987861",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-10T02:54:18.930Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169207",
+   "addresses": [
+    "Utrechtsestraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Utrechtsestraat 66-H",
+     "use": "winkelfunctie",
+     "areaM2": 54,
+     "bagId": "0363010001007550"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2737808928,
+     "lngLat": [
+      4.8984552,
+      52.3631202
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "66-2",
+      "addr:postcode": "1017VR",
+      "addr:street": "Utrechtsestraat",
+      "check_date": "2023-04-11",
+      "female": "yes",
+      "male": "yes",
+      "name": "Houtman",
+      "opening_hours": "Tu-Fr 09:30-17:30; Sa 08:00-17:00; Su,Mo off",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "toilets:wheelchair": "no",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-10T02:54:18.930Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169208",
+   "addresses": [
+    "Utrechtsestraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Utrechtsestraat 62",
+     "use": "winkelfunctie",
+     "areaM2": 380,
+     "bagId": "0363010000834529"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2737808871,
+     "lngLat": [
+      4.8983954,
+      52.3632188
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "62",
+      "addr:postcode": "1017VR",
+      "addr:street": "Utrechtsestraat",
+      "name": "Mobilia",
+      "shop": "furniture",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "toilets:wheelchair": "no",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-10T02:54:18.930Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178875",
+   "addresses": [
+    "Utrechtsestraat 54",
+    "Utrechtsestraat 54A",
+    "Utrechtsestraat 54B",
+    "Utrechtsestraat 54D",
+    "Utrechtsestraat 54E",
+    "Utrechtsestraat 54C",
+    "Utrechtsestraat 58",
+    "Utrechtsestraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Utrechtsestraat 54",
+     "use": "winkelfunctie",
+     "areaM2": 287,
+     "bagId": "0363010000834515"
+    },
+    {
+     "address": "Utrechtsestraat 54A",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000834516"
+    },
+    {
+     "address": "Utrechtsestraat 54B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000834517"
+    },
+    {
+     "address": "Utrechtsestraat 54D",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000834519"
+    },
+    {
+     "address": "Utrechtsestraat 54E",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010012136271"
+    },
+    {
+     "address": "Utrechtsestraat 54C",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000834518"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2649956400,
+     "lngLat": [
+      4.8983548,
+      52.3632704
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "60",
+      "addr:postcode": "1017VP",
+      "addr:street": "Utrechtsestraat",
+      "email": "info@concerto.nl",
+      "name": "Concerto",
+      "opening_hours": "Su-Mo 12:00-18:00; Tu-Sa 10:00-18:00",
+      "phone": "+31 20 261 2610",
+      "shop": "music",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-10T02:54:18.930Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 10766312969,
+     "lngLat": [
+      4.898347,
+      52.3633871
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "52",
+      "addr:postcode": "1017VP",
+      "addr:street": "Utrechtsestraat",
+      "amenity": "cafe",
+      "cuisine": "coffee_shop",
+      "name": "Concerto Koffie",
+      "opening_hours": "Su-Mo 12:00-18:00; Tu-Sa 10:00-18:00",
+      "outdoor_seating": "no",
+      "website": "https://concerto.nl/koffie"
+     },
+     "fetchedAt": "2026-10-10T02:54:18.930Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178876",
+   "addresses": [
+    "Utrechtsestraat 52",
+    "Utrechtsestraat 52B",
+    "Utrechtsestraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Utrechtsestraat 52-H",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000834511"
+    },
+    {
+     "address": "Utrechtsestraat 54",
+     "use": "winkelfunctie",
+     "areaM2": 1100,
+     "bagId": "0363010012098364"
+    },
+    {
+     "address": "Utrechtsestraat 52B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012098365"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178874",
+   "addresses": [
+    "Utrechtsestraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Utrechtsestraat 50-H",
+     "use": "winkelfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000834507"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10162428242,
+     "lngLat": [
+      4.8982818,
+      52.3635041
+     ],
+     "tags": {
+      "addr:housenumber": "50",
+      "addr:street": "Utrechtsestraat",
+      "name": "Neleman",
+      "shop": "wine",
+      "website": "https://www.neleman.org/"
+     },
+     "fetchedAt": "2026-10-10T02:54:18.930Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178865",
+   "addresses": [
+    "Utrechtsestraat 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Utrechtsestraat 48",
+     "use": "winkelfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000701674"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2737808042,
+     "lngLat": [
+      4.8982744,
+      52.3635419
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "48",
+      "addr:postcode": "1017VP",
+      "addr:street": "Utrechtsestraat",
+      "brand": "TUI",
+      "brand:wikidata": "Q573103",
+      "brand:wikipedia": "en:TUI Group",
+      "check_date": "2023-04-11",
+      "name": "TUI",
+      "opening_hours": "Mo-Fr 09:30-18:00, Sa 10:00-17:00",
+      "shop": "travel_agency",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-10T02:54:18.930Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 10973567874,
+     "lngLat": [
+      4.8982979,
+      52.3635717
+     ],
+     "tags": {
+      "artist:wikidata": "Q1671666",
+      "artist:wikipedia": "en:Invader (artist)",
+      "artist_name": "Invader",
+      "artwork_subject": "street_art",
+      "artwork_type": "mosaic",
+      "ref": "AMS_11",
+      "tourism": "artwork",
+      "website": "https://space-invaders.com/"
+     },
+     "fetchedAt": "2026-10-10T02:54:18.930Z",
+     "match": "frontage",
+     "distanceM": 0.9
+    }
+   ]
+  }
+ ]
+}

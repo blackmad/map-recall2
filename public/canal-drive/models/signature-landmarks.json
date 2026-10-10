@@ -25889,16 +25889,16 @@
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "materialOverrides": {
-        "concrete": "#b5b1a7",
-        "greyBrick": "#8d8a82",
+        "concrete": "#c3c0b6",
+        "greyBrick": "#b4b1a7",
         "slate": "#5a5e60",
-        "glass": "#587783",
+        "glass": "#6d8b98",
         "red": "#7d3a2e",
         "green": "#47624d",
         "ochre": "#d6a03a",
         "pink": "#d49a8c",
         "dark": "#2b2f31",
-        "stone": "#bdb8a8"
+        "stone": "#cbc8bd"
       },
       "attribution": {
         "title": "De School (Tilla Tec)",
@@ -25967,8 +25967,6 @@
           ]
         ]
       },
-      "status": "held",
-      "heldReason": "Integrator 2026-10-10: concrete too dark, rounded drum pavilion missing, ribbon glazing panes too small",
       "bounds": {
         "min": [
           -44.80195999145508,
@@ -25997,10 +25995,9 @@
         "depthMetres": 31.391952514648438,
         "depthCoverage": 1.0467473329325923
       },
-      "triangles": 13918,
-      "bytes": 157724,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "triangles": 11370,
+      "bytes": 141100,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "west-indisch-pakhuis": {
       "id": "west-indisch-pakhuis",

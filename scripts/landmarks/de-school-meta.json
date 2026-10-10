@@ -5,16 +5,16 @@
   "suppressOsmIds": ["w57856852", "NL.IMBAG.Pand.0363100012121682"],
   "pandId": "0363100012121682",
   "materialOverrides": {
-    "concrete": "#b5b1a7",
-    "greyBrick": "#8d8a82",
+    "concrete": "#c3c0b6",
+    "greyBrick": "#b4b1a7",
     "slate": "#5a5e60",
-    "glass": "#587783",
+    "glass": "#6d8b98",
     "red": "#7d3a2e",
     "green": "#47624d",
     "ochre": "#d6a03a",
     "pink": "#d49a8c",
     "dark": "#2b2f31",
-    "stone": "#bdb8a8"
+    "stone": "#cbc8bd"
   },
   "surveySource": "Current BAG 0363100012121682 footprint (OSM w57856852) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
   "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; glazing ribbons, stair core, fascia, entrance porch and pavilion measured by eye from the 2017 and 2025 municipal panoramas, no pixels or meshes imported."
