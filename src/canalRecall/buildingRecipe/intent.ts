@@ -457,6 +457,8 @@ export function validateIntent(input: unknown): CanalHouseIntent {
         }
       }
       if (sf.shopShare !== undefined && !(sf.shopShare >= 0.4 && sf.shopShare <= 1)) problems.push(`${at}.shopfront.shopShare: 0.4..1`);
+      // fit.ts reads shopShare only beside a residentialDoor; alone it was silently dropped (a Bilderdijkstraat face drew a full-width shop).
+      if (sf.shopShare !== undefined && !sf.residentialDoor) problems.push(`${at}.shopfront.shopShare: only with residentialDoor (it is ignored alone); give the shop its bays instead`);
     }
     if (f.windowSurround !== undefined) oneOf(f.windowSurround, WINDOW_SURROUNDS, `${at}.windowSurround`);
     if (f.surroundStoreys !== undefined) { if (!Array.isArray(f.surroundStoreys)) problems.push(`${at}.surroundStoreys must be a list`); else f.surroundStoreys.forEach(v => count(v, `${at}.surroundStoreys`, 0, f.storeys - 1)); }
