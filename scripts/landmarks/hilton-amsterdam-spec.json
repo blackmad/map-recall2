@@ -35,6 +35,10 @@
     "dark": "#26282b",
     "white": "#e9e8e2"
   },
+  "throughPassages": [
+    {"axisBearing": 90, "corridor": [[-23.5, 24.0], [1.0, 24.0], [1.0, 29.5], [-23.5, 29.5]], "evidence": "Porte-cochere: the far-projecting flat entrance canopy (RCE 532205) stands on slim columns, open at both ends, so cars and pedestrians pass along the facade under it (2025-07-29 panoramas, ref-south-west.jpg)."},
+    {"axisBearing": 0, "corridor": [[-23.5, 24.0], [1.0, 24.0], [1.0, 29.5], [-23.5, 29.5]], "evidence": "Same canopy seen from the front: open between the columns, the glazed entrance doors stand about 10 m back in the recess behind it (ref-south-west.jpg, ref-south-a.jpg)."}
+  ],
   "preservePositionPrecision": true,
   "attribution": {
     "title": "Hilton Amsterdam",

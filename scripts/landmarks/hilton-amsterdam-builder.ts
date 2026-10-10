@@ -7,13 +7,13 @@ import source from './hilton-amsterdam-footprints.json';
 
 /**
  * Hilton Amsterdam, Apollolaan 138 (Huig Maaskant with De Vlaming en Salm, 1958-1962; rijksmonument 532205). BAG pand 0363100012078084:
- * a V-shaped eleven-storey slab (apex to the canal in the north, two arms opening to the south), standing on a low podium of lobby,
+ * a kinked nine-storey slab (apex to the canal in the north, two arms opening to the south), standing on a low podium of lobby,
  * restaurant and ballroom. Massing is the 3DBAG LoD2.2 shell (native east/south metres from the BAG centroid). Read from the municipal
  * panoramas of 2025-07-29 (south) and 2021-01-18 (north, across the Noorder Amstelkanaal):
- *  - tower: eleven storeys on a 2.88 m pitch from y 6.4 to 38.1; each storey ends in a thin white slab edge, under it a ribbon of glass
- *    cells on a 4.0 m module (two panes per cell, white mullions) over a dark grey-brown brick spandrel;
- *  - the lift and stair cores in the inside of the V (walls rising to 41.6 m) are blank brick between the continuing slab edges;
- *  - both gable ends carry a glazed balcony room with white balustrade on every storey;
+ *  - tower: nine storeys on a 3.34 m pitch from y 8.0 to 38.1; each storey ends in a thin white slab edge, under it a ribbon of glass
+ *    cells on a 4.7 m module (two panes per cell, dark piers between) over a dark grey-brown brick spandrel;
+ *  - the windowless lift-core bay on the south front (3DBAG wall 303, under the plant box) is blank grey brick between the slab edges;
+ *  - both gable ends are pale decorative concrete with a glazed corner room and, on alternate storeys, a balcony;
  *  - the plant box on the apex (to 49 m) is pale concrete;
  *  - south: low red-brown brick block under a white fascia, recessed glazed entrance under a flat white canopy on slim columns, a black
  *    box (ballroom) and glazed curtain wall to the east; north: a curved two-storey glass restaurant under a concrete overhang.
@@ -22,7 +22,7 @@ import source from './hilton-amsterdam-footprints.json';
  */
 const surfaces = (source as {surfaces: {type: string; rings: number[][][]}[]}).surfaces;
 const GLAZED = new Set([10, 18, 20]);
-const Y0 = 8.0, P = 3.34, NSTOREY = 9, MODULE = 4.0;
+const Y0 = 8.0, P = 3.34, NSTOREY = 9, MODULE = 4.7;
 
 /** Outward frame: the raw 3DBAG winding is not reliable for stepped volumes, so pick the side with the lower roof. */
 function outward(i: number): RawWall {
