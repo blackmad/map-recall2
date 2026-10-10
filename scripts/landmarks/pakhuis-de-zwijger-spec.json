@@ -1,0 +1,46 @@
+{
+  "id": "pakhuis-de-zwijger",
+  "name": "Pakhuis de Zwijger",
+  "landmarkId": "n6933045932",
+  "modelUrl": "./models/pakhuis-de-zwijger.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012088034"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.922050798947343,
+      52.37692880434443
+    ],
+    "headingDegrees": 105.8,
+    "lengthMetres": 35.5,
+    "widthMetres": 28.8
+  },
+  "surveyed": {
+    "anchor": [
+      4.922050798947343,
+      52.37692880434443
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012088034 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#a58c60",
+    "stone": "#c4c0b4",
+    "concrete": "#8e9195",
+    "greyBrick": "#7d6a52",
+    "red": "#cf6a2c",
+    "glass": "#5d7585",
+    "bronze": "#2c2e30"
+  },
+  "attribution": {
+    "title": "Pakhuis de Zwijger",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Pakhuis_de_Zwijger",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry on the BAG footprint and 3DBAG LoD2.2 massing (walls cut at the soffit, ground floor rebuilt with the roadway portal); brick walls, window grid, stair towers with concrete hoods and orange shutters, splayed concrete piers, tall north glazing and fascia lettering measured by eye from Commons photographs and municipal panoramas (2005 RCE, 2014, 2018-2020), no pixels or meshes imported."
+  }
+}

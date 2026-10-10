@@ -22069,5 +22069,106 @@
       ]
     ]
   }
+},
+{
+  "id": "pakhuis-de-zwijger",
+  "name": "Pakhuis de Zwijger",
+  "landmarkId": "n6933045932",
+  "modelUrl": "./models/pakhuis-de-zwijger.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012088034"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.922050798947343,
+      52.37692880434443
+    ],
+    "headingDegrees": 105.8,
+    "lengthMetres": 35.5,
+    "widthMetres": 28.8
+  },
+  "surveyed": {
+    "anchor": [
+      4.922050798947343,
+      52.37692880434443
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012088034 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#a58c60",
+    "stone": "#c4c0b4",
+    "concrete": "#8e9195",
+    "greyBrick": "#7d6a52",
+    "red": "#cf6a2c",
+    "glass": "#5d7585",
+    "bronze": "#2c2e30"
+  },
+  "attribution": {
+    "title": "Pakhuis de Zwijger",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Pakhuis_de_Zwijger",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry on the BAG footprint and 3DBAG LoD2.2 massing (walls cut at the soffit, ground floor rebuilt with the roadway portal); brick walls, window grid, stair towers with concrete hoods and orange shutters, splayed concrete piers, tall north glazing and fascia lettering measured by eye from Commons photographs and municipal panoramas (2005 RCE, 2014, 2018-2020), no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.922384153158756,
+          52.3769381964659
+        ],
+        [
+          4.922333924369807,
+          52.37694691507603
+        ],
+        [
+          4.922158875321598,
+          52.37697715437784
+        ],
+        [
+          4.9219567550336025,
+          52.37701206851262
+        ],
+        [
+          4.921911102146441,
+          52.37701995109173
+        ],
+        [
+          4.92189696341202,
+          52.37702239411226
+        ],
+        [
+          4.921889634629328,
+          52.37700564822158
+        ],
+        [
+          4.921874554156889,
+          52.37700826729256
+        ],
+        [
+          4.92178371044369,
+          52.376812059646106
+        ],
+        [
+          4.921766966385678,
+          52.376775890305055
+        ],
+        [
+          4.922268795151566,
+          52.376688910565576
+        ],
+        [
+          4.922384153158756,
+          52.3769381964659
+        ]
+      ]
+    ]
+  }
 }
 ]
