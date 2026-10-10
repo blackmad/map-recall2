@@ -18,8 +18,7 @@
 // (repaint, hiding the basemap's own ground). THREE is injected.
 
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type Rect } from './groundStore.js';
-import { GROUND_LAYERS, MASK_RANGE_M, type BuiltCell, type GroundLayer, type PackedMesh } from './groundCell.js';
-import { QUAY } from './water.js';
+import { GROUND_LAYERS, type BuiltCell, type GroundLayer, type PackedMesh } from './groundCell.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
 import { routeRibbon } from './streets.js';
@@ -50,8 +49,6 @@ interface Resident { key: string; lod: 0 | 1; group: any; materials: any[]; text
 const RADIUS_M = 1400;
 const NEAR_M = 350;
 const RESIDENCY_STEP_M = 60;
-/** Width of the stone coping band drawn inland of every cut shore edge, metres (0: none). */
-const QUAY_BAND_M = 0.3;
 
 /** Which mask channel cuts a layer: R = water (land, parks), G = water minus decks (street bands). */
 const CUT: Partial<Record<GroundLayer, 'r' | 'g'>> = {
@@ -333,15 +330,11 @@ export class OwnGround {
       shader.vertexShader = shader.vertexShader.replace('#include <common>', '#include <common>\nvarying highp vec2 vMaskUV;\nuniform vec2 maskOrigin;\nuniform vec2 maskSize;')
         .replace('#include <begin_vertex>', '#include <begin_vertex>\nvMaskUV = (transformed.xy - maskOrigin) / maskSize;');
       // Outside the mask's extent the ground is land (no cut). The discard
-      // edge itself cannot be antialiased (MSAA does not see it), so a stone
-      // coping band (QUAY_BAND_M wide, drawn from the bilinear signed distance,
-      // hence smooth at any zoom) runs along the shore inland of it: the
-      // aliased cut then lies between two coping-coloured surfaces (the band
-      // and the quay wall's coping face) and the visible edge is the band's
-      // smooth inner line. Phones (DPR 1.5) showed the bare cut as stair steps.
-      shader.fragmentShader = shader.fragmentShader.replace('#include <common>', `#include <common>\nvarying highp vec2 vMaskUV;\nuniform sampler2D waterMask;\nconst vec3 ogCoping = vec3(${QUAY.coping.map(c => Math.pow(c, 2.2).toFixed(4)).join(', ')});`)
-        .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>\nfloat ogShoreM = 99.0;\nif (vMaskUV.x > 0.0 && vMaskUV.y > 0.0 && vMaskUV.x < 1.0 && vMaskUV.y < 1.0) { ogShoreM = (texture2D(waterMask, vMaskUV).${channel} - 0.5) * ${(2 * MASK_RANGE_M).toFixed(1)}; if (ogShoreM < 0.0) discard; }`)
-        .replace('#include <color_fragment>', channel !== 'r' || layer === 'park' || layer === 'wood' ? '#include <color_fragment>' : `#include <color_fragment>\n{ float ogFw = max(fwidth(ogShoreM), 1e-4); diffuseColor.rgb = mix(ogCoping, diffuseColor.rgb, smoothstep(${QUAY_BAND_M.toFixed(2)} - ogFw, ${QUAY_BAND_M.toFixed(2)} + ogFw, ogShoreM)); }`);
+      // edge is per pixel (MSAA does not smooth it); at quays it is covered by
+      // the walls' coping cap (water.ts quayWallMesh, QUAY_CAP_M), which is
+      // what fixed the stair-stepped, see-through seam on phones (DPR 1.5).
+      shader.fragmentShader = shader.fragmentShader.replace('#include <common>', '#include <common>\nvarying highp vec2 vMaskUV;\nuniform sampler2D waterMask;')
+        .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>\nif (vMaskUV.x > 0.0 && vMaskUV.y > 0.0 && vMaskUV.x < 1.0 && vMaskUV.y < 1.0 && texture2D(waterMask, vMaskUV).${channel} < 0.5) discard;`);
     };
     m.customProgramCacheKey = () => `ownGround-cut2-${channel}-${layer}`;
     return m;

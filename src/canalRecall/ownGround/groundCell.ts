@@ -68,6 +68,8 @@ export interface CellInput {
 const MASK_REACH_M = 150;
 /** Signed-distance range of the water mask (texels saturate at ±this), metres. */
 export const MASK_RANGE_M = 4;
+/** Coping cap on every quay wall, reaching this far inland over the land's cut edge (water.ts). */
+export const QUAY_CAP_M = 0.35;
 
 /** Area-weighted vertex normals (three's computeVertexNormals), here so the main thread need not. */
 export function vertexNormals(positions: Float32Array, indices: Uint32Array): Float32Array {
@@ -172,7 +174,7 @@ export function buildCell(input: CellInput): BuiltCell {
   // Water, quays, decks.
   if (input.water) {
     add('water', waterSurfaceMesh(input.water, -1.77));
-    add('quay', quayWallMesh({ polygons: [], shores: input.water.shores }, surface.height, -1.77, lod === 0 ? 4 : 8));
+    add('quay', quayWallMesh({ polygons: [], shores: input.water.shores }, surface.height, -1.77, lod === 0 ? 4 : 8, QUAY_CAP_M));
   }
   for (const deck of input.decks) add('deckBody', measuredDeckBody(deck, surface.ground, overWater, -1.77));
   for (const ring of input.flatDecks) {

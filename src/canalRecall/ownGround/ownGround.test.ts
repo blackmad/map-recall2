@@ -341,6 +341,14 @@ test('water mask: exact signed distance at the shore; quay walls face the water 
   assert.ok(Math.max(...tops) > 0.75 && Math.max(...tops) < 0.81, 'top follows the sloping bank');
   // A bank at water level gets no wall.
   assert.equal(quayWallMesh(geo, () => -1.7, -1.77).indices.length, 0);
+  // Coping cap (phone stair steps at the cut): faces up, sits just over the land, reaches 0.35 m inland, never over the water.
+  const capped = faces(quayWallMesh(geo, bank, -1.77, 2, 0.35)).filter(t => Math.abs(t.n[2]) > 1e-9 && Math.abs(t.n[0]) + Math.abs(t.n[1]) < 1e-6 * Math.abs(t.n[2]) + 0.05 * Math.abs(t.n[2]));
+  assert.ok(capped.length > 0 && capped.every(t => t.n[2] > 0), 'cap faces up');
+  for (const t of capped) {
+    const inland = t.c[1] < 5 ? -t.c[1] : t.c[1] - 10;
+    assert.ok(inland > 0 && inland < 0.35, `cap centroid ${inland.toFixed(2)} m inland`);
+    assert.ok(t.c[2] > bank(t.c[0], t.c[1]) && t.c[2] - bank(t.c[0], t.c[1]) < 0.03, 'a centimetre over the land');
+  }
   // A bridge deck across the canal: the land channel still says water there, the street channel says deck.
   const decked = buildWaterMask(geo, -60, -20, 60, 30, 1, 4, [[[-4, -2], [4, -2], [4, 12], [-4, 12]]]);
   const fx = (m: typeof decked, x: number, y: number) => maskDistance({ ...m, sdf: m.sdfStreets }, x, y);
