@@ -10,8 +10,15 @@
 // labelPolicy.ts; this file never sees a withheld name.
 
 import type { Vec2 } from './frame';
+import type { Vec3 } from './mapCamera';
 
-export type LabelKind = 'street' | 'water' | 'poi' | 'hood';
+/** street/water: earned names along lines; poi: own POIs (roofline bands);
+ *  hood: neighbourhood names; brand: brand icons (+ name at street zoom);
+ *  food: local-food names; ferry: ferry terminals. */
+export type LabelKind = 'street' | 'water' | 'poi' | 'hood' | 'brand' | 'food' | 'ferry';
+
+/** A point symbol's icon (drawn centred on the anchor, CSS px). */
+export interface LabelIcon { image: CanvasImageSource; size: number }
 
 export interface LabelCandidate {
   id: string;
@@ -19,18 +26,26 @@ export interface LabelCandidate {
   kind: LabelKind;
   /** Higher places first. */
   priority: number;
-  /** Point labels. */
-  at?: Vec2;
+  /** Point labels; a z (metres) lifts the anchor, e.g. to a roofline band. */
+  at?: Vec2 | Vec3;
   /** Line labels, local metres. */
   path?: Vec2[];
   minZoom?: number;
   maxZoom?: number;
+  /** Point labels: where the text hangs from the anchor (MapLibre text-anchor). Default centre. */
+  anchor?: 'center' | 'top' | 'bottom';
+  /** Point labels: extra vertical offset in ems (MapLibre text-offset[1]). */
+  offsetEm?: number;
+  /** Point labels: an icon at the anchor; text may then be empty. */
+  icon?: LabelIcon;
+  /** Point labels: drawn even where it collides, and reserves nothing (MapLibre allow-overlap + ignore-placement). */
+  overlap?: boolean;
 }
 
 export interface Projected { x: number; y: number; depth: number }
 
 export interface PlaceOptions {
-  project: (p: Vec2) => Projected;
+  project: (p: Vec2 | Vec3) => Projected;
   width: number;
   height: number;
   zoom: number;
@@ -44,13 +59,17 @@ export interface PlaceOptions {
   /** Ignore candidates farther than this (eye-space metres): the horizon at high pitch. */
   maxDepth?: number;
   padding?: number;
+  /** Screen boxes [x0, y0, x1, y1] already taken (pins, the rider marker): no label goes there. */
+  blocked?: ReadonlyArray<readonly [number, number, number, number]>;
 }
 
 export interface PlacedGlyph { ch: string; x: number; y: number; angle: number }
 export interface PlacedLabel {
   id: string; text: string; kind: LabelKind; size: number;
-  /** Point labels. */
+  /** Point labels: text centre. */
   x?: number; y?: number;
+  /** Point labels: the icon and its centre. */
+  icon?: LabelIcon; ix?: number; iy?: number;
   /** Line labels. */
   glyphs?: PlacedGlyph[];
 }
@@ -103,6 +122,7 @@ export function placeLabels(candidates: readonly LabelCandidate[], opts: PlaceOp
   const repeat = opts.repeatDistance ?? 280;
   const maxTurn = (opts.maxGlyphTurn ?? 35) * Math.PI / 180;
   const grid = new CollisionGrid();
+  for (const b of opts.blocked ?? []) grid.insert([b[0], b[1], b[2], b[3]]);
   const placedAt = new Map<string, Array<{ x: number; y: number }>>();
   const out: PlacedLabel[] = [];
   const order = candidates
@@ -122,12 +142,21 @@ export function placeLabels(candidates: readonly LabelCandidate[], opts: PlaceOp
       // Project before measuring: most candidates in the gathered cells are off screen.
       const p = opts.project(c.at);
       if (p.depth <= 0 || (opts.maxDepth && p.depth > opts.maxDepth) || p.x < -50 || p.x > W + 50 || p.y < 0 || p.y > H) continue;
-      if (tooClose(c.text, p.x, p.y)) continue;
-      const { textW } = measure(c);
-      const box: Box = [p.x - textW / 2 - pad, p.y - size / 2 - pad, p.x + textW / 2 + pad, p.y + size / 2 + pad];
-      if (!inside(box, W, H) || grid.hits(box)) continue;
-      grid.insert(box); remember(c.text, p.x, p.y);
-      out.push({ id: c.id, text: c.text, kind: c.kind, size, x: p.x, y: p.y });
+      if (c.text && tooClose(c.text, p.x, p.y)) continue;
+      const boxes: Box[] = [];
+      let tx = p.x, ty = p.y;
+      if (c.text) {
+        const { textW } = measure(c);
+        const dy = (c.offsetEm ?? 0) * size + (c.anchor === 'top' ? size / 2 : c.anchor === 'bottom' ? -size / 2 : 0);
+        ty = p.y + dy;
+        boxes.push([tx - textW / 2 - pad, ty - size / 2 - pad, tx + textW / 2 + pad, ty + size / 2 + pad]);
+      }
+      if (c.icon) { const h = c.icon.size / 2; boxes.push([p.x - h, p.y - h, p.x + h, p.y + h]); }
+      if (!boxes.length) continue;
+      if (!c.overlap && boxes.some(b => !inside(b, W, H) || grid.hits(b))) continue;
+      if (!c.overlap) for (const b of boxes) grid.insert(b);
+      if (c.text) remember(c.text, tx, ty);
+      out.push({ id: c.id, text: c.text, kind: c.kind, size, x: tx, y: ty, ...(c.icon ? { icon: c.icon, ix: p.x, iy: p.y } : {}) });
       continue;
     }
     if (!c.path || c.path.length < 2) continue;
@@ -200,8 +229,11 @@ export function drawPlacedLabels(ctx: CanvasRenderingContext2D, placed: readonly
         ctx.restore();
       }
     } else {
-      ctx.strokeText(l.text, l.x!, l.y!);
-      ctx.fillText(l.text, l.x!, l.y!);
+      if (l.icon) ctx.drawImage(l.icon.image, l.ix! - l.icon.size / 2, l.iy! - l.icon.size / 2, l.icon.size, l.icon.size);
+      if (l.text) {
+        ctx.strokeText(l.text, l.x!, l.y!);
+        ctx.fillText(l.text, l.x!, l.y!);
+      }
     }
   }
 }

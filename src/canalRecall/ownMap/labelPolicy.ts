@@ -57,6 +57,29 @@ export function poiLabelVisible(ctx: LabelContext, name: string): boolean {
   return true;
 }
 
+/**
+ * A brand icon (Albert Heijn disc). The game screens branded POIs by name
+ * before they reach the map (vector-map.js `setBrandedPois`, `_spoils`) and
+ * keeps the icons in quiz-quiet — `setQuizQuietMap` hides only the brand and
+ * local-food *names* (vector-map.js:2560).
+ */
+export function brandIconVisible(ctx: LabelContext, name: string): boolean {
+  if (ctx.spoilerIndex && poiNameSpoils(name, ctx.spoilerIndex)) return false;
+  if (ctx.hiddenName && poiNameSpoils(name, buildSpoilerIndex([ctx.hiddenName]))) return false;
+  return true;
+}
+
+/**
+ * A ferry terminal ("Buiksloterweg ⛴"). The game draws its route's terminals
+ * unscreened (vector-map.js `setFerryTerminals`), but a terminal named after
+ * the street being asked would answer it, so the asked name is withheld here.
+ * Not quieted: the terminals are wayfinding for the ride itself.
+ */
+export function ferryLabelVisible(ctx: LabelContext, name: string): boolean {
+  if (!name) return false;
+  return !(ctx.hiddenName && poiNameSpoils(name, buildSpoilerIndex([ctx.hiddenName])));
+}
+
 export function neighbourhoodLabelVisible(ctx: LabelContext): boolean {
   return !ctx.quizQuiet;
 }

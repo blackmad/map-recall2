@@ -5,29 +5,37 @@
 //
 // Build: npx esbuild src/canalRecall/ownMap/main.ts --bundle --format=esm --minify \
 //          --outfile=public/canal-drive/js/no-maplibre.bundle.js
+//        npx esbuild src/canalRecall/ownMap/footprintWorker.ts --bundle --format=iife --minify \
+//          --outfile=public/canal-drive/js/own-map-footprints.worker.js
 // Page:  /canal-drive/no-maplibre.html
 // Params: view=city|district|street|route, cam=lng,lat,zoom,pitch,bearing[,fov] (a MapLibre camera, exact),
 //         route=<fixture> (own-map-fixtures/route-<fixture>.json), rider=lng,lat,bearingDeg,
 //         learned=<comma names> (street/water names already earned), ask=<name under question>,
 //         labels=all (debug: treat every name as earned, except `ask`), quiet=1 (quiz-quiet map),
-//         path=1 (fixed camera path, for timing), near=0, mini=0, hud=0, dpr.
+//         transit=1 (the transit corridor overlay), answered=<name>[&answeredOk=0] (road lettering),
+//         path=1 (fixed camera path, for timing), near=0, mini=0, hud=0, worker=0, dpr.
 
 import * as THREE from 'three';
 import { fromLocal, toLocal, type Vec2 } from './frame';
-import { decodeOverview, type OverviewData, type OverviewFile, STREET_CLASSES, type StreetClass } from './overviewFormat';
+import { decodeOverview, type OverviewData, type OverviewFile } from './overviewFormat';
 import { cameraFrame, cameraForPoints, easeCamera, project, unproject, visibleBounds, type CameraState, type Viewport } from './mapCamera';
 import { bindGestures, clampCamera, type CameraLimits } from './gestures';
-import { fillMaterial, footprintGeometry, handover, lineGeometry, lineMaterial, polygonGeometry, rasterMaterial, tileQuadGeometry, z14TilesFor, type FootprintFeature } from './layers';
-import { BUILDING_RASTER_FADE, FOOTPRINT_MIN_ZOOM, MIN_LINE_PX, NEAR_FIELD_FADE, PALETTE, ROUTE_WIDTH, STREET_STYLE, fade, interpolateStops } from './style';
-import { drawPlacedLabels, placeLabels, type LabelCandidate, type LabelKind, type LabelPaint } from './labels';
-import { neighbourhoodLabelVisible, poiLabelVisible, streetLabelVisible, type LabelContext } from './labelPolicy';
+import { footprintGeometry, footprintGeometryFromArrays, handover, rasterMaterial, tileQuadGeometry, z14TilesFor, type FootprintFeature } from './layers';
+import { BUILDING_RASTER_FADE, FOOTPRINT_MIN_ZOOM, NEAR_FIELD_FADE, PALETTE, fade } from './style';
+import type { LabelKind } from './labels';
+import { streetLabelVisible, type LabelContext } from './labelPolicy';
 import { buildSpoilerIndex } from '../orientationPois';
-import { ownPoiFeatures, type OrientationPoiFile } from '../ownPois';
+import type { OrientationPoiFile } from '../ownPois';
 import { Minimap } from './minimap';
 import { boxFor, buildNearField, waterFromCells } from './nearField';
 import { cellsNear, lngLatToLocal, validateIndex, type WaterCell } from '../elevation/elevationData';
 import type { OsmGroundExtract } from '../ownGround/osmGround';
 import { lineLength } from './geometry';
+import { OwnMapScene } from './ownMapScene';
+import { OwnMapLabels, brandDisc, ferryPin } from './ownMapLabels';
+import { BRAND_ICON_URLS, answeredStreetPlacement, ferryOverlay, transitOverlay, type BrandedPoi } from './overlays';
+import type { TransitNetwork } from '../transit/network';
+import type { FootprintReply, FootprintRequest } from './footprintWorker';
 
 THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
 const EXTRACT = '../data/extracts/amsterdam';
@@ -37,10 +45,11 @@ const coarse = matchMedia('(pointer: coarse)').matches;
 const opts = {
   view: q.get('view') ?? 'city',
   route: q.get('route') ?? 'game-desktop',
-  path: flag('path', false), near: flag('near', true), mini: flag('mini', true), hud: flag('hud', true),
+  path: flag('path', false), near: flag('near', true), mini: flag('mini', true), hud: flag('hud', true), worker: flag('worker', true),
   dpr: Number(q.get('dpr')) || Math.min(devicePixelRatio || 1, coarse ? 1.5 : 2),
-  labelsAll: q.get('labels') === 'all', quiet: flag('quiet', false),
+  labelsAll: q.get('labels') === 'all', quiet: flag('quiet', false), transit: flag('transit', false),
   ask: q.get('ask') ?? 'Kinkerstraat',
+  answered: q.get('answered') ?? '', answeredOk: flag('answeredOk', true),
 };
 const DEMO_LEARNED = ['Nassaukade', 'Bilderdijkstraat', 'Kinkerstraat', 'Singelgracht', 'Prinsengracht', 'Herengracht', 'Keizersgracht', 'Singel',
   'Leidsestraat', 'Overtoom', 'Marnixstraat', 'Rozengracht', 'Raadhuisstraat', 'Damrak', 'Rokin', 'Stadhouderskade', 'Amstel', 'Kostverlorenvaart',
@@ -51,7 +60,8 @@ const status: Record<string, unknown> = { bytes: {} as Record<string, number>, m
 const bytes = status.bytes as Record<string, number>, ms = status.ms as Record<string, number>;
 const S = {
   ready: false, status, frames: [] as number[], renderMs: [] as number[], labelMs: [] as number[], labelCounts: [] as number[],
-  info: { calls: 0, triangles: 0 }, labelWorst: null as null | { ms: number; candidates: number; zoom: number; pitch: number }, labelCount: 0, everPlaced: new Set<string>(), placed: [] as Array<{ text: string; kind: LabelKind }>,
+  info: { calls: 0, triangles: 0 }, labelWorst: null as null | { ms: number; candidates: number; zoom: number; pitch: number }, labelCount: 0,
+  everPlaced: new Set<string>(), everPlacedKinds: {} as Record<string, string[]>, placed: [] as Array<{ text: string; kind: LabelKind; icon?: boolean }>,
   cam: null as CameraState | null, setCamera: (c: CameraState) => { cam = c; }, setView: (v: string) => applyView(v),
   project: (lng: number, lat: number) => project(cameraFrame(cam, viewport()), toLocal(lng, lat)),
   unproject: (x: number, y: number) => { const p = unproject(cameraFrame(cam, viewport()), x, y); return p ? fromLocal(p[0], p[1]) : null; },
@@ -91,10 +101,13 @@ async function fetchBytes(url: string, key: string, type?: RegExp): Promise<Uint
   // A history fallback answers a missing file with index.html and 200.
   if (!r.ok || (type && !type.test(r.headers.get('content-type') ?? ''))) throw new Error(`${url}: ${r.status} ${r.headers.get('content-type')}`);
   const b = new Uint8Array(await r.arrayBuffer());
-  const entry = performance.getEntriesByName(new URL(url, location.href).href).pop() as PerformanceResourceTiming | undefined;
-  bytes[key] = (bytes[key] ?? 0) + (entry && entry.transferSize > 0 ? entry.transferSize : b.length);
-  bytes[`${key}Decoded`] = (bytes[`${key}Decoded`] ?? 0) + b.length;
+  countBytes(url, key, b.length);
   return b;
+}
+function countBytes(url: string, key: string, decoded: number, transfer?: number): void {
+  const entry = transfer === undefined ? performance.getEntriesByName(new URL(url, location.href).href).pop() as PerformanceResourceTiming | undefined : undefined;
+  bytes[key] = (bytes[key] ?? 0) + (transfer ?? (entry && entry.transferSize > 0 ? entry.transferSize : decoded));
+  bytes[`${key}Decoded`] = (bytes[`${key}Decoded`] ?? 0) + decoded;
 }
 async function gunzipJson<T>(b: Uint8Array): Promise<T> {
   const text = b[0] === 0x1f && b[1] === 0x8b
@@ -103,13 +116,12 @@ async function gunzipJson<T>(b: Uint8Array): Promise<T> {
   return JSON.parse(text) as T;
 }
 const timed = async <T>(key: string, f: () => T | Promise<T>): Promise<T> => { const t = performance.now(); const v = await f(); ms[key] = Math.round(performance.now() - t); return v; };
+const loadImage = (url: string) => new Promise<HTMLImageElement>((resolve, reject) => { const i = new Image(); i.onload = () => resolve(i); i.onerror = () => reject(new Error(url)); i.src = url; });
 
 let data: OverviewData;
-type LineLayer = { cls: StreetClass; fill: THREE.Mesh; casing: THREE.Mesh | null };
-const lineLayers: LineLayer[] = [];
-let waterMesh: THREE.Mesh, parkMesh: THREE.Mesh;
+let flat: OwnMapScene;
+let labels: OwnMapLabels;
 let routeLocal: Vec2[] = [];
-let routeMeshes: { casing: THREE.Mesh; line: THREE.Mesh } | null = null;
 let rider: { at: Vec2; bearing: number } = { at: toLocal(4.8745, 52.3729), bearing: 40 };
 const rasterTiles: THREE.Mesh[] = [];
 let minimap: Minimap | null = null;
@@ -119,23 +131,9 @@ async function loadOverview(): Promise<void> {
   const raw = await timed('fetchOverview', () => fetchBytes(`${EXTRACT}/own-map-v1/overview.json.gz`, 'overview'));
   const file = await timed('inflateParse', () => gunzipJson<OverviewFile>(raw));
   data = await timed('decode', () => decodeOverview(file));
-  await timed('buildMeshes', () => {
-    waterMesh = new THREE.Mesh(polygonGeometry(data.water), fillMaterial(PALETTE.water, 0)); waterMesh.renderOrder = 2;
-    parkMesh = new THREE.Mesh(polygonGeometry(data.parks.flatMap(p => p.rings.map(r => [r]))), fillMaterial(PALETTE.park, 0)); parkMesh.renderOrder = 1;
-    scene.add(parkMesh, waterMesh);
-    const ordered = [...STREET_CLASSES].sort((a, b) => STREET_STYLE[a].order - STREET_STYLE[b].order);
-    for (const cls of ordered) {
-      const geo = lineGeometry(data.streets.filter(s => s.cls === cls).map(s => s.points));
-      const st = STREET_STYLE[cls];
-      const fill = new THREE.Mesh(geo, lineMaterial(st.fill, 0)); fill.renderOrder = 20 + st.order; fill.frustumCulled = false;
-      let casing: THREE.Mesh | null = null;
-      if (st.casing) { casing = new THREE.Mesh(geo, lineMaterial(st.casing, 0)); casing.renderOrder = 10 + st.order; casing.frustumCulled = false; scene.add(casing); }
-      scene.add(fill);
-      lineLayers.push({ cls, fill, casing });
-    }
-  });
+  await timed('buildMeshes', () => { flat = new OwnMapScene(data); scene.add(flat.group); });
   ms.overviewTotal = Math.round(performance.now() - t0);
-  status.overview = { water: data.water.length, parks: data.parks.length, streets: data.streets.length };
+  status.overview = { version: file.version, water: data.water.length, parks: data.parks.length, streets: data.streets.length, landuse: data.landuse.length, rail: data.rail.length, piers: data.piers.length + data.pierLines.length, hoodRings: data.hoodRings.length };
 }
 
 async function loadBuildingRaster(): Promise<void> {
@@ -148,10 +146,9 @@ async function loadBuildingRaster(): Promise<void> {
   const jobs: Promise<void>[] = [];
   for (let x = tx(w); x <= tx(e - 1e-9); x++) for (let y = ty(n); y <= ty(s + 1e-9); y++) {
     jobs.push((async () => {
-      let b: Uint8Array;
       let bmp: ImageBitmap;
       try {
-        b = await fetchBytes(`${EXTRACT}/building-overview/${z}/${x}/${y}.png`, 'buildingRaster', /image/);
+        const b = await fetchBytes(`${EXTRACT}/building-overview/${z}/${x}/${y}.png`, 'buildingRaster', /image/);
         bmp = await createImageBitmap(new Blob([b as BlobPart], { type: 'image/png' }), { imageOrientation: 'flipY' });
       } catch { return; }
       const tex = new THREE.Texture(bmp as unknown as HTMLImageElement);
@@ -178,36 +175,76 @@ async function loadRoute(): Promise<void> {
     const [a, b] = routeLocal;
     rider = { at: a, bearing: b ? (Math.atan2(b[0] - a[0], b[1] - a[1]) * 180 / Math.PI + 360) % 360 : 0 };
   }
-  const geo = lineGeometry([routeLocal]);
-  // Above the flat map and the near-field bands (≤ 0.07 m), under buildings: the game's route sits under building-3d.
-  routeMeshes = { casing: new THREE.Mesh(geo, lineMaterial('#03121c', 0.3)), line: new THREE.Mesh(geo, lineMaterial(PALETTE.route, 0.32)) };
-  routeMeshes.casing.renderOrder = 40; routeMeshes.line.renderOrder = 41;
-  for (const m of [routeMeshes.casing, routeMeshes.line]) { m.frustumCulled = false; (m.material as THREE.ShaderMaterial).uniforms.uNear = { value: 0 }; scene.add(m); }
-  (routeMeshes.casing.material as THREE.ShaderMaterial).uniforms.uOpacity.value = 0.75;
   status.route = { points: routeLocal.length, lengthM: Math.round(lineLength(routeLocal)), fixture: !!fixture };
 }
 
-// --- Vector footprints (z14 building tiles) near the view -------------------
+// --- Transit network: ferry lines + terminals always, corridors with transit=1 ---------
+async function loadTransit(): Promise<void> {
+  const network = await gunzipJson<TransitNetwork>(await fetchBytes(`${EXTRACT}/transit-network.json`, 'transit'));
+  const ferry = ferryOverlay(network);
+  flat.setFerryLines(ferry.lines);
+  labels.setFerryTerminals(ferry.terminals, ferryPin());
+  if (opts.transit) flat.setTransit(transitOverlay(network));
+  status.overlays = { ...(status.overlays as object), ferryLines: ferry.lines.length, ferryTerminals: ferry.terminals.length, transitLines: flat.stats.transitLines ?? 0 };
+}
+
+// --- Answered-street lettering (only after an answer; never the asked name) --------
+function applyAnswered(): void {
+  const name = opts.answered;
+  if (!name) return;
+  // The game fills its source only after the answer; a name still under question is never painted.
+  const asked = !streetLabelVisible({ ...labelCtx, isLabelled: () => true }, name, 0, 0);
+  if (asked) { flat.setAnswered(null, [], true); status.answered = { name, placed: 0, withheld: true }; return; }
+  const chains = data.streets.filter(s => s.name === name).map(s => s.points);
+  const placements = answeredStreetPlacement(chains, rider);
+  flat.setAnswered(name, placements, opts.answeredOk, fromLocal(rider.at[0], rider.at[1])[1]);
+  status.answered = { name, placed: placements.length, at: placements[0] && fromLocal(...placements[0].at), bearing: placements[0]?.bearing };
+}
+
+// --- Vector footprints (z14 building tiles), built in a worker -----------------
 const footprintTiles = new Map<string, THREE.Mesh | null>();
 const footprintGroup = new THREE.Group(); scene.add(footprintGroup);
+const FOOT_TOP = '#e3dcd2', FOOT_WALL = '#cbbfb2';
+let worker: Worker | null = null;
+const pending = new Map<number, (r: FootprintReply) => void>();
+let nextJob = 1;
+if (opts.worker) {
+  try {
+    worker = new Worker(new URL('js/own-map-footprints.worker.js', location.href));
+    worker.onmessage = (e: MessageEvent<FootprintReply>) => { pending.get(e.data.id)?.(e.data); pending.delete(e.data.id); };
+  } catch { worker = null; }
+}
+status.footprintWorker = !!worker;
+async function footprintTile(key: string): Promise<THREE.BufferGeometry> {
+  const url = new URL(`${EXTRACT}/building-tiles/14/${key}.geojson.gz`, location.href).href;
+  if (worker) {
+    const id = nextJob++;
+    const reply = await new Promise<FootprintReply>(resolve => { pending.set(id, resolve); worker!.postMessage({ id, url, top: FOOT_TOP, wall: FOOT_WALL } satisfies FootprintRequest); });
+    if (!reply.ok) throw new Error(reply.error);
+    countBytes(url, 'buildingTiles', reply.decoded, reply.bytes);
+    ms.footprintWorkerBuild = (ms.footprintWorkerBuild ?? 0) + Math.round(reply.buildMs);
+    const t = performance.now();
+    const g = footprintGeometryFromArrays(reply);
+    ms.footprintBuild = (ms.footprintBuild ?? 0) + Math.round(performance.now() - t);
+    return g;
+  }
+  const fc = await gunzipJson<{ features: FootprintFeature[] }>(await fetchBytes(url, 'buildingTiles'));
+  const t = performance.now();
+  const g = footprintGeometry(fc.features, toLocal, FOOT_TOP, FOOT_WALL);
+  ms.footprintBuild = (ms.footprintBuild ?? 0) + Math.round(performance.now() - t);
+  return g;
+}
 function updateFootprints(bounds: [number, number, number, number]): void {
   if (cam.zoom < FOOTPRINT_MIN_ZOOM) { footprintGroup.visible = false; return; }
   footprintGroup.visible = true;
-  const keys = z14TilesFor(bounds).slice(0, 16);
-  for (const key of keys) {
+  for (const key of z14TilesFor(bounds).slice(0, 16)) {
     if (footprintTiles.has(key)) continue;
     footprintTiles.set(key, null);
-    void (async () => {
-      try {
-        const b = await fetchBytes(`${EXTRACT}/building-tiles/14/${key}.geojson.gz`, 'buildingTiles');
-        const fc = await gunzipJson<{ features: FootprintFeature[] }>(b);
-        const t = performance.now();
-        const m = new THREE.Mesh(footprintGeometry(fc.features, toLocal, '#e3dcd2', '#cbbfb2'), new THREE.MeshBasicMaterial({ vertexColors: true }));
-        m.renderOrder = 50;
-        ms.footprintBuild = (ms.footprintBuild ?? 0) + Math.round(performance.now() - t);
-        footprintTiles.set(key, m); footprintGroup.add(m);
-      } catch { /* tile outside the extract */ }
-    })();
+    void footprintTile(key).then(g => {
+      const m = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ vertexColors: true }));
+      m.renderOrder = 50;
+      footprintTiles.set(key, m); footprintGroup.add(m);
+    }, () => { /* tile outside the extract */ });
   }
 }
 
@@ -240,79 +277,44 @@ const labelCtx: LabelContext = {
   spoilerIndex: buildSpoilerIndex([...learned, opts.ask]),
   quizQuiet: opts.quiet,
 };
-const BUCKET = 500;
-const labelBuckets = new Map<string, LabelCandidate[]>();
-const CLASS_LABEL_MINZOOM: Record<StreetClass, number> = { major: 12.5, secondary: 13.5, tertiary: 14.5, minor: 15.3, service: 16.8, cycle: 16.3, path: 17 };
-function addCandidate(c: LabelCandidate): void {
-  const pts = c.path ?? [c.at!];
-  const keys = new Set(pts.map(([x, y]) => `${Math.floor(x / BUCKET)},${Math.floor(y / BUCKET)}`));
-  for (const k of keys) { const l = labelBuckets.get(k); if (l) l.push(c); else labelBuckets.set(k, [c]); }
-}
-let labelStats = { street: 0, water: 0, poi: 0, hood: 0, withheld: 0 };
-function buildLabelCandidates(): void {
-  data.streets.forEach((s, i) => {
-    if (!s.name) return;
-    const mid = s.points[s.points.length >> 1];
-    if (!streetLabelVisible(labelCtx, s.name, mid[0], mid[1])) { if (s.name === opts.ask) labelStats.withheld++; return; }
-    labelStats.street++;
-    addCandidate({ id: `s${i}`, text: s.name, kind: 'street', priority: (STREET_STYLE[s.cls].order + 1) * 1000 + Math.min(999, lineLength(s.points) / 10), path: s.points, minZoom: CLASS_LABEL_MINZOOM[s.cls] });
-  });
-  data.waterLines.forEach((w, i) => {
-    const mid = w.points[w.points.length >> 1];
-    if (!streetLabelVisible(labelCtx, w.name, mid[0], mid[1])) { if (w.name === opts.ask) labelStats.withheld++; return; }
-    labelStats.water++;
-    addCandidate({ id: `w${i}`, text: w.name, kind: 'water', priority: 8000 + Math.min(999, lineLength(w.points) / 10), path: w.points, minZoom: lineLength(w.points) > 1500 ? 12.5 : 14.5 });
-  });
-  if (neighbourhoodLabelVisible(labelCtx)) data.hoods.forEach((h, i) => { labelStats.hood++; addCandidate({ id: `h${i}`, text: h.name.toUpperCase(), kind: 'hood', priority: 9000, at: h.at, minZoom: 13, maxZoom: 18.5 }); });
-}
 let poisLoaded = false;
 async function loadPois(): Promise<void> {
   if (poisLoaded) return; poisLoaded = true;
-  const file = await gunzipJson<OrientationPoiFile>(await fetchBytes(`${EXTRACT}/orientation-pois.json`, 'pois'));
-  // The game's own POI rule chain: spoiler screen, then thinning (ownPois.ts).
-  const fc = ownPoiFeatures(file, name => !poiLabelVisible(labelCtx, name));
-  fc.features.forEach((f, i) => { labelStats.poi++; addCandidate({ id: `p${i}`, text: f.properties.name, kind: 'poi', priority: f.properties.rank, at: toLocal(f.geometry.coordinates[0], f.geometry.coordinates[1]), minZoom: 16.5 }); });
+  const [file, branded, logo] = await Promise.all([
+    fetchBytes(`${EXTRACT}/orientation-pois.json`, 'pois').then(b => gunzipJson<OrientationPoiFile>(b)),
+    fetchBytes(`${EXTRACT}/branded-pois.json`, 'pois').then(b => gunzipJson<BrandedPoi[]>(b)).catch(() => [] as BrandedPoi[]),
+    loadImage(BRAND_ICON_URLS['albert-heijn']).then(brandDisc).catch(() => null),
+  ]);
+  labels.setPois(file);
+  labels.setBranded(branded, logo ? { 'albert-heijn': logo } : {});
+  status.labels = labels.stats;
 }
-const FONT = '"Helvetica Neue", Arial, sans-serif';
-const PAINT: Record<LabelKind, LabelPaint> = {
-  street: { font: s => `600 ${s}px ${FONT}`, fill: '#34424d', halo: 'rgba(255,255,255,.92)', haloWidth: 1.8 },
-  water: { font: s => `italic 500 ${s}px ${FONT}`, fill: '#2f5f86', halo: 'rgba(236,244,250,.9)', haloWidth: 1.6 },
-  poi: { font: s => `400 ${s}px ${FONT}`, fill: '#34424d', halo: 'rgba(255,255,255,.92)', haloWidth: 1.6 },
-  hood: { font: s => `700 ${s}px ${FONT}`, fill: '#6D28D9', halo: 'rgba(255,255,255,.9)', haloWidth: 2 },
-};
-const fontSize = (kind: LabelKind, z: number) => Math.round(kind === 'hood' ? interpolateStops([[13, 11], [17, 16]], z)
-  : kind === 'poi' ? interpolateStops([[16.5, 10], [18, 12]], z)
-  : interpolateStops([[13, 10.5], [16, 12], [18, 14.5]], z));
-const advanceCache = new Map<string, number>();
-function advance(ch: string, kind: LabelKind): number {
-  const size = Math.round(fontSize(kind, cam.zoom));
-  const key = `${kind}|${size}|${ch}`;
-  let w = advanceCache.get(key);
-  if (w === undefined) { octx.font = PAINT[kind].font(size); w = octx.measureText(ch).width + (kind === 'hood' ? size * 0.12 : 0); advanceCache.set(key, w); }
-  return w;
-}
+
 function updateLabels(frame: ReturnType<typeof cameraFrame>, bounds: [number, number, number, number]): void {
   const t = performance.now();
-  const seen = new Set<LabelCandidate>();
-  for (let x = Math.floor(bounds[0] / BUCKET); x <= Math.floor(bounds[2] / BUCKET); x++)
-    for (let y = Math.floor(bounds[1] / BUCKET); y <= Math.floor(bounds[3] / BUCKET); y++)
-      for (const c of labelBuckets.get(`${x},${y}`) ?? []) if ((c.minZoom ?? 0) <= cam.zoom && cam.zoom < (c.maxZoom ?? 99)) seen.add(c);
   const vp = frame.viewport;
-  const placed = placeLabels([...seen], {
-    project: p => project(frame, p), width: vp.width, height: vp.height, zoom: cam.zoom,
-    advance, fontSize, maxDepth: frame.distance * 4, repeatDistance: 260,
-  });
-  drawPlacedLabels(octx, placed, PAINT);
+  // The pins and the rider marker (drawn after the labels) keep their ground clear.
+  const blocked: Array<[number, number, number, number]> = [];
+  const pin = (p: Vec2, label: number) => { const s = project(frame, p); if (s.depth > 0) blocked.push([s.x - label / 2, s.y - 50, s.x + label / 2, s.y]); };
+  if (routeLocal.length > 1) { pin(routeLocal[routeLocal.length - 1], 84); if (cam.zoom < 16) pin(routeLocal[0], 44); }
+  const r = project(frame, rider.at); if (r.depth > 0) blocked.push([r.x - 11, r.y - 11, r.x + 11, r.y + 11]);
+  const placed = labels.place(p => project(frame, p), vp.width, vp.height, cam.zoom, bounds, frame.distance * 4, blocked);
+  labels.draw(octx, placed);
   const dt = performance.now() - t;
-  if (dt > (S.labelWorst?.ms ?? 0)) S.labelWorst = { ms: Math.round(dt), candidates: seen.size, zoom: +cam.zoom.toFixed(2), pitch: Math.round(cam.pitch) };
+  if (dt > (S.labelWorst?.ms ?? 0)) S.labelWorst = { ms: Math.round(dt), candidates: placed.length, zoom: +cam.zoom.toFixed(2), pitch: Math.round(cam.pitch) };
   S.labelCount = placed.length;
-  S.placed = placed.map(p => ({ text: p.text, kind: p.kind }));
-  for (const p of placed) S.everPlaced.add(p.text);
+  S.placed = placed.map(p => ({ text: p.text, kind: p.kind, ...(p.icon ? { icon: true } : {}) }));
+  for (const p of placed) {
+    if (!p.text) continue;
+    if (!S.everPlaced.has(p.text)) (S.everPlacedKinds[p.kind] ??= []).push(p.text);
+    S.everPlaced.add(p.text);
+  }
   S.labelMs.push(performance.now() - t);
   S.labelCounts.push(placed.length);
 }
 
 // --- Overlay: pins, rider, attribution --------------------------------------
+const FONT = '"Helvetica Neue", Arial, sans-serif';
 function drawPin(x: number, y: number, colour: string, label: string): void {
   octx.save();
   octx.translate(x, y);
@@ -337,7 +339,7 @@ function drawOverlay(frame: ReturnType<typeof cameraFrame>): void {
     octx.restore();
   }
   octx.font = `400 10px ${FONT}`; octx.textAlign = 'right'; octx.textBaseline = 'bottom'; octx.fillStyle = 'rgba(30,41,59,.7)';
-  octx.fillText('© OpenStreetMap contributors · BAG · own renderer', frame.viewport.width - 6, frame.viewport.height - 4);
+  octx.fillText('© OpenStreetMap contributors · BAG · GVB · own renderer', frame.viewport.width - 6, frame.viewport.height - 4);
 }
 
 // --- Views -------------------------------------------------------------------
@@ -392,23 +394,7 @@ function frameLoop(now: number): void {
   camera3.position.set(...frame.eye); camera3.up.set(...frame.up); camera3.lookAt(...frame.target);
   camera3.updateProjectionMatrix();
   // Zoom-dependent cartography: MapLibre-style px widths → metres at the centre.
-  for (const l of lineLayers) {
-    const st = STREET_STYLE[l.cls];
-    const px = interpolateStops(st.width, cam.zoom);
-    const visible = px >= MIN_LINE_PX;
-    l.fill.visible = visible;
-    (l.fill.material as THREE.ShaderMaterial).uniforms.uHalf.value = px / 2 * frame.mpp;
-    (l.fill.material as THREE.ShaderMaterial).uniforms.uOpacity.value = Math.min(1, px / 0.9);
-    if (l.casing) {
-      l.casing.visible = visible && px > 1.2;
-      (l.casing.material as THREE.ShaderMaterial).uniforms.uHalf.value = (px + st.casingExtra) / 2 * frame.mpp;
-    }
-  }
-  if (routeMeshes) {
-    const px = interpolateStops(ROUTE_WIDTH, cam.zoom);
-    (routeMeshes.line.material as THREE.ShaderMaterial).uniforms.uHalf.value = px / 2 * frame.mpp;
-    (routeMeshes.casing.material as THREE.ShaderMaterial).uniforms.uHalf.value = (px + 4) / 2 * frame.mpp;
-  }
+  flat.update(cam.zoom, frame.mpp);
   const rasterOpacity = 1 - fade(cam.zoom, BUILDING_RASTER_FADE);
   for (const m of rasterTiles) { m.visible = rasterOpacity > 0.01; (m.material as THREE.ShaderMaterial).uniforms.uOpacity.value = rasterOpacity; }
   const bounds = visibleBounds(frame, 6000);
@@ -417,7 +403,7 @@ function frameLoop(now: number): void {
   // Handover: overview → own-ground near field round the rider.
   const nearBlend = fade(cam.zoom, NEAR_FIELD_FADE);
   if (nearBlend > 0) void ensureNearField();
-  if (cam.zoom >= 16.3) void loadPois();
+  if (cam.zoom >= 15.5) void loadPois();
   handover.uRider.value.set(rider.at[0], rider.at[1]);
   handover.uNearR.value = NEAR_RADIUS;
   handover.uNear.value = nearGroup ? nearBlend : 0;
@@ -462,15 +448,19 @@ async function main(): Promise<void> {
   requestAnimationFrame(frameLoop);
   try {
     await Promise.all([loadOverview(), loadRoute()]);
-    await timed('labelCandidates', () => buildLabelCandidates());
-    status.labels = labelStats;
+    flat.setRoute(routeLocal);
+    labels = await timed('labelCandidates', () => new OwnMapLabels(data, labelCtx, octx));
+    status.labels = labels.stats;
+    applyAnswered();
     minimap = new Minimap(data);
     applyView(q.get('cam') ? 'cam' : opts.view);
     S.ready = true;
     ms.firstFrameReady = Math.round(performance.now() - t0);
-    await loadBuildingRaster();
+    await Promise.all([loadBuildingRaster(), loadTransit()]);
+    status.labels = labels.stats;
     ms.allLoaded = Math.round(performance.now() - t0);
-    if (cam.zoom >= 16) { await ensureNearField(); await loadPois(); }
+    if (cam.zoom >= 15.5) await loadPois();
+    if (cam.zoom >= 16) await ensureNearField();
     status.loaded = true;
   } catch (e) {
     status.error = String((e as Error)?.stack ?? e);

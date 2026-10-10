@@ -138,6 +138,42 @@ test('labels: the street under question is never drawn', async ({ page }) => {
   expect(r.status.labels.withheld).toBeGreaterThan(0);
 });
 
+test('labels: the new overlays never place the asked name (POIs, brands, food, ferry, answered lettering)', async ({ page }) => {
+  test.setTimeout(180_000);
+  // Every name earned, transit + ferries on, and the asked street also "answered":
+  // the lettering must be withheld and no overlay label may say the name.
+  const status = await openOwn(page, `path=1&labels=all&transit=1&ask=Nassaukade&answered=Nassaukade&rider=${RIDER.lng},${RIDER.lat},${RIDER.bearing}`);
+  expect(status.answered).toMatchObject({ name: 'Nassaukade', placed: 0, withheld: true });
+  await page.waitForTimeout(22_000);
+  const r = await page.evaluate(() => { const s = (window as any).__ownMap; return { ever: [...s.everPlaced], kinds: s.everPlacedKinds, status: s.status }; });
+  // The overlays did draw along the path (so "never placed" is not vacuous).
+  expect(Object.keys(r.kinds)).toEqual(expect.arrayContaining(['street', 'water', 'poi', 'food', 'ferry']));
+  expect(r.ever.filter((t: string) => /nassaukade/i.test(t)), 'question name never placed').toEqual([]);
+  expect(r.status.overlays.transitLines).toBeGreaterThan(20);
+  // A ferry terminal named after the asked street is withheld too.
+  const ferry = await openOwn(page, `view=city&ask=Buiksloterweg&rider=${RIDER.lng},${RIDER.lat},${RIDER.bearing}`);
+  await page.waitForTimeout(1500);
+  expect(ferry.labels.withheldOverlay, 'Buiksloterweg ⛴ withheld').toBeGreaterThan(0);
+  const ferryPlaced = await page.evaluate(() => [...(window as any).__ownMap.everPlaced]);
+  expect(ferryPlaced.filter((t: string) => /buiksloterweg/i.test(t))).toEqual([]);
+});
+
+test('answered street: lettering is painted ahead on the road once answered, and nothing third-party loads', async ({ page }) => {
+  test.setTimeout(120_000);
+  const hosts = new Set<string>();
+  page.on('request', r => hosts.add(new URL(r.url()).host));
+  const status = await openOwn(page, `view=street&ask=Kinkerstraat&answered=Nassaukade&answeredOk=0&transit=1&rider=${RIDER.lng},${RIDER.lat},${RIDER.bearing}`);
+  expect(status.answered).toMatchObject({ name: 'Nassaukade', placed: 1 });
+  // Ahead of the rider, along Nassaukade (bearing within 40° of the rider's).
+  const d = ((status.answered.bearing - RIDER.bearing + 540) % 360) - 180;
+  expect(Math.abs(d)).toBeLessThan(40);
+  await page.waitForTimeout(4000);
+  mkdirSync(OUT, { recursive: true });
+  await page.screenshot({ path: `${OUT}/${test.info().project.name}-answered-street-own.png` });
+  expect([...hosts].filter(h => !/^(localhost|127\.0\.0\.1)(:\d+)?$/.test(h)), 'only our own server').toEqual([]);
+  expect(await page.evaluate(() => (window as any).__ownMap.status.footprintWorker)).toBe(true);
+});
+
 const results: unknown[] = [];
 for (const variant of [{ label: 'fixed camera path (labels as game: earned only)', query: '' }, { label: 'fixed camera path, every name labelled (worst case)', query: '&labels=all' }]) {
   test(`perf: ${variant.label}`, async ({ page }, info) => {

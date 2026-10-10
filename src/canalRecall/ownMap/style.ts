@@ -2,7 +2,7 @@
 // MapLibre-style (a few zoom stops, interpolated geometrically like
 // `['interpolate', ['exponential', 2], ['zoom'], …]`). Pure data + maths.
 
-import type { StreetClass } from './overviewFormat';
+import type { LanduseClass, RailKind, StreetClass } from './overviewFormat';
 
 export type Stops = ReadonlyArray<readonly [number, number]>;
 
@@ -57,3 +57,39 @@ export const FOOTPRINT_MIN_ZOOM = 13.5;
 export const NEAR_FIELD_FADE: [number, number] = [16.0, 16.8];
 
 export const fade = (zoom: number, [a, b]: [number, number]) => Math.max(0, Math.min(1, (zoom - a) / (b - a)));
+
+// --- v2 layers: landuse, rail, piers, neighbourhood boundaries -----------------
+// Colours read like Liberty's landcover/landuse and rail layers (the game's
+// basemap today), kept quieter than parks so the canals still lead.
+
+export const LANDUSE_STYLE: Record<LanduseClass, { fill: string; order: number }> = {
+  farmland: { fill: '#eef0da', order: 0 },
+  industrial: { fill: '#ebe5e1', order: 1 },
+  construction: { fill: '#e9e3d8', order: 2 },
+  allotments: { fill: '#e1ebcc', order: 3 },
+  cemetery: { fill: '#d6e2cb', order: 4 },
+  green: { fill: '#dfecca', order: 5 },
+  wetland: { fill: '#d8e7d7', order: 6 },
+  wood: { fill: '#c9dfb2', order: 7 },
+  sport: { fill: '#cfe7c0', order: 8 },
+  sand: { fill: '#f3e8c6', order: 9 },
+};
+
+export interface RailStyle { fill: string; width: Stops }
+/** By kind. Service tracks (yards, sidings) draw at 60 % width; tunnels dashed and faint (RAIL_TUNNEL_STYLE). */
+export const RAIL_STYLE: Record<RailKind, RailStyle> = {
+  rail: { fill: '#a9a6a2', width: [[10, 0.5], [13, 1.0], [16, 1.8], [18, 3], [20, 6]] },
+  light_rail: { fill: '#a9a6a2', width: [[11, 0.4], [14, 1], [18, 2.4]] },
+  subway: { fill: '#a9a6a2', width: [[11, 0.4], [14, 1], [18, 2.4]] },
+  tram: { fill: '#b3aca6', width: [[13, 0.3], [15, 0.8], [18, 1.6], [20, 3]] },
+  narrow_gauge: { fill: '#b3aca6', width: [[13, 0.3], [16, 1], [18, 1.8]] },
+  monorail: { fill: '#b3aca6', width: [[13, 0.3], [16, 1], [18, 1.8]] },
+  funicular: { fill: '#b3aca6', width: [[13, 0.3], [16, 1], [18, 1.8]] },
+};
+export const RAIL_TUNNEL_STYLE = { opacity: 0.45, dash: [3, 2] as [number, number] };
+
+/** Piers: land laid over the water (areas) and walkways (lines). */
+export const PIER_STYLE = { fill: '#f4f0e8', width: [[14, 1], [16, 2.5], [18, 6], [20, 18]] as Stops };
+
+/** vector-map.js `neighborhood-boundaries` (:1455): purple, line-dasharray [3,3] (in widths), 48 %, from z13. */
+export const HOOD_BOUNDARY_STYLE = { color: '#8B5CF6', width: [[13, 1], [18, 2.5]] as Stops, opacity: 0.48, dash: [3, 3] as [number, number], minZoom: 13 };

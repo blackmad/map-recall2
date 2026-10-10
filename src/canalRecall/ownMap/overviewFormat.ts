@@ -22,8 +22,33 @@ export function streetClassOf(highway: string | undefined): StreetClass | null {
   }
 }
 
+/** Landuse drawing classes (v2). OSM landuse/natural/leisure values map onto these (`landuseClassOf`). */
+export const LANDUSE_CLASSES = ['green', 'wood', 'wetland', 'sport', 'cemetery', 'allotments', 'farmland', 'industrial', 'construction', 'sand'] as const;
+export type LanduseClass = typeof LANDUSE_CLASSES[number];
+
+export function landuseClassOf(kind: string | undefined): LanduseClass | null {
+  switch (kind) {
+    case 'grass': case 'meadow': case 'recreation_ground': case 'village_green': case 'grassland': case 'dog_park': return 'green';
+    case 'forest': case 'wood': case 'scrub': case 'heath': return 'wood';
+    case 'wetland': return 'wetland';
+    case 'pitch': case 'sports_centre': case 'stadium': case 'golf_course': case 'track': case 'playground': return 'sport';
+    case 'cemetery': return 'cemetery';
+    case 'allotments': return 'allotments';
+    case 'farmland': case 'orchard': case 'greenhouse_horticulture': case 'plant_nursery': return 'farmland';
+    case 'industrial': case 'commercial': case 'retail': case 'railway': case 'port': case 'military': case 'brownfield': return 'industrial';
+    case 'construction': return 'construction';
+    case 'beach': case 'sand': return 'sand';
+    default: return null;
+  }
+}
+
+/** Track kinds (v2), OSM `railway` values. */
+export const RAIL_KINDS = ['rail', 'light_rail', 'subway', 'tram', 'narrow_gauge', 'monorail', 'funicular'] as const;
+export type RailKind = typeof RAIL_KINDS[number];
+export const RAIL_TUNNEL = 1, RAIL_BRIDGE = 2, RAIL_SERVICE = 4;
+
 export interface OverviewFile {
-  version: 1;
+  version: 1 | 2;
   frame: { origin: [number, number]; kx: number; ky: number };
   unit: number;
   bounds: [number, number, number, number];
@@ -38,6 +63,15 @@ export interface OverviewFile {
   waterLines: number[][];
   /** Neighbourhoods: [nameIndex, labelX, labelY] (unit integers, absolute). */
   hoods: number[][];
+  /** v2: [classIndex, ...rings] (LANDUSE_CLASSES). */
+  landuse?: number[][][];
+  /** v2: [kindIndex, flags, ...line] (RAIL_KINDS; flags RAIL_TUNNEL | RAIL_BRIDGE | RAIL_SERVICE). */
+  rail?: number[][];
+  /** v2: pier areas (one ring each) and pier lines. */
+  piers?: number[][];
+  pierLines?: number[][];
+  /** v2: neighbourhood outlines (closed rings), for the dashed boundaries. */
+  hoodRings?: number[][];
   sources: string[];
 }
 
@@ -72,10 +106,15 @@ export interface OverviewData {
   streets: OverviewStreet[];
   waterLines: Array<{ name: string; points: Vec2[] }>;
   hoods: Array<{ name: string; at: Vec2 }>;
+  landuse: Array<{ cls: LanduseClass; rings: Vec2[][] }>;
+  rail: Array<{ kind: RailKind; tunnel: boolean; bridge: boolean; service: boolean; points: Vec2[] }>;
+  piers: Vec2[][];
+  pierLines: Vec2[][];
+  hoodRings: Vec2[][];
 }
 
 export function decodeOverview(file: OverviewFile): OverviewData {
-  if (file.version !== 1) throw new Error(`own-map overview: unsupported version ${file.version}`);
+  if (file.version !== 1 && file.version !== 2) throw new Error(`own-map overview: unsupported version ${file.version}`);
   const u = file.unit;
   const name = (i: number) => (i >= 0 ? file.names[i] ?? '' : '');
   return {
@@ -85,5 +124,10 @@ export function decodeOverview(file: OverviewFile): OverviewData {
     streets: file.streets.map(row => ({ cls: STREET_CLASSES[row[0]], name: name(row[1]), points: decodeLine(row, u, 2) })),
     waterLines: file.waterLines.map(row => ({ name: name(row[0]), points: decodeLine(row, u, 1) })),
     hoods: file.hoods.map(([n, x, y]) => ({ name: name(n), at: [x * u, y * u] as Vec2 })),
+    landuse: (file.landuse ?? []).map(([[c], ...rings]) => ({ cls: LANDUSE_CLASSES[c], rings: rings.map(r => decodeLine(r, u)) })),
+    rail: (file.rail ?? []).map(row => ({ kind: RAIL_KINDS[row[0]], tunnel: !!(row[1] & RAIL_TUNNEL), bridge: !!(row[1] & RAIL_BRIDGE), service: !!(row[1] & RAIL_SERVICE), points: decodeLine(row, u, 2) })),
+    piers: (file.piers ?? []).map(r => decodeLine(r, u)),
+    pierLines: (file.pierLines ?? []).map(r => decodeLine(r, u)),
+    hoodRings: (file.hoodRings ?? []).map(r => decodeLine(r, u)),
   };
 }

@@ -11,6 +11,7 @@ import * as THREE from 'three';
 import earcut from 'earcut';
 import type { Vec2 } from './frame';
 import { fromLocal } from './frame';
+import { footprintArrays, type FootprintArrays, type FootprintFeature } from './footprints';
 
 const DITHER = /* glsl */`
 float bayer4(vec2 p){ int x=int(mod(p.x,4.)), y=int(mod(p.y,4.)); int i=x+y*4;
@@ -58,14 +59,57 @@ export function fillMaterial(color: string, z: number): THREE.ShaderMaterial {
   });
 }
 
-export function lineMaterial(color: string, z: number): THREE.ShaderMaterial {
+export interface LineMaterialOptions {
+  /** Dashed: set `uDash` (dash, gap) in metres each frame. */
+  dash?: boolean;
+  /** Per-vertex colour from the geometry's `aColor` (lineGeometry `colors`). */
+  vertexColor?: boolean;
+  /** Real alpha blending instead of the screen-door dither: for translucent
+   *  overlays (transit casings, dashed boundaries), where a dither stipples.
+   *  Joins overlap, so a join is a little darker; fine at these opacities. */
+  blend?: boolean;
+}
+
+export function lineMaterial(color: string, z: number, opts: LineMaterialOptions = {}): THREE.ShaderMaterial {
+  const defines: Record<string, string> = {};
+  if (opts.dash) defines.DASH = '';
+  if (opts.vertexColor) defines.VCOLOR = '';
+  if (opts.blend) defines.BLEND = '';
   return new THREE.ShaderMaterial({
-    uniforms: flatUniforms(color, z) as unknown as Record<string, THREE.IUniform>,
+    defines,
+    uniforms: { ...flatUniforms(color, z), uDash: { value: new THREE.Vector2(0, 0) } } as unknown as Record<string, THREE.IUniform>,
     vertexShader: /* glsl */`
-      uniform float uZ; uniform float uHalf; attribute vec2 aDir; attribute vec2 aCorner; varying vec2 vWorld;
-      void main(){ vec2 n=vec2(-aDir.y,aDir.x); vec2 p=position.xy+(n*aCorner.x+aDir*aCorner.y)*uHalf; vWorld=p;
+      uniform float uZ; uniform float uHalf; attribute vec2 aDir; attribute vec2 aCorner; attribute float aDist; varying vec2 vWorld; varying float vDist;
+      #ifdef VCOLOR
+      attribute vec3 aColor; varying vec3 vColor;
+      #endif
+      void main(){ vec2 n=vec2(-aDir.y,aDir.x); vec2 p=position.xy+(n*aCorner.x+aDir*aCorner.y)*uHalf; vWorld=p; vDist=aDist+aCorner.y*uHalf;
+        #ifdef VCOLOR
+        vColor=aColor;
+        #endif
         gl_Position=projectionMatrix*modelViewMatrix*vec4(p,uZ,1.); }`,
-    fragmentShader: FRAG,
+    fragmentShader: /* glsl */`
+      uniform vec3 uColor; uniform float uOpacity; uniform vec2 uDash; varying vec2 vWorld; varying float vDist;
+      #ifdef VCOLOR
+      varying vec3 vColor;
+      #endif
+      ${DITHER}
+      void main(){
+        #ifdef DASH
+        if(uDash.x>0. && mod(vDist, uDash.x+uDash.y) > uDash.x) discard;
+        #endif
+        float a=uOpacity*nearKeep(vWorld);
+        #ifdef BLEND
+        if(a<0.004) discard;
+        #else
+        if(a<bayer4(gl_FragCoord.xy)) discard; a=1.;
+        #endif
+        #ifdef VCOLOR
+        gl_FragColor=vec4(vColor,a);
+        #else
+        gl_FragColor=vec4(uColor,a);
+        #endif
+      }`,
     // In three's transparent list (ordered by renderOrder, after the opaque 3D),
     // so the flat layers keep their cartographic order among themselves.
     transparent: true,
@@ -96,30 +140,80 @@ export function polygonGeometry(polygons: readonly (readonly (readonly Vec2[])[]
  * pixel, which gives MapLibre's perspective-thinning for free). Each quad
  * reaches half a width past its ends, so joins and ends are square-capped.
  */
-export function lineGeometry(lines: readonly (readonly Vec2[])[]): THREE.BufferGeometry {
+export function lineGeometry(lines: readonly (readonly Vec2[])[], colors?: readonly string[]): THREE.BufferGeometry {
   let segs = 0;
   for (const l of lines) segs += Math.max(0, l.length - 1);
-  const pos = new Float32Array(segs * 12), dir = new Float32Array(segs * 8), corner = new Float32Array(segs * 8);
+  const pos = new Float32Array(segs * 12), dir = new Float32Array(segs * 8), corner = new Float32Array(segs * 8), dist = new Float32Array(segs * 4);
+  const col = colors ? new Float32Array(segs * 12) : null;
   const idx = new Uint32Array(segs * 6);
+  const c = new THREE.Color();
   let s = 0;
-  for (const l of lines) for (let i = 1; i < l.length; i++) {
-    const [ax, ay] = l[i - 1], [bx, by] = l[i];
-    const len = Math.hypot(bx - ax, by - ay) || 1, dx = (bx - ax) / len, dy = (by - ay) / len;
-    const v = s * 4;
-    const put = (k: number, x: number, y: number, side: number, ext: number) => {
-      pos.set([x, y, 0], (v + k) * 3); dir.set([dx, dy], (v + k) * 2); corner.set([side, ext], (v + k) * 2);
-    };
-    put(0, ax, ay, 1, -1); put(1, ax, ay, -1, -1); put(2, bx, by, 1, 1); put(3, bx, by, -1, 1);
-    idx.set([v, v + 1, v + 2, v + 1, v + 3, v + 2], s * 6);
-    s++;
-  }
+  lines.forEach((l, li) => {
+    if (col) c.setStyle(colors![li] ?? '#ffffff', THREE.LinearSRGBColorSpace);
+    // Arc length along the line, for dashes (continuous across vertices).
+    let along = 0;
+    for (let i = 1; i < l.length; i++) {
+      const [ax, ay] = l[i - 1], [bx, by] = l[i];
+      const len = Math.hypot(bx - ax, by - ay) || 1, dx = (bx - ax) / len, dy = (by - ay) / len;
+      const v = s * 4;
+      const put = (k: number, x: number, y: number, side: number, ext: number, d: number) => {
+        pos.set([x, y, 0], (v + k) * 3); dir.set([dx, dy], (v + k) * 2); corner.set([side, ext], (v + k) * 2); dist[v + k] = d;
+        if (col) col.set([c.r, c.g, c.b], (v + k) * 3);
+      };
+      put(0, ax, ay, 1, -1, along); put(1, ax, ay, -1, -1, along); put(2, bx, by, 1, 1, along + len); put(3, bx, by, -1, 1, along + len);
+      idx.set([v, v + 1, v + 2, v + 1, v + 3, v + 2], s * 6);
+      along += len;
+      s++;
+    }
+  });
   const g = new THREE.BufferGeometry();
   g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   g.setAttribute('aDir', new THREE.BufferAttribute(dir, 2));
   g.setAttribute('aCorner', new THREE.BufferAttribute(corner, 2));
+  g.setAttribute('aDist', new THREE.BufferAttribute(dist, 1));
+  if (col) g.setAttribute('aColor', new THREE.BufferAttribute(col, 3));
   g.setIndex(new THREE.BufferAttribute(idx, 1));
   g.computeBoundingSphere();
   return g;
+}
+
+/**
+ * Text lying on the ground (the answered-street lettering): a CanvasTexture
+ * quad of `heightM` metres, its top pointing along `bearing` (degrees
+ * clockwise from north), so it reads from the saddle like road paint.
+ */
+export function groundTextMesh(text: string, opts: { heightM: number; bearing: number; at: Vec2; fill: string; halo: string; haloPx?: number; letterSpacingEm?: number; opacity?: number; z?: number }): THREE.Mesh {
+  const px = 96, pad = 12;
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d')!;
+  const font = `700 ${px}px "Helvetica Neue", Arial, sans-serif`;
+  ctx.font = font;
+  const spacing = (opts.letterSpacingEm ?? 0) * px;
+  const chars = [...text];
+  const widths = chars.map(ch => ctx.measureText(ch).width);
+  const w = Math.ceil(widths.reduce((a, b) => a + b, 0) + spacing * (chars.length - 1) + pad * 2);
+  canvas.width = w; canvas.height = Math.ceil(px * 1.25 + pad * 2);
+  ctx.font = font; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+  let x = pad;
+  for (const pass of [0, 1]) {
+    x = pad;
+    chars.forEach((ch, i) => {
+      if (pass === 0) { ctx.strokeStyle = opts.halo; ctx.lineWidth = (opts.haloPx ?? 1.4) * (px / 24) * 2; ctx.strokeText(ch, x, canvas.height / 2); }
+      else { ctx.fillStyle = opts.fill; ctx.fillText(ch, x, canvas.height / 2); }
+      x += widths[i] + spacing;
+    });
+  }
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 8;
+  const h = opts.heightM * canvas.height / px, wM = h * canvas.width / canvas.height;
+  const geo = new THREE.PlaneGeometry(wM, h);
+  const mat = new THREE.MeshBasicMaterial({ map: tex, transparent: true, opacity: opts.opacity ?? 1, depthWrite: false });
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.position.set(opts.at[0], opts.at[1], opts.z ?? 0.4);
+  // Plane faces +z; its +y (text up) turned from north to the bearing.
+  mesh.rotation.z = -opts.bearing * Math.PI / 180;
+  mesh.renderOrder = 45;
+  return mesh;
 }
 
 // --- Coarse buildings: the z12 footprint raster (building-overview/) --------
@@ -160,42 +254,23 @@ export function rasterMaterial(texture: THREE.Texture, color: string, z: number)
 }
 
 // --- Footprints from the z14 building tiles, extruded --------------------------
+// Arrays come from footprints.ts (built in footprintWorker.ts on the page).
 
-export interface FootprintFeature { properties: { height?: number; minHeight?: number }; geometry: { type: string; coordinates: unknown } }
+export type { FootprintFeature } from './footprints';
 
-/** Extruded footprints with baked shading (tops light, walls by facing). `heightScale` 0 gives flat footprints. */
-export function footprintGeometry(features: readonly FootprintFeature[], toLocal: (lng: number, lat: number) => Vec2, top: string, wall: string): THREE.BufferGeometry {
-  const pos: number[] = [], col: number[] = [], idx: number[] = [];
-  const cTop = new THREE.Color(top), cWall = new THREE.Color(wall);
-  const sun = new THREE.Vector2(-0.6, 0.8).normalize();
-  for (const f of features) {
-    const g = f.geometry;
-    const polys = (g.type === 'Polygon' ? [g.coordinates] : g.type === 'MultiPolygon' ? g.coordinates : []) as number[][][][];
-    const h = Math.max(3, Number(f.properties.height) || 9);
-    for (const poly of polys) {
-      const flat: number[] = [], holes: number[] = [];
-      const rings = poly.map(r => r.map(([lng, lat]) => toLocal(lng, lat)));
-      rings.forEach((ring, i) => { if (i) holes.push(flat.length / 2); for (const [x, y] of ring) flat.push(x, y); });
-      let base = pos.length / 3;
-      for (let i = 0; i < flat.length; i += 2) { pos.push(flat[i], flat[i + 1], h); col.push(cTop.r, cTop.g, cTop.b); }
-      for (const t of earcut(flat, holes, 2)) idx.push(base + t);
-      for (const ring of rings) for (let i = 1; i < ring.length; i++) {
-        const [ax, ay] = ring[i - 1], [bx, by] = ring[i];
-        const len = Math.hypot(bx - ax, by - ay) || 1;
-        const shade = 0.72 + 0.22 * Math.max(0, ((by - ay) * sun.x - (bx - ax) * sun.y) / len);
-        base = pos.length / 3;
-        pos.push(ax, ay, 0, bx, by, 0, bx, by, h, ax, ay, h);
-        for (let k = 0; k < 4; k++) col.push(cWall.r * shade, cWall.g * shade, cWall.b * shade);
-        idx.push(base, base + 1, base + 2, base, base + 2, base + 3);
-      }
-    }
-  }
+/** A geometry from footprint arrays (worker output, or footprintArrays on the main thread). */
+export function footprintGeometryFromArrays(a: FootprintArrays): THREE.BufferGeometry {
   const geo = new THREE.BufferGeometry();
-  geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
-  geo.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
-  geo.setIndex(pos.length / 3 > 65535 ? new THREE.Uint32BufferAttribute(idx, 1) : new THREE.Uint16BufferAttribute(idx, 1));
+  geo.setAttribute('position', new THREE.BufferAttribute(a.position, 3));
+  geo.setAttribute('color', new THREE.BufferAttribute(a.color, 3));
+  geo.setIndex(new THREE.BufferAttribute(a.index, 1));
   geo.computeBoundingSphere();
   return geo;
+}
+
+/** Main-thread fallback (no worker). */
+export function footprintGeometry(features: readonly FootprintFeature[], toLocal: (lng: number, lat: number) => Vec2, top: string, wall: string): THREE.BufferGeometry {
+  return footprintGeometryFromArrays(footprintArrays(features, toLocal, top, wall));
 }
 
 /** z14 tile keys (x/y) covering a local box. */

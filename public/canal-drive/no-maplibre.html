@@ -13,7 +13,9 @@
   #hud{position:fixed;left:16px;top:16px;right:16px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;pointer-events:none}
   #hud button{pointer-events:auto;border:1px solid rgba(15,23,42,.18);background:rgba(255,255,255,.92);border-radius:6px;padding:6px 10px;font:inherit;color:inherit;cursor:pointer}
   #stats{font:11px ui-monospace,Menlo,monospace;color:#334155;background:rgba(255,255,255,.8);border-radius:4px;padding:3px 6px;width:max-content;max-width:100%}
-  @media (max-width:600px){#minimap{width:112px;height:112px;left:12px;bottom:18px}#hud{left:12px;right:12px;top:12px}#hud button{padding:5px 8px}}
+  #hud .short{display:none}
+  /* Phone: one row that never wraps (short labels, tighter padding); the stats line sits under it. */
+  @media (max-width:600px){#minimap{width:112px;height:112px;left:12px;bottom:18px}#hud{left:12px;right:12px;top:calc(8px + env(safe-area-inset-top));gap:4px}#hud button{padding:6px 7px;font-size:12px;white-space:nowrap;flex:0 0 auto}#hud .long{display:none}#hud .short{display:inline}#stats{font-size:10px}}
 </style>
 </head>
 <body>
@@ -24,9 +26,9 @@
 <div id="hud">
   <button data-view="city">City</button>
   <button data-view="district">District</button>
-  <button data-view="route">Route preview</button>
+  <button data-view="route"><span class="long">Route preview</span><span class="short">Route</span></button>
   <button data-view="street">Street</button>
-  <button data-view="path">Play path</button>
+  <button data-view="path"><span class="long">Play path</span><span class="short">Play</span></button>
   <i style="flex-basis:100%;height:0"></i><div id="stats"></div>
 </div>
 <script type="module" src="js/no-maplibre.bundle.js"></script>

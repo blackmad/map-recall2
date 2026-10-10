@@ -104,7 +104,7 @@ test('gestures: drag grabs the ground, zoom and rotate keep the cursor point, pi
 test('labels: collision never overlaps, curved text follows the line and reads upright', () => {
   const advance = () => 7;
   const fontSize = () => 12;
-  const identity = (p: Vec2) => ({ x: p[0], y: p[1], depth: 10 });
+  const identity = (p: readonly number[]) => ({ x: p[0], y: p[1], depth: 10 });
   const cands: LabelCandidate[] = [];
   for (let i = 0; i < 60; i++) cands.push({ id: `p${i}`, text: `Place ${i}`, kind: 'poi', priority: i, at: [400 + (i % 6) * 20, 300 + Math.floor(i / 6) * 8] });
   // An arc drawn right-to-left: must come out reversed (upright) and bend glyph by glyph.
