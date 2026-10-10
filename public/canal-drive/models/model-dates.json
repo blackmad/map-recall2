@@ -456,6 +456,11 @@
       "version": "0f0d28a0b10dc329",
       "dateSource": "asset-update"
     },
+    "de-bazel.lod1": {
+      "updatedAt": "2026-10-10T13:42:42.052Z",
+      "version": "debefe5d88aa0733",
+      "dateSource": "asset-update"
+    },
     "de-beurs-van-berlage": {
       "updatedAt": "2026-10-04T12:49:59+02:00",
       "version": "1e46ca4ddd8d41f9",
@@ -834,6 +839,16 @@
     "gerard-dou-synagogue.lod1": {
       "updatedAt": "2026-10-10T13:42:19.980Z",
       "version": "84e4e57a14499640",
+      "dateSource": "asset-update"
+    },
+    "grasweg-116": {
+      "updatedAt": "2026-10-10T18:02:53.806Z",
+      "version": "85c1b0475f2b437a",
+      "dateSource": "asset-update"
+    },
+    "grasweg-116.lod1": {
+      "updatedAt": "2026-10-10T18:02:38.299Z",
+      "version": "e893086356cec71e",
       "dateSource": "asset-update"
     },
     "groot-melkhuis": {
@@ -1546,6 +1561,11 @@
       "version": "0e0bc548e60872da",
       "dateSource": "asset-update"
     },
+    "motorkade-1.lod1": {
+      "updatedAt": "2026-10-10T13:42:41.837Z",
+      "version": "7909cb0df51ddfa4",
+      "dateSource": "asset-update"
+    },
     "mountain-network": {
       "updatedAt": "2026-10-06T07:08:41.417Z",
       "version": "e816e9aece23222c",
@@ -1849,6 +1869,16 @@
     "oudemanhuispoort": {
       "updatedAt": "2026-10-09T18:13:07.286Z",
       "version": "764350d7441638ae",
+      "dateSource": "asset-update"
+    },
+    "overtoom-197": {
+      "updatedAt": "2026-10-10T18:02:53.711Z",
+      "version": "3c2fd3bfa54187f0",
+      "dateSource": "asset-update"
+    },
+    "overtoom-197.lod1": {
+      "updatedAt": "2026-10-10T18:02:38.299Z",
+      "version": "d503990e546acf74",
       "dateSource": "asset-update"
     },
     "pakhuis-de-zwijger": {
@@ -2426,6 +2456,11 @@
       "version": "e025cb21d3c9917c",
       "dateSource": "asset-update"
     },
+    "voc-kade-600.lod1": {
+      "updatedAt": "2026-10-10T13:42:41.788Z",
+      "version": "dbedba98667186bb",
+      "dateSource": "asset-update"
+    },
     "vondelkerk": {
       "updatedAt": "2026-10-10T04:24:49.587Z",
       "version": "535b21638d220e5f",
@@ -2539,6 +2574,16 @@
     "willem-de-zwijgerkerk.lod1": {
       "updatedAt": "2026-10-10T13:42:20.766Z",
       "version": "44d9bdd970743222",
+      "dateSource": "asset-update"
+    },
+    "willem-de-zwijgerlaan-350": {
+      "updatedAt": "2026-10-10T18:02:53.755Z",
+      "version": "468551ae2ad8ccca",
+      "dateSource": "asset-update"
+    },
+    "willem-de-zwijgerlaan-350.lod1": {
+      "updatedAt": "2026-10-10T18:02:38.300Z",
+      "version": "225929abe497d0d1",
       "dateSource": "asset-update"
     },
     "willet-holthuysen": {

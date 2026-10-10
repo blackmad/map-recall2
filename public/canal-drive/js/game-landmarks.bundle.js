@@ -26836,6 +26836,382 @@ Map source: ${osmUrl(places[i][0])}`);
         ]
       },
       category: "ordinary"
+    },
+    {
+      id: "overtoom-197",
+      name: "Overtoom 197-205",
+      category: "ordinary",
+      modelUrl: "./models/overtoom-197.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012236683"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.870535062741945,
+          52.361065939922995
+        ],
+        headingDegrees: 67,
+        lengthMetres: 63.39,
+        widthMetres: 43.63
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.870600492221925,
+          52.36099180314638
+        ],
+        northOffsetDegrees: 0,
+        source: "PDOK BAG 0363100012236683 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      materialOverrides: {
+        brick: "#5e3b2e",
+        ochre: "#8f5f49",
+        greyBrick: "#4a3027",
+        white: "#e6e1d3",
+        concrete: "#b9b3a4",
+        stone: "#6f6e6b",
+        dark: "#2e3030",
+        glass: "#55656f",
+        frame: "#2a2a2a",
+        red: "#c4313a",
+        slate: "#4b5053"
+      },
+      preservePositionPrecision: true,
+      attribution: {
+        title: "Overtoom 197-205 original architecture",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236683",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.8708758376600185,
+              52.36107631480404
+            ],
+            [
+              4.870869236204824,
+              52.36108599277411
+            ],
+            [
+              4.870857929948229,
+              52.36110257977309
+            ],
+            [
+              4.870843517134966,
+              52.36112371899433
+            ],
+            [
+              4.870772152894216,
+              52.36122602974726
+            ],
+            [
+              4.870647727030378,
+              52.36140445082457
+            ],
+            [
+              4.870058926733979,
+              52.361249537921296
+            ],
+            [
+              4.8700595254535175,
+              52.36124855188499
+            ],
+            [
+              4.870147432698217,
+              52.36112514767665
+            ],
+            [
+              4.870174431499675,
+              52.361087256428
+            ],
+            [
+              4.87021599666031,
+              52.361028927743355
+            ],
+            [
+              4.8702349344943325,
+              52.361033980667635
+            ],
+            [
+              4.870393701375216,
+              52.360783493410956
+            ],
+            [
+              4.870422660516757,
+              52.3607385912343
+            ],
+            [
+              4.8704860815389655,
+              52.36075487524632
+            ],
+            [
+              4.870588978127944,
+              52.36078128093358
+            ],
+            [
+              4.870691318577011,
+              52.36080754928818
+            ],
+            [
+              4.870738800366388,
+              52.36081973710918
+            ],
+            [
+              4.870743641037262,
+              52.36081250511826
+            ],
+            [
+              4.870797360853667,
+              52.36082605930371
+            ],
+            [
+              4.870901946075814,
+              52.36085246309581
+            ],
+            [
+              4.871005316553188,
+              52.360878555914866
+            ],
+            [
+              4.8710085222312784,
+              52.36087936081444
+            ],
+            [
+              4.8708758376600185,
+              52.36107631480404
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "willem-de-zwijgerlaan-350",
+      name: "Willem de Zwijgerlaan 350",
+      category: "ordinary",
+      modelUrl: "./models/willem-de-zwijgerlaan-350.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012107360"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.857935205703695,
+          52.382751329087405
+        ],
+        headingDegrees: 43.5,
+        lengthMetres: 60.05,
+        widthMetres: 45
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.857886657266777,
+          52.38277338486945
+        ],
+        northOffsetDegrees: 0,
+        source: "PDOK BAG 0363100012107360 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      materialOverrides: {
+        white: "#e2dccb",
+        ochre: "#6b3b2b",
+        concrete: "#bcb6a8",
+        stone: "#8a8478",
+        glass: "#4f5b64",
+        frame: "#3a3e41",
+        dark: "#2c2e30",
+        gold: "#b79a4a",
+        slate: "#6c7072"
+      },
+      preservePositionPrecision: true,
+      attribution: {
+        title: "Willem de Zwijgerlaan 350 original architecture",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012107360",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.857842013838999,
+              52.383083198997376
+            ],
+            [
+              4.85779872545066,
+              52.383055161556356
+            ],
+            [
+              4.857388435955259,
+              52.382789411488545
+            ],
+            [
+              4.857436015412877,
+              52.382761897254845
+            ],
+            [
+              4.857597802429414,
+              52.38266837575599
+            ],
+            [
+              4.857974943143374,
+              52.38245034818551
+            ],
+            [
+              4.8580283931219315,
+              52.382419462594115
+            ],
+            [
+              4.858476257997118,
+              52.382709546190625
+            ],
+            [
+              4.858481971479139,
+              52.38271324767387
+            ],
+            [
+              4.857842013838999,
+              52.383083198997376
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "grasweg-116",
+      name: "Grasweg 116-124",
+      category: "ordinary",
+      modelUrl: "./models/grasweg-116.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012252853"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.89858584959278,
+          52.39352754913396
+        ],
+        headingDegrees: 32.5,
+        lengthMetres: 50.4,
+        widthMetres: 33.34
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.898453590331491,
+          52.393541072969875
+        ],
+        northOffsetDegrees: 0,
+        source: "PDOK BAG 0363100012252853 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      materialOverrides: {
+        greyBrick: "#3b3330",
+        brick: "#6e5b4f",
+        ochre: "#a98d72",
+        glass: "#566873",
+        frame: "#25282a",
+        concrete: "#8c877f",
+        slate: "#4a4e50"
+      },
+      preservePositionPrecision: true,
+      attribution: {
+        title: "Grasweg 116-124 original architecture",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012252853",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.898261442564199,
+              52.39363733942169
+            ],
+            [
+              4.898334858231587,
+              52.393609106612594
+            ],
+            [
+              4.89830488992182,
+              52.393579611222414
+            ],
+            [
+              4.898380176633398,
+              52.3935508917865
+            ],
+            [
+              4.898349954825058,
+              52.39352173689252
+            ],
+            [
+              4.898424450095068,
+              52.39349283440866
+            ],
+            [
+              4.898395089793372,
+              52.393464159427324
+            ],
+            [
+              4.8984684608185125,
+              52.393435944326605
+            ],
+            [
+              4.898438881553602,
+              52.39340714262489
+            ],
+            [
+              4.8986284227074215,
+              52.393334378527534
+            ],
+            [
+              4.898637921975762,
+              52.39334292004409
+            ],
+            [
+              4.898776621199279,
+              52.39328969189194
+            ],
+            [
+              4.8990305333553295,
+              52.3935322193042
+            ],
+            [
+              4.898416271471725,
+              52.393768236707196
+            ],
+            [
+              4.898412114410257,
+              52.39376418408996
+            ],
+            [
+              4.898328887079236,
+              52.39368296059192
+            ],
+            [
+              4.898314206767004,
+              52.39368861615594
+            ],
+            [
+              4.898261442564199,
+              52.39363733942169
+            ]
+          ]
+        ]
+      }
     }
   ];
 
