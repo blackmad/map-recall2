@@ -587,7 +587,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
 }
 // Held models keep their manifest entry (rebuildable) but are flagged so
 // listing pages like whats-new.html leave them out.
-for(const spec of MANUAL_LANDMARKS){const entry=manifest.models?.[spec.id];if(!entry)continue;if((spec as {status?:string}).status==='held')entry.held=true;else delete entry.held;}
+for(const spec of MANUAL_LANDMARKS){const entry=manifest.models?.[spec.id];if(!entry)continue;if((spec as {status?:string}).status==='held')entry.held=true;else delete entry.held;
+ // Taxonomy (src/canalRecall/buildingCategory.ts): listing pages must not count ordinary blocks as landmarks.
+ if(spec.buildingCategory&&spec.buildingCategory!=='landmark')entry.category=spec.buildingCategory;else delete entry.category;}
 fs.writeFileSync(path.join(out,'signature-landmarks.json'),JSON.stringify(manifest,null,2)+'\n');
 // Model URLs stay stable; a content fingerprint prevents a cached old imported
 // mesh being loaded with the new original model's native placement.

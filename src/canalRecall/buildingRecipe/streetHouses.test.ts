@@ -94,7 +94,7 @@ test('shared asset cache decodes a URL once and frees it with the last instance'
 });
 
 test('runtime spec: instance entries become shared, mirrored, rotated placements; legacy entries stay on their own origin', () => {
-  const base = {id: 'ordinary-1', buildingId: 'NL.IMBAG.Pand.1', name: 'x', anchor: [4.87, 52.36] as [number, number], footprint: {type: 'Polygon' as const, coordinates: []}, height: 16, modelUrl: './m.glb', hash: 'h', bounds: {min: [-3, 0, -1], max: [3, 17, 20]}};
+  const base = {id: 'ordinary-1', category: 'street-survey', buildingId: 'NL.IMBAG.Pand.1', name: 'x', anchor: [4.87, 52.36] as [number, number], footprint: {type: 'Polygon' as const, coordinates: []}, height: 16, modelUrl: './m.glb', hash: 'h', bounds: {min: [-3, 0, -1], max: [3, 17, 20]}};
   const legacy = ordinarySpecFor(base as Entry);
   assert.equal(legacy.sharedModel, undefined);
   assert.equal(runtimePlacement(legacy, {min: [0, 0, 0], max: [1, 1, 1]}).modelRotationDegrees, 90);

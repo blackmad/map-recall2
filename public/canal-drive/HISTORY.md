@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## Three building categories; Street surveys page (2026-10-10)
+
+User: landmarks are the curated list; ordinary buildings are one-off
+medium-fidelity reconstructions of large non-landmark buildings; street
+surveys are the repetitive canal-house / block work aiming at reusable
+geometry. Root cause of Bilderdijkstraat houses on the landmark page:
+`signatureModels.ts` spread every ordinary-catalogue entry into
+`SIGNATURE_MODELS`, which feeds the landmark page and the landmark,
+route-selection and presentation bundles. Every catalogue/chunk entry now
+carries a typed `category` (`buildingCategory.ts`, writers set it);
+SIGNATURE_MODELS is landmarks only; the game still draws everything via
+GAME_BUILDING_MODELS. 13 non-POI Haparandaweg blocks are ordinary; Het 4e
+Gymnasium stays a landmark. New `street-surveys.html`: street → face →
+house, status, strip vs model, limits, superseded per-house models link
+to their face, and a full Bilderdijkstraat pand table (124 pands; 37 by
+faces, 81 still generic). Pand …156732 is Jacob van Lennepstraat 66, not
+Bilderdijkstraat.
+
 ## Block-face review counts storey bands; street shots show the gables (2026-10-10)
 
 The opening counter mixed arcade transoms, fanlights and mezzanines with
