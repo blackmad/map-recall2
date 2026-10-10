@@ -97,7 +97,11 @@ export function planFaceGround(face: BlockFaceIntent, facts: BuildingFacts[], ma
         const at = (q: number[]) => ((q[0] - p0[0]) * wv[0] + (q[1] - p0[1]) * wv[1]) / wl;
         along = [at(cut.pairs[k][0]), at(cut.pairs[k][1])];
       }
-      if (!along && value > eavesBefore[i] - 0.5) throw Error(`${m6(face.houses[i].pandId)}: frontRoof re-pitches the roof under eaves BELOW 3DBAG's; measured ${value} m vs 3DBAG ${eavesBefore[i]} m`);
+      // The survey roof must stand clear above the measured eaves at the facade (a mansard top, a dormer, or a ridge run out
+      // to the front: Bilderdijkstraat 199, ridge end 18.8 m over a 15.9 m cornice), else there is nothing to re-pitch.
+      const ff0 = f.fronts[0], [q0] = ff0.endpointsRD, nq = ff0.outwardNormalRD, onFront = (v: number[]) => Math.abs((v[0] - q0[0]) * nq[0] + (v[1] - q0[1]) * nq[1]) <= 0.05;
+      const facadeTop = Math.max(...f.roofsRD.flatMap(r => r.vertices).filter(onFront).map(v => v[2] - f.attributes.b3_h_maaiveld));
+      if (!(facadeTop > value + 0.5)) throw Error(`${m6(face.houses[i].pandId)}: frontRoof needs survey roof above the measured eaves at the facade; roof ${cm(facadeTop)} m vs eaves ${value} m`);
       // The eaves in this pand's own height datum (the fit reads roof heights above b3_h_maaiveld), rounded as the fit rounds it.
       f = repitchFrontRoof(f, value + f.attributes.b3_h_maaiveld, {topNap: fr.topRow === undefined ? undefined : row(fr.topRow), pitchDeg: fr.pitchDeg, along});
     }
