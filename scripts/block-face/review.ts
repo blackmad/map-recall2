@@ -84,7 +84,7 @@ export async function reviewFace(faceId: string, glbOverride?: string, label?: s
   const lines = (yTop: number, h: number) => strip.spans.map((s: any) => `<line x1="${s.px[0]}" y1="${yTop}" x2="${s.px[0]}" y2="${yTop + h}" stroke="#ff2d55" stroke-width="2"/>`).join('') + `<line x1="${W - 1}" y1="${yTop}" x2="${W - 1}" y2="${yTop + h}" stroke="#ff2d55" stroke-width="2"/>`;
   const rowY = [titleH, titleH + LABEL + H + GAP, titleH + 2 * (LABEL + H + GAP)], infoY = titleH + 3 * (LABEL + H + GAP), partyY = infoY + INFO;
   const totalH = partyY + PARTY + 10;
-  const rowLabels = [`1. photo strip, rectified, ${strip.date} (Gemeente Amsterdam panoramas, CC BY 4.0) · ${ppm} px/m`, `2. model, orthographic, same frame and scale${label ? ' · ' + label : ''}`, '3. overlay 50 %'];
+  const rowLabels = [`1. photo strip, rectified, ${strip.date} (Gemeente Amsterdam panoramas, CC BY 4.0) · ${ppm} px/m`, `2. model, orthographic, same frame and scale${label ? ' · ' + label : ''}${(report.rears ?? []).length ? ' · street side only: rear facades are INFERRED (plain window grid, not shown here)' : ''}`, '3. overlay 50 %'];
   let svg = `<svg width="${W}" height="${totalH}" xmlns="http://www.w3.org/2000/svg"><style>text{font-family:Helvetica,Arial}</style>`;
   svg += `<text x="10" y="30" font-size="22" font-weight="bold" fill="#1f2328">${esc(face.street)} · block face ${esc(face.id)} · ${face.houses.length} pands · ${report.triangles.chunk} tris · ${(report.bytes.chunk / 1024).toFixed(0)} KB · ${report.passed ? 'gates pass' : 'GATES FAIL'}</text>`;
   rowY.forEach((y, k) => { svg += `<rect x="0" y="${y}" width="${W}" height="${LABEL}" fill="#1f2328"/><text x="8" y="${y + 21}" font-size="16" fill="#fff">${esc(rowLabels[k])}</text>` + lines(y + LABEL, H); });
@@ -105,7 +105,11 @@ export async function reviewFace(faceId: string, glbOverride?: string, label?: s
     checks.forEach((c, k) => { svg += tx(126 + k * 16, 12, clip(`${c.pass ? '✓' : '✗'} ${c.what.replace(' (bottom→top)', '')}: ${c.expected} vs ${c.measured.replace(/ at y.*$/, '')}`, 12), c.pass ? '#1d7a35' : '#c62828'); });
     const wc = wall[i];
     if (wc) svg += tx(126 + checks.length * 16, 12, clip(`${wc.pass ? '✓' : '✗'} wall ${toHex(wc.photo)} photo / ${toHex(wc.model)} model${wc.pass ? '' : ': ' + wc.note}`, 12), wc.pass ? '#1d7a35' : '#c62828');
-    (h.rhythm.schemaLimits ?? []).slice(0, 4).forEach((l, k) => { svg += tx(126 + checks.length * 16 + 20 + k * 15, 11, clip(`limit: ${l}`, 11), '#6b4e00'); });
+    // Backs are not photographed: the plain window grid in the model is INFERRED from storey heights and width.
+    const rear = (report.rears ?? []).find((r: any) => r.pandId === h.pandId);
+    const rearLines = rear ? [`rear: INFERRED (no photo), ${rear.windows} plain windows`] : [];
+    rearLines.forEach((l, k) => { svg += tx(126 + checks.length * 16 + 18 + k * 15, 11, clip(l, 11), '#7a1fa2', 'bold'); });
+    (h.rhythm.schemaLimits ?? []).slice(0, 3).forEach((l, k) => { svg += tx(126 + checks.length * 16 + 20 + (rearLines.length + k) * 15, 11, clip(`limit: ${l}`, 11), '#6b4e00'); });
     void cbad;
   });
   report.interference.forEach((it: any, i: number) => {

@@ -661,8 +661,22 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
     if(crown){
       const c=crown,p=c.profile;
       if(p.some(v=>v[1]>eaves+EPS)){
-        const s=new T.Shape();s.moveTo(0,eaves);for(const [x,y] of p)s.lineTo(x,y);s.lineTo(length,eaves);s.closePath();
-        const g=new T.ExtrudeGeometry(s,{depth:c.depthM,bevelEnabled:false});g.translate(0,0,-c.depthM+.02);add(g,c.surface??'wall',`crown/${recipe.house.gable.value}`,facade);
+        // A crown that rises over only part of the front (a narrow stepped gable) has profile edges lying ON the eaves
+        // line. Extruding the single closed polygon then makes a zero-height strip for the whole front width: a
+        // downward bottom wall and an upward top wall at the same height (13 m x depth), the downward half reading as an
+        // inverted roof with open sky. Build one solid per run of edges that leave the eaves line instead.
+        const pts:CanalhousePoint[]=[[0,eaves],...p,[length,eaves]],onEaves=(v:CanalhousePoint)=>Math.abs(v[1]-eaves)<=EPS;
+        const chains:CanalhousePoint[][]=[];let chain:CanalhousePoint[]=[];
+        for(let i=0;i+1<pts.length;i++){
+          if(onEaves(pts[i])&&onEaves(pts[i+1])){if(chain.length)chains.push(chain);chain=[];continue;}
+          if(!chain.length)chain.push(pts[i]);
+          chain.push(pts[i+1]);
+        }
+        if(chain.length)chains.push(chain);
+        for(const run of chains){
+          const s=new T.Shape(run.map(v=>new T.Vector2(v[0],v[1])));
+          const g=new T.ExtrudeGeometry(s,{depth:c.depthM,bevelEnabled:false});g.translate(0,0,-c.depthM+.02);add(g,c.surface??'wall',`crown/${recipe.house.gable.value}`,facade);
+        }
       }
       if(c.capFacing){
         const f=c.capFacing,top=Math.max(...p.map(v=>v[1]));
