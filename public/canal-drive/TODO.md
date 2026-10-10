@@ -19,6 +19,13 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
+- **Photo crowns, follow-ups**: check Utrechtsestraat 178784 (point gable
+  ~3 m higher in photo) and 178875 front b (5 steps, not 3); bilder 162444
+  authored neck 4.1 m above the photo eaves (likely authoring error); compiled
+  eaves 2.2–2.8 m below the visible facade top on 178876/178875c/178784; the
+  gallery's lopsided 156287 gable is not in the photo nor the authored
+  outline — trace it (the gallery model is the retired per-house GLB); no
+  canal-house gold set for the classifier (heuristic confidence 0.4–0.5).
 - **Building taxonomy (user, 2026-10-10)**, in progress on the street-surveys
   lane: (1) landmark buildings = curated list only (only these count for
   discovery/quiz/What's new/route selection); (2) ordinary buildings = one-off
