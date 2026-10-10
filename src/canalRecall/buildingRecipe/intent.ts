@@ -112,19 +112,25 @@ export interface FrontIntent {
 }
 
 /**
- * A real local shop. Only what a photo or register supports; every field is optional.
+ * A real local shop. Only what a photo or register supports; every field but `colour`/`fascia` is optional.
  * `evidence` records where it came from (photo id/date, OSM node) so a later pass can audit it.
+ * One schema for per-house intents and block-face houses; unknown keys are rejected (no silent misspellings).
  */
 export interface ShopfrontIntent {
   colour: string;
   fascia: boolean;
   awning?: ShopAwningIntent;
-  /** Business as named by the evidence, and the sign it carries. */
+  /** Business as named by the evidence. */
   name?: string;
-  sign?: {text: string; textColour: string; /** fascia colour; default the shop colour */ background?: string; /** share of the fascia the text spans, 0.3..0.95 */ span?: number; align?: 'left' | 'centre' | 'right'};
+  /** The sign as read on the dated photo, drawn as real lettering (signage.ts). `null` in a `sameAs` override removes the base design's sign. */
+  sign?: ShopSign | null;
   /** Where the shop entrance is; `centre-recessed` sets the glazed door back in a portal between display windows. */
   entrance?: typeof SHOP_ENTRANCES[number];
+  /** Pane division when `displayWindows` is not given: `split` (default) divides by width, `single`/`transom` keep one pane per span. */
   glazing?: typeof SHOP_GLAZING[number];
+  /** Separate display-window panes across the shop glass (shared between the spans either side of a door by width). */
+  displayWindows?: number;
+  /** Stall riser under the shop glass (default `medium`). */
   stallriser?: typeof STALLRISERS[number];
   stallriserColour?: string;
   /** Fascia paint when it differs from the shop joinery (a pale sign board over dark joinery); default the sign background, else the shop colour. */
@@ -135,6 +141,26 @@ export interface ShopfrontIntent {
   shopShare?: number;
   evidence?: string;
 }
+
+/**
+ * Shop sign: `text` (letters, digits, & ' - . and spaces; drawn as capitals), its letter colour, and where it is
+ * mounted: on the fascia board (default; needs `fascia: true`), on the wall band above the glass, or on the glass.
+ */
+export interface ShopSign {
+  text: string;
+  textColour: string;
+  mount?: typeof SIGN_MOUNTS[number];
+  /** Fascia colour; default the shop colour. */
+  background?: string;
+  /** Share of the sign band the text may span, 0.3..0.95 (default 0.8). */
+  span?: number;
+  align?: 'left' | 'centre' | 'right';
+}
+export const SIGN_MOUNTS = ['fascia', 'wall', 'glazing'] as const;
+/** Characters the sign lettering can draw (signage.ts GLYPHS, case-folded). */
+export const SIGN_TEXT = /^[A-Za-z0-9&'.\- ]{1,40}$/;
+const SHOPFRONT_KEYS = ['colour', 'fascia', 'awning', 'name', 'sign', 'entrance', 'glazing', 'displayWindows', 'stallriser', 'stallriserColour', 'fasciaColour', 'residentialDoor', 'shopShare', 'evidence'];
+const SIGN_KEYS = ['text', 'textColour', 'mount', 'background', 'span', 'align'];
 
 /** Fabric awning over the shop glass: `extent` is the covered share of the front width, as fractions from the viewer's left (default the whole shop front). */
 export interface ShopAwningIntent { style: typeof AWNING_STYLES[number]; colour: string; extent?: { from: number; to: number } }
@@ -249,7 +275,21 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.shopfront) {
       const sf = f.shopfront;
       colour(sf.colour, `${at}.shopfront.colour`);
-      if (sf.sign) { if (!sf.sign.text?.trim() || sf.sign.text.length > 40) problems.push(`${at}.shopfront.sign.text: 1..40 chars`); colour(sf.sign.textColour, `${at}.shopfront.sign.textColour`); if (sf.sign.background) colour(sf.sign.background, `${at}.shopfront.sign.background`); if (sf.sign.span !== undefined && !(sf.sign.span >= 0.3 && sf.sign.span <= 0.95)) problems.push(`${at}.shopfront.sign.span: 0.3..0.95`); }
+      for (const k of Object.keys(sf)) if (!SHOPFRONT_KEYS.includes(k)) problems.push(`${at}.shopfront.${k}: unknown field (one of ${SHOPFRONT_KEYS.join(', ')})`);
+      if (typeof sf.fascia !== 'boolean') problems.push(`${at}.shopfront.fascia must be true or false`);
+      const sign = sf.sign;
+      if (sign) {
+        for (const k of Object.keys(sign)) if (!SIGN_KEYS.includes(k)) problems.push(`${at}.shopfront.sign.${k}: unknown field (one of ${SIGN_KEYS.join(', ')})`);
+        if (typeof sign.text !== 'string' || !sign.text.trim() || !SIGN_TEXT.test(sign.text)) problems.push(`${at}.shopfront.sign.text: 1..40 of A-Z a-z 0-9 & ' - . space`);
+        colour(sign.textColour, `${at}.shopfront.sign.textColour`);
+        if (sign.background) colour(sign.background, `${at}.shopfront.sign.background`);
+        if (sign.span !== undefined && !(sign.span >= 0.3 && sign.span <= 0.95)) problems.push(`${at}.shopfront.sign.span: 0.3..0.95`);
+        if (sign.align !== undefined) oneOf(sign.align, ['left', 'centre', 'right'], `${at}.shopfront.sign.align`);
+        if (sign.mount !== undefined) oneOf(sign.mount, SIGN_MOUNTS, `${at}.shopfront.sign.mount`);
+        if ((sign.mount ?? 'fascia') === 'fascia' && !sf.fascia) problems.push(`${at}.shopfront.sign: a fascia-mounted sign needs fascia: true`);
+        if (sign.mount && sign.mount !== 'fascia' && sf.fascia) problems.push(`${at}.shopfront.sign: a ${sign.mount}-mounted sign with a fascia board; mount it on the fascia or drop the board`);
+      } else if (sign !== undefined && sign !== null) problems.push(`${at}.shopfront.sign must be an object (or null in an override)`);
+      if (sf.displayWindows !== undefined) count(sf.displayWindows, `${at}.shopfront.displayWindows`, 1, 8);
       if (sf.entrance !== undefined) oneOf(sf.entrance, SHOP_ENTRANCES, `${at}.shopfront.entrance`);
       if (sf.glazing !== undefined) oneOf(sf.glazing, SHOP_GLAZING, `${at}.shopfront.glazing`);
       if (sf.stallriser !== undefined) oneOf(sf.stallriser, STALLRISERS, `${at}.shopfront.stallriser`);

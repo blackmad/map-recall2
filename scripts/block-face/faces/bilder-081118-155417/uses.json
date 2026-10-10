@@ -1,0 +1,233 @@
+{
+ "street": "Bilderdijkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T02:17:18.897Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012081118",
+   "addresses": [
+    "Bilderdijkstraat 134"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 134-H",
+     "use": "bijeenkomstfunctie,winkelfunctie",
+     "areaM2": 221,
+     "bagId": "0363010000586159"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087959",
+   "addresses": [
+    "Bilderdijkstraat 132"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 132-H",
+     "use": "winkelfunctie",
+     "areaM2": 193,
+     "bagId": "0363010000586152"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11395804993,
+     "lngLat": [
+      4.8713,
+      52.3680387
+     ],
+     "tags": {
+      "name": "Thai Thara",
+      "shop": "massage"
+     },
+     "fetchedAt": "2026-10-10T02:17:18.897Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157650",
+   "addresses": [
+    "Bilderdijkstraat 130"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 130-H",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001020012"
+    },
+    {
+     "address": "Bilderdijkstraat 130-O",
+     "use": "winkelfunctie",
+     "areaM2": 169,
+     "bagId": "0363010001020013"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11395804992,
+     "lngLat": [
+      4.8712752,
+      52.3681007
+     ],
+     "tags": {
+      "name": "Amsterdam Bike Store",
+      "shop": "bicycle"
+     },
+     "fetchedAt": "2026-10-10T02:17:18.897Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156287",
+   "addresses": [
+    "Bilderdijkstraat 128"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 128-H",
+     "use": "winkelfunctie",
+     "areaM2": 106,
+     "bagId": "0363010003701643"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10768566963,
+     "lngLat": [
+      4.8712288,
+      52.3681421
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "128",
+      "addr:postcode": "1053LA",
+      "addr:street": "Bilderdijkstraat",
+      "name": "Danswinkel Amsterdam",
+      "opening_hours": "Tu-Sa 11:00-17:00",
+      "shop": "clothes",
+      "website": "https://www.danswinkelamsterdam.nl"
+     },
+     "fetchedAt": "2026-10-10T02:17:18.897Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156286",
+   "addresses": [
+    "Bilderdijkstraat 126"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 126-H",
+     "use": "winkelfunctie",
+     "areaM2": 1680,
+     "bagId": "0363010000586139"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 34045955,
+     "lngLat": [
+      4.871218,
+      52.3682131
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "126-H",
+      "addr:postcode": "1053KZ",
+      "addr:street": "Bilderdijkstraat",
+      "brand": "Dirk",
+      "brand:wikidata": "Q17502722",
+      "brand:wikipedia": "nl:Dirk (supermarkt)",
+      "name": "Dirk",
+      "old_name": "Dirk van den Broek",
+      "opening_hours": "Mo-Su 08:00-22:00; Su 09:00-22:00",
+      "phone": "+31 88 313 4265",
+      "shop": "supermarket",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.dirk.nl/winkels/amsterdam/bilderdijkstraat/27",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-10T02:17:18.897Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012155418",
+   "addresses": [
+    "Bilderdijkstraat 124"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 124-H",
+     "use": "winkelfunctie",
+     "areaM2": 264,
+     "bagId": "0363010000586134"
+    },
+    {
+     "address": "Bilderdijkstraat 124-H",
+     "use": "winkelfunctie",
+     "areaM2": 284,
+     "bagId": "0363010012119770"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155417",
+   "addresses": [
+    "Bilderdijkstraat 122"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 122-H",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000586130"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11395775540,
+     "lngLat": [
+      4.8711334,
+      52.3683023
+     ],
+     "tags": {
+      "name": "Only Diva's",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-10T02:17:18.897Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -73,12 +73,17 @@ narrow|medium|wide` and `crownCapRise: low|normal` shape the parapet cap (`low` 
 Facade check: `npm run compare:facades -- --id=<id> --glb=<model.glb> --spec=...` with `columns` (window axes) and
 `openings: ["2a3a42_glass"]` for recipe GLBs (see `scripts/landmarks/bilder-087959x-elevations.json`).
 
-**Local shops.** `shopfront` takes only evidenced details: `name`, `sign {text, textColour, background, span,
-align}` (real stroke-font geometry on the fascia, `signage.ts`, ~10 tris/letter, never mirrored), `fasciaColour`,
+**Local shops.** `shopfront` (ONE schema for per-house intents and block faces; unknown keys are rejected) takes
+only evidenced details: `name`, `sign {text, textColour, mount: fascia|wall|glazing, background, span, align}`
+(real stroke-font geometry, `signage.ts`, ~10 tris/letter, never mirrored; `fascia` (default) needs `fascia: true`,
+`wall` letters the band above the glass with no board, `glazing` letters the head of the widest pane), `fasciaColour`,
 `entrance` (none/centre/centre-recessed/left/right/left-recessed/right-recessed), `glazing`
-(single/split/transom), `stallriser` (none/low/medium/high) + `stallriserColour`, `residentialDoor {side,
+(single/split/transom), `displayWindows` (pane count across the shop glass, overrides `glazing`'s division),
+`stallriser` (none/low/medium/high) + `stallriserColour`, `residentialDoor {side,
 colour}` (a separate street door; `doorBay` is then ignored) with `shopShare`, and `evidence` (photo id/date, OSM
-node). Without a `sign` the fascia stays plain; no placeholder text is invented. Fronts with signs or side-specific
+node). Without a `sign` the fascia stays plain; no placeholder text is invented. The stroke font won an in-game
+comparison against the block-face lane's 5x7 block-capital decals on Bilderdijkstraat (2026-10-10): at 20-40 m the
+block letters broke up (DANSWINKEL read as DNSWNKEL), the strokes stayed legible. Fronts with signs or side-specific
 doors are not mirror-shared. Intent keys may not be called `top`, `left`, `position`... (coordinate guard).
 
 **Reuse.** `{"sameAs": "<neighbour id>", "id", "pandId", "address", "sources",
@@ -365,3 +370,100 @@ shared ground: re-grounding can flip discrete library decisions. In-game (`tests
 iPhone project, same camera): layer entries 7 -> 1, meshes 57 -> 23, custom-layer render() CPU 0.57 -> 0.42 ms (desktop),
 0.53 -> 0.39 ms (iPhone emulation on a Mac), page frame time 16.7 ms in both (vsync); all 7 pands resolve to their own BAG id
 under the cursor in chunk mode.
+
+## Block-face authoring (2026-10-10)
+
+The street-chunks pilot stitched houses that had already been authored one by one. Block-face authoring makes the
+face itself (one side of a street between two cross streets) the unit the author works on: one intake, one photo
+of the whole face, one intent, one compile, one review. Code: `src/canalRecall/blockFace/` (typed, tested) and
+`scripts/block-face/` (CLIs); faces live in `scripts/block-face/faces/<face>/`.
+
+```sh
+# 1. intake: discovery (3DBAG bbox + routing street), facts per pand, BAG/OSM ground-floor uses, rectified facade strip
+node --import tsx scripts/block-face/intake.ts --face=<id> --street=<Street> --seed=<pand> [--from=<pand> --to=<pand>] \
+     [--date=YYYY-MM-DD] [--span-date=<pand6>:YYYY-MM-DD,...]           # staging/block-face/<id>/strip-labelled.png
+# 2. write scripts/block-face/faces/<id>/intent.json while looking at the strip (schema: blockFace/intent.ts)
+# 3. compile: one chunk GLB + gates + interference + GLB audit; --install upserts chunks.json (replaces chunks on the same pands)
+node --import tsx scripts/block-face/compile.ts --face=<id> [--install]
+# 4. review: ONE strip sheet (photo | ortho model | 50 % overlay | uses, gates, facade-compare | party-line verdicts)
+node --import tsx scripts/block-face/review.ts --face=<id> [--glb=<other chunk> --label=<text>]
+PW_PORT=4410 npx playwright test tests/e2e/block-face.spec.ts --project=desktop --project=iphone   # in-game street shots
+node --import tsx --test src/canalRecall/blockFace/blockFace.test.ts
+```
+
+**Intake.** `discover.ts` takes every 3DBAG pand in a growing bbox, keeps those with a frontage on the street whose
+sightline crosses no other pand, and walks shared BAG edges (>= 1 m, same facing) from the seed; it records why the face
+ends (`discovery.json`: the next fronting pand and its distance). `uses.ts` assigns BAG verblijfsobjecten (address,
+gebruiksdoel) and OSM shop/amenity/craft/office nodes (inside, address match, or within 8 m of the frontage; assigned
+over the whole face so a node near a party wall goes to the nearer pand). `strip.ts` picks ONE capture day for the face
+(most frontages within 35 deg, leaf-off and recency break ties), rectifies each frontage from up to three panoramas of that
+day with `facade/rectify.ts` (AMSTERDAM_WORLD_ALIGNED, `lensFor` camera heights), median-fuses them, and lays them out in
+the chunk frame at 40 px/m on one ground line (median 3DBAG ground NAP). Spans whose day shows scaffolding or a parked
+van take another day with `--span-date` and are labelled with it. Raw responses are cached under `.cache/`.
+
+**Intent** (`blockFace/intent.ts`). Houses left to right, each with the canal-house design (or `sameAs` another pand of
+the face plus overrides), a `groundFloor` use reconciled from evidence (`use`, trading `name`, OSM category/id, BAG
+gebruiksdoel, `photoDate`, `agreement`: osm-and-photo / photo-only / osm-only / bag-only / conflict) and a `rhythm` spec
+with a strip citation, photo counts (`photoRows`, `photoGables`) and `schemaLimits` (what the schema cannot express).
+Face level: `streetLevel`, `corniceGroups` (houses whose eaves read as one line on the strip, with evidence;
+`trust: "photo"` + `reference` when 3DBAG is wrong) and `identical` designs. The validator rejects shopfronts on
+residential ground floors, trading uses without a shopfront, signs that do not match the use name, missing rhythm
+items, unknown pands and houses out of street order. Houses use the canal-house `shopfront` schema above (sign
+`mount`, `displayWindows`). `scripts/street-chunks/build.ts` leaves out every pand a face covers and keeps the
+`chunk-face-*` entries in chunks.json on `--install`, so the two writers agree whichever runs last.
+
+**Compile** (`blockFace/compile.ts`). Front slits between neighbours (LoD2.2 ground rings that stop 4-10 cm apart at the
+street) are closed by moving both corners (and the roof corners) to their midpoint; heights are re-grounded on the median
+ground; cornice groups set the eaves lines (snapped when 3DBAG spreads <= 0.8 m, or to the reference pand's line when
+photo-trusted, else reported); `streetChunks.compileChunk` builds the one GLB (party walls trimmed, exposed walls above
+lower neighbours kept, per-pand ranges in extras). Gates per pand on the decoded GLB: triangles <= 3,000 per front,
+roof max vs LoD2.2 (+-0.5 m), eaves vs 3DBAG (+-0.5 m, photo-trusted lines against their line), storey heights
+2.3-4.6 m, plan IoU >= 0.9 vs BAG, grounded within 5 cm. Interference per party line: front gap/overlap <= 5 cm,
+surface inside the neighbour's footprint, street-side details reaching past the shared footprint edge (> 3 cm),
+coplanar same-facing overlap (facade > 1 dm2 or roof > 5 dm2 fails), and the eaves step against the cornice groups
+(`aligned`, `step-supported`, `step-not-supported`, `missing-step`). The GLB audit runs on the chunk; its hole check
+does not know party walls, so loops lying on a shared footprint edge are classified as trimmed party walls (all 10
+largest loops on both pilot faces) and only other loops fail.
+
+### Pilot results
+
+| | Bilderdijkstraat 122-134 (redo) | Utrechtsestraat 48-76 (new) |
+| --- | --- | --- |
+| Pands / fronts | 7 / 7 (face is 24 pands between the cross streets) | 10 / 13 (Concerto's pand has 4 fronts) |
+| Intake (compute) | 40 s (strip 36 s) | 68 s (Overpass 38 s), 24 s re-run with span dates |
+| Authoring | 1 intent pass ~6 min from strip to valid JSON + 1 correction pass ~5 min (eaves gate) | 1 pass, ~4 min after the strip incl. re-intake |
+| LLM passes / reviews | 2 / 1 sheet (per-house: 7 drafts, 7 contact sheets) | 1 / 1 sheet |
+| Compile + gates + audit | 2-10 s (machine load) | 1.6 s |
+| Triangles / primitives | 15,150 / 23 | 18,977 / 43 |
+| Bytes (gzip) | 991,016 (227,715) | 1,293,992 (298,637) |
+| Gates, interference | all pass (after pass 2) | all pass |
+
+Found by the strip review / face gates that the per-house process missed on Bilderdijkstraat (sheets:
+`staging/block-face/bilder-081118-155417/review/strip-sheet.png` and `strip-sheet-per-house-before.png`, the installed
+per-house chunk through the same review): the 1902-03 row (156287, 156286, 155418, 155417) is ground + 3 storeys +
+gable/mansard, the per-house recipes had 4 upper storeys; 081118 has 4 window axes, not 3; 155417's roof is dark slate,
+not red tile, and its cornice sits ~0.6-0.9 m below its neighbours' (the eaves gate failed pass 1, a zoomed crop
+confirmed it); 087959 is the same brick as 081118 on one date (its per-house photo was another day); no awning on
+156287 on the strip date; 156287 and 155418 are one design with mirrored ground floors (now `sameAs`); real addresses
+and shops (PLTS, Thai Thara, Amsterdam Bike Store, Danswinkel, Dirk van den Broek, an unnamed shop, Only Diva's) instead
+of the generic dark shopfront; crown edge trims reached 4 cm into the neighbour (library fix).
+Still wrong and visible on the sheets (schema limits, listed per house in `rhythm.schemaLimits`): off-centre gables are
+centred (081118, 156286, Utrechtsestraat 76), unequal bays are equal (157650's narrow entrance bay and wide studio
+windows; 156286's paired windows), a shopfront spans the whole width even where one bay is a residential entrance
+(157650), two-storey shopfronts are one storey (Concerto), white stucco renders beige under the recipe look
+(Utrechtsestraat 62, 70-72), 3DBAG hip roofs show above cornices in the orthographic view, lettering on glass is low
+contrast, and facade-compare's gable-peak count reads 0 on chunk spans (unreliable there; window rows are reliable).
+
+### Recommendation
+
+Make the block face the default authoring unit for ordinary attached buildings. The author sees what decides
+correctness: storey lines and cornices running across party walls (four wrong storey counts were invisible house by
+house and obvious across the strip), one capture date, twins and mirrored pairs, and every interference the
+gates measure lives exactly where two houses meet. Party walls never need modelling, the intake is a minute, and one
+pass (plus one correction triggered by a gate) replaced seven drafts and seven reviews. Per-house stays for:
+landmarks and anything with its own elevations file and camera-matched review (`review-sheet.ts`); detached or
+corner-standing buildings with several street sides (the face covers one street; a corner's second front is
+`inferred` on the face sheet); large buildings on the large tier; and faces where the strip is unusable (narrow
+streets with obliquity > 45 deg, all dates scaffolded). Next: per-bay widths and off-centre gables in the schema
+(the biggest remaining mismatch class), residential bays inside a shopfront, a stucco material that the recipe look
+leaves white, and a full-face run (Bilderdijkstraat's 24 pands between the cross streets).
