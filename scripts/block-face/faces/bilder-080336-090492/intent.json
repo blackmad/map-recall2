@@ -27,7 +27,7 @@
       "hoist": false,
       "gable": "flat",
       "storeys": 5,
-      "windows": "cross",
+      "windows": "two-light",
       "bands": "storey",
       "bays": [
        2,
@@ -126,7 +126,7 @@
       "hoist": false,
       "gable": "flat",
       "storeys": 5,
-      "windows": "cross",
+      "windows": "two-light",
       "bands": "storey",
       "bays": [
        3,
@@ -207,7 +207,7 @@
       "hoist": false,
       "gable": "flat",
       "storeys": 5,
-      "windows": "cross",
+      "windows": "two-light",
       "bands": "storey",
       "bays": [
        3,
@@ -301,7 +301,7 @@
       "hoist": false,
       "gable": "flat",
       "storeys": 5,
-      "windows": "cross",
+      "windows": "two-light",
       "bands": "storey",
       "bays": [
        2,
