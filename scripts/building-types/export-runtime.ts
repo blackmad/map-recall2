@@ -20,17 +20,29 @@ const out = 'public/canal-drive/building-types';
 fs.mkdirSync(out, {recursive: true});
 const round = (v: number, d: number) => +v.toFixed(d);
 const instances: any[] = [], units = new Set<string>(), held: Record<string, string> = {};
+// Several areas can produce the same unit (type, variant, storeys, roof, ridge, ground). Each area's build sizes the unit
+// mesh at its own median, so one canonical mesh per unit is chosen (the area with the most members) and every instance's
+// scale is computed against THAT mesh's nominal size.
+type Nominal = {L: number; W: number; eaves: number; ridge?: number};
+const canon = new Map<string, {area: string; members: number; nominal: Nominal}>();
+for (const area of areas) {
+  const rep = JSON.parse(fs.readFileSync(path.join('staging/building-types', area, 'report.json'), 'utf8')) as {groups: any[]};
+  for (const g of rep.groups) {
+    const unit = (g.key as string).replace(/\|/g, '__'), cur = canon.get(unit);
+    if (!cur || g.members > cur.members) canon.set(unit, {area, members: g.members, nominal: g.nominal});
+  }
+}
 for (const area of areas) {
   const dir = path.join('staging/building-types', area);
   const input = JSON.parse(fs.readFileSync(path.join(dir, 'instances.json'), 'utf8')) as {anchor: Anchor};
   const report = JSON.parse(fs.readFileSync(path.join(dir, 'report.json'), 'utf8')) as {chunkGroundNapM: number; groups: any[]; instancesDetail: any[]};
   const placements = new Map((JSON.parse(fs.readFileSync(path.join(dir, 'placements.json'), 'utf8')).placements as any[]).map(p => [p.pand, p]));
-  const nominal = new Map(report.groups.map(g => [g.key as string, g.nominal as {L: number; W: number; eaves: number; ridge?: number}]));
   for (const d of report.instancesDetail) {
     if (d.held) { held[d.pandId] = d.held; continue; }
-    const key = [d.type, d.variant, d.storeys, d.roofUsed, d.ridge, d.groundMode].join('|'), n = nominal.get(key);
+    const key = [d.type, d.variant, d.storeys, d.roofUsed, d.ridge, d.groundMode].join('|');
+    const unit = key.replace(/\|/g, '__'), n = canon.get(unit)?.nominal;
     if (!n) throw new Error(`no group ${key}`);
-    const unit = key.replace(/\|/g, '__'), t = placements.get(d.pandId).transform;
+    const t = placements.get(d.pandId).transform;
     const [lng, lat] = localToLngLat(input.anchor, [t.positionChunk[0], t.positionChunk[2]]);
     // yaw (rad) takes front +z to the world normal (sin yaw, cos yaw) in east/south; compass bearing of the front:
     const front = bearingDeg(Math.sin(t.yawRad), Math.cos(t.yawRad));
@@ -44,7 +56,7 @@ for (const area of areas) {
   }
 }
 for (const unit of units) {
-  const area = areas.find(a => fs.existsSync(path.join('staging/building-types', a, 'types', `${unit}.glb`)))!;
+  const area = canon.get(unit)!.area;
   fs.copyFileSync(path.join('staging/building-types', area, 'types', `${unit}.glb`), path.join(out, `${unit}.glb`));
 }
 fs.writeFileSync(path.join(out, 'instances.json'), JSON.stringify(instances) + '\n');
