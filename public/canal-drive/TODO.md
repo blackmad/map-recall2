@@ -44,10 +44,9 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   N and S fronts are blank (audit blank-wall FAIL, 45 x 25 m each); De Balie's
   front is straight where the real one is bowed; Concertgebouw has 151 open
   loops and 24/42 see-through rays from its glass promenade. Aron Schuster
-  synagogue held (brick too dark; banded rounded volumes, pale roof edges,
-  garden wall missing; rework in flight).
+  synagogue installed after rework; its rounded corner is still squared.
 - **Lanes cut off by the usage limit (2026-10-10)**, resume from their branches:
-  Aron Schuster synagogue rework committed at 763c54ae (unreviewed); the
+  the
   glbQuality false-positive fix (blank-wall only on outside-visible area,
   see-through closed under a roofed porch) is written and unit-tested but
   uncommitted in worktree agent-a9751763df4f4ceab, with palace doorway
@@ -180,6 +179,9 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   650–706 (paired casements, stone bands), 708–744, 788–868 (glass bays);
   retry 940–950 with another photo source; 582–648 after scaffolding. The
   street sheet framing was poor (bike drawn over a roof) — reshoot.
+- **Audit see-through test is hull-limited**: cast rays fully through the
+  bbox (or from outside the footprint) in `glbQuality.ts`; today concave
+  footprints flag false holes. Madame Tussauds has small roof-junction gaps.
 - **Review harness follow-ups**: `review-sheet.ts` needs ordinary-house
   support (no catalogue entry/anchor) before Bilderdijkstraat re-review; ground
   NAP offset not applied to the matched camera; record party-wall bearings per
