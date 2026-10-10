@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## Marnixstraat: per-house vs block face ties on time; the library is the bottleneck (2026-10-10)
+
+User asked why block faces looked slower. Timed on Marnixstraat 124–138 and
+106–122: ~12–17 s/house for a face vs ~12–19 s/house per-house once review is
+counted for both; the second face was faster (derived from the first).
+Neither path produced an acceptable house: both share library gaps — tall
+stepped gables (~3.2 m) come out as a 0.9 m pediment, the gable attic window
+is missing, tall 2-light sashes render as square 4-pane, brick reads orange.
+Per-house additionally skipped 3 of 8 houses and kept a 0.3–0.5 m eaves step.
+Faces repeat geometry for identical houses (+30% tris/house) — instancing
+needed. Library gaps queued on the schema lane. Faces staged, not installed.
+
 ## Block-face authoring becomes the default for attached buildings (2026-10-10)
 
 The user's point about chunks was modelling, not frame time. One intent per
