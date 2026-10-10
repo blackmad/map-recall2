@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+## Own ground on AHN relief: prototype, go (2026-10-10)
+
+`own-ground.html?box=nassaukade|leidsegracht` draws streets, cycle tracks,
+kerbed sidewalks, quays, sunken water and bridge decks as one mesh draped on
+AHN dtm_05m relief (2 m grid, 1 km tiles, NAP cm; water and quay-edge returns
+blanked before averaging). Decks are re-based on the relief and eased in over
+2.5 m, so roads and the route ribbon run over bridges with no step — the
+failure in the user's `?elevation=1` screenshot, where MapLibre painted roads
+flat across water. Buildings stand on the lowest relief of their footprint.
+iPhone 4× throttle: ground alone 1.2 ms CPU per frame for 2×2 km; GPU on a
+real phone unmeasured. City: ~38 MB relief at 2 m, ≤11 MB OSM ground.
+Named regressions BRU0166 (Nassaukade) and BRU0044 (Leidsegracht arch).
+Remaining ~3 weeks to a riding view: streaming in the chunk worker,
+shared-frame registration, hiding MapLibre fills inside the radius, draped
+overlays, labels, re-basing models; optional BGT road polygons for surveyed
+widths (only ~14% of OSM ways tag one). `docs/research/own-ground-20261009.md`.
+
 ## Audit hole fixes: one real hole, mostly false positives (2026-10-10)
 
 Gerard Dou synagogue had its east hall wall and west clerestory missing:

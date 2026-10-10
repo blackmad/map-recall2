@@ -11,6 +11,7 @@
     "compare:facades": "node --import tsx scripts/landmarks/facade-compare.ts",
     "review:sheet": "node --import tsx scripts/landmarks/review-sheet.ts",
     "test:facade-compare": "node --import tsx --test src/canalRecall/landmarks/facadeCompare.test.ts",
+    "test:own-ground": "node --import tsx --test src/canalRecall/ownGround/ownGround.test.ts",
     "test:glb-quality": "node --import tsx --test src/canalRecall/landmarks/glbQuality.test.ts",
     "test:block-kit-installed": "node --import tsx scripts/haparandaweg/check-installed.ts",
     "pand-reference": "node --import tsx scripts/pand-reference/run.ts",
