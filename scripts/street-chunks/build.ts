@@ -11,7 +11,7 @@
  *   report.json             all chunks + totals
  *
  * --install copies the GLBs to public/canal-drive/models/ordinary-buildings/chunks/ and the manifest to
- * public/canal-drive/ordinary-buildings-data/chunks.json (the loader reads them only with ?streetChunks=1).
+ * public/canal-drive/ordinary-buildings-data/chunks.json (the loader draws them unless ?streetChunks=0).
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -55,5 +55,7 @@ if (process.argv.includes('--install')) {
   await fs.mkdir(models, {recursive: true});
   for (const r of results) await fs.copyFile(path.join(out, `${r.name}.glb`), path.join(models, `chunk-${r.name}.glb`));
   await fs.copyFile(path.join(out, 'manifest.json'), 'public/canal-drive/ordinary-buildings-data/chunks.json');
+  // The demo page (street-chunks.html) reads the build report; re-run gates.ts --install afterwards for its fidelity table.
+  await fs.copyFile(path.join(out, 'report.json'), 'public/canal-drive/ordinary-buildings-data/chunks-report.json');
   console.log(`installed ${results.length} chunks to ${models} and ordinary-buildings-data/chunks.json`);
 }

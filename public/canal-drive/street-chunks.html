@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Street chunks</title>
+<style>
+  :root{--bg:#ebe7dd;--ink:#303b43;--mut:#6d6a63;--line:#d4cfc3;--card:#f7f4ec;--link:#2f5d8a;--good:#2f6b3d;--bad:#9a3a2a}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+  header{padding:22px 32px 6px}
+  h1{font-size:24px;margin:0 0 6px}
+  header p{margin:0 0 6px;color:var(--mut);max-width:80ch}
+  code{font-size:12.5px;background:rgba(0,0,0,.05);border-radius:4px;padding:1px 4px}
+  main{display:grid;grid-template-columns:1fr;gap:18px;padding:16px 32px 48px}
+  article{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  h2{font-size:16px;line-height:1.35;margin:0;padding:12px 14px 2px}
+  .sub{margin:0;padding:0 14px 8px;color:var(--mut);font-size:12.5px}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+  .pane{background:var(--bg);position:relative}
+  .pane h3{position:absolute;left:10px;top:8px;margin:0;font-size:12px;font-weight:600;background:rgba(247,244,236,.88);border-radius:5px;padding:2px 7px;z-index:1;pointer-events:none}
+  .view{height:340px;position:relative}
+  .view canvas{display:block;width:100%;height:100%;cursor:grab;touch-action:none}
+  .view canvas:active{cursor:grabbing}
+  .error{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--bad);font-size:13px;text-align:center;padding:16px}
+  table{border-collapse:collapse;width:100%;font-size:12.5px}
+  .stats{padding:8px 14px 4px;overflow-x:auto}
+  th,td{text-align:right;padding:3px 10px 3px 0;white-space:nowrap}
+  th:first-child,td:first-child{text-align:left}
+  th{font-weight:600;color:var(--mut)}
+  .gain{color:var(--good)}
+  .links{margin:0;padding:10px 14px 12px;border-top:1px solid var(--line);font-size:13px;display:flex;flex-wrap:wrap;gap:6px 18px}
+  details{padding:0 14px 8px;font-size:12.5px;color:var(--mut)}
+  summary{cursor:pointer}
+  .ok{color:var(--good)} .fail{color:var(--bad);font-weight:600}
+  a{color:var(--link);text-underline-offset:3px}
+  @media (max-width:760px){
+    header{padding:18px 16px 4px} main{padding:12px 16px 40px}
+    .pair{grid-template-columns:1fr} .view{height:260px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Street chunks</h1>
+  <p><a href="whats-new.html">What's new</a> &middot; <a href="manual-ordinary-buildings.html">Ordinary building models</a> &middot; <a href="manual-landmarks.html">Custom models</a></p>
+  <p>Each block face of recipe houses is drawn in the game as <strong>one mesh</strong> instead of one model per house (the game default; <code>?streetChunks=0</code> turns it off).
+  Left: the individual house models as they are installed. Right: the chunk. Both use the same orbit camera and move together: drag to orbit, scroll to zoom.
+  Numbers come from the build report (<code>scripts/street-chunks/build.ts</code>); the fidelity table is <code>scripts/street-chunks/gates.ts</code>.</p>
+</header>
+<main id="chunks"></main>
+<script src="./js/three.bundle.js"></script>
+<script src="./js/signature-placement.bundle.js"></script>
+<script>
+// One WebGL context for the whole page, blitted into a 2D canvas per view (same pattern as manual-landmarks.html):
+// two renderers per chunk would exhaust the browser's context budget.
+const { THREE: T, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
+const main = document.getElementById('chunks');
+const params = new URLSearchParams(location.search);
+const only = new Set((params.get('only') || '').split(',').filter(Boolean));
+window.chunkDemo = { ready: false, total: 0, loaded: [], errors: [] };
+
+const renderer = new T.WebGLRenderer({ antialias: true });
+const loader = new GLTFLoader();
+if (MeshoptDecoder) loader.setMeshoptDecoder(MeshoptDecoder);
+
+const fmt = (n) => Number(n).toLocaleString('en-US');
+const kb = (n) => `${(n / 1024).toFixed(0)} KB`;
+const pct = (a, b) => (a ? `${b <= a ? '' : '+'}${(((b - a) / a) * 100).toFixed(1)}%` : '');
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+// The game dresses recipe GLBs with the city's look (brick/glass/roof textures, palette, fixed-light shade);
+// do the same so the two views show what the game shows. World here is x east, y up, z south.
+let lookReady = null;
+function recipeLook() {
+  if (!lookReady) {
+    const image = new Image();
+    image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
+    lookReady = image.decode().then(() => image, () => null).then((brick) => {
+      const look = window.CanalRecallSignatureLandmarks.createRecipeLook(T, { brick, anisotropy: 4 });
+      look.enuFromWorld.value.set(1, 0, 0, 0, 0, -1, 0, 1, 0);
+      return look;
+    });
+  }
+  return lookReady;
+}
+const glbCache = new Map();
+function loadGlb(url) {
+  if (!glbCache.has(url)) {
+    glbCache.set(url, new Promise((resolve, reject) => loader.load(url, resolve, undefined, reject))
+      .then(async (gltf) => { (await recipeLook()).apply(gltf.scene); return gltf.scene; }));
+  }
+  return glbCache.get(url);
+}
+
+/** Frontage frame -> scene: +X along the street (compass bearing b), +Z outward (b + 90), scene x = east, z = south. */
+function frameMatrix(northOffsetDegrees, mirror, dEast, dNorth) {
+  const b = (90 + northOffsetDegrees) * Math.PI / 180;
+  const m = new T.Matrix4().makeBasis(
+    new T.Vector3(Math.sin(b) * (mirror ? -1 : 1), 0, -Math.cos(b) * (mirror ? -1 : 1)),
+    new T.Vector3(0, 1, 0),
+    new T.Vector3(Math.cos(b), 0, Math.sin(b)),
+  );
+  m.setPosition(dEast, 0, -dNorth);
+  return m;
+}
+const metresFrom = (origin, lngLat) => [
+  (lngLat[0] - origin[0]) * 111320 * Math.cos(origin[1] * Math.PI / 180),
+  (lngLat[1] - origin[1]) * 111320,
+];
+
+function makeScene() {
+  const scene = new T.Scene();
+  scene.background = new T.Color('#ebe7dd');
+  scene.add(new T.HemisphereLight(0xffffff, 0x88806e, 2));
+  const sun = new T.DirectionalLight(0xffefce, 2.2);
+  scene.add(sun);
+  // A ground plane makes the shared street level, and any house standing above or below it, readable.
+  const ground = new T.Mesh(new T.PlaneGeometry(400, 400), new T.MeshBasicMaterial({ color: 0xd9d3c4 }));
+  ground.rotation.x = -Math.PI / 2; ground.position.y = -0.02;
+  scene.add(ground);
+  return { scene, sun };
+}
+
+function renderView(view, state) {
+  const w = Math.max(1, view.holder.clientWidth), h = Math.max(1, view.holder.clientHeight);
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  const bw = Math.round(w * dpr), bh = Math.round(h * dpr);
+  if (view.canvas.width !== bw || view.canvas.height !== bh) { view.canvas.width = bw; view.canvas.height = bh; }
+  renderer.setPixelRatio(dpr);
+  renderer.setSize(w, h, false);
+  const cam = view.camera;
+  cam.aspect = w / h;
+  cam.near = Math.max(state.distance / 1000, 0.05); cam.far = state.distance * 60;
+  cam.updateProjectionMatrix();
+  cam.position.set(
+    state.target.x + state.distance * Math.sin(state.phi) * Math.sin(state.theta),
+    state.target.y + state.distance * Math.cos(state.phi),
+    state.target.z + state.distance * Math.sin(state.phi) * Math.cos(state.theta));
+  cam.lookAt(state.target);
+  view.sun.position.set(Math.sin(state.theta - .65) * 150, 200, Math.cos(state.theta - .65) * 150);
+  renderer.render(view.scene, cam);
+  view.ctx.setTransform(1, 0, 0, 1, 0, 0);
+  view.ctx.clearRect(0, 0, view.canvas.width, view.canvas.height);
+  view.ctx.drawImage(renderer.domElement, 0, 0, view.canvas.width, view.canvas.height);
+}
+
+function statRow(label, individual, chunk, format = fmt, note = '') {
+  const tr = el('tr');
+  tr.append(el('td', '', label), el('td', '', format(individual)), el('td', '', format(chunk)));
+  const delta = el('td', 'gain', pct(individual, chunk));
+  tr.append(delta, el('td', '', note));
+  return tr;
+}
+
+function gatesTable(rows) {
+  const table = el('table');
+  const head = el('tr');
+  for (const t of ['Pand', 'Footprint IoU', 'Ridge vs 3DBAG', 'Eaves vs 3DBAG', 'Eaves moved', 'Ground shift', 'Gates']) head.append(el('th', '', t));
+  table.append(head);
+  for (const r of rows) {
+    const tr = el('tr');
+    tr.append(el('td', '', r.recipeId), el('td', '', r.chunk.footprintIoU.toFixed(2)),
+      el('td', '', `${r.chunk.ridgeDeltaM > 0 ? '+' : ''}${r.chunk.ridgeDeltaM.toFixed(2)} m`), el('td', '', `${r.chunk.eavesDeltaM > 0 ? '+' : ''}${r.chunk.eavesDeltaM.toFixed(2)} m`),
+      el('td', '', `${r.movedByChunkM.eaves > 0 ? '+' : ''}${r.movedByChunkM.eaves.toFixed(2)} m`), el('td', '', `${r.groundShiftM > 0 ? '+' : ''}${r.groundShiftM.toFixed(2)} m`),
+      el('td', r.passed ? 'ok' : 'fail', r.passed ? 'pass' : 'FAIL ' + r.gates.filter((g) => !g.pass).map((g) => g.id).join(', ')));
+    table.append(tr);
+  }
+  return table;
+}
+
+/** Open the game on this street: the share link starts a ride that passes the block face. */
+function gameLink(chunk) {
+  const [lng, lat] = chunk.instance.anchor;
+  const b = (90 + chunk.instance.northOffsetDegrees) * Math.PI / 180;
+  const half = (chunk.bounds.max[0] - chunk.bounds.min[0]) / 2 + 45, road = 8;
+  const at = (along, out) => {
+    // Along the street (bearing b) and outward (b + 90) in metres, then to lng/lat.
+    const east = Math.sin(b) * along + Math.cos(b) * out, north = Math.cos(b) * along - Math.sin(b) * out;
+    return [lat + north / 111320, lng + east / (111320 * Math.cos(lat * Math.PI / 180))];
+  };
+  const [sLat, sLng] = at(-half, road), [fLat, fLng] = at(half, road);
+  return `./index.html#race=${[lat, lng, sLat, sLng, fLat, fLng].map((v) => v.toFixed(6)).join(',')}`;
+}
+
+async function build(chunk, report, gates, catalogue) {
+  const article = el('article');
+  article.dataset.chunk = chunk.id;
+  const names = chunk.pands.map((p) => p.address.replace(/^Bilderdijkstraat /, '').replace(/[()]/g, ''));
+  article.append(el('h2', '', chunk.name || chunk.id));
+  article.append(el('p', 'sub', `${chunk.pands.length} houses on one block face · ${chunk.height.toFixed(0)} m tallest · ${names.join(' | ')}`));
+
+  const pair = el('div', 'pair');
+  const state = { target: new T.Vector3(), distance: 80, theta: 0, phi: 1.12 };
+  const views = [];
+  for (const title of ['Individual houses', 'Street chunk']) {
+    const pane = el('div', 'pane'), holder = el('div', 'view'), canvas = el('canvas');
+    pane.append(el('h3', '', title)); holder.append(canvas); pane.append(holder); pair.append(pane);
+    const { scene, sun } = makeScene();
+    views.push({ pane, holder, canvas, ctx: canvas.getContext('2d'), scene, sun, camera: new T.PerspectiveCamera(32, 1, 1, 20000) });
+  }
+  article.append(pair);
+  main.append(article);
+  const redraw = () => views.forEach((v) => renderView(v, state));
+  article._redraw = redraw;
+
+  // Orbit and zoom move both views.
+  for (const view of views) {
+    let last = null;
+    view.canvas.addEventListener('pointerdown', (e) => { last = [e.clientX, e.clientY]; view.canvas.setPointerCapture(e.pointerId); });
+    view.canvas.addEventListener('pointerup', () => { last = null; });
+    view.canvas.addEventListener('pointercancel', () => { last = null; });
+    view.canvas.addEventListener('pointermove', (e) => {
+      if (!last) return;
+      state.theta -= (e.clientX - last[0]) * 0.01;
+      state.phi = Math.max(0.1, Math.min(1.5, state.phi + (e.clientY - last[1]) * 0.01));
+      last = [e.clientX, e.clientY];
+      redraw();
+    });
+    view.canvas.addEventListener('wheel', (e) => { e.preventDefault(); state.distance *= Math.exp(e.deltaY * 0.001); redraw(); }, { passive: false });
+  }
+
+  // Stats from the build report.
+  const r = report;
+  const distinctMeshes = new Set(chunk.replaces.map((id) => catalogue.get(id)?.modelUrl)).size;
+  const table = el('table');
+  const head = el('tr');
+  for (const t of ['', 'Individual', 'Chunk', 'Change', '']) head.append(el('th', '', t));
+  table.append(head);
+  table.append(statRow('Triangles', r.triangles.individual, r.triangles.chunk, fmt, `party walls dropped: ${r.triangles.partyWallDropped}`));
+  table.append(statRow('Draw calls (materials)', r.primitives.individual, r.primitives.chunk));
+  table.append(statRow('GLB requests', distinctMeshes, 1, fmt, 'shared meshes collapse into one file'));
+  table.append(statRow('Bytes', r.bytes.individual, r.bytes.chunk, kb));
+  table.append(statRow('Bytes (gzip)', r.gzipBytes.individual, r.gzipBytes.chunk, kb));
+  const stats = el('div', 'stats'); stats.append(table); stats.dataset.stats = chunk.id;
+  article.append(stats);
+  const notes = [];
+  const shifts = Object.values(r.ground.shiftsM).map((s) => Math.abs(s));
+  notes.push(`Street level re-grounded on ${r.ground.sharedNapM.toFixed(2)} m NAP (largest house shift ${Math.max(...shifts).toFixed(2)} m)`);
+  if (r.eaves.clusters.length) notes.push(`cornice snapped on ${r.eaves.clusters.map((c) => c.length).join(' + ')} houses`);
+  if (r.warnings.length) notes.push(...r.warnings);
+  article.append(el('p', 'sub', notes.join(' · ')));
+  if (gates?.length) {
+    const det = el('details'); det.append(el('summary', '', `Fidelity gates on the chunked geometry: ${gates.filter((g) => g.passed).length} of ${gates.length} pass`));
+    det.append(gatesTable(gates)); article.append(det);
+    det.dataset.gates = gates.every((g) => g.passed) ? 'pass' : 'fail';
+  }
+
+  const links = el('p', 'links');
+  const play = el('a', '', 'Open the game on this street →'); play.href = gameLink(chunk); play.dataset.link = 'game';
+  const off = el('a', '', 'Same ride without chunks'); off.href = gameLink(chunk).replace('./index.html#', './index.html?streetChunks=0#'); off.dataset.link = 'game-off';
+  links.append(play, off);
+  article.append(links);
+
+  // Models: houses (instances of shared meshes) in the left scene, the chunk in the right one, same world frame.
+  const origin = chunk.instance.anchor;
+  try {
+    await Promise.all([
+      Promise.all(chunk.replaces.map(async (id) => {
+        const spec = catalogue.get(id);
+        if (!spec) throw new Error(`catalogue entry ${id} missing`);
+        const root = await loadGlb(new URL(spec.modelUrl, location.href).href);
+        const [dE, dN] = metresFrom(origin, spec.instance.anchor);
+        const group = new T.Group();
+        group.add(root.clone(true));
+        group.matrixAutoUpdate = false;
+        group.matrix.copy(frameMatrix(spec.instance.northOffsetDegrees, spec.instance.mirror, dE, dN));
+        views[0].scene.add(group);
+      })),
+      (async () => {
+        const root = await loadGlb(new URL(chunk.modelUrl, location.href).href);
+        const group = new T.Group();
+        group.add(root.clone(true));
+        group.matrixAutoUpdate = false;
+        group.matrix.copy(frameMatrix(chunk.instance.northOffsetDegrees, chunk.instance.mirror, 0, 0));
+        views[1].scene.add(group);
+      })(),
+    ]);
+    // Frame the chunk's own bounds (in scene space) and look at the street face from the street side.
+    const box = new T.Box3();
+    views[1].scene.updateMatrixWorld(true);
+    views[1].scene.traverse((o) => { if (o.isMesh && o.geometry && o.material.type !== 'MeshBasicMaterial') box.expandByObject(o); });
+    box.getCenter(state.target);
+    const size = box.getSize(new T.Vector3());
+    const aspect = Math.max(1, views[0].holder.clientWidth) / Math.max(1, views[0].holder.clientHeight);
+    const halfV = views[0].camera.fov * Math.PI / 360, halfFov = Math.min(halfV, Math.atan(Math.tan(halfV) * aspect));
+    state.distance = Math.max(size.length() * 0.5 / Math.sin(halfFov) * 0.9, 5);
+    const b = (90 + chunk.instance.northOffsetDegrees) * Math.PI / 180;
+    state.theta = Math.atan2(Math.cos(b), Math.sin(b)) + 0.5;
+    redraw();
+    window.chunkDemo.loaded.push(chunk.id);
+  } catch (error) {
+    for (const v of views) v.holder.append(el('div', 'error', `Model not available: ${error.message || error}`));
+    window.chunkDemo.errors.push({ id: chunk.id, error: String(error.message || error) });
+  }
+}
+
+(async () => {
+  const get = (url) => fetch(url, { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : Promise.reject(new Error(`${url} ${r.status}`))));
+  try {
+    const [manifest, report, catalogue, gatesFile] = await Promise.all([
+      get('./ordinary-buildings-data/chunks.json'), get('./ordinary-buildings-data/chunks-report.json'),
+      get('./ordinary-buildings-data/catalogue.json'), get('./ordinary-buildings-data/chunks-gates.json').catch(() => null),
+    ]);
+    const byId = new Map(catalogue.models.map((m) => [m.id, m]));
+    const chunks = manifest.chunks.filter((c) => !only.size || only.has(c.id));
+    window.chunkDemo.total = chunks.length;
+    for (const chunk of chunks) {
+      const name = chunk.id.replace(/^chunk-/, '');
+      const r = report.chunks.find((c) => c.name === name);
+      const gates = gatesFile?.rows.filter((row) => row.chunkName === name);
+      await build(chunk, r, gates, byId);
+    }
+  } catch (error) {
+    main.append(el('p', 'sub', `Street chunks unavailable: ${error.message || error}`));
+    window.chunkDemo.errors.push({ id: '*', error: String(error.message || error) });
+  }
+  window.chunkDemo.ready = true;
+})();
+
+let resizeTimer = 0;
+addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => main.querySelectorAll('article').forEach((a) => a._redraw && a._redraw()), 120);
+});
+</script>
+</body>
+</html>

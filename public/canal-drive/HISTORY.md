@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## Street chunks on by default; demo page (2026-10-10)
+
+The user's point: chunks are about making modelling correct and efficient
+(see the block-face authoring lane), not frame time. The 4 Bilderdijkstraat
+chunks are now the game default (`?streetChunks=0` turns them off; only the
+game passes `streetChunks: true`, review pages keep per-house models). Gates
+re-run per pand on the chunk geometry in absolute NAP: 15/15 pass (footprint
+IoU 0.93–0.99, ridge unchanged, eaves ±0.10 m, re-grounding −0.49…+0.40 m;
+`chunks-gates.json`). `street-chunks.html` shows individual houses vs chunk
+in synced views with stats and a ride link. Works with `?sharedFrame=1`.
+
 ## Willem de Zwijgerkerk windows from the review sheet (2026-10-10)
 
 User: "missing a few front windows". The camera-matched sheet showed the south

@@ -69,6 +69,7 @@ export class SignatureLandmarks {
     this.getBasemapBaseFilter = options.getBasemapBaseFilter || null;
     this.loadVisibleOnly = options.loadVisibleOnly === true;
     this.depthBiasEnabled = options.depthBiasEnabled !== false;
+    this.streetChunks = options.streetChunks === true;
     this._pending = new Map();
     this._failed = new Set();
     /** One decoded GLB per shared-mesh URL (recipe-pipeline houses); instances clone it and share geometry and materials. */
@@ -90,13 +91,15 @@ export class SignatureLandmarks {
   }
 
   /**
-   * `?streetChunks=1`: draw each block face as ONE chunk model (one mesh,
+   * Default on (`?streetChunks=0` disables; hosts opt in with `options.streetChunks`, so review
+   * pages that pass a single candidate model are untouched): draw each block face as ONE chunk model (one mesh,
    * per-pand ranges in glTF extras; see streetChunks/manifest.ts) instead of its
    * houses. The houses a chunk replaces leave the model list, and any already
    * drawn are dropped, so nothing is drawn twice. No flag or no manifest: no change.
    */
   _loadStreetChunks() {
     const { streetChunksEnabled, applyStreetChunks } = window.CanalRecallSignatureLandmarks;
+    if (this.streetChunks !== true) return;
     if (!streetChunksEnabled?.(window.location.search)) return;
     fetch(new URL('./ordinary-buildings-data/chunks.json', window.location.href), { cache: 'no-cache' })
       .then(response => response.ok ? response.json() : Promise.reject(new Error(`chunks.json ${response.status}`)))
