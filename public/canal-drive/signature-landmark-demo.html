@@ -72,7 +72,10 @@ const params = new URLSearchParams(location.search);
 // in against that landmark's anchor, which is how a download is judged before
 // it earns a catalogue entry.
 const only = params.get('only');
-const shown = only ? SIGNATURE_MODELS.filter(m => m.id === only) : SIGNATURE_MODELS;
+// `only` may name any placed model (ordinary buildings and street surveys
+// are drawn by the game but are not in the landmark list).
+const PLACED = window.CanalRecallSignatureLandmarks.GAME_BUILDING_MODELS || SIGNATURE_MODELS;
+const shown = only ? [...SIGNATURE_MODELS, ...PLACED].filter(m => m.id === only).slice(0, 1) : SIGNATURE_MODELS;
 const spec = params.get('model') ? { ...shown[0], modelUrl: params.get('model') } : shown[0];
 const specs = params.get('model') ? [spec] : shown;
 const anchorOf = m => (m.surveyed ? m.surveyed.anchor : m.footprint.centre);
