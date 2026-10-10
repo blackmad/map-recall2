@@ -1,6 +1,10 @@
 {
   "id": "asterweg-23",
   "name": "Asterweg 23",
+  "partyWallBearings": [
+    253
+  ],
+  "partyWallEvidence": "PARTIAL EVIDENCE, not a true party wall. The long west-south-west rear elevation (253 deg, 95 m x 8.1 m, plus the 65 m x 5.7 m upper step above it) faces allotment-garden plots (BAG: only 2005-2008 sheds, no abutting pand) and is hidden behind hedges and garden sheds in every panorama on that side (recording_2025-06-30_11-38-09_02608/02610/02617/02618, artifacts/landmark-lanes/asterweg-23/ref-west-*.jpg). Only the top ~3-5 m shows over the hedges: plain pale corrugated cladding with a painted blue band and no window or door over its visible length. The ground storey is NOT visible; no openings are modelled or claimed there. Integrator may prefer to hold this model.",
   "category": "ordinary",
   "modelUrl": "./models/asterweg-23.glb",
   "suppressOsmIds": [

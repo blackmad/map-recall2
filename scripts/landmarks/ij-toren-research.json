@@ -12,5 +12,13 @@
     {"file": "artifacts/landmark-lanes/ij-toren/ref-east.jpg", "panorama": "TMX7316010203-002532_pano_0000_002471", "captured": "2022", "heading": 279, "pitch": 18, "fov": 70, "facade": "east quay view"},
     {"file": "artifacts/landmark-lanes/ij-toren/ref-west.jpg", "panorama": "TMX7316010203-001587_pano_0000_000366", "captured": "2020", "heading": 79, "pitch": 18, "fov": 70, "facade": "west view across the water"}
   ],
+  "reworkPhotos2026-10-10": [
+    {"file": "artifacts/landmark-lanes/ij-toren/ref-quay-front-1.jpg", "panorama": "TMX7316010203-002532_pano_0000_002584", "captured": "2022", "heading": 200, "pitch": 8, "fov": 90, "facade": "north quay front: dark plinth with square-framed portholes, red-brick piers, dark window bays, wood-panelled sliding gates behind a white steel colonnade and glazed gallery"},
+    {"file": "artifacts/landmark-lanes/ij-toren/ref-quay-front-2.jpg", "panorama": "TMX7316010203-002532_pano_0000_002584", "captured": "2022", "heading": 150, "pitch": 8, "fov": 90, "facade": "north quay front, east part"},
+    {"file": "artifacts/landmark-lanes/ij-toren/ref-quay-front-3.jpg", "panorama": "TMX7316010203-002532_pano_0000_002584", "captured": "2022", "heading": 250, "pitch": 8, "fov": 90, "facade": "north quay front, west part and gallery"},
+    {"file": "artifacts/landmark-lanes/ij-toren/ref-carpark-pavilion-1.jpg", "panorama": "recording_2025-06-16_09-52-43_02209", "captured": "2025-06-16", "heading": 121, "pitch": 5, "fov": 80, "facade": "Piet Heinkade: glazed car-park pavilion and grey vent chimneys"},
+    {"file": "artifacts/landmark-lanes/ij-toren/ref-carpark-pavilion-2.jpg", "panorama": "recording_2025-06-16_09-52-43_02200", "captured": "2025-06-16", "heading": 274, "pitch": 5, "fov": 80, "facade": "Piet Heinkade: chimneys, pavilion and terminal canopy"}
+  ],
+  "reworkNotes2026-10-10": "Audit rework: 3DBAG wall 165 is the outer line of the quay colonnade/gallery, the brick wall (windows, portholes, gates) stands ~3.7 m behind it, modelled as such; glass-block grid on the east quay wall; car-park pavilion made glass and chimneys cylinders; 0.9 m hotel footing sliver dropped. Column pitch (11.4 m) and recess depth (3.7 m) are photo-estimated (+/- 1 m). See-through on the two arcades is declared via spec throughPassages, the pavilion and chimneys via spec detachedStructures.",
   "inferred": ["glazed barrel hall roof profile (3DBAG stepped planes)", "quay canopy and glass-block wall (3DBAG massing, recoloured)", "tower west and east end faces, crown details", "NE open pilotis notch of the tower is not modelled", "a sliver of the Moevenpick hotel inside the BAG ring is deliberately dropped"]
 }
