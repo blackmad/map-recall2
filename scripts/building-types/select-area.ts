@@ -20,7 +20,12 @@ const RADIUS_M = Number(arg('radius', '700')), CONTEXT_M = 500;
 if (!nw) throw new Error('--nw=<survey dir> required');
 
 const clusters = JSON.parse(fs.readFileSync(path.join(nw, 'clusters.json'), 'utf8'));
-const members: Record<string, any[]> = {'nw-portiek-brick-pitched': clusters.pp_big[0].pandIds, 'nw-pilotis-panel-flat': clusters.pp_big[5].pandIds};
+// --t1clusters=0,2 merges the 5-storey and 4-storey cluster-1 siblings (same five-bay design; the storey count comes from the eaves height).
+// --exclude=sonderbuur,comenius skips panden already staged in those areas so extension areas do not repeat them.
+const t1Clusters = arg('t1clusters', '0').split(',').map(Number);
+const excluded = new Set<string>();
+for (const a of arg('exclude').split(',').filter(Boolean)) for (const i of JSON.parse(fs.readFileSync(path.join('staging/building-types', a, 'instances.json'), 'utf8')).instances) excluded.add(i.pandId);
+const members: Record<string, any[]> = {'nw-portiek-brick-pitched': t1Clusters.flatMap(k => clusters.pp_big[k].pandIds).filter((m: any) => !excluded.has(m.id)), 'nw-pilotis-panel-flat': clusters.pp_big[5].pandIds.filter((m: any) => !excluded.has(m.id))};
 const attrs = new Map<string, any>();
 for (const l of fs.readFileSync(path.join(nw, '3dbag/all.jsonl'), 'utf8').split('\n')) if (l) { const r = JSON.parse(l); attrs.set(r.id, r); }
 const bag = JSON.parse(fs.readFileSync(path.join(nw, 'raw/bag-panden.json'), 'utf8')) as any[];

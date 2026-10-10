@@ -86,7 +86,7 @@ export function ridgeAlongOf(rect: Rect, ridgeDirRD: Pt): 'long' | 'short' {
 /** Storeys under the eaves: the count within one of the type's that puts the storey height nearest 2.95 m (post-war floor + slab). */
 export function storeysFromHeight(eavesM: number, nominal: number, typical = 2.95): number {
   let best = nominal;
-  for (const n of [nominal - 1, nominal + 1]) if (n >= 2 && Math.abs(eavesM / n - typical) < Math.abs(eavesM / best - typical) - 0.05) best = n;
+  for (const n of [nominal - 1, nominal + 1, nominal - 2]) if (n >= 2 && Math.abs(eavesM / n - typical) < Math.abs(eavesM / best - typical) - 0.05) best = n;
   return best;
 }
 
@@ -113,6 +113,12 @@ export function paramsFromFacts(spec: TypeSpec, rect: Rect, attrs: Bag3dAttribut
   if (pitchedType) {
     const nok = attrs.b3_h_nok ?? attrs.b3_h_dak_max;
     ridgeM = nok != null ? nok - ground : undefined;
+    // b3_h_dak_min is the lowest roof point: a lean-to, canopy or LoD artefact drags it to ~3 m on some members.
+    // For a gable whose ridge runs along the long side the eaves follow from ridge, half the width and the slope.
+    if (ridgeM !== undefined && roof?.slopeDeg && roofForm === 'gable') {
+      const est = ridgeM - (rect.width / 2) * Math.tan(roof.slopeDeg * Math.PI / 180);
+      if (Math.abs(est - eavesM) > 1.2 && est > 2) { warnings.push(`b3_h_dak_min eaves ${eavesM.toFixed(2)} m disagree with ridge ${ridgeM.toFixed(2)} m - slope: using ${est.toFixed(2)} m`); eavesM = est; }
+    }
     if (ridgeM !== undefined && ridgeM <= eavesM + 0.3) { warnings.push(`ridge ${ridgeM.toFixed(2)} m barely above eaves ${eavesM.toFixed(2)} m: using the type's pitch`); ridgeM = undefined; }
   }
   const storeys = storeysFromHeight(eavesM, spec.storeys), sh = eavesM / storeys;

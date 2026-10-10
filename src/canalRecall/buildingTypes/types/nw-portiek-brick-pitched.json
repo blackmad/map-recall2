@@ -29,8 +29,8 @@
   "defaultVariant": "brick",
   "variants": {
     "brick": {
-      "label": "Original brown brick, open balconies with painted solid parapets, white-framed windows, blue/green doors (plain brick; no survey member shows it, kept as the generic fallback; the cream-banded design is the variant brick-cream)",
-      "evidence": "survey sheets of Geuzenveld and Sonderbuur: 0363100012121235 (Herbert Spencerhof), 0363100012102349 (Kierkegaardstraat), 0363100012112708 (Sonderbuur)",
+      "label": "Original brown brick, open balconies with painted solid parapets, white-framed windows, blue/green doors (grey-brown brick; 42 4-storey Slotermeer/Geuzenveld members, see evidence)",
+      "evidence": "survey sheets of Geuzenveld and Sonderbuur: 0363100012121235 (Herbert Spencerhof), 0363100012102349 (Kierkegaardstraat), 0363100012112708 (Sonderbuur); 4-storey members (ground + 3 rows): 0363100012091451, 2072021, 2121235 (Herbert Spencerhof, camera-matched sheet), 2076957, 2129796 (David Humehof), 2113469, 2096174 (Hegelhof), 2119805, 2078333 (Immanuel Kanthof)",
       "palette": {
         "wall": {
           "slot": "brick",
@@ -52,7 +52,7 @@
     },
     "clad-panel": {
       "label": "Re-clad: grey ribbed panels under three-light ribbon windows (balconies enclosed, window bays turned into ribbons), brown brick piers and plinth kept, blue doors",
-      "evidence": "type-1-c.jpg (Wildeman 30-1) and 11 of 24 Sonderbuur/Reinveen members (0363100012063732, 0363100012125614, 0363100012150871, ...)",
+      "evidence": "13 members of nieuw-e and 11 of 24 Sonderbuur/Reinveen members (0363100012063732, 0363100012125614, 0363100012150871, ...)",
       "palette": {
         "wall": {
           "slot": "brick",
@@ -119,6 +119,54 @@
           "tint": "#9a4b36"
         }
       }
+    },
+    "clad-full": {
+      "label": "Re-clad over everything: light grey ribbed panels cover the brick piers and the stair core as well (brick kept only on the ground storey), ribbon windows, blue doors",
+      "evidence": "survey montages of nieuw-e and nieuw-e2 (staging/building-types): 18 members, e.g. 0363100012106777, 2103930, 2086925, 2148442, 2154904, 2088999, 2080398, 2108116, 2229433 (Wildeman 30-1, the type-1-c.jpg photo), 2124414, 2229432, 2140618, 2069794, 2133889 (Wildeman, Ookmeerweg); the window layout equals clad-panel, only the brown piers are covered",
+      "palette": {
+        "wall": {
+          "slot": "stucco",
+          "tint": "#b4babd"
+        },
+        "plinth": {
+          "slot": "brick",
+          "tint": "#85533f"
+        },
+        "frame": "#f2f2f0",
+        "glass": "#4b5a6b",
+        "door": "#4d6f9c",
+        "accent": "#a3abaf",
+        "rail": "#c9c4b6",
+        "dark": "#4a4a48",
+        "column": "#e4e4e0",
+        "joint": "#8a9195",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#8a4c3c"
+        }
+      }
+    },
+    "brick-yellow": {
+      "label": "Yellow brick, same five-bay front (4-storey Slotermeer members with painted balcony fronts and red doors)",
+      "evidence": "survey montage slotermeer-c/g: 0363100012095188 (Paulus van Hemertstraat), 2098549 (same street), 2068572 (De Savornin Lohmanstraat): same balcony-flanked stair core as the brown 4-storey members, yellow-buff brick",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#c9a869"
+        },
+        "frame": "#f2efe6",
+        "glass": "#4b5a6b",
+        "door": "#b83a30",
+        "accent": "#cfc9b8",
+        "rail": "#d8d4c8",
+        "dark": "#4a4a48",
+        "column": "#e9e2cc",
+        "joint": "#9a8656",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#a85a3c"
+        }
+      }
     }
   },
   "facades": {
@@ -164,7 +212,8 @@
               "sill": 0.9,
               "lights": 2,
               "exceptVariants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ]
             },
             {
@@ -175,7 +224,8 @@
               "sill": 0.9,
               "lights": 3,
               "variants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ]
             },
             {
@@ -204,7 +254,8 @@
               "colour": "accent",
               "depth": 0.1,
               "variants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ],
               "note": "grey spandrel panel under the ribbon window"
             },
@@ -250,7 +301,8 @@
               "depth": 1,
               "railing": "solid",
               "exceptVariants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ]
             },
             {
@@ -261,7 +313,8 @@
               "sill": 0,
               "lights": 2,
               "exceptVariants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ],
               "note": "French door behind the balcony"
             },
@@ -273,7 +326,8 @@
               "sill": 0.9,
               "lights": 3,
               "variants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ]
             },
             {
@@ -292,7 +346,8 @@
               "colour": "accent",
               "depth": 0.1,
               "variants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ],
               "note": "grey spandrel panel under the ribbon window"
             }
@@ -353,7 +408,8 @@
               "depth": 1,
               "railing": "solid",
               "exceptVariants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ]
             },
             {
@@ -364,7 +420,8 @@
               "sill": 0,
               "lights": 2,
               "exceptVariants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ]
             },
             {
@@ -375,7 +432,8 @@
               "sill": 0.9,
               "lights": 3,
               "variants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ]
             },
             {
@@ -394,7 +452,8 @@
               "colour": "accent",
               "depth": 0.1,
               "variants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ],
               "note": "grey spandrel panel under the ribbon window"
             }
@@ -414,7 +473,8 @@
               "sill": 0.9,
               "lights": 2,
               "exceptVariants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ]
             },
             {
@@ -426,7 +486,8 @@
               "sill": 0.9,
               "lights": 2,
               "exceptVariants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ]
             },
             {
@@ -438,7 +499,8 @@
               "sill": 0.9,
               "lights": 3,
               "variants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ]
             },
             {
@@ -450,7 +512,8 @@
               "sill": 0.9,
               "lights": 3,
               "variants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ]
             },
             {
@@ -487,7 +550,8 @@
               "colour": "accent",
               "depth": 0.1,
               "variants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ],
               "note": "grey spandrel panel under the ribbon window"
             },
@@ -501,7 +565,8 @@
               "colour": "accent",
               "depth": 0.1,
               "variants": [
-                "clad-panel"
+                "clad-panel",
+                "clad-full"
               ],
               "note": "grey spandrel panel under the ribbon window"
             },
@@ -712,6 +777,7 @@
     "The earlier survey photo type-1-b.jpg (Beek en Hoff 12-2: wide 5.5 m core with two small window columns, storage doors at the outer edges, 3.5 m balcony bays at the ends) is a different sub-design that the footprint cluster also contains; it is not modelled.",
     "Roof: 3DBAG decides gable/hip and the ridge direction per pand; all 63 pilot members have a gable roof with the ridge along the long side.",
     "Cladding is a per-pand variant that BAG/3DBAG do not know: variants.json per area, from looking at the panorama.",
-    "Cream bands: variant brick-cream (2026-10-10) is the design of all 13 non-re-clad survey members of Sonderbuur; plain brick is the fallback only."
+    "Cream bands: variant brick-cream (2026-10-10) is the design of all 13 non-re-clad survey members of Sonderbuur; plain brick is the fallback only.",
+    "Extension 2026-10-11 (types/nw-type1-extend-20261011): 444 panden of cluster ranks 1 and 3 were surveyed photo by photo. Only about 40 % share the five-bay front; the rest are other designs held with a reason (Beek en Hoff / Slotermeerlaan wide-core sub-design, Grasrijk symmetric wide-window sub-design, 4-storey hof blocks with offset balcony pairs, shops, pastel blocks)."
   ]
 }
