@@ -511,13 +511,16 @@
       "id": "symphony",
       "task": "Symphony",
       "priority": "normal",
-      "status": "queued"
+      "status": "verified",
+      "modelId": "symphony",
+      "nextAction": "Installed 2026-10-10 (integrator review of contact sheet vs photos); see HISTORY.md \"Klimhal and Symphony\"."
     },
     {
       "id": "wtc-amsterdam",
       "task": "World Trade Center Amsterdam",
       "priority": "normal",
-      "status": "queued"
+      "status": "held",
+      "nextAction": "Held 2026-10-10: towers A\u2013G are one BAG pand (0363100012096613, ~200 x 95 m); needs a photo of each tower face before modelling. Footprints/research: scripts/landmarks/world-trade-center-amsterdam-*.json. See TODO.md."
     },
     {
       "id": "sloterdijk-station",
@@ -672,7 +675,9 @@
       "id": "klimhal-amsterdam",
       "task": "Klimhal Amsterdam",
       "priority": "normal",
-      "status": "queued"
+      "status": "verified",
+      "modelId": "klimhal",
+      "nextAction": "Installed 2026-10-10 as model id klimhal (integrator review of contact sheet vs photos); see HISTORY.md \"Klimhal and Symphony\"."
     },
     {
       "id": "electric-ladyland",
