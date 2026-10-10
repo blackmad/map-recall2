@@ -46,7 +46,8 @@
        "displayWindows": 2,
        "stallriser": "low",
        "evidence": "pano 2024-11-29 + OSM node 494157345"
-      }
+      },
+      "dormerStyle": "pediment"
      }
     ],
     "roof": {
@@ -135,7 +136,8 @@
        "displayWindows": 2,
        "stallriser": "low",
        "evidence": "pano 2024-11-29 + OSM node 2809209029"
-      }
+      },
+      "dormerStyle": "pediment"
      }
     ],
     "roof": {

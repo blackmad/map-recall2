@@ -449,7 +449,8 @@
        "displayWindows": 3,
        "stallriser": "low",
        "evidence": "pano 2023-01-12"
-      }
+      },
+      "dormerStyle": "pointed"
      }
     ],
     "roof": {
@@ -491,7 +492,7 @@
     "photoGables": 0,
     "schemaLimits": [
      "blind arcade frieze is not modelled",
-     "three dormers (2 small + a pointed one) are modelled as 1",
+     "three dormers (2 small + a pointed one) are modelled as 1 pointed dormer",
      "black window frames are approximated"
     ]
    }
