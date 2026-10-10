@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+## Building clicks: prism picking, a card for every building (2026-10-10)
+
+The user asked why clicking a building to get its card was so slow, and why the
+De Nederlandsche Bank tower on Frederiksplein (w1533847438) could not be clicked.
+- **Slow:** building meshes keep no CPU geometry, so every click rebuilt the facade
+  geometry of every chunk the ray crossed (1.2–2.2 s desktop, ~5.9 s iPhone 4×).
+  A rebuild that did not match the installed mesh skipped the chunk entirely.
+  `src/canalRecall/prismPick.ts` now indexes each chunk's buildings as extruded
+  footprints on first click (pitched roofs use their bounding block). Cards now
+  appear in 7–40 ms desktop, 21–118 ms iPhone 4×; the highlight is applied in the
+  same step. `setActiveLandmark` re-filters MapLibre layers only when kit ids change.
+- **Unclickable:** since 2026-10-04 `_cardForClickedBuilding` returned nothing unless
+  a building was a listed monument with architect or function. That rule is reversed
+  at the user's request: every drawn building opens a card with year, period, type,
+  listing and size; address names that would reveal a street are dropped.
+- Pinned: `tests/e2e/building-click-perf.spec.ts` (budgets, DNB tower, 95% sampled
+  click accuracy) and `test:prism-pick` in `check:canal`.
+- Open: houseboats and the Homomonument mesh are still not clickable as meshes.
+
 ## Rose bushes in the Vondelpark Rosarium (2026-10-10)
 
 OSM maps the Rosarium as one garden polygon; the hex beds exist only as the

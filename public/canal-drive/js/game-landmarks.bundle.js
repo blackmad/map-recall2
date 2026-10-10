@@ -758,6 +758,7 @@ Map source: ${osmUrl(places[i][0])}`);
       this.base = base;
       this.rows.clear();
       this.requested.clear();
+      this.loads.clear();
       this.lastCentre = "";
     }
     /** Load the tile under a point and its eight neighbours. Cheap when unchanged. */
@@ -771,8 +772,20 @@ Map source: ${osmUrl(places[i][0])}`);
     lookup(id) {
       return id == null ? null : this.rows.get(shortBuildingId(String(id))) ?? null;
     }
-    async load(x, y) {
+    /** The tile under a point, for a click outside the prefetched 3×3 or before
+     *  it has arrived. Resolves when that tile's rows are in (or known absent). */
+    ensureAt(lng, lat) {
+      const { x, y } = factTileOf(lng, lat);
+      return this.load(x, y);
+    }
+    loads = /* @__PURE__ */ new Map();
+    load(x, y) {
       const key = `${x}/${y}`;
+      let pending = this.loads.get(key);
+      if (!pending) this.loads.set(key, pending = this.fetchTile(key));
+      return pending;
+    }
+    async fetchTile(key) {
       if (this.requested.has(key)) return;
       this.requested.add(key);
       try {
@@ -33696,8 +33709,9 @@ Map source: ${osmUrl(places[i][0])}`);
         const { n: _hidden, ...rest } = monument;
         row = [row[0], row[1], row[2], rest];
       }
-      const facts = describeBuilding(row, building.height, buildingName);
-      if (!monument || !(monument.a || monument.f != null && monument.f > 0)) return null;
+      const safeName = buildingName && spoils?.call(this.vectorMap, buildingName) ? "" : buildingName;
+      const facts = describeBuilding(row, building.height, safeName);
+      if (!row) this._requestBuildingFacts(building);
       return {
         id: `clicked-${building.id || building.lngLat.join("-")}`,
         name: facts.name,
@@ -33706,6 +33720,18 @@ Map source: ${osmUrl(places[i][0])}`);
         lngLat: building.lngLat,
         featureTarget: building.featureTarget
       };
+    }
+    /** The card opens at once with what is known; when the clicked building's
+     *  fact tile was not resident yet, its year and type fill in on arrival. */
+    _requestBuildingFacts(building) {
+      const store = this._buildingFacts;
+      if (!store || !building.lngLat) return;
+      const cardId = `clicked-${building.id || building.lngLat.join("-")}`;
+      void store.ensureAt(building.lngLat[0], building.lngLat[1]).then(() => {
+        if (this._landmarkNotice?.id !== cardId || !store.lookup(building.id)) return;
+        const card = this._cardForClickedBuilding(building);
+        if (card && this._landmarkNotice?.id === cardId) this._landmarkNotice = { ...this._landmarkNotice, name: card.name, detail: card.detail };
+      });
     }
     // ---- Encyclopedia text ----
     /** The extract carries a Wikipedia URL for 236 of its 300 landmarks, which
