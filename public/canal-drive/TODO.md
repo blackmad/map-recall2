@@ -259,6 +259,15 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   fusion from `build-pano-facade.ts`; washed-out/foliage thresholds (0.3) are
   untuned; `roofShape` is null outside `buildings-colored.geojson`; Beeldbank
   and monument-register facts are not yet joined in.
+- **Drop MapLibre** (go; ~3–4 weeks after city-wide own ground;
+  `docs/research/drop-maplibre-20261010.md` §6, prototype `no-maplibre.html`):
+  overview/route preview/street labels from our own extracts match the game's
+  MapLibre cameras within 1.1–3.2 px; iPhone 4× 5.8 ms frame CPU. Remaining:
+  wire `ownMap` into the game behind a flag, ferry/transit/neighbourhood
+  overlays, brand icons, roofline POI labels, answered-street lettering; rail,
+  tram, footways, landuse, piers missing from extracts; Utrecht/Rotterdam/Den
+  Haag need extracts; footprint tiles to a worker; the Leaflet map picker
+  (`map-picker.js:243`) also loads live OSM tiles — replace it too.
 - **Own ground in game behind `?ownGround=1`** (area `west`: canal belt,
   Jordaan, Oud-West, Westerpark): next — run the city-wide relief + OSM ground
   builds; draw partly covered edge cells (16 of 39 cells fully covered); BGT

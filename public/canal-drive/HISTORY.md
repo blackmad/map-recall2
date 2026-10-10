@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## MapLibre-free views prototype: go (2026-10-10)
+
+User: "why would we still keep MapLibre at all?" Inventory of every MapLibre
+use in the game with replacements (`docs/research/drop-maplibre-20261010.md`).
+`no-maplibre.html` draws the city overview, route preview, minimap and labels
+from `own-map-v1/overview.json.gz` (1.58 MB) with typed `src/canalRecall/ownMap/`
+modules: a MapLibre-compatible camera (1.1–3.2 px agreement), gestures,
+canvas labels with collision and curved street names that reuse the game's
+spoiler rules (the street under question is never placed, tested along the
+whole camera path), and a near-field handover to own ground. The city
+minimap was already our own canvas; the map picker's Leaflet OSM tiles are a
+second live third-party dependency. Integrator viewed district side-by-side.
+
 ## Own ground in the riding view, flag-gated (2026-10-10)
 
 `?ownGround=1` streams our own ground (AHN relief + OSM streets, cycle
