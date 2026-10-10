@@ -17932,7 +17932,7 @@ Map source: ${osmUrl(places[i][0])}`);
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#8a5a47",
+        brick: "#9b7556",
         stone: "#c9bfa8",
         slate: "#4f4d4a",
         glass: "#6f8590",
@@ -18081,9 +18081,7 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      },
-      status: "held",
-      heldReason: "Integrator 2026-10-10: brick too dark, banded rounded volumes and pale roof edges missing, bumpy 3DBAG roof"
+      }
     },
     {
       id: "zevenlandenhuizen",
