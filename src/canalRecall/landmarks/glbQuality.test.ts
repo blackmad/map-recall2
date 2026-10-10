@@ -166,3 +166,13 @@ test('a wall recessed behind a roofed canopy is closed; the same recess without 
   const open = analyseSoup(soup(...base, boxQuads(0, 3, 10, 10, 3.2, 20, [])));
   assert.ok(open.seeThrough.rays > 0, JSON.stringify(open.seeThrough));
 });
+
+test('stepped street front (proud end bays, set-back middle with eaves overhang) is closed; an open-sided box still is not', () => {
+  const left = boxQuads(0, 0, 0, 5, 8, 10), right = boxQuads(15, 0, 0, 20, 8, 10);
+  const middle = boxQuads(5, 0, 0, 15, 8, 8.2);
+  const eaves = boxQuads(5, 7.4, 8.2, 15, 7.6, 10);
+  const stepped = analyseSoup(soup(left, right, middle, eaves));
+  assert.equal(stepped.seeThrough.rays, 0, JSON.stringify(stepped.seeThrough));
+  const openSided = analyseSoup(soup(boxQuads(0, 0, 0, 20, 8, 10, ['east'])));
+  assert.ok(openSided.seeThrough.rays > 0, JSON.stringify(openSided.seeThrough));
+});

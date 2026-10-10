@@ -402,7 +402,8 @@ export function findBlankWalls(soup: TriSoup, th: Thresholds = DEFAULT_THRESHOLD
     }
     // Visible fraction: sample filled cells at about 1 m and keep only walls with enough area seen from outside.
     {
-      const stride = Math.max(1, Math.round(1 / cell));
+      // About 2 m samples, and never more than ~120 rays per wall, so install-time audits stay fast.
+      const stride = Math.max(1, Math.round(2 / cell), Math.ceil(Math.sqrt((nu * nv) / 120)));
       let samples = 0, seenN = 0;
       for (let iu = 0; iu < nu; iu += stride) for (let iv = 0; iv < nv; iv += stride) {
         if (!filled[iv * nu + iu]) continue;
