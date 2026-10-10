@@ -2425,8 +2425,11 @@ class VectorBasemap {
     }
     this._highlightedBuildings = [];
     this._highlightedBuilding = null;
-    if (this._threeBuildings) this._threeBuildings.setHighlighted([]);
-    if (this._kitAnswerIds && this._kitAnswerIds.size) { this._kitAnswerIds = new Set(); if (this._buildings3dEnabled) this._refreshColoredBuildingFilter(); }
+    // The 3D highlight and the kit-answer filter are applied once, below: a
+    // click used to clear and re-set both, re-uploading every chunk's hidden
+    // flags twice and re-filtering four MapLibre layers twice per click.
+    let threeHighlight = [];
+    let kitAnswerIds = new Set();
     const detailed = !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
     if (this._detailedBuildings) this._detailedBuildings.setActiveLandmark(detailed ? landmark : null);
     if (this._signatureLandmarks) this._signatureLandmarks.setActiveLandmark(detailed ? null : landmark);
@@ -2461,10 +2464,11 @@ class VectorBasemap {
         } catch (_) {}
       }
       this._highlightedBuilding = this._highlightedBuildings[0] || null;
-      if (this._threeBuildings) this._threeBuildings.setHighlighted(boatId ? [boatId] : this._highlightedBuildings.map(target => target.id));
-      this._kitAnswerIds = new Set(this._highlightedBuildings.map(target => String(target.id)));
-      if (this._buildings3dEnabled) this._refreshColoredBuildingFilter();
+      threeHighlight = boatId ? [boatId] : this._highlightedBuildings.map(target => target.id);
+      kitAnswerIds = new Set(this._highlightedBuildings.map(target => String(target.id)));
     }
+    if (this._threeBuildings) this._threeBuildings.setHighlighted(threeHighlight);
+    this._setKitAnswerIds(kitAnswerIds);
     // Never fabricate an extrusion from an OSM footprint. If no renderer can
     // identify the actual building, a point acknowledges the selection without
     // turning a whole block into a fixed-height yellow box.
@@ -2483,6 +2487,17 @@ class VectorBasemap {
       ? [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: landmark.lngLat } }]
       : [];
     source.setData({ type: 'FeatureCollection', features: point });
+  }
+
+  /** Landmark-kit prisms stay drawn for the answer building. Only a change
+   *  among the kit ids re-filters the colored-building layers; an ordinary
+   *  building's highlight does not touch them. */
+  _setKitAnswerIds(ids) {
+    const kitIds = window.CanalRecallThreeBuildings && window.CanalRecallThreeBuildings.KIT_HIDE_IDS || [];
+    const before = this._kitAnswerIds || new Set();
+    const changed = kitIds.some(id => before.has(id) !== ids.has(id));
+    this._kitAnswerIds = ids;
+    if (changed && this._buildings3dEnabled) this._refreshColoredBuildingFilter();
   }
 
   _styleLandmarks() {
