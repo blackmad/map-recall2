@@ -362,7 +362,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     if(id==='hotel-de-l-europe')buildHotelDeLEurope(w,d,helpers);
     else if(id==='american-hotel')buildAmericanHotel(w,d,helpers);
     else if(id==='trippenhuis')buildTrippenhuis(w,d,helpers);
-    if(id==='ljg-synagoge')buildLjgSynagoge(w,d,helpers);
+    else if(id==='ljg-synagoge')buildLjgSynagoge(w,d,helpers);
     else if(id==='christ-church-groenburgwal')buildChristChurchGroenburgwal(w,d,helpers);
     else if(id==='ronde-lutherse-kerk')buildRondeLutherseKerk(w,d,helpers);
     else if(id==='lloyd-hotel')buildLloydHotel(w,d,helpers);
