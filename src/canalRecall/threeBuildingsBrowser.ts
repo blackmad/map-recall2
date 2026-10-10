@@ -881,6 +881,20 @@ export class ThreeBuildings {
     return lifted;
   }
 
+  /** Diagnostics for the own ground: buildings lifted, still waiting, base range, CPU copies kept. */
+  groundLiftStats(): { chunks: number; lifted: number; pending: number; minBase: number | null; maxBase: number | null; keptMB: number } {
+    let chunks = 0, lifted = 0, pending = 0, keptBytes = 0, minBase = Infinity, maxBase = -Infinity;
+    for (const entry of this.chunks.values()) {
+      if (!entry.lift) continue;
+      chunks++;
+      pending += entry.lift.pending.size;
+      for (const z of entry.lift.applied.values()) { lifted++; minBase = Math.min(minBase, z); maxBase = Math.max(maxBase, z); }
+      const array = entry.mesh?.geometry?.getAttribute('position')?.array;
+      if (array) keptBytes += array.byteLength;
+    }
+    return { chunks, lifted, pending, minBase: Number.isFinite(minBase) ? +minBase.toFixed(2) : null, maxBase: Number.isFinite(maxBase) ? +maxBase.toFixed(2) : null, keptMB: +(keptBytes / 1048576).toFixed(1) };
+  }
+
   private applyGroundLift(positions: Float32Array, ranges: Map<string, { start: number; count: number }>, lift: GroundLift): number {
     let n = 0;
     for (const id of [...lift.pending]) {
