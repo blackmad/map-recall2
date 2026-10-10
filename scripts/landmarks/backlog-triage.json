@@ -192,6 +192,10 @@
   "RADION": {
    "kind": "skip",
    "note": "Low 1971 concrete box (pand 0363100012188556, ownership unconfirmed); no distinctive architecture."
+  },
+  "West Indian Warehouse": {
+   "kind": "duplicate",
+   "note": "Covered by installed model west-indisch-pakhuis."
   }
  }
 }

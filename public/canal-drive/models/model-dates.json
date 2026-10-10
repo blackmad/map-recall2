@@ -261,6 +261,11 @@
       "version": "09dfd6fe2056b4d9",
       "dateSource": "git-history"
     },
+    "de-school": {
+      "updatedAt": "2026-10-10T03:22:06.445Z",
+      "version": "4b9d64d5e2eafe50",
+      "dateSource": "asset-update"
+    },
     "de-wester": {
       "updatedAt": "2026-10-04T17:40:44+02:00",
       "version": "8ad96681b320b7c3",
@@ -1259,6 +1264,11 @@
     "west-india-house": {
       "updatedAt": "2026-10-09T21:18:03.240Z",
       "version": "56f5d61aeb23686f",
+      "dateSource": "asset-update"
+    },
+    "west-indisch-pakhuis": {
+      "updatedAt": "2026-10-10T03:22:06.490Z",
+      "version": "2a10f80b7aae2bbc",
       "dateSource": "asset-update"
     },
     "westerkerk": {
