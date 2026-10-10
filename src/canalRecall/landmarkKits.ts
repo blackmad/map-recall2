@@ -131,6 +131,14 @@ export const HAND_KITS: Kit[] = [
     // BAG's own record for the church's east end (NL.IMBAG.Pand.0363100012164998, BAG year 1990): a 1.8 x 10 m sliver 35 m tall that stood as a bare beige slab beside
     // the OSM nave parts. Walled in the kit's brick to the nave's 27 m eaves under a slim slate ridge.
     halls: [{ id: 'NL.IMBAG.Pand.0363100012164998', widthM: 1.9, anchor: [4.884358, 52.374554], eavesM: 27, riseM: 1.5, mat: 'slate' }],
+    // The church's own lean-to shops between the buttresses (BAG 1990, 8-11 m², ~3.8 m): Westermarkt 66-74 on the
+    // south wall, 60-62 on the north. Under the 14 m² facade minimum they fell back to random prior colours, so the
+    // nave stood behind a row of teal/beige/tan boxes (user report 2026-10-10). They share the church's brick instead.
+    body: [
+      'NL.IMBAG.Pand.0363100012174406', 'NL.IMBAG.Pand.0363100012174405', 'NL.IMBAG.Pand.0363100012174404',
+      'NL.IMBAG.Pand.0363100012174226', 'NL.IMBAG.Pand.0363100012174225',
+      'NL.IMBAG.Pand.0363100012174224', 'NL.IMBAG.Pand.0363100012168591',
+    ],
   },
   {
     // The tower is 80 m; OSM stops at 30, so the octagonal stage, lantern and needle spire are stacked on.
