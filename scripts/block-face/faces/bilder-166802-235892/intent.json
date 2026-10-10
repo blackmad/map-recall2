@@ -116,13 +116,6 @@
       "cornice": "bracketed",
       "hoist": false,
       "gable": "cornice",
-      "crownCap": "pediment",
-      "crownCapSpan": "medium",
-      "crownBays": {
-       "from": 0,
-       "to": 0
-      },
-      "crownRise": 1.6,
       "storeys": 4,
       "bays": 3,
       "bayWidths": [
@@ -154,7 +147,17 @@
         2
        ],
        "evidence": "pano 2024-11-29 + OSM node 11576187585"
-      }
+      },
+      "tower": {
+       "bays": {
+        "from": 0,
+        "to": 0
+       },
+       "rise": 0.6,
+       "cap": "pyramid"
+      },
+      "dormers": 1,
+      "dormerStyle": "pointed"
      }
     ],
     "roof": {
@@ -190,7 +193,7 @@
     "symmetry": "none; mirror of 162836",
     "groundFloor": "black door left, red banner over a shuttered shop",
     "signage": "promotional banner (not modelled)",
-    "roofline": "brick tower with a pyramid roof over the left bay, one pointed dormer",
+    "roofline": "brick tower over the left bay: brick body from the cornice (strip row ~340) to the shoulders (row ~270, 15.9 m) with a stepped pointed top to row ~214 (17.3 m) and a finial; one white pointed dormer on the mansard (zoom t1, x 230-820, rows 170-420)",
     "citation": "bilder-166802-235892 strip.jpg pand 2",
     "photoRows": [
      3,
@@ -201,8 +204,8 @@
     ],
     "photoGables": 2,
     "schemaLimits": [
-     "tower above the left bay is a pedimented crown over bay 0 with a finial (no pyramid roof)",
-     "balcony platform is continuous across 2 windows on the photo, two separate balconies in the model"
+     "balcony platform is continuous across 2 windows on the photo, two separate balconies in the model",
+     "the tower is a brick body with a pyramid cap (rise 0.6): its stepped top and finial are a plain pyramid, and its window (rows 305-350, at the cornice) is not drawn (the library adds a tower light only from rise 0.88)"
     ]
    }
   },
@@ -219,13 +222,6 @@
       "cornice": "bracketed",
       "hoist": false,
       "gable": "cornice",
-      "crownCap": "pediment",
-      "crownCapSpan": "medium",
-      "crownBays": {
-       "from": 2,
-       "to": 2
-      },
-      "crownRise": 1.6,
       "storeys": 4,
       "bays": 3,
       "bayWidths": [
@@ -233,7 +229,6 @@
        1,
        0.62
       ],
-      "atticWindows": 1,
       "doorBay": null,
       "windows": "arched",
       "archRings": "band",
@@ -255,7 +250,17 @@
        "displayWindows": 2,
        "stallriser": "low",
        "evidence": "pano 2024-11-29 + OSM node 11576134525"
-      }
+      },
+      "tower": {
+       "bays": {
+        "from": 2,
+        "to": 2
+       },
+       "rise": 0.6,
+       "cap": "pyramid"
+      },
+      "dormers": 1,
+      "dormerStyle": "pointed"
      }
     ],
     "roof": {
@@ -291,7 +296,7 @@
     "symmetry": "none; mirror of 166801",
     "groundFloor": "pale salon shopfront",
     "signage": "none legible",
-    "roofline": "brick tower with a pyramid roof over the right bay, one pointed dormer left of it",
+    "roofline": "brick tower over the right bay: brick body from the cornice (strip row ~340) to the shoulders (row ~270, 15.9 m) with a stepped pointed top to row ~214 (17.3 m) and a finial; one white pointed dormer on the mansard left of the tower (zoom t1, x 230-820, rows 170-420)",
     "citation": "bilder-166802-235892 strip.jpg pand 3",
     "photoRows": [
      2,
@@ -302,8 +307,8 @@
     ],
     "photoGables": 2,
     "schemaLimits": [
-     "tower over the right bay is a pedimented crown over bay 2 with a finial (no pyramid roof)",
-     "thin awning not modelled"
+     "thin awning not modelled",
+     "the tower is a brick body with a pyramid cap (rise 0.6): its stepped top and finial are a plain pyramid, and its window (rows 305-350, at the cornice) is not drawn (the library adds a tower light only from rise 0.88)"
     ]
    }
   },
@@ -419,7 +424,7 @@
  },
  "authoring": {
   "author": "claude-sonnet-5.5 (block-face lane), from strip-labelled.png + 2x zoomed ground/roof crops",
-  "passes": 1,
+  "passes": 2,
   "note": "Bilderdijkstraat 84-92 (even side)."
  }
 }

@@ -20,63 +20,127 @@
    "design": {
     "fronts": [
      {
-      "id": "front0",
+      "id": "a",
       "street": "Bilderdijkstraat",
       "basement": "none",
-      "cornice": "heavy",
       "hoist": false,
-      "gable": "cornice",
+      "gable": "step",
+      "crownSteps": 2,
       "storeys": 4,
-      "bays": [
-       9,
-       8,
-       8,
-       8
-      ],
-      "axisGrid": 9,
+      "doorBay": null,
+      "windows": "arched",
+      "archRings": "band",
+      "bands": "storey",
+      "cornice": "heavy",
+      "atticWindows": 1,
+      "share": 0.227,
+      "bays": 2,
+      "crownBays": {
+       "from": 0,
+       "to": 0
+      },
+      "crownRise": 1.2,
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "displayWindows": 2,
+       "stallriser": "low",
+       "evidence": "pano 2023-01-12: dark cafe glazing under one fascia across 102-104 (Karavaan per the earlier pass; no legible sign)"
+      }
+     },
+     {
+      "id": "b",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "step",
+      "crownSteps": 2,
+      "storeys": 4,
+      "doorBay": null,
+      "windows": "arched",
+      "archRings": "band",
+      "bands": "storey",
+      "cornice": "heavy",
+      "atticWindows": 1,
+      "share": 0.348,
+      "bays": 3,
+      "crownBays": {
+       "from": 1,
+       "to": 1
+      },
+      "crownRise": 1.2,
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "displayWindows": 2,
+       "stallriser": "low",
+       "evidence": "pano 2023-01-12: dark cafe glazing under one fascia across 102-104 (Karavaan per the earlier pass; no legible sign)"
+      }
+     },
+     {
+      "id": "c",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "step",
+      "crownSteps": 2,
+      "storeys": 4,
+      "doorBay": null,
+      "windows": "arched",
+      "archRings": "band",
+      "bands": "storey",
+      "cornice": "heavy",
+      "atticWindows": 1,
+      "share": 0.425,
+      "bays": 3,
+      "axisGrid": 4,
       "storeyAxes": {
        "1": [
         0,
         1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
+        2
        ],
        "2": [
         0,
         1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
+        2
        ],
        "3": [
         0,
         1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7
+        2
        ]
       },
-      "dormers": 3,
-      "doorBay": null,
-      "windows": "plain",
-      "bands": "storey",
+      "bayWidths": [
+       1,
+       1,
+       1,
+       0.55
+      ],
+      "crownBays": {
+       "from": 1,
+       "to": 1
+      },
+      "crownRise": 1.35,
+      "crownFinial": true,
       "balconies": {
        "storeys": [
-        1
+        1,
+        2,
+        3
        ],
        "bays": [
-        3,
-        6
+        1
        ]
       },
       "shopfront": {
@@ -87,8 +151,8 @@
         "text": "SUNIKA",
         "textColour": "#e8352b",
         "mount": "fascia",
-        "align": "right",
-        "span": 0.3
+        "align": "centre",
+        "span": 0.4
        },
        "displayWindows": 3,
        "stallriser": "low",
@@ -125,13 +189,13 @@
     "note": "Three houses with one ground floor: at the right a black Sunika front (multicolour neon-style letters, glazed double door), at the left cafe Karavaan (OSM amenity=cafe; large cream-framed windows, Kwakersplein side) and two wooden doors. Only Sunika is signed and modelled."
    },
    "rhythm": {
-    "bays": "8 window axes in storeys 1-3 on a 9-slot grid (the 9th slot belongs to the neighbour), irregular pitch: 2 + 3 + 3",
+    "bays": "three houses in one pand, split at the drainpipes (strip x 155 and 392): 2, 3 and 3 window axes; a blank pier strip right of the third house (x 635-682)",
     "identicalBays": "storeys 1-3 identical; balconies at axes 3 and 6 on every storey",
-    "windowsPerStorey": "ground: cafe glazing | doors | Sunika | 1-3: 8 | roof: 3 stepped dormer gables with 1 window each",
-    "symmetry": "none",
+    "windowsPerStorey": "a: 2 | b: 3 (balcony middle, storeys 1-3) | c: 3 (balcony middle, storeys 1-3) | each house: one crow-stepped dormer-gable with one window",
+    "symmetry": "b and c symmetric about their middle bay; a has its gable over the left window",
     "groundFloor": "brown cafe front and doors at the left, black Sunika front at the right",
     "signage": "SUNIKA multicolour",
-    "roofline": "three crow-stepped dormer gables (left small, middle, right with a finial) on a dark mansard",
+    "roofline": "cornice frieze at strip row ~410 (13.0 m, = 3DBAG eaves 12.94 m); a dark mansard face to row ~320; three crow-stepped dormer-gables standing on the cornice: a over its left window (apex ~265), b over its middle bay (apex ~265), c over its middle bay with a finial (apex ~245); small roof lights left and right of c's gable (zoom s1, x 0-700, rows 230-560)",
     "citation": "bilder-236189-166159 strip.jpg pand 1",
     "photoRows": [
      3,
@@ -142,11 +206,10 @@
     ],
     "photoGables": 3,
     "schemaLimits": [
-     "three stepped gables are modelled as 3 plain dormers",
-     "unequal pitch between the 2-, 3- and 3-window groups is modelled as an equal 9-slot grid",
-     "cafe Karavaan front and its sign are not modelled (one shopfront)",
-     "multicolour lettering is one colour",
-     "segmental window heads and balconies above storey 1 dropped for the triangle budget (full detail ~4,900 triangles)"
+     "the gables' lower steps sit on a mansard face on the photo; the crowns stand in the front plane",
+     "the small roof lights either side of the right gable are not modelled",
+     "multicolour SUNIKA lettering is one colour",
+     "the shop front of 102-104 is one dark glazing per house (no legible sign on 2023-01-12)"
     ]
    }
   },
@@ -439,15 +502,6 @@
   "corniceGroups": [
    {
     "pands": [
-     "0363100012236189",
-     "0363100012236188"
-    ],
-    "trust": "photo",
-    "reference": "0363100012236189",
-    "evidence": "strip: the cornice of 236189 and 236188 on one line (y ~410 px); 3DBAG gives 236188 the gable top (15.4 m)"
-   },
-   {
-    "pands": [
      "0363100012157174",
      "0363100012166159"
     ],
@@ -456,12 +510,25 @@
   ],
   "identical": [],
   "notes": [
-   "Capture 2023-01-12: the 2024-11-29 strip is hidden by street trees (102-106) and a green-wrapped lorry in front of 94-96."
+   "Capture 2023-01-12: the 2024-11-29 strip is hidden by street trees (102-106) and a green-wrapped lorry in front of 94-96.",
+   "Pass 2 (bilder-limits lane): 102-106 split into three houses at the drainpipes, each with its own crow-stepped dormer-gable; the photo-trusted cornice group 236189+236188 is replaced by strip-measured eaves (row 408)."
+  ],
+  "measuredEaves": [
+   {
+    "pand": "0363100012236189",
+    "stripRow": 408,
+    "evidence": "top of the cornice frieze, one line over 102, 104 and 106 (zoom s1, x 0-700, rows 230-560); each front of the pand otherwise fits its own share of the 3DBAG profile (front a read the stepped gable, ~2.5 m high)"
+   },
+   {
+    "pand": "0363100012236188",
+    "stripRow": 408,
+    "evidence": "top of the cornice frieze, the same line as 102-106 on the strip; 3DBAG eaves 15.43 m is the stepped gable top"
+   }
   ]
  },
  "authoring": {
   "author": "claude-sonnet-5.5 (block-face lane), from strip-labelled.png + 2x zoomed ground/roof crops",
-  "passes": 1,
+  "passes": 2,
   "note": "Bilderdijkstraat 94-106 (even side, first block after the cross street toward Bilderdijkpark)."
  }
 }
