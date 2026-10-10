@@ -101,7 +101,7 @@ async function survey() {
     tiles.push({img: await sharp(await photo(v)).resize(400, 300).jpeg().toBuffer(), text: `${inst.pandId.slice(-7)} ${inst.type.slice(3, 9)} ${d.storeys}st ${d.frontStreet ?? ''} ${v.timestamp.slice(0, 7)}`});
   }
   const cols = 4, rows = Math.ceil(tiles.length / cols);
-  for (const [name, subset] of [['a', tiles.slice(0, 12)], ['b', tiles.slice(12, 24)], ['c', tiles.slice(24, 36)]] as const) {
+  for (const [name, subset] of Array.from({length: Math.ceil(tiles.length / 12)}, (_, i) => [String.fromCharCode(97 + i), tiles.slice(i * 12, i * 12 + 12)] as const)) {
     if (!subset.length) continue;
     const r = Math.ceil(subset.length / cols);
     const comp = await Promise.all(subset.map(async (t, i) => [
@@ -139,8 +139,8 @@ async function sheets(spec: string) {
       y += 26 + 375;
     }
     const sheet = await sharp({create: {width: 1500, height: y, channels: 3, background: '#000'}}).composite(rowsImgs).jpeg({quality: 85}).toBuffer();
-    fs.writeFileSync(path.join(dir, 'sheets', `${type}-contact.jpg`), sheet);
-    console.log('wrote', path.join(dir, 'sheets', `${type}-contact.jpg`));
+    fs.writeFileSync(path.join(dir, 'sheets', `${type}-contact${arg('tag') ? '-' + arg('tag') : ''}.jpg`), sheet);
+    console.log('wrote', path.join(dir, 'sheets', `${type}-contact${arg('tag') ? '-' + arg('tag') : ''}.jpg`));
   }
   await close();
 }
