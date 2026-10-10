@@ -55,11 +55,6 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   pinnacles. Leaf-off panorama frames: scripts/landmarks/panolist.mjs.
   Krasnapolsky held (2026-10-10): old Dam front matches; the modern wing and
   lower brick building need photo counts and the dark glass bays.
-  Audit gap: an open classical portico (columns under a pediment, soffit
-  above 6 m) counts as see-through; the Artis Aquarium lane trimmed its
-  cornice overhang ~0.5 m to pass. Teach the see-through rule that a ray
-  between columns reaching a wall within the portico depth is closed, then
-  restore the overhang from the photo.
   World Trade Center Amsterdam held (2026-10-10): towers A–G are ONE BAG
   pand (0363100012096613, ~200 x 95 m); a recognizable model needs a photo
   of each tower face (Commons has only atrium/logo/tower H). Footprints and
@@ -68,8 +63,7 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Full audit with the new rules (2026-10-10, 259 models): 88 pass, 171 fail;
   vs the pre-change baseline 16 FAIL→PASS (two spot-checked visually: no
   holes) and 2 PASS→FAIL: concertgebouw (canopy restored to its real depth)
-  and haparandaweg-902-950 (Het Pakhuis v2, see-through from the footprint
-  edge — owner: Haparandaweg lane).
+  and haparandaweg-902-950 (passes again since the deep-cornice rule).
   Elevation skeletons with photos exist for 25 landmarks
   (`scripts/landmarks/*-elevations.json`, photos in `artifacts/landmark-lanes/`);
   counts are not filled: Haiku blind counts were too noisy — use a stronger
