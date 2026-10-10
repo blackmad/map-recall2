@@ -20,7 +20,7 @@ const a = lngLatToRd(toLL(...at(t0))), b = lngLatToRd(toLL(...at(t1)));
 const len = Math.hypot(b.x - a.x, b.y - a.y);
 const mid = {x: (a.x + b.x) / 2, y: (a.y + b.y) / 2};
 const wall = {a, b, len, nx: w.f.n[0], ny: -w.f.n[1], mid, roadDistM: 0, facing: 1};
-const panos = await listPanos(mid, 45);
+const panos = await listPanos(mid, +(process.env.RADIUS ?? 45));
 const ranked = rankPanos(wall, panos).filter(p => p.missionYear >= +minYear);
 if (!ranked.length) { console.error('no panorama candidates'); process.exit(1); }
 console.log(ranked.slice(0, 5).map((p, i) => `${i}: ${p.panoId} ${p.timestamp.slice(0, 10)} d ${p.distM.toFixed(1)} obl ${p.obliquityDeg.toFixed(0)}`).join('\n'));
