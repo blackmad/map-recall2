@@ -28,7 +28,14 @@
    "doorBay": null,
    "shopfront": {
     "colour": "black",
-    "fascia": true
+    "fascia": true,
+    "glazing": "transom",
+    "stallriser": "medium",
+    "residentialDoor": {
+     "side": "left",
+     "colour": "black"
+    },
+    "evidence": "front.jpg 2023-01-12: vacant unit (TE HUUR / VERHUURD), no.200, large pane with leaded transom lights, black street door at the left. OSM Soytasty (7 m) / Kazik (202A) are later or neighbouring tenants, not asserted."
    }
   }
  ],

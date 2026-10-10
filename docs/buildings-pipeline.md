@@ -63,6 +63,24 @@ cross/plain/arched/shop), `hoist`, `shopfront {colour, fascia}`, `repeat
 stone, shutters}` as named swatches or `#rrggbb`, `sources[]` (photo id, date,
 licence, image path).
 
+**Window axes (2026-10-10).** A front has one grid of `axisGrid` vertical axes (default: the largest bay
+count above the ground storey); every storey's windows sit on it, so they line up vertically, and the piers
+(outer and inner) are equal (`piers: "margin"` restores the legacy 9% side margins). A storey with fewer
+windows names its axes: `storeyAxes: {"4": [0,1,3]}` (storey from the ground = 0, `"last"` = top storey,
+count must match `bays`); a count that is centred on the grid uses the centred axes; anything else warns
+in the fit report. Balcony French windows are 15% wider than their neighbours. `crownCapSpan:
+narrow|medium|wide` and `crownCapRise: low|normal` shape the parapet cap (`low` + `pediment` = shallow pointed gable).
+Facade check: `npm run compare:facades -- --id=<id> --glb=<model.glb> --spec=...` with `columns` (window axes) and
+`openings: ["2a3a42_glass"]` for recipe GLBs (see `scripts/landmarks/bilder-087959x-elevations.json`).
+
+**Local shops.** `shopfront` takes only evidenced details: `name`, `sign {text, textColour, background, span,
+align}` (real stroke-font geometry on the fascia, `signage.ts`, ~10 tris/letter, never mirrored), `fasciaColour`,
+`entrance` (none/centre/centre-recessed/left/right/left-recessed/right-recessed), `glazing`
+(single/split/transom), `stallriser` (none/low/medium/high) + `stallriserColour`, `residentialDoor {side,
+colour}` (a separate street door; `doorBay` is then ignored) with `shopShare`, and `evidence` (photo id/date, OSM
+node). Without a `sign` the fascia stays plain; no placeholder text is invented. Fronts with signs or side-specific
+doors are not mirror-shared. Intent keys may not be called `top`, `left`, `position`... (coordinate guard).
+
 **Reuse.** `{"sameAs": "<neighbour id>", "id", "pandId", "address", "sources",
 "overrides": {...}}` deep-merges onto the neighbour (fronts merge by index).
 `canonicalIntentKey` hashes the identity-free design; `compile.ts` with several
