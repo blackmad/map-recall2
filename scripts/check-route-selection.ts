@@ -18,6 +18,11 @@ import {
   recentDestinationsKey,
   recordRecentDestination,
   rememberDestination,
+  recentRankNear,
+  resolveRecentPois,
+  HOME_NEXT_MIN_KM,
+  HOME_RADIUS_OVERSHOOT,
+  type DuePlace,
   GPS_ORIGIN_ID,
   GpsOriginError,
   HOME_RADIUS_KNOWN_TO_EXPAND,
@@ -434,6 +439,61 @@ check('review rides from home skip recently ridden destinations', () => {
   const again = pickReviewRoute({ pois: [home, ...near], due, from: home, maxKm: 3, chooseIndex: () => 0, recentIds: [first.to.id] });
   assert.ok(again);
   assert.notEqual(again.to.id, first.to.id, 'same due set must not replay the same destination');
+});
+
+// User report 2026-10-10: still "always" De Dolphijn from Da Costakade 13
+// with Plan review on. The review picker took only the top-count pair, so the
+// due names (a real signed-in snapshot) pointed at the same Torensluis corner
+// every launch, and skipping the exact id moved one door along (Multatuli,
+// Magna Plaza, Huis Bartolotti are all within 200 m).
+const HOME_DUE: DuePlace[] = JSON.parse(fs.readFileSync('scripts/fixtures/home-review-due-da-costakade.json', 'utf8'));
+const HOME_POI: RoutePoi = { id: 'home', name: 'Home', ...DA_COSTAKADE };
+const DOLPHIJN = AMS_POIS.find(poi => poi.name === 'De Dolphijn')!;
+
+check('regression: Multatuli and Magna Plaza count as near a recent De Dolphijn', () => {
+  assert.ok(DOLPHIJN, 'De Dolphijn is in the pool');
+  const recent = resolveRecentPois(AMS_POIS, [DOLPHIJN.id]);
+  for (const name of ['Multatuli', 'Magna Plaza', 'Huis Bartolotti']) {
+    const poi = AMS_POIS.find(entry => entry.name === name)!;
+    assert.equal(recentRankNear(poi, recent), 0, name);
+  }
+  assert.equal(recentRankNear(AMS_POIS.find(poi => poi.name === 'Noorderkerk')!, recent), -1);
+});
+
+check('regression: home review rides from Da Costakade are not one corner (real due set)', () => {
+  const tally = new Map<string, number>();
+  const picks = 1000;
+  for (let i = 0; i < picks; i += 1) {
+    const pick = pickReviewRoute({ pois: AMS_POIS, due: HOME_DUE, from: HOME_POI, maxKm: 1.15 })!;
+    tally.set(pick.to.id, (tally.get(pick.to.id) ?? 0) + 1);
+  }
+  const top = Math.max(...tally.values()) / picks;
+  assert.ok(tally.size >= 8, `only ${tally.size} destinations on a fresh device`);
+  assert.ok(top < 0.2, `top share ${top}`);
+  assert.ok((tally.get(DOLPHIJN.id) ?? 0) / picks < 0.15, 'De Dolphijn no longer dominates');
+  for (let trial = 0; trial < 20; trial += 1) {
+    let recent: string[] = [];
+    for (let i = 0; i < 12; i += 1) {
+      const pick = pickReviewRoute({ pois: AMS_POIS, due: HOME_DUE, from: HOME_POI, maxKm: 1.15, recentIds: recent })!;
+      const near = resolveRecentPois(AMS_POIS, recent.slice(0, 3));
+      assert.equal(recentRankNear(pick.to, near), -1, `ride ${i} returned to a recent corner: ${pick.to.name}`);
+      for (const alt of pick.alternatives ?? []) {
+        if (!alt.stop) assert.equal(recentRankNear(alt.to, near), -1, `runner-up ${alt.to.name} is a recent corner`);
+      }
+      recent = rememberDestination(recent, pick.to.id);
+    }
+  }
+});
+
+check('next home ride starts at the arrival, leaves it, and stays in the home ring', () => {
+  const arrival = DOLPHIJN;
+  const radiusKm = homeLearningRadiusKm(DA_COSTAKADE, []);
+  for (let i = 0; i < 300; i += 1) {
+    const pick = pickHomeDestination(AMS_POIS, DA_COSTAKADE, [], undefined, arrival.id, [arrival.id], arrival)!;
+    assert.ok(pick, 'a next destination exists');
+    assert.ok(kmBetween(pick.poi, arrival) >= HOME_NEXT_MIN_KM, `${pick.poi.name} is next door`);
+    assert.ok(kmBetween(pick.poi, DA_COSTAKADE) <= radiusKm * HOME_RADIUS_OVERSHOOT + 1e-9, `${pick.poi.name} left the ring`);
+  }
 });
 
 console.log(`Route selection OK: ${checks.length} checks.`);

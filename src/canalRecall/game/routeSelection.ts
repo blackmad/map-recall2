@@ -65,6 +65,15 @@ export const HOME_RADIUS_MASTERED_MIN = 0.45;
 export const HOME_RADIUS_OVERSHOOT = 1.15;
 /** Destinations closer than this feel like a stub trip. */
 export const HOME_MIN_TRIP_KM = 0.2;
+/**
+ * A landmark this close to a recent destination counts as that destination.
+ * Magna Plaza, Multatuli, De Dolphijn and Huis Bartolotti sit within 200 m
+ * of each other at Torensluis, so skipping only the exact id rode the same
+ * corner again (user report 2026-10-10).
+ */
+export const RECENT_NEAR_KM = 0.35;
+/** The next home ride starts where the last one ended and must leave it. */
+export const HOME_NEXT_MIN_KM = 0.5;
 
 export interface MasterySample {
   lat: number;
@@ -180,6 +189,25 @@ function pickWeighted<T>(
   return positive[positive.length - 1]?.item ?? null;
 }
 
+/** Recent ids resolved to the pool's landmarks (null when not in the pool). */
+export function resolveRecentPois(pois: readonly RoutePoi[], recentIds: readonly string[]): Array<RoutePoi | null> {
+  const byId = new Map(pois.map(poi => [poi.id, poi]));
+  return recentIds.map(id => byId.get(id) ?? null);
+}
+
+/** Rank of the most recent destination at or within `nearKm` of `poi`; -1 when none. */
+export function recentRankNear(
+  poi: RoutePoi,
+  recent: readonly (RoutePoi | null)[],
+  nearKm = RECENT_NEAR_KM,
+): number {
+  for (let i = 0; i < recent.length; i += 1) {
+    const entry = recent[i];
+    if (entry && (entry.id === poi.id || kmBetween(entry, poi) <= nearKm)) return i;
+  }
+  return -1;
+}
+
 /** No single landmark may take more than this share of a home pick. */
 export const HOME_MAX_SHARE = 0.12;
 
@@ -230,27 +258,32 @@ export function pickHomeDestination(
   chooseUnit: ChooseUnit = randomUnit,
   alsoExcludeId: string | null = null,
   recentIds: readonly string[] = [],
+  /** Where the ride starts when it is not home (the last arrival); the ring
+   *  stays centred on home, but the ride must leave this spot. */
+  from: { lat: number; lng: number } | null = null,
 ): HomeDestinationPick | null {
   const radiusKm = homeLearningRadiusKm(home, samples);
   const homeId = home.id ?? 'home';
-  const candidates = pois.filter(poi => poi.id !== homeId && poi.id !== alsoExcludeId);
+  const candidates = pois.filter(poi => poi.id !== homeId && poi.id !== alsoExcludeId
+    && (!from || kmBetween(from, poi) >= HOME_NEXT_MIN_KM));
   if (candidates.length === 0) return null;
 
+  const recent = resolveRecentPois(pois, recentIds);
   const raw = candidates.map(poi =>
-    scoreHomeDestination(poi, home, radiusKm, samples) * recentDestinationFactor(recentIds.indexOf(poi.id)));
+    scoreHomeDestination(poi, home, radiusKm, samples) * recentDestinationFactor(recentRankNear(poi, recent)));
   const capped = capWeightShares(raw);
   const scored = candidates.map((poi, i) => ({ item: poi, weight: capped[i] }));
   const picked = pickWeighted(scored, chooseUnit);
   if (picked) return { poi: picked, radiusKm };
   // Everything in the ring was ridden recently: keep only the very last out.
   if (recentIds.length > 1) {
-    return pickHomeDestination(pois, home, samples, chooseUnit, alsoExcludeId, recentIds.slice(0, 1));
+    return pickHomeDestination(pois, home, samples, chooseUnit, alsoExcludeId, recentIds.slice(0, 1), from);
   }
 
   const chooseIndex: ChooseIndex = count => Math.min(count - 1, Math.floor(chooseUnit() * count));
   const fallback = pickDestinationNear(
     pois,
-    { id: homeId, lat: home.lat, lng: home.lng },
+    from ? { id: alsoExcludeId ?? homeId, lat: from.lat, lng: from.lng } : { id: homeId, lat: home.lat, lng: home.lng },
     chooseIndex,
     alsoExcludeId,
   );
@@ -276,6 +309,18 @@ export const REVIEW_MIN_TRIP_KM = 0.8;
 export const REVIEW_FROM_SAMPLES = 40;
 /** Among pairs passing the most names, allow this much extra length. */
 export const REVIEW_LENGTH_SLACK = 1.3;
+/**
+ * From a fixed start (home, GPS, an arrival), any pair passing at least this
+ * share of the best count is a candidate, chosen one landmark cluster at a
+ * time. Taking only the best count made home review rides deterministic: the
+ * same due names pointed at the same corner every launch (2026-10-10).
+ */
+export const REVIEW_COUNT_SHARE = 0.5;
+/** From a fixed start, runners-up must end this close to the pick, so the
+ *  planner's swap cannot bring back the top-count corner every time. */
+export const REVIEW_ALT_NEAR_KM = 0.6;
+/** Recent destinations whose surroundings a review ride avoids outright. */
+export const REVIEW_RECENT_NEAR_COUNT = 4;
 /**
  * A due name no pair's line passes (a quarter of Amsterdam's street names:
  * Noord and the outer districts have few landmarks) can be ridden as a via
@@ -374,9 +419,16 @@ function kmToSegment(point: { lat: number; lng: number }, a: { lat: number; lng:
 
 /** The pair passing the most due names, or null when no pair passes any. */
 export function pickReviewRoute(input: ReviewRouteInput): ReviewRoutePick | null {
-  const recent = new Set(input.recentIds ?? []);
-  if (recent.size > 0 && input.from) {
-    const fresh = pickReviewRouteUnfiltered({ ...input, pois: input.pois.filter(poi => !recent.has(poi.id)), recentIds: [] });
+  const recentIds = input.recentIds ?? [];
+  if (recentIds.length > 0 && input.from) {
+    const ids = new Set(recentIds);
+    // First away from the corners of the last few rides, then just not the
+    // same landmarks, then anything.
+    const near = resolveRecentPois(input.pois, recentIds.slice(0, REVIEW_RECENT_NEAR_COUNT));
+    const away = input.pois.filter(poi => !ids.has(poi.id) && recentRankNear(poi, near) < 0);
+    const elsewhere = pickReviewRouteUnfiltered({ ...input, pois: away, recentIds: [] });
+    if (elsewhere) return elsewhere;
+    const fresh = pickReviewRouteUnfiltered({ ...input, pois: input.pois.filter(poi => !ids.has(poi.id)), recentIds: [] });
     if (fresh) return fresh;
   }
   return pickReviewRouteUnfiltered(input);
@@ -461,9 +513,29 @@ function pickReviewRouteUnfiltered(input: ReviewRouteInput): ReviewRoutePick | n
   }
   const strip = ({ km: _km, ...pick }: Pair) => pick;
   if (!pairs.length) return stopPair ? { ...strip(stopPair), alternatives: [] } : null;
-  const shortest = Math.min(...pairs.map(pair => pair.km));
-  const close = pairs.filter(pair => pair.km <= shortest * REVIEW_LENGTH_SLACK);
-  const chosen = close[chooseIndex(close.length)];
+  let chosen: Pair;
+  if (input.from) {
+    const floor = Math.max(1, Math.ceil(best * REVIEW_COUNT_SHARE));
+    const strong = all.filter(pair => pair.dueNear.length >= floor)
+      .sort((a, b) => b.dueNear.length - a.dueNear.length || a.km - b.km);
+    const byDestination = new Map<string, Pair[]>();
+    for (const pair of strong) byDestination.set(pair.to.id, [...(byDestination.get(pair.to.id) ?? []), pair]);
+    const groups = [...byDestination.values()];
+    // Weighted by 1 / landmarks in the same corner, so four landmarks round
+    // one bridge together weigh about as much as one landmark on its own.
+    const weights = capWeightShares(groups.map(group =>
+      1 / groups.filter(other => kmBetween(other[0].to, group[0].to) <= RECENT_NEAR_KM).length));
+    const total = weights.reduce((sum, weight) => sum + weight, 0);
+    let target = (chooseIndex(1_000_000) / 1_000_000) * total;
+    let index = 0;
+    while (index < groups.length - 1 && target >= weights[index]) target -= weights[index++];
+    const group = groups[index];
+    chosen = group[chooseIndex(group.length)];
+  } else {
+    const shortest = Math.min(...pairs.map(pair => pair.km));
+    const close = pairs.filter(pair => pair.km <= shortest * REVIEW_LENGTH_SLACK);
+    chosen = close[chooseIndex(close.length)];
+  }
   // Runners-up by count, then length, one per destination, from any start.
   const seen = new Set([`${chosen.from.id}>${chosen.to.id}`]);
   const alternatives: Array<Omit<ReviewRoutePick, 'alternatives'>> = [];
@@ -471,6 +543,7 @@ function pickReviewRouteUnfiltered(input: ReviewRouteInput): ReviewRoutePick | n
     if (alternatives.length >= REVIEW_PLANNED_CANDIDATES - 1) break;
     const key = `${pair.from.id}>${pair.to.id}`;
     if (seen.has(key) || pair.to.id === chosen.to.id) continue;
+    if (input.from && kmBetween(pair.to, chosen.to) > REVIEW_ALT_NEAR_KM) continue;
     seen.add(key);
     alternatives.push(strip(pair));
   }

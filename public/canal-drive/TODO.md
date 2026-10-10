@@ -229,8 +229,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   The Dokwerker hand model has wrong arms and a hat disc — fix as far LOD.
   Needs a real-iPhone GPU check before any splat ships.
 - **Destination memory follow-ups**: recent destinations are per device
-  (localStorage) — sync them with the signed-in recall store; confirm the
-  review-ride repeat with a real due backlog (only the filter is tested).
+  (localStorage) — sync them with the signed-in recall store. The review
+  repeat is now pinned with a real due backlog (2026-10-10); a fresh device
+  no longer converges, but cross-device memory would still help.
+- **Failing e2e on main**: `review-ride.spec.ts` "a due street off every
+  landmark line is ridden as a via" (Avenhornstraat) fails on main before the
+  2026-10-10 home-picker change: surprise ride Artis Bibliotheek → Kazerne
+  Zebra with `dueOnPath: []`, no via. Investigate the via/stop planner.
 - **Renderer: give three.js the frame** (`docs/research/own-renderer-spike-20261009.md`,
   `renderer-spike.html`): spike shows lighting is the visible gap — shadows,
   sky, fog, tone mapping, sunken water — at ~2.6 ms CPU per throttled phone
