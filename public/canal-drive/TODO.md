@@ -131,6 +131,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   de-gooyer and huis-bartolotti now pass under the cantilever rules (rays
   hit a wall <= 2.5 m behind an overhang >= 6 m up); whether those recesses
   match the photos is still unchecked.
+  geometryAudit.ts proximity grid skips any triangle spanning > 20,000 1 m
+  cells ("pathological sliver", line ~199): a large diagonal wall reads as
+  absent, so its windows FAIL opening-floating. HvA lane worked around it by
+  tessellating shell faces (big-facade.ts addShellTess); fix the grid
+  (bin by plane, or rasterise only the triangle) and re-run the baseline.
+  Kohnstammhuis stone reads too warm/tan against the grey photo.
   Booking.com HQ held (2026-10-10): the plate rework (stepped bands,
   terrace cut, lower-case sign, teal glass) still reads as a gridded box.
   Needs the curved, stepped south front cantilevered over the entrance plaza
