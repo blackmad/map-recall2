@@ -124,3 +124,51 @@ test('Utrechtsestraat 48-76: 4-front pand, photo-trusted twin gables, front slit
   assert.ok(r.interference.every(i => Math.abs(i.frontGapM) <= 0.05));
   assert.equal(houseIntents(face).find(i => i.pandId.endsWith('178875'))!.fronts.length, 4);
 });
+
+test('strip-review regressions (schema 2026-10-10): off-centre gables, unequal bays, entrance bay beside the shop, two-storey shop, stucco', () => {
+  const bilder = load(), bf = facts(bilder), bi = houseIntents(bilder);
+  const build = (intents: typeof bi, suffix: string, facts: Map<string, BuildingFacts>) => { const i = intents.find(x => x.pandId.endsWith(suffix))!; return compileBuilding(i, facts.get(i.pandId)!); };
+  const peakAt = (b: ReturnType<typeof compileBuilding>) => { const p = b.recipe.elevations[0].crown!.value.profile, top = Math.max(...p.map(q => q[1])), xs = p.filter(q => q[1] >= top - 1e-6).map(q => q[0]); return (Math.min(...xs) + Math.max(...xs)) / 2 / b.fit.fronts[0].widthM; };
+  // 081118 (strip pand 1): gable over the right two-thirds. 156286 (pand 5): over the right bay. Not centred.
+  assert.ok(peakAt(build(bi, '081118', bf)) > 0.62, '081118 gable right of centre');
+  assert.ok(peakAt(build(bi, '156286', bf)) > 0.6, '156286 gable over the right bay');
+  // 157650: narrow left entrance bay with its own door and wall, the shop only in the wide right bay; unequal windows.
+  const bike = build(bi, '157650', bf), e = bike.recipe.elevations[0], W = bike.fit.fronts[0].widthM, door = e.openings.value.find(o => o.id === 'door')!;
+  const glass = e.openings.value.filter(o => o.id.startsWith('shop-'));
+  assert.ok(door.leftM + door.widthM < W * 0.39 && glass.every(o => o.leftM >= W * 0.39 - 0.01), 'entrance bay has no shop glass');
+  const row = e.openings.value.filter(o => /^s2-b\d$/.test(o.id)).sort((a, b) => a.leftM - b.leftM);
+  assert.ok(row[1].widthM > row[0].widthM * 1.4, 'wide studio window vs narrow left window');
+  // 156286: the left bay holds a pair of narrow windows, the right bay one wide window.
+  const dirk = build(bi, '156286', bf).recipe.elevations[0].openings.value.filter(o => /^s2-b\d$/.test(o.id)).sort((a, b) => a.leftM - b.leftM);
+  assert.equal(dirk.length, 3); assert.ok(dirk[2].widthM > dirk[0].widthM * 2.5);
+  // Utrechtsestraat: 76's gable over the left two-thirds; Concerto b's shop is two storeys; 70-72 and 62 are stucco.
+  const dir = 'scripts/block-face/faces/utrechtse-48-76', ut = validateBlockFace(JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8')));
+  const uf = new Map(ut.houses.map(h => [h.pandId, JSON.parse(fs.readFileSync(path.join(dir, 'pands', h.pandId, 'facts.json'), 'utf8')) as BuildingFacts])), ui = houseIntents(ut);
+  assert.ok(peakAt(build(ui, '178784', uf)) < 0.45, '76 gable left of centre');
+  const concerto = ui.find(i => i.pandId.endsWith('178875'))!;
+  assert.equal(concerto.fronts.find(f => f.id === 'b')!.shopfront!.storeys, 2);
+  assert.deepEqual(ui.filter(i => i.palette.wallMaterial === 'stucco').map(i => i.pandId.slice(-6)), ['178705', '169208']);
+});
+
+test('Marnixstraat regressions: wall-colour check catches an orange-for-brown cast; identical houses form one instancing group', async () => {
+  const {measureWallColour} = await import('./wallColour.ts');
+  const {planInstancing} = await import('./instancing.ts');
+  // 60x60 images: photo wall brown-grey (108,88,79), model wall orange-brown (122,78,62) with a sky corner.
+  const W = 60, photo = new Uint8Array(W * W * 3), model = new Uint8Array(W * W * 3);
+  for (let i = 0; i < W * W; i++) { photo.set([108, 88, 79], i * 3); model.set(i < 300 ? [159, 184, 207] : [122, 78, 62], i * 3); }
+  const bad = measureWallColour({photo, model, width: W, height: W, box: {x0: 0, x1: W, y0: 0, y1: W}})!;
+  assert.equal(bad.pass, false); assert.match(bad.note, /too saturated/);
+  for (let i = 0; i < W * W; i++) model.set([112, 90, 80], i * 3);
+  assert.equal(measureWallColour({photo, model, width: W, height: W, box: {x0: 0, x1: W, y0: 0, y1: W}})!.pass, true);
+  // Instancing plan on the committed Marnix faces: the identical sameAs fronts group, a shop-bay house with a different design does not.
+  const dir = 'scripts/block-face/faces/marnix-124-138', face = validateBlockFace(JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8')));
+  const intents = houseIntents(face), size = {widthM: 11.9, eavesM: 12.9, crownTopM: 16};
+  const plan = planInstancing(intents, intents.map(() => [size]), intents.map(() => 1500));
+  assert.equal(plan.groups.length, 1); assert.equal(plan.groups[0].members.length, 7, 'seven plain fronts; the NiDA front has its own shop bay');
+  assert.equal(plan.savedTriangles, 6 * 1500);
+  const wider = planInstancing(intents, intents.map((_, i) => [{...size, widthM: i === 3 ? 12.5 : 11.9}]), intents.map(() => 1500));
+  assert.equal(wider.groups[0].members.length, 6); assert.ok(wider.notShared.length >= 1);
+  // The NiDA laundry takes the right bay only; the central door and left window stay residential.
+  const nida = intents.find(i => i.pandId.endsWith('173530'))!.fronts[0];
+  assert.deepEqual(nida.shopfront!.bays, [2, 2]); assert.equal(nida.doorBay, 1);
+});

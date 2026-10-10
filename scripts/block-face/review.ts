@@ -20,6 +20,7 @@ import {KHRMeshQuantization} from '@gltf-transform/extensions';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {compare, measureFacade, type FacadeInventory, type MaterialSoup} from '../../src/canalRecall/landmarks/facadeCompare.ts';
 import type {BlockFaceIntent} from '../../src/canalRecall/blockFace/intent.ts';
+import {measureWallColour, toHex} from '../../src/canalRecall/blockFace/wallColour.ts';
 import {FACES, STAGING} from './intake.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
@@ -59,6 +60,14 @@ export async function reviewFace(faceId: string, glbOverride?: string, label?: s
   const overlay = await sharp(photo).composite([{input: await sharp(modelPng).removeAlpha().ensureAlpha(0.5).png().toBuffer(), blend: 'over'}]).png().toBuffer();
   await fs.writeFile(path.join(out, 'overlay.png'), overlay);
 
+  // Wall colour per pand: photo median vs model median on the same wall pixels (storeys above the ground floor).
+  const rawOf = async (png: Buffer) => new Uint8Array(await sharp(png).removeAlpha().raw().toBuffer());
+  const photoRaw = await rawOf(photo), modelRaw = await rawOf(modelPng);
+  const wall = face.houses.map((_, i) => {
+    const s = strip.spans[i], eaves = report.perPand[i].eavesM;
+    return measureWallColour({photo: photoRaw, model: modelRaw, width: W, height: H, box: {x0: Math.round(s.px[0] + 8), x1: Math.round(s.px[1] - 8), y0: Math.max(0, Math.round(H - (eaves - 1) * ppm)), y1: Math.round(H - 3.8 * ppm)}});
+  });
+
   // Facade-compare per pand span (photo counts from the rhythm spec vs the orthographic material render).
   const soup = await chunkSoup(glb);
   const fc = face.houses.map((h, i) => {
@@ -66,7 +75,7 @@ export async function reviewFace(faceId: string, glbOverride?: string, label?: s
     const inv: FacadeInventory = {name: h.pandId.slice(-6), bearing: 180, span: [s.x0M + 0.05, s.x1M - 0.05], depthBand: 3, openings: ['glass'],
       ...(h.rhythm.photoRows ? {rows: h.rhythm.photoRows} : {}), ...(h.rhythm.photoGables !== undefined ? {gables: h.rhythm.photoGables} : {})};
     const m = measureFacade(soup, inv);
-    return {pand: h.pandId, checks: compare(inv, m), measured: {rows: m.rows, rowHeights: m.rowHeights, gables: m.gables, columns: m.columns}};
+    return {pand: h.pandId, checks: compare(inv, m), wallColour: wall[i], measured: {rows: m.rows, rowHeights: m.rowHeights, gables: m.gables, columns: m.columns}};
   });
   await fs.writeFile(path.join(out, 'facade-compare.json'), JSON.stringify(fc, null, 1) + '\n');
 
@@ -94,7 +103,9 @@ export async function reviewFace(faceId: string, glbOverride?: string, label?: s
     svg += tx(91, 12, clip(`${t.triangles} tris · eaves ${t.eavesM} m · roof ${t.roofMaxM}/${t.roofMaxFactsM}`, 12));
     svg += tx(108, 12, clip(bad.length ? `GATES: ${bad.map((q: any) => q.id).join(', ')}` : `gates: ${gates.length} pass`, 12), bad.length ? '#c62828' : '#1d7a35');
     checks.forEach((c, k) => { svg += tx(126 + k * 16, 12, clip(`${c.pass ? '✓' : '✗'} ${c.what.replace(' (bottom→top)', '')}: ${c.expected} vs ${c.measured.replace(/ at y.*$/, '')}`, 12), c.pass ? '#1d7a35' : '#c62828'); });
-    (h.rhythm.schemaLimits ?? []).slice(0, 4).forEach((l, k) => { svg += tx(126 + checks.length * 16 + 4 + k * 15, 11, clip(`limit: ${l}`, 11), '#6b4e00'); });
+    const wc = wall[i];
+    if (wc) svg += tx(126 + checks.length * 16, 12, clip(`${wc.pass ? '✓' : '✗'} wall ${toHex(wc.photo)} photo / ${toHex(wc.model)} model${wc.pass ? '' : ': ' + wc.note}`, 12), wc.pass ? '#1d7a35' : '#c62828');
+    (h.rhythm.schemaLimits ?? []).slice(0, 4).forEach((l, k) => { svg += tx(126 + checks.length * 16 + 20 + k * 15, 11, clip(`limit: ${l}`, 11), '#6b4e00'); });
     void cbad;
   });
   report.interference.forEach((it: any, i: number) => {
@@ -109,6 +120,7 @@ export async function reviewFace(faceId: string, glbOverride?: string, label?: s
     .composite([{input: photo, left: 0, top: rowY[0] + LABEL}, {input: modelPng, left: 0, top: rowY[1] + LABEL}, {input: overlay, left: 0, top: rowY[2] + LABEL}, {input: Buffer.from(svg), left: 0, top: 0}])
     .png().toFile(sheet);
   console.log(sheet);
+  for (const f of fc) if (f.wallColour) console.log(`  ${f.pand.slice(-6)} wall: photo ${toHex(f.wallColour.photo)} model ${toHex(f.wallColour.model)} (${f.wallColour.pass ? 'ok' : f.wallColour.note})`);
   for (const f of fc) console.log(`  ${f.pand.slice(-6)}: ${f.checks.map(c => `${c.pass ? 'ok' : 'FAIL'} ${c.what} ${c.expected} vs ${c.measured}`).join(' | ')}`);
   return {sheet, fc};
 }

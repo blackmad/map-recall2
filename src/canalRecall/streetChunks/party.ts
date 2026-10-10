@@ -47,7 +47,7 @@ const area2 = (p: P2[]) => { let a = 0; for (let i = 0; i < p.length; i++) { con
 
 /** Is triangle `t` of the bucket a vertical wall face lying on the contact plane? Returns its (s, y) coordinates. */
 function onPlane(c: Contact, b: Bucket, t: number, tolM: number): Tri2 | null {
-  if (b.slot !== 'brick' || b.surface !== 'wall') return null;
+  if (!(b.slot === 'brick' || b.slot === 'stucco') || b.surface !== 'wall') return null;
   const tri: P2[] = [];
   for (let k = 0; k < 3; k++) {
     const i = t * 9 + k * 3, x = b.positions[i], y = b.positions[i + 1], z = b.positions[i + 2];
@@ -150,7 +150,7 @@ export function trimPartyWalls(houses: PartyHouse[], contacts: Contact[], tolM =
     const breaks = [...new Set(covering.flatMap(t => t.map(p => p[0])))].filter(s => s > c.s0 && s < c.s1);
     let removed = 0, exposed = 0, topA = 0, topB = 0, kept = 0;
     for (const bucket of houses[c.a].buckets.values()) {
-      if (bucket.slot !== 'brick' || bucket.surface !== 'wall') continue;
+      if (!(bucket.slot === 'brick' || bucket.slot === 'stucco') || bucket.surface !== 'wall') continue;
       const next = {positions: [] as number[], normals: [] as number[], uvs: [] as number[]};
       for (let t = 0; t < bucket.positions.length / 9; t++) {
         const tri = onPlane(c, bucket, t, tolM);
