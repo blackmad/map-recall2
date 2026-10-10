@@ -1,0 +1,15 @@
+{
+  "modelId": "symphony",
+  "landmarkId": "requested-symphony",
+  "name": "Symphony",
+  "center": [52.33618, 4.87385],
+  "sourceUrl": "https://zuidas.nl/en/threesixty_info/amsterdam-symphony-2/",
+  "description": "Symphony is a block on the south side of Gustav Mahlerplein in the Zuidas business district: a 29-storey, 105 m residential tower and a wider 97 m office tower, standing on a shared low-rise base with shops, a hotel and an art centre. Pi de Bruijn of De Architekten Cie designed the towers with INBO architecten, and AWG architecten designed the base. Both towers are clad in banded orange-red brick, so the pair reads as one composition.",
+  "funFact": "The towers are nicknamed the orange giants of the Zuidas, because their brick bands glow orange in low sun.",
+  "sourceLinks": [
+    {"title": "Zuidas: Amsterdam Symphony", "url": "https://zuidas.nl/en/threesixty_info/amsterdam-symphony-2/"},
+    {"title": "De Architekten Cie: Amsterdam Symphony", "url": "https://www.cie.nl/Amsterdam-Symphony?lang=nl"},
+    {"title": "BAG pand 0363100012128931 (built 2010)", "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012128931&f=json"}
+  ],
+  "identityNote": "Existing requested-symphony identity; one pand covers both towers and the base. Hotel and neighbouring blocks across the street are separate pands and stay."
+}

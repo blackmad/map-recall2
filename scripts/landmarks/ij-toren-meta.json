@@ -1,0 +1,9 @@
+{
+  "name": "IJ-toren",
+  "landmarkId": "extract_landmarks_1963830588",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/IJ-toren_(Piet_Heinkade)",
+  "pandId": "0363100012090447",
+  "suppressOsmIds": ["w277087203", "w277087217", "w755504254", "w755504255", "w755504256", "w755504257", "w755504258", "w755504259", "w755504260", "w755504261", "w755504262", "NL.IMBAG.Pand.0363100012090447"],
+  "surveySource": "Current BAG 0363100012090447 footprint and merged 3DBAG LoD2.2 building parts, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the 3DBAG massing; tower curtain wall (floor pitch, bays, lobby wing, IJ-side base, mast) measured by eye from municipal panoramas; hall, canopy and terminal remain massing with materials only; no pixels or meshes imported."
+}
