@@ -74,7 +74,13 @@ export interface FrontIntent {
   archRings?: 'stone' | 'band' | 'none';
   hoist: boolean;
   shutters?: 'none' | 'ground' | 'all';
-  shopfront?: { colour: string; fascia: boolean; awning?: ShopAwningIntent };
+  shopfront?: { colour: string; fascia: boolean; awning?: ShopAwningIntent;
+    /** The shop's sign as read on the dated photo: block capitals on the fascia board, on the wall above the glass, or on the glass. */
+    sign?: ShopSignIntent;
+    /** Separate display-window panes across the shop glass (mullion groups); default by width. */
+    displayWindows?: number;
+    /** Stall riser under the shop glass: none (glass to the pavement), low, or standard (default). */
+    stallRiser?: 'none' | 'low' | 'standard' };
   /** Stone dressing around the upper windows (colour: the palette's `stone`): a lintel slab, lintel + sill + jambs, or a keystone block over each head. Default none. */
   windowSurround?: typeof WINDOW_SURROUNDS[number];
   /** 0-based storeys carrying the surround; default every window storey above the shopfront. */
@@ -95,6 +101,10 @@ export interface FrontIntent {
 
 /** Fabric awning over the shop glass: `extent` is the covered share of the front width, as fractions from the viewer's left (default the whole shop front). */
 export interface ShopAwningIntent { style: typeof AWNING_STYLES[number]; colour: string; extent?: { from: number; to: number } }
+
+/** Shop sign text (letters A-Z, 0-9, & ' - . and spaces; drawn as 5x7 block capitals) and letter colour. */
+export interface ShopSignIntent { text: string; colour: string; mount?: 'fascia' | 'wall' | 'glazing' }
+export const SIGN_TEXT = /^[A-Za-z0-9&'.\- ]{1,28}$/;
 
 /** `band`: a second brick colour for banding and relieving arches (lintel bands become brick stripes). */
 export interface PaletteIntent { brick: string; frame: string; door: string; shutters?: string; stone?: string; band?: string }
@@ -198,6 +208,15 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.windowSurround !== undefined) oneOf(f.windowSurround, WINDOW_SURROUNDS, `${at}.windowSurround`);
     if (f.surroundStoreys !== undefined) { if (!Array.isArray(f.surroundStoreys)) problems.push(`${at}.surroundStoreys must be a list`); else f.surroundStoreys.forEach(v => count(v, `${at}.surroundStoreys`, 0, f.storeys - 1)); }
     if (f.quoins !== undefined) oneOf(f.quoins, QUOINS, `${at}.quoins`);
+    const sign = f.shopfront?.sign;
+    if (sign) {
+      if (typeof sign.text !== 'string' || !SIGN_TEXT.test(sign.text)) problems.push(`${at}.shopfront.sign.text: 1-28 of A-Z 0-9 & ' - . space`);
+      colour(sign.colour, `${at}.shopfront.sign.colour`);
+      if (sign.mount !== undefined) oneOf(sign.mount, ['fascia', 'wall', 'glazing'], `${at}.shopfront.sign.mount`);
+      if ((sign.mount ?? 'fascia') === 'fascia' && !f.shopfront!.fascia) problems.push(`${at}.shopfront.sign: a fascia-mounted sign needs fascia: true`);
+    }
+    if (f.shopfront?.displayWindows !== undefined) count(f.shopfront.displayWindows, `${at}.shopfront.displayWindows`, 1, 8);
+    if (f.shopfront?.stallRiser !== undefined) oneOf(f.shopfront.stallRiser, ['none', 'low', 'standard'], `${at}.shopfront.stallRiser`);
     const aw = f.shopfront?.awning;
     if (aw) {
       oneOf(aw.style, AWNING_STYLES, `${at}.shopfront.awning.style`);
