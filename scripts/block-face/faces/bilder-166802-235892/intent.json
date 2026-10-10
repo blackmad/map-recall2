@@ -50,7 +50,8 @@
        "displayWindows": 2,
        "stallriser": "low",
        "evidence": "pano 2024-11-29 + OSM node 6841918972"
-      }
+      },
+      "dormerStyle": "pointed"
      }
     ],
     "roof": {
@@ -98,8 +99,8 @@
     "photoGables": 0,
     "schemaLimits": [
      "blind arcade frieze is not modelled",
-     "ornate pointed dormer is a plain dormer",
-     "window lettering is not modelled (no sign mount fits a few small glass letters)"
+     "window lettering is not modelled (no sign mount fits a few small glass letters)",
+     "the ornate pointed dormer (white, carved) is the library pointed dormer"
     ]
    }
   },
@@ -348,7 +349,8 @@
        "displayWindows": 2,
        "stallriser": "low",
        "evidence": "pano 2024-11-29 + OSM node 11576188034"
-      }
+      },
+      "dormerStyle": "pointed"
      }
     ],
     "roof": {
@@ -398,8 +400,8 @@
     "schemaLimits": [
      "plain windows and balconies on storeys 1-2 only for the triangle budget (full detail 3,900 triangles)",
      "blind arcade frieze and fan-light top windows not modelled",
-     "dormers are plain",
-     "doors at both ends not modelled (one residential door at most)"
+     "doors at both ends not modelled (one residential door at most)",
+     "the two ornate pointed dormers are library pointed dormers"
     ]
    }
   }
