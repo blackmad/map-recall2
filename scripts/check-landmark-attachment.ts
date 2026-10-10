@@ -26,6 +26,7 @@ import {buildDeSchool} from './landmarks/de-school-builder';
 import {buildWestIndischPakhuis} from './landmarks/west-indisch-pakhuis-builder';
 import {buildVondelkerk} from './landmarks/vondelkerk-builder';
 import {buildLloydHotel} from './landmarks/lloyd-hotel-builder';
+import {buildRondeLutherseKerk} from './landmarks/ronde-lutherse-kerk-builder';
 
 const cases: Record<string, {build: (w: number, d: number, b: never) => void; ring: () => number[][]; top: () => number; topSlack: number}> = {
   'ij-toren': {build: buildIjToren, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')).nativeRing, top: () => { const f = JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')); return Math.max(...f.surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))); }, topSlack: 8},
@@ -59,6 +60,9 @@ cases['vondelkerk'] = {build: buildVondelkerk, ring: () => vk().nativeRing, top:
 // Lloyd Hotel: 3DBAG roofMax 27.42 m NAP on a 1.45 m ground gives 26.0 m for the dome; the model adds the finial and ship vane (28.8 m).
 const lh = () => JSON.parse(fs.readFileSync('scripts/landmarks/lloyd-hotel-footprints.json', 'utf8'));
 cases['lloyd-hotel'] = {build: buildLloydHotel, ring: () => lh().nativeRing, top: () => lh().attributes.roofMaxNAP - lh().groundNAP, topSlack: 3.5};
+// Ronde Lutherse Kerk: 3DBAG roofMax 43.3 m NAP (lantern cap) on 0.46 m ground; the model adds the green ball and swan vane above it (45.8 m).
+const rl = () => JSON.parse(fs.readFileSync('scripts/landmarks/ronde-lutherse-kerk-footprints.json', 'utf8'));
+cases['ronde-lutherse-kerk'] = {build: buildRondeLutherseKerk, ring: () => rl().nativeRing, top: () => rl().attributes.roofMaxNAP - rl().groundNAP, topSlack: 3.5};
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(cases);
 for (const id of ids) {
   const c = cases[id];
