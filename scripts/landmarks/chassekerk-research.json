@@ -5,15 +5,68 @@
   "retrieved": "2026-10-10",
   "identity": "The discovery candidate gave BAG pand 0363100012146537, which is the former rectory (310 m2, gabled, now the hotel). The church is pand 0363100012117919 (1718 m2, bouwjaar 1927), found by overlaying PDOK aerial imagery. New POI id requested-chassekerk (Wikidata Q2189632). Only the church pand is suppressed; the rectory stays an ordinary neighbour.",
   "sources": [
-    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-31_11-43-48_00153/?width=1600&fov=70", "use": "ref-front.jpg: west front from the plaza, 2025-07-31 (porch arches, portholes, tower slits, cornice)", "licence": "Amsterdam municipal panorama (CC0)", "panorama": "recording_2025-07-31_11-43-48_00153"},
-    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-31_11-43-48_00155/?width=1600&fov=90", "use": "ref-nw-front.jpg: front gable with rose window from the north-west", "licence": "Amsterdam municipal panorama (CC0)", "panorama": "recording_2025-07-31_11-43-48_00155"},
-    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-31_11-43-48_00146/?width=1600&fov=90", "use": "ref-wsw-tower.jpg: tall tower and second belfry tower from the west", "licence": "Amsterdam municipal panorama (CC0)", "panorama": "recording_2025-07-31_11-43-48_00146"},
-    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-31_11-43-48_00105/?width=1600&fov=80", "use": "ref-sw-towers.jpg: both towers over the tile roof from the south-west; crop in ref-towers-crop.jpg (tile hipped caps, belfry arches, white clock)", "licence": "Amsterdam municipal panorama (CC0)", "panorama": "recording_2025-07-31_11-43-48_00105"},
-    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-31_11-43-48_00171/?width=1600&fov=95", "use": "ref-ene-side.jpg: nave side and tower base", "licence": "Amsterdam municipal panorama (CC0)", "panorama": "recording_2025-07-31_11-43-48_00171"},
-    {"url": "https://nl.wikipedia.org/wiki/Chass%C3%A9kerk", "use": "Tholens 1924-26, towers preserved, entrance west, deconsecrated 1998, squatted 2004, Chasse Dance Studios and hotel (facts only)", "licence": "Wikipedia, facts only"},
-    {"url": "https://www.pdok.nl/", "use": "ref-aerial-pdok.jpg: PDOK Actueel_orthoHR aerial used to identify the church pand versus the rectory", "licence": "CC0 (PDOK/Beeldmateriaal)"},
-    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012117919&f=json", "use": "BAG pand footprint", "licence": "CC0 (BAG)"},
-    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012117919", "use": "LoD2.2 massing shell (src-3dbag.json)", "licence": "CC BY 4.0 (3DBAG)"}
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-31_11-43-48_00153/?width=1600&fov=70",
+      "use": "ref-front.jpg: west front from the plaza, 2025-07-31 (porch arches, portholes, tower slits, cornice)",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "panorama": "recording_2025-07-31_11-43-48_00153"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-31_11-43-48_00155/?width=1600&fov=90",
+      "use": "ref-nw-front.jpg: front gable with rose window from the north-west",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "panorama": "recording_2025-07-31_11-43-48_00155"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-31_11-43-48_00146/?width=1600&fov=90",
+      "use": "ref-wsw-tower.jpg: tall tower and second belfry tower from the west",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "panorama": "recording_2025-07-31_11-43-48_00146"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-31_11-43-48_00105/?width=1600&fov=80",
+      "use": "ref-sw-towers.jpg: both towers over the tile roof from the south-west; crop in ref-towers-crop.jpg (tile hipped caps, belfry arches, white clock)",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "panorama": "recording_2025-07-31_11-43-48_00105"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-31_11-43-48_00171/?width=1600&fov=95",
+      "use": "ref-ene-side.jpg: nave side and tower base",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "panorama": "recording_2025-07-31_11-43-48_00171"
+    },
+    {
+      "url": "https://nl.wikipedia.org/wiki/Chass%C3%A9kerk",
+      "use": "Tholens 1924-26, towers preserved, entrance west, deconsecrated 1998, squatted 2004, Chasse Dance Studios and hotel (facts only)",
+      "licence": "Wikipedia, facts only"
+    },
+    {
+      "url": "https://www.pdok.nl/",
+      "use": "ref-aerial-pdok.jpg: PDOK Actueel_orthoHR aerial used to identify the church pand versus the rectory",
+      "licence": "CC0 (PDOK/Beeldmateriaal)"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012117919&f=json",
+      "use": "BAG pand footprint",
+      "licence": "CC0 (BAG)"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012117919",
+      "use": "LoD2.2 massing shell (src-3dbag.json)",
+      "licence": "CC BY 4.0 (3DBAG)"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-31_11-43-48_00169/?width=1600&fov=70",
+      "use": "ref-wing-169.jpg: ESE wing wall (brick base, piers, terrace, arcade), NNE copper block over three arched windows",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "panorama": "recording_2025-07-31_11-43-48_00169"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-31_11-43-48_00172/?width=1600&fov=70",
+      "use": "ref-wing-172.jpg: copper block base with arches seen across the side street",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "panorama": "recording_2025-07-31_11-43-48_00172"
+    }
   ],
-  "notes": "Front frame: normal bearing 297 degrees, plane at d = 23.7 m from the footprint centroid; t from the north tower corner; scale about 0.0226 m per pixel across the porch in ref-front.jpg. Tower tops (above 17.6 m) are cut out of the shell (3DBAG makes needles) and rebuilt as brick belfries with hipped tile caps; heights and cap shape are read from the 2025 south-west view and are approximate. The clock is on the south face of the north tower. Long nave walls, rear, south wing and the stepped gable's pinnacles are not modelled beyond the shell (inferred). Roof is tile with solar panels in reality; panels are not modelled."
+  "notes": "Front frame: normal bearing 297 degrees, plane at d = 23.7 m from the footprint centroid; t from the north tower corner; scale about 0.0226 m per pixel across the porch in ref-front.jpg. Tower tops (above 17.6 m) are cut out of the shell (3DBAG makes needles) and rebuilt as brick belfries with hipped tile caps; heights and cap shape are read from the 2025 south-west view and are approximate. The clock is on the south face of the north tower. Long nave walls, rear, south wing and the stepped gable's pinnacles are not modelled beyond the shell (inferred). Roof is tile with solar panels in reality; panels are not modelled. Rework 2026-10-10: towers rebuilt as plain slender brick shafts (belfry peak 23.55 m = 3DBAG lidar tower top; nave ridge is 21.2 m, so the towers rise 2.3 m above the ridge and several metres over the front gable) with one/two slim arched louvres and a low tile cap; south-east wing given its measured window rhythm (piers, 3 windows per bay, doors, string course, terrace railing, arcade) and copper-clad blocks with window grids; wing/copper positions come from 3DBAG wall surfaces; the SSW copper block faces (walls 32 and 89) are inferred from panorama 00105. Brick colour sampled from photos (shade about rgb 100,92,82)."
 }
