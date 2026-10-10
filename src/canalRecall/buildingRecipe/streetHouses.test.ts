@@ -38,14 +38,17 @@ test('Bilderdijkstraat 081118: balcony guards stand in front of the French windo
 });
 
 test('mirror: the right-bay twin of 080336 is its mirror image, a plain neighbour is not', () => {
-  const left = intent('bilder-080336'), right = intent('bilder-090492');
+  // The two houses now carry their own evidenced shops; compare the building body with the original plain shop door.
+  const plain = (i: ReturnType<typeof intent>, doorBay: number) => ({...i, fronts: i.fronts.map(f => ({...f, doorBay, shopfront: {colour: 'dark-brown', fascia: false}}))});
+  const left = plain(intent('bilder-080336'), 1), right = plain(intent('bilder-090492'), 0);
   assert.equal(matchDesign(left, right), 'mirror');
+  assert.equal(matchDesign(intent('bilder-080336'), intent('bilder-090492')), null, 'different shops are not twins');
   assert.equal(matchDesign(left, left), 'same');
-  assert.equal(matchDesign(left, intent('bilder-092394')), null);
+  assert.equal(matchDesign(left, plain(intent('bilder-092394'), 0)), null);
   const flipped = mirrorIntent(right)!;
   assert.equal(flipped.fronts[0].bayWindows?.bay, 0);
   assert.equal(flipped.fronts[0].doorBay, 1);
-  assert.equal(matchDesign(intent('bilder-092394'), intent('bilder-092395')), 'same');
+  assert.equal(matchDesign(intent('bilder-092394'), intent('bilder-092395')), null, '092395 carries its own BENU shop');
 });
 
 test('frontage frame: the matrix maps the survey frontage onto the X axis and the street side onto +Z', () => {

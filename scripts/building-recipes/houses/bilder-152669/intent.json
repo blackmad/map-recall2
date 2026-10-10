@@ -25,10 +25,25 @@
    "storeys": 5,
    "bays": 3,
    "dormers": 1,
-   "doorBay": 2,
+   "doorBay": null,
    "shopfront": {
     "colour": "black",
-    "fascia": true
+    "fascia": true,
+    "name": "COLORS",
+    "sign": {
+     "text": "COLORS",
+     "textColour": "#e3a526",
+     "span": 0.55,
+     "align": "left"
+    },
+    "glazing": "split",
+    "stallriser": "low",
+    "residentialDoor": {
+     "side": "right",
+     "colour": "black"
+    },
+    "shopShare": 0.6,
+    "evidence": "front.jpg 2022-04-29: black fascia with multicoloured capitals \"COLORS\" (modelled in one yellow-orange), glazed shop at the left, high arched street door up a flight of steps at the right. Not in OSM."
    },
    "bands": "lintel",
    "windowSurround": "keystone"

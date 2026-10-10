@@ -47,6 +47,8 @@ export function localToFrameMatrix(frame: FrontFrame, anchorRD: RD): number[] {
 /** Left-right mirror of a design, or null when the layout cannot be mirrored one-to-one (storeys with different bay counts around a mirrored feature). */
 export function mirrorIntent(intent: CanalHouseIntent): CanalHouseIntent | null {
   const fronts: FrontIntent[] = [];
+  // Lettering and side-specific shop doors cannot be mirrored one-to-one.
+  if (intent.fronts.some(f => f.shopfront && (f.shopfront.sign || f.shopfront.residentialDoor || (f.shopfront.entrance && !/^(none|centre|centre-recessed)$/.test(f.shopfront.entrance))))) return null;
   for (const f of intent.fronts) {
     const bays = Array.isArray(f.bays) ? f.bays : Array(f.storeys).fill(f.bays);
     const flip = (bay: number, storeys: number[]) => storeys.every(s => bays[s] === bays[0]) ? bays[0] - 1 - bay : NaN;

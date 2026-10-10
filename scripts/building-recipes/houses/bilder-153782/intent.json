@@ -25,10 +25,29 @@
    "storeys": 5,
    "bays": 3,
    "dormers": 1,
-   "doorBay": 0,
+   "doorBay": null,
    "shopfront": {
     "colour": "black",
-    "fascia": true
+    "fascia": true,
+    "name": "Musscher Verlichting (lighting shop, 2024 photo)",
+    "sign": {
+     "text": "MUSSCHER VERLICHTING",
+     "textColour": "#1f2a3a",
+     "background": "#e9e6dc",
+     "span": 0.92
+    },
+    "entrance": "right",
+    "glazing": "single",
+    "stallriser": "low",
+    "residentialDoor": {
+     "side": "left",
+     "colour": "black"
+    },
+    "evidence": "front.jpg 2024-11-29: white fascia \"MUSSCHER VERLICHTING\" in dark capitals, dark-grey awning, lamp-filled window, doors at both ends (left taken as the street door). Not in OSM today (Mensink bakery, New York Pizza 12 m are neighbours) so it may have closed.",
+    "awning": {
+     "style": "fabric-straight",
+     "colour": "grey"
+    }
    },
    "bands": "lintel",
    "windowSurround": "keystone"
