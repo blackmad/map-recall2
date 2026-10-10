@@ -35,6 +35,7 @@ import {buildRondeLutherseKerk} from './landmarks/ronde-lutherse-kerk-builder';
 import {buildHotelOkura} from './landmarks/hotel-okura-builder';
 import {buildPakhuisDeZwijger} from './landmarks/pakhuis-de-zwijger-builder';
 import {buildVictoriaHotel} from './landmarks/victoria-hotel-builder';
+import {buildDeNederlandscheBank} from './landmarks/de-nederlandsche-bank-builder';
 import {buildWoongebouwWladiwostok} from './landmarks/woongebouw-wladiwostok-builder';
 
 const cases: Record<string, {build: (w: number, d: number, b: never) => void; ring: () => number[][]; top: () => number; topSlack: number}> = {
@@ -89,6 +90,9 @@ cases['victoria-hotel'] = {build: buildVictoriaHotel, ring: () => vh().nativeRin
 // Woongebouw Wladiwostok: 3DBAG roofMax 29.8 m NAP includes the roof mast on 1.5 m ground.
 const ww = () => JSON.parse(fs.readFileSync('scripts/landmarks/woongebouw-wladiwostok-footprints.json', 'utf8'));
 cases['woongebouw-wladiwostok'] = {build: buildWoongebouwWladiwostok, ring: () => ww().nativeRing, top: () => ww().attributes.roofMaxNAP - ww().groundNAP, topSlack: 5};
+// De Nederlandsche Bank: the model top is the 3DBAG plant block on the tower roof (71.7 m above ground); the roof plate stays below it.
+const dnb = () => JSON.parse(fs.readFileSync('scripts/landmarks/de-nederlandsche-bank-footprints.json', 'utf8'));
+cases['de-nederlandsche-bank'] = {build: buildDeNederlandscheBank, ring: () => dnb().nativeRing, top: () => Math.max(...dnb().surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 1};
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(cases);
 for (const id of ids) {
   const c = cases[id];
