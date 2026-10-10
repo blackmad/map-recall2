@@ -1,8 +1,9 @@
 import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
-import {frameOf, slab} from './nearbar-kit';
+import {frameOf, put, slab} from './nearbar-kit';
 import {curtainOnWall, frameFromBearing, wallAwayFrom, windowRow} from './modern-kit';
+import * as TT from 'three';
 import source from './ij-toren-footprints.json';
 
 /**
@@ -33,6 +34,8 @@ const isVault = (s: Surface) => { const b = bbox(s); return b.y1 > 14 && b.y1 < 
 
 const isSpike = (s: Surface) => { const b = bbox(s); return b.x1 < -83 && b.z1 < -45 && b.y1 > 14; };   // sliver of the neighbouring hotel inside the BAG ring
 const isCanopy = (s: Surface) => { const b = bbox(s); return (b.x0 + b.x1) / 2 > 52 && b.y1 <= 11.4; };
+/** Recessed dark-blue central strip of the south face above the lobby wing. */
+const isCore = (s: Surface) => { const b = bbox(s), c = slabCoords((b.x0 + b.x1) / 2, (b.z0 + b.z1) / 2); return isTower(s) && !isWing(s) && b.y0 > 25 && c.a > 16 && c.a < 38 && c.d > 11; };
 const CENTRE: [number, number] = [18.15, -14.3], WING_CENTRE: [number, number] = [17.5, 20];
 
 export function buildIjToren(_w: number, _d: number, b: BuildingTools & {mark?: (n: string) => void}) {
@@ -40,7 +43,9 @@ export function buildIjToren(_w: number, _d: number, b: BuildingTools & {mark?: 
   const other = (s: Surface) => isSpike(s) || isTower(s) || isWing(s) || isVault(s) || isCanopy(s);
   addShell(b, src as never, {wall: 'brick', roof: 'concrete', skip: other});
   addShell(b, src as never, {wall: 'white', roof: 'concrete', skip: s => isSpike(s) || !isCanopy(s)});
-  addShell(b, src as never, {wall: 'glass', roof: 'dark', skip: s => isSpike(s) || !(isTower(s) || isWing(s))});
+  addShell(b, src as never, {wall: 'glass', roof: 'dark', skip: s => isSpike(s) || !isTower(s) || isWing(s) || isCore(s)});
+  addShell(b, src as never, {wall: 'slate', roof: 'dark', skip: s => isSpike(s) || !isCore(s)});
+  addShell(b, src as never, {wall: 'copper', roof: 'dark', skip: s => isSpike(s) || !isWing(s)});
   addShell(b, src as never, {wall: 'glass', roof: 'glass', skip: s => isSpike(s) || !isVault(s)});
   b.mark?.('shell');
 
@@ -50,7 +55,8 @@ export function buildIjToren(_w: number, _d: number, b: BuildingTools & {mark?: 
     if (s.type !== 'WallSurface' || isSpike(s) || !(isTower(s) || wing)) return;
     const w = wallAwayFrom(s, i, wing ? WING_CENTRE : CENTRE);
     if (!w || w.length < 2.2) return;
-    curtainOnWall(b, w, {y0: wing ? 2 * FH : Y0, floorH: FH, spandrelH: 1.2, bayW: BAY, spandrel: 'frame', mullion: 'dark', depth: 0.12, cap: 'dark'});
+    const core = isCore(s);
+    curtainOnWall(b, w, {y0: wing ? 2 * FH : Y0, floorH: FH, spandrelH: core ? 0.9 : 1.3, bayW: core ? 1.0 : BAY, spandrel: core ? 'glass' : 'frame', mullion: core ? 'slate' : 'dark', depth: 0.12, cap: 'dark'});
   });
   // IJ-side base: two dark framed storeys of big bays over the quay gallery (north wall 354).
   {
@@ -73,6 +79,24 @@ export function buildIjToren(_w: number, _d: number, b: BuildingTools & {mark?: 
     if (!w) continue;
     windowRow(b, w, {n, y: 0.35, h: 3.3, wd: 3.6, glass: 'glass', frame: 'dark'});
     windowRow(b, w, {n, y: 6.1, h: 1.8, wd: 2.5, glass: 'glass', frame: 'frame'});
+  }
+  // Podium roof terrace: steel-and-glass gallery balustrade along the outer podium walls (reference: north and east views).
+  src.surfaces.forEach((s, i) => {
+    if (s.type !== 'WallSurface' || other(s)) return;
+    const bb = bbox(s);
+    if (bb.y0 > 1 || bb.y1 < 10.3 || bb.y1 > 11.5) return;
+    const w = wallAwayFrom(s, i, [-20, -15]);
+    if (!w || w.length < 6) return;
+    const f = frameOf(w);
+    slab(b, f, w.length / 2, bb.y1 - 0.05, w.length - 0.2, 1.2, 0.12, 'glass');
+    slab(b, f, w.length / 2, bb.y1 + 1.15, w.length - 0.2, 0.1, 0.16, 'frame');
+  });
+  // Quay canopy east of the tower: glass-block wall (surveyed) with a steel canopy on white columns on the water side.
+  {
+    const w = wallAwayFrom(src.surfaces[211], 211, [115, 6])!, f = frameOf(w);
+    const wide = 6.0;
+    put(b, f, new TT.BoxGeometry(w.length, 0.35, wide).translate(0, 0, wide / 2), w.length / 2, 10.15, 0, 'concrete');
+    for (let t = 2; t < w.length - 1; t += 8.6) put(b, f, new TT.BoxGeometry(0.4, 10.15, 0.4).translate(0, 5.075, 0), t, 0, wide - 0.6, 'white');
   }
   void T; void frameFromBearing; void slab;
 }

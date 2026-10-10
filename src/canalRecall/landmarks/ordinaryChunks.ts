@@ -1,12 +1,12 @@
 /**
- * Street chunks in the ordinary-buildings layer (opt-in, `?streetChunks=1`).
+ * Street chunks in the ordinary-buildings layer (default on, `?streetChunks=0` turns them off).
  *
  * `ordinary-buildings-data/chunks.json` (see streetChunks/manifest.ts) lists
  * block-face GLBs. Each becomes ONE spec: the GLB in its frontage frame placed
  * like a shared house mesh, suppressing every pand it covers. The per-house
  * specs a chunk replaces are dropped from the model list so no house is drawn
  * twice; hover resolves the pand under the cursor from the glTF extras
- * (`pandIndexForFace`). With the flag off, or the manifest missing, nothing
+ * (`pandIndexForFace`). With `?streetChunks=0`, or the manifest missing, nothing
  * changes.
  */
 import type {ChunkManifest, ChunkManifestEntry} from '../streetChunks/manifest.ts';
@@ -14,8 +14,8 @@ import type {SignatureModelSpec} from './signaturePlacement';
 
 export {pandIndexForFace} from '../streetChunks/extras.ts';
 
-/** `?streetChunks=1` (or `=true`). */
-export const streetChunksEnabled = (search: string): boolean => /^(1|true)$/.test(new URLSearchParams(search).get('streetChunks') ?? '');
+/** On by default; `?streetChunks=0` (or `=false`/`=off`) draws the individual houses instead. */
+export const streetChunksEnabled = (search: string): boolean => !/^(0|false|off|no)$/i.test(new URLSearchParams(search).get('streetChunks') ?? '');
 
 export function chunkSpecFor(c: ChunkManifestEntry): SignatureModelSpec {
   const length = c.bounds.max[0] - c.bounds.min[0], width = c.bounds.max[2] - c.bounds.min[2];

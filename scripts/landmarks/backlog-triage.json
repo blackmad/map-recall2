@@ -180,6 +180,10 @@
   "Vincentiuskerk": {
    "kind": "skip",
    "note": "Demolished in 1989 and replaced by housing with a small ground-floor church space (Wikipedia)."
+  },
+  "Bellevue": {
+   "kind": "duplicate",
+   "note": "Covered by installed model delamar (BAG pand 0363100012169852 is inside OSM way w267565782, which delamar suppresses). Fix Bellevue lettering on delamar."
   }
  }
 }

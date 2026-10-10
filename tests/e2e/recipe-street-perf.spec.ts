@@ -33,7 +33,7 @@ for (const rep of [1, 2]) test(`ride the recipe street ${baseline ? '(baseline)'
   test.setTimeout(300_000);
   // Baseline = same server and code, recipe GLBs blocked: the layer keeps the generic host buildings (what the street was before).
   if (baseline) await page.route(/recipe-bilder-\d+\.glb/, route => route.abort());
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: '?streetChunks=0' });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 });
   const bearing = 90 + houses[0].instance.northOffsetDegrees, dir = [Math.sin(bearing * Math.PI / 180), Math.cos(bearing * Math.PI / 180)];
   const sorted = [...houses].sort((a, b) => (a.anchor[0] * dir[0] + a.anchor[1] * dir[1]) - (b.anchor[0] * dir[0] + b.anchor[1] * dir[1]));

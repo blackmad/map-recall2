@@ -23256,8 +23256,8 @@
         "depthMetres": 33.97700119018555,
         "depthCoverage": 0.8287073461020865
       },
-      "triangles": 3680,
-      "bytes": 59932,
+      "triangles": 4432,
+      "bytes": 69620,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "vrijburg": {
@@ -24901,6 +24901,8 @@
           ]
         ]
       },
+      "status": "held",
+      "heldReason": "Integrator 2026-10-10: fronts accepted on review, but audit see-through FAIL 11/42 street rays",
       "bounds": {
         "min": [
           -24.885000228881836,
@@ -25638,8 +25640,6 @@
           ]
         ]
       },
-      "status": "held",
-      "heldReason": "Integrator 2026-10-10: blue curtain-wall banding and set-backs missing; terminal podium renders as long flat slabs",
       "bounds": {
         "min": [
           -118.1989974975586,
@@ -25668,10 +25668,9 @@
         "depthMetres": 95.37799835205078,
         "depthCoverage": 0.8750275078169797
       },
-      "triangles": 10673,
-      "bytes": 152940,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "triangles": 11201,
+      "bytes": 163052,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

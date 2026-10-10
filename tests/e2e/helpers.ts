@@ -26,7 +26,7 @@ export type OpenRouteOptions = {
   playerTimeoutMs?: number;
   /** Seed for Math.random, so different values give different routes. */
   seed?: number;
-  /** Query string for the page URL, e.g. `?streetChunks=1`. */
+  /** Query string for the page URL, e.g. `?streetChunks=0`. */
   query?: string;
 };
 

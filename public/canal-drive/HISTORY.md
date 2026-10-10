@@ -1,5 +1,46 @@
 # Canal Recall — what is built
 
+## Street chunks on by default; demo page (2026-10-10)
+
+The user's point: chunks are about making modelling correct and efficient
+(see the block-face authoring lane), not frame time. The 4 Bilderdijkstraat
+chunks are now the game default (`?streetChunks=0` turns them off; only the
+game passes `streetChunks: true`, review pages keep per-house models). Gates
+re-run per pand on the chunk geometry in absolute NAP: 15/15 pass (footprint
+IoU 0.93–0.99, ridge unchanged, eaves ±0.10 m, re-grounding −0.49…+0.40 m;
+`chunks-gates.json`). `street-chunks.html` shows individual houses vs chunk
+in synced views with stats and a ride link. Works with `?sharedFrame=1`.
+
+## Willem de Zwijgerkerk windows from the review sheet (2026-10-10)
+
+User: "missing a few front windows". The camera-matched sheet showed the south
+gable had an invented entrance wing and one tall window where the photo has a
+round-arched entrance on the axis, a KERK plate, a three-light group with
+transoms, side slits and an apex slit; the east aisle had 6 large windows for
+7 small ones plus a slit; the north gable lacked twin apex slits; the north
+wing lacked its arched door and four small windows. Integrator record: viewed
+before/after sheets (overlays line up on N, E, S); audit PASS (warns only),
+attachment 2.1 cm, facade-compare PASS on three faces with lane-counted
+(not blind) specs and spans narrowed to the gables. Inferred: west side
+(behind housing), tower openings. KERK plate has no lettering yet.
+
+## Own ground on AHN relief: prototype, go (2026-10-10)
+
+`own-ground.html?box=nassaukade|leidsegracht` draws streets, cycle tracks,
+kerbed sidewalks, quays, sunken water and bridge decks as one mesh draped on
+AHN dtm_05m relief (2 m grid, 1 km tiles, NAP cm; water and quay-edge returns
+blanked before averaging). Decks are re-based on the relief and eased in over
+2.5 m, so roads and the route ribbon run over bridges with no step — the
+failure in the user's `?elevation=1` screenshot, where MapLibre painted roads
+flat across water. Buildings stand on the lowest relief of their footprint.
+iPhone 4× throttle: ground alone 1.2 ms CPU per frame for 2×2 km; GPU on a
+real phone unmeasured. City: ~38 MB relief at 2 m, ≤11 MB OSM ground.
+Named regressions BRU0166 (Nassaukade) and BRU0044 (Leidsegracht arch).
+Remaining ~3 weeks to a riding view: streaming in the chunk worker,
+shared-frame registration, hiding MapLibre fills inside the radius, draped
+overlays, labels, re-basing models; optional BGT road polygons for surveyed
+widths (only ~14% of OSM ways tag one). `docs/research/own-ground-20261009.md`.
+
 ## Audit hole fixes: one real hole, mostly false positives (2026-10-10)
 
 Gerard Dou synagogue had its east hall wall and west clerestory missing:

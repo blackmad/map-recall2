@@ -46,3 +46,4 @@ export const GAME_BUILDING_MODELS = [...manualModels, ...ORDINARY_BUILDINGS];
 export const MODEL_ASSET_VERSIONS = { ...modelVersions, ...ORDINARY_BUILDING_VERSIONS };
 export { SharedAssetCache } from './sharedAssetCache';
 export { streetChunksEnabled, applyStreetChunks, chunkSpecFor, pandIndexForFace } from './ordinaryChunks';
+export { createRecipeLook } from '../buildingRecipe/recipeLook';
