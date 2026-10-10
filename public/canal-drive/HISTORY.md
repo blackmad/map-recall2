@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## Mövenpick restored; Westerkerk lean-to shops take the church brick (2026-10-10)
+
+The Mövenpick hotel and the Muziekgebouw are one BAG pand; the
+`muziekgebouw-bimhuis` landmark suppressed all its OSM parts though its model
+covers only the hall, so the hotel tower vanished. The suppress list now holds
+only the hall, roof, foyer and Bimhuis parts. The coloured boxes round the
+Westerkerk are the church's own lean-to shops (Westermarkt 60–74, 8–11 m²,
+too small for a facade); they are now part of the Westerkerk kit body. Nothing
+duplicated the church. `scripts/audit-landmark-filler.ts` (in `check:canal` as
+`audit:landmark-filler`) maps every model's mass and pins both places.
+
 ## Street-survey house types, Stage 1: Nassaukade 318–300 and De Clercqstraat 22–2 (2026-10-10)
 
 The user asked that repetitive blocks be built by a generator or model reuse. A
