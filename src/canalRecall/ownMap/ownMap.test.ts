@@ -15,6 +15,10 @@ import { streetLabelVisible, poiLabelVisible, neighbourhoodLabelVisible, gameLab
 import { buildSpoilerIndex } from '../orientationPois';
 import { interpolateStops } from './style';
 import type { Vec2 } from './frame';
+import { answeredStreetPlacement, brandedPoiOverlay, ferryOverlay, transitOverlay, zoomStops, interpolateLinear } from './overlays';
+import { ferryLabelVisible, brandIconVisible } from './labelPolicy';
+import { footprintArrays } from './footprints';
+import type { TransitNetwork } from '../transit/network';
 
 const VP = { width: 1440, height: 900 };
 const near = (a: number, b: number, eps: number, msg?: string) => assert.ok(Math.abs(a - b) <= eps, `${msg ?? ''} ${a} vs ${b}`);
@@ -167,6 +171,63 @@ test('extract: with every name earned, Nassaukade under question is never placed
     assert.ok(placed.length > 3, 'other names do draw');
     assert.deepEqual(placed.filter(l => /nassaukade/i.test(l.text)).map(l => l.text), []);
   }
+});
+
+test('extract v2: rail, tram, landuse, piers and neighbourhood outlines are in the overview', () => {
+  const close = (pts: Vec2[], p: Vec2, r: number) => pts.some(q => Math.hypot(q[0] - p[0], q[1] - p[1]) < r);
+  const centraal = toLocal(4.9003, 52.3789);
+  assert.ok(overview.rail.some(r => r.kind === 'rail' && !r.tunnel && close(r.points, centraal, 150)), 'rail into Centraal');
+  assert.ok(overview.rail.some(r => r.kind === 'tram' && close(r.points, toLocal(4.8826, 52.3641), 80)), 'tram at Leidseplein');
+  assert.ok(overview.rail.some(r => r.kind === 'subway' && r.tunnel), 'metro in tunnel');
+  // Zorgvlied cemetery (Amsteldijk, 52.3356 N 4.9004 E).
+  const cemeteries = new PolygonGrid(overview.landuse.filter(l => l.cls === 'cemetery').map(l => l.rings));
+  assert.equal(cemeteries.contains(...toLocal(4.9004, 52.3356)), true, 'Zorgvlied is a cemetery');
+  assert.ok(overview.piers.length > 300 && overview.hoodRings.length >= 40);
+  assert.ok(overview.streets.filter(s => s.cls === 'path').length > 10_000, 'footways');
+});
+
+const network = JSON.parse(readFileSync('public/data/extracts/amsterdam/transit-network.json', 'utf8')) as TransitNetwork;
+
+test('overlays: transit corridors use the game layer objects; GTFS colours without # fall back as MapLibre does', () => {
+  assert.deepEqual(zoomStops(['interpolate', ['linear'], ['zoom'], 13, 7, 18, 18]), { stops: [[13, 7], [18, 18]], linear: true });
+  assert.equal(interpolateLinear([[13, 7], [18, 18]], 15.5), 12.5);
+  const sets = transitOverlay(network);
+  const byId = Object.fromEntries(sets.map(s => [s.spec.id, s]));
+  assert.ok(byId['transit-network-surface'].lines.length >= 15, 'every tram line');
+  assert.ok(byId['transit-network-tunnel'].lines.length >= 5, 'every metro line');
+  assert.deepEqual(byId['transit-network-tunnel'].spec.dash, [1.2, 1.6]);
+  assert.equal(byId['transit-network-tunnel'].spec.above, true);
+  assert.ok(byId['transit-network-tunnel'].lines.every(l => l.color === '#F59E0B'), 'metro: "187A36" is no colour to MapLibre');
+  assert.ok(byId['transit-network-surface'].lines.every(l => l.color === '#E11D48'));
+  near(byId['transit-network-tunnel-casing'].spec.opacity, 0.85 * 0.72, 1e-9, 'rgba alpha folded into opacity');
+});
+
+test('overlays: ferries, brands and the answered lettering; spoilers withheld', () => {
+  const ferry = ferryOverlay(network);
+  assert.ok(ferry.lines.length >= 10);
+  assert.ok(ferry.terminals.some(t => t.name === 'Buiksloterweg'));
+  const ctx: LabelContext = { isLabelled: () => true, hiddenName: 'Buiksloterweg', spoilerIndex: buildSpoilerIndex(['Buiksloterweg']), quizQuiet: true };
+  assert.equal(ferryLabelVisible(ctx, 'Buiksloterweg'), false);
+  assert.equal(ferryLabelVisible(ctx, 'NDSM-werf'), true, 'not quieted');
+  assert.equal(brandIconVisible({ ...ctx, hiddenName: 'Overtoom', spoilerIndex: buildSpoilerIndex(['Overtoom']) }, 'Albert Heijn Overtoom'), false);
+  const pois = [{ id: 'a', name: 'Albert Heijn', kind: 'albert-heijn', center: [52.37, 4.88] as [number, number] }, { id: 'b', name: 'Café Overtoom', kind: 'local-food', center: [52.36, 4.87] as [number, number] }];
+  assert.deepEqual(brandedPoiOverlay(pois, n => /overtoom/i.test(n)).map(p => p.id), ['a']);
+  // A straight street running north; rider heading north near its south end: lettering 40 m ahead (120 game px), top pointing north.
+  const street: Vec2[] = [[0, 0], [0, 500]];
+  const [p] = answeredStreetPlacement([street], { at: [0, 10], bearing: 0 });
+  near(p.at[1], 50, 1e-6); near(p.at[0], 0, 1e-6); near(p.bearing, 0, 1e-6);
+  const [back] = answeredStreetPlacement([street], { at: [0, 400], bearing: 180 });
+  near(back.at[1], 360, 1e-6); near(back.bearing, 180, 1e-6);
+});
+
+test('footprints: arrays for the worker (top + walls, linear colour)', () => {
+  const sq = [[[4.9, 52.37], [4.9001, 52.37], [4.9001, 52.3701], [4.9, 52.3701], [4.9, 52.37]]];
+  const a = footprintArrays([{ properties: { height: 12 }, geometry: { type: 'Polygon', coordinates: sq } }], toLocal, '#ffffff', '#808080');
+  assert.equal(a.position.length / 3, 5 + 4 * 4);
+  assert.equal(a.index.length, 2 * 3 + 4 * 6, 'two roof triangles, two per wall');
+  near(a.position[2], 12, 1e-6);
+  near(a.color[0], 1, 1e-9);
+  assert.ok(a.color[5 * 3] < 0.25, 'wall grey is linear (0.216 × shade)');
 });
 
 test('style: MapLibre-like exponential stops', () => {
