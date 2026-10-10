@@ -50,7 +50,7 @@ export interface FaceGroundPlan { sharedNapM: number; shiftsM: number[]; eavesBe
   measured?: Record<string, Record<string, number>> }
 /** The strip's vertical scale (strip.json): pixel rows to metres above the strip's ground line. */
 export interface StripScale { heightPx: number; pixelsPerMetre: number; groundNAP: number }
-export interface BlockFaceResult { instancing: InstancingPlan; slitsClosed: {left: string; right: string; gapM: number}[]; frontSnaps: FrontSnap[]; rears: RearReport[]; chunk: ChunkResult; ground: FaceGroundPlan; gates: FaceGate[]; interference: Interference[]; perPand: {pand: string; slug: string; triangles: number; eavesM: number; roofMaxM: number; roofMaxFactsM: number; storeyHeightsM: number[]}[]; passed: boolean }
+export interface BlockFaceResult { instancing: InstancingPlan; slitsClosed: {left: string; right: string; gapM: number}[]; frontSnaps: FrontSnap[]; rears: RearReport[]; chunk: ChunkResult; ground: FaceGroundPlan; gates: FaceGate[]; interference: Interference[]; perPand: {pand: string; slug: string; triangles: number; eavesM: number; roofMaxM: number; roofMaxFactsM: number; storeyHeightsM: number[]; fronts: {id: string; widthM: number; eavesM: number; storeyHeightsM: number[]}[]}[]; passed: boolean }
 
 const median = (v: number[]) => { const s = [...v].sort((a, b) => a - b); return s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2; };
 const cm = (v: number) => Math.round(v * 100) / 100;
@@ -299,7 +299,7 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     const minY = Math.min(...t.flatMap(x => x.p.map(v => v[1])));
     g(pand, 'grounded', Math.abs(minY) <= 0.05, cm(minY), 'lowest vertex within 5 cm of the shared street level');
     sizes.push(fit.report.fronts.map(f => ({widthM: f.widthM, eavesM: f.eavesM, crownTopM: f.crownTopM})));
-    perPand.push({pand: intent.pandId, slug: intent.id, triangles: t.length, eavesM: f0.eavesM, roofMaxM: cm(roofMax), roofMaxFactsM: cm(factsMax), storeyHeightsM: f0.storeyHeightsM});
+    perPand.push({pand: intent.pandId, slug: intent.id, triangles: t.length, eavesM: f0.eavesM, roofMaxM: cm(roofMax), roofMaxFactsM: cm(factsMax), storeyHeightsM: f0.storeyHeightsM, fronts: fit.report.fronts.map(f => ({id: f.id, widthM: f.widthM, eavesM: f.eavesM, storeyHeightsM: f.storeyHeightsM}))});
   }
   // Interference along each party line.
   const groupOf = (p: string) => face.continuity.corniceGroups.findIndex(gr => gr.pands.includes(p));
