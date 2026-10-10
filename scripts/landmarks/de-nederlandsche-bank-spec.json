@@ -1,0 +1,74 @@
+{
+  "id": "de-nederlandsche-bank",
+  "name": "De Nederlandsche Bank",
+  "landmarkId": "de-nederlandsche-bank",
+  "modelUrl": "./models/de-nederlandsche-bank.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012165684"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.9000635385964255,
+      52.359013088509286
+    ],
+    "headingDegrees": 75.8,
+    "lengthMetres": 122.5,
+    "widthMetres": 112.6
+  },
+  "surveyed": {
+    "anchor": [
+      4.9000635385964255,
+      52.359013088509286
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012165684 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#8a3d2e",
+    "concrete": "#bdb9ae",
+    "stone": "#a9a597",
+    "glass": "#4d6676",
+    "frame": "#c9ced0",
+    "dark": "#23282c",
+    "white": "#e7e5df",
+    "slate": "#4a4f55"
+  },
+  "attribution": {
+    "title": "De Nederlandsche Bank",
+    "author": "Map Recall",
+    "sourceUrl": "https://arcam.nl/architectuur-gids/de-nederlandsche-bank-2/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 massing; podium storeys, tile fascias, pilotis, tower window strips measured by eye from Commons photographs (2018, 2022, 2025), no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.899207816765565,
+          52.359284435708744
+        ],
+        [
+          4.8996126344794275,
+          52.35830363702108
+        ],
+        [
+          4.901333878253228,
+          52.35863811012264
+        ],
+        [
+          4.900955546718341,
+          52.35955482398523
+        ],
+        [
+          4.899207816765565,
+          52.359284435708744
+        ]
+      ]
+    ]
+  }
+}
