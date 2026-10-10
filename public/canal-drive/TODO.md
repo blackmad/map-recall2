@@ -53,6 +53,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   clock-tower cap are fixed; the roofline is still plain 3DBAG planes where
   the real hotel has its cluster of ornate gables, dormer towers and
   pinnacles. Leaf-off panorama frames: scripts/landmarks/panolist.mjs.
+  Krasnapolsky held (2026-10-10): old Dam front matches; the modern wing and
+  lower brick building need photo counts and the dark glass bays.
+  Audit gap: an open classical portico (columns under a pediment, soffit
+  above 6 m) counts as see-through; the Artis Aquarium lane trimmed its
+  cornice overhang ~0.5 m to pass. Teach the see-through rule that a ray
+  between columns reaching a wall within the portico depth is closed, then
+  restore the overhang from the photo.
   World Trade Center Amsterdam held (2026-10-10): towers A–G are ONE BAG
   pand (0363100012096613, ~200 x 95 m); a recognizable model needs a photo
   of each tower face (Commons has only atrium/logo/tower H). Footprints and
