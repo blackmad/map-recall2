@@ -20,27 +20,116 @@
    "design": {
     "fronts": [
      {
-      "id": "front0",
+      "id": "a",
       "street": "Bilderdijkstraat",
       "basement": "none",
-      "cornice": "heavy",
       "hoist": false,
       "gable": "cornice",
       "storeys": 4,
-      "bays": 9,
-      "dormers": 3,
+      "bays": 3,
       "doorBay": null,
       "windows": "plain",
-      "bands": "storey",
+      "share": 0.328,
+      "cornice": "heavy",
+      "bands": "lintel",
       "balconies": {
        "storeys": [
-        1
+        1,
+        2,
+        3
        ],
        "bays": [
-        1,
-        4,
-        7
+        1
        ]
+      },
+      "tower": {
+       "bays": {
+        "from": 1,
+        "to": 1
+       },
+       "rise": 1.1,
+       "cap": "flat"
+      },
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "displayWindows": 2,
+       "stallriser": "none",
+       "evidence": "pano 2023-01-12: one black Intertoys fascia over the three houses"
+      }
+     },
+     {
+      "id": "b",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "storeys": 4,
+      "bays": 3,
+      "doorBay": null,
+      "windows": "plain",
+      "share": 0.329,
+      "cornice": "heavy",
+      "bands": "lintel",
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "tower": {
+       "bays": {
+        "from": 1,
+        "to": 1
+       },
+       "rise": 1.1,
+       "cap": "flat"
+      },
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "displayWindows": 2,
+       "stallriser": "none",
+       "evidence": "pano 2023-01-12: one black Intertoys fascia over the three houses"
+      }
+     },
+     {
+      "id": "c",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "storeys": 4,
+      "bays": 3,
+      "doorBay": null,
+      "windows": "plain",
+      "share": 0.343,
+      "cornice": "simple",
+      "bands": "storey",
+      "palette": {
+       "brick": "#4e342c",
+       "frame": "white"
+      },
+      "balconies": {
+       "storeys": [
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "tower": {
+       "bays": {
+        "from": 1,
+        "to": 1
+       },
+       "rise": 0.9,
+       "cap": "pyramid"
       },
       "shopfront": {
        "colour": "black",
@@ -50,10 +139,10 @@
         "text": "INTERTOYS",
         "textColour": "#f2c200",
         "mount": "fascia",
-        "align": "right",
-        "span": 0.3
+        "align": "centre",
+        "span": 0.7
        },
-       "displayWindows": 4,
+       "displayWindows": 2,
        "stallriser": "none",
        "evidence": "pano 2023-01-12 + OSM node 9437347215"
       }
@@ -88,13 +177,13 @@
     "note": "Toy shop across all three houses: black fascia, yellow Intertoys logo right of centre, shop glass full width with posters; two inset entrances."
    },
    "rhythm": {
-    "bays": "three houses in one pand, 9 window axes in storeys 1-3 (6 left, 3 right; downpipe at the joint)",
+    "bays": "three houses in one pand, 3 bays each (135: x 0-233, 137: 233-467, 139: 467-711 on the strip, split at the drainpipes)",
     "identicalBays": "storeys 1-3 identical; balconies at axes 1, 4 and 7",
-    "windowsPerStorey": "ground: full-width shop | 1-3: 9 | roof: 2 flat dormers + a tall stepped dormer right",
-    "symmetry": "none",
+    "windowsPerStorey": "each house: ground: shop (one Intertoys fascia over all three) | 1-3: 3 | roof: 1 brick dormer over the middle bay",
+    "symmetry": "each house symmetric about its middle bay",
     "groundFloor": "black fascia, glazed shopfront across the whole width",
     "signage": "Intertoys (yellow logo on black)",
-    "roofline": "decorative brick frieze with cream name panels under a heavy cornice, dark tile roof, 2 flush dormer blocks and a tall stepped dormer gable at the right",
+    "roofline": "one cornice line (row ~335); 135 and 137: heavy cornice over a brick frieze with cream name panels, a flush brick dormer with a flat shouldered cap over the middle bay (top row ~195, 16.7 m); 139: plain cornice, dormer with a pointed cap (apex row ~180); dark tile roof between",
     "citation": "bilder-236022-167243 strip.jpg pand 1",
     "photoRows": [
      6,
@@ -105,9 +194,8 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "3 houses with different details in one pand: one equal-pitch 9-axis grid",
-     "triangle budget: plain windows, balconies on storey 1 only and storey bands only (the full detail needs ~4,450 triangles)",
-     "the right dormer is a tall stepped gable, modelled as a plain dormer",
+     "the three dormers are brick towers over the middle bay (flat caps on 135/137, a pyramid on 139; the photo shows shouldered and stepped-pointed caps)",
+     "135/137 storey-1 middle windows are French windows with a rail, storeys 2-3 have projecting slabs: one balcony style per front (rails)",
      "logo is drawn as capital lettering",
      "brick frieze and name panels under the cornice are not modelled"
     ]
@@ -283,7 +371,7 @@
     "symmetry": "mirror-symmetric; stepped gable centred",
     "groundFloor": "black fascia, teal-framed glazed salon window, door left",
     "signage": "illegible",
-    "roofline": "crow-stepped gable with an arched window",
+    "roofline": "crow-stepped gable over the full width with an arched window; the lowest steps meet the roof line at strip row ~247 (15.4 m; 3DBAG eaves 14.93 m), apex row ~150",
     "citation": "bilder-236022-167243 strip.jpg pand 3",
     "photoRows": [
      2,
@@ -294,7 +382,6 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "cornice ~1.6 m above the photo line (3DBAG eaves 14.9 m vs ~13.3 m on the strip)",
      "tree branches in front of the whole front",
      "sign text illegible: none modelled"
     ]
@@ -312,9 +399,7 @@
       "basement": "none",
       "cornice": "simple",
       "hoist": false,
-      "gable": "cornice",
-      "crownCap": "flat",
-      "crownCapSpan": "medium",
+      "gable": "step",
       "storeys": 4,
       "bays": 3,
       "bayWidths": [
@@ -322,7 +407,7 @@
        1.5,
        1
       ],
-      "atticWindows": 1,
+      "atticWindows": 3,
       "doorBay": 0,
       "windows": "sash",
       "archRings": "band",
@@ -356,7 +441,13 @@
         }
        },
        "evidence": "pano 2023-01-12 + OSM node 11381148205"
-      }
+      },
+      "crownBays": {
+       "from": 1,
+       "to": 2
+      },
+      "crownSteps": 1,
+      "crownRise": 1.05
      }
     ],
     "roof": {
@@ -388,11 +479,11 @@
    },
    "rhythm": {
     "bays": "3 bays: 3-light wide windows in the middle bay with balcony, single wide windows either side",
-    "windowsPerStorey": "ground: arched door + salon | 1-3: 3 (wide 3-light middle) | gable: 3 windows",
+    "windowsPerStorey": "ground: shop + door | 1-3: 3 (middle one a 3-light bay) | dormer-gable: 3 windows; small roof window over the left bay",
     "symmetry": "mirror-symmetric",
     "groundFloor": "arched door left, awning-covered salon window right",
     "signage": "none legible",
-    "roofline": "tall brick dormer gable with 3 windows and a stepped brick cap",
+    "roofline": "white cornice band top at strip row 315 (13.7 m) over a corbelled frieze; over the middle and right bays a tall brick dormer-gable (shoulders row ~218, 16.1 m; stepped top row ~175, 17.2 m) with 3 windows; tile roof face to row ~248 beside it, a small roof light over the left bay",
     "citation": "bilder-236022-167243 strip.jpg pand 4",
     "photoRows": [
      2,
@@ -403,9 +494,9 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "cornice ~3.4 m above the photo line: 3DBAG eaves 17.3 m is the dormer-gable top, the strip cornice is at ~13.9 m; a photo-trusted group cannot bridge > 2.5 m",
+     "the dormer-gable is a one-step crown in the front plane (crownBays 1-2); the 3D dormer body behind it is the re-pitched roof",
      "middle 3-light bay modelled with bayWidths 1/1.5/1 (side lights not drawn)",
-     "gable carries 3 windows in a dormer block, modelled as a 1-window cornice crown",
+     "the small roof light over the left bay is not modelled",
      "arched door head not modelled"
     ]
    }
@@ -458,7 +549,12 @@
         1
        ],
        "evidence": "pano 2023-01-12 + OSM node 11381167110"
-      }
+      },
+      "crownBays": {
+       "from": 1,
+       "to": 1
+      },
+      "crownRise": 0.8
      }
     ],
     "roof": {
@@ -494,7 +590,7 @@
     "symmetry": "mirror-symmetric",
     "groundFloor": "grey fascia, white shopfront, door right",
     "signage": "Tutti Frutti, white on grey",
-    "roofline": "small pointed gable with an arched window",
+    "roofline": "cornice band top at strip row 318 (13.6 m) over a corbelled frieze; a pointed brick dormer-gable over the middle bay with an arched window, apex row ~215 (16.2 m); tile roof face to row ~250 either side",
     "citation": "bilder-236022-167243 strip.jpg pand 5",
     "photoRows": [
      2,
@@ -505,7 +601,6 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "cornice ~3.4 m above the photo line (3DBAG eaves 17.3 m vs ~13.9 m on the strip)",
      "ochre brick approximated; script lettering as block capitals",
      "tree branches over the upper storeys"
     ]
@@ -518,27 +613,39 @@
    "design": {
     "fronts": [
      {
-      "id": "front0",
+      "id": "a",
       "street": "Bilderdijkstraat",
       "basement": "none",
-      "cornice": "simple",
       "hoist": false,
-      "gable": "cornice",
+      "gable": "point",
       "storeys": 4,
-      "bays": 6,
-      "dormers": 2,
+      "bays": 4,
       "doorBay": null,
       "windows": "sash",
-      "archRings": "none",
+      "cornice": "simple",
       "bands": "storey",
+      "archRings": "none",
+      "atticWindows": 1,
+      "crownRise": 0.65,
+      "share": 0.506,
+      "axisGrid": 4,
+      "bayWidths": [
+       1.3,
+       0.55,
+       1,
+       0.55
+      ],
+      "crownBays": {
+       "from": 1,
+       "to": 3
+      },
       "balconies": {
        "storeys": [
-        1,
-        2
+        2,
+        3
        ],
        "bays": [
-        1,
-        4
+        2
        ]
       },
       "shopfront": {
@@ -556,6 +663,64 @@
        "displayWindows": 2,
        "stallriser": "low",
        "evidence": "pano 2024-11-29 + OSM node 11381148206"
+      }
+     },
+     {
+      "id": "b",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "point",
+      "storeys": 4,
+      "bays": 4,
+      "doorBay": null,
+      "windows": "sash",
+      "cornice": "simple",
+      "bands": "storey",
+      "archRings": "none",
+      "atticWindows": 1,
+      "crownRise": 0.65,
+      "share": 0.494,
+      "axisGrid": 4,
+      "bayWidths": [
+       0.55,
+       1,
+       0.55,
+       1.3
+      ],
+      "crownBays": {
+       "from": 0,
+       "to": 2
+      },
+      "balconies": {
+       "storeys": [
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "windowSurround": "keystone",
+      "palette": {
+       "brick": "#6a3a2e",
+       "frame": "white"
+      },
+      "shopfront": {
+       "colour": "dark-brown",
+       "fascia": true,
+       "name": "Cafe Duzz Dat",
+       "sign": {
+        "text": "CAFE DUZZ DAT",
+        "textColour": "#4a3426",
+        "background": "#c8b07a",
+        "mount": "fascia",
+        "align": "centre",
+        "span": 0.5
+       },
+       "displayWindows": 3,
+       "stallriser": "low",
+       "evidence": "pano 2024-11-29: gold sign board on a dark-brown cafe front"
       }
      }
     ],
@@ -589,13 +754,13 @@
     "note": "Two units: left RAFAEL HAIRSTUDIO (white on grey, 2024-11-29; on 2023-01-12 BILDERDIJK & CO), right Cafe Duzz Dat! (cream board on a dark fascia, a terrace in front). Only the left sign is modelled."
    },
    "rhythm": {
-    "bays": "two houses, 3 bays each (3-light wide middle windows), 6 per storey",
+    "bays": "two houses in one pand (149: x 1658-1898, 151: 1898-2132), mirrored: a wide window bay outside, a 3-light group (side light, window, side light) under the gable",
     "identicalBays": "storeys 1-3 similar in both halves",
-    "windowsPerStorey": "ground: 2 shops | 1-3: 6 | roof: 2 gable windows",
-    "symmetry": "each half mirror-symmetric; the two gables sit at about 0.35 and 0.70",
+    "windowsPerStorey": "each: ground: shop | 1-3: wide window + 3-light group | gable: 1 arched window",
+    "symmetry": "the pair mirrors about the party line at x 1898",
     "groundFloor": "left grey-fascia hair salon, right dark pub front",
     "signage": "RAFAEL HAIRSTUDIO (left); Cafe Duzz Dat! board (right, not modelled)",
-    "roofline": "two neck-like gables with arched attic windows and brick chimneys",
+    "roofline": "cornice band at strip row ~290 (14.3 m); over each 3-light group a pointed brick gable with stepped shoulders, an arched attic window and a chimney on the apex (apex row ~205, chimney top ~177); dark roof behind to row ~210",
     "citation": "bilder-236022-167243 strip.jpg pand 6",
     "photoRows": [
      4,
@@ -606,10 +771,9 @@
     ],
     "photoGables": 2,
     "schemaLimits": [
-     "two gables are not expressible on one front: modelled as 2 dormers on a cornice",
-     "segmental window heads dropped for the triangle budget",
-     "middle 3-light windows are single windows; bays equal",
-     "second shop sign (Cafe Duzz Dat!) and terrace not modelled",
+     "the brick chimneys on the gable apexes are not modelled (crownFinial needs a flat top)",
+     "the stepped shoulders of the gables are not modelled",
+     "segmental heads over the outer wide windows are rectangles",
      "mixed capture dates (2024 for the span)"
     ]
    }
@@ -658,7 +822,12 @@
        "stallriser": "low",
        "entrance": "centre",
        "evidence": "pano 2023-01-12"
-      }
+      },
+      "crownBays": {
+       "from": 1,
+       "to": 1
+      },
+      "crownRise": 0.8
      }
     ],
     "roof": {
@@ -694,7 +863,7 @@
     "symmetry": "mirror-symmetric; gable centred",
     "groundFloor": "green timber shopfront with centred door",
     "signage": "WIJN & DELICATESSEN, orange on green",
-    "roofline": "small pointed gable with an arched attic window",
+    "roofline": "white cornice band top at strip row 315 (13.7 m) over a corbelled arcade frieze; a pointed brick dormer-gable over the middle bay with an arched window, apex row ~217 (16.2 m); tile roof face to row ~248 either side",
     "citation": "bilder-236022-167243 strip.jpg pand 7",
     "photoRows": [
      3,
@@ -705,8 +874,7 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
-     "cornice ~2.5 m above the photo line (3DBAG eaves 16.4 m vs ~13.9 m)",
-     "blind arcade frieze below the top storey is not modelled",
+     "blind arcade frieze below the cornice is not modelled",
      "ochre brick approximated"
     ]
    }
@@ -721,26 +889,49 @@
      "0363100012159868"
     ],
     "evidence": "strip: 135-139 and 141 share one cornice line (y ~245 px); 3DBAG spread 0.2 m"
-   },
-   {
-    "pands": [
-     "0363100012162572",
-     "0363100012237294",
-     "0363100012167243"
-    ],
-    "evidence": "strip: cornice of 145, 147 and 153 at the same level (y ~250 px, 3DBAG 16.4-17.3 m)",
-    "trust": "photo",
-    "reference": "0363100012162572"
    }
   ],
   "identical": [],
   "notes": [
-   "Leaf-off capture 2023-01-12 (the 2024-11-29 strip is hidden behind street trees); 149-151 span on 2024-11-29. Face ends at 153; 155-167 is one 70 m building (236799) and 169 a 1979 block (152566): both left out as large-tier."
+   "Leaf-off capture 2023-01-12 (the 2024-11-29 strip is hidden behind street trees); 149-151 span on 2024-11-29. Face ends at 153; 155-167 is one 70 m building (236799) and 169 a 1979 block (152566): both left out as large-tier.",
+   "Pass 2 (bilder-limits lane): 145, 147 and 153 have mansard roofs whose flat top 3DBAG carries out to the facade (eaves 2.5-3.5 m above the cornice); their eaves are strip-measured and the front roof is re-pitched (measuredEaves.frontRoof) instead of a photo-trusted cornice group. 135-139 and 149-151 are split into their houses."
+  ],
+  "measuredEaves": [
+   {
+    "pand": "0363100012162572",
+    "stripRow": 315,
+    "frontRoof": {},
+    "evidence": "top of the white cornice band over the corbel frieze (zoom a3, x 1150-1680, rows 150-480); 3DBAG eaves 17.29 m is the flat top of the roof carried out to the facade"
+   },
+   {
+    "pand": "0363100012237294",
+    "stripRow": 318,
+    "frontRoof": {},
+    "evidence": "top of the cornice band over the corbel frieze (zoom a3); 3DBAG eaves 17.27 m is the flat roof top"
+   },
+   {
+    "pand": "0363100012167243",
+    "stripRow": 315,
+    "frontRoof": {},
+    "evidence": "top of the white cornice band over the arcade frieze (zoom a2, x 1415-2369, rows 130-360); 3DBAG eaves 16.44 m (own ground 0.90) is the flat roof top"
+   },
+   {
+    "pand": "0363100012236474",
+    "front": "a",
+    "stripRow": 288,
+    "evidence": "top of the cream cornice band of 149 where the tile roof starts (zoom b6, x 1650-2140, rows 150-863)"
+   },
+   {
+    "pand": "0363100012236474",
+    "front": "b",
+    "stripRow": 292,
+    "evidence": "top of the cream cornice band of 151 (zoom b6)"
+   }
   ]
  },
  "authoring": {
   "author": "claude-sonnet-5.5 (block-face lane), from strip-labelled.png + 2x zoomed ground/roof crops",
-  "passes": 1,
+  "passes": 2,
   "note": "Bilderdijkstraat 135-153 (odd side)."
  }
 }

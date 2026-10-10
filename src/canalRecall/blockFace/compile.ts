@@ -86,11 +86,62 @@ export function planFaceGround(face: BlockFaceIntent, facts: BuildingFacts[], ma
   const withMeasured = out.map((f, i) => {
     const mine = measured[face.houses[i].pandId];
     if (!mine) return f;
+    const pitch = measuredList.find(m => m.pand === face.houses[i].pandId && m.frontRoof);
+    if (pitch) {
+      const row = (r: number) => strip.groundNAP + (strip.heightPx - r) / strip.pixelsPerMetre, fr = pitch.frontRoof!;
+      if (mine[intents[i].fronts[0].id] > eavesBefore[i] - 0.5) throw Error(`${m6(face.houses[i].pandId)}: frontRoof re-pitches the roof under eaves BELOW 3DBAG's; measured ${mine[intents[i].fronts[0].id]} m vs 3DBAG ${eavesBefore[i]} m`);
+      // The eaves in this pand's own height datum (the fit reads roof heights above b3_h_maaiveld), rounded as the fit rounds it.
+      f = repitchFrontRoof(f, mine[intents[i].fronts[0].id] + f.attributes.b3_h_maaiveld, {topNap: fr.topRow === undefined ? undefined : row(fr.topRow), pitchDeg: fr.pitchDeg});
+    }
     // The first front's line drives the party-line eaves verdicts.
     eavesAfter[i] = mine[intents[i].fronts[0].id] ?? eavesAfter[i];
     return {...f, measuredEavesM: {...(f.measuredEavesM ?? {}), ...mine}};
   });
   return {sharedNapM, shiftsM, eavesBefore, eavesAfter, groups, facts: withMeasured, measured};
+}
+
+const m6 = (p: string) => p.slice(-6);
+
+/**
+ * The roof behind a photo-measured cornice that sits BELOW 3DBAG's eaves. LoD2.2 carries the flat (or dormer-raised) top
+ * of a mansard roof out to the facade line, so the fit's eaves read 2.5-3.5 m above the cornice (Bilderdijkstraat 133,
+ * 145, 147, 153). Every roof surface with a vertex on the frontage line is split at depth d = (top - eaves) / tan(pitch):
+ * the front strip becomes a steep roof face rising from the measured eaves (NAP) at the facade to the surface's own height
+ * at d; the rest keeps the survey heights. `topNap` (the photo's roof top beside a dormer) first caps those surfaces, for a
+ * dormer that 3DBAG merged into the roof. The shell top (lowest roof vertex) then falls to the eaves.
+ */
+export function repitchFrontRoof(f: BuildingFacts, eavesNap: number, opts: {topNap?: number; pitchDeg?: number; tolM?: number} = {}): BuildingFacts {
+  const out = structuredClone(f), fr = out.fronts[0], [a] = fr.endpointsRD, n = fr.outwardNormalRD, tol = opts.tolM ?? 0.05;
+  const tan = Math.tan((opts.pitchDeg ?? 72) * Math.PI / 180);
+  const depth = (v: number[]) => -((v[0] - a[0]) * n[0] + (v[1] - a[1]) * n[1]);
+  // Sutherland-Hodgman against one half-plane (keep where sign * (depth - d) <= 0); z interpolated along cut edges.
+  const clip = (ring: number[][], d: number, sign: 1 | -1) => {
+    const res: number[][] = [];
+    for (let k = 0; k < ring.length; k++) {
+      const p = ring[k], q = ring[(k + 1) % ring.length], fp = sign * (depth(p) - d), fq = sign * (depth(q) - d);
+      if (fp <= 0) res.push([...p]);
+      if ((fp < 0 && fq > 0) || (fp > 0 && fq < 0)) { const t = fp / (fp - fq); res.push(p.map((x, i) => x + (q[i] - x) * t)); }
+    }
+    return res.length >= 3 ? res : null;
+  };
+  const area = (r: number[][]) => Math.abs(r.reduce((s, p, k) => { const q = r[(k + 1) % r.length]; return s + p[0] * q[1] - q[0] * p[1]; }, 0) / 2);
+  const roofs: BuildingFacts['roofsRD'] = [];
+  for (const r of out.roofsRD) {
+    if (!r.vertices.some(v => depth(v) <= tol)) { roofs.push(r); continue; }
+    if (r.ringsRD.length > 1) throw Error(`${r.surfaceId}: a front roof surface with holes cannot be re-pitched`);
+    const ring = r.vertices.map(v => [v[0], v[1], opts.topNap === undefined ? v[2] : Math.min(v[2], opts.topNap)]);
+    const d = Math.max(0.3, (Math.max(...ring.map(v => v[2])) - eavesNap) / tan);
+    const front = clip(ring, d, 1), rear = clip(ring, d, -1);
+    if (front) {
+      const pitched = front.map(v => { const s = Math.max(0, Math.min(d, depth(v))); return [v[0], v[1], eavesNap + (v[2] - eavesNap) * s / d]; });
+      roofs.push({...r, surfaceId: `${r.surfaceId}:front`, vertices: pitched, ringsRD: [pitched], slopeDeg: Math.round(Math.atan(tan) * 180 / Math.PI), areaM2: area(pitched)});
+    }
+    if (rear && area(rear) > 0.01) roofs.push({...r, vertices: rear, ringsRD: [rear], areaM2: area(rear)});
+  }
+  out.roofsRD = roofs;
+  const z = roofs.flatMap(r => r.vertices.map(v => v[2] - out.attributes.b3_h_maaiveld));
+  out.heights = {...out.heights, roofMinM: Math.min(...z)};
+  return out;
 }
 
 interface Tri { p: number[][]; n: number[]; slot: string; surface: string }
