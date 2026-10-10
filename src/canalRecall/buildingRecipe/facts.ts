@@ -47,6 +47,11 @@ export interface BuildingFacts {
    * photo (block-face `continuity.measuredEaves` on the strip). Replaces the 3DBAG profile estimate in the fit.
    */
   measuredEavesM?: Record<string, number>;
+  /**
+   * Where `roofsRD` came from when it is not 3DBAG: `recipe` = generated from the house design and plot depth
+   * (blockFace/recipeRoof.ts); 3DBAG is then an upper bound only (`surveyRoofMaxM`, main-body p95 `capM`).
+   */
+  roofSource?: {kind: 'recipe'; surveyRoofMaxM: number; capM: number};
 }
 
 const dist = (a: number[], b: number[]) => Math.hypot(a[0] - b[0], a[1] - b[1]);
