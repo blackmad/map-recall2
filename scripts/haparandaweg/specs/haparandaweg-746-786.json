@@ -1,22 +1,570 @@
 {
-  "id": "haparandaweg-746-786",
-  "pandId": "0363100012242477",
-  "name": "Haparandaweg 746-786",
-  "palette": {
-    "wall": "#cdcbc3", "roof": "#8a8e90", "frame": "#e7e8e4", "glass": "#7b949b", "slab": "#d7d5cd",
-    "rail": "#a9b9bb", "glassRail": "#a8d0d1", "dark": "#2f3436", "door": "#50585a", "stone": "#c2c0b8", "sign": "#e7e8e4", "column": "#e1e0d9"
-  },
-  "levels": { "groundM": 4.2, "storeyM": 3.05 },
-  "default": "balconies",
-  "systems": {
-    "balconies": {
-      "pitch": 3.6,
-      "ground": { "kind": "glazed", "win": { "w": 0.86, "h": 0.8, "sill": 0.12, "mull": 3, "transom": 0.65, "frame": "frame" },
-        "door": { "bays": [1, 3], "w": 1.1, "h": 2.3, "slot": "door" } },
-      "typical": { "kind": "balcony", "balcony": { "depth": 1.7, "slab": { "h": 0.28, "slot": "slab" }, "rail": { "kind": "glass", "h": 1.05, "slot": "glassRail", "top": "frame" },
-        "back": { "w": 0.78, "h": 0.74, "sill": 0.4, "mull": 2, "frame": "frame", "glass": "glass" } } },
-      "piers": { "w": 0.35, "out": 0.15, "slot": "column" }
+ "id": "haparandaweg-746-786",
+ "pandId": "0363100012242477",
+ "name": "Haparandaweg 746-786",
+ "palette": {
+  "wall": "#cdcbc3",
+  "roof": "#8a8e90",
+  "frame": "#e7e8e4",
+  "glass": "#8fb0b8",
+  "slab": "#d7d5cd",
+  "rail": "#a9b9bb",
+  "glassRail": "#a8d0d1",
+  "dark": "#4a4f50",
+  "door": "#50585a",
+  "stone": "#c2c0b8",
+  "sign": "#e7e8e4",
+  "column": "#e1e0d9"
+ },
+ "levels": {"groundM": 3.56, "storeyM": 3.12, "lines": [0, 3.56, 6.68, 9.8, 12.94, 16.06, 19.24, 22.36, 25.5, 28.7]},
+ "default": "none",
+ "systems": {
+  "nwA": {
+   "pitch": 7.9,
+   "minWidth": 2,
+   "bays": {"first": 3.95, "pitch": 7.9, "count": 1},
+   "ground": {
+    "kind": "items",
+    "items": [
+     [
+      {"kind": "box", "slot": "column", "u": [0.3, 1.0], "v": [0.0, 3.3], "d": 0.1},
+      {"kind": "quad", "slot": "dark", "u": [1.2, 4.7], "v": [0.1, 3.0], "d": 0.02},
+      {"kind": "box", "slot": "column", "u": [4.7, 5.3], "v": [0.0, 3.3], "d": 0.1},
+      {
+       "kind": "win",
+       "u": [5.4, 7.6],
+       "v": [0.1, 3.0],
+       "win": {"frame": "frame", "glass": "glass", "mullAt": [0.33, 0.66], "rowsAt": [0.8]}
+      }
+     ]
+    ]
+   },
+   "typical": {
+    "kind": "items",
+    "items": [
+     [
+      {"kind": "quad", "slot": "dark", "u": [0.0, 7.9], "v": [0.28, 2.84], "d": 0.03},
+      {"kind": "quad", "slot": "glass", "u": [0.5, 2.2], "v": [1.5, 2.75], "d": 0.04},
+      {"kind": "quad", "slot": "glass", "u": [4.3, 6.9], "v": [1.5, 2.75], "d": 0.04},
+      {"kind": "box", "slot": "column", "u": [1.9, 2.25], "v": [1.53, 2.3], "d": 0.06},
+      {"kind": "box", "slot": "column", "u": [4.6, 4.95], "v": [1.53, 2.3], "d": 0.06},
+      {"kind": "quad", "slot": "glassRail", "u": [0.05, 7.85], "v": [0.28, 1.48], "d": 0.05},
+      {"kind": "box", "slot": "frame", "u": [0.05, 7.85], "v": [1.48, 1.55], "d": 0.07},
+      {"kind": "box", "slot": "slab", "u": [0.0, 7.9], "v": [-0.28, 0.28], "d": 0.12}
+     ]
+    ]
+   },
+   "rowOverrides": {
+    "2": {
+     "kind": "items",
+     "items": [
+      [
+       {"kind": "quad", "slot": "dark", "u": [0.0, 7.9], "v": [0.28, 2.84], "d": 0.03},
+       {"kind": "quad", "slot": "glass", "u": [1.8, 3.9], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "quad", "slot": "glass", "u": [5.0, 7.3], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "box", "slot": "column", "u": [1.9, 2.25], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "box", "slot": "column", "u": [4.6, 4.95], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "quad", "slot": "glassRail", "u": [0.05, 7.85], "v": [0.28, 1.48], "d": 0.05},
+       {"kind": "box", "slot": "frame", "u": [0.05, 7.85], "v": [1.48, 1.55], "d": 0.07},
+       {"kind": "box", "slot": "slab", "u": [0.0, 7.9], "v": [-0.28, 0.28], "d": 0.12}
+      ]
+     ]
+    },
+    "4": {
+     "kind": "items",
+     "items": [
+      [
+       {"kind": "quad", "slot": "dark", "u": [0.0, 7.9], "v": [0.28, 2.84], "d": 0.03},
+       {"kind": "quad", "slot": "glass", "u": [1.8, 3.9], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "quad", "slot": "glass", "u": [5.0, 7.3], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "box", "slot": "column", "u": [1.9, 2.25], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "box", "slot": "column", "u": [4.6, 4.95], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "quad", "slot": "glassRail", "u": [0.05, 7.85], "v": [0.28, 1.48], "d": 0.05},
+       {"kind": "box", "slot": "frame", "u": [0.05, 7.85], "v": [1.48, 1.55], "d": 0.07},
+       {"kind": "box", "slot": "slab", "u": [0.0, 7.9], "v": [-0.28, 0.28], "d": 0.12}
+      ]
+     ]
+    },
+    "6": {
+     "kind": "items",
+     "items": [
+      [
+       {"kind": "quad", "slot": "dark", "u": [0.0, 7.9], "v": [0.28, 2.84], "d": 0.03},
+       {"kind": "quad", "slot": "glass", "u": [1.8, 3.9], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "quad", "slot": "glass", "u": [5.0, 7.3], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "box", "slot": "column", "u": [1.9, 2.25], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "box", "slot": "column", "u": [4.6, 4.95], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "quad", "slot": "glassRail", "u": [0.05, 7.85], "v": [0.28, 1.48], "d": 0.05},
+       {"kind": "box", "slot": "frame", "u": [0.05, 7.85], "v": [1.48, 1.55], "d": 0.07},
+       {"kind": "box", "slot": "slab", "u": [0.0, 7.9], "v": [-0.28, 0.28], "d": 0.12}
+      ]
+     ]
+    },
+    "8": {
+     "kind": "items",
+     "items": [
+      [
+       {"kind": "quad", "slot": "dark", "u": [0.0, 7.9], "v": [0.28, 2.07], "d": 0.03},
+       {"kind": "quad", "slot": "glass", "u": [1.8, 3.9], "v": [1.5, 1.97], "d": 0.04},
+       {"kind": "quad", "slot": "glass", "u": [5.0, 7.3], "v": [1.5, 1.97], "d": 0.04},
+       {"kind": "box", "slot": "column", "u": [1.9, 2.25], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "box", "slot": "column", "u": [4.6, 4.95], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "quad", "slot": "glassRail", "u": [0.05, 7.85], "v": [0.28, 1.48], "d": 0.05},
+       {"kind": "box", "slot": "frame", "u": [0.05, 7.85], "v": [1.48, 1.55], "d": 0.07},
+       {"kind": "box", "slot": "slab", "u": [0.0, 7.9], "v": [-0.28, 0.28], "d": 0.12}
+      ]
+     ]
     }
+   },
+   "lines": [0, 3.56, 6.68, 9.8, 12.94, 16.06, 19.24, 22.36, 25.5, 28.7]
   },
-  "signs": []
+  "nwB": {
+   "pitch": 7.9,
+   "minWidth": 2,
+   "bays": {"first": 3.95, "pitch": 7.9, "count": 1},
+   "ground": {
+    "kind": "items",
+    "items": [
+     [
+      {"kind": "box", "slot": "column", "u": [0.0, 0.3], "v": [0.0, 3.3], "d": 0.1},
+      {
+       "kind": "win",
+       "u": [0.4, 2.0],
+       "v": [0.1, 3.0],
+       "win": {"frame": "frame", "glass": "glass", "mullAt": [0.5], "rowsAt": [0.8]}
+      },
+      {
+       "kind": "win",
+       "u": [2.1, 5.2],
+       "v": [0.1, 3.0],
+       "win": {"frame": "frame", "glass": "glass", "mullAt": [0.33, 0.66], "rowsAt": [0.8]}
+      },
+      {"kind": "box", "slot": "column", "u": [5.3, 5.9], "v": [0.0, 3.3], "d": 0.1},
+      {"kind": "quad", "slot": "dark", "u": [6.1, 7.6], "v": [0.1, 3.0], "d": 0.02}
+     ]
+    ]
+   },
+   "typical": {
+    "kind": "items",
+    "items": [
+     [
+      {"kind": "quad", "slot": "dark", "u": [0.0, 7.9], "v": [0.28, 2.84], "d": 0.03},
+      {"kind": "quad", "slot": "glass", "u": [0.5, 2.2], "v": [1.5, 2.75], "d": 0.04},
+      {"kind": "quad", "slot": "glass", "u": [4.3, 6.9], "v": [1.5, 2.75], "d": 0.04},
+      {"kind": "box", "slot": "column", "u": [1.9, 2.25], "v": [1.53, 2.3], "d": 0.06},
+      {"kind": "box", "slot": "column", "u": [4.6, 4.95], "v": [1.53, 2.3], "d": 0.06},
+      {"kind": "quad", "slot": "glassRail", "u": [0.05, 7.85], "v": [0.28, 1.48], "d": 0.05},
+      {"kind": "box", "slot": "frame", "u": [0.05, 7.85], "v": [1.48, 1.55], "d": 0.07},
+      {"kind": "box", "slot": "slab", "u": [0.0, 7.9], "v": [-0.28, 0.28], "d": 0.12}
+     ]
+    ]
+   },
+   "rowOverrides": {
+    "2": {
+     "kind": "items",
+     "items": [
+      [
+       {"kind": "quad", "slot": "dark", "u": [0.0, 7.9], "v": [0.28, 2.84], "d": 0.03},
+       {"kind": "quad", "slot": "glass", "u": [1.8, 3.9], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "quad", "slot": "glass", "u": [5.0, 7.3], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "box", "slot": "column", "u": [1.9, 2.25], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "box", "slot": "column", "u": [4.6, 4.95], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "quad", "slot": "glassRail", "u": [0.05, 7.85], "v": [0.28, 1.48], "d": 0.05},
+       {"kind": "box", "slot": "frame", "u": [0.05, 7.85], "v": [1.48, 1.55], "d": 0.07},
+       {"kind": "box", "slot": "slab", "u": [0.0, 7.9], "v": [-0.28, 0.28], "d": 0.12}
+      ]
+     ]
+    },
+    "4": {
+     "kind": "items",
+     "items": [
+      [
+       {"kind": "quad", "slot": "dark", "u": [0.0, 7.9], "v": [0.28, 2.84], "d": 0.03},
+       {"kind": "quad", "slot": "glass", "u": [1.8, 3.9], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "quad", "slot": "glass", "u": [5.0, 7.3], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "box", "slot": "column", "u": [1.9, 2.25], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "box", "slot": "column", "u": [4.6, 4.95], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "quad", "slot": "glassRail", "u": [0.05, 7.85], "v": [0.28, 1.48], "d": 0.05},
+       {"kind": "box", "slot": "frame", "u": [0.05, 7.85], "v": [1.48, 1.55], "d": 0.07},
+       {"kind": "box", "slot": "slab", "u": [0.0, 7.9], "v": [-0.28, 0.28], "d": 0.12}
+      ]
+     ]
+    },
+    "6": {
+     "kind": "items",
+     "items": [
+      [
+       {"kind": "quad", "slot": "dark", "u": [0.0, 7.9], "v": [0.28, 2.84], "d": 0.03},
+       {"kind": "quad", "slot": "glass", "u": [1.8, 3.9], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "quad", "slot": "glass", "u": [5.0, 7.3], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "box", "slot": "column", "u": [1.9, 2.25], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "box", "slot": "column", "u": [4.6, 4.95], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "quad", "slot": "glassRail", "u": [0.05, 7.85], "v": [0.28, 1.48], "d": 0.05},
+       {"kind": "box", "slot": "frame", "u": [0.05, 7.85], "v": [1.48, 1.55], "d": 0.07},
+       {"kind": "box", "slot": "slab", "u": [0.0, 7.9], "v": [-0.28, 0.28], "d": 0.12}
+      ]
+     ]
+    },
+    "8": {
+     "kind": "items",
+     "items": [
+      [
+       {"kind": "quad", "slot": "dark", "u": [0.0, 7.9], "v": [0.28, 2.07], "d": 0.03},
+       {"kind": "quad", "slot": "glass", "u": [1.8, 3.9], "v": [1.5, 1.97], "d": 0.04},
+       {"kind": "quad", "slot": "glass", "u": [5.0, 7.3], "v": [1.5, 1.97], "d": 0.04},
+       {"kind": "box", "slot": "column", "u": [1.9, 2.25], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "box", "slot": "column", "u": [4.6, 4.95], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "quad", "slot": "glassRail", "u": [0.05, 7.85], "v": [0.28, 1.48], "d": 0.05},
+       {"kind": "box", "slot": "frame", "u": [0.05, 7.85], "v": [1.48, 1.55], "d": 0.07},
+       {"kind": "box", "slot": "slab", "u": [0.0, 7.9], "v": [-0.28, 0.28], "d": 0.12}
+      ]
+     ]
+    }
+   },
+   "lines": [0, 3.56, 6.68, 9.8, 12.94, 16.06, 19.24, 22.36, 25.5, 28.7]
+  },
+  "wing": {
+   "pitch": 12.5,
+   "minWidth": 4,
+   "bays": {"first": 6.56, "pitch": 12.2, "count": 1},
+   "ground": {
+    "kind": "items",
+    "items": [
+     [
+      {
+       "kind": "win",
+       "u": [0.5, 3.1],
+       "v": [0.1, 3.2],
+       "win": {"frame": "frame", "glass": "glass", "mullAt": [0.5], "rowsAt": [0.82]}
+      },
+      {
+       "kind": "win",
+       "u": [3.7, 8.6],
+       "v": [0.1, 3.2],
+       "win": {"frame": "frame", "glass": "glass", "mullAt": [0.2, 0.4, 0.6, 0.8], "rowsAt": [0.82]}
+      },
+      {
+       "kind": "win",
+       "u": [9.1, 11.7],
+       "v": [0.1, 3.2],
+       "win": {"frame": "frame", "glass": "glass", "mullAt": [0.5], "rowsAt": [0.82]}
+      },
+      {"kind": "box", "slot": "column", "u": [0.0, 0.5], "v": [0.0, 3.5], "d": 0.1},
+      {"kind": "box", "slot": "column", "u": [3.1, 3.7], "v": [0.0, 3.5], "d": 0.1},
+      {"kind": "box", "slot": "column", "u": [8.6, 9.1], "v": [0.0, 3.5], "d": 0.1},
+      {"kind": "box", "slot": "column", "u": [11.7, 12.2], "v": [0.0, 3.5], "d": 0.1}
+     ]
+    ]
+   },
+   "typical": {
+    "kind": "items",
+    "items": [
+     [
+      {
+       "kind": "win",
+       "u": [0.74, 3.1],
+       "v": [0.3, 2.4],
+       "win": {
+        "frame": "frame",
+        "glass": "glass",
+        "mullAt": [],
+        "surround": {"slot": "frame", "t": 0.05, "out": 0.03}
+       }
+      },
+      {
+       "kind": "win",
+       "u": [3.68, 5.86],
+       "v": [0.3, 2.4],
+       "win": {
+        "frame": "frame",
+        "glass": "glass",
+        "mullAt": [0.5],
+        "surround": {"slot": "frame", "t": 0.05, "out": 0.03}
+       }
+      },
+      {
+       "kind": "win",
+       "u": [6.44, 8.6],
+       "v": [0.3, 2.4],
+       "win": {
+        "frame": "frame",
+        "glass": "glass",
+        "mullAt": [0.5],
+        "surround": {"slot": "frame", "t": 0.05, "out": 0.03}
+       }
+      },
+      {
+       "kind": "win",
+       "u": [9.1, 11.66],
+       "v": [0.3, 2.4],
+       "win": {
+        "frame": "frame",
+        "glass": "glass",
+        "mullAt": [],
+        "surround": {"slot": "frame", "t": 0.05, "out": 0.03}
+       }
+      },
+      {"kind": "box", "slot": "column", "u": [0.0, 0.7], "v": [0.28, 2.9], "d": 0.1},
+      {"kind": "box", "slot": "column", "u": [3.14, 3.64], "v": [0.28, 2.9], "d": 0.1},
+      {"kind": "box", "slot": "column", "u": [5.9, 6.4], "v": [0.28, 2.9], "d": 0.1},
+      {"kind": "box", "slot": "column", "u": [8.64, 9.06], "v": [0.28, 2.9], "d": 0.1},
+      {"kind": "box", "slot": "column", "u": [11.7, 12.2], "v": [0.28, 2.9], "d": 0.1},
+      {"kind": "box", "slot": "slab", "u": [0.0, 12.2], "v": [-0.28, 0.28], "d": 0.12}
+     ]
+    ]
+   },
+   "rowOverrides": {
+    "1": {
+     "kind": "items",
+     "items": [
+      [
+       {
+        "kind": "win",
+        "u": [0.74, 3.1],
+        "v": [0.3, 2.4],
+        "win": {
+         "frame": "frame",
+         "glass": "glass",
+         "mullAt": [],
+         "surround": {"slot": "frame", "t": 0.05, "out": 0.03}
+        }
+       },
+       {
+        "kind": "win",
+        "u": [3.68, 5.86],
+        "v": [0.3, 2.4],
+        "win": {
+         "frame": "frame",
+         "glass": "glass",
+         "mullAt": [0.5],
+         "surround": {"slot": "frame", "t": 0.05, "out": 0.03}
+        }
+       },
+       {
+        "kind": "win",
+        "u": [6.44, 8.6],
+        "v": [0.3, 2.4],
+        "win": {
+         "frame": "frame",
+         "glass": "glass",
+         "mullAt": [0.5],
+         "surround": {"slot": "frame", "t": 0.05, "out": 0.03}
+        }
+       },
+       {
+        "kind": "win",
+        "u": [9.1, 11.66],
+        "v": [0.3, 2.4],
+        "win": {
+         "frame": "frame",
+         "glass": "glass",
+         "mullAt": [],
+         "surround": {"slot": "frame", "t": 0.05, "out": 0.03}
+        }
+       },
+       {"kind": "box", "slot": "column", "u": [0.0, 0.7], "v": [0.28, 2.9], "d": 0.1},
+       {"kind": "box", "slot": "column", "u": [3.14, 3.64], "v": [0.28, 2.9], "d": 0.1},
+       {"kind": "box", "slot": "column", "u": [5.9, 6.4], "v": [0.28, 2.9], "d": 0.1},
+       {"kind": "box", "slot": "column", "u": [8.64, 9.06], "v": [0.28, 2.9], "d": 0.1},
+       {"kind": "box", "slot": "column", "u": [11.7, 12.2], "v": [0.28, 2.9], "d": 0.1},
+       {"kind": "box", "slot": "slab", "u": [0.0, 12.2], "v": [-0.28, 0.28], "d": 0.12}
+      ]
+     ]
+    },
+    "2": {
+     "kind": "items",
+     "items": [
+      [
+       {"kind": "quad", "slot": "dark", "u": [0.7, 3.14], "v": [0.28, 2.62], "d": 0.03},
+       {"kind": "quad", "slot": "glassRail", "u": [0.7, 3.14], "v": [0.28, 1.38], "d": 0.05},
+       {"kind": "quad", "slot": "dark", "u": [3.64, 5.9], "v": [0.28, 2.62], "d": 0.03},
+       {"kind": "quad", "slot": "glassRail", "u": [3.64, 5.9], "v": [0.28, 1.38], "d": 0.05},
+       {"kind": "quad", "slot": "dark", "u": [6.4, 8.64], "v": [0.28, 2.62], "d": 0.03},
+       {"kind": "quad", "slot": "glassRail", "u": [6.4, 8.64], "v": [0.28, 1.38], "d": 0.05},
+       {"kind": "quad", "slot": "dark", "u": [9.06, 11.7], "v": [0.28, 2.62], "d": 0.03},
+       {"kind": "quad", "slot": "glassRail", "u": [9.06, 11.7], "v": [0.28, 1.38], "d": 0.05},
+       {"kind": "box", "slot": "column", "u": [0.0, 0.7], "v": [0.28, 2.9], "d": 0.1},
+       {"kind": "box", "slot": "column", "u": [3.14, 3.64], "v": [0.28, 2.9], "d": 0.1},
+       {"kind": "box", "slot": "column", "u": [5.9, 6.4], "v": [0.28, 2.9], "d": 0.1},
+       {"kind": "box", "slot": "column", "u": [8.64, 9.06], "v": [0.28, 2.9], "d": 0.1},
+       {"kind": "box", "slot": "column", "u": [11.7, 12.2], "v": [0.28, 2.9], "d": 0.1},
+       {"kind": "box", "slot": "slab", "u": [0.0, 12.2], "v": [-0.28, 0.28], "d": 0.12}
+      ]
+     ]
+    },
+    "3": {
+     "kind": "items",
+     "items": [
+      [
+       {
+        "kind": "win",
+        "u": [0.74, 3.1],
+        "v": [0.3, 2.4],
+        "win": {
+         "frame": "frame",
+         "glass": "glass",
+         "mullAt": [],
+         "surround": {"slot": "frame", "t": 0.05, "out": 0.03}
+        }
+       },
+       {
+        "kind": "win",
+        "u": [3.68, 5.86],
+        "v": [0.3, 2.4],
+        "win": {
+         "frame": "frame",
+         "glass": "glass",
+         "mullAt": [0.5],
+         "surround": {"slot": "frame", "t": 0.05, "out": 0.03}
+        }
+       },
+       {
+        "kind": "win",
+        "u": [6.44, 8.6],
+        "v": [0.3, 2.4],
+        "win": {
+         "frame": "frame",
+         "glass": "glass",
+         "mullAt": [0.5],
+         "surround": {"slot": "frame", "t": 0.05, "out": 0.03}
+        }
+       },
+       {
+        "kind": "win",
+        "u": [9.1, 11.66],
+        "v": [0.3, 2.4],
+        "win": {
+         "frame": "frame",
+         "glass": "glass",
+         "mullAt": [],
+         "surround": {"slot": "frame", "t": 0.05, "out": 0.03}
+        }
+       },
+       {"kind": "box", "slot": "column", "u": [0.0, 0.7], "v": [0.28, 2.9], "d": 0.1},
+       {"kind": "box", "slot": "column", "u": [3.14, 3.64], "v": [0.28, 2.9], "d": 0.1},
+       {"kind": "box", "slot": "column", "u": [5.9, 6.4], "v": [0.28, 2.9], "d": 0.1},
+       {"kind": "box", "slot": "column", "u": [8.64, 9.06], "v": [0.28, 2.9], "d": 0.1},
+       {"kind": "box", "slot": "column", "u": [11.7, 12.2], "v": [0.28, 2.9], "d": 0.1},
+       {"kind": "box", "slot": "slab", "u": [0.0, 12.2], "v": [-0.28, 0.28], "d": 0.12}
+      ]
+     ]
+    },
+    "4": {
+     "kind": "items",
+     "items": [
+      [
+       {"kind": "quad", "slot": "dark", "u": [0.7, 3.14], "v": [0.28, 2.6], "d": 0.03},
+       {"kind": "quad", "slot": "glassRail", "u": [0.7, 3.14], "v": [0.28, 1.38], "d": 0.05},
+       {"kind": "quad", "slot": "dark", "u": [3.64, 5.9], "v": [0.28, 2.6], "d": 0.03},
+       {"kind": "quad", "slot": "glassRail", "u": [3.64, 5.9], "v": [0.28, 1.38], "d": 0.05},
+       {"kind": "quad", "slot": "dark", "u": [6.4, 8.64], "v": [0.28, 2.6], "d": 0.03},
+       {"kind": "quad", "slot": "glassRail", "u": [6.4, 8.64], "v": [0.28, 1.38], "d": 0.05},
+       {"kind": "quad", "slot": "dark", "u": [9.06, 11.7], "v": [0.28, 2.6], "d": 0.03},
+       {"kind": "quad", "slot": "glassRail", "u": [9.06, 11.7], "v": [0.28, 1.38], "d": 0.05},
+       {"kind": "box", "slot": "column", "u": [0.0, 0.7], "v": [0.28, 4.1], "d": 0.1},
+       {"kind": "box", "slot": "column", "u": [3.14, 3.64], "v": [0.28, 4.1], "d": 0.1},
+       {"kind": "box", "slot": "column", "u": [5.9, 6.4], "v": [0.28, 4.1], "d": 0.1},
+       {"kind": "box", "slot": "column", "u": [8.64, 9.06], "v": [0.28, 4.1], "d": 0.1},
+       {"kind": "box", "slot": "column", "u": [11.7, 12.2], "v": [0.28, 4.1], "d": 0.1},
+       {"kind": "box", "slot": "slab", "u": [0.0, 12.2], "v": [-0.28, 0.28], "d": 0.12},
+       {"kind": "box", "slot": "slab", "u": [0.0, 12.2], "v": [2.6, 4.1], "d": 0.1}
+      ]
+     ]
+    }
+   },
+   "lines": [0, 3.7, 6.6, 9.5, 12.3, 16.4]
+  },
+  "tower": {
+   "pitch": 8.1,
+   "minWidth": 2,
+   "bays": {"first": 4.05, "pitch": 8.1, "count": 2},
+   "ground": {"kind": "wall"},
+   "typical": {
+    "kind": "items",
+    "items": [
+     [
+      {"kind": "quad", "slot": "dark", "u": [0.0, 8.1], "v": [0.28, 2.84], "d": 0.03},
+      {"kind": "quad", "slot": "glass", "u": [0.5, 2.2], "v": [1.5, 2.75], "d": 0.04},
+      {"kind": "quad", "slot": "glass", "u": [4.3, 6.9], "v": [1.5, 2.75], "d": 0.04},
+      {"kind": "box", "slot": "column", "u": [1.9, 2.25], "v": [1.53, 2.3], "d": 0.06},
+      {"kind": "box", "slot": "column", "u": [4.6, 4.95], "v": [1.53, 2.3], "d": 0.06},
+      {"kind": "quad", "slot": "glassRail", "u": [0.05, 8.05], "v": [0.28, 1.48], "d": 0.05},
+      {"kind": "box", "slot": "frame", "u": [0.05, 8.05], "v": [1.48, 1.55], "d": 0.07},
+      {"kind": "box", "slot": "slab", "u": [0.0, 8.1], "v": [-0.28, 0.28], "d": 0.12}
+     ]
+    ]
+   },
+   "rowOverrides": {
+    "2": {
+     "kind": "items",
+     "items": [
+      [
+       {"kind": "quad", "slot": "dark", "u": [0.0, 8.1], "v": [0.28, 2.84], "d": 0.03},
+       {"kind": "quad", "slot": "glass", "u": [1.8, 3.9], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "quad", "slot": "glass", "u": [5.0, 7.3], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "box", "slot": "column", "u": [1.9, 2.25], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "box", "slot": "column", "u": [4.6, 4.95], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "quad", "slot": "glassRail", "u": [0.05, 8.05], "v": [0.28, 1.48], "d": 0.05},
+       {"kind": "box", "slot": "frame", "u": [0.05, 8.05], "v": [1.48, 1.55], "d": 0.07},
+       {"kind": "box", "slot": "slab", "u": [0.0, 8.1], "v": [-0.28, 0.28], "d": 0.12}
+      ]
+     ]
+    },
+    "4": {
+     "kind": "items",
+     "items": [
+      [
+       {"kind": "quad", "slot": "dark", "u": [0.0, 8.1], "v": [0.28, 2.84], "d": 0.03},
+       {"kind": "quad", "slot": "glass", "u": [1.8, 3.9], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "quad", "slot": "glass", "u": [5.0, 7.3], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "box", "slot": "column", "u": [1.9, 2.25], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "box", "slot": "column", "u": [4.6, 4.95], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "quad", "slot": "glassRail", "u": [0.05, 8.05], "v": [0.28, 1.48], "d": 0.05},
+       {"kind": "box", "slot": "frame", "u": [0.05, 8.05], "v": [1.48, 1.55], "d": 0.07},
+       {"kind": "box", "slot": "slab", "u": [0.0, 8.1], "v": [-0.28, 0.28], "d": 0.12}
+      ]
+     ]
+    },
+    "6": {
+     "kind": "items",
+     "items": [
+      [
+       {"kind": "quad", "slot": "dark", "u": [0.0, 8.1], "v": [0.28, 2.84], "d": 0.03},
+       {"kind": "quad", "slot": "glass", "u": [1.8, 3.9], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "quad", "slot": "glass", "u": [5.0, 7.3], "v": [1.5, 2.75], "d": 0.04},
+       {"kind": "box", "slot": "column", "u": [1.9, 2.25], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "box", "slot": "column", "u": [4.6, 4.95], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "quad", "slot": "glassRail", "u": [0.05, 8.05], "v": [0.28, 1.48], "d": 0.05},
+       {"kind": "box", "slot": "frame", "u": [0.05, 8.05], "v": [1.48, 1.55], "d": 0.07},
+       {"kind": "box", "slot": "slab", "u": [0.0, 8.1], "v": [-0.28, 0.28], "d": 0.12}
+      ]
+     ]
+    },
+    "8": {
+     "kind": "items",
+     "items": [
+      [
+       {"kind": "quad", "slot": "dark", "u": [0.0, 8.1], "v": [0.28, 2.07], "d": 0.03},
+       {"kind": "quad", "slot": "glass", "u": [1.8, 3.9], "v": [1.5, 1.97], "d": 0.04},
+       {"kind": "quad", "slot": "glass", "u": [5.0, 7.3], "v": [1.5, 1.97], "d": 0.04},
+       {"kind": "box", "slot": "column", "u": [1.9, 2.25], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "box", "slot": "column", "u": [4.6, 4.95], "v": [1.53, 2.3], "d": 0.06},
+       {"kind": "quad", "slot": "glassRail", "u": [0.05, 8.05], "v": [0.28, 1.48], "d": 0.05},
+       {"kind": "box", "slot": "frame", "u": [0.05, 8.05], "v": [1.48, 1.55], "d": 0.07},
+       {"kind": "box", "slot": "slab", "u": [0.0, 8.1], "v": [-0.28, 0.28], "d": 0.12}
+      ]
+     ]
+    }
+   },
+   "lines": [0, 3.56, 6.68, 9.8, 12.94, 16.06, 19.24, 22.36, 25.5, 28.7]
+  }
+ },
+ "rules": [
+  {"at": [-8.6, -17.5], "r": 2.5, "bearing": [315, 325], "system": "nwA"},
+  {"at": [-14.9, -12.1], "r": 2.5, "bearing": [315, 325], "system": "nwB"},
+  {"at": [16.1, 15.2], "r": 3, "bearing": [135, 145], "system": "wing"},
+  {"at": [-1.1, -2.2], "r": 3, "bearing": [135, 147], "system": "tower"}
+ ],
+ "signs": [],
+ "notes": "Rebuild 2026-10-10: light-stone frame grid, recessed balconies behind glass balustrades (no projecting slabs). See scripts/haparandaweg/746-786-rhythm.json."
 }

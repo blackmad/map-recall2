@@ -28,7 +28,10 @@
    "doorBay": null,
    "shopfront": {
     "colour": "dark-brown",
-    "fascia": true
+    "fascia": true,
+    "entrance": "centre",
+    "glazing": "split",
+    "evidence": "front.jpg 2020-08-27 (scaffolded): two display windows either side of a central dark door. Use not identifiable (alt 2025-07-31 hidden by a van); OSM nodes nearby (Bar Barrio 10 m, Zest 16 m) belong to Bilderdijkstraat 186-188, not asserted."
    },
    "bands": "lintel"
   }

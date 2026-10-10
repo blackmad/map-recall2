@@ -46,13 +46,9 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   loops and 24/42 see-through rays from its glass promenade. Aron Schuster
   synagogue installed after rework; its rounded corner is still squared.
 - **Lanes cut off by the usage limit (2026-10-10)**, resume from their branches:
-  the
-  glbQuality false-positive fix (blank-wall only on outside-visible area,
-  see-through closed under a roofed porch) is written and unit-tested but
-  uncommitted in worktree agent-a9751763df4f4ceab, with palace doorway
-  panels removed and the Concertgebouw canopy restored — rebuild, run the
-  full audit diff, then commit; Bellevue not started. Held: Zevenlandenhuizen (see-through
-  11/42).
+  audit see-through now back to FAIL on real gaps: adam-tower, de-gooyer,
+  haarlemmermeerstation, hart-museum, huis-bartolotti, pulitzer-amsterdam
+  (footprint-edge rays; check each against photos).
   Elevation skeletons with photos exist for 25 landmarks
   (`scripts/landmarks/*-elevations.json`, photos in `artifacts/landmark-lanes/`);
   counts are not filled: Haiku blind counts were too noisy — use a stronger
@@ -170,17 +166,21 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   minimap/overview, dropping the live OpenFreeMap dependency. Gaps: no road
   widths/sidewalks in our extracts (centrelines only), humped bridges render
   as grey slabs, no route line/labels/HUD in the spike.
-- **Haparandaweg held/skipped**: 952-1002 and 746-786 held 2026-10-10 after
-  review sheets (patchwork panes and an invented red stripe vs a regular red
-  curtain-wall grid; projecting slab balconies vs a flat stone grid with
-  recessed glass balconies); 870-900 SE side should be beige render, not
-  glass. Review 65 (needs the terracotta upper volume),
+- **Haparandaweg held/skipped**: 952-1002 rebuilt but held — grey
+  neighbour building needs its light-grey framed grid, SE/NE faces plain;
+  746-786 rebuilt, held for user review of its sheet; 870-900 NE side still
+  dark glass, unverified. Review 65 (needs the terracotta upper volume),
   650–706 (paired casements, stone bands), 708–744, 788–868 (glass bays);
   retry 940–950 with another photo source; 582–648 after scaffolding. The
   street sheet framing was poor (bike drawn over a roof) — reshoot.
 - **Audit see-through test is hull-limited**: cast rays fully through the
   bbox (or from outside the footprint) in `glbQuality.ts`; today concave
   footprints flag false holes. Madame Tussauds has small roof-junction gaps.
+- **Recipe shops follow-ups**: apply `proposals/bilder-087959-front.json`
+  (axes [0,1,3] arched top row, low pediment, Thai Thara sign) via the
+  block-face lane, then update `streetComponents.test.ts`'s rounded-parapet
+  assertion; lowercase/logos in the stroke font; 157154 recessed door is flush;
+  verify BENU is 092395 not 090492.
 - **Street chunk fallback**: if a chunk GLB fails to load, its houses are
   already out of the model list and the OSM extrusion shows; restore the
   per-house specs on failure. Demo page stats table scrolls sideways on phone.

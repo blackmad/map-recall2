@@ -26,8 +26,17 @@
    "bays": 2,
    "doorBay": null,
    "shopfront": {
-    "colour": "black",
-    "fascia": true
+    "colour": "dark-blue",
+    "fascia": true,
+    "name": "De Japanner",
+    "sign": {
+     "text": "DE JAPANNER",
+     "textColour": "white",
+     "span": 0.5
+    },
+    "glazing": "single",
+    "stallriser": "medium",
+    "evidence": "front.jpg 2022-09-02: navy fascia \"DE JAPANNER\" repeated twice, two large windows with circular logos on white-painted walls. OSM node De Japanner (restaurant, Bilderdijkstraat 203) 3 m away."
    }
   }
  ],

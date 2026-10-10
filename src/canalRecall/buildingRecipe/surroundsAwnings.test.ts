@@ -45,6 +45,6 @@ test('bilder-156287: awning has its own palette colour and the house stays under
   const b = compileBuilding(resolveIntent(raw('bilder-156287'), raw), facts('bilder-156287'));
   const aw = b.recipe.elevations[0].dressings!.value.find(x => x.kind === 'awning')!;
   assert.equal(aw.surface, 'awning');
-  assert.equal(b.recipe.palette.value.awning, '#1f2121');
+  assert.equal(b.recipe.palette.value.awning, '#1e1e1e');
   assert.ok(tris(b.group) < 3000);
 });

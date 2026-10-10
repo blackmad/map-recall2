@@ -83,7 +83,9 @@ export function cityStoneTint(hex: string): string {
 /** Doors and shopfront joinery: authored colour, never black holes. */
 export function cityDoorTint(hex: string): string {
   const [h, s, l] = rgbToHsl(hexToRgb(hex));
-  return rgbToHex(hslToRgb([h, s, Math.max(l, 0.17)]));
+  if (l >= 0.17) return hex.startsWith('#') ? hex.toLowerCase() : '#' + hex.toLowerCase();
+  // Near-neutral blacks lift to a neutral grey: an HSL lift would adopt the arbitrary hue of #1f2121 as a teal cast.
+  return rgbToHex(hslToRgb([h, s < 0.15 ? 0 : s, 0.17]));
 }
 /** Roof slots onto the city's roof tones; the authored steep/low/flat classes keep their order. */
 export function cityRoofTint(slot: 'roofTile' | 'slate' | 'bitumen', hex: string): string {
