@@ -14,6 +14,7 @@ import {KHRMeshQuantization} from '@gltf-transform/extensions';
 import type {BuildingFacts} from '../buildingRecipe/facts.ts';
 import {pointInRing} from '../buildingRecipe/facts.ts';
 import {fitIntent} from '../buildingRecipe/fit.ts';
+import type {CompiledBuilding} from '../buildingRecipe/compile.ts';
 import {BUDGET_TRIANGLES} from '../buildingRecipe/gates.ts';
 import {ringToFrame, type FrontFrame} from '../buildingRecipe/instances.ts';
 import {compileChunk, chunkFrame} from '../streetChunks/compileChunk.ts';
@@ -21,6 +22,7 @@ import {findContacts} from '../streetChunks/party.ts';
 import {fitEaves, shiftFactsHeights} from '../streetChunks/ground.ts';
 import type {ChunkResult} from '../streetChunks/types.ts';
 import {houseIntents, type BlockFaceIntent} from './intent.ts';
+import {addInferredRear, type RearReport} from './rear.ts';
 import {planInstancing, type FitSize, type InstancingPlan} from './instancing.ts';
 
 export interface FaceGate { pand: string; id: string; pass: boolean; value: unknown; limit: string }
@@ -44,7 +46,7 @@ export interface Interference {
   pass: boolean;
 }
 export interface FaceGroundPlan { sharedNapM: number; shiftsM: number[]; eavesBefore: number[]; eavesAfter: number[]; groups: {pands: string[]; spreadM: number; snapped: boolean; trust?: 'photo'; reference?: string}[]; facts: BuildingFacts[] }
-export interface BlockFaceResult { instancing: InstancingPlan; slitsClosed: {left: string; right: string; gapM: number}[]; chunk: ChunkResult; ground: FaceGroundPlan; gates: FaceGate[]; interference: Interference[]; perPand: {pand: string; slug: string; triangles: number; eavesM: number; roofMaxM: number; roofMaxFactsM: number; storeyHeightsM: number[]}[]; passed: boolean }
+export interface BlockFaceResult { instancing: InstancingPlan; slitsClosed: {left: string; right: string; gapM: number}[]; frontSnaps: FrontSnap[]; rears: RearReport[]; chunk: ChunkResult; ground: FaceGroundPlan; gates: FaceGate[]; interference: Interference[]; perPand: {pand: string; slug: string; triangles: number; eavesM: number; roofMaxM: number; roofMaxFactsM: number; storeyHeightsM: number[]}[]; passed: boolean }
 
 const median = (v: number[]) => { const s = [...v].sort((a, b) => a - b); return s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2; };
 const cm = (v: number) => Math.round(v * 100) / 100;
@@ -108,8 +110,20 @@ function convexOverlap(a: number[][], b: number[][]): number {
 }
 
 /** Coplanar same-facing overlap between two triangle sets (z-fighting candidates), m2. */
-export function zFightArea(a: Tri[], b: Tri[], planeTolM = 0.01, log?: (s: Tri, t: Tri, area: number) => void): number {
+export function zFightArea(a: Tri[], b: Tri[], planeTolM = 0.01, log?: (s: Tri, t: Tri, area: number) => void, abutM = 0): number {
   let total = 0;
+  // Two houses' coplanar walls and doors meet at a party line to within the recipe's centimetre rounding: a strip a few
+  // millimetres wide where both lie on the line is an abutment, not z-fighting (nothing is visible at that width).
+  // Shrinking every triangle inward by `abutM` removes such strips; a real overlap stays (its area loses perimeter x abutM).
+  const shrink = (t: Tri): Tri | null => {
+    if (!abutM) return t;
+    const [p, q, r] = t.p, d = (u: number[], v: number[]) => Math.hypot(u[0] - v[0], u[1] - v[1], u[2] - v[2]);
+    const la = d(q, r), lb = d(p, r), lc = d(p, q), perimeter = la + lb + lc, inradius = 2 * area3(t) / perimeter;
+    if (inradius <= abutM) return null;
+    const centre = [0, 1, 2].map(k => (la * p[k] + lb * q[k] + lc * r[k]) / perimeter), k = (inradius - abutM) / inradius;
+    return {...t, p: t.p.map(v => v.map((x, j) => centre[j] + k * (x - centre[j])))};
+  };
+  if (abutM) { a = a.map(shrink).filter((t): t is Tri => !!t); b = b.map(shrink).filter((t): t is Tri => !!t); }
   // Undersides on the ground are never seen (both shells close at y = 0).
   const seen = (t: Tri) => !(t.n[1] < -0.9 && Math.max(...t.p.map(v => v[1])) <= 0.05);
   for (const s of a.filter(seen)) for (const t of b.filter(seen)) {
@@ -145,6 +159,16 @@ function rasterIoU(tris: Tri[], ring: number[][][], step = 0.1): number {
   return union ? inter / union : 0;
 }
 
+const samePoint = (p: number[], q: number[]) => Math.hypot(p[0] - q[0], p[1] - q[1]) < 1e-6;
+/** Move one plan corner in place everywhere it appears in a pand's facts: survey rings, roof partition, front chains (heights kept). */
+function moveCorner(f: BuildingFacts, from: number[], to: [number, number]) {
+  const same = samePoint;
+  for (const poly of f.surveyFootprintPolygonsRD) for (const ring of poly) for (const v of ring) if (same(v, from)) { v[0] = to[0]; v[1] = to[1]; }
+  // Roof rings share the ground corner: move it there too (heights kept) so the roof partition still covers the footprint.
+  for (const r of f.roofsRD) { for (const ring of r.ringsRD) for (const v of ring) if (same(v, from)) { v[0] = to[0]; v[1] = to[1]; } for (const v of r.vertices) if (same(v, from)) { v[0] = to[0]; v[1] = to[1]; } }
+  for (const fr of f.fronts) { for (const v of [...fr.endpointsRD, ...fr.chainRD]) if (same(v, from)) { v[0] = to[0]; v[1] = to[1]; } fr.widthM = Math.hypot(fr.endpointsRD[1][0] - fr.endpointsRD[0][0], fr.endpointsRD[1][1] - fr.endpointsRD[0][1]); }
+}
+
 /**
  * Close front slits between neighbours: LoD2.2 ground polygons of two neighbours sometimes stop a few centimetres
  * apart at the street (Utrechtsestraat 48/50: 7.7 cm), which renders as a see-through slit. When the front end of one
@@ -152,28 +176,69 @@ function rasterIoU(tris: Tri[], ring: number[][][], step = 0.1): number {
  */
 export function closeFrontSlits(facts: BuildingFacts[], maxM = 0.15): {facts: BuildingFacts[]; closed: {left: string; right: string; gapM: number}[]} {
   const out = facts.map(f => structuredClone(f)), closed: {left: string; right: string; gapM: number}[] = [];
-  const same = (p: number[], q: number[]) => Math.hypot(p[0] - q[0], p[1] - q[1]) < 1e-6;
-  const move = (f: BuildingFacts, from: number[], to: [number, number]) => {
-    for (const poly of f.surveyFootprintPolygonsRD) for (const ring of poly) for (const v of ring) if (same(v, from)) { v[0] = to[0]; v[1] = to[1]; }
-    // Roof rings share the ground corner: move it there too (heights kept) so the roof partition still covers the footprint.
-    for (const r of f.roofsRD) { for (const ring of r.ringsRD) for (const v of ring) if (same(v, from)) { v[0] = to[0]; v[1] = to[1]; } for (const v of r.vertices) if (same(v, from)) { v[0] = to[0]; v[1] = to[1]; } }
-    for (const fr of f.fronts) { for (const v of [...fr.endpointsRD, ...fr.chainRD]) if (same(v, from)) { v[0] = to[0]; v[1] = to[1]; } fr.widthM = Math.hypot(fr.endpointsRD[1][0] - fr.endpointsRD[0][0], fr.endpointsRD[1][1] - fr.endpointsRD[0][1]); }
-  };
   for (let i = 0; i + 1 < out.length; i++) {
     const a = [...out[i].fronts[0].endpointsRD[1]], b = [...out[i + 1].fronts[0].endpointsRD[0]], d = Math.hypot(a[0] - b[0], a[1] - b[1]);
     if (d < 0.005 || d > maxM) continue;
     const mid: [number, number] = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
-    move(out[i], a, mid); move(out[i + 1], b, mid);
+    moveCorner(out[i], a, mid); moveCorner(out[i + 1], b, mid);
     closed.push({left: out[i].pandId, right: out[i + 1].pandId, gapM: cm(d)});
   }
   return {facts: out, closed};
 }
 
-export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, name = `face-${face.id}`): Promise<BlockFaceResult> {
+/** Survey-front noise: two neighbours' facade planes within this much at a party line are one plane (measured: LoD2.2 fronts of a row differ by 2-8 cm; real setbacks start at ~10 cm). */
+/** Abutment tolerance per side for the z-fight measure (see zFightArea). */
+export const ABUT_M = 0.005;
+export const FRONT_SNAP_MAX_M = 0.09, FRONT_SNAP_MIN_M = 0.005;
+export interface FrontSnap { left: string; right: string; stepBeforeM: number; pass: number; stepAfterM?: number }
+
+/**
+ * Depth (frame z) of the street facade at the ground corner of every party line: right house minus left house, null when
+ * either side has no front wall corner there. Measured on the compiled GLB (the fit, jog flattening and outset all
+ * included), at the ground vertex so a pilaster strip or cornice proud of the body does not count as a step.
+ */
+export function groundCornerSteps(tris: Tri[][]): (number | null)[] {
+  const front = (t: Tri) => isWall(t.slot) && t.n[2] > 0.9 && Math.max(...t.p.map(v => v[2])) > -1;
+  const edge = (a: Tri[], pick: (xs: number[]) => number) => { const xs = a.filter(front).flatMap(t => t.p.map(v => v[0])); return xs.length ? pick(xs) : NaN; };
+  const cornerZ = (a: Tri[], x0: number) => { const zs = a.filter(front).flatMap(t => t.p).filter(v => Math.abs(v[0] - x0) < 0.02 && v[1] < 0.05).map(v => v[2]); return zs.length ? Math.max(...zs) : NaN; };
+  return tris.slice(1).map((_, i) => { const l = cornerZ(tris[i], edge(tris[i], xs => Math.max(...xs))), r = cornerZ(tris[i + 1], edge(tris[i + 1], xs => Math.min(...xs))); return Number.isFinite(l + r) ? r - l : null; });
+}
+
+/** Move the two front corners of each listed party line half the measured step each, along the frontage normal, so they meet. */
+export function snapFrontSteps(facts: BuildingFacts[], steps: {i: number; stepM: number}[], nRD: [number, number]): BuildingFacts[] {
+  const out = facts.map(f => structuredClone(f));
+  for (const {i, stepM} of steps) {
+    const a = [...out[i].fronts[0].endpointsRD[1]], b = [...out[i + 1].fronts[0].endpointsRD[0]], d = stepM / 2;
+    moveCorner(out[i], a, [a[0] + nRD[0] * d, a[1] + nRD[1] * d]);
+    moveCorner(out[i + 1], b, [b[0] - nRD[0] * d, b[1] - nRD[1] * d]);
+  }
+  return out;
+}
+
+export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, name = `face-${face.id}`, options: {inferRears?: boolean} = {}): Promise<BlockFaceResult> {
   const intents = houseIntents(face), facts = face.houses.map(h => { const f = factsByPand.get(h.pandId); if (!f) throw Error(`no facts for ${h.pandId}`); return f; });
   const slits = closeFrontSlits(facts);
-  const ground = planFaceGround(face, slits.facts);
-  const chunk = await compileChunk(intents.map((intent, i) => ({id: intent.id, intent, facts: ground.facts[i]})), {name, maxRegroundM: 0, eavesSnapStepM: 0});
+  // Compile, measure the facade-plane steps at the party lines, snap the small ones (survey noise), recompile.
+  const rears = new Map<string, RearReport>();
+  // Faces model the street side only; without this the backs of a straight row are one blank plane (GLB audit blank-wall).
+  const decorate = options.inferRears === false ? undefined : (built: CompiledBuilding, input: {id: string}) => {
+    const f = built.facts, i = intents.findIndex(x => x.id === input.id), report = built.fit.fronts[0];
+    rears.set(input.id, addInferredRear(built.group, f, built.anchorRD, report.storeyHeightsM, report.eavesM, built.recipe.palette.value.glass, built.recipe.palette.value.trim, ground.facts.filter((_, j) => j !== i)));
+  };
+  const compile = () => compileChunk(intents.map((intent, i) => ({id: intent.id, intent, facts: ground.facts[i]})), {name, maxRegroundM: 0, eavesSnapStepM: 0, decorate});
+  let current = slits.facts, ground = planFaceGround(face, current), chunk = await compile();
+  const frontSnaps: FrontSnap[] = [];
+  for (let pass = 0; pass < 2; pass++) {
+    const steps = groundCornerSteps(await decodePands(chunk.glb, intents.length));
+    const todo = steps.map((stepM, i) => ({stepM, i})).filter(x => x.stepM !== null && Math.abs(x.stepM) >= FRONT_SNAP_MIN_M && Math.abs(x.stepM) <= FRONT_SNAP_MAX_M);
+    if (!todo.length) break;
+    current = snapFrontSteps(current, todo.map(x => ({i: x.i, stepM: x.stepM!})), chunk.frame.nRD);
+    for (const x of todo) frontSnaps.push({left: face.houses[x.i].pandId, right: face.houses[x.i + 1].pandId, stepBeforeM: cm(x.stepM!), pass: pass + 1});
+    ground = planFaceGround(face, current);
+    chunk = await compile();
+  }
+  const stepsAfter = groundCornerSteps(await decodePands(chunk.glb, intents.length));
+  for (const sn of frontSnaps) sn.stepAfterM = cm(stepsAfter[face.houses.findIndex(h => h.pandId === sn.left)] ?? NaN);
   if (chunk.order.join() !== intents.map(i => i.id).join()) throw Error(`chunk order ${chunk.order.join()} differs from the intent's street order`);
   const tris = await decodePands(chunk.glb, intents.length);
   const frame: FrontFrame = {midRD: chunk.frame.midRD, uRD: chunk.frame.uRD, nRD: chunk.frame.nRD};
@@ -226,7 +291,7 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     const near = (a: Tri[]) => a.filter(t => t.p.some(v => Math.abs(v[0] - xLine) < 1.5));
     // Facade z-fighting fails at 1 dm2; roof planes (3DBAG partitions that overlap by centimetres at the party line) at 5 dm2.
     const roofSlot = (t: Tri) => ['roofTile', 'slate', 'bitumen'].includes(t.slot);
-    const zf = zFightArea(near(L).filter(t => !roofSlot(t)), near(R).filter(t => !roofSlot(t))), zfRoof = zFightArea(near(L).filter(roofSlot), near(R).filter(roofSlot));
+    const zf = zFightArea(near(L).filter(t => !roofSlot(t)), near(R).filter(t => !roofSlot(t)), 0.01, undefined, ABUT_M), zfRoof = zFightArea(near(L).filter(roofSlot), near(R).filter(roofSlot));
     const step = cm(ground.eavesAfter[i + 1] - ground.eavesAfter[i]), same = groupOf(face.houses[i].pandId) >= 0 && groupOf(face.houses[i].pandId) === groupOf(face.houses[i + 1].pandId);
     const verdict = same ? (Math.abs(step) <= 0.15 ? 'aligned' : 'step-not-supported') : (Math.abs(step) >= 0.1 ? 'step-supported' : 'missing-step');
     // Facade ends measured on the street front only (street-facing brick within 1 m of the frontage plane; rear wings can be wider).
@@ -238,6 +303,6 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     interference.push(item);
   }
   const instancing = planInstancing(intents, sizes, perPand.map(p => p.triangles));
-  return {instancing, slitsClosed: slits.closed, chunk, ground, gates, interference, perPand, passed: gates.every(x => x.pass) && interference.every(x => x.pass)};
+  return {instancing, slitsClosed: slits.closed, frontSnaps, rears: intents.map(x => rears.get(x.id)).filter((r): r is RearReport => !!r), chunk, ground, gates, interference, perPand, passed: gates.every(x => x.pass) && interference.every(x => x.pass)};
 }
 export {chunkFrame};

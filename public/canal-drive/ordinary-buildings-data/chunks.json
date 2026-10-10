@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-10T07:53:35.460Z",
+ "generatedAt": "2026-10-10T08:15:41.833Z",
  "chunks": [
   {
    "id": "chunk-bilder-080336-x4",
@@ -2867,6 +2867,1482 @@
        "primitive": 36,
        "firstTriangle": 0,
        "triangleCount": 13
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-marnix-124-138",
+   "name": "face-marnix-124-138",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-marnix-124-138.glb?asset=695610f5d572ade5",
+   "sha256": "695610f5d572ade504340ab077406f23bda5e5445652bca261286b71628d4dde",
+   "bytes": 994428,
+   "triangles": 14943,
+   "primitives": 9,
+   "instance": {
+    "anchor": [
+     4.877330991421247,
+     52.37590918697302
+    ],
+    "northOffsetDegrees": 291.056,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -52.211,
+     0,
+     -10.317
+    ],
+    "max": [
+     52.208,
+     17.004,
+     0.177
+    ]
+   },
+   "height": 17.004,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012174914",
+    "NL.IMBAG.Pand.0363100012168510",
+    "NL.IMBAG.Pand.0363100012173514",
+    "NL.IMBAG.Pand.0363100012173515",
+    "NL.IMBAG.Pand.0363100012174104",
+    "NL.IMBAG.Pand.0363100012174105",
+    "NL.IMBAG.Pand.0363100012174935",
+    "NL.IMBAG.Pand.0363100012173530"
+   ],
+   "replaces": [
+    "ordinary-0363100012174914",
+    "ordinary-0363100012168510",
+    "ordinary-0363100012173514",
+    "ordinary-0363100012173515",
+    "ordinary-0363100012174104",
+    "ordinary-0363100012174105",
+    "ordinary-0363100012174935",
+    "ordinary-0363100012173530"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8771251,
+        52.3755826
+       ],
+       [
+        4.8770157,
+        52.3756084
+       ],
+       [
+        4.8769456,
+        52.3754973
+       ],
+       [
+        4.8770549,
+        52.3754714
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8771937,
+        52.3756915
+       ],
+       [
+        4.8770844,
+        52.3757174
+       ],
+       [
+        4.8770157,
+        52.3756084
+       ],
+       [
+        4.8771251,
+        52.3755826
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8772623,
+        52.3758003
+       ],
+       [
+        4.8771529,
+        52.3758261
+       ],
+       [
+        4.8770844,
+        52.3757174
+       ],
+       [
+        4.8771937,
+        52.3756915
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8773311,
+        52.3759094
+       ],
+       [
+        4.8772218,
+        52.3759353
+       ],
+       [
+        4.8771529,
+        52.3758261
+       ],
+       [
+        4.8772623,
+        52.3758003
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8773997,
+        52.3760181
+       ],
+       [
+        4.8772903,
+        52.3760439
+       ],
+       [
+        4.8772218,
+        52.3759353
+       ],
+       [
+        4.8773311,
+        52.3759094
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8774684,
+        52.3761271
+       ],
+       [
+        4.877359,
+        52.3761529
+       ],
+       [
+        4.8772903,
+        52.3760439
+       ],
+       [
+        4.8773997,
+        52.3760181
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8775367,
+        52.3762354
+       ],
+       [
+        4.8774274,
+        52.3762613
+       ],
+       [
+        4.877359,
+        52.3761529
+       ],
+       [
+        4.8774684,
+        52.3761271
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8774665,
+        52.3763801
+       ],
+       [
+        4.8774294,
+        52.3763217
+       ],
+       [
+        4.8774607,
+        52.3763142
+       ],
+       [
+        4.8774274,
+        52.3762613
+       ],
+       [
+        4.8775367,
+        52.3762354
+       ],
+       [
+        4.8776069,
+        52.3763467
+       ],
+       [
+        4.8774978,
+        52.3763729
+       ],
+       [
+        4.8774975,
+        52.3763725
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "mface-174914",
+     "pandId": "0363100012174914",
+     "buildingId": "NL.IMBAG.Pand.0363100012174914",
+     "address": "Marnixstraat 138",
+     "frontage": {
+      "x0": -52.211,
+      "x1": -38.951,
+      "widthM": 13.26
+     },
+     "bounds": {
+      "min": [
+       -52.211,
+       0,
+       -8.027
+      ],
+      "max": [
+       -38.949,
+       16.997,
+       0.177
+      ]
+     },
+     "triangles": 1935,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 236
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 1132
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 26
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 1
+      }
+     ]
+    },
+    {
+     "recipeId": "mface-168510",
+     "pandId": "0363100012168510",
+     "buildingId": "NL.IMBAG.Pand.0363100012168510",
+     "address": "Marnixstraat 136",
+     "frontage": {
+      "x0": -38.951,
+      "x1": -25.961,
+      "widthM": 12.99
+     },
+     "bounds": {
+      "min": [
+       -38.951,
+       0,
+       -8.028
+      ],
+      "max": [
+       -25.96,
+       17.003,
+       0.177
+      ]
+     },
+     "triangles": 1808,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 236,
+       "triangleCount": 137
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 324,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 1132,
+       "triangleCount": 1124
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 204,
+       "triangleCount": 196
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 26,
+       "triangleCount": 15
+      }
+     ]
+    },
+    {
+     "recipeId": "mface-173514",
+     "pandId": "0363100012173514",
+     "buildingId": "NL.IMBAG.Pand.0363100012173514",
+     "address": "Marnixstraat 134",
+     "frontage": {
+      "x0": -25.961,
+      "x1": -12.99,
+      "widthM": 12.971
+     },
+     "bounds": {
+      "min": [
+       -25.961,
+       0,
+       -8.029
+      ],
+      "max": [
+       -12.989,
+       16.994,
+       0.177
+      ]
+     },
+     "triangles": 1778,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 373,
+       "triangleCount": 118
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 648,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 2256,
+       "triangleCount": 1124
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 400,
+       "triangleCount": 196
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 41,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "mface-173515",
+     "pandId": "0363100012173515",
+     "buildingId": "NL.IMBAG.Pand.0363100012173515",
+     "address": "Marnixstraat 132",
+     "frontage": {
+      "x0": -12.99,
+      "x1": 0.029,
+      "widthM": 13.019
+     },
+     "bounds": {
+      "min": [
+       -12.99,
+       0,
+       -8.029
+      ],
+      "max": [
+       0.03,
+       16.995,
+       0.176
+      ]
+     },
+     "triangles": 1839,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 491,
+       "triangleCount": 175
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 972,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 3380,
+       "triangleCount": 1124
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 596,
+       "triangleCount": 196
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 45,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "mface-174104",
+     "pandId": "0363100012174104",
+     "buildingId": "NL.IMBAG.Pand.0363100012174104",
+     "address": "Marnixstraat 130",
+     "frontage": {
+      "x0": 0.029,
+      "x1": 12.99,
+      "widthM": 12.962
+     },
+     "bounds": {
+      "min": [
+       0.029,
+       0,
+       -8.029
+      ],
+      "max": [
+       12.991,
+       17.004,
+       0.176
+      ]
+     },
+     "triangles": 1807,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 666,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 1296,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 4504,
+       "triangleCount": 1124
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 792,
+       "triangleCount": 196
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 53,
+       "triangleCount": 15
+      }
+     ]
+    },
+    {
+     "recipeId": "mface-174105",
+     "pandId": "0363100012174105",
+     "buildingId": "NL.IMBAG.Pand.0363100012174105",
+     "address": "Marnixstraat 128",
+     "frontage": {
+      "x0": 12.99,
+      "x1": 25.988,
+      "widthM": 12.998
+     },
+     "bounds": {
+      "min": [
+       12.99,
+       0,
+       -8.028
+      ],
+      "max": [
+       25.991,
+       16.995,
+       0.176
+      ]
+     },
+     "triangles": 1895,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 802,
+       "triangleCount": 220
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 1620,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 5628,
+       "triangleCount": 1124
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 988,
+       "triangleCount": 196
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 68,
+       "triangleCount": 19
+      }
+     ]
+    },
+    {
+     "recipeId": "mface-174935",
+     "pandId": "0363100012174935",
+     "buildingId": "NL.IMBAG.Pand.0363100012174935",
+     "address": "Marnixstraat 126",
+     "frontage": {
+      "x0": 25.988,
+      "x1": 38.911,
+      "widthM": 12.923
+     },
+     "bounds": {
+      "min": [
+       25.988,
+       0,
+       -8.028
+      ],
+      "max": [
+       38.911,
+       16.998,
+       0.175
+      ]
+     },
+     "triangles": 1809,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 1022,
+       "triangleCount": 138
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 1944,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 6752,
+       "triangleCount": 1124
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1184,
+       "triangleCount": 196
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 87,
+       "triangleCount": 15
+      }
+     ]
+    },
+    {
+     "recipeId": "mface-173530",
+     "pandId": "0363100012173530",
+     "buildingId": "NL.IMBAG.Pand.0363100012173530",
+     "address": "Marnixstraat 124",
+     "frontage": {
+      "x0": 38.911,
+      "x1": 52.178,
+      "widthM": 13.267
+     },
+     "bounds": {
+      "min": [
+       38.911,
+       0,
+       -10.317
+      ],
+      "max": [
+       52.208,
+       16.995,
+       0.174
+      ]
+     },
+     "triangles": 2072,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 1160,
+       "triangleCount": 225
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 2268,
+       "triangleCount": 276
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 7876,
+       "triangleCount": 1058
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 84,
+       "triangleCount": 104
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1380,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 102,
+       "triangleCount": 22
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-marnix-c",
+   "name": "face-marnix-c",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-marnix-c.glb?asset=96457b2d6c467325",
+   "sha256": "96457b2d6c467325b6065520d8aba62d0180813c37ad6071a12111c6789ce4fa",
+   "bytes": 1137756,
+   "triangles": 17209,
+   "primitives": 6,
+   "instance": {
+    "anchor": [
+     4.878016903989514,
+     52.3769980741904
+    ],
+    "northOffsetDegrees": 291.1908,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -62.641,
+     0,
+     -8.144
+    ],
+    "max": [
+     62.742,
+     16.588,
+     0.373
+    ]
+   },
+   "height": 16.588,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012169033",
+    "NL.IMBAG.Pand.0363100012174107",
+    "NL.IMBAG.Pand.0363100012174112",
+    "NL.IMBAG.Pand.0363100012174116",
+    "NL.IMBAG.Pand.0363100012174121",
+    "NL.IMBAG.Pand.0363100012174192",
+    "NL.IMBAG.Pand.0363100012174292",
+    "NL.IMBAG.Pand.0363100012168167",
+    "NL.IMBAG.Pand.0363100012168218"
+   ],
+   "replaces": [
+    "ordinary-0363100012169033",
+    "ordinary-0363100012174107",
+    "ordinary-0363100012174112",
+    "ordinary-0363100012174116",
+    "ordinary-0363100012174121",
+    "ordinary-0363100012174192",
+    "ordinary-0363100012174292",
+    "ordinary-0363100012168167",
+    "ordinary-0363100012168218"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8777586,
+        52.3765898
+       ],
+       [
+        4.8776485,
+        52.3766159
+       ],
+       [
+        4.8775747,
+        52.3764993
+       ],
+       [
+        4.8776847,
+        52.3764731
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8778324,
+        52.3767064
+       ],
+       [
+        4.8777223,
+        52.3767325
+       ],
+       [
+        4.8776485,
+        52.3766159
+       ],
+       [
+        4.8777586,
+        52.3765898
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8779063,
+        52.3768231
+       ],
+       [
+        4.8777962,
+        52.3768492
+       ],
+       [
+        4.8777223,
+        52.3767325
+       ],
+       [
+        4.8778324,
+        52.3767064
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8779801,
+        52.3769397
+       ],
+       [
+        4.87787,
+        52.3769659
+       ],
+       [
+        4.8777962,
+        52.3768492
+       ],
+       [
+        4.8779063,
+        52.3768231
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.878054,
+        52.3770564
+       ],
+       [
+        4.8779439,
+        52.3770825
+       ],
+       [
+        4.87787,
+        52.3769659
+       ],
+       [
+        4.8779801,
+        52.3769397
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8781278,
+        52.3771731
+       ],
+       [
+        4.8780177,
+        52.3771992
+       ],
+       [
+        4.8779439,
+        52.3770825
+       ],
+       [
+        4.878054,
+        52.3770564
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8782016,
+        52.3772897
+       ],
+       [
+        4.8780916,
+        52.3773158
+       ],
+       [
+        4.8780177,
+        52.3771992
+       ],
+       [
+        4.8781278,
+        52.3771731
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8782755,
+        52.3774064
+       ],
+       [
+        4.8781654,
+        52.3774325
+       ],
+       [
+        4.8780916,
+        52.3773158
+       ],
+       [
+        4.8782016,
+        52.3772897
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8782392,
+        52.3775491
+       ],
+       [
+        4.8781654,
+        52.3774325
+       ],
+       [
+        4.8782755,
+        52.3774064
+       ],
+       [
+        4.8783491,
+        52.3775227
+       ],
+       [
+        4.8783416,
+        52.3775245
+       ],
+       [
+        4.8783422,
+        52.3775254
+       ],
+       [
+        4.8783303,
+        52.3775283
+       ],
+       [
+        4.8783297,
+        52.3775274
+       ],
+       [
+        4.8782593,
+        52.3775443
+       ],
+       [
+        4.8782598,
+        52.3775452
+       ],
+       [
+        4.8782477,
+        52.3775482
+       ],
+       [
+        4.8782471,
+        52.3775472
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "mface-169033",
+     "pandId": "0363100012169033",
+     "buildingId": "NL.IMBAG.Pand.0363100012169033",
+     "address": "Marnixstraat 122",
+     "frontage": {
+      "x0": -62.638,
+      "x1": -48.717,
+      "widthM": 13.921
+     },
+     "bounds": {
+      "min": [
+       -62.641,
+       0,
+       -8.023
+      ],
+      "max": [
+       -48.717,
+       16.581,
+       0.373
+      ]
+     },
+     "triangles": 1937,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 236
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 1132
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 29
+      }
+     ]
+    },
+    {
+     "recipeId": "mface-174107",
+     "pandId": "0363100012174107",
+     "buildingId": "NL.IMBAG.Pand.0363100012174107",
+     "address": "Marnixstraat 120",
+     "frontage": {
+      "x0": -48.717,
+      "x1": -34.798,
+      "widthM": 13.919
+     },
+     "bounds": {
+      "min": [
+       -48.726,
+       0,
+       -8.037
+      ],
+      "max": [
+       -34.797,
+       16.583,
+       0.237
+      ]
+     },
+     "triangles": 1822,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 236,
+       "triangleCount": 135
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 324,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 1132,
+       "triangleCount": 1132
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 204,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 29,
+       "triangleCount": 15
+      }
+     ]
+    },
+    {
+     "recipeId": "mface-174112",
+     "pandId": "0363100012174112",
+     "buildingId": "NL.IMBAG.Pand.0363100012174112",
+     "address": "Marnixstraat 118",
+     "frontage": {
+      "x0": -34.798,
+      "x1": -20.878,
+      "widthM": 13.92
+     },
+     "bounds": {
+      "min": [
+       -34.806,
+       0,
+       -8.053
+      ],
+      "max": [
+       -20.878,
+       16.581,
+       0.221
+      ]
+     },
+     "triangles": 1823,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 371,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 648,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 2264,
+       "triangleCount": 1132
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 408,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 44,
+       "triangleCount": 15
+      }
+     ]
+    },
+    {
+     "recipeId": "mface-174116",
+     "pandId": "0363100012174116",
+     "buildingId": "NL.IMBAG.Pand.0363100012174116",
+     "address": "Marnixstraat 116",
+     "frontage": {
+      "x0": -20.878,
+      "x1": -6.958,
+      "widthM": 13.919
+     },
+     "bounds": {
+      "min": [
+       -20.886,
+       0,
+       -8.067
+      ],
+      "max": [
+       -6.958,
+       16.587,
+       0.207
+      ]
+     },
+     "triangles": 1879,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 507,
+       "triangleCount": 191
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 972,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 3396,
+       "triangleCount": 1132
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 612,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 59,
+       "triangleCount": 16
+      }
+     ]
+    },
+    {
+     "recipeId": "mface-174121",
+     "pandId": "0363100012174121",
+     "buildingId": "NL.IMBAG.Pand.0363100012174121",
+     "address": "Marnixstraat 114",
+     "frontage": {
+      "x0": -6.958,
+      "x1": 6.963,
+      "widthM": 13.922
+     },
+     "bounds": {
+      "min": [
+       -6.964,
+       0,
+       -8.082
+      ],
+      "max": [
+       6.964,
+       16.58,
+       0.191
+      ]
+     },
+     "triangles": 2232,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 698,
+       "triangleCount": 226
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 1296,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 4528,
+       "triangleCount": 1332
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 816,
+       "triangleCount": 316
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 75,
+       "triangleCount": 22
+      }
+     ]
+    },
+    {
+     "recipeId": "mface-174192",
+     "pandId": "0363100012174192",
+     "buildingId": "NL.IMBAG.Pand.0363100012174192",
+     "address": "Marnixstraat 112",
+     "frontage": {
+      "x0": 6.963,
+      "x1": 20.882,
+      "widthM": 13.919
+     },
+     "bounds": {
+      "min": [
+       6.956,
+       0,
+       -8.097
+      ],
+      "max": [
+       20.882,
+       16.588,
+       0.175
+      ]
+     },
+     "triangles": 1846,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 924,
+       "triangleCount": 151
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 1620,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 5860,
+       "triangleCount": 1132
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1132,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 97,
+       "triangleCount": 23
+      }
+     ]
+    },
+    {
+     "recipeId": "mface-174292",
+     "pandId": "0363100012174292",
+     "buildingId": "NL.IMBAG.Pand.0363100012174292",
+     "address": "Marnixstraat 110",
+     "frontage": {
+      "x0": 20.882,
+      "x1": 34.803,
+      "widthM": 13.921
+     },
+     "bounds": {
+      "min": [
+       20.874,
+       0,
+       -8.112
+      ],
+      "max": [
+       34.803,
+       16.586,
+       0.16
+      ]
+     },
+     "triangles": 1840,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 1075,
+       "triangleCount": 149
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 1944,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 6992,
+       "triangleCount": 1132
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1336,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 120,
+       "triangleCount": 19
+      }
+     ]
+    },
+    {
+     "recipeId": "mface-168167",
+     "pandId": "0363100012168167",
+     "buildingId": "NL.IMBAG.Pand.0363100012168167",
+     "address": "Marnixstraat 108",
+     "frontage": {
+      "x0": 34.803,
+      "x1": 48.722,
+      "widthM": 13.919
+     },
+     "bounds": {
+      "min": [
+       34.794,
+       0,
+       -8.129
+      ],
+      "max": [
+       48.722,
+       16.581,
+       0.145
+      ]
+     },
+     "triangles": 1920,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 1224,
+       "triangleCount": 223
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 2268,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 8124,
+       "triangleCount": 1132
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 84,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1540,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 139,
+       "triangleCount": 25
+      }
+     ]
+    },
+    {
+     "recipeId": "mface-168218",
+     "pandId": "0363100012168218",
+     "buildingId": "NL.IMBAG.Pand.0363100012168218",
+     "address": "Marnixstraat 106",
+     "frontage": {
+      "x0": 48.722,
+      "x1": 62.599,
+      "widthM": 13.878
+     },
+     "bounds": {
+      "min": [
+       48.714,
+       0,
+       -8.144
+      ],
+      "max": [
+       62.742,
+       16.587,
+       0.128
+      ]
+     },
+     "triangles": 1910,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 1447,
+       "triangleCount": 223
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 2592,
+       "triangleCount": 324
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 9256,
+       "triangleCount": 1132
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 96,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1744,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 164,
+       "triangleCount": 15
       }
      ]
     }

@@ -47,6 +47,8 @@ export interface ChunkOptions {
   trimPartyWalls?: boolean;
   /** Footprint edges closer than this are one party wall. */
   partyToleranceM?: number;
+  /** Called for each compiled house (street order) before it is baked into the frame: add geometry to `built.group` (recipe-local coordinates). */
+  decorate?: (built: import('../buildingRecipe/compile.ts').CompiledBuilding, input: ChunkHouseInput, index: number) => void;
 }
 
 export interface PartyContactReport {

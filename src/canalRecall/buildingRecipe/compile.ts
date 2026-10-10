@@ -159,8 +159,17 @@ export function backJogs(group: T.Group, recipe: CanalHouseRecipe, fit: FitRepor
     const top = recipe.elevations.find(e => e.id === f.id)?.bodyEavesM?.value ?? f.eavesM;
     const values: number[] = [];
     const push = (...pts: number[][]) => pts.forEach(p => values.push(p[0], p[1], p[2]));
-    for (const [x, y, z] of T.ShapeUtils.triangulateShape(poly, [])) push([poly[x].x, top, poly[x].y], [poly[y].x, top, poly[y].y], [poly[z].x, top, poly[z].y]);
-    for (let k = 0; k < poly.length; k++) { const p = poly[k], q = poly[(k + 1) % poly.length]; push([p.x, 0, p.y], [q.x, 0, q.y], [q.x, top, q.y], [p.x, 0, p.y], [q.x, top, q.y], [p.x, top, p.y]); }
+    // Winding follows the chain direction, which depends on the footprint ring's orientation: orient the cap upward
+    // and the sides outward explicitly (a downward cap read as an inverted roof in the GLB audit).
+    const planArea = poly.reduce((acc, p, k) => { const q = poly[(k + 1) % poly.length]; return acc + p.x * q.y - q.x * p.y; }, 0);
+    for (const [x, y, z] of T.ShapeUtils.triangulateShape(poly, [])) {
+      const tri = [poly[x], poly[y], poly[z]], up = (tri[1].x - tri[0].x) * (tri[2].y - tri[0].y) - (tri[2].x - tri[0].x) * (tri[1].y - tri[0].y) < 0;
+      for (const v of up ? tri : [...tri].reverse()) push([v.x, top, v.y]);
+    }
+    for (let k = 0; k < poly.length; k++) {
+      const p = poly[planArea > 0 ? (k + 1) % poly.length : k], q = poly[planArea > 0 ? k : (k + 1) % poly.length];
+      push([p.x, 0, p.y], [q.x, 0, q.y], [q.x, top, q.y], [p.x, 0, p.y], [q.x, top, q.y], [p.x, top, p.y]);
+    }
     const g = new T.BufferGeometry(); g.setAttribute('position', new T.Float32BufferAttribute(values, 3)); g.computeVertexNormals();
     const mesh = new T.Mesh(g, (shell?.material as T.Material) ?? new T.MeshStandardMaterial({color: recipe.palette.value.wall}));
     mesh.name = `shell/jog-backing-${f.id}`; mesh.userData = {component: 'shell', surface: 'wall', pandId: recipe.house.pandId};
