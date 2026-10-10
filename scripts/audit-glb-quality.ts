@@ -12,6 +12,7 @@
  * scripts/landmarks/<id>-elevations.json when present) and coplanar z-fighting. Existing offenders are recorded in
  * scripts/landmarks/geometry-audit-baseline.json; a model fails only when a gated count grows beyond its baseline.
  *   --no-geometry            skip it            --write-baseline     record current counts as the baseline
+ *   --only-geometry          skip the shell checks (fast geometry-only run)
  *   --geometry-shots         close-up evidence of the worst issue per top offender (artifacts/glb-audit/geometry/)
  *
  * Install scripts call it with --id=<id> and must see exit code 0. Thresholds live in
@@ -198,7 +199,11 @@ async function main(): Promise<void> {
   for (const t of targets) {
     const t0 = Date.now();
     let report: QualityReport;
-    try { report = await auditFile(t.file, modelThresholds(t.id)); } catch (e) {
+    try {
+      // --only-geometry: skip the shell checks (fast baseline / ranking runs of the geometry audit alone).
+      report = flag('only-geometry') ? analyseSoup({positions: new Float32Array(0), indices: new Uint32Array(0)}) : await auditFile(t.file, modelThresholds(t.id));
+      if (flag('only-geometry')) { report.findings = []; report.pass = true; }
+    } catch (e) {
       report = analyseSoup({positions: new Float32Array(0), indices: new Uint32Array(0)});
       report.findings.push({kind: 'unreadable', severity: 'fail', message: String(e)});
     }
