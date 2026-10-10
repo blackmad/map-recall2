@@ -13,7 +13,12 @@ It abstains when a roof shows above the cornice or trees cover the crown —
 57 of 87 fronts, mostly Bilderdijkstraat. Marnixstraat 124–138 and marnix-c
 were authored with 5 uniform steps ~0.7 m right of the photo crown; the
 photo has 2–4. Integrator viewed the gables sheet and the recompiled strip
-overlay and switched all 16 stepped crowns to crownFromPhoto. Sol's
+overlay and set each Marnixstraat row's shared house type (sameAs) to the
+median photo crown (124–138: 2 steps/side; 106–122: 3), baked into the
+intents with evidence — `crownFromPhoto` reads the gitignored strip at
+compile time, so committed faces must not depend on it (tests compile
+without the strip). Per-house readings vary 2–4 steps and drift left to
+right (strip registration), so one type crown beats eight noisy ones. Sol's
 branches have no better identifier (Blender `gables.py` only draws presets).
 Also reinstalled utrechtse-48-76, whose installed GLB predated recipe fixes.
 

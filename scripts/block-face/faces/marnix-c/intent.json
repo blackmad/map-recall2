@@ -38,11 +38,11 @@
       "windowSurround": "stone-lintel",
       "atticWindows": 1,
       "crownAt": {
-       "from": 0.35,
-       "to": 0.65
+       "from": 0.324,
+       "to": 0.587
       },
-      "crownSteps": 5,
-      "crownRise": 1.1,
+      "crownSteps": 3,
+      "crownRise": 1.37,
       "crownFinial": true,
       "windowProportion": "tall"
      }
@@ -57,7 +57,8 @@
      "stone": "sandstone"
     },
     "notes": [
-     "1876-78 municipal row (B. de Greef): flat bracketed cornice, 3 window axes x 4 storeys, central door, narrow tall stepped gable with finial over the middle axis (crownAt/crownRise/crownSteps/crownFinial), tall two-light windows; pilaster strips at the party walls (not modelled). Brick colour measured from the strip wall (review sheet wall check)."
+     "1876-78 municipal row (B. de Greef): flat bracketed cornice, 3 window axes x 4 storeys, central door, narrow tall stepped gable with finial over the middle axis (crownAt/crownRise/crownSteps/crownFinial), tall two-light windows; pilaster strips at the party walls (not modelled). Brick colour measured from the strip wall (review sheet wall check).",
+     "crown from photo (gables-sheet 2026-10-10, blockFace/gableFromStrip): median of 8 readings, 3 steps/side, span 0.324-0.587 (positions drift 0.353->0.312 left to right, likely strip registration, so the median is used); authored 5 uniform steps; one type crown shared by all sameAs houses; integrator viewed the overlay"
     ]
    },
    "groundFloor": {
@@ -428,40 +429,6 @@
      "0363100012168218"
     ],
     "evidence": "strip: same 3 axes x 4 storeys, central door, central stepped gable on every house"
-   }
-  ],
-  "crownFromPhoto": [
-   {
-    "pand": "0363100012168167",
-    "evidence": "gables-sheet 2026-10-10: authored 5 uniform steps sit ~0.7 m right of the photo crown; photo shows shoulder, raking section, small stepped top (2-4 steps/side); integrator viewed the overlay"
-   },
-   {
-    "pand": "0363100012168218",
-    "evidence": "gables-sheet 2026-10-10: authored 5 uniform steps sit ~0.7 m right of the photo crown; photo shows shoulder, raking section, small stepped top (2-4 steps/side); integrator viewed the overlay"
-   },
-   {
-    "pand": "0363100012169033",
-    "evidence": "gables-sheet 2026-10-10: authored 5 uniform steps sit ~0.7 m right of the photo crown; photo shows shoulder, raking section, small stepped top (2-4 steps/side); integrator viewed the overlay"
-   },
-   {
-    "pand": "0363100012174107",
-    "evidence": "gables-sheet 2026-10-10: authored 5 uniform steps sit ~0.7 m right of the photo crown; photo shows shoulder, raking section, small stepped top (2-4 steps/side); integrator viewed the overlay"
-   },
-   {
-    "pand": "0363100012174112",
-    "evidence": "gables-sheet 2026-10-10: authored 5 uniform steps sit ~0.7 m right of the photo crown; photo shows shoulder, raking section, small stepped top (2-4 steps/side); integrator viewed the overlay"
-   },
-   {
-    "pand": "0363100012174116",
-    "evidence": "gables-sheet 2026-10-10: authored 5 uniform steps sit ~0.7 m right of the photo crown; photo shows shoulder, raking section, small stepped top (2-4 steps/side); integrator viewed the overlay"
-   },
-   {
-    "pand": "0363100012174192",
-    "evidence": "gables-sheet 2026-10-10: authored 5 uniform steps sit ~0.7 m right of the photo crown; photo shows shoulder, raking section, small stepped top (2-4 steps/side); integrator viewed the overlay"
-   },
-   {
-    "pand": "0363100012174292",
-    "evidence": "gables-sheet 2026-10-10: authored 5 uniform steps sit ~0.7 m right of the photo crown; photo shows shoulder, raking section, small stepped top (2-4 steps/side); integrator viewed the overlay"
    }
   ]
  }
