@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## Street-survey house types, Stage 1: Nassaukade 318–300 and De Clercqstraat 22–2 (2026-10-10)
+
+The user asked that repetitive blocks be built by a generator or model reuse. A
+`HouseTypeIntent` (one body, named crown/ground variants, palettes, rhythm spec)
+is placed per house with mirror, variant, door bay, visual span and module
+params; `houseIntents()` resolves placements to ordinary designs before fitting,
+so gates, audit and review are unchanged and the 16 existing faces recompile
+byte-identical. Nassaukade uses 4 types for 17 of 20 houses (mirrored pairs share
+a straddling dormer); De Clercqstraat 3 types for 12 modules in 9 pands. New front
+fields `gridAt`, `dormerAt`, `souterrain`. Marginal cost per typed house is one
+placement line (~10–20 s) versus ~2 min for a new design. Instancing (Stage 2) is
+deferred: whole-house equality finds little to share; it needs slot hashing.
+
 ## Bilderdijkstraat held faces installed; measured eaves re-pitch the front roof (2026-10-10)
 
 Faces 113–115, 131–133 and 135–153 were held because 3DBAG eaves stood 2.5–3.5 m

@@ -19,7 +19,7 @@ import {NodeIO} from '@gltf-transform/core';
 import {KHRMeshQuantization} from '@gltf-transform/extensions';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {compare, measureFacade, type FacadeInventory, type MaterialSoup} from '../../src/canalRecall/landmarks/facadeCompare.ts';
-import {houseIntents, type BlockFaceIntent} from '../../src/canalRecall/blockFace/intent.ts';
+import {houseIntents, validateBlockFace, type BlockFaceIntent} from '../../src/canalRecall/blockFace/intent.ts';
 import {measureWallColour, toHex} from '../../src/canalRecall/blockFace/wallColour.ts';
 import {compareBands, countBands, groundStoreysOf, type FrontBands} from '../../src/canalRecall/blockFace/openingCount.ts';
 import {FACES, STAGING} from './intake.ts';
@@ -63,7 +63,8 @@ export async function reviewFace(faceId: string, glbOverride?: string, label?: s
   const dir = path.join(FACES, faceId), stage = path.join(STAGING, faceId), out = path.join(stage, 'review');
   await fs.mkdir(out, {recursive: true});
   const strip = JSON.parse(await fs.readFile(path.join(dir, 'strip.json'), 'utf8'));
-  const face: BlockFaceIntent = JSON.parse(await fs.readFile(path.join(dir, 'intent.json'), 'utf8'));
+  // Validated: a typed house's rhythm spec is its type's plus what the house states (blockFace/houseType.ts).
+  const face: BlockFaceIntent = validateBlockFace(JSON.parse(await fs.readFile(path.join(dir, 'intent.json'), 'utf8')));
   const report = JSON.parse(await fs.readFile(path.join(stage, 'report.json'), 'utf8'));
   const glb = glbOverride ?? path.join(stage, 'chunk.glb');
   const W = strip.width, H = strip.height, ppm = strip.pixelsPerMetre, x0 = strip.x0M, x1 = strip.x1M, top = strip.heightM;
