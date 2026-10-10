@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Six landmarks reworked: both hotels, both Lutheran churches, H'ART, Hendrik rear (2026-10-10)
+
+User reports: window inconsistency on Hotel de l'Europe and the American Hotel,
+missing windows on the Ronde Lutherse Kerk, detached windows on the Oude
+Lutherse Kerk, H'ART roof flicker, and the blank rear of Brandweerkazerne
+Hendrik. Causes: OLK detail boxes were axis-aligned on walls skewed ~3° (now on
+ring-edge frames); H'ART had a slate cap 1 cm over the brick top and overlapping
+wing hips (coplanar overlap 4,702 → 58 m²); RLK's curved side aisle was blank
+(now 7 arched windows); Hendrik's N/W walls were blank (now from rear-street
+panoramas); American Hotel's Leidsekade gable front was blank and its SE axes
+irregular (now 7 axes on 3.35 m); Hotel de l'Europe used one 3.0 m bay on every
+side and mislabelled the Amstel side (now three sections from the photo and a
+regular NW annex grid). LOD1 copies rebuilt.
+
 ## Landmark z-fighting: constant depth bias; geometry audit in the GLB gate (2026-10-10)
 
 The user saw texture fighting on H'ART's roof and the Rijksmuseum entrance and
