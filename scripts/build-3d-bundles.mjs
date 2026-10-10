@@ -57,6 +57,18 @@ const targets = [
     globalName: 'CanalRecallElevation',
   },
   {
+    // Own ground in the riding view (`?ownGround=1`); vector-map.js loads it on
+    // demand. THREE is injected by the shared frame, so no shim is involved.
+    entry: 'src/canalRecall/ownGround/gameBrowser.ts',
+    out: 'public/canal-drive/js/own-ground-game.bundle.js',
+    globalName: 'CanalRecallOwnGround',
+  },
+  {
+    // Its cell builder, in a worker (DOM-free modules only).
+    entry: 'src/canalRecall/ownGround/groundWorker.ts',
+    out: 'public/canal-drive/js/own-ground-worker.bundle.js',
+  },
+  {
     entry: 'public/canal-drive/js/pyramidal-roofs-source.js',
     out: 'public/canal-drive/js/pyramidal-roofs.bundle.js',
     globalName: 'CanalRecallPyramidalRoofs',
