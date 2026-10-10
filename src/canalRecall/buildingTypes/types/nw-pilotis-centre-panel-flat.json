@@ -1,6 +1,6 @@
 {
-  "id": "nw-pilotis-panel-flat",
-  "label": "Nieuw-West type 6: five-storey prefab-panel flat closed ground storey (garage doors), flat roof (15.7 x 9.9 m, 70 panden, 1953-62)",
+  "id": "nw-pilotis-centre-panel-flat",
+  "label": "Nieuw-West type 6b: five-storey prefab-panel flat on open pilotis, balcony pair in the CENTRE either side of the stair strip, plain punched windows in the outer bays (15.7 x 9.9 m, flat roof, 1953-62)",
   "source": {
     "clusterRank": 6,
     "panden": 70,
@@ -105,35 +105,35 @@
       "confidence": "measured",
       "evidence": [
         {
-          "photo": "survey crop 0363100012109852.jpg",
-          "pand": "0363100012109852",
-          "address": "Comeniusstraat (frontal, L 16.3 m)",
-          "note": "best frontal view. Symmetric about the stair core: a pair of balcony columns at each end (white slatted balustrade, ~2.0 x 1.2 m each, French window behind), a two-light window between the balconies and the core, the stair core with the entrance door (3 steps, letterbox panels) and one small stair window per floor line. Ground storey here closed: garage/storage door under each outer balcony column, rows of small square windows between. Panel grid ~1.5 x 0.9 m. Relative widths 2.4 : 2.4 : 2.3 : 1.6 : 2.3 : 2.4 : 2.4."
+          "photo": "crops/0363100012078925.jpg",
+          "pand": "0363100012078925",
+          "address": "Comeniusstraat (frontal)",
+          "note": "best frontal view: 3 single windows per storey left, two balcony columns (1.4 m, white bars, French door behind) 1.9 m apart with the drainpipe strip between them, 2 windows right, blank end. Pilotis columns and storage doors set back."
         },
         {
-          "photo": "survey crop 0363100012143810.jpg",
+          "photo": "crops/0363100012143810.jpg",
           "pand": "0363100012143810",
-          "address": "Comeniusstraat (pilotis, oblique)",
-          "note": "same layout with an open pilotis ground storey: white columns ~3.4 m apart, storage cells set back, white slab fascia under the first floor, entrance core flush behind the columns."
+          "address": "Comeniusstraat (oblique)",
+          "note": "balcony stack either side of the central strip, punched windows in the outer bays, open pilotis below."
         },
         {
-          "photo": "type-6-c.jpg",
-          "pand": "0363100012155085",
-          "address": "Comeniusstraat 549-2",
-          "note": "oblique: balcony pair, window pair, stair door, two single windows to its right; the right-hand balcony pair is hidden by the building corner (asymmetric as photographed; modelled symmetric)."
+          "photo": "crops/0363100012139456.jpg",
+          "pand": "0363100012139456",
+          "address": "Comeniusstraat (oblique)",
+          "note": "same centre stack with drainpipe; large 2-light window at the outer end of the lower floors; storage doors under the pilotis."
         },
         {
-          "photo": "type-6-b.jpg",
-          "pand": "0363100012124255",
-          "address": "Comeniusstraat 817-H",
-          "note": "close view: curved balcony slab with a dark edge and white slats, white columns, grey storage doors between columns, entrance door 815/817."
+          "photo": "crops/0363100012136034.jpg",
+          "pand": "0363100012136034",
+          "address": "Johan Huizingalaan/Comeniusstraat (oblique)",
+          "note": "entrance under the left balcony column, storage doors left of it, columns right; centre stack confirmed."
         }
       ],
       "counted": {
-        "bays": 7,
+        "bays": 9,
         "openingsPerUpperStorey": 7,
-        "groundDoors": 7,
-        "balconiesPerUpperStorey": 4
+        "groundDoors": 6,
+        "balconiesPerUpperStorey": 2
       },
       "joints": {
         "panelW": 1.55,
@@ -141,277 +141,207 @@
       },
       "bays": [
         {
-          "id": "balcony-1",
-          "w": 2.4,
-          "role": "balcony",
-          "elements": [
-            {
-              "kind": "balcony",
-              "levels": "upper",
-              "w": 2,
-              "depth": 1.2,
-              "railing": "slats"
-            },
-            {
-              "kind": "window",
-              "levels": "upper",
-              "w": 1.4,
-              "h": 2.1,
-              "sill": 0,
-              "lights": 2
-            },
-            {
-              "kind": "storageDoor",
-              "levels": "ground",
-              "w": 1.9,
-              "h": 2.1,
-              "groundModes": [
-                "pilotis"
-              ]
-            },
-            {
-              "kind": "storageDoor",
-              "levels": "ground",
-              "w": 2.1,
-              "h": 2.2,
-              "groundModes": [
-                "solid"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "balcony-2",
-          "w": 2.4,
-          "role": "balcony",
-          "elements": [
-            {
-              "kind": "balcony",
-              "levels": "upper",
-              "w": 2,
-              "depth": 1.2,
-              "railing": "slats"
-            },
-            {
-              "kind": "window",
-              "levels": "upper",
-              "w": 1.4,
-              "h": 2.1,
-              "sill": 0,
-              "lights": 2
-            },
-            {
-              "kind": "storageDoor",
-              "levels": "ground",
-              "w": 1.9,
-              "h": 2.1,
-              "groundModes": [
-                "pilotis"
-              ]
-            },
-            {
-              "kind": "vents",
-              "levels": "ground",
-              "u": 0,
-              "count": 3,
-              "sill": 1.5,
-              "groundModes": [
-                "solid"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "windows-left",
-          "w": 2.3,
+          "id": "W1",
+          "w": 2.0,
           "role": "windows",
           "elements": [
             {
               "kind": "window",
               "levels": "upper",
-              "w": 1.9,
-              "h": 1.1,
-              "sill": 0.95,
-              "lights": 2
+              "w": 1.0,
+              "h": 1.15,
+              "sill": 0.85,
+              "lights": 1
             },
             {
               "kind": "storageDoor",
               "levels": "ground",
-              "w": 1.9,
+              "w": 1.6,
               "h": 2.1,
               "groundModes": [
                 "pilotis"
-              ]
-            },
-            {
-              "kind": "vents",
-              "levels": "ground",
-              "u": 0,
-              "count": 3,
-              "sill": 1.5,
-              "groundModes": [
-                "solid"
               ]
             }
           ]
         },
         {
-          "id": "stair",
-          "w": 1.6,
+          "id": "W2",
+          "w": 2.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.0,
+              "h": 1.15,
+              "sill": 0.85,
+              "lights": 1
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 1.6,
+              "h": 2.1,
+              "groundModes": [
+                "pilotis"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "W3",
+          "w": 2.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.0,
+              "h": 1.15,
+              "sill": 0.85,
+              "lights": 1
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 1.6,
+              "h": 2.1,
+              "groundModes": [
+                "pilotis"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "B1",
+          "w": 1.75,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 1.35,
+              "depth": 0.9,
+              "railing": "bars"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.1,
+              "h": 2.1,
+              "sill": 0,
+              "lights": 2
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 1.5,
+              "h": 2.1,
+              "groundModes": [
+                "pilotis"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 1.2,
           "role": "stair",
           "core": true,
           "elements": [
             {
               "kind": "door",
               "levels": "ground",
-              "w": 0.95,
+              "w": 0.9,
               "h": 2.1,
-              "steps": 3
-            },
-            {
-              "kind": "panel",
-              "levels": "ground",
-              "u": -0.7,
-              "w": 0.3,
-              "h": 1,
-              "sill": 1,
-              "colour": "frame",
-              "depth": 0.08
-            },
-            {
-              "kind": "panel",
-              "levels": "ground",
-              "u": 0.7,
-              "w": 0.3,
-              "h": 1,
-              "sill": 1,
-              "colour": "frame",
-              "depth": 0.08
-            },
-            {
-              "kind": "window",
-              "levels": "upper",
-              "w": 0.7,
-              "h": 1,
-              "sill": -0.1,
-              "note": "stair landing window on the floor line"
+              "steps": 0
             }
           ]
         },
         {
-          "id": "windows-right",
-          "w": 2.3,
+          "id": "B2",
+          "w": 1.75,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 1.35,
+              "depth": 0.9,
+              "railing": "bars"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.1,
+              "h": 2.1,
+              "sill": 0,
+              "lights": 2
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 1.5,
+              "h": 2.1,
+              "groundModes": [
+                "pilotis"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "W4",
+          "w": 2.0,
           "role": "windows",
           "elements": [
             {
               "kind": "window",
               "levels": "upper",
-              "w": 1.9,
-              "h": 1.1,
-              "sill": 0.95,
-              "lights": 2
+              "w": 1.0,
+              "h": 1.15,
+              "sill": 0.85,
+              "lights": 1
             },
             {
               "kind": "storageDoor",
               "levels": "ground",
-              "w": 1.9,
+              "w": 1.6,
               "h": 2.1,
               "groundModes": [
                 "pilotis"
-              ]
-            },
-            {
-              "kind": "vents",
-              "levels": "ground",
-              "u": 0,
-              "count": 3,
-              "sill": 1.5,
-              "groundModes": [
-                "solid"
               ]
             }
           ]
         },
         {
-          "id": "balcony-3",
-          "w": 2.4,
-          "role": "balcony",
+          "id": "W5",
+          "w": 2.0,
+          "role": "windows",
           "elements": [
-            {
-              "kind": "balcony",
-              "levels": "upper",
-              "w": 2,
-              "depth": 1.2,
-              "railing": "slats"
-            },
             {
               "kind": "window",
               "levels": "upper",
-              "w": 1.4,
-              "h": 2.1,
-              "sill": 0,
-              "lights": 2
+              "w": 1.0,
+              "h": 1.15,
+              "sill": 0.85,
+              "lights": 1
             },
             {
               "kind": "storageDoor",
               "levels": "ground",
-              "w": 1.9,
+              "w": 1.6,
               "h": 2.1,
               "groundModes": [
                 "pilotis"
-              ]
-            },
-            {
-              "kind": "vents",
-              "levels": "ground",
-              "u": 0,
-              "count": 3,
-              "sill": 1.5,
-              "groundModes": [
-                "solid"
               ]
             }
           ]
         },
         {
-          "id": "balcony-4",
-          "w": 2.4,
-          "role": "balcony",
-          "elements": [
-            {
-              "kind": "balcony",
-              "levels": "upper",
-              "w": 2,
-              "depth": 1.2,
-              "railing": "slats"
-            },
-            {
-              "kind": "window",
-              "levels": "upper",
-              "w": 1.4,
-              "h": 2.1,
-              "sill": 0,
-              "lights": 2
-            },
-            {
-              "kind": "storageDoor",
-              "levels": "ground",
-              "w": 1.9,
-              "h": 2.1,
-              "groundModes": [
-                "pilotis"
-              ]
-            },
-            {
-              "kind": "storageDoor",
-              "levels": "ground",
-              "w": 2.1,
-              "h": 2.2,
-              "groundModes": [
-                "solid"
-              ]
-            }
-          ]
+          "id": "E",
+          "w": 1.0,
+          "role": "windows",
+          "elements": []
         }
       ]
     },
@@ -670,9 +600,10 @@
     }
   },
   "notes": [
-    "SPLIT 2026-10-10: this spec is the CLOSED-GROUND design (garage/storage doors flush with the facade, balcony pairs at both ENDS, window pair + stair core between). The open-pilotis members are a different design with the balconies stacked in the CENTRE either side of the stair strip: nw-pilotis-centre-panel-flat.json. The groundMode=pilotis path of this spec is superseded and must not be assigned from photos.",
-    "Ground storey is a per-pand parameter: open pilotis (white columns ~3.4 m apart, storage cells set back 1.6 m; 13 of 24 sampled Comenius members) or closed garage/storage doors flush with the facade (10 of 24; 1 unusable photo). groundMode pilotis | solid is chosen from the panorama.",
-    "Storeys: ground (pilotis) + 4 upper; flat roof. Storey height = roof edge / 5 (3DBAG).",
-    "Footprints have 12-14 vertices (balcony and stair notches); the generator uses the minimum rotated rectangle and reports IoU against the BAG ring."
+    "Design confirmed from photos 2026-10-10 (integrator review of the pilot: balconies are stacked in the centre, the pilot model put them in the outer bays). All 12 open-pilotis Comenius/Johan Huizingalaan members shown in the survey montage share it.",
+    "Front bays (left to right as seen from outside), counted from 0363100012078925 (most frontal): 3 single punched windows per storey, balcony column, narrow stair strip with the drainpipe and the entrance below, balcony column, 2 single windows, blank end bay. Photos 0363100012143810 and 0363100012139456 show the same centre stack; the oblique crops cannot confirm the window count at the ends (inferred).",
+    "Balconies are 1.35 m wide, project ~0.9 m, white bars balustrade with a French door behind; the strip between the two columns has no window (drainpipe and wall).",
+    "Ground storey is always open pilotis: white columns ~3.4 m apart, storage doors set back 1.6 m, entrance flush behind the columns in the strip. Wall: light grey-beige aggregate panels (see palette).",
+    "Back and both gables are inferred, copied from the closed-ground type (no straight-on photo of a back or gable)."
   ]
 }

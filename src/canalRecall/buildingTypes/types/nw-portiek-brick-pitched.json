@@ -29,7 +29,7 @@
   "defaultVariant": "brick",
   "variants": {
     "brick": {
-      "label": "Original brown brick, open balconies with painted solid parapets, white-framed windows, blue/green doors (cream-painted spandrel bands between window rows seen on about half of the Sonderbuur members are NOT modelled)",
+      "label": "Original brown brick, open balconies with painted solid parapets, white-framed windows, blue/green doors (plain brick; no survey member shows it, kept as the generic fallback; the cream-banded design is the variant brick-cream)",
       "evidence": "survey sheets of Geuzenveld and Sonderbuur: 0363100012121235 (Herbert Spencerhof), 0363100012102349 (Kierkegaardstraat), 0363100012112708 (Sonderbuur)",
       "palette": {
         "wall": {
@@ -92,6 +92,28 @@
         "dark": "#4a4a48",
         "column": "#e4dfd0",
         "joint": "#a89c84",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4b36"
+        }
+      }
+    },
+    "brick-cream": {
+      "label": "Brown brick with cream-painted spandrel/window bands in the window bays (every one of the 13 non-re-clad Sonderbuur survey members), balconies with painted solid parapets",
+      "evidence": "survey montage staging/building-types/sonderbuur/sheets/survey-a.jpg and survey-b.jpg: 13 of 24 members (0363100012061842, 2079084, 2127297, 2126028, 2112708, 2075965, 2098636, 2070756, 2070899, 2088472, 2146294, 2082757, 2074491); close crop 0363100012127297: cream panel from ~0.25 m under to ~0.1 m over the window row, brick bands (~1 m) between the rows, a cream band behind the small ground windows",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#8f5a44"
+        },
+        "frame": "#ece6d6",
+        "glass": "#4b5a6b",
+        "door": "#3b5878",
+        "accent": "#bdb7a8",
+        "rail": "#c9c4b6",
+        "dark": "#4a4a48",
+        "column": "#efe8d2",
+        "joint": "#6a4636",
         "roof": {
           "slot": "roofTile",
           "tint": "#9a4b36"
@@ -185,6 +207,34 @@
                 "clad-panel"
               ],
               "note": "grey spandrel panel under the ribbon window"
+            },
+            {
+              "kind": "panel",
+              "levels": "upper",
+              "u": 0,
+              "w": 2.9,
+              "h": 1.85,
+              "sill": 0.25,
+              "colour": "column",
+              "depth": 0.03,
+              "variants": [
+                "brick-cream"
+              ],
+              "note": "cream spandrel/window band"
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": 0,
+              "w": 2.9,
+              "h": 0.95,
+              "sill": 1.1,
+              "colour": "column",
+              "depth": 0.03,
+              "variants": [
+                "brick-cream"
+              ],
+              "note": "cream spandrel/window band"
             }
           ]
         },
@@ -454,6 +504,34 @@
                 "clad-panel"
               ],
               "note": "grey spandrel panel under the ribbon window"
+            },
+            {
+              "kind": "panel",
+              "levels": "upper",
+              "u": 0,
+              "w": 4.9,
+              "h": 1.85,
+              "sill": 0.25,
+              "colour": "column",
+              "depth": 0.03,
+              "variants": [
+                "brick-cream"
+              ],
+              "note": "cream spandrel/window band"
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": 0,
+              "w": 4.9,
+              "h": 0.95,
+              "sill": 1.1,
+              "colour": "column",
+              "depth": 0.03,
+              "variants": [
+                "brick-cream"
+              ],
+              "note": "cream spandrel/window band"
             }
           ]
         }
@@ -632,8 +710,8 @@
   "notes": [
     "Storeys come from the eaves height (3DBAG), not from b3_bouwlagen: the cluster mixes 4-storey members (eaves ~12.3 m, 3DBAG says 5 because it counts the attic) and 5-storey members (eaves 14.2-14.7 m). The five-bay layout is the same.",
     "The earlier survey photo type-1-b.jpg (Beek en Hoff 12-2: wide 5.5 m core with two small window columns, storage doors at the outer edges, 3.5 m balcony bays at the ends) is a different sub-design that the footprint cluster also contains; it is not modelled.",
-    "Cream-painted spandrel bands (brick piers + cream bands between window rows) cover about half of the Sonderbuur members and are not modelled: those render as plain brick.",
     "Roof: 3DBAG decides gable/hip and the ridge direction per pand; all 63 pilot members have a gable roof with the ridge along the long side.",
-    "Cladding is a per-pand variant that BAG/3DBAG do not know: variants.json per area, from looking at the panorama."
+    "Cladding is a per-pand variant that BAG/3DBAG do not know: variants.json per area, from looking at the panorama.",
+    "Cream bands: variant brick-cream (2026-10-10) is the design of all 13 non-re-clad survey members of Sonderbuur; plain brick is the fallback only."
   ]
 }
