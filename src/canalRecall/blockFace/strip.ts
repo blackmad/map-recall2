@@ -37,7 +37,8 @@ function pickFrom(cands: (PanoChoice & {rd: RD})[], date: string, perSpan: numbe
   return out.map(({rd: _rd, ...rest}) => rest);
 }
 
-export function planStrip(spans: FrontSpan[], panos: PanoRecord[], options: {perSpan?: number; date?: string} = {}): StripPlan {
+/** `spanDates`: per-pand capture day overrides (scaffolding, a parked van or a closed shutter on the face's day). */
+export function planStrip(spans: FrontSpan[], panos: PanoRecord[], options: {perSpan?: number; date?: string; spanDates?: Record<string, string>} = {}): StripPlan {
   const perSpan = options.perSpan ?? 3;
   const cands = spans.map(s => panoCandidates(s, panos));
   const dates = [...new Set(panos.map(p => day(p.timestamp)))];
@@ -46,7 +47,8 @@ export function planStrip(spans: FrontSpan[], panos: PanoRecord[], options: {per
   const ranked = [...dates].sort((a, b) => covered(b) - covered(a) || Number(leafOff(b)) - Number(leafOff(a)) || b.localeCompare(a));
   const date = options.date ?? ranked[0];
   const plans = spans.map((s, i) => {
-    let picks = pickFrom(cands[i], date, perSpan), used = date;
+    const override = Object.entries(options.spanDates ?? {}).find(([k]) => s.pandId.endsWith(k))?.[1];
+    let picks = pickFrom(cands[i], override ?? date, perSpan), used = override ?? date;
     if (!picks.length) {
       const alt = ranked.find(d => d !== date && pickFrom(cands[i], d, 1).length);
       if (alt) { picks = pickFrom(cands[i], alt, perSpan); used = alt; }

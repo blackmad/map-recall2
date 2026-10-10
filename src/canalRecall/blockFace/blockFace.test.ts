@@ -83,3 +83,19 @@ test('discovery and strip helpers', () => {
   assert.ok(Math.abs(zFightArea([tri(0)], [tri(0.005)]) - 0.5) < 1e-6);
   assert.equal(zFightArea([tri(0)], [tri(0.05)]), 0);
 });
+
+test('Utrechtsestraat 48-76: 4-front pand, photo-trusted twin gables, front slits closed', async () => {
+  const dir = 'scripts/block-face/faces/utrechtse-48-76';
+  const face = validateBlockFace(JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8')), JSON.parse(fs.readFileSync(path.join(dir, 'discovery.json'), 'utf8')).members);
+  const f = new Map(face.houses.map(h => [h.pandId, JSON.parse(fs.readFileSync(path.join(dir, 'pands', h.pandId, 'facts.json'), 'utf8')) as BuildingFacts]));
+  const r = await compileBlockFace(face, f);
+  assert.deepEqual(r.gates.filter(g => !g.pass), []);
+  assert.deepEqual(r.interference.filter(i => !i.pass).map(i => i.left), []);
+  // 3DBAG puts 169207's eaves 1.7 m under its twin's; the strip shows one line: the photo-trusted group snaps it.
+  const twin = r.ground.groups.find(g => g.trust === 'photo')!;
+  assert.ok(twin.snapped && twin.spreadM > 1.5);
+  // LoD2.2 ground rings stop 4-10 cm apart at six joints (Utrechtsestraat 48/50: 0.10 m): closed, no front gaps left.
+  assert.ok(r.slitsClosed.some(s => s.left.endsWith('178874') && s.gapM >= 0.07));
+  assert.ok(r.interference.every(i => Math.abs(i.frontGapM) <= 0.05));
+  assert.equal(houseIntents(face).find(i => i.pandId.endsWith('178875'))!.fronts.length, 4);
+});
