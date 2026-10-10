@@ -1,0 +1,139 @@
+{
+  "id": "coymanshuis",
+  "name": "Coymanshuis",
+  "landmarkId": "requested-coymanshuis",
+  "modelUrl": "./models/coymanshuis.glb",
+  "suppressOsmIds": [
+    "w266616361",
+    "NL.IMBAG.Pand.0363100012165021"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.88575576032129,
+      52.3744875106105
+    ],
+    "headingDegrees": 151,
+    "lengthMetres": 43.1,
+    "widthMetres": 28.9
+  },
+  "surveyed": {
+    "anchor": [
+      4.88575576032129,
+      52.3744875106105
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012165021 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#7a4a3b",
+    "stone": "#d9d2c2",
+    "white": "#ece8dd",
+    "sandstone": "#bdb39d",
+    "slate": "#4b4f55",
+    "glass": "#4e5f6b",
+    "frame": "#e4e1d8",
+    "dark": "#2a2d30"
+  },
+  "attribution": {
+    "title": "Coymanshuis",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Coymanshuis",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the eight-axis front, pilaster orders, cornices, doors and the two neighbouring fronts of the same BAG pand measured by eye from the 2021 and 2025 municipal panoramas, no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.886081393964437,
+          52.3745353669522
+        ],
+        [
+          4.885936918638666,
+          52.37458506862445
+        ],
+        [
+          4.885935830616097,
+          52.37458388662851
+        ],
+        [
+          4.885712468143033,
+          52.37466072947226
+        ],
+        [
+          4.885656416800382,
+          52.37459824319141
+        ],
+        [
+          4.885658480438997,
+          52.37459755987874
+        ],
+        [
+          4.885654521502105,
+          52.37459313014438
+        ],
+        [
+          4.8856522071112725,
+          52.37459391125967
+        ],
+        [
+          4.885471063213739,
+          52.37439688820563
+        ],
+        [
+          4.885473363014802,
+          52.374396098044336
+        ],
+        [
+          4.8854687267043495,
+          52.37439183619972
+        ],
+        [
+          4.88546555072459,
+          52.37439219123816
+        ],
+        [
+          4.885432330119062,
+          52.3743132821737
+        ],
+        [
+          4.885825092940161,
+          52.374256292107155
+        ],
+        [
+          4.885973131596947,
+          52.37441747530735
+        ],
+        [
+          4.885845226950637,
+          52.37446147690168
+        ],
+        [
+          4.885846140889109,
+          52.374462469419484
+        ],
+        [
+          4.885816272878798,
+          52.37447274173131
+        ],
+        [
+          4.88586333187585,
+          52.374523991178556
+        ],
+        [
+          4.886021104659617,
+          52.37446971720947
+        ],
+        [
+          4.886081393964437,
+          52.3745353669522
+        ]
+      ]
+    ]
+  }
+}
