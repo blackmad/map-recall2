@@ -24,6 +24,7 @@ import type {ChunkResult} from '../streetChunks/types.ts';
 import {houseIntents, type BlockFaceIntent} from './intent.ts';
 import {addInferredRear, type RearReport} from './rear.ts';
 import {planInstancing, type FitSize, type InstancingPlan} from './instancing.ts';
+import {applyPhotoCrowns, facePhotoPatches, type PhotoCrownPatch, type PhotoGable} from './gableFromStrip.ts';
 
 export interface FaceGate { pand: string; id: string; pass: boolean; value: unknown; limit: string }
 export interface Interference {
@@ -50,7 +51,10 @@ export interface FaceGroundPlan { sharedNapM: number; shiftsM: number[]; eavesBe
   measured?: Record<string, Record<string, number>> }
 /** The strip's vertical scale (strip.json): pixel rows to metres above the strip's ground line. */
 export interface StripScale { heightPx: number; pixelsPerMetre: number; groundNAP: number }
-export interface BlockFaceResult { instancing: InstancingPlan; slitsClosed: {left: string; right: string; gapM: number}[]; frontSnaps: FrontSnap[]; rears: RearReport[]; chunk: ChunkResult; ground: FaceGroundPlan; gates: FaceGate[]; interference: Interference[]; perPand: {pand: string; slug: string; triangles: number; eavesM: number; roofMaxM: number; roofMaxFactsM: number; storeyHeightsM: number[]}[]; passed: boolean }
+export interface BlockFaceResult {
+  /** Crowns taken from the photo (`continuity.crownFromPhoto`): applied patches and fronts that kept their authored crown. */
+  photoCrowns?: {patches: PhotoCrownPatch[]; kept: {pand: string; front: string; why: string}[]};
+  instancing: InstancingPlan; slitsClosed: {left: string; right: string; gapM: number}[]; frontSnaps: FrontSnap[]; rears: RearReport[]; chunk: ChunkResult; ground: FaceGroundPlan; gates: FaceGate[]; interference: Interference[]; perPand: {pand: string; slug: string; triangles: number; eavesM: number; roofMaxM: number; roofMaxFactsM: number; storeyHeightsM: number[]}[]; passed: boolean }
 
 const median = (v: number[]) => { const s = [...v].sort((a, b) => a - b); return s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2; };
 const cm = (v: number) => Math.round(v * 100) / 100;
@@ -244,8 +248,11 @@ export function snapFrontSteps(facts: BuildingFacts[], steps: {i: number; stepM:
   return out;
 }
 
-export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, name = `face-${face.id}`, options: {inferRears?: boolean; strip?: StripScale} = {}): Promise<BlockFaceResult> {
-  const intents = houseIntents(face), facts = face.houses.map(h => { const f = factsByPand.get(h.pandId); if (!f) throw Error(`no facts for ${h.pandId}`); return f; });
+export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, name = `face-${face.id}`, options: {inferRears?: boolean; strip?: StripScale;
+  /** Photo gable readings keyed `<pandId>/<frontId>` (scripts/block-face/gable-from-photo.ts), used for `continuity.crownFromPhoto`. */
+  photoGables?: Map<string, PhotoGable>} = {}): Promise<BlockFaceResult> {
+  let intents = houseIntents(face);
+  const facts = face.houses.map(h => { const f = factsByPand.get(h.pandId); if (!f) throw Error(`no facts for ${h.pandId}`); return f; });
   const slits = closeFrontSlits(facts);
   // Compile, measure the facade-plane steps at the party lines, snap the small ones (survey noise), recompile.
   const rears = new Map<string, RearReport>();
@@ -255,7 +262,15 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     rears.set(input.id, addInferredRear(built.group, f, built.anchorRD, report.storeyHeightsM, report.eavesM, built.recipe.palette.value.glass, built.recipe.palette.value.trim, ground.facts.filter((_, j) => j !== i)));
   };
   const compile = () => compileChunk(intents.map((intent, i) => ({id: intent.id, intent, facts: ground.facts[i]})), {name, maxRegroundM: 0, eavesSnapStepM: 0, decorate});
-  let current = slits.facts, ground = planFaceGround(face, current, undefined, options.strip), chunk = await compile();
+  let current = slits.facts, ground = planFaceGround(face, current, undefined, options.strip);
+  let photoCrowns: BlockFaceResult['photoCrowns'];
+  if (face.continuity.crownFromPhoto?.length) {
+    if (!options.photoGables || !options.strip) throw Error('continuity.crownFromPhoto needs photo gable readings and the strip scale');
+    const {patches, kept} = facePhotoPatches(face.continuity.crownFromPhoto, intents, ground.facts, options.photoGables, options.strip.groundNAP);
+    intents = applyPhotoCrowns(intents, patches);
+    photoCrowns = {patches, kept};
+  }
+  let chunk = await compile();
   const frontSnaps: FrontSnap[] = [];
   for (let pass = 0; pass < 2; pass++) {
     const steps = groundCornerSteps(await decodePands(chunk.glb, intents.length));
@@ -339,6 +354,6 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     interference.push(item);
   }
   const instancing = planInstancing(intents, sizes, perPand.map(p => p.triangles));
-  return {instancing, slitsClosed: slits.closed, frontSnaps, rears: intents.map(x => rears.get(x.id)).filter((r): r is RearReport => !!r), chunk, ground, gates, interference, perPand, passed: gates.every(x => x.pass) && interference.every(x => x.pass)};
+  return {...(photoCrowns ? {photoCrowns} : {}), instancing, slitsClosed: slits.closed, frontSnaps, rears: intents.map(x => rears.get(x.id)).filter((r): r is RearReport => !!r), chunk, ground, gates, interference, perPand, passed: gates.every(x => x.pass) && interference.every(x => x.pass)};
 }
 export {chunkFrame};
