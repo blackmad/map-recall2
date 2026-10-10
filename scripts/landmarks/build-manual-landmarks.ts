@@ -448,7 +448,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='sint-agneskerk')buildSintAgneskerk(w,d,helpers);
     else if(id==='oba-oosterdok')buildObaOosterdok(w,d,helpers);
     else if(id==='singelkerk')buildSingelkerk(w,d,helpers);
-    else if(id==='w139')buildW139(w,d,helpers);
+    else if(id==='w139')buildW139(w,d,helpers,(g,hex)=>addDecal(g,hex,false));
     else if(id==='conservatorium')buildConservatorium(w,d,helpers);
     else if(id==='multatuli')buildMultatuli(w,d,helpers);
     else if(id==='niod')buildNiod(w,d,helpers);
