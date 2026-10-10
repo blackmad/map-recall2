@@ -313,7 +313,9 @@ export class SignatureLandmarks {
         const materials = Array.isArray(child.material) ? child.material : [child.material];
         for (const material of materials) {
           material.polygonOffset = bias !== 0;
-          material.polygonOffsetFactor = bias * 32;
+          // Constant offset only: a slope-scaled factor reorders the model's own faces at grazing angles
+          // (striped slab tops through the Rijksmuseum entrance and H'ART portico, 2026-10-10 audit).
+          material.polygonOffsetFactor = 0;
           material.polygonOffsetUnits = bias * 4096;
           material.needsUpdate = true;
         }
