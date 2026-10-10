@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## Willem de Zwijgerkerk windows from the review sheet (2026-10-10)
+
+User: "missing a few front windows". The camera-matched sheet showed the south
+gable had an invented entrance wing and one tall window where the photo has a
+round-arched entrance on the axis, a KERK plate, a three-light group with
+transoms, side slits and an apex slit; the east aisle had 6 large windows for
+7 small ones plus a slit; the north gable lacked twin apex slits; the north
+wing lacked its arched door and four small windows. Integrator record: viewed
+before/after sheets (overlays line up on N, E, S); audit PASS (warns only),
+attachment 2.1 cm, facade-compare PASS on three faces with lane-counted
+(not blind) specs and spans narrowed to the gables. Inferred: west side
+(behind housing), tower openings. KERK plate has no lettering yet.
+
 ## Own ground on AHN relief: prototype, go (2026-10-10)
 
 `own-ground.html?box=nassaukade|leidsegracht` draws streets, cycle tracks,
