@@ -171,6 +171,11 @@
       "version": "b64ae1e02555bfd0",
       "dateSource": "asset-update"
     },
+    "asterweg-23": {
+      "updatedAt": "2026-10-10T18:44:54.714Z",
+      "version": "46d070cd3ad9d942",
+      "dateSource": "asset-update"
+    },
     "athenaeum": {
       "updatedAt": "2026-10-04T03:55:52+02:00",
       "version": "067cace770708c8e",
@@ -226,6 +231,16 @@
       "version": "ae46dc2b404c17c0",
       "dateSource": "asset-update"
     },
+    "blankenstraat-15": {
+      "updatedAt": "2026-10-10T19:25:50.607Z",
+      "version": "e8dd3e952fcd95b0",
+      "dateSource": "asset-update"
+    },
+    "blankenstraat-15.lod1": {
+      "updatedAt": "2026-10-10T19:25:41.267Z",
+      "version": "1ededd5584a442c8",
+      "dateSource": "asset-update"
+    },
     "blauwe-theehuis": {
       "updatedAt": "2026-10-06T10:41:24.578Z",
       "version": "88d7c482fb829252",
@@ -234,6 +249,16 @@
     "blauwe-theehuis.lod1": {
       "updatedAt": "2026-10-10T13:42:19.817Z",
       "version": "a5f508480d7270bb",
+      "dateSource": "asset-update"
+    },
+    "bogortuin-101": {
+      "updatedAt": "2026-10-10T19:25:50.557Z",
+      "version": "b75e4508484a9858",
+      "dateSource": "asset-update"
+    },
+    "bogortuin-101.lod1": {
+      "updatedAt": "2026-10-10T19:25:41.267Z",
+      "version": "2813f9659bd57421",
       "dateSource": "asset-update"
     },
     "boom-chicago": {
@@ -339,6 +364,16 @@
     "centrale-markthal.lod1": {
       "updatedAt": "2026-10-10T13:42:19.847Z",
       "version": "cd8caee642fa6033",
+      "dateSource": "asset-update"
+    },
+    "ceramiquelaan-437": {
+      "updatedAt": "2026-10-10T18:44:54.825Z",
+      "version": "c2fe7f58e917f912",
+      "dateSource": "asset-update"
+    },
+    "ceramiquelaan-437.lod1": {
+      "updatedAt": "2026-10-10T18:44:44.354Z",
+      "version": "a6479f3d604dc558",
       "dateSource": "asset-update"
     },
     "chassekerk": {
@@ -454,6 +489,11 @@
     "de-bazel": {
       "updatedAt": "2026-10-10T13:42:38.291Z",
       "version": "0f0d28a0b10dc329",
+      "dateSource": "asset-update"
+    },
+    "de-bazel.lod1": {
+      "updatedAt": "2026-10-10T13:42:42.052Z",
+      "version": "debefe5d88aa0733",
       "dateSource": "asset-update"
     },
     "de-beurs-van-berlage": {
@@ -836,6 +876,16 @@
       "version": "84e4e57a14499640",
       "dateSource": "asset-update"
     },
+    "grasweg-116": {
+      "updatedAt": "2026-10-10T18:02:53.806Z",
+      "version": "85c1b0475f2b437a",
+      "dateSource": "asset-update"
+    },
+    "grasweg-116.lod1": {
+      "updatedAt": "2026-10-10T18:02:38.299Z",
+      "version": "e893086356cec71e",
+      "dateSource": "asset-update"
+    },
     "groot-melkhuis": {
       "updatedAt": "2026-10-06T10:41:24.587Z",
       "version": "236cf1e655704a19",
@@ -869,6 +919,16 @@
     "haarlemmerpoort.lod1": {
       "updatedAt": "2026-10-10T13:42:19.983Z",
       "version": "20bced2921c4bba2",
+      "dateSource": "asset-update"
+    },
+    "haarlemmerweg-333": {
+      "updatedAt": "2026-10-10T19:25:50.479Z",
+      "version": "1fa3a1d2f23dbe83",
+      "dateSource": "asset-update"
+    },
+    "haarlemmerweg-333.lod1": {
+      "updatedAt": "2026-10-10T19:25:41.267Z",
+      "version": "c5552cd9316f51af",
       "dateSource": "asset-update"
     },
     "hannekes-boom": {
@@ -1056,6 +1116,16 @@
       "version": "0d8f18f8d4a31cdb",
       "dateSource": "asset-update"
     },
+    "hilton-amsterdam": {
+      "updatedAt": "2026-10-10T20:13:19.300Z",
+      "version": "d8f4665b82dd2900",
+      "dateSource": "asset-update"
+    },
+    "hilton-amsterdam.lod1": {
+      "updatedAt": "2026-10-10T20:13:14.262Z",
+      "version": "13f2624a26060845",
+      "dateSource": "asset-update"
+    },
     "hnk-sloterdijk": {
       "updatedAt": "2026-10-04T17:40:44+02:00",
       "version": "02db406a59ab982c",
@@ -1202,13 +1272,13 @@
       "dateSource": "asset-update"
     },
     "ij-toren": {
-      "updatedAt": "2026-10-10T02:19:01.482Z",
-      "version": "e46a0583238c5374",
+      "updatedAt": "2026-10-10T19:58:13.737Z",
+      "version": "771c12276402143c",
       "dateSource": "asset-update"
     },
     "ij-toren.lod1": {
-      "updatedAt": "2026-10-10T13:42:20.060Z",
-      "version": "a555fa044b921c2e",
+      "updatedAt": "2026-10-10T19:58:08.193Z",
+      "version": "a3989b4e90ebbd61",
       "dateSource": "asset-update"
     },
     "ing-house": {
@@ -1546,6 +1616,11 @@
       "version": "0e0bc548e60872da",
       "dateSource": "asset-update"
     },
+    "motorkade-1.lod1": {
+      "updatedAt": "2026-10-10T13:42:41.837Z",
+      "version": "7909cb0df51ddfa4",
+      "dateSource": "asset-update"
+    },
     "mountain-network": {
       "updatedAt": "2026-10-06T07:08:41.417Z",
       "version": "e816e9aece23222c",
@@ -1796,6 +1871,16 @@
       "version": "54c47245f2fc210a",
       "dateSource": "asset-update"
     },
+    "oostenburgermiddenstraat-228": {
+      "updatedAt": "2026-10-10T18:44:54.771Z",
+      "version": "2c8c065d48b7d539",
+      "dateSource": "asset-update"
+    },
+    "oostenburgermiddenstraat-228.lod1": {
+      "updatedAt": "2026-10-10T18:44:44.354Z",
+      "version": "6eb394f79067ac2a",
+      "dateSource": "asset-update"
+    },
     "oosterparkkerk": {
       "updatedAt": "2026-10-08T15:07:49.973Z",
       "version": "2ad382a7bb22d73d",
@@ -1849,6 +1934,16 @@
     "oudemanhuispoort": {
       "updatedAt": "2026-10-09T18:13:07.286Z",
       "version": "764350d7441638ae",
+      "dateSource": "asset-update"
+    },
+    "overtoom-197": {
+      "updatedAt": "2026-10-10T18:02:53.711Z",
+      "version": "3c2fd3bfa54187f0",
+      "dateSource": "asset-update"
+    },
+    "overtoom-197.lod1": {
+      "updatedAt": "2026-10-10T18:02:38.299Z",
+      "version": "d503990e546acf74",
       "dateSource": "asset-update"
     },
     "pakhuis-de-zwijger": {
@@ -2426,6 +2521,11 @@
       "version": "e025cb21d3c9917c",
       "dateSource": "asset-update"
     },
+    "voc-kade-600.lod1": {
+      "updatedAt": "2026-10-10T13:42:41.788Z",
+      "version": "dbedba98667186bb",
+      "dateSource": "asset-update"
+    },
     "vondelkerk": {
       "updatedAt": "2026-10-10T04:24:49.587Z",
       "version": "535b21638d220e5f",
@@ -2539,6 +2639,16 @@
     "willem-de-zwijgerkerk.lod1": {
       "updatedAt": "2026-10-10T13:42:20.766Z",
       "version": "44d9bdd970743222",
+      "dateSource": "asset-update"
+    },
+    "willem-de-zwijgerlaan-350": {
+      "updatedAt": "2026-10-10T18:02:53.755Z",
+      "version": "468551ae2ad8ccca",
+      "dateSource": "asset-update"
+    },
+    "willem-de-zwijgerlaan-350.lod1": {
+      "updatedAt": "2026-10-10T18:02:38.300Z",
+      "version": "225929abe497d0d1",
       "dateSource": "asset-update"
     },
     "willet-holthuysen": {

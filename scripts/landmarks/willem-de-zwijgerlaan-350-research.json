@@ -1,0 +1,28 @@
+{
+  "id": "willem-de-zwijgerlaan-350",
+  "status": "ready-with-caveats-pending-integrator-blind-count",
+  "identity": {
+    "bagPandId": "0363100012107360",
+    "bouwjaar": 1949,
+    "addresses": ["Willem de Zwijgerlaan 350", "Willem de Zwijgerlaan 350A"],
+    "name": "Hotel / office / sport block in the Landlust, signage seen: The Hyve Hotel, G Hotel (G Experience), Hotel Camp-Inn; BAG bouwjaar 1949 but the street face is a recent re-cladding",
+    "policy": "ordinary large building: category ordinary, no route destination, no POI card"
+  },
+  "sources": [
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012107360&f=json", "kind": "BAG pand", "retrievedOn": "2026-10-10", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012107360", "kind": "3DBAG LoD2.2 massing", "retrievedOn": "2026-10-10", "licence": "CC BY 4.0 (3DBAG)"},
+    {"file": "artifacts/landmark-lanes/willem-de-zwijgerlaan-350/ref-sw.jpg", "kind": "rectified SW street elevation, 28 px/m, pano terdam_21112024_Track18_Sphere_00012 (2024-11-21)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/willem-de-zwijgerlaan-350/ref-ne.jpg", "kind": "rectified NE canal elevation, 28 px/m, pano TMX7316010203-001952_pano_0000_000464 (2021-01-14, from the water)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/willem-de-zwijgerlaan-350/ref-t-*.jpg, ref-se-*.jpg, ref-nw-*.jpg", "kind": "aimed thumbnails of panoramas 2025_09_26_07_01_39_00036/00029/00043/00049/00238, TMX7316010203-001952_pano_0000_000457/000460/000454/000451, TMX7316010203-000275_pano_0000_002242", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0", "retrievedOn": "2026-10-10"}
+  ],
+  "faces": {
+    "south-west (Willem de Zwijgerlaan, street)": "evidence: ref-sw.jpg. White render, 6 + 9 window pairs per floor on a 3.64 m pitch, Corten atrium at t 20.8-26.2, Corten plinth with shopfront glazing, two stone bands, cornice.",
+    "north-east (canal)": "evidence: ref-ne.jpg from the water. Two Corten floors with window pairs on a 5.05 m pitch, terrace with glass balustrade, white setback storey with ribbon windows, five-column pergola. Vertical scale taken from the first-floor window row (the quay fender hides the base). Corten windows beyond the photographed 43 m (t < -10 and > 33) repeat the pitch (inferred).",
+    "north-west and south-east ends": "INFERRED: hidden behind a brick shop (SE) and a warehouse (NW) up to ~7 m; only the upper two floors show over them. Modelled on the south-west pair rhythm; ground floors left as 3DBAG blank wall behind the neighbours."
+  },
+  "caveats": [
+    "NE roofline: the real white storey stops at ~13 m and the pergola beam (15.6 m) floats on columns over open air. 3DBAG fills this with solid wall to 15.2-15.6 m, kept as is (an attempt to rebuild it opened mesh holes because the single 3DBAG roof lid cannot be cut). Pergola columns and beam are drawn on the NE plane.",
+    "Corten wall and white storey windows on the NE face are drawn on the 3DBAG plane; the true setback is 2 m."
+  ],
+  "limits": ["pergola diagonal braces", "Corten panel joints", "signage lettering", "roof terrace furniture"]
+}

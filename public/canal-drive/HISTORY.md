@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## Rose bushes in the Vondelpark Rosarium (2026-10-10)
+
+OSM maps the Rosarium as one garden polygon; the hex beds exist only as the
+gaps between ~85 footways, so park-landscape drew one flat fill.
+`roseBeds.ts` finds beds as the connected clear areas between rendered
+paths, surfaces, furniture and tree trunks, gives each bed a fixed bloom
+colour and spacing, and `inventory-trees` draws the bushes as one instanced
+20-triangle mesh with bloom-coloured upper faces (72 hexes, 1,371 bushes,
++1 draw call, from zoom 16.5). Also applies to Noord's "Rozentuin" and one
+unnamed rose garden (not yet checked in game). Integrator viewed the oblique shot.
+
 ## Landmarks are diffuse-only: the specular glare was a camera bug (2026-10-10)
 
 User: "weird specular highlights on our landmark buildings" (a smeared white
@@ -358,6 +369,49 @@ except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
 `?streetChunks=1` (`ordinary-buildings-data/chunks.json`); the visual win
 (continuous ground and cornice line) does not need chunking. Unmeasured on a
 real phone GPU.
+
+## Audit "site model" needs separate volumes (2026-10-10)
+
+A bounding diagonal over 150 m used to make any model a site, which skipped
+see-through, far-outside and blank-wall checks; a 137 m housing slab
+(Blankenstraat 15) got none of them. A site now also needs >= 2 grounded
+volumes (same test as the far-outside separate-volume rule), or an explicit
+spec `siteModel: true|false`. Site models fell from 29 to 8 (beest-boulders,
+centraal-station, hortus-greenhouses, monk-amsterdam, olvg-oost/west,
+rai-amsterdam, symphony). Verdicts: ij-toren, asterweg-23 and krasnapolsky
+PASS -> FAIL; six already-failing models gained see-through fails (see
+TODO); the ordinary-buildings set changed findings on 3 panden, no verdict.
+Audit time about unchanged (rays are spaced along the boundary).
+
+## Large ordinary buildings, batch 3, and two audit rules (2026-10-10)
+
+Asterweg 23 (1923 hall, one photographed gable), Oostenburgermiddenstraat 228
+(2023 corten tower + glazed-brick wing) and Céramiquelaan 437 (2021 courtyard
+block) installed as ordinary. `worship-prepare.mjs` now reads every 3DBAG
+BuildingPart (it read only -0 and dropped the tower). Audit rules, each with
+a synthetic test (24/24): (1) a grounded non-main cluster >= 4 m tall,
+>= 400 m2 and >= 8 m across is a separate volume of the pand, not far-outside
+stray geometry (a far mast still fails); (2) a ray that hits a wall <= 2.5 m
+behind an overhang whose underside is >= 6 m up is a recess, and a ray along
+the lateral end of an overhang with a wall beside it is closed. Full audit vs
+the previous run: only adam-tower (37/93 rays -> 0), de-gooyer (12/21 -> 1)
+and huis-bartolotti (5/49 -> 3) flip FAIL -> PASS; every closed ray hits real
+wall, so these are recessed ground floors, not hollow models. Whether the
+recess depths match the photos is a fidelity question left in TODO.
+
+## First large ordinary buildings (2026-10-10)
+
+The landmark candidates ran thin, so a Haiku pass identified the 30 largest
+unreviewed panden within 3 km of the Dam (scratch list; most are 2000s-2020s
+housing/office blocks). Installed as `category: ordinary` (drawn, never a
+destination): VOC-kade 600 (Inntel tower), Motorkade 1 (Holiday Inn Express
+gold towers) and De Bazel (Vijzelstraat 32; window rhythm placed from
+rectified panoramas, piers/banding/sculpture still missing). Two audit
+changes came with them: a wall within 1.6 m behind an upper balcony edge is
+not a see-through gap, and the detached-part grid no longer skips triangles
+over 40k cells (a 90 x 28 m wall made its own windows look detached). Full
+audit after both: no verdict change on any existing model; total time
+551 -> 696 s (van-gendt-hallen 1 -> 30 s).
 
 ## Landmark LOD (2026-10-10)
 

@@ -1,0 +1,32 @@
+{
+  "id": "grasweg-116",
+  "status": "ready-with-caveats-pending-integrator-blind-count",
+  "identity": {
+    "bagPandId": "0363100012252853",
+    "bouwjaar": 2022,
+    "addresses": ["Grasweg 96-348 (BAG lists 129 units under this pand; the candidate list called it Grasweg 116-124)", "Hetty Blokstraat 3", "Hetty Blokstraat 5"],
+    "name": "not found; residential complex of two 48-50 m towers on a stepped dark-brick terrace base, Buiksloterham",
+    "policy": "ordinary large building: category ordinary, no route destination, no POI card"
+  },
+  "sources": [
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012252853&f=json", "kind": "BAG pand", "retrievedOn": "2026-10-10", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012252853", "kind": "3DBAG LoD2.2 massing", "retrievedOn": "2026-10-10", "licence": "CC BY 4.0 (3DBAG)"},
+    {"file": "artifacts/landmark-lanes/grasweg-116/ref-sw.jpg", "kind": "rectified SW elevation, 16 px/m (rectifier caps at 32 m), pano TMX7316010203-002894_pano_0007_000259 (2022-12-27)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/grasweg-116/ref-se.jpg", "kind": "rectified SE elevation, 16 px/m, pano TMX7316010203-002894_pano_0007_000307 (2022-12-27)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/grasweg-116/ref-nw.jpg", "kind": "rectified NW elevation, 16 px/m, pano recording_2024-10-21_10-00-27_00302 (2024-10-21)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/grasweg-116/ref-t-*.jpg", "kind": "aimed thumbnails recording_2025-06-30_11-38-09_02530/02536/02524, TMX7316010203-002894_pano_0007_000309/000316", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0", "retrievedOn": "2026-10-10"}
+  ],
+  "faces": {
+    "south-west (walls 22/14/80)": "evidence: ref-sw.jpg. Three planes stepping back 1.15 m; two window columns per plane (6 in all), 3.05 m floor pitch, brick dark -> grey-brown -> tan with height in steps. Rows above 32 m extrapolated from the grid (rectifier cap).",
+    "south-east (wall 36)": "evidence: ref-se.jpg. 7 columns, same floor pitch and brick steps, glass ground floor at the west end.",
+    "north-west (walls 38, 231)": "evidence: ref-nw.jpg. 4 + 2 columns.",
+    "north-east (wall 134), west tower flanks (18, 163, 189), terrace walls (67, 150, 17), courtyard walls": "INFERRED: no panorama sees them; same grid and tone steps, terrace walls first rows only."
+  },
+  "calibration": "Window columns are spread evenly across each 3DBAG wall (pitch ~2.85 m) rather than taken from pixels: the rectified columns were 0.5-1.2 m off because the three SW planes are set back 1.15 m from the rectified plane.",
+  "caveats": [
+    "Brick tone steps (stairs between dark, grey-brown and tan) are read from shaded photographs and are approximate.",
+    "Courtyard and inner tower flanks carry the generic grid (inferred).",
+    "The corner balconies with glass balustrades visible on the towers are not modelled."
+  ],
+  "limits": ["corner balconies", "roof plant", "ground-floor interiors", "brick relief"]
+}

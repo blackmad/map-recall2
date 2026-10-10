@@ -19,6 +19,15 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
+- **Discard 3DBAG roof geometry on faces (user, 2026-10-10)**: on
+  street-surveys.html (bilder-081118-155417) dark 3DBAG roof masses stand
+  above and beside the gables where the photo shows none. Generate roofs
+  from the recipe (pitched behind cornice/gable, real dormers) and use 3DBAG
+  only as a height clue. Not started — next lane.
+- **Rosarium follow-ups**: low box hedges around each bed; check Noord
+  "Rozentuin" (a36994921, ~1,500 bushes on 1,380 m², maybe over-planted) and
+  a288299874 in game; park-landscape draws the paved centre hex green;
+  archive the reference photos to the source pack.
 - **Shared material textures for landmark walls (user idea, backlog)**:
   landmark and ordinary models look bare where a wall is inferred or
   unmodelled (e.g. the fire station Hendrik rear, probably brick). Pull the
@@ -94,9 +103,11 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   loops and 24/42 see-through rays from its glass promenade. Aron Schuster
   synagogue installed after rework; its rounded corner is still squared.
 - **Lanes cut off by the usage limit (2026-10-10)**, resume from their branches:
-  audit see-through now back to FAIL on real gaps: adam-tower, de-gooyer,
-  haarlemmermeerstation, hart-museum, huis-bartolotti, pulitzer-amsterdam
-  (footprint-edge rays; check each against photos).
+  audit see-through still FAIL on footprint-edge rays: haarlemmermeerstation,
+  hart-museum, pulitzer-amsterdam (check each against photos). adam-tower,
+  de-gooyer and huis-bartolotti now pass under the cantilever rules (rays
+  hit a wall <= 2.5 m behind an overhang >= 6 m up); whether those recesses
+  match the photos is still unchecked.
   Krasnapolsky held (2026-10-10): old Dam front matches; the modern wing and
   lower brick building need photo counts and the dark glass bays.
   Pakhuis de Zwijger held (2026-10-10): colour fixed (dark weathered brick,
@@ -115,6 +126,28 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Chassékerk towers follow the 3DBAG lidar (23.5 m, ~2 m over the ridge);
   lidar truncates slender towers (Vondelkerk spire was 12 m short), so
   check the real tower height in a source and raise if needed.
+  Large ordinary buildings (2026-10-10): Willem de Zwijgerlaan 350's canal
+  roof is solid to 15.2-15.6 m because 3DBAG closes it with one lid; the real
+  white storey stops at ~13 m under an open pergola. Grasweg 116 rows above
+  32 m are extrapolated (rectifier cap). De Bazel lacks piers/banding/
+  sculpture. Oostenburgermiddenstraat 228's tower is squared where the real
+  corten tower is rounded; Asterweg 23 has only its east gable photographed;
+  Céramiquelaan 437 brick is one flat grey. Haarlemmerweg 333's red storeys
+  should overhang the grey base. Audit site path now needs 2+ grounded
+  volumes (not just a > 150 m diagonal); 21 models newly checked. ij-toren
+  now passes after rework (recessed brick wall behind the quay colonnade,
+  glass-block wall, arcades declared as throughPassages, pavilion and vent
+  pipes declared as `detachedStructures`; recess 3.7 m and column pitch
+  11.4 m are photo estimates, +-1 m). asterweg-23's 95 m rear wall is
+  declared blank on partial evidence (hedges hide the bottom 3-5 m; corrugated
+  cladding above has no openings): revisit if a ground-level photo appears.
+  Krasnapolsky (held) still fails blank-wall. New see-through FAILs on already-failing rijksmuseum 9, stadhuis 28,
+  eye-filmmuseum 33, straat-museum 49, mountain-network 17,
+  ndsm-warehouse-complex 17. A real campus whose volumes weld can declare
+  `siteModel: true` in its spec. Wibautstraat 3B/3C
+  and pand 0363100012125963 are multi-volume towers, not ordinary slabs.
+  Next candidates: scratch
+  big-buildings-1.json (Haiku list).
   World Trade Center Amsterdam held (2026-10-10): towers A–G are ONE BAG
   pand (0363100012096613, ~200 x 95 m); a recognizable model needs a photo
   of each tower face (Commons has only atrium/logo/tower H). Footprints and

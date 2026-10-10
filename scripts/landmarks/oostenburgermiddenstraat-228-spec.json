@@ -1,0 +1,110 @@
+{
+  "id": "oostenburgermiddenstraat-228",
+  "name": "Oostenburgermiddenstraat 228",
+  "category": "ordinary",
+  "modelUrl": "./models/oostenburgermiddenstraat-228.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012254998"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.929719496738803,
+      52.372839215347206
+    ],
+    "headingDegrees": 134.5,
+    "lengthMetres": 64.66,
+    "widthMetres": 35.39
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.929805285709696,
+      52.372965079789616
+    ],
+    "northOffsetDegrees": 0,
+    "source": "PDOK BAG 0363100012254998 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+  },
+  "materialOverrides": {
+    "greyBrick": "#3b3a3e",
+    "concrete": "#a9aca6",
+    "copper": "#6b422f",
+    "brick": "#4f3023",
+    "slate": "#4b4f52",
+    "frame": "#2e3438",
+    "glass": "#8fa3b0",
+    "blue": "#4c5256",
+    "dark": "#232628",
+    "red": "#8a3a2e",
+    "white": "#d9dcd6"
+  },
+  "preservePositionPrecision": true,
+  "attribution": {
+    "title": "Oostenburgermiddenstraat 228 original architecture",
+    "author": "Map Recall",
+    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012254998",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.930238068214883,
+          52.37293458006844
+        ],
+        [
+          4.930124006518666,
+          52.37300368655251
+        ],
+        [
+          4.930067115188871,
+          52.372968405963164
+        ],
+        [
+          4.929815792898016,
+          52.373120495749696
+        ],
+        [
+          4.92981490273628,
+          52.37311995305001
+        ],
+        [
+          4.929812893205691,
+          52.37312115862547
+        ],
+        [
+          4.929811171432812,
+          52.373120091427616
+        ],
+        [
+          4.9298102700576365,
+          52.373120636194706
+        ],
+        [
+          4.9295006681021905,
+          52.372929242426125
+        ],
+        [
+          4.9294639704033,
+          52.37290658641153
+        ],
+        [
+          4.9292021883093895,
+          52.372744631619476
+        ],
+        [
+          4.929569598943429,
+          52.372521989107746
+        ],
+        [
+          4.930238068214883,
+          52.37293458006844
+        ]
+      ]
+    ]
+  }
+}

@@ -51,6 +51,17 @@ test('closed box passes with no findings that fail', () => {
   assert.ok(r.seeThrough.tested > 0, 'wall rays must actually be tested');
 });
 
+test('two grounded tall volumes of one pand are not far-outside geometry; a small far mast still is', () => {
+  // A 20 x 30 x 40 m tower and a 20 x 30 x 23 m wing 25 m apart (Oostenburgermiddenstraat 228 shape). Each box has 20 x 30 x 2 + 2 x 50 x h > 400 m2.
+  const tower = boxQuads(0, 0, 0, 20, 40, 30), wing = boxQuads(45, 0, 0, 65, 23, 30);
+  const two = analyseSoup(soup(tower, wing));
+  assert.equal(two.farOutside.vertices, 0, JSON.stringify(two.farOutside));
+  assert.ok(!two.findings.some(f => f.kind === 'far-outside'), JSON.stringify(two.findings));
+  // A small detached mast / junk box far from the body stays a far-outside failure.
+  const junk = analyseSoup(soup(tower, boxQuads(60, 0, 0, 62, 6, 2)));
+  assert.ok(junk.farOutside.vertices > 0, JSON.stringify(junk.farOutside));
+});
+
 test('box with a missing wall fails (hole loop and see-through rays)', () => {
   const r = analyseSoup(soup(house(['south'])));
   assert.equal(r.pass, false);
@@ -210,6 +221,28 @@ test('a shallow high balcony slab over a closed wall is not a see-through gap; a
   assert.ok(open.seeThrough.rays > 0, JSON.stringify(open.seeThrough));
 });
 
+test('a narrow high balcony in the middle of a facade: its lateral ends are not see-through; a missing wall behind it still is', () => {
+  const tall = boxQuads(0, 0, 0, 20, 24, 10);
+  const balcony = boxQuads(7, 8, 10, 13, 8.3, 11.3);   // 6 m wide, 1.3 m deep, 8 m up
+  const ok = analyseSoup(soup(tall, balcony));
+  assert.equal(ok.seeThrough.rays, 0, JSON.stringify(ok.seeThrough));
+  const open = analyseSoup(soup(boxQuads(0, 0, 0, 20, 24, 10, ['south']), balcony));
+  assert.ok(open.seeThrough.rays > 3, JSON.stringify(open.seeThrough));
+  // A 3 m deep slab is a canopy over a gap, not a balcony: still flagged.
+  const deep = analyseSoup(soup(tall, boxQuads(7, 8, 10, 13, 8.3, 13)));
+  assert.ok(deep.seeThrough.rays > 0, JSON.stringify(deep.seeThrough));
+});
+
+test('a 2 m terrace cantilever high on a tower is architecture; a 4 m slab or a missing wall behind it is not', () => {
+  const tall = boxQuads(0, 0, 0, 10, 40, 10);
+  const terrace = analyseSoup(soup(tall, boxQuads(2, 24, 10, 8, 24.5, 12)));
+  assert.equal(terrace.seeThrough.rays, 0, JSON.stringify(terrace.seeThrough));
+  const deep = analyseSoup(soup(tall, boxQuads(2, 24, 10, 8, 24.5, 14)));
+  assert.ok(deep.seeThrough.rays > 0, JSON.stringify(deep.seeThrough));
+  const open = analyseSoup(soup(boxQuads(0, 0, 0, 10, 40, 10, ['south']), boxQuads(2, 24, 10, 8, 24.5, 12)));
+  assert.ok(open.seeThrough.rays > 0, JSON.stringify(open.seeThrough));
+});
+
 /** Tetrastyle portico: 4 columns on the z=10..10.6 line, entablature slab at 9 m on top, optional back wall 4 m behind. */
 function portico(backWall: boolean) {
   const parts: Record<string, Quad>[] = [];
@@ -251,4 +284,36 @@ test('a declared corridor does not exempt a missing wall elsewhere on the model,
   assert.ok(r.seeThrough.rays > 0, JSON.stringify(r.seeThrough));
   const wrongAxis = analyseSoup(soup(...tunnelBlock()), {throughPassages: [{axisBearing: 90, corridor}]});
   assert.ok(wrongAxis.seeThrough.rays > 0, JSON.stringify(wrongAxis.seeThrough));
+});
+
+test('a single 140 m slab is not a site: an open side is see-through checked; a closed slab has no see-through', () => {
+  const closed = analyseSoup(soup(boxQuads(0, 0, 0, 140, 12, 24)));
+  assert.ok(!closed.findings.some(f => f.kind === 'site-model'), JSON.stringify(closed.findings));
+  assert.ok(closed.seeThrough.tested > 0, 'long slab must get see-through rays');
+  assert.ok(!closed.findings.some(f => f.kind === 'see-through'), JSON.stringify(closed.findings));
+  const open = analyseSoup(soup(boxQuads(0, 0, 0, 140, 12, 24, ['south'])));
+  assert.ok(!open.findings.some(f => f.kind === 'site-model'));
+  assert.ok(open.findings.some(f => f.kind === 'see-through' && f.severity === 'fail'), JSON.stringify(open.findings));
+});
+
+test('a genuine multi-volume site (several grounded buildings, diagonal > 150 m) still skips see-through and far-outside', () => {
+  const site = soup(boxQuads(0, 0, 0, 40, 15, 30), boxQuads(60, 0, 0, 100, 15, 30), boxQuads(120, 0, 0, 160, 15, 30, ['south']));
+  const r = analyseSoup(site);
+  assert.ok(r.findings.some(f => f.kind === 'site-model' && f.severity === 'warn'), JSON.stringify(r.findings));
+  assert.equal(r.seeThrough.rays, 0);
+  assert.ok(!r.findings.some(f => f.kind === 'far-outside'));
+  // An explicit declaration overrides in both directions.
+  assert.ok(analyseSoup(soup(boxQuads(0, 0, 0, 140, 12, 24)), {siteModel: true}).findings.some(f => f.kind === 'site-model'));
+  assert.ok(analyseSoup(site, {siteModel: false}).seeThrough.tested > 0);
+});
+
+test('a declared detached structure is exempt from far-outside; undeclared, partly outside the box, or another part still fails', () => {
+  const kiosk = boxQuads(30, 0, 0, 34, 3, 4);
+  const boxes = (...b: [number, number, number, number][]) => ({detachedStructures: b.map(box => ({box}))});
+  const base = () => soup(boxQuads(0, 0, 0, 10, 8, 10), kiosk);
+  assert.ok(analyseSoup(base()).findings.some(f => f.kind === 'far-outside'), 'undeclared kiosk must fail');
+  assert.ok(!analyseSoup(base(), boxes([29, -1, 35, 5])).findings.some(f => f.kind === 'far-outside'), 'declared kiosk is exempt');
+  assert.ok(analyseSoup(base(), boxes([29, -1, 33, 5])).findings.some(f => f.kind === 'far-outside'), 'box that does not contain the whole part does not exempt it');
+  const other = soup(boxQuads(0, 0, 0, 10, 8, 10), kiosk, boxQuads(60, 0, 0, 64, 3, 4));
+  assert.ok(analyseSoup(other, boxes([29, -1, 35, 5])).findings.some(f => f.kind === 'far-outside'), 'a second undeclared part still fails');
 });

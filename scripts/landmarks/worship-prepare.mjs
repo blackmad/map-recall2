@@ -17,13 +17,16 @@ const loc = ([lo, la]) => [(lo - anchor[0]) * 111320 * Math.cos(anchor[1] * Math
 const co = f.CityObjects[`NL.IMBAG.Pand.${bag}`];
 const attrs = co.attributes, ground = attrs.b3_h_maaiveld;
 const verts = f.vertices.map(v => { const x = v[0] * tr.scale[0] + tr.translate[0], y = v[1] * tr.scale[1] + tr.translate[1], z = v[2] * tr.scale[2] + tr.translate[2]; const [e, s] = loc(rdll(x, y)); return [e, z - ground, s]; });
-const part = f.CityObjects[`NL.IMBAG.Pand.${bag}-0`];
-const g = part.geometry.find(q => q.lod === '2.2') ?? part.geometry.at(-1);
+// Every BuildingPart (-0, -1, ...) of the pand: multi-part pands (towers on podiums) carry their volumes in separate parts.
 const surfaces = [];
-g.boundaries[0].forEach((b, i) => {
-  const type = g.semantics.surfaces[g.semantics.values[0][i]].type;
-  surfaces.push({type, rings: b.map(r => r.map(v => verts[v].map(n => +n.toFixed(3))))});
-});
+for (const [key, part] of Object.entries(f.CityObjects)) {
+  if (!key.startsWith(`NL.IMBAG.Pand.${bag}-`)) continue;
+  const g = part.geometry.find(q => q.lod === '2.2') ?? part.geometry.at(-1);
+  g.boundaries[0].forEach((b, i) => {
+    const type = g.semantics.surfaces[g.semantics.values[0][i]].type;
+    surfaces.push({type, rings: b.map(r => r.map(v => verts[v].map(n => +n.toFixed(3))))});
+  });
+}
 const out = {id, bagId: bag, anchor, groundNAP: ground, coordinateConvention: 'native east/south metres from anchor; y above local ground', attributes: {roofMaxNAP: attrs.b3_h_dak_max, roofMinNAP: attrs.b3_h_dak_min, ridgeNAP: attrs.b3_h_nok, floors: attrs.b3_bouwlagen}, nativeRing: ringLL.map(loc).map(p => p.map(n => +n.toFixed(3))), buildingFootprint: {type: 'Polygon', coordinates: [ringLL]}, surfaces};
 fs.writeFileSync(`scripts/landmarks/${id}-footprints.json`, JSON.stringify(out, null, 1) + '\n');
 for (const [i, s] of surfaces.entries()) { const p = s.rings[0]; if (s.type !== 'WallSurface' && s.type !== 'GroundSurface') console.log(i, s.type, 'h', (p.reduce((a, v) => a + v[1], 0) / p.length).toFixed(1), 'x', Math.min(...p.map(v => v[0])).toFixed(1), Math.max(...p.map(v => v[0])).toFixed(1), 'z', Math.min(...p.map(v => v[2])).toFixed(1), Math.max(...p.map(v => v[2])).toFixed(1)); }

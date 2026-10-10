@@ -1272,10 +1272,10 @@
   "triangles": 4223
  },
  "ij-toren": {
-  "sourceHash": "e46a0583238c5374",
+  "sourceHash": "771c12276402143c",
   "buildVersion": 2,
-  "bytes": 42212,
-  "triangles": 1912
+  "bytes": 54744,
+  "triangles": 2693
  },
  "sea-palace": {
   "sourceHash": "437643613f66fd7b",
@@ -1432,5 +1432,59 @@
   "buildVersion": 2,
   "bytes": 108152,
   "triangles": 5537
+ },
+ "overtoom-197": {
+  "sourceHash": "3c2fd3bfa54187f0",
+  "buildVersion": 2,
+  "bytes": 52392,
+  "triangles": 2199
+ },
+ "willem-de-zwijgerlaan-350": {
+  "sourceHash": "468551ae2ad8ccca",
+  "buildVersion": 2,
+  "bytes": 50592,
+  "triangles": 2249
+ },
+ "grasweg-116": {
+  "sourceHash": "85c1b0475f2b437a",
+  "buildVersion": 2,
+  "bytes": 131784,
+  "triangles": 6202
+ },
+ "oostenburgermiddenstraat-228": {
+  "sourceHash": "2c8c065d48b7d539",
+  "buildVersion": 2,
+  "bytes": 76560,
+  "triangles": 3408
+ },
+ "ceramiquelaan-437": {
+  "sourceHash": "c2fe7f58e917f912",
+  "buildVersion": 2,
+  "bytes": 86168,
+  "triangles": 4049
+ },
+ "haarlemmerweg-333": {
+  "sourceHash": "1fa3a1d2f23dbe83",
+  "buildVersion": 2,
+  "bytes": 54288,
+  "triangles": 2656
+ },
+ "bogortuin-101": {
+  "sourceHash": "b75e4508484a9858",
+  "buildVersion": 2,
+  "bytes": 78800,
+  "triangles": 4010
+ },
+ "blankenstraat-15": {
+  "sourceHash": "e8dd3e952fcd95b0",
+  "buildVersion": 2,
+  "bytes": 66016,
+  "triangles": 3224
+ },
+ "hilton-amsterdam": {
+  "sourceHash": "d8f4665b82dd2900",
+  "buildVersion": 2,
+  "bytes": 86068,
+  "triangles": 4284
  }
 }

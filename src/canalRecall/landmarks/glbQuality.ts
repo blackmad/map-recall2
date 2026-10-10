@@ -39,6 +39,8 @@ export interface Thresholds {
   belowGround: number;
   /** XZ distance beyond the main body hull that counts as far outside. */
   farOutside: number;
+  /** A non-main cluster that is a grounded, tall, sizeable volume (a tower and a wing of one pand; area in m2 at least this) is a separate building volume, not stray far-outside geometry. */
+  separateVolumeMinArea: number;
   /** Detached cluster is a FAIL only when its gap exceeds this (smaller gaps read as render seams). */
   failGap: number;
   /** ...and its area (m^2) is at least this (facade-scale; smaller floating bits such as recessed windows only warn). */
@@ -47,8 +49,10 @@ export interface Thresholds {
   maxHoleLoopPerimeter: number;
   /** Inverted-roof area (m^2) that fails. */
   maxInvertedRoofArea: number;
-  /** Models whose bounding-box diagonal exceeds this are multi-building sites (e.g. stations): hull-based checks are skipped. */
+  /** A model is a multi-building site (e.g. stations, hospital campuses) only when its bounding-box diagonal exceeds this AND it holds two or more separate grounded building volumes (see `siteModel`). Size alone never makes a site: one long slab keeps every check. */
   siteDiagonal: number;
+  /** Explicit spec declaration: true forces the site path (hull-based checks skipped) for a merged multi-building mesh whose volumes touch; false forces full checks. Undefined = decide from diagonal plus separate volumes. */
+  siteModel?: boolean;
   /** Triangle cap. */
   triangleCap: number;
   /** Blank-wall check: only outward walls with at least this much planar area (m^2) are examined. */
@@ -71,6 +75,17 @@ export interface Thresholds {
    * `axisBearing` (either sense). Nothing is inferred from the geometry: a roofed box missing two walls is still a failure.
    */
   throughPassages: ThroughPassage[];
+  /**
+   * Declared, evidenced free-standing structures that really stand apart from the main body (a car-park entrance pavilion on the
+   * pavement, a kiosk, a vent stack). A part is exempt from the far-outside check ONLY when its whole XZ extent lies inside a declared
+   * `box` ([minX, minZ, maxX, maxZ], model-local metres). Nothing is inferred; undeclared detached geometry still fails.
+   */
+  detachedStructures: DetachedStructure[];
+}
+
+export interface DetachedStructure {
+  box: [number, number, number, number];
+  evidence?: string;
 }
 
 export interface ThroughPassage {
@@ -90,6 +105,9 @@ function inPolygon(x: number, z: number, poly: [number, number][]): boolean {
 
 /** Deepest upper-storey protrusion (m) treated as architecture rather than a gap in the wall below it. */
 const SHALLOW_PROTRUSION_M = 1.6;
+/** A cantilevered terrace or loggia floor at least CANTILEVER_MIN_UNDERSIDE_M above the ground (above the low-soffit cap) is architecture up to this depth (a 2 m balcony or terrace), not a gap in the wall below. */
+const DEEP_CANTILEVER_M = 2.5;
+const CANTILEVER_MIN_UNDERSIDE_M = 6;
 
 export const DEFAULT_THRESHOLDS: Thresholds = {
   weld: 1e-3,
@@ -101,6 +119,7 @@ export const DEFAULT_THRESHOLDS: Thresholds = {
   maxSeeThroughRays: 3,
   belowGround: -0.05,
   farOutside: 1.5,
+  separateVolumeMinArea: 400,
   failGap: 0.08,
   failArea: 12,
   maxHoleLoopPerimeter: 30,
@@ -113,6 +132,7 @@ export const DEFAULT_THRESHOLDS: Thresholds = {
   blankWallFailArea: 600,
   blankWallExemptBearings: [],
   throughPassages: [],
+  detachedStructures: [],
 };
 
 export interface DetachedPart {
@@ -496,8 +516,6 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
     return r;
   }
 
-  const site = Math.hypot(bmax[0] - bmin[0], bmax[1] - bmin[1], bmax[2] - bmin[2]) > th.siteDiagonal;
-
   // --- weld vertices ---
   const q = 1 / th.weld;
   const weldMap = new Map<string, number>();
@@ -688,6 +706,11 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   let main = 0;
   for (let k = 1; k < nClusters; k++) if (cArea[k] > cArea[main]) main = k;
   const inMain = (t: number) => compOfTri[t] >= 0 && clusterOf[compOfTri[t]] === main;
+  // Site = big AND made of several separate grounded building volumes (or declared). A single coherent building of any length is not a site.
+  const groundedVolumes = Array.from({length: nClusters}, (_, k) => k).filter(k =>
+    cArea[k] >= th.separateVolumeMinArea && cMin[k][1] <= 0.3 && cMax[k][1] - cMin[k][1] >= 4 && cMax[k][0] - cMin[k][0] >= 8 && cMax[k][2] - cMin[k][2] >= 8).length;
+  const bigDiagonal = Math.hypot(bmax[0] - bmin[0], bmax[1] - bmin[1], bmax[2] - bmin[2]) > th.siteDiagonal;
+  const site = th.siteModel ?? (bigDiagonal && groundedVolumes >= 2);
 
   // --- detached: distance of every other cluster to the main body ---
   const SEARCH = 3;
@@ -768,10 +791,13 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   }
   for (let t = 0; t < nTri; t++) {
     if (compOfTri[t] < 0 || inMain(t)) continue;
+    const cl = clusterOf[compOfTri[t]];
+    const separateVolume = cArea[cl] >= th.separateVolumeMinArea && cMin[cl][1] <= 0.3 && cMax[cl][1] - cMin[cl][1] >= 4 && cMax[cl][0] - cMin[cl][0] >= 8 && cMax[cl][2] - cMin[cl][2] >= 8;
+    const declaredStructure = th.detachedStructures.some(ds => cMin[cl][0] >= ds.box[0] && cMin[cl][2] >= ds.box[1] && cMax[cl][0] <= ds.box[2] && cMax[cl][2] <= ds.box[3]);
     for (let k = 0; k < 3; k++) {
       const i = soup.indices[t * 3 + k] * 3;
       const d = distToHull([soup.positions[i], soup.positions[i + 2]], hull);
-      if (d > th.farOutside && !site) farN++;
+      if (d > th.farOutside && !site && !separateVolume && !declaredStructure) farN++;
       if (d > farMax) farMax = d;
     }
   }
@@ -863,7 +889,9 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
       // Highest surface seen in each occupied cell: a boundary made only of low geometry (a stoop, steps, a plinth)
       // is a low appendage, not a wall, so rays aimed at it above its top are not see-through.
       const top = new Float32Array(cw * ch).fill(-Infinity);
-      const mark = (x: number, z: number, y: number) => { const ix = Math.floor((x - gx0) / CELL), iz = Math.floor((z - gz0) / CELL); if (ix >= 0 && iz >= 0 && ix < cw && iz < ch) { occ[iz * cw + ix] = 1; if (y > top[iz * cw + ix]) top[iz * cw + ix] = y; } };
+      // Lowest surface in each cell: a cell whose lowest surface is high above the ray is only an overhang (cantilever slab), not a wall line.
+      const low = new Float32Array(cw * ch).fill(Infinity);
+      const mark = (x: number, z: number, y: number) => { const ix = Math.floor((x - gx0) / CELL), iz = Math.floor((z - gz0) / CELL); if (ix >= 0 && iz >= 0 && ix < cw && iz < ch) { occ[iz * cw + ix] = 1; if (y > top[iz * cw + ix]) top[iz * cw + ix] = y; if (y < low[iz * cw + ix]) low[iz * cw + ix] = y; } };
       for (let t = 0; t < nTri; t++) {
         if (!inMain(t)) continue;
         const yy = [0, 1, 2].map(k => soup.positions[soup.indices[t * 3 + k] * 3 + 1]);
@@ -880,7 +908,7 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
         for (let iz = iz0; iz <= iz1; iz++) for (let ix = ix0; ix <= ix1; ix++) {
           const px = gx0 + (ix + 0.5) * CELL, pz = gz0 + (iz + 0.5) * CELL;
           const l1 = ((B[1] - C[1]) * (px - C[0]) + (C[0] - B[0]) * (pz - C[1])) / den, l2 = ((C[1] - A[1]) * (px - C[0]) + (A[0] - C[0]) * (pz - C[1])) / den;
-          if (l1 >= 0 && l2 >= 0 && 1 - l1 - l2 >= 0) { occ[iz * cw + ix] = 1; const yh = l1 * yy[0] + l2 * yy[1] + (1 - l1 - l2) * yy[2]; if (yh > top[iz * cw + ix]) top[iz * cw + ix] = yh; }
+          if (l1 >= 0 && l2 >= 0 && 1 - l1 - l2 >= 0) { occ[iz * cw + ix] = 1; const yh = l1 * yy[0] + l2 * yy[1] + (1 - l1 - l2) * yy[2]; if (yh > top[iz * cw + ix]) top[iz * cw + ix] = yh; if (yh < low[iz * cw + ix]) low[iz * cw + ix] = yh; }
         }
       }
       const at = (ix: number, iz: number) => (ix < 0 || iz < 0 || ix >= cw || iz >= ch ? 0 : occ[iz * cw + ix]);
@@ -936,7 +964,14 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
               // outermost edge) is not a wall gap at street height at ANY elevation: the 1 m inside target stays in
               // front of the wall behind it. The 16 m cover cap above is for deep porticoes, not 1.5 m balconies.
               else if (deep - 3 <= SHALLOW_PROTRUSION_M) hit = deep;
+              else if (deep - 3 <= DEEP_CANTILEVER_M && lowestAbove([o[0] + dx * 3.3, h, o[2] + dz * 3.3]) >= CANTILEVER_MIN_UNDERSIDE_M) hit = deep;
             }
+          }
+          if (hit < 0 && low[iz * cw + ix] >= h + 3) {
+            // Lateral end of a cantilever (balcony, terrace): the ray runs along the facade under the slab, in front of the wall, not into a gap.
+            // Closed only when the boundary cell is an overhang (lowest surface well above the ray) AND a wall stands within the protrusion depth beside the target.
+            const px = -dz, pz = dx;
+            if (firstHit(target, [px, 0, pz], SHALLOW_PROTRUSION_M + 0.1) > 0 || firstHit(target, [-px, 0, -pz], SHALLOW_PROTRUSION_M + 0.1) > 0) hit = 1;
           }
           if (hit < 0 && th.throughPassages.length) {
             const rayBearing = (Math.atan2(dx, -dz) * 180) / Math.PI;
@@ -953,7 +988,7 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   }
 
   // --- findings ---
-  if (site) findings.push({kind: 'site-model', severity: 'warn', message: `bounding diagonal > ${th.siteDiagonal} m: multi-building site, see-through and far-outside checks skipped`});
+  if (site) findings.push({kind: 'site-model', severity: 'warn', message: `bounding diagonal > ${th.siteDiagonal} m: multi-building site (${groundedVolumes} separate volumes${th.siteModel ? ', declared' : ''}), see-through and far-outside checks skipped`});
   const triangles = nTri - degenerate;
   if (degenerate > Math.max(5, nTri * 0.02)) findings.push({kind: 'degenerate', severity: 'fail', message: `${degenerate} degenerate triangles`});
   else if (degenerate) findings.push({kind: 'degenerate', severity: 'warn', message: `${degenerate} degenerate triangles`});

@@ -26929,11 +26929,12 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -118.1989974975586,
-          0,
-          -62.42499923706055
+          -105.21570587158203,
+          -9.536743306171047e-8,
+          -59.957000732421875
         ],
         "max": [
           176.552001953125,
@@ -26952,19 +26953,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 294.7509994506836,
-        "heightMetres": 95.0999984741211,
-        "depthMetres": 95.37799835205078,
-        "depthCoverage": 0.8750275078169797
+        "widthMetres": 281.76770782470703,
+        "heightMetres": 95.09999856948852,
+        "depthMetres": 92.90999984741211,
+        "depthCoverage": 0.8523853197010285
       },
-      "triangles": 11201,
-      "bytes": 163052,
+      "triangles": 16729,
+      "bytes": 229588,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "e46a0583238c5374",
+        "sourceHash": "771c12276402143c",
         "buildVersion": 2,
-        "bytes": 42212,
-        "triangles": 1912
+        "bytes": 54744,
+        "triangles": 2693
       }
     },
     "sea-palace": {
@@ -35595,6 +35596,1894 @@
         "buildVersion": 2,
         "bytes": 108152,
         "triangles": 5537
+      }
+    },
+    "overtoom-197": {
+      "id": "overtoom-197",
+      "name": "Overtoom 197-205",
+      "category": "ordinary",
+      "modelUrl": "./models/overtoom-197.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012236683"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.870535062741945,
+          52.361065939922995
+        ],
+        "headingDegrees": 67,
+        "lengthMetres": 63.39,
+        "widthMetres": 43.63
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.870600492221925,
+          52.36099180314638
+        ],
+        "northOffsetDegrees": 0,
+        "source": "PDOK BAG 0363100012236683 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      "materialOverrides": {
+        "brick": "#5e3b2e",
+        "ochre": "#8f5f49",
+        "greyBrick": "#4a3027",
+        "white": "#e6e1d3",
+        "concrete": "#b9b3a4",
+        "stone": "#6f6e6b",
+        "dark": "#2e3030",
+        "glass": "#55656f",
+        "frame": "#2a2a2a",
+        "red": "#c4313a",
+        "slate": "#4b5053"
+      },
+      "preservePositionPrecision": true,
+      "attribution": {
+        "title": "Overtoom 197-205 original architecture",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236683",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8708758376600185,
+              52.36107631480404
+            ],
+            [
+              4.870869236204824,
+              52.36108599277411
+            ],
+            [
+              4.870857929948229,
+              52.36110257977309
+            ],
+            [
+              4.870843517134966,
+              52.36112371899433
+            ],
+            [
+              4.870772152894216,
+              52.36122602974726
+            ],
+            [
+              4.870647727030378,
+              52.36140445082457
+            ],
+            [
+              4.870058926733979,
+              52.361249537921296
+            ],
+            [
+              4.8700595254535175,
+              52.36124855188499
+            ],
+            [
+              4.870147432698217,
+              52.36112514767665
+            ],
+            [
+              4.870174431499675,
+              52.361087256428
+            ],
+            [
+              4.87021599666031,
+              52.361028927743355
+            ],
+            [
+              4.8702349344943325,
+              52.361033980667635
+            ],
+            [
+              4.870393701375216,
+              52.360783493410956
+            ],
+            [
+              4.870422660516757,
+              52.3607385912343
+            ],
+            [
+              4.8704860815389655,
+              52.36075487524632
+            ],
+            [
+              4.870588978127944,
+              52.36078128093358
+            ],
+            [
+              4.870691318577011,
+              52.36080754928818
+            ],
+            [
+              4.870738800366388,
+              52.36081973710918
+            ],
+            [
+              4.870743641037262,
+              52.36081250511826
+            ],
+            [
+              4.870797360853667,
+              52.36082605930371
+            ],
+            [
+              4.870901946075814,
+              52.36085246309581
+            ],
+            [
+              4.871005316553188,
+              52.360878555914866
+            ],
+            [
+              4.8710085222312784,
+              52.36087936081444
+            ],
+            [
+              4.8708758376600185,
+              52.36107631480404
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "ordinary",
+      "bounds": {
+        "min": [
+          -36.632999420166016,
+          -1.1634826790896113e-7,
+          -46.29227066040039
+        ],
+        "max": [
+          27.922000885009766,
+          25.14900016784668,
+          27.961999893188477
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.870600492221925,
+          52.36099180314638
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 67,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 74.25427055358887,
+        "heightMetres": 25.149000284194948,
+        "depthMetres": 64.55500030517578,
+        "depthCoverage": 1.4796011988351083
+      },
+      "triangles": 11318,
+      "bytes": 174784,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "3c2fd3bfa54187f0",
+        "buildVersion": 2,
+        "bytes": 52392,
+        "triangles": 2199
+      }
+    },
+    "willem-de-zwijgerlaan-350": {
+      "id": "willem-de-zwijgerlaan-350",
+      "name": "Willem de Zwijgerlaan 350",
+      "category": "ordinary",
+      "modelUrl": "./models/willem-de-zwijgerlaan-350.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012107360"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.857935205703695,
+          52.382751329087405
+        ],
+        "headingDegrees": 43.5,
+        "lengthMetres": 60.05,
+        "widthMetres": 45
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.857886657266777,
+          52.38277338486945
+        ],
+        "northOffsetDegrees": 0,
+        "source": "PDOK BAG 0363100012107360 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      "materialOverrides": {
+        "white": "#e2dccb",
+        "ochre": "#6b3b2b",
+        "concrete": "#bcb6a8",
+        "stone": "#8a8478",
+        "glass": "#4f5b64",
+        "frame": "#3a3e41",
+        "dark": "#2c2e30",
+        "gold": "#b79a4a",
+        "slate": "#6c7072"
+      },
+      "preservePositionPrecision": true,
+      "attribution": {
+        "title": "Willem de Zwijgerlaan 350 original architecture",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012107360",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.857842013838999,
+              52.383083198997376
+            ],
+            [
+              4.85779872545066,
+              52.383055161556356
+            ],
+            [
+              4.857388435955259,
+              52.382789411488545
+            ],
+            [
+              4.857436015412877,
+              52.382761897254845
+            ],
+            [
+              4.857597802429414,
+              52.38266837575599
+            ],
+            [
+              4.857974943143374,
+              52.38245034818551
+            ],
+            [
+              4.8580283931219315,
+              52.382419462594115
+            ],
+            [
+              4.858476257997118,
+              52.382709546190625
+            ],
+            [
+              4.858481971479139,
+              52.38271324767387
+            ],
+            [
+              4.857842013838999,
+              52.383083198997376
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "ordinary",
+      "bounds": {
+        "min": [
+          -33.76491165161133,
+          -9.536743306171047e-8,
+          -35.119544982910156
+        ],
+        "max": [
+          40.80757141113281,
+          18.843000411987305,
+          39.25931167602539
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.857886657266777,
+          52.38277338486945
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 43.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 74.57248306274414,
+        "heightMetres": 18.843000507354738,
+        "depthMetres": 74.37885665893555,
+        "depthCoverage": 1.6528634813096788
+      },
+      "triangles": 13581,
+      "bytes": 208788,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "468551ae2ad8ccca",
+        "buildVersion": 2,
+        "bytes": 50592,
+        "triangles": 2249
+      }
+    },
+    "grasweg-116": {
+      "id": "grasweg-116",
+      "name": "Grasweg 116-124",
+      "category": "ordinary",
+      "modelUrl": "./models/grasweg-116.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012252853"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89858584959278,
+          52.39352754913396
+        ],
+        "headingDegrees": 32.5,
+        "lengthMetres": 50.4,
+        "widthMetres": 33.34
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.898453590331491,
+          52.393541072969875
+        ],
+        "northOffsetDegrees": 0,
+        "source": "PDOK BAG 0363100012252853 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      "materialOverrides": {
+        "greyBrick": "#3b3330",
+        "brick": "#6e5b4f",
+        "ochre": "#a98d72",
+        "glass": "#566873",
+        "frame": "#25282a",
+        "concrete": "#8c877f",
+        "slate": "#4a4e50"
+      },
+      "preservePositionPrecision": true,
+      "attribution": {
+        "title": "Grasweg 116-124 original architecture",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012252853",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.898261442564199,
+              52.39363733942169
+            ],
+            [
+              4.898334858231587,
+              52.393609106612594
+            ],
+            [
+              4.89830488992182,
+              52.393579611222414
+            ],
+            [
+              4.898380176633398,
+              52.3935508917865
+            ],
+            [
+              4.898349954825058,
+              52.39352173689252
+            ],
+            [
+              4.898424450095068,
+              52.39349283440866
+            ],
+            [
+              4.898395089793372,
+              52.393464159427324
+            ],
+            [
+              4.8984684608185125,
+              52.393435944326605
+            ],
+            [
+              4.898438881553602,
+              52.39340714262489
+            ],
+            [
+              4.8986284227074215,
+              52.393334378527534
+            ],
+            [
+              4.898637921975762,
+              52.39334292004409
+            ],
+            [
+              4.898776621199279,
+              52.39328969189194
+            ],
+            [
+              4.8990305333553295,
+              52.3935322193042
+            ],
+            [
+              4.898416271471725,
+              52.393768236707196
+            ],
+            [
+              4.898412114410257,
+              52.39376418408996
+            ],
+            [
+              4.898328887079236,
+              52.39368296059192
+            ],
+            [
+              4.898314206767004,
+              52.39368861615594
+            ],
+            [
+              4.898261442564199,
+              52.39363733942169
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "ordinary",
+      "bounds": {
+        "min": [
+          -12.871000289916992,
+          0,
+          -25.53338623046875
+        ],
+        "max": [
+          39.375,
+          49.97200012207031,
+          27.790353775024414
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.898453590331491,
+          52.393541072969875
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 32.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 53.323740005493164,
+        "heightMetres": 49.97200012207031,
+        "depthMetres": 52.24600028991699,
+        "depthCoverage": 1.567066595378434
+      },
+      "triangles": 21307,
+      "bytes": 333400,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "85c1b0475f2b437a",
+        "buildVersion": 2,
+        "bytes": 131784,
+        "triangles": 6202
+      }
+    },
+    "asterweg-23": {
+      "id": "asterweg-23",
+      "name": "Asterweg 23",
+      "category": "ordinary",
+      "modelUrl": "./models/asterweg-23.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012064810"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.902867411278782,
+          52.39087627189409
+        ],
+        "headingDegrees": 163.5,
+        "lengthMetres": 102.33,
+        "widthMetres": 86.63
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.902758121999647,
+          52.39099735679942
+        ],
+        "northOffsetDegrees": 0,
+        "source": "PDOK BAG 0363100012064810 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      "materialOverrides": {
+        "brick": "#8a7656",
+        "concrete": "#cfd0cb",
+        "slate": "#6b7378",
+        "dark": "#25282b",
+        "glass": "#4f6674",
+        "frame": "#3a3d40",
+        "red": "#9a3a32",
+        "white": "#e6e6e2",
+        "blue": "#2f5d9a"
+      },
+      "preservePositionPrecision": true,
+      "attribution": {
+        "title": "Asterweg 23 original architecture",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012064810",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.903336444424876,
+              52.39048264851578
+            ],
+            [
+              4.903692038473646,
+              52.390547310975066
+            ],
+            [
+              4.903605628386901,
+              52.39072521064471
+            ],
+            [
+              4.903150981524049,
+              52.39064252732505
+            ],
+            [
+              4.902838993199189,
+              52.39128468811001
+            ],
+            [
+              4.902809436326965,
+              52.39134513513553
+            ],
+            [
+              4.902693758843909,
+              52.391323954403276
+            ],
+            [
+              4.9027233305495255,
+              52.39126350746663
+            ],
+            [
+              4.902554169205531,
+              52.39123252695714
+            ],
+            [
+              4.9025245971918805,
+              52.39129298283894
+            ],
+            [
+              4.90238386392635,
+              52.39126721442222
+            ],
+            [
+              4.90239666653715,
+              52.39124104080758
+            ],
+            [
+              4.902139846102578,
+              52.39119401738336
+            ],
+            [
+              4.902156615860614,
+              52.39115973518752
+            ],
+            [
+              4.902072358045512,
+              52.391144308792875
+            ],
+            [
+              4.902472900970451,
+              52.390325608108604
+            ],
+            [
+              4.903336444424876,
+              52.39048264851578
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "ordinary",
+      "bounds": {
+        "min": [
+          -46.40399932861328,
+          -2.3841858265427618e-8,
+          -38.93299865722656
+        ],
+        "max": [
+          63.91066360473633,
+          13.777000427246094,
+          74.55799865722656
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.902758121999647,
+          52.39099735679942
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 163.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 113.49099731445312,
+        "heightMetres": 13.777000451087952,
+        "depthMetres": 110.31466293334961,
+        "depthCoverage": 1.273400241640882
+      },
+      "triangles": 569,
+      "bytes": 17988,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "oostenburgermiddenstraat-228": {
+      "id": "oostenburgermiddenstraat-228",
+      "name": "Oostenburgermiddenstraat 228",
+      "category": "ordinary",
+      "modelUrl": "./models/oostenburgermiddenstraat-228.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012254998"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.929719496738803,
+          52.372839215347206
+        ],
+        "headingDegrees": 134.5,
+        "lengthMetres": 64.66,
+        "widthMetres": 35.39
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.929805285709696,
+          52.372965079789616
+        ],
+        "northOffsetDegrees": 0,
+        "source": "PDOK BAG 0363100012254998 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      "materialOverrides": {
+        "greyBrick": "#3b3a3e",
+        "concrete": "#a9aca6",
+        "copper": "#6b422f",
+        "brick": "#4f3023",
+        "slate": "#4b4f52",
+        "frame": "#2e3438",
+        "glass": "#8fa3b0",
+        "blue": "#4c5256",
+        "dark": "#232628",
+        "red": "#8a3a2e",
+        "white": "#d9dcd6"
+      },
+      "preservePositionPrecision": true,
+      "attribution": {
+        "title": "Oostenburgermiddenstraat 228 original architecture",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012254998",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.930238068214883,
+              52.37293458006844
+            ],
+            [
+              4.930124006518666,
+              52.37300368655251
+            ],
+            [
+              4.930067115188871,
+              52.372968405963164
+            ],
+            [
+              4.929815792898016,
+              52.373120495749696
+            ],
+            [
+              4.92981490273628,
+              52.37311995305001
+            ],
+            [
+              4.929812893205691,
+              52.37312115862547
+            ],
+            [
+              4.929811171432812,
+              52.373120091427616
+            ],
+            [
+              4.9298102700576365,
+              52.373120636194706
+            ],
+            [
+              4.9295006681021905,
+              52.372929242426125
+            ],
+            [
+              4.9294639704033,
+              52.37290658641153
+            ],
+            [
+              4.9292021883093895,
+              52.372744631619476
+            ],
+            [
+              4.929569598943429,
+              52.372521989107746
+            ],
+            [
+              4.930238068214883,
+              52.37293458006844
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "ordinary",
+      "bounds": {
+        "min": [
+          -40.80500030517578,
+          -4.7683716530855236e-8,
+          -17.671890258789062
+        ],
+        "max": [
+          17.931562423706055,
+          42.96799850463867,
+          49.09000015258789
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.929805285709696,
+          52.372965079789616
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 134.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 66.76189041137695,
+        "heightMetres": 42.967998552322385,
+        "depthMetres": 58.736562728881836,
+        "depthCoverage": 1.659693775893807
+      },
+      "triangles": 14041,
+      "bytes": 230124,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "2c8c065d48b7d539",
+        "buildVersion": 2,
+        "bytes": 76560,
+        "triangles": 3408
+      }
+    },
+    "ceramiquelaan-437": {
+      "id": "ceramiquelaan-437",
+      "name": "Céramiquelaan 437",
+      "category": "ordinary",
+      "modelUrl": "./models/ceramiquelaan-437.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012252989"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.905283348817936,
+          52.38663478308454
+        ],
+        "headingDegrees": 163.5,
+        "lengthMetres": 71.85,
+        "widthMetres": 66.26
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.905242111752224,
+          52.38666986486372
+        ],
+        "northOffsetDegrees": 0,
+        "source": "PDOK BAG 0363100012252989 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      "materialOverrides": {
+        "greyBrick": "#85807a",
+        "slate": "#4f5254",
+        "frame": "#7b6a4e",
+        "glass": "#7f93a3",
+        "ochre": "#6e4a2c",
+        "dark": "#2c2723",
+        "gold": "#b08f45",
+        "concrete": "#aaa9a3"
+      },
+      "preservePositionPrecision": true,
+      "attribution": {
+        "title": "Céramiquelaan 437 original architecture",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012252989",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.904641309498148,
+              52.38682140606483
+            ],
+            [
+              4.904834078992316,
+              52.38642676055471
+            ],
+            [
+              4.9049199106562575,
+              52.38644260486391
+            ],
+            [
+              4.905001337199722,
+              52.38627732050108
+            ],
+            [
+              4.905003124494512,
+              52.38627370574424
+            ],
+            [
+              4.905128978051375,
+              52.386296786147255
+            ],
+            [
+              4.90520770079141,
+              52.38631121720976
+            ],
+            [
+              4.905408524455119,
+              52.38634804796651
+            ],
+            [
+              4.905407202684344,
+              52.386350729904734
+            ],
+            [
+              4.905406751976318,
+              52.38635165380189
+            ],
+            [
+              4.90554588771023,
+              52.38637716952668
+            ],
+            [
+              4.90554641361454,
+              52.38637608415664
+            ],
+            [
+              4.9055476602763735,
+              52.38637355470193
+            ],
+            [
+              4.905717596411139,
+              52.38640471391568
+            ],
+            [
+              4.905797902753128,
+              52.386419438628046
+            ],
+            [
+              4.905927773941424,
+              52.386443253523645
+            ],
+            [
+              4.905926001403456,
+              52.386446868354064
+            ],
+            [
+              4.905788537526834,
+              52.38672730934926
+            ],
+            [
+              4.905651086691581,
+              52.38700774123912
+            ],
+            [
+              4.905649314108336,
+              52.38701135606491
+            ],
+            [
+              4.905523723620704,
+              52.38698818741814
+            ],
+            [
+              4.905522609538717,
+              52.386987976170566
+            ],
+            [
+              4.905445865612006,
+              52.386973814015015
+            ],
+            [
+              4.905243692821165,
+              52.38693651048516
+            ],
+            [
+              4.9052449999309085,
+              52.386933828489354
+            ],
+            [
+              4.905245465434457,
+              52.38693289566543
+            ],
+            [
+              4.9051064178257,
+              52.386907236150876
+            ],
+            [
+              4.905105982282806,
+              52.38690811517018
+            ],
+            [
+              4.905104659890602,
+              52.386910851028354
+            ],
+            [
+              4.904935310767166,
+              52.38687960345594
+            ],
+            [
+              4.904897180905891,
+              52.386872563623804
+            ],
+            [
+              4.9048548289874585,
+              52.38686475161942
+            ],
+            [
+              4.904854081243817,
+              52.386864622746614
+            ],
+            [
+              4.904723844635534,
+              52.38684058049658
+            ],
+            [
+              4.904725436624827,
+              52.38683736939405
+            ],
+            [
+              4.904725631975805,
+              52.386836965744415
+            ],
+            [
+              4.904641309498148,
+              52.38682140606483
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "ordinary",
+      "bounds": {
+        "min": [
+          -36.4119987487793,
+          0.0010000000474974513,
+          -37.23114013671875
+        ],
+        "max": [
+          48.165077209472656,
+          23.740999221801758,
+          43.72100067138672
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.905242111752224,
+          52.38666986486372
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 163.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 84.57707595825195,
+        "heightMetres": 23.73999922175426,
+        "depthMetres": 80.95214080810547,
+        "depthCoverage": 1.221734693753478
+      },
+      "triangles": 16492,
+      "bytes": 247148,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "c2fe7f58e917f912",
+        "buildVersion": 2,
+        "bytes": 86168,
+        "triangles": 4049
+      }
+    },
+    "haarlemmerweg-333": {
+      "id": "haarlemmerweg-333",
+      "name": "Haarlemmerweg 333",
+      "category": "ordinary",
+      "modelUrl": "./models/haarlemmerweg-333.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012088027"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.864429751307691,
+          52.384856989980285
+        ],
+        "headingDegrees": 88.5,
+        "lengthMetres": 92.77,
+        "widthMetres": 60.07
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.864487335264384,
+          52.38490553598121
+        ],
+        "northOffsetDegrees": 0,
+        "source": "PDOK BAG 0363100012088027 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      "materialOverrides": {
+        "red": "#b25a3e",
+        "slate": "#58595b",
+        "concrete": "#8c8b8a",
+        "frame": "#d4d2cb",
+        "glass": "#6f8397",
+        "dark": "#34363a",
+        "white": "#eeeeea",
+        "gold": "#e6b830"
+      },
+      "preservePositionPrecision": true,
+      "attribution": {
+        "title": "Haarlemmerweg 333 original architecture",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012088027",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8651167441728,
+              52.38473405407729
+            ],
+            [
+              4.865100652873602,
+              52.38513760292098
+            ],
+            [
+              4.864381359659045,
+              52.38512576548968
+            ],
+            [
+              4.863785362001152,
+              52.38511524162868
+            ],
+            [
+              4.86373594532434,
+              52.38511435811918
+            ],
+            [
+              4.863743409731686,
+              52.38493621886732
+            ],
+            [
+              4.864007915016937,
+              52.384940443534155
+            ],
+            [
+              4.864493793696076,
+              52.384948197416605
+            ],
+            [
+              4.86449194209055,
+              52.384991878471716
+            ],
+            [
+              4.864565766991679,
+              52.3849931030663
+            ],
+            [
+              4.864577482190176,
+              52.38471822989342
+            ],
+            [
+              4.864582964782918,
+              52.38458955016389
+            ],
+            [
+              4.865122610997599,
+              52.38459880601029
+            ],
+            [
+              4.8651167441728,
+              52.38473405407729
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "ordinary",
+      "bounds": {
+        "min": [
+          -50.90255355834961,
+          -9.536743306171047e-8,
+          -26.17119789123535
+        ],
+        "max": [
+          43.45103073120117,
+          22.964000701904297,
+          34.94200134277344
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.864487335264384,
+          52.38490553598121
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 88.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 94.35358428955078,
+        "heightMetres": 22.96400079727173,
+        "depthMetres": 61.11319923400879,
+        "depthCoverage": 1.0173663931081869
+      },
+      "triangles": 12651,
+      "bytes": 181588,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "1fa3a1d2f23dbe83",
+        "buildVersion": 2,
+        "bytes": 54288,
+        "triangles": 2656
+      }
+    },
+    "bogortuin-101": {
+      "id": "bogortuin-101",
+      "name": "Bogortuin 101",
+      "category": "ordinary",
+      "modelUrl": "./models/bogortuin-101.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012141457"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9360779129637855,
+          52.37635044834874
+        ],
+        "headingDegrees": 177,
+        "lengthMetres": 140.62,
+        "widthMetres": 25.49
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.936062018713485,
+          52.376374223915306
+        ],
+        "northOffsetDegrees": 0,
+        "source": "PDOK BAG 0363100012141457 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      "materialOverrides": {
+        "brick": "#5f342c",
+        "slate": "#4a4a4c",
+        "glass": "#58626d",
+        "frame": "#2d2826",
+        "dark": "#241f1e",
+        "concrete": "#8d8a84"
+      },
+      "preservePositionPrecision": true,
+      "attribution": {
+        "title": "Bogortuin 101 original architecture",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012141457",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.937100933564977,
+              52.37649782381536
+            ],
+            [
+              4.9364064306,
+              52.37647501364012
+            ],
+            [
+              4.9364066957054975,
+              52.37647204871578
+            ],
+            [
+              4.93641327463877,
+              52.37639693677756
+            ],
+            [
+              4.935369181850139,
+              52.37636263310213
+            ],
+            [
+              4.935362585461309,
+              52.3764378437854
+            ],
+            [
+              4.93536233588686,
+              52.37644071889006
+            ],
+            [
+              4.935350033454291,
+              52.376440312440295
+            ],
+            [
+              4.93532453307484,
+              52.37643946915666
+            ],
+            [
+              4.93529913540034,
+              52.3764386352471
+            ],
+            [
+              4.935273400061631,
+              52.37643779105576
+            ],
+            [
+              4.9352478555383295,
+              52.376436956574786
+            ],
+            [
+              4.935196399550956,
+              52.37643526822027
+            ],
+            [
+              4.935035087771948,
+              52.37642996080394
+            ],
+            [
+              4.935055845609625,
+              52.376203101186306
+            ],
+            [
+              4.936170472931691,
+              52.37623993222117
+            ],
+            [
+              4.936170207811834,
+              52.37624289714507
+            ],
+            [
+              4.936163616547274,
+              52.37631773939587
+            ],
+            [
+              4.936789777923597,
+              52.3763383317643
+            ],
+            [
+              4.936796367130542,
+              52.376263588338354
+            ],
+            [
+              4.936796632299924,
+              52.376260614425696
+            ],
+            [
+              4.937120708006771,
+              52.376271319636096
+            ],
+            [
+              4.9371192771926244,
+              52.37628641349567
+            ],
+            [
+              4.937118746258376,
+              52.37629242423379
+            ],
+            [
+              4.937100933564977,
+              52.37649782381536
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "ordinary",
+      "bounds": {
+        "min": [
+          -69.60700225830078,
+          -2.3841858265427618e-8,
+          -14.113266944885254
+        ],
+        "max": [
+          72.12799835205078,
+          25.218000411987305,
+          18.964780807495117
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.936062018713485,
+          52.376374223915306
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 177,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 141.73500061035156,
+        "heightMetres": 25.21800043582916,
+        "depthMetres": 33.07804775238037,
+        "depthCoverage": 1.2976872401875392
+      },
+      "triangles": 25868,
+      "bytes": 370532,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "b75e4508484a9858",
+        "buildVersion": 2,
+        "bytes": 78800,
+        "triangles": 4010
+      }
+    },
+    "blankenstraat-15": {
+      "id": "blankenstraat-15",
+      "name": "Blankenstraat 15",
+      "category": "ordinary",
+      "modelUrl": "./models/blankenstraat-15.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012238656"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.927388424580271,
+          52.368552649289896
+        ],
+        "headingDegrees": 135,
+        "lengthMetres": 137.6,
+        "widthMetres": 24.5
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.927350617366918,
+          52.3685032489126
+        ],
+        "northOffsetDegrees": 0,
+        "source": "PDOK BAG 0363100012238656 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      "materialOverrides": {
+        "brick": "#80513f",
+        "slate": "#5b5f66",
+        "glass": "#4e5a68",
+        "frame": "#2c2a2e",
+        "dark": "#2a2321",
+        "concrete": "#bdb7ab"
+      },
+      "preservePositionPrecision": true,
+      "attribution": {
+        "title": "Blankenstraat 15 original architecture",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012238656",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.927778812660446,
+              52.36863999273058
+            ],
+            [
+              4.928226133525648,
+              52.36891521418306
+            ],
+            [
+              4.927976297232537,
+              52.369067207039045
+            ],
+            [
+              4.927333455795929,
+              52.36867159917727
+            ],
+            [
+              4.926550885579576,
+              52.36818998019528
+            ],
+            [
+              4.9266177781586356,
+              52.36814923855273
+            ],
+            [
+              4.926800384104845,
+              52.36803798900789
+            ],
+            [
+              4.927092996584199,
+              52.368218026596985
+            ],
+            [
+              4.927778812660446,
+              52.36863999273058
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "ordinary",
+      "bounds": {
+        "min": [
+          -54.17499923706055,
+          0,
+          -63.02399826049805
+        ],
+        "max": [
+          59.69200134277344,
+          18.40399932861328,
+          51.608150482177734
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.927350617366918,
+          52.3685032489126
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 135,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 114.63214874267578,
+        "heightMetres": 18.40399932861328,
+        "depthMetres": 113.86700057983398,
+        "depthCoverage": 4.647632676727918
+      },
+      "triangles": 18079,
+      "bytes": 265580,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "e8dd3e952fcd95b0",
+        "buildVersion": 2,
+        "bytes": 66016,
+        "triangles": 3224
+      }
+    },
+    "hilton-amsterdam": {
+      "id": "hilton-amsterdam",
+      "name": "Hilton Amsterdam",
+      "landmarkId": "hilton-amsterdam",
+      "modelUrl": "./models/hilton-amsterdam.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012078084"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8721864022401205,
+          52.35160885504703
+        ],
+        "headingDegrees": 178.5,
+        "lengthMetres": 121.88,
+        "widthMetres": 67.46
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.8722223068910235,
+          52.351562638557965
+        ],
+        "northOffsetDegrees": 0,
+        "source": "PDOK BAG 0363100012078084 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      "materialOverrides": {
+        "brick": "#7a726b",
+        "red": "#7a5a4c",
+        "concrete": "#a8a69f",
+        "glass": "#8fa5b3",
+        "frame": "#e4e3dc",
+        "dark": "#26282b",
+        "white": "#e9e8e2"
+      },
+      "throughPassages": [
+        {
+          "axisBearing": 90,
+          "corridor": [
+            [
+              -23.5,
+              24
+            ],
+            [
+              1,
+              24
+            ],
+            [
+              1,
+              29.5
+            ],
+            [
+              -23.5,
+              29.5
+            ]
+          ],
+          "evidence": "Porte-cochere: the far-projecting flat entrance canopy (RCE 532205) stands on slim columns, open at both ends, so cars and pedestrians pass along the facade under it (2025-07-29 panoramas, ref-south-west.jpg)."
+        },
+        {
+          "axisBearing": 0,
+          "corridor": [
+            [
+              -23.5,
+              24
+            ],
+            [
+              1,
+              24
+            ],
+            [
+              1,
+              29.5
+            ],
+            [
+              -23.5,
+              29.5
+            ]
+          ],
+          "evidence": "Same canopy seen from the front: open between the columns, the glazed entrance doors stand about 10 m back in the recess behind it (ref-south-west.jpg, ref-south-a.jpg)."
+        }
+      ],
+      "preservePositionPrecision": true,
+      "attribution": {
+        "title": "Hilton Amsterdam",
+        "author": "Map Recall",
+        "sourceUrl": "https://kennis.cultureelerfgoed.nl/index.php/Monumenten/532205",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free geometry on the 3DBAG LoD2.2 massing of BAG pand 0363100012078084; storey grid, window ribbons, lift-core bay, entrance canopy and podium cladding measured by eye from the 2021 and 2025 municipal panoramas and the RCE register description, no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.871289793906365,
+              52.351610952429446
+            ],
+            [
+              4.871328536389678,
+              52.35151171666341
+            ],
+            [
+              4.871301415757949,
+              52.35150764384417
+            ],
+            [
+              4.871345604576851,
+              52.351394419890795
+            ],
+            [
+              4.871373446494109,
+              52.35139830710062
+            ],
+            [
+              4.871414120479113,
+              52.35129449596309
+            ],
+            [
+              4.871584145497894,
+              52.35131957560697
+            ],
+            [
+              4.871584553983197,
+              52.3513185258185
+            ],
+            [
+              4.871890188264998,
+              52.35136343848165
+            ],
+            [
+              4.871892628424019,
+              52.35135679816273
+            ],
+            [
+              4.87189588163473,
+              52.351357243738384
+            ],
+            [
+              4.8719023361801685,
+              52.351341111846
+            ],
+            [
+              4.8719938950695045,
+              52.351354911165075
+            ],
+            [
+              4.871991574321244,
+              52.35136138123838
+            ],
+            [
+              4.872002651936435,
+              52.35136297535093
+            ],
+            [
+              4.8719951420269965,
+              52.351380253088166
+            ],
+            [
+              4.872041401901594,
+              52.35138686270928
+            ],
+            [
+              4.872040765974243,
+              52.35138854065255
+            ],
+            [
+              4.872052898753871,
+              52.351390274169276
+            ],
+            [
+              4.872062725689901,
+              52.35138960690512
+            ],
+            [
+              4.8720623672535055,
+              52.35138761006245
+            ],
+            [
+              4.872109989082452,
+              52.35138436601155
+            ],
+            [
+              4.872106843061694,
+              52.35136709582174
+            ],
+            [
+              4.872119989734629,
+              52.35136620033017
+            ],
+            [
+              4.872118592395766,
+              52.351358869225024
+            ],
+            [
+              4.87220499457777,
+              52.35135286388042
+            ],
+            [
+              4.87220799295761,
+              52.351368947040854
+            ],
+            [
+              4.872211430217798,
+              52.35136871033885
+            ],
+            [
+              4.872212949678312,
+              52.351375637524995
+            ],
+            [
+              4.873029535082418,
+              52.35131923024741
+            ],
+            [
+              4.873090082756371,
+              52.351441843618375
+            ],
+            [
+              4.873061427592827,
+              52.35144732751339
+            ],
+            [
+              4.8730691118007945,
+              52.35146311643304
+            ],
+            [
+              4.873056856372188,
+              52.35158726504122
+            ],
+            [
+              4.872999389336464,
+              52.35158513696291
+            ],
+            [
+              4.872989573759087,
+              52.351684903383706
+            ],
+            [
+              4.873007751410102,
+              52.35168557554387
+            ],
+            [
+              4.873004041699168,
+              52.35172326307621
+            ],
+            [
+              4.872985864032772,
+              52.35172259091547
+            ],
+            [
+              4.872981640383741,
+              52.35176536328559
+            ],
+            [
+              4.872948928919367,
+              52.351764951537284
+            ],
+            [
+              4.872936189136325,
+              52.35189159661926
+            ],
+            [
+              4.8725622067014775,
+              52.35191797702265
+            ],
+            [
+              4.872556419571184,
+              52.35188542516192
+            ],
+            [
+              4.872508768924883,
+              52.351888579390796
+            ],
+            [
+              4.8725052474440504,
+              52.351865699219836
+            ],
+            [
+              4.872480189921275,
+              52.351865949767436
+            ],
+            [
+              4.872478396480277,
+              52.351856064421526
+            ],
+            [
+              4.872301421984795,
+              52.35186805731107
+            ],
+            [
+              4.87233249068682,
+              52.35179372887673
+            ],
+            [
+              4.8724781940036115,
+              52.35181657132869
+            ],
+            [
+              4.872479591605144,
+              52.35182515172827
+            ],
+            [
+              4.872498612573522,
+              52.35182398514319
+            ],
+            [
+              4.872488226719073,
+              52.35176019879406
+            ],
+            [
+              4.87217139681502,
+              52.35171218313698
+            ],
+            [
+              4.872156864741185,
+              52.351738858487465
+            ],
+            [
+              4.871887765916713,
+              52.35169722434516
+            ],
+            [
+              4.871866475206142,
+              52.3516941477152
+            ],
+            [
+              4.871866036326944,
+              52.3516952872499
+            ],
+            [
+              4.871739849996518,
+              52.351704453559144
+            ],
+            [
+              4.871635829214425,
+              52.35166159626566
+            ],
+            [
+              4.871289793906365,
+              52.351610952429446
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -63.569461822509766,
+          -9.536743306171047e-8,
+          -40.262699127197266
+        ],
+        "max": [
+          59.51595687866211,
+          49.99599838256836,
+          29.951217651367188
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8722223068910235,
+          52.351562638557965
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 178.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 123.08541870117188,
+        "heightMetres": 49.99599847793579,
+        "depthMetres": 70.21391677856445,
+        "depthCoverage": 1.0408229584726425
+      },
+      "triangles": 20997,
+      "bytes": 303204,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "d8f4665b82dd2900",
+        "buildVersion": 2,
+        "bytes": 86068,
+        "triangles": 4284
       }
     }
   }
