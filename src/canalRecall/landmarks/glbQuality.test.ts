@@ -167,12 +167,19 @@ test('a wall recessed behind a roofed canopy is closed; the same recess without 
   assert.ok(open.seeThrough.rays > 0, JSON.stringify(open.seeThrough));
 });
 
-test('stepped street front (proud end bays, set-back middle with eaves overhang) is closed; an open-sided box still is not', () => {
+test('stepped street front closes via the footprint (walls are at the footprint edge); an open-sided box still is not closed', () => {
   const left = boxQuads(0, 0, 0, 5, 8, 10), right = boxQuads(15, 0, 0, 20, 8, 10);
   const middle = boxQuads(5, 0, 0, 15, 8, 8.2);
-  const eaves = boxQuads(5, 7.4, 8.2, 15, 7.6, 10);
-  const stepped = analyseSoup(soup(left, right, middle, eaves));
+  const stepped = analyseSoup(soup(left, right, middle));
   assert.equal(stepped.seeThrough.rays, 0, JSON.stringify(stepped.seeThrough));
   const openSided = analyseSoup(soup(boxQuads(0, 0, 0, 20, 8, 10, ['east'])));
   assert.ok(openSided.seeThrough.rays > 0, JSON.stringify(openSided.seeThrough));
+});
+
+test('a deep gap under a tall main roof stays see-through (only low soffits count as porches)', () => {
+  // Front wall 3 m behind the footprint edge; the only cover is an 8 m-high roof slab, not a porch soffit.
+  const body = boxQuads(0, 0, 0, 10, 8, 7);
+  const tallRoof = boxQuads(0, 8, 0, 10, 8.3, 10);
+  const r = analyseSoup(soup(body, tallRoof));
+  assert.ok(r.seeThrough.rays > 0, JSON.stringify(r.seeThrough));
 });
