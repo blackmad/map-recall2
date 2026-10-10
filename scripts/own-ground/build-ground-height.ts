@@ -2,6 +2,7 @@
 // staging directory, with a coverage report. Review, then publish:
 //
 //   npx tsx scripts/own-ground/build-ground-height.ts            # the two prototype boxes
+//   npx tsx scripts/own-ground/build-ground-height.ts --area west # boxes + the game's streaming area(s)
 //   npx tsx scripts/own-ground/build-ground-height.ts --city     # every 1 km tile touching Amsterdam (≈1.6 GB of AHN downloads)
 //   # review artifacts/own-ground/staging/ground-height-v1/report.json, then
 //   cp -R artifacts/own-ground/staging/ground-height-v1 public/data/extracts/amsterdam/
@@ -17,7 +18,7 @@ import { readGeoTiff } from '../../src/canalRecall/ownGround/geotiff.ts';
 import { downsample, encodeTile, pullPushFill, smooth3, type GroundIndex, type Grid } from '../../src/canalRecall/ownGround/heightField.ts';
 import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
 import { cellKey, localToLngLat, type ElevationIndex, type WaterCell } from '../../src/canalRecall/elevation/elevationData.ts';
-import { OWN_GROUND_BOXES } from '../../src/canalRecall/ownGround/boxes.ts';
+import { OWN_GROUND_BOXES, areaById } from '../../src/canalRecall/ownGround/boxes.ts';
 
 const args = process.argv.slice(2);
 const opt = (k: string, d: string) => { const i = args.indexOf(`--${k}`); return i >= 0 ? args[i + 1] : d; };
@@ -51,6 +52,12 @@ function wantedTiles(): Set<string> {
   for (const box of OWN_GROUND_BOXES) {
     const dLng = box.halfM / (111_320 * Math.cos(box.lat * Math.PI / 180)), dLat = box.halfM / 111_320;
     addBox(box.lng - dLng, box.lat - dLat, box.lng + dLng, box.lat + dLat);
+  }
+  // `--area west[,…]`: the game's streaming areas (boxes.ts OWN_GROUND_AREAS), on top of the boxes.
+  for (const id of opt('area', '').split(',').filter(Boolean)) {
+    const a = areaById(id);
+    if (!a) throw new Error(`unknown area ${id}`);
+    addBox(a.west, a.south, a.east, a.north);
   }
   return keys;
 }
