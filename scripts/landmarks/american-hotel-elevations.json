@@ -1,5 +1,20 @@
-{"id": "american-hotel", "facades": [
-  {"name": "Leidseplein front (SE)", "bearing": 142.5, "photo": "artifacts/landmark-lanes/american-hotel/ref-se.jpg"},
-  {"name": "street side (NE, oblique photo)", "bearing": 52.5, "photo": "artifacts/landmark-lanes/american-hotel/ref-ne.jpg"},
-  {"name": "Leidsekade canal side (SW, curved)", "bearing": 232.5, "photo": "artifacts/landmark-lanes/american-hotel/ref-sw.jpg"}
-]}
+{
+ "id": "american-hotel",
+ "facades": [
+  {
+   "name": "Leidseplein front (SE)",
+   "bearing": 142.5,
+   "photo": "artifacts/landmark-lanes/american-hotel/ref-se-winter.jpg"
+  },
+  {
+   "name": "street side (NE, oblique photo)",
+   "bearing": 52.5,
+   "photo": "artifacts/landmark-lanes/american-hotel/ref-ne.jpg"
+  },
+  {
+   "name": "Leidsekade canal side (SW, curved)",
+   "bearing": 232.5,
+   "photo": "artifacts/landmark-lanes/american-hotel/ref-sw.jpg"
+  }
+ ]
+}
