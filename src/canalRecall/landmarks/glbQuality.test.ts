@@ -195,3 +195,25 @@ test('a low open stair or stoop in front of a closed wall is not a see-through g
   const open = analyseSoup(soup(house(['south']), cornice, stoop));
   assert.ok(open.seeThrough.rays > 0, JSON.stringify(open.seeThrough));
 });
+
+/** Tetrastyle portico: 4 columns on the z=10..10.6 line, entablature slab at 9 m on top, optional back wall 4 m behind. */
+function portico(backWall: boolean) {
+  const parts: Record<string, Quad>[] = [];
+  if (backWall) parts.push(boxQuads(0, 0, 14, 10, 12, 15));
+  parts.push(boxQuads(-3, 0, 10, 0, 12, 15), boxQuads(10, 0, 10, 13, 12, 15));   // flanking wings close the sides
+  for (const x of [0.5, 3.5, 6.5, 9.5]) parts.push(boxQuads(x - 0.4, 0, 10, x + 0.4, 9, 10.8));
+  parts.push(boxQuads(0, 9, 10, 10, 10.5, 15));
+  return parts;
+}
+
+test('an open tetrastyle portico in front of a back wall is closed; without a wall within 6 m it is see-through', () => {
+  const ok = analyseSoup(soup(...portico(true)));
+  assert.equal(ok.seeThrough.rays, 0, JSON.stringify(ok.seeThrough));
+  const hole = analyseSoup(soup(...portico(false)));
+  assert.ok(hole.seeThrough.rays > 0, JSON.stringify(hole.seeThrough));
+});
+
+test('a tall roof over a gap 5 m deep with no columns still fails', () => {
+  const r = analyseSoup(soup(boxQuads(0, 0, 0, 10, 8, 5), boxQuads(0, 8, 0, 10, 8.3, 10)));
+  assert.ok(r.seeThrough.rays > 0, JSON.stringify(r.seeThrough));
+});
