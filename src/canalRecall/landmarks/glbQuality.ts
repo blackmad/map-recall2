@@ -834,14 +834,18 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
     const cw = Math.ceil((gx1 - gx0 + 2) / CELL), ch = Math.ceil((gz1 - gz0 + 2) / CELL);
     if (cw * ch <= 16_000_000) {
       const occ = new Uint8Array(cw * ch);
-      const mark = (x: number, z: number) => { const ix = Math.floor((x - gx0) / CELL), iz = Math.floor((z - gz0) / CELL); if (ix >= 0 && iz >= 0 && ix < cw && iz < ch) occ[iz * cw + ix] = 1; };
+      // Highest surface seen in each occupied cell: a boundary made only of low geometry (a stoop, steps, a plinth)
+      // is a low appendage, not a wall, so rays aimed at it above its top are not see-through.
+      const top = new Float32Array(cw * ch).fill(-Infinity);
+      const mark = (x: number, z: number, y: number) => { const ix = Math.floor((x - gx0) / CELL), iz = Math.floor((z - gz0) / CELL); if (ix >= 0 && iz >= 0 && ix < cw && iz < ch) { occ[iz * cw + ix] = 1; if (y > top[iz * cw + ix]) top[iz * cw + ix] = y; } };
       for (let t = 0; t < nTri; t++) {
         if (!inMain(t)) continue;
+        const yy = [0, 1, 2].map(k => soup.positions[soup.indices[t * 3 + k] * 3 + 1]);
         const [A, B, C] = [0, 1, 2].map(k => { const i = soup.indices[t * 3 + k] * 3; return [soup.positions[i], soup.positions[i + 2]] as [number, number]; });
-        const edges: [[number, number], [number, number]][] = [[A, B], [B, C], [C, A]];
-        for (const [p0, p1] of edges) {
+        const edges: [[number, number], [number, number], number, number][] = [[A, B, yy[0], yy[1]], [B, C, yy[1], yy[2]], [C, A, yy[2], yy[0]]];
+        for (const [p0, p1, y0, y1] of edges) {
           const L = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]), n = Math.max(1, Math.ceil(L / (CELL / 2)));
-          for (let k = 0; k <= n; k++) mark(p0[0] + (p1[0] - p0[0]) * k / n, p0[1] + (p1[1] - p0[1]) * k / n);
+          for (let k = 0; k <= n; k++) mark(p0[0] + (p1[0] - p0[0]) * k / n, p0[1] + (p1[1] - p0[1]) * k / n, y0 + (y1 - y0) * k / n);
         }
         const den = (B[1] - C[1]) * (A[0] - C[0]) + (C[0] - B[0]) * (A[1] - C[1]);
         if (Math.abs(den) < 1e-9) continue;
@@ -850,7 +854,7 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
         for (let iz = iz0; iz <= iz1; iz++) for (let ix = ix0; ix <= ix1; ix++) {
           const px = gx0 + (ix + 0.5) * CELL, pz = gz0 + (iz + 0.5) * CELL;
           const l1 = ((B[1] - C[1]) * (px - C[0]) + (C[0] - B[0]) * (pz - C[1])) / den, l2 = ((C[1] - A[1]) * (px - C[0]) + (A[0] - C[0]) * (pz - C[1])) / den;
-          if (l1 >= 0 && l2 >= 0 && 1 - l1 - l2 >= 0) occ[iz * cw + ix] = 1;
+          if (l1 >= 0 && l2 >= 0 && 1 - l1 - l2 >= 0) { occ[iz * cw + ix] = 1; const yh = l1 * yy[0] + l2 * yy[1] + (1 - l1 - l2) * yy[2]; if (yh > top[iz * cw + ix]) top[iz * cw + ix] = yh; }
         }
       }
       const at = (ix: number, iz: number) => (ix < 0 || iz < 0 || ix >= cw || iz >= ch ? 0 : occ[iz * cw + ix]);
@@ -873,6 +877,7 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
         // Aim inward (against the outward normal).
         const dx = -nx, dz = -nz;
         for (const h of th.rayHeights) {
+          if (top[iz * cw + ix] < h - 0.1) continue;   // low appendage (stoop, steps): the ray passes over it, no wall to see through
           const target: V3 = [ex + dx, h, ez + dz];
           if (target[1] > bmax[1] || !castUp(target, -1)) continue;
           seeThrough.tested++;

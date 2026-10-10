@@ -1,0 +1,23 @@
+{
+  "name": "Trippenhuis",
+  "landmarkId": "trippenhuis",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Trippenhuis",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012171636"
+  ],
+  "pandId": "0363100012171636",
+  "materialOverrides": {
+    "sandstone": "#7c7870",
+    "stone": "#a39c8f",
+    "slate": "#4a4d52",
+    "glass": "#52646e",
+    "frame": "#d9d6cc",
+    "dark": "#2a2b2d",
+    "white": "#e7e3d6",
+    "brick": "#8b4f3c",
+    "greyBrick": "#6a6760",
+    "bronze": "#4b5448"
+  },
+  "surveySource": "Current BAG 0363100012171636 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; rusticated ground storey, eight fluted Corinthian pilasters, window rows, swag panels, entablature, pediment with arms, mortar-shaped chimneys and the rear garden front measured by eye from the 2021/2025 municipal panoramas and the Vingboons print (rear inferred); no pixels or meshes imported."
+}
