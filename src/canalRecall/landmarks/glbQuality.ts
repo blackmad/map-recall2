@@ -824,7 +824,8 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   // ray from 3 m outside the edge to 1 m inside it. A ray counts as see-through only when the point 1 m inside is
   // roofed (a wall had to be crossed) and the ray hits nothing. A ray that misses is still closed when it runs under
   // a LOW soffit (a porch or canopy at most max(6 m, ray + 4 m) above ground) and meets a wall within 4 m of the edge.
-  // Main roofs and upper storeys never qualify, so deep gaps under a tall roof stay gaps.
+  // Main roofs and upper storeys never qualify, so deep gaps under a tall roof stay gaps. A columned portico (supports beside
+  // the gap, cover over it, wall within 6 m) is the one exception for tall cover.
   const seeThrough = {rays: 0, tested: 0, points: [] as V3[]};
   if (mainPts.length >= 3 && !site) {
     const CELL = 0.25;
@@ -888,6 +889,24 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
             if (ext > 0) {
               const cap = Math.max(minY + 6, h + 4);
               for (let s = 3; s < ext - 0.2; s += 0.5) if (lowestAbove([o[0] + dx * s, h, o[2] + dz * s]) <= cap) { hit = ext; break; }
+            }
+          }
+          if (hit < 0) {
+            // Open classical portico: free-standing columns carry a high entablature over the column line, with the real
+            // wall up to 6 m behind it. Closed when the ray runs under continuous cover (<= 16 m) to a wall within 6 m
+            // of the edge AND column-like supports stand on both sides of the gap at ray height (a bare tall roof has none), or the
+            // wall is within 1.5 m of the edge (a deep cornice over a solid base needs no columns).
+            const deep = firstHit(o, [dx, 0, dz], 9 - 0.01);
+            if (deep > 0) {
+              let covered = true;
+              for (let s = 3.3; s < deep - 0.2 && covered; s += 0.5) if (lowestAbove([o[0] + dx * s, h, o[2] + dz * s]) > 16) covered = false;
+              let columns = false;
+              for (const sd of [3.2, 3.6, 4]) {
+                if (columns) break;
+                const px = o[0] + dx * sd, pz = o[2] + dz * sd;
+                if (firstHit([px, h, pz], [-dz, 0, dx], 6) > 0 && firstHit([px, h, pz], [dz, 0, -dx], 6) > 0) columns = true;
+              }
+              if (covered && (columns || deep - 3 <= 1.5)) hit = deep;
             }
           }
           if (hit < 0) {
