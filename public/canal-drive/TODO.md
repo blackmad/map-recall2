@@ -181,6 +181,9 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 - **Audit see-through test is hull-limited**: cast rays fully through the
   bbox (or from outside the footprint) in `glbQuality.ts`; today concave
   footprints flag false holes. Madame Tussauds has small roof-junction gaps.
+- **Street chunk fallback**: if a chunk GLB fails to load, its houses are
+  already out of the model list and the OSM extrusion shows; restore the
+  per-house specs on failure. Demo page stats table scrolls sideways on phone.
 - **Review harness follow-ups**: `review-sheet.ts` needs ordinary-house
   support (no catalogue entry/anchor) before Bilderdijkstraat re-review; ground
   NAP offset not applied to the matched camera; record party-wall bearings per
