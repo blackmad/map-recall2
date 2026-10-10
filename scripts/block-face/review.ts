@@ -19,8 +19,9 @@ import {NodeIO} from '@gltf-transform/core';
 import {KHRMeshQuantization} from '@gltf-transform/extensions';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {compare, measureFacade, type FacadeInventory, type MaterialSoup} from '../../src/canalRecall/landmarks/facadeCompare.ts';
-import type {BlockFaceIntent} from '../../src/canalRecall/blockFace/intent.ts';
+import {houseIntents, type BlockFaceIntent} from '../../src/canalRecall/blockFace/intent.ts';
 import {measureWallColour, toHex} from '../../src/canalRecall/blockFace/wallColour.ts';
+import {compareBands, countBands, groundStoreysOf, type FrontBands} from '../../src/canalRecall/blockFace/openingCount.ts';
 import {FACES, STAGING} from './intake.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
@@ -33,13 +34,29 @@ async function chunkSoup(file: string): Promise<MaterialSoup> {
     const mat = prim.getMaterial()!, slot = (mat.getExtras() as any).materialSlot ?? 'brick', c = mat.getBaseColorFactor();
     // Sign lettering (signage.ts) shares the door slot; it is not an opening.
     if ((mat.getExtras() as any).canalhouseSurface === 'sign') continue;
-    const mi = materials.length; materials.push({name: slot, rgb: [c[0], c[1], c[2]]});
+    // Shop joinery (pui posts, arcade piers) shares the door slot; only door/shutter panes count as openings.
+    const mi = materials.length; materials.push({name: slot === 'door' && (mat.getExtras() as any).canalhouseSurface === 'shop' ? 'shop' : slot, rgb: [c[0], c[1], c[2]]});
     const base = positions.length / 3, pos = prim.getAttribute('POSITION')!, idx = prim.getIndices()!;
     for (let v = 0; v < pos.getCount(); v++) positions.push(...pos.getElement(v, []));
     for (let k = 0; k < idx.getCount(); k++) indices.push(base + idx.getScalar(k));
     for (let t = 0; t < idx.getCount() / 3; t++) triMaterial.push(mi);
   }
   return {positions, indices, triMaterial, materials};
+}
+
+const roundOpening = (o: {t0: number; t1: number; y0: number; y1: number}) => ({t0: +o.t0.toFixed(2), t1: +o.t1.toFixed(2), y0: +o.y0.toFixed(2), y1: +o.y1.toFixed(2)});
+
+/** Storey bands per front of a pand, fronts left to right in proportion to their compiled widths. */
+export function frontBands(intentFronts: {id: string; basement?: string; shopfront?: {storeys?: number} | null}[], perPand: {storeyHeightsM: number[]; fronts?: {id: string; widthM: number; storeyHeightsM: number[]}[]}, lengthM: number): FrontBands[] {
+  const compiled = perPand.fronts ?? [{id: intentFronts[0].id, widthM: 1, storeyHeightsM: perPand.storeyHeightsM}];
+  const total = compiled.reduce((a, f) => a + f.widthM, 0);
+  let t = 0;
+  return compiled.map((f, k) => {
+    const intent = intentFronts.find(x => x.id === f.id) ?? intentFronts[0];
+    const t0 = t; t += f.widthM / total * lengthM;
+    // The outer edges take everything (openings measured from the span start may overhang it by a pixel).
+    return {id: f.id, t0: k === 0 ? -1 : +t0.toFixed(2), t1: k === compiled.length - 1 ? +(lengthM + 1).toFixed(2) : +t.toFixed(2), storeyHeightsM: f.storeyHeightsM, groundStoreys: groundStoreysOf(intent)};
+  });
 }
 
 export async function reviewFace(faceId: string, glbOverride?: string, label?: string) {
@@ -68,14 +85,19 @@ export async function reviewFace(faceId: string, glbOverride?: string, label?: s
     return measureWallColour({photo: photoRaw, model: modelRaw, width: W, height: H, box: {x0: Math.round(s.px[0] + 8), x1: Math.round(s.px[1] - 8), y0: Math.max(0, Math.round(H - (eaves - 1) * ppm)), y1: Math.round(H - 3.8 * ppm)}});
   });
 
-  // Facade-compare per pand span (photo counts from the rhythm spec vs the orthographic material render).
-  const soup = await chunkSoup(glb);
+  // Facade-compare per pand span (photo counts from the rhythm spec vs the orthographic material render). Openings are
+  // counted per storey band (openingCount.ts): the ground band (pui/arcade/shop with its transoms, a basement) as bays,
+  // then each upper storey, then attic rows; gable peaks as before.
+  const soup = await chunkSoup(glb), resolved = houseIntents(face);
   const fc = face.houses.map((h, i) => {
-    const s = strip.spans[i];
-    const inv: FacadeInventory = {name: h.pandId.slice(-6), bearing: 180, span: [s.x0M + 0.05, s.x1M - 0.05], depthBand: 3, openings: ['glass'],
-      ...(h.rhythm.photoRows ? {rows: h.rhythm.photoRows} : {}), ...(h.rhythm.photoGables !== undefined ? {gables: h.rhythm.photoGables} : {})};
-    const m = measureFacade(soup, inv);
-    return {pand: h.pandId, checks: compare(inv, m), wallColour: wall[i], measured: {rows: m.rows, rowHeights: m.rowHeights, gables: m.gables, columns: m.columns}};
+    const s = strip.spans[i], span: [number, number] = [s.x0M + 0.05, s.x1M - 0.05];
+    const inv: FacadeInventory = {name: h.pandId.slice(-6), bearing: 180, span, depthBand: 3, openings: ['glass'], ...(h.rhythm.photoGables !== undefined ? {gables: h.rhythm.photoGables} : {})};
+    const m = measureFacade(soup, inv), every = measureFacade(soup, {...inv, openings: ['glass', 'door']});
+    const fronts = frontBands(resolved[i].fronts, report.perPand[i], span[1] - span[0]);
+    const bands = countBands(m.openings, every.openings, fronts);
+    const checks = [...(h.rhythm.photoRows ? compareBands(inv.name, h.rhythm.photoRows, bands, {groundRows: h.rhythm.photoGroundRows}) : []), ...compare(inv, m)];
+    return {pand: h.pandId, checks, wallColour: wall[i], measured: {bands, rows: m.rows, rowHeights: m.rowHeights, gables: m.gables, columns: m.columns}, fronts,
+      openings: {glazed: m.openings.map(roundOpening), all: every.openings.map(roundOpening)}};
   });
   await fs.writeFile(path.join(out, 'facade-compare.json'), JSON.stringify(fc, null, 1) + '\n');
 

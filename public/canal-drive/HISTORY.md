@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## Block-face review counts storey bands; street shots show the gables (2026-10-10)
+
+The opening counter mixed arcade transoms, fanlights and mezzanines with
+storeys. `blockFace/openingCount.ts` splits each front into a ground band
+(basement + ground storey, compiled heights), upper storeys and attic rows;
+stacked openings in a band count once. Hand-checked counts for 34 pands are
+pinned (`fixtures/opening-profiles.json`), and real errors still fail (no.
+45 with 4 rows above its arcade, 157154's 3-light gable, 236206's ground
+bays). It caught an integrator misread: no. 45 has three rows above the
+arcade, not four. Street shots now stand across the street/canal at 1.7 m
+eye height with gables in frame (`BLOCK_FACES=a,b` subsets).
+
 ## Oudezijds Voorburgwal 115–125 installed (2026-10-10)
 
 Six pands, five Rijksmonuments (6062–6066), two bell gables between cornice
@@ -52,9 +64,10 @@ throwing, and continuity.measuredEaves. 3DBAG read nos. 45, 49, 57 eaves
 missing from LoD2.2); the gate now records it as a source limit when the
 model matches BAG (IoU ≥ 0.9). Audit "holes elsewhere" were trimmed party
 walls past the end of a shared edge (`partyLoops.ts`). Integrator viewed the
-strip sheet, corrected no. 45 (177924) from 4 to 5 storeys (the photo shows
-four rows above the arcade, confirmed by the reviewer's row heights), and
-reinstalled. Lean is not measurable from the rectified strip, so none is applied.
+strip sheet. (Correction, same day: the integrator briefly set no. 45 to 5
+storeys from a misread overlay; the photo shows three window rows above the
+arcade, so 4 storeys was right. Restored, and the new band-aware counter
+pins it.) Lean is not measurable from the rectified strip, so none is applied.
 
 ## Bilderdijkstraat even side 72–166 installed as block faces (2026-10-10)
 

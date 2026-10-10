@@ -48,6 +48,10 @@ export interface RhythmSpec {
   citation: string;
   /** Machine-checkable counts from the photo for facade-compare: glazed openings per row bottom→top (ground row = shop glass + fanlights), silhouette peaks. */
   photoRows?: number[];
+  /** How many leading `photoRows` entries belong to the ground band (ground floor/pui incl. its transom or mezzanine row,
+   * and a basement). Default: 1, or 2 when the second row is a lone transom/mezzanine row (fewer openings than the rows
+   * on either side, e.g. `[2, 1, 3, 3, 3, 1]`). See `blockFace/openingCount.ts`. */
+  photoGroundRows?: number;
   photoGables?: number;
   /** Things the schema cannot express that the model will therefore get wrong (shown on the review sheet). */
   schemaLimits?: string[];

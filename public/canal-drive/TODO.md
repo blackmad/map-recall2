@@ -19,6 +19,11 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
+- **Gable details seen at street level**: hoist beams read as loose black
+  poles (worst on Utrechtsestraat neck gables) — check length/visibility;
+  OZA 45 and 47 crests modelled as grey domes (photo: carved crest, spiky
+  ornament); gable-peak check counts crests/pediments as peaks and never
+  applies its "2 m wide at half height" rule.
 - **Photo crowns, follow-ups**: check Utrechtsestraat 178784 (point gable
   ~3 m higher in photo) and 178875 front b (5 steps, not 3); bilder 162444
   authored neck 4.1 m above the photo eaves (likely authoring error); compiled
