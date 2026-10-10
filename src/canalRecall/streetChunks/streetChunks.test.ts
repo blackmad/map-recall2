@@ -96,7 +96,9 @@ test('?streetChunks flag parsing', () => {
   assert.equal(streetChunksEnabled('?streetChunks=1'), true);
   assert.equal(streetChunksEnabled('?a=b&streetChunks=true'), true);
   assert.equal(streetChunksEnabled('?streetChunks=0'), false);
-  assert.equal(streetChunksEnabled(''), false);
+  assert.equal(streetChunksEnabled(''), true);
+  assert.equal(streetChunksEnabled('?streetChunks=false'), false);
+  assert.equal(streetChunksEnabled('?a=b'), true);
 });
 
 // The real Bilderdijkstraat block face: 155417 .. 081118, seven houses along the west side.
