@@ -73,6 +73,7 @@ import {buildMediamatic} from './mediamatic-builder';
 import {buildHaparandaweg13} from './haparandaweg-13-builder';
 import {buildHaparandaweg11} from './haparandaweg-11-builder';
 import {buildHaparandaweg9} from './haparandaweg-9-builder';
+import {buildShellTechnologyCentre} from './shell-technology-centre-builder';
 import {buildBookingHq} from './booking-hq-builder';
 import {buildHiltonAmsterdam} from './hilton-amsterdam-builder';
 import {buildBlankenstraat15} from './blankenstraat-15-builder';
@@ -590,6 +591,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='haparandaweg-2-4')buildHaparandaweg24(w,d,helpers);
     else if(id==='haparandaweg-8-338')buildHaparandaweg8338(w,d,helpers);
     else if(id==='haparandaweg-9')buildHaparandaweg9(w,d,helpers);
+    else if(id==='shell-technology-centre')buildShellTechnologyCentre(w,d,helpers);
     else if(id==='booking-hq')buildBookingHq(w,d,helpers);
     else if(id==='hilton-amsterdam')buildHiltonAmsterdam(w,d,helpers);
     else if(id==='blankenstraat-15')buildBlankenstraat15(w,d,helpers);

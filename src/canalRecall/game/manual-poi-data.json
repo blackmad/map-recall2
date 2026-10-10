@@ -2445,5 +2445,18 @@
     "https://api.data.amsterdam.nl/v1/bag/panden/0363100012250152/"
   ],
   "preferDescription": true
+},
+{
+  "modelId": "shell-technology-centre",
+  "landmarkId": "shell-technology-centre",
+  "name": "Shell Technology Centre Amsterdam",
+  "description": "This dark-brick research campus on the Grasweg in Amsterdam-Noord was built between 2005 and 2009 by Arcadis Architecten and Van Mourik as the new home of Shell's Amsterdam laboratory, with about 80,000 m2 of offices, laboratories, test halls and workshops. Crown Prince Willem-Alexander opened it in September 2009. The lab itself goes back to 1914, when the Bataafsche Petroleum Maatschappij started it with nine people on a 27-hectare site; since 2021 the complex is open to start-ups, universities and companies as the Energy Transition Campus Amsterdam, with around a thousand people working here.",
+  "funFact": "In 1954 the Shell laboratory in Amsterdam became the first Dutch company to put an electronic computer into service, the second computer in the whole country after the ARRA I. Today its engineers design and build most of the roughly 1,300 test rigs on the campus themselves.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Energy_Transition_Campus_Amsterdam",
+  "additionalSources": [
+    "https://nl.wikipedia.org/wiki/Overhoeks_(Amsterdam)",
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012202175/"
+  ],
+  "preferDescription": true
 }
 ]
