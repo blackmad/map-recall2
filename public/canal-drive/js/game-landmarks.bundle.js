@@ -20307,9 +20307,7 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      },
-      status: "held",
-      heldReason: "Integrator 2026-10-10 (after rework): roofline is still plain 3DBAG roof planes; the signature cluster of ornate gables, dormer towers and pinnacles is missing"
+      }
     },
     {
       id: "hotel-de-l-europe",
@@ -24829,16 +24827,18 @@ Map source: ${osmUrl(places[i][0])}`);
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#6d4538",
-        greyBrick: "#68413a",
+        brick: "#684a3c",
+        greyBrick: "#5f463c",
         stone: "#bdb29a",
         slate: "#4a4f57",
         glass: "#566672",
         frame: "#d9d3c2",
         dark: "#22262a",
         white: "#e8e2d2",
-        red: "#a8503c",
-        concrete: "#8f908c"
+        red: "#8e4b3b",
+        concrete: "#8f908c",
+        copper: "#4e433c",
+        ochre: "#7a5a3a"
       },
       attribution: {
         title: "Chass\xE9kerk",
@@ -25102,9 +25102,7 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      },
-      status: "held",
-      heldReason: "Integrator 2026-10-10: the twin towers are stubby belfries; the real towers are tall and slender, well above the gable. SE wing is a flat box; brick too orange"
+      }
     },
     {
       id: "pakhuis-de-zwijger",

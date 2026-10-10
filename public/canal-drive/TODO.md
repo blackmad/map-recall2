@@ -49,14 +49,8 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   audit see-through now back to FAIL on real gaps: adam-tower, de-gooyer,
   haarlemmermeerstation, hart-museum, huis-bartolotti, pulitzer-amsterdam
   (footprint-edge rays; check each against photos).
-  American Hotel held (2026-10-10, after one rework): colour, SE axes and
-  clock-tower cap are fixed; the roofline is still plain 3DBAG planes where
-  the real hotel has its cluster of ornate gables, dormer towers and
-  pinnacles. Leaf-off panorama frames: scripts/landmarks/panolist.mjs.
   Krasnapolsky held (2026-10-10): old Dam front matches; the modern wing and
   lower brick building need photo counts and the dark glass bays.
-  Chassékerk held (2026-10-10): towers must be tall and slender, well above
-  the gable (they are stubby belfries); SE wing is a flat box.
   Pakhuis de Zwijger held (2026-10-10): colour fixed (dark weathered brick,
   rust strips). Specs can now declare `throughPassages` (corridor + axis +
   evidence); its Piet Heinkade roadway is declared. Still FAILs see-through
@@ -70,6 +64,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   2025 west-side photo, drop it, fix tower proportions, then blind-count.
   Bloemgrachtkerk (tower removed 2019, redevelopment) and Gemaal
   Mercatorstraat (tiny kiosk) skipped.
+  Landmark triangle budget disagrees: the lane brief allows 40,000 but
+  scripts/check-landmark-attachment.ts caps at 30,000 (American Hotel cut its
+  arch segments from 8 to 4 to fit). Decide which is right and align them.
+  Chassékerk towers follow the 3DBAG lidar (23.5 m, ~2 m over the ridge);
+  lidar truncates slender towers (Vondelkerk spire was 12 m short), so
+  check the real tower height in a source and raise if needed.
   World Trade Center Amsterdam held (2026-10-10): towers A–G are ONE BAG
   pand (0363100012096613, ~200 x 95 m); a recognizable model needs a photo
   of each tower face (Commons has only atrium/logo/tower H). Footprints and
