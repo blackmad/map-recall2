@@ -1,0 +1,110 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "wallen-oza-41-57",
+ "street": "Oudezijds Achterburgwal",
+ "sources": [
+  {"id": "strip-2025-01-14", "kind": "street-panorama", "capturedAt": "2025-01-14", "image": "staging/block-face/wallen-oza-41-57/strip.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+  {"id": "rijksmonument-9", "kind": "monument-record", "capturedAt": "2026-10-10", "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/9", "license": "RCE Rijksmonumentenregister"},
+  {"id": "rijksmonument-10", "kind": "monument-record", "capturedAt": "2026-10-10", "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/10", "license": "RCE Rijksmonumentenregister"},
+  {"id": "rijksmonument-11", "kind": "monument-record", "capturedAt": "2026-10-10", "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/11", "license": "RCE Rijksmonumentenregister"},
+  {"id": "rijksmonument-13", "kind": "monument-record", "capturedAt": "2026-10-10", "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/13", "license": "RCE Rijksmonumentenregister"},
+  {"id": "rijksmonument-14", "kind": "monument-record", "capturedAt": "2026-10-10", "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/14", "license": "RCE Rijksmonumentenregister"},
+  {"id": "rijksmonument-16", "kind": "monument-record", "capturedAt": "2026-10-10", "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/16", "license": "RCE Rijksmonumentenregister"},
+  {"id": "rijksmonument-3707", "kind": "monument-record", "capturedAt": "2026-10-10", "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/3707", "license": "RCE Rijksmonumentenregister"}
+ ],
+ "authoring": {"author": "claude-sonnet-5.5 (wallen faces lane), from strip-labelled.png + 4 zoomed crops (gables, ground floors)", "passes": 1, "note": "Oudezijds Achterburgwal 41-57 (odd, canal side), 8 pands, 9 fronts (53 and 55 share one pand). Gable types follow the Rijksmonumentenregister descriptions where a monument record exists (9 halsgevel, 14 neck gable with natuurstenen vleugelstukken, 16 halsgevel, 3707 klokgevel, 10/11/13 straight cornices) and the strip otherwise (47, 49, 55, 57 not checked against the register for 47)."},
+ "houses": [
+  {
+   "pandId": "0363100012177916", "slug": "wface-177916", "address": "Oudezijds Achterburgwal 41",
+   "design": {"fronts": [{"id": "front0", "street": "Oudezijds Achterburgwal", "gable": "neck", "crownCap": "rounded", "storeys": 3, "bays": [2, 2, 3], "atticWindows": 1, "doorBay": null, "basement": "none", "cornice": "none", "windows": "sash-small-panes", "hoist": false, "bands": "storey",
+      "shopfront": {"colour": "cream-painted", "fascia": false, "displayWindows": 2, "stallriser": "medium", "evidence": "strip 2025-01-14: two framed ground windows, cream joinery"}}],
+    "roof": {"material": "black-tile"}, "palette": {"brick": "#6e4030", "frame": "cream-painted", "door": "#6b1d1e", "stone": "cream"}},
+   "groundFloor": {"use": "other", "category": "OSM: amenity=brothel node (unnamed); window-fronted ground floor", "osm": {"type": "node", "id": 5531914368, "tags": "unnamed"}, "bag": ["winkelfunctie", "kantoorfunctie", "woonfunctie"], "photoDate": "2025-01-14", "agreement": "osm-and-photo",
+    "note": "Two glazed ground-floor windows in cream joinery with a lit doorway below; rendered as a plain glazed front, no signage."},
+   "rhythm": {"bays": "2 bays on storeys 0-1; a 3-light window group on storey 2; 1 attic window", "windowsPerStorey": "ground: 2 glazed windows | 1: 2 | 2: 1 wide 3-light window | gable: 1", "symmetry": "none (3-light group wider than the 2-window rows)", "groundFloor": "cream glazed windows over a stepped base", "signage": "none", "roofline": "halsgevel (neck gable) with scrolled shoulders and a rounded cap; Rijksmonument 9: 'Halsgevel met gedeelde vleugelstukken', 1st/2nd quarter 18th c., corner house", "citation": "strip.jpg pand 1 (x 0-168 px, 2025-01-14); monument 9", "photoRows": [2, 2, 3, 1], "photoGables": 1,
+    "schemaLimits": ["wing pieces are shared with a neighbouring corner house and sweep out wider than the neck gable library shape", "3-light window group above 2-window rows: per-storey bay counts are equal-spaced, not aligned as on the photo", "corner return onto the side street not modelled", "front leans slightly: lean not expressible"]}
+  },
+  {
+   "pandId": "0363100012177915", "slug": "wface-177915", "address": "Oudezijds Achterburgwal 43",
+   "design": {"fronts": [{"id": "front0", "street": "Oudezijds Achterburgwal", "gable": "cornice", "storeys": 3, "bays": 2, "dormers": 1, "doorBay": null, "basement": "none", "cornice": "bracketed", "windows": "sash", "hoist": false,
+      "shopfront": {"colour": "cream-painted", "fascia": false, "displayWindows": 3, "stallriser": "low", "evidence": "strip 2025-01-14: 18th-c. timber pui, three glazed bays under a red band"}}],
+    "roof": {"material": "slate"}, "palette": {"brick": "#8a4a3a", "frame": "cream-painted", "door": "#6b1d1e", "stone": "cream"}},
+   "groundFloor": {"use": "other", "category": "OSM: amenity=brothel node (unnamed); window-fronted ground floor", "osm": {"type": "node", "id": 5531941310, "tags": "unnamed"}, "bag": ["winkelfunctie", "woonfunctie"], "photoDate": "2025-01-14", "agreement": "osm-and-photo",
+    "note": "Timber shopfront (pui) with three glazed bays and a red lintel band; rendered as a plain glazed front, no signage."},
+   "rhythm": {"bays": "2", "windowsPerStorey": "ground: pui with 3 glazed bays | 1: 2 | 2: 2 | roof: central dormer", "symmetry": "near-symmetric upper storeys", "groundFloor": "timber pui, glazed bays", "signage": "none", "roofline": "straight cornice with consoles, mansard roof behind and a central dormer under a pediment; Rijksmonument 10: 'houten pui (18th c.) en bovenstuk onder rechte lijst met consoles (derde kwartaal 19th c.)'", "citation": "strip.jpg pand 2 (x 168-330 px, 2025-01-14); monument 10", "photoRows": [3, 2, 2, 1], "photoGables": 0,
+    "schemaLimits": ["mansard roof with a pedimented centre dormer is a flat cornice front plus a plain dormer", "cornice consoles approximated by the bracketed cornice"]}
+  },
+  {
+   "pandId": "0363100012177924", "slug": "wface-177924", "address": "Oudezijds Achterburgwal 45",
+   "design": {"fronts": [{"id": "front0", "street": "Oudezijds Achterburgwal", "gable": "cornice", "storeys": 4, "bays": 3, "doorBay": null, "basement": "none", "cornice": "heavy", "windows": "cross", "hoist": false, "tallGround": true,
+      "shopfront": {"colour": "#d9ccaa", "fascia": false, "displayWindows": 3, "stallriser": "none", "evidence": "strip 2025-01-14: cream pilastered ground storey with dark glazed openings"}}],
+    "roof": {"material": "bitumen"}, "palette": {"brick": "#6a4030", "frame": "cream-painted", "door": "#2a2a2a", "stone": "cream"}},
+   "groundFloor": {"use": "services", "name": "Leger des Heils", "category": "amenity=social_facility", "osm": {"type": "node", "id": 5531937104, "name": "Leger des Heils", "tags": "amenity=social_facility"}, "bag": ["industriefunctie"], "photoDate": "2025-01-14", "agreement": "osm-only",
+    "note": "Cream pilastered ground storey with dark glazed doors and windows; no legible sign on the strip, so none is modelled."},
+   "rhythm": {"bays": "3, identical on all storeys", "identicalBays": "storeys 1-3", "windowsPerStorey": "ground: pilastered openings | 1: 3 | 2: 3 | 3: 3 (cross-bar windows) | roof: small rooftop gablet", "symmetry": "symmetric", "groundFloor": "cream pilasters, dark glazing", "signage": "none legible (a cornice frieze carries lettering 'DE BU...' that is not readable)", "roofline": "heavy dentilled cornice with a frieze; Rijksmonument 11: 'gevel onder rechte lijst (rond 1800)', house from the end of the 16th c.", "citation": "strip.jpg pand 3 (x 330-572 px, 2025-01-14); monument 11", "photoRows": [3, 3, 3, 3], "photoGables": 0,
+    "schemaLimits": ["frieze lettering not modelled", "window frames are dark on the photo and cream here (the cornice takes the frame colour)", "rooftop gablet above the cornice not modelled", "front leans slightly: lean not expressible"]}
+  },
+  {
+   "pandId": "0363100012177922", "slug": "wface-177922", "address": "Oudezijds Achterburgwal 47",
+   "design": {"fronts": [{"id": "front0", "street": "Oudezijds Achterburgwal", "gable": "cornice", "storeys": 4, "bays": 3, "doorBay": null, "basement": "none", "cornice": "heavy", "windows": "sash", "hoist": false, "tallGround": true,
+      "balconies": {"storeys": [1, 2, 3], "bays": [0, 1, 2]},
+      "shopfront": {"colour": "#8a8a84", "fascia": false, "displayWindows": 2, "stallriser": "none", "entrance": "left", "evidence": "strip 2025-01-14: red door left, two roller-shuttered windows right"}}],
+    "roof": {"material": "bitumen"}, "palette": {"brick": "#6a4030", "frame": "cream-painted", "door": "#7a1f20", "stone": "cream"}},
+   "groundFloor": {"use": "other", "name": "Hotel Royal Taste", "category": "OSM: hotel (name only, no tourism tag read)", "osm": {"type": "node", "id": 1741487897, "name": "Hotel Royal Taste"}, "bag": ["bijeenkomstfunctie"], "photoDate": "2025-01-14", "agreement": "osm-and-photo",
+    "note": "Red door at the left, two grey roller shutters, a green band over them whose lettering is not legible; no sign modelled."},
+   "rhythm": {"bays": "3, identical on all storeys", "identicalBays": "storeys 1-3", "windowsPerStorey": "ground: door + 2 shuttered windows | 1: 3 French windows with rails | 2: 3 | 3: 3", "symmetry": "symmetric above the ground floor", "groundFloor": "red door left, two shuttered windows", "signage": "illegible band", "roofline": "wide cream cornice frieze with ornament, flat roof with rooftop installations", "citation": "strip.jpg pand 4 (x 572-791 px, 2025-01-14)", "photoRows": [2, 3, 3, 3], "photoGables": 0,
+    "schemaLimits": ["not a Rijksmonument: gable type from the strip only", "window frames are red on the photo and cream here (the cornice takes the frame colour)", "front leans slightly: lean not expressible"]}
+  },
+  {
+   "pandId": "0363100012177923", "slug": "wface-177923", "address": "Oudezijds Achterburgwal 49",
+   "design": {"fronts": [{"id": "front0", "street": "Oudezijds Achterburgwal", "gable": "cornice", "storeys": 4, "bays": 3, "doorBay": null, "basement": "none", "cornice": "bracketed", "windows": "cross", "hoist": false, "tallGround": true,
+      "shopfront": {"colour": "#8a8a84", "fascia": false, "displayWindows": 1, "stallriser": "none", "entrance": "left", "evidence": "strip 2025-01-14: dark door left, one grey roller-shuttered window right"}}],
+    "roof": {"material": "bitumen"}, "palette": {"brick": "#5e3c30", "frame": "#d9ccaa", "door": "#2a2a2a", "stone": "cream"}},
+   "groundFloor": {"use": "other", "category": "OSM: amenity=brothel node (unnamed); window-fronted ground floor", "osm": {"type": "node", "id": 5531937102, "tags": "unnamed"}, "bag": ["woonfunctie", "winkelfunctie"], "photoDate": "2025-01-14", "agreement": "osm-and-photo",
+    "note": "Dark door at the left and one grey roller shutter; plain front, no signage."},
+   "rhythm": {"bays": "3, identical on all storeys", "identicalBays": "storeys 1-3", "windowsPerStorey": "ground: door + shuttered window | 1: 3 | 2: 3 | 3: 3 (cross windows) | frieze hatch", "symmetry": "symmetric above the ground floor", "groundFloor": "dark door, shuttered window", "signage": "none", "roofline": "wide cream cornice frieze with a small hatch and a rooftop ornament; Rijksmonument 13: 'gevel (tweede kwart 18de eeuw) onder rechte lijst met consoles (begin derde kwart 19de eeuw)'", "citation": "strip.jpg pand 5 (x 791-993 px, 2025-01-14); monument 13", "photoRows": [2, 3, 3, 3], "photoGables": 0,
+    "schemaLimits": ["lean: the front visibly leans; not expressible", "cornice frieze hatch and rooftop ornament not modelled"]}
+  },
+  {
+   "pandId": "0363100012177920", "slug": "wface-177920", "address": "Oudezijds Achterburgwal 51",
+   "design": {"fronts": [{"id": "front0", "street": "Oudezijds Achterburgwal", "gable": "neck", "crownCap": "pediment", "crownCapRise": "low", "storeys": 3, "bays": 3, "atticWindows": 1, "doorBay": null, "basement": "none", "cornice": "none", "windows": "sash", "hoist": true, "tallGround": true,
+      "shopfront": {"colour": "cream-painted", "fascia": true, "displayWindows": 3, "stallriser": "none", "entrance": "centre", "evidence": "strip 2025-01-14: wide double door centre, glazed panels either side under a cream fascia"}}],
+    "roof": {"material": "black-tile"}, "palette": {"brick": "#7a4a38", "frame": "cream-painted", "door": "#2a2a2a", "stone": "cream"}},
+   "groundFloor": {"use": "other", "category": "OSM: amenity=brothel node (unnamed); window-fronted ground floor", "osm": {"type": "node", "id": 5531937100, "tags": "unnamed"}, "bag": ["winkelfunctie", "woonfunctie"], "photoDate": "2025-01-14", "agreement": "osm-and-photo",
+    "note": "Wide glazed double door with glazed panels either side, cream fascia; plain glazed front, no signage."},
+   "rhythm": {"bays": "3, identical", "identicalBays": "storeys 1-2", "windowsPerStorey": "ground: central double door + 2 panels | 1: 3 (red curtains) | 2: 3 | gable: 1 small window with a hoist hook above", "symmetry": "symmetric", "groundFloor": "wide centre door, glazed panels", "signage": "none", "roofline": "neck gable with natural-stone wing pieces and a crab (finial) on the pedimented cap; Rijksmonument 14: wing pieces and crab, 2nd quarter 18th c., brought from Haarlemmerstraat 29 (BAG says 1954)", "citation": "strip.jpg pand 6 (x 993-1193 px, 2025-01-14); monument 14", "photoRows": [3, 3, 3, 1], "photoGables": 1,
+    "schemaLimits": ["wing pieces are volute scrolls on the photo; the library neck gable draws plain shoulders", "crab finial not modelled", "gable is lower than its neighbours' eaves; relies on 3DBAG eaves 9.6 m"]}
+  },
+  {
+   "pandId": "0363100012177943", "slug": "wface-177943", "address": "Oudezijds Achterburgwal 53-55",
+   "design": {"fronts": [
+      {"id": "a", "street": "Oudezijds Achterburgwal", "share": 0.49, "gable": "bell", "crownCap": "rounded", "storeys": 3, "bays": 3, "atticWindows": 1, "doorBay": null, "basement": "none", "cornice": "none", "windows": "sash", "hoist": true, "tallGround": true,
+       "palette": {"brick": "#7a4a3a", "frame": "cream-painted"},
+       "shopfront": {"colour": "cream-painted", "fascia": false, "displayWindows": 3, "stallriser": "none", "evidence": "strip 2025-01-14: cream columned arcade, dark glazing"}},
+      {"id": "b", "street": "Oudezijds Achterburgwal", "share": 0.51, "gable": "cornice", "storeys": 4, "bays": 3, "dormers": 1, "doorBay": null, "basement": "none", "cornice": "bracketed", "windows": "sash", "hoist": false, "tallGround": true,
+       "palette": {"brick": "#7a5242", "frame": "cream-painted"},
+       "shopfront": {"colour": "cream-painted", "fascia": false, "displayWindows": 3, "stallriser": "none", "evidence": "strip 2025-01-14: cream columned arcade under a balustraded cornice band"}}],
+    "roof": {"material": "slate"}, "palette": {"brick": "#7a4a3a", "frame": "cream-painted", "door": "#2a2a2a", "stone": "cream"}},
+   "groundFloor": {"use": "shop", "category": "BAG winkelfunctie (53) + overige gebruiksfunctie; ground floor currently unused/boarded with graffiti on the pilasters", "bag": ["winkelfunctie", "overige gebruiksfunctie"], "photoDate": "2025-01-14", "agreement": "bag-only",
+    "note": "Two columned arcades with dark glazing and graffiti on the cream pilasters; no trading name legible, no OSM business, no sign modelled."},
+   "rhythm": {"bays": "a: 3 bays, b: 3 bays; two houses, one BAG pand", "windowsPerStorey": "a: arcade | 1: 3 | 2: 3 | gable: red-white diamond shutter + hoist hook. b: arcade | 1: 3 | 2: 3 | 3: 3 | roof: pedimented centre dormer", "symmetry": "each front symmetric", "groundFloor": "cream columned arcades, one continuous", "signage": "none", "roofline": "a: klokgevel (bell gable) with scrolled shoulders and a rounded cap, red-white diamond luik; b: balustraded cornice band and a pedimented dormer. Rijksmonument 3707: 'Pand met klokgevel (XVIIIc)'", "citation": "strip.jpg pand 7 (x 1193-1627 px, 2025-01-14); monument 3707", "photoRows": [4, 3, 3, 1], "photoGables": 1,
+    "schemaLimits": ["a: red-white diamond hatch (luik) not modelled", "b: dormer is a plain dormer, not a pedimented one with wing pieces", "b: iron lamp bracket on the facade not modelled", "front a is ~1.1 m lower than b; both share one BAG pand, the face split is by share only"]}
+  },
+  {
+   "pandId": "0363100012177946", "slug": "wface-177946", "address": "Oudezijds Achterburgwal 57",
+   "design": {"fronts": [{"id": "front0", "street": "Oudezijds Achterburgwal", "gable": "neck", "crownCap": "rounded", "storeys": 4, "bays": 3, "atticWindows": 1, "doorBay": null, "basement": "stoop-and-windows", "cornice": "none", "windows": "sash", "hoist": false, "bands": "storey", "windowSurround": "none"}],
+    "roof": {"material": "black-tile"}, "palette": {"brick": "black-painted", "frame": "white", "door": "black", "stone": "cream"}},
+   "groundFloor": {"use": "residential", "category": "raised ground storey with sash windows; basement unit below (OSM: amenity=brothel and shop=convenience nodes, unnamed)", "bag": ["woonfunctie", "winkelfunctie"], "photoDate": "2025-01-14", "agreement": "photo-only",
+    "note": "The raised ground storey has ordinary sash windows; the commercial units are in the basement behind a stoop (red lettering at basement level is not legible). No shopfront modelled."},
+   "rhythm": {"bays": "3, identical on all storeys", "identicalBays": "storeys 0-3", "windowsPerStorey": "ground (raised): 3 tall sash windows | 1: 3 | 2: 3 | 3: 3 | gable: 1 square window", "symmetry": "symmetric", "groundFloor": "raised ground storey with tall windows over a basement with stoop and basement door", "signage": "red basement lettering, illegible", "roofline": "halsgevel with scrolled ears and a rounded cap with a cartouche; Rijksmonument 16: 'Gaaf hoekhuis. Halsgevel (derde kwart 18de eeuw), zijgevel onder triglyfenlijst' (corner house)", "citation": "strip.jpg pand 8 (x 1627-1838 px, 2025-01-14); monument 16", "photoRows": [3, 3, 3, 3, 1], "photoGables": 1,
+    "schemaLimits": ["cartouche on the cap and the outward scrolled ears not modelled", "corner house: the triglyph-cornice side facade is not modelled", "3DBAG flags a possible partial frontage (jog <= 1 m)", "basement shop and stoop approximated by the stoop-and-windows basement"]}
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "notes": ["No houses on this stretch share a design; eaves heights differ house by house (3DBAG 9.6-15.9 m, matching the strip). 45, 47 and 49 are three similar 4-storey cornice fronts but with different bay detailing."]
+ }
+}
