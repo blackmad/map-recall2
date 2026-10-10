@@ -25137,11 +25137,11 @@ Map source: ${osmUrl(places[i][0])}`);
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#a58c60",
-        stone: "#c4c0b4",
-        concrete: "#8e9195",
-        greyBrick: "#7d6a52",
-        red: "#cf6a2c",
+        brick: "#5c5540",
+        stone: "#85827a",
+        concrete: "#6e6c62",
+        greyBrick: "#4a4535",
+        red: "#7d4a2b",
         glass: "#5d7585",
         bronze: "#2c2e30"
       },
@@ -26123,6 +26123,82 @@ Map source: ${osmUrl(places[i][0])}`);
           ]
         ]
       }
+    },
+    {
+      id: "de-nederlandsche-bank",
+      name: "De Nederlandsche Bank",
+      landmarkId: "de-nederlandsche-bank",
+      modelUrl: "./models/de-nederlandsche-bank.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012165684"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9000635385964255,
+          52.359013088509286
+        ],
+        headingDegrees: 75.8,
+        lengthMetres: 122.5,
+        widthMetres: 112.6
+      },
+      surveyed: {
+        anchor: [
+          4.9000635385964255,
+          52.359013088509286
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012165684 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#8a3d2e",
+        concrete: "#bdb9ae",
+        stone: "#a9a597",
+        glass: "#4d6676",
+        frame: "#c9ced0",
+        dark: "#23282c",
+        white: "#e7e5df",
+        slate: "#4a4f55"
+      },
+      attribution: {
+        title: "De Nederlandsche Bank",
+        author: "Map Recall",
+        sourceUrl: "https://arcam.nl/architectuur-gids/de-nederlandsche-bank-2/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 massing; podium storeys, tile fascias, pilotis, tower window strips measured by eye from Commons photographs (2018, 2022, 2025), no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.899207816765565,
+              52.359284435708744
+            ],
+            [
+              4.8996126344794275,
+              52.35830363702108
+            ],
+            [
+              4.901333878253228,
+              52.35863811012264
+            ],
+            [
+              4.900955546718341,
+              52.35955482398523
+            ],
+            [
+              4.899207816765565,
+              52.359284435708744
+            ]
+          ]
+        ]
+      },
+      status: "held",
+      heldReason: "Integrator 2026-10-10: 3DBAG link core/annex on the tower west face likely belongs to the demolished 1990 Abma satellite (blank fin with no counterpart in 2025 photos); tower stubby; facade counts pending"
     }
   ];
 
@@ -55110,6 +55186,20 @@ Map source: ${osmUrl(places[i][0])}`);
       description: "Wladiwostok closes the west side of Azartplein on Java-eiland with a nine-storey wall of anthracite brick whose facade is bent into an arc that follows the tram turning loop in front of it. Jo Crepain designed it for the housing association Het Oosten and its future residents, who formed their own association; it was built around 1994 with 72 rental flats and maisonnettes and 13 business units. A facade-wide flight of steps leads up to the business units, and a stack of planted balconies marks the centre of the front. It won the Pyramide Wonen prize in 1998, and since about 2014 its roof has been covered with solar panels.",
       funFact: "The name is the Dutch spelling of Vladivostok, the Russian port whose name means 'rule the East' - a pun on the corporation Het Oosten. In May 2026 residents put a vane on the roof mast in the shape of the theatre ship Azart, the square's namesake.",
       sourceUrl: "https://nl.wikipedia.org/wiki/Woongebouw_Wladiwostok",
+      preferDescription: true
+    },
+    {
+      modelId: "de-nederlandsche-bank",
+      landmarkId: "de-nederlandsche-bank",
+      name: "De Nederlandsche Bank",
+      description: "The head office of the Dutch central bank stands on the Frederiksplein, where the Westeinde meets the Singelgracht. Marius Duintjer won the commission in a competition and built it between 1961 and 1968: a low, square block of about 110 by 120 metres raised on columns, with a slender office tower of roughly 70 metres beside it. Its concrete walls are clad in red-brown stoneware tiles meant to echo the brickwork of Amsterdam, and the tower's window strips get shorter as it rises. Mecanoo restored the building and reopened it to the public in 2025, and the round glass tower added to the courtyard in 1990 has been demolished.",
+      funFact: "Some residents said the red-brown facade tiles looked like bathroom tiles, but the architect chose them to match Amsterdam brick, and the renovation kept the colour. The tower was also deliberately aligned with the long view down the Utrechtsestraat.",
+      sourceUrl: "https://arcam.nl/architectuur-gids/de-nederlandsche-bank-2/",
+      additionalSources: [
+        "https://www.amsterdamsebinnenstad.nl/binnenstad/297/nederlandsche-bank.php",
+        "https://www.architectuur.org/bouwwerk/658/De_Nederlandsche_Bank.html",
+        "https://www.archdaily.com/1039156/de-nederlandsche-bank-mecanoo"
+      ],
       preferDescription: true
     }
   ];

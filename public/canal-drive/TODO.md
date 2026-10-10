@@ -64,6 +64,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   axis) and 6 at the east pilotis, where the glazed ground floor sits ~7 m
   behind the pier line, beyond the 7 m reach. Needs a tested rule for a deep
   recess under a LOW soffit, not wider tolerances.
+  De Nederlandsche Bank held (2026-10-10): the 1990 Abma round tower is
+  demolished (Mecanoo renovation 2025); the 3DBAG link core on the tower's
+  west face probably belonged to it and shows as a blank fin. Confirm with a
+  2025 west-side photo, drop it, fix tower proportions, then blind-count.
+  Bloemgrachtkerk (tower removed 2019, redevelopment) and Gemaal
+  Mercatorstraat (tiny kiosk) skipped.
   World Trade Center Amsterdam held (2026-10-10): towers A–G are ONE BAG
   pand (0363100012096613, ~200 x 95 m); a recognizable model needs a photo
   of each tower face (Commons has only atrium/logo/tower H). Footprints and
