@@ -1,370 +1,268 @@
 {
-  "id": "sea-palace",
-  "status": "source-hold",
-  "retrievedOn": "2026-10-05",
-  "identity": {
-    "osmPoiId": "n13404202880",
-    "mappedPlaceId": "local-food-3079",
-    "name": "Sea Palace",
-    "address": "Oosterdokskade 8, 1011 AE Amsterdam",
-    "poiCoordinateLonLat": [
-      4.906286,
-      52.375758
-    ],
-    "routeDestinationStatus": "Not in landmarks.json or landmark-backlog.json; preserve existing mapped OSM identity when promoting.",
-    "bagParent": null,
-    "bagNote": "Floating ship/pavilion; no BAG parent established. Do not manufacture a Pand identity."
-  },
-  "nativeFootprint": {
-    "type": "Feature",
-    "id": "w454006714",
-    "properties": {
-      "osmId": "w454006714",
-      "name": "",
-      "colour": "#d2c9bc",
-      "roofColour": "#4c8162",
-      "material": "",
-      "roofMaterial": "tiles",
-      "roofShape": "hipped",
-      "height": 9,
-      "minHeight": 0,
-      "roofHeight": 4.0
-    },
-    "geometry": {
-      "type": "MultiPolygon",
-      "coordinates": [
-        [
-          [
-            [
-              4.9059605,
-              52.3757306
-            ],
-            [
-              4.9059609,
-              52.3757289
-            ],
-            [
-              4.9059624,
-              52.3757274
-            ],
-            [
-              4.9059647,
-              52.3757263
-            ],
-            [
-              4.9064679,
-              52.3755786
-            ],
-            [
-              4.9064706,
-              52.3755782
-            ],
-            [
-              4.9064735,
-              52.3755785
-            ],
-            [
-              4.9064759,
-              52.3755794
-            ],
-            [
-              4.9064777,
-              52.3755808
-            ],
-            [
-              4.9066237,
-              52.3757671
-            ],
-            [
-              4.9066244,
-              52.3757688
-            ],
-            [
-              4.906624,
-              52.3757706
-            ],
-            [
-              4.9066226,
-              52.3757721
-            ],
-            [
-              4.9066203,
-              52.3757731
-            ],
-            [
-              4.9066004,
-              52.375779
-            ],
-            [
-              4.9064018,
-              52.3758373
-            ],
-            [
-              4.9063356,
-              52.3758567
-            ],
-            [
-              4.906137,
-              52.375915
-            ],
-            [
-              4.9061171,
-              52.3759208
-            ],
-            [
-              4.9061143,
-              52.3759213
-            ],
-            [
-              4.9061115,
-              52.375921
-            ],
-            [
-              4.906109,
-              52.3759201
-            ],
-            [
-              4.9061073,
-              52.3759187
-            ],
-            [
-              4.9059613,
-              52.3757323
-            ],
-            [
-              4.9059605,
-              52.3757306
-            ]
-          ]
-        ]
-      ]
-    }
-  },
-  "houseboatRepresentation": {
-    "id": "w454006714",
-    "ring": [
-      [
-        4.905965,
-        52.375726
-      ],
-      [
-        4.905962,
-        52.375727
-      ],
-      [
-        4.905961,
-        52.375729
-      ],
-      [
-        4.905961,
-        52.375731
-      ],
-      [
-        4.905961,
-        52.375732
-      ],
-      [
-        4.906107,
-        52.375919
-      ],
-      [
-        4.906109,
-        52.37592
-      ],
-      [
-        4.906112,
-        52.375921
-      ],
-      [
-        4.906114,
-        52.375921
-      ],
-      [
-        4.906117,
-        52.375921
-      ],
-      [
-        4.906137,
-        52.375915
-      ],
-      [
-        4.906336,
-        52.375857
-      ],
-      [
-        4.906402,
-        52.375837
-      ],
-      [
-        4.9066,
-        52.375779
-      ],
-      [
-        4.90662,
-        52.375773
-      ],
-      [
-        4.906623,
-        52.375772
-      ],
-      [
-        4.906624,
-        52.375771
-      ],
-      [
-        4.906624,
-        52.375769
-      ],
-      [
-        4.906624,
-        52.375767
-      ],
-      [
-        4.906478,
-        52.375581
-      ],
-      [
-        4.906476,
-        52.375579
-      ],
-      [
-        4.906474,
-        52.375579
-      ],
-      [
-        4.906471,
-        52.375578
-      ],
-      [
-        4.906468,
-        52.375579
-      ],
-      [
-        4.905965,
-        52.375726
-      ]
-    ],
-    "levels": 3,
-    "roof": "hipped"
-  },
-  "sourceFiles": [
-    {
-      "path": "public/data/extracts/amsterdam/buildings-colored.geojson",
-      "sha256": "a9b0e0e36e68866c77865ce6c8e40e59dda45e15a9106aa46f1208bc013148bc",
-      "format": "installed processed OSM-derived extract; original HTTP response unavailable"
-    },
-    {
-      "path": "public/data/extracts/amsterdam/houseboats.json",
-      "sha256": "abcb49b3851f3b4487d0b900ede33a13e8c7ce1ec3846cfeb4307a471e83f458",
-      "format": "installed processed OSM-derived extract; original HTTP response unavailable",
-      "metadata": {
-        "version": 1,
-        "source": "OpenStreetMap building=houseboat (+boathouse, floating=yes) via Overpass",
-        "attribution": "\u00a9 OpenStreetMap contributors, ODbL 1.0",
-        "bbox": "52.28,4.75,52.43,5.05",
-        "fetched": "2026-10-02"
-      }
-    }
+ "id": "sea-palace",
+ "status": "modelled (original geometry); no BAG pand",
+ "retrievedOn": "2026-10-10",
+ "anchor": [
+  4.906292382923983,
+  52.37574985135794
+ ],
+ "coordinateConvention": "native east/south metres from anchor (centre of the oriented hull rectangle); y above the pontoon waterline datum",
+ "identity": {
+  "osmPoiId": "n13404202880",
+  "osmOutlineId": "w454006714",
+  "name": "Sea Palace",
+  "address": "Oosterdokskade 8, 1011 AE Amsterdam",
+  "bagNote": "BAG has a VBO/ligplaats-style address (nummeraanduiding 0363200000513562, perceel ASD05-G-9563) but no live pand: the only pand in the bbox at this spot is 0363100012237483 (bouwjaar 1005, status 'Pand gesloopt'), a placeholder, not the restaurant. The vessel is represented in OSM as building=houseboat way w454006714. Only that way is suppressed."
+ },
+ "hull": {
+  "bearingDegrees": 115.68,
+  "halfLongMetres": 19.51,
+  "halfShortMetres": 12.03,
+  "note": "Oriented rectangle fitted to w454006714; +u runs toward bearing 115.68 (ESE), +v toward 205.68 (SSW, the quay-side long face)."
+ },
+ "nativeRing": [
+  [
+   -22.249,
+   2.655
   ],
-  "dimensions": {
-    "footprintAreaSquareMetres": 934.52,
-    "longStraightEdgeMetres": 37.94,
-    "shortStraightEdgeMetres": 23.0,
-    "longAxisBearingDegrees": 115.68,
-    "classification": "Computed from WGS84 source geometry in local equirectangular metres, not surveyed roof/body dimensions",
-    "heightTags": {
-      "osmId": "w454006714",
-      "name": "",
-      "colour": "#d2c9bc",
-      "roofColour": "#4c8162",
-      "material": "",
-      "roofMaterial": "tiles",
-      "roofShape": "hipped",
-      "height": 9,
-      "minHeight": 0,
-      "roofHeight": 4.0
-    },
-    "heightConfidence": "Unverified mapped values, not AHN/BAG height authority"
-  },
-  "suppression": {
-    "exactIds": [
-      "w454006714"
-    ],
-    "spatialSuppression": false,
-    "layers": [
-      "ordinary building renderer if present",
-      "independent houseboat renderer",
-      "pyramidal roof renderer if present"
-    ],
-    "retainNeighbors": [
-      "w1513454684"
-    ],
-    "fallback": "Suppress only after model successfully loads; restore on model disabled/unavailable."
-  },
-  "entrance": {
-    "publicAddress": "Oosterdokskade 8",
-    "pinLonLat": null,
-    "status": "Quay-side public approach supported by operator text, exact gangway/entrance coordinate unresolved",
-    "nearestCachedRoute": {
-      "id": "routing_25769",
-      "name": "Oosterdokskade",
-      "centroidToRouteDistanceMetres": 36.65
-    },
-    "warning": "Nearest network projection is not evidence of a public entrance. Keep centroid out of automatic final routing until entrance verified."
-  },
-  "architecturalAssertions": [
-    {
-      "feature": "Floating restaurant on a ship/pavilion",
-      "sourceUrl": "https://seapalace.nl/en/directions/",
-      "buildingPart": "whole vessel",
-      "confidence": "high, operator text"
-    },
-    {
-      "feature": "Three occupied floors; top floor accesses roof terrace",
-      "sourceUrl": "https://seapalace.nl/en/about-us/",
-      "buildingPart": "whole pavilion/top floor",
-      "confidence": "high, operator text"
-    },
-    {
-      "feature": "Characteristic Chinese architecture",
-      "sourceUrl": "https://seapalace.nl/en/about-us/",
-      "buildingPart": "whole pavilion",
-      "confidence": "high, qualitative only"
-    }
+  [
+   -22.452,
+   2.544
   ],
-  "missingCriticalEvidence": [
-    "Current principal facade and roof image inspected and original bytes saved privately",
-    "Opposite/context view for number and extent of pagoda roof tiers, open terrace and side windows",
-    "Native roof/body height evidence; mapped 9m height and 4m roof tag are not accepted survey",
-    "Exact quay public entrance/gangway and water clearance",
-    "Original source bodies/photos synced and committed in private source repository"
+  [
+   -22.52,
+   2.321
   ],
-  "sourceArchive": {
-    "path": "models/sea-palace",
-    "commit": null,
-    "status": "Cannot write private sibling repository or retrieve original web bodies/images in current sandbox. No private source commit claimed."
-  },
-  "visualAcceptance": {
-    "status": "not-built",
-    "gallery": false,
-    "liveGame": false,
-    "reason": "No inspected facade/roof photographs; no native draft authored from generic pagoda assumptions."
-  },
-  "runtimeSuppressionEvidence": {
-    "checkedOn": "2026-10-06",
-    "script": "scripts/check-signature-houseboat-suppression.ts",
-    "target": "w454006714",
-    "mechanism": "Existing ThreeBuildings.setHidden signature reason updates boat vertex-range visibility; no new suppression API or geometry rebuild required.",
-    "checks": [
-      "late boat extract and late chunk install",
-      "unavailable/disabled empty reason restores fallback",
-      "72 same-tile boat neighbors retained",
-      "ordinary duplicate excluded by existing boatIds",
-      "unchanged IDs no-op",
-      "look transitions and streaming keep latest visibility",
-      "mapped place/card boat lookup retains genuine identity"
+  [
+   -22.52,
+   2.099
+  ],
+  [
+   -22.52,
+   1.987
+  ],
+  [
+   -12.598,
+   -18.83
+  ],
+  [
+   -12.462,
+   -18.941
+  ],
+  [
+   -12.259,
+   -19.052
+  ],
+  [
+   -12.123,
+   -19.052
+  ],
+  [
+   -11.919,
+   -19.052
+  ],
+  [
+   -10.56,
+   -18.384
+  ],
+  [
+   2.964,
+   -11.928
+  ],
+  [
+   7.449,
+   -9.701
+  ],
+  [
+   20.905,
+   -3.245
+  ],
+  [
+   22.264,
+   -2.577
+  ],
+  [
+   22.468,
+   -2.466
+  ],
+  [
+   22.536,
+   -2.354
+  ],
+  [
+   22.536,
+   -2.132
+  ],
+  [
+   22.536,
+   -1.909
+  ],
+  [
+   12.614,
+   18.797
+  ],
+  [
+   12.478,
+   19.019
+  ],
+  [
+   12.342,
+   19.019
+  ],
+  [
+   12.139,
+   19.13
+  ],
+  [
+   11.935,
+   19.019
+  ],
+  [
+   -22.249,
+   2.655
+  ]
+ ],
+ "buildingFootprint": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     4.905965,
+     52.375726
     ],
-    "scope": "CPU adapter/chunk evidence only; no replacement model loaded, automatic live-game signature callback or native rendering acceptance claimed."
+    [
+     4.905962,
+     52.375727
+    ],
+    [
+     4.905961,
+     52.375729
+    ],
+    [
+     4.905961,
+     52.375731
+    ],
+    [
+     4.905961,
+     52.375732
+    ],
+    [
+     4.906107,
+     52.375919
+    ],
+    [
+     4.906109,
+     52.37592
+    ],
+    [
+     4.906112,
+     52.375921
+    ],
+    [
+     4.906114,
+     52.375921
+    ],
+    [
+     4.906117,
+     52.375921
+    ],
+    [
+     4.906137,
+     52.375915
+    ],
+    [
+     4.906336,
+     52.375857
+    ],
+    [
+     4.906402,
+     52.375837
+    ],
+    [
+     4.9066,
+     52.375779
+    ],
+    [
+     4.90662,
+     52.375773
+    ],
+    [
+     4.906623,
+     52.375772
+    ],
+    [
+     4.906624,
+     52.375771
+    ],
+    [
+     4.906624,
+     52.375769
+    ],
+    [
+     4.906624,
+     52.375767
+    ],
+    [
+     4.906478,
+     52.375581
+    ],
+    [
+     4.906476,
+     52.375579
+    ],
+    [
+     4.906474,
+     52.375579
+    ],
+    [
+     4.906471,
+     52.375578
+    ],
+    [
+     4.906468,
+     52.375579
+    ],
+    [
+     4.905965,
+     52.375726
+    ]
+   ]
+  ]
+ },
+ "heightNotes": {
+  "osmTags": {
+   "osmId": "w454006714",
+   "name": "",
+   "colour": "#d2c9bc",
+   "roofColour": "#4c8162",
+   "material": "",
+   "roofMaterial": "tiles",
+   "roofShape": "hipped",
+   "height": 9,
+   "minHeight": 0,
+   "roofHeight": 4.0
   },
-  "referenceRecovery": "scripts/landmarks/sea-palace-reference-recovery.json"
+  "confidence": "OSM building height 9 m + roof 4 m used as the 13 m overall top; unverified (no AHN/BAG for a floating vessel). Storey heights measured by eye from the 2021 and 2025 municipal panoramas."
+ },
+ "topMetres": 13.0,
+ "sourceFiles": [
+  {
+   "path": "public/data/extracts/amsterdam/buildings-colored.geojson",
+   "sha256": "a9b0e0e36e68866c77865ce6c8e40e59dda45e15a9106aa46f1208bc013148bc",
+   "format": "installed processed OSM-derived extract; original HTTP response unavailable"
+  },
+  {
+   "path": "public/data/extracts/amsterdam/houseboats.json",
+   "sha256": "abcb49b3851f3b4487d0b900ede33a13e8c7ce1ec3846cfeb4307a471e83f458",
+   "format": "installed processed OSM-derived extract; original HTTP response unavailable",
+   "metadata": {
+    "version": 1,
+    "source": "OpenStreetMap building=houseboat (+boathouse, floating=yes) via Overpass",
+    "attribution": "\u00a9 OpenStreetMap contributors, ODbL 1.0",
+    "bbox": "52.28,4.75,52.43,5.05",
+    "fetched": "2026-10-02"
+   }
+  }
+ ],
+ "supersedes": "source-hold draft of 2026-10-05/06 (no photographs were inspected then)"
 }

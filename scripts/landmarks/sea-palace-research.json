@@ -1,0 +1,21 @@
+{
+  "id": "sea-palace",
+  "bagPand": null,
+  "osmWay": "w454006714",
+  "retrieved": "2026-10-10",
+  "sources": [
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-17_09-10-34_00840/?width=1200&fov=70&heading=212", "use": "ref-ne.jpg (copy ref-ne-long.jpg): north-east long face, entrance bay, three eaves, balustrades, hipped roof and ridge tails; captured 2025-06-17", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-17_09-10-34_00837/?width=1200&fov=70&heading=233", "use": "ref-ne2.jpg: second north-east view; captured 2025-06-17", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001982_pano_0000_000097/?width=1200&fov=80&heading=32", "use": "ref-quay.jpg (copy ref-sw.jpg): south-west long face, glazed ground floor, balustrades with gold medallions; captured 2021", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001982_pano_0000_000096/?width=1200&fov=70&heading=5", "use": "ref-quay-1.jpg: south-west face oblique; 2021", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001982_pano_0000_000098/?width=1200&fov=70&heading=57", "use": "ref-quay-2.jpg: south-west face and eave profiles; 2021", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001982_pano_0000_000099/?width=1200&fov=70&heading=76", "use": "ref-quay-4.jpg: upswept eave corners and ridge-end ornament; 2021", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001982_pano_0000_000100/?width=1200&fov=70&heading=95", "use": "ref-quay-5.jpg: west end, brick wall with door, rounded corner; 2021", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-000354_pano_0001_000574/?width=1200&fov=70&heading=98", "use": "ref-w.jpg (copy ref-wnw-end.jpg): west-north-west end elevation; 2017", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001982_pano_0000_000094/?width=1200&fov=70&heading=328", "use": "ref-se.jpg (copy ref-ese-end.jpg): oblique view of the east-south-east end and south-west face with corner braces; 2021 (end face itself is only seen at a slant, so it is inferred)", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://seapalace.nl/en/about-us/", "use": "three floors, roof terrace, Chinese architecture (text only)", "licence": "operator site, facts only"},
+    {"url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Oosterdokskade%208%20Amsterdam", "use": "address 0363200000513562, perceel ASD05-G-9563; BAG has no live pand for the vessel", "licence": "CC0 (BAG)"},
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.9055,52.3753,4.9070,52.3761&f=json", "use": "only pand at the mooring is 0363100012237483, bouwjaar 1005, status Pand gesloopt (placeholder), so it is not suppressed", "licence": "CC0 (BAG)"}
+  ],
+  "notes": "Vessel on the OSM houseboat way w454006714; hull fitted with an oriented rectangle (39.0 x 24.1 m, long axis bearing 115.68). Heights (13 m top) come from OSM tags (height 9 + roof 4), unverified; storey and eave heights measured by eye. The ESE end face has no straight-on photo (inferred); the NE entrance bay centre is approximate; window counts per bay are by eye. The Buddha banner and take-away banners are not modelled."
+}
