@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## Rose bushes in the Vondelpark Rosarium (2026-10-10)
+
+OSM maps the Rosarium as one garden polygon; the hex beds exist only as the
+gaps between ~85 footways, so park-landscape drew one flat fill.
+`roseBeds.ts` finds beds as the connected clear areas between rendered
+paths, surfaces, furniture and tree trunks, gives each bed a fixed bloom
+colour and spacing, and `inventory-trees` draws the bushes as one instanced
+20-triangle mesh with bloom-coloured upper faces (72 hexes, 1,371 bushes,
++1 draw call, from zoom 16.5). Also applies to Noord's "Rozentuin" and one
+unnamed rose garden (not yet checked in game). Integrator viewed the oblique shot.
+
 ## Landmarks are diffuse-only: the specular glare was a camera bug (2026-10-10)
 
 User: "weird specular highlights on our landmark buildings" (a smeared white
