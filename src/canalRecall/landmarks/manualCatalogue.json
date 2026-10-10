@@ -25766,5 +25766,159 @@
       ]
     },
     "category": "ordinary"
+  },
+{
+  "id": "overtoom-197",
+  "name": "Overtoom 197-205",
+  "category": "ordinary",
+  "modelUrl": "./models/overtoom-197.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012236683"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.870535062741945,
+      52.361065939922995
+    ],
+    "headingDegrees": 67,
+    "lengthMetres": 63.39,
+    "widthMetres": 43.63
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.870600492221925,
+      52.36099180314638
+    ],
+    "northOffsetDegrees": 0,
+    "source": "PDOK BAG 0363100012236683 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+  },
+  "materialOverrides": {
+    "brick": "#5e3b2e",
+    "ochre": "#8f5f49",
+    "greyBrick": "#4a3027",
+    "white": "#e6e1d3",
+    "concrete": "#b9b3a4",
+    "stone": "#6f6e6b",
+    "dark": "#2e3030",
+    "glass": "#55656f",
+    "frame": "#2a2a2a",
+    "red": "#c4313a",
+    "slate": "#4b5053"
+  },
+  "preservePositionPrecision": true,
+  "attribution": {
+    "title": "Overtoom 197-205 original architecture",
+    "author": "Map Recall",
+    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236683",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.8708758376600185,
+          52.36107631480404
+        ],
+        [
+          4.870869236204824,
+          52.36108599277411
+        ],
+        [
+          4.870857929948229,
+          52.36110257977309
+        ],
+        [
+          4.870843517134966,
+          52.36112371899433
+        ],
+        [
+          4.870772152894216,
+          52.36122602974726
+        ],
+        [
+          4.870647727030378,
+          52.36140445082457
+        ],
+        [
+          4.870058926733979,
+          52.361249537921296
+        ],
+        [
+          4.8700595254535175,
+          52.36124855188499
+        ],
+        [
+          4.870147432698217,
+          52.36112514767665
+        ],
+        [
+          4.870174431499675,
+          52.361087256428
+        ],
+        [
+          4.87021599666031,
+          52.361028927743355
+        ],
+        [
+          4.8702349344943325,
+          52.361033980667635
+        ],
+        [
+          4.870393701375216,
+          52.360783493410956
+        ],
+        [
+          4.870422660516757,
+          52.3607385912343
+        ],
+        [
+          4.8704860815389655,
+          52.36075487524632
+        ],
+        [
+          4.870588978127944,
+          52.36078128093358
+        ],
+        [
+          4.870691318577011,
+          52.36080754928818
+        ],
+        [
+          4.870738800366388,
+          52.36081973710918
+        ],
+        [
+          4.870743641037262,
+          52.36081250511826
+        ],
+        [
+          4.870797360853667,
+          52.36082605930371
+        ],
+        [
+          4.870901946075814,
+          52.36085246309581
+        ],
+        [
+          4.871005316553188,
+          52.360878555914866
+        ],
+        [
+          4.8710085222312784,
+          52.36087936081444
+        ],
+        [
+          4.8708758376600185,
+          52.36107631480404
+        ]
+      ]
+    ]
   }
+}
 ]
