@@ -10,17 +10,7 @@ export function buildPalaceDam(_w:number,_d:number,b:BuildingTools){
  function mesh(v:number[],c:Colour){if(!v.length)return;const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.computeVertexNormals();add(g,c);}
  // Explicit roof panels own the top surface. Retain extrusion walls/bottoms,
  // omitting upward caps that otherwise flicker against the gray flat roofs.
- const partTop=(t:Record<string,string>)=>Number(t.height)-Number(t['roof:height']||0);
- const inRing=(r:number[][],x:number,z:number)=>{let c=false;for(let i=0,j=r.length-1;i<r.length;j=i++)if((r[i][1]>z)!==(r[j][1]>z)&&x<(r[j][0]-r[i][0])*(z-r[i][1])/(r[j][1]-r[i][1])+r[i][0])c=!c;return c;};
- const inPoly=(poly:number[][][],x:number,z:number)=>inRing(poly[0],x,z)&&!poly.slice(1).some(h=>inRing(h,x,z));
- // Walls of overlapping/abutting parts that sit inside the building (hidden behind a part at
- // least as tall on the far side) are dropped, so the shell has no internal blank partitions.
- function hiddenEdges(self:(typeof source.parts)[number]){const top=partTop(self.properties as Record<string,string>),out:number[][][]=[];
-  for(const poly of self.localPolygons)for(const r of poly)for(let i=0;i<r.length-1;i++){const a=r[i],q=r[i+1],L=Math.hypot(q[0]-a[0],q[1]-a[1]);if(L<.5)continue;const mx=(a[0]+q[0])/2,mz=(a[1]+q[1])/2,nx=-(q[1]-a[1])/L,nz=(q[0]-a[0])/L;
-   const covered=(sx:number)=>source.parts.some(o=>o!==self&&!Number(o.properties.min_height||0)&&o.properties['roof:shape']!=='dome'&&partTop(o.properties as Record<string,string>)>=top-.01&&o.localPolygons.some(pl=>inPoly(pl,mx+nx*sx*.8,mz+nz*sx*.8)));
-   const solid=(sx:number)=>inPoly(source.facadePolygons[0],mx+nx*sx*.8,mz+nz*sx*.8);if(solid(1)&&solid(-1)&&covered(1)&&covered(-1))out.push([a,q]);}
-  return out;}
- function body(polys:number[][][][],base:number,h:number,cull:number[][][]=[]){const near=(x:number,z:number)=>cull.some(([a,q])=>{const dx=q[0]-a[0],dz=q[1]-a[1],t=Math.max(0,Math.min(1,((x-a[0])*dx+(z-a[1])*dz)/(dx*dx+dz*dz)));return Math.hypot(a[0]+dx*t-x,a[1]+dz*t-z)<.05;});for(const p of polys){const g=new T.ExtrudeGeometry(shape(p),{depth:h,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,base+h,0);const positions=g.getAttribute('position'),normals=g.getAttribute('normal'),v:number[]=[];for(let i=0;i<positions.count;i+=3){if(normals.getY(i)>.9&&normals.getY(i+1)>.9&&normals.getY(i+2)>.9)continue;if(cull.length&&Math.abs(normals.getY(i))<.1&&near((positions.getX(i)+positions.getX(i+1)+positions.getX(i+2))/3,(positions.getZ(i)+positions.getZ(i+1)+positions.getZ(i+2))/3))continue;for(let j=0;j<3;j++)v.push(positions.getX(i+j),positions.getY(i+j),positions.getZ(i+j));}g.dispose();mesh(v,sand);}}
+ function body(polys:number[][][][],base:number,h:number){for(const p of polys){const g=new T.ExtrudeGeometry(shape(p),{depth:h,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,base+h,0);const positions=g.getAttribute('position'),normals=g.getAttribute('normal'),v:number[]=[];for(let i=0;i<positions.count;i+=3){if(normals.getY(i)>.9&&normals.getY(i+1)>.9&&normals.getY(i+2)>.9)continue;for(let j=0;j<3;j++)v.push(positions.getX(i+j),positions.getY(i+j),positions.getZ(i+j));}g.dispose();mesh(v,sand);}}
  function arch(x:number,y:number,z:number,w:number,h:number,a:number,c:Colour){const s=new T.Shape();s.moveTo(-w/2,0);s.lineTo(w/2,0);s.lineTo(w/2,h-w/2);s.absarc(0,h-w/2,w/2,0,Math.PI,false);s.closePath();add(new T.ExtrudeGeometry(s,{depth:.08,bevelEnabled:false,curveSegments:5}),c,x,y,z,a);}
  function pairedWindow(x:number,y:number,z:number,a:number,w=2.1,h=2.4){const nx=Math.sin(a),nz=Math.cos(a);box(x,y,z,w+.28,h+.2,.11,'stone',a);box(x+nx*.1,y+.08,z+nz*.1,w,h,.09,'glass',a);box(x+nx*.2,y+.05,z+nz*.2,.12,h,.12,'stone',a);box(x+nx*.2,y+h*.52,z+nz*.2,w,.1,.12,'stone',a);box(x,y+h+.1,z,w+.42,.22,.35,'stone',a);}
  function band(ring:number[][],y:number,h:number,d:number,c:Colour){for(let i=0;i<ring.length-1;i++){const p=ring[i],q=ring[i+1];box((p[0]+q[0])/2,y,(p[1]+q[1])/2,Math.hypot(q[0]-p[0],q[1]-p[1]),h,d,c,-Math.atan2(q[1]-p[1],q[0]-p[0]));}}
@@ -30,7 +20,6 @@ export function buildPalaceDam(_w:number,_d:number,b:BuildingTools){
   if(part.properties['roof:shape']==='dome')continue;
   const tags=part.properties as Record<string,string>,top=Number(tags.height),base=Number(tags.min_height||0),rise=Number(tags['roof:height']||0),eaves=top-rise,glass=tags['roof:material']==='glass';
   if(!glass)body(part.localPolygons,base,eaves-base);
-  if(!glass&&!base)for(const [a,q] of hiddenEdges(part)){const L=Math.hypot(q[0]-a[0],q[1]-a[1]),n=Math.floor(L/5);for(let k=0;k<n;k++){const t=(k+.5)/n;box(a[0]+(q[0]-a[0])*t,0,a[1]+(q[1]-a[1])*t,1.5,2.7,.34,'dark',-Math.atan2(q[1]-a[1],q[0]-a[0]));box(a[0]+(q[0]-a[0])*t,4.5,a[1]+(q[1]-a[1])*t,1.5,2.7,.34,'dark',-Math.atan2(q[1]-a[1],q[0]-a[0]));}}
   const roofHeight=(x:number,z:number)=>{
    if(tags['roof:shape']==='gabled'){const r=part.ridge;return eaves+rise*Math.max(0,1-Math.abs(x*r.normal[0]+z*r.normal[1]-r.mid)/r.halfSpan);}
    if(tags['roof:shape']==='skillion'){const r=(part as typeof part & {skillion:{downhill:number[];min:number;max:number}}).skillion;return eaves+rise*(1-(x*r.downhill[0]+z*r.downhill[1]-r.min)/(r.max-r.min));}

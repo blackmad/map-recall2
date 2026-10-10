@@ -140,3 +140,29 @@ test('openings cut through the wall count as openings', () => {
   const r = analyseSoup(soup(house(['south']), wall));
   assert.ok(!r.blankWalls.some(w => Math.round(w.bearingDeg) === 180), JSON.stringify(r.blankWalls));
 });
+
+test('internal partitions inside the shell are not blank walls; real outer blank walls still are', () => {
+  const partition: Record<string, Quad> = {
+    south: [[0, 0, 5], [20, 0, 5], [20, 8, 5], [0, 8, 5]],
+    north: [[20, 0, 5], [0, 0, 5], [0, 8, 5], [20, 8, 5]],
+  };
+  const windows = [2, 6, 10, 14].map(x => boxQuads(x, 3, 10, x + 1.2, 4.5, 10.1, ['bottom']));
+  const withPartition = analyseSoup(soup(boxQuads(0, 0, 0, 20, 8, 10), partition, ...windows));
+  assert.ok(withPartition.blankWalls.every(w => Math.abs(w.centre[2] - 5) > 1.5 || Math.abs(w.bearingDeg - 90) < 1 || Math.abs(w.bearingDeg - 270) < 1), `partition reported: ${JSON.stringify(withPartition.blankWalls)}`);
+  const bearings = withPartition.blankWalls.map(w => Math.round(w.bearingDeg)).sort((a, b) => a - b);
+  assert.deepEqual(bearings, [0, 90, 270], 'north, east and west outer walls are still flagged, south has windows');
+  const noPartition = analyseSoup(soup(boxQuads(0, 0, 0, 20, 8, 10), ...windows));
+  assert.deepEqual(noPartition.blankWalls.map(w => Math.round(w.bearingDeg)).sort((a, b) => a - b), [0, 90, 270]);
+});
+
+test('a wall recessed behind a roofed canopy is closed; the same recess without a roof is see-through', () => {
+  // 10 x 8 x 10 house whose south wall is at z=10; a 1 m-thick canopy slab sits 3 m up and 3.5 m in front of the wall.
+  const base = [house()];
+  const canopy = boxQuads(0, 3, 10, 10, 3.2, 13.5, []);
+  const sides = [boxQuads(0, 0, 10, 0.2, 3, 13.5, []), boxQuads(9.8, 0, 10, 10, 3, 13.5, [])];
+  const roofed = analyseSoup(soup(...base, canopy, ...sides));
+  assert.equal(roofed.seeThrough.rays, 0, JSON.stringify(roofed.seeThrough));
+  // A canopy so deep that the wall is more than ~8 m behind its front edge is still a gap.
+  const open = analyseSoup(soup(...base, boxQuads(0, 3, 10, 10, 3.2, 20, [])));
+  assert.ok(open.seeThrough.rays > 0, JSON.stringify(open.seeThrough));
+});
