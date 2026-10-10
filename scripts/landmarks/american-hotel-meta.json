@@ -1,0 +1,24 @@
+{
+  "name": "American Hotel",
+  "landmarkId": "american-hotel",
+  "sourceUrl": "https://en.wikipedia.org/wiki/American_Hotel,_Amsterdam",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012168734"
+  ],
+  "pandId": "0363100012168734",
+  "materialOverrides": {
+    "sandstone": "#c9a96b",
+    "stone": "#dccfa9",
+    "greyBrick": "#6e4c37",
+    "slate": "#8a5442",
+    "ochre": "#dfb44f",
+    "glass": "#516775",
+    "frame": "#efeadb",
+    "dark": "#26282a",
+    "copper": "#5f8f84",
+    "white": "#f1ecdc",
+    "brick": "#a65f3f"
+  },
+  "surveySource": "Current BAG 0363100012168734 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; plinth, shop glazing, round entrance arch, cafe windows, balconies, oriels, tower slits, curved Leidsekade bays and arcade measured by eye from 2021/2024 municipal panoramas; gables and upper-floor rhythm on the Leidseplein front are approximate (trees and cars occlude them); no pixels or meshes imported."
+}

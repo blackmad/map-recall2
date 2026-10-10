@@ -1,0 +1,49 @@
+{
+  "id": "trippenhuis",
+  "name": "Trippenhuis",
+  "landmarkId": "trippenhuis",
+  "modelUrl": "./models/trippenhuis.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012171636"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.899518393659254,
+      52.371262230498296
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 33,
+    "widthMetres": 32
+  },
+  "surveyed": {
+    "anchor": [
+      4.899518393659254,
+      52.371262230498296
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012171636 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "sandstone": "#7c7870",
+    "stone": "#a39c8f",
+    "slate": "#4a4d52",
+    "glass": "#52646e",
+    "frame": "#d9d6cc",
+    "dark": "#2a2b2d",
+    "white": "#e7e3d6",
+    "brick": "#8b4f3c",
+    "greyBrick": "#6a6760",
+    "bronze": "#4b5448"
+  },
+  "attribution": {
+    "title": "Trippenhuis",
+    "author": "Map Recall",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Trippenhuis",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+  }
+}
