@@ -9,6 +9,7 @@
     "audit:large-tier": "node --import tsx scripts/large-tier/audit.ts",
     "audit:glb": "node --import tsx scripts/audit-glb-quality.ts",
     "compare:facades": "node --import tsx scripts/landmarks/facade-compare.ts",
+    "check:landmark-lods": "node --import tsx scripts/landmarks/check-landmark-lods.ts",
     "build:landmark-lods": "node --import tsx scripts/landmarks/build-landmark-lods.ts",
     "test:landmark-lod": "node --import tsx --test src/canalRecall/landmarks/landmarkLod.test.ts",
     "review:sheet":"node --import tsx scripts/landmarks/review-sheet.ts",

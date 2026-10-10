@@ -47,7 +47,7 @@ export const MODEL_ASSET_VERSIONS = { ...modelVersions, ...ORDINARY_BUILDING_VER
 export { SharedAssetCache } from './sharedAssetCache';
 export { streetChunksEnabled, applyStreetChunks, chunkSpecFor, pandIndexForFace } from './ordinaryChunks';
 export { createRecipeLook } from '../buildingRecipe/recipeLook';
-export { chooseLevel, initialLevel, footprintRadiusPixels, lod1Url } from './landmarkLod';
+export { lod1IsCurrent, chooseLevel, initialLevel, footprintRadiusPixels, lod1Url } from './landmarkLod';
 import modelLods from './modelLods.json';
 /** Ids that have a `<id>.lod1.glb`, with the fingerprint it was built from (also its cache-busting version). */
 export const MODEL_LODS: Readonly<Record<string, { sourceHash: string; bytes: number; triangles: number }>> = modelLods;

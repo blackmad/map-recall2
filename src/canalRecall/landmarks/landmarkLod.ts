@@ -34,8 +34,8 @@ export function lod1Url(modelUrl: string): string {
 }
 
 /** Whether the stored lod1 is still the output of this source and these parameters. */
-export function lod1IsCurrent(record: LandmarkLodRecord | undefined, sourceHash: string): boolean {
-  return !!record && record.sourceHash === sourceHash && record.buildVersion === LOD1_BUILD_VERSION;
+export function lod1IsCurrent(record: LandmarkLodRecord | undefined, sourceHash: string | undefined): boolean {
+  return !!record && !!sourceHash && record.sourceHash === sourceHash && record.buildVersion === LOD1_BUILD_VERSION;
 }
 
 /** Ground metres per CSS pixel at a MapLibre zoom (512 px tiles) and latitude. */

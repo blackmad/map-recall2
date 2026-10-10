@@ -37,4 +37,13 @@ test('lod1IsCurrent requires matching hash and build version', () => {
   assert.ok(!lod1IsCurrent(rec, 'b'));
   assert.ok(!lod1IsCurrent({ ...rec, buildVersion: 0 }, 'a'));
   assert.ok(!lod1IsCurrent(undefined, 'a'));
+  assert.ok(!lod1IsCurrent(rec, undefined));
+});
+
+test('a GLB rebuilt after its lod1 (new asset version) is stale, so full is drawn', () => {
+  const lods = { palace: { sourceHash: 'old', buildVersion: LOD1_BUILD_VERSION, bytes: 1, triangles: 1 } };
+  const versions: Record<string, string> = { palace: 'new' };
+  assert.ok(!lod1IsCurrent(lods.palace, versions.palace));
+  versions.palace = 'old';
+  assert.ok(lod1IsCurrent(lods.palace, versions.palace));
 });

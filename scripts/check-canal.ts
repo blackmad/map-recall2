@@ -76,6 +76,8 @@ const CHECKS = [
   'test:canal-cities',
   'test:canal-overlay',
   'test:landmark-data',
+  'check:landmark-lods',
+  'test:landmark-lod',
   'test:landmark-notice',
   'test:drive-by-trigger',
   'test:postcard-pacing',
