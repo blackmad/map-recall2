@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## Recipe roofs on block faces (2026-10-10)
+
+The user, comparing bilder-081118-155417 with its strip: "we need to discard a
+fair bit of the 3dbag roof geometry". `blockFace/recipeRoof.ts` builds the roof
+from the house: a steep attic face (default 70°) rising one attic storey over
+the front eaves, a flat top capped at the 3DBAG main-body p95, a drop to the rear
+eaves at the main depth, rear wings flattened to their 3DBAG levels; flat at the
+eaves where 3DBAG rises < 1 m. 3DBAG supplies only the footprint and the cap.
+Opt-in per face (`continuity.roof`). On 081118 roof maxima fell 1–2.5 m and the
+black masses behind the step gables are gone (ortho matches the photo).
+
 ## Six landmarks reworked: both hotels, both Lutheran churches, H'ART, Hendrik rear (2026-10-10)
 
 User reports: window inconsistency on Hotel de l'Europe and the American Hotel,
