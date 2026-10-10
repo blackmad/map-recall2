@@ -1,0 +1,25 @@
+{
+  "name": "Hotel Jakarta",
+  "landmarkId": "hotel-jakarta",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Hotel_Jakarta",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012247056"
+  ],
+  "pandId": "0363100012247056",
+  "materialOverrides": {
+    "slate": "#34383d",
+    "copper": "#8d7a5a",
+    "ochre": "#c99a5b",
+    "bronze": "#9a6f3e",
+    "glass": "#6e8497",
+    "green": "#6f8f84",
+    "frame": "#1f2226",
+    "dark": "#1a1c1f",
+    "concrete": "#8d8d89",
+    "red": "#7a4328",
+    "white": "#e8e4d8",
+    "greyBrick": "#6f6044"
+  },
+  "surveySource": "Current BAG 0363100012247056 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint and 3DBAG LoD2.2 massing; glazed plinth, timber-lined loggia grid, perforated copper-coloured panels, rotating-door drum and timber-and-glass atrium roof measured by eye from Commons photographs (2022, 2023) and municipal panoramas (2024, 2025), no pixels or meshes imported."
+}
