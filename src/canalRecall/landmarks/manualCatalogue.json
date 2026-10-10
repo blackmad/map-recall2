@@ -26690,5 +26690,158 @@
         ]
       ]
     }
+  },
+  {
+    "id": "bogortuin-101",
+    "name": "Bogortuin 101",
+    "category": "ordinary",
+    "modelUrl": "./models/bogortuin-101.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012141457"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.9360779129637855,
+        52.37635044834874
+      ],
+      "headingDegrees": 177,
+      "lengthMetres": 140.62,
+      "widthMetres": 25.49
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.936062018713485,
+        52.376374223915306
+      ],
+      "northOffsetDegrees": 0,
+      "source": "PDOK BAG 0363100012141457 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+    },
+    "materialOverrides": {
+      "brick": "#5f342c",
+      "slate": "#4a4a4c",
+      "glass": "#58626d",
+      "frame": "#2d2826",
+      "dark": "#241f1e",
+      "concrete": "#8d8a84"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "Bogortuin 101 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012141457",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.937100933564977,
+            52.37649782381536
+          ],
+          [
+            4.9364064306,
+            52.37647501364012
+          ],
+          [
+            4.9364066957054975,
+            52.37647204871578
+          ],
+          [
+            4.93641327463877,
+            52.37639693677756
+          ],
+          [
+            4.935369181850139,
+            52.37636263310213
+          ],
+          [
+            4.935362585461309,
+            52.3764378437854
+          ],
+          [
+            4.93536233588686,
+            52.37644071889006
+          ],
+          [
+            4.935350033454291,
+            52.376440312440295
+          ],
+          [
+            4.93532453307484,
+            52.37643946915666
+          ],
+          [
+            4.93529913540034,
+            52.3764386352471
+          ],
+          [
+            4.935273400061631,
+            52.37643779105576
+          ],
+          [
+            4.9352478555383295,
+            52.376436956574786
+          ],
+          [
+            4.935196399550956,
+            52.37643526822027
+          ],
+          [
+            4.935035087771948,
+            52.37642996080394
+          ],
+          [
+            4.935055845609625,
+            52.376203101186306
+          ],
+          [
+            4.936170472931691,
+            52.37623993222117
+          ],
+          [
+            4.936170207811834,
+            52.37624289714507
+          ],
+          [
+            4.936163616547274,
+            52.37631773939587
+          ],
+          [
+            4.936789777923597,
+            52.3763383317643
+          ],
+          [
+            4.936796367130542,
+            52.376263588338354
+          ],
+          [
+            4.936796632299924,
+            52.376260614425696
+          ],
+          [
+            4.937120708006771,
+            52.376271319636096
+          ],
+          [
+            4.9371192771926244,
+            52.37628641349567
+          ],
+          [
+            4.937118746258376,
+            52.37629242423379
+          ],
+          [
+            4.937100933564977,
+            52.37649782381536
+          ]
+        ]
+      ]
+    }
   }
 ]
