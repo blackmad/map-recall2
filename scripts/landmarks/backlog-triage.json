@@ -212,6 +212,46 @@
   "Onze Lieve Vrouwe Kapel": {
    "kind": "skip",
    "note": "Chapel room inside the OLVG hospital complex (pand 0363100012124921, 258 x 194 m), not a distinct building."
+  },
+  "Transformatorhuis": {
+   "kind": "duplicate",
+   "note": "Westergas Transformatorhuis is already installed as De Wester (BAG NL.IMBAG.Pand.0363100012166956) and verified in poi-work-queue. (model de-wester)"
+  },
+  "RAUM": {
+   "kind": "skip",
+   "note": "Venue inside an ordinary building; no distinctive street-recognisable exterior."
+  },
+  "Lofi": {
+   "kind": "skip",
+   "note": "Bar/venue room in an ordinary building."
+  },
+  "The Eagle": {
+   "kind": "skip",
+   "note": "Leather bar in an ordinary Warmoesstraat building."
+  },
+  "Parallel": {
+   "kind": "skip",
+   "note": "Club room inside a larger ordinary building."
+  },
+  "Toekomstmuziek": {
+   "kind": "skip",
+   "note": "Small venue in an ordinary building; nothing distinctive from the street."
+  },
+  "The Web": {
+   "kind": "skip",
+   "note": "Bar in an ordinary Sint Jacobsstraat building."
+  },
+  "Club Church": {
+   "kind": "duplicate",
+   "note": "Sits in the joined Leidsestraat 67-71 / Kerkstraat 50-52 parent (NL.IMBAG.Pand.0363100012172459), which already has an accepted native treatment (poi-work-queue leids67-kerk52-ordinary-treatment, accepted-local-host-pending). Integrator decides whether a bespoke GLB should replace it. (model leids67-kerk52-ordinary-treatment)"
+  },
+  "De Trut": {
+   "kind": "skip",
+   "note": "Sunday club in a basement room of an ordinary Bilderdijkstraat building; nothing to see from the street."
+  },
+  "OBA Roelof Hartplein": {
+   "kind": "skip",
+   "note": "Neighbourhood library occupying part of an ordinary plain building; not a distinctive standalone building."
   }
  }
 }
