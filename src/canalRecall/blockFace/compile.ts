@@ -86,6 +86,8 @@ async function decodePands(glb: Uint8Array, pandCount: number): Promise<Tri[][]>
   return out;
 }
 
+/** Masonry wall slots: brick, or rendered stucco (intent palette.wallMaterial). */
+const isWall = (slot: string) => slot === 'brick' || slot === 'stucco';
 const area3 = (t: Tri) => { const u = t.p[1].map((v, i) => v - t.p[0][i]), w = t.p[2].map((v, i) => v - t.p[0][i]); return Math.hypot(u[1] * w[2] - u[2] * w[1], u[2] * w[0] - u[0] * w[2], u[0] * w[1] - u[1] * w[0]) / 2; };
 
 /** Sutherland-Hodgman: convex polygon ∩ convex polygon (2D), area. */
@@ -190,7 +192,7 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     g(pand, 'eaves-vs-3dbag', intent.fronts.length > 1 || Math.abs(f0.eavesM - ground.eavesBefore[i]) <= 0.5 || (!!trusted && Math.abs(f0.eavesM - ground.eavesAfter[i]) <= 0.3), {modelM: f0.eavesM, threeDBagM: ground.eavesBefore[i], groupLineM: ground.eavesAfter[i], ...(trusted ? {photoOverride: `line of ${trusted.reference!.slice(-6)}`} : {})}, '|Δ| <= 0.5 m (cornice-group snapping included); a photo-trusted group is checked against its line; multi-front pands report only (each front fits its own share of the profile, as in gates.ts)');
     const uppers = f0.storeyHeightsM.slice(f0.storeyHeightsM[0] < 1.5 ? 2 : 1);
     g(pand, 'storey-height', uppers.every(h => h >= 2.3 && h <= 4.6), f0.storeyHeightsM, 'upper storeys 2.3–4.6 m');
-    const iou = rasterIoU(t.filter(x => x.slot === 'brick' || ['roofTile', 'slate', 'bitumen'].includes(x.slot)), rings[i]);
+    const iou = rasterIoU(t.filter(x => isWall(x.slot) || ['roofTile', 'slate', 'bitumen'].includes(x.slot)), rings[i]);
     g(pand, 'footprint-vs-bag', iou >= 0.9, cm(iou), 'plan IoU of shell+roof >= 0.90 against BAG LoD0');
     const minY = Math.min(...t.flatMap(x => x.p.map(v => v[1])));
     g(pand, 'grounded', Math.abs(minY) <= 0.05, cm(minY), 'lowest vertex within 5 cm of the shared street level');
@@ -214,7 +216,7 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     // are rarely square to the averaged face axis.
     const pairContacts = contacts.filter(c => (c.a === i && c.b === i + 1));
     const front = pairContacts.sort((p, q) => Math.max(q.oz, q.oz + q.dz * q.s1) - Math.max(p.oz, p.oz + p.dz * p.s1))[0];
-    const detail = (a: Tri[]) => a.filter(t => !['brick', 'roofTile', 'slate', 'bitumen'].includes(t.slot) && t.p.some(v => v[2] > -1));
+    const detail = (a: Tri[]) => a.filter(t => !(isWall(t.slot) || ['roofTile', 'slate', 'bitumen'].includes(t.slot)) && t.p.some(v => v[2] > -1));
     // Signed distance across the contact line, positive towards the right-hand house.
     const across = (v: number[]) => front ? ((v[0] - front.ox) * -front.dz + (v[2] - front.oz) * front.dx) * sideSign : v[0] - xLine;
     const sideSign = front ? Math.sign((rings[i + 1][0].reduce((s, q) => s + q[0], 0) / rings[i + 1][0].length - front.ox) * -front.dz + (rings[i + 1][0].reduce((s, q) => s + q[1], 0) / rings[i + 1][0].length - front.oz) * front.dx) || 1 : 1;
@@ -226,7 +228,7 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     const step = cm(ground.eavesAfter[i + 1] - ground.eavesAfter[i]), same = groupOf(face.houses[i].pandId) >= 0 && groupOf(face.houses[i].pandId) === groupOf(face.houses[i + 1].pandId);
     const verdict = same ? (Math.abs(step) <= 0.15 ? 'aligned' : 'step-not-supported') : (Math.abs(step) >= 0.1 ? 'step-supported' : 'missing-step');
     // Facade ends measured on the street front only (street-facing brick within 1 m of the frontage plane; rear wings can be wider).
-    const frontBrick = (a: Tri[]) => a.filter(t => t.slot === 'brick' && t.n[2] > 0.9 && Math.max(...t.p.map(v => v[2])) > -1).flatMap(t => t.p.map(v => v[0]));
+    const frontBrick = (a: Tri[]) => a.filter(t => isWall(t.slot) && t.n[2] > 0.9 && Math.max(...t.p.map(v => v[2])) > -1).flatMap(t => t.p.map(v => v[0]));
     const gap = cm(Math.min(...frontBrick(R)) - Math.max(...frontBrick(L)));
     const item: Interference = {left: face.houses[i].pandId, right: face.houses[i + 1].pandId, frontGapM: gap, frontDepthStepM: joint.depthStepM,
       penetrationM2: {leftIntoRight: cm(leftIntoRight), rightIntoLeft: cm(rightIntoLeft)}, detailOverhangM: {left: cm(overL), right: cm(overR)}, zFightM2: cm(zf), roofZFightM2: cm(zfRoof), eavesStepM: step, sameCorniceGroup: same, corniceVerdict: verdict,

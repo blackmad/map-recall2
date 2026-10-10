@@ -28,10 +28,11 @@ const readJson = async (file: string) => JSON.parse(await fs.readFile(file, 'utf
 
 export function slotFor(intent: CanalHouseIntent) {
   const roofSlot = ['slate', 'zinc', 'bitumen', 'copper'].includes(intent.roof.material) ? 'slate' : 'roofTile';
+  const wallSlot = intent.palette.wallMaterial === 'stucco' ? 'stucco' : 'brick';
   return (mesh: T.Mesh) => {
     const surface = mesh.userData.surface as string;
     if (surface === 'roof') return (mesh.material as T.MeshStandardMaterial).color.getHSL({h: 0, s: 0, l: 0}).l > 0.36 ? 'bitumen' : roofSlot;
-    return ({wall: 'brick', accent: 'accent', stone: 'stone', trim: 'frame', joinery: 'frame', door: 'door', shop: 'door', awning: 'door', sign: 'door', glass: 'glass'} as Record<string, string>)[surface] ?? 'brick';
+    return ({wall: wallSlot, accent: 'accent', stone: 'stone', trim: 'frame', joinery: 'frame', door: 'door', shop: 'door', awning: 'door', sign: 'door', glass: 'glass'} as Record<string, string>)[surface] ?? 'brick';
   };
 }
 

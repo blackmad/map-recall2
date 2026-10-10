@@ -64,6 +64,17 @@
         "mount": "fascia"
        },
        "displayWindows": 3
+      },
+      "crownAt": {
+       "from": 0.4,
+       "to": 0.98
+      },
+      "storeyBayWidths": {
+       "4": [
+        0.34,
+        0.28,
+        0.38
+       ]
       }
      }
     ],
@@ -97,10 +108,6 @@
     "signage": "PLTS, white capitals on a black fascia",
     "roofline": "flat brick parapet with a low pointed gable (curved shoulders) over the right two-thirds",
     "citation": "strip.jpg pand 1 (x 0-274 px)",
-    "schemaLimits": [
-     "gable is centred in the model; on the photo it is off-centre to the right",
-     "top-storey arched windows are evenly spaced in the model; photo: 1 far left + 2 paired"
-    ],
     "photoRows": [
      1,
      4,
@@ -235,7 +242,7 @@
      {
       "id": "front0",
       "street": "Bilderdijkstraat",
-      "gable": "flat",
+      "gable": "step",
       "storeys": 5,
       "bays": [
        2,
@@ -259,8 +266,21 @@
         "mount": "fascia"
        },
        "displayWindows": 3,
-       "stallriser": "low"
-      }
+       "stallriser": "low",
+       "bays": [
+        1,
+        1
+       ]
+      },
+      "crownAt": {
+       "from": 0,
+       "to": 0.36
+      },
+      "axisGrid": 2,
+      "bayWidths": [
+       0.39,
+       0.61
+      ]
      }
     ],
     "roof": {
@@ -300,9 +320,7 @@
     "roofline": "flat brick parapet with stone coping, small stepped piece over the left bay",
     "citation": "strip.jpg pand 3 (x 565-832 px)",
     "schemaLimits": [
-     "bays are equal width in the model; photo: narrow left, wide right",
-     "storey 1 of the left bay is the top of the arched entrance on the photo, a window in the model",
-     "the stepped piece over the left bay is not modelled (gable flat)"
+     "the arched entrance (stone arch, steps) is a plain door in the model; storey 1 of the left bay is a window in both"
     ],
     "photoRows": [
      2,
@@ -421,7 +439,7 @@
       "street": "Bilderdijkstraat",
       "gable": "step",
       "storeys": 4,
-      "bays": 2,
+      "bays": 3,
       "atticWindows": 1,
       "doorBay": 0,
       "basement": "none",
@@ -436,7 +454,7 @@
         3
        ],
        "bays": [
-        1
+        2
        ],
        "projecting": true
       },
@@ -451,6 +469,16 @@
        },
        "displayWindows": 2,
        "stallriser": "low"
+      },
+      "axisGrid": 3,
+      "bayWidths": [
+       0.2,
+       0.17,
+       0.63
+      ],
+      "crownAt": {
+       "from": 0.47,
+       "to": 0.91
       }
      }
     ],
@@ -490,10 +518,6 @@
     "signage": "DIRK VAN DEN BROEK, red letters on the wall",
     "roofline": "yellow stepped neck gable with curved shoulders over the right bay; arched brick frieze under the cornice",
     "citation": "strip.jpg pand 5 (x 1073-1327 px)",
-    "schemaLimits": [
-     "the left bay's paired narrow windows are one window in the model",
-     "gable centred in the model, over the right bay on the photo"
-    ],
     "photoRows": [
      2,
      3,
