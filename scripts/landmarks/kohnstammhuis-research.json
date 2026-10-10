@@ -1,0 +1,37 @@
+{
+  "id": "kohnstammhuis",
+  "status": "ready-with-caveats-pending-integrator-blind-count",
+  "identity": {
+    "bagPandId": "0363100012125963",
+    "bouwjaar": 1957,
+    "addresses": ["Wibautstraat 2"],
+    "name": "Kohnstammhuis (Philip Kohnstamm building, Hogeschool van Amsterdam), former Rijksbelastingkantoor; rijksmonument 530868",
+    "architects": "Gijsbert Friedhoff with M. Bolten (1954-1958); 1970 cross wing Bolten and Jo Vegter",
+    "policy": "landmark: named rijksmonument with a sourced POI card (no category)"
+  },
+  "sources": [
+    {"url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/530868", "kind": "RCE monument register description (rijksmonument 530868)", "retrievedOn": "2026-10-10", "licence": "RCE open data"},
+    {"url": "https://nl.wikipedia.org/wiki/Kohnstammhuis", "kind": "Dutch Wikipedia article", "retrievedOn": "2026-10-10", "licence": "CC BY-SA 4.0"},
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012125963&f=json", "kind": "BAG pand", "retrievedOn": "2026-10-10", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012125963", "kind": "3DBAG LoD2.2 massing", "retrievedOn": "2026-10-10", "licence": "CC BY 4.0 (3DBAG)"},
+    {"file": "artifacts/landmark-lanes/kohnstammhuis/ref-wibautstraat.jpg", "kind": "wall 240 (east colonnade front) stitched from four rectified panoramas: recording_2024-10-02_08-12-25_00908, TMX7316010203-002544_pano_0000_000001 (2022-04-26), TMX7316010203-000720_pano_0002_000133 (2018-05-15), TMX7316010203-002591_pano_0000_001030 (2022-06-13); tiles rect240-*.jpg", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/kohnstammhuis/ref-slab-east.jpg", "kind": "wall 262 (slab east face above the hall) rectified from recording_2024-10-02_08-12-25_00907/00904/00901 (2024-10-02); hall in front is displaced upward by the plane projection", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/kohnstammhuis/ref-pavilion-north.jpg", "kind": "wall 185 (north pavilion, east end) pano TMX7316010203-002542_pano_0000_000690 (2022-04-25)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/kohnstammhuis/ref-pavilion-south.jpg", "kind": "wall 153 (south pavilion, east end) pano recording_2025-06-19_03-28-47_03455", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/kohnstammhuis/ref-pavilion-south-west.jpg", "kind": "wall 72 (south pavilion, west face) pano TMX7316010203-002544_pano_0000_000021 (2022-04-26)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/kohnstammhuis/ref-south-low.jpg", "kind": "wall 41 (low south block) pano TMX7316010203-001527_pano_0000_000236 (2019-12-19)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/kohnstammhuis/ov-2025-06-19-b128-d45.jpg, ov-2025-06-19-b44-d45.jpg, ov2-2025-06-19-b107-d30.jpg, ov2-2025-06-19-b27-d32.jpg", "kind": "oblique street views of the colonnade front, panoramas recording_2025-06-19_03-28-47_03454/03477/03450/03442", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"}
+  ],
+  "faces": {
+    "east front, hall (wall 240)": "evidence: ref-wibautstraat.jpg. 27 pilasters, 26 bays, plinth vents, frieze, both entrance bays (t of door, arms, windows read to about 0.3 m).",
+    "slab east face (wall 262)": "evidence: ref-slab-east.jpg (window module 1.85 m, storeys about 3.4 m).",
+    "north pavilion east end (185), south pavilion east end (153), south pavilion west face (72), low south block (41)": "evidence: the ref-pavilion-*.jpg and ref-south-low.jpg photographs.",
+    "everything else (west wing, courtyard walls, north and west faces of slab and pavilions, 1970 cross wing)": "INFERRED: no photograph from that side (courtyards, a construction site on the 2026 north-west side); drawn with the measured window module."
+  },
+  "caveats": [
+    "The top-floor round-arched arcade with tile mosaic named in the RCE text is not modelled (not visible in any panorama frame).",
+    "Pilasters and plinth detail are simplified (no capitals, no rustication); frieze pattern is a plain band.",
+    "The 1970 wing's later cladding is drawn with the same grid as the 1950s slab."
+  ],
+  "limits": ["arcaded top floor", "railings and stairs detail", "signage lettering", "roof plant"]
+}

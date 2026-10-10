@@ -39,6 +39,9 @@ import {buildHotelJakarta} from './landmarks/hotel-jakarta-builder';
 import {buildOdessa} from './landmarks/odessa-builder';
 import {buildDeNederlandscheBank} from './landmarks/de-nederlandsche-bank-builder';
 import {buildWoongebouwWladiwostok} from './landmarks/woongebouw-wladiwostok-builder';
+import {buildKohnstammhuis} from './landmarks/kohnstammhuis-builder';
+import {buildHvaWibautstraat3} from './landmarks/hva-wibautstraat-3-builder';
+import {buildHvaRhijnspoorplein2} from './landmarks/hva-rhijnspoorplein-2-builder';
 
 const cases: Record<string, {build: (w: number, d: number, b: never) => void; ring: () => number[][]; top: () => number; topSlack: number}> = {
   'ij-toren': {build: buildIjToren, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')).nativeRing, top: () => { const f = JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')); return Math.max(...f.surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))); }, topSlack: 8},
@@ -101,6 +104,12 @@ cases['hotel-jakarta'] = {build: buildHotelJakarta, ring: () => hj().nativeRing,
 // Odessa: a floating vessel with no 3DBAG shell; the ring is the OSM berth outline and the top the funnel cap (8.7 m above the waterline).
 const od = () => JSON.parse(fs.readFileSync('scripts/landmarks/odessa-footprints.json', 'utf8'));
 cases['odessa'] = {build: buildOdessa, ring: () => od().nativeRing, top: () => 8.7, topSlack: 0.6};
+// HvA Amstelcampus (Kohnstammhuis, Wibautstraat 3, Rhijnspoorplein 2): the model top is the highest 3DBAG surface vertex.
+const topOfFootprints = (id: string) => () => { const j = JSON.parse(fs.readFileSync(`scripts/landmarks/${id}-footprints.json`, 'utf8')); return Math.max(...j.surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))); };
+const ringOfFootprints = (id: string) => () => JSON.parse(fs.readFileSync(`scripts/landmarks/${id}-footprints.json`, 'utf8')).nativeRing;
+cases['kohnstammhuis'] = {build: buildKohnstammhuis, ring: ringOfFootprints('kohnstammhuis'), top: topOfFootprints('kohnstammhuis'), topSlack: 0.3};
+cases['hva-wibautstraat-3'] = {build: buildHvaWibautstraat3, ring: ringOfFootprints('hva-wibautstraat-3'), top: topOfFootprints('hva-wibautstraat-3'), topSlack: 0.3};
+cases['hva-rhijnspoorplein-2'] = {build: buildHvaRhijnspoorplein2, ring: ringOfFootprints('hva-rhijnspoorplein-2'), top: topOfFootprints('hva-rhijnspoorplein-2'), topSlack: 0.3};
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(cases);
 for (const id of ids) {
   const c = cases[id];
