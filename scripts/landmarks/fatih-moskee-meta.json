@@ -1,0 +1,22 @@
+{
+  "name": "Fatih Mosque",
+  "landmarkId": "extract_landmarks_1997051448",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Fatih-moskee_(Amsterdam)",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012167944"
+  ],
+  "pandId": "0363100012167944",
+  "materialOverrides": {
+    "brick": "#6f4437",
+    "greyBrick": "#5f392f",
+    "stone": "#d3c8ae",
+    "slate": "#4b5159",
+    "glass": "#566672",
+    "frame": "#d9d3c2",
+    "dark": "#22262a",
+    "white": "#e8e2d2",
+    "concrete": "#8e8f8c"
+  },
+  "surveySource": "Current BAG 0363100012167944 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the twin-tower front, pointed door arches, blind arcade, rose window, tower window pairs, belfries and caps measured by eye from the 2024-2025 municipal panoramas, no pixels or meshes imported."
+}

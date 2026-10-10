@@ -1,0 +1,19 @@
+{
+  "id": "fatih-moskee",
+  "bagPand": "0363100012167944",
+  "address": "Rozengracht 150, Amsterdam (former Sint-Ignatiuskerk, De Zaaier; H.W. Valk, 1929)",
+  "retrieved": "2026-10-10",
+  "identity": "POI extract_landmarks_1997051448 (Wikidata Q674125). BAG pand 0363100012167944 is the church pand (the same pand the procedural kit 'Fatih' used); the building tiles carry only the pand id, so the pand is the single suppressed identity.",
+  "sources": [
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_08-35-58_01398/?width=1600&fov=85&heading=343", "use": "ref-front.jpg: Rozengracht front, 2025-07-03, window axes, door arches, rose, blind arcade, shopfronts", "licence": "Amsterdam municipal panorama (CC0)", "panorama": "recording_2025-07-03_08-35-58_01398"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_08-35-58_01398/?width=1600&fov=90&heading=343&pitch=45", "use": "ref-towers.jpg: same station tilted up (derived view)", "licence": "Amsterdam municipal panorama (CC0)", "panorama": "recording_2025-07-03_08-35-58_01398"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20241216_0911_Track02_Sphere_00078/?width=1600&fov=80&heading=70", "use": "ref-oblique-w.jpg: distant west view of the tower, belfry and cap; crop in ref-oblique-w-crop.jpg", "licence": "Amsterdam municipal panorama (CC0)", "panorama": "b_20241216_0911_Track02_Sphere_00078"},
+    {"url": "https://commons.wikimedia.org/wiki/File:Fatihmosquewesterkerkamsterdam.jpg", "use": "ref-commons-looinl-towers.jpg: twin towers from the west, 2009-10-29 (belfry arcades, caps with lucarnes and gilt finials, gable between towers)", "licence": "Public domain (LooiNL)"},
+    {"url": "https://commons.wikimedia.org/wiki/File:Fatih_moskee,_Amsterdam_69.jpg", "use": "ref-commons-dosseman-69.jpg: front, 2014-07-29", "licence": "CC BY-SA 4.0 (Dosseman), reference only, no pixels imported"},
+    {"url": "https://nl.wikipedia.org/wiki/Fatih-moskee_(Amsterdam)", "use": "history: Valk 1929, 600 seats, 40 m double-tower front, mosque since 1981, crescents replaced crosses, shops in the former main entrance (facts only)", "licence": "Wikipedia, facts only"},
+    {"url": "https://www.pdok.nl/", "use": "ref-aerial-pdok.jpg: PDOK Actueel_orthoHR aerial, plan reference", "licence": "CC0 (PDOK/Beeldmateriaal)"},
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012167944&f=json", "use": "BAG pand footprint", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167944", "use": "LoD2.2 massing shell (src-3dbag.json)", "licence": "CC BY 4.0 (3DBAG)"}
+  ],
+  "notes": "3DBAG merges the left tower into the gable (28 m front wall where the nave gable is 15.6-21.1 m); builder cuts the 9.8 m deep front block out of the shell (shell-carve.ts) and rebuilds towers and gable from the shell's own roof planes (ridge 21.12 m, slope 1.575, drift 0.0125 m/m). Tower centres and caps from 3DBAG cap apexes (t 13.25 and 27.2 along the front, apex 37.3 m); window rows and gable arcade from ref-front.jpg at about 0.0196 m per pixel. Belfry arcade is read from the Commons towers view (5-6 round arches over a stone cornice); inner, side and rear faces repeat it and are inferred. Nave long walls and the north end are inferred blank brick (Bloemstraat elevation is nearly blind per monument 200454 as quoted in the earlier kit). Rear lantern cap is 3DBAG only."
+}
