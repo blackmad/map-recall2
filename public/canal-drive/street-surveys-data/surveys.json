@@ -1,0 +1,2905 @@
+{
+ "version": 1,
+ "generatedAt": "2026-10-10T12:55:39.534Z",
+ "streets": [
+  {
+   "street": "Bilderdijkstraat",
+   "faces": [
+    {
+     "id": "bilder-164451-156126",
+     "street": "Bilderdijkstraat",
+     "title": "Bilderdijkstraat 72–82",
+     "status": "installed",
+     "statusReason": "Drawn in game as chunk-face-bilder-164451-156126 (6 pands, 12,102 triangles).",
+     "chunkId": "chunk-face-bilder-164451-156126",
+     "triangles": 12102,
+     "photoDate": "2024-11-29",
+     "houses": [
+      {
+       "pandId": "0363100012164451",
+       "address": "Bilderdijkstraat 82",
+       "shop": {
+        "use": "bar",
+        "name": "The Champ",
+        "agreement": "conflict"
+       },
+       "limits": [
+        "tripartite window is three equal windows in the model",
+        "ornate scrolled pediment is a plain neck gable: a wide dome rising ~2 m too high and too broad, versus the narrow tall pedimented gable on the photo",
+        "arched door head and steps not modelled"
+       ],
+       "rear": "inferred: 2/storey on 4.32 m",
+       "defects": [
+        "Front is red-brown in the model; pale buff brick with white stone in the photo. Ornate raised gable with finial simplified to a bell gable."
+       ]
+      },
+      {
+       "pandId": "0363100012165444",
+       "address": "Bilderdijkstraat 80",
+       "shop": {
+        "use": "shop",
+        "name": "Beeldverhaal",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "ornamental gable crest/figure not modelled",
+        "gable carries a triple arched window; 3 attic windows do not fit the gable (Opening escapes its wall), 1 modelled"
+       ],
+       "rear": "inferred: 3/storey on 6.22 m",
+       "defects": [
+        "Curved gablets of the double house are not identical (bell vs pointed)."
+       ]
+      },
+      {
+       "pandId": "0363100012159739",
+       "address": "Bilderdijkstraat 78",
+       "shop": {
+        "use": "shop",
+        "name": "Beter Horen",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "a tree hides the left half of the upper storeys"
+       ],
+       "rear": "inferred: 3/storey on 6.55 m"
+      },
+      {
+       "pandId": "0363100012064444",
+       "address": "Bilderdijkstraat 76",
+       "shop": {
+        "use": "shop",
+        "agreement": "bag-only"
+       },
+       "limits": [
+        "arched ground-floor openings are a plain shopfront"
+       ],
+       "rear": "inferred: 3/storey on 6.8 m"
+      },
+      {
+       "pandId": "0363100012157866",
+       "address": "Bilderdijkstraat 74",
+       "shop": {
+        "use": "restaurant",
+        "name": "Pagode",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "bays equal width; photo: narrow left, middle, wide right",
+        "gable window is a projecting bay window (3 windows do not fit the gable); modelled as 1 attic window",
+        "tree in front of the left half of the front",
+        "green tile canopy not modelled"
+       ],
+       "rear": "inferred: 3/storey on 6.66 m"
+      },
+      {
+       "pandId": "0363100012156126",
+       "address": "Bilderdijkstraat 72",
+       "shop": {
+        "use": "shop",
+        "agreement": "bag-only"
+       },
+       "limits": [
+        "tower gable is a narrow flat cap",
+        "board lettering illegible: none modelled"
+       ],
+       "rear": "inferred: 3/storey on 5.85 m"
+      }
+     ],
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-164451-156126-photo.webp",
+      "width": 760,
+      "height": 435,
+      "caption": "Rectified panorama strip, 2024-11-29 (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-164451-156126-model.webp",
+      "width": 760,
+      "height": 435,
+      "caption": "Installed model, orthographic, same scale as the strip"
+     },
+     "review": [
+      "Storeys, shops (Beter Horen, Pagode) and the stepped gables match.",
+      "The double house 76–78 has two identical curved gablets in the photo; the model gives one bell gable and one pointed dormer."
+     ]
+    },
+    {
+     "id": "bilder-166802-235892",
+     "street": "Bilderdijkstraat",
+     "title": "Bilderdijkstraat 84–92",
+     "status": "installed",
+     "statusReason": "Drawn in game as chunk-face-bilder-166802-235892 (4 pands, 9,006 triangles).",
+     "chunkId": "chunk-face-bilder-166802-235892",
+     "triangles": 9006,
+     "photoDate": "2024-11-29",
+     "houses": [
+      {
+       "pandId": "0363100012166802",
+       "address": "Bilderdijkstraat 92",
+       "shop": {
+        "use": "restaurant",
+        "name": "nNea Pizza",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "blind arcade frieze is not modelled",
+        "ornate pointed dormer is a plain dormer",
+        "window lettering is not modelled (no sign mount fits a few small glass letters)"
+       ],
+       "rear": "inferred: 2/storey on 3.48 m"
+      },
+      {
+       "pandId": "0363100012166801",
+       "address": "Bilderdijkstraat 90",
+       "shop": {
+        "use": "shop",
+        "name": "'t Fietshokje",
+        "agreement": "osm-only"
+       },
+       "limits": [
+        "tower above the left bay is a pedimented crown over bay 0 with a finial (no pyramid roof)",
+        "balcony platform is continuous across 2 windows on the photo, two separate balconies in the model"
+       ],
+       "rear": "inferred: 3/storey on 7.23 m",
+       "defects": [
+        "Tower gable drawn as a thin pointed shaft; white dormer missing."
+       ]
+      },
+      {
+       "pandId": "0363100012162836",
+       "address": "Bilderdijkstraat 88",
+       "shop": {
+        "use": "services",
+        "name": "Hayestan",
+        "agreement": "osm-only"
+       },
+       "limits": [
+        "tower over the right bay is a pedimented crown over bay 2 with a finial (no pyramid roof)",
+        "thin awning not modelled"
+       ],
+       "rear": "inferred: 2/storey on 4.63 m, 2/storey on 4.33 m",
+       "defects": [
+        "Tower gable drawn as a thin pointed shaft; white dormer missing."
+       ]
+      },
+      {
+       "pandId": "0363100012235892",
+       "address": "Bilderdijkstraat 84-86",
+       "shop": {
+        "use": "services",
+        "name": "Kidtopia",
+        "agreement": "osm-only"
+       },
+       "limits": [
+        "plain windows and balconies on storeys 1-2 only for the triangle budget (full detail 3,900 triangles)",
+        "blind arcade frieze and fan-light top windows not modelled",
+        "dormers are plain",
+        "doors at both ends not modelled (one residential door at most)"
+       ],
+       "rear": "inferred: 3/storey on 7.64 m, 1/storey on 2.6 m",
+       "defects": [
+        "Arched window heads drawn flat."
+       ]
+      }
+     ],
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-166802-235892-photo.webp",
+      "width": 760,
+      "height": 534,
+      "caption": "Rectified panorama strip, 2024-11-29 (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-166802-235892-model.webp",
+      "width": 760,
+      "height": 534,
+      "caption": "Installed model, orthographic, same scale as the strip"
+     },
+     "review": [
+      "The orange pair (88–90) has two ornate tower gables at its outer bays; the model draws them as thin pointed shafts, much narrower than the photo, and omits the two white dormers between them.",
+      "84–86 windows have segmental arched heads in the photo; the model's are flat rectangles."
+     ]
+    },
+    {
+     "id": "bilder-233580-162444",
+     "street": "Bilderdijkstraat",
+     "title": "Bilderdijkstraat 86–166",
+     "status": "installed",
+     "statusReason": "Drawn in game as chunk-face-bilder-233580-162444 (4 pands, 7,872 triangles).",
+     "chunkId": "chunk-face-bilder-233580-162444",
+     "triangles": 7872,
+     "photoDate": "2024-11-29",
+     "houses": [
+      {
+       "pandId": "0363100012233580",
+       "address": "Kinkerstraat 86H / Bilderdijkstraat (corner)",
+       "shop": {
+        "use": "restaurant",
+        "name": "Corner Inn",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "two boarded (white-panelled) windows per storey on the left are modelled as glazed windows",
+        "corner: the Kinkerstraat front is not modelled",
+        "louvre transom band above the shopfront is not modelled",
+        "dormer is off-centre right (x 0.56) but modelled centred"
+       ],
+       "rear": "inferred: 5/storey on 10.71 m",
+       "defects": [
+        "Blind windows drawn glazed; segmental heads drawn flat."
+       ]
+      },
+      {
+       "pandId": "0363100012236055",
+       "address": "Bilderdijkstraat 164-166",
+       "shop": {
+        "use": "cafe",
+        "name": "Brioche",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "dormers are placed symmetrically; photo: left dormer near 0.3, right near 0.78",
+        "script lettering is drawn as block capitals",
+        "door to the upper floors not visible (inside the shopfront)"
+       ],
+       "rear": "inferred: "
+      },
+      {
+       "pandId": "0363100012162443",
+       "address": "Bilderdijkstraat 158-162",
+       "shop": {
+        "use": "restaurant",
+        "name": "Peps",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "two different houses in one BAG pand: one front, one cornice, one roof in the model",
+        "white cornice only on the left half on the photo",
+        "right half has a lower cornice and flanking brick towers; modelled flat at the common line",
+        "top-storey dormers: 1 large + 4 small modelled as 5 equal dormers",
+        "balconies are on the right half only (3 axes), arched heads at the right tower bay not modelled"
+       ],
+       "rear": "inferred: 2/storey on 5.36 m, 4/storey on 9.23 m",
+       "defects": [
+        "Different building in the photo (stone bands, end pilasters above the cornice) drawn as a continuation of the corner block."
+       ]
+      },
+      {
+       "pandId": "0363100012162444",
+       "address": "Bilderdijkstraat 156",
+       "shop": {
+        "use": "services",
+        "name": "Dany",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "narrow middle bay modelled with bayWidths 1/0.7/1",
+        "arched door head and steps are a plain stoop",
+        "script lettering drawn as block capitals; text read at low resolution",
+        "tall ogee neck gable is a bell gable with crownRise 1.5 and a finial; shape approximate",
+        "dark-brick bluish cast is one brick colour"
+       ],
+       "rear": "inferred: 3/storey on 5.93 m"
+      }
+     ],
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-233580-162444-photo.webp",
+      "width": 760,
+      "height": 376,
+      "caption": "Rectified panorama strip, 2024-11-29 (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-233580-162444-model.webp",
+      "width": 760,
+      "height": 376,
+      "caption": "Installed model, orthographic, same scale as the strip"
+     },
+     "review": [
+      "156–162 corner block: the photo's bricked-up (blind) windows on the left are drawn glazed; segmental window heads drawn flat.",
+      "158–162 (162443) is a different building in the photo (darker brick, stone bands, end pilasters rising above the cornice with their own windows); the model continues the corner block's cornice and plain wall across it."
+     ]
+    },
+    {
+     "id": "bilder-236189-166159",
+     "street": "Bilderdijkstraat",
+     "title": "Bilderdijkstraat 94–106",
+     "status": "installed",
+     "statusReason": "Drawn in game as chunk-face-bilder-236189-166159 (4 pands, 7,413 triangles).",
+     "chunkId": "chunk-face-bilder-236189-166159",
+     "triangles": 7413,
+     "photoDate": "2023-01-12",
+     "houses": [
+      {
+       "pandId": "0363100012236189",
+       "address": "Bilderdijkstraat 102-106",
+       "shop": {
+        "use": "shop",
+        "name": "Sunika",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "three stepped gables are modelled as 3 plain dormers",
+        "unequal pitch between the 2-, 3- and 3-window groups is modelled as an equal 9-slot grid",
+        "cafe Karavaan front and its sign are not modelled (one shopfront)",
+        "multicolour lettering is one colour",
+        "segmental window heads and balconies above storey 1 dropped for the triangle budget (full detail ~4,900 triangles)"
+       ],
+       "rear": "inferred: 1/storey on 2.76 m, 3/storey on 7.34 m, 3/storey on 7.81 m",
+       "defects": [
+        "Two stepped gables missing (3 dormers instead); equal flat windows; one continuous shop glazing instead of separate shopfronts; sign squeezed into the corner."
+       ]
+      },
+      {
+       "pandId": "0363100012236188",
+       "address": "Bilderdijkstraat 100",
+       "shop": {
+        "use": "shop",
+        "name": "Spax Vitamineshop",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "script lettering is drawn as block capitals"
+       ],
+       "rear": "inferred: 3/storey on 5.94 m"
+      },
+      {
+       "pandId": "0363100012157174",
+       "address": "Bilderdijkstraat 96",
+       "shop": {
+        "use": "restaurant",
+        "name": "Back",
+        "agreement": "osm-only"
+       },
+       "limits": [
+        "tower with pediment and finial over the left bay modelled as a pedimented crown over bay 0 (crownBays, rise 1.6, finial)",
+        "wide left bay is one plain window pair (3-light on the photo)",
+        "top-storey arched window at the right is a rectangular window"
+       ],
+       "rear": "inferred: 1/storey on 2.96 m, 1/storey on 2.22 m"
+      },
+      {
+       "pandId": "0363100012166159",
+       "address": "Bilderdijkstraat 94",
+       "shop": {
+        "use": "shop",
+        "agreement": "bag-only"
+       },
+       "limits": [
+        "blind arcade frieze is not modelled",
+        "three dormers (2 small + a pointed one) are modelled as 1",
+        "black window frames are approximated"
+       ],
+       "rear": "inferred: 3/storey on 6.57 m"
+      }
+     ],
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-236189-166159-photo.webp",
+      "width": 760,
+      "height": 507,
+      "caption": "Rectified panorama strip, 2023-01-12 (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-236189-166159-model.webp",
+      "width": 760,
+      "height": 507,
+      "caption": "Installed model, orthographic, same scale as the strip"
+     },
+     "review": [
+      "102–106: the photo has two stepped gables, arched window heads and balcony axes; the model has a plain 8-axis wall with three dormers, equal flat windows and one continuous ground-floor glazing with the SUNIKA sign squeezed into the corner (crownGroups/split fronts not adopted yet — TODO).",
+      "A brick 3DBAG roof mass rises above the skyline at the far left."
+     ]
+    },
+    {
+     "id": "bilder-161259-236206",
+     "street": "Bilderdijkstraat",
+     "title": "Bilderdijkstraat 108–120",
+     "status": "installed",
+     "statusReason": "Drawn in game as chunk-face-bilder-161259-236206 (6 pands, 11,236 triangles).",
+     "chunkId": "chunk-face-bilder-161259-236206",
+     "triangles": 11236,
+     "photoDate": "2024-11-29",
+     "houses": [
+      {
+       "pandId": "0363100012161259",
+       "address": "Bilderdijkstraat 120",
+       "shop": {
+        "use": "services",
+        "name": "Junior Service Amsterdam",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "top-storey wide arched window of the left bay is a single arched window in the model; wide left bay modelled with bayWidths 0.62/0.38, gable over the left bay with crownBays",
+        "left bay window is 3-light on the photo, one plain window pair in the model"
+       ],
+       "rear": "inferred: 2/storey on 3.39 m, 1/storey on 2.4 m"
+      },
+      {
+       "pandId": "0363100012161260",
+       "address": "Bilderdijkstraat 118",
+       "shop": {
+        "use": "vacant",
+        "agreement": "conflict"
+       },
+       "limits": [
+        "dormer is a flush brick block with a stone cap and sits on the cornice line; modelled as an ordinary roof dormer",
+        "TE HUUR board is not modelled"
+       ],
+       "rear": "inferred: 1/storey on 2.88 m, 1/storey on 2.9 m"
+      },
+      {
+       "pandId": "0363100012157154",
+       "address": "Bilderdijkstraat 116",
+       "shop": {
+        "use": "restaurant",
+        "name": "Toko Bersama",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "green window lettering and the canopy are not modelled",
+        "gable window group (square, arched, square) is three equal attic windows",
+        "gable partly hidden by a tree: outline inferred"
+       ],
+       "rear": "inferred: 3/storey on 6.25 m",
+       "defects": [
+        "Stray brick 3DBAG block beside the stepped gable."
+       ]
+      },
+      {
+       "pandId": "0363100012160212",
+       "address": "Bilderdijkstraat 114",
+       "shop": {
+        "use": "shop",
+        "agreement": "bag-only"
+       },
+       "limits": [
+        "ground floor partly covered by a van/mural on the strip: shopfront detail is inferred",
+        "dark brick with a bluish cast is approximated by one brick colour"
+       ],
+       "rear": "inferred: 3/storey on 5.97 m",
+       "defects": [
+        "Pointed gable far too wide; dark roof slab above it."
+       ]
+      },
+      {
+       "pandId": "0363100012165170",
+       "address": "Bilderdijkstraat 112",
+       "shop": {
+        "use": "shop",
+        "name": "OLAF",
+        "agreement": "osm-only"
+       },
+       "limits": [
+        "tree and mural hide ground floor and gable: both inferred",
+        "wide right window is one window with a balcony, three lights on the photo"
+       ],
+       "rear": "inferred: 3/storey on 5.92 m"
+      },
+      {
+       "pandId": "0363100012236206",
+       "address": "Bilderdijkstraat 108-110",
+       "shop": {
+        "use": "shop",
+        "name": "Ekoplaza Foodmarqt",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "the pointed gable at the far right is modelled only as dormers (gable + dormers do not combine)",
+        "two black doors between the shop windows: only one residential entrance is modelled",
+        "second awning over the right shop and the heritage lettering band are not modelled",
+        "unequal axes (pairs at the right) modelled as equal",
+        "segmental heads on the top-storey right windows are plain rectangles (arch budget: the front exceeds 3,000 triangles with arched windows)",
+        "top-storey arched pair at the right is single arched windows"
+       ],
+       "rear": "inferred: 3/storey on 5.74 m, 5/storey on 11.27 m",
+       "defects": [
+        "Right-end pointed gable missing; second awning/shop window missing."
+       ]
+      }
+     ],
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-161259-236206-photo.webp",
+      "width": 760,
+      "height": 388,
+      "caption": "Rectified panorama strip, 2024-11-29 (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-161259-236206-model.webp",
+      "width": 760,
+      "height": 388,
+      "caption": "Installed model, orthographic, same scale as the strip"
+     },
+     "review": [
+      "114 (160212): the photo's pointed gable is narrow (about a third of the front); the model's triangle spans the whole front with a dark roof slab standing above it.",
+      "116 (157154): a stray brick block sticks up at the left of the stepped gable.",
+      "108–110: the tall pointed gable at the right end is missing (only a dark roof spike); the second striped awning and shop window are not modelled.",
+      "Segmental arched window heads (photo) are flat in the model on 108–116."
+     ]
+    },
+    {
+     "id": "bilder-161281-157756",
+     "street": "Bilderdijkstraat",
+     "title": "Bilderdijkstraat 113–115",
+     "status": "held",
+     "statusReason": "Held: a street tree hides the fronts of nos. 113–115 on the photo strip, so the intent is not evidenced. Gates pass.",
+     "triangles": 2723,
+     "photoDate": "2023-01-12",
+     "houses": [
+      {
+       "pandId": "0363100012161281",
+       "address": "Bilderdijkstraat 113",
+       "shop": {
+        "use": "cafe",
+        "name": "Skina",
+        "agreement": "osm-only"
+       },
+       "limits": [
+        "blind left third is modelled by using only the right 3 of 5 axes (axisGrid trick); pitch differs slightly from the photo",
+        "cream and brick banding is a two-colour approximation",
+        "ground-floor residential windows at the right are not modelled; the shopfront spans the full width (shopShare has no effect without a residential door)",
+        "the 14 m front reads like two builds joined (jogs); one front plane in the model"
+       ],
+       "rear": "inferred: 6/storey on 13.98 m",
+       "defects": [
+        "(held face) one storey short; banding reduced."
+       ]
+      },
+      {
+       "pandId": "0363100012157756",
+       "address": "Bilderdijkstraat 115",
+       "shop": {
+        "use": "shop",
+        "name": "First Vintage Fashion",
+        "agreement": "osm-only"
+       },
+       "limits": [
+        "tree branches hide the upper storeys on the strip: window rows read through twigs",
+        "sign text is illegible: none modelled",
+        "cream and brick banding is approximated"
+       ],
+       "rear": "inferred: 1/storey on 2.55 m, 1/storey on 2.55 m",
+       "defects": [
+        "(held face) one storey short; banding reduced."
+       ]
+      }
+     ],
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-161281-157756-photo.webp",
+      "width": 738,
+      "height": 800,
+      "caption": "Rectified panorama strip, 2023-01-12 (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-161281-157756-model.webp",
+      "width": 738,
+      "height": 800,
+      "caption": "Compiled (not installed) model, orthographic, same scale as the strip"
+     },
+     "review": [
+      "Held (tree). Also wrong if installed: 113 has four window storeys above the ground floor in the photo, the model three; the dense white stone banding is reduced to two bands; 113's left bay of blind windows is drawn as plain wall without the blind frames."
+     ]
+    },
+    {
+     "id": "bilder-081118-155417",
+     "street": "Bilderdijkstraat",
+     "title": "Bilderdijkstraat 122–134",
+     "status": "installed",
+     "statusReason": "Drawn in game as chunk-face-bilder-081118-155417 (7 pands, 16,238 triangles).",
+     "chunkId": "chunk-face-bilder-081118-155417",
+     "triangles": 16238,
+     "photoDate": "2024-11-29",
+     "houses": [
+      {
+       "pandId": "0363100012081118",
+       "address": "Bilderdijkstraat 134",
+       "shop": {
+        "use": "shop",
+        "name": "PLTS",
+        "agreement": "photo-only"
+       },
+       "limits": [],
+       "rear": "inferred: 3/storey on 7.39 m",
+       "defects": [
+        "Small pediment over the left bay; the photo's low pointed gable with curved shoulders sits right of centre."
+       ]
+      },
+      {
+       "pandId": "0363100012087959",
+       "address": "Bilderdijkstraat 132",
+       "shop": {
+        "use": "services",
+        "name": "Thai Thara",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "subline 'Thaise massage, spa & wellness' and the flower logo are not modelled"
+       ],
+       "rear": "inferred: 3/storey on 7.33 m",
+       "defects": [
+        "Arched stone entrance surround (photo) drawn as a plain door."
+       ]
+      },
+      {
+       "pandId": "0363100012157650",
+       "address": "Bilderdijkstraat 130",
+       "shop": {
+        "use": "shop",
+        "name": "Amsterdam Bike Store",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "the arched entrance (stone arch, steps) is a plain door in the model; storey 1 of the left bay is a window in both"
+       ],
+       "rear": "inferred: 2/storey on 3.21 m, 2/storey on 3.4 m"
+      },
+      {
+       "pandId": "0363100012156287",
+       "address": "Bilderdijkstraat 128",
+       "shop": {
+        "use": "shop",
+        "name": "Danswinkel Amsterdam",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "the gable window is three lights in one frame; modelled as one attic window"
+       ],
+       "rear": "inferred: 2/storey on 3.29 m, 2/storey on 3.25 m",
+       "defects": [
+        "Face model: gable has one small window where the photo shows a three-light gable window. (The stale per-house model with 4 storeys and a lopsided gable is superseded — not drawn.)"
+       ]
+      },
+      {
+       "pandId": "0363100012156286",
+       "address": "Bilderdijkstraat 126",
+       "shop": {
+        "use": "shop",
+        "name": "Dirk van den Broek",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [],
+       "rear": "inferred: 3/storey on 6.44 m, 1/storey on 2.42 m",
+       "defects": [
+        "Yellow stepped gable spans ~35% of the front in the model, ~60% in the photo."
+       ]
+      },
+      {
+       "pandId": "0363100012155418",
+       "address": "Bilderdijkstraat 124",
+       "shop": {
+        "use": "shop",
+        "agreement": "bag-only"
+       },
+       "limits": [],
+       "rear": "inferred: 2/storey on 4.11 m"
+      },
+      {
+       "pandId": "0363100012155417",
+       "address": "Bilderdijkstraat 122",
+       "shop": {
+        "use": "shop",
+        "name": "Only Diva's",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [],
+       "rear": "inferred: 1/storey on 2.5 m, 2/storey on 3.41 m"
+      }
+     ],
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-081118-155417-photo.webp",
+      "width": 760,
+      "height": 368,
+      "caption": "Rectified panorama strip, 2024-11-29 (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-081118-155417-model.webp",
+      "width": 760,
+      "height": 368,
+      "caption": "Installed model, orthographic, same scale as the strip"
+     },
+     "review": [
+      "Overall rhythm, storey lines, shops and signs match; the stepped gables of 124/128 and 126 read right (the per-house 156287 model's lopsided gable is NOT what the game draws).",
+      "Dark 3DBAG roof wedges show beside the gables of 128 and 126 from the front."
+     ]
+    },
+    {
+     "id": "bilder-157757-164549",
+     "street": "Bilderdijkstraat",
+     "title": "Bilderdijkstraat 131–133",
+     "status": "held",
+     "statusReason": "Held: 3DBAG reads a dormer/tower top as the eaves, ~3.4 m above the photo cornice — more than a photo-trusted cornice group may bridge (2.5 m). Gates pass.",
+     "triangles": 3231,
+     "photoDate": "2024-11-29",
+     "houses": [
+      {
+       "pandId": "0363100012157757",
+       "address": "Bilderdijkstraat 131",
+       "shop": {
+        "use": "shop",
+        "agreement": "conflict"
+       },
+       "limits": [
+        "0.65 m gap/jog towards no. 115 (separate face)",
+        "the pointed gable has stepped brick shoulders and a finial not modelled",
+        "ground floor hidden by a van: shopfront inferred"
+       ],
+       "rear": "inferred: 3/storey on 5.92 m"
+      },
+      {
+       "pandId": "0363100012164549",
+       "address": "Bilderdijkstraat 133",
+       "shop": {
+        "use": "shop",
+        "name": "Daily Paper",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "model is ~3 m too tall: 3DBAG eaves 17.0 m (dormer top) vs photo cornice at ~14 m; a photo-trusted cornice group cannot bridge the 3.4 m spread (max 2.5 m)",
+        "dormer is a tall brick-framed pedimented dormer standing on the cornice; modelled as an ordinary roof dormer",
+        "flower boxes on the storey-3 sills are not modelled"
+       ],
+       "rear": "inferred: 3/storey on 5.92 m",
+       "defects": [
+        "(held face) cornice a storey too high; floating dormer."
+       ]
+      }
+     ],
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-157757-164549-photo.webp",
+      "width": 474,
+      "height": 833,
+      "caption": "Rectified panorama strip, 2024-11-29 (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-157757-164549-model.webp",
+      "width": 474,
+      "height": 833,
+      "caption": "Compiled (not installed) model, orthographic, same scale as the strip"
+     },
+     "review": [
+      "Held (eaves). 133's cornice sits a storey higher than 131's in the model while the photo has them nearly level; the stone-framed pointed dormer on a pantile roof is a small floating dormer."
+     ]
+    },
+    {
+     "id": "bilder-236022-167243",
+     "street": "Bilderdijkstraat",
+     "title": "Bilderdijkstraat 135–153",
+     "status": "held",
+     "statusReason": "Held: 3DBAG reads a dormer/tower top as the eaves, ~3.4 m above the photo cornice — more than a photo-trusted cornice group may bridge (2.5 m). Gates pass.",
+     "triangles": 14673,
+     "photoDate": "2023-01-12",
+     "houses": [
+      {
+       "pandId": "0363100012236022",
+       "address": "Bilderdijkstraat 135-139",
+       "shop": {
+        "use": "shop",
+        "name": "Intertoys",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "3 houses with different details in one pand: one equal-pitch 9-axis grid",
+        "triangle budget: plain windows, balconies on storey 1 only and storey bands only (the full detail needs ~4,450 triangles)",
+        "the right dormer is a tall stepped gable, modelled as a plain dormer",
+        "logo is drawn as capital lettering",
+        "brick frieze and name panels under the cornice are not modelled"
+       ],
+       "rear": "inferred: 7/storey on 17.77 m",
+       "defects": [
+        "(held face) dark roof slab with 3DBAG artefact strips instead of three gablets."
+       ]
+      },
+      {
+       "pandId": "0363100012159868",
+       "address": "Bilderdijkstraat 141",
+       "shop": {
+        "use": "restaurant",
+        "name": "SOIL Vegan Cafe",
+        "agreement": "osm-only"
+       },
+       "limits": [
+        "stepped shoulders and the finial of the gable are not modelled",
+        "ground floor hidden by a van"
+       ],
+       "rear": "inferred: 3/storey on 5.92 m"
+      },
+      {
+       "pandId": "0363100012236711",
+       "address": "Bilderdijkstraat 143",
+       "shop": {
+        "use": "services",
+        "name": "Smart Beauty Lab",
+        "agreement": "osm-only"
+       },
+       "limits": [
+        "cornice ~1.6 m above the photo line (3DBAG eaves 14.9 m vs ~13.3 m on the strip)",
+        "tree branches in front of the whole front",
+        "sign text illegible: none modelled"
+       ],
+       "rear": "inferred: 3/storey on 5.92 m"
+      },
+      {
+       "pandId": "0363100012162572",
+       "address": "Bilderdijkstraat 145",
+       "shop": {
+        "use": "services",
+        "name": "Charlton Hair Salon",
+        "agreement": "osm-only"
+       },
+       "limits": [
+        "cornice ~3.4 m above the photo line: 3DBAG eaves 17.3 m is the dormer-gable top, the strip cornice is at ~13.9 m; a photo-trusted group cannot bridge > 2.5 m",
+        "middle 3-light bay modelled with bayWidths 1/1.5/1 (side lights not drawn)",
+        "gable carries 3 windows in a dormer block, modelled as a 1-window cornice crown",
+        "arched door head not modelled"
+       ],
+       "rear": "inferred: 3/storey on 5.92 m"
+      },
+      {
+       "pandId": "0363100012237294",
+       "address": "Bilderdijkstraat 147",
+       "shop": {
+        "use": "shop",
+        "name": "Tutti Frutti",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "cornice ~3.4 m above the photo line (3DBAG eaves 17.3 m vs ~13.9 m on the strip)",
+        "ochre brick approximated; script lettering as block capitals",
+        "tree branches over the upper storeys"
+       ],
+       "rear": "inferred: 3/storey on 5.92 m",
+       "defects": [
+        "(held face) ochre instead of dark brown brick."
+       ]
+      },
+      {
+       "pandId": "0363100012236474",
+       "address": "Bilderdijkstraat 149-151",
+       "shop": {
+        "use": "services",
+        "name": "Rafael Hairstudio",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "two gables are not expressible on one front: modelled as 2 dormers on a cornice",
+        "segmental window heads dropped for the triangle budget",
+        "middle 3-light windows are single windows; bays equal",
+        "second shop sign (Cafe Duzz Dat!) and terrace not modelled",
+        "mixed capture dates (2024 for the span)"
+       ],
+       "rear": "inferred: 5/storey on 11.84 m",
+       "defects": [
+        "(held face) two ornate gables drawn as dormers on a dark roof."
+       ]
+      },
+      {
+       "pandId": "0363100012167243",
+       "address": "Bilderdijkstraat 153",
+       "shop": {
+        "use": "shop",
+        "name": "Wijn & Delicatessen",
+        "agreement": "conflict"
+       },
+       "limits": [
+        "cornice ~2.5 m above the photo line (3DBAG eaves 16.4 m vs ~13.9 m)",
+        "blind arcade frieze below the top storey is not modelled",
+        "ochre brick approximated"
+       ],
+       "rear": "inferred: 3/storey on 5.92 m",
+       "defects": [
+        "(held face) arched-window gable drawn as a flat parapet; buff instead of brown."
+       ]
+      }
+     ],
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-236022-167243-photo.webp",
+      "width": 760,
+      "height": 277,
+      "caption": "Rectified panorama strip, 2023-01-12 (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-236022-167243-model.webp",
+      "width": 760,
+      "height": 277,
+      "caption": "Compiled (not installed) model, orthographic, same scale as the strip"
+     },
+     "review": [
+      "Held (eaves). Visibly wrong: 135–139 (Intertoys) has three raised gablets in the photo — the model has a tall dark roof slab with brown 3DBAG artefact strips and three dormers; 147 is ochre in the model but dark brown brick in the photo; 149–151 has two tall ornate gables — the model shows dormers on a dark roof; 153's arched-window gable is a flat parapet."
+     ]
+    },
+    {
+     "id": "bilder-233645-236975",
+     "street": "Bilderdijkstraat",
+     "title": "Bilderdijkstraat 136–140",
+     "status": "installed",
+     "statusReason": "Drawn in game as chunk-face-bilder-233645-236975 (3 pands, 7,038 triangles).",
+     "chunkId": "chunk-face-bilder-233645-236975",
+     "triangles": 7038,
+     "photoDate": "2024-11-29",
+     "houses": [
+      {
+       "pandId": "0363100012233645",
+       "address": "Bilderdijkstraat 140",
+       "shop": {
+        "use": "restaurant",
+        "name": "SILK Amsterdam",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "top-storey arched windows are not on the lower window axes (paired right); modelled on axes 0,1,3",
+        "ground-floor transom row is not modelled",
+        "the face is split from the Bilderdijkstraat 122-134 face: 134/136 share a design not expressed here"
+       ],
+       "rear": "inferred: 2/storey on 4.57 m, 1/storey on 2.61 m",
+       "defects": [
+        "Curved gable replaced by a blank brick block above the cornice; arched top windows below the cornice."
+       ]
+      },
+      {
+       "pandId": "0363100012236881",
+       "address": "Bilderdijkstraat 138",
+       "shop": {
+        "use": "shop",
+        "name": "Cortazu",
+        "agreement": "osm-only"
+       },
+       "limits": [
+        "large tree in front hides windows on the strip: rows inferred from neighbours 233645 and 236975",
+        "top-storey arched windows off the lower axes"
+       ],
+       "rear": "inferred: 2/storey on 3.21 m",
+       "defects": [
+        "Curved gable replaced by a blank brick block above the cornice; arched top windows below the cornice."
+       ]
+      },
+      {
+       "pandId": "0363100012236975",
+       "address": "Bilderdijkstraat 136",
+       "shop": {
+        "use": "vacant",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "top-storey arched windows off the lower axes",
+        "leaves hide parts of the right bay"
+       ],
+       "rear": "inferred: 3/storey on 6.88 m",
+       "defects": [
+        "Curved gable replaced by a blank brick block above the cornice; arched top windows below the cornice."
+       ]
+      }
+     ],
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-233645-236975-photo.webp",
+      "width": 760,
+      "height": 658,
+      "caption": "Rectified panorama strip, 2024-11-29 (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-233645-236975-model.webp",
+      "width": 760,
+      "height": 658,
+      "caption": "Installed model, orthographic, same scale as the strip"
+     },
+     "review": [
+      "The photo's low curved (bell-shouldered) gables contain the arched top-storey windows; the model puts the arched windows below a cornice and adds three blank brick blocks with shallow triangular tops above it."
+     ]
+    },
+    {
+     "id": "bilder-080336-090492",
+     "street": "Bilderdijkstraat",
+     "title": "Bilderdijkstraat 142–154",
+     "status": "installed",
+     "statusReason": "Drawn in game as chunk-face-bilder-080336-090492 (4 pands, 6,157 triangles).",
+     "chunkId": "chunk-face-bilder-080336-090492",
+     "triangles": 6157,
+     "photoDate": "2024-11-29",
+     "houses": [
+      {
+       "pandId": "0363100012080336",
+       "address": "Bilderdijkstraat 154",
+       "shop": {
+        "use": "office",
+        "name": "Bilderdijk Verloskundigen",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "deep overhanging flat eaves and the white soffit are a plain heavy cornice",
+        "top-storey small windows are modelled as ordinary windows",
+        "two doors both sides: only one door modelled"
+       ],
+       "rear": "inferred: 2/storey on 3.85 m, 1/storey on 2.87 m",
+       "defects": [
+        "Dark 3DBAG roof band above a flat roof with a white eave."
+       ]
+      },
+      {
+       "pandId": "0363100012092394",
+       "address": "Bilderdijkstraat 150-152",
+       "shop": {
+        "use": "shop",
+        "agreement": "bag-only"
+       },
+       "limits": [
+        "deep eaves = heavy cornice",
+        "3DBAG hip roof shows as a dark slab above the eaves in the orthographic view; the photo shows only a thin flat-roof rim",
+        "window pitch narrower than the photo (equal piers), pilaster-like brick piers between windows are not modelled"
+       ],
+       "rear": "inferred: 2/storey on 3.5 m",
+       "defects": [
+        "Dark 3DBAG roof band; windows narrower than the photo's three-light windows."
+       ]
+      },
+      {
+       "pandId": "0363100012092395",
+       "address": "Bilderdijkstraat 146-148",
+       "shop": {
+        "use": "shop",
+        "name": "Benu",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "oval projecting sign is drawn as a flat wall sign"
+       ],
+       "rear": "inferred: 3/storey on 5.74 m",
+       "defects": [
+        "Dark 3DBAG roof band; windows narrower than the photo's three-light windows."
+       ]
+      },
+      {
+       "pandId": "0363100012090492",
+       "address": "Bilderdijkstraat 142-144",
+       "shop": {
+        "use": "shop",
+        "agreement": "bag-only"
+       },
+       "limits": [
+        "tree leaves hide the upper storeys on the strip: window rows inferred from 080336 mirror",
+        "deep eaves = heavy cornice"
+       ],
+       "rear": "inferred: 3/storey on 5.91 m",
+       "defects": [
+        "Dark 3DBAG roof band above a flat roof with a white eave."
+       ]
+      }
+     ],
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-080336-090492-photo.webp",
+      "width": 760,
+      "height": 706,
+      "caption": "Rectified panorama strip, 2024-11-29 (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-080336-090492-model.webp",
+      "width": 760,
+      "height": 706,
+      "caption": "Installed model, orthographic, same scale as the strip"
+     },
+     "review": [
+      "The flat roof with its white overhanging eave reads in the model as a ~2 m dark slate band (3DBAG roof mass) above the cornice.",
+      "Middle-bay windows are narrower than the photo's broad three-light windows; the oriels at both ends are drawn flat (acceptable at this LOD)."
+     ]
+    }
+   ],
+   "recipeHouses": [
+    {
+     "id": "bilder-079721",
+     "pandId": "0363100012079721",
+     "address": "Bilderdijkstraat 182",
+     "name": "Bilderdijkstraat (1894 yellow brick, scaffolded)",
+     "status": "chunk",
+     "drawnBy": "chunk-bilder-079721-x2",
+     "updatedAt": "2026-10-10T02:49:09.763Z",
+     "reviewState": "recipe-draft-gates-pass",
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-079721-photo.webp",
+      "width": 135,
+      "height": 420,
+      "caption": "Rectified municipal panorama crop (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-079721-model.webp",
+      "width": 260,
+      "height": 420,
+      "caption": "In game: chunk-bilder-079721-x2 (orthographic front)"
+     },
+     "defects": [
+      "Photo is under scaffolding: unverifiable. The x2 chunk has a dormer floating above the cornice."
+     ]
+    },
+    {
+     "id": "bilder-080336",
+     "pandId": "0363100012080336",
+     "address": "Bilderdijkstraat 154",
+     "name": "Bilderdijkstraat (1939 bay-window block, bay left)",
+     "status": "superseded",
+     "drawnBy": "chunk-face-bilder-080336-090492",
+     "updatedAt": "2026-10-10T02:49:09.763Z",
+     "reviewState": "recipe-draft-gates-pass"
+    },
+    {
+     "id": "bilder-081118",
+     "pandId": "0363100012081118",
+     "address": "Bilderdijkstraat 134",
+     "name": "Bilderdijkstraat (1909, arched top storey, balconies)",
+     "status": "superseded",
+     "drawnBy": "chunk-face-bilder-081118-155417",
+     "updatedAt": "2026-10-10T03:19:14.770Z",
+     "reviewState": "recipe-draft-gates-pass"
+    },
+    {
+     "id": "bilder-087959",
+     "pandId": "0363100012087959",
+     "address": "Bilderdijkstraat 132",
+     "name": "Bilderdijkstraat (1909 dark brick, balconies, arched top)",
+     "status": "superseded",
+     "drawnBy": "chunk-face-bilder-081118-155417",
+     "updatedAt": "2026-10-10T03:19:14.770Z",
+     "reviewState": "recipe-draft-gates-pass"
+    },
+    {
+     "id": "bilder-090492",
+     "pandId": "0363100012090492",
+     "address": "Bilderdijkstraat 142–144",
+     "name": "Bilderdijkstraat (1939 bay-window block, bay right)",
+     "status": "superseded",
+     "drawnBy": "chunk-face-bilder-080336-090492",
+     "updatedAt": "2026-10-10T02:49:09.763Z",
+     "reviewState": "recipe-draft-gates-pass"
+    },
+    {
+     "id": "bilder-092394",
+     "pandId": "0363100012092394",
+     "address": "Bilderdijkstraat 150–152",
+     "name": "Bilderdijkstraat (1939 plain block)",
+     "status": "superseded",
+     "drawnBy": "chunk-face-bilder-080336-090492",
+     "updatedAt": "2026-10-10T02:49:09.763Z",
+     "reviewState": "recipe-draft-gates-pass"
+    },
+    {
+     "id": "bilder-092395",
+     "pandId": "0363100012092395",
+     "address": "Bilderdijkstraat 146–148",
+     "name": "Bilderdijkstraat (twin of 092394)",
+     "status": "superseded",
+     "drawnBy": "chunk-face-bilder-080336-090492",
+     "updatedAt": "2026-10-10T02:49:09.763Z",
+     "reviewState": "recipe-draft-gates-pass"
+    },
+    {
+     "id": "bilder-152363",
+     "pandId": "0363100012152363",
+     "address": "Bilderdijkstraat 203",
+     "name": "Bilderdijkstraat (1881 dark brick, pedimented dormer)",
+     "status": "chunk",
+     "drawnBy": "chunk-bilder-152363-x2",
+     "updatedAt": "2026-10-10T02:49:09.763Z",
+     "reviewState": "recipe-draft-gates-pass",
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-152363-photo.webp",
+      "width": 164,
+      "height": 420,
+      "caption": "Rectified municipal panorama crop (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-152363-model.webp",
+      "width": 369,
+      "height": 420,
+      "caption": "In game: chunk-bilder-152363-x2 (orthographic front)"
+     },
+     "defects": [
+      "Windows small and square four-pane vs tall one-over-one in the photo; pantile roof drawn as a red brick block; white-painted ground floor drawn brown."
+     ]
+    },
+    {
+     "id": "bilder-152669",
+     "pandId": "0363100012152669",
+     "address": "Bilderdijkstraat 184",
+     "name": "Bilderdijkstraat (1894 arched windows, pedimented dormer)",
+     "status": "chunk",
+     "drawnBy": "chunk-bilder-079721-x2",
+     "updatedAt": "2026-10-10T02:49:09.763Z",
+     "reviewState": "recipe-draft-gates-pass",
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-152669-photo.webp",
+      "width": 114,
+      "height": 420,
+      "caption": "Rectified municipal panorama crop (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-152669-model.webp",
+      "width": 260,
+      "height": 420,
+      "caption": "In game: chunk-bilder-079721-x2 (orthographic front)"
+     },
+     "defects": [
+      "(x2 chunk partner of 079721) 3DBAG roof slab with a brown wedge artefact; not compared against its own photo."
+     ]
+    },
+    {
+     "id": "bilder-153622",
+     "pandId": "0363100012153622",
+     "address": "Bilderdijkstraat 199",
+     "name": "Bilderdijkstraat (1887 orange brick, white bosses)",
+     "status": "standalone",
+     "updatedAt": "2026-10-10T02:49:09.763Z",
+     "reviewState": "recipe-draft-gates-pass",
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-153622-photo.webp",
+      "width": 118,
+      "height": 420,
+      "caption": "Rectified municipal panorama crop (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-153622-model.webp",
+      "width": 140,
+      "height": 420,
+      "caption": "In game: this recipe model (orthographic front)"
+     },
+     "defects": [
+      "Known (another lane is fixing): 3DBAG pyramid roof mass with a stuck-on dormer where the photo has a flat cornice and one small pedimented dormer; unequal windows (top storeys smaller, balconies on the lower right two); red 3DBAG wedge beside the cornice; white bosses/keystones missing."
+     ]
+    },
+    {
+     "id": "bilder-153782",
+     "pandId": "0363100012153782",
+     "address": "Bilderdijkstraat 173",
+     "name": "Bilderdijkstraat (1891 red brick, white bosses)",
+     "status": "standalone",
+     "updatedAt": "2026-10-10T02:49:09.763Z",
+     "reviewState": "recipe-draft-gates-pass",
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-153782-photo.webp",
+      "width": 137,
+      "height": 420,
+      "caption": "Rectified municipal panorama crop (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-153782-model.webp",
+      "width": 153,
+      "height": 420,
+      "caption": "In game: this recipe model (orthographic front)"
+     },
+     "defects": [
+      "Known (another lane is fixing): four window storeys where the photo has three above the shop; dormer floats on a thin slab with no mansard either side; small four-pane windows vs tall two-pane sashes."
+     ]
+    },
+    {
+     "id": "bilder-154127",
+     "pandId": "0363100012154127",
+     "address": "Bilderdijkstraat 200",
+     "name": "Bilderdijkstraat (1889 dark brick, shop window)",
+     "status": "standalone",
+     "updatedAt": "2026-10-10T02:49:09.763Z",
+     "reviewState": "recipe-draft-gates-pass",
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-154127-photo.webp",
+      "width": 129,
+      "height": 420,
+      "caption": "Rectified municipal panorama crop (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-154127-model.webp",
+      "width": 161,
+      "height": 420,
+      "caption": "In game: this recipe model (orthographic front)"
+     },
+     "defects": [
+      "Known (another lane is fixing): three window storeys where the photo has two above a tall shop with transom; 3DBAG slate roof mass with a stuck-on dormer (photo: flat cornice + pedimented dormer); windows smaller than the photo's."
+     ]
+    },
+    {
+     "id": "bilder-155417",
+     "pandId": "0363100012155417",
+     "address": "Bilderdijkstraat 122",
+     "name": "Bilderdijkstraat (1902 arched windows, balconies, mansard dormer)",
+     "status": "superseded",
+     "drawnBy": "chunk-face-bilder-081118-155417",
+     "updatedAt": "2026-10-10T03:19:14.770Z",
+     "reviewState": "recipe-draft-gates-pass"
+    },
+    {
+     "id": "bilder-155418",
+     "pandId": "0363100012155418",
+     "address": "Bilderdijkstraat 124",
+     "name": "Bilderdijkstraat (1903 behind a tree, gabled)",
+     "status": "superseded",
+     "drawnBy": "chunk-face-bilder-081118-155417",
+     "updatedAt": "2026-10-10T03:19:14.770Z",
+     "reviewState": "recipe-draft-gates-pass"
+    },
+    {
+     "id": "bilder-156286",
+     "pandId": "0363100012156286",
+     "address": "Bilderdijkstraat 126",
+     "name": "Bilderdijkstraat (1903 yellow brick, stepped gable, balconies)",
+     "status": "superseded",
+     "drawnBy": "chunk-face-bilder-081118-155417",
+     "updatedAt": "2026-10-10T03:19:14.770Z",
+     "reviewState": "recipe-draft-gates-pass"
+    },
+    {
+     "id": "bilder-156287",
+     "pandId": "0363100012156287",
+     "address": "Bilderdijkstraat 128",
+     "name": "Bilderdijkstraat (1903 orange brick, stepped gable, balconies)",
+     "status": "superseded",
+     "drawnBy": "chunk-face-bilder-081118-155417",
+     "updatedAt": "2026-10-10T03:19:14.770Z",
+     "reviewState": "recipe-draft-gates-pass"
+    },
+    {
+     "id": "bilder-156732",
+     "pandId": "0363100012156732",
+     "address": "pand …156732 (no Bilderdijkstraat address in BAG)",
+     "name": "Bilderdijkstraat (1881 painted plum, heavy cornice)",
+     "status": "chunk",
+     "drawnBy": "chunk-bilder-152363-x2",
+     "updatedAt": "2026-10-10T02:49:09.763Z",
+     "reviewState": "recipe-draft-gates-pass",
+     "photo": {
+      "src": "./street-surveys-data/thumbs/bilder-156732-photo.webp",
+      "width": 182,
+      "height": 420,
+      "caption": "Rectified municipal panorama crop (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/bilder-156732-model.webp",
+      "width": 369,
+      "height": 420,
+      "caption": "In game: chunk-bilder-152363-x2 (orthographic front)"
+     },
+     "defects": [
+      "BAG address is Jacob van Lennepstraat 66 (a corner pand), not Bilderdijkstraat, although the recipe is filed under Bilderdijkstraat.",
+      "Carries a duplicate 'DE JAPANNER' sign — the reference photo shows that shop on no. 203 (152363); not checked against a Jacob van Lennepstraat photo."
+     ]
+    },
+    {
+     "id": "bilder-157154",
+     "pandId": "0363100012157154",
+     "address": "Bilderdijkstraat 116",
+     "name": "Bilderdijkstraat (1902 dark brick, raised neck, balconies)",
+     "status": "superseded",
+     "drawnBy": "chunk-face-bilder-161259-236206",
+     "updatedAt": "2026-10-10T03:19:14.770Z",
+     "reviewState": "recipe-draft-gates-pass"
+    },
+    {
+     "id": "bilder-157650",
+     "pandId": "0363100012157650",
+     "address": "Bilderdijkstraat 130",
+     "name": "Bilderdijkstraat (1908 dark red brick, big cross windows)",
+     "status": "superseded",
+     "drawnBy": "chunk-face-bilder-081118-155417",
+     "updatedAt": "2026-10-10T03:19:14.770Z",
+     "reviewState": "recipe-draft-gates-pass"
+    }
+   ],
+   "pandTable": {
+    "source": "PDOK BAG OGC API v2 (verblijfsobject + pand), CC0",
+    "fetchedAt": "2026-10-10",
+    "rows": [
+     {
+      "pandId": "0363100012157594",
+      "label": "Bilderdijkstraat 1",
+      "buildYear": 1903,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012158387",
+      "label": "Bilderdijkstraat 3",
+      "buildYear": 1903,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012159895",
+      "label": "Bilderdijkstraat 5",
+      "buildYear": 1903,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012164917",
+      "label": "Bilderdijkstraat 7",
+      "buildYear": 1903,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012161568",
+      "label": "Bilderdijkstraat 9",
+      "buildYear": 1903,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012159650",
+      "label": "Bilderdijkstraat 11",
+      "buildYear": 1903,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012061963",
+      "label": "Bilderdijkstraat 13",
+      "buildYear": 1905,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012166551",
+      "label": "Bilderdijkstraat 15",
+      "buildYear": 1903,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012077314",
+      "label": "Bilderdijkstraat 17–27",
+      "buildYear": 1992,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012153203",
+      "label": "Bilderdijkstraat 29",
+      "buildYear": 1905,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012237236",
+      "label": "Bilderdijkstraat 31–33",
+      "buildYear": 1901,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012150852",
+      "label": "Bilderdijkstraat 36",
+      "buildYear": 1914,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012236605",
+      "label": "Bilderdijkstraat 37–53",
+      "buildYear": 1902,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012236332",
+      "label": "Bilderdijkstraat 37–51",
+      "buildYear": 1902,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012081246",
+      "label": "Bilderdijkstraat 38–40",
+      "buildYear": 1914,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012236315",
+      "label": "Bilderdijkstraat 42",
+      "buildYear": 1914,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012065764",
+      "label": "Bilderdijkstraat 44",
+      "buildYear": 1914,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012129802",
+      "label": "Bilderdijkstraat 46",
+      "buildYear": 1903,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012159268",
+      "label": "Bilderdijkstraat 48",
+      "buildYear": 1903,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012143235",
+      "label": "Bilderdijkstraat 50–64",
+      "buildYear": 1993,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012165174",
+      "label": "Bilderdijkstraat 55",
+      "buildYear": 1902,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012157141",
+      "label": "Bilderdijkstraat 57",
+      "buildYear": 1902,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012101090",
+      "label": "Bilderdijkstraat 59",
+      "buildYear": 1905,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012152485",
+      "label": "Bilderdijkstraat 61",
+      "buildYear": 1902,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012161369",
+      "label": "Bilderdijkstraat 63",
+      "buildYear": 1902,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012236476",
+      "label": "Bilderdijkstraat 65–67",
+      "buildYear": 1902,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012167348",
+      "label": "Bilderdijkstraat 66–70",
+      "buildYear": 1902,
+      "live": "generic",
+      "note": "Nos. 66–70: not yet authored as a face (TODO)."
+     },
+     {
+      "pandId": "0363100012162776",
+      "label": "Bilderdijkstraat 69",
+      "buildYear": 1902,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012236628",
+      "label": "Bilderdijkstraat 71",
+      "buildYear": 1902,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012156126",
+      "label": "Bilderdijkstraat 72",
+      "buildYear": 1902,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-164451-156126"
+     },
+     {
+      "pandId": "0363100012237152",
+      "label": "Bilderdijkstraat 73–79",
+      "buildYear": 1901,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012157866",
+      "label": "Bilderdijkstraat 74",
+      "buildYear": 1902,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-164451-156126"
+     },
+     {
+      "pandId": "0363100012064444",
+      "label": "Bilderdijkstraat 76",
+      "buildYear": 1903,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-164451-156126"
+     },
+     {
+      "pandId": "0363100012159739",
+      "label": "Bilderdijkstraat 78",
+      "buildYear": 1903,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-164451-156126"
+     },
+     {
+      "pandId": "0363100012165444",
+      "label": "Bilderdijkstraat 80",
+      "buildYear": 1903,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-164451-156126",
+      "defects": [
+       "Curved gablets of the double house are not identical (bell vs pointed)."
+      ]
+     },
+     {
+      "pandId": "0363100012164451",
+      "label": "Bilderdijkstraat 82",
+      "buildYear": 1903,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-164451-156126",
+      "defects": [
+       "Front is red-brown in the model; pale buff brick with white stone in the photo. Ornate raised gable with finial simplified to a bell gable."
+      ]
+     },
+     {
+      "pandId": "0363100012235892",
+      "label": "Bilderdijkstraat 84–86",
+      "buildYear": 1903,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-166802-235892",
+      "defects": [
+       "Arched window heads drawn flat."
+      ]
+     },
+     {
+      "pandId": "0363100012233514",
+      "label": "Bilderdijkstraat 87–97",
+      "buildYear": 1900,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012162836",
+      "label": "Bilderdijkstraat 88",
+      "buildYear": 1903,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-166802-235892",
+      "defects": [
+       "Tower gable drawn as a thin pointed shaft; white dormer missing."
+      ]
+     },
+     {
+      "pandId": "0363100012166801",
+      "label": "Bilderdijkstraat 90",
+      "buildYear": 1903,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-166802-235892",
+      "defects": [
+       "Tower gable drawn as a thin pointed shaft; white dormer missing."
+      ]
+     },
+     {
+      "pandId": "0363100012166802",
+      "label": "Bilderdijkstraat 92",
+      "buildYear": 1903,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-166802-235892"
+     },
+     {
+      "pandId": "0363100012166159",
+      "label": "Bilderdijkstraat 94",
+      "buildYear": 1903,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-236189-166159"
+     },
+     {
+      "pandId": "0363100012157174",
+      "label": "Bilderdijkstraat 96",
+      "buildYear": 1903,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-236189-166159"
+     },
+     {
+      "pandId": "0363100012237171",
+      "label": "Bilderdijkstraat 99",
+      "buildYear": 1899,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012236188",
+      "label": "Bilderdijkstraat 100",
+      "buildYear": 1902,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-236189-166159"
+     },
+     {
+      "pandId": "0363100012236189",
+      "label": "Bilderdijkstraat 102–106",
+      "buildYear": 1905,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-236189-166159",
+      "defects": [
+       "Two stepped gables missing (3 dormers instead); equal flat windows; one continuous shop glazing instead of separate shopfronts; sign squeezed into the corner."
+      ]
+     },
+     {
+      "pandId": "0363100012236206",
+      "label": "Bilderdijkstraat 108–110",
+      "buildYear": 1902,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-161259-236206",
+      "defects": [
+       "Right-end pointed gable missing; second awning/shop window missing."
+      ]
+     },
+     {
+      "pandId": "0363100012081480",
+      "label": "Bilderdijkstraat 108",
+      "buildYear": 1905,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012244608",
+      "label": "Bilderdijkstraat 108",
+      "buildYear": 2016,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012165170",
+      "label": "Bilderdijkstraat 112",
+      "buildYear": 1902,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-161259-236206"
+     },
+     {
+      "pandId": "0363100012160212",
+      "label": "Bilderdijkstraat 112–114",
+      "buildYear": 1902,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-161259-236206",
+      "defects": [
+       "Pointed gable far too wide; dark roof slab above it."
+      ]
+     },
+     {
+      "pandId": "0363100012161281",
+      "label": "Bilderdijkstraat 113",
+      "buildYear": 1890,
+      "live": "generic",
+      "pendingFace": "bilder-161281-157756",
+      "defects": [
+       "(held face) one storey short; banding reduced."
+      ]
+     },
+     {
+      "pandId": "0363100012157756",
+      "label": "Bilderdijkstraat 115",
+      "buildYear": 1890,
+      "live": "generic",
+      "pendingFace": "bilder-161281-157756",
+      "defects": [
+       "(held face) one storey short; banding reduced."
+      ]
+     },
+     {
+      "pandId": "0363100012157154",
+      "label": "Bilderdijkstraat 116",
+      "buildYear": 1902,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-161259-236206",
+      "defects": [
+       "Stray brick 3DBAG block beside the stepped gable."
+      ]
+     },
+     {
+      "pandId": "0363100012161260",
+      "label": "Bilderdijkstraat 118",
+      "buildYear": 1902,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-161259-236206"
+     },
+     {
+      "pandId": "0363100012161259",
+      "label": "Bilderdijkstraat 120",
+      "buildYear": 1902,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-161259-236206"
+     },
+     {
+      "pandId": "0363100012155417",
+      "label": "Bilderdijkstraat 122",
+      "buildYear": 1902,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-081118-155417"
+     },
+     {
+      "pandId": "0363100012155418",
+      "label": "Bilderdijkstraat 124",
+      "buildYear": 1903,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-081118-155417"
+     },
+     {
+      "pandId": "0363100012149727",
+      "label": "Bilderdijkstraat 126",
+      "buildYear": 1905,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012156286",
+      "label": "Bilderdijkstraat 126",
+      "buildYear": 1903,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-081118-155417",
+      "defects": [
+       "Yellow stepped gable spans ~35% of the front in the model, ~60% in the photo."
+      ]
+     },
+     {
+      "pandId": "0363100012156287",
+      "label": "Bilderdijkstraat 128",
+      "buildYear": 1903,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-081118-155417",
+      "defects": [
+       "Face model: gable has one small window where the photo shows a three-light gable window. (The stale per-house model with 4 storeys and a lopsided gable is superseded — not drawn.)"
+      ]
+     },
+     {
+      "pandId": "0363100012157650",
+      "label": "Bilderdijkstraat 130",
+      "buildYear": 1908,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-081118-155417"
+     },
+     {
+      "pandId": "0363100012157757",
+      "label": "Bilderdijkstraat 131",
+      "buildYear": 1903,
+      "live": "generic",
+      "pendingFace": "bilder-157757-164549"
+     },
+     {
+      "pandId": "0363100012087959",
+      "label": "Bilderdijkstraat 132",
+      "buildYear": 1909,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-081118-155417",
+      "defects": [
+       "Arched stone entrance surround (photo) drawn as a plain door."
+      ]
+     },
+     {
+      "pandId": "0363100012164549",
+      "label": "Bilderdijkstraat 133",
+      "buildYear": 1903,
+      "live": "generic",
+      "pendingFace": "bilder-157757-164549",
+      "defects": [
+       "(held face) cornice a storey too high; floating dormer."
+      ]
+     },
+     {
+      "pandId": "0363100012081118",
+      "label": "Bilderdijkstraat 134",
+      "buildYear": 1909,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-081118-155417",
+      "defects": [
+       "Small pediment over the left bay; the photo's low pointed gable with curved shoulders sits right of centre."
+      ]
+     },
+     {
+      "pandId": "0363100012236022",
+      "label": "Bilderdijkstraat 135–139",
+      "buildYear": 1903,
+      "live": "generic",
+      "pendingFace": "bilder-236022-167243",
+      "defects": [
+       "(held face) dark roof slab with 3DBAG artefact strips instead of three gablets."
+      ]
+     },
+     {
+      "pandId": "0363100012236975",
+      "label": "Bilderdijkstraat 136",
+      "buildYear": 1909,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-233645-236975",
+      "defects": [
+       "Curved gable replaced by a blank brick block above the cornice; arched top windows below the cornice."
+      ]
+     },
+     {
+      "pandId": "0363100012236881",
+      "label": "Bilderdijkstraat 138",
+      "buildYear": 1909,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-233645-236975",
+      "defects": [
+       "Curved gable replaced by a blank brick block above the cornice; arched top windows below the cornice."
+      ]
+     },
+     {
+      "pandId": "0363100012233645",
+      "label": "Bilderdijkstraat 140",
+      "buildYear": 1909,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-233645-236975",
+      "defects": [
+       "Curved gable replaced by a blank brick block above the cornice; arched top windows below the cornice."
+      ]
+     },
+     {
+      "pandId": "0363100012159868",
+      "label": "Bilderdijkstraat 141",
+      "buildYear": 1903,
+      "live": "generic",
+      "pendingFace": "bilder-236022-167243"
+     },
+     {
+      "pandId": "0363100012090492",
+      "label": "Bilderdijkstraat 142–144",
+      "buildYear": 1939,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-080336-090492",
+      "defects": [
+       "Dark 3DBAG roof band above a flat roof with a white eave."
+      ]
+     },
+     {
+      "pandId": "0363100012236711",
+      "label": "Bilderdijkstraat 143",
+      "buildYear": 1903,
+      "live": "generic",
+      "pendingFace": "bilder-236022-167243"
+     },
+     {
+      "pandId": "0363100012162572",
+      "label": "Bilderdijkstraat 145",
+      "buildYear": 1903,
+      "live": "generic",
+      "pendingFace": "bilder-236022-167243"
+     },
+     {
+      "pandId": "0363100012092395",
+      "label": "Bilderdijkstraat 146–148",
+      "buildYear": 1939,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-080336-090492",
+      "defects": [
+       "Dark 3DBAG roof band; windows narrower than the photo's three-light windows."
+      ]
+     },
+     {
+      "pandId": "0363100012237294",
+      "label": "Bilderdijkstraat 147",
+      "buildYear": 1903,
+      "live": "generic",
+      "pendingFace": "bilder-236022-167243",
+      "defects": [
+       "(held face) ochre instead of dark brown brick."
+      ]
+     },
+     {
+      "pandId": "0363100012236474",
+      "label": "Bilderdijkstraat 149–151",
+      "buildYear": 1903,
+      "live": "generic",
+      "pendingFace": "bilder-236022-167243",
+      "defects": [
+       "(held face) two ornate gables drawn as dormers on a dark roof."
+      ]
+     },
+     {
+      "pandId": "0363100012092394",
+      "label": "Bilderdijkstraat 150–152",
+      "buildYear": 1939,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-080336-090492",
+      "defects": [
+       "Dark 3DBAG roof band; windows narrower than the photo's three-light windows."
+      ]
+     },
+     {
+      "pandId": "0363100012167243",
+      "label": "Bilderdijkstraat 153",
+      "buildYear": 1903,
+      "live": "generic",
+      "pendingFace": "bilder-236022-167243",
+      "defects": [
+       "(held face) arched-window gable drawn as a flat parapet; buff instead of brown."
+      ]
+     },
+     {
+      "pandId": "0363100012080336",
+      "label": "Bilderdijkstraat 154",
+      "buildYear": 1939,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-080336-090492",
+      "defects": [
+       "Dark 3DBAG roof band above a flat roof with a white eave."
+      ]
+     },
+     {
+      "pandId": "0363100012236799",
+      "label": "Bilderdijkstraat 155–167",
+      "buildYear": 1903,
+      "live": "generic",
+      "note": "Nos. 155–167: large-building tier (generic facade system), not a canal-house survey."
+     },
+     {
+      "pandId": "0363100012162444",
+      "label": "Bilderdijkstraat 156",
+      "buildYear": 1893,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-233580-162444"
+     },
+     {
+      "pandId": "0363100012162443",
+      "label": "Bilderdijkstraat 158–162",
+      "buildYear": 1893,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-233580-162444",
+      "defects": [
+       "Different building in the photo (stone bands, end pilasters above the cornice) drawn as a continuation of the corner block."
+      ]
+     },
+     {
+      "pandId": "0363100012236055",
+      "label": "Bilderdijkstraat 164–166",
+      "buildYear": 1893,
+      "live": "face",
+      "drawnBy": "chunk-face-bilder-233580-162444"
+     },
+     {
+      "pandId": "0363100012106015",
+      "label": "Bilderdijkstraat 168",
+      "buildYear": 1893,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012152566",
+      "label": "Bilderdijkstraat 169",
+      "buildYear": 1979,
+      "live": "generic",
+      "note": "No. 169 (1979, with Kinkerstraat 76–84): large-building tier, not a canal-house survey."
+     },
+     {
+      "pandId": "0363100012161120",
+      "label": "Bilderdijkstraat 170",
+      "buildYear": 1893,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012165152",
+      "label": "Bilderdijkstraat 172",
+      "buildYear": 1893,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012153782",
+      "label": "Bilderdijkstraat 173",
+      "buildYear": 1891,
+      "live": "standalone",
+      "drawnBy": "bilder-153782",
+      "defects": [
+       "Known (another lane is fixing): four window storeys where the photo has three above the shop; dormer floats on a thin slab with no mansard either side; small four-pane windows vs tall two-pane sashes."
+      ]
+     },
+     {
+      "pandId": "0363100012163018",
+      "label": "Bilderdijkstraat 174–176",
+      "buildYear": 1894,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012159649",
+      "label": "Bilderdijkstraat 175",
+      "buildYear": 1891,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012153173",
+      "label": "Bilderdijkstraat 177–181",
+      "buildYear": 1891,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012163017",
+      "label": "Bilderdijkstraat 178–180",
+      "buildYear": 1894,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012079721",
+      "label": "Bilderdijkstraat 182",
+      "buildYear": 1894,
+      "live": "chunk",
+      "drawnBy": "chunk-bilder-079721-x2",
+      "defects": [
+       "Photo is under scaffolding: unverifiable. The x2 chunk has a dormer floating above the cornice."
+      ]
+     },
+     {
+      "pandId": "0363100012164390",
+      "label": "Bilderdijkstraat 183–189",
+      "buildYear": 1887,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012152669",
+      "label": "Bilderdijkstraat 184",
+      "buildYear": 1894,
+      "live": "chunk",
+      "drawnBy": "chunk-bilder-079721-x2",
+      "defects": [
+       "(x2 chunk partner of 079721) 3DBAG roof slab with a brown wedge artefact; not compared against its own photo."
+      ]
+     },
+     {
+      "pandId": "0363100012161849",
+      "label": "Bilderdijkstraat 186",
+      "buildYear": 1896,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012160772",
+      "label": "Bilderdijkstraat 188",
+      "buildYear": 1896,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012162475",
+      "label": "Bilderdijkstraat 190",
+      "buildYear": 1896,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012165634",
+      "label": "Bilderdijkstraat 191",
+      "buildYear": 1887,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012165507",
+      "label": "Bilderdijkstraat 192",
+      "buildYear": 1896,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012236720",
+      "label": "Bilderdijkstraat 193",
+      "buildYear": 1887,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012158049",
+      "label": "Bilderdijkstraat 194",
+      "buildYear": 1889,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012167429",
+      "label": "Bilderdijkstraat 195",
+      "buildYear": 1887,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012165633",
+      "label": "Bilderdijkstraat 196",
+      "buildYear": 1889,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012236058",
+      "label": "Bilderdijkstraat 197",
+      "buildYear": 1887,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012165632",
+      "label": "Bilderdijkstraat 198",
+      "buildYear": 1889,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012153622",
+      "label": "Bilderdijkstraat 199",
+      "buildYear": 1887,
+      "live": "standalone",
+      "drawnBy": "bilder-153622",
+      "defects": [
+       "Known (another lane is fixing): 3DBAG pyramid roof mass with a stuck-on dormer where the photo has a flat cornice and one small pedimented dormer; unequal windows (top storeys smaller, balconies on the lower right two); red 3DBAG wedge beside the cornice; white bosses/keystones missing."
+      ]
+     },
+     {
+      "pandId": "0363100012154127",
+      "label": "Bilderdijkstraat 200",
+      "buildYear": 1889,
+      "live": "standalone",
+      "drawnBy": "bilder-154127",
+      "defects": [
+       "Known (another lane is fixing): three window storeys where the photo has two above a tall shop with transom; 3DBAG slate roof mass with a stuck-on dormer (photo: flat cornice + pedimented dormer); windows smaller than the photo's."
+      ]
+     },
+     {
+      "pandId": "0363100012161613",
+      "label": "Bilderdijkstraat 201",
+      "buildYear": 1881,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012159426",
+      "label": "Bilderdijkstraat 202",
+      "buildYear": 1883,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012160788",
+      "label": "Bilderdijkstraat 202",
+      "buildYear": 1883,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012152363",
+      "label": "Bilderdijkstraat 203",
+      "buildYear": 1881,
+      "live": "chunk",
+      "drawnBy": "chunk-bilder-152363-x2",
+      "defects": [
+       "Windows small and square four-pane vs tall one-over-one in the photo; pantile roof drawn as a red brick block; white-painted ground floor drawn brown."
+      ]
+     },
+     {
+      "pandId": "0363100012161557",
+      "label": "Bilderdijkstraat 204",
+      "buildYear": 1882,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012235998",
+      "label": "Bilderdijkstraat 205–207",
+      "buildYear": 1881,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012164457",
+      "label": "Bilderdijkstraat 205",
+      "buildYear": 1882,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012161558",
+      "label": "Bilderdijkstraat 206",
+      "buildYear": 1882,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012160655",
+      "label": "Bilderdijkstraat 207–209",
+      "buildYear": 1881,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012157564",
+      "label": "Bilderdijkstraat 208–210",
+      "buildYear": 1882,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012160514",
+      "label": "Bilderdijkstraat 211",
+      "buildYear": 1888,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012160981",
+      "label": "Bilderdijkstraat 212",
+      "buildYear": 1888,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012236357",
+      "label": "Bilderdijkstraat 213–215",
+      "buildYear": 1888,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012159679",
+      "label": "Bilderdijkstraat 214",
+      "buildYear": 1888,
+      "live": "generic"
+     },
+     {
+      "pandId": "0363100012163541",
+      "label": "Bilderdijkstraat 216",
+      "buildYear": 1888,
+      "live": "generic"
+     }
+    ]
+   }
+  },
+  {
+   "street": "Marnixstraat",
+   "faces": [
+    {
+     "id": "marnix-c",
+     "street": "Marnixstraat",
+     "title": "Marnixstraat 106–122",
+     "status": "installed",
+     "statusReason": "Drawn in game as chunk-face-marnix-c (9 pands, 17,209 triangles).",
+     "chunkId": "chunk-face-marnix-c",
+     "triangles": 17209,
+     "photoDate": "2023-01-30",
+     "houses": [
+      {
+       "pandId": "0363100012169033",
+       "address": "Marnixstraat 122",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 6/storey on 13.91 m"
+      },
+      {
+       "pandId": "0363100012174107",
+       "address": "Marnixstraat 120",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 6/storey on 13.92 m"
+      },
+      {
+       "pandId": "0363100012174112",
+       "address": "Marnixstraat 118",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 6/storey on 13.92 m"
+      },
+      {
+       "pandId": "0363100012174116",
+       "address": "Marnixstraat 116",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 6/storey on 13.92 m"
+      },
+      {
+       "pandId": "0363100012174121",
+       "address": "Marnixstraat 114",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 6/storey on 13.92 m"
+      },
+      {
+       "pandId": "0363100012174192",
+       "address": "Marnixstraat 112",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 6/storey on 13.92 m"
+      },
+      {
+       "pandId": "0363100012174292",
+       "address": "Marnixstraat 110",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 6/storey on 13.92 m"
+      },
+      {
+       "pandId": "0363100012168167",
+       "address": "Marnixstraat 108",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 6/storey on 13.92 m"
+      },
+      {
+       "pandId": "0363100012168218",
+       "address": "Marnixstraat 106",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 6/storey on 13.91 m"
+      }
+     ],
+     "photo": {
+      "src": "./street-surveys-data/thumbs/marnix-c-photo.webp",
+      "width": 760,
+      "height": 112,
+      "caption": "Rectified panorama strip, 2023-01-30 (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/marnix-c-model.webp",
+      "width": 760,
+      "height": 112,
+      "caption": "Installed model, orthographic, same scale as the strip"
+     }
+    },
+    {
+     "id": "marnix-124-138",
+     "street": "Marnixstraat",
+     "title": "Marnixstraat 124–138",
+     "status": "installed",
+     "statusReason": "Drawn in game as chunk-face-marnix-124-138 (8 pands, 14,943 triangles).",
+     "chunkId": "chunk-face-marnix-124-138",
+     "triangles": 14943,
+     "photoDate": "2023-01-30",
+     "houses": [
+      {
+       "pandId": "0363100012174914",
+       "address": "Marnixstraat 138",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 6/storey on 13.26 m"
+      },
+      {
+       "pandId": "0363100012168510",
+       "address": "Marnixstraat 136",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 5/storey on 12.99 m"
+      },
+      {
+       "pandId": "0363100012173514",
+       "address": "Marnixstraat 134",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 5/storey on 12.97 m"
+      },
+      {
+       "pandId": "0363100012173515",
+       "address": "Marnixstraat 132",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 5/storey on 13.02 m"
+      },
+      {
+       "pandId": "0363100012174104",
+       "address": "Marnixstraat 130",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 5/storey on 12.96 m"
+      },
+      {
+       "pandId": "0363100012174105",
+       "address": "Marnixstraat 128",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 5/storey on 13 m"
+      },
+      {
+       "pandId": "0363100012174935",
+       "address": "Marnixstraat 126",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 5/storey on 12.92 m"
+      },
+      {
+       "pandId": "0363100012173530",
+       "address": "Marnixstraat 124",
+       "shop": {
+        "use": "services",
+        "name": "NiDA Wasserij Stomerij",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "pilaster strips, drainpipes, brick bands and stone lintel detail not modelled"
+       ],
+       "rear": "inferred: 3/storey on 6.31 m, 3/storey on 6.97 m"
+      }
+     ],
+     "photo": {
+      "src": "./street-surveys-data/thumbs/marnix-124-138-photo.webp",
+      "width": 760,
+      "height": 136,
+      "caption": "Rectified panorama strip, 2023-01-30 (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/marnix-124-138-model.webp",
+      "width": 760,
+      "height": 136,
+      "caption": "Installed model, orthographic, same scale as the strip"
+     }
+    },
+    {
+     "id": "marnix-b",
+     "street": "Marnixstraat",
+     "title": "Marnixstraat 138–363100012169803",
+     "status": "staged",
+     "statusReason": "Staged: intake and photo strip only — no intent authored yet.",
+     "photoDate": "2023-04-11",
+     "houses": [
+      {
+       "pandId": "0363100012169803",
+       "address": "pand 0363100012169803",
+       "limits": []
+      },
+      {
+       "pandId": "0363100012169809",
+       "address": "Marnixstraat 142",
+       "limits": []
+      },
+      {
+       "pandId": "0363100012169810",
+       "address": "Marnixstraat 140",
+       "limits": []
+      },
+      {
+       "pandId": "0363100012168447",
+       "address": "Marnixstraat 138K",
+       "limits": []
+      }
+     ],
+     "photo": {
+      "src": "./street-surveys-data/thumbs/marnix-b-photo.webp",
+      "width": 760,
+      "height": 258,
+      "caption": "Rectified panorama strip, 2023-04-11 (Gemeente Amsterdam, CC BY 4.0)"
+     }
+    },
+    {
+     "id": "marnix-d",
+     "street": "Marnixstraat",
+     "title": "Marnixstraat 363100012169393",
+     "status": "staged",
+     "statusReason": "Staged: discovery only — no intent authored yet.",
+     "houses": [
+      {
+       "pandId": "0363100012169393",
+       "address": "pand 0363100012169393",
+       "limits": []
+      }
+     ]
+    }
+   ],
+   "recipeHouses": []
+  },
+  {
+   "street": "Oudezijds Achterburgwal",
+   "faces": [
+    {
+     "id": "wallen-oza-41-57",
+     "street": "Oudezijds Achterburgwal",
+     "title": "Oudezijds Achterburgwal 41–57",
+     "status": "installed",
+     "statusReason": "Drawn in game as chunk-face-wallen-oza-41-57 (8 pands, 17,507 triangles).",
+     "chunkId": "chunk-face-wallen-oza-41-57",
+     "triangles": 17507,
+     "photoDate": "2025-01-14",
+     "houses": [
+      {
+       "pandId": "0363100012177916",
+       "address": "Oudezijds Achterburgwal 41",
+       "shop": {
+        "use": "other",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "wing pieces are shared with the corner house next door ('gedeelde vleugelstukken'); modelled per house",
+        "3-light window group above 2-window rows: per-storey counts are spaced on their own",
+        "corner return onto the side street not modelled",
+        "pui with entresol lights is 5.5 m tall on the photo; the tall ground storey fits ~4.9 m",
+        "lean not measured (no side view); none modelled"
+       ],
+       "rear": "inferred: 1/storey on 2.22 m, 1/storey on 2.8 m"
+      },
+      {
+       "pandId": "0363100012177915",
+       "address": "Oudezijds Achterburgwal 43",
+       "shop": {
+        "use": "other",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "cornice consoles approximated by the bracketed cornice",
+        "crest on the dormer pediment not modelled",
+        "3DBAG LoD2.2 ground is 12.5 m2 short of BAG at the rear (source limit, see footprint gate)"
+       ],
+       "rear": "inferred: "
+      },
+      {
+       "pandId": "0363100012177924",
+       "address": "Oudezijds Achterburgwal 45",
+       "shop": {
+        "use": "services",
+        "name": "Leger des Heils",
+        "agreement": "osm-only"
+       },
+       "limits": [
+        "frieze lettering not modelled",
+        "crest is a flat stone silhouette, not carved",
+        "lean not measured; none modelled"
+       ],
+       "rear": "inferred: 1/storey on 2.71 m"
+      },
+      {
+       "pandId": "0363100012177922",
+       "address": "Oudezijds Achterburgwal 47",
+       "shop": {
+        "use": "other",
+        "name": "Hotel Royal Taste",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "not a Rijksmonument: gable type from the strip only",
+        "the cream frieze below the cornice is 1.75 m tall on the photo; the heavy cornice is 0.8 m",
+        "lean not measured; none modelled"
+       ],
+       "rear": "inferred: 3/storey on 7.27 m"
+      },
+      {
+       "pandId": "0363100012177923",
+       "address": "Oudezijds Achterburgwal 49",
+       "shop": {
+        "use": "other",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "the rooftop ornament is a spiked iron piece, modelled as a stone crest",
+        "cornice frieze hatch not modelled",
+        "the author of pass 1 noted a lean; not measured, none modelled"
+       ],
+       "rear": "inferred: 1/storey on 3.33 m"
+      },
+      {
+       "pandId": "0363100012177920",
+       "address": "Oudezijds Achterburgwal 51",
+       "shop": {
+        "use": "other",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "the neck is 0.35 of the front width on the photo; the library neck is 0.5",
+        "the krab (crab) of the monument text reads as the carved shell in the cap on the photo: modelled as a cartouche, no finial"
+       ],
+       "rear": "inferred: 0/storey on 4.87 m"
+      },
+      {
+       "pandId": "0363100012177943",
+       "address": "Oudezijds Achterburgwal 53-55",
+       "shop": {
+        "use": "shop",
+        "agreement": "bag-only"
+       },
+       "limits": [
+        "a: red-white diamond hatch (luik) is a glazed light in the model",
+        "b: iron lamp bracket on the facade not modelled",
+        "b: balustrade band over the arcade modelled as the arcade beam"
+       ],
+       "rear": "inferred: 7/storey on 16.07 m, 2/storey on 5.1 m"
+      },
+      {
+       "pandId": "0363100012177946",
+       "address": "Oudezijds Achterburgwal 57",
+       "shop": {
+        "use": "residential",
+        "agreement": "photo-only"
+       },
+       "limits": [
+        "corner house: the triglyph-cornice side facade is not modelled",
+        "3DBAG flags a possible partial frontage (jog <= 1 m)",
+        "the basement is ~2.4 m on the photo; the library basement is at most 1.2 m"
+       ],
+       "rear": "inferred: 0/storey on 2.48 m, 0/storey on 2.98 m"
+      }
+     ],
+     "photo": {
+      "src": "./street-surveys-data/thumbs/wallen-oza-41-57-photo.webp",
+      "width": 760,
+      "height": 322,
+      "caption": "Rectified panorama strip, 2025-01-14 (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/wallen-oza-41-57-model.webp",
+      "width": 760,
+      "height": 322,
+      "caption": "Installed model, orthographic, same scale as the strip"
+     }
+    }
+   ],
+   "recipeHouses": []
+  },
+  {
+   "street": "Utrechtsestraat",
+   "faces": [
+    {
+     "id": "utrechtse-48-76",
+     "street": "Utrechtsestraat",
+     "title": "Utrechtsestraat 48–76",
+     "status": "installed",
+     "statusReason": "Drawn in game as chunk-face-utrechtse-48-76 (10 pands, 18,653 triangles).",
+     "chunkId": "chunk-face-utrechtse-48-76",
+     "triangles": 18653,
+     "photoDate": "2025-01-20",
+     "houses": [
+      {
+       "pandId": "0363100012178784",
+       "address": "Utrechtsestraat 76",
+       "shop": {
+        "use": "bar",
+        "name": "Krom",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [],
+       "rear": "inferred: 1/storey on 2.54 m, 2/storey on 4.27 m"
+      },
+      {
+       "pandId": "0363100012178704",
+       "address": "Utrechtsestraat 74A-74B",
+       "shop": {
+        "use": "shop",
+        "agreement": "photo-only"
+       },
+       "limits": [],
+       "rear": "inferred: "
+      },
+      {
+       "pandId": "0363100012178705",
+       "address": "Utrechtsestraat 70-72",
+       "shop": {
+        "use": "shop",
+        "name": "Bellarose",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [],
+       "rear": "inferred: 2/storey on 4.33 m, 1/storey on 2.58 m"
+      },
+      {
+       "pandId": "0363100012178707",
+       "address": "Utrechtsestraat 68",
+       "shop": {
+        "use": "shop",
+        "name": "We Are Labels",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [],
+       "rear": "inferred: 2/storey on 3.68 m"
+      },
+      {
+       "pandId": "0363100012169207",
+       "address": "Utrechtsestraat 66",
+       "shop": {
+        "use": "services",
+        "name": "Houtman",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [],
+       "rear": "inferred: 2/storey on 3.31 m"
+      },
+      {
+       "pandId": "0363100012169208",
+       "address": "Utrechtsestraat 62",
+       "shop": {
+        "use": "shop",
+        "name": "Mobilia",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "the first-floor shop glazing is two ordinary windows plus one glazed bay in the model"
+       ],
+       "rear": "inferred: 2/storey on 5.25 m"
+      },
+      {
+       "pandId": "0363100012178875",
+       "address": "Utrechtsestraat 54-60",
+       "shop": {
+        "use": "shop",
+        "name": "Concerto",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "a's brick ornament and d's bell dormer are approximated"
+       ],
+       "rear": "inferred: 2/storey on 4.55 m, 1/storey on 3.02 m, 5/storey on 12.89 m"
+      },
+      {
+       "pandId": "0363100012178876",
+       "address": "Utrechtsestraat 52",
+       "shop": {
+        "use": "cafe",
+        "name": "Concerto Koffie",
+        "agreement": "conflict"
+       },
+       "limits": [],
+       "rear": "inferred: 1/storey on 2.48 m"
+      },
+      {
+       "pandId": "0363100012178874",
+       "address": "Utrechtsestraat 50",
+       "shop": {
+        "use": "shop",
+        "name": "Wijnhandel Neleman",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [],
+       "rear": "inferred: 2/storey on 4.44 m"
+      },
+      {
+       "pandId": "0363100012178865",
+       "address": "Utrechtsestraat 48",
+       "shop": {
+        "use": "services",
+        "name": "TUI",
+        "agreement": "osm-and-photo"
+       },
+       "limits": [
+        "the corner return onto Prinsengracht is a second street front not modelled here"
+       ],
+       "rear": "inferred: 2/storey on 3.83 m"
+      }
+     ],
+     "photo": {
+      "src": "./street-surveys-data/thumbs/utrechtse-48-76-photo.webp",
+      "width": 760,
+      "height": 215,
+      "caption": "Rectified panorama strip, 2025-01-20 (Gemeente Amsterdam, CC BY 4.0)"
+     },
+     "model": {
+      "src": "./street-surveys-data/thumbs/utrechtse-48-76-model.webp",
+      "width": 760,
+      "height": 215,
+      "caption": "Installed model, orthographic, same scale as the strip"
+     }
+    }
+   ],
+   "recipeHouses": []
+  }
+ ]
+}

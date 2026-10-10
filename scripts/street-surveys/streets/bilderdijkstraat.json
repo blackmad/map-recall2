@@ -1,0 +1,1668 @@
+{
+ "street": "Bilderdijkstraat",
+ "source": "PDOK BAG OGC API v2 (verblijfsobject + pand), CC0",
+ "fetchedAt": "2026-10-10",
+ "pands": [
+  {
+   "pandId": "0363100012157594",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    1
+   ],
+   "label": "Bilderdijkstraat 1",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158387",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    3
+   ],
+   "label": "Bilderdijkstraat 3",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159895",
+   "buildYear": 1903,
+   "status": "Verbouwing pand",
+   "numbers": [
+    5
+   ],
+   "label": "Bilderdijkstraat 5",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164917",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    7
+   ],
+   "label": "Bilderdijkstraat 7",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161568",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    9
+   ],
+   "label": "Bilderdijkstraat 9",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159650",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    11
+   ],
+   "label": "Bilderdijkstraat 11",
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012061963",
+   "buildYear": 1905,
+   "status": "Pand in gebruik",
+   "numbers": [
+    13
+   ],
+   "label": "Bilderdijkstraat 13",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012166551",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    15
+   ],
+   "label": "Bilderdijkstraat 15",
+   "units": 5,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012077314",
+   "buildYear": 1992,
+   "status": "Pand in gebruik",
+   "numbers": [
+    17,
+    19,
+    21,
+    23,
+    25,
+    27
+   ],
+   "label": "Bilderdijkstraat 17–27",
+   "units": 40,
+   "groundUses": [
+    "bijeenkomstfunctie",
+    "woonfunctie",
+    "overige gebruiksfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012153203",
+   "buildYear": 1905,
+   "status": "Pand in gebruik",
+   "numbers": [
+    29
+   ],
+   "label": "Bilderdijkstraat 29",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012237236",
+   "buildYear": 1901,
+   "status": "Pand in gebruik",
+   "numbers": [
+    31,
+    33
+   ],
+   "label": "Bilderdijkstraat 31–33",
+   "units": 7,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012150852",
+   "buildYear": 1914,
+   "status": "Pand in gebruik",
+   "numbers": [
+    36
+   ],
+   "label": "Bilderdijkstraat 36",
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236605",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    37,
+    39,
+    41,
+    43,
+    45,
+    47,
+    49,
+    51,
+    53
+   ],
+   "label": "Bilderdijkstraat 37–53",
+   "units": 28,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012236332",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    37,
+    47,
+    51
+   ],
+   "label": "Bilderdijkstraat 37–51",
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012081246",
+   "buildYear": 1914,
+   "status": "Pand in gebruik",
+   "numbers": [
+    38,
+    40
+   ],
+   "label": "Bilderdijkstraat 38–40",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236315",
+   "buildYear": 1914,
+   "status": "Pand in gebruik",
+   "numbers": [
+    42
+   ],
+   "label": "Bilderdijkstraat 42",
+   "units": 4,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012065764",
+   "buildYear": 1914,
+   "status": "Pand in gebruik",
+   "numbers": [
+    44
+   ],
+   "label": "Bilderdijkstraat 44",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012129802",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    46
+   ],
+   "label": "Bilderdijkstraat 46",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159268",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    48
+   ],
+   "label": "Bilderdijkstraat 48",
+   "units": 4,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012143235",
+   "buildYear": 1993,
+   "status": "Pand in gebruik",
+   "numbers": [
+    50,
+    52,
+    54,
+    56,
+    58,
+    60,
+    62,
+    64
+   ],
+   "label": "Bilderdijkstraat 50–64",
+   "units": 44,
+   "groundUses": [
+    "woonfunctie",
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165174",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    55
+   ],
+   "label": "Bilderdijkstraat 55",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157141",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    57
+   ],
+   "label": "Bilderdijkstraat 57",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012101090",
+   "buildYear": 1905,
+   "status": "Pand in gebruik",
+   "numbers": [
+    59
+   ],
+   "label": "Bilderdijkstraat 59",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012152485",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    61
+   ],
+   "label": "Bilderdijkstraat 61",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161369",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    63
+   ],
+   "label": "Bilderdijkstraat 63",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236476",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    65,
+    67
+   ],
+   "label": "Bilderdijkstraat 65–67",
+   "units": 8,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012167348",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    66,
+    68,
+    70
+   ],
+   "label": "Bilderdijkstraat 66–70",
+   "units": 10,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162776",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    69
+   ],
+   "label": "Bilderdijkstraat 69",
+   "units": 11,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012236628",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    71
+   ],
+   "label": "Bilderdijkstraat 71",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156126",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    72
+   ],
+   "label": "Bilderdijkstraat 72",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012237152",
+   "buildYear": 1901,
+   "status": "Pand in gebruik",
+   "numbers": [
+    73,
+    75,
+    77,
+    79
+   ],
+   "label": "Bilderdijkstraat 73–79",
+   "units": 28,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie",
+    "kantoorfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157866",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    74
+   ],
+   "label": "Bilderdijkstraat 74",
+   "units": 4,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012064444",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    76
+   ],
+   "label": "Bilderdijkstraat 76",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159739",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    78
+   ],
+   "label": "Bilderdijkstraat 78",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165444",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    80
+   ],
+   "label": "Bilderdijkstraat 80",
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164451",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    82
+   ],
+   "label": "Bilderdijkstraat 82",
+   "units": 5,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012235892",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    84,
+    86
+   ],
+   "label": "Bilderdijkstraat 84–86",
+   "units": 10,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012233514",
+   "buildYear": 1900,
+   "status": "Pand in gebruik",
+   "numbers": [
+    87,
+    89,
+    91,
+    93,
+    95,
+    97
+   ],
+   "label": "Bilderdijkstraat 87–97",
+   "units": 23,
+   "groundUses": [
+    "winkelfunctie",
+    "overige gebruiksfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162836",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    88
+   ],
+   "label": "Bilderdijkstraat 88",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012166801",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    90
+   ],
+   "label": "Bilderdijkstraat 90",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012166802",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    92
+   ],
+   "label": "Bilderdijkstraat 92",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012166159",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    94
+   ],
+   "label": "Bilderdijkstraat 94",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157174",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    96
+   ],
+   "label": "Bilderdijkstraat 96",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012237171",
+   "buildYear": 1899,
+   "status": "Pand in gebruik",
+   "numbers": [
+    99
+   ],
+   "label": "Bilderdijkstraat 99",
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie,bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236188",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    100
+   ],
+   "label": "Bilderdijkstraat 100",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236189",
+   "buildYear": 1905,
+   "status": "Pand in gebruik",
+   "numbers": [
+    102,
+    104,
+    106
+   ],
+   "label": "Bilderdijkstraat 102–106",
+   "units": 11,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236206",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    108,
+    110
+   ],
+   "label": "Bilderdijkstraat 108–110",
+   "units": 6,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012081480",
+   "buildYear": 1905,
+   "status": "Pand in gebruik",
+   "numbers": [
+    108
+   ],
+   "label": "Bilderdijkstraat 108",
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012244608",
+   "buildYear": 2016,
+   "status": "Pand in gebruik",
+   "numbers": [
+    108
+   ],
+   "label": "Bilderdijkstraat 108",
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165170",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    112
+   ],
+   "label": "Bilderdijkstraat 112",
+   "units": 4,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012160212",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    112,
+    114
+   ],
+   "label": "Bilderdijkstraat 112–114",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161281",
+   "buildYear": 1890,
+   "status": "Pand in gebruik",
+   "numbers": [
+    113
+   ],
+   "label": "Bilderdijkstraat 113",
+   "units": 2,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157756",
+   "buildYear": 1890,
+   "status": "Pand in gebruik",
+   "numbers": [
+    115
+   ],
+   "label": "Bilderdijkstraat 115",
+   "units": 4,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157154",
+   "buildYear": 1902,
+   "status": "Verbouwing pand",
+   "numbers": [
+    116
+   ],
+   "label": "Bilderdijkstraat 116",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161260",
+   "buildYear": 1902,
+   "status": "Verbouwing pand",
+   "numbers": [
+    118
+   ],
+   "label": "Bilderdijkstraat 118",
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161259",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    120
+   ],
+   "label": "Bilderdijkstraat 120",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012155417",
+   "buildYear": 1902,
+   "status": "Pand in gebruik",
+   "numbers": [
+    122
+   ],
+   "label": "Bilderdijkstraat 122",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012155418",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    124
+   ],
+   "label": "Bilderdijkstraat 124",
+   "units": 3,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012149727",
+   "buildYear": 1905,
+   "status": "Pand in gebruik",
+   "numbers": [
+    126
+   ],
+   "label": "Bilderdijkstraat 126",
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012156286",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    126
+   ],
+   "label": "Bilderdijkstraat 126",
+   "units": 3,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012156287",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    128
+   ],
+   "label": "Bilderdijkstraat 128",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157650",
+   "buildYear": 1908,
+   "status": "Pand in gebruik",
+   "numbers": [
+    130
+   ],
+   "label": "Bilderdijkstraat 130",
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157757",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    131
+   ],
+   "label": "Bilderdijkstraat 131",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012087959",
+   "buildYear": 1909,
+   "status": "Pand in gebruik",
+   "numbers": [
+    132
+   ],
+   "label": "Bilderdijkstraat 132",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164549",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    133
+   ],
+   "label": "Bilderdijkstraat 133",
+   "units": 3,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012081118",
+   "buildYear": 1909,
+   "status": "Pand in gebruik",
+   "numbers": [
+    134
+   ],
+   "label": "Bilderdijkstraat 134",
+   "units": 5,
+   "groundUses": [
+    "bijeenkomstfunctie,winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236022",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    135,
+    137,
+    139
+   ],
+   "label": "Bilderdijkstraat 135–139",
+   "units": 11,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236975",
+   "buildYear": 1909,
+   "status": "Pand in gebruik",
+   "numbers": [
+    136
+   ],
+   "label": "Bilderdijkstraat 136",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236881",
+   "buildYear": 1909,
+   "status": "Pand in gebruik",
+   "numbers": [
+    138
+   ],
+   "label": "Bilderdijkstraat 138",
+   "units": 5,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012233645",
+   "buildYear": 1909,
+   "status": "Pand in gebruik",
+   "numbers": [
+    140
+   ],
+   "label": "Bilderdijkstraat 140",
+   "units": 5,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159868",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    141
+   ],
+   "label": "Bilderdijkstraat 141",
+   "units": 4,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012090492",
+   "buildYear": 1939,
+   "status": "Pand in gebruik",
+   "numbers": [
+    142,
+    144
+   ],
+   "label": "Bilderdijkstraat 142–144",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236711",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    143
+   ],
+   "label": "Bilderdijkstraat 143",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162572",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    145
+   ],
+   "label": "Bilderdijkstraat 145",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012092395",
+   "buildYear": 1939,
+   "status": "Pand in gebruik",
+   "numbers": [
+    146,
+    148
+   ],
+   "label": "Bilderdijkstraat 146–148",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012237294",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    147
+   ],
+   "label": "Bilderdijkstraat 147",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236474",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    149,
+    151
+   ],
+   "label": "Bilderdijkstraat 149–151",
+   "units": 8,
+   "groundUses": [
+    "winkelfunctie",
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012092394",
+   "buildYear": 1939,
+   "status": "Pand in gebruik",
+   "numbers": [
+    150,
+    152
+   ],
+   "label": "Bilderdijkstraat 150–152",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012167243",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    153
+   ],
+   "label": "Bilderdijkstraat 153",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012080336",
+   "buildYear": 1939,
+   "status": "Pand in gebruik",
+   "numbers": [
+    154
+   ],
+   "label": "Bilderdijkstraat 154",
+   "units": 4,
+   "groundUses": [
+    "kantoorfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236799",
+   "buildYear": 1903,
+   "status": "Pand in gebruik",
+   "numbers": [
+    155,
+    157,
+    159,
+    161,
+    163,
+    165,
+    167
+   ],
+   "label": "Bilderdijkstraat 155–167",
+   "units": 28,
+   "groundUses": [
+    "industriefunctie,woonfunctie",
+    "winkelfunctie",
+    "bijeenkomstfunctie",
+    "industriefunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162444",
+   "buildYear": 1893,
+   "status": "Pand in gebruik",
+   "numbers": [
+    156
+   ],
+   "label": "Bilderdijkstraat 156",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162443",
+   "buildYear": 1893,
+   "status": "Pand in gebruik",
+   "numbers": [
+    158,
+    160,
+    162
+   ],
+   "label": "Bilderdijkstraat 158–162",
+   "units": 13,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236055",
+   "buildYear": 1893,
+   "status": "Pand in gebruik",
+   "numbers": [
+    164,
+    166
+   ],
+   "label": "Bilderdijkstraat 164–166",
+   "units": 7,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012106015",
+   "buildYear": 1893,
+   "status": "Pand in gebruik",
+   "numbers": [
+    168
+   ],
+   "label": "Bilderdijkstraat 168",
+   "units": 3,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012152566",
+   "buildYear": 1979,
+   "status": "Pand in gebruik",
+   "numbers": [
+    169
+   ],
+   "label": "Bilderdijkstraat 169",
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161120",
+   "buildYear": 1893,
+   "status": "Pand in gebruik",
+   "numbers": [
+    170
+   ],
+   "label": "Bilderdijkstraat 170",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165152",
+   "buildYear": 1893,
+   "status": "Pand in gebruik",
+   "numbers": [
+    172
+   ],
+   "label": "Bilderdijkstraat 172",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012153782",
+   "buildYear": 1891,
+   "status": "Pand in gebruik",
+   "numbers": [
+    173
+   ],
+   "label": "Bilderdijkstraat 173",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012163018",
+   "buildYear": 1894,
+   "status": "Pand in gebruik",
+   "numbers": [
+    174,
+    176
+   ],
+   "label": "Bilderdijkstraat 174–176",
+   "units": 7,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159649",
+   "buildYear": 1891,
+   "status": "Pand in gebruik",
+   "numbers": [
+    175
+   ],
+   "label": "Bilderdijkstraat 175",
+   "units": 6,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012153173",
+   "buildYear": 1891,
+   "status": "Pand in gebruik",
+   "numbers": [
+    177,
+    179,
+    181
+   ],
+   "label": "Bilderdijkstraat 177–181",
+   "units": 22,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012163017",
+   "buildYear": 1894,
+   "status": "Pand in gebruik",
+   "numbers": [
+    178,
+    180
+   ],
+   "label": "Bilderdijkstraat 178–180",
+   "units": 7,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012079721",
+   "buildYear": 1894,
+   "status": "Pand in gebruik",
+   "numbers": [
+    182
+   ],
+   "label": "Bilderdijkstraat 182",
+   "units": 8,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012164390",
+   "buildYear": 1887,
+   "status": "Pand in gebruik",
+   "numbers": [
+    183,
+    185,
+    187,
+    189
+   ],
+   "label": "Bilderdijkstraat 183–189",
+   "units": 31,
+   "groundUses": [
+    "woonfunctie",
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012152669",
+   "buildYear": 1894,
+   "status": "Pand in gebruik",
+   "numbers": [
+    184
+   ],
+   "label": "Bilderdijkstraat 184",
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161849",
+   "buildYear": 1896,
+   "status": "Pand in gebruik",
+   "numbers": [
+    186
+   ],
+   "label": "Bilderdijkstraat 186",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012160772",
+   "buildYear": 1896,
+   "status": "Pand in gebruik",
+   "numbers": [
+    188
+   ],
+   "label": "Bilderdijkstraat 188",
+   "units": 5,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012162475",
+   "buildYear": 1896,
+   "status": "Pand in gebruik",
+   "numbers": [
+    190
+   ],
+   "label": "Bilderdijkstraat 190",
+   "units": 6,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165634",
+   "buildYear": 1887,
+   "status": "Pand in gebruik",
+   "numbers": [
+    191
+   ],
+   "label": "Bilderdijkstraat 191",
+   "units": 9,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165507",
+   "buildYear": 1896,
+   "status": "Pand in gebruik",
+   "numbers": [
+    192
+   ],
+   "label": "Bilderdijkstraat 192",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236720",
+   "buildYear": 1887,
+   "status": "Pand in gebruik",
+   "numbers": [
+    193
+   ],
+   "label": "Bilderdijkstraat 193",
+   "units": 7,
+   "groundUses": [
+    "bijeenkomstfunctie",
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012158049",
+   "buildYear": 1889,
+   "status": "Pand in gebruik",
+   "numbers": [
+    194
+   ],
+   "label": "Bilderdijkstraat 194",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012167429",
+   "buildYear": 1887,
+   "status": "Pand in gebruik",
+   "numbers": [
+    195
+   ],
+   "label": "Bilderdijkstraat 195",
+   "units": 9,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165633",
+   "buildYear": 1889,
+   "status": "Pand in gebruik",
+   "numbers": [
+    196
+   ],
+   "label": "Bilderdijkstraat 196",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236058",
+   "buildYear": 1887,
+   "status": "Pand in gebruik",
+   "numbers": [
+    197
+   ],
+   "label": "Bilderdijkstraat 197",
+   "units": 9,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012165632",
+   "buildYear": 1889,
+   "status": "Pand in gebruik",
+   "numbers": [
+    198
+   ],
+   "label": "Bilderdijkstraat 198",
+   "units": 5,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012153622",
+   "buildYear": 1887,
+   "status": "Pand in gebruik",
+   "numbers": [
+    199
+   ],
+   "label": "Bilderdijkstraat 199",
+   "units": 9,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012154127",
+   "buildYear": 1889,
+   "status": "Pand in gebruik",
+   "numbers": [
+    200
+   ],
+   "label": "Bilderdijkstraat 200",
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie,woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161613",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    201
+   ],
+   "label": "Bilderdijkstraat 201",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159426",
+   "buildYear": 1883,
+   "status": "Pand in gebruik",
+   "numbers": [
+    202
+   ],
+   "label": "Bilderdijkstraat 202",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012160788",
+   "buildYear": 1883,
+   "status": "Pand in gebruik",
+   "numbers": [
+    202
+   ],
+   "label": "Bilderdijkstraat 202",
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012152363",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    203
+   ],
+   "label": "Bilderdijkstraat 203",
+   "units": 3,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012161557",
+   "buildYear": 1882,
+   "status": "Pand in gebruik",
+   "numbers": [
+    204
+   ],
+   "label": "Bilderdijkstraat 204",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012235998",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    205,
+    207
+   ],
+   "label": "Bilderdijkstraat 205–207",
+   "units": 10,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012164457",
+   "buildYear": 1882,
+   "status": "Pand in gebruik",
+   "numbers": [
+    205
+   ],
+   "label": "Bilderdijkstraat 205",
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012161558",
+   "buildYear": 1882,
+   "status": "Pand in gebruik",
+   "numbers": [
+    206
+   ],
+   "label": "Bilderdijkstraat 206",
+   "units": 3,
+   "groundUses": []
+  },
+  {
+   "pandId": "0363100012160655",
+   "buildYear": 1881,
+   "status": "Pand in gebruik",
+   "numbers": [
+    207,
+    209
+   ],
+   "label": "Bilderdijkstraat 207–209",
+   "units": 4,
+   "groundUses": [
+    "bijeenkomstfunctie,winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012157564",
+   "buildYear": 1882,
+   "status": "Pand in gebruik",
+   "numbers": [
+    208,
+    210
+   ],
+   "label": "Bilderdijkstraat 208–210",
+   "units": 7,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012160514",
+   "buildYear": 1888,
+   "status": "Pand in gebruik",
+   "numbers": [
+    211
+   ],
+   "label": "Bilderdijkstraat 211",
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012160981",
+   "buildYear": 1888,
+   "status": "Pand in gebruik",
+   "numbers": [
+    212
+   ],
+   "label": "Bilderdijkstraat 212",
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012236357",
+   "buildYear": 1888,
+   "status": "Pand in gebruik",
+   "numbers": [
+    213,
+    215
+   ],
+   "label": "Bilderdijkstraat 213–215",
+   "units": 10,
+   "groundUses": [
+    "winkelfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012159679",
+   "buildYear": 1888,
+   "status": "Pand in gebruik",
+   "numbers": [
+    214
+   ],
+   "label": "Bilderdijkstraat 214",
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ]
+  },
+  {
+   "pandId": "0363100012163541",
+   "buildYear": 1888,
+   "status": "Pand in gebruik",
+   "numbers": [
+    216
+   ],
+   "label": "Bilderdijkstraat 216",
+   "units": 2,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ]
+  }
+ ]
+}
