@@ -183,3 +183,15 @@ test('a deep gap under a tall main roof stays see-through (only low soffits coun
   const r = analyseSoup(soup(body, tallRoof));
   assert.ok(r.seeThrough.rays > 0, JSON.stringify(r.seeThrough));
 });
+
+test('a low open stair or stoop in front of a closed wall is not a see-through gap, a missing wall behind it still is', () => {
+  // House with a 0.5 m eaves cornice on the south wall and a 1.2 m deep, 0.8 m high stoop in front of it. Eye-height rays
+  // aimed at the stoop edge pass over it and stop short of the wall: that is not a gap in the wall.
+  const cornice = boxQuads(0, 7.4, 10, 10, 7.8, 10.5);
+  const stoop = boxQuads(2, 0, 10, 8, 0.8, 11.2);
+  const withStoop = analyseSoup(soup(house(), cornice, stoop));
+  assert.equal(withStoop.seeThrough.rays, 0, JSON.stringify(withStoop.seeThrough));
+  // The same stoop does not hide a real opening: with the south wall missing the footprint is still see-through.
+  const open = analyseSoup(soup(house(['south']), cornice, stoop));
+  assert.ok(open.seeThrough.rays > 0, JSON.stringify(open.seeThrough));
+});
