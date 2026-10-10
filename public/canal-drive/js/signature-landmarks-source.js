@@ -590,11 +590,73 @@ export class SignatureLandmarks {
 
   _applyGroundBase(entry) {
     if (!entry.holder || !entry.units) return false;
+    // Street chunks: each pand on its own relief (own-ground bundle helpers, src/canalRecall/ownGround/chunkBases.ts).
+    if (entry.spec.chunkPands && this._groundBase && window.CanalRecallOwnGround?.separatePands) return this._applyChunkPandBases(entry);
     const base = this._groundBase ? this._groundBase(entry.placement.anchor, 3) : 0;
     if (base === undefined || base === entry.groundBase) return false;
     entry.groundBase = base;
     entry.holder.matrix.makeTranslation(0, 0, base * entry.units).multiply(entry.transform);
     entry.holder.matrixWorldNeedsUpdate = true;
+    return true;
+  }
+
+  /**
+   * A street chunk on the own ground: the holder stays at street level and
+   * every pand's triangle range is lifted to the lowest relief under its own
+   * ground-level vertices. Returns true when anything moved; waits (false)
+   * until the relief under every pand is resident.
+   */
+  _applyChunkPandBases(entry) {
+    const api = window.CanalRecallOwnGround;
+    if (!entry.chunkPands) {
+      // Once: give every pand its own vertices and remember the unlifted positions.
+      const meshes = [];
+      entry.group.updateMatrixWorld(true);
+      const groupInverse = new THREE.Matrix4().copy(entry.group.matrixWorld).invert();
+      entry.group.traverse(object => {
+        const ranges = object.isMesh && object.geometry?.userData?.pandRanges;
+        if (!ranges || !object.geometry.index) return;
+        const g = object.geometry, sep = api.separatePands(g.index.array, g.attributes.position.count, ranges);
+        // Through the accessors (glTF attributes may be interleaved or quantized): plain float copies.
+        const getters = ['getX', 'getY', 'getZ', 'getW'];
+        for (const name of Object.keys(g.attributes)) {
+          const a = g.attributes[name], size = a.itemSize, out = new Float32Array(sep.source.length * size);
+          for (let v = 0; v < sep.source.length; v++) for (let c = 0; c < size; c++) out[v * size + c] = a[getters[c]](sep.source[v]);
+          g.setAttribute(name, new THREE.BufferAttribute(out, size, false));
+        }
+        g.setIndex(new THREE.BufferAttribute(sep.index, 1));
+        // mesh-local → Mercator (holder space = Mercator; the holder's own lift stays 0 for chunks).
+        const toMercator = new THREE.Matrix4().copy(entry.transform).multiply(entry.group.matrix).multiply(groupInverse).multiply(object.matrixWorld);
+        const up = new THREE.Vector3(0, 0, entry.units).applyMatrix4(new THREE.Matrix4().copy(toMercator).invert().setPosition(0, 0, 0));
+        meshes.push({ geometry: g, owner: sep.owner, base: g.attributes.position.array.slice(), toMercator, dir: [up.x, up.y, up.z] });
+      });
+      entry.chunkPands = { meshes, bases: null };
+      if (entry.groundBase) { entry.groundBase = 0; entry.holder.matrix.copy(entry.transform); entry.holder.matrixWorldNeedsUpdate = true; }
+    }
+    // Lowest relief under each pand's ground-level vertices, across all its primitives.
+    const bases = new Map();
+    const v = new THREE.Vector3();
+    for (const m of entry.chunkPands.meshes) {
+      const p = m.base;
+      const ground = api.groundVertices(m.owner, i => v.set(p[i * 3], p[i * 3 + 1], p[i * 3 + 2]).applyMatrix4(m.toMercator).z / entry.units);
+      for (const [pand, list] of ground) for (const i of list) {
+        v.set(p[i * 3], p[i * 3 + 1], p[i * 3 + 2]).applyMatrix4(m.toMercator);
+        const lngLat = new this.maplibregl.MercatorCoordinate(v.x, v.y, 0).toLngLat();
+        const z = this._groundBase([lngLat.lng, lngLat.lat], 0);
+        if (z === undefined) return false;
+        bases.set(pand, Math.min(bases.has(pand) ? bases.get(pand) : Infinity, z ?? 0));
+      }
+    }
+    const key = [...bases].map(([k, z]) => `${k}:${z.toFixed(3)}`).join(',');
+    if (key === entry.chunkPands.bases) return false;
+    entry.chunkPands.bases = key;
+    for (const m of entry.chunkPands.meshes) {
+      m.geometry.attributes.position.array.set(api.liftPands(m.base, m.owner, m.dir, pand => bases.get(pand) ?? 0));
+      m.geometry.attributes.position.needsUpdate = true;
+      m.geometry.computeBoundingSphere();
+      m.geometry.computeBoundingBox();
+    }
+    entry.pandBases = Object.fromEntries(bases);
     return true;
   }
 

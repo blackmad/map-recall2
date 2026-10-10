@@ -24,8 +24,17 @@ export interface GroundIndex {
   /** Samples per tile side (tileSizeM / stepM). */
   samples: number;
   heightUnitM: 0.01;
-  /** [tx, ty, measured fraction 0..1] */
-  tiles: [number, number, number][];
+  /**
+   * [tx, ty, measured fraction 0..1, stored step metres?]. A tile stored
+   * coarser than `stepM` (city-wide build: 4 m away from the centre) is
+   * upsampled bilinearly to `stepM` on decode, so the field stays one grid.
+   */
+  tiles: ([number, number, number] | [number, number, number, number])[];
+  /**
+   * Residual coding of the int16 cm samples: 'dx' (default, version-1 tiles)
+   * = delta along x; 'planar' = left + below − below-left (≈20 % smaller gz).
+   */
+  predictor?: 'dx' | 'planar';
   /** Scene z = 0 in the riding view, metres NAP (canal water −0.40 + 1.77 m quay freeboard). */
   sceneDatumNAP: number;
   waterLevelNAP: number;
@@ -126,34 +135,69 @@ export function smooth3(grid: Grid): void {
   }
 }
 
-/** Metres NAP → delta-coded int16 centimetres (see file header). */
-export function encodeTile(heights: Float32Array, n: number): Uint8Array {
-  const out = new Int16Array(n * n);
-  for (let j = 0; j < n; j++) {
-    let prev = 0;
-    for (let i = 0; i < n; i++) {
-      const v = heights[j * n + i];
-      const q = v === v ? Math.max(-32767, Math.min(32767, Math.round(v * 100))) : NODATA;
-      out[j * n + i] = ((q - prev) << 16) >> 16; // wrap to int16
-      prev = q;
-    }
-  }
+export type Predictor = 'dx' | 'planar';
+
+/** Prediction of sample (i, j) from already-decoded neighbours (q: int cm, row-major, row 0 south). */
+function predict(q: Int32Array, n: number, i: number, j: number, predictor: Predictor): number {
+  const k = j * n + i;
+  if (predictor === 'dx' || j === 0) return i ? q[k - 1] : 0;
+  return i ? q[k - 1] + q[k - n] - q[k - n - 1] : q[k - n];
+}
+
+/** Metres NAP → int16 centimetre residuals (see file header); `planar` predicts from three neighbours. */
+export function encodeTile(heights: Float32Array, n: number, predictor: Predictor = 'dx'): Uint8Array {
+  const q = new Int32Array(n * n), out = new Int16Array(n * n);
+  for (let k = 0; k < q.length; k++) { const v = heights[k]; q[k] = v === v ? Math.max(-32767, Math.min(32767, Math.round(v * 100))) : NODATA; }
+  for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) out[j * n + i] = ((q[j * n + i] - predict(q, n, i, j, predictor)) << 16) >> 16; // wrap to int16
   return new Uint8Array(out.buffer);
 }
 
-export function decodeTile(bytes: Uint8Array, n: number): Float32Array {
+export function decodeTile(bytes: Uint8Array, n: number, predictor: Predictor = 'dx'): Float32Array {
   const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
   if (bytes.byteLength < n * n * 2) throw new Error(`ground tile: ${bytes.byteLength} bytes, expected ${n * n * 2}`);
-  const out = new Float32Array(n * n);
+  const q = new Int32Array(n * n), out = new Float32Array(n * n);
+  for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) {
+    const k = j * n + i;
+    q[k] = ((predict(q, n, i, j, predictor) + view.getInt16(k * 2, true)) << 16) >> 16;
+    out[k] = q[k] === NODATA ? NaN : q[k] / 100;
+  }
+  return out;
+}
+
+/** Average `factor`×`factor` blocks of an n×n tile (NaN-aware): the coarse ring's stored grid. */
+export function coarsenTile(heights: Float32Array, n: number, factor: number): Float32Array {
+  const m = n / factor, out = new Float32Array(m * m);
+  for (let j = 0; j < m; j++) for (let i = 0; i < m; i++) {
+    let s = 0, c = 0;
+    for (let dy = 0; dy < factor; dy++) for (let dx = 0; dx < factor; dx++) { const v = heights[(j * factor + dy) * n + i * factor + dx]; if (v === v) { s += v; c++; } }
+    out[j * m + i] = c ? s / c : NaN;
+  }
+  return out;
+}
+
+/**
+ * Bilinear upsample of an m×m cell-centred tile to (m·factor)², edges clamped:
+ * the coarse samples' plane, re-gridded so GroundField keeps one step. Seams
+ * against finer neighbours stay continuous (the field interpolates between
+ * the two tiles' edge samples) and differ by the coarse grid's smoothing only.
+ */
+export function upsampleTile(coarse: Float32Array, m: number, factor: number): Float32Array {
+  const n = m * factor, out = new Float32Array(n * n);
   for (let j = 0; j < n; j++) {
-    let prev = 0;
+    const fy = Math.min(m - 1, Math.max(0, (j + 0.5) / factor - 0.5)), j0 = Math.floor(fy), j1 = Math.min(m - 1, j0 + 1), v = fy - j0;
     for (let i = 0; i < n; i++) {
-      const q = ((prev + view.getInt16((j * n + i) * 2, true)) << 16) >> 16;
-      prev = q;
-      out[j * n + i] = q === NODATA ? NaN : q / 100;
+      const fx = Math.min(m - 1, Math.max(0, (i + 0.5) / factor - 0.5)), i0 = Math.floor(fx), i1 = Math.min(m - 1, i0 + 1), u = fx - i0;
+      out[j * n + i] = (coarse[j0 * m + i0] * (1 - u) + coarse[j0 * m + i1] * u) * (1 - v) + (coarse[j1 * m + i0] * (1 - u) + coarse[j1 * m + i1] * u) * v;
     }
   }
   return out;
+}
+
+/** Decode a tile file to the index's `samples`² grid (handles coarse tiles and the predictor). */
+export function readGroundTile(index: Pick<GroundIndex, 'stepM' | 'tileSizeM' | 'samples' | 'predictor'>, entry: readonly number[], bytes: Uint8Array): Float32Array {
+  const step = entry[3] ?? index.stepM, factor = Math.round(step / index.stepM), m = Math.round(index.tileSizeM / step);
+  const h = decodeTile(bytes, m, index.predictor ?? 'dx');
+  return factor > 1 ? upsampleTile(h, m, factor) : h;
 }
 
 export const tileKey = (tx: number, ty: number) => `${tx}_${ty}`;
@@ -193,6 +237,24 @@ export class GroundField {
     }
     return (a * (1 - u) + b * u) * (1 - v) + (c * (1 - u) + d * u) * v;
   }
+}
+
+/**
+ * A tile the extract lacks, extended from its resident neighbours (`use`
+ * picks which may contribute): their samples on a 3×3-tile canvas, pull-push
+ * filled, centre kept. Continuous with every neighbour and flattening toward
+ * their mean, instead of the flat fallback's step at the extract's edge.
+ */
+export function extendTile(field: GroundField, tx: number, ty: number, use: (tx: number, ty: number) => boolean): Float32Array {
+  const n = field.samples, w = 3 * n, data = new Float32Array(w * w).fill(NaN);
+  for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+    if ((!dx && !dy) || !use(tx + dx, ty + dy)) continue;
+    for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) data[((dy + 1) * n + j) * w + (dx + 1) * n + i] = field.sampleAt((tx + dx) * n + i, (ty + dy) * n + j);
+  }
+  pullPushFill({ width: w, height: w, data });
+  const out = new Float32Array(n * n);
+  for (let j = 0; j < n; j++) out.set(data.subarray((n + j) * w + n, (n + j) * w + 2 * n), j * n);
+  return out;
 }
 
 /**

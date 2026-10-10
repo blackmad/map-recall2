@@ -16,7 +16,7 @@
 import { lngLatToRd } from '../facade/rdNew.js';
 import { cellKey, localToLngLat, validateIndex, type BridgeExtract, type ElevationIndex, type WaterCell } from '../elevation/elevationData.js';
 import { decodeFallback, decodeProfile } from '../elevation/bridgeDeck.js';
-import { applyLocalToRd, decodeTile, fitLocalToRd, GroundField, tileKey, type GroundIndex } from './heightField.js';
+import { applyLocalToRd, extendTile, fitLocalToRd, GroundField, readGroundTile, tileKey, type GroundIndex } from './heightField.js';
 import { GroundSurface, type DeckSurface, type Vec2 } from './surface.js';
 import type { OsmGroundExtract } from './osmGround.js';
 import type { WaterGeometry } from './water.js';
@@ -105,20 +105,59 @@ export class GroundStore {
     return cellKey(Math.floor(ex / s), Math.floor(ey / s));
   }
 
-  /** Does the ground have data for this cell (relief tile and OSM cell)? */
+  /**
+   * Does the ground draw this cell? It needs its OSM cell and relief under at
+   * least part of it: a partly covered edge cell is drawn whole, its missing
+   * relief tiles extended from their neighbours (`synthesiseTile`), so the
+   * basemap no longer shows through at the streaming area's edge.
+   */
   covers(key: string): boolean {
+    if (!this.osmCells.has(key)) return false;
+    const [x0, y0, x1, y1] = this.cellRect(key);
+    return this.rdTilesFor([x0 + 1, y0 + 1, x1 - 1, y1 - 1]).some(k => this.hasReliefTile(k));
+  }
+
+  /** Is the cell's relief all measured (no extended tiles)? Diagnostics. */
+  fullyCovered(key: string): boolean {
     if (!this.osmCells.has(key)) return false;
     const [x0, y0, x1, y1] = this.cellRect(key);
     return this.rdTilesFor([x0 + 1, y0 + 1, x1 - 1, y1 - 1]).every(k => this.hasReliefTile(k));
   }
 
-  private tileSet: Set<string> | null = null;
-  private hasReliefTile(k: string): boolean { return (this.tileSet ??= new Set(this.relief.tiles.map(([tx, ty]) => tileKey(tx, ty)))).has(k); }
+  private tileSet: Map<string, readonly number[]> | null = null;
+  private tileEntry(k: string): readonly number[] | undefined { return (this.tileSet ??= new Map(this.relief.tiles.map(t => [tileKey(t[0], t[1]), t]))).get(k); }
+  private hasReliefTile(k: string): boolean { return !!this.tileEntry(k); }
+  /** Extract tiles among the 8 neighbours of a tile key. */
+  private reliefNeighbours(k: string): string[] {
+    const [tx, ty] = k.split('_').map(Number), out: string[] = [];
+    for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if ((dx || dy) && this.hasReliefTile(tileKey(tx + dx, ty + dy))) out.push(tileKey(tx + dx, ty + dy));
+    return out;
+  }
+  /** Relief is available for a tile: in the extract, or extendable from an extract neighbour. */
+  private reliefAvailable(k: string): boolean { return this.hasReliefTile(k) || this.reliefNeighbours(k).length > 0; }
 
-  /** Does the extract have relief at this game-frame point at all (resident or not)? */
+  /** Does the extract have relief at this game-frame point at all (resident or not, measured or extended)? */
   reliefCovered(x: number, y: number): boolean {
     const p = lngLatToRd(fromLocal(x, y)), T = this.relief.tileSizeM;
-    return this.hasReliefTile(tileKey(Math.floor(p.x / T), Math.floor(p.y / T)));
+    return this.reliefAvailable(tileKey(Math.floor(p.x / T), Math.floor(p.y / T)));
+  }
+
+  /** Tiles extended from their neighbours (not in the extract), resident now. */
+  readonly synthesised = new Set<string>();
+
+  /**
+   * A tile the extract lacks, next to tiles it has: the neighbours' samples
+   * on a 3×3-tile canvas, pull-push filled (heightField.ts), centre kept. The
+   * relief continues smoothly past the extract's edge and flattens toward
+   * the neighbours' mean instead of dropping to the flat fallback in a step.
+   * Deterministic from the extract, so worker and main thread agree.
+   */
+  private synthesiseTile(k: string): void {
+    const [tx, ty] = k.split('_').map(Number);
+    // Extract tiles only (never another extended tile): deterministic.
+    this.field.addTile(tx, ty, extendTile(this.field, tx, ty, (a, b) => this.hasReliefTile(tileKey(a, b))));
+    this.reliefTiles.add(k);
+    this.synthesised.add(k);
   }
 
   private rdTilesFor([x0, y0, x1, y1]: Rect): string[] {
@@ -132,15 +171,23 @@ export class GroundStore {
 
   /** Load the relief tiles under a game-frame rectangle (missing tiles are simply absent: flat fallback). */
   async ensureRelief(rect: Rect): Promise<void> {
-    const n = this.relief.samples;
-    await Promise.all(this.rdTilesFor(rect).filter(k => this.hasReliefTile(k)).map(k => {
+    const keys = this.rdTilesFor(rect);
+    // Tiles to extend need all their extract neighbours resident first.
+    const extend = keys.filter(k => !this.hasReliefTile(k) && !this.reliefTiles.has(k) && this.reliefNeighbours(k).length);
+    const load = new Set([...keys.filter(k => this.hasReliefTile(k)), ...extend.flatMap(k => this.reliefNeighbours(k))]);
+    await this.loadTiles([...load]);
+    for (const k of extend) if (!this.reliefTiles.has(k)) this.synthesiseTile(k);
+  }
+
+  private async loadTiles(keys: string[]): Promise<void> {
+    await Promise.all(keys.map(k => {
       if (this.reliefTiles.has(k)) return undefined;
       let p = this.reliefLoading.get(k);
       if (!p) {
         p = this.fetchBytes(`${EXTRACTS.relief}/tiles/${k}.bin`).then(bytes => {
           this.loadedBytes.relief += bytes.byteLength;
           const [tx, ty] = k.split('_').map(Number);
-          this.field.addTile(tx, ty, decodeTile(bytes, n));
+          this.field.addTile(tx, ty, readGroundTile(this.relief, this.tileEntry(k)!, bytes));
           this.reliefTiles.add(k);
         }).finally(() => this.reliefLoading.delete(k));
         this.reliefLoading.set(k, p);
@@ -167,6 +214,7 @@ export class GroundStore {
       if (Math.hypot((tx + 0.5) * T - rx, (ty + 0.5) * T - ry) <= keepM) continue;
       this.field.removeTile(tx, ty);
       this.reliefTiles.delete(k);
+      this.synthesised.delete(k);
       n++;
     }
     return n;
