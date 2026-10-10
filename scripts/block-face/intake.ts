@@ -4,7 +4,7 @@
  * strip of the whole face with each pand's frontage span marked.
  *
  *   node --import tsx scripts/block-face/intake.ts --face=bilder-124-136 --street=Bilderdijkstraat --seed=0363100012156287 \
- *        [--from=<pand> --to=<pand>] [--date=YYYY-MM-DD] [--ppm=40] [--no-strip]
+ *        [--from=<pand> --to=<pand>] [--date=YYYY-MM-DD] [--span-date=<pand6>:YYYY-MM-DD,...] [--ppm=40] [--no-strip]
  *
  * Writes (committed, small, derived):
  *   scripts/block-face/faces/<face>/discovery.json         members in street order, why the face ends, rejected pands
@@ -81,7 +81,7 @@ async function bagUnits(min: RD, max: RD): Promise<BagUnit[]> {
   return out;
 }
 
-export async function intake(o: {face: string; street: string; seed: string; from?: string; to?: string; date?: string; ppm?: number; strip?: boolean}) {
+export async function intake(o: {face: string; street: string; seed: string; from?: string; to?: string; date?: string; spanDates?: Record<string, string>; ppm?: number; strip?: boolean}) {
   const t0 = performance.now(), timings: Record<string, number> = {};
   const lap = (k: string, t: number) => { timings[k] = round((performance.now() - t) / 1000, 1); return performance.now(); };
   const streets: StreetPath[] = (JSON.parse(await fs.readFile('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as any[]).map(s => ({name: s.name, paths: s.paths ?? [s.path]}));
@@ -132,7 +132,7 @@ export async function intake(o: {face: string; street: string; seed: string; fro
   const midAll: RD = [frame.midRD[0], frame.midRD[1]];
   const raw = await listPanos({x: midAll[0], y: midAll[1]}, Math.max(45, (Math.max(...spans.map(s => xOf(s.b))) - Math.min(...spans.map(s => xOf(s.a)))) / 2 + 30));
   const panos: PanoRecord[] = raw.map((p: any) => ({panoId: p.pano_id, timestamp: p.timestamp, rd: toRD([p.geometry.coordinates[0], p.geometry.coordinates[1]]), record: p}));
-  const plan = planStrip(spans, panos, {date: o.date});
+  const plan = planStrip(spans, panos, {date: o.date, spanDates: o.spanDates});
   const x0 = Math.min(...spans.map(s => xOf(s.a))), x1 = Math.max(...spans.map(s => xOf(s.b)));
   const W = Math.round((x1 - x0) * ppm), H = Math.round(topM * ppm);
   const canvas = new Uint8ClampedArray(W * H * 4);
@@ -193,5 +193,5 @@ export async function labelledStrip(strip: any, out: string, uses: {pandId: stri
 if (process.argv[1]?.endsWith('block-face/intake.ts')) {
   const face = arg('face'), street = arg('street'), seed = arg('seed');
   if (!face || !street || !seed) throw Error('Use --face --street --seed [--from --to --date --ppm --no-strip]');
-  await intake({face, street, seed: seed.length === 6 ? `0363100012${seed}` : seed, from: arg('from') && (arg('from')!.length === 6 ? `0363100012${arg('from')}` : arg('from')), to: arg('to') && (arg('to')!.length === 6 ? `0363100012${arg('to')}` : arg('to')), date: arg('date'), ppm: Number(arg('ppm')) || undefined, strip: !process.argv.includes('--no-strip')});
+  await intake({face, street, seed: seed.length === 6 ? `0363100012${seed}` : seed, from: arg('from') && (arg('from')!.length === 6 ? `0363100012${arg('from')}` : arg('from')), to: arg('to') && (arg('to')!.length === 6 ? `0363100012${arg('to')}` : arg('to')), date: arg('date'), spanDates: arg('span-date') ? Object.fromEntries(arg('span-date')!.split(',').map(x => x.split(':'))) : undefined, ppm: Number(arg('ppm')) || undefined, strip: !process.argv.includes('--no-strip')});
 }

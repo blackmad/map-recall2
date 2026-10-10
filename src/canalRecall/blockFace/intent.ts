@@ -78,7 +78,11 @@ export interface BlockFaceIntent {
     /** `shared`: one street level for the face (median 3DBAG ground). */
     streetLevel: 'shared' | 'stepped';
     /** Houses whose eaves/cornice read as ONE line on the photo; evidence = what on the strip shows it. */
-    corniceGroups: {pands: string[]; evidence: string}[];
+    corniceGroups: {pands: string[]; evidence: string;
+      /** The photo overrules 3DBAG for this line: snap every member to `reference`'s surveyed eaves even beyond the usual
+       * spread limit (<= 2.5 m). For gable fronts whose LoD2.2 profile picks up a lower rear roof. The gate then reports
+       * the survey delta as an override instead of failing. */
+      trust?: 'photo'; reference?: string}[];
     /** Houses with the same design (the later ones use `sameAs`); evidence on the strip. */
     identical: {pands: string[]; evidence: string}[];
     notes?: string[];
@@ -134,6 +138,7 @@ export function validateBlockFace(input: unknown, order?: string[]): BlockFaceIn
     for (const p of g.pands) if (!pands.has(p)) problems.push(`continuity group lists ${p}, not on this face`);
     if (!g.evidence) problems.push(`continuity group ${g.pands.map(p => p.slice(-6)).join('+')} needs evidence`);
   }
+  for (const g of face?.continuity?.corniceGroups ?? []) if (g.trust === 'photo' && (!g.reference || !g.pands.includes(g.reference))) problems.push(`cornice group ${g.pands.map(p => p.slice(-6)).join('+')}: trust photo needs a reference pand in the group`);
   for (const g of face?.continuity?.identical ?? []) for (const p of g.pands.slice(1)) {
     const h = face.houses.find(x => x.pandId === p);
     if (h && h.sameAs !== g.pands[0]) problems.push(`identical group: ${p.slice(-6)} should be sameAs ${g.pands[0].slice(-6)}`);
