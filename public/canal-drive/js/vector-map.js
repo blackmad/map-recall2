@@ -2168,6 +2168,9 @@ class VectorBasemap {
   }
 
   setPlayerFerry(player, loader, visible) {
+    // Own ground: the ferry floats on the sunken water like the boat, not at street level.
+    const surface = this._ownGround && this._ownGround.ready ? this._ownGround : null;
+    if (this._playerFerry && typeof this._playerFerry.setAltitude === 'function') this._playerFerry.setAltitude(surface ? surface.waterLevelM() + 0.22 : 0.22);
     this._playerFerry?.update(this.worldToLngLat(player.x, player.y, loader), player.angle, visible);
   }
 
@@ -2178,7 +2181,10 @@ class VectorBasemap {
     if (typeof this._playerTransit.setAltitude === 'function') {
       // Metro GTFS shapes are ground projections of tunnels — drop the mesh so
       // it does not sit inside extruded buildings along the corridor.
-      this._playerTransit.setAltitude(underground ? -9 : 0.22);
+      // Own ground: a tram rides the relief and bridge decks (eased like the bike).
+      const lngLat = this.worldToLngLat(player.x, player.y, loader);
+      const ground = !underground && visible && this._ownGround && this._ownGround.ready ? this._easeRiderSurface(this._ownGround.heightAt(lngLat)) : 0;
+      this._playerTransit.setAltitude(underground ? -9 : ground + 0.22);
     }
     this._playerTransit.update(
       this.worldToLngLat(player.x, player.y, loader), player.angle, visible
@@ -3045,6 +3051,14 @@ class VectorBasemap {
     const lon = loader._lastCenterLng + (worldX - loader._lastOffsetX) / (metersPerDegreeLng * PIXELS_PER_METER);
     const lat = loader._lastCenterLat - (worldY - loader._lastOffsetY) / (metersPerDegreeLat * PIXELS_PER_METER);
     const projected = this.map.project([lon, lat]);
+    // Own ground: canvas pins (destination, question feature) stand on the
+    // relief/deck there, not at MapLibre's z = 0.
+    const lift = this._ownGround && this._ownGround.ready ? this._ownGround.screenLift([lon, lat]) : null;
+    if (lift) {
+      const el = this.map.getCanvas();
+      projected.x += lift[0] / 2 * el.clientWidth;
+      projected.y -= lift[1] / 2 * el.clientHeight;
+    }
     const rect = canvas.getBoundingClientRect();
     return { x: projected.x * CANVAS_W / rect.width, y: projected.y * CANVAS_H / rect.height };
   }
