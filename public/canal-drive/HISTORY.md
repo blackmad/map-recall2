@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+## Nieuw-West building types, opt-in (2026-10-11)
+
+Post-war housing west of the A10 repeats: of 1,725 large 1945-75 residential
+panden in Slotermeer/Geuzenveld/Slotervaart/Osdorp, the 10 commonest
+footprint clusters (length/width/storeys/roof) hold 59% (38% of area); one
+8.5 x 5 m rowhouse cluster holds 2,922 of 6,670 small panden. Dimensions do
+not guarantee a design (in a control area every type-6 match was another
+building), so instances are assigned per pand from its photo and the rest
+held. `src/canalRecall/buildingTypes/` is a typed parametric generator (bay
+lists per facade with photo evidence, cladding variants, pilotis/solid
+ground, roof from 3DBAG, street-facing front by nearest road) and a runtime
+that draws one shared GLB per unit with THREE.InstancedMesh, suppressing the
+covered BAG panden. Instancing vs merged geometry: 78 KB vs 626 KB for 24
+type-1 blocks; ~35 vs ~1.5k draw calls for the whole 427-pand set. iPhone
+4x-throttle frame time unchanged at the pilot views. Off by default.
+
 ## Recipe roofs on block faces (2026-10-10)
 
 The user, comparing bilder-081118-155417 with its strip: "we need to discard a
