@@ -372,15 +372,15 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   tram, footways, landuse, piers missing from extracts; Utrecht/Rotterdam/Den
   Haag need extracts; footprint tiles to a worker; the Leaflet map picker
   (`map-picker.js:243`) also loads live OSM tiles — replace it too.
-- **Own ground in game behind `?ownGround=1`** (area `west`: canal belt,
-  Jordaan, Oud-West, Westerpark): next — run the city-wide relief + OSM ground
-  builds; draw partly covered edge cells (16 of 39 cells fully covered); BGT
-  road widths (only 2,459 of 15,583 ways tag a width); per-building bases for
-  street chunks; landmark kits in facade chunks, tram and ferry still at
-  street level; polder water levels; stair-stepped water edges on phone (1 m
-  mask); BRU0067 deck top shows deck grey; destination pin projects at z=0;
-  labels still MapLibre symbol layers; measure GPU on a real iPhone; decide
-  default-on. Cost: +1.7 ms map render per frame (iPhone 4×), vsync-bound.
+- **Own ground in game behind `?ownGround=1`** (city-wide, 294 cells, 29.1 MB
+  gzip): blockers for default-on — per-polder water levels (Osdorp land −2.17 m
+  under water at −1.77 m); GPU time on a real iPhone (1.35M tris resident);
+  labels still MapLibre symbol layers; road widths from OSM (BGT: store one
+  measured width per way offline, not polygons). Recommendation: default-on in
+  the canal belt first after a real-iPhone measurement. Per-building chunk
+  bases verified only on flat streets. Size cuts if needed: 4 m relief
+  everywhere (−4 MB), drop pad tiles. Firebase deploy grows ~24.6 MB net —
+  hosting storage is already over quota.
 - **Elevation follow-ups** (`?elevation=1`, `docs/elevation.md`): no AHN
   ground relief; one water level everywhere (polders, IJ shore get the same
   quay wall); route line hidden on humped decks and ramps paint over ~20 m of
