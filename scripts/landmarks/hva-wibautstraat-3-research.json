@@ -1,0 +1,36 @@
+{
+  "id": "hva-wibautstraat-3",
+  "status": "ready-with-caveats-pending-integrator-blind-count",
+  "identity": {
+    "bagPandId": "0363100012241500",
+    "bouwjaar": 2015,
+    "addresses": ["Wibautstraat 3A-3C"],
+    "bag": "BAG API 2026-10-10: 15 bouwlagen, oorspronkelijkBouwjaar 2015, education use, 27,905 m2, no pand name",
+    "name": "HvA building on the site of the demolished Wibauthuis (Amstelcampus); architect not identified in the sources found",
+    "policy": "ordinary large building: category ordinary, no route destination, no POI card (no named, sourced identity beyond the campus address)",
+    "note": "The earlier lane skipped the OSM building:part; this model targets the whole BAG pand and its 3DBAG volumes (podium 29.4 m, 38.7/40.2 m shoulders, towers 49.5 and 55.7 m). The 3DBAG plan is a rectangle with stepped volumes, not a curved plan."
+  },
+  "sources": [
+    {"url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012241500/?_format=json", "kind": "BAG pand (Amsterdam BAG API)", "retrievedOn": "2026-10-10", "licence": "CC0 (BAG)"},
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012241500&f=json", "kind": "BAG pand footprint", "retrievedOn": "2026-10-10", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012241500", "kind": "3DBAG LoD2.2 massing", "retrievedOn": "2026-10-10", "licence": "CC BY 4.0 (3DBAG)"},
+    {"file": "artifacts/landmark-lanes/hva-wibautstraat-3/ref-west.jpg", "kind": "wall 132 (west front) stitched from three rectified panoramas: TMX7316010203-002544_pano_0000_001720 (2022-04-26), TMX7316010203-001658_pano_0000_000606 (2020-04-21), TMX7316010203-002591_pano_0000_000859 (2022-06-13); tiles rect132-*.jpg", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/hva-wibautstraat-3/ref-west-low.jpg", "kind": "wall 235 (low glazed front) from TMX7316010203-002138_pano_0000_000662 and _000347 (2021-05-12)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/hva-wibautstraat-3/rect115-0.jpg, rect116-0.jpg", "kind": "walls 115 and 116 from TMX7316010203-002544_pano_0000_001727 (2022-04-26) and TMX7316010203-002591_pano_0000_000869 (2022-06-13)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/hva-wibautstraat-3/ref-east.jpg, ref-east-2.jpg, rect187-0.jpg", "kind": "walls 17, 129, 187 (east) from TMX7315120208-000062_pano_0000_000131/000126/000120 (2016-06-01)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/hva-wibautstraat-3/ref-south.jpg", "kind": "wall 138 (south) from TMX7315120208-000050_pano_0001_000289 (2016-05-17)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/hva-wibautstraat-3/ref-south-scaffold.jpg", "kind": "wall 107 from recording_2025-06-20_12-01-53_00428, covered in scaffold netting (not used for counts)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/hva-wibautstraat-3/ref-north.jpg, rect46-0.jpg", "kind": "walls 51 and 46 (north) from TMX7315120208-000062_pano_0000_000144 and _000142 (2016-06-01)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"}
+  ],
+  "faces": {
+    "west front (132, 235)": "evidence: ref-west.jpg, ref-west-low.jpg: ribbon spans and brick piers read to about 0.4 m; the left ribbon (t 0-16) is partly hidden by a tree, so its pier position is INFERRED.",
+    "east (17, 129, 187), south (138), north (51, 46)": "evidence: the ref-*.jpg photographs; the grid is the common module (ribbons 2.4 m on a 3.5 m pitch from sill 14.5, glazed louvred base).",
+    "upper volumes above 32 m, inner volumes, 115/116 above their photographed storeys, 107 (scaffold-covered)": "INFERRED: the same module; panoramas reach 32 m only."
+  },
+  "caveats": [
+    "Brick pier spacing on the walls without a clear photo (every 10-11 m) is a regular guess.",
+    "Louvre sunshades are drawn as two dark bands, not as depth; entrance canopies are 3DBAG massing.",
+    "No architect or building name was confirmed, hence ordinary."
+  ],
+  "limits": ["sunshade depth", "signage", "roof plant", "entrance canopies detail"]
+}

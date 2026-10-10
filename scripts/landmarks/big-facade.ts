@@ -1,6 +1,6 @@
 import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
-import {put, type Frame} from './nearbar-kit';
+import {put, slab, type Frame} from './nearbar-kit';
 import {topOf, type RawWall} from './big-kit';
 
 /**
@@ -27,6 +27,23 @@ export function windowGrid(b: BuildingTools, wall: RawWall, g: Grid) {
       quad(b, wall.f, t, y - ring, g.w + 2 * ring, g.h + 2 * ring, frame, 0.02);
       quad(b, wall.f, t, y, g.w, g.h, glass, 0.04);
     }
+  }
+}
+/**
+ * A continuous ribbon window (one frame, one glass field, thin mullions every `mullion` m) from t0 to t1, sill y, height h.
+ * Skipped when the wall is lower than the ribbon anywhere along it.
+ */
+export function ribbon(b: BuildingTools, wall: RawWall, t0: number, t1: number, y: number, h: number, o: {mullion?: number; frame?: string; glass?: string; ring?: number} = {}) {
+  const top = Math.min(topOf(wall, t0 + 0.05), topOf(wall, t1 - 0.05), topOf(wall, (t0 + t1) / 2));
+  if (!Number.isFinite(top) || y + h > top - 0.25 || y < wall.base + 0.2 || t1 - t0 < 0.5) return;
+  const ring = o.ring ?? 0.1, c = (t0 + t1) / 2, w = t1 - t0;
+  // Closed thin boxes (not open quads): long ribbons would otherwise read as open shell holes in the GLB audit.
+  slab(b, wall.f, c, y - ring, w + 2 * ring, h + 2 * ring, 0.025, o.frame ?? 'frame');
+  slab(b, wall.f, c, y, w, h, 0.045, o.glass ?? 'glass');
+  const m = o.mullion ?? 0;
+  if (m > 0) {
+    const n = Math.max(1, Math.round(w / m));
+    for (let k = 1; k < n; k++) quad(b, wall.f, t0 + (w * k) / n, y, 0.07, h, o.frame ?? 'frame', 0.045);
   }
 }
 /** Sills counted down from the wall top: first sill `drop` under the top, then every `pitch` while >= `min`. */
