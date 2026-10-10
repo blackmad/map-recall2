@@ -1,0 +1,35 @@
+{
+  "canonicalModelId": "de-nederlandsche-bank",
+  "researchedOn": "2026-10-10",
+  "state": "built-held",
+  "destination": {
+    "landmarkId": "de-nederlandsche-bank",
+    "name": "De Nederlandsche Bank",
+    "address": "Westeinde 1 / Frederiksplein 61, Amsterdam",
+    "bagPand": "NL.IMBAG.Pand.0363100012165684",
+    "note": "No installed model, native-kit POI or poi-work-queue task covers it (checked by name and pand id); no OSM POI exists, so a model-local landmarkId is used. The brief attributed the 1991 rotunda to Jo Coenen; every source names J. Abma (1990). The rotunda (BAG pand 0363100012178159) is demolished, so it is not modelled."
+  },
+  "sources": [
+    {"url": "https://arcam.nl/architectuur-gids/de-nederlandsche-bank-2/", "retrieved": "2026-10-10", "use": "Mecanoo renovation, brick-and-brown-tile facade, round tower demolished"},
+    {"url": "https://www.amsterdamsebinnenstad.nl/binnenstad/297/nederlandsche-bank.php", "retrieved": "2026-10-10", "use": "tower ~70 m tapering window strips, exposed-aggregate red-brown tiles, satellite tower by J. Abma 1990"},
+    {"url": "https://www.architectuur.org/bouwwerk/658/De_Nederlandsche_Bank.html", "retrieved": "2026-10-10", "use": "Duintjer 1961-68, Abma 1985-91"},
+    {"url": "https://www.archdaily.com/1039156/de-nederlandsche-bank-mecanoo", "retrieved": "2026-10-10", "use": "110x120 m podium, 73 m tower; aerial, site plan, ground plan, elevations (ref-ad-*.jpg)"}
+  ],
+  "photos": [
+    {"file": "ref-2025-frederiksplein.jpg", "url": "https://commons.wikimedia.org/wiki/File:De_Nederlandsche_Bank_(2025).jpg", "date": "2025-03-18", "licence": "CC BY-SA 4.0 (Erremm)"},
+    {"file": "ref-2025-westeinde.jpg", "url": "https://commons.wikimedia.org/wiki/File:De_Nederlandsche_Bank_(2025),_Westeinde_side.jpg", "date": "2025-03-18", "licence": "CC BY-SA 4.0 (Erremm)"},
+    {"file": "ref-2018.jpg", "url": "https://commons.wikimedia.org/wiki/File:Nederlandsche_Bank_2018.jpg", "date": "2018-01-07", "licence": "CC BY-SA 4.0 (Choinowski)"},
+    {"file": "ref-2022-tower.jpg", "url": "https://commons.wikimedia.org/wiki/File:2022_DNB_2022-05-03_Toren_vanaf_Frederiksplein_(2).jpg", "date": "2022-05-03", "licence": "CC BY-SA 4.0"},
+    {"file": "ref-south.jpg", "panorama": "TMX7316010203-001968_pano_0000_000280", "date": "2021", "heading": 347, "note": "Amsterdam panorama perspective thumbnail (distorted), shows rotunda still standing"},
+    {"file": "ref-west.jpg", "panorama": "TMX7316060226-000020_pano_0003_000020", "date": "2016", "heading": 77},
+    {"file": "ref-east.jpg", "panorama": "recording_2025-06-19_04-38-42_03835", "date": "2025", "heading": 257},
+    {"file": "ref-north.jpg", "panorama": "recording_2025-06-19_04-38-42_02977", "date": "2025", "heading": 167},
+    {"file": "ref-ad-*.jpg", "url": "https://www.archdaily.com/1039156/de-nederlandsche-bank-mecanoo", "note": "third-party drawings and aerials, reference only, medium-resolution as published"}
+  ],
+  "decisions": [
+    "3DBAG shell (older than the demolition) includes the cylindrical satellite; its surfaces (centroid within 16.5 m of 0.5,20.7 east/south, higher than 20 m) are skipped and the open edges are closed with fans (tile colour).",
+    "UNRESOLVED: the 3DBAG link core / annex (x 14-26, z -8..22, up to 51-64 m) west of the tower probably belonged to the satellite too and is kept; 2025 photographs show a clean west face.",
+    "Podium storey levels (ground 5.9, eave 13.1) from 3DBAG; tile fascia, ribbon windows (2.2 m pitch), white spandrel inferred from the 2025 photos and panoramas. Facade materials differ per side in panoramas (pre-renovation); the model uses the renovated tile fascia on all sides.",
+    "Tower: 12 window strips at 3.6 m pitch above the podium plus two technical strips, from the Mecanoo east elevation; window pitch 1.3 m by eye."
+  ]
+}

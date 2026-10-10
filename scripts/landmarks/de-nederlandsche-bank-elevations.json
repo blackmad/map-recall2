@@ -1,0 +1,10 @@
+{
+  "id": "de-nederlandsche-bank",
+  "countedBy": "pending blind count",
+  "facades": [
+    {"name": "north (main entrance, tile fascia, glazed ground floor)", "bearing": 347.5, "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-north.jpg", "depthBand": 6},
+    {"name": "south (Singelgracht quay, glass-block ground floor)", "bearing": 167.5, "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-south.jpg", "depthBand": 6},
+    {"name": "west (second entrance, ribbon windows over white spandrel)", "bearing": 257.5, "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-west.jpg", "depthBand": 6},
+    {"name": "east (service side, ribbon windows)", "bearing": 77.5, "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-east.jpg", "depthBand": 6}
+  ]
+}
