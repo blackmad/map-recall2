@@ -306,3 +306,14 @@ test('a genuine multi-volume site (several grounded buildings, diagonal > 150 m)
   assert.ok(analyseSoup(soup(boxQuads(0, 0, 0, 140, 12, 24)), {siteModel: true}).findings.some(f => f.kind === 'site-model'));
   assert.ok(analyseSoup(site, {siteModel: false}).seeThrough.tested > 0);
 });
+
+test('a declared detached structure is exempt from far-outside; undeclared, partly outside the box, or another part still fails', () => {
+  const kiosk = boxQuads(30, 0, 0, 34, 3, 4);
+  const boxes = (...b: [number, number, number, number][]) => ({detachedStructures: b.map(box => ({box}))});
+  const base = () => soup(boxQuads(0, 0, 0, 10, 8, 10), kiosk);
+  assert.ok(analyseSoup(base()).findings.some(f => f.kind === 'far-outside'), 'undeclared kiosk must fail');
+  assert.ok(!analyseSoup(base(), boxes([29, -1, 35, 5])).findings.some(f => f.kind === 'far-outside'), 'declared kiosk is exempt');
+  assert.ok(analyseSoup(base(), boxes([29, -1, 33, 5])).findings.some(f => f.kind === 'far-outside'), 'box that does not contain the whole part does not exempt it');
+  const other = soup(boxQuads(0, 0, 0, 10, 8, 10), kiosk, boxQuads(60, 0, 0, 64, 3, 4));
+  assert.ok(analyseSoup(other, boxes([29, -1, 35, 5])).findings.some(f => f.kind === 'far-outside'), 'a second undeclared part still fails');
+});
