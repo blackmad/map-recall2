@@ -1468,5 +1468,11 @@
   "buildVersion": 2,
   "bytes": 54288,
   "triangles": 2656
+ },
+ "bogortuin-101": {
+  "sourceHash": "b75e4508484a9858",
+  "buildVersion": 2,
+  "bytes": 78800,
+  "triangles": 4010
  }
 }
