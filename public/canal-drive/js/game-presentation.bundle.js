@@ -28122,10 +28122,11 @@
         source: "PDOK BAG 0363100012250152 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
       },
       materialOverrides: {
-        dark: "#343b40",
-        glass: "#86a3b3",
-        concrete: "#8c8d8a",
-        frame: "#4a5258",
+        dark: "#1f282d",
+        glass: "#5f90ab",
+        concrete: "#7d8082",
+        frame: "#2c363c",
+        red: "#a0663a",
         white: "#f1f1ee"
       },
       preservePositionPrecision: true,
@@ -28281,7 +28282,7 @@
         ]
       },
       status: "held",
-      heldReason: "2026-10-10: flat 3DBAG glass box; needs the stepped/offset floor plates, terraces, entrance link and reflective glass (rework on big/p-20261010)."
+      heldReason: "2026-10-10: plate rework (2b5bbec4) still reads as a gridded glass box: needs the curved, stepped south front cantilevered over the deep entrance plaza (BAG ring is straight there; photos are not), thinner bronze plates, and a measured lobby recess (2.0 m was chosen to pass see-through, photos bound it to 2-4 m)."
     },
     {
       id: "shell-technology-centre",

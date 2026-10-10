@@ -141,7 +141,7 @@ export const QUAY = { coping: [0.64, 0.61, 0.56] as [number, number, number], br
  * the relief at the bank down past the water plane: coping, brick, algae band.
  * Banks that are not above the water (beaches, reed edges) get no wall.
  */
-export function quayWallMesh(geo: WaterGeometry, ground: HeightFn, waterZ: number, step = 2): MeshArrays {
+export function quayWallMesh(geo: WaterGeometry, ground: HeightFn, waterZ: number, step = 2, capM = 0): MeshArrays {
   const m = emptyMesh(true);
   for (const line of geo.shores) {
     const pts = densify(line, step);
@@ -156,7 +156,20 @@ export function quayWallMesh(geo: WaterGeometry, ground: HeightFn, waterZ: numbe
         const coping = Math.max(t - 0.25, waterZ + 0.36), algae = waterZ + 0.35;
         return [t, Math.min(t, coping), Math.min(t, algae), waterZ - 0.25];
       };
-      const ra = rows(ta), rb = rows(tb), colours = [QUAY.coping, QUAY.brick, QUAY.algae];
+      // Coping cap: a strip on top of the wall reaching QUAY_CAP_M inland, a
+      // centimetre over the land. The land's cut at the shore is a per-pixel
+      // discard (no MSAA), which left a stair-stepped seam between land and
+      // wall top that showed the clear colour through it (phones, DPR 1.5);
+      // the cap covers that seam with real geometry, smooth at any zoom.
+      if (capM > 0) {
+        const ia: Vec2 = [a[0] + nx * capM, a[1] + ny * capM], ib: Vec2 = [b[0] + nx * capM, b[1] + ny * capM];
+        const za = Math.max(ta, ground(ia[0], ia[1])) + 0.012, zb = Math.max(tb, ground(ib[0], ib[1])) + 0.012;
+        const c0 = vertex(m, a[0], a[1], ta + 0.012, QUAY.coping), c1 = vertex(m, b[0], b[1], tb + 0.012, QUAY.coping);
+        const c2 = vertex(m, ib[0], ib[1], zb, QUAY.coping), c3 = vertex(m, ia[0], ia[1], za, QUAY.coping);
+        // Facing up: land (and the cap) lies right of a→b, so a, b, ib, ia runs clockwise from above.
+        m.indices.push(c0, c2, c1, c0, c3, c2);
+      }
+      const ra = rows(ta + (capM > 0 ? 0.012 : 0)), rb = rows(tb + (capM > 0 ? 0.012 : 0)), colours = [QUAY.coping, QUAY.brick, QUAY.algae];
       for (let r = 0; r < 3; r++) {
         if (ra[r] - ra[r + 1] < 1e-3 && rb[r] - rb[r + 1] < 1e-3) continue;
         const v0 = vertex(m, a[0], a[1], ra[r], colours[r]), v1 = vertex(m, b[0], b[1], rb[r], colours[r]);

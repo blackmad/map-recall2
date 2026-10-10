@@ -15,6 +15,7 @@ type Col = string;
 /** Depth every solid sinks behind its wall plane (hidden inside the building) so uneven 3DBAG walls still catch it. */
 let SINK = 0;
 export const setSink = (v: number) => { SINK = v; };
+export const getSink = () => SINK;
 
 export function put(b: BuildingTools, f: Frame, g: T.BufferGeometry, t: number, y: number, out: number, colour: Col) {
   g.rotateY(Math.atan2(f.n[0], f.n[1]));
@@ -112,6 +113,15 @@ const GL: Record<string, string[]> = {
   B: ['11110', '10001', '10001', '11110', '10001', '10001', '11110'],
   G: ['01110', '10001', '10000', '10111', '10001', '10001', '01111'],
   U: ['10001', '10001', '10001', '10001', '10001', '10001', '01110'],
+  // lower case on the same 7-row grid with the baseline on row 6 (the Booking.com wordmark)
+  b: ['10000', '10000', '10110', '11001', '10001', '10001', '11110'],
+  o: ['00000', '00000', '01110', '10001', '10001', '10001', '01110'],
+  k: ['10000', '10000', '10010', '10100', '11000', '10100', '10010'],
+  i: ['00100', '00000', '01100', '00100', '00100', '00100', '01110'],
+  n: ['00000', '00000', '10110', '11001', '10001', '10001', '10001'],
+  g: ['00000', '00000', '01111', '10001', '10001', '10001', '01111', '00001', '01110'], // 9 rows: the tail drops below the baseline
+  c: ['00000', '00000', '01110', '10000', '10000', '10001', '01110'],
+  m: ['00000', '00000', '11010', '10101', '10101', '10001', '10001'],
   '.': ['00000', '00000', '00000', '00000', '00000', '01100', '01100'],
 };
 /** Letters as solid pixel runs in a wall frame; back face at `out`. Returns total width. */
@@ -119,7 +129,7 @@ export function letters(b: BuildingTools, f: Frame, text: string, t: number, y: 
   const total = ([...text].length * 6 - 1) * px; let u = t - total / 2;
   for (const ch of text) {
     const rows = GL[ch];
-    for (let j = 0; j < 7; j++) {
+    for (let j = 0; j < rows.length; j++) {
       const row = rows[j]; let k = 0;
       while (k < 5) {
         if (row[k] !== '1') { k++; continue; }

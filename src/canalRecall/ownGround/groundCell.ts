@@ -66,6 +66,10 @@ export interface CellInput {
 
 /** How far the mask may extend past the cell, metres. */
 const MASK_REACH_M = 150;
+/** Signed-distance range of the water mask (texels saturate at ±this), metres. */
+export const MASK_RANGE_M = 4;
+/** Coping cap on every quay wall, reaching this far inland over the land's cut edge (water.ts). */
+export const QUAY_CAP_M = 0.35;
 
 /** Area-weighted vertex normals (three's computeVertexNormals), here so the main thread need not. */
 export function vertexNormals(positions: Float32Array, indices: Uint32Array): Float32Array {
@@ -134,7 +138,7 @@ export function buildCell(input: CellInput): BuiltCell {
   const res = lod === 0 ? 1 : 2;
   const geoAround: WaterGeometry = { polygons: input.waterAround.flatMap(g => g.polygons), shores: input.waterAround.flatMap(g => g.shores) };
   const hasWater = geoAround.polygons.length > 0;
-  const mask = hasWater ? buildWaterMask(geoAround, mx0, my0, mx1, my1, res, 4, input.deckRingsAround) : null;
+  const mask = hasWater ? buildWaterMask(geoAround, mx0, my0, mx1, my1, res, MASK_RANGE_M, input.deckRingsAround) : null;
   const overWater = (x: number, y: number) => !!mask && maskDistance(mask, x, y) < 0;
 
   // Land: the relief grid over the rectangle; quads deep inside a canal skipped.
@@ -170,7 +174,7 @@ export function buildCell(input: CellInput): BuiltCell {
   // Water, quays, decks.
   if (input.water) {
     add('water', waterSurfaceMesh(input.water, -1.77));
-    add('quay', quayWallMesh({ polygons: [], shores: input.water.shores }, surface.height, -1.77, lod === 0 ? 4 : 8));
+    add('quay', quayWallMesh({ polygons: [], shores: input.water.shores }, surface.height, -1.77, lod === 0 ? 4 : 8, QUAY_CAP_M));
   }
   for (const deck of input.decks) add('deckBody', measuredDeckBody(deck, surface.ground, overWater, -1.77));
   for (const ring of input.flatDecks) {
@@ -197,4 +201,48 @@ export function buildCell(input: CellInput): BuiltCell {
     key, lod, rect, layers: packed, mask: maskOut,
     stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes },
   };
+}
+
+/** Polygon-offset rank of coplanar layers (gameGround.ts OFFSET): later wins a tie. */
+const DRAW_RANK: Partial<Record<GroundLayer, number>> = { park: 1, wood: 1, square: 1, parking: 1, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4 };
+/** Mask channel that cuts a layer (gameGround.ts CUT): 0 = R (water), 1 = G (water minus decks). */
+const CUT_CHANNEL: Partial<Record<GroundLayer, 0 | 1>> = { land: 0, park: 0, wood: 0, square: 0, parking: 0, asphalt: 1, klinker: 1, cycle: 1, paving: 1, gravel: 1, kerb: 1, paint: 1 };
+
+/**
+ * What a camera straight above sees at (x, y) in one built cell: every
+ * triangle under the point, the mask discard applied as the shader does
+ * (bilinear, < 0.5 discards), topmost first, ties within 2 cm to the higher
+ * draw rank. For named regressions (walks every triangle).
+ */
+export function layersAt(cell: BuiltCell, x: number, y: number): { top: GroundLayer | null; hits: { layer: GroundLayer; z: number; cut: boolean }[] } {
+  const hits: { layer: GroundLayer; z: number; cut: boolean; rank: number }[] = [];
+  for (const layer of GROUND_LAYERS) {
+    const m = cell.layers[layer];
+    if (!m) continue;
+    const pos = m.positions, idx = m.indices;
+    for (let t = 0; t < idx.length; t += 3) {
+      const a = idx[t] * 3, b = idx[t + 1] * 3, c = idx[t + 2] * 3;
+      if (Math.max(pos[a], pos[b], pos[c]) < x || Math.min(pos[a], pos[b], pos[c]) > x || Math.max(pos[a + 1], pos[b + 1], pos[c + 1]) < y || Math.min(pos[a + 1], pos[b + 1], pos[c + 1]) > y) continue;
+      const d = (pos[b + 1] - pos[c + 1]) * (pos[a] - pos[c]) + (pos[c] - pos[b]) * (pos[a + 1] - pos[c + 1]);
+      if (Math.abs(d) < 1e-12) continue;
+      const u = ((pos[b + 1] - pos[c + 1]) * (x - pos[c]) + (pos[c] - pos[b]) * (y - pos[c + 1])) / d;
+      const v = ((pos[c + 1] - pos[a + 1]) * (x - pos[c]) + (pos[a] - pos[c]) * (y - pos[c + 1])) / d;
+      if (u < 0 || v < 0 || u + v > 1) continue;
+      const ch = CUT_CHANNEL[layer];
+      const cut = ch !== undefined && !!cell.mask && maskChannelAt(cell.mask, x, y, ch) < 0.5;
+      hits.push({ layer, z: u * pos[a + 2] + v * pos[b + 2] + (1 - u - v) * pos[c + 2], cut, rank: DRAW_RANK[layer] ?? 0 });
+    }
+  }
+  hits.sort((p, q) => (Math.abs(p.z - q.z) > 0.02 ? q.z - p.z : q.rank - p.rank));
+  return { top: hits.find(h => !h.cut && h.layer !== 'water')?.layer ?? null, hits: hits.map(({ layer, z, cut }) => ({ layer, z: +z.toFixed(3), cut })) };
+}
+
+/** Bilinear mask channel (0..1) at a scene point, as the GPU's LinearFilter samples it; 1 (land) outside. */
+export function maskChannelAt(m: GroundMask, x: number, y: number, ch: 0 | 1): number {
+  const fx = (x - m.x0) / m.res - 0.5, fy = (y - m.y0) / m.res - 0.5;
+  if (fx <= -0.5 || fy <= -0.5 || fx >= m.width - 0.5 || fy >= m.height - 0.5) return 1;
+  const i = Math.max(0, Math.min(m.width - 2, Math.floor(fx))), j = Math.max(0, Math.min(m.height - 2, Math.floor(fy)));
+  const u = Math.max(0, Math.min(1, fx - i)), v = Math.max(0, Math.min(1, fy - j)), t = m.texels, w = m.width;
+  const at = (a: number, b: number) => t[(b * w + a) * 2 + ch] / 255;
+  return (at(i, j) * (1 - u) + at(i + 1, j) * u) * (1 - v) + (at(i, j + 1) * (1 - u) + at(i + 1, j + 1) * u) * v;
 }

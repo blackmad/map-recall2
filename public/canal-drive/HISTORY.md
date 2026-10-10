@@ -1,5 +1,45 @@
 # Canal Recall — what is built
 
+## Six landmarks reworked: both hotels, both Lutheran churches, H'ART, Hendrik rear (2026-10-10)
+
+User reports: window inconsistency on Hotel de l'Europe and the American Hotel,
+missing windows on the Ronde Lutherse Kerk, detached windows on the Oude
+Lutherse Kerk, H'ART roof flicker, and the blank rear of Brandweerkazerne
+Hendrik. Causes: OLK detail boxes were axis-aligned on walls skewed ~3° (now on
+ring-edge frames); H'ART had a slate cap 1 cm over the brick top and overlapping
+wing hips (coplanar overlap 4,702 → 58 m²); RLK's curved side aisle was blank
+(now 7 arched windows); Hendrik's N/W walls were blank (now from rear-street
+panoramas); American Hotel's Leidsekade gable front was blank and its SE axes
+irregular (now 7 axes on 3.35 m); Hotel de l'Europe used one 3.0 m bay on every
+side and mislabelled the Amstel side (now three sections from the photo and a
+regular NW annex grid). LOD1 copies rebuilt.
+
+## Landmark z-fighting: constant depth bias; geometry audit in the GLB gate (2026-10-10)
+
+The user saw texture fighting on H'ART's roof and the Rijksmuseum entrance and
+asked whether it was systemic. Two causes. (1) Every landmark: `_applySuppression`
+in `signature-landmarks-source.js` set `polygonOffsetFactor = -32`, a slope-scaled
+offset that reorders a model's own faces at grazing angles, so hidden slab tops
+striped through walls. Now factor 0 with the constant −4096 units kept, which
+still beats the basemap (emulated render: striped with the factor, clean
+without). (2) Real flush trim in the GLBs. `landmarks/geometryAudit.ts` now checks
+detached openings (floating/overhang/buried), window rhythm per facade, and
+visible coplanar overlap; `audit:glb` fails a model only when it gets worse than
+its baseline entry, so new models must be clean.
+
+## Own ground city-wide (2026-10-10)
+
+Relief (`ground-height-v1`, 413 tiles: 2 m within 4 km of the Dam, 4 m beyond,
+upsampled on load; 20.6 MB) and OSM ground (`own-ground-osm-v1/cells`, 8.5 MB)
+now cover all 294 1 km cells the routing network touches (29.1 MB gzip total,
+under the 30 MB cap; replaces the 4.5 MB `west` area). Missing edge tiles extend
+from neighbours. Fixes: BRU0067 deck-start step capped at 20% slope (the "grey
+deck" is OSM-tagged sidewalks); a 0.35 m coping cap closes the stair-stepped
+see-through quay seam on phone; each street-chunk building stands on its own
+lowest ground; destination pin, question marker, tram and ferry sit on the
+surface. BGT road polygons were measured too big for the budget. Ride cost on
+iPhone 4× stays vsync-bound. Detail: the research doc's "City-wide" section.
+
 ## Mövenpick restored; Westerkerk lean-to shops take the church brick (2026-10-10)
 
 The Mövenpick hotel and the Muziekgebouw are one BAG pand; the

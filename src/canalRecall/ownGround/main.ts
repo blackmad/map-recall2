@@ -33,7 +33,7 @@ import { placementFor } from '../landmarks/signaturePlacement.js';
 import { lngLatToRd } from '../facade/rdNew.js';
 import { chunkGeometry, facadeMaterial } from '../rendererSpike/facadeMaterial.js';
 import { mapLibreEye } from '../rendererSpike/ride.js';
-import { decodeTile, fitLocalToRd, GroundField, type GroundIndex } from './heightField.js';
+import { fitLocalToRd, GroundField, readGroundTile, type GroundIndex } from './heightField.js';
 import { GroundSurface, riderPose, type Vec2 } from './surface.js';
 import { boxById } from './boxes.js';
 import type { OsmGroundExtract } from './osmGround.js';
@@ -252,10 +252,11 @@ async function loadSurface(): Promise<GroundSurface> {
   const ty0 = Math.floor(Math.min(...corners.map(c => c[1])) / index.tileSizeM), ty1 = Math.floor(Math.max(...corners.map(c => c[1])) / index.tileSizeM);
   const wanted = index.tiles.filter(([tx, ty]) => tx >= tx0 && tx <= tx1 && ty >= ty0 && ty <= ty1);
   let bytes = 0;
-  await Promise.all(wanted.map(async ([tx, ty]) => {
+  await Promise.all(wanted.map(async entry => {
+    const [tx, ty] = entry;
     const raw = await fetchBytes(`ground-height-v1/tiles/${tx}_${ty}.bin`);
     bytes += raw.byteLength;
-    const h = decodeTile(raw, index.samples);
+    const h = readGroundTile(index, entry, raw);
     if (opts.exag !== 1) for (let i = 0; i < h.length; i++) h[i] = index.sceneDatumNAP + (h[i] - index.sceneDatumNAP) * opts.exag;
     field.addTile(tx, ty, h);
   }));
@@ -319,7 +320,7 @@ async function loadWater(surface: GroundSurface): Promise<{ geo: WaterGeometry; 
   // Only the shores inside the built area (the cells reach further), 4 m wall segments.
   const inBuilt = (p: Vec2) => p[0] >= X0 && p[0] <= X1 && p[1] >= Y0 && p[1] <= Y1;
   const shores = geo.shores.map(line => line.filter(inBuilt)).filter(line => line.length > 1);
-  meshFrom('quay', quayWallMesh({ polygons: [], shores }, surface.height, WATER_Z, 4), M.quay);
+  meshFrom('quay', quayWallMesh({ polygons: [], shores }, surface.height, WATER_Z, 4, 0.35), M.quay);
   meshFrom('decks', merge([...deckBodies, ...flatBodies]), M.deck, { cast: true });
   meshFrom('decks', merge(flatTops), M.deck);
   log('water', { cells: cells.length, measuredDecks: measured.length, flatDecks: flatTops.length, maxDeckEndErrorM: +endError.toFixed(2), mask: `${mask.width}x${mask.height}` });
