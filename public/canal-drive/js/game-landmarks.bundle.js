@@ -19145,6 +19145,166 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
+      },
+      status: "held",
+      heldReason: "Integrator 2026-10-10: blue curtain-wall banding and set-backs missing; terminal podium renders as long flat slabs"
+    },
+    {
+      id: "sea-palace",
+      name: "Sea Palace",
+      landmarkId: "n13404202880",
+      modelUrl: "./models/sea-palace.glb",
+      suppressOsmIds: [
+        "w454006714"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.906292382923983,
+          52.37574985135794
+        ],
+        headingDegrees: 115.68,
+        lengthMetres: 39.03,
+        widthMetres: 24.07
+      },
+      surveyed: {
+        anchor: [
+          4.906292382923983,
+          52.37574985135794
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM building=houseboat way w454006714 (the floating restaurant; BAG has no live pand for it) fitted with an oriented rectangle, native east/south metres from its centre. Storey heights, eaves and ornament measured by eye from the 2021 and 2025 municipal panoramas."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#8a5a43",
+        stone: "#cdbc90",
+        slate: "#3a3330",
+        glass: "#3a4954",
+        frame: "#2a2e32",
+        dark: "#1d2024",
+        white: "#efe9db",
+        red: "#b3201a",
+        green: "#2f5f46",
+        bronze: "#234a37",
+        gold: "#c8a24a",
+        concrete: "#2e2a28"
+      },
+      attribution: {
+        title: "Sea Palace",
+        author: "Map Recall",
+        sourceUrl: "https://seapalace.nl/en/about-us/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free geometry on the OSM houseboat outline: pontoon deck and balustrades, three storeys of columns and glazing, and three curved green-tile eaves with upswept corners; measured by eye from municipal panoramas, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.905965,
+              52.375726
+            ],
+            [
+              4.905962,
+              52.375727
+            ],
+            [
+              4.905961,
+              52.375729
+            ],
+            [
+              4.905961,
+              52.375731
+            ],
+            [
+              4.905961,
+              52.375732
+            ],
+            [
+              4.906107,
+              52.375919
+            ],
+            [
+              4.906109,
+              52.37592
+            ],
+            [
+              4.906112,
+              52.375921
+            ],
+            [
+              4.906114,
+              52.375921
+            ],
+            [
+              4.906117,
+              52.375921
+            ],
+            [
+              4.906137,
+              52.375915
+            ],
+            [
+              4.906336,
+              52.375857
+            ],
+            [
+              4.906402,
+              52.375837
+            ],
+            [
+              4.9066,
+              52.375779
+            ],
+            [
+              4.90662,
+              52.375773
+            ],
+            [
+              4.906623,
+              52.375772
+            ],
+            [
+              4.906624,
+              52.375771
+            ],
+            [
+              4.906624,
+              52.375769
+            ],
+            [
+              4.906624,
+              52.375767
+            ],
+            [
+              4.906478,
+              52.375581
+            ],
+            [
+              4.906476,
+              52.375579
+            ],
+            [
+              4.906474,
+              52.375579
+            ],
+            [
+              4.906471,
+              52.375578
+            ],
+            [
+              4.906468,
+              52.375579
+            ],
+            [
+              4.905965,
+              52.375726
+            ]
+          ]
+        ]
       }
     }
   ];
@@ -47899,6 +48059,19 @@ Map source: ${osmUrl(places[i][0])}`);
           url: "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012090447&f=json"
         }
       ]
+    },
+    {
+      modelId: "sea-palace",
+      landmarkId: "n13404202880",
+      name: "Sea Palace",
+      description: "Sea Palace is a three-storey Chinese restaurant afloat on a pontoon beside Oosterdokskade, a short walk from Centraal Station. Its three stacked green-glazed-tile roofs, each with a red rim and corners swept sharply upward, and its red columns and gold-medallion balustrades follow the Cantonese pavilion style. Guests dine on the lower floors, and the top floor opens onto a roof terrace.",
+      funFact: "Sea Palace has floated beside Oosterdokskade since 1984 and is known for handmade dim sum. It is a vessel rather than a building, so the Dutch BAG register holds no pand for it.",
+      sourceUrl: "https://seapalace.nl/en/about-us/",
+      additionalSources: [
+        "https://seapalace.nl/en/",
+        "https://seapalace.nl/en/directions/"
+      ],
+      preferDescription: true
     }
   ];
 
