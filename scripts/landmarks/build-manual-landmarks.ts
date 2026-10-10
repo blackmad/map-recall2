@@ -1,3 +1,6 @@
+import {buildHotelDeLEurope} from './hotel-de-l-europe-builder';
+import {buildAmericanHotel} from './american-hotel-builder';
+import {buildTrippenhuis} from './trippenhuis-builder';
 import {buildWestIndischPakhuis} from './west-indisch-pakhuis-builder';
 import {buildDeSchool} from './de-school-builder';
 import {buildSeaPalace} from './sea-palace-builder';
@@ -351,7 +354,10 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='west-indisch-pakhuis')buildWestIndischPakhuis(w,d,helpers);
+    if(id==='hotel-de-l-europe')buildHotelDeLEurope(w,d,helpers);
+    else if(id==='american-hotel')buildAmericanHotel(w,d,helpers);
+    else if(id==='trippenhuis')buildTrippenhuis(w,d,helpers);
+    else if(id==='west-indisch-pakhuis')buildWestIndischPakhuis(w,d,helpers);
     else if(id==='de-school')buildDeSchool(w,d,helpers);
     else if(id==='sea-palace')buildSeaPalace(w,d,helpers);
     else if(id==='zuiderkerk')buildZuiderkerk(w,d,helpers);

@@ -1,0 +1,44 @@
+{
+  "id": "hotel-de-l-europe",
+  "bagPand": "0363100012168170",
+  "address": "Nieuwe Doelenstraat 2-14, Amsterdam",
+  "retrieved": "2026-10-10",
+  "sources": [
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-19_03-28-47_01216/?width=1600&fov=80&heading=59",
+      "use": "ref-sw.jpg: Amstel front (SW) with turret, balcony, glazed terrace; 2025",
+      "licence": "Amsterdam municipal panorama (CC0)"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-19_03-28-47_01197/?width=1600&fov=80&heading=337",
+      "use": "ref-se.jpg: Nieuwe Doelenstraat side (SE) from across the Amstel; 2025",
+      "licence": "Amsterdam municipal panorama (CC0)"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_03303/?width=1600&fov=80&heading=159",
+      "use": "ref-nw.jpg: close view of the NW end, rusticated granite plinth and curved bay; 2025",
+      "licence": "Amsterdam municipal panorama (CC0)"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-19_03-28-47_01206/?width=1600&fov=90&heading=14",
+      "use": "ref-s.jpg: rounded south end and terrace; 2025",
+      "licence": "Amsterdam municipal panorama (CC0)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/De_L%27Europe_Amsterdam",
+      "use": "Willem Hamer Jr., 1895-96, Rondeel site, monument 2001 (facts only)",
+      "licence": "Wikipedia, facts only"
+    },
+    {
+      "url": "https://nl.wikipedia.org/wiki/De_L%27Europe_Amsterdam",
+      "use": "neo-Renaissance, Rondeel tower history, 1910 entrance hall, Hitchcock (facts only)",
+      "licence": "Wikipedia, facts only"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012168170",
+      "use": "LoD2.2 massing shell",
+      "licence": "CC BY 4.0 (3DBAG)"
+    }
+  ],
+  "notes": "HELD: massing is exact (3DBAG) but detail is generic. Not modelled: the white-stone pilaster bays, dormers and the central gable of the Amstel front, the glazed terrace, turret oriel; window rows are an even rhythm rather than the real bay spacing. The NE side (35 m, bearing 58) is a genuine party wall with the neighbouring panden and is exempted in the audit via partyWallBearings."
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Hotel de l'Europe",
+  "landmarkId": "hotel-de-l-europe",
+  "sourceUrl": "https://en.wikipedia.org/wiki/De_L%27Europe_Amsterdam",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012168170"
+  ],
+  "pandId": "0363100012168170",
+  "materialOverrides": {
+    "brick": "#a5503c",
+    "stone": "#e4dccb",
+    "slate": "#4a4f5a",
+    "glass": "#6b7f8c",
+    "frame": "#f2efe6",
+    "white": "#f4f1e8",
+    "dark": "#2a2c2f",
+    "copper": "#6aa593",
+    "greyBrick": "#8a8478",
+    "sandstone": "#d6cdb8"
+  },
+  "surveySource": "Current BAG 0363100012168170 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; stone courses, ground-storey arched windows, balcony, window rows and corner turret cap approximated from 2025 municipal panoramas; the real stone pilasters, dormers and gable are not modelled; no pixels or meshes imported."
+}
