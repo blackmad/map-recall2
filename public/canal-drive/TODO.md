@@ -19,6 +19,10 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
+- **Rosarium follow-ups**: low box hedges around each bed; check Noord
+  "Rozentuin" (a36994921, ~1,500 bushes on 1,380 m², maybe over-planted) and
+  a288299874 in game; park-landscape draws the paved centre hex green;
+  archive the reference photos to the source pack.
 - **Shared material textures for landmark walls (user idea, backlog)**:
   landmark and ordinary models look bare where a wall is inferred or
   unmodelled (e.g. the fire station Hendrik rear, probably brick). Pull the
