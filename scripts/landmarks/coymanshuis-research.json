@@ -1,0 +1,60 @@
+{
+  "canonicalModelId": "coymanshuis",
+  "researchedOn": "2026-10-10",
+  "state": "built",
+  "destination": {
+    "landmarkId": "requested-coymanshuis",
+    "name": "Coymanshuis",
+    "address": "Keizersgracht 177, 1016 DR Amsterdam (PDOK locatieserver centroid 4.88561, 52.37448)",
+    "bagPand": "NL.IMBAG.Pand.0363100012165021",
+    "osmWay": "w266616361 (ref:bag 0363100012165021, via Overpass 2026-10-10)",
+    "note": "The backlog row had a vague address ('Nieuwezijds/Singel area'); the real address was confirmed from nl.wikipedia (rijksmonument 2271). No installed model, manualCatalogue entry or landmarks.json/click-poi-info.json POI covered this pand."
+  },
+  "architecture": {
+    "sources": [
+      {"url": "https://nl.wikipedia.org/wiki/Coymanshuis", "retrieved": "2026-10-10"},
+      {"url": "https://en.wikipedia.org/wiki/Coymanshuis", "retrieved": "2026-10-10"}
+    ],
+    "facts": [
+      "Facade designed 1625 by Jacob van Campen for Balthasar Coymans (plot bought December 1624); published 1631 in Architectura Moderna (Danckerts, De Bray).",
+      "Eight bays wide, with pilaster orders: Ionic on the bel-etage, Composite on the first floor.",
+      "Cross windows replaced by sashes c.1780, which removed the pediments above the first-floor windows; the original attic was replaced by a full storey in 1876 when it became a secondary school; the rear wall collapsed in 1931 and was rebuilt.",
+      "Amnesty International Netherlands head office since 2003; rijksmonument 2271 (register page not fetched, number taken from the Wikipedia article)."
+    ]
+  },
+  "measuredBy": {
+    "3dbag": "NL.IMBAG.Pand.0363100012165021 LoD2.2, ground 0.957 m NAP, 21-vertex ring. The pand contains three canal fronts on one line: wall 9 (7.9 m, north neighbour, top 17.8 m), wall 13 (22.7 m, the Coymanshuis, eave 16.8 m) and wall 43 (8.2 m, bearing 284, south neighbour, top 17.4 m).",
+    "photoAxes": "Eight window axes on the Coymanshuis, two arched doors on the middle pair, four rows (low cream ground storey, tall bel-etage, first floor, 1876 top floor); three axes with four rows on each neighbour. Heights read off ref-canal-front.jpg using the 3DBAG eave as scale.",
+    "uncertain": [
+      "Right-hand (south) neighbour is cream/white painted; its row heights are scaled by eye because the wall turns away from the camera.",
+      "North neighbour's balustrade crown and cartouche are a simplified silhouette, not a carving.",
+      "Rear and side walls have no photograph (inferred plain brick); basement openings were not inventoried."
+    ]
+  },
+  "photos": [
+    {
+      "file": "ref-canal-front.jpg",
+      "source": "Amsterdam municipal panorama recording_2025-06-16_04-42-37_02935 (captured 2025-06-16), thumbnail heading 134, fov 50",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_04-42-37_02935/?width=1400&fov=50&heading=134",
+      "licence": "Gemeente Amsterdam open panorama data; terms not re-verified",
+      "retrieved": "2026-10-10",
+      "feature": "near-frontal view of all three fronts from the opposite quay"
+    },
+    {
+      "file": "ref-canal-oblique-2021.jpg",
+      "source": "Amsterdam municipal panorama TMX7316010203-001975_pano_0000_000226 (2021-01-22), heading 61, fov 50",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001975_pano_0000_000226/?width=1400&fov=50&heading=61",
+      "licence": "Gemeente Amsterdam open panorama data; terms not re-verified",
+      "retrieved": "2026-10-10",
+      "feature": "oblique leaf-off view showing pilasters, cornices and the ground storey"
+    },
+    {
+      "file": "ref-canal-glare-2025.jpg",
+      "source": "Amsterdam municipal panorama recording_2025-06-16_04-42-37_02928 (2025-06-16), heading 92, fov 60",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_04-42-37_02928/?width=1400&fov=60&heading=92",
+      "licence": "Gemeente Amsterdam open panorama data; terms not re-verified",
+      "retrieved": "2026-10-10",
+      "feature": "view from the Herengracht-side bridge; confirms eight axes behind the tree line"
+    }
+  ]
+}
