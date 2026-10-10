@@ -39,6 +39,21 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   every contact sheet before un-holding; run `npm run audit:glb -- --id=<id>`
   and `scripts/check-landmark-attachment.ts`.
   Gerard Dou Synagogue: side/rear walls open (audit: 7/30 see-through rays).
+- **Facade gate follow-ups (2026-10-10)**: Royal Palace, De Balie and the
+  Concertgebouw entrance were reworked and installed. Still open: the Palace's
+  N and S fronts are blank (audit blank-wall FAIL, 45 x 25 m each); De Balie's
+  front is straight where the real one is bowed; Concertgebouw has 151 open
+  loops and 24/42 see-through rays from its glass promenade. Aron Schuster
+  synagogue held (brick too dark; banded rounded volumes, pale roof edges,
+  garden wall missing; rework in flight).
+  Elevation skeletons with photos exist for 25 landmarks
+  (`scripts/landmarks/*-elevations.json`, photos in `artifacts/landmark-lanes/`);
+  counts are not filled: Haiku blind counts were too noisy — use a stronger
+  counter or rectified `pand-reference` crops. `check-manual-landmarks.ts`
+  fails on main: eight Haparandaweg manifest entries have no `bytes`.
+  Lane runs of `archive-model-sources.py` into the private repo are sometimes
+  denied by the auto-mode classifier; refs for vrijburg, van-gendt-hallen and
+  the 25 elevation photos are not archived yet.
 - **GLB quality audit** (`npm run audit:glb`, `src/canalRecall/landmarks/glbQuality.ts`,
   2026-10-09): 184 of 236 installed models flag at least one FAIL (detached
   124, see-through 84, holes 61, far-outside 32). Detached-part detection is
@@ -148,18 +163,31 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   minimap/overview, dropping the live OpenFreeMap dependency. Gaps: no road
   widths/sidewalks in our extracts (centrelines only), humped bridges render
   as grey slabs, no route line/labels/HUD in the spike.
-- **Haparandaweg held/skipped**: Het Pakhuis (902–950) held 2026-10-09 by
-  user review — five identical gables with symmetric window grids, HET
-  PAKHUIS band, double-height glazed ground floor; the model scattered
-  windows and invented setbacks. Rebuild against a facade-rhythm spec. Review 65 (needs the terracotta upper volume),
+- **Haparandaweg held/skipped**: 952-1002 and 746-786 held 2026-10-10 after
+  review sheets (patchwork panes and an invented red stripe vs a regular red
+  curtain-wall grid; projecting slab balconies vs a flat stone grid with
+  recessed glass balconies); 870-900 SE side should be beige render, not
+  glass. Review 65 (needs the terracotta upper volume),
   650–706 (paired casements, stone bands), 708–744, 788–868 (glass bays);
   retry 940–950 with another photo source; 582–648 after scaffolding. The
   street sheet framing was poor (bike drawn over a roof) — reshoot.
-- **Recipe houses next**: stone window surrounds/quoins and awnings (the
-  procedural layer's remaining edge), shop-sign lettering, patterned banding,
+- **Review harness follow-ups**: `review-sheet.ts` needs ordinary-house
+  support (no catalogue entry/anchor) before Bilderdijkstraat re-review; ground
+  NAP offset not applied to the matched camera; record party-wall bearings per
+  model so blank-wall warns become signal; triage the 34 ≥600 m² blank walls
+  (Viñoly, The Rock, DeLaMar, Palace on the Dam first).
+- **Re-review the 19 Bilderdijkstraat recipe houses** under the new
+  acceptance checklist: bilder-156287 has 4 upper storeys and small 4-pane
+  windows where the photo shows 3 storeys + gable, large 1-over-1 windows,
+  middle-bay balconies, brick relieving arches and a 3-window gable. They
+  were accepted on overall resemblance. Run facade-compare on each.
+  Surround/awning evidence still open: Toko Persama (bilder-157154) awning
+  ambiguous; quoins, full-frame and dutch awnings have no house yet.
+- **Recipe houses next**: shop-sign lettering, patterned banding,
   per-house brick variation; fix `check-host-opening-availability` mock
-  (needs `SharedAssetCache`); then pilot street chunks (one mesh per block
-  face, party walls omitted) on Bilderdijkstraat.
+  (needs `SharedAssetCache`); street chunks are piloted (opt-in `?streetChunks=1`, see HISTORY); next
+  apply the shared ground line + eaves snap to the per-house path and re-run
+  the fidelity gates on shifted facts.
 - **Large-tier follow-ups** (`src/canalRecall/largeBuildingTier.ts`,
   ranked list via `npm run audit:large-tier`): untuned buildings show a
   uniform window grid; tune next Roeterseiland/LLC, VU, Benno Premselahuis,
@@ -172,6 +200,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   fusion from `build-pano-facade.ts`; washed-out/foliage thresholds (0.3) are
   untuned; `roofShape` is null outside `buildings-colored.geojson`; Beeldbank
   and monument-register facts are not yet joined in.
+- **Own ground for the riding view (lane render/own-ground-20261009)**:
+  elevation exposed that MapLibre paints roads and the route flat at z=0, so
+  street lines cross water and bridge slabs do not join roads or quays
+  (user screenshot, Nassaukade). Prototype: AHN DTM relief, our own
+  streets/bridges/quays/water mesh draped on it, route ribbon, models
+  re-based; measure, then decide replacing MapLibre ground near the rider.
 - **Elevation follow-ups** (`?elevation=1`, `docs/elevation.md`): no AHN
   ground relief; one water level everywhere (polders, IJ shore get the same
   quay wall); route line hidden on humped decks and ramps paint over ~20 m of

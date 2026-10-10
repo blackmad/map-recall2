@@ -1,0 +1,10 @@
+{
+  "name": "Raw Aron Schuster Synagoge",
+  "landmarkId": "extract_landmarks_86609524",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Raw_Aron_Schuster_Synagoge",
+  "suppressOsmIds": ["NL.IMBAG.Pand.0363100012074574"],
+  "pandId": "0363100012074574",
+  "materialOverrides": {"brick": "#8a5a47", "stone": "#c9bfa8", "slate": "#4f4d4a", "glass": "#6f8590", "dark": "#2b2a2a", "white": "#e4dfd0", "frame": "#2f3436", "concrete": "#cfcabd", "greyBrick": "#7d6a60", "gold": "#c9a64a"},
+  "surveySource": "Current BAG 0363100012074574 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG massing; side door, steel-framed windows, entrance canopy, strip windows and tower slits measured by eye from 2025 municipal panoramas, no pixels or meshes imported."
+}

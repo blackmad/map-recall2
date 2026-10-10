@@ -21,9 +21,9 @@
     }
   ],
   "counts": {
-    "manual-model": 243,
-    "procedural-kit": 15,
-    "pending": 126
+    "manual-model": 248,
+    "procedural-kit": 14,
+    "pending": 121
   },
   "destinations": [
     {
@@ -210,7 +210,8 @@
       "queueRank": 16,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "skip",
+      "taskNote": "Academy of arts; occupies rooms in buildings near Weesperplein, no own landmark building. BAG pand shared with Academie voor Theater en Dans."
     },
     {
       "id": "lm-extract_landmarks_1988238017",
@@ -457,7 +458,8 @@
       "queueRank": 35,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "December murders memorial near Plantage; memorial object, not a building."
     },
     {
       "id": "lm-extract_landmarks_1939633952",
@@ -535,7 +537,8 @@
       "queueRank": 41,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "skip",
+      "taskNote": "Film and Television Academy; school occupying rooms in an ordinary building."
     },
     {
       "id": "lm-extract_landmarks_1198118755",
@@ -847,7 +850,8 @@
       "queueRank": 65,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "skip",
+      "taskNote": "Academy of Architecture; school in ordinary building, no BAG pand matched at point."
     },
     {
       "id": "lm-extract_landmarks_889547307",
@@ -925,7 +929,8 @@
       "queueRank": 71,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "skip",
+      "taskNote": "Academy of Theatre and Dance; shares pand 0363100012185844 with AHK."
     },
     {
       "id": "lm-extract_landmarks_1386134518",
@@ -976,7 +981,8 @@
       "queueRank": 75,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "skip",
+      "taskNote": "De Ateliers studio complex; organisation in mixed-use building."
     },
     {
       "id": "lm-extract_landmarks_736156087",
@@ -1313,8 +1319,8 @@
       "type": "landmark",
       "queueRank": 101,
       "origin": "POI Destinations",
-      "status": "procedural-kit",
-      "kitName": "Zuiderkerk",
+      "status": "manual-model",
+      "modelId": "zuiderkerk",
       "treatment": "building"
     },
     {
@@ -1600,7 +1606,8 @@
       "queueRank": 123,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "area",
+      "taskNote": "Street (Warmoesstraat)."
     },
     {
       "id": "lm-extract_landmarks_1774408670",
@@ -1638,7 +1645,8 @@
       "queueRank": 126,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "area",
+      "taskNote": "Ambiguous quay name; treat as public place/quayside, not a building. Verify name."
     },
     {
       "id": "lm-extract_landmarks_366321397",
@@ -1741,7 +1749,8 @@
       "queueRank": 134,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Memorial stone (gedenksteen)."
     },
     {
       "id": "lm-extract_landmarks_154293883",
@@ -1805,7 +1814,8 @@
       "queueRank": 139,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model oost-indisch-huis. Covered by oost-indisch-huis (Oost-Indisch Huis and Bushuis); point is ~15 m from its footprint centre. BAG pand 0363100012165008 (bouwjaar 1606)."
     },
     {
       "id": "lm-extract_landmarks_760984505",
@@ -1947,7 +1957,8 @@
       "queueRank": 150,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Bevrijdingslinde: commemorative lime tree, memorial object."
     },
     {
       "id": "lm-extract_landmarks_665340356",
@@ -1998,7 +2009,8 @@
       "queueRank": 154,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model petrus-en-paulus-kerk. Same landmark as petrus-en-paulus-kerk (identical extract id)."
     },
     {
       "id": "lm-extract_landmarks_25099441",
@@ -2036,7 +2048,8 @@
       "queueRank": 157,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Nationaal Holocaust Namenmonument: memorial, not covered by national-holocaust-museum (different site)."
     },
     {
       "id": "lm-extract_landmarks_604950476",
@@ -2048,7 +2061,8 @@
       "queueRank": 158,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Schouwburg gateway (poort) fragment, memorial/monument element rather than a full building. Verify."
     },
     {
       "id": "lm-extract_landmarks_1606629595",
@@ -2086,7 +2100,8 @@
       "queueRank": 161,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model oudemanhuispoort. Same landmark as oudemanhuispoort (identical extract id)."
     },
     {
       "id": "lm-extract_landmarks_767085118",
@@ -2149,7 +2164,8 @@
       "queueRank": 166,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model maarten-lutherkerk. Same landmark as maarten-lutherkerk (identical extract id)."
     },
     {
       "id": "lm-extract_landmarks_1159979789",
@@ -2213,7 +2229,8 @@
       "queueRank": 171,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Rooms inside the former Huis van Bewaring block (pand 0363100012168688), which De Balie models."
     },
     {
       "id": "lm-extract_landmarks_1989090735",
@@ -2276,8 +2293,9 @@
       "type": "landmark",
       "queueRank": 176,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "thomaskerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_251933681",
@@ -2341,7 +2359,8 @@
       "queueRank": 181,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model koningskerk. Same landmark as koningskerk (identical extract id)."
     },
     {
       "id": "lm-extract_landmarks_529083075",
@@ -2366,7 +2385,8 @@
       "queueRank": 183,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Harbour crane Kraan 2868: preserved industrial object/monument, not a building."
     },
     {
       "id": "lm-extract_landmarks_1448080990",
@@ -2456,7 +2476,8 @@
       "queueRank": 190,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "University library inside a canal-house block (pand 0363100012168172), not a distinct building."
     },
     {
       "id": "lm-extract_landmarks_402613958",
@@ -2532,7 +2553,8 @@
       "queueRank": 196,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Memorial for 7 May 1945 Dam victims; memorial object. Not the same as national-monument-on-the-dam (checked by name, ~90 m apart). Verify."
     },
     {
       "id": "lm-extract_landmarks_2141455457",
@@ -2635,7 +2657,8 @@
       "queueRank": 204,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Plaque for Chet Baker."
     },
     {
       "id": "lm-extract_landmarks_1742509310",
@@ -2673,7 +2696,8 @@
       "queueRank": 207,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model zuiderkerk (church and tower are one BAG pand 0363100012171559)."
     },
     {
       "id": "lm-extract_landmarks_2034905768",
@@ -2781,13 +2805,26 @@
       "treatment": "building"
     },
     {
+      "id": "lm-extract_landmarks_1351046417",
+      "name": "Van Gendt Hallen",
+      "lat": 52.371721,
+      "lng": 4.925544,
+      "prominence": 220,
+      "type": "landmark",
+      "queueRank": 216,
+      "origin": "POI Destinations",
+      "status": "manual-model",
+      "modelId": "van-gendt-hallen",
+      "treatment": "building"
+    },
+    {
       "id": "lm-extract_landmarks_77247220",
       "name": "Vredeskerk",
       "lat": 52.349733,
       "lng": 4.88966,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 216,
+      "queueRank": 217,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "vredeskerk",
@@ -2800,11 +2837,25 @@
       "lng": 4.890663,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 217,
+      "queueRank": 218,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "posthoornkerk",
       "treatment": "building"
+    },
+    {
+      "id": "lm-extract_landmarks_563908011",
+      "name": "Vrijburg",
+      "lat": 52.345896,
+      "lng": 4.8825,
+      "prominence": 220,
+      "type": "landmark",
+      "queueRank": 219,
+      "origin": "POI Destinations",
+      "status": "manual-model",
+      "modelId": "vrijburg",
+      "treatment": "area",
+      "taskNote": "Vrijburg: multi-building complex/area, not a single building."
     },
     {
       "id": "lm-extract_landmarks_1569842434",
@@ -2813,10 +2864,23 @@
       "lng": 4.892921,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 218,
+      "queueRank": 220,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "dominicuskerk",
+      "treatment": "building"
+    },
+    {
+      "id": "lm-extract_landmarks_1347119904",
+      "name": "Willem de Zwijgerkerk",
+      "lat": 52.349528,
+      "lng": 4.862746,
+      "prominence": 220,
+      "type": "landmark",
+      "queueRank": 221,
+      "origin": "POI Destinations",
+      "status": "manual-model",
+      "modelId": "willem-de-zwijgerkerk",
       "treatment": "building"
     },
     {
@@ -2826,7 +2890,7 @@
       "lng": 4.895504,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 219,
+      "queueRank": 222,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "ndsm-warehouse-complex",
@@ -2839,7 +2903,7 @@
       "lng": 4.889191,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 220,
+      "queueRank": 223,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "oude-lutherse-kerk",
@@ -2852,7 +2916,7 @@
       "lng": 4.8836352,
       "prominence": 220,
       "type": "museum",
-      "queueRank": 221,
+      "queueRank": 224,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "pianola-museum",
@@ -2865,10 +2929,23 @@
       "lng": 4.933403,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 222,
+      "queueRank": 225,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "huize-frankendael",
+      "treatment": "building"
+    },
+    {
+      "id": "lm-extract_landmarks_1055638541",
+      "name": "Muiderkerk",
+      "lat": 52.3617331,
+      "lng": 4.9245472,
+      "prominence": 220,
+      "type": "landmark",
+      "queueRank": 226,
+      "origin": "POI Destinations",
+      "status": "manual-model",
+      "modelId": "muiderkerk",
       "treatment": "building"
     },
     {
@@ -2878,7 +2955,7 @@
       "lng": 4.9088495,
       "prominence": 220,
       "type": "museum",
-      "queueRank": 223,
+      "queueRank": 227,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "luther-museum",
@@ -2891,7 +2968,7 @@
       "lng": 4.899603,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 224,
+      "queueRank": 228,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "centraal-station",
@@ -2904,7 +2981,7 @@
       "lng": 4.8862198,
       "prominence": 220,
       "type": "museum",
-      "queueRank": 225,
+      "queueRank": 229,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "canals-museum",
@@ -2917,7 +2994,7 @@
       "lng": 4.854147,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 226,
+      "queueRank": 230,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "podium-mozaiek",
@@ -2932,7 +3009,7 @@
       "lng": 4.913118,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 227,
+      "queueRank": 231,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "mediamatic",
@@ -2945,7 +3022,7 @@
       "lng": 4.902217394449075,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 228,
+      "queueRank": 232,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "adam-tower",
@@ -2959,7 +3036,7 @@
       "lng": 4.886200223567619,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 229,
+      "queueRank": 233,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "pontsteiger",
@@ -2973,7 +3050,7 @@
       "lng": 4.883275104301525,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 230,
+      "queueRank": 234,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "rem-eiland",
@@ -2987,7 +3064,7 @@
       "lng": 4.883800679368446,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 231,
+      "queueRank": 235,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "paradiso",
@@ -3001,7 +3078,7 @@
       "lng": 4.890243858773726,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 232,
+      "queueRank": 236,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "magna-plaza",
@@ -3014,7 +3091,7 @@
       "lng": 4.903908332712785,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 233,
+      "queueRank": 237,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "scheepvaarthuis",
@@ -3027,7 +3104,7 @@
       "lng": 4.8943519,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 234,
+      "queueRank": 238,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "de-bijenkorf",
@@ -3040,7 +3117,7 @@
       "lng": 4.868872884498755,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 235,
+      "queueRank": 239,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "gashouder",
@@ -3053,7 +3130,7 @@
       "lng": 4.907562825146495,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 236,
+      "queueRank": 240,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "hortus-greenhouses",
@@ -3066,7 +3143,7 @@
       "lng": 4.893913835356087,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 237,
+      "queueRank": 241,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "frascati",
@@ -3079,7 +3156,7 @@
       "lng": 4.867419736081726,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 238,
+      "queueRank": 242,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "lab111",
@@ -3092,7 +3169,7 @@
       "lng": 4.9359819354640555,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 239,
+      "queueRank": 243,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "studiok",
@@ -3105,7 +3182,7 @@
       "lng": 4.889058364860993,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 240,
+      "queueRank": 244,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "athenaeum",
@@ -3118,7 +3195,7 @@
       "lng": 4.893404379268778,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 241,
+      "queueRank": 245,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "scheltema",
@@ -3131,7 +3208,7 @@
       "lng": 4.871428790909091,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 242,
+      "queueRank": 246,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "vondelpark-bandstand",
@@ -3144,7 +3221,7 @@
       "lng": 4.897208314885277,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 243,
+      "queueRank": 247,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "hemp-gallery",
@@ -3157,7 +3234,7 @@
       "lng": 4.897190642415213,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 244,
+      "queueRank": 248,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "sint-jorishof",
@@ -3170,7 +3247,7 @@
       "lng": 4.8905845781125485,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 245,
+      "queueRank": 249,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "silodam",
@@ -3184,7 +3261,7 @@
       "lng": 4.873552902185253,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 246,
+      "queueRank": 250,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "amsta-de-poort",
@@ -3198,7 +3275,7 @@
       "lng": 4.917031687807691,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 247,
+      "queueRank": 251,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "rembrandt-tower",
@@ -3212,7 +3289,7 @@
       "lng": 4.916345037374623,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 248,
+      "queueRank": 252,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "breitner-tower",
@@ -3225,7 +3302,7 @@
       "lng": 4.917383745624289,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 249,
+      "queueRank": 253,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "mondriaan-tower",
@@ -3239,7 +3316,7 @@
       "lng": 4.866881797272151,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 250,
+      "queueRank": 254,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "de-piramides",
@@ -3253,7 +3330,7 @@
       "lng": 4.872149301126166,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 251,
+      "queueRank": 255,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "zuiveringshal-west",
@@ -3267,7 +3344,7 @@
       "lng": 4.873240886305469,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 252,
+      "queueRank": 256,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "amsterdam-in-motion",
@@ -3280,7 +3357,7 @@
       "lng": 4.8374469,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 253,
+      "queueRank": 257,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "sloterdijk-station",
@@ -3294,7 +3371,7 @@
       "lng": 4.835180875927809,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 254,
+      "queueRank": 258,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "hnk-sloterdijk",
@@ -3308,7 +3385,7 @@
       "lng": 4.872808548242466,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 255,
+      "queueRank": 259,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "machinegebouw",
@@ -3321,7 +3398,7 @@
       "lng": 4.870119186757984,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 256,
+      "queueRank": 260,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "de-wester",
@@ -3334,7 +3411,7 @@
       "lng": 4.905142672706717,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 257,
+      "queueRank": 261,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "amstel-hotel",
@@ -3348,7 +3425,7 @@
       "lng": 4.8553107,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 258,
+      "queueRank": 262,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "ing-house",
@@ -3361,7 +3438,7 @@
       "lng": 4.875,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 259,
+      "queueRank": 263,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "idfa-pavilion",
@@ -3378,7 +3455,7 @@
       "lng": 4.87914,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 260,
+      "queueRank": 264,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "conservatorium",
@@ -3391,7 +3468,7 @@
       "lng": 4.8647759,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 261,
+      "queueRank": 265,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "kinderkookkafe",
@@ -3405,7 +3482,7 @@
       "lng": 4.855954,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 262,
+      "queueRank": 266,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "beta-boulders",
@@ -3419,7 +3496,7 @@
       "lng": 4.8593849,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 263,
+      "queueRank": 267,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "beest-boulders",
@@ -3433,7 +3510,7 @@
       "lng": 4.8592628,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 264,
+      "queueRank": 268,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "beest-boulders",
@@ -3446,7 +3523,7 @@
       "lng": 4.9115779,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 265,
+      "queueRank": 269,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "klimmuur-centraal",
@@ -3460,7 +3537,7 @@
       "lng": 4.842064,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 266,
+      "queueRank": 270,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "mountain-network",
@@ -3477,7 +3554,7 @@
       "lng": 4.8645934,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 267,
+      "queueRank": 271,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "keith-haring-mural",
@@ -3490,7 +3567,7 @@
       "lng": 4.8772123,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 268,
+      "queueRank": 272,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "valley",
@@ -3504,7 +3581,7 @@
       "lng": 4.854636936174082,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 269,
+      "queueRank": 273,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "midwest",
@@ -3518,7 +3595,7 @@
       "lng": 4.87258,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 270,
+      "queueRank": 274,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "blauwe-theehuis",
@@ -3532,7 +3609,7 @@
       "lng": 4.8684443,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 271,
+      "queueRank": 275,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "groot-melkhuis",
@@ -3546,7 +3623,7 @@
       "lng": 4.8512397,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 272,
+      "queueRank": 276,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "beest-het-lab",
@@ -3563,7 +3640,7 @@
       "lng": 4.857204443898143,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 273,
+      "queueRank": 277,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "kesbeke",
@@ -3576,7 +3653,7 @@
       "lng": 4.8567913,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 274,
+      "queueRank": 278,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "kesbeke-shop",
@@ -3589,7 +3666,7 @@
       "lng": 4.894597625,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 275,
+      "queueRank": 279,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "ndsm-container-arch",
@@ -3602,7 +3679,7 @@
       "lng": 4.8704548554961224,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 276,
+      "queueRank": 280,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "the-rock",
@@ -3616,7 +3693,7 @@
       "lng": 4.8899065,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 277,
+      "queueRank": 281,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "rai-amsterdam",
@@ -3630,7 +3707,7 @@
       "lng": 4.883288222258304,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 278,
+      "queueRank": 282,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "pulitzer-amsterdam",
@@ -3643,7 +3720,7 @@
       "lng": 4.9261089,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 279,
+      "queueRank": 283,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "de-gooyer",
@@ -3656,7 +3733,7 @@
       "lng": 4.89194,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 280,
+      "queueRank": 284,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "nieuw-dakota",
@@ -3669,7 +3746,7 @@
       "lng": 4.893322,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 281,
+      "queueRank": 285,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "pllek",
@@ -3682,7 +3759,7 @@
       "lng": 4.92940658,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 282,
+      "queueRank": 286,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "monk-amsterdam",
@@ -3696,7 +3773,7 @@
       "lng": 4.8936,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 283,
+      "queueRank": 287,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "straat-museum",
@@ -3709,7 +3786,7 @@
       "lng": 4.893228,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 284,
+      "queueRank": 288,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "treehouse-ndsm",
@@ -3722,7 +3799,7 @@
       "lng": 4.85651048,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 285,
+      "queueRank": 289,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "vondeltuin",
@@ -3735,7 +3812,7 @@
       "lng": 4.86579375,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 286,
+      "queueRank": 290,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "centrale-markthal",
@@ -3748,7 +3825,7 @@
       "lng": 4.9263471,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 287,
+      "queueRank": 291,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "brouwerij-het-ij",
@@ -3761,7 +3838,7 @@
       "lng": 4.872403,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 288,
+      "queueRank": 292,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "vinoly",
@@ -3775,7 +3852,7 @@
       "lng": 4.872795,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 289,
+      "queueRank": 293,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "haparandaweg-2-4",
@@ -3788,7 +3865,7 @@
       "lng": 4.8943639,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 290,
+      "queueRank": 294,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "cafe-kobalt",
@@ -3801,7 +3878,7 @@
       "lng": 4.8564044,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 291,
+      "queueRank": 295,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "dorus-theus-brug",
@@ -3816,7 +3893,7 @@
       "lng": 4.87559942,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 292,
+      "queueRank": 296,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "fire-station-hendrik",
@@ -3829,7 +3906,7 @@
       "lng": 4.885977871,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 293,
+      "queueRank": 297,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "fire-station-dirk",
@@ -3842,7 +3919,7 @@
       "lng": 4.9095912,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 294,
+      "queueRank": 298,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "fire-station-nico",
@@ -3855,7 +3932,7 @@
       "lng": 4.802462823962739,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 295,
+      "queueRank": 299,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "fire-station-osdorp",
@@ -3868,7 +3945,7 @@
       "lng": 4.863427,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 296,
+      "queueRank": 300,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "fire-station-teunis",
@@ -3881,7 +3958,7 @@
       "lng": 4.929157,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 297,
+      "queueRank": 301,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "fire-station-victor",
@@ -3894,7 +3971,7 @@
       "lng": 4.914877307883409,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 298,
+      "queueRank": 302,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "fire-station-willem",
@@ -3907,7 +3984,7 @@
       "lng": 4.889718,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 299,
+      "queueRank": 303,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "fire-station-ijsbrand",
@@ -3920,7 +3997,7 @@
       "lng": 4.84376,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 300,
+      "queueRank": 304,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "fire-station-pieter",
@@ -3933,7 +4010,7 @@
       "lng": 4.954761362465582,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 301,
+      "queueRank": 305,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "fire-station-zebra",
@@ -3946,7 +4023,7 @@
       "lng": 5.0449773,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 302,
+      "queueRank": 306,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "fire-station-weesp",
@@ -3959,7 +4036,7 @@
       "lng": 5.01935,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 303,
+      "queueRank": 307,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "fire-station-driemond",
@@ -3972,7 +4049,7 @@
       "lng": 4.973277542354208,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 304,
+      "queueRank": 308,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "fire-station-anton",
@@ -3985,7 +4062,7 @@
       "lng": 4.9116163,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 305,
+      "queueRank": 309,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "hannekes-boom",
@@ -3998,7 +4075,7 @@
       "lng": 4.930259105100115,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 306,
+      "queueRank": 310,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "club-panama",
@@ -4012,7 +4089,7 @@
       "lng": 4.8397,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 307,
+      "queueRank": 311,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "olvg-west",
@@ -4026,7 +4103,7 @@
       "lng": 4.9153,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 308,
+      "queueRank": 312,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "olvg-oost",
@@ -4040,10 +4117,11 @@
       "lng": 4.897484,
       "prominence": 210,
       "type": "landmark",
-      "queueRank": 309,
+      "queueRank": 313,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model compagnietheater. Same landmark as compagnietheater (identical extract id). BAG bouwjaar on that pand reads 1005, which is suspect."
     },
     {
       "id": "lm-extract_landmarks_257271103",
@@ -4052,7 +4130,7 @@
       "lng": 4.8934706,
       "prominence": 196,
       "type": "cinema",
-      "queueRank": 310,
+      "queueRank": 314,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -4064,7 +4142,7 @@
       "lng": 4.8804351,
       "prominence": 196,
       "type": "landmark",
-      "queueRank": 311,
+      "queueRank": 315,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4076,7 +4154,7 @@
       "lng": 4.8523734,
       "prominence": 187,
       "type": "landmark",
-      "queueRank": 312,
+      "queueRank": 316,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "sculpture",
@@ -4089,10 +4167,11 @@
       "lng": 4.8558875,
       "prominence": 182,
       "type": "library",
-      "queueRank": 313,
+      "queueRank": 317,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (ground floor of a 2005 block); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_1709488528",
@@ -4101,7 +4180,7 @@
       "lng": 4.8826015,
       "prominence": 182,
       "type": "library",
-      "queueRank": 314,
+      "queueRank": 318,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -4113,10 +4192,11 @@
       "lng": 4.93883,
       "prominence": 182,
       "type": "library",
-      "queueRank": 315,
+      "queueRank": 319,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (2011 new-build block); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_845955",
@@ -4125,10 +4205,11 @@
       "lng": 4.8720423,
       "prominence": 182,
       "type": "library",
-      "queueRank": 316,
+      "queueRank": 320,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (ground floor in a 2005 block); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_149588563",
@@ -4137,10 +4218,11 @@
       "lng": 4.8502319,
       "prominence": 182,
       "type": "library",
-      "queueRank": 317,
+      "queueRank": 321,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (ordinary 1927 perimeter-block corner); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_1660060322",
@@ -4149,10 +4231,11 @@
       "lng": 4.894049,
       "prominence": 182,
       "type": "library",
-      "queueRank": 318,
+      "queueRank": 322,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (reading room inside a university canal complex); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_2090706815",
@@ -4161,10 +4244,11 @@
       "lng": 4.8799997,
       "prominence": 182,
       "type": "library",
-      "queueRank": 319,
+      "queueRank": 323,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (1981 infill); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_780437483",
@@ -4173,10 +4257,11 @@
       "lng": 4.8512273,
       "prominence": 182,
       "type": "library",
-      "queueRank": 320,
+      "queueRank": 324,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (ground-floor unit in small 1940 panden); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_880030623",
@@ -4185,10 +4270,11 @@
       "lng": 4.926209,
       "prominence": 182,
       "type": "library",
-      "queueRank": 321,
+      "queueRank": 325,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (ordinary 1916 block ground floor); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_132707368",
@@ -4197,10 +4283,11 @@
       "lng": 4.9117961,
       "prominence": 182,
       "type": "library",
-      "queueRank": 322,
+      "queueRank": 326,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (small 1923 block unit); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_862375982",
@@ -4209,10 +4296,11 @@
       "lng": 4.9063659,
       "prominence": 182,
       "type": "library",
-      "queueRank": 323,
+      "queueRank": 327,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (part of the 2018 Amstel campus complex); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_1447049474",
@@ -4221,10 +4309,11 @@
       "lng": 4.921024,
       "prominence": 174,
       "type": "landmark",
-      "queueRank": 324,
+      "queueRank": 328,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model wereldmuseum-amsterdam. Royal Tropical Institute is covered by wereldmuseum-amsterdam (KIT complex). Per user note."
     },
     {
       "id": "lm-extract_landmarks_994708838",
@@ -4233,31 +4322,7 @@
       "lng": 4.8403867,
       "prominence": 172,
       "type": "landmark",
-      "queueRank": 325,
-      "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
-    },
-    {
-      "id": "lm-extract_landmarks_1351046417",
-      "name": "Van Gendt Hallen",
-      "lat": 52.371721,
-      "lng": 4.925544,
-      "prominence": 171,
-      "type": "landmark",
-      "queueRank": 326,
-      "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
-    },
-    {
-      "id": "lm-extract_landmarks_563908011",
-      "name": "Vrijburg",
-      "lat": 52.345896,
-      "lng": 4.8825,
-      "prominence": 165,
-      "type": "landmark",
-      "queueRank": 327,
+      "queueRank": 329,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4269,19 +4334,7 @@
       "lng": 4.907724,
       "prominence": 165,
       "type": "landmark",
-      "queueRank": 328,
-      "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
-    },
-    {
-      "id": "lm-extract_landmarks_1347119904",
-      "name": "Willem de Zwijgerkerk",
-      "lat": 52.349528,
-      "lng": 4.862746,
-      "prominence": 164,
-      "type": "landmark",
-      "queueRank": 329,
+      "queueRank": 330,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4293,7 +4346,7 @@
       "lng": 4.8784792,
       "prominence": 163,
       "type": "landmark",
-      "queueRank": 330,
+      "queueRank": 331,
       "origin": "POI Destinations",
       "status": "procedural-kit",
       "kitName": "Fatih",
@@ -4306,7 +4359,7 @@
       "lng": 4.918031,
       "prominence": 159,
       "type": "landmark",
-      "queueRank": 331,
+      "queueRank": 332,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "sculpture",
@@ -4319,10 +4372,11 @@
       "lng": 4.9177925,
       "prominence": 156,
       "type": "landmark",
-      "queueRank": 332,
+      "queueRank": 333,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "skip",
+      "taskNote": "Rijksakademie: school occupying rooms in an existing building (pand 0363100012165748, 1865)."
     },
     {
       "id": "lm-extract_landmarks_718756081",
@@ -4331,7 +4385,7 @@
       "lng": 4.8628697,
       "prominence": 151,
       "type": "landmark",
-      "queueRank": 333,
+      "queueRank": 334,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "sculpture",
@@ -4344,23 +4398,11 @@
       "lng": 4.8887091,
       "prominence": 151,
       "type": "landmark",
-      "queueRank": 334,
+      "queueRank": 335,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "sculpture",
       "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
-    },
-    {
-      "id": "lm-extract_landmarks_1055638541",
-      "name": "Muiderkerk",
-      "lat": 52.3617331,
-      "lng": 4.9245472,
-      "prominence": 151,
-      "type": "landmark",
-      "queueRank": 335,
-      "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1915737675",
@@ -4372,7 +4414,8 @@
       "queueRank": 336,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Grenspaal: boundary marker monument."
     },
     {
       "id": "lm-extract_landmarks_1897367071",
@@ -4384,7 +4427,8 @@
       "queueRank": 337,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Anthony Winkler Prins: statue/sculpture."
     },
     {
       "id": "lm-extract_landmarks_634569928",
@@ -4396,7 +4440,8 @@
       "queueRank": 338,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "skip",
+      "taskNote": "Demolished in 1992 (nl.wikipedia); every BAG pand within ~60 m is 1912–16 housing. Keep as a quiz POI only."
     },
     {
       "id": "lm-extract_landmarks_247891283",
@@ -4433,7 +4478,8 @@
       "queueRank": 341,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "skip",
+      "taskNote": "Demolished in 1989 and replaced by housing with a small ground-floor church space (Wikipedia)."
     },
     {
       "id": "lm-extract_landmarks_169465728",
@@ -4457,7 +4503,8 @@
       "queueRank": 343,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "area",
+      "taskNote": "Westerwijk: neighbourhood/quarter."
     },
     {
       "id": "lm-extract_landmarks_1294795881",
@@ -4469,7 +4516,8 @@
       "queueRank": 344,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model hortus-greenhouses. Driekliman (three-climate) glasshouse is part of the Hortus greenhouse complex covered by hortus-greenhouses; ~70 m from that catalogue centre. Verify footprint covers it."
     },
     {
       "id": "lm-extract_landmarks_1627709377",
@@ -4507,7 +4555,8 @@
       "queueRank": 347,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Wind phone installation (Hoftuin); art installation."
     },
     {
       "id": "lm-extract_landmarks_369277545",
@@ -4555,7 +4604,8 @@
       "queueRank": 351,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model westerkerk. Westertoren is the tower of westerkerk (Westerkerk / Westertoren). Pand 0363100012174221."
     },
     {
       "id": "lm-extract_landmarks_1299755268",
@@ -4896,14 +4946,14 @@
       "treatment": "building"
     },
     {
-      "id": "haparandaweg-746-786",
-      "name": "Haparandaweg 746-786",
-      "lat": 52.3947,
-      "lng": 4.8775,
+      "id": "haparandaweg-902-950",
+      "name": "Het Pakhuis, Haparandaweg 902-950",
+      "lat": 52.3951,
+      "lng": 4.878,
       "queueRank": 382,
       "origin": "Landmark catalogue",
       "status": "manual-model",
-      "modelId": "haparandaweg-746-786",
+      "modelId": "haparandaweg-902-950",
       "treatment": "building"
     },
     {
@@ -4915,17 +4965,6 @@
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "haparandaweg-870-900",
-      "treatment": "building"
-    },
-    {
-      "id": "haparandaweg-952-1002",
-      "name": "Haparandaweg 952-1002",
-      "lat": 52.3952,
-      "lng": 4.8786,
-      "queueRank": 384,
-      "origin": "Landmark catalogue",
-      "status": "manual-model",
-      "modelId": "haparandaweg-952-1002",
       "treatment": "building"
     }
   ]

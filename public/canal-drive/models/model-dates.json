@@ -71,6 +71,11 @@
       "version": "6ee584e00b324458",
       "dateSource": "git-history"
     },
+    "aron-schuster-synagoge": {
+      "updatedAt": "2026-10-09T22:24:10.575Z",
+      "version": "366d8c7f8f20c6e4",
+      "dateSource": "asset-update"
+    },
     "artis-entrance": {
       "updatedAt": "2026-10-04T01:54:42+02:00",
       "version": "a027602c839ce971",
@@ -192,9 +197,9 @@
       "dateSource": "asset-update"
     },
     "concertgebouw": {
-      "updatedAt": "2026-10-04T19:03:47+02:00",
-      "version": "cb142773c572e558",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-09T22:24:10.518Z",
+      "version": "b51e051412347fab",
+      "dateSource": "asset-update"
     },
     "conservatorium": {
       "updatedAt": "2026-10-05T19:25:36.610Z",
@@ -207,9 +212,9 @@
       "dateSource": "git-history"
     },
     "de-balie": {
-      "updatedAt": "2026-10-04T00:07:10+02:00",
-      "version": "d620405e3f786d47",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-09T22:24:10.418Z",
+      "version": "98f79d401b4bc4a0",
+      "dateSource": "asset-update"
     },
     "de-beurs-van-berlage": {
       "updatedAt": "2026-10-04T12:49:59+02:00",
@@ -487,8 +492,8 @@
       "dateSource": "asset-update"
     },
     "haparandaweg-902-950": {
-      "updatedAt": "2026-10-09T21:21:05.629Z",
-      "version": "22f8a6d6b3d09cf9",
+      "updatedAt": "2026-10-09T22:02:58.134Z",
+      "version": "de90b22a5d52b454",
       "dateSource": "asset-update"
     },
     "haparandaweg-952-1002": {
@@ -761,6 +766,11 @@
       "version": "e816e9aece23222c",
       "dateSource": "asset-update"
     },
+    "muiderkerk": {
+      "updatedAt": "2026-10-09T22:24:10.567Z",
+      "version": "90d7d5ddf84cd9ce",
+      "dateSource": "asset-update"
+    },
     "muiderpoort": {
       "updatedAt": "2026-10-04T23:51:03+02:00",
       "version": "4c4040cbd509e074",
@@ -912,9 +922,9 @@
       "dateSource": "asset-update"
     },
     "palace-on-the-dam": {
-      "updatedAt": "2026-10-04T17:40:44+02:00",
-      "version": "dc1eb61b42c88dd2",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-09T22:24:10.478Z",
+      "version": "b5827369c5282f3e",
+      "dateSource": "asset-update"
     },
     "paradiso": {
       "updatedAt": "2026-10-04T00:13:31+02:00",
@@ -1136,6 +1146,11 @@
       "version": "3498cabee6eaae8d",
       "dateSource": "asset-update"
     },
+    "thomaskerk": {
+      "updatedAt": "2026-10-09T22:07:23.833Z",
+      "version": "b80127c8ba91dbcc",
+      "dateSource": "asset-update"
+    },
     "tobacco-theater": {
       "updatedAt": "2026-10-04T05:44:11+02:00",
       "version": "e77efef4eb4fd0a0",
@@ -1164,6 +1179,11 @@
     "valley": {
       "updatedAt": "2026-10-06T09:01:19.850Z",
       "version": "e00596e88da882b0",
+      "dateSource": "asset-update"
+    },
+    "van-gendt-hallen": {
+      "updatedAt": "2026-10-09T22:17:36.660Z",
+      "version": "a012eb6b29ebdb6f",
       "dateSource": "asset-update"
     },
     "van-gogh-museum": {
@@ -1196,6 +1216,11 @@
       "version": "15f1065728425196",
       "dateSource": "git-history"
     },
+    "vrijburg": {
+      "updatedAt": "2026-10-09T21:53:01.139Z",
+      "version": "1b37afe9c6f257d0",
+      "dateSource": "asset-update"
+    },
     "w139": {
       "updatedAt": "2026-10-05T19:26:31.549Z",
       "version": "885eb44012397f07",
@@ -1221,6 +1246,11 @@
       "version": "b2efbdd4c34631b7",
       "dateSource": "asset-update"
     },
+    "willem-de-zwijgerkerk": {
+      "updatedAt": "2026-10-09T22:09:51.777Z",
+      "version": "cee094c48510ff22",
+      "dateSource": "asset-update"
+    },
     "willet-holthuysen": {
       "updatedAt": "2026-10-04T03:52:47+02:00",
       "version": "c7f1f08ff67ab766",
@@ -1229,6 +1259,11 @@
     "wine-guildhall": {
       "updatedAt": "2026-10-06T17:58:05.515Z",
       "version": "1e475780392acc9f",
+      "dateSource": "asset-update"
+    },
+    "zuiderkerk": {
+      "updatedAt": "2026-10-09T22:21:08.216Z",
+      "version": "b3a5c0e171fb2425",
       "dateSource": "asset-update"
     },
     "zuiveringshal-west": {

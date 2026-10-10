@@ -9,6 +9,8 @@
  * Coordinates are glTF native: Y up, metres.
  */
 
+import {clusterWalls, bearingDelta, type WallSegment} from './wallPlanes';
+
 export interface TriSoup {
   /** xyz triples, world space. */
   positions: Float32Array;
@@ -49,6 +51,20 @@ export interface Thresholds {
   siteDiagonal: number;
   /** Triangle cap. */
   triangleCap: number;
+  /** Blank-wall check: only outward walls with at least this much planar area (m^2) are examined. */
+  blankWallMinArea: number;
+  /** How far (m) in front of or behind the wall plane glazing / recess / overlay geometry still counts as an opening. */
+  blankWallReach: number;
+  /**
+   * A wall is "blank" when openings (holes cut in the wall, plus non-wall geometry within `blankWallReach` of
+   * the plane and inside its extent) cover less than this fraction of the wall area. Real facades carry 10-35 %;
+   * 2 % is roughly one window on a 50 m2 wall.
+   */
+  blankWallMinOpeningFraction: number;
+  /** Blank walls are only a FAIL above this area (m^2): ~a 20 x 30 m face. The GLB cannot tell party walls from blank ones (Het Pakhuis's two side walls are 497 m2 of genuine party wall), so anything smaller only warns. */
+  blankWallFailArea: number;
+  /** Compass bearings (deg, clockwise from north, -Z = north) of walls known to be party / blind walls; matches within 15 deg are exempt. */
+  blankWallExemptBearings: number[];
 }
 
 export const DEFAULT_THRESHOLDS: Thresholds = {
@@ -67,6 +83,11 @@ export const DEFAULT_THRESHOLDS: Thresholds = {
   maxInvertedRoofArea: 4,
   siteDiagonal: 150,
   triangleCap: 60_000,
+  blankWallMinArea: 25,
+  blankWallReach: 0.5,
+  blankWallMinOpeningFraction: 0.02,
+  blankWallFailArea: 600,
+  blankWallExemptBearings: [],
 };
 
 export interface DetachedPart {
@@ -80,6 +101,18 @@ export interface DetachedPart {
   hovering: boolean;
   /** In front of the nearest surface (long ray escapes) rather than recessed in a cavity. */
   exposed: boolean;
+}
+
+export interface BlankWall {
+  /** Compass bearing the wall faces (deg clockwise from north; -Z is north). */
+  bearingDeg: number;
+  /** Planar wall area, m^2. */
+  area: number;
+  widthM: number;
+  heightM: number;
+  /** Opening area (holes + near-plane geometry) as a fraction of the wall area. */
+  openingFraction: number;
+  centre: [number, number, number];
 }
 
 export interface Finding {
@@ -97,6 +130,8 @@ export interface QualityReport {
   seeThrough: {rays: number; tested: number; points: [number, number, number][]};
   detached: {count: number; parts: DetachedPart[]};
   invertedRoof: {triangles: number; area: number; points: [number, number, number][]};
+  /** Large outward walls with no openings (see `findBlankWalls`); empty for site models. */
+  blankWalls: BlankWall[];
   degenerate: number;
   nonFinite: number;
   belowGround: {vertices: number; minY: number};
@@ -270,6 +305,88 @@ function distToHull(pt: [number, number], hull: [number, number][]): number {
     best = Math.min(best, Math.hypot(pt[0] - a[0] - ex * t, pt[1] - a[1] - ez * t));
   }
   return inside ? 0 : best;
+}
+
+
+/**
+ * Blank-wall detection. Clusters near-vertical outward triangles into planar walls (`clusterWalls`), rasterises each
+ * wall at 25 cm in wall-local (u, v) and counts openings as
+ *   - enclosed empty cells (windows/doors cut through the wall), plus
+ *   - the area of any other non-horizontal triangle whose centroid lies within `blankWallReach` in front of or
+ *     behind the plane and at least 0.3 m inside the wall's extent (recessed or protruding glazing, frames, doors,
+ *     overlay quads).
+ * Walls whose opening fraction is below `blankWallMinOpeningFraction` are reported; exempt bearings are skipped.
+ */
+export function findBlankWalls(soup: TriSoup, th: Thresholds = DEFAULT_THRESHOLDS, walls: WallSegment[] = clusterWalls(soup, {minArea: th.blankWallMinArea})): BlankWall[] {
+  const P = soup.positions, I = soup.indices, nTri = I.length / 3;
+  const out: BlankWall[] = [];
+  const CELL = 0.25;
+  const candidates = walls.filter(w => w.area >= th.blankWallMinArea && !th.blankWallExemptBearings.some(b => bearingDelta(b, w.bearingDeg) <= 15));
+  if (!candidates.length) return out;
+  // Per-triangle centroid, area and horizontality for evidence lookup.
+  const cen = new Float32Array(nTri * 3), area = new Float32Array(nTri), horiz = new Uint8Array(nTri);
+  for (let t = 0; t < nTri; t++) {
+    const a = I[t * 3] * 3, b = I[t * 3 + 1] * 3, c = I[t * 3 + 2] * 3;
+    cen[t * 3] = (P[a] + P[b] + P[c]) / 3; cen[t * 3 + 1] = (P[a + 1] + P[b + 1] + P[c + 1]) / 3; cen[t * 3 + 2] = (P[a + 2] + P[b + 2] + P[c + 2]) / 3;
+    const e1x = P[b] - P[a], e1y = P[b + 1] - P[a + 1], e1z = P[b + 2] - P[a + 2], e2x = P[c] - P[a], e2y = P[c + 1] - P[a + 1], e2z = P[c + 2] - P[a + 2];
+    const nx = e1y * e2z - e1z * e2y, ny = e1z * e2x - e1x * e2z, nz = e1x * e2y - e1y * e2x;
+    const len = Math.hypot(nx, ny, nz);
+    area[t] = len / 2;
+    horiz[t] = len > 1e-9 && Math.abs(ny / len) > 0.85 ? 1 : 0;
+  }
+  for (const w of candidates) {
+    const own = new Set(w.tris);
+    const W = w.uMax - w.uMin, H = w.vMax - w.vMin;
+    const cell = Math.max(CELL, Math.sqrt((W * H) / 150_000));
+    const nu = Math.max(1, Math.ceil(W / cell)), nv = Math.max(1, Math.ceil(H / cell));
+    const filled = new Uint8Array(nu * nv);
+    for (const t of w.tris) {
+      const pts: [number, number][] = [0, 1, 2].map(k => { const i = I[t * 3 + k] * 3; return [P[i] * w.t[0] + P[i + 2] * w.t[1] - w.uMin, P[i + 1] - w.vMin] as [number, number]; });
+      const [A, B, C] = pts;
+      const u0 = Math.max(0, Math.floor(Math.min(A[0], B[0], C[0]) / cell)), u1 = Math.min(nu - 1, Math.floor(Math.max(A[0], B[0], C[0]) / cell));
+      const v0 = Math.max(0, Math.floor(Math.min(A[1], B[1], C[1]) / cell)), v1 = Math.min(nv - 1, Math.floor(Math.max(A[1], B[1], C[1]) / cell));
+      const den = (B[1] - C[1]) * (A[0] - C[0]) + (C[0] - B[0]) * (A[1] - C[1]);
+      if (Math.abs(den) < 1e-12) continue;
+      for (let iu = u0; iu <= u1; iu++) for (let iv = v0; iv <= v1; iv++) {
+        const px = (iu + 0.5) * cell, py = (iv + 0.5) * cell;
+        const l1 = ((B[1] - C[1]) * (px - C[0]) + (C[0] - B[0]) * (py - C[1])) / den;
+        const l2 = ((C[1] - A[1]) * (px - C[0]) + (A[0] - C[0]) * (py - C[1])) / den;
+        const eps = -0.02;
+        if (l1 >= eps && l2 >= eps && 1 - l1 - l2 >= eps) filled[iv * nu + iu] = 1;
+      }
+    }
+    // Enclosed empty cells: flood the outside from the grid border; whatever empty is unreached is a hole in the wall.
+    const reach = new Uint8Array(nu * nv);
+    const stack: number[] = [];
+    const push = (iu: number, iv: number) => { const k = iv * nu + iu; if (!filled[k] && !reach[k]) { reach[k] = 1; stack.push(k); } };
+    for (let iu = 0; iu < nu; iu++) { push(iu, 0); push(iu, nv - 1); }
+    for (let iv = 0; iv < nv; iv++) { push(0, iv); push(nu - 1, iv); }
+    while (stack.length) {
+      const k = stack.pop()!, iu = k % nu, iv = (k - iu) / nu;
+      if (iu > 0) push(iu - 1, iv);
+      if (iu < nu - 1) push(iu + 1, iv);
+      if (iv > 0) push(iu, iv - 1);
+      if (iv < nv - 1) push(iu, iv + 1);
+    }
+    let holeCells = 0;
+    for (let k = 0; k < filled.length; k++) if (!filled[k] && !reach[k]) holeCells++;
+    let opening = holeCells * cell * cell;
+    const margin = 0.3;
+    for (let t = 0; t < nTri; t++) {
+      if (own.has(t) || horiz[t]) continue;
+      const x = cen[t * 3], y = cen[t * 3 + 1], z = cen[t * 3 + 2];
+      const s = x * w.n[0] + z * w.n[1] - w.d;
+      if (Math.abs(s) > th.blankWallReach) continue;
+      const u = x * w.t[0] + z * w.t[1];
+      if (u < w.uMin + margin || u > w.uMax - margin || y < w.vMin + margin || y > w.vMax - margin) continue;
+      opening += area[t];
+    }
+    const openingFraction = Math.min(1, opening / w.area);
+    if (openingFraction < th.blankWallMinOpeningFraction) {
+      out.push({bearingDeg: w.bearingDeg, area: w.area, widthM: W, heightM: H, openingFraction, centre: w.centre});
+    }
+  }
+  return out.sort((a, b) => b.area - a.area);
 }
 
 export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}): QualityReport {
@@ -675,7 +792,16 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   if (farN) findings.push({kind: 'far-outside', severity: 'fail', message: `${farN} vertices more than ${th.farOutside} m outside the main body (max ${farMax.toFixed(1)} m)`});
   if (triangles > th.triangleCap) findings.push({kind: 'triangle-cap', severity: 'fail', message: `${triangles} triangles exceeds cap ${th.triangleCap}`});
 
+  const blankWalls = site ? [] : findBlankWalls(soup, th);
+  for (const w of blankWalls) {
+    findings.push({
+      kind: 'blank-wall', severity: w.area >= th.blankWallFailArea ? 'fail' : 'warn',
+      message: `blank wall facing ${w.bearingDeg.toFixed(0)} deg (${compass(w.bearingDeg)}): ${w.area.toFixed(0)} m2 (${w.widthM.toFixed(1)} x ${w.heightM.toFixed(1)} m), openings ${(w.openingFraction * 100).toFixed(1)}% - no windows, doors or recesses (pass blankWallExemptBearings for genuine party walls)`,
+    });
+  }
+
   const score =
+    blankWalls.reduce((s, w) => s + (w.area >= th.blankWallFailArea ? 10 : 0) + Math.min(w.area, 300) / 30, 0) +
     bad.reduce((s, p) => s + 20 + Math.min(p.area, 100) / 2, 0) +
     (holes.largestLoopPerimeter > th.maxHoleLoopPerimeter ? 10 + Math.min(holes.loops, 50) + Math.min(holes.largestLoopPerimeter, 60) / 3 : 0) +
     (seeThrough.rays > th.maxSeeThroughRays ? 10 + seeThrough.rays : seeThrough.rays) +
@@ -686,7 +812,7 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   return {
     triangles, bounds: {min: bmin, max: bmax}, components: nComp, clusters: nClusters, holes, seeThrough,
     detached: {count: bad.length, parts: parts.slice(0, 20)},
-    invertedRoof: {triangles: invTris, area: invArea, points: invPoints},
+    invertedRoof: {triangles: invTris, area: invArea, points: invPoints}, blankWalls,
     degenerate, nonFinite, belowGround: {vertices: below, minY: Number.isFinite(minY) ? minY : 0},
     farOutside: {vertices: farN, maxDistance: farMax}, findings, score,
     pass: !findings.some(f => f.severity === 'fail'),
@@ -698,7 +824,11 @@ function emptyReport(nTri: number, bmin: V3, bmax: V3, nonFinite: number): Quali
     triangles: nTri, bounds: {min: bmin, max: bmax}, components: 0, clusters: 0,
     holes: {loops: 0, largestLoopPerimeter: 0, boundaryEdges: 0, undersideLoops: 0, details: [], flatComponents: 0, points: []},
     seeThrough: {rays: 0, tested: 0, points: []}, detached: {count: 0, parts: []},
-    invertedRoof: {triangles: 0, area: 0, points: []}, degenerate: 0, nonFinite,
+    invertedRoof: {triangles: 0, area: 0, points: []}, blankWalls: [], degenerate: 0, nonFinite,
     belowGround: {vertices: 0, minY: 0}, farOutside: {vertices: 0, maxDistance: 0}, findings: [], score: 0, pass: false,
   };
+}
+
+function compass(bearing: number): string {
+  return ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'][Math.round(bearing / 45) % 8];
 }

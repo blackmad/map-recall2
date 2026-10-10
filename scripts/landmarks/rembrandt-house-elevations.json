@@ -1,0 +1,11 @@
+{
+  "id": "rembrandt-house",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "front (Jodenbreestraat)",
+      "bearing": 182.5,
+      "photo": "artifacts/landmark-lanes/rembrandt-house/ref-b.jpg"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "rijksmuseum",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "south (GLB frame)",
+      "bearing": 182.5,
+      "photo": "artifacts/landmark-lanes/rijksmuseum/ref-south.jpg"
+    }
+  ]
+}

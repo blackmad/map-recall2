@@ -1,3 +1,14 @@
+import {buildZuiderkerk} from './zuiderkerk-builder';
+import {buildAronSchusterSynagoge} from './aron-schuster-synagoge-builder';
+import {buildMuiderkerk} from './muiderkerk-builder';
+import {buildWillemDeZwijgerkerk} from './willem-de-zwijgerkerk-builder';
+import {buildThomaskerk} from './thomaskerk-builder';
+import {buildVanGendtHallen} from './van-gendt-hallen-builder';
+import {buildVrijburg} from './vrijburg-builder';
+import {buildZevenlandenhuizen} from './zevenlandenhuizen-builder';
+import {buildIjToren} from './ij-toren-builder';
+import {buildSymphony} from './symphony-builder';
+import {buildKlimhal} from './klimhal-builder';
 import {buildClubPanama} from './club-panama-builder';
 import {buildCompagnietheater} from './compagnietheater-builder';
 import {buildWestIndiaHouse} from './west-india-house-builder';
@@ -194,7 +205,7 @@ import hospitals from './hospital-footprints.json';
 import {ALL_MANUAL_LANDMARKS as MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
 const out=path.resolve('public/canal-drive/models');
-const palette={brick:'#9a5240',stone:'#cfc2a6',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871'};
+const palette={brick:'#9a5240',stone:'#cfc2a6',sandstone:'#a09580',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871'};
 type Colour=keyof typeof palette;
 let parts: {g:T.BufferGeometry,c:Colour,hex?:string,unlit?:boolean}[]=[];
 /** Native decal geometry is already transformed by its builder; do not translate it again. */
@@ -337,7 +348,18 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='nassaukerk')buildNassaukerk(w,d,helpers);
+    if(id==='zuiderkerk')buildZuiderkerk(w,d,helpers);
+    else if(id==='aron-schuster-synagoge')buildAronSchusterSynagoge(w,d,helpers);
+    else if(id==='muiderkerk')buildMuiderkerk(w,d,helpers);
+    else if(id==='willem-de-zwijgerkerk')buildWillemDeZwijgerkerk(w,d,helpers);
+    else if(id==='thomaskerk')buildThomaskerk(w,d,helpers);
+    else if(id==='van-gendt-hallen')buildVanGendtHallen(w,d,helpers);
+    else if(id==='vrijburg')buildVrijburg(w,d,helpers);
+    else if(id==='zevenlandenhuizen')buildZevenlandenhuizen(w,d,helpers);
+    else if(id==='ij-toren')buildIjToren(w,d,helpers);
+    else if(id==='symphony')buildSymphony(w,d,helpers);
+    else if(id==='klimhal')buildKlimhal(w,d,helpers);
+    else if(id==='nassaukerk')buildNassaukerk(w,d,helpers);
     else if(id==='koningskerk')buildKoningskerk(w,d,helpers);
     else if(id==='sint-olofskapel')buildSintOlofskapel(w,d,helpers);
     else if(id==='maarten-lutherkerk')buildMaartenLutherkerk(w,d,helpers);

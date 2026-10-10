@@ -2,17 +2,24 @@
 (() => {
   const {THREE, GLTFLoader, MeshoptDecoder} = window.CanalRecallThree;
   class ArtisAnimals {
-    constructor(map, maplibregl, extractRoot) {
+    constructor(map, maplibregl, extractRoot, options = {}) {
       this.map = map;
       this.maplibregl = maplibregl;
       this.active = extractRoot.endsWith('/amsterdam');
       this.root = new URL('models/artis-animals/', location.href);
-      this.scene = new THREE.Scene();
-      this.scene.add(new THREE.HemisphereLight(0xffffff, 0x657054, 2.1));
-      const sun = new THREE.DirectionalLight(0xffefd9, 2);
-      sun.position.set(-50, 80, 30); this.scene.add(sun);
+      // `?sharedFrame=1`: a root in the page's one three.js frame, lit by its rig.
+      this.sharedFrame = options.sharedFrame || null;
+      this.scene = this.sharedFrame ? new THREE.Group() : new THREE.Scene();
+      if (!this.sharedFrame) {
+        this.scene.add(new THREE.HemisphereLight(0xffffff, 0x657054, 2.1));
+        const sun = new THREE.DirectionalLight(0xffefd9, 2);
+        sun.position.set(-50, 80, 30); this.scene.add(sun);
+      }
       this.origin = maplibregl.MercatorCoordinate.fromLngLat([4.915,52.366], .12);
       this.unit = this.origin.meterInMercatorCoordinateUnits();
+      this.transform = new THREE.Matrix4().makeTranslation(this.origin.x,this.origin.y,this.origin.z)
+        .scale(new THREE.Vector3(this.unit,-this.unit,this.unit))
+        .multiply(new THREE.Matrix4().makeRotationX(Math.PI/2));
       this.entries = []; this.pending = new Map(); this.failures = new Map();
       this.loader = new GLTFLoader(); this.loader.setMeshoptDecoder(MeshoptDecoder);
       this.layer = {id:'artis-animals', type:'custom', renderingMode:'3d',
@@ -37,7 +44,13 @@
           this.renderer?.dispose();
         }};
       this.move = () => this.update();
-      map.addLayer(this.layer); map.on('moveend',this.move); this.update();
+      if (this.sharedFrame) this.sharedFrame.register('artis', {
+        root: this.scene,
+        mercatorFromLocal: () => this.transform.elements,
+        beforeRender: () => this.nearby() && this.entries.some(e=>e.group.visible),
+      }, {order: options.sharedOrder ?? 10});
+      else map.addLayer(this.layer);
+      map.on('moveend',this.move); this.update();
     }
     setExtractRoot(root) {this.active=root.endsWith('/amsterdam');this.update();}
     nearby() {
@@ -74,6 +87,7 @@
           const coord=this.maplibregl.MercatorCoordinate.fromLngLat(spec.anchor,0);
           group.position.set((coord.x-this.origin.x)/this.unit+spec.offsetMetres[0],0,(coord.y-this.origin.y)/this.unit+spec.offsetMetres[1]);
           group.visible=this.nearby() && this.map.getBounds().contains(spec.anchor);
+          if(this.sharedFrame)this.sharedFrame.constructor.setShadows(group,true,true);
           this.scene.add(group);this.entries.push({spec,group});this.failures.delete(spec.id);this.map.triggerRepaint();
         }).catch(e=>{this.failures.set(spec.id,Date.now()+30000);console.warn(`ARTIS ${spec.name} unavailable`,e);})
           .finally(()=>this.pending.delete(spec.id));
