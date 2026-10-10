@@ -1,3 +1,6 @@
+import * as T from 'three';
+import type {BuildingTools} from './cultural-builders';
+import {put} from './nearbar-kit';
 import type {Frame} from './nearbar-kit';
 import type {ShellSource} from './worship-shell';
 
@@ -34,4 +37,11 @@ export function topOf(w: RawWall, t: number): number {
     best = Math.max(best, a[1] + (q[1] - a[1]) * (t - a[0]) / (q[0] - a[0]));
   }
   return Number.isFinite(best) ? best : NaN;
+}
+
+/** Canted bay: a trapezoid prism standing on y, `w` wide at the wall, `proj` out, front face `w - 2*bevel` wide. */
+export function bayPrism(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, proj: number, bevel: number, colour: string, sink = 0.3) {
+  const pts = [new T.Vector2(-w / 2, sink), new T.Vector2(w / 2, sink), new T.Vector2(w / 2, 0), new T.Vector2(w / 2 - bevel, -proj), new T.Vector2(-w / 2 + bevel, -proj), new T.Vector2(-w / 2, 0)];
+  const g = new T.ExtrudeGeometry(new T.Shape(pts), {depth: h, bevelEnabled: false}).rotateX(-Math.PI / 2);
+  put(b, f, g, t, y, 0, colour);
 }

@@ -21,7 +21,7 @@ const anchor = src.anchor;
 const centre = [anchor[0] + cx / (111320 * Math.cos(anchor[1] * Math.PI / 180)), anchor[1] - cz / 111320];
 const bag = src.bagId;
 const spec = {
-  id, name, modelUrl: `./models/${id}.glb`,
+  id, name, category: 'ordinary', modelUrl: `./models/${id}.glb`,
   suppressOsmIds: [`NL.IMBAG.Pand.${bag}`, ...JSON.parse(process.env.EXTRA_SUPPRESS ?? '[]')],
   spatialSuppression: false,
   footprint: {centre, headingDegrees: +((best.a + 90) % 180).toFixed(2), lengthMetres: +Math.max(best.L, best.W).toFixed(2), widthMetres: +Math.min(best.L, best.W).toFixed(2)},
