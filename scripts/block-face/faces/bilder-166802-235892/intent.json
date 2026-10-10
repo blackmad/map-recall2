@@ -1,0 +1,406 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bilder-166802-235892",
+ "street": "Bilderdijkstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/block-face/bilder-166802-235892/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012166802",
+   "slug": "bface-166802",
+   "address": "Bilderdijkstraat 92",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "bracketed",
+      "hoist": false,
+      "gable": "cornice",
+      "storeys": 4,
+      "bays": 3,
+      "dormers": 1,
+      "doorBay": null,
+      "windows": "arched",
+      "archRings": "band",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "#1d2f8f",
+       "fascia": true,
+       "name": "nNea Pizza",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "evidence": "pano 2024-11-29 + OSM node 6841918972"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#b08a68",
+     "frame": "white",
+     "door": "dark-blue",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "restaurant",
+    "name": "nNea Pizza",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 6841918972,
+     "name": "nNea Pizza",
+     "tags": "amenity=restaurant"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Royal-blue shopfront with a small script name lettered on the left window (read as nNea); no fascia text. Glazed door at the right."
+   },
+   "rhythm": {
+    "bays": "3 identical bays, segmental-arched windows, balcony on the middle window of every storey",
+    "windowsPerStorey": "ground: shop + door | 1-3: 3 (balcony middle) | roof: 1 pointed dormer",
+    "symmetry": "mirror-symmetric",
+    "groundFloor": "blue shopfront with white band above",
+    "signage": "script on the glass (illegible/small), none modelled",
+    "roofline": "blind arcade frieze under a bracketed cornice, dark mansard with one ornate pointed dormer",
+    "citation": "bilder-166802-235892 strip.jpg pand 1",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "blind arcade frieze is not modelled",
+     "ornate pointed dormer is a plain dormer",
+     "window lettering is not modelled (no sign mount fits a few small glass letters)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012166801",
+   "slug": "bface-166801",
+   "address": "Bilderdijkstraat 90",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "bracketed",
+      "hoist": false,
+      "gable": "cornice",
+      "storeys": 4,
+      "bays": 3,
+      "dormers": 1,
+      "doorBay": 0,
+      "windows": "arched",
+      "archRings": "band",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1,
+        2
+       ]
+      },
+      "shopfront": {
+       "colour": "#d03a22",
+       "fascia": true,
+       "displayWindows": 1,
+       "stallriser": "none",
+       "residentialDoor": {
+        "side": "left",
+        "colour": "black"
+       },
+       "shopShare": 0.8,
+       "evidence": "pano 2024-11-29 + OSM node 11576187585"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#c0643a",
+     "frame": "white",
+     "door": "black",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "shop",
+    "name": "'t Fietshokje",
+    "category": "shop=bicycle",
+    "osm": {
+     "type": "node",
+     "id": 11576187585,
+     "name": "'t Fietshokje",
+     "tags": "shop=bicycle"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "Red fascia board carrying a promotional banner (\"HET GROOTSTE BIEDEN OP DE LAAGSTE PRIJS\") over a shuttered shop; black house door at the left. The banner is not the shop name, so no sign is modelled; the name comes from OSM."
+   },
+   "rhythm": {
+    "bays": "3 axes: a narrow left tower bay (small arched windows) and two wider windows right with a shared balcony on storeys 1-2",
+    "windowsPerStorey": "ground: door + shuttered shop | 1-3: 1 narrow + 2 wide | roof: tower with dormer window at the left, one pointed dormer",
+    "symmetry": "none; mirror of 162836",
+    "groundFloor": "black door left, red banner over a shuttered shop",
+    "signage": "promotional banner (not modelled)",
+    "roofline": "brick tower with a pyramid roof over the left bay, one pointed dormer",
+    "citation": "bilder-166802-235892 strip.jpg pand 2",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     2
+    ],
+    "photoGables": 2,
+    "schemaLimits": [
+     "bays are equal width; photo: narrow tower bay left, wide windows right",
+     "the tower above the left bay is not modelled",
+     "balcony platform is continuous across 2 windows on the photo, two separate balconies in the model"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012162836",
+   "slug": "bface-162836",
+   "address": "Bilderdijkstraat 88",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "bracketed",
+      "hoist": false,
+      "gable": "cornice",
+      "storeys": 4,
+      "bays": 3,
+      "dormers": 1,
+      "doorBay": null,
+      "windows": "arched",
+      "archRings": "band",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        0,
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "white",
+       "fascia": true,
+       "name": "Hayestan",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "evidence": "pano 2024-11-29 + OSM node 11576134525"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#c0643a",
+     "frame": "white",
+     "door": "white",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "services",
+    "name": "Hayestan",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 11576134525,
+     "name": "Hayestan",
+     "tags": "shop=hairdresser"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "Pale glazed salon front with a thin awning; no legible sign on the strip."
+   },
+   "rhythm": {
+    "bays": "mirror of 166801: two wide windows left with a shared balcony on storeys 1-2, a narrow tower bay right",
+    "windowsPerStorey": "ground: shop | 1-3: 2 wide + 1 narrow | roof: pointed dormer + tower at the right",
+    "symmetry": "none; mirror of 166801",
+    "groundFloor": "pale salon shopfront",
+    "signage": "none legible",
+    "roofline": "brick tower with a pyramid roof over the right bay, one pointed dormer left of it",
+    "citation": "bilder-166802-235892 strip.jpg pand 3",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     2
+    ],
+    "photoGables": 2,
+    "schemaLimits": [
+     "bays are equal width; photo: two wide windows left, narrow tower bay right",
+     "the tower over the right bay is not modelled",
+     "thin awning not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012235892",
+   "slug": "bface-235892",
+   "address": "Bilderdijkstraat 84-86",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "bracketed",
+      "hoist": false,
+      "gable": "cornice",
+      "storeys": 4,
+      "bays": 6,
+      "dormers": 2,
+      "doorBay": null,
+      "windows": "plain",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1,
+        4
+       ]
+      },
+      "shopfront": {
+       "colour": "#2f3a44",
+       "fascia": false,
+       "name": "Kidtopia",
+       "displayWindows": 2,
+       "stallriser": "low",
+       "evidence": "pano 2024-11-29 + OSM node 11576188034"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#b08a68",
+     "frame": "white",
+     "door": "dark-blue",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "services",
+    "name": "Kidtopia",
+    "category": "amenity=childcare",
+    "osm": {
+     "type": "node",
+     "id": 11576188034,
+     "name": "Kidtopia",
+     "tags": "amenity=childcare"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "Childcare behind two large glazed windows with plants, doors at both ends; no sign legible."
+   },
+   "rhythm": {
+    "bays": "double front: 6 segmental-arched axes, balconies at axes 1 and 4 (on storeys 1-3), top-storey end windows with fan lights",
+    "identicalBays": "both halves identical",
+    "windowsPerStorey": "ground: door + 2 large windows + door | 1-3: 6 | roof: 2 ornate dormers + skylights",
+    "symmetry": "mirror-symmetric in two halves",
+    "groundFloor": "dark glazed fronts with a door at each end",
+    "signage": "none legible",
+    "roofline": "blind arcade frieze under a bracketed cornice, dark mansard with two ornate pointed dormers",
+    "citation": "bilder-166802-235892 strip.jpg pand 4",
+    "photoRows": [
+     4,
+     6,
+     6,
+     6,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "INTERFERENCE FAIL on the 162836|235892 joint (z-fight 0.37 m2): 235892 has native frontage jogs (intake warning); not fixable in the intent",
+     "plain windows and balconies on storeys 1-2 only for the triangle budget (full detail 3,900 triangles)",
+     "blind arcade frieze and fan-light top windows not modelled",
+     "dormers are plain",
+     "doors at both ends not modelled (one residential door at most)"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [
+   {
+    "pands": [
+     "0363100012166802",
+     "0363100012166801",
+     "0363100012162836",
+     "0363100012235892"
+    ],
+    "evidence": "strip: the arcade-frieze cornice runs as one line along 84-92 (y ~345 px, 14.0 m; 3DBAG spread 0.5 m)"
+   }
+  ],
+  "identical": [],
+  "notes": [
+   "Crisp 2024-11-29 capture, no occlusion; 166801 and 162836 are mirror twins (tower bays outward)."
+  ]
+ },
+ "authoring": {
+  "author": "claude-sonnet-5.5 (block-face lane), from strip-labelled.png + 2x zoomed ground/roof crops",
+  "passes": 1,
+  "note": "Bilderdijkstraat 84-92 (even side)."
+ }
+}
