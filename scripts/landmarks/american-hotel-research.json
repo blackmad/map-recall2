@@ -1,0 +1,39 @@
+{
+  "id": "american-hotel",
+  "bagPand": "0363100012168734",
+  "address": "Leidsekade 97 / Leidseplein 26-28, Amsterdam",
+  "retrieved": "2026-10-10",
+  "sources": [
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20241217_0841_Track38_Sphere_00010/?width=1600&fov=90&heading=330",
+      "use": "ref-se.jpg: Leidseplein front (SE) with tower, oriel, cafe windows; 2024",
+      "licence": "Amsterdam municipal panorama (CC0)"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20241211_0954_Track09_Sphere_00113/?width=1600&fov=80&heading=197",
+      "use": "ref-ne.jpg: street side (NE), oblique; 2024",
+      "licence": "Amsterdam municipal panorama (CC0)"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001968_pano_0000_000118/?width=1600&fov=80&heading=42",
+      "use": "ref-sw.jpg: curved Leidsekade canal side (SW) with canted bays and arcade; 2021",
+      "licence": "Amsterdam municipal panorama (CC0)"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/American_Hotel,_Amsterdam",
+      "use": "Kromhout and Jansen 1900-02, earlier hotel 1882, 1927-28 extension, Cafe Americain (facts only)",
+      "licence": "Wikipedia, facts only"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012168734&f=json",
+      "use": "BAG pand footprint",
+      "licence": "CC0 (BAG)"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012168734",
+      "use": "LoD2.2 massing shell",
+      "licence": "CC BY 4.0 (3DBAG)"
+    }
+  ],
+  "notes": "Held-quality points: upper-floor window rhythm and gable shapes on the SE front are approximate (photos occluded by trees); gables come from the 3DBAG roof planes. Temporary cafe awnings are not modelled. The two shell colours (buff vs brown brick) split the 1900-02 corner from the 1927-28 wing by centroid position."
+}
