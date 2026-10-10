@@ -26,6 +26,7 @@
   },
   "groundAltitudeMetres": 0,
   "facingOffsetDegrees": 0,
+  "materialOverrides": {"white":"#ece1c8","stone":"#d9cdb0","frame":"#ddd1b6","glass":"#41596a","greyBrick":"#6f6a64"},
   "attribution": {
     "title": "W139 restored neoclassical front and former theatre",
     "author": "Map Recall",

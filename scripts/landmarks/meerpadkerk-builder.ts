@@ -44,12 +44,12 @@ export function buildMeerpadkerk(_w:number,_d:number,b:BuildingTools){
   const rad=w/2-.085,archBase=h-rad-.07;
   const arch=new T.Shape();arch.moveTo(-rad,.06);arch.lineTo(rad,.06);arch.lineTo(rad,archBase);arch.absarc(0,archBase,rad,0,Math.PI,false);arch.lineTo(-rad,.06);arch.closePath();
   const g=new T.ShapeGeometry(arch,12);b.add(g,'glass',center.x+out.x*.245,bottom,center.y+out.y*.245,angle);
-  localBox(0,bottom+.06,.275,.065,archBase-.01,.07,'dark');
-  for(const h0 of [archBase/3,archBase*2/3,archBase])localBox(0,bottom+h0,.275,w-.12,.065,.07,'dark');
+  localBox(0,bottom+.06,.275,.065,archBase-.01,.07,'white');
+  for(const h0 of [archBase/3,archBase*2/3,archBase])localBox(0,bottom+h0,.275,w-.12,.065,.07,'white');
   for(let k=0;k<=6;k++){
    const theta=k*Math.PI/6,dx=Math.cos(theta)*rad,dy=Math.sin(theta)*rad;
    const tube=new T.CylinderGeometry(.018,.018,rad,5);tube.applyQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),new T.Vector3(dx,dy,0).normalize()));
-   const p=center.clone().addScaledVector(axis,dx/2).addScaledVector(out,.29);b.add(tube,'dark',p.x,bottom+archBase+dy/2,p.y,angle);
+   const p=center.clone().addScaledVector(axis,dx/2).addScaledVector(out,.29);b.add(tube,'white',p.x,bottom+archBase+dy/2,p.y,angle);
   }
   // Arch outline stays crisp against the rectangular dark corner pieces.
   const arc=new T.Shape();arc.absarc(0,archBase,rad+.035,0,Math.PI,false);arc.absarc(0,archBase,rad-.025,Math.PI,0,true);arc.closePath();b.add(new T.ShapeGeometry(arc,12),'dark',center.x+out.x*.29,bottom,center.y+out.y*.29,angle);

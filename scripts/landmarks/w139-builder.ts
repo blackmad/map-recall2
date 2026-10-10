@@ -5,7 +5,7 @@ import source from './w139-footprints.json';
 type Colour=Parameters<BuildingTools['add']>[1];
 /** Original metres/Y-up reconstruction. Measured part polygons bound every roof;
  * only each bounded surface determines its shell height, never Pand maxima. */
-export function buildW139(_width:number,_depth:number,{add}:BuildingTools){
+export function buildW139(_width:number,_depth:number,{add}:BuildingTools,decal:(g:T.BufferGeometry,hex:string)=>void=()=>{}){
  const triangle=(g:T.BufferGeometry,colour:Colour)=>add(g,colour);
  // Centered least-squares over EVERY original roof vertex avoids near-collinear
  // first-vertex fits and removes centimetre source-rounding roof fins.
@@ -47,15 +47,47 @@ export function buildW139(_width:number,_depth:number,{add}:BuildingTools){
    block(u,y-.17,w+.28,.14,.31,'frame',.19);
   };
   const line=(u1:number,y1:number,u2:number,y2:number,r:number,c:Colour,o=.2)=>{const p=at(u1,o),q=at(u2,o),A=new T.Vector3(p.x,y1,p.y),B=new T.Vector3(q.x,y2,q.y),delta=B.clone().sub(A);const g=new T.CylinderGeometry(r,r,delta.length(),6);g.applyQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),delta.normalize()));const m=A.clone().add(B).multiplyScalar(.5);add(g,c,m.x,m.y,m.z);};
-  return {length,panel,block,pane,line};
+  // Exact-colour solid (door leaves, red sign letters); rz tilts a stroke about the wall normal.
+  const deco=(u:number,y:number,w:number,h:number,d:number,hex:string,o=.09,rz=0)=>{const p=at(u,o);const g=new T.BoxGeometry(w,h,d);g.rotateZ(rz);g.rotateY(yaw);g.translate(p.x,y+h/2,p.y);decal(g,hex);};
+  return {length,panel,block,pane,line,deco};
  }
  const main=facade(v(source.frontEdges.main[0]),v(source.frontEdges.main[1])),W=main.length;
  main.panel(W/2,0,W,19.94,'white',.045);main.block(W/2,0,W,.35,.12,'frame');
  // Restored 2006–07 four-storey classical front: three bays diminish upwards.
  const bays=[W/6,W/2,W*5/6],bw=W/3-.60;
- for(const u of bays){main.pane(u,.48,bw,4.57,2,2);main.pane(u,6.05,bw,4.47,2,3);main.pane(u,12.16,bw,3.60,2,2);main.pane(u,17.43,bw,1.47,2,1);}
- // Central ground-floor door and transom; the broad lateral displays remain glass.
- main.block(W/2,.44,.075,3.18,.08,'dark',.29);main.block(W/2,3.68,bw+.03,.085,.08,'frame',.29);
+ // Upper storeys (photo, Jan 2025 panorama): tall sashes, iron balcony rail on the 1st and 2nd floors.
+ for(const u of bays){main.pane(u,6.05,bw,4.47,2,3);main.pane(u,12.16,bw,3.60,2,2);main.pane(u,17.43,bw,1.47,2,1);}
+ const IRON='#33383d',DOOR='#8a2b19',SIGN='#e4351f';
+ for(const u of bays)for(const y of [6.05,12.16]){
+  main.deco(u,y+.02,bw+.18,.045,.07,IRON,.42);main.deco(u,y+.88,bw+.18,.045,.07,IRON,.42);
+  for(let k=0;k<=8;k++)main.deco(u-bw/2-.09+k*(bw+.18)/8,y+.03,.04,.88,.05,IRON,.42);
+ }
+ // Ground floor: tall shop windows (transom over one large pane) on a dark plinth, left and right.
+ for(const u of [bays[0],bays[2]]){main.block(u,0,bw+.30,.98,.22,'greyBrick',.14);main.pane(u,1.0,bw,3.90,1,2);}
+ // Centre: red-brown glazed double door under a glazed transom (photo ref-front-c).
+ const dw=bw*.86,dl=dw/2;
+ main.deco(W/2,.40,dw+.20,3.38,.10,DOOR,.27);
+ for(const side of [-1,1]){
+  const cx=W/2+side*(dl/2+.01);
+  main.deco(cx,.46,dl-.08,3.26,.06,DOOR,.33);
+  main.panel(cx,1.55,dl-.32,1.9,'glass',.37);main.block(cx,.62,dl-.32,.75,.05,'greyBrick',.37);
+  for(const y of [2.35,3.05])main.deco(cx,y,dl-.32,.05,.06,DOOR,.40);
+ }
+ main.deco(W/2,.46,.06,3.26,.08,DOOR,.40);
+ main.pane(W/2,3.84,dw,1.04,3,1);main.deco(W/2,3.74,dw+.34,.12,.30,'#6d2214',.30);
+ // Red W139 sign on the transom (source-defining signage): chunky sans, 3D letters.
+ {
+  const sd=main.deco;
+  const k=.80,H=1.0*k,st=.23*k,dep=.20,y0=3.95;
+  const glyphs:{w:number;draw:(x:number)=>void}[]=[
+   {w:.98*k,draw:x=>{const pts=[[0,H],[.245*k,0],[.49*k,.62*H],[.735*k,0],[.98*k,H]];for(let i=0;i<4;i++){const a=pts[i],b=pts[i+1],dx=b[0]-a[0],dy=b[1]-a[1],len=Math.hypot(dx,dy)+st*.3;sd(x+(a[0]+b[0])/2,y0+(a[1]+b[1])/2-st*.5+0,len,st,dep,SIGN,.30,Math.atan2(dy,dx));}}},
+   {w:.50*k,draw:x=>{sd(x+.30*k,y0,st,H,dep,SIGN,.30);sd(x+.10*k,y0+H*.80,.36*k,st*.9,dep,SIGN,.30,.55);}},
+   {w:.72*k,draw:x=>{for(const f of [0,.5,1])sd(x+.36*k,y0+f*(H-st),.72*k,st,dep,SIGN,.30);sd(x+.72*k-st/2,y0,st,H,dep,SIGN,.30);}},
+   {w:.72*k,draw:x=>{for(const f of [0,.5,1])sd(x+.36*k,y0+f*(H-st),.72*k,st,dep,SIGN,.30);sd(x+.72*k-st/2,y0,st,H,dep,SIGN,.30);sd(x+st/2,y0+H/2,st,H/2,dep,SIGN,.30);}}
+  ];
+  const gap=.14*k,total=glyphs.reduce((a,g)=>a+g.w,0)+gap*3;let x=W/2-total/2;
+  for(const g of glyphs){g.draw(x-W/2+W/2);x+=g.w+gap;}
+ }
  for(let i=0;i<4;i++){
   const u=i===0?.19:i===3?W-.19:i*W/3;
   main.block(u,.40,i===0||i===3?.37:.45,4.87,.25,'white',.25);

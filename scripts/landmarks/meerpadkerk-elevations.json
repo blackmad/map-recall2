@@ -1,0 +1,7 @@
+{
+ "id": "meerpadkerk",
+ "facades": [
+  {"name": "Meerpad front (ENE)", "bearing": 72.5, "photo": "artifacts/landmark-lanes/meerpadkerk/ref-north.jpg"},
+  {"name": "south side (oblique photo)", "bearing": 162.5, "photo": "artifacts/landmark-lanes/meerpadkerk/ref-side.jpg"}
+ ]
+}

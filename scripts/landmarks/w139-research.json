@@ -1,0 +1,40 @@
+{
+  "id": "w139",
+  "reworkedOn": "2026-10-10",
+  "lane": "rework-g",
+  "photos": [
+    {
+      "file": "artifacts/landmark-lanes/w139/ref-front.jpg",
+      "panorama": "b_20250114_1026_Track10_Sphere_00019",
+      "captured": "2025-01-14",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20250114_1026_Track10_Sphere_00019/?width=1600&fov=70&heading=116",
+      "licence": "Gemeente Amsterdam panorama (CC0 per data.amsterdam.nl); private reference only, no pixels imported",
+      "use": "close view of entrance: red-brown glazed double door, glazed transom, red 3D W139 letters on a dark bar, cream pilasters, tall ground-floor windows"
+    },
+    {
+      "file": "artifacts/landmark-lanes/w139/ref-front-b.jpg",
+      "panorama": "b_20250114_1026_Track10_Sphere_00020",
+      "captured": "2025-01-14",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20250114_1026_Track10_Sphere_00020/?width=1600&fov=70&heading=168",
+      "licence": "Gemeente Amsterdam panorama; private reference only",
+      "use": "alternate angle (not used for counts)"
+    },
+    {
+      "file": "artifacts/landmark-lanes/w139/ref-front-c.jpg",
+      "panorama": "b_20250108_1349_Track26_Sphere_00038",
+      "captured": "2025-01-08",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20250108_1349_Track26_Sphere_00038/?width=1600&fov=50&heading=87",
+      "licence": "Gemeente Amsterdam panorama; private reference only",
+      "use": "street-front oblique: three window axes per upper storey, iron balcony rails on 1st/2nd floors, cream stucco, left low pedimented 139a wing, Condomerie neighbour on the right"
+    }
+  ],
+  "earlierSources": "models/w139/ (private archive): Smulders architecten court/axonometric photos, Arcam, BAG/3DBAG; see w139-footprints.json sources",
+  "changes": [
+    "cream stucco palette overrides (white/stone/frame), darker plinth under the two ground-floor shop windows",
+    "ground floor rebuilt: tall shop windows with transom, red-brown glazed double door with glazed transom",
+    "red W139 sign: defining signage per recipe section 'Source-supported signage lettering'; chunky sans, 3D letters, hand-built strokes (the pixel font cannot follow the wall plane)",
+    "iron balcony rails on 1st and 2nd storey windows",
+    "rear massing, roofs, suppression and landmarkId unchanged"
+  ],
+  "inferred": ["rear and side faces (no photo taken from those sides)", "exact upper-window glazing bar counts"]
+}
