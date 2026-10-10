@@ -1,0 +1,50 @@
+{
+  "id": "lloyd-hotel",
+  "name": "Lloyd Hotel",
+  "landmarkId": "n331837646",
+  "modelUrl": "./models/lloyd-hotel.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012118149"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.9347433121102275,
+      52.374251097462
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 64,
+    "widthMetres": 41
+  },
+  "surveyed": {
+    "anchor": [
+      4.9347433121102275,
+      52.374251097462
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012118149 footprint and 3DBAG LoD2.2 roof planes, native east/south metres from the anchor; long axis bearing 105.8 degrees."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#7f6a57",
+    "stone": "#c8bfa9",
+    "slate": "#3a3d43",
+    "glass": "#52606b",
+    "dark": "#2a2623",
+    "white": "#e9e7df",
+    "greyBrick": "#463a31",
+    "copper": "#8c9892",
+    "gold": "#c9a24a",
+    "bronze": "#4b4a42",
+    "frame": "#3b3a3a"
+  },
+  "attribution": {
+    "title": "Lloyd Hotel",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Lloyd_Hotel_(hotel)",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry built in the building's own axis frame from the BAG ring and 3DBAG roof planes; facades, gables and tower measured by eye from photographs and the monument register description, no pixels or meshes imported."
+  }
+}

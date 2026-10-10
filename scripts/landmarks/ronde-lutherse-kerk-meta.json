@@ -1,0 +1,22 @@
+{
+  "name": "Ronde Lutherse Kerk",
+  "landmarkId": "requested-ronde-lutherse-kerk",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Ronde_Lutherse_Kerk",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012179368"
+  ],
+  "pandId": "0363100012179368",
+  "materialOverrides": {
+    "brick": "#b4694a",
+    "stone": "#cdb892",
+    "slate": "#5a5f66",
+    "glass": "#5d6e78",
+    "dark": "#2a2623",
+    "copper": "#8b5a3d",
+    "green": "#6faa8f",
+    "frame": "#33393d",
+    "bronze": "#2f2d2a"
+  },
+  "surveySource": "Current BAG 0363100012179368 footprint (209-vertex ring) and 3DBAG LoD2.2 roof planes, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry: round drum, dome and lantern measured from the BAG circle and the 3DBAG roof planes; window bays, cornices and lantern read from Commons photographs; the annex is the BAG polygon extruded to the 3DBAG roof height. No pixels or meshes imported."
+}

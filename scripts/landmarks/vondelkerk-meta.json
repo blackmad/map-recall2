@@ -1,0 +1,26 @@
+{
+  "name": "Vondelkerk",
+  "landmarkId": "requested-vondelkerk",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Vondelkerk",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012236196"
+  ],
+  "pandId": "0363100012236196",
+  "materialOverrides": {
+    "brick": "#9b5a3d",
+    "stone": "#d8c8a8",
+    "slate": "#59616f",
+    "glass": "#6f8590",
+    "dark": "#2b211b",
+    "white": "#dcd8ca",
+    "frame": "#3b3a3a",
+    "copper": "#6f8f7e",
+    "gold": "#d9b44a",
+    "ochre": "#a9733f",
+    "bronze": "#4b4a42",
+    "red": "#7e2d24",
+    "greyBrick": "#6a3a2c"
+  },
+  "surveySource": "Current BAG 0363100012236196 footprint (175-vertex ring) and 3DBAG LoD2.2 roof planes, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry built in the church's own axis frame (nave bearing 66 degrees) from the 3DBAG roof planes and ring; west front, towers, chapels, apse and crossing tower measured by eye from Commons photographs and municipal panoramas, no pixels or meshes imported. Shows the church as it stood before the 2026 New Year's fire."
+}
