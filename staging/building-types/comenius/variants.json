@@ -1,122 +1,154 @@
 {
  "0363100012084277": {
+  "type": "nw-pilotis-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "solid",
-  "note": "survey photo: garage/storage doors flush with the facade"
+  "note": "photo: closed ground storey, balcony pairs at both ends"
  },
  "0363100012114266": {
+  "type": "nw-pilotis-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "solid",
-  "note": "survey photo: garage/storage doors flush with the facade"
+  "note": "photo: closed ground storey, balcony pairs at both ends"
  },
  "0363100012109852": {
+  "type": "nw-pilotis-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "solid",
-  "note": "survey photo: garage/storage doors flush with the facade"
+  "note": "photo: closed ground storey, balcony pairs at both ends"
  },
  "0363100012155085": {
+  "type": "nw-pilotis-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "solid",
-  "note": "survey photo: garage/storage doors flush with the facade"
+  "note": "photo: closed ground storey, balcony pairs at both ends"
  },
  "0363100012066627": {
+  "type": "nw-pilotis-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "solid",
-  "note": "survey photo: garage/storage doors flush with the facade"
+  "note": "photo: closed ground storey, balcony pairs at both ends"
  },
  "0363100012133520": {
+  "type": "nw-pilotis-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "solid",
-  "note": "survey photo: garage/storage doors flush with the facade"
+  "hold": "oblique; ground storey has an arched through-passage, not the garage-door design",
+  "note": "held: oblique; ground storey has an arched through-passage, not the garage-door design"
  },
  "0363100012096976": {
+  "type": "nw-pilotis-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "solid",
-  "note": "survey photo: garage/storage doors flush with the facade"
+  "note": "photo: closed ground storey, balcony pairs at both ends"
  },
  "0363100012134609": {
+  "type": "nw-pilotis-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "solid",
-  "note": "survey photo: garage/storage doors flush with the facade"
+  "note": "photo: closed ground storey, balcony pairs at both ends"
  },
  "0363100012078345": {
+  "type": "nw-pilotis-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "solid",
-  "note": "survey photo: garage/storage doors flush with the facade"
+  "note": "photo: closed ground storey, balcony pairs at both ends"
  },
  "0363100012066354": {
+  "type": "nw-pilotis-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "solid",
-  "note": "survey photo: garage/storage doors flush with the facade"
+  "note": "photo: closed ground storey, balcony pairs at both ends"
  },
  "0363100012105891": {
+  "type": "nw-pilotis-centre-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "pilotis",
-  "note": "survey photo: open white columns"
+  "hold": "end-on oblique; stack position cannot be read",
+  "note": "held: end-on oblique; stack position cannot be read"
  },
  "0363100012143810": {
+  "type": "nw-pilotis-centre-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "pilotis",
-  "note": "survey photo: open white columns"
+  "note": "photo: open pilotis, balcony pair in the centre either side of the stair strip"
  },
  "0363100012084264": {
+  "type": "nw-pilotis-centre-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "pilotis",
-  "note": "survey photo: open white columns"
+  "hold": "end-on oblique; balcony stack position relative to the ends cannot be read",
+  "note": "held: end-on oblique; balcony stack position relative to the ends cannot be read"
  },
  "0363100012139456": {
+  "type": "nw-pilotis-centre-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "pilotis",
-  "note": "survey photo: open white columns"
+  "note": "photo: open pilotis, balcony pair in the centre either side of the stair strip"
  },
  "0363100012135977": {
+  "type": "nw-pilotis-centre-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "pilotis",
-  "note": "survey photo: open white columns"
+  "hold": "end-on oblique; stack position cannot be read",
+  "note": "held: end-on oblique; stack position cannot be read"
  },
  "0363100012077622": {
+  "type": "nw-pilotis-centre-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "pilotis",
-  "note": "survey photo: open white columns"
+  "note": "photo: open pilotis, balcony pair in the centre either side of the stair strip"
  },
  "0363100012103878": {
+  "type": "nw-pilotis-centre-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "pilotis",
-  "note": "survey photo: open white columns"
+  "hold": "end-on oblique; stack position cannot be read",
+  "note": "held: end-on oblique; stack position cannot be read"
  },
  "0363100012099425": {
+  "type": "nw-pilotis-centre-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "pilotis",
-  "note": "survey photo: open white columns"
+  "note": "photo: open pilotis, balcony pair in the centre either side of the stair strip"
  },
  "0363100012061545": {
+  "type": "nw-pilotis-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "solid",
-  "note": "survey crop unusable (camera under the soffit)"
+  "hold": "photo is a close-up under the soffit; design not visible",
+  "note": "held: photo is a close-up under the soffit; design not visible"
  },
  "0363100012078925": {
+  "type": "nw-pilotis-centre-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "pilotis",
-  "note": "survey photo: open white columns"
+  "note": "photo: open pilotis, balcony pair in the centre either side of the stair strip"
  },
  "0363100012080995": {
+  "type": "nw-pilotis-centre-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "pilotis",
-  "note": "survey photo: open white columns"
+  "hold": "end-on oblique; stack position cannot be read",
+  "note": "held: end-on oblique; stack position cannot be read"
  },
  "0363100012124255": {
+  "type": "nw-pilotis-centre-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "pilotis",
-  "note": "survey photo: open white columns"
+  "note": "photo: open pilotis, balcony pair in the centre either side of the stair strip"
  },
  "0363100012134825": {
+  "type": "nw-pilotis-centre-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "pilotis",
-  "note": "survey photo: open white columns"
+  "hold": "end-on oblique; stack position cannot be read",
+  "note": "held: end-on oblique; stack position cannot be read"
  },
  "0363100012136034": {
+  "type": "nw-pilotis-centre-panel-flat",
   "variant": "concrete-panel",
   "groundMode": "pilotis",
-  "note": "survey photo: open white columns"
+  "note": "photo: open pilotis, balcony pair in the centre either side of the stair strip"
  }
 }

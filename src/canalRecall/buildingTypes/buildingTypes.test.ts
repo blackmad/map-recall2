@@ -11,7 +11,7 @@ import {paramsFromFacts, ridgeAlongOf, roofFactsFromPlanes} from './facts.ts';
 
 const TYPES = path.join(import.meta.dirname, 'types');
 const load = (f: string) => JSON.parse(fs.readFileSync(path.join(TYPES, f), 'utf8')) as TypeSpec;
-const T1 = load('nw-portiek-brick-pitched.json'), T6 = load('nw-pilotis-panel-flat.json');
+const T1 = load('nw-portiek-brick-pitched.json'), T6 = load('nw-pilotis-panel-flat.json'), T6C = load('nw-pilotis-centre-panel-flat.json');
 
 const rotate = (pts: Pt[], deg: number, at: Pt = [0, 0]): Pt[] => pts.map(([x, z]) => { const a = deg * Math.PI / 180; return [at[0] + Math.cos(a) * x - Math.sin(a) * z, at[1] + Math.sin(a) * x + Math.cos(a) * z]; });
 const block = (L: number, W: number): Pt[] => [[-L / 2, -W / 2], [L / 2, -W / 2], [L / 2, W / 2], [-L / 2, W / 2]];
@@ -113,7 +113,7 @@ test('the front of a south-facing block is on its south side and its balconies p
 // --- spec + generator ---------------------------------------------------------------------------------------------
 
 test('specs validate and bay counts are written down for every facade', () => {
-  for (const spec of [T1, T6]) {
+  for (const spec of [T1, T6, T6C]) {
     assert.deepEqual(validateSpec(spec), []);
     for (const id of FACADE_IDS) assert.ok(spec.facades[id].evidence.length > 0);
   }

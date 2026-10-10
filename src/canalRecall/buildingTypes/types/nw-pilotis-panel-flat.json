@@ -1,6 +1,6 @@
 {
   "id": "nw-pilotis-panel-flat",
-  "label": "Nieuw-West type 6: five-storey prefab-panel flat on pilotis, flat roof (15.7 x 9.9 m, 70 panden, 1953-62)",
+  "label": "Nieuw-West type 6: five-storey prefab-panel flat closed ground storey (garage doors), flat roof (15.7 x 9.9 m, 70 panden, 1953-62)",
   "source": {
     "clusterRank": 6,
     "panden": 70,
@@ -33,12 +33,12 @@
   "variants": {
     "concrete-panel": {
       "label": "Original prefab concrete-aggregate panels, white columns and balustrades",
-      "evidence": "type-6.jpg (Comeniusstraat 201-3), type-6-b.jpg (817-H), type-6-c.jpg (549-2)",
+      "evidence": "type-6.jpg (Comeniusstraat 201-3), type-6-b.jpg (817-H), type-6-c.jpg (549-2); wall colour re-sampled 2026-10-10 from 0363100012078925 (sunlit #b3a281-#bfb391), 0363100012124255 (#d6cab9) and the overcast 2024-12 closed-ground photos (near white): light grey-beige, not mid-brown",
       "joints": true,
       "palette": {
         "wall": {
-          "slot": "stone",
-          "tint": "#bdb8a6"
+          "slot": "stucco",
+          "tint": "#e3decd"
         },
         "frame": "#e8e8e4",
         "glass": "#455261",
@@ -47,7 +47,7 @@
         "rail": "#ecebe6",
         "dark": "#42464c",
         "column": "#ecebe5",
-        "joint": "#8e8a7c",
+        "joint": "#a9a48f",
         "roof": {
           "slot": "bitumen",
           "tint": "#5c5e60"
@@ -670,6 +670,7 @@
     }
   },
   "notes": [
+    "SPLIT 2026-10-10: this spec is the CLOSED-GROUND design (garage/storage doors flush with the facade, balcony pairs at both ENDS, window pair + stair core between). The open-pilotis members are a different design with the balconies stacked in the CENTRE either side of the stair strip: nw-pilotis-centre-panel-flat.json. The groundMode=pilotis path of this spec is superseded and must not be assigned from photos.",
     "Ground storey is a per-pand parameter: open pilotis (white columns ~3.4 m apart, storage cells set back 1.6 m; 13 of 24 sampled Comenius members) or closed garage/storage doors flush with the facade (10 of 24; 1 unusable photo). groundMode pilotis | solid is chosen from the panorama.",
     "Storeys: ground (pilotis) + 4 upper; flat roof. Storey height = roof edge / 5 (3DBAG).",
     "Footprints have 12-14 vertices (balcony and stair notches); the generator uses the minimum rotated rectangle and reports IoU against the BAG ring."

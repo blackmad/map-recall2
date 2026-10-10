@@ -25,7 +25,7 @@ for (const f of fs.readdirSync(TYPES_DIR).filter(f => f.endsWith('.json'))) { co
 
 const input = JSON.parse(fs.readFileSync(path.join(dir, 'instances.json'), 'utf8')) as {anchor: Anchor; instances: any[]; streets: Street[]};
 const variantsFile = path.join(dir, 'variants.json');
-const overrides: Record<string, {variant?: string; groundMode?: 'solid' | 'pilotis'; note?: string}> = fs.existsSync(variantsFile) ? JSON.parse(fs.readFileSync(variantsFile, 'utf8')) : {};
+const overrides: Record<string, {type?: string; variant?: string; groundMode?: 'solid' | 'pilotis'; hold?: string; note?: string}> = fs.existsSync(variantsFile) ? JSON.parse(fs.readFileSync(variantsFile, 'utf8')) : {};
 
 async function item3d(id: string): Promise<CityJsonItem> {
   const file = `.cache/building-types/3dbag/${id}.json`;
@@ -43,21 +43,24 @@ async function item3d(id: string): Promise<CityJsonItem> {
 
 interface Built {
   pandId: string; type: string; variant: string; mesh: MeshBuilder; report: GenerateReport; position: [number, number, number]; yaw: number;
-  rect: ReturnType<typeof minimumRotatedRectangle>; front: ReturnType<typeof frontSide>; roof: RoofFacts | null; warnings: string[]; iou: number; bytes?: number; params: any;
+  held?: string; rect: ReturnType<typeof minimumRotatedRectangle>; front: ReturnType<typeof frontSide>; roof: RoofFacts | null; warnings: string[]; iou: number; bytes?: number; params: any;
 }
 const built: Built[] = [];
-for (const inst of input.instances) {
-  const spec = specs.get(inst.type)!;
+for (const instIn of input.instances) {
+  const o = overrides[instIn.pandId] ?? {};
+  // variants.json may re-assign the design (the footprint cluster does not know the facade) and hold a pand whose photo does not confirm one.
+  const inst = {...instIn, type: o.type ?? instIn.type};
+  const spec = specs.get(inst.type);
+  if (!spec) throw new Error(`${inst.pandId}: unknown type ${inst.type}`);
   const ring: Pt[] = inst.ringLngLat.map(([lng, lat]: number[]) => lngLatToLocal(input.anchor, lng, lat));
   const rect = minimumRotatedRectangle(ring), iou = rectIoU(ring, rect);
   const front = frontSide(rect, input.streets);
   let roof: RoofFacts | null = null;
   try { roof = roofFactsFromItem(await item3d(inst.pandId)); } catch (e) { console.warn('roof facts failed', inst.pandId, (e as Error).message); }
-  const o = overrides[inst.pandId] ?? {};
   const {params, warnings} = paramsFromFacts(spec, rect, inst.attrs, roof, {variant: o.variant, groundMode: o.groundMode});
   if (front.ambiguous) warnings.push(`front ambiguous (scores ${front.score.toFixed(1)} / ${front.otherScore.toFixed(1)})`);
   const {mesh, report} = generate(spec, params);
-  built.push({pandId: inst.pandId, type: inst.type, variant: report.variant, mesh, report, position: [rect.center[0], inst.attrs.b3_h_maaiveld ?? 0, rect.center[1]], yaw: frontYaw(front), rect, front, roof, warnings, iou, params});
+  built.push({held: o.hold, pandId: inst.pandId, type: inst.type, variant: report.variant, mesh, report, position: [rect.center[0], inst.attrs.b3_h_maaiveld ?? 0, rect.center[1]], yaw: frontYaw(front), rect, front, roof, warnings, iou, params});
 }
 
 // One street level per chunk, as the street-chunks lane does: every instance stands on y = 0 and the median 3DBAG ground (NAP) is in the asset extras;
@@ -127,7 +130,7 @@ const report = {
     saving: {bytesVsMerged: +(1 - inst.bytes.length / merged.bytes.length).toFixed(3), bytesVsBaked: +(1 - inst.bytes.length / baked.bytes).toFixed(3), bytesUncompressedVsMerged: +(1 - instRaw.bytes.length / mergedRaw.bytes.length).toFixed(3)},
   },
   groups: groupInfo,
-  instancesDetail: built.map(b => ({pandId: b.pandId, type: b.type, variant: b.variant, groundMode: b.report.groundMode, storeys: b.report.storeys, tris: b.report.triangles, lengthM: +b.rect.length.toFixed(2), widthM: +b.rect.width.toFixed(2), eavesM: +b.params.eavesM.toFixed(2), ridgeM: b.params.ridgeM && +b.params.ridgeM.toFixed(2), roof3dbag: b.roof?.form ?? null, roofUsed: b.report.roofForm, ridge: b.report.ridge, rectIoU: +b.iou.toFixed(3), frontBearingDeg: Math.round(bearingDeg(b.front.normal[0], b.front.normal[1])), frontStreet: b.front.street, frontStreetDistM: +b.front.streetDistanceM.toFixed(1), ambiguous: b.front.ambiguous, warnings: b.warnings})),
+  instancesDetail: built.map(b => ({pandId: b.pandId, held: b.held ?? null, type: b.type, variant: b.variant, groundMode: b.report.groundMode, storeys: b.report.storeys, tris: b.report.triangles, lengthM: +b.rect.length.toFixed(2), widthM: +b.rect.width.toFixed(2), eavesM: +b.params.eavesM.toFixed(2), ridgeM: b.params.ridgeM && +b.params.ridgeM.toFixed(2), roof3dbag: b.roof?.form ?? null, roofUsed: b.report.roofForm, ridge: b.report.ridge, rectIoU: +b.iou.toFixed(3), frontBearingDeg: Math.round(bearingDeg(b.front.normal[0], b.front.normal[1])), frontStreet: b.front.street, frontStreetDistM: +b.front.streetDistanceM.toFixed(1), ambiguous: b.front.ambiguous, warnings: b.warnings})),
 };
 fs.writeFileSync(path.join(dir, 'report.json'), JSON.stringify(report, null, 1) + '\n');
 fs.writeFileSync(path.join(dir, 'placements.json'), JSON.stringify({area, frame: 'x east, z south, y NAP metres from anchor; yaw about +y takes the local frame (front +z, tangent +x) to east/south', anchor: input.anchor, placements: built.map(b => ({pand: b.pandId, type: b.type, variant: b.variant, groundMode: b.report.groundMode, transform: {positionEastNapSouth: b.position.map(v => +v.toFixed(3)), positionChunk: [b.position[0], 0, b.position[2]].map(v => +v.toFixed(3)), yawRad: +b.yaw.toFixed(5), lengthM: +b.params.lengthM.toFixed(2), widthM: +b.params.widthM.toFixed(2), eavesM: +b.params.eavesM.toFixed(2)}}))}, null, 1) + '\n');

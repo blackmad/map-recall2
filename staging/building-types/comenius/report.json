@@ -4,14 +4,24 @@
  "generatedAt": "2026-10-10",
  "instances": 24,
  "perType": {
+  "nw-pilotis-centre-panel-flat": {
+   "instances": 13,
+   "trisPerInstance": {
+    "min": 2640,
+    "median": 2640,
+    "max": 2640
+   },
+   "trianglesTotal": 34320,
+   "warnings": 0
+  },
   "nw-pilotis-panel-flat": {
-   "instances": 24,
+   "instances": 11,
    "trisPerInstance": {
     "min": 3204,
-    "median": 3414,
-    "max": 3414
+    "median": 3232,
+    "max": 3260
    },
-   "trianglesTotal": 79934,
+   "trianglesTotal": 35552,
    "warnings": 0
   }
  },
@@ -20,47 +30,47 @@
    "parts": [
     {
      "file": "comenius-baked-1.glb",
-     "instances": 15,
-     "triangles": 49390,
-     "bytes": 915096
+     "instances": 16,
+     "triangles": 48160,
+     "bytes": 904532
     },
     {
      "file": "comenius-baked-2.glb",
-     "instances": 9,
-     "triangles": 30544,
-     "bytes": 578612
+     "instances": 8,
+     "triangles": 21712,
+     "bytes": 430600
     }
    ],
-   "bytes": 1493708,
-   "bytesUncompressed": 5272724,
-   "triangles": 79934,
-   "vertices": 144836
+   "bytes": 1335132,
+   "bytesUncompressed": 4592140,
+   "triangles": 69872,
+   "vertices": 125440
   },
   "merged": {
-   "bytes": 1327688,
-   "bytesUncompressed": 5129224,
-   "triangles": 79934,
+   "bytes": 1159084,
+   "bytesUncompressed": 4448268,
+   "triangles": 69872,
    "primitives": 10,
-   "vertices": 144836
+   "vertices": 125440
   },
   "instanced": {
-   "bytes": 148548,
-   "bytesUncompressed": 442324,
-   "triangles": 79934,
+   "bytes": 137816,
+   "bytesUncompressed": 389964,
+   "triangles": 69872,
    "primitives": 19,
-   "vertices": 12040,
+   "vertices": 10548,
    "designGroups": 2,
    "maxScaleDeviation": 0.122
   },
   "bucketed": {
    "note": "one unit mesh per (design group, +-0.25 m length/width, +-0.2 m eaves bucket) instead of per-instance scale",
    "meshes": 7,
-   "bytesEstimate": 517468
+   "bytesEstimate": 475648
   },
   "saving": {
-   "bytesVsMerged": 0.888,
-   "bytesVsBaked": 0.901,
-   "bytesUncompressedVsMerged": 0.914
+   "bytesVsMerged": 0.881,
+   "bytesVsBaked": 0.897,
+   "bytesUncompressedVsMerged": 0.912
   }
  },
  "groups": [
@@ -79,23 +89,24 @@
    "unitBytes": 71368
   },
   {
-   "key": "nw-pilotis-panel-flat|concrete-panel|5|flat|long|pilotis",
+   "key": "nw-pilotis-centre-panel-flat|concrete-panel|5|flat|long|pilotis",
    "members": 13,
    "dimensionBuckets": 3,
-   "bucketedBytesEstimate": 231036,
+   "bucketedBytesEstimate": 189216,
    "maxScaleDeviation": 0.05,
    "nominal": {
     "L": 15.34,
     "W": 9.82,
     "eaves": 15.47
    },
-   "unitTriangles": 3414,
-   "unitBytes": 77012
+   "unitTriangles": 2640,
+   "unitBytes": 63072
   }
  ],
  "instancesDetail": [
   {
    "pandId": "0363100012084277",
+   "held": null,
    "type": "nw-pilotis-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "solid",
@@ -116,6 +127,7 @@
   },
   {
    "pandId": "0363100012114266",
+   "held": null,
    "type": "nw-pilotis-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "solid",
@@ -136,6 +148,7 @@
   },
   {
    "pandId": "0363100012109852",
+   "held": null,
    "type": "nw-pilotis-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "solid",
@@ -156,6 +169,7 @@
   },
   {
    "pandId": "0363100012155085",
+   "held": null,
    "type": "nw-pilotis-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "solid",
@@ -176,6 +190,7 @@
   },
   {
    "pandId": "0363100012066627",
+   "held": null,
    "type": "nw-pilotis-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "solid",
@@ -196,6 +211,7 @@
   },
   {
    "pandId": "0363100012133520",
+   "held": "oblique; ground storey has an arched through-passage, not the garage-door design",
    "type": "nw-pilotis-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "solid",
@@ -216,6 +232,7 @@
   },
   {
    "pandId": "0363100012096976",
+   "held": null,
    "type": "nw-pilotis-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "solid",
@@ -236,6 +253,7 @@
   },
   {
    "pandId": "0363100012134609",
+   "held": null,
    "type": "nw-pilotis-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "solid",
@@ -256,6 +274,7 @@
   },
   {
    "pandId": "0363100012078345",
+   "held": null,
    "type": "nw-pilotis-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "solid",
@@ -276,6 +295,7 @@
   },
   {
    "pandId": "0363100012066354",
+   "held": null,
    "type": "nw-pilotis-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "solid",
@@ -296,11 +316,12 @@
   },
   {
    "pandId": "0363100012105891",
-   "type": "nw-pilotis-panel-flat",
+   "held": "end-on oblique; stack position cannot be read",
+   "type": "nw-pilotis-centre-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "pilotis",
    "storeys": 5,
-   "tris": 3414,
+   "tris": 2640,
    "lengthM": 15.31,
    "widthM": 9.77,
    "eavesM": 15.47,
@@ -316,11 +337,12 @@
   },
   {
    "pandId": "0363100012143810",
-   "type": "nw-pilotis-panel-flat",
+   "held": null,
+   "type": "nw-pilotis-centre-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "pilotis",
    "storeys": 5,
-   "tris": 3414,
+   "tris": 2640,
    "lengthM": 16.11,
    "widthM": 9.76,
    "eavesM": 15.38,
@@ -336,11 +358,12 @@
   },
   {
    "pandId": "0363100012084264",
-   "type": "nw-pilotis-panel-flat",
+   "held": "end-on oblique; balcony stack position relative to the ends cannot be read",
+   "type": "nw-pilotis-centre-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "pilotis",
    "storeys": 5,
-   "tris": 3414,
+   "tris": 2640,
    "lengthM": 15.33,
    "widthM": 9.8,
    "eavesM": 15.52,
@@ -356,11 +379,12 @@
   },
   {
    "pandId": "0363100012139456",
-   "type": "nw-pilotis-panel-flat",
+   "held": null,
+   "type": "nw-pilotis-centre-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "pilotis",
    "storeys": 5,
-   "tris": 3414,
+   "tris": 2640,
    "lengthM": 16.1,
    "widthM": 9.81,
    "eavesM": 15.38,
@@ -376,11 +400,12 @@
   },
   {
    "pandId": "0363100012135977",
-   "type": "nw-pilotis-panel-flat",
+   "held": "end-on oblique; stack position cannot be read",
+   "type": "nw-pilotis-centre-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "pilotis",
    "storeys": 5,
-   "tris": 3414,
+   "tris": 2640,
    "lengthM": 15.33,
    "widthM": 9.82,
    "eavesM": 15.45,
@@ -396,11 +421,12 @@
   },
   {
    "pandId": "0363100012077622",
-   "type": "nw-pilotis-panel-flat",
+   "held": null,
+   "type": "nw-pilotis-centre-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "pilotis",
    "storeys": 5,
-   "tris": 3414,
+   "tris": 2640,
    "lengthM": 16.1,
    "widthM": 9.82,
    "eavesM": 15.36,
@@ -416,11 +442,12 @@
   },
   {
    "pandId": "0363100012103878",
-   "type": "nw-pilotis-panel-flat",
+   "held": "end-on oblique; stack position cannot be read",
+   "type": "nw-pilotis-centre-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "pilotis",
    "storeys": 5,
-   "tris": 3414,
+   "tris": 2640,
    "lengthM": 15.34,
    "widthM": 9.83,
    "eavesM": 15.55,
@@ -436,11 +463,12 @@
   },
   {
    "pandId": "0363100012099425",
-   "type": "nw-pilotis-panel-flat",
+   "held": null,
+   "type": "nw-pilotis-centre-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "pilotis",
    "storeys": 5,
-   "tris": 3414,
+   "tris": 2640,
    "lengthM": 16.1,
    "widthM": 9.82,
    "eavesM": 15.58,
@@ -456,6 +484,7 @@
   },
   {
    "pandId": "0363100012061545",
+   "held": "photo is a close-up under the soffit; design not visible",
    "type": "nw-pilotis-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "solid",
@@ -476,11 +505,12 @@
   },
   {
    "pandId": "0363100012078925",
-   "type": "nw-pilotis-panel-flat",
+   "held": null,
+   "type": "nw-pilotis-centre-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "pilotis",
    "storeys": 5,
-   "tris": 3414,
+   "tris": 2640,
    "lengthM": 15.32,
    "widthM": 9.81,
    "eavesM": 15.48,
@@ -496,11 +526,12 @@
   },
   {
    "pandId": "0363100012080995",
-   "type": "nw-pilotis-panel-flat",
+   "held": "end-on oblique; stack position cannot be read",
+   "type": "nw-pilotis-centre-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "pilotis",
    "storeys": 5,
-   "tris": 3414,
+   "tris": 2640,
    "lengthM": 15.33,
    "widthM": 9.82,
    "eavesM": 15.51,
@@ -516,11 +547,12 @@
   },
   {
    "pandId": "0363100012124255",
-   "type": "nw-pilotis-panel-flat",
+   "held": null,
+   "type": "nw-pilotis-centre-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "pilotis",
    "storeys": 5,
-   "tris": 3414,
+   "tris": 2640,
    "lengthM": 16.1,
    "widthM": 9.82,
    "eavesM": 15.39,
@@ -536,11 +568,12 @@
   },
   {
    "pandId": "0363100012134825",
-   "type": "nw-pilotis-panel-flat",
+   "held": "end-on oblique; stack position cannot be read",
+   "type": "nw-pilotis-centre-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "pilotis",
    "storeys": 5,
-   "tris": 3414,
+   "tris": 2640,
    "lengthM": 15.33,
    "widthM": 9.83,
    "eavesM": 15.54,
@@ -556,11 +589,12 @@
   },
   {
    "pandId": "0363100012136034",
-   "type": "nw-pilotis-panel-flat",
+   "held": null,
+   "type": "nw-pilotis-centre-panel-flat",
    "variant": "concrete-panel",
    "groundMode": "pilotis",
    "storeys": 5,
-   "tris": 3414,
+   "tris": 2640,
    "lengthM": 16.1,
    "widthM": 9.83,
    "eavesM": 15.47,
