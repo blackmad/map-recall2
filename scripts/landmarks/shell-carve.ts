@@ -9,11 +9,12 @@ import type {ShellSource, Surface} from './worship-shell';
  */
 type V = [number, number, number];
 
-export function carveBox(src: ShellSource, f: Frame, box: {t0: number; t1: number; d0: number; d1: number}): ShellSource {
+export function carveBox(src: ShellSource, f: Frame, box: {t0: number; t1: number; d0: number; d1: number; y0?: number}): ShellSource {
   const tOf = (p: V) => (p[0] - f.origin[0]) * f.tangent[0] + (p[2] - f.origin[1]) * f.tangent[1];
   const dOf = (p: V) => (p[0] - f.origin[0]) * f.n[0] + (p[2] - f.origin[1]) * f.n[1];
   // half-spaces: value(p) < 0 means inside the box side of that plane
   const planes: ((p: V) => number)[] = [p => box.t0 - tOf(p), p => tOf(p) - box.t1, p => box.d0 - dOf(p), p => dOf(p) - box.d1];
+  if (box.y0 !== undefined) planes.push(p => box.y0! - p[1]);   // box is open at the top: only the part above y0 is cut
   /** Sutherland-Hodgman clip of a convex polygon to {sign * g(p) >= 0}. */
   const clip = (poly: V[], g: (p: V) => number, sign: 1 | -1): V[] => {
     const out: V[] = [];

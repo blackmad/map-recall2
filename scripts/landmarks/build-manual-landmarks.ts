@@ -1,3 +1,4 @@
+import {buildChassekerk} from './chassekerk-builder';
 import {buildFatihMoskee} from './fatih-moskee-builder';
 import {buildHotelOkura} from './hotel-okura-builder';
 import {buildKrasnapolsky} from './krasnapolsky-builder';
@@ -364,7 +365,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='fatih-moskee')buildFatihMoskee(w,d,helpers);
+    if(id==='chassekerk')buildChassekerk(w,d,helpers);
+    else if(id==='fatih-moskee')buildFatihMoskee(w,d,helpers);
     else if(id==='hotel-de-l-europe')buildHotelDeLEurope(w,d,helpers);
     else if(id==='american-hotel')buildAmericanHotel(w,d,helpers);
     else if(id==='trippenhuis')buildTrippenhuis(w,d,helpers);
