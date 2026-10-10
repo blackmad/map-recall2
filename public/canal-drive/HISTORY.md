@@ -150,6 +150,24 @@ except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
 (continuous ground and cornice line) does not need chunking. Unmeasured on a
 real phone GPU.
 
+## New landmarks from discovery; stoop rule (2026-10-10)
+
+A Haiku sweep of Dutch Wikipedia geosearch around the Dam proposed 30
+uncovered buildings (addresses unverified; lanes confirm identity first).
+Installed: Trippenhuis, Vondelkerk (modelled before the New Year 2026 tower
+fire; every photo and 3DBAG predate it, and the card says so), Lloyd Hotel,
+Ronde Lutherse Kerk, Hotel de l'Europe (after one rework), plus queue items
+Christ Church Groenburgwal ("Church of England") and the LJG synagogue.
+Held: American Hotel (roofline), World Trade Center (one 200 m BAG pand,
+no per-tower photos). Skipped: Onze Lieve Vrouwe Kapel (a room in OLVG),
+Jan Roodenpoortstoren (demolished 1829). See-through now ignores boundary
+cells whose highest geometry is below the ray (stoops, steps): across all
+266 models the only verdict change was pulitzer-amsterdam FAIL→PASS, whose
+four rays were all 1.5 m rays over canal-house stoops. Specs may list
+`partyWallBearings` to exempt a genuinely blind party wall from blank-wall
+(used only by hotel-de-l-europe's NE wall). The builder dispatch had a
+stray `if` that made three ids throw "No builder"; fixed.
+
 ## Audit false positives fixed; Sea Palace, IJ-toren, Zevenlandenhuizen (2026-10-10)
 
 `glbQuality.ts`: blank-wall now counts only wall area visible from outside
