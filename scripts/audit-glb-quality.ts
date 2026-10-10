@@ -7,6 +7,13 @@
  *   npx tsx scripts/audit-glb-quality.ts --set=ordinary [--limit=200]
  *   flags: --shots (contact images of top offenders), --top=15, --out=artifacts/glb-audit, --quiet
  *
+ * Landmark geometry audit (src/canalRecall/landmarks/geometryAudit.ts) runs on landmark GLBs too: detached openings
+ * (window/door parts floating off, buried in, or hanging past their wall), window rhythm per facade (photo spec from
+ * scripts/landmarks/<id>-elevations.json when present) and coplanar z-fighting. Existing offenders are recorded in
+ * scripts/landmarks/geometry-audit-baseline.json; a model fails only when a gated count grows beyond its baseline.
+ *   --no-geometry            skip it            --write-baseline     record current counts as the baseline
+ *   --geometry-shots         close-up evidence of the worst issue per top offender (artifacts/glb-audit/geometry/)
+ *
  * Install scripts call it with --id=<id> and must see exit code 0. Thresholds live in
  * src/canalRecall/landmarks/glbQuality.ts (DEFAULT_THRESHOLDS) and are documented there.
  */
@@ -16,6 +23,9 @@ import {NodeIO} from '@gltf-transform/core';
 import {ALL_EXTENSIONS} from '@gltf-transform/extensions';
 import {MeshoptDecoder} from 'meshoptimizer';
 import {analyseSoup, DEFAULT_THRESHOLDS, type QualityReport, type Thresholds, type TriSoup} from '../src/canalRecall/landmarks/glbQuality';
+import {geometryAudit, regressions, type GeometryAuditReport} from '../src/canalRecall/landmarks/geometryAudit';
+import type {ElevationsFile} from '../src/canalRecall/landmarks/facadeCompare';
+import {loadMaterialSoup} from './landmarks/material-soup';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const MODELS = path.join(ROOT, 'public/canal-drive/models');
@@ -79,7 +89,37 @@ function modelThresholds(id: string): Partial<Thresholds> {
   } catch { return {}; }
 }
 
-interface Row {id: string; file: string; status?: string; report: QualityReport; ms: number}
+interface Row {id: string; file: string; status?: string; report: QualityReport; ms: number; geometry?: GeometryAuditReport}
+
+const BASELINE = path.join(ROOT, 'scripts/landmarks/geometry-audit-baseline.json');
+type Baseline = {generated: string; note: string; models: Record<string, Record<string, number>>};
+function readBaseline(): Baseline | undefined {
+  try { return JSON.parse(fs.readFileSync(BASELINE, 'utf8')); } catch { return undefined; }
+}
+
+async function auditGeometry(id: string, file: string): Promise<GeometryAuditReport> {
+  const specFile = path.join(ROOT, 'scripts/landmarks', `${id}-elevations.json`);
+  const spec = fs.existsSync(specFile) ? (JSON.parse(fs.readFileSync(specFile, 'utf8')) as ElevationsFile) : undefined;
+  return geometryAudit(await loadMaterialSoup(file), {facades: spec?.facades});
+}
+
+/** Geometry findings join the report; within the baseline they stay warnings, growth past it fails the model. */
+function mergeGeometry(report: QualityReport, g: GeometryAuditReport, base: Record<string, number> | undefined): void {
+  const grown = regressions(g.counts, base);
+  for (const f of g.findings) report.findings.push({kind: f.kind, severity: f.severity === 'fail' && grown.length ? 'fail' : 'warn', message: f.message + (f.severity === 'fail' && !grown.length ? ' [baselined]' : '')});
+  if (grown.length) {
+    report.findings.push({kind: 'geometry-regression', severity: 'fail', message: `geometry audit grew past scripts/landmarks/geometry-audit-baseline.json: ${grown.join('; ')}`});
+    report.pass = false;
+  }
+  report.score += g.score / 10;
+}
+
+/** Strip triangle lists from the JSON report (they are only needed for the evidence shots). */
+function slim(g: GeometryAuditReport) {
+  return {...g, openings: {...g.openings, issues: g.openings.issues.slice(0, 40).map(({triangles, ...i}) => ({...i, triangles: triangles.length}))},
+    zfight: {...g.zfight, patches: g.zfight.patches.slice(0, 40).map(({trisA, trisB, samples, ...p}) => ({...p, triangles: trisA.length + trisB.length}))},
+    rhythm: g.rhythm.map(f => ({...f, mismatched: f.mismatched.slice(0, 20)}))};
+}
 
 function arg(name: string): string | undefined {
   const a = process.argv.find(x => x.startsWith(`--${name}=`));
@@ -134,11 +174,27 @@ function md(rows: Row[], th: Thresholds): string {
   return lines.join('\n') + '\n';
 }
 
+function geometryMd(rows: Row[]): string {
+  const g = rows.filter(r => r.geometry);
+  if (!g.length) return '';
+  const sum = (k: string) => g.filter(r => (r.geometry!.counts[k] ?? 0) > 0).length;
+  const z = g.filter(r => r.geometry!.zfight.area >= 0.25);
+  const lines = ['', '## Landmark geometry audit', '',
+    `${g.length} models. Detached openings: ${sum('opening-floating')} models with floating parts (${sum('opening-floating-fail')} beyond ${'10 cm'}), ${sum('opening-overhang')} with parts hanging past a wall edge, ${sum('opening-buried')} with parts sunk behind the wall surface. Visible coplanar z-fighting >= 0.25 m2: ${z.length} models. Window-rhythm warnings: ${sum('window-mismatch') + sum('window-missing')} models.`, '',
+    '| # | id | geo score | floating (fail) | overhang (fail) | buried | z-fight m2 | near m2 | hidden m2 | off-size | missing | worst |', '|---|---|---|---|---|---|---|---|---|---|---|---|',
+    ...[...g].sort((a, b) => b.geometry!.score - a.geometry!.score).filter(r => r.geometry!.score > 0).map((r, i) => {
+      const x = r.geometry!, c = x.counts, w = x.findings.find(f => f.severity === 'fail') ?? x.findings[0];
+      return `| ${i + 1} | ${r.id} | ${x.score.toFixed(0)} | ${c['opening-floating']} (${c['opening-floating-fail']}) | ${c['opening-overhang']} (${c['opening-overhang-fail']}) | ${c['opening-buried']} | ${c['zfight-m2']} | ${c['zfight-near-m2']} | ${x.zfight.hiddenArea} | ${c['window-mismatch']} | ${c['window-missing']} | ${w ? `${w.kind}: ${w.message}` : ''} |`;
+    })];
+  return lines.join('\n') + '\n';
+}
+
 async function main(): Promise<void> {
   const targets = listTargets();
   if (!targets.length) { console.error('No matching models'); process.exit(2); }
   const th = {...DEFAULT_THRESHOLDS};
   const rows: Row[] = [];
+  const baseline = readBaseline();
   for (const t of targets) {
     const t0 = Date.now();
     let report: QualityReport;
@@ -146,7 +202,14 @@ async function main(): Promise<void> {
       report = analyseSoup({positions: new Float32Array(0), indices: new Uint32Array(0)});
       report.findings.push({kind: 'unreadable', severity: 'fail', message: String(e)});
     }
-    rows.push({id: t.id, file: path.relative(ROOT, t.file), status: t.status, report, ms: Date.now() - t0});
+    let geometry: GeometryAuditReport | undefined;
+    if (!flag('no-geometry') && arg('set') !== 'ordinary') {
+      try {
+        geometry = await auditGeometry(t.id, t.file);
+        mergeGeometry(report, geometry, flag('write-baseline') ? geometry.counts : baseline?.models[t.id]);
+      } catch (e) { report.findings.push({kind: 'geometry-audit-error', severity: 'warn', message: String(e).slice(0, 200)}); }
+    }
+    rows.push({id: t.id, file: path.relative(ROOT, t.file), status: t.status, report, ms: Date.now() - t0, geometry});
     if (!flag('quiet') || targets.length === 1) {
       console.log(`${report.pass ? 'PASS' : 'FAIL'} ${t.id} (${report.triangles} tris, score ${report.score.toFixed(1)}, ${Date.now() - t0} ms)`);
       for (const f of report.findings) console.log(`   ${f.severity === 'fail' ? 'FAIL' : 'warn'} ${f.kind}: ${f.message}`);
@@ -156,8 +219,19 @@ async function main(): Promise<void> {
     const out = path.resolve(ROOT, arg('out') ?? 'artifacts/glb-audit');
     fs.mkdirSync(out, {recursive: true});
     const tag = arg('set') === 'ordinary' ? 'ordinary-' : '';
-    fs.writeFileSync(path.join(out, `${tag}report.json`), JSON.stringify({thresholds: th, models: rows}, null, 1));
-    fs.writeFileSync(path.join(out, `${tag}summary.md`), md(rows, th));
+    fs.writeFileSync(path.join(out, `${tag}report.json`), JSON.stringify({thresholds: th, models: rows.map(r => ({...r, geometry: r.geometry && slim(r.geometry)}))}, null, 1));
+    fs.writeFileSync(path.join(out, `${tag}summary.md`), md(rows, th) + geometryMd(rows));
+    if (flag('write-baseline')) {
+      const models: Baseline['models'] = {...(baseline?.models ?? {})};
+      for (const r of rows) if (r.geometry) models[r.id] = r.geometry.counts;
+      const sorted = Object.fromEntries(Object.entries(models).sort(([a], [b]) => a.localeCompare(b)));
+      fs.writeFileSync(BASELINE, JSON.stringify({generated: new Date().toISOString().slice(0, 10), note: 'Existing geometry-audit offenders (src/canalRecall/landmarks/geometryAudit.ts). audit:glb fails a model only when a gated count (opening-floating-fail, opening-overhang-fail, zfight-m2) grows past its entry. Lower an entry when you fix a model; never raise one to pass.', models: sorted}, null, 1) + '\n');
+      console.log(`Wrote ${path.relative(ROOT, BASELINE)} (${Object.keys(sorted).length} models)`);
+    }
+    if (flag('geometry-shots')) {
+      const {geometryShots} = await import('./landmarks/geometry-audit-evidence');
+      await geometryShots(rows.filter(r => r.geometry).map(r => ({id: r.id, file: path.join(ROOT, r.file), geometry: r.geometry!})), path.join(out, 'geometry'), Number(arg('top') ?? 15));
+    }
     console.log(`Wrote ${path.relative(ROOT, out)}/${tag}report.json and ${tag}summary.md`);
     if (flag('shots')) {
       const shotsModule = './audit-glb-quality-shots.mjs'; // untyped helper; keep the import dynamic
