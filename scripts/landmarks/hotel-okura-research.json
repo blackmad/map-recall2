@@ -1,0 +1,47 @@
+{
+  "canonicalModelId": "hotel-okura",
+  "researchedOn": "2026-10-10",
+  "state": "built",
+  "destination": {
+    "landmarkId": "n2817713466",
+    "name": "Hotel Okura Amsterdam",
+    "address": "Ferdinand Bolstraat 333, 1072 LH Amsterdam",
+    "bagPand": "NL.IMBAG.Pand.0363100012150422",
+    "note": "No installed model or landmarks.json entry covered this pand; the OSM point n2817713466 exists in click-poi-info.json and is reused as landmarkId."
+  },
+  "architecture": {
+    "sources": [
+      {"url": "https://nl.wikipedia.org/wiki/Hotel_Okura_Amsterdam", "retrieved": "2026-10-10"},
+      {"url": "https://en.wikipedia.org/wiki/Hotel_Okura_Amsterdam", "retrieved": "2026-10-10"}
+    ],
+    "facts": [
+      "Architects Bernard Bijvoet and Gerard Holt with the Japanese architects Yoshiro Taniguchi and Yozo Shibata; opened 24 September 1971 by Prince Claus; first European hotel of the Okura chain.",
+      "23 floors, 78 m; second-tallest building in Amsterdam at opening, after Toren Overhoeks; Ciel Bleu restaurant on the 23rd floor.",
+      "The lighting of the canopy ('luifel') at about 75 m is a weather barometer (blue sun, green bad weather, white changeable)."
+    ]
+  },
+  "measuredBy": {
+    "3dbag": "NL.IMBAG.Pand.0363100012150422 LoD2.2: ground -0.575 m NAP, roofMax 79.7 m NAP, pand ground area 5078 m2. 3DBAG fuses the tower canopy overhang into full-height walls around a 41 x 35 m footprint and has no podium roof under it; those walls are cut to the podium height and the open loops capped in the builder.",
+    "towerFrame": "27.8 x 22.6 m rectangle rotated 4.95 degrees, NW corner (-4.1, -27.1) native east/south m from the BAG centroid, fitted to the 73.3 m roof-deck patches; canopy overhang 3.2 m, soffit 77.0 m, top 77.9 m.",
+    "facade": "Y0 14.2 m to deck 73.3 m: 19 window storeys of about 3.1 m plus a glazed restaurant storey; 8 window axes on the north/south faces, 6 on the east/west faces (counted by eye on the 2016 and 2018 photos).",
+    "uncertain": [
+      "Which faces are north/south of the photo views is deduced from the canal side (Amstelkanaal south of the hotel) and sun direction in the January 2016 photo.",
+      "North and east faces have no reference photo (inferred); the podium and the cantilevered lobby front are simplified 3DBAG massing with ribbon glazing, not photographed.",
+      "Window axis counts are mine, not blind-counted; the integrator's blind count may differ."
+    ]
+  },
+  "photos": [
+    {"file": "ref-2016.jpg", "url": "https://commons.wikimedia.org/wiki/File:Okura_Hotel_Amsterdam_in_2016.jpg", "author": "Choinowski", "date": "2016-01-17", "licence": "CC BY-SA 4.0", "retrieved": "2026-10-10", "feature": "south and west faces from the south-west, canopy, podium"},
+    {"file": "ref-south.jpg", "url": "https://commons.wikimedia.org/wiki/File:Okura_Hotel_Amsterdam_in_2016.jpg", "licence": "CC BY-SA 4.0", "retrieved": "2026-10-10", "feature": "copy of ref-2016.jpg used for the south facade comparison (oblique)"},
+    {"file": "ref-west.jpg", "url": "https://commons.wikimedia.org/wiki/File:Okura_Hotel_Amsterdam_in_2016.jpg", "licence": "CC BY-SA 4.0", "retrieved": "2026-10-10", "feature": "copy of ref-2016.jpg used for the west facade comparison (oblique, balcony stack)"},
+    {"file": "ref-amstel.jpg", "url": "https://commons.wikimedia.org/wiki/File:Hotel_Okura_Amsterdam_-_Amstel_Canal.jpg", "author": "Annevangulik", "date": "2016-05-03", "licence": "CC BY-SA 4.0", "retrieved": "2026-10-10", "feature": "tower from the canal, canopy lit"},
+    {"file": "ref-2018.jpg", "url": "https://commons.wikimedia.org/wiki/File:Okura-APR2018-1.jpg", "author": "Milliped", "date": "2018-04-13", "licence": "CC BY-SA 4.0", "retrieved": "2026-10-10", "feature": "aerial view of tower and podium roofs"},
+    {"file": "ref-pijp.jpg", "url": "https://commons.wikimedia.org/wiki/File:Hotel_Okura_@_De_Pijp_@_Amsterdam_(19604907866).jpg", "author": "Guilhem Vellut", "date": "2015-07-10", "licence": "CC BY 2.0", "retrieved": "2026-10-10", "feature": "crown close-up: canopy, columns, glazed top storey, window rhythm"},
+    {"file": "ref-1971.jpg", "url": "https://commons.wikimedia.org/wiki/File:OkuraAmsterdam1971.jpg", "author": ".. Punt (ANEFO)", "date": "1971-11-11", "licence": "CC0", "retrieved": "2026-10-10", "feature": "archive photograph (not used for geometry)"},
+    {"file": "ref-details.jpg", "url": "https://commons.wikimedia.org/wiki/File:Okura_Hotel_details_2019.jpg", "author": "Matsujima", "date": "2019-11-20", "licence": "CC BY-SA 4.0", "retrieved": "2026-10-10", "feature": "facade details (not used for geometry)"},
+    {"file": "ref-1984.jpg", "url": "https://commons.wikimedia.org/wiki/File:Oude_RAI_geheel_gesloopt,_kale_vlakte_met_Okura_hotel,_Bestanddeelnr_928-4188.jpg", "author": "Rob Croes / Anefo", "date": "1976-02-17", "licence": "CC0", "retrieved": "2026-10-10", "feature": "archive aerial (not used for geometry)"}
+  ],
+  "raw": [
+    {"file": "artifacts/landmark-lanes/hotel-okura/raw/3dbag.json", "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012150422", "retrieved": "2026-10-10", "licence": "CC BY 4.0"}
+  ]
+}
