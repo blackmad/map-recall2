@@ -156,6 +156,13 @@ async function fetchArea(id: string): Promise<void> {
     }
     writeFileSync(rawPath, JSON.stringify(all));
   }
+  // `--digits 6`: coordinates to 1e-6° (≤ 0.11 m) in the published cells — 16 % smaller gz
+  // (city: 10.1 → 8.5 MB), well inside the band priors' own error.
+  const di = process.argv.indexOf('--digits');
+  if (di >= 0) {
+    const f = 10 ** Number(process.argv[di + 1]), r = (p: [number, number]): [number, number] => [Math.round(p[0] * f) / f, Math.round(p[1] * f) / f];
+    all = { ...all, ways: all.ways.map(w => ({ ...w, g: w.g.map(r) })), areas: all.areas.map(a => ({ ...a, rings: a.rings.map(ring => ring.map(r)) })) };
+  }
   const cellOf = (lng: number, lat: number) => { const [x, y] = lngLatToLocal(index, lng, lat); return cellKey(Math.floor(x / index.cellSizeM), Math.floor(y / index.cellSizeM)); };
   const cells = new Map<string, OsmGroundExtract>();
   let dropped = 0;
