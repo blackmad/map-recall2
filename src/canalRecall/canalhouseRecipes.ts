@@ -690,7 +690,9 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
       }
       if(c.trimWidthM>0)for(let i=1;i<p.length;i++){
         const [x,y]=p[i-1],[xx,yy]=p[i],distance=Math.hypot(xx-x,yy-y);if(distance<EPS)continue;
-        const g=new T.BoxGeometry(distance,c.trimWidthM,.04);g.rotateZ(Math.atan2(yy-y,xx-x));g.translate((x+xx)/2,(y+yy)/2,.065);add(g,'trim','crown/edge',facade);
+        // Keep the edge inside the front: a trim centred on an end (party-wall) edge would reach half its width into the neighbour.
+        const angle=Math.atan2(yy-y,xx-x),hx=Math.abs(Math.cos(angle))*distance/2+Math.abs(Math.sin(angle))*c.trimWidthM/2,cx=Math.min(Math.max((x+xx)/2,hx),length-hx);
+        const g=new T.BoxGeometry(distance,c.trimWidthM,.04);g.rotateZ(angle);g.translate(cx,(y+yy)/2,.065);add(g,'trim','crown/edge',facade);
       }
     }
     if(elevation.dormerFront&&!elevation.dormers)throw new Error('Attic front requires observed dormers');

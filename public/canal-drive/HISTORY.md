@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+## Block-face authoring becomes the default for attached buildings (2026-10-10)
+
+The user's point about chunks was modelling, not frame time. One intent per
+block face (one side of a street between cross streets), written against a
+rectified photo strip with one capture date; one compile with party walls by
+construction, cornice groups, per-pand gates and party-line interference
+checks; one strip review (photo | orthographic model | overlay). Bilderdijkstraat
+122–134 redone: the strip review exposed what per-house review had accepted —
+four houses with a storey too many, 081118 with 3 axes instead of 4, 155417's
+roof and cornice, a brick colour from another photo date, an awning gone by
+the strip date, generic shopfronts where the strip shows PLTS, Thai Thara,
+Amsterdam Bike Store, Danswinkel, Dirk van den Broek and Only Diva's. New face
+Utrechtsestraat 48–76 (10 pands) in one ~4 min pass. Two lanes had invented
+different shop schemas and lettering; unified into one `ShopfrontIntent`
+(strict validator, `sign.mount` fascia/wall/glazing) and the stroke-font
+lettering, which stayed legible at 20–40 m where 5×7 block letters broke up.
+`street-chunks/build.ts` skips pands covered by a face. Integrator viewed the
+merged Bilderdijkstraat orthographic sheet.
+
 ## Haparandaweg 952-1002, 746-786, 870-900 rebuilt from review sheets (2026-10-10)
 
 Rhythm specs with photo pixel citations (`scripts/haparandaweg/<id>-rhythm.json`)

@@ -31,7 +31,7 @@ async function parkAt(page: Page, at: number[], face: number[]) {
 test('shop houses close up in game', async ({ page }, info) => {
   test.setTimeout(400_000);
   mkdirSync(OUT, { recursive: true });
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: '?streetChunks=0' }); // per-house models: chunked faces replace them by default
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 });
   for (const h of houses) {
     const bearing = 90 + h.instance.northOffsetDegrees, outward = (bearing + 90) % 360;

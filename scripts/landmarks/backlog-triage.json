@@ -196,6 +196,10 @@
   "West Indian Warehouse": {
    "kind": "duplicate",
    "note": "Covered by installed model west-indisch-pakhuis."
+  },
+  "Tilla Tec": {
+   "kind": "duplicate",
+   "note": "Covered by installed model de-school (the former technical school it occupies)."
   }
  }
 }

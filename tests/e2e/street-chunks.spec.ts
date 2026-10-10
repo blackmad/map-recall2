@@ -10,7 +10,8 @@ import { openRoute } from './helpers';
 // SHARED_FRAME=1 repeats the run with ?sharedFrame=1 (one three.js frame for the page).
 const OUT = process.env.SHARED_FRAME ? 'artifacts/street-chunks/in-game-shared' : 'artifacts/street-chunks/in-game';
 const manifest = JSON.parse(readFileSync('public/canal-drive/ordinary-buildings-data/chunks.json', 'utf8'));
-const chunk = manifest.chunks.slice().sort((a: any, b: any) => b.pands.length - a.pands.length)[0];
+// The largest per-house chunk (build.ts, `chunk-bilder-*`): authored block faces (`chunk-face-*`) have their own spec, block-face.spec.ts.
+const chunk = manifest.chunks.filter((c: any) => c.id.startsWith('chunk-bilder-')).sort((a: any, b: any) => b.pands.length - a.pands.length)[0];
 
 const ahead = ([lng, lat]: number[], bearingDeg: number, metres: number) => {
   const r = bearingDeg * Math.PI / 180;

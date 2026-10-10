@@ -1,0 +1,657 @@
+{
+ "street": "Utrechtsestraat",
+ "seed": "0363100012178784",
+ "members": [
+  "0363100012178784",
+  "0363100012178704",
+  "0363100012178705",
+  "0363100012178707",
+  "0363100012169207",
+  "0363100012169208",
+  "0363100012178875",
+  "0363100012178876",
+  "0363100012178874",
+  "0363100012178865"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012178785 24.7 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012169153",
+   "reason": "frontage 32.5 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012169209",
+   "reason": "frontage 40.5 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012169210",
+   "reason": "frontage 34.3 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012169279",
+   "reason": "frontage 43.9 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012170915",
+   "reason": "frontage 37.2 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012170916",
+   "reason": "frontage 50.6 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012170917",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178611"
+  },
+  {
+   "pandId": "0363100012170920",
+   "reason": "frontage 59.2 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012170921",
+   "reason": "frontage 44.1 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012170923",
+   "reason": "frontage 73.8 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012171048",
+   "reason": "frontage 71.6 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012171049",
+   "reason": "frontage 68.9 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012171054",
+   "reason": "frontage 90.0 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012171055",
+   "reason": "frontage 83.1 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012171057",
+   "reason": "frontage 62.6 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012171058",
+   "reason": "frontage 53.8 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012171059",
+   "reason": "frontage 58.4 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012171932",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012171933"
+  },
+  {
+   "pandId": "0363100012171933",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178609"
+  },
+  {
+   "pandId": "0363100012171936",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178612"
+  },
+  {
+   "pandId": "0363100012171937",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178614"
+  },
+  {
+   "pandId": "0363100012172020",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012171937"
+  },
+  {
+   "pandId": "0363100012172021",
+   "reason": "frontage 33.2 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178073",
+   "reason": "frontage 72.0 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178074",
+   "reason": "frontage 76.2 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178079",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012171940"
+  },
+  {
+   "pandId": "0363100012178080",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012171931"
+  },
+  {
+   "pandId": "0363100012178081",
+   "reason": "frontage 38.6 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178082",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012171943"
+  },
+  {
+   "pandId": "0363100012178084",
+   "reason": "frontage 34.9 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178085",
+   "reason": "frontage 38.6 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178086",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012171941"
+  },
+  {
+   "pandId": "0363100012178123",
+   "reason": "frontage 78.0 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178124",
+   "reason": "frontage 82.9 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178125",
+   "reason": "frontage 72.1 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178126",
+   "reason": "frontage 82.4 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178127",
+   "reason": "frontage 75.7 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178129",
+   "reason": "frontage 87.6 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178131",
+   "reason": "frontage 54.9 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178132",
+   "reason": "frontage 51.5 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178133",
+   "reason": "frontage 63.0 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178134",
+   "reason": "frontage 66.0 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178136",
+   "reason": "frontage 49.4 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178137",
+   "reason": "frontage 60.7 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178139",
+   "reason": "frontage 81.1 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178573",
+   "reason": "frontage 76.9 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178574",
+   "reason": "frontage 87.2 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178575",
+   "reason": "frontage 82.0 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178607",
+   "reason": "frontage 35.8 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178608",
+   "reason": "frontage 31.8 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178609",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178777"
+  },
+  {
+   "pandId": "0363100012178612",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178783"
+  },
+  {
+   "pandId": "0363100012178615",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178614"
+  },
+  {
+   "pandId": "0363100012178617",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178785"
+  },
+  {
+   "pandId": "0363100012178618",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178688"
+  },
+  {
+   "pandId": "0363100012178664",
+   "reason": "frontage 96.6 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178673",
+   "reason": "frontage 73.4 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178674",
+   "reason": "frontage 67.7 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178684",
+   "reason": "frontage 77.5 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178687",
+   "reason": "frontage 30.7 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178691",
+   "reason": "frontage 52.6 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178692",
+   "reason": "frontage 48.6 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178693",
+   "reason": "frontage 45.1 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178694",
+   "reason": "frontage 49.4 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178695",
+   "reason": "frontage 44.4 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178696",
+   "reason": "frontage 35.3 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178697",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178785"
+  },
+  {
+   "pandId": "0363100012178699",
+   "reason": "frontage 67.0 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178700",
+   "reason": "frontage 37.8 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178701",
+   "reason": "frontage 32.3 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178702",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178703"
+  },
+  {
+   "pandId": "0363100012178703",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178784"
+  },
+  {
+   "pandId": "0363100012178706",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178707"
+  },
+  {
+   "pandId": "0363100012178708",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178698"
+  },
+  {
+   "pandId": "0363100012178777",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178779"
+  },
+  {
+   "pandId": "0363100012178780",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178698"
+  },
+  {
+   "pandId": "0363100012178781",
+   "reason": "frontage 34.8 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178782",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178613"
+  },
+  {
+   "pandId": "0363100012178788",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178797"
+  },
+  {
+   "pandId": "0363100012178789",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178788"
+  },
+  {
+   "pandId": "0363100012178790",
+   "reason": "frontage 33.1 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178798",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178799"
+  },
+  {
+   "pandId": "0363100012178800",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178799"
+  },
+  {
+   "pandId": "0363100012178801",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178864"
+  },
+  {
+   "pandId": "0363100012178864",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178865"
+  },
+  {
+   "pandId": "0363100012178868",
+   "reason": "frontage 50.8 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178869",
+   "reason": "frontage 46.3 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178870",
+   "reason": "frontage 39.6 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178871",
+   "reason": "frontage 34.1 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012178872",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178875"
+  },
+  {
+   "pandId": "0363100012178873",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012178801"
+  },
+  {
+   "pandId": "0363100012178877",
+   "reason": "frontage 31.1 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012182866",
+   "reason": "sightline to Utrechtsestraat crosses 0363100012171941"
+  },
+  {
+   "pandId": "0363100012182939",
+   "reason": "frontage 57.9 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012182940",
+   "reason": "frontage 66.1 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012182941",
+   "reason": "frontage 71.5 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012182946",
+   "reason": "frontage 47.4 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012182947",
+   "reason": "frontage 45.4 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012182948",
+   "reason": "frontage 42.8 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012182949",
+   "reason": "frontage 55.2 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012182950",
+   "reason": "frontage 63.5 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012251285",
+   "reason": "frontage 66.6 m from Utrechtsestraat"
+  },
+  {
+   "pandId": "0363100012171931",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171934",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171935",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171938",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171939",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171940",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171941",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171942",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171943",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171944",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178610",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178611",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178613",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178614",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178616",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178783",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178786",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178787",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178791",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178792",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178793",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178794",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178795",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178796",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178797",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178799",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178866",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178867",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182593",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012178784",
+   "alongM": 0,
+   "widthM": 6.41,
+   "eavesM": 15.36,
+   "roofMaxM": 19.17,
+   "storeys3dbag": 5,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178704",
+   "alongM": 5.32,
+   "widthM": 4.23,
+   "eavesM": 9.95,
+   "roofMaxM": 16.79,
+   "storeys3dbag": 4,
+   "builtYear": 1701,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178705",
+   "alongM": 11.59,
+   "widthM": 8.33,
+   "eavesM": 13.15,
+   "roofMaxM": 15.47,
+   "storeys3dbag": 5,
+   "builtYear": 1721,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178707",
+   "alongM": 17.69,
+   "widthM": 3.86,
+   "eavesM": 10.19,
+   "roofMaxM": 12.02,
+   "storeys3dbag": 4,
+   "builtYear": 1675,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012169207",
+   "alongM": 21.82,
+   "widthM": 4.4,
+   "eavesM": 8.46,
+   "roofMaxM": 11.83,
+   "storeys3dbag": 3,
+   "builtYear": 1675,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012169208",
+   "alongM": 29.34,
+   "widthM": 10.63,
+   "eavesM": 16.38,
+   "roofMaxM": 18.85,
+   "storeys3dbag": 0,
+   "builtYear": 1715,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178875",
+   "alongM": 45.18,
+   "widthM": 21.07,
+   "eavesM": 11.99,
+   "roofMaxM": 16.22,
+   "storeys3dbag": 4,
+   "builtYear": 1718,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012178876",
+   "alongM": 58.25,
+   "widthM": 5.06,
+   "eavesM": 12.71,
+   "roofMaxM": 14.99,
+   "storeys3dbag": 4,
+   "builtYear": 1712,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178874",
+   "alongM": 63.4,
+   "widthM": 5.23,
+   "eavesM": 15,
+   "roofMaxM": 16.89,
+   "storeys3dbag": 5,
+   "builtYear": 1731,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178865",
+   "alongM": 68.91,
+   "widthM": 5.65,
+   "eavesM": 15.2,
+   "roofMaxM": 16.86,
+   "storeys3dbag": 5,
+   "builtYear": 1928,
+   "uncertainty": []
+  }
+ ]
+}
