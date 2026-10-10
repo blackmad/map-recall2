@@ -9,10 +9,12 @@
 // z = 0 street level in the canal belt that the two can coexist while the
 // ground replaces MapLibre's fills inside the streaming radius.
 //
-// Not wired into the game: vector-map.js and the shared frame belong to other
-// lanes. Wiring is `frame.add('own-ground', groundParticipant(root), { order: GROUND_ORDER })`.
+// Wired into the game by gameGround.ts (`?ownGround=1`):
+// `frame.register('own-ground', groundParticipant(root), { order: GROUND_ORDER })`.
+// ORIGIN is the facades' (threeBuildingFeatures.ORIGIN), duplicated in
+// groundStore.ts so the ground bundles do not pull in the building modules.
 
-import { ORIGIN } from '../threeBuildingFeatures.js';
+import { GAME_ORIGIN as ORIGIN } from './groundStore.js';
 import { buildingProjectionScale } from '../buildingProjectionScale.js';
 import { mercatorOfLngLat, mercatorUnitsPerMetre, type Mat4 } from '../rendererShared/frameMath.js';
 import type { FrameParticipant } from '../rendererShared/sharedFrame.js';

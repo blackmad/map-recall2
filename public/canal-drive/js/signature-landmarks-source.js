@@ -544,6 +544,34 @@ export class SignatureLandmarks {
     };
   }
 
+  /**
+   * Own ground (`?ownGround=1`, shared frame only): stand each model on the
+   * relief — the lowest ground in a 6 m square round its anchor (the
+   * prototype's rule). `fn(anchor, halfM)` → metres, undefined while that
+   * relief is not resident; models wait at street level until it is.
+   */
+  setGroundBase(fn) {
+    this._groundBase = fn || null;
+    this.refreshGroundBases();
+  }
+
+  refreshGroundBases() {
+    let changed = 0;
+    for (const entry of this._entries || []) if (this._applyGroundBase(entry)) changed++;
+    if (changed) this.map.triggerRepaint();
+    return changed;
+  }
+
+  _applyGroundBase(entry) {
+    if (!entry.holder || !entry.units) return false;
+    const base = this._groundBase ? this._groundBase(entry.placement.anchor, 3) : 0;
+    if (base === undefined || base === entry.groundBase) return false;
+    entry.groundBase = base;
+    entry.holder.matrix.makeTranslation(0, 0, base * entry.units).multiply(entry.transform);
+    entry.holder.matrixWorldNeedsUpdate = true;
+    return true;
+  }
+
   /** Normalises a loaded model onto its anchor and builds its fixed transform.
    *  Buildings do not move, so the matrix is computed once here rather than
    *  every frame. */
@@ -625,7 +653,9 @@ export class SignatureLandmarks {
       holder.matrixWorldNeedsUpdate = true;
       this._sharedRoot.add(holder);
     }
-    this._entries.push({ spec, group, scene: modelScene, holder, transform, highlighted: false, placement, url, enuFromWorld });
+    const entry = { spec, group, scene: modelScene, holder, transform, units, groundBase: 0, highlighted: false, placement, url, enuFromWorld };
+    this._entries.push(entry);
+    if (this._groundBase) this._applyGroundBase(entry);
     this.shown.add(spec.id);
     // Only now is it safe to take the grey box away.
     this._applySuppression();
