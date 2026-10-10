@@ -124,18 +124,23 @@ const SHOP = {pierM: 0.3, glassBottomM: 0.55, fasciaM: 0.62, fasciaGapM: 0.08};
 
 /** Regular bay grid fitted to width/height. `heightTop` is where full storeys end. */
 function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
-  const basement = f.basement !== 'none' ? clamp(heightTop * 0.07, 0.7, 1.2) : 0;
+  // A souterrain (half-sunk storey under a bel-etage) is a full storey, not a 0.7-1.2 m plinth: one more storey unit.
+  const souterrain = f.souterrain === true && f.basement !== 'none';
+  let basement = f.basement !== 'none' && !souterrain ? clamp(heightTop * 0.07, 0.7, 1.2) : 0;
   const n = f.storeys, groundFactor = f.tallGround || (f.shopfront && !f.shopfront.bays) ? 1.32 : 1.1;
   // Upper storeys diminish by 4% each; solve for the first upper storey height.
   const factors = [groundFactor, ...Array.from({length: n - 1}, (_, k) => 0.96 ** k)];
-  const unit = (heightTop - basement) / factors.reduce((s, x) => s + x, 0);
+  const unit = (heightTop - basement) / (factors.reduce((s, x) => s + x, 0) + (souterrain ? 1 : 0));
+  if (souterrain) basement = unit;
   const heights = factors.map(x => x * unit);
   const bays = Array.isArray(f.bays) ? f.bays : Array(n).fill(f.bays);
   const bars = WINDOW_BARS[f.windows], segmental = f.windows === 'arched' ? {head: 'segmental' as const, headRiseM: 0.18, headSegments: 4} : {};
   // Round-arched storeys: a semicircular head (rise = half the width).
   const headFor = (s: number, w: number) => f.archedStoreys?.includes(s) ? {head: 'segmental' as const, headRiseM: Math.floor(w / 2 * 1000) / 1000, headSegments: 6} : segmental;
   const openings: CanalhouseOpening[] = [], glazedBays: CanalhouseGlazedBay[] = [], balconies: Layout['balconies'] = [];
-  const doorWidth = f.shopfront?.residentialDoor ? clamp(width * 0.17, 0.95, 1.3) : clamp(width * 0.2, 0.95, 1.4);
+  // `gridAt`: the window grid spans only the visual house module [gx0, gx0 + gw] of the front (0 and width when absent).
+  const gx0 = f.gridAt ? width * f.gridAt.from : 0, gw = f.gridAt ? width * (f.gridAt.to - f.gridAt.from) : width;
+  const doorWidth = f.shopfront?.residentialDoor ? clamp(gw * 0.17, 0.95, 1.3) : clamp(gw * 0.2, 0.95, 1.4);
   let doorLeft: number | null = null;
   const warnings: string[] = [];
   const sf = f.shopfront, rd = sf?.residentialDoor;
@@ -143,15 +148,15 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   const grid = f.axisGrid ?? Math.max(...bays.slice(n > 1 ? 1 : 0));
   const equalPiers = f.piers !== 'margin';
   const gridOf = (g: number) => {
-    if (equalPiers) { const w = clamp(0.58 * width / (g + 0.42), 0.6, f.windowProportion === 'tall' ? 1.9 : 1.5), gap = (width - g * w) / (g + 1); return {winW: w, pitch: w + gap, first: gap + w / 2}; }
-    const margin = clamp(width * 0.09, 0.3, 1.2), pitch = g ? (width - 2 * margin) / g : 0;
-    return {winW: clamp(pitch * 0.58, 0.6, 1.5), pitch, first: margin + pitch / 2};
+    if (equalPiers) { const w = clamp(0.58 * gw / (g + 0.42), 0.6, f.windowProportion === 'tall' ? 1.9 : 1.5), gap = (gw - g * w) / (g + 1); return {winW: w, pitch: w + gap, first: gx0 + gap + w / 2}; }
+    const margin = clamp(gw * 0.09, 0.3, 1.2), pitch = g ? (gw - 2 * margin) / g : 0;
+    return {winW: clamp(pitch * 0.58, 0.6, 1.5), pitch, first: gx0 + margin + pitch / 2};
   };
   const sharedGrid = gridOf(grid);
   /** Unequal bays: every cell holds one window, centred, 58 % of the cell (the equal-pier ratio), never wider than the cell allows. */
   const weighted = (weights: number[]) => {
-    const total = weights.reduce((t, x) => t + x, 0), edges = [0];
-    for (const w of weights) edges.push(edges.at(-1)! + width * w / total);
+    const total = weights.reduce((t, x) => t + x, 0), edges = [gx0];
+    for (const w of weights) edges.push(edges.at(-1)! + gw * w / total);
     const cell = (a: number) => edges[a + 1] - edges[a];
     return {edges, cell, centre: (a: number) => (edges[a] + edges[a + 1]) / 2, w: (a: number) => Math.min(clamp(0.58 * cell(a), 0.5, 2.8), 0.82 * cell(a))};
   };
@@ -176,7 +181,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     return {centre: (b: number) => g.first + g.pitch * (axes ? axes[b] : b), w: () => g.winW, pitch: () => g.pitch};
   };
   // Bay boundaries of the shared grid (left to right, `grid + 1` values): crown and shop spans follow them.
-  const bayEdges = sharedWeighted ? sharedWeighted.edges : [0, ...Array.from({length: grid - 1}, (_, a) => { const g = sharedGrid; return g.first + g.pitch * a + g.pitch / 2; }), width];
+  const bayEdges = sharedWeighted ? sharedWeighted.edges : [f.gridAt ? Math.max(0, gx0) : 0, ...Array.from({length: grid - 1}, (_, a) => { const g = sharedGrid; return g.first + g.pitch * a + g.pitch / 2; }), f.gridAt ? Math.min(width, gx0 + gw) : width];
   const axisCentres = Array.from({length: grid}, (_, a) => sharedWeighted ? sharedWeighted.centre(a) : sharedGrid.first + sharedGrid.pitch * a);
   // A shopfront limited to some bays: its zone runs between the boundaries of those bays.
   const shopBays = sf?.bays ?? null;
@@ -280,8 +285,10 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     const count = bays[0], bp = storeyPlan(0, count);
     for (let b = 0; b < count; b++) {
       const centre = bp.centre(b), w = clamp(bp.pitch(b) * 0.5, 0.5, 1.2);
-      if (doorLeft !== null && centre + w / 2 > doorLeft - 0.9 && centre - w / 2 < doorLeft + doorWidth + 0.9) continue;
-      openings.push({id: `basement-b${b}`, kind: 'window', leftM: centre - w / 2, bottomM: 0.12, widthM: w, heightM: Math.max(0.35, basement - 0.3), trimWidthM: 0.05, verticalBars: [.5], frameSurface: 'trim', barSurface: 'trim'});
+      // A souterrain has storey windows (the stoop runs up beside them); a low basement keeps 0.9 m clear of the stoop.
+      const clear = souterrain ? 0.25 : 0.9;
+      if (doorLeft !== null && centre + w / 2 > doorLeft - clear && centre - w / 2 < doorLeft + doorWidth + clear) continue;
+      openings.push({id: `basement-b${b}`, kind: 'window', leftM: centre - w / 2, bottomM: souterrain ? round(basement * 0.3) : 0.12, widthM: w, heightM: souterrain ? round(basement * 0.58) : Math.max(0.35, basement - 0.3), trimWidthM: 0.05, verticalBars: [.5], frameSurface: 'trim', barSurface: 'trim'});
     }
   }
   const groundBlocks = f.groundFront ? groundFrontLayout(f.groundFront, width, heights[0], openings) : undefined;
@@ -428,6 +435,13 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
   }
   // The first front seeds the shared footprint/roof conversion.
   const survey = surveyRecipe({attributes: facts.attributes, roofsRD: facts.roofsRD}, facts.surveyFootprintPolygonsRD, pieces[0].endpoints);
+  // A photo-measured cornice under a mansard can sit below 3DBAG's lowest roof point (LoD2.2 draws the steep mansard as
+  // wall, De Clercqstraat 2-6): the shell then stops at the cornice and the roof skirt closes the walls behind the mansard.
+  const mansardEaves = intent.fronts.filter(f => f.roofFront === 'mansard').map(f => facts.measuredEavesM?.[f.id]).filter((v): v is number => v !== undefined);
+  if (mansardEaves.length && round(Math.min(...mansardEaves)) < survey.shellTopM) {
+    warnings.push(`shell top lowered from ${round(survey.shellTopM)} m (3DBAG) to the measured cornice ${round(Math.min(...mansardEaves))} m under the mansard`);
+    (survey as {shellTopM: number}).shellTopM = round(Math.min(...mansardEaves));
+  }
   const anchor = survey.anchorRD, toLocal = (p: number[]): CanalhousePoint => [p[0] - anchor[0], anchor[1] - p[1]];
   const polygons = survey.polygons;
   const house = unobservedHouse(intent.pandId);
@@ -627,13 +641,15 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     const mansard = front.roofFront === 'mansard' ? {bottomM: round(eaves), heightM: round(clamp(0.65 * upperStoreyM, 1.4, 2.6)), setbackM: 0} : undefined;
     if (mansard) mansard.setbackM = round(mansard.heightM / Math.tan(72 * Math.PI / 180));
     if (front.dormers) {
-      const k = front.dormers, w = clamp(mw / (k * 2.2), 0.9, 1.6), gap = (mw - k * w) / (k + 1);
+      const k = front.dormers, w0 = clamp(mw / (k * 2.2), 0.9, 1.6), gap = (mw - k * w0) / (k + 1);
+      // `dormerAt`: authored spans (a half dormer against a party wall); else `k` dormers evenly spaced.
+      const span = (i: number) => front.dormerAt ? {left: front.dormerAt[i].from * mw, w: (front.dormerAt[i].to - front.dormerAt[i].from) * mw} : {left: gap + i * (w0 + gap), w: w0};
       const style = front.dormerStyle ?? 'plain';
       // Pediment: a triangular trim pediment over a projecting frame. Pointed: a tall pointed roof. On a mansard the dormer
       // stands on the roof face, its front just behind the cornice.
-      const shape = style === 'pediment' ? {roofRiseM: round(clamp(w * 0.32, 0.4, 0.6)), frontOverhangM: 0.12} : style === 'pointed' ? {roofRiseM: round(clamp(w * 0.85, 0.8, 1.4))} : {roofRiseM: 0.45};
+      const shape = (w: number) => style === 'pediment' ? {roofRiseM: round(clamp(w * 0.32, 0.4, 0.6)), frontOverhangM: 0.12} : style === 'pointed' ? {roofRiseM: round(clamp(w * 0.85, 0.8, 1.4))} : {roofRiseM: 0.45};
       const placeOnMansard = mansard ? {setbackM: round(Math.max(0.05, maxOut + 0.03)), heightM: round(clamp(mansard.heightM - 0.25, 1.1, 1.6))} : {setbackM: 0.35, heightM: 1.45};
-      elevation.dormers = seen(Array.from({length: k * count}, (_, j) => ({id: `dormer-${j}`, leftM: round(flipX(place(Math.floor(j / k), gap + (j % k) * (w + gap), w), w)), widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + 0.05), heightM: placeOnMansard.heightM, depthM: 1.3, roofRiseM: shape.roofRiseM, ...('frontOverhangM' in shape ? {frontOverhangM: shape.frontOverhangM} : {}), setbackM: placeOnMansard.setbackM, trimWidthM: 0.07, verticalBars: [.5], wallSurface: 'trim' as const, roofSurface: 'roof' as const})));
+      elevation.dormers = seen(Array.from({length: k * count}, (_, j) => { const {left, w} = span(j % k), sh = shape(w); return {id: `dormer-${j}`, leftM: round(flipX(place(Math.floor(j / k), left, w), w)), widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + 0.05), heightM: placeOnMansard.heightM, depthM: 1.3, roofRiseM: sh.roofRiseM, ...('frontOverhangM' in sh ? {frontOverhangM: sh.frontOverhangM} : {}), setbackM: placeOnMansard.setbackM, trimWidthM: 0.07, verticalBars: [.5], wallSurface: 'trim' as const, roofSurface: 'roof' as const}; }));
     }
     if (front.hoist) elevation.hoists = seen(Array.from({length: count}, (_, m) => ({id: count > 1 ? `hoist-m${m}` : 'hoist', centerM: flipX(place(m, crownSpan ? (crownSpan[0] + crownSpan[1]) / 2 : mw / 2), 0), heightM: round(gabled ? crownTop - 0.9 : eaves + 0.1), widthM: 0.14, beamHeightM: 0.18, projectionM: 1.1, setbackM: 0.1, surface: 'door' as const})));
     if ((front.basement === 'stoop' || front.basement === 'stoop-and-windows') && layout.doorLeft !== null && layout.groundBase > 0) {

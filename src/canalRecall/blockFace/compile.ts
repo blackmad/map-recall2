@@ -408,13 +408,20 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
   const groupOf = (p: string) => face.continuity.corniceGroups.findIndex(gr => gr.pands.includes(p));
   const interference: Interference[] = [];
   const contacts = findContacts(rings.map(r => r as [number, number][][]), 0.1);
+  // Each house's front plane: the most street-ward street-facing wall (frame z), clamped to the frame line, so a straight
+  // face measures exactly as before (fronts at z ~ 0) and a bent face measures every house against its own front.
+  const frontZ = tris.map(ts => Math.min(0, Math.max(-Infinity, ...ts.filter(t => isWall(t.slot) && t.n[2] > 0.9).map(t => Math.max(...t.p.map(v => v[2]))))));
   for (let i = 0; i + 1 < intents.length; i++) {
     const L = tris[i], R = tris[i + 1], joint = chunk.report.joints[i];
     const xLine = (chunk.pands[i].frontage.x1 + chunk.pands[i + 1].frontage.x0) / 2;
     const inside = (v: number[], rr: number[][][]) => rr.some(r => pointInRing([v[0], v[2]], r));
     // Surface of one house lying inside the neighbour's footprint even after a 5 cm step back towards its own side
     // (faces ON the shared party line do not count; they are trimmed or exposed walls).
-    const penetration = (a: Tri[], rr: number[][][], toward: number) => a.filter(t => t.p.every(v => inside([v[0] - toward * 0.05, v[1], v[2]], rr))).reduce((s, t) => s + area3(t), 0);
+    // A wall lying ON the neighbour's footprint boundary (a corner pand wrapping behind its neighbour shares that rear edge)
+    // is a party wall too: its centroid must be > 3 cm inside, not just a millimetre past the edge.
+    const boundaryDist = (x: number, z: number, rr: number[][][]) => Math.min(...rr.flatMap(r => r.map((p, k) => { const q = r[(k + 1) % r.length], dx = q[0] - p[0], dz = q[1] - p[1], l2 = dx * dx + dz * dz || 1, u = Math.max(0, Math.min(1, ((x - p[0]) * dx + (z - p[1]) * dz) / l2)); return Math.hypot(x - p[0] - u * dx, z - p[1] - u * dz); })));
+    const deepInside = (t: Tri, rr: number[][][]) => boundaryDist((t.p[0][0] + t.p[1][0] + t.p[2][0]) / 3, (t.p[0][2] + t.p[1][2] + t.p[2][2]) / 3, rr) > 0.03;
+    const penetration = (a: Tri[], rr: number[][][], toward: number) => a.filter(t => t.p.every(v => inside([v[0] - toward * 0.05, v[1], v[2]], rr)) && deepInside(t, rr)).reduce((s, t) => s + area3(t), 0);
     const leftIntoRight = penetration(L, rings[i + 1], 1), rightIntoLeft = penetration(R, rings[i], -1);
     // Street-side details: in front of the frontage plane (z > 0.02), reaching past the party line.
     // Street-side details (not the shell or roof, which end on the party wall by construction) that reach past the
@@ -422,11 +429,13 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     // are rarely square to the averaged face axis.
     const pairContacts = contacts.filter(c => (c.a === i && c.b === i + 1));
     const front = pairContacts.sort((p, q) => Math.max(q.oz, q.oz + q.dz * q.s1) - Math.max(p.oz, p.oz + p.dz * p.s1))[0];
-    const detail = (a: Tri[]) => a.filter(t => !(isWall(t.slot) || ['roofTile', 'slate', 'bitumen'].includes(t.slot)) && t.p.some(v => v[2] > -1));
+    // "Street side" is relative to each house's own front plane (street-facing wall), not the chunk frame's z = 0: on a
+    // face that bends a few degrees the middle houses stand more than 1 m behind the frame line (Nassaukade 312-307).
+    const detail = (a: Tri[], k: number) => a.filter(t => !(isWall(t.slot) || ['roofTile', 'slate', 'bitumen'].includes(t.slot)) && t.p.some(v => v[2] > frontZ[k] - 1));
     // Signed distance across the contact line, positive towards the right-hand house.
     const across = (v: number[]) => front ? ((v[0] - front.ox) * -front.dz + (v[2] - front.oz) * front.dx) * sideSign : v[0] - xLine;
     const sideSign = front ? Math.sign((rings[i + 1][0].reduce((s, q) => s + q[0], 0) / rings[i + 1][0].length - front.ox) * -front.dz + (rings[i + 1][0].reduce((s, q) => s + q[1], 0) / rings[i + 1][0].length - front.oz) * front.dx) || 1 : 1;
-    const overL = Math.max(0, ...detail(L).flatMap(t => t.p.map(v => across(v)))), overR = Math.max(0, ...detail(R).flatMap(t => t.p.map(v => -across(v))));
+    const overL = Math.max(0, ...detail(L, i).flatMap(t => t.p.map(v => across(v)))), overR = Math.max(0, ...detail(R, i + 1).flatMap(t => t.p.map(v => -across(v))));
     const near = (a: Tri[]) => a.filter(t => t.p.some(v => Math.abs(v[0] - xLine) < 1.5));
     // Facade z-fighting fails at 1 dm2; roof planes (3DBAG partitions that overlap by centimetres at the party line) at 5 dm2.
     const roofSlot = (t: Tri) => ['roofTile', 'slate', 'bitumen'].includes(t.slot);
@@ -434,8 +443,8 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     const step = cm(ground.eavesAfter[i + 1] - ground.eavesAfter[i]), same = groupOf(face.houses[i].pandId) >= 0 && groupOf(face.houses[i].pandId) === groupOf(face.houses[i + 1].pandId);
     const verdict = same ? (Math.abs(step) <= 0.15 ? 'aligned' : 'step-not-supported') : (Math.abs(step) >= 0.1 ? 'step-supported' : 'missing-step');
     // Facade ends measured on the street front only (street-facing brick within 1 m of the frontage plane; rear wings can be wider).
-    const frontBrick = (a: Tri[]) => a.filter(t => isWall(t.slot) && t.n[2] > 0.9 && Math.max(...t.p.map(v => v[2])) > -1).flatMap(t => t.p.map(v => v[0]));
-    const gap = cm(Math.min(...frontBrick(R)) - Math.max(...frontBrick(L)));
+    const frontBrick = (a: Tri[], k: number) => a.filter(t => isWall(t.slot) && t.n[2] > 0.9 && Math.max(...t.p.map(v => v[2])) > frontZ[k] - 1).flatMap(t => t.p.map(v => v[0]));
+    const gap = cm(Math.min(...frontBrick(R, i + 1)) - Math.max(...frontBrick(L, i)));
     const item: Interference = {left: face.houses[i].pandId, right: face.houses[i + 1].pandId, frontGapM: gap, frontDepthStepM: joint.depthStepM,
       penetrationM2: {leftIntoRight: cm(leftIntoRight), rightIntoLeft: cm(rightIntoLeft)}, detailOverhangM: {left: cm(overL), right: cm(overR)}, zFightM2: cm(zf), roofZFightM2: cm(zfRoof), eavesStepM: step, sameCorniceGroup: same, corniceVerdict: verdict,
       pass: Math.abs(gap) <= 0.05 && leftIntoRight + rightIntoLeft <= 0.05 && overL <= 0.03 && overR <= 0.03 && zf <= 0.01 && zfRoof <= 0.05 && verdict !== 'step-not-supported'};
