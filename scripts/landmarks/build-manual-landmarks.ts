@@ -1,5 +1,8 @@
 import {buildChassekerk} from './chassekerk-builder';
 import {buildFatihMoskee} from './fatih-moskee-builder';
+import {buildWoongebouwWladiwostok} from './woongebouw-wladiwostok-builder';
+import {buildVictoriaHotel} from './victoria-hotel-builder';
+import {buildPakhuisDeZwijger} from './pakhuis-de-zwijger-builder';
 import {buildHotelOkura} from './hotel-okura-builder';
 import {buildKrasnapolsky} from './krasnapolsky-builder';
 import {buildArtisAquarium} from './artis-aquarium-builder';
@@ -367,6 +370,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
     if(id==='chassekerk')buildChassekerk(w,d,helpers);
     else if(id==='fatih-moskee')buildFatihMoskee(w,d,helpers);
+    else if(id==='woongebouw-wladiwostok')buildWoongebouwWladiwostok(w,d,helpers);
+    else if(id==='victoria-hotel')buildVictoriaHotel(w,d,helpers);
+    else if(id==='pakhuis-de-zwijger')buildPakhuisDeZwijger(w,d,helpers);
     else if(id==='hotel-de-l-europe')buildHotelDeLEurope(w,d,helpers);
     else if(id==='american-hotel')buildAmericanHotel(w,d,helpers);
     else if(id==='trippenhuis')buildTrippenhuis(w,d,helpers);

@@ -1,0 +1,46 @@
+{
+  "id": "woongebouw-wladiwostok",
+  "name": "Woongebouw Wladiwostok",
+  "landmarkId": "woongebouw-wladiwostok",
+  "modelUrl": "./models/woongebouw-wladiwostok.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012089568"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.936266441562724,
+      52.37750540889138
+    ],
+    "headingDegrees": 95.56,
+    "lengthMetres": 49,
+    "widthMetres": 44.3
+  },
+  "surveyed": {
+    "anchor": [
+      4.936266441562724,
+      52.37750540889138
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012089568 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "greyBrick": "#565a60",
+    "slate": "#55585d",
+    "brick": "#7a4a3c",
+    "concrete": "#8d8d89",
+    "dark": "#1f2125",
+    "glass": "#9ab6cc",
+    "frame": "#d0d5da"
+  },
+  "attribution": {
+    "title": "Woongebouw Wladiwostok",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Woongebouw_Wladiwostok",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry on the BAG footprint and 3DBAG LoD2.2 massing; arc facade window columns, storey rows and balcony stack measured by eye from Commons photographs (2018, 2019, 2023, 2026), no pixels or meshes imported."
+  }
+}
