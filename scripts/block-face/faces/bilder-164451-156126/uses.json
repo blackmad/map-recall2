@@ -1,0 +1,188 @@
+{
+ "street": "Bilderdijkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T07:51:47.328Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012164451",
+   "addresses": [
+    "Bilderdijkstraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 82-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000586036"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11576156399,
+     "lngLat": [
+      4.8702738,
+      52.3697275
+     ],
+     "tags": {
+      "amenity": "bar",
+      "name": "The Champ"
+     },
+     "fetchedAt": "2026-10-10T07:51:47.328Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165444",
+   "addresses": [
+    "Bilderdijkstraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 80-H",
+     "use": "winkelfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000586033"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8679796305,
+     "lngLat": [
+      4.8702535,
+      52.3697595
+     ],
+     "tags": {
+      "addr:housenumber": "80",
+      "addr:street": "Bilderdijkstraat",
+      "name": "Beeldverhaal",
+      "opening_hours": "Tu-Sa 10:30-18:00",
+      "shop": "books"
+     },
+     "fetchedAt": "2026-10-10T07:51:47.328Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159739",
+   "addresses": [
+    "Bilderdijkstraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 78-H",
+     "use": "winkelfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000586028"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1328375472,
+     "lngLat": [
+      4.8702495,
+      52.3698261
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "78",
+      "addr:postcode": "1053KW",
+      "addr:street": "Bilderdijkstraat",
+      "branch": "Amsterdam west",
+      "brand": "Beter Horen",
+      "brand:website": "https://beterhoren.nl",
+      "brand:wikidata": "Q98282942",
+      "check_date:opening_hours": "2026-08-03",
+      "name": "Beter Horen",
+      "opening_hours": "Mo-Fr 09:00-17:30",
+      "opening_hours:url": "https://www.beterhoren.nl/audiciens/gehoorapparaten-noord-holland/beter-horen-amsterdam-west-s129",
+      "phone": "+31 20 618 6587",
+      "shop": "hearing_aids",
+      "source:opening_hours": "website",
+      "website": "https://www.beterhoren.nl/audiciens/gehoorapparaten-noord-holland/beter-horen-amsterdam-west-s129"
+     },
+     "fetchedAt": "2026-10-10T07:51:47.328Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012064444",
+   "addresses": [
+    "Bilderdijkstraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 76-H",
+     "use": "winkelfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000586024"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157866",
+   "addresses": [
+    "Bilderdijkstraat 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 74-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000586017"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11576157880,
+     "lngLat": [
+      4.8702045,
+      52.3699326
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "cuisine": "chinese",
+      "name": "Pagode",
+      "opening_hours": "We-Su 16:00-22:00; Mo,Tu off"
+     },
+     "fetchedAt": "2026-10-10T07:51:47.328Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156126",
+   "addresses": [
+    "Bilderdijkstraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 72-H",
+     "use": "winkelfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000586003"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}
