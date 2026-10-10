@@ -6904,6 +6904,13 @@ Map source: ${osmUrl(places[i][0])}`);
       },
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
+      materialOverrides: {
+        white: "#ece1c8",
+        stone: "#d9cdb0",
+        frame: "#ddd1b6",
+        glass: "#41596a",
+        greyBrick: "#6f6a64"
+      },
       attribution: {
         title: "W139 restored neoclassical front and former theatre",
         author: "Map Recall",
@@ -12056,11 +12063,11 @@ Map source: ${osmUrl(places[i][0])}`);
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        white: "#eeeade",
+        white: "#f7f4ec",
         dark: "#253731",
-        glass: "#839390",
-        frame: "#b7b4a5",
-        slate: "#645e55",
+        glass: "#3a494b",
+        frame: "#e1ddce",
+        slate: "#63676a",
         concrete: "#9b9e94"
       },
       attribution: {
