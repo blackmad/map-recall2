@@ -121,10 +121,10 @@
       "id": "fatih-side-texture",
       "task": "Correct Fatih Mosque side-wall texture material",
       "priority": "high",
-      "status": "verified-native-awaiting-hosted",
+      "status": "superseded-by-manual-model",
       "requestedOn": "2026-10-08",
       "owner": "fatih_side_texture",
-      "nextAction": "Publish accepted scoped material/height/pin correction and verify canonical hosted scene; retain source architecture gap.",
+      "nextAction": "Superseded 2026-10-10 by the bespoke fatih-moskee GLB (suppresses pand 0363100012167944, keeps landmarkId extract_landmarks_1997051448 and the native-kit pin admission). In-game shot shows a single building. The procedural kit treatment no longer renders for this pand.",
       "sourceArchive": {
         "commit": "ba81c5790",
         "path": "models/fatih-mosque/checkpoints/side-material-20261008"
@@ -133,7 +133,8 @@
       "integratedSourceArchive": {
         "commit": "88cb31157",
         "path": "models/fatih-mosque/checkpoints/integrated-accepted-20261008"
-      }
+      },
+      "modelId": "fatih-moskee"
     },
     {
       "id": "native-kit-poi-pin-audit",
