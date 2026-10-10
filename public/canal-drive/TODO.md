@@ -46,13 +46,9 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   loops and 24/42 see-through rays from its glass promenade. Aron Schuster
   synagogue installed after rework; its rounded corner is still squared.
 - **Lanes cut off by the usage limit (2026-10-10)**, resume from their branches:
-  the
-  glbQuality false-positive fix (blank-wall only on outside-visible area,
-  see-through closed under a roofed porch) is written and unit-tested but
-  uncommitted in worktree agent-a9751763df4f4ceab, with palace doorway
-  panels removed and the Concertgebouw canopy restored — rebuild, run the
-  full audit diff, then commit; Bellevue not started. Held: Zevenlandenhuizen (see-through
-  11/42).
+  audit see-through now back to FAIL on real gaps: adam-tower, de-gooyer,
+  haarlemmermeerstation, hart-museum, huis-bartolotti, pulitzer-amsterdam
+  (footprint-edge rays; check each against photos).
   Elevation skeletons with photos exist for 25 landmarks
   (`scripts/landmarks/*-elevations.json`, photos in `artifacts/landmark-lanes/`);
   counts are not filled: Haiku blind counts were too noisy — use a stronger

@@ -131,6 +131,21 @@ except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
 (continuous ground and cornice line) does not need chunking. Unmeasured on a
 real phone GPU.
 
+## Audit false positives fixed; Sea Palace, IJ-toren, Zevenlandenhuizen (2026-10-10)
+
+`glbQuality.ts`: blank-wall now counts only wall area visible from outside
+(horizontal rays, 2 m samples, capped per wall), so enclosed partitions no
+longer fail a model; see-through fires from just outside the real footprint
+edge (25 cm raster, courtyards included) instead of the convex hull, so
+stepped street rows close; a ray that misses only counts as closed under a
+LOW soffit within 4 m (a porch canopy), never under a main roof. A first
+version that accepted any overhead roof flipped 20 models to PASS; spot
+checks showed it masked real gaps, and six went back to FAIL. Sea Palace
+(curved upswept pagoda eaves on its pontoon), IJ-toren (blue-teal curtain
+wall, grounded quay canopy) and Zevenlandenhuizen (seven national fronts)
+installed. Bellevue is the same BAG pand as the installed DeLaMar; Garage
+Noord and RADION are plain sheds.
+
 ## Klimhal and Symphony (2026-10-10)
 
 Klimhal Amsterdam (Naritaweg, lofted ogive hall with glazed flanks) and
