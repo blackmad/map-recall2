@@ -1,3 +1,4 @@
+import {buildSeaPalace} from './sea-palace-builder';
 import {buildZuiderkerk} from './zuiderkerk-builder';
 import {buildAronSchusterSynagoge} from './aron-schuster-synagoge-builder';
 import {buildMuiderkerk} from './muiderkerk-builder';
@@ -348,7 +349,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='zuiderkerk')buildZuiderkerk(w,d,helpers);
+    if(id==='sea-palace')buildSeaPalace(w,d,helpers);
+    else if(id==='zuiderkerk')buildZuiderkerk(w,d,helpers);
     else if(id==='aron-schuster-synagoge')buildAronSchusterSynagoge(w,d,helpers);
     else if(id==='muiderkerk')buildMuiderkerk(w,d,helpers);
     else if(id==='willem-de-zwijgerkerk')buildWillemDeZwijgerkerk(w,d,helpers);

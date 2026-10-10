@@ -1,14 +1,14 @@
 {
   "id": "n13404202880",
+  "modelId": "sea-palace",
   "name": "Sea Palace",
-  "draftStatus": "source-hold; coordinator must adapt genuine extract identity without duplicate destination",
-  "funFact": "Sea Palace has floated beside Oosterdokskade since 1984. Its three floors house Cantonese dining and private events, with a roof terrace reached from the top floor. The restaurant is known for handmade dim sum and its Chinese pavilion architecture.",
-  "sourceUrls": [
+  "description": "Sea Palace is a three-storey Chinese restaurant afloat on a pontoon beside Oosterdokskade, a short walk from Centraal Station. Its three stacked green-glazed-tile roofs, each with a red rim and corners swept sharply upward, and its red columns and gold-medallion balustrades follow the Cantonese pavilion style. Guests dine on the lower floors, and the top floor opens onto a roof terrace.",
+  "funFact": "Sea Palace has floated beside Oosterdokskade since 1984 and is known for handmade dim sum. It is a vessel rather than a building, so the Dutch BAG register holds no pand for it.",
+  "sourceUrl": "https://seapalace.nl/en/about-us/",
+  "additionalSources": [
     "https://seapalace.nl/en/",
-    "https://seapalace.nl/en/about-us/",
     "https://seapalace.nl/en/directions/"
   ],
   "lat": 52.375758,
-  "lng": 4.906286,
-  "pinNotes": "Existing mapped restaurant point only; this is not an accepted route-finish pin. Verify quay public gangway before integration."
+  "lng": 4.906286
 }
