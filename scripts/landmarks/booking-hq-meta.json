@@ -1,0 +1,10 @@
+{
+  "name": "Booking.com headquarters",
+  "landmarkId": "booking-hq",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Hoofdkantoor_van_Booking.com",
+  "suppressOsmIds": ["NL.IMBAG.Pand.0363100012250152"],
+  "pandId": "0363100012250152",
+  "materialOverrides": {"dark": "#343b40", "glass": "#86a3b3", "concrete": "#8c8d8a", "frame": "#4a5258", "white": "#f1f1ee"},
+  "surveySource": "BAG 0363100012250152 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean.",
+  "modifications": "Original texture-free geometry on the 3DBAG LoD2.2 massing; curtain-wall bands, residential tower grid and sign measured by eye from the 2025 municipal panoramas, no pixels or meshes imported."
+}
