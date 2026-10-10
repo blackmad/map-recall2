@@ -26954,6 +26954,443 @@
           ]
         ]
       }
+    },
+    {
+      id: "asterweg-23",
+      name: "Asterweg 23",
+      category: "ordinary",
+      modelUrl: "./models/asterweg-23.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012064810"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.902867411278782,
+          52.39087627189409
+        ],
+        headingDegrees: 163.5,
+        lengthMetres: 102.33,
+        widthMetres: 86.63
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.902758121999647,
+          52.39099735679942
+        ],
+        northOffsetDegrees: 0,
+        source: "PDOK BAG 0363100012064810 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      materialOverrides: {
+        brick: "#8a7656",
+        concrete: "#cfd0cb",
+        slate: "#6b7378",
+        dark: "#25282b",
+        glass: "#4f6674",
+        frame: "#3a3d40",
+        red: "#9a3a32",
+        white: "#e6e6e2",
+        blue: "#2f5d9a"
+      },
+      preservePositionPrecision: true,
+      attribution: {
+        title: "Asterweg 23 original architecture",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012064810",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.903336444424876,
+              52.39048264851578
+            ],
+            [
+              4.903692038473646,
+              52.390547310975066
+            ],
+            [
+              4.903605628386901,
+              52.39072521064471
+            ],
+            [
+              4.903150981524049,
+              52.39064252732505
+            ],
+            [
+              4.902838993199189,
+              52.39128468811001
+            ],
+            [
+              4.902809436326965,
+              52.39134513513553
+            ],
+            [
+              4.902693758843909,
+              52.391323954403276
+            ],
+            [
+              4.9027233305495255,
+              52.39126350746663
+            ],
+            [
+              4.902554169205531,
+              52.39123252695714
+            ],
+            [
+              4.9025245971918805,
+              52.39129298283894
+            ],
+            [
+              4.90238386392635,
+              52.39126721442222
+            ],
+            [
+              4.90239666653715,
+              52.39124104080758
+            ],
+            [
+              4.902139846102578,
+              52.39119401738336
+            ],
+            [
+              4.902156615860614,
+              52.39115973518752
+            ],
+            [
+              4.902072358045512,
+              52.391144308792875
+            ],
+            [
+              4.902472900970451,
+              52.390325608108604
+            ],
+            [
+              4.903336444424876,
+              52.39048264851578
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "oostenburgermiddenstraat-228",
+      name: "Oostenburgermiddenstraat 228",
+      category: "ordinary",
+      modelUrl: "./models/oostenburgermiddenstraat-228.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012254998"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.929719496738803,
+          52.372839215347206
+        ],
+        headingDegrees: 134.5,
+        lengthMetres: 64.66,
+        widthMetres: 35.39
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.929805285709696,
+          52.372965079789616
+        ],
+        northOffsetDegrees: 0,
+        source: "PDOK BAG 0363100012254998 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      materialOverrides: {
+        greyBrick: "#3b3a3e",
+        concrete: "#a9aca6",
+        copper: "#6b422f",
+        brick: "#4f3023",
+        slate: "#4b4f52",
+        frame: "#2e3438",
+        glass: "#8fa3b0",
+        blue: "#4c5256",
+        dark: "#232628",
+        red: "#8a3a2e",
+        white: "#d9dcd6"
+      },
+      preservePositionPrecision: true,
+      attribution: {
+        title: "Oostenburgermiddenstraat 228 original architecture",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012254998",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.930238068214883,
+              52.37293458006844
+            ],
+            [
+              4.930124006518666,
+              52.37300368655251
+            ],
+            [
+              4.930067115188871,
+              52.372968405963164
+            ],
+            [
+              4.929815792898016,
+              52.373120495749696
+            ],
+            [
+              4.92981490273628,
+              52.37311995305001
+            ],
+            [
+              4.929812893205691,
+              52.37312115862547
+            ],
+            [
+              4.929811171432812,
+              52.373120091427616
+            ],
+            [
+              4.9298102700576365,
+              52.373120636194706
+            ],
+            [
+              4.9295006681021905,
+              52.372929242426125
+            ],
+            [
+              4.9294639704033,
+              52.37290658641153
+            ],
+            [
+              4.9292021883093895,
+              52.372744631619476
+            ],
+            [
+              4.929569598943429,
+              52.372521989107746
+            ],
+            [
+              4.930238068214883,
+              52.37293458006844
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "ceramiquelaan-437",
+      name: "C\xE9ramiquelaan 437",
+      category: "ordinary",
+      modelUrl: "./models/ceramiquelaan-437.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012252989"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.905283348817936,
+          52.38663478308454
+        ],
+        headingDegrees: 163.5,
+        lengthMetres: 71.85,
+        widthMetres: 66.26
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.905242111752224,
+          52.38666986486372
+        ],
+        northOffsetDegrees: 0,
+        source: "PDOK BAG 0363100012252989 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      materialOverrides: {
+        greyBrick: "#85807a",
+        slate: "#4f5254",
+        frame: "#7b6a4e",
+        glass: "#7f93a3",
+        ochre: "#6e4a2c",
+        dark: "#2c2723",
+        gold: "#b08f45",
+        concrete: "#aaa9a3"
+      },
+      preservePositionPrecision: true,
+      attribution: {
+        title: "C\xE9ramiquelaan 437 original architecture",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012252989",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.904641309498148,
+              52.38682140606483
+            ],
+            [
+              4.904834078992316,
+              52.38642676055471
+            ],
+            [
+              4.9049199106562575,
+              52.38644260486391
+            ],
+            [
+              4.905001337199722,
+              52.38627732050108
+            ],
+            [
+              4.905003124494512,
+              52.38627370574424
+            ],
+            [
+              4.905128978051375,
+              52.386296786147255
+            ],
+            [
+              4.90520770079141,
+              52.38631121720976
+            ],
+            [
+              4.905408524455119,
+              52.38634804796651
+            ],
+            [
+              4.905407202684344,
+              52.386350729904734
+            ],
+            [
+              4.905406751976318,
+              52.38635165380189
+            ],
+            [
+              4.90554588771023,
+              52.38637716952668
+            ],
+            [
+              4.90554641361454,
+              52.38637608415664
+            ],
+            [
+              4.9055476602763735,
+              52.38637355470193
+            ],
+            [
+              4.905717596411139,
+              52.38640471391568
+            ],
+            [
+              4.905797902753128,
+              52.386419438628046
+            ],
+            [
+              4.905927773941424,
+              52.386443253523645
+            ],
+            [
+              4.905926001403456,
+              52.386446868354064
+            ],
+            [
+              4.905788537526834,
+              52.38672730934926
+            ],
+            [
+              4.905651086691581,
+              52.38700774123912
+            ],
+            [
+              4.905649314108336,
+              52.38701135606491
+            ],
+            [
+              4.905523723620704,
+              52.38698818741814
+            ],
+            [
+              4.905522609538717,
+              52.386987976170566
+            ],
+            [
+              4.905445865612006,
+              52.386973814015015
+            ],
+            [
+              4.905243692821165,
+              52.38693651048516
+            ],
+            [
+              4.9052449999309085,
+              52.386933828489354
+            ],
+            [
+              4.905245465434457,
+              52.38693289566543
+            ],
+            [
+              4.9051064178257,
+              52.386907236150876
+            ],
+            [
+              4.905105982282806,
+              52.38690811517018
+            ],
+            [
+              4.905104659890602,
+              52.386910851028354
+            ],
+            [
+              4.904935310767166,
+              52.38687960345594
+            ],
+            [
+              4.904897180905891,
+              52.386872563623804
+            ],
+            [
+              4.9048548289874585,
+              52.38686475161942
+            ],
+            [
+              4.904854081243817,
+              52.386864622746614
+            ],
+            [
+              4.904723844635534,
+              52.38684058049658
+            ],
+            [
+              4.904725436624827,
+              52.38683736939405
+            ],
+            [
+              4.904725631975805,
+              52.386836965744415
+            ],
+            [
+              4.904641309498148,
+              52.38682140606483
+            ]
+          ]
+        ]
+      }
     }
   ];
 

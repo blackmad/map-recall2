@@ -103,9 +103,11 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   loops and 24/42 see-through rays from its glass promenade. Aron Schuster
   synagogue installed after rework; its rounded corner is still squared.
 - **Lanes cut off by the usage limit (2026-10-10)**, resume from their branches:
-  audit see-through now back to FAIL on real gaps: adam-tower, de-gooyer,
-  haarlemmermeerstation, hart-museum, huis-bartolotti, pulitzer-amsterdam
-  (footprint-edge rays; check each against photos).
+  audit see-through still FAIL on footprint-edge rays: haarlemmermeerstation,
+  hart-museum, pulitzer-amsterdam (check each against photos). adam-tower,
+  de-gooyer and huis-bartolotti now pass under the cantilever rules (rays
+  hit a wall <= 2.5 m behind an overhang >= 6 m up); whether those recesses
+  match the photos is still unchecked.
   Krasnapolsky held (2026-10-10): old Dam front matches; the modern wing and
   lower brick building need photo counts and the dark glass bays.
   Pakhuis de Zwijger held (2026-10-10): colour fixed (dark weathered brick,
@@ -128,7 +130,10 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   roof is solid to 15.2-15.6 m because 3DBAG closes it with one lid; the real
   white storey stops at ~13 m under an open pergola. Grasweg 116 rows above
   32 m are extrapolated (rectifier cap). De Bazel lacks piers/banding/
-  sculpture. Next candidates: scratch big-buildings-1.json (Haiku list).
+  sculpture. Oostenburgermiddenstraat 228's tower is squared where the real
+  corten tower is rounded; Asterweg 23 has only its east gable photographed;
+  Céramiquelaan 437 brick is one flat grey. Next candidates: scratch
+  big-buildings-1.json (Haiku list).
   World Trade Center Amsterdam held (2026-10-10): towers A–G are ONE BAG
   pand (0363100012096613, ~200 x 95 m); a recognizable model needs a photo
   of each tower face (Commons has only atrium/logo/tower H). Footprints and
