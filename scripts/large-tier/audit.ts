@@ -17,7 +17,7 @@ import { footprintAreaM2 } from '../../src/canalRecall/genericFacades.ts';
 import { shortBuildingId, plausibleYear } from '../../src/canalRecall/buildingFacts.ts';
 import { KIT_HIDE_IDS, KIT_PART_IDS } from '../../src/canalRecall/landmarkKits.ts';
 import { largeTierReason } from '../../src/canalRecall/largeBuildingTier.ts';
-import { SIGNATURE_MODELS, suppressedOsmIds } from '../../src/canalRecall/landmarks/signatureModels.ts';
+import { PLACED_MODELS as SIGNATURE_MODELS, placedSuppressedOsmIds as suppressedOsmIds } from '../../src/canalRecall/landmarks/placedModels.ts';
 import { footprintPolygon, pointInRing, type LngLat } from '../../src/canalRecall/landmarks/signaturePlacement.ts';
 
 const arg = (name: string, fallback: string) => process.argv.find(a => a.startsWith(`--${name}=`))?.split('=')[1] ?? fallback;
