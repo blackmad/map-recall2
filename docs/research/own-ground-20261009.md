@@ -213,6 +213,76 @@ canvas destination pin and question-feature overlay project at z = 0 (the
 draped destination ring gives the ground contact); city-wide relief/OSM build
 not run (area `west` only).
 
+## City-wide (2026-10-10, branch `render/own-ground-citywide-20261010`)
+
+**Area.** The game's riding area is every elevation-v1 1 km cell the routing
+network passes through (`scripts/own-ground/game-cells.ts`): 294 cells.
+
+**Data published** (gzip, what the browser downloads; budget was ≤ 30 MB because
+Firebase Hosting storage is over quota):
+
+| Extract | Content | gz |
+|---|---|---|
+| `ground-height-v1` | 413 RD tiles (game cells + 150 m): 52 at 2 m within 4 km of the Dam (5.83 MB), 361 at 4 m beyond (14.73 MB), planar predictor | 20.56 MB |
+| `own-ground-osm-v1/cells` | 294 cells, 116,888 ways, 55,378 areas, coordinates to 1e-6° (`--digits 6`, −16 %) | 8.54 MB |
+| total | (replaces 4.5 MB for area `west`; net +24.6 MB) | **29.1 MB** |
+
+Format: a tile entry may carry a 4th field (stored step); 4 m tiles are 2×2
+means of the finished 2 m grid and are upsampled bilinearly on decode, so the
+field stays one 2 m grid. `predictor: 'planar'` (left + below − below-left)
+cuts gz ~21 % against delta-x. Options if size must drop further: 4 m
+everywhere (~−4 MB), 8 m beyond 8 km, or drop the 150 m pad tiles (−42 tiles).
+
+AHN: 1,500+ 500 m WCS requests (~1.9 GB cached under `artifacts/own-ground/raw/ahn`),
+58 min. Overpass: 92 chunks (2×2 cells), mirrors rotated on 429/504, per-chunk cache.
+
+**Cells.** All 294 build (`check-ground-cells --all`): 351 k triangles / 14.5 MB
+per LOD 0 cell, worker build median 236 ms, max 972 ms (node, unthrottled).
+Partly covered cells are now drawn: `covers()` needs only some relief, and a
+missing tile next to extract tiles is extended by pull-push (`extendTile`,
+deterministic from extract tiles only), so the relief continues at the edge.
+
+**Fixes.**
+- Phone stair steps at quays: the land's water cut is a per-pixel discard (no
+  MSAA); its seam with the wall top showed the clear colour in jagged steps.
+  Quay walls now carry a 0.35 m coping cap a centimetre over the land
+  (`QUAY_CAP_M`), real geometry over the seam. Mask UV is formed per vertex
+  (highp) since scene metres reach ±15 km.
+- BRU0067: the deck top is the street band at 27/27 probes across the
+  carriageway (klinker, with the OSM-tagged paving sidewalks either side, which
+  read pale grey). Its real defect was a 0.175 m kink per 0.5 m at the deck
+  start (DTM approach 0.5 m under the DSM deck): the ease now lengthens to cap
+  the grade at 20 % (`DECK_EASE_MAX_GRADE`), now 0.129 m.
+- Street chunks: each pand on the lowest relief under its own ground-level
+  vertices (`chunkBases.ts`; shared vertices split first). Needs the
+  signature-landmarks bundle rebuilt.
+- Canvas pins (destination, question feature) shifted onto the surface
+  (`OwnGround.screenLift`); tram rides the relief; ferry floats at the sunken water.
+- Kit parts: measured as lifted already (181–294 ranges, none pending).
+
+**BGT widths: not done.** PDOK's OGC API (`api.pdok.nl/lv/bgt/ogc/v1`,
+`wegdeel`) answers a 340 × 330 m box in 13 s with 629 polygons / 98 k vertices
+(4.6 MB JSON, ~56 KB gz compacted). City-wide that is tens of MB and a polygon
+renderer. Cheaper path: sample BGT carriageway width at each OSM way's midpoint
+offline and add a `width` per way to the OSM cells (a few bytes per way).
+
+**Ride cost** (`scripts/ride-perf-fixed-route.mjs`, iPhone 13, 4× CPU, 12 s, 3 interleaved runs):
+
+| | frame median / p95 | `map._render` median (runs) | three layers ms/frame | draw calls | resident ground |
+|---|---|---|---|---|---|
+| off | 16.7 / 16.7–16.8 | 7.8, 7.0, 7.0 | 3.0–3.6 | 310 | — |
+| `?sharedFrame=1` | 16.7 / 16.7–16.8 | 7.2, 7.5, 8.4 | 3.5–4.2 | 310 | — |
+| `?ownGround=1` | 16.7 / 16.7–16.8 | 8.0, 7.0, 8.0 | 4.1–4.6 | 301 | 12 cells, 1.35 M tris, 63 MB |
+
+**Screenshots** (`artifacts/own-ground-game/`, `own-ground-citywide.spec.ts`):
+De Pijp, Oost, Noord, Zuid, Nieuw-West (desktop + iphone), BRU0067 deck top,
+Bilderdijkstraat chunks.
+
+**Open.** One water level everywhere: polders (Osdorpplein rider surface
+−2.17 m, i.e. below the −1.77 m water plane) need per-polder levels; vacant
+plots read as grey paving (Noord); labels are MapLibre symbols; real-iPhone
+GPU time unmeasured; BGT widths.
+
 ## Commands
 
 ```sh
