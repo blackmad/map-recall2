@@ -49,8 +49,10 @@ export interface Thresholds {
   maxHoleLoopPerimeter: number;
   /** Inverted-roof area (m^2) that fails. */
   maxInvertedRoofArea: number;
-  /** Models whose bounding-box diagonal exceeds this are multi-building sites (e.g. stations): hull-based checks are skipped. */
+  /** A model is a multi-building site (e.g. stations, hospital campuses) only when its bounding-box diagonal exceeds this AND it holds two or more separate grounded building volumes (see `siteModel`). Size alone never makes a site: one long slab keeps every check. */
   siteDiagonal: number;
+  /** Explicit spec declaration: true forces the site path (hull-based checks skipped) for a merged multi-building mesh whose volumes touch; false forces full checks. Undefined = decide from diagonal plus separate volumes. */
+  siteModel?: boolean;
   /** Triangle cap. */
   triangleCap: number;
   /** Blank-wall check: only outward walls with at least this much planar area (m^2) are examined. */
@@ -502,8 +504,6 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
     return r;
   }
 
-  const site = Math.hypot(bmax[0] - bmin[0], bmax[1] - bmin[1], bmax[2] - bmin[2]) > th.siteDiagonal;
-
   // --- weld vertices ---
   const q = 1 / th.weld;
   const weldMap = new Map<string, number>();
@@ -694,6 +694,11 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   let main = 0;
   for (let k = 1; k < nClusters; k++) if (cArea[k] > cArea[main]) main = k;
   const inMain = (t: number) => compOfTri[t] >= 0 && clusterOf[compOfTri[t]] === main;
+  // Site = big AND made of several separate grounded building volumes (or declared). A single coherent building of any length is not a site.
+  const groundedVolumes = Array.from({length: nClusters}, (_, k) => k).filter(k =>
+    cArea[k] >= th.separateVolumeMinArea && cMin[k][1] <= 0.3 && cMax[k][1] - cMin[k][1] >= 4 && cMax[k][0] - cMin[k][0] >= 8 && cMax[k][2] - cMin[k][2] >= 8).length;
+  const bigDiagonal = Math.hypot(bmax[0] - bmin[0], bmax[1] - bmin[1], bmax[2] - bmin[2]) > th.siteDiagonal;
+  const site = th.siteModel ?? (bigDiagonal && groundedVolumes >= 2);
 
   // --- detached: distance of every other cluster to the main body ---
   const SEARCH = 3;
@@ -970,7 +975,7 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   }
 
   // --- findings ---
-  if (site) findings.push({kind: 'site-model', severity: 'warn', message: `bounding diagonal > ${th.siteDiagonal} m: multi-building site, see-through and far-outside checks skipped`});
+  if (site) findings.push({kind: 'site-model', severity: 'warn', message: `bounding diagonal > ${th.siteDiagonal} m: multi-building site (${groundedVolumes} separate volumes${th.siteModel ? ', declared' : ''}), see-through and far-outside checks skipped`});
   const triangles = nTri - degenerate;
   if (degenerate > Math.max(5, nTri * 0.02)) findings.push({kind: 'degenerate', severity: 'fail', message: `${degenerate} degenerate triangles`});
   else if (degenerate) findings.push({kind: 'degenerate', severity: 'warn', message: `${degenerate} degenerate triangles`});

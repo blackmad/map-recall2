@@ -74,6 +74,7 @@ function modelThresholds(id: string): Partial<Thresholds> {
     const out: Partial<Thresholds> = {};
     if (Array.isArray(spec.partyWallBearings)) out.blankWallExemptBearings = spec.partyWallBearings;
     // Declared roadways/passages through the building ({axisBearing, corridor: [[x,z],...], evidence}); see Thresholds.throughPassages.
+    if (typeof spec.siteModel === 'boolean') out.siteModel = spec.siteModel;
     if (Array.isArray(spec.throughPassages)) out.throughPassages = spec.throughPassages;
     return out;
   } catch { return {}; }
