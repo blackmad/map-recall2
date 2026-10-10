@@ -38,6 +38,16 @@ const SHARED_FRAME_DEFAULT = false;
 // window.__canalRecallOwnGround = true. Implies the shared frame, and replaces
 // the `?elevation=1` stencil layer (no MapLibre private state).
 const OWN_GROUND_DEFAULT = false;
+// Dropping MapLibre, step 1 (docs/research/drop-maplibre-20261010.md §6): no
+// third-party basemap. MapLibre keeps the camera and hosts the shared frame,
+// its style is a local background, and src/canalRecall/ownMap/ draws the flat
+// cartography (a shared-frame participant) and the label layers (a 2D canvas)
+// from our own extracts. Off by default; `?ownMap=1` or
+// window.__canalRecallOwnMap = true. Implies the shared frame.
+const OWN_MAP_DEFAULT = false;
+const OWN_MAP_BUNDLE = 'js/own-map-game.bundle.js';
+// Same as ownMap/gameBrowser.ts ownMapStyle(): nothing to fetch.
+const OWN_MAP_STYLE = { version: 8, name: 'own-map', sources: {}, layers: [{ id: 'background', type: 'background', paint: { 'background-color': '#f4f0e8' } }] };
 const OWN_GROUND_BUNDLE = 'js/own-ground-game.bundle.js';
 const OWN_GROUND_WORKER = 'js/own-ground-worker.bundle.js';
 // Basemap ground the own ground replaces while it covers the rider: fills and
@@ -92,6 +102,9 @@ class VectorBasemap {
     this._sharedFrameEnabled = canalRecallLookFlag('sharedFrame', '__canalRecallSharedFrame', SHARED_FRAME_DEFAULT);
     this._ownGroundEnabled = canalRecallLookFlag('ownGround', '__canalRecallOwnGround', OWN_GROUND_DEFAULT);
     if (this._ownGroundEnabled) this._sharedFrameEnabled = true;
+    this._ownMapEnabled = canalRecallLookFlag('ownMap', '__canalRecallOwnMap', OWN_MAP_DEFAULT);
+    if (this._ownMapEnabled) this._sharedFrameEnabled = true;
+    this._ownMap = null;
     this._ownGround = null;
     this._sharedFrame = null;
     this._elevation = null;
@@ -155,7 +168,7 @@ class VectorBasemap {
       container,
       // Native Three.js layers share this context; MSAA must be requested here.
       canvasContextAttributes: { antialias: true },
-      style: 'https://tiles.openfreemap.org/styles/liberty',
+      style: this._ownMapEnabled ? OWN_MAP_STYLE : 'https://tiles.openfreemap.org/styles/liberty',
       center: [4.9041, 52.3676],
       zoom: 17,
       interactive: false,
@@ -163,6 +176,14 @@ class VectorBasemap {
       attributionControl: false,
       fadeDuration: 0
     });
+
+    // Own map: the local style has no glyphs, so MapLibre symbol layers cannot
+    // exist; their job (POI, brand, neighbourhood, ferry names, the answered
+    // lettering) is the own map's label canvas. Every other addLayer is kept.
+    if (this._ownMapEnabled) {
+      const addLayer = this.map.addLayer.bind(this.map);
+      this.map.addLayer = (layer, before) => (layer && layer.type === 'symbol' ? this.map : addLayer(layer, before));
+    }
 
     this.map.on('load', () => {
       this._hideLabels();
@@ -229,6 +250,7 @@ class VectorBasemap {
         if (PlayerTransit3D) this._playerTransit = new PlayerTransit3D(this.map, maplibregl);
       }
       this.ready = true;
+      if (this._ownMapEnabled) void this._ensureOwnMap();
       // Own ground retires the stencil elevation layer: one ground, one water.
       if (this._ownGroundEnabled) void this._ensureOwnGround();
       else if (this._elevationEnabled) void this._ensureElevation();
@@ -412,6 +434,8 @@ class VectorBasemap {
       if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', show);
     }
     this._emphasizeTransitBasemap(!!visible);
+    this._transitVisible = !!visible;
+    if (this._ownMap) this._ownMap.setTransitVisible(!!visible);
   }
 
   /** Widen / recolour Liberty rail layers while transit mode is active. */
@@ -1618,6 +1642,7 @@ class VectorBasemap {
   }
 
   _applyOwnPois() {
+    if (this._ownMap && this._ownPoiFile) this._ownMap.setOwnPois(this._ownPoiFile);
     const lib = window.CanalRecallOrientationPois;
     const source = this.map && this.map.getSource('own-pois');
     if (!lib || !lib.ownPoiFeatures || !source) return;
@@ -1646,6 +1671,7 @@ class VectorBasemap {
 
   setBrandedPois(pois) {
     this._rawBrandedPois = pois || [];
+    if (this._ownMap) this._ownMap.setBranded(this._rawBrandedPois);
     // The extract carries every named food venue in the city. Drawn all at
     // once they bury the driving corridor, so only the best cue on each patch
     // of ground is handed to the map.
@@ -1962,6 +1988,53 @@ class VectorBasemap {
     return new URL(this._extractPath || '../data/extracts/amsterdam', window.location.href).href.replace(/\/$/, '');
   }
 
+  /** Load the own-map bundle (flag on only) and register it in the shared frame. */
+  async _ensureOwnMap() {
+    if (this._ownMap || this._ownMapLoading || !this.map) return;
+    this._ownMapLoading = true;
+    try {
+      const frame = this._ensureSharedFrame();
+      if (!frame) throw new Error('own map needs the shared frame');
+      if (!window.CanalRecallOwnMap) {
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = OWN_MAP_BUNDLE;
+          script.onload = resolve;
+          script.onerror = () => reject(new Error(`${OWN_MAP_BUNDLE} failed to load`));
+          document.head.appendChild(script);
+        });
+      }
+      const api = window.CanalRecallOwnMap;
+      if (!api || !api.OwnMapGame) throw new Error('CanalRecallOwnMap missing');
+      const ownMap = new api.OwnMapGame(frame, this.map, { extractRoot: this._absoluteExtractRoot(), nearField: this._ownGroundEnabled });
+      await ownMap.load();
+      this._ownMap = ownMap;
+      // Replay what the game set before the bundle arrived.
+      if (this._routeCoordinates) ownMap.setRoute(this._routeVisible === false ? null : this._routeCoordinates);
+      if (this._transitVisible !== undefined) ownMap.setTransitVisible(this._transitVisible);
+      if (this._ferryTerminalList) ownMap.setFerryTerminals(this._ferryTerminalList);
+      if (this._ownPoiFile) ownMap.setOwnPois(this._ownPoiFile);
+      if (this._rawBrandedPois) ownMap.setBranded(this._rawBrandedPois);
+      this.map.triggerRepaint();
+    } catch (error) {
+      console.warn('Own map unavailable.', error);
+      this._ownMap = null;
+    } finally {
+      this._ownMapLoading = false;
+    }
+  }
+
+  ownMapStatus() { return this._ownMap ? this._ownMap.status() : { enabled: !!this._ownMapEnabled, loaded: false }; }
+
+  /** Per frame: the rider, and the game's label rules (asked name, spoilers, quiz-quiet). */
+  _syncOwnMap(subject) {
+    const g = window.canalRecallGame;
+    const p = g && g.player;
+    const bearing = p ? Math.atan2(Math.cos(p.angle), -Math.sin(p.angle)) * 180 / Math.PI : 0;
+    this._ownMap.setRider(subject, bearing);
+    this._ownMap.setRules((g && (g.quizPromptName || g.quizCandidateName)) || '', this._spoilerIndex || null, !!this._quizQuietMap);
+  }
+
   /**
    * Load the own-ground bundle on demand (flag on only) and register it in the
    * shared frame. Everything MapLibre-specific it needs goes through the host
@@ -2150,6 +2223,8 @@ class VectorBasemap {
     for (const segment of track.segments) if (segment.ferryLink) {
       for (const terminal of [segment.ferryLink.from, segment.ferryLink.to]) terminals.set(terminal.id, terminal);
     }
+    this._ferryTerminalList = [...terminals.values()].map(t => ({ id: String(t.id), name: t.name, lngLat: this.worldToLngLat(t.x, t.y, loader) }));
+    if (this._ownMap) this._ownMap.setFerryTerminals(this._ferryTerminalList);
     const data = { type: 'FeatureCollection', features: [...terminals.values()].map(t => ({
       type: 'Feature', properties: { name: `${t.name} ⛴` },
       geometry: { type: 'Point', coordinates: this.worldToLngLat(t.x, t.y, loader) },
@@ -2252,6 +2327,8 @@ class VectorBasemap {
 
   setRoute(routePath, loader, visible) {
     if (!this.map || !loader || !this.map.getSource('navigation-route')) return;
+    this._routeVisible = !!visible;
+    if (this._ownMap && !visible) this._ownMap.setRoute(null);
     // Trees are thinned against the route whether or not its line is drawn.
     if (routePath && routePath.length > 1 && routePath !== this._treeRouteRef) {
       this._treeRouteRef = routePath;
@@ -2266,6 +2343,7 @@ class VectorBasemap {
     if (!visible || !routePath || routePath.length < 2) return;
     if (this._routePathRef === routePath) {
       if (this._ownGroundEnabled && !this._ownGroundRoute && this._routeCoordinates) this._setOwnGroundRoute(this._routeCoordinates);
+      if (this._ownMap && this._routeCoordinates) this._ownMap.setRoute(this._routeCoordinates);
       return;
     }
     this._routePathRef = routePath;
@@ -2273,6 +2351,7 @@ class VectorBasemap {
     this._routeCoordinates = coordinates;
     this.map.getSource('navigation-route').setData({ type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates } });
     if (this._ownGroundEnabled) this._setOwnGroundRoute(coordinates);
+    if (this._ownMap) this._ownMap.setRoute(coordinates);
   }
 
   _setOwnGroundRoute(coordinates) {
@@ -2305,6 +2384,7 @@ class VectorBasemap {
     // Placed once, at the answer: on the street ahead of the rider, who then
     // rides past them.
     const chains = stamp ? this._namedStreetChains(track, stamp.name, stamp.segmentIndex, null) : [];
+    if (this._ownMap) this._ownMap.setAnswered(stamp ? stamp.name : null, !!(stamp && stamp.correct), chains.map(chain => chain.map(point => this.worldToLngLat(point.x, point.y, loader))));
     const ahead = window.CanalRecallStreets.pointsAheadOnChains;
     const points = stamp && rider && ahead ? ahead(chains, rider) : [];
     // Last in the style: the detailed-building renderer draws above the raised
@@ -2700,6 +2780,7 @@ class VectorBasemap {
       this._ownGround.update(subject, introFlat > 0 ? 0 : mapZoom);
       this._syncOwnGroundConsumers();
     }
+    if (this._ownMap) this._syncOwnMap(subject);
     this.map.jumpTo(cameraOptions);
     // Near detail (facade extras) follows the rider.
     if (this._threeBuildings && this._buildings3dEnabled && this._threeBuildings.setDetailCentre) this._threeBuildings.setDetailCentre(subject[0], subject[1]);
@@ -3051,6 +3132,12 @@ class VectorBasemap {
 
   isWater(worldX, worldY, loader) {
     if (!this.ready || !loader || loader._lastCenterLat == null) return false;
+    // Own map: the overview's water polygons (deterministic, works off screen).
+    if (this._ownMap) {
+      const [lng, lat] = this.worldToLngLat(worldX, worldY, loader);
+      const water = this._ownMap.isWater(lng, lat);
+      if (water !== null) return water;
+    }
     try {
       const pixel = this.map.project(this.worldToLngLat(worldX, worldY, loader));
       return this.map.queryRenderedFeatures(pixel).some(feature => {

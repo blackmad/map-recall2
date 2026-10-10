@@ -8,7 +8,7 @@
 
 import * as THREE from 'three';
 import type { Vec2 } from './frame';
-import { RAIL_KINDS, STREET_CLASSES, type OverviewData } from './overviewFormat';
+import { STREET_CLASSES, type OverviewData, type RailKind } from './overviewFormat';
 import { fillMaterial, groundTextMesh, lineGeometry, lineMaterial, polygonGeometry } from './layers';
 import { HOOD_BOUNDARY_STYLE, LANDUSE_STYLE, MIN_LINE_PX, PALETTE, PIER_STYLE, RAIL_STYLE, RAIL_TUNNEL_STYLE, ROUTE_WIDTH, STREET_STYLE, interpolateStops, type Stops } from './style';
 import { FERRY_LINE_SPEC, ANSWERED_PAINT, answeredLetterHeightMetres, interpolateLinear, type AnsweredPlacement, type OverlayLineSet } from './overlays';
@@ -47,11 +47,9 @@ export class OwnMapScene {
   constructor(readonly data: OverviewData) {
     this.group.name = 'own-map-flat';
     // Landuse, one mesh per class, under parks.
-    for (const [cls, st] of Object.entries(LANDUSE_STYLE)) {
-      const polys = data.landuse.filter(l => l.cls === cls).map(l => l.rings);
-      if (!polys.length) continue;
-      this.fill(polygonGeometry(polys), st.fill, ORDER.landuse + st.order * 0.1);
-    }
+    // One draw call for every class: per-vertex colour, drawn in class order.
+    const landuse = [...data.landuse].sort((a, b) => LANDUSE_STYLE[a.cls].order - LANDUSE_STYLE[b.cls].order);
+    if (landuse.length) this.fill(polygonGeometry(landuse.map(l => l.rings), landuse.map(l => LANDUSE_STYLE[l.cls].fill)), '#ffffff', ORDER.landuse, true);
     this.fill(polygonGeometry(data.parks.flatMap(p => p.rings.map(r => [r]))), PALETTE.park, ORDER.park);
     this.fill(polygonGeometry(data.water), PALETTE.water, ORDER.water);
     if (data.piers.length) this.fill(polygonGeometry(data.piers.map(r => [r])), PIER_STYLE.fill, ORDER.pier);
@@ -68,28 +66,36 @@ export class OwnMapScene {
       const fill = this.lines(`street-${cls}`, geo, st.fill, ORDER.fill + st.order, { width: st.width, opacity: 1, dash: null, minZoom: 0 });
       if (st.casing) this.lines(`street-${cls}-casing`, geo, st.casing, ORDER.casing + st.order, { width: st.width, extra: st.casingExtra, opacity: 1, dash: null, minZoom: 0, casingOf: fill });
     }
-    // Rail by kind; tunnels faint and dashed; service tracks thinner.
-    for (const kind of RAIL_KINDS) for (const tunnel of [false, true]) for (const service of [false, true]) {
-      const lines = data.rail.filter(r => r.kind === kind && r.tunnel === tunnel && r.service === service).map(r => r.points);
-      if (!lines.length) continue;
-      const st = RAIL_STYLE[kind];
-      this.lines(`rail-${kind}${tunnel ? '-tunnel' : ''}${service ? '-service' : ''}`, lines, st.fill, ORDER.rail + (tunnel ? 0 : 1), {
-        width: st.width, scale: service ? 0.6 : 1, opacity: tunnel ? RAIL_TUNNEL_STYLE.opacity : 1, dash: tunnel ? RAIL_TUNNEL_STYLE.dash : null, minZoom: service ? 14 : 0, blend: tunnel,
+    // Rail in three draw calls: trains (rail-like kinds, per-line width scale
+    // relative to `rail` at z18; service tracks 60 %), trams (own zoom stops),
+    // and every tunnel (faint, dashed).
+    const scaleOf = (kind: RailKind, service: boolean) => (RAIL_STYLE[kind].width.find(([z]) => z === 18)?.[1] ?? 3) / 3 * (service ? 0.6 : 1);
+    const groups: Array<{ id: string; pick: (r: OverviewData['rail'][number]) => boolean; style: RailKind; tunnel: boolean }> = [
+      { id: 'rail', pick: r => !r.tunnel && r.kind !== 'tram', style: 'rail', tunnel: false },
+      { id: 'rail-tram', pick: r => !r.tunnel && r.kind === 'tram', style: 'tram', tunnel: false },
+      { id: 'rail-tunnel', pick: r => r.tunnel, style: 'rail', tunnel: true },
+    ];
+    for (const g of groups) {
+      const rails = data.rail.filter(g.pick);
+      if (!rails.length) continue;
+      const scales = rails.map(r => (g.style === 'tram' ? (r.service ? 0.6 : 1) : scaleOf(r.kind, r.service)));
+      this.lines(g.id, lineGeometry(rails.map(r => r.points), undefined, scales), RAIL_STYLE[g.style].fill, ORDER.rail + (g.tunnel ? 0 : 1), {
+        width: RAIL_STYLE[g.style].width, opacity: g.tunnel ? RAIL_TUNNEL_STYLE.opacity : 1, dash: g.tunnel ? RAIL_TUNNEL_STYLE.dash : null, minZoom: 0, blend: g.tunnel, perLineScale: true,
       });
-      this.stats[`rail:${kind}`] = (this.stats[`rail:${kind}`] ?? 0) + lines.length;
+      for (const r of rails) this.stats[`rail:${r.kind}`] = (this.stats[`rail:${r.kind}`] ?? 0) + 1;
     }
   }
 
-  private fill(geo: THREE.BufferGeometry, color: string, order: number): THREE.Mesh {
-    const m = new THREE.Mesh(geo, fillMaterial(color, 0));
+  private fill(geo: THREE.BufferGeometry, color: string, order: number, vertexColor = false): THREE.Mesh {
+    const m = new THREE.Mesh(geo, fillMaterial(color, 0, { vertexColor }));
     m.renderOrder = order; m.frustumCulled = false;
     this.group.add(m);
     return m;
   }
 
-  private lines(id: string, src: THREE.BufferGeometry | readonly (readonly Vec2[])[], color: string, order: number, o: Omit<LineLayer, 'id' | 'mesh'> & { colors?: string[]; z?: number; above?: boolean; blend?: boolean }, into: LineLayer[] = this.layers): LineLayer {
+  private lines(id: string, src: THREE.BufferGeometry | readonly (readonly Vec2[])[], color: string, order: number, o: Omit<LineLayer, 'id' | 'mesh'> & { colors?: string[]; z?: number; above?: boolean; blend?: boolean; perLineScale?: boolean }, into: LineLayer[] = this.layers): LineLayer {
     const geo = src instanceof THREE.BufferGeometry ? src : lineGeometry(src, o.colors);
-    const mesh = new THREE.Mesh(geo, lineMaterial(color, o.z ?? 0, { dash: !!o.dash, vertexColor: !!o.colors, blend: o.blend }));
+    const mesh = new THREE.Mesh(geo, lineMaterial(color, o.z ?? 0, { dash: !!o.dash, vertexColor: !!o.colors, blend: o.blend, scale: o.perLineScale }));
     mesh.renderOrder = order; mesh.frustumCulled = false;
     if (o.above) (mesh.material as THREE.ShaderMaterial).depthTest = false;
     this.group.add(mesh);

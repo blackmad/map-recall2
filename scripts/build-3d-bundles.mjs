@@ -64,6 +64,13 @@ const targets = [
     globalName: 'CanalRecallOwnGround',
   },
   {
+    // Own map in the game (`?ownMap=1`): flat cartography in the shared frame
+    // and the label layer, from our own extracts. vector-map.js loads it on demand.
+    entry: 'src/canalRecall/ownMap/gameBrowser.ts',
+    out: 'public/canal-drive/js/own-map-game.bundle.js',
+    globalName: 'CanalRecallOwnMap',
+  },
+  {
     // Its cell builder, in a worker (DOM-free modules only).
     entry: 'src/canalRecall/ownGround/groundWorker.ts',
     out: 'public/canal-drive/js/own-ground-worker.bundle.js',

@@ -47,11 +47,33 @@ uniform vec3 uColor; uniform float uOpacity; varying vec2 vWorld;
 ${DITHER}
 void main(){ float a=uOpacity*nearKeep(vWorld); if(a<bayer4(gl_FragCoord.xy)) discard; gl_FragColor=vec4(uColor,1.); }`;
 
-export function fillMaterial(color: string, z: number): THREE.ShaderMaterial {
+/** `vertexColor`: per-vertex `aColor` (polygonGeometry `colors`), so several classes share one draw call. */
+export function fillMaterial(color: string, z: number, opts: { vertexColor?: boolean } = {}): THREE.ShaderMaterial {
   return new THREE.ShaderMaterial({
+    defines: opts.vertexColor ? { VCOLOR: '' } : {},
     uniforms: flatUniforms(color, z) as unknown as Record<string, THREE.IUniform>,
-    vertexShader: /* glsl */`uniform float uZ; varying vec2 vWorld; void main(){ vWorld=position.xy; gl_Position=projectionMatrix*modelViewMatrix*vec4(position.xy,uZ,1.); }`,
-    fragmentShader: FRAG,
+    vertexShader: /* glsl */`uniform float uZ; varying vec2 vWorld;
+      #ifdef VCOLOR
+      attribute vec3 aColor; varying vec3 vColor;
+      #endif
+      void main(){ vWorld=position.xy;
+        #ifdef VCOLOR
+        vColor=aColor;
+        #endif
+        gl_Position=projectionMatrix*modelViewMatrix*vec4(position.xy,uZ,1.); }`,
+    fragmentShader: /* glsl */`
+      uniform vec3 uColor; uniform float uOpacity; varying vec2 vWorld;
+      #ifdef VCOLOR
+      varying vec3 vColor;
+      #endif
+      ${DITHER}
+      void main(){ float a=uOpacity*nearKeep(vWorld); if(a<bayer4(gl_FragCoord.xy)) discard;
+        #ifdef VCOLOR
+        gl_FragColor=vec4(vColor,1.);
+        #else
+        gl_FragColor=vec4(uColor,1.);
+        #endif
+      }`,
     // In three's transparent list (ordered by renderOrder, after the opaque 3D),
     // so the flat layers keep their cartographic order among themselves.
     transparent: true,
@@ -64,6 +86,8 @@ export interface LineMaterialOptions {
   dash?: boolean;
   /** Per-vertex colour from the geometry's `aColor` (lineGeometry `colors`). */
   vertexColor?: boolean;
+  /** Per-vertex width multiplier from the geometry's `aScale` (lineGeometry `scales`). */
+  scale?: boolean;
   /** Real alpha blending instead of the screen-door dither: for translucent
    *  overlays (transit casings, dashed boundaries), where a dither stipples.
    *  Joins overlap, so a join is a little darker; fine at these opacities. */
@@ -75,6 +99,7 @@ export function lineMaterial(color: string, z: number, opts: LineMaterialOptions
   if (opts.dash) defines.DASH = '';
   if (opts.vertexColor) defines.VCOLOR = '';
   if (opts.blend) defines.BLEND = '';
+  if (opts.scale) defines.SCALE = '';
   return new THREE.ShaderMaterial({
     defines,
     uniforms: { ...flatUniforms(color, z), uDash: { value: new THREE.Vector2(0, 0) } } as unknown as Record<string, THREE.IUniform>,
@@ -83,7 +108,14 @@ export function lineMaterial(color: string, z: number, opts: LineMaterialOptions
       #ifdef VCOLOR
       attribute vec3 aColor; varying vec3 vColor;
       #endif
-      void main(){ vec2 n=vec2(-aDir.y,aDir.x); vec2 p=position.xy+(n*aCorner.x+aDir*aCorner.y)*uHalf; vWorld=p; vDist=aDist+aCorner.y*uHalf;
+      #ifdef SCALE
+      attribute float aScale;
+      #endif
+      void main(){ float h=uHalf;
+        #ifdef SCALE
+        h*=aScale;
+        #endif
+        vec2 n=vec2(-aDir.y,aDir.x); vec2 p=position.xy+(n*aCorner.x+aDir*aCorner.y)*h; vWorld=p; vDist=aDist+aCorner.y*h;
         #ifdef VCOLOR
         vColor=aColor;
         #endif
@@ -118,17 +150,20 @@ export function lineMaterial(color: string, z: number, opts: LineMaterialOptions
 }
 
 /** Triangulated polygons (ring 0 outer, rest holes) as one geometry. */
-export function polygonGeometry(polygons: readonly (readonly (readonly Vec2[])[])[]): THREE.BufferGeometry {
-  const pos: number[] = [], idx: number[] = [];
-  for (const poly of polygons) {
+export function polygonGeometry(polygons: readonly (readonly (readonly Vec2[])[])[], colors?: readonly string[]): THREE.BufferGeometry {
+  const pos: number[] = [], idx: number[] = [], col: number[] = [];
+  const c = new THREE.Color();
+  polygons.forEach((poly, pi) => {
+    if (colors) c.setStyle(colors[pi] ?? '#ffffff', THREE.LinearSRGBColorSpace);
     const flat: number[] = [], holes: number[] = [];
     poly.forEach((ring, i) => { if (i) holes.push(flat.length / 2); for (const [x, y] of ring) flat.push(x, y); });
     const base = pos.length / 3;
-    for (let i = 0; i < flat.length; i += 2) pos.push(flat[i], flat[i + 1], 0);
+    for (let i = 0; i < flat.length; i += 2) { pos.push(flat[i], flat[i + 1], 0); if (colors) col.push(c.r, c.g, c.b); }
     for (const t of earcut(flat, holes, 2)) idx.push(base + t);
-  }
+  });
   const g = new THREE.BufferGeometry();
   g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  if (colors) g.setAttribute('aColor', new THREE.Float32BufferAttribute(col, 3));
   g.setIndex(pos.length / 3 > 65535 ? new THREE.Uint32BufferAttribute(idx, 1) : new THREE.Uint16BufferAttribute(idx, 1));
   g.computeBoundingSphere();
   return g;
@@ -140,11 +175,12 @@ export function polygonGeometry(polygons: readonly (readonly (readonly Vec2[])[]
  * pixel, which gives MapLibre's perspective-thinning for free). Each quad
  * reaches half a width past its ends, so joins and ends are square-capped.
  */
-export function lineGeometry(lines: readonly (readonly Vec2[])[], colors?: readonly string[]): THREE.BufferGeometry {
+export function lineGeometry(lines: readonly (readonly Vec2[])[], colors?: readonly string[], scales?: readonly number[]): THREE.BufferGeometry {
   let segs = 0;
   for (const l of lines) segs += Math.max(0, l.length - 1);
   const pos = new Float32Array(segs * 12), dir = new Float32Array(segs * 8), corner = new Float32Array(segs * 8), dist = new Float32Array(segs * 4);
   const col = colors ? new Float32Array(segs * 12) : null;
+  const scl = scales ? new Float32Array(segs * 4) : null;
   const idx = new Uint32Array(segs * 6);
   const c = new THREE.Color();
   let s = 0;
@@ -159,6 +195,7 @@ export function lineGeometry(lines: readonly (readonly Vec2[])[], colors?: reado
       const put = (k: number, x: number, y: number, side: number, ext: number, d: number) => {
         pos.set([x, y, 0], (v + k) * 3); dir.set([dx, dy], (v + k) * 2); corner.set([side, ext], (v + k) * 2); dist[v + k] = d;
         if (col) col.set([c.r, c.g, c.b], (v + k) * 3);
+        if (scl) scl[v + k] = scales![li] ?? 1;
       };
       put(0, ax, ay, 1, -1, along); put(1, ax, ay, -1, -1, along); put(2, bx, by, 1, 1, along + len); put(3, bx, by, -1, 1, along + len);
       idx.set([v, v + 1, v + 2, v + 1, v + 3, v + 2], s * 6);
@@ -172,6 +209,7 @@ export function lineGeometry(lines: readonly (readonly Vec2[])[], colors?: reado
   g.setAttribute('aCorner', new THREE.BufferAttribute(corner, 2));
   g.setAttribute('aDist', new THREE.BufferAttribute(dist, 1));
   if (col) g.setAttribute('aColor', new THREE.BufferAttribute(col, 3));
+  if (scl) g.setAttribute('aScale', new THREE.BufferAttribute(scl, 1));
   g.setIndex(new THREE.BufferAttribute(idx, 1));
   g.computeBoundingSphere();
   return g;
