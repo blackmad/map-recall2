@@ -1,0 +1,27 @@
+{
+  "id": "asterweg-23",
+  "status": "ready-with-caveats-pending-integrator-blind-count",
+  "identity": {
+    "bagPandId": "0363100012064810",
+    "bouwjaar": 1923,
+    "addresses": ["Asterweg 23"],
+    "name": "industrial block, Buiksloterham; the east brick hall carries a packaging company's signage (not reproduced as lettering)",
+    "policy": "ordinary large building: category ordinary, no route destination, no POI card"
+  },
+  "sources": [
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012064810&f=json", "kind": "BAG pand", "retrievedOn": "2026-10-10", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012064810", "kind": "3DBAG LoD2.2 massing", "retrievedOn": "2026-10-10", "licence": "CC BY 4.0 (3DBAG)"},
+    {"file": "artifacts/landmark-lanes/asterweg-23/ref-east.jpg", "kind": "rectified east gable (wall 1), 20 px/m, pano recording_2025-06-30_12-53-56_00256 (2025-06-30)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/asterweg-23/ref-east-wide.jpg", "kind": "aimed thumbnail of the same pano, heading 246, fov 90; also ref-t-ne.jpg (heading 269)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/asterweg-23/ref-t-n62a.jpg", "kind": "aimed thumbnails from recording_2025-06-30_12-53-56_00245 showing only the neighbouring curved office building (NOT this pand); evidence that the north side is hidden", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"}
+  ],
+  "faces": {
+    "east gable (wall 1)": "evidence: ref-east.jpg. Brick, 20.7 m, roller door t 7.35-12.15 x 4.6 m, glazed strip and red door beside it, red door and hose cabinet right, two steel windows, sign board above the canopy.",
+    "all other walls": "INFERRED: no panorama sees them (fenced yard and a neighbouring office building). Walls up to 9.5 m high coloured brick, taller sawtooth-block walls white cladding (the white sawtooth building with company sign visible over the gate in ref-east-wide.jpg)."
+  },
+  "caveats": [
+    "The gable's bow-string parapet is the 3DBAG gable line, not a true arc.",
+    "Whether the whole sawtooth block is white-clad is inferred from the one glimpse over the gate."
+  ],
+  "limits": ["signage lettering", "gates and fences", "roof plant", "sawtooth glazing"]
+}

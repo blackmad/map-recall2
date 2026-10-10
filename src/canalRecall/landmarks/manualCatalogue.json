@@ -26142,5 +26142,129 @@
       ]
     ]
   }
+},
+{
+  "id": "asterweg-23",
+  "name": "Asterweg 23",
+  "category": "ordinary",
+  "modelUrl": "./models/asterweg-23.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012064810"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.902867411278782,
+      52.39087627189409
+    ],
+    "headingDegrees": 163.5,
+    "lengthMetres": 102.33,
+    "widthMetres": 86.63
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.902758121999647,
+      52.39099735679942
+    ],
+    "northOffsetDegrees": 0,
+    "source": "PDOK BAG 0363100012064810 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+  },
+  "materialOverrides": {
+    "brick": "#8a7656",
+    "concrete": "#cfd0cb",
+    "slate": "#6b7378",
+    "dark": "#25282b",
+    "glass": "#4f6674",
+    "frame": "#3a3d40",
+    "red": "#9a3a32",
+    "white": "#e6e6e2",
+    "blue": "#2f5d9a"
+  },
+  "preservePositionPrecision": true,
+  "attribution": {
+    "title": "Asterweg 23 original architecture",
+    "author": "Map Recall",
+    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012064810",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.903336444424876,
+          52.39048264851578
+        ],
+        [
+          4.903692038473646,
+          52.390547310975066
+        ],
+        [
+          4.903605628386901,
+          52.39072521064471
+        ],
+        [
+          4.903150981524049,
+          52.39064252732505
+        ],
+        [
+          4.902838993199189,
+          52.39128468811001
+        ],
+        [
+          4.902809436326965,
+          52.39134513513553
+        ],
+        [
+          4.902693758843909,
+          52.391323954403276
+        ],
+        [
+          4.9027233305495255,
+          52.39126350746663
+        ],
+        [
+          4.902554169205531,
+          52.39123252695714
+        ],
+        [
+          4.9025245971918805,
+          52.39129298283894
+        ],
+        [
+          4.90238386392635,
+          52.39126721442222
+        ],
+        [
+          4.90239666653715,
+          52.39124104080758
+        ],
+        [
+          4.902139846102578,
+          52.39119401738336
+        ],
+        [
+          4.902156615860614,
+          52.39115973518752
+        ],
+        [
+          4.902072358045512,
+          52.391144308792875
+        ],
+        [
+          4.902472900970451,
+          52.390325608108604
+        ],
+        [
+          4.903336444424876,
+          52.39048264851578
+        ]
+      ]
+    ]
+  }
 }
 ]
