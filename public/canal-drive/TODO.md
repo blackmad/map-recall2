@@ -49,6 +49,11 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   audit see-through now back to FAIL on real gaps: adam-tower, de-gooyer,
   haarlemmermeerstation, hart-museum, huis-bartolotti, pulitzer-amsterdam
   (footprint-edge rays; check each against photos).
+  World Trade Center Amsterdam held (2026-10-10): towers A–G are ONE BAG
+  pand (0363100012096613, ~200 x 95 m); a recognizable model needs a photo
+  of each tower face (Commons has only atrium/logo/tower H). Footprints and
+  research are in scripts/landmarks/world-trade-center-amsterdam-*.json;
+  needs a panorama pass per tower before modelling.
   Full audit with the new rules (2026-10-10, 259 models): 88 pass, 171 fail;
   vs the pre-change baseline 16 FAIL→PASS (two spot-checked visually: no
   holes) and 2 PASS→FAIL: concertgebouw (canopy restored to its real depth)
