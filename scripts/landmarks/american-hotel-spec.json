@@ -1,0 +1,50 @@
+{
+  "id": "american-hotel",
+  "name": "American Hotel",
+  "landmarkId": "american-hotel",
+  "modelUrl": "./models/american-hotel.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012168734"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8812737146412255,
+      52.36387210849929
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 63,
+    "widthMetres": 57
+  },
+  "surveyed": {
+    "anchor": [
+      4.8812737146412255,
+      52.36387210849929
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012168734 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "sandstone": "#c9a96b",
+    "stone": "#dccfa9",
+    "greyBrick": "#6e4c37",
+    "slate": "#8a5442",
+    "ochre": "#dfb44f",
+    "glass": "#516775",
+    "frame": "#efeadb",
+    "dark": "#26282a",
+    "copper": "#5f8f84",
+    "white": "#f1ecdc",
+    "brick": "#a65f3f"
+  },
+  "attribution": {
+    "title": "American Hotel",
+    "author": "Map Recall",
+    "sourceUrl": "https://en.wikipedia.org/wiki/American_Hotel,_Amsterdam",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+  }
+}
