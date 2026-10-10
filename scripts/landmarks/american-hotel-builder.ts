@@ -29,7 +29,9 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
     const r = s.rings[0];
     return r.reduce((a, p) => a + p[0], 0) / r.length < -17.7;
   };
-  addShell(b, source as never, {wall: 'sandstone', roof: 'slate', skip: (s) => s.type === 'WallSurface' && brown(s)});
+  // The tower's peaked cap (roof planes 488, 496, 511) is pale stone like its shaft, not tile (2016 summer panorama).
+  const towerCap = (_s: Surface, i: number) => (i === 488 || i === 496 || i === 511 ? 'stone' : 'slate');
+  addShell(b, source as never, {wall: 'sandstone', roof: 'slate', roofFor: towerCap, skip: (s) => s.type === 'WallSurface' && brown(s)});
   addShell(b, source as never, {wall: 'greyBrick', roof: 'slate', skip: (s) => s.type !== 'WallSurface' || !brown(s)});
   b.mark?.('shell');
   setSink(0.5);
@@ -104,10 +106,13 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
     for (let t = 15.4; t < L - 0.5; t += 0.5) slab(b, f, t, 13.45, 0.14, 0.7, 0.16, 'stone', 0.3);
     slab(b, f, 25.9, 14.15, 22.0, 0.12, 0.2, 'stone', 0.3);
     // gable windows
-    for (const t of [18.6, 31.6]) {
-      archWindows(b, f, [t], {y: 14.3, w: 1.2, h: 2.4, bars: 1, rows: 2, sill: 'stone'});
-      poly(b, f, t, 13.4, [[-2.4, 0], [2.4, 0], [2.4, 0.5], [0, 0.5]], 0.4, 'stone', 0.2);
+    const fUp = ringFrame(ring, 58, -1.2).f;   // the 3DBAG upper storeys of this front stand 1.2 m behind the ring line
+    // counted from the 2020/2022 winter panoramas: two storeys of round-headed windows over the eaves balustrade,
+    // four axes (two under each stepped gable)
+    for (const t of [19.2, 22.4, 28.9, 32.0]) {
+      for (const y of [14.0, 16.6]) arched(fUp, t, y, 0.9, 1.5);
     }
+    for (const t of [20.8, 30.5]) poly(b, f, t, 13.4, [[-2.4, 0], [2.4, 0], [2.4, 0.5], [0, 0.5]], 0.4, 'stone', 0.2);
   }
 
   // tower: window columns on its SE face (edge 58, t 0.3-2.2) and SW face (edge 43, t 2.7-5.4)
@@ -120,6 +125,11 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
     }
     for (const y of [3.7, 10.8, 17.9, 25.2, 32.4]) { slab(b, f, 1.25, y, 2.3, 0.2, 0.3, 'stone'); slab(b, g, 4.05, y, 2.5, 0.2, 0.3, 'stone'); }
     slab(b, f, 1.25, 36.2, 2.6, 0.5, 0.45, 'stone'); slab(b, g, 4.05, 36.2, 2.9, 0.5, 0.45, 'stone');
+    // clock faces under the cap, as in the summer panorama
+    for (const [fr2, tt, dz] of [[f, 1.25, -0.02], [g, 4.05, -0.25]] as [Frame, number, number][]) {
+      put(b, fr2, new T.CylinderGeometry(0.7, 0.7, 0.12, 20).rotateX(Math.PI / 2), tt, 34.6, dz, 'white');
+      put(b, fr2, new T.TorusGeometry(0.72, 0.06, 6, 20), tt, 34.6, dz + 0.02, 'stone');
+    }
   }
 
   // =============================== Street side (NE) ===============================
