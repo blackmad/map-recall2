@@ -52,7 +52,7 @@
        ]
       },
       "dormers": 2,
-      "doorBay": null,
+      "doorBay": 3,
       "windows": "sash",
       "bands": "both",
       "shopfront": {
@@ -61,7 +61,10 @@
        "name": "Skina",
        "displayWindows": 1,
        "stallriser": "low",
-       "shopShare": 0.4,
+       "bays": [
+        0,
+        1
+       ],
        "evidence": "pano 2023-01-12 + OSM node 11381117868"
       }
      }

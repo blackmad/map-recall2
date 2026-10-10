@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## Bilderdijkstraat even side 72–166 installed as block faces (2026-10-10)
+
+Eight faces (72–82, 84–92, 94–106, 108–120, 122–134, 136–140, 142–154,
+156–166) using bayWidths, crownBays/crownRise/crownSteps/crownFinial,
+shopfront.bays with the residential door, two-light windows; real shops
+with signs (Corner Inn, Brioche, Toko Bersama, Beter Horen, 't Fietshokje,
+Only Diva's…). chunk-bilder-080336-x4 and standalone 157154 folded into faces.
+All gates, interference and audit pass. Held: odd-side 113–115 (tree
+occlusion), 131–133 and 135–153 — 3DBAG reads a dormer/tower top as eaves
+(~3.4 m above the photo cornice), more than a photo-trusted cornice group may
+bridge (2.5 m). Integrator viewed the 108–120 oblique in-game shot; the iPhone
+street shots are framed too close to a shop window to be useful evidence.
+
 ## Marnixstraat 106–138 installed as block faces; rears inferred (2026-10-10)
 
 The audit refused Marnixstraat 124–138 for a 1,224 m² blank rear plane and
