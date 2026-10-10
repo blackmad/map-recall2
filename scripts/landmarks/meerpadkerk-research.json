@@ -76,7 +76,7 @@
       ],
       "date": "AHN5 2023; PDOK Actueel_orthoHR retrieved 2026-10-08, imagery acquisition year not resolved",
       "confidence": "high",
-      "treatment": "Ridge 7.589m above local terrain NAP -1.1m; main eaves simplified to 5.58m (survey near 5.55\u20135.61m), annex 4.03m. Own explicit upward roof planes, no opaque parcel or wall caps."
+      "treatment": "Ridge 7.589m above local terrain NAP -1.1m; main eaves simplified to 5.58m (survey near 5.55–5.61m), annex 4.03m. Own explicit upward roof planes, no opaque parcel or wall caps."
     }
   ],
   "referenceViews": [
@@ -193,7 +193,7 @@
     "failedBefore": {
       "path": "artifacts/meerpadkerk-repair/before/meerpadkerk-acbf289f.glb",
       "sha256": "acbf289f3d84cff8cad387ec63c42ade1e80620806abe3998f79dfa2b652fc4e",
-      "reason": "1.22m\u00d72.75m front windows top4.4 left excessive1.18m blankband under surveyed5.58eave."
+      "reason": "1.22m×2.75m front windows top4.4 left excessive1.18m blankband under surveyed5.58eave."
     },
     "frozenAfter": {
       "sha256": "d2424aeb57d930034fe6e7598294e8145dc4718ef2105ab87c6167c45f46eb77",
@@ -201,5 +201,23 @@
       "bytes": 82004
     },
     "verification": "Author and exact compressed FrontSide rays:48rectangular pane,96fanlightsector,32frame/surround extent,24boarded-gap/roofclearance samples each;6upward compressed roof faces. Source-native CPU front and bothside views inspected. Root independent/GPU/game gates still pending."
+  },
+  "rework20261010": {
+    "lane": "rework-g",
+    "changes": [
+      "materials: warm white boards (#f7f4ec), pale board seams, dark glazing, cool grey roof; white glazing bars and fanlight ribs",
+      "existing source-supported DOOPSGEZINDE GEMEENTE fascia retained",
+      "low white wing with orange roof right of the photos is the separate retained Meerpad 9A/9B pand outside the suppressed BAG parent, not modelled"
+    ],
+    "photos": [
+      "artifacts/landmark-lanes/meerpadkerk/ref-north.jpg (panorama recording_2025-09-24_14-13-19_00768)",
+      "artifacts/landmark-lanes/meerpadkerk/ref-side.jpg (00766)",
+      "artifacts/landmark-lanes/meerpadkerk/ref-front.jpg (00767)",
+      "artifacts/landmark-lanes/meerpadkerk/ref-operator-front.jpg (operator photo, private reference)"
+    ],
+    "licence": "Gemeente Amsterdam panoramas; private reference only",
+    "inferred": [
+      "north side facade (no photo from that side)"
+    ]
   }
 }
