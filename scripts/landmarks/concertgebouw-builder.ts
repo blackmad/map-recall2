@@ -58,12 +58,12 @@ export function buildConcertgebouw(_w:number,_d:number,b:BuildingTools):void{
  // the embossed pediment sits below the much taller nave roof behind it.
  const cx=6.0,front=40.05,width=17.2;
  b.box(cx,0,front-2,width,6.0,4.0,'stone');b.box(cx,6.0,front-3.2,width,10.2,1.4,'stone');
- for(const x of[cx-8,cx-4.8,cx-1.6,cx+1.6,cx+4.8,cx+8]){
+ for(const x of[cx-8,cx-5.8,cx-1.95,cx+1.95,cx+5.8,cx+8]){
   const g=new T.CylinderGeometry(.36,.43,9.7,10);b.add(g,'stone',x,11.25,front+.18);b.box(x,6.0,front+.18,1.0,.4,1.0,'stone');b.box(x,15.9,front+.18,1.05,.45,1.05,'stone');
  }
  // Three central tall bays and the two outer bays sit on the recessed
  // loggia wall. Columns stay proud of it, rather than inside a footprint prism.
- for(const dx of[-6.4,-3.2,0,3.2,6.4]){const x=cx+dx;
+ for(const dx of[-7,-3.9,0,3.9,7]){const x=cx+dx;
   b.box(x,6.6,37.68,1.7,6.55,.13,'glass');b.box(x,6.65,37.82,.12,6.5,.1,'stone');b.box(x,9.6,37.82,1.7,.12,.1,'stone');
   b.box(x,13.65,37.68,1.75,1.65,.13,'glass');b.box(x,13.65,37.82,.12,1.65,.10,'stone');
  }
@@ -71,7 +71,9 @@ export function buildConcertgebouw(_w:number,_d:number,b:BuildingTools):void{
  const ped=new T.Shape([new T.Vector2(-9.3,0),new T.Vector2(9.3,0),new T.Vector2(0,4.9)]),pg=new T.ExtrudeGeometry(ped,{depth:.55,bevelEnabled:false});b.add(pg,'stone',cx,17.4,front-.05);
  // Small faceted figures suggest the relief rather than a texture decal.
  for(let i=-3;i<=3;i++){const x=cx+i*1.85,y=18.0+(.9-Math.abs(i)*.13);b.box(x,y,front+.56,.48,.72,.12,'white');b.add(new T.IcosahedronGeometry(.22,0),'stone',x,y+.95,front+.63)}
- b.box(cx,5.55,front+1.0,19.2,.25,3.6,'frame');for(const x of[cx-7.4,cx-2.5,cx+2.5,cx+7.4])b.box(x,.9,front+.1,1.85,3.8,.1,'glass');
+ b.box(cx,5.55,front+1.0,19.2,.25,3.6,'frame');// Three round-arched entrance doors (photo: arches at about -4, 0, +4 m under the canopy).
+ const archGeo=(w:number,h:number)=>{const sh=new T.Shape();sh.moveTo(-w/2,0);sh.lineTo(w/2,0);sh.lineTo(w/2,h-w/2);sh.absarc(0,h-w/2,w/2,0,Math.PI,false);sh.closePath();return new T.ShapeGeometry(sh,8);};
+ for(const dx of[-4,0,4]){const x=cx+dx;b.add(archGeo(3.2,4.5),'stone',x,.7,front+.02);b.add(archGeo(2.5,3.8),'dark',x,.7,front+.04);b.add(archGeo(2.2,3.5),'glass',x,.7,front+.06);b.box(x,.7,front+.09,.08,2.2,.06,'frame');b.box(x,2.2,front+.09,2.2,.07,.06,'frame');}
  // Golden open lyre, readable as an outline above the central hall gable.
  const lx=8.1,lz=32.1,ly=25.65;b.box(lx,ly,lz,1.55,.22,.32,'gold');
  for(const side of[-1,1]){b.box(lx+side*.8,ly+.18,lz,.16,1.4,.18,'gold');b.box(lx+side*1.0,ly+1.48,lz,.5,.16,.18,'gold');b.add(new T.TorusGeometry(.28,.075,5,10,Math.PI*1.6),'gold',lx+side*.93,ly+1.62,lz);}

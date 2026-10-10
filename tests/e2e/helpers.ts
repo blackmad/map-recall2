@@ -26,6 +26,8 @@ export type OpenRouteOptions = {
   playerTimeoutMs?: number;
   /** Seed for Math.random, so different values give different routes. */
   seed?: number;
+  /** Query string for the page URL, e.g. `?streetChunks=1`. */
+  query?: string;
 };
 
 /** Boot Canal Recall, set prefs via the hidden selects, and start a route. */
@@ -38,6 +40,7 @@ export async function openRoute(page: Page, options: OpenRouteOptions = {}): Pro
     enterRacing = true,
     playerTimeoutMs = 90_000,
     seed: seedValue = 0x5eed1234,
+    query = '',
   } = options;
 
   if (seedRandom) {
@@ -54,7 +57,7 @@ export async function openRoute(page: Page, options: OpenRouteOptions = {}): Pro
   }
   if (process.env.PW_OFFLINE_MAP) await serveMapLibreOffline(page);
 
-  await page.goto('/canal-drive/');
+  await page.goto(`/canal-drive/${query}`);
   await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame))).toBe(true);
   await expect(page.locator('#route-card')).toBeVisible();
   await setHiddenSelect(page, 'travel-mode', travelMode);

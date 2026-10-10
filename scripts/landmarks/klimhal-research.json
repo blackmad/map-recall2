@@ -1,0 +1,15 @@
+{
+  "id": "klimhal",
+  "retrieved": "2026-10-10",
+  "licence": "Amsterdam panorama thumbnails are municipal open data; used as private measurement references only, no pixels in the GLB.",
+  "bag": {"pand": "0363100012150166", "bouwjaar": 1996, "gebruiksdoel": "sportfunctie", "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012150166&f=json"},
+  "threeDBag": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012150166",
+  "webpages": [{"url": "https://www.fijnuit.nl/3680/klimhal-amsterdam", "used": "1996, 21 m high, largest climbing hall in the Benelux, near Sloterdijk"}],
+  "photos": [
+    {"file": "artifacts/landmark-lanes/klimhal/ref-south.jpg", "panorama": "TMX7316010203-001071_pano_0008_001046", "captured": "2018", "heading": 359, "pitch": 10, "fov": 80, "facade": "south entrance end"},
+    {"file": "artifacts/landmark-lanes/klimhal/ref-west.jpg", "panorama": "recording_2025-07-01_07-45-37_02334", "captured": "2025-07-01", "heading": 98, "pitch": 30, "fov": 100, "facade": "west flank (Naritaweg)"},
+    {"file": "artifacts/landmark-lanes/klimhal/ref-east.jpg", "panorama": "TMX7316010203-001071_pano_0008_001042", "captured": "2018", "heading": 313, "pitch": 30, "fov": 100, "facade": "south-east oblique, east flank"},
+    {"file": "artifacts/landmark-lanes/klimhal/ref-west-oblique.jpg", "panorama": "recording_2025-07-01_07-45-37_02330", "captured": "2025-07-01", "heading": 136, "pitch": 30, "fov": 100, "facade": "west flank from north-west"}
+  ],
+  "inferred": ["north end (no street panorama sees it; assumed twin of the south glazing and sail)", "exact width of the west boulder walls"]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Van Gendt Hallen",
+  "landmarkId": "extract_landmarks_1351046417",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Hallen_van_Stork",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012169224"
+  ],
+  "pandId": "0363100012169224",
+  "materialOverrides": {
+    "brick": "#8a5a45",
+    "stone": "#b9ab94",
+    "slate": "#6f7478",
+    "glass": "#5f747c",
+    "dark": "#262626",
+    "frame": "#3c4a4c",
+    "green": "#8fa890",
+    "concrete": "#b4b6b4",
+    "greyBrick": "#4e3a33"
+  },
+  "surveySource": "Current BAG 0363100012169224 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; gable corbelling, arched window rhythm, pilasters and doors measured by eye from the 2018-2024 municipal panoramas, no pixels or meshes imported."
+}

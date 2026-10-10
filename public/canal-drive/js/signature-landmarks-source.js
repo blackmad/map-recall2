@@ -12,6 +12,7 @@
 //
 // three.js is shared across the 3D bundles — see three-runtime-source.js.
 import { createRecipeLook, RECIPE_LOOK_SHARED } from '../../../src/canalRecall/buildingRecipe/recipeLook.ts';
+import { plainBounds, withinView } from '../../../src/canalRecall/rendererShared/residency.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
 
@@ -80,8 +81,87 @@ export class SignatureLandmarks {
     /** Specs whose model has loaded and is in the scene. */
     this.shown = new Set();
     this.activeLandmarkId = null;
+    /** `?sharedFrame=1`: draw in the page's one three.js frame (no own layer, renderer or lights). */
+    this.sharedFrame = options.sharedFrame || null;
     this.layer = this._makeLayer();
-    map.addLayer(this.layer);
+    if (this.sharedFrame) this._attachShared(options.sharedOrder ?? 20);
+    else map.addLayer(this.layer);
+    this._loadStreetChunks();
+  }
+
+  /**
+   * `?streetChunks=1`: draw each block face as ONE chunk model (one mesh,
+   * per-pand ranges in glTF extras; see streetChunks/manifest.ts) instead of its
+   * houses. The houses a chunk replaces leave the model list, and any already
+   * drawn are dropped, so nothing is drawn twice. No flag or no manifest: no change.
+   */
+  _loadStreetChunks() {
+    const { streetChunksEnabled, applyStreetChunks } = window.CanalRecallSignatureLandmarks;
+    if (!streetChunksEnabled?.(window.location.search)) return;
+    fetch(new URL('./ordinary-buildings-data/chunks.json', window.location.href), { cache: 'no-cache' })
+      .then(response => response.ok ? response.json() : Promise.reject(new Error(`chunks.json ${response.status}`)))
+      .then(manifest => {
+        if (this._removed) return;
+        const { models, replaced } = applyStreetChunks(this.models, manifest);
+        this.models = models;
+        this._dropEntries(replaced);
+        this._requestModels();
+      })
+      .catch(error => console.warn('Street chunks unavailable; keeping per-house models.', error));
+  }
+
+  /** Remove drawn models by spec id, freeing their resources and giving back their extrusions. */
+  _dropEntries(ids) {
+    const dropped = (this._entries || []).filter(entry => ids.has(entry.spec.id));
+    if (!dropped.length) return;
+    this._entries = this._entries.filter(entry => !ids.has(entry.spec.id));
+    for (const entry of dropped) { this.shown.delete(entry.spec.id); entry.holder?.parent?.remove(entry.holder); this._disposeModel(entry.group, entry.spec, entry.url); }
+    this._applySuppression();
+    this.map.triggerRepaint();
+  }
+
+  /**
+   * Shared-frame registration. Each model keeps the Mercator transform it was
+   * placed with, as a holder matrix under a root whose local space *is*
+   * Mercator; the frame maps that to its world, lights it with the one rig
+   * and draws every landmark in one render instead of one per model.
+   */
+  _attachShared(order) {
+    const root = new THREE.Group();
+    root.name = 'signature-landmarks';
+    this._sharedRoot = root;
+    this.sharedFrame.register('landmarks', {
+      root,
+      onAttach: () => this._setup(this.map, null),
+      beforeRender: ctx => {
+        if (this._removed || !this.enabled || !this._entries.length) return false;
+        let any = false;
+        for (const entry of this._entries) {
+          const show = this._nearby(entry.spec, entry.placement.anchor, ctx.bounds()) && this.canShowModel(entry.spec);
+          entry.holder.visible = show;
+          // Picking: world-space ray, against matrixWorld (which now includes the frame).
+          entry.pickProjection = show ? ctx.clipFromWorld : null;
+          if (show) any = true;
+        }
+        // The frame's world is already east/north/up metres.
+        if (any && this._recipeLook) this._recipeLook.enuFromWorld.value.identity();
+        return any;
+      },
+    }, { order });
+  }
+
+  /** Loader and light set-up shared by the legacy layer and the shared frame. */
+  _setup(map, lightScene) {
+    this._removed = false;
+    this._generation++;
+    const loader = new GLTFLoader();
+    // The runtime GLBs are EXT_meshopt_compression; without this the load
+    // fails and every landmark silently falls back to its grey box.
+    if (MeshoptDecoder) loader.setMeshoptDecoder(MeshoptDecoder);
+    this._loader = loader;
+    this._lightScene = lightScene;
+    map.on('moveend', this._onMove);
+    this._requestModels();
   }
 
   /**
@@ -122,10 +202,13 @@ export class SignatureLandmarks {
       if (!hit) continue;
       const depth = hit.point.clone().applyMatrix4(entry.pickProjection).z;
       if (depth < -1 || depth > 1 || result && depth >= result.depth) continue;
-      result = { id: entry.spec.suppressOsmIds?.[0] || entry.spec.landmarkId,
-        landmarkId: entry.spec.landmarkId, name: entry.spec.name,
+      // A street chunk is one mesh for several panden: the face under the cursor says which one.
+      const pand = entry.spec.chunkPands?.[window.CanalRecallSignatureLandmarks.pandIndexForFace(hit.object.geometry?.userData?.pandRanges, hit.faceIndex)];
+      result = { id: pand?.buildingId || entry.spec.suppressOsmIds?.[0] || entry.spec.landmarkId,
+        landmarkId: entry.spec.landmarkId, name: pand?.address || entry.spec.name,
         lngLat: entry.placement.anchor, depth, featureTarget: null,
-        ...(entry.spec.buildingFootprint ? { footprint: entry.spec.buildingFootprint, height: entry.spec.heightMetres } : {}) };
+        ...(pand?.footprint ? { footprint: { type: 'Polygon', coordinates: pand.footprint }, height: entry.spec.heightMetres }
+          : entry.spec.buildingFootprint ? { footprint: entry.spec.buildingFootprint, height: entry.spec.heightMetres } : {}) };
     }
     return result;
   }
@@ -281,14 +364,10 @@ export class SignatureLandmarks {
   }
 
   /** Keep loading and render culling aligned, including large footprint edges. */
-  _nearby(spec, anchor = spec.surveyed?.anchor || spec.footprint?.centre) {
+  _nearby(spec, anchor = spec.surveyed?.anchor || spec.footprint?.centre, bounds = null) {
     if (!anchor) return !this.loadVisibleOnly;
-    const bounds = this.map.getBounds();
     const radius = Math.hypot(spec.footprint?.lengthMetres || 0, spec.footprint?.widthMetres || 0) / 2;
-    const dy = radius / 111320;
-    const dx = dy / Math.max(.1, Math.cos(anchor[1] * Math.PI / 180));
-    return anchor[0] >= bounds.getWest() - .004 - dx && anchor[0] <= bounds.getEast() + .004 + dx &&
-      anchor[1] >= bounds.getSouth() - .002 - dy && anchor[1] <= bounds.getNorth() + .002 + dy;
+    return withinView(bounds || plainBounds(this.map.getBounds()), anchor, radius);
   }
 
   _requestModels() {
@@ -317,11 +396,14 @@ export class SignatureLandmarks {
           this._disposeModel(gltf.scene, spec, url);
           return;
         }
+        // Replaced by a street chunk while it was loading.
+        if (!this.models.includes(spec)) { this._disposeModel(gltf.scene, spec, url); finish(); return; }
         try { this._add(this._lightScene, spec, gltf.scene, this.map, url); }
         catch (error) {
           this._failed.add(spec.id);
           // Placement or the host callback can fail after insertion. Give the
           // extrusion back before freeing its model so no hidden shell remains.
+          for (const entry of this._entries) if (entry.spec.id === spec.id) entry.holder?.parent?.remove(entry.holder);
           this._entries = this._entries.filter(entry => entry.spec.id !== spec.id);
           this.shown.delete(spec.id);
           this._applySuppression();
@@ -400,8 +482,6 @@ export class SignatureLandmarks {
       type: 'custom',
       renderingMode: '3d',
       onAdd(map, gl) {
-        owner._removed = false;
-        owner._generation++;
         camera = new THREE.Camera();
         scene = new THREE.Scene();
         // Daylight, and note the sign of the sun's Y.
@@ -428,16 +508,7 @@ export class SignatureLandmarks {
         scene.add(fill);
         renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
         renderer.autoClear = false;
-
-        const loader = new GLTFLoader();
-        // The runtime GLBs are EXT_meshopt_compression; without this the load
-        // fails and every landmark silently falls back to its grey box.
-        if (MeshoptDecoder) loader.setMeshoptDecoder(MeshoptDecoder);
-
-        owner._loader = loader;
-        owner._lightScene = scene;
-        map.on('moveend', owner._onMove);
-        owner._requestModels();
+        owner._setup(map, scene);
       },
       onRemove(map) {
         owner._removed = true;
@@ -498,12 +569,22 @@ export class SignatureLandmarks {
     // Mirrored shared-mesh instance: negating X gives the group a negative determinant, which three.js answers by flipping the front face, so winding stays correct.
     if (placement.mirror) group.scale.x = -group.scale.x;
 
-    // Each model gets its own scene: the transform below is baked into the
-    // camera rather than the object, because MapLibre hands us a projection
-    // matrix per frame and Mercator units differ with latitude.
-    const modelScene = new THREE.Scene();
-    for (const light of scene.children.filter(child => child.isLight)) modelScene.add(light.clone());
-    modelScene.add(group);
+    // Legacy layer: each model gets its own scene, and the transform below is
+    // baked into the camera rather than the object, because MapLibre hands us
+    // a projection matrix per frame and Mercator units differ with latitude.
+    // Shared frame: the transform is the matrix of a holder in a Mercator-space
+    // root, and the frame's one light rig lights it.
+    let modelScene = null, holder = null;
+    if (this.sharedFrame) {
+      holder = new THREE.Group();
+      holder.matrixAutoUpdate = false;
+      holder.add(group);
+      this.sharedFrame.constructor.setShadows(group, true, true);
+    } else {
+      modelScene = new THREE.Scene();
+      for (const light of scene.children.filter(child => child.isLight)) modelScene.add(light.clone());
+      modelScene.add(group);
+    }
 
     const coordinate = this.maplibregl.MercatorCoordinate.fromLngLat(
       placement.anchor,
@@ -536,7 +617,12 @@ export class SignatureLandmarks {
       enuFromWorld = new THREE.Matrix3().setFromMatrix4(transform);
       enuFromWorld.premultiply(new THREE.Matrix3().set(1, 0, 0, 0, -1, 0, 0, 0, 1)).multiplyScalar(1 / units);
     }
-    this._entries.push({ spec, group, scene: modelScene, transform, highlighted: false, placement, url, enuFromWorld });
+    if (holder) {
+      holder.matrix.copy(transform);
+      holder.matrixWorldNeedsUpdate = true;
+      this._sharedRoot.add(holder);
+    }
+    this._entries.push({ spec, group, scene: modelScene, holder, transform, highlighted: false, placement, url, enuFromWorld });
     this.shown.add(spec.id);
     // Only now is it safe to take the grey box away.
     this._applySuppression();

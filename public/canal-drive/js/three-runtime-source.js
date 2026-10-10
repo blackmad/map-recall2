@@ -12,3 +12,11 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 
 export { THREE, GLTFLoader, MeshoptDecoder };
+
+// The shared three.js frame (one renderer / scene / light rig for every 3D
+// layer; `?sharedFrame=1`). Typed source in src/canalRecall/rendererShared/;
+// it takes THREE as an argument, so it adds no second copy of three here.
+export { SharedFrame } from '../../../src/canalRecall/rendererShared/sharedFrame.ts';
+export { createLitFacadeMaterial, createFacadeDepthMaterial } from '../../../src/canalRecall/rendererShared/litFacadeMaterial.ts';
+export { withinView } from '../../../src/canalRecall/rendererShared/residency.ts';
+export { PARTICIPANT_ORDER } from '../../../src/canalRecall/rendererShared/layerRegistry.ts';

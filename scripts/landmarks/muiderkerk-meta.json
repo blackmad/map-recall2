@@ -1,0 +1,10 @@
+{
+  "name": "Muiderkerk",
+  "landmarkId": "extract_landmarks_1055638541",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Muiderkerk",
+  "suppressOsmIds": ["NL.IMBAG.Pand.0363100012118480"],
+  "pandId": "0363100012118480",
+  "materialOverrides": {"brick": "#6e4636", "ochre": "#cdb98a", "pink": "#b98e80", "concrete": "#8d8a84", "green": "#2f6068", "red": "#b36b5a", "slate": "#4a4a4e", "stone": "#d6cdb5", "glass": "#7d9aa0", "white": "#e6e0d0", "dark": "#35261c", "frame": "#d8d3c4", "copper": "#6aa38c", "gold": "#d9b44a"},
+  "surveySource": "Current BAG 0363100012118480 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG massing; the tower above the block roof, porch, flank gable bays, window rhythm and lantern were measured by eye from 2025 municipal panoramas, no pixels or meshes imported."
+}

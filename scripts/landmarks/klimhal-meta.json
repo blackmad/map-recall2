@@ -1,0 +1,10 @@
+{
+  "name": "Klimhal Amsterdam",
+  "landmarkId": "requested-klimhal-amsterdam",
+  "sourceUrl": "https://www.fijnuit.nl/3680/klimhal-amsterdam",
+  "suppressOsmIds": ["NL.IMBAG.Pand.0363100012150166"],
+  "pandId": "0363100012150166",
+  "materialOverrides": {"bronze": "#4a3629", "glass": "#7f959b", "frame": "#e4e2da", "white": "#ece8dc", "concrete": "#aab0ad", "dark": "#3a3f43", "red": "#a8261f"},
+  "surveySource": "Current BAG 0363100012150166 footprint and 3DBAG LoD2.2 surfaces (a 21 m flat-topped box), native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free lofted ogive hall on the BAG footprint, profile (ridge 21 m, leaning ends, corner ribs, climbing sails, entrance block, cross-shaped west window) measured by eye from municipal panoramas; north end inferred from the south; no pixels or meshes imported."
+}

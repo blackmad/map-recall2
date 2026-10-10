@@ -2,6 +2,7 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import source from './palace-dam-footprints.json';
 type Colour=Parameters<BuildingTools['add']>[1];
+const sand='sandstone' as Colour,stone:Colour='stone';
 /** Original Royal Palace, surveyed eighteen parts and two open courtyards. */
 export function buildPalaceDam(_w:number,_d:number,b:BuildingTools){
  const {add,box}=b;
@@ -9,7 +10,7 @@ export function buildPalaceDam(_w:number,_d:number,b:BuildingTools){
  function mesh(v:number[],c:Colour){if(!v.length)return;const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.computeVertexNormals();add(g,c);}
  // Explicit roof panels own the top surface. Retain extrusion walls/bottoms,
  // omitting upward caps that otherwise flicker against the gray flat roofs.
- function body(polys:number[][][][],base:number,h:number){for(const p of polys){const g=new T.ExtrudeGeometry(shape(p),{depth:h,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,base+h,0);const positions=g.getAttribute('position'),normals=g.getAttribute('normal'),v:number[]=[];for(let i=0;i<positions.count;i+=3){if(normals.getY(i)>.9&&normals.getY(i+1)>.9&&normals.getY(i+2)>.9)continue;for(let j=0;j<3;j++)v.push(positions.getX(i+j),positions.getY(i+j),positions.getZ(i+j));}g.dispose();mesh(v,'stone');}}
+ function body(polys:number[][][][],base:number,h:number){for(const p of polys){const g=new T.ExtrudeGeometry(shape(p),{depth:h,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,base+h,0);const positions=g.getAttribute('position'),normals=g.getAttribute('normal'),v:number[]=[];for(let i=0;i<positions.count;i+=3){if(normals.getY(i)>.9&&normals.getY(i+1)>.9&&normals.getY(i+2)>.9)continue;for(let j=0;j<3;j++)v.push(positions.getX(i+j),positions.getY(i+j),positions.getZ(i+j));}g.dispose();mesh(v,sand);}}
  function arch(x:number,y:number,z:number,w:number,h:number,a:number,c:Colour){const s=new T.Shape();s.moveTo(-w/2,0);s.lineTo(w/2,0);s.lineTo(w/2,h-w/2);s.absarc(0,h-w/2,w/2,0,Math.PI,false);s.closePath();add(new T.ExtrudeGeometry(s,{depth:.08,bevelEnabled:false,curveSegments:5}),c,x,y,z,a);}
  function pairedWindow(x:number,y:number,z:number,a:number,w=2.1,h=2.4){const nx=Math.sin(a),nz=Math.cos(a);box(x,y,z,w+.28,h+.2,.11,'stone',a);box(x+nx*.1,y+.08,z+nz*.1,w,h,.09,'glass',a);box(x+nx*.2,y+.05,z+nz*.2,.12,h,.12,'stone',a);box(x+nx*.2,y+h*.52,z+nz*.2,w,.1,.12,'stone',a);box(x,y+h+.1,z,w+.42,.22,.35,'stone',a);}
  function band(ring:number[][],y:number,h:number,d:number,c:Colour){for(let i=0;i<ring.length-1;i++){const p=ring[i],q=ring[i+1];box((p[0]+q[0])/2,y,(p[1]+q[1])/2,Math.hypot(q[0]-p[0],q[1]-p[1]),h,d,c,-Math.atan2(q[1]-p[1],q[0]-p[0]));}}
@@ -35,22 +36,45 @@ export function buildPalaceDam(_w:number,_d:number,b:BuildingTools){
    const v:number[]=[];for(const p of part.localPolygons)for(const ring of p)for(let i=0;i<ring.length-1;i++){
     const a=ring[i],q=ring[i+1],segments=[a];if(tags['roof:shape']==='gabled'){const r=part.ridge,d0=a[0]*r.normal[0]+a[1]*r.normal[1]-r.mid,d1=q[0]*r.normal[0]+q[1]*r.normal[1]-r.mid;if(d0*d1<0){const t=d0/(d0-d1);segments.push([a[0]+(q[0]-a[0])*t,a[1]+(q[1]-a[1])*t]);}}segments.push(q);
     for(let j=0;j<segments.length-1;j++){const p=segments[j],r=segments[j+1],h0=roofHeight(...p as [number,number]),h1=roofHeight(...r as [number,number]);if(h1>eaves+.001)v.push(p[0],eaves,p[1],r[0],eaves,r[1],r[0],h1,r[1]);if(h0>eaves+.001)v.push(p[0],eaves,p[1],r[0],h1,r[1],p[0],h0,p[1]);}
-   }mesh(v,'stone');
+   }mesh(v,sand);
   }
   if(base>=15)for(const p of part.localPolygons)band(p[0],eaves-.2,.25,.35,'stone');
  }
 
  const outer=source.facadePolygons[0][0],winding=Math.sign(outer.slice(0,-1).reduce((s,p,i)=>s+p[0]*outer[i+1][1]-outer[i+1][0]*p[1],0))||1;
- for(const ring of [outer])for(let i=0;i<ring.length-1;i++){
-  const p=ring[i],q=ring[i+1],dx=q[0]-p[0],dz=q[1]-p[1],len=Math.hypot(dx,dz);if(len<3)continue;const a=-Math.atan2(dz,dx)+(winding>0?Math.PI:0),nx=Math.sin(a),nz=Math.cos(a),count=Math.max(1,Math.round(len/4.25));
-  // Classical paired-storey pilasters and inset windows; ornaments are
-  // original low-poly approximations rather than sampled photograph pixels.
-  band([p,q],.3,.5,.25,'stone');band([p,q],6.1,.4,.4,'stone');band([p,q],14,.45,.4,'stone');band([p,q],24.7,.45,.5,'stone');
-  for(let j=0;j<count;j++){const t=(j+.5)/count,x=p[0]+dx*t+nx*.1,z=p[1]+dz*t+nz*.1;for(const y of [1.3,7.2,10.8,15.2,19.2])pairedWindow(x,y,z,a,1.4,y<2?2.7:2.9);const u=j/count,px=p[0]+dx*u+nx*.16,pz=p[1]+dz*u+nz*.16;box(px,6.6,pz,.4,7.1,.35,'stone',a);box(px,14.6,pz,.48,9.8,.4,'stone',a);box(px,24.2,pz,.9,.45,.5,'stone',a);}
+ // Van Campen's order, read from the Dam and rear panoramas: rusticated base
+ // (small barred windows; seven arches under the Dam risalit), then two
+ // pilastered storey groups, each a tall window under a small mezzanine window,
+ // split by a strong cornice, under a crowning cornice. 21 axes on the Dam front.
+ const archShape=(aw:number,ah:number)=>{const s=new T.Shape();s.moveTo(-aw/2,0);s.lineTo(aw/2,0);s.lineTo(aw/2,ah-aw/2);s.absarc(0,ah-aw/2,aw/2,0,Math.PI,false);s.closePath();return new T.ShapeGeometry(s,6);};
+ for(let i=0;i<outer.length-1;i++){
+  const p=outer[i],q=outer[i+1],dx=q[0]-p[0],dz=q[1]-p[1],len=Math.hypot(dx,dz);if(len<3)continue;
+  const a=-Math.atan2(dz,dx)+(winding>0?Math.PI:0),nx=Math.sin(a),nz=Math.cos(a);
+  const risalit=len>22,count=risalit?7:Math.max(1,Math.round(len/3.9)),damRisalit=risalit&&nx>.9;
+  const at=(t:number,o:number):[number,number]=>[p[0]+dx*t+nx*o,p[1]+dz*t+nz*o];
+  const slab=(y:number,h:number,d:number,c:Colour)=>{const [x,z]=at(.5,d/2);box(x,y,z,len,h,d,c,a);};
+  slab(0,5.0,.45,sand);slab(5.0,.5,.5,stone);slab(16.0,.8,.5,stone);slab(24.6,.9,.55,stone);
+  for(let j=0;j<=count;j++){const [px,pz]=at(j/count,.12);box(px,5.5,pz,.62,10.5,.3,sand,a);box(px,17,pz,.62,7.6,.3,sand,a);box(px,15.6,pz,.95,.4,.45,stone,a);box(px,24.2,pz,.95,.4,.45,stone,a);}
+  for(let j=0;j<count;j++){
+   const t=(j+.5)/count,[x,z]=at(t,.05),[wx,wz]=at(t,.16),[fx,fz]=at(t,.5),[gx2,gz2]=at(t,.56),w=Math.min(1.5,len/count*.4);
+   const win=(y:number,h:number,ww:number)=>{if(y<5){box(fx,y-.15,fz,ww+.5,h+.4,.1,stone,a);box(gx2,y,gz2,ww,h,.08,'glass',a);return;}box(x,y-.15,z,ww+.5,h+.4,.14,stone,a);box(wx,y,wz,ww,h,.1,'glass',a);const [cx,cz]=at(t,.22);box(cx,y+h*.55,cz,ww,.08,.06,stone,a);box(cx,y,cz,.08,h,.06,stone,a);};
+   win(6.3,3.4,w);win(11.0,1.6,w*.95);win(17.7,3.2,w);win(22.5,1.4,w*.95);
+   if(damRisalit){const [ax,az]=at(t,.58),[bx,bz]=at(t,.47),aw=2.1,ah=3.9;
+    box(bx,0,bz,aw+.9,ah+.5,.1,stone,a);
+    add(archShape(aw,ah),'dark',ax,.05,az,a);
+   }else win(1.2,1.6,w*.8);
+  }
+  if(damRisalit){const [gx,gz]=at(.5,.45);box(gx,5.4,gz,len*.8,.4,.7,'gold',a);}
  }
- // The monumental Dam-facing pediment, with original faceted relief forms.
- const x=32.3,z=1,half=15;mesh([x,25,z-half,x,25,z+half,x,33,z],'stone');
- for(let i=-4;i<=4;i++){box(x+.12,25.8,z+i*2.5,.18,1.3+(4-Math.abs(i))*.55,.48,'stone');}
+ // The Dam pediment: raking cornice, tympanum and the sculpture group
+ // (Artus Quellinus, 1650s) as stepped low-poly figures.
+ {const x=33.2,z0=.45,half=12.8,rise=5.4;
+  mesh([x,25.5,z0-half,x,25.5,z0+half,x,25.5+rise,z0],sand);
+  const ang=Math.atan2(rise,half),rl=Math.hypot(half,rise);
+  for(const sg of [-1,1]){const g=new T.BoxGeometry(.5,.55,rl);g.rotateX(-sg*ang);add(g,stone,x+.15,25.5+rise/2,z0-sg*half/2);}
+  box(x+.1,25.3,z0,.5,.5,half*2+1,stone);
+  for(let i=-5;i<=5;i++)box(x+.2,25.9,z0+i*2.1,.4,.9+(5-Math.abs(i))*.38,1.1,stone);
+  box(x,30.9,z0,.7,1.3,.7,stone);}
  // Exact mapped tower footprint; measured/official55m complete upper dome
  // replaces the source's incomplete45m part without fitting the legacy mesh.
  const tower=source.parts.find(p=>p.properties['roof:shape']==='dome')!,[x0,z0,x1,z1]=tower.bounds,cx=(x0+x1)/2,cz=(z0+z1)/2,r=Math.min(x1-x0,z1-z0)/2;

@@ -1,0 +1,10 @@
+{
+  "id": "concertgebouw",
+  "reviewedOn": "2026-10-10",
+  "licence": "Gemeente Amsterdam Panoramabeelden, CC BY 4.0",
+  "references": [
+    {"file": "artifacts/landmark-lanes/concertgebouw/ref-s.jpg", "facade": "south (main front)", "panoId": "recording_2025-07-30_11-08-35_02152", "captured": "2025-07-30T11:58:45Z", "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-30_11-08-35_02152/?width=1600&fov=93&heading=339&pitch=11"},
+    {"file": "artifacts/landmark-lanes/concertgebouw/ref-w.jpg", "facade": "west", "panoId": "TMX7316010203-002454_pano_0000_000278", "captured": "2022-03-21T07:56:02.918790Z", "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002454_pano_0000_000278/?width=1600&fov=90&heading=248&pitch=16"}
+  ],
+  "rework2026_10_10": "Main-front entrance only: three round-arched doors (about -4, 0, +4 m from the portico axis, under the canopy) replace four rectangles; portico columns re-spaced to the photo (six columns, closer pairs at both ends, ~3.9 m central bays) and upper arched bays moved under the central bays. Pre-existing audit FAILs (holes, see-through, detached) from the glass promenade are unchanged."
+}

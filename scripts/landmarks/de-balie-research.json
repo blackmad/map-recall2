@@ -1,0 +1,9 @@
+{
+  "id": "de-balie",
+  "reviewedOn": "2026-10-10",
+  "licence": "Gemeente Amsterdam Panoramabeelden, CC BY 4.0",
+  "references": [
+    {"file": "artifacts/landmark-lanes/de-balie/ref-e.jpg", "facade": "east (front, Kleine-Gartmanplantsoen)", "panoId": "recording_2025-07-14_05-25-22_02056", "captured": "2025-07-14T06:37:09Z", "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-14_05-25-22_02056/?width=1600&fov=58&heading=243&pitch=8", "glbBearing": 92.5, "realBearing": 62.7}
+  ],
+  "rework2026_10_10": "Photo shows pale sandstone, TWO storeys over a barred basement (not three), seven window axes (wide mullioned bays at both ends, five regular bays, central arched portal with small pediment and name plate), crowning cornice, two stepped Dutch-Renaissance gables over the end bays, steep slate hip roof with three dormers. The front is slightly bowed in reality; the model keeps the straight OSM footprint wall (held). Wall colour is the shared stone palette entry; the panorama is overexposed, so true hue is approximate."
+}

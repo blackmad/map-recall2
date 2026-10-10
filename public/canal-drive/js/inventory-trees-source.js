@@ -13,7 +13,7 @@ function crownBounds(map) {
 
 /** Stream real municipal tree positions; at most seven instanced draws for the visible canopy. */
 export class InventoryTrees {
-  constructor(map, maplibregl, onReady = () => {}) {
+  constructor(map, maplibregl, onReady = () => {}, options = {}) {
     this.map=map; this.maplibregl=maplibregl; this.onReady=onReady;
     this.enabled=false; this.allotmentCanopyEnabled=true; this.ready=false; this.generation=0;
     this.tiles=new Map(); this.pending=new Map(); this.meshes=[]; this.theme='clean';
@@ -22,11 +22,16 @@ export class InventoryTrees {
     this.residency=new ViewResidency(.25,60);
     // Keep GPU geometry and shaders warm while streamed instance buffers change.
     this.geometries=new Map();this.materials=new Map();
-    this.scene=new THREE.Scene();
-    this.scene.add(new THREE.HemisphereLight(0xffffff,0x526048,2.15));
-    const sun=new THREE.DirectionalLight(0xfff0d5,1.7);sun.position.set(-2,-1,4);this.scene.add(sun);
+    // `?sharedFrame=1`: a root in the page's one three.js frame, lit by its rig.
+    this.sharedFrame=options.sharedFrame||null;
+    this.scene=this.sharedFrame?new THREE.Group():new THREE.Scene();
+    if(!this.sharedFrame){
+      this.scene.add(new THREE.HemisphereLight(0xffffff,0x526048,2.15));
+      const sun=new THREE.DirectionalLight(0xfff0d5,1.7);sun.position.set(-2,-1,4);this.scene.add(sun);
+    }
     this.origin=maplibregl.MercatorCoordinate.fromLngLat([4.9,52.37],0);
     this.scale=this.origin.meterInMercatorCoordinateUnits();
+    this.transform=new THREE.Matrix4().makeTranslation(this.origin.x,this.origin.y,this.origin.z).scale(new THREE.Vector3(this.scale,-this.scale,this.scale));
     this.layer={id:'municipal-inventory-trees',type:'custom',renderingMode:'3d',
       onAdd:(_map,gl)=>{this.camera=new THREE.Camera();this.renderer=new THREE.WebGLRenderer({canvas:map.getCanvas(),context:gl,antialias:true});this.renderer.autoClear=false;},
       onRemove:()=>{
@@ -42,7 +47,12 @@ export class InventoryTrees {
         this.camera.projectionMatrix.fromArray(args.defaultProjectionData?.mainMatrix || args).multiply(transform);
         this.renderer.resetState();this.renderer.render(this.scene,this.camera);
       }};
-    map.addLayer(this.layer);
+    if(this.sharedFrame)this.sharedFrame.register('trees',{
+      root:this.scene,
+      mercatorFromLocal:()=>this.transform.elements,
+      beforeRender:()=>this.enabled&&this.ready&&map.getZoom()>=MIN_ZOOM&&this.meshes.length>0,
+    },{order:options.sharedOrder??30});
+    else map.addLayer(this.layer);
     this.move=()=>this.update();map.on('moveend',this.move);
   }
   async load(root) {
@@ -158,7 +168,9 @@ export class InventoryTrees {
         if(v.q)dummy.quaternion.copy(v.q);else if(v.rotation)dummy.rotation.z=v.rotation;
         dummy.updateMatrix();m.setMatrixAt(j,dummy.matrix);m.setColorAt(j,new THREE.Color(v.color));
       });
-      m.instanceMatrix.needsUpdate=true;m.instanceColor.needsUpdate=true;m.frustumCulled=false;this.scene.add(m);this.meshes.push(m);
+      m.instanceMatrix.needsUpdate=true;m.instanceColor.needsUpdate=true;m.frustumCulled=false;
+      if(this.sharedFrame){m.castShadow=true;m.receiveShadow=true;}
+      this.scene.add(m);this.meshes.push(m);
     }
     this.debugTrees=trees;this.debugAuthoredTrees=authoredTrees;this.debugTiles=this.tiles.size;this.debugArchetypes=[...archetypes];this.debugDraws=this.meshes.length;this.setTheme(this.theme);
   }

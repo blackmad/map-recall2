@@ -6,17 +6,40 @@ import fs from 'node:fs';
 import * as T from 'three';
 import type {BuildingTools} from './landmarks/cultural-builders';
 import {measureAttachment} from './landmarks/attachment';
+import {buildKlimhal} from './landmarks/klimhal-builder';
+import {buildIjToren} from './landmarks/ij-toren-builder';
+import {buildSymphony} from './landmarks/symphony-builder';
 import {buildClubPanama} from './landmarks/club-panama-builder';
 import {buildCompagnietheater} from './landmarks/compagnietheater-builder';
+import {buildAronSchusterSynagoge} from './landmarks/aron-schuster-synagoge-builder';
+import {buildMuiderkerk} from './landmarks/muiderkerk-builder';
 import {buildNassaukerk} from './landmarks/nassaukerk-builder';
+import {buildZuiderkerk} from './landmarks/zuiderkerk-builder';
+import {buildThomaskerk} from './landmarks/thomaskerk-builder';
+import {buildWillemDeZwijgerkerk} from './landmarks/willem-de-zwijgerkerk-builder';
+import {buildVanGendtHallen} from './landmarks/van-gendt-hallen-builder';
+import {buildVrijburg} from './landmarks/vrijburg-builder';
 import {buildWestIndiaHouse} from './landmarks/west-india-house-builder';
+import {buildZevenlandenhuizen} from './landmarks/zevenlandenhuizen-builder';
 
 const cases: Record<string, {build: (w: number, d: number, b: never) => void; ring: () => number[][]; top: () => number; topSlack: number}> = {
+  'ij-toren': {build: buildIjToren, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')).nativeRing, top: () => { const f = JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')); return Math.max(...f.surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))); }, topSlack: 8},
+  'symphony': {build: buildSymphony, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/symphony-footprints.json', 'utf8')).nativeRing, top: () => { const f = JSON.parse(fs.readFileSync('scripts/landmarks/symphony-footprints.json', 'utf8')); return Math.max(...f.surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))); }, topSlack: 3},
+  'klimhal': {build: buildKlimhal, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/klimhal-footprints.json', 'utf8')).nativeRing, top: () => { const f = JSON.parse(fs.readFileSync('scripts/landmarks/klimhal-footprints.json', 'utf8')); return Math.max(...f.surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))); }, topSlack: 0.5},
   'club-panama': {build: buildClubPanama, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/club-panama-footprints.json', 'utf8')).nativeRing, top: () => { const f = JSON.parse(fs.readFileSync('scripts/landmarks/club-panama-footprints.json', 'utf8')); return Math.max(...f.surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))); }, topSlack: 2.2},
   'compagnietheater': {build: buildCompagnietheater, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/compagnietheater-footprints.json', 'utf8')).ring[0], top: () => Math.max(...JSON.parse(fs.readFileSync('scripts/landmarks/compagnietheater-footprints.json', 'utf8')).roofs.flatMap((r: any) => r.rings.flat().map((p: number[]) => p[1]))), topSlack: 1.0},
   'west-india-house': {build: buildWestIndiaHouse, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/west-india-house-footprints.json', 'utf8')).ring[0], top: () => Math.max(...JSON.parse(fs.readFileSync('scripts/landmarks/west-india-house-footprints.json', 'utf8')).roofs.flatMap((r: any) => r.rings.flat().map((p: number[]) => p[1]))), topSlack: 1.0},
   'nassaukerk': {build: buildNassaukerk, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/nassaukerk-footprints.json', 'utf8')).nativeRing, top: () => Math.max(...JSON.parse(fs.readFileSync('scripts/landmarks/nassaukerk-footprints.json', 'utf8')).surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 1.0},
+  'zuiderkerk': {build: buildZuiderkerk, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/zuiderkerk-footprints.json', 'utf8')).nativeRing, top: () => Math.max(...JSON.parse(fs.readFileSync('scripts/landmarks/zuiderkerk-footprints.json', 'utf8')).surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 7.0},
+  'muiderkerk': {build: buildMuiderkerk, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/muiderkerk-footprints.json', 'utf8')).nativeRing, top: () => Math.max(...JSON.parse(fs.readFileSync('scripts/landmarks/muiderkerk-footprints.json', 'utf8')).surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 1.0},
+  'aron-schuster-synagoge': {build: buildAronSchusterSynagoge, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/aron-schuster-synagoge-footprints.json', 'utf8')).nativeRing, top: () => Math.max(...JSON.parse(fs.readFileSync('scripts/landmarks/aron-schuster-synagoge-footprints.json', 'utf8')).surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 1.0},
+  'thomaskerk': {build: buildThomaskerk, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/thomaskerk-footprints.json', 'utf8')).nativeRing, top: () => Math.max(...JSON.parse(fs.readFileSync('scripts/landmarks/thomaskerk-footprints.json', 'utf8')).surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 3.0},
+  'willem-de-zwijgerkerk': {build: buildWillemDeZwijgerkerk, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/willem-de-zwijgerkerk-footprints.json', 'utf8')).nativeRing, top: () => Math.max(...JSON.parse(fs.readFileSync('scripts/landmarks/willem-de-zwijgerkerk-footprints.json', 'utf8')).surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 1.0},
+  'vrijburg': {build: buildVrijburg, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/vrijburg-footprints.json', 'utf8')).nativeRing, top: () => Math.max(...JSON.parse(fs.readFileSync('scripts/landmarks/vrijburg-footprints.json', 'utf8')).surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 10},
+  'van-gendt-hallen': {build: buildVanGendtHallen, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/van-gendt-hallen-footprints.json', 'utf8')).nativeRing, top: () => Math.max(...JSON.parse(fs.readFileSync('scripts/landmarks/van-gendt-hallen-footprints.json', 'utf8')).surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 1.0},
 };
+const zlRow = () => JSON.parse(fs.readFileSync('scripts/landmarks/zevenlandenhuizen-footprints.json', 'utf8')).houses as {nativeRing: number[][]; surfaces: any[]}[];
+cases['zevenlandenhuizen'] = {build: buildZevenlandenhuizen, ring: () => zlRow().flatMap(h => h.nativeRing), top: () => Math.max(...zlRow().flatMap(h => h.surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1])))), topSlack: 2.5};
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(cases);
 for (const id of ids) {
   const c = cases[id];
@@ -41,7 +64,7 @@ for (const id of ids) {
   const m = 1.0;
   assert(bounds.min.x >= Math.min(...xs) - m && bounds.max.x <= Math.max(...xs) + m && bounds.min.z >= Math.min(...zs) - m && bounds.max.z <= Math.max(...zs) + m, `${id}: parts outside footprint +${m} m`);
   const r = measureAttachment(gs.slice(0, shellCount), gs.slice(shellCount), Number(process.env.TOL ?? 0.05));
-  console.log(JSON.stringify({id, triangles: tris, details: r.parts, maxGapCm: +(r.max * 100).toFixed(2), height: +bounds.max.y.toFixed(2), worst: r.worst.slice(0, 8)}));
+  console.log(JSON.stringify({id, triangles: tris, details: r.parts, maxGapCm: +(r.max * 100).toFixed(2), height: +bounds.max.y.toFixed(2), worst: r.worst.slice(0, Number(process.env.WORST ?? 8))}));
   assert(r.max <= 0.05, `${id}: ${r.worst.length} floating detail part(s), max gap ${(r.max * 100).toFixed(1)} cm`);
   const glb = `public/canal-drive/models/${id}.glb`;
   assert(fs.existsSync(glb), `${id}: GLB missing`);
