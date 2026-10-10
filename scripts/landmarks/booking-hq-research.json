@@ -1,0 +1,21 @@
+{
+  "canonicalModelId": "booking-hq",
+  "landmarkId": "booking-hq",
+  "researchedOn": "2026-10-10",
+  "state": "built; south, south-east and east fronts photographed, north and west faces inferred; the curved stepped terraces of the real front are NOT modelled (3DBAG LoD2.2 flat walls only)",
+  "destination": {
+    "name": "Booking.com headquarters",
+    "address": "Oosterdokskade 163, 1011 DL Amsterdam",
+    "bagPand": "NL.IMBAG.Pand.0363100012250152",
+    "note": "Identity: nummeraanduiding 0363200012125802 (Oosterdokskade 163) -> verblijfsobject 0363010012123969 (kantoorfunctie, 51,543 m2, 12 storeys) -> ligtInPanden 0363100012250152, the single pand of the campus (office + 41 apartments in the tower + car park, so the ~60 other verblijfsobjecten are in the same building). The 'Booking.com' sign is visible in the 2025 panoramas. No installed model, native-kit POI, work-queue task or backlog entry covered it (checked by name and BAG id)."
+  },
+  "sources": [
+    {"url": "https://nl.wikipedia.org/wiki/Hoofdkantoor_van_Booking.com", "retrieved": "2026-10-10", "note": "Plot, Post CS predecessor, UNStudio/Ben van Berkel, 2018-2022 build, 63,500 m2, 5,000 staff, 41 apartments + Club 11, steel structure 6,000,000 kg. CC BY-SA."},
+    {"url": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012123969/", "retrieved": "2026-10-10", "note": "BAG verblijfsobject at Oosterdokskade 163."}
+  ],
+  "panoramas": [
+    {"id": "recording_2025-10-01_11-02-55_00996", "date": "2025-10-01", "file": "ref-south.jpg", "licence": "Gemeente Amsterdam panorama API (CC0)"},
+    {"id": "recording_2025-06-17_09-10-34_00557", "date": "2025-06-17", "file": "ref-east.jpg", "licence": "Gemeente Amsterdam panorama API (CC0)"},
+    {"id": "recording_2025-06-17_09-10-34_00566", "date": "2025-06-17", "file": "ref-south-east.jpg", "licence": "Gemeente Amsterdam panorama API (CC0)"}
+  ]
+}
