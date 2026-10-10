@@ -143,6 +143,16 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   tessellating shell faces (big-facade.ts addShellTess); fix the grid
   (bin by plane, or rasterise only the triangle) and re-run the baseline.
   Kohnstammhuis stone reads too warm/tan against the grey photo.
+- **Nieuw-West building types (2026-10-11)**: opt-in `?buildingTypes=1`
+  draws 40 photo-confirmed instances (Sonderbuur type 1 portiekflat: 13
+  brick-cream + 11 clad-panel; Comeniusstraat type 6: 9 closed-ground + 7
+  centre-balcony pilotis) as shared InstancedMesh units with a box LOD past
+  140 m. Next: extend to the other 333 type-1 and 54 type-6 pands (each area
+  needs a photo survey; a control area's 12 "type 6" matches were a
+  different design), model types 2-5, inferred backs/gables need photos,
+  three.js render counters read 0 in the perf spec (no all-layer draw-call
+  comparison yet), then decide default-on. Review renders live in the source
+  repo under building-types/.
   Booking.com HQ held (2026-10-10): the plate rework (stepped bands,
   terrace cut, lower-case sign, teal glass) still reads as a gridded box.
   Needs the curved, stepped south front cantilevered over the entrance plaza
