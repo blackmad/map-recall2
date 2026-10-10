@@ -1,0 +1,33 @@
+{
+  "id": "hva-rhijnspoorplein-2",
+  "status": "ready-with-caveats-pending-integrator-blind-count",
+  "identity": {
+    "bagPandId": "0363100012245513",
+    "bouwjaar": 2023,
+    "addresses": ["Rhijnspoorplein 2"],
+    "bag": "BAG API 2026-10-10: 15 bouwlagen, oorspronkelijkBouwjaar 2023, education use, 21,435 m2, no pand name",
+    "name": "HvA building at Rhijnspoorplein (newest block of the Amstelcampus); architect not identified in the sources found",
+    "policy": "ordinary large building: category ordinary, no route destination, no POI card"
+  },
+  "sources": [
+    {"url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012245513/?_format=json", "kind": "BAG pand (Amsterdam BAG API)", "retrievedOn": "2026-10-10", "licence": "CC0 (BAG)"},
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012245513&f=json", "kind": "BAG pand footprint", "retrievedOn": "2026-10-10", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012245513", "kind": "3DBAG LoD2.2 massing", "retrievedOn": "2026-10-10", "licence": "CC BY 4.0 (3DBAG)"},
+    {"file": "artifacts/landmark-lanes/hva-rhijnspoorplein-2/ref-nw-a.jpg, ref-nw-b.jpg, ref-nw-mid-construction.jpg, ref-nw.jpg", "kind": "wall 55 (north-west front, 66 m) rectified from TMX7316010203-002593_pano_0000_003851 (2022-06-13), TMX7316010203-001906_pano_0000_000310 (2020-09-04, shows the unfinished structure), recording_2025-09-30_11-08-39_00522 (2025-09-30)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/hva-rhijnspoorplein-2/ref-tower-north.jpg", "kind": "wall 37 (tower north) from TMX7316010203-002469_pano_0000_000495 (2022-03-23)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/hva-rhijnspoorplein-2/ref-tower-east.jpg", "kind": "wall 167 (tower east) from recording_2025-06-19_03-28-47_03214 (2025-06-19), 34 m away", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/hva-rhijnspoorplein-2/ref-sw.jpg, ref-sw-2.jpg", "kind": "walls 34 and 57 (south-west) from recording_2025-06-20_12-01-53_00701 and _00705 (2025-06-20), partly behind site hoardings and scaffolds", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/hva-rhijnspoorplein-2/rect1-0.jpg, rect21-0.jpg", "kind": "walls 1 and 21 (narrow end faces) from TMX7315120208-000059_pano_0000_001026 (2016-05-26, before construction: not used) and TMX7316010203-001674_pano_0000_003396 (2020-04-24)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"}
+  ],
+  "faces": {
+    "north-west front (55)": "evidence: ref-nw-a.jpg and ref-nw-b.jpg (finished facade). Row heights and the wide/slit change between storeys read from them; the mix of wide and slit windows inside one storey (wide on the left, slits on the right in the photo) is simplified to whole-storey bands.",
+    "tower north/east, south-west (37, 167, 34, 57)": "evidence: ref-tower-*.jpg, ref-sw*.jpg (site hoardings hide the ground floors).",
+    "everything else (south-east sawtooth wall, inner volumes, 172)": "INFERRED: same module."
+  },
+  "caveats": [
+    "The photographs show an open double-height portico under the tower and a glazed ground storey; the 3DBAG shell is closed to the ground there and no see-through opening was invented.",
+    "Individual window widths inside a storey vary on the building; the model uses one wide and one slit module.",
+    "No architect or building name was confirmed, hence ordinary."
+  ],
+  "limits": ["portico", "per-window width variation", "colour variants of glazing", "roof plant"]
+}
