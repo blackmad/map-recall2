@@ -2,7 +2,7 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {addShell} from './worship-shell';
 import {wallsOf} from './worship-walls';
-import {archBand, archSlab, archWindows, poly, put, ringFrame, sashWindows, setSink, slab} from './nearbar-kit';
+import {archBand, archSlab, archWindows, poly, put, ringFrame, roofHeightAt, sashWindows, setSink, slab} from './nearbar-kit';
 import type {Frame} from './nearbar-kit';
 import source from './hotel-de-l-europe-footprints.json';
 
@@ -79,17 +79,43 @@ export function buildHotelDeLEurope(_w: number, _d: number, b: BuildingTools & {
     return {fs, total, at};
   };
 
+  /** Vertical white-stone strip (quoin / pilaster) between window axes, from the string course to just under the eaves. */
+  const pier = (a: {f: Frame; t: number}) => {
+    const top = topAt(a.f, a.t);
+    if (top < 12 || !flush(a.f, a.t)) return;
+    slab(b, a.f, a.t, 6.4, 0.45, Math.min(top - 0.6, 21.5) - 6.4, 0.1, 'stone');
+  };
+  /** Stone-framed dormer on the mansard behind frame f at t: sits on the 3DBAG roof plane 0.9 m back from the eave, front flush with the wall. */
+  const dormer = (f: Frame, t: number) => {
+    const T0 = topAt(f, t);
+    if (T0 < 14 || !flush(f, t)) return;
+    const x = f.origin[0] + f.tangent[0] * t - f.n[0] * 0.9, z = f.origin[1] + f.tangent[1] * t - f.n[1] * 0.9;
+    const rh = roofHeightAt((source as {surfaces: never[]}).surfaces, x, z);
+    if (rh === null || rh < T0 - 0.1 || rh > T0 + 3) return;
+    const y0 = T0 - 0.3, wy = Math.max(rh - 0.1, T0 + 0.1), wh = 1.3, h = wy + wh + 0.3 - y0;   // box rooted in the eave, window clear of the roof plane
+    slab(b, f, t, y0, 1.5, h, 0.5, 'stone');                                // frame box
+    slab(b, f, t, wy, 0.9, wh, 0.58, 'glass');                              // window
+    slab(b, f, t, wy, 0.06, wh, 0.62, 'frame');
+    poly(b, f, t, y0 + h, [[-0.95, 0], [0.95, 0], [0, 0.8]], 0.5, 'stone');  // gablet
+  };
+
   // storey rows: sill, head
-  const rows: [number, number][] = [[8.7, 11.3], [13.0, 15.4], [16.6, 18.6], [19.8, 22.1]];
+  const rows: [number, number][] = [[7.2, 9.9], [11.0, 13.7], [14.8, 17.3], [18.4, 20.6]];
   const stripes = (f: Frame, len: number, o: {balcony?: boolean} = {}) => {
     for (const [t0, t1] of runs(f, len)) {
       const c = (t0 + t1) / 2, w = t1 - t0;
+      slab(b, f, c, 0, w, 5.95, 0.08, 'stone');                         // pale stone-clad ground storey (panoramas: grey-white ashlar under the brick)
       slab(b, f, c, 0, w, 0.35, 0.2, 'stone');                          // plinth
       slab(b, f, c, 5.95, w, 0.45, 0.22, 'stone');                      // string course over the ground storey
       for (const [y0, y1] of rows) {
         if (topAt(f, c) < y1 + 0.4) continue;
         slab(b, f, c, y0 - 0.14, w, 0.14, 0.12, 'stone');               // sill band
         slab(b, f, c, y1, w, 0.2, 0.14, 'stone');                       // lintel band
+      }
+      // the 'striped' brick: a white stone course every ~1.1 m between the window bands (alternating brick and stone)
+      for (let ts = t0; ts < t1 - 0.3; ts += 2.2) {
+        const te = Math.min(ts + 2.2, t1), cm = (ts + te) / 2, top = topAt(f, cm);
+        for (let y = 6.9; y < top - 0.7; y += 1.1) slab(b, f, cm, y, te - ts, 0.16, 0.07, 'stone');
       }
       if (o.balcony) {
         slab(b, f, c, 7.1, w, 0.3, 0.55, 'stone');                       // balcony slab
@@ -112,40 +138,63 @@ export function buildHotelDeLEurope(_w: number, _d: number, b: BuildingTools & {
       for (const [t0, t1] of runs(e.f, e.len)) for (let y = 0.9; y < 5.9; y += 0.8) slab(b, e.f, (t0 + t1) / 2, y, t1 - t0, 0.04, 0.24, 'greyBrick');
     }
     // ground storey: round-headed windows
-    for (const u of [1.0, 6.4, 11.3, 15.8, 20.6]) {
+    for (let u = 1.5; u < p.total - 1.2; u += 3.0) {
       const {f, t} = p.at(u);
       if (topAt(f, t) < 6 || !flush(f, t)) continue;
-      archBand(b, f, t, 1.0, 3.0, 4.6, 0.3, 0.2, 'stone');
-      archWindows(b, f, [t], {y: 1.1, w: 2.4, h: 4.4, bars: 1, rows: 3, frame: 'white', sill: 'stone'});
+      archBand(b, f, t, 1.0, 2.5, 4.6, 0.3, 0.2, 'stone');
+      archWindows(b, f, [t], {y: 1.1, w: 1.9, h: 4.4, bars: 1, rows: 3, frame: 'white', sill: 'stone'});
     }
     // upper floors at the bay rhythm
-    for (const u of [1.1, 6.6, 12.1, 17.4, 22.5]) {
+    for (let u = 1.5; u < p.total - 1.2; u += 3.0) {
       const {f, t} = p.at(u);
-      for (const r of rows) row(f, [t], r, 1.7);
+      for (const r of rows) row(f, [t], r, 1.4);
+      dormer(f, t);
+      pier(p.at(u + 1.5));
     }
   }
 
-  // =============================== rounded south end ===============================
+  // =============================== rounded south end: the semicircular bay on the Munt corner ===============================
+  // Circle fitted to ring vertices 94-118: centre (11.30, 13.34) east/south, radius 5.9 m. Angle 0 = due south.
   {
-    const edges: number[] = [];
-    for (let i = 94; i <= 118; i++) edges.push(i);
-    const p = path(edges);
-    for (const e of p.fs) {
-      if (e.len < 0.4) continue;
-      for (const [t0, t1] of runs(e.f, e.len)) {
-        slab(b, e.f, (t0 + t1) / 2, 0, t1 - t0, 0.35, 0.2, 'stone');
-        slab(b, e.f, (t0 + t1) / 2, 5.95, t1 - t0, 0.45, 0.22, 'stone');
-        slab(b, e.f, (t0 + t1) / 2, 7.1, t1 - t0, 0.3, 0.55, 'stone');
+    const cx = 11.298, cz = 13.339, R = 5.9 - 0.08, deg = Math.PI / 180;
+    const cf = (th: number): Frame => { const a = th * deg, nx = Math.sin(a), nz = Math.cos(a); return {origin: [cx + R * nx, cz + R * nz], tangent: [nz, -nx], n: [nx, nz]}; };
+    /** Wall top over the bay at angle th, read from the nearest ring edge of the shell. */
+    const topNear = (th: number) => {
+      let best = 0, bd = 1e9;
+      for (let i = 94; i <= 118; i++) {
+        const m = [(ring[i][0] + ring[i + 1][0]) / 2 - cx, (ring[i][1] + ring[i + 1][1]) / 2 - cz];
+        const d = Math.abs(Math.atan2(m[0], m[1]) / deg - th);
+        if (d < bd) { bd = d; best = i; }
       }
+      const e = fr(best);
+      return topAt(e.f, e.len / 2);
+    };
+    const step = 8.5, w = 2 * R * Math.tan(step / 2 * deg) + 0.12;
+    for (let th = -34 + step / 2; th < 34; th += step) {
+      const f = cf(th), top = topNear(th);
+      slab(b, f, 0, 0, w, 0.35, 0.2, 'stone');                               // plinth
+      // glazed white terrace pavilion on the ground storey (2025 panoramas)
+      slab(b, f, 0, 1.0, w, 4.3, 0.1, 'glass');
+      slab(b, f, 0, 1.0, w, 0.12, 0.16, 'white'); slab(b, f, 0, 3.2, w, 0.1, 0.14, 'white'); slab(b, f, 0, 5.2, w, 0.3, 0.2, 'white');
+      slab(b, f, -w / 2 + 0.05, 1.0, 0.1, 4.3, 0.16, 'white');
+      slab(b, f, 0, 5.95, w, 0.45, 0.22, 'stone');                           // string course
+      slab(b, f, 0, 7.1, w, 0.3, 0.55, 'stone');                             // balcony slab
+      slab(b, f, 0, 8.4, w, 0.1, 0.2, 'stone', 0.55);
+      slab(b, f, 0, 7.4, 0.12, 1.0, 0.14, 'stone', 0.6);
+      for (const [y0, y1] of rows) { slab(b, f, 0, y0 - 0.14, w, 0.14, 0.12, 'stone'); slab(b, f, 0, y1, w, 0.2, 0.14, 'stone'); }
+      for (let y = 6.9; y < top - 0.7; y += 1.1) slab(b, f, 0, y, w, 0.16, 0.07, 'stone');
+      if (top > 12) slab(b, f, 0, top - 0.55, w, 0.45, 0.3, 'stone');        // stone cornice / parapet base
     }
-    const n = 7;
-    for (let k = 0; k < n; k++) {
-      const {f, t} = p.at(p.total * (k + 0.5) / n);
-      if (flush(f, t)) {
-        archBand(b, f, t, 1.0, 2.6, 4.6, 0.28, 0.2, 'stone');
-        archWindows(b, f, [t], {y: 1.1, w: 2.0, h: 4.4, bars: 1, rows: 3, frame: 'white', sill: 'stone'});
-      }
-      for (const r of rows) row(f, [t], r, 1.5);
+    // three window axes, four floors; paired sashes in stone surrounds
+    for (const th of [-22, 0, 22]) { const f = cf(th); for (const r of rows) sashWindows(b, f, [0], {y: r[0], w: 1.35, h: r[1] - r[0] - 0.1, cols: 2, rows: 3, sill: 'stone'}); }
+    // three brick gables with stone coping, finial and a window (the central one a small stone-framed dormer)
+    for (const [th, h] of [[-30, 3.2], [0, 2.3], [30, 3.2]] as [number, number][]) {
+      const f = cf(th), base = topNear(th) - 0.5;
+      if (base < 12) continue;
+      poly(b, f, 0, base, [[-1.7, 0], [1.7, 0], [0, h + 0.35]], 0.42, 'stone');
+      poly(b, f, 0, base, [[-1.4, 0], [1.4, 0], [0, h]], 0.5, th === 0 ? 'stone' : 'brick');
+      archWindows(b, f, [0], {y: base + 0.5, w: 0.8, h: 1.2, bars: 1, rows: 2, sill: 'stone'});
+      put(b, f, new T.SphereGeometry(0.2, 8, 6), 0, base + h + 0.45, 0.2, 'stone');
     }
   }
 
@@ -153,10 +202,12 @@ export function buildHotelDeLEurope(_w: number, _d: number, b: BuildingTools & {
   {
     const p = path([119, 120, 122]);
     for (const e of p.fs) stripes(e.f, e.len, {balcony: true});
-    for (let u = 1.4; u < p.total - 0.8; u += 2.8) {
+    for (let u = 1.5; u < p.total - 0.9; u += 3.0) {
       const {f, t} = p.at(u);
-      if (topAt(f, t) > 6 && flush(f, t)) { archBand(b, f, t, 1.0, 2.2, 4.6, 0.25, 0.2, 'stone'); archWindows(b, f, [t], {y: 1.1, w: 1.7, h: 4.4, bars: 1, rows: 3, frame: 'white', sill: 'stone'}); }
+      if (topAt(f, t) > 6 && flush(f, t)) { archBand(b, f, t, 1.0, 2.2, 4.6, 0.25, 0.2, 'stone'); archWindows(b, f, [t], {y: 1.1, w: 1.6, h: 4.4, bars: 1, rows: 3, frame: 'white', sill: 'stone'}); }
       for (const r of rows) row(f, [t], r, 1.5);
+      dormer(f, t);
+      pier(p.at(u + 1.5));
     }
   }
 

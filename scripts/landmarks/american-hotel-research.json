@@ -5,11 +5,6 @@
   "retrieved": "2026-10-10",
   "sources": [
     {
-      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20241217_0841_Track38_Sphere_00010/?width=1600&fov=90&heading=330",
-      "use": "ref-se.jpg: Leidseplein front (SE) with tower, oriel, cafe windows; 2024",
-      "licence": "Amsterdam municipal panorama (CC0)"
-    },
-    {
       "url": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20241211_0954_Track09_Sphere_00113/?width=1600&fov=80&heading=197",
       "use": "ref-ne.jpg: street side (NE), oblique; 2024",
       "licence": "Amsterdam municipal panorama (CC0)"
@@ -33,7 +28,22 @@
       "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012168734",
       "use": "LoD2.2 massing shell",
       "licence": "CC BY 4.0 (3DBAG)"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001542_pano_0001_000014/?width=1600&fov=70&heading=320",
+      "use": "ref-se-winter.jpg: Leidseplein front, leaf-off 2020-01-08, used to count window axes (4 axes x 2 rows over the eaves balustrade, 3 loggia arches x 3 windows, 3 ground arches + entrance)",
+      "licence": "Amsterdam municipal panorama (CC0)"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002857_pano_0006_000034/?width=1600&fov=70&heading=323",
+      "use": "ref-se-sun.jpg: same front in winter sun 2022-12-14, wall colour (sunlit cream, clipped) and gable/oriel shapes",
+      "licence": "Amsterdam municipal panorama (CC0)"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-000076_pano_0000_006430/?width=1600&fov=45&heading=264",
+      "use": "ref-tower.jpg: corner tower top from Leidsekade side, 2016-08-17: square clock box with low pointed cap in pale stone",
+      "licence": "Amsterdam municipal panorama (CC0)"
     }
   ],
-  "notes": "Held-quality points: upper-floor window rhythm and gable shapes on the SE front are approximate (photos occluded by trees); gables come from the 3DBAG roof planes. Temporary cafe awnings are not modelled. The two shell colours (buff vs brown brick) split the 1900-02 corner from the 1927-28 wing by centroid position."
+  "notes": "Colour: panorama exposure varies a lot; sampled medians are cream-yellow (#faeec5, clipped) where sunlit and grey-brown (#6b6252, #6c6251) in shade/overcast, hue 38-43 deg. Wall set to a warmer, darker buff #c4975f with pale stone #e0d0a8 bands; the brown-orange read of the integrator could not be confirmed on the Leidseplein front (it matches the 1927 canal wing, which stays dark brown). Window axes counted from ref-se-winter.jpg. Tower cap is pale stone with clock faces. Temporary cafe awnings are not modelled. Upper storeys of the SE front stand 1.2 m behind the ring line in the 3DBAG shell, windows sit on that plane. Gable silhouettes remain the 3DBAG roof planes."
 }
