@@ -282,7 +282,7 @@ class TriGrid {
       const ix0 = Math.floor((x0 - expand) / cell), ix1 = Math.floor((x1 + expand) / cell);
       const iy0 = Math.floor((y0 - expand) / cell), iy1 = Math.floor((y1 + expand) / cell);
       const iz0 = Math.floor((z0 - expand) / cell), iz1 = Math.floor((z1 + expand) / cell);
-      if ((ix1 - ix0 + 1) * (iy1 - iy0 + 1) * (iz1 - iz0 + 1) > 40000) continue; // giant ground plane: skip
+      if ((ix1 - ix0 + 1) * (iy1 - iy0 + 1) * (iz1 - iz0 + 1) > 120000) continue; // giant ground plane: skip (a 90 m x 28 m wall triangle spans ~46k cells and must stay in the grid)
       for (let ix = ix0; ix <= ix1; ix++) for (let iy = iy0; iy <= iy1; iy++) for (let iz = iz0; iz <= iz1; iz++) {
         const key = this.key(ix, iy, iz);
         let list = this.cells.get(key);
