@@ -181,6 +181,11 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 - **Audit see-through test is hull-limited**: cast rays fully through the
   bbox (or from outside the footprint) in `glbQuality.ts`; today concave
   footprints flag false holes. Madame Tussauds has small roof-junction gaps.
+- **Recipe shops follow-ups**: apply `proposals/bilder-087959-front.json`
+  (axes [0,1,3] arched top row, low pediment, Thai Thara sign) via the
+  block-face lane, then update `streetComponents.test.ts`'s rounded-parapet
+  assertion; lowercase/logos in the stroke font; 157154 recessed door is flush;
+  verify BENU is 092395 not 090492.
 - **Street chunk fallback**: if a chunk GLB fails to load, its houses are
   already out of the model list and the OSM extrusion shows; restore the
   per-house specs on failure. Demo page stats table scrolls sideways on phone.

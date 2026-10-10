@@ -18,7 +18,7 @@
     "building:facts": "node --import tsx scripts/building-recipes/facts.ts",
     "building:compile": "node --import tsx scripts/building-recipes/compile.ts",
     "building:render": "node --import tsx scripts/building-recipes/render.ts",
-    "test:building-recipes": "node --import tsx --test src/canalRecall/buildingRecipe/buildingRecipe.test.ts",
+    "test:building-recipes": "node --import tsx --test src/canalRecall/buildingRecipe/*.test.ts",
     "test:canalhouse-recipes": "node --import tsx --test src/canalRecall/canalhouse*.test.ts scripts/canalhouse-recipes/*.test.ts",
     "build:model-first-added": "node --import tsx scripts/build-model-first-added.ts",
     "build:building-overview": "node --import tsx scripts/build-building-overview.ts",
