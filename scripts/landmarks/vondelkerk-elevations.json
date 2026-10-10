@@ -1,0 +1,26 @@
+{
+  "id": "vondelkerk",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "west front (Vondelstraat)",
+      "bearing": 246,
+      "photo": "artifacts/landmark-lanes/vondelkerk/ref-west.jpg"
+    },
+    {
+      "name": "south flank (chapels)",
+      "bearing": 156,
+      "photo": "artifacts/landmark-lanes/vondelkerk/ref-south.jpg"
+    },
+    {
+      "name": "east apse (inferred from park view, not square-on)",
+      "bearing": 66,
+      "photo": "artifacts/landmark-lanes/vondelkerk/ref-east.jpg"
+    },
+    {
+      "name": "north flank (chapels; panorama is dark and partial)",
+      "bearing": 336,
+      "photo": "artifacts/landmark-lanes/vondelkerk/ref-north.jpg"
+    }
+  ]
+}

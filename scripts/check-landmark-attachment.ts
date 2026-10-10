@@ -24,6 +24,7 @@ import {buildZevenlandenhuizen} from './landmarks/zevenlandenhuizen-builder';
 import {buildSeaPalace} from './landmarks/sea-palace-builder';
 import {buildDeSchool} from './landmarks/de-school-builder';
 import {buildWestIndischPakhuis} from './landmarks/west-indisch-pakhuis-builder';
+import {buildVondelkerk} from './landmarks/vondelkerk-builder';
 
 const cases: Record<string, {build: (w: number, d: number, b: never) => void; ring: () => number[][]; top: () => number; topSlack: number}> = {
   'ij-toren': {build: buildIjToren, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')).nativeRing, top: () => { const f = JSON.parse(fs.readFileSync('scripts/landmarks/ij-toren-footprints.json', 'utf8')); return Math.max(...f.surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))); }, topSlack: 8},
@@ -50,6 +51,10 @@ const deSchool = () => JSON.parse(fs.readFileSync('scripts/landmarks/de-school-f
 cases['de-school'] = {build: buildDeSchool, ring: () => deSchool().nativeRing, top: () => Math.max(...deSchool().surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 1.0};
 const wip = () => JSON.parse(fs.readFileSync('scripts/landmarks/west-indisch-pakhuis-footprints.json', 'utf8'));
 cases['west-indisch-pakhuis'] = {build: buildWestIndischPakhuis, ring: () => wip().nativeRing, top: () => Math.max(...wip().surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 1.0};
+// Vondelkerk: 3DBAG LoD2.2 truncates the crossing spire at 36.1 m (AHN misses the needle); the church's tower is documented as about 50 m
+// before the 1904 rebuild, and measures about 47-48 m against the ridge in the photographs, so the top slack covers that gap only.
+const vk = () => JSON.parse(fs.readFileSync('scripts/landmarks/vondelkerk-footprints.json', 'utf8'));
+cases['vondelkerk'] = {build: buildVondelkerk, ring: () => vk().nativeRing, top: () => Math.max(...vk().surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 13};
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(cases);
 for (const id of ids) {
   const c = cases[id];
