@@ -1,0 +1,24 @@
+{
+  "name": "Lloyd Hotel",
+  "landmarkId": "n331837646",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Lloyd_Hotel_(hotel)",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012118149"
+  ],
+  "pandId": "0363100012118149",
+  "materialOverrides": {
+    "brick": "#7f6a57",
+    "stone": "#c8bfa9",
+    "slate": "#3a3d43",
+    "glass": "#52606b",
+    "dark": "#2a2623",
+    "white": "#e9e7df",
+    "greyBrick": "#463a31",
+    "copper": "#8c9892",
+    "gold": "#c9a24a",
+    "bronze": "#4b4a42",
+    "frame": "#3b3a3a"
+  },
+  "surveySource": "Current BAG 0363100012118149 footprint (44-vertex ring) and 3DBAG LoD2.2 roof planes, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry built in the building's own axis frame (long axis bearing 105.8 degrees) from the BAG ring and 3DBAG roof planes; facades, gables and the tower measured by eye from Commons photographs and the monument register description, no pixels or meshes imported."
+}

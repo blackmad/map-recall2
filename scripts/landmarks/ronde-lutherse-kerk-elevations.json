@@ -1,0 +1,15 @@
+{
+  "id": "ronde-lutherse-kerk",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "drum west face (camera about 276 deg)",
+      "bearing": 276,
+      "photo": "artifacts/landmark-lanes/ronde-lutherse-kerk/ref-west.jpg"
+    },
+    {
+      "name": "drum north face (inferred, no square-on photo)",
+      "bearing": 355
+    }
+  ]
+}

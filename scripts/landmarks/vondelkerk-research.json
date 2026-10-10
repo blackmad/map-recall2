@@ -1,0 +1,59 @@
+{
+  "canonicalModelId": "vondelkerk",
+  "researchedOn": "2026-10-10",
+  "state": "built",
+  "destination": {
+    "requestedPoiId": "requested-vondelkerk",
+    "name": "Vondelkerk",
+    "address": "Vondelstraat 120, 1054 GS Amsterdam (PDOK locatieserver: Vondelstraat 120A centroid 4.87394, 52.36130)",
+    "bagPand": "NL.IMBAG.Pand.0363100012236196",
+    "bagBouwjaar": 1880,
+    "note": "No existing POI or installed model covered this pand (checked manualCatalogue.json, landmarks.json, click-poi-info.json)."
+  },
+  "architecture": {
+    "source": "https://nl.wikipedia.org/wiki/Vondelkerk",
+    "retrieved": "2026-10-10 (revision 72046405, 2026-10-08)",
+    "facts": [
+      "Neo-Gothic cross basilica (kruisbasiliek) by Pierre Cuypers; first stone 1 March 1872, completed and opened 16 June 1880 as R.K. Church of the Sacred Heart.",
+      "Octagonal crossing tower is the main tower; about 50 m high (wooden tower on a steel structure).",
+      "Fire 8 Nov 1904 destroyed the wooden tower and roof; tower rebuilt slightly lower by Joseph Cuypers (finished 1906).",
+      "Deconsecrated 1977; later concert hall, wedding venue, offices.",
+      "Fire on New Year's night 2026: the main tower and surrounding roof collapsed, walls largely stood. The model deliberately shows the pre-fire church (the 3DBAG/AHN data, municipal panoramas of 2025 and all reference photographs predate the fire)."
+    ]
+  },
+  "measuredBy": {
+    "3dbag": "NL.IMBAG.Pand.0363100012236196, LoD2.2: nave ridge 22.3 m, 60 degree planes, eave about 12.8 m, ring 175 vertices; the crossing tower is truncated at 36.1 m and the facade towers are absent, so the church is built from its own axis frame, not from the shell.",
+    "axisFrame": "nave axis bearing 66 degrees, origin (-4.147, 1.327) native m from the BAG centroid (4.8737838, 52.3612955); aisles +-7.15 m, nave +-5.3 m, facade plane at a=-23.2, apse tip a=19.7, transept ends b=+-14.05.",
+    "facadeHeights": "Measured from ref-west-2007.jpg using the nave eave (12.8 m) as scale: portal arch 6.0 m, stone hood apex 9.6, triple lancet 8.0-12.4, corbel frieze 14.9, gable 15.4-19.3, tower plinth 6.8, belfry 17.3-20.1, cone tip 26.7. Crossing tower ratios from ref-east-tower-crop.jpg: belfry 27-38 m, spire tip about 47 m.",
+    "uncertain": [
+      "Exact crossing-tower stage heights (single oblique photograph; +-2 m).",
+      "Transept/chancel window counts and the chapel roof shapes were read from two panoramas and one park photograph; the east apse photograph is not square-on.",
+      "Facade towers are drawn as octagons; the photographs read as octagonal tapering shafts but a round section is not excluded."
+    ]
+  },
+  "photos": [
+    {"file": "ref-west.jpg", "url": "https://commons.wikimedia.org/wiki/File:Vondelstraat_120A.JPG", "author": "BoH", "date": "2010-09-18", "licence": "CC BY-SA 3.0", "retrieved": "2026-10-10", "feature": "west front, principal facade (bearing 246)"},
+    {"file": "ref-west-detail1.jpg", "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_Vondelkerk_Fassade_1.jpg", "author": "Zairon", "date": "2017-09-23", "licence": "CC BY-SA 4.0", "retrieved": "2026-10-10", "feature": "west front detail: portal, hood, triple lancet, corbel frieze, blind arcade"},
+    {"file": "ref-west-detail2.jpg", "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_Vondelkerk_Fassade_2.jpg", "author": "Zairon", "date": "2017-09-23", "licence": "CC BY-SA 4.0", "retrieved": "2026-10-10", "feature": "west front detail, second frame"},
+    {"file": "ref-west-2007.jpg", "url": "https://commons.wikimedia.org/wiki/File:Vondelk1.jpg", "author": "bureau Monumenten & Archeologie (bMA), gemeente Amsterdam", "date": "2007-10-30 (upload)", "licence": "Attribution (as stated on Commons)", "retrieved": "2026-10-10", "feature": "distant front view used for height ratios and the crossing tower behind the facade"},
+    {"file": "ref-west-porch.jpg", "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Vondelkerk_(3400900176).jpg", "author": "Ernest McGray, Jr.", "date": "2009-03-30", "licence": "CC BY-SA 2.0", "retrieved": "2026-10-10", "feature": "portal arch and octagonal tower faces, belfry arcade"},
+    {"file": "ref-east.jpg", "url": "https://commons.wikimedia.org/wiki/File:Vondelkerk_-_Church_of_Vondel_park_(21539081880).jpg", "author": "Paulius Malinovskis", "date": "2015-04-04", "licence": "CC BY 2.0", "retrieved": "2026-10-10", "feature": "apse and crossing tower seen from the park (not square-on)"},
+    {"file": "ref-east-tower-crop.jpg", "derivedFrom": "ref-east.jpg", "feature": "crop of the crossing tower and apse roof"},
+    {"file": "ref-aerial.jpg", "url": "https://commons.wikimedia.org/wiki/File:Luchtfoto_van_de_Vondelkerk..jpg", "author": "Stadsherstel020", "date": "2021-12-08", "licence": "CC BY-SA 4.0", "retrieved": "2026-10-10", "feature": "oblique aerial: cruciform plan, chapels, transept ends"},
+    {"file": "ref-south.jpg", "source": "Amsterdam municipal panorama recording_2025-07-31_10-53-44_01029, aimed at 334 deg, 21 m", "retrieved": "2026-10-10", "licence": "municipal open panorama (CC0)", "feature": "south chapel and transept corner (thumbnail rendering, not the full-resolution panorama)"},
+    {"file": "ref-north.jpg", "source": "Amsterdam municipal panorama recording_2025-07-31_10-53-44_01016, aimed at 154 deg, 18 m", "retrieved": "2026-10-10", "licence": "municipal open panorama (CC0)", "feature": "north chapel (dark exposure, tree in front)"},
+    {"file": "ref-b0.jpg", "source": "panorama TMX7316010203-002921_pano_0007_000500 (2022), aimed 197 deg", "feature": "apse corner, round turret, tall slit windows"},
+    {"file": "ref-b90.jpg", "source": "panorama recording_2025-07-31_10-53-44_01037, aimed 263 deg", "feature": "round turret with door at its foot, apse faces"},
+    {"file": "ref-b180.jpg", "source": "panorama TMX7316010203-002025_pano_0000_000628 (2020), aimed 346 deg"},
+    {"file": "ref-b270.jpg", "source": "panorama recording_2025-07-31_10-53-44_01020, aimed 83 deg"},
+    {"file": "ref-w20.jpg", "source": "panorama recording_2025-07-31_10-53-44_01050, aimed 186 deg", "feature": "wide street view along Vondelstraat"},
+    {"file": "ref-w200.jpg", "source": "panorama recording_2025-07-31_06-12-14_00157, aimed 16 deg", "feature": "park side, obscured by trees"}
+  ],
+  "raw": [
+    {"file": "artifacts/landmark-lanes/vondelkerk/raw/3dbag-NL.IMBAG.Pand.0363100012236196.json", "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236196", "retrieved": "2026-10-10", "licence": "CC BY 4.0 (3DBAG, TU Delft / Kadaster)"},
+    {"file": "artifacts/landmark-lanes/vondelkerk/raw/wikipedia-nl-vondelkerk.json", "url": "https://nl.wikipedia.org/wiki/Vondelkerk", "retrieved": "2026-10-10", "licence": "CC BY-SA 4.0"}
+  ],
+  "monument": {
+    "note": "Rijksmonument register entry not read for this building; architecture facts come from nl.wikipedia and the photographs above."
+  }
+}

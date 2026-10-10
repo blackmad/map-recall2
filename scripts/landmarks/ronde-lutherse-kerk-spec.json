@@ -1,0 +1,48 @@
+{
+  "id": "ronde-lutherse-kerk",
+  "name": "Ronde Lutherse Kerk",
+  "landmarkId": "requested-ronde-lutherse-kerk",
+  "modelUrl": "./models/ronde-lutherse-kerk.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012179368"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.893784117361658,
+      52.37790832187127
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 40,
+    "widthMetres": 47
+  },
+  "surveyed": {
+    "anchor": [
+      4.893784117361658,
+      52.37790832187127
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012179368 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#b4694a",
+    "stone": "#cdb892",
+    "slate": "#5a5f66",
+    "glass": "#5d6e78",
+    "dark": "#2a2623",
+    "copper": "#8b5a3d",
+    "green": "#6faa8f",
+    "frame": "#33393d",
+    "bronze": "#2f2d2a"
+  },
+  "attribution": {
+    "title": "Ronde Lutherse Kerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Ronde_Lutherse_Kerk",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry: round drum, dome and lantern measured from the BAG circle and 3DBAG roof planes; window bays, cornices and lantern read from photographs; the annex is the BAG polygon extruded to the 3DBAG roof height. No pixels or meshes imported."
+  }
+}

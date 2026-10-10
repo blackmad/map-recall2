@@ -1,0 +1,16 @@
+{
+  "id": "lloyd-hotel",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "north front with tower (Oostelijke Handelskade)",
+      "bearing": 15.8,
+      "photo": "artifacts/landmark-lanes/lloyd-hotel/ref-north.jpg"
+    },
+    {
+      "name": "south front (garden side)",
+      "bearing": 195.8,
+      "photo": "artifacts/landmark-lanes/lloyd-hotel/ref-south.jpg"
+    }
+  ]
+}
