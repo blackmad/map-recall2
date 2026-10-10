@@ -132,7 +132,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   32 m are extrapolated (rectifier cap). De Bazel lacks piers/banding/
   sculpture. Oostenburgermiddenstraat 228's tower is squared where the real
   corten tower is rounded; Asterweg 23 has only its east gable photographed;
-  Céramiquelaan 437 brick is one flat grey. Next candidates: scratch
+  Céramiquelaan 437 brick is one flat grey. Haarlemmerweg 333's red storeys
+  should overhang the grey base. Blankenstraat 15 (137 m) is over the audit's
+  150 m site-model diagonal, so its see-through and far-outside checks are
+  skipped; long ordinary slabs need that cap revisited. Wibautstraat 3B/3C
+  and pand 0363100012125963 are multi-volume towers, not ordinary slabs.
+  Next candidates: scratch
   big-buildings-1.json (Haiku list).
   World Trade Center Amsterdam held (2026-10-10): towers A–G are ONE BAG
   pand (0363100012096613, ~200 x 95 m); a recognizable model needs a photo
