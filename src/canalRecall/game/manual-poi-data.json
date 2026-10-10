@@ -2158,5 +2158,18 @@
     "https://seapalace.nl/en/directions/"
   ],
   "preferDescription": true
+},
+{
+  "modelId": "de-school",
+  "landmarkId": "n2811980599",
+  "name": "De School (Tilla Tec)",
+  "description": "This long concrete slab with ribbons of red-framed windows is a former technical school from the late 1960s, on Dr. Jan van Breemenstraat. A low saw-tooth workshop wing runs off its north side, and the entrance sits under a flat canopy beside a green-framed concrete pavilion. From 2016 it housed De School, a club, restaurant, gallery and gym, and the Tilla Tec venue now uses the same building.",
+  "funFact": "The club De School ran its 24-hour dance floor in the school's old bicycle store in the basement, and closed in January 2024 when its municipal permits expired.",
+  "sourceUrl": "https://en.wikipedia.org/wiki/De_School",
+  "additionalSources": [
+    "https://djmag.com/top100clubs/2019/57/De-School",
+    "https://www.tillatec.com/"
+  ],
+  "preferDescription": true
 }
 ]
