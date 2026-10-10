@@ -1,0 +1,109 @@
+{
+  "id": "de-school",
+  "name": "De School (Tilla Tec)",
+  "landmarkId": "n2811980599",
+  "modelUrl": "./models/de-school.glb",
+  "suppressOsmIds": [
+    "w57856852",
+    "NL.IMBAG.Pand.0363100012121682"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.843457755044436,
+      52.36990797367651
+    ],
+    "headingDegrees": 88.96647204627857,
+    "lengthMetres": 82.79,
+    "widthMetres": 29.99
+  },
+  "surveyed": {
+    "anchor": [
+      4.84350756126421,
+      52.36989283378276
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012121682 footprint (OSM w57856852) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "concrete": "#b5b1a7",
+    "greyBrick": "#8d8a82",
+    "slate": "#5a5e60",
+    "glass": "#587783",
+    "red": "#7d3a2e",
+    "green": "#47624d",
+    "ochre": "#d6a03a",
+    "pink": "#d49a8c",
+    "dark": "#2b2f31",
+    "stone": "#bdb8a8"
+  },
+  "attribution": {
+    "title": "De School (Tilla Tec)",
+    "author": "Map Recall",
+    "sourceUrl": "https://en.wikipedia.org/wiki/De_School",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; glazing ribbons, stair core, fascia, entrance porch and pavilion measured by eye from the 2017 and 2025 municipal panoramas, no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.84375179935437,
+          52.36990670552744
+        ],
+        [
+          4.843748841067073,
+          52.37001633344199
+        ],
+        [
+          4.8437480383326825,
+          52.37004589943583
+        ],
+        [
+          4.842984481363753,
+          52.37003703546938
+        ],
+        [
+          4.842989439601439,
+          52.3698686728601
+        ],
+        [
+          4.842960091132066,
+          52.36986834921274
+        ],
+        [
+          4.842850126060341,
+          52.36986714263268
+        ],
+        [
+          4.842852828451187,
+          52.36976658218864
+        ],
+        [
+          4.844070369189017,
+          52.369779993138884
+        ],
+        [
+          4.844070210776845,
+          52.36978573558089
+        ],
+        [
+          4.8440676695580835,
+          52.36988055361419
+        ],
+        [
+          4.8437526021934945,
+          52.3698771305455
+        ],
+        [
+          4.84375179935437,
+          52.36990670552744
+        ]
+      ]
+    ]
+  }
+}

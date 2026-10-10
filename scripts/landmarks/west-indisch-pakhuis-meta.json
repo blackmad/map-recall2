@@ -1,0 +1,22 @@
+{
+  "name": "West Indian Warehouse",
+  "landmarkId": "extract_landmarks_76787173",
+  "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1222",
+  "suppressOsmIds": ["w268782366", "NL.IMBAG.Pand.0363100012170633"],
+  "pandId": "0363100012170633",
+  "materialOverrides": {
+    "brick": "#8f4a36",
+    "stone": "#e3d6aa",
+    "slate": "#4b4a4d",
+    "glass": "#46535d",
+    "frame": "#e9e3cf",
+    "dark": "#23262a",
+    "white": "#ece6d2",
+    "blue": "#8fa6bf",
+    "concrete": "#9fb0c0",
+    "greyBrick": "#46443f",
+    "ochre": "#d9c690"
+  },
+  "surveySource": "Current BAG 0363100012170633 footprint (OSM w268782366) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; window axes, shutters, loading doors, string courses, trapezium gables with oeils-de-boeuf, the WIC pediment and cartouche measured by eye from municipal panoramas and the photographs listed in the research record, no pixels or meshes imported."
+}
