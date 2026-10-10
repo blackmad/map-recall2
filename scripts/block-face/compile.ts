@@ -15,7 +15,8 @@ import {execFileSync} from 'node:child_process';
 import {buildChunkManifest, type ChunkManifest} from '../../src/canalRecall/streetChunks/manifest.ts';
 import {findContacts} from '../../src/canalRecall/streetChunks/party.ts';
 import {ringToFrame} from '../../src/canalRecall/buildingRecipe/instances.ts';
-import {compileBlockFace} from '../../src/canalRecall/blockFace/compile.ts';
+import {compileBlockFace, decodePands} from '../../src/canalRecall/blockFace/compile.ts';
+import {classifyPartyLoops, openEdges} from '../../src/canalRecall/blockFace/partyLoops.ts';
 import {validateBlockFace} from '../../src/canalRecall/blockFace/intent.ts';
 import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
 import {FACES, STAGING} from './intake.ts';
@@ -32,7 +33,10 @@ export async function compileFace(faceId: string) {
   const facts = new Map<string, BuildingFacts>();
   for (const h of face.houses) facts.set(h.pandId, JSON.parse(await fs.readFile(path.join(dir, 'pands', h.pandId, 'facts.json'), 'utf8')));
   const name = `face-${faceId}`;
-  const result = await compileBlockFace(face, facts, name, {inferRears: !process.argv.includes('--no-rears')});
+  // Photo-measured eaves are strip rows: the strip's own scale converts them (strip.json, written by intake).
+  let strip: {heightPx: number; pixelsPerMetre: number; groundNAP: number} | undefined;
+  if (face.continuity.measuredEaves?.length) { const s = JSON.parse(await fs.readFile(path.join(dir, 'strip.json'), 'utf8')); strip = {heightPx: s.height, pixelsPerMetre: s.pixelsPerMetre, groundNAP: s.groundNAP}; }
+  const result = await compileBlockFace(face, facts, name, {inferRears: !process.argv.includes('--no-rears'), strip});
   const out = path.join(STAGING, faceId);
   await fs.mkdir(out, {recursive: true});
   const glbPath = path.join(out, 'chunk.glb');
@@ -49,8 +53,11 @@ export async function compileFace(faceId: string) {
   // A loop lies on a party wall when both plan corners of its box are within 8 cm of one shared footprint edge.
   const onContact = (x: number, z: number) => contacts.some(c => { const s = (x - c.ox) * c.dx + (z - c.oz) * c.dz, d = Math.abs((x - c.ox) * -c.dz + (z - c.oz) * c.dx); return d <= 0.08 && s >= c.s0 - 0.1 && s <= c.s1 + 0.1; });
   const onParty = (d: any) => contacts.some(c => [[d.min[0], d.min[2]], [d.max[0], d.max[2]], [d.min[0], d.max[2]], [d.max[0], d.min[2]]].filter(([x, z]) => onContact(x, z)).length >= 2);
-  const other = holes.details.filter((d: any) => !onParty(d));
-  audit.holes = {loops: holes.loops, onPartyPlanes: holes.details.length - other.length, elsewhere: other.length, largestElsewhereM: other.length ? Math.max(...other.map((d: any) => d.perimeter)) : 0,
+  // Loops past the end of a shared edge (neighbours of different depth) are classified by their open edges: all on a
+  // party plane = trimming artefact (blockFace/partyLoops.ts).
+  const byEdges = classifyPartyLoops(holes.details, openEdges(await decodePands(result.chunk.glb, face.houses.length)), contacts);
+  const other = holes.details.filter((d: any, k: number) => !onParty(d) && !byEdges[k].party);
+  audit.holes = {loops: holes.loops, onPartyPlanes: holes.details.length - other.length, beyondSharedEdge: byEdges.filter((d, k) => d.party && !onParty(holes.details[k])).map(d => ({perimeter: +d.perimeter.toFixed(2), onPartyM: d.onPartyM, offPartyM: d.offPartyM})), elsewhere: other.length, largestElsewhereM: other.length ? Math.max(...other.map((d: any) => d.perimeter)) : 0,
     verdict: other.some((d: any) => d.perimeter > DEFAULT_THRESHOLDS.maxHoleLoopPerimeter) ? 'fail' : 'pass (all large loops are trimmed party walls covered by the neighbour)'};
   audit.passWithPartyExemption = audit.exit === 0 || (audit.holes.verdict.startsWith('pass') && audit.out.filter((l: string) => /^\s+FAIL [\w-]+:/.test(l) && !/FAIL holes:/.test(l)).length === 0);
   const entry = buildChunkManifest([result.chunk], n => `./models/ordinary-buildings/chunks/chunk-${n}.glb`).chunks[0];
