@@ -131,7 +131,7 @@
       "gable": "step",
       "storeys": 4,
       "bays": 3,
-      "atticWindows": 1,
+      "atticWindows": 3,
       "doorBay": 2,
       "windows": "arched",
       "archRings": "band",
@@ -212,7 +212,7 @@
     "photoGables": 1,
     "schemaLimits": [
      "ornamental gable crest/figure not modelled",
-     "gable carries a triple arched window; 3 attic windows do not fit the gable (Opening escapes its wall), 1 modelled"
+     "the triple gable window has arched heads; modelled as three rectangular lights side by side"
     ]
    }
   },
@@ -432,7 +432,7 @@
       "gable": "step",
       "storeys": 4,
       "bays": 3,
-      "atticWindows": 1,
+      "atticWindows": 3,
       "doorBay": 0,
       "windows": "sash",
       "bands": "storey",
@@ -513,9 +513,9 @@
     "photoGables": 1,
     "schemaLimits": [
      "bays equal width; photo: narrow left, middle, wide right",
-     "gable window is a projecting bay window (3 windows do not fit the gable); modelled as 1 attic window",
      "tree in front of the left half of the front",
-     "green tile canopy not modelled"
+     "green tile canopy not modelled",
+     "the gable window is a projecting bay window of 3 lights; modelled as 3 flush lights"
     ]
    }
   },
@@ -641,7 +641,7 @@
  },
  "authoring": {
   "author": "claude-sonnet-5.5 (block-face lane), from strip-labelled.png + 2x zoomed ground/roof crops",
-  "passes": 1,
+  "passes": 2,
   "note": "Bilderdijkstraat 72-82 (even side)."
  }
 }

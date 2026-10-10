@@ -46,7 +46,8 @@
        "displayWindows": 2,
        "stallriser": "low",
        "evidence": "pano 2024-11-29 + OSM node 494157345"
-      }
+      },
+      "dormerStyle": "pediment"
      }
     ],
     "roof": {
@@ -135,7 +136,8 @@
        "displayWindows": 2,
        "stallriser": "low",
        "evidence": "pano 2024-11-29 + OSM node 2809209029"
-      }
+      },
+      "dormerStyle": "pediment"
      }
     ],
     "roof": {
@@ -196,30 +198,46 @@
    "design": {
     "fronts": [
      {
-      "id": "front0",
+      "id": "l",
       "street": "Bilderdijkstraat",
       "basement": "none",
-      "cornice": "heavy",
       "hoist": false,
       "gable": "cornice",
-      "storeys": 4,
-      "bays": 6,
-      "dormers": 5,
       "tallGround": true,
       "doorBay": null,
       "windows": "sash",
       "bands": "lintel",
-      "archedStoreys": [],
-      "balconies": {
-       "storeys": [
-        1,
-        2,
-        3
-       ],
-       "bays": [
-        3
-       ]
+      "share": 0.329,
+      "storeys": 4,
+      "bays": 3,
+      "cornice": "heavy",
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "palette": {
+       "cornice": "white-painted"
       },
+      "shopfront": {
+       "colour": "white-painted",
+       "fascia": true,
+       "displayWindows": 2,
+       "stallriser": "low",
+       "evidence": "pano 2024-11-29: white-panelled shop front with a small illegible sign"
+      }
+     },
+     {
+      "id": "t1",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "tallGround": true,
+      "doorBay": null,
+      "windows": "sash",
+      "bands": "lintel",
+      "share": 0.1,
+      "storeys": 5,
+      "bays": 1,
+      "cornice": "simple",
       "shopfront": {
        "colour": "#d9ccaa",
        "fascia": true,
@@ -228,11 +246,63 @@
        "stallriser": "low",
        "awning": {
         "style": "fabric-straight",
-        "colour": "#e6c75a",
-        "extent": {
-         "from": 0.5,
-         "to": 1
-        }
+        "colour": "#e6c75a"
+       },
+       "evidence": "pano 2024-11-29 + OSM node 3889189976"
+      }
+     },
+     {
+      "id": "m",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "tallGround": true,
+      "doorBay": null,
+      "windows": "sash",
+      "bands": "lintel",
+      "share": 0.471,
+      "storeys": 4,
+      "bays": 4,
+      "cornice": "simple",
+      "dormers": 4,
+      "dormerStyle": "pediment",
+      "shopfront": {
+       "colour": "#d9ccaa",
+       "fascia": true,
+       "name": "Peps",
+       "displayWindows": 3,
+       "stallriser": "low",
+       "awning": {
+        "style": "fabric-straight",
+        "colour": "#e6c75a"
+       },
+       "evidence": "pano 2024-11-29 + OSM node 3889189976"
+      }
+     },
+     {
+      "id": "t2",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "tallGround": true,
+      "doorBay": null,
+      "windows": "sash",
+      "bands": "lintel",
+      "share": 0.1,
+      "storeys": 5,
+      "bays": 1,
+      "cornice": "simple",
+      "shopfront": {
+       "colour": "#d9ccaa",
+       "fascia": true,
+       "name": "Peps",
+       "displayWindows": 3,
+       "stallriser": "low",
+       "awning": {
+        "style": "fabric-straight",
+        "colour": "#e6c75a"
        },
        "evidence": "pano 2024-11-29 + OSM node 3889189976"
       }
@@ -266,13 +336,13 @@
     "note": "Wide ground floor: left a pale shopfront with a small oval sign over a display window (no readable name); right a restaurant under a yellow fabric awning with small lettering (deli / restaurant) and dark glazing. \"Black Friday\" sticker on the right."
    },
    "rhythm": {
-    "bays": "one pand carrying two fronts: left 3 axes (white cornice front like 236055), right 3 axes (brick front with two flanking tower bays and arched windows on storey 1)",
+    "bays": "two houses in one pand split at the drainpipe (strip x 905, share 0.33): left 3 axes; right 6 axes = a tower bay at each end (one storey taller) and 4 axes between",
     "identicalBays": "left three axes identical; right three axes identical to each other",
-    "windowsPerStorey": "ground: pale shop glass | restaurant glass | 1-3: 6 (3 left + 3 right) | roof: left 1 dormer, right 4 small pedimented dormers",
-    "symmetry": "none: two houses side by side",
+    "windowsPerStorey": "left: ground shop | 1-3: 3 | roof: one large pedimented dormer. right: ground: Peps under one yellow awning | 1-3: 6 | towers: one more window each (rows 175-230) | roof between the towers: 4 small pedimented dormers",
+    "symmetry": "the right house is symmetric about its centre (towers at both ends)",
     "groundFloor": "pale shopfront left, yellow-awning restaurant right",
     "signage": "small oval sign left; awning valance lettering right (illegible)",
-    "roofline": "left: white cornice and dark mansard with one big dormer; right: lower brick cornice, mansard with 4 small dormers between two brick tower bays that rise higher",
+    "roofline": "left: white bracketed cornice, top at strip row 211 (16.3 m), dark mansard with one big dormer (top ~125); right: brick cornice top at row 222 (16.0 m) between two brick tower bays whose flat tops are at row 156 (17.7 m), mansard with 4 small white dormers (zoom u1, x 640-1400, rows 120-801)",
     "citation": "bilder-233580-162444 strip.jpg pand 3",
     "photoRows": [
      4,
@@ -283,11 +353,9 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "two different houses in one BAG pand: one front, one cornice, one roof in the model",
-     "white cornice only on the left half on the photo",
-     "right half has a lower cornice and flanking brick towers; modelled flat at the common line",
-     "top-storey dormers: 1 large + 4 small modelled as 5 equal dormers",
-     "balconies are on the right half only (3 axes), arched heads at the right tower bay not modelled"
+     "the tower bays are one-bay fronts a storey taller (front-plane wall to the measured top); no 3D tower body or cap (a library tower draws its light only from rise 0.88, the photo window sits right at the cornice)",
+     "balcony rails on the right house and the arched heads of the tower bays are not modelled",
+     "the Peps awning and shop front are cut into three pieces at the tower bays"
     ]
    }
   },
@@ -408,8 +476,7 @@
    {
     "pands": [
      "0363100012233580",
-     "0363100012236055",
-     "0363100012162443"
+     "0363100012236055"
     ],
     "trust": "photo",
     "reference": "0363100012233580",
@@ -418,12 +485,41 @@
   ],
   "identical": [],
   "notes": [
-   "1893 row; neck gable of 162444 rises above the cornice line."
+   "1893 row; neck gable of 162444 rises above the cornice line.",
+   "Pass 2 (bilder-limits lane): 158-162 (one pand) split into its two houses; the right one has a tower bay at each end. Eaves are strip-measured per front."
+  ],
+  "measuredEaves": [
+   {
+    "pand": "0363100012162443",
+    "front": "l",
+    "stripRow": 211,
+    "evidence": "top of the white bracketed cornice of 158 (zoom u1); 3DBAG carries the roof (~17.1 m) out to the facade, re-pitched to the mansard face the photo shows",
+    "frontRoof": {}
+   },
+   {
+    "pand": "0363100012162443",
+    "front": "t1",
+    "stripRow": 156,
+    "evidence": "flat top of the left brick tower bay (zoom u1)"
+   },
+   {
+    "pand": "0363100012162443",
+    "front": "m",
+    "stripRow": 222,
+    "evidence": "top of the brick cornice between the towers (zoom u1); 3DBAG carries the flat roof (~17 m) out to the facade between the towers, re-pitched to a mansard face",
+    "frontRoof": {}
+   },
+   {
+    "pand": "0363100012162443",
+    "front": "t2",
+    "stripRow": 156,
+    "evidence": "flat top of the right brick tower bay (zoom u1)"
+   }
   ]
  },
  "authoring": {
   "author": "claude-sonnet-5.5 (block-face lane), from strip-labelled.png + 2x zoomed ground/roof crops",
-  "passes": 1,
+  "passes": 2,
   "note": "Bilderdijkstraat 156-166 including the Kinkerstraat corner (1893 row)."
  }
 }

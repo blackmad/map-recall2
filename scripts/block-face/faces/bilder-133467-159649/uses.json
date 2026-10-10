@@ -1,0 +1,105 @@
+{
+ "street": "Bilderdijkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T13:23:46.943Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012133467",
+   "addresses": [],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 63-H",
+     "use": "winkelfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000789290"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11411936971,
+     "lngLat": [
+      4.8724689,
+      52.3671993
+     ],
+     "tags": {
+      "name": "Mensink",
+      "shop": "bakery",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-10T13:23:46.943Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153782",
+   "addresses": [
+    "Bilderdijkstraat 173"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 173-H",
+     "use": "winkelfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000586284"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11411933553,
+     "lngLat": [
+      4.8725411,
+      52.3671133
+     ],
+     "tags": {
+      "name": "Musscher",
+      "shop": "lighting"
+     },
+     "fetchedAt": "2026-10-10T13:23:46.943Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159649",
+   "addresses": [
+    "Bilderdijkstraat 175"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 175-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000586294"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11411962826,
+     "lngLat": [
+      4.8725888,
+      52.3670497
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "Gallery 3",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-10T13:23:46.943Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

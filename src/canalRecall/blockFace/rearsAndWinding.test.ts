@@ -25,7 +25,8 @@ const load = (id: string) => {
   const dir = `scripts/block-face/faces/${id}`, members = JSON.parse(fs.readFileSync(path.join(dir, 'discovery.json'), 'utf8')).members;
   const face = validateBlockFace(JSON.parse(fs.readFileSync(path.join(dir, 'intent.json'), 'utf8')), members);
   const facts = new Map(face.houses.map(h => [h.pandId, JSON.parse(fs.readFileSync(path.join(dir, 'pands', h.pandId, 'facts.json'), 'utf8')) as BuildingFacts]));
-  return {face, facts};
+  const st = JSON.parse(fs.readFileSync(path.join(dir, 'strip.json'), 'utf8'));
+  return {face, facts, strip: {heightPx: st.height, pixelsPerMetre: st.pixelsPerMetre, groundNAP: st.groundNAP}};
 };
 
 test('Marnixstraat 124-138: inferred rears clear blank-wall legitimately, attached and modest, no inverted roof', async () => {
@@ -133,8 +134,8 @@ test('z-fight measure: a few-mm abutment at a party line is not z-fighting; a re
 });
 
 test('Bilderdijkstraat 157757|164549: a 5 cm survey front step is snapped flush; larger real setbacks are left', async () => {
-  const {face, facts} = load('bilder-157757-164549');
-  const r = await compileBlockFace(face, facts);
+  const {face, facts, strip} = load('bilder-157757-164549');
+  const r = await compileBlockFace(face, facts, undefined, {strip});
   assert.equal(r.frontSnaps.length >= 1, true);
   const s = r.frontSnaps[0];
   assert.ok(Math.abs(s.stepBeforeM) >= 0.04 && Math.abs(s.stepBeforeM) <= 0.09);

@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+## Bilderdijkstraat held faces installed; measured eaves re-pitch the front roof (2026-10-10)
+
+Faces 113–115, 131–133 and 135–153 were held because 3DBAG eaves stood 2.5–3.5 m
+above the photo cornice (LoD2.2 carries a mansard's flat top, or a dormer merged
+into the roof, out to the facade). Instead of raising the limit, `measuredEaves`
+takes a `frontRoof` that re-pitches the front strip of the roof from the cornice
+row on the strip (`blockFace/compile.ts` repitchFrontRoof; needs the survey roof
+to stand > 0.5 m above the measured eaves at the facade; on a multi-front pand
+name the `front`). The library features were adopted: towers on 88/90, 102–106
+split into three stepped-gable fronts, 158–162 one pand with two houses, triple
+gable lights, pointed/pedimented dormers. The standalone houses the user flagged
+(153622 balconies, blank ground floors, 3DBAG pyramid roof) are now inside the
+new faces 199–203, 169–175 and 198–202 with photo-measured cornices, uniform
+sash windows and their doors and shops; chunk-bilder-152363-x2 is retired. The
+validator now rejects `shopShare` without `residentialDoor` (a silent drop).
+
 ## Building clicks: prism picking, a card for every building (2026-10-10)
 
 The user asked why clicking a building to get its card was so slow, and why the
