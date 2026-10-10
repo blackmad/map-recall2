@@ -67,6 +67,14 @@ export async function auditFile(file: string, th: Partial<Thresholds> = {}): Pro
   return analyseSoup(await loadSoup(file), th);
 }
 
+/** Per-model thresholds: a model spec may list `partyWallBearings` (compass degrees) of walls that adjoin neighbouring buildings and are genuinely blind. */
+function modelThresholds(id: string): Partial<Thresholds> {
+  try {
+    const spec = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/landmarks', `${id}-spec.json`), 'utf8'));
+    return Array.isArray(spec.partyWallBearings) ? {blankWallExemptBearings: spec.partyWallBearings} : {};
+  } catch { return {}; }
+}
+
 interface Row {id: string; file: string; status?: string; report: QualityReport; ms: number}
 
 function arg(name: string): string | undefined {
@@ -130,7 +138,7 @@ async function main(): Promise<void> {
   for (const t of targets) {
     const t0 = Date.now();
     let report: QualityReport;
-    try { report = await auditFile(t.file); } catch (e) {
+    try { report = await auditFile(t.file, modelThresholds(t.id)); } catch (e) {
       report = analyseSoup({positions: new Float32Array(0), indices: new Uint32Array(0)});
       report.findings.push({kind: 'unreadable', severity: 'fail', message: String(e)});
     }

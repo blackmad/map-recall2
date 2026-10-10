@@ -1,0 +1,17 @@
+{
+  "id": "trippenhuis",
+  "bagPand": "0363100012171636",
+  "address": "Kloveniersburgwal 29, 1011 JV Amsterdam",
+  "retrieved": "2026-10-10",
+  "sources": [
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001975_pano_0000_001233/?width=1600&fov=100&heading=128", "use": "ref-front.jpg: whole canal front (bearing 300) from the opposite quay, 7 axes, 4 window rows, 8 pilasters, pediment, chimneys; captured 2021", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001975_pano_0000_001233/?width=1600&fov=85&heading=125", "use": "ref-front-mid.jpg: same station, tighter crop of the first-floor/second-floor rows; 2021", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_03064/?width=1600&fov=110&heading=120", "use": "ref-front-ground.jpg: close view of the rusticated ground storey, door with transom, basement gratings, plinth blocks and carved panels; 2025", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://commons.wikimedia.org/wiki/File:Achteraangezicht_van_het_Trippenhuis_te_Amsterdam_Het_aen_sien_van_de_achter_gevel_soo_%27t_hem_uyt_den_hof_vertoont_(titel_op_object)_Het_huys_van_de_heeren_Louys_en_Hendrick_Trip_(serietitel),_RP-P-1911-3561.jpg", "use": "ref-rear-print.jpg: Justus Vingboons' elevation print of the garden (east) front: ten axes, basement + four storeys, two double stairs, four-axis pediment (1660s design; current state of the garden front is not photographed, so the rear is inferred from this print)", "licence": "Rijksmuseum RP-P-1911-3561, CC0 via Wikimedia Commons"},
+    {"url": "https://en.wikipedia.org/wiki/Trippenhuis", "use": "architect, dates 1660-62, double house behind a seven-window front, KNAW since 1887 (facts only)", "licence": "Wikipedia, facts only"},
+    {"url": "https://nl.wikipedia.org/wiki/Trippenhuis", "use": "eight fluted Corinthian pilasters, pediment on four of them, even pilaster count so middle windows sit on the party wall, mortar-shaped corner chimneys, arms in the tympanum (facts only)", "licence": "Wikipedia, facts only"},
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012171636&f=json", "use": "BAG pand 0363100012171636, bouwjaar 1662, 13-point ring", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171636", "use": "LoD2.2 massing shell, ground 0.547 m NAP", "licence": "CC BY 4.0 (3DBAG)"}
+  ],
+  "notes": "Scope is the single BAG pand 0363100012171636 (22 m palace front). The neighbouring pand 0363100012171638 (large 1662 complex to the north and east) and 0363100012182333 (south) are not replaced; both party walls (BAG edge sharing 100% with them) are plain. Front heights follow the 3DBAG shell (eave 18.6 m, pediment apex 21.9 m); the Vingboons rear elevation print has the same height-to-width ratio (about 0.75), which cross-checks the shell. Window rows are placed as fractions of that height from the 2021 panorama. The four corner chimneys sit on the 3DBAG chimney shafts and get mortar-shaped bowls; the two front ones are photographed, the two rear ones follow the print and the LoD2 shafts. Dormers drawn in the print are not modelled (not visible from the street)."
+}
