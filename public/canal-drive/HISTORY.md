@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## Home review rides no longer converge on De Dolphijn; next home ride rides on (2026-10-10)
+
+User: still "always" De Dolphijn from Da Costakade, after the 2026-10-09
+fixes. The signed-in profile (Firestore `users/{uid}/reviewStates`, 134 due)
+has Plan review on, so every home launch is a review ride, and
+`pickReviewRoute` took only the pairs passing the most due names (17) within
+1.3x the shortest. From a fixed home that is one corner: De Dolphijn,
+Multatuli, Magna Plaza and Huis Bartolotti sit within 200 m at Torensluis.
+With empty recents (any new device or browser) it was De Dolphijn 40/40;
+with recents it moved one door along. The planner's runner-ups were the same
+corner, and recents recorded the launch pick, not the post-planning swap.
+Now, from a fixed start: any pair with at least half the best count is a
+candidate, weighted 1/(landmarks within 350 m), with the share cap;
+runner-ups must end within 600 m of the pick; the last 4 destinations exclude
+their 350 m surroundings (`recentRankNear`, also used by the home weighted
+picker); every swap is recorded. On the real due set (fixture
+`scripts/fixtures/home-review-due-da-costakade.json`) the top fresh-device
+share is ~11% across 10+ landmarks.
+Also by request: Next ride in home mode no longer rides back home. It starts
+at the arrival and picks another landmark inside the learning ring round
+home (at least 500 m away), so the ring still widens with what you learn.
+
 ## Three building categories; Street surveys page (2026-10-10)
 
 User: landmarks are the curated list; ordinary buildings are one-off

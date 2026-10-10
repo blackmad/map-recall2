@@ -605,13 +605,20 @@ class GameRouteRuntime {
       : this.routePattern === 'here' ? this.gpsOrigin : null);
     if (this.routePattern !== 'surprise' && !from) return null;
     let maxKm = Route.ROUTE_POI_MAX_PAIR_KM;
-    if (this.routePattern === 'home' && !fromOverride) {
+    let pois = from ? this.routePois : choices;
+    let recentIds = [];
+    // Home rides stay inside the learning ring round home, also when the next
+    // ride starts from the last arrival.
+    if (this.routePattern === 'home' && this.homeBase) {
       const samples = typeof this.recall.homeMasterySamples === 'function' ? this.recall.homeMasterySamples(cityId) : [];
-      this._homeLearningRadiusKm = Route.homeLearningRadiusKm(from, samples);
-      maxKm = this._homeLearningRadiusKm * Route.HOME_RADIUS_OVERSHOOT;
+      this._homeLearningRadiusKm = Route.homeLearningRadiusKm(this.homeBase, samples);
+      const ringKm = this._homeLearningRadiusKm * Route.HOME_RADIUS_OVERSHOOT;
+      maxKm = from === this.homeBase ? ringKm : Math.min(Route.ROUTE_POI_MAX_PAIR_KM, 2 * ringKm);
+      pois = this.routePois.filter(poi => Route.kmBetween(poi, this.homeBase) <= ringKm
+        && (from === this.homeBase || Route.kmBetween(poi, from) >= Route.HOME_NEXT_MIN_KM));
+      recentIds = this._recentHomeDestinationIds();
     }
-    const recentIds = this.routePattern === 'home' && !fromOverride ? this._recentHomeDestinationIds() : [];
-    return Route.pickReviewRoute({ pois: from ? this.routePois : choices, due, from, maxKm, recentIds });
+    return Route.pickReviewRoute({ pois, due, from, maxKm, recentIds });
   }
 
   /** Stretches of a review via's street for the planner to ride along,
@@ -699,13 +706,24 @@ class GameRouteRuntime {
     } catch (_) { return []; }
   }
 
-  /** Home pattern: closer + novel destinations inside an expanding learning ring. */
+  /** Remember where a home-mode ride really goes, so the next pick avoids it. */
+  _rememberHomeDestination(poi) {
+    if (this.routePattern !== 'home' || !this.homeBase || !poi || !poi.id || poi.id === 'home') return;
+    try {
+      CanalRecallRoute.recordRecentDestination(localStorage, this._recentHomeDestinationsKey(), poi.id);
+    } catch (_) { /* ignore */ }
+  }
+
+  /** Home pattern: closer + novel destinations inside an expanding learning
+   *  ring round home. `from` is home, or the last arrival on a next ride. */
   _pickHomeDestination(from, alsoExcludeId = null) {
     const samples = this.recall && typeof this.recall.homeMasterySamples === 'function'
       ? this.recall.homeMasterySamples(this.cityId || 'amsterdam')
       : [];
+    const home = this.homeBase || from;
     const picked = CanalRecallRoute.pickHomeDestination(
-      this.routePois, from, samples, undefined, alsoExcludeId, this._recentHomeDestinationIds());
+      this.routePois, home, samples, undefined, alsoExcludeId, this._recentHomeDestinationIds(),
+      from === home ? null : from);
     if (picked) {
       this._homeLearningRadiusKm = picked.radiusKm;
       try {
@@ -994,12 +1012,9 @@ class GameRouteRuntime {
   _launchPoiRoute(from, to, { explicitDestination = false } = {}) {
     this.routeFrom = from;
     this.routeTo = to;
-    // Remember outbound home rides so the next launch picks somewhere else.
-    if (this.routePattern === 'home' && this.homeBase && from === this.homeBase && to && to.id) {
-      try {
-        CanalRecallRoute.recordRecentDestination(localStorage, this._recentHomeDestinationsKey(), to.id);
-      } catch (_) { /* ignore */ }
-    }
+    // Remember home rides so the next launch picks somewhere else. Swaps
+    // made while planning (snap, review runner-up) are remembered too.
+    this._rememberHomeDestination(to);
     this._applyPrefsToRuntime(this._prefs());
     document.querySelector('#canal-card p').textContent = this.travelMode === 'car' ? 'Which street are you on now?' : 'Which waterway are you on now?';
     this._setRouteError('');
@@ -1030,16 +1045,20 @@ class GameRouteRuntime {
     this._launchPoiRoute(from, dest);
   }
 
+  /**
+   * Next ride in home mode: no ride back home. Start where this one ended and
+   * pick another landmark inside the learning ring round home, which widens
+   * as nearby names are learned (user request 2026-10-10).
+   */
   _startNextHomeLeg() {
     if (!this.homeBase) return;
-    this._reviewRoute = null;
-    if (this.homeLeg === 'outbound') {
-      this.homeLeg = 'return';
-      this._launchPoiRoute(this.routeTo, this.homeBase);
-      return;
-    }
+    const from = this.routeTo && this.routeTo.id !== 'home' && !this.routeTo.reviewStop ? this.routeTo : this.homeBase;
     this.homeLeg = 'outbound';
-    this._launchPoiRoute(this.homeBase, this._pickHomeDestination(this.homeBase, this.routeFrom.id));
+    this._reviewRoute = this._pickReviewRide(this.routePois, from);
+    const dest = this._reviewRoute ? this._reviewRoute.to
+      : this._pickHomeDestination(from, from === this.homeBase ? (this.routeFrom && this.routeFrom.id) : from.id);
+    if (!dest) { this._launchPoiRoute(this.homeBase, this._pickHomeDestination(this.homeBase)); return; }
+    this._launchPoiRoute(from, dest);
   }
 
   _returnToRouteSetup(message) {
@@ -1368,6 +1387,7 @@ class GameRouteRuntime {
           if (swap) {
             finish = swap.point;
             this.routeTo = swap.poi;
+            this._rememberHomeDestination(swap.poi);
             finishLL = { lat: swap.poi.lat, lng: swap.poi.lng };
             console.info(`Destination swapped to ${swap.poi.name}: the original did not snap to the network`);
           }
@@ -1493,6 +1513,7 @@ class GameRouteRuntime {
             console.info(`Review stop ${this.routeTo.reviewStop} is unreachable; ending at ${near.poi.name}`);
             finish = near.point;
             this.routeTo = near.poi;
+            this._rememberHomeDestination(near.poi);
             finishLL = { lat: near.poi.lat, lng: near.poi.lng };
             this._reviewRoute = { ...this._reviewRoute, to: near.poi, stop: undefined, alternatives: [] };
             this.track.setEndpoints(start, finish);
@@ -1505,6 +1526,7 @@ class GameRouteRuntime {
           finish = chosen.finish;
           this.routeFrom = chosen.pick.from;
           this.routeTo = chosen.pick.to;
+          this._rememberHomeDestination(chosen.pick.to);
           startLL = { lat: chosen.pick.from.lat, lng: chosen.pick.from.lng };
           finishLL = { lat: chosen.pick.to.lat, lng: chosen.pick.to.lng };
           this._reviewRoute = { ...chosen.pick, alternatives: [] };
