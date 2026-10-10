@@ -138,7 +138,7 @@ test('generated model matches the counts written in the type JSON, for every cla
         assert.equal(got.openingsPerUpperStorey, want.openingsPerUpperStorey, `${spec.id}/${variant}/${id} openings`);
         assert.equal(got.groundDoors, want.groundDoors, `${spec.id}/${variant}/${id} ground doors`);
         // a re-clad variant may replace balconies; everything else must match
-        if (variant !== 'clad-panel') assert.equal(got.balconiesPerUpperStorey, want.balconiesPerUpperStorey, `${spec.id}/${variant}/${id} balconies`);
+        if (!['clad-panel', 'clad-full'].includes(variant)) assert.equal(got.balconiesPerUpperStorey, want.balconiesPerUpperStorey, `${spec.id}/${variant}/${id} balconies`);
         else assert.equal(got.balconiesPerUpperStorey, 0);
       }
     }
@@ -213,6 +213,11 @@ test('params from 3DBAG attributes: eaves above own ground, storeys cross-check,
   assert.equal(four.params.storeys, 4);
   assert.ok(four.warnings.some(w => w.includes('say 4 storeys')));
   assert.equal(paramsFromFacts(T1, rect, {b3_bouwlagen: 5, b3_h_dak_min: 13.588, b3_h_nok: 16.62, b3_h_maaiveld: -0.62}, null).params.storeys, 5);
+  // lowest roof point dragged to ~3 m by an annex/LoD artefact: eaves recovered from ridge, width and slope (3-storey + attic member)
+  const roof30 = {form: 'gable' as const, ridgeDirRD: [1, 0] as [number, number], slopeDeg: 30, slantedPlanes: 2, roofAreaM2: 300};
+  const lean = paramsFromFacts(T1, rect, {b3_bouwlagen: 4, b3_h_dak_min: 2.8, b3_h_nok: 12.0, b3_h_maaiveld: 0}, roof30);
+  assert.ok(Math.abs(lean.params.eavesM - (12 - 5.25 * Math.tan(Math.PI / 6))) < 1e-6 && lean.params.storeys === 3);
+  assert.ok(lean.warnings.some(w => w.includes('disagree with ridge')));
   const flat = paramsFromFacts(T6, rect, {b3_bouwlagen: 5, b3_h_dak_50p: 15.3, b3_h_dak_max: 15.9, b3_h_maaiveld: -0.8}, null);
   assert.ok(Math.abs(flat.params.eavesM - 16.1) < 1e-9 && flat.params.roofForm === 'flat');
 });
