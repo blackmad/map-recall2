@@ -1,27 +1,207 @@
 {
-  "id": "haparandaweg-870-900",
-  "pandId": "0363100012243309",
-  "name": "Haparandaweg 870-900",
-  "palette": {
-    "wall": "#44484a", "roof": "#6d7072", "frame": "#2a2d2f", "glass": "#5b676c", "slab": "#585c5d",
-    "rail": "#2c2f31", "glassRail": "#6e7c80", "dark": "#1d1f20", "door": "#26292b", "stone": "#505455", "sign": "#d8d6cd", "red": "#7e3a33"
+ "id": "haparandaweg-870-900",
+ "pandId": "0363100012243309",
+ "name": "Haparandaweg 870-900",
+ "palette": {
+  "wall": "#44484a",
+  "roof": "#6d7072",
+  "frame": "#2a2d2f",
+  "glass": "#5b676c",
+  "slab": "#585c5d",
+  "rail": "#2c2f31",
+  "glassRail": "#6e7c80",
+  "dark": "#1d1f20",
+  "door": "#26292b",
+  "stone": "#505455",
+  "sign": "#d8d6cd",
+  "red": "#7e3a33",
+  "render": "#c9baa6",
+  "glassS": "#a8bcc8",
+  "blind": "#8e8c84",
+  "doorB": "#2a2527",
+  "frameS": "#2d2f33"
+ },
+ "levels": {"groundM": 4.2, "storeyM": 3.0},
+ "default": "dark",
+ "systems": {
+  "dark": {
+   "pitch": 6.6,
+   "ground": {
+    "kind": "glazed",
+    "win": {"w": 0.9, "h": 0.9, "sill": 0.1, "mull": 4, "transom": 0.55, "frame": "frame"},
+    "door": {"bays": [0, 1, 2], "w": 1.2, "h": 2.4, "slot": "door"}
+   },
+   "typical": {
+    "kind": "ribbon",
+    "pier": 0.5,
+    "win": {"h": 0.85, "sill": 0.15, "mull": 3, "frame": "frame"},
+    "cycle": [
+     {"kind": "ribbon", "pier": 0.5, "win": {"h": 0.85, "sill": 0.12, "mull": 3, "frame": "frame"}},
+     {
+      "kind": "balcony",
+      "balcony": {
+       "depth": 0.4,
+       "slab": {"h": 0.25, "slot": "slab"},
+       "rail": {"kind": "bars", "h": 1.05, "slot": "rail"},
+       "back": {"w": 0.95, "h": 0.7, "sill": 0.35, "mull": 0, "frame": "frame", "glass": "dark"}
+      }
+     },
+     {"kind": "ribbon", "pier": 0.5, "win": {"h": 0.85, "sill": 0.12, "mull": 3, "frame": "frame"}}
+    ]
+   },
+   "bands": [{"slot": "slab", "h": 0.3, "out": 0.2}],
+   "piers": {"w": 0.45, "out": 0.25, "slot": "slab", "segments": 4}
   },
-  "levels": { "groundM": 4.2, "storeyM": 3.0 },
-  "default": "dark",
-  "systems": {
-    "dark": {
-      "pitch": 6.6,
-      "ground": { "kind": "glazed", "win": { "w": 0.9, "h": 0.9, "sill": 0.1, "mull": 4, "transom": 0.55, "frame": "frame" },
-        "door": { "bays": [0, 1, 2], "w": 1.2, "h": 2.4, "slot": "door" } },
-      "typical": { "kind": "ribbon", "pier": 0.5, "win": { "h": 0.85, "sill": 0.15, "mull": 3, "frame": "frame" },
-        "cycle": [
-          { "kind": "ribbon", "pier": 0.5, "win": { "h": 0.85, "sill": 0.12, "mull": 3, "frame": "frame" } },
-          { "kind": "balcony", "balcony": { "depth": 0.4, "slab": { "h": 0.25, "slot": "slab" }, "rail": { "kind": "bars", "h": 1.05, "slot": "rail" }, "back": { "w": 0.95, "h": 0.7, "sill": 0.35, "mull": 0, "frame": "frame", "glass": "dark" } } },
-          { "kind": "ribbon", "pier": 0.5, "win": { "h": 0.85, "sill": 0.12, "mull": 3, "frame": "frame" } }
-        ] },
-      "bands": [ { "slot": "slab", "h": 0.3, "out": 0.2 } ],
-      "piers": { "w": 0.45, "out": 0.25, "slot": "slab" }
-    }
+  "se_p9": {
+   "pitch": 4.71,
+   "minWidth": 2,
+   "bays": {"first": 2.355, "pitch": 4.71, "count": 1},
+   "lines": [0, 5.2, 11.8],
+   "ground": {
+    "kind": "items",
+    "items": [
+     [
+      {"kind": "quad", "slot": "render", "u": [0.0, 4.71], "v": [0.0, 5.2], "d": 0.04},
+      {"kind": "quad", "slot": "frameS", "u": [0.06, 4.69], "v": [2.44, 4.94], "d": 0.06},
+      {"kind": "quad", "slot": "glassS", "u": [0.14, 0.98], "v": [2.56, 4.76], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [1.1, 1.84], "v": [2.56, 4.76], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [2.0, 3.8], "v": [2.56, 4.76], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [3.96, 4.69], "v": [2.56, 4.76], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [0.1, 1.84], "v": [0.24, 2.04], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [2.0, 3.9], "v": [0.24, 2.04], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [4.04, 4.69], "v": [0.24, 2.04], "d": 0.07}
+     ]
+    ]
+   },
+   "typical": {
+    "kind": "items",
+    "items": [
+     [
+      {"kind": "quad", "slot": "render", "u": [0.0, 4.71], "v": [0.0, 6.6], "d": 0.04},
+      {"kind": "quad", "slot": "frameS", "u": [0.06, 4.69], "v": [0.3, 5.36], "d": 0.06},
+      {"kind": "quad", "slot": "glassS", "u": [0.16, 1.84], "v": [3.0, 5.1], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [1.96, 3.84], "v": [3.0, 5.1], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [4.0, 4.69], "v": [3.0, 5.1], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [0.16, 1.84], "v": [0.44, 2.6], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [1.96, 3.84], "v": [0.44, 2.6], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [4.0, 4.69], "v": [0.44, 2.6], "d": 0.07}
+     ]
+    ]
+   }
   },
-  "signs": []
+  "se_p48": {
+   "pitch": 4.86,
+   "minWidth": 2,
+   "bays": {"first": 2.43, "pitch": 4.86, "count": 1},
+   "lines": [0, 5.2, 11.8],
+   "ground": {
+    "kind": "items",
+    "items": [
+     [
+      {"kind": "quad", "slot": "render", "u": [0.0, 4.86], "v": [0.0, 5.2], "d": 0.04},
+      {"kind": "quad", "slot": "frameS", "u": [0.02, 1.13], "v": [2.44, 4.94], "d": 0.06},
+      {"kind": "quad", "slot": "glassS", "u": [0.02, 1.05], "v": [2.56, 4.76], "d": 0.07},
+      {"kind": "quad", "slot": "frameS", "u": [3.23, 4.84], "v": [2.44, 4.94], "d": 0.06},
+      {"kind": "quad", "slot": "glassS", "u": [3.33, 4.29], "v": [2.56, 4.76], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [4.39, 4.84], "v": [2.56, 4.76], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [0.02, 0.09], "v": [0.24, 2.04], "d": 0.07},
+      {"kind": "quad", "slot": "doorB", "u": [0.19, 1.19], "v": [0.05, 2.3], "d": 0.07},
+      {"kind": "quad", "slot": "doorB", "u": [1.45, 2.53], "v": [0.05, 2.3], "d": 0.07},
+      {"kind": "quad", "slot": "doorB", "u": [3.25, 4.19], "v": [0.05, 2.3], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [4.25, 4.84], "v": [0.24, 2.1], "d": 0.07}
+     ]
+    ]
+   },
+   "typical": {
+    "kind": "items",
+    "items": [
+     [
+      {"kind": "quad", "slot": "render", "u": [0.0, 4.86], "v": [0.0, 6.6], "d": 0.04},
+      {"kind": "quad", "slot": "frameS", "u": [0.02, 1.13], "v": [0.3, 5.36], "d": 0.06},
+      {"kind": "quad", "slot": "glassS", "u": [0.15, 1.05], "v": [3.0, 5.1], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [0.15, 1.05], "v": [0.44, 2.6], "d": 0.07},
+      {"kind": "quad", "slot": "frameS", "u": [3.23, 4.84], "v": [0.3, 5.36], "d": 0.06},
+      {"kind": "quad", "slot": "glassS", "u": [3.33, 4.84], "v": [2.9, 5.1], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [3.33, 4.84], "v": [0.44, 2.5], "d": 0.07}
+     ]
+    ]
+   }
+  },
+  "se_p44": {
+   "pitch": 4.47,
+   "minWidth": 2,
+   "bays": {"first": 2.235, "pitch": 4.47, "count": 1},
+   "lines": [0, 5.2, 11.8],
+   "ground": {
+    "kind": "items",
+    "items": [
+     [
+      {"kind": "quad", "slot": "render", "u": [0.0, 4.47], "v": [0.0, 5.2], "d": 0.04},
+      {"kind": "quad", "slot": "frameS", "u": [0.02, 4.27], "v": [2.44, 4.94], "d": 0.06},
+      {"kind": "quad", "slot": "glassS", "u": [0.02, 0.13], "v": [2.56, 4.76], "d": 0.07},
+      {"kind": "quad", "slot": "blind", "u": [0.37, 2.13], "v": [2.56, 4.76], "d": 0.07},
+      {"kind": "quad", "slot": "blind", "u": [2.33, 4.09], "v": [2.56, 4.76], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [0.02, 0.15], "v": [0.24, 2.1], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [0.37, 2.13], "v": [0.56, 1.24], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [2.33, 4.09], "v": [0.56, 1.24], "d": 0.07}
+     ]
+    ]
+   },
+   "typical": {
+    "kind": "items",
+    "items": [
+     [
+      {"kind": "quad", "slot": "render", "u": [0.0, 4.47], "v": [0.0, 6.6], "d": 0.04},
+      {"kind": "quad", "slot": "frameS", "u": [0.02, 4.27], "v": [0.3, 5.36], "d": 0.06},
+      {"kind": "quad", "slot": "glassS", "u": [0.02, 0.13], "v": [2.9, 5.1], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [0.37, 2.09], "v": [2.9, 5.1], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [2.33, 2.99], "v": [2.9, 5.1], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [3.15, 4.07], "v": [2.9, 5.1], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [0.02, 0.13], "v": [0.44, 2.5], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [0.37, 2.09], "v": [0.44, 2.5], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [2.33, 2.99], "v": [0.44, 2.5], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [3.15, 4.07], "v": [0.44, 2.5], "d": 0.07}
+     ]
+    ]
+   }
+  },
+  "se_pen": {
+   "pitch": 4.8,
+   "minWidth": 2,
+   "bays": {"first": 2.4, "pitch": 4.8, "count": 1},
+   "lines": [0, 11.8, 14.8],
+   "ground": {"kind": "wall"},
+   "typical": {
+    "kind": "items",
+    "items": [
+     [
+      {"kind": "quad", "slot": "render", "u": [0.03, 4.77], "v": [0.05, 2.85], "d": 0.04},
+      {"kind": "quad", "slot": "frameS", "u": [0.3, 4.5], "v": [0.35, 2.7], "d": 0.06},
+      {"kind": "quad", "slot": "glassS", "u": [0.4, 2.3], "v": [0.45, 2.6], "d": 0.07},
+      {"kind": "quad", "slot": "glassS", "u": [2.4, 4.4], "v": [0.45, 2.6], "d": 0.07}
+     ]
+    ]
+   }
+  },
+  "se_pil": {
+   "pitch": 0.7,
+   "minWidth": 0.4,
+   "bays": {"first": 0.35, "pitch": 0.7, "count": 1},
+   "lines": [0, 11.8],
+   "ground": {
+    "kind": "items",
+    "items": [[{"kind": "quad", "slot": "render", "u": [0.03, 0.67], "v": [0.05, 11.7], "d": 0.04}]]
+   },
+   "typical": {"kind": "wall"}
+  }
+ },
+ "signs": [],
+ "rules": [
+  {"at": [0.0, 11.2], "r": 2, "bearing": [135, 145], "system": "se_p9"},
+  {"at": [3.6, 7.9], "r": 2, "bearing": [135, 145], "system": "se_p48"},
+  {"at": [9.2, 3.4], "r": 2, "bearing": [135, 145], "system": "se_p44"},
+  {"at": [1.7, 5.7], "r": 2, "bearing": [130, 140], "system": "se_pen"},
+  {"at": [-2.1, 12.8], "r": 1, "bearing": [135, 145], "system": "se_pil"}
+ ],
+ "notes": " SE side rebuilt 2026-10-10 from ref wall-140-0.jpg (render + large windows)."
 }

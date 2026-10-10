@@ -1,0 +1,29 @@
+{
+  "id": "haparandaweg-746-786",
+  "building": "Haparandaweg 746-786 (BAG NL.IMBAG.Pand.0363100012242477, 3DBAG ridge 31.7 m): a 29 m tower block on the street front, a 5-storey wing (16.4 m) on the SE side, a lower back wing.",
+  "units": "metres; u from the NE end of the NW wall looking at it from outside; v above 3DBAG ground. front.jpg: v = (1475 - y_px)/50 (ground row 1475, top parapet y 45 = 28.6 m).",
+  "evidence": {
+    "front": "artifacts/haparandaweg/ref/0363100012242477/front.jpg (2025 pano, 15 m, obliquity 1 deg, 808 x 1510 px, 50 px/m; washed out) and front-alt.jpg (second year, warm tint, same geometry)",
+    "se": "artifacts/haparandaweg/ref/NL.IMBAG.Pand.0363100012242477/wall-140-0.jpg (2017 pano TMX7316010203-000277_pano_0001_001608, 9 m, obliquity 30 deg, 812 x 1510 px)",
+    "sheet": "artifacts/review/haparandaweg-746-786-r2/sheet.png"
+  },
+  "walls": [
+    {
+      "name": "NW street front (panels 3 + 8)", "bearing": 320, "widthM": 16.2, "photographed": true,
+      "frame": "light travertine-colour stone frame grid, FLAT: no projecting slabs. One continuous 0.34 m pier (x 408-425 px) splits the front into two identical halves of 7.9 m",
+      "storeys": "ground 3.56 m, then 8 storeys of 3.12 m (fascia centres at y 1297, 1141, 985, 828, 672, 513, 357, 201 px -> v 3.56 ... 25.5; top parapet to 28.7)",
+      "perStorey": "a 0.55 m travertine fascia flush with the wall plane (box out 0.12), a 1.2 m glass balustrade directly above it in the same plane (continuous across each half, with a thin handrail), and ABOVE the balustrade the balcony recess: dark soffit with pale glazed doors and short white piers set back behind the glass. Nothing projects across the front.",
+      "bays": "2 halves x 8 storeys, identical in plan (continuous balustrade each); the glazed doors and piers behind differ storey by storey (random-looking, modelled as two alternating variants)",
+      "ground": "left half: metal gate (x 60-235), pier, glazed entrance with door (x 268-400); right half: glazed door bay (x 435-520), glazed shopfront with 3 mullions (x 525-680), pier, metal gate (x 715-790)"
+    },
+    {
+      "name": "SE wing (panel 9, 12.5 m wide, top 16.4 m)", "bearing": 140, "widthM": 12.2, "photographed": true,
+      "frame": "same stone frame: 4 bays (2.4 / 2.3 / 2.2 / 2.6 m) between piers 0.4-0.7 m wide (x 180-790 px of wall-140-0.jpg), fascia lines at v 3.7, 6.6, 9.5, 12.3; stone parapet band 1.5 m on top",
+      "storeys": "ground glazed (3 openings); storey 1 windows; storey 2 recessed balconies with glass balustrade (4); storey 3 windows; storey 4 recessed balconies (4) under the parapet. Window storeys: one pane per bay, the two middle bays have two sashes."
+    },
+    { "name": "SE tower face (panel 34, 16.2 m, 28.7 m)", "bearing": 141, "inferred": true,
+      "note": "hidden behind the SE wing from the street; modelled with the NW front's storey system (2 x 8.1 m cells), INFERRED" },
+    { "name": "NE / SW sides", "inferred": true, "note": "party walls, plain" }
+  ],
+  "removed": "the earlier model projected 1.7 m deep slab balconies across the whole front and SE tower face; the photos show flush slabs and recessed balconies, so all projecting balconies are gone."
+}
