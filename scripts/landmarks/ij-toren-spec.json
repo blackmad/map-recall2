@@ -1,5 +1,32 @@
 {
   "id": "ij-toren",
+  "detachedStructures": [
+    {
+      "box": [-56, 22.5, -44.5, 32],
+      "evidence": "Glazed stair/lift entrance pavilion of the Piet Heinkade car park, standing on the pavement ~12 m south of the terminal (panoramas recording_2025-06-16_09-52-43_02209 heading 121 and _02200 heading 274: artifacts/landmark-lanes/ij-toren/new/s3.jpg, s4.jpg). BAG/3DBAG carry it as a separate part of the terminal pand."
+    },
+    {
+      "box": [-41, 27.5, -35, 33],
+      "evidence": "Three free-standing grey car-park ventilation chimneys beside the glass pavilion (same panoramas, s3.jpg and s4.jpg); 3DBAG part 548-553."
+    }
+  ],
+  "throughPassages": [
+    {
+      "axisBearing": 16,
+      "corridor": [[63.9, -14.1], [165.9, 15.1], [168.1, 7.4], [66.1, -21.8]],
+      "evidence": "Quay arcade east of the tower: a roofed steel canopy on free-standing white columns, open to the quay, in front of the glass-block wall (ref-east.jpg, panorama TMX7316010203-002532_pano_0000_002471, 2022). The footprint edge is the canopy edge; the glass-block wall stands ~6.3 m behind it, 0.3 m beyond the 6 m portico reach of the see-through check."
+    },
+    {
+      "axisBearing": 106,
+      "corridor": [[63.9, -14.1], [165.9, 15.1], [168.1, 7.4], [66.1, -21.8]],
+      "evidence": "Both ends of the same east quay arcade are open: the covered walkway runs on along the glass-block wall past the canopy end (ref-east.jpg looks along it to the open far end, panorama TMX7316010203-002532_pano_0000_002471, 2022)."
+    },
+    {
+      "axisBearing": 16,
+      "corridor": [[-96.9, -61.0], [58.1, -16.6], [56.8, -11.8], [-98.2, -56.2]],
+      "evidence": "North quay colonnade of the terminal: the footprint edge is the outer line of white steel columns carrying the glazed gallery; the brick wall with its windows, portholes and sliding gates stands about 3.7 m behind it, open to the quay (artifacts/landmark-lanes/ij-toren/new/q1.jpg, q3.jpg from panorama TMX7316010203-002532_pano_0000_002584, 2022; ref-north.jpg, 2016). Column pitch is not measurable from the photographs, so the model does not claim the dense column spacing the see-through check's portico rule needs."
+    }
+  ],
   "name": "IJ-toren",
   "landmarkId": "extract_landmarks_1963830588",
   "modelUrl": "./models/ij-toren.glb",
