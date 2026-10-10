@@ -76,6 +76,8 @@ function modelThresholds(id: string): Partial<Thresholds> {
     // Declared roadways/passages through the building ({axisBearing, corridor: [[x,z],...], evidence}); see Thresholds.throughPassages.
     if (typeof spec.siteModel === 'boolean') out.siteModel = spec.siteModel;
     if (Array.isArray(spec.throughPassages)) out.throughPassages = spec.throughPassages;
+    // Declared free-standing structures ({box: [minX, minZ, maxX, maxZ], evidence}) exempt from the far-outside check; see Thresholds.detachedStructures.
+    if (Array.isArray(spec.detachedStructures)) out.detachedStructures = spec.detachedStructures;
     return out;
   } catch { return {}; }
 }
