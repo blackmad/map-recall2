@@ -1,0 +1,856 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "clercq-236681",
+ "street": "De Clercqstraat",
+ "sources": [
+  {
+   "id": "strip-2021-03-24",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-24",
+   "image": "staging/block-face/clercq-236681/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (house-types pilot lane)",
+  "passes": 2,
+  "note": "De Clercqstraat 22-2 (north side, Nassaukade end), 1898-1901. Shop street: uniform uppers, a different shop on every ground floor. 3 types: E (dark brick, corbel cornice; 7 modules in 4 pands, crowns none/tower/step), F (stucco cornice + mansard; 3 pands), and the Nassaukade corner 116526 as its own type. 153066 (crenellated corner block) keeps its own design. Multi-module pands (16-18 = 3 modules, 8-10 = 2) are one front per module with its own shop. Shops read on the 2021-03-24 strip (zoom crops) and checked against OSM/BAG; illegible lettering is left out, never invented. Pass 2 after the strip sheet: tower rises from the photo (height gate), wall colours toward the measured wall medians (model read too saturated/dark)."
+ },
+ "types": [
+  {
+   "schemaVersion": 1,
+   "kind": "house-type",
+   "id": "clercq-e-corbel-brick",
+   "description": "1901 row 18-8: dark brown brick, 3 axes x 3 upper storeys, segmental-arched windows with stone keystone blocks, centre console balcony stack, brick corbel-table cornice; crowns: none, a square brick tower-dormer over the centre axis, or a stepped gable over the centre axis; every ground floor its own shop",
+   "fit": {
+    "widthM": [
+     5.8,
+     6.2
+    ],
+    "storeys": [
+     4
+    ]
+   },
+   "body": {
+    "storeys": 4,
+    "bays": 3,
+    "cornice": "bracketed",
+    "windows": "arched",
+    "archRings": "stone",
+    "windowSurround": "keystone",
+    "balconies": {
+     "storeys": [
+      1,
+      2,
+      3
+     ],
+     "bays": [
+      1
+     ],
+     "projecting": true
+    }
+   },
+   "crowns": {
+    "none": {
+     "gable": "cornice",
+     "note": "corbel cornice only (16-18 left module)"
+    },
+    "tower": {
+     "gable": "cornice",
+     "tower": {
+      "bays": {
+       "from": 1,
+       "to": 1
+      },
+      "rise": 0.55,
+      "cap": "flat"
+     },
+     "note": "square brick tower-dormer with a two-light window rising one storey over the centre axis (16-18 middle and right, 14); top at strip row ~169-177 = 1.5-1.8 m over the parapet line -> rise 0.55 (3DBAG roof max 16.1 m; rise 1 overshot it by 1.6 m, height gate)"
+    },
+    "arched-tower": {
+     "gable": "cornice",
+     "tower": {
+      "bays": {
+       "from": 1,
+       "to": 1
+      },
+      "rise": 0.65,
+      "cap": "flat"
+     },
+     "note": "12: the tower ends in a round arch over an arched light (modelled flat-topped); top at strip row ~164 = 2.0 m over the parapet -> rise 0.65"
+    },
+    "step-gable": {
+     "gable": "step",
+     "crownBays": {
+      "from": 1,
+      "to": 1
+     },
+     "crownSteps": 3,
+     "crownRise": 0.75,
+     "atticWindows": 1,
+     "note": "8-10: a stepped gable with one two-light attic window over the centre axis of each module; gable top at strip row 152, 2.1 m over the parapet line (row 235) -> crownRise 0.75; photo reader: trapgevel, 3 steps/side, span ~0.2-0.71 -> crownSteps 3"
+    }
+   },
+   "palettes": {
+    "dark-brick": {
+     "brick": "#665046",
+     "frame": "cream",
+     "door": "black",
+     "stone": "#bcb4a4"
+    }
+   },
+   "roof": {
+    "material": "bitumen"
+   },
+   "rhythm": {
+    "bays": "3 window axes per module",
+    "identicalBays": "upper storeys: 3 axes, centre axis a French window with a console balcony",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "each module symmetric about its centre axis (balconies, tower/gable)",
+    "groundFloor": "a different shop per module",
+    "signage": "per house",
+    "roofline": "brick corbel-table cornice; tower-dormer or stepped gable over the centre axis",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the corbel table is modelled as a bracketed cornice",
+     "stone blocks in the window arches are approximated by keystones and stone arch rings",
+     "the tower-dormer windows are not drawn (a tower rising < 1 storey gets no light); the photo has one two-light window per tower"
+    ]
+   },
+   "evidence": [
+    {
+     "face": "clercq-236681",
+     "pands": [
+      "236262",
+      "158603",
+      "159182",
+      "236681"
+     ],
+     "citation": "strip.jpg pands 2-5 (2021-03-24): seven identical 3-axis modules (16-18 = 3, 8-10 = 2); detect-house-types.ts linked all seven at NCC >= 0.6"
+    }
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "kind": "house-type",
+   "id": "clercq-f-stucco-mansard",
+   "description": "1898 houses 6-2: red-brown brick, 3 axes x 3 upper storeys, white keystone blocks, centre console balcony stack, heavy white bracketed cornice, slate mansard with one ornate arched dormer between two small dormers; cream timber shop puis",
+   "fit": {
+    "widthM": [
+     5.3,
+     5.6
+    ],
+    "storeys": [
+     4
+    ]
+   },
+   "body": {
+    "storeys": 4,
+    "bays": 3,
+    "cornice": "heavy",
+    "windows": "cross",
+    "windowSurround": "keystone",
+    "balconies": {
+     "storeys": [
+      1,
+      2,
+      3
+     ],
+     "bays": [
+      1
+     ],
+     "projecting": true
+    }
+   },
+   "crowns": {
+    "mansard-dormers": {
+     "gable": "cornice",
+     "roofFront": "mansard",
+     "dormers": 3,
+     "dormerStyle": "pediment",
+     "dormerAt": [
+      {
+       "from": 0.1,
+       "to": 0.27
+      },
+      {
+       "from": 0.36,
+       "to": 0.64
+      },
+      {
+       "from": 0.73,
+       "to": 0.9
+      }
+     ],
+     "note": "big centre dormer with an arched light and scrolled pediment between two small dormers (strip crop c-f)"
+    }
+   },
+   "palettes": {
+    "red-brown-brick": {
+     "brick": "#715850",
+     "frame": "white",
+     "door": "cream",
+     "stone": "white",
+     "cornice": "white"
+    }
+   },
+   "roof": {
+    "material": "slate"
+   },
+   "rhythm": {
+    "bays": "3 window axes",
+    "identicalBays": "upper storeys: 3 axes, centre a French window with a console balcony",
+    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3 | mansard: 3 dormers",
+    "symmetry": "symmetric about the centre axis above the shop",
+    "groundFloor": "cream timber shop pui per house",
+    "signage": "per house",
+    "roofline": "heavy white bracketed cornice; slate mansard with three dormers",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the centre dormer's arched light and scrolled pediment are a plain pedimented dormer",
+     "the shop puis' transom lights are one transom bar"
+    ]
+   },
+   "evidence": [
+    {
+     "face": "clercq-236681",
+     "pands": [
+      "157618",
+      "156454",
+      "156960"
+     ],
+     "citation": "strip.jpg pands 6-8: identical uppers and mansards"
+    }
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "kind": "house-type",
+   "id": "clercq-nassaukade-corner",
+   "description": "1898 corner house at the Nassaukade end (Nassaukade 152): F's cornice and mansard on a narrow 2-axis front without balconies, dark corner shopfront; the chamfered corner and the Nassaukade side are not on this face",
+   "fit": {
+    "widthM": [
+     4,
+     4.5
+    ],
+    "storeys": [
+     4
+    ]
+   },
+   "body": {
+    "storeys": 4,
+    "bays": 2,
+    "cornice": "heavy",
+    "windows": "cross",
+    "windowSurround": "keystone"
+   },
+   "crowns": {
+    "two-dormers": {
+     "gable": "cornice",
+     "roofFront": "mansard",
+     "dormers": 2,
+     "dormerStyle": "pediment"
+    }
+   },
+   "palettes": {
+    "red-brown-brick": {
+     "brick": "#715850",
+     "frame": "white",
+     "door": "black",
+     "stone": "white",
+     "cornice": "white"
+    }
+   },
+   "roof": {
+    "material": "slate"
+   },
+   "rhythm": {
+    "bays": "2 window axes",
+    "windowsPerStorey": "ground: shop | 1: 2 | 2: 2 | 3: 2 | mansard: 2 dormers",
+    "symmetry": "symmetric",
+    "groundFloor": "dark corner shopfront",
+    "signage": "none legible",
+    "roofline": "heavy white cornice continuing F's line; mansard with two small dormers",
+    "photoRows": [
+     1,
+     2,
+     2,
+     2,
+     2
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the chamfered corner and the Nassaukade front are not modelled on this face (inferred: one front)"
+    ]
+   },
+   "evidence": [
+    {
+     "face": "clercq-236681",
+     "pands": [
+      "116526"
+     ],
+     "citation": "strip.jpg pand 9"
+    }
+   ]
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012153066",
+   "slug": "clercq-153066",
+   "address": "De Clercqstraat 22",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "De Clercqstraat",
+      "gable": "flat",
+      "storeys": 4,
+      "bays": 2,
+      "bayWidths": [
+       2,
+       1
+      ],
+      "doorBay": null,
+      "basement": "none",
+      "cornice": "simple",
+      "windows": "cross",
+      "hoist": false,
+      "windowSurround": "stone-lintel",
+      "shopfront": {
+       "colour": "cream",
+       "fascia": false,
+       "name": "Bagels & Beans",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "white"
+       },
+       "awning": {
+        "style": "fabric-straight",
+        "colour": "#7aa04a"
+       },
+       "entrance": "left",
+       "evidence": "strip.jpg 2021-03-24: green straight awning over the shop glass, white house door right; OSM node 4738035264 amenity=cafe 'Bagels & Beans' (22HS)"
+      }
+     }
+    ],
+    "roof": {
+     "material": "bitumen"
+    },
+    "palette": {
+     "brick": "#6a5048",
+     "frame": "white",
+     "door": "white",
+     "stone": "#bcb4a4"
+    },
+    "notes": [
+     "one-off 1901 corner block at the west end: wide three-light windows over the left two thirds, an arched single window on the right, crenellated parapet with a stepped corner"
+    ]
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "name": "Bagels & Beans",
+    "category": "amenity=cafe",
+    "osm": {
+     "type": "node",
+     "id": 4738035264,
+     "name": "Bagels & Beans"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2021-03-24",
+    "agreement": "osm-and-photo",
+    "note": "awning lettering not legible on the strip; name from OSM"
+   },
+   "rhythm": {
+    "bays": "2 axes: a wide three-light window and a narrow arched window",
+    "windowsPerStorey": "ground: shop + door | 1: 2 | 2: 2 | 3: 2",
+    "symmetry": "none",
+    "groundFloor": "café glass under a green awning, house door right",
+    "signage": "awning lettering illegible",
+    "roofline": "crenellated brick parapet stepping up at the corner",
+    "citation": "strip.jpg pand 1",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "crenellations and the stepped corner parapet are not modelled",
+     "the corner's side front is not on this face"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236262",
+   "slug": "clercq-236262",
+   "address": "De Clercqstraat 18",
+   "type": {
+    "type": "clercq-e-corbel-brick",
+    "modules": [
+     {
+      "crown": "none",
+      "share": 0.32,
+      "overrides": {
+       "balconies": {
+        "storeys": [],
+        "bays": []
+       }
+      },
+      "ground": {
+       "shopfront": {
+        "colour": "black",
+        "fascia": true,
+        "name": "Manoto",
+        "sign": {
+         "text": "MANOTO",
+         "textColour": "white",
+         "align": "right",
+         "span": 0.6
+        },
+        "entrance": "centre",
+        "evidence": "strip.jpg 2021-03-24: black fascia with 'manoto' across the two left modules (18-H, 114 m2)"
+       }
+      }
+     },
+     {
+      "crown": "tower",
+      "share": 0.335,
+      "ground": {
+       "shopfront": {
+        "colour": "black",
+        "fascia": true,
+        "name": "Manoto",
+        "entrance": "centre",
+        "evidence": "strip.jpg 2021-03-24: the same black Manoto front continues"
+       }
+      }
+     },
+     {
+      "crown": "tower",
+      "share": 0.345,
+      "ground": {
+       "shopfront": {
+        "colour": "#2a2e33",
+        "fascia": true,
+        "entrance": "centre",
+        "evidence": "strip.jpg 2021-03-24: dark fascia with a cursive script sign, not legible (16-H, BAG bijeenkomstfunctie)"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Manoto",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2021-03-24",
+    "agreement": "photo-only",
+    "note": "Manoto restaurant over 18 (two modules); 16 (right module) a second restaurant with an illegible script sign; no OSM node"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2 (three modules: left without balconies or crown, middle and right with tower-dormers)",
+    "windowsPerStorey": "per module: ground: shop | 1: 3 | 2: 3 | 3: 3; towers: 1 light",
+    "photoRows": [
+     3,
+     9,
+     9,
+     9,
+     2
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012158603",
+   "slug": "clercq-158603",
+   "address": "De Clercqstraat 14",
+   "type": {
+    "type": "clercq-e-corbel-brick",
+    "crown": "tower",
+    "ground": {
+     "shopfront": {
+      "colour": "cream",
+      "fascia": true,
+      "name": "Burrito",
+      "sign": {
+       "text": "BURRITO",
+       "textColour": "white",
+       "background": "#a83030"
+      },
+      "residentialDoor": {
+       "side": "left",
+       "colour": "brown"
+      },
+      "evidence": "strip.jpg 2021-03-24: red fascia 'BURRITO' over the shop glass, cream surround, house door left (14-H winkelfunctie)"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Burrito",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2021-03-24",
+    "agreement": "photo-only",
+    "note": "no OSM node; BAG winkelfunctie"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012159182",
+   "slug": "clercq-159182",
+   "address": "De Clercqstraat 12",
+   "type": {
+    "type": "clercq-e-corbel-brick",
+    "crown": "arched-tower",
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "Fuoco Vivo",
+      "sign": {
+       "text": "FUOCO VIVO",
+       "textColour": "white",
+       "background": "#a83030"
+      },
+      "evidence": "strip.jpg 2021-03-24: red fascia 'FUOCO VIVO ... PIZZA' over a white front; OSM node 2809202247 amenity=restaurant 'Fuoco Vivo' (check_date 2023-08-13)"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Fuoco Vivo",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2809202247,
+     "name": "Fuoco Vivo"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2021-03-24",
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 4",
+    "photoRows": [
+     1,
+     3,
+     3,
+     3,
+     1
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236681",
+   "slug": "clercq-236681",
+   "address": "De Clercqstraat 10",
+   "type": {
+    "type": "clercq-e-corbel-brick",
+    "crown": "step-gable",
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       2,
+       3
+      ],
+      "bays": [
+       1
+      ],
+      "projecting": true
+     }
+    },
+    "modules": [
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#2a2a2a",
+        "fascia": true,
+        "name": "ScooterCentre West",
+        "sign": {
+         "text": "SCOOTERCENTRE WEST",
+         "textColour": "#e8d040"
+        },
+        "entrance": "centre",
+        "evidence": "strip.jpg 2021-03-24: black fascia, yellow 'ScooterCentre WEST' (10-H winkelfunctie)"
+       }
+      }
+     },
+     {
+      "ground": {
+       "shopfront": {
+        "colour": "#e8e4dc",
+        "fascia": true,
+        "entrance": "left",
+        "evidence": "strip.jpg 2021-03-24: pale front with a small pink sign, not legible; flowers in the window (8-H winkelfunctie)"
+       }
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "ScooterCentre West",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2021-03-24",
+    "agreement": "photo-only",
+    "note": "two shops: ScooterCentre West (10, left module) and a flower shop with an illegible pink sign (8, right module); no OSM nodes"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 5 (two modules, stepped gable over each centre axis, balconies on storeys 2-3 only)",
+    "windowsPerStorey": "per module: ground: shop | 1: 3 | 2: 3 | 3: 3 | gable: 1",
+    "photoRows": [
+     2,
+     6,
+     6,
+     6,
+     2
+    ],
+    "photoGables": 2
+   }
+  },
+  {
+   "pandId": "0363100012157618",
+   "slug": "clercq-157618",
+   "address": "De Clercqstraat 6",
+   "type": {
+    "type": "clercq-f-stucco-mansard",
+    "crown": "mansard-dormers",
+    "ground": {
+     "shopfront": {
+      "colour": "cream",
+      "fascia": false,
+      "glazing": "transom",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "cream"
+      },
+      "stallriser": "low",
+      "evidence": "strip.jpg 2021-03-24: cream timber pui, bicycles in the window, blue/red lettering on the glass not legible; house door right (6A winkelfunctie)"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-24",
+    "agreement": "photo-only",
+    "note": "bicycle shop spanning 6 and 4 (bikes in both windows); glass lettering illegible; no OSM node"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 6"
+   }
+  },
+  {
+   "pandId": "0363100012156454",
+   "slug": "clercq-156454",
+   "address": "De Clercqstraat 4",
+   "type": {
+    "type": "clercq-f-stucco-mansard",
+    "crown": "mansard-dormers",
+    "ground": {
+     "shopfront": {
+      "colour": "cream",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "left",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "cream"
+      },
+      "stallriser": "low",
+      "evidence": "strip.jpg 2021-03-24: cream timber pui with the shop entrance left, same glass lettering as 6; house door right (4A winkelfunctie 178 m2)"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2021-03-24",
+    "agreement": "photo-only",
+    "note": "the bicycle shop's second window and entrance"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 7"
+   }
+  },
+  {
+   "pandId": "0363100012156960",
+   "slug": "clercq-156960",
+   "address": "De Clercqstraat 2",
+   "type": {
+    "type": "clercq-f-stucco-mansard",
+    "crown": "mansard-dormers",
+    "ground": {
+     "shopfront": {
+      "colour": "white",
+      "fascia": true,
+      "name": "Parsa",
+      "sign": {
+       "text": "PARSA",
+       "textColour": "#c03030",
+       "background": "#1e1e1e",
+       "span": 0.4
+      },
+      "residentialDoor": {
+       "side": "left",
+       "colour": "white"
+      },
+      "awning": {
+       "style": "fabric-straight",
+       "colour": "#a02828",
+       "extent": {
+        "from": 0,
+        "to": 0.3
+       }
+      },
+      "evidence": "strip.jpg 2021-03-24: dark sign 'PARSA' in red over a white pui, small red awning over the house door left; OSM node 2809213006 amenity=restaurant 'Parsa Persian'"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Parsa Persian",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2809213006,
+     "name": "Parsa Persian"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2021-03-24",
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 8"
+   }
+  },
+  {
+   "pandId": "0363100012116526",
+   "slug": "clercq-116526",
+   "address": "Nassaukade 152",
+   "type": {
+    "type": "clercq-nassaukade-corner",
+    "crown": "two-dormers",
+    "ground": {
+     "shopfront": {
+      "colour": "#1e1e1e",
+      "fascia": true,
+      "entrance": "left",
+      "evidence": "strip.jpg 2021-03-24: dark corner shopfront with transom lights, no legible sign (BAG Nassaukade 152 bijeenkomstfunctie)"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2021-03-24",
+    "agreement": "bag-only",
+    "note": "BAG bijeenkomstfunctie; the photo shows a dark café-style front without a legible sign; no OSM node"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 9"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "measuredEaves": [
+   {
+    "pand": "0363100012153066",
+    "stripRow": 222,
+    "evidence": "top of the crenellated parapet between the merlons (gables.json eavesUp 14.97 m = row 219)"
+   },
+   {
+    "pand": "0363100012236262",
+    "stripRow": 241,
+    "evidence": "top of the brick parapet over the corbel table (row ruler crop; gables.json eavesUp 14.38-14.43 m)"
+   },
+   {
+    "pand": "0363100012158603",
+    "stripRow": 235,
+    "evidence": "parapet top beside the tower (gables.json eavesUp 14.57 m)"
+   },
+   {
+    "pand": "0363100012159182",
+    "stripRow": 245,
+    "evidence": "parapet top beside the arched tower (gables.json eavesUp 14.22 m)"
+   },
+   {
+    "pand": "0363100012236681",
+    "stripRow": 235,
+    "evidence": "parapet top between the two stepped gables (row ruler crop c-rule)"
+   },
+   {
+    "pand": "0363100012157618",
+    "stripRow": 232,
+    "evidence": "top of the projecting white cornice under the mansard (row ruler crop c-rule2); 3DBAG reads the mansard top"
+   },
+   {
+    "pand": "0363100012156454",
+    "stripRow": 232,
+    "evidence": "same cornice line"
+   },
+   {
+    "pand": "0363100012156960",
+    "stripRow": 232,
+    "evidence": "same cornice line"
+   },
+   {
+    "pand": "0363100012116526",
+    "stripRow": 232,
+    "evidence": "F's cornice line continues round the corner house"
+   }
+  ]
+ }
+}
