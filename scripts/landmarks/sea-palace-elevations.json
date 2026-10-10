@@ -1,0 +1,6 @@
+{"id": "sea-palace", "facades": [
+  {"name": "north-east long face (entrance)", "bearing": 27.5, "photo": "artifacts/landmark-lanes/sea-palace/ref-ne-long.jpg"},
+  {"name": "south-west long face", "bearing": 207.5, "photo": "artifacts/landmark-lanes/sea-palace/ref-sw.jpg"},
+  {"name": "west-north-west end", "bearing": 297.5, "photo": "artifacts/landmark-lanes/sea-palace/ref-wnw-end.jpg"},
+  {"name": "east-south-east end (photo is oblique, inferred)", "bearing": 117.5, "photo": "artifacts/landmark-lanes/sea-palace/ref-ese-end.jpg"}
+]}

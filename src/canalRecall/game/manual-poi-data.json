@@ -2145,5 +2145,18 @@
         "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012090447&f=json"
       }
     ]
-  }
+  },
+{
+  "modelId": "sea-palace",
+  "landmarkId": "n13404202880",
+  "name": "Sea Palace",
+  "description": "Sea Palace is a three-storey Chinese restaurant afloat on a pontoon beside Oosterdokskade, a short walk from Centraal Station. Its three stacked green-glazed-tile roofs, each with a red rim and corners swept sharply upward, and its red columns and gold-medallion balustrades follow the Cantonese pavilion style. Guests dine on the lower floors, and the top floor opens onto a roof terrace.",
+  "funFact": "Sea Palace has floated beside Oosterdokskade since 1984 and is known for handmade dim sum. It is a vessel rather than a building, so the Dutch BAG register holds no pand for it.",
+  "sourceUrl": "https://seapalace.nl/en/about-us/",
+  "additionalSources": [
+    "https://seapalace.nl/en/",
+    "https://seapalace.nl/en/directions/"
+  ],
+  "preferDescription": true
+}
 ]
