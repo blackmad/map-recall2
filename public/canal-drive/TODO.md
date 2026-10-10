@@ -49,6 +49,10 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   audit see-through now back to FAIL on real gaps: adam-tower, de-gooyer,
   haarlemmermeerstation, hart-museum, huis-bartolotti, pulitzer-amsterdam
   (footprint-edge rays; check each against photos).
+  American Hotel held (2026-10-10, after one rework): colour, SE axes and
+  clock-tower cap are fixed; the roofline is still plain 3DBAG planes where
+  the real hotel has its cluster of ornate gables, dormer towers and
+  pinnacles. Leaf-off panorama frames: scripts/landmarks/panolist.mjs.
   World Trade Center Amsterdam held (2026-10-10): towers A–G are ONE BAG
   pand (0363100012096613, ~200 x 95 m); a recognizable model needs a photo
   of each tower face (Commons has only atrium/logo/tower H). Footprints and
