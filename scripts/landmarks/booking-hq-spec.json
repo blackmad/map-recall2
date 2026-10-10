@@ -27,10 +27,11 @@
     "source": "PDOK BAG 0363100012250152 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
   },
   "materialOverrides": {
-    "dark": "#343b40",
-    "glass": "#86a3b3",
-    "concrete": "#8c8d8a",
-    "frame": "#4a5258",
+    "dark": "#1f282d",
+    "glass": "#5f90ab",
+    "concrete": "#7d8082",
+    "frame": "#2c363c",
+    "red": "#a0663a",
     "white": "#f1f1ee"
   },
   "preservePositionPrecision": true,

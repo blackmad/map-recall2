@@ -270,10 +270,10 @@
   "triangles": 1112
  },
  "hart-museum": {
-  "sourceHash": "a3a3d83088d38859",
+  "sourceHash": "e6d94f744bcef2a8",
   "buildVersion": 2,
-  "bytes": 95080,
-  "triangles": 5445
+  "bytes": 94696,
+  "triangles": 5398
  },
  "amsterdam-museum": {
   "sourceHash": "596fb2b7f0c9ed4c",
@@ -606,10 +606,10 @@
   "triangles": 906
  },
  "oude-lutherse-kerk": {
-  "sourceHash": "2e6def813b1db07e",
+  "sourceHash": "9270966bfc969f17",
   "buildVersion": 2,
-  "bytes": 28232,
-  "triangles": 1306
+  "bytes": 45440,
+  "triangles": 2166
  },
  "kattenkabinet": {
   "sourceHash": "16cfd90fbaaa8913",
@@ -1026,10 +1026,10 @@
   "triangles": 3542
  },
  "fire-station-hendrik": {
-  "sourceHash": "a28a910251f361f8",
+  "sourceHash": "f96f68e92d15fd35",
   "buildVersion": 2,
-  "bytes": 39020,
-  "triangles": 1705
+  "bytes": 42880,
+  "triangles": 1904
  },
  "fire-station-dirk": {
   "sourceHash": "cf63ed7a452b9c05",
@@ -1320,22 +1320,22 @@
   "triangles": 4228
  },
  "ronde-lutherse-kerk": {
-  "sourceHash": "f76a71a32b465c37",
+  "sourceHash": "43e37468e5ac16c9",
   "buildVersion": 2,
-  "bytes": 36156,
-  "triangles": 1402
+  "bytes": 51820,
+  "triangles": 2164
  },
  "american-hotel": {
-  "sourceHash": "1a976c8e5d314f14",
+  "sourceHash": "0bc8d03b8c6c57d0",
   "buildVersion": 2,
-  "bytes": 104008,
-  "triangles": 4957
+  "bytes": 122884,
+  "triangles": 6005
  },
  "hotel-de-l-europe": {
-  "sourceHash": "27a5c0ac34aef374",
+  "sourceHash": "ea1213b9dcf2a56d",
   "buildVersion": 2,
-  "bytes": 83444,
-  "triangles": 4042
+  "bytes": 95328,
+  "triangles": 4556
  },
  "trippenhuis": {
   "sourceHash": "a3cad0e513c251a5",
@@ -1488,10 +1488,10 @@
   "triangles": 4284
  },
  "booking-hq": {
-  "sourceHash": "9b5c3333e5a00eba",
+  "sourceHash": "4b31782adaa00c66",
   "buildVersion": 2,
-  "bytes": 64764,
-  "triangles": 3294
+  "bytes": 90108,
+  "triangles": 4833
  },
  "shell-technology-centre": {
   "sourceHash": "f79ab119a1c5f566",
