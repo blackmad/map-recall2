@@ -79,6 +79,9 @@ test('shopfront: lettering, recessed shop door and separate residential door', (
   assert.ok(compileBuilding(variant({shopfront: {colour: 'black', fascia: true}}), facts).group.getObjectByName('sign/lettering') === undefined, 'no text invented without a sign');
   assert.equal(mirrorIntent(variant()), null, 'lettering never mirrors');
   assert.throws(() => variant({shopfront: {colour: 'black', fascia: true, sign: {text: '', textColour: 'black'}}}), /sign.text/);
+  // shopShare is read only beside a residential door; alone the fit dropped it without a word.
+  assert.throws(() => variant({shopfront: {colour: 'black', fascia: true, shopShare: 0.6}}), /shopShare: only with residentialDoor/);
+  assert.doesNotThrow(() => variant({shopfront: {colour: 'black', fascia: true, shopShare: 0.6, residentialDoor: {side: 'left'}}}));
 });
 
 test('lettering fits its box and reverses cleanly on a mirrored frame', () => {
