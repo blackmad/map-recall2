@@ -124,6 +124,11 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Chassékerk towers follow the 3DBAG lidar (23.5 m, ~2 m over the ridge);
   lidar truncates slender towers (Vondelkerk spire was 12 m short), so
   check the real tower height in a source and raise if needed.
+  Large ordinary buildings (2026-10-10): Willem de Zwijgerlaan 350's canal
+  roof is solid to 15.2-15.6 m because 3DBAG closes it with one lid; the real
+  white storey stops at ~13 m under an open pergola. Grasweg 116 rows above
+  32 m are extrapolated (rectifier cap). De Bazel lacks piers/banding/
+  sculpture. Next candidates: scratch big-buildings-1.json (Haiku list).
   World Trade Center Amsterdam held (2026-10-10): towers A–G are ONE BAG
   pand (0363100012096613, ~200 x 95 m); a recognizable model needs a photo
   of each tower face (Commons has only atrium/logo/tower H). Footprints and
