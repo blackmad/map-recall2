@@ -1450,5 +1450,17 @@
   "buildVersion": 2,
   "bytes": 131784,
   "triangles": 6202
+ },
+ "oostenburgermiddenstraat-228": {
+  "sourceHash": "2c8c065d48b7d539",
+  "buildVersion": 2,
+  "bytes": 76560,
+  "triangles": 3408
+ },
+ "ceramiquelaan-437": {
+  "sourceHash": "c2fe7f58e917f912",
+  "buildVersion": 2,
+  "bytes": 86168,
+  "triangles": 4049
  }
 }
