@@ -11,7 +11,8 @@ import * as T from 'three';
 import {compileCanalHouseRecipe, type CanalHouseRecipe} from '../canalhouseRecipes.ts';
 import type {BuildingFacts} from './facts.ts';
 import {fitIntent, ROOF_COLOURS, type FitReport} from './fit.ts';
-import {validateIntent, type CanalHouseIntent} from './intent.ts';
+import {addLettering} from './signage.ts';
+import {swatch, validateIntent, type CanalHouseIntent} from './intent.ts';
 
 /** `{sameAs, overrides}` recipes: deep-merge onto the named neighbour; fronts merge by index. */
 export function resolveIntent(raw: any, load: (id: string) => any, depth = 0): CanalHouseIntent {
@@ -177,5 +178,27 @@ export function compileBuilding(intent: CanalHouseIntent, facts: BuildingFacts):
   backJogs(built.group, recipe, report);
   const vergeTriangles = crownVerges(built.group, recipe, intent.roof.material);
   const roofClasses = dressRoofs(built.group, intent.roof.material);
+  dressShopfronts(built.group, intent, report);
   return {group: built.group, recipe, anchorRD, fit: report, roofClasses, vergeTriangles, facts: fitted};
+}
+
+/**
+ * Shop details the library has one paint for: the fascia takes the sign background, the stall riser its own
+ * colour, and the business name becomes real lettering on the fascia.
+ */
+export function dressShopfronts(group: T.Group, intent: CanalHouseIntent, fit: FitReport): number {
+  let lettering = 0;
+  const paint = (name: RegExp, colour: string, under: T.Object3D) => under.traverse(o => {
+    if (o instanceof T.Mesh && name.test(o.name)) { o.material = new T.MeshStandardMaterial({color: colour, roughness: 0.9}); }
+  });
+  for (const f of fit.fronts) {
+    const front = intent.fronts.find(x => x.id === f.id), sf = front?.shopfront, elevation = group.getObjectByName(`elevation/${f.id}`);
+    if (!sf || !elevation) continue;
+    const fasciaPaint = sf.fasciaColour ?? sf.sign?.background;
+    if (fasciaPaint) paint(/bands\/fascia\/piece-\d+$/, swatch(fasciaPaint), elevation);
+    if (sf.residentialDoor?.colour) paint(/opening\/(\S*-)?door\/pane$/, swatch(sf.residentialDoor.colour), elevation);
+    if (sf.stallriserColour) paint(/bands\/shop-riser\/piece-\d+$/, swatch(sf.stallriserColour), elevation);
+    if (f.fascia && sf.sign) lettering += addLettering(elevation, f.fascia, swatch(sf.sign.textColour), intent.pandId);
+  }
+  return lettering;
 }

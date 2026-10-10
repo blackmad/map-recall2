@@ -25,10 +25,20 @@
    "storeys": 5,
    "bays": 3,
    "atticWindows": 1,
-   "doorBay": 0,
+   "doorBay": null,
    "shopfront": {
     "colour": "dark-brown",
-    "fascia": false
+    "fascia": true,
+    "name": "Toko Bersama",
+    "sign": {
+     "text": "TOKO BERSAMA",
+     "textColour": "#3aa845",
+     "span": 0.8
+    },
+    "entrance": "left",
+    "glazing": "transom",
+    "stallriser": "low",
+    "evidence": "front.jpg 2025-07-31: brown joinery, lettering \"Toko Bersama\" (red + green; modelled green), doorway at the left (set back in the photo; modelled flush because the recess cut escapes the 3DBAG footprint at this corner), large window at the right. OSM node Toko Bersama (restaurant) 3 m away."
    },
    "balconies": {
     "storeys": [

@@ -1,0 +1,34 @@
+{
+ "note": "Proposed front0 fields for bilder-087959 (owned by the block-face lane): merge into fronts[0]. Verified as bilder-087959x: 2456 tris, gates pass, facade-compare 4 axes. Photo: front-alt.jpg 2022-04-29 + front.jpg 2025-07-31.",
+ "front0": {
+  "axisGrid": 4,
+  "storeyAxes": {
+   "4": [
+    0,
+    1,
+    3
+   ]
+  },
+  "crownCap": "pediment",
+  "crownCapSpan": "medium",
+  "crownCapRise": "low",
+  "doorBay": 3,
+  "shopfront": {
+   "colour": "black",
+   "fascia": true,
+   "name": "Thai Thara - Thaise massage, spa & wellness",
+   "sign": {
+    "text": "Thai Thara",
+    "textColour": "#c8a24a",
+    "span": 0.7
+   },
+   "entrance": "centre-recessed",
+   "stallriser": "low",
+   "glazing": "split",
+   "residentialDoor": {
+    "side": "right"
+   },
+   "evidence": "pano 2022-04-29 + 2025-07-31"
+  }
+ }
+}

@@ -24,10 +24,26 @@
    "gable": "cornice",
    "storeys": 5,
    "bays": 2,
-   "doorBay": 1,
+   "doorBay": null,
    "shopfront": {
     "colour": "dark-brown",
-    "fascia": false
+    "fascia": true,
+    "name": "Verloskundigen (midwifery practice)",
+    "sign": {
+     "text": "Verloskundigen",
+     "textColour": "#c8c8c4",
+     "span": 0.82
+    },
+    "fasciaColour": "#a8946a",
+    "entrance": "left",
+    "glazing": "single",
+    "stallriser": "medium",
+    "stallriserColour": "grey-brick",
+    "residentialDoor": {
+     "side": "right",
+     "colour": "dark-red"
+    },
+    "evidence": "front.jpg 2023-01-12: tan sign band with grey capital lettering \"Verloskundigen\", one frosted pane with the same word, glazed door at the left, dark-red panelled street door with three letterbox slots at the right. Not in OSM; a practice, not retail."
    },
    "bayWindows": {
     "bay": 0,

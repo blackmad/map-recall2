@@ -13,6 +13,11 @@ export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 
 export type GableIntent = typeof GABLES[number];
 export const CORNICES = ['none', 'simple', 'bracketed', 'heavy'] as const;
 export const CROWN_CAPS = ['flat', 'rounded', 'pediment'] as const;
+export const CROWN_CAP_RISES = ['low', 'normal'] as const;
+export const CROWN_CAP_SPANS = ['narrow', 'medium', 'wide'] as const;
+export const SHOP_ENTRANCES = ['none', 'centre-recessed', 'centre', 'left', 'right', 'left-recessed', 'right-recessed'] as const;
+export const SHOP_GLAZING = ['single', 'split', 'transom'] as const;
+export const STALLRISERS = ['none', 'low', 'medium', 'high'] as const;
 export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as const;
 export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop'] as const;
 export const ROOF_MATERIALS = ['slate', 'black-tile', 'red-tile', 'bitumen', 'zinc', 'copper'] as const;
@@ -27,7 +32,7 @@ export const SWATCHES: Record<string, string> = {
   'red-brown': '#7a3e2c', 'dark-brown': '#4e3027', 'orange-brick': '#9a5236', 'yellow-brick': '#b39468',
   'grey-brick': '#6d6560', 'black-painted': '#2a2a2a', 'white-painted': '#e6e2d8', 'cream-painted': '#d9ccaa',
   'grey-painted': '#9a9a94', 'sandstone': '#c8bb9c',
-  white: '#ece9e0', cream: '#e4dcc4', 'dark-green': '#26392f', black: '#1f2121', 'dark-red': '#5a2224',
+  white: '#ece9e0', cream: '#e4dcc4', 'dark-green': '#26392f', black: '#1e1e1e', 'dark-red': '#5a2224',
   'dark-blue': '#23303f', grey: '#7c7f7c', brown: '#4a3426', 'natural-wood': '#7a5a3a',
 };
 
@@ -52,7 +57,20 @@ export interface FrontIntent {
   /** Crown top shape for neck/bell/cornice crowns. */
   crownCap?: typeof CROWN_CAPS[number];
   /** Cornice crowns: the cap is a narrow centre piece (default) or a wide parapet across the front (1900s Bilderdijkstraat fronts). */
-  crownCapSpan?: 'narrow' | 'wide';
+  crownCapSpan?: typeof CROWN_CAP_SPANS[number];
+  /** Cap height: `low` = a shallow pointed pediment/segment (about 0.35 m), default `normal`. */
+  crownCapRise?: typeof CROWN_CAP_RISES[number];
+  /**
+   * Window axes. The front has `axisGrid` vertical axes (default: the largest per-storey bay count above the
+   * ground storey). Every storey's windows sit on those axes, so they line up between storeys and the piers
+   * between them are equal. A storey with fewer windows names the axes it uses (`storeyAxes: {"4": [0,1,3]}`,
+   * storey index from the ground = 0; key "last" = the top storey); without a list a storey that is centred on the
+   * grid uses the centred axes, any other mismatch warns and falls back to its own even spacing.
+   */
+  axisGrid?: number;
+  storeyAxes?: Record<string, number[]>;
+  /** `equal` (default): the outer piers equal the inner ones. `margin`: legacy 9% side margins. */
+  piers?: 'equal' | 'margin';
   /** Full storeys below the crown, including the ground storey. */
   storeys: number;
   /** Window bays per full storey (one number, or one per storey from the ground up). */
@@ -74,7 +92,7 @@ export interface FrontIntent {
   archRings?: 'stone' | 'band' | 'none';
   hoist: boolean;
   shutters?: 'none' | 'ground' | 'all';
-  shopfront?: { colour: string; fascia: boolean; awning?: ShopAwningIntent };
+  shopfront?: ShopfrontIntent;
   /** Stone dressing around the upper windows (colour: the palette's `stone`): a lintel slab, lintel + sill + jambs, or a keystone block over each head. Default none. */
   windowSurround?: typeof WINDOW_SURROUNDS[number];
   /** 0-based storeys carrying the surround; default every window storey above the shopfront. */
@@ -91,6 +109,31 @@ export interface FrontIntent {
   repeat?: { count: number | 'fit'; mirrorAlternate?: boolean };
   /** Per-front palette when one owner has visibly different fronts. */
   palette?: Partial<PaletteIntent>;
+}
+
+/**
+ * A real local shop. Only what a photo or register supports; every field is optional.
+ * `evidence` records where it came from (photo id/date, OSM node) so a later pass can audit it.
+ */
+export interface ShopfrontIntent {
+  colour: string;
+  fascia: boolean;
+  awning?: ShopAwningIntent;
+  /** Business as named by the evidence, and the sign it carries. */
+  name?: string;
+  sign?: {text: string; textColour: string; /** fascia colour; default the shop colour */ background?: string; /** share of the fascia the text spans, 0.3..0.95 */ span?: number; align?: 'left' | 'centre' | 'right'};
+  /** Where the shop entrance is; `centre-recessed` sets the glazed door back in a portal between display windows. */
+  entrance?: typeof SHOP_ENTRANCES[number];
+  glazing?: typeof SHOP_GLAZING[number];
+  stallriser?: typeof STALLRISERS[number];
+  stallriserColour?: string;
+  /** Fascia paint when it differs from the shop joinery (a pale sign board over dark joinery); default the sign background, else the shop colour. */
+  fasciaColour?: string;
+  /** A separate street door to the dwellings above, beside the shop (`doorBay` then no longer means the shop door). */
+  residentialDoor?: {side: 'left' | 'right'; colour?: string};
+  /** Share of the front width the shop occupies from the side opposite the residential door (default 1 without a residential door). */
+  shopShare?: number;
+  evidence?: string;
 }
 
 /** Fabric awning over the shop glass: `extent` is the covered share of the front width, as fractions from the viewer's left (default the whole shop front). */
@@ -189,12 +232,32 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.balconies) { f.balconies.storeys.forEach(v => count(v, `${at}.balconies.storeys`, 1, f.storeys - 1)); f.balconies.bays.forEach(v => count(v, `${at}.balconies.bays`, 0, 15)); }
     if (f.bayWindows) { count(f.bayWindows.bay, `${at}.bayWindows.bay`, 0, 15); f.bayWindows.storeys.forEach(v => count(v, `${at}.bayWindows.storeys`, 1, f.storeys - 1)); }
     if (f.bands !== undefined) oneOf(f.bands, ['none', 'storey', 'lintel', 'both'], `${at}.bands`);
-    if (f.crownCapSpan !== undefined) oneOf(f.crownCapSpan, ['narrow', 'wide'], `${at}.crownCapSpan`);
+    if (f.crownCapSpan !== undefined) oneOf(f.crownCapSpan, CROWN_CAP_SPANS, `${at}.crownCapSpan`);
+    if (f.crownCapRise !== undefined) oneOf(f.crownCapRise, CROWN_CAP_RISES, `${at}.crownCapRise`);
+    if (f.piers !== undefined) oneOf(f.piers, ['equal', 'margin'], `${at}.piers`);
+    if (f.axisGrid !== undefined) count(f.axisGrid, `${at}.axisGrid`, 1, 16);
+    for (const [k, v] of Object.entries(f.storeyAxes ?? {})) {
+      const grid = f.axisGrid ?? Math.max(...(Array.isArray(f.bays) ? f.bays.slice(f.storeys > 1 ? 1 : 0) : [f.bays]));
+      if (k !== 'last' && !(Number.isInteger(Number(k)) && Number(k) >= 0 && Number(k) < f.storeys)) problems.push(`${at}.storeyAxes.${k}: key must be a storey index or "last"`);
+      if (!Array.isArray(v) || !v.length || v.some((a, i) => !Number.isInteger(a) || a < 0 || a >= grid || (i > 0 && a <= v[i - 1]))) problems.push(`${at}.storeyAxes.${k}: ascending axes within 0..${grid - 1}`);
+      else if (Array.isArray(f.bays) && f.bays[k === 'last' ? f.storeys - 1 : Number(k)] !== v.length) problems.push(`${at}.storeyAxes.${k}: ${v.length} axes but bays says ${f.bays[k === 'last' ? f.storeys - 1 : Number(k)]}`);
+    }
     if (f.archedStoreys !== undefined) { if (!Array.isArray(f.archedStoreys)) problems.push(`${at}.archedStoreys must be a list`); else f.archedStoreys.forEach(v => count(v, `${at}.archedStoreys`, 0, f.storeys - 1)); }
     if (f.archRings !== undefined) oneOf(f.archRings, ['stone', 'band', 'none'], `${at}.archRings`);
     if (f.repeat) { if (f.repeat.count !== 'fit') count(f.repeat.count, `${at}.repeat.count`, 1, 20); }
     if (f.share !== undefined && !(f.share > 0 && f.share <= 1)) problems.push(`${at}.share must be in (0,1]`);
-    if (f.shopfront) colour(f.shopfront.colour, `${at}.shopfront.colour`);
+    if (f.shopfront) {
+      const sf = f.shopfront;
+      colour(sf.colour, `${at}.shopfront.colour`);
+      if (sf.sign) { if (!sf.sign.text?.trim() || sf.sign.text.length > 40) problems.push(`${at}.shopfront.sign.text: 1..40 chars`); colour(sf.sign.textColour, `${at}.shopfront.sign.textColour`); if (sf.sign.background) colour(sf.sign.background, `${at}.shopfront.sign.background`); if (sf.sign.span !== undefined && !(sf.sign.span >= 0.3 && sf.sign.span <= 0.95)) problems.push(`${at}.shopfront.sign.span: 0.3..0.95`); }
+      if (sf.entrance !== undefined) oneOf(sf.entrance, SHOP_ENTRANCES, `${at}.shopfront.entrance`);
+      if (sf.glazing !== undefined) oneOf(sf.glazing, SHOP_GLAZING, `${at}.shopfront.glazing`);
+      if (sf.stallriser !== undefined) oneOf(sf.stallriser, STALLRISERS, `${at}.shopfront.stallriser`);
+      if (sf.fasciaColour) colour(sf.fasciaColour, `${at}.shopfront.fasciaColour`);
+      if (sf.stallriserColour) colour(sf.stallriserColour, `${at}.shopfront.stallriserColour`);
+      if (sf.residentialDoor) { oneOf(sf.residentialDoor.side, ['left', 'right'], `${at}.shopfront.residentialDoor.side`); if (sf.residentialDoor.colour) colour(sf.residentialDoor.colour, `${at}.shopfront.residentialDoor.colour`); }
+      if (sf.shopShare !== undefined && !(sf.shopShare >= 0.4 && sf.shopShare <= 1)) problems.push(`${at}.shopfront.shopShare: 0.4..1`);
+    }
     if (f.windowSurround !== undefined) oneOf(f.windowSurround, WINDOW_SURROUNDS, `${at}.windowSurround`);
     if (f.surroundStoreys !== undefined) { if (!Array.isArray(f.surroundStoreys)) problems.push(`${at}.surroundStoreys must be a list`); else f.surroundStoreys.forEach(v => count(v, `${at}.surroundStoreys`, 0, f.storeys - 1)); }
     if (f.quoins !== undefined) oneOf(f.quoins, QUOINS, `${at}.quoins`);
