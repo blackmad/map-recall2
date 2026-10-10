@@ -1,0 +1,627 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bilder-161259-236206",
+ "street": "Bilderdijkstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/block-face/bilder-161259-236206/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012161259",
+   "slug": "bface-161259",
+   "address": "Bilderdijkstraat 120",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "step",
+      "storeys": 4,
+      "bays": 2,
+      "atticWindows": 1,
+      "doorBay": 1,
+      "windows": "arched",
+      "archRings": "band",
+      "archedStoreys": [
+       3
+      ],
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        0
+       ]
+      },
+      "bands": "lintel",
+      "shopfront": {
+       "colour": "white",
+       "fascia": true,
+       "fasciaColour": "#e7b5cb",
+       "displayWindows": 1,
+       "stallriser": "low",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "dark-brown"
+       },
+       "shopShare": 0.6,
+       "evidence": "pano 2024-11-29"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "red-brown",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "services",
+    "name": "Junior Service Amsterdam",
+    "category": "amenity=kindergarten",
+    "osm": {
+     "type": "node",
+     "id": 11395770729,
+     "name": "Junior Service Amsterdam",
+     "tags": "amenity=kindergarten"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Pink-fronted children's shop/service window with colourful posters at the left, two narrow dark doors (residential) at the right. No legible sign on the fascia."
+   },
+   "rhythm": {
+    "bays": "2 unequal bays: wide left bay (three-light windows, top storey one wide arched window), narrow right bay (single segmental-headed windows)",
+    "windowsPerStorey": "ground: shop glass + 2 doors | 1-3: wide 3-light window with balcony (left) + 1 single (right) | gable: 1 arched window",
+    "symmetry": "none: stepped gable sits over the left bay",
+    "groundFloor": "pink fascia and white shopfront at the left (about 60%), two dark doors at the right",
+    "signage": "none legible (pink fascia band)",
+    "roofline": "small crow-stepped gable over the left bay, dark roof either side",
+    "citation": "bilder-161259-236206 strip.jpg pand 1",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "bays are equal width in the model; photo: wide left (three-light) and narrow right bay",
+     "stepped gable is centred in the model; on the photo it is over the left bay",
+     "top-storey wide arched window of the left bay is two arched windows in the model"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012161260",
+   "slug": "bface-161260",
+   "address": "Bilderdijkstraat 118",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "cornice",
+      "crownCap": "flat",
+      "storeys": 4,
+      "bays": 3,
+      "dormers": 1,
+      "doorBay": 0,
+      "windows": "arched",
+      "archRings": "band",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "bands": "storey",
+      "shopfront": {
+       "colour": "dark-blue",
+       "fascia": true,
+       "displayWindows": 1,
+       "stallriser": "none",
+       "residentialDoor": {
+        "side": "left",
+        "colour": "dark-brown"
+       },
+       "shopShare": 0.55,
+       "evidence": "pano 2024-11-29"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6e3a2d",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "cream",
+     "band": "#5a2e24"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "vacant",
+    "category": "shop=printer_ink (OSM)",
+    "osm": {
+     "type": "node",
+     "id": 11395807175,
+     "name": "Moolhuijsen.nl",
+     "tags": "shop=printer_ink"
+    },
+    "bag": [
+     "overige gebruiksfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "conflict",
+    "note": "Photo 2024-11-29: the shop glass carries a pale-green \"TE HUUR\" (to let) board, so the unit is vacant; OSM still lists Moolhuijsen.nl (printer ink). Modelled as photographed (no sign). Large double wooden door at the left is the residential entrance."
+   },
+   "rhythm": {
+    "bays": "3 identical bays, middle bay a French window with balcony on storeys 1-2",
+    "windowsPerStorey": "ground: double door + shop glass | 1: 3 (balcony middle) | 2: 3 (balcony middle) | 3: 3 | roof: 1 tall dormer",
+    "symmetry": "upper storeys mirror-symmetric about the middle bay",
+    "groundFloor": "tall double wooden door (residential) left, pale-green TE HUUR board in the dark-navy shopfront at the right",
+    "signage": "none (TE HUUR board only)",
+    "roofline": "flat cornice with stone band, centred raised dormer block with one window, dark roof sides",
+    "citation": "bilder-161259-236206 strip.jpg pand 2",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "dormer is a flush brick block with a stone cap and sits on the cornice line; modelled as an ordinary roof dormer",
+     "TE HUUR board is not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012157154",
+   "slug": "bface-157154",
+   "address": "Bilderdijkstraat 116",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "step",
+      "storeys": 4,
+      "bays": 3,
+      "atticWindows": 1,
+      "doorBay": 0,
+      "windows": "sash",
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "bands": "storey",
+      "shopfront": {
+       "colour": "#8a3a22",
+       "fascia": true,
+       "name": "Toko Bersama",
+       "sign": {
+        "text": "TOKO BERSAMA",
+        "textColour": "#3fae3a",
+        "mount": "fascia",
+        "align": "centre"
+       },
+       "displayWindows": 2,
+       "stallriser": "low",
+       "residentialDoor": {
+        "side": "left",
+        "colour": "dark-brown"
+       },
+       "shopShare": 0.72,
+       "evidence": "pano 2024-11-29 + OSM node 11395810277"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6b3a2c",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "restaurant",
+    "name": "Toko Bersama",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 11395810277,
+     "name": "Toko Bersama",
+     "tags": "amenity=restaurant"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Indonesian toko/restaurant: green \"Toko Bersama\" lettering on a rust-red fascia, green window lettering, white pull-out canopy; dark wooden door at the left leads to the upper floors."
+   },
+   "rhythm": {
+    "bays": "3 identical bays, balcony on the middle French window of every storey",
+    "windowsPerStorey": "ground: door + shop | 1-3: 3 (balcony middle) | gable: 3 small (square, arched, square)",
+    "symmetry": "upper storeys mirror-symmetric",
+    "groundFloor": "wooden house door left; red-brown shopfront with fascia sign right",
+    "signage": "TOKO BERSAMA green on rust fascia",
+    "roofline": "tall crow-stepped gable behind the cornice (partly hidden by a tree on the strip)",
+    "citation": "bilder-161259-236206 strip.jpg pand 3",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "green window lettering and the canopy are not modelled",
+     "gable window group (square, arched, square) is three equal attic windows",
+     "gable partly hidden by a tree: outline inferred"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012160212",
+   "slug": "bface-160212",
+   "address": "Bilderdijkstraat 114",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "point",
+      "storeys": 4,
+      "bays": 3,
+      "atticWindows": 1,
+      "doorBay": 0,
+      "windows": "sash",
+      "archRings": "band",
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "bands": "storey",
+      "shopfront": {
+       "colour": "dark-blue",
+       "fascia": true,
+       "displayWindows": 2,
+       "stallriser": "medium",
+       "residentialDoor": {
+        "side": "left",
+        "colour": "natural-wood"
+       },
+       "shopShare": 0.8,
+       "evidence": "pano 2024-11-29"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#5a3a30",
+     "frame": "white",
+     "door": "natural-wood",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "shop",
+    "category": "BAG winkelfunctie",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "Dark-navy shopfront with a large arched display window and graffiti/mural shutters; no sign legible, no OSM business. A van and a mural wrap cover the glass on this date."
+   },
+   "rhythm": {
+    "bays": "3 bays, balcony on the middle French window",
+    "windowsPerStorey": "ground: door + arched shop window | 1-3: 3 (French window with balcony middle) | gable: 1 arched window",
+    "symmetry": "upper storeys mirror-symmetric; pointed gable over the middle bay",
+    "groundFloor": "dark-navy shopfront with arched window, door at the left",
+    "signage": "none legible",
+    "roofline": "steep pointed gable in dark brick with one arched window, dark roof tiles either side",
+    "citation": "bilder-161259-236206 strip.jpg pand 4",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "ground floor partly covered by a van/mural on the strip: shopfront detail is inferred",
+     "dark brick with a bluish cast is approximated by one brick colour"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012165170",
+   "slug": "bface-165170",
+   "address": "Bilderdijkstraat 112",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "step",
+      "storeys": 4,
+      "bays": 2,
+      "atticWindows": 1,
+      "doorBay": 0,
+      "windows": "sash",
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "bands": "storey",
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "name": "ØLÅF",
+       "displayWindows": 1,
+       "stallriser": "low",
+       "evidence": "pano 2024-11-29 + OSM node 11395807174"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6b3a2c",
+     "frame": "white",
+     "door": "black",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "shop",
+    "name": "OLAF",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 11395807174,
+     "name": "ØLÅF",
+     "tags": "shop=clothes"
+    },
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "Shop front covered by a large mural/wrap and a tree on the strip date; OSM says ØLÅF (clothes). The sign (Ø/Å letters) is not drawable and not legible, so none is modelled."
+   },
+   "rhythm": {
+    "bays": "2 unequal bays: narrow left single window, wide right three-light window with balcony",
+    "windowsPerStorey": "ground: shop | 1-3: 1 narrow (left) + 1 wide 3-light with balcony (right) | gable: small round window + small window",
+    "symmetry": "none: crow-stepped gable above the right bay",
+    "groundFloor": "dark shopfront under a mural wrap",
+    "signage": "none legible",
+    "roofline": "small crow-stepped gable right of centre, dark roof",
+    "citation": "bilder-161259-236206 strip.jpg pand 5",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     2
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "bays are equal width; photo: narrow left, wide right",
+     "gable centred; photo: right of centre",
+     "tree and mural hide ground floor and gable: both inferred"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236206",
+   "slug": "bface-236206",
+   "address": "Bilderdijkstraat 108-110",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "cornice",
+      "crownCap": "flat",
+      "storeys": 4,
+      "bays": 5,
+      "dormers": 2,
+      "doorBay": 2,
+      "windows": "sash",
+      "archRings": "none",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "bands": "storey",
+      "shopfront": {
+       "colour": "white",
+       "fascia": true,
+       "name": "Ekoplaza Foodmarqt",
+       "sign": {
+        "text": "EKOPLAZA",
+        "textColour": "white",
+        "background": "#1e1e1e",
+        "mount": "fascia",
+        "span": 0.3,
+        "align": "left"
+       },
+       "displayWindows": 2,
+       "stallriser": "low",
+       "awning": {
+        "style": "fabric-straight",
+        "colour": "#2f8f6a",
+        "extent": {
+         "from": 0.05,
+         "to": 0.45
+        }
+       },
+       "evidence": "pano 2024-11-29 + OSM node 3289097622"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6b3a2c",
+     "frame": "white",
+     "door": "black",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "shop",
+    "name": "Ekoplaza Foodmarqt",
+    "category": "shop=supermarket",
+    "osm": {
+     "type": "node",
+     "id": 3289097622,
+     "name": "Ekoplaza Foodmarqt",
+     "tags": "shop=supermarket"
+    },
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Two shop units behind one white shopfront: Ekoplaza (white lettering on the dark band, green-white striped awning over the left unit), two black house doors in the middle, a second awning over the right unit. The dark band also carries heritage gold lettering \"GEZ SANDERS MODE MAGAZIJNEN\"."
+   },
+   "rhythm": {
+    "bays": "double house, 5 window axes: 3 at the left (middle with balcony on storeys 1-2) and 2 at the right (arched pair on the top storeys)",
+    "windowsPerStorey": "ground: shop | doors | shop | 1: 5 | 2: 5 | 3: 5 | roof: arched dormer + square dormer + right gable window",
+    "symmetry": "none",
+    "groundFloor": "white shopfront, two shop windows with striped awnings either side of two black doors",
+    "signage": "EKOPLAZA white on dark band; heritage band lettering not modelled",
+    "roofline": "dark-tile mansard with an arched and a square dormer, pointed gable with arched window at the far right",
+    "citation": "bilder-161259-236206 strip.jpg pand 6",
+    "photoRows": [
+     4,
+     5,
+     5,
+     5,
+     3
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the pointed gable at the far right is not an off-centre gable in the schema (modelled as cornice + dormers)",
+     "two black doors between the shop windows: only one residential door is modelled",
+     "second awning over the right shop and the heritage lettering band are not modelled",
+     "unequal axes (pairs at the right) modelled as equal",
+     "segmental heads on the top-storey right windows are plain rectangles (arch budget: the front exceeds 3,000 triangles with arched windows)",
+     "top-storey arched pair at the right is single arched windows"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [
+   {
+    "pands": [
+     "0363100012161259",
+     "0363100012161260",
+     "0363100012157154"
+    ],
+    "trust": "photo",
+    "reference": "0363100012161260",
+    "evidence": "strip: stone cornice bands of 161259 and 161260 at the same height (y ~270 px = 14.0 m); 157154 on the same line behind the tree"
+   },
+   {
+    "pands": [
+     "0363100012160212",
+     "0363100012165170",
+     "0363100012236206"
+    ],
+    "evidence": "strip: cornice lines of 160212, 165170 and 236206 at ~13.3 m (y ~290 px); 3DBAG spread 0.4 m"
+   }
+  ],
+  "identical": [],
+  "notes": [
+   "2024-11-29 strip; tree in front of 157154/165170 hides their gables; a van and a mural wrap cover 160212 / 165170 ground floors."
+  ]
+ },
+ "authoring": {
+  "author": "claude-sonnet-5.5 (block-face lane), from strip-labelled.png + 2x zoomed ground/roof crops",
+  "passes": 1,
+  "note": "Bilderdijkstraat 108-120, even side, last block before the cross street (1902 row, ground + 3 storeys)."
+ }
+}

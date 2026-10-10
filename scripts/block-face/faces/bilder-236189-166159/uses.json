@@ -1,0 +1,195 @@
+{
+ "street": "Bilderdijkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T07:47:26.650Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012236189",
+   "addresses": [
+    "Bilderdijkstraat 102",
+    "Bilderdijkstraat 104",
+    "Bilderdijkstraat 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 102-H",
+     "use": "winkelfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000586089"
+    },
+    {
+     "address": "Kwakersplein 2-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 480,
+     "bagId": "0363010012073605"
+    }
+   ],
+   "units": 18,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809198387,
+     "lngLat": [
+      4.8705185,
+      52.3692297
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "102-4",
+      "addr:postcode": "1053KX",
+      "addr:street": "Bilderdijkstraat",
+      "check_date:opening_hours": "2023-04-25",
+      "name": "Sunika",
+      "opening_hours:signed": "no",
+      "shop": "shoes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-10T07:47:26.650Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2809213010,
+     "lngLat": [
+      4.8705087,
+      52.3690964
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2",
+      "addr:postcode": "1053TZ",
+      "addr:street": "Kwakersplein",
+      "amenity": "cafe",
+      "check_date": "2023-04-25",
+      "email": "info@karavaanamsterdam.nl",
+      "name": "Karavaan",
+      "note": "Horecagroep 3WO",
+      "opening_hours": "Mo-Th,Su 09:00-01:00; Fr-Sa 09:00-03:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 235 7177",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "website": "https://www.karavaanamsterdam.nl"
+     },
+     "fetchedAt": "2026-10-10T07:47:26.650Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236188",
+   "addresses": [
+    "Bilderdijkstraat 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 100-H",
+     "use": "winkelfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000586085"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11576142492,
+     "lngLat": [
+      4.8705015,
+      52.3692831
+     ],
+     "tags": {
+      "name": "Spax",
+      "shop": "nutrition_supplements"
+     },
+     "fetchedAt": "2026-10-10T07:47:26.650Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157174",
+   "addresses": [
+    "Bilderdijkstraat 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 96-H",
+     "use": "winkelfunctie",
+     "areaM2": 145,
+     "bagId": "0363010001009387"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11576168837,
+     "lngLat": [
+      4.8704623,
+      52.3693304
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "Back"
+     },
+     "fetchedAt": "2026-10-10T07:47:26.650Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166159",
+   "addresses": [
+    "Bilderdijkstraat 94",
+    "Bilderdijkstraat 94A",
+    "Bilderdijkstraat 94B",
+    "Bilderdijkstraat 94C",
+    "Bilderdijkstraat 94D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 94",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000586075"
+    },
+    {
+     "address": "Bilderdijkstraat 94A",
+     "use": "winkelfunctie",
+     "areaM2": 154,
+     "bagId": "0363010012083699"
+    },
+    {
+     "address": "Bilderdijkstraat 94B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010012083700"
+    },
+    {
+     "address": "Bilderdijkstraat 94C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010012083701"
+    },
+    {
+     "address": "Bilderdijkstraat 94D",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010012083702"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

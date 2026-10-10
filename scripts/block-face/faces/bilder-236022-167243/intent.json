@@ -1,0 +1,745 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bilder-236022-167243",
+ "street": "Bilderdijkstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-12",
+   "image": "staging/block-face/bilder-236022-167243/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012236022",
+   "slug": "bface-236022",
+   "address": "Bilderdijkstraat 135-139",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "heavy",
+      "hoist": false,
+      "gable": "cornice",
+      "storeys": 4,
+      "bays": 9,
+      "dormers": 3,
+      "doorBay": null,
+      "windows": "plain",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1
+       ],
+       "bays": [
+        1,
+        4,
+        7
+       ]
+      },
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "name": "Intertoys",
+       "sign": {
+        "text": "INTERTOYS",
+        "textColour": "#f2c200",
+        "mount": "fascia",
+        "align": "right",
+        "span": 0.3
+       },
+       "displayWindows": 4,
+       "stallriser": "none",
+       "evidence": "pano 2023-01-12 + OSM node 9437347215"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#5a3a30",
+     "frame": "white",
+     "door": "black",
+     "stone": "cream",
+     "band": "#b8935a"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2023-01-12",
+    "use": "shop",
+    "name": "Intertoys",
+    "category": "shop=toys",
+    "osm": {
+     "type": "node",
+     "id": 9437347215,
+     "name": "Intertoys",
+     "tags": "shop=toys"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Toy shop across all three houses: black fascia, yellow Intertoys logo right of centre, shop glass full width with posters; two inset entrances."
+   },
+   "rhythm": {
+    "bays": "three houses in one pand, 9 window axes in storeys 1-3 (6 left, 3 right; downpipe at the joint)",
+    "identicalBays": "storeys 1-3 identical; balconies at axes 1, 4 and 7",
+    "windowsPerStorey": "ground: full-width shop | 1-3: 9 | roof: 2 flat dormers + a tall stepped dormer right",
+    "symmetry": "none",
+    "groundFloor": "black fascia, glazed shopfront across the whole width",
+    "signage": "Intertoys (yellow logo on black)",
+    "roofline": "decorative brick frieze with cream name panels under a heavy cornice, dark tile roof, 2 flush dormer blocks and a tall stepped dormer gable at the right",
+    "citation": "bilder-236022-167243 strip.jpg pand 1",
+    "photoRows": [
+     6,
+     9,
+     9,
+     9,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "3 houses with different details in one pand: one equal-pitch 9-axis grid",
+     "triangle budget: plain windows, balconies on storey 1 only and storey bands only (the full detail needs ~4,450 triangles)",
+     "the right dormer is a tall stepped gable, modelled as a plain dormer",
+     "logo is drawn as capital lettering",
+     "brick frieze and name panels under the cornice are not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012159868",
+   "slug": "bface-159868",
+   "address": "Bilderdijkstraat 141",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "point",
+      "storeys": 4,
+      "bays": 3,
+      "atticWindows": 1,
+      "doorBay": 0,
+      "windows": "sash",
+      "archRings": "band",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "dark-green",
+       "fascia": true,
+       "name": "SOIL Vegan Cafe",
+       "displayWindows": 1,
+       "stallriser": "none",
+       "residentialDoor": {
+        "side": "left",
+        "colour": "white"
+       },
+       "shopShare": 0.9,
+       "evidence": "pano 2023-01-12 + OSM node 2809205497"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#8a3d2c",
+     "frame": "white",
+     "door": "white",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2023-01-12",
+    "use": "restaurant",
+    "name": "SOIL Vegan Cafe",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2809205497,
+     "name": "SOIL Vegan Cafe",
+     "tags": "amenity=restaurant"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "Dark-green front, glazed, partly hidden by a parked van; no legible sign."
+   },
+   "rhythm": {
+    "bays": "3 identical bays, balcony on the middle window of every storey",
+    "windowsPerStorey": "ground: shop | 1-3: 3 (balcony middle) | gable: 1 window",
+    "symmetry": "mirror-symmetric; pointed gable over the middle",
+    "groundFloor": "dark-green shopfront under the first-floor sill band",
+    "signage": "none legible",
+    "roofline": "steep pointed gable with stepped brick shoulders and a finial, dark roof either side",
+    "citation": "bilder-236022-167243 strip.jpg pand 2",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "stepped shoulders and the finial of the gable are not modelled",
+     "ground floor hidden by a van"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236711",
+   "slug": "bface-236711",
+   "address": "Bilderdijkstraat 143",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "step",
+      "storeys": 4,
+      "bays": 3,
+      "atticWindows": 1,
+      "doorBay": 0,
+      "windows": "arched",
+      "archRings": "band",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "name": "Smart Beauty Lab",
+       "displayWindows": 1,
+       "stallriser": "low",
+       "residentialDoor": {
+        "side": "left",
+        "colour": "white"
+       },
+       "shopShare": 0.85,
+       "evidence": "pano 2023-01-12 + OSM node 11381115950"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#5a3a30",
+     "frame": "white",
+     "door": "white",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2023-01-12",
+    "use": "services",
+    "name": "Smart Beauty Lab",
+    "category": "shop=beauty",
+    "osm": {
+     "type": "node",
+     "id": 11381115950,
+     "name": "Smart Beauty Lab",
+     "tags": "shop=beauty"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "Teal-framed glazed salon front with a dark fascia; white door at the left. Fascia lettering illegible."
+   },
+   "rhythm": {
+    "bays": "3 identical bays, segmental-arched windows, balcony on the middle window",
+    "windowsPerStorey": "ground: shop | 1-3: 3 arched (balcony middle) | gable: 1 arched window",
+    "symmetry": "mirror-symmetric; stepped gable centred",
+    "groundFloor": "black fascia, teal-framed glazed salon window, door left",
+    "signage": "illegible",
+    "roofline": "crow-stepped gable with an arched window",
+    "citation": "bilder-236022-167243 strip.jpg pand 3",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "cornice ~1.6 m above the photo line (3DBAG eaves 14.9 m vs ~13.3 m on the strip)",
+     "tree branches in front of the whole front",
+     "sign text illegible: none modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012162572",
+   "slug": "bface-162572",
+   "address": "Bilderdijkstraat 145",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "cornice",
+      "crownCap": "flat",
+      "crownCapSpan": "medium",
+      "storeys": 4,
+      "bays": 3,
+      "atticWindows": 1,
+      "doorBay": 0,
+      "windows": "sash",
+      "archRings": "band",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "name": "Charlton Hair Salon",
+       "displayWindows": 1,
+       "stallriser": "none",
+       "residentialDoor": {
+        "side": "left",
+        "colour": "dark-brown"
+       },
+       "shopShare": 0.7,
+       "awning": {
+        "style": "fabric-straight",
+        "colour": "#e4dcc4",
+        "extent": {
+         "from": 0.4,
+         "to": 1
+        }
+       },
+       "evidence": "pano 2023-01-12 + OSM node 11381148205"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#4e3027",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2023-01-12",
+    "use": "services",
+    "name": "Charlton Hair Salon",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 11381148205,
+     "name": "Charlton Hair Salon",
+     "tags": "shop=hairdresser"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-only",
+    "note": "Dark front: arched dwelling door at the left, glazed salon window with a small cream awning at the right; no legible sign."
+   },
+   "rhythm": {
+    "bays": "3 bays: 3-light wide windows in the middle bay with balcony, single wide windows either side",
+    "windowsPerStorey": "ground: arched door + salon | 1-3: 3 (wide 3-light middle) | gable: 3 windows",
+    "symmetry": "mirror-symmetric",
+    "groundFloor": "arched door left, awning-covered salon window right",
+    "signage": "none legible",
+    "roofline": "tall brick dormer gable with 3 windows and a stepped brick cap",
+    "citation": "bilder-236022-167243 strip.jpg pand 4",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "cornice ~3.4 m above the photo line: 3DBAG eaves 17.3 m is the dormer-gable top, the strip cornice is at ~13.9 m; a photo-trusted group cannot bridge > 2.5 m",
+     "middle bay is wider than the sides on the photo (3-light with side lights); modelled as equal bays",
+     "gable carries 3 windows in a dormer block, modelled as a 1-window cornice crown",
+     "arched door head not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012237294",
+   "slug": "bface-237294",
+   "address": "Bilderdijkstraat 147",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "point",
+      "storeys": 4,
+      "bays": 3,
+      "atticWindows": 1,
+      "doorBay": 2,
+      "windows": "arched",
+      "archRings": "band",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "white",
+       "fascia": true,
+       "fasciaColour": "#8d8d8d",
+       "name": "Tutti Frutti",
+       "sign": {
+        "text": "TUTTI FRUTTI",
+        "textColour": "white",
+        "mount": "fascia",
+        "align": "centre",
+        "span": 0.7
+       },
+       "displayWindows": 1,
+       "stallriser": "low",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "white"
+       },
+       "shopShare": 0.8,
+       "evidence": "pano 2023-01-12 + OSM node 11381167110"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#9a6a3a",
+     "frame": "white",
+     "door": "white",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2023-01-12",
+    "use": "shop",
+    "name": "Tutti Frutti",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 11381167110,
+     "name": "Tutti Frutti",
+     "tags": "shop=clothes"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Grey fascia with raised white letters \"Tutti Frutti\", white shopfront and a white house door at the right."
+   },
+   "rhythm": {
+    "bays": "3 identical bays, segmental-arched windows, balcony on the middle window of storeys 1-2",
+    "windowsPerStorey": "ground: shop + door | 1-3: 3 | gable: 1 arched window",
+    "symmetry": "mirror-symmetric",
+    "groundFloor": "grey fascia, white shopfront, door right",
+    "signage": "Tutti Frutti, white on grey",
+    "roofline": "small pointed gable with an arched window",
+    "citation": "bilder-236022-167243 strip.jpg pand 5",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "cornice ~3.4 m above the photo line (3DBAG eaves 17.3 m vs ~13.9 m on the strip)",
+     "ochre brick approximated; script lettering as block capitals",
+     "tree branches over the upper storeys"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236474",
+   "slug": "bface-236474",
+   "address": "Bilderdijkstraat 149-151",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "cornice",
+      "storeys": 4,
+      "bays": 6,
+      "dormers": 2,
+      "doorBay": null,
+      "windows": "sash",
+      "archRings": "none",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1,
+        4
+       ]
+      },
+      "shopfront": {
+       "colour": "dark-brown",
+       "fascia": true,
+       "fasciaColour": "#8d8d8d",
+       "name": "Rafael Hairstudio",
+       "sign": {
+        "text": "RAFAEL HAIRSTUDIO",
+        "textColour": "white",
+        "mount": "fascia",
+        "align": "left",
+        "span": 0.5
+       },
+       "displayWindows": 2,
+       "stallriser": "low",
+       "evidence": "pano 2024-11-29 + OSM node 11381148206"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#4e3027",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "cream",
+     "band": "#8c6a4a"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "services",
+    "name": "Rafael Hairstudio",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 11381148206,
+     "name": "Rafael Hairstudio",
+     "tags": "shop=hairdresser"
+    },
+    "bag": [
+     "winkelfunctie",
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Two units: left RAFAEL HAIRSTUDIO (white on grey, 2024-11-29; on 2023-01-12 BILDERDIJK & CO), right Cafe Duzz Dat! (cream board on a dark fascia, a terrace in front). Only the left sign is modelled."
+   },
+   "rhythm": {
+    "bays": "two houses, 3 bays each (3-light wide middle windows), 6 per storey",
+    "identicalBays": "storeys 1-3 similar in both halves",
+    "windowsPerStorey": "ground: 2 shops | 1-3: 6 | roof: 2 gable windows",
+    "symmetry": "each half mirror-symmetric; the two gables sit at about 0.35 and 0.70",
+    "groundFloor": "left grey-fascia hair salon, right dark pub front",
+    "signage": "RAFAEL HAIRSTUDIO (left); Cafe Duzz Dat! board (right, not modelled)",
+    "roofline": "two neck-like gables with arched attic windows and brick chimneys",
+    "citation": "bilder-236022-167243 strip.jpg pand 6",
+    "photoRows": [
+     4,
+     6,
+     6,
+     6,
+     2
+    ],
+    "photoGables": 2,
+    "schemaLimits": [
+     "two gables are not expressible on one front: modelled as 2 dormers on a cornice",
+     "segmental window heads dropped for the triangle budget",
+     "middle 3-light windows are single windows; bays equal",
+     "second shop sign (Cafe Duzz Dat!) and terrace not modelled",
+     "mixed capture dates (2024 for the span)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012167243",
+   "slug": "bface-167243",
+   "address": "Bilderdijkstraat 153",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "point",
+      "storeys": 4,
+      "bays": 3,
+      "atticWindows": 1,
+      "doorBay": 1,
+      "windows": "arched",
+      "archRings": "band",
+      "bands": "storey",
+      "balconies": {
+       "storeys": [
+        1,
+        2
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "dark-green",
+       "fascia": true,
+       "name": "Wijn & Delicatessen",
+       "sign": {
+        "text": "WIJN & DELICATESSEN",
+        "textColour": "#d9772b",
+        "mount": "fascia",
+        "align": "centre",
+        "span": 0.9
+       },
+       "displayWindows": 2,
+       "stallriser": "low",
+       "entrance": "centre",
+       "evidence": "pano 2023-01-12"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#b08a52",
+     "frame": "white",
+     "door": "dark-green",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2023-01-12",
+    "use": "shop",
+    "name": "Wijn & Delicatessen",
+    "category": "wine/delicatessen",
+    "osm": {
+     "type": "node",
+     "id": 11381162865,
+     "name": "Cafe Duzz Dat!",
+     "tags": "amenity=pub"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "conflict",
+    "note": "Dark-green front with orange \"WIJN & DELICATESSEN\" lettering on the fascia (2023-01-12). OSM maps Cafe Duzz Dat! here, but that sign hangs on no. 151 next door; Petit Celler (wine) is the likely tenant (OSM mapped it on the next block)."
+   },
+   "rhythm": {
+    "bays": "3 identical bays, balcony on the middle window of storeys 1-2, arcade frieze under the cornice",
+    "windowsPerStorey": "ground: shop | 1-3: 3 | gable: 1 arched window",
+    "symmetry": "mirror-symmetric; gable centred",
+    "groundFloor": "green timber shopfront with centred door",
+    "signage": "WIJN & DELICATESSEN, orange on green",
+    "roofline": "small pointed gable with an arched attic window",
+    "citation": "bilder-236022-167243 strip.jpg pand 7",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "cornice ~2.5 m above the photo line (3DBAG eaves 16.4 m vs ~13.9 m)",
+     "blind arcade frieze below the top storey is not modelled",
+     "ochre brick approximated"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [
+   {
+    "pands": [
+     "0363100012236022",
+     "0363100012159868"
+    ],
+    "evidence": "strip: 135-139 and 141 share one cornice line (y ~245 px); 3DBAG spread 0.2 m"
+   },
+   {
+    "pands": [
+     "0363100012162572",
+     "0363100012237294",
+     "0363100012167243"
+    ],
+    "evidence": "strip: cornice of 145, 147 and 153 at the same level (y ~250 px, 3DBAG 16.4-17.3 m)",
+    "trust": "photo",
+    "reference": "0363100012162572"
+   }
+  ],
+  "identical": [],
+  "notes": [
+   "Leaf-off capture 2023-01-12 (the 2024-11-29 strip is hidden behind street trees); 149-151 span on 2024-11-29. Face ends at 153; 155-167 is one 70 m building (236799) and 169 a 1979 block (152566): both left out as large-tier."
+  ]
+ },
+ "authoring": {
+  "author": "claude-sonnet-5.5 (block-face lane), from strip-labelled.png + 2x zoomed ground/roof crops",
+  "passes": 1,
+  "note": "Bilderdijkstraat 135-153 (odd side)."
+ }
+}

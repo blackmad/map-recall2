@@ -1,0 +1,329 @@
+{
+ "street": "Bilderdijkstraat",
+ "seed": "0363100012162444",
+ "members": [
+  "0363100012233580",
+  "0363100012236055",
+  "0363100012162443",
+  "0363100012162444"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012106015 31.8 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012162444 (face continues: 080336 092394 092395 090492 233645 236881 236975 081118 087959 157650 156287 156286 155418 155417 161259 161260)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012081675",
+   "reason": "frontage 49.6 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012096181",
+   "reason": "frontage 38.7 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012105917",
+   "reason": "frontage 51.0 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012120464",
+   "reason": "frontage 51.0 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012141037",
+   "reason": "sightline to Bilderdijkstraat crosses 0363100012236799"
+  },
+  {
+   "pandId": "0363100012148207",
+   "reason": "frontage 49.6 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012149258",
+   "reason": "frontage 41.9 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012149727",
+   "reason": "frontage 34.9 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012152925",
+   "reason": "frontage 42.8 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012153083",
+   "reason": "sightline to Bilderdijkstraat crosses 0363100012133467"
+  },
+  {
+   "pandId": "0363100012154315",
+   "reason": "frontage 55.5 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012155794",
+   "reason": "sightline to Bilderdijkstraat crosses 0363100012233580"
+  },
+  {
+   "pandId": "0363100012155934",
+   "reason": "frontage 35.0 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012156028",
+   "reason": "sightline to Bilderdijkstraat crosses 0363100012155794"
+  },
+  {
+   "pandId": "0363100012156102",
+   "reason": "frontage 47.2 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012156991",
+   "reason": "frontage 60.0 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012156997",
+   "reason": "sightline to Bilderdijkstraat crosses 0363100012106015"
+  },
+  {
+   "pandId": "0363100012157331",
+   "reason": "frontage 43.1 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012158180",
+   "reason": "frontage 32.3 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012158550",
+   "reason": "frontage 120.6 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012158903",
+   "reason": "sightline to Bilderdijkstraat crosses 0363100012152566"
+  },
+  {
+   "pandId": "0363100012159635",
+   "reason": "frontage 46.1 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012159845",
+   "reason": "sightline to Bilderdijkstraat crosses 0363100012133467"
+  },
+  {
+   "pandId": "0363100012160809",
+   "reason": "frontage 37.6 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012161150",
+   "reason": "frontage 35.0 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012161359",
+   "reason": "sightline to Bilderdijkstraat crosses 0363100012152566"
+  },
+  {
+   "pandId": "0363100012161375",
+   "reason": "frontage 120.1 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012161747",
+   "reason": "frontage 55.6 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012161889",
+   "reason": "frontage 34.0 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012162119",
+   "reason": "sightline to Bilderdijkstraat crosses 0363100012133467"
+  },
+  {
+   "pandId": "0363100012162684",
+   "reason": "frontage 49.5 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012162717",
+   "reason": "frontage 51.2 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012163977",
+   "reason": "sightline to Bilderdijkstraat crosses 0363100012133467"
+  },
+  {
+   "pandId": "0363100012164246",
+   "reason": "frontage 38.3 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012165799",
+   "reason": "frontage 59.8 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012166997",
+   "reason": "frontage 119.4 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012167037",
+   "reason": "frontage 119.7 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012193314",
+   "reason": "frontage 38.3 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012200161",
+   "reason": "frontage 30.3 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012201610",
+   "reason": "frontage 30.4 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012203593",
+   "reason": "frontage 31.2 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012216752",
+   "reason": "frontage 46.1 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012217550",
+   "reason": "frontage 36.9 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012218813",
+   "reason": "sightline to Bilderdijkstraat crosses 0363100012159649"
+  },
+  {
+   "pandId": "0363100012229120",
+   "reason": "frontage 36.8 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012229898",
+   "reason": "frontage 32.9 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012230542",
+   "reason": "frontage 30.5 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012233629",
+   "reason": "frontage 35.1 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012236027",
+   "reason": "frontage 51.0 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012236213",
+   "reason": "sightline to Bilderdijkstraat crosses 0363100012155794"
+  },
+  {
+   "pandId": "0363100012236325",
+   "reason": "sightline to Bilderdijkstraat crosses 0363100012152566"
+  },
+  {
+   "pandId": "0363100012236441",
+   "reason": "frontage 45.5 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012236453",
+   "reason": "sightline to Bilderdijkstraat crosses 0363100012106015"
+  },
+  {
+   "pandId": "0363100012237100",
+   "reason": "frontage 52.0 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012572072",
+   "reason": "frontage 35.3 m from Bilderdijkstraat"
+  },
+  {
+   "pandId": "0363100012133467",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152566",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153173",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153782",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159649",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162572",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164390",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167243",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236474",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236799",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237294",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012233580",
+   "alongM": -33.24,
+   "widthM": 8.51,
+   "eavesM": 14.56,
+   "roofMaxM": 16.71,
+   "storeys3dbag": 5,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236055",
+   "alongM": -24.84,
+   "widthM": 8.29,
+   "eavesM": 16.98,
+   "roofMaxM": 17.06,
+   "storeys3dbag": 5,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162443",
+   "alongM": -11.84,
+   "widthM": 17.71,
+   "eavesM": 16.16,
+   "roofMaxM": 17.23,
+   "storeys3dbag": 5,
+   "builtYear": 1893,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162444",
+   "alongM": 0,
+   "widthM": 5.98,
+   "eavesM": 17.5,
+   "roofMaxM": 18.03,
+   "storeys3dbag": 5,
+   "builtYear": 1893,
+   "uncertainty": []
+  }
+ ]
+}

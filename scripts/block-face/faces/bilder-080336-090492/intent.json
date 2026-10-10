@@ -1,0 +1,402 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bilder-080336-090492",
+ "street": "Bilderdijkstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/block-face/bilder-080336-090492/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012080336",
+   "slug": "bface-080336",
+   "address": "Bilderdijkstraat 154",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "heavy",
+      "hoist": false,
+      "gable": "flat",
+      "storeys": 5,
+      "windows": "cross",
+      "bands": "storey",
+      "bays": [
+       2,
+       2,
+       2,
+       2,
+       2
+      ],
+      "doorBay": 1,
+      "bayWindows": {
+       "bay": 0,
+       "storeys": [
+        1,
+        2,
+        3
+       ]
+      },
+      "shopfront": {
+       "colour": "dark-brown",
+       "fascia": false,
+       "name": "Bilderdijk Verloskundigen",
+       "sign": {
+        "text": "VERLOSKUNDIGEN",
+        "textColour": "#4a3426",
+        "background": "#e4dcc4",
+        "mount": "wall",
+        "span": 0.7
+       },
+       "displayWindows": 1,
+       "stallriser": "medium",
+       "evidence": "pano 2024-11-29 + OSM node 11395751151"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6a3328",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "office",
+    "name": "Bilderdijk Verloskundigen",
+    "category": "healthcare=midwife",
+    "osm": {
+     "type": "node",
+     "id": 11395751151,
+     "name": "Bilderdijk Verloskundigen",
+     "tags": "healthcare"
+    },
+    "bag": [
+     "kantoorfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Midwifery practice: frosted glass with \"Verloskundigen\" lettering, brown doors left and right, cream stone band with the lettering above."
+   },
+   "rhythm": {
+    "bays": "2 bays: left a three-storey bay window (erker), right a single window; top storey two small windows",
+    "windowsPerStorey": "ground: glass + 2 doors | 1-3: erker (left) + window (right) | 4: 2 small windows",
+    "symmetry": "none",
+    "groundFloor": "cream stone band with lettering over brown-framed glass, doors both sides",
+    "signage": "VERLOSKUNDIGEN (wall band)",
+    "roofline": "flat roof with deep white overhanging eaves",
+    "citation": "bilder-080336-090492 strip.jpg pand 1",
+    "photoRows": [
+     3,
+     2,
+     2,
+     2,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "deep overhanging flat eaves and the white soffit are a plain heavy cornice",
+     "top-storey small windows are modelled as ordinary windows",
+     "two doors both sides: only one door modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012092394",
+   "slug": "bface-092394",
+   "address": "Bilderdijkstraat 150-152",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "heavy",
+      "hoist": false,
+      "gable": "flat",
+      "storeys": 5,
+      "windows": "cross",
+      "bands": "storey",
+      "bays": [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      "doorBay": 0,
+      "shopfront": {
+       "colour": "dark-brown",
+       "fascia": false,
+       "displayWindows": 1,
+       "stallriser": "low",
+       "residentialDoor": {
+        "side": "left",
+        "colour": "dark-brown"
+       },
+       "shopShare": 0.7,
+       "evidence": "pano 2024-11-29"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6a3328",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "shop",
+    "category": "BAG winkelfunctie",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "Wide brown-framed shop window with a gold house-shaped logo on dark glass, doors at both ends; no sign text legible, no OSM business."
+   },
+   "rhythm": {
+    "bays": "3 identical bays",
+    "windowsPerStorey": "ground: shop + doors | 1-3: 3 | 4: 3 smaller",
+    "symmetry": "mirror-symmetric",
+    "groundFloor": "cream stone band; wide dark shop window between two brown doors",
+    "signage": "none legible",
+    "roofline": "flat roof with white overhanging eaves",
+    "citation": "bilder-080336-090492 strip.jpg pand 2",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "deep eaves = heavy cornice",
+     "3DBAG hip roof shows as a dark slab above the eaves in the orthographic view; the photo shows only a thin flat-roof rim",
+     "window pitch narrower than the photo (equal piers), pilaster-like brick piers between windows are not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012092395",
+   "slug": "bface-092395",
+   "address": "Bilderdijkstraat 146-148",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "heavy",
+      "hoist": false,
+      "gable": "flat",
+      "storeys": 5,
+      "windows": "cross",
+      "bands": "storey",
+      "bays": [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      "doorBay": 0,
+      "shopfront": {
+       "colour": "dark-brown",
+       "fascia": false,
+       "name": "Benu Apotheek",
+       "sign": {
+        "text": "BENU",
+        "textColour": "#2a2a2a",
+        "background": "#e4dcc4",
+        "mount": "wall",
+        "span": 0.3
+       },
+       "displayWindows": 2,
+       "stallriser": "low",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "dark-brown"
+       },
+       "shopShare": 0.8,
+       "evidence": "pano 2024-11-29 + OSM node 11159266380"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6a3328",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "shop",
+    "name": "Benu",
+    "category": "amenity=pharmacy",
+    "osm": {
+     "type": "node",
+     "id": 11159266380,
+     "name": "Benu",
+     "tags": "amenity=pharmacy"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Pharmacy: glazed shop with a small oval hanging sign (BENU), posters in the right window, brown doors left and right."
+   },
+   "rhythm": {
+    "bays": "3 identical bays",
+    "windowsPerStorey": "ground: door + glass + door | 1-3: 3 | 4: 3 smaller",
+    "symmetry": "mirror-symmetric",
+    "groundFloor": "cream stone band, brown doors at both ends, two-part shop glass",
+    "signage": "BENU (small oval sign)",
+    "roofline": "flat roof, white overhanging eaves",
+    "citation": "bilder-080336-090492 strip.jpg pand 3",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     3
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "oval projecting sign is drawn as a flat wall sign"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012090492",
+   "slug": "bface-090492",
+   "address": "Bilderdijkstraat 142-144",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "heavy",
+      "hoist": false,
+      "gable": "flat",
+      "storeys": 5,
+      "windows": "cross",
+      "bands": "storey",
+      "bays": [
+       2,
+       2,
+       2,
+       2,
+       2
+      ],
+      "doorBay": 0,
+      "bayWindows": {
+       "bay": 1,
+       "storeys": [
+        1,
+        2,
+        3
+       ]
+      },
+      "shopfront": {
+       "colour": "dark-brown",
+       "fascia": false,
+       "displayWindows": 1,
+       "stallriser": "low",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "dark-brown"
+       },
+       "shopShare": 0.8,
+       "evidence": "pano 2024-11-29"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6a3328",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "cream"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "shop",
+    "category": "BAG winkelfunctie",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "bag-only",
+    "note": "Frosted-glass shop window between brown doors under the cream stone band; autumn leaves hide part of the upper storeys. No sign, no OSM business."
+   },
+   "rhythm": {
+    "bays": "2 bays: left a single window, right a three-storey bay window (erker, mirror of 080336)",
+    "windowsPerStorey": "ground: shop + 2 doors | 1-3: window + erker | 4: 2 small",
+    "symmetry": "none",
+    "groundFloor": "cream stone band; frosted shop glass between brown doors",
+    "signage": "none legible",
+    "roofline": "flat roof with white overhanging eaves",
+    "citation": "bilder-080336-090492 strip.jpg pand 4",
+    "photoRows": [
+     3,
+     2,
+     2,
+     2,
+     2
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "tree leaves hide the upper storeys on the strip: window rows inferred from 080336 mirror",
+     "deep eaves = heavy cornice"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [
+   {
+    "pands": [
+     "0363100012080336",
+     "0363100012092394",
+     "0363100012092395",
+     "0363100012090492"
+    ],
+    "evidence": "strip: white flat eaves run as one line across the whole 1939 block at ~16.5 m; 3DBAG eaves spread 0.5 m"
+   }
+  ],
+  "identical": [],
+  "notes": [
+   "1939 block: ground + 4 storeys, flat roof with deep eaves; two erkers (080336 left, 090492 right) mirror each other."
+  ]
+ },
+ "authoring": {
+  "author": "claude-sonnet-5.5 (block-face lane), from strip-labelled.png + 2x zoomed ground/roof crops",
+  "passes": 1,
+  "note": "Bilderdijkstraat 142-154, even side (1939 block)."
+ }
+}
