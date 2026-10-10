@@ -215,17 +215,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   colour; clip cornice details at oblique party walls (3–11 cm overhang);
   mansards with pedimented dormers; 177915 footprint IoU 0.76. Voorburgwal
   strips (2021 panoramas, oblique) rectify badly — pick dates by hand.
-- **Bilderdijkstraat faces staged (10 faces, 41 pands, not installed)**:
-  waiting for the schema lane, then phase 2 (adopt bay widths/off-centre
-  gables/shop spans/stucco, re-author the per-house chunks and standalone
-  recipes inside their faces, install). Further library gaps found: several
-  houses in one BAG pand (162443, 236022, 236189), two or three gables on one
-  front, brick towers and ornate pointed dormers, triple gable windows throw
-  "Opening escapes its wall", blind arcade friezes, script lettering; 3DBAG
-  eaves read a dormer/tower top as eaves (photo-trusted cornice groups up to
-  2.5 m spread; 164549, 162572, 237294, 167243 sit ~3 m high). Joint
-  z-fights from 2–7 cm survey-front offsets on 157757|164549, E1, E2 — snap
-  near-coplanar fronts. 155–167 (70 m, pand 236799) and 169 are large-tier.
+- **Bilderdijkstraat faces**: even side 72–166 installed. Held: 113–115,
+  131–133, 135–153 — need a way to override 3DBAG eaves >2.5 m from the photo
+  cornice (dormer/tower read as eaves). Not yet faces: chunk-bilder-079721-x2,
+  chunk-bilder-152363-x2, standalone 153622/153782/154127; 66–70 (pand
+  167348); 155–167 and 169 are large-tier. Library gaps (several houses per
+  pand, multiple gables per front, towers, triple gable windows) are on the
+  historic-library lane. iPhone e2e street shots frame a single shop window —
+  move the camera back.
 - **Inferred rears**: the rear window grid is generic (2.5 m pitch); use rear
   photos (`pand-reference --prefer-bearing`) where they exist. Raw audit still
   reports party-wall "holes" on several faces (exempted by the compile).
