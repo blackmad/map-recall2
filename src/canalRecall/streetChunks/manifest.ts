@@ -18,6 +18,8 @@ import type {ChunkResult, PandMeta} from './types.ts';
 
 export interface ChunkManifestEntry {
   id: string;
+  /** Taxonomy (buildingCategory.ts): every chunk is street-survey work. */
+  category: 'street-survey';
   name: string;
   modelUrl: string;
   sha256: string;
@@ -44,7 +46,7 @@ export function buildChunkManifest(results: ChunkResult[], urlFor: (name: string
       for (const p of r.pands) for (let k = 0; k < 3; k++) { min[k] = Math.min(min[k], p.bounds.min[k]); max[k] = Math.max(max[k], p.bounds.max[k]); }
       const sha256 = createHash('sha256').update(r.glb).digest('hex'), url = urlFor(r.name);
       return {
-        id: `chunk-${r.name}`, name: r.name, modelUrl: url.includes('?') ? url : `${url}?asset=${sha256.slice(0, 16)}`, sha256, bytes: r.glb.length,
+        id: `chunk-${r.name}`, category: 'street-survey' as const, name: r.name, modelUrl: url.includes('?') ? url : `${url}?asset=${sha256.slice(0, 16)}`, sha256, bytes: r.glb.length,
         triangles: r.report.triangles.chunk, primitives: r.report.primitives.chunk,
         instance: {anchor: r.frame.anchor, northOffsetDegrees: r.frame.northOffsetDegrees, mirror: false as const},
         bounds: {min, max}, height: max[1],
