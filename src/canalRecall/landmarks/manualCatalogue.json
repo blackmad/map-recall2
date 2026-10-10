@@ -25920,5 +25920,101 @@
       ]
     ]
   }
+},
+{
+  "id": "willem-de-zwijgerlaan-350",
+  "name": "Willem de Zwijgerlaan 350",
+  "category": "ordinary",
+  "modelUrl": "./models/willem-de-zwijgerlaan-350.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012107360"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.857935205703695,
+      52.382751329087405
+    ],
+    "headingDegrees": 43.5,
+    "lengthMetres": 60.05,
+    "widthMetres": 45
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.857886657266777,
+      52.38277338486945
+    ],
+    "northOffsetDegrees": 0,
+    "source": "PDOK BAG 0363100012107360 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+  },
+  "materialOverrides": {
+    "white": "#e2dccb",
+    "ochre": "#6b3b2b",
+    "concrete": "#bcb6a8",
+    "stone": "#8a8478",
+    "glass": "#4f5b64",
+    "frame": "#3a3e41",
+    "dark": "#2c2e30",
+    "gold": "#b79a4a",
+    "slate": "#6c7072"
+  },
+  "preservePositionPrecision": true,
+  "attribution": {
+    "title": "Willem de Zwijgerlaan 350 original architecture",
+    "author": "Map Recall",
+    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012107360",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.857842013838999,
+          52.383083198997376
+        ],
+        [
+          4.85779872545066,
+          52.383055161556356
+        ],
+        [
+          4.857388435955259,
+          52.382789411488545
+        ],
+        [
+          4.857436015412877,
+          52.382761897254845
+        ],
+        [
+          4.857597802429414,
+          52.38266837575599
+        ],
+        [
+          4.857974943143374,
+          52.38245034818551
+        ],
+        [
+          4.8580283931219315,
+          52.382419462594115
+        ],
+        [
+          4.858476257997118,
+          52.382709546190625
+        ],
+        [
+          4.858481971479139,
+          52.38271324767387
+        ],
+        [
+          4.857842013838999,
+          52.383083198997376
+        ]
+      ]
+    ]
+  }
 }
 ]
