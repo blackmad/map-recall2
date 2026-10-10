@@ -12,5 +12,26 @@
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
- "overrides": {}
+ "overrides": {
+  "fronts": [
+   {
+    "doorBay": null,
+    "shopfront": {
+     "colour": "brown",
+     "fascia": true,
+     "name": "BENU Apotheek",
+     "sign": {
+      "text": "BENU",
+      "textColour": "#1f5f9a",
+      "span": 0.4
+     },
+     "fasciaColour": "cream",
+     "entrance": "centre-recessed",
+     "glazing": "transom",
+     "stallriser": "low",
+     "evidence": "front-alt 2025-07-31: cream band with the oval BENU pharmacy sign, brown joinery, recessed glazed entrance in the middle. OSM node \"Benu\" (pharmacy) 1 m away. The oval sign and green cross are not modelled."
+    }
+   }
+  ]
+ }
 }

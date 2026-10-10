@@ -194,8 +194,10 @@ export function dressShopfronts(group: T.Group, intent: CanalHouseIntent, fit: F
   for (const f of fit.fronts) {
     const front = intent.fronts.find(x => x.id === f.id), sf = front?.shopfront, elevation = group.getObjectByName(`elevation/${f.id}`);
     if (!sf || !elevation) continue;
-    if (sf.sign?.background) paint(/(^|\/)fascia$/, swatch(sf.sign.background), elevation);
-    if (sf.stallriserColour) paint(/shop-riser$/, swatch(sf.stallriserColour), elevation);
+    const fasciaPaint = sf.fasciaColour ?? sf.sign?.background;
+    if (fasciaPaint) paint(/bands\/fascia\/piece-\d+$/, swatch(fasciaPaint), elevation);
+    if (sf.residentialDoor?.colour) paint(/opening\/(\S*-)?door\/pane$/, swatch(sf.residentialDoor.colour), elevation);
+    if (sf.stallriserColour) paint(/bands\/shop-riser\/piece-\d+$/, swatch(sf.stallriserColour), elevation);
     if (f.fascia && sf.sign) lettering += addLettering(elevation, f.fascia, swatch(sf.sign.textColour), intent.pandId);
   }
   return lettering;

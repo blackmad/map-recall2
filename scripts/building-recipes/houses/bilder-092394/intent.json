@@ -24,10 +24,19 @@
    "gable": "cornice",
    "storeys": 5,
    "bays": 3,
-   "doorBay": 0,
+   "doorBay": null,
    "shopfront": {
     "colour": "dark-brown",
-    "fascia": false
+    "fascia": true,
+    "fasciaColour": "#a8946a",
+    "entrance": "right",
+    "glazing": "transom",
+    "stallriser": "medium",
+    "residentialDoor": {
+     "side": "left",
+     "colour": "dark-red"
+    },
+    "evidence": "front.jpg 2024-11-29: tan fascia band without text, dark-red street door with slots at the left, one large pane with transom lights and a gold house emblem (not modelled), narrow door at the right. Use not identifiable."
    },
    "bands": "storey"
   }

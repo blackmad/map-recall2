@@ -383,7 +383,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       const top = layout.groundBase + layout.storeyHeights[layout.groundBase > 0 ? 1 : 0], full = Math.floor(width * 1000) / 1000;
       // The shop band spans the whole front, or only the shop zone when a residential door stands beside it.
       const zone: [number, number] = front.shopfront.residentialDoor ? [Math.max(0, layout.shopZone[0] - SHOP.pierM - 0.02), Math.min(mw, layout.shopZone[1] + SHOP.pierM + 0.02)] : [0, mw];
-      const zw = Math.floor((zone[1] - zone[0]) * 1000) / 1000, at = (x: number, w: number) => round(flipX(place(0, x, w), w));
+      const zw = Math.floor((zone[1] - zone[0]) * 1000 - 1) / 1000, at = (x: number, w: number) => round(flipX(place(0, x, w), w));
       const sign = front.shopfront.sign;
       // Piers and stall riser in the shopfront paint.
       const pierH = round(top - plinth - 0.02);

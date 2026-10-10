@@ -127,6 +127,8 @@ export interface ShopfrontIntent {
   glazing?: typeof SHOP_GLAZING[number];
   stallriser?: typeof STALLRISERS[number];
   stallriserColour?: string;
+  /** Fascia paint when it differs from the shop joinery (a pale sign board over dark joinery); default the sign background, else the shop colour. */
+  fasciaColour?: string;
   /** A separate street door to the dwellings above, beside the shop (`doorBay` then no longer means the shop door). */
   residentialDoor?: {side: 'left' | 'right'; colour?: string};
   /** Share of the front width the shop occupies from the side opposite the residential door (default 1 without a residential door). */
@@ -251,6 +253,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       if (sf.entrance !== undefined) oneOf(sf.entrance, SHOP_ENTRANCES, `${at}.shopfront.entrance`);
       if (sf.glazing !== undefined) oneOf(sf.glazing, SHOP_GLAZING, `${at}.shopfront.glazing`);
       if (sf.stallriser !== undefined) oneOf(sf.stallriser, STALLRISERS, `${at}.shopfront.stallriser`);
+      if (sf.fasciaColour) colour(sf.fasciaColour, `${at}.shopfront.fasciaColour`);
       if (sf.stallriserColour) colour(sf.stallriserColour, `${at}.shopfront.stallriserColour`);
       if (sf.residentialDoor) { oneOf(sf.residentialDoor.side, ['left', 'right'], `${at}.shopfront.residentialDoor.side`); if (sf.residentialDoor.colour) colour(sf.residentialDoor.colour, `${at}.shopfront.residentialDoor.colour`); }
       if (sf.shopShare !== undefined && !(sf.shopShare >= 0.4 && sf.shopShare <= 1)) problems.push(`${at}.shopfront.shopShare: 0.4..1`);

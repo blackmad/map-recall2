@@ -28,7 +28,17 @@
    "doorBay": null,
    "shopfront": {
     "colour": "dark-blue",
-    "fascia": true
+    "fascia": true,
+    "name": "travel agency (inferred from mural)",
+    "fasciaColour": "#8bbcd8",
+    "glazing": "single",
+    "stallriser": "none",
+    "residentialDoor": {
+     "side": "left",
+     "colour": "white"
+    },
+    "shopShare": 0.62,
+    "evidence": "front.jpg 2024-11-29: light-blue painted fascia with a Japan/airliner/skyline mural (no readable name), white louvred street door at the left, one dark display opening. OSM has no match (Alex Bikes 5 m, Riaz 19 m not asserted)."
    },
    "bands": "lintel",
    "balconies": {

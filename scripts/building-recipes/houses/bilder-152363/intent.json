@@ -25,10 +25,26 @@
    "storeys": 4,
    "bays": 3,
    "dormers": 1,
-   "doorBay": 0,
+   "doorBay": null,
    "shopfront": {
     "colour": "dark-blue",
-    "fascia": true
+    "fascia": true,
+    "name": "De Japanner",
+    "sign": {
+     "text": "DE JAPANNER",
+     "textColour": "white",
+     "span": 0.6
+    },
+    "entrance": "none",
+    "glazing": "split",
+    "stallriser": "high",
+    "stallriserColour": "white",
+    "residentialDoor": {
+     "side": "left",
+     "colour": "black"
+    },
+    "shopShare": 0.7,
+    "evidence": "front.jpg 2025-07-31: black street door in a white surround at the left; navy fascia \"DE JAPANNER\" (white capitals, Heineken marks not modelled) over two navy-framed windows on white-painted walls at the right. OSM node De Japanner (restaurant, Bilderdijkstraat 203) 9 m away. Café entrance is not visible on this wall (corner house 156732)."
    }
   }
  ],
