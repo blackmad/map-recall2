@@ -1,3 +1,4 @@
+import {buildCoymanshuis} from './coymanshuis-builder';
 import {buildHotelDeLEurope} from './hotel-de-l-europe-builder';
 import {buildAmericanHotel} from './american-hotel-builder';
 import {buildTrippenhuis} from './trippenhuis-builder';
@@ -366,6 +367,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='christ-church-groenburgwal')buildChristChurchGroenburgwal(w,d,helpers);
     else if(id==='ronde-lutherse-kerk')buildRondeLutherseKerk(w,d,helpers);
     else if(id==='lloyd-hotel')buildLloydHotel(w,d,helpers);
+    else if(id==='coymanshuis')buildCoymanshuis(w,d,helpers);
     else if(id==='vondelkerk')buildVondelkerk(w,d,helpers);
     else if(id==='west-indisch-pakhuis')buildWestIndischPakhuis(w,d,helpers);
     else if(id==='de-school')buildDeSchool(w,d,helpers);
