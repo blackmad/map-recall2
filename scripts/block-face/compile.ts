@@ -20,6 +20,7 @@ import {classifyPartyLoops, openEdges} from '../../src/canalRecall/blockFace/par
 import {validateBlockFace} from '../../src/canalRecall/blockFace/intent.ts';
 import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
 import {FACES, STAGING} from './intake.ts';
+import {photoReadings} from './gable-from-photo.ts';
 import {loadSoup} from '../audit-glb-quality.ts';
 import {analyseSoup, DEFAULT_THRESHOLDS} from '../../src/canalRecall/landmarks/glbQuality.ts';
 
@@ -35,8 +36,11 @@ export async function compileFace(faceId: string) {
   const name = `face-${faceId}`;
   // Photo-measured eaves are strip rows: the strip's own scale converts them (strip.json, written by intake).
   let strip: {heightPx: number; pixelsPerMetre: number; groundNAP: number} | undefined;
-  if (face.continuity.measuredEaves?.length) { const s = JSON.parse(await fs.readFile(path.join(dir, 'strip.json'), 'utf8')); strip = {heightPx: s.height, pixelsPerMetre: s.pixelsPerMetre, groundNAP: s.groundNAP}; }
-  const result = await compileBlockFace(face, facts, name, {inferRears: !process.argv.includes('--no-rears'), strip});
+  if (face.continuity.measuredEaves?.length || face.continuity.crownFromPhoto?.length) { const s = JSON.parse(await fs.readFile(path.join(dir, 'strip.json'), 'utf8')); strip = {heightPx: s.height, pixelsPerMetre: s.pixelsPerMetre, groundNAP: s.groundNAP}; }
+  // Crowns read off the strip (continuity.crownFromPhoto): only loaded when asked for, so other faces compile unchanged.
+  const photoGables = face.continuity.crownFromPhoto?.length ? await photoReadings(faceId) : undefined;
+  const result = await compileBlockFace(face, facts, name, {inferRears: !process.argv.includes('--no-rears'), strip, photoGables});
+  if (result.photoCrowns) console.log(`  crowns from photo: ${result.photoCrowns.patches.map(p => `${p.pandId.slice(-6)}/${p.frontId} ${JSON.stringify(p.set)}`).join('; ') || 'none'}${result.photoCrowns.kept.length ? ` | kept authored: ${result.photoCrowns.kept.map(k => `${k.pand.slice(-6)}/${k.front} (${k.why})`).join('; ')}` : ''}`);
   const out = path.join(STAGING, faceId);
   await fs.mkdir(out, {recursive: true});
   const glbPath = path.join(out, 'chunk.glb');
@@ -63,6 +67,7 @@ export async function compileFace(faceId: string) {
   const entry = buildChunkManifest([result.chunk], n => `./models/ordinary-buildings/chunks/chunk-${n}.glb`).chunks[0];
   const r = result.chunk.report;
   const report = {face: faceId, name, passed: result.passed && audit.passWithPartyExemption, seconds: +((performance.now() - t0) / 1000).toFixed(1),
+    ...(result.photoCrowns ? {photoCrowns: result.photoCrowns} : {}),
     triangles: r.triangles, primitives: r.primitives, bytes: r.bytes, gzipBytes: r.gzipBytes,
     ground: {sharedNapM: result.ground.sharedNapM, shiftsM: result.ground.shiftsM, eavesBefore: result.ground.eavesBefore, eavesAfter: result.ground.eavesAfter, groups: result.ground.groups},
     instancing: result.instancing, slitsClosed: result.slitsClosed, frontSnaps: result.frontSnaps, rears: result.rears, perPand: result.perPand, gates: result.gates, interference: result.interference, partyWalls: r.partyWalls, joints: r.joints, warnings: r.warnings, audit,
