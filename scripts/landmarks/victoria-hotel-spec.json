@@ -1,0 +1,49 @@
+{
+  "id": "victoria-hotel",
+  "name": "Park Plaza Victoria Amsterdam",
+  "landmarkId": "n237912528",
+  "modelUrl": "./models/victoria-hotel.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012185508"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.897879771162695,
+      52.37716289583772
+    ],
+    "headingDegrees": 130.84,
+    "lengthMetres": 51.9,
+    "widthMetres": 41
+  },
+  "surveyed": {
+    "anchor": [
+      4.897879771162695,
+      52.37716289583772
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012185508 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "stone": "#d2c8ad",
+    "sandstone": "#b7aa8c",
+    "slate": "#4b5159",
+    "greyBrick": "#8b8780",
+    "glass": "#5d7280",
+    "dark": "#2f3235",
+    "white": "#ece7da",
+    "gold": "#cdb04e",
+    "copper": "#5c7466",
+    "frame": "#e4dfd0"
+  },
+  "attribution": {
+    "title": "Park Plaza Victoria Amsterdam",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Victoria_Hotel",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry on the BAG footprint and 3DBAG LoD2.2 massing; stone facade bays, corner tower and dome, mansard roof with dormers measured by eye from Commons photographs (2005 RCE, 2007, 2016, 2017), no pixels or meshes imported."
+  }
+}
