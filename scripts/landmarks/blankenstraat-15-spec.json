@@ -1,0 +1,89 @@
+{
+  "id": "blankenstraat-15",
+  "name": "Blankenstraat 15",
+  "category": "ordinary",
+  "modelUrl": "./models/blankenstraat-15.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012238656"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.927388424580271,
+      52.368552649289896
+    ],
+    "headingDegrees": 135,
+    "lengthMetres": 137.6,
+    "widthMetres": 24.5
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.927350617366918,
+      52.3685032489126
+    ],
+    "northOffsetDegrees": 0,
+    "source": "PDOK BAG 0363100012238656 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+  },
+  "materialOverrides": {
+    "brick": "#80513f",
+    "slate": "#5b5f66",
+    "glass": "#4e5a68",
+    "frame": "#2c2a2e",
+    "dark": "#2a2321",
+    "concrete": "#bdb7ab"
+  },
+  "preservePositionPrecision": true,
+  "attribution": {
+    "title": "Blankenstraat 15 original architecture",
+    "author": "Map Recall",
+    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012238656",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.927778812660446,
+          52.36863999273058
+        ],
+        [
+          4.928226133525648,
+          52.36891521418306
+        ],
+        [
+          4.927976297232537,
+          52.369067207039045
+        ],
+        [
+          4.927333455795929,
+          52.36867159917727
+        ],
+        [
+          4.926550885579576,
+          52.36818998019528
+        ],
+        [
+          4.9266177781586356,
+          52.36814923855273
+        ],
+        [
+          4.926800384104845,
+          52.36803798900789
+        ],
+        [
+          4.927092996584199,
+          52.368218026596985
+        ],
+        [
+          4.927778812660446,
+          52.36863999273058
+        ]
+      ]
+    ]
+  }
+}
