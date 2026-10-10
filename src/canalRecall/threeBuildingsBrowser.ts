@@ -259,6 +259,11 @@ export async function buildLookTextures(THREE: any, look: 'procedural' | Look, m
   return { colour: array(colour, THREE.RGBAFormat), mask: array(mask, THREE.RGFormat) };
 }
 
+/** Own ground: a feature's base height (metres), undefined while its relief is not resident, null where there is none. */
+export type GroundBaseFn = (feature: Feature) => number | null | undefined;
+/** Per chunk: what each building was lifted by, and which still wait for their relief. */
+type GroundLift = { applied: Map<string, number>; pending: Set<string>; features: Map<string, Feature> };
+
 export class ThreeBuildings {
   readonly layer: any;
   private visible = true;
@@ -267,7 +272,9 @@ export class ThreeBuildings {
   private material: any;
   private renderer: any;
   private camera: any;
-  private readonly chunks = new Map<string, { source: Feature[]; mesh: any; info: ChunkInfo; ranges: Map<string, { start: number; count: number }> }>();
+  private readonly chunks = new Map<string, { source: Feature[]; mesh: any; info: ChunkInfo; ranges: Map<string, { start: number; count: number }>; lift?: GroundLift }>();
+  /** Own ground (`?ownGround=1`): a building's base on the relief; undefined = not known yet, null = no relief there. */
+  private groundBase: GroundBaseFn | null = null;
   /** Ids hidden per reason (the answer building, signature models); a facade is hidden while any reason holds it. */
   private readonly hiddenBy = new Map<string, Set<string>>();
   private hidden = new Set<string>();
@@ -844,6 +851,66 @@ export class ThreeBuildings {
     return this.worker;
   }
 
+  /**
+   * Stand every building on the own ground's relief: each building is lifted
+   * by its footprint's lowest relief (the prototype's rule; nothing floats).
+   * Chunks keep their CPU positions only while some building still waits for
+   * its relief; call `refreshGroundBases()` when more relief is resident.
+   */
+  setGroundBase(fn: GroundBaseFn | null): void {
+    this.groundBase = fn;
+    this.refreshGroundBases();
+  }
+
+  /** Apply bases that became known since install (or since the last refresh). Returns buildings lifted. */
+  refreshGroundBases(): number {
+    if (!this.groundBase) return 0;
+    let lifted = 0;
+    for (const entry of this.chunks.values()) {
+      const lift = entry.lift, attribute = entry.mesh?.geometry?.getAttribute('position');
+      if (!lift || !lift.pending.size || !attribute?.array) continue;
+      const n = this.applyGroundLift(attribute.array as Float32Array, entry.ranges, lift);
+      if (!n) continue;
+      lifted += n;
+      attribute.needsUpdate = true;
+      entry.mesh.geometry.computeBoundingSphere();
+      // Settled: let the CPU copy go after the next upload.
+      if (!lift.pending.size) attribute.onUpload(function (this: any) { this.array = null; });
+    }
+    if (lifted) { this.hiddenRevision++; this.map.triggerRepaint(); }
+    return lifted;
+  }
+
+  /** Diagnostics for the own ground: buildings lifted, still waiting, base range, CPU copies kept. */
+  groundLiftStats(): { chunks: number; lifted: number; pending: number; minBase: number | null; maxBase: number | null; keptMB: number } {
+    let chunks = 0, lifted = 0, pending = 0, keptBytes = 0, minBase = Infinity, maxBase = -Infinity;
+    for (const entry of this.chunks.values()) {
+      if (!entry.lift) continue;
+      chunks++;
+      pending += entry.lift.pending.size;
+      for (const z of entry.lift.applied.values()) { lifted++; minBase = Math.min(minBase, z); maxBase = Math.max(maxBase, z); }
+      const array = entry.mesh?.geometry?.getAttribute('position')?.array;
+      if (array) keptBytes += array.byteLength;
+    }
+    return { chunks, lifted, pending, minBase: Number.isFinite(minBase) ? +minBase.toFixed(2) : null, maxBase: Number.isFinite(maxBase) ? +maxBase.toFixed(2) : null, keptMB: +(keptBytes / 1048576).toFixed(1) };
+  }
+
+  private applyGroundLift(positions: Float32Array, ranges: Map<string, { start: number; count: number }>, lift: GroundLift): number {
+    let n = 0;
+    for (const id of [...lift.pending]) {
+      const feature = lift.features.get(id);
+      const base = feature ? this.groundBase!(feature) : null;
+      if (base === undefined) continue;
+      lift.pending.delete(id);
+      const z = base ?? 0, delta = z - (lift.applied.get(id) ?? 0), range = ranges.get(id);
+      if (!range || !delta) continue;
+      for (let v = range.start; v < range.start + range.count; v++) positions[v * 3 + 2] += delta;
+      lift.applied.set(id, z);
+      n++;
+    }
+    return n;
+  }
+
   private install(key: string, source: Feature[], chunk: Chunk, buildMs: number, options?: BuildOptions, boundParentIds: string[] = []): void {
     if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
     if (options && (options.surveyedEnvelopeRevision !== this.surveyedEnvelopeTransport.revision || options.look !== this.look || options.appearanceRevision !== this.appearanceRevision || options.hostOpeningRevision !== this.openingRevision(key, source))) return;
@@ -858,7 +925,18 @@ export class ThreeBuildings {
     // (the `hidden` flags stay: they are rewritten when the answer changes).
     // A lost context rebuilds from `source`, see onAdd.
     const release = (attribute: any) => { attribute.onUpload(function (this: any) { this.array = null; }); return attribute; };
-    geometry.setAttribute('position', release(new THREE.BufferAttribute(chunk.positions, 3)));
+    // Own ground: lift each building onto its relief before upload. Houseboats
+    // follow the water level instead (mesh.position.z below).
+    let lift: GroundLift | undefined;
+    if (this.groundBase && !key.startsWith(BOAT_PREFIX)) {
+      const features = new Map<string, Feature>();
+      for (const f of source) { const id = String((f.properties as any)?.id ?? (f as any).id ?? ''); if (id) features.set(id, f); }
+      lift = { applied: new Map(), pending: new Set(chunk.ranges.map(r => r.id)), features };
+      const ranges = new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }]));
+      this.applyGroundLift(chunk.positions, ranges, lift);
+    }
+    const positionAttribute = new THREE.BufferAttribute(chunk.positions, 3);
+    geometry.setAttribute('position', lift?.pending.size ? positionAttribute : release(positionAttribute));
     geometry.setAttribute('uv', release(new THREE.BufferAttribute(chunk.uvs, 2)));
     geometry.setAttribute('layer', release(new THREE.BufferAttribute(chunk.layers, 1, false)));
     geometry.setAttribute('tint', release(new THREE.BufferAttribute(chunk.tints, 4, true)));
@@ -891,7 +969,7 @@ export class ThreeBuildings {
       mesh.customDepthMaterial = this.depthMaterial;
     }
     if (key.startsWith(BOAT_PREFIX)) mesh.position.z = this.waterLevel;
-    const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])) };
+    const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])), lift };
     this.chunks.set(key, entry);
     this.scene.add(mesh);
     this.refreshSurveyedRoofOwnership();

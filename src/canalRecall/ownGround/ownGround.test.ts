@@ -397,3 +397,48 @@ test('regression: relief is present (Postjeskade polder side lower than the Here
   const [wx, wy] = toLocal(4.84618, 52.36515), [ex, ey] = toLocal(4.88557, 52.36728);
   assert.ok(s.ground(ex, ey) - s.ground(wx, wy) > 0.5, `canal belt ${s.ground(ex, ey).toFixed(2)} vs west ${s.ground(wx, wy).toFixed(2)}`);
 });
+
+// ------------------------------------------------------------- streaming in the game (groundStore / groundCell)
+import { GroundStore, toLocal as storeToLocal, fromLocal as storeFromLocal, GAME_ORIGIN } from './groundStore';
+import { buildCell, vertexNormals } from './groundCell';
+import { ORIGIN } from '../threeBuildingFeatures';
+
+test('ground frame is the facades\' frame (duplicated to keep the worker bundle small)', () => {
+  assert.deepEqual({ ...GAME_ORIGIN }, { ...ORIGIN });
+  for (const [lng, lat] of [[4.87445, 52.37286], [4.95, 52.33]]) {
+    assert.deepEqual(storeToLocal(lng, lat), toLocal(lng, lat));
+    const [x, y] = toLocal(lng, lat);
+    assert.deepEqual(storeFromLocal(x, y), fromLocal(x, y));
+  }
+});
+
+test('vertexNormals: a flat upward quad', () => {
+  const n = vertexNormals(new Float32Array([0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0]), new Uint32Array([0, 1, 2, 0, 2, 3]));
+  for (let i = 0; i < 4; i++) assert.deepEqual([...n.slice(i * 3, i * 3 + 3)], [0, 0, 1]);
+});
+
+const haveCells = existsSync('public/data/extracts/amsterdam/own-ground-osm-v1/cells.json');
+const fsStore = () => new GroundStore(async path => {
+  const bytes = readFileSync(`public/data/extracts/amsterdam/${path}`);
+  return new Uint8Array(bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzipSync(bytes) : bytes);
+});
+
+for (const [id, lng, lat] of [['BRU0166', 4.87445, 52.37286], ['BRU0044', 4.8875, 52.3665]] as const) {
+  test(`regression (streamed cell): ${id} deck is placed and street bands ride over it`, { skip: !haveCells }, async () => {
+    const store = fsStore();
+    await store.init();
+    const [x, y] = storeToLocal(lng, lat);
+    let owner = '';
+    for (const k of GroundStore.neighbours(store.cellAt(x, y))) { await store.prepareCell(k); if (store.decks(k).some(d => d.profile.id === id)) { owner = k; break; } }
+    assert.ok(owner, `${id} placed in a streamed cell`);
+    const deck = store.surface.decks.find(d => d.profile.id === id)!;
+    let crown = -Infinity;
+    for (let i = 0; i < deck.profile.x.length; i++) crown = Math.max(crown, store.surface.height(deck.profile.x[i], deck.profile.y[i]));
+    assert.ok(crown - Math.max(...deck.ends) > 0.4, `crown ${crown.toFixed(2)} over ends ${deck.ends}`);
+    const cell = buildCell(await store.cellInput(owner, 0));
+    assert.ok(cell.layers.deckBody && cell.layers.water && cell.layers.quay && cell.layers.land);
+    assert.ok(cell.mask && cell.mask.texels.length === cell.mask.width * cell.mask.height * 2);
+    const far = buildCell(await store.cellInput(owner, 1));
+    assert.ok(far.stats.triangles < cell.stats.triangles * 0.6, 'LOD 1 lighter');
+  });
+}
