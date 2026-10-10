@@ -45,14 +45,18 @@ export interface Interference {
   corniceVerdict: 'aligned' | 'step-supported' | 'step-not-supported' | 'missing-step';
   pass: boolean;
 }
-export interface FaceGroundPlan { sharedNapM: number; shiftsM: number[]; eavesBefore: number[]; eavesAfter: number[]; groups: {pands: string[]; spreadM: number; snapped: boolean; trust?: 'photo'; reference?: string}[]; facts: BuildingFacts[] }
+export interface FaceGroundPlan { sharedNapM: number; shiftsM: number[]; eavesBefore: number[]; eavesAfter: number[]; groups: {pands: string[]; spreadM: number; snapped: boolean; trust?: 'photo'; reference?: string}[]; facts: BuildingFacts[];
+  /** Photo-measured eaves (continuity.measuredEaves) per pand: front id -> metres above the shared street level. */
+  measured?: Record<string, Record<string, number>> }
+/** The strip's vertical scale (strip.json): pixel rows to metres above the strip's ground line. */
+export interface StripScale { heightPx: number; pixelsPerMetre: number; groundNAP: number }
 export interface BlockFaceResult { instancing: InstancingPlan; slitsClosed: {left: string; right: string; gapM: number}[]; frontSnaps: FrontSnap[]; rears: RearReport[]; chunk: ChunkResult; ground: FaceGroundPlan; gates: FaceGate[]; interference: Interference[]; perPand: {pand: string; slug: string; triangles: number; eavesM: number; roofMaxM: number; roofMaxFactsM: number; storeyHeightsM: number[]}[]; passed: boolean }
 
 const median = (v: number[]) => { const s = [...v].sort((a, b) => a - b); return s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2; };
 const cm = (v: number) => Math.round(v * 100) / 100;
 
 /** One street level (median ground, shifts <= 1 m) and the intent's cornice groups. */
-export function planFaceGround(face: BlockFaceIntent, facts: BuildingFacts[], maxGroupSpreadM = 0.8): FaceGroundPlan {
+export function planFaceGround(face: BlockFaceIntent, facts: BuildingFacts[], maxGroupSpreadM = 0.8, strip?: StripScale): FaceGroundPlan {
   const sharedNapM = cm(median(facts.map(f => f.heights.groundNAP)));
   const shiftsM = facts.map(f => { const d = f.heights.groundNAP - sharedNapM; return face.continuity.streetLevel === 'shared' && Math.abs(d) <= 1 ? cm(d) : 0; });
   const grounded = facts.map((f, i) => shiftsM[i] ? shiftFactsHeights(f, shiftsM[i], sharedNapM) : f);
@@ -69,7 +73,24 @@ export function planFaceGround(face: BlockFaceIntent, facts: BuildingFacts[], ma
     const d = eavesAfter[i] - eavesBefore[i];
     return d ? {...f, fronts: f.fronts.map(fr => ({...fr, eavesM: fr.eavesM + d, topProfile: fr.topProfile.map(p => ({...p, heightM: p.heightM + d}))}))} : f;
   });
-  return {sharedNapM, shiftsM, eavesBefore, eavesAfter, groups, facts: out};
+  // Photo-measured eaves: strip row -> metres above the strip ground -> metres above this pand's (shifted) ground.
+  const measuredList = face.continuity.measuredEaves ?? [];
+  if (!measuredList.length) return {sharedNapM, shiftsM, eavesBefore, eavesAfter, groups, facts: out};
+  if (!strip) throw Error('continuity.measuredEaves needs the strip scale (strip.json)');
+  const intents = houseIntents(face), measured: Record<string, Record<string, number>> = {};
+  for (const m of measuredList) {
+    const i = index.get(m.pand)!, aboveStrip = (strip.heightPx - m.stripRow) / strip.pixelsPerMetre;
+    const value = cm(aboveStrip + strip.groundNAP - facts[i].heights.groundNAP + shiftsM[i]);
+    for (const fr of intents[i].fronts) if (m.front === undefined || m.front === fr.id) (measured[m.pand] ??= {})[fr.id] = value;
+  }
+  const withMeasured = out.map((f, i) => {
+    const mine = measured[face.houses[i].pandId];
+    if (!mine) return f;
+    // The first front's line drives the party-line eaves verdicts.
+    eavesAfter[i] = mine[intents[i].fronts[0].id] ?? eavesAfter[i];
+    return {...f, measuredEavesM: {...(f.measuredEavesM ?? {}), ...mine}};
+  });
+  return {sharedNapM, shiftsM, eavesBefore, eavesAfter, groups, facts: withMeasured, measured};
 }
 
 interface Tri { p: number[][]; n: number[]; slot: string; surface: string }
@@ -159,6 +180,14 @@ function rasterIoU(tris: Tri[], ring: number[][][], step = 0.1): number {
   return union ? inter / union : 0;
 }
 
+/** Area 3DBAG's LoD2.2 ground (the survey rings the model is built from) misses against the BAG LoD0 polygon. */
+export function surveyShortfall(f: BuildingFacts): {bagM2: number; surveyM2: number; fraction: number} {
+  const area = (r: number[][]) => Math.abs(r.reduce((s, p, k) => { const q = r[(k + 1) % r.length]; return s + p[0] * q[1] - q[0] * p[1]; }, 0) / 2);
+  const bag = f.bagFootprintRD.reduce((s, r, k) => s + (k === 0 ? area(r) : -area(r)), 0);
+  const survey = f.surveyFootprintPolygonsRD.reduce((s, poly) => s + poly.reduce((t, r, k) => t + (k === 0 ? area(r) : -area(r)), 0), 0);
+  return {bagM2: cm(bag), surveyM2: cm(survey), fraction: bag > 0 ? Math.max(0, (bag - survey) / bag) : 0};
+}
+
 const samePoint = (p: number[], q: number[]) => Math.hypot(p[0] - q[0], p[1] - q[1]) < 1e-6;
 /** Move one plan corner in place everywhere it appears in a pand's facts: survey rings, roof partition, front chains (heights kept). */
 function moveCorner(f: BuildingFacts, from: number[], to: [number, number]) {
@@ -215,7 +244,7 @@ export function snapFrontSteps(facts: BuildingFacts[], steps: {i: number; stepM:
   return out;
 }
 
-export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, name = `face-${face.id}`, options: {inferRears?: boolean} = {}): Promise<BlockFaceResult> {
+export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<string, BuildingFacts>, name = `face-${face.id}`, options: {inferRears?: boolean; strip?: StripScale} = {}): Promise<BlockFaceResult> {
   const intents = houseIntents(face), facts = face.houses.map(h => { const f = factsByPand.get(h.pandId); if (!f) throw Error(`no facts for ${h.pandId}`); return f; });
   const slits = closeFrontSlits(facts);
   // Compile, measure the facade-plane steps at the party lines, snap the small ones (survey noise), recompile.
@@ -226,7 +255,7 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     rears.set(input.id, addInferredRear(built.group, f, built.anchorRD, report.storeyHeightsM, report.eavesM, built.recipe.palette.value.glass, built.recipe.palette.value.trim, ground.facts.filter((_, j) => j !== i)));
   };
   const compile = () => compileChunk(intents.map((intent, i) => ({id: intent.id, intent, facts: ground.facts[i]})), {name, maxRegroundM: 0, eavesSnapStepM: 0, decorate});
-  let current = slits.facts, ground = planFaceGround(face, current), chunk = await compile();
+  let current = slits.facts, ground = planFaceGround(face, current, undefined, options.strip), chunk = await compile();
   const frontSnaps: FrontSnap[] = [];
   for (let pass = 0; pass < 2; pass++) {
     const steps = groundCornerSteps(await decodePands(chunk.glb, intents.length));
@@ -234,7 +263,7 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     if (!todo.length) break;
     current = snapFrontSteps(current, todo.map(x => ({i: x.i, stepM: x.stepM!})), chunk.frame.nRD);
     for (const x of todo) frontSnaps.push({left: face.houses[x.i].pandId, right: face.houses[x.i + 1].pandId, stepBeforeM: cm(x.stepM!), pass: pass + 1});
-    ground = planFaceGround(face, current);
+    ground = planFaceGround(face, current, undefined, options.strip);
     chunk = await compile();
   }
   const stepsAfter = groundCornerSteps(await decodePands(chunk.glb, intents.length));
@@ -255,11 +284,18 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     g(pand, 'height-vs-3dbag', roofMax - factsMax <= 0.5 + allowance && factsMax - roofMax <= 0.5, {modelM: cm(roofMax), threeDBagM: cm(factsMax), surveyM: cm(ground.facts[i].heights.roofMaxM)}, '|Δ| <= 0.5 m (roof max vs LoD2.2 after roofCleanup; dormers +1.9 m)');
     const f0 = fit.report.fronts[0];
     const trusted = ground.groups.find(gr => gr.trust === 'photo' && gr.snapped && gr.pands.includes(intent.pandId));
-    g(pand, 'eaves-vs-3dbag', intent.fronts.length > 1 || Math.abs(f0.eavesM - ground.eavesBefore[i]) <= 0.5 || (!!trusted && Math.abs(f0.eavesM - ground.eavesAfter[i]) <= 0.3), {modelM: f0.eavesM, threeDBagM: ground.eavesBefore[i], groupLineM: ground.eavesAfter[i], ...(trusted ? {photoOverride: `line of ${trusted.reference!.slice(-6)}`} : {})}, '|Δ| <= 0.5 m (cornice-group snapping included); a photo-trusted group is checked against its line; multi-front pands report only (each front fits its own share of the profile, as in gates.ts)');
+    const measured = ground.measured?.[intent.pandId], measuredOk = !!measured && fit.report.fronts.every(f => measured[f.id] === undefined || Math.abs(f.eavesM - measured[f.id]) <= 0.05);
+    g(pand, 'eaves-vs-3dbag', measured ? measuredOk : intent.fronts.length > 1 || Math.abs(f0.eavesM - ground.eavesBefore[i]) <= 0.5 || (!!trusted && Math.abs(f0.eavesM - ground.eavesAfter[i]) <= 0.3), {modelM: f0.eavesM, threeDBagM: ground.eavesBefore[i], groupLineM: ground.eavesAfter[i], ...(trusted ? {photoOverride: `line of ${trusted.reference!.slice(-6)}`} : {}), ...(measured ? {photoMeasured: Object.fromEntries(fit.report.fronts.map(f => [f.id, {modelM: f.eavesM, stripM: measured[f.id] ?? null}]))} : {})}, '|Δ| <= 0.5 m (cornice-group snapping included); a photo-trusted group is checked against its line; a strip-measured front against its measurement (<= 5 cm); multi-front pands report only (each front fits its own share of the profile, as in gates.ts)');
     const uppers = f0.storeyHeightsM.slice(f0.storeyHeightsM[0] < 1.5 ? 2 : 1);
     g(pand, 'storey-height', uppers.every(h => h >= 2.3 && h <= 4.6), f0.storeyHeightsM, 'upper storeys 2.3–4.6 m');
-    const iou = rasterIoU(t.filter(x => isWall(x.slot) || ['roofTile', 'slate', 'bitumen'].includes(x.slot)), rings[i]);
-    g(pand, 'footprint-vs-bag', iou >= 0.9, cm(iou), 'plan IoU of shell+roof >= 0.90 against BAG LoD0');
+    const massTris = t.filter(x => isWall(x.slot) || ['roofTile', 'slate', 'bitumen'].includes(x.slot)), iou = rasterIoU(massTris, rings[i]);
+    // 3DBAG sometimes reconstructs a smaller ground than the BAG polygon (177915: a 12.5 m2 rear wedge missing from
+    // LoD2.2, b3_opp_grond 40.28 vs BAG 52.77). The model then cannot match BAG; it must still match the survey it was
+    // built from, and the shortfall is reported as a source limit instead of a model error.
+    const sourceShortfall = iou < 0.9 ? surveyShortfall(facts[i]) : null;
+    const surveyIoU = sourceShortfall ? rasterIoU(massTris, facts[i].surveyFootprintPolygonsRD.map(p => ringToFrame(p[0], frame))) : null;
+    const sourceLimited = !!sourceShortfall && sourceShortfall.fraction >= 0.1 && (surveyIoU ?? 0) >= 0.9;
+    g(pand, 'footprint-vs-bag', iou >= 0.9 || sourceLimited, sourceLimited ? {bagIoU: cm(iou), surveyIoU: cm(surveyIoU!), sourceLimit: `3DBAG LoD2.2 ground ${sourceShortfall!.surveyM2} m2 vs BAG ${sourceShortfall!.bagM2} m2 (${Math.round(sourceShortfall!.fraction * 100)} % missing in the source)`} : cm(iou), 'plan IoU of shell+roof >= 0.90 against BAG LoD0 (or >= 0.90 against the 3DBAG LoD2.2 ground when 3DBAG itself is >= 10 % short of BAG)');
     const minY = Math.min(...t.flatMap(x => x.p.map(v => v[1])));
     g(pand, 'grounded', Math.abs(minY) <= 0.05, cm(minY), 'lowest vertex within 5 cm of the shared street level');
     sizes.push(fit.report.fronts.map(f => ({widthM: f.widthM, eavesM: f.eavesM, crownTopM: f.crownTopM})));

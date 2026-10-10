@@ -27,6 +27,17 @@ export const WINDOW_SURROUNDS = ['none', 'stone-lintel', 'full-frame', 'keystone
 export const QUOINS = ['none', 'stone'] as const;
 export const AWNING_STYLES = ['none', 'fabric-straight', 'fabric-dutch'] as const;
 export const SOURCE_KINDS = ['street-panorama', 'archive-photo', 'monument-record', 'human-review'] as const;
+/** Historic (17th/18th-c.) canal-house vocabulary, see `HistoricFrontIntent`. */
+export const GABLE_WINGS = ['volutes', 'scrolls'] as const;
+export const GABLE_FINIALS = ['crab', 'vase', 'ball'] as const;
+export const ROOF_GABLETS = ['crest', 'pediment'] as const;
+export const GROUND_FRONT_KINDS = ['arcade', 'pui', 'wall'] as const;
+export const GROUND_BAYS = ['door', 'glazed-door', 'window', 'shutter', 'panel'] as const;
+export type GroundBay = typeof GROUND_BAYS[number];
+export const DORMER_STYLES = ['plain', 'pediment', 'pointed'] as const;
+export const TOWER_CAPS = ['pyramid', 'flat'] as const;
+/** Largest forward lean a front may declare (degrees); real Amsterdam fronts lean up to ~2 degrees ("op vlucht"). */
+export const MAX_LEAN_DEGREES = 3;
 
 /** Named swatches keep colour a classification; `#rrggbb` is accepted when a
  * photo sample is available (it is a colour, not a coordinate). */
@@ -141,6 +152,58 @@ export interface FrontIntent {
   repeat?: { count: number | 'fit'; mirrorAlternate?: boolean };
   /** Per-front palette when one owner has visibly different fronts. */
   palette?: Partial<PaletteIntent>;
+  /** Stone ornament of a historic gable or cornice front (De Wallen, 17th/18th c.); see `GableOrnamentIntent`. */
+  gableOrnament?: GableOrnamentIntent;
+  /**
+   * Forward lean of the front in degrees (0..3), read from the rectified photo: Amsterdam fronts were built "op vlucht"
+   * (leaning out). The front and the first metres of its side walls are sheared along the party walls, so party lines
+   * stay closed; the ground line does not move.
+   */
+  leanDegrees?: number;
+  /**
+   * A ground storey of separate openings instead of one shop glass: `bays` left to right, each a door, a glazed door, a
+   * glazed window, a roller-shuttered window or a closed panel. `arcade`: columns (piers) between the bays under a beam
+   * (18th/19th-c. pier arcades); `pui`: a timber shopfront frame (thin posts, a heavy beam, panels under the glass);
+   * `wall`: openings in the brick wall. `colour` paints the piers/posts/beam (default the frame colour); `shutterColour`
+   * the roller shutters. Not together with `shopfront`; `doorBay` is ignored (the bays say where the doors are).
+   */
+  groundFront?: GroundFrontIntent;
+  /** Roof seen from the street: `mansard` = a steep (about 70 degrees) roof face rising behind the cornice, its dormers standing on it. */
+  roofFront?: 'mansard';
+  /** Dormer design: `pediment` = a triangular pediment in the trim colour over a projecting frame; `pointed` = a tall pointed roof (19th-c. ornate dormers). Default `plain`. */
+  dormerStyle?: typeof DORMER_STYLES[number];
+  /** Several gables on one front: each `{from, to}` (inclusive bay axes) carries one crown of the front's gable type; eaves line between them. Not together with `crownAt`/`crownBays`. */
+  crownGroups?: {from: number; to: number}[];
+  /** A brick tower rising over bays `bays` (inclusive axes) `rise` upper-storey heights above the eaves, with a pyramid or flat cap; one light per storey of rise. */
+  tower?: {bays: {from: number; to: number}; rise: number; cap: typeof TOWER_CAPS[number]};
+  /**
+   * Clip street-side details (cornice, bands, sills, gable ornament) at oblique party walls so nothing crosses the party
+   * plane (trapezoidal plots meet the front up to ~20 degrees off square). Block faces set it for every house with
+   * `continuity.partyClip`.
+   */
+  partyClip?: boolean;
+}
+
+/**
+ * Stone ornament of a historic front. `wings`: carved wing pieces (vleugelstukken) filling the shoulders of a neck or bell
+ * gable, ending in a volute (`volutes`) or a flat scroll (`scrolls`). `finial`: a crowning piece on the cap (`crab` = the
+ * leafy "krab" of Rijksmonument descriptions). `cartouche`: an oval shield on the cap face. `ears`: small outward scrolls
+ * where the neck meets the cap. `gablet`: a crowning piece standing on a cornice front (`crest` = a carved crest,
+ * `pediment` = a small pointed gablet). Colour = the palette's `stone`.
+ */
+export interface GableOrnamentIntent {
+  wings?: typeof GABLE_WINGS[number];
+  finial?: typeof GABLE_FINIALS[number];
+  cartouche?: boolean;
+  ears?: boolean;
+  gablet?: typeof ROOF_GABLETS[number];
+}
+export interface GroundFrontIntent {
+  kind: typeof GROUND_FRONT_KINDS[number];
+  bays: GroundBay[];
+  colour?: string;
+  shutterColour?: string;
+  evidence?: string;
 }
 
 /**
@@ -209,6 +272,8 @@ export interface ShopAwningIntent { style: typeof AWNING_STYLES[number]; colour:
 /** `band`: a second brick colour for banding and relieving arches (lintel bands become brick stripes). */
 export interface PaletteIntent {
   brick: string; frame: string; door: string; shutters?: string; stone?: string; band?: string;
+  /** Cornice paint when it differs from the window frames (a cream cornice over dark or red frames); default the frame colour. */
+  cornice?: string;
   /**
    * What `brick` (the wall colour) is made of: `brick` (default; the brick texture) or `stucco` (rendered/painted plaster:
    * a fine-grain plaster texture that keeps white, cream or grey light, see recipeLook `stucco` slot). House palette only
@@ -406,10 +471,11 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       if (k === 'wallMaterial') problems.push(`${at}.palette.wallMaterial: set the wall material on the house palette (one material per house)`);
       else colour(v, `${at}.palette.${k}`);
     }
+    problems.push(...historicProblems(f, at, colour, oneOf));
   }
   oneOf(intent?.roof?.material, ROOF_MATERIALS, 'roof.material');
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
-  for (const k of ['shutters', 'stone', 'band'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
+  for (const k of ['shutters', 'stone', 'band', 'cornice'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');
   if (problems.length) throw new Error(`Invalid intent ${intent?.id ?? '?'}:\n - ${problems.join('\n - ')}`);
   return intent;
@@ -431,3 +497,55 @@ export function storeyAxesOf(f: FrontIntent, s: number): number[] | null {
 }
 
 export const swatch = (value: string): string => SWATCHES[value] ?? value;
+
+const GABLE_ORNAMENT_KEYS = ['wings', 'finial', 'cartouche', 'ears', 'gablet'];
+const GROUND_FRONT_KEYS = ['kind', 'bays', 'colour', 'shutterColour', 'evidence'];
+/** Problems with the historic-front fields of one front (all optional; absent fields are never checked). */
+function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where: string) => void, oneOf: (v: unknown, allowed: readonly string[], where: string) => void): string[] {
+  const problems: string[] = [];
+  const grid = frontGrid(f), shoulders = ['neck', 'raised-neck', 'bell'].includes(f.gable);
+  const o = f.gableOrnament;
+  if (o !== undefined) {
+    if (!o || typeof o !== 'object') problems.push(`${at}.gableOrnament must be an object`);
+    else {
+      for (const k of Object.keys(o)) if (!GABLE_ORNAMENT_KEYS.includes(k)) problems.push(`${at}.gableOrnament.${k}: unknown field (one of ${GABLE_ORNAMENT_KEYS.join(', ')})`);
+      if (o.wings !== undefined) { oneOf(o.wings, GABLE_WINGS, `${at}.gableOrnament.wings`); if (!shoulders) problems.push(`${at}.gableOrnament.wings: wing pieces fill the shoulders of a neck or bell gable (gable ${f.gable})`); }
+      if (o.ears !== undefined && typeof o.ears !== 'boolean') problems.push(`${at}.gableOrnament.ears must be boolean`);
+      if (o.ears && !shoulders) problems.push(`${at}.gableOrnament.ears: ears sit where a neck/bell meets its cap (gable ${f.gable})`);
+      if (o.cartouche !== undefined && typeof o.cartouche !== 'boolean') problems.push(`${at}.gableOrnament.cartouche must be boolean`);
+      if (o.cartouche && !shoulders) problems.push(`${at}.gableOrnament.cartouche: a cartouche sits on the cap of a neck or bell gable (gable ${f.gable})`);
+      if (o.finial !== undefined) { oneOf(o.finial, GABLE_FINIALS, `${at}.gableOrnament.finial`); if (!shoulders && f.gable !== 'step' && f.gable !== 'point' && f.gable !== 'spout') problems.push(`${at}.gableOrnament.finial: needs a gable top to stand on (gable ${f.gable})`); }
+      if (o.gablet !== undefined) { oneOf(o.gablet, ROOF_GABLETS, `${at}.gableOrnament.gablet`); if (f.gable !== 'cornice' && f.gable !== 'flat') problems.push(`${at}.gableOrnament.gablet: a rooftop gablet stands on a cornice/flat front (gable ${f.gable})`); }
+    }
+  }
+  if (f.leanDegrees !== undefined && !(typeof f.leanDegrees === 'number' && f.leanDegrees >= 0 && f.leanDegrees <= MAX_LEAN_DEGREES)) problems.push(`${at}.leanDegrees: 0..${MAX_LEAN_DEGREES} degrees forward`);
+  const g = f.groundFront;
+  if (g !== undefined) {
+    for (const k of Object.keys(g ?? {})) if (!GROUND_FRONT_KEYS.includes(k)) problems.push(`${at}.groundFront.${k}: unknown field (one of ${GROUND_FRONT_KEYS.join(', ')})`);
+    oneOf(g?.kind, GROUND_FRONT_KINDS, `${at}.groundFront.kind`);
+    if (!Array.isArray(g?.bays) || g.bays.length < 1 || g.bays.length > 8) problems.push(`${at}.groundFront.bays: 1..8 bays left to right`);
+    else g.bays.forEach((b, i) => oneOf(b, GROUND_BAYS, `${at}.groundFront.bays[${i}]`));
+    if (g?.colour !== undefined) colour(g.colour, `${at}.groundFront.colour`);
+    if (g?.shutterColour !== undefined) colour(g.shutterColour, `${at}.groundFront.shutterColour`);
+    if (f.shopfront) problems.push(`${at}.groundFront: not together with shopfront (one ground storey)`);
+    if (f.basement !== 'none') problems.push(`${at}.groundFront: a ground front stands on the street; use basement "none"`);
+  }
+  if (f.roofFront !== undefined && f.roofFront !== 'mansard') problems.push(`${at}.roofFront: "mansard"`);
+  if (f.roofFront === 'mansard' && f.gable !== 'cornice' && f.gable !== 'flat') problems.push(`${at}.roofFront: a mansard rises behind a cornice/flat front (gable ${f.gable})`);
+  if (f.dormerStyle !== undefined) { oneOf(f.dormerStyle, DORMER_STYLES, `${at}.dormerStyle`); if (!f.dormers) problems.push(`${at}.dormerStyle: needs dormers >= 1`); }
+  if (f.crownGroups !== undefined) {
+    if (f.crownAt !== undefined || f.crownBays !== undefined) problems.push(`${at}.crownGroups: not together with crownAt/crownBays`);
+    if (f.gable === 'flat' || (f.gable === 'cornice' && (!f.crownCap || f.crownCap === 'flat'))) problems.push(`${at}.crownGroups: the front has no crown to repeat (gable ${f.gable})`);
+    const list = Array.isArray(f.crownGroups) ? f.crownGroups : [];
+    if (list.length < 2 || list.length > 4) problems.push(`${at}.crownGroups: 2..4 gables (one gable is crownBays)`);
+    list.forEach((c, i) => { if (!c || !Number.isInteger(c.from) || !Number.isInteger(c.to) || c.from < 0 || c.to >= grid || c.from > c.to || (i > 0 && c.from <= list[i - 1].to)) problems.push(`${at}.crownGroups[${i}]: {from, to} ascending, non-overlapping bay axes within 0..${grid - 1}`); });
+  }
+  if (f.tower !== undefined) {
+    const t = f.tower;
+    if (!t?.bays || !Number.isInteger(t.bays.from) || !Number.isInteger(t.bays.to) || t.bays.from < 0 || t.bays.to >= grid || t.bays.from > t.bays.to) problems.push(`${at}.tower.bays: {from, to} bay axes within 0..${grid - 1}`);
+    if (!(t?.rise >= 0.5 && t.rise <= 3)) problems.push(`${at}.tower.rise: 0.5..3 upper-storey heights above the eaves`);
+    oneOf(t?.cap, TOWER_CAPS, `${at}.tower.cap`);
+  }
+  if (f.partyClip !== undefined && typeof f.partyClip !== 'boolean') problems.push(`${at}.partyClip must be boolean`);
+  return problems;
+}
