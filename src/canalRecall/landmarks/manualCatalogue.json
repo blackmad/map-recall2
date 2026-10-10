@@ -26579,5 +26579,358 @@
         ]
       ]
     }
+  },
+  {
+    "id": "haarlemmerweg-333",
+    "name": "Haarlemmerweg 333",
+    "category": "ordinary",
+    "modelUrl": "./models/haarlemmerweg-333.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012088027"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.864429751307691,
+        52.384856989980285
+      ],
+      "headingDegrees": 88.5,
+      "lengthMetres": 92.77,
+      "widthMetres": 60.07
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.864487335264384,
+        52.38490553598121
+      ],
+      "northOffsetDegrees": 0,
+      "source": "PDOK BAG 0363100012088027 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+    },
+    "materialOverrides": {
+      "red": "#b25a3e",
+      "slate": "#58595b",
+      "concrete": "#8c8b8a",
+      "frame": "#d4d2cb",
+      "glass": "#6f8397",
+      "dark": "#34363a",
+      "white": "#eeeeea",
+      "gold": "#e6b830"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "Haarlemmerweg 333 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012088027",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.8651167441728,
+            52.38473405407729
+          ],
+          [
+            4.865100652873602,
+            52.38513760292098
+          ],
+          [
+            4.864381359659045,
+            52.38512576548968
+          ],
+          [
+            4.863785362001152,
+            52.38511524162868
+          ],
+          [
+            4.86373594532434,
+            52.38511435811918
+          ],
+          [
+            4.863743409731686,
+            52.38493621886732
+          ],
+          [
+            4.864007915016937,
+            52.384940443534155
+          ],
+          [
+            4.864493793696076,
+            52.384948197416605
+          ],
+          [
+            4.86449194209055,
+            52.384991878471716
+          ],
+          [
+            4.864565766991679,
+            52.3849931030663
+          ],
+          [
+            4.864577482190176,
+            52.38471822989342
+          ],
+          [
+            4.864582964782918,
+            52.38458955016389
+          ],
+          [
+            4.865122610997599,
+            52.38459880601029
+          ],
+          [
+            4.8651167441728,
+            52.38473405407729
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "id": "bogortuin-101",
+    "name": "Bogortuin 101",
+    "category": "ordinary",
+    "modelUrl": "./models/bogortuin-101.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012141457"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.9360779129637855,
+        52.37635044834874
+      ],
+      "headingDegrees": 177,
+      "lengthMetres": 140.62,
+      "widthMetres": 25.49
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.936062018713485,
+        52.376374223915306
+      ],
+      "northOffsetDegrees": 0,
+      "source": "PDOK BAG 0363100012141457 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+    },
+    "materialOverrides": {
+      "brick": "#5f342c",
+      "slate": "#4a4a4c",
+      "glass": "#58626d",
+      "frame": "#2d2826",
+      "dark": "#241f1e",
+      "concrete": "#8d8a84"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "Bogortuin 101 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012141457",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.937100933564977,
+            52.37649782381536
+          ],
+          [
+            4.9364064306,
+            52.37647501364012
+          ],
+          [
+            4.9364066957054975,
+            52.37647204871578
+          ],
+          [
+            4.93641327463877,
+            52.37639693677756
+          ],
+          [
+            4.935369181850139,
+            52.37636263310213
+          ],
+          [
+            4.935362585461309,
+            52.3764378437854
+          ],
+          [
+            4.93536233588686,
+            52.37644071889006
+          ],
+          [
+            4.935350033454291,
+            52.376440312440295
+          ],
+          [
+            4.93532453307484,
+            52.37643946915666
+          ],
+          [
+            4.93529913540034,
+            52.3764386352471
+          ],
+          [
+            4.935273400061631,
+            52.37643779105576
+          ],
+          [
+            4.9352478555383295,
+            52.376436956574786
+          ],
+          [
+            4.935196399550956,
+            52.37643526822027
+          ],
+          [
+            4.935035087771948,
+            52.37642996080394
+          ],
+          [
+            4.935055845609625,
+            52.376203101186306
+          ],
+          [
+            4.936170472931691,
+            52.37623993222117
+          ],
+          [
+            4.936170207811834,
+            52.37624289714507
+          ],
+          [
+            4.936163616547274,
+            52.37631773939587
+          ],
+          [
+            4.936789777923597,
+            52.3763383317643
+          ],
+          [
+            4.936796367130542,
+            52.376263588338354
+          ],
+          [
+            4.936796632299924,
+            52.376260614425696
+          ],
+          [
+            4.937120708006771,
+            52.376271319636096
+          ],
+          [
+            4.9371192771926244,
+            52.37628641349567
+          ],
+          [
+            4.937118746258376,
+            52.37629242423379
+          ],
+          [
+            4.937100933564977,
+            52.37649782381536
+          ]
+        ]
+      ]
+    }
+  },
+{
+  "id": "blankenstraat-15",
+  "name": "Blankenstraat 15",
+  "category": "ordinary",
+  "modelUrl": "./models/blankenstraat-15.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012238656"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.927388424580271,
+      52.368552649289896
+    ],
+    "headingDegrees": 135,
+    "lengthMetres": 137.6,
+    "widthMetres": 24.5
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.927350617366918,
+      52.3685032489126
+    ],
+    "northOffsetDegrees": 0,
+    "source": "PDOK BAG 0363100012238656 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+  },
+  "materialOverrides": {
+    "brick": "#80513f",
+    "slate": "#5b5f66",
+    "glass": "#4e5a68",
+    "frame": "#2c2a2e",
+    "dark": "#2a2321",
+    "concrete": "#bdb7ab"
+  },
+  "preservePositionPrecision": true,
+  "attribution": {
+    "title": "Blankenstraat 15 original architecture",
+    "author": "Map Recall",
+    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012238656",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.927778812660446,
+          52.36863999273058
+        ],
+        [
+          4.928226133525648,
+          52.36891521418306
+        ],
+        [
+          4.927976297232537,
+          52.369067207039045
+        ],
+        [
+          4.927333455795929,
+          52.36867159917727
+        ],
+        [
+          4.926550885579576,
+          52.36818998019528
+        ],
+        [
+          4.9266177781586356,
+          52.36814923855273
+        ],
+        [
+          4.926800384104845,
+          52.36803798900789
+        ],
+        [
+          4.927092996584199,
+          52.368218026596985
+        ],
+        [
+          4.927778812660446,
+          52.36863999273058
+        ]
+      ]
+    ]
   }
+}
 ]

@@ -107,6 +107,7 @@ const GL: Record<string, string[]> = {
   R: ['11110', '10001', '10001', '11110', '10100', '10010', '10001'],
   D: ['11110', '10001', '10001', '10001', '10001', '10001', '11110'],
   S: ['01111', '10000', '10000', '01110', '00001', '00001', '11110'],
+  C: ['01110', '10001', '10000', '10000', '10000', '10001', '01110'],
 };
 /** Letters as solid pixel runs in a wall frame; back face at `out`. Returns total width. */
 export function letters(b: BuildingTools, f: Frame, text: string, t: number, y: number, out: number, px: number, d: number, colour: Col) {

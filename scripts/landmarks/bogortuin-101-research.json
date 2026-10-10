@@ -1,0 +1,32 @@
+{
+  "id": "bogortuin-101",
+  "status": "ready-with-caveats-pending-integrator-blind-count",
+  "identity": {
+    "bagPandId": "0363100012141457",
+    "bouwjaar": 2001,
+    "addresses": ["Bogortuin 11-145 (BAG lists ~70 residential units)"],
+    "name": "residential slab block on Java-eiland; architect/name not found",
+    "policy": "ordinary large building: category ordinary, no route destination, no POI card"
+  },
+  "sources": [
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012141457&f=json", "kind": "BAG pand", "retrievedOn": "2026-10-10", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012141457", "kind": "3DBAG LoD2.2 massing", "retrievedOn": "2026-10-10", "licence": "CC BY 4.0 (3DBAG)"},
+    {"file": "artifacts/landmark-lanes/bogortuin-101/ref-s1.jpg", "kind": "rectified wall 1 (S), pano TMX7316010203-001587_pano_0000_000626 (2020-01-23)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/bogortuin-101/ref-s2.jpg", "kind": "rectified wall 12 (S notch), pano TMX7316010203-000172_pano_0000_001186 (2016-11-01, oblique 19 deg)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/bogortuin-101/ref-n1.jpg", "kind": "rectified wall 39 (N), pano TMX7316010203-000725_pano_0000_000745 (2018-05-16; ground floor hidden by a courtyard wall)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/bogortuin-101/ref-e.jpg", "kind": "rectified wall 36 (E gable), pano recording_2024-10-23_11-21-30_02981 (2024-10-23)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/bogortuin-101/ref-w.jpg", "kind": "rectified wall 8 (W gable), pano TMX7316010203-001587_pano_0000_000635 (2020-01-23)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"}
+  ],
+  "faces": {
+    "south (1, 12)": "evidence: ref-s1.jpg (wall 1), ref-s2.jpg (wall 12, oblique).",
+    "north (39)": "evidence: ref-n1.jpg, ground row hidden; ground row inferred from the south face.",
+    "east and west gables (36, 8)": "evidence: ref-e.jpg, ref-w.jpg.",
+    "walls 2, 3, 6, 27, 25, 28, 38": "INFERRED: no panorama (none within 120 m, or only courtyard side); the same grid evenly spread."
+  },
+  "caveats": [
+    "Loggia stacks are drawn as dark recess panels with a window and rail, not true recesses; depth not measured.",
+    "The first column of wall 1 is clipped by the rectification at the notch corner and is drawn narrow.",
+    "Brick is one flat dark brown; the photographs show a slightly mottled brick."
+  ],
+  "limits": ["loggia depth", "balcony railings", "roof edge", "brick relief"]
+}

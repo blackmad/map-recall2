@@ -1462,5 +1462,23 @@
   "buildVersion": 2,
   "bytes": 86168,
   "triangles": 4049
+ },
+ "haarlemmerweg-333": {
+  "sourceHash": "1fa3a1d2f23dbe83",
+  "buildVersion": 2,
+  "bytes": 54288,
+  "triangles": 2656
+ },
+ "bogortuin-101": {
+  "sourceHash": "b75e4508484a9858",
+  "buildVersion": 2,
+  "bytes": 78800,
+  "triangles": 4010
+ },
+ "blankenstraat-15": {
+  "sourceHash": "e8dd3e952fcd95b0",
+  "buildVersion": 2,
+  "bytes": 66016,
+  "triangles": 3224
  }
 }

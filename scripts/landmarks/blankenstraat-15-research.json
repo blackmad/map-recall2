@@ -1,0 +1,33 @@
+{
+  "id": "blankenstraat-15",
+  "status": "ready-with-caveats-pending-integrator-blind-count",
+  "identity": {
+    "bagPandId": "0363100012238656",
+    "bouwjaar": 2011,
+    "addresses": ["Blankenstraat 15A-37F and further numbers (BAG)"],
+    "name": "housing slab with shops, Blankenstraat, Amsterdam-Oost; the ground floor shows 'Het Zwarte Fietsenplan'; architect not found",
+    "policy": "ordinary large building: category ordinary, no route destination, no POI card. Backup candidate 1 of the lane list (the three primary candidates were done or skipped)."
+  },
+  "sources": [
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012238656&f=json", "kind": "BAG pand", "retrievedOn": "2026-10-10", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012238656", "kind": "3DBAG LoD2.2 massing", "retrievedOn": "2026-10-10", "licence": "CC BY 4.0 (3DBAG)"},
+    {"file": "artifacts/landmark-lanes/blankenstraat-15/ref-nw-a.jpg", "kind": "rectified NW face wall 387 frame t -16..30, 20 px/m, pano recording_2025-06-19_09-55-15_00084 (2025-06-19)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/blankenstraat-15/ref-nw-b.jpg", "kind": "rectified NW face t 28..76, pano recording_2025-06-19_09-55-15_00093", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/blankenstraat-15/ref-nw-c.jpg", "kind": "rectified NW face t 74..121.5, pano recording_2025-06-19_09-55-15_00102 (tree and vans in front)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/blankenstraat-15/ref-nw1.jpg", "kind": "rectified NW face t 0..55, pano recording_2025-06-19_09-55-15_00088", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/blankenstraat-15/ref-se1.jpg", "kind": "rectified SE wall 445, pano b_20241204_1003_Track22_Sphere_00289 (2024-12-04, 24 m away, a neighbour hides the right part)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/blankenstraat-15/ref-ne.jpg", "kind": "rectified NE end wall 4, pano TMX7316010203-002049_pano_0000_002406 (2021-03-19), blocked by a canopy; not used", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"}
+  ],
+  "faces": {
+    "NW street face (walls 387 and the collinear 338, 339, 376, 3)": "evidence: ref-nw-a/b/c.jpg. Module type per 4.8 m read by eye (W window module vs L loggia module vs corner tower); positions to about 0.4 m.",
+    "SE wall 445": "evidence: ref-se1.jpg (left 17 m only; the right part and the module count to 29 m are extrapolated).",
+    "NE and SW end walls, SE sawtooth walls other than 445": "INFERRED: same W module, no photograph from that side."
+  },
+  "caveats": [
+    "Shopfronts are approximated: one glazed bay and one door per 4.8 m module, positions not measured per shop.",
+    "The slate mansard and its pyramid dormers are 3DBAG's massing only; dormer glazing is not modelled.",
+    "The ground-floor sign lettering and the canopy at the NE end are not modelled.",
+    "audit:glb skips see-through/far-outside for a model whose bounding diagonal exceeds 150 m (existing site-model rule); the 3DBAG shell was not verified by those two checks."
+  ],
+  "limits": ["shop detail", "dormer glazing", "signage", "window rails"]
+}
