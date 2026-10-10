@@ -4,3 +4,4 @@
 export { OwnGround, type GroundHost, type OwnGroundOptions } from './gameGround.js';
 export { GROUND_ORDER } from './sharedFrameGround.js';
 export { WATER_Z, toLocal, fromLocal } from './groundStore.js';
+export { separatePands, remapAttribute, groundVertices, liftPands } from './chunkBases.js';

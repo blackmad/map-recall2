@@ -4,6 +4,9 @@
 //   npx tsx scripts/own-ground/build-ground-height.ts            # the two prototype boxes
 //   npx tsx scripts/own-ground/build-ground-height.ts --area west # boxes + the game's streaming area(s)
 //   npx tsx scripts/own-ground/build-ground-height.ts --city     # every 1 km tile touching Amsterdam (≈1.6 GB of AHN downloads)
+//   npx tsx scripts/own-ground/build-ground-height.ts --game --core-km 4 --outer-step 4 --predictor planar
+//       # the game's riding area (game-cells.ts) + the store's relief pad; 2 m within
+//       # --core-km of the game origin (Dam), 4 m beyond (published size budget)
 //   # review artifacts/own-ground/staging/ground-height-v1/report.json, then
 //   cp -R artifacts/own-ground/staging/ground-height-v1 public/data/extracts/amsterdam/
 //
@@ -15,7 +18,9 @@ import { gzipSync, inflateSync } from 'node:zlib';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { readGeoTiff } from '../../src/canalRecall/ownGround/geotiff.ts';
-import { downsample, encodeTile, pullPushFill, smooth3, type GroundIndex, type Grid } from '../../src/canalRecall/ownGround/heightField.ts';
+import { coarsenTile, downsample, encodeTile, pullPushFill, smooth3, type GroundIndex, type Grid, type Predictor } from '../../src/canalRecall/ownGround/heightField.ts';
+import { GAME_ORIGIN } from '../../src/canalRecall/ownGround/groundStore.ts';
+import { cellBounds, elevationIndex, gameCells } from './game-cells.ts';
 import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
 import { cellKey, localToLngLat, type ElevationIndex, type WaterCell } from '../../src/canalRecall/elevation/elevationData.ts';
 import { OWN_GROUND_BOXES, areaById } from '../../src/canalRecall/ownGround/boxes.ts';
@@ -30,6 +35,12 @@ const RAW = opt('raw', 'artifacts/own-ground/raw/ahn');
 const OUT = opt('out', 'artifacts/own-ground/staging/ground-height-v1');
 const MARGIN = Number(opt('margin', '500'));
 const WATER_LEVEL_NAP = -0.40, FREEBOARD = 1.77;
+/** Tiles whose centre lies farther than this from the game origin are stored at OUTER_STEP. */
+const CORE_KM = Number(opt('core-km', 'Infinity'));
+const OUTER_STEP = Number(opt('outer-step', String(STEP)));
+const PREDICTOR = opt('predictor', 'dx') as Predictor;
+const ORIGIN_RD = lngLatToRd([GAME_ORIGIN.lng, GAME_ORIGIN.lat]);
+const tileStep = (tx: number, ty: number) => Math.hypot((tx + 0.5) * TILE - ORIGIN_RD.x, (ty + 0.5) * TILE - ORIGIN_RD.y) <= CORE_KM * 1000 ? STEP : OUTER_STEP;
 
 function wantedTiles(): Set<string> {
   const keys = new Set<string>();
@@ -39,6 +50,15 @@ function wantedTiles(): Set<string> {
     for (let tx = Math.floor(Math.min(...xs) / TILE); tx <= Math.floor(Math.max(...xs) / TILE); tx++)
       for (let ty = Math.floor(Math.min(...ys) / TILE); ty <= Math.floor(Math.max(...ys) / TILE); ty++) keys.add(`${tx}_${ty}`);
   };
+  if (args.includes('--game')) {
+    // Every RD tile under a game cell or within --pad metres of one (streets and decks reach past a cell edge).
+    const pad = Number(opt("pad", "150")), index = elevationIndex(), padLat = pad / 111_320;
+    for (const k of gameCells()) {
+      const [w, s, e, n] = cellBounds(index, k), padLng = pad / (111_320 * Math.cos(s * Math.PI / 180));
+      addBox(w - padLng, s - padLat, e + padLng, n + padLat);
+    }
+    return keys;
+  }
   if (args.includes('--city')) {
     const b = JSON.parse(readFileSync('public/data/extracts/amsterdam/boundaries.json', 'utf8')) as Array<{ kind: string; name: string; geometry: [number, number][][][] }>;
     const city = b.find(x => x.kind === 'municipality' && x.name === 'Amsterdam')!;
@@ -123,9 +143,14 @@ async function fetchAhn(x0: number, y0: number): Promise<{ data: Float32Array; w
   if (!existsSync(file)) {
     const url = `https://service.pdok.nl/rws/ahn/wcs/v1_0?service=WCS&request=GetCoverage&version=2.0.1&coverageId=dtm_05m&format=image/tiff&subset=x(${x0},${x0 + SRC})&subset=y(${y0},${y0 + SRC})`;
     for (let attempt = 0; ; attempt++) {
-      const r = await fetch(url);
-      if (r.ok && (r.headers.get('content-type') ?? '').includes('tiff')) { writeFileSync(file, Buffer.from(await r.arrayBuffer())); break; }
-      if (attempt >= 3) { console.warn(`AHN ${x0},${y0}: ${r.status}`); return null; }
+      // Network errors (ETIMEDOUT on a long city build) retry like HTTP errors.
+      let status = 'network';
+      try {
+        const r = await fetch(url, { signal: AbortSignal.timeout(120_000) });
+        status = String(r.status);
+        if (r.ok && (r.headers.get('content-type') ?? '').includes('tiff')) { writeFileSync(file, Buffer.from(await r.arrayBuffer())); break; }
+      } catch (error) { status = String(error); }
+      if (attempt >= 6) { console.warn(`AHN ${x0},${y0}: ${status}`); return null; }
       await new Promise(res => setTimeout(res, 1000 * (attempt + 1)));
     }
   }
@@ -146,14 +171,14 @@ async function main(): Promise<void> {
   const factor = Math.round(STEP / PX);
   const n = TILE / STEP;
   const index: GroundIndex = {
-    version: 1, crs: 'EPSG:28992', vertical: 'NAP', stepM: STEP, tileSizeM: TILE, samples: n, heightUnitM: 0.01, tiles: [],
+    version: 1, crs: 'EPSG:28992', vertical: 'NAP', stepM: STEP, tileSizeM: TILE, samples: n, heightUnitM: 0.01, tiles: [], ...(PREDICTOR !== 'dx' ? { predictor: PREDICTOR } : {}),
     sceneDatumNAP: +(WATER_LEVEL_NAP + FREEBOARD).toFixed(2), waterLevelNAP: WATER_LEVEL_NAP,
     sources: { dtm: { service: 'https://service.pdok.nl/rws/ahn/wcs/v1_0', coverage: 'dtm_05m', licence: 'CC0 (AHN via PDOK)', fetched: new Date().toISOString().slice(0, 10) }, method: `water (elevation-v1 polygons, +0.5 m, and canal-level returns within 2 m of them) blanked; mean of measured 0.5 m pixels per ${STEP} m cell (≥ 1/4 measured); holes (buildings, water, bridges) pull-push filled over the tile plus ${MARGIN} m margin; one 3×3 binomial smoothing pass` },
     attribution: 'Heights: AHN (Rijkswaterstaat / PDOK), CC0',
   };
   const report: Record<string, unknown>[] = [];
   const sourceHashes: Record<string, string> = {};
-  let rawBytes = 0, gzBytes = 0, waterBlanked = 0;
+  let rawBytes = 0, gzBytes = 0, waterBlanked = 0, coreTiles = 0, coreGz = 0, outerTiles = 0, outerGz = 0;
   for (const [ty, txs] of bands) {
     const minTx = Math.min(...txs), maxTx = Math.max(...txs);
     const x0 = minTx * TILE - MARGIN, x1 = (maxTx + 1) * TILE + MARGIN, y0 = ty * TILE - MARGIN, y1 = (ty + 1) * TILE + MARGIN;
@@ -162,7 +187,9 @@ async function main(): Promise<void> {
     const rings = waterRingsRd(x0, y0, x1, y1);
     let blanked = 0;
     const requests: [number, number][] = [];
-    for (let sx = x0; sx < x1; sx += SRC) for (let sy = y0; sy < y1; sy += SRC) requests.push([sx, sy]);
+    // Only source squares within the margin of a wanted tile of this band (city rows have gaps).
+    const near = (sx: number) => txs.some(tx => sx + SRC > tx * TILE - MARGIN && sx < (tx + 1) * TILE + MARGIN);
+    for (let sx = x0; sx < x1; sx += SRC) if (near(sx)) for (let sy = y0; sy < y1; sy += SRC) requests.push([sx, sy]);
     // A few requests in flight; PDOK answers a 500 m tile in about a second.
     for (let i = 0; i < requests.length; i += 6) {
       const batch = await Promise.all(requests.slice(i, i + 6).map(([sx, sy]) => fetchAhn(sx, sy).then(r => ({ sx, sy, r }))));
@@ -188,12 +215,15 @@ async function main(): Promise<void> {
         heights[j * n + i] = v; meas += measured[g];
         if (v === v) { min = Math.min(min, v); max = Math.max(max, v); sum += v; }
       }
-      const bin = encodeTile(heights, n), gz = gzipSync(bin, { level: 9 });
+      // The outer ring is stored coarser (2×2 means of the finished 2 m grid); decode upsamples.
+      const step = tileStep(tx, ty), factor = Math.round(step / STEP), m = n / factor;
+      const bin = encodeTile(factor > 1 ? coarsenTile(heights, n, factor) : heights, m, PREDICTOR), gz = gzipSync(bin, { level: 9 });
       writeFileSync(join(OUT, 'tiles', `${tx}_${ty}.bin`), gz);
       rawBytes += bin.byteLength; gzBytes += gz.byteLength;
+      if (step === STEP) { coreTiles++; coreGz += gz.byteLength; } else { outerTiles++; outerGz += gz.byteLength; }
       const frac = meas / (n * n);
-      index.tiles.push([tx, ty, +frac.toFixed(3)]);
-      report.push({ tile: `${tx}_${ty}`, measured: +frac.toFixed(3), filled: +(1 - frac).toFixed(3), minNAP: +min.toFixed(2), maxNAP: +max.toFixed(2), meanNAP: +(sum / (n * n)).toFixed(2), gzBytes: gz.byteLength });
+      index.tiles.push(step === STEP ? [tx, ty, +frac.toFixed(3)] : [tx, ty, +frac.toFixed(3), step]);
+      report.push({ tile: `${tx}_${ty}`, stepM: step, measured: +frac.toFixed(3), filled: +(1 - frac).toFixed(3), minNAP: +min.toFixed(2), maxNAP: +max.toFixed(2), meanNAP: +(sum / (n * n)).toFixed(2), gzBytes: gz.byteLength });
     }
     waterBlanked += blanked;
     console.log(`band ty=${ty}: ${txs.length} tiles, ${requests.length} AHN requests, ${rings.length} water rings, ${blanked} water-surface px blanked, ${Math.round(performance.now() - t0)} ms`);
@@ -203,7 +233,8 @@ async function main(): Promise<void> {
   const summary = {
     tiles: index.tiles.length, stepM: STEP, samplesPerTile: n * n,
     measuredFraction: +(index.tiles.reduce((s, t) => s + t[2], 0) / index.tiles.length).toFixed(3),
-    waterPixelsBlanked: waterBlanked, rawBytes, gzBytes, gzBytesPerKm2: Math.round(gzBytes / index.tiles.length), buildMs: Math.round(performance.now() - t0),
+    waterPixelsBlanked: waterBlanked, rawBytes, gzBytes, predictor: PREDICTOR,
+    core: { km: CORE_KM, stepM: STEP, tiles: coreTiles, gzBytes: coreGz }, outer: { stepM: OUTER_STEP, tiles: outerTiles, gzBytes: outerGz }, gzBytesPerKm2: Math.round(gzBytes / index.tiles.length), buildMs: Math.round(performance.now() - t0),
     note: 'gzBytes is what the browser downloads (tiles are served as gzip; DecompressionStream inflates them).',
   };
   writeFileSync(join(OUT, 'report.json'), JSON.stringify({ summary, tiles: report }, null, 2) + '\n');

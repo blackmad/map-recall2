@@ -26,6 +26,14 @@ export type HeightFn = (x: number, y: number) => number;
 export const DECK_BLEND_M = 0.75;
 /** Longitudinal ease from the relief onto the deck at each deck end, metres. */
 export const DECK_EASE_M = 2.5;
+/**
+ * Steepest grade the ease may make (smoothstep peaks at 1.5× its mean): where
+ * the DTM approach ends well below the deck start (BRU0067: 0.5 m), the ease
+ * lengthens to keep this grade instead of a 35 % kink in 0.5 m. Masonry arches
+ * keep their short, steep hump.
+ */
+export const DECK_EASE_MAX_GRADE = 0.2;
+const DECK_EASE_MAX_M = 6;
 const BUCKET_M = 25;
 
 export interface DeckSurface {
@@ -36,6 +44,8 @@ export interface DeckSurface {
   ends: [number, number];
   /** The deck span in stations (the profile's `deck`, clamped to its stations). */
   span: [number, number];
+  /** Ease length at each deck end, metres (DECK_EASE_M, longer where the step onto the deck is high). */
+  ease: [number, number];
 }
 
 const smoothstep = (t: number) => (t <= 0 ? 0 : t >= 1 ? 1 : t * t * (3 - 2 * t));
@@ -76,14 +86,20 @@ export class GroundSurface {
     const span: [number, number] = [Math.max(profile.s[0], profile.deck[0]), Math.min(profile.s[n - 1], profile.deck[1])];
     const ends: [number, number] = [this.ground(profile.x[0], profile.y[0]), this.ground(profile.x[n - 1], profile.y[n - 1])];
     const z = new Float64Array(n);
+    const easeAt = (s: number) => {
+      const p = GroundSurface.at(profile, s), jump = Math.abs(GroundSurface.deckZ(profile, ends, s) - this.ground(p.x, p.y));
+      if (profile.family === 'masonry-arch') return DECK_EASE_M;
+      return Math.min(Math.max(DECK_EASE_M, 1.5 * jump / DECK_EASE_MAX_GRADE), DECK_EASE_MAX_M, Math.max(DECK_EASE_M, (span[1] - span[0]) / 2));
+    };
+    const ease: [number, number] = [easeAt(span[0]), easeAt(span[1])];
     for (let i = 0; i < n; i++) {
       const s = profile.s[i];
       if (s <= span[0] || s >= span[1]) { z[i] = this.ground(profile.x[i], profile.y[i]); continue; }
-      const w = smoothstep(Math.min(s - span[0], span[1] - s) / DECK_EASE_M);
+      const w = GroundSurface.easeWeight(s, span, ease);
       const g = this.ground(profile.x[i], profile.y[i]);
       z[i] = g + w * (GroundSurface.deckZ(profile, ends, s) - g);
     }
-    const deck: DeckSurface = { profile, z, ends, span };
+    const deck: DeckSurface = { profile, z, ends, span, ease };
     this.decks.push(deck);
     const [x0, y0, x1, y1] = profile.bbox, pad = DECK_BLEND_M;
     for (let bx = Math.floor((x0 - pad) / BUCKET_M); bx <= Math.floor((x1 + pad) / BUCKET_M); bx++)
@@ -92,6 +108,11 @@ export class GroundSurface {
         (this.buckets.get(k) ?? this.buckets.set(k, []).get(k)!).push(deck);
       }
     return deck;
+  }
+
+  /** 0 at either deck end → 1 once past that end's ease. */
+  static easeWeight(s: number, span: readonly [number, number], ease: readonly [number, number]): number {
+    return Math.min(smoothstep((s - span[0]) / ease[0]), smoothstep((span[1] - s) / ease[1]));
   }
 
   /** The deck span's footprint as a closed ring (left edge out, right edge back), scene coords. */
@@ -139,7 +160,7 @@ export class GroundSurface {
       // The ease toward each deck end uses this point's own relief, so the deck
       // corners meet sloping ground as exactly as the centreline does.
       const p = deck.profile;
-      const e = smoothstep(Math.min(at.s - deck.span[0], deck.span[1] - at.s) / DECK_EASE_M);
+      const e = GroundSurface.easeWeight(at.s, deck.span, deck.ease);
       const top = e >= 1 ? at.z : g + e * (GroundSurface.deckZ(p, deck.ends, at.s) - g);
       // Never pull the surface below the relief: a deck only adds height.
       z = Math.max(z, g + w * (top - g));

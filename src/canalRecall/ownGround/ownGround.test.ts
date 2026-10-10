@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { deflateSync, gunzipSync, inflateSync } from 'node:zlib';
 import { readGeoTiff, undoFloatPredictor } from './geotiff';
-import { applyLocalToRd, decodeTile, downsample, encodeTile, fitLocalToRd, GroundField, NODATA, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
+import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extendTile, readGroundTile, upsampleTile, fitLocalToRd, GroundField, NODATA, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
 import { DECK_BLEND_M, GroundSurface, riderPose, type Vec2 } from './surface';
 import { cutIntervals, drapeTriangles, edgeWall, emptyMesh, endCap, reliefGrid, ribbon, type MeshArrays } from './drape';
 import { crossSection, parseMetres, areaKind } from './osmGround';
@@ -19,7 +19,8 @@ import { decodeProfile } from '../elevation/bridgeDeck';
 import { localToLngLat, type BridgeExtract, type ElevationIndex } from '../elevation/elevationData';
 import { fromLocal, toLocal } from '../galleryPipeline';
 import { lngLatToRd } from '../facade/rdNew';
-import { groundMercatorFromLocal, groundParticipant } from './sharedFrameGround';
+import { groundMercatorFromLocal, groundParticipant, mul4, ndcOf } from './sharedFrameGround';
+import { groundVertices, liftPands, remapAttribute, separatePands } from './chunkBases';
 import { mercatorOfLngLat, mercatorUnitsPerMetre } from '../rendererShared/frameMath';
 
 // ------------------------------------------------------------- helpers
@@ -125,6 +126,46 @@ test('tile encoding round-trips centimetres, wraps deltas and keeps nodata', () 
     if (Number.isNaN(h[i])) assert.ok(Number.isNaN(back[i]));
     else assert.ok(Math.abs(back[i] - h[i]) <= 0.005 + 1e-6, `${i}: ${back[i]} vs ${h[i]}`);
   }
+});
+
+test('planar predictor round-trips like delta-x, nodata included', () => {
+  const n = 4, h = new Float32Array([-5.03, 300, -300, 0.01, 1, 1, 1, 1, NaN, 2.5, 2.49, 2.51, 0, 0, 0, 327]);
+  const back = decodeTile(encodeTile(h, n, 'planar'), n, 'planar');
+  for (let i = 0; i < h.length; i++) {
+    if (Number.isNaN(h[i])) assert.ok(Number.isNaN(back[i]));
+    else assert.ok(Math.abs(back[i] - h[i]) <= 0.005 + 1e-6, `${i}: ${back[i]} vs ${h[i]}`);
+  }
+  // A plane costs nothing past the first row and column: residuals are zero.
+  const m = 8, plane = new Float32Array(m * m).map((_, k) => 0.07 * (k % m) - 0.03 * Math.floor(k / m));
+  const res = new Int16Array(encodeTile(plane, m, 'planar').buffer);
+  for (let j = 1; j < m; j++) for (let i = 1; i < m; i++) assert.equal(res[j * m + i], 0);
+});
+
+test('coarse (4 m) tiles decode onto the 2 m grid: a plane is kept, edges clamp', () => {
+  const n = 8, h = new Float32Array(n * n).map((_, k) => 0.1 * (k % n) + 0.2 * Math.floor(k / n));
+  const coarse = coarsenTile(h, n, 2);
+  assert.equal(coarse.length, 16);
+  const index = { stepM: 2, tileSizeM: 16, samples: n, predictor: 'planar' as const };
+  const up = readGroundTile(index, [0, 0, 1, 4], encodeTile(coarse, 4, 'planar'));
+  assert.equal(up.length, n * n);
+  // Interior samples reproduce the plane to the centimetre; the clamped rim is within half a coarse step's slope.
+  for (let j = 1; j < n - 1; j++) for (let i = 1; i < n - 1; i++) assert.ok(Math.abs(up[j * n + i] - h[j * n + i]) < 0.011, `${i},${j}`);
+  for (let k = 0; k < n * n; k++) assert.ok(Math.abs(up[k] - h[k]) < 0.5 * (0.1 + 0.2) + 0.006); // half a fine step of slope per axis
+  // Full-resolution entries are untouched.
+  const same = readGroundTile(index, [0, 0, 1], encodeTile(h, n, 'planar'));
+  for (let k = 0; k < n * n; k++) assert.ok(Math.abs(same[k] - h[k]) < 0.006);
+  assert.ok(upsampleTile(new Float32Array([1]), 1, 4).every(v => v === 1));
+});
+
+test('partly covered edge: a missing tile is extended from its neighbours, continuous at the seam', () => {
+  // Tiles (0,0) and (0,1) exist; (1,0) is missing: extend it from them.
+  const f = flatField((x, y) => 0.01 * x + 0.02 * y, 2, 100, [[0, 0], [0, 1]]);
+  assert.ok(Number.isNaN(f.heightRd(150, 50)));
+  f.addTile(1, 0, extendTile(f, 1, 0, (tx, ty) => (tx === 0 && ty === 0) || (tx === 0 && ty === 1)));
+  // No step across the seam (x = 100): the extension starts at the neighbour's edge value.
+  for (const y of [5, 50, 95]) assert.ok(Math.abs(f.heightRd(100.9, y) - f.heightRd(99.1, y)) < 0.05, `seam at y=${y}`);
+  // Everywhere finite, and within the neighbours' range (no overshoot).
+  for (let x = 101; x < 200; x += 7) for (let y = 1; y < 100; y += 7) { const z = f.heightRd(x, y); assert.ok(z === z && z >= 0 && z <= 0.01 * 100 + 0.02 * 200, `${x},${y}: ${z}`); }
 });
 
 test('GroundField samples bilinearly across tile seams', () => {
@@ -340,9 +381,15 @@ const haveExtracts = existsSync(`${EXTRACT}/ground-height-v1/index.json`) && exi
 function realSurface(lng: number, lat: number): GroundSurface {
   const index = JSON.parse(readFileSync(`${EXTRACT}/ground-height-v1/index.json`, 'utf8')) as GroundIndex;
   const field = new GroundField(index.stepM, index.tileSizeM);
-  for (const [tx, ty] of index.tiles) field.addTile(tx, ty, decodeTile(gunzipSync(readFileSync(`${EXTRACT}/ground-height-v1/tiles/${tx}_${ty}.bin`)), index.samples));
   const [cx, cy] = toLocal(lng, lat);
   const toRd = (x: number, y: number): [number, number] => { const p = lngLatToRd(fromLocal(x, y)); return [p.x, p.y]; };
+  // Only the tiles within 3 km (the city-wide extract has ~300).
+  const [rx, ry] = toRd(cx, cy), T = index.tileSizeM;
+  for (const entry of index.tiles) {
+    const [tx, ty] = entry;
+    if (Math.hypot((tx + 0.5) * T - rx, (ty + 0.5) * T - ry) > 3000) continue;
+    field.addTile(tx, ty, readGroundTile(index, entry, gunzipSync(readFileSync(`${EXTRACT}/ground-height-v1/tiles/${tx}_${ty}.bin`))));
+  }
   return new GroundSurface(field, fitLocalToRd(toRd, cx, cy, 2000).map, index.sceneDatumNAP);
 }
 function realDeck(s: GroundSurface, id: string) {
@@ -415,6 +462,34 @@ test('ground frame is the facades\' frame (duplicated to keep the worker bundle 
 test('vertexNormals: a flat upward quad', () => {
   const n = vertexNormals(new Float32Array([0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0]), new Uint32Array([0, 1, 2, 0, 2, 3]));
   for (let i = 0; i < 4; i++) assert.deepEqual([...n.slice(i * 3, i * 3 + 3)], [0, 0, 1]);
+});
+
+test('street chunks: a vertex shared by two pands is split, each pand lifts alone', () => {
+  // Two quads (pand 0: tris 0–1, pand 1: tris 2–3) sharing the edge 1–2 (a party wall corner).
+  const index = [0, 1, 2, 0, 2, 3, 1, 4, 5, 1, 5, 2];
+  const sep = separatePands(index, 6, [[0, 0, 2], [1, 2, 2]]);
+  assert.equal(sep.duplicated, 2, 'the two shared vertices are duplicated for the second pand');
+  assert.equal(sep.source.length, 8);
+  for (let t = 0; t < 4; t++) { const pand = t < 2 ? 0 : 1; for (let k = 0; k < 3; k++) assert.equal(sep.owner[sep.index[t * 3 + k]], pand); }
+  // Model up is +y here; pand 1 sits 0.5 m higher.
+  const base = remapAttribute(new Float32Array([0, 0, 0, 1, 0, 0, 1, 3, 0, 0, 3, 0, 2, 0, 0, 2, 3, 0]), 3, sep.source);
+  const ground = groundVertices(sep.owner, i => base[i * 3 + 1], 0.3);
+  assert.deepEqual([...ground.keys()].sort(), [0, 1]);
+  for (const list of ground.values()) for (const i of list) assert.equal(base[i * 3 + 1], 0, 'ground vertices are the bottom ones');
+  const lifted = liftPands(base, sep.owner, [0, 1, 0], p => (p === 1 ? 0.5 : 0));
+  for (let i = 0; i < sep.owner.length; i++) assert.equal(lifted[i * 3 + 1] - base[i * 3 + 1], sep.owner[i] === 1 ? 0.5 : 0);
+  assert.equal(base[1 * 3 + 1], 0, 'the unlifted copy is kept');
+});
+
+test('canvas pin lift: clip ← local product and NDC of a raised point', () => {
+  // A camera looking down −y with z up on screen: raising a point moves it up in NDC.
+  const clip = [1, 0, 0, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0, 0, 10]; // column-major: x→x, z→y, w = 10 − y
+  const a = ndcOf(clip, 2, 0, 0)!, b = ndcOf(clip, 2, 0, 1.5)!;
+  assert.ok(Math.abs(a[0] - 0.2) < 1e-12 && Math.abs(b[1] - a[1] - 0.15) < 1e-12);
+  assert.equal(ndcOf(clip, 0, 20, 0), null, 'behind the eye');
+  const id = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+  assert.deepEqual([...mul4(id, clip)], clip);
+  assert.deepEqual([...mul4(clip, id)], clip);
 });
 
 const haveCells = existsSync('public/data/extracts/amsterdam/own-ground-osm-v1/cells.json');

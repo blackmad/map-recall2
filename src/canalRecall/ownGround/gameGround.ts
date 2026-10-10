@@ -18,8 +18,9 @@
 // (repaint, hiding the basemap's own ground). THREE is injected.
 
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type Rect } from './groundStore.js';
-import { GROUND_LAYERS, type BuiltCell, type GroundLayer, type PackedMesh } from './groundCell.js';
-import { groundParticipant, GROUND_ORDER } from './sharedFrameGround.js';
+import { GROUND_LAYERS, MASK_RANGE_M, type BuiltCell, type GroundLayer, type PackedMesh } from './groundCell.js';
+import { QUAY } from './water.js';
+import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
@@ -44,11 +45,13 @@ export interface OwnGroundOptions {
 
 type LngLat = [number, number];
 
-interface Resident { key: string; lod: 0 | 1; group: any; materials: any[]; textures: any[]; triangles: number; bytes: number }
+interface Resident { key: string; lod: 0 | 1; group: any; materials: any[]; textures: any[]; triangles: number; bytes: number; maskInfo: { x0: number; y0: number; res: number } | null }
 
 const RADIUS_M = 1400;
 const NEAR_M = 350;
 const RESIDENCY_STEP_M = 60;
+/** Width of the stone coping band drawn inland of every cut shore edge, metres (0: none). */
+const QUAY_BAND_M = 0.3;
 
 /** Which mask channel cuts a layer: R = water (land, parks), G = water minus decks (street bands). */
 const CUT: Partial<Record<GroundLayer, 'r' | 'g'>> = {
@@ -83,6 +86,8 @@ export class OwnGround {
   private zoom = 0;
   private unregister: (() => void) | null = null;
   private basemapHidden = false;
+  /** clip ← local of the last main pass (for lifting canvas overlays onto the surface). */
+  private clipFromLocal: Float64Array | null = null;
   private overlays: { route: any; casing: any; highlight: any; destination: any } = { route: null, casing: null, highlight: null, destination: null };
   private routeLine: Vec2[] | null = null;
   private highlightLines: Vec2[][] | null = null;
@@ -122,6 +127,7 @@ export class OwnGround {
     if (!this.unregister) {
       this.unregister = this.frame.register('own-ground', groundParticipant(this.root, {
         visible: (zoom: number) => this.beforeRender(zoom),
+        onMainPass: (clip: Float64Array) => { this.clipFromLocal = clip; },
       }), { order: GROUND_ORDER });
     }
     this.ready = true;
@@ -322,13 +328,22 @@ export class OwnGround {
     const m = this.base[layer].clone();
     m.onBeforeCompile = (shader: any) => {
       Object.assign(shader.uniforms, uniforms);
-      shader.vertexShader = shader.vertexShader.replace('#include <common>', '#include <common>\nvarying vec2 vMaskXY;')
-        .replace('#include <begin_vertex>', '#include <begin_vertex>\nvMaskXY = transformed.xy;');
-      // Outside the mask's extent the ground is land (no cut).
-      shader.fragmentShader = shader.fragmentShader.replace('#include <common>', '#include <common>\nvarying vec2 vMaskXY;\nuniform sampler2D waterMask;\nuniform vec2 maskOrigin;\nuniform vec2 maskSize;')
-        .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>\n{ vec2 muv = (vMaskXY - maskOrigin) / maskSize; if (muv.x > 0.0 && muv.y > 0.0 && muv.x < 1.0 && muv.y < 1.0 && texture2D(waterMask, muv).${channel} < 0.5) discard; }`);
+      // The mask UV is formed per vertex (0..1, highp): scene metres reach ±15 km
+      // city-wide, too coarse for a mediump varying on a phone GPU.
+      shader.vertexShader = shader.vertexShader.replace('#include <common>', '#include <common>\nvarying highp vec2 vMaskUV;\nuniform vec2 maskOrigin;\nuniform vec2 maskSize;')
+        .replace('#include <begin_vertex>', '#include <begin_vertex>\nvMaskUV = (transformed.xy - maskOrigin) / maskSize;');
+      // Outside the mask's extent the ground is land (no cut). The discard
+      // edge itself cannot be antialiased (MSAA does not see it), so a stone
+      // coping band (QUAY_BAND_M wide, drawn from the bilinear signed distance,
+      // hence smooth at any zoom) runs along the shore inland of it: the
+      // aliased cut then lies between two coping-coloured surfaces (the band
+      // and the quay wall's coping face) and the visible edge is the band's
+      // smooth inner line. Phones (DPR 1.5) showed the bare cut as stair steps.
+      shader.fragmentShader = shader.fragmentShader.replace('#include <common>', `#include <common>\nvarying highp vec2 vMaskUV;\nuniform sampler2D waterMask;\nconst vec3 ogCoping = vec3(${QUAY.coping.map(c => Math.pow(c, 2.2).toFixed(4)).join(', ')});`)
+        .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>\nfloat ogShoreM = 99.0;\nif (vMaskUV.x > 0.0 && vMaskUV.y > 0.0 && vMaskUV.x < 1.0 && vMaskUV.y < 1.0) { ogShoreM = (texture2D(waterMask, vMaskUV).${channel} - 0.5) * ${(2 * MASK_RANGE_M).toFixed(1)}; if (ogShoreM < 0.0) discard; }`)
+        .replace('#include <color_fragment>', channel !== 'r' || layer === 'park' || layer === 'wood' ? '#include <color_fragment>' : `#include <color_fragment>\n{ float ogFw = max(fwidth(ogShoreM), 1e-4); diffuseColor.rgb = mix(ogCoping, diffuseColor.rgb, smoothstep(${QUAY_BAND_M.toFixed(2)} - ogFw, ${QUAY_BAND_M.toFixed(2)} + ogFw, ogShoreM)); }`);
     };
-    m.customProgramCacheKey = () => `ownGround-cut-${channel}-${layer}`;
+    m.customProgramCacheKey = () => `ownGround-cut2-${channel}-${layer}`;
     return m;
   }
 
@@ -383,7 +398,7 @@ export class OwnGround {
     }
     group.matrixAutoUpdate = false;
     this.root.add(group);
-    this.resident.set(cell.key, { key: cell.key, lod: cell.lod, group, materials, textures, triangles, bytes });
+    this.resident.set(cell.key, { key: cell.key, lod: cell.lod, group, materials, textures, triangles, bytes, maskInfo: cell.mask ? { x0: cell.mask.x0, y0: cell.mask.y0, res: cell.mask.res } : null });
     this.stats.installMs.push(performance.now() - t0);
     this.frame.invalidateShadows?.();
     this.host.repaint();
@@ -451,6 +466,24 @@ export class OwnGround {
     const mid = contacts ? (contacts[0] + contacts[1]) / 2 : 0;
     const pose = surfaceRiderPose(this.store.surface.height, x + dir[0] * mid, y + dir[1] * mid, dir, wheelbase || 1.2);
     return { heightM: pose.z, pitch: pose.pitch };
+  }
+
+  /**
+   * Screen shift (normalised device units) that moves a flat (z = 0)
+   * projection of a lng/lat onto the riding surface there: the canvas
+   * overlays (destination pin, question-feature marker) project through
+   * MapLibre at street level and add this. Both ends use the last main
+   * pass's matrix, so a frame of lag moves only the small difference, not
+   * the point. Null while the ground is hidden or the lift is negligible.
+   */
+  screenLift(lngLat: LngLat): [number, number] | null {
+    if (!this.clipFromLocal || !this.visibleAtZoom(this.zoom) || !this.resident.size) return null;
+    const [x, y] = toLocal(lngLat[0], lngLat[1]);
+    if (!this.store.hasRelief(x, y)) return null;
+    const z = this.store.surface.height(x, y);
+    if (Math.abs(z) < 0.03) return null;
+    const a = ndcOf(this.clipFromLocal, x, y, 0), b = ndcOf(this.clipFromLocal, x, y, z);
+    return a && b ? [b[0] - a[0], b[1] - a[1]] : null;
   }
 
   /** Canal water level (scene z). */
@@ -532,6 +565,45 @@ export class OwnGround {
   }
 
   // ------------------------------------------------------------------ diagnostics
+
+  /**
+   * What the camera sees from straight above at a game-frame point (default:
+   * the rider): every resident ground triangle under it, with the water-mask
+   * discard applied as the shader does, topmost first. Ties within 2 cm go to
+   * the higher polygon-offset rank (the draw order of coplanar layers).
+   * Diagnostics and named regressions only (walks every triangle).
+   */
+  layersAt(x?: number, y?: number): { top: string | null; hits: { layer: string; z: number; cut: boolean }[] } {
+    if (x === undefined || y === undefined) { if (!this.centre) return { top: null, hits: [] }; [x, y] = this.centre; }
+    const hits: { layer: string; z: number; cut: boolean; rank: number }[] = [];
+    for (const r of this.resident.values()) {
+      const mask = r.textures[0]?.image as { data: Uint8Array; width: number; height: number } | undefined;
+      const uniforms = r.maskInfo;
+      r.group.traverse((o: any) => {
+        if (!o.isMesh) return;
+        const layer = o.name as GroundLayer, pos = o.geometry.attributes.position.array as Float32Array, idx = o.geometry.index.array as Uint32Array;
+        for (let t = 0; t < idx.length; t += 3) {
+          const a = idx[t] * 3, b = idx[t + 1] * 3, c = idx[t + 2] * 3;
+          const d = (pos[b + 1] - pos[c + 1]) * (pos[a] - pos[c]) + (pos[c] - pos[b]) * (pos[a + 1] - pos[c + 1]);
+          if (Math.abs(d) < 1e-9) continue;
+          const u = ((pos[b + 1] - pos[c + 1]) * (x! - pos[c]) + (pos[c] - pos[b]) * (y! - pos[c + 1])) / d;
+          const v = ((pos[c + 1] - pos[a + 1]) * (x! - pos[c]) + (pos[a] - pos[c]) * (y! - pos[c + 1])) / d;
+          if (u < 0 || v < 0 || u + v > 1) continue;
+          const z = u * pos[a + 2] + v * pos[b + 2] + (1 - u - v) * pos[c + 2];
+          let cut = false;
+          const channel = CUT[layer];
+          if (channel && mask && uniforms) {
+            const i = Math.floor((x! - uniforms.x0) / uniforms.res), j = Math.floor((y! - uniforms.y0) / uniforms.res);
+            if (i >= 0 && j >= 0 && i < mask.width && j < mask.height) cut = mask.data[(j * mask.width + i) * 2 + (channel === 'r' ? 0 : 1)] < 128;
+          }
+          hits.push({ layer, z, cut, rank: OFFSET[layer] ?? 0 });
+        }
+      });
+    }
+    hits.sort((p, q) => (Math.abs(p.z - q.z) > 0.02 ? q.z - p.z : q.rank - p.rank));
+    const top = hits.find(h => !h.cut && h.layer !== 'water')?.layer ?? null;
+    return { top, hits: hits.map(({ layer, z, cut }) => ({ layer, z: +z.toFixed(3), cut })) };
+  }
 
   status(): Record<string, unknown> {
     let triangles = 0, bytes = 0;

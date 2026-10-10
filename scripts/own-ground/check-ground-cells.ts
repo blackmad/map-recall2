@@ -10,7 +10,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
-import { buildCell, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
+import { buildCell, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
@@ -64,7 +64,7 @@ async function main(): Promise<void> {
     console.log(JSON.stringify({ cells: rows.length, trianglesPerCell: Math.round(t / rows.length), MBPerCell: +(mb / rows.length).toFixed(1), buildMsMedian: ms[ms.length >> 1], buildMsMax: ms[ms.length - 1] }));
     return;
   }
-  for (const [id, lng, lat, label] of [['BRU0166', 4.87445, 52.37286, 'Nassaukade / Bilderdijkgracht mouth'], ['BRU0044', 4.8875, 52.3665, 'Leidsegracht arch']] as const) {
+  for (const [id, lng, lat, label] of [['BRU0166', 4.87445, 52.37286, 'Nassaukade / Bilderdijkgracht mouth'], ['BRU0044', 4.8875, 52.3665, 'Leidsegracht arch'], ['BRU0067', 4.882711, 52.366289, 'Angenietje Swarthofbrug, Leidsegracht / Prinsengracht']] as const) {
     const [x, y] = toLocal(lng, lat), key = store.cellAt(x, y);
     // The deck may belong to a neighbour cell: find the cell whose build carries it.
     let near: BuiltCell | null = null, owner = '';
@@ -81,11 +81,13 @@ async function main(): Promise<void> {
     console.log('     ', JSON.stringify(summary(far)));
     const deck = store.surface.decks.find(d => d.profile.id === id)!;
     const p = deck.profile;
-    let crown = -Infinity, worst = 0;
+    let crown = -Infinity, worst = 0, worstAt = 0;
     for (let i = 0; i < p.x.length; i++) {
       crown = Math.max(crown, store.surface.height(p.x[i], p.y[i]));
-      if (i) worst = Math.max(worst, Math.abs(store.surface.height(p.x[i], p.y[i]) - store.surface.height(p.x[i - 1], p.y[i - 1])));
+      const d = i ? Math.abs(store.surface.height(p.x[i], p.y[i]) - store.surface.height(p.x[i - 1], p.y[i - 1])) : 0;
+      if (d > worst) { worst = d; worstAt = p.s[i]; }
     }
+    if (process.argv.includes('--verbose')) console.log(`      ${id}: worst step at s=${worstAt.toFixed(2)} (deck ${p.deck.map(v => v.toFixed(2))}, stations ${p.s.length})`);
     // A masonry arch is steep (BRU0044: 1.5 m over a few metres); 0.35 m per 0.5 m is the prototype's own surface.
     check(worst < (p.family === 'masonry-arch' ? 0.35 : 0.15), `${id}: deck axis continuous (largest 0.5 m step ${worst.toFixed(3)} m)`);
     check(crown - Math.max(deck.ends[0], deck.ends[1]) > 0.4, `${id}: crown ${crown.toFixed(2)} rises over the approaches (${deck.ends.map(e => e.toFixed(2)).join(', ')})`);
@@ -98,6 +100,26 @@ async function main(): Promise<void> {
       on.n += r.n; on.worstBelow = Math.max(on.worstBelow, r.worstBelow);
     }
     check(on.n >= Math.max(8, deck.span[1] - deck.span[0]) && on.worstBelow < 0.02, `${id}: ${on.n} street-band vertices on the ${(deck.span[1] - deck.span[0]).toFixed(1)} m deck span, worst ${on.worstBelow.toFixed(3)} m below the surface`);
+    // What the rider sees on the deck top (BRU0067 read as deck grey): across the carriageway
+    // (±2 m of the axis) at 30/50/70 % of the span, the topmost unmasked layer is a street band.
+    {
+      const built: BuiltCell[] = [];
+      for (const k of GroundStore.neighbours(owner)) if (store.covers(k)) built.push(k === owner ? near : await build(k, 0));
+      const bad: string[] = [];
+      let probes = 0;
+      for (const f of [0.3, 0.5, 0.7]) {
+        const i = p.s.findIndex(s => s >= p.deck[0] + (p.deck[1] - p.deck[0]) * f), a = Math.max(0, i - 1), b = Math.min(p.s.length - 1, i + 1);
+        const dx = p.x[b] - p.x[a], dy = p.y[b] - p.y[a], l = Math.hypot(dx, dy);
+        for (let o = -2; o <= 2; o += 0.5) {
+          const qx = p.x[i] - dy / l * o, qy = p.y[i] + dx / l * o;
+          const tops = built.map(c => layersAt(c, qx, qy)).filter(r => r.hits.length);
+          const top = tops.map(t => t.top).find(Boolean) ?? null;
+          probes++;
+          if (!top || !['asphalt', 'klinker', 'paving', 'cycle', 'paint', 'kerb'].includes(top)) bad.push(`${f}/${o}:${top}`);
+        }
+      }
+      check(!bad.length, `${id}: deck top is a street band at ${probes - bad.length}/${probes} probes${bad.length ? ` (${bad.slice(0, 6).join(' ')})` : ''}`);
+    }
     check(!!near.layers.deckBody && (near.layers.deckBody.indices.length > 0), `${id}: deck body built`);
     check(!!near.layers.quay && !!near.layers.water, `${id}: quay walls and water in the cell`);
     check(near.lod === 0 && far.stats.triangles < near.stats.triangles * 0.6, `${id}: LOD 1 is lighter (${far.stats.triangles} vs ${near.stats.triangles} triangles)`);

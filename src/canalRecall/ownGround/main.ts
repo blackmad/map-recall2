@@ -33,7 +33,7 @@ import { placementFor } from '../landmarks/signaturePlacement.js';
 import { lngLatToRd } from '../facade/rdNew.js';
 import { chunkGeometry, facadeMaterial } from '../rendererSpike/facadeMaterial.js';
 import { mapLibreEye } from '../rendererSpike/ride.js';
-import { decodeTile, fitLocalToRd, GroundField, type GroundIndex } from './heightField.js';
+import { fitLocalToRd, GroundField, readGroundTile, type GroundIndex } from './heightField.js';
 import { GroundSurface, riderPose, type Vec2 } from './surface.js';
 import { boxById } from './boxes.js';
 import type { OsmGroundExtract } from './osmGround.js';
@@ -252,10 +252,11 @@ async function loadSurface(): Promise<GroundSurface> {
   const ty0 = Math.floor(Math.min(...corners.map(c => c[1])) / index.tileSizeM), ty1 = Math.floor(Math.max(...corners.map(c => c[1])) / index.tileSizeM);
   const wanted = index.tiles.filter(([tx, ty]) => tx >= tx0 && tx <= tx1 && ty >= ty0 && ty <= ty1);
   let bytes = 0;
-  await Promise.all(wanted.map(async ([tx, ty]) => {
+  await Promise.all(wanted.map(async entry => {
+    const [tx, ty] = entry;
     const raw = await fetchBytes(`ground-height-v1/tiles/${tx}_${ty}.bin`);
     bytes += raw.byteLength;
-    const h = decodeTile(raw, index.samples);
+    const h = readGroundTile(index, entry, raw);
     if (opts.exag !== 1) for (let i = 0; i < h.length; i++) h[i] = index.sceneDatumNAP + (h[i] - index.sceneDatumNAP) * opts.exag;
     field.addTile(tx, ty, h);
   }));
