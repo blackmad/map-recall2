@@ -193,6 +193,15 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 - **Audit see-through test is hull-limited**: cast rays fully through the
   bbox (or from outside the footprint) in `glbQuality.ts`; today concave
   footprints flag false holes. Madame Tussauds has small roof-junction gaps.
+- **Historic canal-house library (De Wallen, after the schema lane merges)**:
+  staged face `wallen-oza-41-57` (Oudezijds Achterburgwal 41–57, gable types
+  from the Rijksmonument register) fails gates. Needs: 3DBAG roof masses must
+  not show above cornices (also on Bilderdijkstraat/Marnixstraat ortho
+  sheets); volute wing pieces, finials, cartouches, rooftop gablets; front
+  lean; pier arcades and mixed door/shutter ground floors; separate cornice
+  colour; clip cornice details at oblique party walls (3–11 cm overhang);
+  mansards with pedimented dormers; 177915 footprint IoU 0.76. Voorburgwal
+  strips (2021 panoramas, oblique) rectify badly — pick dates by hand.
 - **Block faces next** (`docs/buildings-pipeline.md` "Block-face authoring";
   now the default unit for attached ordinary buildings): schema for per-bay
   widths and off-centre gables (081118, 156286, Utrechtse 76), a shopfront
