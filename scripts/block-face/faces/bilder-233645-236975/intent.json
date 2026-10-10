@@ -1,0 +1,375 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bilder-233645-236975",
+ "street": "Bilderdijkstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/block-face/bilder-233645-236975/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012233645",
+   "slug": "bface-233645",
+   "address": "Bilderdijkstraat 140",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "cornice",
+      "crownCap": "pediment",
+      "crownCapSpan": "wide",
+      "crownCapRise": "normal",
+      "storeys": 5,
+      "bays": [
+       4,
+       4,
+       4,
+       4,
+       3
+      ],
+      "axisGrid": 4,
+      "storeyAxes": {
+       "4": [
+        0,
+        1,
+        3
+       ]
+      },
+      "windows": "sash",
+      "archedStoreys": [
+       4
+      ],
+      "bands": "storey",
+      "doorBay": 3,
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "white",
+       "fascia": false,
+       "displayWindows": 2,
+       "entrance": "right",
+       "stallriser": "low",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "natural-wood"
+       },
+       "shopShare": 0.65,
+       "evidence": "pano 2024-11-29 + OSM node 11368129470"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6b3a2c",
+     "frame": "white",
+     "door": "natural-wood",
+     "stone": "grey-painted"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "restaurant",
+    "name": "SILK Amsterdam",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 11368129470,
+     "name": "SILK Amsterdam",
+     "tags": "amenity=restaurant"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "White-framed restaurant window with a six-light transom row and glazed corner door; two brown house doors with a white panel at the right. No sign legible on the strip."
+   },
+   "rhythm": {
+    "bays": "4 window axes on storeys 1-3, 3 arched windows in the top storey",
+    "identicalBays": "storeys 1-3 identical",
+    "windowsPerStorey": "ground: transom + glass + door | 1: 4 (balcony axis 1) | 2: 4 | 3: 4 | 4: 3 arched",
+    "symmetry": "none; gentle rounded gable roughly centred",
+    "groundFloor": "white-framed restaurant glass at the left, two brown doors at the right",
+    "signage": "none legible",
+    "roofline": "wide low rounded pediment above a parapet",
+    "citation": "bilder-233645-236975 strip.jpg pand 1",
+    "photoRows": [
+     3,
+     4,
+     4,
+     4,
+     3
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "top-storey arched windows are not on the lower window axes (paired right); modelled on axes 0,1,3",
+     "ground-floor transom row is not modelled",
+     "the face is split from the Bilderdijkstraat 122-134 face: 134/136 share a design not expressed here"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236881",
+   "slug": "bface-236881",
+   "address": "Bilderdijkstraat 138",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "cornice",
+      "crownCap": "pediment",
+      "crownCapSpan": "wide",
+      "crownCapRise": "normal",
+      "storeys": 5,
+      "bays": [
+       4,
+       4,
+       4,
+       4,
+       3
+      ],
+      "axisGrid": 4,
+      "storeyAxes": {
+       "4": [
+        0,
+        1,
+        3
+       ]
+      },
+      "windows": "sash",
+      "archedStoreys": [
+       4
+      ],
+      "bands": "storey",
+      "doorBay": 0,
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        2
+       ]
+      },
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "name": "Cortazu",
+       "displayWindows": 2,
+       "stallriser": "none",
+       "residentialDoor": {
+        "side": "left",
+        "colour": "natural-wood"
+       },
+       "shopShare": 0.9,
+       "evidence": "pano 2024-11-29 + OSM node 14201214801"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6b3a2c",
+     "frame": "white",
+     "door": "natural-wood",
+     "stone": "grey-painted"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "shop",
+    "name": "Cortazu",
+    "category": "shop=clothes",
+    "osm": {
+     "type": "node",
+     "id": 14201214801,
+     "name": "Cortazu",
+     "tags": "shop=clothes"
+    },
+    "bag": [],
+    "agreement": "osm-only",
+    "note": "Black wide shopfront with large glass and two small hanging signs; no legible name on the strip (tree), name from OSM. House door at the left. BAG lists no ground unit for no. 138."
+   },
+   "rhythm": {
+    "bays": "4 window axes on storeys 1-3 (balcony axis 2), 3 arched windows in the top storey",
+    "identicalBays": "storeys 1-3 identical; same family as 233645 and 236975",
+    "windowsPerStorey": "ground: door + shop | 1: 4 | 2: 4 | 3: 4 | 4: 3 arched",
+    "symmetry": "none",
+    "groundFloor": "black fascia and wide glazed shopfront, house door left",
+    "signage": "none legible (hanging signs only)",
+    "roofline": "wide low rounded pediment",
+    "citation": "bilder-233645-236975 strip.jpg pand 2",
+    "photoRows": [
+     2,
+     4,
+     4,
+     4,
+     3
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "large tree in front hides windows on the strip: rows inferred from neighbours 233645 and 236975",
+     "top-storey arched windows off the lower axes"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012236975",
+   "slug": "bface-236975",
+   "address": "Bilderdijkstraat 136",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "cornice": "simple",
+      "hoist": false,
+      "gable": "cornice",
+      "crownCap": "pediment",
+      "crownCapSpan": "wide",
+      "crownCapRise": "normal",
+      "storeys": 5,
+      "bays": [
+       4,
+       4,
+       4,
+       4,
+       3
+      ],
+      "axisGrid": 4,
+      "storeyAxes": {
+       "4": [
+        0,
+        1,
+        3
+       ]
+      },
+      "windows": "sash",
+      "archedStoreys": [
+       4
+      ],
+      "bands": "storey",
+      "doorBay": 3,
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ]
+      },
+      "shopfront": {
+       "colour": "black",
+       "fascia": true,
+       "displayWindows": 2,
+       "stallriser": "none",
+       "residentialDoor": {
+        "side": "right",
+        "colour": "natural-wood"
+       },
+       "shopShare": 0.75,
+       "evidence": "pano 2024-11-29 + OSM node 11395804125 (vacant)"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6b3a2c",
+     "frame": "white",
+     "door": "natural-wood",
+     "stone": "grey-painted"
+    }
+   },
+   "groundFloor": {
+    "photoDate": "2024-11-29",
+    "use": "vacant",
+    "category": "shop=vacant",
+    "osm": {
+     "type": "node",
+     "id": 11395804125,
+     "tags": "shop=vacant"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "agreement": "osm-and-photo",
+    "note": "Empty shop behind black fascia and dark glass (vehicle reflected on the glass), small red-white hanging signs; two brown house doors at the right."
+   },
+   "rhythm": {
+    "bays": "4 window axes on storeys 1-3 (balcony axis 1), 3 arched windows in the top storey",
+    "identicalBays": "storeys 1-3 identical",
+    "windowsPerStorey": "ground: shop glass + 2 doors | 1: 4 | 2: 4 | 3: 4 | 4: 3 arched",
+    "symmetry": "none",
+    "groundFloor": "black fascia and dark glass, double brown doors right",
+    "signage": "none",
+    "roofline": "wide low rounded pediment",
+    "citation": "bilder-233645-236975 strip.jpg pand 3",
+    "photoRows": [
+     2,
+     4,
+     4,
+     4,
+     3
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "top-storey arched windows off the lower axes",
+     "leaves hide parts of the right bay",
+     "photo crown is a taller rounded gable peak (~1.2 m above the parapet); modelled as a wide rounded cap of normal rise"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [
+   {
+    "pands": [
+     "0363100012233645",
+     "0363100012236881",
+     "0363100012236975"
+    ],
+    "evidence": "strip: parapet lines of the three 1909 houses at the same height (~16.5 m, 3DBAG spread 0.1 m); pediments rise above"
+   }
+  ],
+  "identical": [],
+  "notes": [
+   "Same 1909 design family as Bilderdijkstraat 132-134 (installed face bilder-081118-155417), which follows to the right."
+  ]
+ },
+ "authoring": {
+  "author": "claude-sonnet-5.5 (block-face lane), from strip-labelled.png + 2x zoomed ground/roof crops",
+  "passes": 1,
+  "note": "Bilderdijkstraat 136-140 (1909 trio)."
+ }
+}

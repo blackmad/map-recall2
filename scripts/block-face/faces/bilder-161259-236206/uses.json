@@ -1,0 +1,223 @@
+{
+ "street": "Bilderdijkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T07:24:30.022Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012161259",
+   "addresses": [
+    "Bilderdijkstraat 120"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 120-H",
+     "use": "winkelfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000586126"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11395770729,
+     "lngLat": [
+      4.8710893,
+      52.3683646
+     ],
+     "tags": {
+      "amenity": "kindergarten",
+      "name": "Junior Service Amsterdam"
+     },
+     "fetchedAt": "2026-10-10T07:24:30.022Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161260",
+   "addresses": [
+    "Bilderdijkstraat 118"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 118-1",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000586123"
+    },
+    {
+     "address": "Bilderdijkstraat 118-H",
+     "use": "winkelfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000586122"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11395807175,
+     "lngLat": [
+      4.871081,
+      52.3684024
+     ],
+     "tags": {
+      "name": "Moolhuijsen.nl",
+      "shop": "printer_ink"
+     },
+     "fetchedAt": "2026-10-10T07:24:30.022Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012157154",
+   "addresses": [
+    "Bilderdijkstraat 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 116-H",
+     "use": "winkelfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000586118"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11395810277,
+     "lngLat": [
+      4.8710539,
+      52.3684496
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "Toko Bersama"
+     },
+     "fetchedAt": "2026-10-10T07:24:30.022Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160212",
+   "addresses": [
+    "Bilderdijkstraat 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 114-H",
+     "use": "winkelfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000586110"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165170",
+   "addresses": [
+    "Bilderdijkstraat 112"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 112-H",
+     "use": "winkelfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000586106"
+    },
+    {
+     "address": "Bilderdijkstraat 112-H",
+     "use": "winkelfunctie",
+     "areaM2": 162,
+     "bagId": "0363010012135266"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11395807174,
+     "lngLat": [
+      4.8709774,
+      52.3685546
+     ],
+     "tags": {
+      "name": "ØLÅF",
+      "opening_hours": "Mo-Sa 11:00-19:00; Su 12:00-18:00",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-10T07:24:30.022Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236206",
+   "addresses": [
+    "Bilderdijkstraat 108",
+    "Bilderdijkstraat 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 108-H",
+     "use": "winkelfunctie",
+     "areaM2": 594,
+     "bagId": "0363010000586099"
+    },
+    {
+     "address": "Bilderdijkstraat 108-H",
+     "use": "winkelfunctie",
+     "areaM2": 682,
+     "bagId": "0363010012087355"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3289097622,
+     "lngLat": [
+      4.870832,
+      52.3686464
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "108-H",
+      "addr:postcode": "1053KZ",
+      "addr:street": "Bilderdijkstraat",
+      "branch": "Bilderdijkstraat",
+      "brand": "Ekoplaza Foodmarqt",
+      "brand:website": "https://www.ekoplaza.nl/nl/foodmarqt",
+      "brand:wikidata": "Q140024015",
+      "email": "bilderdijkstraat@ekoplaza.nl",
+      "name": "Ekoplaza Foodmarqt",
+      "not:brand:wikidata": "Q47017915",
+      "opening_hours": "Mo-Sa 08:30-20:00; Su 10:00-20:00",
+      "operator": "Ekoplaza",
+      "operator:wikidata": "Q47017915",
+      "organic": "only",
+      "phone": "+31 20 787 0810",
+      "shop": "supermarket",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.ekoplaza.nl/nl/winkels/ekoplaza-foodmarqt-bilderdijkstraat"
+     },
+     "fetchedAt": "2026-10-10T07:24:30.022Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
