@@ -19,6 +19,8 @@ import { decodeProfile } from '../elevation/bridgeDeck';
 import { localToLngLat, type BridgeExtract, type ElevationIndex } from '../elevation/elevationData';
 import { fromLocal, toLocal } from '../galleryPipeline';
 import { lngLatToRd } from '../facade/rdNew';
+import { groundMercatorFromLocal, groundParticipant } from './sharedFrameGround';
+import { mercatorOfLngLat, mercatorUnitsPerMetre } from '../rendererShared/frameMath';
 
 // ------------------------------------------------------------- helpers
 function faces(m: MeshArrays): { n: [number, number, number]; c: [number, number, number] }[] {
@@ -318,6 +320,17 @@ test('model bases: footprint minimum, floor binning, per-building range lift', (
   const pos = new Float32Array(12);
   assert.equal(liftRanges(pos, [{ id: 'a', start: 0, count: 2 }, { id: 'b', start: 2, count: 2 }], id => (id === 'a' ? 1.5 : undefined)), 1);
   assert.deepEqual([pos[2], pos[5], pos[8]], [1.5, 1.5, 0]);
+});
+
+test('shared-frame adapter maps the ground frame to Mercator like the facades', () => {
+  const m = groundMercatorFromLocal();
+  const [x, y] = [523.4, -1210.7], [lng, lat] = fromLocal(x, y);
+  const want = mercatorOfLngLat(lng, lat, 0);
+  const got = [m[0] * x + m[4] * y + m[12], m[1] * x + m[5] * y + m[13]];
+  const metre = mercatorUnitsPerMetre(want[1]);
+  assert.ok(Math.hypot(got[0] - want[0], got[1] - want[1]) / metre < 0.5, 'within half a metre 1.3 km from the origin');
+  const p = groundParticipant({});
+  assert.equal(p.mercatorFromLocal!({} as never), p.mercatorFromLocal!({} as never));
 });
 
 // ------------------------------------------------------------- named regressions on the published extracts
