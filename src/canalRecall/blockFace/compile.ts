@@ -10,6 +10,7 @@
  * otherwise left as surveyed and reported, because photo and survey disagree).
  */
 import {NodeIO} from '@gltf-transform/core';
+import * as T from 'three';
 import {KHRMeshQuantization} from '@gltf-transform/extensions';
 import type {BuildingFacts} from '../buildingRecipe/facts.ts';
 import {pointInRing} from '../buildingRecipe/facts.ts';
@@ -130,13 +131,31 @@ export function repitchFrontRoof(f: BuildingFacts, eavesNap: number, opts: {topN
     if (!r.vertices.some(v => depth(v) <= tol)) { roofs.push(r); continue; }
     if (r.ringsRD.length > 1) throw Error(`${r.surfaceId}: a front roof surface with holes cannot be re-pitched`);
     const ring = r.vertices.map(v => [v[0], v[1], opts.topNap === undefined ? v[2] : Math.min(v[2], opts.topNap)]);
-    const d = Math.max(0.3, (Math.max(...ring.map(v => v[2])) - eavesNap) / tan);
-    const front = clip(ring, d, 1), rear = clip(ring, d, -1);
-    if (front) {
-      const pitched = front.map(v => { const s = Math.max(0, Math.min(d, depth(v))); return [v[0], v[1], eavesNap + (v[2] - eavesNap) * s / d]; });
-      roofs.push({...r, surfaceId: `${r.surfaceId}:front`, vertices: pitched, ringsRD: [pitched], slopeDeg: Math.round(Math.atan(tan) * 180 / Math.PI), areaM2: area(pitched)});
+    // A face 3DBAG already pitches up from the facade (Bilderdijkstraat 113's mansard, 57 degrees): only its foot moves.
+    if (r.slopeDeg >= 30) {
+      const moved = ring.map(v => depth(v) <= tol ? [v[0], v[1], eavesNap] : v);
+      roofs.push({...r, vertices: moved, ringsRD: [moved]});
+      continue;
     }
-    if (rear && area(rear) > 0.01) roofs.push({...r, vertices: rear, ringsRD: [rear], areaM2: area(rear)});
+    // A flat top carried out to the facade: the strip in front of depth d becomes a steep face. The height change is a
+    // function of position only (z' = eaves + (z - eaves) * depth / d inside the strip), so pieces agree at shared
+    // vertices. Non-convex surfaces are cut triangle by triangle (a half-plane clip of a non-convex ring bridges its
+    // disjoint parts with zero-width spikes); a cut that would leave a sliver keeps the triangle whole instead.
+    const d = Math.max(0.3, (Math.max(...ring.map(v => v[2])) - eavesNap) / tan);
+    const pitch = (v: number[]) => { const s = depth(v); return s >= d ? v : [v[0], v[1], eavesNap + (v[2] - eavesNap) * Math.max(0, s) / d]; };
+    const turn = (k: number) => { const p = ring[k], q = ring[(k + 1) % ring.length], s = ring[(k + 2) % ring.length]; return (q[0] - p[0]) * (s[1] - q[1]) - (q[1] - p[1]) * (s[0] - q[0]); };
+    const turns = ring.map((_, k) => turn(k)).filter(x => Math.abs(x) > 1e-9), convex = turns.every(x => x > 0) || turns.every(x => x < 0);
+    const tris = convex ? [ring] : T.ShapeUtils.triangulateShape(ring.map(v => new T.Vector2(v[0], v[1])), []).map(t => t.map(k => ring[k]));
+    const pieces: {ring: number[][]; front: boolean}[] = [];
+    for (const t of tris) {
+      const front = clip(t, d, 1), rear = clip(t, d, -1);
+      if (front && rear && area(front) >= 0.01 && area(rear) >= 0.01) pieces.push({ring: front, front: true}, {ring: rear, front: false});
+      else pieces.push({ring: t, front: t.reduce((s, v) => s + depth(v), 0) / 3 < d});
+    }
+    pieces.forEach((p, k) => {
+      const v = p.ring.map(pitch);
+      roofs.push({...r, surfaceId: `${r.surfaceId}:${p.front ? 'f' : 'r'}${k}`, vertices: v, ringsRD: [v], areaM2: area(v), ...(p.front ? {slopeDeg: Math.round(Math.atan(tan) * 180 / Math.PI)} : {})});
+    });
   }
   out.roofsRD = roofs;
   const z = roofs.flatMap(r => r.vertices.map(v => v[2] - out.attributes.b3_h_maaiveld));

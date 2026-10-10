@@ -10,6 +10,13 @@
    "capturedAt": "2023-01-12",
    "image": "staging/block-face/bilder-161281-157756/strip.jpg",
    "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "strip-2021-02-22",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-22",
+   "image": "staging/block-face/zz-bilder-113-d1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
   }
  ],
  "houses": [
@@ -51,7 +58,7 @@
         4
        ]
       },
-      "dormers": 2,
+      "dormers": 1,
       "doorBay": 3,
       "windows": "sash",
       "bands": "both",
@@ -66,7 +73,8 @@
         1
        ],
        "evidence": "pano 2023-01-12 + OSM node 11381117868"
-      }
+      },
+      "dormerStyle": "pediment"
      }
     ],
     "roof": {
@@ -100,25 +108,27 @@
    "rhythm": {
     "bays": "wide 1890 front: blind left third (cream-banded brick, no windows), 3 window axes in the right two thirds",
     "identicalBays": "storeys 1-3 identical",
-    "windowsPerStorey": "ground: large window left + 3 windows right | 1-3: 3 windows at the right, none at the left | roof: 2 dormers",
+    "windowsPerStorey": "ground: large window left + 3 windows right | 1-3: 3 windows at the right, none at the left | roof: 1 pedimented dormer + a glazed roof terrace",
     "symmetry": "none",
     "groundFloor": "cream-painted ground floor, large glazed opening at the far left",
     "signage": "lettered band (YES FUTURE), not the trading name",
-    "roofline": "heavy cornice, mansard with 2 dormers and a roof-terrace edge between",
-    "citation": "bilder-161281-157756 strip.jpg pand 1",
+    "roofline": "heavy cornice, top at strip row 257 (13.6 m; 3DBAG eaves 14.33 m on its own ground reads the mansard), a mansard with a glazed roof terrace and one pedimented dormer right of centre (apex row ~165); confirmed on the 2021-02-22 strip (staging/block-face/zz-bilder-113-d1)",
+    "citation": "bilder-161281-157756 strip.jpg pand 1; upper storeys confirmed leaf-off on 2021-02-22 (zz-bilder-113-d1 strip, ground floor behind a building-site hoarding that day)",
     "photoRows": [
      4,
      3,
      3,
      3,
-     2
+     1
     ],
     "photoGables": 0,
     "schemaLimits": [
      "blind left third is modelled by using only the right 3 of 5 axes (axisGrid trick); pitch differs slightly from the photo",
      "cream and brick banding is a two-colour approximation",
      "ground-floor residential windows at the right are not modelled; the shopfront spans the full width (shopShare has no effect without a residential door)",
-     "the 14 m front reads like two builds joined (jogs); one front plane in the model"
+     "the 14 m front reads like two builds joined (jogs); one front plane in the model",
+     "the dormer stands right of centre (x ~0.66 of the front) on the photo; one dormer is centred",
+     "the glazed roof terrace on the mansard is not modelled"
     ]
    }
   },
@@ -148,7 +158,8 @@
        "displayWindows": 1,
        "stallriser": "low",
        "evidence": "pano 2023-01-12 + OSM node 11381139492"
-      }
+      },
+      "dormerStyle": "pediment"
      }
     ],
     "roof": {
@@ -185,8 +196,8 @@
     "symmetry": "mirror-symmetric",
     "groundFloor": "shop glass and door under a cream fascia band",
     "signage": "illegible script on the fascia band",
-    "roofline": "heavy cornice, mansard with one dormer",
-    "citation": "bilder-161281-157756 strip.jpg pand 2",
+    "roofline": "cornice under a balustrade, top at strip row 322 (12.0 m; 3DBAG eaves 15.73 m reads the mansard top), one ornate pedimented dormer standing on it (apex row ~230)",
+    "citation": "bilder-161281-157756 strip.jpg pand 2; storey count (ground + 3 + dormer) confirmed on the leaf-off 2021-02-22 strip (zz-bilder-113-d1), where the tree does not hide the front",
     "photoRows": [
      3,
      3,
@@ -196,7 +207,7 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "tree branches hide the upper storeys on the strip: window rows read through twigs",
+     "the balustrade above the cornice is not modelled",
      "sign text is illegible: none modelled",
      "cream and brick banding is approximated"
     ]
@@ -209,12 +220,27 @@
   "identical": [],
   "notes": [
    "Leaf-off capture 2023-01-12: the 2024-11-29 strip is hidden behind a plane tree.",
-   "Joined to 157757 by a ~0.65 m gap/jog (no shared party wall), so the odd side is two faces here."
+   "Joined to 157757 by a ~0.65 m gap/jog (no shared party wall), so the odd side is two faces here.",
+   "Pass 2 (bilder-limits lane): a second leaf-off capture (2021-02-22) confirms both fronts: 113 ground + 3 + mansard, 115 ground + 3 + one dormer. Eaves are strip-measured with the mansard front re-pitched (measuredEaves.frontRoof)."
+  ],
+  "measuredEaves": [
+   {
+    "pand": "0363100012161281",
+    "stripRow": 257,
+    "frontRoof": {},
+    "evidence": "top of the heavy cornice (zoom c1, x 300-738, rows 140-400, 2023-01-12)"
+   },
+   {
+    "pand": "0363100012157756",
+    "stripRow": 322,
+    "frontRoof": {},
+    "evidence": "top of the cornice under the balustrade, where the dormer stands (zoom c1); 115 is 1.6 m lower than 113 on both the 2023-01-12 and 2021-02-22 strips, 3DBAG has it 0.8 m higher"
+   }
   ]
  },
  "authoring": {
   "author": "claude-sonnet-5.5 (block-face lane), from strip-labelled.png + 2x zoomed ground/roof crops",
-  "passes": 1,
+  "passes": 2,
   "note": "Bilderdijkstraat 113-115 (odd side, 1890)."
  }
 }
