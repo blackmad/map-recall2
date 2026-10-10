@@ -19,6 +19,19 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
+- **Shared material textures for landmark walls (user idea, backlog)**:
+  landmark and ordinary models look bare where a wall is inferred or
+  unmodelled (e.g. the fire station Hendrik rear, probably brick). Pull the
+  city's shared texture cells (brick/stucco/stone, as the large-building
+  tier already does) onto plain landmark wall materials, chosen from the
+  photo colour or BAG era, so unphotographed sides read as brick rather than
+  flat paint. Must stay cheap (shared atlas, no per-model textures) and must
+  not hide missing evidence: inferred walls keep their "inferred" label.
+- **Interwar perimeter blocks** (e.g. Indische buurt/Oost courtyard blocks):
+  drawn by the generic house facade today; not in the large-tier (post-1945
+  / > 26 m) or ordinary backlog. Treat as street-survey block types (one
+  architect's design repeated round a block) — candidate after the
+  Nassaukade/De Clercqstraat type pilot.
 - **Gable details seen at street level**: hoist beams read as loose black
   poles (worst on Utrechtsestraat neck gables) — check length/visibility;
   OZA 45 and 47 crests modelled as grey domes (photo: carved crest, spiky
@@ -31,8 +44,10 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   gallery's lopsided 156287 gable is not in the photo nor the authored
   outline — trace it (the gallery model is the retired per-house GLB); no
   canal-house gold set for the classifier (heuristic confidence 0.4–0.5).
-- **Building taxonomy (user, 2026-10-10)**, in progress on the street-surveys
-  lane: (1) landmark buildings = curated list only (only these count for
+- **Building taxonomy (user, 2026-10-10)**, done (see HISTORY); remaining:
+  Bilderdijkstraat defects table on street-surveys.html (gables drawn as
+  dormers, 3DBAG roof slabs, missing awnings, 158–162 drawn as the corner
+  block); refile 156732 under Jacob van Lennepstraat. Definitions: (1) landmark buildings = curated list only (only these count for
   discovery/quiz/What's new/route selection); (2) ordinary buildings = one-off
   medium-fidelity reconstructions of large non-landmark buildings; (3) street
   surveys = repetitive canal-house / block-face work aiming at reusable

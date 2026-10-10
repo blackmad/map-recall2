@@ -4,6 +4,7 @@
  "chunks": [
   {
    "id": "chunk-bilder-079721-x2",
+   "category": "street-survey",
    "name": "bilder-079721-x2",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-bilder-079721-x2.glb?asset=ccfde0400d0585a9",
    "sha256": "ccfde0400d0585a982bd1f901b2a983f5066d1b86d3402181881acc7ed3dad83",
@@ -294,6 +295,7 @@
   },
   {
    "id": "chunk-bilder-152363-x2",
+   "category": "street-survey",
    "name": "bilder-152363-x2",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-bilder-152363-x2.glb?asset=98234587ea316e4e",
    "sha256": "98234587ea316e4ea170b7424fb8ec11fb52640050d01f388390aae0493d2b61",
@@ -516,6 +518,7 @@
   },
   {
    "id": "chunk-face-bilder-081118-155417",
+   "category": "street-survey",
    "name": "face-bilder-081118-155417",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-081118-155417.glb?asset=6fe3106fe3b8d6f8",
    "sha256": "6fe3106fe3b8d6f8e03ee58792f9b23f51a30fab40350afbee42baaef032bc40",
@@ -1296,6 +1299,7 @@
   },
   {
    "id": "chunk-face-bilder-233580-162444",
+   "category": "street-survey",
    "name": "face-bilder-233580-162444",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-233580-162444.glb?asset=92924561c95de2be",
    "sha256": "92924561c95de2be039d0ea95b0e3fd7640f0a4b618cc8b5bf49bb1a94aab41f",
@@ -1800,6 +1804,7 @@
   },
   {
    "id": "chunk-face-bilder-080336-090492",
+   "category": "street-survey",
    "name": "face-bilder-080336-090492",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-080336-090492.glb?asset=01cefc9e2cb620f8",
    "sha256": "01cefc9e2cb620f811cc5b24b532524d12654627df4833942bb6f00789708e2e",
@@ -2224,6 +2229,7 @@
   },
   {
    "id": "chunk-face-bilder-233645-236975",
+   "category": "street-survey",
    "name": "face-bilder-233645-236975",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-233645-236975.glb?asset=dea7b0a64b4d5ab7",
    "sha256": "dea7b0a64b4d5ab7d9002163062395d230fc47b61cdea645a45a8c8df16098bf",
@@ -2554,6 +2560,7 @@
   },
   {
    "id": "chunk-face-bilder-161259-236206",
+   "category": "street-survey",
    "name": "face-bilder-161259-236206",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-161259-236206.glb?asset=7d00aef499f6682b",
    "sha256": "7d00aef499f6682b3fcc546b7c39aacf3fcf24ed1dc214a785e4bafeecd95e46",
@@ -3197,6 +3204,7 @@
   },
   {
    "id": "chunk-face-bilder-236189-166159",
+   "category": "street-survey",
    "name": "face-bilder-236189-166159",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-236189-166159.glb?asset=d9a52781d89678f8",
    "sha256": "d9a52781d89678f88a92bafe881d9f156d48ea545d0e4669675a5160a50dd969",
@@ -3643,6 +3651,7 @@
   },
   {
    "id": "chunk-face-bilder-166802-235892",
+   "category": "street-survey",
    "name": "face-bilder-166802-235892",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-166802-235892.glb?asset=4d42d78421ebd97b",
    "sha256": "4d42d78421ebd97be8fc2fd2af72a51bf744208874cd9c2e7988447c3e4f32df",
@@ -4099,6 +4108,7 @@
   },
   {
    "id": "chunk-face-bilder-164451-156126",
+   "category": "street-survey",
    "name": "face-bilder-164451-156126",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bilder-164451-156126.glb?asset=e7c5d29eb4e2b367",
    "sha256": "e7c5d29eb4e2b3676cfbc576493c51fd1bb8b634f54bce2372f9259a3f346ecb",
@@ -4772,6 +4782,7 @@
   },
   {
    "id": "chunk-face-utrechtse-48-76",
+   "category": "street-survey",
    "name": "face-utrechtse-48-76",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-utrechtse-48-76.glb?asset=d68472786a82e841",
    "sha256": "d68472786a82e8413aab0321debef5082fecfcfa7a864b1e019d923c64a8c295",
@@ -5861,6 +5872,7 @@
   },
   {
    "id": "chunk-face-marnix-124-138",
+   "category": "street-survey",
    "name": "face-marnix-124-138",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-marnix-124-138.glb?asset=2d4894df9161aa88",
    "sha256": "2d4894df9161aa880e699ec1fe6682bddaa46c7e7a7754de53b3e61ef6961acc",
@@ -6562,6 +6574,7 @@
   },
   {
    "id": "chunk-face-marnix-c",
+   "category": "street-survey",
    "name": "face-marnix-c",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-marnix-c.glb?asset=91681c771e54e994",
    "sha256": "91681c771e54e994f36b2be6aa5f04cc69937f8834a875e56762ae283a5c81a3",
@@ -7337,6 +7350,7 @@
   },
   {
    "id": "chunk-face-wallen-ozv-115-125",
+   "category": "street-survey",
    "name": "face-wallen-ozv-115-125",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-wallen-ozv-115-125.glb?asset=c431f49d8eee609e",
    "sha256": "c431f49d8eee609ed1693582ab0009fe7dd7a8e423ecf34cb533c057e9c0c658",
@@ -7978,6 +7992,7 @@
   },
   {
    "id": "chunk-face-wallen-oza-41-57",
+   "category": "street-survey",
    "name": "face-wallen-oza-41-57",
    "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-wallen-oza-41-57.glb?asset=08ddbb651e529e18",
    "sha256": "08ddbb651e529e182c6c04b42e347b2db07f3ecf82f29d8c10916b61d2997b78",

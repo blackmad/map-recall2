@@ -83,6 +83,8 @@ export interface SignatureModelSpec {
   /** Street chunk (one mesh for a block face, see streetChunks/manifest.ts): the pands it draws, so hover resolves the building under the cursor. */
   readonly chunkPands?: readonly { readonly buildingId: string; readonly address: string; readonly footprint: unknown }[];
   readonly assetKind?: 'building' | 'memorial' | 'ordinary-building' | 'landscape';
+  /** Taxonomy (buildingCategory.ts). Absent = landmark; only landmarks become POIs, cards or route candidates. */
+  readonly buildingCategory?: import('../buildingCategory.js').BuildingCategory;
   /** Exact native plan for ordinary replacement picking, including courtyard holes. */
   readonly buildingFootprint?: { readonly type: 'Polygon' | 'MultiPolygon'; readonly coordinates: unknown };
   /** Source-supported per-model palette overrides; decals retain their original colors. */

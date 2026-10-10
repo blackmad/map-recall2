@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { gunzipSync } from 'node:zlib';
 import { triageDominantBuilding, type FidelityReview } from './dominant-building-triage';
-import { SIGNATURE_MODELS } from '../../src/canalRecall/landmarks/signatureModels';
+import { PLACED_MODELS as SIGNATURE_MODELS } from '../../src/canalRecall/landmarks/placedModels';
 
 const root = 'public/data/extracts/amsterdam/building-tiles';
 const output = 'public/canal-drive/dominant-building-backlog.json';

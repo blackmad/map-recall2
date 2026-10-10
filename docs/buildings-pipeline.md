@@ -7,6 +7,42 @@ lifted canalhouse component library compiles the GLB; automated **gates**
 check it. Follows the decision in `docs/plans/facade-component-output-contract.md`
 (branch `terra/facade-component-contract`): models classify, compilers build.
 
+## Building categories (taxonomy, 2026-10-10)
+
+Every placed model is exactly one of three categories, recorded in the source
+data and typed in `src/canalRecall/buildingCategory.ts`:
+
+| Category | What | Where it is recorded | Gallery |
+| --- | --- | --- | --- |
+| `landmark` | The curated landmark list: the surveyed 3D Warehouse batch and `manualCatalogue.json` entries without a `category`. **Only these** become destinations, cards, discovery/quiz items, route candidates or What's new landmark counts (`SIGNATURE_MODELS`). | absent `category` = landmark | `manual-landmarks.html` |
+| `ordinary` | One-off, medium-fidelity reconstructions of large non-landmark buildings: the 38 non-recipe `catalogue.json` entries (industrial halls, office blocks, multi-plot canal warehouses ≥ ~320 m²) and the 13 Haparandaweg residential/industrial blocks (`"category": "ordinary"` in `manualCatalogue.json`). | `category` on every `ordinary-buildings-data/catalogue.json` entry; `manualCatalogue.json` | `manual-ordinary-buildings.html` |
+| `street-survey` | The repetitive canal-house / block-face work whose aim is reusable geometry: block faces (`scripts/block-face/faces/*`), per-house recipes installed by `scripts/building-recipes/install.ts`, and every street chunk. | `category` on `catalogue.json` (written by `install.ts`) and on every `chunks.json` entry (written by `streetChunks/manifest.ts`) | `street-surveys.html` |
+
+Rules: the game draws all three (`GAME_BUILDING_MODELS`); landmark status is
+never inferred from being drawn. Haparandaweg 2–4 (Het 4e Gymnasium) stays a
+landmark because it has a genuine POI identity; the other Haparandaweg blocks
+have none. Keizersgracht 569–575 and Leidsestraat 67–71 were authored with the
+recipe tooling but are single large buildings with their own export scripts,
+so they are `ordinary`. Audits that need every modelled footprint use
+`landmarks/placedModels.ts`. Regression: `src/canalRecall/buildingCategory.test.ts`.
+
+**Street-survey catalogue** (`street-surveys.html`, typed in
+`src/canalRecall/streetSurveys/`): street → block face → houses, with the face
+status (installed / held + reason / staged), a strip photo vs model-ortho
+thumbnail pair, shops, schema limits, inferred rears, and per-house recipe
+models marked superseded when a face draws their pand. Rebuild:
+
+```sh
+node --import tsx scripts/street-surveys/street-pands.ts --street=Bilderdijkstraat   # BAG pand list (committed)
+node --import tsx scripts/block-face/compile.ts --face=<id>      # staging report/chunk for each face (no --install)
+node --import tsx scripts/street-surveys/build.ts --review-out=artifacts/street-surveys   # data + ~650 KB webp thumbs
+npx esbuild src/canalRecall/streetSurveys/page.ts --bundle --format=iife --outfile=public/canal-drive/js/street-surveys.bundle.js --minify
+```
+
+The strip photos come from `staging/block-face/<face>/strip.jpg` (intake) and
+per-house photos from `staging/pand-reference/<pand>/front.jpg`. Render-vs-photo
+defects found by looking go in `scripts/street-surveys/reviews/<street>.json`.
+
 ## Run it
 
 ```sh

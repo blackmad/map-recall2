@@ -31,7 +31,8 @@
   h1{font:700 clamp(30px,6vw,52px)/1.05 Georgia,"Iowan Old Style","Times New Roman",serif;margin:0 0 10px;letter-spacing:-.01em}
   .lede{margin:0;max-width:60ch;color:var(--mut);font-size:16px}
   .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:22px}
-  @media (min-width:700px){.stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}}
+  @media (min-width:700px){.stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}}
+  @media (min-width:960px){.stats{grid-template-columns:repeat(5,minmax(0,1fr))}}
   .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow)}
   .stat b{display:block;font:700 clamp(24px,4.5vw,34px)/1.1 Georgia,serif;font-variant-numeric:tabular-nums}
   .stat span{font-size:12.5px;color:var(--mut)}
@@ -86,6 +87,7 @@
   <nav class="top" aria-label="Galleries">
     <a href="manual-landmarks.html">Landmark models</a>
     <a href="manual-ordinary-buildings.html">Ordinary buildings</a>
+    <a href="street-surveys.html">Street surveys</a>
     <a href="landmark-queue.html">Building queue</a>
     <a href="park-landscape.html">Park views</a>
     <a href="index.html">Play the game</a>
@@ -97,6 +99,7 @@
     <div class="stats" id="stats" aria-live="polite">
       <div class="stat"><b data-k="landmarks">&ndash;</b><span>landmarks modelled</span></div>
       <div class="stat"><b data-k="ordinary">&ndash;</b><span>ordinary buildings</span></div>
+      <div class="stat"><b data-k="survey">&ndash;</b><span>street-survey models</span></div>
       <div class="stat"><b data-k="tris">&ndash;</b><span>triangles in total</span></div>
       <div class="stat fresh"><b data-k="week">&ndash;</b><span id="weekNote">new this week</span></div>
     </div>
@@ -108,6 +111,7 @@
       <button type="button" data-kind="all" aria-pressed="true">All</button>
       <button type="button" data-kind="landmark" aria-pressed="false">Landmarks</button>
       <button type="button" data-kind="ordinary" aria-pressed="false">Ordinary</button>
+      <button type="button" data-kind="street-survey" aria-pressed="false">Street surveys</button>
     </div>
     <label class="search"><input id="q" type="search" placeholder="Search by name" aria-label="Search by name" autocomplete="off"></label>
     <span class="count" id="count" role="status"></span>
@@ -267,6 +271,9 @@ function tick(t) {
 document.addEventListener('visibilitychange', () => { if (document.hidden && raf) { cancelAnimationFrame(raf); raf = 0; } else startLoop(); });
 
 // ---------- DOM
+// Taxonomy: src/canalRecall/buildingCategory.ts. Only `landmark` counts as a landmark.
+const KIND_LABEL = { landmark: 'Landmark', ordinary: 'Ordinary', 'street-survey': 'Street survey' };
+const KIND_LONG = { landmark: 'Landmark', ordinary: 'Ordinary building', 'street-survey': 'Street survey (block face)' };
 function makeCard(item, isNew) {
   const art = document.createElement('article');
   art.className = 'card';
@@ -275,7 +282,7 @@ function makeCard(item, isNew) {
   canvas.setAttribute('role', 'img'); canvas.setAttribute('aria-label', `3D model of ${item.name}. Drag to rotate.`);
   const ph = document.createElement('div'); ph.className = 'ph'; ph.textContent = 'Loading model…';
   const badge = document.createElement('span'); badge.className = 'badge' + (isNew ? ' new' : '');
-  badge.textContent = isNew ? 'New' : item.kind === 'landmark' ? 'Landmark' : 'Ordinary';
+  badge.textContent = isNew ? 'New' : KIND_LABEL[item.kind] || 'Ordinary';
   stage.append(canvas, ph, badge);
   if (item.photo) {
     const img = document.createElement('img');
@@ -287,7 +294,7 @@ function makeCard(item, isNew) {
   const h = document.createElement('h3'); h.textContent = item.name;
   const meta = document.createElement('p'); meta.className = 'meta';
   const when = item.date ? item.date.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' }) + ' · ' : '';
-  meta.textContent = `${when}${item.kind === 'landmark' ? 'Landmark' : 'Ordinary building'} · ${fmt(item.triangles)} triangles`;
+  meta.textContent = `${when}${KIND_LONG[item.kind] || 'Ordinary building'} · ${fmt(item.triangles)} triangles`;
   body.append(h, meta);
   const links = document.createElement('div'); links.className = 'links';
   const a1 = document.createElement('a'); a1.href = item.gallery; a1.textContent = 'Open in gallery';
@@ -380,10 +387,11 @@ function wipLabel(status) {
   return status.replace(/-/g, ' ');
 }
 async function init() {
-  const [dates, firstAddedJson, sig, ord, queueJson] = await Promise.all([
+  const [dates, firstAddedJson, sig, ord, queueJson, chunkJson] = await Promise.all([
     fetchJson('./models/model-dates.json'), fetchJson('./models/model-first-added.json').catch(() => ({ models: {} })),
     fetchJson('./models/signature-landmarks.json'),
     fetchJson('./ordinary-buildings-data/catalogue.json'), fetchJson('./poi-work-queue.json').catch(() => ({ tasks: [] })),
+    fetchJson('./ordinary-buildings-data/chunks.json').catch(() => ({ chunks: [] })),
   ]);
   const dm = dates.models || {};
   // First install date (scripts/build-model-first-added.ts); model-dates only
@@ -395,20 +403,36 @@ async function init() {
     if (m.held) continue; // status: held in the catalogue — out of the game until re-reviewed
     const iso = installed(m.modelUrl) || dm[id]?.updatedAt, anchor = m.placement?.anchor;
     items.push({
-      id, kind: m.landmarkId ? 'landmark' : 'ordinary', name: m.name || id, modelUrl: m.modelUrl, version: dm[id]?.version,
+      id, kind: m.category && m.category !== 'landmark' ? m.category : m.landmarkId ? 'landmark' : 'ordinary', name: m.name || id, modelUrl: m.modelUrl, version: dm[id]?.version,
       triangles: m.triangles || 0, date: iso && Number.isFinite(Date.parse(iso)) ? new Date(iso) : null,
       lng: anchor ? anchor[0] : null, lat: anchor ? anchor[1] : null,
-      gallery: `./manual-landmarks.html?only=${encodeURIComponent(id)}`,
+      gallery: m.landmarkId && !(m.category && m.category !== 'landmark') ? `./manual-landmarks.html?only=${encodeURIComponent(id)}` : `./manual-ordinary-buildings.html?only=${encodeURIComponent(id)}`,
+    });
+  }
+  // Street surveys: what the game draws is the block-face chunk; per-house
+  // recipe models a chunk replaces are not drawn, so they are not news.
+  const replaced = new Set((chunkJson.chunks || []).flatMap(c => c.replaces || []));
+  for (const c of chunkJson.chunks || []) {
+    const iso = installed(c.modelUrl) || chunkJson.generatedAt;
+    const face = c.id.replace(/^chunk-(face-)?/, '');  // street-surveys.html anchors every chunk id
+    items.push({
+      id: c.id, kind: 'street-survey', name: `${(c.pands || []).map(p => p.address).filter(Boolean)[0] || face} (${(c.pands || []).length} houses)`,
+      modelUrl: c.modelUrl, version: c.sha256 ? c.sha256.slice(0, 16) : undefined, triangles: c.triangles || 0,
+      date: iso && Number.isFinite(Date.parse(iso)) ? new Date(iso) : null,
+      lng: c.instance?.anchor?.[0] ?? null, lat: c.instance?.anchor?.[1] ?? null,
+      gallery: `./street-surveys.html#${encodeURIComponent(c.id)}`,
     });
   }
   for (const m of ord.models || []) {
+    const category = m.category || (m.source === 'building-recipes' ? 'street-survey' : 'ordinary');
+    if (category === 'street-survey' && replaced.has(m.id)) continue;
     const iso = installed(m.modelUrl) || m.updatedAt || dm[m.id]?.updatedAt || m.sourceTiming?.recipeCompletedAt;
     items.push({
-      id: m.id, kind: 'ordinary', name: m.name || m.id, modelUrl: m.modelUrl, version: m.hash ? m.hash.slice(0, 16) : undefined,
+      id: m.id, kind: category, name: m.name || m.id, modelUrl: m.modelUrl, version: m.hash ? m.hash.slice(0, 16) : undefined,
       triangles: m.triangles || 0, date: iso && Number.isFinite(Date.parse(iso)) ? new Date(iso) : null,
       lng: m.anchor ? m.anchor[0] : null, lat: m.anchor ? m.anchor[1] : null,
       photo: (m.referenceImages || [])[0],
-      gallery: `./manual-ordinary-buildings.html?only=${encodeURIComponent(m.id)}`,
+      gallery: category === 'street-survey' ? `./street-surveys.html#${encodeURIComponent(m.id)}` : `./manual-ordinary-buildings.html?only=${encodeURIComponent(m.id)}`,
     });
   }
   items.sort((a, b) => (b.date ? b.date.getTime() : -Infinity) - (a.date ? a.date.getTime() : -Infinity) || a.name.localeCompare(b.name));
@@ -422,7 +446,8 @@ async function init() {
   const landmarks = items.filter(i => i.kind === 'landmark').length;
   const week = items.filter(i => i.date && i.date.getTime() >= Date.now() - 7 * 864e5).length;
   const set = (k, v) => { $(`[data-k="${k}"]`).textContent = v; };
-  set('landmarks', fmt(landmarks)); set('ordinary', fmt(items.length - landmarks));
+  const surveys = items.filter(i => i.kind === 'street-survey').length;
+  set('landmarks', fmt(landmarks)); set('ordinary', fmt(items.length - landmarks - surveys)); set('survey', fmt(surveys));
   set('tris', fmt(items.reduce((s, i) => s + i.triangles, 0))); set('week', fmt(week));
   const midnight = new Date(); midnight.setHours(0, 0, 0, 0);
   const today = items.filter(i => i.date && i.date >= midnight).length;
