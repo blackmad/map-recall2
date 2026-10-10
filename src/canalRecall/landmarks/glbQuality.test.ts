@@ -217,3 +217,24 @@ test('a tall roof over a gap 5 m deep with no columns still fails', () => {
   const r = analyseSoup(soup(boxQuads(0, 0, 0, 10, 8, 5), boxQuads(0, 8, 0, 10, 8.3, 10)));
   assert.ok(r.seeThrough.rays > 0, JSON.stringify(r.seeThrough));
 });
+
+// A 10 x 8 x 10 m block with a 4 m wide, 3 m high roadway tunnel along Z (north-south), x in 3..7.
+function tunnelBlock() {
+  return [boxQuads(0, 0, 0, 3, 8, 10), boxQuads(7, 0, 0, 10, 8, 10), boxQuads(3, 3, 0, 7, 8, 10, ['south', 'north'])];
+}
+const corridor: [number, number][] = [[3, -1], [7, -1], [7, 11], [3, 11]];
+
+test('a declared through-passage corridor exempts the roadway rays; the same box undeclared fails', () => {
+  const declared = analyseSoup(soup(...tunnelBlock()), {throughPassages: [{axisBearing: 0, corridor}]});
+  assert.equal(declared.seeThrough.rays, 0, JSON.stringify(declared.seeThrough));
+  const undeclared = analyseSoup(soup(...tunnelBlock()));
+  assert.ok(undeclared.seeThrough.rays > 0, JSON.stringify(undeclared.seeThrough));
+});
+
+test('a declared corridor does not exempt a missing wall elsewhere on the model, nor rays on another axis', () => {
+  const [a, , c] = tunnelBlock();
+  const r = analyseSoup(soup(a, c, boxQuads(7, 0, 0, 20, 8, 10, ['east'])), {throughPassages: [{axisBearing: 0, corridor}]});
+  assert.ok(r.seeThrough.rays > 0, JSON.stringify(r.seeThrough));
+  const wrongAxis = analyseSoup(soup(...tunnelBlock()), {throughPassages: [{axisBearing: 90, corridor}]});
+  assert.ok(wrongAxis.seeThrough.rays > 0, JSON.stringify(wrongAxis.seeThrough));
+});
