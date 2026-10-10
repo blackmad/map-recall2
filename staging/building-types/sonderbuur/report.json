@@ -22,38 +22,38 @@
      "file": "sonderbuur-baked-1.glb",
      "instances": 24,
      "triangles": 30932,
-     "bytes": 721624
+     "bytes": 725080
     }
    ],
-   "bytes": 721624,
-   "bytesUncompressed": 2261376,
+   "bytes": 725080,
+   "bytesUncompressed": 2267012,
    "triangles": 30932,
-   "vertices": 60808
+   "vertices": 60984
   },
   "merged": {
-   "bytes": 654752,
-   "bytesUncompressed": 2149536,
+   "bytes": 655928,
+   "bytesUncompressed": 2155168,
    "triangles": 30932,
    "primitives": 14,
-   "vertices": 60808
+   "vertices": 60984
   },
   "instanced": {
-   "bytes": 81304,
-   "bytesUncompressed": 191792,
+   "bytes": 81564,
+   "bytesUncompressed": 192304,
    "triangles": 30932,
    "primitives": 15,
-   "vertices": 5028,
+   "vertices": 5044,
    "designGroups": 2,
    "maxScaleDeviation": 0.016
   },
   "bucketed": {
    "note": "one unit mesh per (design group, +-0.25 m length/width, +-0.2 m eaves bucket) instead of per-instance scale",
    "meshes": 4,
-   "bytesEstimate": 152984
+   "bytesEstimate": 153464
   },
   "saving": {
    "bytesVsMerged": 0.876,
-   "bytesVsBaked": 0.887,
+   "bytesVsBaked": 0.888,
    "bytesUncompressedVsMerged": 0.911
   }
  },
@@ -77,7 +77,7 @@
    "key": "nw-portiek-brick-pitched|clad-panel|5|gable|long|solid",
    "members": 11,
    "dimensionBuckets": 2,
-   "bucketedBytesEstimate": 66752,
+   "bucketedBytesEstimate": 67232,
    "maxScaleDeviation": 0.016,
    "nominal": {
     "L": 14.31,
@@ -86,7 +86,7 @@
     "ridge": 17.79
    },
    "unitTriangles": 1148,
-   "unitBytes": 33376
+   "unitBytes": 33616
   }
  ],
  "instancesDetail": [

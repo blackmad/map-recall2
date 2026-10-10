@@ -99,6 +99,7 @@ export class SignatureLandmarks {
     if (this.sharedFrame) this._attachShared(options.sharedOrder ?? 20);
     else map.addLayer(this.layer);
     this._loadStreetChunks();
+    this._loadBuildingTypes();
   }
 
   /**
@@ -122,6 +123,54 @@ export class SignatureLandmarks {
         this._requestModels();
       })
       .catch(error => console.warn('Street chunks unavailable; keeping per-house models.', error));
+  }
+
+  /**
+   * `?buildingTypes=1` (default OFF; game host only): shared unit meshes drawn with THREE.InstancedMesh for the
+   * Nieuw-West pilot areas (src/canalRecall/buildingTypes/runtime.ts, bundled as js/building-types.bundle.js).
+   * One spec per area; its scene is built by `spec.sceneFactory`, and its `suppressOsmIds` are the BAG panden it
+   * replaces, so the OSM/BAG extrusion is suppressed exactly like a street chunk's. No flag, no data: no change.
+   */
+  _loadBuildingTypes() {
+    let on = false;
+    try { on = new URLSearchParams(window.location.search).get('buildingTypes') === '1'; } catch { /* no location */ }
+    if (!on || this.streetChunks !== true) return;
+    const script = document.createElement('script');
+    script.src = new URL('./js/building-types.bundle.js', window.location.href).href;
+    const loaded = new Promise((resolve, reject) => { script.onload = resolve; script.onerror = () => reject(new Error('building-types.bundle.js')); });
+    document.head.appendChild(script);
+    Promise.all([loaded, fetch(new URL('./building-types/instances.json', window.location.href), { cache: 'no-cache' }).then(r => r.ok ? r.json() : Promise.reject(new Error(`instances.json ${r.status}`)))])
+      .then(([, instances]) => {
+        if (this._removed) return;
+        const api = window.CanalRecallBuildingTypes, specs = [];
+        for (const [area, list] of api.groupByArea(instances)) {
+          const anchor = api.areaAnchor(list), radius = api.areaRadiusMetres(list);
+          let built = null;
+          specs.push({
+            id: `building-types-${area}`, assetKind: 'ordinary-building', buildingCategory: 'street-survey', name: `Building types: ${area}`, landmarkId: '',
+            modelUrl: '', suppressOsmIds: api.suppressionIds(list), spatialSuppression: false, heightMetres: 17, heightToleranceMetres: 1, groundAltitudeMetres: 0, facingOffsetDegrees: 0,
+            footprint: { centre: anchor, headingDegrees: 90, lengthMetres: radius * 2, widthMetres: radius * 2 },
+            surveyed: { anchor, northOffsetDegrees: 0, source: 'Building types: one shared unit mesh per design, instance list from BAG footprints and 3DBAG roofs.' },
+            attribution: { title: `Building types: ${area}`, author: 'Map Recall', sourceUrl: 'https://data.amsterdam.nl/', licence: 'Original project asset', licenceUrl: './LICENSE', modifications: 'Parametric facade types fitted to BAG footprints; photo-confirmed per building.' },
+            sceneFactory: async () => {
+              const loader = this._loader;
+              const loadUnit = async unit => {
+                const gltf = await loader.loadAsync(new URL(`./building-types/${unit}.glb`, window.location.href).href);
+                const dressed = await (this._dress(gltf) ?? gltf);
+                return this._shade(dressed).scene;
+              };
+              built = await api.createBuildingTypes({ THREE, loadUnit, getCentre: () => this.map.getCenter?.() }, list);
+              built.group.userData.recipeLook = true;
+              window.__canalRecallBuildingTypes = Object.assign(window.__canalRecallBuildingTypes || {}, { [area]: built });
+              return built.group;
+            },
+            pandForHit: (object, instanceId) => built?.pandForHit(object, instanceId) ?? null,
+          });
+        }
+        this.models = [...this.models, ...specs];
+        this._requestModels();
+      })
+      .catch(error => console.warn('Building types unavailable; keeping the OSM/BAG extrusions.', error));
   }
 
   /** Remove drawn models by spec id, freeing their resources and giving back their extrusions. */
@@ -218,7 +267,8 @@ export class SignatureLandmarks {
       if (depth < -1 || depth > 1 || result && depth >= result.depth) continue;
       // A street chunk is one mesh for several panden: the face under the cursor says which one.
       const pand = entry.spec.chunkPands?.[window.CanalRecallSignatureLandmarks.pandIndexForFace(hit.object.geometry?.userData?.pandRanges, hit.faceIndex)];
-      result = { id: pand?.buildingId || entry.spec.suppressOsmIds?.[0] || entry.spec.landmarkId,
+      const typePand = entry.spec.pandForHit?.(hit.object, hit.instanceId);
+      result = { id: pand?.buildingId || (typePand ? `NL.IMBAG.Pand.${typePand}` : entry.spec.suppressOsmIds?.[0]) || entry.spec.landmarkId,
         landmarkId: entry.spec.landmarkId, name: pand?.address || entry.spec.name,
         lngLat: entry.placement.anchor, depth, featureTarget: null,
         ...(pand?.footprint ? { footprint: { type: 'Polygon', coordinates: pand.footprint }, height: entry.spec.heightMetres }
@@ -406,8 +456,8 @@ export class SignatureLandmarks {
         this._pending.delete(spec.id);
         this._requestModels();
       };
-      const level = this._startLevel(spec);
-      const url = levelUrl(spec, level), loader = this._loader;
+      const level = spec.sceneFactory ? 'full' : this._startLevel(spec);
+      const url = spec.sceneFactory ? spec.id : levelUrl(spec, level), loader = this._loader;
       const onLoaded = gltf => {
         if (this._removed || generation !== this._generation) {
           this._disposeModel(gltf.scene, spec, url);
@@ -435,7 +485,10 @@ export class SignatureLandmarks {
         console.warn(`Signature model for ${spec.name} unavailable; keeping the OSM extrusion.`, error);
         finish();
       };
-      if (spec.sharedModel) {
+      if (spec.sceneFactory) {
+        // Building types: the spec builds its own instanced scene (see _loadBuildingTypes).
+        spec.sceneFactory().then(scene => onLoaded({ scene }), onError);
+      } else if (spec.sharedModel) {
         // Shared mesh: decode once, then clone per instance (geometry and materials stay shared).
         this._sharedAssets.acquire(url, () => loader.loadAsync(url).then(gltf => this._dress(gltf) ?? gltf).then(gltf => this._shade(gltf)))
           .then(gltf => onLoaded({ scene: gltf.scene.clone(true) }), onError);
