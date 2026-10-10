@@ -66,7 +66,7 @@ const CHECKS = [
   'test:cycle-tracks',
   'test:own-pois',
   'test:building-facts',
-  'test:building-recipes', 'test:canal-elevation', 'test:large-tier', 'test:glb-quality', 'test:facade-compare', 'test:block-kit-installed', 'test:own-ground', 'test:block-face',
+  'test:building-recipes', 'test:canal-elevation', 'test:large-tier', 'test:glb-quality', 'test:facade-compare', 'test:block-kit-installed', 'test:own-ground', 'test:block-face', 'test:own-map',
   'test:canalhouse-recipes',
   'test:bridge-register',
   'test:photoreal-gate',
