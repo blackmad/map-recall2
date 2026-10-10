@@ -69,6 +69,7 @@ type Handle = { wrapper: any; participant: FrameParticipant; attached: boolean }
 
 export const SHARED_FRAME_MAIN_ID = 'shared-frame-main';
 export const SHARED_FRAME_OVERLAY_ID = 'shared-frame-overlay';
+export const SHARED_FRAME_GROUND_ID = 'shared-frame-ground';
 
 export class SharedFrame {
   readonly THREE: any;
@@ -79,10 +80,12 @@ export class SharedFrame {
   readonly registry = new LayerRegistry<Handle>();
   readonly mainLayer: any;
   readonly overlayLayer: any;
+  /** Created on the first `ground` participant; null until then. */
+  groundLayer: any = null;
   renderer: any = null;
   lastFrame: FrameMatrices | null = null;
   /** Per-pass diagnostics for the perf harnesses. */
-  readonly stats = { main: { ms: 0, calls: 0, triangles: 0, frames: 0 }, overlay: { ms: 0, calls: 0, triangles: 0, frames: 0 }, shadowCasters: 0 };
+  readonly stats = { ground: { ms: 0, calls: 0, triangles: 0, frames: 0 }, main: { ms: 0, calls: 0, triangles: 0, frames: 0 }, overlay: { ms: 0, calls: 0, triangles: 0, frames: 0 }, shadowCasters: 0 };
   private readonly options: SharedFrameOptions;
   private readonly worldFromMercatorM: any;
   private readonly tmp: any;
@@ -132,8 +135,18 @@ export class SharedFrame {
     }
   }
 
+  /** The ground pass: added once, at the bottom of the style (above `background`). */
+  private attachGround(): void {
+    this.groundLayer ??= this.makeLayer(SHARED_FRAME_GROUND_ID, 'ground');
+    if (this.map.getLayer(SHARED_FRAME_GROUND_ID)) return;
+    const order: string[] = this.map.getLayersOrder?.() ?? [];
+    const before = order.find(id => id !== 'background' && id !== SHARED_FRAME_GROUND_ID);
+    this.map.addLayer(this.groundLayer, before);
+  }
+
   /** Register a participant. Returns an unregister function. */
   register(id: string, participant: FrameParticipant, options: { order?: number; pass?: FramePass } = {}): () => void {
+    if (options.pass === 'ground') this.attachGround();
     const THREE = this.THREE;
     const wrapper = new THREE.Group();
     wrapper.name = `shared-frame/${id}`;
@@ -217,7 +230,7 @@ export class SharedFrame {
       },
       onRemove: () => {
         this.removedLayers++;
-        if (this.removedLayers >= 2) {
+        if (this.removedLayers >= (this.groundLayer ? 3 : 2)) {
           this.renderer?.dispose();
           this.renderer = null;
           for (const entry of this.registry.all()) entry.participant.attached = false;

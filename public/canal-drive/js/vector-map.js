@@ -180,9 +180,13 @@ class VectorBasemap {
     // Own map: the local style has no glyphs, so MapLibre symbol layers cannot
     // exist; their job (POI, brand, neighbourhood, ferry names, the answered
     // lettering) is the own map's label canvas. Every other addLayer is kept.
+    // Line layers the own map draws itself (route, transit corridors,
+    // neighbourhood boundaries) are skipped too, or they would draw twice.
     if (this._ownMapEnabled) {
       const addLayer = this.map.addLayer.bind(this.map);
-      this.map.addLayer = (layer, before) => (layer && layer.type === 'symbol' ? this.map : addLayer(layer, before));
+      const replaced = new Set(['navigation-route-casing', 'navigation-route-line', 'neighborhood-boundaries', 'cycling-ferry-terminal-pins',
+        ...((window.CanalRecallTransit && window.CanalRecallTransit.TRANSIT_OVERLAY_LAYER_IDS) || [])]);
+      this.map.addLayer = (layer, before) => (layer && (layer.type === 'symbol' || replaced.has(layer.id)) ? this.map : addLayer(layer, before));
     }
 
     this.map.on('load', () => {
@@ -1683,7 +1687,8 @@ class VectorBasemap {
     const source = this.map.getSource('branded-pois');
     if (!source) return;
     for (const poi of this._pendingBrandedPois) {
-      if (poi.icon && poi.iconUrl) this._loadBrandIcon(poi.icon, poi.iconUrl);
+      // Own map: the local Albert Heijn disc only, never the Wikimedia iconUrl.
+      if (poi.icon && poi.iconUrl && !this._ownMapEnabled) this._loadBrandIcon(poi.icon, poi.iconUrl);
     }
     source.setData({
       type: 'FeatureCollection',

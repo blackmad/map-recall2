@@ -11,7 +11,9 @@
 // opaque objects by group order first, so ties between coplanar surfaces of
 // different layers still resolve the way they did when each was its own layer.
 
-export type FramePass = 'main' | 'overlay';
+/** `ground` (opt-in, drop-MapLibre `?ownMap=1`) sits at the bottom of the
+ *  style, right above the background, under every MapLibre line overlay. */
+export type FramePass = 'ground' | 'main' | 'overlay';
 
 export type RegistryEntry<P> = { id: string; order: number; pass: FramePass; participant: P; seq: number };
 

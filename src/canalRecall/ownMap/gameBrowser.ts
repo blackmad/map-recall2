@@ -30,7 +30,7 @@ import type { TransitNetwork } from '../transit/network';
 import { groundMercatorFromLocal } from '../ownGround/sharedFrameGround';
 import type { FrameParticipant, SharedFrame } from '../rendererShared/sharedFrame';
 
-/** Below the own ground (-10) and the facades (0). */
+/** Its own shared-frame pass (`ground`, at the bottom of the style), first within it. */
 export const OWN_MAP_ORDER = -20;
 
 /** The MapLibre style the game uses under `?ownMap=1`: nothing to fetch. */
@@ -103,7 +103,7 @@ export class OwnMapGame {
       root: this.scene.group,
       mercatorFromLocal: () => groundMercatorFromLocal(),
       beforeRender: c => {
-        if (c.pass !== 'main' || !this.scene) return false;
+        if (c.pass !== 'ground' || !this.scene) return false;
         const centre = this.map.getCenter();
         this.scene.update(c.zoom, metresPerPixel(c.zoom, centre.lat));
         if (this.opts.nearField && this.rider) {
@@ -114,7 +114,7 @@ export class OwnMapGame {
         return true;
       },
     };
-    this.unregister = this.frame.register('own-map', participant, { order: OWN_MAP_ORDER });
+    this.unregister = this.frame.register('own-map', participant, { order: OWN_MAP_ORDER, pass: 'ground' });
     try {
       this.network = await inflate<TransitNetwork>(await fetch(`${root}/transit-network.json`));
       this.scene.setFerryLines(ferryOverlay(this.network).lines);
