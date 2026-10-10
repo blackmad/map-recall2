@@ -200,6 +200,18 @@
   "Tilla Tec": {
    "kind": "duplicate",
    "note": "Covered by installed model de-school (the former technical school it occupies)."
+  },
+  "Church of England": {
+   "kind": "duplicate",
+   "note": "Covered by installed model christ-church-groenburgwal."
+  },
+  "LJG": {
+   "kind": "duplicate",
+   "note": "Covered by installed model ljg-synagoge."
+  },
+  "Onze Lieve Vrouwe Kapel": {
+   "kind": "skip",
+   "note": "Chapel room inside the OLVG hospital complex (pand 0363100012124921, 258 x 194 m), not a distinct building."
   }
  }
 }

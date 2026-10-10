@@ -1,0 +1,20 @@
+{
+  "name": "Church of England (Christ Church)",
+  "landmarkId": "extract_landmarks_369277545",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Christ_Church_(Amsterdam)",
+  "suppressOsmIds": ["w266927240", "NL.IMBAG.Pand.0363100012171165"],
+  "pandId": "0363100012171165",
+  "materialOverrides": {
+    "brick": "#a65a3c",
+    "stone": "#bdb6a2",
+    "slate": "#8a4e3e",
+    "glass": "#56666f",
+    "frame": "#ece8da",
+    "white": "#ece8da",
+    "dark": "#1f2326",
+    "copper": "#7e9a8c",
+    "sandstone": "#a9a89f"
+  },
+  "surveySource": "Current BAG 0363100012171165 footprint (OSM w266927240) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the neo-Gothic brick front (raking parapets, piers with copper spires, pointed lancet windows with tracery, moulded doorway, plaque, plinth, copings, finial) measured by eye from the Commons photographs listed in the research record, no pixels or meshes imported."
+}

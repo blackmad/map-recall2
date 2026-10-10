@@ -220,8 +220,10 @@ async function build(chunk, report, gates, catalogue) {
     view.canvas.addEventListener('wheel', (e) => { e.preventDefault(); state.distance *= Math.exp(e.deltaY * 0.001); redraw(); }, { passive: false });
   }
 
-  // Stats from the build report.
+  // Stats from the build report. Block faces (chunk-face-*) are authored as one unit by
+  // scripts/block-face and have no per-house build report; their review is the strip sheet.
   const r = report;
+  if (r) {
   const distinctMeshes = new Set(chunk.replaces.map((id) => catalogue.get(id)?.modelUrl)).size;
   const table = el('table');
   const head = el('tr');
@@ -240,6 +242,7 @@ async function build(chunk, report, gates, catalogue) {
   if (r.eaves.clusters.length) notes.push(`cornice snapped on ${r.eaves.clusters.map((c) => c.length).join(' + ')} houses`);
   if (r.warnings.length) notes.push(...r.warnings);
   article.append(el('p', 'sub', notes.join(' · ')));
+  } else article.append(el('p', 'sub', 'Block face: authored as one unit from a photo strip (scripts/block-face); no per-house build report.'));
   if (gates?.length) {
     const det = el('details'); det.append(el('summary', '', `Fidelity gates on the chunked geometry: ${gates.filter((g) => g.passed).length} of ${gates.length} pass`));
     det.append(gatesTable(gates)); article.append(det);
@@ -256,7 +259,7 @@ async function build(chunk, report, gates, catalogue) {
   const origin = chunk.instance.anchor;
   try {
     await Promise.all([
-      Promise.all(chunk.replaces.map(async (id) => {
+      Promise.all(chunk.replaces.filter((id) => r || catalogue.has(id)).map(async (id) => {
         const spec = catalogue.get(id);
         if (!spec) throw new Error(`catalogue entry ${id} missing`);
         const root = await loadGlb(new URL(spec.modelUrl, location.href).href);
