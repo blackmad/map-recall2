@@ -297,14 +297,16 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   lean from a non-rectified photo; adopt crownGroups/tower/split fronts on
   Bilderdijkstraat 102–106, 149–151, 88–90, 162443, 236022, 236189; reviewer
   row counts confuse mezzanines and arcade bays with storeys (177922/23/43/46).
-- **Bilderdijkstraat faces**: even side 72–166 installed. Held: 113–115,
-  131–133, 135–153 — need a way to override 3DBAG eaves >2.5 m from the photo
-  cornice (dormer/tower read as eaves). Not yet faces: chunk-bilder-079721-x2,
-  chunk-bilder-152363-x2, standalone 153622/153782/154127; 66–70 (pand
-  167348); 155–167 and 169 are large-tier. Library gaps (several houses per
-  pand, multiple gables per front, towers, triple gable windows) are on the
-  historic-library lane. iPhone e2e street shots frame a single shop window —
-  move the camera back.
+- **Bilderdijkstraat faces**: even side 72–166, 113–115, 131–153, 169–175,
+  198–202, 199–203 installed (standalone 153622/153782/154127 folded into
+  faces). Left: chunk-bilder-079721-x2 is not a face; 66–70 (pand 167348);
+  155–167 large-tier. Limits: 175 roof reads as a hip with no dormer (footprint
+  jog fails the dormer check); 200/198 cornice kept 0.55 m above the photo;
+  tower lights vanish when the rise is < 0.88 storey; the 2021 and 2023 strips
+  differ ~1.5 m in vertical registration. Gallery recipes
+  `recipe-bilder-{153622,153782,154127}.glb` are stale (game draws the faces);
+  reinstall via `scripts/building-recipes/install.ts`. Document `frontRoof` in
+  docs/buildings-pipeline.md. iPhone e2e street shots frame too close.
 - **Inferred rears**: the rear window grid is generic (2.5 m pitch); use rear
   photos (`pand-reference --prefer-bearing`) where they exist. Raw audit still
   reports party-wall "holes" on several faces (exempted by the compile).

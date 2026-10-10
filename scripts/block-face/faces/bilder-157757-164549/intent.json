@@ -118,11 +118,8 @@
       "cornice": "simple",
       "hoist": false,
       "gable": "cornice",
-      "crownCap": "pediment",
-      "crownCapSpan": "narrow",
       "storeys": 4,
       "bays": 3,
-      "dormers": 1,
       "doorBay": 0,
       "windows": "sash",
       "bands": "storey",
@@ -153,6 +150,14 @@
         2
        ],
        "evidence": "pano 2024-11-29"
+      },
+      "tower": {
+       "bays": {
+        "from": 1,
+        "to": 1
+       },
+       "rise": 0.92,
+       "cap": "flat"
       }
      }
     ],
@@ -183,11 +188,11 @@
    },
    "rhythm": {
     "bays": "3 identical bays, balconies on the middle bay of storeys 1-2 (the right bay of storey 2 has a flower box)",
-    "windowsPerStorey": "ground: shop glass + door | 1-3: 3 | roof: 1 pedimented dormer",
+    "windowsPerStorey": "ground: shop glass + door | 1-3: 3 | roof: 1 tall brick-framed dormer with a French window",
     "symmetry": "mirror-symmetric",
     "groundFloor": "black fascia and grilled shopfront",
     "signage": "DAILY PAPER white on black",
-    "roofline": "flat cornice, red-tile roof with one pedimented dormer",
+    "roofline": "white cornice band, top at strip row 272 (14.0 m above the strip ground; 3DBAG eaves 17.0 m is the dormer top), red-tile roof face to row 178 (16.4 m), one brick-framed dormer standing on the cornice over the middle bay, pediment base row 155, apex row 115",
     "citation": "bilder-157757-164549 strip.jpg pand 2",
     "photoRows": [
      3,
@@ -198,8 +203,7 @@
     ],
     "photoGables": 0,
     "schemaLimits": [
-     "model is ~3 m too tall: 3DBAG eaves 17.0 m (dormer top) vs photo cornice at ~14 m; a photo-trusted cornice group cannot bridge the 3.4 m spread (max 2.5 m)",
-     "dormer is a tall brick-framed pedimented dormer standing on the cornice; modelled as an ordinary roof dormer",
+     "the dormer is a brick tower over bay 1 with a flat cap (tower, rise 0.92): the pointed stone pediment (rows 155-115) is not modelled; a pyramid cap leaves no room for the window under the 3DBAG height gate",
      "flower boxes on the storey-3 sills are not modelled"
     ]
    }
@@ -211,11 +215,21 @@
   "identical": [],
   "notes": [
    "2024-11-29 capture; 2023-01-12 ground floor of 133 read BOUWBAK.NL."
+  ],
+  "measuredEaves": [
+   {
+    "pand": "0363100012164549",
+    "stripRow": 272,
+    "evidence": "top of the white cornice band under the red-tile roof (row 272, 14.0 m); the tile roof face meets the roof top at row 178 (16.4 m) beside the dormer (zoom 164549 roofline, x 230-474, rows 90-320); 3DBAG eaves 17.0 m reads the dormer top",
+    "frontRoof": {
+     "topRow": 178
+    }
+   }
   ]
  },
  "authoring": {
   "author": "claude-sonnet-5.5 (block-face lane), from strip-labelled.png + 2x zoomed ground/roof crops",
-  "passes": 1,
-  "note": "Bilderdijkstraat 131-133 (odd side, 1903)."
+  "passes": 2,
+  "note": "Bilderdijkstraat 131-133 (odd side, 1903). Pass 2 (bilder-limits lane): 133 eaves measured on the strip (row 272) with the front roof re-pitched to row 178 (measuredEaves.roofTopRow); the dormer 3DBAG read as eaves is a tower over the middle bay."
  }
 }

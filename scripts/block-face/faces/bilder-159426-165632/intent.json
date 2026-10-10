@@ -1,0 +1,267 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bilder-159426-165632",
+ "street": "Bilderdijkstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/block-face/bilder-159426-165632/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012159426",
+   "slug": "bface-159426",
+   "address": "Bilderdijkstraat 202",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "simple",
+      "storeys": 4,
+      "bays": 4,
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "doorBay": null,
+      "windows": "sash",
+      "bands": "none",
+      "shopfront": {
+       "colour": "#4f7a4a",
+       "fascia": true,
+       "glazing": "split",
+       "displayWindows": 2,
+       "stallriser": "medium",
+       "entrance": "centre",
+       "evidence": "strip 2024-11-29 rows 640-764: green-framed shop front, two display windows either side of a central door, lettering in the left window not legible; OSM node 11411974224 MastroSuppli (restaurant)"
+      }
+     }
+    ],
+    "roof": {
+     "material": "red-tile"
+    },
+    "palette": {
+     "brick": "#2a2620",
+     "frame": "white",
+     "door": "black",
+     "stone": "cream",
+     "cornice": "white"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "MastroSuppli",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 11411974224,
+     "name": "MastroSupplì",
+     "tags": "amenity=restaurant"
+    },
+    "bag": [
+     "winkelfunctie",
+     "winkelfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "osm-and-photo",
+    "note": "Green shop front; no legible fascia lettering, so no sign modelled."
+   },
+   "rhythm": {
+    "bays": "4 identical axes",
+    "identicalBays": "storeys 1-3",
+    "windowsPerStorey": "ground: green shop front, centre door | 1-3: 4 sash windows | roof: red-tile roof with 1 pedimented dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "green shop front",
+    "signage": "illegible",
+    "roofline": "white cornice, top at strip row ~232 (3DBAG eaves row 229); red-tile roof rows 190-232; pedimented dormer rows 160-230",
+    "citation": "bilder-159426-165632 strip.jpg pand 1 (zoom z3, x 0-340)",
+    "photoRows": [
+     1,
+     4,
+     4,
+     4,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "the near-black brick is modelled as a dark brown brick colour"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012154127",
+   "slug": "bface-154127",
+   "address": "Bilderdijkstraat 200",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Bilderdijkstraat",
+      "basement": "none",
+      "hoist": false,
+      "gable": "cornice",
+      "cornice": "bracketed",
+      "storeys": 4,
+      "bays": 3,
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "doorBay": null,
+      "windows": "sash",
+      "shopfront": {
+       "colour": "#2a2a2a",
+       "fascia": true,
+       "glazing": "transom",
+       "stallriser": "low",
+       "storeys": 2,
+       "evidence": "strip 2024-11-29 rows 540-764: two-storey dark shop front with a leaded transom grid over one large pane, WoodHouse lettering on the glass; dark street door with a grille at the right; OSM node 11411962635 WoodHouse (beauty)",
+       "entrance": "right"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#7a5a42",
+     "frame": "white",
+     "door": "black",
+     "stone": "cream",
+     "cornice": "white"
+    }
+   },
+   "groundFloor": {
+    "use": "services",
+    "name": "WoodHouse",
+    "category": "shop=beauty",
+    "osm": {
+     "type": "node",
+     "id": 11411962635,
+     "name": "WoodHouse",
+     "tags": "shop=beauty"
+    },
+    "bag": [
+     "winkelfunctie,woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "osm-and-photo",
+    "note": "WoodHouse is written on the glass, not on a fascia: no sign modelled."
+   },
+   "rhythm": {
+    "bays": "3 identical axes",
+    "identicalBays": "storeys 2-3",
+    "windowsPerStorey": "ground + mezzanine: double-height shop across the front, door at the right inside its frame | 2-3: 3 equal sash windows (storey 2 under brick relieving arches) | roof: 1 pedimented dormer, roof behind the cornice not visible",
+    "symmetry": "symmetric above the shop",
+    "groundFloor": "double-height dark shop front with transom grid, door right",
+    "signage": "on the glass",
+    "roofline": "deep white bracketed cornice (rows 236-288) shared with 198; one pedimented dormer (rows 125-235); the 26-degree 3DBAG roof behind is hidden from the street",
+    "citation": "bilder-159426-165632 strip.jpg pand 2 (zoom z2, x 300-799)",
+    "photoRows": [
+     1,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "photo cornice top (row 236, 13.3 m) is 0.55 m below 3DBAG's facade eaves; kept 3DBAG (within strip registration)",
+     "brick relieving arches over the storey-2 windows are not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012165632",
+   "slug": "bface-165632",
+   "address": "Bilderdijkstraat 198",
+   "sameAs": "0363100012154127",
+   "overrides": {
+    "fronts": [
+     {
+      "id": "front0",
+      "shopfront": {
+       "colour": "#2a2a2a",
+       "fascia": true,
+       "glazing": "transom",
+       "stallriser": "low",
+       "storeys": 2,
+       "evidence": "strip 2024-11-29 rows 540-764: the same two-storey transom shop front as 200, Menspire lettering on the glass, door at the right inside the shop-front frame; OSM node 11411958351 Menspire (hairdresser)",
+       "entrance": "right"
+      }
+     }
+    ]
+   },
+   "groundFloor": {
+    "use": "services",
+    "name": "Menspire",
+    "category": "shop=hairdresser",
+    "osm": {
+     "type": "node",
+     "id": 11411958351,
+     "name": "Menspire",
+     "tags": "shop=hairdresser"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "osm-and-photo",
+    "note": "Twin of 200."
+   },
+   "rhythm": {
+    "bays": "3 identical axes",
+    "identicalBays": "storeys 2-3",
+    "windowsPerStorey": "as 200",
+    "symmetry": "symmetric above the shop",
+    "groundFloor": "double-height dark shop front, door right",
+    "signage": "on the glass",
+    "roofline": "the same deep bracketed cornice as 200; pedimented dormer (rows 125-235)",
+    "citation": "bilder-159426-165632 strip.jpg pand 3 (zoom z2)",
+    "photoRows": [
+     1,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 0,
+    "schemaLimits": [
+     "brick relieving arches over the storey-2 windows are not modelled"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [
+   {
+    "pands": [
+     "0363100012154127",
+     "0363100012165632"
+    ],
+    "evidence": "strip: one deep bracketed cornice runs over 198 and 200 (zoom z2)"
+   }
+  ],
+  "identical": [
+   {
+    "pands": [
+     "0363100012154127",
+     "0363100012165632"
+    ],
+    "evidence": "twin fronts 1889: same windows, cornice, dormer and shop front"
+   }
+  ],
+  "notes": [
+   "2024-11-29 capture. Folds the standalone recipe bilder-154127 into a face with its twin 198 and 202, which had no model."
+  ]
+ },
+ "authoring": {
+  "author": "claude-opus-5.5 (bilder-limits lane), from strip-labelled.png and zooms z2/z3",
+  "passes": 1,
+  "note": "Bilderdijkstraat 198-202 (even side)."
+ }
+}

@@ -64,11 +64,13 @@ const round = (v: number, d = 3) => Math.round(v * 10 ** d) / 10 ** d;
 const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
 
 /**
- * Split the frontage chain into consecutive sub-chains by shares, snapping to ring vertices within 1.5 m. Where no
- * footprint vertex is that close (several houses inside one straight BAG pand front), a vertex is inserted on the chain
- * at the split: `inserted` lists them (point and the chain edge it lies on) so the caller adds them to the survey rings.
+ * Split the frontage chain into consecutive sub-chains by shares, snapping to ring vertices within `snapM` (0.25 m: a
+ * survey vertex that close is the party line; Bilderdijkstraat 135|137 lies 1.2 m from a dormer-ring vertex, which a 1.5 m
+ * snap took for the cut). Where no footprint vertex is that close (several houses inside one BAG pand front), a vertex is
+ * inserted on the chain at the split: `inserted` lists them (point and the chain edge it lies on) so the caller adds them
+ * to the survey rings.
  */
-export function splitChain(front: FrontFacts, shares: number[]): {pairs: [number[], number[]][]; inserted: {point: number[]; a: number[]; b: number[]}[]} {
+export function splitChain(front: FrontFacts, shares: number[], snapM = 0.25): {pairs: [number[], number[]][]; inserted: {point: number[]; a: number[]; b: number[]}[]} {
   const chain = front.chainRD.map(p => [...p]), inserted: {point: number[]; a: number[]; b: number[]}[] = [];
   const lengths = () => { const c = [0]; for (let i = 1; i < chain.length; i++) c.push(c[i - 1] + Math.hypot(chain[i][0] - chain[i - 1][0], chain[i][1] - chain[i - 1][1])); return c; };
   let cumulative = lengths();
@@ -78,7 +80,7 @@ export function splitChain(front: FrontFacts, shares: number[]): {pairs: [number
     acc += share * total;
     let best = -1;
     for (let i = 1; i < chain.length - 1; i++) if (best < 0 || Math.abs(cumulative[i] - acc) < Math.abs(cumulative[best] - acc)) best = i;
-    if (best >= 0 && Math.abs(cumulative[best] - acc) <= 1.5) { cutPoints.push(chain[best]); continue; }
+    if (best >= 0 && Math.abs(cumulative[best] - acc) <= snapM) { cutPoints.push(chain[best]); continue; }
     const i = cumulative.findIndex((c, k) => k + 1 < cumulative.length && c <= acc && cumulative[k + 1] >= acc);
     const t = (acc - cumulative[i]) / (cumulative[i + 1] - cumulative[i]), a = chain[i], b = chain[i + 1];
     const point = [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
