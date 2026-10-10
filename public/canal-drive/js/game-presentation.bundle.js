@@ -24849,6 +24849,1022 @@
       },
       status: "held",
       heldReason: "Integrator 2026-10-10: the twin towers are stubby belfries; the real towers are tall and slender, well above the gable. SE wing is a flat box; brick too orange"
+    },
+    {
+      id: "pakhuis-de-zwijger",
+      name: "Pakhuis de Zwijger",
+      landmarkId: "n6933045932",
+      modelUrl: "./models/pakhuis-de-zwijger.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012088034"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.922050798947343,
+          52.37692880434443
+        ],
+        headingDegrees: 105.8,
+        lengthMetres: 35.5,
+        widthMetres: 28.8
+      },
+      surveyed: {
+        anchor: [
+          4.922050798947343,
+          52.37692880434443
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012088034 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#a58c60",
+        stone: "#c4c0b4",
+        concrete: "#8e9195",
+        greyBrick: "#7d6a52",
+        red: "#cf6a2c",
+        glass: "#5d7585",
+        bronze: "#2c2e30"
+      },
+      attribution: {
+        title: "Pakhuis de Zwijger",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Pakhuis_de_Zwijger",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry on the BAG footprint and 3DBAG LoD2.2 massing (walls cut at the soffit, ground floor rebuilt with the roadway portal); brick walls, window grid, stair towers with concrete hoods and orange shutters, splayed concrete piers, tall north glazing and fascia lettering measured by eye from Commons photographs and municipal panoramas (2005 RCE, 2014, 2018-2020), no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.922384153158756,
+              52.3769381964659
+            ],
+            [
+              4.922333924369807,
+              52.37694691507603
+            ],
+            [
+              4.922158875321598,
+              52.37697715437784
+            ],
+            [
+              4.9219567550336025,
+              52.37701206851262
+            ],
+            [
+              4.921911102146441,
+              52.37701995109173
+            ],
+            [
+              4.92189696341202,
+              52.37702239411226
+            ],
+            [
+              4.921889634629328,
+              52.37700564822158
+            ],
+            [
+              4.921874554156889,
+              52.37700826729256
+            ],
+            [
+              4.92178371044369,
+              52.376812059646106
+            ],
+            [
+              4.921766966385678,
+              52.376775890305055
+            ],
+            [
+              4.922268795151566,
+              52.376688910565576
+            ],
+            [
+              4.922384153158756,
+              52.3769381964659
+            ]
+          ]
+        ]
+      },
+      status: "held",
+      heldReason: "Integrator 2026-10-10: massing and roadway portal match, but the photo is dark weathered grey-brown concrete with brick-red tower strips; the model is tan/ochre"
+    },
+    {
+      id: "victoria-hotel",
+      name: "Park Plaza Victoria Amsterdam",
+      landmarkId: "n237912528",
+      modelUrl: "./models/victoria-hotel.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012185508"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.897879771162695,
+          52.37716289583772
+        ],
+        headingDegrees: 130.84,
+        lengthMetres: 51.9,
+        widthMetres: 41
+      },
+      surveyed: {
+        anchor: [
+          4.897879771162695,
+          52.37716289583772
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012185508 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        stone: "#d2c8ad",
+        sandstone: "#b7aa8c",
+        slate: "#4b5159",
+        greyBrick: "#8b8780",
+        glass: "#5d7280",
+        dark: "#2f3235",
+        white: "#ece7da",
+        gold: "#cdb04e",
+        copper: "#5c7466",
+        frame: "#e4dfd0"
+      },
+      attribution: {
+        title: "Park Plaza Victoria Amsterdam",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Victoria_Hotel",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry on the BAG footprint and 3DBAG LoD2.2 massing; stone facade bays, corner tower and dome, mansard roof with dormers measured by eye from Commons photographs (2005 RCE, 2007, 2016, 2017), no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.897784367587173,
+              52.37718808954044
+            ],
+            [
+              4.897834757594321,
+              52.37722112985541
+            ],
+            [
+              4.897802688242093,
+              52.37723933222284
+            ],
+            [
+              4.897860618376223,
+              52.377279800563834
+            ],
+            [
+              4.897853878846836,
+              52.37728367337375
+            ],
+            [
+              4.8978554824286995,
+              52.37728474953652
+            ],
+            [
+              4.8978005246846035,
+              52.37731561984591
+            ],
+            [
+              4.897797549907704,
+              52.377313702159455
+            ],
+            [
+              4.897795628421581,
+              52.3773148176802
+            ],
+            [
+              4.897797145081426,
+              52.377315785632135
+            ],
+            [
+              4.8977817285379395,
+              52.37732476353882
+            ],
+            [
+              4.897774641465344,
+              52.37732020444754
+            ],
+            [
+              4.897737526139072,
+              52.37734184620489
+            ],
+            [
+              4.897744613211296,
+              52.37734640529838
+            ],
+            [
+              4.897600571330931,
+              52.37743037507314
+            ],
+            [
+              4.897549970110147,
+              52.37739783709775
+            ],
+            [
+              4.8975139485681884,
+              52.3774188272061
+            ],
+            [
+              4.897483551138792,
+              52.37739997113651
+            ],
+            [
+              4.897372117537352,
+              52.37733048472013
+            ],
+            [
+              4.897374484060693,
+              52.377328966600736
+            ],
+            [
+              4.897371930807782,
+              52.37732744610591
+            ],
+            [
+              4.897423218529117,
+              52.377297801117315
+            ],
+            [
+              4.89738756707785,
+              52.37727464514671
+            ],
+            [
+              4.897446456851049,
+              52.37724015127314
+            ],
+            [
+              4.897457069331078,
+              52.37724729544645
+            ],
+            [
+              4.897469200574641,
+              52.377240586869924
+            ],
+            [
+              4.89744887379788,
+              52.37722741671381
+            ],
+            [
+              4.897484350171025,
+              52.37720790734035
+            ],
+            [
+              4.897463685149938,
+              52.37719345054704
+            ],
+            [
+              4.897392591878772,
+              52.377145458785435
+            ],
+            [
+              4.8973192277061175,
+              52.377098320404514
+            ],
+            [
+              4.897363974213568,
+              52.37707052680856
+            ],
+            [
+              4.897403281217398,
+              52.37709377879759
+            ],
+            [
+              4.897452634567574,
+              52.37706240015648
+            ],
+            [
+              4.897734573365179,
+              52.376890822329806
+            ],
+            [
+              4.897735016399683,
+              52.37689059946864
+            ],
+            [
+              4.897738017143579,
+              52.37689282284603
+            ],
+            [
+              4.897734514244829,
+              52.376894848574295
+            ],
+            [
+              4.897775928053034,
+              52.37692547906135
+            ],
+            [
+              4.897779430952319,
+              52.37692345333188
+            ],
+            [
+              4.897789205264541,
+              52.37693069287638
+            ],
+            [
+              4.8977851277589215,
+              52.37693288699751
+            ],
+            [
+              4.897839460101861,
+              52.37697329554404
+            ],
+            [
+              4.897843537608519,
+              52.37697110142105
+            ],
+            [
+              4.897849075142053,
+              52.37697500699089
+            ],
+            [
+              4.897848514328262,
+              52.376975256328855
+            ],
+            [
+              4.897849651542616,
+              52.37697600700739
+            ],
+            [
+              4.897982096661585,
+              52.37707513133956
+            ],
+            [
+              4.8979857445319785,
+              52.37707327696919
+            ],
+            [
+              4.898031328522676,
+              52.37710665685352
+            ],
+            [
+              4.898037077942579,
+              52.377111327243995
+            ],
+            [
+              4.898033445648563,
+              52.37711310079094
+            ],
+            [
+              4.89803592241282,
+              52.37711489957424
+            ],
+            [
+              4.89804414288939,
+              52.37711656030571
+            ],
+            [
+              4.898055301184459,
+              52.377124821154624
+            ],
+            [
+              4.898073811989383,
+              52.37712156318165
+            ],
+            [
+              4.898076324057345,
+              52.377121492668834
+            ],
+            [
+              4.898078834142969,
+              52.37712160190165
+            ],
+            [
+              4.898081312974923,
+              52.377121881771636
+            ],
+            [
+              4.898083716398394,
+              52.377122341084
+            ],
+            [
+              4.898086015340286,
+              52.37712295275564
+            ],
+            [
+              4.8980881949171415,
+              52.377123734700454
+            ],
+            [
+              4.898090196784478,
+              52.37712465072662
+            ],
+            [
+              4.898092035528429,
+              52.37712570988217
+            ],
+            [
+              4.8980936527053744,
+              52.377126884962614
+            ],
+            [
+              4.898095048414426,
+              52.37712816698062
+            ],
+            [
+              4.898096193483315,
+              52.377129537840325
+            ],
+            [
+              4.898097966267978,
+              52.37713258300452
+            ],
+            [
+              4.898099415184615,
+              52.37713569873256
+            ],
+            [
+              4.898100569900996,
+              52.377138858183905
+            ],
+            [
+              4.898101386460431,
+              52.37714205218932
+            ],
+            [
+              4.898101879647212,
+              52.377145271822144
+            ],
+            [
+              4.8981020495603795,
+              52.37714850809509
+            ],
+            [
+              4.898101896398088,
+              52.37715174303365
+            ],
+            [
+              4.898101405574128,
+              52.377154967589796
+            ],
+            [
+              4.898100591971899,
+              52.37715816384963
+            ],
+            [
+              4.898099470375702,
+              52.37716132288657
+            ],
+            [
+              4.89809802619933,
+              52.37716443565256
+            ],
+            [
+              4.8980962595418385,
+              52.3771674931604
+            ],
+            [
+              4.898094200071012,
+              52.377170468569446
+            ],
+            [
+              4.898092993517738,
+              52.37717200946981
+            ],
+            [
+              4.89809152362091,
+              52.377173459405455
+            ],
+            [
+              4.898089775992591,
+              52.3771747913538
+            ],
+            [
+              4.898087780201513,
+              52.37717598746163
+            ],
+            [
+              4.89808558040257,
+              52.377177038923655
+            ],
+            [
+              4.898083191479252,
+              52.37717792782586
+            ],
+            [
+              4.898080657685582,
+              52.37717863637564
+            ],
+            [
+              4.8980779937068455,
+              52.377179164633695
+            ],
+            [
+              4.898075258482337,
+              52.37717949486808
+            ],
+            [
+              4.8980724813826075,
+              52.37717962720005
+            ],
+            [
+              4.898069691679094,
+              52.377179570738264
+            ],
+            [
+              4.898066933625848,
+              52.37717930769009
+            ],
+            [
+              4.898064236395175,
+              52.3771788561514
+            ],
+            [
+              4.89804522021457,
+              52.377173340042376
+            ],
+            [
+              4.898041564096235,
+              52.37717461018011
+            ],
+            [
+              4.898037733737103,
+              52.37717569984399
+            ],
+            [
+              4.898033787977368,
+              52.37717660028936
+            ],
+            [
+              4.898029741502327,
+              52.377177311576936
+            ],
+            [
+              4.898025609195545,
+              52.37717781579274
+            ],
+            [
+              4.898021435013718,
+              52.37717812210609
+            ],
+            [
+              4.898023983197404,
+              52.377186760822475
+            ],
+            [
+              4.8980276386522466,
+              52.37718821395497
+            ],
+            [
+              4.898018729910113,
+              52.377193030509076
+            ],
+            [
+              4.898014426802628,
+              52.37719037933703
+            ],
+            [
+              4.898012045226788,
+              52.377191933357786
+            ],
+            [
+              4.898001907866401,
+              52.37718564502849
+            ],
+            [
+              4.897960387516723,
+              52.37715798012331
+            ],
+            [
+              4.897944914501348,
+              52.37716676008862
+            ],
+            [
+              4.897903277786856,
+              52.37716029666136
+            ],
+            [
+              4.897882005095531,
+              52.3771716231352
+            ],
+            [
+              4.897850075436118,
+              52.377150549853525
+            ],
+            [
+              4.897784367587173,
+              52.37718808954044
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "woongebouw-wladiwostok",
+      name: "Woongebouw Wladiwostok",
+      landmarkId: "woongebouw-wladiwostok",
+      modelUrl: "./models/woongebouw-wladiwostok.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012089568"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.936266441562724,
+          52.37750540889138
+        ],
+        headingDegrees: 95.56,
+        lengthMetres: 49,
+        widthMetres: 44.3
+      },
+      surveyed: {
+        anchor: [
+          4.936266441562724,
+          52.37750540889138
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012089568 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        greyBrick: "#565a60",
+        slate: "#55585d",
+        brick: "#7a4a3c",
+        concrete: "#8d8d89",
+        dark: "#1f2125",
+        glass: "#9ab6cc",
+        frame: "#d0d5da"
+      },
+      attribution: {
+        title: "Woongebouw Wladiwostok",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Woongebouw_Wladiwostok",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry on the BAG footprint and 3DBAG LoD2.2 massing; arc facade window columns, storey rows and balcony stack measured by eye from Commons photographs (2018, 2019, 2023, 2026), no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.936411405470767,
+              52.37733074926203
+            ],
+            [
+              4.93639871343841,
+              52.37735130968641
+            ],
+            [
+              4.9363943389810325,
+              52.37735978638694
+            ],
+            [
+              4.93639189712154,
+              52.37736451359614
+            ],
+            [
+              4.936390336132852,
+              52.377367824105896
+            ],
+            [
+              4.936388819108739,
+              52.3773711437707
+            ],
+            [
+              4.936387360734601,
+              52.37737447264643
+            ],
+            [
+              4.93638201011811,
+              52.37738796075333
+            ],
+            [
+              4.936381617426871,
+              52.37738902879173
+            ],
+            [
+              4.9363812246442595,
+              52.37739010581752
+            ],
+            [
+              4.9363808319529845,
+              52.377391173855926
+            ],
+            [
+              4.936378483638787,
+              52.37739825619195
+            ],
+            [
+              4.9363749643294685,
+              52.377410735662956
+            ],
+            [
+              4.936374644151314,
+              52.37741189385418
+            ],
+            [
+              4.936372292500703,
+              52.37742219376525
+            ],
+            [
+              4.936371277563561,
+              52.377428130754836
+            ],
+            [
+              4.936369965058201,
+              52.37743589110976
+            ],
+            [
+              4.936369344913626,
+              52.37744055335243
+            ],
+            [
+              4.936368726390438,
+              52.37744650083885
+            ],
+            [
+              4.936368337169642,
+              52.37745300643418
+            ],
+            [
+              4.936367896949411,
+              52.377460194898646
+            ],
+            [
+              4.936367835672059,
+              52.37747055745524
+            ],
+            [
+              4.936367859835602,
+              52.37747106984474
+            ],
+            [
+              4.936368467030402,
+              52.377483574013034
+            ],
+            [
+              4.936368503686837,
+              52.37748430215432
+            ],
+            [
+              4.936368820873623,
+              52.37748777260462
+            ],
+            [
+              4.93636918211674,
+              52.37749124322261
+            ],
+            [
+              4.936369602192984,
+              52.377494705076984
+            ],
+            [
+              4.936370230765845,
+              52.37749932713524
+            ],
+            [
+              4.936370962228209,
+              52.377503940597464
+            ],
+            [
+              4.936371796488754,
+              52.37750855445109
+            ],
+            [
+              4.9363739834542955,
+              52.37751879075166
+            ],
+            [
+              4.936375597208573,
+              52.37752473774874
+            ],
+            [
+              4.936377692088742,
+              52.37753247512487
+            ],
+            [
+              4.9363780758060525,
+              52.377533734860265
+            ],
+            [
+              4.936379029401071,
+              52.377536722398844
+            ],
+            [
+              4.93638002705255,
+              52.37753971010514
+            ],
+            [
+              4.936381054166403,
+              52.37754268893593
+            ],
+            [
+              4.93638624831915,
+              52.3775561542723
+            ],
+            [
+              4.936387682789588,
+              52.37755951213614
+            ],
+            [
+              4.936389161407951,
+              52.37756286118037
+            ],
+            [
+              4.936390698859696,
+              52.37756620146089
+            ],
+            [
+              4.9363973637561624,
+              52.37757945669145
+            ],
+            [
+              4.936399165912732,
+              52.37758276202881
+            ],
+            [
+              4.936401026902754,
+              52.37758605860243
+            ],
+            [
+              4.936402932132131,
+              52.37758933736913
+            ],
+            [
+              4.936411010311479,
+              52.37760225644726
+            ],
+            [
+              4.936411690114659,
+              52.37760328363007
+            ],
+            [
+              4.936412384603336,
+              52.377604310868776
+            ],
+            [
+              4.936413079092044,
+              52.377605338107486
+            ],
+            [
+              4.936417609964518,
+              52.37761181749367
+            ],
+            [
+              4.936418797365127,
+              52.377613475745974
+            ],
+            [
+              4.936420014228105,
+              52.37761512512274
+            ],
+            [
+              4.936421231091172,
+              52.377616774499494
+            ],
+            [
+              4.936426318369694,
+              52.377623417781486
+            ],
+            [
+              4.936431641348059,
+              52.377629990059106
+            ],
+            [
+              4.936437200026346,
+              52.37763649133225
+            ],
+            [
+              4.9364393908612385,
+              52.37763912407281
+            ],
+            [
+              4.936432408023067,
+              52.37764125453448
+            ],
+            [
+              4.9364310734924155,
+              52.37763962268534
+            ],
+            [
+              4.936365929175112,
+              52.37765088790316
+            ],
+            [
+              4.936366331598285,
+              52.377651752252056
+            ],
+            [
+              4.935928259531853,
+              52.37772843820542
+            ],
+            [
+              4.935903101501435,
+              52.37773284515563
+            ],
+            [
+              4.935887491554005,
+              52.377735598807135
+            ],
+            [
+              4.935844151586664,
+              52.37774294732052
+            ],
+            [
+              4.93582651137292,
+              52.37774605273258
+            ],
+            [
+              4.935771534725834,
+              52.37762839222431
+            ],
+            [
+              4.9357691658824905,
+              52.37762882359
+            ],
+            [
+              4.9357633014574676,
+              52.377616299377046
+            ],
+            [
+              4.935811094927673,
+              52.37756096469384
+            ],
+            [
+              4.935810140455725,
+              52.377558067024
+            ],
+            [
+              4.935806857240972,
+              52.37754733221186
+            ],
+            [
+              4.935805902495181,
+              52.37754446150397
+            ],
+            [
+              4.9357287674891825,
+              52.37750302187175
+            ],
+            [
+              4.935728402274635,
+              52.37750283173816
+            ],
+            [
+              4.935727003989173,
+              52.377493038828185
+            ],
+            [
+              4.935720888121796,
+              52.37745039595218
+            ],
+            [
+              4.935720462973333,
+              52.377447437385904
+            ],
+            [
+              4.935706968873476,
+              52.377353437760405
+            ],
+            [
+              4.936261336407179,
+              52.37732287989845
+            ],
+            [
+              4.936269124314079,
+              52.37732245118322
+            ],
+            [
+              4.936269493497769,
+              52.37732513990414
+            ],
+            [
+              4.936412591637975,
+              52.377316634138815
+            ],
+            [
+              4.936415842101299,
+              52.377311820130544
+            ],
+            [
+              4.936423165511504,
+              52.37731374440806
+            ],
+            [
+              4.936420959740865,
+              52.37731691764865
+            ],
+            [
+              4.936415776338169,
+              52.37732407008229
+            ],
+            [
+              4.936411405470767,
+              52.37733074926203
+            ]
+          ]
+        ]
+      }
     }
   ];
 
@@ -53806,6 +54822,36 @@
       additionalSources: [
         "https://www.wikidata.org/wiki/Q2189632"
       ],
+      preferDescription: true
+    },
+    {
+      modelId: "pakhuis-de-zwijger",
+      landmarkId: "n6933045932",
+      name: "Pakhuis de Zwijger",
+      description: "Pakhuis de Zwijger on Piet Heinkade was built in 1933-34 as a cold store for perishable goods, in the Nieuwe Bouwen style, to a design by J. de Bie Leuveling Tjeenk and K. Bakker. Its brick box of small square windows overhangs the quay on cantilevered concrete columns, and tall stair towers with projecting caps run up the front. It stood empty and was threatened with demolition before it was made a national monument in 2001 and restored by Stadsherstel Amsterdam. Since 2006 it has housed cultural organisations and the public programme that carries its name.",
+      funFact: "A bridge over the IJhaven was planned straight through the warehouse; in the end the Jan Schaeferbrug (opened 2001) was built with the monument kept, and its roadway still runs through the building.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Pakhuis_de_Zwijger",
+      additionalSources: [
+        "https://dezwijger.nl/"
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "victoria-hotel",
+      landmarkId: "n237912528",
+      name: "Park Plaza Victoria Amsterdam",
+      description: "The Victoria Hotel stands on the corner of Damrak and Prins Hendrikkade, opposite Centraal Station. It opened on 19 August 1890 to a design by the German-born architect Johann Friedrich Henkenhaf, who also ran the company, and it was the first hotel in the Netherlands with electric light in every guest room and double windows against street noise. Its neo-Renaissance natural-stone front, mansard roof and domed corner tower made it a landmark of the new station district, and it has been a protected monument since 2001. Today it is the Park Plaza Victoria.",
+      funFact: "Henkenhaf could not buy two small old houses on Prins Hendrikkade, so he simply built the hotel around them; their two little gables are still enclosed by the hotel's front.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Victoria_Hotel",
+      preferDescription: true
+    },
+    {
+      modelId: "woongebouw-wladiwostok",
+      landmarkId: "woongebouw-wladiwostok",
+      name: "Woongebouw Wladiwostok",
+      description: "Wladiwostok closes the west side of Azartplein on Java-eiland with a nine-storey wall of anthracite brick whose facade is bent into an arc that follows the tram turning loop in front of it. Jo Crepain designed it for the housing association Het Oosten and its future residents, who formed their own association; it was built around 1994 with 72 rental flats and maisonnettes and 13 business units. A facade-wide flight of steps leads up to the business units, and a stack of planted balconies marks the centre of the front. It won the Pyramide Wonen prize in 1998, and since about 2014 its roof has been covered with solar panels.",
+      funFact: "The name is the Dutch spelling of Vladivostok, the Russian port whose name means 'rule the East' - a pun on the corporation Het Oosten. In May 2026 residents put a vane on the roof mast in the shape of the theatre ship Azart, the square's namesake.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Woongebouw_Wladiwostok",
       preferDescription: true
     }
   ];
