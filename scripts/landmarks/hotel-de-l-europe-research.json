@@ -38,7 +38,22 @@
       "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012168170",
       "use": "LoD2.2 massing shell",
       "licence": "CC BY 4.0 (3DBAG)"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Hotel_de_l%27europe_2.jpg",
+      "use": "ref-commons-2008.jpg: 2008-04-06 view from the Muntplein side showing striped brick, round bay with parapet, white terrace, dormers, gables (observation only)",
+      "licence": "Public domain (Wikimedia Commons)"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Hotel_De_L%27Europe_Amsterdam.jpg",
+      "use": "ref-commons-2015.jpg: 2015-08-29 view of the Amstel front, 3 gables over the round bay, turret, axes and balconies (observation only)",
+      "licence": "CC BY-SA 4.0 (Wikimedia Commons), reference only, no pixels used"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:H%C3%B4tel_de_l%27Europe_Amstel_anno_1905.jpg",
+      "use": "ref-commons-1905.jpg: 1905 view of the original front (historic)",
+      "licence": "Public domain (Wikimedia Commons)"
     }
   ],
-  "notes": "HELD: massing is exact (3DBAG) but detail is generic. Not modelled: the white-stone pilaster bays, dormers and the central gable of the Amstel front, the glazed terrace, turret oriel; window rows are an even rhythm rather than the real bay spacing. The NE side (35 m, bearing 58) is a genuine party wall with the neighbouring panden and is exempted in the audit via partyWallBearings."
+  "notes": "Reworked: striped brick (white stone course every ~1.1 m plus window bands), pale-stone ground storey, semicircular south bay (circle fitted to ring vertices 94-118, centre 11.30/13.34, R 5.9 m) with glazed white terrace pavilion, balcony, three window axes x four floors and three gables, stone-framed dormers on the Amstel and Doelenstraat mansards, vertical stone piers between axes (3.0 m pitch), copper-capped corner turret. Not modelled: the exact stepped gable shapes and ornamental stone brackets, balcony variety, turret oriel. The NE side (35 m, bearing 58) is a genuine party wall and the only partyWallBearings entry."
 }
