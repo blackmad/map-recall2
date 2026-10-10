@@ -73,6 +73,7 @@ import {buildMediamatic} from './mediamatic-builder';
 import {buildHaparandaweg13} from './haparandaweg-13-builder';
 import {buildHaparandaweg11} from './haparandaweg-11-builder';
 import {buildHaparandaweg9} from './haparandaweg-9-builder';
+import {buildOvertoom197} from './overtoom-197-builder';
 import {buildDeBazel} from './de-bazel-builder';
 import {buildMotorkade1} from './motorkade-1-builder';
 import {buildVocKade600} from './voc-kade-600-builder';
@@ -579,6 +580,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='haparandaweg-2-4')buildHaparandaweg24(w,d,helpers);
     else if(id==='haparandaweg-8-338')buildHaparandaweg8338(w,d,helpers);
     else if(id==='haparandaweg-9')buildHaparandaweg9(w,d,helpers);
+    else if(id==='overtoom-197')buildOvertoom197(w,d,helpers);
     else if(id==='de-bazel')buildDeBazel(w,d,helpers);
     else if(id==='motorkade-1')buildMotorkade1(w,d,helpers);
     else if(id==='voc-kade-600')buildVocKade600(w,d,helpers);

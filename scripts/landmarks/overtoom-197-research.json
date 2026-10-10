@@ -1,0 +1,27 @@
+{
+  "id": "overtoom-197",
+  "status": "ready-pending-integrator-blind-count",
+  "identity": {
+    "bagPandId": "0363100012236683",
+    "bouwjaar": 1925,
+    "addresses": ["Overtoom 197", "Overtoom 201", "Overtoom 203", "Overtoom 205", "Overtoom 205A"],
+    "style": "Amsterdam School shop-and-flat block; east part (Avis, no. 197) lighter brick with three stacked balconies, west part (Tempo-Team/JMW, nos. 201-205) dark brown brick",
+    "policy": "ordinary large building: category ordinary, no route destination, no POI card"
+  },
+  "sources": [
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012236683&f=json", "kind": "BAG pand", "retrievedOn": "2026-10-10", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236683", "kind": "3DBAG LoD2.2 massing", "retrievedOn": "2026-10-10", "licence": "CC BY 4.0 (3DBAG)"},
+    {"file": "artifacts/landmark-lanes/overtoom-197/ref-e-crop.jpg", "kind": "rectified east-block elevation, 40 px/m, pano b_20241129_0829_Track01_Sphere_00254 (2024-11-29)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/overtoom-197/ref-w-crop.jpg", "kind": "rectified west-block elevation, 44 px/m, pano TMX7316010203-002921_pano_0006_000271 (2023-01-10)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/overtoom-197/ref-full-crop.jpg", "kind": "rectified full front, 30 px/m, pano TMX7316010203-002928_pano_0003_000327 (2023-01-12)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/overtoom-197/ref-n.jpg", "kind": "rectified full front t -20.08..23.5, 36 px/m, pano TMX7316010203-002921_pano_0007_000438 (2023-01-10); facade-compare photo", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/overtoom-197/ref-t-*.jpg, ref-up-*.jpg, ref-far-*.jpg", "kind": "aimed panorama thumbnails recording_2025-07-31_06-59-14_01622, b_20241129_0829_Track01_Sphere_00257, recording_2025-07-31_07-49-05_00084 (x2)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0", "retrievedOn": "2026-10-10"}
+  ],
+  "faces": {
+    "north (Overtoom, street)": "evidence: rectified crops above. East block: 4+4+4 window axes per floor, centre three balconies and canopy, Avis garage portal; west block: 8 axes (single, wide, wide, bay, wide, bay, wide, single), 3 floors plus attic row, shop fascias.",
+    "east (67 deg)": "INFERRED plain brick: party wall with BAG pand 0363100012139124 (1982, ~15.7 m), only the top ~7 m exposed; declared via partyWallBearings",
+    "west (247 deg), south and courtyard walls": "INFERRED: inside the block / not visible from any street panorama; 3DBAG shell only"
+  },
+  "calibration": "Rectifier ground datum differs from the 3DBAG datum; heights from the photos are scaled per block (west x1.121, east x1.07) so cornice tops meet the 3DBAG roof edges.",
+  "limits": ["balcony-end fire ladders", "shop signage lettering", "roof plant", "brick relief panels", "canted bays are simple trapezoid prisms"]
+}
