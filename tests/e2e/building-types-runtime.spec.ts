@@ -56,6 +56,14 @@ const VIEWS: Record<string, { center: [number, number]; zoom: number; pitch: num
   'rowhouse-k-close': { center: [4.786899, 52.353549], zoom: 19.2, pitch: 60, bearing: 252 },
   'rowhouse-c-close': { center: [4.782098, 52.356177], zoom: 19.2, pitch: 60, bearing: 252 },
   'rowhouse-o-close': { center: [4.811406, 52.37268], zoom: 19.2, pitch: 60, bearing: 9 },
+  // 2026-10-11 post-war flats west of the A10 (types/nw-flats-20261011): D4 garage + white balcony pairs (Dubbelmondehof / Borrendammehof), D1 glazed loggia stacks (Zonzeelstraat white, Ookmeerweg grey), D5 three-storey blue-door portiek (Van Gilsestraat).
+  'flats-d4-street': { center: [4.7930, 52.3582], zoom: 17.8, pitch: 62, bearing: 252 },
+  'flats-d4-close': { center: [4.79239686, 52.35810205], zoom: 19.2, pitch: 60, bearing: 252 },
+  'flats-d1-street': { center: [4.7899, 52.3628], zoom: 17.8, pitch: 62, bearing: 252 },
+  'flats-d1-close': { center: [4.7900703, 52.36265335], zoom: 19.2, pitch: 60, bearing: 252 },
+  'flats-d1-grey-close': { center: [4.78991098, 52.36308275], zoom: 19.2, pitch: 60, bearing: 162 },
+  'flats-d5-street': { center: [4.8258, 52.3813], zoom: 17.8, pitch: 62, bearing: 284 },
+  'flats-d5-close': { center: [4.82583041, 52.38126567], zoom: 19.2, pitch: 60, bearing: 284 },
 };
 const ONLY = process.env.BT_VIEWS?.split(',');
 const CAM = ['jumpTo', 'easeTo', 'flyTo', 'setCenter', 'setZoom', 'setBearing', 'setPitch'];
