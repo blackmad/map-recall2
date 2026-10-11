@@ -1,0 +1,319 @@
+{
+  "id": "nw-rowhouse-render-tile",
+  "label": "Nieuw-West terraced house, rendered walls over a white-tile plinth, big window + door + slit window, two upper windows, tile roof along the street (the 8.5 x 5.0 m cluster, Slotervaart: Pieter Postsingel, Cornelis Vriendtstraat, Antoon Keldermansstraat, Philip Vingboonsstraat, Joost Bilhamerstraat)",
+  "frontOnShort": true,
+  "source": {
+    "clusterRank": 1,
+    "panden": 2922,
+    "bouwjaar": [
+      1952,
+      1972
+    ],
+    "lengthM": 8.5,
+    "widthM": 5.0,
+    "bouwlagen": 3,
+    "roof": "pitched",
+    "dwellingsMedian": 1
+  },
+  "storeys": 2,
+  "eavesRangeM": [
+    5.2,
+    6.7
+  ],
+  "footprintRangeM": {
+    "frontage": [
+      4.4,
+      5.8
+    ],
+    "depth": [
+      7.9,
+      9.4
+    ]
+  },
+  "alternateMirror": true,
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.3,
+    "vergeOverhangM": 0.0,
+    "thicknessM": 0.12,
+    "pitchDeg": 32
+  },
+  "ground": {
+    "mode": "solid",
+    "plinthM": 1.0
+  },
+  "defaultVariant": "greige",
+  "variants": {
+    "greige": {
+      "label": "Greige render, dark tile roof",
+      "evidence": "survey tiles 351-453 (greige): render median of 0363100012137235 #797061, 0125672 #776d61",
+      "palette": {
+        "wall": {
+          "slot": "stucco",
+          "tint": "#7a7164"
+        },
+        "frame": "#ece8dc",
+        "glass": "#4b5a6b",
+        "door": "#c4846f",
+        "accent": "#e9e3d2",
+        "rail": "#c9c4b6",
+        "dark": "#3a3a3a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "slate",
+          "tint": "#55504c"
+        },
+        "plinth": {
+          "slot": "stone",
+          "tint": "#a8a295"
+        }
+      }
+    },
+    "cream": {
+      "label": "Cream render, terracotta tile roof",
+      "evidence": "survey tiles 340, 342, 346, 348, 354, 357, 370, 387, 391, 395, 400, 409, 412 (cream)",
+      "palette": {
+        "wall": {
+          "slot": "stucco",
+          "tint": "#d5ccb0"
+        },
+        "frame": "#ece8dc",
+        "glass": "#4b5a6b",
+        "door": "#c4846f",
+        "accent": "#e9e3d2",
+        "rail": "#c9c4b6",
+        "dark": "#3a3a3a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4b38"
+        },
+        "plinth": {
+          "slot": "stone",
+          "tint": "#a8a295"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012137235.jpg",
+          "pand": "0363100012137235",
+          "address": "Pieter Postsingel",
+          "note": "greige render, white-tile plinth 1.0 m, big 1.6 m window + door + 0.2 m slit, upper big (1.5 m) and narrow (0.6 m) windows"
+        },
+        {
+          "photo": "survey crop 0363100012125672.jpg",
+          "pand": "0363100012125672",
+          "address": "Pieter Postsingel",
+          "note": "same layout with arched porch canopy over the door"
+        },
+        {
+          "photo": "survey crop 0363100012087007.jpg",
+          "pand": "0363100012087007",
+          "address": "Antoon Keldermansstraat",
+          "note": "greige render, tiled plinth, orange door"
+        },
+        {
+          "photo": "survey crop 0363100012151473.jpg",
+          "pand": "0363100012151473",
+          "address": "Pieter Postsingel",
+          "note": "cream render variant with dormers added"
+        }
+      ],
+      "counted": {
+        "bays": 3,
+        "openingsPerUpperStorey": 2,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "window",
+          "w": 2.2,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": 0.2,
+              "w": 1.6,
+              "h": 1.35,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 0.8,
+              "w": 1.5,
+              "h": 1.15,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "door",
+          "w": 1.8,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": 0.1,
+              "w": 0.95,
+              "h": 2.1,
+              "steps": 0
+            }
+          ]
+        },
+        {
+          "id": "slit",
+          "w": 1.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -0.4,
+              "w": 0.2,
+              "h": 0.5,
+              "sill": 1.4,
+              "lights": 1
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -0.4,
+              "w": 0.6,
+              "h": 1.15,
+              "sill": 0.9,
+              "lights": 1
+            }
+          ]
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012137235.jpg",
+          "pand": "0363100012137235",
+          "address": "Pieter Postsingel",
+          "note": "rear (garden side) NOT seen in any photo: generic two-window upper storey, garden door and kitchen window, inferred from the frontage scheme; it is hidden between the rear gardens in practice"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 2,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "back",
+          "w": 1,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": 1.0,
+              "w": 0.9,
+              "h": 2.1
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -1.0,
+              "w": 1.8,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012142275.jpg",
+          "pand": "0363100012142275",
+          "address": "Cornelis Vriendtstraat",
+          "note": "end wall: plain wall seen edge-on beside the front at the end of the terrace, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012095676.jpg",
+          "pand": "0363100012095676",
+          "address": "Pieter Postsingel",
+          "note": "end wall: plain wall seen edge-on beside the front at the end of the terrace, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Front on the SHORT side (frontOnShort).",
+    "Dormer additions (about one house in three) and arched door canopies are not modelled."
+  ]
+}

@@ -1,0 +1,427 @@
+{
+  "id": "nw-rowhouse-garage-door",
+  "label": "Nieuw-West terraced house, brick, cream garage door + front door at street level, one window per storey, pitched roof along the street with a rooflight (the 8.5 x 5.0 m cluster, Slotermeer/Slotervaart)",
+  "frontOnShort": true,
+  "source": {
+    "clusterRank": 1,
+    "panden": 2922,
+    "bouwjaar": [
+      1952,
+      1972
+    ],
+    "lengthM": 8.5,
+    "widthM": 5.0,
+    "bouwlagen": 3,
+    "roof": "pitched",
+    "dwellingsMedian": 1
+  },
+  "storeys": 2,
+  "eavesRangeM": [
+    5.2,
+    6.7
+  ],
+  "footprintRangeM": {
+    "frontage": [
+      4.4,
+      5.8
+    ],
+    "depth": [
+      7.9,
+      9.4
+    ]
+  },
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.3,
+    "vergeOverhangM": 0.0,
+    "thicknessM": 0.12,
+    "pitchDeg": 38,
+    "rooflights": {
+      "u": [
+        0.45
+      ],
+      "w": 0.75,
+      "h": 1.0,
+      "along": 0.5
+    }
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "cream-red-slate",
+  "variants": {
+    "teal-slate": {
+      "label": "Teal-painted garage door and glazed door, slate roof, white frames (Slotermeer: Joannes de Swaefhof, Pieter Oosterleehof, Prof. Ph. Kohnstammstraat, Willem Bartjenshof...)",
+      "evidence": "tiles 0, 1, 2, 3, 4, 6, 7, 9, 10, 13, 14, 15, 17, 18, 20, 22 of the survey; 0363100012115581 close crop; brick median #55453c",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#5a4640"
+        },
+        "frame": "#e6e0cf",
+        "glass": "#4b5a6b",
+        "door": "#3f7a78",
+        "accent": "#e9e3d2",
+        "rail": "#c9c4b6",
+        "dark": "#3a3a3a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "slate",
+          "tint": "#4a494d"
+        }
+      }
+    },
+    "cream-navy-tile": {
+      "label": "Cream garage door, dark navy door, terracotta tile roof (Pestalozzihof, Theo Thijssenhof, Salzmannhof...)",
+      "evidence": "tiles 5, 8, 11, 12, 16, 21, 23, 27 of the survey; 0363100012085037 and 0363100012111603 close crops; brick #493a32-#564441",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#5a4640"
+        },
+        "frame": "#e6e0cf",
+        "glass": "#4b5a6b",
+        "door": "#26324a",
+        "accent": "#e9e3d2",
+        "rail": "#c9c4b6",
+        "dark": "#3a3a3a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9b4a37"
+        }
+      }
+    },
+    "cream-red-slate": {
+      "label": "Cream garage door, red door, dark slate roof (Slotervaart: Gorsstraat, Wierdestraat, Ingelandenweg, Rijsdrechthof, Wijmarkthof, Waterschapstraat...)",
+      "evidence": "survey tiles 104-149 (sheet 4, 5): red doors with a yellow glass pane, cream garage doors",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#5a4640"
+        },
+        "frame": "#e6e0cf",
+        "glass": "#4b5a6b",
+        "door": "#8e1f26",
+        "accent": "#e9e3d2",
+        "rail": "#c9c4b6",
+        "dark": "#3a3a3a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "slate",
+          "tint": "#4a494d"
+        }
+      }
+    },
+    "cream-blue-slate": {
+      "label": "Cream garage door, mid-blue door, dark roof (Hoogheemraadweg, Bandijkstraat, Griendstraat)",
+      "evidence": "survey tiles 130, 135, 147, 149",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#5a4640"
+        },
+        "frame": "#e6e0cf",
+        "glass": "#4b5a6b",
+        "door": "#2f5f98",
+        "accent": "#e9e3d2",
+        "rail": "#c9c4b6",
+        "dark": "#3a3a3a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "slate",
+          "tint": "#4a494d"
+        }
+      }
+    },
+    "white-slate": {
+      "label": "White glazed doors, slate roof (Foersterhof, Willem Bartjenshof south end)",
+      "evidence": "survey tiles 19, 24; close crop 0363100012150312",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#5a4640"
+        },
+        "frame": "#f2f0ea",
+        "glass": "#4b5a6b",
+        "door": "#eeeeea",
+        "accent": "#e9e3d2",
+        "rail": "#c9c4b6",
+        "dark": "#3a3a3a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "slate",
+          "tint": "#4a494d"
+        }
+      }
+    },
+    "white-tile": {
+      "label": "White glazed doors, tile roof (Prof. R. Casimirstraat, Jan Ligthartstraat)",
+      "evidence": "survey tiles 29, 31, 32",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#5a4640"
+        },
+        "frame": "#f2f0ea",
+        "glass": "#4b5a6b",
+        "door": "#eeeeea",
+        "accent": "#e9e3d2",
+        "rail": "#c9c4b6",
+        "dark": "#3a3a3a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9b4a37"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012085037.jpg",
+          "pand": "0363100012085037",
+          "address": "Theo Thijssenhof",
+          "note": "three houses: cream two-leaf garage door (1.6 m), dark door (0.85 m), 1.0 m window right of the door, ONE upper window (1.4 m) per house, rooflight"
+        },
+        {
+          "photo": "survey crop 0363100012111603.jpg",
+          "pand": "0363100012111603",
+          "address": "Pestalozzihof",
+          "note": "camera-matched sheet; same ground floor, doors dark blue"
+        },
+        {
+          "photo": "survey crop 0363100012115581.jpg",
+          "pand": "0363100012115581",
+          "address": "Joannes de Swaefhof",
+          "note": "teal-painted panelled garage and glazed door, slate roof"
+        },
+        {
+          "photo": "survey crop 0363100012150312.jpg",
+          "pand": "0363100012150312",
+          "address": "Foersterhof",
+          "note": "white glazed double door pair with grey panel instead of garage door"
+        }
+      ],
+      "counted": {
+        "bays": 4,
+        "openingsPerUpperStorey": 1,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "garage",
+          "w": 1.75,
+          "role": "storage",
+          "elements": [
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "w": 1.6,
+              "h": 2.4,
+              "sill": 0,
+              "colour": "accent",
+              "depth": 0.05,
+              "exceptVariants": [
+                "teal-slate"
+              ]
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "w": 1.6,
+              "h": 2.4,
+              "sill": 0,
+              "colour": "door",
+              "depth": 0.05,
+              "variants": [
+                "teal-slate"
+              ]
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "w": 0.03,
+              "h": 2.4,
+              "sill": 0,
+              "colour": "joint",
+              "depth": 0.065
+            }
+          ]
+        },
+        {
+          "id": "door",
+          "w": 1.0,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 0.85,
+              "h": 2.25,
+              "steps": 0
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -0.25,
+              "w": 1.4,
+              "h": 1.3,
+              "sill": 1.3,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "wall",
+          "w": 1.2,
+          "role": "windows",
+          "elements": []
+        },
+        {
+          "id": "window",
+          "w": 1.05,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "ground",
+              "w": 0.75,
+              "h": 1.15,
+              "sill": 1.2,
+              "lights": 1,
+              "u": -0.1
+            }
+          ]
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012085037.jpg",
+          "pand": "0363100012085037",
+          "address": "Theo Thijssenhof",
+          "note": "rear (garden side) NOT seen in any photo: generic two-window upper storey, garden door and kitchen window, inferred from the frontage scheme; it is hidden between the rear gardens in practice"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 2,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "back",
+          "w": 1,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": 1.0,
+              "w": 0.9,
+              "h": 2.1
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -1.0,
+              "w": 1.8,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012143139.jpg",
+          "pand": "0363100012143139",
+          "address": "Pestalozzihof",
+          "note": "end wall: plain wall seen edge-on beside the front at the end of the terrace, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012122478.jpg",
+          "pand": "0363100012122478",
+          "address": "Pestalozzihof",
+          "note": "end wall: plain wall seen edge-on beside the front at the end of the terrace, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "The front is the SHORT side of the footprint: lengthM here is the 5.0 m frontage, widthM the 8.5 m depth (frontOnShort).",
+    "Eaves ~5.9 m (two storeys of ~2.95 m); 3DBAG bouwlagen 3 counts the attic.",
+    "Doors are re-painted house by house: the variant carries the colour that dominates the terrace in the survey sheet, not each house.",
+    "Rooflight: one 0.75 x 1.0 m roof window per house; some houses have two or a dormer (not modelled)."
+  ]
+}

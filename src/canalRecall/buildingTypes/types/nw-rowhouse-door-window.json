@@ -1,0 +1,310 @@
+{
+  "id": "nw-rowhouse-door-window",
+  "label": "Nieuw-West terraced house, dark red-brown brick, front door with white surround between a big window and a small window, two upper windows, low pitched roof along the street (the 8.5 x 5.0 m cluster, Geuzenveld/Slotermeer/Slotervaart)",
+  "frontOnShort": true,
+  "source": {
+    "clusterRank": 1,
+    "panden": 2922,
+    "bouwjaar": [
+      1952,
+      1972
+    ],
+    "lengthM": 8.5,
+    "widthM": 5.0,
+    "bouwlagen": 3,
+    "roof": "pitched",
+    "dwellingsMedian": 1
+  },
+  "storeys": 2,
+  "eavesRangeM": [
+    5.2,
+    6.7
+  ],
+  "footprintRangeM": {
+    "frontage": [
+      4.4,
+      5.8
+    ],
+    "depth": [
+      7.9,
+      9.4
+    ]
+  },
+  "alternateMirror": true,
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.3,
+    "vergeOverhangM": 0.0,
+    "thicknessM": 0.12,
+    "pitchDeg": 30
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "tile",
+  "variants": {
+    "tile": {
+      "label": "Terracotta tile roof",
+      "evidence": "survey sheets 1-3, 9-12 (about 110 terraces)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#5a4a43"
+        },
+        "frame": "#ece6d6",
+        "glass": "#4b5a6b",
+        "door": "#8a2428",
+        "accent": "#f0ece0",
+        "rail": "#c9c4b6",
+        "dark": "#3a3a3a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4a38"
+        }
+      }
+    },
+    "slate": {
+      "label": "Dark tile roof (almost black)",
+      "evidence": "survey tiles 33-45, 75-81 (dark roofs)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#5a4a43"
+        },
+        "frame": "#ece6d6",
+        "glass": "#4b5a6b",
+        "door": "#8a2428",
+        "accent": "#f0ece0",
+        "rail": "#c9c4b6",
+        "dark": "#3a3a3a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "slate",
+          "tint": "#4c4949"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012154795.jpg",
+          "pand": "0363100012154795",
+          "address": "Dirk Wittehof",
+          "note": "ground: 1.25 m window, door with white surround, 0.5 m small windows; two 1.4 m upper windows per house; low roof"
+        },
+        {
+          "photo": "survey crop 0363100012147873.jpg",
+          "pand": "0363100012147873",
+          "address": "Pisuissehof",
+          "note": "same layout, grey/red doors, dormer additions on some houses"
+        },
+        {
+          "photo": "survey crop 0363100012112855.jpg",
+          "pand": "0363100012112855",
+          "address": "Hegeraatstraat",
+          "note": "two upper windows per house, one drainpipe per party wall"
+        },
+        {
+          "photo": "survey crop 0363100012064246.jpg",
+          "pand": "0363100012064246",
+          "address": "Louis Moorhof",
+          "note": "recessed entry with white surround (porch variant of the door bay)"
+        }
+      ],
+      "counted": {
+        "bays": 3,
+        "openingsPerUpperStorey": 2,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "window",
+          "w": 2.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": 0.2,
+              "w": 1.25,
+              "h": 1.45,
+              "sill": 0.85,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 0.7,
+              "w": 1.35,
+              "h": 1.25,
+              "sill": 1.0,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "door",
+          "w": 2.4,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 0.95,
+              "h": 2.15,
+              "steps": 0
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 0.9,
+              "w": 1.35,
+              "h": 1.25,
+              "sill": 1.0,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "small",
+          "w": 0.6,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "ground",
+              "w": 0.5,
+              "h": 0.5,
+              "sill": 1.55,
+              "lights": 1,
+              "u": -0.1
+            }
+          ]
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012154795.jpg",
+          "pand": "0363100012154795",
+          "address": "Dirk Wittehof",
+          "note": "rear (garden side) NOT seen in any photo: generic two-window upper storey, garden door and kitchen window, inferred from the frontage scheme; it is hidden between the rear gardens in practice"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 2,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "back",
+          "w": 1,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": 1.0,
+              "w": 0.9,
+              "h": 2.1
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -1.0,
+              "w": 1.8,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012154795.jpg",
+          "pand": "0363100012154795",
+          "address": "Dirk Wittehof",
+          "note": "end wall: plain wall seen edge-on beside the front at the end of the terrace, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012147873.jpg",
+          "pand": "0363100012147873",
+          "address": "Pisuissehof",
+          "note": "end wall: plain wall seen edge-on beside the front at the end of the terrace, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Front on the SHORT side (frontOnShort). The photos show the houses alternate door-left / door-right in pairs; the unit is not mirrored, so half the doors sit on the wrong side of the house.",
+    "Door colours (red, dark, white, grey) differ house by house; the unit uses the commonest red.",
+    "Dormer additions (about one house in four) are not modelled."
+  ]
+}

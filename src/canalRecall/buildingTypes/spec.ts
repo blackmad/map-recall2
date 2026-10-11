@@ -101,6 +101,8 @@ export interface Palette {
 
 export interface Variant {
   label: string;
+  /** Roof windows of this cladding variant (default: the type's roof.rooflights; `{u: []}` switches them off). */
+  rooflights?: RoofSpec['rooflights'];
   /** Draw concrete-panel joints on the facades that declare them. */
   joints?: boolean;
   evidence: string;
@@ -116,6 +118,8 @@ export interface RoofSpec {
   thicknessM: number;
   /** Fallback pitch when 3DBAG gives no ridge height. */
   pitchDeg: number;
+  /** Roof windows in the front slope of an eaves-front gable: `u` are fractions of the frontage (0 = left edge), `along` the position up the slope (0 eaves, 1 ridge). */
+  rooflights?: {u: number[]; w: number; h: number; along: number};
 }
 
 export interface GroundSpec {
@@ -126,12 +130,22 @@ export interface GroundSpec {
   columnM?: number;
   /** Storage doors in the recessed wall. */
   storageDoorW?: number;
+  /** Solid ground: the palette's `plinth` covers only the lowest `plinthM` metres as a proud band (tiled plinth under render) instead of the whole ground storey. */
+  plinthM?: number;
 }
 
 export interface TypeSpec {
   id: string;
   label: string;
   source: {clusterRank: number; panden: number; bouwjaar: [number, number]; lengthM: number; widthM: number; bouwlagen: number; roof: 'pitched' | 'flat'; dwellingsMedian: number};
+  /** Terraced houses: the front is the SHORT side of the footprint (the generator's lengthM is the frontage, widthM the depth). */
+  frontOnShort?: boolean;
+  /** Houses whose footprint rectangle lies outside these ranges [min, max] metres (frontage x depth) are extended/notched variants of the design and are held by build.ts. */
+  footprintRangeM?: {frontage: [number, number]; depth: [number, number]};
+  /** Terraced houses built in mirrored pairs (door beside door): build.ts alternates `mirror` along each terrace. */
+  alternateMirror?: boolean;
+  /** Houses whose 3DBAG eaves height lies outside this range [min, max] metres are not this design (extra storey, raised eaves) and are held by build.ts. */
+  eavesRangeM?: [number, number];
   /** Storeys incl. the ground storey, all below the eaves/roof edge. */
   storeys: number;
   roof: RoofSpec;

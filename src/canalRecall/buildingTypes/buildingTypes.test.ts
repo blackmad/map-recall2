@@ -2,9 +2,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import {bearingDeg, lngLatToLocal, localToLngLat, minimumRotatedRectangle, rectIoU, type Pt} from './geometry.ts';
-import {frontSide, frontYaw, type Street} from './orientation.ts';
-import {generate, layoutBays} from './generate.ts';
+import {bearingDeg, freeSides, lngLatToLocal, localToLngLat, minimumRotatedRectangle, rectIoU, swapAxes, type Pt} from './geometry.ts';
+import {frontSide, frontTowardBearing, frontYaw, type Street} from './orientation.ts';
+import {generate, layoutBays, mirrorBays} from './generate.ts';
 import {bakeWorld} from './glb.ts';
 import {FACADE_IDS, validateSpec, type TypeSpec} from './spec.ts';
 import {paramsFromFacts, ridgeAlongOf, roofFactsFromPlanes} from './facts.ts';
@@ -335,4 +335,98 @@ test('cluster designs validate, carry >= 3 photo pands of evidence on the front,
       for (const bucket of mesh.buckets.values()) assert.ok(bucket.positions.every(Number.isFinite));
     }
   }
+});
+
+
+// --- 2026-10-11 terraced houses: the front is the SHORT side -------------------------------------------------------------
+
+const ROW_TYPES = ['nw-rowhouse-garage-door', 'nw-rowhouse-door-window', 'nw-rowhouse-tall-glass', 'nw-rowhouse-render-tile'].map(id => load(`${id}.json`));
+const house = (cx: number, w = 5.0, d = 8.5): Pt[] => [[cx - w / 2, -d / 2], [cx + w / 2, -d / 2], [cx + w / 2, d / 2], [cx - w / 2, d / 2]];
+
+test('swapAxes: frontage first, short stays long rotated +90, corners and centre kept', () => {
+  for (const deg of [0, 33, 90, 200]) {
+    const r = minimumRotatedRectangle(rotate(house(0), deg, [10, 4])), q = swapAxes(r);
+    assert.ok(Math.abs(q.length - 5.0) < 1e-6 && Math.abs(q.width - 8.5) < 1e-6);
+    assert.deepEqual(q.center, r.center);
+    assert.ok(Math.abs(q.short[0] + q.long[1]) < 1e-9 && Math.abs(q.short[1] - q.long[0]) < 1e-9, 'short = long rotated +90');
+    assert.ok(rectIoU(rotate(house(0), deg, [10, 4]), q) > 0.999);
+  }
+});
+
+test('terraced house front: the short side facing the street, either side, any rotation; a photo-confirmed bearing overrides the street rule', () => {
+  for (const deg of [0, 40, 115, 270]) for (const side of [1, -1]) {
+    const world = (p: Pt) => rotate([p], deg)[0];
+    // house: 5 m frontage along x, 8.5 m deep along z; the street runs along x, 10 m off the +-z end (the short sides are the fronts)
+    const street = line('residential', 'Rijtjesstraat', world([-30, side * 10]), world([30, side * 10]));
+    const rect = swapAxes(minimumRotatedRectangle(rotate(house(0), deg)));
+    const f = frontSide(rect, [street]), want = rotate([[0, side]], deg)[0];
+    assert.ok(f.normal[0] * want[0] + f.normal[1] * want[1] > 0.999, `deg ${deg} side ${side}`);
+    const flipped = frontTowardBearing(rect, f, bearingDeg(-want[0], -want[1]));
+    assert.ok(flipped.normal[0] * want[0] + flipped.normal[1] * want[1] < -0.999, 'bearing override flips the front');
+    assert.ok(Math.abs(flipped.midpoint[0] - (rect.center[0] - want[0] * 8.5 / 2)) < 1e-6);
+    assert.equal(frontTowardBearing(rect, f, bearingDeg(want[0], want[1])), f, 'already facing the bearing: unchanged');
+  }
+});
+
+test('freeSides: a middle house has two party walls, an end house one, a detached house none', () => {
+  const rect = swapAxes(minimumRotatedRectangle(house(0))), f = frontSide(rect, [line('residential', 's', [30, -20], [30, 20])]);
+  const t = f.tangent; // viewer-right of the front
+  const sideOf = (sgn: number) => house(sgn * 5.0);
+  const right = (sgn: number) => (sgn * t[0] > 0 ? 'x' : 'y');
+  void right;
+  const both = freeSides(rect, f.tangent, [house(5.0), house(-5.0)]);
+  assert.deepEqual(both, {left: false, right: false});
+  const one = freeSides(rect, f.tangent, [house(5.0)]);
+  assert.equal(Number(one.left) + Number(one.right), 1);
+  assert.deepEqual(freeSides(rect, f.tangent, []), {left: true, right: true});
+  assert.deepEqual(freeSides(rect, f.tangent, [house(9.0)]), {left: true, right: true}, 'a gap of 4 m is not a party wall');
+  void sideOf;
+});
+
+test('mirrorBays reverses the bay order and negates offsets; mirrored facades keep their counts', () => {
+  const G = ROW_TYPES[1], bays = G.facades.front.bays, m = mirrorBays(bays);
+  assert.deepEqual(m.map(b => b.id), [...bays.map(b => b.id)].reverse());
+  assert.equal(m[2].elements[0].u, -(bays[0].elements[0].u ?? 0) || 0);
+  const a = generate(G, {lengthM: 5, widthM: 8.5, eavesM: 5.9, ridgeM: 8.5, freeSides: {left: false, right: false}}), b = generate(G, {lengthM: 5, widthM: 8.5, eavesM: 5.9, ridgeM: 8.5, freeSides: {left: false, right: false}, mirror: true});
+  assert.deepEqual(a.report.facades, b.report.facades);
+  assert.equal(b.report.mirrored, true);
+  assert.equal(a.mesh.triangles, b.mesh.triangles);
+  // the door leaf is on the other half of the front
+  const doorX = (mesh: ReturnType<typeof generate>['mesh']) => { const d = mesh.buckets.get(`door|${G.variants[G.defaultVariant].palette.door}`)!; let sx = 0, n = 0; for (let i = 0; i < d.positions.length; i += 3) if (d.positions[i + 2] > 4) { sx += d.positions[i]; n++; } return sx / n; };
+  assert.ok(Math.sign(doorX(a.mesh)) === -Math.sign(doorX(b.mesh)) && Math.abs(doorX(a.mesh)) > 0.3, 'mirror puts the door on the other side');
+});
+
+test('terraced-house designs: validate, >= 3 distinct photo pands of evidence on the front, counted openings match the model for every variant, <= 400 triangles, party walls get no openings', () => {
+  for (const spec of ROW_TYPES) {
+    assert.deepEqual(validateSpec(spec), [], spec.id);
+    assert.equal(spec.frontOnShort, true);
+    assert.ok(spec.facades.front.evidence.length >= 3 && new Set(spec.facades.front.evidence.map(e => e.pand)).size === spec.facades.front.evidence.length, `${spec.id}: evidence`);
+    const [lo, hi] = spec.eavesRangeM!;
+    assert.ok(lo < 5.9 && hi > 5.9, 'eaves range brackets the cluster median 5.9 m');
+    for (const variant of Object.keys(spec.variants)) for (const mirror of spec.alternateMirror ? [false, true] : [false]) {
+      const base = {lengthM: 5.0, widthM: 8.5, eavesM: 5.9, ridgeM: 8.6, variant, mirror};
+      const {report, mesh} = generate(spec, base);
+      for (const id of FACADE_IDS) assert.deepEqual(report.facades[id], spec.facades[id].counted, `${spec.id}/${variant}/${id}`);
+      assert.ok(mesh.triangles <= 400, `${spec.id}/${variant}: ${mesh.triangles} triangles`);
+      const midGen = generate(spec, {...base, freeSides: {left: false, right: false}}), mid = midGen.report;
+      assert.equal(mid.facades.left.bays + mid.facades.right.bays, 0, 'party walls have no bays');
+      const mb = midGen.mesh.bounds();
+      assert.ok(mb.max[0] <= 2.5 + spec.roof.vergeOverhangM + 1e-6 && mb.min[0] >= -2.5 - spec.roof.vergeOverhangM - 1e-6, 'a mid-terrace house does not reach across its party walls');
+      const b = mesh.bounds();
+      assert.ok(Math.abs(b.max[1] - 8.6) < 1e-6 && b.min[1] >= -1e-9, `${spec.id}: ridge reached, nothing below ground`);
+      assert.ok(b.max[0] <= 2.5 + spec.roof.vergeOverhangM + 0.03, 'an end house reaches at most a proud plinth band past its wall');
+    }
+  }
+});
+
+test('terraced houses: params from 3DBAG keep dak_min as the eaves and hold nothing back here (the held range lives in the spec)', () => {
+  const spec = ROW_TYPES[0], rect = swapAxes(minimumRotatedRectangle(house(0)));
+  const attrs = {b3_h_maaiveld: 0.2, b3_h_dak_min: 6.1, b3_h_nok: 9.1, b3_h_dak_max: 9.1, b3_bouwlagen: 3};
+  // a 24 degree "main plane" (dormered roof) would put the eaves at 7.1 m for a ridge-across-depth gable: ignored for terraced houses
+  const roof = {form: 'gable' as const, ridgeDirRD: [1, 0] as Pt, slopeDeg: 24, slantedPlanes: 2, roofAreaM2: 60};
+  const {params} = paramsFromFacts(spec, rect, attrs, roof);
+  assert.ok(Math.abs(params.eavesM - 5.9) < 1e-9, `eaves ${params.eavesM}`);
+  assert.equal(params.lengthM, rect.length);
+  assert.ok(params.lengthM < params.widthM, 'frontage first');
+  assert.ok(spec.eavesRangeM![0] < params.eavesM && params.eavesM < spec.eavesRangeM![1]);
 });
