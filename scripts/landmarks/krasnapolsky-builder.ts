@@ -3,7 +3,7 @@ import type {BuildingTools} from './cultural-builders';
 import {addShell, planarPolygon} from './worship-shell';
 import {wallsOf} from './worship-walls';
 import type {Wall} from './worship-walls';
-import {awning, frameOf, put, setSink, slab} from './nearbar-kit';
+import {awning, frameOf, letters, put, setSink, slab} from './nearbar-kit';
 import type {Frame} from './nearbar-kit';
 import source from './krasnapolsky-footprints.json';
 
@@ -81,13 +81,13 @@ export function buildKrasnapolsky(_w: number, _d: number, b: BuildingTools & {ma
     const big = [1.9, 7.0, 12.0];
     for (const t of big) {
       oldBay(f, t, 3.3);
-      sash(f, t, 6.9, 2.9, 2.7, 3, 3);
+      sash(f, t, 6.9, 2.9, 2.7, 2, 3);
       balcony(f, t - 1.8, t + 1.8, 6.3);
-      sash(f, t, 11.5, 2.9, 2.5, 3, 3);
+      sash(f, t, 11.5, 2.9, 2.5, 2, 3);
       slab(b, f, t, 14.2, 2.9, 0.55, 0.12, 'stone');
       for (const dt of [-0.9, 0.9]) put(b, f, new T.CylinderGeometry(0.17, 0.17, 0.08, 10).rotateX(Math.PI / 2), t + dt, 14.5, 0.12, 'white');
-      sash(f, t, 15.2, 2.9, 2.2, 3, 2);
-      sash(f, t, 18.4, 3.2, 1.8, 3, 2, 0.15);
+      sash(f, t, 15.2, 2.9, 2.2, 2, 3);
+      sash(f, t, 18.4, 3.2, 1.8, 2, 2, 0.15);
       balcony(f, t - 1.9, t + 1.9, 17.55);
     }
     // entrance bay: canopy, lantern turrets, first-floor windows over the entrance, group of three narrow windows
@@ -100,8 +100,8 @@ export function buildKrasnapolsky(_w: number, _d: number, b: BuildingTools & {ma
       put(b, f, new T.SphereGeometry(0.58, 10, 6, 0, Math.PI * 2, 0, Math.PI / 2).translate(0, 1.5, 0), t, 7.0, 0.25, 'dark');
     }
     balcony(f, 15.7, 20.9, 6.3);
-    for (const t of [16.7, 18.9]) sash(f, t, 6.9, 1.4, 2.7, 2, 3, 0.14);
-    for (const [y, h] of [[11.5, 2.5], [15.2, 2.2]] as [number, number][]) for (const t of [16.3, 17.7, 19.1]) sash(f, t, y, 0.9, h, 1, 3, 0.1);
+    // the three narrow windows per storey stand on the same three columns from the first floor to the attic (ref-dam-front-zoom2)
+    for (const [y, h] of [[6.9, 2.7], [11.5, 2.5], [15.2, 2.2]] as [number, number][]) for (const t of [16.3, 17.7, 19.1]) sash(f, t, y, 0.9, h, 1, 3, 0.1);
     for (const t of [16.3, 17.7, 19.1]) slab(b, f, t, 18.4, 0.9, 1.8, 0.1, 'glass');
     slab(b, f, 17.7, 14.2, 3.9, 0.55, 0.12, 'stone');
     slab(b, f, L / 2, 20.4, L + 0.4, 0.5, 0.5, 'white');
@@ -129,7 +129,8 @@ export function buildKrasnapolsky(_w: number, _d: number, b: BuildingTools & {ma
   // Grey granite panels; a dark arcade-like ground floor (steel-framed shopfronts under a lit dark cornice band at about 4.7 m);
   // large first-floor windows (two panes, transom); above them tall narrow paired windows in black frames on a 2.5 m axis;
   // three-storey projecting dark glass bays (stone underside) on every fourth axis; set-back glazed attic levels come from the shell.
-  const wing = (w: Wall, top: number, bays: boolean) => {
+  const BAY_AXES: Record<number, number[]> = {36: [3], 30: [0], 194: [2]}; // axis index of each projecting glass bay (wide photo: three bays)
+  const wing = (w: Wall, top: number, _bays: boolean) => {
     const f = frameOf(w), L = w.length;
     if (L < 1.4) return;
     const gl = L - 0.6;
@@ -144,12 +145,16 @@ export function buildKrasnapolsky(_w: number, _d: number, b: BuildingTools & {ma
     slab(b, f, L / 2, 4.85, L - 0.2, 0.1, 0.4, 'sandstone');
     // storey bands
     for (const y of [8.7, 12.0, 15.3, 18.6]) if (y < top - 0.6) slab(b, f, L / 2, y, L - 0.2, 0.14, 0.1, 'sandstone');
-    const nAx = Math.max(1, Math.round((L - 0.4) / 2.5)), pitch = (L - 0.4) / nAx;
+    // Facade rhythm per section (ref-dam-ne, ref-dam-wide, ref-dam-b-front): one regular granite-tile grid on a ~2.6 m axis.
+    //   storey 1 (above the shopfronts): one wide window per axis, 2 lights with a transom (width 2.0 m, or the axis minus 0.4 m on a short wall);
+    //   storeys 2-4: a PAIR of identical narrow single-light windows per axis (0.8 m wide, centres 1.1 m apart), same columns on every storey;
+    //   every storey uses the same axes, so columns stack; projecting dark glass bays sit on chosen axes of walls 36, 30 and 194 only.
+    const nAx = Math.max(1, Math.round((L - 0.4) / 2.6)), pitch = (L - 0.4) / nAx;
     for (let k = 0; k < nAx; k++) {
       const t = 0.2 + pitch * (k + 0.5);
-      const bay = bays && k % 4 === 2 && nAx >= 3;
+      const bay = BAY_AXES[w.index]?.includes(k) ?? false;
       // first floor: one wide window, two panes with a transom
-      const fw = Math.min(2.2, pitch - 0.5);
+      const fw = Math.min(2.0, pitch - 0.4);
       slab(b, f, t, 5.55, fw, 2.4, 0.1, 'glass');
       slab(b, f, t, 5.55, fw + 0.14, 0.1, 0.16, 'dark');
       slab(b, f, t, 5.55 + 2.4, fw + 0.14, 0.1, 0.16, 'dark');
@@ -168,12 +173,13 @@ export function buildKrasnapolsky(_w: number, _d: number, b: BuildingTools & {ma
       }
       for (const y of [9.2, 12.5, 15.8]) {
         if (y + 2.1 > top - 0.6) continue;
-        for (const dt of [-0.5, 0.5]) {
-          slab(b, f, t + dt, y, 0.8, 2.1, 0.1, 'glass');
-          for (const s of [-0.4, 0.4]) slab(b, f, t + dt + s, y, 0.06, 2.1, 0.14, 'dark');
-          slab(b, f, t + dt, y + 2.06, 0.86, 0.08, 0.14, 'dark');
-          slab(b, f, t + dt, y, 0.86, 0.06, 0.14, 'dark');
-          slab(b, f, t + dt, y + 1.0, 0.8, 0.05, 0.13, 'dark');
+        const uw = 0.8, off = Math.min(0.55, (pitch - 0.8) / 2 - 0.15);
+        for (const dt of [-off, off]) {
+          slab(b, f, t + dt, y, uw, 2.1, 0.1, 'glass');
+          for (const s of [-uw / 2, uw / 2]) slab(b, f, t + dt + s, y, 0.07, 2.1, 0.14, 'dark');
+          slab(b, f, t + dt, y + 2.06, uw + 0.07, 0.08, 0.14, 'dark');
+          slab(b, f, t + dt, y, uw + 0.07, 0.06, 0.14, 'dark');
+          slab(b, f, t + dt, y + 1.0, uw, 0.05, 0.13, 'dark');
         }
       }
     }
@@ -181,6 +187,8 @@ export function buildKrasnapolsky(_w: number, _d: number, b: BuildingTools & {ma
   };
   for (const i of [36, 27]) wing(W(i), 16.3, false);
   for (const i of [30, 361, 32, 33, 259, 39, 194]) wing(W(i), 20.5, true);
+  // pale lit MAJESTIC lettering on the granite just above the shopfront cornice, under the first-floor window (ref-dam-ne.jpg)
+  letters(b, frameOf(W(194)), 'MAJESTIC', 0.2 + (W(194).length - 0.4) / Math.max(1, Math.round((W(194).length - 0.4) / 2.6)) * 2.5, 4.98, 0, 0.06, 0.08, 'white');
 
   // ============ lower stone-and-brick building (walls 63..72) beside the old front ============
   // Photo ref-dam-front-zoom: stone ground floor with two big dark glass shopfront panels between piers, a stone first floor,
