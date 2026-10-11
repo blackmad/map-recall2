@@ -510,14 +510,17 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
-- Facade blind counts (haiku counter, 2026-10-11) for Krasnapolsky, Pakhuis
-  de Zwijger and DNB are recorded in their elevations.json but read as FAIL
-  in compare:facades for measurement reasons, not model errors: photos crop
-  part of an 88 m facade (Krasnapolsky), ribbon windows count as 1 per
-  storey in the model vs 8 in the counter (DNB tower), and totals were
-  given across blocks (Pakhuis: 3 per block in both). Integrator compared
-  the elevations to the photos by eye and installed all three. Improve:
-  crop the elevation to the photo's span; count ribbons as runs.
+- Facade comparison now crops to the photo's span (alongM/heightM), skips
+  null bands and counts ribbon glazing as one opening (2026-10-11): failing
+  checks 45 -> 24 over the 7 newly released landmarks. Real model gaps it
+  found (fix lane running): Maarten Lutherkerk third door glazing narrower
+  than the other two; Oudemanhuispoort missing a house door and one window
+  column; Pakhuis de Zwijger east face lacks the small ground windows;
+  Krasnapolsky modern wing has small paired windows where the photo shows
+  wide stone-framed glazing. Metric limits still open: gable peaks count
+  roof steps/plateaus as peaks (DNB podium), row clustering splits
+  staggered stair windows (Petrus en Paulus), counters count panes in tall
+  strips (Pakhuis north).
   Petrus en Paulus, Maarten Lutherkerk, Oudemanhuispoort and the Torture
   Museum released 2026-10-11 (second held batch). Levend Paardenmuseum
   still held: gateway detailed, long walls plain 3DBAG massing (inferred
