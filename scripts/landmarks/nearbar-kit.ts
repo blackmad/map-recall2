@@ -218,6 +218,17 @@ export function wallProbe(shell: T.BufferGeometry[]) {
       const hit = rc.intersectObject(group, true).find(h => h.distance > 0.001);
       return hit ? reach - hit.distance : null;
     },
+    /** Outward offset and unit surface normal (x, y, z; facing along f.n) of whatever the shell presents at (t, y), or null. */
+    hit(f: Frame, t: number, y: number): {offset: number; normal: [number, number, number]} | null {
+      const reach = 2;
+      const o = new T.Vector3(f.origin[0] + f.tangent[0] * t + f.n[0] * reach, y, f.origin[1] + f.tangent[1] * t + f.n[1] * reach);
+      rc.set(o, new T.Vector3(-f.n[0], 0, -f.n[1])); rc.far = reach * 2;
+      const h = rc.intersectObject(group, true).find(q => q.distance > 0.001);
+      if (!h || !h.face) return null;
+      const n = h.face.normal.clone();
+      if (n.x * f.n[0] + n.z * f.n[1] < 0) n.negate();
+      return {offset: reach - h.distance, normal: [n.x, n.y, n.z]};
+    },
     /** Frame shifted onto the wall at (t, y). */
     snap(f: Frame, t: number, y: number): Frame {
       const off = this.offset(f, t, y);
