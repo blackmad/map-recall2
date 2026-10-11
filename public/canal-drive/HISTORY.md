@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+## OSM buildings drawn through placed models (2026-10-11)
+
+Suppressing a model's BAG pand does not hide OSM `building`/`building:part`
+ways that sit on the same footprint, so the extrusions drew through the
+Piet Hein Buildings (9 ways) and Bercylaan 801 (2). A centroid-in-footprint
+scan of every placed manual model with a nativeRing found four more:
+Kohnstammhuis (9), HvA Wibautstraat 3 (6), Hotel Okura (11) and the Ronde
+Lutherse Kerk (4); all now in suppressOsmIds, and
+`check:osm-under-models` guards it in check:canal.
+
 ## Balconies are allowed to project (2026-10-11)
 
 geometryAudit's opening-overhang hard-failed any trim more than 0.8 m off a

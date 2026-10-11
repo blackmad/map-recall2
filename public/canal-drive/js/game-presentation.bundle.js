@@ -21626,7 +21626,11 @@
       landmarkId: "requested-ronde-lutherse-kerk",
       modelUrl: "./models/ronde-lutherse-kerk.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012179368"
+        "NL.IMBAG.Pand.0363100012179368",
+        "w749586949",
+        "w749586950",
+        "w749586951",
+        "w749586952"
       ],
       spatialSuppression: false,
       footprint: {
@@ -22517,7 +22521,18 @@
       landmarkId: "n2817713466",
       modelUrl: "./models/hotel-okura.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012150422"
+        "NL.IMBAG.Pand.0363100012150422",
+        "w753577527",
+        "w753577528",
+        "w753577537",
+        "w753577526",
+        "w753577529",
+        "w753577531",
+        "w753577532",
+        "w753577533",
+        "w753577534",
+        "w753577535",
+        "w753577536"
       ],
       spatialSuppression: false,
       footprint: {
@@ -29295,7 +29310,16 @@
       landmarkId: "kohnstammhuis",
       modelUrl: "./models/kohnstammhuis.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012125963"
+        "NL.IMBAG.Pand.0363100012125963",
+        "w742039458",
+        "w754512898",
+        "w754512899",
+        "w754512900",
+        "w754512901",
+        "w754512902",
+        "w754512903",
+        "w754512904",
+        "w754512905"
       ],
       spatialSuppression: false,
       footprint: {
@@ -29810,7 +29834,13 @@
       category: "ordinary",
       modelUrl: "./models/hva-wibautstraat-3.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012241500"
+        "NL.IMBAG.Pand.0363100012241500",
+        "w754512892",
+        "w754512893",
+        "w754512894",
+        "w754512895",
+        "w754512896",
+        "w754512897"
       ],
       spatialSuppression: false,
       footprint: {
@@ -30789,7 +30819,9 @@
       category: "ordinary",
       modelUrl: "./models/bercylaan-801-855.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012250610"
+        "NL.IMBAG.Pand.0363100012250610",
+        "w1212855770",
+        "w1244980639"
       ],
       spatialSuppression: false,
       footprint: {
@@ -30867,8 +30899,9 @@
           ]
         ]
       },
-      status: "held",
-      heldReason: "2026-10-11: model is dark grey with punched windows; the photographed lower floors are white stacked floor bands with glass. Rework cladding from photos."
+      materialOverrides: {
+        slate: "#3a3d41"
+      }
     },
     {
       id: "vriesseveem-9",
@@ -30876,7 +30909,16 @@
       landmarkId: "vriesseveem-9",
       modelUrl: "./models/vriesseveem-9.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012239869"
+        "NL.IMBAG.Pand.0363100012239869",
+        "w755510627",
+        "w755510628",
+        "w755510629",
+        "w755510630",
+        "w755510631",
+        "w755510632",
+        "w755510633",
+        "w755510634",
+        "w755510635"
       ],
       spatialSuppression: false,
       footprint: {
@@ -30899,11 +30941,11 @@
         source: "PDOK BAG 0363100012239869 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
       },
       materialOverrides: {
-        greyBrick: "#7f8680",
-        glass: "#46647b",
-        frame: "#9aa3a1",
+        greyBrick: "#6b7b80",
+        glass: "#3f566a",
+        frame: "#aab4b6",
         dark: "#2f353a",
-        concrete: "#c9d3d4"
+        concrete: "#d4d8d8"
       },
       preservePositionPrecision: true,
       attribution: {
@@ -31024,9 +31066,7 @@
             ]
           ]
         ]
-      },
-      status: "held",
-      heldReason: "2026-10-11: facade reads khaki with grouped windows; the photos show a grey curtain wall of glass and perforated metal panels and a curved glazed lobby. Rework colour/glazing before it can be a destination."
+      }
     }
   ];
 
