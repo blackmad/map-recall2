@@ -11,8 +11,8 @@ import raw from './bercylaan-801-855-footprints.json';
  * apartments. A 79 m tower at the south-east end with a curved nose stands on a 27 m shoulder and an 8 m low block to the north-west.
  * It is an ordinary large residential building (category ordinary, no POI card).
  * Rhythm read from the 2025-06-30 municipal panoramas (artifacts/landmark-lanes/bercylaan-801-855/ref-*.jpg):
- *  - graphite ceramic-panel facade with a regular grid of paired-sash windows (about 1.6 m wide, 1.9 m high, on a 3 m storey pitch and about
- *    2.7 m column pitch), set in panel frames; ground floor a double-height glazed front in dark piers under a louvre band, entrances B etc.;
+ *  - graphite ceramic-panel facade with a regular grid of paired-sash windows (about 1.5 m wide, 1.9 m high, on a 3 m storey pitch and about
+ *    2.4 m column pitch), set in panel frames; ground floor a double-height glazed front in dark piers under a louvre band, entrances B etc.;
  *  - the 8 m block on the north-west is grey metal panels with a few tall windows and roller doors.
  * INFERRED: every wall above 12 m: panoramas reach about 20 m, so upper floors repeat the photographed grid; the north-east long wall.
  * Not modelled: the solar-panel pattern, wooden balconies, the yellow soffit of the shoulder, signage.
@@ -40,10 +40,10 @@ export function buildBercylaan801855(_w: number, _d: number, b: BuildingTools & 
       }
     }
     if (low || w.top < 12) return;
-    const c = centredColumns(w.len, 2.7, 1.3);
+    const c = centredColumns(w.len, 2.4, 1.3);
     const sills: number[] = [];
     for (let y = 7.4; y + 2.0 <= w.top - 0.6; y += 3.0) sills.push(+y.toFixed(2));
-    windowGrid(b, w, {t0: c.t0, pitch: c.pitch, n: c.n, w: 1.6, h: 1.9, sills, frame: 'dark', glass: 'glass', ring: 0.08});
+    windowGrid(b, w, {t0: c.t0, pitch: c.pitch, n: c.n, w: 1.5, h: 1.9, sills, frame: 'dark', glass: 'glass', ring: 0.08});
     void quad;
   });
   setSink(0);
