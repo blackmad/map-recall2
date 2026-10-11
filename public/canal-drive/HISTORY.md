@@ -10,6 +10,13 @@ Kohnstammhuis (9), HvA Wibautstraat 3 (6), Hotel Okura (11) and the Ronde
 Lutherse Kerk (4); all now in suppressOsmIds, and
 `check:osm-under-models` guards it in check:canal.
 
+Extended the same day to every placed model (813: manual, hospitals,
+ordinary, street houses and chunks, building types) by area overlap
+(>= 50%), replaying the game's nested-duplicate drop per tile: 203 more OSM
+ids were drawing through 38 models (e.g. Van Gogh Museum's dark and teal
+slabs, 43 Centraal train-shed roof parts, Stedelijk, Oude Kerk, RAI) and are
+now suppressed; 17 partial overlaps are allow-listed.
+
 ## Balconies are allowed to project (2026-10-11)
 
 geometryAudit's opening-overhang hard-failed any trim more than 0.8 m off a
