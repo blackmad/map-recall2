@@ -171,6 +171,11 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   clusters 2/4/5/7/8 and the 2,922 rowhouses (needs street-facing photos);
   backs and gables are inferred everywhere; then decide default-on. Review
   renders are archived in the source repo under building-types/.
+  Held 2026-10-11 (big-r): Piet Hein Buildings (vriesseveem-9, landmark
+  with POI card) reads khaki with grouped windows vs a grey glass/perforated
+  panel curtain wall and curved glazed lobby; Bercylaan 801-855 is dark grey
+  punched windows vs white stacked floor bands. Jacob Bontiusplaats 9
+  installed (ordinary; louvres drawn as dark bands, not blades).
   Booking.com HQ held (2026-10-10): the plate rework (stepped bands,
   terrace cut, lower-case sign, teal glass) still reads as a gridded box.
   Needs the curved, stepped south front cantilevered over the entrance plaza
