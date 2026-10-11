@@ -1,0 +1,7 @@
+{
+  "id": "torture-museum",
+  "countedBy": "pending blind count",
+  "facades": [
+    {"name": "singel front", "bearing": 192.5, "photo": "artifacts/landmark-lanes/torture-museum/ref-front.jpg", "depthBand": 12}
+  ]
+}

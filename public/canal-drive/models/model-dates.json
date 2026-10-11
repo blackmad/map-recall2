@@ -1512,8 +1512,8 @@
       "dateSource": "asset-update"
     },
     "levend-paardenmuseum": {
-      "updatedAt": "2026-10-09T18:10:45.787Z",
-      "version": "a80ef13d5b245978",
+      "updatedAt": "2026-10-11T05:47:49.569Z",
+      "version": "0da226d361b14c2d",
       "dateSource": "asset-update"
     },
     "ljg-synagoge": {
@@ -1547,13 +1547,13 @@
       "dateSource": "asset-update"
     },
     "maarten-lutherkerk": {
-      "updatedAt": "2026-10-09T18:16:01.265Z",
-      "version": "591b08387320088d",
+      "updatedAt": "2026-10-11T05:33:33.533Z",
+      "version": "fd98686c3bc0062a",
       "dateSource": "asset-update"
     },
     "maarten-lutherkerk.lod1": {
-      "updatedAt": "2026-10-10T13:42:20.179Z",
-      "version": "09e517882bb94e46",
+      "updatedAt": "2026-10-11T05:33:33.999Z",
+      "version": "4d151647e8062cbd",
       "dateSource": "asset-update"
     },
     "machinegebouw": {
@@ -1992,8 +1992,13 @@
       "dateSource": "asset-update"
     },
     "oudemanhuispoort": {
-      "updatedAt": "2026-10-09T18:13:07.286Z",
-      "version": "764350d7441638ae",
+      "updatedAt": "2026-10-11T05:39:01.048Z",
+      "version": "2737e2a92d5d1eb9",
+      "dateSource": "asset-update"
+    },
+    "oudemanhuispoort.lod1": {
+      "updatedAt": "2026-10-11T05:39:47.624Z",
+      "version": "aa13b7b42f8146b8",
       "dateSource": "asset-update"
     },
     "overtoom-197": {
@@ -2052,13 +2057,13 @@
       "dateSource": "asset-update"
     },
     "petrus-en-paulus-kerk": {
-      "updatedAt": "2026-10-11T05:03:55.751Z",
-      "version": "f860cb1210f8c3ed",
+      "updatedAt": "2026-10-11T05:16:37.708Z",
+      "version": "f8d65f15b591bc3e",
       "dateSource": "asset-update"
     },
     "petrus-en-paulus-kerk.lod1": {
-      "updatedAt": "2026-10-11T05:03:07.744Z",
-      "version": "332689fe8d1c8157",
+      "updatedAt": "2026-10-11T05:17:01.300Z",
+      "version": "8ebef7ad391c92b1",
       "dateSource": "asset-update"
     },
     "petruskerk": {
@@ -2502,8 +2507,8 @@
       "dateSource": "asset-update"
     },
     "torture-museum": {
-      "updatedAt": "2026-10-09T21:12:13.831Z",
-      "version": "1c23db94a7d0d427",
+      "updatedAt": "2026-10-11T05:42:43.764Z",
+      "version": "b22565b6b60888d5",
       "dateSource": "asset-update"
     },
     "treehouse-ndsm": {

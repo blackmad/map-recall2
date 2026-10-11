@@ -1170,16 +1170,22 @@
   "triangles": 2255
  },
  "petrus-en-paulus-kerk": {
-  "sourceHash": "f860cb1210f8c3ed",
+  "sourceHash": "f8d65f15b591bc3e",
   "buildVersion": 2,
-  "bytes": 25988,
-  "triangles": 819
+  "bytes": 29192,
+  "triangles": 1004
  },
  "maarten-lutherkerk": {
-  "sourceHash": "591b08387320088d",
+  "sourceHash": "fd98686c3bc0062a",
   "buildVersion": 2,
-  "bytes": 26400,
-  "triangles": 899
+  "bytes": 28348,
+  "triangles": 938
+ },
+ "oudemanhuispoort": {
+  "sourceHash": "2737e2a92d5d1eb9",
+  "buildVersion": 2,
+  "bytes": 21000,
+  "triangles": 749
  },
  "koningskerk": {
   "sourceHash": "1f006d3741c17249",
