@@ -46,8 +46,8 @@ export function buildDeBazel(_w: number, _d: number, b: BuildingTools & {mark?: 
     if (t - ww / 2 < 0.15 || t + ww / 2 > w.len - 0.15) return false;
     if (Math.min(topOf(w, t - ww / 2), topOf(w, t + ww / 2)) < y + h + 0.25) return false;
     if (ww > 0.5 && !process.env.NOSILL) slab(b, w.f, t, y - 0.12, ww + 0.3, 0.14, 0.07, 'sandstone');
-    slab(b, w.f, t, y, ww + 0.14, h + 0.1, 0.02, 'frame', -0.04);              // reveal frame
-    slab(b, w.f, t, y + 0.06, ww - 0.04, h - 0.04, 0.05, 'glass', -0.04);
+    slab(b, w.f, t, y, ww + 0.14, h + 0.1, 0.07, 'frame', -0.04);              // reveal frame (front 3 cm proud of the wall plane, never coplanar with it)
+    slab(b, w.f, t, y + 0.06, ww - 0.04, h - 0.04, 0.09, 'glass', -0.04);
     if (ww > 0.8) slab(b, w.f, t, y + 0.06, 0.05, h - 0.04, 0.12, 'frame');
     if (ww > 0.8) slab(b, w.f, t, y + h * 0.62, ww - 0.04, 0.05, 0.12, 'frame');
     return true;
