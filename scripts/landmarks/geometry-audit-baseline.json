@@ -2444,9 +2444,9 @@
    "opening-overhang": 0,
    "opening-overhang-fail": 0,
    "opening-buried": 9,
-   "zfight-m2": 6.3,
+   "zfight-m2": 0.2,
    "zfight-near-m2": 34.7,
-   "window-mismatch": 143,
+   "window-mismatch": 142,
    "window-missing": 16,
    "window-misaligned": 12
   },
