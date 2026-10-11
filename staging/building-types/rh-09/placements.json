@@ -1,0 +1,3992 @@
+{
+ "area": "rh-09",
+ "frame": "x east, z south, y NAP metres from anchor; yaw about +y takes the local frame (front +z, tangent +x) to east/south",
+ "anchor": {
+  "lng": 4.8285,
+  "lat": 52.36107
+ },
+ "placements": [
+  {
+   "pand": "0363100012107589",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     10.986,
+     -0.67,
+     1.092
+    ],
+    "positionChunk": [
+     10.986,
+     0,
+     1.092
+    ],
+    "yawRad": -3.12424,
+    "lengthM": 5.17,
+    "widthM": 8.69,
+    "eavesM": 5.68
+   }
+  },
+  {
+   "pand": "0363100012130440",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -12.374,
+     -0.669,
+     7.683
+    ],
+    "positionChunk": [
+     -12.374,
+     0,
+     7.683
+    ],
+    "yawRad": 1.58967,
+    "lengthM": 5.05,
+    "widthM": 8.76,
+    "eavesM": 5.74
+   }
+  },
+  {
+   "pand": "0363100012118891",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     16.014,
+     -0.751,
+     1.004
+    ],
+    "positionChunk": [
+     16.014,
+     0,
+     1.004
+    ],
+    "yawRad": -3.12424,
+    "lengthM": 4.89,
+    "widthM": 8.69,
+    "eavesM": 5.8
+   }
+  },
+  {
+   "pand": "0363100012106535",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -12.278,
+     -0.661,
+     12.641
+    ],
+    "positionChunk": [
+     -12.278,
+     0,
+     12.641
+    ],
+    "yawRad": 1.59031,
+    "lengthM": 4.88,
+    "widthM": 8.76,
+    "eavesM": 5.73
+   }
+  },
+  {
+   "pand": "0363100012103973",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     20.902,
+     -0.826,
+     0.915
+    ],
+    "positionChunk": [
+     20.902,
+     0,
+     0.915
+    ],
+    "yawRad": -3.1235,
+    "lengthM": 4.9,
+    "widthM": 8.69,
+    "eavesM": 5.82
+   }
+  },
+  {
+   "pand": "0363100012138424",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -12.184,
+     -0.661,
+     17.508
+    ],
+    "positionChunk": [
+     -12.184,
+     0,
+     17.508
+    ],
+    "yawRad": 1.58944,
+    "lengthM": 4.87,
+    "widthM": 8.76,
+    "eavesM": 5.75
+   }
+  },
+  {
+   "pand": "0363100012138434",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -24.143,
+     -0.871,
+     1.701
+    ],
+    "positionChunk": [
+     -24.143,
+     0,
+     1.701
+    ],
+    "yawRad": 0.01913,
+    "lengthM": 5.13,
+    "widthM": 8.63,
+    "eavesM": 5.99
+   }
+  },
+  {
+   "pand": "0363100012131157",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     25.793,
+     -0.845,
+     0.827
+    ],
+    "positionChunk": [
+     25.793,
+     0,
+     0.827
+    ],
+    "yawRad": -3.12341,
+    "lengthM": 4.89,
+    "widthM": 8.69,
+    "eavesM": 5.83
+   }
+  },
+  {
+   "pand": "0363100012109407",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -12.091,
+     -0.665,
+     22.375
+    ],
+    "positionChunk": [
+     -12.091,
+     0,
+     22.375
+    ],
+    "yawRad": 1.59036,
+    "lengthM": 4.88,
+    "widthM": 8.75,
+    "eavesM": 5.72
+   }
+  },
+  {
+   "pand": "0363100012101284",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     18.707,
+     -0.781,
+     23.236
+    ],
+    "positionChunk": [
+     18.707,
+     0,
+     23.236
+    ],
+    "yawRad": 1.58949,
+    "lengthM": 5.13,
+    "widthM": 8.75,
+    "eavesM": 5.87
+   }
+  },
+  {
+   "pand": "0363100012062125",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -11.216,
+     -0.826,
+     -29.13
+    ],
+    "positionChunk": [
+     -11.216,
+     0,
+     -29.13
+    ],
+    "yawRad": -3.12346,
+    "lengthM": 5.17,
+    "widthM": 8.71,
+    "eavesM": 5.91
+   }
+  },
+  {
+   "pand": "0363100012073776",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -29.153,
+     -0.861,
+     1.792
+    ],
+    "positionChunk": [
+     -29.153,
+     0,
+     1.792
+    ],
+    "yawRad": 0.01913,
+    "lengthM": 4.89,
+    "widthM": 8.63,
+    "eavesM": 5.98
+   }
+  },
+  {
+   "pand": "0363100012108445",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     30.684,
+     -0.815,
+     0.748
+    ],
+    "positionChunk": [
+     30.684,
+     0,
+     0.748
+    ],
+    "yawRad": -3.12352,
+    "lengthM": 4.9,
+    "widthM": 8.69,
+    "eavesM": 5.85
+   }
+  },
+  {
+   "pand": "0363100012117821",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -11.999,
+     -0.662,
+     27.244
+    ],
+    "positionChunk": [
+     -11.999,
+     0,
+     27.244
+    ],
+    "yawRad": 1.58947,
+    "lengthM": 4.88,
+    "widthM": 8.75,
+    "eavesM": 5.75
+   }
+  },
+  {
+   "pand": "0363100012124563",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -16.247,
+     -0.822,
+     -29.039
+    ],
+    "positionChunk": [
+     -16.247,
+     0,
+     -29.039
+    ],
+    "yawRad": -3.12346,
+    "lengthM": 4.89,
+    "widthM": 8.71,
+    "eavesM": 5.91
+   }
+  },
+  {
+   "pand": "0363100012093045",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     18.802,
+     -0.782,
+     28.234
+    ],
+    "positionChunk": [
+     18.802,
+     0,
+     28.234
+    ],
+    "yawRad": 1.58949,
+    "lengthM": 4.87,
+    "widthM": 8.74,
+    "eavesM": 5.93
+   }
+  },
+  {
+   "pand": "0363100012089936",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -21.135,
+     -0.827,
+     -28.95
+    ],
+    "positionChunk": [
+     -21.135,
+     0,
+     -28.95
+    ],
+    "yawRad": -3.12346,
+    "lengthM": 4.89,
+    "widthM": 8.71,
+    "eavesM": 5.93
+   }
+  },
+  {
+   "pand": "0363100012134862",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -34.041,
+     -0.69,
+     1.886
+    ],
+    "positionChunk": [
+     -34.041,
+     0,
+     1.886
+    ],
+    "yawRad": 0.01911,
+    "lengthM": 4.89,
+    "widthM": 8.64,
+    "eavesM": 5.78
+   }
+  },
+  {
+   "pand": "0363100012139255",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -11.906,
+     -0.656,
+     32.115
+    ],
+    "positionChunk": [
+     -11.906,
+     0,
+     32.115
+    ],
+    "yawRad": 1.58949,
+    "lengthM": 4.87,
+    "widthM": 8.75,
+    "eavesM": 5.73
+   }
+  },
+  {
+   "pand": "0363100012119302",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     35.572,
+     -0.813,
+     0.661
+    ],
+    "positionChunk": [
+     35.572,
+     0,
+     0.661
+    ],
+    "yawRad": -3.12424,
+    "lengthM": 4.89,
+    "widthM": 8.68,
+    "eavesM": 5.86
+   }
+  },
+  {
+   "pand": "0363100012063010",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     18.89,
+     -0.782,
+     33.102
+    ],
+    "positionChunk": [
+     18.89,
+     0,
+     33.102
+    ],
+    "yawRad": 1.58892,
+    "lengthM": 4.88,
+    "widthM": 8.74,
+    "eavesM": 5.88
+   }
+  },
+  {
+   "pand": "0363100012134717",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -26.026,
+     -0.827,
+     -28.862
+    ],
+    "positionChunk": [
+     -26.026,
+     0,
+     -28.862
+    ],
+    "yawRad": -3.12346,
+    "lengthM": 4.9,
+    "widthM": 8.71,
+    "eavesM": 5.91
+   }
+  },
+  {
+   "pand": "0363100012096525",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     23.947,
+     -0.664,
+     -29.742
+    ],
+    "positionChunk": [
+     23.947,
+     0,
+     -29.742
+    ],
+    "yawRad": -3.12349,
+    "lengthM": 4.9,
+    "widthM": 8.72,
+    "eavesM": 5.75
+   }
+  },
+  {
+   "pand": "0363100012073707",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -11.811,
+     -0.665,
+     36.98
+    ],
+    "positionChunk": [
+     -11.811,
+     0,
+     36.98
+    ],
+    "yawRad": 1.58949,
+    "lengthM": 4.87,
+    "widthM": 8.75,
+    "eavesM": 5.74
+   }
+  },
+  {
+   "pand": "0363100012127342",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -38.929,
+     -0.696,
+     1.975
+    ],
+    "positionChunk": [
+     -38.929,
+     0,
+     1.975
+    ],
+    "yawRad": 0.01911,
+    "lengthM": 4.89,
+    "widthM": 8.64,
+    "eavesM": 5.8
+   }
+  },
+  {
+   "pand": "0363100012140070",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     40.46,
+     -0.828,
+     0.578
+    ],
+    "positionChunk": [
+     40.46,
+     0,
+     0.578
+    ],
+    "yawRad": -3.1235,
+    "lengthM": 4.9,
+    "widthM": 8.68,
+    "eavesM": 5.86
+   }
+  },
+  {
+   "pand": "0363100012140628",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -30.917,
+     -0.822,
+     -28.773
+    ],
+    "positionChunk": [
+     -30.917,
+     0,
+     -28.773
+    ],
+    "yawRad": -3.12346,
+    "lengthM": 4.89,
+    "widthM": 8.71,
+    "eavesM": 5.91
+   }
+  },
+  {
+   "pand": "0363100012094498",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     18.981,
+     -0.782,
+     37.972
+    ],
+    "positionChunk": [
+     18.981,
+     0,
+     37.972
+    ],
+    "yawRad": 1.58896,
+    "lengthM": 4.88,
+    "widthM": 8.74,
+    "eavesM": 5.88
+   }
+  },
+  {
+   "pand": "0363100012145207",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     28.835,
+     -0.727,
+     -29.836
+    ],
+    "positionChunk": [
+     28.835,
+     0,
+     -29.836
+    ],
+    "yawRad": -3.12267,
+    "lengthM": 4.89,
+    "widthM": 8.71,
+    "eavesM": 5.82
+   }
+  },
+  {
+   "pand": "0363100012100016",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     17.526,
+     -0.726,
+     -39.287
+    ],
+    "positionChunk": [
+     17.526,
+     0,
+     -39.287
+    ],
+    "yawRad": 1.58971,
+    "lengthM": 5.04,
+    "widthM": 8.73,
+    "eavesM": 5.83
+   }
+  },
+  {
+   "pand": "0363100012123972",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -43.82,
+     -0.692,
+     2.058
+    ],
+    "positionChunk": [
+     -43.82,
+     0,
+     2.058
+    ],
+    "yawRad": 0.01908,
+    "lengthM": 4.9,
+    "widthM": 8.66,
+    "eavesM": 5.8
+   }
+  },
+  {
+   "pand": "0363100012077742",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -11.718,
+     -0.667,
+     41.851
+    ],
+    "positionChunk": [
+     -11.718,
+     0,
+     41.851
+    ],
+    "yawRad": 1.58947,
+    "lengthM": 4.88,
+    "widthM": 8.75,
+    "eavesM": 5.76
+   }
+  },
+  {
+   "pand": "0363100012097745",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     33.723,
+     -0.752,
+     -29.924
+    ],
+    "positionChunk": [
+     33.723,
+     0,
+     -29.924
+    ],
+    "yawRad": -3.12264,
+    "lengthM": 4.89,
+    "widthM": 8.71,
+    "eavesM": 5.82
+   }
+  },
+  {
+   "pand": "0363100012099655",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -35.805,
+     -0.826,
+     -28.685
+    ],
+    "positionChunk": [
+     -35.805,
+     0,
+     -28.685
+    ],
+    "yawRad": -3.12346,
+    "lengthM": 4.89,
+    "widthM": 8.71,
+    "eavesM": 5.93
+   }
+  },
+  {
+   "pand": "0363100012145813",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     45.351,
+     -0.819,
+     0.489
+    ],
+    "positionChunk": [
+     45.351,
+     0,
+     0.489
+    ],
+    "yawRad": -3.12339,
+    "lengthM": 4.89,
+    "widthM": 8.68,
+    "eavesM": 5.84
+   }
+  },
+  {
+   "pand": "0363100012133540",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     19.072,
+     -0.778,
+     42.841
+    ],
+    "positionChunk": [
+     19.072,
+     0,
+     42.841
+    ],
+    "yawRad": 1.58951,
+    "lengthM": 4.87,
+    "widthM": 8.74,
+    "eavesM": 5.88
+   }
+  },
+  {
+   "pand": "0363100012153944",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     17.427,
+     -0.741,
+     -44.238
+    ],
+    "positionChunk": [
+     17.427,
+     0,
+     -44.238
+    ],
+    "yawRad": 1.59031,
+    "lengthM": 4.88,
+    "widthM": 8.74,
+    "eavesM": 5.86
+   }
+  },
+  {
+   "pand": "0363100012074882",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -40.693,
+     -0.825,
+     -28.596
+    ],
+    "positionChunk": [
+     -40.693,
+     0,
+     -28.596
+    ],
+    "yawRad": -3.12349,
+    "lengthM": 4.89,
+    "widthM": 8.71,
+    "eavesM": 5.95
+   }
+  },
+  {
+   "pand": "0363100012062549",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -11.626,
+     -0.667,
+     46.722
+    ],
+    "positionChunk": [
+     -11.626,
+     0,
+     46.722
+    ],
+    "yawRad": 1.58949,
+    "lengthM": 4.87,
+    "widthM": 8.74,
+    "eavesM": 5.75
+   }
+  },
+  {
+   "pand": "0363100012078725",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     38.611,
+     -0.756,
+     -30.018
+    ],
+    "positionChunk": [
+     38.611,
+     0,
+     -30.018
+    ],
+    "yawRad": -3.12264,
+    "lengthM": 4.89,
+    "widthM": 8.7,
+    "eavesM": 5.85
+   }
+  },
+  {
+   "pand": "0363100012113309",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -48.711,
+     -0.688,
+     2.152
+    ],
+    "positionChunk": [
+     -48.711,
+     0,
+     2.152
+    ],
+    "yawRad": 0.01905,
+    "lengthM": 4.89,
+    "widthM": 8.67,
+    "eavesM": 5.79
+   }
+  },
+  {
+   "pand": "0363100012145916",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     19.163,
+     -0.781,
+     47.706
+    ],
+    "positionChunk": [
+     19.163,
+     0,
+     47.706
+    ],
+    "yawRad": 1.58949,
+    "lengthM": 4.87,
+    "widthM": 8.74,
+    "eavesM": 5.88
+   }
+  },
+  {
+   "pand": "0363100012114724",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     50.358,
+     -0.823,
+     0.399
+    ],
+    "positionChunk": [
+     50.358,
+     0,
+     0.399
+    ],
+    "yawRad": -3.12339,
+    "lengthM": 5.13,
+    "widthM": 8.68,
+    "eavesM": 5.85
+   }
+  },
+  {
+   "pand": "0363100012071474",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -13.411,
+     -0.974,
+     -49.948
+    ],
+    "positionChunk": [
+     -13.411,
+     0,
+     -49.948
+    ],
+    "yawRad": 1.58814,
+    "lengthM": 5.11,
+    "widthM": 8.75,
+    "eavesM": 6.1
+   }
+  },
+  {
+   "pand": "0363100012144217",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     17.336,
+     -0.759,
+     -49.107
+    ],
+    "positionChunk": [
+     17.336,
+     0,
+     -49.107
+    ],
+    "yawRad": 1.59084,
+    "lengthM": 4.87,
+    "widthM": 8.73,
+    "eavesM": 5.88
+   }
+  },
+  {
+   "pand": "0363100012118994",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -45.584,
+     -0.815,
+     -28.504
+    ],
+    "positionChunk": [
+     -45.584,
+     0,
+     -28.504
+    ],
+    "yawRad": -3.12349,
+    "lengthM": 4.9,
+    "widthM": 8.72,
+    "eavesM": 5.91
+   }
+  },
+  {
+   "pand": "0363100012149081",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     43.502,
+     -0.753,
+     -30.11
+    ],
+    "positionChunk": [
+     43.502,
+     0,
+     -30.11
+    ],
+    "yawRad": -3.12261,
+    "lengthM": 4.9,
+    "widthM": 8.71,
+    "eavesM": 5.84
+   }
+  },
+  {
+   "pand": "0363100012147031",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -11.532,
+     -0.667,
+     51.587
+    ],
+    "positionChunk": [
+     -11.532,
+     0,
+     51.587
+    ],
+    "yawRad": 1.58951,
+    "lengthM": 4.87,
+    "widthM": 8.74,
+    "eavesM": 5.8
+   }
+  },
+  {
+   "pand": "0363100012131060",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -53.599,
+     -0.688,
+     2.24
+    ],
+    "positionChunk": [
+     -53.599,
+     0,
+     2.24
+    ],
+    "yawRad": 0.01905,
+    "lengthM": 4.89,
+    "widthM": 8.67,
+    "eavesM": 5.79
+   }
+  },
+  {
+   "pand": "0363100012107022",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     19.254,
+     -0.777,
+     52.577
+    ],
+    "positionChunk": [
+     19.254,
+     0,
+     52.577
+    ],
+    "yawRad": 1.58951,
+    "lengthM": 4.88,
+    "widthM": 8.74,
+    "eavesM": 5.89
+   }
+  },
+  {
+   "pand": "0363100012104124",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -13.5,
+     -0.713,
+     -54.934
+    ],
+    "positionChunk": [
+     -13.5,
+     0,
+     -54.934
+    ],
+    "yawRad": 1.58949,
+    "lengthM": 4.88,
+    "widthM": 8.75,
+    "eavesM": 5.8
+   }
+  },
+  {
+   "pand": "0363100012101980",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -50.472,
+     -0.806,
+     -28.415
+    ],
+    "positionChunk": [
+     -50.472,
+     0,
+     -28.415
+    ],
+    "yawRad": -3.12349,
+    "lengthM": 4.9,
+    "widthM": 8.72,
+    "eavesM": 5.93
+   }
+  },
+  {
+   "pand": "0363100012080322",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     17.238,
+     -0.761,
+     -53.972
+    ],
+    "positionChunk": [
+     17.238,
+     0,
+     -53.972
+    ],
+    "yawRad": 1.59084,
+    "lengthM": 4.87,
+    "widthM": 8.74,
+    "eavesM": 5.86
+   }
+  },
+  {
+   "pand": "0363100012096372",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     48.394,
+     -0.763,
+     -30.201
+    ],
+    "positionChunk": [
+     48.394,
+     0,
+     -30.201
+    ],
+    "yawRad": -3.12264,
+    "lengthM": 4.89,
+    "widthM": 8.71,
+    "eavesM": 5.86
+   }
+  },
+  {
+   "pand": "0363100012085271",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -11.439,
+     -0.958,
+     56.591
+    ],
+    "positionChunk": [
+     -11.439,
+     0,
+     56.591
+    ],
+    "yawRad": 1.58949,
+    "lengthM": 5.14,
+    "widthM": 8.74,
+    "eavesM": 6.07
+   }
+  },
+  {
+   "pand": "0363100012065940",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -58.487,
+     -0.677,
+     2.334
+    ],
+    "positionChunk": [
+     -58.487,
+     0,
+     2.334
+    ],
+    "yawRad": 0.01903,
+    "lengthM": 4.89,
+    "widthM": 8.68,
+    "eavesM": 5.77
+   }
+  },
+  {
+   "pand": "0363100012144115",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     19.342,
+     -0.775,
+     57.447
+    ],
+    "positionChunk": [
+     19.342,
+     0,
+     57.447
+    ],
+    "yawRad": 1.58951,
+    "lengthM": 4.87,
+    "widthM": 8.74,
+    "eavesM": 5.88
+   }
+  },
+  {
+   "pand": "0363100012089499",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     53.281,
+     -0.768,
+     -30.295
+    ],
+    "positionChunk": [
+     53.281,
+     0,
+     -30.295
+    ],
+    "yawRad": -3.12261,
+    "lengthM": 4.89,
+    "widthM": 8.7,
+    "eavesM": 5.86
+   }
+  },
+  {
+   "pand": "0363100012094538",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -13.593,
+     -0.703,
+     -59.805
+    ],
+    "positionChunk": [
+     -13.593,
+     0,
+     -59.805
+    ],
+    "yawRad": 1.58949,
+    "lengthM": 4.87,
+    "widthM": 8.75,
+    "eavesM": 5.78
+   }
+  },
+  {
+   "pand": "0363100012146530",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -55.363,
+     -0.834,
+     -28.327
+    ],
+    "positionChunk": [
+     -55.363,
+     0,
+     -28.327
+    ],
+    "yawRad": -3.12349,
+    "lengthM": 4.89,
+    "widthM": 8.72,
+    "eavesM": 5.92
+   }
+  },
+  {
+   "pand": "0363100012086784",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     17.142,
+     -0.763,
+     -58.841
+    ],
+    "positionChunk": [
+     17.142,
+     0,
+     -58.841
+    ],
+    "yawRad": 1.59036,
+    "lengthM": 4.88,
+    "widthM": 8.74,
+    "eavesM": 5.87
+   }
+  },
+  {
+   "pand": "0363100012138660",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -63.378,
+     -0.668,
+     2.423
+    ],
+    "positionChunk": [
+     -63.378,
+     0,
+     2.423
+    ],
+    "yawRad": 0.01903,
+    "lengthM": 4.9,
+    "widthM": 8.68,
+    "eavesM": 5.76
+   }
+  },
+  {
+   "pand": "0363100012151298",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     19.431,
+     -0.768,
+     62.313
+    ],
+    "positionChunk": [
+     19.431,
+     0,
+     62.313
+    ],
+    "yawRad": 1.58951,
+    "lengthM": 4.87,
+    "widthM": 8.74,
+    "eavesM": 5.88
+   }
+  },
+  {
+   "pand": "0363100012087619",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     58.169,
+     -0.774,
+     -30.382
+    ],
+    "positionChunk": [
+     58.169,
+     0,
+     -30.382
+    ],
+    "yawRad": -3.12344,
+    "lengthM": 4.9,
+    "widthM": 8.7,
+    "eavesM": 5.84
+   }
+  },
+  {
+   "pand": "0363100012096756",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     17.046,
+     -0.763,
+     -63.71
+    ],
+    "positionChunk": [
+     17.046,
+     0,
+     -63.71
+    ],
+    "yawRad": 1.59031,
+    "lengthM": 4.88,
+    "widthM": 8.74,
+    "eavesM": 5.87
+   }
+  },
+  {
+   "pand": "0363100012099911",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -13.683,
+     -0.736,
+     -64.674
+    ],
+    "positionChunk": [
+     -13.683,
+     0,
+     -64.674
+    ],
+    "yawRad": 1.58896,
+    "lengthM": 4.88,
+    "widthM": 8.75,
+    "eavesM": 5.83
+   }
+  },
+  {
+   "pand": "0363100012134113",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     66.937,
+     -0.834,
+     6.313
+    ],
+    "positionChunk": [
+     66.937,
+     0,
+     6.313
+    ],
+    "yawRad": 1.58928,
+    "lengthM": 5.1,
+    "widthM": 8.85,
+    "eavesM": 5.82
+   }
+  },
+  {
+   "pand": "0363100012144229",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     67.031,
+     -0.838,
+     11.299
+    ],
+    "positionChunk": [
+     67.031,
+     0,
+     11.299
+    ],
+    "yawRad": 1.58925,
+    "lengthM": 4.88,
+    "widthM": 8.84,
+    "eavesM": 5.8
+   }
+  },
+  {
+   "pand": "0363100012104329",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -60.659,
+     -0.757,
+     24.73
+    ],
+    "positionChunk": [
+     -60.659,
+     0,
+     24.73
+    ],
+    "yawRad": 1.59058,
+    "lengthM": 5.16,
+    "widthM": 8.74,
+    "eavesM": 5.88
+   }
+  },
+  {
+   "pand": "0363100012084391",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     67.121,
+     -0.83,
+     16.165
+    ],
+    "positionChunk": [
+     67.121,
+     0,
+     16.165
+    ],
+    "yawRad": 1.5906,
+    "lengthM": 4.87,
+    "widthM": 8.83,
+    "eavesM": 5.8
+   }
+  },
+  {
+   "pand": "0363100012083184",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -60.561,
+     -0.761,
+     29.747
+    ],
+    "positionChunk": [
+     -60.561,
+     0,
+     29.747
+    ],
+    "yawRad": 1.59031,
+    "lengthM": 4.88,
+    "widthM": 8.74,
+    "eavesM": 5.89
+   }
+  },
+  {
+   "pand": "0363100012112362",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -68.388,
+     -0.666,
+     2.516
+    ],
+    "positionChunk": [
+     -68.388,
+     0,
+     2.516
+    ],
+    "yawRad": 0.01903,
+    "lengthM": 5.13,
+    "widthM": 8.67,
+    "eavesM": 5.78
+   }
+  },
+  {
+   "pand": "0363100012090558",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     67.212,
+     -0.783,
+     21.03
+    ],
+    "positionChunk": [
+     67.212,
+     0,
+     21.03
+    ],
+    "yawRad": 1.58932,
+    "lengthM": 4.88,
+    "widthM": 8.82,
+    "eavesM": 5.73
+   }
+  },
+  {
+   "pand": "0363100012127941",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     63.06,
+     -0.777,
+     -30.471
+    ],
+    "positionChunk": [
+     63.06,
+     0,
+     -30.471
+    ],
+    "yawRad": -3.12344,
+    "lengthM": 4.89,
+    "widthM": 8.7,
+    "eavesM": 5.86
+   }
+  },
+  {
+   "pand": "0363100012108801",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     19.524,
+     -0.744,
+     67.263
+    ],
+    "positionChunk": [
+     19.524,
+     0,
+     67.263
+    ],
+    "yawRad": 1.58952,
+    "lengthM": 5.04,
+    "widthM": 8.73,
+    "eavesM": 5.84
+   }
+  },
+  {
+   "pand": "0363100012078220",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -60.465,
+     -0.762,
+     34.614
+    ],
+    "positionChunk": [
+     -60.465,
+     0,
+     34.614
+    ],
+    "yawRad": 1.58951,
+    "lengthM": 4.87,
+    "widthM": 8.74,
+    "eavesM": 5.9
+   }
+  },
+  {
+   "pand": "0363100012122542",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -13.772,
+     -0.764,
+     -69.544
+    ],
+    "positionChunk": [
+     -13.772,
+     0,
+     -69.544
+    ],
+    "yawRad": 1.58892,
+    "lengthM": 4.88,
+    "widthM": 8.75,
+    "eavesM": 5.86
+   }
+  },
+  {
+   "pand": "0363100012118832",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     67.303,
+     -0.823,
+     25.906
+    ],
+    "positionChunk": [
+     67.303,
+     0,
+     25.906
+    ],
+    "yawRad": 1.58932,
+    "lengthM": 4.88,
+    "widthM": 8.82,
+    "eavesM": 5.78
+   }
+  },
+  {
+   "pand": "0363100012097365",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     16.952,
+     -0.753,
+     -68.579
+    ],
+    "positionChunk": [
+     16.952,
+     0,
+     -68.579
+    ],
+    "yawRad": 1.59084,
+    "lengthM": 4.87,
+    "widthM": 8.74,
+    "eavesM": 5.87
+   }
+  },
+  {
+   "pand": "0363100012143094",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -60.37,
+     -0.758,
+     39.481
+    ],
+    "positionChunk": [
+     -60.37,
+     0,
+     39.481
+    ],
+    "yawRad": 1.59036,
+    "lengthM": 4.88,
+    "widthM": 8.74,
+    "eavesM": 5.89
+   }
+  },
+  {
+   "pand": "0363100012121915",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     67.4,
+     -0.845,
+     30.772
+    ],
+    "positionChunk": [
+     67.4,
+     0,
+     30.772
+    ],
+    "yawRad": 1.59066,
+    "lengthM": 4.87,
+    "widthM": 8.81,
+    "eavesM": 5.8
+   }
+  },
+  {
+   "pand": "0363100012066021",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -61.764,
+     -0.773,
+     -37.853
+    ],
+    "positionChunk": [
+     -61.764,
+     0,
+     -37.853
+    ],
+    "yawRad": 1.58896,
+    "lengthM": 5.08,
+    "widthM": 8.73,
+    "eavesM": 5.89
+   }
+  },
+  {
+   "pand": "0363100012116225",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     68.091,
+     -0.774,
+     -30.564
+    ],
+    "positionChunk": [
+     68.091,
+     0,
+     -30.564
+    ],
+    "yawRad": -3.12344,
+    "lengthM": 5.17,
+    "widthM": 8.71,
+    "eavesM": 5.86
+   }
+  },
+  {
+   "pand": "0363100012065616",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     67.487,
+     -0.846,
+     35.637
+    ],
+    "positionChunk": [
+     67.487,
+     0,
+     35.637
+    ],
+    "yawRad": 1.5894,
+    "lengthM": 4.88,
+    "widthM": 8.79,
+    "eavesM": 5.83
+   }
+  },
+  {
+   "pand": "0363100012081621",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -13.863,
+     -0.779,
+     -74.412
+    ],
+    "positionChunk": [
+     -13.863,
+     0,
+     -74.412
+    ],
+    "yawRad": 1.58946,
+    "lengthM": 4.87,
+    "widthM": 8.76,
+    "eavesM": 5.9
+   }
+  },
+  {
+   "pand": "0363100012082224",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -60.277,
+     -0.749,
+     44.35
+    ],
+    "positionChunk": [
+     -60.277,
+     0,
+     44.35
+    ],
+    "yawRad": 1.58952,
+    "lengthM": 4.88,
+    "widthM": 8.74,
+    "eavesM": 5.89
+   }
+  },
+  {
+   "pand": "0363100012133329",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     16.856,
+     -0.751,
+     -73.448
+    ],
+    "positionChunk": [
+     16.856,
+     0,
+     -73.448
+    ],
+    "yawRad": 1.59036,
+    "lengthM": 4.88,
+    "widthM": 8.74,
+    "eavesM": 5.84
+   }
+  },
+  {
+   "pand": "0363100012080709",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -61.855,
+     -0.787,
+     -42.821
+    ],
+    "positionChunk": [
+     -61.855,
+     0,
+     -42.821
+    ],
+    "yawRad": 1.58951,
+    "lengthM": 4.87,
+    "widthM": 8.74,
+    "eavesM": 5.9
+   }
+  },
+  {
+   "pand": "0363100012092157",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     67.579,
+     -0.839,
+     40.513
+    ],
+    "positionChunk": [
+     67.579,
+     0,
+     40.513
+    ],
+    "yawRad": 1.5894,
+    "lengthM": 4.88,
+    "widthM": 8.78,
+    "eavesM": 5.83
+   }
+  },
+  {
+   "pand": "0363100012085524",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -60.184,
+     -0.752,
+     49.221
+    ],
+    "positionChunk": [
+     -60.184,
+     0,
+     49.221
+    ],
+    "yawRad": 1.58952,
+    "lengthM": 4.87,
+    "widthM": 8.73,
+    "eavesM": 5.87
+   }
+  },
+  {
+   "pand": "0363100012104765",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -9.258,
+     -0.776,
+     77.463
+    ],
+    "positionChunk": [
+     -9.258,
+     0,
+     77.463
+    ],
+    "yawRad": -3.12264,
+    "lengthM": 5.15,
+    "widthM": 8.71,
+    "eavesM": 5.89
+   }
+  },
+  {
+   "pand": "0363100012149560",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -61.944,
+     -0.791,
+     -47.69
+    ],
+    "positionChunk": [
+     -61.944,
+     0,
+     -47.69
+    ],
+    "yawRad": 1.58896,
+    "lengthM": 4.88,
+    "widthM": 8.74,
+    "eavesM": 5.92
+   }
+  },
+  {
+   "pand": "0363100012150128",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -14.279,
+     -0.758,
+     77.556
+    ],
+    "positionChunk": [
+     -14.279,
+     0,
+     77.556
+    ],
+    "yawRad": -3.12264,
+    "lengthM": 4.89,
+    "widthM": 8.71,
+    "eavesM": 5.86
+   }
+  },
+  {
+   "pand": "0363100012117489",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -13.952,
+     -0.753,
+     -79.281
+    ],
+    "positionChunk": [
+     -13.952,
+     0,
+     -79.281
+    ],
+    "yawRad": 1.58896,
+    "lengthM": 4.88,
+    "widthM": 8.75,
+    "eavesM": 5.86
+   }
+  },
+  {
+   "pand": "0363100012122476",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     67.672,
+     -0.895,
+     45.379
+    ],
+    "positionChunk": [
+     67.672,
+     0,
+     45.379
+    ],
+    "yawRad": 1.59074,
+    "lengthM": 4.87,
+    "widthM": 8.78,
+    "eavesM": 5.88
+   }
+  },
+  {
+   "pand": "0363100012139280",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     16.762,
+     -0.751,
+     -78.321
+    ],
+    "positionChunk": [
+     16.762,
+     0,
+     -78.321
+    ],
+    "yawRad": 1.58951,
+    "lengthM": 4.88,
+    "widthM": 8.74,
+    "eavesM": 5.86
+   }
+  },
+  {
+   "pand": "0363100012076981",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -19.166,
+     -0.762,
+     77.655
+    ],
+    "positionChunk": [
+     -19.166,
+     0,
+     77.655
+    ],
+    "yawRad": -3.12261,
+    "lengthM": 4.89,
+    "widthM": 8.71,
+    "eavesM": 5.87
+   }
+  },
+  {
+   "pand": "0363100012144046",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -60.089,
+     -0.756,
+     54.088
+    ],
+    "positionChunk": [
+     -60.089,
+     0,
+     54.088
+    ],
+    "yawRad": 1.59036,
+    "lengthM": 4.88,
+    "widthM": 8.73,
+    "eavesM": 5.91
+   }
+  },
+  {
+   "pand": "0363100012071608",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     65.872,
+     -0.985,
+     -51.352
+    ],
+    "positionChunk": [
+     65.872,
+     0,
+     -51.352
+    ],
+    "yawRad": 1.58946,
+    "lengthM": 5.08,
+    "widthM": 8.76,
+    "eavesM": 6.04
+   }
+  },
+  {
+   "pand": "0363100012130686",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     25.929,
+     -0.713,
+     76.835
+    ],
+    "positionChunk": [
+     25.929,
+     0,
+     76.835
+    ],
+    "yawRad": -3.12334,
+    "lengthM": 4.89,
+    "widthM": 8.66,
+    "eavesM": 5.84
+   }
+  },
+  {
+   "pand": "0363100012082689",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -24.058,
+     -0.757,
+     77.747
+    ],
+    "positionChunk": [
+     -24.058,
+     0,
+     77.747
+    ],
+    "yawRad": -3.12261,
+    "lengthM": 4.9,
+    "widthM": 8.7,
+    "eavesM": 5.88
+   }
+  },
+  {
+   "pand": "0363100012062674",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -62.033,
+     -0.792,
+     -52.557
+    ],
+    "positionChunk": [
+     -62.033,
+     0,
+     -52.557
+    ],
+    "yawRad": 1.58952,
+    "lengthM": 4.88,
+    "widthM": 8.73,
+    "eavesM": 5.9
+   }
+  },
+  {
+   "pand": "0363100012102167",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     67.764,
+     -0.933,
+     50.244
+    ],
+    "positionChunk": [
+     67.764,
+     0,
+     50.244
+    ],
+    "yawRad": 1.58946,
+    "lengthM": 4.88,
+    "widthM": 8.77,
+    "eavesM": 5.91
+   }
+  },
+  {
+   "pand": "0363100012150406",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -28.945,
+     -0.751,
+     77.841
+    ],
+    "positionChunk": [
+     -28.945,
+     0,
+     77.841
+    ],
+    "yawRad": -3.12182,
+    "lengthM": 4.89,
+    "widthM": 8.72,
+    "eavesM": 5.86
+   }
+  },
+  {
+   "pand": "0363100012140534",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     30.817,
+     -0.78,
+     76.743
+    ],
+    "positionChunk": [
+     30.817,
+     0,
+     76.743
+    ],
+    "yawRad": -3.12254,
+    "lengthM": 4.9,
+    "widthM": 8.67,
+    "eavesM": 5.82
+   }
+  },
+  {
+   "pand": "0363100012076278",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -59.992,
+     -0.758,
+     58.957
+    ],
+    "positionChunk": [
+     -59.992,
+     0,
+     58.957
+    ],
+    "yawRad": 1.59084,
+    "lengthM": 4.87,
+    "widthM": 8.73,
+    "eavesM": 5.89
+   }
+  },
+  {
+   "pand": "0363100012113050",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -14.04,
+     -0.696,
+     -84.148
+    ],
+    "positionChunk": [
+     -14.04,
+     0,
+     -84.148
+    ],
+    "yawRad": 1.58813,
+    "lengthM": 4.87,
+    "widthM": 8.76,
+    "eavesM": 5.77
+   }
+  },
+  {
+   "pand": "0363100012081487",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     16.663,
+     -0.742,
+     -83.329
+    ],
+    "positionChunk": [
+     16.663,
+     0,
+     -83.329
+    ],
+    "yawRad": 1.59071,
+    "lengthM": 5.15,
+    "widthM": 8.75,
+    "eavesM": 5.86
+   }
+  },
+  {
+   "pand": "0363100012137480",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     65.782,
+     -0.765,
+     -56.328
+    ],
+    "positionChunk": [
+     65.782,
+     0,
+     -56.328
+    ],
+    "yawRad": 1.58946,
+    "lengthM": 4.88,
+    "widthM": 8.76,
+    "eavesM": 5.84
+   }
+  },
+  {
+   "pand": "0363100012066157",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -62.123,
+     -0.793,
+     -57.428
+    ],
+    "positionChunk": [
+     -62.123,
+     0,
+     -57.428
+    ],
+    "yawRad": 1.58952,
+    "lengthM": 4.87,
+    "widthM": 8.73,
+    "eavesM": 5.9
+   }
+  },
+  {
+   "pand": "0363100012133014",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -33.836,
+     -0.748,
+     77.939
+    ],
+    "positionChunk": [
+     -33.836,
+     0,
+     77.939
+    ],
+    "yawRad": -3.12182,
+    "lengthM": 4.9,
+    "widthM": 8.72,
+    "eavesM": 5.85
+   }
+  },
+  {
+   "pand": "0363100012121835",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     35.708,
+     -0.803,
+     76.647
+    ],
+    "positionChunk": [
+     35.708,
+     0,
+     76.647
+    ],
+    "yawRad": -3.12254,
+    "lengthM": 4.89,
+    "widthM": 8.67,
+    "eavesM": 5.95
+   }
+  },
+  {
+   "pand": "0363100012108520",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     67.854,
+     -0.979,
+     55.228
+    ],
+    "positionChunk": [
+     67.854,
+     0,
+     55.228
+    ],
+    "yawRad": 1.58946,
+    "lengthM": 5.09,
+    "widthM": 8.75,
+    "eavesM": 5.97
+   }
+  },
+  {
+   "pand": "0363100012153870",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -38.725,
+     -0.75,
+     78.031
+    ],
+    "positionChunk": [
+     -38.725,
+     0,
+     78.031
+    ],
+    "yawRad": -3.12264,
+    "lengthM": 4.89,
+    "widthM": 8.71,
+    "eavesM": 5.85
+   }
+  },
+  {
+   "pand": "0363100012094829",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     40.596,
+     -0.805,
+     76.555
+    ],
+    "positionChunk": [
+     40.596,
+     0,
+     76.555
+    ],
+    "yawRad": -3.12254,
+    "lengthM": 4.89,
+    "widthM": 8.68,
+    "eavesM": 5.88
+   }
+  },
+  {
+   "pand": "0363100012068945",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -59.901,
+     -0.757,
+     63.826
+    ],
+    "positionChunk": [
+     -59.901,
+     0,
+     63.826
+    ],
+    "yawRad": 1.59031,
+    "lengthM": 4.88,
+    "widthM": 8.74,
+    "eavesM": 5.88
+   }
+  },
+  {
+   "pand": "0363100012103656",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     65.694,
+     -0.77,
+     -61.193
+    ],
+    "positionChunk": [
+     65.694,
+     0,
+     -61.193
+    ],
+    "yawRad": 1.59079,
+    "lengthM": 4.87,
+    "widthM": 8.77,
+    "eavesM": 5.84
+   }
+  },
+  {
+   "pand": "0363100012066195",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -62.215,
+     -0.794,
+     -62.296
+    ],
+    "positionChunk": [
+     -62.215,
+     0,
+     -62.296
+    ],
+    "yawRad": 1.58896,
+    "lengthM": 4.88,
+    "widthM": 8.73,
+    "eavesM": 5.91
+   }
+  },
+  {
+   "pand": "0363100012141745",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -14.13,
+     -0.752,
+     -89.016
+    ],
+    "positionChunk": [
+     -14.13,
+     0,
+     -89.016
+    ],
+    "yawRad": 1.58892,
+    "lengthM": 4.88,
+    "widthM": 8.76,
+    "eavesM": 5.84
+   }
+  },
+  {
+   "pand": "0363100012141122",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     45.487,
+     -0.801,
+     76.461
+    ],
+    "positionChunk": [
+     45.487,
+     0,
+     76.461
+    ],
+    "yawRad": -3.12254,
+    "lengthM": 4.9,
+    "widthM": 8.69,
+    "eavesM": 5.88
+   }
+  },
+  {
+   "pand": "0363100012132368",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -43.612,
+     -0.746,
+     78.129
+    ],
+    "positionChunk": [
+     -43.612,
+     0,
+     78.129
+    ],
+    "yawRad": -3.12264,
+    "lengthM": 4.89,
+    "widthM": 8.71,
+    "eavesM": 5.87
+   }
+  },
+  {
+   "pand": "0363100012141832",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -59.803,
+     -0.773,
+     68.796
+    ],
+    "positionChunk": [
+     -59.803,
+     0,
+     68.796
+    ],
+    "yawRad": 1.58951,
+    "lengthM": 5.07,
+    "widthM": 8.73,
+    "eavesM": 5.91
+   }
+  },
+  {
+   "pand": "0363100012149034",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     65.611,
+     -0.763,
+     -66.058
+    ],
+    "positionChunk": [
+     65.611,
+     0,
+     -66.058
+    ],
+    "yawRad": 1.58944,
+    "lengthM": 4.88,
+    "widthM": 8.76,
+    "eavesM": 5.86
+   }
+  },
+  {
+   "pand": "0363100012071881",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -48.504,
+     -0.727,
+     78.217
+    ],
+    "positionChunk": [
+     -48.504,
+     0,
+     78.217
+    ],
+    "yawRad": -3.12264,
+    "lengthM": 4.9,
+    "widthM": 8.71,
+    "eavesM": 5.84
+   }
+  },
+  {
+   "pand": "0363100012113934",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     50.378,
+     -0.792,
+     76.37
+    ],
+    "positionChunk": [
+     50.378,
+     0,
+     76.37
+    ],
+    "yawRad": -3.12339,
+    "lengthM": 4.9,
+    "widthM": 8.69,
+    "eavesM": 5.93
+   }
+  },
+  {
+   "pand": "0363100012112008",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -62.303,
+     -0.793,
+     -67.166
+    ],
+    "positionChunk": [
+     -62.303,
+     0,
+     -67.166
+    ],
+    "yawRad": 1.58892,
+    "lengthM": 4.88,
+    "widthM": 8.73,
+    "eavesM": 5.91
+   }
+  },
+  {
+   "pand": "0363100012126790",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -14.221,
+     -0.775,
+     -93.89
+    ],
+    "positionChunk": [
+     -14.221,
+     0,
+     -93.89
+    ],
+    "yawRad": 1.58944,
+    "lengthM": 4.88,
+    "widthM": 8.76,
+    "eavesM": 5.87
+   }
+  },
+  {
+   "pand": "0363100012137252",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -53.391,
+     -0.668,
+     78.313
+    ],
+    "positionChunk": [
+     -53.391,
+     0,
+     78.313
+    ],
+    "yawRad": -3.12184,
+    "lengthM": 4.89,
+    "widthM": 8.72,
+    "eavesM": 5.79
+   }
+  },
+  {
+   "pand": "0363100012088694",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     65.522,
+     -0.8,
+     -70.934
+    ],
+    "positionChunk": [
+     65.522,
+     0,
+     -70.934
+    ],
+    "yawRad": 1.58944,
+    "lengthM": 4.88,
+    "widthM": 8.76,
+    "eavesM": 5.88
+   }
+  },
+  {
+   "pand": "0363100012136541",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     55.266,
+     -0.784,
+     76.273
+    ],
+    "positionChunk": [
+     55.266,
+     0,
+     76.273
+    ],
+    "yawRad": -3.12256,
+    "lengthM": 4.89,
+    "widthM": 8.69,
+    "eavesM": 5.91
+   }
+  },
+  {
+   "pand": "0363100012066277",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -62.391,
+     -0.789,
+     -72.035
+    ],
+    "positionChunk": [
+     -62.391,
+     0,
+     -72.035
+    ],
+    "yawRad": 1.58951,
+    "lengthM": 4.87,
+    "widthM": 8.73,
+    "eavesM": 5.89
+   }
+  },
+  {
+   "pand": "0363100012125473",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     60.154,
+     -0.778,
+     76.179
+    ],
+    "positionChunk": [
+     60.154,
+     0,
+     76.179
+    ],
+    "yawRad": -3.12259,
+    "lengthM": 4.89,
+    "widthM": 8.7,
+    "eavesM": 5.91
+   }
+  },
+  {
+   "pand": "0363100012151255",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     65.435,
+     -0.782,
+     -75.799
+    ],
+    "positionChunk": [
+     65.435,
+     0,
+     -75.799
+    ],
+    "yawRad": 1.59079,
+    "lengthM": 4.87,
+    "widthM": 8.77,
+    "eavesM": 5.87
+   }
+  },
+  {
+   "pand": "0363100012063277",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -14.314,
+     -0.759,
+     -98.877
+    ],
+    "positionChunk": [
+     -14.314,
+     0,
+     -98.877
+    ],
+    "yawRad": 1.58813,
+    "lengthM": 5.11,
+    "widthM": 8.76,
+    "eavesM": 5.88
+   }
+  },
+  {
+   "pand": "0363100012064247",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -62.481,
+     -0.792,
+     -76.903
+    ],
+    "positionChunk": [
+     -62.481,
+     0,
+     -76.903
+    ],
+    "yawRad": 1.58896,
+    "lengthM": 4.88,
+    "widthM": 8.74,
+    "eavesM": 5.92
+   }
+  },
+  {
+   "pand": "0363100012130137",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     65.042,
+     -0.778,
+     76.089
+    ],
+    "positionChunk": [
+     65.042,
+     0,
+     76.089
+    ],
+    "yawRad": -3.12344,
+    "lengthM": 4.9,
+    "widthM": 8.7,
+    "eavesM": 5.92
+   }
+  },
+  {
+   "pand": "0363100012081018",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     65.347,
+     -0.73,
+     -80.665
+    ],
+    "positionChunk": [
+     65.347,
+     0,
+     -80.665
+    ],
+    "yawRad": 1.58946,
+    "lengthM": 4.88,
+    "widthM": 8.76,
+    "eavesM": 5.82
+   }
+  },
+  {
+   "pand": "0363100012107898",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     8.967,
+     -0.663,
+     -105.487
+    ],
+    "positionChunk": [
+     8.967,
+     0,
+     -105.487
+    ],
+    "yawRad": -3.12332,
+    "lengthM": 5.16,
+    "widthM": 8.64,
+    "eavesM": 5.77
+   }
+  },
+  {
+   "pand": "0363100012069903",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -62.572,
+     -0.791,
+     -81.903
+    ],
+    "positionChunk": [
+     -62.572,
+     0,
+     -81.903
+    ],
+    "yawRad": 1.58833,
+    "lengthM": 5.13,
+    "widthM": 8.74,
+    "eavesM": 5.91
+   }
+  },
+  {
+   "pand": "0363100012071380",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     70.066,
+     -0.766,
+     75.989
+    ],
+    "positionChunk": [
+     70.066,
+     0,
+     75.989
+    ],
+    "yawRad": -3.12344,
+    "lengthM": 5.15,
+    "widthM": 8.71,
+    "eavesM": 5.9
+   }
+  },
+  {
+   "pand": "0363100012100843",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     13.994,
+     -0.681,
+     -105.578
+    ],
+    "positionChunk": [
+     13.994,
+     0,
+     -105.578
+    ],
+    "yawRad": -3.12352,
+    "lengthM": 4.9,
+    "widthM": 8.64,
+    "eavesM": 5.79
+   }
+  },
+  {
+   "pand": "0363100012073316",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     18.882,
+     -0.678,
+     -105.667
+    ],
+    "positionChunk": [
+     18.882,
+     0,
+     -105.667
+    ],
+    "yawRad": -3.12415,
+    "lengthM": 4.89,
+    "widthM": 8.65,
+    "eavesM": 5.83
+   }
+  },
+  {
+   "pand": "0363100012110537",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     65.262,
+     -0.708,
+     -85.541
+    ],
+    "positionChunk": [
+     65.262,
+     0,
+     -85.541
+    ],
+    "yawRad": 1.58946,
+    "lengthM": 4.88,
+    "widthM": 8.77,
+    "eavesM": 5.79
+   }
+  },
+  {
+   "pand": "0363100012145495",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     23.77,
+     -0.688,
+     -105.752
+    ],
+    "positionChunk": [
+     23.77,
+     0,
+     -105.752
+    ],
+    "yawRad": -3.12415,
+    "lengthM": 4.89,
+    "widthM": 8.65,
+    "eavesM": 5.8
+   }
+  },
+  {
+   "pand": "0363100012078303",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -26.077,
+     -0.818,
+     -104.812
+    ],
+    "positionChunk": [
+     -26.077,
+     0,
+     -104.812
+    ],
+    "yawRad": -3.12339,
+    "lengthM": 5.13,
+    "widthM": 8.68,
+    "eavesM": 5.93
+   }
+  },
+  {
+   "pand": "0363100012095232",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -31.087,
+     -0.781,
+     -104.722
+    ],
+    "positionChunk": [
+     -31.087,
+     0,
+     -104.722
+    ],
+    "yawRad": -3.12339,
+    "lengthM": 4.89,
+    "widthM": 8.68,
+    "eavesM": 5.89
+   }
+  },
+  {
+   "pand": "0363100012093378",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     28.659,
+     -0.689,
+     -105.838
+    ],
+    "positionChunk": [
+     28.659,
+     0,
+     -105.838
+    ],
+    "yawRad": -3.1235,
+    "lengthM": 4.9,
+    "widthM": 8.65,
+    "eavesM": 5.79
+   }
+  },
+  {
+   "pand": "0363100012151045",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     33.55,
+     -0.695,
+     -105.927
+    ],
+    "positionChunk": [
+     33.55,
+     0,
+     -105.927
+    ],
+    "yawRad": -3.12334,
+    "lengthM": 4.89,
+    "widthM": 8.65,
+    "eavesM": 5.8
+   }
+  },
+  {
+   "pand": "0363100012109835",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -35.978,
+     -0.804,
+     -104.633
+    ],
+    "positionChunk": [
+     -35.978,
+     0,
+     -104.633
+    ],
+    "yawRad": -3.12339,
+    "lengthM": 4.9,
+    "widthM": 8.68,
+    "eavesM": 5.89
+   }
+  },
+  {
+   "pand": "0363100012063573",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     12.924,
+     -0.706,
+     107.678
+    ],
+    "positionChunk": [
+     12.924,
+     0,
+     107.678
+    ],
+    "yawRad": -3.12267,
+    "lengthM": 5.13,
+    "widthM": 8.72,
+    "eavesM": 5.82
+   }
+  },
+  {
+   "pand": "0363100012130846",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     17.931,
+     -0.733,
+     107.584
+    ],
+    "positionChunk": [
+     17.931,
+     0,
+     107.584
+    ],
+    "yawRad": -3.12264,
+    "lengthM": 4.89,
+    "widthM": 8.71,
+    "eavesM": 5.85
+   }
+  },
+  {
+   "pand": "0363100012089225",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     65.174,
+     -0.747,
+     -90.406
+    ],
+    "positionChunk": [
+     65.174,
+     0,
+     -90.406
+    ],
+    "yawRad": 1.59078,
+    "lengthM": 4.87,
+    "widthM": 8.77,
+    "eavesM": 5.84
+   }
+  },
+  {
+   "pand": "0363100012103461",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -40.866,
+     -0.756,
+     -104.545
+    ],
+    "positionChunk": [
+     -40.866,
+     0,
+     -104.545
+    ],
+    "yawRad": -3.12339,
+    "lengthM": 4.9,
+    "widthM": 8.68,
+    "eavesM": 5.85
+   }
+  },
+  {
+   "pand": "0363100012125369",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -22.207,
+     -0.771,
+     108.238
+    ],
+    "positionChunk": [
+     -22.207,
+     0,
+     108.238
+    ],
+    "yawRad": -3.12256,
+    "lengthM": 5.16,
+    "widthM": 8.68,
+    "eavesM": 5.89
+   }
+  },
+  {
+   "pand": "0363100012081096",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     22.819,
+     -0.734,
+     107.498
+    ],
+    "positionChunk": [
+     22.819,
+     0,
+     107.498
+    ],
+    "yawRad": -3.12346,
+    "lengthM": 4.9,
+    "widthM": 8.71,
+    "eavesM": 5.83
+   }
+  },
+  {
+   "pand": "0363100012097580",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     38.44,
+     -0.692,
+     -106.015
+    ],
+    "positionChunk": [
+     38.44,
+     0,
+     -106.015
+    ],
+    "yawRad": -3.12352,
+    "lengthM": 4.9,
+    "widthM": 8.65,
+    "eavesM": 5.76
+   }
+  },
+  {
+   "pand": "0363100012106195",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     27.71,
+     -0.696,
+     107.409
+    ],
+    "positionChunk": [
+     27.71,
+     0,
+     107.409
+    ],
+    "yawRad": -3.12346,
+    "lengthM": 4.89,
+    "widthM": 8.71,
+    "eavesM": 5.82
+   }
+  },
+  {
+   "pand": "0363100012082164",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -45.757,
+     -0.723,
+     -104.456
+    ],
+    "positionChunk": [
+     -45.757,
+     0,
+     -104.456
+    ],
+    "yawRad": -3.12339,
+    "lengthM": 4.89,
+    "widthM": 8.68,
+    "eavesM": 5.83
+   }
+  },
+  {
+   "pand": "0363100012134351",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -27.229,
+     -0.651,
+     108.333
+    ],
+    "positionChunk": [
+     -27.229,
+     0,
+     108.333
+    ],
+    "yawRad": -3.12254,
+    "lengthM": 4.89,
+    "widthM": 8.67,
+    "eavesM": 5.77
+   }
+  },
+  {
+   "pand": "0363100012141002",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     43.329,
+     -0.703,
+     -106.1
+    ],
+    "positionChunk": [
+     43.329,
+     0,
+     -106.1
+    ],
+    "yawRad": -3.12417,
+    "lengthM": 4.89,
+    "widthM": 8.67,
+    "eavesM": 5.81
+   }
+  },
+  {
+   "pand": "0363100012141665",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     32.598,
+     -0.683,
+     107.326
+    ],
+    "positionChunk": [
+     32.598,
+     0,
+     107.326
+    ],
+    "yawRad": -3.12344,
+    "lengthM": 4.89,
+    "widthM": 8.7,
+    "eavesM": 5.81
+   }
+  },
+  {
+   "pand": "0363100012066106",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     65.087,
+     -0.83,
+     -95.272
+    ],
+    "positionChunk": [
+     65.087,
+     0,
+     -95.272
+    ],
+    "yawRad": 1.58944,
+    "lengthM": 4.88,
+    "widthM": 8.76,
+    "eavesM": 5.94
+   }
+  },
+  {
+   "pand": "0363100012102858",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -32.117,
+     -0.648,
+     108.43
+    ],
+    "positionChunk": [
+     -32.117,
+     0,
+     108.43
+    ],
+    "yawRad": -3.12256,
+    "lengthM": 4.89,
+    "widthM": 8.68,
+    "eavesM": 5.76
+   }
+  },
+  {
+   "pand": "0363100012072060",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     37.489,
+     -0.691,
+     107.238
+    ],
+    "positionChunk": [
+     37.489,
+     0,
+     107.238
+    ],
+    "yawRad": -3.12344,
+    "lengthM": 4.9,
+    "widthM": 8.7,
+    "eavesM": 5.84
+   }
+  },
+  {
+   "pand": "0363100012129270",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -50.645,
+     -0.735,
+     -104.363
+    ],
+    "positionChunk": [
+     -50.645,
+     0,
+     -104.363
+    ],
+    "yawRad": -3.12339,
+    "lengthM": 4.89,
+    "widthM": 8.69,
+    "eavesM": 5.84
+   }
+  },
+  {
+   "pand": "0363100012092900",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -37.008,
+     -0.65,
+     108.518
+    ],
+    "positionChunk": [
+     -37.008,
+     0,
+     108.518
+    ],
+    "yawRad": -3.12256,
+    "lengthM": 4.9,
+    "widthM": 8.68,
+    "eavesM": 5.79
+   }
+  },
+  {
+   "pand": "0363100012097004",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     42.377,
+     -0.709,
+     107.148
+    ],
+    "positionChunk": [
+     42.377,
+     0,
+     107.148
+    ],
+    "yawRad": -3.12339,
+    "lengthM": 4.9,
+    "widthM": 8.7,
+    "eavesM": 5.85
+   }
+  },
+  {
+   "pand": "0363100012119636",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     48.298,
+     -0.812,
+     -106.189
+    ],
+    "positionChunk": [
+     48.298,
+     0,
+     -106.189
+    ],
+    "yawRad": -3.12341,
+    "lengthM": 5.06,
+    "widthM": 8.66,
+    "eavesM": 5.93
+   }
+  },
+  {
+   "pand": "0363100012128336",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -55.537,
+     -0.724,
+     -104.27
+    ],
+    "positionChunk": [
+     -55.537,
+     0,
+     -104.27
+    ],
+    "yawRad": -3.12339,
+    "lengthM": 4.9,
+    "widthM": 8.67,
+    "eavesM": 5.81
+   }
+  },
+  {
+   "pand": "0363100012117399",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -41.899,
+     -0.653,
+     108.609
+    ],
+    "positionChunk": [
+     -41.899,
+     0,
+     108.609
+    ],
+    "yawRad": -3.12256,
+    "lengthM": 4.89,
+    "widthM": 8.67,
+    "eavesM": 5.79
+   }
+  },
+  {
+   "pand": "0363100012084644",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     47.268,
+     -0.698,
+     107.061
+    ],
+    "positionChunk": [
+     47.268,
+     0,
+     107.061
+    ],
+    "yawRad": -3.12339,
+    "lengthM": 4.89,
+    "widthM": 8.68,
+    "eavesM": 5.84
+   }
+  },
+  {
+   "pand": "0363100012094950",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     64.999,
+     -0.803,
+     -100.259
+    ],
+    "positionChunk": [
+     64.999,
+     0,
+     -100.259
+    ],
+    "yawRad": 1.58944,
+    "lengthM": 5.1,
+    "widthM": 8.77,
+    "eavesM": 5.9
+   }
+  },
+  {
+   "pand": "0363100012086142",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -60.424,
+     -0.715,
+     -104.185
+    ],
+    "positionChunk": [
+     -60.424,
+     0,
+     -104.185
+    ],
+    "yawRad": -3.12341,
+    "lengthM": 4.9,
+    "widthM": 8.69,
+    "eavesM": 5.81
+   }
+  },
+  {
+   "pand": "0363100012069597",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -46.787,
+     -0.65,
+     108.706
+    ],
+    "positionChunk": [
+     -46.787,
+     0,
+     108.706
+    ],
+    "yawRad": -3.12256,
+    "lengthM": 4.89,
+    "widthM": 8.68,
+    "eavesM": 5.77
+   }
+  },
+  {
+   "pand": "0363100012128219",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     52.272,
+     -0.793,
+     106.97
+    ],
+    "positionChunk": [
+     52.272,
+     0,
+     106.97
+    ],
+    "yawRad": -3.12339,
+    "lengthM": 5.12,
+    "widthM": 8.68,
+    "eavesM": 5.94
+   }
+  },
+  {
+   "pand": "0363100012114711",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -51.675,
+     -0.653,
+     108.795
+    ],
+    "positionChunk": [
+     -51.675,
+     0,
+     108.795
+    ],
+    "yawRad": -3.12256,
+    "lengthM": 4.89,
+    "widthM": 8.68,
+    "eavesM": 5.79
+   }
+  },
+  {
+   "pand": "0363100012112986",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -65.316,
+     -0.697,
+     -104.097
+    ],
+    "positionChunk": [
+     -65.316,
+     0,
+     -104.097
+    ],
+    "yawRad": -3.12339,
+    "lengthM": 4.89,
+    "widthM": 8.69,
+    "eavesM": 5.78
+   }
+  },
+  {
+   "pand": "0363100012132305",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -56.563,
+     -0.652,
+     108.891
+    ],
+    "positionChunk": [
+     -56.563,
+     0,
+     108.891
+    ],
+    "yawRad": -3.12256,
+    "lengthM": 4.89,
+    "widthM": 8.68,
+    "eavesM": 5.76
+   }
+  },
+  {
+   "pand": "0363100012145627",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -70.326,
+     -0.721,
+     -104.003
+    ],
+    "positionChunk": [
+     -70.326,
+     0,
+     -104.003
+    ],
+    "yawRad": -3.12339,
+    "lengthM": 5.13,
+    "widthM": 8.68,
+    "eavesM": 5.82
+   }
+  },
+  {
+   "pand": "0363100012122930",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -61.454,
+     -0.651,
+     108.983
+    ],
+    "positionChunk": [
+     -61.454,
+     0,
+     108.983
+    ],
+    "yawRad": -3.12256,
+    "lengthM": 4.9,
+    "widthM": 8.68,
+    "eavesM": 5.79
+   }
+  },
+  {
+   "pand": "0363100012103926",
+   "type": "nw-rowhouse-tall-glass",
+   "variant": "cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -66.463,
+     -0.686,
+     109.081
+    ],
+    "positionChunk": [
+     -66.463,
+     0,
+     109.081
+    ],
+    "yawRad": -3.12218,
+    "lengthM": 5.13,
+    "widthM": 8.68,
+    "eavesM": 5.78
+   }
+  }
+ ]
+}

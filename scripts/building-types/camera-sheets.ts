@@ -64,7 +64,7 @@ async function pickView(pandId: string): Promise<View | null> {
   const heading = bearingDeg(mid[0] - best.c[0], mid[1] - best.c[1]);
   const top = (d.ridgeM ?? d.eavesM + 0.3), topAng = Math.atan((top - CAM_H) / dist) * 180 / Math.PI, botAng = -Math.atan(CAM_H / dist) * 180 / Math.PI;
   const pitch = (topAng + botAng) / 2, halfV = (topAng - botAng) / 2 + 3;
-  const hNeeded = 2 * Math.atan((t.lengthM / 2 + 1.5) / dist) * 180 / Math.PI, vAsH = 2 * Math.atan(Math.tan(halfV * Math.PI / 180) * W / H) * 180 / Math.PI;
+  const hNeeded = 2 * Math.atan((t.lengthM / 2 + Number(arg('margin', '1.5'))) / dist) * 180 / Math.PI, vAsH = 2 * Math.atan(Math.tan(halfV * Math.PI / 180) * W / H) * 180 / Math.PI;
   return {pandId, cam: best.c, camLngLat: [best.p.geometry.coordinates[0], best.p.geometry.coordinates[1]], heading, pitch, hfov: Math.min(105, Math.max(hNeeded, vAsH)), panoId: best.p.pano_id, timestamp: best.p.timestamp, depth: best.depth, lateral: best.lateral, frontSide: true,
     // keep the pano url for the crop
     ...{url: best.p._links.equirectangular_medium.href}} as View & {url: string};

@@ -83,3 +83,19 @@ export function frontYaw(front: Pick<FrontResult, 'normal' | 'tangent'>): number
   // We need local x -> (tx, tz): cos a = tx, -sin a = tz.
   return Math.atan2(-front.tangent[1], front.tangent[0]);
 }
+
+/**
+ * The front facing compass bearing `bearingDeg` (0 = north, 90 = east): the same two candidate sides, the one whose outward normal
+ * points nearer that bearing. Used when a photo of a whole terrace settles which side is the front (garden paths are not in the OSM
+ * street list, so the nearest-street rule can pick the back).
+ */
+export function frontTowardBearing(rect: Rect, front: FrontResult, bearingDeg: number): FrontResult {
+  const want: Pt = [Math.sin(bearingDeg * Math.PI / 180), -Math.cos(bearingDeg * Math.PI / 180)];
+  if (front.normal[0] * want[0] + front.normal[1] * want[1] >= 0) return front;
+  const normal: Pt = [-front.normal[0], -front.normal[1]];
+  return {
+    sign: front.sign === 1 ? -1 : 1, normal, tangent: [normal[1], -normal[0]],
+    midpoint: [rect.center[0] + normal[0] * rect.width / 2, rect.center[1] + normal[1] * rect.width / 2],
+    score: front.otherScore, otherScore: front.score, ambiguous: false, street: null, streetDistanceM: NaN,
+  };
+}

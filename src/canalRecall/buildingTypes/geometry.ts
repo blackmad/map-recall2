@@ -78,6 +78,18 @@ export function minimumRotatedRectangle(ring: Pt[]): Rect {
   return {center, long, short, length: dx, width: dy, corners: [corner(-L, -W), corner(L, -W), corner(L, W), corner(-L, W)]};
 }
 
+/**
+ * The same rectangle with the axes swapped: its `long` is the original short axis (the frontage of a terraced house, whose front is
+ * the SHORT side), `short` the original long axis rotated +90 degrees (so `short` stays `long` rotated +90), length and width exchanged.
+ * frontSide / paramsFromFacts / generate then work unchanged: "the front is a long side" holds for the swapped rectangle.
+ */
+export function swapAxes(rect: Rect): Rect {
+  const long: Pt = rect.short, short: Pt = [-long[1], long[0]];
+  const L = rect.width / 2, W = rect.length / 2, c = rect.center;
+  const corner = (a: number, b: number): Pt => [c[0] + long[0] * a + short[0] * b, c[1] + long[1] * a + short[1] * b];
+  return {center: c, long, short, length: rect.width, width: rect.length, corners: [corner(-L, -W), corner(L, -W), corner(L, W), corner(-L, W)]};
+}
+
 /** Area of a (possibly concave) polygon clipped by a convex polygon (Sutherland-Hodgman, subject = polygon, clip = convex). */
 export function clippedArea(subject: Pt[], convex: Pt[]): number {
   let out = openRing(subject);
@@ -112,4 +124,24 @@ export function nearestOnSegment(p: Pt, a: Pt, b: Pt): {d: number; q: Pt} {
   const t = den ? Math.max(0, Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dz) / den)) : 0;
   const q: Pt = [a[0] + dx * t, a[1] + dz * t];
   return {d: Math.hypot(p[0] - q[0], p[1] - q[1]), q};
+}
+
+/**
+ * Which side walls of a (swapped, frontage-first) footprint rectangle stand free? A side is a party wall when another footprint's
+ * edge runs within `tol` metres of it along at least two of five samples. `tangent` is the viewer's right facing the front.
+ */
+export function freeSides(rect: Rect, tangent: Pt, others: Pt[][], tol = 0.5): {left: boolean; right: boolean} {
+  const n: Pt = [-tangent[1], tangent[0]]; // across the footprint (front/back); sign irrelevant, samples are symmetric
+  const half = rect.length / 2, depth = rect.width, near = others.filter(r => r.some(p => Math.hypot(p[0] - rect.center[0], p[1] - rect.center[1]) < depth + rect.length + 6));
+  const touched = (sgn: 1 | -1) => {
+    let hits = 0;
+    for (let i = 0; i < 5; i++) {
+      const d = -depth * 0.4 + depth * 0.8 * i / 4;
+      const p: Pt = [rect.center[0] + tangent[0] * sgn * (half + 0.12) + n[0] * d, rect.center[1] + tangent[1] * sgn * (half + 0.12) + n[1] * d];
+      const hit = near.some(r => { for (let k = 0; k < r.length; k++) if (nearestOnSegment(p, r[k], r[(k + 1) % r.length]).d < tol) return true; return false; });
+      if (hit) hits++;
+    }
+    return hits >= 2;
+  };
+  return {left: !touched(-1), right: !touched(1)};
 }

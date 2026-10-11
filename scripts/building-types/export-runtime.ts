@@ -27,16 +27,24 @@ if (merge && fs.existsSync(path.join(out, 'instances.json'))) {
 }
 const kept = instances.length;
 // Several areas can produce the same unit (type, variant, storeys, roof, ridge, ground). Each area's build sizes the unit
-// mesh at its own median, so one canonical mesh per unit is chosen (the area with the most members) and every instance's
-// scale is computed against THAT mesh's nominal size.
+// mesh at its own median, so one canonical mesh per unit is chosen (see below) and every instance's scale is computed against THAT mesh's nominal size.
 type Nominal = {L: number; W: number; eaves: number; ridge?: number};
 const canon = new Map<string, {area: string; members: number; nominal: Nominal}>();
+const candidates = new Map<string, {area: string; members: number; nominal: Nominal}[]>();
 for (const area of areas) {
   const rep = JSON.parse(fs.readFileSync(path.join('staging/building-types', area, 'report.json'), 'utf8')) as {groups: any[]};
   for (const g of rep.groups) {
-    const unit = (g.key as string).replace(/\|/g, '__'), cur = canon.get(unit);
-    if (!cur || g.members > cur.members) canon.set(unit, {area, members: g.members, nominal: g.nominal});
+    const unit = (g.key as string).replace(/\|/g, '__');
+    (candidates.get(unit) ?? candidates.set(unit, []).get(unit)!).push({area, members: g.members, nominal: g.nominal});
   }
+}
+// Canonical mesh per unit: the area whose nominal frontage is closest to the member-weighted median over all areas (so no instance is
+// stretched more than the neighbourhood-to-neighbourhood spread of the type, e.g. 4.7-5.6 m terraced-house frontages around 5.0 m), ties to the larger group.
+for (const [unit, list] of candidates) {
+  const sorted = [...list].sort((a, b) => a.nominal.L - b.nominal.L), total = list.reduce((t, c) => t + c.members, 0);
+  let acc = 0, median = sorted[0].nominal.L;
+  for (const c of sorted) { acc += c.members; if (acc >= total / 2) { median = c.nominal.L; break; } }
+  canon.set(unit, [...list].sort((a, b) => Math.abs(a.nominal.L - median) - Math.abs(b.nominal.L - median) || b.members - a.members)[0]);
 }
 for (const area of areas) {
   const dir = path.join('staging/building-types', area);
@@ -45,7 +53,7 @@ for (const area of areas) {
   const placements = new Map((JSON.parse(fs.readFileSync(path.join(dir, 'placements.json'), 'utf8')).placements as any[]).map(p => [p.pand, p]));
   for (const d of report.instancesDetail) {
     if (d.held) { held[d.pandId] = d.held; continue; }
-    const key = [d.type, d.variant, d.storeys, d.roofUsed, d.ridge, d.groundMode].join('|');
+    const key = [d.type, d.variant, d.storeys, d.roofUsed, d.ridge, d.groundMode, ...(d.sides ? [d.sides] : []), ...(d.mirrored ? ['mirror'] : [])].join('|');
     const unit = key.replace(/\|/g, '__'), n = canon.get(unit)?.nominal;
     if (!n) throw new Error(`no group ${key}`);
     const t = placements.get(d.pandId).transform;
