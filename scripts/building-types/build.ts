@@ -25,7 +25,7 @@ for (const f of fs.readdirSync(TYPES_DIR).filter(f => f.endsWith('.json'))) { co
 
 const input = JSON.parse(fs.readFileSync(path.join(dir, 'instances.json'), 'utf8')) as {anchor: Anchor; instances: any[]; streets: Street[]};
 const variantsFile = path.join(dir, 'variants.json');
-const overrides: Record<string, {type?: string; variant?: string; groundMode?: 'solid' | 'pilotis'; hold?: string; note?: string}> = fs.existsSync(variantsFile) ? JSON.parse(fs.readFileSync(variantsFile, 'utf8')) : {};
+const overrides: Record<string, {type?: string; variant?: string; groundMode?: 'solid' | 'pilotis'; storeys?: number; hold?: string; note?: string}> = fs.existsSync(variantsFile) ? JSON.parse(fs.readFileSync(variantsFile, 'utf8')) : {};
 
 async function item3d(id: string): Promise<CityJsonItem> {
   const file = `.cache/building-types/3dbag/${id}.json`;
@@ -57,7 +57,7 @@ for (const instIn of input.instances) {
   const front = frontSide(rect, input.streets);
   let roof: RoofFacts | null = null;
   try { roof = roofFactsFromItem(await item3d(inst.pandId)); } catch (e) { console.warn('roof facts failed', inst.pandId, (e as Error).message); }
-  const {params, warnings} = paramsFromFacts(spec, rect, inst.attrs, roof, {variant: o.variant, groundMode: o.groundMode});
+  const {params, warnings} = paramsFromFacts(spec, rect, inst.attrs, roof, {variant: o.variant, groundMode: o.groundMode, ...(o.storeys ? {storeys: o.storeys} : {})});
   if (front.ambiguous) warnings.push(`front ambiguous (scores ${front.score.toFixed(1)} / ${front.otherScore.toFixed(1)})`);
   const {mesh, report} = generate(spec, params);
   built.push({held: o.hold, pandId: inst.pandId, type: inst.type, variant: report.variant, mesh, report, position: [rect.center[0], inst.attrs.b3_h_maaiveld ?? 0, rect.center[1]], yaw: frontYaw(front), rect, front, roof, warnings, iou, params});
