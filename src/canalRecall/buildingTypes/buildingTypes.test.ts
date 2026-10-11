@@ -340,7 +340,7 @@ test('cluster designs validate, carry >= 3 photo pands of evidence on the front,
 
 // --- 2026-10-11 terraced houses: the front is the SHORT side -------------------------------------------------------------
 
-const ROW_TYPES = ['nw-rowhouse-garage-door', 'nw-rowhouse-door-window', 'nw-rowhouse-tall-glass', 'nw-rowhouse-render-tile'].map(id => load(`${id}.json`));
+const ROW_TYPES = ['nw-rowhouse-garage-door', 'nw-rowhouse-door-window', 'nw-rowhouse-tall-glass', 'nw-rowhouse-render-tile', 'nw-rowhouse-tall-glass-panel', 'nw-rowhouse-garage-door-3st', 'nw-rowhouse-garage-door-2st', 'nw-rowhouse-red-panel-door', 'nw-rowhouse-white-sheds', 'nw-rowhouse-render-pilaster', 'nw-rowhouse-ribbon-fascia'].map(id => load(`${id}.json`));
 const house = (cx: number, w = 5.0, d = 8.5): Pt[] => [[cx - w / 2, -d / 2], [cx + w / 2, -d / 2], [cx + w / 2, d / 2], [cx - w / 2, d / 2]];
 
 test('swapAxes: frontage first, short stays long rotated +90, corners and centre kept', () => {
@@ -401,10 +401,10 @@ test('terraced-house designs: validate, >= 3 distinct photo pands of evidence on
     assert.deepEqual(validateSpec(spec), [], spec.id);
     assert.equal(spec.frontOnShort, true);
     assert.ok(spec.facades.front.evidence.length >= 3 && new Set(spec.facades.front.evidence.map(e => e.pand)).size === spec.facades.front.evidence.length, `${spec.id}: evidence`);
-    const [lo, hi] = spec.eavesRangeM!;
-    assert.ok(lo < 5.9 && hi > 5.9, 'eaves range brackets the cluster median 5.9 m');
+    const [lo, hi] = spec.eavesRangeM!, flat = spec.roof.form === 'flat', eaves = flat ? (lo + hi) / 2 : 5.9, ridge = flat ? eaves : 8.6;
+    assert.ok(lo < eaves && hi > eaves, 'eaves range brackets the cluster median (5.9 m for the two-storey designs, the mid-range for the flat-roof three-storey one)');
     for (const variant of Object.keys(spec.variants)) for (const mirror of spec.alternateMirror ? [false, true] : [false]) {
-      const base = {lengthM: 5.0, widthM: 8.5, eavesM: 5.9, ridgeM: 8.6, variant, mirror};
+      const base = {lengthM: 5.0, widthM: 8.5, eavesM: eaves, ridgeM: flat ? undefined : ridge, variant, mirror};
       const {report, mesh} = generate(spec, base);
       for (const id of FACADE_IDS) assert.deepEqual(report.facades[id], spec.facades[id].counted, `${spec.id}/${variant}/${id}`);
       assert.ok(mesh.triangles <= 400, `${spec.id}/${variant}: ${mesh.triangles} triangles`);
@@ -413,7 +413,7 @@ test('terraced-house designs: validate, >= 3 distinct photo pands of evidence on
       const mb = midGen.mesh.bounds();
       assert.ok(mb.max[0] <= 2.5 + spec.roof.vergeOverhangM + 1e-6 && mb.min[0] >= -2.5 - spec.roof.vergeOverhangM - 1e-6, 'a mid-terrace house does not reach across its party walls');
       const b = mesh.bounds();
-      assert.ok(Math.abs(b.max[1] - 8.6) < 1e-6 && b.min[1] >= -1e-9, `${spec.id}: ridge reached, nothing below ground`);
+      assert.ok(Math.abs(b.max[1] - ridge) < 1e-6 && b.min[1] >= -1e-9, `${spec.id}: ridge reached, nothing below ground`);
       assert.ok(b.max[0] <= 2.5 + spec.roof.vergeOverhangM + 0.03, 'an end house reaches at most a proud plinth band past its wall');
     }
   }

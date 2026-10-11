@@ -256,7 +256,8 @@ function roofSolid(c: Ctx, p: {form: 'gable' | 'hip' | 'flat'; ridge: 'long' | '
     // gable ends in the wall material
     for (const [sIdx, sAt] of [[0, -a], [1, a]] as const) {
       void sIdx;
-      const tri = [to(sAt, -b, y0), to(sAt, b, y0), to(sAt, 0, p.ridgeH)];
+      // from the wall top (eaves line) up to the ridge: starting at the overhang's y0 / width b would lie in the side wall's plane (coplanar overlap, z-fighting)
+      const tri = [to(sAt, -hw, p.eaves), to(sAt, hw, p.eaves), to(sAt, 0, p.ridgeH)];
       quadAway(mb, k.wall, inside, tri[0], tri[1], tri[2], tri[2]);
     }
   } else {

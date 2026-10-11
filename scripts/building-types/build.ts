@@ -25,7 +25,7 @@ for (const f of fs.readdirSync(TYPES_DIR).filter(f => f.endsWith('.json'))) { co
 
 const input = JSON.parse(fs.readFileSync(path.join(dir, 'instances.json'), 'utf8')) as {anchor: Anchor; instances: any[]; streets: Street[]};
 const variantsFile = path.join(dir, 'variants.json');
-const overrides: Record<string, {type?: string; variant?: string; groundMode?: 'solid' | 'pilotis'; storeys?: number; hold?: string; note?: string; frontBearingDeg?: number}> = fs.existsSync(variantsFile) ? JSON.parse(fs.readFileSync(variantsFile, 'utf8')) : {};
+const overrides: Record<string, {type?: string; variant?: string; groundMode?: 'solid' | 'pilotis'; storeys?: number; eavesM?: number; mirror?: boolean; hold?: string; note?: string; frontBearingDeg?: number}> = fs.existsSync(variantsFile) ? JSON.parse(fs.readFileSync(variantsFile, 'utf8')) : {};
 
 async function item3d(id: string): Promise<CityJsonItem> {
   const file = `.cache/building-types/3dbag/${id}.json`;
@@ -87,9 +87,12 @@ for (const instIn of input.instances) {
   let roof: RoofFacts | null = null;
   try { roof = roofFactsFromItem(await item3d(inst.pandId)); } catch (e) { console.warn('roof facts failed', inst.pandId, (e as Error).message); }
   const {params, warnings} = paramsFromFacts(spec, rect, inst.attrs, roof, {variant: o.variant, groundMode: o.groundMode, ...(o.storeys ? {storeys: o.storeys} : {})});
+  // variants.json may pin the wall-top height read from the photo (a flat roof whose 3DBAG median roof height includes a plant box or parapet): storeys then follow the type.
+  if (o.eavesM) { params.eavesM = o.eavesM; params.storeys = spec.storeys; warnings.push(`eaves pinned to ${o.eavesM} m from the photo (3DBAG roof height ignored)`); }
   if (front.ambiguous) warnings.push(`front ambiguous (scores ${front.score.toFixed(1)} / ${front.otherScore.toFixed(1)})`);
   if (spec.frontOnShort) params.freeSides = freeSides(rect, front.tangent, otherRings.filter(r => r.id !== inst.pandId).map(r => r.ring));
-  if (spec.alternateMirror) params.mirror = mirrorOf.get(inst.pandId) ?? false;
+  // variants.json `mirror` is the handedness read from the photos (explicit per house); otherwise the alternation rule of the spec applies.
+  if (o.mirror !== undefined) params.mirror = o.mirror; else if (spec.alternateMirror) params.mirror = mirrorOf.get(inst.pandId) ?? false;
   const {mesh, report} = generate(spec, params);
   const outOfRange = spec.eavesRangeM && (params.eavesM < spec.eavesRangeM[0] || params.eavesM > spec.eavesRangeM[1]) ? `eaves ${params.eavesM.toFixed(2)} m outside the ${spec.eavesRangeM.join('-')} m of ${spec.id}: not this two-storey design` : undefined;
   const fr = spec.footprintRangeM, outOfFootprint = fr && (params.lengthM < fr.frontage[0] || params.lengthM > fr.frontage[1] || params.widthM < fr.depth[0] || params.widthM > fr.depth[1]) ? `footprint ${params.lengthM.toFixed(2)} x ${params.widthM.toFixed(2)} m outside ${fr.frontage.join('-')} x ${fr.depth.join('-')} m of ${spec.id}: extended or notched house` : undefined;

@@ -46,6 +46,16 @@ const VIEWS: Record<string, { center: [number, number]; zoom: number; pitch: num
   'rowhouse-b-close': { center: [4.827591, 52.360673], zoom: 19.2, pitch: 60, bearing: 269 },
   'rowhouse-d-street': { center: [4.797393, 52.383532], zoom: 17.8, pitch: 62, bearing: 88 },
   'rowhouse-d-close': { center: [4.797393, 52.383532], zoom: 19.2, pitch: 60, bearing: 88 },
+  // 2026-10-11 terraced houses, second pass (types/nw-rowhouse2-20261011): E1 white sheds (Jacob Tilstraat), B2 tall glazed bay + storage door (Aart van der Leeuwstraat / Louis Couperusstraat), E2 red panel door (Bierens de Haanstraat), K ribbon + fascia (Korte Water), C 3-storey (Hoogheemraadweg), O render + pilasters (Wessel Gansfortstraat).
+  'rowhouse-e1-street': { center: [4.80322, 52.373216], zoom: 17.8, pitch: 62, bearing: 207 },
+  'rowhouse-e1-close': { center: [4.80322, 52.373216], zoom: 19.2, pitch: 60, bearing: 207 },
+  'rowhouse-b2-street': { center: [4.83261, 52.375157], zoom: 17.8, pitch: 62, bearing: 284 },
+  'rowhouse-b2-close': { center: [4.83261, 52.375157], zoom: 19.2, pitch: 60, bearing: 284 },
+  'rowhouse-e2-street': { center: [4.810727, 52.373712], zoom: 17.8, pitch: 62, bearing: 189 },
+  'rowhouse-e2-close': { center: [4.810727, 52.373712], zoom: 19.2, pitch: 60, bearing: 189 },
+  'rowhouse-k-close': { center: [4.786899, 52.353549], zoom: 19.2, pitch: 60, bearing: 252 },
+  'rowhouse-c-close': { center: [4.782098, 52.356177], zoom: 19.2, pitch: 60, bearing: 252 },
+  'rowhouse-o-close': { center: [4.811406, 52.37268], zoom: 19.2, pitch: 60, bearing: 9 },
 };
 const ONLY = process.env.BT_VIEWS?.split(',');
 const CAM = ['jumpTo', 'easeTo', 'flyTo', 'setCenter', 'setZoom', 'setBearing', 'setPitch'];

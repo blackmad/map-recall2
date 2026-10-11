@@ -1,0 +1,287 @@
+{
+ "area": "rh2-08",
+ "chunkGroundNapM": -0.57,
+ "generatedAt": "2026-10-11",
+ "instances": 8,
+ "perType": {
+  "nw-rowhouse-render-pilaster": {
+   "instances": 8,
+   "trisPerInstance": {
+    "min": 134,
+    "median": 134,
+    "max": 134
+   },
+   "trianglesTotal": 1072,
+   "warnings": 8
+  }
+ },
+ "glb": {
+  "baked": {
+   "parts": [
+    {
+     "file": "rh2-08-baked-1.glb",
+     "instances": 8,
+     "triangles": 1072,
+     "bytes": 76780
+    }
+   ],
+   "bytes": 76780,
+   "bytesUncompressed": 114576,
+   "triangles": 1072,
+   "vertices": 2128
+  },
+  "merged": {
+   "bytes": 36124,
+   "bytesUncompressed": 82720,
+   "triangles": 1072,
+   "primitives": 7,
+   "vertices": 2128
+  },
+  "instanced": {
+   "bytes": 18604,
+   "bytesUncompressed": 16476,
+   "triangles": 938,
+   "primitives": 7,
+   "vertices": 266,
+   "designGroups": 1,
+   "maxScaleDeviation": 0.075
+  },
+  "bucketed": {
+   "note": "one unit mesh per (design group, +-0.25 m length/width, +-0.2 m eaves bucket) instead of per-instance scale",
+   "meshes": 2,
+   "bytesEstimate": 30040
+  },
+  "saving": {
+   "bytesVsMerged": 0.485,
+   "bytesVsBaked": 0.758,
+   "bytesUncompressedVsMerged": 0.801
+  }
+ },
+ "groups": [
+  {
+   "key": "nw-rowhouse-render-pilaster|white|2|gable|long|solid",
+   "members": 7,
+   "dimensionBuckets": 2,
+   "bucketedBytesEstimate": 29720,
+   "maxScaleDeviation": 0.075,
+   "nominal": {
+    "L": 4.89,
+    "W": 8.71,
+    "eaves": 5.91,
+    "ridge": 8.63
+   },
+   "unitTriangles": 134,
+   "unitBytes": 14860
+  }
+ ],
+ "instancesDetail": [
+  {
+   "pandId": "0363100012072053",
+   "held": null,
+   "type": "nw-rowhouse-render-pilaster",
+   "variant": "white",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 2,
+   "tris": 134,
+   "lengthM": 5.12,
+   "widthM": 8.69,
+   "eavesM": 5.96,
+   "ridgeM": 8.65,
+   "roof3dbag": "gable",
+   "roofUsed": "gable",
+   "ridge": "long",
+   "rectIoU": 0.997,
+   "frontBearingDeg": 202,
+   "frontStreet": null,
+   "frontStreetDistM": 24.4,
+   "ambiguous": false,
+   "warnings": [
+    "3DBAG bouwlagen 3 != type storeys 2"
+   ]
+  },
+  {
+   "pandId": "0363100012104351",
+   "held": null,
+   "type": "nw-rowhouse-render-pilaster",
+   "variant": "white",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 2,
+   "tris": 134,
+   "lengthM": 4.86,
+   "widthM": 8.7,
+   "eavesM": 5.9,
+   "ridgeM": 8.59,
+   "roof3dbag": "gable",
+   "roofUsed": "gable",
+   "ridge": "long",
+   "rectIoU": 0.997,
+   "frontBearingDeg": 202,
+   "frontStreet": null,
+   "frontStreetDistM": 23.3,
+   "ambiguous": false,
+   "warnings": [
+    "3DBAG bouwlagen 3 != type storeys 2"
+   ]
+  },
+  {
+   "pandId": "0363100012132854",
+   "held": null,
+   "type": "nw-rowhouse-render-pilaster",
+   "variant": "white",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 2,
+   "tris": 134,
+   "lengthM": 4.88,
+   "widthM": 8.71,
+   "eavesM": 5.92,
+   "ridgeM": 8.63,
+   "roof3dbag": "gable",
+   "roofUsed": "gable",
+   "ridge": "long",
+   "rectIoU": 0.996,
+   "frontBearingDeg": 202,
+   "frontStreet": null,
+   "frontStreetDistM": 22.3,
+   "ambiguous": false,
+   "warnings": [
+    "3DBAG bouwlagen 3 != type storeys 2"
+   ]
+  },
+  {
+   "pandId": "0363100012103477",
+   "held": null,
+   "type": "nw-rowhouse-render-pilaster",
+   "variant": "white",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 2,
+   "tris": 134,
+   "lengthM": 4.89,
+   "widthM": 8.71,
+   "eavesM": 5.91,
+   "ridgeM": 8.63,
+   "roof3dbag": "gable",
+   "roofUsed": "gable",
+   "ridge": "long",
+   "rectIoU": 0.992,
+   "frontBearingDeg": 202,
+   "frontStreet": "Carry van Bruggenstraat",
+   "frontStreetDistM": 24.4,
+   "ambiguous": false,
+   "warnings": [
+    "3DBAG bouwlagen 3 != type storeys 2"
+   ]
+  },
+  {
+   "pandId": "0363100012146414",
+   "held": null,
+   "type": "nw-rowhouse-render-pilaster",
+   "variant": "white",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 2,
+   "tris": 134,
+   "lengthM": 4.92,
+   "widthM": 8.73,
+   "eavesM": 5.91,
+   "ridgeM": 8.61,
+   "roof3dbag": "gable",
+   "roofUsed": "gable",
+   "ridge": "long",
+   "rectIoU": 0.993,
+   "frontBearingDeg": 203,
+   "frontStreet": "Carry van Bruggenstraat",
+   "frontStreetDistM": 19.7,
+   "ambiguous": false,
+   "warnings": [
+    "3DBAG bouwlagen 3 != type storeys 2"
+   ]
+  },
+  {
+   "pandId": "0363100012111553",
+   "held": null,
+   "type": "nw-rowhouse-render-pilaster",
+   "variant": "white",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 2,
+   "tris": 134,
+   "lengthM": 4.85,
+   "widthM": 8.72,
+   "eavesM": 5.89,
+   "ridgeM": 8.6,
+   "roof3dbag": "gable",
+   "roofUsed": "gable",
+   "ridge": "long",
+   "rectIoU": 0.994,
+   "frontBearingDeg": 203,
+   "frontStreet": "Carry van Bruggenstraat",
+   "frontStreetDistM": 14.9,
+   "ambiguous": false,
+   "warnings": [
+    "3DBAG bouwlagen 3 != type storeys 2"
+   ]
+  },
+  {
+   "pandId": "0363100012100026",
+   "held": null,
+   "type": "nw-rowhouse-render-pilaster",
+   "variant": "white",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 2,
+   "tris": 134,
+   "lengthM": 5.25,
+   "widthM": 8.69,
+   "eavesM": 5.95,
+   "ridgeM": 8.65,
+   "roof3dbag": "gable",
+   "roofUsed": "gable",
+   "ridge": "long",
+   "rectIoU": 0.992,
+   "frontBearingDeg": 202,
+   "frontStreet": "Carry van Bruggenstraat",
+   "frontStreetDistM": 9.9,
+   "ambiguous": false,
+   "warnings": [
+    "3DBAG bouwlagen 3 != type storeys 2"
+   ]
+  },
+  {
+   "pandId": "0363100012136054",
+   "held": "class O remainder: brown-brick terraces whose only panorama is a 5 m close-up (door with porch and a two-light window, upper storey out of frame), hidden by trees/fences, or a single odd house; the 8-house terraces (301-355) look like a door-window type but bays cannot be counted",
+   "type": "nw-rowhouse-render-pilaster",
+   "variant": "white",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 2,
+   "tris": 134,
+   "lengthM": 5.55,
+   "widthM": 9.04,
+   "eavesM": 6.31,
+   "ridgeM": 8.95,
+   "roof3dbag": "gable",
+   "roofUsed": "gable",
+   "ridge": "long",
+   "rectIoU": 0.999,
+   "frontBearingDeg": 14,
+   "frontStreet": "Socratesstraat",
+   "frontStreetDistM": 13.3,
+   "ambiguous": false,
+   "warnings": [
+    "3DBAG bouwlagen 3 != type storeys 2"
+   ]
+  }
+ ]
+}
