@@ -29821,5 +29821,154 @@
         ]
       ]
     }
+  },
+{
+  "id": "jacob-bontiusplaats-9",
+  "name": "Jacob Bontiusplaats 9 offices",
+  "category": "ordinary",
+  "modelUrl": "./models/jacob-bontiusplaats-9.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012165819"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.928536040375203,
+      52.371777282517606
+    ],
+    "headingDegrees": 135,
+    "lengthMetres": 180.94,
+    "widthMetres": 88.12
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.928503332362755,
+      52.37164586408426
+    ],
+    "northOffsetDegrees": 0,
+    "source": "PDOK BAG 0363100012165819 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+  },
+  "preservePositionPrecision": true,
+  "attribution": {
+    "title": "Jacob Bontiusplaats 9 offices original architecture",
+    "author": "Map Recall",
+    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165819",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.929916835881083,
+          52.37207083645264
+        ],
+        [
+          4.9298037335915375,
+          52.37213963177153
+        ],
+        [
+          4.929813960844791,
+          52.372146070512336
+        ],
+        [
+          4.929808682177993,
+          52.37214960025882
+        ],
+        [
+          4.9297979706424275,
+          52.372143132683775
+        ],
+        [
+          4.929106477992706,
+          52.37256377961113
+        ],
+        [
+          4.929116500782919,
+          52.372570109768354
+        ],
+        [
+          4.929110957794772,
+          52.37257362947344
+        ],
+        [
+          4.929100522744802,
+          52.3725674055731
+        ],
+        [
+          4.929006805526594,
+          52.37262442036497
+        ],
+        [
+          4.927163503136382,
+          52.37148888661781
+        ],
+        [
+          4.927569814832659,
+          52.371241820054784
+        ],
+        [
+          4.927559249279671,
+          52.37123548765653
+        ],
+        [
+          4.927564717875226,
+          52.37123205761142
+        ],
+        [
+          4.927574351330277,
+          52.371237649400264
+        ],
+        [
+          4.92778351613115,
+          52.37111079997545
+        ],
+        [
+          4.927764505078211,
+          52.37109901524809
+        ],
+        [
+          4.927769174506655,
+          52.37109618426795
+        ],
+        [
+          4.927787999423716,
+          52.371107509900064
+        ],
+        [
+          4.927875255313832,
+          52.37105463229647
+        ],
+        [
+          4.9278662096569406,
+          52.371048997873714
+        ],
+        [
+          4.927871574771377,
+          52.371045630326805
+        ],
+        [
+          4.927882036889523,
+          52.37105202521001
+        ],
+        [
+          4.928074088934464,
+          52.37093552562162
+        ],
+        [
+          4.928481360410813,
+          52.37118679120671
+        ],
+        [
+          4.929916835881083,
+          52.37207083645264
+        ]
+      ]
+    ]
   }
+}
 ]
