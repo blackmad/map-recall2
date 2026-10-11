@@ -3,7 +3,7 @@ import type {BuildingTools} from './cultural-builders';
 import {addShell, planarPolygon, type Surface} from './worship-shell';
 import {wallsOf, type Wall} from './worship-walls';
 import {faceOut, frameOf, put, ringFrame, roofHeightAt, setSink, slab, type Frame} from './nearbar-kit';
-import source from './de-nederlandsche-bank-footprints.json';
+import rawSource from './de-nederlandsche-bank-footprints.json';
 
 /**
  * De Nederlandsche Bank, Westeinde 1 / Frederiksplein 61 (Marius Duintjer, 1961-68; restored by Mecanoo, 2025).
@@ -16,18 +16,65 @@ import source from './de-nederlandsche-bank-footprints.json';
  *    thin pale roof plate that overhangs the walls, with the tile-clad plant blocks above it.
  * Window levels and strip pitches are measured by eye from the 2025 Commons photographs, the 2021 municipal panoramas and
  * the Mecanoo elevations; the tower strips follow the east-elevation drawing (12 strips above the podium, 3.6 m pitch).
+ *
+ * Link core (2026-10-11): the 3DBAG point cloud is AHN4 2020, from before the satellite was demolished, and 3DBAG fused the satellite's
+ * link core (x 12-25 m east, z 9-23 m south, up to 51-64 m; the heights are the satellite's roof levels 50.9 / 54.5 / 64.4), a 5.5-18.4 m
+ * annex at its foot and a 3-5 m protruding block into the tower's west face (walls 313, 312, 293, 294, 168, 125, 126 ...). The BAG pand of
+ * the satellite (0363100012178159, "Pand gesloopt", document 2022-02-22, footprint x -13..14 m) abuts them, the 2022 and 2025 photographs
+ * and the Mecanoo west/south/east elevations show a plain slab with no fin, and the 1960s aerial shows the slab alone. So every tall wall
+ * and roof west of the tower's west face line is dropped, the west face is closed with one plane through the roof outline's own vertices,
+ * and the terrace holes the core leaves are filled flat at the terrace level.
  */
-const ROT: [number, number, number] = [0.5, 20.7, 16.5];
-const ring = (source as {nativeRing: number[][]}).nativeRing;
-const surfaces = (source as {surfaces: Surface[]}).surfaces;
+type V2 = [number, number];
 const centroid = (s: Surface) => {
   const p = s.rings[0];
   return [p.reduce((a, v) => a + v[0], 0) / p.length, p.reduce((a, v) => a + v[2], 0) / p.length];
 };
 const maxY = (s: Surface) => Math.max(...s.rings[0].map(p => p[1]));
-const inRot = (s: Surface) => { const [x, z] = centroid(s); return Math.hypot(x - ROT[0], z - ROT[1]) < ROT[2] && maxY(s) > 20; };
+const minY = (s: Surface) => Math.min(...s.rings[0].map(p => p[1]));
+/** x of the tower's west face at depth z (line through the 3DBAG north-end wall 391 corner (21.0, -7.2) and the south west-face wall 84 corner (26.4, 17.0)). */
+const westFaceX = (z: number) => 21.0 + (26.4 - 21.0) / (17.0 + 7.2) * (z + 7.2);
+const dropCore = (s: Surface) => {
+  if (s.type !== 'WallSurface' && s.type !== 'RoofSurface') return false;
+  const [x, z] = centroid(s);
+  if (!(z > -12 && z < 24 && x > 10 && x < westFaceX(z) - 0.9)) return false;
+  const xs = s.rings[0].map(p => p[0]), zs = s.rings[0].map(p => p[2]);
+  const span = Math.max(...xs) - Math.min(...xs) + Math.max(...zs) - Math.min(...zs);
+  const annex = span < 14 && maxY(s) > 18 && maxY(s) < 19 && (s.type === 'RoofSurface' || minY(s) < 6.5);
+  return (maxY(s) > 30) || annex;
+};
+const SYNTH = new WeakSet<Surface>();
+/** Wall ring along the polyline pts (x, z) from y0 to y1, wound so the Newell normal points west. */
+const westWall = (pts: V2[], y0: number, y1: number, lastSplits: number[], firstSplits: number[]): Surface => {
+  // extra vertices on the two vertical sides at the heights where the neighbouring 3DBAG walls have vertices, so the edges are shared exactly
+  const last = pts[pts.length - 1], first = pts[0];
+  const r = [
+    ...pts.map(p => [p[0], y1, p[1]]),
+    ...lastSplits.map(y => [last[0], y, last[1]]),
+    ...pts.slice().reverse().map(p => [p[0], y0, p[1]]),
+    ...firstSplits.map(y => [first[0], y, first[1]]),
+  ];
+  let nx = 0;
+  for (let i = 0; i < r.length; i++) { const a = r[i], c = r[(i + 1) % r.length]; nx += (a[1] - c[1]) * (a[2] + c[2]); }
+  const s: Surface = {type: 'WallSurface', rings: [nx <= 0 ? r : r.slice().reverse()]};
+  SYNTH.add(s);
+  return s;
+};
+// the polyline is the west edge of the 3DBAG roof outline (460), so the top edge is shared exactly
+const WEST_POLY: V2[] = [[20.959, -7.181], [23.361, 2.867], [24.812, 8.935], [26.706, 16.859], [26.359, 16.967]];
+const source = {
+  ...rawSource,
+  surfaces: [
+    ...(rawSource.surfaces as Surface[]).filter(s => !dropCore(s)),
+    westWall(WEST_POLY, 0, 66.1, [65.7, 8.33], [17.05]),
+  ],
+};
+const ring = (source as {nativeRing: number[][]}).nativeRing;
+const surfaces = source.surfaces as Surface[];
+const ROT: [number, number, number] = [0.5, 20.7, 16.5];
+const inRot =(s: Surface) => { const [x, z] = centroid(s); return Math.hypot(x - ROT[0], z - ROT[1]) < ROT[2] && maxY(s) > 20; };
 
-const GROUND = 5.9;      // top of the ground storey / tile fascia
+const GROUND = 5.9;     // top of the ground storey / tile fascia
 const EAVE = 13.1;       // top of the two podium office storeys
 const TOWER_TOP = 66.1;
 const STRIP0 = 18.9, PITCH = 3.6, STRIPS = 12;
@@ -49,6 +96,7 @@ export function buildDeNederlandscheBank(_w: number, _d: number, b: BuildingTool
 
   const kept = surfaces.filter(s => !skip(s) && s.type !== 'GroundSurface');
   const geos = kept.map(s => planarPolygon(s.rings)).filter((g): g is T.BufferGeometry => !!g);
+  const edgeGeos = kept.map(s => planarPolygon(s.rings)).filter((g): g is T.BufferGeometry => !!g);
   const group = new T.Group();
   for (const g of geos) group.add(new T.Mesh(g, new T.MeshBasicMaterial({side: T.DoubleSide})));
   group.updateMatrixWorld(true);
@@ -79,18 +127,45 @@ export function buildDeNederlandscheBank(_w: number, _d: number, b: BuildingTool
   // facing the former tower, so the courtyard reads as terrace rim and a blank link end rather than a torn shell.
   {
     const kq = (v: number[]) => v.map(n => Math.round(n * 200)).join(',');
-    const edges = new Map<string, {a: number[]; b: number[]; n: number}>();
-    for (const g of geos) {
+    const edges = new Map<string, {a: number[]; b: number[]; n: number; c: number[]}>();
+    for (const g of edgeGeos) {
       const pos = g.getAttribute('position'), idx = g.getIndex()!;
       const P = (k: number) => [pos.getX(k), pos.getY(k), pos.getZ(k)];
       for (let t = 0; t < idx.count; t += 3) for (let e = 0; e < 3; e++) {
         const a = P(idx.getX(t + e)), c = P(idx.getX(t + (e + 1) % 3)), ka = kq(a), kc = kq(c);
         if (ka === kc) continue;
         const k = ka < kc ? ka + '|' + kc : kc + '|' + ka, cur = edges.get(k);
-        if (cur) cur.n++; else edges.set(k, {a, b: c, n: 1});
+        if (cur) cur.n++; else {
+          const third = P(idx.getX(t + (e + 2) % 3));
+          edges.set(k, {a, b: c, n: 1, c: [(a[0] + c[0] + third[0]) / 3, (a[2] + c[2] + third[2]) / 3]});
+        }
       }
     }
-    const open = [...edges.values()].filter(e => e.n === 1 && !(e.a[1] < 0.02 && e.b[1] < 0.02));
+    // edges lying on the added west wall are closed by it (its own boundary is not a hole either)
+    const onWall = (p: number[]) => p[1] >= -0.01 && p[1] <= 66.2 && WEST_POLY.some((q, i) => {
+      if (i === 0) return false;
+      const a = WEST_POLY[i - 1], dx = q[0] - a[0], dz = q[1] - a[1], l2 = dx * dx + dz * dz;
+      const t = Math.max(0, Math.min(1, ((p[0] - a[0]) * dx + (p[2] - a[1]) * dz) / l2));
+      return Math.hypot(p[0] - (a[0] + t * dx), p[2] - (a[1] + t * dz)) < 0.05;
+    });
+    const open = [...edges.values()].filter(e => e.n === 1 && !(onWall(e.a) && onWall(e.b)) && Math.min(e.a[1], e.b[1]) < 60 && !(e.a[1] < 0.02 && e.b[1] < 0.02));
+    if (process.env.DNB_DEBUG) for (const e of open) if (Math.abs(e.a[0] - 26.4) < 0.2 && Math.abs(e.a[2] - 17) < 0.2) console.log('openedge', JSON.stringify([e.a, e.b]), onWall(e.a), onWall(e.b));
+    // Terrace slab edges the core left exposed (all below 7 m) get a skirt wall down to the ground, facing away from the slab:
+    // the courtyard terrace is the roof of the ground storey, so its cut rim must not float over open air.
+    for (const e of open) {
+      if (Math.max(e.a[1], e.b[1]) >= 7 || Math.min(e.a[1], e.b[1]) < 0.5) continue;
+      const a0: number[] = [e.a[0], 0, e.a[2]], b0: number[] = [e.b[0], 0, e.b[2]];
+      const dx = e.b[0] - e.a[0], dz = e.b[2] - e.a[2], l = Math.hypot(dx, dz);
+      if (l < 0.05) continue;
+      let nx = dz / l, nz = -dx / l;
+      if ((e.c[0] - e.a[0]) * nx + (e.c[1] - e.a[2]) * nz > 0) { nx = -nx; nz = -nz; }
+      const g = new T.BufferGeometry();
+      g.setAttribute('position', new T.Float32BufferAttribute([...e.a, ...e.b, ...b0, ...a0], 3));
+      const tn = new T.Vector3(...e.b).sub(new T.Vector3(...e.a)).cross(new T.Vector3(...a0).sub(new T.Vector3(...e.a)));
+      g.setIndex(tn.x * nx + tn.z * nz >= 0 ? [0, 1, 2, 0, 2, 3] : [0, 2, 1, 0, 3, 2]);
+      g.computeVertexNormals();
+      b.add(g, 'dark' as never);
+    }
     const adj = new Map<string, typeof open>();
     for (const e of open) for (const q of [e.a, e.b]) { const k = kq(q); if (!adj.has(k)) adj.set(k, []); adj.get(k)!.push(e); }
     const used = new Set<(typeof open)[number]>();
@@ -116,6 +191,24 @@ export function buildDeNederlandscheBank(_w: number, _d: number, b: BuildingTool
         if (loop[loop.length - 1][1] > 0.02) loop.push([loop[loop.length - 1][0], 0, loop[loop.length - 1][2]]);
       }
       if (loop.length < 3) continue;
+      if (process.env.DNB_DEBUG) console.log('loop', loop.length, JSON.stringify(loop.map(v => v.map(n => +n.toFixed(1)))));
+      // A flat loop (the hole the core leaves in the courtyard terrace) is filled flat, facing up.
+      const ys = loop.map(v => v[1]);
+      if (Math.max(...ys) - Math.min(...ys) < 1.2) {
+        const level = ys.reduce((s2, v) => s2 + v, 0) / ys.length;
+        const pts2 = loop.map(v => new T.Vector2(v[0], v[2]));
+        const tris = T.ShapeUtils.triangulateShape(pts2, []);
+        const g = new T.BufferGeometry();
+        g.setAttribute('position', new T.Float32BufferAttribute(pts2.flatMap(p => [p.x, level, p.y]), 3));
+        g.setIndex(tris.flatMap(([a, c2, d]) => {
+          const ny = (pts2[c2].x - pts2[a].x) * (pts2[d].y - pts2[a].y) - (pts2[c2].y - pts2[a].y) * (pts2[d].x - pts2[a].x);
+          return ny >= 0 ? [a, d, c2] : [a, c2, d];
+        }));
+        g.computeVertexNormals();
+        g.userData.role = 'roof';
+        b.add(g, 'slate' as never);
+        continue;
+      }
       const c = loop.reduce((acc, v) => [acc[0] + v[0] / loop.length, acc[1] + v[1] / loop.length, acc[2] + v[2] / loop.length], [0, 0, 0]);
       const pos: number[] = [...c], index: number[] = [];
       for (const v of loop) pos.push(...v);

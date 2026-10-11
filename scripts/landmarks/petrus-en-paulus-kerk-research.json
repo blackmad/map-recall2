@@ -1,0 +1,19 @@
+{
+  "canonicalModelId": "petrus-en-paulus-kerk",
+  "researchedOn": "2026-10-11",
+  "state": "built-held",
+  "destination": {"name": "Sint-Petrus-en-Pauluskerk", "address": "Ruysdaelstraat 39, Amsterdam", "bagPand": "NL.IMBAG.Pand.0363100012097854"},
+  "photos": [
+    {"file": "ref-commons-ruysdaelstraat-39.jpg", "url": "https://commons.wikimedia.org/wiki/File:Petrus_en_Paulus_Ruysdaelstraat_39,_Amsterdam.JPG", "date": "2014-01-07", "licence": "CC BY-SA 3.0 nl"},
+    {"file": "ref-commons-ruysdaelstraat-37.jpg", "url": "https://commons.wikimedia.org/wiki/File:Ruysdaelstraat_37.JPG", "date": "2010-10-26", "licence": "CC BY-SA 3.0 nl"},
+    {"file": "ref-commons-oud-katholieke-kerk.jpg", "url": "https://commons.wikimedia.org/wiki/File:Oud-Katholieke-kerk.JPG", "date": "2010-09-29", "licence": "CC BY-SA 3.0 nl"},
+    {"file": "ref-pano-0.jpg", "panorama": "recording_2025-07-30_09-27-21_00836", "date": "2025", "heading": 154},
+    {"file": "ref-pano-2.jpg", "panorama": "recording_2025-07-30_09-27-21_00831", "date": "2025", "heading": 75}
+  ],
+  "decisions": [
+    "Gable front plane: 3DBAG wall 35 (t 0..2.3, y to 15.8) stands on the front line while the gable face west of t -0.6 is 1.1-1.3 m behind it; gable windows, slot and cross are placed on the measured wall offsets (-1.3 / -1.25 / -1.1 m) so none hovers.",
+    "Gable: two four-light windows (sill 7.6 m, 4.6 m tall) either side of the apex, louvred slot above, stone cross, pointed red door in the gabled porch; offsets measured from the straight-on Ruysdaelstraat 37 photo.",
+    "Tower: 20.7 m; stepped brick corbel cornice at 15.2-16.2 m, stone clock stage 16.2-19.8 m with a clock on the north and west faces, two louvre slots on the west face (12.3-15.2 m), stone corner posts.",
+    "NOT modelled: round stair turret with oriel (west of the gable at the parsonage), parsonage-wing windows, brick bond. Heights are inferred from 1-point perspective photos."
+  ]
+}
