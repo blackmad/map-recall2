@@ -73,6 +73,7 @@ import {buildMediamatic} from './mediamatic-builder';
 import {buildHaparandaweg13} from './haparandaweg-13-builder';
 import {buildHaparandaweg11} from './haparandaweg-11-builder';
 import {buildHaparandaweg9} from './haparandaweg-9-builder';
+import {buildJacobBontiusplaats9} from './jacob-bontiusplaats-9-builder';
 import {buildHvaRhijnspoorplein2} from './hva-rhijnspoorplein-2-builder';
 import {buildHvaWibautstraat3} from './hva-wibautstraat-3-builder';
 import {buildKohnstammhuis} from './kohnstammhuis-builder';
@@ -594,6 +595,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='haparandaweg-2-4')buildHaparandaweg24(w,d,helpers);
     else if(id==='haparandaweg-8-338')buildHaparandaweg8338(w,d,helpers);
     else if(id==='haparandaweg-9')buildHaparandaweg9(w,d,helpers);
+    else if(id==='jacob-bontiusplaats-9')buildJacobBontiusplaats9(w,d,helpers);
     else if(id==='hva-rhijnspoorplein-2')buildHvaRhijnspoorplein2(w,d,helpers);
     else if(id==='hva-wibautstraat-3')buildHvaWibautstraat3(w,d,helpers);
     else if(id==='kohnstammhuis')buildKohnstammhuis(w,d,helpers);
