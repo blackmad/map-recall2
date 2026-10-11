@@ -1,7 +1,7 @@
 {
   "canonicalModelId": "krasnapolsky",
   "researchedOn": "2026-10-10",
-  "state": "built-held",
+  "state": "reworked-2026-10-11",
   "destination": {
     "landmarkId": "n251150450",
     "name": "Anantara Grand Hotel Krasnapolsky",
@@ -12,8 +12,14 @@
   },
   "architecture": {
     "sources": [
-      {"url": "https://nl.wikipedia.org/wiki/Grand_Hotel_Krasnapolsky", "retrieved": "2026-10-10"},
-      {"url": "https://en.wikipedia.org/wiki/Grand_Hotel_Krasnapolsky", "retrieved": "2026-10-10 (not read in full; used only for the link)"}
+      {
+        "url": "https://nl.wikipedia.org/wiki/Grand_Hotel_Krasnapolsky",
+        "retrieved": "2026-10-10"
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Grand_Hotel_Krasnapolsky",
+        "retrieved": "2026-10-10 (not read in full; used only for the link)"
+      }
     ],
     "facts": [
       "Adolph Wilhelm Krasnapolsky bought the Nieuwe Poolse Koffiehuis on the Warmoesstraat in 1865; hotel rooms were added in 1879/1880 and a glass-and-iron Winter Garden with a domed roof was built in the back garden to a design by G.B. Salm.",
@@ -24,24 +30,121 @@
   },
   "measuredBy": {
     "3dbag": "NL.IMBAG.Pand.0363100012165293 LoD2.2, ground 1.164 m NAP, 166-vertex ring, about 130 m across. Dam front = gently curved chain of walls facing 307-316 degrees: 36, 27, 30, 361, 32, 33, 259, 39, 194 (modern stone wing, eave 16.3-20.5 m), 63, 68, 64, 72 (lower brick building, 20.3 m) and 73, 74 (old front, 25 m, 21.7 m). Walls above 20.2 m are the set-back glazed attic levels (up to 27.6 m) and are drawn as glass.",
-    "oldFront": "From ref-dam-front-zoom2.jpg (about 50 px/m at the wall plane): bays at t = 1.9, 7.0, 12.0 (double windows 2.9 m wide, balconies on the first floor), entrance canopy with two lantern turrets at t 15-20, three narrow windows over the entrance, end window on wall 74, brick piers above a stone first floor, string courses at 10.9 and 17.8 m, cornice at 20.4 m.",
+    "oldFront": "From ref-dam-front-zoom2.jpg (about 50 px/m at the wall plane): bays at t = 1.9, 7.0, 12.0 (double windows 2.9 m wide, balconies on the first floor), entrance canopy with two lantern turrets at t 15-20, three narrow windows over the entrance, end window on wall 74, brick piers above a stone first floor, string courses at 10.9 and 17.8 m, cornice at 20.4 m. 2026-10-11: brick is limited to narrow piers (t = 4.4, 9.3, 14.3, 20.0) between the window groups; the rest is stone, as in the photo.",
     "uncertain": [
-      "Modern wing (walls 36-194) and the lower brick building (walls 63-72): window rhythm is generic (paired windows on a 3 m module, glazed ground floor), read from oblique and tree-screened photographs; projecting dark glass bays are not modelled.",
-      "The set-back glazed top levels and the rooftop volumes come straight from the 3DBAG shell, so the skyline is only approximate.",
-      "Warmoesstraat, Pijlsteeg, Sint Jansstraat and courtyard walls have no photographs and stay plain shell (inferred).",
+      "Window counts on the modern wing and the lower brick building are read from oblique, tree-screened photographs (no frontal photo exists); integrator blind count pending.",
+      "Set-back glazed attic levels and rooftop volumes are the raw 3DBAG shell only.",
+      "Warmoesstraat, Sint Jansstraat and courtyard walls have no photographs (inferred, plain shell). Pijlsteeg side: blank brick wall evidenced, curved glass corner not modelled.",
       "The roof sign on the old front is deliberately not modelled."
-    ]
+    ],
+    "modernWing": "Reworked 2026-10-11 from ref-dam-wide/ref-dam-ne/ref-dam-b-front: grey granite panels, dark steel-framed shopfront ground floor under a dark cornice band, large two-pane first-floor windows, tall paired narrow windows in black frames on a 2.5 m axis, three-storey projecting dark glass bays on every fourth axis. The set-back glazed attic levels come only from the 3DBAG shell.",
+    "lowerBuilding": "Reworked 2026-10-11 from ref-dam-front-zoom: stone ground floor with large dark glass shopfront panels between piers, brick storeys with tall stone-framed paired windows, stone cornice.",
+    "partyWall": "Faces SW (208 deg) on Pijlsteeg include a blank pale-brick wall about 14 m wide running the full height of the building (ref-sw-0.jpg, ref-sw-wide.jpg, panorama recording_2025-06-16_06-42-40_02265); spec.partyWallBearings [208] exempts it from the blank-wall check on that evidence. A curved dark-glass corner bay and granite columns next to it (ref-sw-wide2.jpg) are not modelled."
   },
   "photos": [
-    {"file": "ref-dam-front-zoom2.jpg", "source": "Amsterdam municipal panorama recording_2025-07-03_03-29-47_02598 (2025-07-03), heading 139, fov 50", "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02598/?width=1400&fov=50&heading=139", "licence": "Gemeente Amsterdam open panorama data; terms not re-verified", "retrieved": "2026-10-10", "feature": "old Dam front, close"},
-    {"file": "ref-dam-front-zoom.jpg", "source": "panorama recording_2025-07-03_03-29-47_02596 (2025-07-03), heading 136, fov 50", "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02596/?width=1400&fov=50&heading=136", "licence": "Gemeente Amsterdam open panorama data; terms not re-verified", "retrieved": "2026-10-10", "feature": "old front with the lower brick building to its left"},
-    {"file": "ref-dam-front-a.jpg", "source": "panorama recording_2025-07-03_03-29-47_02596, fov 90", "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02596/?width=1400&fov=90&heading=136", "licence": "Gemeente Amsterdam open panorama data; terms not re-verified", "retrieved": "2026-10-10", "feature": "wider view of the front with the adjoining wing"},
-    {"file": "ref-dam-wide.jpg", "source": "panorama recording_2025-07-03_03-29-47_02628 (2025-07-03), heading 85, fov 100", "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02628/?width=1400&fov=100&heading=85", "licence": "Gemeente Amsterdam open panorama data; terms not re-verified", "retrieved": "2026-10-10", "feature": "whole Dam side: modern stone wing with glazed top levels and the old brick front"},
-    {"file": "ref-dam-ne.jpg", "source": "panorama recording_2025-07-03_03-29-47_02596, heading 78, fov 80", "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02596/?width=1400&fov=80&heading=78", "licence": "Gemeente Amsterdam open panorama data; terms not re-verified", "retrieved": "2026-10-10", "feature": "modern wing, ground floor and projecting bay (oblique)"},
-    {"file": "ref-dam-b-front.jpg", "source": "panorama recording_2025-07-03_03-29-47_02596, heading 89, fov 70", "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02596/?width=1400&fov=70&heading=89", "licence": "Gemeente Amsterdam open panorama data; terms not re-verified", "retrieved": "2026-10-10", "feature": "modern wing facets and covered passage (oblique)"},
-    {"file": "ref-dam-a.jpg", "source": "panorama recording_2025-06-16_06-42-40_02338 (2025-06-16), heading 103, fov 80", "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_02338/?width=1400&fov=80&heading=103", "licence": "Gemeente Amsterdam open panorama data; terms not re-verified", "retrieved": "2026-10-10", "feature": "first orientation view across the Dam, front partly hidden by the monument"},
-    {"file": "ref-dam-b.jpg", "source": "panorama TMX7316010203-002357_pano_0004_000031 (2021), heading 80, fov 60", "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002357_pano_0004_000031/?width=1400&fov=60&heading=80", "licence": "Gemeente Amsterdam open panorama data; terms not re-verified", "retrieved": "2026-10-10", "feature": "old front entrance, canopy and lantern turrets in winter 2021"},
-    {"file": "ref-dam-c.jpg", "source": "panorama recording_2025-07-03_03-29-47_02597 (2025), heading 147, fov 60", "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02597/?width=1400&fov=60&heading=147", "licence": "Gemeente Amsterdam open panorama data; terms not re-verified", "retrieved": "2026-10-10", "feature": "orientation view from the north of the Dam"},
-    {"file": "ref-dam-d.jpg", "source": "panorama recording_2025-06-16_06-42-40_02278 (2025-06-16), heading 50, fov 60", "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_02278/?width=1400&fov=60&heading=50", "licence": "Gemeente Amsterdam open panorama data; terms not re-verified", "retrieved": "2026-10-10", "feature": "south-west end of the front and the canopy from the side street"}
+    {
+      "file": "ref-dam-front-zoom2.jpg",
+      "source": "Amsterdam municipal panorama recording_2025-07-03_03-29-47_02598 (2025-07-03), heading 139, fov 50",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02598/?width=1400&fov=50&heading=139",
+      "licence": "Gemeente Amsterdam open panorama data; terms not re-verified",
+      "retrieved": "2026-10-10",
+      "feature": "old Dam front, close"
+    },
+    {
+      "file": "ref-dam-front-zoom.jpg",
+      "source": "panorama recording_2025-07-03_03-29-47_02596 (2025-07-03), heading 136, fov 50",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02596/?width=1400&fov=50&heading=136",
+      "licence": "Gemeente Amsterdam open panorama data; terms not re-verified",
+      "retrieved": "2026-10-10",
+      "feature": "old front with the lower brick building to its left"
+    },
+    {
+      "file": "ref-dam-front-a.jpg",
+      "source": "panorama recording_2025-07-03_03-29-47_02596, fov 90",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02596/?width=1400&fov=90&heading=136",
+      "licence": "Gemeente Amsterdam open panorama data; terms not re-verified",
+      "retrieved": "2026-10-10",
+      "feature": "wider view of the front with the adjoining wing"
+    },
+    {
+      "file": "ref-dam-wide.jpg",
+      "source": "panorama recording_2025-07-03_03-29-47_02628 (2025-07-03), heading 85, fov 100",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02628/?width=1400&fov=100&heading=85",
+      "licence": "Gemeente Amsterdam open panorama data; terms not re-verified",
+      "retrieved": "2026-10-10",
+      "feature": "whole Dam side: modern stone wing with glazed top levels and the old brick front"
+    },
+    {
+      "file": "ref-dam-ne.jpg",
+      "source": "panorama recording_2025-07-03_03-29-47_02596, heading 78, fov 80",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02596/?width=1400&fov=80&heading=78",
+      "licence": "Gemeente Amsterdam open panorama data; terms not re-verified",
+      "retrieved": "2026-10-10",
+      "feature": "modern wing, ground floor and projecting bay (oblique)"
+    },
+    {
+      "file": "ref-dam-b-front.jpg",
+      "source": "panorama recording_2025-07-03_03-29-47_02596, heading 89, fov 70",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02596/?width=1400&fov=70&heading=89",
+      "licence": "Gemeente Amsterdam open panorama data; terms not re-verified",
+      "retrieved": "2026-10-10",
+      "feature": "modern wing facets and covered passage (oblique)"
+    },
+    {
+      "file": "ref-dam-a.jpg",
+      "source": "panorama recording_2025-06-16_06-42-40_02338 (2025-06-16), heading 103, fov 80",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_02338/?width=1400&fov=80&heading=103",
+      "licence": "Gemeente Amsterdam open panorama data; terms not re-verified",
+      "retrieved": "2026-10-10",
+      "feature": "first orientation view across the Dam, front partly hidden by the monument"
+    },
+    {
+      "file": "ref-dam-b.jpg",
+      "source": "panorama TMX7316010203-002357_pano_0004_000031 (2021), heading 80, fov 60",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002357_pano_0004_000031/?width=1400&fov=60&heading=80",
+      "licence": "Gemeente Amsterdam open panorama data; terms not re-verified",
+      "retrieved": "2026-10-10",
+      "feature": "old front entrance, canopy and lantern turrets in winter 2021"
+    },
+    {
+      "file": "ref-dam-c.jpg",
+      "source": "panorama recording_2025-07-03_03-29-47_02597 (2025), heading 147, fov 60",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02597/?width=1400&fov=60&heading=147",
+      "licence": "Gemeente Amsterdam open panorama data; terms not re-verified",
+      "retrieved": "2026-10-10",
+      "feature": "orientation view from the north of the Dam"
+    },
+    {
+      "file": "ref-dam-d.jpg",
+      "source": "panorama recording_2025-06-16_06-42-40_02278 (2025-06-16), heading 50, fov 60",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_02278/?width=1400&fov=60&heading=50",
+      "licence": "Gemeente Amsterdam open panorama data; terms not re-verified",
+      "retrieved": "2026-10-10",
+      "feature": "south-west end of the front and the canopy from the side street"
+    },
+    {
+      "file": "ref-sw-0.jpg",
+      "source": "Amsterdam municipal panorama recording_2025-06-16_06-42-40_02265 (2025-06-16), heading 23, fov 70",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_02265/?width=1200&fov=70&heading=23",
+      "licence": "Gemeente Amsterdam open panorama data; terms not re-verified",
+      "retrieved": "2026-10-11",
+      "feature": "Pijlsteeg blank pale-brick wall"
+    },
+    {
+      "file": "ref-sw-wide.jpg",
+      "source": "Amsterdam municipal panorama recording_2025-06-16_06-42-40_02265 (2025-06-16), heading 30, fov 110",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_02265/?width=1200&fov=110&heading=30",
+      "licence": "Gemeente Amsterdam open panorama data; terms not re-verified",
+      "retrieved": "2026-10-11",
+      "feature": "Pijlsteeg corner, wide"
+    },
+    {
+      "file": "ref-sw-wide2.jpg",
+      "source": "Amsterdam municipal panorama recording_2025-06-16_06-42-40_02262 (2025-06-16), heading 20, fov 110",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_02262/?width=1200&fov=110&heading=20",
+      "licence": "Gemeente Amsterdam open panorama data; terms not re-verified",
+      "retrieved": "2026-10-11",
+      "feature": "Pijlsteeg curved glass corner bay"
+    }
   ]
 }

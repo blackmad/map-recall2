@@ -11801,8 +11801,6 @@
   },
   {
     "id": "petrus-en-paulus-kerk",
-    "status": "held",
-    "heldReason": "Tower and gable do not match the photo; renders dark (user review 2026-10-09).",
     "name": "Sint-Petrus-en-Pauluskerk",
     "landmarkId": "extract_landmarks_1828911806",
     "modelUrl": "./models/petrus-en-paulus-kerk.glb",
@@ -11830,9 +11828,11 @@
     "groundAltitudeMetres": 0,
     "facingOffsetDegrees": 0,
     "materialOverrides": {
-      "brick": "#7b6259",
+      "brick": "#9a735f",
+      "greyBrick": "#7a5d52",
       "stone": "#b9ad98",
-      "slate": "#a2543f",
+      "slate": "#b4573a",
+      "red": "#a8472b",
       "glass": "#4f6068",
       "dark": "#3a3330",
       "white": "#d8d2c2",
@@ -11847,6 +11847,8 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
     },
+    "status": "held",
+    "heldReason": "Rework 2026-10-11: tower (brick corbel cornice, stone clock stage with clocks on N and W faces, west louvres), gable (two four-light windows, louvred slot, cross, pointed red door) and lighter brick/clay-tile colours now follow the Ruysdaelstraat 37/39 photos, audit passes. Still missing: the round stair turret with oriel, the parsonage wing windows (blank), side-wing massing is the raw 3DBAG shell with recessed wall pieces; flat colours still read darker than the photographed pink-brown brick.",
     "buildingFootprint": {
       "type": "Polygon",
       "coordinates": [
@@ -22999,6 +23001,9 @@
       "NL.IMBAG.Pand.0363100012165293"
     ],
     "spatialSuppression": false,
+    "partyWallBearings": [
+      208
+    ],
     "footprint": {
       "centre": [
         4.895022795431246,
@@ -23019,11 +23024,12 @@
     "groundAltitudeMetres": 0,
     "facingOffsetDegrees": 0,
     "materialOverrides": {
-      "stone": "#c4b79c",
+      "stone": "#b1ab9d",
+      "concrete": "#a8a397",
       "brick": "#7a4a3b",
       "white": "#e4dfd2",
       "slate": "#4b4f55",
-      "glass": "#4e5f6b",
+      "glass": "#5f8196",
       "frame": "#d9d6cc",
       "dark": "#2a2d30"
     },
@@ -23705,9 +23711,7 @@
           ]
         ]
       ]
-    },
-    "status": "held",
-    "heldReason": "Integrator 2026-10-10: only the old Dam front is photo-counted; modern wing and lower building use a generic window module, dark glass bays missing, stone too beige"
+    }
   },
   {
     "id": "fatih-moskee",
@@ -24248,15 +24252,39 @@
       "northOffsetDegrees": 0,
       "source": "Current BAG 0363100012088034 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
     },
+    "throughPassages": [
+      {
+        "axisBearing": 17,
+        "corridor": [
+          [
+            9.2,
+            -8.7
+          ],
+          [
+            -6,
+            -13.5
+          ],
+          [
+            -17,
+            21.4
+          ],
+          [
+            -1.8,
+            26.2
+          ]
+        ],
+        "evidence": "OSM routing extract (streets-routing.json): Jan Schaeferbrug / Piet Heinkade carriageway routing_10374 runs (0.4,-7.3) -> (-8.2,20.0) m in model-local east/south metres, bearing 17.5 deg, straight through the 1934 cold-store; flanking cycleways routing_12505 (bearing 15.3 deg) and routing_23078 sit about 5 m either side. Corridor = carriageway plus both cycleways, centreline +/- 8 m (the roadway flares into the bridge approach at the north end, where the west cycleway starts 5.8 m off the centreline), extended 4 m past each end. Photo: ref-rce-2005-b.jpg shows the roadway running under the overhanging upper floors."
+      }
+    ],
     "groundAltitudeMetres": 0,
     "facingOffsetDegrees": 0,
     "materialOverrides": {
-      "brick": "#5c5540",
-      "stone": "#85827a",
-      "concrete": "#6e6c62",
-      "greyBrick": "#4a4535",
-      "red": "#7d4a2b",
-      "glass": "#5d7585",
+      "brick": "#4b483c",
+      "stone": "#6e6c62",
+      "concrete": "#5e5c53",
+      "greyBrick": "#3b392f",
+      "red": "#8f5535",
+      "glass": "#3d4a54",
       "bronze": "#2c2e30"
     },
     "attribution": {
@@ -24321,9 +24349,7 @@
           ]
         ]
       ]
-    },
-    "status": "held",
-    "heldReason": "Integrator 2026-10-10: massing and roadway portal match, but the photo is dark weathered grey-brown concrete with brick-red tower strips; the model is tan/ochre"
+    }
   },
   {
     "id": "victoria-hotel",
@@ -25310,9 +25336,7 @@
           ]
         ]
       ]
-    },
-    "status": "held",
-    "heldReason": "Integrator 2026-10-10: 3DBAG link core/annex on the tower west face likely belongs to the demolished 1990 Abma satellite (blank fin with no counterpart in 2025 photos); tower stubby; facade counts pending"
+    }
   },
   {
     "id": "hotel-jakarta",
