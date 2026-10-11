@@ -206,7 +206,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 2.2,
-              "depth": 0.8,
+              "depth": 1.0,
               "railing": "bars"
             },
             {
@@ -404,7 +404,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 2.2,
-              "depth": 0.8,
+              "depth": 1.0,
               "railing": "bars"
             },
             {
@@ -572,6 +572,7 @@
   },
   "notes": [
     "Sub-design C of the type-1 cluster rank 3 (14-16 m, 4 storeys): the 2026-10-11 survey held these 16 panden as a \"4-storey hof sub-design\". The ground-floor doors vary per member (garage vs low windows under a balcony bay, red vs green); the model uses garage doors under both balcony bays.",
-    "Two member lengths: ~14 m (12 panden: two big windows + a small stair window in the core) and ~16.3 m (4 panden: four equal windows); the long ones are the -4w variants so each shared unit mesh has the right window axes."
+    "Two member lengths: ~14 m (12 panden: two big windows + a small stair window in the core) and ~16.3 m (4 panden: four equal windows); the long ones are the -4w variants so each shared unit mesh has the right window axes.",
+    "Balcony depth 1.0 m (was 0.8 m): in the oblique 0363100012076741 the bar balconies project about 0.5 of their 2.0 m width."
   ]
 }
