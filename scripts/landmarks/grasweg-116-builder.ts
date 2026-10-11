@@ -34,11 +34,11 @@ export function buildGrasweg116(_w: number, _d: number, b: BuildingTools & {mark
       const shift = (w.f.origin[0] - ref.f.origin[0]) * ref.f.tangent[0] + (w.f.origin[1] - ref.f.origin[1]) * ref.f.tangent[1];
       zones.forEach(([t0, yM, yL], k) => {
         const t1 = k + 1 < zones.length ? zones[k + 1][0] : endT;
-        const a = Math.max(t0 - shift, 0), c = Math.min(t1 - shift, w.len);
+        const a = Math.max(t0 - shift, 0.05), c = Math.min(t1 - shift, w.len - 0.05);   // end faces stay 5 cm off the neighbouring wall's plane
         if (c - a < 0.2) return;
         const top = topOf(w, (a + c) / 2);
-        if (Math.min(yL, top) - yM > 0.3) slab(b, w.f, (a + c) / 2, yM, c - a, Math.min(yL, top) - yM, 0.03, 'brick');
-        if (top - yL > 0.3) slab(b, w.f, (a + c) / 2, yL, c - a, top - yL, 0.03, 'ochre');
+        if (Math.min(yL, top) - yM > 0.3) slab(b, w.f, (a + c) / 2, yM, c - a, Math.min(yL, top) - yM - (top <= yL ? 0.05 : 0), 0.03, 'brick');
+        if (top - yL > 0.3) slab(b, w.f, (a + c) / 2, yL, c - a, top - yL - 0.05, 0.03, 'ochre');   // top 5 cm under the roof plane
       });
     }
   };

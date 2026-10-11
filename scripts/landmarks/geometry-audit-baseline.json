@@ -6,7 +6,6 @@
   "bogortuin-101": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
   "booking-hq": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
   "de-bazel": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
-  "grasweg-116": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
   "hilton-amsterdam": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
   "motorkade-1": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
   "oostenburgermiddenstraat-228": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
@@ -1138,8 +1137,8 @@
    "opening-overhang": 0,
    "opening-overhang-fail": 0,
    "opening-buried": 12,
-   "zfight-m2": 30.2,
-   "zfight-near-m2": 9,
+   "zfight-m2": 0,
+   "zfight-near-m2": 0,
    "window-mismatch": 2,
    "window-missing": 1,
    "window-misaligned": 0
