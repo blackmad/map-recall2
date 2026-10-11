@@ -243,6 +243,27 @@ test('a 2 m terrace cantilever high on a tower is architecture; a 4 m slab or a 
   assert.ok(open.seeThrough.rays > 0, JSON.stringify(open.seeThrough));
 });
 
+test('a glazed lobby recessed up to ~6 m under the cantilevered floor plates of a tall body is architecture; a missing wall, a deeper recess or a lone canopy is not', () => {
+  // 20 x 40 m tower body over a 10 m high ground floor whose glazing is set back under a 10 m high cantilever (no columns).
+  const lobby = (recess: number, gh = 10) => soup(boxQuads(0, 0, 0, 20, gh, 15 - recess), boxQuads(0, gh, 0, 20, 40, 15),
+    boxQuads(0, 0, 15 - recess, 0.3, gh, 15), boxQuads(19.7, 0, 15 - recess, 20, gh, 15));   // closed lateral ends, as against neighbouring wings
+  const ok = analyseSoup(lobby(5));
+  assert.equal(ok.seeThrough.rays, 0, JSON.stringify(ok.seeThrough));
+  assert.equal(analyseSoup(lobby(2)).seeThrough.rays, 0);
+  // 8 m of recess is a real gap in front of the wall.
+  const deep = analyseSoup(lobby(8));
+  assert.ok(deep.seeThrough.rays > 0, JSON.stringify(deep.seeThrough));
+  // No ground-floor wall at all: the slab covers an open passage under the body.
+  const open = analyseSoup(soup(boxQuads(0, 10, 0, 20, 40, 15), boxQuads(0, 0, 10, 0.3, 10, 15), boxQuads(19.7, 0, 10, 20, 10, 15)));
+  assert.ok(open.seeThrough.rays > 0, JSON.stringify(open.seeThrough));
+  // A low porch-height cover (4 m) with the same recess stays flagged: the lobby rule needs a 6 m+ underside.
+  const porch = analyseSoup(lobby(5, 4));
+  assert.ok(porch.seeThrough.rays > 0, JSON.stringify(porch.seeThrough));
+  // A lone canopy slab with no body above it is not a lobby under a building.
+  const canopy = analyseSoup(soup(boxQuads(0, 0, 0, 20, 8, 10), boxQuads(0, 8, 0, 20, 8.3, 15)));
+  assert.ok(canopy.seeThrough.rays > 0, JSON.stringify(canopy.seeThrough));
+});
+
 /** Tetrastyle portico: 4 columns on the z=10..10.6 line, entablature slab at 9 m on top, optional back wall 4 m behind. */
 function portico(backWall: boolean) {
   const parts: Record<string, Quad>[] = [];

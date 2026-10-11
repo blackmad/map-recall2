@@ -108,6 +108,14 @@ const SHALLOW_PROTRUSION_M = 1.6;
 /** A cantilevered terrace or loggia floor at least CANTILEVER_MIN_UNDERSIDE_M above the ground (above the low-soffit cap) is architecture up to this depth (a 2 m balcony or terrace), not a gap in the wall below. */
 const DEEP_CANTILEVER_M = 2.5;
 const CANTILEVER_MIN_UNDERSIDE_M = 6;
+/**
+ * A glazed lobby (or shop front) recessed under the floor plate of a multi-storey body that cantilevers over it, up to this depth (m),
+ * is architecture (the Booking.com HQ lobby sits 1.7-6 m behind a cantilever slab with no columns): the ray stops at the lobby glass.
+ * Unlike a porch roof or an open shed it needs a body of at least UNDERCROFT_BODY_ABOVE_M continuing above the slab, so the recess
+ * is bounded by building above, not by a lone canopy; a missing wall (nothing within the depth) and anything deeper still fail.
+ */
+const UNDERCROFT_MAX_RECESS_M = 6.2;
+const UNDERCROFT_BODY_ABOVE_M = 8;
 
 export const DEFAULT_THRESHOLDS: Thresholds = {
   weld: 1e-3,
@@ -965,6 +973,17 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
               // front of the wall behind it. The 16 m cover cap above is for deep porticoes, not 1.5 m balconies.
               else if (deep - 3 <= SHALLOW_PROTRUSION_M) hit = deep;
               else if (deep - 3 <= DEEP_CANTILEVER_M && lowestAbove([o[0] + dx * 3.3, h, o[2] + dz * 3.3]) >= CANTILEVER_MIN_UNDERSIDE_M) hit = deep;
+              else if (deep - 3 <= UNDERCROFT_MAX_RECESS_M) {
+                const cover = lowestAbove([o[0] + dx * 3.3, h, o[2] + dz * 3.3]);
+                // The body that stands on the slab: somewhere along the recess or just behind it, a second storey stack rises at least
+                // UNDERCROFT_BODY_ABOVE_M above the cover directly over that point (a roof alone over a gap does not count).
+                let body = false;
+                for (let sd = 3.3; sd <= deep + 4 && !body; sd += 1) {
+                  const q: V3 = [o[0] + dx * sd, h, o[2] + dz * sd], c = lowestAbove(q);
+                  if (Number.isFinite(c) && castUp([q[0], c + UNDERCROFT_BODY_ABOVE_M, q[2]], -1)) body = true;
+                }
+                if (cover >= CANTILEVER_MIN_UNDERSIDE_M && Number.isFinite(cover) && body) hit = deep;
+              }
             }
           }
           if (hit < 0 && low[iz * cw + ix] >= h + 3) {
