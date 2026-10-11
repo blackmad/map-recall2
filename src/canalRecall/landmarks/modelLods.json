@@ -1169,6 +1169,12 @@
   "bytes": 49496,
   "triangles": 2255
  },
+ "petrus-en-paulus-kerk": {
+  "sourceHash": "f860cb1210f8c3ed",
+  "buildVersion": 2,
+  "bytes": 25988,
+  "triangles": 819
+ },
  "maarten-lutherkerk": {
   "sourceHash": "591b08387320088d",
   "buildVersion": 2,
@@ -1362,10 +1368,10 @@
   "triangles": 2145
  },
  "krasnapolsky": {
-  "sourceHash": "087bb3a386d88722",
+  "sourceHash": "cf34aa9a4a1dae54",
   "buildVersion": 2,
-  "bytes": 54472,
-  "triangles": 2571
+  "bytes": 59072,
+  "triangles": 2898
  },
  "fatih-moskee": {
   "sourceHash": "df6bdf127192554a",
@@ -1380,10 +1386,10 @@
   "triangles": 3088
  },
  "pakhuis-de-zwijger": {
-  "sourceHash": "932c5ede3491faf0",
+  "sourceHash": "e9f725734b0bb150",
   "buildVersion": 2,
-  "bytes": 40628,
-  "triangles": 2182
+  "bytes": 41272,
+  "triangles": 2166
  },
  "victoria-hotel": {
   "sourceHash": "5e9cae9e94546afc",
@@ -1398,10 +1404,10 @@
   "triangles": 3788
  },
  "de-nederlandsche-bank": {
-  "sourceHash": "1250fad1d8684540",
+  "sourceHash": "2a652cfd44d82d05",
   "buildVersion": 2,
-  "bytes": 51620,
-  "triangles": 2543
+  "bytes": 51736,
+  "triangles": 2552
  },
  "hotel-jakarta": {
   "sourceHash": "0b5624fe5dca3aaa",

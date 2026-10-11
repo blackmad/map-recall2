@@ -8,6 +8,7 @@
     "NL.IMBAG.Pand.0363100012165293"
   ],
   "spatialSuppression": false,
+  "partyWallBearings": [208],
   "footprint": {
     "centre": [
       4.895022795431246,
@@ -28,11 +29,12 @@
   "groundAltitudeMetres": 0,
   "facingOffsetDegrees": 0,
   "materialOverrides": {
-    "stone": "#c4b79c",
+    "stone": "#b1ab9d",
+    "concrete": "#a8a397",
     "brick": "#7a4a3b",
     "white": "#e4dfd2",
     "slate": "#4b4f55",
-    "glass": "#4e5f6b",
+    "glass": "#5f8196",
     "frame": "#d9d6cc",
     "dark": "#2a2d30"
   },

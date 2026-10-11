@@ -53,7 +53,6 @@ export function buildKrasnapolsky(_w: number, _d: number, b: BuildingTools & {ma
     slab(b, f, c, y + 0.95, w, 0.07, 0.72, 'dark', 0.0);
     slab(b, f, c, y + 0.18, w, 0.07, 0.66, 'dark');
     for (let t = t0 + 0.12; t < t1 - 0.05; t += 0.22) slab(b, f, t, y + 0.18, 0.04, 0.8, 0.05, 'dark', 0.66);
-    slab(b, f, c, y + 0.95, w, 0.07, 0.07, 'dark', 0.66);
     for (const s of [t0 + 0.05, t1 - 0.05]) slab(b, f, s, y + 0.18, 0.08, 0.85, 0.72, 'dark');
   };
 
@@ -72,8 +71,8 @@ export function buildKrasnapolsky(_w: number, _d: number, b: BuildingTools & {ma
   {
     const w = W(73), f = frameOf(w), L = w.length;
     // brick cladding above the stone storeys, with stone ground and first floor left as the shell
-    slab(b, f, L / 2, 11.2, L, 9.2, 0.05, 'brick');
-    // stone quoin/pier strips at the ends of the brick part
+    // brick appears only as narrow piers between the window groups (photo ref-dam-front-zoom2), the rest is stone
+    for (const t of [4.4, 9.3, 14.3, 20.0]) slab(b, f, t, 10.9, 1.5, 7.2, 0.08, 'brick');
     // string courses
     slab(b, f, L / 2, 10.9, L, 0.4, 0.28, 'white');
     slab(b, f, L / 2, 17.8, L, 0.3, 0.3, 'white');
@@ -107,12 +106,10 @@ export function buildKrasnapolsky(_w: number, _d: number, b: BuildingTools & {ma
     slab(b, f, 17.7, 14.2, 3.9, 0.55, 0.12, 'stone');
     slab(b, f, L / 2, 20.4, L + 0.4, 0.5, 0.5, 'white');
     slab(b, f, L / 2, 20.9, L + 0.2, 0.18, 0.62, 'stone');
-    // café windows flanking the entrance on this wall
-    slab(b, f, 19.3 + 0.9, 1.15, 1.1, 1.85, 0.1, 'glass');
   }
   {
     const w = W(74), f = frameOf(w), L = w.length;
-    slab(b, f, L / 2, 11.2, L, 9.2, 0.05, 'brick');
+    slab(b, f, 0.1, 10.9, 1.2, 7.2, 0.08, 'brick');
     slab(b, f, L / 2, 10.9, L, 0.4, 0.28, 'white');
     slab(b, f, L / 2, 17.8, L, 0.3, 0.3, 'white');
     slab(b, f, L / 2, 5.2, L, 0.2, 0.16, 'white');
@@ -128,40 +125,81 @@ export function buildKrasnapolsky(_w: number, _d: number, b: BuildingTools & {ma
     slab(b, f, L / 2, 20.9, L + 0.2, 0.18, 0.62, 'stone');
   }
 
-  // ============ modern stone-clad wing and the lower brick building: approximate rhythm ============
-  const modern = (w: Wall, top: number, brickUpper: boolean) => {
+  // ============ modern granite-clad wing (walls 36..194): photo-counted from ref-dam-wide / ref-dam-ne / ref-dam-b-front ============
+  // Grey granite panels; a dark arcade-like ground floor (steel-framed shopfronts under a lit dark cornice band at about 4.7 m);
+  // large first-floor windows (two panes, transom); above them tall narrow paired windows in black frames on a 2.5 m axis;
+  // three-storey projecting dark glass bays (stone underside) on every fourth axis; set-back glazed attic levels come from the shell.
+  const wing = (w: Wall, top: number, bays: boolean) => {
     const f = frameOf(w), L = w.length;
     if (L < 1.4) return;
-    // glazed ground floor between stone piers
-    const glassL = L - 0.8;
-    if (glassL > 1.2) {
-      slab(b, f, L / 2, 0.6, glassL, 3.5, 0.1, 'glass');
-      for (let t = 0.4; t < L - 0.3; t += 2.6) slab(b, f, t, 0.6, 0.08, 3.5, 0.14, 'dark');
-      slab(b, f, L / 2, 0.5, glassL, 0.2, 0.16, 'sandstone');
-      slab(b, f, L / 2, 4.1, glassL, 0.15, 0.2, 'dark');
+    const gl = L - 0.6;
+    if (gl > 1.2) {
+      slab(b, f, L / 2, 0.35, gl, 3.9, 0.1, 'glass');
+      for (let t = 0.3; t < L - 0.2; t += 2.4) slab(b, f, t, 0.35, 0.1, 3.9, 0.16, 'dark');
+      slab(b, f, L / 2, 0.2, gl, 0.2, 0.2, 'dark');
+      slab(b, f, L / 2, 4.25, gl, 0.1, 0.18, 'dark');
     }
-    slab(b, f, L / 2, 5.0, L, 0.25, 0.2, 'white');
-    if (brickUpper) slab(b, f, L / 2, 10.9, L, top - 10.9 - 0.6, 0.05, 'brick');
-    // storeys of paired windows
-    const rowsY = brickUpper ? [6.2, 11.4, 15.0] : [5.6, 9.3, 13.0, 16.7];
-    const rowH = brickUpper ? [2.4, 2.4, 2.2] : [2.1, 2.1, 2.1, 2.1];
-    const nCols = Math.max(1, Math.floor((L - 0.6) / 3.0));
-    const pitch = (L - 0.6) / nCols;
-    for (let r = 0; r < rowsY.length; r++) {
-      if (rowsY[r] + rowH[r] > top - 0.7) continue;
-      for (let k = 0; k < nCols; k++) {
-        const t = 0.3 + pitch * (k + 0.5);
-        if (brickUpper) sash(f, t, rowsY[r], Math.min(2.0, pitch - 1.0), rowH[r], 2, 3, 0.14);
-        else {
-          const ww = Math.min(1.25, (pitch - 0.7) / 2);
-          for (const dt of [-0.7, 0.7].map(v => v * Math.min(1, pitch / 3.0))) slab(b, f, t + dt, rowsY[r], ww, rowH[r], 0.1, 'glass');
-          for (const dt of [-0.7, 0.7].map(v => v * Math.min(1, pitch / 3.0))) { slab(b, f, t + dt, rowsY[r] - 0.1, ww + 0.25, 0.1, 0.16, 'white'); slab(b, f, t + dt, rowsY[r], 0.05, rowH[r], 0.14, 'frame'); slab(b, f, t + dt, rowsY[r] + rowH[r] / 2, ww, 0.05, 0.14, 'frame'); }
+    // dark cornice/awning band over the shopfronts
+    slab(b, f, L / 2, 4.35, L - 0.2, 0.5, 0.55, 'dark');
+    slab(b, f, L / 2, 4.85, L - 0.2, 0.1, 0.4, 'sandstone');
+    // storey bands
+    for (const y of [8.7, 12.0, 15.3, 18.6]) if (y < top - 0.6) slab(b, f, L / 2, y, L - 0.2, 0.14, 0.1, 'sandstone');
+    const nAx = Math.max(1, Math.round((L - 0.4) / 2.5)), pitch = (L - 0.4) / nAx;
+    for (let k = 0; k < nAx; k++) {
+      const t = 0.2 + pitch * (k + 0.5);
+      const bay = bays && k % 4 === 2 && nAx >= 3;
+      // first floor: one wide window, two panes with a transom
+      const fw = Math.min(2.2, pitch - 0.5);
+      slab(b, f, t, 5.55, fw, 2.4, 0.1, 'glass');
+      slab(b, f, t, 5.55, fw + 0.14, 0.1, 0.16, 'dark');
+      slab(b, f, t, 5.55 + 2.4, fw + 0.14, 0.1, 0.16, 'dark');
+      for (const s of [-1, 1]) slab(b, f, t + s * fw / 2, 5.55, 0.07, 2.4, 0.16, 'dark');
+      slab(b, f, t, 5.55, 0.06, 2.4, 0.14, 'dark');
+      slab(b, f, t, 6.7, fw, 0.06, 0.14, 'dark');
+      if (bay) {
+        // three-storey projecting glass bay
+        const bw = Math.min(2.3, pitch - 0.3);
+        slab(b, f, t, 8.85, bw + 0.2, 0.3, 0.75, 'stone');
+        slab(b, f, t, 9.15, bw, 5.9, 0.62, 'dark');
+        slab(b, f, t, 9.35, bw - 0.25, 5.5, 0.66, 'glass');
+        for (let y = 12.0; y < 15; y += 3.3) slab(b, f, t, y - 0.05, bw, 0.12, 0.68, 'dark');
+        slab(b, f, t, 15.0, bw + 0.2, 0.2, 0.75, 'stone');
+        continue;
+      }
+      for (const y of [9.2, 12.5, 15.8]) {
+        if (y + 2.1 > top - 0.6) continue;
+        for (const dt of [-0.5, 0.5]) {
+          slab(b, f, t + dt, y, 0.8, 2.1, 0.1, 'glass');
+          for (const s of [-0.4, 0.4]) slab(b, f, t + dt + s, y, 0.06, 2.1, 0.14, 'dark');
+          slab(b, f, t + dt, y + 2.06, 0.86, 0.08, 0.14, 'dark');
+          slab(b, f, t + dt, y, 0.86, 0.06, 0.14, 'dark');
+          slab(b, f, t + dt, y + 1.0, 0.8, 0.05, 0.13, 'dark');
         }
       }
     }
-    slab(b, f, L / 2, top - 0.5, L + 0.2, 0.5, 0.35, 'white');
+    slab(b, f, L / 2, top - 0.5, L - 0.2, 0.5, 0.35, 'stone');
   };
-  for (const i of [36, 27]) modern(W(i), 16.3, false);
-  for (const i of [30, 361, 32, 33, 259, 39, 194]) modern(W(i), 20.5, false);
-  for (const i of [63, 68, 64, 72]) modern(W(i), 20.3, true);
+  for (const i of [36, 27]) wing(W(i), 16.3, false);
+  for (const i of [30, 361, 32, 33, 259, 39, 194]) wing(W(i), 20.5, true);
+
+  // ============ lower stone-and-brick building (walls 63..72) beside the old front ============
+  // Photo ref-dam-front-zoom: stone ground floor with two big dark glass shopfront panels between piers, a stone first floor,
+  // then brick storeys with tall paired windows in stone-framed openings, a stone cornice.
+  const lower = (w: Wall) => {
+    const f = frameOf(w), L = w.length;
+    if (L < 1.4) return;
+    slab(b, f, L / 2, 10.9, L, 9.0, 0.05, 'brick');
+    slab(b, f, L / 2, 0.35, L - 0.5, 4.5, 0.1, 'glass');
+    for (let t = 0.3; t < L - 0.2; t += 2.6) slab(b, f, t, 0.35, 0.14, 4.5, 0.16, 'dark');
+    slab(b, f, L / 2, 4.9, L, 0.25, 0.2, 'white');
+    slab(b, f, L / 2, 10.9, L, 0.35, 0.22, 'white');
+    slab(b, f, L / 2, 15.3, L, 0.2, 0.14, 'white');
+    const n = Math.max(1, Math.floor((L - 0.4) / 2.6)), pitch = (L - 0.4) / n;
+    for (let k = 0; k < n; k++) {
+      const t = 0.2 + pitch * (k + 0.5), ww = Math.min(1.7, pitch - 0.9);
+      for (const [y, h] of [[6.0, 3.6], [11.5, 2.5], [15.8, 2.2]] as [number, number][]) sash(f, t, y, ww, h, 2, 3, 0.14);
+    }
+    slab(b, f, L / 2, 19.9, L + 0.2, 0.5, 0.35, 'white');
+  };
+  for (const i of [63, 68, 64, 72]) lower(W(i));
 }
