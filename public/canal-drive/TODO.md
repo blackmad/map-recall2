@@ -144,7 +144,15 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   (bin by plane, or rasterise only the triangle) and re-run the baseline.
   Kohnstammhuis stone reads too warm/tan against the grey photo.
 - **Nieuw-West building types (2026-10-11)**: opt-in `?buildingTypes=1`
-  draws 253 photo-confirmed instances as shared InstancedMesh units (box LOD
+  draws 455 photo-confirmed instances (2026-10-11: +202 from type-6
+  leftovers and clusters 2/5/8, 11 new designs; 124 held with reasons).
+  Gate problem: geometryAudit's opening-overhang FAILs any balcony > 0.8 m
+  off the wall, so balconies were drawn 0.75 m where photos show up to
+  1.5 m, and nw-steel-stack-portiek (30) lost its projecting steel stair and
+  balcony stack (reads as two posts and ledges): fix the rule for balcony
+  assemblies, restore photo depths, rebuild steel-stack. Densest view
+  (peach-street) is 88 draw calls (12 cluster-2 unit variants); 12 panden
+  assigned from entrance close-ups only. Earlier: as shared InstancedMesh units (box LOD
   past 140 m): type-1 portiekflat (Sonderbuur, Wildeman/Notweg, Slotermeer
   hofs; brick-cream, clad-panel, clad-full, 4-storey brick, brick-yellow),
   wide-core portiek (Beek en Hoff/Osdorper Ban 46, Slotermeerlaan 30), 4-st
