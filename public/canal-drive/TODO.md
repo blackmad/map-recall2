@@ -149,15 +149,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Balcony depths restored from photos (1.0-1.5 m) after the
   opening-overhang fix; steel-stack rebuilt (frame rises a little too far
   above the roof; balcony rails render faint). geometry-audit-baseline.json
-  was stale; re-recorded 2026-10-11 with a `reasons` map. Still FAIL
-  (regressed by 2026-10-10 rebuilds): ij-toren, american-hotel,
-  hotel-de-l-europe, fire-station-hendrik, ronde-lutherse-kerk,
-  oude-lutherse-kerk. First-recorded defects to fix (zfight m2 / floating /
-  overhang): de-bazel 531/6/0, booking-hq 421/0/44 (held), voc-kade-600
-  188/0/14, hilton-amsterdam 138/0/68, grasweg-116 30, blankenstraat-15
-  18/4, bogortuin-101 17, willem-de-zwijgerlaan-350 4.7/45/2,
-  motorkade-1 5.3/0/14, shell-technology-centre 4.3/0/12,
-  oostenburgermiddenstraat-228 6.3, overtoom-197 1.4/0/4. Densest view
+  re-recorded 2026-10-11 with a `reasons` map; 17 models then fixed in
+  their builders, `audit:glb --only-geometry` 302 pass / 0 fail. Remaining
+  (at or below baseline): shell-technology-centre overhang 12 / zfight 4.3
+  (long window ribbons; three fixes failed), overtoom-197 overhang 4 (bay
+  prisms and a 1.3 m canopy), de-bazel floating 6, voc-kade-600 overhang
+  14, hilton-amsterdam overhang 14 (balcony rule may apply), ij-toren
+  overhang 10, fire-station-hendrik 4, american-hotel 1 dormer window. Densest view
   (peach-street) is 88 draw calls (12 cluster-2 unit variants); 12 panden
   assigned from entrance close-ups only. Earlier: as shared InstancedMesh units (box LOD
   past 140 m): type-1 portiekflat (Sonderbuur, Wildeman/Notweg, Slotermeer
