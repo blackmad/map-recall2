@@ -582,13 +582,13 @@
       "dateSource": "asset-update"
     },
     "de-nederlandsche-bank": {
-      "updatedAt": "2026-10-10T08:26:47.958Z",
-      "version": "1250fad1d8684540",
+      "updatedAt": "2026-10-11T05:03:55.910Z",
+      "version": "2a652cfd44d82d05",
       "dateSource": "asset-update"
     },
     "de-nederlandsche-bank.lod1": {
-      "updatedAt": "2026-10-10T13:42:19.933Z",
-      "version": "c5f6a83a1ef8c827",
+      "updatedAt": "2026-10-11T05:03:07.742Z",
+      "version": "267007cf8766d3f1",
       "dateSource": "asset-update"
     },
     "de-papegaai": {
@@ -1472,13 +1472,13 @@
       "dateSource": "asset-update"
     },
     "krasnapolsky": {
-      "updatedAt": "2026-10-10T04:57:53.035Z",
-      "version": "087bb3a386d88722",
+      "updatedAt": "2026-10-11T05:03:55.802Z",
+      "version": "cf34aa9a4a1dae54",
       "dateSource": "asset-update"
     },
     "krasnapolsky.lod1": {
-      "updatedAt": "2026-10-10T13:42:20.115Z",
-      "version": "85ad07481a57b8ae",
+      "updatedAt": "2026-10-11T05:03:07.743Z",
+      "version": "be5e84af838ef427",
       "dateSource": "asset-update"
     },
     "kriterion": {
@@ -2007,13 +2007,13 @@
       "dateSource": "asset-update"
     },
     "pakhuis-de-zwijger": {
-      "updatedAt": "2026-10-10T08:08:23.840Z",
-      "version": "932c5ede3491faf0",
+      "updatedAt": "2026-10-11T05:03:55.814Z",
+      "version": "e9f725734b0bb150",
       "dateSource": "asset-update"
     },
     "pakhuis-de-zwijger.lod1": {
-      "updatedAt": "2026-10-10T13:42:20.432Z",
-      "version": "b7c4a518655d7473",
+      "updatedAt": "2026-10-11T05:03:07.743Z",
+      "version": "62e9558c146487e4",
       "dateSource": "asset-update"
     },
     "palace-on-the-dam": {
@@ -2052,8 +2052,13 @@
       "dateSource": "asset-update"
     },
     "petrus-en-paulus-kerk": {
-      "updatedAt": "2026-10-09T18:13:53.937Z",
-      "version": "6d18d0768006b7cf",
+      "updatedAt": "2026-10-11T05:03:55.751Z",
+      "version": "f860cb1210f8c3ed",
+      "dateSource": "asset-update"
+    },
+    "petrus-en-paulus-kerk.lod1": {
+      "updatedAt": "2026-10-11T05:03:07.744Z",
+      "version": "332689fe8d1c8157",
       "dateSource": "asset-update"
     },
     "petruskerk": {

@@ -2,8 +2,53 @@
   "id": "pakhuis-de-zwijger",
   "countedBy": "pending blind count",
   "facades": [
-    {"name": "south (Piet Heinkade side, small windows, two stair towers)", "bearing": 197.5, "photo": "artifacts/landmark-lanes/pakhuis-de-zwijger/ref-south.jpg", "depthBand": 6},
-    {"name": "north (IJhaven side, tall glazed strips)", "bearing": 17.5, "photo": "artifacts/landmark-lanes/pakhuis-de-zwijger/ref-north.jpg", "depthBand": 6},
-    {"name": "east (blank lettered brick, oblique)", "bearing": 107.5, "photo": "artifacts/landmark-lanes/pakhuis-de-zwijger/ref-east.jpg", "depthBand": 6}
+    {
+      "name": "south (Piet Heinkade side, small windows, two stair towers)",
+      "bearing": 197.5,
+      "photo": "artifacts/landmark-lanes/pakhuis-de-zwijger/ref-south.jpg",
+      "depthBand": 6,
+      "rows": [
+        6,
+        8,
+        8,
+        8
+      ],
+      "columns": 8,
+      "symmetric": false,
+      "gables": 2,
+      "countedBy": "blind haiku counter 2026-10-11"
+    },
+    {
+      "name": "north (IJhaven side, tall glazed strips)",
+      "bearing": 17.5,
+      "photo": "artifacts/landmark-lanes/pakhuis-de-zwijger/ref-north.jpg",
+      "depthBand": 6,
+      "rows": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "columns": 5,
+      "symmetric": true,
+      "gables": 0,
+      "countedBy": "blind haiku counter 2026-10-11"
+    },
+    {
+      "name": "east (blank lettered brick, oblique)",
+      "bearing": 107.5,
+      "photo": "artifacts/landmark-lanes/pakhuis-de-zwijger/ref-east.jpg",
+      "depthBand": 6,
+      "rows": [
+        1,
+        3
+      ],
+      "columns": 3,
+      "symmetric": false,
+      "gables": 0,
+      "countedBy": "blind haiku counter 2026-10-11"
+    }
   ]
 }

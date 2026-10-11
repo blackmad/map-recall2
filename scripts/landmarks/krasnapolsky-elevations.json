@@ -5,12 +5,33 @@
     {
       "name": "Dam front (north-west)",
       "bearing": 309,
-      "photo": "artifacts/landmark-lanes/krasnapolsky/ref-dam-front-zoom2.jpg"
+      "photo": "artifacts/landmark-lanes/krasnapolsky/ref-dam-front-zoom2.jpg",
+      "rows": [
+        5,
+        8,
+        7,
+        7,
+        5
+      ],
+      "columns": 8,
+      "symmetric": false,
+      "gables": 0,
+      "countedBy": "blind haiku counter 2026-10-11"
     },
     {
       "name": "Dam modern wing (north-west)",
       "bearing": 314,
-      "photo": "artifacts/landmark-lanes/krasnapolsky/ref-dam-ne.jpg"
+      "photo": "artifacts/landmark-lanes/krasnapolsky/ref-dam-ne.jpg",
+      "rows": [
+        4,
+        5,
+        4,
+        3
+      ],
+      "columns": 5,
+      "symmetric": false,
+      "gables": 0,
+      "countedBy": "blind haiku counter 2026-10-11"
     }
   ]
 }
