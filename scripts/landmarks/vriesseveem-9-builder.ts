@@ -33,6 +33,55 @@ function onPerimeter(mx: number, mz: number): boolean {
 }
 
 const LOBBY = 53;
+const STOREY = 3.04;
+
+/**
+ * The entrance lobby: a convex, full-height (three storeys, 9.1 m) glazed bow in plan, ref-entrance.jpg: one welded curved glass sheet
+ * (so the audit reads it as the wall it is, not as a floating opening) with silver mullions about every 1.4 m and transoms about every
+ * 1.3 m, a slab edge on top where the cladding starts, round grey columns on a concentric arc in front, and the white PIET HEIN
+ * lettering (about 1.2 m cap height, mounted on stand-offs 0.4 m in front of the glass, drawn in a non-opening material).
+ */
+function lobby(b: BuildingTools, w: ReturnType<typeof rawWall>) {
+  const t0 = 0.8, t1 = w.len - 0.8, tm = (t0 + t1) / 2, hc = (t1 - t0) / 2, bulge = 1.7, H = 3 * STOREY - 0.4;
+  const out = (t: number) => bulge * (1 - ((t - tm) / hc) ** 2);
+  const slope = (t: number) => Math.atan(-bulge * 2 * (t - tm) / (hc * hc));
+  const N = Math.round((t1 - t0) / 1.4), pos: number[] = [], idx: number[] = [];
+  for (let k = 0; k <= N; k++) { const t = t0 + (t1 - t0) * k / N; pos.push(t, 0.05, out(t), t, H, out(t)); }
+  for (let k = 0; k < N; k++) { const a = 2 * k; idx.push(a, a + 2, a + 1, a + 1, a + 2, a + 3); }
+  const g = new T.BufferGeometry();
+  g.setAttribute('position', new T.Float32BufferAttribute(pos, 3)); g.setIndex(idx); g.computeVertexNormals();
+  put(b, w.f, g, 0, 0, 0, 'glass');
+  const nm = N;
+  for (let k = 0; k <= nm; k++) {
+    const t = Math.min(t1 - 0.06, Math.max(t0 + 0.06, t0 + (t1 - t0) * k / nm)), ta = t - 0.045, tb = t + 0.045;
+    const mg = new T.BufferGeometry();
+    mg.setAttribute('position', new T.Float32BufferAttribute([ta, 0.05, out(ta) + 0.06, tb, 0.05, out(tb) + 0.06, ta, H, out(ta) + 0.06, tb, H, out(tb) + 0.06], 3));
+    mg.setIndex([0, 1, 2, 2, 1, 3]); mg.computeVertexNormals();
+    put(b, w.f, mg, 0, 0, 0, 'frame');
+  }
+  const rows = Math.round(H / 1.3);
+  const strip = (y: number, h: number, o: number) => {
+    const ps: number[] = [], ix: number[] = [];
+    for (let k = 0; k <= N; k++) { const t = t0 + (t1 - t0) * k / N; ps.push(t, y, out(t) + o, t, y + h, out(t) + o); }
+    for (let k = 0; k < N; k++) { const q = 2 * k; ix.push(q, q + 2, q + 1, q + 1, q + 2, q + 3); }
+    const sg = new T.BufferGeometry();
+    sg.setAttribute('position', new T.Float32BufferAttribute(ps, 3)); sg.setIndex(ix); sg.computeVertexNormals();
+    put(b, w.f, sg, 0, 0, 0, 'frame');
+  };
+  for (let r = 1; r < rows; r++) strip(r * H / rows - 0.035, 0.07, 0.06);
+  strip(0.05, 0.12, 0.06);
+  // slab edge on top of the glass, from the wall plane to the arc
+  const sh = new T.Shape();
+  sh.moveTo(t0, 0);
+  for (let k = 0; k <= N; k++) { const t = t0 + (t1 - t0) * k / N; sh.lineTo(t, -out(t) - 0.15); }
+  sh.lineTo(t1, 0); sh.lineTo(t0, 0);
+  put(b, w.f, new T.ExtrudeGeometry(sh, {depth: 0.5, bevelEnabled: false}).rotateX(-Math.PI / 2).translate(0, H, 0), 0, 0, 0, 'greyBrick');
+  for (const t of [tm - 5, tm, tm + 5]) {
+    put(b, w.f, new T.CylinderGeometry(0.25, 0.25, H, 12).translate(0, H / 2, 0), t, 0, out(t) + 1.1, 'greyBrick');
+  }
+  letters(b, w.f, 'PIET', tm + 1.4, 5.3, out(tm + 1.4) + 0.4, 0.17, 0.05, 'concrete');
+  letters(b, w.f, 'HEIN', tm + 1.4, 3.9, out(tm + 1.4) + 0.4, 0.17, 0.05, 'concrete');
+}
 
 export function buildVriesseveem9(_w: number, _d: number, b: BuildingTools & {mark?: (n: string) => void}) {
   addShellTess(b, source as never, {wall: 'greyBrick', roof: 'concrete'});
@@ -48,17 +97,10 @@ export function buildVriesseveem9(_w: number, _d: number, b: BuildingTools & {ma
     const mx = w.f.origin[0] + w.f.tangent[0] * w.len / 2, mz = w.f.origin[1] + w.f.tangent[1] * w.len / 2;
     const perim = onPerimeter(mx, mz);
     const east = perim && w.bearing > 90 && w.bearing < 125;
-    let y0 = 0.5;
-    if (!perim) { y0 = Math.max(0.5, w.base + 0.4); } else if (i === LOBBY) {
-      // tall glazed lobby in front of round columns, lettering PIET HEIN
-      for (let t = 0.5; t + 3.4 <= w.len - 0.4; t += 3.6) ribbon(b, w, t, Math.min(t + 3.3, w.len - 0.4), 0.5, 6.4, {ring: 0.05, frame: 'frame', glass: 'glass'});
-      for (let t = 1.6; t <= w.len - 1; t += 5.4) {
-        const g = new T.CylinderGeometry(0.3, 0.3, 7.4, 10).translate(0, 3.7, 0);
-        put(b, w.f, g, t, 0, 1.3, 'frame');
-      }
-      letters(b, w.f, 'PIET', w.len * 0.62, 8.1, 0.12, 0.3, 0.06, 'white');
-      letters(b, w.f, 'HEIN', w.len * 0.62, 5.6, 0.12, 0.3, 0.06, 'white');
-      y0 = 7.3;
+    let y0 = 0.4;
+    if (!perim) { y0 = Math.max(0.4, w.base + 0.4); } else if (i === LOBBY) {
+      lobby(b, w);
+      y0 = 3 * storey + 0.4;
     } else if (east && w.base < 0.5) {
       // glass-block garage wall (ground floor, to 6.6 m)
       for (let t = 0.6; t + 3 <= w.len - 0.4; t += 6.5) ribbon(b, w, t, Math.min(t + 6.3, w.len - 0.4), 0.4, 6.2, {ring: 0.05, frame: 'frame', glass: 'concrete'});
@@ -68,11 +110,12 @@ export function buildVriesseveem9(_w: number, _d: number, b: BuildingTools & {ma
     const sills: number[] = [];
     for (let f = 0; f * storey + 0.5 < w.top - 1.2; f++) {
       for (let j = 0; j < 3; j++) {
-        const y = f * storey + 0.4 + j * 0.95;
-        if (y >= y0 && y + 0.85 <= w.top - 0.5) sills.push(+y.toFixed(2));
+        const y = f * storey + 0.4 + j * 0.88;
+        if (y >= y0 && y + 0.82 <= w.top - 0.5) sills.push(+y.toFixed(2));
       }
     }
-    windowGrid(b, w, {t0: c.t0, pitch: c.pitch, n: c.n, w: ww, h: 0.85, sills, frame: 'dark', glass: 'glass', ring: 0.04});
+    const cw = ww / 2 - 0.1;
+    for (const dt of [-ww / 4, ww / 4]) windowGrid(b, w, {t0: c.t0 + dt, pitch: c.pitch, n: c.n, w: cw, h: 0.82, sills, frame: 'frame', glass: 'glass', ring: 0.03});
     void claimOpening;
   });
   setSink(0);
