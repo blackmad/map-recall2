@@ -1675,10 +1675,10 @@
   "ij-toren": {
    "opening-floating": 0,
    "opening-floating-fail": 0,
-   "opening-overhang": 49,
-   "opening-overhang-fail": 40,
+   "opening-overhang": 12,
+   "opening-overhang-fail": 10,
    "opening-buried": 2,
-   "zfight-m2": 59.2,
+   "zfight-m2": 14.3,
    "zfight-near-m2": 3,
    "window-mismatch": 2,
    "window-missing": 2,

@@ -79,7 +79,12 @@ export function curtainOnWall(b: BuildingTools, w: Wall, o: CurtainOptions) {
     const t = tAt(i), h = Math.min(top(Math.max(0.01, Math.min(w.length - 0.01, t - 0.02))), top(Math.max(0.01, Math.min(w.length - 0.01, t + 0.02)))) - 0.2;
     if (h - yStart > 0.5) slab(b, f, t, yStart, o.mullionW ?? 0.08, h - yStart, d, o.mullion);
   }
-  if (o.cap) slab(b, f, w.length / 2, topMax - 0.05, w.length, 0.3, d * 1.5, o.cap);
+  if (o.cap) {
+    // Coping band standing 3.5 cm proud of the wall top (a band exactly at the roof plane would z-fight the roof; one far above it reads as an overhanging part).
+    let minTop = Infinity;
+    for (let i = 0; i <= 8; i++) minTop = Math.min(minTop, top(0.05 + (w.length - 0.1) * i / 8));
+    if (Number.isFinite(minTop) && minTop > w.base + 1) slab(b, f, w.length / 2, minTop - 0.265, w.length - 3 * d, 0.3, d * 1.5, o.cap);   // 3.5 cm of coping above the roof plane (not coplanar with it); ends stop short of the corner neighbours
+  }
 }
 
 /** n evenly spaced punched windows along a wall: glazing with a frame surround. */
