@@ -4,7 +4,9 @@
   "category": "ordinary",
   "modelUrl": "./models/bercylaan-801-855.glb",
   "suppressOsmIds": [
-    "NL.IMBAG.Pand.0363100012250610"
+    "NL.IMBAG.Pand.0363100012250610",
+    "w1212855770",
+    "w1244980639"
   ],
   "spatialSuppression": false,
   "footprint": {
@@ -81,5 +83,8 @@
         ]
       ]
     ]
+  },
+  "materialOverrides": {
+    "slate": "#3a3d41"
   }
 }
