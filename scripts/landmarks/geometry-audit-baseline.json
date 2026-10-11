@@ -3,7 +3,6 @@
  "note": "Existing geometry-audit offenders (src/canalRecall/landmarks/geometryAudit.ts). audit:glb fails a model only when a gated count (opening-floating-fail, opening-overhang-fail, zfight-m2) grows past its entry. Lower an entry when you fix a model; never raise one to pass.",
  "reasons": {
   "blankenstraat-15": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
-  "bogortuin-101": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
   "booking-hq": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
   "de-bazel": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
   "hilton-amsterdam": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
@@ -345,8 +344,8 @@
    "opening-overhang": 0,
    "opening-overhang-fail": 0,
    "opening-buried": 0,
-   "zfight-m2": 17.2,
-   "zfight-near-m2": 8.2,
+   "zfight-m2": 0,
+   "zfight-near-m2": 8,
    "window-mismatch": 8,
    "window-missing": 0,
    "window-misaligned": 0
