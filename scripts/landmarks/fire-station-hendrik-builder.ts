@@ -11,14 +11,14 @@ export function buildFireStationHendrik(_w:number,_d:number,b:BuildingTools){
  const ring=source.nativeRing.slice(0,-1),shape=(r:number[][])=>new T.Shape(r.map(p=>new T.Vector2(p[0],p[1])));
  // Each measured roof polygon owns its upper face. Shells use the minimum eave,
  // with a vertical skirt to the measured plane, avoiding wall-coloured top caps.
- const planes:{ring:number[][];at:(x:number,z:number)=>number}[]=[];
+ const planes:{ring:number[][];at:(x:number,z:number)=>number;sx:number;sz:number;index:number}[]=[];
  for(const part of source.surveyRoofParts){
   const ps=part.rings[0].map(p=>{const ridge=currentRidge.find(q=>Math.hypot(q[0]-p[0],q[2]-p[2])<.015);return ridge&&[117,120,121].includes(part.index)?[p[0],ridge[1]-1.42,p[2]]:p;}),rr=ps.map(p=>[p[0],p[2]]),sh=shape(rr),lo=Math.min(...ps.map(p=>p[1]));
   b.add(openTopPrism(sh,0,lo),'brick');
   const origin=ps.reduce((v,p)=>v.add(new T.Vector3(...p)),new T.Vector3()).multiplyScalar(1/ps.length);
   let xx=0,zz=0,xz=0,xy=0,zy=0;for(const p of ps){const x=p[0]-origin.x,z=p[2]-origin.z,y=p[1]-origin.y;xx+=x*x;zz+=z*z;xz+=x*z;xy+=x*y;zy+=z*y;}
   const det=xx*zz-xz*xz,sx=(xy*zz-zy*xz)/det,sz=(zy*xx-xy*xz)/det,at=(x:number,z:number)=>origin.y+sx*(x-origin.x)+sz*(z-origin.z);
-  planes.push({ring:rr,at});
+  planes.push({ring:rr,at,sx,sz,index:part.index});
   const g=upwardRoofPlane(sh);const pos=g.attributes.position;for(let i=0;i<pos.count;i++)pos.setY(i,ps.reduce((best,p)=>Math.hypot(p[0]-pos.getX(i),p[2]-pos.getZ(i))<Math.hypot(best[0]-pos.getX(i),best[2]-pos.getZ(i))?p:best,ps[0])[1]);g.computeVertexNormals();g.userData={role:'source-roof',sourceIndex:part.index};b.add(g,part.index===114?'stone':'slate');
   const skirt:number[]=[];for(let i=0;i<ps.length;i++){const p=ps[i],q=ps[(i+1)%ps.length];for(const v of [[p[0],lo,p[2]],[q[0],lo,q[2]],[q[0],q[1],q[2]],[p[0],lo,p[2]],[q[0],q[1],q[2]],[p[0],p[1],p[2]]])skirt.push(...v);}
   const walls=new T.BufferGeometry();walls.setAttribute('position',new T.Float32BufferAttribute(skirt,3));walls.computeVertexNormals();b.add(walls,'brick');
@@ -30,9 +30,26 @@ export function buildFireStationHendrik(_w:number,_d:number,b:BuildingTools){
  const box=(s:number,y:number,w:number,h:number,d:number,c:C,inset=.10)=>{const q=frame(s,inset);b.box(q.x,y,q.z,w,h,d,c,q.angle);};
  const win=(s:number,y:number,w:number,h:number,cols=3,inset=.16)=>{box(s,y-.08,w+.17,h+.16,.25,'white',inset-.075);   // frame box reaches 15 cm back into the wall (front plane unchanged)
   box(s,y,w,h,.08,'glass',inset+.08);for(let i=1;i<cols;i++){const q=frame(s,inset+.15),u=-w/2+i*w/cols; b.box(q.x+Math.cos(q.angle)*u,y,q.z-Math.sin(q.angle)*u,.07,h,.055,'white',q.angle);}box(s,y,w,.065,.08,'white',inset+.15);};
- // Five doors use contemporary black steel glazing; observed upper red panels remain.
- const doors=[4.4,10.8,17.2,23.6,30.0];for(const s of doors){box(s,.08,5.10,4.85,.10,'red',.15);for(const y of [1.0,1.77,2.54]){box(s,y,5.01,.66,.075,'glass',.23);box(s,y-.065,5.1,.07,.075,'dark',.29);}for(const u of [-1.7,0,1.7]){const q=frame(s,.29);b.box(q.x+Math.cos(q.angle)*u,.95,q.z-Math.sin(q.angle)*u,.065,2.4,.055,'dark',q.angle);}box(s,4.94,5.42,.25,.45,'white',.03);   // lintel reaches back into the faceted wall behind it (front plane unchanged)
- win(s,7.0,5.0,2.50,4);}
+
+ // ---- Front facade rhythm (spec from recording_2025-07-03_08-35-58_00368 at heading 292, rays intersected with the
+ // surveyed front chain; confirmed by the November 2025 opening photograph and the 2023 Amsterdam photo):
+ //  s 0-4.35   brick end bay with the St Victor plaque;
+ //  s 4.35-25.9 five IDENTICAL engine bays, 3.30 m doors (0-4.50 m) on 1.26 m brick piers (centres every 4.56 m), each
+ //             with its own white lintel (4.50-4.78) and, centred over it, one 4-light cream window 3.40 x 1.85 (7.30 m);
+ //             doors are red sectional doors with a two-row, four-column glazed band at 2.2-3.4 m;
+ //  s 26.5-36.1 white-framed entrance block: upper storey a brick oriel projecting ~1 m from 4.5 m (white soffit) to
+ //             a white top band (9.2-10.2) with three equal windows and the red flame on the spandrel; ground storey
+ //             white pilasters around window A, window B on the surveyed 1 m nib and a full-height glazed door C;
+ //  s 36.1-50.1 right wing, three storeys, see below; s 51.1-63.9 corner pavilion.
+ const bayStep=4.56,bayW=3.30,doorH=4.50,doors=[0,1,2,3,4].map(k=>6.0+k*bayStep);
+ for(const s of doors){
+  box(s,0,bayW,doorH,.10,'red',.15);
+  for(const y of [2.20,2.82]){box(s,y,bayW-.24,.54,.075,'glass',.23);}
+  box(s,2.80,bayW-.2,.06,.075,'red',.29);
+  for(const u of [-.5,0,.5].map(v=>v*(bayW-.24)/2)){const q=frame(s,.29);b.box(q.x+Math.cos(q.angle)*u,2.20,q.z-Math.sin(q.angle)*u,.065,1.16,.055,'red',q.angle);}
+  box(s,doorH,bayW+.40,.28,.45,'white',.03);   // per-bay lintel reaches back into the faceted wall (front plane unchanged)
+  win(s,7.30,3.40,1.85,4);
+ }
  for(let s=0;s<length-.8;s+=1){box(s,s<49?9.85:11.30,1.04,.25,.38,'concrete',.18);box(s,0,1.03,.34,.16,'stone',.08);}
  // The clerestory occupies the actual vertical step between front and rear roof
  // surfaces121/122and117/119. Use shared surveyed ridge vertices, not a parallel
@@ -43,28 +60,65 @@ export function buildFireStationHendrik(_w:number,_d:number,b:BuildingTools){
    b.box(x,y,z,w+.015,1.20,.18,'white',angle);b.box(x+nx*.11,y+.10,z+nz*.11,w-.13,.96,.08,'glass',angle);b.box(x+nx*.16,y+.10,z+nz*.16,.065,.96,.05,'white',angle);b.box(x,y+1.20,z,w+.025,.28,.23,'white',angle);
   }
  }
- // Reconstructed post-renovation polygon bay: exposed glazing at both levels.
- for(const [s,w] of [[35.0,2.8],[38.0,2.8]]){box(s,6.6,w+.35,3.3,1.20,'brick',.63);box(s,9.55,w+.4,.28,1.4,'white',.69);win(s,6.95,w,2.6,3,1.30);win(s,.7,w,2.3,3,.22);}
- // New rightwing infill is visible in municipal July2025renovation frame:
- // two three-pane groups at middle and ground tier, retained small upper lights.
- for(const ss of [43.8,48.3])for(const yy of [.70,4.10])win(ss,yy,3.45,1.92,3);
- for(const ss of [43.6,45.7,47.8,50.5,52.6,54.7,56.8,58.9,61.0])win(ss,8.2,.65,.82,1);
- for(const ss of [52.6,54.7,56.8,58.9,61.0])for(const yy of [1.20,4.60])win(ss,yy,.62,.78,1);
- box(40.7,.10,1.05,2.9,.10,'red',.15);win(40.7,.3,.80,2.45,1,.25);
- // Third return of projecting bay and source-supported red flame relief.
- const bay=frame(39.95,.72);b.box(bay.x,6.95,bay.z,1.14,2.58,.09,'white',bay.angle+.48);b.box(bay.x+Math.sin(bay.angle+.48)*.09,7.05,bay.z+Math.cos(bay.angle+.48)*.09,.96,2.38,.08,'glass',bay.angle+.48);
- const flame=frame(36.9,1.36);const fp=new T.Shape();fp.moveTo(-.32,0);fp.bezierCurveTo(-.94,.55,-.75,1.25,-.25,1.78);fp.bezierCurveTo(-.23,1.05,.37,1.06,.28,2.04);fp.bezierCurveTo(1.11,1.39,.98,.48,.28,.04);fp.lineTo(0,-.26);fp.closePath();const fg=new T.ExtrudeGeometry(fp,{depth:.05,bevelEnabled:false,curveSegments:5});fg.rotateY(flame.angle);fg.translate(flame.x,5.03,flame.z);b.add(fg,'red');
- 
+
+ // ---- Entrance block oriel. Planar chord frame from s 26.5 to 36.1 so the projecting box is one straight volume.
+ {
+  const s0=26.5,s1=36.1,p0=frame(s0),p1=frame(s1),tx0=p1.x-p0.x,tz0=p1.z-p0.z,L=Math.hypot(tx0,tz0),tx=tx0/L,tz=tz0/L,nx=-tz,nz=tx,ang=Math.atan2(-tz,tx);
+  let base=0;for(let s=s0;s<=s1;s+=.1){const q=frame(s);base=Math.max(base,(q.x-p0.x)*nx+(q.z-p0.z)*nz);}
+  // base includes the surveyed 1 m ground nib (s 29.64-32.30), whose 3DBAG wall rises full height: the oriel front
+  // stands 0.12 m proud of it, flush-looking as on the photo.
+  const F=base+.12,back=-.35,mid=(F+back)/2,dep=F-back;
+  const at=(t:number,out:number)=>[p0.x+tx*t+nx*out,p0.z+tz*t+nz*out];
+  const put=(t:number,out:number,y:number,w:number,h:number,d:number,c:C)=>{const [x,z]=at(t,out);b.box(x,y,z,w,h,d,c,ang);};
+  put(L/2,mid,4.50,L+.10,.32,dep+.06,'white');            // soffit
+  put(L/2,mid,4.82,L,4.38,dep,'brick');                    // oriel body 4.82-9.20
+  put(L/2,mid+.02,9.20,L+.10,1.00,dep+.08,'white');        // top band 9.20-10.20
+  for(const k of [0,1,2]){const t=L*(2*k+1)/6;put(t,F-.02,6.97,2.62,2.15,.12,'white');put(t,F+.04,7.05,2.46,2.0,.08,'glass');put(t,F+.095,7.05,.07,2.0,.05,'white');put(t,F+.10,8.45,2.46,.07,.03,'white');}   // fronts F+.04 / +.08 / +.12: no coplanar layers
+  const side=Math.atan2(-tx,-tz);   // side faces: local x along the outward normal
+  for(const [t,sg] of [[-.02,-1],[L+.02,1]] as const){const [x,z]=at(t,F-.55);b.box(x,6.97,z,.62,2.15,.10,'white',side);b.box(x+tx*sg*.06,7.05,z+tz*sg*.06,.48,2.0,.06,'glass',side);}
+  // red flame relief centred under the middle window
+  const fp=new T.Shape();fp.moveTo(-.32,0);fp.bezierCurveTo(-.94,.55,-.75,1.25,-.25,1.78);fp.bezierCurveTo(-.23,1.05,.37,1.06,.28,2.04);fp.bezierCurveTo(1.11,1.39,.98,.48,.28,.04);fp.lineTo(0,-.26);fp.closePath();
+  const fg=new T.ExtrudeGeometry(fp,{depth:.05,bevelEnabled:false,curveSegments:5});fg.scale(.85,.85,1);fg.rotateY(ang);const [fx,fz]=at(L/2,F);fg.translate(fx,5.10,fz);b.add(fg,'red');
+ }
+ // Ground storey of the entrance block: white pilasters, window A on the main wall, window B on the 1 m surveyed nib
+ // (chain s 29.64-32.30), full-height glazed door C. Glass tops meet the soffit at 4.5 m.
+ for(const [s,w] of [[26.68,.36],[28.52,.30],[29.80,.30],[32.12,.34],[33.55,.30],[35.80,.60]] as const)box(s,0,w,4.50,.30,'white',.10);
+ for(const [s,w] of [[27.60,1.50],[30.96,1.98]] as const){box(s,0,w,2.65,.12,'brick',.12);box(s,2.65,w,1.85,.08,'glass',.12);box(s,3.85,w,.06,.06,'white',.17);}
+ box(34.53,0,1.66,4.50,.08,'glass',.21);box(34.53,0,.06,4.50,.06,'white',.27);box(34.53,2.50,1.66,.06,.05,'white',.265);   // glass front clears the stone plinth (front .16)
+ // ---- Right wing (s 36.1-50.1), from recording 00368 heading 340 and recording 00364 heading 305:
+ //  section A (36.1-40.6): one 4-light window 3.5 m wide at ground (1.25-2.90) and first floor (4.30-5.95), with two
+ //   single-light tall windows above its ends on the second floor (7.45-9.05);
+ //  section B (40.6-50.1): eight small square lights on a regular 1.086 m grid across the second floor (8.45-9.05);
+ //   below the first four, one 4-light window 3.7 m wide at ground and first floor; below the last four, one small
+ //   square light each at ground (2.20) and first floor (5.35). Every opening sits on that grid.
+ const wingRows=[1.25,4.30];
+ for(const y of wingRows){win(38.13,y,3.50,1.65,4);win(42.94,y,3.70,1.65,4);}
+ for(const s of [36.95,39.31])win(s,7.45,.65,1.60,1);
+ const grid=[0,1,2,3,4,5,6,7].map(k=>41.30+k*1.086);
+ for(const s of grid)win(s,8.45,.45,.60,1);
+ for(const s of grid.slice(4))for(const y of [2.20,5.35])win(s,y,.45,.55,1);
+ // ---- Corner pavilion (s 51.1-63.9, recording 00364): ground white shopfront of six equal units; above, small
+ // stair lights at 52.6/54.6 (and 57.05 on the first floor) with one larger 2-light window per floor, offset.
+ for(let k=0;k<=6;k++)box(51.25+k*(12.5/6),0,.24,4.15,.26,'white',.10);
+ for(let k=0;k<6;k++){const s=51.25+(k+.5)*(12.5/6);box(s,.35,12.5/6-.24,3.55,.08,'glass',.10);}
+ box(57.5,4.05,12.66,.32,.30,'white',.10);
+ for(const s of [52.6,54.6])win(s,9.65,.45,.52,1);
+ win(57.85,8.65,1.70,1.60,2);
+ for(const s of [52.6,54.6,57.05])win(s,7.05,.45,.55,1);
+ win(60.8,6.0,1.60,1.75,2);
+
  // Main real fascia sign: source opening photograph red bold sans lettering,
  // not proposed gold rendering. Outlines approximate Arial Narrow Bold, native curves.
- const lettering=(data:typeof letters[number],s:number,y:number,w:number,h:number,c:C)=>{const p=new T.ShapePath();for(const cmd of data.commands as any[]){if(cmd.type==='M')p.moveTo(cmd.x,-cmd.y);else if(cmd.type==='L')p.lineTo(cmd.x,-cmd.y);else if(cmd.type==='Q')p.quadraticCurveTo(cmd.x1,-cmd.y1,cmd.x,-cmd.y);else if(cmd.type==='C')p.bezierCurveTo(cmd.x1,-cmd.y1,cmd.x2,-cmd.y2,cmd.x,-cmd.y);else if(cmd.type==='Z')p.currentPath?.closePath();}const g=new T.ExtrudeGeometry(p.toShapes(),{depth:.026,bevelEnabled:false,curveSegments:3});g.computeBoundingBox();const bb=g.boundingBox!,size=bb.getSize(new T.Vector3());g.translate(-(bb.max.x+bb.min.x)/2,-bb.min.y,0);g.scale(w/size.x,h/size.y,1);const q=frame(s,.18);g.rotateY(q.angle);g.translate(q.x,y,q.z);g.userData={role:'source-sign',text:data.text,fontApproximation:data.fontApproximation};b.add(g,c);};
- lettering(letters[0],19.8,5.67,13.1,.92,'red');lettering(letters[1],19.8,5.18,10.4,.36,'white');
+ const lettering=(data:typeof letters[number],s:number,y:number,w:number,h:number,c:C)=>{const p=new T.ShapePath();for(const cmd of data.commands as any[]){if(cmd.type==='M')p.moveTo(cmd.x,-cmd.y);else if(cmd.type==='L')p.lineTo(cmd.x,-cmd.y);else if(cmd.type==='Q')p.quadraticCurveTo(cmd.x1,-cmd.y1,cmd.x,-cmd.y);else if(cmd.type==='C')p.bezierCurveTo(cmd.x1,-cmd.y1,cmd.x2,-cmd.y2,cmd.x,-cmd.y);else if(cmd.type==='Z')p.currentPath?.closePath();}const g=new T.ExtrudeGeometry(p.toShapes(),{depth:.026,bevelEnabled:false,curveSegments:3});g.computeBoundingBox();const bb=g.boundingBox!,size=bb.getSize(new T.Vector3());g.translate(-(bb.max.x+bb.min.x)/2,-bb.min.y,0);g.scale(w/size.x,h/size.y,1);const q=frame(s,.075);g.rotateY(q.angle);g.translate(q.x,y,q.z);g.userData={role:'source-sign',text:data.text,fontApproximation:data.fontApproximation};b.add(g,c);};
+ lettering(letters[0],17.4,5.42,7.10,1.05,'red');lettering(letters[1],17.4,4.92,5.80,.34,'white');   // over the pier between doors 3 and 4 (opening photo)
  // St.Victor commemorative plaque at southwest end; abstract native relief,
  // no invented lettering or copied pixels. Actual1685 stone retained in current station.
- box(1.0,2.30,1.15,2.1,.10,'stone',.16);box(1.0,2.83,.57,1.08,.05,'red',.24);box(1.0,3.15,.19,.56,.065,'white',.28);
- // Solar arrays physically follow the principal surveyed roof117 rather than float horizontally.
- const solar=source.surveyRoofParts.find(p=>p.index===117)!;const rp=solar.rings[0];const n=new T.Vector3(...rp[1]).sub(new T.Vector3(...rp[0])).cross(new T.Vector3(...rp[2]).sub(new T.Vector3(...rp[0]))).normalize();if(n.y<0)n.negate();
- for(const s of [17.5,23.0,28.5,34.0]){const q=frame(s,-2.5),p0=new T.Vector3(...rp[0]),y=p0.y-(n.x*(q.x-p0.x)+n.z*(q.z-p0.z))/n.y+.09;const g=new T.BoxGeometry(4.2,.08,2.2);g.applyQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),n));g.translate(q.x,y,q.z);b.add(g,'blue');}
+ box(2.2,2.80,1.15,2.7,.10,'stone',.16);box(2.2,3.85,.57,1.08,.05,'red',.24);box(2.2,4.17,.19,.56,.065,'white',.28);
+ // Solar arrays lie on whichever surveyed roof plane is under each array (the old single-plane fit left two
+ // arrays hovering 0.45 m and 1.30 m above the slope: the audit's two detached parts).
+ const inRing=(x:number,z:number,r:number[][])=>{let yes=false;for(let i=0,j=r.length-1;i<r.length;j=i++){const a=r[i],c=r[j];if((a[1]>z)!==(c[1]>z)&&x<(c[0]-a[0])*(z-a[1])/(c[1]-a[1])+a[0])yes=!yes;}return yes;};
+ for(const s of [17.5,23.0,28.5,34.0]){const q=frame(s,-2.5),pl=planes.filter(p=>inRing(q.x,q.z,p.ring)).sort((p,r)=>r.at(q.x,q.z)-p.at(q.x,q.z))[0];if(!pl)continue;
+  const n=new T.Vector3(-pl.sx,1,-pl.sz).normalize(),g=new T.BoxGeometry(4.2,.08,2.2);g.rotateY(q.angle);g.applyQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),n));g.translate(q.x,pl.at(q.x,q.z)+.08,q.z);b.add(g,'blue');}
  // Current opening photo shows southwest end mostly blank, with only two
  // paired small lights and one low narrow grille. No generic party-wall wrap.
  const a=ring.reduce((best,p)=>Math.abs(p[0]+23.5)+Math.abs(p[1]-10.7)<Math.abs(best[0]+23.5)+Math.abs(best[1]-10.7)?p:best,ring[0]);
