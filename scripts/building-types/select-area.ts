@@ -14,9 +14,12 @@ import {lngLatToLocal, minimumRotatedRectangle, rectIoU, type Anchor, type Pt} f
 
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
 const nw = arg('nw'), area = arg('area', 'slotermeer-north');
-const anchor: Anchor = {lng: Number(arg('lng', '4.809')), lat: Number(arg('lat', '52.3775'))};
+let anchor: Anchor = {lng: Number(arg('lng', '4.809')), lat: Number(arg('lat', '52.3775'))};
 const want: Record<string, number> = {'nw-portiek-brick-pitched': Number(arg('t1', '14')), 'nw-pilotis-panel-flat': Number(arg('t6', '12'))};
 const RADIUS_M = Number(arg('radius', '700')), CONTEXT_M = 500;
+// --ids=<json array of pand ids> stages exactly those panden (any distance, any cluster) under --idtype=<type id>; used to build sub-design areas
+// from panden that were held by an earlier survey. The anchor is the centroid of the listed panden unless --lng/--lat are given.
+const idsFile = arg('ids'), idType = arg('idtype', 'nw-portiek-brick-pitched');
 if (!nw) throw new Error('--nw=<survey dir> required');
 
 const clusters = JSON.parse(fs.readFileSync(path.join(nw, 'clusters.json'), 'utf8'));
@@ -26,6 +29,14 @@ const t1Clusters = arg('t1clusters', '0').split(',').map(Number);
 const excluded = new Set<string>();
 for (const a of arg('exclude').split(',').filter(Boolean)) for (const i of JSON.parse(fs.readFileSync(path.join('staging/building-types', a, 'instances.json'), 'utf8')).instances) excluded.add(i.pandId);
 const members: Record<string, any[]> = {'nw-portiek-brick-pitched': t1Clusters.flatMap(k => clusters.pp_big[k].pandIds).filter((m: any) => !excluded.has(m.id)), 'nw-pilotis-panel-flat': clusters.pp_big[5].pandIds.filter((m: any) => !excluded.has(m.id))};
+if (idsFile) {
+  const wanted = new Set<string>(JSON.parse(fs.readFileSync(idsFile, 'utf8')));
+  const all = (clusters.pp_big as any[]).flatMap(c => c.pandIds as any[]).filter(m => wanted.has(m.id));
+  for (const k of Object.keys(members)) members[k] = [];
+  members[idType] = all;
+  if (!arg('lng')) anchor = {lng: +(all.reduce((s, m) => s + m.lon, 0) / all.length).toFixed(5), lat: +(all.reduce((s, m) => s + m.lat, 0) / all.length).toFixed(5)};
+  console.log(`${all.length}/${wanted.size} listed panden found in the clusters; anchor`, anchor);
+}
 const attrs = new Map<string, any>();
 for (const l of fs.readFileSync(path.join(nw, '3dbag/all.jsonl'), 'utf8').split('\n')) if (l) { const r = JSON.parse(l); attrs.set(r.id, r); }
 const bag = JSON.parse(fs.readFileSync(path.join(nw, 'raw/bag-panden.json'), 'utf8')) as any[];
@@ -36,7 +47,7 @@ for (const f of bag) byId.set(f.properties.identificatie, f);
 const round1 = (p: Pt): Pt => [Math.round(p[0] * 10) / 10, Math.round(p[1] * 10) / 10];
 const instances: any[] = [];
 for (const [type, list] of Object.entries(members)) {
-  const ranked = list.map(m => ({m, d: Math.hypot(...lngLatToLocal(anchor, m.lon, m.lat))})).filter(x => x.d < RADIUS_M).sort((a, b) => a.d - b.d).slice(0, want[type]);
+  const ranked = list.map(m => ({m, d: Math.hypot(...lngLatToLocal(anchor, m.lon, m.lat))})).filter(x => idsFile || x.d < RADIUS_M).sort((a, b) => a.d - b.d).slice(0, idsFile ? 1e9 : want[type]);
   for (const {m, d} of ranked) {
     const f = byId.get(m.id), a = attrs.get(m.id);
     if (!f || !a || a.miss) { console.warn('skip (no BAG/3DBAG record)', m.id); continue; }

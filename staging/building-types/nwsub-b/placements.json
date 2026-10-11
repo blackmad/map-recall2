@@ -1,0 +1,714 @@
+{
+ "area": "nwsub-b",
+ "frame": "x east, z south, y NAP metres from anchor; yaw about +y takes the local frame (front +z, tangent +x) to east/south",
+ "anchor": {
+  "lng": 4.82165,
+  "lat": 52.38246
+ },
+ "placements": [
+  {
+   "pand": "0363100012075375",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -3.513,
+     -0.789,
+     2.908
+    ],
+    "positionChunk": [
+     -3.513,
+     0,
+     2.908
+    ],
+    "yawRad": 1.32034,
+    "lengthM": 13.8,
+    "widthM": 10.41,
+    "eavesM": 14.78
+   }
+  },
+  {
+   "pand": "0363100012070656",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -0.019,
+     -0.778,
+     -10.712
+    ],
+    "positionChunk": [
+     -0.019,
+     0,
+     -10.712
+    ],
+    "yawRad": 1.31995,
+    "lengthM": 14.37,
+    "widthM": 10.4,
+    "eavesM": 14.73
+   }
+  },
+  {
+   "pand": "0363100012068610",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -6.94,
+     -0.794,
+     16.293
+    ],
+    "positionChunk": [
+     -6.94,
+     0,
+     16.293
+    ],
+    "yawRad": 1.3203,
+    "lengthM": 13.91,
+    "widthM": 10.41,
+    "eavesM": 14.78
+   }
+  },
+  {
+   "pand": "0363100012075960",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -10.394,
+     -0.794,
+     29.78
+    ],
+    "positionChunk": [
+     -10.394,
+     0,
+     29.78
+    ],
+    "yawRad": 1.31987,
+    "lengthM": 14,
+    "widthM": 10.41,
+    "eavesM": 14.78
+   }
+  },
+  {
+   "pand": "0363100012146302",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -4.405,
+     -0.804,
+     -33.703
+    ],
+    "positionChunk": [
+     -4.405,
+     0,
+     -33.703
+    ],
+    "yawRad": 1.75435,
+    "lengthM": 14.21,
+    "widthM": 10.38,
+    "eavesM": 14.77
+   }
+  },
+  {
+   "pand": "0363100012068666",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -39.753,
+     -0.871,
+     -6.491
+    ],
+    "positionChunk": [
+     -39.753,
+     0,
+     -6.491
+    ],
+    "yawRad": 1.32022,
+    "lengthM": 14.43,
+    "widthM": 10.34,
+    "eavesM": 14.88
+   }
+  },
+  {
+   "pand": "0363100012064789",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -43.266,
+     -0.878,
+     7.176
+    ],
+    "positionChunk": [
+     -43.266,
+     0,
+     7.176
+    ],
+    "yawRad": 1.31974,
+    "lengthM": 13.88,
+    "widthM": 10.34,
+    "eavesM": 14.87
+   }
+  },
+  {
+   "pand": "0363100012144736",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -13.88,
+     -0.738,
+     43.39
+    ],
+    "positionChunk": [
+     -13.88,
+     0,
+     43.39
+    ],
+    "yawRad": 1.32044,
+    "lengthM": 14.16,
+    "widthM": 10.41,
+    "eavesM": 14.73
+   }
+  },
+  {
+   "pand": "0363100012086304",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -6.975,
+     -0.754,
+     -47.519
+    ],
+    "positionChunk": [
+     -6.975,
+     0,
+     -47.519
+    ],
+    "yawRad": 1.75435,
+    "lengthM": 13.93,
+    "widthM": 10.39,
+    "eavesM": 14.71
+   }
+  },
+  {
+   "pand": "0363100012069553",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -46.718,
+     -0.868,
+     20.613
+    ],
+    "positionChunk": [
+     -46.718,
+     0,
+     20.613
+    ],
+    "yawRad": 1.31906,
+    "lengthM": 13.94,
+    "widthM": 10.33,
+    "eavesM": 14.87
+   }
+  },
+  {
+   "pand": "0363100012112205",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -50.193,
+     -0.846,
+     34.129
+    ],
+    "positionChunk": [
+     -50.193,
+     0,
+     34.129
+    ],
+    "yawRad": 1.31872,
+    "lengthM": 14.16,
+    "widthM": 10.34,
+    "eavesM": 14.84
+   }
+  },
+  {
+   "pand": "0363100012097134",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -9.519,
+     -0.765,
+     -61.197
+    ],
+    "positionChunk": [
+     -9.519,
+     0,
+     -61.197
+    ],
+    "yawRad": 1.75435,
+    "lengthM": 13.93,
+    "widthM": 10.38,
+    "eavesM": 14.72
+   }
+  },
+  {
+   "pand": "0363100012069230",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -45.108,
+     -0.831,
+     -47.878
+    ],
+    "positionChunk": [
+     -45.108,
+     0,
+     -47.878
+    ],
+    "yawRad": 1.75454,
+    "lengthM": 14.18,
+    "widthM": 10.37,
+    "eavesM": 14.77
+   }
+  },
+  {
+   "pand": "0363100012125502",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -76.027,
+     -0.84,
+     -15.74
+    ],
+    "positionChunk": [
+     -76.027,
+     0,
+     -15.74
+    ],
+    "yawRad": 1.31751,
+    "lengthM": 14.42,
+    "widthM": 10.36,
+    "eavesM": 14.78
+   }
+  },
+  {
+   "pand": "0363100012098150",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -12.064,
+     -0.766,
+     -74.875
+    ],
+    "positionChunk": [
+     -12.064,
+     0,
+     -74.875
+    ],
+    "yawRad": 1.75464,
+    "lengthM": 13.93,
+    "widthM": 10.38,
+    "eavesM": 14.72
+   }
+  },
+  {
+   "pand": "0363100012140082",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -47.671,
+     -0.792,
+     -61.678
+    ],
+    "positionChunk": [
+     -47.671,
+     0,
+     -61.678
+    ],
+    "yawRad": 1.7541,
+    "lengthM": 13.93,
+    "widthM": 10.37,
+    "eavesM": 14.74
+   }
+  },
+  {
+   "pand": "0363100012147478",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -79.552,
+     -0.835,
+     -2.05
+    ],
+    "positionChunk": [
+     -79.552,
+     0,
+     -2.05
+    ],
+    "yawRad": 1.31768,
+    "lengthM": 13.87,
+    "widthM": 10.38,
+    "eavesM": 14.78
+   }
+  },
+  {
+   "pand": "0363100012065454",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -82.984,
+     -0.808,
+     11.249
+    ],
+    "positionChunk": [
+     -82.984,
+     0,
+     11.249
+    ],
+    "yawRad": 1.31886,
+    "lengthM": 13.94,
+    "widthM": 10.41,
+    "eavesM": 14.78
+   }
+  },
+  {
+   "pand": "0363100012123229",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-buff",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     74.961,
+     -0.808,
+     35.46
+    ],
+    "positionChunk": [
+     74.961,
+     0,
+     35.46
+    ],
+    "yawRad": 1.32103,
+    "lengthM": 14.19,
+    "widthM": 10.42,
+    "eavesM": 14.87
+   }
+  },
+  {
+   "pand": "0363100012083797",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-buff",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     71.469,
+     -0.799,
+     49.073
+    ],
+    "positionChunk": [
+     71.469,
+     0,
+     49.073
+    ],
+    "yawRad": 1.32029,
+    "lengthM": 13.94,
+    "widthM": 10.39,
+    "eavesM": 14.86
+   }
+  },
+  {
+   "pand": "0363100012078778",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -86.485,
+     -0.812,
+     24.864
+    ],
+    "positionChunk": [
+     -86.485,
+     0,
+     24.864
+    ],
+    "yawRad": 1.31865,
+    "lengthM": 14.23,
+    "widthM": 10.44,
+    "eavesM": 14.79
+   }
+  },
+  {
+   "pand": "0363100012125310",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -50.21,
+     -0.766,
+     -75.362
+    ],
+    "positionChunk": [
+     -50.21,
+     0,
+     -75.362
+    ],
+    "yawRad": 1.75449,
+    "lengthM": 13.93,
+    "widthM": 10.37,
+    "eavesM": 14.71
+   }
+  },
+  {
+   "pand": "0363100012072729",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -14.636,
+     -0.77,
+     -88.697
+    ],
+    "positionChunk": [
+     -14.636,
+     0,
+     -88.697
+    ],
+    "yawRad": 1.7547,
+    "lengthM": 14.2,
+    "widthM": 10.38,
+    "eavesM": 14.76
+   }
+  },
+  {
+   "pand": "0363100012109410",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-buff",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     68.016,
+     -0.794,
+     62.552
+    ],
+    "positionChunk": [
+     68.016,
+     0,
+     62.552
+    ],
+    "yawRad": 1.32057,
+    "lengthM": 13.93,
+    "widthM": 10.38,
+    "eavesM": 14.84
+   }
+  },
+  {
+   "pand": "0363100012065170",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -83.228,
+     -0.785,
+     -48.332
+    ],
+    "positionChunk": [
+     -83.228,
+     0,
+     -48.332
+    ],
+    "yawRad": 1.75339,
+    "lengthM": 14.2,
+    "widthM": 10.39,
+    "eavesM": 14.74
+   }
+  },
+  {
+   "pand": "0363100012102905",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -52.775,
+     -0.814,
+     -89.167
+    ],
+    "positionChunk": [
+     -52.775,
+     0,
+     -89.167
+    ],
+    "yawRad": 1.75432,
+    "lengthM": 14.18,
+    "widthM": 10.37,
+    "eavesM": 14.76
+   }
+  },
+  {
+   "pand": "0363100012149816",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -85.794,
+     -0.801,
+     -62.148
+    ],
+    "positionChunk": [
+     -85.794,
+     0,
+     -62.148
+    ],
+    "yawRad": 1.7538,
+    "lengthM": 13.92,
+    "widthM": 10.38,
+    "eavesM": 14.76
+   }
+  },
+  {
+   "pand": "0363100012073929",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-buff",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     102.096,
+     -0.807,
+     85.722
+    ],
+    "positionChunk": [
+     102.096,
+     0,
+     85.722
+    ],
+    "yawRad": 1.32056,
+    "lengthM": 14.19,
+    "widthM": 10.37,
+    "eavesM": 14.89
+   }
+  },
+  {
+   "pand": "0363100012117311",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-buff",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     150.149,
+     -0.82,
+     54.624
+    ],
+    "positionChunk": [
+     150.149,
+     0,
+     54.624
+    ],
+    "yawRad": 1.32037,
+    "lengthM": 14.19,
+    "widthM": 10.42,
+    "eavesM": 14.87
+   }
+  },
+  {
+   "pand": "0363100012104026",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-buff",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     146.66,
+     -0.833,
+     68.239
+    ],
+    "positionChunk": [
+     146.66,
+     0,
+     68.239
+    ],
+    "yawRad": 1.32077,
+    "lengthM": 13.92,
+    "widthM": 10.4,
+    "eavesM": 14.9
+   }
+  },
+  {
+   "pand": "0363100012119444",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-buff",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     143.208,
+     -0.844,
+     81.72
+    ],
+    "positionChunk": [
+     143.208,
+     0,
+     81.72
+    ],
+    "yawRad": 1.32057,
+    "lengthM": 13.92,
+    "widthM": 10.38,
+    "eavesM": 14.87
+   }
+  },
+  {
+   "pand": "0363100012139761",
+   "type": "nw-portiek-wide-core-slotermeerlaan",
+   "variant": "brick-buff",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     139.717,
+     -0.832,
+     95.336
+    ],
+    "positionChunk": [
+     139.717,
+     0,
+     95.336
+    ],
+    "yawRad": 1.3207,
+    "lengthM": 14.2,
+    "widthM": 10.37,
+    "eavesM": 14.88
+   }
+  }
+ ]
+}

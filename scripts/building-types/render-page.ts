@@ -5,6 +5,10 @@
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {MeshoptDecoder} from 'three/examples/jsm/libs/meshopt_decoder.module.js';
+import {cityTint, type RecipeSlot} from '../../src/canalRecall/buildingRecipe/recipeLook.ts';
+
+/** Review-render brightness of the brick slot, tuned so a sunlit-photo tint renders about as dark as the photo (the game: lifted tint x neutral brick texture x wall shade). */
+const BRICK_GAIN = 1.12;
 
 type Ctx = {buildings: {ring: [number, number][]; heightM: number}[]; streets: {highway: string; path: [number, number][]}[]};
 
@@ -41,7 +45,11 @@ function dress(root: THREE.Object3D) {
     const slot = (m.userData as {materialSlot?: string}).materialSlot;
     (m.userData as {dressed?: boolean}).dressed = true;
     m.metalness = 0; m.roughness = 0.92;
-    if (slot && textures[slot]) { m.map = textures[slot]; m.color.multiplyScalar(slot === 'brick' ? 1.25 : 1.05); m.needsUpdate = true; }
+    // The game's recipe look maps every authored tint through cityTint (brick: photo-sampled colour -> city lightness range), so the
+    // review render does the same; the authored `tint` is therefore the colour sampled from the sunlit photo.
+    const tint = (m.userData as {tint?: string}).tint;
+    if (slot && tint && slot !== 'glass' && textures[slot]) m.color.set(cityTint(slot as RecipeSlot, tint));
+    if (slot && textures[slot]) { m.map = textures[slot]; m.color.multiplyScalar(slot === 'brick' ? BRICK_GAIN : 1.05); m.needsUpdate = true; }
     if (slot === 'glass') { m.roughness = 0.15; m.metalness = 0.35; m.color.multiplyScalar(1.2); }
   });
 }
