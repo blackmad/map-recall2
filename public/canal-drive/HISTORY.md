@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Balconies are allowed to project (2026-10-11)
+
+geometryAudit's opening-overhang hard-failed any trim more than 0.8 m off a
+wall, so building-type balconies were drawn 0.75 m deep where photos show
+up to 1.5 m, and the Nieuw-West steel stair-and-balcony stack was reduced to
+two posts. A balcony (trim on a small slab at the slab's outer edge) may now
+project up to 2.0 m if its slab reaches the wall plane (3 cm); it is then
+checked only laterally against the wall silhouette, and a slab 3 cm-0.6 m
+off the wall or deeper than 2 m still fails. Over 395 audited models no
+gated count rose; overhang fails fell where slabs/porches were real
+balconies (hotel-jakarta 85->48, hotel-de-l-europe 12->4, symphony 10->6,
+de-bijenkorf 10->7). Depths restored per photo; steel-stack rebuilt; doors
+now honour their level in the generator.
+
 ## Nieuw-West building types, opt-in (2026-10-11)
 
 Post-war housing west of the A10 repeats: of 1,725 large 1945-75 residential
