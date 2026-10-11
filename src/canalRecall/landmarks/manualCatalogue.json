@@ -11828,8 +11828,8 @@
     "groundAltitudeMetres": 0,
     "facingOffsetDegrees": 0,
     "materialOverrides": {
-      "brick": "#9a735f",
-      "greyBrick": "#7a5d52",
+      "brick": "#8a766b",
+      "greyBrick": "#6f5d55",
       "stone": "#b9ad98",
       "slate": "#b4573a",
       "red": "#a8472b",
@@ -11847,8 +11847,6 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
     },
-    "status": "held",
-    "heldReason": "Rework 2026-10-11: tower (brick corbel cornice, stone clock stage with clocks on N and W faces, west louvres), gable (two four-light windows, louvred slot, cross, pointed red door) and lighter brick/clay-tile colours now follow the Ruysdaelstraat 37/39 photos, audit passes. Still missing: the round stair turret with oriel, the parsonage wing windows (blank), side-wing massing is the raw 3DBAG shell with recessed wall pieces; flat colours still read darker than the photographed pink-brown brick.",
     "buildingFootprint": {
       "type": "Polygon",
       "coordinates": [
