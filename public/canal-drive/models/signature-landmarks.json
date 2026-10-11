@@ -2406,7 +2406,10 @@
       "landmarkId": "extract_landmarks_2044416411",
       "modelUrl": "./models/felix-meritis.glb",
       "suppressOsmIds": [
-        "w30044304"
+        "w30044304",
+        "NL.IMBAG.Pand.0363100012174401",
+        "NL.IMBAG.Pand.0363100012174322",
+        "NL.IMBAG.Pand.0363100012168556"
       ],
       "footprint": {
         "centre": [
@@ -2427,6 +2430,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -43.009124755859375,
@@ -2455,14 +2459,14 @@
         "depthMetres": 23.9237117767334,
         "depthCoverage": 1.0436229096037688
       },
-      "triangles": 3460,
-      "bytes": 43712,
+      "triangles": 3520,
+      "bytes": 45616,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "dcb8aed0db97ae12",
+        "sourceHash": "322209785bc6ef6a",
         "buildVersion": 2,
-        "bytes": 16104,
-        "triangles": 650
+        "bytes": 18004,
+        "triangles": 696
       }
     },
     "kleine-komedie": {
