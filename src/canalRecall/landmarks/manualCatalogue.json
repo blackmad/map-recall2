@@ -30054,7 +30054,9 @@
           ]
         ]
       ]
-    }
+    },
+    "status": "held",
+    "heldReason": "2026-10-11: model is dark grey with punched windows; the photographed lower floors are white stacked floor bands with glass. Rework cladding from photos."
   },
   {
     "id": "vriesseveem-9",
@@ -30210,6 +30212,8 @@
           ]
         ]
       ]
-    }
+    },
+    "status": "held",
+    "heldReason": "2026-10-11: facade reads khaki with grouped windows; the photos show a grey curtain wall of glass and perforated metal panels and a curved glazed lobby. Rework colour/glazing before it can be a destination."
   }
 ]
