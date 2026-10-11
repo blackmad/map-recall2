@@ -1,0 +1,156 @@
+{
+  "id": "vriesseveem-9",
+  "name": "Piet Hein Buildings",
+  "landmarkId": "vriesseveem-9",
+  "modelUrl": "./models/vriesseveem-9.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012239869"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.917696994496487,
+      52.37749927041767
+    ],
+    "headingDegrees": 16,
+    "lengthMetres": 130.12,
+    "widthMetres": 53.3
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.91776314964998,
+      52.377507320152546
+    ],
+    "northOffsetDegrees": 0,
+    "source": "PDOK BAG 0363100012239869 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+  },
+  "materialOverrides": {
+    "greyBrick": "#7f8680",
+    "glass": "#46647b",
+    "frame": "#9aa3a1",
+    "dark": "#2f353a",
+    "concrete": "#c9d3d4"
+  },
+  "preservePositionPrecision": true,
+  "attribution": {
+    "title": "Piet Hein Buildings original architecture",
+    "author": "Map Recall",
+    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012239869",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.916879861949445,
+          52.37787982575942
+        ],
+        [
+          4.91682156652497,
+          52.3777543957506
+        ],
+        [
+          4.916769157182568,
+          52.377640358515386
+        ],
+        [
+          4.916753665653875,
+          52.37760691670561
+        ],
+        [
+          4.916759359593395,
+          52.377605932705514
+        ],
+        [
+          4.9167382659452645,
+          52.377560667805476
+        ],
+        [
+          4.916714429876043,
+          52.37750950507066
+        ],
+        [
+          4.9166772796146585,
+          52.37742871095164
+        ],
+        [
+          4.91698279454569,
+          52.37737586357475
+        ],
+        [
+          4.91751678911525,
+          52.377283153722004
+        ],
+        [
+          4.918297809197772,
+          52.37714775771126
+        ],
+        [
+          4.918437537600652,
+          52.37712349592223
+        ],
+        [
+          4.91849748132719,
+          52.37725311992669
+        ],
+        [
+          4.91851781367824,
+          52.377301095779416
+        ],
+        [
+          4.918519638078744,
+          52.37730077944353
+        ],
+        [
+          4.9185348836523355,
+          52.377333986367624
+        ],
+        [
+          4.9185877972419085,
+          52.37744795291058
+        ],
+        [
+          4.918589491373482,
+          52.377451626590386
+        ],
+        [
+          4.918664453450388,
+          52.37743866637841
+        ],
+        [
+          4.918723533561943,
+          52.37756673197056
+        ],
+        [
+          4.91864876210114,
+          52.37757970196207
+        ],
+        [
+          4.9186496234775525,
+          52.377581574808815
+        ],
+        [
+          4.918630775933053,
+          52.37758486162586
+        ],
+        [
+          4.918165648798438,
+          52.37766592263845
+        ],
+        [
+          4.916883609476042,
+          52.37788789360973
+        ],
+        [
+          4.916879861949445,
+          52.37787982575942
+        ]
+      ]
+    ]
+  }
+}

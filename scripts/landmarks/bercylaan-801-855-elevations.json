@@ -1,0 +1,10 @@
+{
+  "id": "bercylaan-801-855",
+  "countedBy": "pending blind count by integrator",
+  "facades": [
+    {"name": "south-west long front (Bercylaan side, 9-storey shoulder)", "bearing": 232.5, "photo": "artifacts/landmark-lanes/bercylaan-801-855/ref-southwest.jpg"},
+    {"name": "north-west end (BOLD entrance)", "bearing": 322.5, "photo": "artifacts/landmark-lanes/bercylaan-801-855/ref-northwest.jpg"},
+    {"name": "south-east curved nose of the tower", "bearing": 132.5, "photo": "artifacts/landmark-lanes/bercylaan-801-855/ref-southeast.jpg"},
+    {"name": "north-east long front (inferred above the low block, no photo of the tower face)", "bearing": 52.5}
+  ]
+}
