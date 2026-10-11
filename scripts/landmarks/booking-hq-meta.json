@@ -4,7 +4,7 @@
   "sourceUrl": "https://nl.wikipedia.org/wiki/Hoofdkantoor_van_Booking.com",
   "suppressOsmIds": ["NL.IMBAG.Pand.0363100012250152"],
   "pandId": "0363100012250152",
-  "materialOverrides": {"dark": "#1f282d", "glass": "#5f90ab", "concrete": "#7d8082", "frame": "#2c363c", "red": "#a0663a", "white": "#f1f1ee"},
+  "materialOverrides": {"dark": "#2b2927", "glass": "#78a5c1", "concrete": "#7d8082", "frame": "#3b3633", "red": "#9c6b3b", "white": "#f1f1ee"},
   "surveySource": "BAG 0363100012250152 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean.",
   "modifications": "Original texture-free geometry on the 3DBAG LoD2.2 massing; curtain-wall bands, residential tower grid and sign measured by eye from the 2025 municipal panoramas, no pixels or meshes imported."
 }
