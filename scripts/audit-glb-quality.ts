@@ -96,7 +96,7 @@ function modelThresholds(id: string): Partial<Thresholds> {
 interface Row {id: string; file: string; status?: string; report: QualityReport; ms: number; geometry?: GeometryAuditReport}
 
 const BASELINE = path.join(ROOT, 'scripts/landmarks/geometry-audit-baseline.json');
-type Baseline = {generated: string; note: string; models: Record<string, Record<string, number>>};
+type Baseline = {generated: string; note: string; reasons?: Record<string, string>; models: Record<string, Record<string, number>>};
 function readBaseline(): Baseline | undefined {
   try { return JSON.parse(fs.readFileSync(BASELINE, 'utf8')); } catch { return undefined; }
 }
@@ -233,7 +233,7 @@ async function main(): Promise<void> {
       const models: Baseline['models'] = {...(baseline?.models ?? {})};
       for (const r of rows) if (r.geometry) models[r.id] = r.geometry.counts;
       const sorted = Object.fromEntries(Object.entries(models).sort(([a], [b]) => a.localeCompare(b)));
-      fs.writeFileSync(BASELINE, JSON.stringify({generated: new Date().toISOString().slice(0, 10), note: 'Existing geometry-audit offenders (src/canalRecall/landmarks/geometryAudit.ts). audit:glb fails a model only when a gated count (opening-floating-fail, opening-overhang-fail, zfight-m2) grows past its entry. Lower an entry when you fix a model; never raise one to pass.', models: sorted}, null, 1) + '\n');
+      fs.writeFileSync(BASELINE, JSON.stringify({generated: new Date().toISOString().slice(0, 10), note: baseline?.note ?? '', ...(baseline?.reasons ? {reasons: baseline.reasons} : {}), models: sorted}, null, 1) + '\n');
       console.log(`Wrote ${path.relative(ROOT, BASELINE)} (${Object.keys(sorted).length} models)`);
     }
     if (flag('geometry-shots')) {
