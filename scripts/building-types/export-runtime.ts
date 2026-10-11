@@ -2,6 +2,7 @@
  * Publish the confirmed building-type instances of the pilot areas for the opt-in runtime (`?buildingTypes=1`).
  *
  *   node --import tsx scripts/building-types/export-runtime.ts --areas=sonderbuur,comenius
+ *   node --import tsx scripts/building-types/export-runtime.ts --areas=nwsub-a,nwsub-b --merge   # keep the already published instances of other areas
  *
  * Reads  staging/building-types/<area>/{instances,placements,report}.json + types/<unit>.glb (build.ts output)
  * Writes public/canal-drive/building-types/<unit>.glb (one shared mesh per design unit, only units that have a confirmed instance)
@@ -15,11 +16,16 @@ import path from 'node:path';
 import {localToLngLat, bearingDeg, type Anchor} from '../../src/canalRecall/buildingTypes/geometry.ts';
 
 const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3) ?? d;
-const areas = arg('areas', 'sonderbuur,comenius').split(',');
+const areas = arg('areas', 'sonderbuur,comenius').split(','), merge = process.argv.includes('--merge');
 const out = 'public/canal-drive/building-types';
 fs.mkdirSync(out, {recursive: true});
 const round = (v: number, d: number) => +v.toFixed(d);
 const instances: any[] = [], units = new Set<string>(), held: Record<string, string> = {};
+if (merge && fs.existsSync(path.join(out, 'instances.json'))) {
+  // --merge: instances of areas that are not re-exported stay exactly as published (their unit files stay too).
+  for (const i of JSON.parse(fs.readFileSync(path.join(out, 'instances.json'), 'utf8')) as any[]) if (!areas.includes(i.area)) instances.push(i);
+}
+const kept = instances.length;
 // Several areas can produce the same unit (type, variant, storeys, roof, ridge, ground). Each area's build sizes the unit
 // mesh at its own median, so one canonical mesh per unit is chosen (the area with the most members) and every instance's
 // scale is computed against THAT mesh's nominal size.
@@ -60,4 +66,4 @@ for (const unit of units) {
   fs.copyFileSync(path.join('staging/building-types', area, 'types', `${unit}.glb`), path.join(out, `${unit}.glb`));
 }
 fs.writeFileSync(path.join(out, 'instances.json'), JSON.stringify(instances) + '\n');
-console.log(`${instances.length} instances, ${units.size} units, ${Object.keys(held).length} held`, [...units]);
+console.log(`${instances.length} instances (${kept} kept, ${instances.length - kept} exported), ${units.size} exported units, ${Object.keys(held).length} held`, [...units]);

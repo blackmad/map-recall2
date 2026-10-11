@@ -1,0 +1,362 @@
+{
+ "area": "nwsub-c",
+ "frame": "x east, z south, y NAP metres from anchor; yaw about +y takes the local frame (front +z, tangent +x) to east/south",
+ "anchor": {
+  "lng": 4.81291,
+  "lat": 52.37648
+ },
+ "placements": [
+  {
+   "pand": "0363100012076741",
+   "type": "nw-portiek-hof-garage-4st",
+   "variant": "brown-green",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -96.884,
+     -0.721,
+     38.06
+    ],
+    "positionChunk": [
+     -96.884,
+     0,
+     38.06
+    ],
+    "yawRad": 1.4104,
+    "lengthM": 13.79,
+    "widthM": 10.48,
+    "eavesM": 11.87
+   }
+  },
+  {
+   "pand": "0363100012094150",
+   "type": "nw-portiek-hof-garage-4st",
+   "variant": "buff-green",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -99.102,
+     -0.744,
+     51.738
+    ],
+    "positionChunk": [
+     -99.102,
+     0,
+     51.738
+    ],
+    "yawRad": 1.41053,
+    "lengthM": 14.01,
+    "widthM": 10.47,
+    "eavesM": 11.92
+   }
+  },
+  {
+   "pand": "0363100012096087",
+   "type": "nw-portiek-hof-garage-4st",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -128.392,
+     -0.704,
+     -61.944
+    ],
+    "positionChunk": [
+     -128.392,
+     0,
+     -61.944
+    ],
+    "yawRad": 1.65534,
+    "lengthM": 14.01,
+    "widthM": 10.49,
+    "eavesM": 11.98
+   }
+  },
+  {
+   "pand": "0363100012074512",
+   "type": "nw-portiek-hof-garage-4st",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -129.575,
+     -0.699,
+     -75.738
+    ],
+    "positionChunk": [
+     -129.575,
+     0,
+     -75.738
+    ],
+    "yawRad": 1.65583,
+    "lengthM": 13.69,
+    "widthM": 10.48,
+    "eavesM": 11.97
+   }
+  },
+  {
+   "pand": "0363100012098547",
+   "type": "nw-portiek-hof-garage-4st",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -130.74,
+     -0.758,
+     -89.405
+    ],
+    "positionChunk": [
+     -130.74,
+     0,
+     -89.405
+    ],
+    "yawRad": 1.6557,
+    "lengthM": 13.75,
+    "widthM": 10.49,
+    "eavesM": 12.04
+   }
+  },
+  {
+   "pand": "0363100012068441",
+   "type": "nw-portiek-hof-garage-4st",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     154.904,
+     -0.574,
+     -16.244
+    ],
+    "positionChunk": [
+     154.904,
+     0,
+     -16.244
+    ],
+    "yawRad": 1.65314,
+    "lengthM": 14.05,
+    "widthM": 10.53,
+    "eavesM": 11.86
+   }
+  },
+  {
+   "pand": "0363100012116999",
+   "type": "nw-portiek-hof-garage-4st",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     153.754,
+     -0.603,
+     -30.076
+    ],
+    "positionChunk": [
+     153.754,
+     0,
+     -30.076
+    ],
+    "yawRad": 1.65287,
+    "lengthM": 13.78,
+    "widthM": 10.51,
+    "eavesM": 11.88
+   }
+  },
+  {
+   "pand": "0363100012152079",
+   "type": "nw-portiek-hof-garage-4st",
+   "variant": "buff-green",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     138.127,
+     -1.168,
+     75.837
+    ],
+    "positionChunk": [
+     138.127,
+     0,
+     75.837
+    ],
+    "yawRad": 1.40969,
+    "lengthM": 13.77,
+    "widthM": 10.48,
+    "eavesM": 12.34
+   }
+  },
+  {
+   "pand": "0363100012069526",
+   "type": "nw-portiek-hof-garage-4st",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     152.622,
+     -0.628,
+     -43.665
+    ],
+    "positionChunk": [
+     152.622,
+     0,
+     -43.665
+    ],
+    "yawRad": 1.65329,
+    "lengthM": 13.58,
+    "widthM": 10.49,
+    "eavesM": 11.91
+   }
+  },
+  {
+   "pand": "0363100012139136",
+   "type": "nw-portiek-hof-garage-4st",
+   "variant": "brown-green",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     135.892,
+     -1.204,
+     89.554
+    ],
+    "positionChunk": [
+     135.892,
+     0,
+     89.554
+    ],
+    "yawRad": 1.40962,
+    "lengthM": 14.09,
+    "widthM": 10.47,
+    "eavesM": 12.39
+   }
+  },
+  {
+   "pand": "0363100012115478",
+   "type": "nw-portiek-hof-garage-4st",
+   "variant": "brown-green-4w",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -173.081,
+     -0.997,
+     19.019
+    ],
+    "positionChunk": [
+     -173.081,
+     0,
+     19.019
+    ],
+    "yawRad": 1.40989,
+    "lengthM": 16.28,
+    "widthM": 10.48,
+    "eavesM": 12.15
+   }
+  },
+  {
+   "pand": "0363100012115152",
+   "type": "nw-portiek-hof-garage-4st",
+   "variant": "buff-green-4w",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -175.692,
+     -0.779,
+     35.079
+    ],
+    "positionChunk": [
+     -175.692,
+     0,
+     35.079
+    ],
+    "yawRad": 1.4095,
+    "lengthM": 16.28,
+    "widthM": 10.48,
+    "eavesM": 11.95
+   }
+  },
+  {
+   "pand": "0363100012141187",
+   "type": "nw-portiek-hof-garage-4st",
+   "variant": "brown-red-4w",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -204.916,
+     -0.75,
+     -91.251
+    ],
+    "positionChunk": [
+     -204.916,
+     0,
+     -91.251
+    ],
+    "yawRad": 1.65668,
+    "lengthM": 16.01,
+    "widthM": 10.48,
+    "eavesM": 12.03
+   }
+  },
+  {
+   "pand": "0363100012145227",
+   "type": "nw-portiek-hof-garage-4st",
+   "variant": "brown-red-4w",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -206.3,
+     -0.758,
+     -107.318
+    ],
+    "positionChunk": [
+     -206.3,
+     0,
+     -107.318
+    ],
+    "yawRad": 1.65659,
+    "lengthM": 16.27,
+    "widthM": 10.48,
+    "eavesM": 12.02
+   }
+  },
+  {
+   "pand": "0363100012063869",
+   "type": "nw-portiek-hof-garage-4st",
+   "variant": "brown-green",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     292.788,
+     -0.931,
+     100.805
+    ],
+    "positionChunk": [
+     292.788,
+     0,
+     100.805
+    ],
+    "yawRad": 1.40978,
+    "lengthM": 13.77,
+    "widthM": 10.47,
+    "eavesM": 12.09
+   }
+  },
+  {
+   "pand": "0363100012127836",
+   "type": "nw-portiek-hof-garage-4st",
+   "variant": "buff-green",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     290.566,
+     -0.914,
+     114.483
+    ],
+    "positionChunk": [
+     290.566,
+     0,
+     114.483
+    ],
+    "yawRad": 1.41017,
+    "lengthM": 14.01,
+    "widthM": 10.47,
+    "eavesM": 12.06
+   }
+  }
+ ]
+}

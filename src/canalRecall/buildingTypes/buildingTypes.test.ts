@@ -250,3 +250,68 @@ test('GLB writers: baked keeps one node per instance with extras; instanced carr
   assert.equal(inst.triangles, 2 * mesh.triangles, 'reported GPU triangles count the instances');
   assert.ok(inst.bytes.length < (await writeBakedGlb('t', placed, {compress: 'none'})).bytes.length * 0.7, 'one mesh + transforms is much smaller than two baked copies');
 });
+
+// --- 2026-10-11 sub-designs of the type-1 cluster (wide-core A/B, hof C, plinth D) ----------------------------------------
+
+const SUBTYPES = ['nw-portiek-wide-core-beekenhoff', 'nw-portiek-wide-core-slotermeerlaan', 'nw-portiek-hof-garage-4st', 'nw-portiek-plinth-hip'].map(id => load(`${id}.json`));
+
+test('sub-design specs validate; the generated model matches the counts written from the photos for every variant', () => {
+  for (const spec of SUBTYPES) {
+    assert.deepEqual(validateSpec(spec), [], spec.id);
+    assert.equal(spec.facades.front.confidence, 'measured', `${spec.id} front is read from straight-on photos`);
+    assert.ok(spec.facades.front.evidence.length >= 3, `${spec.id}: at least three photos of different panden`);
+    assert.equal(new Set(spec.facades.front.evidence.map(e => e.pand)).size, spec.facades.front.evidence.length);
+    for (const variant of Object.keys(spec.variants)) {
+      // The -4w variants of the hof type are the 16.3 m members with four equal core windows instead of two windows + a stair window.
+      const long = variant.endsWith('-4w'), eaves = spec.storeys * 2.93;
+      const {report, mesh} = generate(spec, {lengthM: long ? 16.3 : spec.source.lengthM, widthM: spec.source.widthM, eavesM: eaves, ridgeM: eaves + 3.2, variant, storeys: spec.storeys});
+      for (const id of FACADE_IDS) {
+        const want = spec.facades[id].counted, got = report.facades[id];
+        assert.equal(got.bays, want.bays, `${spec.id}/${variant}/${id} bays`);
+        assert.equal(got.openingsPerUpperStorey, want.openingsPerUpperStorey + (long && id === 'front' ? 2 : 0), `${spec.id}/${variant}/${id} openings`);
+        assert.equal(got.groundDoors, want.groundDoors, `${spec.id}/${variant}/${id} ground doors`);
+        assert.equal(got.balconiesPerUpperStorey, want.balconiesPerUpperStorey, `${spec.id}/${variant}/${id} balconies`);
+      }
+      assert.equal(report.storeys, spec.storeys);
+      assert.ok(mesh.triangles <= 3000, `${spec.id}/${variant}: ${mesh.triangles} triangles within the 3k recipe budget`);
+      for (const bucket of mesh.buckets.values()) assert.ok(bucket.positions.every(Number.isFinite));
+      assert.ok(Math.abs(mesh.bounds().max[1] - (eaves + 3.2)) < 1e-6, `${spec.id}/${variant}: roof reaches the given ridge`);
+    }
+  }
+});
+
+test('sub-designs keep the party-wall frame [pier | balcony bay | core | balcony bay | pier] with the photo-measured bay ratios', () => {
+  for (const spec of SUBTYPES) {
+    const bays = spec.facades.front.bays;
+    assert.deepEqual(bays.map(b => b.role), ['corner', 'balcony', 'stair', 'balcony', 'corner'], spec.id);
+    const w = bays.map(b => b.w);
+    assert.equal(w[1], w[3], `${spec.id}: balcony bays are equal`);
+    assert.ok(w[2] > w[1] * 1.4, `${spec.id}: the core is the widest bay`);
+    const placed = layoutBays(bays, spec.source.lengthM);
+    assert.ok(Math.abs(placed.at(-1)!.u1 - spec.source.lengthM) < 1e-9);
+  }
+  // measured from the straight-on photos (px ratio core : balcony bay): A/B 210 : 140, C 380 : 110
+  const [A, , C] = SUBTYPES;
+  assert.ok(Math.abs(A.facades.front.bays[2].w / A.facades.front.bays[1].w - 1.45) < 0.1);
+  assert.ok(Math.abs(C.facades.front.bays[2].w / C.facades.front.bays[1].w - 3.3) < 0.2);
+});
+
+test('sub-design D: dark plinth brick under the upper wall, pale band between them', () => {
+  const D = SUBTYPES[3];
+  assert.ok(D.variants['buff-brown'].palette.plinth, 'dark plinth brick differs from the upper wall');
+  assert.equal(D.facades.front.bands?.length, 1);
+  const {mesh} = generate(D, {lengthM: 15.1, widthM: 10.9, eavesM: 14.6, ridgeM: 17.8});
+  const keys = [...mesh.buckets.values()].map(b => `${b.key.slot}|${b.key.tint}`);
+  assert.ok(keys.includes(`brick|${D.variants['buff-brown'].palette.plinth!.tint}`) && keys.includes(`brick|${D.variants['buff-brown'].palette.wall.tint}`), 'plinth and wall are separate brick materials');
+});
+
+test('type-1 brick variants carry the colour sampled from sunlit photos (grey-brown), not a saturated red', () => {
+  const rgb = (hex: string) => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
+  const sampled: Record<string, string> = {brick: '#584f46', 'brick-cream': '#554741', 'clad-panel': '#5b4a43', 'brick-yellow': '#ab8f64'};
+  for (const [variant, hex] of Object.entries(sampled)) {
+    const got = rgb(T1.variants[variant].palette.wall.tint), want = rgb(hex);
+    assert.ok(got.every((v, i) => Math.abs(v - want[i]) <= 2), `${variant}: wall tint ${T1.variants[variant].palette.wall.tint} is the photo median ${hex}`);
+  }
+  const [r, , b] = rgb(T1.variants.brick.palette.wall.tint);
+  assert.ok(r / b < 1.4, 'the 4-storey brick (Herbert Spencerhof, David Humehof, Henri Bergsonstraat) is brown-grey, not red (old tint #8f5a44 has r/b 2.1)');
+});
