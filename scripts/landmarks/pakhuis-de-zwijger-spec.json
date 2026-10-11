@@ -34,12 +34,12 @@
   "groundAltitudeMetres": 0,
   "facingOffsetDegrees": 0,
   "materialOverrides": {
-    "brick": "#5c5540",
-    "stone": "#85827a",
-    "concrete": "#6e6c62",
-    "greyBrick": "#4a4535",
-    "red": "#7d4a2b",
-    "glass": "#5d7585",
+    "brick": "#4b483c",
+    "stone": "#6e6c62",
+    "concrete": "#5e5c53",
+    "greyBrick": "#3b392f",
+    "red": "#8f5535",
+    "glass": "#3d4a54",
     "bronze": "#2c2e30"
   },
   "attribution": {

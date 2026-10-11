@@ -85,6 +85,10 @@ export function buildPakhuisDeZwijger(_w: number, _d: number, b: BuildingTools &
     slab(b, S.f, (u0 + u1) / 2, y, u1 - u0, h, v1 - v0, c, -v1);   // v measured inland from the south face
   box(0.0, PU0, 1.5, 26.5, 0, HS, 'greyBrick');                  // west block, hard against the neighbouring warehouse
   box(PU1, 32.5, 3.0, 25.8, 0, HS, 'greyBrick');                 // east block under the overhang
+  // massive concrete corner piers at the east corners (ref-east.jpg: a full-height pier block stands at the corner of the overhang and
+  // closes the east gallery; the gallery itself runs behind the flared piers to a recessed brick wall)
+  slab(b, S.f, S.len - 1.25, 0, 2.5, HS - 0.95, 3.0, 'concrete', -3.0);
+  slab(b, N.f, 1.25, 0, 2.5, HS - 0.95, 3.0, 'concrete', -3.0);
   // glazed cafe front on the south side of the east block
   slab(b, S.f, 25.2, 0.45, 13.0, 4.4, 0.1, 'glass', -2.95);
   for (let u = 19.0; u < 32.0; u += 2.6) slab(b, S.f, u, 0.45, 0.14, 4.4, 0.16, 'concrete', -2.97);
@@ -104,25 +108,27 @@ export function buildPakhuisDeZwijger(_w: number, _d: number, b: BuildingTools &
     const f = S.f, rows = [1.95, 5.2, 8.5, 11.4].map(c => HS + c - 0.38);
     const cols = [5.2, 7.1, 9.0, 16.5, 18.3, 20.2, 27.6, 29.4, 31.1, 32.9];
     for (const u of cols) for (const y of rows) {
-      slab(b, f, u, y - 0.08, 1.02, 0.1, 0.16, 'stone');                 // sill
-      slab(b, f, u, y + 0.76, 1.02, 0.12, 0.16, 'stone');                // lintel
+      slab(b, f, u, y - 0.08, 0.96, 0.08, 0.14, 'stone');                 // sill
+      slab(b, f, u, y + 0.76, 0.9, 0.07, 0.13, 'stone');                // lintel
       slab(b, f, u, y, 0.76, 0.76, 0.12, 'glass');
     }
-    const tower = (uc: number) => {
+    // Stair towers as in the 2005 survey photograph (ref-south.jpg): five shuttered modules between concrete pilasters, black joints between
+    // them; the west tower has one open dark stair window as its second module from the bottom, both tops carry a small dark slot.
+    const tower = (uc: number, open: boolean) => {
       for (const s of [-1, 1]) slab(b, f, uc + s * 1.3, HS, 0.44, 22.0 - HS, 0.45, 'stone');       // concrete pilasters
-      slab(b, f, uc, HS, 2.1, 15.8, 0.1, 'red');                                                     // shuttered shaft
-      for (let k = 0; k < 4; k++) {
-        const y0 = HS + 0.3 + k * 3.95;
-        if (k >= 2) {
-          slab(b, f, uc, y0 + 0.5, 0.95, 2.3, 0.16, 'glass');                                         // stair window between the shutter leaves
-          for (const s of [-1, 1]) slab(b, f, uc + s * 0.72, y0 + 0.3, 0.5, 2.7, 0.24, 'red');
-        } else slab(b, f, uc, y0 + 0.2, 1.75, 3.2, 0.2, 'red');
-        slab(b, f, uc, y0 + 3.55, 2.1, 0.12, 0.16, 'concrete');
+      slab(b, f, uc, HS, 2.1, 15.8, 0.1, 'greyBrick');                                               // dark shaft behind the shutters
+      const mh = 15.4 / 5;
+      for (let k = 0; k < 5; k++) {
+        const y0 = HS + 0.15 + k * mh;
+        if (open && k === 1) slab(b, f, uc, y0 + 0.15, 1.75, mh - 0.45, 0.2, 'dark');               // open stair window
+        else slab(b, f, uc, y0 + 0.15, 1.75, mh - 0.45, 0.23, 'red');                                 // boarded orange shutters
+        if (k === 4) slab(b, f, uc, y0 + 1.2, 0.5, 0.9, 0.26, 'dark');                               // slot under the hood
+        slab(b, f, uc, y0 + mh - 0.3, 2.0, 0.14, 0.18, 'greyBrick');                                  // black joint
       }
       slab(b, f, uc, 21.55, 3.9, 0.55, 1.3, 'stone');                                                // flat concrete hood
       slab(b, f, uc, 22.1, 3.5, 0.25, 0.9, 'stone');
     };
-    tower(13.0); tower(23.75);
+    tower(13.0, true); tower(23.75, false);
     // concrete DE ZWYGER lettering over the east end of the overhang, as on the original front
     glyphs(b, f, 'DE ZWYGER', 28.6, HS + 0.32, 0.0, 0.1, 0.07, 'bronze');
   }
@@ -132,10 +138,12 @@ export function buildPakhuisDeZwijger(_w: number, _d: number, b: BuildingTools &
     const f = N.f, y0 = HS + 0.9, y1 = 22.3, st = (y1 - y0) / 4;
     const strips: [number, number][] = [[3.4, 1.8], [10.3, 3.8], [17.2, 1.8], [24.1, 3.8], [31.0, 1.8]];
     for (const [t, w] of strips) {
-      const proj = w > 3 ? 0.5 : 0.1;
+      const proj = 0.1;   // flush glazing in concrete reveals (ref-north.jpg shows no projecting bays)
       for (const s of [-1, 1]) slab(b, f, t + s * (w / 2 + 0.2), HS, 0.4, y1 + 0.7 - HS, 0.34, 'stone');   // concrete reveals
       slab(b, f, t, y0, w, y1 - y0, 0.1 + proj, 'glass');
       for (let k = 0; k <= 4; k++) slab(b, f, t, y0 + k * st - 0.2, w + 0.1, 0.42, 0.14 + proj, 'concrete');
+      // thin transoms halve each storey: the photographed strips read as 7-8 glazing modules (ref-north.jpg)
+      for (let k = 0; k < 4; k++) for (const q of [0.5]) slab(b, f, t, y0 + (k + q) * st - 0.04, w, 0.08, 0.13 + proj, 'concrete');
       if (w > 3) slab(b, f, t, y0, 0.12, y1 - y0, 0.16 + proj, 'concrete');
     }
   }
