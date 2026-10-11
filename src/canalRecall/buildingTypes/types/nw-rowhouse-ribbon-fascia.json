@@ -1,0 +1,337 @@
+{
+  "id": "nw-rowhouse-ribbon-fascia",
+  "label": "Nieuw-West terraced house, buff-grey brick, a three-light ribbon window over a ground storey with sidelit door and window under a continuous flat fascia (the walled forecourt roof), dark tile roof with dormers (Slotermeer/Geuzenveld: Korte Water, Middelveldstraat)",
+  "frontOnShort": true,
+  "source": {
+    "clusterRank": 1,
+    "panden": 57,
+    "bouwjaar": [
+      1970,
+      1974
+    ],
+    "lengthM": 9.15,
+    "widthM": 5.4,
+    "bouwlagen": 3,
+    "roof": "pitched",
+    "dwellingsMedian": 1
+  },
+  "storeys": 2,
+  "eavesRangeM": [
+    5.2,
+    6.7
+  ],
+  "footprintRangeM": {
+    "frontage": [
+      5.1,
+      6.0
+    ],
+    "depth": [
+      8.9,
+      9.4
+    ]
+  },
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.3,
+    "vergeOverhangM": 0.0,
+    "thicknessM": 0.12,
+    "pitchDeg": 35
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "navy",
+  "variants": {
+    "navy": {
+      "label": "Dark navy/brown fascia",
+      "evidence": "survey terraces #46, 52, 57 (Korte Water)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#675d4d"
+        },
+        "frame": "#ece8dc",
+        "glass": "#4b5a6b",
+        "door": "#2b3a4a",
+        "accent": "#e9e6dc",
+        "rail": "#c9c4b6",
+        "dark": "#2a3140",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "slate",
+          "tint": "#4a4744"
+        }
+      }
+    },
+    "red": {
+      "label": "Dark red fascia",
+      "evidence": "survey terraces #49, 58, 72, 82 (Middelveldstraat)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#675d4d"
+        },
+        "frame": "#ece8dc",
+        "glass": "#4b5a6b",
+        "door": "#2b3a4a",
+        "accent": "#e9e6dc",
+        "rail": "#c9c4b6",
+        "dark": "#6a1f2a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "slate",
+          "tint": "#4a4744"
+        }
+      }
+    },
+    "green": {
+      "label": "Dark green fascia",
+      "evidence": "survey terraces #63, 85, 87, 88 (Korte Water, Middelveldstraat)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#675d4d"
+        },
+        "frame": "#ece8dc",
+        "glass": "#4b5a6b",
+        "door": "#2b3a4a",
+        "accent": "#e9e6dc",
+        "rail": "#c9c4b6",
+        "dark": "#2f4038",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "slate",
+          "tint": "#4a4744"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012115058.jpg",
+          "pand": "0363100012115058",
+          "address": "Korte Water (terrace #52)",
+          "note": "house pitch 395 px = 5.4 m: 3.0 m three-light ribbon window (sill 1.15 m above the first floor), ground storey with a 0.9 m door in a 2 m glazed surround at the left and a 1.15 m window at the right; flat fascia at 2.6 m over the forecourt wall"
+        },
+        {
+          "photo": "survey crop 0363100012106166.jpg",
+          "pand": "0363100012106166",
+          "address": "Korte Water area (terrace #72)",
+          "note": "same house: ribbon window, door left and window right under the fascia; forecourt wall block in front of the neighbouring house"
+        },
+        {
+          "photo": "survey crop 0363100012091983.jpg",
+          "pand": "0363100012091983",
+          "address": "Middelveldstraat (terrace #82)",
+          "note": "red fascia over a plain brick wall block with a green door; ribbon windows above"
+        },
+        {
+          "photo": "survey crop 0363100012146987.jpg",
+          "pand": "0363100012146987",
+          "address": "Middelveldstraat (terrace #87)",
+          "note": "green fascia; door and window at the right under it; ribbon window above"
+        },
+        {
+          "photo": "survey crop 0363100012143015.jpg",
+          "pand": "0363100012143015",
+          "address": "Korte Water (terrace #63)",
+          "note": "ribbon window over the long fascia; blank brick block below"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 1,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "house",
+          "w": 5.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": 0.0,
+              "w": 4.9,
+              "h": 0.3,
+              "sill": 2.62,
+              "colour": "dark",
+              "depth": 0.5
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": -1.4,
+              "w": 0.9,
+              "h": 2.2,
+              "steps": 0
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -2.05,
+              "w": 0.35,
+              "h": 2.0,
+              "sill": 0.1,
+              "lights": 1,
+              "note": "sidelight"
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -0.75,
+              "w": 0.35,
+              "h": 2.0,
+              "sill": 0.1,
+              "lights": 1,
+              "note": "sidelight"
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": 1.75,
+              "w": 1.15,
+              "h": 1.55,
+              "sill": 1.2,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 0.3,
+              "w": 3.0,
+              "h": 1.5,
+              "sill": 1.15,
+              "lights": 3
+            }
+          ]
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012115058.jpg",
+          "pand": "0363100012115058",
+          "address": "Korte Water",
+          "note": "rear (garden side) NOT seen in any photo: generic two-window upper storey, garden door and kitchen window inferred from the frontage scheme; it is hidden between the rear gardens in practice"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 2,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "back",
+          "w": 1,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": 1.0,
+              "w": 0.9,
+              "h": 2.1,
+              "steps": 0
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -1.0,
+              "w": 1.8,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012115058.jpg",
+          "pand": "0363100012115058",
+          "address": "Korte Water",
+          "note": "end wall seen edge-on beside the front at the end of a terrace: plain wall, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012115058.jpg",
+          "pand": "0363100012115058",
+          "address": "Korte Water",
+          "note": "end wall seen edge-on beside the front at the end of a terrace: plain wall, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Front on the SHORT side (frontOnShort). Measured on survey crop 0363100012115058: 73 px per metre, house pitch 395 px.",
+    "The real ground storey is partly hidden behind a staggered boundary wall block (a plain brick wall to the fascia, 1-2 houses wide, with or without a small door); the model draws the house's own door and window under the fascia and does not model the free-standing wall.",
+    "Five K terraces photographed from their garden side and two with a garage door in the wall block are held, not modelled."
+  ]
+}

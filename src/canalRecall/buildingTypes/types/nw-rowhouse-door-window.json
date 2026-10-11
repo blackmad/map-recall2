@@ -303,7 +303,7 @@
     }
   },
   "notes": [
-    "Front on the SHORT side (frontOnShort). The photos show the houses alternate door-left / door-right in pairs; the unit is not mirrored, so half the doors sit on the wrong side of the house.",
+    "Front on the SHORT side (frontOnShort). Most terraces alternate normal (big window, door, small window) and mirrored houses in pairs; the Geuzenveld porch rows (terraces 233-282) are uniform. build.ts mirrors per house from variants.json `mirror` (read off the photos, staging/building-types/rh-survey/parity.json); where no photo was readable the rule is: leftmost house of the terrace mirrored, then alternating.",
     "Door colours (red, dark, white, grey) differ house by house; the unit uses the commonest red.",
     "Dormer additions (about one house in four) are not modelled."
   ]

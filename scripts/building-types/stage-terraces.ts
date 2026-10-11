@@ -15,7 +15,7 @@ const arg = (n: string, d = '') => process.argv.find(a => a.startsWith(`--${n}=`
 const nw = arg('nw'), classesFile = arg('classes', 'staging/building-types/rh-survey/classes.json'), prefix = arg('prefix', 'rh');
 const CELL_LNG = Number(arg('cell-lng', '0.012')), CELL_LAT = Number(arg('cell-lat', '0.007'));
 if (!nw) throw new Error('--nw required');
-const classes = JSON.parse(fs.readFileSync(classesFile, 'utf8')) as {terrace: number; size: number; class: string; rep: string; via: string; photo: string | null; photoDate: string; frontBearingDeg: number | null; members: string[]; type?: string; variant?: string; hold?: string}[];
+const classes = JSON.parse(fs.readFileSync(classesFile, 'utf8')) as {terrace: number; size: number; class: string; rep: string; via: string; photo: string | null; photoDate: string; frontBearingDeg: number | null; members: string[]; type?: string; variant?: string; hold?: string; eavesM?: number}[];
 const terraces = JSON.parse(fs.readFileSync(path.join(path.dirname(classesFile), 'terraces.json'), 'utf8')).terraces as {terrace: number; centreLngLat: [number, number]}[];
 const centre = new Map(terraces.map(t => [t.terrace, t.centreLngLat]));
 
@@ -37,7 +37,7 @@ ordered.forEach(([, list], idx) => {
   execFileSync(process.execPath, ['--import', 'tsx', 'scripts/building-types/select-area.ts', `--nw=${nw}`, `--area=${area}`, `--ids=${idsFile}`, `--idtype=${idType}`], {stdio: ['ignore', 'pipe', 'inherit']});
   const variants: Record<string, any> = {};
   for (const c of list) for (const id of c.members) {
-    const base = {type: c.type ?? idType, ...(c.frontBearingDeg != null ? {frontBearingDeg: c.frontBearingDeg} : {})};
+    const base = {type: c.type ?? idType, ...(c.frontBearingDeg != null ? {frontBearingDeg: c.frontBearingDeg} : {}), ...(c.eavesM ? {eavesM: c.eavesM} : {})};
     variants[id] = c.type
       ? {...base, variant: c.variant, note: `terrace #${c.terrace} (${c.size} houses) covered by panorama ${c.photo} ${c.photoDate} via ${c.via}, representative pand ${c.rep}`}
       : {...base, hold: c.hold};
