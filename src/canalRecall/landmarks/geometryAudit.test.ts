@@ -165,3 +165,12 @@ for (const id of [...new Set(pins.map(p => p.id))]) {
     }
   });
 }
+
+test('geometry baseline: every recorded reason belongs to a baselined model and says why', () => {
+  const file = path.join(process.cwd(), 'scripts/landmarks/geometry-audit-baseline.json');
+  const b = JSON.parse(fs.readFileSync(file, 'utf8')) as {reasons?: Record<string, string>; models: Record<string, Record<string, number>>};
+  for (const [id, why] of Object.entries(b.reasons ?? {})) {
+    assert.ok(b.models[id], `reason for ${id} but no baseline entry`);
+    assert.ok(why.trim().length > 20, `reason for ${id} is too short to explain a new entry`);
+  }
+});
