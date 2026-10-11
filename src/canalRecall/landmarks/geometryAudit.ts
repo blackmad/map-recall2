@@ -32,6 +32,8 @@ export interface GeometryAuditThresholds {
   /** Fraction of an opening's face projected outside its wall's silhouette that counts as overhanging. */
   overhangWarn: number;
   overhangFail: number;
+  /** A balcony (slab touching the wall, trim attached to it) may project this far (m) in front of the wall without counting as overhang. */
+  balconyMax: number;
   /** Fraction of an opening's face hidden behind the solid wall surface (not a hole) that counts as buried. */
   buriedWarn: number;
   /** Opening parts larger than this (bbox diagonal, m) are treated as host geometry (walls, roofs). */
@@ -47,7 +49,7 @@ export interface GeometryAuditThresholds {
 }
 
 export const GEOMETRY_THRESHOLDS: GeometryAuditThresholds = {
-  weld: 0.001, touchTol: 0.03, floatFail: 0.1, overhangWarn: 0.12, overhangFail: 0.35, buriedWarn: 0.3,
+  weld: 0.001, touchTol: 0.03, floatFail: 0.1, overhangWarn: 0.12, overhangFail: 0.35, balconyMax: 2, buriedWarn: 0.3,
   maxOpeningDiag: 14, zPlaneTol: 0.01, zAbut: 0.005, zNearTol: 0.03, zWarnArea: 0.25, zFailArea: 2,
 };
 
@@ -379,25 +381,28 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
     // Walls this assembly belongs to: vertical host planes within 0.8 m of it whose extent overlaps it. The plane
     // facing the nearest one wins the orientation; every parallel plane in that band counts as wall behind the opening
     // (a window on a pilaster, a buttress or a recessed bay is still on a wall).
-    const cands: {w: WallSegment; sd: number}[] = [];
+    // `any`: every wall plane in reach regardless of orientation (a balcony's rail returns can outweigh its front in the
+    // facing-axis estimate, so the balcony rule must not depend on it); `cands`: those within 0.8 m and facing along the assembly's axis.
+    const any: {w: WallSegment; sd: number; close: boolean; axisOk: boolean}[] = [];
     for (const w of walls) {
-      if (axisStrength > 0.3 && Math.abs(w.n[0] * axis[0] + w.n[1] * axis[1]) < 0.94) continue;
+      const axisOk = !(axisStrength > 0.3 && Math.abs(w.n[0] * axis[0] + w.n[1] * axis[1]) < 0.94);
       const sds = [[bb.min[0], bb.min[2]], [bb.max[0], bb.min[2]], [bb.min[0], bb.max[2]], [bb.max[0], bb.max[2]]].map(([x, z]) => w.n[0] * x + w.n[1] * z - w.d);
       const lo = Math.min(...sds), hi = Math.max(...sds);
-      if (hi < -0.8 || lo > 0.8) continue;
+      // `close` = within 0.8 m (the plain window case); the wider band to `balconyMax` is only used for balconies.
+      if (hi < -0.8 || lo > 2 * th.balconyMax) continue;
       const us = [[bb.min[0], bb.min[2]], [bb.max[0], bb.min[2]], [bb.min[0], bb.max[2]], [bb.max[0], bb.max[2]]].map(([x, z]) => x * w.t[0] + z * w.t[1]);
       if (Math.max(...us) < w.uMin - 0.3 || Math.min(...us) > w.uMax + 0.3 || bb.max[1] < w.vMin - 0.3 || bb.min[1] > w.vMax + 0.3) continue;
       // Prefer a plane the opening stands on or in front of; a plane it lies wholly behind is usually the inner face of a
       // thin shell (a drum, a tower wall) and only wins when nothing better exists.
-      cands.push({w, sd: Math.max(0, lo, -hi) + (hi < 0.02 ? 5 : 0)});
+      any.push({w, sd: Math.max(0, lo, -hi) + (hi < 0.02 ? 5 : 0), close: lo <= 0.8, axisOk});
     }
-    cands.sort((p, q) => p.sd - q.sd);
-    // A grounded part only belongs to a wall it stands against (railings and gates stand off it).
-    const best = cands[0] && (bb.min[1] > 0.02 || cands[0].sd <= 0.25) ? cands[0].w : undefined;
-    const group = best ? cands.filter(c => c.w.n[0] * best.n[0] + c.w.n[1] * best.n[1] > 0.985).map(c => c.w) : [];
-    let outside = 0, buried = 0;
-    if (best) {
-      // Sample the assembly faces turned towards the wall's outside (the visible face of a window).
+    any.sort((p, q) => p.sd - q.sd);
+    const cands = any.filter(x => x.close && x.axisOk);
+
+    // Sample the assembly faces turned towards the wall's outside (the visible face of a window) against `group`:
+    // the fraction outside the walls' silhouette and the fraction hidden behind solid wall. `reach` is how far in front
+    // of a plane (m) a sample still counts as on it.
+    const sample = (best: WallSegment, group: WallSegment[], reach: number): {outside: number; buried: number} => {
       let nS = 0, nOut = 0, nBur = 0;
       for (const t of tris) {
         const [a, b, cc] = triVerts(s, t), {n, area} = triNormal(a, b, cc);
@@ -407,7 +412,7 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
           let inside = false, behind = false;
           for (const w of group) {
             const u = p[0] * w.t[0] + p[2] * w.t[1], sd = w.n[0] * p[0] + w.n[1] * p[2] - w.d;
-            if (sd > 0.8 || sd < -0.8) continue;
+            if (sd > reach || sd < -0.8) continue;
             const r = raster(w);
             if (inSilhouette(r, u, p[1], 0.12)) inside = true;
             if (sd < -0.01 && solidAt(r, u, p[1])) behind = true;
@@ -417,8 +422,64 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
           else if (behind && blocked(p, [best.n[0], 0, best.n[1]], own)) nBur++;
         }
       }
-      if (nS >= 4) { outside = nOut / nS; buried = nBur / nS; }
+      return nS >= 4 ? {outside: nOut / nS, buried: nBur / nS} : {outside: 0, buried: 0};
+    };
+
+    // A grounded part only belongs to a wall it stands against (railings and gates stand off it).
+    const best = cands[0] && (bb.min[1] > 0.02 || cands[0].sd <= 0.25) ? cands[0].w : undefined;
+    const group = best ? cands.filter(c => c.w.n[0] * best.n[0] + c.w.n[1] * best.n[1] > 0.985).map(c => c.w) : [];
+    let outside = 0, buried = 0;
+    if (best) ({outside, buried} = sample(best, group, 0.8));
+
+    // Balcony: trim sitting on a small distinct horizontal slab (within 8 cm of it: rail bars stand a little proud) that sticks out from the wall past 0.8 m.
+    // Only consulted where the plain rule has nothing to say or says overhang (a rail face standing in front of the wall
+    // can otherwise read as the wall). The slab must touch the wall plane (else the whole balcony floats off it), its
+    // projection perpendicular to the wall is capped at `balconyMax`, and the trim must still lie laterally inside the
+    // wall's silhouette: a "balcony" 3 m deep, a floating slab, or trim hanging past the wall's side edge all stay overhangs.
+    if ((!best || outside > th.overhangWarn) && any.length && (bb.min[1] > 0.02 || any[0].sd <= 0.25)) {
+      // Reference walls: the parallel planes the assembly stands in front of, furthest first (the balcony's own rail/fascia
+      // face is not the wall; a stepped facade has several planes and the slab must reach one of them).
+      const refs = any.map(x => ({w: x.w, d: x.w.n[0] * c[0] + x.w.n[1] * c[2] - x.w.d})).filter(x => x.d >= -0.05).sort((p, q) => q.d - p.d).map(x => x.w);
+      const touched = new Set<number>();
+      if (refs.length) {
+        for (const t of near) {
+          if (own.has(t)) continue;
+          const tv = triVerts(s, t);
+          if (verts.some(v => pointTriangleDistSq(v, tv[0], tv[1], tv[2]) <= 0.08 * 0.08)) touched.add(part[t]);
+        }
+      }
+      let verdict: 'none' | 'ok' | 'bad' = 'none', okRef: WallSegment | undefined;
+      for (const ref of refs) {
+        if (!touched.size) break;
+        let proj = 0, uLo = Infinity, uHi = -Infinity;
+        for (const v of verts) { proj = Math.max(proj, ref.n[0] * v[0] + ref.n[1] * v[2] - ref.d); const u = v[0] * ref.t[0] + v[2] * ref.t[1]; uLo = Math.min(uLo, u); uHi = Math.max(uHi, u); }
+        // Trim parallel to the wall and at least 0.8 m long (a fascia, a glazed screen), not a post or a fixture that happens to stand near a slab.
+        if (proj <= 0.8 || uHi - uLo < 0.8) continue;
+        let slabFound = false, slabReaches = false;
+        for (const pid of touched) {
+          let minSd = Infinity, maxSd = -Infinity, slabArea = 0, y0 = Infinity, y1 = -Infinity, u0 = Infinity, u1 = -Infinity;
+          for (const t of parts.get(pid) ?? []) {
+            const [a, b, cc] = triVerts(s, t);
+            for (const v of [a, b, cc]) {
+              const sd = ref.n[0] * v[0] + ref.n[1] * v[2] - ref.d, u = v[0] * ref.t[0] + v[2] * ref.t[1];
+              minSd = Math.min(minSd, sd); maxSd = Math.max(maxSd, sd); y0 = Math.min(y0, v[1]); y1 = Math.max(y1, v[1]); u0 = Math.min(u0, u); u1 = Math.max(u1, u);
+            }
+            const {n, area} = triNormal(a, b, cc);
+            if (n[1] > 0.9 && a[1] >= bb.min[1] - 0.12 && a[1] <= bb.max[1] + 0.15) slabArea += area; // an upward face at the trim's level
+          }
+          // The trim sits at the slab's outer edge (a fascia, a front screen), not on top of it near the wall.
+          // A balcony is a small distinct part: a slab (>= 0.3 m2 of upward face at the trim's level), at most a storey of rail above it,
+          // a few metres wide, within 0.6 m of the wall plane (a slab further off is a bay or a porch, not this rule's business).
+          if (slabArea >= 0.3 && maxSd >= 0.8 && minSd <= 0.6 && Math.abs(proj - maxSd) <= 0.15 && y1 - y0 <= 1.8 && u1 - u0 <= 8 && maxSd - minSd <= 2 * th.balconyMax + 0.5) { slabFound = true; if (minSd <= tol) slabReaches = true; }
+        }
+        if (!slabFound) continue;
+        if (slabReaches && proj <= th.balconyMax) { verdict = 'ok'; okRef = ref; break; }
+        verdict = 'bad';
+      }
+      if (verdict === 'bad' && !best) { outside = 1; buried = 0; }
+      else if (okRef) { const r = sample(okRef, [okRef], th.balconyMax + 0.1); if (!best || r.outside < outside) ({outside, buried} = r); } // judged laterally; never worsens a plain verdict
     }
+
     const mats = [...new Set(tris.map(t => s.materials[s.triMaterial[t]].name))].sort();
     const base = {materials: mats, min: bb.min, max: bb.max, centre: c, gap, outside: +outside.toFixed(2), buried: +buried.toFixed(2), wallBearing: best?.bearingDeg, triangles: tris};
     // A part sunk wholly inside the wall is buried, not floating, even though no wall surface touches it.

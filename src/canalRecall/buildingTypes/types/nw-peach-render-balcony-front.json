@@ -152,7 +152,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 3.0,
-              "depth": 0.75,
+              "depth": 1.5,
               "railing": "slats"
             },
             {
@@ -248,7 +248,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 3.0,
-              "depth": 0.75,
+              "depth": 1.5,
               "railing": "slats"
             },
             {
@@ -535,8 +535,8 @@
   "notes": [
     "One design with a different street side on each pand: the entrance side (flat render, 4 + 4 window per floor either side of the stair strip; this type) and the balcony side (nw-peach-render-balcony-front, large curved white slatted balconies). The orientation step picks the front from the nearest street, the survey photo shows which side that was, and the pand is assigned to the type whose front matches the photo.",
     "Both sides have an entrance door in the stair strip and a second door beside it; the strip carries coloured panels with a small stair window per floor. Window positions are staggered by row in the photos; drawn as a regular grid (spacing counted from the 2102138 and 2063294 frontals).",
-    "Balconies are drawn 0.75 m deep although the photos show ~1.5 m curved decks: the geometry audit fails balcony faces standing more than 0.8 m off the wall as overhanging.",
     "Colour variant per street, see variants. Plinth is a tiled band with a row of small dark vents; the vents are drawn as dark plates.",
-    "Photos: Gemeente Amsterdam panoramas (CC BY 4.0), crops made by scripts/building-types/camera-sheets.ts --survey (cached in .cache/building-types/crops)."
+    "Photos: Gemeente Amsterdam panoramas (CC BY 4.0), crops made by scripts/building-types/camera-sheets.ts --survey (cached in .cache/building-types/crops).",
+    "Balconies are now 1.5 m deep as in the photos (0363100012127500, 2087722: curved slatted decks projecting about 0.75 of the 2 m width). They were drawn 0.75 m only to pass the geometry audit, which now accepts a balcony assembly (slab touching the wall plus rail) up to 2.0 m."
   ]
 }

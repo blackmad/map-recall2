@@ -96,7 +96,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 1.7,
-              "depth": 0.75,
+              "depth": 1.1,
               "railing": "solid"
             },
             {
@@ -116,7 +116,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 1.7,
-              "depth": 0.75,
+              "depth": 1.1,
               "railing": "solid"
             },
             {
@@ -197,7 +197,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 1.7,
-              "depth": 0.75,
+              "depth": 1.1,
               "railing": "solid"
             },
             {
@@ -217,7 +217,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 1.7,
-              "depth": 0.75,
+              "depth": 1.1,
               "railing": "solid"
             },
             {
@@ -288,7 +288,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 1.7,
-              "depth": 0.75,
+              "depth": 1.1,
               "railing": "solid"
             }
           ]
@@ -302,7 +302,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 1.7,
-              "depth": 0.75,
+              "depth": 1.1,
               "railing": "solid"
             }
           ]
@@ -361,7 +361,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 1.7,
-              "depth": 0.75,
+              "depth": 1.1,
               "railing": "solid"
             }
           ]
@@ -375,7 +375,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 1.7,
-              "depth": 0.75,
+              "depth": 1.1,
               "railing": "solid"
             }
           ]
@@ -468,6 +468,7 @@
   "notes": [
     "Nine panden are confirmed from frontal or oblique photos of the facade; Karel Klinkenbergstraat 69 and 57-59 (0363100012064119, 0363100012063393) only have close-ups of the numbered entrance sign and garage doors in the survey, which match, and are assigned with that caveat.",
     "Balcony count per end (two side by side) is counted from the oblique photos; the exact balcony width is read from the 111-113 frontal view.",
-    "Photos: Gemeente Amsterdam panoramas (CC BY 4.0), crops made by scripts/building-types/camera-sheets.ts --survey (cached in .cache/building-types/crops)."
+    "Photos: Gemeente Amsterdam panoramas (CC BY 4.0), crops made by scripts/building-types/camera-sheets.ts --survey (cached in .cache/building-types/crops).",
+    "Balcony depth 1.1 m (was 0.75 m): in the oblique 0363100012073950 and 2135872 the grey metal-clad balcony fronts stand about 0.55 of their 2.0 m width off the cream slab edge. Estimated from the photos."
   ]
 }
