@@ -1531,11 +1531,11 @@
   "hotel-de-l-europe": {
    "opening-floating": 0,
    "opening-floating-fail": 0,
-   "opening-overhang": 14,
-   "opening-overhang-fail": 4,
-   "opening-buried": 11,
-   "zfight-m2": 43.2,
-   "zfight-near-m2": 30.1,
+   "opening-overhang": 5,
+   "opening-overhang-fail": 3,
+   "opening-buried": 8,
+   "zfight-m2": 33.2,
+   "zfight-near-m2": 7.4,
    "window-mismatch": 13,
    "window-missing": 3,
    "window-misaligned": 0
