@@ -171,11 +171,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   clusters 2/4/5/7/8 and the 2,922 rowhouses (needs street-facing photos);
   backs and gables are inferred everywhere; then decide default-on. Review
   renders are archived in the source repo under building-types/.
-  Held 2026-10-11 (big-r): Piet Hein Buildings (vriesseveem-9, landmark
-  with POI card) reads khaki with grouped windows vs a grey glass/perforated
-  panel curtain wall and curved glazed lobby; Bercylaan 801-855 is dark grey
-  punched windows vs white stacked floor bands. Jacob Bontiusplaats 9
-  installed (ordinary; louvres drawn as dark bands, not blades).
+  Piet Hein Buildings (landmark) and Bercylaan 801-855 installed after a
+  facade rework (2026-10-11): perforated panel pattern not modelled; the
+  white banded volume in Bercylaan photos is the neighbouring 2026 pand.
+  `npm run check:osm-under-models` (in check:canal) now fails when an OSM
+  building lies under a placed model without being suppressed; it checks
+  the 65 models with a nativeRing footprint; the other ~215 (older formats)
+  are not covered yet.
   Booking.com HQ held (2026-10-10): the plate rework (stepped bands,
   terrace cut, lower-case sign, teal glass) still reads as a gridded box.
   Needs the curved, stepped south front cantilevered over the entrance plaza
