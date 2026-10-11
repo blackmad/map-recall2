@@ -144,6 +144,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   (bin by plane, or rasterise only the triangle) and re-run the baseline.
   Kohnstammhuis stone reads too warm/tan against the grey photo.
 - **Nieuw-West building types (2026-10-11)**: opt-in `?buildingTypes=1`
+  draws 3,072 photo-confirmed instances (2026-10-11 latest: +85 post-war
+  flats west of the A10 in three designs: loggia-stack 5st 30 (Osdorp),
+  portiek 3st blue-door 31 (Slotermeer; 14.2 and 16.0 m frontages share
+  one mesh), garage-pair balcony 5st 24. Flat clusters split 3-6 designs
+  per street/hof, so most stay held (220 in six areas, reasons per pand);
+  tile-stripe cluster 10 (~29 blocks) needs a street-front photo; the
+  6-9 storey clusters 21/26/30 are not surveyed.)
   draws 2,987 photo-confirmed instances (2026-10-11 later: +611 terraced
   houses in seven more designs: red-panel-door E2 272, garage-door 3st/2st
   120, white-sheds E1 99 (shed rhythm unread, not re-sheeted), tall-glass
