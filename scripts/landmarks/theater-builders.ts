@@ -11,18 +11,31 @@ export function buildTheaterLandmark(id:string,w:number,d:number,b:BuildingTools
  function cylinder(x:number,y:number,z:number,r:number,h:number,c:C){add(new T.CylinderGeometry(r,r,h,12),c,x,y+h/2,z);}
  function text(t:string,x:number,y:number,z:number,p:number,c:C){const letters:Record<string,string[]>={A:['010','101','111','101','101'],B:['110','101','110','101','110'],D:['110','101','101','101','110'],E:['111','100','110','100','111'],F:['111','100','110','100','100'],I:['111','010','010','010','111'],K:['101','110','100','110','101'],L:['100','100','100','100','111'],M:['10001','11011','10101','10001','10001'],N:['1001','1101','1011','1001','1001'],O:['111','101','101','101','111'],R:['110','101','110','101','101'],S:['111','100','111','001','111'],T:['111','010','010','010','010'],X:['101','101','010','101','101']};let total=[...t].reduce((v,ch)=>v+(letters[ch]?.[0].length??2)+1,0)*p,u=x-total/2;for(const ch of t){const rows=letters[ch];if(rows)for(let j=0;j<5;j++)for(let k=0;k<rows[j].length;k++)if(rows[j][k]==='1')box(u+k*p,y+(4-j)*p,z,p*.85,p*.85,.08,c);u+=((rows?.[0].length??2)+1)*p;}}
  if(id==='felix-meritis'){
-  // The measured plot is long: narrow stair connector and oval concert hall
-  // behind the rectangular front house, rather than one oversized canal block.
-  const fd=Math.min(31,depth*.4),fz=front-fd/2;
-  box(0,0,fz,width*.96,23,fd,'brick');box(0,23,fz,width*.98,.5,fd,'slate');
-  box(0,0,-depth*.07,width*.53,19,depth*.36,'brick');box(0,19,-depth*.07,width*.56,.4,depth*.36,'slate');
-  let hall=new T.CylinderGeometry(1,1,19,24);hall.scale(width*.45,1,depth*.21);add(hall,'brick',0,9.5,-depth*.29);let roof=new T.CylinderGeometry(1,1,.5,24);roof.scale(width*.46,1,depth*.21);add(roof,'slate',0,19.3,-depth*.29);
+  // The BAG plot runs ~86 m back from the Keizersgracht, but only its canal end is built:
+  // the front house, the famous oval concert hall directly behind it, then a long garden.
+  // The old builder stacked front house + long connector + hall the length of the plot, so
+  // the mass ran street-to-street to the Prinsengracht (user 2026-10-11). The plot's own
+  // ~86 m length is kept (placement fits the model's long axis to it) so the garden, not a
+  // building, fills the rear.
+  const fh=22,fz=front-fh/2;
+  box(0,0,fz,width*.96,23,fh,'brick');box(0,23,fz,width*.98,.5,fh,'slate');
+  // Oval concert hall immediately behind the front house, not at the plot's far end.
+  const hallZ=front-fh-13,hallRz=13;
+  let hall=new T.CylinderGeometry(1,1,19,24);hall.scale(width*.45,1,hallRz);add(hall,'brick',0,9.5,hallZ);
+  let roof=new T.CylinderGeometry(1,1,.5,24);roof.scale(width*.46,1,hallRz);add(roof,'slate',0,19.3,hallZ);
+  box(0,0,front-fh-hallRz*.5,width*.53,19,hallRz*1.5,'brick');box(0,19,front-fh-hallRz*.5,width*.56,.4,hallRz*1.5,'slate');
+  // Rear garden: a flat parterre with a low hedge border holds the plot's extent without
+  // standing a building on it.
+  const gardenFrom=hallZ-hallRz,gardenRear=-front,gardenZ=(gardenFrom+gardenRear)/2,gardenLen=gardenFrom-gardenRear;
+  box(0,0,gardenZ,width*.94,.12,gardenLen,'green');
+  for(const zz of [gardenFrom-.4,gardenRear+.4])box(0,.12,zz,width*.94,.45,.5,'green');
+  for(const xx of [-width*.46,width*.46])box(xx,.12,gardenZ,.5,.45,gardenLen,'green');
   const z=front+.06;box(0,0,z,width,23,.4,'stone');for(const y of [.2,5.8,21.7,23])box(0,y,z+.3,width+.5,.4,.6,'white');
   for(let i=0;i<5;i++){let x=(i-2)*width*.185;win(x,.8,z+.26,width*.14,4.1);win(x,6.5,z+.26,width*.14,7,true);win(x,16,z+.26,width*.14,3.3);}
   for(const x of [-width*.29,-width*.1,width*.1,width*.29]){cylinder(x,5.8,z+.58,.45,15.8,'stone');box(x,5.7,z+.58,1.25,.35,1.25,'white');box(x,21.1,z+.58,1.35,.6,1.35,'white');}
   gable(0,23.3,z+.3,width+1,4.1,1.2,'stone');gable(0,23.6,z+.96,width-1,3.3,.16,'white');text('FELIX MERITIS',0,22,z+.95,.17,'dark');
   // Low faceted observation pavilion and open roof platform behind the pediment.
-  box(0,23.5,front-fd*.66,width*.58,.5,fd*.32,'stone');cylinder(0,24,front-fd*.66,3.2,3.5,'stone');add(new T.ConeGeometry(3.5,2.1,8),'slate',0,28.55,front-fd*.66);for(let i=0;i<8;i++){let a=i*Math.PI/4;box(3.15*Math.sin(a),24.8,front-fd*.66+3.15*Math.cos(a),.7,1.7,.12,'dark');}
+  const pavZ=front-fh*.62;box(0,23.5,pavZ,width*.58,.5,fh*.32,'stone');cylinder(0,24,pavZ,3.2,3.5,'stone');add(new T.ConeGeometry(3.5,2.1,8),'slate',0,28.55,pavZ);for(let i=0;i<8;i++){let a=i*Math.PI/4;box(3.15*Math.sin(a),24.8,pavZ+3.15*Math.cos(a),.7,1.7,.12,'dark');}
  }else if(id==='kleine-komedie'){
   box(0,0,0,width*.98,13.5,depth*.97,'brick');gable(0,13.5,0,width*.98,5,depth*.97,'slate');const z=front+.06;
   for(const y of [.1,5.1,9.3,13.3])box(0,y,z,width,.25,.4,'stone');for(let i=0;i<6;i++){let x=(i-2.5)*width*.15;win(x,.5,z,2.1,3.8,true);win(x,5.6,z,2.05,3);win(x,9.8,z,2.05,2.5);}
