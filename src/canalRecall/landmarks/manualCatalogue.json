@@ -29822,238 +29822,394 @@
       ]
     }
   },
-{
-  "id": "jacob-bontiusplaats-9",
-  "name": "Jacob Bontiusplaats 9 offices",
-  "category": "ordinary",
-  "modelUrl": "./models/jacob-bontiusplaats-9.glb",
-  "suppressOsmIds": [
-    "NL.IMBAG.Pand.0363100012165819"
-  ],
-  "spatialSuppression": false,
-  "footprint": {
-    "centre": [
-      4.928536040375203,
-      52.371777282517606
+  {
+    "id": "jacob-bontiusplaats-9",
+    "name": "Jacob Bontiusplaats 9 offices",
+    "category": "ordinary",
+    "modelUrl": "./models/jacob-bontiusplaats-9.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012165819"
     ],
-    "headingDegrees": 135,
-    "lengthMetres": 180.94,
-    "widthMetres": 88.12
-  },
-  "groundAltitudeMetres": 0,
-  "facingOffsetDegrees": 0,
-  "surveyed": {
-    "anchor": [
-      4.928503332362755,
-      52.37164586408426
-    ],
-    "northOffsetDegrees": 0,
-    "source": "PDOK BAG 0363100012165819 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
-  },
-  "preservePositionPrecision": true,
-  "attribution": {
-    "title": "Jacob Bontiusplaats 9 offices original architecture",
-    "author": "Map Recall",
-    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165819",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
-    "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
-  },
-  "buildingFootprint": {
-    "type": "Polygon",
-    "coordinates": [
-      [
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.928536040375203,
+        52.371777282517606
+      ],
+      "headingDegrees": 135,
+      "lengthMetres": 180.94,
+      "widthMetres": 88.12
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.928503332362755,
+        52.37164586408426
+      ],
+      "northOffsetDegrees": 0,
+      "source": "PDOK BAG 0363100012165819 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "Jacob Bontiusplaats 9 offices original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165819",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
         [
-          4.929916835881083,
-          52.37207083645264
-        ],
-        [
-          4.9298037335915375,
-          52.37213963177153
-        ],
-        [
-          4.929813960844791,
-          52.372146070512336
-        ],
-        [
-          4.929808682177993,
-          52.37214960025882
-        ],
-        [
-          4.9297979706424275,
-          52.372143132683775
-        ],
-        [
-          4.929106477992706,
-          52.37256377961113
-        ],
-        [
-          4.929116500782919,
-          52.372570109768354
-        ],
-        [
-          4.929110957794772,
-          52.37257362947344
-        ],
-        [
-          4.929100522744802,
-          52.3725674055731
-        ],
-        [
-          4.929006805526594,
-          52.37262442036497
-        ],
-        [
-          4.927163503136382,
-          52.37148888661781
-        ],
-        [
-          4.927569814832659,
-          52.371241820054784
-        ],
-        [
-          4.927559249279671,
-          52.37123548765653
-        ],
-        [
-          4.927564717875226,
-          52.37123205761142
-        ],
-        [
-          4.927574351330277,
-          52.371237649400264
-        ],
-        [
-          4.92778351613115,
-          52.37111079997545
-        ],
-        [
-          4.927764505078211,
-          52.37109901524809
-        ],
-        [
-          4.927769174506655,
-          52.37109618426795
-        ],
-        [
-          4.927787999423716,
-          52.371107509900064
-        ],
-        [
-          4.927875255313832,
-          52.37105463229647
-        ],
-        [
-          4.9278662096569406,
-          52.371048997873714
-        ],
-        [
-          4.927871574771377,
-          52.371045630326805
-        ],
-        [
-          4.927882036889523,
-          52.37105202521001
-        ],
-        [
-          4.928074088934464,
-          52.37093552562162
-        ],
-        [
-          4.928481360410813,
-          52.37118679120671
-        ],
-        [
-          4.929916835881083,
-          52.37207083645264
+          [
+            4.929916835881083,
+            52.37207083645264
+          ],
+          [
+            4.9298037335915375,
+            52.37213963177153
+          ],
+          [
+            4.929813960844791,
+            52.372146070512336
+          ],
+          [
+            4.929808682177993,
+            52.37214960025882
+          ],
+          [
+            4.9297979706424275,
+            52.372143132683775
+          ],
+          [
+            4.929106477992706,
+            52.37256377961113
+          ],
+          [
+            4.929116500782919,
+            52.372570109768354
+          ],
+          [
+            4.929110957794772,
+            52.37257362947344
+          ],
+          [
+            4.929100522744802,
+            52.3725674055731
+          ],
+          [
+            4.929006805526594,
+            52.37262442036497
+          ],
+          [
+            4.927163503136382,
+            52.37148888661781
+          ],
+          [
+            4.927569814832659,
+            52.371241820054784
+          ],
+          [
+            4.927559249279671,
+            52.37123548765653
+          ],
+          [
+            4.927564717875226,
+            52.37123205761142
+          ],
+          [
+            4.927574351330277,
+            52.371237649400264
+          ],
+          [
+            4.92778351613115,
+            52.37111079997545
+          ],
+          [
+            4.927764505078211,
+            52.37109901524809
+          ],
+          [
+            4.927769174506655,
+            52.37109618426795
+          ],
+          [
+            4.927787999423716,
+            52.371107509900064
+          ],
+          [
+            4.927875255313832,
+            52.37105463229647
+          ],
+          [
+            4.9278662096569406,
+            52.371048997873714
+          ],
+          [
+            4.927871574771377,
+            52.371045630326805
+          ],
+          [
+            4.927882036889523,
+            52.37105202521001
+          ],
+          [
+            4.928074088934464,
+            52.37093552562162
+          ],
+          [
+            4.928481360410813,
+            52.37118679120671
+          ],
+          [
+            4.929916835881083,
+            52.37207083645264
+          ]
         ]
       ]
-    ]
-  }
-},
-{
-  "id": "bercylaan-801-855",
-  "name": "BOLD, Bercylaan 801-855",
-  "category": "ordinary",
-  "modelUrl": "./models/bercylaan-801-855.glb",
-  "suppressOsmIds": [
-    "NL.IMBAG.Pand.0363100012250610"
-  ],
-  "spatialSuppression": false,
-  "footprint": {
-    "centre": [
-      4.905327763569813,
-      52.38557058320185
+    }
+  },
+  {
+    "id": "bercylaan-801-855",
+    "name": "BOLD, Bercylaan 801-855",
+    "category": "ordinary",
+    "modelUrl": "./models/bercylaan-801-855.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012250610"
     ],
-    "headingDegrees": 53.5,
-    "lengthMetres": 120.04,
-    "widthMetres": 33.36
-  },
-  "groundAltitudeMetres": 0,
-  "facingOffsetDegrees": 0,
-  "surveyed": {
-    "anchor": [
-      4.905399646658424,
-      52.38551282628485
-    ],
-    "northOffsetDegrees": 0,
-    "source": "PDOK BAG 0363100012250610 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
-  },
-  "preservePositionPrecision": true,
-  "attribution": {
-    "title": "BOLD, Bercylaan 801-855 original architecture",
-    "author": "Map Recall",
-    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012250610",
-    "licence": "Original project asset",
-    "licenceUrl": "./LICENSE",
-    "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
-  },
-  "buildingFootprint": {
-    "type": "Polygon",
-    "coordinates": [
-      [
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.905327763569813,
+        52.38557058320185
+      ],
+      "headingDegrees": 53.5,
+      "lengthMetres": 120.04,
+      "widthMetres": 33.36
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.905399646658424,
+        52.38551282628485
+      ],
+      "northOffsetDegrees": 0,
+      "source": "PDOK BAG 0363100012250610 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "BOLD, Bercylaan 801-855 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012250610",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
         [
-          4.904612056909638,
-          52.385916443504
-        ],
-        [
-          4.9050208877403785,
-          52.385576334288096
-        ],
-        [
-          4.905655903952866,
-          52.385048033807756
-        ],
-        [
-          4.9057831385289905,
-          52.38511408923697
-        ],
-        [
-          4.905902773566651,
-          52.38518745657659
-        ],
-        [
-          4.906002816583049,
-          52.385259270210675
-        ],
-        [
-          4.905997605518138,
-          52.385264372013914
-        ],
-        [
-          4.905409602925798,
-          52.3857526816599
-        ],
-        [
-          4.904999623949092,
-          52.38609313804671
-        ],
-        [
-          4.904612056909638,
-          52.385916443504
+          [
+            4.904612056909638,
+            52.385916443504
+          ],
+          [
+            4.9050208877403785,
+            52.385576334288096
+          ],
+          [
+            4.905655903952866,
+            52.385048033807756
+          ],
+          [
+            4.9057831385289905,
+            52.38511408923697
+          ],
+          [
+            4.905902773566651,
+            52.38518745657659
+          ],
+          [
+            4.906002816583049,
+            52.385259270210675
+          ],
+          [
+            4.905997605518138,
+            52.385264372013914
+          ],
+          [
+            4.905409602925798,
+            52.3857526816599
+          ],
+          [
+            4.904999623949092,
+            52.38609313804671
+          ],
+          [
+            4.904612056909638,
+            52.385916443504
+          ]
         ]
       ]
-    ]
+    }
+  },
+  {
+    "id": "vriesseveem-9",
+    "name": "Piet Hein Buildings",
+    "landmarkId": "vriesseveem-9",
+    "modelUrl": "./models/vriesseveem-9.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012239869"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.917696994496487,
+        52.37749927041767
+      ],
+      "headingDegrees": 16,
+      "lengthMetres": 130.12,
+      "widthMetres": 53.3
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.91776314964998,
+        52.377507320152546
+      ],
+      "northOffsetDegrees": 0,
+      "source": "PDOK BAG 0363100012239869 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+    },
+    "materialOverrides": {
+      "greyBrick": "#7f8680",
+      "glass": "#46647b",
+      "frame": "#9aa3a1",
+      "dark": "#2f353a",
+      "concrete": "#c9d3d4"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "Piet Hein Buildings original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012239869",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.916879861949445,
+            52.37787982575942
+          ],
+          [
+            4.91682156652497,
+            52.3777543957506
+          ],
+          [
+            4.916769157182568,
+            52.377640358515386
+          ],
+          [
+            4.916753665653875,
+            52.37760691670561
+          ],
+          [
+            4.916759359593395,
+            52.377605932705514
+          ],
+          [
+            4.9167382659452645,
+            52.377560667805476
+          ],
+          [
+            4.916714429876043,
+            52.37750950507066
+          ],
+          [
+            4.9166772796146585,
+            52.37742871095164
+          ],
+          [
+            4.91698279454569,
+            52.37737586357475
+          ],
+          [
+            4.91751678911525,
+            52.377283153722004
+          ],
+          [
+            4.918297809197772,
+            52.37714775771126
+          ],
+          [
+            4.918437537600652,
+            52.37712349592223
+          ],
+          [
+            4.91849748132719,
+            52.37725311992669
+          ],
+          [
+            4.91851781367824,
+            52.377301095779416
+          ],
+          [
+            4.918519638078744,
+            52.37730077944353
+          ],
+          [
+            4.9185348836523355,
+            52.377333986367624
+          ],
+          [
+            4.9185877972419085,
+            52.37744795291058
+          ],
+          [
+            4.918589491373482,
+            52.377451626590386
+          ],
+          [
+            4.918664453450388,
+            52.37743866637841
+          ],
+          [
+            4.918723533561943,
+            52.37756673197056
+          ],
+          [
+            4.91864876210114,
+            52.37757970196207
+          ],
+          [
+            4.9186496234775525,
+            52.377581574808815
+          ],
+          [
+            4.918630775933053,
+            52.37758486162586
+          ],
+          [
+            4.918165648798438,
+            52.37766592263845
+          ],
+          [
+            4.916883609476042,
+            52.37788789360973
+          ],
+          [
+            4.916879861949445,
+            52.37787982575942
+          ]
+        ]
+      ]
+    }
   }
-}
 ]
