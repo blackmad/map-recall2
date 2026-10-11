@@ -55,11 +55,21 @@ async function elevationPng(m: ReturnType<typeof measureFacade>, file: string, p
     for (let x = x0; x <= x1; x++) { put(x, r0); put(x, r1); }
     for (let y = r0; y <= r1; y++) { put(x0, y); put(x1, y); }
   };
+  if (m.crop) {
+    // Dim everything outside the photo's span and outline the crop in blue.
+    const c = m.crop, x0 = Math.round(c.t0 / cell), x1 = Math.round(c.t1 / cell), r0 = Math.round((totalH - c.y1) / cell), r1 = Math.round((totalH - c.y0) / cell);
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      if (x >= x0 && x < x1 && y >= r0 && y < r1) continue;
+      const i = (y * W + x) * 3;
+      for (let k = 0; k < 3; k++) rgb[i + k] = Math.round(rgb[i + k] * 0.4 + 255 * 0.6);
+    }
+    box(c.t0, c.t1, c.y0, c.y1, [30, 60, 230]);
+  }
   for (const o of m.openings) box(o.t0, o.t1, o.y0, o.y1, [230, 30, 30]);
   const scale = 640 / Math.max(H, 1), mw = Math.max(1, Math.round(W * scale)), mh = 640;
   let model = await sharp(rgb, {raw: {width: W, height: H, channels: 3}}).resize({width: mw, height: mh, kernel: 'nearest'}).png().toBuffer();
   const lw = Math.max(mw, 360);
-  const label = Buffer.from(`<svg width="${lw}" height="44"><rect width="100%" height="44" fill="#222"/><text x="6" y="17" font-family="Helvetica" font-size="14" fill="#fff">MODEL ${m.name}</text><text x="6" y="37" font-family="Helvetica" font-size="13" fill="#fc6">rows ${m.rows.join(',')} · axes ${m.columns} · sym ${m.symmetry} · gables ${m.gables}</text></svg>`);
+  const label = Buffer.from(`<svg width="${lw}" height="44"><rect width="100%" height="44" fill="#222"/><text x="6" y="17" font-family="Helvetica" font-size="14" fill="#fff">MODEL ${m.name}</text><text x="6" y="37" font-family="Helvetica" font-size="13" fill="#fc6">rows ${m.rows.join(',')}${m.crop ? ' (crop)' : ''} · axes ${m.columns} · sym ${m.symmetry} · gables ${m.gables}</text></svg>`);
   model = await sharp({create: {width: lw, height: mh + 44, channels: 3, background: '#fff'}}).composite([{input: label, top: 0, left: 0}, {input: model, top: 44, left: 0}]).png().toBuffer();
   const tiles = [model];
   if (photo && fs.existsSync(path.resolve(ROOT, photo))) tiles.unshift(await sharp(path.resolve(ROOT, photo)).resize({height: mh + 44}).png().toBuffer());

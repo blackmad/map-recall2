@@ -8,13 +8,18 @@
       "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-north.jpg",
       "depthBand": 6,
       "rows": [
+        null,
         1,
-        3
+        1
       ],
-      "columns": 4,
       "symmetric": false,
       "gables": 0,
-      "countedBy": "blind haiku counter 2026-10-11"
+      "countedBy": "blind haiku counter 2026-10-11",
+      "heightM": [
+        0,
+        13.5
+      ],
+      "note": "2026-10-11 span/ribbon pass: rows follow the ribbon convention (continuous glazing = 1 per band; bands recounted by lane from the photo), ground arcade null, crop in alongM/heightM"
     },
     {
       "name": "south (Singelgracht quay, glass-block ground floor)",
@@ -22,14 +27,20 @@
       "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-south.jpg",
       "depthBand": 6,
       "rows": [
-        0,
-        12,
-        13
+        1,
+        1
       ],
-      "columns": 12,
       "symmetric": false,
       "gables": 0,
-      "countedBy": "blind haiku counter 2026-10-11"
+      "countedBy": "blind haiku counter 2026-10-11",
+      "openings": [
+        "glass"
+      ],
+      "heightM": [
+        0,
+        13.5
+      ],
+      "note": "2026-10-11 span/ribbon pass: rows follow the ribbon convention (continuous glazing = 1 per band; bands recounted by lane from the photo), ground arcade null, crop in alongM/heightM"
     },
     {
       "name": "west (second entrance, ribbon windows over white spandrel)",
@@ -37,14 +48,18 @@
       "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-west.jpg",
       "depthBand": 6,
       "rows": [
-        2,
-        12,
-        14
+        null,
+        1,
+        1
       ],
-      "columns": 14,
       "symmetric": false,
       "gables": 1,
-      "countedBy": "blind haiku counter 2026-10-11"
+      "countedBy": "blind haiku counter 2026-10-11",
+      "heightM": [
+        0,
+        13.5
+      ],
+      "note": "2026-10-11 span/ribbon pass: rows follow the ribbon convention (continuous glazing = 1 per band; bands recounted by lane from the photo), ground arcade null, crop in alongM/heightM"
     },
     {
       "name": "east (service side, ribbon windows)",
@@ -52,14 +67,18 @@
       "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-east.jpg",
       "depthBand": 6,
       "rows": [
-        2,
-        12,
-        9
+        null,
+        1,
+        1
       ],
-      "columns": 12,
       "symmetric": false,
       "gables": 0,
-      "countedBy": "blind haiku counter 2026-10-11"
+      "countedBy": "blind haiku counter 2026-10-11",
+      "heightM": [
+        0,
+        13.5
+      ],
+      "note": "2026-10-11 span/ribbon pass: rows follow the ribbon convention (continuous glazing = 1 per band; bands recounted by lane from the photo), ground arcade null, crop in alongM/heightM"
     },
     {
       "name": "tower west face (above the podium)",
@@ -67,23 +86,31 @@
       "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-2025-westeinde.jpg",
       "depthBand": 90,
       "rows": [
-        8,
-        8,
-        8,
-        8,
-        8,
-        8,
-        8,
-        8,
-        8,
-        8,
-        8,
-        8
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "columns": 8,
       "symmetric": false,
       "gables": 1,
-      "countedBy": "blind haiku counter 2026-10-11"
+      "countedBy": "blind haiku counter 2026-10-11",
+      "heightM": [
+        25,
+        70
+      ],
+      "alongM": [
+        41,
+        93
+      ],
+      "note": "2026-10-11 span/ribbon pass: rows follow the ribbon convention (continuous glazing = 1 per band; bands recounted by lane from the photo), ground arcade null, crop in alongM/heightM"
     },
     {
       "name": "tower south end (above the podium)",
@@ -91,23 +118,31 @@
       "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-2025-frederiksplein.jpg",
       "depthBand": 90,
       "rows": [
-        7,
-        7,
-        7,
-        7,
-        7,
-        7,
-        7,
-        7,
-        7,
-        7,
-        7,
-        7
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
       ],
-      "columns": 7,
       "symmetric": true,
       "gables": 1,
-      "countedBy": "blind haiku counter 2026-10-11"
+      "countedBy": "blind haiku counter 2026-10-11",
+      "heightM": [
+        25,
+        70
+      ],
+      "alongM": [
+        70,
+        91
+      ],
+      "note": "2026-10-11 span/ribbon pass: rows follow the ribbon convention (continuous glazing = 1 per band; bands recounted by lane from the photo), ground arcade null, crop in alongM/heightM"
     }
   ]
 }
