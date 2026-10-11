@@ -174,3 +174,21 @@ test('geometry baseline: every recorded reason belongs to a baselined model and 
     assert.ok(why.trim().length > 20, `reason for ${id} is too short to explain a new entry`);
   }
 });
+
+// A glass balustrade with a frame rail standing on the roof edge of the block (wall top y = 9) is a guard rail, not an overhanging opening.
+const rail = (y0: number, x = 2, w = 6) => [
+  {min: [x, y0, 7.8] as V3, max: [x + w, y0 + 1.1, 7.9] as V3, mat: 'glass'},
+  {min: [x, y0 + 1.1, 7.8] as V3, max: [x + w, y0 + 1.2, 7.95] as V3, mat: 'white'},
+];
+test('a glazed balustrade standing on the wall top is a guard rail, not an overhang', () => {
+  assert.deepEqual(auditOpenings(boxes(block, ...rail(8.95))).issues, []);
+});
+test('a window-sized pane floating above the wall top, or a rail hanging past the wall end, is still flagged', () => {
+  const high = auditOpenings(boxes(block, ...rail(9.5))).issues;
+  assert.ok(high.length > 0, 'a rail 50 cm above the wall top is not resting on it');
+  const past = auditOpenings(boxes(block, ...rail(8.95, 9, 6))).issues;
+  assert.equal(past.length, 1);
+  assert.equal(past[0].kind, 'overhang');
+  const tall = auditOpenings(boxes(block, {min: [2, 8.95, 7.8] as V3, max: [6, 11.5, 7.9] as V3, mat: 'glass'})).issues;
+  assert.ok(tall.length > 0, 'a 2.5 m glass screen is not a rail');
+});
