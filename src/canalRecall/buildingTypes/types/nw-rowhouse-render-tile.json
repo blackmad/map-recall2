@@ -30,7 +30,6 @@
       9.4
     ]
   },
-  "alternateMirror": true,
   "roof": {
     "form": "gable",
     "ridge": "long",
@@ -314,6 +313,7 @@
   },
   "notes": [
     "Front on the SHORT side (frontOnShort).",
-    "Dormer additions (about one house in three) and arched door canopies are not modelled."
+    "Dormer additions (about one house in three) and arched door canopies are not modelled.",
+    "Not mirrored: parity check 2026-10-11 on the survey photos of 81 terraces (mostly single houses, all with the door right of the window in every house and no door-beside-door pairs): the earlier alternating-pairs rule put the door on the wrong side of every second house."
   ]
 }

@@ -1,0 +1,327 @@
+{
+  "id": "nw-rowhouse-tall-glass-panel",
+  "label": "Nieuw-West terraced house, brown brick, narrow glazed bay (dark door beside a two-light window, transoms) under a beige spandrel panel and a two-light upper window, a cream storage door and a vent window beside it, low pitched tile roof along the street (Slotervaart: Louis Couperusstraat, Aart van der Leeuwstraat, Ellert Vlieropstraat, Eduard Vetermanstraat, Arthur van Schendelstraat)",
+  "frontOnShort": true,
+  "source": {
+    "clusterRank": 1,
+    "panden": 105,
+    "bouwjaar": [
+      1950,
+      1958
+    ],
+    "lengthM": 8.5,
+    "widthM": 5.0,
+    "bouwlagen": 3,
+    "roof": "pitched",
+    "dwellingsMedian": 1
+  },
+  "storeys": 2,
+  "eavesRangeM": [
+    5.2,
+    6.7
+  ],
+  "footprintRangeM": {
+    "frontage": [
+      4.4,
+      5.8
+    ],
+    "depth": [
+      7.2,
+      9.0
+    ]
+  },
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.3,
+    "vergeOverhangM": 0.0,
+    "thicknessM": 0.12,
+    "pitchDeg": 28
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "beige",
+  "variants": {
+    "beige": {
+      "label": "Beige spandrel panels, dark door, cream storage door, mossy terracotta roof",
+      "evidence": "survey terraces #216, 217, 221, 224-227, 231, 232, 234, 236, 241, 243, 247, 249, 254, 255 (all 17 B2 terraces read the same)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#6b5239"
+        },
+        "frame": "#ece8dc",
+        "glass": "#566170",
+        "door": "#2a2523",
+        "accent": "#e8e4d6",
+        "rail": "#bea87b",
+        "dark": "#3a3a3a",
+        "column": "#a69070",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#7a4c34"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012130849.jpg",
+          "pand": "0363100012130849",
+          "address": "Louis Couperusstraat (terrace #216)",
+          "note": "full-height glazed bay 2.45 m: dark door + 1.2 m two-light window with transom strip, beige spandrel 1.1 m under a 2.3 m two-light window; cream storage door 0.85 m and a 0.4 m vent window above it; 5.0 m pitch, brick 1.1 m between bay and storage door; the same on all three houses (not mirrored)"
+        },
+        {
+          "photo": "survey crop 0363100012134199.jpg",
+          "pand": "0363100012134199",
+          "address": "Burgemeester van Tienhovengracht (terrace #236, flipped close-up)",
+          "note": "same order along the row: door left, window right, then storage door; vent windows beside each upper window"
+        },
+        {
+          "photo": "survey crop 0363100012085862.jpg",
+          "pand": "0363100012085862",
+          "address": "Herman Poortstraat (terrace #241)",
+          "note": "oblique view along the street: identical bays and storage doors repeating, panels beige-grey"
+        },
+        {
+          "photo": "survey crop 0363100012136041.jpg",
+          "pand": "0363100012136041",
+          "address": "Louis Couperusstraat south (terrace #247)",
+          "note": "door left / window right / cream storage door right in every house, panel under the upper window is beige"
+        }
+      ],
+      "counted": {
+        "bays": 3,
+        "openingsPerUpperStorey": 2,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "bay",
+          "w": 2.45,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": 0.0,
+              "w": 2.45,
+              "h": 1.1,
+              "sill": 2.55,
+              "colour": "column",
+              "depth": 0.05
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": -0.58,
+              "w": 0.9,
+              "h": 2.15,
+              "steps": 0
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -0.58,
+              "w": 0.9,
+              "h": 0.3,
+              "sill": 2.22,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": 0.55,
+              "w": 1.2,
+              "h": 1.1,
+              "sill": 1.0,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": 0.55,
+              "w": 1.2,
+              "h": 0.3,
+              "sill": 2.22,
+              "lights": 2
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": 0.55,
+              "w": 1.2,
+              "h": 0.35,
+              "sill": 0.6,
+              "colour": "dark",
+              "depth": 0.05
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 0.0,
+              "w": 2.15,
+              "h": 1.2,
+              "sill": 0.87,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "wall",
+          "w": 1.1,
+          "role": "windows",
+          "elements": []
+        },
+        {
+          "id": "store",
+          "w": 1.45,
+          "role": "storage",
+          "elements": [
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": -0.3,
+              "w": 0.85,
+              "h": 2.1,
+              "sill": 0.0,
+              "colour": "rail",
+              "depth": 0.06
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -0.4,
+              "w": 0.4,
+              "h": 0.45,
+              "sill": 1.35,
+              "lights": 1
+            }
+          ]
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012130849.jpg",
+          "pand": "0363100012130849",
+          "address": "Louis Couperusstraat",
+          "note": "rear (garden side) NOT seen in any photo: generic two-window upper storey, garden door and kitchen window inferred from the frontage scheme; it is hidden between the rear gardens in practice"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 2,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "back",
+          "w": 1,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": 1.0,
+              "w": 0.9,
+              "h": 2.1,
+              "steps": 0
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -1.0,
+              "w": 1.8,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012130849.jpg",
+          "pand": "0363100012130849",
+          "address": "Louis Couperusstraat",
+          "note": "end wall seen edge-on beside the front at the end of a terrace: plain wall, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012130849.jpg",
+          "pand": "0363100012130849",
+          "address": "Louis Couperusstraat",
+          "note": "end wall seen edge-on beside the front at the end of a terrace: plain wall, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Front on the SHORT side (frontOnShort). Measured on survey crop 0363100012130849: 76 px per metre at the facade (house pitch 380 px = 5.0 m): bay 450-635 px, brick 635-720, storage door 720-785, wall 785-830.",
+    "Not mirrored: along every terrace read (17 terraces) the door is left of the window and the storage door right of the bay, house after house.",
+    "Panels are repainted house by house (beige, grey, dark blue-grey); the variant carries the commonest beige. Door colours (black, brown) differ; dark is the commonest."
+  ]
+}
