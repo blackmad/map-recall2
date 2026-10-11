@@ -172,10 +172,11 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Piet Hein Buildings (landmark) and Bercylaan 801-855 installed after a
   facade rework (2026-10-11): perforated panel pattern not modelled; the
   white banded volume in Bercylaan photos is the neighbouring 2026 pand.
-  `npm run check:osm-under-models` (in check:canal) now fails when an OSM
-  building lies under a placed model without being suppressed; it checks
-  the 65 models with a nativeRing footprint; the other ~215 (older formats)
-  are not covered yet.
+  `npm run check:osm-under-models` (in check:canal) covers all 813 placed
+  models (>= 50% area overlap; footprints from nativeRing, plan, GLB
+  occupancy or BAG pand); 5 building-type instances lack a footprint.
+  16 partial-overlap neighbours/annexes are allow-listed with reasons in
+  scripts/landmarks/osm-under-models-allowlist.json; review them.
   Booking.com HQ held (2026-10-10): the plate rework (stepped bands,
   terrace cut, lower-case sign, teal glass) still reads as a gridded box.
   Needs the curved, stepped south front cantilevered over the entrance plaza
