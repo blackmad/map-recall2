@@ -31,9 +31,14 @@ export function buildBlankenstraat15(_w: number, _d: number, b: BuildingTools & 
   setSink(0.3);
   const wall = (i: number) => rawWall(source as never, i);
   type F = ReturnType<typeof wall>['f'];
+  const placed: [number, number, number][] = [];
   const win = (f: F, top: number, t: number, y: number, w: number, h: number, glass = 'glass') => {
     h = Math.min(h, top - 0.3 - y);
     if (h < 0.5) return;
+    // Overlapping sawtooth wall pieces would each draw the same window a few cm apart: keep the first.
+    const wx = f.origin[0] + f.tangent[0] * t, wz = f.origin[1] + f.tangent[1] * t;
+    if (placed.some(q => Math.hypot(q[0] - wx, q[1] - wz) < Math.max(0.5, w * 0.6) && Math.abs(q[2] - y) < 0.4)) return;
+    placed.push([wx, wz, y]);
     slab(b, f, t, y - 0.05, w + 0.1, h + 0.1, 0.08, 'frame');
     slab(b, f, t, y, w, h, 0.12, glass);
   };
@@ -48,7 +53,12 @@ export function buildBlankenstraat15(_w: number, _d: number, b: BuildingTools & 
       slab(b, f, t, y + 0.9, WW + 0.1, 0.05, 0.2, 'concrete');
     }
   };
+  const shops: [number, number][] = [];
   const shop = (f: F, top: number, c: number) => {
+    // Sawtooth wall pieces overlap each other at their corners: one shopfront per spot (a second one 3 cm off the first z-fights it).
+    const wx = f.origin[0] + f.tangent[0] * c, wz = f.origin[1] + f.tangent[1] * c;
+    if (shops.some(q => Math.hypot(q[0] - wx, q[1] - wz) < 2.0)) return;
+    shops.push([wx, wz]);
     win(f, top, c - 1.1, 0.5, 2.3, 2.8);
     win(f, top, c + 1.3, 0.5, 1.0, 2.5, 'dark');
   };
