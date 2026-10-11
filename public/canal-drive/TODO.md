@@ -144,18 +144,18 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   (bin by plane, or rasterise only the triangle) and re-run the baseline.
   Kohnstammhuis stone reads too warm/tan against the grey photo.
 - **Nieuw-West building types (2026-10-11)**: opt-in `?buildingTypes=1`
-  draws 125 photo-confirmed instances: type 1 portiekflat in Sonderbuur,
-  Wildeman/Notweg, Slotermeer hofs (variants brick-cream, clad-panel,
-  clad-full, 4-storey brick, brick-yellow) and type 6 on Comeniusstraat, as
-  shared InstancedMesh units with a box LOD past 140 m. All 444 type-1
-  cluster panden were surveyed by photo; 359 held as other designs. Biggest
-  follow-ups: the 4-storey hof sub-design (balcony pairs outside a wide core,
-  ~16), Beek en Hoff / Osdorper Ban wide-core (~60), Slotermeerlaan wide core
-  (36), Clauskindereweg hip roofs (36); 4-storey brick reads red where the
-  photos are brown; 54 more type-6 pands; types 2-5; inferred backs/gables need photos,
-  then decide default-on (densest view, Wildeman street: 66.5k tris, 43
-  draw calls; iPhone 4x median 16.7 ms). Review renders live in the source
-  repo under building-types/.
+  draws 253 photo-confirmed instances as shared InstancedMesh units (box LOD
+  past 140 m): type-1 portiekflat (Sonderbuur, Wildeman/Notweg, Slotermeer
+  hofs; brick-cream, clad-panel, clad-full, 4-storey brick, brick-yellow),
+  wide-core portiek (Beek en Hoff/Osdorper Ban 46, Slotermeerlaan 30), 4-st
+  hof with garages (16), tall plinth gable/hip (36), and type 6 on
+  Comeniusstraat. Brick colours are photo medians (the game's cityWallTint
+  lifts them). Densest view (Osdorper Ban): 55.5k tris, 20 draw calls,
+  iPhone 4x median 16.7 ms. Next: the ~85 remaining held pool pands (Jan de
+  Greef pastel blocks, pre-war, 3-storey, shops), 54 more type-6 pands,
+  clusters 2/4/5/7/8 and the 2,922 rowhouses (needs street-facing photos);
+  backs and gables are inferred everywhere; then decide default-on. Review
+  renders are archived in the source repo under building-types/.
   Booking.com HQ held (2026-10-10): the plate rework (stepped bands,
   terrace cut, lower-case sign, teal glass) still reads as a gridded box.
   Needs the curved, stepped south front cantilevered over the entrance plaza
