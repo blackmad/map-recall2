@@ -2,11 +2,112 @@
   "id": "de-nederlandsche-bank",
   "countedBy": "pending blind count",
   "facades": [
-    {"name": "north (main entrance, tile fascia, glazed ground floor)", "bearing": 347.5, "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-north.jpg", "depthBand": 6},
-    {"name": "south (Singelgracht quay, glass-block ground floor)", "bearing": 167.5, "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-south.jpg", "depthBand": 6},
-    {"name": "west (second entrance, ribbon windows over white spandrel)", "bearing": 257.5, "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-west.jpg", "depthBand": 6},
-    {"name": "east (service side, ribbon windows)", "bearing": 77.5, "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-east.jpg", "depthBand": 6},
-    {"name": "tower west face (above the podium)", "bearing": 257.5, "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-2025-westeinde.jpg", "depthBand": 90},
-    {"name": "tower south end (above the podium)", "bearing": 167.5, "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-2025-frederiksplein.jpg", "depthBand": 90}
+    {
+      "name": "north (main entrance, tile fascia, glazed ground floor)",
+      "bearing": 347.5,
+      "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-north.jpg",
+      "depthBand": 6,
+      "rows": [
+        1,
+        3
+      ],
+      "columns": 4,
+      "symmetric": false,
+      "gables": 0,
+      "countedBy": "blind haiku counter 2026-10-11"
+    },
+    {
+      "name": "south (Singelgracht quay, glass-block ground floor)",
+      "bearing": 167.5,
+      "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-south.jpg",
+      "depthBand": 6,
+      "rows": [
+        0,
+        12,
+        13
+      ],
+      "columns": 12,
+      "symmetric": false,
+      "gables": 0,
+      "countedBy": "blind haiku counter 2026-10-11"
+    },
+    {
+      "name": "west (second entrance, ribbon windows over white spandrel)",
+      "bearing": 257.5,
+      "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-west.jpg",
+      "depthBand": 6,
+      "rows": [
+        2,
+        12,
+        14
+      ],
+      "columns": 14,
+      "symmetric": false,
+      "gables": 1,
+      "countedBy": "blind haiku counter 2026-10-11"
+    },
+    {
+      "name": "east (service side, ribbon windows)",
+      "bearing": 77.5,
+      "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-east.jpg",
+      "depthBand": 6,
+      "rows": [
+        2,
+        12,
+        9
+      ],
+      "columns": 12,
+      "symmetric": false,
+      "gables": 0,
+      "countedBy": "blind haiku counter 2026-10-11"
+    },
+    {
+      "name": "tower west face (above the podium)",
+      "bearing": 257.5,
+      "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-2025-westeinde.jpg",
+      "depthBand": 90,
+      "rows": [
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "columns": 8,
+      "symmetric": false,
+      "gables": 1,
+      "countedBy": "blind haiku counter 2026-10-11"
+    },
+    {
+      "name": "tower south end (above the podium)",
+      "bearing": 167.5,
+      "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-2025-frederiksplein.jpg",
+      "depthBand": 90,
+      "rows": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "columns": 7,
+      "symmetric": true,
+      "gables": 1,
+      "countedBy": "blind haiku counter 2026-10-11"
+    }
   ]
 }

@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+## Krasnapolsky, Pakhuis de Zwijger, DNB released (2026-10-11)
+
+Rebuilt from their held reasons. Krasnapolsky's modern wing and lower
+building now come from their own photos; Pakhuis de Zwijger is dark
+weathered concrete with its real 3-per-block window pattern; DNB's west
+link core and annex were the 1990 satellite (BAG pand 0363100012178159
+"Pand gesloopt", 2022), so they were removed and the west face closed.
+DNB's podium is straight where the real one curves.
+
 ## OSM buildings drawn through placed models (2026-10-11)
 
 Suppressing a model's BAG pand does not hide OSM `building`/`building:part`
