@@ -1,3 +1,4 @@
+import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {surveyShell,wallFrame} from './museums2-shared';
 import data from './torture-museum-footprints.json';
@@ -33,19 +34,37 @@ export function buildTortureMuseum(_w:number,_d:number,b:BuildingTools){
  // ---- upper storeys: windows measured on the rectified elevation ----
  // [sill height, window height] per storey; columns are [u, width].
  const rows=[[4.16,2.1],[7.44,2.16],[10.84,1.76]],cols=[[-1.95,1.14],[-.25,1.14],[1.49,1.14]];
+ // Every upper window has a segmental head (rise .2 m) in a thin white surround, dark steel sashes (2 lights wide, one transom),
+ // a projecting stone sill and an arc of white lintel ticks (panoramas 0, 2, 3: 2025).
+ const seg=(w:number,h:number,rise:number)=>{const sh=new T.Shape(),r=(w*w/4+rise*rise)/(2*rise);
+  sh.moveTo(-w/2,0);sh.lineTo(w/2,0);sh.lineTo(w/2,h);
+  for(let i=1;i<=10;i++){const x=w/2-w*i/10;sh.lineTo(x,h+Math.sqrt(r*r-x*x)-(r-rise))}
+  sh.lineTo(-w/2,0);return sh};
+ const ext=(sh:T.Shape,d:number)=>new T.ExtrudeGeometry(sh,{depth:d,bevelEnabled:false,curveSegments:6});
  for(const [sill,h] of rows)for(const [u,w] of cols){
-  const t=.08,fr=.07;
-  slab(u,sill,w+.16,h+.16,.02,'glass');                                   // pane sits in the reveal
-  slab(u-w/2-t/2,sill,t,h+.16,.07,'white');slab(u+w/2+t/2,sill,t,h+.16,.07,'white');   // jambs
-  slab(u,sill-.08,w+.16,t,.07,'white');slab(u,sill+h,w+.16,t,.07,'white');             // sill+head
-  slab(u,sill,fr,h,.05,'white');slab(u,sill+h*.55,w,fr,.05,'white');                  // mullion + transom
-  slab(u,sill-.2,w+.4,.12,.16,'stone');                                       // projecting sill stone
-  for(let k=-2;k<=2;k++)slab(u+k*(w+.1)/4.4,sill+h+.1,.1,.2,.05,'white');   // white lintel ticks
+  const rise=.2,fr=.07;
+  f.geo(ext(seg(w+.28,h+.1,rise),.06+.04),'white',u,sill-.06,-.04);                  // white surround (4 cm sunk into the brick)
+  f.geo(ext(seg(w,h-.02,rise),.05+.04),'glass',u,sill+.0,-.01);                        // pane, set in the reveal
+  slab(u-w/2+fr/2-.02,sill,fr,h,.1,'dark');slab(u+w/2-fr/2+.02,sill,fr,h,.1,'dark');   // sash stiles (outer edge 2 cm past the pane)
+  slab(u,sill+.02,w-2*fr+.03,fr,.1,'dark');                                            // bottom rail
+  slab(u,sill+h*.58,w-2*fr+.03,fr,.11,'dark');slab(u,sill+h*.26,w-2*fr+.03,fr*.8,.105,'dark');   // transom and lower bar
+  slab(u,sill+.03,fr*.8,h*.57,.105,'dark');                                            // mullion below the transom
+  slab(u,sill+h*.58+fr*.5,fr*.8,h*.42-.08,.105,'dark');                                // mullion above
+  slab(u,sill-.2,w+.4,.12,.16,'stone');                                                // projecting sill stone
+  for(let k=-3;k<=3;k++){const x=k*(w+.22)/7,y=sill+h+.12+rise*(1-Math.pow(2*x/(w+.2),2));slab(u+x,y,.1,.2,.05,'white')}
  }
  // ---- cream cornice: frieze, moulding and cap ----
  slab(0,13.1,W+.1,.35,.14,'stone');
  slab(0,13.45,W,.7,.06,'stone');
  slab(0,14.0,W+.1,.18,.3,'stone');
+ // ---- shopfront extras (panorama 0, 2): door furniture, push bars, spotlights, the carved wooden monk beside the east jamb ----
+ slab(-1.86,1.02,.03,.22,.2,'stone');                 // door pull
+ slab(-1.52,1.0,.12,.18,.12,'stone');                 // intercom box
+ for(const u of [-.02,.12])slab(u+.6,.5,.03,1.9,.22,'stone');   // twin chrome push bars on the glazed door
+ for(const u of [-.5,1.4])slab(u+.5,3.18,.18,.12,.42,'dark');   // two black spotlights under the steel lintel
+ slab(W/2-.5,0,.7,.4,.8,'stone');                      // stone pedestal against the east pier
+ slab(W/2-.5,.4,.42,1.35,.5,'ochre');                  // carved monk: robe
+ slab(W/2-.5,1.75,.3,.3,.4,'ochre');                   // hooded head
  // ---- hanging lantern sign on an iron bracket at the east edge ----
  const bx=W/2-.25;
  slab(bx,4.15,.07,.07,1.1,'dark');                 // arm, reaches into the wall

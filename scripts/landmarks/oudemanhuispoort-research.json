@@ -1,10 +1,24 @@
 {
- "id": "oudemanhuispoort",
- "bagPand": "0363100012180206",
- "sources": [
-  "https://nl.wikipedia.org/wiki/Oudemanhuispoort",
-  "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012180206",
-  "https://api.data.amsterdam.nl/panorama/thumbnail/ (CC BY 4.0, Gemeente Amsterdam)"
- ],
- "notes": "gate-house pand only; BAG year 1775"
+  "id": "oudemanhuispoort",
+  "bagPand": "0363100012180206",
+  "researchedOn": "2026-10-11",
+  "state": "built-ready-2026-10-11",
+  "sources": [
+    "https://nl.wikipedia.org/wiki/Oudemanhuispoort",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012180206",
+    "https://api.data.amsterdam.nl/panorama/thumbnail/ (CC BY 4.0, Gemeente Amsterdam)"
+  ],
+  "photos": [
+    {"file": "ref-pano-0.jpg", "panorama": "recording_2025-06-30_05-16-46_01361", "date": "2025-06-30", "heading": 111, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "two window axes of the canal front, portal column"},
+    {"file": "ref-pano-1.jpg", "panorama": "recording_2025-06-30_05-16-46_01362", "date": "2025-06-30", "heading": 151, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "portal soffit, black door, arched transom lights"},
+    {"file": "ref-pano-2.jpg", "panorama": "recording_2025-06-30_05-16-46_01360", "date": "2025-06-30", "heading": 78, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "canal front (ref-canal-front.jpg is a copy)"},
+    {"file": "ref-pano-3.jpg", "panorama": "recording_2025-06-30_05-16-46_01363", "date": "2025-06-30", "heading": 172, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "portal from the north"}
+  ],
+  "notes": "Gate-house pand only; BAG year 1775. The pand has 6.1 m of canal frontage and holds the south jamb of the portal at its north-west corner (the 1.6 x 1.1 m jog in the BAG ring, extruded by 3DBAG to 11-12 m); the gate opening and the north jamb are outside the pand ring.",
+  "decisions": [
+    "Previous model put the portal across the whole 6.1 m front. The panoramas show the front is two window axes and the portal stands beside it, so the portal is now a stone screen north of the ring: rusticated north pier, two free-standing columns with flared volute capitals, an entablature with dentils, a segmental pediment with a cartouche, a finial urn, and a stone back plate carrying the black door and two arched transom lights.",
+    "The 3DBAG jamb walls are drawn in stone instead of brick.",
+    "Canal front: white sash windows (two columns, rows from height) on three floors at t = 1.55 and 4.15 m, brick-arch courses above, basement lights, floor band and white eaves cornice.",
+    "Inferred (no photograph): the passage-side (north) wall windows, the roof (3DBAG hip with flat top, no dormers modelled), the long blank south wall (a party wall in reality, flagged blank-wall by the audit as a warning)."
+  ]
 }

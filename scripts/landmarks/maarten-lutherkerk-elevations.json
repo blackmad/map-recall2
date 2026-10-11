@@ -1,0 +1,8 @@
+{
+  "id": "maarten-lutherkerk",
+  "countedBy": "pending blind count",
+  "facades": [
+    {"name": "east front", "bearing": 92.5, "photo": "artifacts/landmark-lanes/maarten-lutherkerk/ref-east-front.jpg", "depthBand": 30},
+    {"name": "north wall", "bearing": 2.5, "photo": "artifacts/landmark-lanes/maarten-lutherkerk/ref-north-wall.jpg", "depthBand": 30}
+  ]
+}
