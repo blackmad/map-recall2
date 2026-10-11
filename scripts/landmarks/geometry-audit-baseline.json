@@ -2105,10 +2105,10 @@
   "motorkade-1": {
    "opening-floating": 0,
    "opening-floating-fail": 0,
-   "opening-overhang": 17,
-   "opening-overhang-fail": 14,
+   "opening-overhang": 12,
+   "opening-overhang-fail": 0,
    "opening-buried": 0,
-   "zfight-m2": 5.3,
+   "zfight-m2": 0.1,
    "zfight-near-m2": 4.8,
    "window-mismatch": 0,
    "window-missing": 0,
