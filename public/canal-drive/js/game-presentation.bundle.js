@@ -25044,7 +25044,10 @@
       landmarkId: "n6933045932",
       modelUrl: "./models/pakhuis-de-zwijger.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012088034"
+        "NL.IMBAG.Pand.0363100012088034",
+        "w1533880135",
+        "w1533880136",
+        "w1533880137"
       ],
       spatialSuppression: false,
       footprint: {
@@ -26082,7 +26085,8 @@
       landmarkId: "de-nederlandsche-bank",
       modelUrl: "./models/de-nederlandsche-bank.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012165684"
+        "NL.IMBAG.Pand.0363100012165684",
+        "w1533847438"
       ],
       spatialSuppression: false,
       footprint: {
