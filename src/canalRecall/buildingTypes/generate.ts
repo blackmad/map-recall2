@@ -21,6 +21,10 @@ export interface GenerateParams {
   roofForm?: 'gable' | 'hip' | 'flat';
   ridge?: 'long' | 'short';
   groundMode?: 'solid' | 'pilotis';
+  /** Terraced houses: which side walls stand free (an end house has one, a detached/semi house two). Party walls get no openings. Default: both free. */
+  freeSides?: {left: boolean; right: boolean};
+  /** Mirror the front and back facades left-to-right (houses built in mirrored pairs). */
+  mirror?: boolean;
 }
 
 export interface FacadeCount { bays: number; openingsPerUpperStorey: number; groundDoors: number; balconiesPerUpperStorey: number }
@@ -35,6 +39,9 @@ export interface GenerateReport {
   roofForm: 'gable' | 'hip' | 'flat';
   ridge: 'long' | 'short';
   groundMode: 'solid' | 'pilotis';
+  /** 'mid' | 'endL' | 'endR' | 'free' when the params carry freeSides AND a side facade has openings (otherwise end and mid houses are the same mesh), else undefined. */
+  sides?: 'mid' | 'endL' | 'endR' | 'free';
+  mirrored?: boolean;
   facades: Record<FacadeId, FacadeCount>;
 }
 
@@ -168,6 +175,11 @@ function variantOk(e: Element, variant: string): boolean {
 
 interface Placed { u0: number; u1: number; bay: Bay }
 
+/** The bays of a facade seen in a mirror: order reversed, element offsets negated, edge references swapped. */
+export function mirrorBays(bays: Bay[]): Bay[] {
+  return [...bays].reverse().map(b => ({...b, elements: b.elements.map(e => ({...e, ...(e.u !== undefined ? {u: -e.u} : {}), ...(e.ref === 'left' ? {ref: 'right' as const} : e.ref === 'right' ? {ref: 'left' as const} : {})}))}));
+}
+
 export function layoutBays(bays: Bay[], length: number): Placed[] {
   const total = bays.reduce((s, b) => s + b.w, 0);
   let u = 0;
@@ -259,11 +271,31 @@ function roofSolid(c: Ctx, p: {form: 'gable' | 'hip' | 'flat'; ridge: 'long' | '
   }
 }
 
+/** Height of the front slope (+z side) of a long-ridge gable at depth z (0 at the ridge), and the downslope step per metre of z. */
+function frontSlope(L: number, W: number, eaves: number, ridgeH: number, eavesOv: number) {
+  const hw = W / 2, rise = Math.max(0.1, ridgeH - eaves), tan = rise / hw, y0 = eaves - eavesOv * tan;
+  return {tan, y: (z: number) => ridgeH - tan * z, zEave: hw + eavesOv, y0};
+}
+
+/** Roof windows on the front slope of an eaves-front gable. */
+function roofFeatures(c: Ctx, spec: TypeSpec, L: number, W: number, eaves: number, ridgeH: number, mirror: boolean): void {
+  const {mb, k} = c, v = spec.variants[c.variant], r = {...spec.roof, rooflights: v.rooflights ?? spec.roof.rooflights}, sl = frontSlope(L, W, eaves, ridgeH, r.eavesOverhangM), n = Math.hypot(1, sl.tan);
+  const alongZ = (a: number) => (1 - a) * (W / 2 + r.eavesOverhangM); // z of a slope position 0 (eaves) .. 1 (ridge), measured from the ridge line
+  for (const uf of r.rooflights?.u ?? []) {
+    const u = -L / 2 + (mirror ? 1 - uf : uf) * L, z0 = alongZ(r.rooflights!.along), w = r.rooflights!.w, hz = r.rooflights!.h / n; // slope length h spans hz in z
+    const off = 0.03; // metres above the plane along its normal (normal = (0, 1, tan) / n)
+    const P = (x: number, z: number, e: number): V3 => [x, sl.y(z) + e * (1 / n), z + e * (sl.tan / n)];
+    for (const [pad, key, e] of [[0.07, k.frame, off], [0, k.glass, off + 0.012]] as const) {
+      mb.quad(key, P(u - w / 2 - pad, z0 + hz / 2 + pad / n, e), P(u + w / 2 + pad, z0 + hz / 2 + pad / n, e), P(u + w / 2 + pad, z0 - hz / 2 - pad / n, e), P(u - w / 2 - pad, z0 - hz / 2 - pad / n, e));
+    }
+  }
+}
+
 export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBuilder; report: GenerateReport} {
   const variant = params.variant ?? spec.defaultVariant, v = spec.variants[variant];
   if (!v) throw new Error(`unknown variant ${variant} for ${spec.id}`);
   const L = params.lengthM, W = params.widthM, storeys = params.storeys ?? spec.storeys;
-  if (L < W) throw new Error('lengthM must be the long side (front is a long side)');
+  if (L < W && !spec.frontOnShort) throw new Error('lengthM must be the long side (front is a long side)');
   const roofForm = params.roofForm ?? spec.roof.form, ridge = params.ridge ?? spec.roof.ridge;
   const groundMode = params.groundMode ?? spec.ground.mode;
   const pitched = roofForm !== 'flat';
@@ -301,7 +333,7 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
       for (const z of [W / 2 - cw / 2, -W / 2 + cw / 2]) box(mb, k.column, IDENTITY, xc - cw / 2, xc + cw / 2, 0, lowTop, z - cw / 2, z + cw / 2, {back: false, bottom: true, top: true});
     }
   } else {
-    if (v.palette.plinth) {
+    if (v.palette.plinth && !spec.ground.plinthM) {
       box(mb, k.plinth, IDENTITY, -L / 2, L / 2, 0, sh, -W / 2, W / 2, {back: false, bottom: true, top: true});
       box(mb, k.wall, IDENTITY, -L / 2, L / 2, sh, wallTop, -W / 2, W / 2, {back: false, bottom: true});
     } else box(mb, k.wall, IDENTITY, -L / 2, L / 2, 0, wallTop, -W / 2, W / 2, {back: false, bottom: true});
@@ -314,9 +346,13 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
     return coreX.some(([a, b]) => x >= a - 0.01 && x <= b + 0.01) ? 0 : -rec;
   };
   const facades = {} as Record<FacadeId, FacadeCount>;
+  const free = params.freeSides ?? {left: true, right: true};
   for (const id of FACADE_IDS) {
+    if ((id === 'left' && !free.left) || (id === 'right' && !free.right)) { facades[id] = {bays: 0, openingsPerUpperStorey: 0, groundDoors: 0, balconiesPerUpperStorey: 0}; continue; }
     const {f, len} = frames[id], fs = spec.facades[id];
-    facades[id] = placeFacade(ctx, f, len, id, fs.bays, onGround(id));
+    const bays = params.mirror && (id === 'front' || id === 'back') ? mirrorBays(fs.bays) : fs.bays;
+    facades[id] = placeFacade(ctx, f, len, id, bays, onGround(id));
+    if (v.palette.plinth && spec.ground.plinthM && !pilotis) box(mb, k.plinth, f, 0, len, 0, spec.ground.plinthM, 0, 0.025, {back: true, bottom: true});
     if (v.joints && fs.joints) joints(ctx, f, len, sh, wallTop, fs.joints.panelW, fs.joints.panelH);
     for (const band of fs.bands ?? []) {
       const y = band.floor * sh;
@@ -327,5 +363,6 @@ export function generate(spec: TypeSpec, params: GenerateParams): {mesh: MeshBui
 
   const ridgeH = params.ridgeM ?? params.eavesM + Math.tan(spec.roof.pitchDeg * Math.PI / 180) * ((ridge === 'long' ? W : L) / 2);
   roofSolid(ctx, {form: roofForm, ridge, L, W, eaves: params.eavesM, ridgeH, eavesOv: spec.roof.eavesOverhangM, vergeOv: spec.roof.vergeOverhangM, flatThickness: flatT});
-  return {mesh: mb, report: {triangles: mb.triangles, storeys, storeyHeightM: sh, wallTopM: wallTop, ridgeM: pitched ? ridgeH : null, variant, roofForm, ridge, groundMode, facades}};
+  if (pitched && roofForm === 'gable' && ridge === 'long' && (v.rooflights || spec.roof.rooflights)) roofFeatures(ctx, spec, L, W, params.eavesM, ridgeH, !!params.mirror);
+  return {mesh: mb, report: {triangles: mb.triangles, storeys, storeyHeightM: sh, wallTopM: wallTop, ridgeM: pitched ? ridgeH : null, variant, roofForm, ridge, groundMode, mirrored: params.mirror ? true : undefined, sides: params.freeSides && (['left', 'right'] as const).some(id => spec.facades[id].bays.some(b => b.elements.length)) ? (free.left && free.right ? 'free' : free.left ? 'endL' : free.right ? 'endR' : 'mid') : undefined, facades}};
 }

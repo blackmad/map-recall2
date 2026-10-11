@@ -34,11 +34,11 @@ for (const file of fs.readdirSync(dir).filter(f => f.endsWith('.glb') && (!only 
   const doc = await io.read(path.join(dir, file));
   const extras = doc.getRoot().listNodes().map(n => n.getExtras() as {key?: string; nominal?: {L0: number; W0: number; E0: number; R0?: number}}).find(e => e.key && e.nominal);
   if (!extras?.key || !extras.nominal) { console.warn('skip (no key/nominal extras)', file); continue; }
-  const [type, variant, storeys, roofForm, ridge, groundMode] = extras.key.split('|');
+  const [type, variant, storeys, roofForm, ridge, groundMode, ...rest] = extras.key.split('|'), mirror = rest.includes('mirror'), sides = rest.find(r => r !== 'mirror');
   const spec = specs.get(type);
   if (!spec) { console.warn('skip (unknown type)', file, type); continue; }
   const {L0, W0, E0, R0} = extras.nominal;
-  const {mesh} = generate(spec, {lengthM: L0, widthM: W0, eavesM: E0, ridgeM: R0, storeys: Number(storeys), variant, roofForm: roofForm as 'gable', ridge: ridge as 'long', groundMode: groundMode as 'solid'});
+  const {mesh} = generate(spec, {lengthM: L0, widthM: W0, eavesM: E0, ridgeM: R0, storeys: Number(storeys), variant, roofForm: roofForm as 'gable', ridge: ridge as 'long', groundMode: groundMode as 'solid', ...(mirror ? {mirror: true} : {}), ...(sides ? {freeSides: {left: sides === 'endL' || sides === 'free', right: sides === 'endR' || sides === 'free'}} : {})});
   const out = await writeTypeGlb(file.replace(/\.glb$/, ''), mesh, {key: extras.key, nominal: extras.nominal});
   const before = fs.readFileSync(path.join(dir, file));
   if (Buffer.compare(before, Buffer.from(out.bytes)) !== 0) { fs.writeFileSync(path.join(dir, file), out.bytes); changed++; console.log('rewrote', file, `${before.length} -> ${out.bytes.length} bytes, ${mesh.triangles} triangles`); }

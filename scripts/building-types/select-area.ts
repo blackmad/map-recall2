@@ -31,11 +31,18 @@ for (const a of arg('exclude').split(',').filter(Boolean)) for (const i of JSON.
 const members: Record<string, any[]> = {'nw-portiek-brick-pitched': t1Clusters.flatMap(k => clusters.pp_big[k].pandIds).filter((m: any) => !excluded.has(m.id)), 'nw-pilotis-panel-flat': clusters.pp_big[5].pandIds.filter((m: any) => !excluded.has(m.id))};
 if (idsFile) {
   const wanted = new Set<string>(JSON.parse(fs.readFileSync(idsFile, 'utf8')));
-  const all = (clusters.pp_big as any[]).flatMap(c => c.pandIds as any[]).filter(m => wanted.has(m.id));
+  const all = ([...clusters.pp_big, ...(clusters.pp_small ?? [])] as any[]).flatMap(c => c.pandIds as any[]).filter(m => wanted.has(m.id));
   for (const k of Object.keys(members)) members[k] = [];
   members[idType] = all;
   if (!arg('lng')) anchor = {lng: +(all.reduce((s, m) => s + m.lon, 0) / all.length).toFixed(5), lat: +(all.reduce((s, m) => s + m.lat, 0) / all.length).toFixed(5)};
   console.log(`${all.length}/${wanted.size} listed panden found in the clusters; anchor`, anchor);
+}
+// --pool=pp_small --rank=0 --n=30 --idtype=<type>: the N members of that cluster nearest the anchor (a contiguous patch of terraces), restaged under idtype.
+if (arg('pool')) {
+  const all = clusters[arg('pool')][Number(arg('rank', '0'))].pandIds as any[];
+  for (const k of Object.keys(members)) members[k] = [];
+  members[idType] = all.filter((m: any) => !excluded.has(m.id));
+  want[idType] = Number(arg('n', '30'));
 }
 const attrs = new Map<string, any>();
 for (const l of fs.readFileSync(path.join(nw, '3dbag/all.jsonl'), 'utf8').split('\n')) if (l) { const r = JSON.parse(l); attrs.set(r.id, r); }
