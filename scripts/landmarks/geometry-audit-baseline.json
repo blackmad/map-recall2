@@ -965,8 +965,8 @@
    "window-misaligned": 0
   },
   "fire-station-hendrik": {
-   "opening-floating": 28,
-   "opening-floating-fail": 18,
+   "opening-floating": 4,
+   "opening-floating-fail": 0,
    "opening-overhang": 8,
    "opening-overhang-fail": 4,
    "opening-buried": 0,
@@ -974,7 +974,7 @@
    "zfight-near-m2": 0.2,
    "window-mismatch": 20,
    "window-missing": 1,
-   "window-misaligned": 2
+   "window-misaligned": 1
   },
   "fire-station-ijsbrand": {
    "opening-floating": 24,
