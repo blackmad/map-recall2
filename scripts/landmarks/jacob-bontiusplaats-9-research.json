@@ -1,0 +1,31 @@
+{
+  "id": "jacob-bontiusplaats-9",
+  "status": "ready-with-caveats-pending-integrator-blind-count",
+  "identity": {
+    "bagPandId": "0363100012165819",
+    "bouwjaar": 2005,
+    "addresses": ["Jacob Bontiusplaats 9-11", "Isaac Titsinghkade (Oostenburg)"],
+    "bag": "BAG API 2026-10-11: no pand name, aantalBouwlagen 2, oorspronkelijkBouwjaar 2005; 19 verblijfsobjecten (all pages): 1 x 13,616 m2 offices (kantoorfunctie), 15 overige gebruiksfunctie units, 1 meeting and 1 combined meeting/office use, 21,993 m2 in total. 3DBAG footprint 15,547 m2, eave 19-20 m.",
+    "name": "Unnamed glass-walled office/utility block on Oostenburg; no name or architect found in BAG, the building's listings (flexas.com, sollf.com: office rental pages) or the web search",
+    "policy": "ordinary large building: category ordinary, no route destination, no POI card (no named, sourced identity)",
+    "notDuplicate": "Checked manualCatalogue.json, signature-landmarks.json, native-kit-pois.json, poi-work-queue.json, landmark-backlog.json, ordinary-buildings-data and building-types/instances.json: only dominant-building-backlog.json lists the pand (name null, needs-identification)."
+  },
+  "sources": [
+    {"url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012165819/?_format=json", "kind": "BAG pand (Amsterdam BAG API)", "retrievedOn": "2026-10-11", "licence": "CC0 (BAG)"},
+    {"url": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012165819&_pageSize=500", "kind": "BAG verblijfsobjecten, all pages", "retrievedOn": "2026-10-11", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165819", "kind": "3DBAG LoD2.2 massing", "retrievedOn": "2026-10-11", "licence": "CC BY 4.0 (3DBAG)"},
+    {"file": "artifacts/landmark-lanes/jacob-bontiusplaats-9/ref-southeast.jpg", "kind": "south-east long front, panorama recording_2025-06-19_08-46-57_01816 (2025-06-19), from the east", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/jacob-bontiusplaats-9/ref-northwest.jpg", "kind": "north-west long front and corner, panorama recording_2025-06-19_08-46-57_00970 (2025-06-19)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/jacob-bontiusplaats-9/ref-southwest.jpg", "kind": "south-west end and start of the south-east front, panorama b_20250130_0915_Track30_Sphere_00001 (2025-01-30)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"}
+  ],
+  "faces": {
+    "south-east (132.5), north-west (312.5), south-west (222.5)": "evidence: the ref-*.jpg photographs. Curtain wall of vertical mullions, glazed ground floor in stone piers, louvre belt on the south-east front.",
+    "north-east end (42.5)": "INFERRED: no panorama taken from that side; same curtain-wall module as the photographed walls."
+  },
+  "caveats": [
+    "Mullion pitch (2.55 m panes) is regular; the photographed pitch varies between about 1.6 m (louvre posts) and 2.4-3 m (plain glass).",
+    "The reflective glass is one flat colour; louvre blade depth, DAAN and FIETSENSTALLING lettering, roof plant and the inner roof volumes are not modelled.",
+    "The north-west garage ramp (3DBAG vertices to -3.4 m) is clamped to street level in the builder: that geometry is hidden below the road."
+  ],
+  "limits": ["louvre depth", "signage", "roof plant", "ground-floor shopfront detail"]
+}
