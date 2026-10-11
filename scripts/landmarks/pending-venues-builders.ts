@@ -91,7 +91,7 @@ export function buildPendingVenueLandmark(id:string,_w:number,_d:number,b:Buildi
      const g:[number,number][]=[[-2.05,-lift],[2.05,-lift],[2.05,.9],[1.35,1.45],[1.1,2.55],[.65,2.95],[.65,3.55],[-.65,3.55],[-.65,2.95],[-1.1,2.55],[-1.35,1.45],[-2.05,.9]];
      poly(b,f,t,y0,g,2.7,'brick',-2.75);
      slab(b,f,t,y0+3.55,1.5,.18,.3,'stone',.02);
-     disc(b,f,t,y0+2.15,.42,.31,'stone',-.05);disc(b,f,t,y0+2.15,.3,.14,'dark',.17);   // oculus discs reach back to the gable face (fronts unchanged)}
+     disc(b,f,t,y0+2.15,.42,.31,'stone',-.05);disc(b,f,t,y0+2.15,.3,.14,'dark',.17);}
    });
    for(let u=.4;u<p.total-.3;u+=1.0){const {f,t}=p.at(u);
     if(!axes.some((a,k)=>(k===2||k===5)&&Math.abs(a-u)<1.4))slab(b,f,t,12.05,.98,.34,.215,'stone');
