@@ -1,0 +1,411 @@
+{
+  "id": "nw-portiek-plinth-hip",
+  "label": "Nieuw-West type 1 sub-design D (Clauskindereweg / Botteskerksingel / Cruuskerkstraat / Brisselkerkstraat / Wolbrantskerkweg, 1961-62): five-storey portiekflat on a tall dark-red brick plinth, 15.1 x 10.9 m, entrance on a cantilevered landing with steps, balcony bays with cream corrugated parapets at both ends, hip or gable roof",
+  "source": {
+    "clusterRank": 3,
+    "panden": 36,
+    "bouwjaar": [
+      1961,
+      1962
+    ],
+    "lengthM": 15.1,
+    "widthM": 10.9,
+    "bouwlagen": 5,
+    "roof": "pitched",
+    "dwellingsMedian": 8
+  },
+  "storeys": 5,
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.35,
+    "vergeOverhangM": 0.12,
+    "thicknessM": 0.12,
+    "pitchDeg": 25
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "buff-brown",
+  "variants": {
+    "buff-brown": {
+      "label": "Buff-brown brick above a dark red-brown brick plinth with a pale band, cream corrugated balcony parapets, yellow-cream entrance doors",
+      "evidence": "sunlit crops 0363100012115346 #766757, 0065610 #756759 (wall median #72635a), plinth 0128695 #53423c, 0076611 #58443b, 0108134 #584640 (plinth median #57443c)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#72635a"
+        },
+        "plinth": {
+          "slot": "brick",
+          "tint": "#57443c"
+        },
+        "frame": "#ece6d6",
+        "glass": "#4b5a6b",
+        "door": "#43464a",
+        "accent": "#c9c4b6",
+        "rail": "#e6e0cf",
+        "dark": "#55575a",
+        "column": "#b8bcbd",
+        "joint": "#554a43",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4b36"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012065610.jpg",
+          "pand": "0363100012065610",
+          "address": "Botteskerksingel (L 15.12 m, eaves 14.34 m)",
+          "note": "front, straight on, ground (plinth) + 4. A ~3 m dark red brick plinth with a pale concrete band above it; plinth: grey flat door left of the entrance, low windows, the entrance (yellow-cream door with two letterbox panels) on a cantilevered landing with steps; upper storeys buff-brown brick: [B] balcony bay (cream corrugated solid parapet, glazed door behind) | [S ~8 m] wide core: a column of two-light windows 2.2 m either side of the axis per storey, plus a three-light ribbon on the axis at the landing of storeys 2-4 | [B] second balcony bay. Four balcony rows."
+        },
+        {
+          "photo": "survey crop 0363100012128695.jpg",
+          "pand": "0363100012128695",
+          "address": "Clauskindereweg (L 15.06 m, eaves 14.46 m)",
+          "note": "close wide-angle view of the same layout: confirms the plinth height, band, staggered window columns and stair ribbons."
+        },
+        {
+          "photo": "survey crop 0363100012111814.jpg",
+          "pand": "0363100012111814",
+          "address": "Cruuskerkstraat (L 15.07 m, eaves 14.46 m)",
+          "note": "oblique, balcony parapets in cream corrugated panels, door left of the entrance, steps down to the right."
+        }
+      ],
+      "counted": {
+        "bays": 5,
+        "openingsPerUpperStorey": 4,
+        "groundDoors": 2,
+        "balconiesPerUpperStorey": 2
+      },
+      "bays": [
+        {
+          "id": "P0",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "Bl",
+          "w": 3.0,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 2.5,
+              "depth": 0.95,
+              "railing": "solid"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 2.2,
+              "h": 1.95,
+              "sill": 0.15,
+              "lights": 2,
+              "note": "glazed door + window behind the balcony, sill above the pale band"
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "w": 0.9,
+              "h": 0.65,
+              "sill": 1.1,
+              "note": "low window in the plinth"
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 8.1,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": 0.2,
+              "w": 1.0,
+              "h": 2.2,
+              "steps": 4,
+              "note": "entrance on a cantilevered landing, steps down to one side"
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "u": -1.7,
+              "w": 0.95,
+              "h": 2.1,
+              "note": "grey flat door left of the entrance (every member)"
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": 2.0,
+              "w": 0.9,
+              "h": 0.65,
+              "sill": 1.1,
+              "note": "low window right of the entrance"
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": -0.55,
+              "w": 0.3,
+              "h": 1.0,
+              "sill": 1.4,
+              "colour": "frame",
+              "depth": 0.08
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": 0.95,
+              "w": 0.3,
+              "h": 1.0,
+              "sill": 1.4,
+              "colour": "frame",
+              "depth": 0.08
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -2.2,
+              "w": 1.1,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 2.2,
+              "w": 1.1,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "ribbon",
+              "levels": [
+                2,
+                3,
+                4
+              ],
+              "u": 0,
+              "w": 2.0,
+              "h": 0.85,
+              "sill": -0.45,
+              "lights": 3,
+              "note": "three-light stair ribbon centred on the landing at the floor line of storeys 2-4"
+            }
+          ]
+        },
+        {
+          "id": "Br",
+          "w": 3.0,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 2.5,
+              "depth": 0.95,
+              "railing": "solid"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 2.2,
+              "h": 1.95,
+              "sill": 0.15,
+              "lights": 2,
+              "note": "glazed door + window behind the balcony, sill above the pale band"
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "w": 0.9,
+              "h": 0.65,
+              "sill": 1.1,
+              "note": "low window in the plinth"
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        }
+      ],
+      "bands": [
+        {
+          "floor": 1,
+          "below": 0.25,
+          "above": 0.12,
+          "palette": "column"
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012065610.jpg",
+          "pand": "0363100012065610",
+          "address": "Botteskerksingel (L 15.12 m, eaves 14.34 m)",
+          "note": "no straight-on garden-side photo found; the model repeats the front window rhythm without balconies and doors. NOT verified."
+        }
+      ],
+      "counted": {
+        "bays": 5,
+        "openingsPerUpperStorey": 4,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "P0",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "Bl",
+          "w": 3.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.4,
+              "h": 1.4,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 8.1,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -2.2,
+              "w": 1.1,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 2.2,
+              "w": 1.1,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "ribbon",
+              "levels": [
+                2,
+                3,
+                4
+              ],
+              "u": 0,
+              "w": 2.0,
+              "h": 0.85,
+              "sill": -0.45,
+              "lights": 3
+            }
+          ]
+        },
+        {
+          "id": "Br",
+          "w": 3.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.4,
+              "h": 1.4,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012065610.jpg",
+          "pand": "0363100012065610",
+          "address": "Botteskerksingel (L 15.12 m, eaves 14.34 m)",
+          "note": "terrace end / party wall, modelled blank. NOT verified for end units."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "gable",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012065610.jpg",
+          "pand": "0363100012065610",
+          "address": "Botteskerksingel (L 15.12 m, eaves 14.34 m)",
+          "note": "as left."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "gable",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Sub-design D of the type-1 cluster rank 3, 36 panden held by the 2026-10-11 survey as \"tall brick plinth, central entrance up steps, balcony columns at both ends\". 8 of the 36 have a hip roof in 3DBAG, the rest gable; the generator takes the roof form from 3DBAG.",
+    "Ground-floor detail is identical across members (grey door left of the entrance, steps down to the right); the model keeps that asymmetry in the viewer frame."
+  ]
+}

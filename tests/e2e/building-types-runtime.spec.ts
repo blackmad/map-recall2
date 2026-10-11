@@ -21,6 +21,15 @@ const VIEWS: Record<string, { center: [number, number]; zoom: number; pitch: num
   'slotermeer-close': { center: [4.81548466, 52.3757425], zoom: 19.2, pitch: 60, bearing: 85 },
   'wildeman-street': { center: [4.7985, 52.3643], zoom: 17.8, pitch: 62, bearing: 252 },
   'wildeman-close': { center: [4.79715, 52.3639873], zoom: 19.2, pitch: 60, bearing: 252 },
+  // 2026-10-11 sub-designs (types/nw-subtypes-20261011): A Osdorper Ban / Hooge Venne, B Nieuwenhuysenstraat, C John Lockehof, D Clauskindereweg.
+  'osdorper-ban-street': { center: [4.8005, 52.3616], zoom: 17.8, pitch: 62, bearing: 252 },
+  'osdorper-ban-close': { center: [4.80057427, 52.36157675], zoom: 19.2, pitch: 60, bearing: 251.6 },
+  'nieuwenhuysen-street': { center: [4.8211, 52.3825], zoom: 17.8, pitch: 62, bearing: 284 },
+  'nieuwenhuysen-close': { center: [4.82106495, 52.3825187], zoom: 19.2, pitch: 60, bearing: 284.4 },
+  'lockehof-street': { center: [4.8112, 52.3768], zoom: 17.8, pitch: 62, bearing: 270 },
+  'lockehof-close': { center: [4.8110033, 52.37716495], zoom: 19.2, pitch: 60, bearing: 265.1 },
+  'clauskinderen-street': { center: [4.7932, 52.3584], zoom: 17.8, pitch: 62, bearing: 252 },
+  'clauskinderen-close': { center: [4.79319306, 52.35836115], zoom: 19.2, pitch: 60, bearing: 251.6 },
 };
 const ONLY = process.env.BT_VIEWS?.split(',');
 const CAM = ['jumpTo', 'easeTo', 'flyTo', 'setCenter', 'setZoom', 'setBearing', 'setPitch'];
