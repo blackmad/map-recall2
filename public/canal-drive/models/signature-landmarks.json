@@ -67,7 +67,50 @@
         "NL.IMBAG.Pand.0363100012240304",
         "NL.IMBAG.Pand.0363100012245758",
         "NL.IMBAG.Pand.0363100012245759",
-        "NL.IMBAG.Pand.0363100012246251"
+        "NL.IMBAG.Pand.0363100012246251",
+        "w269124500",
+        "w424523117",
+        "w752653562",
+        "w752653568",
+        "w752738611",
+        "w1239767716",
+        "w1239767717",
+        "w1239767718",
+        "w1239767719",
+        "w1239767720",
+        "w1239767721",
+        "w1239767722",
+        "w1239767724",
+        "w1239767725",
+        "w1240155430",
+        "w1240155434",
+        "w589499178",
+        "w752328416",
+        "w752328417",
+        "w752328418",
+        "w752328419",
+        "w752328420",
+        "w752653565",
+        "w752653566",
+        "w752653567",
+        "w752653570",
+        "w752653571",
+        "w752653572",
+        "w752653573",
+        "w1239767703",
+        "w1239767709",
+        "w1239767711",
+        "w1239767712",
+        "w1239767713",
+        "w1239767714",
+        "w1239767715",
+        "w1240155431",
+        "w1240155435",
+        "w1240314141",
+        "w1240314142",
+        "w1239767723",
+        "w1240155433",
+        "w1240155432"
       ],
       "spatialSuppression": false,
       "groundAltitudeMetres": 0,
@@ -126,7 +169,7 @@
         "depthCoverage": 6.023749797839424
       },
       "triangles": 38607,
-      "bytes": 415052,
+      "bytes": 415064,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "83293771e9c194c6",
@@ -9321,10 +9364,10 @@
       "bytes": 162248,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "9270966bfc969f17",
+        "sourceHash": "ba8b2d615e38f26b",
         "buildVersion": 2,
-        "bytes": 45440,
-        "triangles": 2166
+        "bytes": 45480,
+        "triangles": 2162
       }
     },
     "kattenkabinet": {
@@ -15934,10 +15977,10 @@
       "bytes": 162164,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "f96f68e92d15fd35",
+        "sourceHash": "4079166ea75bb47b",
         "buildVersion": 2,
-        "bytes": 42880,
-        "triangles": 1904
+        "bytes": 43288,
+        "triangles": 1928
       }
     },
     "fire-station-dirk": {
@@ -19582,9 +19625,11 @@
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "materialOverrides": {
-        "brick": "#7b6259",
+        "brick": "#8a766b",
+        "greyBrick": "#6f5d55",
         "stone": "#b9ad98",
-        "slate": "#a2543f",
+        "slate": "#b4573a",
+        "red": "#a8472b",
         "glass": "#4f6068",
         "dark": "#3a3330",
         "white": "#d8d2c2",
@@ -19750,11 +19795,12 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -12.39853286743164,
-          0,
-          -10.47700023651123
+          -12.368947982788086,
+          -4.7683716530855236e-8,
+          -10.672526359558105
         ],
         "max": [
           11.819999694824219,
@@ -19773,15 +19819,20 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 35.27699947357178,
-        "heightMetres": 20.704999923706055,
-        "depthMetres": 24.21853256225586,
-        "depthCoverage": 0.6727370156182183
+        "widthMetres": 35.47252559661865,
+        "heightMetres": 20.70499997138977,
+        "depthMetres": 24.188947677612305,
+        "depthCoverage": 0.6719152132670084
       },
-      "triangles": 2641,
-      "bytes": 47616,
+      "triangles": 5139,
+      "bytes": 79648,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "lod1": {
+        "sourceHash": "f8d65f15b591bc3e",
+        "buildVersion": 2,
+        "bytes": 29192,
+        "triangles": 1004
+      }
     },
     "maarten-lutherkerk": {
       "id": "maarten-lutherkerk",
@@ -19812,10 +19863,10 @@
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "materialOverrides": {
-        "brick": "#a08a62",
+        "brick": "#a49a7c",
         "stone": "#bcb4a2",
         "slate": "#5f5b55",
-        "glass": "#6d8388",
+        "glass": "#86999c",
         "dark": "#2f2b27",
         "white": "#d9d5c8",
         "frame": "#5a4a38",
@@ -20018,15 +20069,16 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -19.784332275390625,
-          -2.98023217215615e-10,
-          -12.375
+          -4.7683716530855236e-8,
+          -12.87678050994873
         ],
         "max": [
-          13.5277738571167,
-          26.100000381469727,
+          14.426021575927734,
+          26.200000762939453,
           11.982000350952148
         ]
       },
@@ -20041,20 +20093,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 33.312106132507324,
-        "heightMetres": 26.10000038176775,
-        "depthMetres": 24.35700035095215,
-        "depthCoverage": 0.974280014038086
+        "widthMetres": 34.21035385131836,
+        "heightMetres": 26.20000081062317,
+        "depthMetres": 24.85878086090088,
+        "depthCoverage": 0.9943512344360351
       },
-      "triangles": 4005,
-      "bytes": 67196,
+      "triangles": 4840,
+      "bytes": 79228,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true,
       "lod1": {
-        "sourceHash": "591b08387320088d",
+        "sourceHash": "fd98686c3bc0062a",
         "buildVersion": 2,
-        "bytes": 26400,
-        "triangles": 899
+        "bytes": 28348,
+        "triangles": 938
       }
     },
     "museum-amsterdam-noord": {
@@ -20164,6 +20215,8 @@
     },
     "levend-paardenmuseum": {
       "id": "levend-paardenmuseum",
+      "status": "held",
+      "heldReason": "Gateway front now detailed from panoramas (pilasters, lanterns, plaques, keystone, frieze, timber bay); the rest is still plain 3DBAG massing with blank long walls and no photographed window rhythm, so the building is not at the bar (reworked 2026-10-11).",
       "name": "Levend Paardenmuseum",
       "landmarkId": "extract_landmarks_82936853",
       "modelUrl": "./models/levend-paardenmuseum.glb",
@@ -20290,10 +20343,11 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -29.92099952697754,
-          -4.7683716530855236e-8,
+          -9.536743306171047e-8,
           -37.08399963378906
         ],
         "max": [
@@ -20314,12 +20368,12 @@
       },
       "extent": {
         "widthMetres": 74.99742126464844,
-        "heightMetres": 16.982000398635865,
+        "heightMetres": 16.98200044631958,
         "depthMetres": 60.488698959350586,
         "depthCoverage": 1.1956298196672699
       },
-      "triangles": 802,
-      "bytes": 23476,
+      "triangles": 1246,
+      "bytes": 29944,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "held": true
     },
@@ -20352,7 +20406,7 @@
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "materialOverrides": {
-        "brick": "#a2705b",
+        "brick": "#8a5642",
         "slate": "#585b61",
         "white": "#e9e6dc",
         "stone": "#a7a59d",
@@ -20451,11 +20505,12 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -6.724022388458252,
+          -6.1850056648254395,
           -4.7683716530855236e-8,
-          -4.234000205993652
+          -7.459634304046631
         ],
         "max": [
           5.73799991607666,
@@ -20474,20 +20529,23 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 12.462022304534912,
+        "widthMetres": 11.9230055809021,
         "heightMetres": 16.933000612258912,
-        "depthMetres": 8.424000263214111,
-        "depthCoverage": 1.2291172485073063
+        "depthMetres": 11.64963436126709,
+        "depthCoverage": 1.6997585570793374
       },
-      "triangles": 221,
-      "bytes": 11340,
+      "triangles": 3641,
+      "bytes": 56220,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "lod1": {
+        "sourceHash": "2737e2a92d5d1eb9",
+        "buildVersion": 2,
+        "bytes": 21000,
+        "triangles": 749
+      }
     },
     "torture-museum": {
       "id": "torture-museum",
-      "status": "held",
-      "heldReason": "Facade slab detached from the shell; low detail (user review 2026-10-09).",
       "name": "Torture Museum",
       "landmarkId": "extract_landmarks_417591223",
       "modelUrl": "./models/torture-museum.glb",
@@ -20519,9 +20577,10 @@
         "stone": "#8f8b84",
         "slate": "#5a5a5e",
         "white": "#e6e4da",
-        "glass": "#5f7581",
+        "glass": "#7e95a3",
         "dark": "#23272b",
-        "red": "#9b2f27"
+        "red": "#9b2f27",
+        "ochre": "#5d4331"
       },
       "attribution": {
         "title": "Torture Museum",
@@ -20562,6 +20621,7 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -9.64799976348877,
@@ -20590,10 +20650,9 @@
         "depthMetres": 12.867999792098999,
         "depthCoverage": 2.0137714854615023
       },
-      "triangles": 1780,
-      "bytes": 34044,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "triangles": 2968,
+      "bytes": 52040,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "theo-thijssen-museum": {
       "id": "theo-thijssen-museum",
@@ -26965,10 +27024,10 @@
       "bytes": 229588,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "771c12276402143c",
+        "sourceHash": "550d685262ff3fff",
         "buildVersion": 2,
-        "bytes": 54744,
-        "triangles": 2693
+        "bytes": 55456,
+        "triangles": 2682
       }
     },
     "sea-palace": {
@@ -29839,9 +29898,9 @@
       "bytes": 175336,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "43e37468e5ac16c9",
+        "sourceHash": "fb13e6a62773960d",
         "buildVersion": 2,
-        "bytes": 51820,
+        "bytes": 52972,
         "triangles": 2164
       }
     },
@@ -30222,10 +30281,10 @@
       "bytes": 459516,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "0bc8d03b8c6c57d0",
+        "sourceHash": "0dcb30cc2f62b41b",
         "buildVersion": 2,
-        "bytes": 122884,
-        "triangles": 6005
+        "bytes": 116320,
+        "triangles": 5631
       }
     },
     "hotel-de-l-europe": {
@@ -30824,10 +30883,10 @@
       "bytes": 372736,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "ea1213b9dcf2a56d",
+        "sourceHash": "6b8c2170785da848",
         "buildVersion": 2,
-        "bytes": 95328,
-        "triangles": 4556
+        "bytes": 101840,
+        "triangles": 4920
       }
     },
     "trippenhuis": {
@@ -32211,6 +32270,9 @@
         "NL.IMBAG.Pand.0363100012165293"
       ],
       "spatialSuppression": false,
+      "partyWallBearings": [
+        208
+      ],
       "footprint": {
         "centre": [
           4.895022795431246,
@@ -32231,11 +32293,12 @@
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "materialOverrides": {
-        "stone": "#c4b79c",
+        "stone": "#b1ab9d",
+        "concrete": "#a8a397",
         "brick": "#7a4a3b",
         "white": "#e4dfd2",
         "slate": "#4b4f55",
-        "glass": "#4e5f6b",
+        "glass": "#5f8196",
         "frame": "#d9d6cc",
         "dark": "#2a2d30"
       },
@@ -32918,8 +32981,7 @@
           ]
         ]
       },
-      "status": "held",
-      "heldReason": "Integrator 2026-10-10: only the old Dam front is photo-counted; modern wing and lower building use a generic window module, dark glass bays missing, stone too beige",
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -54.63355255126953,
@@ -32948,15 +33010,14 @@
         "depthMetres": 133.85355377197266,
         "depthCoverage": 1.2675525925376199
       },
-      "triangles": 15480,
-      "bytes": 216600,
+      "triangles": 18516,
+      "bytes": 251700,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true,
       "lod1": {
-        "sourceHash": "087bb3a386d88722",
+        "sourceHash": "cf34aa9a4a1dae54",
         "buildVersion": 2,
-        "bytes": 54472,
-        "triangles": 2571
+        "bytes": 59072,
+        "triangles": 2898
       }
     },
     "fatih-moskee": {
@@ -33572,15 +33633,39 @@
         "northOffsetDegrees": 0,
         "source": "Current BAG 0363100012088034 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
       },
+      "throughPassages": [
+        {
+          "axisBearing": 17,
+          "corridor": [
+            [
+              9.2,
+              -8.7
+            ],
+            [
+              -6,
+              -13.5
+            ],
+            [
+              -17,
+              21.4
+            ],
+            [
+              -1.8,
+              26.2
+            ]
+          ],
+          "evidence": "OSM routing extract (streets-routing.json): Jan Schaeferbrug / Piet Heinkade carriageway routing_10374 runs (0.4,-7.3) -> (-8.2,20.0) m in model-local east/south metres, bearing 17.5 deg, straight through the 1934 cold-store; flanking cycleways routing_12505 (bearing 15.3 deg) and routing_23078 sit about 5 m either side. Corridor = carriageway plus both cycleways, centreline +/- 8 m (the roadway flares into the bridge approach at the north end, where the west cycleway starts 5.8 m off the centreline), extended 4 m past each end. Photo: ref-rce-2005-b.jpg shows the roadway running under the overhanging upper floors."
+        }
+      ],
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "materialOverrides": {
-        "brick": "#5c5540",
-        "stone": "#85827a",
-        "concrete": "#6e6c62",
-        "greyBrick": "#4a4535",
-        "red": "#7d4a2b",
-        "glass": "#5d7585",
+        "brick": "#4b483c",
+        "stone": "#6e6c62",
+        "concrete": "#5e5c53",
+        "greyBrick": "#3b392f",
+        "red": "#8f5535",
+        "glass": "#3d4a54",
         "bronze": "#2c2e30"
       },
       "attribution": {
@@ -33646,12 +33731,11 @@
           ]
         ]
       },
-      "status": "held",
-      "heldReason": "Integrator 2026-10-10: massing and roadway portal match, but the photo is dark weathered grey-brown concrete with brick-red tower strips; the model is tan/ochre",
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -19.39270782470703,
-          0,
+          -9.536743306171047e-8,
           -10.889474868774414
         ],
         "max": [
@@ -33672,19 +33756,18 @@
       },
       "extent": {
         "widthMetres": 42.36427879333496,
-        "heightMetres": 28,
+        "heightMetres": 28.000000095367433,
         "depthMetres": 37.6841926574707,
         "depthCoverage": 1.3084789117177327
       },
-      "triangles": 4277,
-      "bytes": 67816,
+      "triangles": 4517,
+      "bytes": 72512,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true,
       "lod1": {
-        "sourceHash": "932c5ede3491faf0",
+        "sourceHash": "e9f725734b0bb150",
         "buildVersion": 2,
-        "bytes": 40628,
-        "triangles": 2182
+        "bytes": 41272,
+        "triangles": 2166
       }
     },
     "victoria-hotel": {
@@ -34747,8 +34830,7 @@
           ]
         ]
       },
-      "status": "held",
-      "heldReason": "Integrator 2026-10-10: 3DBAG link core/annex on the tower west face likely belongs to the demolished 1990 Abma satellite (blank fin with no counterpart in 2025 photos); tower stubby; facade counts pending",
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -58.38623046875,
@@ -34777,15 +34859,14 @@
         "depthMetres": 140.23257446289062,
         "depthCoverage": 1.2454047465620837
       },
-      "triangles": 20579,
-      "bytes": 244140,
+      "triangles": 20520,
+      "bytes": 242876,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true,
       "lod1": {
-        "sourceHash": "1250fad1d8684540",
+        "sourceHash": "2a652cfd44d82d05",
         "buildVersion": 2,
-        "bytes": 51620,
-        "triangles": 2543
+        "bytes": 51736,
+        "triangles": 2552
       }
     },
     "hotel-jakarta": {
@@ -35217,9 +35298,9 @@
       "bytes": 362156,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "e025cb21d3c9917c",
+        "sourceHash": "23b757af2a281f1d",
         "buildVersion": 2,
-        "bytes": 93380,
+        "bytes": 92720,
         "triangles": 4885
       }
     },
@@ -35397,10 +35478,10 @@
       "bytes": 338096,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "0e0bc548e60872da",
+        "sourceHash": "30128676467fbadf",
         "buildVersion": 2,
-        "bytes": 90872,
-        "triangles": 4425
+        "bytes": 91056,
+        "triangles": 4431
       }
     },
     "de-bazel": {
@@ -35598,9 +35679,9 @@
       "bytes": 496580,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "0f0d28a0b10dc329",
+        "sourceHash": "e3a97cb04ce0442c",
         "buildVersion": 2,
-        "bytes": 108152,
+        "bytes": 108120,
         "triangles": 5537
       }
     },
@@ -35924,10 +36005,10 @@
       "bytes": 208788,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "468551ae2ad8ccca",
+        "sourceHash": "7116e7361e525bb9",
         "buildVersion": 2,
-        "bytes": 50592,
-        "triangles": 2249
+        "bytes": 50620,
+        "triangles": 2251
       }
     },
     "grasweg-116": {
@@ -36088,10 +36169,10 @@
       "bytes": 333400,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "85c1b0475f2b437a",
+        "sourceHash": "5b5303419e95eefa",
         "buildVersion": 2,
-        "bytes": 131784,
-        "triangles": 6202
+        "bytes": 131652,
+        "triangles": 6205
       }
     },
     "asterweg-23": {
@@ -36392,9 +36473,9 @@
       "bytes": 230124,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "2c8c065d48b7d539",
+        "sourceHash": "524d87730f1f030c",
         "buildVersion": 2,
-        "bytes": 76560,
+        "bytes": 76556,
         "triangles": 3408
       }
     },
@@ -36973,9 +37054,9 @@
       "bytes": 370532,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "b75e4508484a9858",
+        "sourceHash": "fb8d21c3d5082054",
         "buildVersion": 2,
-        "bytes": 78800,
+        "bytes": 78792,
         "triangles": 4010
       }
     },
@@ -37100,10 +37181,10 @@
       "bytes": 265580,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "e8dd3e952fcd95b0",
+        "sourceHash": "cf4be22be39b1679",
         "buildVersion": 2,
-        "bytes": 66016,
-        "triangles": 3224
+        "bytes": 65444,
+        "triangles": 3196
       }
     },
     "hilton-amsterdam": {
@@ -37486,10 +37567,10 @@
       "bytes": 303204,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "d8f4665b82dd2900",
+        "sourceHash": "5c1e6fdba923f39f",
         "buildVersion": 2,
-        "bytes": 86068,
-        "triangles": 4284
+        "bytes": 85068,
+        "triangles": 4229
       }
     },
     "booking-hq": {
@@ -37521,11 +37602,11 @@
         "source": "PDOK BAG 0363100012250152 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
       },
       "materialOverrides": {
-        "dark": "#1f282d",
-        "glass": "#5f90ab",
+        "dark": "#2b2927",
+        "glass": "#78a5c1",
         "concrete": "#7d8082",
-        "frame": "#2c363c",
-        "red": "#a0663a",
+        "frame": "#3b3633",
+        "red": "#9c6b3b",
         "white": "#f1f1ee"
       },
       "preservePositionPrecision": true,
@@ -37681,16 +37762,16 @@
         ]
       },
       "status": "held",
-      "heldReason": "2026-10-10: plate rework (2b5bbec4) still reads as a gridded glass box: needs the curved, stepped south front cantilevered over the deep entrance plaza (BAG ring is straight there; photos are not), thinner bronze plates, and a measured lobby recess (2.0 m was chosen to pass see-through, photos bound it to 2-4 m).",
+      "heldReason": "2026-10-11: curved stepped south front, thin bronze plates, sampled glass colours and a measured lobby recess (1.7 m to 5.7 m, undercroft rule in glbQuality) are in and audit-clean, but it still reads as a tidy striped glass drum beside the photo: the faceted, irregularly shaded glass skin with slanted terrace fins, the curved east face and the tower's irregular window rhythm are not modelled.",
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -37.4379997253418,
-          -9.155273232863692e-7,
-          -86.78833770751953
+          -37.61606216430664,
+          -8.087158107628056e-7,
+          -86.78025817871094
         ],
         "max": [
-          59.05560302734375,
+          59.0545654296875,
           50.637001037597656,
           32.59450149536133
         ]
@@ -37706,19 +37787,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 119.38283920288086,
-        "heightMetres": 50.63700195312498,
-        "depthMetres": 96.49360275268555,
-        "depthCoverage": 0.990389025481736
+        "widthMetres": 119.37475967407227,
+        "heightMetres": 50.63700184631347,
+        "depthMetres": 96.67062759399414,
+        "depthCoverage": 0.9922059693522953
       },
-      "triangles": 26947,
-      "bytes": 378924,
+      "triangles": 25368,
+      "bytes": 328608,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "4b31782adaa00c66",
+        "sourceHash": "8ef269c8cee7105a",
         "buildVersion": 2,
-        "bytes": 90108,
-        "triangles": 4833
+        "bytes": 67172,
+        "triangles": 3716
       },
       "held": true
     },

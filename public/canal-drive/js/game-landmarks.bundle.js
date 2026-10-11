@@ -1088,7 +1088,11 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_2070637412",
       modelUrl: "./models/van-gogh-museum.glb",
       suppressOsmIds: [
-        "r6577680"
+        "r6577680",
+        "w754324680",
+        "w754324683",
+        "w754324685",
+        "w754324682"
       ],
       footprint: {
         centre: [
@@ -1116,7 +1120,16 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1719479765",
       modelUrl: "./models/stedelijk-museum.glb",
       suppressOsmIds: [
-        "w44508819"
+        "w44508819",
+        "w754299889",
+        "w754299890",
+        "w754299892",
+        "w754299896",
+        "w754299897",
+        "w754299894",
+        "w754299895",
+        "w754299893",
+        "w754299898"
       ],
       footprint: {
         centre: [
@@ -1144,7 +1157,15 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "adam-tower",
       modelUrl: "./models/adam-tower.glb",
       suppressOsmIds: [
-        "w44824385"
+        "w44824385",
+        "w593068473",
+        "w593068474",
+        "w750257534",
+        "w750257535",
+        "w750257536",
+        "w750296019",
+        "w750296020",
+        "w750257537"
       ],
       footprint: {
         centre: [
@@ -1172,7 +1193,12 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "pontsteiger",
       modelUrl: "./models/pontsteiger.glb",
       suppressOsmIds: [
-        "r13123696"
+        "r13123696",
+        "w995816139",
+        "w1509448156",
+        "w995816140",
+        "w995816141",
+        "w995816138"
       ],
       footprint: {
         centre: [
@@ -1286,7 +1312,8 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "paradiso",
       modelUrl: "./models/paradiso.glb",
       suppressOsmIds: [
-        "w57857350"
+        "w57857350",
+        "NL.IMBAG.Pand.0363100012169473"
       ],
       footprint: {
         centre: [
@@ -1314,7 +1341,9 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1586263374",
       modelUrl: "./models/melkweg.glb",
       suppressOsmIds: [
-        "w267565714"
+        "w267565714",
+        "NL.IMBAG.Pand.0363100012169859",
+        "NL.IMBAG.Pand.0363100012168735"
       ],
       footprint: {
         centre: [
@@ -1345,7 +1374,8 @@ Map source: ${osmUrl(places[i][0])}`);
       ],
       modelUrl: "./models/embassy-free-mind.glb",
       suppressOsmIds: [
-        "w266604553"
+        "w266604553",
+        "NL.IMBAG.Pand.0363100012177213"
       ],
       footprint: {
         centre: [
@@ -1374,7 +1404,9 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1215417346",
       modelUrl: "./models/the-movies.glb",
       suppressOsmIds: [
-        "w266597659"
+        "w266597659",
+        "NL.IMBAG.Pand.0363100012172836",
+        "NL.IMBAG.Pand.0363100012171348"
       ],
       footprint: {
         centre: [
@@ -1402,7 +1434,11 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_984169544",
       modelUrl: "./models/delamar.glb",
       suppressOsmIds: [
-        "w267565782"
+        "w267565782",
+        "NL.IMBAG.Pand.0363100012169852",
+        "NL.IMBAG.Pand.0363100012571556",
+        "NL.IMBAG.Pand.0363100012168512",
+        "NL.IMBAG.Pand.0363100012169853"
       ],
       footprint: {
         centre: [
@@ -1460,7 +1496,10 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_2044416411",
       modelUrl: "./models/felix-meritis.glb",
       suppressOsmIds: [
-        "w30044304"
+        "w30044304",
+        "NL.IMBAG.Pand.0363100012174401",
+        "NL.IMBAG.Pand.0363100012174322",
+        "NL.IMBAG.Pand.0363100012168556"
       ],
       footprint: {
         centre: [
@@ -1488,7 +1527,13 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_916929647",
       modelUrl: "./models/kleine-komedie.glb",
       suppressOsmIds: [
-        "w267116750"
+        "w267116750",
+        "NL.IMBAG.Pand.0363100012180338",
+        "NL.IMBAG.Pand.0363100012180339",
+        "NL.IMBAG.Pand.0363100012171100",
+        "NL.IMBAG.Pand.0363100012180340",
+        "NL.IMBAG.Pand.0363100012180337",
+        "NL.IMBAG.Pand.0363100012178956"
       ],
       footprint: {
         centre: [
@@ -1516,7 +1561,8 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1675243450",
       modelUrl: "./models/de-balie.glb",
       suppressOsmIds: [
-        "w114538342"
+        "w114538342",
+        "NL.IMBAG.Pand.0363100012168684"
       ],
       footprint: {
         centre: [
@@ -1544,7 +1590,8 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_614625734",
       modelUrl: "./models/anne-frank-house.glb",
       suppressOsmIds: [
-        "w266616469"
+        "w266616469",
+        "NL.IMBAG.Pand.0363100012169583"
       ],
       footprint: {
         centre: [
@@ -1580,7 +1627,9 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_25101431",
       modelUrl: "./models/rembrandt-house.glb",
       suppressOsmIds: [
-        "w268782575"
+        "w268782575",
+        "NL.IMBAG.Pand.0363100012182907",
+        "NL.IMBAG.Pand.0363100012251237"
       ],
       footprint: {
         centre: [
@@ -1616,7 +1665,8 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1523176628",
       modelUrl: "./models/moco-museum.glb",
       suppressOsmIds: [
-        "w277108702"
+        "w277108702",
+        "NL.IMBAG.Pand.0363100012157619"
       ],
       footprint: {
         centre: [
@@ -1652,7 +1702,8 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_211818595",
       modelUrl: "./models/museum-van-loon.glb",
       suppressOsmIds: [
-        "w268283622"
+        "w268283622",
+        "NL.IMBAG.Pand.0363100012179302"
       ],
       footprint: {
         centre: [
@@ -1688,7 +1739,8 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_444968372",
       modelUrl: "./models/amstelkerk.glb",
       suppressOsmIds: [
-        "w57862594"
+        "w57862594",
+        "NL.IMBAG.Pand.0363100012171043"
       ],
       footprint: {
         centre: [
@@ -1716,7 +1768,9 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_944681607",
       modelUrl: "./models/he-hua-temple.glb",
       suppressOsmIds: [
-        "w267091468"
+        "w267091468",
+        "NL.IMBAG.Pand.0363100012177927",
+        "NL.IMBAG.Pand.0363100012177921"
       ],
       footprint: {
         centre: [
@@ -1744,7 +1798,8 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_498862002",
       modelUrl: "./models/haarlemmerpoort.glb",
       suppressOsmIds: [
-        "w33202039"
+        "w33202039",
+        "NL.IMBAG.Pand.0363100012176980"
       ],
       footprint: {
         centre: [
@@ -1811,7 +1866,46 @@ Map source: ${osmUrl(places[i][0])}`);
         "w274040437",
         "w274040452",
         "w274040559",
-        "w274040564"
+        "w274040564",
+        "NL.IMBAG.Pand.0363100012066473",
+        "NL.IMBAG.Pand.0363100012072489",
+        "NL.IMBAG.Pand.0363100012073972",
+        "NL.IMBAG.Pand.0363100012073983",
+        "NL.IMBAG.Pand.0363100012075951",
+        "NL.IMBAG.Pand.0363100012079874",
+        "NL.IMBAG.Pand.0363100012082557",
+        "NL.IMBAG.Pand.0363100012098292",
+        "NL.IMBAG.Pand.0363100012108427",
+        "NL.IMBAG.Pand.0363100012113246",
+        "NL.IMBAG.Pand.0363100012129132",
+        "NL.IMBAG.Pand.0363100012137843",
+        "NL.IMBAG.Pand.0363100012143326",
+        "NL.IMBAG.Pand.0363100012147652",
+        "NL.IMBAG.Pand.0363100012156813",
+        "NL.IMBAG.Pand.0363100012233108",
+        "NL.IMBAG.Pand.0363100012100669",
+        "NL.IMBAG.Pand.0363100012073141",
+        "NL.IMBAG.Pand.0363100012062729",
+        "NL.IMBAG.Pand.0363100012147653",
+        "NL.IMBAG.Pand.0363100012154861",
+        "NL.IMBAG.Pand.0363100012233098",
+        "NL.IMBAG.Pand.0363100012111401",
+        "NL.IMBAG.Pand.0363100012081795",
+        "NL.IMBAG.Pand.0363100012076883",
+        "NL.IMBAG.Pand.0363100012067991",
+        "NL.IMBAG.Pand.0363100012131899",
+        "NL.IMBAG.Pand.0363100012150291",
+        "NL.IMBAG.Pand.0363100012233107",
+        "NL.IMBAG.Pand.0363100012077108",
+        "NL.IMBAG.Pand.0363100012233100",
+        "NL.IMBAG.Pand.0363100012233106",
+        "NL.IMBAG.Pand.0363100012233103",
+        "NL.IMBAG.Pand.0363100012233109",
+        "NL.IMBAG.Pand.0363100012233099",
+        "NL.IMBAG.Pand.0363100012233104",
+        "NL.IMBAG.Pand.0363100012233105",
+        "NL.IMBAG.Pand.0363100012233101",
+        "NL.IMBAG.Pand.0363100012233102"
       ],
       footprint: {
         centre: [
@@ -1847,7 +1941,8 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "scheepvaarthuis",
       modelUrl: "./models/scheepvaarthuis.glb",
       suppressOsmIds: [
-        "w57863677"
+        "w57863677",
+        "NL.IMBAG.Pand.0363100012244270"
       ],
       footprint: {
         centre: [
@@ -1883,7 +1978,8 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1428677427",
       modelUrl: "./models/rialto.glb",
       suppressOsmIds: [
-        "w277244583"
+        "w277244583",
+        "NL.IMBAG.Pand.0363100012156839"
       ],
       footprint: {
         centre: [
@@ -2066,7 +2162,8 @@ Map source: ${osmUrl(places[i][0])}`);
       modelUrl: "./models/stadsschouwburg.glb",
       suppressOsmIds: [
         "w57863115",
-        "NL.IMBAG.Pand.0363100012168738"
+        "NL.IMBAG.Pand.0363100012168738",
+        "NL.IMBAG.Pand.0363100012173457"
       ],
       spatialSuppression: false,
       footprint: {
@@ -2102,7 +2199,8 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1697896624",
       modelUrl: "./models/tuschinski.glb",
       suppressOsmIds: [
-        "w267116768"
+        "w267116768",
+        "NL.IMBAG.Pand.0363100012168188"
       ],
       footprint: {
         centre: [
@@ -2139,7 +2237,8 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_798381271",
       modelUrl: "./models/pathe-city.glb",
       suppressOsmIds: [
-        "w267565634"
+        "w267565634",
+        "NL.IMBAG.Pand.0363100012174390"
       ],
       footprint: {
         centre: [
@@ -2182,7 +2281,31 @@ Map source: ${osmUrl(places[i][0])}`);
         "w747868980",
         "w747868981",
         "w747868982",
-        "w747868984"
+        "w747868984",
+        "w747868957",
+        "w747868958",
+        "w747868959",
+        "w747868960",
+        "w747868962",
+        "w747868963",
+        "w747868964",
+        "w747868965",
+        "w747868966",
+        "w747868968",
+        "w747868969",
+        "w747868985",
+        "w747868986",
+        "w747868987",
+        "w747868988",
+        "w747868989",
+        "w747868990",
+        "w747868991",
+        "w747868992",
+        "w747868993",
+        "w747868994",
+        "w749242499",
+        "w749242500",
+        "w749242501"
       ],
       spatialSuppression: false,
       footprint: {
@@ -2238,7 +2361,8 @@ Map source: ${osmUrl(places[i][0])}`);
         "w747924626",
         "w748997143",
         "w748997144",
-        "NL.IMBAG.Pand.0363100012169079"
+        "NL.IMBAG.Pand.0363100012169079",
+        "w748997142"
       ],
       spatialSuppression: false,
       footprint: {
@@ -2275,7 +2399,8 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1198118755",
       modelUrl: "./models/buiksloterkerk.glb",
       suppressOsmIds: [
-        "w44825314"
+        "w44825314",
+        "NL.IMBAG.Pand.0363100012160472"
       ],
       spatialSuppression: false,
       footprint: {
@@ -2313,7 +2438,8 @@ Map source: ${osmUrl(places[i][0])}`);
       modelUrl: "./models/english-reformed-church.glb",
       suppressOsmIds: [
         "w57858493",
-        "w1425764020"
+        "w1425764020",
+        "NL.IMBAG.Pand.0363100012168141"
       ],
       spatialSuppression: false,
       footprint: {
@@ -2350,7 +2476,8 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1601841225",
       modelUrl: "./models/de-papegaai.glb",
       suppressOsmIds: [
-        "w266903909"
+        "w266903909",
+        "NL.IMBAG.Pand.0363100012253747"
       ],
       spatialSuppression: false,
       footprint: {
@@ -2391,7 +2518,8 @@ Map source: ${osmUrl(places[i][0])}`);
       ],
       modelUrl: "./models/de-hallen.glb",
       suppressOsmIds: [
-        "w94517266"
+        "w94517266",
+        "NL.IMBAG.Pand.0363100012236693"
       ],
       footprint: {
         centre: [
@@ -2429,7 +2557,9 @@ Map source: ${osmUrl(places[i][0])}`);
       modelUrl: "./models/huis-bartolotti.glb",
       suppressOsmIds: [
         "w174193863",
-        "w266616315"
+        "w266616315",
+        "NL.IMBAG.Pand.0363100012176355",
+        "NL.IMBAG.Pand.0363100012176356"
       ],
       footprint: {
         centre: [
@@ -3553,7 +3683,8 @@ Map source: ${osmUrl(places[i][0])}`);
       modelUrl: "./models/studiok.glb",
       suppressOsmIds: [
         "r3699016",
-        "NL.IMBAG.Pand.0363100012237325"
+        "NL.IMBAG.Pand.0363100012237325",
+        "w278379946"
       ],
       footprint: {
         centre: [
@@ -5409,7 +5540,12 @@ Map source: ${osmUrl(places[i][0])}`);
         "n5413222221",
         "n5413222222",
         "w940729263",
-        "w1320477257"
+        "w1320477257",
+        "r18117445",
+        "w1320477258",
+        "w1320477259",
+        "w1320477260",
+        "w1320477261"
       ],
       spatialSuppression: false,
       footprint: {
@@ -6820,7 +6956,8 @@ Map source: ${osmUrl(places[i][0])}`);
       modelUrl: "./models/petruskerk.glb",
       suppressOsmIds: [
         "w8891046",
-        "NL.IMBAG.Pand.0363100012163298"
+        "NL.IMBAG.Pand.0363100012163298",
+        "NL.IMBAG.Pand.0363100012220865"
       ],
       spatialSuppression: false,
       footprint: {
@@ -7777,7 +7914,19 @@ Map source: ${osmUrl(places[i][0])}`);
         "w807204806",
         "w807204801",
         "w807204802",
-        "w807204803"
+        "w807204803",
+        "w199405145",
+        "w806950189",
+        "w807090335",
+        "w807090338",
+        "w807204799",
+        "w1239732905",
+        "w1239732920",
+        "w807204800",
+        "w807204798",
+        "w807204797",
+        "w807204804",
+        "w806961003"
       ],
       footprint: {
         centre: [
@@ -12250,7 +12399,18 @@ Map source: ${osmUrl(places[i][0])}`);
       modelUrl: "./models/posthoornkerk.glb",
       suppressOsmIds: [
         "w43040630",
-        "NL.IMBAG.Pand.0363100012167529"
+        "NL.IMBAG.Pand.0363100012167529",
+        "w750036045",
+        "w750036049",
+        "w750036051",
+        "w750093275",
+        "w750093276",
+        "w750093277",
+        "w750093278",
+        "w750036046",
+        "w750036048",
+        "w750036050",
+        "w750036047"
       ],
       spatialSuppression: false,
       footprint: {
@@ -12724,8 +12884,6 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     {
       id: "petrus-en-paulus-kerk",
-      status: "held",
-      heldReason: "Tower and gable do not match the photo; renders dark (user review 2026-10-09).",
       name: "Sint-Petrus-en-Pauluskerk",
       landmarkId: "extract_landmarks_1828911806",
       modelUrl: "./models/petrus-en-paulus-kerk.glb",
@@ -12753,9 +12911,11 @@ Map source: ${osmUrl(places[i][0])}`);
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#7b6259",
+        brick: "#8a766b",
+        greyBrick: "#6f5d55",
         stone: "#b9ad98",
-        slate: "#a2543f",
+        slate: "#b4573a",
+        red: "#a8472b",
         glass: "#4f6068",
         dark: "#3a3330",
         white: "#d8d2c2",
@@ -12924,8 +13084,6 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     {
       id: "maarten-lutherkerk",
-      status: "held",
-      heldReason: "3DBAG tower block not in the photo; spire placement wrong (2026-10-09).",
       name: "Maarten Lutherkerk",
       landmarkId: "extract_landmarks_404188843",
       modelUrl: "./models/maarten-lutherkerk.glb",
@@ -12953,10 +13111,10 @@ Map source: ${osmUrl(places[i][0])}`);
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#a08a62",
+        brick: "#a49a7c",
         stone: "#bcb4a2",
         slate: "#5f5b55",
-        glass: "#6d8388",
+        glass: "#86999c",
         dark: "#2f2b27",
         white: "#d9d5c8",
         frame: "#5a4a38",
@@ -13237,7 +13395,7 @@ Map source: ${osmUrl(places[i][0])}`);
     {
       id: "levend-paardenmuseum",
       status: "held",
-      heldReason: "Plain 3DBAG massing plus a gateway; needs facade detail (user review 2026-10-09).",
+      heldReason: "Gateway front now detailed from panoramas (pilasters, lanterns, plaques, keystone, frieze, timber bay); the rest is still plain 3DBAG massing with blank long walls and no photographed window rhythm, so the building is not at the bar (reworked 2026-10-11).",
       name: "Levend Paardenmuseum",
       landmarkId: "extract_landmarks_82936853",
       modelUrl: "./models/levend-paardenmuseum.glb",
@@ -13367,8 +13525,6 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     {
       id: "oudemanhuispoort",
-      status: "held",
-      heldReason: "Gate-house only, single-slope LoD roof, little detail (user review 2026-10-09).",
       name: "Oudemanhuispoort",
       landmarkId: "extract_landmarks_1122909064",
       modelUrl: "./models/oudemanhuispoort.glb",
@@ -13396,7 +13552,7 @@ Map source: ${osmUrl(places[i][0])}`);
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#a2705b",
+        brick: "#8a5642",
         slate: "#585b61",
         white: "#e9e6dc",
         stone: "#a7a59d",
@@ -13498,8 +13654,6 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     {
       id: "torture-museum",
-      status: "held",
-      heldReason: "Facade slab detached from the shell; low detail (user review 2026-10-09).",
       name: "Torture Museum",
       landmarkId: "extract_landmarks_417591223",
       modelUrl: "./models/torture-museum.glb",
@@ -13531,9 +13685,10 @@ Map source: ${osmUrl(places[i][0])}`);
         stone: "#8f8b84",
         slate: "#5a5a5e",
         white: "#e6e4da",
-        glass: "#5f7581",
+        glass: "#7e95a3",
         dark: "#23272b",
-        red: "#9b2f27"
+        red: "#9b2f27",
+        ochre: "#5d4331"
       },
       attribution: {
         title: "Torture Museum",
@@ -23922,6 +24077,9 @@ Map source: ${osmUrl(places[i][0])}`);
         "NL.IMBAG.Pand.0363100012165293"
       ],
       spatialSuppression: false,
+      partyWallBearings: [
+        208
+      ],
       footprint: {
         centre: [
           4.895022795431246,
@@ -23942,11 +24100,12 @@ Map source: ${osmUrl(places[i][0])}`);
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        stone: "#c4b79c",
+        stone: "#b1ab9d",
+        concrete: "#a8a397",
         brick: "#7a4a3b",
         white: "#e4dfd2",
         slate: "#4b4f55",
-        glass: "#4e5f6b",
+        glass: "#5f8196",
         frame: "#d9d6cc",
         dark: "#2a2d30"
       },
@@ -24628,9 +24787,7 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      },
-      status: "held",
-      heldReason: "Integrator 2026-10-10: only the old Dam front is photo-counted; modern wing and lower building use a generic window module, dark glass bays missing, stone too beige"
+      }
     },
     {
       id: "fatih-moskee",
@@ -25151,7 +25308,10 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "n6933045932",
       modelUrl: "./models/pakhuis-de-zwijger.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012088034"
+        "NL.IMBAG.Pand.0363100012088034",
+        "w1533880135",
+        "w1533880136",
+        "w1533880137"
       ],
       spatialSuppression: false,
       footprint: {
@@ -25171,15 +25331,39 @@ Map source: ${osmUrl(places[i][0])}`);
         northOffsetDegrees: 0,
         source: "Current BAG 0363100012088034 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
       },
+      throughPassages: [
+        {
+          axisBearing: 17,
+          corridor: [
+            [
+              9.2,
+              -8.7
+            ],
+            [
+              -6,
+              -13.5
+            ],
+            [
+              -17,
+              21.4
+            ],
+            [
+              -1.8,
+              26.2
+            ]
+          ],
+          evidence: "OSM routing extract (streets-routing.json): Jan Schaeferbrug / Piet Heinkade carriageway routing_10374 runs (0.4,-7.3) -> (-8.2,20.0) m in model-local east/south metres, bearing 17.5 deg, straight through the 1934 cold-store; flanking cycleways routing_12505 (bearing 15.3 deg) and routing_23078 sit about 5 m either side. Corridor = carriageway plus both cycleways, centreline +/- 8 m (the roadway flares into the bridge approach at the north end, where the west cycleway starts 5.8 m off the centreline), extended 4 m past each end. Photo: ref-rce-2005-b.jpg shows the roadway running under the overhanging upper floors."
+        }
+      ],
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#5c5540",
-        stone: "#85827a",
-        concrete: "#6e6c62",
-        greyBrick: "#4a4535",
-        red: "#7d4a2b",
-        glass: "#5d7585",
+        brick: "#4b483c",
+        stone: "#6e6c62",
+        concrete: "#5e5c53",
+        greyBrick: "#3b392f",
+        red: "#8f5535",
+        glass: "#3d4a54",
         bronze: "#2c2e30"
       },
       attribution: {
@@ -25244,9 +25428,7 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      },
-      status: "held",
-      heldReason: "Integrator 2026-10-10: massing and roadway portal match, but the photo is dark weathered grey-brown concrete with brick-red tower strips; the model is tan/ochre"
+      }
     },
     {
       id: "victoria-hotel",
@@ -26167,7 +26349,8 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "de-nederlandsche-bank",
       modelUrl: "./models/de-nederlandsche-bank.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012165684"
+        "NL.IMBAG.Pand.0363100012165684",
+        "w1533847438"
       ],
       spatialSuppression: false,
       footprint: {
@@ -26233,9 +26416,7 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      },
-      status: "held",
-      heldReason: "Integrator 2026-10-10: 3DBAG link core/annex on the tower west face likely belongs to the demolished 1990 Abma satellite (blank fin with no counterpart in 2025 photos); tower stubby; facade counts pending"
+      }
     },
     {
       id: "hotel-jakarta",
@@ -28408,11 +28589,11 @@ Map source: ${osmUrl(places[i][0])}`);
         source: "PDOK BAG 0363100012250152 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
       },
       materialOverrides: {
-        dark: "#1f282d",
-        glass: "#5f90ab",
+        dark: "#2b2927",
+        glass: "#78a5c1",
         concrete: "#7d8082",
-        frame: "#2c363c",
-        red: "#a0663a",
+        frame: "#3b3633",
+        red: "#9c6b3b",
         white: "#f1f1ee"
       },
       preservePositionPrecision: true,
@@ -28568,7 +28749,7 @@ Map source: ${osmUrl(places[i][0])}`);
         ]
       },
       status: "held",
-      heldReason: "2026-10-10: plate rework (2b5bbec4) still reads as a gridded glass box: needs the curved, stepped south front cantilevered over the deep entrance plaza (BAG ring is straight there; photos are not), thinner bronze plates, and a measured lobby recess (2.0 m was chosen to pass see-through, photos bound it to 2-4 m)."
+      heldReason: "2026-10-11: curved stepped south front, thin bronze plates, sampled glass colours and a measured lobby recess (1.7 m to 5.7 m, undercroft rule in glbQuality) are in and audit-clean, but it still reads as a tidy striped glass drum beside the photo: the faceted, irregularly shaded glass skin with slanted terrace fins, the curved east face and the tower's irregular window rhythm are not modelled."
     },
     {
       id: "shell-technology-centre",
@@ -33822,7 +34003,66 @@ Map source: ${osmUrl(places[i][0])}`);
       name: "Amsterdam Centraal \u2014 station complex",
       landmarkId: "extract_landmarks_332626598",
       modelUrl: "./models/centraal-station.glb",
-      suppressOsmIds: ["w332626598", "w57856845", "w1239767708", "w1239767706", "w451533145", "w451533147", "w451533149", "w506192827", "NL.IMBAG.Pand.0363100012185598", "NL.IMBAG.Pand.0363100012242112", "NL.IMBAG.Pand.0363100012240304", "NL.IMBAG.Pand.0363100012245758", "NL.IMBAG.Pand.0363100012245759", "NL.IMBAG.Pand.0363100012246251"],
+      suppressOsmIds: [
+        "w332626598",
+        "w57856845",
+        "w1239767708",
+        "w1239767706",
+        "w451533145",
+        "w451533147",
+        "w451533149",
+        "w506192827",
+        "NL.IMBAG.Pand.0363100012185598",
+        "NL.IMBAG.Pand.0363100012242112",
+        "NL.IMBAG.Pand.0363100012240304",
+        "NL.IMBAG.Pand.0363100012245758",
+        "NL.IMBAG.Pand.0363100012245759",
+        "NL.IMBAG.Pand.0363100012246251",
+        // 2026-10-11 check:osm-under-models: building:part ways of the train-shed roofs and station wings under the model (>=80% of their area)
+        "w269124500",
+        "w424523117",
+        "w752653562",
+        "w752653568",
+        "w752738611",
+        "w1239767716",
+        "w1239767717",
+        "w1239767718",
+        "w1239767719",
+        "w1239767720",
+        "w1239767721",
+        "w1239767722",
+        "w1239767724",
+        "w1239767725",
+        "w1240155430",
+        "w1240155434",
+        "w589499178",
+        "w752328416",
+        "w752328417",
+        "w752328418",
+        "w752328419",
+        "w752328420",
+        "w752653565",
+        "w752653566",
+        "w752653567",
+        "w752653570",
+        "w752653571",
+        "w752653572",
+        "w752653573",
+        "w1239767703",
+        "w1239767709",
+        "w1239767711",
+        "w1239767712",
+        "w1239767713",
+        "w1239767714",
+        "w1239767715",
+        "w1240155431",
+        "w1240155435",
+        "w1240314141",
+        "w1240314142",
+        "w1239767723",
+        "w1240155433",
+        "w1240155432"
+      ],
       spatialSuppression: false,
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 210.6533,
