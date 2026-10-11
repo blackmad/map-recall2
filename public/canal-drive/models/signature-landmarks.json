@@ -37564,11 +37564,11 @@
         "source": "PDOK BAG 0363100012250152 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
       },
       "materialOverrides": {
-        "dark": "#1f282d",
-        "glass": "#5f90ab",
+        "dark": "#2b2927",
+        "glass": "#78a5c1",
         "concrete": "#7d8082",
-        "frame": "#2c363c",
-        "red": "#a0663a",
+        "frame": "#3b3633",
+        "red": "#9c6b3b",
         "white": "#f1f1ee"
       },
       "preservePositionPrecision": true,
@@ -37724,16 +37724,16 @@
         ]
       },
       "status": "held",
-      "heldReason": "2026-10-10: plate rework (2b5bbec4) still reads as a gridded glass box: needs the curved, stepped south front cantilevered over the deep entrance plaza (BAG ring is straight there; photos are not), thinner bronze plates, and a measured lobby recess (2.0 m was chosen to pass see-through, photos bound it to 2-4 m).",
+      "heldReason": "2026-10-11: curved stepped south front, thin bronze plates, sampled glass colours and a measured lobby recess (1.7 m to 5.7 m, undercroft rule in glbQuality) are in and audit-clean, but it still reads as a tidy striped glass drum beside the photo: the faceted, irregularly shaded glass skin with slanted terrace fins, the curved east face and the tower's irregular window rhythm are not modelled.",
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -37.4379997253418,
-          -9.155273232863692e-7,
-          -86.78833770751953
+          -37.61606216430664,
+          -8.087158107628056e-7,
+          -86.78025817871094
         ],
         "max": [
-          59.05560302734375,
+          59.0545654296875,
           50.637001037597656,
           32.59450149536133
         ]
@@ -37749,19 +37749,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 119.38283920288086,
-        "heightMetres": 50.63700195312498,
-        "depthMetres": 96.49360275268555,
-        "depthCoverage": 0.990389025481736
+        "widthMetres": 119.37475967407227,
+        "heightMetres": 50.63700184631347,
+        "depthMetres": 96.67062759399414,
+        "depthCoverage": 0.9922059693522953
       },
-      "triangles": 26947,
-      "bytes": 378924,
+      "triangles": 25368,
+      "bytes": 328608,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "4b31782adaa00c66",
+        "sourceHash": "8ef269c8cee7105a",
         "buildVersion": 2,
-        "bytes": 90108,
-        "triangles": 4833
+        "bytes": 67172,
+        "triangles": 3716
       },
       "held": true
     },
