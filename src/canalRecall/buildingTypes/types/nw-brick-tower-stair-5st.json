@@ -1,0 +1,454 @@
+{
+  "id": "nw-brick-tower-stair-5st",
+  "label": "Nieuw-West cluster 5 design C (Van Mourik Broekmanstraat): five-storey brick portiekflat 19.1 x 10 m with a solid brick stair tower projecting from the centre and rising above the roof, glass-block strips either side, an external steel stair and yellow canopy to the entrance, window pairs and garages at the ends, coloured-dot tile plinth",
+  "source": {
+    "clusterRank": 5,
+    "panden": 12,
+    "bouwjaar": [
+      1955,
+      1962
+    ],
+    "lengthM": 19.1,
+    "widthM": 10.0,
+    "bouwlagen": 5,
+    "roof": "pitched",
+    "dwellingsMedian": 10
+  },
+  "storeys": 5,
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.3,
+    "vergeOverhangM": 0.1,
+    "thicknessM": 0.12,
+    "pitchDeg": 14
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "brick-tower",
+  "variants": {
+    "brick-tower": {
+      "label": "Brick (photo warm-pixel median #6c5440), dark tile plinth #4a2b1d (authored as #4a3a34 brick: the stucco slot renders it terracotta), blue-grey garage doors, yellow canopy",
+      "evidence": "crops 0363100012150806 tower #554739, plinth #4a2b1d",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#6c5440"
+        },
+        "plinth": {
+          "slot": "brick",
+          "tint": "#4a3a34"
+        },
+        "frame": "#efe9da",
+        "glass": "#3f4a55",
+        "door": "#2f5a78",
+        "accent": "#bdb7a8",
+        "rail": "#c9c4b6",
+        "dark": "#55575a",
+        "column": "#e4dfd0",
+        "joint": "#44382f",
+        "roof": {
+          "slot": "bitumen",
+          "tint": "#5c5e60"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "crops/0363100012150806.jpg",
+          "pand": "0363100012150806",
+          "address": "Van Mourik Broekmanstraat (frontal)",
+          "note": "projecting brick tower (about 2.3 m wide, 0.9 m deep) from the ground to above the roof; glass-block strip each side; window pair, narrow window each side; red garage doors at the ends, red doors, intercom door left of the tower"
+        },
+        {
+          "photo": "crops/0363100012102316.jpg",
+          "pand": "0363100012102316",
+          "address": "Van Mourik Broekmanstraat (frontal)",
+          "note": "same layout with a yellow canopy, steel stair and landing at the entrance"
+        },
+        {
+          "photo": "crops/0363100012149222.jpg",
+          "pand": "0363100012149222",
+          "address": "Van Mourik Broekmanstraat (frontal)",
+          "note": "blue garage doors, same tower and glass strips"
+        },
+        {
+          "photo": "crops/0363100012133555.jpg",
+          "pand": "0363100012133555",
+          "address": "Van Mourik Broekmanstraat (frontal)",
+          "note": "tower cap and strips again; red garage door right"
+        }
+      ],
+      "counted": {
+        "bays": 9,
+        "openingsPerUpperStorey": 8,
+        "groundDoors": 6,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "W1",
+          "w": 3.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.7,
+              "h": 1.25,
+              "sill": 0.8,
+              "lights": 2
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 2.4,
+              "h": 2.2
+            }
+          ]
+        },
+        {
+          "id": "W2",
+          "w": 3.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.7,
+              "h": 1.25,
+              "sill": 0.8,
+              "lights": 2
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 1.0,
+              "h": 2.2,
+              "steps": 0,
+              "u": -0.7
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 1.0,
+              "h": 2.2,
+              "steps": 0,
+              "u": 0.7
+            }
+          ]
+        },
+        {
+          "id": "n1",
+          "w": 1.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.9,
+              "h": 1.25,
+              "sill": 0.8,
+              "lights": 1
+            }
+          ]
+        },
+        {
+          "id": "G1",
+          "w": 0.6,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.35,
+              "h": 2.3,
+              "sill": 0.3,
+              "lights": 1
+            }
+          ]
+        },
+        {
+          "id": "T",
+          "w": 2.4,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "w": 2.2,
+              "h": 17.2,
+              "sill": 0.0,
+              "depth": 0.9,
+              "colour": "wall"
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 1.0,
+              "h": 2.2,
+              "steps": 0
+            }
+          ]
+        },
+        {
+          "id": "G2",
+          "w": 0.6,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.35,
+              "h": 2.3,
+              "sill": 0.3,
+              "lights": 1
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "w": 1.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.9,
+              "h": 1.25,
+              "sill": 0.8,
+              "lights": 1
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 1.0,
+              "h": 2.2,
+              "steps": 0
+            }
+          ]
+        },
+        {
+          "id": "W3",
+          "w": 3.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.7,
+              "h": 1.25,
+              "sill": 0.8,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "W4",
+          "w": 3.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.7,
+              "h": 1.25,
+              "sill": 0.8,
+              "lights": 2
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 2.4,
+              "h": 2.2
+            }
+          ]
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012150806.jpg",
+          "pand": "0363100012150806",
+          "address": "Van Mourik Broekmanstraat",
+          "note": "back copied from the front windows, balconies and stair strip without the ground doors; NOT verified: no photo of the back of this design."
+        }
+      ],
+      "counted": {
+        "bays": 7,
+        "openingsPerUpperStorey": 7,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "R1",
+          "w": 3.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.7,
+              "h": 1.25,
+              "sill": 0.8,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "R2",
+          "w": 3.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.7,
+              "h": 1.25,
+              "sill": 0.8,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "R3",
+          "w": 1.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.9,
+              "h": 1.25,
+              "sill": 0.8,
+              "lights": 1
+            }
+          ]
+        },
+        {
+          "id": "R4",
+          "w": 3.6,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.35,
+              "h": 2.3,
+              "sill": 0.3,
+              "lights": 1
+            }
+          ]
+        },
+        {
+          "id": "R5",
+          "w": 1.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.9,
+              "h": 1.25,
+              "sill": 0.8,
+              "lights": 1
+            }
+          ]
+        },
+        {
+          "id": "R6",
+          "w": 3.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.7,
+              "h": 1.25,
+              "sill": 0.8,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "R7",
+          "w": 3.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.7,
+              "h": 1.25,
+              "sill": 0.8,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012150806.jpg",
+          "pand": "0363100012150806",
+          "address": "Van Mourik Broekmanstraat (pale cladding on the end)",
+          "note": "gable / party-wall end modelled blank. NOT verified for end units: no straight-on photo of an end wall in the survey."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "end",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012133555.jpg",
+          "pand": "0363100012133555",
+          "address": "Van Mourik Broekmanstraat (pale cladding on the end)",
+          "note": "gable / party-wall end modelled blank. NOT verified for end units: no straight-on photo of an end wall in the survey."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "end",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "The tower is a panel (wall colour, 0.9 m deep, 17.2 m high) so it ends ~2 m above the eaves of a 15 m block; the actual cap height is not measured.",
+    "The external steel stair and landing are not modelled (the entrance door sits at ground level).",
+    "Photos: Gemeente Amsterdam panoramas (CC BY 4.0), crops made by scripts/building-types/camera-sheets.ts --survey (cached in .cache/building-types/crops)."
+  ]
+}
