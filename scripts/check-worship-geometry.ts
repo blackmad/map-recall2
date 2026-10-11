@@ -6,9 +6,10 @@ import {buildPetrusEnPaulusKerk} from './landmarks/petrus-en-paulus-kerk-builder
 import {buildMaartenLutherkerk} from './landmarks/maarten-lutherkerk-builder';
 
 // Bounds/height against 3DBAG LoD2.2, upward roofs, no part floating off the shell.
-const cases = [
+const cases: {id: string; build: (w: number, d: number, b: BuildingTools) => void; extraHeight: number; extentSlack?: number}[] = [
   {id: 'petrus-en-paulus-kerk', build: buildPetrusEnPaulusKerk, extraHeight: 1.2},
-  {id: 'maarten-lutherkerk', build: buildMaartenLutherkerk, extraHeight: 6.0}, // slim copper spire above the surveyed tower roof
+  // slim copper spire above the surveyed tower roof; the brick podium and steps in front of the east niches (panorama 2) are not in the BAG pand, so the x extent may exceed the shell by their 2.6 m depth
+  {id: 'maarten-lutherkerk', build: buildMaartenLutherkerk, extraHeight: 6.0, extentSlack: 2.2},
 ];
 for (const c of cases) {
   const src = JSON.parse(fs.readFileSync(`scripts/landmarks/${c.id}-footprints.json`, 'utf8'));
@@ -24,7 +25,7 @@ for (const c of cases) {
   assert.ok(box.max.y <= sb.max.y + c.extraHeight, `${c.id}: taller than 3DBAG ${box.max.y} vs ${sb.max.y}`);
   assert.ok(box.max.y >= sb.max.y - 0.2, `${c.id}: lower than 3DBAG`);
   for (const k of ['x', 'z'] as const) {
-    assert.ok(box.min[k] >= sb.min[k] - 0.7 && box.max[k] <= sb.max[k] + 0.7, `${c.id}: ${k} extent outside shell`);
+    assert.ok(box.min[k] >= sb.min[k] - (c.extentSlack ?? 0.7) && box.max[k] <= sb.max[k] + (c.extentSlack ?? 0.7), `${c.id}: ${k} extent outside shell`);
   }
   const grown = sb.clone().expandByScalar(0.8);
   let floating = 0, roofDown = 0, roofFaces = 0;

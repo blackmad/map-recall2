@@ -12001,8 +12001,6 @@
   },
   {
     "id": "maarten-lutherkerk",
-    "status": "held",
-    "heldReason": "3DBAG tower block not in the photo; spire placement wrong (2026-10-09).",
     "name": "Maarten Lutherkerk",
     "landmarkId": "extract_landmarks_404188843",
     "modelUrl": "./models/maarten-lutherkerk.glb",
@@ -12030,10 +12028,10 @@
     "groundAltitudeMetres": 0,
     "facingOffsetDegrees": 0,
     "materialOverrides": {
-      "brick": "#a08a62",
+      "brick": "#a49a7c",
       "stone": "#bcb4a2",
       "slate": "#5f5b55",
-      "glass": "#6d8388",
+      "glass": "#86999c",
       "dark": "#2f2b27",
       "white": "#d9d5c8",
       "frame": "#5a4a38",

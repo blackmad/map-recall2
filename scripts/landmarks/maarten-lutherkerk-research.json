@@ -1,0 +1,24 @@
+{
+  "canonicalModelId": "maarten-lutherkerk",
+  "researchedOn": "2026-10-11",
+  "state": "built-ready-2026-10-11",
+  "destination": {"name": "Maarten Lutherkerk", "address": "Jacob van Lennepkade 334, Amsterdam", "bagPand": "NL.IMBAG.Pand.0363100012135926"},
+  "photos": [
+    {"file": "ref-pano-2.jpg", "panorama": "recording_2025-07-14_11-54-16_01561", "date": "2025-07-14", "heading": 270, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "east front head-on (ref-east-front.jpg is a copy)"},
+    {"file": "ref-pano-7.jpg", "panorama": "recording_2025-07-14_11-54-16_01559", "date": "2025-07-14", "heading": 252, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "east front and tower from the north-east"},
+    {"file": "ref-pano-1.jpg", "panorama": "recording_2025-07-14_11-54-16_01562", "date": "2025-07-14", "heading": 280, "licence": "CC BY 4.0, Gemeente Amsterdam"},
+    {"file": "ref-pano-5.jpg", "panorama": "recording_2025-07-14_11-54-16_01563", "date": "2025-07-14", "heading": 289, "licence": "CC BY 4.0, Gemeente Amsterdam"},
+    {"file": "ref-pano-6.jpg", "panorama": "recording_2025-07-14_11-54-16_01668", "date": "2025-07-14", "heading": 168, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "north long wall (ref-north-wall.jpg is a copy)"},
+    {"file": "ref-pano-0.jpg", "panorama": "recording_2025-07-14_11-54-16_01670", "date": "2025-07-14", "heading": 150, "licence": "CC BY 4.0, Gemeente Amsterdam"},
+    {"file": "ref-pano-3.jpg", "panorama": "recording_2025-07-14_11-54-16_01669", "date": "2025-07-14", "heading": 159, "licence": "CC BY 4.0, Gemeente Amsterdam"},
+    {"file": "ref-pano-4.jpg", "panorama": "recording_2025-07-14_11-54-16_01671", "date": "2025-07-14", "heading": 140, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "west gable with timber cross"}
+  ],
+  "decisions": [
+    "The 2026-10-09 review said the tower block is not in the photo and the spire is misplaced. The panoramas show the opposite: the tower and its copper spire exist at the south-east corner (pano 1, 2, 7). The earlier contact sheet used a reference photo (pano 0) in which the tower is hidden behind the hall roof, so the spire looked misplaced. Heights were checked against pano 2 and 7 with a camera-matched render (big-camshot, fov 80, pitch 6): tower eave and ridge agree with 3DBAG.",
+    "East front: 3DBAG cuts the three niches as full-height rectangular slots, also through the roof edge. The builder drops those wall facets, moves the roof ridge vertex to the front plane, and builds the front wall itself with three arched openings (1.64 m wide, 3.7 m to 11.95 m crown), 0.95 m deep reveals and back plates, timber doors, hanging lamps, slit windows, an apex slit, a 2.0 m brick podium and three steps.",
+    "Tower: dark overhanging hip roof (3DBAG roof surfaces recoloured), three arched belfry slits per face on east and north, two on the south, two small slit windows on the east face, flared octagonal copper base and needle to 26.2 m.",
+    "North wall: five tall windows at x = 7.8, 3.6, -0.6, -4.8, -8.7 m (pitch 4.2 m, measured by ray-casting the pano 6 pixels onto the wall), brick reveals, over a band of 14 small lights, canopied door at x = -8.8 m.",
+    "West gable: large timber cross (wall 39, pano 4).",
+    "Inferred (no photograph): south wall windows (same rhythm as north), the south and west faces of the tower, the west annex and its wing."
+  ]
+}
