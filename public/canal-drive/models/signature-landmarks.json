@@ -19625,8 +19625,8 @@
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "materialOverrides": {
-        "brick": "#9a735f",
-        "greyBrick": "#7a5d52",
+        "brick": "#8a766b",
+        "greyBrick": "#6f5d55",
         "stone": "#b9ad98",
         "slate": "#b4573a",
         "red": "#a8472b",
@@ -19644,8 +19644,6 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
       },
-      "status": "held",
-      "heldReason": "Rework 2026-10-11: tower (brick corbel cornice, stone clock stage with clocks on N and W faces, west louvres), gable (two four-light windows, louvred slot, cross, pointed red door) and lighter brick/clay-tile colours now follow the Ruysdaelstraat 37/39 photos, audit passes. Still missing: the round stair turret with oriel, the parsonage wing windows (blank), side-wing massing is the raw 3DBAG shell with recessed wall pieces; flat colours still read darker than the photographed pink-brown brick.",
       "buildingFootprint": {
         "type": "Polygon",
         "coordinates": [
@@ -19801,8 +19799,8 @@
       "bounds": {
         "min": [
           -12.368947982788086,
-          0,
-          -10.47700023651123
+          -4.7683716530855236e-8,
+          -10.672526359558105
         ],
         "max": [
           11.819999694824219,
@@ -19821,20 +19819,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 35.27699947357178,
-        "heightMetres": 20.704999923706055,
+        "widthMetres": 35.47252559661865,
+        "heightMetres": 20.70499997138977,
         "depthMetres": 24.188947677612305,
         "depthCoverage": 0.6719152132670084
       },
-      "triangles": 3765,
-      "bytes": 62500,
+      "triangles": 5139,
+      "bytes": 79648,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true,
       "lod1": {
-        "sourceHash": "f860cb1210f8c3ed",
+        "sourceHash": "f8d65f15b591bc3e",
         "buildVersion": 2,
-        "bytes": 25988,
-        "triangles": 819
+        "bytes": 29192,
+        "triangles": 1004
       }
     },
     "maarten-lutherkerk": {
@@ -19866,10 +19863,10 @@
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "materialOverrides": {
-        "brick": "#a08a62",
+        "brick": "#a49a7c",
         "stone": "#bcb4a2",
         "slate": "#5f5b55",
-        "glass": "#6d8388",
+        "glass": "#86999c",
         "dark": "#2f2b27",
         "white": "#d9d5c8",
         "frame": "#5a4a38",
@@ -20072,15 +20069,16 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -19.784332275390625,
-          -2.98023217215615e-10,
-          -12.375
+          -4.7683716530855236e-8,
+          -12.87678050994873
         ],
         "max": [
-          13.5277738571167,
-          26.100000381469727,
+          14.426021575927734,
+          26.200000762939453,
           11.982000350952148
         ]
       },
@@ -20095,20 +20093,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 33.312106132507324,
-        "heightMetres": 26.10000038176775,
-        "depthMetres": 24.35700035095215,
-        "depthCoverage": 0.974280014038086
+        "widthMetres": 34.21035385131836,
+        "heightMetres": 26.20000081062317,
+        "depthMetres": 24.85878086090088,
+        "depthCoverage": 0.9943512344360351
       },
-      "triangles": 4005,
-      "bytes": 67196,
+      "triangles": 4840,
+      "bytes": 79228,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true,
       "lod1": {
-        "sourceHash": "591b08387320088d",
+        "sourceHash": "fd98686c3bc0062a",
         "buildVersion": 2,
-        "bytes": 26400,
-        "triangles": 899
+        "bytes": 28348,
+        "triangles": 938
       }
     },
     "museum-amsterdam-noord": {
@@ -20218,6 +20215,8 @@
     },
     "levend-paardenmuseum": {
       "id": "levend-paardenmuseum",
+      "status": "held",
+      "heldReason": "Gateway front now detailed from panoramas (pilasters, lanterns, plaques, keystone, frieze, timber bay); the rest is still plain 3DBAG massing with blank long walls and no photographed window rhythm, so the building is not at the bar (reworked 2026-10-11).",
       "name": "Levend Paardenmuseum",
       "landmarkId": "extract_landmarks_82936853",
       "modelUrl": "./models/levend-paardenmuseum.glb",
@@ -20344,10 +20343,11 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -29.92099952697754,
-          -4.7683716530855236e-8,
+          -9.536743306171047e-8,
           -37.08399963378906
         ],
         "max": [
@@ -20368,12 +20368,12 @@
       },
       "extent": {
         "widthMetres": 74.99742126464844,
-        "heightMetres": 16.982000398635865,
+        "heightMetres": 16.98200044631958,
         "depthMetres": 60.488698959350586,
         "depthCoverage": 1.1956298196672699
       },
-      "triangles": 802,
-      "bytes": 23476,
+      "triangles": 1246,
+      "bytes": 29944,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "held": true
     },
@@ -20406,7 +20406,7 @@
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "materialOverrides": {
-        "brick": "#a2705b",
+        "brick": "#8a5642",
         "slate": "#585b61",
         "white": "#e9e6dc",
         "stone": "#a7a59d",
@@ -20505,11 +20505,12 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -6.724022388458252,
+          -6.1850056648254395,
           -4.7683716530855236e-8,
-          -4.234000205993652
+          -7.459634304046631
         ],
         "max": [
           5.73799991607666,
@@ -20528,20 +20529,23 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 12.462022304534912,
+        "widthMetres": 11.9230055809021,
         "heightMetres": 16.933000612258912,
-        "depthMetres": 8.424000263214111,
-        "depthCoverage": 1.2291172485073063
+        "depthMetres": 11.64963436126709,
+        "depthCoverage": 1.6997585570793374
       },
-      "triangles": 221,
-      "bytes": 11340,
+      "triangles": 3641,
+      "bytes": 56220,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "lod1": {
+        "sourceHash": "2737e2a92d5d1eb9",
+        "buildVersion": 2,
+        "bytes": 21000,
+        "triangles": 749
+      }
     },
     "torture-museum": {
       "id": "torture-museum",
-      "status": "held",
-      "heldReason": "Facade slab detached from the shell; low detail (user review 2026-10-09).",
       "name": "Torture Museum",
       "landmarkId": "extract_landmarks_417591223",
       "modelUrl": "./models/torture-museum.glb",
@@ -20573,9 +20577,10 @@
         "stone": "#8f8b84",
         "slate": "#5a5a5e",
         "white": "#e6e4da",
-        "glass": "#5f7581",
+        "glass": "#7e95a3",
         "dark": "#23272b",
-        "red": "#9b2f27"
+        "red": "#9b2f27",
+        "ochre": "#5d4331"
       },
       "attribution": {
         "title": "Torture Museum",
@@ -20616,6 +20621,7 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -9.64799976348877,
@@ -20644,10 +20650,9 @@
         "depthMetres": 12.867999792098999,
         "depthCoverage": 2.0137714854615023
       },
-      "triangles": 1780,
-      "bytes": 34044,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "triangles": 2968,
+      "bytes": 52040,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "theo-thijssen-museum": {
       "id": "theo-thijssen-museum",

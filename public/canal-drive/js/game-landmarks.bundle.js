@@ -12911,8 +12911,8 @@ Map source: ${osmUrl(places[i][0])}`);
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#9a735f",
-        greyBrick: "#7a5d52",
+        brick: "#8a766b",
+        greyBrick: "#6f5d55",
         stone: "#b9ad98",
         slate: "#b4573a",
         red: "#a8472b",
@@ -12930,8 +12930,6 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
       },
-      status: "held",
-      heldReason: "Rework 2026-10-11: tower (brick corbel cornice, stone clock stage with clocks on N and W faces, west louvres), gable (two four-light windows, louvred slot, cross, pointed red door) and lighter brick/clay-tile colours now follow the Ruysdaelstraat 37/39 photos, audit passes. Still missing: the round stair turret with oriel, the parsonage wing windows (blank), side-wing massing is the raw 3DBAG shell with recessed wall pieces; flat colours still read darker than the photographed pink-brown brick.",
       buildingFootprint: {
         type: "Polygon",
         coordinates: [
@@ -13086,8 +13084,6 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     {
       id: "maarten-lutherkerk",
-      status: "held",
-      heldReason: "3DBAG tower block not in the photo; spire placement wrong (2026-10-09).",
       name: "Maarten Lutherkerk",
       landmarkId: "extract_landmarks_404188843",
       modelUrl: "./models/maarten-lutherkerk.glb",
@@ -13115,10 +13111,10 @@ Map source: ${osmUrl(places[i][0])}`);
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#a08a62",
+        brick: "#a49a7c",
         stone: "#bcb4a2",
         slate: "#5f5b55",
-        glass: "#6d8388",
+        glass: "#86999c",
         dark: "#2f2b27",
         white: "#d9d5c8",
         frame: "#5a4a38",
@@ -13399,7 +13395,7 @@ Map source: ${osmUrl(places[i][0])}`);
     {
       id: "levend-paardenmuseum",
       status: "held",
-      heldReason: "Plain 3DBAG massing plus a gateway; needs facade detail (user review 2026-10-09).",
+      heldReason: "Gateway front now detailed from panoramas (pilasters, lanterns, plaques, keystone, frieze, timber bay); the rest is still plain 3DBAG massing with blank long walls and no photographed window rhythm, so the building is not at the bar (reworked 2026-10-11).",
       name: "Levend Paardenmuseum",
       landmarkId: "extract_landmarks_82936853",
       modelUrl: "./models/levend-paardenmuseum.glb",
@@ -13529,8 +13525,6 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     {
       id: "oudemanhuispoort",
-      status: "held",
-      heldReason: "Gate-house only, single-slope LoD roof, little detail (user review 2026-10-09).",
       name: "Oudemanhuispoort",
       landmarkId: "extract_landmarks_1122909064",
       modelUrl: "./models/oudemanhuispoort.glb",
@@ -13558,7 +13552,7 @@ Map source: ${osmUrl(places[i][0])}`);
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#a2705b",
+        brick: "#8a5642",
         slate: "#585b61",
         white: "#e9e6dc",
         stone: "#a7a59d",
@@ -13660,8 +13654,6 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     {
       id: "torture-museum",
-      status: "held",
-      heldReason: "Facade slab detached from the shell; low detail (user review 2026-10-09).",
       name: "Torture Museum",
       landmarkId: "extract_landmarks_417591223",
       modelUrl: "./models/torture-museum.glb",
@@ -13693,9 +13685,10 @@ Map source: ${osmUrl(places[i][0])}`);
         stone: "#8f8b84",
         slate: "#5a5a5e",
         white: "#e6e4da",
-        glass: "#5f7581",
+        glass: "#7e95a3",
         dark: "#23272b",
-        red: "#9b2f27"
+        red: "#9b2f27",
+        ochre: "#5d4331"
       },
       attribution: {
         title: "Torture Museum",

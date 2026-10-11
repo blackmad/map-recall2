@@ -511,8 +511,11 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   given across blocks (Pakhuis: 3 per block in both). Integrator compared
   the elevations to the photos by eye and installed all three. Improve:
   crop the elevation to the photo's span; count ribbons as runs.
-  Petrus en Paulus kerk still held (stair turret with oriel, parsonage-wing
-  windows, side-wing massing; flat colours too dark).
+  Petrus en Paulus, Maarten Lutherkerk, Oudemanhuispoort and the Torture
+  Museum released 2026-10-11 (second held batch). Levend Paardenmuseum
+  still held: gateway detailed, long walls plain 3DBAG massing (inferred
+  windows overhung the 3DBAG walls). Torture Museum's 3DBAG body behind the
+  narrow Singel front reads as a large blank box from the side.
 
 **Handoff 2026-10-02 — Map Recall neighbourhood cards, Utrecht and Rotterdam.** `WIKIMEDIA_TOKEN` now reaches wikipedia, wikidata and commons hosts (checked 18:56 UTC: each answers as user Whizziwig). Every response `fill-neighborhood-gaps.ts` fetches is kept in the durable scrape store (`scripts/lib/scrapeStore.ts`; `/mnt/project-files/scrape-store/` in cloud sessions), so reruns and new sessions ask Wikimedia only for what is missing.
 - *Utrecht and Rotterdam text:* published 2026-10-02 (see HISTORY). Coverage now Utrecht description 111/135, history 105, name origin 24, photo 87; Rotterdam 106/128, 81, 39, 88. Still open: name origins are the thinnest field in both cities (no street-name register for them yet); 38 Dutch fields were rejected as junk and 73 geosearch photos rejected, so those areas wait for better sources; review both cities on `/?gallery=cards&city=X` before relying on them. Rerunning `online` costs nothing for answered requests (scrape store).
