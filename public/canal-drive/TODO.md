@@ -146,11 +146,11 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 - **Nieuw-West building types (2026-10-11)**: opt-in `?buildingTypes=1`
   draws 455 photo-confirmed instances (2026-10-11: +202 from type-6
   leftovers and clusters 2/5/8, 11 new designs; 124 held with reasons).
-  Gate problem: geometryAudit's opening-overhang FAILs any balcony > 0.8 m
-  off the wall, so balconies were drawn 0.75 m where photos show up to
-  1.5 m, and nw-steel-stack-portiek (30) lost its projecting steel stair and
-  balcony stack (reads as two posts and ledges): fix the rule for balcony
-  assemblies, restore photo depths, rebuild steel-stack. Densest view
+  Balcony depths restored from photos (1.0-1.5 m) after the
+  opening-overhang fix; steel-stack rebuilt (frame rises a little too far
+  above the roof; balcony rails render faint). geometry-audit-baseline.json
+  is stale: 32 models exceed it on main (18 geometry-regression FAILs in
+  `audit:glb --only-geometry`); regenerate after triage. Densest view
   (peach-street) is 88 draw calls (12 cluster-2 unit variants); 12 panden
   assigned from entrance close-ups only. Earlier: as shared InstancedMesh units (box LOD
   past 140 m): type-1 portiekflat (Sonderbuur, Wildeman/Notweg, Slotermeer
