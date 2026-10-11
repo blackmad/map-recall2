@@ -152,6 +152,13 @@ export function buildPakhuisDeZwijger(_w: number, _d: number, b: BuildingTools &
   {
     const f = E.f;
     [[5.5, 0.9], [14.4, 0], [23.3, -0.9]].forEach(([t, dy]) => [10.0, 6.7, 3.4].forEach(h => slab(b, f, t, HS + h + dy - 0.25, 5.0, 0.5, 0.07, 'stone')));
+    // ground gallery: the recessed brick end wall (plane 3.06 m behind the east face, measured on the ring frames) carries small dark
+    // horizontal window slits (ref-east.jpg): the bay beside the north corner pier has one low (about 1.1 m) and one high (about 3.7 m)
+    // slit, the next bay a pair of high slits, and the bays to the south low slits (the far two are inferred from the same rhythm).
+    const slit = (t: number, y: number, w: number) => slab(b, f, t, y, w, 0.5, 0.15, 'dark', -3.06 - 0.05);
+    slit(24.7, 0.85, 1.2); slit(24.7, 3.45, 1.2);
+    slit(19.4, 3.45, 1.0); slit(20.8, 3.45, 1.0);
+    for (const t of [15.3, 10.5, 5.7]) slit(t, 0.85, 1.2);
   }
   setSink(0);
 }
