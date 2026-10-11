@@ -183,13 +183,17 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   occupancy or BAG pand); 5 building-type instances lack a footprint.
   16 partial-overlap neighbours/annexes are allow-listed with reasons in
   scripts/landmarks/osm-under-models-allowlist.json; review them.
-  Booking.com HQ held (2026-10-10): the plate rework (stepped bands,
-  terrace cut, lower-case sign, teal glass) still reads as a gridded box.
-  Needs the curved, stepped south front cantilevered over the entrance plaza
-  (BAG ring is straight there), thinner bronze plates, and a measured lobby
-  recess: 2.0 m was picked because >= 2.4 m fails see-through (59/186 rays),
-  photos bound it to 2-4 m. A glazed lobby recessed under a deep cantilever
-  with no columns is a see-through false-positive class worth a checker rule. Shell Technology Centre installed with only two
+  Booking.com HQ held (2026-10-11, second rework): curved stepped south
+  front from per-band plan offsets, thin bronze plates, sampled glass, lobby
+  recess measured 1.7-5.7 m (allowed by the new glbQuality undercroft rule,
+  which changed no other model). Still reads as a tidy striped glass drum:
+  missing the faceted, irregularly shaded glass skin, slanted terrace fins,
+  the curved east face and the tower's irregular window rhythm. Rejected
+  checker changes from that lane, kept on branches: wallPlanes centroid
+  clustering (checker/wallplanes-centroid-20261011; re-clusters 55 models,
+  11 PASS->FAIL, Mondriaan Tower's pier-and-glass wall becomes a false
+  positive) and a z-fight overlap-distance filter (estimator noise pushes
+  pulitzer-amsterdam past its baseline). Shell Technology Centre installed with only two
   photographed views (south, east); north half, west and courtyards inferred.
   Krasnapolsky held (2026-10-10): old Dam front matches; the modern wing and
   lower brick building need photo counts and the dark glass bays.
