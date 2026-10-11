@@ -52,6 +52,49 @@ test('a window hanging half past the wall end overhangs', () => {
   assert.ok(i.outside > 0.25 && i.outside < 0.7, `outside ${i.outside}`);
 });
 
+/** Balcony on the south face (z = 8): stone slab + stone rail, white fascia plate on the slab's front edge (an opening-material part). */
+function balcony(depth: number, off = 0, x = 4, w = 3) {
+  const z0 = 8 + off, z1 = z0 + depth;
+  return [
+    {min: [x, 3, z0] as V3, max: [x + w, 3.15, z1] as V3, mat: 'stone'},
+    {min: [x, 3.15, z1 - 0.05] as V3, max: [x + w, 4.15, z1] as V3, mat: 'stone'},
+    {min: [x + 0.1, 2.85, z1] as V3, max: [x + w - 0.1, 3.1, z1 + 0.03] as V3, mat: 'white'},
+  ];
+}
+const kinds = (r: {issues: {kind: string; severity: string}[]}) => JSON.stringify(r.issues.map(i => [i.kind, i.severity]));
+
+test('a 1.5 m balcony on its wall is not an overhang', () => {
+  assert.deepEqual(auditOpenings(boxes(block, ...balcony(1.5))).issues, []);
+});
+
+test('a solid-rail balcony floating 30 cm off the wall or 3 m deep is still flagged (bar-rail ones fail outright, below)', () => {
+  const floating = auditOpenings(boxes(block, ...balcony(1.5, 0.3)));
+  assert.ok(floating.issues.some(i => i.kind === 'overhang'), kinds(floating));
+  const deep = auditOpenings(boxes(block, ...balcony(3)));
+  assert.ok(deep.issues.some(i => i.kind === 'overhang'), kinds(deep));
+});
+
+/** Generator-style balcony: slab, thin rail bars (no solid front plane) and a dark fascia. */
+function barBalcony(depth: number, off = 0, x = 4) {
+  const z0 = 8 + off, z1 = z0 + depth, w = 3;
+  const bars = [0, 1, 2, 3].map(i => ({min: [x + i * 0.9, 3.15, z1 - 0.04] as V3, max: [x + i * 0.9 + 0.04, 4.15, z1] as V3, mat: 'stone'}));
+  return [{min: [x, 3, z0] as V3, max: [x + w, 3.15, z1] as V3, mat: 'stone'}, ...bars, {min: [x + 0.1, 2.85, z1] as V3, max: [x + w - 0.1, 3.1, z1 + 0.03] as V3, mat: 'white'}];
+}
+test('bar-rail balconies: 1.5 m on the wall passes; floating 0.3 m off, or 3 m deep, fails', () => {
+  assert.deepEqual(auditOpenings(boxes(block, ...barBalcony(1.5))).issues, []);
+  const floating = auditOpenings(boxes(block, ...barBalcony(1.5, 0.3)));
+  assert.ok(floating.issues.some(i => i.kind === 'overhang' && i.severity === 'fail'), kinds(floating));
+  const deep = auditOpenings(boxes(block, ...barBalcony(3)));
+  assert.ok(deep.issues.some(i => i.kind === 'overhang' && i.severity === 'fail'), kinds(deep));
+});
+
+test('balcony trim past the wall end, and a window past the side edge, still overhang', () => {
+  const side = auditOpenings(boxes(block, ...barBalcony(1.5, 0, 10.5)));
+  assert.ok(side.issues.some(i => i.kind === 'overhang' && i.severity === 'fail'), kinds(side));
+  const win = auditOpenings(boxes(block, ...balcony(1.5), pane(11.4, 8)));
+  assert.ok(win.issues.some(i => i.kind === 'overhang'), kinds(win));
+});
+
 test('a window sunk inside a solid wall is buried; a freestanding railing is ignored', () => {
   const buried = auditOpenings(boxes(block, pane(2, 7.7, 0.1))).issues;
   assert.equal(buried[0]?.kind, 'buried');

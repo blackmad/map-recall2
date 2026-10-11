@@ -148,9 +148,9 @@ function balconyUnit(c: Ctx, f: Frame, u: number, floorV: number, w: number, dep
   }
 }
 
-function doorUnit(c: Ctx, f: Frame, u: number, w: number, h: number, steps: number, d0 = 0): void {
-  const {mb, k} = c, rise = 0.17, lift = steps * rise;
-  box(mb, k.accent, f, u - w / 2 - 0.14, u + w / 2 + 0.14, 0, lift + h + 0.12, d0, d0 + 0.07);
+function doorUnit(c: Ctx, f: Frame, u: number, w: number, h: number, steps: number, d0 = 0, v0 = 0): void {
+  const {mb, k} = c, rise = 0.17, lift = v0 + steps * rise;
+  box(mb, k.accent, f, u - w / 2 - 0.14, u + w / 2 + 0.14, v0, lift + h + 0.12, d0, d0 + 0.07);
   plate(mb, k.door, f, u - w / 2, u + w / 2, lift, lift + h, d0 + 0.075);
   plate(mb, k.glass, f, u - w / 2 + 0.14, u + w / 2 - 0.14, lift + h * 0.42, lift + h - 0.14, d0 + 0.08);
   for (let i = 0; i < steps; i++) box(mb, k.accent, f, u - w / 2 - 0.35, u + w / 2 + 0.35, 0, (steps - i) * rise, d0 + 0.07, d0 + 0.07 + 0.3 * (i + 1));
@@ -194,7 +194,7 @@ function placeFacade(c: Ctx, f: Frame, length: number, id: FacadeId, bays: Bay[]
             balconyUnit(c, f, u, floor, w, e.depth ?? 1.2, e.railing ?? 'bars');
             if (kLevel === 1) count.balconiesPerUpperStorey++;
             break;
-          case 'door': doorUnit(c, f, u, w, h, e.steps ?? 0, d0); if (kLevel === 0) count.groundDoors++; break;
+          case 'door': doorUnit(c, f, u, w, h, e.steps ?? 0, d0, floor + (e.sill ?? 0)); if (kLevel === 0) count.groundDoors++; break;
           case 'storageDoor': storageDoor(c, f, u, w, h, d0); if (kLevel === 0) count.groundDoors++; break;
           case 'vents': {
             const n = e.count ?? 3;

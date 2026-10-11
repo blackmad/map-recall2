@@ -118,7 +118,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 3.5,
-              "depth": 0.8,
+              "depth": 1.3,
               "railing": "bars"
             },
             {
@@ -243,7 +243,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 3.5,
-              "depth": 0.8,
+              "depth": 1.3,
               "railing": "bars"
             },
             {
@@ -443,6 +443,7 @@
   "notes": [
     "Sub-design A of the footprint cluster of type 1 (ranks 1 and 3, 14.1 x 10.4 m): the 2026-10-11 survey held 359 of 444 panden as other designs; this is the largest group, 46 panden whose front photos show the wide-core layout above.",
     "Not modelled: the balcony columns are the pand's own bays only; the far window column and balcony in the photos belong to the next pand.",
-    "Brick tint = sunlit photo median; the game lifts photo-sampled brick colours into its brick range (cityWallTint), so tints are authored dark."
+    "Brick tint = sunlit photo median; the game lifts photo-sampled brick colours into its brick range (cityWallTint), so tints are authored dark.",
+    "Balcony depth 1.3 m (was 0.8 m): the oblique photo of the sibling design 0363100012123229 shows slabs projecting about 0.55 of their 2.4 m width; the frontal 0363100012074445 and 2113343 show only the dark slab edges. Estimated."
   ]
 }
