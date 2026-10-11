@@ -1471,12 +1471,12 @@
   "hilton-amsterdam": {
    "opening-floating": 0,
    "opening-floating-fail": 0,
-   "opening-overhang": 131,
-   "opening-overhang-fail": 68,
+   "opening-overhang": 56,
+   "opening-overhang-fail": 14,
    "opening-buried": 0,
-   "zfight-m2": 137.6,
-   "zfight-near-m2": 39.2,
-   "window-mismatch": 71,
+   "zfight-m2": 20.4,
+   "zfight-near-m2": 1.2,
+   "window-mismatch": 63,
    "window-missing": 6,
    "window-misaligned": 0
   },
