@@ -131,6 +131,104 @@ export const NEAR_METRES = 140;
 export const CULL_METRES = 700;
 
 // ---------------------------------------------------------------------------------------------------------------
+// Merging a unit's per-material meshes into one draw (pure, so it is unit-tested without three.js)
+
+/** One source mesh of a unit: raw attributes, the matrix baked into them, and the look it carried as a material. */
+export interface MergePart {
+  positions: ArrayLike<number>;
+  normals: ArrayLike<number>;
+  uvs: ArrayLike<number>;
+  /** Triangle indices; absent = sequential vertices. */
+  index?: ArrayLike<number> | null;
+  /** Column-major 4x4 applied to positions (and its inverse-transpose to normals) at merge time. */
+  matrix: ArrayLike<number>;
+  /** Material `uvScale` uniform, baked into the UVs. */
+  uvScale: number;
+  /** Which sampler (index into the shared texture list) the part's material sampled. */
+  texture: number;
+  /** Material `tint` uniform. */
+  tint: readonly [number, number, number];
+}
+export interface MergedMesh { positions: Float32Array; normals: Float32Array; uvs: Float32Array; textures: Float32Array; tints: Float32Array; index: Uint32Array }
+
+/** Concatenate parts into one geometry: matrices baked in, UVs scaled, sampler index and tint as per-vertex attributes. */
+export function mergeParts(parts: readonly MergePart[]): MergedMesh {
+  const verts = parts.reduce((n, p) => n + p.positions.length / 3, 0), idx = parts.reduce((n, p) => n + (p.index ? p.index.length : p.positions.length / 3), 0);
+  const out: MergedMesh = {positions: new Float32Array(verts * 3), normals: new Float32Array(verts * 3), uvs: new Float32Array(verts * 2), textures: new Float32Array(verts), tints: new Float32Array(verts * 3), index: new Uint32Array(idx)};
+  let v = 0, ii = 0;
+  for (const p of parts) {
+    const m = p.matrix, n = p.positions.length / 3;
+    // Normal matrix = cofactors of the upper 3x3 (inverse-transpose up to a positive scale), then normalised.
+    const a = m[0], b = m[4], c = m[8], d = m[1], e = m[5], f = m[9], g = m[2], h = m[6], i = m[10];
+    const cof = [e * i - f * h, f * g - d * i, d * h - e * g, c * h - b * i, a * i - c * g, b * g - a * h, b * f - c * e, c * d - a * f, a * e - b * d];
+    const flip = a * cof[0] + b * cof[1] + c * cof[2] < 0;
+    for (let k = 0; k < n; k++) {
+      const x = p.positions[k * 3], y = p.positions[k * 3 + 1], z = p.positions[k * 3 + 2], o = (v + k) * 3;
+      out.positions[o] = m[0] * x + m[4] * y + m[8] * z + m[12];
+      out.positions[o + 1] = m[1] * x + m[5] * y + m[9] * z + m[13];
+      out.positions[o + 2] = m[2] * x + m[6] * y + m[10] * z + m[14];
+      const nx = p.normals[k * 3], ny = p.normals[k * 3 + 1], nz = p.normals[k * 3 + 2];
+      const rx = cof[0] * nx + cof[1] * ny + cof[2] * nz, ry = cof[3] * nx + cof[4] * ny + cof[5] * nz, rz = cof[6] * nx + cof[7] * ny + cof[8] * nz;
+      const len = (Math.hypot(rx, ry, rz) || 1) * (flip ? -1 : 1);
+      out.normals[o] = rx / len; out.normals[o + 1] = ry / len; out.normals[o + 2] = rz / len;
+      out.uvs[(v + k) * 2] = p.uvs[k * 2] * p.uvScale; out.uvs[(v + k) * 2 + 1] = p.uvs[k * 2 + 1] * p.uvScale;
+      out.textures[v + k] = p.texture;
+      out.tints[o] = p.tint[0]; out.tints[o + 1] = p.tint[1]; out.tints[o + 2] = p.tint[2];
+    }
+    const count = p.index ? p.index.length : n;
+    for (let t = 0; t < count; t += 3) {
+      const t0 = p.index ? p.index[t] : t, t1 = p.index ? p.index[t + 1] : t + 1, t2 = p.index ? p.index[t + 2] : t + 2;
+      out.index[ii++] = v + t0; out.index[ii++] = v + (flip ? t2 : t1); out.index[ii++] = v + (flip ? t1 : t2);
+    }
+    v += n;
+  }
+  return out;
+}
+
+/**
+ * Shader of the merged unit meshes: the recipe look (`recipeLook.ts` VERTEX/FRAGMENT) with the per-material uniforms
+ * (`map`, `tint`, `uvScale`) turned into per-vertex attributes, so one draw covers every material of a unit.
+ * `samplers` is the number of distinct recipe textures shared by all units.
+ */
+export function mergedShaders(samplers: number): {vertexShader: string; fragmentShader: string} {
+  const n = Math.max(1, samplers);
+  const pick = Array.from({length: n}, (_, i) => i === n - 1 ? `c = texture2D(t${i}, vUv).rgb;` : `if (vTex < ${i}.5) c = texture2D(t${i}, vUv).rgb; else`).join('\n  ');
+  return {
+    vertexShader: `
+uniform mat3 enuFromWorld;
+attribute float aTex;
+attribute vec3 aTint;
+varying vec2 vUv;
+varying float vShade;
+varying float vTex;
+varying vec3 vTint;
+void main() {
+  vUv = uv;
+  vTex = aTex;
+  vTint = aTint;
+  vec3 n = normalize(enuFromWorld * (mat3(modelMatrix * instanceMatrix) * normal));
+  float shade;
+  if (abs(n.z) < 0.5) { vec2 h = normalize(n.xy + vec2(1e-6, 0.0)); shade = 0.8 + 0.2 * (0.5 + 0.5 * (h.x * -0.45 + h.y * 0.89)); }
+  else if (n.z < 0.0) shade = 0.5;
+  else shade = clamp(0.58 + 0.42 * max(0.0, n.x * -0.35 + n.y * 0.5 + n.z * 0.8), 0.5, 1.0);
+  vShade = shade;
+  gl_Position = projectionMatrix * modelViewMatrix * instanceMatrix * vec4(position, 1.0);
+}`,
+    fragmentShader: `
+${Array.from({length: n}, (_, i) => `uniform sampler2D t${i};`).join('\n')}
+varying vec2 vUv;
+varying float vShade;
+varying float vTex;
+varying vec3 vTint;
+void main() {
+  vec3 c;
+  ${pick}
+  gl_FragColor = vec4(c * vTint * vShade, 1.0);
+}`,
+  };
+}
+
+// ---------------------------------------------------------------------------------------------------------------
 // three.js part
 
 export interface RuntimeDeps {
@@ -195,6 +293,11 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
   interface Layer { mesh: any; indices: number[]; local: any; far: boolean; triangles: number }
   const layers: Layer[] = [];
   const geometries: any[] = [];
+  // Pass 1: decode every unit and collect the recipe textures, so the merged shader declares exactly the samplers in use.
+  interface Loaded { unit: string; indices: number[]; meshes: any[]; nominal?: Nominal }
+  const loaded: Loaded[] = [];
+  const textures: any[] = [];
+  const isRecipe = (m: any) => !!(m?.isShaderMaterial && m.uniforms?.map?.value && m.uniforms.tint?.value && m.uniforms.uvScale && m.uniforms.enuFromWorld);
   for (const [unit, indices] of byUnit) {
     const scene = await deps.loadUnit(unit);
     scene.updateMatrixWorld(true);
@@ -202,28 +305,77 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
     scene.traverse((o: any) => { if (o.userData?.nominal) nominal = o.userData.nominal; });
     const meshes: any[] = [];
     scene.traverse((o: any) => { if (o.isMesh) meshes.push(o); });
+    for (const m of meshes) if (isRecipe(m.material) && !textures.includes(m.material.uniforms.map.value)) textures.push(m.material.uniforms.map.value);
+    loaded.push({unit, indices, meshes, nominal});
+  }
+  // One shared material per side; every unit and the far massing draw through it (same textures, tint and fixed-light shade).
+  const merged = new Map<number, any>();
+  const mergedMaterial = (source: any) => {
+    let m = merged.get(source.side);
+    if (!m) {
+      const uniforms: Record<string, any> = {enuFromWorld: source.uniforms.enuFromWorld};
+      textures.forEach((t, i) => { uniforms[`t${i}`] = {value: t}; });
+      m = new THREE.ShaderMaterial({uniforms, ...mergedShaders(textures.length), side: source.side});
+      m.name = 'building-types/merged';
+      m.userData = {recipeLookShared: true};
+      merged.set(source.side, m);
+    }
+    return m;
+  };
+  const partOf = (m: any, data: {positions: ArrayLike<number>; normals: ArrayLike<number>; uvs: ArrayLike<number>; index?: ArrayLike<number> | null}, matrix: ArrayLike<number>): MergePart => {
+    const t = m.material.uniforms.tint.value;
+    return {...data, matrix, uvScale: m.material.uniforms.uvScale.value, texture: textures.indexOf(m.material.uniforms.map.value), tint: [t.x, t.y, t.z]};
+  };
+  const geometryOf = (mm: MergedMesh) => {
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(mm.positions, 3));
+    g.setAttribute('normal', new THREE.BufferAttribute(mm.normals, 3));
+    g.setAttribute('uv', new THREE.BufferAttribute(mm.uvs, 2));
+    g.setAttribute('aTex', new THREE.BufferAttribute(mm.textures, 1));
+    g.setAttribute('aTint', new THREE.BufferAttribute(mm.tints, 3));
+    g.setIndex(new THREE.BufferAttribute(mm.index, 1));
+    geometries.push(g);
+    return g;
+  };
+  // Through the accessor: GLB attributes may be interleaved or normalised, so `.array` is not the values.
+  const readAttribute = (a: any, size: number): number[] => {
+    const out: number[] = [];
+    for (let i = 0; i < a.count; i++) { out.push(a.getX(i)); if (size > 1) out.push(a.getY(i)); if (size > 2) out.push(a.getZ(i)); }
+    return out;
+  };
+  const identity = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+  for (const {unit, indices, meshes, nominal} of loaded) {
+    const near = new Map<number, MergePart[]>(), far = new Map<number, MergePart[]>(), sources = new Map<number, any>();
     for (const m of meshes) {
-      const mesh = new THREE.InstancedMesh(m.geometry, instancedMaterial(THREE, m.material, materialCache), indices.length);
-      mesh.name = `${unit}/near/${m.name}`;
-      mesh.userData.layer = 'near';
-      layers.push({mesh, indices, local: m.matrixWorld.clone(), far: false, triangles: (m.geometry.index?.count ?? m.geometry.attributes.position.count) / 3});
-      group.add(mesh);
+      const geo = m.geometry;
+      if (!isRecipe(m.material)) {
+        // Anything that is not a recipe-look material keeps its own instanced draw.
+        const mesh = new THREE.InstancedMesh(geo, instancedMaterial(THREE, m.material, materialCache), indices.length);
+        mesh.name = `${unit}/near/${m.name}`; mesh.userData.layer = 'near';
+        layers.push({mesh, indices, local: m.matrixWorld.clone(), far: false, triangles: (geo.index?.count ?? geo.attributes.position.count) / 3});
+        group.add(mesh);
+        continue;
+      }
+      const side = m.material.side;
+      sources.set(side, m.material);
+      near.set(side, [...(near.get(side) ?? []), partOf(m, {positions: readAttribute(geo.attributes.position, 3), normals: readAttribute(geo.attributes.normal, 3), uvs: readAttribute(geo.attributes.uv, 2), index: geo.index?.array}, m.matrixWorld.elements)]);
     }
     if (nominal) {
-      // Far LOD from the unit's nominal size: two meshes (walls, roof) in the unit's own wall and roof materials.
-      const pick = (slots: Set<string>) => meshes.filter(m => slots.has(m.material?.userData?.materialSlot)).sort((a, b) => b.geometry.attributes.position.count - a.geometry.attributes.position.count)[0];
+      // Far LOD from the unit's nominal size: wall box + roof in the unit's own wall and roof materials, one draw.
+      const pick = (slots: Set<string>) => meshes.filter(m => isRecipe(m.material) && slots.has(m.material?.userData?.materialSlot)).sort((a, b) => b.geometry.attributes.position.count - a.geometry.attributes.position.count)[0];
       const wall = pick(WALL_SLOTS), roofMesh = pick(ROOF_SLOTS), raw = farMassing(nominal);
-      for (const [part, source, data] of [['walls', wall, raw.walls], ['roof', roofMesh, raw.roof]] as const) {
+      for (const [source, data] of [[wall, raw.walls], [roofMesh, raw.roof]] as const) {
         if (!source || !data.index.length) continue;
-        const g = new THREE.BufferGeometry();
-        g.setAttribute('position', new THREE.Float32BufferAttribute(data.positions, 3));
-        g.setAttribute('normal', new THREE.Float32BufferAttribute(data.normals, 3));
-        g.setAttribute('uv', new THREE.Float32BufferAttribute(data.uvs, 2));
-        g.setIndex(data.index);
-        geometries.push(g);
-        const mesh = new THREE.InstancedMesh(g, instancedMaterial(THREE, source.material, materialCache), indices.length);
-        mesh.name = `${unit}/far/${part}`; mesh.userData.layer = 'far';
-        layers.push({mesh, indices, local: new THREE.Matrix4(), far: true, triangles: data.index.length / 3});
+        const side = source.material.side;
+        sources.set(side, source.material);
+        far.set(side, [...(far.get(side) ?? []), partOf(source, {positions: data.positions, normals: data.normals, uvs: data.uvs, index: data.index}, identity)]);
+      }
+    }
+    for (const [parts, isFar] of [[near, false], [far, true]] as const) {
+      for (const [side, list] of parts) {
+        const mm = mergeParts(list), mesh = new THREE.InstancedMesh(geometryOf(mm), mergedMaterial(sources.get(side)), indices.length);
+        mesh.name = `${unit}/${isFar ? 'far' : 'near'}/merged-${side}`; mesh.userData.layer = isFar ? 'far' : 'near';
+        layers.push({mesh, indices, local: new THREE.Matrix4(), far: isFar, triangles: mm.index.length / 3});
         group.add(mesh);
       }
     }
@@ -282,6 +434,7 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
     dispose() {
       for (const l of layers) l.mesh.dispose?.();
       for (const g of geometries) g.dispose();
+      for (const m of merged.values()) m.dispose();
     },
   };
 }
