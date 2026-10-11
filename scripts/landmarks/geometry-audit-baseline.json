@@ -2501,11 +2501,11 @@
    "window-misaligned": 0
   },
   "oude-lutherse-kerk": {
-   "opening-floating": 10,
+   "opening-floating": 8,
    "opening-floating-fail": 2,
    "opening-overhang": 0,
    "opening-overhang-fail": 0,
-   "opening-buried": 6,
+   "opening-buried": 0,
    "zfight-m2": 0,
    "zfight-near-m2": 1,
    "window-mismatch": 1,
