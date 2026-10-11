@@ -145,7 +145,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 1.6,
-              "depth": 0.75,
+              "depth": 1.2,
               "railing": "bars"
             }
           ]
@@ -181,7 +181,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 1.6,
-              "depth": 0.75,
+              "depth": 1.2,
               "railing": "bars"
             }
           ]
@@ -298,7 +298,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 1.6,
-              "depth": 0.75,
+              "depth": 1.2,
               "railing": "bars"
             }
           ]
@@ -327,7 +327,7 @@
               "kind": "balcony",
               "levels": "upper",
               "w": 1.6,
-              "depth": 0.75,
+              "depth": 1.2,
               "railing": "bars"
             }
           ]
@@ -417,6 +417,7 @@
   },
   "notes": [
     "The ground storey differs per pand (garages left or right, no garages at all on Martini van Geffenstraat); drawn as the 2098314 layout (side door left, two garages right). Door and garage positions are the least reliable part of this spec.",
-    "Photos: Gemeente Amsterdam panoramas (CC BY 4.0), crops made by scripts/building-types/camera-sheets.ts --survey (cached in .cache/building-types/crops)."
+    "Photos: Gemeente Amsterdam panoramas (CC BY 4.0), crops made by scripts/building-types/camera-sheets.ts --survey (cached in .cache/building-types/crops).",
+    "Balcony depth 1.2 m (was drawn 0.75 m to pass the geometry audit, which now accepts balcony assemblies up to 2.0 m): in 0363100012098314 and 2101643 the slab projects about 0.6 of its 1.9 m width, white bar rail with returns. Estimated from the frontal photos, not measured on site."
   ]
 }
