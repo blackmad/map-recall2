@@ -67,6 +67,14 @@ export interface RecipeRoofInput {
   faceSetbackM?: number;
   /** Upper bound on the attic top (m above this pand's ground): the face's cornice group shares one attic line. */
   ridgeCapM?: number;
+  /**
+   * All fronts on the street when a pand has several (two houses in one pand, tower bays, split gables): each keeps
+   * its own fitted eaves at the frontage, the attic rises from it to the shared top, and the split points stay roof
+   * vertices so each front wall meets the roof edge (bilder-233580-162444 158-162: a 34 m open loop otherwise).
+   * A front whose eaves reach the attic top (a tower bay: a front-plane wall to its measured top, no tower body)
+   * takes the roof of the front beside it.
+   */
+  fronts?: {id: string; eavesM: number; endpointsRD: number[][]}[];
 }
 
 const dot = (a: number[], b: number[]) => a[0] * b[0] + a[1] * b[1];
@@ -261,15 +269,34 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   if (!flat && input.ridgeCapM !== undefined && input.ridgeCapM < Math.min(E + attic, capM)) notes.push(`attic line of its cornice group (${r3(input.ridgeCapM)} m)`);
   if (flat) notes.push(`3DBAG main body flat (p95 ${r3(capM)} m vs eaves ${r3(E)} m): flat at the eaves`);
   else if (capM < E + attic) notes.push(`attic capped by 3DBAG p95 ${r3(capM)} m`);
-  const profile = atticProfile(E, ridge, mainDepth, o.frontPitchDeg, setback);
-  // A cut within 2 cm of a footprint corner passes through it: a sub-mm miss leaves slivers that invert when snapped.
   const cornerDepths = polys.flatMap(poly => poly.flat()).map(depth);
-  for (const k of profile) { const near = cornerDepths.find(d => Math.abs(d - k[0]) < 0.02); if (near !== undefined && k[0] > 0) k[0] = near; }
-  // Knots within 2 cm of each other (a pitch whose faces meet with no flat top) become one: a corner snap moving only
-  // one of them would order them backwards and the bands between would overlap (marnix-124-138 at 30 degrees).
-  for (let i = 1; i < profile.length; i++) if (profile[i][0] - profile[i - 1][0] < 0.02) profile[i][0] = profile[i - 1][0];
-  const knots = profile.map(p => p[0]);
-  const heightIn = (k: number, d: number) => { const [d0, h0] = profile[k], [d1, h1] = profile[k + 1]; return d1 - d0 < 1e-9 ? h0 : h0 + (h1 - h0) * (d - d0) / (d1 - d0); };
+  const makeProfile = (eaves: number) => {
+    const profile = atticProfile(eaves, Math.max(eaves, ridge), mainDepth, o.frontPitchDeg, setback);
+    // A cut within 2 cm of a footprint corner passes through it: a sub-mm miss leaves slivers that invert when snapped.
+    for (const k of profile) { const near = cornerDepths.find(d => Math.abs(d - k[0]) < 0.02); if (near !== undefined && k[0] > 0) k[0] = near; }
+    // Knots within 2 cm of each other (a pitch whose faces meet with no flat top) become one: a corner snap moving only
+    // one of them would order them backwards and the bands between would overlap (marnix-124-138 at 30 degrees).
+    for (let i = 1; i < profile.length; i++) if (profile[i][0] - profile[i - 1][0] < 0.02) profile[i][0] = profile[i - 1][0];
+    return profile;
+  };
+  // Fronts along the street (see RecipeRoofInput.fronts): bands between the split points, each with its own eaves.
+  const along = (p: number[]) => dot([p[0] - e0[0], p[1] - e0[1]], [inward[1], -inward[0]]);
+  const fronts = (input.fronts ?? []).map(f => ({...f, lo: Math.min(...f.endpointsRD.map(along)), hi: Math.max(...f.endpointsRD.map(along))})).sort((a, b) => a.lo - b.lo);
+  // A tower bay: eaves a storey-ish over the lowest front (> 1 m) or at the attic top. Its roof band would sit flush on
+  // the bay's own wall cap and z-fight (bilder-233580-162444 tower bays: 0.5 m2), so it takes its neighbour's roof.
+  const lowest = Math.min(E, ...(input.fronts ?? []).map(f => f.eavesM));
+  const tower = (e: number) => e > lowest + 1.0 || (e >= ridge - 0.05 && ridge - E >= 0.05);
+  const bands: {lo: number; hi: number; eaves: number}[] = fronts.length < 2 ? [{lo: -Infinity, hi: Infinity, eaves: E}] : fronts.map((f, i) => ({
+    lo: i === 0 ? -Infinity : (fronts[i - 1].hi + f.lo) / 2, hi: i === fronts.length - 1 ? Infinity : (f.hi + fronts[i + 1].lo) / 2, eaves: f.eavesM}));
+  if (fronts.length >= 2) {
+    const plain = bands.map((b, i) => tower(b.eaves) ? -1 : i);
+    for (const [i, b] of bands.entries()) if (plain[i] < 0) {
+      const j = plain.filter(k => k >= 0).sort((a, c) => Math.abs(a - i) - Math.abs(c - i) || a - c)[0];
+      b.eaves = j === undefined ? E : bands[j].eaves;
+      notes.push(`front ${fronts[i].id}: tower bay (eaves ${r3(fronts[i].eavesM)} m), roof of its neighbour`);
+    }
+    if (bands.some(b => Math.abs(b.eaves - E) > 0.02)) notes.push(`per-front eaves ${bands.map(b => r3(b.eaves)).join('/')} m`);
+  }
 
   const roofsRD: BuildingFacts['roofsRD'] = [];
   // Coplanar pieces are merged, triangulated here, and each triangle written as its own planar surface: surveyRecipe
@@ -310,7 +337,20 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   // Footprint corners: a clip point within a millimetre of one IS that corner, and a corner on a piece edge becomes a
   // vertex of it. Otherwise an edge along the outline ends 0.1 mm past a near-collinear corner, no single outline edge
   // contains it, and the library skips its closure wall (an open side, bilder-081118 at Bilderdijkstraat 136).
+  // Split points between fronts stay vertices (the front walls end there): footprint vertices when they are, else
+  // points on the outline (projected within 2 cm).
   const corners = polys.flatMap(poly => poly.flat());
+  if (fronts.length >= 2) for (const f of fronts) for (const q of f.endpointsRD) {
+    if (corners.some(c => Math.hypot(c[0] - q[0], c[1] - q[1]) < 1e-3)) continue;
+    let best: number[] | null = null, dist = 0.02;
+    for (const poly of polys) for (const r of poly) for (let i = 0; i < r.length; i++) {
+      const a = r[i], b = r[(i + 1) % r.length], dx = b[0] - a[0], dy = b[1] - a[1], l2 = dx * dx + dy * dy;
+      if (l2 < 1e-12) continue;
+      const u = Math.max(0, Math.min(1, ((q[0] - a[0]) * dx + (q[1] - a[1]) * dy) / l2)), c = [a[0] + u * dx, a[1] + u * dy], d = Math.hypot(c[0] - q[0], c[1] - q[1]);
+      if (d < dist) { dist = d; best = c; }
+    }
+    if (best) corners.push(best as typeof corners[number]);
+  }
   const footEdges = polys.flatMap(poly => poly.flatMap(r => r.map((p, i) => [p, r[(i + 1) % r.length]] as [number[], number[]])));
   const snapRing = (ring: number[][]) => {
     const snapped = ring.map(p => corners.find(c => Math.hypot(c[0] - p[0], c[1] - p[1]) < 1e-3) ?? p);
@@ -342,16 +382,27 @@ export function recipeRoofFacts(facts: BuildingFacts, input: RecipeRoofInput, op
   const footTris = polys.flatMap(poly => footprintTriangles(poly));
   // Main body: footprint triangles cut at the profile knots; a footprint corner in front of the frontage stays at the eaves.
   const wingCut = mainDepth < plotDepth ? mainDepth : Infinity;
-  for (const tri of footTris) {
-    // An outline that wanders a few mm either side of the frontage line is not cut there: the cut would leave a
-    // metres-long mm-wide sliver along the front that the snaps turn into overlaps (marnix-124-138 at 30 degrees).
-    const lead = Math.min(...tri.map(depth)) > -0.02;
-    if (!lead) push(clipBand(tri, depth, -Infinity, Math.min(0, wingCut)), () => E, 'front');
-    for (let k = 0; k + 1 < knots.length; k++) {
-      const lo = k === 0 && lead ? -Infinity : knots[k], hi = k + 2 === knots.length ? wingCut : knots[k + 1];
-      if (hi - lo < 1e-9) continue;
-      push(clipBand(tri, depth, lo, hi), p => heightIn(k, Math.max(knots[k], Math.min(depth(p), knots[k + 1]))), `main-${k}`);
+  for (const [bi, band] of bands.entries()) {
+    const profile = makeProfile(band.eaves), knots = profile.map(p => p[0]), Eb = band.eaves;
+    const heightIn = (k: number, d: number) => { const [d0, h0] = profile[k], [d1, h1] = profile[k + 1]; return d1 - d0 < 1e-9 ? h0 : h0 + (h1 - h0) * (d - d0) / (d1 - d0); };
+    // A band boundary passes through its split point exactly (snapped to the outline above).
+    const cut = (v: number) => { const c = corners.find(q => Math.abs(along(q) - v) < 0.02 && Math.abs(depth(q)) < 0.05); return c ? along(c) : v; };
+    const [alo, ahi] = [Number.isFinite(band.lo) ? cut(band.lo) : -Infinity, Number.isFinite(band.hi) ? cut(band.hi) : Infinity];
+    const tag = `${r3(Eb)}`;
+    for (const whole of footTris) {
+      const tri = bands.length > 1 ? clipBand(whole, along, alo, ahi) : whole;
+      if (tri.length < 3) continue;
+      // An outline that wanders a few mm either side of the frontage line is not cut there: the cut would leave a
+      // metres-long mm-wide sliver along the front that the snaps turn into overlaps (marnix-124-138 at 30 degrees).
+      const lead = Math.min(...tri.map(depth)) > -0.02;
+      if (!lead) push(clipBand(tri, depth, -Infinity, Math.min(0, wingCut)), () => Eb, `front-${tag}`);
+      for (let k = 0; k + 1 < knots.length; k++) {
+        const lo = k === 0 && lead ? -Infinity : knots[k], hi = k + 2 === knots.length ? wingCut : knots[k + 1];
+        if (hi - lo < 1e-9) continue;
+        push(clipBand(tri, depth, lo, hi), p => heightIn(k, Math.max(knots[k], Math.min(depth(p), knots[k + 1]))), `main-${tag}-${k}`);
+      }
     }
+    void bi;
   }
   // Rear wings: the footprint behind mainDepth, split along the lines where 3DBAG steps between flat levels (each
   // 3DBAG surface flattened to its median, never above the eaves); each piece takes the level 3DBAG has at its centre.
