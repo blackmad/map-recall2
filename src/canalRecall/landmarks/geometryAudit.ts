@@ -480,6 +480,19 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
       else if (okRef) { const r = sample(okRef, [okRef], th.balconyMax + 0.1); if (!best || r.outside < outside) ({outside, buried} = r); } // judged laterally; never worsens a plain verdict
     }
 
+    // Guard rail: a balustrade or glazed screen standing on a wall's top edge (a podium roof terrace, a parapet) is not an opening
+    // that came off its wall. It must be low (a storey of rail at most), rest on the wall top (its foot within 15 cm below to
+    // 10 cm above the top along its whole length) and lie laterally within the wall's extent; a window floating above a wall stays a defect.
+    if (best && gap <= tol && outside > th.overhangWarn && bb.max[1] - bb.min[1] <= 1.8) {
+      const r = raster(best);
+      let u0 = Infinity, u1 = -Infinity;
+      for (const v of verts) { const u = v[0] * best.t[0] + v[2] * best.t[1]; u0 = Math.min(u0, u); u1 = Math.max(u1, u); }
+      const x0 = Math.floor((u0 - r.u0) / r.cell), x1 = Math.floor((u1 - r.u0) / r.cell);
+      let resting = x0 >= 0 && x1 < r.nu;
+      for (let x = Math.max(0, x0); resting && x <= Math.min(r.nu - 1, x1); x++) resting = Number.isFinite(r.colHi[x]) && bb.min[1] >= r.colHi[x] - 0.15 && bb.min[1] <= r.colHi[x] + 0.1;
+      if (resting) { outside = 0; buried = 0; }
+    }
+
     const mats = [...new Set(tris.map(t => s.materials[s.triMaterial[t]].name))].sort();
     const base = {materials: mats, min: bb.min, max: bb.max, centre: c, gap, outside: +outside.toFixed(2), buried: +buried.toFixed(2), wallBearing: best?.bearingDeg, triangles: tris};
     // A part sunk wholly inside the wall is buried, not floating, even though no wall surface touches it.
