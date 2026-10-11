@@ -1,7 +1,7 @@
 import type {BuildingTools} from './cultural-builders';
 import {addShell} from './worship-shell';
 import type {Surface} from './worship-shell';
-import {disc, setSink, slab} from './nearbar-kit';
+import {disc, getSink, setSink, slab} from './nearbar-kit';
 import type {Frame} from './nearbar-kit';
 import source from './voc-kade-600-footprints.json';
 
@@ -42,7 +42,7 @@ export function buildVocKade600(_w: number, _d: number, b: BuildingTools & {mark
   setSink(0.3);   // every solid reaches 0.3 m behind its wall plane so nothing hovers
 
   const piers = (f: Frame, ts: number[], y0: number, y1: number, w = 0.82) => { for (const t of ts) slab(b, f, t + w / 2, y0, w, y1 - y0, 0.2, 'concrete'); };
-  const bands = (f: Frame, len: number, ys: number[]) => { for (const y of ys) slab(b, f, len / 2, y - BAND / 2, len, BAND, 0.2, 'concrete'); };
+  const bands = (f: Frame, len: number, ys: number[]) => { for (const y of ys) slab(b, f, len / 2, y - BAND / 2, len, BAND, 0.24, 'concrete'); };   // bands 4 cm proud of the piers (same 0.2 front would be coplanar where they cross)
   /** Tall steel window with transoms; the real panes are ~0.5 m, drawn every `step`. */
   const win = (f: Frame, t: number, y: number, w: number, h: number, step = 0.9) => {
     slab(b, f, t, y, w + 0.1, h, 0.09, 'frame');
@@ -56,7 +56,7 @@ export function buildVocKade600(_w: number, _d: number, b: BuildingTools & {mark
   /** Brick + window grid shared by the NE, SE and SW faces. */
   const brickFace = (f: Frame, len: number, o: {pier0: number; pitch: number; bays: number; windowBays: number[]; yBase: number; ground?: (k: number, x0: number) => void; cells: number}) => {
     const xs = Array.from({length: o.bays + 1}, (_, k) => o.pier0 + o.pitch * k);
-    piers(f, xs, o.yBase, ROOF);
+    piers(f, xs, o.yBase, ROOF - 0.05);   // pier tops 5 cm under the parapet cap's top plane
     const ys: number[] = []; for (let k = 0; k <= 8; k++) if (bands5(k) > o.yBase + 0.5) ys.push(bands5(k));
     bands(f, len, ys);
     slab(b, f, len / 2, ROOF - 0.5, len, 0.5, 0.22, 'concrete');   // parapet cap
@@ -93,16 +93,20 @@ export function buildVocKade600(_w: number, _d: number, b: BuildingTools & {mark
     };
     brickFace(f, len, {pier0, pitch, bays: 10, windowBays: [0, 1, 2, 3, 4, 5, 6, 7].map(k => k), yBase: 0, ground, cells: 8});
     // brick bays 8-9 stay blank on every cell: drawn above through windowBays (not in list). Logo disc, top right.
-    disc(b, f, 31.2, 28.6, 2.4, 0.14, 'dark', 0.1);
+    disc(b, f, 31.2, 28.6, 2.4, 0.14, 'dark', 0.17);   // stands clear of the 24 cm concrete band it crosses
     // black steel balconies seen in the rectified photo: [t0, t1, floor height]
     const balc = (t0: number, t1: number, y: number) => {
-      const w = t1 - t0, c = (t0 + t1) / 2;
-      slab(b, f, c, y - 0.12, w, 0.18, 1.35, 'dark', 0.1);
-      slab(b, f, c, y + 0.06, w, 0.06, 1.35, 'frame', 0.1);
-      slab(b, f, c, y + 0.95, w, 0.05, 1.3, 'frame', 0.14);
-      for (const t of [t0 + 0.03, t1 - 0.03]) slab(b, f, t, y + 0.06, 0.05, 0.95, 1.3, 'frame', 0.14);
+      // A balcony stands in front of the windows: its back starts 20 cm out (flush with the concrete band's front it rests on), not 30 cm
+      // inside the wall like the window trims, or its boxes would overlap the window frames and fuse with them into one tall "opening".
+      const w = t1 - t0, c = (t0 + t1) / 2, s0 = getSink();
+      setSink(0);
+      slab(b, f, c, y - 0.12, w, 0.18, 1.25, 'dark', 0.2);
+      slab(b, f, c, y + 0.06, w, 0.06, 1.25, 'frame', 0.2);
+      slab(b, f, c, y + 0.95, w, 0.05, 1.24, 'frame', 0.2);
+      for (const t of [t0 + 0.03, t1 - 0.03]) slab(b, f, t, y + 0.06, 0.05, 0.95, 1.24, 'frame', 0.2);
       for (let u = t0 + 0.35; u < t1 - 0.2; u += 0.35) slab(b, f, u, y + 0.06, 0.03, 0.95, 0.03, 'frame', 1.4);
       slab(b, f, c, y + 0.06, w, 0.95, 0.03, 'frame', 1.4);
+      setSink(s0);
     };
     balc(18.4, 21.3, 6.4); balc(7.2, 10.9, 11.9); balc(25.1, 31.8, 11.9);
     balc(11.0, 14.2, 17.4); balc(18.4, 21.3, 17.4);
@@ -115,7 +119,7 @@ export function buildVocKade600(_w: number, _d: number, b: BuildingTools & {mark
     const pier = (l: number, w: number, y0: number, y1: number) => slab(b, f, l + w / 2, y0, w, y1 - y0, 0.2, 'concrete');
     for (const [l, w] of [[0, 1.0], [3.2, 1.0], [6.6, 1.2], [10.5, 0.8], [14.1, 0.9], [17.75, 0.95], [21.4, 1.5]]) pier(l, w, 0, 11.5);
     for (const [l, w] of [[0, 1.06], [6.7, 1.1], [14.1, 0.9], [17.75, 0.95], [21.4, 1.5]]) pier(l, w, 11.5, 22.4);
-    for (const [l, w] of [[0, 0.9], [6.8, 0.9], [14.1, 0.9], [21.6, 1.3]]) pier(l, w, 22.4, ROOF);
+    for (const [l, w] of [[0, 0.9], [6.8, 0.9], [14.1, 0.9], [21.6, 1.3]]) pier(l, w, 22.4, ROOF - 0.05);
     slab(b, f, len / 2, ROOF - 0.5, len, 0.5, 0.22, 'concrete');
     const stackLo = [cellLo(3), 37.8], stackHi = [37.1, ROOF - 0.5];
     bands(f, len, [bands5(0), bands5(1), bands5(2), bands5(3), 37.45]);
@@ -125,7 +129,7 @@ export function buildVocKade600(_w: number, _d: number, b: BuildingTools & {mark
       win(f, (a + c) / 2, 0.35, c - a, BAND0 - BAND / 2 - 0.4, 0.85);
       win(f, (a + c) / 2, cellLo(0) + 0.1, c - a, cellHi(0) - cellLo(0) - 0.2, 0.75);
     }
-    slab(b, f, 19.9, 0, 3.0, 3.1, 0.12, 'dark');                              // entrance hall frame
+    slab(b, f, 19.9, 0, 3.0, 3.1, 0.07, 'dark');                              // entrance hall frame
     win(f, 19.9, 0.15, 2.8, 2.9, 0.95);
     for (const [a, c] of [[1.06, 6.7], [7.8, 14.1], [15.0, 17.75], [18.7, 21.4]]) for (const k of [1, 2]) win(f, (a + c) / 2, cellLo(k) + 0.1, c - a, cellHi(k) - cellLo(k) - 0.2, 0.9);
     // two five-floor stacks of balcony loggias, three bays wide
@@ -137,10 +141,14 @@ export function buildVocKade600(_w: number, _d: number, b: BuildingTools & {mark
         slab(b, f, t, lo + 0.05, w - 0.1, hi - lo - 0.1, 0.12, 'glass');
         for (let k = 0; k < 5; k++) {
           const y = lo + k * floor;
-          slab(b, f, t, y + floor - 0.08, w, 0.1, 0.5, 'dark', 0.1);        // balcony slab
-          slab(b, f, t, y + 0.2, w, 0.8, 0.04, 'frame', 0.55);               // balustrade
-          slab(b, f, t, y + 0.2, w, 0.05, 0.1, 'frame', 0.5);
+          // Balcony stands clear of the glazing's mullions (back 20 cm out, mullion fronts at 16 cm) so slabs and rails do not fuse with them
+          // into one five-storey "opening"; the balustrade rests on the slab of the floor below (top at y + 0.02), not 18 cm above it.
+          const s0 = getSink(); setSink(0);
+          slab(b, f, t, y + floor - 0.08, w, 0.1, 0.4, 'dark', 0.2);         // balcony slab
+          slab(b, f, t, y + 0.02, w, 0.98, 0.04, 'frame', 0.55);              // balustrade
+          slab(b, f, t, y + 0.02, w, 0.05, 0.1, 'frame', 0.5);
           slab(b, f, t, y + 1.0, w, 0.05, 0.1, 'frame', 0.5);
+          setSink(s0);
         }
         for (let u = a + 0.6; u < c - 0.3; u += 1.2) slab(b, f, u, lo, 0.07, hi - lo, 0.16, 'frame');
       }

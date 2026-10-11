@@ -1,7 +1,7 @@
 import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
-import {frameOf, put, slab} from './nearbar-kit';
+import {frameOf, put, setSink, slab} from './nearbar-kit';
 import {curtainOnWall, frameFromBearing, wallAwayFrom, windowRow} from './modern-kit';
 import * as TT from 'three';
 import source from './ij-toren-footprints.json';
@@ -55,6 +55,7 @@ export function buildIjToren(_w: number, _d: number, b: BuildingTools & {mark?: 
   addShell(b, src as never, {wall: 'copper', roof: 'dark', skip: s => isSpike(s) || !isWing(s)});
   addShell(b, src as never, {wall: 'glass', roof: 'glass', skip: s => isSpike(s) || !isVault(s)});
   b.mark?.('shell');
+  setSink(0.06);   // trims' back faces sit 6 cm inside the shell wall, never coplanar with its inner side
 
   // Tower curtain wall on every tower wall that is big enough to carry bays.
   src.surfaces.forEach((s, i) => {
@@ -124,8 +125,8 @@ export function buildIjToren(_w: number, _d: number, b: BuildingTools & {mark?: 
       slab(b, fe, -sgn * RECESS / 2 * -1, 0, RECESS, H, 0.3, 'brick', -0.3);
     }
     // Soffit/floor of the gallery and fascia beam.
-    slab(b, f, L / 2, 7.1, L, 0.4, RECESS, 'concrete', -RECESS);
-    slab(b, f, L / 2, 6.9, L, 0.7, 0.25, 'white', -0.25);
+    slab(b, f, L / 2, 7.1, L, 0.4, RECESS - 0.04, 'concrete', -RECESS);
+    slab(b, f, L / 2, 6.9, L, 0.7, 0.25, 'white', -0.22);                  // fascia stands 3 cm proud of the soffit edge (no coplanar front)
     // Glazed gallery screen with white mullions.
     slab(b, f, L / 2, 7.6, L - 0.2, 2.9, 0.12, 'glass', -0.14);
     const nm = Math.round(L / 5.2);
@@ -134,7 +135,7 @@ export function buildIjToren(_w: number, _d: number, b: BuildingTools & {mark?: 
     slab(b, f, L / 2, 10.35, L - 0.2, 0.2, 0.22, 'white', -0.22);
     // Colonnade.
     const bay = L / Math.round(L / 11.4);
-    for (let t = bay / 2; t < L; t += bay) slab(b, f, t, 0, 0.38, 7.3, 0.38, 'white', -0.45);
+    for (let t = bay / 2; t < L; t += bay) slab(b, f, t, 0, 0.38, 7.3, 0.38, 'concrete', -0.45);              // structural posts, not window trim
     // Recessed wall: plinth, window bays, portholes, a sliding gate every fifth bay.
     const rf = {origin: [f.origin[0] - f.n[0] * RECESS, f.origin[1] - f.n[1] * RECESS] as [number, number], tangent: f.tangent, n: f.n};
     slab(b, rf, L / 2, 0, L, 2.5, 0.12, 'dark');

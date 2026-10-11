@@ -70,7 +70,19 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
   addShell(bs, source as never, {wall: 'sandstone', roof: 'slate', roofFor: towerCap, skip: (s) => s.type === 'WallSurface' && brown(s)});
   addShell(bs, source as never, {wall: 'greyBrick', roof: 'slate', skip: (s) => s.type !== 'WallSurface' || !brown(s)});
   const probe = wallProbe(shellGeoms);
-  b.mark?.('shell');
+  /**
+   * Places a window (t +- hw, y0..y1) on the single vertical shell wall it stands on (snapped onto it). Where the shell has a mansard slope, a step or a gap
+   * there, nothing is drawn: glass hung in front of slate, or sunk into a wall volume, is not a window on a wall. Returns whether it was drawn.
+   */
+  const place = (f: Frame, t: number, y0: number, y1: number, hw: number, draw: (g: Frame) => void): boolean => {
+    const mid = (y0 + y1) / 2, c = probe.hit(f, t, mid);
+    if (!c || c.normal[1] > 0.2) return false;
+    const offs: number[] = [];
+    for (const dt of [-hw, 0, hw]) for (const y of [y0 + 0.05, mid, y1]) { const o = probe.offset(f, t + dt, y); if (o === null) return false; offs.push(o); }
+    if (Math.max(...offs) - Math.min(...offs) > 0.12) return false;
+    draw(probe.snap(f, t, mid));
+    return true;
+  };
   setSink(0.5);
   const ring = (source.nativeRing as number[][]).slice(0, -1);
   const fr = (i: number) => ringFrame(ring, i);
@@ -150,10 +162,10 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
     // gables and broke the rhythm of the storeys below.
     // Each window snaps onto the 3DBAG wall where it really stands (the upper storeys step back 0.5-2 m behind the ring).
     for (const t of [14.2, 17.5, 20.9, 24.2, 27.6, 30.9, 34.3]) {
-      for (const y of [14.0, 16.6]) { const off = probe.offset(fUp, t, y + 0.8); if (off !== null) arched(probe.snap(fUp, t, y + 0.8), t, y, 0.9, 1.5); }
+      for (const y of [14.0, 16.6]) place(fUp, t, y, y + 1.5, 0.45, g => arched(g, t, y, 0.9, 1.5));
     }
     // left wing (t 3-10): its two lower storeys continue upward on the same three axes
-    for (const t of [4.2, 6.6, 9.0]) for (const y of [13.6, 16.2]) { const off = probe.offset(f, t, y + 0.9); if (off !== null) archWindows(b, probe.snap(f, t, y + 0.9), [t], {y, w: 1.1, h: 1.8, bars: 1, rows: 1, sill: 'stone'}); }
+    for (const t of [4.2, 6.6, 9.0]) for (const y of [13.6, 16.2]) place(f, t, y, y + 1.8, 0.6, g => archWindows(b, g, [t], {y, w: 1.1, h: 1.8, bars: 1, rows: 1, sill: 'stone'}));
     for (const t of [20.8, 30.5]) poly(b, f, t, 13.4, [[-2.4, 0], [2.4, 0], [2.4, 0.5], [0, 0.5]], 0.4, 'stone', 0.2);
   }
 
@@ -209,12 +221,14 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
     // fifth bay over the recess zone and the three recessed arches on corbelled piers
     arched(f, 13.95, 10.1, 2.2, 4.8, {fan: true, bars: 1, rows: 3});
     // three narrow tall arched windows over white panels (the panorama shows glazing, not dark recesses), the door under the middle
+    // The wall steps back 0.57 -> 0.79 m behind the ring here: each bay snaps onto the shell wall it stands on.
     for (const t of [14.2, 16.7, 19.2]) {
-      archBand(b, f, t, 1.5, 2.2, 5.5, 0.3, 0.2, 'stone');
-      slab(b, f, t, 1.5, 1.6, 1.6, 0.1, t === 16.7 ? 'dark' : 'white');
-      archWindows(b, f, [t], {y: 3.2, w: 1.4, h: 3.6, bars: 1, rows: 2, sill: 'stone'});
+      const s = probe.snap(f, t, 5);
+      archBand(b, s, t, 1.5, 2.2, 5.5, 0.3, 0.2, 'stone');
+      slab(b, s, t, 1.5, 1.6, 1.6, 0.1, t === 16.7 ? 'dark' : 'white');
+      archWindows(b, s, [t], {y: 3.2, w: 1.4, h: 3.6, bars: 1, rows: 2, sill: 'stone'});
     }
-    for (const t of [12.9, 15.45, 17.95, 20.4]) slab(b, f, t, 1.5, 0.45, 5.4, 0.25, 'stone');
+    for (const t of [12.9, 15.45, 17.95, 20.4]) slab(b, probe.snap(f, t, 5), t, 1.5, 0.45, 5.4, 0.25, 'stone');
     // staircase tower (edge 16) with arched windows and the canted oriel
     const g = frN(16).f;
     for (const y of [3.0, 6.6, 10.2, 13.8, 17.4]) archWindows(b, g, [0.0], {y, w: 0.9, h: 2.0, bars: 1, rows: 1, sill: 'stone'});
@@ -312,8 +326,16 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
     for (const y of [13.2, 15.4]) for (const t of ax) arched(f, t, y, 0.9, 1.6, {bars: 1, rows: 1});
     band(f, 0, len, 17.4, 0.25, 0.3);
     // arcaded gallery under the gable
-    for (let k = 0; k < 5; k++) archWindows(b, f, [len * (k + 0.5) / 5], {y: 17.8, w: 0.6, h: 1.2, bars: 0, rows: 1, frame: 'white', sill: 'stone'});
-    for (let k = 0; k <= 5; k++) slab(b, f, Math.min(len - 0.1, Math.max(0.1, len * k / 5)), 17.7, 0.2, 1.4, 0.18, 'stone');
+    // The pointed gable above the eaves stands 1.4-1.7 m behind the ring edge and 3 deg off it: fit a frame onto the shell wall at gallery height.
+    const t0 = 0.6, t1 = len - 0.6, o0 = probe.offset(f, t0, 18.4), o1 = probe.offset(f, t1, 18.4);
+    if (o0 !== null && o1 !== null && probe.offset(f, len / 2, 19.0) !== null) {
+      const dx = (t1 - t0) * f.tangent[0] + (o1 - o0) * f.n[0], dz = (t1 - t0) * f.tangent[1] + (o1 - o0) * f.n[1], dl = Math.hypot(dx, dz);
+      const tg: [number, number] = [dx / dl, dz / dl], nn: [number, number] = [-tg[1], tg[0]];
+      const gf: Frame = {tangent: tg, n: nn, origin: [f.origin[0] + f.tangent[0] * t0 + f.n[0] * o0 - tg[0] * t0, f.origin[1] + f.tangent[1] * t0 + f.n[1] * o0 - tg[1] * t0]};
+      const a0 = 1.0, a1 = len - 1.0;
+      for (let k = 0; k < 5; k++) archWindows(b, gf, [a0 + (a1 - a0) * (k + 0.5) / 5], {y: 17.8, w: 0.6, h: 1.2, bars: 0, rows: 1, frame: 'white', sill: 'stone'});
+      for (let k = 0; k <= 5; k++) slab(b, gf, a0 + (a1 - a0) * k / 5, 17.7, 0.2, 1.4, 0.18, 'stone');
+    }
     // the narrow bay between the gable front and the tower (edge 43, t ~1.3): a door, then one window per storey
     const g = fr(43).f, tb = 1.3;
     archSlab(b, g, tb, 0.9, 1.2, 2.8, 0.12, 'dark'); archBand(b, g, tb, 0.9, 1.6, 3.0, 0.2, 0.18, 'stone');
@@ -329,6 +351,7 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
   // axes t = 9.0, 15.9, 21.0, 26.8 and 32.7 from the 3DBAG dormer gable walls (the leftmost is the small one by the tower).
   {
     const Fd = ringFrame(ring, 58, -2.0).f;
+    const Fg = ringFrame(ring, 58, -2.0 + 0.4).f;     // the stepped gables' sandstone field stands 0.39 m out of the dormer wall: their small windows sit on it
     /** Stair-stepped gable silhouette, half-width hw at the base, step height sh, n steps, apex height = n * sh. */
     const stepGable = (hw: number, sh: number, n: number): [number, number][] => {
       const right: [number, number][] = [[hw, 0]];
@@ -349,25 +372,26 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
       // stepped gable: stone coping silhouette with a sandstone field, two small arched windows, pinnacle and flagpole
       const sil = stepGable(1.75, 0.8, 5);
       poly(b, Fd, c, 21.55, sil, 0.28, 'stone', 0.0);
-      poly(b, Fd, c, 21.6, sil.map(([x, y]) => [x * 0.8, y * 0.86] as [number, number]), 0.34, 'sandstone', 0.0);
-      for (const dx of [-0.42, 0.42]) archWindows(b, Fd, [c + dx], {y: 22.3, w: 0.38, h: 1.25, bars: 0, rows: 1, frame: 'white', glass: 'dark'});
+      poly(b, Fd, c, 21.6, sil.map(([x, y]) => [x * 0.8, y * 0.86] as [number, number]), 0.34, 'sandstone', 0.05);   // back plane 5 cm clear of the coping's
+      for (const dx of [-0.42, 0.42]) archWindows(b, Fg, [c + dx], {y: 22.3, w: 0.38, h: 1.25, bars: 0, rows: 1, frame: 'white', glass: 'dark'});
       slab(b, Fd, c, 25.5, 0.45, 1.2, 0.4, 'stone', 0.0);
       slab(b, Fd, c, 26.7, 0.62, 0.18, 0.5, 'stone', 0.0);
-      slab(b, Fd, c, 26.7, 0.05, 3.4, 0.05, 'frame', 0.1);
+      slab(b, Fd, c, 26.7, 0.05, 3.4, 0.05, 'stone', 0.1);   // flagpole: a mast, kept out of the trim materials
     }
     // big pointed corner gable over the Marnixstraat corner (NE wall, frame of ring edge 12, t = -5.4 .. -1.6, base 21.2 m)
     const Fn = ringFrame(ring, 12, 0.3).f;
     const gc = -3.0, gw = 2.4, base = 21.0, apex = 29.4;
     const tri: [number, number][] = [[-gw, 0], [gw, 0], [0, apex - base]];
     poly(b, Fn, gc, base, tri, 0.45, 'stone', 0.0);
-    poly(b, Fn, gc, base + 0.05, tri.map(([x, y]) => [x * 0.9, y * 0.92 + 0.0] as [number, number]), 0.52, 'sandstone', 0.0);
+    poly(b, Fn, gc, base + 0.05, tri.map(([x, y]) => [x * 0.9, y * 0.92 + 0.0] as [number, number]), 0.52, 'sandstone', 0.05);   // back plane 5 cm clear of the coping's
+    const Fq = ringFrame(ring, 12, 0.3 + 0.57).f;   // the sandstone field's face: windows and ceramics sit on it
     // blue ceramic star-and-zig-zag field with a small triangle at the top
-    poly(b, Fn, gc, base + 4.3, [[-0.8, 0], [0.8, 0], [0, 1.3]], 0.58, 'blue', 0.0);
-    poly(b, Fn, gc, base + 2.2, [[-1.7, 0], [1.7, 0], [1.5, 0.5], [1.1, 0.0], [0.7, 0.5], [0.3, 0.0], [-0.1, 0.5], [-0.5, 0.0], [-0.9, 0.5], [-1.3, 0.0], [-1.5, 0.5]], 0.56, 'blue', 0.0);
+    poly(b, Fn, gc, base + 4.3, [[-0.8, 0], [0.8, 0], [0, 1.3]], 0.08, 'blue', 0.52);
+    poly(b, Fn, gc, base + 2.2, [[-1.7, 0], [1.7, 0], [1.5, 0.5], [1.1, 0.0], [0.7, 0.5], [0.3, 0.0], [-0.1, 0.5], [-0.5, 0.0], [-0.9, 0.5], [-1.3, 0.0], [-1.5, 0.5]], 0.08, 'blue', 0.52);
     // loggia opening under the apex, then rows of arched windows
-    archSlab(b, Fn, gc, base + 3.6, 1.0, 1.0, 0.5, 'dark');
-    for (let k = 0; k < 4; k++) archWindows(b, Fn, [gc - 1.5 + k * 1.0], {y: base + 0.9, w: 0.55, h: 1.3, bars: 0, rows: 1, frame: 'white', sill: 'stone'});
-    for (const dx of [-1.5, 0, 1.5]) archWindows(b, Fn, [gc + dx], {y: base - 2.0, w: 0.6, h: 1.4, bars: 0, rows: 1, frame: 'white', sill: 'stone'});
+    archSlab(b, Fq, gc, base + 3.6, 1.0, 1.0, 0.05, 'dark');
+    for (let k = 0; k < 4; k++) archWindows(b, Fq, [gc - 1.5 + k * 1.0], {y: base + 0.9, w: 0.55, h: 1.3, bars: 0, rows: 1, frame: 'white', sill: 'stone'});
+    for (const dx of [-1.1, 0, 1.1]) archWindows(b, Fn, [gc + dx], {y: base - 2.0, w: 0.6, h: 1.4, bars: 0, rows: 1, frame: 'white', sill: 'stone'});
     slab(b, Fn, gc, apex - 0.05, 0.5, 1.5, 0.5, 'stone', 0.0);        // finial pinnacle
     slab(b, Fn, gc, apex + 1.4, 0.7, 0.2, 0.6, 'stone', 0.0);
     // the little pointed gablet on the bay beside it
@@ -384,8 +408,8 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
       b.add(dome, 'slate' as never);
       b.add(new T.SphereGeometry(0.16, 8, 6).translate(x, y0 + h + r * 0.74 + 0.1, z), 'stone' as never);
       for (let k = 0; k < 8; k++) {
-        const a = k * Math.PI / 4;
-        b.add(new T.BoxGeometry(0.14, 1.2, 0.14).translate(x + Math.cos(a) * (r + 0.02), y0 + h - 1.2, z + Math.sin(a) * (r + 0.02)), 'dark' as never);
+        const a = (k + 0.5) * Math.PI / 4;
+        b.add(new T.BoxGeometry(0.14, 1.2, 0.14).rotateY(-a).translate(x + Math.cos(a) * (r + 0.02), y0 + h - 1.2, z + Math.sin(a) * (r + 0.02)), 'dark' as never);   // each slit faces radially out of the drum
       }
     };
     turret(tcx, tcz, 1.15, 24.5, 6.4);

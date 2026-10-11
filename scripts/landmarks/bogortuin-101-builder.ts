@@ -55,12 +55,12 @@ export function buildBogortuin101(_w: number, _d: number, b: BuildingTools & {ma
   { const w = wall(1); grid(w.f, w.top, pitch(0.65 + 3.59, PITCH, 20)); grid(w.f, w.top, [0.9], [1.8]); }
   // Gable 36: loggia stack and door.
   { const w = wall(36), f = w.f;
-    for (const [a, c, y0, y1] of LOGGIAS[36]) { slab(b, f, (a + c) / 2, y0, c - a, y1 - y0, 0.12, 'dark'); win(f, w.top, (a + c) / 2, y0 + 0.8, 1.5, Math.min(1.5, y1 - y0 - 1.1)); slab(b, f, (a + c) / 2, y0, c - a - 0.2, 1.0, 0.06, 'concrete', 0.12); }
+    for (const [a, c, y0, y1] of LOGGIAS[36]) { slab(b, f, (a + c) / 2, y0, c - a, y1 - y0, 0.08, 'dark'); win(f, w.top, (a + c) / 2, y0 + 0.8, 1.5, Math.min(1.5, y1 - y0 - 1.1)); slab(b, f, (a + c) / 2, y0, c - a - 0.2, 1.0, 0.06, 'concrete', 0.12); }
     slab(b, f, 21.8, 0, 1.2, 2.2, 0.12, 'dark'); }
   // Gable 8: small square windows and loggia stack.
   { const w = wall(8), f = w.f;
     for (const t of GABLE_SMALL[8]) for (const c of [22, 19.2, 16.3, 13.5, 10.75, 7.9, 5.1]) win(f, w.top, t, c - 0.7, 1.4, 1.4);
-    for (const [a, c, y0, y1] of LOGGIAS[8]) { slab(b, f, (a + c) / 2, y0, c - a, y1 - y0, 0.12, 'dark'); win(f, w.top, (a + c) / 2, y0 + 0.8, 1.5, Math.min(1.5, y1 - y0 - 1.1)); } }
+    for (const [a, c, y0, y1] of LOGGIAS[8]) { slab(b, f, (a + c) / 2, y0, c - a, y1 - y0, 0.08, 'dark'); win(f, w.top, (a + c) / 2, y0 + 0.8, 1.5, Math.min(1.5, y1 - y0 - 1.1)); } }
   // Wall 12 and 39 are observed with the same grid; spread evenly to their lengths. Others inferred identically.
   source.surfaces.forEach((s, i) => {
     if (s.type !== 'WallSurface' || observed.has(i)) return;

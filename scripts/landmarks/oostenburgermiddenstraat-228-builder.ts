@@ -56,14 +56,14 @@ export function buildOostenburgermiddenstraat228(_w: number, _d: number, b: Buil
     for (const [a, c] of [[5.0, 6.2], [6.9, 8.4], [9.1, 10.6], [11.2, 12.5]]) win(f, w.top, (a + c) / 2, 0.3, c - a, 2.7);
     for (const y of [5.0, 8.0, 11.0, 14.0, 16.9, 19.8, 22.9]) for (const t of [1.3, 3.25, 5.5, 7.6, 9.8, 11.9]) {
       win(f, w.top, t, y, 1.5, 2.3);
-      slab(b, f, t, y, 1.5, 0.9, 0.2, 'white');
+      slab(b, f, t, y, 1.44, 0.9, 0.2, 'white');   // 3 cm narrower each side: its end faces stay clear of the glass's
     }
   }
   // ---------- wall 11: dark brick end of the SW wing with open galleries ----------
   {
     const w = wall(11), f = w.f;
-    for (const y of [4.3, 7.3, 10.3, 13.3, 16.3, 19.4]) { slab(b, f, 2.7, y, 2.8, 2.3, 0.12, 'dark'); win(f, w.top, 10.2, y + 0.3, 1.7, 1.8); }
-    slab(b, f, 2.7, 0.3, 2.8, 2.6, 0.12, 'dark');
+    for (const y of [4.3, 7.3, 10.3, 13.3, 16.3, 19.4]) { slab(b, f, 2.7, y, 2.8, 2.3, 0.1, 'dark'); win(f, w.top, 10.2, y + 0.3, 1.7, 1.8); }
+    slab(b, f, 2.7, 0.3, 2.8, 2.6, 0.1, 'dark');
   }
   // ---------- wall 33: tower NW face ----------
   {
@@ -79,7 +79,7 @@ export function buildOostenburgermiddenstraat228(_w: number, _d: number, b: Buil
       }
     }
     slab(b, f, 7.2, 24.25, 6.2, 0.55, 2.0, 'brick');
-    slab(b, f, 8.8, 25.3, 2.9, 5.0, 0.12, 'dark');
+    slab(b, f, 8.8, 25.3, 2.9, 5.0, 0.09, 'dark');
     slab(b, f, 7.2, 24.8, 6.2, 1.0, 0.05, 'glass', 1.95);
     for (const [a, c] of [[1.7, 3.4], [5.4, 6.5], [7.3, 9.1], [10.9, 16.2], [17.3, 18.8], [19.4, 20.3]]) win(f, w.top, (a + c) / 2, 0.3, c - a, 3.2);
     slab(b, f, 13.65, 3.55, 5.7, 0.6, 0.18, 'copper');
@@ -98,7 +98,7 @@ export function buildOostenburgermiddenstraat228(_w: number, _d: number, b: Buil
       }
     }
     slab(b, f, 8.9, 13.2, 5.6, 0.55, 2.0, 'brick');
-    slab(b, f, 8.9, 15.0, 4.9, 4.2, 0.12, 'dark');
+    slab(b, f, 8.9, 15.0, 4.9, 4.15, 0.09, 'dark');   // 3 cm behind the brick bands it crosses
     slab(b, f, 8.9, 13.75, 5.6, 1.0, 0.05, 'glass', 1.95);
     slab(b, f, 2.75, 0.3, 1.3, 2.8, 0.14, 'red');
     for (const [a, c] of [[4.7, 5.7], [6.7, 7.7], [9.5, 11.4], [12.5, 14.4], [16.2, 17.2], [18.3, 19.3], [21.3, 23.2]]) win(f, w.top, (a + c) / 2, 0.3, c - a, 3.1);
