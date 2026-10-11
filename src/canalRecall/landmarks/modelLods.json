@@ -1516,5 +1516,23 @@
   "buildVersion": 2,
   "bytes": 21216,
   "triangles": 1271
+ },
+ "jacob-bontiusplaats-9": {
+  "sourceHash": "020fff3add0ffdaa",
+  "buildVersion": 2,
+  "bytes": 27620,
+  "triangles": 1438
+ },
+ "bercylaan-801-855": {
+  "sourceHash": "36dedb4d0996f8e3",
+  "buildVersion": 2,
+  "bytes": 64536,
+  "triangles": 6217
+ },
+ "vriesseveem-9": {
+  "sourceHash": "8bb7185e4b235061",
+  "buildVersion": 2,
+  "bytes": 58424,
+  "triangles": 4565
  }
 }
