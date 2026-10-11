@@ -20,7 +20,7 @@ import source from './hotel-de-l-europe-footprints.json';
 export function buildHotelDeLEurope(_w: number, _d: number, b: BuildingTools & {mark?: (n: string) => void}) {
   addShell(b, source as never, {wall: 'brick', roof: 'slate'});
   b.mark?.('shell');
-  setSink(0.5);
+  setSink(0.5, true);   // staggered back planes: the layered stone bands and window trims no longer share one hidden plane
   const ring = (source.nativeRing as number[][]).slice(0, -1);
   const pieces = wallsOf(source as never);
   /** Frame of ring edge i, moved onto the shell wall's real plane (3DBAG walls stand up to ~0.3 m off the footprint line). */
@@ -105,7 +105,7 @@ export function buildHotelDeLEurope(_w: number, _d: number, b: BuildingTools & {
     for (const [t0, t1] of runs(f, len)) {
       const c = (t0 + t1) / 2, w = t1 - t0;
       if (o.ground !== false) {
-        slab(b, f, c, 0, w, 5.95, 0.08, 'stone');                       // pale stone-clad ground storey (panoramas: grey-white ashlar under the brick)
+        slab(b, f, c, 0, w, 5.95, 0.05, 'stone');                       // (5 cm so window frames at 8 cm stand proud of it) pale stone-clad ground storey (panoramas: grey-white ashlar under the brick)
         slab(b, f, c, 0, w, 0.35, 0.2, 'stone');                        // plinth
       }
       slab(b, f, c, 5.95, w, 0.45, 0.22, 'stone');                      // string course over the ground storey

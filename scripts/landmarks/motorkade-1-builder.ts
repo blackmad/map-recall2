@@ -42,7 +42,8 @@ export function buildMotorkade1(_w: number, _d: number, b: BuildingTools & {mark
       for (let m = 0; m < n; m++) {
         if (!ok[m] || (m > 0 && ok[m - 1])) continue;
         let e = m; while (e + 1 < n && ok[e + 1]) e++;
-        const t0 = m * pitch, t1 = (e + 1) * pitch, c = (t0 + t1) / 2;
+        // ribbons stop 12 cm short of the wall ends so two walls meeting at a corner never fuse into one bent assembly
+        const t0 = m * pitch + (m === 0 ? 0.12 : 0), t1 = (e + 1) * pitch - (e === n - 1 ? 0.12 : 0), c = (t0 + t1) / 2;
         slab(b, f, c, gy, t1 - t0 - 0.1, GLASS, 0.1, 'glass');
         slab(b, f, c, gy - 0.06, t1 - t0, 0.07, 0.14, 'frame');
         slab(b, f, c, gy + GLASS - 0.01, t1 - t0, 0.07, 0.14, 'frame');
@@ -54,7 +55,7 @@ export function buildMotorkade1(_w: number, _d: number, b: BuildingTools & {mark
   // ---- podium colonnades ----
   const colonnade = (index: number, bays: number, louvreFrom: number, doorBay: number) => {
     const w = walls.find(q => q.index === index)!, f = w.f, pitch = w.len / bays, h = 6.1;
-    for (let k = 0; k <= bays; k++) slab(b, f, Math.min(Math.max(k * pitch, 0.4), w.len - 0.4), 0, 0.8, h, 0.55, 'gold');
+    for (let k = 0; k <= bays; k++) slab(b, f, Math.min(Math.max(k * pitch, 0.55), w.len - 0.55), 0, 0.8, h - (index % 5) * 0.03, 0.55 + (index % 5) * 0.02, 'gold');   // corner piers of neighbouring colonnades differ a little, so their shared faces do not z-fight
     for (let k = 0; k < bays; k++) {
       const c = (k + 0.5) * pitch, gw = pitch - 0.9;
       if (k >= louvreFrom) {

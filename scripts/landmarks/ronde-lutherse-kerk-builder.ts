@@ -112,8 +112,8 @@ export function buildRondeLutherseKerk(_w: number, _d: number, b: BuildingTools 
   const exposed = (deg: number) => { const d = ((deg % 360) + 360) % 360; return d >= 225 || d <= 20; };
   const mullioned = (f: Frame, y: number, w: number, h: number, nv: number, nh: number, out: number) => {
     slab(b, f, 0, y, w, h, 0.05, 'glass', out);
-    for (let i = 1; i <= nv; i++) slab(b, f, -w / 2 + w * i / (nv + 1), y, 0.07, h, 0.06, 'frame', out);
-    for (let j = 1; j <= nh; j++) slab(b, f, 0, y + h * j / (nh + 1), w, 0.07, 0.06, 'frame', out);
+    for (let i = 1; i <= nv; i++) slab(b, f, -w / 2 + w * i / (nv + 1), y, 0.07, h, 0.10, 'frame', out);   // bars 4 cm proud of the glass
+    for (let j = 1; j <= nh; j++) slab(b, f, 0, y + h * j / (nh + 1), w, 0.07, 0.10, 'frame', out);
   };
   for (const deg of BAYS) {
     const f = fr(deg);
@@ -133,7 +133,7 @@ export function buildRondeLutherseKerk(_w: number, _d: number, b: BuildingTools 
   {
     const f = fr(337);
     slab(b, f, 0, 0.9, 2.9, 4.0, 0.2, 'stone', 0);
-    slab(b, f, 0, 0.9, 1.9, 3.2, 0.1, 'dark', 0.2);
+    slab(b, f, 0, 0.9, 1.9, 3.2, 0.14, 'dark', 0.2);   // door leaf proud of the pilaster fronts
   }
   // ---- zijbeuk (curved annex wall, r ~23.5): one tier of tall round-arched leaded windows. Until 2026-10-10 this wall was
   // blank brick. Spec from panoramas recording_2025-06-16_03-46-32_01086 (bearing 119, 35 m) and _01080 (bearing 70, 34 m):
@@ -168,7 +168,7 @@ export function buildRondeLutherseKerk(_w: number, _d: number, b: BuildingTools 
         if (k === n - 1 && i === 0) { slab(b, f, t, 0.3, 1.4, 2.9, 0.15, 'stone', 0); slab(b, f, t, 0.4, 1.0, 2.6, 0.1, 'dark', 0.15); }
         else sashWindows(b, f, [t], {y: 1.3, w: 1.2, h: 1.9, cols: 2, rows: 3, sill: 'stone'});
       }
-      slab(b, f, len / 2, 8.9, len, 0.35, 0.3, 'white', 0);                // cornice
+      slab(b, f, len / 2, 8.9, len, 0.35, 0.3, 'concrete', 0);             // cornice (a masonry band, not window trim)
     }
   }
   // modillions under the entablature

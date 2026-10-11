@@ -14,8 +14,17 @@ export const frameOf = (w: Wall): Frame => ({origin: w.origin, tangent: w.tangen
 type Col = string;
 /** Depth every solid sinks behind its wall plane (hidden inside the building) so uneven 3DBAG walls still catch it. */
 let SINK = 0;
-export const setSink = (v: number) => { SINK = v; };
+let SINK_N = 0;
+let STAGGER = false;
+/** `stagger` spreads the back planes of layered solids (see sinkNext); off by default so existing models keep their exact geometry. */
+export const setSink = (v: number, stagger = false) => { SINK = v; SINK_N = 0; STAGGER = stagger; };
 export const getSink = () => SINK;
+/**
+ * Sink depth for the next solid: the base sink plus a small deterministic stagger (0-0.2 m in 4.5 cm steps). Layered trims all sink behind the same wall
+ * plane, so their hidden back faces would otherwise be exactly coplanar and z-fight wherever the shell lets light in; staggering the back planes keeps
+ * the visible fronts untouched (every solid still ends at out + d) and separates the hidden ones.
+ */
+const sinkNext = () => (SINK > 0 ? SINK + (STAGGER ? ((SINK_N++ * 5) % 7) * 0.045 : 0) : 0);
 
 export function put(b: BuildingTools, f: Frame, g: T.BufferGeometry, t: number, y: number, out: number, colour: Col) {
   g.rotateY(Math.atan2(f.n[0], f.n[1]));
@@ -24,25 +33,29 @@ export function put(b: BuildingTools, f: Frame, g: T.BufferGeometry, t: number, 
 }
 /** Box with its back face at `out`, bottom at y, centred at t. */
 export function slab(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, d: number, colour: Col, out = 0) {
-  put(b, f, new T.BoxGeometry(w, h, d + SINK).translate(0, h / 2, (d + SINK) / 2), t, y, out - SINK, colour);
+  const k = sinkNext();
+  put(b, f, new T.BoxGeometry(w, h, d + k).translate(0, h / 2, (d + k) / 2), t, y, out - k, colour);
 }
 /** Round-headed slab (rectangle plus half-disc), bottom at y. */
 export function archSlab(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, d: number, colour: Col, out = 0) {
   const s = new T.Shape(), r = w / 2;
   s.moveTo(-r, 0); s.lineTo(r, 0); s.lineTo(r, h - r); s.absarc(0, h - r, r, 0, Math.PI, false); s.lineTo(-r, 0);
-  put(b, f, new T.ExtrudeGeometry(s, {depth: d + SINK, bevelEnabled: false, curveSegments: 8}), t, y, out - SINK, colour);
+  const k = sinkNext();
+  put(b, f, new T.ExtrudeGeometry(s, {depth: d + k, bevelEnabled: false, curveSegments: 8}), t, y, out - k, colour);
 }
 /** Arched band (round-headed outline of thickness `th`, open at the bottom). */
 export function archBand(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, th: number, d: number, colour: Col, out = 0) {
   const r = w / 2, ri = r - th, s = new T.Shape();
   s.moveTo(-r, 0); s.lineTo(-r, h - r); s.absarc(0, h - r, r, Math.PI, 0, true); s.lineTo(r, 0);
   s.lineTo(ri, 0); s.lineTo(ri, h - r); s.absarc(0, h - r, ri, 0, Math.PI, false); s.lineTo(-ri, 0); s.lineTo(-r, 0);
-  put(b, f, new T.ExtrudeGeometry(s, {depth: d + SINK, bevelEnabled: false, curveSegments: 8}), t, y, out - SINK, colour);
+  const k = sinkNext();
+  put(b, f, new T.ExtrudeGeometry(s, {depth: d + k, bevelEnabled: false, curveSegments: 8}), t, y, out - k, colour);
 }
 /** Flat-topped solid polygon in (x,y), extruded outward from the wall. */
 export function poly(b: BuildingTools, f: Frame, t: number, y: number, pts: [number, number][], d: number, colour: Col, out = 0) {
   const s = new T.Shape(pts.map(p => new T.Vector2(p[0], p[1])));
-  put(b, f, new T.ExtrudeGeometry(s, {depth: d + SINK, bevelEnabled: false}), t, y, out - SINK, colour);
+  const k = sinkNext();
+  put(b, f, new T.ExtrudeGeometry(s, {depth: d + k, bevelEnabled: false}), t, y, out - k, colour);
 }
 /** Disc facing out of the wall, centre height y. */
 export function disc(b: BuildingTools, f: Frame, t: number, y: number, r: number, d: number, colour: Col, out = 0) {
@@ -217,6 +230,17 @@ export function wallProbe(shell: T.BufferGeometry[]) {
       rc.set(o, new T.Vector3(-f.n[0], 0, -f.n[1])); rc.far = reach * 2;
       const hit = rc.intersectObject(group, true).find(h => h.distance > 0.001);
       return hit ? reach - hit.distance : null;
+    },
+    /** Outward offset and unit surface normal (x, y, z; facing along f.n) of whatever the shell presents at (t, y), or null. */
+    hit(f: Frame, t: number, y: number): {offset: number; normal: [number, number, number]} | null {
+      const reach = 2;
+      const o = new T.Vector3(f.origin[0] + f.tangent[0] * t + f.n[0] * reach, y, f.origin[1] + f.tangent[1] * t + f.n[1] * reach);
+      rc.set(o, new T.Vector3(-f.n[0], 0, -f.n[1])); rc.far = reach * 2;
+      const h = rc.intersectObject(group, true).find(q => q.distance > 0.001);
+      if (!h || !h.face) return null;
+      const n = h.face.normal.clone();
+      if (n.x * f.n[0] + n.z * f.n[1] < 0) n.negate();
+      return {offset: reach - h.distance, normal: [n.x, n.y, n.z]};
     },
     /** Frame shifted onto the wall at (t, y). */
     snap(f: Frame, t: number, y: number): Frame {
