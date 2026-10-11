@@ -3447,12 +3447,12 @@
    "window-misaligned": 8
   },
   "willem-de-zwijgerlaan-350": {
-   "opening-floating": 45,
-   "opening-floating-fail": 45,
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
    "opening-overhang": 2,
    "opening-overhang-fail": 2,
    "opening-buried": 0,
-   "zfight-m2": 4.7,
+   "zfight-m2": 0.9,
    "zfight-near-m2": 17.8,
    "window-mismatch": 4,
    "window-missing": 9,
