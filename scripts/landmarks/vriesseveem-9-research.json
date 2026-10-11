@@ -1,0 +1,92 @@
+{
+  "id": "vriesseveem-9",
+  "status": "reworked-2026-10-11-after-integrator-hold",
+  "identity": {
+    "bagPandId": "0363100012239869",
+    "bouwjaar": 2013,
+    "addresses": [
+      "Vriesseveem 9",
+      "Piet Heinkade 67",
+      "Blauwhoedenveem 4",
+      "Piet Heinkade 61-135 (Piet Hein Buildings)"
+    ],
+    "bag": "BAG API 2026-10-11: no pand name, aantalBouwlagen 11, oorspronkelijkBouwjaar 2013; 71 verblijfsobjecten (all pages): 63 kantoorfunctie, 6 overige, 2 bijeenkomst; 42,143 m2 in total.",
+    "name": "Piet Hein Buildings (lettering PIET HEIN BUILDINGS, Piet Heinkade 81-95 on the lobby panorama), Hans van Heeswijk Architects, started 2008, completed 2013 (archilovers) / 2014 (architect's site); GFA 47,200 m2.",
+    "policy": "named, architect-credited complex with sourced facts: LANDMARK with an English POI card (kept to what the two sources state).",
+    "notDuplicate": "Checked manualCatalogue.json, signature-landmarks.json, native-kit-pois.json, poi-work-queue.json, landmark-backlog.json, ordinary-buildings-data and building-types/instances.json: pand id and name not present."
+  },
+  "sources": [
+    {
+      "url": "https://www.heeswijk.nl/piet-hein-buildings&lang=en",
+      "kind": "architect's project page (units, nine floors, 2008-2014, 47,200 m2, glass garage walls)",
+      "retrievedOn": "2026-10-11",
+      "licence": "read for facts only"
+    },
+    {
+      "url": "https://archilovers.com/projects/159968/piet-hein-buildings.html",
+      "kind": "project page (four units, 2013, garage walls glass elements that glow at night)",
+      "retrievedOn": "2026-10-11",
+      "licence": "read for facts only"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012239869/?_format=json",
+      "kind": "BAG pand (Amsterdam BAG API)",
+      "retrievedOn": "2026-10-11",
+      "licence": "CC0 (BAG)"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012239869&_pageSize=500",
+      "kind": "BAG verblijfsobjecten, all pages",
+      "retrievedOn": "2026-10-11",
+      "licence": "CC0 (BAG)"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012239869",
+      "kind": "3DBAG LoD2.2 massing",
+      "retrievedOn": "2026-10-11",
+      "licence": "CC BY 4.0 (3DBAG)"
+    },
+    {
+      "file": "artifacts/landmark-lanes/vriesseveem-9/ref-south.jpg",
+      "kind": "south front, panorama recording_2025-06-16_09-52-43_02462 (2025-06-16)",
+      "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+    },
+    {
+      "file": "artifacts/landmark-lanes/vriesseveem-9/ref-entrance.jpg",
+      "kind": "entrance lobby with lettering, panorama recording_2025-06-16_09-52-43_02455",
+      "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+    },
+    {
+      "file": "artifacts/landmark-lanes/vriesseveem-9/ref-south-bridge.jpg",
+      "kind": "south front with glazed bridge, panorama recording_2025-06-16_09-52-43_02448",
+      "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+    },
+    {
+      "file": "artifacts/landmark-lanes/vriesseveem-9/ref-east.jpg",
+      "kind": "east end glass-block garage wall and steel grille, panorama recording_2025-06-16_09-52-43_02436",
+      "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+    }
+  ],
+  "faces": {
+    "south front (197.5) strips, lobby (192.5), east end (107.5) ground floor": "evidence: the ref-*.jpg photographs, up to about 20 m.",
+    "north harbour front (17.5), west end (287.5), all faces above about 20 m, inner courtyard walls": "INFERRED: no panoramas; same strip module as the south front."
+  },
+  "caveats": [
+    "The photographed lobby is curved glass with a revolving door; the 3DBAG wall is flat, so it is drawn as a flat glazed front with round columns.",
+    "Glass-block grid, the diagonal steel grille, the glazed bridges and the roof plant are not modelled; the glass-block walls are a plain pale glazing field.",
+    "Strip pitch (4.4 m), window width and three lights per storey are estimated from one oblique photo of the south front.",
+    "audit blank-wall warnings remain on narrow inner slivers of the 3DBAG shell (no photograph of them)."
+  ],
+  "limits": [
+    "bridges",
+    "glass-block pattern",
+    "grille",
+    "roof plant"
+  ],
+  "rework": {
+    "colours": "sampled from ref-south.jpg (panel #63777e sunlit, glass reflections #303b42-#597b91, facade mean #556d79); in-game facade mean #4d5c64-#55636b after the city shading, i.e. within about 10 L of the photo mean. Overrides greyBrick #6b7b80, glass #3f566a, frame (silver mullions) #aab4b6.",
+    "facade": "glass strips 2.9 m wide on a 4.4 m pitch with a central silver mullion and three lights per 3.04 m storey between grey panel strips (ratio read from ref-south.jpg); the perforated panel pattern is not modelled.",
+    "lobby": "convex bow in plan, 9.1 m high, faceted into 1.4 m flat glazing units, mullions every 1.4 m, transoms every 1.3 m, slab edge on top, three round columns on an outer arc, PIET HEIN lettering on stand-offs",
+    "osm": "the base map showed 9 OSM building ways (w755510627-635) under the model; they are now in suppressOsmIds beside the BAG pand"
+  }
+}
