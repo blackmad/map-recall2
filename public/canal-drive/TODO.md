@@ -149,9 +149,10 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   120, white-sheds E1 99 (shed rhythm unread, not re-sheeted), tall-glass
   panel B2 97, ribbon-fascia 10, render-pilaster 7; 518 held. Mirror
   parity now pinned per house from ~160 terraces read by eye (old
-  leftmost-normal rule matched ~25%). Densest rowhouse view now 86 draw
-  calls desktop / 69 iPhone, over the ~60 target: merge unit meshes per
-  design before turning the layer on by default.) Earlier: +1,921 terraced houses
+  leftmost-normal rule matched ~25%). Densest rowhouse view was 86 draw
+  calls desktop / 69 iPhone; each unit now bakes into one merged draw
+  with a shared shader: 18 / 16, layer render time -30-45%, screenshots
+  identical. Layer can now be turned on by default once the user agrees.) Earlier: +1,921 terraced houses
   of the 8.5 x 5 m cluster in four front designs A garage-door, G door-window
   mirrored pairs, B tall glass, D render with tile plinth; one street photo
   per terrace, 457 terraces classified; 677 held incl. undesigned classes E,
