@@ -14,7 +14,11 @@
       "columns": 3,
       "symmetric": true,
       "gables": 1,
-      "countedBy": "blind haiku counter 2026-10-11"
+      "countedBy": "blind haiku counter 2026-10-11",
+      "alongM": [
+        12.4,
+        19.8
+      ]
     },
     {
       "name": "north wall",
@@ -28,7 +32,15 @@
       "columns": 5,
       "symmetric": false,
       "gables": 1,
-      "countedBy": "blind haiku counter 2026-10-11"
+      "countedBy": "blind haiku counter 2026-10-11",
+      "alongM": [
+        2.7,
+        28.4
+      ],
+      "heightM": [
+        0,
+        15
+      ]
     }
   ]
 }
