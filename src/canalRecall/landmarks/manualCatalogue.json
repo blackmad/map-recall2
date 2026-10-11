@@ -12442,8 +12442,6 @@
   },
   {
     "id": "oudemanhuispoort",
-    "status": "held",
-    "heldReason": "Gate-house only, single-slope LoD roof, little detail (user review 2026-10-09).",
     "name": "Oudemanhuispoort",
     "landmarkId": "extract_landmarks_1122909064",
     "modelUrl": "./models/oudemanhuispoort.glb",
@@ -12471,7 +12469,7 @@
     "groundAltitudeMetres": 0,
     "facingOffsetDegrees": 0,
     "materialOverrides": {
-      "brick": "#a2705b",
+      "brick": "#8a5642",
       "slate": "#585b61",
       "white": "#e9e6dc",
       "stone": "#a7a59d",
