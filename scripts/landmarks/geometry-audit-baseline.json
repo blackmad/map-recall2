@@ -67,13 +67,13 @@
   "american-hotel": {
    "opening-floating": 0,
    "opening-floating-fail": 0,
-   "opening-overhang": 10,
-   "opening-overhang-fail": 3,
-   "opening-buried": 19,
-   "zfight-m2": 37.3,
+   "opening-overhang": 6,
+   "opening-overhang-fail": 1,
+   "opening-buried": 13,
+   "zfight-m2": 4.8,
    "zfight-near-m2": 121.2,
    "window-mismatch": 37,
-   "window-missing": 6,
+   "window-missing": 4,
    "window-misaligned": 0
   },
   "amsta-de-poort": {
