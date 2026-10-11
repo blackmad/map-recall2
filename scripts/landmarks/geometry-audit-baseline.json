@@ -2815,12 +2815,12 @@
   "ronde-lutherse-kerk": {
    "opening-floating": 0,
    "opening-floating-fail": 0,
-   "opening-overhang": 1,
+   "opening-overhang": 0,
    "opening-overhang-fail": 0,
    "opening-buried": 6,
-   "zfight-m2": 7.6,
-   "zfight-near-m2": 8.2,
-   "window-mismatch": 3,
+   "zfight-m2": 0,
+   "zfight-near-m2": 4.1,
+   "window-mismatch": 2,
    "window-missing": 0,
    "window-misaligned": 0
   },
