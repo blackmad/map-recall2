@@ -144,7 +144,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   (bin by plane, or rasterise only the triangle) and re-run the baseline.
   Kohnstammhuis stone reads too warm/tan against the grey photo.
 - **Nieuw-West building types (2026-10-11)**: opt-in `?buildingTypes=1`
-  draws 455 photo-confirmed instances (2026-10-11: +202 from type-6
+  draws 2,376 photo-confirmed instances (2026-10-11: +1,921 terraced houses
+  of the 8.5 x 5 m cluster in four front designs A garage-door, G door-window
+  mirrored pairs, B tall glass, D render with tile plinth; one street photo
+  per terrace, 457 terraces classified; 677 held incl. undesigned classes E,
+  K, C, B2, F and extended houses; mirror parity along a terrace is not
+  photo-verified; toilet windows beside doors simplified; densest rowhouse
+  view 24 draw calls. Earlier: 455 instances, (2026-10-11: +202 from type-6
   leftovers and clusters 2/5/8, 11 new designs; 124 held with reasons).
   Balcony depths restored from photos (1.0-1.5 m) after the
   opening-overhang fix; steel-stack rebuilt (frame rises a little too far
