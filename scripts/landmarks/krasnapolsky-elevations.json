@@ -16,7 +16,15 @@
       "columns": 8,
       "symmetric": false,
       "gables": 0,
-      "countedBy": "blind haiku counter 2026-10-11"
+      "countedBy": "blind haiku counter 2026-10-11",
+      "alongM": [
+        62,
+        88
+      ],
+      "heightM": [
+        1.5,
+        21
+      ]
     },
     {
       "name": "Dam modern wing (north-west)",
@@ -31,7 +39,15 @@
       "columns": 5,
       "symmetric": false,
       "gables": 0,
-      "countedBy": "blind haiku counter 2026-10-11"
+      "countedBy": "blind haiku counter 2026-10-11",
+      "alongM": [
+        18,
+        34
+      ],
+      "heightM": [
+        0,
+        13
+      ]
     }
   ]
 }

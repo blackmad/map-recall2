@@ -144,10 +144,28 @@ facade, and must pass `npm run compare:facades -- --id=<id>`:
 - `rows` counts openings per storey band from the bottom, as seen on the photo: one window is one
   opening however many glazing bars it has; a glazed door counts; a tall window spanning two storeys
   counts once in the band where its centre lies. `columns` counts distinct vertical window axes.
+- **Ribbon convention (counter and model both follow it):** horizontally continuous glazing is ONE
+  opening. A ribbon window, strip of shopfront or curtain wall whose panes are divided only by
+  mullions, glazing bars or piers narrower than about 0.3 m counts once per storey band, however many
+  panes the photo shows. The tool merges glazing across gaps of that size, so a model ribbon is one
+  opening. Do not count panes in a ribbon; if two glazed runs are separated by solid wall wider than
+  that, they are two openings. (The 2026-10-11 DNB counts of 8 panes per row were pane counts; a
+  ribbon storey is `1`.)
+- A band the photo cannot show (cut off by the frame, hidden by trees, a car, scaffolding, a parapet,
+  or too dark to count) is `null` in `rows` and is skipped in the comparison. The band count must
+  still line up, so `null` marks the position; trailing bands the photo does not reach are `null`.
+  `null` is for what the photo hides, never for a band the model gets wrong.
+- Optional span fields crop the measured face to what the photo frames, so a partial photo is not
+  compared with the whole facade: `alongM: [from, to]` (metres from the face's viewer-left silhouette
+  edge) and `heightM: [from, to]` (metres above the model's ground). Fill them by looking at the photo
+  and the model elevation side by side; the tool dims everything outside the crop and outlines it in
+  blue on `elevations/<facade>.png`. Rows, axes, symmetry (about the crop centre), width and gables all
+  use only the crop. Pick edges in plain wall between windows. A crop may not be used to drop a bay the
+  photo shows, only one it does not.
 - `symmetric` asks whether the opening pattern mirrors about the facade centre (gate: IoU ≥ 0.70).
 - `gables` counts separate peaks on the silhouette: gables, towers, spires and hipped-roof tops alike
   (0 for a level cornice or flat roof).
-- Optional: `span` (metres along the facade, viewer's left to right) when two wings face the same
+- Optional: `alongM`, `heightM` (see below), `span` (metres along the facade, viewer's left to right) when two wings face the same
   way, `depthBand` (default 10 m from the front-most plane), `openings` (material names, default
   `glass` and `dark`, counted only on faces turned to the viewer), `tolerance`.
 
