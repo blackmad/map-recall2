@@ -37,6 +37,15 @@ const VIEWS: Record<string, { center: [number, number]; zoom: number; pitch: num
   'klinkenberg-close': { center: [4.83530619, 52.36757751], zoom: 19.2, pitch: 60, bearing: 179 },
   'peach-street': { center: [4.7990, 52.3820], zoom: 17.8, pitch: 62, bearing: 178 },
   'peach-close': { center: [4.79879119, 52.38218533], zoom: 19.2, pitch: 60, bearing: 178 },
+  // 2026-10-11 terraced houses (types/nw-rowhouse-20261011): A garage door (Joannes de Swaefhof), G door + window (Pieter Calandlaan), B tall glass (Albert Schultenshof), D render + tile plinth (Philip Vingboonsstraat).
+  'rowhouse-a-street': { center: [4.804201, 52.350815], zoom: 17.8, pitch: 62, bearing: 252 },
+  'rowhouse-a-close': { center: [4.804201, 52.350815], zoom: 19.2, pitch: 60, bearing: 252 },
+  'rowhouse-g-street': { center: [4.812304, 52.354326], zoom: 17.8, pitch: 62, bearing: 162 },
+  'rowhouse-g-close': { center: [4.812304, 52.354326], zoom: 19.2, pitch: 60, bearing: 162 },
+  'rowhouse-b-street': { center: [4.827591, 52.360673], zoom: 17.8, pitch: 62, bearing: 269 },
+  'rowhouse-b-close': { center: [4.827591, 52.360673], zoom: 19.2, pitch: 60, bearing: 269 },
+  'rowhouse-d-street': { center: [4.797393, 52.383532], zoom: 17.8, pitch: 62, bearing: 88 },
+  'rowhouse-d-close': { center: [4.797393, 52.383532], zoom: 19.2, pitch: 60, bearing: 88 },
 };
 const ONLY = process.env.BT_VIEWS?.split(',');
 const CAM = ['jumpTo', 'easeTo', 'flyTo', 'setCenter', 'setZoom', 'setBearing', 'setPitch'];

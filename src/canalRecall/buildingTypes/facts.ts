@@ -83,6 +83,8 @@ export function ridgeAlongOf(rect: Rect, ridgeDirRD: Pt): 'long' | 'short' {
   return Math.abs(r[0] * rect.long[0] + r[1] * rect.long[1]) >= Math.SQRT1_2 ? 'long' : 'short';
 }
 
+const roofFromRidge = (rect: Rect, roof: RoofFacts) => (roof.ridgeDirRD ? ridgeAlongOf(rect, roof.ridgeDirRD) : 'long');
+
 /** Storeys under the eaves: the count within one of the type's that puts the storey height nearest 2.95 m (post-war floor + slab). */
 export function storeysFromHeight(eavesM: number, nominal: number, typical = 2.95): number {
   let best = nominal;
@@ -116,8 +118,11 @@ export function paramsFromFacts(spec: TypeSpec, rect: Rect, attrs: Bag3dAttribut
     // b3_h_dak_min is the lowest roof point: a lean-to, canopy or LoD artefact drags it to ~3 m on some members.
     // For a gable whose ridge runs along the long side the eaves follow from ridge, half the width and the slope.
     if (ridgeM !== undefined && roof?.slopeDeg && roofForm === 'gable') {
-      const est = ridgeM - (rect.width / 2) * Math.tan(roof.slopeDeg * Math.PI / 180);
-      if (Math.abs(est - eavesM) > 1.2 && est > 2) { warnings.push(`b3_h_dak_min eaves ${eavesM.toFixed(2)} m disagree with ridge ${ridgeM.toFixed(2)} m - slope: using ${est.toFixed(2)} m`); eavesM = est; }
+      // terraced houses (frontOnShort): dak_min stays the eaves unless implausible; 3DBAG's main-plane slope of a dormered roof is not the real pitch.
+      // frontOnShort types have the ridge across or along the (swapped) rectangle; half-span = half the extent across the ridge.
+      const span = spec.frontOnShort && (roofFromRidge(rect, roof) === 'short') ? rect.length : rect.width;
+      const est = ridgeM - (span / 2) * Math.tan(roof.slopeDeg * Math.PI / 180);
+      if (Math.abs(est - eavesM) > 1.2 && est > 2 && (!spec.frontOnShort || eavesM < 4.6 || eavesM > ridgeM - 1.2)) { warnings.push(`b3_h_dak_min eaves ${eavesM.toFixed(2)} m disagree with ridge ${ridgeM.toFixed(2)} m - slope: using ${est.toFixed(2)} m`); eavesM = est; }
     }
     if (ridgeM !== undefined && ridgeM <= eavesM + 0.3) { warnings.push(`ridge ${ridgeM.toFixed(2)} m barely above eaves ${eavesM.toFixed(2)} m: using the type's pitch`); ridgeM = undefined; }
   }
