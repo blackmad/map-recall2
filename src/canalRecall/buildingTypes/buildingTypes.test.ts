@@ -318,7 +318,7 @@ test('type-1 brick variants carry the colour sampled from sunlit photos (grey-br
 
 // --- 2026-10-11 cluster 2 / 5 / 8 designs and the type-6 slab-band leftover -------------------------------------------------
 
-const CLUSTER_TYPES = ['nw-glazed-tower-red-pitched', 'nw-glazed-tower-buff-flat', 'nw-garage-balcony-band-brown', 'nw-slit-window-garage-5st', 'nw-tower-top-balcony-5st', 'nw-brick-tower-stair-5st', 'nw-steel-stack-portiek', 'nw-canopy-core-garage-brick', 'nw-peach-render-entrance-front', 'nw-peach-render-balcony-front', 'nw-slab-band-glazed-flat'].map(id => load(`${id}.json`));
+const CLUSTER_TYPES = ['nw-garage-pair-balcony-5st', 'nw-loggia-stack-flat-5st', 'nw-portiek-3st-blue-door', 'nw-glazed-tower-red-pitched', 'nw-glazed-tower-buff-flat', 'nw-garage-balcony-band-brown', 'nw-slit-window-garage-5st', 'nw-tower-top-balcony-5st', 'nw-brick-tower-stair-5st', 'nw-steel-stack-portiek', 'nw-canopy-core-garage-brick', 'nw-peach-render-entrance-front', 'nw-peach-render-balcony-front', 'nw-slab-band-glazed-flat'].map(id => load(`${id}.json`));
 
 test('cluster designs validate, carry >= 3 photo pands of evidence on the front, and the generated model matches the counted bays for every variant', () => {
   for (const spec of CLUSTER_TYPES) {
