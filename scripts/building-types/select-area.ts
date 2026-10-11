@@ -65,7 +65,7 @@ for (const [type, list] of Object.entries(members)) {
 // Highways within reach of the area (local metres, rounded to 10 cm).
 const routing = JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/streets-routing.json', 'utf8')) as any[];
 const streets = routing.flatMap(s => (s.paths ?? [s.path]).map((p: [number, number][]) => ({name: s.name || '', highway: s.highway as string, path: p.map(([lat, lng]) => round1(lngLatToLocal(anchor, lng, lat)))})))
-  .filter(s => s.path.some(p => Math.hypot(p[0], p[1]) < RADIUS_M + 150));
+  .filter(s => (idsFile ? s.path.some(p => instances.some(i => { const [cx, cz] = lngLatToLocal(anchor, i.centreLngLat[0], i.centreLngLat[1]); return Math.hypot(p[0] - cx, p[1] - cz) < 250; })) : s.path.some(p => Math.hypot(p[0], p[1]) < RADIUS_M + 150)));
 
 // Context: every other BAG pand near the instances (for the aerial render).
 const ids = new Set(instances.map(i => i.pandId)), context: any[] = [];

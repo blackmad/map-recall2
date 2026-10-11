@@ -315,3 +315,24 @@ test('type-1 brick variants carry the colour sampled from sunlit photos (grey-br
   const [r, , b] = rgb(T1.variants.brick.palette.wall.tint);
   assert.ok(r / b < 1.4, 'the 4-storey brick (Herbert Spencerhof, David Humehof, Henri Bergsonstraat) is brown-grey, not red (old tint #8f5a44 has r/b 2.1)');
 });
+
+// --- 2026-10-11 cluster 2 / 5 / 8 designs and the type-6 slab-band leftover -------------------------------------------------
+
+const CLUSTER_TYPES = ['nw-glazed-tower-red-pitched', 'nw-glazed-tower-buff-flat', 'nw-garage-balcony-band-brown', 'nw-slit-window-garage-5st', 'nw-tower-top-balcony-5st', 'nw-brick-tower-stair-5st', 'nw-steel-stack-portiek', 'nw-canopy-core-garage-brick', 'nw-peach-render-entrance-front', 'nw-peach-render-balcony-front', 'nw-slab-band-glazed-flat'].map(id => load(`${id}.json`));
+
+test('cluster designs validate, carry >= 3 photo pands of evidence on the front, and the generated model matches the counted bays for every variant', () => {
+  for (const spec of CLUSTER_TYPES) {
+    assert.deepEqual(validateSpec(spec), [], spec.id);
+    assert.ok(spec.facades.front.evidence.length >= 3 && new Set(spec.facades.front.evidence.map(e => e.pand)).size === spec.facades.front.evidence.length, `${spec.id}: evidence`);
+    for (const variant of Object.keys(spec.variants)) {
+      const eaves = spec.storeys * 2.95;
+      const {report, mesh} = generate(spec, {lengthM: spec.source.lengthM, widthM: spec.source.widthM, eavesM: eaves, ridgeM: eaves + 2.2, variant, roofForm: spec.roof.form});
+      for (const id of FACADE_IDS) {
+        const want = spec.facades[id].counted, got = report.facades[id];
+        assert.deepEqual(got, want, `${spec.id}/${variant}/${id}`);
+      }
+      assert.ok(mesh.triangles <= 4500, `${spec.id}/${variant}: ${mesh.triangles} triangles`);
+      for (const bucket of mesh.buckets.values()) assert.ok(bucket.positions.every(Number.isFinite));
+    }
+  }
+});
