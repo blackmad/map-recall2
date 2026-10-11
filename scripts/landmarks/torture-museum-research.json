@@ -1,0 +1,19 @@
+{
+  "canonicalModelId": "torture-museum",
+  "researchedOn": "2026-10-11",
+  "state": "built-ready-2026-10-11",
+  "destination": {"name": "Torture Museum", "address": "Singel 449, Amsterdam", "bagPand": "NL.IMBAG.Pand.0363100012175875"},
+  "photos": [
+    {"file": "ref-pano-1.jpg", "panorama": "recording_2025-06-19_03-28-47_01551", "date": "2025-06-19", "heading": 350, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "head-on Singel front (ref-front.jpg is a copy)"},
+    {"file": "ref-pano-0.jpg", "panorama": "recording_2025-06-19_03-28-47_01550", "date": "2025-06-19", "heading": 30, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "camera-matched comparison"},
+    {"file": "ref-pano-2.jpg", "panorama": "recording_2025-06-19_03-28-47_01549", "date": "2025-06-19", "heading": 59, "licence": "CC BY 4.0, Gemeente Amsterdam"},
+    {"file": "ref-pano-3.jpg", "panorama": "recording_2025-06-19_03-28-47_01552", "date": "2025-06-19", "heading": 324, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "number of storeys and window rows"}
+  ],
+  "decisions": [
+    "The 2026-10-09 complaint that the facade slab is detached from the shell was already fixed by 759af56e (facade frame fitted to the surveyed 3DBAG wall, check-facade-attachment reports 0 floating parts); this pass adds the missing detail.",
+    "Upper windows: segmental heads (0.2 m rise) in a thin white surround, dark steel sashes (2 lights, transom, lower bar, mullions), projecting stone sill, arc of white lintel ticks following the head, as in panoramas 0, 1, 3. Window columns and sills keep the earlier measurements from the rectified 2017 elevation.",
+    "Shopfront extras from the same panoramas: twin steel push bars, door pull and intercom, two black spotlights under the steel lintel, and the carved wooden monk on a stone pedestal at the east pier.",
+    "Material overrides: glass lightened to the sky-reflective #7e95a3, ochre set to carved-wood brown #5d4331.",
+    "Not modelled / inferred: everything behind the front (the 3DBAG shell with party walls, blank-wall warnings), the roof, the posters inside the shop window."
+  ]
+}

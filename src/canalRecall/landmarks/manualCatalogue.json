@@ -12571,8 +12571,6 @@
   },
   {
     "id": "torture-museum",
-    "status": "held",
-    "heldReason": "Facade slab detached from the shell; low detail (user review 2026-10-09).",
     "name": "Torture Museum",
     "landmarkId": "extract_landmarks_417591223",
     "modelUrl": "./models/torture-museum.glb",
@@ -12604,9 +12602,10 @@
       "stone": "#8f8b84",
       "slate": "#5a5a5e",
       "white": "#e6e4da",
-      "glass": "#5f7581",
+      "glass": "#7e95a3",
       "dark": "#23272b",
-      "red": "#9b2f27"
+      "red": "#9b2f27",
+      "ochre": "#5d4331"
     },
     "attribution": {
       "title": "Torture Museum",
