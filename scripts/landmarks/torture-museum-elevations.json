@@ -8,13 +8,19 @@
       "photo": "artifacts/landmark-lanes/torture-museum/ref-front.jpg",
       "depthBand": 12,
       "rows": [
+        1,
         3,
-        3
+        3,
+        null
       ],
       "columns": 3,
       "symmetric": false,
       "gables": 0,
-      "countedBy": "blind haiku counter 2026-10-11"
+      "countedBy": "blind haiku counter 2026-10-11",
+      "alongM": [
+        9.2,
+        14.2
+      ]
     }
   ]
 }

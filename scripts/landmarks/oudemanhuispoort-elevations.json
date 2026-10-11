@@ -10,12 +10,16 @@
       "rows": [
         3,
         3,
-        2
+        null
       ],
       "columns": 4,
       "symmetric": false,
       "gables": 0,
-      "countedBy": "blind haiku counter 2026-10-11"
+      "countedBy": "blind haiku counter 2026-10-11",
+      "heightM": [
+        1.5,
+        11
+      ]
     }
   ]
 }

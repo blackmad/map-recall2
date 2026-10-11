@@ -99,7 +99,7 @@ export interface RhythmFacade {
   mismatched: Opening[];
   missing: {t: number; y0: number; y1: number}[];
   misaligned: number;
-  specRows?: number[];
+  specRows?: (number | null)[];
 }
 
 export interface GeometryFinding { kind: string; severity: 'fail' | 'warn'; message: string }
