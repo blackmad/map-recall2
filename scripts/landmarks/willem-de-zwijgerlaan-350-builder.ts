@@ -1,5 +1,5 @@
 import type {BuildingTools} from './cultural-builders';
-import {addShell} from './worship-shell';
+import {addShellTess} from './big-facade';
 import {disc, setSink, slab} from './nearbar-kit';
 import type {Frame} from './nearbar-kit';
 import {rawWall} from './big-kit';
@@ -26,7 +26,7 @@ const ROWS: [number, number][] = [[4.86, 7.29], [8.43, 10.86], [12.1, 14.5]];
 
 export function buildWillemDeZwijgerlaan350(_w: number, _d: number, b: BuildingTools & {mark?: (n: string) => void}) {
   const NE_UPPER = new Set([89, 95, 44, 18, 29, 4]);   // setback storey walls (kept from 3DBAG)
-  addShell(b, source as never, {wall: 'white', roof: 'slate'});
+  addShellTess(b, source as never, {wall: 'white', roof: 'slate'});   // huge faces tessellated so the audit's proximity grid sees them
   b.mark?.('shell');
   if (process.env.BIG_SHELL_ONLY) return;
   setSink(0.3);
@@ -62,9 +62,9 @@ export function buildWillemDeZwijgerlaan350(_w: number, _d: number, b: BuildingT
     for (const [a, c] of [[55, 180], [205, 275], [300, 345], [445, 540], [795, 885], [940, 1030], [1090, 1180], [1240, 1380], [1400, 1480], [1550, 1642]]) shopGlass(f, px(a), Math.min(px(c), w.len - 0.2), 0.4, 3.7);
     // Corten-framed atrium, t 20.8-26.2
     const t0 = px(583), t1 = px(733), yT = 12.8;
-    slab(b, f, (t0 + t1) / 2, 0, t1 - t0, yT, 0.12, 'glass', 0.05);
+    slab(b, f, (t0 + t1) / 2, 0, t1 - t0 - 0.06, yT, 0.12, 'glass', 0.05);   // 3 cm short of each Corten post's end face
     for (let u = t0 + 0.55; u < t1 - 0.3; u += 0.62) slab(b, f, u, 0, 0.05, yT, 0.2, 'frame', 0.05);
-    for (let y = 0.9; y < yT; y += 0.9) slab(b, f, (t0 + t1) / 2, y, t1 - t0, 0.05, 0.2, 'frame', 0.05);
+    for (let y = 0.9; y < yT; y += 0.9) slab(b, f, (t0 + t1) / 2, y, t1 - t0 - 0.06, 0.05, 0.2, 'frame', 0.05);
     for (const t of [t0 + 0.35, t1 - 0.35]) slab(b, f, t, 0, 0.7, yT + 0.1, 0.5, 'ochre');
     slab(b, f, (t0 + t1) / 2, yT, t1 - t0, 0.5, 0.5, 'ochre');
     disc(b, f, px(560), 2.7, 0.62, 0.1, 'gold', 0.1); disc(b, f, px(1062), 2.7, 0.62, 0.1, 'gold', 0.1);
