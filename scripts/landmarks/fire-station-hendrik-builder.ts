@@ -28,10 +28,12 @@ export function buildFireStationHendrik(_w:number,_d:number,b:BuildingTools){
  // The front is a surveyed curved chain, SW toward NE. Its right-hand normal faces Rozengracht.
  const frame=(s:number,inset=0)=>{s=Math.max(0,Math.min(length-.001,s));let run=0;for(const e of segments){if(run+e.len>=s){const t=(s-run)/e.len,ux=(e.p[0]-e.a[0])/e.len,uz=(e.p[1]-e.a[1])/e.len,nx=-uz,nz=ux;return {x:e.a[0]+t*(e.p[0]-e.a[0])+nx*inset,z:e.a[1]+t*(e.p[1]-e.a[1])+nz*inset,angle:Math.atan2(-uz,ux),nx,nz};}run+=e.len;}throw Error('front chain');};
  const box=(s:number,y:number,w:number,h:number,d:number,c:C,inset=.10)=>{const q=frame(s,inset);b.box(q.x,y,q.z,w,h,d,c,q.angle);};
- const win=(s:number,y:number,w:number,h:number,cols=3,inset=.16)=>{box(s,y-.08,w+.17,h+.16,.10,'white',inset);box(s,y,w,h,.08,'glass',inset+.08);for(let i=1;i<cols;i++){const q=frame(s,inset+.15),u=-w/2+i*w/cols; b.box(q.x+Math.cos(q.angle)*u,y,q.z-Math.sin(q.angle)*u,.07,h,.055,'white',q.angle);}box(s,y,w,.065,.08,'white',inset+.15);};
+ const win=(s:number,y:number,w:number,h:number,cols=3,inset=.16)=>{box(s,y-.08,w+.17,h+.16,.25,'white',inset-.075);   // frame box reaches 15 cm back into the wall (front plane unchanged)
+  box(s,y,w,h,.08,'glass',inset+.08);for(let i=1;i<cols;i++){const q=frame(s,inset+.15),u=-w/2+i*w/cols; b.box(q.x+Math.cos(q.angle)*u,y,q.z-Math.sin(q.angle)*u,.07,h,.055,'white',q.angle);}box(s,y,w,.065,.08,'white',inset+.15);};
  // Five doors use contemporary black steel glazing; observed upper red panels remain.
- const doors=[4.4,10.8,17.2,23.6,30.0];for(const s of doors){box(s,.08,5.10,4.85,.10,'red',.15);for(const y of [1.0,1.77,2.54]){box(s,y,5.01,.66,.075,'glass',.23);box(s,y-.065,5.1,.07,.075,'dark',.29);}for(const u of [-1.7,0,1.7]){const q=frame(s,.29);b.box(q.x+Math.cos(q.angle)*u,.95,q.z-Math.sin(q.angle)*u,.065,2.4,.055,'dark',q.angle);}box(s,4.94,5.42,.25,.19,'white',.16);win(s,7.0,5.0,2.50,4);}
- for(let s=0;s<length;s+=1){box(s,s<49?9.85:11.30,1.04,.25,.38,'white',.18);box(s,0,1.03,.34,.16,'stone',.08);}
+ const doors=[4.4,10.8,17.2,23.6,30.0];for(const s of doors){box(s,.08,5.10,4.85,.10,'red',.15);for(const y of [1.0,1.77,2.54]){box(s,y,5.01,.66,.075,'glass',.23);box(s,y-.065,5.1,.07,.075,'dark',.29);}for(const u of [-1.7,0,1.7]){const q=frame(s,.29);b.box(q.x+Math.cos(q.angle)*u,.95,q.z-Math.sin(q.angle)*u,.065,2.4,.055,'dark',q.angle);}box(s,4.94,5.42,.25,.45,'white',.03);   // lintel reaches back into the faceted wall behind it (front plane unchanged)
+ win(s,7.0,5.0,2.50,4);}
+ for(let s=0;s<length-.8;s+=1){box(s,s<49?9.85:11.30,1.04,.25,.38,'concrete',.18);box(s,0,1.03,.34,.16,'stone',.08);}
  // The clerestory occupies the actual vertical step between front and rear roof
  // surfaces121/122and117/119. Use shared surveyed ridge vertices, not a parallel
  // facade inset: that earlier draft floated southwest windows beyond the roof.
@@ -42,7 +44,7 @@ export function buildFireStationHendrik(_w:number,_d:number,b:BuildingTools){
   }
  }
  // Reconstructed post-renovation polygon bay: exposed glazing at both levels.
- for(const [s,w] of [[35.0,2.8],[38.0,2.8]]){box(s,6.6,w+.35,3.3,1.20,'brick',.63);box(s,9.55,w+.4,.28,1.4,'white',.69);win(s,6.95,w,2.6,3,1.33);win(s,.7,w,2.3,3,.22);}
+ for(const [s,w] of [[35.0,2.8],[38.0,2.8]]){box(s,6.6,w+.35,3.3,1.20,'brick',.63);box(s,9.55,w+.4,.28,1.4,'white',.69);win(s,6.95,w,2.6,3,1.30);win(s,.7,w,2.3,3,.22);}
  // New rightwing infill is visible in municipal July2025renovation frame:
  // two three-pane groups at middle and ground tier, retained small upper lights.
  for(const ss of [43.8,48.3])for(const yy of [.70,4.10])win(ss,yy,3.45,1.92,3);
@@ -83,10 +85,10 @@ export function buildFireStationHendrik(_w:number,_d:number,b:BuildingTools){
   const inside=(x:number,z:number,r:number[][])=>{let yes=false;for(let i=0,j=r.length-1;i<r.length;j=i++){const a=r[i],c=r[j];if((a[1]>z)!==(c[1]>z)&&x<(c[0]-a[0])*(z-a[1])/(c[1]-a[1])+a[0])yes=!yes;}return yes;};
   /** Wall-top (roof plane) height 0.3 m inside the wall at frame position t. */
   const top=(f:{origin:number[];tangent:number[];n:number[]},t:number)=>{const x=f.origin[0]+f.tangent[0]*t-f.n[0]*.3,z=f.origin[1]+f.tangent[1]*t-f.n[1]*.3;let best=0;for(const p of planes)if(inside(x,z,p.ring))best=Math.max(best,p.at(x,z));return best;};
-  const lights=(f:any,t:number,y:number,w:number,h:number,cols:number)=>{slab(b,f,t,y-.06,w+.14,h+.12,.06,'white');slab(b,f,t,y,w,h,.09,'glass');for(let i=1;i<cols;i++)slab(b,f,t-w/2+w*i/cols,y,.06,h,.12,'white');};
-  const frameStorey=(f:any,len:number,bays:number,cols:number)=>{
+  const lights=(f:any,t:number,y:number,w:number,h:number,cols:number)=>{slab(b,f,t,y-.06,w+.14,h+.12,.09,'white',-.03);slab(b,f,t,y,w,h,.09,'glass');for(let i=1;i<cols;i++)slab(b,f,t-w/2+w*i/cols,y,.06,h,.12,'white');};
+  const frameStorey=(f:any,len:number,bays:number,cols:number,e=.18)=>{
    slab(b,f,len/2,4.4,len,.38,.16,'white');                                   // concrete beam
-   for(let k=0;k<=bays;k++)slab(b,f,Math.min(len-.18,Math.max(.18,len*k/bays)),0,.36,4.4,.16,'white');   // pilasters
+   for(let k=0;k<=bays;k++)slab(b,f,Math.min(len-e,Math.max(e,len*k/bays)),0,.36,4.4,.16,'white');   // pilasters
    for(let k=0;k<bays;k++)lights(f,len*(k+.5)/bays,3.3,len/bays-.62,1.02,cols);
   };
   // north wall: edges 3 and 4 are collinear within 1 degree; treat as one 24 m run from the NE corner
@@ -96,9 +98,9 @@ export function buildFireStationHendrik(_w:number,_d:number,b:BuildingTools){
   // under a white raking band. u runs east -> west (edge 3 then edge 4; frame t is the viewer's right = west).
   const run=e3.len+e4.len,ribbon=(u:number)=>7.2+3.4*u/run;
   for(const [e,bays,u0] of [[e3,1,0],[e4,6,e3.len]] as const){
-   frameStorey(e.f,e.len,bays,bays===1?3:4);
+   frameStorey(e.f,e.len,bays,bays===1?3:4,.22);
    for(let k=0;k<bays;k++){const t=e.len*(k+.5)/bays,y=ribbon(u0+t);if(y+1.6<top(e.f,t))lights(e.f,t,y,Math.min(2.3,e.len/bays-.9),1.15,3);}
-   {const y0=Math.min(ribbon(u0)+1.4,top(e.f,.3)-.5),y1=Math.min(ribbon(u0+e.len)+1.4,top(e.f,e.len-.3)-.5),L=e.len/2;poly(b,e.f,L,0,[[-L,y0],[L,y1],[L,y1+.16],[-L,y0+.16]],.1,'white');}
+   {const y0=Math.min(ribbon(u0)+1.4,top(e.f,.3)-.5),y1=Math.min(ribbon(u0+e.len)+1.4,top(e.f,e.len-.3)-.5),L=e.len/2;poly(b,e.f,L,0,[[-L,y0],[L,y1],[L,y1+.16],[-L,y0+.16]],.17,'white');}
   }
   const w6=ringFrame(ring2,6);
   frameStorey(w6.f,w6.len,6,2);
