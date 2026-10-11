@@ -144,7 +144,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   (bin by plane, or rasterise only the triangle) and re-run the baseline.
   Kohnstammhuis stone reads too warm/tan against the grey photo.
 - **Nieuw-West building types (2026-10-11)**: opt-in `?buildingTypes=1`
-  draws 2,376 photo-confirmed instances (2026-10-11: +1,921 terraced houses
+  draws 2,987 photo-confirmed instances (2026-10-11 later: +611 terraced
+  houses in seven more designs: red-panel-door E2 272, garage-door 3st/2st
+  120, white-sheds E1 99 (shed rhythm unread, not re-sheeted), tall-glass
+  panel B2 97, ribbon-fascia 10, render-pilaster 7; 518 held. Mirror
+  parity now pinned per house from ~160 terraces read by eye (old
+  leftmost-normal rule matched ~25%). Densest rowhouse view now 86 draw
+  calls desktop / 69 iPhone, over the ~60 target: merge unit meshes per
+  design before turning the layer on by default.) Earlier: +1,921 terraced houses
   of the 8.5 x 5 m cluster in four front designs A garage-door, G door-window
   mirrored pairs, B tall glass, D render with tile plinth; one street photo
   per terrace, 457 terraces classified; 677 held incl. undesigned classes E,
