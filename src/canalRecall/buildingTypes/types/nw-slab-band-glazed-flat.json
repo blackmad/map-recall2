@@ -1,0 +1,482 @@
+{
+  "id": "nw-slab-band-glazed-flat",
+  "label": "Nieuw-West type-6 leftover (Dirk Sonoystraat area, 11 panden of 16.1-16.3 x 9.9 m): five-storey red-brown brick slab with white concrete bands at every floor, long dark-framed glazed ribbon between brick piers on the long sides, dark grey fenced ground storey, flat roof",
+  "source": {
+    "clusterRank": 6,
+    "panden": 11,
+    "bouwjaar": [
+      1953,
+      1962
+    ],
+    "lengthM": 16.2,
+    "widthM": 9.9,
+    "bouwlagen": 5,
+    "roof": "flat",
+    "dwellingsMedian": 8
+  },
+  "storeys": 5,
+  "roof": {
+    "form": "flat",
+    "ridge": "long",
+    "eavesOverhangM": 0.2,
+    "vergeOverhangM": 0,
+    "thicknessM": 0.22,
+    "pitchDeg": 0
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "brick-white-bands",
+  "variants": {
+    "brick-white-bands": {
+      "label": "Dark red-brown brick (photo warm-pixel median #624a3c), white bands, dark glazing frames, dark grey ground storey #3d3e37",
+      "evidence": "crops 0363100012095807 brick #584b43 (57 %), plinth #3d3e37",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#624a3c"
+        },
+        "plinth": {
+          "slot": "stucco",
+          "tint": "#3d3e37"
+        },
+        "frame": "#2f3235",
+        "glass": "#55687a",
+        "door": "#3d3e37",
+        "accent": "#c8c9c5",
+        "rail": "#d9dcda",
+        "dark": "#3d3e37",
+        "column": "#d9dcda",
+        "joint": "#3a2f29",
+        "roof": {
+          "slot": "bitumen",
+          "tint": "#5c5e60"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "partly-measured",
+      "evidence": [
+        {
+          "photo": "crops/0363100012095807.jpg",
+          "pand": "0363100012095807",
+          "address": "Dirk Sonoystraat (oblique)",
+          "note": "brick gable with small windows, long side with dark-framed glazing groups of 3-4 lights between brick piers, white band per floor, dark grey fenced ground storey"
+        },
+        {
+          "photo": "crops/0363100012151322.jpg",
+          "pand": "0363100012151322",
+          "address": "Dirk Sonoystraat (oblique)",
+          "note": "same from the other end: glazing groups continue along the whole long side"
+        },
+        {
+          "photo": "crops/0363100012143447.jpg",
+          "pand": "0363100012143447",
+          "address": "Dirk Sonoystraat (oblique)",
+          "note": "same with the white bands and the plinth fence"
+        },
+        {
+          "photo": "crops/0363100012151173.jpg",
+          "pand": "0363100012151173",
+          "address": "Dirk Sonoystraat (oblique, trees)",
+          "note": "same design behind trees"
+        }
+      ],
+      "counted": {
+        "bays": 11,
+        "openingsPerUpperStorey": 5,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "p1",
+          "w": 1.0,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "G1",
+          "w": 2.6,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 2.08,
+              "h": 1.75,
+              "sill": 0.55,
+              "lights": 4
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "w": 0.6,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "G2",
+          "w": 2.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.6,
+              "h": 1.75,
+              "sill": 0.55,
+              "lights": 3
+            }
+          ]
+        },
+        {
+          "id": "p3",
+          "w": 0.6,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "G3",
+          "w": 2.6,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 2.08,
+              "h": 1.75,
+              "sill": 0.55,
+              "lights": 4
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 1.3,
+              "h": 2.3,
+              "steps": 0
+            }
+          ]
+        },
+        {
+          "id": "p4",
+          "w": 0.6,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "G4",
+          "w": 2.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.6,
+              "h": 1.75,
+              "sill": 0.55,
+              "lights": 3
+            }
+          ]
+        },
+        {
+          "id": "p5",
+          "w": 0.6,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "G5",
+          "w": 2.6,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 2.08,
+              "h": 1.75,
+              "sill": 0.55,
+              "lights": 4
+            }
+          ]
+        },
+        {
+          "id": "p6",
+          "w": 1.0,
+          "role": "corner",
+          "elements": []
+        }
+      ],
+      "bands": [
+        {
+          "floor": 1,
+          "below": 0.35,
+          "above": 0.12,
+          "palette": "column"
+        },
+        {
+          "floor": 2,
+          "below": 0.35,
+          "above": 0.12,
+          "palette": "column"
+        },
+        {
+          "floor": 3,
+          "below": 0.35,
+          "above": 0.12,
+          "palette": "column"
+        },
+        {
+          "floor": 4,
+          "below": 0.35,
+          "above": 0.12,
+          "palette": "column"
+        },
+        {
+          "floor": 5,
+          "below": 0.35,
+          "above": 0.12,
+          "palette": "column"
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012095807.jpg",
+          "pand": "0363100012095807",
+          "address": "Dirk Sonoystraat",
+          "note": "back not photographed; copied from the front without the door. NOT verified."
+        }
+      ],
+      "counted": {
+        "bays": 11,
+        "openingsPerUpperStorey": 5,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "p1",
+          "w": 1.0,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "G1",
+          "w": 2.6,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 2.08,
+              "h": 1.75,
+              "sill": 0.55,
+              "lights": 4
+            }
+          ]
+        },
+        {
+          "id": "p2",
+          "w": 0.6,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "G2",
+          "w": 2.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.6,
+              "h": 1.75,
+              "sill": 0.55,
+              "lights": 3
+            }
+          ]
+        },
+        {
+          "id": "p3",
+          "w": 0.6,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "G3",
+          "w": 2.6,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 2.08,
+              "h": 1.75,
+              "sill": 0.55,
+              "lights": 4
+            }
+          ]
+        },
+        {
+          "id": "p4",
+          "w": 0.6,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "G4",
+          "w": 2.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.6,
+              "h": 1.75,
+              "sill": 0.55,
+              "lights": 3
+            }
+          ]
+        },
+        {
+          "id": "p5",
+          "w": 0.6,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "G5",
+          "w": 2.6,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 2.08,
+              "h": 1.75,
+              "sill": 0.55,
+              "lights": 4
+            }
+          ]
+        },
+        {
+          "id": "p6",
+          "w": 1.0,
+          "role": "corner",
+          "elements": []
+        }
+      ],
+      "bands": [
+        {
+          "floor": 1,
+          "below": 0.35,
+          "above": 0.12,
+          "palette": "column"
+        },
+        {
+          "floor": 2,
+          "below": 0.35,
+          "above": 0.12,
+          "palette": "column"
+        },
+        {
+          "floor": 3,
+          "below": 0.35,
+          "above": 0.12,
+          "palette": "column"
+        },
+        {
+          "floor": 4,
+          "below": 0.35,
+          "above": 0.12,
+          "palette": "column"
+        },
+        {
+          "floor": 5,
+          "below": 0.35,
+          "above": 0.12,
+          "palette": "column"
+        }
+      ]
+    },
+    "left": {
+      "confidence": "partly-measured",
+      "evidence": [
+        {
+          "photo": "crops/0363100012095807.jpg",
+          "pand": "0363100012095807",
+          "address": "Dirk Sonoystraat (oblique)",
+          "note": "brick end wall with one small ribbon window per floor near each corner, white bands continue around the corner (oblique photo)"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 1,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "end",
+          "w": 1,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.9,
+              "h": 0.55,
+              "sill": 1.2,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    },
+    "right": {
+      "confidence": "partly-measured",
+      "evidence": [
+        {
+          "photo": "crops/0363100012151322.jpg",
+          "pand": "0363100012151322",
+          "address": "Dirk Sonoystraat (oblique)",
+          "note": "brick end wall with one small ribbon window per floor near each corner, white bands continue around the corner (oblique photo)"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 1,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "end",
+          "w": 1,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.9,
+              "h": 0.55,
+              "sill": 1.2,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Only oblique photos exist (the panorama sits at a fence 30 m away): glazing group widths and light counts are estimated from the foreshortened view, so the front is partly-measured. Eleven panden with identical 16.1-16.3 x 9.86 m footprints and 14.4 m eaves share it; four have photos, seven were only matched by footprint and street.",
+    "Left and right ends are partly measured from the oblique views of the gable ends.",
+    "Photos: Gemeente Amsterdam panoramas (CC BY 4.0), crops made by scripts/building-types/camera-sheets.ts --survey (cached in .cache/building-types/crops)."
+  ]
+}

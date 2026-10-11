@@ -30,6 +30,13 @@ const VIEWS: Record<string, { center: [number, number]; zoom: number; pitch: num
   'lockehof-close': { center: [4.8110033, 52.37716495], zoom: 19.2, pitch: 60, bearing: 265.1 },
   'clauskinderen-street': { center: [4.7932, 52.3584], zoom: 17.8, pitch: 62, bearing: 252 },
   'clauskinderen-close': { center: [4.79319306, 52.35836115], zoom: 19.2, pitch: 60, bearing: 251.6 },
+  // 2026-10-11 cluster designs (types/nw-clusters-20261011): Cornelis Lelylaan / Van Mourik Broekmanstraat / Pieter Calandlaan, Karel Klinkenbergstraat / Jan Tooropstraat, Ruys de Beerenbrouckstraat / Steven Vennecoolstraat.
+  'lelylaan-street': { center: [4.8265, 52.3573], zoom: 17.8, pitch: 62, bearing: 179 },
+  'lelylaan-close': { center: [4.82517006, 52.35730167], zoom: 19.2, pitch: 60, bearing: 179 },
+  'klinkenberg-street': { center: [4.8360, 52.3668], zoom: 17.8, pitch: 62, bearing: 179 },
+  'klinkenberg-close': { center: [4.83530619, 52.36757751], zoom: 19.2, pitch: 60, bearing: 179 },
+  'peach-street': { center: [4.7990, 52.3820], zoom: 17.8, pitch: 62, bearing: 178 },
+  'peach-close': { center: [4.79879119, 52.38218533], zoom: 19.2, pitch: 60, bearing: 178 },
 };
 const ONLY = process.env.BT_VIEWS?.split(',');
 const CAM = ['jumpTo', 'easeTo', 'flyTo', 'setCenter', 'setZoom', 'setBearing', 'setPitch'];

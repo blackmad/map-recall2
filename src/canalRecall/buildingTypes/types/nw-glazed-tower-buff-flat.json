@@ -1,0 +1,510 @@
+{
+  "id": "nw-glazed-tower-buff-flat",
+  "label": "Nieuw-West cluster 8 design B (Nolensstraat, Theo van Doesburgstraat, Bart van Hovestraat, Teixeira de Mattosstraat, De Savornin Lohmanstraat): five-storey buff-brick portiekflat 17 x 11.7 m, pairs of windows either side of a full-height glazed stair tower with a canopied entrance, small square stair windows, ribbon of attic windows under a thin flat roof edge",
+  "source": {
+    "clusterRank": 8,
+    "panden": 19,
+    "bouwjaar": [
+      1956,
+      1960
+    ],
+    "lengthM": 17.0,
+    "widthM": 11.7,
+    "bouwlagen": 5,
+    "roof": "pitched",
+    "dwellingsMedian": 8
+  },
+  "storeys": 5,
+  "roof": {
+    "form": "flat",
+    "ridge": "long",
+    "eavesOverhangM": 0.2,
+    "vergeOverhangM": 0,
+    "thicknessM": 0.22,
+    "pitchDeg": 0
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "buff-brick",
+  "variants": {
+    "buff-brick": {
+      "label": "Buff / yellow brick (sunlit photo median #baa88d), white window frames, cream doors, grey-green canopy",
+      "evidence": "sunlit crop 0363100012083975 #baa88d (41 % cluster; Theo van Doesburgstraat), 2137329 and 2149742 are the same brick in shade (#57504c)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#baa88d"
+        },
+        "frame": "#f1efe6",
+        "glass": "#4a5663",
+        "door": "#d9d2bd",
+        "accent": "#c9c5b6",
+        "rail": "#bdb8aa",
+        "dark": "#6c6a62",
+        "column": "#d9d6c8",
+        "joint": "#8b7a5e",
+        "roof": {
+          "slot": "bitumen",
+          "tint": "#5c5e60"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "crops/0363100012137329.jpg",
+          "pand": "0363100012137329",
+          "address": "De Savornin Lohmanstraat (frontal)",
+          "note": "best frontal view: window pair, small square window, five-pane glazed tower with canopy and three doors, small window, two window pairs; four rows (ground row included) plus a ribbon of small attic windows"
+        },
+        {
+          "photo": "crops/0363100012129640.jpg",
+          "pand": "0363100012129640",
+          "address": "Nolensstraat (frontal)",
+          "note": "between two drainpipes: pair, small window, tower, small window, pair; same canopy and doors"
+        },
+        {
+          "photo": "crops/0363100012149742.jpg",
+          "pand": "0363100012149742",
+          "address": "Nolensstraat (frontal, three blocks in a row)",
+          "note": "the tower repeats once per pand (17 m pitch), attic ribbon of small windows runs above all"
+        },
+        {
+          "photo": "crops/0363100012083975.jpg",
+          "pand": "0363100012083975",
+          "address": "Theo van Doesburgstraat (oblique)",
+          "note": "canopy on red steel posts, entrance door with intercom under the tower, same brick; shows the type continuing on Bart van Hovestraat / Teixeira de Mattosstraat"
+        }
+      ],
+      "counted": {
+        "bays": 7,
+        "openingsPerUpperStorey": 7,
+        "groundDoors": 2,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "E1",
+          "w": 0.35,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "P1",
+          "w": 3.6,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "w": 1.5,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2,
+              "u": -1.0
+            },
+            {
+              "kind": "window",
+              "levels": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "w": 1.5,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2,
+              "u": 1.0
+            },
+            {
+              "kind": "ribbon",
+              "levels": [
+                4
+              ],
+              "w": 3.4,
+              "h": 0.4,
+              "sill": 1.1,
+              "lights": 4
+            }
+          ]
+        },
+        {
+          "id": "S1",
+          "w": 1.2,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": [
+                1,
+                2,
+                3
+              ],
+              "w": 0.5,
+              "h": 0.5,
+              "sill": 1.4,
+              "lights": 1
+            }
+          ]
+        },
+        {
+          "id": "T",
+          "w": 3.2,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": [
+                1,
+                2,
+                3
+              ],
+              "w": 2.0,
+              "h": 2.4,
+              "sill": 0.3,
+              "lights": 3
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 0.95,
+              "h": 2.2,
+              "steps": 0,
+              "u": -0.6
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 0.95,
+              "h": 2.2,
+              "steps": 0,
+              "u": 0.6
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "w": 3.0,
+              "h": 0.22,
+              "sill": 2.45,
+              "depth": 0.7,
+              "colour": "dark"
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "w": 1.2,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": [
+                1,
+                2,
+                3
+              ],
+              "w": 0.5,
+              "h": 0.5,
+              "sill": 1.4,
+              "lights": 1
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "w": 3.6,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "w": 1.5,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2,
+              "u": -1.0
+            },
+            {
+              "kind": "window",
+              "levels": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "w": 1.5,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2,
+              "u": 1.0
+            },
+            {
+              "kind": "ribbon",
+              "levels": [
+                4
+              ],
+              "w": 3.4,
+              "h": 0.4,
+              "sill": 1.1,
+              "lights": 4
+            }
+          ]
+        },
+        {
+          "id": "E2",
+          "w": 0.35,
+          "role": "corner",
+          "elements": []
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012083975.jpg",
+          "pand": "0363100012083975",
+          "address": "Theo van Doesburgstraat",
+          "note": "back copied from the front without the entrance doors and canopy. NOT verified."
+        }
+      ],
+      "counted": {
+        "bays": 7,
+        "openingsPerUpperStorey": 7,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "E1",
+          "w": 0.35,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "P1",
+          "w": 3.6,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "w": 1.5,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2,
+              "u": -1.0
+            },
+            {
+              "kind": "window",
+              "levels": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "w": 1.5,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2,
+              "u": 1.0
+            },
+            {
+              "kind": "ribbon",
+              "levels": [
+                4
+              ],
+              "w": 3.4,
+              "h": 0.4,
+              "sill": 1.1,
+              "lights": 4
+            }
+          ]
+        },
+        {
+          "id": "S1",
+          "w": 1.2,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": [
+                1,
+                2,
+                3
+              ],
+              "w": 0.5,
+              "h": 0.5,
+              "sill": 1.4,
+              "lights": 1
+            }
+          ]
+        },
+        {
+          "id": "T",
+          "w": 3.2,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": [
+                1,
+                2,
+                3
+              ],
+              "w": 2.0,
+              "h": 2.4,
+              "sill": 0.3,
+              "lights": 3
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "w": 1.2,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": [
+                1,
+                2,
+                3
+              ],
+              "w": 0.5,
+              "h": 0.5,
+              "sill": 1.4,
+              "lights": 1
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "w": 3.6,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "w": 1.5,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2,
+              "u": -1.0
+            },
+            {
+              "kind": "window",
+              "levels": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "w": 1.5,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2,
+              "u": 1.0
+            },
+            {
+              "kind": "ribbon",
+              "levels": [
+                4
+              ],
+              "w": 3.4,
+              "h": 0.4,
+              "sill": 1.1,
+              "lights": 4
+            }
+          ]
+        },
+        {
+          "id": "E2",
+          "w": 0.35,
+          "role": "corner",
+          "elements": []
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012083975.jpg",
+          "pand": "0363100012083975",
+          "address": "Theo van Doesburgstraat (oblique)",
+          "note": "gable / party-wall end modelled blank. NOT verified for end units: no straight-on photo of an end wall in the survey."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "end",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012137329.jpg",
+          "pand": "0363100012137329",
+          "address": "De Savornin Lohmanstraat (corner, cream cladding strip on the end)",
+          "note": "gable / party-wall end modelled blank. NOT verified for end units: no straight-on photo of an end wall in the survey."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "end",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Nine panden are confirmed from frontal or oblique photos of the facade (Nolensstraat 5, De Savornin Lohmanstraat 1, Theo van Doesburgstraat 3). Ten more (Bart van Hovestraat, Teixeira de Mattosstraat) only have entrance close-ups in the survey; the canopy, the red downpipe, the buff brick and the small square window beside the entrance match the confirmed ones, so they are assigned with this caveat recorded here.",
+    "Roof: flat with a thin projecting edge in the photos; 3DBAG labels the cluster pitched, the roof form is taken from 3DBAG per pand.",
+    "Photos: Gemeente Amsterdam panoramas (CC BY 4.0), crops made by scripts/building-types/camera-sheets.ts --survey (cached in .cache/building-types/crops)."
+  ]
+}
