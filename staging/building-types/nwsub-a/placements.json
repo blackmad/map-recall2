@@ -1,0 +1,1022 @@
+{
+ "area": "nwsub-a",
+ "frame": "x east, z south, y NAP metres from anchor; yaw about +y takes the local frame (front +z, tangent +x) to east/south",
+ "anchor": {
+  "lng": 4.8021,
+  "lat": 52.36277
+ },
+ "placements": [
+  {
+   "pand": "0363100012124865",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -11.83,
+     -0.913,
+     101.672
+    ],
+    "positionChunk": [
+     -11.83,
+     0,
+     101.672
+    ],
+    "yawRad": 1.88999,
+    "lengthM": 14.23,
+    "widthM": 10.37,
+    "eavesM": 14.46
+   }
+  },
+  {
+   "pand": "0363100012089162",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -70.541,
+     -0.971,
+     78.264
+    ],
+    "positionChunk": [
+     -70.541,
+     0,
+     78.264
+    ],
+    "yawRad": -2.824,
+    "lengthM": 14.26,
+    "widthM": 10.34,
+    "eavesM": 14.53
+   }
+  },
+  {
+   "pand": "0363100012097022",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -57.751,
+     -0.907,
+     91.124
+    ],
+    "positionChunk": [
+     -57.751,
+     0,
+     91.124
+    ],
+    "yawRad": 1.89005,
+    "lengthM": 14.19,
+    "widthM": 10.38,
+    "eavesM": 14.4
+   }
+  },
+  {
+   "pand": "0363100012070449",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -7.408,
+     -0.925,
+     115.045
+    ],
+    "positionChunk": [
+     -7.408,
+     0,
+     115.045
+    ],
+    "yawRad": 1.8902,
+    "lengthM": 14.15,
+    "widthM": 10.37,
+    "eavesM": 14.44
+   }
+  },
+  {
+   "pand": "0363100012104736",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -53.321,
+     -0.927,
+     104.508
+    ],
+    "positionChunk": [
+     -53.321,
+     0,
+     104.508
+    ],
+    "yawRad": 1.89058,
+    "lengthM": 14.05,
+    "widthM": 10.38,
+    "eavesM": 14.41
+   }
+  },
+  {
+   "pand": "0363100012129355",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -84.015,
+     -0.977,
+     82.692
+    ],
+    "positionChunk": [
+     -84.015,
+     0,
+     82.692
+    ],
+    "yawRad": -2.82421,
+    "lengthM": 14.16,
+    "widthM": 10.34,
+    "eavesM": 14.52
+   }
+  },
+  {
+   "pand": "0363100012097620",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -48.943,
+     -0.949,
+     117.733
+    ],
+    "positionChunk": [
+     -48.943,
+     0,
+     117.733
+    ],
+    "yawRad": 1.89012,
+    "lengthM": 13.88,
+    "widthM": 10.38,
+    "eavesM": 14.45
+   }
+  },
+  {
+   "pand": "0363100012106539",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -2.987,
+     -0.921,
+     128.415
+    ],
+    "positionChunk": [
+     -2.987,
+     0,
+     128.415
+    ],
+    "yawRad": 1.89009,
+    "lengthM": 14.05,
+    "widthM": 10.37,
+    "eavesM": 14.42
+   }
+  },
+  {
+   "pand": "0363100012093885",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -97.386,
+     -0.978,
+     87.083
+    ],
+    "positionChunk": [
+     -97.386,
+     0,
+     87.083
+    ],
+    "yawRad": -2.82407,
+    "lengthM": 14.03,
+    "widthM": 10.35,
+    "eavesM": 14.48
+   }
+  },
+  {
+   "pand": "0363100012131036",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -44.551,
+     -0.958,
+     131.007
+    ],
+    "positionChunk": [
+     -44.551,
+     0,
+     131.007
+    ],
+    "yawRad": 1.89042,
+    "lengthM": 14.13,
+    "widthM": 10.38,
+    "eavesM": 14.41
+   }
+  },
+  {
+   "pand": "0363100012067010",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     1.396,
+     -0.873,
+     141.676
+    ],
+    "positionChunk": [
+     1.396,
+     0,
+     141.676
+    ],
+    "yawRad": 1.89029,
+    "lengthM": 13.92,
+    "widthM": 10.37,
+    "eavesM": 14.38
+   }
+  },
+  {
+   "pand": "0363100012091168",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -110.677,
+     -0.951,
+     91.448
+    ],
+    "positionChunk": [
+     -110.677,
+     0,
+     91.448
+    ],
+    "yawRad": -2.82377,
+    "lengthM": 14,
+    "widthM": 10.35,
+    "eavesM": 14.47
+   }
+  },
+  {
+   "pand": "0363100012114785",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -40.127,
+     -0.92,
+     144.365
+    ],
+    "positionChunk": [
+     -40.127,
+     0,
+     144.365
+    ],
+    "yawRad": 1.89034,
+    "lengthM": 14.08,
+    "widthM": 10.38,
+    "eavesM": 14.4
+   }
+  },
+  {
+   "pand": "0363100012074059",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -124.126,
+     -0.917,
+     95.862
+    ],
+    "positionChunk": [
+     -124.126,
+     0,
+     95.862
+    ],
+    "yawRad": -2.82369,
+    "lengthM": 14.35,
+    "widthM": 10.35,
+    "eavesM": 14.43
+   }
+  },
+  {
+   "pand": "0363100012061674",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -35.706,
+     -0.919,
+     157.728
+    ],
+    "positionChunk": [
+     -35.706,
+     0,
+     157.728
+    ],
+    "yawRad": 1.88999,
+    "lengthM": 14.11,
+    "widthM": 10.38,
+    "eavesM": 14.4
+   }
+  },
+  {
+   "pand": "0363100012085025",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -103.717,
+     -0.908,
+     131.942
+    ],
+    "positionChunk": [
+     -103.717,
+     0,
+     131.942
+    ],
+    "yawRad": 1.89161,
+    "lengthM": 14.21,
+    "widthM": 10.39,
+    "eavesM": 14.42
+   }
+  },
+  {
+   "pand": "0363100012086053",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -31.254,
+     -0.968,
+     171.181
+    ],
+    "positionChunk": [
+     -31.254,
+     0,
+     171.181
+    ],
+    "yawRad": 1.88998,
+    "lengthM": 14.26,
+    "widthM": 10.38,
+    "eavesM": 14.44
+   }
+  },
+  {
+   "pand": "0363100012075915",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -99.282,
+     -0.928,
+     145.289
+    ],
+    "positionChunk": [
+     -99.282,
+     0,
+     145.289
+    ],
+    "yawRad": 1.89128,
+    "lengthM": 14.16,
+    "widthM": 10.39,
+    "eavesM": 14.44
+   }
+  },
+  {
+   "pand": "0363100012074771",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     14.645,
+     -0.84,
+     181.747
+    ],
+    "positionChunk": [
+     14.645,
+     0,
+     181.747
+    ],
+    "yawRad": 1.89005,
+    "lengthM": 14.2,
+    "widthM": 10.37,
+    "eavesM": 14.38
+   }
+  },
+  {
+   "pand": "0363100012120915",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -94.843,
+     -0.925,
+     158.657
+    ],
+    "positionChunk": [
+     -94.843,
+     0,
+     158.657
+    ],
+    "yawRad": 1.89172,
+    "lengthM": 14.04,
+    "widthM": 10.38,
+    "eavesM": 14.43
+   }
+  },
+  {
+   "pand": "0363100012085892",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -149.696,
+     -0.914,
+     121.333
+    ],
+    "positionChunk": [
+     -149.696,
+     0,
+     121.333
+    ],
+    "yawRad": 1.89086,
+    "lengthM": 14.18,
+    "widthM": 10.38,
+    "eavesM": 14.39
+   }
+  },
+  {
+   "pand": "0363100012112354",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -90.437,
+     -0.914,
+     171.914
+    ],
+    "positionChunk": [
+     -90.437,
+     0,
+     171.914
+    ],
+    "yawRad": 1.8913,
+    "lengthM": 13.92,
+    "widthM": 10.39,
+    "eavesM": 14.43
+   }
+  },
+  {
+   "pand": "0363100012088116",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -162.501,
+     -0.922,
+     108.481
+    ],
+    "positionChunk": [
+     -162.501,
+     0,
+     108.481
+    ],
+    "yawRad": -2.82427,
+    "lengthM": 14.28,
+    "widthM": 10.35,
+    "eavesM": 14.44
+   }
+  },
+  {
+   "pand": "0363100012077230",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -145.268,
+     -0.931,
+     134.665
+    ],
+    "positionChunk": [
+     -145.268,
+     0,
+     134.665
+    ],
+    "yawRad": 1.89128,
+    "lengthM": 14.16,
+    "widthM": 10.38,
+    "eavesM": 14.39
+   }
+  },
+  {
+   "pand": "0363100012079710",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -140.831,
+     -0.938,
+     148.036
+    ],
+    "positionChunk": [
+     -140.831,
+     0,
+     148.036
+    ],
+    "yawRad": 1.8918,
+    "lengthM": 14.03,
+    "widthM": 10.38,
+    "eavesM": 14.43
+   }
+  },
+  {
+   "pand": "0363100012080109",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -86.039,
+     -0.924,
+     185.161
+    ],
+    "positionChunk": [
+     -86.039,
+     0,
+     185.161
+    ],
+    "yawRad": 1.89146,
+    "lengthM": 14.11,
+    "widthM": 10.39,
+    "eavesM": 14.42
+   }
+  },
+  {
+   "pand": "0363100012113343",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -175.987,
+     -0.95,
+     112.911
+    ],
+    "positionChunk": [
+     -175.987,
+     0,
+     112.911
+    ],
+    "yawRad": -2.82362,
+    "lengthM": 14.15,
+    "widthM": 10.35,
+    "eavesM": 14.43
+   }
+  },
+  {
+   "pand": "0363100012132223",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -136.428,
+     -0.949,
+     161.296
+    ],
+    "positionChunk": [
+     -136.428,
+     0,
+     161.296
+    ],
+    "yawRad": 1.8913,
+    "lengthM": 13.92,
+    "widthM": 10.38,
+    "eavesM": 14.46
+   }
+  },
+  {
+   "pand": "0363100012107336",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -81.601,
+     -0.933,
+     198.513
+    ],
+    "positionChunk": [
+     -81.601,
+     0,
+     198.513
+    ],
+    "yawRad": 1.89096,
+    "lengthM": 14.16,
+    "widthM": 10.39,
+    "eavesM": 14.42
+   }
+  },
+  {
+   "pand": "0363100012063383",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -132.033,
+     -0.954,
+     174.54
+    ],
+    "positionChunk": [
+     -132.033,
+     0,
+     174.54
+    ],
+    "yawRad": 1.89097,
+    "lengthM": 14.11,
+    "widthM": 10.38,
+    "eavesM": 14.46
+   }
+  },
+  {
+   "pand": "0363100012136370",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -189.356,
+     -0.935,
+     117.293
+    ],
+    "positionChunk": [
+     -189.356,
+     0,
+     117.293
+    ],
+    "yawRad": -2.82437,
+    "lengthM": 14.04,
+    "widthM": 10.34,
+    "eavesM": 14.44
+   }
+  },
+  {
+   "pand": "0363100012101582",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -77.126,
+     -0.904,
+     211.986
+    ],
+    "positionChunk": [
+     -77.126,
+     0,
+     211.986
+    ],
+    "yawRad": 1.89121,
+    "lengthM": 14.25,
+    "widthM": 10.39,
+    "eavesM": 14.4
+   }
+  },
+  {
+   "pand": "0363100012127744",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -127.599,
+     -0.939,
+     187.898
+    ],
+    "positionChunk": [
+     -127.599,
+     0,
+     187.898
+    ],
+    "yawRad": 1.89128,
+    "lengthM": 14.16,
+    "widthM": 10.38,
+    "eavesM": 14.42
+   }
+  },
+  {
+   "pand": "0363100012094385",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -123.13,
+     -0.946,
+     201.361
+    ],
+    "positionChunk": [
+     -123.13,
+     0,
+     201.361
+    ],
+    "yawRad": 1.89098,
+    "lengthM": 14.22,
+    "widthM": 10.38,
+    "eavesM": 14.43
+   }
+  },
+  {
+   "pand": "0363100012074445",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -202.645,
+     -0.962,
+     121.658
+    ],
+    "positionChunk": [
+     -202.645,
+     0,
+     121.658
+    ],
+    "yawRad": -2.82377,
+    "lengthM": 14,
+    "widthM": 10.35,
+    "eavesM": 14.46
+   }
+  },
+  {
+   "pand": "0363100012068365",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -216.078,
+     -0.978,
+     126.07
+    ],
+    "positionChunk": [
+     -216.078,
+     0,
+     126.07
+    ],
+    "yawRad": -2.82436,
+    "lengthM": 14.32,
+    "widthM": 10.35,
+    "eavesM": 14.48
+   }
+  },
+  {
+   "pand": "0363100012106394",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -195.638,
+     -0.959,
+     162.12
+    ],
+    "positionChunk": [
+     -195.638,
+     0,
+     162.12
+    ],
+    "yawRad": 1.89059,
+    "lengthM": 14.14,
+    "widthM": 10.37,
+    "eavesM": 14.46
+   }
+  },
+  {
+   "pand": "0363100012115882",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -191.224,
+     -0.963,
+     175.456
+    ],
+    "positionChunk": [
+     -191.224,
+     0,
+     175.456
+    ],
+    "yawRad": 1.89019,
+    "lengthM": 13.99,
+    "widthM": 10.37,
+    "eavesM": 14.43
+   }
+  },
+  {
+   "pand": "0363100012112234",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -186.812,
+     -0.952,
+     188.777
+    ],
+    "positionChunk": [
+     -186.812,
+     0,
+     188.777
+    ],
+    "yawRad": 1.88981,
+    "lengthM": 14.13,
+    "widthM": 10.37,
+    "eavesM": 14.41
+   }
+  },
+  {
+   "pand": "0363100012108526",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -182.405,
+     -0.983,
+     202.077
+    ],
+    "positionChunk": [
+     -182.405,
+     0,
+     202.077
+    ],
+    "yawRad": 1.8906,
+    "lengthM": 13.97,
+    "widthM": 10.36,
+    "eavesM": 14.46
+   }
+  },
+  {
+   "pand": "0363100012075897",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -178.019,
+     -0.966,
+     215.321
+    ],
+    "positionChunk": [
+     -178.019,
+     0,
+     215.321
+    ],
+    "yawRad": 1.89084,
+    "lengthM": 14.01,
+    "widthM": 10.37,
+    "eavesM": 14.44
+   }
+  },
+  {
+   "pand": "0363100012092085",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -173.607,
+     -0.953,
+     228.65
+    ],
+    "positionChunk": [
+     -173.607,
+     0,
+     228.65
+    ],
+    "yawRad": 1.89055,
+    "lengthM": 14.07,
+    "widthM": 10.37,
+    "eavesM": 14.43
+   }
+  },
+  {
+   "pand": "0363100012062248",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -169.16,
+     -0.892,
+     242.085
+    ],
+    "positionChunk": [
+     -169.16,
+     0,
+     242.085
+    ],
+    "yawRad": 1.89079,
+    "lengthM": 14.24,
+    "widthM": 10.37,
+    "eavesM": 14.34
+   }
+  },
+  {
+   "pand": "0363100012115066",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-buff",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     1509.888,
+     -0.628,
+     -2085.896
+    ],
+    "positionChunk": [
+     1509.888,
+     0,
+     -2085.896
+    ],
+    "yawRad": -1.8214,
+    "lengthM": 13.92,
+    "widthM": 10.39,
+    "eavesM": 14.71
+   }
+  },
+  {
+   "pand": "0363100012074344",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-buff",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     1513.346,
+     -0.651,
+     -2099.375
+    ],
+    "positionChunk": [
+     1513.346,
+     0,
+     -2099.375
+    ],
+    "yawRad": -1.821,
+    "lengthM": 13.92,
+    "widthM": 10.41,
+    "eavesM": 14.73
+   }
+  },
+  {
+   "pand": "0363100012095070",
+   "type": "nw-portiek-wide-core-beekenhoff",
+   "variant": "brick-buff",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     1516.835,
+     -0.734,
+     -2112.992
+    ],
+    "positionChunk": [
+     1516.835,
+     0,
+     -2112.992
+    ],
+    "yawRad": -1.821,
+    "lengthM": 14.19,
+    "widthM": 10.42,
+    "eavesM": 14.83
+   }
+  }
+ ]
+}
