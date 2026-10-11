@@ -1,0 +1,351 @@
+{
+  "id": "nw-rowhouse-red-panel-door",
+  "label": "Nieuw-West terraced house, yellow or brown brick, white-framed window group over a red panel beside a transomed door, a small window, two upper windows, dark tile roof along the street (Slotermeer/Slotervaart: Albertus Magnushof, Anselmushof, Thomas van Aquinostraat, Bierens de Haanstraat, Geert Grootestraat, Rudolf Agricolastraat)",
+  "frontOnShort": true,
+  "source": {
+    "clusterRank": 1,
+    "panden": 124,
+    "bouwjaar": [
+      1950,
+      1956
+    ],
+    "lengthM": 8.3,
+    "widthM": 4.7,
+    "bouwlagen": 3,
+    "roof": "pitched",
+    "dwellingsMedian": 1
+  },
+  "storeys": 2,
+  "eavesRangeM": [
+    5.2,
+    6.7
+  ],
+  "footprintRangeM": {
+    "frontage": [
+      4.4,
+      5.3
+    ],
+    "depth": [
+      7.1,
+      8.6
+    ]
+  },
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.3,
+    "vergeOverhangM": 0.0,
+    "thicknessM": 0.12,
+    "pitchDeg": 30
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "brown-red",
+  "variants": {
+    "yellow-red": {
+      "label": "Yellow brick, red doors and panels, dark roof",
+      "evidence": "survey terraces #176, 181, 182, 184, 192, 198 (Albertus Magnushof, Anselmushof, Thomas van Aquinostraat, Bierens de Haanstraat)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#8a7556"
+        },
+        "frame": "#eeeae0",
+        "glass": "#4b5a6b",
+        "door": "#7d1e2b",
+        "accent": "#f0ece0",
+        "rail": "#c9c4b6",
+        "dark": "#3a3a3a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "slate",
+          "tint": "#4a4545"
+        }
+      }
+    },
+    "yellow-dark": {
+      "label": "Yellow brick, dark grey/black doors and panels, dark roof",
+      "evidence": "survey terraces #177 (20 houses, Rudolf Agricolastraat), #188 (Anselmushof)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#8a7556"
+        },
+        "frame": "#eeeae0",
+        "glass": "#4b5a6b",
+        "door": "#34363a",
+        "accent": "#f0ece0",
+        "rail": "#c9c4b6",
+        "dark": "#3a3a3a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "slate",
+          "tint": "#4a4545"
+        }
+      }
+    },
+    "brown-red": {
+      "label": "Brown brick, red doors and panels, dark roof",
+      "evidence": "survey terraces #183, 185 (20 houses), 189, 201, 203",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#5f4937"
+        },
+        "frame": "#eeeae0",
+        "glass": "#4b5a6b",
+        "door": "#7d1e2b",
+        "accent": "#f0ece0",
+        "rail": "#c9c4b6",
+        "dark": "#3a3a3a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "slate",
+          "tint": "#4a4545"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012120041.jpg",
+          "pand": "0363100012120041",
+          "address": "Bierens de Haanstraat (terrace #201)",
+          "note": "house pitch 355 px = 5.2 m: ground window group 1.85 m over a 1.2 m red panel, red door 0.9 m with transom (together 2.95 m), small 0.75 m window, upper two 1.6 m windows; same handedness in three houses"
+        },
+        {
+          "photo": "survey crop 0363100012070542.jpg",
+          "pand": "0363100012070542",
+          "address": "Geert Grootestraat (terrace #185)",
+          "note": "brown brick: window group + door with the same order house after house, small window between blocks, upper pairs"
+        },
+        {
+          "photo": "survey crop 0363100012081674.jpg",
+          "pand": "0363100012081674",
+          "address": "Thomas van Aquinostraat (terrace #182)",
+          "note": "yellow brick: red-panelled door and window group, two upper windows per house, dormer additions on some roofs"
+        },
+        {
+          "photo": "survey crop 0363100012130125.jpg",
+          "pand": "0363100012130125",
+          "address": "Rudolf Agricolastraat (terrace #177)",
+          "note": "yellow brick with dark doors: same layout, pairs of upper windows, small window beside the block"
+        },
+        {
+          "photo": "survey crop 0363100012144539.jpg",
+          "pand": "0363100012144539",
+          "address": "Bierens de Haanstraat (terrace #198)",
+          "note": "red panels under the window groups, doors to their right, small windows between houses"
+        }
+      ],
+      "counted": {
+        "bays": 2,
+        "openingsPerUpperStorey": 2,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "block",
+          "w": 2.95,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -0.34,
+              "w": 1.8,
+              "h": 1.35,
+              "sill": 1.3,
+              "lights": 3
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": -0.34,
+              "w": 1.8,
+              "h": 1.2,
+              "sill": 0.05,
+              "colour": "door",
+              "depth": 0.05
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": 0.95,
+              "w": 0.9,
+              "h": 2.28,
+              "steps": 0
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": 0.95,
+              "w": 0.9,
+              "h": 0.3,
+              "sill": 2.34,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 0.095,
+              "w": 1.6,
+              "h": 1.35,
+              "sill": 1.2,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "wall",
+          "w": 2.25,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": 0.12,
+              "w": 0.75,
+              "h": 0.8,
+              "sill": 1.8,
+              "lights": 1
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -0.515,
+              "w": 1.6,
+              "h": 1.35,
+              "sill": 1.2,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012120041.jpg",
+          "pand": "0363100012120041",
+          "address": "Bierens de Haanstraat",
+          "note": "rear (garden side) NOT seen in any photo: generic two-window upper storey, garden door and kitchen window inferred from the frontage scheme; it is hidden between the rear gardens in practice"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 2,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "back",
+          "w": 1,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": 1.0,
+              "w": 0.9,
+              "h": 2.1,
+              "steps": 0
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -1.0,
+              "w": 1.8,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012120041.jpg",
+          "pand": "0363100012120041",
+          "address": "Bierens de Haanstraat",
+          "note": "end wall seen edge-on beside the front at the end of a terrace: plain wall, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012120041.jpg",
+          "pand": "0363100012120041",
+          "address": "Bierens de Haanstraat",
+          "note": "end wall seen edge-on beside the front at the end of a terrace: plain wall, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Front on the SHORT side (frontOnShort). Measured on survey crop 0363100012120041: 68 px per metre at the facade, house pitch 352 px, bay widths 2.95 + 2.25.",
+    "Not mirrored: block (window group + door) on the left of the house, small window on the right, in all 13 terraces read.",
+    "Door colour red, dark grey or white and panel colour follow the door; dormer additions are not modelled."
+  ]
+}

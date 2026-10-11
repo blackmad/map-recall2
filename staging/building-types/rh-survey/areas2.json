@@ -1,0 +1,80 @@
+[
+ {
+  "area": "rh2-01",
+  "houses": 152,
+  "assigned": 120,
+  "held": 32
+ },
+ {
+  "area": "rh2-02",
+  "houses": 22,
+  "assigned": 10,
+  "held": 12
+ },
+ {
+  "area": "rh2-03",
+  "houses": 6,
+  "assigned": 0,
+  "held": 6
+ },
+ {
+  "area": "rh2-04",
+  "houses": 272,
+  "assigned": 272,
+  "held": 0
+ },
+ {
+  "area": "rh2-05",
+  "houses": 6,
+  "assigned": 6,
+  "held": 0
+ },
+ {
+  "area": "rh2-06",
+  "houses": 11,
+  "assigned": 0,
+  "held": 11
+ },
+ {
+  "area": "rh2-07",
+  "houses": 99,
+  "assigned": 99,
+  "held": 0
+ },
+ {
+  "area": "rh2-08",
+  "houses": 8,
+  "assigned": 7,
+  "held": 1
+ },
+ {
+  "area": "rh2-09",
+  "houses": 98,
+  "assigned": 97,
+  "held": 1
+ },
+ {
+  "area": "rh2-10",
+  "houses": 39,
+  "assigned": 0,
+  "held": 39
+ },
+ {
+  "area": "rh2-11",
+  "houses": 60,
+  "assigned": 0,
+  "held": 60
+ },
+ {
+  "area": "rh2-12",
+  "houses": 70,
+  "assigned": 0,
+  "held": 70
+ },
+ {
+  "area": "rh2-13",
+  "houses": 15,
+  "assigned": 0,
+  "held": 15
+ }
+]

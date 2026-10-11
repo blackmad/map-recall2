@@ -1,0 +1,142 @@
+{
+ "area": "rh2-05",
+ "frame": "x east, z south, y NAP metres from anchor; yaw about +y takes the local frame (front +z, tangent +x) to east/south",
+ "anchor": {
+  "lng": 4.8121,
+  "lat": 52.37327
+ },
+ "placements": [
+  {
+   "pand": "0363100012093553",
+   "type": "nw-rowhouse-red-panel-door",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -0.488,
+     -0.709,
+     -1.708
+    ],
+    "positionChunk": [
+     -0.488,
+     0,
+     -1.708
+    ],
+    "yawRad": 1.41014,
+    "lengthM": 4.72,
+    "widthM": 8.29,
+    "eavesM": 6.1
+   }
+  },
+  {
+   "pand": "0363100012122868",
+   "type": "nw-rowhouse-red-panel-door",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1.243,
+     -0.706,
+     2.957
+    ],
+    "positionChunk": [
+     -1.243,
+     0,
+     2.957
+    ],
+    "yawRad": 1.41022,
+    "lengthM": 4.76,
+    "widthM": 8.29,
+    "eavesM": 6.1
+   }
+  },
+  {
+   "pand": "0363100012121278",
+   "type": "nw-rowhouse-red-panel-door",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     0.263,
+     -0.715,
+     -6.347
+    ],
+    "positionChunk": [
+     0.263,
+     0,
+     -6.347
+    ],
+    "yawRad": 1.41004,
+    "lengthM": 4.7,
+    "widthM": 8.29,
+    "eavesM": 6.11
+   }
+  },
+  {
+   "pand": "0363100012151665",
+   "type": "nw-rowhouse-red-panel-door",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1.995,
+     -0.701,
+     7.588
+    ],
+    "positionChunk": [
+     -1.995,
+     0,
+     7.588
+    ],
+    "yawRad": 1.40939,
+    "lengthM": 4.69,
+    "widthM": 8.29,
+    "eavesM": 6.08
+   }
+  },
+  {
+   "pand": "0363100012139523",
+   "type": "nw-rowhouse-red-panel-door",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -2.751,
+     -0.708,
+     12.245
+    ],
+    "positionChunk": [
+     -2.751,
+     0,
+     12.245
+    ],
+    "yawRad": 1.41022,
+    "lengthM": 4.76,
+    "widthM": 8.29,
+    "eavesM": 6.09
+   }
+  },
+  {
+   "pand": "0363100012133799",
+   "type": "nw-rowhouse-red-panel-door",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     1.033,
+     -0.724,
+     -11.098
+    ],
+    "positionChunk": [
+     1.033,
+     0,
+     -11.098
+    ],
+    "yawRad": 1.41004,
+    "lengthM": 4.92,
+    "widthM": 8.29,
+    "eavesM": 6.12
+   }
+  }
+ ]
+}

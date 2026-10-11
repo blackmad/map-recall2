@@ -1,0 +1,304 @@
+{
+  "id": "nw-rowhouse-white-sheds",
+  "label": "Nieuw-West terraced house, dark red-brown brick over a white-painted ground storey with a white shed and a dark green shed roof at the front, recessed door, one big and one small square window above, terracotta tile roof along the street (Slotermeer: Jacob Tilstraat, Daam van Harenstraat, Willem van Hembyzestraat, Gillis Steltmanstraat, Ellert Vlieropstraat)",
+  "frontOnShort": true,
+  "source": {
+    "clusterRank": 1,
+    "panden": 202,
+    "bouwjaar": [
+      1955,
+      1960
+    ],
+    "lengthM": 7.5,
+    "widthM": 5.25,
+    "bouwlagen": 3,
+    "roof": "pitched",
+    "dwellingsMedian": 1
+  },
+  "storeys": 2,
+  "eavesRangeM": [
+    5.2,
+    6.7
+  ],
+  "footprintRangeM": {
+    "frontage": [
+      4.9,
+      5.7
+    ],
+    "depth": [
+      7.2,
+      7.8
+    ]
+  },
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.3,
+    "vergeOverhangM": 0.0,
+    "thicknessM": 0.12,
+    "pitchDeg": 30
+  },
+  "ground": {
+    "mode": "solid",
+    "plinthM": 2.45
+  },
+  "defaultVariant": "tile",
+  "variants": {
+    "tile": {
+      "label": "Dark red-brown brick, white ground storey and sheds, dark green shed roof, terracotta tile roof",
+      "evidence": "survey terraces #178, 186, 187, 190, 193, 194, 196, 197, 200, 202, 204-206, 208-215, 219, 220 (23 terraces)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#5a4638"
+        },
+        "frame": "#ece8dc",
+        "glass": "#4b5a6b",
+        "door": "#2f2a28",
+        "accent": "#eeeadc",
+        "rail": "#c9c4b6",
+        "dark": "#2f3d36",
+        "column": "#efede4",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#8f4a3a"
+        },
+        "plinth": {
+          "slot": "stucco",
+          "tint": "#e9e6da"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012134785.jpg",
+          "pand": "0363100012134785",
+          "address": "Homme Hettingastraat (terrace #196)",
+          "note": "per house (385 px = 5.2 m): door 0.9 m recessed on the left, white shed 3.1 m x 2.4 m with a dark green flat roof and a small square window on the right, upper storey brick with a small 0.55 m square window and a 1.6 m two-light window"
+        },
+        {
+          "photo": "survey crop 0363100012140333.jpg",
+          "pand": "0363100012140333",
+          "address": "Jacob Tilstraat (terrace #187)",
+          "note": "same: white-painted ground storey, door under a small canopy, shed on the right of every house, windows above"
+        },
+        {
+          "photo": "survey crop 0363100012130278.jpg",
+          "pand": "0363100012130278",
+          "address": "Daam van Harenstraat (terrace #190)",
+          "note": "sheds, recessed doors and the small + big window rhythm repeat house after house; tile roof"
+        },
+        {
+          "photo": "survey crop 0363100012126779.jpg",
+          "pand": "0363100012126779",
+          "address": "Willem van Hembyzestraat (terrace #205)",
+          "note": "row of white sheds seen across a lawn, dark brick above, tile roof"
+        },
+        {
+          "photo": "survey crop 0363100012116725.jpg",
+          "pand": "0363100012116725",
+          "address": "Jacob van Weesenbekestraat (terrace #208)",
+          "note": "shed + door pairs and upper window pairs, same order"
+        }
+      ],
+      "counted": {
+        "bays": 2,
+        "openingsPerUpperStorey": 2,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "entry",
+          "w": 2.1,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": -0.3,
+              "w": 0.9,
+              "h": 2.1,
+              "steps": 0
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -0.15,
+              "w": 0.55,
+              "h": 0.55,
+              "sill": 1.5,
+              "lights": 1
+            }
+          ]
+        },
+        {
+          "id": "shed",
+          "w": 3.1,
+          "role": "storage",
+          "elements": [
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": 0.0,
+              "w": 2.9,
+              "h": 2.4,
+              "sill": 0.0,
+              "colour": "column",
+              "depth": 0.03
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": 0.0,
+              "w": 2.95,
+              "h": 0.22,
+              "sill": 2.4,
+              "colour": "dark",
+              "depth": 0.4
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -0.65,
+              "w": 0.45,
+              "h": 0.45,
+              "sill": 1.45,
+              "lights": 1
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -0.85,
+              "w": 1.6,
+              "h": 1.5,
+              "sill": 1.1,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012134785.jpg",
+          "pand": "0363100012134785",
+          "address": "Homme Hettingastraat",
+          "note": "rear (garden side) NOT seen in any photo: generic two-window upper storey, garden door and kitchen window inferred from the frontage scheme; it is hidden between the rear gardens in practice"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 2,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "back",
+          "w": 1,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": 1.0,
+              "w": 0.9,
+              "h": 2.1,
+              "steps": 0
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -1.0,
+              "w": 1.8,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012134785.jpg",
+          "pand": "0363100012134785",
+          "address": "Homme Hettingastraat",
+          "note": "end wall seen edge-on beside the front at the end of a terrace: plain wall, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012134785.jpg",
+          "pand": "0363100012134785",
+          "address": "Homme Hettingastraat",
+          "note": "end wall seen edge-on beside the front at the end of a terrace: plain wall, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Front on the SHORT side (frontOnShort). Measured on survey crop 0363100012134785: 74 px per metre at the facade, house pitch 385 px. The 23 terraces share one footprint (7.5 x 5.25 m).",
+    "The shed is modelled as a flat white panel (3 cm proud, so its window shows) with a 0.4 m proud dark green roof edge; the real sheds are free-standing garden stores in front of the wall and their spacing against the doors was read from one clear photo (door 0.75 m from the house edge, shed from 2.1 m).",
+    "Not mirrored: the small window sits left of the big window and the shed right of the door in every terrace read. Door colours vary (dark brown, black, red-brown); dark is the commonest."
+  ]
+}

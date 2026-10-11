@@ -1,0 +1,186 @@
+{
+ "area": "rh2-08",
+ "frame": "x east, z south, y NAP metres from anchor; yaw about +y takes the local frame (front +z, tangent +x) to east/south",
+ "anchor": {
+  "lng": 4.81799,
+  "lat": 52.37784
+ },
+ "placements": [
+  {
+   "pand": "0363100012072053",
+   "type": "nw-rowhouse-render-pilaster",
+   "variant": "white",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     20.767,
+     -0.613,
+     -54.646
+    ],
+    "positionChunk": [
+     20.767,
+     0,
+     -54.646
+    ],
+    "yawRad": -0.38837,
+    "lengthM": 5.12,
+    "widthM": 8.69,
+    "eavesM": 5.96
+   }
+  },
+  {
+   "pand": "0363100012104351",
+   "type": "nw-rowhouse-render-pilaster",
+   "variant": "white",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     16.16,
+     -0.563,
+     -56.525
+    ],
+    "positionChunk": [
+     16.16,
+     0,
+     -56.525
+    ],
+    "yawRad": -0.39102,
+    "lengthM": 4.86,
+    "widthM": 8.7,
+    "eavesM": 5.9
+   }
+  },
+  {
+   "pand": "0363100012132854",
+   "type": "nw-rowhouse-render-pilaster",
+   "variant": "white",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     11.644,
+     -0.57,
+     -58.361
+    ],
+    "positionChunk": [
+     11.644,
+     0,
+     -58.361
+    ],
+    "yawRad": -0.39102,
+    "lengthM": 4.88,
+    "widthM": 8.71,
+    "eavesM": 5.92
+   }
+  },
+  {
+   "pand": "0363100012103477",
+   "type": "nw-rowhouse-render-pilaster",
+   "variant": "white",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     7.125,
+     -0.576,
+     -60.202
+    ],
+    "positionChunk": [
+     7.125,
+     0,
+     -60.202
+    ],
+    "yawRad": -0.39247,
+    "lengthM": 4.89,
+    "widthM": 8.71,
+    "eavesM": 5.91
+   }
+  },
+  {
+   "pand": "0363100012146414",
+   "type": "nw-rowhouse-render-pilaster",
+   "variant": "white",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     2.62,
+     -0.567,
+     -62.038
+    ],
+    "positionChunk": [
+     2.62,
+     0,
+     -62.038
+    ],
+    "yawRad": -0.39585,
+    "lengthM": 4.92,
+    "widthM": 8.73,
+    "eavesM": 5.91
+   }
+  },
+  {
+   "pand": "0363100012111553",
+   "type": "nw-rowhouse-render-pilaster",
+   "variant": "white",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1.899,
+     -0.562,
+     -63.884
+    ],
+    "positionChunk": [
+     -1.899,
+     0,
+     -63.884
+    ],
+    "yawRad": -0.39585,
+    "lengthM": 4.85,
+    "widthM": 8.72,
+    "eavesM": 5.89
+   }
+  },
+  {
+   "pand": "0363100012100026",
+   "type": "nw-rowhouse-render-pilaster",
+   "variant": "white",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -6.537,
+     -0.604,
+     -65.775
+    ],
+    "positionChunk": [
+     -6.537,
+     0,
+     -65.775
+    ],
+    "yawRad": -0.38885,
+    "lengthM": 5.25,
+    "widthM": 8.69,
+    "eavesM": 5.95
+   }
+  },
+  {
+   "pand": "0363100012136054",
+   "type": "nw-rowhouse-render-pilaster",
+   "variant": "white",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -54.153,
+     -0.723,
+     422.039
+    ],
+    "positionChunk": [
+     -54.153,
+     0,
+     422.039
+    ],
+    "yawRad": 2.89777,
+    "lengthM": 5.55,
+    "widthM": 9.04,
+    "eavesM": 6.31
+   }
+  }
+ ]
+}
