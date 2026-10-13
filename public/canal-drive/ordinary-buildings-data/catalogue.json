@@ -32797,11 +32797,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012168172",
       "name": "Oude Turfmarkt 139 / Binnengasthuisstraat 46, Amsterdam: Binnengasthuis complex (UvA), brick civic front on the canal and white balconied housing block in the courtyard street",
-      "hash": "f03dec7d9789250a18d5a723968cf573eed6e3b6ee9250e844c99424111e4dae",
-      "sha256": "f03dec7d9789250a18d5a723968cf573eed6e3b6ee9250e844c99424111e4dae",
-      "bytes": 739160,
-      "triangles": 9362,
-      "materials": 10,
+      "hash": "06c897b84d5b903ee43b6a2f52dca8b5845f929c9392c1471634db8a7775fa1e",
+      "sha256": "06c897b84d5b903ee43b6a2f52dca8b5845f929c9392c1471634db8a7775fa1e",
+      "bytes": 754820,
+      "triangles": 9552,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -33381,14 +33381,15 @@
         "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
         "Group 0 (SW run on the canal, surfaces from panels 54/195/57/64/69/226; w05-235, 2017-07-06): five-storey brown brick civic front with a pale cornice and a UNIVERSITEIT VAN AMSTERDAM name band under it, nine axes of tall white-framed sashes. Modelled as brick-bay-grid, 5 storeys, 8-9 bays, cornice; the name band lettering, the banded arched cellar windows and the entrance are not modelled (the entrance and lettering sit on a neighbouring wall).",
         "Group 1 (E wall, panel 104; w03-91, 2016-06-09): white rendered block with orange-framed wide windows, glass-block stair, a curved balcony stack and a glass entrance canopy. Modelled as 3 storeys of low windows in pale cream brick (the house has one wall material, brick; render would need a per-group wallMaterial). Not modelled: curved balconies, glass-block stair, canopy and the fourth floor (the eaves allow three storeys here).",
-        "All other walls (courtyard, N, S, NE) are blank: no photograph."
+        "All other walls (courtyard, N, S, NE) are blank: no photograph.",
+        "Components lane (2026-10-13): walls[0] carries the UNIVERSITEIT VAN AMSTERDAM name on its cornice face (signage mount cornice; w05-235 shows it on the pale entablature); walls[1] is white render (wallMaterial render: the stucco slot), no longer cream brick. Supersedes the notes that the name band is not modelled and that render needs a per-group wallMaterial."
       ],
       "reviewState": "large-recipe-gates-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012168172",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:42:06.865Z"
+      "updatedAt": "2026-10-13T22:23:18.069Z"
     }
   ]
 }
