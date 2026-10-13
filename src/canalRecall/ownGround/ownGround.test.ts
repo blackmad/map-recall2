@@ -9,8 +9,9 @@ import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extend
 import { DECK_BLEND_M, GroundSurface, riderPose, type Vec2 } from './surface';
 import { cutIntervals, drapeTriangles, edgeWall, emptyMesh, endCap, reliefGrid, ribbon, type MeshArrays } from './drape';
 import { crossSection, parseMetres, areaKind } from './osmGround';
+import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
 import { buildStreets, prepareWays, routeRibbon, LIFT } from './streets';
-import { buildWaterMask, maskDistance, quayWallMesh, waterSurfaceMesh } from './water';
+import { buildWaterMask, maskDistance, quayWallMesh, waterSurfaceMesh, waterZAt } from './water';
 import { flatDeckBody, measuredDeckBody } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
@@ -525,3 +526,86 @@ for (const [id, lng, lat] of [['BRU0166', 4.87445, 52.37286], ['BRU0044', 4.8875
     assert.ok(far.stats.triangles < cell.stats.triangles * 0.6, 'LOD 1 lighter');
   });
 }
+
+// ------------------------------------------------------------- per-polder water levels
+test('water levels: each polygon sits at its own level, each shore wall measures from its own', () => {
+  const sq = (x: number): Vec2[] => [[x, 0], [x + 10, 0], [x + 10, 10], [x, 10]];
+  const geo = { polygons: [[sq(0)], [sq(20)]], shores: [[[0, 0], [0, 10]] as Vec2[], [[20, 0], [20, 10]] as Vec2[]], levels: [-1.77, -3.47], shoreLevels: [-1.77, -3.47] };
+  const surf = waterSurfaceMesh(geo, -1.77), zs = (lo: number, hi: number) => { const out: number[] = []; for (let i = 0; i < surf.positions.length; i += 3) if (surf.positions[i] >= lo && surf.positions[i] <= hi) out.push(surf.positions[i + 2]); return out; };
+  assert.ok(zs(0, 10).every(z => z === -1.77) && zs(20, 30).every(z => z === -3.47));
+  const bank = () => 0.2; // 0.2 m above the datum on both banks
+  const wall = (lines: Vec2[][], levels?: number[]) => quayWallMesh({ polygons: [], shores: lines, shoreLevels: levels }, bank, -1.77);
+  const lowest = (m: { positions: ArrayLike<number> }) => { let lo = Infinity; for (let i = 2; i < m.positions.length; i += 3) lo = Math.min(lo, m.positions[i]); return lo; };
+  assert.ok(Math.abs(lowest(wall([geo.shores[0]], [-1.77])) - (-1.77 - 0.25)) < 1e-4);
+  assert.ok(Math.abs(lowest(wall([geo.shores[1]], [-3.47])) - (-3.47 - 0.25)) < 1e-4, 'polder wall reaches its own water');
+  assert.ok(Math.abs(lowest(wall([geo.shores[1]])) - (-1.77 - 0.25)) < 1e-4, 'no shore levels: the default');
+  assert.equal(waterZAt([geo], 25, 5, -9), -3.47);
+  assert.equal(waterZAt([geo], 15, 5, -9), -9, 'land: the fallback');
+});
+
+test('regression (polder levels): Osdorpplein ground sits above its local water; the canal belt stays at −1.77', { skip: !haveCells || !existsSync('public/data/extracts/amsterdam/elevation-v1/water-levels.json') }, async () => {
+  const store = fsStore();
+  await store.init();
+  assert.ok(store.waterLevels, 'water-levels.json loaded');
+  const probe = async (lng: number, lat: number) => {
+    const [x, y] = storeToLocal(lng, lat), key = store.cellAt(x, y);
+    await store.cellInput(key, 0);
+    return { ground: store.surface.height(x, y), key, water: (await store.waterCell(key))! };
+  };
+  // Osdorpplein (AGV peilgebied 3640-2, vast peil −2.17 m NAP): ground ≈ −2.1 m scene, polder water ≈ −3.5 m.
+  const osdorp = await probe(4.8076, 52.3585);
+  const lowest = Math.min(...(osdorp.water.levels ?? [0]));
+  assert.ok(lowest < -3, `polder water well below the datum: ${lowest}`);
+  assert.ok(osdorp.ground > lowest + 0.5, `Osdorp ground ${osdorp.ground.toFixed(2)} above local water ${lowest.toFixed(2)}`);
+  assert.ok(osdorp.ground < -1.77, 'the old single level would have flooded it');
+  // Canal belt: the Herengracht cell is uniformly the stadsboezem.
+  const belt = await probe(4.8985, 52.3695);
+  assert.ok(belt.water.levels!.every(z => Math.abs(z + 1.77) < 0.011) && belt.water.shoreLevels!.every(z => Math.abs(z + 1.77) < 0.011), 'canal belt at −1.77');
+  assert.equal(store.sceneZ(-0.4), -1.77);
+});
+
+// ------------------------------------------------------------- BGT widths
+test('BGT widths: own surface, footpath and cycle path per side from a cross-line', () => {
+  const rect = (x0: number, x1: number): Vec2[][] => [[[x0, -50], [x1, -50], [x1, 50], [x0, 50]]];
+  const poly = (cls: SurfaceClass, x0: number, x1: number): BgtPolygon => { const rings = rect(x0, x1); return { cls, h: 0, rings, bbox: polygonBox(rings) }; };
+  // A street running north: footpath 2 m | cycle path 2 m | carriageway 5.5 m | footpath 2.4 m, offset so the centreline is x = 0.
+  const polys = [poly('foot', -9.1, -7.1), poly('cycle', -7.1, -5.1), poly('carriage', -5.1, 0.4), poly('foot', 0.4, 2.8)].map(p => ({ ...p }));
+  // Re-centre: the way's own run is −5.1…0.4, so the centreline x = −2.35.
+  const s = sectionWidths(polys, [-2.35, 0], [1, 0], new Set<SurfaceClass>(['carriage']))!;
+  assert.ok(Math.abs(s.widthM - 5.5) < 1e-6, `carriageway ${s.widthM}`);
+  assert.ok(Math.abs(s.cycleM - 2) < 1e-6 && Math.abs(s.sidewalkM - (2 + 2.4) / 2) < 1e-6, `cycle ${s.cycleM}, footpath ${s.sidewalkM}`);
+  // A parking bay is not the carriageway; a centreline far from any own surface finds nothing.
+  assert.equal(sectionWidths([poly('parking', -5, 5)], [0, 0], [1, 0], new Set<SurfaceClass>(['carriage'])), null);
+  assert.equal(sectionWidths(polys, [30, 0], [1, 0], new Set<SurfaceClass>(['carriage'])), null);
+  // Median over stations along a way drops a junction that inflates one of three.
+  const wideRings: Vec2[][] = [[[-5.1, 10], [12, 10], [12, 30], [-5.1, 30]]];
+  const idx = new BgtIndex([poly('carriage', -5.1, 0.4), { cls: 'carriage', h: 0, rings: wideRings, bbox: polygonBox(wideRings) }]);
+  const w = wayWidths(idx, [[-2.35, -40], [-2.35, 40]], new Set<SurfaceClass>(['carriage']))!;
+  assert.ok(Math.abs(w.widths.widthM - 5.5) < 1e-6 && w.stations === 3);
+  // A dual carriageway merged with its tram bed: the way on one half measures its own half.
+  const dual = [poly('carriage', -3, 9)];
+  assert.ok(Math.abs(sectionWidths(dual, [0, 0], [1, 0], new Set<SurfaceClass>(['carriage']))!.widthM - 6) < 1e-6, 'twice the distance to the near edge');
+  assert.ok(Math.abs(sectionWidths(dual, [3, 0], [1, 0], new Set<SurfaceClass>(['carriage']))!.widthM - 12) < 1e-6, 'a centred way keeps the whole run');
+  assert.equal(classOf('rijbaan lokale weg'), 'carriage');
+  assert.equal(classOf('voetpad op trap'), 'foot');
+  assert.equal(classOf('fietspad'), 'cycle');
+  assert.equal(toDm(5.54), 55);
+});
+
+test('crossSection prefers the BGT width, takes painted lanes off it, and says where each width came from', () => {
+  const tags = { highway: 'residential', cycleway: 'lane', sidewalk: 'both' };
+  const prior = crossSection(tags)!;
+  assert.equal(prior.source.width, 'prior');
+  const measured = crossSection({ ...tags, width: '4' }, [74, 22, 0])!;
+  assert.equal(measured.source.width, 'bgt');
+  assert.ok(Math.abs(measured.bands[0].width - (7.4 - 2 * 1.6)) < 1e-9, 'two painted lanes come off the BGT rijbaan');
+  const sidewalk = measured.bands.find(b => b.kind === 'sidewalk')!;
+  assert.ok(Math.abs(sidewalk.width - 2.2) < 1e-9 && measured.source.sidewalk === 'bgt');
+  // Without a measurement nothing changes.
+  assert.deepEqual(crossSection(tags, undefined), prior);
+  assert.equal(crossSection({ highway: 'cycleway' }, [31, 0, 0])!.bands[0].width, 3.1);
+  assert.equal(crossSection({ highway: 'cycleway' }, [31, 0, 0])!.source.width, 'bgt');
+  assert.equal(crossSection({ highway: 'footway', width: '1' }, [0, 0, 0])!.source.width, 'tag', 'bw zero = not measured');
+  const track = crossSection({ highway: 'secondary', cycleway: 'track' }, [70, 0, 22])!;
+  assert.ok(Math.abs(track.bands.find(b => b.kind === 'cycle_track')!.width - (2.2 + 0.8)) < 1e-9 && track.source.cycleway === 'bgt');
+});

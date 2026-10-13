@@ -481,6 +481,8 @@ export class OwnGround {
 
   /** Canal water level (scene z). */
   waterLevelM(): number { return this.ready ? WATER_Z : 0; }
+  /** Water surface (scene z) at a point: the polder level on resident water, else the canal level. */
+  waterLevelAt(lngLat: LngLat): number { if (!this.ready) return 0; const [x, y] = toLocal(lngLat[0], lngLat[1]); return this.store.waterZ(x, y); }
   applyTheme(): void { this.host.repaint(); }
 
   // ------------------------------------------------------------------ overlays

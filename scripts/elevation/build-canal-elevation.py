@@ -116,6 +116,9 @@ def main() -> None:
     parser.add_argument('--source', default=os.path.expanduser('~/Code/map-recall2-source-data-elevation'))
     parser.add_argument('--register', default='scripts/data/amsterdam-bridge-register.json')
     parser.add_argument('--out', default='artifacts/elevation/staging/elevation-v1')
+    parser.add_argument('--extra-profiles', action='append', default=[],
+                        help='more bridge-surfaces files (e.g. bridge-surfaces-v2.json from scripts/elevation/build-bridge-surfaces-v2.ts); '
+                             'their endpoints do not enter the quay-freeboard median')
     args = parser.parse_args()
 
     water_path = os.path.join(args.source, 'terrain/amsterdam/raw/basemap-water.geojson')
@@ -219,6 +222,10 @@ def main() -> None:
     # ---- measured bridge profiles ---------------------------------------------
     with open(profiles_path) as fh:
         profiles = json.load(fh)['bridges']
+    primary_ids = {b['id'] for b in profiles}
+    for extra in args.extra_profiles:
+        with open(extra) as fh:
+            profiles = profiles + [b for b in json.load(fh)['bridges'] if b['id'] not in primary_ids]
     measured = []
     measured_ids = set()
     endpoint_nap_belt = []
@@ -241,7 +248,7 @@ def main() -> None:
             crossing = [round(min(ss) + pts[0][2], 2), round(max(ss) + pts[0][2], 2)]
         outline = [to_local(olng + x / lng_scale, olat + y / lat_scale) for x, y in b['outline']]
         endpoint = b['provenance']['renderDatum']['endpointNAP']
-        if 4.875 < olng < 4.915 and 52.358 < olat < 52.382:
+        if b['id'] in primary_ids and 4.875 < olng < 4.915 and 52.358 < olat < 52.382:
             endpoint_nap_belt.extend(endpoint)
         measured_ids.add(b['id'])
         measured.append({

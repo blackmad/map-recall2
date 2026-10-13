@@ -13,7 +13,27 @@ import { emptyMesh, vertex, densify, type MeshArrays } from './drape.js';
 import type { HeightFn, Vec2 } from './surface.js';
 
 /** Polygons as rings of scene coords (outer then holes), shorelines with water on their left. */
-export interface WaterGeometry { polygons: Vec2[][][]; shores: Vec2[][] }
+export interface WaterGeometry {
+  polygons: Vec2[][][]; shores: Vec2[][];
+  /** Water surface (scene z) per polygon / per shore (polder levels, water-levels.json); absent: the caller's default. */
+  levels?: readonly number[]; shoreLevels?: readonly number[];
+}
+
+/** Scene z of the water polygon containing (x, y) (even-odd over its rings), else `fallback`. */
+export function waterZAt(geos: readonly WaterGeometry[], x: number, y: number, fallback: number): number {
+  for (const g of geos) {
+    if (!g.levels) continue;
+    for (let k = 0; k < g.polygons.length; k++) {
+      let inside = false;
+      for (const ring of g.polygons[k]) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+        const [xi, yi] = ring[i], [xj, yj] = ring[j];
+        if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside;
+      }
+      if (inside) return g.levels[k] ?? fallback;
+    }
+  }
+  return fallback;
+}
 
 export interface WaterMask {
   x0: number; y0: number; res: number; width: number; height: number;
@@ -119,18 +139,19 @@ export function maskTexels(m: WaterMask): Uint8Array {
 /** Flat water at `z` (canal level). */
 export function waterSurfaceMesh(geo: WaterGeometry, z: number): MeshArrays {
   const m = emptyMesh();
-  for (const poly of geo.polygons) {
+  geo.polygons.forEach((poly, pi) => {
     const coords: number[] = [], holes: number[] = [];
+    const pz = geo.levels?.[pi] ?? z;
     poly.forEach((ring, i) => { if (i) holes.push(coords.length / 2); for (const p of ring) coords.push(p[0], p[1]); });
     const base = m.positions.length / 3;
-    for (let i = 0; i < coords.length; i += 2) vertex(m, coords[i], coords[i + 1], z);
+    for (let i = 0; i < coords.length; i += 2) vertex(m, coords[i], coords[i + 1], pz);
     const tris = earcut(coords, holes, 2);
     for (let i = 0; i < tris.length; i += 3) {
       const a = tris[i], b = tris[i + 1], c = tris[i + 2];
       const ccw = (coords[b * 2] - coords[a * 2]) * (coords[c * 2 + 1] - coords[a * 2 + 1]) - (coords[b * 2 + 1] - coords[a * 2 + 1]) * (coords[c * 2] - coords[a * 2]) > 0;
       m.indices.push(base + a, base + (ccw ? b : c), base + (ccw ? c : b));
     }
-  }
+  });
   return m;
 }
 
@@ -141,9 +162,10 @@ export const QUAY = { coping: [0.64, 0.61, 0.56] as [number, number, number], br
  * the relief at the bank down past the water plane: coping, brick, algae band.
  * Banks that are not above the water (beaches, reed edges) get no wall.
  */
-export function quayWallMesh(geo: WaterGeometry, ground: HeightFn, waterZ: number, step = 2, capM = 0): MeshArrays {
+export function quayWallMesh(geo: WaterGeometry, ground: HeightFn, defaultWaterZ: number, step = 2, capM = 0): MeshArrays {
   const m = emptyMesh(true);
-  for (const line of geo.shores) {
+  for (let li = 0; li < geo.shores.length; li++) {
+    const line = geo.shores[li], waterZ = geo.shoreLevels?.[li] ?? defaultWaterZ;
     const pts = densify(line, step);
     for (let i = 0; i + 1 < pts.length; i++) {
       const a = pts[i], b = pts[i + 1], dx = b[0] - a[0], dy = b[1] - a[1], len = Math.hypot(dx, dy);

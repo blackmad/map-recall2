@@ -19,7 +19,7 @@ import { decodeFallback, decodeProfile } from '../elevation/bridgeDeck.js';
 import { applyLocalToRd, extendTile, fitLocalToRd, GroundField, readGroundTile, tileKey, type GroundIndex } from './heightField.js';
 import { GroundSurface, type DeckSurface, type Vec2 } from './surface.js';
 import type { OsmGroundExtract } from './osmGround.js';
-import type { WaterGeometry } from './water.js';
+import { waterZAt, type WaterGeometry } from './water.js';
 import type { CellInput } from './groundCell.js';
 
 /** The game's local frame (galleryPipeline.toLocal), duplicated so the worker bundle stays small. */
@@ -37,6 +37,9 @@ export const CELL_RELIEF_PAD_M = 350;
 /** Fetch an extract file (path relative to the extract root), gunzipped. */
 export type FetchBytes = (path: string) => Promise<Uint8Array>;
 
+/** elevation-v1/water-levels.json (scripts/own-ground/build-polder-levels.ts): NAP metres per cell polygon / shore, a number when uniform. */
+export interface WaterLevels { version: 1; defaultNap: number; cells: Record<string, { p: number | number[]; s: number | number[] }> }
+
 export interface OsmCellsManifest { version: 1; area: string; cellSizeM: number; cells: string[]; fetched?: string; attribution?: string }
 
 export type Rect = [number, number, number, number];
@@ -52,6 +55,10 @@ export class GroundStore {
   private readonly reliefLoading = new Map<string, Promise<void>>();
   private readonly water = new Map<string, Promise<WaterGeometry | null>>();
   private readonly osm = new Map<string, Promise<OsmGroundExtract | null>>();
+  /** Polder water levels (null: the extract has none, every polygon sits at WATER_Z). */
+  waterLevels: WaterLevels | null = null;
+  /** Resident cells' water, for `waterZAt`. */
+  private readonly waterResident = new Map<string, WaterGeometry>();
   /** Measured deck surfaces per cell (placed once the cell's relief is resident). */
   private readonly decksByCell = new Map<string, DeckSurface[]>();
   private readonly flatByCell = new Map<string, Vec2[][]>();
@@ -66,12 +73,14 @@ export class GroundStore {
   }
 
   async init(): Promise<void> {
-    const [relief, elevation, bridges, manifest] = await Promise.all([
+    const [relief, elevation, bridges, manifest, levels] = await Promise.all([
       this.json<GroundIndex>(`${EXTRACTS.relief}/index.json`),
       this.json<unknown>(`${EXTRACTS.water}/index.json`).then(validateIndex),
       this.json<BridgeExtract>(`${EXTRACTS.water}/bridges.json`),
       this.json<OsmCellsManifest>(`${EXTRACTS.osm}/cells.json`).catch(() => null),
+      this.json<WaterLevels>(`${EXTRACTS.water}/water-levels.json`).catch(() => null),
     ]);
+    this.waterLevels = levels?.version === 1 ? levels : null;
     this.relief = relief;
     this.elevation = elevation;
     this.bridges = bridges;
@@ -282,11 +291,32 @@ export class GroundStore {
         const cell = JSON.parse(new TextDecoder().decode(bytes)) as WaterCell;
         const quant = this.elevation.quantization.xy, ox = cell.cell[0] * this.elevation.cellSizeM, oy = cell.cell[1] * this.elevation.cellSizeM;
         const ring = (r: number[]) => { const out: Vec2[] = []; for (let i = 0; i < r.length; i += 2) out.push(this.toScene(ox + r[i] * quant, oy + r[i + 1] * quant)); return out; };
-        return { polygons: cell.water.map(poly => poly.map(ring)), shores: cell.shore.map(ring) };
+        const geo: WaterGeometry = { polygons: cell.water.map(poly => poly.map(ring)), shores: cell.shore.map(ring) };
+        this.attachLevels(key, geo);
+        this.waterResident.set(key, geo);
+        return geo;
       }).catch(() => null);
       this.water.set(key, p);
     }
     return p;
+  }
+
+  /** Scene z of a NAP level under this extract's datum. */
+  sceneZ(nap: number): number { return +(nap - this.relief.sceneDatumNAP).toFixed(3); }
+
+  /** Per-polygon / per-shore water surface from water-levels.json (ignored when its counts do not match the cell). */
+  private attachLevels(key: string, geo: WaterGeometry): void {
+    const e = this.waterLevels?.cells[key];
+    if (!e) return;
+    const expand = (v: number | number[], n: number) => Array.isArray(v) ? (v.length === n ? v : null) : Array.from({ length: n }, () => v);
+    const p = expand(e.p, geo.polygons.length), s = expand(e.s, geo.shores.length);
+    if (p) geo.levels = p.map(v => this.sceneZ(v));
+    if (s) geo.shoreLevels = s.map(v => this.sceneZ(v));
+  }
+
+  /** Water surface (scene z) at a game-frame point if it lies on resident water, else the canal level. */
+  waterZ(x: number, y: number): number {
+    return waterZAt([...this.waterResident.values()], x, y, WATER_Z);
   }
 
   /** A cell's OSM ground (null: outside the fetched area). */
@@ -303,7 +333,7 @@ export class GroundStore {
 
   /** Forget cached water/OSM data for cells far away (relief is evicted separately). */
   forgetCells(keep: ReadonlySet<string>): void {
-    for (const map of [this.water, this.osm] as Map<string, unknown>[]) for (const k of [...map.keys()]) if (!keep.has(k)) map.delete(k);
+    for (const map of [this.water, this.osm, this.waterResident] as Map<string, unknown>[]) for (const k of [...map.keys()]) if (!keep.has(k)) map.delete(k);
   }
 
   /**
