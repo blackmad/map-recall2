@@ -16,6 +16,10 @@ import { plainBounds, withinView } from '../../../src/canalRecall/rendererShared
 import { normaliseLandmarkMaterials } from '../../../src/canalRecall/landmarks/landmarkShading.ts';
 import { cityLookEnabled } from '../../../src/canalRecall/look/cityLook.ts';
 import { INFERRED_SLOT_SOURCE } from '../../../src/canalRecall/look/materialSlotInference.ts';
+import { enuDirectionInLocal, SUN_DIRECTION, sunDirection, DEFAULT_LIGHT_RIG } from '../../../src/canalRecall/rendererShared/lightRig.ts';
+
+// The weak fill faces the sun from the other side, low: shade walls read, never a second sun.
+const FILL_DIRECTION = sunDirection((DEFAULT_LIGHT_RIG.sunAzimuthDeg + 180) % 360, 20);
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
 
@@ -610,14 +614,23 @@ export class SignatureLandmarks {
         // back to fill rather than to light. The ground colour is the muted
         // grey-blue the basemap uses, so a model bounces the same light back as
         // the street it stands on.
-        scene.add(new THREE.HemisphereLight(0xdfeaf2, 0x6b7480, 1.15));
+        //
+        // The positions below are placeholders: each model's copy of these
+        // lights is re-aimed in `_add` from the rig's world sun through that
+        // model's placement, because the placement rotation is folded into the
+        // camera and a model-space light turned with every model (2026-10-13).
+        const sky = new THREE.HemisphereLight(0xdfeaf2, 0x6b7480, 1.15);
+        sky.name = 'landmark-sky';
+        scene.add(sky);
         const sun = new THREE.DirectionalLight(0xfff6e8, 2.2);
         sun.position.set(-0.5, 1.6, 0.9);
+        sun.name = 'landmark-sun';
         scene.add(sun);
         // A weak opposite fill so north-facing walls are readable rather than
         // silhouettes; buildings here are seen from every side while riding.
         const fill = new THREE.DirectionalLight(0xc9dcea, 0.55);
         fill.position.set(0.8, 0.4, -1.1);
+        fill.name = 'landmark-fill';
         scene.add(fill);
         renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
         renderer.autoClear = false;
@@ -819,6 +832,13 @@ export class SignatureLandmarks {
     if (imported.userData.recipeLook) {
       enuFromWorld = new THREE.Matrix3().setFromMatrix4(transform);
       enuFromWorld.premultiply(new THREE.Matrix3().set(1, 0, 0, 0, -1, 0, 0, 0, 1)).multiplyScalar(1 / units);
+    }
+    if (modelScene) {
+      // World-fixed lights: the rig's sun, its opposite fill and the sky's up, in this model's frame.
+      for (const light of modelScene.children) {
+        const enu = light.name === 'landmark-sun' ? SUN_DIRECTION : light.name === 'landmark-fill' ? FILL_DIRECTION : light.name === 'landmark-sky' ? [0, 0, 1] : null;
+        if (enu) light.position.fromArray(enuDirectionInLocal(transform.elements, enu));
+      }
     }
     if (holder) {
       holder.matrix.copy(transform);

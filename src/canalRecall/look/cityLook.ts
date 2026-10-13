@@ -40,6 +40,7 @@
 import { CITY_BRICK_LIGHTNESS, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLOT_CELL, SLOT_TILE_M, cityTint, hexToRgb, hslToRgb, rgbToHex, rgbToHsl, type MaterialSlot, type SlotCell } from './palette.ts';
 import { inferMaterialSlot, isMaterialSlot, isWhiteWord, INFERRED_SLOT_SOURCE } from './materialSlotInference.ts';
 import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
+import { BAKED_SHADE_GLSL } from '../rendererShared/lightRig.ts';
 
 // ---------------------------------------------------------------------------
 // Flag
@@ -421,10 +422,7 @@ ${VERTEX_BODY}
 #ifdef CITY_SLOT
   // The city's fixed light (threeBuildingMesh.ts wallShade and the roof formula), from the ENU normal.
   vec3 n = normalize(enuFromWorld * (mat3(cityModel) * normal));
-  float shade;
-  if (abs(n.z) < 0.5) { vec2 h = normalize(n.xy + vec2(1e-6, 0.0)); shade = 0.8 + 0.2 * (0.5 + 0.5 * (h.x * -0.45 + h.y * 0.89)); }
-  else if (n.z < 0.0) shade = 0.5;
-  else shade = clamp(0.58 + 0.42 * max(0.0, n.x * -0.35 + n.y * 0.5 + n.z * 0.8), 0.5, 1.0);
+${BAKED_SHADE_GLSL}
   vShade = shade;
 #else
   vShade = tint.a;

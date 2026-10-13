@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import { eyeOfClipMatrix, frameMatrices, invert, mercatorFromWorld, mercatorOfLngLat, mercatorUnitsPerMetre, multiply, worldFromMercator, worldOfMercator, type Vec3 } from './frameMath.js';
 import { fitShadowCamera, lightBasis, shadowHalfSizeForZoom } from './shadowFit.js';
-import { createLightRig, sunDirection } from './lightRig.js';
+import { BAKED_LID_SHADE, BAKED_SHADE_GLSL, bakedFaceShade, bakedWallShade, createLightRig, enuDirectionInLocal, mapLibreSunPosition, SUN_DIRECTION, sunDirection } from './lightRig.js';
 import { LayerRegistry, PARTICIPANT_ORDER } from './layerRegistry.js';
 import { withinView } from './residency.js';
 import { SharedFrame, SHARED_FRAME_MAIN_ID, SHARED_FRAME_OVERLAY_ID } from './sharedFrame.js';
@@ -83,6 +83,36 @@ test('sun direction is a unit vector pointing at the given bearing', () => {
   assert.ok(s[1] < 0 && Math.abs(s[0]) < 1e-9 && s[2] > 0, 'south and up');
   const w = sunDirection(270, 0);
   close(w[0], -1, 1e-12);
+});
+
+// The moving sun (lane-sun-and-mood-20261013): a light placed in a model's own
+// frame must point at the same world sun whatever the model's heading.
+test('a model-space light from enuDirectionInLocal stays world-fixed at four headings', () => {
+  const u = 1e-8, at = new THREE.Matrix4().makeTranslation(0.51, 0.33, 0);
+  for (const headingDeg of [0, 90, 180, 270]) {
+    // The vehicles' transform: Mercator scale (y flipped), heading about z, Y-up model.
+    const m = at.clone().scale(new THREE.Vector3(u, -u, u))
+      .multiply(new THREE.Matrix4().makeRotationZ(headingDeg * Math.PI / 180))
+      .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
+    const local = enuDirectionInLocal(m.elements, SUN_DIRECTION);
+    const merc = new THREE.Vector3(...local).applyMatrix3(new THREE.Matrix3().setFromMatrix4(m)).normalize();
+    close(merc.x, SUN_DIRECTION[0], 1e-9, `east @${headingDeg}`);
+    close(-merc.y, SUN_DIRECTION[1], 1e-9, `north @${headingDeg}`);
+    close(merc.z, SUN_DIRECTION[2], 1e-9, `up @${headingDeg}`);
+  }
+});
+
+test('the baked shade and MapLibre light follow the rig sun', () => {
+  const [az, polar] = mapLibreSunPosition().slice(1);
+  assert.equal(az, 215); assert.equal(polar, 50);
+  // Walls facing the sun bake brightest, walls facing away darkest.
+  const toward = bakedWallShade(Math.sin(215 * Math.PI / 180), Math.cos(215 * Math.PI / 180));
+  const away = bakedWallShade(Math.sin(35 * Math.PI / 180), Math.cos(35 * Math.PI / 180));
+  close(toward, 1, 1e-12); close(away, 0.8, 1e-12);
+  assert.ok(bakedWallShade(0, -1) > bakedWallShade(0, 1), 'south wall over north wall');
+  close(BAKED_LID_SHADE, 0.58 + 0.42 * 0.8, 1e-12, 'flat roof level unchanged');
+  close(bakedFaceShade([0, 0, -1]), 0.58, 1e-12, 'no sun from below');
+  assert.match(BAKED_SHADE_GLSL, /float shade;/);
 });
 
 test('shadow box snaps to light-space texels and covers the focus', () => {
