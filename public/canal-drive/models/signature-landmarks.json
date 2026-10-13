@@ -169,12 +169,12 @@
         "depthCoverage": 6.023749797839424
       },
       "triangles": 38607,
-      "bytes": 415064,
+      "bytes": 414724,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "83293771e9c194c6",
+        "sourceHash": "83547299ff02332c",
         "buildVersion": 2,
-        "bytes": 101760,
+        "bytes": 102176,
         "triangles": 5925
       }
     },
@@ -477,7 +477,31 @@
         "w747868980",
         "w747868981",
         "w747868982",
-        "w747868984"
+        "w747868984",
+        "w747868957",
+        "w747868958",
+        "w747868959",
+        "w747868960",
+        "w747868962",
+        "w747868963",
+        "w747868964",
+        "w747868965",
+        "w747868966",
+        "w747868968",
+        "w747868969",
+        "w747868985",
+        "w747868986",
+        "w747868987",
+        "w747868988",
+        "w747868989",
+        "w747868990",
+        "w747868991",
+        "w747868992",
+        "w747868993",
+        "w747868994",
+        "w749242499",
+        "w749242500",
+        "w749242501"
       ],
       "spatialSuppression": false,
       "footprint": {
@@ -506,6 +530,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free Gothic reconstruction using museum photographic references and actual OpenStreetMap church/chapel/tower polygons. Surveyed placement in metres; decorative tracery and roof details are approximate."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -41.66046905517578,
@@ -535,13 +560,13 @@
         "depthCoverage": 1.0070780900054865
       },
       "triangles": 31462,
-      "bytes": 376932,
+      "bytes": 377340,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "4d599c203d4832c2",
+        "sourceHash": "fcbb517b833bb7e1",
         "buildVersion": 2,
-        "bytes": 90472,
-        "triangles": 5000
+        "bytes": 90828,
+        "triangles": 5002
       }
     },
     "palace-on-the-dam": {
@@ -890,9 +915,10 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free shared-palette reconstruction from current mapped church/tower polygons and official church/municipal exterior references. Double-cross roof plan, Renaissance arched windows/pilasters, stone clock tiers and blue-gold imperial crown. No imported geometry or reference pixels. Ornamental details approximate; exact source grounds and neighboring buildings retained."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -30.827640533447266,
+          -30.662643432617188,
           -1.3732910986163915e-7,
           -18.91600799560547
         ],
@@ -913,19 +939,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 62.92192077636719,
+        "widthMetres": 62.75692367553711,
         "heightMetres": 87.00000013732911,
         "depthMetres": 33.65139579772949,
         "depthCoverage": 0.7762337337772733
       },
-      "triangles": 20635,
-      "bytes": 241440,
+      "triangles": 20627,
+      "bytes": 241992,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "b2efbdd4c34631b7",
+        "sourceHash": "140201e4cd470a98",
         "buildVersion": 2,
-        "bytes": 71468,
-        "triangles": 3569
+        "bytes": 72032,
+        "triangles": 3567
       }
     },
     "bimhuis-in-amsterdam-the-netherlands": {
@@ -2341,8 +2367,10 @@
       "landmarkId": "magna-plaza",
       "modelUrl": "./models/magna-plaza.glb",
       "suppressOsmIds": [
-        "w57861220"
+        "w57861220",
+        "NL.IMBAG.Pand.0363100012167578"
       ],
+      "spatialSuppression": false,
       "footprint": {
         "centre": [
           4.890243858773726,
@@ -2362,6 +2390,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -40.17490005493164,
@@ -2370,7 +2399,7 @@
         ],
         "max": [
           40.17490005493164,
-          38.099998474121094,
+          37.9849967956543,
           20.50172233581543
         ]
       },
@@ -2386,18 +2415,18 @@
       },
       "extent": {
         "widthMetres": 80.34980010986328,
-        "heightMetres": 38.099998474121094,
+        "heightMetres": 37.9849967956543,
         "depthMetres": 39.052175521850586,
         "depthCoverage": 1.068066064678131
       },
-      "triangles": 22532,
-      "bytes": 239100,
+      "triangles": 26300,
+      "bytes": 277776,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "11d88faf4e5f90df",
+        "sourceHash": "ddd4641379f24f7d",
         "buildVersion": 2,
-        "bytes": 70192,
-        "triangles": 3726
+        "bytes": 80024,
+        "triangles": 4292
       }
     },
     "felix-meritis": {
@@ -3076,7 +3105,8 @@
       "landmarkId": "scheepvaarthuis",
       "modelUrl": "./models/scheepvaarthuis.glb",
       "suppressOsmIds": [
-        "w57863677"
+        "w57863677",
+        "NL.IMBAG.Pand.0363100012244270"
       ],
       "footprint": {
         "centre": [
@@ -3105,11 +3135,12 @@
         "modifications": "Original texture-free low-poly architectural reconstruction. Exact OpenStreetMap building polygons retain courtyards and offsets; heights and sculptural details are approximated from building tags and photographs."
       },
       "spatialSuppression": false,
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -19.069854736328125,
+          -17.652631759643555,
           -7.629394644936838e-7,
-          -49.33502960205078
+          -49.44392776489258
         ],
         "max": [
           48.18478012084961,
@@ -3128,18 +3159,18 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 99.78755187988281,
+        "widthMetres": 99.89645004272461,
         "heightMetres": 38.90000228881837,
-        "depthMetres": 67.25463485717773,
-        "depthCoverage": 1.0126150867993213
+        "depthMetres": 65.83741188049316,
+        "depthCoverage": 0.9912767601457454
       },
       "triangles": 31231,
-      "bytes": 463296,
+      "bytes": 463716,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "dad2253f2cbb3e00",
+        "sourceHash": "ee2941f43b2966de",
         "buildVersion": 2,
-        "bytes": 98672,
+        "bytes": 99704,
         "triangles": 4974
       }
     },
@@ -3462,6 +3493,7 @@
         "northOffsetDegrees": 129.69686744069807,
         "source": "Current BAG0363100012168052 and OSM original store/roof parts; native scale1, +Z Damrak frontage309.697 degrees, +X Dam end219.697 degrees. Original historic roof/facades reconciled with primary RCE518426 and 3DBAG AHN roof envelope (cupola45.43m above ground)."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -53.98500061035156,
@@ -3490,14 +3522,14 @@
         "depthMetres": 40.95599174499512,
         "depthCoverage": 1.0470517061344002
       },
-      "triangles": 29289,
-      "bytes": 341100,
+      "triangles": 29493,
+      "bytes": 343628,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "902c3a4b29545923",
+        "sourceHash": "e6d449439cb06037",
         "buildVersion": 2,
-        "bytes": 75924,
-        "triangles": 4392
+        "bytes": 77504,
+        "triangles": 4496
       }
     },
     "gashouder": {
@@ -5641,11 +5673,12 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -27.924251556396484,
           -7.629394644936838e-7,
-          -18.54262351989746
+          -18.815479278564453
         ],
         "max": [
           27.874404907226562,
@@ -5666,17 +5699,17 @@
       "extent": {
         "widthMetres": 55.79865646362305,
         "heightMetres": 21.900000381469738,
-        "depthMetres": 37.25762367248535,
-        "depthCoverage": 1.0018227608844714
+        "depthMetres": 37.530479431152344,
+        "depthCoverage": 1.0091595978194814
       },
       "triangles": 10091,
-      "bytes": 125936,
+      "bytes": 127772,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "91e8bb5fc7ba3853",
+        "sourceHash": "a3d2d2d50f344d18",
         "buildVersion": 2,
-        "bytes": 43992,
-        "triangles": 2238
+        "bytes": 50568,
+        "triangles": 2864
       }
     },
     "occii": {
@@ -6126,6 +6159,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free reconstruction. Exact current church parent and four contained roof/body parts. Mapped church roof part w749599657 is rebuilt above21m and clipped to the current parent to avoid encroaching on adjacent BAG0363100012179327; no neighboring building is suppressed. Parent height28.6m and historical part tags up to29m differ; decorative divisions approximate. Unfinished hexagonal tower stump retained; no proposed85m tower built."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -20.1735782623291,
@@ -6154,14 +6188,14 @@
         "depthMetres": 43.06777381896973,
         "depthCoverage": 1.0002890192340537
       },
-      "triangles": 14220,
-      "bytes": 172780,
+      "triangles": 14206,
+      "bytes": 172868,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "b501442978aa4b1d",
+        "sourceHash": "6938cd113370107e",
         "buildVersion": 2,
-        "bytes": 46880,
-        "triangles": 2330
+        "bytes": 47144,
+        "triangles": 2376
       }
     },
     "vredeskerk": {
@@ -6204,15 +6238,16 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free reconstruction. Exact church parent and tower parts. Parish/diocese describe50m including iron spire; historical mapped tower part49m. Nave roof/wall division and checkerboard tile details approximate. No plaza trees or fountain positions invented."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -24.4450626373291,
+          -24.30042266845703,
           -3.814697322468419e-7,
-          -24.127288818359375
+          -23.982498168945312
         ],
         "max": [
-          31.04899787902832,
-          50,
+          30.904376983642578,
+          49.971378326416016,
           18.613481521606445
         ]
       },
@@ -6227,19 +6262,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 55.49406051635742,
-        "heightMetres": 50.00000038146973,
-        "depthMetres": 42.74077033996582,
-        "depthCoverage": 1.0069123342492563
+        "widthMetres": 55.20479965209961,
+        "heightMetres": 49.97137870788575,
+        "depthMetres": 42.59597969055176,
+        "depthCoverage": 1.0035012705361004
       },
-      "triangles": 10529,
-      "bytes": 135488,
+      "triangles": 10513,
+      "bytes": 135852,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "15f1065728425196",
+        "sourceHash": "6507c94a45ff9cc9",
         "buildVersion": 2,
-        "bytes": 38572,
-        "triangles": 1797
+        "bytes": 38684,
+        "triangles": 1792
       }
     },
     "badhuistheater": {
@@ -8573,6 +8608,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free reconstruction of Joling’s1914–1917 Peek & Cloppenburg department-store building occupied in part by Madame Tussauds. RCE518421 and original photographer frontage guide the stone11-bay Dam facade,9-bay Rokin facade,colossal pilasters,open balconies,rose-window central gable,dormers and decorative roof vents. CurrentPDOK confirms single actualBAG2175378 with Dam20,Rokin6,Kromelleboogsteeg2 VBOs; mapped1900 date is not the architecturaldate. ExactL-shaped parent outline and rear recesses are retained. Original simplified roof regions follow AHN5 approximate21.8m eaves,31.3m mainhips,33.9m vents, and lower innerrear rooms13.85/17.3m. No imported source faces or textures; exact-only suppression retains all neighboring buildings."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -23.209999084472656,
@@ -8582,7 +8618,7 @@
         "max": [
           22.259902954101562,
           34.220001220703125,
-          16.22052574157715
+          16.08052635192871
         ]
       },
       "placement": {
@@ -8598,17 +8634,17 @@
       "extent": {
         "widthMetres": 45.46990203857422,
         "heightMetres": 34.22000160217286,
-        "depthMetres": 31.61663818359375,
-        "depthCoverage": 1.0299698356851594
+        "depthMetres": 31.476638793945312,
+        "depthCoverage": 1.025409099419814
       },
       "triangles": 14267,
-      "bytes": 178440,
+      "bytes": 177820,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "18e0e1ec55d0e0e3",
+        "sourceHash": "c6ccad7b31500f95",
         "buildVersion": 2,
-        "bytes": 48776,
-        "triangles": 2787
+        "bytes": 48892,
+        "triangles": 2786
       }
     },
     "amsterdam-dungeon": {
@@ -11795,11 +11831,12 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original native texture-free surveyed shared building and photo-guided curtain walls. No imported mesh/photo pixels. Exact BAG parent only; other tenants retained."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -32.64948654174805,
           2.670288097306184e-7,
-          -41.39065170288086
+          -41.38105392456055
         ],
         "max": [
           32.26690673828125,
@@ -11818,19 +11855,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 80.28576278686523,
+        "widthMetres": 80.27616500854492,
         "heightMetres": 18.889949531555175,
         "depthMetres": 64.9163932800293,
         "depthCoverage": 0.8094313376562257
       },
-      "triangles": 11548,
-      "bytes": 150484,
+      "triangles": 16756,
+      "bytes": 231576,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "511d00d50a24b288",
+        "sourceHash": "15996e9d1fe0f90e",
         "buildVersion": 2,
-        "bytes": 38172,
-        "triangles": 2049
+        "bytes": 60176,
+        "triangles": 2842
       }
     },
     "beest-boulders": {
@@ -12020,6 +12057,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free house-style reconstruction of surveyed full host; no source photo pixels or third-party artistic mesh."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -32.51707458496094,
@@ -12029,7 +12067,7 @@
         "max": [
           33.4608154296875,
           43.75,
-          116.709228515625
+          116.70923614501953
         ]
       },
       "placement": {
@@ -12043,19 +12081,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 207.48169708251953,
+        "widthMetres": 207.48170471191406,
         "heightMetres": 43.7489999999525,
         "depthMetres": 65.97789001464844,
         "depthCoverage": 0.999665000221946
       },
-      "triangles": 9927,
-      "bytes": 104816,
+      "triangles": 47299,
+      "bytes": 649080,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "e816e9aece23222c",
+        "sourceHash": "55f6dd481b8a4244",
         "buildVersion": 2,
-        "bytes": 25960,
-        "triangles": 1494
+        "bytes": 125016,
+        "triangles": 6928
       }
     },
     "keith-haring-mural": {
@@ -12173,6 +12211,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free house-style reconstruction; surveyed tier contours and photo-guided stone/glass assemblies. No downloaded render mesh or photograph pixels."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -29.162111282348633,
@@ -12201,14 +12240,14 @@
         "depthMetres": 53.40234375,
         "depthCoverage": 0.9889322916666666
       },
-      "triangles": 35426,
-      "bytes": 409840,
+      "triangles": 35286,
+      "bytes": 408296,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "e00596e88da882b0",
+        "sourceHash": "2240d34322fcfb60",
         "buildVersion": 2,
-        "bytes": 149996,
-        "triangles": 11391
+        "bytes": 149492,
+        "triangles": 11331
       }
     },
     "ndsm-warehouse-complex": {
@@ -13211,7 +13250,19 @@
         "w807204806",
         "w807204801",
         "w807204802",
-        "w807204803"
+        "w807204803",
+        "w199405145",
+        "w806950189",
+        "w807090335",
+        "w807090338",
+        "w807204799",
+        "w1239732905",
+        "w1239732920",
+        "w807204800",
+        "w807204798",
+        "w807204797",
+        "w807204804",
+        "w806961003"
       ],
       "footprint": {
         "centre": [
@@ -13241,6 +13292,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original native flat-color texture-free Elicium, Europacomplex barrel and surrounding halls,1963 Westhal,1969 Amstelhal and Signaal. Source-supported exact named hall/strip outlines; OSM heights and repeated glazing approximate. Full RAI coverage including separate Amtrium/Hollandcomplex/Congress Centre pending. Broad partially owned compoundw807090334 remains unsuppressed."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -269.9435119628906,
@@ -13248,9 +13300,9 @@
           -305.1234436035156
         ],
         "max": [
-          62.51533126831055,
+          61.93695068359375,
           51,
-          52.763919830322266
+          52.55187225341797
         ]
       },
       "placement": {
@@ -13264,19 +13316,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 357.8873634338379,
+        "widthMetres": 357.6753158569336,
         "heightMetres": 51.12414064258337,
-        "depthMetres": 332.4588432312012,
-        "depthCoverage": 0.9286559866793329
+        "depthMetres": 331.8804626464844,
+        "depthCoverage": 0.927040398453867
       },
-      "triangles": 18564,
-      "bytes": 229480,
+      "triangles": 17798,
+      "bytes": 227236,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "de6b20d6761ca79d",
+        "sourceHash": "ef48cf4628c198d9",
         "buildVersion": 2,
-        "bytes": 41828,
-        "triangles": 2844
+        "bytes": 47292,
+        "triangles": 2561
       }
     },
     "pulitzer-amsterdam": {
@@ -17314,6 +17366,7 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -47.79335021972656,
@@ -17342,14 +17395,14 @@
         "depthMetres": 94.50272750854492,
         "depthCoverage": 0.9450272750854493
       },
-      "triangles": 34726,
-      "bytes": 488424,
+      "triangles": 35160,
+      "bytes": 495992,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "e694632ea4eb905c",
+        "sourceHash": "f6e56c6838a9bbbb",
         "buildVersion": 2,
-        "bytes": 106160,
-        "triangles": 6228
+        "bytes": 108416,
+        "triangles": 6286
       }
     },
     "fire-station-ijsbrand": {

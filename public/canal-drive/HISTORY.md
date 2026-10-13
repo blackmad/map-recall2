@@ -1,5 +1,40 @@
 # Canal Recall — what is built
 
+## GLB cleanup batch 1: hard attachment gates, snapOpenings, material slots, 15 worst offenders (2026-10-13)
+
+Lane `glb/cleanup-batch1-20261013` (Sonnet, `docs/handoffs/lane-glb-cleanup-20261013.md`),
+with `qa/detached-openings-sweep-20261013` merged in (its false-positive
+classes: posts/rails/roof glazing as non-openings, enclosed-glazing and infill
+tests, facet silhouette, larger plane wins ties, floater with no wall in reach
+is a warning; its 9 builder fixes and GLBs). `geometryAudit.ts`: big triangles
+stay in the spatial grids, glazed-skin and curved-facet over-flags fixed,
+`materialSlotCoverage` (counts key `material-slot-untagged-permille`),
+`regressions()` hard-gates opening-floating/buried/overhang, `OpeningIssue`
+gains `wallNormal`, `towardHost`, `clearance`; ornament touching only non-wall
+surfaces is not an overhang; thin guard-rail stanchions at a wall end pass.
+`glbQuality.ts`: big-triangle plane binning, detached parts report
+`towardOther`. New `snapOpenings.ts` (builder-time: moves floating assemblies
+onto their wall, lifts buried ones, reverts a move that creates an overhang or
+a buried issue, can drop windows across a wall step; `snapDetachedParts` closes
+gaps of loose parts without sinking grounded ones) and `materialSlots.ts`
+(palette name → `materialSlot`+`tint`, applied to every material in
+`build-manual-landmarks.ts`; untagged permille 1000 → 0 on all 15). Re-exported
+with LOD1s: de-bijenkorf, oude-kerk, beta-boulders, fire-station-willem,
+mountain-network (z-fight 211.7 → 13.3 m², holes 53 → 5; bridge passage
+declared in its spec), centraal-station, rai-amsterdam (742 sliver triangles
+dropped at save), westerkerk (glass 1 cm clear of the stone arch), valley
+(z-fight 75.9 → 18.5), lab111 (far-outside 2,808 vertices → 0; elevations
+follow the stepped footprint), vredeskerk, scheepvaarthuis (piers shifted
+along the wall, far-outside 36 → 0), dominicuskerk, magna-plaza,
+madame-tussauds. 11 PASS; centraal-station, rai-amsterdam, valley and
+madame-tussauds still fail shell holes (listed on the board). Baseline lowered
+for the 15, no gated key raised; 21 other models now fail the corrected gate
+and are batch 2. Before/after strips: lane artifacts `glb-cleanup/strips/`.
+Checks: geometry-audit 36, glb-quality 30, snapOpenings+materialSlots 6,
+osm-under-models 0 unsuppressed, lint. Integrator regenerated the manifests
+and LOD table and rebuilt `signature-placement.bundle.js`.
+
+
 ## One palette, one rig: look consistency behind the shared frame (2026-10-13)
 
 Lane `look/consistency-20261013` (Opus, `docs/handoffs/lane-look-consistency-20261013.md`).
