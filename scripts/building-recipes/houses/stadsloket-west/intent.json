@@ -1,0 +1,162 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "stadsloket-west",
+ "pandId": "0363100012118358",
+ "address": "Stadsloket West, Bos en Lommerplein 250, Amsterdam (2003; shops, housing and the stadsdeel office in one pand)",
+ "sources": [
+  {
+   "id": "pano-2021-09-23-s",
+   "kind": "street-panorama",
+   "capturedAt": "2021-09-23",
+   "image": "staging/pand-reference-walls/0363100012118358/w03-163.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002324_pano_0006_000014/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-09-23-s",
+   "kind": "street-panorama",
+   "capturedAt": "2021-09-23",
+   "image": "staging/pand-reference-walls/0363100012118358/w03-163.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002324_pano_0006_000014/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-09-23-w",
+   "kind": "street-panorama",
+   "capturedAt": "2021-09-23",
+   "image": "staging/pand-reference-walls/0363100012118358/w01-285.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002324_pano_0006_001423/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-09-23-w",
+   "kind": "street-panorama",
+   "capturedAt": "2021-09-23",
+   "image": "staging/pand-reference-walls/0363100012118358/w01-285.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002324_pano_0006_001423/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-09-23-w",
+   "kind": "street-panorama",
+   "capturedAt": "2021-09-23",
+   "image": "staging/pand-reference-walls/0363100012118358/w01-285.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002324_pano_0006_001423/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    35,
+    153
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 8,
+   "ground": "plinth-shopfronts",
+   "windows": "plain",
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "rail": "bars"
+   },
+   "crosses": {
+    "count": 3,
+    "size": "medium",
+    "colour": "#e4202a",
+    "side": "left"
+   },
+   "palette": {
+    "frame": "#7d8286"
+   }
+  },
+  {
+   "wallSurfaces": [
+    31,
+    32,
+    45
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 6,
+   "ground": "plinth-shopfronts",
+   "windows": "plain",
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "rail": "bars"
+   },
+   "palette": {
+    "frame": "#7d8286"
+   }
+  },
+  {
+   "wallSurfaces": [
+    6,
+    9
+   ],
+   "system": "curtain-wall",
+   "storeys": 6,
+   "ground": "blank",
+   "palette": {
+    "frame": "#6a2a2f"
+   },
+   "baysPerStorey": 20
+  },
+  {
+   "wallSurfaces": [
+    15,
+    16,
+    23
+   ],
+   "system": "curtain-wall",
+   "storeys": 6,
+   "ground": "blank",
+   "palette": {
+    "frame": "#6a2a2f"
+   },
+   "baysPerStorey": 20
+  },
+  {
+   "wallSurfaces": [
+    72,
+    142,
+    143
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 14,
+   "ground": "system",
+   "windows": "plain",
+   "frames": false
+  }
+ ],
+ "otherWalls": "blank",
+ "closedBands": true,
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#4e4540",
+  "frame": "#8a2a2e",
+  "door": "#3a3d40",
+  "stone": "#bdb6a8",
+  "wallMaterial": "stucco"
+ },
+ "notes": [
+  "Pand 0363100012118358 (2003, 157 LoD2.2 surfaces, roof max 31.1 m) at Bos en Lommerplein 250; the match step marked it 'no-panorama' because its primary-wall pick had none, but all-walls.ts finds 2021-09-22/23 panoramas for the south, west and a second west wall (the east wall has no candidates). The whole pand is modelled: a dark-brown brick block of shops and housing with the stadsdeel office wing on the west.",
+  "South front (surfaces 35/153 and 31/32/45, 2021-09-23 panorama w03-163, sharp): dark brown brick, four storeys of balcony galleries with fine steel bar rails over a shop plinth (cream timber-clad fascias: MANZARAM, FEBO), a taller block at the right with deep loggias, and at the far left edge the red vertical stack of the three St Andrew's crosses on a pylon. West front (surfaces 6/9, w01-285, the A10 side, 65 m): a five-storey red-framed window wall with a rhythm of dark perforated screens in front of the glazing, over a dark mesh plinth.",
+  "Signature: the three crosses MODELLED (kit component crosses, red, at the left end of the south front); balcony galleries with bar rails MODELLED (balconies storeys 1 to 4, bars); shop plinth MODELLED (plinth-shopfronts; shop signs MANZARAM / FEBO SKIPPED: temporary tenants); the red-framed west window wall SIMPLIFIED (kit curtain wall with maroon frames, 36 bays; the perforated sun screens SKIPPED: too-small and temporary-looking panels 0.2 m proud); the left-edge crosses stand on a free pylon in the photograph, here on the wall; the stadsloket entrance is not identifiable in the panoramas (no sign legible): SKIPPED not-visible; the east wall (72/142/143, no panorama) carries an INFERRED plain window grid so it is not a blank slab.",
+  "The second west wall (surfaces 15/16/23, 2021-09-22 w04-285) is hidden behind a concrete ramp wall in its panorama; the red-framed storeys visible above it are the same facade as surfaces 6/9, so it carries the same curtain-wall group (INFERRED below the visible storeys). Both curtain walls use 20 bays per storey to fit the 12k budget (real pitch is finer)."
+ ]
+}
