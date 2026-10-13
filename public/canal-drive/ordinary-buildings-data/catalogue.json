@@ -3574,7 +3574,7 @@
       "bounds": {
         "min": [
           -19.2172908782959,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -13.932360649108887
         ],
         "max": [
@@ -9258,7 +9258,7 @@
       "bounds": {
         "min": [
           -19.893112182617188,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -17.881860733032227
         ],
         "max": [
@@ -9924,7 +9924,7 @@
       "bounds": {
         "min": [
           -17.276670455932617,
-          -5.2452087118126656e-08,
+          -5.2452087118126656e-8,
           -19.4085750579834
         ],
         "max": [
@@ -19687,7 +19687,7 @@
       "bounds": {
         "min": [
           -14.545639991760254,
-          9.536743306171047e-08,
+          9.536743306171047e-8,
           -16.488889694213867
         ],
         "max": [
@@ -19786,7 +19786,7 @@
       "bounds": {
         "min": [
           -19.340869903564453,
-          -1.9073486612342094e-07,
+          -1.9073486612342094e-7,
           -29.3840274810791
         ],
         "max": [
@@ -20023,7 +20023,7 @@
       "bounds": {
         "min": [
           -22.37699317932129,
-          -1.9073486612342094e-07,
+          -1.9073486612342094e-7,
           -50.65300750732422
         ],
         "max": [
@@ -20240,7 +20240,7 @@
       "bounds": {
         "min": [
           -23.991369247436523,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -15.057171821594238
         ],
         "max": [
@@ -20355,7 +20355,7 @@
       "bounds": {
         "min": [
           -14.917290687561035,
-          -3.814697322468419e-07,
+          -3.814697322468419e-7,
           -12.036028861999512
         ],
         "max": [
@@ -20461,7 +20461,7 @@
       "bounds": {
         "min": [
           -22.194652557373047,
-          -4.7683716530855236e-08,
+          -4.7683716530855236e-8,
           -8.861071586608887
         ],
         "max": [
@@ -28832,6 +28832,164 @@
       ],
       "updatedAt": "2026-10-13T15:47:26.385Z",
       "bagYear": 1991
+    },
+    {
+      "id": "ordinary-0363100012238726",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012238726",
+      "name": "OBA Javaplein, Javaplein 2, Amsterdam (2011; library in the ground floor of a perimeter housing block, one pand)",
+      "hash": "4c999dd1658ae5923dce1388a9a3452f0c769e04dfcf64f87fc672accbbc8dcd",
+      "sha256": "4c999dd1658ae5923dce1388a9a3452f0c769e04dfcf64f87fc672accbbc8dcd",
+      "bytes": 881076,
+      "triangles": 11740,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -53.178,
+          0,
+          -23.779
+        ],
+        "max": [
+          46.879,
+          36.106,
+          18.178
+        ]
+      },
+      "anchor": [
+        4.9386576,
+        52.3642473
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9393365,
+              52.3644627
+            ],
+            [
+              4.937904,
+              52.3644475
+            ],
+            [
+              4.9379047,
+              52.3644329
+            ],
+            [
+              4.9378749,
+              52.3644324
+            ],
+            [
+              4.9378768,
+              52.3643979
+            ],
+            [
+              4.9379061,
+              52.3643983
+            ],
+            [
+              4.9379068,
+              52.3643837
+            ],
+            [
+              4.938731,
+              52.3641421
+            ],
+            [
+              4.9387314,
+              52.3641425
+            ],
+            [
+              4.9387342,
+              52.3641417
+            ],
+            [
+              4.9387346,
+              52.3641399
+            ],
+            [
+              4.938733,
+              52.3641399
+            ],
+            [
+              4.9387341,
+              52.3640965
+            ],
+            [
+              4.9393466,
+              52.364103
+            ],
+            [
+              4.9393454,
+              52.3641467
+            ],
+            [
+              4.9393451,
+              52.3641467
+            ],
+            [
+              4.939345,
+              52.3641487
+            ],
+            [
+              4.9393455,
+              52.3641487
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 36.11,
+      "height": 36.11,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-oba-javaplein.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012238726"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "oba-javaplein",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012238726/w03-179.jpg",
+          "staging/pand-reference-walls/0363100012238726/w01-359.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 6st 14b",
+          "brick-bay-grid 5st 26b",
+          "brick-bay-grid 5st 20b",
+          "brick-bay-grid 5st 10b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Only 359 openings fit the 12k budget on a 98 m block: the north front uses 26 bays per storey (real pitch is finer) and frames:false (dark frames read as glass) on the long fronts. Courtyard and party walls have no panorama and stay blank (otherWalls)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012238726",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T21:17:23.845Z"
     }
   ]
 }
