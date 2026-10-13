@@ -1,0 +1,128 @@
+{
+ "schemaVersion": 1,
+ "id": "marnixstraat-248-185422",
+ "pand": "0363100012185422",
+ "signature": [
+  "deck-ribbons",
+  "pillared-undercroft"
+ ],
+ "walls": [
+  {
+   "tag": "w01-67",
+   "bearing": 67,
+   "lengthM": 71,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002989_pano_0007_000039",
+   "capturedAt": "2023-03-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "deck-ribbons",
+     "kind": "window-shape",
+     "where": "six white decks with ribbon openings",
+     "approxSizeM": [
+      70,
+      17
+     ],
+     "plan": "modelled",
+     "how": "ribbon-windows low, 7 storeys on walls[0]",
+     "seenIn": "TMX7316010203-002989_pano_0007_000039"
+    },
+    {
+     "id": "fuel-station-fascia",
+     "kind": "sign",
+     "where": "red and white striped fascia band over the petrol station canopy",
+     "approxSizeM": [
+      30,
+      2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 1.2 m painted band over the canopy; it follows the undercroft which is a dark glazed row here"
+     },
+     "seenIn": "TMX7316010203-002989_pano_0007_000039"
+    }
+   ]
+  },
+  {
+   "tag": "w03-157",
+   "bearing": 157,
+   "lengthM": 38.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002637_pano_0000_000010",
+   "capturedAt": "2022-06-28",
+   "checked": true,
+   "items": [
+    {
+     "id": "pillared-undercroft",
+     "kind": "colonnade",
+     "where": "ground: open undercroft on round concrete pillars",
+     "approxSizeM": [
+      38,
+      4.5
+     ],
+     "plan": "simplified",
+     "how": "dark glazed ground row under the decks; no pillars",
+     "seenIn": "TMX7316010203-002637_pano_0000_000010"
+    },
+    {
+     "id": "parapet-slots",
+     "kind": "other",
+     "where": "small slot perforations in the white parapet bands",
+     "approxSizeM": [
+      0.5,
+      0.15
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "15 cm slots"
+     },
+     "seenIn": "TMX7316010203-002637_pano_0000_000010"
+    }
+   ]
+  },
+  {
+   "tag": "w02-247",
+   "bearing": 247,
+   "lengthM": 56.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001979_pano_0001_000202",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "ramp-towers",
+     "kind": "tower",
+     "where": "round ramp towers over the canal",
+     "approxSizeM": [
+      13,
+      22
+     ],
+     "plan": "simplified",
+     "how": "3DBAG LoD2.2 facets as surveyed, same ribbon decks on the straight runs",
+     "seenIn": "TMX7316010203-001979_pano_0001_000202"
+    }
+   ]
+  },
+  {
+   "tag": "w04-337",
+   "bearing": 337,
+   "lengthM": 38.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001979_pano_0001_000213",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
