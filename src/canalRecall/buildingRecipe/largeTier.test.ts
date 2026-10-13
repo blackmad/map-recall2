@@ -69,6 +69,18 @@ test('police signature components build and stay attached (stripe, blue lamp, ca
   assert.deepEqual(gates.filter(g => !g.pass).map(g => g.id), []);
 });
 
+test("St Andrew's crosses: validated, placed on the main panel, closed solids that pass every gate; absent = identical mesh", async () => {
+  const base = validateLargeIntent(raw('politie-van-leijenberghlaan'));
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], crosses: {count: 0}}]}), /crosses/);
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], crosses: {count: 3, sizeM: 2}}]}), /crosses|coordinate/);
+  const plain = await gatesOf(base, facts('politie-van-leijenberghlaan'));
+  const walls = base.walls.map((w, i) => i === 0 ? {...w, crosses: {count: 3, size: 'medium' as const, colour: '#e58a86'}} : w);
+  const withCrosses = await gatesOf(validateLargeIntent({...base, walls}), facts('politie-van-leijenberghlaan'));
+  assert.equal(withCrosses.built.components.letters - plain.built.components.letters, 72);
+  assert.equal(withCrosses.tris.length - plain.tris.length, 72);
+  assert.deepEqual(withCrosses.gates.filter(g => !g.pass).map(g => g.id), []);
+});
+
 test('dissolveFaces merges two coplanar strips into one face and keeps the original vertices', () => {
   // Two 1 x 2 m strips side by side plus a T-junction vertex on the shared edge.
   const to3 = (u: number, v: number): [number, number, number] => [u, v, 0];

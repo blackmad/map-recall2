@@ -367,6 +367,11 @@ export interface LargeWallIntent {
   frames?: boolean;
   /** Name boards (white plates, lettered) over the ground portals of the hoist bays on the widest panel, left to right; "" leaves a hoist bay without a board. */
   nameBoards?: string[];
+  /**
+   * St Andrew's crosses (the three-cross city emblem, as on Amsterdam municipal buildings) stacked down the top corner
+   * of the widest panel: `count` crosses of `size` (small 1.4 m, medium 2.2 m default, large 3.2 m), in `colour`, at the `left` (default) or `right` end.
+   */
+  crosses?: {count: number; size?: 'small' | 'medium' | 'large'; colour?: string; side?: 'left' | 'right'};
 }
 
 export interface LargeBuildingIntent {

@@ -7,7 +7,7 @@
 import * as T from 'three';
 import {compose, type Cell, type PanelCtx} from '../blockBuilding/compose.ts';
 import {runGates, type GateReport} from '../blockBuilding/gates.ts';
-import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawEntrance, drawGarageDoor, drawLettering, drawPoliceStripe, drawRoofBoxes, lowestHoleAbove} from '../blockBuilding/components.ts';
+import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawEntrance, drawGarageDoor, drawLettering, drawStAndrewsCross, drawPoliceStripe, drawRoofBoxes, lowestHoleAbove} from '../blockBuilding/components.ts';
 import type {MeshBuilder} from '../blockBuilding/mesh.ts';
 import {fitsPanel, rectPoly, type Panel} from '../blockBuilding/panels.ts';
 import type {BuildingFacts} from './facts.ts';
@@ -35,6 +35,7 @@ export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe
     case 'stone': case 'slab': return {materialSlot: 'stone', surface: 'stone'};
     case 'police-white': case 'board': return {materialSlot: 'stucco', surface: 'sign'};
     case 'board-text': return {materialSlot: 'accent', surface: 'sign'};
+    case 'cross': return {materialSlot: 'accent', surface: 'sign'};
     case 'police-blue': case 'sign': return {materialSlot: 'accent', surface: 'sign'};
     case 'plant': return {materialSlot: 'stone', surface: 'plant'};
     default: throw Error(`large tier: block-kit slot "${slot}" has no recipe material slot`);
@@ -93,6 +94,15 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
     const holes = [...c.holes.values()].flat(), below = Math.max(levels[1], ...holes.filter(h => h[3] <= levels[2] + 0.01).map(h => h[3]));
     const above = Math.min(levels[2] + 1, lowestHoleAbove(c, levels[2])), hgt = Math.min(0.6, above - below - 0.2), v = (below + above) / 2, W = p.uMax - p.uMin;
     if (hgt >= 0.3 && fitsPanel(p, rectPoly(p.uMin + W * 0.2, p.uMax - W * 0.2, v - hgt / 2, v + hgt / 2))) counts.letters += drawLettering(c, g.signage.text, (p.uMin + p.uMax) / 2, v, 0.012, hgt, W * 0.6, s.sign, (u, vv, d) => c.onWallAt(u, vv, d));
+  }
+  if (g.crosses && g.mainPanel === p.index) {
+    // St Andrew's crosses stacked from just under the eaves down one end of the widest panel, only where the wall is solid there.
+    const {count, sizeM, side} = g.crosses, top = panelEaves(p) - 0.5, uc = side === 'left' ? p.uMin + sizeM * 0.9 : p.uMax - sizeM * 0.9;
+    for (let i = 0; i < count; i++) {
+      const vc = top - sizeM * (i + 0.5) - 0.35 * i;
+      if (vc - sizeM / 2 > p.vMin + 1 && fitsPanel(p, rectPoly(uc - sizeM / 2, uc + sizeM / 2, vc - sizeM / 2, vc + sizeM / 2)))
+        counts.letters += drawStAndrewsCross(c, uc, vc, sizeM, `cross@g${g.index}`);
+    }
   }
   if (g.hoist && g.nameBoards?.length && g.mainPanel === p.index) counts.nameBoards += drawNameBoards(c, info.cells, g);
   if (g.police?.lamp && entrance && drawBlueLamp(c, Math.min(p.uMax - 0.4, entrance.u1 + 0.55), Math.min(entrance.doorTop + 0.9, groundTop - 0.2), {bracket: s.frame, lamp: 'police-blue', cap: 'police-white'})) counts.lamps++;
