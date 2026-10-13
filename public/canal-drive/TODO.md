@@ -779,41 +779,39 @@ Buitenveldert-West 2 / 1) need more sourced material; nine Amsterdam picks are
 boroughs/Gouden Bocht the quiz does not ask yet; `sentencesOf` splits after
 initials ("A.J. Ernststraat").
 
-**Map Recall quiz pass, wave 2 (review 2026-10-13; wave 1 shipped, see
-HISTORY).** Still open from the review's longlist, in order:
-- *Question forms:* chains (the next question adjacent to the last answer),
-  relation questions ("which is further west: Keizersgracht or Prinsengracht?")
-  as the Guess Name form for obscure streets, a bonus pin after the reveal
-  ("and where is the Concertgebouw from here?" from `notablePlaces`), a daily
-  five near home with a date stamp and streak, and a seen-before chip on the
-  question card (last result and date from `ReviewState`).
-- *Desktop layout:* dock the quiz card beside the map on wide screens (the
-  card is a centred 36 rem column with dead map either side; MapComponent's
-  fit already measures the card holder, so pad right instead of bottom when
-  docked); a faint paper tint over the CARTO tiles; the "Canal Recall" button
-  under the phone map-review banner.
-- *Phone:* a ~10 km waterway cannot fit above the question card at minZoom 11,
-  so part of the line sits under the card; the e2e "label above card" check
-  measures `.custom-true-target-icon`, now a zero-size anchor for areas, and
-  should measure `.area-plaque`. `[iphone] guess-name neighborhoods offer
-  nearby areas as choices` and `card-gallery` time out under load (seen once
-  each in a full run, green on every re-run); pin a wait on the place labels.
-- *Data hygiene:* `area-photos.json` admits Commons photos that are not views
-  of the place (Helmersbuurt's RT run is `Toilet_(8801976568).jpg`); blacklist
-  by title/category at build and load. 35 first sentences of descriptions
-  still state a resident count or area ("Zuid is one of Utrecht's ten districts
-  (wijken), with 28,754 inhabitants (2025)"); strip the count clause rather
-  than the sentence. 57 descriptions and 91 histories are borrowed landmark
-  text (`borrowedFrom`); the card labels them, but an area's own lede would be
-  better where an article exists.
+**Map Recall quiz pass, wave 3 (review 2026-10-13; waves 1 and 2 shipped,
+see HISTORY).** Still open, in order:
+- *Question forms:* the daily five plays in the current mode, not a mix of
+  Pinpoint and Guess Name; a chains toggle in the settings modal (today URL
+  `chain=off` or localStorage `mapRecall.chainNearby.v1`); the relation form
+  covers 64 of 177 obscure Amsterdam streets (the rest have no distractor
+  250 m clear on an axis; the buurt form or four names stand in); the CARTO
+  label tiles stay visible while the bonus offer shows, so a square or
+  landmark answer can be on the map before the player taps Bonus (hidden
+  only once the tap is awaited); the bonus line wraps to two lines on phones.
+- *Desktop dock:* the game-over map review is not docked (the summary modal
+  hides in review mode, so nothing covers the map; docking it needs the
+  header offset handled); the "Quiz started · Back to start" pill is centred
+  on the whole main, not on the map beside the dock; the "Canal Recall"
+  button still sits under the phone map-review banner; a dock with the
+  Guess Name card leaves most of the column empty (a map inset or the
+  seen-before history could fill it).
+- *Data:* 47 features across the four cities lose stray same-name pieces at
+  load (`pathClusters.ts`, 1 km link, 3 km far); the Groene Kruisweg loses a
+  real 6 km stretch beyond a gap, and rail lines filed as bridges (Gooilijn,
+  HSL-Zuid, Hofpleinlijn) lose scattered segments. Better: split same-name
+  ways into separate features at extract build, named by district. First
+  sentences that are only a count ("in 2008 Tuinwijk-West had 2,440
+  residents and …", Terwijde's list, Vleuten-De Meern, Pendrecht) are left
+  whole. The photo blacklist misses portraits with no Flickr id or particle
+  ("Harry Starren") and long captions ("Jet Bussemaker opens…").
 - *Postcards:* the expanded card still prints the full name-origin paragraph
-  (Prinsengracht runs seven lines); on a desktop window under 800 px tall the
-  fold shows the strip, not the postcard (the result header plus MapComponent's
-  60% padding cap leave no room). `PostcardExport` (Save postcard PNG) exists
-  but is not mounted; Safari ignores canvas filters on export; OUD-WEST keeps a
-  gap where the undrawn hyphen sits.
+  (Prinsengracht runs seven lines); Safari ignores canvas filters on export;
+  OUD-WEST keeps a gap where the undrawn hyphen sits.
 - *Guess Name:* overlapping areas as rival answers (below) and one
-  far-from-the-answer distractor per question (today all four are neighbours).
+  far-from-the-answer distractor per question.
+- *Phone:* Amsterdam minZoom is 10 so the Amstel fits above the question
+  card; the IJ is unchecked.
 
 **Neighbourhood trivia gaps (pipeline built 2026-10-02, data lane).**
 `npm run fill:neighborhood-gaps -- audit|offline|online|publish` fills missing

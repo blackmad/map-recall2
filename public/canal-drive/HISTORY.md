@@ -1,5 +1,77 @@
 # Canal Recall — what is built
 
+## Map Recall quiz: wave 2, the review's longlist (2026-10-13)
+
+Three lanes off main 4c46645d, merged on `map-recall/integrate-w2-20261013`.
+
+- **New question forms** (`questionPlan.ts`, `relationQuestions.ts`,
+  `bonusPin.ts`, `dailyFive.ts`, each with node tests). *Chains:* the
+  selected list is re-ordered greedily toward a next question in the same
+  neighbourhood, inside the same area or within 700 m, keeping due reviews
+  first and the water syllabus order, with at most three in a row from one
+  neighbourhood; on by default, `chain=off` turns it off; the Next button
+  says "Next · nearby" only after the reveal. *Relation questions:* an
+  obscure street (prominence < 20 or under 400 m) asks "Which is further
+  north: Chris Lebeaustraat or Willem van Konijnenburgstraat?" against the
+  nearest distractor 250 m clear on an axis (64 of 177 obscure Amsterdam
+  streets; distractors are mostly crossing streets, median 85 m apart),
+  else "Which of these is in <buurt>?", else the four names. Both candidates
+  are drawn in the target's colours before the answer and named after; a
+  right answer scores 5,000 and is rated like any Guess Name round.
+  *Bonus pin:* after the reveal, "Bonus · where is the Westermoskee?" asks
+  for an area's own notable place or the most famous landmark or square
+  within 600 m that the hints and clue labels did not already name (parks
+  are excluded because the label tiles print park names); one tap, 500
+  points within 40 m falling to 0 at 800 m, counted in the total, never a
+  review record. *Daily five:* five mixed places near the shared home or
+  the centre, seeded by the Europe/Amsterdam day, with a streak in
+  `mapRecall.daily.v1` ("Streak 4", "Done today · streak 4"). *Seen-before
+  chip:* "Seen 3 days ago · missed before" / "known · 2 reviews" on every
+  question card, from `ReviewState`; time and record only, never position.
+- **Docked card on wide screens** (`[data-quiz-dock]`, ≥1100 px): a 26 rem
+  right column, paper at 92% with a hairline edge and its own scroll; the
+  zoom and locate controls move left of it; MapComponent pads fits on the
+  right by the dock width (question, reveal, resize) when the holder hugs
+  the map's right edge. In the dock the Pinpoint instruction row stacks
+  and Guess Name options are one column so names never truncate; the
+  folded neighbourhood answer shows the full postcard at dock width with
+  "Save postcard" (`PostcardExport`, also in the rack popover). A warm
+  tint on the tile pane (`sepia .14 saturate .92 brightness 1.01`) makes
+  the CARTO basemap read as part of the paper; labels and markers stay
+  crisp. Amsterdam minZoom 12 → 10 so a 10 km waterway fits above the
+  phone question card (Amstel checked). The "label above card" e2e now
+  measures `.area-plaque` for areas, and the two tests that timed out under
+  load wait for the place labels to settle.
+- **Stray same-name pieces dropped at load** (`pathClusters.ts`). The
+  Amsterdam water extract gave Singel the canal plus four pieces of a
+  different Singel near Weesp, 18 km away, so the Guess Name fit framed
+  both and the canal was a sliver. Pieces are clustered by proximity (1 km
+  link); the longest cluster and every cluster within 3 km of it are kept,
+  and a box centre left between the pieces moves onto what remains. 47
+  features across the four cities are affected (Damrak, Kanaaldijk, two
+  Dorpskerk churches, the Weesp Singel). Length cannot separate them (the
+  Weesp Singel is 1.4 km to the canal's 1.8 km) and the extract centre
+  cannot anchor (the Basisweg's lies nearer its strays).
+- **Area photos that are not views of the place** (`photoBlacklist.ts`,
+  `scripts/prune-area-photos.ts --city all --check|--write`, applied in the
+  fetch script and at load). Toilets (eight in Amsterdam, among them the
+  Helmersbuurt postcard's), press portraits (Anefo), people by name, food,
+  advert columns, interiors, fleet-number bus shots and animals with no place
+  named are out; bicycles stay unless the title is a close-up (rack, wheel,
+  bags), and trams, trains, ferries and sheep stay when a street, bridge or
+  square is named. 103 photos removed (Amsterdam 23, Utrecht 53, Rotterdam
+  24, Den Haag 3); no area fell under two photos that had two before.
+- **Count clauses stripped from first sentences** (`stripCountClauses` in
+  `neighborhoodTextCleanup.ts`): ", with 28,754 inhabitants (2025)", " and
+  an area of 15.8 km²", "31.7-hectare" go, the sentence stays ("Zuid is one
+  of Utrecht's ten districts (wijken)."); 23 first sentences changed across
+  Amsterdam, Utrecht and Rotterdam, each read for grammar. A count that is
+  the whole predicate is left.
+- **Checks.** `check:map-recall` green (59 unit tests); Playwright
+  `map-recall-trivia`, `map-recall-phone-chrome`, `card-gallery` and the new
+  `map-recall-question-forms` specs on desktop and iPhone; `build-storybook`
+  with 19 new stories (docked card, question forms).
+
 ## Home-route start no longer overflows the stack (2026-10-13)
 
 User: the live site crashed with "Maximum call stack size exceeded" after

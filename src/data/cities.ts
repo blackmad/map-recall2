@@ -929,7 +929,7 @@ export const CITIES: City[] = [
     countryCode: 'NL',
     center: [52.3676, 4.8952],
     defaultZoom: 14,
-    minZoom: 12,
+    minZoom: 10,
     maxZoom: 18,
     description: 'UNESCO World Heritage 17th-century canal ring, historic bridges, and vibrant squares.',
     features: [
