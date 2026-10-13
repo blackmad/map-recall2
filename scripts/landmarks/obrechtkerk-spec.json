@@ -1,0 +1,52 @@
+{
+  "id": "obrechtkerk",
+  "name": "Obrechtkerk",
+  "landmarkId": "extract_landmarks_1917401076",
+  "modelUrl": "./models/obrechtkerk.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012124153"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.874632916107906,
+      52.35575583985846
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 70,
+    "widthMetres": 44
+  },
+  "surveyed": {
+    "anchor": [
+      4.874632916107906,
+      52.35575583985846
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012124153 footprint and 3DBAG LoD2.2 heights (eaves, ridges, crossing and tower tops), native east/south metres from the anchor; roofs and facades built from intent and photographs."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#7d6452",
+    "stone": "#d3cabb",
+    "slate": "#55565a",
+    "glass": "#2a3036",
+    "frame": "#d8dde0",
+    "dark": "#2b2622",
+    "concrete": "#8f7f66",
+    "white": "#dcd3c7",
+    "pink": "#9a7e66",
+    "greyBrick": "#64503f",
+    "ochre": "#7a4a2e",
+    "red": "#a85a40",
+    "gold": "#c9a24a"
+  },
+  "attribution": {
+    "title": "Obrechtkerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Obrechtkerk",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry: plan from the BAG footprint, heights from 3DBAG LoD2.2, towers, front, roofs and windows modelled from photographs (Wikimedia Commons, RCE). No pixels or meshes imported."
+  }
+}
