@@ -1,0 +1,36 @@
+{
+  "id": "rembrandtmonument",
+  "name": "Rembrandtmonument",
+  "assetKind": "memorial",
+  "landmarkId": "extract_landmarks_202176253",
+  "modelUrl": "./models/rembrandtmonument.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [4.8965948, 52.3660041],
+    "headingDegrees": 0,
+    "lengthMetres": 11.3,
+    "widthMetres": 6.8
+  },
+  "surveyed": {
+    "anchor": [4.8965948, 52.3660041],
+    "northOffsetDegrees": 0,
+    "source": "Backlog destination point (OSM memorial); statue position and facing read from Gemeente Amsterdam panoramas (2025-06-19); the facing is a visual estimate, not a surveyed bearing"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "concrete": "#8c8e90",
+    "greyBrick": "#3d3f42",
+    "bronze": "#a3a49f",
+    "gold": "#9b8348"
+  },
+  "attribution": {
+    "title": "Rembrandtmonument - original low-poly interpretation",
+    "author": "Map Recall; commemorated sculpture by Louis Royer (1852)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Standbeeld_van_Rembrandt_Harmensz._van_Rijn_op_het_Rembrandtplein_te_Amsterdam,_RP-P-1933-342.jpg",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free geometric figure and terrace. Pose and costume from the Rijksmuseum print RP-P-1933-342 (CC0) and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated from the panoramas. No pixels or third-party meshes imported."
+  }
+}
