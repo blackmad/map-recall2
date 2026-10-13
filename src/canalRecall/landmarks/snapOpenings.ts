@@ -36,6 +36,12 @@ export interface SnapOptions {
    * `SnapReport.dropped` for the caller to remove) rather than left hanging in the air.
    */
   dropOverhang?: {minOutside: number; maxExtent: number};
+  /**
+   * Keep a lift of a buried assembly even when it then overhangs its wall (the default undoes it). For models whose recorded baseline
+   * already carries overhang warnings and whose window is partly sunk in a wall that ends beside it: a window 40% visible and overhanging
+   * reads better than a window half inside the masonry.
+   */
+  keepLiftOverhang?: boolean;
   passes?: number;
   th?: GeometryAuditThresholds;
 }
@@ -55,7 +61,7 @@ export interface SnapReport {
 }
 
 export function snapOpenings(soup: MaterialSoup, opts: SnapOptions = {}): SnapReport {
-  const {maxFloat = 0.6, maxBuried = 0.6, embed = 0.02, clearMargin = 0.03, dropOverhang, passes = 4, sheetThickness = 0.02, sheetRest = 0.02, th: thOpt = GEOMETRY_THRESHOLDS} = opts;
+  const {maxFloat = 0.6, maxBuried = 0.6, embed = 0.02, clearMargin = 0.03, dropOverhang, keepLiftOverhang = false, passes = 4, sheetThickness = 0.02, sheetRest = 0.02, th: thOpt = GEOMETRY_THRESHOLDS} = opts;
   const th = thOpt;
   const P = soup.positions, I = soup.indices;
   const report: SnapReport = {passes: 0, floatingMoved: 0, buriedMoved: 0, reverted: 0, skipped: {floating: 0, buried: 0, overhang: 0}, dropped: [], droppedAt: []};
@@ -79,7 +85,7 @@ export function snapOpenings(soup: MaterialSoup, opts: SnapOptions = {}): SnapRe
     const undo = new Set<Move>();
     for (const i of issues) {
       const m = byTri.get(i.triangles[0]);
-      if (m && (i.kind === 'overhang' || (i.kind === 'buried' && m.kind === 'floating'))) undo.add(m);
+      if (m && ((i.kind === 'overhang' && !(keepLiftOverhang && m.kind === 'buried')) || (i.kind === 'buried' && m.kind === 'floating'))) undo.add(m);
     }
     for (const m of undo) { translate(m.tris, m.d, -1); frozen.add(m.tris[0]); report.reverted++; if (m.kind === 'floating') report.floatingMoved--; else report.buriedMoved--; }
     last = [];
