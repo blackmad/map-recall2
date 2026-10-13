@@ -1,25 +1,43 @@
 {
   "id": "petrus-en-paulus-kerk",
-  "countedBy": "pending blind count",
+  "countedBy": "recount from the rectified Gemeente Amsterdam panorama aimed at the street front (b_20241211_0838_Track26_Sphere_00086, 2024-12-11, wall 343 deg, scripts/pand-reference/all-walls.ts) by the cleanup-batch-3 lane, 2026-10-13; replaces the blind haiku count of 2026-10-11, which treated the turret, church gable, porch and tower as one 3-column facade (rows 4,4,1) and matched neither the photo nor the model",
+  "note": "The street front is four wall planes at different depths, so each gets its own count: the church gable above the porch, the porch with the ground-floor lights beside it, the round stair turret, and the tower. alongM is metres from the whole front's viewer-left silhouette edge. The two ground-floor twin lights flank the porch symmetrically (the right one was missing from the model until this recount). The tower shows three openings on its street face: a louvred twin low down, a glazed twin in a stone surround, and the louvred twin under the corbels (the model had a single narrow light in place of the first two). The turret's oriel row is null: the photo shows two lights square-on and a third foreshortened at the edge, which is not countable.",
   "facades": [
     {
-      "name": "north gable front with tower",
+      "name": "church gable windows",
       "bearing": 343,
-      "photo": "artifacts/landmark-lanes/petrus-en-paulus-kerk/ref-front.jpg",
+      "photo": "scripts/pand-reference rectified crop, panorama b_20241211_0838_Track26_Sphere_00086",
       "depthBand": 30,
-      "rows": [
-        4,
-        4,
-        1
-      ],
-      "columns": 3,
-      "symmetric": false,
-      "gables": 3,
-      "countedBy": "blind haiku counter 2026-10-11",
-      "alongM": [
-        7.7,
-        21.3
-      ]
+      "alongM": [12.3, 16.2],
+      "heightM": [5.5, 14.5],
+      "rows": [2, 1],
+      "symmetric": false
+    },
+    {
+      "name": "porch and ground-floor lights",
+      "bearing": 343,
+      "photo": "scripts/pand-reference rectified crop, panorama b_20241211_0838_Track26_Sphere_00086",
+      "depthBand": 30,
+      "alongM": [11.2, 18.0],
+      "heightM": [1.5, 5.0],
+      "rows": [2, 1],
+      "symmetric": true
+    },
+    {
+      "name": "stair turret",
+      "bearing": 343,
+      "photo": "scripts/pand-reference rectified crop, panorama b_20241211_0838_Track26_Sphere_00086",
+      "depthBand": 30,
+      "alongM": [8.2, 11.3],
+      "rows": [3, null]
+    },
+    {
+      "name": "tower street face",
+      "bearing": 343,
+      "photo": "scripts/pand-reference rectified crop, panorama b_20241211_0838_Track26_Sphere_00086",
+      "depthBand": 30,
+      "alongM": [18.9, 20.7],
+      "rows": [1, 1, 1]
     }
   ]
 }
