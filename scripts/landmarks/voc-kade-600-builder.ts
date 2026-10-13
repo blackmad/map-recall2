@@ -46,8 +46,8 @@ export function buildVocKade600(_w: number, _d: number, b: BuildingTools & {mark
   /** Tall steel window with transoms; the real panes are ~0.5 m, drawn every `step`. */
   const win = (f: Frame, t: number, y: number, w: number, h: number, step = 0.9) => {
     slab(b, f, t, y, w + 0.1, h, 0.09, 'frame');
-    slab(b, f, t, y + 0.05, w - 0.06, h - 0.1, 0.12, 'glass');
-    for (let yy = y + step; yy < y + h - 0.2; yy += step) slab(b, f, t, yy, w, 0.07, 0.15, 'frame');
+    slab(b, f, t, y + 0.05, w - 0.06, h - 0.1, 0.14, 'glass'); // fronts 9 / 14 / 19 cm: layers >= 4.5 cm apart (z-fight clearance)
+    for (let yy = y + step; yy < y + h - 0.2; yy += step) slab(b, f, t, yy, w, 0.07, 0.19, 'frame');
   };
   const brick = (f: Frame, t: number, y: number, w: number, h: number) => slab(b, f, t, y, w, h, 0.1, 'brick');
   const bands5 = (k: number) => BAND0 + PITCH * k;
@@ -138,7 +138,7 @@ export function buildVocKade600(_w: number, _d: number, b: BuildingTools & {mark
       for (const [a, c] of [[0.9, 6.8], [7.7, 14.1], [15.0, 21.6]]) {
         const t = (a + c) / 2, w = c - a;
         slab(b, f, t, lo, w, hi - lo, 0.09, 'frame');
-        slab(b, f, t, lo + 0.05, w - 0.1, hi - lo - 0.1, 0.12, 'glass');
+        slab(b, f, t, lo + 0.05, w - 0.1, hi - lo - 0.1, 0.14, 'glass');
         for (let k = 0; k < 5; k++) {
           const y = lo + k * floor;
           // Balcony stands clear of the glazing's mullions (back 20 cm out, mullion fronts at 16 cm) so slabs and rails do not fuse with them
@@ -150,7 +150,7 @@ export function buildVocKade600(_w: number, _d: number, b: BuildingTools & {mark
           slab(b, f, t, y + 1.0, w, 0.05, 0.1, 'frame', 0.5);
           setSink(s0);
         }
-        for (let u = a + 0.6; u < c - 0.3; u += 1.2) slab(b, f, u, lo, 0.07, hi - lo, 0.16, 'frame');
+        for (let u = a + 0.6; u < c - 0.3; u += 1.2) slab(b, f, u, lo, 0.07, hi - lo, 0.2, 'frame');
       }
     }
   }

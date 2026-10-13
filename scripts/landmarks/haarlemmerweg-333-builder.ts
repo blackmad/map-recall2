@@ -77,19 +77,19 @@ export function buildHaarlemmerweg333(_w: number, _d: number, b: BuildingTools &
   const win = (f: F, top: number, t: number, y: number, w: number, h: number, mat = 'glass') => {
     h = Math.min(h, top - 0.3 - y);
     if (h < 0.6) return;
-    slab(b, f, t, y - 0.06, w + 0.12, h + 0.12, 0.08, 'frame');
-    slab(b, f, t, y, w, h, 0.12, mat);
-    slab(b, f, t, y, 0.05, h, 0.15, 'frame');
+    slab(b, f, t, y - 0.06, w + 0.12, h + 0.12, 0.09, 'frame'); // fronts 9 / 14 / 19 cm over a 4 cm base: layers >= 4.5 cm apart (z-fight clearance)
+    slab(b, f, t, y, w, h, 0.14, mat);
+    slab(b, f, t, y, 0.05, h, 0.19, 'frame');
   };
   const observed = new Set(Object.keys(SPEC).map(Number));
   for (const [key, sp] of Object.entries(SPEC)) {
     const w = wall(+key), f = w.f;
-    if (sp.base) { const [a, c, y1] = sp.base; slab(b, f, (a + c) / 2, 0, c - a, y1, 0.1, 'concrete'); }
+    if (sp.base) { const [a, c, y1] = sp.base; slab(b, f, (a + c) / 2, 0, c - a, y1, 0.04, 'concrete'); }
     if (sp.fascia) { const [a, c, y0, y1] = sp.fascia; slab(b, f, (a + c) / 2, y0, c - a, y1 - y0, 0.2, 'dark'); }
     for (const [a, c, y0, y1] of sp.bays ?? []) {
       win(f, w.top, (a + c) / 2, y0, c - a, y1 - y0, 'glass');
       const n = Math.max(1, Math.round((c - a) / 1.9));
-      for (let k = 1; k < n; k++) slab(b, f, a + (c - a) * k / n, y0, 0.07, y1 - y0, 0.16, 'frame');
+      for (let k = 1; k < n; k++) slab(b, f, a + (c - a) * k / n, y0, 0.07, y1 - y0, 0.19, 'frame');
     }
     for (const g of sp.wins) for (const s of g.sills) for (const t of g.cols) win(f, w.top, t, s, g.w, g.h, g.mat ?? 'glass');
   }

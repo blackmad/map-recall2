@@ -50,6 +50,17 @@ const rand = (a: number, b: number, c: number) => { let h = 2166136261 ^ (a * 73
 
 /** A cut opening: its bounding rectangle, plus the (u, v) outline when it is not that rectangle (arched openings). */
 export type HoleRect = [u0: number, u1: number, v0: number, v1: number, outline?: [number, number][]];
+/**
+ * Sheets drawn on an unholed wall (frame 0.02, glass 0.035, mullions 0.05, louvres 0.06-0.075 in the component code) are lifted onto four
+ * layers SHEET_PITCH (4.5 cm) apart: raw depth <= 0.025 -> 4.5 cm (frame, surround), <= 0.04 -> 9 cm (glass, inset panes, cladding), <= 0.065 -> 13.5 cm (mullions, transoms, louvres), above -> 18 cm (items stacked on a 0.06 sheet in the block specs). A sheet 2 cm over the wall, or 1.5 cm under the next one, bleeds through at 900-1800 m
+ * (zfight-validate calibration; the zfight-tight band is < 3 cm). Fixed classes, not per-part ranks: ranks put the first sheet of every part on the
+ * same 4.5 cm plane, and neighbouring parts then tie. Depths of 0.08 and more (solids, trim) and negative (recessed) depths are untouched.
+ */
+export const SHEET_PITCH = 0.045;
+function liftSheet(d: number): number {
+  if (!(d > 0 && d < 0.08)) return d;
+  return SHEET_PITCH * (d <= 0.025 ? 1 : d <= 0.04 ? 2 : d <= 0.065 ? 3 : 4);
+}
 class Ctx {
   /** recess depth (large tier); 0 = openings drawn proud as in the original block kit */
   recess = 0;
@@ -123,10 +134,16 @@ class Ctx {
   }
   P(u: number, v: number, d = 0) { return pt(this.p, u, v, d); }
   part() { return this.mesh.newPart(); }
+  /** A flat sheet at an exact depth (a rail hanging off a slab): not lifted onto the wall layers. */
+  quadRaw(slot: Slot, u0: number, v0: number, u1: number, v1: number, d: number, part: number) {
+    this.mesh.quad(slot, this.P(u0, v0, d), this.P(u1, v0, d), this.P(u1, v1, d), this.P(u0, v1, d), part, this.p.n);
+  }
   quad(slot: Slot, u0: number, v0: number, u1: number, v1: number, d: number, part: number) {
+    d = liftSheet(d);
     this.mesh.quad(slot, this.P(u0, v0, d), this.P(u1, v0, d), this.P(u1, v1, d), this.P(u0, v1, d), part, this.p.n);
   }
   poly(slot: Slot, pts: [number, number][], d: number, part: number) {
+    d = liftSheet(d);
     const faces = T.ShapeUtils.triangulateShape(pts.map(q => new T.Vector2(q[0], q[1])), []);
     for (const f of faces) this.mesh.tri(slot, this.P(...pts[f[0]], d), this.P(...pts[f[1]], d), this.P(...pts[f[2]], d), part, this.p.n);
   }
@@ -309,7 +326,7 @@ function drawRow(c: Ctx, row: Row, cell: Cell, seed: number) {
       const back = drawOpening(c, a, b, lo, hi, w, seed);
       if (door) {
         const dw = door.w ?? 1.1, dh = door.h ?? 2.3, uc = (a + b) / 2, part = c.part();
-        if (fitsPanel(c.p, rectPoly(uc - dw / 2, uc + dw / 2, lo, lo + dh))) c.quad(door.slot ?? 'door', uc - dw / 2, lo, uc + dw / 2, lo + dh, c.recess > 0 && back !== null ? back + c.barOut : 0.045, part);
+        if (fitsPanel(c.p, rectPoly(uc - dw / 2, uc + dw / 2, lo, lo + dh))) c.quad(door.slot ?? 'door', uc - dw / 2, lo, uc + dw / 2, lo + dh, c.recess > 0 && back !== null ? back + c.barOut : 0.02, part);
       }
       return;
     }
@@ -420,8 +437,8 @@ function drawShopfront(c: Ctx, s: import('./spec.ts').ShopfrontParams, cell: Cel
   glazedPanel(c, a, b, v0 + 0.08, v0 + lo.v1, lo.cols, 1, frame, glass);
   const dw = s.door.w, dh = s.door.h, du = uc + s.door.offsets[cell.bay % s.door.offsets.length];
   part = c.part();
-  c.quad(frame, du - dw / 2 - 0.05, v0 + 0.08, du + dw / 2 + 0.05, v0 + dh + 0.05, 0.055, part);
-  c.quad(s.door.slot ?? 'door', du - dw / 2, v0 + 0.08, du + dw / 2, v0 + dh, 0.065, part);
+  c.quad(frame, du - dw / 2 - 0.05, v0 + 0.08, du + dw / 2 + 0.05, v0 + dh + 0.05, 0.02, part);
+  c.quad(s.door.slot ?? 'door', du - dw / 2, v0 + 0.08, du + dw / 2, v0 + dh, 0.035, part);
 }
 
 function drawPointed(c: Ctx, g: import('./spec.ts').PointedParams, cell: Cell) {
@@ -458,12 +475,12 @@ function drawBalcony(c: Ctx, b: BalconyParams, cell: Cell, seed: number) {
   const rv0 = v0 - 0.02 + sh;
   const rslot = rail.slot ?? (rail.kind === 'glass' ? 'glassRail' : rail.kind === 'solid' ? 'slab' : 'rail');
   if (rail.kind === 'bars') {
-    c.quad(rail.slot ?? 'rail', a0 + 0.05, rv0, a1 - 0.05, rv0 + rh, depth - 0.03, part);
+    c.quadRaw(rail.slot ?? 'rail', a0 + 0.05, rv0, a1 - 0.05, rv0 + rh, depth - 0.03, part);
   } else if (rail.kind === 'rods') {
     const rs = rail.slot ?? 'rail', n = Math.max(2, Math.round((a1 - a0) / 0.13));
-    for (let k = 0; k <= n; k++) { const u = a0 + 0.04 + (a1 - a0 - 0.08) * k / n; c.quad(rs, u - 0.012, rv0, u + 0.012, rv0 + rh, depth - 0.03, part); }
-    c.quad(rs, a0, rv0 + 0.05, a1, rv0 + 0.1, depth - 0.03, part);
-  } else c.quad(rslot, a0, rv0, a1, rv0 + rh, depth - 0.03, part);
+    for (let k = 0; k <= n; k++) { const u = a0 + 0.04 + (a1 - a0 - 0.08) * k / n; c.quadRaw(rs, u - 0.012, rv0, u + 0.012, rv0 + rh, depth - 0.03, part); }
+    c.quadRaw(rs, a0, rv0 + 0.05, a1, rv0 + 0.1, depth - 0.03, part);
+  } else c.quadRaw(rslot, a0, rv0, a1, rv0 + rh, depth - 0.03, part);
   // side cheeks join the slab to the wall so the rail is supported on both ends
   part = c.part();
   const cheek = rail.kind === 'solid' ? slab : (rail.slot ?? 'rail');

@@ -56,9 +56,10 @@ export function buildConservatorium(_w:number,_d:number,b:BuildingTools):void {
   const nx=Math.sin(rot),nz=Math.cos(rot),radius=w/2;
   const s=new T.Shape();s.moveTo(-radius,0);s.lineTo(radius,0);s.lineTo(radius,h-radius);for(let i=0;i<=12;i++){const a=i*Math.PI/12;s.lineTo(radius*Math.cos(a),h-radius+radius*Math.sin(a));}s.closePath();
   const outline=s.clone();if(stone){const g=new T.ShapeGeometry(outline);g.scale((w+.35)/w,(h+.25)/h,1);b.add(g,'stone',x,y-.08,z,rot)}
-  b.add(new T.ShapeGeometry(s),'dark',x+nx*.025,y,z+nz*.025,rot);
-  const inner=new T.ShapeGeometry(s);inner.scale(.88,.96,1);b.add(inner,'glass',x+nx*.045,y+.04,z+nz*.045,rot);
-  b.box(x+nx*.075,y+.06,z+nz*.075,.07,h-.2,.08,'ochre',rot);b.box(x+nx*.075,y+h*.7,z+nz*.075,w*.9,.07,.08,'ochre',rot);
+  // Layers stand 5 cm apart (stone 0, dark .05, glass .10, ochre bars .16): 2 cm bled the wall through the arch at 900 m+.
+  b.add(new T.ShapeGeometry(s),'dark',x+nx*.05,y,z+nz*.05,rot);
+  const inner=new T.ShapeGeometry(s);inner.scale(.88,.96,1);b.add(inner,'glass',x+nx*.1,y+.04,z+nz*.1,rot);
+  b.box(x+nx*.12,y+.06,z+nz*.12,.07,h-.2,.08,'ochre',rot);b.box(x+nx*.12,y+h*.7,z+nz*.12,w*.9,.07,.08,'ochre',rot);
   b.box(x+nx*.05,y-.13,z+nz*.05,w+.4,.16,.28,'stone',rot);
  }
  function facade(r:T.Vector2[],isMain:boolean){
@@ -87,12 +88,12 @@ export function buildConservatorium(_w:number,_d:number,b:BuildingTools):void {
  facade(main,true);facade(rings[1],false);
  // Van Baerlestraat central stone risalit: three window bays, raised arched
  // entry, broad semicircular fanlight, triangular top and obelisk finials.
- const cx=-1.9,front=-26.24,rot=Math.PI;
- b.box(cx,3.8,front+.35,10.9,15.7,.55,'stone');
+ const cx=-1.9,wallFront=-26.24,front=wallFront-.09,rot=Math.PI; // risalit face stands 5 cm proud of the wall, the arch layers 5 cm proud of that
+ b.box(cx,3.8,wallFront-.05+.275,10.9,15.7,.55,'stone');
  for(const dx of[-3.2,0,3.2]){arch(cx+dx,5,front-.015,2.15,4.0,rot);arch(cx+dx,10.7,front-.015,2.0,4.3,rot);}
  arch(cx,1.0,front-.04,2.45,3.5,rot);
  const fan=new T.Shape();fan.moveTo(-3.75,0);for(let i=0;i<=24;i++){const a=Math.PI-i*Math.PI/24;fan.lineTo(3.75*Math.cos(a),3.75*Math.sin(a));}fan.closePath();
- b.add(new T.ShapeGeometry(fan),'dark',cx,16.2,front-.06,rot);const f2=new T.ShapeGeometry(fan);f2.scale(.92,.90,1);b.add(f2,'glass',cx,16.3,front-.08,rot);
+ b.add(new T.ShapeGeometry(fan),'dark',cx,16.2,front-.06,rot);const f2=new T.ShapeGeometry(fan);f2.scale(.92,.90,1);b.add(f2,'glass',cx,16.3,front-.11,rot);
  for(const dx of[-2.5,-1.25,0,1.25,2.5]){const h=Math.sqrt(3.75**2-dx**2)*.88;b.box(cx+dx,16.2,front-.11,.09,h,.09,'stone');}
  const gable=new T.ShapeGeometry(new T.Shape([new T.Vector2(-5.5,0),new T.Vector2(5.5,0),new T.Vector2(0,8.2)]));b.add(gable,'stone',cx,19.2,front-.025,rot);
  for(const dx of[-1.55,0,1.55])arch(cx+dx,21.1,front-.06,1.05,2.7+(dx===0?.6:0),rot);
@@ -116,10 +117,10 @@ export function buildConservatorium(_w:number,_d:number,b:BuildingTools):void {
  // by slender dark columns and transparent panes with no opaque backing slab.
  const court=[new T.Vector2(-15.4,-5.7),new T.Vector2(8.4,-5.7),new T.Vector2(8.4,13.2),new T.Vector2(-15.4,13.2)];
  b.add(upwardRoofPlane(shape(court),17.2),'glass');
- for(let x=-15.4;x<=8.5;x+=4.75){b.box(x,0,13.15,.16,17.2,.16,'frame');b.box(x,17.15,3.7,.12,.12,19.0,'frame');}
+ for(let x=-15.4;x<=8.5;x+=4.75){b.box(x,0,13.2,.16,17.2,.3,'frame');b.box(x,17.15,3.7,.12,.12,19.0,'frame');}
  for(let z=-5.7;z<=13.21;z+=3.8)b.box(-3.5,17.15,z,23.8,.12,.12,'frame');
  b.box(-3.5,0,13.2,23.8,17.2,.08,'glass');
- for(const y of[0,5.5,11.1,17.1])b.box(-3.5,y,13.25,23.8,.16,.16,'frame');
+ for(const y of[0,5.5,11.1,17.1])b.box(-3.5,y,13.2,23.8,.16,.3,'frame');
  // Hotel door faces Paulus Potterstraat on the south-facing wing.
  arch(-35.4,1.0,8.4,2.2,3.8,-Math.PI/2);b.box(-35.5,4.5,8.4,2.8,.18,1.2,'frame',Math.PI/2);
 }

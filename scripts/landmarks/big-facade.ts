@@ -5,12 +5,19 @@ import {topOf, type RawWall} from './big-kit';
 import {addShell, planarPolygon, type ShellSource} from './worship-shell';
 
 /**
+ * Sheets drawn on an unholed shell wall are stacked in layers: builders pass the legacy 0.02 / 0.04 / 0.06 (frame, glass, louvre/mullion) and the
+ * quad lifts each by LAYER_PITCH (4.5 cm, 2.25x: 4.5 cm frame, 9 cm glass, 13.5 cm louvre), so no sheet sits within 3 cm of the wall or of the sheet under it. 2 cm bleeds the wall through
+ * the frame at 900-1800 m (zfight-validate calibration); 3 cm and more stays clear to ~2.7 km. 4.5 rather than 5 cm because the photo-spec window-rhythm counts move with which panes a proud wall step hides, and 4.5 is the pitch at which the four photo-spec big-facade models keep their recorded counts. Offsets already >= 0.1 are taken as deliberate.
+ */
+export const LAYER_PITCH = 0.045;
+export function layerOut(out: number): number { return out > 0 && out < 0.1 ? Math.round(out / 0.02) * LAYER_PITCH : out; }
+/**
  * Cheap flat facade primitives for very large buildings (thousands of windows): a window is two coplanar-offset quads
  * (frame, glass) = 4 triangles, so a 100 m tower face stays inside the triangle budget. Frames follow big-kit rawWall:
  * t along the viewer's right, y up, out of the wall.
  */
 export function quad(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, colour: string, out: number) {
-  put(b, f, new T.PlaneGeometry(w, h).translate(0, h / 2, 0), t, y, out, colour);
+  put(b, f, new T.PlaneGeometry(w, h).translate(0, h / 2, 0), t, y, layerOut(out), colour);
 }
 /** Lowest wall y at tangent position t (NaN outside the wall); walls cut by a sloping neighbour roof have a slanted base. */
 export function bottomOf(w: RawWall, t: number): number {
