@@ -34,6 +34,13 @@ export const DECK_EASE_M = 2.5;
  */
 export const DECK_EASE_MAX_GRADE = 0.2;
 const DECK_EASE_MAX_M = 6;
+/**
+ * Steepest grade a measured deck span may climb (1:8). The AHN DSM sees cars,
+ * lamp posts and railings as deck; a lower envelope at this grade takes their
+ * spikes out without lowering any crown (13 of 931 decks change by > 2 cm, no
+ * crown by > 5 cm; lane bridges-elevation 2026-10-13).
+ */
+export const DECK_MAX_GRADE = 0.12;
 const BUCKET_M = 25;
 
 export interface DeckSurface {
@@ -46,6 +53,15 @@ export interface DeckSurface {
   span: [number, number];
   /** Ease length at each deck end, metres (DECK_EASE_M, longer where the step onto the deck is high). */
   ease: [number, number];
+}
+
+/** Lower envelope of `h` at `grade` within the deck span `[d0, d1]` (outside it, h is untouched: the relief carries the ramps). */
+export function clampDeckGrade(s: Float64Array, h: Float64Array, deck: readonly [number, number], grade: number): Float64Array {
+  const out = h.slice(), idx: number[] = [];
+  for (let i = 0; i < s.length; i++) if (s[i] >= deck[0] && s[i] <= deck[1]) idx.push(i);
+  for (let k = 1; k < idx.length; k++) { const i = idx[k], j = idx[k - 1]; out[i] = Math.min(out[i], out[j] + grade * (s[i] - s[j])); }
+  for (let k = idx.length - 2; k >= 0; k--) { const i = idx[k], j = idx[k + 1]; out[i] = Math.min(out[i], out[j] + grade * (s[j] - s[i])); }
+  return out;
 }
 
 const smoothstep = (t: number) => (t <= 0 ? 0 : t >= 1 ? 1 : t * t * (3 - 2 * t));
@@ -81,7 +97,8 @@ export class GroundSurface {
   }
 
   /** Place a measured profile's deck on the relief and index it for `height`. */
-  addDeck(profile: DeckProfile): DeckSurface {
+  addDeck(measured: DeckProfile): DeckSurface {
+    const profile: DeckProfile = { ...measured, h: clampDeckGrade(measured.s, measured.h, measured.deck, DECK_MAX_GRADE) };
     const n = profile.x.length;
     const span: [number, number] = [Math.max(profile.s[0], profile.deck[0]), Math.min(profile.s[n - 1], profile.deck[1])];
     const ends: [number, number] = [this.ground(profile.x[0], profile.y[0]), this.ground(profile.x[n - 1], profile.y[n - 1])];

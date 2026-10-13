@@ -170,7 +170,8 @@ export function buildCell(input: CellInput): BuiltCell {
   // Streets: bridge ways sampled finer (decks hump over metres).
   const only = (bridge: boolean) => (w: LocalWay) => own.has(w.id) && isBridgeWay(w) === bridge;
   const streets = buildStreets(ways, surface.height, { step: lod === 0 ? 3 : 6, only: only(false) });
-  const onBridges = buildStreets(ways, surface.height, { step: lod === 0 ? 1.5 : 3, only: only(true) });
+  // 0.5 m at LOD 0: on a hump a 1.5 m chord sags (~9 cm on a masonry arch); the bands follow the measured profile closer.
+  const onBridges = buildStreets(ways, surface.height, { step: lod === 0 ? 0.5 : 3, only: only(true) });
   for (const s of ['paving', 'klinker', 'asphalt', 'cycle', 'gravel', 'kerb', 'paint'] as const) { add(s, streets[s]); add(s, onBridges[s]); }
 
   // Water, quays, decks.
