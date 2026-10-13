@@ -44,6 +44,66 @@ and the look-consistency lane (2026-10-13). Code owners: `src/canalRecall/look/p
   half-size 160 m at z18 doubling per zoom step (100–640 m), texel-snapped,
   redrawn only when the box steps **16 m** or casters change. Off below z15.
   Cost at the flip: see §Mood, "Shadows".
+- **Shadow fill: half the sun reaches into cast shadow** (`SHADOW_FILL` **0.5**
+  in `lightRig.ts`, three's `shadow.intensity` 0.5; look/shadow-fill lane,
+  2026-10-14). A surface in another surface's shadow keeps half its direct
+  sun on top of the sky. Walls facing away from the sun are untouched (they
+  get no sun anyway), and so is every lit pixel: the fill only lifts what the
+  shadow map darkens. Rule: in cast shadow, a sun-facing wall reads halfway
+  between its shade-side and sun-side values; the city's reference brick
+  `#9a5240` on a sun-facing wall stays at luma **≥ 70** in every pipeline,
+  and a lit wall reads exactly as with shadows off
+  (`tests/e2e/building-look.spec.ts` "shadow fill"). Measured on a south wall
+  under the rig, sRGB luma, sky-only fill (before) → fill 0.5:
+
+  | brick | generic | recipe | landmark | city generic / recipe / landmark | in sun |
+  |---|---|---|---|---|---|
+  | `#808080` | 72.7 → 92.6 | 69.7 → 87.9 | 72.0 → 90.7 | 71.8 / 74.9 / 74.9 → 90.5 / 94.1 / 94.1 | 102–109 |
+  | `#9a5240` | 55.8 → 73.1 | 58.4 → 74.5 | 55.9 → 72.2 | 59.8 / 59.8 / 59.9 → 76.3 / 76.4 / 76.4 | 84–89 |
+  | `#6f4335` (dark) | 41.2 → 55.9 | 47.5 → 61.1 | 42.2 → 55.0 | 48.4 / 48.5 / 48.5 → 62.3 / 62.4 / 62.4 | 65–73 |
+
+  Fill 0.45 left the landmark's reference brick at 70.0 (no margin); 0.5 is
+  the smallest round value with every pipeline ≥ 72. A west wall (less sun)
+  in shadow reads 2–5 lower. Ambient-only fill (raising the sky) was not used:
+  it would lift the shade sides out of their 65–75 band (§Parity).
+- **The shadow map is drawn at the full depth range** (`sharedFrame.ts`
+  `fullDepthRangeForShadowMap`; same lane). MapLibre draws a 3D custom layer
+  with `gl.depthRange(0, k)` (`depthRangeFor3D`, k = 0.968 measured in the
+  game), and that GL state also applied to three's shadow pass into its own
+  framebuffer. Every depth in the shadow map was scaled by k while receivers
+  compared against the unscaled light depth, so a surface at light depth z
+  met a phantom occluder (1 − k)·z nearer the sun: ~10 m in the middle of a
+  600 m box. Sun-facing walls shadowed themselves more the further they sat
+  from the light: the Royal Palace 95 % of its pixels, the Nassaukade 318
+  chunk 64 %, 45 % of all building pixels at the Dam (3 %, 6 %, 2 % after).
+  It is why a CPU ray cast toward the sun found an occluder at only 8 % (chunk)
+  and 1 % (Palace) of the pixels the screen showed in shadow, and why no bias
+  helped: normal bias 2 m left 48 % / 90 %, depth bias −0.01 (6.5 m) 37 % /
+  90 %, a 4096² map or `shadowSide` front/double changed nothing. After the
+  fix the CPU rays and the screen agree (96 % of the chunk's shadowed pixels
+  have a ray-cast occluder, its own gables and dormers; the Palace's residual
+  3 % is mostly penumbra, 37 % ray-cast). The main pass keeps
+  MapLibre's range so its depths still compare with MapLibre's extrusions.
+  `renderer.shadowMap.fullDepthRange = false` restores the old behaviour for
+  before/after shots (`tests/e2e/shadow-fill.spec.ts`).
+- **In-game measurements** (`tests/e2e/shadow-fill.spec.ts`, 1280×800,
+  `?sharedFrame=1&streetChunks=1`, plain / `cityLook=1`): share of the named
+  model's or the buildings' pixels the shadow map darkens, share under luma
+  60, mean luma of the shadowed pixels; before = main before 2026-10-14,
+  after = depth-range fix + fill 0.5.
+
+  | spot (mask) | shadowed | under luma 60 (no casting) | shadowed luma |
+  |---|---|---|---|
+  | Royal Palace (model) | 95 → 0.8 % / 95 → 0.8 % | 29 → 0.1 % (0.1) / 29 → 0.1 % (0.1) | 84 → 136 / 84 → 128 |
+  | Nassaukade 318 chunk (model) | 64 → 4.9 % / 64 → 4.5 % | 52 → 6.6 % (5.5) / 38 → 4.0 % (3.3) | 56 → 76 / 64 → 85 |
+  | Nassaukade (buildings) | 21 → 3.1 % / 21 → 3.0 % | 15 → 2.1 % (1.7) / 11 → 1.6 % (1.3) | 60 → 87 / 66 → 87 |
+  | Prinsengracht east bank (buildings) | 7.0 → 1.3 % / 6.9 → 1.3 % | 11.4 → 10.2 % (10.1) / 15.3 → 13.6 % (13.5) | 83 → 118 / 77 → 107 |
+  | Nieuw-West slabs (buildings) | 0.5 → 0.2 % / 0.4 → 0.2 % | 2.5 → 2.5 % (2.5) / 2.9 → 2.9 % (2.9) | 111 → 134 / 101 → 120 |
+
+  Pixels no configuration shadows (sun sides and the walls facing away) did
+  move by more than 2 at any spot (PCF penumbra edges under the 6-luma
+  threshold). "Shadowed luma" after is over the few pixels
+  still in true shadow, mostly sun-facing walls, hence often above the mean.
 - **Materials are diffuse only** (Lambert, or Standard at roughness ≥ 0.8 for
   the facade atlas). No GGX hotspots on landmarks (`landmarkShading.ts`).
 - **Legacy (flag off) is baked:** the streamed city bakes the rig's sun into

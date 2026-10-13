@@ -4,10 +4,10 @@ import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import { eyeOfClipMatrix, frameMatrices, invert, mercatorFromWorld, mercatorOfLngLat, mercatorUnitsPerMetre, multiply, worldFromMercator, worldOfMercator, type Vec3 } from './frameMath.js';
 import { fitShadowCamera, lightBasis, shadowHalfSizeForZoom } from './shadowFit.js';
-import { BAKED_LID_SHADE, BAKED_SHADE_GLSL, bakedFaceShade, bakedWallShade, createLightRig, enuDirectionInLocal, mapLibreSunPosition, SUN_DIRECTION, sunDirection } from './lightRig.js';
+import { BAKED_LID_SHADE, BAKED_SHADE_GLSL, bakedFaceShade, bakedWallShade, createLightRig, DEFAULT_LIGHT_RIG, enuDirectionInLocal, mapLibreSunPosition, SHADOW_FILL, SUN_DIRECTION, sunDirection } from './lightRig.js';
 import { LayerRegistry, PARTICIPANT_ORDER } from './layerRegistry.js';
 import { withinView } from './residency.js';
-import { SharedFrame, SHARED_FRAME_MAIN_ID, SHARED_FRAME_OVERLAY_ID } from './sharedFrame.js';
+import { fullDepthRangeForShadowMap, SharedFrame, SHARED_FRAME_MAIN_ID, SHARED_FRAME_OVERLAY_ID } from './sharedFrame.js';
 import { createLitFacadeMaterial, createFacadeDepthMaterial } from './litFacadeMaterial.js';
 
 const close = (a: number, b: number, eps: number, what = '') => assert.ok(Math.abs(a - b) <= eps, `${what} ${a} vs ${b}`);
@@ -175,6 +175,41 @@ test('light rig is z-up and its shadow camera basis matches the snap basis', () 
   const x = new THREE.Vector3().setFromMatrixColumn(cam.matrixWorld, 0);
   const { right } = lightBasis(rig.toSun);
   for (let i = 0; i < 3; i++) close(x.getComponent(i), right[i], 1e-9, `right[${i}]`);
+});
+
+test('shadow fill: the rig keeps half the sun in cast shadow', () => {
+  assert.equal(SHADOW_FILL, 0.5);
+  assert.equal(DEFAULT_LIGHT_RIG.shadowIntensity, 1 - SHADOW_FILL);
+  assert.equal(createLightRig(THREE).sun.shadow.intensity, 1 - SHADOW_FILL);
+  assert.equal(createLightRig(THREE, { shadowIntensity: 1 }).sun.shadow.intensity, 1);
+});
+
+test('the shadow map is drawn at the full depth range, then MapLibre\'s range is restored', () => {
+  // MapLibre's 3D custom-layer depth range (depthRangeFor3D), as measured in the game: [0, 0.968].
+  let range: [number, number] = [0, 0.968];
+  const seenInside: [number, number][] = [];
+  const gl = {
+    DEPTH_RANGE: 0x0b70,
+    getParameter: () => new Float32Array(range),
+    depthRange: (lo: number, hi: number) => { range = [lo, hi]; },
+  } as unknown as WebGL2RenderingContext;
+  const shadowMap: any = { enabled: true, autoUpdate: false, needsUpdate: true, render() { seenInside.push([...range] as [number, number]); } };
+  const seen: [number, number][] = [];
+  fullDepthRangeForShadowMap({ shadowMap }, gl, r => seen.push(r));
+  fullDepthRangeForShadowMap({ shadowMap }, gl); // idempotent
+  shadowMap.render();
+  assert.deepEqual(seenInside, [[0, 1]]);
+  close(range[1], 0.968, 1e-6, 'restored');
+  close(seen[0][1], 0.968, 1e-6, 'reported');
+  // No redraw this frame: nothing touched.
+  shadowMap.needsUpdate = false;
+  shadowMap.render();
+  assert.equal(seenInside.length, 2);
+  close(seenInside[1][1], 0.968, 1e-6, 'untouched when not redrawing');
+  // The diagnostics switch draws inside MapLibre's range again (the old behaviour).
+  shadowMap.needsUpdate = true; shadowMap.fullDepthRange = false;
+  shadowMap.render();
+  close(seenInside[2][1], 0.968, 1e-6, 'legacy');
 });
 
 test('registry orders by pass, order, then registration and rejects duplicates', () => {
