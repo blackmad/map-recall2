@@ -73,22 +73,18 @@ export {
 export const TRANSIT_STOP_QUIZ_RADIUS_M = 45;
 
 /** Minimum seconds between stop quizzes on the same route. */
-export const TRANSIT_STOP_QUIZ_COOLDOWN_S = 18;
 
 /** After answering a line question, wait this long before asking again. */
-export const TRANSIT_LINE_QUIZ_COOLDOWN_S = 45;
 
 /** Metres — how close the tram must be to a curated street centreline to ask. */
 export const TRANSIT_STREET_QUIZ_RADIUS_M = 35;
 
 /** Minimum seconds between corridor street quizzes. */
-export const TRANSIT_STREET_QUIZ_COOLDOWN_S = 22;
 
 /** Metres — landmarks farther than this from the planned route stay quiet. */
 export const TRANSIT_LANDMARK_ROUTE_RADIUS_M = 120;
 
 /** Minimum seconds between transfer-hub line quizzes. */
-export const TRANSIT_TRANSFER_QUIZ_COOLDOWN_S = 40;
 
 /**
  * Seconds after race start before any transit quiz may open. Spawn is often a
@@ -112,3 +108,10 @@ export {
   type TransitOverlayLine,
   type TransitOverlayGrade,
 } from './overlayStyle.ts';
+
+export {
+  TRANSIT_STOP_QUIZ_COOLDOWN_S,
+  TRANSIT_LINE_QUIZ_COOLDOWN_S,
+  TRANSIT_STREET_QUIZ_COOLDOWN_S,
+  TRANSIT_TRANSFER_QUIZ_COOLDOWN_S,
+} from '../game/teachingPacer.ts';
