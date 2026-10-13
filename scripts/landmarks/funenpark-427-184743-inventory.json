@@ -1,0 +1,124 @@
+{
+ "schemaVersion": 1,
+ "id": "funenpark-427-184743",
+ "pand": "0363100012184743",
+ "signature": [
+  "curved-glass-east-arc",
+  "brick-west-front"
+ ],
+ "walls": [
+  {
+   "tag": "w01-179",
+   "bearing": 179,
+   "lengthM": 239.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001670_pano_0000_000255",
+   "capturedAt": "2020-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "south-ribbon-loggias",
+     "kind": "window-shape",
+     "where": "south front: four floors of ribbon loggia glazing in green shutters over a glazed ground floor",
+     "approxSizeM": [
+      140,
+      15
+     ],
+     "plan": "simplified",
+     "how": "ribbon-windows low on walls[0] and [1], glazed ground, green frames; no loggia recess",
+     "seenIn": "TMX7316010203-001670_pano_0000_000255"
+    }
+   ]
+  },
+  {
+   "tag": "w02-110",
+   "bearing": 110,
+   "lengthM": 121.6,
+   "evidence": "photo",
+   "panoId": "b_20250130_0915_Track26_Sphere_00016",
+   "capturedAt": "2025-01-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "curved-glass-east-arc",
+     "kind": "window-shape",
+     "where": "east park front: curved glass curtain with vertical green fins",
+     "approxSizeM": [
+      120,
+      18
+     ],
+     "plan": "simplified",
+     "how": "curve: true ribbon-windows on walls[2], green frames standing for the fins",
+     "seenIn": "b_20250130_0915_Track26_Sphere_00016"
+    },
+    {
+     "id": "orange-doors",
+     "kind": "other",
+     "where": "orange timber doors in the brick base",
+     "approxSizeM": [
+      1.2,
+      2.3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "individual 1.2 m entrance doors in the base"
+     },
+     "seenIn": "b_20250130_0915_Track26_Sphere_00016"
+    }
+   ]
+  },
+  {
+   "tag": "w03-291",
+   "bearing": 291,
+   "lengthM": 92.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001908_pano_0000_003406",
+   "capturedAt": "2020-09-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "brick-west-front",
+     "kind": "window-shape",
+     "where": "west front: curved brown brick, regular tall windows, 4-6 storeys",
+     "approxSizeM": [
+      92,
+      15
+     ],
+     "plan": "modelled",
+     "how": "4-storey brick-bay-grid, plain windows on walls[3]",
+     "seenIn": "TMX7316010203-001908_pano_0000_003406"
+    }
+   ]
+  },
+  {
+   "tag": "w04-359",
+   "bearing": 359,
+   "lengthM": 67.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001908_pano_0000_003384",
+   "capturedAt": "2020-09-07",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  },
+  {
+   "tag": "w05-272",
+   "bearing": 272,
+   "lengthM": 51.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001908_pano_0000_003447",
+   "capturedAt": "2020-09-07",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
