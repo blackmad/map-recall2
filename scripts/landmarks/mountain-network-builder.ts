@@ -35,14 +35,15 @@ export function buildMountainNetwork(_w:number,_d:number,{add,box}:BuildingTools
    const tower=ring.every(p=>p[0]>12&&p[2]<-65)&&maxY<36;
    add(g,tower?'white':outward.x>.65?'slate':'stone');
    const xs=local[0].map(p=>p.x),left=Math.min(...xs),right=Math.max(...xs),length=right-left;
-   function plane(l:number,r:number,y:number,h:number,c:Parameters<BuildingTools['add']>[1],offset=.09){const m=(l+r)/2;const geo=new T.PlaneGeometry(r-l,h);const angle=Math.atan2(outward.x,outward.y);add(geo,c,a[0]+tangent.x*m+outward.x*offset,y+h/2,a[2]+tangent.y*m+outward.y*offset,angle);}
+   // Facade layers are thin boxes whose back reaches the survey wall (offset 0), not zero-thickness quads floating 9-25 cm off it; backs sink to a depth that grows with the layer's offset so stacked layers never share a coplanar back face.
+   function plane(l:number,r:number,y:number,h:number,c:Parameters<BuildingTools['add']>[1],offset=.09){const m=(l+r)/2,depth=offset*1.4+.02,mid=offset-depth/2;const geo=new T.BoxGeometry(r-l,h,depth);const angle=Math.atan2(outward.x,outward.y);add(geo,c,a[0]+tangent.x*m+outward.x*mid,y+h/2,a[2]+tangent.y*m+outward.y*mid,angle);}
    // Fractional panel ranges come from the actual wall polygon at each height.
    function spans(y:number){const hits:number[]=[];const p=local[0];for(let i=0;i<p.length;i++){const a=p[i],b=p[(i+1)%p.length];if((a.y<=y&&b.y>y)||(b.y<=y&&a.y>y))hits.push(a.x+(b.x-a.x)*(y-a.y)/(b.y-a.y));}hits.sort((a,b)=>a-b);return Array.from({length:Math.floor(hits.length/2)},(_,i)=>[hits[i*2],hits[i*2+1]]);}
    if(tower&&length>3){
     // Source2022/2025: brick plinth under cantilevered pale translucent climbing tower.
     const base=Math.max(minY,.05),bh=Math.min(7,maxY)-base;if(bh>0)for(const[l,r]of spans(base+bh/2))plane(l,r,base,bh,'stone',.1);
     if(outward.y<-.5){
-    }else{for(let y=8;y<maxY;y+=1.45)for(const[l,r]of spans(y))plane(l,r,y,.035,'frame',.1);}
+    } // The 3.5 cm hairline ribs every 1.45 m on the tower's side faces are gone: they stood outside any wall polygon (18 overhang fails) and read as nothing at street distance.
    }else if(length>3.2){
     if([108,79,86].includes(surfaceIndex)){
      const mid=(left+right)/2,width=Math.min(8,length-1.2);

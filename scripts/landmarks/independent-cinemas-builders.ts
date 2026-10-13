@@ -28,7 +28,7 @@ export function buildIndependentCinemaLandmark(id:string,_w:number,_d:number,b:B
   // Stair/clock tower: three very tall gridded windows, decorative figures and dot clock.
   const tx=-7.15,tz=8.01;for(const x of [tx-2.1,tx,tx+2.1]){sash(x,5.0,tz+.12,1.15,5.0);sash(x,11.4,tz+.12,1.15,5.3);box(x,16.9,tz+.1,.7,.95,.25,'stone');add(new T.SphereGeometry(.23,6,4),'stone',x,18.05,tz+.22);}
   for(let i=0;i<12;i++){const aa=i*Math.PI/6;add(new T.CircleGeometry(.07,6),'stone',tx+Math.sin(aa)*.75,19.47+Math.cos(aa)*.75,tz+.23);}beam(tx,19.47,tz+.25,tx+.4,19.8,tz+.25,.06,'dark');beam(tx,19.47,tz+.25,tx,20.07,tz+.25,.055,'dark');
-  box(tx,21.25,3.25,8.3,.65,10.3,'stone');box(tx,0,tz+.16,3.6,3.55,.15,'dark');box(tx,3.55,tz+.55,4.55,.32,1.5,'stone');for(let i=0;i<4;i++)box(tx,i*.22,tz+1.8-i*.32,4.3,.23,1.7-i*.32,'stone');sign('LAB111',tx-1.55,4.03,tz+.45,.22,'white');
+  box(tx,21.25,3.25,8.3,.65,10.3,'stone');box(tx,0,tz+.1,3.6,3.55,.15,'dark');box(tx,3.55,tz+.55,4.55,.32,1.5,'stone');for(let i=0;i<4;i++)box(tx,i*.22,tz+1.8-i*.32,4.3,.23,1.7-i*.32,'stone');sign('LAB111',tx-1.55,4.03,tz+.45,.22,'white');
   // Main wing cornices remain separate from the recessed entrance.
   box(11.5,16.42,front,29,.36,.38,'stone');box(-16.3,15.72,18.3,10.2,.32,.42,'stone');
   for(const x of [-19,-16,-13])for(const y of [1.2,5,8.8,12.4])sash(x,y,18.52,1.65,2.45);
