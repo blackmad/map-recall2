@@ -1,5 +1,40 @@
 # Canal Recall — what is built
 
+## City look review: shaded highlight, luma in the band, era brick, 311-model gallery triage (2026-10-13)
+
+Lane `look/citylook-review-20261013` (Opus). Highlight under `?cityLook=1`:
+lit variant replaces the tint but keeps the cell (brick courses and dark
+windows show through; albedo 1.0, glow 0.45 → 0.2), unlit variant widens the
+baked shade contrast ×1.8 with roofs floored at 0.6; sun/shade ratio 1.30
+lit and 1.49 unlit against the default highlight's 1.09, asserted in
+`building-look.spec` and shot by `building-look-highlight.spec.ts`. Brick
+luma: a 0.9 level on the lit look moves the #808080 reference from
+117/107/78 to 105/96/70 (S/W/N), inside LOOK.md's band; roof slots take the
+chunk roof gain (the 13 % "darker slate" gap is gone); a lighter 20th-century
+brick for BAG year ≥ 1915 and a smooth white render for white/cream/ivory.
+BAG records rebuild years for some monuments (Westerkerk 1990, Rijksmuseum
+2013, Hollandsche Schouwburg 1988): corrected with sourced years only.
+Gallery triage of all 311 GLBs (`artifacts/citylook-review/gallery-final/`,
+flag off beside flag on, sun and shade): 105 right; rule fixes that each hit
+≥ 6 models — grey-green `frame` #9daaa8 no longer turns cream (140 models,
+whole claddings such as ARCAM and the Faralda crane), grey brick stays grey
+(47), light slate/lead/zinc roofs keep their lightness (35), dark stone keeps
+its colour (7, Trippenhuis +19 %), red/brown roofs named `slate` take the
+pantile tint (6), stone and stucco cells gained to mean 1 (254); 18 remain
+10–21 % off by palette design; 3 need the builder. Median off → on
+brightness change −4.2 % → −2.4 %; models > 10 % off 86 → 18, > 15 % off 34
+→ 2. Parity: grey reference brick now differs 3.8–4.3 % across pipelines by
+design (grey stays grey on landmarks and recipes, generic chunks keep the
+saturation floor), brick-coloured #9a5240 agrees within 0.15 %. Perf
+(desktop fixed route, 20 s): frame 16.7/16.8 ms in every mode, three.js
+layers 0.74 (off) / 0.90 (shared frame) / 0.89 (both) / 0.73 (city look
+only), draw calls 407, textures 98 → 103.5 MB. Flag-off `look-consistency`
+pixel-identical. Recommendation in `docs/LOOK.md`: flip both together,
+desktop first. Integrator: `scripts/landmarks/landmark-bag-years.ts` run
+(238 manual + 77 ordinary entries got `bagYear`; 57 without), bundles
+rebuilt, `test:look` 28, look e2e 15 passed.
+
+
 ## Large tier: arched openings; Entrepotdok, Reade, Eden Hotel, Nieuwpoortstraat (2026-10-13)
 
 Lane `large/arches-entrepotdok-20261013` (Opus). `src/canalRecall/blockBuilding/arch.ts`:

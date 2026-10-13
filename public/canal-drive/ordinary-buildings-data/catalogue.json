@@ -153,7 +153,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012242125",
         "https://data.amsterdam.nl/data/geozoek?center=52.394305,4.788693&lagen=pano-pano2025bi"
       ],
-      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "bagYear": 2014
     },
     {
       "id": "ordinary-0363100012074248",
@@ -290,7 +291,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012074248",
         "https://data.amsterdam.nl/data/geozoek?center=52.397391999999996,4.939452&lagen=pano-pano2025bi"
       ],
-      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "bagYear": 1971
     },
     {
       "id": "ordinary-0363100012223044",
@@ -447,7 +449,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012223044",
         "https://data.amsterdam.nl/data/geozoek?center=52.385817,4.939824&lagen=pano-pano2025bi"
       ],
-      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "bagYear": 1992
     },
     {
       "id": "ordinary-0363100012123231",
@@ -563,7 +566,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012123231",
         "https://data.amsterdam.nl/data/geozoek?center=52.400291499999994,4.813311000000001&lagen=pano-pano2025bi"
       ],
-      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "bagYear": 1984
     },
     {
       "id": "ordinary-0363100012183449",
@@ -685,7 +689,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012183449",
         "https://data.amsterdam.nl/data/geozoek?center=52.4036035,4.814140999999999&lagen=pano-pano2025bi"
       ],
-      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "bagYear": 1990
     },
     {
       "id": "ordinary-0363100012191215",
@@ -794,7 +799,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012191215",
         "https://data.amsterdam.nl/data/geozoek?center=52.401129999999995,4.78618&lagen=pano-pano2025bi"
       ],
-      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "bagYear": 2000
     },
     {
       "id": "ordinary-0363100012224669",
@@ -931,7 +937,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012224669",
         "https://data.amsterdam.nl/data/geozoek?center=52.4123705,4.7617615&lagen=pano-pano2025bi"
       ],
-      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "bagYear": 1993
     },
     {
       "id": "ordinary-0363100012067126",
@@ -1060,7 +1067,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012067126",
         "https://data.amsterdam.nl/data/geozoek?center=52.410713,4.7641575&lagen=pano-pano2025bi"
       ],
-      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "bagYear": 1999
     },
     {
       "id": "ordinary-0363100012159282",
@@ -1221,7 +1229,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012159282",
         "https://data.amsterdam.nl/data/geozoek?center=52.405080999999996,4.7512865&lagen=pano-pano2025bi"
       ],
-      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "bagYear": 2009
     },
     {
       "id": "ordinary-0363100012238052",
@@ -1455,7 +1464,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012238052",
         "https://data.amsterdam.nl/data/geozoek?center=52.3134115,4.937098000000001&lagen=pano-pano2025bi"
       ],
-      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "bagYear": 2012
     },
     {
       "id": "ordinary-0363100012177576",
@@ -1972,7 +1982,8 @@
         ],
         "distanceMetres": 35
       },
-      "updatedAt": "2026-10-07T06:38:49.107683+00:00"
+      "updatedAt": "2026-10-07T06:38:49.107683+00:00",
+      "bagYear": 1636
     },
     {
       "id": "ordinary-0363100012177571",
@@ -2482,7 +2493,8 @@
         ],
         "distanceMetres": 35
       },
-      "updatedAt": "2026-10-07T06:38:49.107683+00:00"
+      "updatedAt": "2026-10-07T06:38:49.107683+00:00",
+      "bagYear": 1636
     },
     {
       "id": "ordinary-0363100012165119",
@@ -3493,7 +3505,8 @@
         ],
         "distanceMetres": 48
       },
-      "updatedAt": "2026-10-07T06:38:49.107683+00:00"
+      "updatedAt": "2026-10-07T06:38:49.107683+00:00",
+      "bagYear": 1984
     },
     {
       "id": "ordinary-0363100012167569",
@@ -3835,7 +3848,8 @@
         "distanceMetres": 38,
         "targetHeightMetres": 7.6
       },
-      "updatedAt": "2026-10-07T07:41:05.401169+00:00"
+      "updatedAt": "2026-10-07T07:41:05.401169+00:00",
+      "bagYear": 1971
     },
     {
       "id": "ordinary-0363100012168534",
@@ -4641,7 +4655,8 @@
         "targetHeightMetres": 8.2
       },
       "rearSourceAssociation": "Native NE edges13/14/15: surveyed roofregion2 approximately13.15m, ground+threeupper rows. Oppositewing17–18m strip and inset21m storage remain separate; earlier association withdrawn.",
-      "updatedAt": "2026-10-07T07:41:05.401169+00:00"
+      "updatedAt": "2026-10-07T07:41:05.401169+00:00",
+      "bagYear": 1970
     },
     {
       "id": "ordinary-0363100012167770",
@@ -6824,7 +6839,8 @@
       "sourceUrls": [
         "https://monumentenregister.cultureelerfgoed.nl/monumenten/790",
         "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=243"
-      ]
+      ],
+      "bagYear": 1640
     },
     {
       "id": "ordinary-0363100012167736",
@@ -9049,7 +9065,8 @@
       "validationSourceCommit": "df79731b0ec912f4410c3441db4a1a00c252da2e",
       "sourceUrls": [
         "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?evenzijde=2&grachtenboek=Keizersgracht&id=8637"
-      ]
+      ],
+      "bagYear": 1993
     },
     {
       "id": "ordinary-0363100012168028",
@@ -9838,7 +9855,8 @@
         "https://onsamsterdam.nl/artikelen/de-vaste-route-van-arendo-joustra"
       ],
       "updatedAt": "2026-10-07T09:51:48.140044+00:00",
-      "validationSourceCommit": "8efa7eef24d4f47a7460c5f17fa532388e7afe40"
+      "validationSourceCommit": "8efa7eef24d4f47a7460c5f17fa532388e7afe40",
+      "bagYear": 1989
     },
     {
       "id": "ordinary-0363100012176271",
@@ -10221,7 +10239,8 @@
         "https://amsterdamopdekaart.nl/1850-1940/Singel/152-158"
       ],
       "updatedAt": "2026-10-07T09:51:48.140044+00:00",
-      "validationSourceCommit": "8efa7eef24d4f47a7460c5f17fa532388e7afe40"
+      "validationSourceCommit": "8efa7eef24d4f47a7460c5f17fa532388e7afe40",
+      "bagYear": 1941
     },
     {
       "id": "ordinary-0363100012176244",
@@ -10560,7 +10579,8 @@
         "https://cok.amsterdam.nl/wp-content/uploads/2024/06/111jaarwelstandsadviseringdeel2.pdf"
       ],
       "updatedAt": "2026-10-07T09:51:48.140044+00:00",
-      "validationSourceCommit": "8efa7eef24d4f47a7460c5f17fa532388e7afe40"
+      "validationSourceCommit": "8efa7eef24d4f47a7460c5f17fa532388e7afe40",
+      "bagYear": 1972
     },
     {
       "id": "ordinary-0363100012165204",
@@ -11493,7 +11513,8 @@
       "packedSourceCommit": "7a366827879aadd6f1059bf6424c3eef5b8480ab",
       "packedSourcePack": "experiments/canal-belt-continuation-20261007/packing-04",
       "sizeBudgetException": "520176bytes exceeds500KBpreference4%; defining assemblies retained, physical materials consolidated7to3.",
-      "updatedAt": "2026-10-07T21:00:00Z"
+      "updatedAt": "2026-10-07T21:00:00Z",
+      "bagYear": 1967
     },
     {
       "id": "ordinary-0363100012168482",
@@ -11922,7 +11943,8 @@
       "acceptanceSourceCommit": "b444eca8edfc9cc545047bebbf92b9c315d79c23",
       "acceptanceSourcePack": "experiments/canal-belt-continuation-20261007/runtime-05",
       "reviewedAt": "2026-10-07T20:59:33.670018+00:00",
-      "updatedAt": "2026-10-07T21:00:00Z"
+      "updatedAt": "2026-10-07T21:00:00Z",
+      "bagYear": 1966
     },
     {
       "id": "ordinary-0363100012168201",
@@ -12464,7 +12486,8 @@
       "acceptanceSourceCommit": "81bef5d1ca4ff18d05306ba9b4ec34d98c7febcb",
       "acceptanceSourcePack": "experiments/canal-belt-continuation-20261007/next-box-runtime-07",
       "reviewedAt": "2026-10-07T21:21:01.705480+00:00",
-      "updatedAt": "2026-10-07T21:21:01.705480+00:00"
+      "updatedAt": "2026-10-07T21:21:01.705480+00:00",
+      "bagYear": 1970
     },
     {
       "id": "ordinary-0363100012175754",
@@ -13491,7 +13514,8 @@
       "acceptanceSourceCommit": "81bef5d1ca4ff18d05306ba9b4ec34d98c7febcb",
       "acceptanceSourcePack": "experiments/canal-belt-continuation-20261007/next-box-runtime-07",
       "reviewedAt": "2026-10-07T21:21:01.705480+00:00",
-      "updatedAt": "2026-10-07T21:21:01.705480+00:00"
+      "updatedAt": "2026-10-07T21:21:01.705480+00:00",
+      "bagYear": 1993
     },
     {
       "id": "ordinary-0363100012254471",
@@ -14519,7 +14543,8 @@
       "reviewState": "Verified source comparison and in-game placement.",
       "treatment": "landmark",
       "sourceCommit": "052ce837e0721eaa173873a5517a47ba8b86b982",
-      "updatedAt": "2026-10-07T22:46:40.509Z"
+      "updatedAt": "2026-10-07T22:46:40.509Z",
+      "bagYear": 2017
     },
     {
       "id": "ordinary-0363100012243483",
@@ -16188,7 +16213,8 @@
       "portableDetailStage": "scripts/curved-details.mjs",
       "sourceCommit": "052ce837e0721eaa173873a5517a47ba8b86b982",
       "treatment": "landmark",
-      "updatedAt": "2026-10-07T22:46:40.509Z"
+      "updatedAt": "2026-10-07T22:46:40.509Z",
+      "bagYear": 2017
     },
     {
       "id": "ordinary-0363100012167975",
@@ -18581,7 +18607,8 @@
         ]
       },
       "treatment": "landmark",
-      "updatedAt": "2026-10-08T00:02:22.785948+00:00"
+      "updatedAt": "2026-10-08T00:02:22.785948+00:00",
+      "bagYear": 1976
     },
     {
       "id": "ordinary-0363100012175018",
@@ -19603,7 +19630,8 @@
       "generationMilliseconds": 23,
       "reviewState": "Source-reviewed native building; hidden rear details remain approximate.",
       "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
-      "updatedAt": "2026-10-08T01:30:34.576061+00:00"
+      "updatedAt": "2026-10-08T01:30:34.576061+00:00",
+      "bagYear": 1995
     },
     {
       "id": "ordinary-0363100012171370",
@@ -19736,7 +19764,8 @@
       ],
       "coordinateConvention": "Existing ordinary native glTF metres: x=east111320cos(anchorLat), z=south111320; the unchanged lon/lat ring is authoritative. Local745.862m² differs from747.004m² RD/native admission by projection approximation, not scope change.",
       "orientation": "edge0 east-to-west, outward north; AIR2182493 EAST; fence/open gap WEST",
-      "updatedAt": "2026-10-08T01:36:57.498718+00:00"
+      "updatedAt": "2026-10-08T01:36:57.498718+00:00",
+      "bagYear": 2006
     },
     {
       "id": "ordinary-0363100012177101",
@@ -19931,7 +19960,8 @@
         "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.887974518518519%2C52.36349425925926&page=3&page_size=100&radius=65&srid=4326",
         "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00230/equirectangular/panorama_8000.jpg"
       ],
-      "updatedAt": "2026-10-08T15:29:13.555963+00:00"
+      "updatedAt": "2026-10-08T15:29:13.555963+00:00",
+      "bagYear": 1930
     },
     {
       "name": "Nieuwe Spiegelstraat3–17 / Keizersgracht555 historic office and arcade wing",
@@ -20185,7 +20215,8 @@
       ],
       "treatment": "full",
       "status": "draft-pending-source-render-independent-native-game-performance",
-      "updatedAt": "2026-10-08T19:49:48.773502+00:00"
+      "updatedAt": "2026-10-08T19:49:48.773502+00:00",
+      "bagYear": 1905
     },
     {
       "id": "ordinary-0363100012169456",
@@ -20299,7 +20330,8 @@
         "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012169456",
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169456"
       ],
-      "updatedAt": "2026-10-08T19:49:48.773502+00:00"
+      "updatedAt": "2026-10-08T19:49:48.773502+00:00",
+      "bagYear": 1690
     },
     {
       "id": "ordinary-0363100012169457",
@@ -20407,7 +20439,8 @@
         "feedbackPreview": true,
         "evidenceSourceCommit": "6515660e4d5b0cef3bdc0b940abb8fc1173fed66",
         "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted34-20261008"
-      }
+      },
+      "bagYear": 1690
     },
     {
       "buildingId": "NL.IMBAG.Pand.0363100012174397",
@@ -20540,7 +20573,8 @@
         "feedbackPreview": true,
         "evidenceSourceCommit": "6515660e4d5b0cef3bdc0b940abb8fc1173fed66",
         "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted34-20261008"
-      }
+      },
+      "bagYear": 1905
     },
     {
       "id": "ordinary-0363100012185424",
@@ -21187,7 +21221,8 @@
         "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted35-20261009"
       },
       "builderSpec": "scripts/ordinary-buildings/prinsen767-spec.json",
-      "builderStage": "scripts/ordinary-buildings/build-prinsen767.ts"
+      "builderStage": "scripts/ordinary-buildings/build-prinsen767.ts",
+      "bagYear": 1903
     },
     {
       "id": "ordinary-0363100012176752",
@@ -21471,7 +21506,8 @@
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012176752",
         "https://data.amsterdam.nl/data/"
-      ]
+      ],
+      "bagYear": 1894
     },
     {
       "id": "ordinary-0363100012171101",
@@ -21787,7 +21823,8 @@
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171101",
         "https://data.amsterdam.nl/data/"
-      ]
+      ],
+      "bagYear": 1712
     },
     {
       "id": "ordinary-0363100012079721",
@@ -21932,7 +21969,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012079721",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T02:49:09.763Z"
+      "updatedAt": "2026-10-10T02:49:09.763Z",
+      "bagYear": 1894
     },
     {
       "id": "ordinary-0363100012080336",
@@ -22052,7 +22090,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012080336",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T02:49:09.763Z"
+      "updatedAt": "2026-10-10T02:49:09.763Z",
+      "bagYear": 1939
     },
     {
       "id": "ordinary-0363100012090492",
@@ -22152,7 +22191,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012090492",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T02:49:09.763Z"
+      "updatedAt": "2026-10-10T02:49:09.763Z",
+      "bagYear": 1939
     },
     {
       "id": "ordinary-0363100012092394",
@@ -22268,7 +22308,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012092394",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T02:49:09.763Z"
+      "updatedAt": "2026-10-10T02:49:09.763Z",
+      "bagYear": 1939
     },
     {
       "id": "ordinary-0363100012092395",
@@ -22368,7 +22409,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012092395",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T02:49:09.763Z"
+      "updatedAt": "2026-10-10T02:49:09.763Z",
+      "bagYear": 1939
     },
     {
       "id": "ordinary-0363100012152363",
@@ -22468,7 +22510,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012152363",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T02:49:09.763Z"
+      "updatedAt": "2026-10-10T02:49:09.763Z",
+      "bagYear": 1881
     },
     {
       "id": "ordinary-0363100012152669",
@@ -22592,7 +22635,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012152669",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T02:49:09.763Z"
+      "updatedAt": "2026-10-10T02:49:09.763Z",
+      "bagYear": 1894
     },
     {
       "id": "ordinary-0363100012153622",
@@ -22697,7 +22741,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012153622",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T02:49:09.763Z"
+      "updatedAt": "2026-10-10T02:49:09.763Z",
+      "bagYear": 1887
     },
     {
       "id": "ordinary-0363100012153782",
@@ -22805,7 +22850,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012153782",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T02:49:09.763Z"
+      "updatedAt": "2026-10-10T02:49:09.763Z",
+      "bagYear": 1891
     },
     {
       "id": "ordinary-0363100012154127",
@@ -22921,7 +22967,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012154127",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T02:49:09.763Z"
+      "updatedAt": "2026-10-10T02:49:09.763Z",
+      "bagYear": 1889
     },
     {
       "id": "ordinary-0363100012156732",
@@ -23021,7 +23068,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012156732",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T02:49:09.763Z"
+      "updatedAt": "2026-10-10T02:49:09.763Z",
+      "bagYear": 1881
     },
     {
       "id": "ordinary-0363100012081118",
@@ -23122,7 +23170,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012081118",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T03:19:14.770Z"
+      "updatedAt": "2026-10-10T03:19:14.770Z",
+      "bagYear": 1909
     },
     {
       "id": "ordinary-0363100012087959",
@@ -23223,7 +23272,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012087959",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T03:19:14.770Z"
+      "updatedAt": "2026-10-10T03:19:14.770Z",
+      "bagYear": 1909
     },
     {
       "id": "ordinary-0363100012155417",
@@ -23332,7 +23382,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012155417",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T03:19:14.770Z"
+      "updatedAt": "2026-10-10T03:19:14.770Z",
+      "bagYear": 1902
     },
     {
       "id": "ordinary-0363100012155418",
@@ -23436,7 +23487,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012155418",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T03:19:14.770Z"
+      "updatedAt": "2026-10-10T03:19:14.770Z",
+      "bagYear": 1903
     },
     {
       "id": "ordinary-0363100012156286",
@@ -23568,7 +23620,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012156286",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T03:19:14.770Z"
+      "updatedAt": "2026-10-10T03:19:14.770Z",
+      "bagYear": 1903
     },
     {
       "id": "ordinary-0363100012157650",
@@ -23677,7 +23730,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012157650",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T03:19:14.770Z"
+      "updatedAt": "2026-10-10T03:19:14.770Z",
+      "bagYear": 1908
     },
     {
       "id": "ordinary-0363100012156287",
@@ -23793,7 +23847,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012156287",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T03:19:14.770Z"
+      "updatedAt": "2026-10-10T03:19:14.770Z",
+      "bagYear": 1903
     },
     {
       "id": "ordinary-0363100012157154",
@@ -23901,7 +23956,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012157154",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-10T03:19:14.770Z"
+      "updatedAt": "2026-10-10T03:19:14.770Z",
+      "bagYear": 1902
     },
     {
       "id": "ordinary-0363100012102565",
@@ -24076,7 +24132,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012102565",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T11:15:15.084Z"
+      "updatedAt": "2026-10-13T11:15:15.084Z",
+      "bagYear": 1976
     },
     {
       "id": "ordinary-0363100012172459",
@@ -24241,7 +24298,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012172459",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T11:15:15.627Z"
+      "updatedAt": "2026-10-13T11:15:15.627Z",
+      "bagYear": 1966
     },
     {
       "id": "ordinary-0363100012253728",
@@ -24428,7 +24486,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012253728",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T12:55:29.980Z"
+      "updatedAt": "2026-10-13T12:55:29.980Z",
+      "bagYear": 2022
     },
     {
       "id": "ordinary-0363100012064423",
@@ -24566,7 +24625,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012064423",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T12:55:30.511Z"
+      "updatedAt": "2026-10-13T12:55:30.511Z",
+      "bagYear": 1996
     },
     {
       "id": "ordinary-0363100012164938",
@@ -24874,7 +24934,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012164938",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T14:22:44.798Z"
+      "updatedAt": "2026-10-13T14:22:44.798Z",
+      "bagYear": 1782
     },
     {
       "id": "ordinary-0363100012130580",
@@ -25090,7 +25151,8 @@
         "NL.IMBAG.Pand.0363100012080460",
         "NL.IMBAG.Pand.0363100012139518",
         "NL.IMBAG.Pand.0363100012232488"
-      ]
+      ],
+      "bagYear": 1995
     },
     {
       "id": "ordinary-0363100012169471",
@@ -25244,7 +25306,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169471",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:25.485Z"
+      "updatedAt": "2026-10-13T15:36:25.485Z",
+      "bagYear": 1977
     },
     {
       "id": "ordinary-0363100012171032",
@@ -25441,7 +25504,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171032",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:26.036Z"
+      "updatedAt": "2026-10-13T15:36:26.036Z",
+      "bagYear": 1996
     },
     {
       "id": "ordinary-0363100012142138",
@@ -25771,7 +25835,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165618",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:27.083Z"
+      "updatedAt": "2026-10-13T15:36:27.083Z",
+      "bagYear": 1972
     },
     {
       "id": "ordinary-0363100012083091",
@@ -26019,7 +26084,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012083091",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:27.752Z"
+      "updatedAt": "2026-10-13T15:36:27.752Z",
+      "bagYear": 1993
     },
     {
       "id": "ordinary-0363100012131469",
@@ -26127,7 +26193,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012131469",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:28.321Z"
+      "updatedAt": "2026-10-13T15:36:28.321Z",
+      "bagYear": 2003
     },
     {
       "id": "ordinary-0363100012092810",
@@ -26231,7 +26298,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012092810",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:28.895Z"
+      "updatedAt": "2026-10-13T15:36:28.895Z",
+      "bagYear": 2004
     },
     {
       "id": "ordinary-0363100012089344",
@@ -26383,7 +26451,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012089344",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:29.401Z"
+      "updatedAt": "2026-10-13T15:36:29.401Z",
+      "bagYear": 1982
     },
     {
       "id": "ordinary-0363100012143903",
@@ -26567,7 +26636,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012143903",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:29.940Z"
+      "updatedAt": "2026-10-13T15:36:29.940Z",
+      "bagYear": 1985
     },
     {
       "id": "ordinary-0363100012115571",
@@ -26715,7 +26785,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012115571",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:30.583Z"
+      "updatedAt": "2026-10-13T15:36:30.583Z",
+      "bagYear": 1978
     },
     {
       "id": "ordinary-0363100012127406",
@@ -26932,7 +27003,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012127406",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:31.192Z"
+      "updatedAt": "2026-10-13T15:36:31.192Z",
+      "bagYear": 2004
     },
     {
       "id": "ordinary-0363100012116154",
@@ -27182,7 +27254,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012116154",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:31.894Z"
+      "updatedAt": "2026-10-13T15:36:31.894Z",
+      "bagYear": 1959
     },
     {
       "id": "ordinary-0363100012164981",
@@ -27564,7 +27637,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012164981",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:47:20.208Z"
+      "updatedAt": "2026-10-13T15:47:20.208Z",
+      "bagYear": 1750
     },
     {
       "id": "ordinary-0363100012084999",
@@ -28077,7 +28151,8 @@
       "updatedAt": "2026-10-13T15:47:23.236Z",
       "aliases": [
         "w152508198"
-      ]
+      ],
+      "bagYear": 1992
     },
     {
       "id": "ordinary-0363100012186290",
@@ -28509,7 +28584,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012186290",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:47:25.196Z"
+      "updatedAt": "2026-10-13T15:47:25.196Z",
+      "bagYear": 1899
     },
     {
       "id": "ordinary-0363100012126319",
@@ -28754,7 +28830,8 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012126319",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:47:26.385Z"
+      "updatedAt": "2026-10-13T15:47:26.385Z",
+      "bagYear": 1991
     }
   ]
 }
