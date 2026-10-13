@@ -2,8 +2,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
-import { MATERIAL_SLOTS, cityTint, hexToRgb, PHOTO_WALL_CELL_MEAN } from './palette.ts';
-import { BRICK20_FROM, CITY_LIT_LEVEL, SLOT_LAYERS, SLOT_LAYER_COUNT, cityLookEnabled, createCityLook, slotLayerOf, slotLayerBytes, slotParams, slotTintBytes, variantDefines, variantKey, type CityVariant } from './cityLook.ts';
+import { MATERIAL_SLOTS, cityTint, hexToRgb, rgbToHsl, PHOTO_WALL_CELL_MEAN } from './palette.ts';
+import { BRICK20_FROM, CITY_LIT_LEVEL, cityLookTint, SLOT_LAYERS, SLOT_LAYER_COUNT, cityLookEnabled, createCityLook, slotLayerOf, slotLayerBytes, slotParams, slotTintBytes, variantDefines, variantKey, type CityVariant } from './cityLook.ts';
 import { INFERRED_SLOT_SOURCE, inferMaterialSlot, inferredSlotExtras, linearToSrgbHex, materialWord, slotFromColour } from './materialSlotInference.ts';
 
 test('flag: only ?cityLook=1 turns the city look on', () => {
@@ -38,7 +38,8 @@ test('slot table: every material slot samples a layer; frame and paint read plai
 });
 
 test('slot tints are the city palette mapping (one rule for recipe houses and landmarks)', () => {
-  assert.deepEqual(slotTintBytes('brick', '#808080'), [...hexToRgb(cityTint('brick', '#808080')), 255]);
+  assert.deepEqual(slotTintBytes('brick', '#9a5240'), [...hexToRgb(cityTint('brick', '#9a5240')), 255]);
+  assert.deepEqual(slotTintBytes('brick', '#808080'), [...hexToRgb(cityLookTint('brick', '#808080')), 255], 'the city look mapping (grey brick stays grey)');
   assert.deepEqual(slotTintBytes('glass', '#123456'), [255, 255, 255, 255]);
   assert.deepEqual(slotTintBytes('paint', '#D9B24C'), [0xd9, 0xb2, 0x4c, 255], 'paint keeps the authored colour');
 });
@@ -138,4 +139,28 @@ test('variants: 20th-century brick by BAG year, smooth white render for white-na
   assert.equal(SLOT_LAYERS[wall.geometry.getAttribute('layer').getX(0)].cell, 'brick20');
   assert.equal(SLOT_LAYERS[trim.geometry.getAttribute('layer').getX(0)].cell, 'whiteStucco');
   assert.equal(SLOT_LAYERS[render.geometry.getAttribute('layer').getX(0)].cell, 'stucco', 'a stucco name keeps the grained stucco');
+});
+
+test('review corrections: light slate keeps its lightness, mid-grey joinery and dark stone keep their colour (flag on only)', () => {
+  // Dark slate: the city tones, as before (parity with chunk roofs and recipe houses).
+  assert.equal(cityLookTint('slate', '#4a525d'), cityTint('slate', '#4a525d'));
+  // Light slate / zinc: lighter than the lightest city tone, and ordered.
+  const l = (hex: string) => rgbToHsl(hexToRgb(hex))[2];
+  assert.ok(l(cityLookTint('slate', '#707e86')) > l(cityTint('slate', '#707e86')));
+  assert.ok(l(cityLookTint('slate', '#8f9698')) > l(cityLookTint('slate', '#707e86')));
+  // The builders' default grey-green frame stays; white frames still take the city cream; dark frames unchanged.
+  assert.equal(cityLookTint('frame', '#9daaa8'), '#9daaa8');
+  assert.equal(cityLookTint('frame', '#efeadb'), cityTint('frame', '#efeadb'));
+  assert.equal(cityLookTint('frame', '#303b43'), cityTint('frame', '#303b43'));
+  // Dark stone keeps its colour; pale stone takes the city stone.
+  assert.equal(cityLookTint('stone', '#7c7870'), '#7c7870');
+  assert.equal(cityLookTint('stone', '#cfc2a6'), cityTint('stone', '#cfc2a6'));
+  // Grey brick stays neutral (no hue cast from the saturation floor); brick-coloured brick is the palette mapping.
+  assert.ok(rgbToHsl(hexToRgb(cityLookTint('brick', '#696a65')))[1] < 0.12);
+  assert.ok(rgbToHsl(hexToRgb(cityTint('brick', '#696a65')))[1] >= 0.119);
+  assert.equal(cityLookTint('brick', '#9a5240'), cityTint('brick', '#9a5240'));
+  // A red-brown roof named slate takes the pantile tint.
+  assert.equal(cityLookTint('slate', '#7d5144'), cityTint('roofTile', '#7d5144'));
+  // Every other slot is the palette mapping.
+  for (const slot of ['stucco', 'door', 'glass', 'roofTile', 'bitumen', 'paint'] as const) assert.equal(cityLookTint(slot, '#8a7656'), cityTint(slot, '#8a7656'), slot);
 });
