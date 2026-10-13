@@ -1,6 +1,11 @@
 {
   "description": "Model asset update dates, not historical building construction dates.",
   "models": {
+    "academie-theater-dans": {
+      "updatedAt": "2026-10-13T10:07:31.323Z",
+      "version": "5f21aa6288c98215",
+      "dateSource": "asset-update"
+    },
     "adam-tower": {
       "updatedAt": "2026-10-03T23:34:10+02:00",
       "version": "b6bc30564fde16c9",
@@ -1186,6 +1191,11 @@
       "version": "b9b211eabf05d627",
       "dateSource": "asset-update"
     },
+    "holocaust-namenmonument": {
+      "updatedAt": "2026-10-13T10:07:31.252Z",
+      "version": "e0ac6f3523db8113",
+      "dateSource": "asset-update"
+    },
     "homomonument": {
       "updatedAt": "2026-10-04T10:58:02+02:00",
       "version": "42ddfb9e300078c0",
@@ -1614,6 +1624,11 @@
     "magna-plaza.lod1": {
       "updatedAt": "2026-10-13T12:50:18.201Z",
       "version": "1bf3ef77285fa430",
+      "dateSource": "asset-update"
+    },
+    "max-euwe-centrum": {
+      "updatedAt": "2026-10-13T10:07:31.192Z",
+      "version": "be7609a036f79131",
       "dateSource": "asset-update"
     },
     "mediamatic": {
@@ -2321,6 +2336,11 @@
       "version": "46ced1ab0f503123",
       "dateSource": "asset-update"
     },
+    "ruysdael-petrus-pauluskerk": {
+      "updatedAt": "2026-10-13T10:04:11.941Z",
+      "version": "4d40c839080155cb",
+      "dateSource": "asset-update"
+    },
     "scheepvaarthuis": {
       "updatedAt": "2026-10-13T12:51:06.214Z",
       "version": "ee2941f43b2966de",
@@ -2714,6 +2734,11 @@
     "vondeltuin": {
       "updatedAt": "2026-10-06T21:05:23.959Z",
       "version": "cc3f4c61eef67258",
+      "dateSource": "asset-update"
+    },
+    "voormalige-schouwburgpoort": {
+      "updatedAt": "2026-10-13T10:07:31.289Z",
+      "version": "74bfbe4dcf77f736",
       "dateSource": "asset-update"
     },
     "vredeskerk": {

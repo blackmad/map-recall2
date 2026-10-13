@@ -1,0 +1,139 @@
+[
+  {
+    "osmId": "w162095711",
+    "sourceFeature": {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4.8829692,
+            52.3626022
+          ],
+          [
+            4.8829727,
+            52.3626743
+          ],
+          [
+            4.883196,
+            52.3628148
+          ]
+        ]
+      },
+      "properties": {
+        "@type": "way",
+        "@id": 162095711,
+        "foot": "yes",
+        "highway": "footway",
+        "name": "Max Euweplein",
+        "tunnel": "building_passage"
+      }
+    },
+    "pathUV": [
+      [
+        3.6538907335115423,
+        3.8686047449227994
+      ],
+      [
+        -1.7452861818621173,
+        -2.0748735607198334
+      ],
+      [
+        -1.6719314656408297,
+        -23.870312013636937
+      ]
+    ],
+    "widthMetres": 3.3,
+    "widthAuthority": "Bounded original reconstruction; exact width not measured.",
+    "ceilingHeightMetres": 3.8,
+    "heightAuthority": "Photo-guided bounded doorway clearance; exact interior ceiling not measured."
+  },
+  {
+    "osmId": "w267565595",
+    "sourceFeature": {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4.8833535,
+            52.3624049
+          ],
+          [
+            4.8834075,
+            52.3624408
+          ]
+        ]
+      },
+      "properties": {
+        "@type": "way",
+        "@id": 267565595,
+        "highway": "cycleway",
+        "lit": "yes",
+        "name": "Max Euweplein",
+        "note": "Max Euweplein",
+        "oneway": "no",
+        "smoothness": "intermediate",
+        "surface": "asphalt",
+        "surface:colour": "red",
+        "tunnel": "building_passage",
+        "width": "3.00"
+      }
+    },
+    "pathUV": [
+      [
+        37.705212622082826,
+        1.5496870495229373
+      ],
+      [
+        37.57435801390746,
+        -3.875180478827563
+      ]
+    ],
+    "widthMetres": 3.0,
+    "widthAuthority": "OSMdeclared",
+    "ceilingHeightMetres": 3.8,
+    "heightAuthority": "Photo-guided bounded doorway clearance; exact interior ceiling not measured."
+  },
+  {
+    "osmId": "w267565596",
+    "sourceFeature": {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4.8833823,
+            52.362359
+          ],
+          [
+            4.8834985,
+            52.3624363
+          ]
+        ]
+      },
+      "properties": {
+        "@type": "way",
+        "@id": 267565596,
+        "highway": "footway",
+        "note": "Max Euweplein",
+        "surface": "paving_stones",
+        "tunnel": "building_passage"
+      }
+    },
+    "pathUV": [
+      [
+        42.66094963467509,
+        3.869493969923557
+      ],
+      [
+        42.37562134761159,
+        -7.807905712505523
+      ]
+    ],
+    "widthMetres": 2.5,
+    "widthAuthority": "Bounded original reconstruction; exact width not measured.",
+    "ceilingHeightMetres": 3.8,
+    "heightAuthority": "Photo-guided bounded doorway clearance; exact interior ceiling not measured."
+  }
+]

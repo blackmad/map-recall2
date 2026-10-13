@@ -1,0 +1,57 @@
+{
+  "id": "ruysdael-petrus-pauluskerk",
+  "name": "Sint-Petrus-en-Pauluskerk",
+  "landmarkId": "extract_landmarks_1828911806",
+  "modelUrl": "./models/ruysdael-petrus-pauluskerk.glb",
+  "suppressOsmIds": [
+    "w277113663",
+    "w1509507854",
+    "w1509507855",
+    "NL.IMBAG.Pand.0363100012097854"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.88456,
+      52.35405
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 35.34,
+    "widthMetres": 24.02
+  },
+  "surveyed": {
+    "anchor": [
+      4.88456,
+      52.35405
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG0363100012097854 whole1914 church/pastorie/sacristie complex; original AHN5 roof survey and original2020/September2026 photographs. Builder bakes orientation in east/south metres; scale1. Draft assembly dimensions photo-guided; native exactness review pending."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#8f766c",
+    "stone": "#b4afa0",
+    "slate": "#6e746d",
+    "white": "#d8ded5",
+    "glass": "#576664",
+    "dark": "#2d302b",
+    "frame": "#3c4338",
+    "red": "#b96642",
+    "bronze": "#954525"
+  },
+  "attribution": {
+    "title": "Sint-Petrus-en-Pauluskerk Ruysdaelstraat",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504689",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free draft guided by native BAG/OSM, semantic roof measurements and archived facade originals; no imported photo pixels or third-party mesh."
+  },
+  "draftAcceptance": "SOURCE/CPU SCOPED PASS. Native gallery/game/suppression/fallback/route/pin/card/performance pending.",
+  "routeCenter": [
+    4.884495733344818,
+    52.354155244478
+  ],
+  "sourceArchiveCommit": "719ceb1a3"
+}

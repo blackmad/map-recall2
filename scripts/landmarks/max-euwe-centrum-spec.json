@@ -1,0 +1,48 @@
+{
+  "id": "max-euwe-centrum",
+  "name": "Max Euwe Centrum \u2014 retained prison Kruisgebouw",
+  "landmarkId": "extract_landmarks_1145162580",
+  "modelUrl": "./models/max-euwe-centrum.glb",
+  "suppressOsmIds": [
+    "w267565647",
+    "NL.IMBAG.Pand.0363100012168688"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.88297,
+      52.36265
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 73.49299621582031,
+    "widthMetres": 68.2602424621582
+  },
+  "surveyed": {
+    "anchor": [
+      4.88297,
+      52.36265
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG0363100012168688 exact native outline and48 source roof domains; source original assemblies and official operator entrance under mapped Leidseplein\u2013MaxEuweplein covered passage. NorthOffset0: builder already encodes geographic east/south coordinates."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "green": "#a0aea0",
+    "dark": "#35443e",
+    "glass": "#7b9caa",
+    "frame": "#45534f",
+    "ochre": "#b4a983",
+    "slate": "#535d63",
+    "white": "#dfe5e1",
+    "stone": "#bbc4b7"
+  },
+  "attribution": {
+    "title": "Max Euwe Centrum \u2014 original Kruisgebouw",
+    "author": "Map Recall",
+    "sourceUrl": "https://maxeuwe.nl/geschiedenis/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original native-scale texture-free surveyed Kruisgebouw with source-supported roof families, recessed courtyard clerestories, glazed central pyramid, portico, shop canopies and mapped covered passages. Simplified interior framing and uncertain localized pyramid crest retained in source record; native acceptance pending."
+  }
+}

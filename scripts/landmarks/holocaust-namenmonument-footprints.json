@@ -1,0 +1,2557 @@
+{
+  "modelId": "holocaust-namenmonument",
+  "anchor": [
+    4.904975,
+    52.3657056
+  ],
+  "coordinateConvention": "x east, z south, metres using local equirectangular projection; Y up",
+  "siteLonLat": [
+    [
+      4.9045032,
+      52.3660687
+    ],
+    [
+      4.9045669,
+      52.3660802
+    ],
+    [
+      4.9046208,
+      52.3660899
+    ],
+    [
+      4.9047029,
+      52.3660392
+    ],
+    [
+      4.9048203,
+      52.3660605
+    ],
+    [
+      4.9052261,
+      52.3653931
+    ],
+    [
+      4.9052377,
+      52.365374
+    ],
+    [
+      4.9052015,
+      52.3653612
+    ],
+    [
+      4.9051231,
+      52.3653334
+    ],
+    [
+      4.9049186,
+      52.3652917
+    ],
+    [
+      4.9046823,
+      52.3657355
+    ]
+  ],
+  "site": [
+    [
+      -32.070198410311015,
+      -40.420292000142695
+    ],
+    [
+      -27.740245805949275,
+      -41.700472000074456
+    ],
+    [
+      -24.076439756100083,
+      -42.78027600003753
+    ],
+    [
+      -18.49576300855961,
+      -37.136352000524084
+    ],
+    [
+      -10.51559918202999,
+      -39.50746800054901
+    ],
+    [
+      17.06830610600685,
+      34.78749999996836
+    ],
+    [
+      17.856806109288936,
+      36.913711999504244
+    ],
+    [
+      15.396142305915019,
+      38.33860799954522
+    ],
+    [
+      10.066969869754274,
+      41.43330400011621
+    ],
+    [
+      -3.8337413953825625,
+      46.07534799978623
+    ],
+    [
+      -19.89603025581013,
+      -3.328468000138969
+    ]
+  ],
+  "letters": [
+    {
+      "name": "south",
+      "osmRelation": "r13236507",
+      "outerLonLat": [
+        [
+          4.9048969,
+          52.3655565
+        ],
+        [
+          4.9049155,
+          52.3653709
+        ],
+        [
+          4.9049619,
+          52.36535
+        ],
+        [
+          4.9049508,
+          52.3654738
+        ],
+        [
+          4.9051231,
+          52.3653927
+        ],
+        [
+          4.9051089,
+          52.36545
+        ]
+      ],
+      "innerLonLat": [
+        [
+          4.9049081,
+          52.3655407
+        ],
+        [
+          4.9049236,
+          52.3653754
+        ],
+        [
+          4.9049535,
+          52.3653602
+        ],
+        [
+          4.9049446,
+          52.3654872
+        ],
+        [
+          4.9051141,
+          52.3654055
+        ],
+        [
+          4.9051021,
+          52.3654458
+        ]
+      ],
+      "outer": [
+        [
+          -5.308780194699155,
+          16.597812000174486
+        ],
+        [
+          -4.044461223839112,
+          37.25880399958214
+        ],
+        [
+          -0.8904612106504044,
+          39.585391999877686
+        ],
+        [
+          -1.644974144849963,
+          25.803976000185855
+        ],
+        [
+          10.066969869754274,
+          34.83202799969774
+        ],
+        [
+          9.101737107098165,
+          28.453391999508142
+        ]
+      ],
+      "inner": [
+        [
+          -4.5474698466589425,
+          18.356668000163268
+        ],
+        [
+          -3.4938707043158215,
+          36.75786400005592
+        ],
+        [
+          -1.4614439716352843,
+          38.44992800005514
+        ],
+        [
+          -2.066413801763062,
+          24.31228800015532
+        ],
+        [
+          9.45520262578584,
+          33.40713199965677
+        ],
+        [
+          8.639512967201513,
+          28.920935999435073
+        ]
+      ],
+      "walls": [
+        {
+          "id": "south-wall-1",
+          "a": [
+            -3.1251039432373573,
+            37.316334305666814
+          ],
+          "b": [
+            -6.092197223283118,
+            22.7267852075281
+          ],
+          "sourcePdfEndpoints": [
+            104.3,
+            551,
+            174.9,
+            558.9
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        },
+        {
+          "id": "south-wall-2",
+          "a": [
+            -0.19543093220435329,
+            39.024695372396735
+          ],
+          "b": [
+            -3.098315465625544,
+            24.69471669454757
+          ],
+          "sourcePdfEndpoints": [
+            90.2,
+            561.9,
+            162.1,
+            569.8
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        },
+        {
+          "id": "south-wall-3",
+          "a": [
+            10.4445465828246,
+            32.62996434378311
+          ],
+          "b": [
+            -0.7933004228609691,
+            26.644988795099124
+          ],
+          "sourcePdfEndpoints": [
+            101.7,
+            619.36,
+            149.6,
+            577.4
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        },
+        {
+          "id": "south-wall-4",
+          "a": [
+            8.636289892779898,
+            27.304551253060364
+          ],
+          "b": [
+            -7.430855119276897,
+            17.53444026484669
+          ],
+          "sourcePdfEndpoints": [
+            132.9,
+            616.7,
+            199.4,
+            560.1
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        }
+      ],
+      "groundPlanRegistration": {
+        "source": "raw/architect-review-plan.pdf; derived architect-plan.svg originalvectorpath235",
+        "pdfPoints": [
+          [
+            200.0820314331713,
+            570.9062498408075
+          ],
+          [
+            106.15627252466999,
+            546.945317535315
+          ],
+          [
+            88.667995629135,
+            558.0039090018549
+          ],
+          [
+            154.863292505405,
+            574.8281237144399
+          ],
+          [
+            91.25393189450499,
+            615.06248949279
+          ],
+          [
+            127.05861128898,
+            617.06248853791
+          ]
+        ],
+        "affine": [
+          [
+            -0.061891537783803775,
+            0.20154028174513805,
+            -107.85140123333535
+          ],
+          [
+            -0.19667851009525286,
+            -0.07011835794171921,
+            96.30091208653181
+          ]
+        ],
+        "residualMetres": [
+          0.34739162366998205,
+          0.23736034928427366,
+          0.1505548656967411,
+          0.27397077217122073,
+          0.5569704486019925,
+          0.6114872678516259
+        ],
+        "maxResidual": 0.6114872678516259,
+        "note": "per-letterfit of exactPDFvector steeloutline tocurrentOSM, preservingrawOSMvertices; tinycollinearOSMextra splitvertices included",
+        "correction": "Inverse-distance residual correction anchored to every corresponding source/current roofvertex; zero controlresidual; no global shear",
+        "residualVectors": [
+          [
+            -0.1346007960339879,
+            -0.3202554697473303
+          ],
+          [
+            0.14560156619323994,
+            0.18745697995654353
+          ],
+          [
+            -0.011526410742515036,
+            -0.1501129889128805
+          ],
+          [
+            -0.05986760052937834,
+            0.267349685638397
+          ],
+          [
+            -0.39365014638385887,
+            -0.39402492670879496
+          ],
+          [
+            0.45404338749666096,
+            0.4095867197739729
+          ]
+        ]
+      },
+      "engineeringSupportRegistration": {
+        "sourcePixels": [
+          [
+            608,
+            331
+          ],
+          [
+            267,
+            224
+          ],
+          [
+            199,
+            262
+          ],
+          [
+            467,
+            330
+          ],
+          [
+            199,
+            472
+          ],
+          [
+            330,
+            485
+          ]
+        ],
+        "affine": [
+          [
+            -0.01887919340810151,
+            0.053698332783103354,
+            -11.103555269677589
+          ],
+          [
+            -0.05102946597451204,
+            -0.022181712480378923,
+            55.80545360416387
+          ]
+        ],
+        "residualVectors": [
+          [
+            -0.5008234841030585,
+            -0.8395794604806426
+          ],
+          [
+            0.07141214238642934,
+            0.04692140621786223
+          ],
+          [
+            -0.09890964193369411,
+            -0.2535892054990114
+          ],
+          [
+            0.5547146279869231,
+            1.1492481246441493
+          ],
+          [
+            -0.4181284459807202,
+            -0.34879358479938105
+          ],
+          [
+            0.3917348016441249,
+            0.24579271991702
+          ]
+        ],
+        "source": "steel-overview.pdf page1 redsupportstations; manualpixelsin1800pxderivedview"
+      },
+      "supports": [
+        {
+          "id": "south-support-1",
+          "sourceEngineeringPixels": [
+            339,
+            252
+          ],
+          "registeredPoint": [
+            -3.8863521748587835,
+            33.02958435673475
+          ],
+          "point": [
+            -3.99162665342192,
+            33.055539503592065
+          ],
+          "pairedWall": "south-wall-1",
+          "wallFraction": 0.29204431017119836,
+          "residualMetres": 0.10842686698934431,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "south-support-2",
+          "sourceEngineeringPixels": [
+            332,
+            295.5
+          ],
+          "registeredPoint": [
+            -1.4052731498276085,
+            32.45402401448868
+          ],
+          "point": [
+            -1.5203372064324863,
+            32.48434612968609
+          ],
+          "pairedWall": "south-wall-2",
+          "wallFraction": 0.4564102564102564,
+          "residualMetres": 0.11899230139977685,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "south-support-3",
+          "sourceEngineeringPixels": [
+            398.5,
+            366
+          ],
+          "registeredPoint": [
+            1.3318537448523982,
+            27.921871379888646
+          ],
+          "point": [
+            1.390733447501951,
+            27.80814658724619
+          ],
+          "pairedWall": "south-wall-3",
+          "wallFraction": 0.8056537102473498,
+          "residualMetres": 0.1280630619877168,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "south-support-4",
+          "sourceEngineeringPixels": [
+            440,
+            419
+          ],
+          "registeredPoint": [
+            3.360005444770543,
+            24.528642579330608
+          ],
+          "point": [
+            3.5496419104939747,
+            24.211461889168156
+          ],
+          "pairedWall": "south-wall-4",
+          "wallFraction": 0.31658692185007975,
+          "residualMetres": 0.36954780386846253,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "south-support-5",
+          "sourceEngineeringPixels": [
+            257.5,
+            473
+          ],
+          "registeredPoint": [
+            9.349793876675092,
+            32.08228913231958
+          ],
+          "point": [
+            9.359147932098786,
+            32.05191016829184
+          ],
+          "pairedWall": "south-wall-3",
+          "wallFraction": 0.09658421672555949,
+          "residualMetres": 0.03178647209534693,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "south-support-6",
+          "sourceEngineeringPixels": [
+            566.5,
+            323.5
+          ],
+          "registeredPoint": [
+            -4.747377659014415,
+            19.21040515139067
+          ],
+          "point": [
+            -4.727372186626193,
+            19.178374410391413
+          ],
+          "pairedWall": "south-wall-4",
+          "wallFraction": 0.8317384370015949,
+          "residualMetres": 0.03776489500101146,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        }
+      ]
+    },
+    {
+      "name": "central-south",
+      "osmRelation": "r13236148",
+      "outerLonLat": [
+        [
+          4.9048538,
+          52.3655897
+        ],
+        [
+          4.9049198,
+          52.3655833
+        ],
+        [
+          4.9048443,
+          52.3656706
+        ],
+        [
+          4.9049095,
+          52.3656622
+        ],
+        [
+          4.905009,
+          52.365562
+        ],
+        [
+          4.905075,
+          52.3655505
+        ],
+        [
+          4.9049363,
+          52.3656988
+        ],
+        [
+          4.9047416,
+          52.3657337
+        ],
+        [
+          4.9047326,
+          52.3657316
+        ]
+      ],
+      "innerLonLat": [
+        [
+          4.9047496,
+          52.365723
+        ],
+        [
+          4.904858,
+          52.365597
+        ],
+        [
+          4.9048922,
+          52.3655938
+        ],
+        [
+          4.9048236,
+          52.3656792
+        ],
+        [
+          4.9049212,
+          52.3656671
+        ],
+        [
+          4.9050175,
+          52.3655663
+        ],
+        [
+          4.9050538,
+          52.3655591
+        ],
+        [
+          4.9049307,
+          52.3656941
+        ],
+        [
+          4.904755,
+          52.3657249
+        ]
+      ],
+      "outer": [
+        [
+          -8.238465551810378,
+          12.90198799969744
+        ],
+        [
+          -3.7521724295362042,
+          13.614436000113415
+        ],
+        [
+          -8.884219864861334,
+          3.8961999996547547
+        ],
+        [
+          -4.4523060531916485,
+          4.831287999508618
+        ],
+        [
+          2.3111206993021365,
+          15.985552000138341
+        ],
+        [
+          6.79741382157631,
+          17.265732000070102
+        ],
+        [
+          -2.630599148967661,
+          0.7569760001453574
+        ],
+        [
+          -15.86516385959195,
+          -3.128092000170284
+        ],
+        [
+          -16.476931103560382,
+          -2.89431999981133
+        ]
+      ],
+      "inner": [
+        [
+          -15.321370753909314,
+          -1.936968000488264
+        ],
+        [
+          -7.952974171287751,
+          12.08935199969261
+        ],
+        [
+          -5.628258644304307,
+          12.445575999900598
+        ],
+        [
+          -10.29128452589213,
+          2.9388479995407124
+        ],
+        [
+          -3.6570086360085376,
+          4.285819999462035
+        ],
+        [
+          2.8889008741276707,
+          15.50687600008132
+        ],
+        [
+          5.356362091402615,
+          16.30837999995606
+        ],
+        [
+          -3.0112543229575808,
+          1.280179999931761
+        ],
+        [
+          -14.95431040754033,
+          -2.1484759997960623
+        ]
+      ],
+      "walls": [
+        {
+          "id": "central-south-wall-1",
+          "a": [
+            -8.694352022089468,
+            12.687095286482185
+          ],
+          "b": [
+            -14.491530462182498,
+            -4.3369537085529934
+          ],
+          "sourcePdfEndpoints": [
+            221.4,
+            560.8,
+            302.9,
+            552.2
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        },
+        {
+          "id": "central-south-wall-2",
+          "a": [
+            -5.6960997624168614,
+            12.670351543921955
+          ],
+          "b": [
+            -8.54304621395902,
+            4.144262011268266
+          ],
+          "sourcePdfEndpoints": [
+            216.95,
+            573.65,
+            260.5,
+            569
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        },
+        {
+          "id": "central-south-wall-3",
+          "a": [
+            1.2535410451615607,
+            17.202040570376884
+          ],
+          "b": [
+            -3.8655876145866213,
+            4.548587038238824
+          ],
+          "sourcePdfEndpoints": [
+            187.5,
+            598.7,
+            249.9,
+            593.35
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        },
+        {
+          "id": "central-south-wall-4",
+          "a": [
+            4.619249959361596,
+            18.652582783036056
+          ],
+          "b": [
+            -2.266717189814463,
+            1.0634042691031276
+          ],
+          "sourcePdfEndpoints": [
+            177.4,
+            611.95,
+            264.1,
+            603.2
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        },
+        {
+          "id": "central-south-wall-5",
+          "a": [
+            -3.0490187767838206,
+            0.7358375643472851
+          ],
+          "b": [
+            -11.471111147964335,
+            -2.5865853720009633
+          ],
+          "sourcePdfEndpoints": [
+            266.55,
+            600,
+            291.8,
+            564.25
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        }
+      ],
+      "groundPlanRegistration": {
+        "source": "raw/architect-review-plan.pdf; derived architect-plan.svg originalvectorpath992",
+        "pdfPoints": [
+          [
+            219.88673693039,
+            562.6718696194649
+          ],
+          [
+            209.69142730047,
+            580.82811594487
+          ],
+          [
+            262.082040271295,
+            567.6913994717249
+          ],
+          [
+            249.339854859785,
+            590.4374883545399
+          ],
+          [
+            191.37502480153,
+            604.94529792307
+          ],
+          [
+            181.17971517160998,
+            623.105449497825
+          ],
+          [
+            265.92578943492,
+            601.8867046345799
+          ],
+          [
+            299.10546863243917,
+            542.8281245392054
+          ],
+          [
+            299.10546863243917,
+            542.8281245392054
+          ]
+        ],
+        "affine": [
+          [
+            -0.05518315939123625,
+            0.20252418282942913,
+            -109.73701816103731
+          ],
+          [
+            -0.210453007048859,
+            -0.05865383721992652,
+            91.94906818938782
+          ]
+        ],
+        "residualMetres": [
+          0.396695623371832,
+          0.1560937933420577,
+          0.5279016541743324,
+          0.5339324022762453,
+          0.22565329089561784,
+          0.3386321727567766,
+          0.13818432787315962,
+          0.5286320554903335,
+          0.1793776933952289
+        ],
+        "maxResidual": 0.5339324022762453,
+        "note": "per-letterfit of exactPDFvector steeloutline tocurrentOSM, preservingrawOSMvertices; tinycollinearOSMextra splitvertices included",
+        "correction": "Inverse-distance residual correction anchored to every corresponding source/current roofvertex; zero controlresidual; no global shear",
+        "residualVectors": [
+          [
+            -0.32206313451374236,
+            0.23160905636341056
+          ],
+          [
+            -0.0754583588929365,
+            -0.13664299613627406
+          ],
+          [
+            0.3440765207411438,
+            0.4003642146279631
+          ],
+          [
+            -0.5337967797028931,
+            -0.01203362702194255
+          ],
+          [
+            0.09276523908875545,
+            -0.20570371437781176
+          ],
+          [
+            0.3385791072762192,
+            -0.005994709502040507
+          ],
+          [
+            -0.11556877531910592,
+            0.0757546476527935
+          ],
+          [
+            0.4416167126455033,
+            -0.29056243598255094
+          ],
+          [
+            -0.17015053132292834,
+            -0.05679043562359709
+          ]
+        ]
+      },
+      "engineeringSupportRegistration": {
+        "sourcePixels": [
+          [
+            690,
+            295
+          ],
+          [
+            638,
+            368
+          ],
+          [
+            856,
+            317
+          ],
+          [
+            794,
+            418
+          ],
+          [
+            567,
+            456
+          ],
+          [
+            528,
+            523
+          ],
+          [
+            840,
+            460
+          ],
+          [
+            978,
+            249
+          ],
+          [
+            975,
+            247
+          ]
+        ],
+        "affine": [
+          [
+            -0.018964336753217365,
+            0.05078708306150556,
+            -10.028392798560969
+          ],
+          [
+            -0.055938826848945994,
+            -0.019192157145442965,
+            56.80813387888567
+          ]
+        ],
+        "residualVectors": [
+          [
+            -0.10686989667356883,
+            0.3533310044901814
+          ],
+          [
+            -0.31417934905660205,
+            -0.4420125196217004
+          ],
+          [
+            1.2781398639564383,
+            1.0556157185722777
+          ],
+          [
+            -0.595230592285418,
+            0.4609043254812235
+          ],
+          [
+            -0.06661743910918405,
+            -0.35364339707295755
+          ],
+          [
+            0.2773319846686384,
+            0.030796884494588284
+          ],
+          [
+            -0.03422168599666575,
+            -0.23415103872191168
+          ],
+          [
+            0.06436660130071736,
+            -0.4492060915714715
+          ],
+          [
+            -0.5027194868043559,
+            -0.421634886050243
+          ]
+        ],
+        "source": "steel-overview.pdf page1 redsupportstations; manualpixelsin1800pxderivedview"
+      },
+      "supports": [
+        {
+          "id": "central-south-support-1",
+          "sourceEngineeringPixels": [
+            562,
+            475
+          ],
+          "registeredPoint": [
+            3.3995213898618877,
+            15.949887985904946
+          ],
+          "point": [
+            3.5371694073482156,
+            15.888569016560883
+          ],
+          "pairedWall": "central-south-wall-4",
+          "wallFraction": 0.15714285714285714,
+          "residualMetres": 0.150688396100478,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "central-south-support-2",
+          "sourceEngineeringPixels": [
+            790,
+            464
+          ],
+          "registeredPoint": [
+            -1.6987808599779985,
+            3.8503578139785035
+          ],
+          "point": [
+            -1.2447522240240474,
+            3.673861715218571
+          ],
+          "pairedWall": "central-south-wall-4",
+          "wallFraction": 0.8515873015873016,
+          "residualMetres": 0.4871271652696874,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "central-south-support-3",
+          "sourceEngineeringPixels": [
+            850,
+            439
+          ],
+          "registeredPoint": [
+            -3.9219093846318707,
+            0.7236597816651847
+          ],
+          "point": [
+            -3.8019873000350586,
+            0.4387997521572099
+          ],
+          "pairedWall": "central-south-wall-5",
+          "wallFraction": 0.08940397350993377,
+          "residualMetres": 0.30907368504181854,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "central-south-support-4",
+          "sourceEngineeringPixels": [
+            779,
+            419
+          ],
+          "registeredPoint": [
+            -4.057704965666242,
+            5.6124649378518585
+          ],
+          "point": [
+            -3.522437231900205,
+            5.396785571711815
+          ],
+          "pairedWall": "central-south-wall-3",
+          "wallFraction": 0.932967032967033,
+          "residualMetres": 0.5770867662575537,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "central-south-support-5",
+          "sourceEngineeringPixels": [
+            663,
+            345
+          ],
+          "registeredPoint": [
+            -5.30214925003813,
+            12.911505853913805
+          ],
+          "point": [
+            -5.6960997624168614,
+            12.670351543921955
+          ],
+          "pairedWall": "central-south-wall-2",
+          "wallFraction": 0.0,
+          "residualMetres": 0.46190086320671764,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "central-south-support-6",
+          "sourceEngineeringPixels": [
+            769,
+            339
+          ],
+          "registeredPoint": [
+            -7.337046157293108,
+            7.605965433446169
+          ],
+          "point": [
+            -7.380543079579305,
+            7.625748570435189
+          ],
+          "pairedWall": "central-south-wall-2",
+          "wallFraction": 0.5916666666666667,
+          "residualMetres": 0.04778446146497595,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "central-south-support-7",
+          "sourceEngineeringPixels": [
+            764,
+            294
+          ],
+          "registeredPoint": [
+            -9.46062935606063,
+            8.74685837965925
+          ],
+          "point": [
+            -9.975629992585425,
+            8.924482289247553
+          ],
+          "pairedWall": "central-south-wall-1",
+          "wallFraction": 0.22101751459549623,
+          "residualMetres": 0.5447714281039134,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "central-south-support-8",
+          "sourceEngineeringPixels": [
+            949,
+            285
+          ],
+          "registeredPoint": [
+            -13.63457666986163,
+            -2.0100665839484932
+          ],
+          "point": [
+            -13.693753612628411,
+            -1.9941946725389812
+          ],
+          "pairedWall": "central-south-wall-1",
+          "wallFraction": 0.8623853211009175,
+          "residualMetres": 0.061268492122903355,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        }
+      ]
+    },
+    {
+      "name": "central-north",
+      "osmRelation": "r13236149",
+      "outerLonLat": [
+        [
+          4.9046746,
+          52.3658668
+        ],
+        [
+          4.9046965,
+          52.3657845
+        ],
+        [
+          4.9047565,
+          52.3657568
+        ],
+        [
+          4.904751,
+          52.365788
+        ],
+        [
+          4.9047755,
+          52.3657811
+        ],
+        [
+          4.9048977,
+          52.3658193
+        ],
+        [
+          4.904805,
+          52.3658391
+        ],
+        [
+          4.9047535,
+          52.3658221
+        ],
+        [
+          4.9047486,
+          52.3658397
+        ]
+      ],
+      "innerLonLat": [
+        [
+          4.9046833,
+          52.3658573
+        ],
+        [
+          4.9047026,
+          52.3657878
+        ],
+        [
+          4.9047463,
+          52.3657685
+        ],
+        [
+          4.9047392,
+          52.3657998
+        ],
+        [
+          4.9047742,
+          52.3657861
+        ],
+        [
+          4.9048776,
+          52.3658196
+        ],
+        [
+          4.9048064,
+          52.3658341
+        ],
+        [
+          4.9047476,
+          52.3658153
+        ],
+        [
+          4.9047387,
+          52.3658358
+        ]
+      ],
+      "outer": [
+        [
+          -20.419431120091545,
+          -17.944784000095808
+        ],
+        [
+          -18.930797493154017,
+          -8.78314799981382
+        ],
+        [
+          -14.852349200172009,
+          -5.699584000163895
+        ],
+        [
+          -15.226206960381647,
+          -9.172768000412077
+        ],
+        [
+          -13.560840574070095,
+          -8.40466000013663
+        ],
+        [
+          -5.254400884094667,
+          -12.657083999999372
+        ],
+        [
+          -11.555603496752175,
+          -14.861220000445883
+        ],
+        [
+          -15.056271614848278,
+          -12.968780000477977
+        ],
+        [
+          -15.389344892134737,
+          -14.928012000435444
+        ]
+      ],
+      "inner": [
+        [
+          -19.828056117584705,
+          -16.88724400039291
+        ],
+        [
+          -18.5161552500212,
+          -9.150504000151898
+        ],
+        [
+          -15.545685409986799,
+          -7.0020280003558355
+        ],
+        [
+          -16.02830179134504,
+          -10.48634399994313
+        ],
+        [
+          -13.649206953757107,
+          -8.961260000313302
+        ],
+        [
+          -6.620681062262658,
+          -12.690480000389641
+        ],
+        [
+          -11.460439703224509,
+          -14.30462000026921
+        ],
+        [
+          -15.457319030299786,
+          -12.21180400033262
+        ],
+        [
+          -16.062288860427564,
+          -14.493864000107806
+        ]
+      ],
+      "walls": [
+        {
+          "id": "central-north-wall-1",
+          "a": [
+            -18.972530748143118,
+            -9.514086903862342
+          ],
+          "b": [
+            -19.45688792470836,
+            -18.91796073751123
+          ],
+          "sourcePdfEndpoints": [
+            339.6,
+            547.3,
+            384.05,
+            555.15
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        },
+        {
+          "id": "central-north-wall-2",
+          "a": [
+            -16.03649638771219,
+            -6.446943665081465
+          ],
+          "b": [
+            -19.08617907664572,
+            -9.683734101730888
+          ],
+          "sourcePdfEndpoints": [
+            322.5,
+            558.3,
+            340.5,
+            546.95
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        },
+        {
+          "id": "central-north-wall-3",
+          "a": [
+            -13.711025933734456,
+            -9.121453256342575
+          ],
+          "b": [
+            -5.95353093801835,
+            -11.72670005497103
+          ],
+          "sourcePdfEndpoints": [
+            331.5,
+            571.2,
+            335.9,
+            610.75
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        },
+        {
+          "id": "central-north-wall-4",
+          "a": [
+            -15.571525131081588,
+            -13.010815636238233
+          ],
+          "b": [
+            -11.257117488215544,
+            -14.342373384327221
+          ],
+          "sourcePdfEndpoints": [
+            351.35,
+            566.9,
+            353.05,
+            589.46
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        },
+        {
+          "id": "central-north-wall-5",
+          "a": [
+            -14.395550302595904,
+            -8.704115946760336
+          ],
+          "b": [
+            -16.632239420990636,
+            -10.792760573619516
+          ],
+          "sourcePdfEndpoints": [
+            330.6,
+            567.7,
+            342.8,
+            559.67
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        }
+      ],
+      "steelHeightStations": [
+        2.6,
+        5.67,
+        4.22,
+        4.03,
+        4.26,
+        2.6,
+        3.87,
+        4.16,
+        3.53
+      ],
+      "steelHeightEvidence": {
+        "source": "raw/steel-overview.pdf page1 labeledZ1-Z9+sideelevation; ABT2019 maxdepth4m\u21920",
+        "topology": "apexatoutervertex1 (Z1/Z2junction), opposedbranches taper tovertex0 andvertex5; neither globalwest-eastramp nor zonlyplane",
+        "absoluteHeights": "Approximate relativeelevation depths calibrated usingdocumented4msouthReshmax; 2.6mbasederivedfromoverall6.6mminus4m. Zainpeakabout3.07mabovebase. Currentaerials supportapex topology; dimensionsnot surveyed."
+      },
+      "groundPlanRegistration": {
+        "source": "raw/architect-review-plan.pdf; derived architect-plan.svg originalvectorpath5002",
+        "pdfPoints": [
+          [
+            380.832025482275,
+            549.60938384567
+          ],
+          [
+            336.20313055204997,
+            546.710946730715
+          ],
+          [
+            318.085946707995,
+            563.57422392465
+          ],
+          [
+            334.35938043354497,
+            564.63281816802
+          ],
+          [
+            327.69141286953,
+            570.867191190265
+          ],
+          [
+            339.49609772985497,
+            614.9843686135899
+          ],
+          [
+            355.773437996184,
+            588.6718747460521
+          ],
+          [
+            350.59765792588,
+            569.257816958645
+          ],
+          [
+            359.304687016365,
+            569.8085979456799
+          ]
+        ],
+        "affine": [
+          [
+            -0.04655902748592382,
+            0.20187516724063806,
+            -113.6734900647826
+          ],
+          [
+            -0.2064287847778018,
+            -0.048586185088322506,
+            87.18161446084216
+          ]
+        ],
+        "residualMetres": [
+          0.1944927067309534,
+          0.028620008949608467,
+          0.21520711909573137,
+          0.10458598138005686,
+          0.24055091699496106,
+          0.1442294402900003,
+          0.15588174430228546,
+          0.12084237006511868,
+          0.2545512359261921
+        ],
+        "maxResidual": 0.2545512359261921,
+        "note": "per-letterfit of exactPDFvector steeloutline tocurrentOSM, preservingrawOSMvertices; tinycollinearOSMextra splitvertices included",
+        "correction": "Inverse-distance residual correction anchored to every corresponding source/current roofvertex; zero controlresidual; no global shear",
+        "residualVectors": [
+          [
+            0.03274140577166662,
+            0.19171701364153293
+          ],
+          [
+            0.02861956430444934,
+            -0.0001595346330987013
+          ],
+          [
+            -0.14072750702730197,
+            0.16281852743273717
+          ],
+          [
+            0.02938609096101885,
+            0.1003727311537368
+          ],
+          [
+            0.12573329567811697,
+            -0.20507530817979003
+          ],
+          [
+            0.07562506200945318,
+            0.12281279022330338
+          ],
+          [
+            -0.1558813177628533,
+            0.00036466318632832895
+          ],
+          [
+            0.02168744023889957,
+            -0.11888033201013215
+          ],
+          [
+            -0.017184034173581608,
+            -0.2539705508146035
+          ]
+        ]
+      },
+      "engineeringSupportRegistration": {
+        "sourcePixels": [
+          [
+            1281,
+            274
+          ],
+          [
+            1117,
+            273
+          ],
+          [
+            1047,
+            327
+          ],
+          [
+            1138,
+            337
+          ],
+          [
+            1080,
+            358
+          ],
+          [
+            1107,
+            519
+          ],
+          [
+            1172,
+            434
+          ],
+          [
+            1162,
+            350
+          ],
+          [
+            1199,
+            368
+          ]
+        ],
+        "affine": [
+          [
+            -0.013905575045926103,
+            0.05209747038485042,
+            -17.30799006493754
+          ],
+          [
+            -0.05655736552975888,
+            -0.01930085088345321,
+            59.98058376816813
+          ]
+        ],
+        "residualVectors": [
+          [
+            0.4268936932283225,
+            -0.18694938257663196
+          ],
+          [
+            -0.3128895169811834,
+            -0.32002218005855276
+          ],
+          [
+            -0.021094877995924577,
+            -0.15322781978527633
+          ],
+          [
+            0.349479987125207,
+            1.7133169520091265
+          ],
+          [
+            0.11427614269118713,
+            -0.3935843798889227
+          ],
+          [
+            0.40847362694570233,
+            -0.011522518212204957
+          ],
+          [
+            -0.5605816250143238,
+            -0.1800020843179162
+          ],
+          [
+            0.175882018757747,
+            -0.4744072138576634
+          ],
+          [
+            -0.5804394487567528,
+            0.006398626688110198
+          ]
+        ],
+        "source": "steel-overview.pdf page1 redsupportstations; manualpixelsin1800pxderivedview"
+      },
+      "supports": [
+        {
+          "id": "central-north-support-1",
+          "sourceEngineeringPixels": [
+            1099,
+            294
+          ],
+          "registeredPoint": [
+            -17.399105038268893,
+            -7.89985183484998
+          ],
+          "point": [
+            -17.402179208009024,
+            -7.8964154767796915
+          ],
+          "pairedWall": "central-north-wall-2",
+          "wallFraction": 0.4478114478114478,
+          "residualMetres": 0.0046107565950043615,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "central-north-support-2",
+          "sourceEngineeringPixels": [
+            1203,
+            291
+          ],
+          "registeredPoint": [
+            -18.87238355004739,
+            -13.597377637267575
+          ],
+          "point": [
+            -19.144523821987146,
+            -12.853360574091166
+          ],
+          "pairedWall": "central-north-wall-1",
+          "wallFraction": 0.35509554140127386,
+          "residualMetres": 0.7922257998254618,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "central-north-support-3",
+          "sourceEngineeringPixels": [
+            1115,
+            334
+          ],
+          "registeredPoint": [
+            -15.24125297626198,
+            -8.787109634386658
+          ],
+          "point": [
+            -14.886530840780113,
+            -9.162598913631863
+          ],
+          "pairedWall": "central-north-wall-5",
+          "wallFraction": 0.21951219512195122,
+          "residualMetres": 0.5165462149981356,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "central-north-support-4",
+          "sourceEngineeringPixels": [
+            1167,
+            357
+          ],
+          "registeredPoint": [
+            -14.805323323793859,
+            -13.239972115315023
+          ],
+          "point": [
+            -15.100083236331324,
+            -13.15631697957246
+          ],
+          "pairedWall": "central-north-wall-4",
+          "wallFraction": 0.10927152317880795,
+          "residualMetres": 0.3064010244356253,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "central-north-support-5",
+          "sourceEngineeringPixels": [
+            1094,
+            418
+          ],
+          "registeredPoint": [
+            -10.754752150445205,
+            -9.97647136661395
+          ],
+          "point": [
+            -10.798413343767786,
+            -10.099613684399046
+          ],
+          "pairedWall": "central-north-wall-3",
+          "wallFraction": 0.37545787545787546,
+          "residualMetres": 0.13065347386058013,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "central-north-support-6",
+          "sourceEngineeringPixels": [
+            1167,
+            418
+          ],
+          "registeredPoint": [
+            -12.214521692768654,
+            -14.21740203528795
+          ],
+          "point": [
+            -12.1714290416706,
+            -14.060188960891145
+          ],
+          "pairedWall": "central-north-wall-4",
+          "wallFraction": 0.7880794701986755,
+          "residualMetres": 0.16301204660991855,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        }
+      ]
+    },
+    {
+      "name": "north",
+      "osmRelation": "r13236150",
+      "outerLonLat": [
+        [
+          4.9045718,
+          52.3660441
+        ],
+        [
+          4.9046451,
+          52.365942
+        ],
+        [
+          4.9046032,
+          52.3659507
+        ],
+        [
+          4.9046359,
+          52.365906
+        ],
+        [
+          4.9047328,
+          52.3658868
+        ],
+        [
+          4.90468,
+          52.3659666
+        ],
+        [
+          4.904826,
+          52.3658788
+        ],
+        [
+          4.904817,
+          52.3659
+        ],
+        [
+          4.9048027,
+          52.3659359
+        ],
+        [
+          4.9046343,
+          52.3660331
+        ]
+      ],
+      "innerLonLat": [
+        [
+          4.9045859,
+          52.3660357
+        ],
+        [
+          4.904634,
+          52.3660268
+        ],
+        [
+          4.9047972,
+          52.3659306
+        ],
+        [
+          4.9048069,
+          52.3658966
+        ],
+        [
+          4.9046607,
+          52.3659845
+        ],
+        [
+          4.9046515,
+          52.3659891
+        ],
+        [
+          4.9047204,
+          52.365895
+        ],
+        [
+          4.9046411,
+          52.3659101
+        ],
+        [
+          4.9046157,
+          52.3659423
+        ],
+        [
+          4.9046611,
+          52.365933
+        ]
+      ],
+      "outer": [
+        [
+          -27.407172528662816,
+          -37.68182000057067
+        ],
+        [
+          -22.424668197469842,
+          -26.31604799984217
+        ],
+        [
+          -25.27278458867433,
+          -27.2845320000863
+        ],
+        [
+          -23.050030269059206,
+          -22.30852800046847
+        ],
+        [
+          -16.463336275939447,
+          -20.17118400001152
+        ],
+        [
+          -20.05237077372256,
+          -29.054520000205173
+        ],
+        [
+          -10.128146594199416,
+          -19.28062399988704
+        ],
+        [
+          -10.739913838107475,
+          -21.640608000572854
+        ],
+        [
+          -11.711944014604237,
+          -25.636995999816463
+        ],
+        [
+          -23.15878889020781,
+          -36.45730000049838
+        ]
+      ],
+      "inner": [
+        [
+          -26.448737179847363,
+          -36.74673199992583
+        ],
+        [
+          -23.1791811316694,
+          -35.75598400021249
+        ],
+        [
+          -12.085801774813875,
+          -25.047000000040498
+        ],
+        [
+          -11.426452634141983,
+          -21.262120000104687
+        ],
+        [
+          -21.364271641286066,
+          -31.04714800055291
+        ],
+        [
+          -21.98963371287543,
+          -31.559220000209223
+        ],
+        [
+          -17.306215589765646,
+          -21.08400800039618
+        ],
+        [
+          -22.696564750311158,
+          -22.764940000265312
+        ],
+        [
+          -24.42310786100748,
+          -26.349444000232438
+        ],
+        [
+          -21.337081985983822,
+          -25.314167999998745
+        ]
+      ],
+      "walls": [
+        {
+          "id": "north-wall-1",
+          "a": [
+            -15.524304649841579,
+            -21.299711796158235
+          ],
+          "b": [
+            -22.076932496790114,
+            -22.61422131526316
+          ],
+          "sourcePdfEndpoints": [
+            386.65,
+            580.7,
+            404.5,
+            551.2
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        },
+        {
+          "id": "north-wall-2",
+          "a": [
+            -22.445724332551265,
+            -22.73268310577973
+          ],
+          "b": [
+            -24.03361768104301,
+            -26.524949572152217
+          ],
+          "sourcePdfEndpoints": [
+            405.7,
+            549.6,
+            425.6,
+            548.4
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions",
+          "endpointCalibration": {
+            "originalSourceCap": [
+              423.66,
+              548.79
+            ],
+            "registeredSourceCap": [
+              425.6,
+              548.4
+            ],
+            "deltaPdfUnits": 1.9788127753782014,
+            "deltaApproxMetres": 0.414,
+            "reason": "Originalgroundcap lies marginallybeforecurrentOSMsteelL5return becauseoutlinefittingresidual. Boundedendpointcorrection pairsdocumentedupperreturncolumnwithbrickcap; no extrawallrun orregularcolumn array. Architecture/source comparison required."
+          }
+        },
+        {
+          "id": "north-wall-3",
+          "a": [
+            -21.0149930280088,
+            -25.55517396400553
+          ],
+          "b": [
+            -27.727524410995077,
+            -37.044412857445685
+          ],
+          "sourcePdfEndpoints": [
+            415.8,
+            561.4,
+            480,
+            547.55
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        },
+        {
+          "id": "north-wall-4",
+          "a": [
+            -17.833147559806367,
+            -24.90609731932979
+          ],
+          "b": [
+            -22.167757819493083,
+            -31.845239634404365
+          ],
+          "sourcePdfEndpoints": [
+            407.6,
+            574.75,
+            447.15,
+            564.79
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        },
+        {
+          "id": "north-wall-5",
+          "a": [
+            -10.974619036762157,
+            -26.300036143679137
+          ],
+          "b": [
+            -24.553989399217166,
+            -36.081293605975574
+          ],
+          "sourcePdfEndpoints": [
+            402.2,
+            607.85,
+            469.8,
+            560.6
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        },
+        {
+          "id": "north-wall-6",
+          "a": [
+            -9.180884342504072,
+            -21.449349930655213
+          ],
+          "b": [
+            -22.236004070610885,
+            -31.580073674484517
+          ],
+          "sourcePdfEndpoints": [
+            376.5,
+            609.85,
+            446.1,
+            564.05
+          ],
+          "width": 0.32,
+          "height": 2.43,
+          "source": "architect-review-plan.pdf groundfloorvectorpaths163-233; manuallyjoined source endpoints across treeocclusions"
+        }
+      ],
+      "groundPlanRegistration": {
+        "source": "raw/architect-review-plan.pdf; derived architect-plan.svg originalvectorpath2577",
+        "pdfPoints": [
+          [
+            482.36326277682,
+            550.003905484805
+          ],
+          [
+            421.34374567821,
+            556.511716875285
+          ],
+          [
+            431.382806381515,
+            543.257813956875
+          ],
+          [
+            404.83203100619414,
+            546.0820315901981
+          ],
+          [
+            382.98828625158,
+            574.90624333814
+          ],
+          [
+            431.93358736855004,
+            569.69140107913
+          ],
+          [
+            368.9101639779,
+            602.554674629165
+          ],
+          [
+            379.64406781979903,
+            602.8202995023449
+          ],
+          [
+            400.48046939525,
+            603.335924256165
+          ],
+          [
+            468.95310993301,
+            567.652338553875
+          ]
+        ],
+        "affine": [
+          [
+            -0.06278462446577299,
+            0.19240085435347784,
+            -102.8339845144396
+          ],
+          [
+            -0.19494752774651633,
+            -0.07276025936264902,
+            96.36080708902698
+          ]
+        ],
+        "residualMetres": [
+          0.10999759256191687,
+          0.2148689233725071,
+          0.12388959768066829,
+          0.1353947062771069,
+          0.19987893756454964,
+          0.3773944391036393,
+          0.13502620108815175,
+          0.13991469444934682,
+          0.18557465244629545,
+          0.13642000699515913
+        ],
+        "maxResidual": 0.3773944391036393,
+        "note": "per-letterfit of exactPDFvector steeloutline tocurrentOSM, preservingrawOSMvertices; tinycollinearOSMextra splitvertices included",
+        "correction": "Inverse-distance residual correction anchored to every corresponding source/current roofvertex; zero controlresidual; no global shear",
+        "residualVectors": [
+          [
+            -0.10941301772156464,
+            0.01132527803093808
+          ],
+          [
+            -0.2101046241472595,
+            -0.044996679246352755
+          ],
+          [
+            0.1221398859144891,
+            -0.02074802839484846
+          ],
+          [
+            0.13453185878347895,
+            -0.015261240451749813
+          ],
+          [
+            -0.19602842581098656,
+            -0.03904415392859306
+          ],
+          [
+            0.2912895323511897,
+            0.23995201813899314
+          ],
+          [
+            -0.064310166133831,
+            0.1187277453341764
+          ],
+          [
+            -0.05325974081389795,
+            -0.12938130363885847
+          ],
+          [
+            0.18370908766130079,
+            -0.026247337792923986
+          ],
+          [
+            -0.09855439008301303,
+            -0.09432629805056791
+          ]
+        ]
+      },
+      "engineeringSupportRegistration": {
+        "sourcePixels": [
+          [
+            1647,
+            318
+          ],
+          [
+            1403,
+            334
+          ],
+          [
+            1459,
+            280
+          ],
+          [
+            1360,
+            287
+          ],
+          [
+            1277,
+            386
+          ],
+          [
+            1531,
+            357
+          ],
+          [
+            1230,
+            480
+          ],
+          [
+            1272,
+            484
+          ],
+          [
+            1343,
+            490
+          ],
+          [
+            1592,
+            348
+          ]
+        ],
+        "affine": [
+          [
+            -0.015533414099230737,
+            0.05784931658798103,
+            -18.89153770112651
+          ],
+          [
+            -0.0493649941411341,
+            -0.017570987849883733,
+            49.70425655729701
+          ]
+        ],
+        "residualVectors": [
+          [
+            -1.3281844810812515,
+            -0.4943570711567773
+          ],
+          [
+            -1.0614222555082726,
+            -0.8925078352668656
+          ],
+          [
+            0.08419563859513701,
+            -0.04538550750121573
+          ],
+          [
+            0.3641967462705473,
+            0.1664809870935322
+          ],
+          [
+            -0.06546497305596333,
+            -0.05394172902516203
+          ],
+          [
+            1.9686178914169794,
+            3.0918721349826157
+          ],
+          [
+            0.1018184867500036,
+            0.16813640435508148
+          ],
+          [
+            -0.0889426313422863,
+            -0.048233891003562235
+          ],
+          [
+            -0.3051963063215535,
+            -0.434281379127345
+          ],
+          [
+            0.3303818842766333,
+            -1.457782113350369
+          ]
+        ],
+        "source": "steel-overview.pdf page1 redsupportstations; manualpixelsin1800pxderivedview"
+      },
+      "supports": [
+        {
+          "id": "north-support-1",
+          "sourceEngineeringPixels": [
+            1444.5,
+            290.5
+          ],
+          "registeredPoint": [
+            -24.482082044289097,
+            -26.756892019745123
+          ],
+          "point": [
+            -24.03361768104301,
+            -26.524949572152217
+          ],
+          "pairedWall": "north-wall-2",
+          "wallFraction": 1.0,
+          "residualMetres": 0.5048936364196968,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "north-support-2",
+          "sourceEngineeringPixels": [
+            1497.5,
+            327.5
+          ],
+          "registeredPoint": [
+            -22.439050903751863,
+            -28.871300666343597
+          ],
+          "point": [
+            -22.85186816997464,
+            -28.699188661196924
+          ],
+          "pairedWall": "north-wall-3",
+          "wallFraction": 0.27364864864864863,
+          "residualMetres": 0.4472590274184032,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "north-support-3",
+          "sourceEngineeringPixels": [
+            1307.5,
+            379
+          ],
+          "registeredPoint": [
+            -17.35629352686043,
+            -21.572398800616938
+          ],
+          "point": [
+            -17.331419504493304,
+            -21.662233479678203
+          ],
+          "pairedWall": "north-wall-1",
+          "wallFraction": 0.2757847533632287,
+          "residualMetres": 0.09321473354980349,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "north-support-4",
+          "sourceEngineeringPixels": [
+            1463.5,
+            375
+          ],
+          "registeredPoint": [
+            -19.65679851655869,
+            -28.649876831636128
+          ],
+          "point": [
+            -20.024269229538113,
+            -28.41379563244441
+          ],
+          "pairedWall": "north-wall-4",
+          "wallFraction": 0.5054945054945055,
+          "residualMetres": 0.43677117293773543,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "north-support-5",
+          "sourceEngineeringPixels": [
+            1528,
+            401
+          ],
+          "registeredPoint": [
+            -18.369849609547597,
+            -31.3177071342388
+          ],
+          "point": [
+            -18.226684212410174,
+            -31.523718444332072
+          ],
+          "pairedWall": "north-wall-5",
+          "wallFraction": 0.5340501792114696,
+          "residualMetres": 0.25087245927734503,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        },
+        {
+          "id": "north-support-6",
+          "sourceEngineeringPixels": [
+            1299.5,
+            481.5
+          ],
+          "registeredPoint": [
+            -11.338199823768353,
+            -23.01887214131808
+          ],
+          "point": [
+            -11.289606040873412,
+            -23.085710027208403
+          ],
+          "pairedWall": "north-wall-6",
+          "wallFraction": 0.16152450090744103,
+          "residualMetres": 0.08263569886149909,
+          "method": "source traced station projected to nearest pairedwall/steelband crossing; exposed short support abovebrickcap"
+        }
+      ]
+    }
+  ],
+  "engineeringPlanAffine": {
+    "source": "steel-overview.pdf page1 raster1800wide",
+    "pixelToLocal": [
+      [
+        -0.01887919340810151,
+        0.053698332783103354,
+        -11.103555269677589
+      ],
+      [
+        -0.05102946597451204,
+        -0.022181712480378923,
+        55.80545360416387
+      ]
+    ],
+    "calibrationPixels": [
+      [
+        608,
+        331
+      ],
+      [
+        267,
+        224
+      ],
+      [
+        199,
+        262
+      ],
+      [
+        467,
+        330
+      ],
+      [
+        199,
+        472
+      ],
+      [
+        330,
+        485
+      ]
+    ],
+    "calibrationOuterLetter": "south",
+    "uncertainty": "Manual source picks; OSM/current differsup toabout1.2m from2019/2022engineeringplan. Fitnotprecisesurvey."
+  },
+  "wallLayout": {
+    "source": "raw/architect-review-plan.pdf architectcredited truegroundfloorplan; originalvectorpaths retained",
+    "method": "Per-letter affine+controlresidualcorrection; sourcewallendpoints signedrelative to source/current steeloutline. No illustrativeplan globalshear remains. Native roofvertices exact; wall absolute survey accuracy not claimed."
+  },
+  "heightNotes": {
+    "brickWalls": {
+      "height": 2.43,
+      "source": "raw/contractor.html",
+      "qualifier": "maximumbuilt height; architect rounds to2m; source photos supportorder"
+    },
+    "steelBase": {
+      "height": 2.6,
+      "qualifier": "approximate from6.6moverallmax minus4.0msteelformdepth; gapabove2.43mwall"
+    },
+    "steelTop": {
+      "south": "highat south, tapers to northpoint (engineeringpage1/2 elevation); 6.6to2.6",
+      "central-south": "lowat southpoint, highatnorthjunction (engineeringpage1 elevation); 2.6to6.6",
+      "central-north": "Explicit9stationpiecewiseZ1-Z9 apex/opposedtapers fromengineeringelevation; vertex1crest5.67mapproximate, tipsvertex0/5 at2.6m. Previousglobalwest-eastramp ispreservedonlyinfailed-4e35.",
+      "north": "lowatsouthpoint, highatnorthjunction (engineeringpage1 elevation); 2.6to6.6"
+    },
+    "steelWidth": {
+      "source": "raw/steel-design.pdf page1",
+      "value": 0.6,
+      "qualifier": "design nominal0.6m; builtprincipledetail0.61m; surveyedOSMringsretained"
+    }
+  },
+  "supportNotes": {
+    "count": 26,
+    "source": "raw/steel-overview.pdf page1 redstations6Resh+8Kaf+6Zain+6Lamed; source industry26columns independently corroborates",
+    "height": 0.095,
+    "width": 0.08,
+    "uncertainty": "Shortexposed supports dimension approximate; positions constrained tocorrectroof/wall crossings. Registration residuals retain allfailed largealignments for review."
+  },
+  "entranceNotes": {
+    "source": "raw/detail.jpg principalentrance22-09-2021 +architect-review-plan.pdf sectionsAA/BB andgroundfloor +operatorvisit +site.osmHoftuinstepsw984887954",
+    "datum": "Memorialcourt0.04m; publicentranceside0.34m approximate from2visibleprincipalrisers. Hoftuin6steps fromOSM, rise0.15mapproximate; notwhole-siteBAGheight. Ends retain distinctaccessibleapproach, no stairsacrossramp.",
+    "corten": "Source-supported principalpanel/curbedge retainingwall. Width/heights approximate; no inventednamelettering.",
+    "principalSteps": 2,
+    "hoftuinSteps": 6,
+    "rampRise": 0.3,
+    "rampRun": 4.5,
+    "handrailHeight": 0.9,
+    "hoftuinMouthRepair": {
+      "source": "architectgroundfloor drawing Hoftuin opening /OSMstepaxis /datedaerialcontext",
+      "widthMetres": 2,
+      "widthStatus": "photo/plan approximation; OSM givesaxis/6steps/handrail, not width",
+      "landingMarginMetres": 0.25,
+      "panelHalfThicknessMetres": 0.09,
+      "trimAlongWesternPanelMetres": 1.4,
+      "scope": "Trimonlyfirst1.4m of westerncortenpanel atmappedstairmouth. Remainingwesternedgewallpreserved; stair/entrancepositionunchanged. Failedb68cmesh/inputspreserved."
+    },
+    "northWidthRepair": {
+      "source": "north-approach-source-width.json /architectgroundvectorwallcap /datedaerialnorthcontext /operatoraccessibleentrance",
+      "previousAssumptionMetres": 2.5,
+      "sourceDerivedAvailableSymmetricWidthMetres": 2.4582720592545515,
+      "adoptedMetres": 2.3,
+      "uncertainty": "Boundedreconstruction usingregisteredplan/currentroofscale; not directlysurveyeddeckwidth. Geometrygroundchangesonlynorthapproachwidth, preservinganchor/axis/brickwall."
+    }
+  },
+  "entrances": [
+    {
+      "name": "Nieuwe Keizersgracht",
+      "type": "accessible split ramp/stairs",
+      "edgeVertices": [
+        9,
+        8
+      ],
+      "photo": "raw/detail.jpg"
+    },
+    {
+      "name": "Nieuwe Herengracht",
+      "type": "accessible open approach",
+      "edgeVertices": [
+        0,
+        4
+      ],
+      "photo": "raw/aerial.jpg"
+    },
+    {
+      "name": "Hoftuin",
+      "type": "mapped six steps",
+      "osmWay": "w984887954",
+      "a": [
+        -19.903038521329318,
+        -3.3280679999116045
+      ],
+      "b": [
+        -23.55,
+        -2.29
+      ],
+      "source": "raw/site.osm"
+    }
+  ],
+  "openPassageProbes": [
+    {
+      "name": "southaccessible-ramp-middle",
+      "point": [
+        -2.3046631562175106,
+        43.31472315982253
+      ],
+      "source": "principalphoto leftaccessibleopening /operatoraccessibleend",
+      "maxSurfaceHeight": 0.36
+    },
+    {
+      "name": "south-stair-bottom-landing",
+      "point": [
+        7.981863179983748,
+        40.62961060006671
+      ],
+      "source": "principalphoto stairstolowcourtsurface",
+      "maxSurfaceHeight": 0.1
+    },
+    {
+      "name": "Hoftuin-bottom-landing",
+      "point": [
+        -18.8,
+        -3.3
+      ],
+      "source": "OSMstepaxis/architectgroundplan entrance",
+      "maxSurfaceHeight": 0.1
+    },
+    {
+      "name": "northaccessible-ramp-middle",
+      "point": [
+        -26.990245805949275,
+        -39.450472000074456
+      ],
+      "source": "operatoraccessibleNieuweHerengrachtend/architectgroundplan",
+      "maxSurfaceHeight": 0.36
+    }
+  ]
+}
