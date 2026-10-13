@@ -25,7 +25,7 @@ import path from 'node:path';
 import {createRequire} from 'node:module';
 import sharp from 'sharp';
 import {chromium, type Page} from '@playwright/test';
-import {findPands, neighbourhood, normId, rdToLngLat} from '../pand-reference/core.ts';
+import {findPands, lngLatToRd, neighbourhood, normId, rdToLngLat, type Footprint} from '../pand-reference/core.ts';
 import {exposedWalls, listPanos, rankPanos, type PanoPick, type Wall} from '../pand-reference/select.ts';
 import {loadPano, wallHeight} from '../pand-reference/rectify.ts';
 import {directionToPixel, sampleEquirectangular, type EquirectangularImage} from '../../src/canalRecall/facade/rectify.ts';
@@ -37,7 +37,7 @@ const flag = (k: string) => process.argv.includes(`--${k}`);
 const id = arg('id');
 if (!id) { console.error('--id=<model id> required'); process.exit(2); }
 
-interface CatalogueEntry {id: string; modelUrl: string; suppressOsmIds?: string[]; surveyed?: {anchor: [number, number]; northOffsetDegrees: number}; footprint?: {centre: [number, number]}}
+interface CatalogueEntry {id: string; modelUrl: string; suppressOsmIds?: string[]; surveyed?: {anchor: [number, number]; northOffsetDegrees: number}; footprint?: {centre: [number, number]}; buildingFootprint?: {type: string; coordinates: number[][][]}}
 const catalogue = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/canalRecall/landmarks/manualCatalogue.json'), 'utf8')) as CatalogueEntry[];
 const entry = catalogue.find(c => c.id === id);
 if (!entry) { console.error(`${id} not in manualCatalogue.json`); process.exit(2); }
@@ -171,8 +171,16 @@ async function gameShot(centre: [number, number], bearing: number, file: string)
 
 async function main() {
   const found = await findPands([bag]);
-  const fp = found.get(bag);
-  if (!fp) throw new Error(`BAG pand ${bag} not in the building tiles`);
+  let fp: Footprint | undefined = found.get(bag);
+  // A pand the landmark replaces can be missing from the building tiles (Zuiderkerk, Waag): use the catalogue footprint
+  // and the GLB's height from the manifest instead.
+  if (!fp && entry.buildingFootprint?.type === 'Polygon') {
+    const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'public/canal-drive/models/signature-landmarks.json'), 'utf8')).models?.[id];
+    const height = manifest?.bounds ? manifest.bounds.max[1] - manifest.bounds.min[1] : 15;
+    fp = {id: bag, ring: entry.buildingFootprint.coordinates[0].map(p => lngLatToRd([p[0], p[1]])), height};
+    console.log(`${bag} not in the building tiles: catalogue buildingFootprint, height ${height.toFixed(1)} m from the manifest`);
+  }
+  if (!fp) throw new Error(`BAG pand ${bag} not in the building tiles and no catalogue buildingFootprint`);
   const centre = {x: fp.ring.reduce((s, p) => s + p.x, 0) / fp.ring.length, y: fp.ring.reduce((s, p) => s + p.y, 0) / fp.ring.length};
   const exposed = exposedWalls(fp, await neighbourhood(centre)).sort((a, b) => b.len - a.len);
   let walls = exposed.slice(0, Number(arg('walls') ?? 6));
