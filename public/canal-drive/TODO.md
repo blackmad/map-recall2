@@ -848,8 +848,7 @@ to skip. Landed 2026-10-13 (HISTORY): `landmark-brief.ts`, the inventory
 schema and gate (required for landmarks first exported after 2026-10-14),
 `check:landmark-inventory` in `check:canal`, `review:sheet --inventory`,
 a 60-landmark survey (93 items: 46 modelled, 14 simplified, 12 skipped, 21
-open) and six retro-fits. **Open misses, ranked** (`artifacts/ornament-inventory/misses.md`
-in the lane worktree; the inventory is `scripts/landmarks/ornament-inventory.json`):
+open) and six retro-fits. **Open misses, ranked** (`docs/reports/ornament-misses-20261013.md`; the inventory is `scripts/landmarks/ornament-inventory.json`):
 van-gendt-hallen stepped gables rounded; chassekerk NE hall wall blank where
 the photo has window rows; waag guild-portal relief; hotel-okura steel
 stairs and galleries; vriesseveem-9 PIET HEIN letters; oudemanhuispoort
