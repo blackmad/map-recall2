@@ -49,6 +49,7 @@ import { isTransit } from './modes';
 import { BuildingFactStore, describeBuilding } from '../buildingFacts';
 import { manualPoiBuildingIds, mergeManualPoiFeatures } from './manualPoiCatalog';
 import type { BridgeRegisterFile } from '../bridgeRegister';
+import { cardCollapsed } from './teachingPacer';
 import { loadEntryCounts, postcardForLull, postcardOnEntry, recordEntry } from './postcardPacing';
 import { DRIVE_BY_RADIUS, driveByGapElapsed, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
 import {
@@ -623,20 +624,25 @@ export class GameLandmarkRuntime {
     const alpha = this._landmarkNoticeAlpha;
     if (alpha <= 0) return;
 
-    const img = this._landmarkImages && this._landmarkImages.get(lm.id);
+    // A card that opened by itself folds to its title line after a while, so
+    // it stops competing with the corridor. Presentation only: the notice
+    // keeps its full text for the expanded panel, and a card the rider
+    // clicked open never folds (see teachingPacer.cardCollapsed).
+    const collapsed = cardCollapsed(this._landmarkNoticeSource, this._landmarkNoticeState.elapsed);
+    const img = collapsed ? null : this._landmarkImages && this._landmarkImages.get(lm.id);
     const hasImage = !!(img && img.complete && img.naturalWidth > 0);
     const cards = window.CanalRecallCards;
     const measure = (text: string, font: string): number => { ctx.font = font; return ctx.measureText(text).width; };
     const card = cards.measureLandmarkCard({
       name: lm.name,
-      body: lm.longDetail || lm.detail || cards.placeOnlyDetail(
+      body: collapsed ? '' : lm.longDetail || lm.detail || cards.placeOnlyDetail(
         lm.type,
         this.currentNeighborhood,
         this._cityDisplayName(),
       ),
       category: lm.type ? lm.type.toUpperCase() : '',
-      factKind: lm.factKind,
-      extractLang: lm.extractLang,
+      factKind: collapsed ? undefined : lm.factKind,
+      extractLang: collapsed ? undefined : lm.extractLang,
       hasArticle: !!(lm.wikipediaUrl || lm.sourceUrl),
       articleLabel: lm.wikipediaUrl ? 'W  WIKIPEDIA' : 'W  SOURCE',
       hasImage,

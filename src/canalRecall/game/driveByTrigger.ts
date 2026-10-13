@@ -18,6 +18,12 @@
 import type { WorldPoint } from './worldTypes';
 import type { NoticeHold } from './landmarkNotice';
 import { nearestRouteIndex } from './routeSelection';
+import {
+  CLICK_PREEMPT_AFTER_SECONDS, DRIVE_BY_MIN_GAP_SECONDS, PREEMPT_AFTER_SECONDS, sinceEvent,
+} from './teachingPacer';
+
+// The drive-by cadence lives in `teachingPacer`; re-exported for existing imports.
+export { CLICK_PREEMPT_AFTER_SECONDS, DRIVE_BY_MIN_GAP_SECONDS, PREEMPT_AFTER_SECONDS };
 
 /** px — how close the path ahead must pass to a landmark to open its card.
  *  About 45 m: a facade on the street being ridden, or across one canal. At
@@ -36,14 +42,6 @@ export const DRIVE_BY_ROUTE_TOLERANCE = 140;
 /** px — a landmark this far behind the rider has been passed; a card for it now
  *  would describe something out of view. */
 export const DRIVE_BY_PASSED_BEHIND = 90;
-/** Seconds a street or drive-by card keeps the slot before a landmark about to
- *  be passed may take it. */
-export const PREEMPT_AFTER_SECONDS = 6;
-/** Seconds between drive-by cards. In the canal belt a landmark stands every
- *  few houses, and cards replacing each other every few seconds left no time
- *  to read one or to watch the road (user report 2026-10-01, "pace the rate
- *  at which we pop up those cards"). */
-export const DRIVE_BY_MIN_GAP_SECONDS = 15;
 
 export interface Rider extends WorldPoint {
   /** Radians; the direction of travel is (cos, sin). */
@@ -123,12 +121,6 @@ export function pickDriveBy<T extends WorldPoint>(candidates: readonly T[], path
   return chosen;
 }
 
-/** Seconds a card the player clicked open keeps the slot before a landmark
- *  being driven past may take it. Cards no longer time out (user request
- *  2026-10-03, "until I x them out or something else replaces them"), so a
- *  clicked card left up would otherwise stop every drive-by card for the rest
- *  of the ride; it gets longer than a card that opened by itself. */
-export const CLICK_PREEMPT_AFTER_SECONDS = 20;
 
 /** Whether a drive-by landmark may replace the card currently up. Only the
  *  arrival card on the finish screen is never replaced. */
@@ -140,6 +132,5 @@ export function mayReplaceNotice(source: NoticeSource | null, hold: NoticeHold |
 
 /** Whether enough time has passed since the last drive-by card for another. */
 export function driveByGapElapsed(lastShownAt: number | null | undefined, now: number): boolean {
-  // A time later than now is from an earlier ride (`raceTime` restarts at 0).
-  return lastShownAt == null || lastShownAt > now || now - lastShownAt >= DRIVE_BY_MIN_GAP_SECONDS;
+  return sinceEvent(now, lastShownAt) >= DRIVE_BY_MIN_GAP_SECONDS;
 }

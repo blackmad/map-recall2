@@ -428,7 +428,8 @@ export class GamePresentationRuntime {
     const panel = document.getElementById('landmark-panel');
     const landmarkPanelOpen = !!panel && getComputedStyle(panel).display !== 'none';
     return {
-      quizOpen: !!this.quizPromptName,
+      // An expired riding question has no card; only its name is withheld.
+      quizOpen: !!this.quizPromptName && !this._ridingState?.expired,
       feedbackVisible: !!this.quizFeedback,
       promptVisible,
       utilityOpen: !!this._utilityOpen || landmarkPanelOpen,
