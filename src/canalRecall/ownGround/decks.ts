@@ -45,7 +45,7 @@ const FRAME_DARK: RGB = hex('#2d2f2e');
 /** Amsterdam bridge-railing green (near-black fir green). */
 export const RAILING_GREEN: RGB = FAMILY['steel-deck'].railing;
 const BURY = 0.4;
-/** Deck-top lift over the surface: under every street band (LIFT.carriageway 0.03; bridge bands are sampled every 0.5 m so their chords stay within it on a hump). */
+/** Deck-top lift over the surface: under every street band (LIFT.carriageway 0.03; bridge bands are sampled every 0.75 m so their chords stay within it on a hump). */
 export const DECK_TOP_LIFT = 0;
 /** Railing geometry, metres. */
 export const RAILING = { height: 1.05, postStep: 1.8, post: 0.07, rail: 0.06, plinthWidth: 0.28, inset: 0.04 };
@@ -148,7 +148,7 @@ export interface DeckBuildInfo { id: string; railingPosts: number; piers: number
  * abutment walls), `waterZ` the canal level, `height` the riding surface (the
  * deck top and the tops of the side faces follow it exactly).
  */
-export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater: WaterTest, waterZ: number, height?: HeightFn, info?: DeckBuildInfo[]): MeshArrays {
+export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater: WaterTest, waterZ: number, height?: HeightFn, info?: DeckBuildInfo[], detail = true): MeshArrays {
   const m = emptyMesh(true), p = deck.profile, fam = FAMILY[p.family] ?? FAMILY['concrete-deck'];
   const idx: number[] = [];
   for (let i = 0; i < p.s.length; i++) if (p.s[i] >= p.deck[0] - 0.5 && p.s[i] <= p.deck[1] + 0.5) idx.push(i);
@@ -241,9 +241,9 @@ export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater:
     stats.piers++;
   }
 
-  // Railings on both edges of the deck span.
-  const span = rows.filter(r => r.parapet);
-  if (span.length >= 2) {
+  // Railings on both edges of the deck span (near cells only): every other 0.5 m station, plus the last.
+  const onSpan = rows.filter(r => r.parapet), span = onSpan.filter((_, k) => k % 2 === 0 || k === onSpan.length - 1);
+  if (detail && span.length >= 2) {
     const style: RailingStyle = { plinth: arched ? fam.parapet : fam.fascia, plinthHeight: fam.plinth, railing: fam.railing };
     stats.railingPosts += railing(m, span.map(r => r.L), span.map(r => r.n), span.map(r => r.zL), style).posts;
     stats.railingPosts += railing(m, span.map(r => r.R), span.map(r => [-r.n[0], -r.n[1]] as Vec2), span.map(r => r.zR), style).posts;
@@ -256,10 +256,12 @@ export function measuredDeckBody(deck: DeckSurface, ground: HeightFn, overWater:
  * The deck top of a measured deck: a strip over its footprint (the deck span
  * plus half a metre), draped on the riding surface, under every street band.
  */
-export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 6): MeshArrays {
+export function measuredDeckTop(deck: DeckSurface, height: HeightFn, across = 4, stride = 2): MeshArrays {
   const m = emptyMesh(true), p = deck.profile;
-  const idx: number[] = [];
-  for (let i = 0; i < p.s.length; i++) if (p.s[i] >= p.deck[0] - 0.5 && p.s[i] <= p.deck[1] + 0.5) idx.push(i);
+  const all: number[] = [];
+  for (let i = 0; i < p.s.length; i++) if (p.s[i] >= p.deck[0] - 0.5 && p.s[i] <= p.deck[1] + 0.5) all.push(i);
+  // Every `stride`-th station (1 m at 0.5 m stations): on a hump the coarser chords sag under the bands, never over them.
+  const idx = all.filter((_, k) => k % stride === 0 || k === all.length - 1);
   if (idx.length < 2) return m;
   const J = Math.max(2, across), base = m.positions.length / 3;
   for (const i of idx) {
