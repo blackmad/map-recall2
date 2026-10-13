@@ -1,0 +1,136 @@
+{
+ "schemaVersion": 1,
+ "id": "weteringstraat-16-184747",
+ "pand": "0363100012184747",
+ "signature": [
+  "glazed-undercroft",
+  "stone-surround-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w03-217",
+   "bearing": 217,
+   "lengthM": 35.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000308",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "glazed-undercroft",
+     "kind": "colonnade",
+     "where": "canal front ground: glazed bays between columns under a concrete cantilever",
+     "approxSizeM": [
+      35,
+      4.5
+     ],
+     "plan": "simplified",
+     "how": "glazed ground row under the brick floors; columns and the concrete band are not drawn",
+     "seenIn": "TMX7316010203-000355_pano_0000_000308"
+    },
+    {
+     "id": "stone-surround-windows",
+     "kind": "window-shape",
+     "where": "all brick floors: deep windows with pale stone surrounds",
+     "approxSizeM": [
+      35,
+      18
+     ],
+     "plan": "modelled",
+     "how": "plain windows with 18 cm reveals and stone-grey frames in the 6- and 3-storey canal groups",
+     "seenIn": "TMX7316010203-000355_pano_0000_000308"
+    },
+    {
+     "id": "concrete-cantilever",
+     "kind": "other",
+     "where": "heavy concrete balcony and cantilever band over the undercroft",
+     "approxSizeM": [
+      30,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 1.5 m deep band; the kit has no cantilever component and its stand-off boxes would add open edges against the budget"
+     },
+     "seenIn": "TMX7316010203-000355_pano_0000_000308"
+    }
+   ]
+  },
+  {
+   "tag": "w04-102",
+   "bearing": 102,
+   "lengthM": 34,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001681_pano_0000_004518",
+   "capturedAt": "2020-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-front",
+     "kind": "window-shape",
+     "where": "east front: five floors of stone-surround windows, copper stair tower",
+     "approxSizeM": [
+      33,
+      22
+     ],
+     "plan": "modelled",
+     "how": "6- and 4-storey groups on walls[3] and [4]; the stair tower is the shell",
+     "seenIn": "TMX7316010203-001681_pano_0000_004518"
+    }
+   ]
+  },
+  {
+   "tag": "w05-191",
+   "bearing": 191,
+   "lengthM": 31.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000297",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "south-front",
+     "kind": "window-shape",
+     "where": "south front: stone-surround windows over the glazed undercroft",
+     "approxSizeM": [
+      31,
+      22
+     ],
+     "plan": "modelled",
+     "how": "6-storey group on walls[0]",
+     "seenIn": "TMX7316010203-000355_pano_0000_000297"
+    }
+   ]
+  },
+  {
+   "tag": "w01-11",
+   "bearing": 11,
+   "lengthM": 90,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w02-217",
+   "bearing": 217,
+   "lengthM": 41.9,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000303",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

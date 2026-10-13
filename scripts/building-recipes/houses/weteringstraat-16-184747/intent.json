@@ -1,0 +1,128 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "weteringstraat-16-184747",
+ "pandId": "0363100012184747",
+ "address": "Nieuwe Weteringstraat 16 / Weteringschans, Amsterdam (Prinsengracht-Weteringschans corner): 1981 dark-brick office block on a glazed undercroft, stepped to 27 m with copper details",
+ "sources": [
+  {
+   "id": "pano-2017-07-07-w05",
+   "kind": "street-panorama",
+   "capturedAt": "2017-07-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000355_pano_0000_000297/",
+   "image": "staging/pand-reference-walls/0363100012184747/w05-191.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2017-07-07-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2017-07-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000355_pano_0000_000308/",
+   "image": "staging/pand-reference-walls/0363100012184747/w03-217.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2017-07-07-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2017-07-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000355_pano_0000_000308/",
+   "image": "staging/pand-reference-walls/0363100012184747/w03-217.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-04-29-w04",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001681_pano_0000_004518/",
+   "image": "staging/pand-reference-walls/0363100012184747/w04-102.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-04-29-w04",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001681_pano_0000_004518/",
+   "image": "staging/pand-reference-walls/0363100012184747/w04-102.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    320,
+    321
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 9,
+   "ground": "glazed",
+   "deepBars": true,
+   "sills": false,
+   "windows": "plain"
+  },
+  {
+   "wallSurfaces": [
+    77
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 5,
+   "ground": "glazed",
+   "deepBars": true,
+   "sills": false,
+   "windows": "plain"
+  },
+  {
+   "wallSurfaces": [
+    75
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 3,
+   "ground": "glazed",
+   "deepBars": true,
+   "sills": false,
+   "windows": "plain"
+  },
+  {
+   "wallSurfaces": [
+    130
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 7,
+   "ground": "glazed",
+   "deepBars": true,
+   "sills": false,
+   "windows": "plain"
+  },
+  {
+   "wallSurfaces": [
+    6
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 2,
+   "ground": "glazed",
+   "deepBars": true,
+   "sills": false,
+   "windows": "plain"
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "copper"
+ },
+ "palette": {
+  "brick": "#4a3830",
+  "frame": "#c8c4bc",
+  "door": "#2a2a2a",
+  "stone": "#a8a49c"
+ },
+ "notes": [
+  "Nieuwe Weteringstraat 16 (BAG: built 1981; three office units and one other unit; 4,526 m2 footprint, 27.6 m): a dark-brick office block of the early 1980s on the Weteringschans (the former Universiteit Financiele Markten building). Three fronts are photographed: the canal-side south-west front (w02-217/w03-217, panorama 2017-07-07: a glazed undercroft on columns under a heavy concrete cantilever band, above it dark brown brick floors of deep-set windows with pale stone surrounds, stepped back in tiers with copper-clad roofs), the east front (w04-102, 2020-04-29: five floors of stone-surrounded windows over a colonnaded glass ground floor with a green copper stair tower) and the south front (w05-191, 2017-07-07).",
+  "Modelled: the south front (panel 261: 6 storeys), the canal front as two height groups (surface 77: 6 storeys; surface 75: 3 storeys) and the east front as two groups (surface 130: 6 storeys; surface 6: 4 storeys); dark brown brick with stone-grey window surrounds and a glazed ground storey under each. Copper roof as surveyed by 3DBAG LoD2.2.",
+  "Simplified: the heavy concrete cantilever bands, the colonnade of the undercroft and the green copper stair tower are not drawn (the ground is a glazed row; the tower is the 3DBAG wall and roof geometry in brick colour), the window hoods are plain deep reveals. Not modelled: the north street front (panel 10, 90 m; no panorama within 35 m) and the courtyard walls."
+ ],
+ "closedBands": true
+}
