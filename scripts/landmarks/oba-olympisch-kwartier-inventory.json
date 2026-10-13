@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "oba-olympisch-kwartier",
+  "pand": "0363100012073586",
+  "signature": ["shop-plinth", "oba-lettering"],
+  "walls": [
+    {"tag": "w01-168", "bearing": 168, "lengthM": 78.3, "evidence": "photo", "panoId": "TMX7316010203-001708_pano_0000_001092", "capturedAt": "2020-05-13", "checked": true, "items": [
+      {"id": "shop-plinth", "kind": "other", "where": "ground storey, cream stone plinth with tall glazed shopfront bays", "approxSizeM": [60, 4], "plan": "modelled", "how": "plinth-shopfronts ground", "seenIn": "TMX7316010203-001708_pano_0000_001092"},
+      {"id": "oba-lettering", "kind": "lettering", "where": "over the entrance of the south front", "approxSizeM": [2, 0.5], "plan": "simplified", "how": "kit wall lettering OBA over one recessed entrance; no sign legible in the panorama", "seenIn": "TMX7316010203-001708_pano_0000_001092"},
+      {"id": "string-courses", "kind": "other", "where": "every storey line, dark red brick bands between window rows", "approxSizeM": [60, 0.5], "plan": "modelled", "how": "stringCourses", "seenIn": "TMX7316010203-001708_pano_0000_001092"},
+      {"id": "balconies", "kind": "balcony-ironwork", "where": "upper storeys, rails behind the window openings", "approxSizeM": [1.5, 1], "plan": "skipped", "skip": {"reason": "too-small", "note": "glass rails set inside the window reveals, about 2 cm thick"}, "seenIn": "TMX7316010203-001708_pano_0000_001092"}
+    ]},
+    {"tag": "w02-78", "bearing": 78, "lengthM": 52.1, "evidence": "photo", "panoId": "TMX7316010203-001151_pano_0001_000403", "capturedAt": "2019-04-30", "checked": true, "items": [
+      {"id": "gate-portal", "kind": "window-shape", "where": "right end of the east front, a five-storey arched gate portal into the courtyard", "approxSizeM": [8, 18], "plan": "simplified", "how": "surfaces 5/127 stay a blank wall group (non-planar 3DBAG surfaces), so the portal is a plain 3DBAG face without the opening", "seenIn": "TMX7316010203-001151_pano_0001_000403"},
+      {"id": "ribbon-windows", "kind": "window-shape", "where": "upper storeys of the east front, wide ribbons between brick spandrels", "approxSizeM": [40, 14], "plan": "simplified", "how": "plain bay windows 4 to 6 per storey in place of the 9-pane ribbons", "seenIn": "TMX7316010203-001151_pano_0001_000403"}
+    ]},
+    {"tag": "w03-344", "bearing": 344, "lengthM": 44.9, "evidence": "photo", "panoId": "TMX7316010203-001704_pano_0000_002283", "capturedAt": "2020-05-13", "checked": true, "items": [
+      {"id": "n-brick-grid", "kind": "other", "where": "whole north front, brick storeys with window rows", "approxSizeM": [44, 16], "plan": "modelled", "how": "brick-bay-grid groups per panel", "seenIn": "TMX7316010203-001704_pano_0000_002283"}
+    ]}
+  ],
+  "sources": [{"name": "Gemeente Amsterdam panorama", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001708_pano_0000_001092/", "licence": "CC BY 4.0"}]
+}

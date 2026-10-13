@@ -28990,6 +28990,361 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T21:17:23.845Z"
+    },
+    {
+      "id": "ordinary-0363100012073586",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012073586",
+      "name": "OBA Olympisch Kwartier, Laan der Hesperiden 18, Amsterdam (2005; library in the ground floor of a brick housing block, one pand)",
+      "hash": "8f5ca488568374e12fade9499d60edbd23b35e9e7581a074bd73c77885cafd2c",
+      "sha256": "8f5ca488568374e12fade9499d60edbd23b35e9e7581a074bd73c77885cafd2c",
+      "bytes": 821444,
+      "triangles": 10939,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -47.155,
+          0,
+          -49.67
+        ],
+        "max": [
+          52.059,
+          22.002,
+          48.384
+        ]
+      },
+      "anchor": [
+        4.8553631,
+        52.3455746
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8548711,
+              52.3453146
+            ],
+            [
+              4.8549155,
+              52.3452218
+            ],
+            [
+              4.8549466,
+              52.3451557
+            ],
+            [
+              4.8549533,
+              52.3451568
+            ],
+            [
+              4.8549624,
+              52.3451379
+            ],
+            [
+              4.8550025,
+              52.3451441
+            ],
+            [
+              4.8550033,
+              52.3451422
+            ],
+            [
+              4.855009,
+              52.345143
+            ],
+            [
+              4.8550093,
+              52.3451421
+            ],
+            [
+              4.856132,
+              52.3452931
+            ],
+            [
+              4.8560969,
+              52.3453891
+            ],
+            [
+              4.8560718,
+              52.3454604
+            ],
+            [
+              4.8560003,
+              52.3456588
+            ],
+            [
+              4.8559689,
+              52.345751
+            ],
+            [
+              4.8559455,
+              52.3457481
+            ],
+            [
+              4.8559147,
+              52.3458336
+            ],
+            [
+              4.8558949,
+              52.3458413
+            ],
+            [
+              4.8558294,
+              52.346023
+            ],
+            [
+              4.8555385,
+              52.3459789
+            ],
+            [
+              4.8553001,
+              52.3459409
+            ],
+            [
+              4.855061,
+              52.3458969
+            ],
+            [
+              4.8548241,
+              52.3458564
+            ],
+            [
+              4.854668,
+              52.3458269
+            ],
+            [
+              4.8547814,
+              52.345585
+            ],
+            [
+              4.8547716,
+              52.3455737
+            ],
+            [
+              4.854811,
+              52.3454894
+            ],
+            [
+              4.8547907,
+              52.3454853
+            ],
+            [
+              4.854834,
+              52.3453949
+            ]
+          ],
+          [
+            [
+              4.8557406,
+              52.345713
+            ],
+            [
+              4.8557777,
+              52.3456282
+            ],
+            [
+              4.8557895,
+              52.3455753
+            ],
+            [
+              4.8558123,
+              52.3455783
+            ],
+            [
+              4.8558197,
+              52.3455577
+            ],
+            [
+              4.8558582,
+              52.3455628
+            ],
+            [
+              4.8558649,
+              52.3455484
+            ],
+            [
+              4.8557892,
+              52.3455352
+            ],
+            [
+              4.8558562,
+              52.3453912
+            ],
+            [
+              4.8558128,
+              52.3453833
+            ],
+            [
+              4.8558078,
+              52.3453958
+            ],
+            [
+              4.8551919,
+              52.3453127
+            ],
+            [
+              4.8551979,
+              52.345298
+            ],
+            [
+              4.8551545,
+              52.345291
+            ],
+            [
+              4.8551481,
+              52.3453042
+            ],
+            [
+              4.8551036,
+              52.3454009
+            ],
+            [
+              4.8550769,
+              52.3453954
+            ],
+            [
+              4.8550592,
+              52.3454346
+            ],
+            [
+              4.8550187,
+              52.3455187
+            ],
+            [
+              4.8549467,
+              52.3456743
+            ],
+            [
+              4.8549069,
+              52.3456664
+            ],
+            [
+              4.8548736,
+              52.3457392
+            ],
+            [
+              4.8548885,
+              52.3457418
+            ],
+            [
+              4.8548935,
+              52.3457311
+            ],
+            [
+              4.8549451,
+              52.3457402
+            ],
+            [
+              4.8549548,
+              52.34572
+            ],
+            [
+              4.8556019,
+              52.3458344
+            ],
+            [
+              4.8555872,
+              52.3458654
+            ],
+            [
+              4.8556013,
+              52.3458679
+            ],
+            [
+              4.8556064,
+              52.3458571
+            ],
+            [
+              4.8556445,
+              52.3458639
+            ],
+            [
+              4.8556394,
+              52.3458747
+            ],
+            [
+              4.8556529,
+              52.3458771
+            ],
+            [
+              4.8556583,
+              52.3458657
+            ],
+            [
+              4.8556833,
+              52.3458701
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 22,
+      "height": 22,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-oba-olympisch-kwartier.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012073586"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "oba-olympisch-kwartier",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012073586/w01-168.jpg",
+          "staging/pand-reference-walls/0363100012073586/w02-78.jpg",
+          "staging/pand-reference-walls/0363100012073586/w03-344.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "storey-height/walls[4]:pass",
+          "eaves-vs-3dbag/walls[5]:pass",
+          "storey-height/walls[5]:pass",
+          "eaves-vs-3dbag/walls[6]:pass",
+          "storey-height/walls[6]:pass",
+          "eaves-vs-3dbag/walls[7]:pass",
+          "storey-height/walls[7]:pass",
+          "eaves-vs-3dbag/walls[8]:pass",
+          "storey-height/walls[8]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 6st 6b",
+          "brick-bay-grid 5st 5b",
+          "brick-bay-grid 5st 6b",
+          "brick-bay-grid 6st 4b",
+          "brick-bay-grid 5st 6b",
+          "brick-bay-grid 5st 7b",
+          "brick-bay-grid 5st 5b",
+          "brick-bay-grid 5st 5b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Ornaments: shopfront plinth MODELLED (plinth-shopfronts); string courses MODELLED; entrance door SIMPLIFIED (one recessed glazed entrance at bay 3 of the south front; the real library entrance is not identifiable from the panoramas); OBA lettering SIMPLIFIED (cream lettering OBA on the wall over that entrance: no OBA sign is legible in the panoramas, so this carries the library identity); cream stone plinth colour MODELLED only as the stone palette; stair/lift towers and balconies SKIPPED (inside the 3DBAG roof volume); the arched gate portal at the right of the east front SKIPPED (surfaces 5/127 are not planar: 6-10 cm off any plane, so they are a blank group); shop signs and parked vans SKIPPED (temporary).",
+        "Courtyard walls have no panorama and stay blank; wall groups are split per 3DBAG panel because merged panels with slightly different planes failed the parts-attached gate (gap 8 cm). closedBands closes the string courses (open-edge gate). Eaves differ 16/19 m between wings; each group follows its own eaves."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012073586",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T21:24:53.067Z"
     }
   ]
 }
