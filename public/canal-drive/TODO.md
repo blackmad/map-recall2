@@ -660,7 +660,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
-
+- **Live site is stale: every deploy since 14:27 2026-10-13 fails on the
+  Hosting storage quota (HISTORY)**. Run `npm run hosting:prune` (dry run),
+  then `npm run hosting:prune -- --apply` (or the manual "Prune Firebase
+  Hosting versions" workflow), then re-run the latest failed deploy and
+  check `<site>/deployment.json` shows the pushed SHA. Longer term: fewer
+  deploys (schedule or manual) or the Blaze plan.
 *Anything that makes the game teach something false, or traps the rider,
 belongs here before anything below it.*
 

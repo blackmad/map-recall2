@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## Hosting: deploys failing on the storage quota again (2026-10-13)
+
+Every "Deploy to Firebase Hosting" run since 14:27 (the push after 922de98,
+which is what the live site still serves) fails with HTTP 429 "exceeded the
+Hosting storage quota", the 2026-10-01 failure again. Listed through the
+Hosting API: 100+ stored versions per site, 17.8 GB on canalrecall and
+7.9 GB on edumap, although both sites have `maxVersions: 3`: expired
+versions are not collected promptly and the ~40 deploys a day (every push
+to main, ~190 + ~100 MB each) outrun it. `scripts/hosting/prune-versions.mjs`
+(`npm run hosting:prune`, dry run unless `--apply`) keeps the live release
+and the newest three per site and deletes the rest; the manual workflow
+`prune-hosting.yml` runs it with the CI service account. The integrator's
+own prune was stopped by the session's permission policy (mass delete), so
+the prune is the user's call; after it, re-run the newest failed deploy.
+The deploy workflow now skips pushes that only touch `docs/**`, `*.md` or
+`artifacts/**`.
+
+
 ## Own ground: bridges with real elevation, the belt reviewed, roads redrawn (2026-10-13)
 
 Three lanes merged behind `?ownGround=1`, own-ground bundles rebuilt.
