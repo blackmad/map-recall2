@@ -319,7 +319,8 @@ function hospital(id:string){let s=hospitals.sites.find(s=>s.id===id)!;let spec=
 // Landmarks whose window/door assemblies are snapped onto their walls before export (src/canalRecall/landmarks/snapOpenings.ts): builder-time,
 // on the builder's own geometry. Batch 1 of the GLB cleanup pass (2026-10-13); extend as further batches are audited.
 // Windows placed across a wall step/corner of the survey outline are dropped for these (see snapOpenings dropOverhang); listed so the removals are deliberate.
-const DROP_OVERHANG_IDS=new Map<string,number>([['fire-station-willem',4],['mountain-network',12]]); // id -> largest assembly (m) that may be dropped
+const DROP_OVERHANG_IDS=new Map<string,number>([['fire-station-willem',4],['mountain-network',12],['beta-boulders',5]]); // id -> largest assembly (m) that may be dropped
+const DROP_MIN_OUTSIDE=new Map<string,number>([['beta-boulders',.25]]); // default .35
 const SNAP_OPENING_IDS=new Set(['de-bijenkorf','oude-kerk','beta-boulders','fire-station-willem','mountain-network','centraal-station','rai-amsterdam','westerkerk','valley','lab111','vredeskerk','scheepvaarthuis','dominicuskerk','magna-plaza','madame-tussauds']);
 function snapPartOpenings(id:string){
  if(!SNAP_OPENING_IDS.has(id))return;
@@ -332,7 +333,7 @@ function snapPartOpenings(id:string){
   for(let t=0;t<attr.count/3;t++){indices.push(base+t*3,base+t*3+1,base+t*3+2);triMaterial.push(m);}
  }
  const soup={positions,indices,triMaterial,materials:names.map(name=>({name,rgb:[128,128,128] as [number,number,number]}))};
- const detached=process.env.SNAP_NO_DETACHED?{moved:0,skipped:0}:snapDetachedParts(soup),report=snapOpenings(soup,{dropOverhang:DROP_OVERHANG_IDS.has(id)?{minOutside:.35,maxExtent:DROP_OVERHANG_IDS.get(id)!}:undefined});
+ const detached=process.env.SNAP_NO_DETACHED?{moved:0,skipped:0}:snapDetachedParts(soup),report=snapOpenings(soup,{dropOverhang:DROP_OVERHANG_IDS.has(id)?{minOutside:DROP_MIN_OUTSIDE.get(id)??.35,maxExtent:DROP_OVERHANG_IDS.get(id)!}:undefined});
  const dropped=new Set(report.dropped);
  for(const part of parts){const sp=spans.find(x=>x.g===part.g)!;const attr=part.g.getAttribute('position');for(let i=0;i<attr.count*3;i++)(attr.array as Float32Array)[i]=positions[sp.from+i];attr.needsUpdate=true;
   if(dropped.size){const first=sp.from/9,keep:number[]=[];for(let t=0;t<attr.count/3;t++)if(!dropped.has(first+t))keep.push(t);

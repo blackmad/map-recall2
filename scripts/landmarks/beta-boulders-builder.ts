@@ -45,9 +45,9 @@ export function buildBetaBoulders(_w:number,_d:number,b:BuildingTools):void{
    // Real entrance doors remain distinguishable inside the broad glazed portal.
    const door=frontageClip(p,q,.17,.225);if(door){ribbon(door[0],door[1],.18,3.5,'dark',.21);panel(door[0],door[1],3.72,.14,'dark',.31)}
   }else if(front)ribbon(p.clone().lerp(q,.018),q.clone().lerp(p,.018),.45,4.1,'concrete');else ribbon(p.clone().lerp(q,.04),q.clone().lerp(p,.04),1.1,2.6,'concrete');
-  panel(p,q,5.22,.28,'white',.18);panel(p,q,10.25,.65,'white',.18);panel(p,q,14.55,.5,'white',.18);
+  panel(p,q,5.22,.28,'stone',.18);panel(p,q,10.25,.65,'stone',.18);panel(p,q,14.55,.5,'stone',.18);
   // Slim actual roof guard rails retain the industrial terrace silhouette.
-  panel(p,q,15.18,.075,'dark',.2,.04);panel(p,q,15.57,.06,'dark',.2,.04);for(let k=0;k<=Math.ceil(length/3);k++){const t=q.clone().sub(p).normalize(),n=new T.Vector2(-t.y,t.x),m=p.clone().lerp(q,k/Math.ceil(length/3)).addScaledVector(n,.2);b.box(m.x,15.1,m.y,.05,.53,.05,'dark')}
+  panel(p,q,15.18,.075,'slate',.2,.04);panel(p,q,15.57,.06,'slate',.2,.04);for(let k=0;k<=Math.ceil(length/3);k++){const t=q.clone().sub(p).normalize(),n=new T.Vector2(-t.y,t.x),m=p.clone().lerp(q,k/Math.ceil(length/3)).addScaledVector(n,.2);b.box(m.x,15.1,m.y,.05,.53,.05,'slate')}
  }
  // Upper office addition follows its surveyed irregular outline and atrium.
  for(const roof of data.roofs.filter(r=>[168,179].includes(r.index)))for(const ring of roof.rings){for(let i=0;i<ring.length;i++){const p=new T.Vector2(ring[i][0],ring[i][1]),q=new T.Vector2(ring[(i+1)%ring.length][0],ring[(i+1)%ring.length][1]);if(p.distanceTo(q)>4)ribbon(p.clone().lerp(q,.04),q.clone().lerp(p,.04),15.4,2.65,'dark',.14)}}

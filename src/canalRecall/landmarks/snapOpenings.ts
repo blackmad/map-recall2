@@ -55,7 +55,8 @@ export interface SnapReport {
 }
 
 export function snapOpenings(soup: MaterialSoup, opts: SnapOptions = {}): SnapReport {
-  const {maxFloat = 0.6, maxBuried = 0.6, embed = 0.02, clearMargin = 0.08, dropOverhang, passes = 4, sheetThickness = 0.02, sheetRest = 0.02, th = GEOMETRY_THRESHOLDS} = opts;
+  const {maxFloat = 0.6, maxBuried = 0.6, embed = 0.02, clearMargin = 0.08, dropOverhang, passes = 4, sheetThickness = 0.02, sheetRest = 0.02, th: thOpt = GEOMETRY_THRESHOLDS} = opts;
+  const th = thOpt;
   const P = soup.positions, I = soup.indices;
   const report: SnapReport = {passes: 0, floatingMoved: 0, buriedMoved: 0, reverted: 0, skipped: {floating: 0, buried: 0, overhang: 0}, dropped: [], droppedAt: []};
   type Move = {tris: number[]; d: [number, number, number]; kind: 'floating' | 'buried'};
@@ -144,7 +145,7 @@ export interface SnapDetachedReport {
  * Mutates `soup.positions`; the soup's triangles must own their vertices.
  */
 export function snapDetachedParts(soup: MaterialSoup, opts: {maxGap?: number; embed?: number; passes?: number} = {}): SnapDetachedReport {
-  const {maxGap = 0.6, embed = 0.015, passes = 2} = opts;
+  const {maxGap = 0.6, embed = 0.015, passes = 4} = opts;
   const report: SnapDetachedReport = {moved: 0, skipped: 0};
   for (let pass = 0; pass < passes; pass++) {
     const tri = {positions: Float32Array.from(soup.positions), indices: Uint32Array.from(soup.indices)};
