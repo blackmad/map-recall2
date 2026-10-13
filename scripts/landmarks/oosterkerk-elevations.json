@@ -1,0 +1,64 @@
+{
+  "id": "oosterkerk",
+  "countedBy": "lane count from the photos (not blind), 2026-10-13; needs a blind recount",
+  "facades": [
+    {
+      "name": "south-west front (Wittenburgergracht)",
+      "bearing": 227.5,
+      "photo": "artifacts/landmark-lanes/oosterkerk/commons/Overzicht_westgevel_-_Amsterdam_-_20013327_-_RCE.jpg",
+      "depthBand": 10,
+      "rows": [
+        5,
+        3,
+        3
+      ],
+      "columns": 5,
+      "symmetric": true,
+      "gables": 1,
+      "heightM": [
+        0,
+        22
+      ],
+      "note": "bands: corner low windows, side-bay low windows and the 1671 door; corner tall windows + porch centre window (blind arches not counted); three upper arm windows, which stand over the porch bays. Columns: corner, bay, centre, bay, corner"
+    },
+    {
+      "name": "north-east back (annex)",
+      "bearing": 47.5,
+      "photo": "artifacts/landmark-lanes/oosterkerk/commons/Oosterkerk_back_20201107_140456.jpg",
+      "depthBand": 10,
+      "rows": [
+        3,
+        4,
+        3,
+        3,
+        3
+      ],
+      "columns": 7,
+      "symmetric": true,
+      "gables": 1,
+      "heightM": [
+        0,
+        22
+      ],
+      "note": "bands by element, from the photo: cellar doors + centre door; corner low windows + annex sashes; annex dormer + corner tall windows; three arched windows over the annex roof; three upper arm windows"
+    },
+    {
+      "name": "south-east side (Kleine Wittenburgerstraat)",
+      "bearing": 137.5,
+      "photo": "artifacts/landmark-lanes/oosterkerk/commons/Exterieur_-_Amsterdam_-_20013333_-_RCE.jpg",
+      "depthBand": 4,
+      "rows": [
+        5,
+        5,
+        3
+      ],
+      "columns": 5,
+      "symmetric": true,
+      "gables": 1,
+      "heightM": [
+        0,
+        22
+      ]
+    }
+  ]
+}

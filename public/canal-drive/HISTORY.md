@@ -19,6 +19,44 @@ planes were tried first and rendered as broken shards with holes, which is why
 the roofs are authored. Known leftover: the stone bands on the rear turrets and
 the ENE big tower stick out as crescents because the shell's towers are not
 circular.
+## Hotel de l'Europe window grid and Da Costakade 13 landed; two lanes held back by the audit (2026-10-13)
+
+Integrator review of the small landmark lanes killed on 2026-10-13, judged on
+camera-matched review sheets plus `audit:glb`. **Merged:**
+`fix/europe-window-grid-20261011` (per-section window grid from the facade
+rhythm spec, `nearbar-kit.ts`; 52.1k tris, PASS; the sheet now matches the
+Amstel and Nieuwe Doelenstraat fronts) and `feat/da-costakade-13-20261013`
+(1904 kopgebouw: gabled two-bay front with balconies, entrance section, mansard
+roof, POI card; 11.0k tris; PASS after a first-record baseline entry for a
+27% off-size inferred courtyard wall). **Held:** `fix/felix-meritis-20261011`
+fails on 12 floating openings and a z-fight regression, `big/ordinary-a2-20261013`
+(Jodenbreestraat 11) on 116 open loops, a 1,494 m² blank wall and 118 m² of
+z-fighting; both go to the GLB cleanup lane. Merge mechanics: shared catalogue
+files (`manualCatalogue.json`, `modelLods.json`, `manual-poi-data.json`,
+registry, manifests, bundles) are resolved by taking main and re-adding the
+branch's entries for the merged ids, then regenerating manifests and bundles;
+the helper lives in the integrator's scratch and should become
+`scripts/landmarks/merge-landmark-branch.ts` if a third lane needs it.
+
+
+## Five hand-built churches replace their procedural kits (2026-10-13)
+
+`feat/kit-only-churches-20261011` (killed mid-lane 2026-10-13, salvaged and
+merged by the integrator): Oosterkerk (16.8k tris), Mozes en Aaronkerk (7.7k),
+De Duif (7.3k), Obrechtkerk (43k) and Opstandingskerk (5.7k) as
+`scripts/landmarks/*-builder.ts` with specs, footprints and `church-kit.ts`
+helpers; `add-church-catalogue-entry.mjs`, `commons-fetch.mjs`,
+`crop-image.mjs` and `detached-parts.ts` tooling. Reviewed at review-sheet
+size against camera-matched panoramas: Oosterkerk and Mozes en Aaronkerk match
+closely, De Duif's Prinsengracht front matches with plain party-wall sides,
+Obrechtkerk's twin-tower front is plausible with inferred sides. `audit:glb`:
+Mozes en Aaronkerk PASS; the other four fail only window-rhythm against their
+photo specs, so they got first-record entries in
+`geometry-audit-baseline.json` (lower, never raise) and the cleanup lane owns
+the fixes. Merge resolution took main for the shared registry/catalogue/LOD
+files and re-added the five entries; the manifest and
+`signature-placement.bundle.js` were regenerated.
+
 
 ## Own ground: per-polder water, BGT widths per way, 202 more measured bridges (2026-10-13)
 

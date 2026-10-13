@@ -1,0 +1,46 @@
+{
+  "id": "mozes-en-aaronkerk",
+  "countedBy": "lane count from the photos (not blind), 2026-10-13; needs a blind recount",
+  "facades": [
+    {
+      "name": "south-east flank (Mr. Visserplein side)",
+      "bearing": 124,
+      "photo": "artifacts/landmark-lanes/mozes-en-aaronkerk/commons/Amsterdam_Mozes_en_A_ronkerk_side.jpg",
+      "depthBand": 4,
+      "rows": [
+        3
+      ],
+      "columns": 3,
+      "symmetric": true,
+      "gables": 0,
+      "heightM": [
+        0,
+        21
+      ],
+      "note": "three tall round-arched windows on the hall; crop to the hall (the tower block and the set-back back corner block are separate faces)",
+      "alongM": [
+        6.5,
+        40
+      ]
+    },
+    {
+      "name": "north-east back (Jodenbreestraat)",
+      "bearing": 34,
+      "photo": "artifacts/landmark-lanes/mozes-en-aaronkerk/commons/Amsterdam_Mozes_en_A_ronkerk_back.jpg",
+      "depthBand": 6,
+      "rows": [
+        2,
+        2,
+        2
+      ],
+      "columns": 2,
+      "symmetric": true,
+      "gables": 0,
+      "heightM": [
+        0,
+        22.5
+      ],
+      "note": "modern photo (2008): each brick corner block has a door at the foot and two windows above, either side of the stucco frontispiece (statue niche, not an opening) under one pediment. The RCE 1960s back photo shows since-demolished neighbours. Gable peaks counts silhouette peaks: the pediment stands in front of the taller hall wall and roof (photo: apex at about the hall cornice), so the silhouette has no peak; 0."
+    }
+  ]
+}

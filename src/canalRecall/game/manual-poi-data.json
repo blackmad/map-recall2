@@ -2483,30 +2483,43 @@
     ],
     "preferDescription": true
   },
-{
-  "modelId": "scheepvaartmuseum",
-  "landmarkId": "extract_landmarks_961954901",
-  "name": "Het Scheepvaartmuseum",
-  "description": "’s Lands Zeemagazijn was built in 1656 by Daniel Stalpaert on the new island of Kattenburg as the naval arsenal of the Amsterdam Admiralty: a square, four-winged block of pale stone round a courtyard, where rigging, sails, cannon and provisions for the fleet were stored, with a pedimented pavilion in the middle of each side. Since 1973 it has housed the national maritime museum, and in 2011 the courtyard got a glass roof. A full-size replica of the VOC ship Amsterdam lies at the quay outside.",
-  "funFact": "The pediment on the water side shows Neptune and the Admiralty arms; the doors and tall arched openings once let cannon and masts in from the quay, which is why the ground floor is raised and arched while the upper floors have plain sash windows.",
-  "sourceUrl": "https://nl.wikipedia.org/wiki/Het_Scheepvaartmuseum",
-  "additionalSources": [
-    "https://nl.wikipedia.org/wiki/%27s_Lands_Zeemagazijn",
-    "https://www.wikidata.org/wiki/Q1616123"
-  ],
-  "preferDescription": true
-},
-{
-  "modelId": "waag",
-  "landmarkId": "extract_landmarks_1875747488",
-  "name": "De Waag",
-  "description": "De Waag on the Nieuwmarkt began in 1488 as the Sint-Antoniespoort, a gate in Amsterdam's medieval city wall, with a round tower at each end of its long sides. When the city grew past the wall it became a weigh house in 1617, where cheese, metals and other goods were weighed, and its upper rooms housed the guilds of surgeons, smiths, painters and masons. Today it is a restaurant.",
-  "funFact": "The surgeons' guild held its public dissections under the dome of the Theatrum Anatomicum on the top floor; in 1632 Rembrandt painted \"The Anatomy Lesson of Dr. Nicolaes Tulp\" for that guild.",
-  "sourceUrl": "https://nl.wikipedia.org/wiki/Waag_(Amsterdam)",
-  "additionalSources": [
-    "https://www.wikidata.org/wiki/Q2466999",
-    "https://en.wikipedia.org/wiki/De_Waag"
-  ],
-  "preferDescription": true
-}
+  {
+    "modelId": "scheepvaartmuseum",
+    "landmarkId": "extract_landmarks_961954901",
+    "name": "Het Scheepvaartmuseum",
+    "description": "’s Lands Zeemagazijn was built in 1656 by Daniel Stalpaert on the new island of Kattenburg as the naval arsenal of the Amsterdam Admiralty: a square, four-winged block of pale stone round a courtyard, where rigging, sails, cannon and provisions for the fleet were stored, with a pedimented pavilion in the middle of each side. Since 1973 it has housed the national maritime museum, and in 2011 the courtyard got a glass roof. A full-size replica of the VOC ship Amsterdam lies at the quay outside.",
+    "funFact": "The pediment on the water side shows Neptune and the Admiralty arms; the doors and tall arched openings once let cannon and masts in from the quay, which is why the ground floor is raised and arched while the upper floors have plain sash windows.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Het_Scheepvaartmuseum",
+    "additionalSources": [
+      "https://nl.wikipedia.org/wiki/%27s_Lands_Zeemagazijn",
+      "https://www.wikidata.org/wiki/Q1616123"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "waag",
+    "landmarkId": "extract_landmarks_1875747488",
+    "name": "De Waag",
+    "description": "De Waag on the Nieuwmarkt began in 1488 as the Sint-Antoniespoort, a gate in Amsterdam's medieval city wall, with a round tower at each end of its long sides. When the city grew past the wall it became a weigh house in 1617, where cheese, metals and other goods were weighed, and its upper rooms housed the guilds of surgeons, smiths, painters and masons. Today it is a restaurant.",
+    "funFact": "The surgeons' guild held its public dissections under the dome of the Theatrum Anatomicum on the top floor; in 1632 Rembrandt painted \"The Anatomy Lesson of Dr. Nicolaes Tulp\" for that guild.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Waag_(Amsterdam)",
+    "additionalSources": [
+      "https://www.wikidata.org/wiki/Q2466999",
+      "https://en.wikipedia.org/wiki/De_Waag"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "da-costakade-13",
+    "landmarkId": "da-costakade-13",
+    "name": "Da Costakade 13",
+    "description": "Da Costakade 13 is the corner building that heads a curved row of houses on the Da Costakade in Oud-West. The national building register (BAG) dates it to 1904 and records it as a head building (kopgebouw) holding five homes; the 3D building survey counts five storeys. Its two street fronts are dark brown brick picked out with green glazed brick: a pointed gable over two bays of French windows with stone balconies, and beside it the entrance, a red double door under a round stone arch. The end wall facing the garden has no windows. It is not a listed monument.",
+    "funFact": "The building is the head of its block, so its garden side stands free: from the street you can see the blank end wall and the steep slate roof rising behind the gable.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012166570/?_format=json",
+    "additionalSources": [
+      "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012166570",
+      "https://api.data.amsterdam.nl/v1/monumenten/monumenten/?betreftBagPand.identificatie=0363100012166570&_format=json"
+    ],
+    "preferDescription": true
+  }
 ]
