@@ -2859,9 +2859,14 @@ class VectorBasemap {
         this._riderCoverCheckedAt = now;
         try {
           const point = this.map.project(rider);
-          const layers = (this.map.getStyle().layers || [])
-            .filter(layer => layer.type === 'fill-extrusion' && !layer.id.startsWith('active-landmark'))
-            .map(layer => layer.id);
+          // Extrusion layer ids are cached until the style changes: getStyle() serializes the whole style (0.05–0.16 ms per frame, perf lane 2026-10-14).
+          if (!this._riderCoverLayers) {
+            if (!this._riderCoverStyleHook) { this._riderCoverStyleHook = true; this.map.on('styledata', () => { this._riderCoverLayers = null; }); }
+            this._riderCoverLayers = (this.map.getStyle().layers || [])
+              .filter(layer => layer.type === 'fill-extrusion' && !layer.id.startsWith('active-landmark'))
+              .map(layer => layer.id);
+          }
+          const layers = this._riderCoverLayers;
           const features = layers.length ? this.map.queryRenderedFeatures([point.x, point.y], { layers }) : [];
           const cover = helpers.coveringBuilding(features, rider);
           coveredNow = !!cover;
