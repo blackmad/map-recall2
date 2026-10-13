@@ -7,10 +7,11 @@ import { deflateSync, gunzipSync, inflateSync } from 'node:zlib';
 import { readGeoTiff, undoFloatPredictor } from './geotiff';
 import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extendTile, readGroundTile, upsampleTile, fitLocalToRd, GroundField, NODATA, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
 import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose, type Vec2 } from './surface';
-import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, reliefGrid, ribbon, type MeshArrays } from './drape';
+import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, reliefGrid, ribbon, type MeshArrays } from './drape';
+import { bandCoverage, DE_CLERCQSTRAAT } from './roadRegressions';
 import { crossSection, parseMetres, areaKind } from './osmGround';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
-import { buildStreets, prepareWays, routeRibbon, LIFT } from './streets';
+import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, LIFT } from './streets';
 import { buildWaterMask, maskDistance, quayWallMesh, waterSurfaceMesh, waterZAt } from './water';
 import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableFrame, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
@@ -386,6 +387,72 @@ test('raised sidewalks stop at a side street on their side only; bands drape ont
   assert.ok(Math.max(...faces(route).map(f => f.c[2])) > 1.2, 'route ribbon rides over the hump');
 });
 
+test('junctions: one fill from the incoming cross-sections; lanes, paint and paths stop at its edge', () => {
+  const flat = () => 0;
+  const ll = (p: Vec2): [number, number] => p as [number, number];
+  const ways = prepareWays([
+    { id: 1, tags: { highway: 'tertiary', 'cycleway:both': 'lane', sidewalk: 'both' }, g: [[-60, 0], [0, 0], [60, 0]] },
+    { id: 2, tags: { highway: 'residential', sidewalk: 'both' }, g: [[0, 0], [0, 60]] },
+    { id: 3, tags: { highway: 'residential', sidewalk: 'both' }, g: [[0, -60], [0, 0]] },
+    { id: 4, tags: { highway: 'cycleway' }, g: [[40, 40], [0, 0]] }, // a cycle path ending at the junction node
+  ], p => ll(p as Vec2));
+  const s = buildStreets(ways, flat);
+  assert.equal(s.stats.junctions, 1);
+  assert.equal(s.stats.corners, 4, 'four kerb corners');
+  const inside = (m: MeshArrays, r: number) => faces(m).filter(f => Math.abs(f.c[0]) < r && Math.abs(f.c[1]) < r);
+  // The junction box: tertiary road half (3 + 1.6 lanes) one way, residential half 2.6 the other.
+  assert.equal(inside(s.cycle, 2.4).length, 0, 'no red in the junction: lanes and the cycle path end at its edge');
+  assert.equal(inside(s.paint, 2.4).length, 0, 'no paint across the junction');
+  assert.equal(inside(s.paving, 4.4).length, 0, 'sidewalks stop at the kerb corners');
+  assert.ok(inside(s.asphalt, 2).length > 0, 'the junction is filled with the main road\'s asphalt');
+  // Corner patches at kerb height join the two sidewalks at each corner.
+  const corner = faces(s.paving).filter(f => f.c[0] > 2.6 && f.c[0] < 4.4 && f.c[1] > 4.6 && f.c[1] < 6.4);
+  assert.ok(corner.length > 0 && corner.every(f => Math.abs(f.c[2] - (LIFT.raisedBase + 0.11)) < 1e-6), 'corner patch at kerb height');
+  // A one-way fietsstraat has no centre line.
+  assert.ok(!crossSection({ highway: 'residential', lanes: '2', cyclestreet: 'yes' })!.paint.some(p => p.offset === 0));
+  assert.ok(crossSection({ highway: 'residential', lanes: '2' })!.paint.some(p => p.offset === 0));
+});
+
+test('prior sidewalks are dropped where another mapped way lies (split carriageways, separate cycle paths)', () => {
+  const ll = (p: Vec2): [number, number] => p as [number, number];
+  const ways = resolvePriorSidewalks(prepareWays([
+    { id: 1, tags: { highway: 'tertiary', oneway: 'yes' }, g: [[-50, 3.5], [50, 3.5]] },
+    { id: 2, tags: { highway: 'tertiary', oneway: 'yes' }, g: [[50, -3.5], [-50, -3.5]] },
+    { id: 3, tags: { highway: 'tertiary', oneway: 'yes', sidewalk: 'both' }, g: [[-50, 40], [50, 40]] },
+    { id: 4, tags: { highway: 'tertiary', oneway: 'yes', sidewalk: 'both' }, g: [[50, 33], [-50, 33]] },
+  ], p => ll(p as Vec2)));
+  const sides = (id: number) => ways.find(w => w.id === id)!.section.bands.filter(b => b.kind === 'sidewalk').map(b => Math.sign(b.offset));
+  assert.deepEqual(sides(1), [1], 'way 1 keeps only its outer (left, north) sidewalk');
+  assert.deepEqual(sides(2), [1], 'way 2 (westbound) keeps its left (south) sidewalk');
+  assert.deepEqual(sides(3).sort(), [-1, 1], 'tagged sidewalks stay');
+});
+
+test('street vocabulary: tram rails, cycle-path edge lines, kerb line, Amsterdammertjes on canal-side pavements', () => {
+  const flat = () => 0;
+  const ll = (p: Vec2): [number, number] => p as [number, number];
+  const ways = prepareWays([
+    { id: 1, tags: { highway: 'tertiary', embedded_rails: 'tram', sidewalk: 'both' }, g: [[0, 0], [100, 0]] },
+    { id: 2, tags: { highway: 'cycleway', width: '2.5' }, g: [[0, 30], [100, 30]] },
+  ], p => ll(p as Vec2));
+  // Water north of y = 6 (the left pavement's kerb at y ≈ 3 is canal-side; the right one is not).
+  const s = buildStreets(ways, flat, { canalSide: (_x, y) => y > 0 && y < 8 });
+  const rails = faces(s.tram);
+  const ys = [...new Set(rails.map(f => Math.round(f.c[1] * 10) / 10))].sort((a, b) => a - b);
+  assert.deepEqual(ys, [-2.2, -0.8, 0.8, 2.2], 'two tracks 3 m apart, rails at standard gauge (1.435 m)');
+  assert.ok(faces(s.paint).some(f => Math.abs(f.c[1] - (30 + 1.1)) < 0.05) && faces(s.paint).some(f => Math.abs(f.c[1] - (30 - 1.1)) < 0.05), 'white edge lines on the cycle path');
+  const kerbTop = faces(s.kerb).filter(f => Math.abs(f.n[2]) > 0.9 * Math.hypot(...f.n));
+  assert.ok(kerbTop.some(f => f.c[1] > 0) && kerbTop.some(f => f.c[1] < 0), 'kerb line on both pavements');
+  const posts = faces(s.bollard);
+  assert.ok(posts.length > 0 && posts.every(f => f.c[1] > 0), 'bollards only on the canal-side pavement');
+  assert.ok(Math.max(...posts.map(f => f.c[2])) > 0.8, 'posts stand ~0.8 m');
+});
+
+test('BGT widths read inside a junction are capped by class and lanes', () => {
+  assert.equal(crossSection({ highway: 'tertiary', lanes: '1', oneway: 'yes' }, [213, 0, 0])!.bands[0].width, 5.25);
+  assert.equal(crossSection({ highway: 'cycleway', oneway: 'yes' }, [142, 0, 0])!.bands[0].width, 4.5);
+  assert.equal(crossSection({ highway: 'cycleway', width: '1.8' }, [40, 0, 0])!.source.width, 'tag', 'a tagged path width wins over a BGT reading 1.8× wider');
+});
+
 test('routeAhead leaves along the facing direction and prefers the named street', () => {
   const ways = prepareWays([
     { id: 1, tags: { highway: 'residential', name: 'A' }, g: [[0, 0], [50, 0], [100, 0]] },
@@ -598,6 +665,36 @@ for (const [id, lng, lat] of [['BRU0166', 4.87445, 52.37286], ['BRU0044', 4.8875
     assert.ok(far.stats.triangles < cell.stats.triangles * 0.6, 'LOD 1 lighter');
   });
 }
+
+test('regression (streamed cells): De Clercqstraat Bilderdijkstraat → Kostverlorenvaart reads as street at both LODs', { skip: !haveCells }, async () => {
+  const store = fsStore();
+  await store.init();
+  const [x, y] = storeToLocal(DE_CLERCQSTRAAT.at[0], DE_CLERCQSTRAAT.at[1]), key = store.cellAt(x, y);
+  const input = await store.cellInput(key, 0), ids = new Set(DE_CLERCQSTRAAT.ways), seen = new Set<number>();
+  const ways = resolvePriorSidewalks([input.osm, ...input.osmAround].flatMap(e => (e ? prepareWays(e.ways, input.project) : [])).filter(w => !seen.has(w.id) && seen.add(w.id))).filter(w => ids.has(w.id));
+  assert.equal(ways.length, DE_CLERCQSTRAAT.ways.length);
+  // The block sits on the seam with the next cell east: build both, as the game does.
+  const keys = [key, ...GroundStore.neighbours(key).filter(k => k !== key && store.covers(k) && store.cellRect(k)[0] > store.cellRect(key)[0] && store.cellRect(k)[1] === store.cellRect(key)[1])];
+  for (const lod of [0, 1] as const) {
+    const cells = [];
+    for (const k of keys) cells.push(buildCell(await store.cellInput(k, lod)));
+    const r = bandCoverage(cells, ways);
+    assert.ok(r.share >= DE_CLERCQSTRAAT.minShare, `LOD ${lod}: ${(100 * r.share).toFixed(1)} % street, misses ${JSON.stringify(r.misses.slice(0, 5))}`);
+  }
+});
+
+test('gridHeight is the relief grid\'s own surface (its vertices and its two triangles per quad)', () => {
+  const h = (x: number, y: number) => Math.sin(x * 0.3) * 2 + Math.cos(y * 0.2) * 1.5 + x * y * 0.001;
+  const g = gridHeight(h, 5);
+  assert.ok(Math.abs(g(10, 15) - h(10, 15)) < 1e-12 && Math.abs(g(-35, 20) - h(-35, 20)) < 1e-12, 'exact at grid vertices');
+  const grid = reliefGrid(0, 0, 10, 10, 5, h);
+  // Centroid of every grid triangle sits on gridHeight.
+  for (let t = 0; t < grid.indices.length; t += 3) {
+    const [a, b, c] = [grid.indices[t] * 3, grid.indices[t + 1] * 3, grid.indices[t + 2] * 3], p = grid.positions;
+    const cx = (p[a] + p[b] + p[c]) / 3, cy = (p[a + 1] + p[b + 1] + p[c + 1]) / 3, cz = (p[a + 2] + p[b + 2] + p[c + 2]) / 3;
+    assert.ok(Math.abs(g(cx, cy) - cz) < 1e-9, `triangle ${t / 3}`);
+  }
+});
 
 // ------------------------------------------------------------- per-polder water levels
 test('water levels: each polygon sits at its own level, each shore wall measures from its own', () => {

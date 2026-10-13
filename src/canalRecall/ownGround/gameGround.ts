@@ -24,6 +24,7 @@ import { footprintBase } from './placement.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
+import { STREET_GROUND } from '../look/palette.js';
 
 export interface GroundHost {
   /** Ask for another frame. */
@@ -53,10 +54,10 @@ const RESIDENCY_STEP_M = 60;
 /** Which mask channel cuts a layer: R = water (land, parks), G = water minus decks (street bands). */
 const CUT: Partial<Record<GroundLayer, 'r' | 'g'>> = {
   land: 'r', park: 'r', wood: 'r', square: 'r', parking: 'r',
-  asphalt: 'g', klinker: 'g', cycle: 'g', paving: 'g', gravel: 'g', kerb: 'g', paint: 'g',
+  asphalt: 'g', klinker: 'g', cycle: 'g', paving: 'g', gravel: 'g', kerb: 'g', paint: 'g', tram: 'g', bollard: 'g',
 };
 /** Polygon-offset rank of coplanar ground layers (later wins), as the prototype. */
-const OFFSET: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4 };
+const OFFSET: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
 
 export class OwnGround {
   readonly root: any;
@@ -91,7 +92,9 @@ export class OwnGround {
   private destination: Vec2 | null = null;
   private overlayRevision = -1;
   private overlayDirty = true;
-  readonly stats = { cellsBuilt: 0, buildMs: [] as number[], installMs: [] as number[], errors: [] as string[], lastBuild: null as null | Record<string, unknown> };
+  /** When each pending build was asked for (cell load latency: request → installed). */
+  private readonly requestedAt = new Map<string, number>();
+  readonly stats = { cellsBuilt: 0, buildMs: [] as number[], installMs: [] as number[], latencyMs: [] as number[], errors: [] as string[], lastBuild: null as null | Record<string, unknown> };
 
   constructor(THREE: any, frame: any, host: GroundHost, options: OwnGroundOptions) {
     this.THREE = THREE;
@@ -223,6 +226,7 @@ export class OwnGround {
       const have = this.resident.get(w.key)?.lod, asked = this.pending.get(w.key);
       if (have === w.lod || asked === w.lod) continue;
       this.pending.set(w.key, w.lod);
+      this.requestedAt.set(`${w.key}:${w.lod}`, performance.now());
       this.worker?.postMessage({ type: 'build', key: w.key, lod: w.lod, gen: this.gen });
     }
     // Relief far behind is dropped on both sides (decks keep their placed heights).
@@ -293,13 +297,16 @@ export class OwnGround {
     const std = (o: Record<string, unknown>) => new THREE.MeshStandardMaterial({ roughness: 0.95, metalness: 0, ...o });
     const M: Record<string, any> = {
       land: std({ map: pavers([150, 142, 130], '#6f675d', 3, 0.3, 0.3) }),
-      klinker: std({ map: pavers([128, 82, 66], '#5a463d', 2, 0.2, 0.1), roughness: 0.9 }),
-      asphalt: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [72, 74, 78], 18)) }),
-      cycle: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [146, 70, 62], 18)), roughness: 0.85 }),
-      paving: std({ map: pavers([168, 160, 148], '#7d756a', 3, 0.3, 0.3) }),
+      klinker: std({ map: pavers([...STREET_GROUND.klinker.base], STREET_GROUND.klinker.joint, 2, 0.2, 0.1), roughness: 0.9 }),
+      asphalt: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [...STREET_GROUND.asphalt.base], 18)) }),
+      cycle: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [...STREET_GROUND.cycle.base], 18)), roughness: 0.85 }),
+      // Pavements: grey-rose klinkers in stretcher bond (Amsterdam's gebakken klinker trottoir).
+      paving: std({ map: pavers([...STREET_GROUND.pavement.base], STREET_GROUND.pavement.joint, 2.1, 0.21, 0.105) }),
       gravel: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [170, 156, 128], 30, 2)) }),
-      kerb: std({ color: '#9b958b', roughness: 0.9 }),
-      paint: std({ color: '#f2f0ea', roughness: 0.6 }),
+      kerb: std({ color: STREET_GROUND.kerb, roughness: 0.9 }),
+      paint: std({ color: STREET_GROUND.paint, roughness: 0.6 }),
+      tram: std({ color: STREET_GROUND.rail, roughness: 0.45, metalness: 0.6 }),
+      bollard: std({ color: STREET_GROUND.bollard, roughness: 0.7 }),
       park: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, [92, 122, 66], 30, 3)), roughness: 1 }),
       wood: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, [70, 96, 52], 34, 3)), roughness: 1 }),
       square: std({ map: pavers([176, 166, 150], '#857c70', 4, 0.6, 0.6) }),
@@ -307,7 +314,8 @@ export class OwnGround {
       quay: std({ vertexColors: true }),
       deckBody: std({ vertexColors: true, roughness: 0.85 }),
       deckTop: std({ vertexColors: true, roughness: 0.85 }),
-      water: std({ color: '#304b4d', roughness: 0.1, envMapIntensity: 2.2 }),
+      // Matte water: the 0.1 / 2.2 pair put a blown-out sun disc on every canal (user 2026-10-13 "do not need this reflection").
+      water: std({ color: '#304b4d', roughness: 0.65, envMapIntensity: 0.5 }),
     };
     for (const [layer, k] of Object.entries(OFFSET)) Object.assign(M[layer], { polygonOffset: true, polygonOffsetFactor: -k!, polygonOffsetUnits: -2 * k! });
     // Overlays: the game's own route / active-street colours (vector-map.js), draped.
@@ -393,6 +401,8 @@ export class OwnGround {
     this.root.add(group);
     this.resident.set(cell.key, { key: cell.key, lod: cell.lod, group, materials, textures, triangles, bytes, maskInfo: cell.mask ? { x0: cell.mask.x0, y0: cell.mask.y0, res: cell.mask.res } : null });
     this.stats.installMs.push(performance.now() - t0);
+    const asked = this.requestedAt.get(`${cell.key}:${cell.lod}`);
+    if (asked !== undefined) { this.stats.latencyMs.push(performance.now() - asked); this.requestedAt.delete(`${cell.key}:${cell.lod}`); }
     this.frame.invalidateShadows?.();
     this.host.repaint();
   }
@@ -609,7 +619,8 @@ export class OwnGround {
       enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), basemapHidden: this.basemapHidden,
       cells, pending: Object.fromEntries(this.pending), queued: this.installQueue.length, triangles, geometryMB: +(bytes / 1048576).toFixed(1),
       reliefTiles: this.store.reliefTileCount, decks: this.ready ? this.store.surface.decks.length : 0, surfaceRevision: this.surfaceRevision,
-      built: this.stats.cellsBuilt, buildMsMedian: median(this.stats.buildMs), installMsMedian: median(this.stats.installMs), lastBuild: this.stats.lastBuild,
+      built: this.stats.cellsBuilt, buildMsMedian: median(this.stats.buildMs), installMsMedian: median(this.stats.installMs),
+      latencyMsMedian: median(this.stats.latencyMs), latencyMsMax: this.stats.latencyMs.length ? Math.round(Math.max(...this.stats.latencyMs)) : null, lastBuild: this.stats.lastBuild,
       downloadedKB: Object.fromEntries(Object.entries(this.store.loadedBytes).map(([k, v]) => [k, Math.round(v / 1024)])),
       overlays: Object.fromEntries(Object.entries(this.overlays).map(([k, m]) => [k, m ? m.geometry.index.count / 3 : 0])),
       errors: this.stats.errors.slice(-5),

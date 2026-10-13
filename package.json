@@ -475,7 +475,8 @@
     "check:landmark-inventory": "node --import tsx scripts/landmarks/check-landmark-inventory.ts",
     "build:canal-sculptures": "node scripts/sculptures/build-bundle.mjs",
     "test:sculptures": "node --import tsx --test src/canalRecall/sculptures/*.test.ts",
-    "check:signature-fallback": "node scripts/check-signature-fallback-refresh.mjs"
+    "check:signature-fallback": "node scripts/check-signature-fallback-refresh.mjs",
+    "check:own-ground-belt": "node --import tsx scripts/own-ground/audit-belt.ts --probe"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

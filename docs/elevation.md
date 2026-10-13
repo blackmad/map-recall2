@@ -129,9 +129,17 @@ makes bridges legible.
   deck (they are drawn flat at z = 0); on flat fallback decks they stay visible.
 - Parts of the boat or a houseboat below street level are not stencil-clipped,
   so at a steep angle near the near bank they can show through the quay.
-- Movable bridges (118) and the 571 other unmeasured footprints are flat.
-  Movable decks were measurable (39, 30 humped) but are left flat so a raised
-  deck is never shown as the riding surface.
+- Movable bridges (110 footprints) stay flat as a riding surface (39 were
+  measurable, 30 humped, but a raised deck must never be ridden); since
+  2026-10-13 they carry a shared counterweight-frame unit, placed by a
+  heuristic at the footprint-start end because `bridge:movable` and `colour`
+  are not in the extract (the Magere Brug's two units read as one gantry).
+  Every measured deck has a deck top out to the railings, abutments where
+  land meets water, post-and-rail railings (always Amsterdam green) and
+  piers where the water span exceeds 12 m; flat footprints get railings on
+  water edges along the crossing. LOD 1 cells have no railings. Pier style
+  follows the data's bridge family (the Blauwbrug, typed steel-deck, gets
+  stone piers with a flat soffit).
 - Arch geometry, parapets and fascia colours are procedural interpretations of
   the municipal material, not surveyed shapes.
 
