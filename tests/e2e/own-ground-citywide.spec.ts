@@ -24,7 +24,8 @@ async function boot(page: Page): Promise<string[]> {
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(String(e)));
   await page.addInitScript(() => { (window as any).__canalRecallOwnGround = true; });
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
+  // Street chunks are retired by default (2026-10-13); the per-pand relief check below needs them.
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: '?streetChunks=1' });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
   return errors;
 }
