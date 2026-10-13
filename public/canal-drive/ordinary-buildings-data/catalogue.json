@@ -37600,7 +37600,8 @@
       "height": 21.86,
       "modelUrl": "./models/ordinary-buildings/recipe-large-marnixstraat-248-185422.glb",
       "suppress": [
-        "NL.IMBAG.Pand.0363100012185422"
+        "NL.IMBAG.Pand.0363100012185422",
+        "NL.IMBAG.Pand.0363100012245310"
       ],
       "source": "building-recipes-large",
       "recipe": {
