@@ -368,33 +368,33 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   removing anything; `--remove-merged-clean` and `--archive-dirty` apply the
   2026-10-13 rules (see HISTORY). Create lane worktrees with
   `scripts/worktrees/new.sh <branch>` so `node_modules` and `.cache` are
-  symlinked. After the 2026-10-13 sweep: 15 worktrees remain (11 unmerged
-  lanes to review, 4 kept), 164 local branches (159 unmerged, mostly old
-  lanes; triage them next), disk 148 GB free. Unmerged lanes awaiting
-  integrator review: (`feat/kit-only-churches-20261011` merged 2026-10-13),
-  `feat/da-costakade-13-20261013`, `big/ordinary-a2-20261013` (Jodenbreestraat
-  11), `qa/detached-openings-sweep-20261013` (+ Haparandaweg 8-338 rails),
-  `fix/europe-window-grid-20261011`, `fix/felix-meritis-20261011`,
+  symlinked. After the 2026-10-13 sweep: 18 worktrees (3 running lanes, 4
+  kept, 11 to review or retire), 164 local branches (159 unmerged, mostly
+  old lanes; triage them next), disk ~146 GB free. Merged 2026-10-13 by the
+  integrator after review-sheet checks: `feat/kit-only-churches-20261011`,
+  `fix/europe-window-grid-20261011`, `feat/da-costakade-13-20261013`,
+  `gameplay/riding-prompts-20261013`, `ground/data-20261013`. Still open:
+  `fix/felix-meritis-20261011` (audit FAIL: 12 floating openings, zfight
+  regression 0.9 m² — cleanup lane), `big/ordinary-a2-20261013`
+  (Jodenbreestraat 11 WIP: 116 open loops, 1,494 m² blank NW wall, 118 m²
+  z-fight — not installable as is), `qa/detached-openings-sweep-20261013`
+  (handed to the cleanup lane to merge or cherry-pick),
   `big/ordinary-b2-20261013` and `landmarks/kit-churches2-20261013`
   (footprints only), `rework/booking-hq-20261011` (held),
-  `exp/photo-colors-20261011`, `render/drop-maplibre-step1-20261010`; plus
-  five `wip/recovery-*-20261013` branches with author iterations recovered
-  from the 2026-10-08 clones (nieuwespiegel555, kerk136, prinsen211/215), and
-  `wip/recovery-landmark-integration-20261009` holding **five landmark models
-  that never reached main**: Academie voor Theater en Dans, Holocaust
-  Namenmonument, Max Euwe Centrum, Ruysdael Petrus-Pauluskerk, Voormalige
-  Schouwburgpoort (builders, specs, catalogue entries). Status 2026-10-13:
-  branch merged with main (`bab86d13`), GLBs re-exported from the builders
-  (the clone's sparse checkout had dropped the binaries), Ruysdael
-  Petrus-Pauluskerk dropped as a duplicate of `petrus-en-paulus-kerk`.
-  `audit:glb`: Voormalige Schouwburgpoort PASS (16.6k tris) — review its
-  sheet and install; Academie voor Theater en Dans FAIL (666 open loops, 19
-  detached parts, 979 m² blank SE wall), Holocaust Namenmonument FAIL (2
-  openings off the wall), Max Euwe Centrum FAIL (see-through 4/151, 80
-  floating openings) — hand to the GLB cleanup lane. Review sheets for these
-  and for the kit-only churches (Oosterkerk, Mozes en Aaronkerk, De Duif,
-  Obrechtkerk WIP; all four PASS with warnings) are in
-  `map-recall2-worktrees/integrator/artifacts/review-20261013/`.
+  `exp/photo-colors-20261011`, `render/drop-maplibre-step1-20261010`,
+  `fix/waag-roof-20261013` (another session's worktree, not reviewed); five
+  `wip/recovery-*-20261013` branches with author iterations recovered from
+  the 2026-10-08 clones (nieuwespiegel555, kerk136, prinsen211/215); and
+  `wip/recovery-landmark-integration-20261009` (merged with main at
+  `bab86d13`; GLBs re-exported; Ruysdael Petrus-Pauluskerk dropped as a
+  duplicate of `petrus-en-paulus-kerk`): Voormalige Schouwburgpoort PASS
+  (16.6k tris; no BAG pand so `review:sheet` cannot frame it — look at it in
+  the gallery before installing), Academie voor Theater en Dans, Holocaust
+  Namenmonument and Max Euwe Centrum FAIL hard gates (cleanup lane has the
+  list). Review sheets are in
+  `map-recall2-worktrees/integrator/artifacts/review-20261013/`. Note for
+  `audit:glb --write-baseline`: pass `--write` or more than one `--id`, a
+  single-id run never flushes the baseline file.
 - **Perf findings (2026-10-09 baseline, `tests/e2e/ride-perf.spec.ts`,
   iphone 4x throttle):** steady ride holds 16.7 ms median, p99 33 ms. Landmark
   layer costs only 0.1–0.8 ms/frame even with 250 models resident. The game
