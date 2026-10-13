@@ -31087,10 +31087,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165098",
       "name": "Engelsesteeg 9 / Smaksteeg 24, Amsterdam: Renaissance Amsterdam City Centre Hotel block (Kondor Wessels) with canal-house fronts on the street sides",
-      "hash": "5b0ab757a93bb271ee0cc86ee8ea61b19e449110cff22ba3dca902af9d1cfb26",
-      "sha256": "5b0ab757a93bb271ee0cc86ee8ea61b19e449110cff22ba3dca902af9d1cfb26",
-      "bytes": 562004,
-      "triangles": 6760,
+      "hash": "636d02ba58b342f7932918e7ac6440497297adb4343d6c9b55dcfb74e407376f",
+      "sha256": "636d02ba58b342f7932918e7ac6440497297adb4343d6c9b55dcfb74e407376f",
+      "bytes": 631384,
+      "triangles": 7624,
       "materials": 13,
       "textures": 0,
       "scale": 1,
@@ -31602,7 +31602,7 @@
           "parts-attached:pass"
         ],
         "wallGroups": [
-          "brick-bay-grid 4st 9b",
+          "brick-bay-grid 5st 9b",
           "brick-bay-grid 6st 8b",
           "brick-bay-grid 3st 5b",
           "brick-bay-grid 3st 4b"
@@ -31619,7 +31619,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165098",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:42:01.531Z"
+      "updatedAt": "2026-10-13T22:21:52.646Z"
     },
     {
       "id": "ordinary-0363100012180196",
