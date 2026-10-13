@@ -1,3 +1,5 @@
+import {slotExtras} from '../../src/canalRecall/landmarks/materialSlots';
+import {snapDetachedParts,snapOpenings} from '../../src/canalRecall/landmarks/snapOpenings';
 import {buildWaag} from './waag-builder';
 import {buildScheepvaartmuseum} from './scheepvaartmuseum-builder';
 import {buildOdessa} from './odessa-builder';
@@ -315,7 +317,38 @@ function hospital(id:string){let s=hospitals.sites.find(s=>s.id===id)!;let spec=
  }else{ // Oosterpark entrance: tall glazed hall framed by pale concrete columns.
  let p=coord([4.91615,52.35875]);sign('OLVG',p.x+18,9,p.y+6,.25,'blue');let angle=-24*Math.PI/180;box(p.x,0,p.y,33,12,8,'glass',angle);for(let u=-15;u<=15;u+=5)box(p.x+u*Math.cos(angle),0,p.y-u*Math.sin(angle),.9,13,8.5,'stone',angle);box(p.x,12.7,p.y,34,.6,9,'stone',angle);}
 }
+// Landmarks whose window/door assemblies are snapped onto their walls before export (src/canalRecall/landmarks/snapOpenings.ts): builder-time,
+// on the builder's own geometry. Batch 1 of the GLB cleanup pass (2026-10-13); extend as further batches are audited.
+// Windows placed across a wall step/corner of the survey outline are dropped for these (see snapOpenings dropOverhang); listed so the removals are deliberate.
+const DROP_OVERHANG_IDS=new Map<string,number>([['fire-station-willem',4],['mountain-network',14],['valley',16],['rai-amsterdam',13],['beta-boulders',5]]); // id -> largest assembly (m) that may be dropped
+const DROP_MIN_OUTSIDE=new Map<string,number>([['beta-boulders',.25],['mountain-network',.15],['rai-amsterdam',.3]]); // default .35
+const SNAP_OPENING_IDS=new Set(['de-bijenkorf','oude-kerk','beta-boulders','fire-station-willem','mountain-network','centraal-station','rai-amsterdam','westerkerk','valley','lab111','vredeskerk','scheepvaarthuis','dominicuskerk','magna-plaza','madame-tussauds']);
+function snapPartOpenings(id:string){
+ if(!SNAP_OPENING_IDS.has(id))return;
+ const positions:number[]=[],indices:number[]=[],triMaterial:number[]=[],names:string[]=[],spans:{g:T.BufferGeometry;from:number}[]=[];
+ for(const part of parts){
+  if(part.g.index)part.g=part.g.toNonIndexed();
+  const attr=part.g.getAttribute('position'),name=part.hex?'decal':part.c;let m=names.indexOf(name);if(m<0){m=names.length;names.push(name);}
+  const base=positions.length/3;spans.push({g:part.g,from:positions.length});
+  for(let i=0;i<attr.count*3;i++)positions.push(attr.array[i]);
+  for(let t=0;t<attr.count/3;t++){indices.push(base+t*3,base+t*3+1,base+t*3+2);triMaterial.push(m);}
+ }
+ const soup={positions,indices,triMaterial,materials:names.map(name=>({name,rgb:[128,128,128] as [number,number,number]}))};
+ const detached=process.env.SNAP_NO_DETACHED?{moved:0,skipped:0}:snapDetachedParts(soup,{maxGap:id==='rai-amsterdam'?1.5:undefined}),report=snapOpenings(soup,{clearMargin:id==='dominicuskerk'?.08:undefined,dropOverhang:DROP_OVERHANG_IDS.has(id)?{minOutside:DROP_MIN_OUTSIDE.get(id)??.35,maxExtent:DROP_OVERHANG_IDS.get(id)!}:undefined});
+ const dropped=new Set(report.dropped);
+ // Zero-area slivers (collinear extrusion points, collapsed fans) add nothing to the render and fail the shell audit as degenerate.
+ let slivers=0;
+ for(let t=0;t<indices.length/3;t++){const a=indices[t*3]*3,b=indices[t*3+1]*3,c=indices[t*3+2]*3,ux=positions[b]-positions[a],uy=positions[b+1]-positions[a+1],uz=positions[b+2]-positions[a+2],vx=positions[c]-positions[a],vy=positions[c+1]-positions[a+1],vz=positions[c+2]-positions[a+2];
+  const cx=uy*vz-uz*vy,cy=uz*vx-ux*vz,cz=ux*vy-uy*vx;if(Math.hypot(cx,cy,cz)<2e-6&&!dropped.has(t)){dropped.add(t);slivers++;}}
+ for(const part of parts){const sp=spans.find(x=>x.g===part.g)!;const attr=part.g.getAttribute('position');for(let i=0;i<attr.count*3;i++)(attr.array as Float32Array)[i]=positions[sp.from+i];attr.needsUpdate=true;
+  if(dropped.size){const first=sp.from/9,keep:number[]=[];for(let t=0;t<attr.count/3;t++)if(!dropped.has(first+t))keep.push(t);
+   if(keep.length<attr.count/3){const ng=new T.BufferGeometry();for(const name of Object.keys(part.g.attributes)){const a=part.g.getAttribute(name),arr:number[]=[];for(const t of keep)for(let k=0;k<3;k++)for(let c=0;c<a.itemSize;c++)arr.push(a.array[(t*3+k)*a.itemSize+c]);ng.setAttribute(name,new T.Float32BufferAttribute(arr,a.itemSize));}part.g=ng;}}
+  part.g.computeBoundingBox();part.g.computeBoundingSphere();}
+ if(report.droppedAt.length)console.log(id,'dropped straddling openings at',JSON.stringify(report.droppedAt.map(c=>c.map(v=>+v.toFixed(1)))));
+ console.log(id,'snapOpenings',JSON.stringify({detached,...report,dropped:report.dropped.length,slivers,droppedAt:undefined}));
+}
 async function save(id:string){
+ snapPartOpenings(id);
  const spec=MANUAL_LANDMARKS.find(s=>s.id===id)!;
  for(const [name,hex]of Object.entries(spec.materialOverrides??{})){
   if(!Object.hasOwn(palette,name)||!/^#[a-f0-9]{6}$/i.test(hex))throw Error(`Invalid ${id} material override: ${name}`);
@@ -343,7 +376,7 @@ async function save(id:string){
   const positions=Float32Array.from(group.geometries.flatMap(g=>Array.from(g.getAttribute('position').array)));
   const normals=Float32Array.from(group.geometries.flatMap(g=>Array.from(g.getAttribute('normal').array)));
   for(const value of positions)all.push(value);
-  const rgb=new T.Color(group.hex),material=doc.createMaterial(name).setBaseColorFactor([rgb.r,rgb.g,rgb.b,1]).setMetallicFactor(0).setRoughnessFactor(.9).setDoubleSided(true);
+  const rgb=new T.Color(group.hex),material=doc.createMaterial(name).setBaseColorFactor([rgb.r,rgb.g,rgb.b,1]).setMetallicFactor(0).setRoughnessFactor(.9).setDoubleSided(true).setExtras(slotExtras(name,group.hex)??{});
   if(group.unlit)material.setExtension('KHR_materials_unlit',unlitExtension!.createUnlit());
   if(id==='conservatorium'&&!name.startsWith('decal-')&&group.colour==='glass')material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,.28]).setAlphaMode('BLEND');
   const opacity=(spec as {materialOpacity?:Record<string,number>}).materialOpacity?.[group.colour];

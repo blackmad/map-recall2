@@ -36,7 +36,10 @@ export function buildNeighbourhoodVenueLandmark(id:string,_w:number,_d:number,b:
   body(rings,17.6);plane(rings,17.63);
   const upper=region(-13,-5,-14,14.9);body([upper],20.55);plane([upper],20.58);
   // Active entrance is on Korte Leidsedwarsstraat: official venue says canal entrance closed.
-  const f=(x:number)=>14.63-x*.047;for(let x=-10;x<6;x+=3.25)for(const y of [4.1,7.3,10.5,13.7])sash(x,y,f(x)+.08,2.0,2.15);
+  const f=(x:number)=>14.63-x*.047;
+  // Upper sashes follow the measured brick face (z 14.50 - 0.0453x, 13 cm behind f) and its skew; axis-aligned at f+.08 they
+  // stood 13-21 cm off it with the far end hanging in the air (geometry audit 2026-10-13).
+  const wf=(x:number)=>14.50-x*.0453;for(let x=-10;x<6;x+=3.25)for(const y of [4.1,7.3,10.5,13.7])sash(x,y,wf(x)+.08,2.0,2.15,Math.atan(.0453));
   box(-2.1,0,f(-2.1)+.1,16.5,3.5,.18,'white');box(-5.7,.1,f(-5.7)+.2,3.8,3.15,.13,'glass');box(-5.7,.1,f(-5.7)+.28,.09,3.15,.08,'frame');box(-2.1,3.4,f(-2.1)+.48,16.8,.3,1.0,'stone');box(-2.1,3.36,f(-2.1)+1.02,16.8,.055,.065,'pink');sign('CINECENTER',-2.1,3.91,f(-2)+.24,.23,'white');
   for(const x of [-.4,3.4]){box(x,.65,f(x)+.22,2.3,1.8,.12,'dark');box(x,.79,f(x)+.31,1.94,1.5,.045,'gold');}
   // Canal elevation: projecting piers, wide square sashes, shallow glass balconies and pink neon fascia.

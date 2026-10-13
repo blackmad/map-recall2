@@ -96,11 +96,13 @@ export function buildCanalStageLandmark(id: string, _width: number, _depth: numb
     const service = region(-19.7,-17.15,-43.5,-22.7); body([service],3.25); plane([service],3.29);
     const end = region(-19.6,-14.85,-50.3,-44.3); body([end],4.2); plane([end],4.25);
     const rightAnnex = region(3.7,9.2,-22.8,-13.5); body([rightAnnex],6.8); plane([rightAnnex],6.85);
+    // Sashes stand on the brick face (z 0.01): centred at .09 their 14 cm frames touch it; at .18-.21 they floated 10-13 cm
+    // off it (geometry audit 2026-10-13).
     // Primary current facade: paired round portals, large upper arches, white name band and masonry piers.
     for (const x of [-1.43,1.98]) {
       arch(x,.08,.17,2.85,3.52,'stone'); arch(x,.23,.21,2.54,3.22,'dark');
       box(x,.25,.28,.06,3.12,.05,'gold'); box(x,1.12,.28,2.54,.055,.05,'gold');
-      sash(x,4.33,.18,2.79,3.57);
+      sash(x,4.33,.09,2.79,3.57);
       arch(x,8.94,.18,3.1,3.69,'stone'); arch(x,9.12,.24,2.78,3.35,'glass');
       box(x,9.14,.30,.07,3.10,.05,'frame'); box(x,10.91,.30,2.78,.06,.05,'frame');
       for (const dx of [-.9,.9]) box(x+dx,9.15,.30,.05,2.65,.05,'frame');
@@ -116,10 +118,10 @@ export function buildCanalStageLandmark(id: string, _width: number, _depth: numb
     }
     for (const y of [3.84,8.7]) box(.28,y,.25,7.0,.12,.24,'stone');
     for (const x of [-7.65,-4.62]) {
-      sash(x,.16,.18,2.19,2.58); sash(x,3.7,.18,2.19,2.92); arch(x,7.13,.18,2.29,2.53,'stone'); arch(x,7.27,.25,2.01,2.23,'glass');
+      sash(x,.16,.09,2.19,2.58); sash(x,3.7,.09,2.19,2.92); arch(x,7.13,.18,2.29,2.53,'stone'); arch(x,7.27,.25,2.01,2.23,'glass');
     }
     box(-6.14,3.34,.21,6.0,.23,.23,'white'); box(-6.14,6.94,.23,6.0,.20,.24,'white');
-    for (const x of [4.68,6.51,8.30]) for (const y of [.23,3.71,7.14]) sash(x,y,.21,1.3,2.46);
+    for (const x of [4.68,6.51,8.30]) for (const y of [.23,3.71,7.14]) sash(x,y,.09,1.3,2.46);
     box(6.46,10.65,.21,5.8,.45,.45,'white'); box(6.46,11.1,.27,6.0,.16,.56,'stone');
     // Rear church windows and buttresses follow its own long axis; small legal notches are unfilled.
     for (let x=-15.8;x<3.3;x+=3.4) {

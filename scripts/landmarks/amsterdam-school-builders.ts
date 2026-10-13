@@ -34,7 +34,7 @@ export function buildAmsterdamSchoolLandmark(id:string,_w:number,_d:number,b:Bui
    for(let u=step*.52;u<L-.9;u+=step){
     const x=a.x+u*dx/L+nx*.2,z=a.y+u*dz/L+nz*.2;
     for(let y=shipping?1.2:1.7;y<body-1;y+=shipping?5:3.3)panel(x,y,z,shipping?1.45:1.6,shipping?3.65:1.95,angle);
-    if(shipping){box(x-step*.44,0,z, .28,24,.45,'stone',angle);box(x,22.7,z,2.2,.24,.5,'stone',angle);}
+    if(shipping){box(x-dx/L*step*.44,0,z-dz/L*step*.44,.28,24,.45,'stone',angle);box(x,22.7,z,2.2,.24,.5,'stone',angle);}
     else if(body>8){box(x,body-.6,z,2,.2,.4,'white',angle);}
    }
    if(!isShed&&L>6){

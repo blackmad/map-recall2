@@ -21,7 +21,7 @@
  */
 import {clusterWalls, type WallSegment} from './wallPlanes';
 import {measureFacade, type FacadeInventory, type MaterialSoup, type Opening} from './facadeCompare';
-import {pointTriangleDistSq, rayTriangle, type TriSoup} from './glbQuality';
+import {closestPointOnTriangle, pointTriangleDistSq, rayTriangle, type TriSoup} from './glbQuality';
 
 type V3 = [number, number, number];
 
@@ -41,6 +41,8 @@ export interface GeometryAuditThresholds {
   buriedWarn: number;
   /** Opening parts larger than this (bbox diagonal, m) are treated as host geometry (walls, roofs). */
   maxOpeningDiag: number;
+  /** A glass/frame assembly whose outward-facing area is at least this (m2) is a glazed facade (curtain wall, glazed atrium, skewed glass tower), not a window: it IS the wall, so overhang/buried against some other wall plane do not apply. */
+  glazedSkinArea: number;
   /** Coplanar plane tolerance (m) and abutment shrink (m) for z-fighting. */
   zPlaneTol: number;
   zAbut: number;
@@ -53,7 +55,7 @@ export interface GeometryAuditThresholds {
 
 export const GEOMETRY_THRESHOLDS: GeometryAuditThresholds = {
   weld: 0.001, touchTol: 0.03, floatFail: 0.1, overhangWarn: 0.12, overhangFail: 0.35, balconyMax: 2, buriedWarn: 0.3,
-  maxOpeningDiag: 14, zPlaneTol: 0.01, zAbut: 0.005, zNearTol: 0.03, zWarnArea: 0.25, zFailArea: 2,
+  maxOpeningDiag: 14, glazedSkinArea: 24, zPlaneTol: 0.01, zAbut: 0.005, zNearTol: 0.03, zWarnArea: 0.25, zFailArea: 2,
 };
 
 /** Materials that make up openings and their trim. Kits glaze in `glass`/`dark`, frame in `frame`/`white`. */
@@ -71,6 +73,12 @@ export interface OpeningIssue {
   outside: number;
   buried: number;
   wallBearing?: number;
+  /** Outward (x, z) unit normal of the wall the assembly was judged against. */
+  wallNormal?: [number, number];
+  /** Floating: vector from the assembly's closest vertex to the closest host point (its length is `gap`); absent when an edge pierces the host. */
+  towardHost?: V3;
+  /** Buried: distance (m) along `wallNormal` to clear the nearest surface covering the face (median over the covered samples). */
+  clearance?: number;
   triangles: number[];
 }
 
@@ -111,6 +119,8 @@ export interface GeometryAuditReport {
   openings: {assemblies: number; issues: OpeningIssue[]};
   zfight: {area: number; nearArea: number; hiddenArea: number; patches: ZFightPatch[]};
   rhythm: RhythmFacade[];
+  /** Share of visible surface area with `materialSlot` + `tint` (see `materialSlotCoverage`). */
+  materialSlots: MaterialSlotCoverage;
   /** Per-kind counts used by the baseline gate. */
   counts: Record<string, number>;
   findings: GeometryFinding[];
@@ -193,6 +203,8 @@ export function closedParts(s: MaterialSoup, part: Int32Array, weld = 0.001): Se
 /** Uniform grid over triangle AABBs for proximity queries (numeric cell keys; |coordinate| < 500 m). */
 class TriGrid {
   private cells = new Map<number, number[]>();
+  /** Triangles whose box spans too many cells to bin (a big diagonal wall or roof): kept aside and tested by box on every query. */
+  private big: number[] = [];
   readonly box: Float64Array;
   private static key = (x: number, y: number, z: number) => ((x + 1024) * 2048 + (y + 1024)) * 2048 + (z + 1024);
   constructor(private s: MaterialSoup, tris: number[], private cell = 1) {
@@ -201,7 +213,8 @@ class TriGrid {
       const [a, b, c] = triVerts(s, t);
       for (let k = 0; k < 3; k++) { this.box[t * 6 + k] = Math.min(a[k], b[k], c[k]); this.box[t * 6 + 3 + k] = Math.max(a[k], b[k], c[k]); }
       const lo = [0, 1, 2].map(k => Math.floor(this.box[t * 6 + k] / cell)), hi = [0, 1, 2].map(k => Math.floor(this.box[t * 6 + 3 + k] / cell));
-      if ((hi[0] - lo[0] + 1) * (hi[1] - lo[1] + 1) * (hi[2] - lo[2] + 1) > 20000) continue; // pathological sliver
+      // A large diagonal wall spans a huge box. It must stay queryable, or its windows read as floating in front of nothing.
+      if ((hi[0] - lo[0] + 1) * (hi[1] - lo[1] + 1) * (hi[2] - lo[2] + 1) > 20000) { this.big.push(t); continue; }
       for (let x = lo[0]; x <= hi[0]; x++) for (let y = lo[1]; y <= hi[1]; y++) for (let z = lo[2]; z <= hi[2]; z++) {
         const k = TriGrid.key(x, y, z); const l = this.cells.get(k); if (l) l.push(t); else this.cells.set(k, [t]);
       }
@@ -216,6 +229,10 @@ class TriGrid {
         if (B[t * 6] > max[0] || B[t * 6 + 3] < min[0] || B[t * 6 + 1] > max[1] || B[t * 6 + 4] < min[1] || B[t * 6 + 2] > max[2] || B[t * 6 + 5] < min[2]) continue;
         out.add(t);
       }
+    }
+    for (const t of this.big) {
+      if (B[t * 6] > max[0] || B[t * 6 + 3] < min[0] || B[t * 6 + 1] > max[1] || B[t * 6 + 4] < min[1] || B[t * 6 + 2] > max[2] || B[t * 6 + 5] < min[2]) continue;
+      out.add(t);
     }
     return [...out];
   }
@@ -292,6 +309,41 @@ function solidAt(w: WallRaster, u: number, v: number): boolean {
   return x >= 0 && y >= 0 && x < w.nu && y < w.nv && !!w.occ[y * w.nu + x];
 }
 
+/**
+ * Opening-material assemblies that are not wall openings (precision sweep 2026-10-13, qa/detached-openings-sweep:
+ * 22 of 30 sampled fail-grade issues were these). Returns the class, or undefined for a plausible window/door.
+ *  - 'not-vertical': under 40% of its face area is vertical (tilted less than ~9 degrees), or it is a thin plate at least
+ *    0.5 m deep both ways: roof glazing, skylight ribs, sawtooth lights, glass canopies, slabs and floor plates modelled in
+ *    frame/glass. The check is about openings in walls.
+ *  - 'post': a slender vertical bar (both plan dimensions <= 25 cm, at least 3x as tall), a square-ish column
+ *    (<= 0.8 m, plan aspect >= 0.6, at least 2x as tall) or a horizontal rail/beam (section <= 20 cm, >= 2 m long):
+ *    balusters, railing posts, fence pickets, pilotis, handrails. No window is that shape.
+ * Plan dimensions are measured along the assembly's facing axis and across it, so a window on a 45-degree wall is not
+ * mistaken for a square column.
+ */
+export function nonOpeningShape(s: MaterialSoup, tris: number[], axis: [number, number]): 'not-vertical' | 'post' | undefined {
+  let vert = 0, total = 0;
+  let a0 = Infinity, a1 = -Infinity, t0 = Infinity, t1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+  for (const t of tris) {
+    const [a, b, c] = triVerts(s, t), {n, area} = triNormal(a, b, c);
+    total += area;
+    if (Math.abs(n[1]) < 0.15) vert += area;
+    for (const v of [a, b, c]) {
+      const along = v[0] * axis[0] + v[2] * axis[1], across = -v[0] * axis[1] + v[2] * axis[0];
+      a0 = Math.min(a0, along); a1 = Math.max(a1, along); t0 = Math.min(t0, across); t1 = Math.max(t1, across); y0 = Math.min(y0, v[1]); y1 = Math.max(y1, v[1]);
+    }
+  }
+  const dy = y1 - y0, hi = Math.max(a1 - a0, t1 - t0), lo = Math.min(a1 - a0, t1 - t0);
+  if (hi <= 0.25 && dy >= 3 * hi) return 'post';
+  if (hi <= 0.8 && lo >= 0.6 * hi && dy >= 2 * hi) return 'post';
+  // A handrail or beam: at most 20 cm in section and at least 2 m long (a loose sill is shorter and stays judged).
+  if (dy <= 0.2 && lo <= 0.2 && hi >= 2) return 'post';
+  if (total > 0 && vert < 0.4 * total) return 'not-vertical';
+  // A thin plate at least 0.5 m deep both ways (a roof-edge fascia plate, a canopy): a sill is shallower.
+  if (dy <= 0.2 && lo >= 0.5) return 'not-vertical';
+  return undefined;
+}
+
 export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEOMETRY_THRESHOLDS, part = partsOf(s, th.weld)): {assemblies: number; issues: OpeningIssue[]} {
   const nTri = s.indices.length / 3;
   const isOpeningMat = s.materials.map(m => OPENING_MATERIAL.test(m.name));
@@ -327,9 +379,14 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
 
   // Gap is measured to everything else in the model (walls and other trim), so a pane 3 cm proud of its tracery reads as 3 cm.
   const grid = new TriGrid(s, Array.from({length: nTri}, (_, i) => i), 1);
+  const hostTri = new Uint8Array(nTri);
+  for (const t of host) hostTri[t] = 1;
   const hostSoup = asTriSoup(s, host);
   // Walls: vertical host planes at least 1 m tall and wide (rails, cornices and copings are not walls).
   const walls = clusterWalls(hostSoup, {outwardOnly: false, minArea: 1.5, splitGap: 0.6}).filter(w => w.vMax - w.vMin >= 1 && w.uMax - w.uMin >= 1);
+  // Host triangles that belong to a wall plane; trim touching only other host surfaces (a cartouche, a pediment, a roof) is applied ornament.
+  const wallTris = new Set<number>();
+  for (const w of walls) for (const i of w.tris) wallTris.add(host[i]);
   const rasters = new Map<WallSegment, WallRaster>();
   const raster = (w: WallSegment) => { let r = rasters.get(w); if (!r) { r = rasterWall(s, w, host); rasters.set(w, r); } return r; };
 
@@ -339,20 +396,45 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
     // Gap to host geometry: vertex-to-triangle distance, zero when an assembly edge pierces a host triangle.
     const near = grid.near([bb.min[0] - 0.6, bb.min[1] - 0.6, bb.min[2] - 0.6], [bb.max[0] + 0.6, bb.max[1] + 0.6, bb.max[2] + 0.6]);
     const own = new Set(tris);
-    const blocked = (o: V3, d: V3, skip: Set<number>, L = 1.5): boolean => {
+    /** Distance to the first surface covering the ray within L metres (skipping `skip`), or -1. */
+    const blockedAt = (o: V3, d: V3, skip: Set<number>, L = 1.5): number => {
       const e: V3 = [o[0] + d[0] * L, o[1] + d[1] * L, o[2] + d[2] * L];
+      let first = -1;
       for (const t of grid.near([Math.min(o[0], e[0]), Math.min(o[1], e[1]), Math.min(o[2], e[2])], [Math.max(o[0], e[0]), Math.max(o[1], e[1]), Math.max(o[2], e[2])])) {
         if (skip.has(t)) continue;
+        const [a, b, c] = triVerts(s, t);
+        const r = rayTriangle(o, d, a, b, c, L);
+        if (r >= 0 && (first < 0 || r < first)) first = r; // nearest cover; a second layer behind it is cleared by the next snap pass
+      }
+      return first;
+    };
+    const nearTris = near.filter(t => !own.has(t)).map(t => triVerts(s, t));
+    /** First host surface along a horizontal ray is the back of a wall (we are inside the building's shell)? */
+    const enclosed = (o: V3, d: V3, L = 40): boolean => {
+      const st: V3 = [o[0] + d[0] * 0.02, o[1], o[2] + d[2] * 0.02], e: V3 = [st[0] + d[0] * L, st[1], st[2] + d[2] * L];
+      let tBest = Infinity, nBest: V3 | undefined;
+      for (const t of grid.near([Math.min(st[0], e[0]), st[1], Math.min(st[2], e[2])], [Math.max(st[0], e[0]), st[1], Math.max(st[2], e[2])])) {
+        if (!hostTri[t]) continue;
+        const [a, b, c] = triVerts(s, t), hit = rayTriangle(st, d, a, b, c, L);
+        if (hit >= 0 && hit < tBest) { tBest = hit; nBest = triNormal(a, b, c).n; }
+      }
+      return !!nBest && nBest[0] * d[0] + nBest[1] * d[1] + nBest[2] * d[2] > 0.2;
+    };
+    /** Host geometry along a horizontal ray within L metres? */
+    const hostWithin = (o: V3, d: V3, L: number): boolean => {
+      const e: V3 = [o[0] + d[0] * L, o[1], o[2] + d[2] * L];
+      for (const t of grid.near([Math.min(o[0], e[0]), o[1], Math.min(o[2], e[2])], [Math.max(o[0], e[0]), o[1], Math.max(o[2], e[2])])) {
+        if (!hostTri[t]) continue;
         const [a, b, c] = triVerts(s, t);
         if (rayTriangle(o, d, a, b, c, L) >= 0) return true;
       }
       return false;
     };
-    const nearTris = near.filter(t => !own.has(t)).map(t => triVerts(s, t));
-    let gapSq = Infinity;
+    let gapSq = Infinity, bestV: V3 | undefined, bestH: [V3, V3, V3] | undefined;
     const verts: V3[] = [];
     for (const t of tris) verts.push(...triVerts(s, t));
-    vloop: for (const v of verts) for (const h of nearTris) { const d = pointTriangleDistSq(v, h[0], h[1], h[2]); if (d < gapSq) { gapSq = d; if (gapSq <= tol * tol) break vloop; } }
+    vloop: for (const v of verts) for (const h of nearTris) { const d = pointTriangleDistSq(v, h[0], h[1], h[2]); if (d < gapSq) { gapSq = d; bestV = v; bestH = h; if (gapSq <= tol * tol) break vloop; } }
+    const towardHost: V3 | undefined = bestV && bestH && gapSq > tol * tol ? sub(closestPointOnTriangle(bestV, bestH[0], bestH[1], bestH[2]), bestV) : undefined;
     if (gapSq > tol * tol) {
       outer: for (const t of tris) {
         const [a, b, cc] = triVerts(s, t);
@@ -380,6 +462,8 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
     }
     const ang = 0.5 * Math.atan2(2 * mxz, mxx - mzz), axis: [number, number] = [Math.cos(ang), Math.sin(ang)];
     const axisStrength = (mxx + mzz) > 0 ? Math.hypot(mxx - mzz, 2 * mxz) / (mxx + mzz) : 0;
+    // Railing posts, balusters, pickets, columns, roof glazing and slabs in opening materials are not wall openings.
+    if (nonOpeningShape(s, tris, axis)) continue;
 
     // Walls this assembly belongs to: vertical host planes within 0.8 m of it whose extent overlaps it. The plane
     // facing the nearest one wins the orientation; every parallel plane in that band counts as wall behind the opening
@@ -399,14 +483,20 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
       // thin shell (a drum, a tower wall) and only wins when nothing better exists.
       any.push({w, sd: Math.max(0, lo, -hi) + (hi < 0.02 ? 5 : 0), close: lo <= 0.8, axisOk});
     }
-    any.sort((p, q) => p.sd - q.sd);
+    // Planes within 2 cm of each other are a tie: the larger one is the wall (the back face of a pier or band beside a window
+    // is not the wall the window is on; sweep 2026-10-13, Rode Hoed).
+    any.sort((p, q) => (Math.abs(p.sd - q.sd) > 0.02 ? p.sd - q.sd : q.w.area - p.w.area));
     const cands = any.filter(x => x.close && x.axisOk);
 
     // Sample the assembly faces turned towards the wall's outside (the visible face of a window) against `group`:
     // the fraction outside the walls' silhouette and the fraction hidden behind solid wall. `reach` is how far in front
     // of a plane (m) a sample still counts as on it.
-    const sample = (best: WallSegment, group: WallSegment[], reach: number): {outside: number; buried: number} => {
+    const sample = (best: WallSegment, group: WallSegment[], reach: number, facets: WallSegment[] = []): {outside: number; buried: number; clearance?: number} => {
       let nS = 0, nOut = 0, nBur = 0;
+      const covers: number[] = [];
+      const inward: V3 = [-best.n[0], 0, -best.n[1]], tan: V3 = [best.t[0], 0, best.t[1]];
+      let uLo = Infinity, uHi = -Infinity;
+      for (const v of verts) { const u = v[0] * best.t[0] + v[2] * best.t[1]; uLo = Math.min(uLo, u); uHi = Math.max(uHi, u); }
       for (const t of tris) {
         const [a, b, cc] = triVerts(s, t), {n, area} = triNormal(a, b, cc);
         if (area < 1e-5 || n[0] * best.n[0] + n[2] * best.n[1] < 0.7) continue;
@@ -420,19 +510,39 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
             if (inSilhouette(r, u, p[1], 0.12)) inside = true;
             if (sd < -0.01 && solidAt(r, u, p[1])) behind = true;
           }
+          // Curved walls (drums, apses) are many narrow facets: a window spanning two facets is on the wall, not past it.
+          for (const w of facets) {
+            if (inside) break;
+            const sd = w.n[0] * p[0] + w.n[1] * p[2] - w.d;
+            if (sd <= reach && sd >= -0.3 && inSilhouette(raster(w), p[0] * w.t[0] + p[2] * w.t[1], p[1], 0.12)) inside = true;
+          }
+          // Off the wall but enclosed: looking across the opening's plane (either way: the facing estimate can pick a shell's
+          // inner face), the first host surface is the inside of the building's own shell. The glazing is the envelope (a
+          // curtain wall between fins, a glazed corner), not hanging in the air.
+          if (!inside && (enclosed(p, inward) || enclosed(p, [-inward[0], 0, -inward[2]]))) inside = true;
+          // Infill: host geometry on both lateral sides within the opening's own extent (glazing spanning between two
+          // masses, fins or piers). A window hanging past a wall end has open air on its free side.
+          if (!inside) {
+            const u = p[0] * best.t[0] + p[2] * best.t[1];
+            if (hostWithin(p, tan, uHi - u + 0.3) && hostWithin(p, [-tan[0], 0, -tan[2]], u - uLo + 0.3)) inside = true;
+          }
           // Behind the plane and covered by geometry within 1.5 m on the viewer's side: the face never shows.
           if (!inside) nOut++;
-          else if (behind && blocked(p, [best.n[0], 0, best.n[1]], own)) nBur++;
+          else if (behind) { const r = blockedAt(p, [best.n[0], 0, best.n[1]], own); if (r >= 0) { nBur++; covers.push(r); } }
         }
       }
-      return nS >= 4 ? {outside: nOut / nS, buried: nBur / nS} : {outside: 0, buried: 0};
+      covers.sort((x, y) => x - y);
+      return nS >= 4 ? {outside: nOut / nS, buried: nBur / nS, clearance: covers.length ? covers[Math.floor(covers.length / 2)] : undefined} : {outside: 0, buried: 0};
     };
 
     // A grounded part only belongs to a wall it stands against (railings and gates stand off it).
     const best = cands[0] && (bb.min[1] > 0.02 || cands[0].sd <= 0.25) ? cands[0].w : undefined;
-    const group = best ? cands.filter(c => c.w.n[0] * best.n[0] + c.w.n[1] * best.n[1] > 0.985).map(c => c.w) : [];
-    let outside = 0, buried = 0;
-    if (best) ({outside, buried} = sample(best, group, 0.8));
+    // Facets of a curved wall (a drum or an apse, 11-20 degrees between facets) continue the wall: a window wider than its facet is still on it.
+    const group = best ? cands.filter(c => c.w.n[0] * best.n[0] + c.w.n[1] * best.n[1] > 0.94).map(c => c.w) : [];
+    let outside = 0, buried = 0, clearance: number | undefined;
+    // Facets of a curved wall for the silhouette test: planes in reach turned less than ~37 degrees from the best one.
+    const facets = best ? any.filter(c => c.close && c.w.n[0] * best.n[0] + c.w.n[1] * best.n[1] > 0.8).map(c => c.w) : [];
+    if (best) ({outside, buried, clearance} = sample(best, group, 0.8, facets));
 
     // Balcony: trim sitting on a small distinct horizontal slab (within 8 cm of it: rail bars stand a little proud) that sticks out from the wall past 0.8 m.
     // Only consulted where the plain rule has nothing to say or says overhang (a rail face standing in front of the wall
@@ -480,7 +590,7 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
         verdict = 'bad';
       }
       if (verdict === 'bad' && !best) { outside = 1; buried = 0; }
-      else if (okRef) { const r = sample(okRef, [okRef], th.balconyMax + 0.1); if (!best || r.outside < outside) ({outside, buried} = r); } // judged laterally; never worsens a plain verdict
+      else if (okRef) { const r = sample(okRef, [okRef], th.balconyMax + 0.1); if (!best || r.outside < outside) ({outside, buried, clearance} = r); } // judged laterally; never worsens a plain verdict
     }
 
     // Guard rail: a balustrade or glazed screen standing on a wall's top edge (a podium roof terrace, a parapet) is not an opening
@@ -491,16 +601,51 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
       let u0 = Infinity, u1 = -Infinity;
       for (const v of verts) { const u = v[0] * best.t[0] + v[2] * best.t[1]; u0 = Math.min(u0, u); u1 = Math.max(u1, u); }
       const x0 = Math.floor((u0 - r.u0) / r.cell), x1 = Math.floor((u1 - r.u0) / r.cell);
-      let resting = x0 >= 0 && x1 < r.nu;
-      for (let x = Math.max(0, x0); resting && x <= Math.min(r.nu - 1, x1); x++) resting = Number.isFinite(r.colHi[x]) && bb.min[1] >= r.colHi[x] - 0.15 && bb.min[1] <= r.colHi[x] + 0.1;
-      if (resting) { outside = 0; buried = 0; }
+      // A thin post (a balustrade or railing stanchion: <= 15 cm across, <= 1.2 m tall) may stand at the very end of the wall top and on a parapet
+      // cap up to 35 cm lower than the silhouette's top cell (rails and copings add a few centimetres of unsilhouetted height).
+      const post = Math.max(bb.max[0] - bb.min[0], bb.max[2] - bb.min[2]) <= 0.15 && bb.max[1] - bb.min[1] <= 1.2;
+      const lowTol = post ? 0.35 : 0.15, end = post ? 3 : 0;
+      let resting = x0 >= 0 - end && x1 < r.nu + end;
+      for (let x = Math.max(0, x0); resting && x <= Math.min(r.nu - 1, x1); x++) {
+        let hi = r.colHi[x];
+        // Within `end` cells of the silhouette's lateral edge the nearest finite column stands in.
+        for (let k = 1; !Number.isFinite(hi) && k <= end; k++) hi = Number.isFinite(r.colHi[x + k]) ? r.colHi[x + k] : Number.isFinite(r.colHi[x - k]) ? r.colHi[x - k] : hi;
+        resting = Number.isFinite(hi) && bb.min[1] >= hi - lowTol && bb.min[1] <= hi + 0.1;
+      }
+      if (resting) { outside = 0; buried = 0; clearance = undefined; }
+    }
+
+    // Glazed facade: large and made of glazing, so it is the wall itself (a curtain wall, a skewed glass tower face): it cannot overhang or
+    // sink behind "the" wall because no other wall is its host. It must still touch the building (floating stays checked above).
+    if (outside > 0 || buried > 0) {
+      let skin = 0;
+      for (const t of tris) { const [a, b, cc] = triVerts(s, t), {n, area} = triNormal(a, b, cc); if (Math.abs(n[1]) < 0.7) skin += area; }
+      const glazed = tris.some(t => /^(glass|window|pane|sash)/i.test(s.materials[s.triMaterial[t]].name));
+      // Closed glass boxes carry both faces of every pane, so the outward area is about half the summed area.
+      if (glazed && skin / 2 >= th.glazedSkinArea) { outside = 0; buried = 0; clearance = undefined; }
+    }
+
+    // Small trim whose only contact is with non-wall surfaces (a curved cartouche, a pediment, a roof slope) is ornament applied to that
+    // surface, not a window hanging past its wall's end: the wall silhouette does not describe where it may stand.
+    if (outside > th.overhangWarn && hostGap <= tol && Math.hypot(bb.max[0] - bb.min[0], bb.max[1] - bb.min[1], bb.max[2] - bb.min[2]) <= 2.5) {
+      let touchesWall = false, touchesHost = false;
+      probe: for (const v of verts) for (const t of near) {
+        if (own.has(t)) continue;
+        const [a, b, cc] = triVerts(s, t);
+        if (pointTriangleDistSq(v, a, b, cc) > tol * tol) continue;
+        touchesHost = true;
+        if (wallTris.has(t)) { touchesWall = true; break probe; }
+      }
+      if (touchesHost && !touchesWall) outside = 0;
     }
 
     const mats = [...new Set(tris.map(t => s.materials[s.triMaterial[t]].name))].sort();
-    const base = {materials: mats, min: bb.min, max: bb.max, centre: c, gap, outside: +outside.toFixed(2), buried: +buried.toFixed(2), wallBearing: best?.bearingDeg, triangles: tris};
+    const base = {materials: mats, min: bb.min, max: bb.max, centre: c, gap, outside: +outside.toFixed(2), buried: +buried.toFixed(2), wallBearing: best?.bearingDeg, wallNormal: best?.n, towardHost, clearance, triangles: tris};
     // A part sunk wholly inside the wall is buried, not floating, even though no wall surface touches it.
     if (buried > 0.5) issues.push({...base, kind: 'buried', severity: 'warn'});
-    else if (gap > tol) issues.push({...base, kind: 'floating', severity: gap > th.floatFail ? 'fail' : 'warn'});
+    // Floating with no wall plane in reach (only roofs, slabs or other trim nearby) is reported but not failed: it is not a
+    // window that came off its wall (sweep 2026-10-13: hidden skylight ribs under a glass ridge).
+    else if (gap > tol) issues.push({...base, kind: 'floating', severity: gap > th.floatFail && best ? 'fail' : 'warn'});
     else if (outside > th.overhangWarn) issues.push({...base, kind: 'overhang', severity: outside > th.overhangFail ? 'fail' : 'warn'});
     else if (buried > th.buriedWarn) issues.push({...base, kind: 'buried', severity: 'warn'});
   }
@@ -825,7 +970,13 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
     const v = rhythmVerdict(f);
     findings.push({kind: 'window-rhythm', severity: v.fail ? 'fail' : 'warn', message: `${f.name}: ${f.openings} openings in ${f.rows.length} rows; ${odd} off-size/off-level (${Math.round(v.oddFraction * 100)}%), ${miss} predicted missing, ${f.misaligned} off-axis${f.fromSpec ? ` (photo-spec facade; fails above ${RHYTHM_FAIL.oddFraction * 100}% off-size or any missing)` : ' (inferred facade)'}`});
   }
+  const slots = materialSlotCoverage(s);
+  if (slots.ratio < 1) {
+    findings.push({kind: 'material-slot-coverage', severity: 'warn', message: `${(slots.ratio * 100).toFixed(1)}% of ${slots.area} m2 visible surface carries materialSlot+tint; untagged: ${slots.untagged.slice(0, 4).map(u => `${u.material} ${u.area} m2`).join(', ')}`});
+  }
   const counts: Record<string, number> = {
+    // Share of visible surface WITHOUT a materialSlot+tint, in tenths of a percent (0 = fully tagged). Gated only for new exports and recorded models.
+    'material-slot-untagged-permille': Math.round((1 - slots.ratio) * 1000),
     'opening-floating': byKind('floating').length, 'opening-floating-fail': byKind('floating').filter(i => i.severity === 'fail').length,
     'opening-overhang': byKind('overhang').length, 'opening-overhang-fail': byKind('overhang').filter(i => i.severity === 'fail').length,
     'opening-buried': byKind('buried').length,
@@ -840,16 +991,58 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
     'window-missing-spec': rhythm.filter(f => f.fromSpec).reduce((t, f) => t + f.missing.length, 0),
   };
   const score = openings.issues.reduce((t, i) => t + issueWeight(i), 0) + Math.min(zfight.area, 100) * 2 + Math.min(zfight.nearArea, 100) * 0.3 + counts['window-mismatch'] * 0.5 + counts['window-missing'] + counts['window-misaligned'] * 0.3;
-  return {openings, zfight, rhythm, counts, findings, score: +score.toFixed(1)};
+  return {openings, zfight, rhythm, materialSlots: slots, counts, findings, score: +score.toFixed(1)};
+}
+
+export interface MaterialSlotCoverage {
+  /** Visible surface area (m2): everything except downward faces and the ground plate. */
+  area: number;
+  /** Area (m2) whose material carries both `materialSlot` and `tint`. */
+  tagged: number;
+  /** tagged / area, 0..1 (1 for an empty model). */
+  ratio: number;
+  /** Untagged materials by visible area, largest first. */
+  untagged: {material: string; area: number}[];
+}
+
+/**
+ * Share of visible surface area whose material carries `materialSlot` + `tint` extras: the contract that lets the shared city look (atlas
+ * brick, glass gradient, roof cells) dress a model instead of the flat paint it was exported with. Downward faces and triangles lying on the
+ * ground plate are not visible and do not count.
+ */
+export function materialSlotCoverage(s: MaterialSoup): MaterialSlotCoverage {
+  const byMat = new Map<number, number>();
+  const nTri = s.indices.length / 3;
+  for (let t = 0; t < nTri; t++) {
+    const [a, b, c] = triVerts(s, t), {n, area} = triNormal(a, b, c);
+    if (!(area > 0) || n[1] < -0.9 || (a[1] <= 0.02 && b[1] <= 0.02 && c[1] <= 0.02)) continue;
+    byMat.set(s.triMaterial[t], (byMat.get(s.triMaterial[t]) ?? 0) + area);
+  }
+  let area = 0, tagged = 0;
+  const untagged: {material: string; area: number}[] = [];
+  for (const [m, a] of byMat) {
+    area += a;
+    const mat = s.materials[m];
+    if (mat?.slot && mat.tint) tagged += a; else untagged.push({material: mat?.name ?? 'unnamed', area: +a.toFixed(1)});
+  }
+  untagged.sort((p, q) => q.area - p.area);
+  return {area: +area.toFixed(1), tagged: +tagged.toFixed(1), ratio: area > 0 ? tagged / area : 1, untagged};
 }
 
 /** Gate: which counts grew beyond the recorded baseline (plus slack)? Empty = no new regression. */
 export function regressions(counts: Record<string, number>, baseline: Record<string, number> | undefined): string[] {
   const slack: Record<string, number> = {'zfight-m2': 0.3, 'zfight-near-m2': 1, 'window-mismatch': 1, 'window-missing': 1, 'window-misaligned': 1};
-  const hard = new Set(['opening-floating-fail', 'opening-overhang-fail', 'zfight-m2', 'window-rhythm-fail', 'window-mismatch-spec', 'window-missing-spec']);
+  const hard = new Set(['opening-floating-fail', 'opening-overhang-fail', 'zfight-m2', 'window-rhythm-fail', 'window-mismatch-spec', 'window-missing-spec',
+    // Since the 2026-10-13 cleanup pass every detached or sunk window counts, not only the 10 cm fails; a recorded model may not add any.
+    'opening-floating', 'opening-buried', 'opening-overhang']);
+  // Recorded-only: a model without the key in its entry predates the gate (legacy, reported as a warning); a model with NO entry is a new
+  // export and must be 100% tagged.
+  const recordedOnly = new Set(['material-slot-untagged-permille', 'opening-floating', 'opening-buried', 'opening-overhang']);
   const out: string[] = [];
   for (const [k, v] of Object.entries(counts)) {
-    if (!hard.has(k)) continue; // warn-level counts are reported, not gated
+    const gated = hard.has(k) || k === 'material-slot-untagged-permille';
+    if (!gated) continue; // warn-level counts are reported, not gated
+    if (recordedOnly.has(k) && baseline && baseline[k] === undefined) continue;
     const b = baseline?.[k] ?? 0;
     if (v > b + (slack[k] ?? 0)) out.push(`${k} ${v} > baseline ${b}`);
   }

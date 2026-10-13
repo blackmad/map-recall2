@@ -23,17 +23,23 @@ export function buildIndependentCinemaLandmark(id:string,_w:number,_d:number,b:B
   const west=region(-29,-11,-19,19);body(west,16.0);flat(west,16.03);
   const tower=region(-11.2,-3.1,-3,8.1);body(tower,21.5);flat(tower,21.53);
   const front=5.18;for(let x=.8;x<24;x+=3.4)for(const y of [1.0,4.7,8.4,12.1])sash(x,y,front+.1,2.35,2.65);
-  for(let x=-25;x<24;x+=3.6)for(const y of [1.1,4.7,8.4,12.1])sash(x,y,-18.15-.09,2.4,2.55,true);
-  for(const z of [-14,-9,-4,1,6,11,16])for(const y of [1.2,4.9,8.6,12.2]){box(-21.5,y,z,.13,2.55,2.3,'glass');box(-21.62,y+2.6,z,.22,.15,2.5,'stone');}
+  // Rear sashes follow the mapped rear wall (it steps between the wings): windows are set where the footprint really is, skipped where it is not.
+  const rearAt=(x:number)=>{let z=Infinity;for(let i=0;i<ring.length;i++){const p=ring[i],q=ring[(i+1)%ring.length];if((p.x-x)*(q.x-x)<=0&&p.x!==q.x)z=Math.min(z,p.y+(q.y-p.y)*(x-p.x)/(q.x-p.x));}return z;};
+  for(let x=-25;x<24;x+=3.6){const z0=rearAt(x);if(!isFinite(z0)||Math.abs(rearAt(x-1.2)-z0)>.08||Math.abs(rearAt(x+1.2)-z0)>.08)continue;for(const y of [1.1,4.7,8.4,12.1])sash(x,y,z0-.09,2.4,2.55,true);}
+  // West elevation: the wall steps (x -27.5, -24.3, -21.4 on the mapped footprint), so each bay stands on the westmost wall at its own z.
+  const westAt=(z:number)=>{let x=Infinity;for(let i=0;i<ring.length;i++){const p=ring[i],q=ring[(i+1)%ring.length];if((p.y-z)*(q.y-z)<=0&&p.y!==q.y)x=Math.min(x,p.x+(q.x-p.x)*(z-p.y)/(q.y-p.y));}return x;};
+  for(const z of [-14,-9,-4,1,6,11,16])for(const y of [1.2,4.9,8.6,12.2]){const wx=westAt(z);if(!isFinite(wx))continue;box(wx-.03,y,z,.13,2.55,2.3,'glass');box(wx-.1,y+2.6,z,.22,.15,2.5,'stone');}
   // Stair/clock tower: three very tall gridded windows, decorative figures and dot clock.
-  const tx=-7.15,tz=8.01;for(const x of [tx-2.1,tx,tx+2.1]){sash(x,5.0,tz+.12,1.15,5.0);sash(x,11.4,tz+.12,1.15,5.3);box(x,16.9,tz+.1,.7,.95,.25,'stone');add(new T.SphereGeometry(.23,6,4),'stone',x,18.05,tz+.22);}
+  const tx=-7.15,tz=8.01;// The tower's front wall is not square to the axes (the mapped edge runs 0.1-0.5 m off tz across the three bays): each bay's windows follow the wall at their own x.
+  const frontAt=(x:number)=>{let z=-Infinity;for(let i=0;i<ring.length;i++){const p=ring[i],q=ring[(i+1)%ring.length];if((p.x-x)*(q.x-x)<=0&&p.x!==q.x){const zz=p.y+(q.y-p.y)*(x-p.x)/(q.x-p.x);if(zz<=tz+.2)z=Math.max(z,zz);}}return isFinite(z)?z:tz;};
+  for(const x of [tx-2.1,tx,tx+2.1]){const zw=frontAt(x)-.01;sash(x,5.0,zw+.12,1.15,5.0);sash(x,11.4,zw+.12,1.15,5.3);box(x,16.9,zw+.1,.7,.95,.25,'stone');add(new T.SphereGeometry(.23,6,4),'stone',x,18.05,zw+.22);}
   for(let i=0;i<12;i++){const aa=i*Math.PI/6;add(new T.CircleGeometry(.07,6),'stone',tx+Math.sin(aa)*.75,19.47+Math.cos(aa)*.75,tz+.23);}beam(tx,19.47,tz+.25,tx+.4,19.8,tz+.25,.06,'dark');beam(tx,19.47,tz+.25,tx,20.07,tz+.25,.055,'dark');
-  box(tx,21.25,3.25,8.3,.65,10.3,'stone');box(tx,0,tz+.16,3.6,3.55,.15,'dark');box(tx,3.55,tz+.55,4.55,.32,1.5,'stone');for(let i=0;i<4;i++)box(tx,i*.22,tz+1.8-i*.32,4.3,.23,1.7-i*.32,'stone');sign('LAB111',tx-1.55,4.03,tz+.45,.22,'white');
+  box(tx,21.25,3.25,8.3,.65,10.3,'stone');box(tx,0,tz+.1,3.6,3.55,.15,'dark');box(tx,3.55,tz+.55,4.55,.32,1.5,'stone');for(let i=0;i<4;i++)box(tx,i*.22,tz+1.8-i*.32,4.3,.23,1.7-i*.32,'stone');sign('LAB111',tx-1.15,4.03,tz+.4,.22,'white',4.4);
   // Main wing cornices remain separate from the recessed entrance.
   box(11.5,16.42,front,29,.36,.38,'stone');box(-16.3,15.72,18.3,10.2,.32,.42,'stone');
   for(const x of [-19,-16,-13])for(const y of [1.2,5,8.8,12.4])sash(x,y,18.52,1.65,2.45);
   // Lower former lecture/aula wing retains its daylight roof.
-  box(-16.25,16.08,-9.8,9.0,.2,11.0,'glass');for(let z=-15;z<-5;z+=1.65)box(-16.25,16.22,z,9,.07,.07,'frame');
+  box(-16.25,16.0,-9.8,9.0,.28,11.0,'glass');for(let z=-15;z<-5;z+=1.65)box(-16.25,16.22,z,9,.07,.07,'frame');
  }else if(id==='occii'){
   body(ring,4.8);flat(ring,4.83);const lo=-6.4,hi=2.6,cx=(lo+hi)/2;
   // The narrow tram house runs deep behind its carved street gable, not across the yard.

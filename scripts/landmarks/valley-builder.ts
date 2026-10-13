@@ -129,7 +129,7 @@ export function buildValley(_width:number,_depth:number,b:BuildingTools):void {
     if(glassSkin) {
      if(e.len<1.7)continue;
      const p=point(.5,.055);pane(p[0],l.base+.06,p[1],e.len-.28,l.top-l.base-.10,e.angle,'glass',[e.nx,0,e.nz]);
-     pane(p[0],l.base,p[1],e.len,.14,e.angle,'frame');
+     {const f=point(.5,.075);pane(f[0],l.base,f[1],e.len,.14,e.angle,'frame');} // sill rail stands proud of the glass plane (it shared it: coplanar z-fight along every skin)
      const n=Math.max(1,Math.round(e.len/2.3));
      for(let k=0;k<=n;k++){const p=point(k/n,.13);pane(p[0],l.base,p[1],.09,l.top-l.base,e.angle,'frame');}
     } else {
