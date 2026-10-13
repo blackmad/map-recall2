@@ -1,5 +1,5 @@
 /** Which representation the game draws for each pand, and what superseded what. Pure; tested. */
-import type { FaceStatus, LiveRepresentation, StreetPandRow, SurveyRecipeHouse } from './types';
+import { LIVE_LABEL, type FaceStatus, type LiveRepresentation, type StreetPandRow, type SurveyRecipeHouse } from './types';
 
 export interface ChunkRef { id: string; pandIds: readonly string[] }
 export interface RecipeRef { id: string; pandId: string }
@@ -43,4 +43,15 @@ export function addressRange(street: string, addresses: readonly string[]): stri
   if (!numbers.length) return street;
   const lo = Math.min(...numbers), hi = Math.max(...numbers);
   return lo === hi ? `${street} ${lo}` : `${street} ${lo}–${hi}`;
+}
+
+/**
+ * Street surveys are retired from the game by default (2026-10-13, ordinaryChunks.ts `streetSurveyMode`): what a
+ * survey representation means in game today. Faces, chunks and standalone houses all draw as the generic city mesh
+ * (recipe tiles where `?recipeTiles=1` has a pilot tile); `?streetChunks=1` restores the chunks for comparison.
+ */
+export const RETIRED_SINCE = '2026-10-13';
+export function inGameNow(live: LiveRepresentation): { label: string; kind: string; retired: boolean } {
+  if (live === 'generic') return { label: LIVE_LABEL.generic, kind: 'live generic', retired: false };
+  return { label: `${LIVE_LABEL.generic} (${LIVE_LABEL[live].toLowerCase()} retired)`, kind: 'live generic retired', retired: true };
 }

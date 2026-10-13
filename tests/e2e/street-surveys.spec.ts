@@ -11,9 +11,12 @@ test('street surveys: faces with photo vs model, superseded per-house models, th
   await ready(page);
   expect(await page.evaluate(() => (window as any).streetSurveys.errors)).toEqual([]);
 
-  // The 122–134 face is installed and shows its strip and model thumbnails.
+  // Street surveys are retired from the game (2026-10-13): the page says so once, and per face.
+  await expect(page.locator('.retired-note')).toContainText('?streetChunks=1');
+  // The 122–134 face was installed (now retired) and still shows its strip and model thumbnails.
   const face = page.locator('article.face#bilder-081118-155417');
-  await expect(face.locator('.badge.installed')).toHaveText('Installed');
+  await expect(face.locator('.badge.retired')).toHaveText('Retired');
+  await expect(face.locator('.reason').first()).toContainText('generic city mesh');
   await expect(face.locator('figure.shot img')).toHaveCount(2);
   // Thumbnails are lazy: bring each into view before checking it decoded.
   for (const img of await face.locator('figure.shot img').all()) await img.scrollIntoViewIfNeeded(), await expect.poll(() => img.evaluate((i: HTMLImageElement) => i.complete && i.naturalWidth)).toBeGreaterThan(100);
@@ -25,15 +28,17 @@ test('street surveys: faces with photo vs model, superseded per-house models, th
   await expect(stale.locator('img')).toHaveCount(0);
   await expect(stale.locator('a[href="#chunk-face-bilder-081118-155417"]')).toBeVisible();
 
-  // Still-standalone houses show their model and status.
-  await expect(page.locator('article.recipe#bilder-153622 .badge')).toHaveText('Standalone');
+  // Formerly standalone houses keep their model and say they are retired.
+  await expect(page.locator('article.recipe#bilder-153622 .badge')).toHaveText(/Retired|Superseded/);
   await expect(page.locator('article.recipe#bilder-153622 figure.shot img')).toHaveCount(2);
 
   // Held faces state why.
   await expect(page.locator('article.face#bilder-236022-167243 .reason')).toContainText('3DBAG');
 
-  // Every Bilderdijkstraat pand has a row.
+  // Every Bilderdijkstraat pand has a row; none is drawn by a survey model any more.
   expect(await page.locator('#bilderdijkstraat-pands tbody tr').count()).toBeGreaterThan(100);
+  expect(await page.locator('#bilderdijkstraat-pands .badge.live.face, #bilderdijkstraat-pands .badge.live.standalone').count()).toBe(0);
+  expect(await page.locator('#bilderdijkstraat-pands .badge.live.retired').count()).toBeGreaterThan(10);
 
   expect(await overflow(page)).toBeLessThanOrEqual(0);
   await page.screenshot({ path: `artifacts/street-surveys/e2e-${info.project.name}-top.png` });
