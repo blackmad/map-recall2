@@ -11,7 +11,7 @@ import type { AppearanceTileResource } from './cityAppearanceStreamer.js';
 import { compileFacadePatches, facadeRecipeRecords, FACADE_PATCH_COLOURS } from './cityAppearanceFacadeRecipes.js';
 import { drawMachineSignTexture, planMachineSignPlacements, deduplicateMachineSigns, type MachineSignPlacement } from './cityAppearanceMachineSigns.js';
 import { createFacadeSignMaterial } from './facadeSignMaterial.js';
-import { CONTEXTUAL_BUILDING_COLOURS, contextualBuildingPalette } from './cityAppearancePalette.js';
+import { CONTEXTUAL_BUILDING_COLOURS, contextualBuildingPalette } from './look/palette.js';
 
 type Point = [number, number, number];
 type Surface = { type: string; rings: Point[][]; previewAppearance?: { colour: string; sourceCropSha256: string; disposition: string; role?: string } };

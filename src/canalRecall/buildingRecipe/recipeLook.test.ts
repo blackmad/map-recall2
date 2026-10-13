@@ -1,7 +1,8 @@
 /** Recipe look: palette mapping into the city range and the city's fixed-light shade. */
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {cityFrameTint, cityRoofTint, cityShade, cityTint, cityWallTint, CITY_BRICK_LIGHTNESS, CITY_ROOF, hexToRgb, rgbToHsl, RECIPE_SLOTS} from './recipeLook.ts';
+import {cityShade, RECIPE_SLOTS} from './recipeLook.ts';
+import {cityFrameTint, cityRoofTint, cityTint, cityWallTint, CITY_BRICK_LIGHTNESS, CITY_ROOF, hexToRgb, rgbToHsl} from '../look/palette.ts';
 import {wallShade} from '../threeBuildingMesh.ts';
 import {paneUvs} from '../../../scripts/canalhouse-recipes/export-glb.ts';
 

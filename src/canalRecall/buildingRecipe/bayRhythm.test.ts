@@ -12,7 +12,7 @@ import * as T from 'three';
 import {validateIntent, type CanalHouseIntent} from './intent.ts';
 import {compileBuilding} from './compile.ts';
 import {recipeSlotFor} from '../streetChunks/soup.ts';
-import {cityStuccoTint, cityTint, cityWallTint, hexToRgb, rgbToHsl} from './recipeLook.ts';
+import {cityStuccoTint, cityTint, cityWallTint, hexToRgb, rgbToHsl} from '../look/palette.ts';
 import {fitHashes, readGolden} from '../../../scripts/building-recipes/fit-golden.ts';
 import type {BuildingFacts} from './facts.ts';
 

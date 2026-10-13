@@ -27,7 +27,7 @@ import {
 } from './buildingTileSource.js';
 import { tileFor, tileKey, tilesCovering } from './slippyTiles.js';
 import { introLandingArea } from './game/introFlight.js';
-import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior, materialWallDisplayPrior } from './cityAppearancePalette.js';
+import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior, materialWallDisplayPrior } from './look/palette.js';
 
 type GeoJsonSource = {
   setData(data: unknown): void;

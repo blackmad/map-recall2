@@ -25,14 +25,15 @@ import { paintGlassBlockCell } from './glassBlockTexture.js';
 import { bayTextures, type Look } from './bayTextures.js';
 import { KITS, KIT_HIDE_IDS, KIT_MODELLED_IDS, KIT_PART_IDS, decorateKitRoof, kitGeometry, type KitPartGeometry, type PartInput } from './landmarkKits.js';
 import { FRONT_LIST, FRONT_PART_IDS, decorateFront } from './landmarkFrontData.js';
-import { frontKitGeometry, lookHex } from './landmarkFronts.js';
+import { frontKitGeometry } from './landmarkFronts.js';
+import { LOOK_VARIANTS, PHOTO_WALL_CELL_MEAN, lookHex } from './look/palette.js';
 import { decorateShopfront, setShopfronts } from './shopfronts.js';
 import { boatForLandmark, houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetSegments } from './streetFronts.js';
 import { buildPrismIndex, pickPrism, type PrismEntry } from './prismPick.js';
-import { ORIGIN, ROOF_TONES, asPolygons, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
-export { ORIGIN, ROOF_TONES, type BuildingLook };
+import { ORIGIN, asPolygons, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
+export { ORIGIN, type BuildingLook };
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 import { validateStreetAppearanceCatalog, type StreetAppearanceCatalog, type StreetAppearanceProfile } from './streetAppearance.js';
 import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
@@ -124,7 +125,7 @@ const infoOf = (chunk: Chunk): ChunkInfo => ({
  */
 export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: number, look: Look, size = CELL_PX): void {
   const px = size * size;
-  const wallPull = look === 'photo' ? 0.7 : 0.35, glassLift = look === 'photo' ? 0.5 : 0.25;
+  const { wallPull, glassLift, liftBrick } = LOOK_VARIANTS[look];
   for (let layer = 0; layer < layers; layer++) {
     // Mean wall colour of this layer (mask.r is the wall tint weight).
     let sum = [0, 0, 0], n = 0;
@@ -134,11 +135,11 @@ export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: numb
     const mean = n ? sum.map(v => v / n) : [200, 200, 200];
     // Brick photos are dark; the tint multiplies them again. Lift wall pixels so the layer's mean is ~0.88 and the tint colour is what you see.
     const meanLum = (mean[0] + mean[1] + mean[2]) / 3;
-    const lift = look === 'photo' && meanLum > 0 ? Math.min(2.4, 225 / meanLum) : 1;
+    const lift = liftBrick && meanLum > 0 ? Math.min(2.4, PHOTO_WALL_CELL_MEAN / meanLum) : 1;
     for (let i = 0; i < px; i++) {
       const at = (layer * px + i) * 4, wall = mask[(layer * px + i) * 2] / 255, accent = mask[(layer * px + i) * 2 + 1];
       if (wall > 0.5) {
-        if (look === 'photo') {
+        if (liftBrick) {
           // Brick is relief evidence, not a second colour prior. Multiplying a
           // red photograph by surveyed brown/charcoal tint made every street
           // orange. Keep luminance variation and let vertex tint own the hue.
@@ -219,7 +220,7 @@ export async function buildLookTextures(THREE: any, look: 'procedural' | Look, m
   }
   const roofBase = look === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT;
   copyCell(paintGlassBlockCell(),layers - 1);
-  for (const [i, cell] of paintRoofLayers(look === 'cartoon').entries()) { copyCell(cell, roofBase + i); await yieldBudget(); }
+  for (const [i, cell] of paintRoofLayers(LOOK_VARIANTS[look].cartoonRoofCells).entries()) { copyCell(cell, roofBase + i); await yieldBudget(); }
   let brick: CanvasImageSource = document.createElement('canvas');
   if (look === 'photo') {
     const image = new Image(); image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
@@ -385,8 +386,9 @@ export class ThreeBuildings {
     }
     material.uniforms.cells.value = set.colour;
     material.uniforms.masks.value = set.mask;
-    material.uniforms.bands.value = look === 'cartoon' ? 3 : 0;
-    material.uniforms.flatColour.value = look === 'untextured' ? 1 : 0;
+    material.uniforms.bands.value = LOOK_VARIANTS[look].shadeBands;
+    material.uniforms.flatColour.value = LOOK_VARIANTS[look].flatColour ? 1 : 0;
+    if (material.uniforms.wallGain) material.uniforms.wallGain.value = LOOK_VARIANTS[look].litWallGain;
     this.material = material;
     this.textureMB = (set.colour.userData.bytes + set.mask.userData.bytes) * 4 / 3 / 1048576;
   }
@@ -1060,13 +1062,14 @@ export class ThreeBuildings {
     const THREE = this.THREE;
     if (this.lit) {
       const material = createLitFacadeMaterial(THREE);
-      material.uniforms.bands.value = this.look === 'cartoon' ? 3 : 0;
-      material.uniforms.flatColour.value = this.look === 'untextured' ? 1 : 0;
+      material.uniforms.bands.value = LOOK_VARIANTS[this.look].shadeBands;
+      material.uniforms.flatColour.value = LOOK_VARIANTS[this.look].flatColour ? 1 : 0;
+      if (material.uniforms.wallGain) material.uniforms.wallGain.value = LOOK_VARIANTS[this.look].litWallGain;
       return material;
     }
     return new THREE.RawShaderMaterial({
       glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
-      uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: this.look === 'cartoon' ? 3 : 0 }, flatColour: { value: this.look === 'untextured' ? 1 : 0 }, cityFade: { value: 1 } }, side: THREE.FrontSide,
+      uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: LOOK_VARIANTS[this.look].shadeBands }, flatColour: { value: LOOK_VARIANTS[this.look].flatColour ? 1 : 0 }, cityFade: { value: 1 } }, side: THREE.FrontSide,
     });
   }
 

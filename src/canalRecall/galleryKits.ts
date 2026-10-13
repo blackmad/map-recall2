@@ -14,7 +14,8 @@
 
 import { KIT_HIDE_IDS, kitGeometry, kitIds, type Kit, type KitPartGeometry, type PartInput } from './landmarkKits.js';
 import { FRONT_LIST } from './landmarkFrontData.js';
-import { frontKitGeometry, lookHex } from './landmarkFronts.js';
+import { frontKitGeometry } from './landmarkFronts.js';
+import { lookHex } from './look/palette.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
 import { buildFeatureChunk, ORIGIN, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
 import { fitDistance, outerRing, ringsFrame } from './galleryPipeline.js';

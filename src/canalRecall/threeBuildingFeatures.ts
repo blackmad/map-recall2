@@ -10,7 +10,7 @@ import { roofPlanForFeature, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
 import { paletteFor } from './bayTextures.js';
-import { lookHex } from './landmarkFronts.js';
+import { BARE_WALL_HEX, DEFAULT_FACADE_WALL_HEX, DEFAULT_SHOP_SIGN_HEX, FLAT_ROOF_GREYS, cellSetOf, lookHex, roofTone, type BuildingLook } from './look/palette.js';
 import { largeTierSystem, plinthHex } from './largeBuildingTier.js';
 import type { Look, ShopKind } from './bayTextures.js';
 import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
@@ -21,13 +21,13 @@ import type { StreetAppearanceProfile } from './streetAppearance.js';
 import { SUPERMARKET_CHAINS } from './shopfronts.js';
 import { appendAllotmentHouses, isAllotmentHouse } from './allotmentHouses.js';
 
-/** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes. */
-export type BuildingLook = 'procedural' | 'untextured' | Look;
+/** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
+export type { BuildingLook };
 /** The shopfront the decorator stamped (`shopKind`, or `shopQuiet` for none); undefined without the extract. */
 const shopfrontOf = (p: Record<string, unknown>): ShopKind | 'quiet' | undefined =>
   typeof p.shopKind === 'string' ? p.shopKind as ShopKind : p.shopQuiet ? 'quiet' : undefined;
-/** The texture set a look draws from. */
-export const cellSetOf = (look: BuildingLook): 'procedural' | Look => (look === 'untextured' ? 'procedural' : look);
+/** The texture set a look draws from (look/palette.ts `LOOK_VARIANTS`). */
+export { cellSetOf };
 export type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
 /** One fixed origin for the whole city: float32 metres stay sub-millimetre within 10 km. */
 export const ORIGIN = { lng: 4.9, lat: 52.37 };
@@ -40,19 +40,7 @@ export const asPolygons = (geometry: unknown): number[][][][] => {
   return g.type === 'Polygon' ? [g.coordinates as number[][][]] : g.type === 'MultiPolygon' ? g.coordinates as number[][][][] : [];
 };
 
-/** Wall colour for a building with no facade and no mapped colour (MapLibre's neutral building colour). */
-const BARE_WALL_HEX = '#c9bfae';
-const FLAT_ROOF_GREYS = ['#8f8a83', '#9a958c', '#85817c', '#a09789'];
-
-/** Roof colours per look: pantile and slate (a look's own tones, picked by the plan's `tone`). */
-export const ROOF_TONES: Record<BuildingLook, { tile: string[]; slate: string[] }> = {
-  procedural: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
-  untextured: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
-  photo: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
-  storybook: { tile: ['#b9553a', '#a94a33', '#c46a45'], slate: ['#556070', '#4a5666', '#657282'] },
-  cartoon: { tile: ['#e85a3c', '#f08a2b', '#d94a3a'], slate: ['#3f5f8f', '#2f4a78', '#4f7bb0'] },
-};
-const roofHexFor = (look: BuildingLook, plan: RoofPlan) => { const set = ROOF_TONES[look][plan.material]; return set[Math.min(set.length - 1, Math.floor(plan.tone * set.length))]; };
+const roofHexFor = (look: BuildingLook, plan: RoofPlan) => roofTone(look, plan.material, plan.tone);
 
 /**
  * The large-building tier (largeBuildingTier.ts): a civic facade system from the shared cells,
@@ -102,7 +90,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     if ((FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) && p.facadeStyle !== bay.layout) building.period = p.facadeStyle as FacadeStyle;
   } else {
     layout = (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19';
-    building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b', shop: layout !== 'tower' && (shopfrontOf(p) ? shopfrontOf(p) !== 'quiet' : hashShop(id)) };
+    building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : DEFAULT_FACADE_WALL_HEX, shop: layout !== 'tower' && (shopfrontOf(p) ? shopfrontOf(p) !== 'quiet' : hashShop(id)) };
     building.openings = proceduralOpenings(layout);
     plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT; building.plainLayer = plain;
   }
@@ -117,7 +105,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // labelled business gets its signature storefront.
   if (building.shopfront && typeof p.shopColour === 'string') building.accentHex = p.shopColour;
   // A hand-modelled front (frontCarrier) replaces the generated signature.
-  if (building.shopfront && Array.isArray(p.shopSignature) && !p.frontCarrier) building.signature = { at: p.shopSignature as [number, number], hex: typeof p.shopColour === 'string' ? p.shopColour : '#1f4d3a' };
+  if (building.shopfront && Array.isArray(p.shopSignature) && !p.frontCarrier) building.signature = { at: p.shopSignature as [number, number], hex: typeof p.shopColour === 'string' ? p.shopColour : DEFAULT_SHOP_SIGN_HEX };
   // A chain supermarket: its own fascia, logo panel and brand word (shopfronts.ts SUPERMARKET_CHAINS).
   const chain = Array.isArray(p.shopChain) ? p.shopChain as [string, number, number] : null;
   if (building.shopfront && chain && SUPERMARKET_CHAINS[chain[0]] && !p.frontCarrier) building.chain = { at: [chain[1], chain[2]], look: SUPERMARKET_CHAINS[chain[0]] };

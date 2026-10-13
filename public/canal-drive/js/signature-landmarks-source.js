@@ -314,7 +314,8 @@ export class SignatureLandmarks {
         if (!child.isMesh || !child.material) return;
         const materials = Array.isArray(child.material) ? child.material : [child.material];
         for (const material of materials) {
-          if (!material.emissive) continue;
+          // Recipe-look materials are shared by every house with that slot and tint; tinting one would light them all.
+          if (!material.emissive || material.userData?.[RECIPE_LOOK_SHARED]) continue;
           if (!material.userData.canalRecallBaseEmissive) {
             material.userData.canalRecallBaseEmissive = material.emissive.clone();
           }
@@ -514,7 +515,8 @@ export class SignatureLandmarks {
    * Recipe-pipeline GLBs tag materials with a `materialSlot`; they get the
    * city's look (shared brick/glass/roof textures, palette mapping, fixed-light
    * shade; see buildingRecipe/recipeLook.ts) so they sit with the procedural
-   * facades around them. Other models pass through untouched (returns null:
+   * facades around them. In the shared frame the same slots are lit by its
+   * one rig instead of the baked shade. Other models pass through untouched (returns null:
    * they keep the synchronous load path).
    */
   _dress(gltf) {
@@ -525,7 +527,8 @@ export class SignatureLandmarks {
       const image = new Image();
       image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
       this._recipeLookReady = image.decode().then(() => image, () => null)
-        .then(brick => { this._recipeLook = createRecipeLook(THREE, { brick, anisotropy: window.matchMedia?.('(pointer: coarse)').matches ? 1 : 4 }); return this._recipeLook; });
+        // `?sharedFrame=1`: lit by the one rig like the facades and landmarks around them (docs/LOOK.md); otherwise the baked city shade.
+        .then(brick => { this._recipeLook = createRecipeLook(THREE, { brick, anisotropy: window.matchMedia?.('(pointer: coarse)').matches ? 1 : 4, lit: !!this.sharedFrame }); return this._recipeLook; });
     }
     return this._recipeLookReady.then(look => { look.apply(gltf.scene); gltf.scene.userData.recipeLook = true; return gltf; });
   }

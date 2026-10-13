@@ -32,7 +32,7 @@
 // These are display priors, not evidence: the period comes from the BAG
 // construction year (via `building-facts`), the rest is invented rhythm.
 
-import { CONTEXTUAL_BUILDING_COLOURS, materialWallDisplayPrior, type ContextualBuildingColour } from './cityAppearancePalette.js';
+import { CONTEXTUAL_BUILDING_COLOURS, FACADE_STYLE_COLOURS, PERIOD_FROM, materialWallDisplayPrior, type ContextualBuildingColour } from './look/palette.js';
 import { BUILDING_FACT_ZOOM, plausibleYear, shortBuildingId, type BuildingFactTile } from './buildingFacts.js';
 
 export const FACADE_STYLES = ['canal', 'c19', 'school', 'postwar', 'modern', 'tower'] as const;
@@ -56,15 +56,6 @@ export const FACADE_MIN_FOOTPRINT_M2 = 14;
 /** Image name prefix; the tile zoom follows it (`gf18-canal-priorBrickRed`). */
 export const FACADE_IMAGE_PREFIX = 'gf';
 
-/** The palette slice each period draws from. Plausible, not observed. */
-export const FACADE_STYLE_COLOURS: Record<FacadeStyle, readonly ContextualBuildingColour[]> = {
-  canal: ['priorBrickRed', 'priorBrickBrown', 'priorBrickDark', 'priorPlaster'],
-  c19: ['priorBrickRed', 'priorBrickBrown', 'priorPlaster'],
-  school: ['priorBrickRed', 'priorBrickBrown', 'priorBrickDark'],
-  postwar: ['priorBrickBuff', 'priorBrickRed', 'priorModernGrey'],
-  modern: ['priorModernLight', 'priorModernGrey', 'priorBrickBuff'],
-  tower: ['priorModernGrey', 'priorModernLight'],
-};
 
 export type FacadeInput = { year: number | null; heightM: number; minHeightM: number; footprintM2: number };
 
@@ -78,9 +69,10 @@ export function facadeStyleFor({ year, heightM, minHeightM, footprintM2 }: Facad
   const known = year !== null && plausibleYear(year);
   if (heightM >= 30 && (!known || year! >= 1950)) return 'tower';
   if (!known) return heightM <= 14 ? 'c19' : 'postwar';
-  if (year! < 1860) return 'canal';
-  if (year! < 1915) return 'c19';
-  if (year! < 1945) return 'school';
+  // The one era scheme (look/palette.ts); post-war splits once more at 1985.
+  if (year! < PERIOD_FROM.c19) return 'canal';
+  if (year! < PERIOD_FROM.school) return 'c19';
+  if (year! < PERIOD_FROM.modern) return 'school';
   if (year! < 1985) return 'postwar';
   return 'modern';
 }
