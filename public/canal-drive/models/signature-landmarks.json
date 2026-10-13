@@ -48070,6 +48070,86 @@
         "bytes": 33260,
         "triangles": 1316
       }
+    },
+    "wilhelmina-ruiterstandbeeld": {
+      "id": "wilhelmina-ruiterstandbeeld",
+      "name": "Ruiterstandbeeld Wilhelmina",
+      "landmarkId": "extract_landmarks_1386134518",
+      "modelUrl": "./models/wilhelmina-ruiterstandbeeld.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8923071,
+          52.3691751
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 3.8,
+        "widthMetres": 2.8
+      },
+      "surveyed": {
+        "anchor": [
+          4.8923071,
+          52.3691751
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Backlog destination point (OSM memorial); statue position and facing read from Gemeente Amsterdam panoramas (2025-06-30, 2025-01-20); the facing is a visual estimate, not a surveyed bearing"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "bronze": "#3b3f3a",
+        "concrete": "#8f9091",
+        "greyBrick": "#6e7073",
+        "gold": "#a38d4d"
+      },
+      "attribution": {
+        "title": "Ruiterstandbeeld Wilhelmina - original low-poly reconstruction",
+        "author": "Map Recall; commemorated sculpture by Theresia van der Pant (1960)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Equestrian_statue_of_Wilhelmina,_Rokin_(Amsterdam)",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly figure and pedestal. Pose and proportions from RCE photographs by Loek Tangel (CC BY-SA 4.0), a FaceMePLS photograph (CC BY 2.0) and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated from the photographs. No pixels or third-party meshes imported."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -1.960498571395874,
+          0,
+          -1.3812718391418457
+        ],
+        "max": [
+          1.960498571395874,
+          7.929999828338623,
+          1.3812718391418457
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8923071,
+          52.3691751
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 3.920997142791748,
+        "heightMetres": 7.929999828338623,
+        "depthMetres": 2.7625436782836914,
+        "depthCoverage": 0.9866227422441756
+      },
+      "triangles": 3716,
+      "bytes": 53436,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "ce5ceee85bd19387",
+        "buildVersion": 2,
+        "bytes": 27580,
+        "triangles": 1206
+      }
     }
   }
 }
