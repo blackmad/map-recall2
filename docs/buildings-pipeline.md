@@ -292,11 +292,50 @@ intent does not use them; the police kit is exercised on that massing in
 `largeTier.test.ts` (and rendered at `artifacts/building-recipes/police-kit-demo/`).
 Fit/compile takes 50–170 ms per building.
 
+### Arched openings, loading axes, name boards (2026-10-13)
+
+`blockBuilding/arch.ts`: `WinParams.arch = {kind: 'round' | 'segmental' |
+'pointed', segments?, rise?, springBar?, band?}`. The outline (rectangle plus a
+polygonal head, 4-10 segments by width, exact springing points and apex) is cut
+into one 3DBAG member wall (`PanelCtx.cutOutline`; `HoleRect` carries the
+outline, so the deferred wall is triangulated around it) with a reveal quad
+per outline edge, a frame ring and glass at the back, mullions stopping under
+the head. Bands: `out: 0` is a flush brick rowlock band 1.2 cm proud in an
+`arch@gN` slot a shade darker than the wall (cheap; its edges are seams on the
+wall), `out > 0` a projecting stone band; imposts and keystone optional.
+Bands and blocks must fit one emitted member face with 4 cm to spare. Default
+compose output is byte-identical (`test:block-kit-installed`); tests and a
+synthetic-wall golden in `buildingRecipe/archOpenings.test.ts`.
+
+Intent (wall group): `arches: {windows, ground, band: brick|stone|voussoir|none}`,
+`ground: "portals"` (tall doors in every bay), `hoist: {every, first} | {bays,
+arch}` (loading-door stack: tall doors with sill and spring bar on the upper
+storeys, a wide portal below), `nameBoards` (white plates over the hoist-bay
+portals of the widest panel, left to right), `sills: false`, `frames: false`
+(dark frames that read as glass: no ring, saves ~8 triangles per window),
+`windows: "narrow"`. Top level `closedBands: true` closes string courses,
+cornices and fascias (back face, mitred end caps) where 3DBAG faces stand cm
+out of plane. Wall lettering on a group without an entrance sits between the
+first two window rows on the emitted wall face. `large-stats.ts` counts
+triangles without the budget; `large-mesh-hashes.ts` compares every large
+recipe's mesh with `large-mesh-golden.json` (fit-golden covers only the fit).
+
+| House | Pand | Tris | Gates | `audit:glb` |
+| --- | --- | --- | --- | --- |
+| `entrepotdok-164981` | 0363100012164981 | 11,156 | pass | PASS (zfight-near warning: flush bands) |
+| `overtoom-283-084999` (Reade) | 0363100012084999 | 5,404 | pass | PASS |
+| `amstel-142-186290` (Eden Hotel) | 0363100012186290 | 4,049 | pass | PASS |
+| `nieuwpoortstraat-126319` | 0363100012126319 | 7,198 | pass | PASS |
+| `ledenberch-38-243844` | 0363100012243844 | 324 | pass | PASS |
+
+The Entrepotdok wall is 156 m: at 12k triangles only its canal front and one
+rear panel get openings; the rest is blank (notes list what the photos show).
+
 ### Known gaps
 
 - Curved fronts (De Balie's bow, the IISG's curve) are straight in 3DBAG.
-- Arched portals, pediments, basement windows, colonnades and masts are below
-  the component grain; notes say so per house.
+- Pediments, basement windows, colonnades and masts are below the component
+  grain; notes say so per house. Arched openings: see above.
 - Wall groups are authored by surface index; `walls.ts` lists them, but a
   re-extracted 3DBAG item renumbers surfaces (re-run `walls.ts`, fit-golden
   catches the change).
