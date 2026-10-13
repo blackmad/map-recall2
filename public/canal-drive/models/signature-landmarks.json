@@ -861,10 +861,10 @@
       "bytes": 431608,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "987f5c8b60b72377",
+        "sourceHash": "a3168550ec318afd",
         "buildVersion": 2,
-        "bytes": 84992,
-        "triangles": 4637
+        "bytes": 84924,
+        "triangles": 4631
       }
     },
     "westerkerk": {
@@ -9935,6 +9935,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free low-poly reconstruction of the actual twin stepped residential building. Adjacent Marcanti College and surrounding low-rise housing remain separate."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -32.93399429321289,
@@ -9943,7 +9944,7 @@
         ],
         "max": [
           32.95189666748047,
-          55.012001037597656,
+          55,
           13.705741882324219
         ]
       },
@@ -9959,18 +9960,18 @@
       },
       "extent": {
         "widthMetres": 65.88589096069336,
-        "heightMetres": 55.01200141906739,
+        "heightMetres": 55.00000038146973,
         "depthMetres": 25.349709510803223,
         "depthCoverage": 1.0071088712046778
       },
-      "triangles": 31412,
-      "bytes": 402556,
+      "triangles": 31352,
+      "bytes": 402976,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "09dfd6fe2056b4d9",
+        "sourceHash": "d023352d83b52aeb",
         "buildVersion": 2,
-        "bytes": 93552,
-        "triangles": 5024
+        "bytes": 93556,
+        "triangles": 4970
       }
     },
     "zuiveringshal-west": {
@@ -36373,17 +36374,18 @@
           ]
         ]
       },
+      "bagYear": 2022,
       "buildingCategory": "ordinary",
       "bounds": {
         "min": [
           -12.871000289916992,
           0,
-          -25.508041381835938
+          -25.527896881103516
         ],
         "max": [
           39.375,
           49.97200012207031,
-          27.766874313354492
+          27.784753799438477
         ]
       },
       "placement": {
@@ -36397,19 +36399,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 53.27491569519043,
+        "widthMetres": 53.31265068054199,
         "heightMetres": 49.97200012207031,
         "depthMetres": 52.24600028991699,
         "depthCoverage": 1.567066595378434
       },
       "triangles": 21307,
-      "bytes": 333564,
+      "bytes": 334372,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "e12cd75c5c4da676",
+        "sourceHash": "962471b9b834d058",
         "buildVersion": 2,
-        "bytes": 132012,
-        "triangles": 6205
+        "bytes": 132564,
+        "triangles": 6202
       }
     },
     "asterweg-23": {

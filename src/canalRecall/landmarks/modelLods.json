@@ -42,10 +42,10 @@
   "triangles": 6909
  },
  "stadhuis": {
-  "sourceHash": "987f5c8b60b72377",
+  "sourceHash": "a3168550ec318afd",
   "buildVersion": 2,
-  "bytes": 84992,
-  "triangles": 4637
+  "bytes": 84924,
+  "triangles": 4631
  },
  "westerkerk": {
   "sourceHash": "140201e4cd470a98",
@@ -648,10 +648,10 @@
   "triangles": 2186
  },
  "de-piramides": {
-  "sourceHash": "09dfd6fe2056b4d9",
+  "sourceHash": "d023352d83b52aeb",
   "buildVersion": 2,
-  "bytes": 93552,
-  "triangles": 5024
+  "bytes": 93556,
+  "triangles": 4970
  },
  "zuiveringshal-west": {
   "sourceHash": "5978f719de17ff3e",
@@ -1458,10 +1458,10 @@
   "triangles": 2251
  },
  "grasweg-116": {
-  "sourceHash": "e12cd75c5c4da676",
+  "sourceHash": "962471b9b834d058",
   "buildVersion": 2,
-  "bytes": 132012,
-  "triangles": 6205
+  "bytes": 132564,
+  "triangles": 6202
  },
  "oostenburgermiddenstraat-228": {
   "sourceHash": "b44bb44386406812",

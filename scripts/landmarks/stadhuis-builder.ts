@@ -27,7 +27,7 @@ export function buildStadhuis(_w:number,_d:number,b:BuildingTools){
   if(roofOnly)continue;
   for(const poly of part.localPolygons){const ring=poly[0];
    // On elevated parts, the source min-height is retained: no infill to ground.
-   band(ring,top-.22,.195,.28,colour==='glass'?'frame':'stone');
+   band(ring,top-.22,.17,.28,colour==='glass'?'frame':'stone'); // coping top 5 cm under the roof plane (2.5 cm z-fought from the air, zfight-audit 2026-10-13)
    edges(ring,(x,z,length,a,nx,nz,p0,p1)=>{
     if(length<1.2)return;
     const count=Math.max(1,Math.floor(length/(part.osmId==='w751573304'?3.2:3.6)));
