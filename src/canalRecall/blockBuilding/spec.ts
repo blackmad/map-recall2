@@ -30,6 +30,11 @@ export interface WinParams {
   sillOnWall?: boolean;
   /** recess mode: glazing bars stand this far (m) in front of the glass (default 0.015; 0.035 clears the audit's z-fight band; opt-in) */
   barD?: number;
+  /**
+   * tilted bay (box) window: a frame ring of closed solids round the opening, `t` wide, standing `outBottom` off the wall at
+   * the sill and `outTop` at the head, so its face leans (hotel box windows); the glass stays in the opening (opt-in)
+   */
+  tilt?: { slot: Slot; t: number; outTop: number; outBottom: number };
   /** arched head (round, segmental or pointed) with reveals and an optional arch band (opt-in, arch.ts) */
   arch?: import('./arch.ts').ArchParams;
 }

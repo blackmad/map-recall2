@@ -33,6 +33,8 @@ export interface LargeGroupFit {
   panels: number[]; surfaces: number[]; mainPanel: number | null; bearingDeg: number | null;
   widthM: number; eavesM: number; flatTop: boolean; storeys: number; storeyHeightsM: number[]; lines: number[];
   bays: number; pitchM: number; ground: LargeGround; cornice: boolean; deepBars?: boolean;
+  /** perforated-brick screen lattice over the group's walls */
+  screen?: boolean;
   entrance: {panel: number; bay: number; storeys: number; canopy: boolean} | null;
   garage: {panel: number; bays: number[]} | null;
   signage: {text: string; colour: string; mount: 'fascia' | 'wall' | 'glazing' | 'canopy'} | null;
@@ -230,7 +232,7 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
     }
     const specSystem = SYSTEM_SLOT(gi);
     systems[specSystem] = largeSystem(w.system, {pitchM, lines: st.lines, ground, windows: w.windows, stringCourses: w.stringCourses, piers: w.piers, balconyStoreys: w.balconies?.storeys, balconyRail: w.balconies?.rail, blankStoreys: w.blankStoreys, slots: {...slots, ...(arch ? {arch} : {})},
-      ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {})});
+      ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {})});
     // Curved front: one bay rhythm along each run of linked facets (two or more panels of this group), at the group's pitch.
     let curve: LargeGroupFit['curve'];
     if (w.curve) {
@@ -246,7 +248,7 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
     }
     groups.push({index: gi, system: w.system, specSystem, panels: own.map(p => p.index), surfaces: [...w.wallSurfaces], mainPanel: main?.index ?? null, bearingDeg: main ? Math.round(bearingOfNormal(main.n)) : null,
       widthM: r3(widthM), eavesM: r3(eaves), flatTop, storeys: st.storeys, storeyHeightsM: st.heights, lines: st.lines, bays, pitchM: r3(pitchM), ground, cornice: !!w.cornice,
-      ...(w.deepBars ? {deepBars: true} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
+      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
       ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(curve ? {curve} : {}), slots});
   });
   // Unlisted walls: one system at the civic storey height and the system's default pitch.
