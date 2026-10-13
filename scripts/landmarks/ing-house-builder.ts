@@ -14,7 +14,7 @@ export function buildIngHouse(_w:number,_d:number,b:BuildingTools):void{
  // Curved/faceted belly tapers inward below the glazed outer skin. The centre
  // stays in the air: no parcel slab, no fake solid plinth filling the undercroft.
  const shape=new T.Shape(ring.slice(0,-1).map(([x,z])=>new T.Vector2(x*.965,z*.74)));
- const bellyBottom=upwardRoofPlane(shape,10.8);bellyBottom.scale(1,-1,1);bellyBottom.translate(0,21.6,0);bellyBottom.userData.role='belly-underside';b.add(bellyBottom,'frame');
+ const bellyBottom=upwardRoofPlane(shape,10.8);bellyBottom.scale(1,-1,1);{/* mirroring keeps the winding, so the underside faced up while its vertex normals faced down */const ix=bellyBottom.index!;for(let i=0;i<ix.count;i+=3){const t=ix.getX(i+1);ix.setX(i+1,ix.getX(i+2));ix.setX(i+2,t);}}bellyBottom.translate(0,21.6,0);bellyBottom.userData.role='belly-underside';b.add(bellyBottom,'frame');
  for(let i=0;i<ring.length-1;i++){
   const [ax,az]=ring[i],[qx,qz]=ring[i+1];
   // Four bounded rings approximate the rounded aluminium corner visible in
@@ -46,7 +46,7 @@ export function buildIngHouse(_w:number,_d:number,b:BuildingTools):void{
   const foot=new T.Vector3(x+3.6,.5,z+side*.8),head=new T.Vector3(x,10.9,z),axis=head.clone().sub(foot),length=axis.length();
   const rotation=new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),axis.clone().normalize());
   const local:P[]=[[-.35,0,-.5],[.35,0,-.5],[.35,0,.5],[-.35,0,.5],[-1.65,length,-.75],[1.65,length,-.75],[1.65,length,.75],[-1.65,length,.75]];
-  const points=local.map(v=>new T.Vector3(...v).applyQuaternion(rotation).add(foot).toArray() as P),indices=[[0,3,2,1],[4,5,6,7],[0,1,5,4],[1,2,6,5],[2,3,7,6],[3,0,4,7]],positions:number[]=[];
+  const points=local.map(v=>new T.Vector3(...v).applyQuaternion(rotation).add(foot).toArray() as P),indices=[[0,1,2,3],[7,6,5,4],[4,5,1,0],[5,6,2,1],[6,7,3,2],[7,4,0,3]],positions:number[]=[];
   for(const f of indices)for(let j=1;j<f.length-1;j++)positions.push(...points[f[0]],...points[f[j]],...points[f[j+1]]);
   const leg=new T.BufferGeometry();leg.setAttribute('position',new T.Float32BufferAttribute(positions,3));leg.computeVertexNormals();leg.userData.role='inclined-support';b.add(leg,'white');
   // A slender exposed stiffener follows the sloping outer face of each plate.

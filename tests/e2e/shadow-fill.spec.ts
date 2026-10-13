@@ -33,6 +33,8 @@ const ALL_MODES = [
   { label: 'citylook', query: '?sharedFrame=1&streetChunks=1&cityLook=1' },
 ];
 const MODES = ALL_MODES.filter(m => !process.env.SHADOW_MODES || process.env.SHADOW_MODES.split(',').includes(m.label));
+/** Sun shadow normal bias override (default: the rig's 0.25); the Palace sweep of the inward-normals lane ran 0.25 and 0.5. */
+const NORMAL_BIAS = process.env.SHADOW_NORMAL_BIAS ? Number(process.env.SHADOW_NORMAL_BIAS) : undefined;
 const ONLY = process.env.SHADOW_SPOTS?.split(',').filter(Boolean);
 
 type Spot = { name: string; target: [number, number]; bearing: number; distM: number; altM: number; targetAltM: number; model?: string };
@@ -72,10 +74,11 @@ type Config = 'before' | 'depthFix' | 'after';
 const CONFIGS: Config[] = ['before', 'depthFix', 'after'];
 
 /** Page state for one shot: shadows on/off, depth-range fix, fill, which things draw. */
-async function stage(page: Page, s: { shadows: boolean; fullDepthRange?: boolean; fill?: number; city?: boolean; model?: string | null }): Promise<void> {
+async function stage(page: Page, s: { normalBias?: number; shadows: boolean; fullDepthRange?: boolean; fill?: number; city?: boolean; model?: string | null }): Promise<void> {
   await page.evaluate(async (s) => {
     const vm = (window as any).canalRecallGame.vectorMap, sf = vm._sharedFrame, map = vm.map;
     sf.setShadows(s.shadows);
+    if (s.normalBias !== undefined) sf.rig.sun.shadow.normalBias = s.normalBias;
     sf.renderer.shadowMap.fullDepthRange = s.fullDepthRange !== false;
     sf.rig.options.shadowIntensity = 1 - (s.fill ?? 0);
     vm._threeBuildings?.setVisible(s.city !== false);
@@ -131,10 +134,10 @@ for (const mode of MODES) test(`shadow fill shots: ${mode.label}`, async ({ page
     const noModel = spot.model ? (await stage(page, { shadows: false, model: spot.model }), await shot()) : null;
     const on: Record<Config, Buffer> = {} as any;
     for (const config of CONFIGS) {
-      await stage(page, { shadows: true, fullDepthRange: config !== 'before', fill: config === 'after' ? SHADOW_FILL : 0 });
+      await stage(page, { normalBias: NORMAL_BIAS, shadows: true, fullDepthRange: config !== 'before', fill: config === 'after' ? SHADOW_FILL : 0 });
       on[config] = await shot(config);
     }
-    await stage(page, { shadows: true });
+    await stage(page, { normalBias: NORMAL_BIAS, shadows: true });
     // Masks: building pixels (streamed city + landmarks), and the named model's own pixels.
     const n = off.length / 3;
     const diff = (a: Buffer, b: Buffer, i: number) => Math.abs(a[i] - b[i]) + Math.abs(a[i + 1] - b[i + 1]) + Math.abs(a[i + 2] - b[i + 2]);

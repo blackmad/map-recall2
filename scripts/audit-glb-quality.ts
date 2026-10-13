@@ -36,7 +36,7 @@ import {NodeIO} from '@gltf-transform/core';
 import {ALL_EXTENSIONS} from '@gltf-transform/extensions';
 import {MeshoptDecoder} from 'meshoptimizer';
 import {analyseSoup, DEFAULT_THRESHOLDS, materialSlotCoverage, SLOT_COVERAGE_GATE, type QualityReport, type SlotCoverage, type Thresholds, type TriSoup} from '../src/canalRecall/landmarks/glbQuality';
-import {geometryAudit, regressions, type GeometryAuditReport} from '../src/canalRecall/landmarks/geometryAudit';
+import {geometryAudit, NORMAL_WARN, regressions, type GeometryAuditReport} from '../src/canalRecall/landmarks/geometryAudit';
 import type {ElevationsFile} from '../src/canalRecall/landmarks/facadeCompare';
 import {loadMaterialSoup} from './landmarks/material-soup';
 import {describeGate, inventoryGate} from './landmarks/landmark-inventory-gate';
@@ -158,7 +158,7 @@ function mergeGeometry(report: QualityReport, g: GeometryAuditReport, base: Reco
 
 /** Strip triangle lists from the JSON report (they are only needed for the evidence shots). */
 function slim(g: GeometryAuditReport) {
-  return {...g, openings: {...g.openings, issues: g.openings.issues.slice(0, 40).map(({triangles, ...i}) => ({...i, triangles: triangles.length}))},
+  return {...g, normals: {...g.normals, inwardTriangles: g.normals.inwardTriangles.length}, openings: {...g.openings, issues: g.openings.issues.slice(0, 40).map(({triangles, ...i}) => ({...i, triangles: triangles.length}))},
     zfight: {...g.zfight, patches: g.zfight.patches.slice(0, 40).map(({trisA, trisB, samples, ...p}) => ({...p, triangles: trisA.length + trisB.length}))},
     rhythm: g.rhythm.map(f => ({...f, mismatched: f.mismatched.slice(0, 20)}))};
 }
@@ -231,6 +231,19 @@ function geometryMd(rows: Row[]): string {
   return lines.join('\n') + '\n';
 }
 
+function normalsMd(rows: Row[]): string {
+  const g = rows.filter(r => r.geometry?.normals);
+  if (!g.length) return '';
+  const bad = g.filter(r => r.geometry!.normals.inwardShare >= NORMAL_WARN || r.geometry!.normals.badNormalShare >= NORMAL_WARN);
+  return ['', '## Inward-facing normals', '',
+    `${g.length} models, ${bad.length} at or above ${NORMAL_WARN * 100}%. Inward = share of triangle area in closed shells whose face normal points into the solid (ray parity); open = share of area in shells parity cannot judge; bad vertex normals = vertex normal more than 90 degrees from its face normal.`, '',
+    '| # | id | inward | open shells | bad vertex normals | worst materials |', '|---|---|---|---|---|---|',
+    ...[...g].sort((a, b) => b.geometry!.normals.inwardShare - a.geometry!.normals.inwardShare).filter(r => r.geometry!.normals.inwardShare >= NORMAL_WARN || r.geometry!.normals.badNormalShare >= NORMAL_WARN).map((r, i) => {
+      const n = r.geometry!.normals;
+      return `| ${i + 1} | ${r.id} | ${(n.inwardShare * 100).toFixed(1)}% | ${(n.openShare * 100).toFixed(0)}% | ${(n.badNormalShare * 100).toFixed(1)}% | ${n.materials.filter(m => m.inwardShare >= NORMAL_WARN || m.badNormalShare >= NORMAL_WARN).sort((a, b) => b.inwardArea - a.inwardArea).slice(0, 3).map(m => `${m.name} ${(m.inwardShare * 100).toFixed(0)}% of ${m.area.toFixed(0)} m2`).join(', ')} |`;
+    })].join('\n') + '\n';
+}
+
 function slotsMd(rows: Row[]): string {
   const s = rows.filter(r => r.slots);
   if (!s.length) return '';
@@ -297,7 +310,7 @@ async function main(): Promise<void> {
     fs.mkdirSync(out, {recursive: true});
     const tag = arg('set') === 'ordinary' ? 'ordinary-' : '';
     fs.writeFileSync(path.join(out, `${tag}report.json`), JSON.stringify({thresholds: th, models: rows.map(r => ({...r, geometry: r.geometry && slim(r.geometry)}))}, null, 1));
-    fs.writeFileSync(path.join(out, `${tag}summary.md`), md(rows, th) + geometryMd(rows) + slotsMd(rows));
+    fs.writeFileSync(path.join(out, `${tag}summary.md`), md(rows, th) + geometryMd(rows) + normalsMd(rows) + slotsMd(rows));
     if (flag('write-slot-baseline')) {
       const models: Record<string, number> = {...(slotBaseline?.models ?? {})};
       for (const r of rows) if (r.slots) models[r.id] = +r.slots.coverage.toFixed(4);
