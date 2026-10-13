@@ -24,6 +24,7 @@ import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, ty
 import { flatDeckBody, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, pointInRing, type DeckBuildInfo } from './decks.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
 import { buildParks, drapeBisect, type ParkBuildStats, type ParksCell } from './parks.js';
+import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats } from './pockets.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
 import type { Rect } from './groundStore.js';
 
@@ -46,7 +47,7 @@ export interface BuiltCell {
   rect: Rect;
   layers: Partial<Record<GroundLayer, PackedMesh>>;
   mask: GroundMask | null;
-  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number }) | null };
+  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number }) | null; pockets?: PocketStats | null };
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
@@ -70,6 +71,8 @@ export interface CellInput {
   osmAround: OsmGroundExtract[];
   /** The cell's parks (parks-v1), null when it has none or parks are off. */
   parks?: ParksCell | null;
+  /** Pave the land pockets near junctions (pockets.ts); default on at LOD 0. */
+  pockets?: boolean;
   /** OSM path ways the 3×3 neighbourhood's park path polygons replace (not drawn as bands). */
   dropWays?: readonly number[];
   project: (lngLat: [number, number]) => Vec2;
@@ -244,6 +247,15 @@ export function buildCell(input: CellInput): BuiltCell {
     bridges.flat.push({ id: input.flatDeckMeta?.[k]?.id ?? '', railingPosts, frames });
   });
 
+  // Land pockets near junctions (pockets.ts): bare land every layer around encloses, paved under the bands. Near ring only.
+  let pockets: PocketStats | null = null;
+  if (lod === 0 && input.pockets !== false) {
+    const cover: PocketCover<PocketSurface>[] = (Object.keys(parts) as GroundLayer[]).filter(l => !NOT_COVER.has(l)).map(l => ({ meshes: parts[l]!, as: POCKET_VOTE[l] ?? null }));
+    const r = fillPockets(cover, rect, [...streets.junctionPoints, ...onBridges.junctionPoints], onLand, POCKET_LIFT);
+    for (const [s, m] of Object.entries(r.meshes)) add(s as PocketSurface, m as MeshArrays);
+    pockets = r.stats;
+  }
+
   const packed: Partial<Record<GroundLayer, PackedMesh>> = {};
   const byLayer: Record<string, number> = {};
   let triangles = 0, bytes = 0;
@@ -261,9 +273,16 @@ export function buildCell(input: CellInput): BuiltCell {
   if (maskOut) bytes += maskOut.texels.byteLength;
   return {
     key, lod, rect, layers: packed, mask: maskOut,
-    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats },
+    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats, pockets },
   };
 }
+
+/** Layers that do not hide the land from above (vertical faces, thin marks on bands, the land itself). */
+const NOT_COVER: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['land', 'kerb', 'bollard', 'furniture', 'hedge', 'deckBody', 'paint', 'tram']);
+
+type PocketSurface = 'asphalt' | 'klinker' | 'paving';
+/** What a pocket bordered by a layer becomes (pockets.ts): street surfaces vote for themselves, cycle paths and squares for paving; water, parks and decks for nothing. */
+const POCKET_VOTE: Partial<Record<GroundLayer, PocketSurface>> = { asphalt: 'asphalt', klinker: 'klinker', paving: 'paving', cycle: 'paving', square: 'paving', gravel: 'paving' };
 
 /** Park surfaces rank between the OSM areas (1) and the street bands (2+), as their lifts do (parks.ts PARK_LIFT). */
 export const PARK_RANK: Partial<Record<GroundLayer, number>> = { lawn: 1.2, bed: 1.4, shrub: 1.4, bark: 1.4, sand: 1.5, pond: 1.5, parkGravel: 1.7, parkPath: 1.7 };

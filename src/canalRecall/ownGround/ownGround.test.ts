@@ -20,6 +20,7 @@ import { buildWaterMask, maskDistance, quayWallMesh, waterSurfaceMesh, waterZAt 
 import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableFrame, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
+import { fillPockets, POCKET_LIFT } from './pockets';
 import type { DeckProfile } from '../elevation/bridgeDeck';
 import { decodeProfile } from '../elevation/bridgeDeck';
 import { localToLngLat, type BridgeExtract, type ElevationIndex } from '../elevation/elevationData';
@@ -952,4 +953,22 @@ test('bridge bands carry vertices across: a 5 m band over a 4.2 m deck follows i
   const before = centre(), after = centre(2);
   assert.ok(before.length && Math.min(...before) < 1.06 - 0.05, `edges-only band sags under the deck (${Math.min(...before).toFixed(3)})`);
   assert.ok(after.length && Math.min(...after) >= 1.06 + LIFT.carriageway - 1e-6, `band on the deck (${Math.min(...after).toFixed(3)})`);
+});
+
+test('land pockets: a small gap enclosed by sidewalks near a junction is paved; open land, far gaps and park-bordered gaps are not', () => {
+  // A 40 m cell; four 2 m sidewalks enclose a 4 × 4 m gap at (10..14, 10..14); a park ring encloses another at (26..30, 10..14).
+  const quad = (m: MeshArrays, x0: number, y0: number, x1: number, y1: number) => { const b = m.positions.length / 3; m.positions.push(x0, y0, 0, x1, y0, 0, x1, y1, 0, x0, y1, 0); m.uvs.push(0, 0, 0, 0, 0, 0, 0, 0); m.indices.push(b, b + 1, b + 2, b, b + 2, b + 3); };
+  const paving = emptyMesh(), park = emptyMesh();
+  quad(paving, 8, 8, 16, 10); quad(paving, 8, 14, 16, 16); quad(paving, 8, 10, 10, 14); quad(paving, 14, 10, 16, 14);
+  quad(park, 24, 8, 32, 10); quad(park, 24, 14, 32, 16); quad(park, 24, 10, 26, 14); quad(park, 30, 10, 32, 14);
+  const cover = [{ meshes: [paving], as: 'paving' as const }, { meshes: [park], as: null }];
+  const r = fillPockets(cover, [0, 0, 40, 40], [[12, 20]], () => 0, POCKET_LIFT);
+  assert.equal(r.stats.pockets, 1, 'the sidewalk pocket only (the park one is skipped, the open land touches the cell edge)');
+  assert.equal(r.stats.skipped, 1);
+  assert.equal(r.stats.m2, 16);
+  const tris = faces(r.meshes.paving!);
+  assert.ok(tris.every(f => f.c[0] > 9.7 && f.c[0] < 14.3 && f.c[1] > 9.7 && f.c[1] < 14.3), 'inside the gap, grown by half a pixel');
+  assert.ok(tris.every(f => Math.abs(f.c[2] - POCKET_LIFT) < 1e-9), 'under every band');
+  assert.equal(fillPockets(cover, [0, 0, 40, 40], [[12, 80]], () => 0, POCKET_LIFT).stats.pockets, 0, 'no junction within POCKET_NEAR_M');
+  assert.equal(fillPockets(cover, [0, 0, 40, 40], [[12, 20]], () => 0, POCKET_LIFT, { maxM2: 10 }).stats.pockets, 0, 'larger than the cap');
 });

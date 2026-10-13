@@ -212,6 +212,7 @@ async function main(): Promise<void> {
     check(hit?.id === id && hit.hint.material === want, `${id}: register hint found at its footprint (${hit?.id} ${hit?.hint.material})`);
   }
   await deckTopRegressions();
+  await pocketRegressions();
   // Named road regressions: every band of the listed ways reads as street at both LODs.
   for (const reg of [DE_CLERCQSTRAAT]) {
     const [x, y] = toLocal(reg.at[0], reg.at[1]), key = store.cellAt(x, y);
@@ -299,6 +300,30 @@ async function deckTopRegressions(): Promise<void> {
       }
     }
     check(!bad.length, `${id} (${label}): deck top is a street band at ${probes - bad.length}/${probes} probes${bad.length ? ` (${bad.slice(0, 4).join(' ')})` : ''}`);
+  }
+}
+
+/**
+ * Land pockets (lane belt audit 2026-10-14, the Rozengracht corners): at Rozengracht × Marnixstraat the sidewalks of
+ * the dual carriageways and a separately mapped footway stop short of each other, so a 4 × 5 m patch of bare land
+ * showed on the north-east corner the BGT surveys as voetpad. With the pocket fill (pockets.ts) every probe is street;
+ * without it the same probes read land (the pin is live).
+ */
+const POCKETS: [string, number, number][] = [['rozengracht-marnixstraat-ne', 4.875994, 52.37239]];
+async function pocketRegressions(): Promise<void> {
+  for (const [id, lng, lat] of POCKETS) {
+    const [x, y] = toLocal(lng, lat), keys = GroundStore.neighbours(store.cellAt(x, y)).filter(k => store.covers(k));
+    const tops = async (pockets: boolean) => {
+      const cells: BuiltCell[] = [];
+      for (const k of keys) cells.push(buildCell({ ...(await store.cellInput(k, 0)), pockets }));
+      const out: string[] = [];
+      for (let dx = -1; dx <= 1; dx += 0.5) for (let dy = -1; dy <= 1; dy += 0.5) out.push(cells.map(c => layersAt(c, x + dx, y + dy)).find(r => r.top)?.top ?? 'none');
+      return out;
+    };
+    const on = await tops(true), off = await tops(false);
+    const street = on.filter(t => ['asphalt', 'klinker', 'paving', 'cycle', 'kerb', 'paint'].includes(t)).length;
+    check(street === on.length, `${id}: ${street}/${on.length} probes are street with the pocket fill (${[...new Set(on)].join(', ')})`);
+    check(off.includes('land'), `${id}: without it ${off.filter(t => t === 'land').length}/${off.length} probes read land (the pin is live)`);
   }
 }
 
