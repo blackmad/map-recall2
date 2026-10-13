@@ -48234,6 +48234,87 @@
         "bytes": 63920,
         "triangles": 3215
       }
+    },
+    "thorbecke-standbeeld": {
+      "id": "thorbecke-standbeeld",
+      "name": "Thorbecke statue",
+      "landmarkId": "extract_landmarks_251933681",
+      "modelUrl": "./models/thorbecke-standbeeld.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8958534,
+          52.3650584
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 6,
+        "widthMetres": 6
+      },
+      "surveyed": {
+        "anchor": [
+          4.8958534,
+          52.3650584
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Backlog destination point (OSM memorial) on the Thorbeckeplein; statue position and facing read from Gemeente Amsterdam panoramas (2025-06-19); the facing is a visual estimate, not a surveyed bearing"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "bronze": "#33372f",
+        "concrete": "#9a9c9a",
+        "greyBrick": "#6b6e6f",
+        "gold": "#b59a4e",
+        "dark": "#1c1f22"
+      },
+      "attribution": {
+        "title": "Thorbecke statue - original low-poly reconstruction",
+        "author": "Map Recall; commemorated sculpture by Ferdinand Leenhoff (1876)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Statue_of_Johan_Rudolph_Thorbecke,_Amsterdam",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly figure, pedestal and railing. Pose and costume from Commons photographs (public domain; CC BY-SA 3.0) and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated from the photographs. No pixels or third-party meshes imported."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -3.4024105072021484,
+          -3.5762786065873797e-9,
+          -3.3997414112091064
+        ],
+        "max": [
+          3.396538734436035,
+          6.050000190734863,
+          3.3982317447662354
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8958534,
+          52.3650584
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 6.798949241638184,
+        "heightMetres": 6.050000194311142,
+        "depthMetres": 6.797973155975342,
+        "depthCoverage": 1.1329955259958904
+      },
+      "triangles": 6316,
+      "bytes": 83024,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "41535bb315fa8feb",
+        "buildVersion": 2,
+        "bytes": 31568,
+        "triangles": 1478
+      }
     }
   }
 }

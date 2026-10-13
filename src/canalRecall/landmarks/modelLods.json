@@ -1666,5 +1666,11 @@
   "buildVersion": 2,
   "bytes": 63920,
   "triangles": 3215
+ },
+ "thorbecke-standbeeld": {
+  "sourceHash": "41535bb315fa8feb",
+  "buildVersion": 2,
+  "bytes": 31568,
+  "triangles": 1478
  }
 }
