@@ -2,7 +2,12 @@
   "canonicalModelId": "obrechtkerk",
   "researchedOn": "2026-10-13",
   "state": "built-2026-10-13 (replaces the procedural kit in src/canalRecall/landmarkKits.ts via suppressOsmIds)",
-  "destination": {"name": "Obrechtkerk", "address": "Jacob Obrechtstraat 30, Amsterdam", "bagPand": "NL.IMBAG.Pand.0363100012124153", "landmarkId": "extract_landmarks_1917401076"},
+  "destination": {
+    "name": "Obrechtkerk",
+    "address": "Jacob Obrechtstraat 30, Amsterdam",
+    "bagPand": "NL.IMBAG.Pand.0363100012124153",
+    "landmarkId": "extract_landmarks_1917401076"
+  },
   "survey": {
     "bag": "artifacts/landmark-lanes/obrechtkerk/raw/bag-pand.json",
     "3dbag": "artifacts/landmark-lanes/obrechtkerk/raw/3dbag.json",
@@ -10,25 +15,87 @@
     "readings": "Axis 22.4 degrees counter-clockwise from east, the towered front to the east-north-east. Nave 11.8 m wide, eaves 17.5 m, ridge 23.4 m; aisles 9.3-13 m lean-tos; transepts (12 m wide) to the same ridge; crossing tower walls about 26 m with a pyramid to 35.4 m; chancel to 23.2 m with a semicircular apse (eaves 14 m); low chapels and sacristies 9-12.8 m; towers 6.4 m square, top 36.9 m in 3DBAG (helm); parish hall in front of the north tower, ridge 17.8 m."
   },
   "photos": [
-    {"file": "artifacts/landmark-lanes/obrechtkerk/commons/Obrechtkerk_pic1.jpg", "source": "https://commons.wikimedia.org/wiki/File:Obrechtkerk_pic1.JPG", "licence": "Public domain", "use": "front head-on (towers, arcade band, portal, rose, gable), colour; camera-matched render cam-front"},
-    {"file": "artifacts/landmark-lanes/obrechtkerk/commons/Westgevel_-_Amsterdam_-_20013800_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE, 1984)", "use": "front from the north-east: helm shape and stripes, belfry on two faces, clocks on the south tower, parish hall"},
-    {"file": "artifacts/landmark-lanes/obrechtkerk/commons/Exterieur_-_Amsterdam_-_20013792_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE, 1970)", "use": "back: apse with round-arched windows, crossing tower with small windows and a steep pyramid, transepts, chapels"},
-    {"file": "artifacts/landmark-lanes/obrechtkerk/commons/Exterieur_-_Amsterdam_-_20013791_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE, 1970)", "use": "front down the street"},
-    {"file": "artifacts/landmark-lanes/obrechtkerk/commons/Obrechtkerk_pic3.jpg", "source": "https://commons.wikimedia.org/wiki/File:Obrechtkerk_pic3.JPG", "licence": "Public domain", "use": "parish hall gable (big window, three ground windows, roundel, mosaic)"},
-    {"file": "artifacts/landmark-lanes/obrechtkerk/commons/Obrechtkerk_pic6.jpg", "licence": "Public domain", "use": "parish hall side and tile roof, colour"},
-    {"file": "artifacts/landmark-lanes/obrechtkerk/commons/Obrechtkerk_pic2.jpg", "licence": "Public domain", "use": "context"},
-    {"file": "artifacts/landmark-lanes/obrechtkerk/commons/Obrechtkerk_pic4.jpg", "licence": "Public domain", "use": "context"},
-    {"file": "artifacts/landmark-lanes/obrechtkerk/commons/Overzicht_-_Amsterdam_-_20013796_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "context"},
-    {"file": "artifacts/landmark-lanes/obrechtkerk/commons/Overzicht_-_Amsterdam_-_20013798_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "context"},
-    {"file": "artifacts/landmark-lanes/obrechtkerk/commons/Overzicht_van_het_bovenstuk_van_de_kerk_met_de_2_kerktorens_-_Amsterdam_-_20420574_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "tower tops"},
-    {"file": "artifacts/landmark-lanes/obrechtkerk/commons/Overzicht_van_de_kerk_gelegen_rechts_naast_de_herenhuizen_-_Amsterdam_-_20420575_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "context"},
-    {"file": "artifacts/landmark-lanes/obrechtkerk/commons/ObrechtkerkAmsterdam2021.jpg", "licence": "CC BY-SA 4.0", "use": "context"},
-    {"file": "artifacts/landmark-lanes/obrechtkerk/commons/Obrechtkerk.jpg", "licence": "Attribution", "use": "context"},
-    {"file": "artifacts/landmark-lanes/obrechtkerk/commons/NIMH_-_2011_-_0029_-_Aerial_photograph_of_Amsterdam_The_Netherlands_-_1920_-_1940.jpg", "licence": "CC BY-SA 4.0", "use": "roof layout from the air"}
+    {
+      "file": "artifacts/landmark-lanes/obrechtkerk/commons/Obrechtkerk_pic1.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Obrechtkerk_pic1.JPG",
+      "licence": "Public domain",
+      "use": "front head-on (towers, arcade band, portal, rose, gable), colour; camera-matched render cam-front"
+    },
+    {
+      "file": "artifacts/landmark-lanes/obrechtkerk/commons/Westgevel_-_Amsterdam_-_20013800_-_RCE.jpg",
+      "licence": "CC BY-SA 4.0 (RCE, 1984)",
+      "use": "front from the north-east: helm shape and stripes, belfry on two faces, clocks on the south tower, parish hall"
+    },
+    {
+      "file": "artifacts/landmark-lanes/obrechtkerk/commons/Exterieur_-_Amsterdam_-_20013792_-_RCE.jpg",
+      "licence": "CC BY-SA 4.0 (RCE, 1970)",
+      "use": "back: apse with round-arched windows, crossing tower with small windows and a steep pyramid, transepts, chapels"
+    },
+    {
+      "file": "artifacts/landmark-lanes/obrechtkerk/commons/Exterieur_-_Amsterdam_-_20013791_-_RCE.jpg",
+      "licence": "CC BY-SA 4.0 (RCE, 1970)",
+      "use": "front down the street"
+    },
+    {
+      "file": "artifacts/landmark-lanes/obrechtkerk/commons/Obrechtkerk_pic3.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Obrechtkerk_pic3.JPG",
+      "licence": "Public domain",
+      "use": "parish hall gable (big window, three ground windows, roundel, mosaic)"
+    },
+    {
+      "file": "artifacts/landmark-lanes/obrechtkerk/commons/Obrechtkerk_pic6.jpg",
+      "licence": "Public domain",
+      "use": "parish hall side and tile roof, colour"
+    },
+    {
+      "file": "artifacts/landmark-lanes/obrechtkerk/commons/Obrechtkerk_pic2.jpg",
+      "licence": "Public domain",
+      "use": "context"
+    },
+    {
+      "file": "artifacts/landmark-lanes/obrechtkerk/commons/Obrechtkerk_pic4.jpg",
+      "licence": "Public domain",
+      "use": "context"
+    },
+    {
+      "file": "artifacts/landmark-lanes/obrechtkerk/commons/Overzicht_-_Amsterdam_-_20013796_-_RCE.jpg",
+      "licence": "CC BY-SA 4.0 (RCE)",
+      "use": "context"
+    },
+    {
+      "file": "artifacts/landmark-lanes/obrechtkerk/commons/Overzicht_-_Amsterdam_-_20013798_-_RCE.jpg",
+      "licence": "CC BY-SA 4.0 (RCE)",
+      "use": "context"
+    },
+    {
+      "file": "artifacts/landmark-lanes/obrechtkerk/commons/Overzicht_van_het_bovenstuk_van_de_kerk_met_de_2_kerktorens_-_Amsterdam_-_20420574_-_RCE.jpg",
+      "licence": "CC BY-SA 4.0 (RCE)",
+      "use": "tower tops"
+    },
+    {
+      "file": "artifacts/landmark-lanes/obrechtkerk/commons/Overzicht_van_de_kerk_gelegen_rechts_naast_de_herenhuizen_-_Amsterdam_-_20420575_-_RCE.jpg",
+      "licence": "CC BY-SA 4.0 (RCE)",
+      "use": "context"
+    },
+    {
+      "file": "artifacts/landmark-lanes/obrechtkerk/commons/ObrechtkerkAmsterdam2021.jpg",
+      "licence": "CC BY-SA 4.0",
+      "use": "context"
+    },
+    {
+      "file": "artifacts/landmark-lanes/obrechtkerk/commons/Obrechtkerk.jpg",
+      "licence": "Attribution",
+      "use": "context"
+    },
+    {
+      "file": "artifacts/landmark-lanes/obrechtkerk/commons/NIMH_-_2011_-_0029_-_Aerial_photograph_of_Amsterdam_The_Netherlands_-_1920_-_1940.jpg",
+      "licence": "CC BY-SA 4.0",
+      "use": "roof layout from the air"
+    }
   ],
   "facadeRhythm": {
-    "east-north-east front (Jacob Obrechtstraat)": "Two square towers and a gabled centre. Each tower front, bottom to top: sandstone base to 4.4 m; a blind arcade of six white round-headed panels in brick surrounds (4.7-7.5 m) with a patterned band over it; three slit windows; three tall round-arched windows in deep round-headed brick recesses (13-19.6 m); a chequered band; on the south tower a clock; a belfry of five round-headed openings on colonnettes; a corbelled cornice; a square ogival helm in brick with light stone stripes, ball and cross. Centre: steps; the portal (two wooden doors, a light tympanum, a banded red-brick arch, a brick gabled hood); either side a small door under one arch of the arcade; the rose window (five-circle star tracery) in moulded rings; a gable of diamond-patterned brick with a mosaic at the apex.",
-    "tower outer faces": "As the front from the arcade up (the north tower's outer face is hidden by the parish hall to about 9 m; the south tower's has the base and arcade, and its clock).",
+    "east-north-east front (Jacob Obrechtstraat)": "Two square towers and a gabled centre. Each tower front, bottom to top: sandstone base to 4.4 m; a blind arcade of six white round-headed panels in brick surrounds (4.7-7.5 m) with a patterned band over it; three slit windows; three tall round-arched windows in deep round-headed brick recesses (13-19.6 m); a chequered band; on the south tower (beside the parish hall; pic1 left, pic3) a clock; a belfry of five round-headed openings on colonnettes; a corbelled cornice; a square ogival helm in brick with light stone stripes, ball and cross. Centre: steps; the portal (two wooden doors, a light tympanum, a banded red-brick arch, a brick gabled hood); either side a small door under one arch of the arcade; the rose window (five-circle star tracery) in moulded rings; a gable of diamond-patterned brick with a mosaic at the apex.",
+    "tower outer faces": "As the front from the arcade up (the south tower's outer face is hidden by the parish hall to about 9 m; the north tower's has the base and arcade).",
     "flanks": "Aisles: the white arcade band continued, small flat-headed windows, lean-to roofs; clerestory: paired small arched windows per bay (inferred from the aisle bays; the flanks are only seen obliquely).",
     "transept ends": "Three tall round-arched windows and an oculus in the gable (RCE 20013792 back view, approximate).",
     "back (apse)": "Semicircular apse of seven facets with five round-arched windows, conical roof; chancel gable above; square crossing tower with three small arched windows a face and a steep pyramid; hipped chapels and lean-to sacristies in the angles with two round stair turrets.",
@@ -42,6 +109,7 @@
     "Plan and heights from BAG/3DBAG; every roof (gables, lean-tos, crossing pyramid, apse half-cone, helms) from intent.",
     "Helm height 8.8 m over a 29.2 m cornice (3DBAG tower top 36.9 m is at the helm shoulder; cross added above).",
     "The tower faces turned to the nave and the aisles carry three belfry openings, not five: with five, the geometry audit read the one beside the front gable as overhanging. Those faces are not photographed.",
-    "Church roof colour taken as dark grey from the RCE photos; the low roofs may be red tile in reality (only the parish hall's is clearly red in the colour photos)."
+    "Church roof colour taken as dark grey from the RCE photos; the low roofs may be red tile in reality (only the parish hall's is clearly red in the colour photos).",
+    "The first build mirrored the plan across the church axis (plan readings take b to the left of the axis, the kit's local z runs to the right); scripts/landmarks/footprint-fit.ts caught it (82% -> 98% of the BAG footprint covered) and the builder now uses localB. The parish hall stands in front of the south tower, which carries the clock (pic1, pic3)."
   ]
 }

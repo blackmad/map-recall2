@@ -1,5 +1,5 @@
 import type {BuildingTools} from './cultural-builders';
-import {block, door, extrude, face, gable, lathe, local, octagon, onWall, rect, tris, win, type Kit, type V2, type Win} from './church-kit';
+import {block, door, extrude, face, gable, lathe, localB, octagon, onWall, rect, tris, win, type Kit, type V2, type Win} from './church-kit';
 import {archBand, archSlab, poly} from './nearbar-kit';
 // Material slots: 'stone' grey sandstone front and cornices, 'concrete' the darker plinth, 'greyBrick' niche backs,
 // 'gold' the tympanum mosaic and cross, 'blue' the inscription tablet, 'bronze' the lead lantern, 'white' statues.
@@ -7,7 +7,8 @@ import {archBand, archSlab, poly} from './nearbar-kit';
 /**
  * De Duif, Prinsengracht 756 (1857, T. Molkenboer). Built from intent on the BAG plan and 3DBAG heights.
  *
- * Plan (BAG 0363100012171729; local x along the church axis, 287.2 degrees counter-clockwise from east, so the
+ * Plan (BAG 0363100012171729; plan coordinates (x along the church axis, 287.2 degrees counter-clockwise from east; z to the left of it,
+ * see localB), so the
  * canal front is at -x facing north-north-east and Kerkstraat behind at +x): an 18.6 m wide grey sandstone front;
  * an 11.2 m nave under a low pitched roof (eaves 22 m, ridge 25.6 m) with lean-to aisles (14.6-15.6 m), a transept
  * of the same height crossing it, a low lead lantern over the crossing (27.2 m in 3DBAG), and lower annexes at the
@@ -32,7 +33,7 @@ function leanTo(k: Kit, x0: number, x1: number, zo: number, zi: number, y0: numb
 const CLERE: Win = {w: 1.8, y0: 16.6, y1: 20.6, bars: 2, rowM: 0.9, surround: 'stone', glass: 'glass', bar: 'frame'};
 
 export function buildDeDuif(_w: number, _d: number, b: BuildingTools) {
-  const k = local(b, 287.2);
+  const k = localB(b, 287.2);
 
   // ---- Massing ------------------------------------------------------------------------------------------------------
   extrude(k, rect(XB, XE, ZN0, ZN1), 0, EAVE, 'brick'); // nave and choir
@@ -43,7 +44,7 @@ export function buildDeDuif(_w: number, _d: number, b: BuildingTools) {
   extrude(k, rect(1.6, 12.1, -8.6, ZA0), 0, 3.7, 'brick');
 
   // ---- Roofs from intent ------------------------------------------------------------------------------------------------
-  extrude(k, rect(XB - 0.01, XE + 0.3, ZN0 - 0.3, ZN1 + 0.3), EAVE - 0.5, EAVE, 'stone');
+  extrude(k, rect(XB + 0.2, XE + 0.3, ZN0 - 0.3, ZN1 + 0.3), EAVE - 0.5, EAVE, 'stone');
   extrude(k, rect(XT0 - 0.3, XT1 + 0.3, ZA0 - 0.3, ZA1 + 0.3), EAVE - 0.5, EAVE - 0.02, 'stone');
   gable(k, XB, XE + 0.3, ZN0 - 0.3, ZN1 + 0.3, EAVE, RIDGE - EAVE, 'x', 'slate', 'brick');
   gable(k, XT0 - 0.3, XT1 + 0.3, ZA0 - 0.3, ZA1 + 0.3, EAVE, RIDGE - EAVE - 0.1, 'z', 'slate', 'brick');
@@ -98,7 +99,7 @@ export function buildDeDuif(_w: number, _d: number, b: BuildingTools) {
   // Side bays: a statue niche over a small pedimented door.
   for (const s of [-1, 1]) {
     door(k, fr.f, tc + s * 6.8, {w: 1.3, y0: 0.6, y1: 3.9, leaf: 'dark', surround: 'stone', pediment: true});
-    archSlab(k, fr.f, tc + s * 6.8, 6.6, 1.5, 3.4, 0.06, 'greyBrick', -0.04);
+    archSlab(k, fr.f, tc + s * 6.8, 6.6, 1.5, 3.4, 0.09, 'greyBrick', -0.04);
     onWall(k, fr.f, tc + s * 6.8, 6.3, 1.9, 0.3, 0.3, 'stone');
     lathe(k, XF - 0.25, ZC + s * 6.8, [[0.32, 6.6], [0.3, 7.9], [0.2, 8.9], [0.12, 9.0], [0.14, 9.2], [0, 9.45]], 'white', 10);
   }

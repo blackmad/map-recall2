@@ -1,5 +1,5 @@
 import type {BuildingTools} from './cultural-builders';
-import {block, clockFace, door, extrude, face, frame, gable, hipRoof, lathe, local, onWall, rect, tris, win, type Col, type Kit, type V2, type Win} from './church-kit';
+import {block, clockFace, door, extrude, face, frame, gable, hipRoof, lathe, localB, onWall, rect, tris, win, type Col, type Kit, type V2, type Win} from './church-kit';
 import {archBand, archSlab, disc, poly, ringSlab} from './nearbar-kit';
 // Material slots: 'brick' brown brick, 'stone' light stone dressings and helm stripes, 'concrete' the sandstone base,
 // 'white' the blind arcade panels, 'pink' the patterned-brick bands, 'greyBrick' recessed brick panels, 'ochre' the
@@ -8,16 +8,17 @@ import {archBand, archSlab, disc, poly, ringSlab} from './nearbar-kit';
 /**
  * Obrechtkerk, Jacob Obrechtstraat (J. Stuyt, 1911-1913). Built from intent on the BAG plan and 3DBAG heights.
  *
- * Plan (BAG 0363100012124153; local x along the church axis, 22.4 degrees counter-clockwise from east, the towered
+ * Plan (BAG 0363100012124153; plan coordinates (x along the church axis, 22.4 degrees counter-clockwise from east; z to the left of it, see
+ * localB), the towered
  * front at +x facing east-north-east onto Jacob Obrechtstraat): a cruciform basilica with a 11.8 m nave (eaves 17.5,
  * ridge 23.4 m), lean-to aisles, transepts of the nave's height, a square crossing tower (walls 26 m, pyramid to
  * 35.4 m), a chancel and a semicircular apse at the back, low chapels in the angles, two 6.4 m square front towers
- * with striped helm roofs (3DBAG 36.9 m + cross), and the gabled parish hall standing forward of the north tower.
+ * with striped helm roofs (3DBAG 36.9 m + cross), and the gabled parish hall standing forward of the south tower.
  * Facade rhythm per wall: scripts/landmarks/obrechtkerk-research.json.
  */
 const XF = 39.6, XT0 = 33.6, XT1 = 40.0; // front centre face, towers
 const ZN0 = -3.2, ZN1 = 8.6, ZC = (ZN0 + ZN1) / 2; // nave walls, centre line (2.7)
-const ZTA: V2 = [-9.6, -3.2], ZTB: V2 = [8.6, 15.0]; // north tower, south tower
+const ZTA: V2 = [-9.6, -3.2], ZTB: V2 = [8.6, 15.0]; // south tower (beside the hall, with the clock), north tower
 const XC0 = -9, XC1 = 3; // crossing and transepts
 const XA = -14.2; // chancel end / apse centre
 const EAVE = 17.5, RIDGE = 23.4, TOWER_TOP = 29.2;
@@ -42,7 +43,7 @@ function tower(k: Kit, z0: number, z1: number, clocks: boolean) {
   extrude(k, rect(XT0, XT1, z0, z1), 0, TOWER_TOP - 0.8, 'brick');
   extrude(k, rect(XT0 - 0.3, XT1 + 0.3, z0 - 0.3, z1 + 0.3), TOWER_TOP - 0.8, TOWER_TOP, 'stone');
   const outer = z0 < 0 ? -1 : 1;
-  // The north tower's outer face is hidden by the parish hall up to about 9 m.
+  // The south tower's outer face is hidden by the parish hall up to about 9 m.
   const faces: {fr: ReturnType<typeof face>; u: number; low: boolean; tall: boolean; clock: boolean}[] = [
     {fr: face([1, 0], XT1), u: zc, low: true, tall: true, clock: clocks},
     {fr: face([0, outer], outer < 0 ? z0 : z1), u: xc, low: outer > 0, tall: true, clock: clocks},
@@ -100,7 +101,7 @@ const TRANS: Win = {w: 1.1, y0: 7.0, y1: 14.0, bars: 1, rowM: 1.0, surround: 'br
 const APSE: Win = {w: 1.0, y0: 6.4, y1: 11.4, bars: 1, rowM: 0.9, surround: 'brick', bar: 'frame'};
 
 export function buildObrechtkerk(_w: number, _d: number, b: BuildingTools) {
-  const k = local(b, 22.4);
+  const k = localB(b, 22.4);
 
   // ---- Nave, aisles, crossing, transepts, chancel, chapels ----------------------------------------------------------
   extrude(k, rect(XC1, XF - 0.6, ZN0, ZN1), 0, EAVE, 'brick');
@@ -180,8 +181,8 @@ export function buildObrechtkerk(_w: number, _d: number, b: BuildingTools) {
   }
 
   // ---- Towered front --------------------------------------------------------------------------------------------
-  tower(k, ZTA[0], ZTA[1], false);
-  tower(k, ZTB[0], ZTB[1], true);
+  tower(k, ZTA[0], ZTA[1], true);
+  tower(k, ZTB[0], ZTB[1], false);
   extrude(k, rect(XF - 0.6, XF, ZN0 - 0.1, ZN1 + 0.1), 0, 20.6, 'brick');
   const fr = face([1, 0], XF), tc = fr.at(ZC), W = ZN1 - ZN0;
   onWall(k, fr.f, tc, 0, W - 0.1, 0.9, 0.3, 'concrete'); // steps
@@ -212,7 +213,7 @@ export function buildObrechtkerk(_w: number, _d: number, b: BuildingTools) {
     blindArch(k, fr.f, tc + s * 4.75);
   }
 
-  // ---- Parish hall forward of the north tower ----------------------------------------------------------------------
+  // ---- Parish hall forward of the south tower ----------------------------------------------------------------------
   const H0 = 33.0, H1 = 49.2, HZ0 = -22.1, HZ1 = -9.6;
   extrude(k, rect(H0, H1, HZ0, HZ1), 0, 8.6, 'brick');
   gable(k, H0, H1, HZ0 - 0.3, HZ1 + 0.3, 8.6, 9.2, 'x', 'red', 'brick');

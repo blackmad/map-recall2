@@ -552,8 +552,8 @@
       "dateSource": "asset-update"
     },
     "de-duif": {
-      "updatedAt": "2026-10-13T09:14:43.746Z",
-      "version": "bedb87e5d5f4c1c6",
+      "updatedAt": "2026-10-13T09:43:53.717Z",
+      "version": "6840e55193fbcf90",
       "dateSource": "asset-update"
     },
     "de-duif.lod1": {
@@ -1897,8 +1897,13 @@
       "dateSource": "asset-update"
     },
     "obrechtkerk": {
-      "updatedAt": "2026-10-13T09:29:14.250Z",
-      "version": "6b9428591ad61c63",
+      "updatedAt": "2026-10-13T09:40:01.382Z",
+      "version": "750277800f2895c4",
+      "dateSource": "asset-update"
+    },
+    "obrechtkerk.lod1": {
+      "updatedAt": "2026-10-13T09:29:41.314Z",
+      "version": "ed6bcbf4ac9b861b",
       "dateSource": "asset-update"
     },
     "occii": {
