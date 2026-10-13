@@ -12,6 +12,7 @@ import { join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { buildCell, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
+import { flatHintAt, KIT_BUDGET } from '../../src/canalRecall/ownGround/bridgeKit.ts';
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
 import { bandCoverage, junctionCoverage, strayHits, DE_CLERCQSTRAAT, JUNCTIONS, STRAYS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 
@@ -149,9 +150,12 @@ async function main(): Promise<void> {
       check(!bad.length, `${id}: deck top under ${probes - bad.length}/${probes} probes edge to edge${bad.length ? ` (${bad.slice(0, 6).join(' ')})` : ''}`);
     }
     {
-      const info = near.stats.bridges.decks.find(d => d.id === id);
-      const spanM = deck.span[1] - deck.span[0], wantPosts = 2 * Math.floor(spanM / 1.8 * 0.8);
-      check(!!info && info.railingPosts >= wantPosts, `${id}: railings on both edges (${info?.railingPosts} posts, want ≥ ${wantPosts})`);
+      // The bridge kit (lane bridge-kit 2026-10-13): these are all canal-belt arch bridges (masonry, or pre-1940 humped iron
+      // decks behind brick arch faces), each within the kit's budget at both rings, pillars and railing on both edges.
+      const info = near.stats.bridges.decks.find(d => d.id === id), farInfo = far.stats.bridges.decks.find(d => d.id === id);
+      check(!!info && info.kind === 'arch' && info.arches >= 1, `${id}: drawn as an arch bridge (${info?.kind}, ${info?.arches} arches)`);
+      check(!!info && info.triangles <= KIT_BUDGET.near && !!farInfo && farInfo.triangles <= KIT_BUDGET.far, `${id}: ${info?.triangles} triangles near (≤ ${KIT_BUDGET.near}), ${farInfo?.triangles} far (≤ ${KIT_BUDGET.far})`);
+      check(!!info && info.railingPosts >= 4, `${id}: railings on both edges (${info?.railingPosts} posts, want ≥ 4)`);
       check(!!info && info.abutments >= 2, `${id}: abutments at both banks (${info?.abutments})`);
       const waterM = p.water ? p.water[1] - p.water[0] : 0;
       check(!!info && (waterM > 13 ? info.piers >= 1 : waterM < 11 ? info.piers === 0 : true), `${id}: ${info?.piers} piers for ${waterM.toFixed(1)} m of water`);
@@ -174,6 +178,35 @@ async function main(): Promise<void> {
     check(r.hits.some(h => h.layer === 'deckTop') && r.top !== 'water', `${id}: deck top at the footprint centre (top ${r.top})`);
     check(!!info && info.railingPosts >= 8, `${id}: railings along the water (${info?.railingPosts} posts)`);
     check(!!info && info.frames === frames, `${id}: ${info?.frames} movable-bridge frame units (want ${frames})`);
+  }
+  // Bridge kit (lane bridge-kit 2026-10-13): the user's spots. Shot 1, a Prinsengracht-class bridge (Reesluis); shot 2, the
+  // Brouwersgracht/Herengracht junction: the West-Indische Huisbrug and the Melkmeisjesbrug footbridge beside it, whose
+  // water polygon stops at the bridge (it used to draw as a brick causeway). Type, an opening over the water, budget.
+  for (const [id, lng, lat, kind] of [['BRU0064', 4.88292, 52.37242, 'arch'], ['BRU0017', 4.89167, 52.37919, 'arch'], ['BRU0016', 4.89226, 52.37917, 'footbridge']] as const) {
+    const [x, y] = toLocal(lng, lat);
+    let owner = '';
+    for (const k of GroundStore.neighbours(store.cellAt(x, y))) { if (!store.osmCells.has(k)) continue; await store.prepareCell(k); if (store.decks(k).some(d => d.profile.id === id)) { owner = k; break; } }
+    check(!!owner, `${id}: placed in a streamed cell (${owner || 'none'})`);
+    if (!owner) continue;
+    const near = await build(owner, 0), far = await build(owner, 1);
+    const info = near.stats.bridges.decks.find(d => d.id === id), farInfo = far.stats.bridges.decks.find(d => d.id === id);
+    check(!!info && info.kind === kind && (kind !== 'arch' || info.arches >= 1) && (kind !== 'footbridge' || info.railingPosts >= 8), `${id}: ${info?.kind} (want ${kind}), ${info?.arches} arches, ${info?.railingPosts} posts`);
+    check(!!info && info.triangles <= KIT_BUDGET.near && !!farInfo && farInfo.triangles <= KIT_BUDGET.far, `${id}: ${info?.triangles} triangles near, ${farInfo?.triangles} far`);
+    // An opening, not a causeway: at the deck's middle, the side faces end under the deck, above the relief's buried wall.
+    const deck = store.surface.decks.find(d => d.profile.id === id)!, p = deck.profile, i = p.s.findIndex(s => s >= (p.deck[0] + p.deck[1]) / 2);
+    const body = near.layers.deckBody!, pos = body.positions, dx = p.x[i + 1] - p.x[i - 1], dy = p.y[i + 1] - p.y[i - 1], dl = Math.hypot(dx, dy);
+    let lowest = Infinity;
+    for (let v = 0; v < pos.length; v += 3) {
+      const along = ((pos[v] - p.x[i]) * dx + (pos[v + 1] - p.y[i]) * dy) / dl, across = Math.abs((pos[v + 1] - p.y[i]) * dx - (pos[v] - p.x[i]) * dy) / dl;
+      if (Math.abs(along) < 1.5 && Math.abs(across - p.halfWidth[i]) < 0.3) lowest = Math.min(lowest, pos[v + 2]);
+    }
+    check(kind === 'arch' || lowest > store.surface.ground(p.x[i], p.y[i]) - 0.3, `${id}: open under its middle (body bottom ${lowest.toFixed(2)}, relief ${store.surface.ground(p.x[i], p.y[i]).toFixed(2)})`);
+  }
+  // The register types the unmeasured footprints: the Torensluis is masonry (arches), the Magere Brug a timber bascule (white).
+  for (const [id, want] of [['BRU0009', 'masonry'], ['BRU0242', 'wood']] as const) {
+    const ring = [...store.osmCells].flatMap(k => store.flatDeckMeta(k).map((f, j) => (f.id === id ? store.flatDecks(k)[j] : null))).find(r => r);
+    const hit = ring ? flatHintAt(ring.reduce((s, q) => s + q[0], 0) / ring.length, ring.reduce((s, q) => s + q[1], 0) / ring.length) : null;
+    check(hit?.id === id && hit.hint.material === want, `${id}: register hint found at its footprint (${hit?.id} ${hit?.hint.material})`);
   }
   // Named road regressions: every band of the listed ways reads as street at both LODs.
   for (const reg of [DE_CLERCQSTRAAT]) {

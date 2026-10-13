@@ -258,29 +258,32 @@ test('measured deck: the top fills the footprint, railings on both edges, abutme
   const info: DeckBuildInfo[] = [];
   const body = measuredDeckBody(deck, s.ground, x => water(x), -1.77, s.height, info);
   assert.equal(info.length, 1);
-  // 24 m deck span, a post every ~1.8 m on each side.
-  assert.ok(info[0].railingPosts >= 2 * 13 && info[0].railingPosts <= 2 * 16, `posts ${info[0].railingPosts}`);
+  // The kit (bridgeKit.ts): a masonry deck is an arch bridge, within the near budget, stone pillars at the ends and at least one between on each side (the iron railing runs between them).
+  assert.equal(info[0].kind, 'arch');
+  assert.ok(info[0].triangles <= 600, `triangles ${info[0].triangles}`);
+  assert.ok(info[0].railingPosts >= 2 * 3, `posts ${info[0].railingPosts}`);
   const f = faces(body);
   const railTop = f.filter(x => x.n[2] > 0 && Math.abs(x.c[0] - 20) < 1 && Math.abs(x.c[1]) > 3.5);
   assert.ok(railTop.some(x => x.c[2] > s.height(20, 0) + RAILING.height - 0.1), 'rails stand a railing height over the crown');
   assert.equal(info[0].abutments, 2, 'one abutment at each bank');
+  // The outer springing faces stand at the banks, facing the opening, down past the water.
   const abut = f.filter(x => Math.abs(x.n[2]) < 1e-6 && Math.abs(x.c[1]) < 3 && Math.abs(x.n[0]) > Math.abs(x.n[1]) * 10 && (Math.abs(x.c[0] - 12) < 0.6 || Math.abs(x.c[0] - 28) < 0.6));
   assert.ok(abut.length >= 2 && abut.every(x => Math.sign(x.n[0]) === (x.c[0] < 20 ? 1 : -1)), 'abutments face the water');
   let lowest = Infinity; for (let i = 0; i < body.positions.length; i += 3) if (Math.abs(body.positions[i] - 12) < 0.6) lowest = Math.min(lowest, body.positions[i + 2]);
   assert.ok(lowest <= -1.77 - 0.3, `abutment reaches below the water (${lowest})`);
-  // 16 m of measured water (over PIER_SPAN_M): two masonry bays on one pier.
-  assert.equal(info[0].piers, 1);
-  assert.equal(info[0].arches, 2);
+  // 16 m of measured water (over PIER_SPAN_M): three arches on two piers.
+  assert.equal(info[0].piers, 2);
+  assert.equal(info[0].arches, 3);
   const narrow = syntheticDeck(); narrow.water = [15, 25];
   const short: DeckBuildInfo[] = [];
   measuredDeckBody(s.addDeck(narrow), s.ground, x => x > 15 && x < 25, -1.77, s.height, short);
   assert.deepEqual([short[0].piers, short[0].arches], [0, 1], '10 m of water: one arch, no piers');
-  // A 30 m span gets piers and (masonry) one arch per bay.
+  // A 30 m span: three arches as well (five only past 60 m).
   const long = syntheticDeck(); long.water = [5, 35]; long.deck = [4, 36];
   const wide = (x: number) => x > 5 && x < 35;
   const info2: DeckBuildInfo[] = [];
   measuredDeckBody(s.addDeck(long), s.ground, x => wide(x), -1.77, s.height, info2);
-  assert.ok(info2[0].piers >= 2 && info2[0].arches === info2[0].piers + 1, JSON.stringify(info2[0]));
+  assert.ok(info2[0].piers === 2 && info2[0].arches === 3, JSON.stringify(info2[0]));
 });
 
 test('deck grade clamp: spikes over 1:8 come out, the crown stays', () => {
@@ -864,3 +867,6 @@ test('crossSection prefers the BGT width, takes painted lanes off it, and says w
   const track = crossSection({ highway: 'secondary', cycleway: 'track' }, [70, 0, 22])!;
   assert.ok(Math.abs(track.bands.find(b => b.kind === 'cycle_track')!.width - (2.2 + 0.8)) < 1e-9 && track.source.cycleway === 'bgt');
 });
+
+// The bridge kit's own tests (lane bridge-kit 2026-10-13), run with this file.
+import './bridgeKit.test';

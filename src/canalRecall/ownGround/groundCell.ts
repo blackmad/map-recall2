@@ -219,7 +219,7 @@ export function buildCell(input: CellInput): BuiltCell {
     bridges.tops++; bridges.railingPosts += railingPosts; if (railingPosts) bridges.railed++;
     let frames = 0;
     if (input.flatDeckMeta?.[k]?.movable) {
-      const frame = movableFrame(ring, surface.height, through);
+      const frame = movableFrame(ring, surface.height, through, 0.02, lod === 0);
       add('deckBody', frame.mesh); frames = frame.units; bridges.frames += frames;
     }
     bridges.flat.push({ id: input.flatDeckMeta?.[k]?.id ?? '', railingPosts, frames });
