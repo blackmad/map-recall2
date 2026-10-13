@@ -2,8 +2,12 @@
 //
 // `#canal-prompt` is a full-screen overlay that docks a 360 px card to one
 // side; riding mode restyles the same card as a compact strip in the bottom
-// band. The rules live here, injected once, so the legacy stylesheet in
-// index.html does not grow; fold them into it when that file is next edited.
+// band. This file is the source of truth for the rules. Preferably they sit in
+// index.html as `<style id="canal-riding-prompt-styles">` holding exactly
+// `RIDING_PROMPT_CSS` (see `ridingPromptStyleBlock`), so they are parsed with
+// the page; where that block is absent the runtime injects the same rules once
+// (a standalone page, Storybook, an older index.html). `ridingPromptStyles.test.ts`
+// fails when a block in index.html drifts from this source.
 // Position comes from three custom properties the runtime sets from the HUD
 // layout (`ridingPromptBand.ts`): --riding-left, --riding-bottom, --riding-width.
 
@@ -38,7 +42,13 @@ html #canal-prompt.riding #canal-card {
 #canal-prompt.riding #canal-card.answered #canal-choices { opacity: .9; }
 `;
 
-/** Add the stylesheet once. Safe to call on every prompt. */
+/** The `<style>` element to paste into index.html: same id the runtime checks,
+ *  so a page that carries it is never injected a second time. */
+export function ridingPromptStyleBlock(): string {
+  return `<style id="${RIDING_PROMPT_STYLE_ID}">${RIDING_PROMPT_CSS}</style>`;
+}
+
+/** Add the stylesheet once, unless the page already carries the block. Safe to call on every prompt. */
 export function installRidingPromptStyles(doc: Document = document): void {
   if (doc.getElementById(RIDING_PROMPT_STYLE_ID)) return;
   const style = doc.createElement('style');

@@ -543,7 +543,11 @@ export function planLearningRoadRoute<TMetadata>(
     // Every node once: a repeat means riding back the way it came, out of a
     // dead end or round a lollipop to a junction already passed, which also
     // confuses the live route line's nearest point.
-    const keys = path.map(({ x, y }) => `${x},${y}`);
+    // Two graph nodes can share a position (a bridge ramp meeting its deck, a
+    // connector); the hop between them is zero metres, not a turn-back, so
+    // consecutive equal positions count once. Before 2026-10-13 any such pair
+    // on the approach refused every stretch, whatever the start was.
+    const keys = path.map(({ x, y }) => `${x},${y}`).filter((key, index, all) => index === 0 || key !== all[index - 1]);
     if (new Set(keys).size !== keys.length) continue;
     const physicalDistance = legs.reduce((sum, leg) => sum + leg.physicalDistance, 0);
     if (plan.shortestDistance > 0 && physicalDistance > plan.shortestDistance * (1 + viaDetourRatio + 1e-9)) continue;

@@ -232,3 +232,30 @@ test('route questions are rationed and never stop the rider (Anne Frank House to
   // The legacy ride really did stop (proves the measurement can see a freeze).
   expect(legacy.frozenSeconds).toBeGreaterThan(0);
 });
+
+// The per-minute budget is a rider setting (1 / 2 / 3 / off). It is chosen on
+// the setup screen through the hidden select, reaches the question budget, and
+// survives a reload.
+test('the questions-per-minute setting reaches the budget and persists', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', 'settings plumbing; one project is enough');
+  test.setTimeout(120000);
+  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+  await page.goto('/canal-drive/');
+  await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame))).toBe(true);
+  await expect(page.locator('#max-asks-per-minute')).toHaveValue('2');
+  for (const [value, expected] of [['1', 1], ['3', 3], ['0', 0]] as const) {
+    await page.locator('#max-asks-per-minute').selectOption(value, { force: true });
+    const seen = await page.evaluate(() => {
+      const game = (window as any).canalRecallGame;
+      return { pref: game._prefs().maxAsksPerMinute, budget: game._askBudgetPerMinute() };
+    });
+    expect(seen, `choice ${value}`).toEqual({ pref: expected, budget: expected });
+  }
+  await page.locator('#route-card').evaluate((form: HTMLFormElement) => form.requestSubmit());
+  await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame?.player?.x)), { timeout: 90000 }).toBe(true);
+  const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('canalRecall.preferences.v1') || '{}').maxAsksPerMinute);
+  expect(saved, 'off is saved with the other preferences').toBe(0);
+  await page.reload();
+  await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame))).toBe(true);
+  await expect(page.locator('#max-asks-per-minute')).toHaveValue('0');
+});

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
 import { ArrowLeft, BookOpenCheck, ChevronDown, Clock3, Search } from 'lucide-react';
 import {
+  ASK_BUDGETS,
   CAMERA_TILT_MAX,
   CAMERA_TILT_MIN,
   playableCities,
@@ -247,6 +248,13 @@ const CONTROLS: Choice<CanalPreferences['controlMode']>[] = [
   { value: 'absolute', title: 'Point', hint: 'Push the way you want to go' },
 ];
 
+const ASK_BUDGET_CHOICES: Choice<string>[] = [
+  { value: '1', title: '1' },
+  { value: '2', title: '2' },
+  { value: '3', title: '3' },
+  { value: '0', title: 'Off' },
+];
+
 const ANSWERS: Choice<CanalPreferences['answerMode']>[] = [
   { value: 'multiple', title: 'Choose', hint: 'Pick from a few names' },
   { value: 'typing', title: 'Type', hint: 'Spell the name yourself' },
@@ -315,6 +323,15 @@ function RideOptions({
         value={prefs.answerMode}
         onChange={value => set({ answerMode: value })}
         options={ANSWERS}
+      />
+      <ChoiceRow
+        label="Questions a minute"
+        name={name('asks-per-minute')}
+        value={String(prefs.maxAsksPerMinute)}
+        onChange={value => set({ maxAsksPerMinute: Number(value) as CanalPreferences['maxAsksPerMinute'] })}
+        options={ASK_BUDGET_CHOICES}
+        layout="strip"
+        gloss="Route questions asked per minute while you ride. Off still shows each street name after you pass it."
       />
       <ToggleGroup label="On the map">
         <ToggleTile id={id('assist-line', 'live-line')} checked={prefs.line} onChange={line => set({ line })} title="Route line" />
@@ -762,6 +779,9 @@ export function OverlayApp({
               <option value="heading">Heading-up</option>
               <option value="chase">Chase</option>
               <option value="cockpit">Cockpit</option>
+            </select>
+            <select id="max-asks-per-minute" hidden value={String(prefs.maxAsksPerMinute)} onChange={event => patch({ maxAsksPerMinute: Number(event.target.value) as CanalPreferences['maxAsksPerMinute'] })}>
+              {ASK_BUDGETS.map(budget => <option key={budget} value={String(budget)}>{budget === 0 ? 'Off' : String(budget)}</option>)}
             </select>
             <select id="route-pattern" hidden value={prefs.routePattern} onChange={event => patch({ routePattern: event.target.value as CanalPreferences['routePattern'] })}>
               <option value="surprise">Surprise</option>

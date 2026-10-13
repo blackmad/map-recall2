@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'advanced-cartoon' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
+type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'advanced-cartoon' | 'advanced-questions-off' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
   | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike' | 'finish-transit'
   | 'landmark-card' | 'landmark-card-bare' | 'landmark-card-touch' | 'landmark-panel' | 'landmark-panel-dutch'
   // Cards with no photo that arrive from data rather than Wikipedia: a named
@@ -45,7 +45,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
     // Storybook viewport addon resizes the iframe after load.
     if (win && scenario.includes('touch')) win.canalRecallForceTouch = true;
     const setupStories = new Set([
-      'default', 'bike-home', 'bike-here', 'transit', 'advanced', 'advanced-cartoon', 'knowledge',
+      'default', 'bike-home', 'bike-here', 'transit', 'advanced', 'advanced-cartoon', 'advanced-questions-off', 'knowledge',
       'touch-setup', 'touch-setup-transit', 'touch-setup-here', 'touch-knowledge',
     ]);
     if (setupStories.has(scenario)) doc.body.classList.add('storybook-setup');
@@ -73,6 +73,12 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
     }
     if (scenario === 'advanced' && overlay) overlay.store.setAdvancedOpen(true);
     if (scenario === 'advanced-cartoon' && overlay) { patchPrefs({ buildingLook: 'cartoon' }); overlay.store.setAdvancedOpen(true); }
+    // The rider's questions-per-minute setting, set to Off, with its row scrolled into view.
+    if (scenario === 'advanced-questions-off' && overlay) {
+      patchPrefs({ maxAsksPerMinute: 0 });
+      overlay.store.setAdvancedOpen(true);
+      window.setTimeout(() => doc.querySelector('[aria-label="Questions a minute"]')?.scrollIntoView({ block: 'center' }), 600);
+    }
     if ((scenario === 'knowledge' || scenario === 'touch-knowledge') && win) {
       const now = Date.now();
       const names = [
@@ -135,11 +141,20 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
         // `window` — reading them off contentWindow silently gave 1280x720.
         const canvasW = game.viewport?.width ?? 1280;
         const canvasH = game.viewport?.height ?? 720;
-        ctx.fillStyle = '#dfe7dd'; ctx.fillRect(0, 0, canvasW, canvasH);
-        ctx.strokeStyle = 'rgba(72,91,85,.25)'; ctx.lineWidth = 18;
-        for (let x = -canvasH; x < canvasW + canvasH; x += 190) {
-          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + canvasH * 0.58, canvasH); ctx.stroke();
-        }
+        const paintMap = () => {
+          ctx.fillStyle = '#dfe7dd'; ctx.fillRect(0, 0, canvasW, canvasH);
+          ctx.strokeStyle = 'rgba(72,91,85,.25)'; ctx.lineWidth = 18;
+          for (let x = -canvasH; x < canvasW + canvasH; x += 190) {
+            ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + canvasH * 0.58, canvasH); ctx.stroke();
+          }
+        };
+        paintMap();
+        // The live game repaints the map under the card every frame; the story
+        // draws once, so a second card drawn over the first (the arrival card
+        // is drawn again when its photo loads, and a phone's card is a
+        // different height with the photo) left the first showing through the
+        // translucent plaque as a ghost layer. Repaint the map before each draw.
+        const renderFinish = () => { paintMap(); game._renderFinish(); };
         if (scenario.startsWith('finish')) {
           const calm = scenario.includes('calm');
           const bare = scenario.includes('bare');
@@ -190,13 +205,13 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           }];
           if (bare) {
             game._landmarkImages = new Map();
-            game._renderFinish();
+            renderFinish();
             return;
           }
           const photo = new Image();
-          photo.onload = () => { game._landmarkImages.set('theater', photo); game._renderFinish(); };
+          photo.onload = () => { game._landmarkImages.set('theater', photo); renderFinish(); };
           photo.src = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="#41603f"/><rect y="200" width="400" height="100" fill="#6d8a70"/><circle cx="200" cy="120" r="70" fill="#8fb08a"/></svg>')}`;
-          game._renderFinish();
+          renderFinish();
           return;
         }
         if (scenario.startsWith('landmark-card-street')) {
@@ -455,6 +470,11 @@ export const AdvancedOptions: Story = { args: { scenario: 'advanced' } };
 export const AdvancedOptionsCartoonLook: Story = { args: { scenario: 'advanced-cartoon' } };
 export const AdvancedOptionsCartoonLookPhone: Story = {
   args: { scenario: 'advanced-cartoon' },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
+export const AdvancedOptionsQuestionsOff: Story = { args: { scenario: 'advanced-questions-off' } };
+export const AdvancedOptionsQuestionsOffPhone: Story = {
+  args: { scenario: 'advanced-questions-off' },
   parameters: { viewport: { defaultViewport: 'mobile1' } },
 };
 export const KnowledgeReview: Story = { args: { scenario: 'knowledge' } };

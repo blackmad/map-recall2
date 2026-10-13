@@ -1520,7 +1520,9 @@ class GameRouteRuntime {
           }
         }
         // A stop's finish is its street's end, not the generic snap of its centre.
-        if (chosen && (chosen.pick.from.id !== this.routeFrom?.id || chosen.pick.to.id !== this.routeTo?.id || chosen.finish !== finish)) {
+        if (chosen && (chosen.pick.from.id !== this.routeFrom?.id || chosen.pick.to.id !== this.routeTo?.id || chosen.finish !== finish
+        // The same pair offered again with a grazed name as its via.
+        || (chosen.pick.via?.name ?? null) !== (this._reviewRoute.via?.name ?? null))) {
           console.info(`Review ride: ${chosen.pick.from.name} → ${chosen.pick.to.name} rides ${chosen.dueOnPath.length} due names`);
           start = chosen.start;
           finish = chosen.finish;
