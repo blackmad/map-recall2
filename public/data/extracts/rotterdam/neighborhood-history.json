@@ -63,11 +63,12 @@
   {
    "name": "De Vlieger",
    "description": {
-    "en": "Bevrijdingsmonument Vreewijk (landmark here): Artists Joan Bakker and J. Poot created the column featuring dancing figures and a lion.",
+    "en": "Artists Joan Bakker and J. Poot created the column featuring dancing figures and a lion.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Bevrijdingsmonument_Vreewijk",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Bevrijdingsmonument Vreewijk (landmark)"
    }
   },
   {
@@ -414,11 +415,12 @@
   {
    "name": "Oud-Crooswijk",
    "description": {
-    "en": "Boezemsingelkerk (landmark here): Gerrit Hendrik Kersten served as predecessor here during two separate periods between 1906 and 1948.",
+    "en": "Gerrit Hendrik Kersten served as predecessor here during two separate periods between 1906 and 1948.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Boezemsingelkerk",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Boezemsingelkerk (landmark)"
    },
    "history": {
     "en": "The original church opened on March 31, 1901 before being demolished in 2018.",
@@ -452,11 +454,12 @@
   {
    "name": "Kralingen-West",
    "description": {
-    "en": "Botanische Tuin Kralingen (park here): Visitors can explore distinct sections dedicated to medicinal plants, ferns, and roses.",
+    "en": "Visitors can explore distinct sections dedicated to medicinal plants, ferns, and roses.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Botanische_Tuin_Rotterdam_Kralingen",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Botanische Tuin Kralingen (park)"
    },
    "history": {
     "en": "Public access began in 1984, shifting the focus from education to recreation.",
@@ -899,11 +902,12 @@
   {
    "name": "Kleinpolder-West",
    "description": {
-    "en": "O.L.V. Altijddurende Bijstand (landmark here): After closing in 2019, the former church was converted into an apartment complex.",
+    "en": "After closing in 2019, the former church was converted into an apartment complex.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Onze-Lieve-Vrouw_van_Altijddurende_Bijstandkerk_(Overschie)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "O.L.V. Altijddurende Bijstand (landmark)"
    },
    "history": {
     "en": "Construction plans began in 1950 to replace a smaller church that could not serve the growing community.",
@@ -1080,11 +1084,12 @@
   {
    "name": "Kralingen-Oost",
    "description": {
-    "en": "Erasmus Universiteit Rotterdam (landmark here): Antoine van Agtmael, an alumnus, coined the term emerging markets while working as a World Bank economist.",
+    "en": "Antoine van Agtmael, an alumnus, coined the term emerging markets while working as a World Bank economist.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Erasmus_University_Rotterdam",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Erasmus Universiteit Rotterdam (landmark)"
    },
    "history": {
     "en": "The institution began as the private Netherlands School of Commerce in 1913 before gaining university status in 1937.",
@@ -1148,11 +1153,12 @@
   {
    "name": "Kop van Zuid-Entrepot",
    "description": {
-    "en": "Villa Zebra (landmark here): Children aged two to six focus on sensory discovery and play rather than traditional art instruction.",
+    "en": "Children aged two to six focus on sensory discovery and play rather than traditional art instruction.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Villa_Zebra",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Villa Zebra (landmark)"
    },
    "history": {
     "en": "Six hundred eighty-six children aged one month to twelve years were deported from Loods 24.",
@@ -1634,11 +1640,12 @@
   {
    "name": "Laurenskwartier",
    "description": {
-    "en": "Centrale Bibliotheek (landmark here): Eero Aarnio's iconic Bubble Chair was displayed here in 2006.",
+    "en": "Eero Aarnio's iconic Bubble Chair was displayed here in 2006.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Centrale_Bibliotheek_Rotterdam",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Centrale Bibliotheek (landmark)"
    },
    "history": {
     "en": "Bibliotheektheater Rotterdam opened its doors in 1983.",
@@ -1651,11 +1658,12 @@
   {
    "name": "Maasvlakte 1",
    "description": {
-    "en": "6e Petroleumhaven (waterway here): Annual throughput exceeds 23 million cubic meters, ranking it among Europe's largest refineries.",
+    "en": "Annual throughput exceeds 23 million cubic meters, ranking it among Europe's largest refineries.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Zesde_Petroleumhaven",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "6e Petroleumhaven (waterway)"
    },
    "history": {
     "en": "A container ship collided with a pier in January 2007, requiring a 20 million euro rebuild.",

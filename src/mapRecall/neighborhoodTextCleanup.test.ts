@@ -77,6 +77,25 @@ import {
   assert.deepEqual(cleanDescription(text).dropped, []);
 }
 
+// Crime and planning sentences are history, not statistics, and are kept.
+{
+  const text = 'Weesperbuurt is a neighbourhood. Many of its residents were deported and murdered. The Escamp borough was formed in 1986, after the city council decided to divide The Hague into seven boroughs. Police officers came in 1920.';
+  assert.deepEqual(cleanDescription(text), { text, dropped: [] });
+}
+
+// A landmark prefix on a description is extracted too, with the same contract.
+{
+  const entry = {
+    name: 'Samen',
+    description: { en: 'Samen Spelen Samen Leven (landmark here): The playground was built in 1950.', sourceUrl: 'https://example.org', lang: 'en' as const },
+  };
+  const result = cleanEntry(entry);
+  assert.equal(result.entry.description?.en, 'The playground was built in 1950.');
+  assert.equal((result.entry.description as { borrowedFrom?: string } | undefined)?.borrowedFrom, 'Samen Spelen Samen Leven (landmark)');
+  assert.deepEqual(result.changes.map(c => c.kind), ['borrowed']);
+  assert.deepEqual(cleanEntry(result.entry).changes, []);
+}
+
 // Entry-level: all four fields, key order kept, borrowedFrom recorded, re-run is a no-op.
 {
   const entry = {

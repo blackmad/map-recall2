@@ -69,11 +69,12 @@
     "kind": "derived"
    },
    "description": {
-    "en": "Samen Spelen Samen Leven (landmark here): Neighbors and local groups funded the artwork after a two-year creation process.",
+    "en": "Neighbors and local groups funded the artwork after a two-year creation process.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Kindermonument_Markt_voor_Joden",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Samen Spelen Samen Leven (landmark)"
    },
    "history": {
     "en": "On November 3, 1941, German occupiers seized this playground for a Jewish-only market.",
@@ -94,11 +95,12 @@
     "kind": "derived"
    },
    "description": {
-    "en": "LJG (landmark here): The group manages the Gan Hasjalom cemetery located in Hoofddorp and Amstelveen.",
+    "en": "The group manages the Gan Hasjalom cemetery located in Hoofddorp and Amstelveen.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Liberaal_Joodse_Gemeente_Amsterdam",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "LJG (landmark)"
    },
    "history": {
     "en": "The synagogue was inaugurated on November 30, 1937 after plans were completed in 1932.",
@@ -450,11 +452,12 @@
     "kind": "derived"
    },
    "description": {
-    "en": "Jeruzalemkerk (landmark here): Planners originally intended to call it Nieuwe Westerkerk before choosing its final name.",
+    "en": "Planners originally intended to call it Nieuwe Westerkerk before choosing its final name.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Jeruzalemkerk_(Amsterdam)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Jeruzalemkerk (landmark)"
    }
   },
   {
@@ -591,11 +594,12 @@
   {
    "name": "Molenwijkpark",
    "description": {
-    "en": "Molenaarsweg (street here): A unique corridor flat tower houses 160 apartments across 16 living floors plus storage.",
+    "en": "A unique corridor flat tower houses 160 apartments across 16 living floors plus storage.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Stellingweg",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Molenaarsweg (street)"
    },
    "history": {
     "en": "House numbers were absent until the street received them in 1974.",
@@ -1163,7 +1167,7 @@
     "original": "De Weesperbuurt is een buurt in Amsterdam-Centrum en omvat het meest oostelijke deel van de Amsterdamse grachtengordel, tussen de Binnen Amstel, de Nieuwe Herengracht, de Plantagebuurt en de Nieuwe Achtergracht."
    },
    "history": {
-    "en": "Until the Second World War the Weesperbuurt was part of the Jewish quarter. After the war part of the neighbourhood was demolished to widen the Weesperstraat.",
+    "en": "Until the Second World War the Weesperbuurt was part of the Jewish quarter. Many of its residents were deported and murdered. After the war part of the neighbourhood was demolished to widen the Weesperstraat.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Weesperbuurt",
     "lang": "nl",
     "original": "De Weesperbuurt was tot in de Tweede Wereldoorlog een onderdeel van de Jodenbuurt. Een groot deel van de bewoners werd gedeporteerd en vermoord. Na de oorlog werd een deel van de bebouwing gesloopt voor het sterk verbreden van de Weesperstraat."
@@ -1514,11 +1518,12 @@
   {
    "name": "VU-kwartier",
    "description": {
-    "en": "Vrije Universiteit Amsterdam (landmark here): Computer scientist Henri Bal and student John Romein wrote a program that solves the ancient game of Oware.",
+    "en": "Computer scientist Henri Bal and student John Romein wrote a program that solves the ancient game of Oware.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Vrije_Universiteit_Amsterdam",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Vrije Universiteit Amsterdam (landmark)"
    },
    "history": {
     "en": "ACTA was founded in 1985 to merge two separate faculties due to a national oversupply of dentists.",
@@ -1531,11 +1536,12 @@
   {
    "name": "Gelderlandpleinbuurt",
    "description": {
-    "en": "Gwijde van Henegouwenbrug (bridge here): Architect Dirk Sterenberg designed the bridge while working for the Department of Public Works.",
+    "en": "Architect Dirk Sterenberg designed the bridge while working for the Department of Public Works.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Gwijde_van_Henegouwenbrug",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Gwijde van Henegouwenbrug (bridge)"
    },
    "history": {
     "en": "A tram line was installed in the center of the bridge between 1989 and 1990.",
@@ -1580,7 +1586,7 @@
     "lang": "en"
    },
    "history": {
-    "en": "Built during the first half of the 20th century along a tram line that brought commuters to the city centre, De Baarsjes was formulated by the architect Hendrik Petrus Berlage who designed the main square Mercatorplein. In 1990, De Baarsjes became a borough (Dutch: stadsdeel) of Amsterdam. As it was mostly built before World War II, it was all built to last so when it came to urban renewal in the 1990s, most buildings were renovated and not razed to the ground.",
+    "en": "Built during the first half of the 20th century along a tram line that brought commuters to the city centre, De Baarsjes was formulated by the architect Hendrik Petrus Berlage who designed the main square Mercatorplein. In 1990, De Baarsjes became a borough (Dutch: stadsdeel) of Amsterdam. As it was mostly built before World War II, it was all built to last so when it came to urban renewal in the 1990s, most buildings were renovated and not razed to the ground. Facades were cleaned, suspicious bars and bordellos were closed and ambitious plans to deal with crime and safety were undertaken.",
     "sourceUrl": "https://en.wikipedia.org/wiki/De_Baarsjes",
     "lang": "en"
    },
@@ -1685,11 +1691,12 @@
   {
    "name": "Buitenveldert-West",
    "description": {
-    "en": "Gijsbrecht van Aemstelpark (park here): Elevated rope bridges let red squirrels cross roads between the Amsterdamse Bos and Amstelpark.",
+    "en": "Elevated rope bridges let red squirrels cross roads between the Amsterdamse Bos and Amstelpark.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Gijsbrecht_van_Aemstelpark",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Gijsbrecht van Aemstelpark (park)"
    },
    "history": {
     "en": "The city council officially approved the park's creation in 1928.",

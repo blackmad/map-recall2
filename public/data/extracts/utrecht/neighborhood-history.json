@@ -72,11 +72,12 @@
   {
    "name": "Lombok, Leidseweg",
    "description": {
-    "en": "Houtzaagmolen De Ster (landmark here): To catch wind, the municipality knotted poplar trees at a height of about 4.5 meters in March 1999.",
+    "en": "To catch wind, the municipality knotted poplar trees at a height of about 4.5 meters in March 1999.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Houtzaagmolen_De_Ster",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Houtzaagmolen De Ster (landmark)"
    },
    "history": {
     "en": "A test load of 4100 kg was applied during a trial on January 5, 1898.",
@@ -152,11 +153,12 @@
   {
    "name": "Domplein, Neude, Janskerkhof",
    "description": {
-    "en": "Abdij van St. Paulus (landmark here): Today only a transept wall survives, integrated into the row of houses lining Hofpoort Street.",
+    "en": "Today only a transept wall survives, integrated into the row of houses lining Hofpoort Street.",
     "sourceUrl": "https://en.wikipedia.org/wiki/St._Paul%27s_Abbey,_Utrecht",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Abdij van St. Paulus (landmark)"
    },
    "history": {
     "en": "Most of the nave was demolished in 1707, followed by the choir in 1804.",
@@ -170,11 +172,12 @@
   {
    "name": "Springweg E.o., Geertebuurt",
    "description": {
-    "en": "Andreasklooster (landmark here): A radical renovation in 1983 demolished most of the structure while saving the facade and garden.",
+    "en": "A radical renovation in 1983 demolished most of the structure while saving the facade and garden.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Andreasklooster_(Utrecht)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Andreasklooster (landmark)"
    },
    "history": {
     "en": "Mathematician Laurens Praalder was buried within the Geertekerk on April 24, 1793.",
@@ -227,11 +230,12 @@
   {
    "name": "Welgelegen, Den Hommel",
    "description": {
-    "en": "De Meernbrug (bridge here): De Meernbrug was originally a Galecopper bridge moved from the A12 motorway.",
+    "en": "De Meernbrug was originally a Galecopper bridge moved from the A12 motorway.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/De_Meernbrug",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "De Meernbrug (bridge)"
    },
    "history": {
     "en": "A narrower predecessor called the Oudenrijnsebrug stood here until 1974.",
@@ -267,11 +271,12 @@
   {
    "name": "Transwijk-Zuid",
    "description": {
-    "en": "Mobach Keramiek (landmark here): A museum at the original site opens its doors to the public only once every year.",
+    "en": "A museum at the original site opens its doors to the public only once every year.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Mobach_Keramiek",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Mobach Keramiek (landmark)"
    },
    "history": {
     "en": "The historic factory building on Kanaalweg was constructed in 1913 and is now a national monument.",
@@ -299,11 +304,12 @@
   {
    "name": "Kanaleneiland-Zuid",
    "description": {
-    "en": "Wederkomst des Herenkerk (landmark here): Today, this building serves as a place of worship for the Martinus parish community.",
+    "en": "Today, this building serves as a place of worship for the Martinus parish community.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Wederkomst_des_Herenkerk",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Wederkomst des Herenkerk (landmark)"
    },
    "history": {
     "en": "The Seventh-day Adventist Church bought the church in 2017.",
@@ -334,11 +340,12 @@
   {
    "name": "Hoog Catharijne, Ns, Jaarbeurs",
    "description": {
-    "en": "De Inktpot (landmark here): A common misconception claims the German SS used it as headquarters during World War II.",
+    "en": "A common misconception claims the German SS used it as headquarters during World War II.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/De_Inktpot",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "De Inktpot (landmark)"
    },
    "history": {
     "en": "ProRail has used the site as its headquarters since 1995.",
@@ -352,11 +359,12 @@
   {
    "name": "Binnenstad City- En Winkelgebied",
    "description": {
-    "en": "Abdij van St. Paulus (landmark here): Today only a transept wall survives, integrated into the row of houses lining Hofpoort Street.",
+    "en": "Today only a transept wall survives, integrated into the row of houses lining Hofpoort Street.",
     "sourceUrl": "https://en.wikipedia.org/wiki/St._Paul%27s_Abbey,_Utrecht",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Abdij van St. Paulus (landmark)"
    },
    "history": {
     "en": "Most of the nave was demolished in 1707, followed by the choir in 1804.",
@@ -370,11 +378,12 @@
   {
    "name": "Bedrijvengebied Kanaleneiland-Zuid",
    "description": {
-    "en": "Galecopperbrug (bridge here): During renovations, steel connections between the bridge and road surface faced extra pressure from joint transitions.",
+    "en": "During renovations, steel connections between the bridge and road surface faced extra pressure from joint transitions.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Galecopperbrug",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Galecopperbrug (bridge)"
    },
    "history": {
     "en": "The first section opened in 1971, while the second part was completed five years later in 1976.",
@@ -388,11 +397,12 @@
   {
    "name": "Transwijk, Bedr.geb. Kanaleneiland",
    "description": {
-    "en": "Mobach Keramiek (landmark here): A museum at the original site opens its doors to the public only once every year.",
+    "en": "A museum at the original site opens its doors to the public only once every year.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Mobach_Keramiek",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Mobach Keramiek (landmark)"
    },
    "history": {
     "en": "The historic factory building on Kanaalweg was constructed in 1913 and is now a national monument.",
@@ -475,21 +485,23 @@
   {
    "name": "Oud Hoograven, Tolsteeg",
    "description": {
-    "en": "Oranjebrug (bridge here): Until at least 1989, a dedicated cottage for the bridge warden stood on the eastern headland of the structure.",
+    "en": "Until at least 1989, a dedicated cottage for the bridge warden stood on the eastern headland of the structure.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Oranjebrug_(Utrecht)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Oranjebrug (bridge)"
    }
   },
   {
    "name": "Tolsteeg, Rotsoord",
    "description": {
-    "en": "Oranjebrug (bridge here): Until at least 1989, a dedicated cottage for the bridge warden stood on the eastern headland of the structure.",
+    "en": "Until at least 1989, a dedicated cottage for the bridge warden stood on the eastern headland of the structure.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Oranjebrug_(Utrecht)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Oranjebrug (bridge)"
    }
   },
   {
@@ -498,11 +510,12 @@
   {
    "name": "Lunetten-Zuid",
    "description": {
-    "en": "Nieuwe Houtenseweg (bridge here): Railway operator ProRail commissioned the project while Rijkswaterstaat later took over ownership.",
+    "en": "Railway operator ProRail commissioned the project while Rijkswaterstaat later took over ownership.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Viaduct_Nieuwe_Houtenseweg",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Nieuwe Houtenseweg (bridge)"
    },
    "history": {
     "en": "A new car bridge was installed in 2012 to free the original structure for trains only.",
@@ -538,11 +551,12 @@
   {
    "name": "Nieuwegracht-Oost",
    "description": {
-    "en": "Lepelenburg (park here): The Kol banking family lived there for a century as the city's largest private residence.",
+    "en": "The Kol banking family lived there for a century as the city's largest private residence.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Lepelenburg",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Lepelenburg (park)"
    },
    "history": {
     "en": "Six houses for poor widows were founded in 1621 on the grounds of Klein Lepelenburg.",
@@ -716,11 +730,12 @@
   {
    "name": "Maarschalkerweerd, Mereveld",
    "description": {
-    "en": "Amelisweerd (park here): Several hiking routes wind through the estate grounds.",
+    "en": "Several hiking routes wind through the estate grounds.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Amelisweerd",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Amelisweerd (park)"
    },
    "history": {
     "en": "The estate later split into three parts, creating today's Oud-Amelisweerd and Nieuw-Amelisweerd.",
@@ -733,11 +748,12 @@
   {
    "name": "Abstede, Gansstraat",
    "description": {
-    "en": "De Vrouwenbibliotheek (landmark here): Men were initially barred but gained access in 1990.",
+    "en": "Men were initially barred but gained access in 1990.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Vrouwenbibliotheek_Utrecht",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "De Vrouwenbibliotheek (landmark)"
    },
    "history": {
     "en": "From 1995 to 2002, the library operated within the Multicultural Emancipation Center on Wittevrouwenkade.",
@@ -801,11 +817,12 @@
   {
    "name": "Nw Engeland, Th. À Kempisplantsoen E.o.",
    "description": {
-    "en": "Goudse lijn (bridge here): Utrecht Centraal serves as a hub for lines heading to Amsterdam, Zwolle, Arnhem and Eindhoven.",
+    "en": "Utrecht Centraal serves as a hub for lines heading to Amsterdam, Zwolle, Arnhem and Eindhoven.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Utrecht%E2%80%93Rotterdam_railway",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Goudse lijn (bridge)"
    },
    "history": {
     "en": "A generous donation by Frans van Seumeren funded the bell tower added in 1954.",
@@ -819,11 +836,12 @@
   {
    "name": "Oudwijk, Buiten Wittevrouwen",
    "description": {
-    "en": "Holy Trinity Church (landmark here): Anglican bishop Herbert Bury laid the first stone on November 9, 1911.",
+    "en": "Anglican bishop Herbert Bury laid the first stone on November 9, 1911.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Holy_Trinity_Church_(Utrecht)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Holy Trinity Church (landmark)"
    },
    "history": {
     "en": "The monument was unveiled on October 29, 2015 by Mayor Jan van Zanen.",
@@ -888,11 +906,12 @@
   {
    "name": "Wilhelminapark, Rijnsweerd",
    "description": {
-    "en": "De Uithof / Utrecht Science Park (landmark here): Most university faculties reside here, excluding Law, Humanities, and University College Utrecht.",
+    "en": "Most university faculties reside here, excluding Law, Humanities, and University College Utrecht.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Utrecht_Science_Park",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "De Uithof / Utrecht Science Park (landmark)"
    },
    "history": {
     "en": "The Dutch government bought this 300-hectare plot for the university in 1958.",
@@ -974,11 +993,12 @@
   {
    "name": "Binnenstad Woongebied",
    "description": {
-    "en": "Andreasklooster (landmark here): A radical renovation in 1983 demolished most of the structure while saving the facade and garden.",
+    "en": "A radical renovation in 1983 demolished most of the structure while saving the facade and garden.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Andreasklooster_(Utrecht)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Andreasklooster (landmark)"
    },
    "history": {
     "en": "In 1980, the museum expanded by acquiring the collection of the Van Baaren Museum.",
@@ -1092,11 +1112,12 @@
   {
    "name": "Zeeheldenbuurt, Hengeveldstraat E.o.",
    "description": {
-    "en": "Biltsche Grift (waterway here): From 1873 to the 1920s, a bulge in the canal served as an open-air public bathing resort.",
+    "en": "From 1873 to the 1920s, a bulge in the canal served as an open-air public bathing resort.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Biltsche_Grift",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Biltsche Grift (waterway)"
    },
    "history": {
     "en": "A now abolished water board in the area was named after this waterway.",
@@ -1110,11 +1131,12 @@
   {
    "name": "Wittevrouwen, Zeeheldenbuurt",
    "description": {
-    "en": "Nieuwe Kerk (landmark here): A nearby community hall named De Klopper hosted youth activities during the 1950s and 1960s.",
+    "en": "A nearby community hall named De Klopper hosted youth activities during the 1950s and 1960s.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Nieuwe_Kerk_(Utrecht)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Nieuwe Kerk (landmark)"
    },
    "history": {
     "en": "A now abolished water board in the area was named after this waterway.",
@@ -1128,11 +1150,12 @@
   {
    "name": "Tuindorp, Van Lieflandlaan-West",
    "description": {
-    "en": "Pauluskerk (landmark here): A roof fin sits atop the structure, adding a distinct vertical element.",
+    "en": "A roof fin sits atop the structure, adding a distinct vertical element.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Willem_de_Zwijgerkerk_(Utrecht)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Pauluskerk (landmark)"
    },
    "history": {
     "en": "Declining attendance led to the church closing in 1991 before a Catholic parish took it over two years later.",
@@ -1146,11 +1169,12 @@
   {
    "name": "Tuindorp, Voordorp",
    "description": {
-    "en": "Pauluskerk (landmark here): A roof fin sits atop the structure, adding a distinct vertical element.",
+    "en": "A roof fin sits atop the structure, adding a distinct vertical element.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Willem_de_Zwijgerkerk_(Utrecht)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Pauluskerk (landmark)"
    },
    "history": {
     "en": "During the 2017 KNVB Cup, Hercules led FC Groningen 1–0 before ultimately losing 2–1.",
@@ -1163,11 +1187,12 @@
   {
    "name": "Donaudreef, Wolgadreef E.o.",
    "description": {
-    "en": "Johanneskerk (landmark here): Windows were designed to stop reaching the ground, preventing outside distractions and dramatic lighting.",
+    "en": "Windows were designed to stop reaching the ground, preventing outside distractions and dramatic lighting.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Johanneskerk_(Utrecht)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Johanneskerk (landmark)"
    },
    "history": {
     "en": "Construction started in 1965, with the church officially opening its doors just one year later in 1966.",
@@ -1181,11 +1206,12 @@
   {
    "name": "Taagdreef, wolgadreef",
    "description": {
-    "en": "Park de Watertoren (park here): Children can play in a dedicated splash pool alongside several ponds and water features.",
+    "en": "Children can play in a dedicated splash pool alongside several ponds and water features.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Park_de_Watertoren",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Park de Watertoren (park)"
    },
    "history": {
     "en": "Construction started in 1965, with the church officially opening its doors just one year later in 1966.",
@@ -1199,11 +1225,12 @@
   {
    "name": "Taagdreef, Rubicondreef E.o.",
    "description": {
-    "en": "Park de Watertoren (park here): Children can play in a dedicated splash pool alongside several ponds and water features.",
+    "en": "Children can play in a dedicated splash pool alongside several ponds and water features.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Park_de_Watertoren",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Park de Watertoren (park)"
    },
    "history": {
     "en": "Declining parish numbers led to the sale of the building in December 1982.",
@@ -1217,11 +1244,12 @@
   {
    "name": "Neckardreef E.o.",
    "description": {
-    "en": "Sint-Rafaëlkerk (landmark here): Architect Johannes Dresmé from Driebergen designed this church.",
+    "en": "Architect Johannes Dresmé from Driebergen designed this church.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Rafa%C3%ABlkerk_(Utrecht)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Sint-Rafaëlkerk (landmark)"
    },
    "history": {
     "en": "Cardinal Alfrink consecrated the building on July 30, 1967.",
@@ -1274,11 +1302,12 @@
   {
    "name": "Zambesidreef, Tigrisdreef",
    "description": {
-    "en": "Fort Blauwkapel (landmark here): The waiting house measures 30 meters long and 20 meters wide with three vaulted rooms inside.",
+    "en": "The waiting house measures 30 meters long and 20 meters wide with three vaulted rooms inside.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Fort_Blauwkapel",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Fort Blauwkapel (landmark)"
    },
    "history": {
     "en": "Construction of this fortress took place between 1818 and 1821.",
@@ -1408,11 +1437,12 @@
   {
    "name": "Zamenhofdreef, Neckardreef",
    "description": {
-    "en": "Loevenhoutsedijk (street here): Summer heat once caused the bridge to get stuck, leading to water spraying on the deck for cooling around 2000.",
+    "en": "Summer heat once caused the bridge to get stuck, leading to water spraying on the deck for cooling around 2000.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Rode_brug_(Utrecht)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Loevenhoutsedijk (street)"
    },
    "history": {
     "en": "Cardinal Alfrink consecrated the building on July 30, 1967.",
@@ -1426,11 +1456,12 @@
   {
    "name": "Zamenhofdreef E.o.",
    "description": {
-    "en": "Loevenhoutsedijk (street here): Summer heat once caused the bridge to get stuck, leading to water spraying on the deck for cooling around 2000.",
+    "en": "Summer heat once caused the bridge to get stuck, leading to water spraying on the deck for cooling around 2000.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Rode_brug_(Utrecht)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Loevenhoutsedijk (street)"
    },
    "history": {
     "en": "Police officers from a nearby station had to intervene when cars could not pass on this narrow structure.",
@@ -1496,11 +1527,12 @@
   {
    "name": "Geuzenwijk, De Driehoek",
    "description": {
-    "en": "Marnixbrug (bridge here): In 2020, artist Janno Hahn designed new lettering added to the structure.",
+    "en": "In 2020, artist Janno Hahn designed new lettering added to the structure.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Marnixbrug",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Marnixbrug (bridge)"
    },
    "history": {
     "en": "Construction took place between 1965 and 1967 alongside the new Overvecht district.",
@@ -1538,11 +1570,12 @@
   {
    "name": "Schepenbuurt, Cartesiusweg E.o.",
    "description": {
-    "en": "KidZcity (landmark here): Children up to age 12 can climb, slide, run, and jump inside the park.",
+    "en": "Children up to age 12 can climb, slide, run, and jump inside the park.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/KidZcity",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "KidZcity (landmark)"
    },
    "history": {
     "en": "A large fire broke out on April 18, 2008, though no visitors were injured.",
@@ -1658,11 +1691,12 @@
   {
    "name": "Zuilen-Noord En -Oost",
    "description": {
-    "en": "Marnixbrug (bridge here): In 2020, artist Janno Hahn designed new lettering added to the structure.",
+    "en": "In 2020, artist Janno Hahn designed new lettering added to the structure.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Marnixbrug",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Marnixbrug (bridge)"
    },
    "history": {
     "en": "A Dutch Reformed congregation now worships within these walls.",
@@ -1676,11 +1710,12 @@
   {
    "name": "Zuilen West",
    "description": {
-    "en": "St. Jacobuskerk (landmark here): Best Life Church held its first service here on November 5, 2017, just weeks after the Catholic closure.",
+    "en": "Best Life Church held its first service here on November 5, 2017, just weeks after the Catholic closure.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Jacobuskerk_(Zuilen)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "St. Jacobuskerk (landmark)"
    },
    "history": {
     "en": "The St. Jacobuskerk became Zuilen's third Catholic church after Ludgerus and Salvator churches opened in 1933.",
@@ -1703,11 +1738,12 @@
   {
    "name": "Prins Bernhardplein E.o., Demkagebied",
    "description": {
-    "en": "St. Jacobuskerk (landmark here): Best Life Church held its first service here on November 5, 2017, just weeks after the Catholic closure.",
+    "en": "Best Life Church held its first service here on November 5, 2017, just weeks after the Catholic closure.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Jacobuskerk_(Zuilen)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "St. Jacobuskerk (landmark)"
    },
    "history": {
     "en": "The St. Jacobuskerk became Zuilen's third Catholic church after Ludgerus and Salvator churches opened in 1933.",
@@ -1721,11 +1757,12 @@
   {
    "name": "Halve Maan-Zuid",
    "description": {
-    "en": "Leidse Rijn (waterway here): The waterway ends in Harmelen where it joins the Oude Rijn to flow toward Katwijk aan Zee.",
+    "en": "The waterway ends in Harmelen where it joins the Oude Rijn to flow toward Katwijk aan Zee.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Leidse_Rijn",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Leidse Rijn (waterway)"
    },
    "history": {
     "en": "Originally Dutch Reformed, it became Christian Reformed in 1996.",
@@ -1739,11 +1776,12 @@
   {
    "name": "Oog in Al, Welgelegen",
    "description": {
-    "en": "Leidse Rijn (waterway here): The waterway ends in Harmelen where it joins the Oude Rijn to flow toward Katwijk aan Zee.",
+    "en": "The waterway ends in Harmelen where it joins the Oude Rijn to flow toward Katwijk aan Zee.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Leidse_Rijn",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Leidse Rijn (waterway)"
    },
    "history": {
     "en": "Originally Dutch Reformed, it became Christian Reformed in 1996.",
@@ -1757,11 +1795,12 @@
   {
    "name": "Nieuw Engeland, Schepenbuurt",
    "description": {
-    "en": "KidZcity (landmark here): Children up to age 12 can climb, slide, run, and jump inside the park.",
+    "en": "Children up to age 12 can climb, slide, run, and jump inside the park.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/KidZcity",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "KidZcity (landmark)"
    },
    "history": {
     "en": "A generous donation by Frans van Seumeren funded the bell tower added in 1954.",
@@ -1775,11 +1814,12 @@
   {
    "name": "Bedrijvengebied Lage Weide",
    "description": {
-    "en": "Werkspoorbrug (bridge here): Trains heading to Amsterdam use a different bridge while returning ones cross this one.",
+    "en": "Trains heading to Amsterdam use a different bridge while returning ones cross this one.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Werkspoorbrug_(Amsterdam-Rijnkanaal)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Werkspoorbrug (bridge)"
    }
   },
   {
@@ -1972,11 +2012,12 @@
   {
    "name": "Leidsche Rijn-Zuid",
    "description": {
-    "en": "Recreatieplas Strijkviertel (waterway here): During the 1970s and 1980s, the area received both legal and illegal waste deposits.",
+    "en": "During the 1970s and 1980s, the area received both legal and illegal waste deposits.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Recreatieplas_Strijkviertel",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Recreatieplas Strijkviertel (waterway)"
    },
    "history": {
     "en": "Sand mining operations that created the site began in 1937 under Rijkswaterstaat.",
@@ -2005,11 +2046,12 @@
   {
    "name": "Rijnvliet",
    "description": {
-    "en": "Recreatieplas Strijkviertel (waterway here): During the 1970s and 1980s, the area received both legal and illegal waste deposits.",
+    "en": "During the 1970s and 1980s, the area received both legal and illegal waste deposits.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Recreatieplas_Strijkviertel",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Recreatieplas Strijkviertel (waterway)"
    },
    "history": {
     "en": "Sand mining operations that created the site began in 1937 under Rijkswaterstaat.",

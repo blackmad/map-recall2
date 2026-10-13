@@ -3,27 +3,29 @@
  *
  * Three problems from the 2026-10 review of the card text:
  *  1. resident and area statistics in ledes and histories ("The district had
- *     10,771 inhabitants as of 1 January 2005"). Sentences flagged by the
- *     project's policy in `areaFacts.ts` (`excludedBy`) are dropped, except the
- *     first sentence, which is always kept. Two narrowings apply on top of it:
- *     a bare year is not a statistic ("Residents financed the bridge in 1927"),
- *     and a percentage is a statistic only when it counts people ("paying up to
- *     20% of the cost" stays). Area measurements ("The total area is 96.71
- *     hectares") get a local rule because the shared policy does not flag them.
+ *     10,771 inhabitants as of 1 January 2005"). Sentences that count people
+ *     are dropped, except the first sentence, which is always kept. This is the
+ *     statistics rule of the project's `areaFacts.ts` policy (`excludedBy`),
+ *     narrowed: a bare year is not a statistic ("Residents financed the bridge
+ *     in 1927"), a percentage counts only with people words ("paying up to
+ *     20% of the cost" stays), and the people words include "people lived" and
+ *     "households", which that regex misses. Area and density measurements
+ *     ("The total area is 96.71 hectares") get a local rule. The shared crime
+ *     and planning rules are not applied: they delete real history.
  *  2. stripped-pronunciation artefacts: "The Grachtengordel (, lit. 'canal
  *     belt')", empty "()" pairs and a space before a comma or full stop.
- *  3. borrowed histories: a landmark's history inside the area, written as
- *     "Schinkel (waterway here): A dam blocked the river in 1434...". The prefix
- *     is stripped and recorded as `history.borrowedFrom = "Schinkel (waterway)"`.
+ *  3. borrowed texts: a landmark's history or description inside the area,
+ *     written as "Schinkel (waterway here): A dam blocked the river in 1434...".
+ *     The prefix is stripped and recorded as `<field>.borrowedFrom =
+ *     "Schinkel (waterway)"`.
  *
  * Pure functions only; the file-level driver is `scripts/clean-neighborhood-text.ts`.
  */
-import { excludedBy } from './areaFacts.ts';
-
 export interface PlainText { en: string; [key: string]: unknown }
 export type EntryTextField = 'description' | 'history' | 'nameOrigin' | 'localFact';
 const TEXT_FIELDS: readonly EntryTextField[] = ['description', 'history', 'nameOrigin', 'localFact'];
 const DROP_FIELDS: readonly EntryTextField[] = ['description', 'history'];
+const BORROW_FIELDS: readonly EntryTextField[] = ['description', 'history'];
 
 export interface EntryChange {
   /** Dotted field, e.g. "description.en" or "history.en". */
@@ -33,7 +35,7 @@ export interface EntryChange {
   reason: string;
   /** Kind of change, for summaries. */
   kind: 'artefact' | 'drop' | 'borrowed';
-  /** One entry per dropped sentence: its reason (statistics, area, crime, planning, origin-statistics). */
+  /** One entry per dropped sentence: its reason (statistics or area). */
   droppedReasons?: string[];
   borrowedFrom?: string;
 }
@@ -122,10 +124,13 @@ const AREA_PATTERNS: RegExp[] = [
   /\bper\s+(?:square\s+)?(?:kilomet(?:er|re)|hectare|km²|km2)\b/i, // "8,500 homes per square kilometre"
 ];
 
-/** Why a sentence is a statistic to drop, or null to keep it. */
+/**
+ * Why a sentence is a statistic to drop, or null to keep it. Only resident
+ * counts and area/density are dropped. The shared crime and planning rules are
+ * written for one-line local facts and would delete real history (deportations,
+ * the Admiralty gallows, a borough's creation), so they are not applied here.
+ */
 export function statisticReason(sentence: string): string | null {
-  const label = excludedBy(sentence);
-  if (label && label !== 'statistics') return label;
   if (countsResidents(sentence)) return 'statistics';
   if (AREA_PATTERNS.some(pattern => pattern.test(sentence))) return 'area';
   return null;
@@ -162,7 +167,7 @@ export function cleanDescription(text: string): { text: string; dropped: string[
   return dropped.length ? { text: kept.join(' '), dropped } : { text, dropped };
 }
 
-/** "Schinkel (waterway here): A dam blocked..." -> the dam sentence with borrowedFrom "Schinkel (waterway)". */
+/** "Schinkel (waterway here): A dam blocked..." -> the dam sentence with borrowedFrom "Schinkel (waterway)". Used for description and history. */
 const BORROWED_RE = /^([^():]{1,120}?) \(([a-z][a-z-]*(?: [a-z][a-z-]*)?) here\): /;
 
 export function extractBorrowedHistory(text: string): { text: string; borrowedFrom?: string } {
@@ -188,11 +193,11 @@ export function cleanEntry<T extends { name: string } & Partial<Record<EntryText
       changes.push({ field: `${field}.en`, before: en, after: normalised, reason: 'pronunciation artefact', kind: 'artefact' });
       en = normalised;
     }
-    if (field === 'history') {
+    if (BORROW_FIELDS.includes(field)) {
       const borrowed = extractBorrowedHistory(en);
       if (borrowed.borrowedFrom) {
         borrowedFrom = borrowed.borrowedFrom;
-        changes.push({ field: 'history.en', before: en, after: borrowed.text, reason: `borrowed from ${borrowed.borrowedFrom}`, kind: 'borrowed', borrowedFrom });
+        changes.push({ field: `${field}.en`, before: en, after: borrowed.text, reason: `borrowed from ${borrowed.borrowedFrom}`, kind: 'borrowed', borrowedFrom });
         en = borrowed.text;
       }
     }
