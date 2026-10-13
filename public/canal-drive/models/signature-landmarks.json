@@ -10769,13 +10769,13 @@
         "depthCoverage": 0.9920040266568806
       },
       "triangles": 26416,
-      "bytes": 246012,
+      "bytes": 246628,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "411fcd990d5e838a",
+        "sourceHash": "2effacb22193ad48",
         "buildVersion": 2,
-        "bytes": 42180,
-        "triangles": 2112
+        "bytes": 42696,
+        "triangles": 2100
       }
     },
     "muiderpoort": {
