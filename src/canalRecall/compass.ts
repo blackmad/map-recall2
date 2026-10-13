@@ -6,7 +6,7 @@
  *  `camera.rotation` as the map turns under heading-up / chase views.
  */
 
-export const COMPASS_SIZE_DESKTOP = 44;
+export const COMPASS_SIZE_DESKTOP = 32;
 export const COMPASS_SIZE_COMPACT = 40;
 
 /** Canvas rotate angle that points a +X needle toward true north. */
