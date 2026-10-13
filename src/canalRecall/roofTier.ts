@@ -21,16 +21,17 @@ export const ROOF_TIER_MID_FADE_M = 15;
 export const ROOF_TIER_FAR_FADE_M = 40;
 
 /**
- * Facade cells (the bay and procedural window grids) get the same far tier: a window cell minifying below a pixel is
- * a field of white dots from the air ("get rid of the stipple on zoom out", user 2026-10-13, Singelgracht at ~300 m).
- * Near: the cell through the hardware's trilinear + anisotropic filter. From `FACADE_TIER_MID_M` a fixed mip
- * (`FACADE_TIER_MID_LOD`, windows blur to a tint), from `FACADE_TIER_FAR_M` the cell's mean colour (the last mip).
+ * Facade cells (the bay and procedural window grids) get a far tier by screen footprint, not metres: the camera
+ * sits 100-300 m from the street in the chase view, so a distance rule flattens near windows ("get rid of the
+ * stipple on zoom out", user 2026-10-13, Singelgracht at ~300 m). The cell arrays already carry mipmaps, trilinear
+ * and anisotropic filtering; what still sparkles is a window of under ~2 px. `cellTier` is `[from, to]` in texels per
+ * pixel: below `from` the cell is exactly the filtered sample, above `to` it is the cell's mean colour (last mip),
+ * crossfaded between. A window 20 texels wide is 2 px at 10 texels per pixel, so it is lost only past `to`.
  */
-export const FACADE_TIER_MID_M = 140;
-export const FACADE_TIER_FAR_M = 300;
-export const FACADE_TIER_MID_LOD = 3;
+export const FACADE_TIER_FROM_TEXELS = 4;
+export const FACADE_TIER_TO_TEXELS = 10;
 export const FACADE_TIER_OFF: [number, number] = [-1, -1];
-export const facadeTierUniform = (): [number, number] => [FACADE_TIER_MID_M, FACADE_TIER_FAR_M];
+export const facadeTierUniform = (): [number, number] => [FACADE_TIER_FROM_TEXELS, FACADE_TIER_TO_TEXELS];
 
 /** Uniform defaults: `[lo, hi)` is the layer range of the pantile and slate cells; lo < 0 turns the tiers off. */
 export const ROOF_LAYERS_OFF: [number, number] = [-1, -1];
@@ -57,19 +58,18 @@ vec3 roofTierColour(vec3 fine, vec2 uv, float layer, float dist) {
 
 /**
  * GLSL: `cellTierSample(p, dist, c, m)` replaces `texture(cells, p)` / `texture(masks, p)` for facade cells. Needs
- * both samplers above it. Within the near tier it is exactly the filtered `texture` call.
+ * both samplers above it. `dist` is unused (kept so call sites read like the roof tier). Within the near tier it is
+ * exactly the filtered `texture` call.
  */
 export const FACADE_TIER_GLSL = /* glsl */ `
 uniform vec2 cellTier;
 void cellTierSample(vec3 p, float dist, out vec3 c, out vec2 m) {
   c = texture(cells, p).rgb; m = texture(masks, p).rg;
-  if (cellTier.x < 0.0 || dist < cellTier.x * 0.8) return;
-  float mid = smoothstep(cellTier.x * 0.8, cellTier.x * 1.2, dist);
-  float far = smoothstep(cellTier.y * 0.85, cellTier.y * 1.15, dist);
-  float lod = mix(0.0, ${glsl(FACADE_TIER_MID_LOD)}, mid);
-  vec3 cm = textureLod(cells, p, lod).rgb; vec2 mm = textureLod(masks, p, lod).rg;
-  vec3 cf = textureLod(cells, p, 8.0).rgb; vec2 mf = textureLod(masks, p, 8.0).rg;
-  c = mix(mix(c, cm, mid), cf, far); m = mix(mix(m, mm, mid), mf, far);
+  if (cellTier.x < 0.0) return;
+  float rho = max(length(dFdx(p.xy)), length(dFdy(p.xy))) * float(textureSize(cells, 0).x);
+  float far = smoothstep(cellTier.x, cellTier.y, rho);
+  if (far <= 0.0) return;
+  c = mix(c, textureLod(cells, p, 8.0).rgb, far); m = mix(m, textureLod(masks, p, 8.0).rg, far);
 }`;
 
 /** The roof blend on the CPU, for tests and the gallery's tier readout: weights of the fine, mid and far samples. */
