@@ -800,7 +800,11 @@ done, 34 m E wall has no panorama), Lijnbaansgracht, IJ-tunnel, Meer en Vaart,
 West Overtoomsesluis, Flierbosdreef, Boven-IJ, IJburg, Nieuwezijds
 Voorburgwal, Postjesweg; Houtmankade needs per-wing grouping (256 wall
 surfaces); Zuid-De Pijp has no panorama; Johan Huizingalaan 757 may not be a
-public bureau. Hoofdbureau Elandsgracht stays a bespoke builder. Known gaps:
+public bureau. Hoofdbureau Elandsgracht stays a bespoke builder (lane running 2026-10-13).
+Note: `install-large.ts --install` writes the catalogue, but the game reads
+the ordinary catalogue from `signature-placement.bundle.js`, so run
+`npm run build:canal-signature-landmarks` after every install or the model
+is invisible in the game (caught by the demo shots 2026-10-13). Known gaps:
 curved fronts, arched portals, colonnades; 3DBAG surface indices shift if the
 extract is rebuilt; `compare:facades` needs rhythm specs for these.
 
