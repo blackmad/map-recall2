@@ -5,9 +5,10 @@ import {
   DESATURATE_RADIUS_M, HIDDEN, HIGHLIGHT_GLSL, HIGHLIGHT_RECIPES, accentSeparation, applyMeshHighlight, attachHighlightPasses, baseMaterialOf,
   detachHighlightPasses, featureCentre, highlightAccent, highlightDefines, highlightFeature, highlightMaterialFor, highlightStyle, metresBetween,
   OUTLINE_FAR_PX, OUTLINE_PX, outlineWidthPx, withinDesaturation,
+  HIGHLIGHT_BOOST_GLOBAL, ROOF_WASH_ALPHA, SMALL_TARGET_FADE_SHARE, SMALL_TARGET_SHARE, footprintShare, smallTargetBoost,
 } from './highlight.ts';
 import { landmarkHighlightStates } from './highlightLandmarks.ts';
-import { beaconAlpha, markerSlot, mercatorFromLocal, mercatorOf, ringBand, ringOutlines } from './highlightMarker.ts';
+import { beaconAlpha, beaconRaise, footprintRadiusPx, markerSlot, mercatorFromLocal, mercatorOf, ringBand, ringOutlines, ringsArea } from './highlightMarker.ts';
 import { HIGHLIGHT_CORAL, HIGHLIGHT_YELLOW, HUD_ACCENT } from './palette.ts';
 import { createCityLookMaterial, createCityUniforms, variantDefines } from './cityLook.ts';
 
@@ -35,9 +36,9 @@ test('yellow compiles today\'s programs: no define, and the paint branch is the 
   assert.deepEqual(HIDDEN, { drawn: 0, hide: 1, highlight: 2, dim: 3 });
 });
 
-test('candidate recipes: a outline+ring+beacon, b rim+ring (animated), c desaturate+ring', () => {
+test('candidate recipes: a outline+ring+beacon (+ small-target wash), b rim+ring (animated), c desaturate+ring', () => {
   const on = (s: 'a' | 'b' | 'c') => Object.entries(HIGHLIGHT_RECIPES[s]).filter(([, v]) => v).map(([k]) => k).sort();
-  assert.deepEqual(on('a'), ['beacon', 'keepMaterials', 'outline', 'ring']);
+  assert.deepEqual(on('a'), ['beacon', 'keepMaterials', 'outline', 'ring', 'wash']);
   assert.deepEqual(on('b'), ['animated', 'keepMaterials', 'rim', 'ring']);
   assert.deepEqual(on('c'), ['desaturate', 'keepMaterials', 'ring']);
 });
@@ -120,7 +121,7 @@ test('whole-mesh variants: candidates keep the material, yellow swaps, dim desat
   root.add(mesh);
   applyMeshHighlight(THREE, root, 'highlight', { style: 'a' });
   assert.equal(mesh.material, red);
-  assert.deepEqual(mesh.children.map(c => c.name), ['mesh/highlight-outline']);
+  assert.deepEqual(mesh.children.map(c => c.name), ['mesh/highlight-outline', 'mesh/highlight-roof']);
   applyMeshHighlight(THREE, root, 'dim', { style: 'c' });
   assert.equal(mesh.children.length, 0);
   assert.equal(mesh.material, dim);
@@ -192,4 +193,92 @@ test('default-frame marker layer: after the last 3D layer, so buildings streamed
   assert.equal(layers[markerSlot(layers, 'highlight-marker')].id, 'poi-labels');
   assert.equal(markerSlot(layers.slice(0, 6), 'highlight-marker'), 6, 'top when a 3D layer is last');
   assert.equal(markerSlot(layers.slice(0, 3), 'highlight-marker'), -1, 'no 3D layer yet: stays');
+});
+
+test('small targets: full boost under 1 % of the frame, gone past 2 %; the beacon rises by the shortfall', () => {
+  assert.deepEqual(smallTargetBoost(0), { share: 0, weight: 0, shortfall: 0 }, 'no footprint: no boost');
+  // The Oud-West terrace house from the chase camera (~0.2 % of the frame): full boost, most of the shortfall.
+  const terrace = smallTargetBoost(0.002);
+  assert.equal(terrace.weight, 1);
+  assert.ok(Math.abs(terrace.shortfall - 0.8) < 1e-9);
+  assert.equal(smallTargetBoost(SMALL_TARGET_SHARE).weight, 1);
+  const mid = smallTargetBoost((SMALL_TARGET_SHARE + SMALL_TARGET_FADE_SHARE) / 2);
+  assert.ok(Math.abs(mid.weight - 0.5) < 1e-9 && mid.shortfall === 0);
+  assert.equal(smallTargetBoost(SMALL_TARGET_FADE_SHARE).weight, 0);
+  assert.equal(smallTargetBoost(0.08).weight, 0, 'a church from the saddle: none');
+  assert.equal(beaconRaise({ weight: 0, shortfall: 0 }), 1);
+  assert.equal(beaconRaise(smallTargetBoost(0.01)), 2);
+  assert.ok(beaconRaise(terrace) > 2.7 && beaconRaise(terrace) <= 3);
+  // Share of a 6 × 12 m house (r = √(72/π) ≈ 4.8 m) at ~27 px in a 1280 × 800 frame.
+  assert.ok(Math.abs(footprintShare(27, 1280, 800) - 0.00224) < 1e-4);
+  assert.equal(footprintShare(0, 1280, 800), 0);
+  assert.equal(ringsArea([[[0, 0], [6, 0], [6, 12], [0, 12]]]), 72);
+  assert.equal(ringsArea([[[0, 0], [0, 12], [6, 12], [6, 0]]]), 72, 'either winding');
+});
+
+test('small targets: footprint radius on screen from the local → clip matrix', () => {
+  const camera = new THREE.PerspectiveCamera(36.87, 1280 / 800, 1, 5000);
+  camera.up.set(0, 0, 1);
+  camera.position.set(0, -200, 80); camera.lookAt(0, 0, 10); camera.updateMatrixWorld();
+  const mvp = new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
+  const d = camera.position.distanceTo(new THREE.Vector3(0, 0, 10));
+  const focal = 400 / Math.tan((36.87 / 2) * Math.PI / 180);
+  const r = footprintRadiusPx(mvp.elements, [0, 0, 10], 4.8, 1280, 800);
+  // Across the view (east-west) the radius is not foreshortened: r·f/d.
+  assert.ok(Math.abs(r - 4.8 * focal / d) / r < 0.05, `${r} vs ${4.8 * focal / d}`);
+  // Behind the camera: 0.
+  camera.lookAt(0, -400, 80); camera.updateMatrixWorld();
+  assert.equal(footprintRadiusPx(new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse).elements, [0, 0, 10], 4.8, 1280, 800), 0, 'behind the camera');
+  assert.equal(footprintRadiusPx(mvp.elements, [0, 0, 10], 0, 1280, 800), 0);
+});
+
+test('roof wash: a third pass under a, drawn only while boosted, upward faces only, up by frame', () => {
+  const g = globalThis as any;
+  const mesh = new THREE.Mesh(new THREE.BoxGeometry(6, 12, 15), new THREE.MeshLambertMaterial()), scene = new THREE.Scene();
+  scene.add(mesh);
+  const passes = attachHighlightPasses(THREE, mesh, { style: 'a' });
+  const roof = passes.find((p: any) => p.name.endsWith('roof'));
+  assert.ok(roof, 'roof pass');
+  assert.equal(roof.material.defines.HL_ROOF, '');
+  assert.equal(roof.material.depthWrite, false);
+  assert.ok(roof.material.polygonOffset);
+  assert.match(roof.material.fragmentShader, /HL_ROOF/);
+  delete g[HIGHLIGHT_BOOST_GLOBAL];
+  assert.equal(roof.visible, false, 'no boost: not drawn');
+  g[HIGHLIGHT_BOOST_GLOBAL] = 1;
+  assert.equal(roof.visible, true);
+  mesh.visible = false;
+  assert.equal(roof.visible, false, 'follows the building');
+  mesh.visible = true;
+  const renderer = { getDrawingBufferSize: (v: any) => v.set(1280, 800), domElement: { clientWidth: 1280 } };
+  const camera = new THREE.PerspectiveCamera();
+  scene.updateMatrixWorld();
+  roof.onBeforeRender(renderer, scene, camera);
+  assert.equal(roof.material.uniforms.hlWash.value, ROOF_WASH_ALPHA);
+  assert.deepEqual(roof.material.uniforms.hlUp.value.toArray(), [0, 0, 1], 'metre world: +z by default');
+  // glTF frame (+y up), rotated so that its +y maps to the world's... still +y in a metre world.
+  const gltf = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshLambertMaterial());
+  scene.add(gltf);
+  const [, gRoof] = attachHighlightPasses(THREE, gltf, { style: 'a', up: [0, 1, 0] });
+  scene.updateMatrixWorld();
+  gRoof.onBeforeRender(renderer, scene, camera);
+  assert.deepEqual(gRoof.material.uniforms.hlUp.value.toArray(), [0, 1, 0]);
+  // Mercator world (the landmark holder in the shared frame: glTF +y → Mercator +z): up is found through the matrix.
+  const holder = new THREE.Group();
+  holder.matrixAutoUpdate = false;
+  const u = 1e-8;
+  holder.matrix.makeScale(u, -u, u).multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
+  holder.add(gltf);
+  scene.updateMatrixWorld(true);
+  gRoof.onBeforeRender(renderer, scene, camera);
+  const up = gRoof.material.uniforms.hlUp.value;
+  assert.ok(Math.abs(up.y - 1) < 1e-6, `glTF +y is up: ${up.toArray()}`);
+  g[HIGHLIGHT_BOOST_GLOBAL] = 0.5;
+  roof.onBeforeRender(renderer, scene, camera);
+  assert.equal(roof.material.uniforms.hlWash.value, ROOF_WASH_ALPHA * 0.5);
+  delete g[HIGHLIGHT_BOOST_GLOBAL];
+  // Not on a 3D Tiles feature (frame unknown), not under b / c / yellow.
+  assert.equal(attachHighlightPasses(THREE, mesh, { style: 'a', feature: { attribute: '_feature_id_0', id: 1 } }).length, 1);
+  assert.equal(attachHighlightPasses(THREE, mesh, { style: 'b' }).length, 1);
+  assert.equal(HIGHLIGHT_RECIPES.a.wash && !HIGHLIGHT_RECIPES.b.wash && !HIGHLIGHT_RECIPES.c.wash && !HIGHLIGHT_RECIPES.yellow.wash, true);
 });

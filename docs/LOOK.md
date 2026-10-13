@@ -398,9 +398,54 @@ any street. b reads as a pink wash on flat-shaded walls from the chase height an
 a frame every vsync; c is too subtle to find a building by (the 60 m neighbours lose
 colour, the target does not gain any) and it costs the largest hitch.
 Gaps closed by the default lane (above): the fallback extrusions and 3DBAG take the
-accent, the outline widens at chase distance. Still open: on the chase sheets an
-ordinary terrace house is far less findable than under yellow (0.08 % accent pixels vs
-0.55 %); the beacon and ring carry it, and 3DBAG mode is unverified live.
+accent, the outline widens at chase distance. 3DBAG mode is still unverified live.
+
+- **Small targets** (2026-10-14; `smallTargetBoost`, `footprintShare` in
+  `look/highlight.ts`, the marker in `highlightMarker.ts`): an ordinary terrace house
+  from the chase camera carried 0.08 % accent pixels against 0.55 % under the yellow.
+  Each frame the marker measures the lit footprint on screen: its equivalent circle
+  (radius √(area/π)) projected at the roof, the largest of four offsets (the one across
+  the view is not foreshortened; the perspective form of `footprintRadiusPixels`, which
+  uses the map-centre zoom), as a share of the frame. Under **1 %** the boost is full; it
+  fades out (smoothstep) by **2 %**. With the boost: a **coral roof wash** (a third pass of
+  the lit geometry, upward faces only, cos ≥ 0.35 from vertical, unlit, polygon offset,
+  no depth write; on MapLibre's fallback the top cap of the hull prism) at **0.75 ×
+  weight**, and the **beacon raised** to 1 + 2 × weight × (1 + shortfall)/2 of its 45 m
+  and widened from 3 to 4 px. Walls are never washed: the facade stays the building's own
+  from the saddle (where the terrace covers 8 % and gets no boost). The wash pass is not
+  drawn at all without a boost (no draw call for a large building). The wash reads only
+  above ~0.75 on a dark slate roof (terrace chase share by alpha: 0.55 → 0.13 %, 0.65 →
+  0.15 %, 0.70 → 0.22 %, 0.75 → 0.69 %: below that a dark roof turns rust, not the accent).
+  Not on a 3DBAG batched feature (its frame is unverified). Gate:
+  `tests/e2e/highlight.spec.ts` (terrace chase ≥ 0.3 %, cleared with the card).
+  Measured (`scripts/highlight-outline-width.mjs`, 1280×800, before → after; footprint
+  share and boost weight from the marker; outline = mean local width, CSS px):
+
+  | frame | spot | view | distance m | footprint share | boost | accent pixels % | outline px |
+  |---|---|---|---|---|---|---|---|
+  | default | westermarkt | chase | 212 | 2.6 % | 0 | 0.20 → 0.20 | 2.44 → 2.45 |
+  | default | westermarkt | saddle | 85 | 19.7 % | 0 | 0.73 → 0.73 | 1.81 → 1.82 |
+  | default | westerkerk | chase | 200 | 18.5 % | 0 | 0.25 → 0.25 | 1.83 → 1.83 |
+  | default | westerkerk | saddle | 117 | 82 % | 0 | 0.73 → 0.73 | 1.92 → 1.92 |
+  | default | rijksmuseum | chase | 224 | 55 % | 0 | 0.56 → 0.56 | 2.26 → 2.26 |
+  | default | rijksmuseum | saddle | 149 | > 100 % | 0 | 0.84 → 0.84 | 2.25 → 2.24 |
+  | default | oudwest-terrace | chase | 213 | 1.0 % | 0.99 | **0.08 → 0.69** | 2.41 → 2.72 |
+  | default | oudwest-terrace | saddle | 83 | 8.0 % | 0 | 0.21 → 0.21 | 1.78 → 1.79 |
+  | shared | westermarkt | chase | 212 | 2.6 % | 0 | 0.20 → 0.20 | 2.41 → 2.40 |
+  | shared | westermarkt | saddle | 85 | 19.6 % | 0 | 0.71 → 0.71 | 1.76 → 1.77 |
+  | shared | westerkerk | chase | 200 | 18.5 % | 0 | 0.25 → 0.25 | 1.78 → 1.79 |
+  | shared | westerkerk | saddle | 117 | 82 % | 0 | 0.73 → 0.73 | 1.82 → 1.81 |
+  | shared | rijksmuseum | chase | 224 | 55 % | 0 | 0.57 → 0.57 | 2.13 → 2.14 |
+  | shared | rijksmuseum | saddle | 149 | > 100 % | 0 | 0.84 → 0.84 | 2.23 → 2.23 |
+  | shared | oudwest-terrace | chase | 213 | 1.0 % | 0.99 | **0.08 → 0.68** | 2.27 → 2.57 |
+  | shared | oudwest-terrace | saddle | 83 | 8.0 % | 0 | 0.20 → 0.20 | 1.76 → 1.77 |
+
+  The terrace's outline reads wider after because it now runs over the wash as well as
+  the slate. The Westermarkt block from the chase (2.6 %) stays unboosted at 0.20 %.
+  Sheets (yellow, a before the boost, a after):
+  `docs/reports/highlight-redesign-20261013/small-target/sheet-{default,shared}-{chase,saddle}.jpg`.
+  Storybook: `Canal Recall/Landmark highlight` → SmallTarget* (desktop and phone,
+  the fallback hull, a long name).
 
 ## Labels (POI names, `src/canalRecall/labels/`, 2026-10-13)
 

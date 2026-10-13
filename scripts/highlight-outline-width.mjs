@@ -4,12 +4,14 @@
 // frame with the outline and one with `window.__canalRecallHighlightOutlinePx = 0` (ring and beacon unchanged); the
 // pixels that changed and sit near the accent are the outline. Its local width at each pixel is the shorter of the
 // horizontal and vertical accent runs through it (a diagonal edge reads up to √2 wide). Reports CSS px: the mean,
-// median and quartiles, the outline's pixel count, and the camera distance to the building.
+// median and quartiles, the outline's pixel count, and the camera distance to the building; `share` is the accent
+// pixel share of the whole frame with the highlight on (RGB distance < 60 of the coral, as highlight-shots.spec.ts),
+// and `boost` the marker's small-target boost (look/highlight.ts `smallTargetBoost`) with the footprint's share.
 // `outlinePx` pins the width (the old fixed 2 px: `2`), else the page's own rule. BUNDLES_DIR serves *.bundle.js
-// from there. Appends to artifacts/highlight-redesign/outline-width.jsonl.
+// from there. Appends to $OUT_JSONL (default artifacts/highlight-redesign/outline-width.jsonl).
 import { chromium } from 'playwright';
 import fs from 'node:fs';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 import sharp from 'sharp';
 
 const [frame = 'default', spotsArg = 'oudwest-terrace,westermarkt', pinned = ''] = process.argv.slice(2);
@@ -17,12 +19,13 @@ const PORT = process.env.PORT || 4459, BUNDLES = process.env.BUNDLES_DIR, SHOTS 
 const SPOTS = {
   westermarkt: { landmarkId: 'extract_landmarks_614625734', standDeg: 115, standM: 75, saddleM: 45 },
   westerkerk: { landmarkId: 'extract_landmarks_1692085215', standDeg: 140, standM: 90, saddleM: 60 },
+  rijksmuseum: { landmarkId: 'extract_landmarks_512243549', standDeg: 195, standM: 150, saddleM: 120 },
   // A 6 m-wide 1890s house on the Bilderdijkstraat, the "building you tapped" path.
   'oudwest-terrace': { pand: 'NL.IMBAG.Pand.0363100012236453', pick: [4.87177, 52.36696], standDeg: 7, standM: 60, saddleM: 35 },
 };
 const CORAL = [255, 128, 51];
-const OUT = 'artifacts/highlight-redesign/outline-width.jsonl';
-fs.mkdirSync('artifacts/highlight-redesign', { recursive: true });
+const OUT = process.env.OUT_JSONL || 'artifacts/highlight-redesign/outline-width.jsonl';
+fs.mkdirSync(dirname(OUT), { recursive: true });
 if (SHOTS) fs.mkdirSync(SHOTS, { recursive: true });
 const q = (a, p) => { const s = [...a].sort((x, y) => x - y); return s.length ? s[Math.min(s.length - 1, Math.floor(p * s.length))] : NaN; };
 
@@ -48,6 +51,13 @@ async function outlineWidth(onPng, offPng, dpr) {
   }
   const mean = widths.reduce((a, b) => a + b, 0) / (widths.length || 1);
   return { pixels: Math.round(n / dpr / dpr), mean: +mean.toFixed(2), median: +q(widths, 0.5).toFixed(2), p25: +q(widths, 0.25).toFixed(2), p75: +q(widths, 0.75).toFixed(2) };
+}
+
+async function coralShare(png) {
+  const { data, info } = await sharp(png).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  let n = 0;
+  for (let i = 0; i < data.length; i += 3) if (Math.hypot(data[i] - CORAL[0], data[i + 1] - CORAL[1], data[i + 2] - CORAL[2]) < 60) n++;
+  return n / (info.width * info.height);
 }
 
 const browser = await chromium.launch({ headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
@@ -99,7 +109,9 @@ for (const name of spotsArg.split(',')) for (const view of ['chase', 'saddle']) 
   }, landmark);
   await page.waitForTimeout(2000);
   // The camera's distance to the beacon's base (the roof + 2 m), as the marker measured it last frame.
-  state.distanceM = await page.evaluate(() => Math.round(window.canalRecallGame.vectorMap._highlightMarker?.status?.().distanceM ?? NaN));
+  const status = await page.evaluate(() => window.canalRecallGame.vectorMap._highlightMarker?.status?.() ?? {});
+  state.distanceM = Math.round(status.distanceM ?? NaN);
+  if (status.boost) state.boost = status.boost;
   const canvas = page.locator('canvas.maplibregl-canvas').first();
   const onPng = await canvas.screenshot();
   const before = await page.evaluate(() => { const v = window.__canalRecallHighlightOutlinePx; window.__canalRecallHighlightOutlinePx = 0; window.canalRecallGame.vectorMap.map.triggerRepaint(); return v; });
@@ -108,6 +120,7 @@ for (const name of spotsArg.split(',')) for (const view of ['chase', 'saddle']) 
   await page.evaluate(v => { window.__canalRecallHighlightOutlinePx = v; window.canalRecallGame.vectorMap.setActiveLandmark(null); for (const e of document.body.querySelectorAll('*')) e.style.visibility = ''; }, before);
   if (SHOTS) { fs.writeFileSync(`${SHOTS}/${frame}-${name}-${view}-on.png`, onPng); fs.writeFileSync(`${SHOTS}/${frame}-${name}-${view}-off.png`, offPng); }
   const width = await outlineWidth(onPng, offPng, 1);
+  state.share = +(await coralShare(onPng)).toFixed(5);
   const row = { frame, spot: name, view, pinnedPx: pinned === '' ? null : Number(pinned), ...state, ...width, at: new Date().toISOString() };
   delete row.marker;
   rows.push(row);
