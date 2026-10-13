@@ -304,7 +304,7 @@ function gableRoof(x:number,y:number,z:number,w:number,d:number,h:number,c:Colou
  const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(faces.flatMap(i=>vertices[i]),3));g.computeVertexNormals();add(g,c,x,y,z);
 }
 // The base faces down (it used to face up, flush with the top of the box under it: 247 m2 of coplanar overlap on Centraal's end pavilions).
-function hip(x:number,y:number,z:number,w:number,d:number,h:number,c:Colour){let g=new T.BufferGeometry();let p=[[-w/2,0,-d/2],[w/2,0,-d/2],[w/2,0,d/2],[-w/2,0,d/2],[0,h,0]];g.setAttribute('position',new T.Float32BufferAttribute([0,1,4,1,2,4,2,3,4,3,0,4,0,2,3,0,1,2].flatMap(i=>p[i]),3));g.computeVertexNormals();add(g,c,x,y,z);}
+function hip(x:number,y:number,z:number,w:number,d:number,h:number,c:Colour){let g=new T.BufferGeometry();let p=[[-w/2,0,-d/2],[w/2,0,-d/2],[w/2,0,d/2],[-w/2,0,d/2],[0,h,0]];g.setAttribute('position',new T.Float32BufferAttribute([0,4,1,1,4,2,2,4,3,3,4,0,0,2,3,0,1,2].flatMap(i=>p[i]),3));g.computeVertexNormals();add(g,c,x,y,z);}
 function arch(x:number,y:number,z:number,w:number,h:number,c:Colour){let s=new T.Shape();s.moveTo(-w/2,0);s.lineTo(w/2,0);s.lineTo(w/2,h-w/2);s.absarc(0,h-w/2,w/2,0,Math.PI,false);s.lineTo(-w/2,0);add(new T.ExtrudeGeometry(s,{depth:.15,bevelEnabled:false,curveSegments:5}),c,x,y,z);}
 // `facing` -1 mirrors the window for a wall whose outside is -z (the surround and pane are extruded towards +z, so without it the pane
 // sits behind the surround: Centraal's north windows were all buried until the opening snap pulled them out).
