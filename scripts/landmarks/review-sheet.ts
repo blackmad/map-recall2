@@ -3,13 +3,19 @@
  *
  *   PORT=4401 npm run dev                      # only for the in-game shot (skip with --no-game)
  *   node --import tsx scripts/landmarks/review-sheet.ts --id=nassaukerk [--bag=0363100012237328] [--glb=...]
- *        [--out=artifacts/review/<id>] [--port=4401] [--walls=6] [--no-game]
+ *        [--out=artifacts/review/<id>] [--port=4401] [--walls=6] [--no-game] [--inventory]
  *
  * For every exposed wall of the BAG footprint (party walls are dropped by the pand-reference selector) the nearest
  * Gemeente Amsterdam panorama (5-35 m from the wall, obliquity <= 55 deg) is aimed at the wall centre through the public
  * thumbnail endpoint. The GLB is rendered with a pinhole camera at the panorama's position, heading, pitch and field of
  * view (camera 2.44 m above the model's y = 0 ground), so a wrong window rhythm, a missing wall of windows or an invented
  * setback shows up as a mismatch tile by tile. Walls with no panorama are labelled "inferred" and rendered from 18 m out.
+ *
+ * --inventory adds a fourth column from scripts/landmarks/<id>-inventory.json (src/canalRecall/landmarks/ornamentInventory.ts):
+ * for the inventory wall matching each sheet wall (bearing within 15 deg, nearest centre), every `modelled` / `simplified`
+ * item as a photo crop next to the same crop of the camera-matched render (the item's `sheetBox`, else the whole view), so
+ * each ornament is proven by its own pair, not by an aerial strip. It also widens --walls to every inventory wall with a
+ * photo, so a short wall with the signature (the Hoofdbureau's 13.9 m end wall) is never cut by the longest-6 default.
  *
  * Model placement: surveyed models are native east/south metres from `surveyed.anchor` (x east, z south), north-up.
  * Everything geographic reuses scripts/pand-reference (cached in .cache/pand-reference). Panoramas are CC BY 4.0, Gemeente Amsterdam.
@@ -23,6 +29,7 @@ import {findPands, neighbourhood, normId, rdToLngLat} from '../pand-reference/co
 import {exposedWalls, listPanos, rankPanos, type PanoPick, type Wall} from '../pand-reference/select.ts';
 import {loadPano, wallHeight} from '../pand-reference/rectify.ts';
 import {directionToPixel, sampleEquirectangular, type EquirectangularImage} from '../../src/canalRecall/facade/rectify.ts';
+import {matchWall, type InventoryItem, type InventoryWall, type LandmarkInventory} from '../../src/canalRecall/landmarks/ornamentInventory.ts';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
 const arg = (k: string) => process.argv.find(a => a.startsWith(`--${k}=`))?.slice(k.length + 3);
@@ -42,6 +49,35 @@ if (!anchor) { console.error('model has no surveyed anchor / footprint centre');
 const out = path.resolve(ROOT, arg('out') ?? `artifacts/review/${id}`);
 fs.mkdirSync(out, {recursive: true});
 const TILE = 520;
+const inventoryFile = path.join(ROOT, 'scripts/landmarks', `${id}-inventory.json`);
+const inventory: LandmarkInventory | null = flag('inventory') ? (fs.existsSync(inventoryFile) ? JSON.parse(fs.readFileSync(inventoryFile, 'utf8')) : null) : null;
+if (flag('inventory') && !inventory) { console.error(`--inventory: no ${path.relative(ROOT, inventoryFile)} (run scripts/landmarks/landmark-brief.ts)`); process.exit(2); }
+const COLS = inventory ? 4 : 3;
+
+/** Inventory column: per modelled/simplified item, photo crop | render crop (same camera, so the same box), labelled. */
+async function inventoryTile(wall: InventoryWall | undefined, photo: Buffer | null, render: Buffer): Promise<Buffer> {
+  const bg = () => sharp({create: {width: TILE, height: TILE + 24, channels: 3, background: '#fff'}});
+  const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const text = (lines: string[], colour = '#111') => Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${TILE}" height="${16 * lines.length + 8}">${lines.map((l, i) => `<text x="6" y="${16 * i + 15}" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="${colour}">${esc(l.slice(0, 80))}</text>`).join('')}</svg>`);
+  if (!wall) return bg().composite([{input: text(['INVENTORY: no inventory wall matches this side'], '#b00'), top: 0, left: 0}]).png().toBuffer();
+  const shown = wall.items.filter(i => i.plan === 'modelled' || i.plan === 'simplified').slice(0, 6);
+  const rest = wall.items.filter(i => !shown.includes(i));
+  const comps: import("sharp").OverlayOptions[] = [{input: text([`INVENTORY ${wall.tag}: ${wall.items.length} items${rest.length ? `; not shown: ${rest.map(i => `${i.id} (${i.plan})`).join(', ')}` : ''}`], rest.some(i => i.plan === 'open') ? '#b00' : '#111'), top: 0, left: 0}];
+  const rowH = shown.length ? Math.floor(TILE / shown.length) : 0, half = TILE / 2;
+  for (const [k, it] of shown.entries()) {
+    const top = 24 + k * rowH, imgH = rowH - 18;
+    const cut = async (img: Buffer | null, item: InventoryItem) => {
+      if (!img) return sharp({create: {width: half - 2, height: imgH, channels: 3, background: '#e8e4dc'}}).png().toBuffer();
+      const [x0, y0, x1, y1] = item.sheetBox ?? [0, 0, 1, 1];
+      const base = sharp(img).resize(TILE, TILE, {fit: 'cover'});
+      const region = {left: Math.round(x0 * TILE), top: Math.round(y0 * TILE), width: Math.max(4, Math.round((x1 - x0) * TILE)), height: Math.max(4, Math.round((y1 - y0) * TILE))};
+      return sharp(await base.extract(region).png().toBuffer()).resize(half - 2, imgH, {fit: 'contain', background: '#fff'}).png().toBuffer();
+    };
+    comps.push({input: text([`${it.plan.toUpperCase()} ${it.kind} ${it.id}${it.sheetBox ? '' : ' (no sheetBox: whole view)'}`], it.plan === 'modelled' ? '#060' : '#a60'), top, left: 0});
+    comps.push({input: await cut(photo, it), top: top + 18, left: 0}, {input: await cut(render, it), top: top + 18, left: half + 2});
+  }
+  return bg().composite(comps).png().toBuffer();
+}
 
 /** Local metres east/north of the anchor (the same equirectangular approximation the thumbnail aiming uses). */
 const local = (lng: number, lat: number) => [(lng - anchor[0]) * 111320 * Math.cos(anchor[1] * Math.PI / 180), (lat - anchor[1]) * 110540] as const;
@@ -138,7 +174,12 @@ async function main() {
   const fp = found.get(bag);
   if (!fp) throw new Error(`BAG pand ${bag} not in the building tiles`);
   const centre = {x: fp.ring.reduce((s, p) => s + p.x, 0) / fp.ring.length, y: fp.ring.reduce((s, p) => s + p.y, 0) / fp.ring.length};
-  const walls = exposedWalls(fp, await neighbourhood(centre)).sort((a, b) => b.len - a.len).slice(0, Number(arg('walls') ?? 6));
+  const exposed = exposedWalls(fp, await neighbourhood(centre)).sort((a, b) => b.len - a.len);
+  let walls = exposed.slice(0, Number(arg('walls') ?? 6));
+  if (inventory) for (const iw of inventory.walls.filter(w => w.evidence === 'photo' && w.items.length)) {
+    const hit = exposed.find(w => matchWall([iw], bearingOf(w), rdToLngLat(w.mid) as [number, number]) && Math.abs(w.len - iw.lengthM) < 0.6);
+    if (hit && !walls.includes(hit)) walls.push(hit);
+  }
   const gh = wallHeight(fp.height);
   console.log(`${id}: ${walls.length} exposed walls, tile height ${fp.height} m`);
   const r = await renderer();
@@ -169,6 +210,7 @@ async function main() {
         const overlay = await sharp(photo).composite([{input: await sharp(render).resize(TILE, TILE).ensureAlpha(0.5).png().toBuffer(), blend: 'over'}]).png().toBuffer();
         const info = `${pick.missionYear} pano ${pick.distM.toFixed(0)} m, obliq ${pick.obliquityDeg.toFixed(0)} deg, fov ${thumb.fovDeg}`;
         tiles = [await label(photo, `PHOTO ${head} - ${info}`), await label(render, 'MODEL (camera-matched)'), await label(overlay, 'OVERLAY 50 %')];
+        if (inventory) tiles.push(await inventoryTile(matchWall(inventory.walls, bearing, rdToLngLat(w.mid) as [number, number]), photo, render));
         meta.push({bearing, lengthM: w.len, photo: true, panoId: pick.panoId, year: pick.missionYear, camera: cam});
       } else {
         const d = 18, nx = w.nx, ny = w.ny;
@@ -178,10 +220,11 @@ async function main() {
         const render = await r.shot(cam);
         const blank = await sharp({create: {width: TILE, height: TILE, channels: 3, background: '#e8e4dc'}}).png().toBuffer();
         tiles = [await label(blank, `INFERRED - no panorama of this side (${head})`, '#b00'), await label(render, 'MODEL (inferred side, 18 m out)', '#b00'), await label(blank, 'no overlay', '#888')];
+        if (inventory) tiles.push(await inventoryTile(matchWall(inventory.walls, bearing, rdToLngLat(w.mid) as [number, number]), null, render));
         meta.push({bearing, lengthM: w.len, photo: false, camera: cam});
       }
-      const row = await sharp({create: {width: TILE * 3, height: TILE + 24, channels: 3, background: '#fff'}}).composite(tiles.map((input, i) => ({input, left: i * TILE, top: 0}))).png().toBuffer();
-      await sharp(row).toFile(path.join(out, `wall-${bearing}.png`));
+      const row = await sharp({create: {width: TILE * COLS, height: TILE + 24, channels: 3, background: '#fff'}}).composite(tiles.map((input, i) => ({input, left: i * TILE, top: 0}))).png().toBuffer();
+      await sharp(row).toFile(path.join(out, `wall-${bearing}-${Math.round(w.len)}m.png`));
       rows.push(row);
       console.log(`  ${head}: ${pick ? 'photo ' + pick.missionYear : 'inferred'}`);
     }
@@ -191,13 +234,13 @@ async function main() {
     const main = walls[0];
     const file = path.join(out, 'game.png');
     if (await gameShot(anchor as [number, number], (bearingOf(main) + 180) % 360, file)) {
-      rows.push(await sharp(file).resize({width: TILE * 3}).png().toBuffer());
+      rows.push(await sharp(file).resize({width: TILE * COLS}).png().toBuffer());
     }
   }
   const heights = await Promise.all(rows.map(async b => (await sharp(b).metadata()).height!));
   let y = 0;
   const comp = rows.map((input, i) => { const c = {input, left: 0, top: y}; y += heights[i]; return c; });
-  await sharp({create: {width: TILE * 3, height: Math.max(1, y), channels: 3, background: '#fff'}}).composite(comp).png().toFile(path.join(out, 'sheet.png'));
+  await sharp({create: {width: TILE * COLS, height: Math.max(1, y), channels: 3, background: '#fff'}}).composite(comp).png().toFile(path.join(out, 'sheet.png'));
   fs.writeFileSync(path.join(out, 'meta.json'), JSON.stringify({id, bag, glb: path.relative(ROOT, glb), walls: meta, attribution: 'Gemeente Amsterdam Panoramabeelden, CC BY 4.0'}, null, 1));
   console.log(`sheet: ${path.join(out, 'sheet.png')}`);
 }

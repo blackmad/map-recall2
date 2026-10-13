@@ -370,6 +370,35 @@ photos. The process that would have caught it:
    (`ornament-inventory.ts`), cheapest misses fixed in the builders, the
    sculpture groups that need a modeller go to the splat/impostor track.
 
+### Tooling (ornament-inventory lane, 2026-10-13)
+
+- **Brief**: `node --import tsx scripts/landmarks/landmark-brief.ts --pand=<BAG id> [--id=<slug>] [--wiki=nl:<Title>] [--address="Street 1"]`
+  writes `scripts/landmarks/<id>-brief.md` (facts from BAG / 3DBAG / local extracts, register descriptions verbatim from
+  `scripts/data/amsterdam-monument-register`, Wikipedia lead plus sculpture/facade/architecture sections with URLs, one
+  section per wall) and the inventory skeleton `scripts/landmarks/<id>-inventory.json`. Crops (rectified, a second capture
+  year, an aimed view, `contact.jpg`) go to `artifacts/landmark-briefs/<id>/` and are not committed (re-run; cached).
+  It searches nl/en Wikipedia for the catalogue name and the address: the Hoofdbureau's own article is
+  [Elandsgracht 117](https://nl.wikipedia.org/wiki/Elandsgracht_117), whose "Beeldhouwwerken" section names the arms
+  relief, the banner verse (P.H. van Moerkerken) and Hildo Krop's three figures; the original lane cited only the street.
+- **Every wall, not the long ones.** The brief takes walls >= 4 m (max 30). The stock `all-walls.ts` defaults
+  (`--min-len=14 --max=8`) and `review-sheet.ts --walls=6` both drop the Hoofdbureau's 13.9 m Marnixstraat end wall,
+  the one with the relief. `review-sheet --inventory` adds every inventory wall with a photo and items.
+- **Schema** `src/canalRecall/landmarks/ornamentInventory.ts` (tests `ornamentInventory.test.ts`): per wall `tag`,
+  `bearing`, `lengthM`, `centre`, `evidence` photo/inferred, `panoId`, `checked`; per item `id`, `kind`, `where`,
+  `approxSizeM`, `plan` modelled / simplified (+`how`) / skipped (+`skip.reason`: not-visible, too-small, temporary,
+  gone, needs-modeller) / open, `seenIn`, optional `sheetBox`; landmark `signature` = item ids, most recognisable first.
+  "No component" / "cannot express" in a note is a schema error.
+- **Gate** `scripts/landmarks/landmark-inventory-gate.ts`: required for a landmark whose GLB was first committed on or after
+  2026-10-14 (git history with `--no-renames`; never committed = new) and for `INVENTORY_REQUIRED_IDS`. Required means:
+  every photographed wall `checked`, no `open`, no `needs-modeller` (retro-fit only), a non-empty signature whose items are
+  all modelled or simplified. `build-manual-landmarks.ts` refuses the export (`LANDMARK_INVENTORY_GATE=warn` downgrades for
+  local experiments); `audit:glb --id=<id>` fails with `signature-inventory` and prints the rows under the gates (`--no-inventory`
+  skips); `node --import tsx scripts/landmarks/check-landmark-inventory.ts [--id=<id>] [--verbose]` checks the catalogue and
+  is meant for `check:canal` (integrator adds `&& node --import tsx scripts/landmarks/check-landmark-inventory.ts`).
+  Existing inventories that are not required are schema-checked and their unresolved items printed as "would block".
+- **Proof**: `npm run review:sheet -- --id=<id> --no-game --inventory` adds a fourth column with, per modelled/simplified
+  item, the photo crop next to the same crop of the camera-matched render (`sheetBox`, else the whole view).
+
 ## Acceptance checklist (every building, every tier — 2026-10-09)
 
 Two models passed review while plainly wrong: Nassaukerk (blank walls where

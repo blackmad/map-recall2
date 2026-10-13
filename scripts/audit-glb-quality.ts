@@ -23,6 +23,10 @@
  * palette (brick, stone, slate, glass, frame, …; build-manual-landmarks.ts sets the slot from the name by default).
  *   --no-slots               skip it            --write-slot-baseline  record current coverage as the baseline
  *
+ * Signature inventory (scripts/landmarks/landmark-inventory-gate.ts): a landmark first exported after 2026-10-13 fails
+ * without a resolved scripts/landmarks/<id>-inventory.json; with --id the inventory rows print under the gates.
+ *   --no-inventory           skip it
+ *
  * Install scripts call it with --id=<id> and must see exit code 0. Thresholds live in
  * src/canalRecall/landmarks/glbQuality.ts (DEFAULT_THRESHOLDS) and are documented there.
  */
@@ -35,6 +39,7 @@ import {analyseSoup, DEFAULT_THRESHOLDS, materialSlotCoverage, SLOT_COVERAGE_GAT
 import {geometryAudit, regressions, type GeometryAuditReport} from '../src/canalRecall/landmarks/geometryAudit';
 import type {ElevationsFile} from '../src/canalRecall/landmarks/facadeCompare';
 import {loadMaterialSoup} from './landmarks/material-soup';
+import {describeGate, inventoryGate} from './landmarks/landmark-inventory-gate';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const MODELS = path.join(ROOT, 'public/canal-drive/models');
@@ -268,10 +273,21 @@ async function main(): Promise<void> {
         mergeSlots(report, slots, flag('write-slot-baseline') ? slots.coverage : slotBaseline?.models[t.id]);
       } catch (e) { report.findings.push({kind: 'material-slots-error', severity: 'warn', message: String(e).slice(0, 200)}); }
     }
+    // Signature inventory (landmark-inventory-gate.ts): fails only for a landmark that requires one; rows print under the gates.
+    let inventoryLines: string[] = [];
+    if (arg('set') !== 'ordinary' && !flag('no-inventory') && !arg('file')) {
+      try {
+        const g = inventoryGate(t.id);
+        if (!g.pass) report.findings.push({kind: 'signature-inventory', severity: 'fail', message: g.issues.filter(i => i.severity === 'error' || g.required).slice(0, 3).map(i => `${i.path} ${i.message}`.trim()).join('; ')});
+        if (g.exists || g.required) inventoryLines = describeGate(g);
+        if (!g.pass) report.pass = false;
+      } catch (e) { report.findings.push({kind: 'signature-inventory-error', severity: 'warn', message: String(e).slice(0, 200)}); }
+    }
     rows.push({id: t.id, file: path.relative(ROOT, t.file), status: t.status, report, ms: Date.now() - t0, geometry, slots});
     if (!flag('quiet') || targets.length === 1) {
       console.log(`${report.pass ? 'PASS' : 'FAIL'} ${t.id} (${report.triangles} tris, score ${report.score.toFixed(1)}${slots ? `, slots ${(slots.coverage * 100).toFixed(1)}%` : ''}, ${Date.now() - t0} ms)`);
       for (const f of report.findings) console.log(`   ${f.severity === 'fail' ? 'FAIL' : 'warn'} ${f.kind}: ${f.message}`);
+      if (targets.length === 1) for (const line of inventoryLines) console.log(`   ${line}`);
     }
   }
   if (targets.length > 1 || flag('write')) {
