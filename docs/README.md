@@ -124,6 +124,14 @@ touch baseline JSON. The ordinary-building notes are superseded by
 `buildings-pipeline.md`; the rest are dated measurements (the method for
 profiling lives in the auto-memory note "Perf profiling method").
 
+### Desktop ride performance, 2026-10-13 (docs/performance/desktop-20261013.md)
+
+Per-owner profile of the fixed desktop ride after the 2026-10-13 merges (default,
+`?ownGround=1`, `?sharedFrame=1&cityLook=1`, aerial hold), the long frames and
+their cause, the three fixes with before/after, and the budget the
+`ride-perf.spec.ts` desktop run pins. Tool: `scripts/ride-perf-owners.mjs`.
+iPhone profile pending.
+
 ### Root and canal-drive notes (outside docs/)
 
 About 40 markdown files at the repository root and in `public/canal-drive/`
