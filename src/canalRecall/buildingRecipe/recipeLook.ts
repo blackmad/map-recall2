@@ -79,8 +79,11 @@ export interface RecipeLook {
   readonly enuFromWorld: {value: any};
   /** True when the slots are lit by the scene's lights (the shared frame's rig) instead of the baked city shade. */
   readonly lit: boolean;
-  /** Replace slot-tagged materials under `root`; returns how many meshes changed. */
-  apply(root: any): number;
+  /**
+   * Replace slot-tagged materials under `root`; returns how many meshes changed.
+   * `context.year` (BAG construction year, `?cityLook=1` only) picks the city look's era brick; the legacy path ignores it.
+   */
+  apply(root: any, context?: {year?: number | null}): number;
   /** `?cityLook=1`: the shared city look behind this adapter (look/cityLook.ts); absent on the legacy path. */
   readonly city?: CityLook;
   /** `?cityLook=1`: resolves when its atlas is painted (apply before this and the slots would draw black for a frame). */
@@ -118,7 +121,7 @@ export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): R
   if (options.cityLook ?? cityLookEnabled()) {
     // Thin adapter: callers keep `apply` / `enuFromWorld`; the city look does the work.
     const city = getCityLook(THREE, {document: options.document, brick: options.brick, anisotropy: options.anisotropy});
-    return {enuFromWorld: city.uniforms.enuFromWorld, lit, city, ready: city.ready, apply: root => city.dress(root, {lit, infer: !!options.inferSlots})};
+    return {enuFromWorld: city.uniforms.enuFromWorld, lit, city, ready: city.ready, apply: (root, context) => city.dress(root, {lit, infer: !!options.inferSlots, year: context?.year ?? null})};
   }
   const doc = options.document ?? document;
   const enuFromWorld = {value: new THREE.Matrix3()};

@@ -93,6 +93,56 @@ export function roofCanvas(doc: Document, kind: 'tile' | 'slate' | 'flat'): HTML
   return canvas;
 }
 
+/**
+ * City look only (`?cityLook=1`): the 20th-century brick (BAG year from 1915, look/cityLook.ts `BRICK20_FROM`).
+ * Machine-pressed brick reads lighter and more even than the hand-made canal brick: the same Bricks057 photo,
+ * keeping less of its per-brick variation, lifted to a higher mean, with finer, lighter joints.
+ */
+export const BRICK20_CELL_MEAN = 238;
+export function paintBrick20Canvas(doc: Document, brick?: CanvasImageSource | null): HTMLCanvasElement {
+  const size = 336, canvas = doc.createElement('canvas');
+  canvas.width = canvas.height = size;
+  const ctx = canvas.getContext('2d', {willReadFrequently: true})!;
+  if (brick) for (let y = 0; y < size; y += 112) for (let x = 0; x < size; x += 112) ctx.drawImage(brick, x, y, 112, 112);
+  else {
+    let seed = 13; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    for (let row = 0, y = 0; y < size; y += 14, row++) for (let x = -(row % 2) * 24; x < size; x += 48) { const v = 165 + rnd() * 30; ctx.fillStyle = `rgb(${v},${v * 0.93},${v * 0.88})`; ctx.fillRect(x, y, 48, 14); }
+  }
+  ctx.strokeStyle = 'rgba(245,240,230,0.26)'; ctx.lineWidth = 1.2;
+  for (let row = 0, y = 6; y < size; y += 14, row++) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(size, y); ctx.stroke();
+    for (let x = (row % 2) * 24; x < size; x += 48) { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + 14); ctx.stroke(); }
+  }
+  const image = ctx.getImageData(0, 0, size, size), px = image.data;
+  let mean = 0;
+  for (let i = 0; i < px.length; i += 4) mean += (px[i] + px[i + 1] + px[i + 2]) / 3;
+  mean /= px.length / 4;
+  const lift = mean > 0 ? Math.min(2.6, BRICK20_CELL_MEAN / mean) : 1;
+  for (let i = 0; i < px.length; i += 4) {
+    const lum = (px[i] + px[i + 1] + px[i + 2]) / 3, neutral = Math.min(255, (lum + (mean - lum) * 0.82) * lift);
+    px[i] = px[i + 1] = px[i + 2] = neutral; px[i + 3] = 255;
+  }
+  ctx.putImageData(image, 0, 0);
+  return canvas;
+}
+
+/**
+ * City look only: smooth white render for materials named `white` / `cream` / `ivory` (241 legacy landmark models
+ * use them for white walls and white trim alike): the stucco's level with almost no grain and no specks, so a
+ * cornice or a window surround does not read as rough plaster.
+ */
+export function paintWhiteStuccoCanvas(doc: Document): HTMLCanvasElement {
+  const canvas = doc.createElement('canvas'); canvas.width = canvas.height = 128;
+  const ctx = canvas.getContext('2d')!, image = ctx.createImageData(128, 128);
+  let seed = 31; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let y = 0; y < 128; y++) for (let x = 0; x < 128; x++) {
+    const i = (y * 128 + x) * 4, v = 246 + (rnd() - 0.5) * 3;
+    image.data[i] = image.data[i + 1] = image.data[i + 2] = v; image.data[i + 3] = 255;
+  }
+  ctx.putImageData(image, 0, 0);
+  return canvas;
+}
+
 /** Plain white (frame and paint slots): the tint is the whole colour. */
 export function paintWhiteCanvas(doc: Document): HTMLCanvasElement {
   const c = doc.createElement('canvas'); c.width = c.height = 4;
