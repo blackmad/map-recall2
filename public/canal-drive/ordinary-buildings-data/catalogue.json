@@ -3561,7 +3561,7 @@
       "bounds": {
         "min": [
           -19.2172908782959,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -13.932360649108887
         ],
         "max": [
@@ -9241,7 +9241,7 @@
       "bounds": {
         "min": [
           -19.893112182617188,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -17.881860733032227
         ],
         "max": [
@@ -9906,7 +9906,7 @@
       "bounds": {
         "min": [
           -17.276670455932617,
-          -5.2452087118126656e-8,
+          -5.2452087118126656e-08,
           -19.4085750579834
         ],
         "max": [
@@ -19659,7 +19659,7 @@
       "bounds": {
         "min": [
           -14.545639991760254,
-          9.536743306171047e-8,
+          9.536743306171047e-08,
           -16.488889694213867
         ],
         "max": [
@@ -19757,7 +19757,7 @@
       "bounds": {
         "min": [
           -19.340869903564453,
-          -1.9073486612342094e-7,
+          -1.9073486612342094e-07,
           -29.3840274810791
         ],
         "max": [
@@ -19993,7 +19993,7 @@
       "bounds": {
         "min": [
           -22.37699317932129,
-          -1.9073486612342094e-7,
+          -1.9073486612342094e-07,
           -50.65300750732422
         ],
         "max": [
@@ -20209,7 +20209,7 @@
       "bounds": {
         "min": [
           -23.991369247436523,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -15.057171821594238
         ],
         "max": [
@@ -20323,7 +20323,7 @@
       "bounds": {
         "min": [
           -14.917290687561035,
-          -3.814697322468419e-7,
+          -3.814697322468419e-07,
           -12.036028861999512
         ],
         "max": [
@@ -20428,7 +20428,7 @@
       "bounds": {
         "min": [
           -22.194652557373047,
-          -4.7683716530855236e-8,
+          -4.7683716530855236e-08,
           -8.861071586608887
         ],
         "max": [
@@ -21788,161 +21788,6 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171101",
         "https://data.amsterdam.nl/data/"
       ]
-    },
-    {
-      "id": "ordinary-0363100012172459",
-      "category": "ordinary",
-      "bytes": 106156,
-      "sha256": "bb1bcea2396bac298bcfbadbb55012c9a99f6aa2e75181cfc807cd648b114ce1",
-      "materials": 3,
-      "textures": 0,
-      "triangles": 4187,
-      "bounds": {
-        "min": [
-          -21.665069580078125,
-          0,
-          -15.66756820678711
-        ],
-        "max": [
-          20.663288116455078,
-          23.41671371459961,
-          10.548523902893066
-        ]
-      },
-      "scale": 1,
-      "suppress": [
-        "NL.IMBAG.Pand.0363100012172459"
-      ],
-      "scope": "One joined native parent; root and independent source/gallery/desktop-touch gameplay acceptance.",
-      "sourceCommit": "e21680c666d878aa74d42fe74b7c9a103bfee5ca",
-      "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary38-source51",
-      "limitations": [
-        "Bounded native/survey wall ownership bridge up to 0.868 m; rear apertures unresolved.",
-        "CHURCH blade lettering uses approximate Anton Regular outlines; exact typeface unknown.",
-        "Full native frontage exposure uses normal user camera tilt to 12 degrees; source gallery establishes proportions.",
-        "Touch checks use iPhone 13 browser emulation on Apple M4 Pro, not a physical phone."
-      ],
-      "buildingId": "NL.IMBAG.Pand.0363100012172459",
-      "name": "Leidsestraat 67–71 / Kerkstraat 50–52",
-      "hash": "bb1bcea2396bac298bcfbadbb55012c9a99f6aa2e75181cfc807cd648b114ce1",
-      "anchor": [
-        4.8853548,
-        52.3651711
-      ],
-      "footprint": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              4.885037,
-              52.365234
-            ],
-            [
-              4.885216,
-              52.365095
-            ],
-            [
-              4.88526,
-              52.365117
-            ],
-            [
-              4.885322,
-              52.365078
-            ],
-            [
-              4.885427,
-              52.365141
-            ],
-            [
-              4.885484,
-              52.365105
-            ],
-            [
-              4.885655,
-              52.365207
-            ],
-            [
-              4.88557,
-              52.36526
-            ],
-            [
-              4.88538,
-              52.365164
-            ],
-            [
-              4.885197,
-              52.36531
-            ],
-            [
-              4.885037,
-              52.365234
-            ]
-          ]
-        ]
-      },
-      "nativeHeight": 20.68,
-      "height": 23.41671371459961,
-      "modelUrl": "./models/ordinary-buildings/0363100012172459.glb",
-      "cameraBearing": -37.89006281019731,
-      "galleryFrontage": {
-        "target": [
-          4.885117006555844,
-          52.36527199831117
-        ],
-        "cameraBearing": -37.89006281019731,
-        "distanceMetres": 28,
-        "eyeHeightMetres": 6,
-        "targetHeightMetres": 10,
-        "referenceImages": [
-          "./ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg"
-        ]
-      },
-      "gallerySecondary": {
-        "target": [
-          4.885612497832299,
-          52.36523349669421
-        ],
-        "cameraBearing": 45.567266409857936,
-        "distanceMetres": 28,
-        "eyeHeightMetres": 6,
-        "targetHeightMetres": 10,
-        "referenceImages": [
-          "./ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00180-ekerk50.jpg"
-        ]
-      },
-      "referenceImages": [
-        "./ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg"
-      ],
-      "traits": [
-        "Current Leids broad glazing and tall stair pier",
-        "Kerk seven lower groups, six upper axes and two neckgables",
-        "Native17survey roof owners and open exterior notches"
-      ],
-      "simplifications": [
-        "Exact CHURCH sign typeface unresolved: Anton Regular approximate condensed bold grotesk outlines, measured source-guided panel/spacing; source word retained on both blade faces.",
-        "Rear aperture counts unresolved; no invented ornate rear windows."
-      ],
-      "reviewState": "Local source, gallery, desktop/touch gameplay and performance accepted; hosted verification pending.",
-      "retainedNeighbors": [
-        "NL.IMBAG.Pand.0363100012169041",
-        "NL.IMBAG.Pand.0363100012172452",
-        "NL.IMBAG.Pand.0363100012172458",
-        "NL.IMBAG.Pand.0363100012172460",
-        "NL.IMBAG.Pand.0363100012172461",
-        "NL.IMBAG.Pand.0363100012571533"
-      ],
-      "label": "Leidsestraat 67–71 / Kerkstraat 50–52",
-      "url": "/models/ordinary-buildings/0363100012172459.glb",
-      "builderSpec": "scripts/ordinary-buildings/leids67-spec.json",
-      "builderStage": "scripts/ordinary-buildings/leids67-export.ts",
-      "reviewEvidenceCommit": "8732ed43c5291d04ef31b0803377d75978c8d073",
-      "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/leids67-final-native56/0363100012172459",
-      "updatedAt": "2026-10-09T11:02:48.243728+00:00",
-      "sourceUrls": [
-        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012172459",
-        "https://data.amsterdam.nl/data/"
-      ],
-      "acceptance": "Scoped full architectural loop passed; hosted verification pending."
     },
     {
       "id": "ordinary-0363100012079721",
@@ -24057,6 +23902,346 @@
         "https://data.amsterdam.nl/"
       ],
       "updatedAt": "2026-10-10T03:19:14.770Z"
+    },
+    {
+      "id": "ordinary-0363100012102565",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012102565",
+      "name": "Politiebureau Van Leijenberghlaan, Van Leijenberghlaan 1, Amsterdam (Buitenveldert)",
+      "hash": "164233c9dde96d947e01455a977ffd43805fa6bd31dd3329f054f96bb075e4af",
+      "sha256": "164233c9dde96d947e01455a977ffd43805fa6bd31dd3329f054f96bb075e4af",
+      "bytes": 459432,
+      "triangles": 6123,
+      "materials": 11,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -17.666,
+          0.001,
+          -23.15
+        ],
+        "max": [
+          15.811,
+          16.473,
+          45.701
+        ]
+      },
+      "anchor": [
+        4.8799828,
+        52.3311922
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8802132,
+              52.3311696
+            ],
+            [
+              4.879965,
+              52.3311693
+            ],
+            [
+              4.8799644,
+              52.3313177
+            ],
+            [
+              4.8800943,
+              52.3313179
+            ],
+            [
+              4.8800943,
+              52.3313034
+            ],
+            [
+              4.8801521,
+              52.3313035
+            ],
+            [
+              4.8801521,
+              52.331318
+            ],
+            [
+              4.8802127,
+              52.3313181
+            ],
+            [
+              4.8802124,
+              52.3313997
+            ],
+            [
+              4.8799753,
+              52.3313994
+            ],
+            [
+              4.8799753,
+              52.3313945
+            ],
+            [
+              4.879964,
+              52.3313945
+            ],
+            [
+              4.879964,
+              52.3313996
+            ],
+            [
+              4.8797582,
+              52.3313993
+            ],
+            [
+              4.8797598,
+              52.3309375
+            ],
+            [
+              4.8797319,
+              52.3309375
+            ],
+            [
+              4.8797321,
+              52.3308997
+            ],
+            [
+              4.87976,
+              52.3308997
+            ],
+            [
+              4.8797604,
+              52.3307821
+            ],
+            [
+              4.8802146,
+              52.3307824
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 16.47,
+      "height": 16.47,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-politie-van-leijenberghlaan.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012102565"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "politie-van-leijenberghlaan",
+        "kind": "large",
+        "intentSources": [
+          "artifacts/building-recipes/politie-van-leijenberghlaan/photo-wall-van-leijenberghlaan.jpg",
+          "staging/pand-reference/0363100012102565/thumb.jpg",
+          "artifacts/building-recipes/politie-van-leijenberghlaan/views/panel-10.jpg",
+          "artifacts/building-recipes/politie-van-leijenberghlaan/views/panel-9.jpg",
+          "artifacts/building-recipes/politie-van-leijenberghlaan/views/panel-44.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "storey-height/walls[4]:pass",
+          "eaves-vs-3dbag/walls[5]:pass",
+          "storey-height/walls[5]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 3st 19b",
+          "blank+entrance 2st 1b",
+          "ribbon-windows 3st 16b",
+          "ribbon-windows 3st 6b",
+          "ribbon-windows 3st 11b",
+          "ribbon-windows 3st 5b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Police components not used: no striped band, blue lamp, canopy or garage doors are visible in the 2016/2019/2025 panoramas; rooftop stair/lift cores are 3DBAG volumes already (roofPlant off).",
+        "Sides of the entrance box (surfaces 46, 52) and rooftop volumes stay blank (otherWalls)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012102565",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T11:15:15.084Z"
+    },
+    {
+      "id": "ordinary-0363100012172459",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012172459",
+      "name": "Leidsestraat 67–71 / Kerkstraat 50–52",
+      "hash": "b403ca4851ab2482fbc7313daaf3799079dedd1c7bddeb3171690ab7414ef38a",
+      "sha256": "b403ca4851ab2482fbc7313daaf3799079dedd1c7bddeb3171690ab7414ef38a",
+      "bytes": 123504,
+      "triangles": 1487,
+      "materials": 10,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -21.484,
+          0.001,
+          -15.579
+        ],
+        "max": [
+          20.468,
+          23.417,
+          10.307
+        ]
+      },
+      "anchor": [
+        4.8853524,
+        52.3651691
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8850346,
+              52.365232
+            ],
+            [
+              4.8852136,
+              52.3650932
+            ],
+            [
+              4.8852578,
+              52.3651151
+            ],
+            [
+              4.8853196,
+              52.3650763
+            ],
+            [
+              4.8854242,
+              52.3651388
+            ],
+            [
+              4.8854816,
+              52.3651029
+            ],
+            [
+              4.8856525,
+              52.3652049
+            ],
+            [
+              4.8855677,
+              52.3652581
+            ],
+            [
+              4.8853778,
+              52.3651622
+            ],
+            [
+              4.8851941,
+              52.3653078
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 23.42,
+      "height": 23.42,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-leidsestraat-67-large.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012172459"
+      ],
+      "cameraBearing": -37.89006281019731,
+      "galleryFrontage": {
+        "target": [
+          4.885117006555844,
+          52.36527199831117
+        ],
+        "cameraBearing": -37.89006281019731,
+        "distanceMetres": 28,
+        "eyeHeightMetres": 6,
+        "targetHeightMetres": 10,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg"
+        ]
+      },
+      "gallerySecondary": {
+        "target": [
+          4.885612497832299,
+          52.36523349669421
+        ],
+        "cameraBearing": 45.567266409857936,
+        "distanceMetres": 28,
+        "eyeHeightMetres": 6,
+        "targetHeightMetres": 10,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00180-ekerk50.jpg"
+        ]
+      },
+      "referenceImages": [
+        "./ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg"
+      ],
+      "retainedNeighbors": [
+        "NL.IMBAG.Pand.0363100012169041",
+        "NL.IMBAG.Pand.0363100012172452",
+        "NL.IMBAG.Pand.0363100012172458",
+        "NL.IMBAG.Pand.0363100012172460",
+        "NL.IMBAG.Pand.0363100012172461",
+        "NL.IMBAG.Pand.0363100012571533"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "leidsestraat-67-large",
+        "kind": "large",
+        "intentSources": [
+          "public/canal-drive/ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg",
+          "artifacts/building-recipes/leidsestraat-67-large/photo-wall-leidsestraat.jpg",
+          "public/canal-drive/ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg",
+          "public/canal-drive/ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00180-ekerk50.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 4st 3b",
+          "brick-bay-grid+entrance 6st 1b",
+          "brick-bay-grid 5st 1b",
+          "brick-bay-grid+entrance 3st 6b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012172459",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T11:15:15.627Z"
     }
   ]
 }
