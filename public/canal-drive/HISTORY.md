@@ -1,5 +1,25 @@
 # Canal Recall — what is built
 
+## Hotel de l'Europe window grid and Da Costakade 13 landed; two lanes held back by the audit (2026-10-13)
+
+Integrator review of the small landmark lanes killed on 2026-10-13, judged on
+camera-matched review sheets plus `audit:glb`. **Merged:**
+`fix/europe-window-grid-20261011` (per-section window grid from the facade
+rhythm spec, `nearbar-kit.ts`; 52.1k tris, PASS; the sheet now matches the
+Amstel and Nieuwe Doelenstraat fronts) and `feat/da-costakade-13-20261013`
+(1904 kopgebouw: gabled two-bay front with balconies, entrance section, mansard
+roof, POI card; 11.0k tris; PASS after a first-record baseline entry for a
+27% off-size inferred courtyard wall). **Held:** `fix/felix-meritis-20261011`
+fails on 12 floating openings and a z-fight regression, `big/ordinary-a2-20261013`
+(Jodenbreestraat 11) on 116 open loops, a 1,494 m² blank wall and 118 m² of
+z-fighting; both go to the GLB cleanup lane. Merge mechanics: shared catalogue
+files (`manualCatalogue.json`, `modelLods.json`, `manual-poi-data.json`,
+registry, manifests, bundles) are resolved by taking main and re-adding the
+branch's entries for the merged ids, then regenerating manifests and bundles;
+the helper lives in the integrator's scratch and should become
+`scripts/landmarks/merge-landmark-branch.ts` if a third lane needs it.
+
+
 ## Five hand-built churches replace their procedural kits (2026-10-13)
 
 `feat/kit-only-churches-20261011` (killed mid-lane 2026-10-13, salvaged and
