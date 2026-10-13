@@ -37,7 +37,7 @@
  *
  * Flag off, nothing here runs: every adapter keeps its previous code path.
  */
-import { PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLOT_CELL, SLOT_TILE_M, cityTint, hexToRgb, type MaterialSlot, type SlotCell } from './palette.ts';
+import { CITY_BRICK_LIGHTNESS, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLOT_CELL, SLOT_TILE_M, cityTint, hexToRgb, hslToRgb, rgbToHex, rgbToHsl, type MaterialSlot, type SlotCell } from './palette.ts';
 import { inferMaterialSlot, isMaterialSlot, isWhiteWord, INFERRED_SLOT_SOURCE } from './materialSlotInference.ts';
 import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
 
@@ -94,12 +94,20 @@ export type SlotLayer = {
 export const CITY_LIT_LEVEL = 0.9;
 /** The photo look's chunk wall gain (palette.ts `litWallGain`): roof slots follow the chunk roofs, which take it too. */
 const LIFT = 255 / PHOTO_WALL_CELL_MEAN;
+/**
+ * Lit, every wall cell is gained to a mean of 1 so the wall shows its tint, as
+ * the brick cell is (gallery review 2026-10-13: stone at its cell mean 228/255
+ * and the level read 17–20 % under flag off on stone gates and fronts:
+ * Rasphuispoort, Haarlemmerpoort, Scheepvaartmuseum). Means of the painted
+ * cells in slotCells.ts.
+ */
+const STONE_GAIN = 255 / 228, STUCCO_GAIN = 255 / 243, WHITE_STUCCO_GAIN = 255 / 246;
 
 /** Layer order after the bay cells. Append only: the ordinal is written into slot meshes. */
 export const SLOT_LAYERS: readonly SlotLayer[] = [
   { cell: 'brick', tileM: SLOT_TILE_M.brick, clampUv: false, litGain: LIFT * CITY_LIT_LEVEL, skyTint: false },
-  { cell: 'stucco', tileM: SLOT_TILE_M.stucco, clampUv: false, litGain: CITY_LIT_LEVEL, skyTint: false },
-  { cell: 'stone', tileM: SLOT_TILE_M.stone, clampUv: false, litGain: CITY_LIT_LEVEL, skyTint: false },
+  { cell: 'stucco', tileM: SLOT_TILE_M.stucco, clampUv: false, litGain: STUCCO_GAIN * CITY_LIT_LEVEL, skyTint: false },
+  { cell: 'stone', tileM: SLOT_TILE_M.stone, clampUv: false, litGain: STONE_GAIN * CITY_LIT_LEVEL, skyTint: false },
   { cell: 'white', tileM: 1, clampUv: false, litGain: 1, skyTint: false },
   { cell: 'door', tileM: SLOT_TILE_M.door, clampUv: false, litGain: 1, skyTint: false },
   { cell: 'glass', tileM: SLOT_TILE_M.glass, clampUv: true, litGain: 1, skyTint: true },
@@ -107,9 +115,9 @@ export const SLOT_LAYERS: readonly SlotLayer[] = [
   { cell: 'slate', tileM: SLOT_TILE_M.slate, clampUv: false, litGain: LIFT * CITY_LIT_LEVEL, skyTint: false },
   { cell: 'flat', tileM: SLOT_TILE_M.bitumen, clampUv: false, litGain: LIFT * CITY_LIT_LEVEL, skyTint: false },
   // 2026-10-13 review: variants. The 20th-century brick is painted lighter (mean BRICK20_CELL_MEAN) and keeps the
-  // canal brick's gain, so it renders lighter by that ratio; the white render keeps the stucco level.
+  // canal brick's gain, so it renders lighter by that ratio; the white render is gained to its mean like stucco.
   { cell: 'brick20', tileM: SLOT_TILE_M.brick, clampUv: false, litGain: LIFT * CITY_LIT_LEVEL, skyTint: false },
-  { cell: 'whiteStucco', tileM: SLOT_TILE_M.stucco, clampUv: false, litGain: CITY_LIT_LEVEL, skyTint: false },
+  { cell: 'whiteStucco', tileM: SLOT_TILE_M.stucco, clampUv: false, litGain: WHITE_STUCCO_GAIN * CITY_LIT_LEVEL, skyTint: false },
 ];
 export const SLOT_LAYER_COUNT = SLOT_LAYERS.length;
 
@@ -144,9 +152,73 @@ export function slotLayerBytes(size: number): number {
   return Math.round(SLOT_LAYER_COUNT * size * size * 6 * 4 / 3);
 }
 
+/**
+ * Light slate keeps its lightness (gallery review 2026-10-13). `cityRoofTint`
+ * maps every slate onto three city tones, the lightest L 0.38 (#5a6068), and the
+ * slate cell darkens by its mean (~0.8). Landmark builders paint lead, zinc and
+ * pale slate roofs L 0.45–0.58 (Keizersgrachtkerk #707e86, Koningskerk #7a7d7f,
+ * Van Gendt Hallen #6f7478, fire station IJsbrand #8f9698, …): they came out
+ * 15–25 % darker than flag off, roof-dominated models most. Above the city
+ * tones' range the authored grey stays, divided by the cell mean so cell × tint
+ * lands on the authored lightness; at or below it the city tones apply as before.
+ */
+export const SLATE_KEEP_FROM_L = 0.38;
+const SLATE_CELL_MEAN = 0.8;
+/**
+ * Mid-grey joinery keeps its colour (gallery review 2026-10-13). `cityFrameTint`
+ * pulls every frame with L ≥ 0.5 75 % towards the city's cream frame. That is
+ * right for white window frames, but 122 legacy landmark models paint `frame`
+ * the builders' default grey-green #9daaa8 (L 0.64), on mullions and on whole
+ * claddings (ARCAM, the Faralda crane, Nieuw Dakota, the NDSM warehouse turned
+ * cream, 15–25 % lighter). Only near-white frames (L ≥ 0.75) take the cream.
+ */
+export const FRAME_CREAM_FROM_L = 0.75;
+/**
+ * Dark stone keeps its lightness (gallery review 2026-10-13). `cityStoneTint`
+ * floors stone at L 0.62 and mixes it 45 % into the city's pale stone: right for
+ * sandstone dressings, wrong for the dark stone of 7 models (the Trippenhuis'
+ * dark sandstone front #7c7870 read +19 %; Electric Ladyland, Overtoom 197, the
+ * Haparandaweg blocks' dark stone bases). Below this lightness the authored
+ * colour stays (the lit stone cell is gained to a mean of 1, so it shows as authored).
+ */
+export const STONE_KEEP_BELOW_L = 0.5;
+/**
+ * Grey brick stays grey (gallery review 2026-10-13). `cityWallTint` floors
+ * brick saturation at 0.12 (panorama samples are hazy), which gives a neutral
+ * brick whatever hue its last bits carry: 47 models' `greyBrick` #7d7871 went
+ * beige, fire station IJsbrand's #696a65 olive, Anton's #525255 violet, Dirk's
+ * #a4afad teal. Below this saturation the authored saturation stays; the
+ * lightness lift into the city brick range still applies.
+ */
+export const GREY_BRICK_BELOW_S = 0.12;
+/**
+ * A red or brown roof named slate is a tiled or copper roof (gallery review
+ * 2026-10-13: the American Hotel, Christ Church Groenburgwal, fire station
+ * Dirk, Petrus en Paulus, the Ronde Lutherse Kerk dome came out slate grey).
+ * Brick hue with saturation ≥ 0.2 takes the pantile
+ * tint instead of a slate tone (0.15 also caught Podium Mozaïek's brown-grey
+ * #655348 slate and turned it red: 0.2 keeps it slate).
+ */
+const isRedRoof = (h: number, s: number) => (h < 45 || h > 340) && s >= 0.2;
+
+/**
+ * The city look's tint for a slot: `cityTint` (the one palette mapping, shared
+ * with the legacy recipe look) with the review corrections above. Flag off
+ * never calls this.
+ */
+export function cityLookTint(slot: MaterialSlot, hex: string): string {
+  const rgb = hexToRgb(hex), [h, s, l] = rgbToHsl(rgb);
+  if (slot === 'slate' && isRedRoof(h, s)) return cityTint('roofTile', hex);
+  if ((slot === 'brick' || slot === 'accent') && s < GREY_BRICK_BELOW_S) return rgbToHex(hslToRgb([h, s, Math.min(CITY_BRICK_LIGHTNESS[1], Math.max(CITY_BRICK_LIGHTNESS[0], 0.12 + l * 0.9))]));
+  if (slot === 'slate' && l > SLATE_KEEP_FROM_L) return rgbToHex(hslToRgb([h, Math.min(s, 0.12), Math.min(0.72, l / SLATE_CELL_MEAN)]));
+  if (slot === 'frame' && l >= 0.5 && l < FRAME_CREAM_FROM_L) return rgbToHex(rgb);
+  if (slot === 'stone' && l < STONE_KEEP_BELOW_L) return rgbToHex(rgb);
+  return cityTint(slot, hex);
+}
+
 /** A slot mesh's `tint` attribute value: the slot colour mapped into the city range, sRGB bytes. */
 export function slotTintBytes(slot: MaterialSlot, hex: string): [number, number, number, number] {
-  const [r, g, b] = hexToRgb(cityTint(slot, hex));
+  const [r, g, b] = hexToRgb(cityLookTint(slot, hex));
   return [r, g, b, 255];
 }
 

@@ -108,6 +108,13 @@ test('city look: landmark, recipe house and generic extrusion share one brick un
     const { spread, min, max } = spreads[face].city;
     expect(spread, `${face}: ${min[0]} ${min[1]} vs ${max[0]} ${max[1]}`).toBeLessThanOrEqual(CITY_LOOK_TOLERANCE);
   }
+  // The grey reference differs by design since the gallery review (look/cityLook.ts GREY_BRICK_BELOW_S: a grey slot
+  // stays grey, a chunk's panorama tint keeps the saturation floor), ~4 %. A brick-coloured slot is the same rule in
+  // every pipeline: it must agree to within 1 %.
+  const red = await page.evaluate((pipelines) => (window as any).LookParity.runLookParity({ hex: '#9a5240', pipelines, brickUrl: new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href }), ['city-generic', 'city-recipe', 'city-landmark']);
+  const redSpreads = Object.fromEntries(PARITY_FACES.map(face => [face, lumaSpread(red, ['city-generic', 'city-recipe', 'city-landmark'], face)]));
+  writeFileSync(`${out}/parity-brick.json`, JSON.stringify({ ...red, spreads: redSpreads }, null, 1));
+  for (const face of PARITY_FACES) expect(redSpreads[face].spread, `#9a5240 ${face}`).toBeLessThanOrEqual(0.01);
 });
 
 // City look highlight (review 2026-10-13): the active landmark's yellow keeps the light. The first city-look variant
