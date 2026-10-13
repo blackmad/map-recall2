@@ -844,7 +844,32 @@ end wall; another session added it (32k tris) and the model now fails
 the 500 KB manifest budget — batch 3 fixes it. Rule for every hand-modelled
 building from now on: inventory the ornaments, reliefs, sculpture, lettering
 and signs from the panoramas and model them; "no component" is not a reason
-to skip (`docs/handoffs/lane-ornament-inventory-20261013.md`, lane running).
+to skip. Landed 2026-10-13 (HISTORY): `landmark-brief.ts`, the inventory
+schema and gate (required for landmarks first exported after 2026-10-14),
+`check:landmark-inventory` in `check:canal`, `review:sheet --inventory`,
+a 60-landmark survey (93 items: 46 modelled, 14 simplified, 12 skipped, 21
+open) and six retro-fits. **Open misses, ranked** (`artifacts/ornament-inventory/misses.md`
+in the lane worktree; the inventory is `scripts/landmarks/ornament-inventory.json`):
+van-gendt-hallen stepped gables rounded; chassekerk NE hall wall blank where
+the photo has window rows; waag guild-portal relief; hotel-okura steel
+stairs and galleries; vriesseveem-9 PIET HEIN letters; oudemanhuispoort
+"spectacles" pediment relief; west-india-house pediment relief;
+woongebouw-wladiwostok balconies; de-bazel door figures and inscription
+(adding either made the window-rhythm audit FAIL on untouched elevations —
+the rhythm audit reacts to geometry anywhere on the model, American Hotel
+awnings failed at 1.9 m depth and passed at 1.2 m: audit bug to fix first;
+rejected builder in the session scratchpad); mozes-en-aaronkerk railings
+and inscription; vrijburg arc lettering; obrechtkerk panel; victoria-hotel
+balconies. Re-run with `--walls=8` for thomaskerk, scheepvaartmuseum and
+christ-church-groenburgwal (four-wall sheets missed their fronts); the
+October-builds pass covers only part of the ~300. Hoofdbureau: 16 open
+inventory items and the end wall misregistered (arms a storey too low and
+too small; ribbon windows wrap the blank left 5 m) — with batch 3.
+**Export determinism bug (2026-10-13):** `build-manual-landmarks.ts
+--only=a,b,c,...` in one process produced a vondelkerk GLB with 5
+overhanging openings and 3.3 m² z-fight (audit FAIL); the same id exported
+alone is deterministic and passes. State leaks between builds in one
+process — export one id per process until found.
 
 **Police headquarters, Elandsgracht 117 (user, 2026-10-13): bespoke builder.**
 The 1930s brick Hoofdbureau with its corner tower and carved stone entrance is
