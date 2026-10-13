@@ -13,7 +13,7 @@ import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStor
 import { buildCell, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
-import { bandCoverage, junctionCoverage, DE_CLERCQSTRAAT, JUNCTIONS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
+import { bandCoverage, junctionCoverage, strayHits, DE_CLERCQSTRAAT, JUNCTIONS, STRAYS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
 const store = new GroundStore(async path => {
@@ -189,6 +189,15 @@ async function main(): Promise<void> {
       for (const k of keys) cells.push(await build(k, lod));
       const r = bandCoverage(cells, ways, reg.fractions);
       check(r.share >= reg.minShare, `${reg.id} LOD ${lod}: ${r.street}/${r.probes} band probes read as street (${(100 * r.share).toFixed(1)} %)${r.misses.length ? ` misses ${JSON.stringify(r.misses.slice(0, 4))}` : ''}`);
+    }
+  }
+  for (const reg of STRAYS) {
+    const [x, y] = toLocal(reg.at[0], reg.at[1]), keys = GroundStore.neighbours(store.cellAt(x, y)).filter(k => store.covers(k));
+    for (const lod of [0, 1] as const) {
+      const cells: BuiltCell[] = [];
+      for (const k of keys) cells.push(await build(k, lod));
+      const hits = strayHits(cells, [x, y], reg);
+      check(hits.length === 0, `${reg.id} LOD ${lod}: ${reg.probes.length - hits.length}/${reg.probes.length} fragment probes clean${hits.length ? ` ${JSON.stringify(hits)}` : ''}`);
     }
   }
   for (const j of JUNCTIONS) {

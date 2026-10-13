@@ -2092,6 +2092,15 @@ class VectorBasemap {
         }
       } catch (_) { /* layer gone with a style swap */ }
     }
+    // The basemap's ground layers take the own-ground palette while it is on (no white/light-blue edge beyond the resident cells).
+    const api = window.CanalRecallOwnGround;
+    for (const p of (api && api.basemapGroundPatches ? api.basemapGroundPatches(layers) : [])) {
+      const key = `${p.id}:${p.property}`;
+      try {
+        if (hidden) { if (!this._ownGroundSaved.has(key)) this._ownGroundSaved.set(key, this.map.getPaintProperty(p.id, p.property)); this.map.setPaintProperty(p.id, p.property, p.value); }
+        else if (this._ownGroundSaved.has(key)) { const v = this._ownGroundSaved.get(key); this.map.setPaintProperty(p.id, p.property, v === undefined ? null : v); this._ownGroundSaved.delete(key); }
+      } catch (_) { /* layer gone with a style swap */ }
+    }
   }
 
   /**
@@ -2782,7 +2791,7 @@ class VectorBasemap {
     // Own-ground residency follows the rider (not the led view centre); below
     // its minimum zoom (start flight, overview) it hides and the basemap shows.
     if (this._ownGround) {
-      this._ownGround.update(subject, introFlat > 0 ? 0 : mapZoom);
+      this._ownGround.update(subject, introFlat > 0 ? 0 : mapZoom, appliedPitch);
       this._syncOwnGroundConsumers();
     }
     this.map.jumpTo(cameraOptions);

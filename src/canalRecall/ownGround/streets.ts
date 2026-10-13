@@ -322,6 +322,63 @@ function pathCuts(w: LocalWay, nodes: Map<string, Node>, st: readonly number[]):
   return cuts;
 }
 
+/** Path pieces left shorter than this by a junction cut are stubs (a red or paved fragment at the kerb), not paths: 3 m with one end cut, 6 m squeezed between two cuts. */
+const MIN_PATH_PIECE_M = 3, MIN_PATH_BETWEEN_CUTS_M = 6;
+/** A carriageway at most this long lying inside a wider one is a mapping duplicate, not a street. */
+const SHADOW_MAX_LEN_M = 30;
+
+const keepPathPiece = (w: LocalWay, pc: readonly Vec2[]) => {
+  const first = w.points[0], last = w.points[w.points.length - 1], a = pc[0], b = pc[pc.length - 1];
+  const cutStart = Math.hypot(a[0] - first[0], a[1] - first[1]) > 0.1, cutEnd = Math.hypot(b[0] - last[0], b[1] - last[1]) > 0.1;
+  return pieceLength(pc) >= (cutStart && cutEnd ? MIN_PATH_BETWEEN_CUTS_M : MIN_PATH_PIECE_M);
+};
+const pieceLength = (pts: readonly Vec2[]) => { let l = 0; for (let i = 1; i < pts.length; i++) l += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); return l; };
+
+/**
+ * Short carriageways drawn on top of a wider carriageway: OSM maps De
+ * Clercqstraat's last 13 m as a 2.4 m klinker one-way stub running through the
+ * Rozengracht/Marnixstraat junction, so a brown parallelogram lay on the
+ * asphalt (BGT: all rijbaan there). A carriageway of at most SHADOW_MAX_LEN_M,
+ * at least 80 % of whose stations lie inside another, wider carriageway's road
+ * extent, is the same surface twice: it draws nothing (it still counts as an
+ * arm in the junction graph, which only shapes the fill).
+ */
+export function shadowedWays(ways: readonly LocalWay[]): Set<number> {
+  const G = 20, grid = new Map<string, { way: LocalWay; a: Vec2; b: Vec2; half: number }[]>();
+  const carriage = ways.filter(w => isCarriage(w) && !isBridgeWay(w));
+  for (const w of carriage) {
+    const ext = roadExtent(w.section), half = Math.min(ext.left, ext.right);
+    for (let i = 0; i + 1 < w.points.length; i++) {
+      const a = w.points[i], b = w.points[i + 1];
+      for (let gx = Math.floor(Math.min(a[0], b[0]) / G); gx <= Math.floor(Math.max(a[0], b[0]) / G); gx++) for (let gy = Math.floor(Math.min(a[1], b[1]) / G); gy <= Math.floor(Math.max(a[1], b[1]) / G); gy++) {
+        const k = `${gx}:${gy}`; (grid.get(k) ?? grid.set(k, []).get(k)!).push({ way: w, a, b, half });
+      }
+    }
+  }
+  const out = new Set<number>();
+  for (const w of carriage) {
+    const st = stations(w.points), total = st[st.length - 1];
+    if (total > SHADOW_MAX_LEN_M || total < 1) continue;
+    const own = w.section.coreHalfWidth;
+    let inside = 0, n = 0;
+    for (let s = 0; s <= total + 1e-6; s += 0.5) {
+      const p = pointAt(w.points, st, Math.min(s, total));
+      n++;
+      let hit = false;
+      for (const seg of grid.get(`${Math.floor(p[0] / G)}:${Math.floor(p[1] / G)}`) ?? []) {
+        if (seg.way.id === w.id || seg.half < own + 0.8) continue;
+        const dx = seg.b[0] - seg.a[0], dy = seg.b[1] - seg.a[1], l2 = dx * dx + dy * dy;
+        if (l2 < 1e-6) continue;
+        const t = Math.max(0, Math.min(1, ((p[0] - seg.a[0]) * dx + (p[1] - seg.a[1]) * dy) / l2));
+        if (Math.hypot(seg.a[0] + dx * t - p[0], seg.a[1] + dy * t - p[1]) <= seg.half - own * 0.5) { hit = true; break; }
+      }
+      if (hit) inside++;
+    }
+    if (inside >= 0.8 * n) out.add(w.id);
+  }
+  return out;
+}
+
 /**
  * `only` limits which ways emit geometry while the junction graph still sees
  * all of them (the prototype builds bridge ways separately, uncut by the water mask).
@@ -332,8 +389,10 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
   const nodes = junctionGeometry(ways);
   const byId = new Map(ways.map(w => [w.id, w]));
   const discDone = new Set<string>();
+  const shadowed = shadowedWays(ways);
   for (const w of ways) {
     if (opts.only && !opts.only(w)) continue;
+    if (shadowed.has(w.id)) continue;
     out.stats.ways++;
     if (w.section.source.width !== 'prior') out.stats.widthFromTags++;
     if (w.section.source.sidewalk !== 'prior') out.stats.sidewalkFromTags++;
@@ -352,7 +411,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
       const onRoad = band.kind === 'carriageway' || band.kind === 'cycle_lane';
       const cuts = !carriage ? path : onRoad ? road : sides[band.offset > 0 ? 1 : -1];
       out.stats.trims += cuts.length;
-      const pieces = cuts.length ? cutIntervals(w.points, cuts) : [w.points];
+      const pieces = cuts.length ? cutIntervals(w.points, cuts).filter(pc => carriage || keepPathPiece(w, pc)) : [w.points];
       if (band.raised > 0) {
         const top = LIFT.raisedBase + band.raised;
         for (const piece of pieces) {
@@ -396,7 +455,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
       const onRoad = host.kind === 'carriageway' || host.kind === 'cycle_lane';
       const cuts = crossing ? [] : !carriage ? path : onRoad ? road.map(([a, b]) => [a - 0.3, b + 0.3] as [number, number]) : sides[host.offset > 0 ? 1 : -1];
       const lift = onRoad || crossing ? LIFT.paint : (host.raised > 0 ? LIFT.raisedBase + host.raised : LIFT.path) + 0.006;
-      for (const piece of cuts.length ? cutIntervals(w.points, cuts) : [w.points]) if (piece.length >= 2) dashed(out.paint, piece, line.offset, line.width, line.dash, height, lift);
+      for (const piece of cuts.length ? cutIntervals(w.points, cuts).filter(pc => carriage || keepPathPiece(w, pc)) : [w.points]) if (piece.length >= 2) dashed(out.paint, piece, line.offset, line.width, line.dash, height, lift);
     }
     // Tram rails: two per track at standard gauge, through junctions (the tracks do not stop there).
     for (const o of w.section.rails ?? []) for (const r of [-0.7175, 0.7175]) ribbon(out.tram, w.points, o + r, 0.07, height, LIFT.rail, { step });

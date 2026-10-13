@@ -9,9 +9,12 @@ import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extend
 import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose, type Vec2 } from './surface';
 import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, reliefGrid, ribbon, type MeshArrays } from './drape';
 import { bandCoverage, DE_CLERCQSTRAAT } from './roadRegressions';
-import { crossSection, parseMetres, areaKind } from './osmGround';
+import { crossSection, parseMetres, areaKind, pavedAreaSurface } from './osmGround';
+import { RADIUS_STEP_M, residentRadius, viewReachM } from './residency';
+import { basemapGroundPatches } from './basemapPalette';
+import { GROUND_TONES, STREET_GROUND } from '../look/palette';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
-import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, LIFT } from './streets';
+import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, shadowedWays, LIFT } from './streets';
 import { buildWaterMask, maskDistance, quayWallMesh, waterSurfaceMesh, waterZAt } from './water';
 import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableFrame, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
@@ -411,6 +414,66 @@ test('junctions: one fill from the incoming cross-sections; lanes, paint and pat
   // A one-way fietsstraat has no centre line.
   assert.ok(!crossSection({ highway: 'residential', lanes: '2', cyclestreet: 'yes' })!.paint.some(p => p.offset === 0));
   assert.ok(crossSection({ highway: 'residential', lanes: '2' })!.paint.some(p => p.offset === 0));
+});
+
+test('a short carriageway lying inside a wider one draws nothing; cycle slivers left by a junction cut are dropped', () => {
+  const flat = () => 0;
+  const ll = (p: Vec2): [number, number] => p as [number, number];
+  const ways = prepareWays([
+    { id: 1, tags: { highway: 'primary', lanes: '4' }, g: [[-60, 0], [0, 0], [60, 0]] },
+    { id: 2, tags: { highway: 'residential', sidewalk: 'both' }, g: [[0, 0], [0, 60]] },
+    // De Clercqstraat's 13 m stub, mapped through the Rozengracht asphalt: klinker, 2.4 m wide, inside the wider road.
+    { id: 3, tags: { highway: 'residential', oneway: 'yes' }, g: [[-13, 0.5], [0, 0.5]] },
+    // A 12 m cycleway across a junction: the road's half-width cut either side leaves slivers under 3 m.
+    { id: 4, tags: { highway: 'cycleway' }, g: [[-6, 8], [0, 8], [6, 8]] },
+    { id: 5, tags: { highway: 'primary', lanes: '2' }, g: [[0, 8], [0, 50]] },
+    { id: 6, tags: { highway: 'primary', lanes: '2' }, g: [[-60, 8], [0, 8]] },
+    { id: 7, tags: { highway: 'primary', lanes: '2' }, g: [[0, 8], [60, 8]] },
+  ], p => ll(p as Vec2));
+  assert.deepEqual([...shadowedWays(ways)], [3], 'only the stub is a duplicate of the wider road');
+  const s = buildStreets(ways, flat);
+  assert.equal(faces(s.klinker).filter(f => f.c[0] < -3 && Math.abs(f.c[1] - 0.5) < 1.5).length, 0, 'no brown parallelogram on the asphalt');
+  assert.equal(faces(s.cycle).filter(f => Math.abs(f.c[0]) < 6 && Math.abs(f.c[1] - 8) < 2).length, 0, 'no red sliver between the cuts');
+});
+
+test('area:highway areas draw as what they are: carriageway asphalt, red cycleway, platforms as tiles, verges as grass', () => {
+  assert.equal(pavedAreaSurface({ hw: 'tertiary' }), 'asphalt');
+  assert.equal(pavedAreaSurface({ hw: 'residential', surface: 'sett' }), 'klinker');
+  assert.equal(pavedAreaSurface({ hw: 'cycleway' }), 'cycle');
+  assert.equal(pavedAreaSurface({ hw: 'platform' }), 'paving');
+  assert.equal(pavedAreaSurface({ hw: 'verge' }), 'park');
+  assert.equal(pavedAreaSurface({}), 'square');
+  assert.equal(pavedAreaSurface({ hw: 'something_new' }), 'square');
+});
+
+test('resident radius follows what the camera sees: chase stays on the base ring, the user\'s aerial shot grows, capped', () => {
+  const chase = viewReachM(17, 60, 52.37);
+  assert.ok(chase > 500 && chase < 1100, `chase reach ${chase.toFixed(0)} m`);
+  assert.equal(residentRadius(chase, 1400, 2600), 1400);
+  // zoom 15.8, pitch 76: ~285 m up, the top of the screen ~2.9 km past the rider.
+  const aerial = viewReachM(15.8, 76, 52.37);
+  assert.ok(aerial > 2500 && aerial < 3300, `aerial reach ${aerial.toFixed(0)} m`);
+  assert.equal(residentRadius(aerial, 1400, 2600), 2600, 'capped');
+  const mid = residentRadius(1900, 1400, 2600);
+  assert.ok(mid > 1400 && mid < 2600 && (mid - 1400) % RADIUS_STEP_M === 0, `${mid}`);
+  assert.equal(residentRadius(5000, 1400, 1400), 1400, 'no growth when the cap equals the base');
+  assert.ok(viewReachM(15.8, 76, 52.37) > viewReachM(15.8, 60, 52.37), 'a steeper pitch sees further');
+});
+
+test('basemap ground layers take the own ground palette; buildings and labels are left alone', () => {
+  const layers = [
+    { id: 'background', type: 'background' }, { id: 'water', type: 'fill', 'source-layer': 'water' }, { id: 'waterway_river', type: 'line', 'source-layer': 'waterway' },
+    { id: 'park', type: 'fill', 'source-layer': 'park' }, { id: 'road_minor', type: 'line', 'source-layer': 'transportation' }, { id: 'road_path_pedestrian', type: 'line', 'source-layer': 'transportation' },
+    { id: 'building', type: 'fill', 'source-layer': 'building' }, { id: 'label_road', type: 'symbol', 'source-layer': 'transportation_name' },
+  ];
+  const by = Object.fromEntries(basemapGroundPatches(layers).map(p => [`${p.id}:${p.property}`, p.value]));
+  assert.equal(by['water:fill-color'], GROUND_TONES.water);
+  assert.equal(by['waterway_river:line-color'], GROUND_TONES.water);
+  assert.equal(by['road_minor:line-color'], `rgb(${STREET_GROUND.asphalt.base.join(',')})`);
+  assert.equal(by['road_path_pedestrian:line-color'], `rgb(${STREET_GROUND.pavement.base.join(',')})`);
+  assert.equal(by['park:fill-color'], `rgb(${GROUND_TONES.park.join(',')})`);
+  assert.ok(by['background:background-color']);
+  assert.ok(!Object.keys(by).some(k => k.startsWith('building') || k.startsWith('label_road')));
 });
 
 test('prior sidewalks are dropped where another mapped way lies (split carriageways, separate cycle paths)', () => {
