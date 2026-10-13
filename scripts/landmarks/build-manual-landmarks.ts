@@ -269,7 +269,11 @@ function addDecal(g:T.BufferGeometry,hex:string,unlit=true){
  if(!/^#[a-f0-9]{6}$/i.test(hex))throw Error(`Invalid decal color: ${hex}`);
  parts.push({g,c:'white',hex:hex.toLowerCase(),unlit});
 }
-function add(g:T.BufferGeometry,c:Colour,x=0,y=0,z=0,angle=0){g.rotateY(angle);g.translate(x,y,z);parts.push({g,c});}
+function add(g:T.BufferGeometry,c:Colour,x=0,y=0,z=0,angle=0){g.rotateY(angle);g.translate(x,y,z);parts.push({g,c});if(process.env.TRIACCT)triAccount(g);}
+// TRIACCT=1 node --import tsx scripts/landmarks/build-manual-landmarks.ts --only=<id>: prints triangles per builder source line (where a model's budget goes).
+const triLines=new Map<string,number>();
+function triAccount(g:T.BufferGeometry){const t=(g.index?g.index.count:g.getAttribute('position').count)/3;const frames=(new Error().stack??'').split('\n').slice(2);const f=frames.find(l=>/-builders?\.ts/.test(l)&&!/build-manual-landmarks/.test(l))??frames[0]??'?';const m=f.match(/([\w.-]+\.ts:\d+)/);const k=m?m[1]:'?';triLines.set(k,(triLines.get(k)??0)+t);}
+function triReport(id:string){if(!process.env.TRIACCT)return;const rows=[...triLines.entries()].sort((a,b)=>b[1]-a[1]).slice(0,25);console.log(id,'triangles by source line (top 25):');for(const [k,v] of rows)console.log('  ',String(Math.round(v)).padStart(7),k);triLines.clear();}
 function box(x:number,y:number,z:number,w:number,h:number,d:number,c:Colour,angle=0){add(new T.BoxGeometry(w,h,d),c,x,y+h/2,z,angle);}
 function prism(x:number,y:number,z:number,w:number,d:number,h:number,c:Colour){let shape=new T.Shape();shape.moveTo(-w/2,0);shape.lineTo(w/2,0);shape.lineTo(0,h);shape.closePath();add(new T.ExtrudeGeometry(shape,{depth:d,bevelEnabled:false,steps:1}),c,x,y,z-d/2);}
 function gableRoof(x:number,y:number,z:number,w:number,d:number,h:number,c:Colour){
@@ -322,11 +326,12 @@ function hospital(id:string){let s=hospitals.sites.find(s=>s.id===id)!;let spec=
 // Landmarks whose window/door assemblies are snapped onto their walls before export (src/canalRecall/landmarks/snapOpenings.ts): builder-time,
 // on the builder's own geometry. Batch 1 of the GLB cleanup pass (2026-10-13); extend as further batches are audited.
 // Windows placed across a wall step/corner of the survey outline are dropped for these (see snapOpenings dropOverhang); listed so the removals are deliberate.
-const DROP_OVERHANG_IDS=new Map<string,number>([['fire-station-willem',4],['mountain-network',14],['valley',16],['rai-amsterdam',13],['beta-boulders',5]]); // id -> largest assembly (m) that may be dropped
+const DROP_OVERHANG_IDS=new Map<string,number>([['fire-station-willem',4],['mountain-network',14],['valley',16],['rai-amsterdam',13],['beta-boulders',5],['stadhuis',6],['straat-museum',8],['hilton-amsterdam',5]]); // id -> largest assembly (m) that may be dropped
 const DROP_MIN_OUTSIDE=new Map<string,number>([['beta-boulders',.25],['mountain-network',.15],['rai-amsterdam',.3]]); // default .35
-const SNAP_OPENING_IDS=new Set(['hoofdbureau-elandsgracht', 'de-bijenkorf','oude-kerk','beta-boulders','fire-station-willem','mountain-network','centraal-station','rai-amsterdam','westerkerk','valley','lab111','vredeskerk','scheepvaarthuis','dominicuskerk','magna-plaza','madame-tussauds']);
+const SNAP_OPTS=new Map<string,{embed?:number;maxBuried?:number;maxFloat?:number;clearMargin?:number;keepLiftOverhang?:boolean;dropBuried?:{minHidden:number;maxExtent:number}}>([['oudemanhuispoort',{clearMargin:.08}],['haparandaweg-2-4',{maxBuried:1.2,keepLiftOverhang:true}],['american-hotel',{clearMargin:.08,keepLiftOverhang:true,dropBuried:{minHidden:.95,maxExtent:4}}],['hilton-amsterdam',{maxBuried:1.5,keepLiftOverhang:true}]]); // per-model snapOpenings overrides
+const SNAP_OPENING_IDS=new Set(['hoofdbureau-elandsgracht','de-bijenkorf','oude-kerk','beta-boulders','fire-station-willem','mountain-network','centraal-station','rai-amsterdam','westerkerk','valley','lab111','vredeskerk','scheepvaarthuis','dominicuskerk','magna-plaza','madame-tussauds','stadhuis','heineken-experience-amsterdam','nieuwe-kerk','jewish-museum','dutch-resistance-museum','allard-pierson','cinecenter','straat-museum','haparandaweg-2-4','fire-station-hendrik','fire-station-zebra','this-is-holland','posthoornkerk','petrus-en-paulus-kerk','oudemanhuispoort','american-hotel','krasnapolsky','hilton-amsterdam','booking-hq','scheepvaartmuseum','waag']);
 function snapPartOpenings(id:string){
- if(!SNAP_OPENING_IDS.has(id))return;
+ if(!SNAP_OPENING_IDS.has(id)||process.env.SNAP_SKIP===id)return;
  const positions:number[]=[],indices:number[]=[],triMaterial:number[]=[],names:string[]=[],spans:{g:T.BufferGeometry;from:number}[]=[];
  for(const part of parts){
   if(part.g.index)part.g=part.g.toNonIndexed();
@@ -336,7 +341,7 @@ function snapPartOpenings(id:string){
   for(let t=0;t<attr.count/3;t++){indices.push(base+t*3,base+t*3+1,base+t*3+2);triMaterial.push(m);}
  }
  const soup={positions,indices,triMaterial,materials:names.map(name=>({name,rgb:[128,128,128] as [number,number,number]}))};
- const detached=process.env.SNAP_NO_DETACHED?{moved:0,skipped:0}:snapDetachedParts(soup,{maxGap:id==='rai-amsterdam'?1.5:undefined}),report=snapOpenings(soup,{clearMargin:id==='dominicuskerk'?.08:undefined,dropOverhang:DROP_OVERHANG_IDS.has(id)?{minOutside:DROP_MIN_OUTSIDE.get(id)??.35,maxExtent:DROP_OVERHANG_IDS.get(id)!}:undefined});
+ const detached=process.env.SNAP_NO_DETACHED?{moved:0,skipped:0}:snapDetachedParts(soup,{maxGap:id==='rai-amsterdam'?1.5:undefined}),report=snapOpenings(soup,{...SNAP_OPTS.get(id),clearMargin:id==='dominicuskerk'?.08:SNAP_OPTS.get(id)?.clearMargin,dropOverhang:DROP_OVERHANG_IDS.has(id)?{minOutside:DROP_MIN_OUTSIDE.get(id)??.35,maxExtent:DROP_OVERHANG_IDS.get(id)!}:undefined});
  const dropped=new Set(report.dropped);
  // Zero-area slivers (collinear extrusion points, collapsed fans) add nothing to the render and fail the shell audit as degenerate.
  let slivers=0;
@@ -350,6 +355,7 @@ function snapPartOpenings(id:string){
  console.log(id,'snapOpenings',JSON.stringify({detached,...report,dropped:report.dropped.length,slivers,droppedAt:undefined}));
 }
 async function save(id:string){
+ triReport(id);
  snapPartOpenings(id);
  const spec=MANUAL_LANDMARKS.find(s=>s.id===id)!;
  for(const [name,hex]of Object.entries(spec.materialOverrides??{})){

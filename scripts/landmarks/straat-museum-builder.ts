@@ -28,7 +28,7 @@ export function buildStraatMuseum(_w: number, _d: number, b: BuildingTools) {
  const front=facade(ring[18],ring[9]),rear=facade(ring[10],ring[14]),of=facade(ring[2],ring[3]);
  const glazing=(f:ReturnType<typeof facade>,y:number,h:number,spacing:number)=>{f.box(f.length/2,y,f.length-.3,h,'glass');for(const level of [y,y+h])f.box(f.length/2,level,f.length+.1,.18,'stone',.23,.2);const count=Math.round(f.length/spacing);for(let i=0;i<=count;i++)f.box(f.length*i/count,y,.11,h,'stone',.25,.2);};
  for(const f of [front,rear]){glazing(f,18.35,4.0,1.45);f.box(f.length/2,22.45,f.length+.35,.22,'stone',.18,.36);for(let u=3;u<f.length-2;u+=6.7){f.box(u,13.5,2.2,2.6,'dark');for(let yy=13.7;yy<16;yy+=.22)f.box(u,yy,2.15,.065,'frame',.25,.12);}}
- for(const y of [4.8,8.2])glazing(of,y,2.75,1.8);for(const y of [4.35,7.6])of.box(of.length/2,y,of.length,.55,'blue',.21,.18);of.box(of.length/2,11.7,of.length+.35,.3,'stone',.2,.45);
+ for(const y of [4.8,8.2])glazing(of,y,2.75,1.8);for(const y of [4.35,7.6])of.box(of.length/2,y,of.length,.45,'blue',.21,.18);of.box(of.length/2,11.7,of.length+.35,.3,'stone',.2,.45);
  // Blue original office ground-level door banks; no invented building-name lettering.
  for(let u=3;u<of.length-1;u+=2.55){of.box(u,.15,2.35,3.85,'blue');of.box(u,3.4,2.1,.48,'glass',.25,.1);for(const du of [-1.2,1.2])of.box(u+du,.1,.08,4.05,'frame',.3,.1);}
  const entry=facade(ring[0],ring[2]);entry.box(entry.length*.6,0,1.7,3.0,'blue');entry.box(entry.length*.6,2.6,1.7,.3,'stone',.24,.1);
@@ -38,13 +38,14 @@ export function buildStraatMuseum(_w: number, _d: number, b: BuildingTools) {
  const sideWindow=entry.length*.6;
  for(const y of [4.8,8.2]){entry.box(sideWindow,y,2.1,2.75,'glass',.25,.12);for(const du of [-1.1,0,1.1])entry.box(sideWindow+du,y-.05,.1,2.85,'stone',.34,.12);for(const level of [y-.05,y+1.37,y+2.8])entry.box(sideWindow,level,2.3,.1,'stone',.34,.12);}
  // Long blank industrial sides retain sparse square cross windows and blue loading portals.
- for(const [a,q] of [[ring[14],ring[18]],[ring[9],ring[10]]] as [T.Vector2,T.Vector2][]){const f=facade(a,q);for(let u=8;u<f.length-4;u+=9.6){f.box(u,4.1,2.4,2.65,'glass');for(const du of [-1.27,0,1.27])f.box(u+du,4.02,.13,2.85,'white',.27,.2);for(const y of [4.02,5.35,6.8])f.box(u,y,2.66,.13,'white',.27,.2);}const door=f.length*.62;f.box(door,0,8.1,10.8,'blue');for(const du of [-4.15,0,4.15])f.box(door+du,0,.15,11,'frame',.26,.15);for(let u=0;u<f.length;u+=17.5)f.box(u,0,.14,22.6,'frame',.14,.16);}
+ for(const [a,q] of [[ring[14],ring[18]],[ring[9],ring[10]]] as [T.Vector2,T.Vector2][]){const f=facade(a,q),door=f.length*.62;for(let u=8;u<f.length-4;u+=9.6){if(Math.abs(u-door)<5.3)continue; // windows inside the loading portal's 8.1 m panel were coplanar with it
+  f.box(u,4.1,2.4,2.65,'glass');for(const du of [-1.27,0,1.27])f.box(u+du,4.02,.13,2.85,'white',.27,.2);for(const y of [4.02,5.35,6.8])f.box(u,y,2.66,.13,'white',.27,.2);}f.box(door,0,8.1,10.8,'blue');for(const du of [-4.15,0,4.15])f.box(door+du,0,.15,11,'frame',.26,.15);for(let u=0;u<f.length;u+=17.5)f.box(u,0,.14,22.6,'frame',.14,.16);}
  // Restrained original flat-color interpretation of the source mural: colored facets, hair, eyes and smile.
  // No photograph pixels, downloaded artwork geometry or invented painted name words.
  const mf=front,centre=8.0,width=10.3,bottom=4.2,height=18.15;
  mf.box(centre,bottom,width,height,'pink',.34,.10);
  const patch=(points:number[][],c:Parameters<BuildingTools['add']>[1],depth=.43)=>{const xy=points.map(p=>new T.Vector2(p[0],p[1]));const flat=T.ShapeUtils.triangulateShape(xy,[]);for(const tri of flat){const v=tri.map(i=>{const p=mf.point(centre+points[i][0],depth);return[p.x,bottom+points[i][1],p.y]});emit(v,c);emit([v[0],v[2],v[1]],c);}};
- patch([[-4.7,0],[-4,7],[0,9],[4,6],[4.9,0]],'red');patch([[-3.5,5],[-3.7,12],[-2.5,15.2],[1.7,15.4],[3.4,12.4],[3.1,7.5],[.5,3.9]],'stone');
+ patch([[-4.7,0],[-4,7],[0,9],[4,6],[4.9,0]],'red');patch([[-3.5,5],[-3.7,12],[-2.5,15.2],[1.7,15.4],[3.4,12.4],[3.1,7.5],[.5,3.9]],'stone',.445);
  const colours:Parameters<BuildingTools['add']>[1][]=['blue','gold','green','pink','ochre'];for(let i=0;i<5;i++){const x=-3.45+i*1.3;patch([[x,7],[x+.9,6.0],[x+1.25,13.5],[x+.1,14.5]],colours[i],.46);}patch([[-4,11.4],[-4.5,14.3],[-3.4,16.3],[-.8,17.5],[2.8,16.5],[4.0,13.9],[3.4,11.5],[2.2,14],[-2.0,14.8]],'dark',.50);
  for(const x of [-1.9,1.9]){patch([[x-1,11.2],[x,11.75],[x+1,11.2],[x,10.75]],'white',.53);patch([[x-.38,11.15],[x,11.6],[x+.38,11.15],[x,10.9]],'dark',.56);patch([[x-.8,12.1],[x+.5,12.5],[x+1,12.05],[x-.9,11.8]],'dark',.54);}
  patch([[-1.8,8.2],[-.8,7.5],[1,7.3],[2,8.1],[1,6.5],[-.2,6.2],[-1.3,6.8]],'dark',.56);patch([[-1.3,7.9],[1.6,7.8],[.9,7.1],[-.7,7.2]],'white',.59);

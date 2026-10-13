@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import {measureFacade} from '../../src/canalRecall/landmarks/facadeCompare';
+import {loadMaterialSoup} from './material-soup';
+const id = process.argv[2];
+const idx = Number(process.argv[3] ?? 0);
+const spec = JSON.parse(fs.readFileSync(`scripts/landmarks/${id}-elevations.json`, 'utf8'));
+const f = process.argv[4] ? {...spec.facades[idx], alongM: undefined, heightM: undefined, span: undefined} : spec.facades[idx];
+const m = measureFacade(await loadMaterialSoup(`public/canal-drive/models/${id}.glb`), f, 0.1);
+const rows = [...m.openings].sort((a, b) => (a.y0 + a.y1) / 2 - (b.y0 + b.y1) / 2 || a.t0 - b.t0);
+console.log(f.name, 'openings', rows.length);
+for (const o of rows) console.log(`t ${o.t0.toFixed(1)}-${o.t1.toFixed(1)} (w ${(o.t1 - o.t0).toFixed(2)})  y ${o.y0.toFixed(2)}-${o.y1.toFixed(2)} (h ${(o.y1 - o.y0).toFixed(2)})`);

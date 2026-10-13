@@ -49,11 +49,13 @@ export function buildRaiEuropahal(_w:number,_d:number,b:BuildingTools):void {
   const steps=24,profile=Array.from({length:steps+1},(_,i)=>{const z=q.zMin+i*(2*half/steps);return new T.Vector3(0,roof(z),z)});
   function roofStrip(a:number,c:number,material:Parameters<BuildingTools['add']>[1],lift=0) {
     const v:number[]=[];for(let i=0;i<steps;i++){const p=profile[i],r=profile[i+1];v.push(a,p.y+lift,p.z,a,r.y+lift,r.z,c,r.y+lift,r.z,a,p.y+lift,p.z,c,r.y+lift,r.z,c,p.y+lift,p.z)}
+    // A lifted rib is a raised band, not a floating sheet: skirts carry its two long edges down to the vault, so the shell has no open edge there.
+    if(lift>0)for(const [x,flip] of [[a,false],[c,true]] as const)for(let i=0;i<steps;i++){const p=profile[i],r=profile[i+1],q=[[x,p.y+lift,p.z],[x,r.y+lift,r.z],[x,r.y,r.z],[x,p.y,p.z]];const o=flip?[0,2,1,0,3,2]:[0,1,2,0,2,3];for(const k of o)v.push(...q[k])}
     const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.computeVertexNormals();add(g,material);
   }
   roofStrip(x0,x1,'concrete');
   // Repeated exposed arch-ribs are the hall's recognition feature; bounded original simplification.
-  for(let x=x0;x<x1+.1;x+=6.7)roofStrip(x-.12,Math.min(x+.12,x1+.15),'white',.12);
+  for(let x=x0;x<x1+.1;x+=6.7){if(x<x0+.3||x>x1-.3)continue;roofStrip(x-.12,x+.12,'stone',.12);} // ribs in 'stone' (cream): in 'white' the audit reads them as window trim and fuses them with the gable frames into one hanging assembly; end ribs sit on the gable frames and are left out
   for(const z of[q.zMin,q.zMax])box((x0+x1)/2,0,z,x1-x0,q.eaves,.3,'concrete');
   for(const side of[-1,1]) {
     const x=side<0?x0:x1;
@@ -66,9 +68,9 @@ export function buildRaiEuropahal(_w:number,_d:number,b:BuildingTools):void {
       const span=Math.sqrt(Math.max(0,R*R-(y-yc)*(y-yc))),h=Math.min(half-.5,span-.3);
       if(h>0)box(x+side*.14,y,zc,.20,.12,2*h,'frame');
     }
-    for(let i=0;i<steps;i++)beam(new T.Vector3(x+side*.22,profile[i].y,profile[i].z),new T.Vector3(x+side*.22,profile[i+1].y,profile[i+1].z),.42,'white');
+    for(let i=0;i<steps;i++)beam(new T.Vector3(x+side*.22,profile[i].y,profile[i].z),new T.Vector3(x+side*.22,profile[i+1].y,profile[i+1].z),.42,'stone');
     // Source-supported outward inclined concrete constructive feet, no opaque entrance slab.
-    for(const z of[q.zMin,q.zMax])beam(new T.Vector3(x+side*.5,0,z+(z<zc?-2.8:2.8)),new T.Vector3(x+side*.5,q.eaves,z),.65,'white');
+    for(const z of[q.zMin,q.zMax])beam(new T.Vector3(x+side*.5,0,z+(z<zc?-2.8:2.8)),new T.Vector3(x+side*.5,q.eaves,z),.65,'stone');
   }
   // Surveyed eastern boundary chains own their panes, including the stepped northern frontage.
   const perimeter=source.localParentRings[0];
@@ -85,7 +87,12 @@ export function buildRaiEuropahal(_w:number,_d:number,b:BuildingTools):void {
     }
   }
   // Entrance K's projecting canopy uses repeated shallow folded panels, no identification paint.
-  for(let z=-77;z<-45;z+=6.7){const v=[5.8,8.6,z,11,8.4,z,11,9.1,z+3.35,5.8,8.6,z,11,9.1,z+3.35,5.8,9.3,z+3.35,5.8,9.3,z+3.35,11,9.1,z+3.35,11,8.4,z+6.7,5.8,9.3,z+3.35,11,8.4,z+6.7,5.8,8.6,z+6.7];const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));const ix=Array.from({length:v.length/3},(_,i)=>i);for(let i=0;i<ix.length;i+=3)[ix[i+1],ix[i+2]]=[ix[i+2],ix[i+1]];g.setIndex(ix);g.computeVertexNormals();add(g,'white')}
+  // The canopy is one closed folded slab (it was a single-sided sheet with open edges all round): top surface as surveyed, 12 cm thick, with side and end faces.
+  {const n=5,rows=2*n+1,zs=Array.from({length:rows},(_,k)=>-77+k*3.35),yL=(k:number)=>k%2?9.3:8.6,yR=(k:number)=>k%2?9.1:8.4,xs=[5.8,11],T3=(k:number,s:number)=>[xs[s],(s?yR(k):yL(k)),zs[k]],B3=(k:number,s:number)=>[xs[s],(s?yR(k):yL(k))-.12,zs[k]],v:number[]=[];
+   const quad=(a:number[],b:number[],c:number[],d:number[],hint:number[])=>{const u=[b[0]-a[0],b[1]-a[1],b[2]-a[2]],w=[c[0]-a[0],c[1]-a[1],c[2]-a[2]],nn=[u[1]*w[2]-u[2]*w[1],u[2]*w[0]-u[0]*w[2],u[0]*w[1]-u[1]*w[0]],f=nn[0]*hint[0]+nn[1]*hint[1]+nn[2]*hint[2]<0;const o=f?[a,c,b,a,d,c]:[a,b,c,a,c,d];for(const p of o)v.push(...p)};
+   for(let k=0;k<rows-1;k++){quad(T3(k,0),T3(k+1,0),T3(k+1,1),T3(k,1),[0,1,0]);quad(B3(k,0),B3(k+1,0),B3(k+1,1),B3(k,1),[0,-1,0]);quad(T3(k,0),T3(k+1,0),B3(k+1,0),B3(k,0),[-1,0,0]);quad(T3(k,1),T3(k+1,1),B3(k+1,1),B3(k,1),[1,0,0])}
+   quad(T3(0,0),T3(0,1),B3(0,1),B3(0,0),[0,0,-1]);quad(T3(rows-1,0),T3(rows-1,1),B3(rows-1,1),B3(rows-1,0),[0,0,1]);
+   const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.computeVertexNormals();add(g,'white')}
   // Het Signaal, original open triangular island structure. Operator's documented height51m.
   const [sx,sz]=source.signaal.center;add(openTopPrism(shape(source.signaal.rings),0,1.2),'concrete');add(upwardRoofPlane(shape(source.signaal.rings),1.2),'concrete');
   for(const [dx,dz]of[[-1.3,-.75],[1.3,-.75],[0,1.5]])box(sx+dx,1.2,sz+dz,.35,49.8,.35,'frame');
