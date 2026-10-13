@@ -21,7 +21,23 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 user approved on 2026-10-13. Short form: open NL/Amsterdam data only; buildings
 move from one GLB per building to **recipe tiles** (per-pand recipe data
 compiled into per-z16-tile meshes + instance tables; bespoke landmark GLB
-builders stay, 300+ today, no cap);
+builders stay, 300+ today, no cap). Steps 1 and 2 landed 2026-10-13 behind
+flags: `?bagTiles=1` (BAG tiles with 3DBAG facts, facts sidecar,
+`covers.json`; correction: the shipped tiles were already BAG-keyed for 335k
+of 347k features, what was missing was facts, OSM aliases and the join) and
+`?cityLook=1` (one texture array, `layer/tint/accent/hidden` attributes, two
+shader variants, slot inference for the 310 legacy GLBs at load). Before the
+flips: review the 15 "hidden bug" pands that covers will newly hide
+(`npm run check:covers --strict` lists them: the-movies, delamar ×2,
+kleine-komedie, he-hua-temple, oude-kerk, hortus-greenhouses,
+walloon-church, rijksmuseum, westerkerk ×5, sexmuseum-venustempel), prune
+the 114 stale suppress ids, fix the 5 building-type instance pands missing
+from the tiles; gallery-size review of all landmarks under `?cityLook=1`
+(ambiguous inferred slots: `white`→stucco 241 models, `dark`→frame 272,
+`ochre`→brick 38, `red`→brick 104; slate roofs come out darker); the
+city-look brick luma sits above LOOK.md's target (117 vs 95–110 sun side)
+because slot tints pass through `cityTint`; one brick variant only; ~40
+draft export scripts do not tag slots and will fail the 100% gate;
 own-ground becomes the default after per-polder water levels, BGT width per
 way, AHN profiles for the 891 unmeasured bridges and a desktop measurement
 (user 2026-10-13: desktop is ~10x as important; iPhone numbers later); the gameplay loop no longer freezes the rider and spaced
@@ -755,6 +771,18 @@ Reformed Church, He Hua Temple and Amstelkerk now have original models reviewed
 on the map. Taibah and Augustinuskerk still need a 3DBAG check. Dominicuskerk
 and Vredeskerk now include their naves and actual tower silhouettes.
 
+
+**Police headquarters, Elandsgracht 117: landed 2026-10-13 (HISTORY).** The
+brief was wrong: it is a Z-shaped 1941+ complex round courtyards (164 × 83 m,
+237 wall surfaces), not a tower-and-portal block. Hybrid builder: 3DBAG
+massing, 15 wall groups through the large-tier facade systems, hand-modelled
+stone hoods, canopy and POLITIE plate; 26.6k tris, all gates and `audit:glb`
+PASS, slots 100%. Open: about a quarter of the walls (courtyards, groups 1,
+3–5, 9, 12–14) are inferred; the NW ribbons became a 12-window bay grid
+because ribbon glazing bars z-fight after quantization; no curved glazed
+storey, chequer bands, sculpture group or gated vehicle entrance; roof colour
+unknown; Beeldbank returned 403 to automated fetch, so no archive image or
+architect is cited (lead: "dienst PW (E. Messer), 1941", unverified).
 
 **Police headquarters, Elandsgracht 117 (user, 2026-10-13): bespoke builder.**
 The 1930s brick Hoofdbureau with its corner tower and carved stone entrance is
