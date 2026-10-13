@@ -56,20 +56,30 @@ function measure(panels: Panel[], list: number[]): PanelRun {
 
 /**
  * Bay axes (u from each panel's `uMin`) for one rhythm of `bays` along the run: axis k at arc length (k + 0.5) x
- * pitch, on the facet that holds it, nudged so `halfWin` + `margin` fits inside the facet. Returns a map panel index
- * -> axes; facets narrower than a window get none.
+ * pitch + a phase shift, on the facet that holds it, nudged so `halfWin` + `margin` fits inside the facet. The phase
+ * (20 steps across one pitch) is the one that needs the least nudging, each dropped axis counting a full pitch, so the
+ * rhythm lines up with the facets where 3DBAG cut them at the window piers. Returns a map panel index -> axes; facets
+ * narrower than a window get none.
  */
 export function runBayAxes(panels: Panel[], run: PanelRun, bays: number, halfWin: number, margin = 0.05): Map<number, number[]> {
-  const out = new Map<number, number[]>(run.panels.map(pi => [pi, [] as number[]]));
-  const pitch = run.lengthM / Math.max(1, bays);
-  for (let k = 0; k < bays; k++) {
-    const s = (k + 0.5) * pitch;
-    let j = run.offsets.findIndex((o, i) => s >= o && s < o + (panels[run.panels[i]].uMax - panels[run.panels[i]].uMin));
-    if (j < 0) j = run.panels.length - 1;
-    const p = panels[run.panels[j]], W = p.uMax - p.uMin, lo = halfWin + margin, hi = W - halfWin - margin;
-    if (hi < lo) continue;
-    const u = Math.min(hi, Math.max(lo, s - run.offsets[j]));
-    out.get(p.index)!.push(Math.round(u * 1000) / 1000);
-  }
-  return out;
+  const pitch = run.lengthM / Math.max(1, bays), width = (i: number) => panels[run.panels[i]].uMax - panels[run.panels[i]].uMin;
+  const layout = (phase: number) => {
+    const out = new Map<number, number[]>(run.panels.map(pi => [pi, [] as number[]]));
+    let cost = 0;
+    for (let k = 0; k < bays; k++) {
+      const s = (k + 0.5) * pitch + phase;
+      if (s < 0 || s > run.lengthM) { cost += pitch; continue; }
+      let j = run.offsets.findIndex((o, i) => s >= o && s < o + width(i));
+      if (j < 0) j = run.panels.length - 1;
+      const W = width(j), lo = halfWin + margin, hi = W - halfWin - margin;
+      if (hi < lo) { cost += pitch; continue; }
+      const u = Math.min(hi, Math.max(lo, s - run.offsets[j]));
+      cost += Math.abs(u - (s - run.offsets[j]));
+      out.get(run.panels[j])!.push(Math.round(u * 1000) / 1000);
+    }
+    return {out, cost};
+  };
+  let best = layout(0);
+  for (let i = 1; i < 20; i++) for (const phase of [i * pitch / 40, -i * pitch / 40]) { const l = layout(phase); if (l.cost < best.cost - 1e-6) best = l; }
+  return best.out;
 }
