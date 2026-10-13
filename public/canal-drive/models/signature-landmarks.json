@@ -47422,7 +47422,7 @@
         ],
         "max": [
           6.199999809265137,
-          6.218507289886475,
+          8.118855476379395,
           6.199999809265137
         ]
       },
@@ -47438,13 +47438,19 @@
       },
       "extent": {
         "widthMetres": 12.399999618530273,
-        "heightMetres": 6.21850728854537,
+        "heightMetres": 8.11885547503829,
         "depthMetres": 12.399999618530273,
         "depthCoverage": 0.9999999692363123
       },
-      "triangles": 2400,
-      "bytes": 25632,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 4400,
+      "bytes": 50084,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "79f6f502beedd6a2",
+        "buildVersion": 2,
+        "bytes": 17492,
+        "triangles": 674
+      }
     }
   }
 }

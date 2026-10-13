@@ -1654,5 +1654,11 @@
   "buildVersion": 2,
   "bytes": 42680,
   "triangles": 1788
+ },
+ "slavernijmonument": {
+  "sourceHash": "79f6f502beedd6a2",
+  "buildVersion": 2,
+  "bytes": 17492,
+  "triangles": 674
  }
 }
