@@ -27,16 +27,18 @@
   "groundAltitudeMetres": 0,
   "facingOffsetDegrees": 0,
   "materialOverrides": {
-    "brick": "#8a766b",
-    "greyBrick": "#6f5d55",
-    "stone": "#b9ad98",
-    "slate": "#b4573a",
-    "red": "#a8472b",
-    "glass": "#4f6068",
-    "dark": "#3a3330",
-    "white": "#d8d2c2",
-    "frame": "#5b524a",
-    "bronze": "#6b5a3d"
+    "brick": "#93736b",
+    "greyBrick": "#725a54",
+    "stone": "#bdb3a2",
+    "sandstone": "#9a9386",
+    "slate": "#b65a38",
+    "ochre": "#8a4636",
+    "red": "#a3402a",
+    "glass": "#3e4b52",
+    "dark": "#2c2826",
+    "white": "#e4dfd2",
+    "frame": "#48413c",
+    "bronze": "#4c4e52"
   },
   "attribution": {
     "title": "Sint-Petrus-en-Pauluskerk",
@@ -44,6 +46,6 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Petrus-en-Pauluskerk_%28Amsterdam%29",
     "licence": "Original project asset",
     "licenceUrl": "./LICENSE",
-    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+    "modifications": "Original texture-free flat-colour geometry authored on the BAG/3DBAG footprint and heights; reference photographs guided architectural detail, no pixels or meshes imported."
   }
 }
