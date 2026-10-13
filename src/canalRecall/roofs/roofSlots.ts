@@ -161,11 +161,11 @@ export function slotForFamily(family: RoofFamily, roofCode: number): RoofSlot | 
 }
 
 /**
- * The display colour for a measured roof: the slot's base moved halfway toward the measured
+ * The display colour for a measured roof: the slot's base moved three quarters toward the measured
  * colour (orthophotos are hazy and blue-shifted, so the photo alone is not the paint), then pulled
  * into the slot's luma band. With no measurement, the slot's base.
  */
-export function roofSlotHex(slot: RoofSlot, measured?: RGB | null, weight = 0.5): string {
+export function roofSlotHex(slot: RoofSlot, measured?: RGB | null, weight = 0.75): string {
   const tone = ROOF_SLOT_TONES[slot], base = hexToRgb(tone.hex);
   let c: RGB = measured ? [base[0] + (measured[0] - base[0]) * weight, base[1] + (measured[1] - base[1]) * weight, base[2] + (measured[2] - base[2]) * weight] : base;
   // The photo moves the hue a little, never the saturation far: a flat roof must not turn teal or brick.

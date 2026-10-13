@@ -54,7 +54,7 @@ and the look-consistency lane (2026-10-13). Code owners: `src/canalRecall/look/p
   bitumen dark/light, white membrane, pantile red/dark, slate, zinc, sedum,
   solar, terrace, glass), each with a base and an sRGB luma band. The
   roof-facts sidecar (PDOK orthophoto, `scripts/roofs/`) picks the slot per
-  pand; `roofSlotHex` moves the base halfway to the measured colour, caps the
+  pand; `roofSlotHex` moves the base 3/4 of the way to the measured colour, caps the
   saturation at the base's + 0.12 and pulls it into the band. No slot is ever
   drawn outside its band (`look/roofSlotBands.test.ts`). The slot lane decides
   *which* slot; this table decides how a slot looks.

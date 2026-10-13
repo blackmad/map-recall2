@@ -217,7 +217,7 @@ export const ROOF_SLOT_TONES: Readonly<Record<RoofSlot, { hex: string; luma: rea
   'white-membrane': { hex: '#d9d9d3', luma: [196, 228], cell: 'flat' },
   'pantile-red': { hex: '#b5543a', luma: [84, 124], cell: 'tile' },
   'pantile-dark': { hex: '#6a5248', luma: [64, 98], cell: 'tile' },
-  'slate': { hex: '#4b525c', luma: [62, 104], cell: 'slate' },
+  'slate': { hex: '#4b525c', luma: [62, 140], cell: 'slate' },
   'zinc': { hex: '#9aa1a6', luma: [138, 176], cell: 'slate' },
   'sedum': { hex: '#7a8350', luma: [96, 132], cell: 'flat' },
   'solar': { hex: '#2e3a52', luma: [44, 70], cell: 'flat' },
