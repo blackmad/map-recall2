@@ -1,0 +1,146 @@
+{
+ "schemaVersion": 1,
+ "id": "plantage-middenlaan-52-186093",
+ "pand": "0363100012186093",
+ "signature": [
+  "stone-balcony-slabs",
+  "brick-piers",
+  "zinc-mansard"
+ ],
+ "walls": [
+  {
+   "tag": "w02-30",
+   "bearing": 30,
+   "lengthM": 27.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002933_pano_0009_000098",
+   "capturedAt": "2023-01-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "stone-balcony-slabs",
+     "kind": "balcony-ironwork",
+     "where": "cantilevered cream slabs on the upper floors between brick piers",
+     "approxSizeM": [
+      3,
+      0.6
+     ],
+     "plan": "simplified",
+     "how": "not drawn: neither the cantilevered slabs (9k triangles, z-fight at the 12k budget) nor the belt course (the kit offers courses on every storey line only)",
+     "seenIn": "TMX7316010203-002933_pano_0009_000098"
+    },
+    {
+     "id": "brick-piers",
+     "kind": "window-shape",
+     "where": "tall vertical brick piers between narrow windows",
+     "approxSizeM": [
+      50,
+      20
+     ],
+     "plan": "modelled",
+     "how": "piers true, narrow windows on walls[0]",
+     "seenIn": "TMX7316010203-002933_pano_0009_000098"
+    },
+    {
+     "id": "stone-belt-course",
+     "kind": "other",
+     "where": "continuous cream stone belt over the high ground floor",
+     "approxSizeM": [
+      50,
+      0.8
+     ],
+     "plan": "simplified",
+     "how": "not drawn as a single belt; piers and window reveals carry the elevation",
+     "seenIn": "TMX7316010203-002933_pano_0009_000098"
+    },
+    {
+     "id": "zinc-mansard",
+     "kind": "other",
+     "where": "zinc mansard roof with dormers",
+     "approxSizeM": [
+      50,
+      3
+     ],
+     "plan": "simplified",
+     "how": "3DBAG LoD2.2 roof geometry in zinc, no separate dormer boxes",
+     "seenIn": "TMX7316010203-002933_pano_0009_000098"
+    }
+   ]
+  },
+  {
+   "tag": "w03-30",
+   "bearing": 30,
+   "lengthM": 27,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_04-38-42_00954",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "items": [
+    {
+     "id": "court-front-buff",
+     "kind": "window-shape",
+     "where": "courtyard front: the same grid in buff brick",
+     "approxSizeM": [
+      27,
+      20
+     ],
+     "plan": "modelled",
+     "how": "walls[1] buff palette, piers, belt course",
+     "seenIn": "recording_2025-06-19_04-38-42_00954"
+    }
+   ]
+  },
+  {
+   "tag": "w04-300",
+   "bearing": 300,
+   "lengthM": 24,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002933_pano_0009_000180",
+   "capturedAt": "2023-01-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-balcony-slabs",
+     "kind": "balcony-ironwork",
+     "where": "deep cream balcony slabs stacked on brick piers",
+     "approxSizeM": [
+      3,
+      0.8
+     ],
+     "plan": "simplified",
+     "how": "not drawn (budget); piers and reveals only",
+     "seenIn": "TMX7316010203-002933_pano_0009_000180"
+    }
+   ]
+  },
+  {
+   "tag": "w01-210",
+   "bearing": 210,
+   "lengthM": 36.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000711_pano_0000_001757",
+   "capturedAt": "2018-05-08",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  },
+  {
+   "tag": "w05-300",
+   "bearing": 300,
+   "lengthM": 23.9,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000220_pano_0001_001604",
+   "capturedAt": "2017-03-23",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
