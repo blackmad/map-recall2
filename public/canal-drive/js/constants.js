@@ -53,6 +53,9 @@ const PLAYER_CAR_DRIFT_FACTOR = 0.12;          // asphalt: the car holds its lin
 const PLAYER_CAR_SPEED_MULT = 1.35;            // streets are quicker than canals
 const PLAYER_CAR_ACCEL_MULT = 1.4;             // and get up to speed sooner
 const CAR_MIN_STEER_FACTOR = 0.7;              // steering authority at a standstill
+// Nosed into a quay, a stopped boat must swing round promptly (a 0.28
+// floor took ~6.5 s for a half-turn, and the rider read it as stuck).
+const BOAT_MIN_STEER_FACTOR = 0.8;             // ~2.3 s half-turn on the spot
 // Stop nearly on a dime so a junction can be taken late. Toy physics: the
 // brake is stronger than the engine, and lifting off scrubs speed hard.
 const PLAYER_CAR_BRAKE_MULT = 5.5;
