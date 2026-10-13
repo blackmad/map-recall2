@@ -66,6 +66,44 @@ async function settle(page: Page): Promise<void> {
   await page.waitForTimeout(5000);
 }
 
+// 3DBAG detailed buildings stream from data.3dbag.nl, so this one needs the network: LOOK_DETAILED=1.
+test('shared frame: 3DBAG detailed buildings join the frame and bring no light', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop' || !process.env.LOOK_DETAILED, 'network: LOOK_DETAILED=1');
+  test.setTimeout(300_000);
+  mkdirSync(OUT, { recursive: true });
+  const bundles = process.env.LOOK_BUNDLES_DIR;
+  if (bundles) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+    const file = join(bundles, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]);
+    return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
+  });
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false, query: process.env.LOOK_DETAILED_QUERY ?? '?sharedFrame=1' });
+  await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
+  await page.evaluate(() => (window as any).canalRecallGame.vectorMap.setDetailedBuildingsVisible(true));
+  await page.waitForFunction(() => (window as any).canalRecallGame.vectorMap._detailedBuildings?.ready, null, { timeout: 120_000 });
+  const view = LOOK_VIEWS[0], eye = ahead(view.target, view.bearing, view.distM);
+  await page.evaluate(({ eye, view }) => {
+    const g = (window as any).canalRecallGame, vm = g.vectorMap, map = vm.map;
+    vm.sync = () => {}; map.stop(); map.setMaxPitch(85); map.setPadding({ top: 0, bottom: 0, left: 0, right: 0 });
+    map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, view.altM, { lng: view.target[0], lat: view.target[1] }, view.targetAltM));
+  }, { eye, view });
+  await page.waitForTimeout(15_000);
+  const frame = await page.evaluate(() => {
+    const f = (window as any).canalRecallGame.vectorMap._sharedFrame, lights: string[] = [];
+    f.scene.traverse((o: any) => { if (o.isLight) lights.push(o.name || o.type); });
+    let meshes = 0;
+    const root = f.registry.all().find((e: any) => e.id === 'detailed-buildings')?.participant.participant.root;
+    root?.traverse((o: any) => { if (o.isMesh) meshes++; });
+    return { lights, participants: f.registry.all().map((e: any) => e.id), detailedMeshes: meshes, tilesStats: root?.children[0]?.tilesRenderer?.stats, customLayer: !!(window as any).canalRecallGame.vectorMap.map.getLayer('detailed-buildings-3dbag') };
+  });
+  await page.screenshot({ path: `${OUT}/detailed-shared.png` });
+  writeFileSync(`${OUT}/detailed-shared.json`, JSON.stringify(frame, null, 1));
+  expect(frame.participants).toContain('detailed-buildings');
+  expect(frame.customLayer, 'no own custom layer in the shared frame').toBe(false);
+  expect(frame.lights.sort()).toEqual(['shared-frame-sky', 'shared-frame-sun']);
+  // Not asserted yet: in this headless run the tileset loads (`ready`) but no tile is traversed
+  // (stats.tilesProcessed 0), in the shared frame and in the legacy layer alike. See the lane report.
+});
+
 test.describe('look consistency shots', () => {
   for (const look of LOOKS) test(`look shots: ${look}`, async ({ page }, info) => {
     test.skip(info.project.name !== 'desktop', 'one viewport is enough for a pixel comparison');
@@ -98,6 +136,16 @@ test.describe('look consistency shots', () => {
       await quiet(page);
       await page.waitForTimeout(1500);
       await page.locator('canvas.maplibregl-canvas').first().screenshot({ path: `${dir}/${view.name}.png` });
+    }
+    if (meta.sharedFrame) {
+      // One rig for every layer: the frame's scene holds the sun and the sky and no private light.
+      const frame = await page.evaluate(() => {
+        const f = (window as any).canalRecallGame.vectorMap._sharedFrame, lights: string[] = [];
+        f.scene.traverse((o: any) => { if (o.isLight) lights.push(o.name || o.type); });
+        return { lights, participants: f.registry.all().map((e: any) => e.id) };
+      });
+      meta.frame = frame;
+      expect(frame.lights.sort()).toEqual(['shared-frame-sky', 'shared-frame-sun']);
     }
     writeFileSync(`${dir}/meta.json`, JSON.stringify(meta, null, 1));
   });
