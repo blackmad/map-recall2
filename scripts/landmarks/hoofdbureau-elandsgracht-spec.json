@@ -38,6 +38,6 @@
     "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169550",
     "licence": "Original project asset",
     "licenceUrl": "./LICENSE",
-    "modifications": "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) with block-kit facade systems cut into the wall groups, plus hand-modelled window hoods, entrance canopy and signage plate read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+    "modifications": "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) with block-kit facade systems cut into the wall groups, plus hand-modelled parts measured on rectified Gemeente Amsterdam panoramas (CC BY 4.0): the Amsterdam arms relief with lions and banner, Hildo Krop's three figures, the open corner ground storey on columns, the POLITIE entrance and emblem, the Marnixstraat end block with its balcony and bowed roof, the Singelgracht balconies, bays and stone pair, window hoods and chequer panels. No pixels or meshes imported."
   }
 }
