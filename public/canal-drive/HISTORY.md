@@ -56,6 +56,16 @@ covered BAG panden. Instancing vs merged geometry: 78 KB vs 626 KB for 24
 type-1 blocks; ~35 vs ~1.5k draw calls for the whole 427-pand set. iPhone
 4x-throttle frame time unchanged at the pilot views. Off by default.
 
+## Oudemanhuispoort: the gate between its two houses (2026-10-13)
+
+User on the gallery card: "why this door without a building?" The portal has no BAG
+pand of its own: its piers are the jog in Oudezijds Achterburgwal 229 (1775) and the
+corner of Oudemanhuispoort 1A (1550); behind it is an open alley to the university
+complex. The old model drew only 229 with a too-narrow screen and nothing north of
+it. It now draws 229 (three axes with the stoop door, pantile hip, dormer), the
+portal measured from the across-canal panorama (4.8 m over the piers) and 1A, and
+suppresses both pands. The gallery opens on the canal front.
+
 ## Hendrik fire station: identical engine doors from a measured panorama (2026-10-13)
 
 User: "mismatched fire doors". Doors were 5.1 m wide on 6.4 m centres (about 1.5×
