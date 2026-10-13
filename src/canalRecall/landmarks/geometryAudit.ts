@@ -1119,16 +1119,17 @@ export function materialSlotCoverage(s: MaterialSoup): MaterialSlotCoverage {
  * Coplanar overlap since lane zfight-audit 2026-10-13: a new export (no baseline entry) fails above
  * GEOMETRY_THRESHOLDS.zNewExportFail m2 of `zfight-m2` (under 2 cm apart) plus `zfight-tight-m2` (2-3 cm, still bleeds through
  * at distance); the 3-8 cm rest of `zfight-near-m2` is reported, not failed, since renders with the game's projection never
- * showed it bleed. A recorded model may not grow any of the three past its entry (plus slack).
+ * showed it bleed. A recorded model may not grow `zfight-m2` or `zfight-tight-m2` past its entry (plus slack). `zfight-near-m2` is never
+ * gated: the fix for a 2-3 cm overlay is to lift it to ~5 cm, which moves its area into the near band.
  */
 export function regressions(counts: Record<string, number>, baseline: Record<string, number> | undefined): string[] {
-  const slack: Record<string, number> = {'zfight-m2': 0.3, 'zfight-tight-m2': 0.3, 'zfight-near-m2': 1, 'window-mismatch': 1, 'window-missing': 1, 'window-misaligned': 1};
-  const hard = new Set(['opening-floating-fail', 'opening-overhang-fail', 'zfight-m2', 'zfight-tight-m2', 'zfight-near-m2', 'window-rhythm-fail', 'window-mismatch-spec', 'window-missing-spec',
+  const slack: Record<string, number> = {'zfight-m2': 0.3, 'zfight-tight-m2': 0.3, 'window-mismatch': 1, 'window-missing': 1, 'window-misaligned': 1};
+  const hard = new Set(['opening-floating-fail', 'opening-overhang-fail', 'zfight-m2', 'zfight-tight-m2', 'window-rhythm-fail', 'window-mismatch-spec', 'window-missing-spec',
     // Since the 2026-10-13 cleanup pass every detached or sunk window counts, not only the 10 cm fails; a recorded model may not add any.
     'opening-floating', 'opening-buried', 'opening-overhang']);
   // Recorded-only: a model without the key in its entry predates the gate (legacy, reported as a warning); a model with NO entry is a new
   // export and must be 100% tagged.
-  const recordedOnly = new Set(['material-slot-untagged-permille', 'opening-floating', 'opening-buried', 'opening-overhang', 'zfight-tight-m2', 'zfight-near-m2']);
+  const recordedOnly = new Set(['material-slot-untagged-permille', 'opening-floating', 'opening-buried', 'opening-overhang', 'zfight-tight-m2']);
   const out: string[] = [];
   if (!baseline) {
     const z = (counts['zfight-m2'] ?? 0) + (counts['zfight-tight-m2'] ?? 0);

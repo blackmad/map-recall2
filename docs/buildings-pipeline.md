@@ -485,18 +485,36 @@ Both were judged as "recognisable from its best side". That is not the bar.
      spacing between regular windows ("predicted missing"); columns more than
      0.25 m off the axis of an equal-count row below. Always a warning — some
      facades are irregular on purpose — so compare with the photo.
-   - **Coplanar z-fighting.** Same-facing triangles of different parts or
-     materials within 1 cm of one plane and overlapping by more than the
-     block-face abutment shrink (5 mm), counted only where at least one of
-     seven rays from the overlap escapes the model (overlaps buried inside a
-     mass or under a dome are never drawn). Warn ≥ 0.25 m², fail ≥ 2 m²
-     (H'ART portico: brick top and stone entablature both at y 10.4, 32 m²).
-     Faces 1–3 cm apart are reported as `zfight-near`.
+   - **Coplanar z-fighting.** Same-facing triangles (normals within 2.5°;
+     the smaller triangle's corners measured against the larger one's plane)
+     of different parts overlapping by more than the block-face abutment
+     shrink (5 mm), counted only where at least one of seven rays from the
+     overlap's visible face escapes the model (overlaps buried inside a mass
+     or under a dome are never drawn; double-sided sheets are also probed from
+     behind). Bands, from renders with the game's projection (lane
+     zfight-audit 2026-10-13, `scripts/landmarks/zfight-validate.ts
+     --calibrate`): under 2 cm (`zfight`, `zfight-m2`) bleeds from the air
+     and the street; 2–3 cm (`zfight-tight`, `zfight-tight-m2`) bleeds
+     9–17 % in a 900–1800 m driving view; 3–8 cm (`zfight-near-m2`) never
+     bled before the model was a few pixels and is reported only. Overlap that
+     is ≥ 90 % one material against itself (`zfight-same-m2`) draws the same
+     colour and is reported only. Warn ≥ 0.25 m², fail ≥ 2 m² per band (H'ART
+     portico: brick top and stone entablature both at y 10.4, 32 m²).
+     **Gate: a new export may carry at most 0.5 m² of coplanar + 2–3 cm
+     overlap.** Fix it in the builder — lift the face ≥ 5 cm (10 cm for roof
+     sheets), cut a hole and inset, or make the two one face with a material
+     split (a body with an open top under its roof sheet). Never a polygon
+     offset in the renderer. `snapDetachedParts` rests a detached sheet 5 cm
+     off what it meets, not 2.5 cm. Survey every model with
+     `node --import tsx scripts/landmarks/zfight-survey.ts` (ranked
+     `report.md`, likely cause per row; `--id=a,b` for a few).
    - **Baseline, not a free pass.** Existing offenders are recorded in
      `scripts/landmarks/geometry-audit-baseline.json`; `audit:glb --id=<id>`
-     fails only when `opening-floating-fail`, `opening-overhang-fail` or
-     `zfight-m2` grows past the entry (new models have no entry, so must be
-     clean). After a fix, lower the entry (`--write-baseline` on that id);
+     fails only when `opening-floating-fail`, `opening-overhang-fail`,
+     `zfight-m2` or `zfight-tight-m2` grows past the entry (slack 0.3 m²;
+     new models have no entry, so must pass the 0.5 m² new-export gate). The
+     zfight keys were re-recorded for every landmark on 2026-10-13 under the
+     new metric. After a fix, lower the entry (`--write-baseline` on that id);
      never raise one to pass. Named regressions live in
      `scripts/landmarks/geometry-audit-pins.json` (status `open` = must still
      be detected, flip to `fixed` with the fix) and run in
@@ -507,12 +525,13 @@ Both were judged as "recognisable from its best side". That is not the bar.
      `node --import tsx scripts/landmarks/geometry-audit-shots.ts --id=<id>
      --eye=x,y,z --target=x,y,z [--game-bias]` (`--game-bias` applies the
      game's landmark polygon offset, see below).
-   - **In-game depth bias.** A model that is clean here can still stripe in
-     game: `signature-landmarks-source.js` gives every landmark material
-     `polygonOffsetFactor -32` (scaled by each triangle's depth slope), which
-     reorders a model's own faces at grazing angles — hidden slab tops and
-     band ends show through walls (Rijksmuseum entrance, reproduced with
-     `--game-bias`, gone with `--bias=0,-4096`).
+   - **In-game depth bias.** `signature-landmarks-source.js` now gives
+     landmark materials a constant offset (`polygonOffsetFactor 0`, units
+     `bias × 4096`), which shifts a whole model and does not reorder its own
+     faces. The older slope-scaled `-32` factor striped hidden slab tops and
+     band ends through walls at grazing angles (Rijksmuseum entrance);
+     `--game-bias` still reproduces that old setting, so judge z-fight with
+     plain shots or `--bias=0,-4096`.
 5. **Street-level in-game shot** from where riders actually pass it.
 6. **Uncertainty blocks acceptance.** Anything a lane lists as unverified or
    uncertain is a hold until resolved; it is never merged "for now".
