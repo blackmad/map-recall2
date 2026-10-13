@@ -1636,5 +1636,11 @@
   "buildVersion": 2,
   "bytes": 67904,
   "triangles": 3299
+ },
+ "begijnhof": {
+  "sourceHash": "37ac70941116c193",
+  "buildVersion": 2,
+  "bytes": 41832,
+  "triangles": 1766
  }
 }

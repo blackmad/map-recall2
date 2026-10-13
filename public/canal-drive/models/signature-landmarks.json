@@ -47216,6 +47216,126 @@
       "triangles": 2056,
       "bytes": 27220,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "begijnhof": {
+      "id": "begijnhof",
+      "name": "Begijnhof",
+      "assetKind": "building",
+      "landmarkId": "extract_landmarks_1490092282",
+      "modelUrl": "./models/begijnhof.glb",
+      "suppressOsmIds": [
+        "w266903885",
+        "w266903911",
+        "w266903957",
+        "w266903965",
+        "w266903851",
+        "w266903933",
+        "w266903958",
+        "w266903924",
+        "w266903828",
+        "w266903986",
+        "w266903927",
+        "w266903827",
+        "w266903992",
+        "w266903925",
+        "w266903996",
+        "w266904029",
+        "w266904009",
+        "NL.IMBAG.Pand.0363100012175497",
+        "NL.IMBAG.Pand.0363100012175502",
+        "NL.IMBAG.Pand.0363100012175511",
+        "NL.IMBAG.Pand.0363100012175035",
+        "NL.IMBAG.Pand.0363100012175503",
+        "NL.IMBAG.Pand.0363100012175504",
+        "NL.IMBAG.Pand.0363100012168061",
+        "NL.IMBAG.Pand.0363100012168197",
+        "NL.IMBAG.Pand.0363100012175729",
+        "NL.IMBAG.Pand.0363100012175667",
+        "NL.IMBAG.Pand.0363100012175668",
+        "NL.IMBAG.Pand.0363100012168146",
+        "NL.IMBAG.Pand.0363100012175500",
+        "NL.IMBAG.Pand.0363100012175499",
+        "NL.IMBAG.Pand.0363100012175501",
+        "NL.IMBAG.Pand.0363100012175596",
+        "NL.IMBAG.Pand.0363100012175602"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8899505,
+          52.369242
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 70,
+        "widthMetres": 73
+      },
+      "surveyed": {
+        "anchor": [
+          4.8905,
+          52.3694
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG pand footprints of the 17 court houses (CC0) with 3DBAG ridge heights (CC BY 4.0); court layout (lawn, trees, statue) read from Commons photographs and panoramas, positions approximate"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#8a5445",
+        "red": "#b3694f",
+        "white": "#e6dfcf",
+        "stone": "#cdbfa0",
+        "green": "#6d8a4f",
+        "bronze": "#3f3a42",
+        "dark": "#262b2f",
+        "concrete": "#a7a49c"
+      },
+      "attribution": {
+        "title": "Begijnhof court houses - original low-poly interpretation",
+        "author": "Map Recall",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam_(NL),_Begijnhof_--_2015_--_7220.jpg",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free houses extruded from BAG footprints and 3DBAG heights. Gable types, window rhythm, fences, trees and statue read from CC BY-SA photographs by Dietmar Rabich and Dennis G. Jarvis and Gemeente Amsterdam panoramas (CC BY 4.0); no pixels or third-party meshes imported."
+      },
+      "siteModel": true,
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -76.48119354248047,
+          -4.322157280967076e-7,
+          -19.030609130859375
+        ],
+        "max": [
+          -2.1854002475738525,
+          18.102876663208008,
+          55.58250045776367
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8905,
+          52.3694
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 74.61310958862305,
+        "heightMetres": 18.102877095423736,
+        "depthMetres": 74.29579329490662,
+        "depthCoverage": 1.0177505930809125
+      },
+      "triangles": 9804,
+      "bytes": 146416,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "37ac70941116c193",
+        "buildVersion": 2,
+        "bytes": 41832,
+        "triangles": 1766
+      }
     }
   }
 }
