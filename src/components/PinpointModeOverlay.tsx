@@ -161,7 +161,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
   }, [isRoundComplete, onNextRound, onConfirmGuess, userPinnedLocation]);
 
   return (
-    <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 pb-3 sm:p-4 z-20">
+    <div data-quiz-dock className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 pb-3 sm:p-4 z-20">
       {/* UNIFIED BOTTOM CARD: QUESTION + CLUES + PIN STATUS + SUBMIT CTA */}
       <div ref={scrollerRef} className={`pointer-events-auto w-full max-w-xl mx-auto max-h-[42dvh] ${isRoundComplete ? 'sm:max-h-[55dvh]' : 'sm:max-h-full'} overflow-y-auto overscroll-contain`}>
         {!isRoundComplete ? (

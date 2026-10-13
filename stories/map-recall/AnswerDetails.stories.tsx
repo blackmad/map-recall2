@@ -127,6 +127,56 @@ const AnswerCard: React.FC<{ feature: StreetFeature; width: number; open?: boole
   </div>;
 };
 
+/**
+ * The docked card (>= 1100 px, src/index.css `[data-quiz-dock]`): a 26 rem column the full height of
+ * the map, paper at 92% with a hairline edge, on a stand-in basemap. The neighbourhood answer folds to
+ * the full postcard at the dock's width (height is no longer the constraint).
+ */
+const DockedFrame: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div id="root" style={{ position: 'relative', height: '100vh', minHeight: 640, background: 'linear-gradient(135deg, #e6dfd0, #efe9dd 60%, #dfe3dc)', overflow: 'hidden' }}>
+    <main style={{ position: 'absolute', inset: 0 }}>
+      <div data-quiz-dock className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 pb-3 sm:p-4 z-20">
+        <div className="pointer-events-auto w-full max-w-xl mx-auto max-h-[42dvh] sm:max-h-[55dvh] overflow-y-auto overscroll-contain">{children}</div>
+      </div>
+    </main>
+  </div>
+);
+
+const DockedAnswer: React.FC<{ feature: StreetFeature; open?: boolean }> = ({ feature, open }) => {
+  useEffect(() => {
+    if (open) document.querySelector<HTMLButtonElement>('[data-testid="answer-details"]')?.click();
+  }, [open]);
+  return <DockedFrame>
+    <div className="quiz-result-card space-y-2.5 p-3 sm:p-4" data-result-card>
+      <div className="flex items-center justify-between border-b border-white/15 pb-2 text-xs font-bold">Right neighborhood · +876 PTS</div>
+      <AnswerDetails feature={feature} factSeed={0} roundIndex={0} />
+    </div>
+  </DockedFrame>;
+};
+
+const DockedQuestion: React.FC = () => (
+  <DockedFrame>
+    <div id="guess-bottom-card" className="quiz-card w-full min-w-0 space-y-3 p-2.5 sm:p-4">
+      <div className="flex items-start justify-between gap-2">
+        <div className="space-y-1">
+          <span className="enamel-chip inline-block px-2 py-0.5 text-xs font-bold uppercase tracking-wider">Canal / waterway</span>
+          <h1 className="enamel-brand text-xl text-white">Which canal / waterway is this?</h1>
+          <p className="text-xs text-white/70">In Centrum</p>
+        </div>
+        <span className="enamel-chip px-2 py-1 font-mono text-xs font-bold">3/10</span>
+      </div>
+      <div className="grid grid-cols-2 gap-2">
+        {['Keizersgracht', 'Onbekendegracht', 'Nieuwe Prinsengracht', 'Amstel'].map((name, index) => (
+          <button key={name} type="button" className="enamel-tile flex items-center gap-2 p-2.5 text-left text-sm font-bold">
+            <span className="rounded bg-black/10 px-1.5 text-xs">{index + 1}</span><span className="truncate">{name}</span>
+          </button>
+        ))}
+      </div>
+      <button type="button" className="button-secondary w-full py-2 text-xs font-bold">No idea — reveal the answer</button>
+    </div>
+  </DockedFrame>
+);
+
 const meta = { title: 'Map Recall/Answer card', component: AnswerCard } satisfies Meta<typeof AnswerCard>;
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -148,3 +198,10 @@ export const NeighbourhoodStripPhone: Story = { args: { feature: hoofddorpplein,
 export const NeighbourhoodPostcardDesktop: Story = { args: { feature: hoofddorpplein, width: 576 } };
 export const BorrowedHistoryOpenDesktop: Story = { args: { feature: hoofddorpplein, width: 576, open: true } };
 export const BorrowedHistoryOpenPhone: Story = { args: { feature: hoofddorpplein, width: 358, open: true } };
+
+const dockedParameters = { layout: 'fullscreen', viewport: { defaultViewport: 'desktop' } };
+export const DockedNeighbourhoodFolded: Story = { render: () => <DockedAnswer feature={hoofddorpplein} />, parameters: dockedParameters };
+export const DockedNeighbourhoodOpen: Story = { render: () => <DockedAnswer feature={nieuwmarkt} open />, parameters: dockedParameters };
+export const DockedCanalFolded: Story = { render: () => <DockedAnswer feature={prinsengracht} />, parameters: dockedParameters };
+export const DockedCanalOpen: Story = { render: () => <DockedAnswer feature={prinsengracht} open />, parameters: dockedParameters };
+export const DockedQuestionCard: Story = { render: () => <DockedQuestion />, parameters: dockedParameters };

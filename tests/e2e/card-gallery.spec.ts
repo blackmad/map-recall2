@@ -4,8 +4,9 @@ import { expect, test } from '@playwright/test';
 test('the gallery shows a card for every neighbourhood and flags gaps', async ({ page }) => {
   await page.route(/(basemaps\.cartocdn\.com|tile\.openstreetmap\.org|googleapis\.com|gstatic\.com|wikimedia\.org)/, (route) => route.abort());
   await page.goto('/?gallery=cards&city=amsterdam');
-  await expect(page.getByTestId('gallery-card').first()).toBeVisible({ timeout: 30_000 });
-  expect(await page.getByTestId('gallery-card').count()).toBeGreaterThan(60);
+  await expect(page.getByTestId('gallery-card').first()).toBeVisible({ timeout: 60_000 });
+  // The gallery fills as the extract streams in: wait for the whole set, not the first card.
+  await expect.poll(async () => await page.getByTestId('gallery-card').count(), { timeout: 60_000 }).toBeGreaterThan(60);
   // The page scrolls (the app shell locks the body, so the gallery scrolls itself).
   const scrolled = await page.getByTestId('card-gallery').evaluate((element) => { element.scrollTop = 600; return element.scrollTop; });
   expect(scrolled).toBeGreaterThan(0);
