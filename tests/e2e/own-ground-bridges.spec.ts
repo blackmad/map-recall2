@@ -17,7 +17,6 @@ test.skip(!process.env.OWN_GROUND, 'set OWN_GROUND=1');
 
 const OUT = 'artifacts/own-ground-bridges';
 const TAG = process.env.SHOT_TAG ?? 'after';
-const ONLY = process.env.BRIDGES?.split(',');
 
 type Bridge = { id: string; label: string; measured: boolean; lng: number; lat: number; bearing: number; lengthM: number; movable: boolean };
 
@@ -54,8 +53,16 @@ function bridgesFromExtract(ids: string[]): Bridge[] {
 }
 
 const NAMED = ['BRU0063', 'BRU0165', 'BRU0167', 'BRU0166', 'BRU0044', 'BRU0067', 'BRU0242', 'BRU0236'];
+// Lane bridge-kit 2026-10-13: the user's two spots (shot 1: a Prinsengracht-class bridge, Reesluis BRU0064 taken as the
+// representative; shot 2: the Brouwersgracht/Herengracht junction, the West-Indische Huisbrug BRU0017 with the
+// Melkmeisjesbrug footbridge BRU0016 beside it), the Magere Brug, the Blauwbrug and the Torensluis (BRU0009).
+//   BRIDGES=KIT … uses this list.
+const KIT = ['BRU0064', 'BRU0017', 'BRU0016', 'BRU0242', 'BRU0236', 'BRU0009'];
+const ONLY = process.env.BRIDGES === 'KIT' ? KIT : process.env.BRIDGES?.split(',');
 /** Fallback footprints whose long axis is not the road (the bridge is wider than long): the crossing bearing. */
-const BEARING_OVERRIDE: Record<string, number> = { BRU0165: 96 };
+const BEARING_OVERRIDE: Record<string, number> = { BRU0165: 96, BRU0009: 104 };
+/** Half-widths past the default 22 m water-view offset (the Torensluis is ~42 m wide). */
+const SIDE_OFFSET: Record<string, number> = { BRU0009: 45 };
 
 async function boot(page: Page): Promise<string[]> {
   const errors: string[] = [];
@@ -151,8 +158,14 @@ test('named bridges: deck height, attachment, shots at 1.7 m and from the air', 
     await page.screenshot({ path: `${OUT}/${info.project.name}-${TAG}-${b.id}-eye.png` });
     await look(page, b, { along: -b.lengthM * 0.5 - 8, across: 22 + b.lengthM * 0.3, up: 16 + b.lengthM * 0.2 });
     await page.screenshot({ path: `${OUT}/${info.project.name}-${TAG}-${b.id}-air.png` });
-    await look(page, b, { along: 0, across: 22, up: 1.0, water: true }, { along: 0, up: -0.8 });
+    const off = SIDE_OFFSET[b.id] ?? 22;
+    await look(page, b, { along: 0, across: off, up: 1.0, water: true }, { along: 0, up: -0.8 });
     await page.screenshot({ path: `${OUT}/${info.project.name}-${TAG}-${b.id}-water.png` });
+    // From the side, a canal-boat's view at 40 m, and the far ring at 300 m (lane bridge-kit).
+    await look(page, b, { along: 6, across: off + 18, up: 2.5, water: true }, { along: 0, up: -0.5 });
+    await page.screenshot({ path: `${OUT}/${info.project.name}-${TAG}-${b.id}-side.png` });
+    await look(page, b, { along: -120, across: 150, up: 200 });
+    await page.screenshot({ path: `${OUT}/${info.project.name}-${TAG}-${b.id}-far.png` });
     report[b.id] = { ...b, ...numbers };
   }
   writeFileSync(`${OUT}/${info.project.name}-${TAG}-report.json`, JSON.stringify(report, null, 1));
