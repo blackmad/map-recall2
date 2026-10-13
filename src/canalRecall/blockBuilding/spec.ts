@@ -26,6 +26,8 @@ export interface WinParams {
   mullAt?: number[];
   /** horizontal glazing bars at these fractions of the opening height; replaces `rows` (opt-in) */
   rowsAt?: number[];
+  /** arched head (round, segmental or pointed) with reveals and an optional arch band (opt-in, arch.ts) */
+  arch?: import('./arch.ts').ArchParams;
 }
 
 /**
