@@ -1696,6 +1696,22 @@
       "window-missing": 0,
       "window-misaligned": 0
     },
+    "holocaust-namenmonument": {
+      "material-slot-untagged-permille": 0,
+      "opening-floating": 0,
+      "opening-floating-fail": 0,
+      "opening-overhang": 0,
+      "opening-overhang-fail": 0,
+      "opening-buried": 0,
+      "zfight-m2": 0.2,
+      "zfight-near-m2": 0,
+      "window-mismatch": 0,
+      "window-missing": 0,
+      "window-misaligned": 0,
+      "window-rhythm-fail": 0,
+      "window-mismatch-spec": 0,
+      "window-missing-spec": 0
+    },
     "homomonument": {
       "opening-floating": 0,
       "opening-floating-fail": 0,
@@ -2267,6 +2283,22 @@
       "window-missing": 4,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
+      "window-rhythm-fail": 0,
+      "window-mismatch-spec": 0,
+      "window-missing-spec": 0
+    },
+    "max-euwe-centrum": {
+      "material-slot-untagged-permille": 0,
+      "opening-floating": 0,
+      "opening-floating-fail": 0,
+      "opening-overhang": 0,
+      "opening-overhang-fail": 0,
+      "opening-buried": 0,
+      "zfight-m2": 0.1,
+      "zfight-near-m2": 0,
+      "window-mismatch": 0,
+      "window-missing": 0,
+      "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
       "window-missing-spec": 0
@@ -3831,6 +3863,22 @@
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0
+    },
+    "voormalige-schouwburgpoort": {
+      "material-slot-untagged-permille": 0,
+      "opening-floating": 0,
+      "opening-floating-fail": 0,
+      "opening-overhang": 0,
+      "opening-overhang-fail": 0,
+      "opening-buried": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 0.1,
+      "window-mismatch": 0,
+      "window-missing": 0,
+      "window-misaligned": 0,
+      "window-rhythm-fail": 0,
+      "window-mismatch-spec": 0,
+      "window-missing-spec": 0
     },
     "vredeskerk": {
       "opening-floating": 0,
