@@ -6,14 +6,419 @@
       "version": "440cb31d270357e9",
       "dateSource": "asset-update"
     },
-    "allard-pierson": {
-      "updatedAt": "2026-10-09T11:20:02.726Z",
-      "version": "a87681535edad010",
+    "adam-tower": {
+      "updatedAt": "2026-10-13T10:02:03.774Z",
+      "version": "b6bc30564fde16c9",
       "dateSource": "asset-update"
     },
-    "gerard-dou-synagogue": {
-      "updatedAt": "2026-10-09T06:40:01.929Z",
-      "version": "ecd622637264da57",
+    "afrikahuis": {
+      "updatedAt": "2026-10-13T10:02:03.774Z",
+      "version": "09ff3adba973233b",
+      "dateSource": "asset-update"
+    },
+    "agnietenkapel": {
+      "updatedAt": "2026-10-13T10:02:03.775Z",
+      "version": "ba5fe79aed5afb2d",
+      "dateSource": "asset-update"
+    },
+    "allard-pierson": {
+      "updatedAt": "2026-10-13T10:02:03.775Z",
+      "version": "9909a0e9b2c71f4f",
+      "dateSource": "asset-update"
+    },
+    "amsta-de-poort": {
+      "updatedAt": "2026-10-13T10:02:03.775Z",
+      "version": "1a767c01f7a0af9f",
+      "dateSource": "asset-update"
+    },
+    "amstel-hotel": {
+      "updatedAt": "2026-10-13T10:02:03.776Z",
+      "version": "5edd095b81fd3700",
+      "dateSource": "asset-update"
+    },
+    "amstelkerk": {
+      "updatedAt": "2026-10-13T10:02:03.776Z",
+      "version": "81f473aa9dd31fa3",
+      "dateSource": "asset-update"
+    },
+    "amsterdam-dungeon": {
+      "updatedAt": "2026-10-13T10:02:03.776Z",
+      "version": "3da6448fcbd9c489",
+      "dateSource": "asset-update"
+    },
+    "amsterdam-in-motion": {
+      "updatedAt": "2026-10-13T10:02:03.776Z",
+      "version": "d4a5bcd2a43ca817",
+      "dateSource": "asset-update"
+    },
+    "amsterdam-museum": {
+      "updatedAt": "2026-10-13T10:02:03.777Z",
+      "version": "596fb2b7f0c9ed4c",
+      "dateSource": "asset-update"
+    },
+    "amsterdam-pipe-museum": {
+      "updatedAt": "2026-10-13T10:02:03.777Z",
+      "version": "64d077d5bc1ffb31",
+      "dateSource": "asset-update"
+    },
+    "amsterdam-tulip-museum": {
+      "updatedAt": "2026-10-13T10:02:03.777Z",
+      "version": "3f8dbb51843c6054",
+      "dateSource": "asset-update"
+    },
+    "anne-frank-house": {
+      "updatedAt": "2026-10-13T10:02:03.778Z",
+      "version": "75608e113736daa2",
+      "dateSource": "asset-update"
+    },
+    "arcam": {
+      "updatedAt": "2026-10-13T10:02:03.778Z",
+      "version": "6ee584e00b324458",
+      "dateSource": "asset-update"
+    },
+    "artis-entrance": {
+      "updatedAt": "2026-10-13T10:02:03.782Z",
+      "version": "a027602c839ce971",
+      "dateSource": "asset-update"
+    },
+    "artis-library": {
+      "updatedAt": "2026-10-13T10:02:03.782Z",
+      "version": "d9e537bc26136840",
+      "dateSource": "asset-update"
+    },
+    "athenaeum": {
+      "updatedAt": "2026-10-13T10:02:03.782Z",
+      "version": "067cace770708c8e",
+      "dateSource": "asset-update"
+    },
+    "badhuistheater": {
+      "updatedAt": "2026-10-13T10:02:03.783Z",
+      "version": "e5ae0193173a6585",
+      "dateSource": "asset-update"
+    },
+    "beest-boulders": {
+      "updatedAt": "2026-10-13T10:02:03.783Z",
+      "version": "05d2fc34067b8fe3",
+      "dateSource": "asset-update"
+    },
+    "beest-het-lab": {
+      "updatedAt": "2026-10-13T10:02:03.784Z",
+      "version": "ec32672c79476dd7",
+      "dateSource": "asset-update"
+    },
+    "begijnhofkapel": {
+      "updatedAt": "2026-10-13T10:02:03.784Z",
+      "version": "6f9418891f76b644",
+      "dateSource": "asset-update"
+    },
+    "beta-boulders": {
+      "updatedAt": "2026-10-13T10:02:03.784Z",
+      "version": "511d00d50a24b288",
+      "dateSource": "asset-update"
+    },
+    "blauwe-theehuis": {
+      "updatedAt": "2026-10-13T10:02:03.784Z",
+      "version": "88d7c482fb829252",
+      "dateSource": "asset-update"
+    },
+    "boom-chicago": {
+      "updatedAt": "2026-10-13T10:02:03.785Z",
+      "version": "93f24ea15c5e59af",
+      "dateSource": "asset-update"
+    },
+    "boomkerk": {
+      "updatedAt": "2026-10-13T10:02:03.785Z",
+      "version": "796eb1791fc67a1d",
+      "dateSource": "asset-update"
+    },
+    "brakke-grond": {
+      "updatedAt": "2026-10-13T10:02:03.785Z",
+      "version": "617d67be917d679f",
+      "dateSource": "asset-update"
+    },
+    "breitner-tower": {
+      "updatedAt": "2026-10-13T10:02:03.785Z",
+      "version": "34942497e72240a7",
+      "dateSource": "asset-update"
+    },
+    "brouwerij-het-ij": {
+      "updatedAt": "2026-10-13T10:02:03.786Z",
+      "version": "56cc1a41eb3ddfa6",
+      "dateSource": "asset-update"
+    },
+    "buiksloterkerk": {
+      "updatedAt": "2026-10-13T10:02:03.786Z",
+      "version": "5f33780635f73091",
+      "dateSource": "asset-update"
+    },
+    "cafe-kobalt": {
+      "updatedAt": "2026-10-13T10:02:03.786Z",
+      "version": "be40f3802a213638",
+      "dateSource": "asset-update"
+    },
+    "canals-museum": {
+      "updatedAt": "2026-10-13T10:02:03.786Z",
+      "version": "a3e41a96d5fbca7f",
+      "dateSource": "asset-update"
+    },
+    "cavia": {
+      "updatedAt": "2026-10-13T10:02:03.786Z",
+      "version": "d456b7533d9928a5",
+      "dateSource": "asset-update"
+    },
+    "centraal-station": {
+      "updatedAt": "2026-10-13T10:02:03.787Z",
+      "version": "83293771e9c194c6",
+      "dateSource": "asset-update"
+    },
+    "centrale-markthal": {
+      "updatedAt": "2026-10-13T10:02:03.787Z",
+      "version": "6f4927d135dfb1ab",
+      "dateSource": "asset-update"
+    },
+    "cinecenter": {
+      "updatedAt": "2026-10-13T10:02:03.787Z",
+      "version": "5a100909943d2d2d",
+      "dateSource": "asset-update"
+    },
+    "collectie-six": {
+      "updatedAt": "2026-10-13T10:02:03.788Z",
+      "version": "7db65223df3f539b",
+      "dateSource": "asset-update"
+    },
+    "concertgebouw": {
+      "updatedAt": "2026-10-13T10:02:03.788Z",
+      "version": "cb142773c572e558",
+      "dateSource": "asset-update"
+    },
+    "conservatorium": {
+      "updatedAt": "2026-10-13T10:02:03.789Z",
+      "version": "fb2225321c56c3b1",
+      "dateSource": "asset-update"
+    },
+    "dageraad": {
+      "updatedAt": "2026-10-13T10:02:03.789Z",
+      "version": "42d83ce27bf06493",
+      "dateSource": "asset-update"
+    },
+    "de-balie": {
+      "updatedAt": "2026-10-13T10:02:03.789Z",
+      "version": "d620405e3f786d47",
+      "dateSource": "asset-update"
+    },
+    "de-beurs-van-berlage": {
+      "updatedAt": "2026-10-13T10:02:03.790Z",
+      "version": "1e46ca4ddd8d41f9",
+      "dateSource": "asset-update"
+    },
+    "de-bijenkorf": {
+      "updatedAt": "2026-10-13T10:02:03.790Z",
+      "version": "902c3a4b29545923",
+      "dateSource": "asset-update"
+    },
+    "de-dokwerker": {
+      "updatedAt": "2026-10-13T10:02:03.790Z",
+      "version": "82ce929da58ab5aa",
+      "dateSource": "asset-update"
+    },
+    "de-dolphijn": {
+      "updatedAt": "2026-10-13T10:02:03.791Z",
+      "version": "209671bcce9bab36",
+      "dateSource": "asset-update"
+    },
+    "de-gooyer": {
+      "updatedAt": "2026-10-13T10:02:03.791Z",
+      "version": "2ba75a134a27a8e7",
+      "dateSource": "asset-update"
+    },
+    "de-hallen": {
+      "updatedAt": "2026-10-13T10:02:03.791Z",
+      "version": "dbe038fb26700d34",
+      "dateSource": "asset-update"
+    },
+    "de-krakeling": {
+      "updatedAt": "2026-10-13T10:02:03.791Z",
+      "version": "232d3fd856a022d6",
+      "dateSource": "asset-update"
+    },
+    "de-papegaai": {
+      "updatedAt": "2026-10-13T10:02:03.791Z",
+      "version": "3669802e5fea667e",
+      "dateSource": "asset-update"
+    },
+    "de-piramides": {
+      "updatedAt": "2026-10-13T10:02:03.792Z",
+      "version": "09dfd6fe2056b4d9",
+      "dateSource": "asset-update"
+    },
+    "de-wester": {
+      "updatedAt": "2026-10-13T10:02:03.792Z",
+      "version": "8ad96681b320b7c3",
+      "dateSource": "asset-update"
+    },
+    "delamar": {
+      "updatedAt": "2026-10-13T10:02:03.792Z",
+      "version": "8daeeaeb636ed0a5",
+      "dateSource": "asset-update"
+    },
+    "dominicuskerk": {
+      "updatedAt": "2026-10-13T10:02:03.792Z",
+      "version": "b501442978aa4b1d",
+      "dateSource": "asset-update"
+    },
+    "dorus-theus-brug": {
+      "updatedAt": "2026-10-13T10:02:03.793Z",
+      "version": "d4cc78127cae539f",
+      "dateSource": "asset-update"
+    },
+    "dutch-resistance-museum": {
+      "updatedAt": "2026-10-13T10:02:03.793Z",
+      "version": "70349a3d5eeb7d0e",
+      "dateSource": "asset-update"
+    },
+    "el-tawheed": {
+      "updatedAt": "2026-10-13T10:02:03.793Z",
+      "version": "f39fb7244564e067",
+      "dateSource": "asset-update"
+    },
+    "electric-ladyland": {
+      "updatedAt": "2026-10-13T10:02:03.794Z",
+      "version": "05312522c406fec6",
+      "dateSource": "asset-update"
+    },
+    "embassy-free-mind": {
+      "updatedAt": "2026-10-13T10:02:03.794Z",
+      "version": "212d08e4aed60889",
+      "dateSource": "asset-update"
+    },
+    "english-reformed-church": {
+      "updatedAt": "2026-10-13T10:02:03.794Z",
+      "version": "37fc9d996520a28f",
+      "dateSource": "asset-update"
+    },
+    "eye-filmmuseum": {
+      "updatedAt": "2026-10-13T10:02:03.795Z",
+      "version": "3e6505fb458d8d37",
+      "dateSource": "asset-update"
+    },
+    "faralda-crane-hotel": {
+      "updatedAt": "2026-10-13T10:02:03.795Z",
+      "version": "1c731fea39788340",
+      "dateSource": "asset-update"
+    },
+    "felix-meritis": {
+      "updatedAt": "2026-10-13T10:02:03.797Z",
+      "version": "dcb8aed0db97ae12",
+      "dateSource": "asset-update"
+    },
+    "foam": {
+      "updatedAt": "2026-10-13T10:02:03.797Z",
+      "version": "1faf16397ccbe23b",
+      "dateSource": "asset-update"
+    },
+    "frascati": {
+      "updatedAt": "2026-10-13T10:02:03.797Z",
+      "version": "11cdb4e5fba53e45",
+      "dateSource": "asset-update"
+    },
+    "gashouder": {
+      "updatedAt": "2026-10-13T10:02:03.797Z",
+      "version": "a61e26dbacb806f0",
+      "dateSource": "asset-update"
+    },
+    "groot-melkhuis": {
+      "updatedAt": "2026-10-13T10:02:03.797Z",
+      "version": "236cf1e655704a19",
+      "dateSource": "asset-update"
+    },
+    "groote-museum": {
+      "updatedAt": "2026-10-13T10:02:03.798Z",
+      "version": "83a3afa84a5d1246",
+      "dateSource": "asset-update"
+    },
+    "haarlemmermeerstation": {
+      "updatedAt": "2026-10-13T10:02:03.798Z",
+      "version": "2b43cdf9d86db7dc",
+      "dateSource": "asset-update"
+    },
+    "haarlemmerpoort": {
+      "updatedAt": "2026-10-13T10:02:03.798Z",
+      "version": "895a02057078f6ae",
+      "dateSource": "asset-update"
+    },
+    "haparandaweg-11": {
+      "updatedAt": "2026-10-13T10:02:03.798Z",
+      "version": "d7277ae156f93894",
+      "dateSource": "asset-update"
+    },
+    "haparandaweg-13": {
+      "updatedAt": "2026-10-13T10:02:03.798Z",
+      "version": "f0257cb44f19da99",
+      "dateSource": "asset-update"
+    },
+    "haparandaweg-2-4": {
+      "updatedAt": "2026-10-13T10:02:03.799Z",
+      "version": "c5955dfe0b6d1b43",
+      "dateSource": "asset-update"
+    },
+    "haparandaweg-8-338": {
+      "updatedAt": "2026-10-13T10:02:03.799Z",
+      "version": "824920011fa98d29",
+      "dateSource": "asset-update"
+    },
+    "haparandaweg-9": {
+      "updatedAt": "2026-10-13T10:02:03.799Z",
+      "version": "11c8aea6e9d43520",
+      "dateSource": "asset-update"
+    },
+    "hart-museum": {
+      "updatedAt": "2026-10-13T10:02:03.799Z",
+      "version": "a3a3d83088d38859",
+      "dateSource": "asset-update"
+    },
+    "hash-marihuana-hemp-museum": {
+      "updatedAt": "2026-10-13T10:02:03.800Z",
+      "version": "8db446fefd6e32d5",
+      "dateSource": "asset-update"
+    },
+    "he-hua-temple": {
+      "updatedAt": "2026-10-13T10:02:03.800Z",
+      "version": "fcf36613652d62ca",
+      "dateSource": "asset-update"
+    },
+    "heineken-experience-amsterdam": {
+      "updatedAt": "2026-10-13T10:02:03.800Z",
+      "version": "a3682e71bdb96b27",
+      "dateSource": "asset-update"
+    },
+    "hemp-gallery": {
+      "updatedAt": "2026-10-13T10:02:03.800Z",
+      "version": "9cb6ca346ecc2db5",
+      "dateSource": "asset-update"
+    },
+    "herepoort-bergpoort": {
+      "updatedAt": "2026-10-13T10:02:03.800Z",
+      "version": "dd67e46044c10b46",
+      "dateSource": "asset-update"
+    },
+    "het-schip": {
+      "updatedAt": "2026-10-13T10:02:03.801Z",
+      "version": "2b8522053787a6bd",
+      "dateSource": "asset-update"
+    },
+    "het-veem": {
+      "updatedAt": "2026-10-13T10:02:03.804Z",
+      "version": "959ab5ba83752320",
+      "dateSource": "asset-update"
+    },
+    "hnk-sloterdijk": {
+      "updatedAt": "2026-10-13T10:02:03.804Z",
+      "version": "02db406a59ab982c",
+      "dateSource": "asset-update"
+    },
+    "hollandsche-schouwburg": {
+      "updatedAt": "2026-10-13T10:02:03.804Z",
+      "version": "62c3cf225b10116b",
       "dateSource": "asset-update"
     },
     "holocaust-namenmonument": {
@@ -21,14 +426,129 @@
       "version": "aeea9f66c942780a",
       "dateSource": "asset-update"
     },
-    "keizersgrachtkerk": {
-      "updatedAt": "2026-10-09T06:40:01.906Z",
-      "version": "e8c0309baf3e5fd6",
+    "homomonument": {
+      "updatedAt": "2026-10-13T10:02:03.804Z",
+      "version": "42ddfb9e300078c0",
       "dateSource": "asset-update"
     },
-    "lekstraat-synagoge": {
-      "updatedAt": "2026-10-09T06:40:01.964Z",
-      "version": "353b5a50df1cd690",
+    "hortus-greenhouses": {
+      "updatedAt": "2026-10-13T10:02:03.805Z",
+      "version": "f7824a049c315a4f",
+      "dateSource": "asset-update"
+    },
+    "houten-huys": {
+      "updatedAt": "2026-10-13T10:02:03.805Z",
+      "version": "ea52102890367c71",
+      "dateSource": "asset-update"
+    },
+    "huis-aan-drie-grachten": {
+      "updatedAt": "2026-10-13T10:02:03.805Z",
+      "version": "ef516639b168b53b",
+      "dateSource": "asset-update"
+    },
+    "huis-bartolotti": {
+      "updatedAt": "2026-10-13T10:02:03.805Z",
+      "version": "5e8e931a48170630",
+      "dateSource": "asset-update"
+    },
+    "huis-de-pinto": {
+      "updatedAt": "2026-10-13T10:02:03.805Z",
+      "version": "651d0053a0182291",
+      "dateSource": "asset-update"
+    },
+    "huis-marseille": {
+      "updatedAt": "2026-10-13T10:02:03.806Z",
+      "version": "8ea7c944e0177147",
+      "dateSource": "asset-update"
+    },
+    "huize-lydia": {
+      "updatedAt": "2026-10-13T10:02:03.806Z",
+      "version": "971151a77561e93f",
+      "dateSource": "asset-update"
+    },
+    "idfa-pavilion": {
+      "updatedAt": "2026-10-13T10:02:03.806Z",
+      "version": "666d6b58ad29572a",
+      "dateSource": "asset-update"
+    },
+    "ing-house": {
+      "updatedAt": "2026-10-13T10:02:03.807Z",
+      "version": "411fcd990d5e838a",
+      "dateSource": "asset-update"
+    },
+    "jeruzalemkerk": {
+      "updatedAt": "2026-10-13T10:02:03.808Z",
+      "version": "202fbee82e35d0c0",
+      "dateSource": "asset-update"
+    },
+    "jewish-museum": {
+      "updatedAt": "2026-10-13T10:02:03.809Z",
+      "version": "4ff4a46b572bdedd",
+      "dateSource": "asset-update"
+    },
+    "kattenkabinet": {
+      "updatedAt": "2026-10-13T10:02:03.809Z",
+      "version": "16cfd90fbaaa8913",
+      "dateSource": "asset-update"
+    },
+    "keith-haring-mural": {
+      "updatedAt": "2026-10-13T10:02:03.809Z",
+      "version": "8a50d19e865f7a58",
+      "dateSource": "asset-update"
+    },
+    "kesbeke-shop": {
+      "updatedAt": "2026-10-13T10:02:03.809Z",
+      "version": "1d1ff32df01de1c5",
+      "dateSource": "asset-update"
+    },
+    "kesbeke": {
+      "updatedAt": "2026-10-13T10:02:03.810Z",
+      "version": "e2acae9a946ddee1",
+      "dateSource": "asset-update"
+    },
+    "ketelhuis": {
+      "updatedAt": "2026-10-13T10:02:03.810Z",
+      "version": "ae7a77d4b2cfa278",
+      "dateSource": "asset-update"
+    },
+    "kinderkookkafe": {
+      "updatedAt": "2026-10-13T10:02:03.811Z",
+      "version": "2a100f055a7ab05f",
+      "dateSource": "asset-update"
+    },
+    "kleine-komedie": {
+      "updatedAt": "2026-10-13T10:02:03.811Z",
+      "version": "4b55df2562dcf809",
+      "dateSource": "asset-update"
+    },
+    "klimmuur-centraal": {
+      "updatedAt": "2026-10-13T10:02:03.812Z",
+      "version": "f8954acce2d6adc6",
+      "dateSource": "asset-update"
+    },
+    "kriterion": {
+      "updatedAt": "2026-10-13T10:02:03.812Z",
+      "version": "d069a17f44212a81",
+      "dateSource": "asset-update"
+    },
+    "lab111": {
+      "updatedAt": "2026-10-13T10:02:03.812Z",
+      "version": "91e8bb5fc7ba3853",
+      "dateSource": "asset-update"
+    },
+    "machinegebouw": {
+      "updatedAt": "2026-10-13T10:02:03.812Z",
+      "version": "825b775e04c45e57",
+      "dateSource": "asset-update"
+    },
+    "madame-tussauds": {
+      "updatedAt": "2026-10-13T10:02:03.813Z",
+      "version": "18e0e1ec55d0e0e3",
+      "dateSource": "asset-update"
+    },
+    "magna-plaza": {
+      "updatedAt": "2026-10-13T10:02:03.813Z",
+      "version": "11d88faf4e5f90df",
       "dateSource": "asset-update"
     },
     "max-euwe-centrum": {
@@ -36,19 +556,469 @@
       "version": "be7609a036f79131",
       "dateSource": "asset-update"
     },
+    "mediamatic": {
+      "updatedAt": "2026-10-13T10:02:03.813Z",
+      "version": "72fda1651845e18b",
+      "dateSource": "asset-update"
+    },
+    "melkweg": {
+      "updatedAt": "2026-10-13T10:02:03.814Z",
+      "version": "a55b13361380a702",
+      "dateSource": "asset-update"
+    },
+    "micropia-ledenlokalen": {
+      "updatedAt": "2026-10-13T10:02:03.814Z",
+      "version": "6d8e4969e328569f",
+      "dateSource": "asset-update"
+    },
+    "midwest": {
+      "updatedAt": "2026-10-13T10:02:03.814Z",
+      "version": "0cf4c0abc070d609",
+      "dateSource": "asset-update"
+    },
+    "moco-museum": {
+      "updatedAt": "2026-10-13T10:02:03.814Z",
+      "version": "58c8b2145a387663",
+      "dateSource": "asset-update"
+    },
+    "mondriaan-tower": {
+      "updatedAt": "2026-10-13T10:02:03.815Z",
+      "version": "da4a8d9ed9d84bfc",
+      "dateSource": "asset-update"
+    },
+    "monk-amsterdam": {
+      "updatedAt": "2026-10-13T10:02:03.815Z",
+      "version": "931e573ff99f3f64",
+      "dateSource": "asset-update"
+    },
+    "montelbaanstoren-amsterdam": {
+      "updatedAt": "2026-10-13T10:02:03.815Z",
+      "version": "cd253f9546f3b5fb",
+      "dateSource": "asset-update"
+    },
+    "mountain-network": {
+      "updatedAt": "2026-10-13T10:02:03.815Z",
+      "version": "e816e9aece23222c",
+      "dateSource": "asset-update"
+    },
+    "muiderpoort": {
+      "updatedAt": "2026-10-13T10:02:03.816Z",
+      "version": "4c4040cbd509e074",
+      "dateSource": "asset-update"
+    },
+    "multatuli": {
+      "updatedAt": "2026-10-13T10:02:03.816Z",
+      "version": "12b95d37da67cc5d",
+      "dateSource": "asset-update"
+    },
+    "munttoren-amsterdam": {
+      "updatedAt": "2026-10-13T10:02:03.816Z",
+      "version": "d25c5e03036cf9a0",
+      "dateSource": "asset-update"
+    },
+    "museum-van-loon": {
+      "updatedAt": "2026-10-13T10:02:03.816Z",
+      "version": "9f0b61e941491fa0",
+      "dateSource": "asset-update"
+    },
+    "muziekgebouw-bimhuis": {
+      "updatedAt": "2026-10-13T10:02:03.816Z",
+      "version": "4d6f6c76eda45f3b",
+      "dateSource": "asset-update"
+    },
+    "naco-house": {
+      "updatedAt": "2026-10-13T10:02:03.816Z",
+      "version": "df4445c3f6b327bb",
+      "dateSource": "asset-update"
+    },
+    "national-holocaust-museum": {
+      "updatedAt": "2026-10-13T10:02:03.817Z",
+      "version": "206a3b7910093d22",
+      "dateSource": "asset-update"
+    },
+    "national-monument-on-the-dam": {
+      "updatedAt": "2026-10-13T10:02:03.817Z",
+      "version": "aeac99d45ed7c5f6",
+      "dateSource": "asset-update"
+    },
+    "ndsm-container-arch": {
+      "updatedAt": "2026-10-13T10:02:03.817Z",
+      "version": "e833366969413fe3",
+      "dateSource": "asset-update"
+    },
+    "ndsm-warehouse-complex": {
+      "updatedAt": "2026-10-13T10:02:03.818Z",
+      "version": "ebf02ab7f8d789da",
+      "dateSource": "asset-update"
+    },
+    "nemo": {
+      "updatedAt": "2026-10-13T10:02:03.819Z",
+      "version": "31386d84a4793626",
+      "dateSource": "asset-update"
+    },
+    "nieuw-dakota": {
+      "updatedAt": "2026-10-13T10:02:03.820Z",
+      "version": "1579cea94e829e38",
+      "dateSource": "asset-update"
+    },
+    "nieuwe-kerk": {
+      "updatedAt": "2026-10-13T10:02:03.820Z",
+      "version": "924564b0723fa33c",
+      "dateSource": "asset-update"
+    },
+    "nikolaas-myrakerk": {
+      "updatedAt": "2026-10-13T10:02:03.821Z",
+      "version": "c1750d621307d40f",
+      "dateSource": "asset-update"
+    },
+    "niod": {
+      "updatedAt": "2026-10-13T10:02:03.821Z",
+      "version": "cc6c658e4e0ddf79",
+      "dateSource": "asset-update"
+    },
+    "oba-oosterdok": {
+      "updatedAt": "2026-10-13T10:02:03.821Z",
+      "version": "4fc90fd20e653331",
+      "dateSource": "asset-update"
+    },
+    "occii": {
+      "updatedAt": "2026-10-13T10:02:03.821Z",
+      "version": "89ac812d7b80642b",
+      "dateSource": "asset-update"
+    },
+    "olvg-oost": {
+      "updatedAt": "2026-10-13T10:02:03.822Z",
+      "version": "b85fbdea39e26e68",
+      "dateSource": "asset-update"
+    },
+    "olvg-west": {
+      "updatedAt": "2026-10-13T10:02:03.822Z",
+      "version": "b3d9166087c429c8",
+      "dateSource": "asset-update"
+    },
+    "ons-lieve-heer-op-solder": {
+      "updatedAt": "2026-10-13T10:02:03.823Z",
+      "version": "da35531d4fe2d20d",
+      "dateSource": "asset-update"
+    },
+    "oost-indisch-huis": {
+      "updatedAt": "2026-10-13T10:02:03.823Z",
+      "version": "c37ff7dcef43f0e3",
+      "dateSource": "asset-update"
+    },
+    "oosterparkkerk": {
+      "updatedAt": "2026-10-13T10:02:03.823Z",
+      "version": "2ad382a7bb22d73d",
+      "dateSource": "asset-update"
+    },
+    "orgelpark": {
+      "updatedAt": "2026-10-13T10:02:03.840Z",
+      "version": "c606c20d2d637ebd",
+      "dateSource": "asset-update"
+    },
+    "ot301": {
+      "updatedAt": "2026-10-13T10:02:03.840Z",
+      "version": "7ef8609567eecf26",
+      "dateSource": "asset-update"
+    },
+    "oude-kerk": {
+      "updatedAt": "2026-10-13T10:02:03.841Z",
+      "version": "4d599c203d4832c2",
+      "dateSource": "asset-update"
+    },
+    "oude-lutherse-kerk": {
+      "updatedAt": "2026-10-13T10:02:03.842Z",
+      "version": "2e6def813b1db07e",
+      "dateSource": "asset-update"
+    },
+    "palace-on-the-dam": {
+      "updatedAt": "2026-10-13T10:02:03.842Z",
+      "version": "dc1eb61b42c88dd2",
+      "dateSource": "asset-update"
+    },
+    "paradiso": {
+      "updatedAt": "2026-10-13T10:02:03.842Z",
+      "version": "910c44a76ca569b0",
+      "dateSource": "asset-update"
+    },
+    "pathe-city": {
+      "updatedAt": "2026-10-13T10:02:03.843Z",
+      "version": "07c1b888cb76da4d",
+      "dateSource": "asset-update"
+    },
+    "petruskerk": {
+      "updatedAt": "2026-10-13T10:02:03.843Z",
+      "version": "ddc41f62dcf7186a",
+      "dateSource": "asset-update"
+    },
+    "pianola-museum": {
+      "updatedAt": "2026-10-13T10:02:03.843Z",
+      "version": "ba244aaa14dcb405",
+      "dateSource": "asset-update"
+    },
+    "plein-theater": {
+      "updatedAt": "2026-10-13T10:02:03.843Z",
+      "version": "260f0e47a725d8d7",
+      "dateSource": "asset-update"
+    },
+    "pllek": {
+      "updatedAt": "2026-10-13T10:02:03.843Z",
+      "version": "dc5d3ef35f825449",
+      "dateSource": "asset-update"
+    },
+    "podium-mozaiek": {
+      "updatedAt": "2026-10-13T10:02:03.844Z",
+      "version": "ba268d238b1b5b07",
+      "dateSource": "asset-update"
+    },
+    "pontsteiger": {
+      "updatedAt": "2026-10-13T10:02:03.844Z",
+      "version": "7eceb598c7d77e8b",
+      "dateSource": "asset-update"
+    },
+    "portuguese-synagogue": {
+      "updatedAt": "2026-10-13T10:02:03.844Z",
+      "version": "f7c67aca9592d33d",
+      "dateSource": "asset-update"
+    },
+    "pulitzer-amsterdam": {
+      "updatedAt": "2026-10-13T10:02:03.845Z",
+      "version": "46da427f4defad48",
+      "dateSource": "asset-update"
+    },
+    "rai-amsterdam": {
+      "updatedAt": "2026-10-13T10:02:03.846Z",
+      "version": "de6b20d6761ca79d",
+      "dateSource": "asset-update"
+    },
+    "rasphuispoort": {
+      "updatedAt": "2026-10-13T10:02:03.846Z",
+      "version": "a5285cde46a71818",
+      "dateSource": "asset-update"
+    },
+    "rem-eiland": {
+      "updatedAt": "2026-10-13T10:02:03.846Z",
+      "version": "c1d915bb11c84795",
+      "dateSource": "asset-update"
+    },
+    "rembrandt-house": {
+      "updatedAt": "2026-10-13T10:02:03.847Z",
+      "version": "de2a8f9b6da74788",
+      "dateSource": "asset-update"
+    },
+    "rembrandt-tower": {
+      "updatedAt": "2026-10-13T10:02:03.847Z",
+      "version": "77b57de315082631",
+      "dateSource": "asset-update"
+    },
+    "rialto": {
+      "updatedAt": "2026-10-13T10:02:03.847Z",
+      "version": "be9d5e860f1ae8b0",
+      "dateSource": "asset-update"
+    },
+    "rijksmuseum": {
+      "updatedAt": "2026-10-13T10:02:03.848Z",
+      "version": "86607f097c034ce7",
+      "dateSource": "asset-update"
+    },
+    "rode-hoed": {
+      "updatedAt": "2026-10-13T10:02:03.848Z",
+      "version": "0f01b478009b89df",
+      "dateSource": "asset-update"
+    },
+    "royal-theater-carre": {
+      "updatedAt": "2026-10-13T10:02:03.848Z",
+      "version": "6cd5c146f0460417",
+      "dateSource": "asset-update"
+    },
     "ruysdael-petrus-pauluskerk": {
       "updatedAt": "2026-10-09T06:40:01.992Z",
       "version": "4d40c839080155cb",
       "dateSource": "asset-update"
     },
-    "torture-museum": {
-      "updatedAt": "2026-10-09T06:40:02.007Z",
-      "version": "cf3bbd44a298360e",
+    "scheepvaarthuis": {
+      "updatedAt": "2026-10-13T10:02:03.849Z",
+      "version": "dad2253f2cbb3e00",
+      "dateSource": "asset-update"
+    },
+    "scheltema": {
+      "updatedAt": "2026-10-13T10:02:03.849Z",
+      "version": "940ecaab5a705bff",
+      "dateSource": "asset-update"
+    },
+    "schreierstoren": {
+      "updatedAt": "2026-10-13T10:02:03.849Z",
+      "version": "696f87d9db247773",
+      "dateSource": "asset-update"
+    },
+    "sexmuseum-venustempel": {
+      "updatedAt": "2026-10-13T10:02:03.849Z",
+      "version": "8c1f56d5387fca1c",
+      "dateSource": "asset-update"
+    },
+    "silodam": {
+      "updatedAt": "2026-10-13T10:02:03.851Z",
+      "version": "7440fb0b33e0f13c",
+      "dateSource": "asset-update"
+    },
+    "singelkerk": {
+      "updatedAt": "2026-10-13T10:02:03.854Z",
+      "version": "44504f14eb3bbca5",
+      "dateSource": "asset-update"
+    },
+    "sint-agneskerk": {
+      "updatedAt": "2026-10-13T10:02:03.854Z",
+      "version": "f1bea314f629b3e8",
+      "dateSource": "asset-update"
+    },
+    "sint-jorishof": {
+      "updatedAt": "2026-10-13T10:02:03.855Z",
+      "version": "51546a65d0743c24",
+      "dateSource": "asset-update"
+    },
+    "sint-nicolaas": {
+      "updatedAt": "2026-10-13T10:02:03.855Z",
+      "version": "273d5ac92f039827",
+      "dateSource": "asset-update"
+    },
+    "sloterdijk-station": {
+      "updatedAt": "2026-10-13T10:02:03.856Z",
+      "version": "38d256e4825dfc69",
+      "dateSource": "asset-update"
+    },
+    "social-history": {
+      "updatedAt": "2026-10-13T10:02:03.856Z",
+      "version": "379578130b1c302a",
+      "dateSource": "asset-update"
+    },
+    "stadhuis": {
+      "updatedAt": "2026-10-13T10:02:03.856Z",
+      "version": "e7e5c297dafb7fb5",
+      "dateSource": "asset-update"
+    },
+    "stadsschouwburg": {
+      "updatedAt": "2026-10-13T10:02:03.857Z",
+      "version": "1bd50d002bf9bb79",
+      "dateSource": "asset-update"
+    },
+    "stedelijk-museum": {
+      "updatedAt": "2026-10-13T10:02:03.857Z",
+      "version": "cad040a76b7e50a6",
+      "dateSource": "asset-update"
+    },
+    "straat-museum": {
+      "updatedAt": "2026-10-13T10:02:03.857Z",
+      "version": "1208ef710c5cffee",
+      "dateSource": "asset-update"
+    },
+    "studiok": {
+      "updatedAt": "2026-10-13T10:02:03.858Z",
+      "version": "c41ea486ca160306",
+      "dateSource": "asset-update"
+    },
+    "the-movies": {
+      "updatedAt": "2026-10-13T10:02:03.858Z",
+      "version": "81b65535e377b947",
+      "dateSource": "asset-update"
+    },
+    "the-rock": {
+      "updatedAt": "2026-10-13T10:02:03.858Z",
+      "version": "c42ec5e34493fc8b",
+      "dateSource": "asset-update"
+    },
+    "theater-amsterdam": {
+      "updatedAt": "2026-10-13T10:02:03.858Z",
+      "version": "ee5101d708768c42",
+      "dateSource": "asset-update"
+    },
+    "tobacco-theater": {
+      "updatedAt": "2026-10-13T10:02:03.858Z",
+      "version": "e77efef4eb4fd0a0",
+      "dateSource": "asset-update"
+    },
+    "treehouse-ndsm": {
+      "updatedAt": "2026-10-13T10:02:03.859Z",
+      "version": "16a70ba7c3f5215f",
+      "dateSource": "asset-update"
+    },
+    "tuschinski": {
+      "updatedAt": "2026-10-13T10:02:03.859Z",
+      "version": "40d1ef278d608881",
+      "dateSource": "asset-update"
+    },
+    "valley": {
+      "updatedAt": "2026-10-13T10:02:03.860Z",
+      "version": "e00596e88da882b0",
+      "dateSource": "asset-update"
+    },
+    "van-gogh-museum": {
+      "updatedAt": "2026-10-13T10:02:03.860Z",
+      "version": "f7c57ad6fb08f886",
+      "dateSource": "asset-update"
+    },
+    "vinoly": {
+      "updatedAt": "2026-10-13T10:02:03.860Z",
+      "version": "e25e62032c28211d",
+      "dateSource": "asset-update"
+    },
+    "vondelpark-bandstand": {
+      "updatedAt": "2026-10-13T10:02:03.861Z",
+      "version": "0e632fab53dc3740",
+      "dateSource": "asset-update"
+    },
+    "vondelpark-open-air-theater": {
+      "updatedAt": "2026-10-13T10:02:03.861Z",
+      "version": "5067ef40e3266e95",
+      "dateSource": "asset-update"
+    },
+    "vondeltuin": {
+      "updatedAt": "2026-10-13T10:02:03.861Z",
+      "version": "cc3f4c61eef67258",
       "dateSource": "asset-update"
     },
     "voormalige-schouwburgpoort": {
       "updatedAt": "2026-10-09T10:04:39.574Z",
       "version": "f795e6562dcae29b",
+      "dateSource": "asset-update"
+    },
+    "vredeskerk": {
+      "updatedAt": "2026-10-13T10:02:03.861Z",
+      "version": "15f1065728425196",
+      "dateSource": "asset-update"
+    },
+    "w139": {
+      "updatedAt": "2026-10-13T10:02:03.862Z",
+      "version": "885eb44012397f07",
+      "dateSource": "asset-update"
+    },
+    "walloon-church": {
+      "updatedAt": "2026-10-13T10:02:03.862Z",
+      "version": "d9c664eac2d1422d",
+      "dateSource": "asset-update"
+    },
+    "wereldmuseum-amsterdam": {
+      "updatedAt": "2026-10-13T10:02:03.862Z",
+      "version": "f735821ca778afe2",
+      "dateSource": "asset-update"
+    },
+    "westerkerk": {
+      "updatedAt": "2026-10-13T10:02:03.863Z",
+      "version": "b2efbdd4c34631b7",
+      "dateSource": "asset-update"
+    },
+    "willet-holthuysen": {
+      "updatedAt": "2026-10-13T10:02:03.863Z",
+      "version": "c7f1f08ff67ab766",
+      "dateSource": "asset-update"
+    },
+    "wine-guildhall": {
+      "updatedAt": "2026-10-13T10:02:03.863Z",
+      "version": "1e475780392acc9f",
+      "dateSource": "asset-update"
+    },
+    "zuiveringshal-west": {
+      "updatedAt": "2026-10-13T10:02:03.863Z",
+      "version": "5978f719de17ff3e",
       "dateSource": "asset-update"
     }
   }
