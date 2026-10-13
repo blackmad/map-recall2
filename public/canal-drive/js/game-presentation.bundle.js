@@ -526,7 +526,8 @@
     storybook: { tile: ["#b9553a", "#a94a33", "#c46a45"], slate: ["#556070", "#4a5666", "#657282"] },
     cartoon: { tile: ["#e85a3c", "#f08a2b", "#d94a3a"], slate: ["#3f5f8f", "#2f4a78", "#4f7bb0"] }
   };
-  var FLAT_ROOF_GREYS = ["#8f8a83", "#9a958c", "#85817c", "#a09789"];
+  var FLAT_ROOF_TONES = { gravel: "#9e9281", membrane: "#c3c1bb", bitumen: "#56585e", pebble: "#a99b84" };
+  var FLAT_ROOF_GREYS = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
   var CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS };
   var PERIOD_WALLS = {
     photo: {
