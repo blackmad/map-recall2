@@ -1,5 +1,33 @@
 # Canal Recall — what is built
 
+## Checks lane: baselines re-recorded, stale rules fixed, docs index (2026-10-13)
+
+Lane `process/checks-and-docs-20261013` (Sonnet, `docs/handoffs/lane-checks-and-docs-20261013.md`).
+The handoff's premise that the 37 failing `storybook-visual` baselines
+differed only in the Feedback button and attribution text was wrong: the
+cards had become compact (MORE chip, close ×, shorter text) and the portrait
+settings panel had been redesigned; all 37 re-recorded, 46/46 pass.
+`check-three-buildings`: the rule, not the model, was stale — `635fc6a1`
+added segmental heads to canal houses on purpose; the assertion now allows
+rect or segmental and still bans semicircular/round as 19th century; the
+integrator republished `kit-locations.json` (239 → 246 ids) and the check
+passes. `check-building-look-transition`: the worker stub did not echo
+`appearanceRevision`/`surveyedEnvelopeRevision`, so the adapter dropped its
+reply; fixed, and it already runs through `test:city-startup`.
+`check-cinema-facade-surfaces`: Kriterion count restricted to the frontage;
+the Rialto half exposes a real coplanar roof/wall defect (board).
+`check-manual-landmarks`: the integrator regenerated 22 drifted manifest
+entries (15 stale byte counts plus felix-meritis, amsterdam-museum,
+cinecenter, orgelpark, rode-hoed, heineken-experience-amsterdam, dageraad
+after the detached-openings sweep); what remains is the 500 KB budget (four
+models) and the Haparandaweg block faces without `bytes` (board).
+`review-ride` is a real routing regression (board). Docs: `docs/README.md`
+indexes the four living documents, the plan, the handoffs and a dated
+research list with "superseded by" marks; `docs/gameplay/loop.md` written
+from `questionBudget.ts`, `ridingPrompt.ts`, `teachingPacer.ts`. Nothing
+moved or deleted.
+
+
 ## Police bureaus: 17 matched, two more large recipes installed (2026-10-13)
 
 Lane `content/police-bureaus-20261013` (Sonnet, `docs/handoffs/lane-police-bureaus-20261013.md`).
