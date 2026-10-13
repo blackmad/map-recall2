@@ -1,31 +1,102 @@
 {
  "schemaVersion": 1,
  "id": "slavernijmonument",
- "signature": ["s-giant", "s-chain", "s-platform"],
+ "signature": [
+  "s-giant",
+  "s-chain",
+  "s-platform"
+ ],
  "walls": [
   {
-   "tag": "south-180", "bearing": 180, "lengthM": 11, "centre": [4.918031, 52.358586],
-   "evidence": "photo", "panoId": "commons:Erwin_de_Vries_-_Nationaal_Monument_Slavernijverleden_1.jpg", "capturedAt": "2025", "checked": true,
+   "tag": "south-180",
+   "bearing": 180,
+   "lengthM": 11,
+   "centre": [
+    4.918031,
+    52.358586
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Erwin_de_Vries_-_Nationaal_Monument_Slavernijverleden_1.jpg",
+   "capturedAt": "2025",
+   "checked": true,
    "note": "Long front of the monument: RoMaVo photographs 1 and 3 (CC0) and Ceescamel 2025 B, F (CC0) in artifacts/landmark-refs/slavernijmonument/.",
    "items": [
-    {"id": "s-giant", "kind": "sculpture", "where": "huge bronze figure rising from the platform and bending over, its long head pointing like a beak", "approxSizeM": [5, 6.2], "plan": "simplified",
-     "how": "builder: three tapered limbs for the body, a tapered cone for the beak, an ellipsoid skull and one hanging arm; surface texture omitted", "seenIn": "RoMaVo 1"},
-    {"id": "s-pillar-figure", "kind": "sculpture", "where": "second tall bronze figure by a post with arms raised and hair streaming", "approxSizeM": [2.5, 3.8], "plan": "simplified",
-     "how": "builder: post, two raised arms and a leaning body with a sphere head", "seenIn": "RoMaVo 1"},
-    {"id": "s-chain", "kind": "sculpture", "where": "a chain of about twelve slim bronze walkers leaning against the pull, bound by ropes", "approxSizeM": [5, 2.2], "plan": "simplified",
-     "how": "builder: twelve three-limb figures with sphere heads in two ranks and two thin rope bars; individual faces and poses are not distinct", "seenIn": "Ceescamel 2025 F"},
-    {"id": "s-platform", "kind": "other", "where": "low dark-grey concrete platform carrying the groups, on a round paved apron", "approxSizeM": [11, 0.75], "plan": "modelled",
-     "how": "builder: a box 11 x 4.5 x 0.75 m on a 12.4 m disc", "seenIn": "Ceescamel 2025 B"}
+    {
+     "id": "s-giant",
+     "kind": "sculpture",
+     "where": "huge bronze figure rising from the platform and bending over, its long head pointing like a beak",
+     "approxSizeM": [
+      5,
+      6.2
+     ],
+     "plan": "simplified",
+     "how": "six tapered segments on spine points read off RoMaVo 1 (88 px per metre against the 11 m platform), round joints, the head sweeping back west into a 4.5 m beak with a short lower jaw and a hanging arm; the previous builder had the beak pointing east, which the photographs contradict; the rough cast surface is omitted",
+     "seenIn": "RoMaVo 1"
+    },
+    {
+     "id": "s-pillar-figure",
+     "kind": "sculpture",
+     "where": "second tall bronze figure by a post with arms raised and hair streaming",
+     "approxSizeM": [
+      2.5,
+      3.8
+     ],
+     "plan": "simplified",
+     "how": "square post 0.5 x 2.5 m and a 3.1 m kit figure with both arms flung up, one long arm sweeping up and west, and four flat hair tufts streaming west",
+     "seenIn": "RoMaVo 1"
+    },
+    {
+     "id": "s-chain",
+     "kind": "sculpture",
+     "where": "a chain of thirteen thin bronze figures in two loose ranks at the west end, leaning east into the pull, arms reaching forward, bound by a rope",
+     "approxSizeM": [
+      5,
+      2.2
+     ],
+     "plan": "simplified",
+     "how": "thirteen kit figures (1.95 m, thin, striding, lean 0.34 rad, yaw east) at positions read from the Ceescamel F and RoMaVo 1 photographs, with a rope rod from each waist to the next walker's hand; individual faces are not modelled",
+     "seenIn": "Ceescamel 2025 F"
+    },
+    {
+     "id": "s-platform",
+     "kind": "other",
+     "where": "low dark-grey concrete platform carrying the groups, on a round paved apron",
+     "approxSizeM": [
+      11,
+      0.75
+     ],
+     "plan": "modelled",
+     "how": "builder: a box 11 x 4.5 x 0.75 m on a 12.4 m disc",
+     "seenIn": "Ceescamel 2025 B"
+    }
    ]
   },
   {
-   "tag": "north-0", "bearing": 0, "lengthM": 11, "centre": [4.918031, 52.358646],
-   "evidence": "photo", "panoId": "commons:2025_Nationaal_Monument_Slavernijverleden_Asd_B_.jpg", "capturedAt": "2025", "checked": true,
-   "note": "Rear side seen in the Ceescamel and Arthena photographs: the same platform edge, the figures from behind.", "items": []
+   "tag": "north-0",
+   "bearing": 0,
+   "lengthM": 11,
+   "centre": [
+    4.918031,
+    52.358646
+   ],
+   "evidence": "photo",
+   "panoId": "commons:2025_Nationaal_Monument_Slavernijverleden_Asd_B_.jpg",
+   "capturedAt": "2025",
+   "checked": true,
+   "note": "Rear side seen in the Ceescamel and Arthena photographs: the same platform edge, the figures from behind.",
+   "items": []
   }
  ],
  "sources": [
-  {"name": "RoMaVo, Erwin de Vries - Nationaal Monument Slavernijverleden (Commons)", "url": "https://commons.wikimedia.org/wiki/File:Erwin_de_Vries_-_Nationaal_Monument_Slavernijverleden_1.jpg", "licence": "CC0"},
-  {"name": "Ceescamel, 2025 Nationaal Monument Slavernijverleden (Commons)", "url": "https://commons.wikimedia.org/wiki/File:2025_Nationaal_Monument_Slavernijverleden,_Asd_(B).jpg", "licence": "CC0"}
+  {
+   "name": "RoMaVo, Erwin de Vries - Nationaal Monument Slavernijverleden (Commons)",
+   "url": "https://commons.wikimedia.org/wiki/File:Erwin_de_Vries_-_Nationaal_Monument_Slavernijverleden_1.jpg",
+   "licence": "CC0"
+  },
+  {
+   "name": "Ceescamel, 2025 Nationaal Monument Slavernijverleden (Commons)",
+   "url": "https://commons.wikimedia.org/wiki/File:2025_Nationaal_Monument_Slavernijverleden,_Asd_(B).jpg",
+   "licence": "CC0"
+  }
  ]
 }
