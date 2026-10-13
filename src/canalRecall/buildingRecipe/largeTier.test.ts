@@ -360,3 +360,19 @@ test('windows: wide draws a four-light window with a transom two thirds of the b
   const plain = largeSystem('brick-bay-grid', {pitchM: 8, lines: [0, 5, 10], ground: 'system', slots} as never).typical.win!;
   assert.equal(plain.mull, undefined);
 });
+
+test('gateways: arched carriage openings (92 % of a bay) in the listed ground bays, plain wall between, deterministic; validated (Amsterdams Lyceum)', async () => {
+  const base = raw('amsterdams-lyceum'), f = facts('amsterdams-lyceum');
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], gateways: {bays: [9]}}, ...base.walls.slice(1)]}), /gateways.bays/);
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], gateways: {bays: [2], arch: 'ogee'}}, ...base.walls.slice(1)]}), /gateways.arch/);
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], entrance: true}, ...base.walls.slice(1)]}), /gateways/);
+  const intent = validateLargeIntent(base);
+  const g = Object.values(fitLarge(intent, f).recipe.spec.systems)[0].ground;
+  assert.deepEqual(g.cycle?.map(r => r.kind), ['wall', 'punched', 'punched', 'wall']);
+  assert.ok(g.cycle![1].win?.arch && g.cycle![1].win!.w! > 0.9);
+  const {gates} = await gatesOf(intent, f);
+  assert.deepEqual(gates.filter(x => !x.pass).map(x => x.id), []);
+  // without gateways the ground row is the system's own (default compose unchanged)
+  const plain = validateLargeIntent({...base, walls: [{...base.walls[0], gateways: undefined}, ...base.walls.slice(1)]});
+  assert.equal(Object.values(fitLarge(plain, f).recipe.spec.systems)[0].ground.cycle, undefined);
+});
