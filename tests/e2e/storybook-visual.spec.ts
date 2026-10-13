@@ -14,6 +14,7 @@ import { test, expect } from '@playwright/test';
 const STORIES: Array<[string, number, number]> = [
   ['canal-recall-route-setup--knowledge-review', 1280, 800],
   ['canal-recall-route-setup--mobile', 320, 568],
+  ['canal-recall-route-setup--advanced-options-questions-off-phone', 320, 568],
   ['canal-recall-route-setup--transit-briefing-phone', 320, 568],
   ['canal-recall-route-setup--live-hud', 1280, 800],
   ['canal-recall-route-setup--finish-card', 1280, 800],

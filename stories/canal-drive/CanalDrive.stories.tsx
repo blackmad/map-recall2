@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'advanced-cartoon' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
+type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'advanced-cartoon' | 'advanced-questions-off' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
   | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike' | 'finish-transit'
   | 'landmark-card' | 'landmark-card-bare' | 'landmark-card-touch' | 'landmark-panel' | 'landmark-panel-dutch'
   // Cards with no photo that arrive from data rather than Wikipedia: a named
@@ -45,7 +45,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
     // Storybook viewport addon resizes the iframe after load.
     if (win && scenario.includes('touch')) win.canalRecallForceTouch = true;
     const setupStories = new Set([
-      'default', 'bike-home', 'bike-here', 'transit', 'advanced', 'advanced-cartoon', 'knowledge',
+      'default', 'bike-home', 'bike-here', 'transit', 'advanced', 'advanced-cartoon', 'advanced-questions-off', 'knowledge',
       'touch-setup', 'touch-setup-transit', 'touch-setup-here', 'touch-knowledge',
     ]);
     if (setupStories.has(scenario)) doc.body.classList.add('storybook-setup');
@@ -73,6 +73,12 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
     }
     if (scenario === 'advanced' && overlay) overlay.store.setAdvancedOpen(true);
     if (scenario === 'advanced-cartoon' && overlay) { patchPrefs({ buildingLook: 'cartoon' }); overlay.store.setAdvancedOpen(true); }
+    // The rider's questions-per-minute setting, set to Off, with its row scrolled into view.
+    if (scenario === 'advanced-questions-off' && overlay) {
+      patchPrefs({ maxAsksPerMinute: 0 });
+      overlay.store.setAdvancedOpen(true);
+      window.setTimeout(() => doc.querySelector('[aria-label="Questions a minute"]')?.scrollIntoView({ block: 'center' }), 600);
+    }
     if ((scenario === 'knowledge' || scenario === 'touch-knowledge') && win) {
       const now = Date.now();
       const names = [
@@ -455,6 +461,11 @@ export const AdvancedOptions: Story = { args: { scenario: 'advanced' } };
 export const AdvancedOptionsCartoonLook: Story = { args: { scenario: 'advanced-cartoon' } };
 export const AdvancedOptionsCartoonLookPhone: Story = {
   args: { scenario: 'advanced-cartoon' },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
+export const AdvancedOptionsQuestionsOff: Story = { args: { scenario: 'advanced-questions-off' } };
+export const AdvancedOptionsQuestionsOffPhone: Story = {
+  args: { scenario: 'advanced-questions-off' },
   parameters: { viewport: { defaultViewport: 'mobile1' } },
 };
 export const KnowledgeReview: Story = { args: { scenario: 'knowledge' } };

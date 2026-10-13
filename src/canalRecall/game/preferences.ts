@@ -101,6 +101,16 @@ export const CAMERA_BEARING_KEY_STEP = 15;
 /** Pre-v2 default; saved `0.65` without a version flag is migrated to the new default. */
 export const LEGACY_ZOOM_DEFAULT = 0.65;
 
+/** Route questions per minute the rider can choose; 0 is off. */
+export const ASK_BUDGETS = [1, 2, 3, 0] as const;
+export type AskBudget = (typeof ASK_BUDGETS)[number];
+/** Mirrors `DEFAULT_MAX_ASKS_PER_MINUTE` in game/questionBudget.ts. */
+export const DEFAULT_ASK_BUDGET: AskBudget = 2;
+
+function parseAskBudget(value: unknown, fallback: AskBudget): AskBudget {
+  return ASK_BUDGETS.find(budget => budget === value) ?? fallback;
+}
+
 export interface DifficultyPreset {
   answerMode: AnswerMode;
   line: boolean;
@@ -136,6 +146,8 @@ export interface CanalPreferences {
   googleTiles: boolean;
   reducedMotion: boolean;
   skipMastered: boolean;
+  /** Route questions asked per minute while riding; 0 turns them off. */
+  maxAsksPerMinute: AskBudget;
   gamey: boolean;
   sound: boolean;
   zoom: number;
@@ -175,6 +187,7 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     googleTiles: false,
     reducedMotion: false,
     skipMastered: true,
+    maxAsksPerMinute: DEFAULT_ASK_BUDGET,
     gamey: true,
     sound: false,
     zoom: zoom.defaultZoom,
@@ -243,6 +256,7 @@ function fillPreferences(
     googleTiles: base.googleTiles,
     reducedMotion: parseBoolean(source.reducedMotion, base.reducedMotion),
     skipMastered: parseBoolean(source.skipMastered, base.skipMastered),
+    maxAsksPerMinute: parseAskBudget(source.maxAsksPerMinute, base.maxAsksPerMinute),
     gamey: parseBoolean(source.gamey, base.gamey),
     sound: false, // sound is permanently disabled
     zoom: parseZoom(source, zoom),
