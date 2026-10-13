@@ -36138,6 +36138,187 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T23:12:42.390Z"
+    },
+    {
+      "id": "ordinary-0363100012236840",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012236840",
+      "name": "Montessori Lyceum Amsterdam, Van Ostadestraat 103, Amsterdam (1900 school: three tall storeys of window groups between slender piers)",
+      "hash": "69a4c02beba333ab23541a1c1107c1975f194959f60e6772120f41ef84194a18",
+      "sha256": "69a4c02beba333ab23541a1c1107c1975f194959f60e6772120f41ef84194a18",
+      "bytes": 112468,
+      "triangles": 1349,
+      "materials": 7,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -12.995,
+          0,
+          -15.238
+        ],
+        "max": [
+          23.315,
+          19.959,
+          9.143
+        ]
+      },
+      "anchor": [
+        4.8924411,
+        52.3523874
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8927274,
+              52.3525255
+            ],
+            [
+              4.8923937,
+              52.3524803
+            ],
+            [
+              4.8923842,
+              52.3525069
+            ],
+            [
+              4.892285,
+              52.3524939
+            ],
+            [
+              4.8922958,
+              52.3524677
+            ],
+            [
+              4.8922676,
+              52.3524639
+            ],
+            [
+              4.8922774,
+              52.3524361
+            ],
+            [
+              4.8922498,
+              52.3524326
+            ],
+            [
+              4.8922633,
+              52.3523927
+            ],
+            [
+              4.8922913,
+              52.3523966
+            ],
+            [
+              4.8922978,
+              52.352378
+            ],
+            [
+              4.8923284,
+              52.3523819
+            ],
+            [
+              4.8923412,
+              52.3523477
+            ],
+            [
+              4.8923099,
+              52.3523438
+            ],
+            [
+              4.8923234,
+              52.352307
+            ],
+            [
+              4.8923552,
+              52.3523114
+            ],
+            [
+              4.8923573,
+              52.3523053
+            ],
+            [
+              4.8924601,
+              52.3523189
+            ],
+            [
+              4.892459,
+              52.352322
+            ],
+            [
+              4.8926075,
+              52.3523415
+            ],
+            [
+              4.8926076,
+              52.3523405
+            ],
+            [
+              4.8926493,
+              52.3523462
+            ],
+            [
+              4.8926502,
+              52.3523435
+            ],
+            [
+              4.8927524,
+              52.352357
+            ],
+            [
+              4.8927504,
+              52.3523628
+            ],
+            [
+              4.8927835,
+              52.3523676
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 19.96,
+      "height": 19.96,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-montessori-van-ostade.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012236840"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "montessori-van-ostade",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012236840/w02-168.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 3st 2b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Montessori Lyceum Amsterdam, Van Ostadestraat 103 (pand 0363100012236840, 1900, 158 LoD2.2 surfaces, roof max 20.0 m). Only the south street front has a panorama (2019-01-18 w02-168, 8.7 m away): a dark brick front of three tall storeys, each a row of window groups (two or three lights, slender white piers between) under thin stone string courses, a ground floor with a slightly lower sill, a cornice and two roof dormers. The north, east and west walls have no panorama in range and stay blank.",
+        "MODELLED: three storeys on the south panels (surfaces 13/111/112/153 and the two side panels 57/136, 97), two bays of multi-light windows per storey (windows wide), light piers and string courses, brick colour. SIMPLIFIED: the real windows are taller than the preset (about 80 % of the storey, ours 58 %); the side panels have no photo of their own and repeat the centre rhythm; the mullion detail is the plain mullion/transom grid. SKIPPED: the two roof dormers (not in the LoD2.2 roof), the MIA MAVO/HAVO sign plate and bicycle racks (temporary), the rear, side and courtyard walls (no panorama: blank)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236840",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T23:14:05.126Z"
     }
   ]
 }
