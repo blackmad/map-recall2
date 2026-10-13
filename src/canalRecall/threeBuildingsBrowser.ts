@@ -40,6 +40,7 @@ import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { PROCEDURAL_RECIPE_LAYER_OFFSET } from './streetFacadeRendering.js';
 import { buildingProjectionScale } from './buildingProjectionScale.js';
 import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererShared/litFacadeMaterial.js';
+import { HIDDEN, HIGHLIGHT_GLSL, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightDefines, highlightRecipe, mPerDegLng, DESATURATE_RADIUS_M, type HighlightFocus, type LngLat } from './look/highlight.js';
 import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
 
 type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
@@ -74,10 +75,11 @@ out vec3 vTint;
 out vec3 vAccent;
 out float vShade;
 flat out float vHighlight;
+${HIGHLIGHT_GLSL}
 void main() {
   vUv = uv; vLayer = layer; vTint = tint.rgb; vAccent = accent.rgb; vShade = tint.a;
-  // hidden: 0 drawn, 1 hidden, 2 the highlighted answer (drawn plain yellow).
-  vHighlight = hidden > 1.5 ? 1.0 : 0.0;
+  // hidden: 0 drawn, 1 hidden, 2 the highlighted answer (plain yellow, or its own look under ?highlight=a|b|c), 3 dimmed.
+  vHighlight = hlState(hidden);
   gl_Position = hidden > 0.5 && hidden < 1.5 ? vec4(2.0, 2.0, 2.0, 1.0) : projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }`;
 
@@ -97,15 +99,17 @@ in vec3 vAccent;
 in float vShade;
 flat in float vHighlight;
 out vec4 fragColor;
+${HIGHLIGHT_GLSL}
 void main() {
   // Screen-door coverage keeps depth writes correct while the city emerges from the overview.
   if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;
-  if (vHighlight > 0.5) { fragColor = vec4(vec3(1.0, 0.824, 0.122) * vShade, 1.0); return; }
+  if (HL_PAINT(vHighlight)) { fragColor = vec4(vec3(1.0, 0.824, 0.122) * vShade, 1.0); return; }
   vec3 p = vec3(vUv, vLayer);
   vec3 c = texture(cells, p).rgb;
   vec2 m = texture(masks, p).rg;
   c *= mix(vec3(1.0), vTint, m.r) * mix(vec3(1.0), vAccent, m.g);
   if (flatColour > 0.5) c = vTint;
+  c = hlDesat(c, vHighlight);
   float shade = bands > 0.5 ? floor(vShade * bands + 0.5) / bands : vShade;
   fragColor = vec4(c * shade, 1.0);
 }`;
@@ -633,14 +637,70 @@ export class ThreeBuildings {
     return JSON.stringify(this.openingsFor(key, source, configs));
   }
 
-  /** The answer building(s): drawn plain yellow in place, so MapLibre need not draw a stand-in prism. */
-  setHighlighted(ids: Iterable<string | number>): void {
+  /**
+   * The answer building(s): drawn plain yellow in place, so MapLibre need not draw a stand-in prism. Under
+   * `?highlight=a|b|c` (look/highlight.ts) they keep their look and get the style's passes; `focus` (the card's
+   * point) dims the buildings within 60 m for style c.
+   */
+  setHighlighted(ids: Iterable<string | number>, focus?: HighlightFocus | null): void {
     const next = new Set([...ids].map(String));
     const changed = new Set<string>([...next, ...this.highlighted].filter(id => next.has(id) !== this.highlighted.has(id)));
     this.highlighted = next;
+    this.highlightFocus = focus && next.size ? focus : null;
+    const dimmed = new Set<string>();
+    if (this.highlightRecipe.desaturate && this.highlightFocus) for (const entry of this.chunks.values()) for (const id of this.dimmedIn(entry)) dimmed.add(id);
+    for (const id of [...dimmed, ...this.dimmed]) if (dimmed.has(id) !== this.dimmed.has(id)) changed.add(id);
+    this.dimmed = dimmed;
     if (!changed.size) return;
-    for (const entry of this.chunks.values()) this.applyHidden(entry, changed);
+    for (const entry of this.chunks.values()) { this.applyHidden(entry, changed); this.applyPasses(entry); }
     this.map.triggerRepaint();
+  }
+
+  private readonly highlightRecipe = highlightRecipe();
+  private highlightFocus: HighlightFocus | null = null;
+  private dimmed = new Set<string>();
+
+  /** Buildings of a chunk within the desaturation radius of the focus (never the highlighted ones). */
+  private dimmedIn(entry: { source: Feature[]; mesh: any }): string[] {
+    const focus = this.highlightFocus?.lngLat;
+    if (!focus || !entry.mesh || !entry.source.length) return [];
+    const fx = (focus[0] - ORIGIN.lng) * mPerDegLng(ORIGIN.lat), fy = (focus[1] - ORIGIN.lat) * 110_540;
+    let index = this.pickIndex.get(entry);
+    if (!index) this.pickIndex.set(entry, index = buildPrismIndex(entry.source, ORIGIN));
+    return index.filter(p => !this.highlighted.has(p.id) && Math.hypot((p.minX + p.maxX) / 2 - fx, (p.minY + p.maxY) / 2 - fy) <= DESATURATE_RADIUS_M).map(p => p.id);
+  }
+
+  /** Outline / rim passes on the chunk that holds a highlighted building (merged: only `hidden == 2` draws). */
+  private applyPasses(entry: { source: Feature[]; mesh: any; ranges: Map<string, unknown> }): void {
+    if (!entry.mesh || !this.THREE) return;
+    const recipe = this.highlightRecipe;
+    const lit = (recipe.outline || recipe.rim) ? [...this.highlighted].find(id => entry.ranges.has(id) && !this.hidden.has(id)) : undefined;
+    if (!lit) { detachHighlightPasses(entry.mesh); return; }
+    let index = this.pickIndex.get(entry);
+    if (!index) this.pickIndex.set(entry, index = buildPrismIndex(entry.source, ORIGIN));
+    const p = index.find(e => e.id === lit);
+    const centre: [number, number, number] | null = p ? [(p.minX + p.maxX) / 2, (p.minY + p.maxY) / 2, (p.zMin + p.zMax) / 2] : null;
+    attachHighlightPasses(this.THREE, entry.mesh, { merged: true, centre });
+  }
+
+  /** Footprint, centroid and roof height of the highlighted buildings (for the ground ring and beacon). */
+  highlightFootprint(ids: Iterable<string | number>): HighlightFocus | null {
+    const want = new Set([...ids].map(String));
+    if (!want.size) return null;
+    const polygons: LngLat[][][] = [];
+    let heightM = 0;
+    const seen = new Set<string>();
+    for (const entry of this.chunks.values()) for (const f of entry.source) {
+      const id = String(f.properties?.id);
+      if (!want.has(id) || seen.has(id)) continue;
+      seen.add(id);
+      const g = f.geometry as { type?: string; coordinates?: any };
+      if (g?.type === 'Polygon') polygons.push(g.coordinates);
+      else if (g?.type === 'MultiPolygon') polygons.push(...g.coordinates);
+      heightM = Math.max(heightM, Number(f.properties?.height) || 0);
+    }
+    const centre = footprintCentroid(polygons);
+    return centre ? { lngLat: centre, ids: [...want], polygons, heightM: heightM || undefined } : null;
   }
 
   setHidden(reason: string, ids: Iterable<string | number>): void {
@@ -650,7 +710,7 @@ export class ThreeBuildings {
     const changed = new Set<string>([...next, ...this.hidden].filter(id => next.has(id) !== this.hidden.has(id)));
     this.hidden = next;
     if (!changed.size) return;
-    for (const entry of this.chunks.values()) this.applyHidden(entry, changed);
+    for (const entry of this.chunks.values()) { this.applyHidden(entry, changed); if ([...this.highlighted].some(id => changed.has(id))) this.applyPasses(entry); }
     this.map.triggerRepaint();
   }
 
@@ -992,7 +1052,9 @@ export class ThreeBuildings {
     this.refreshSurveyedRoofOwnership();
     mesh.userData.coarse = key.startsWith(COARSE_PREFIX);
     this.refreshDetailOwnership();
-    this.applyHidden(entry, new Set([...this.hidden, ...this.highlighted, ...this.installedDetailIds]));
+    if (this.highlightRecipe.desaturate && this.highlightFocus) for (const id of this.dimmedIn(entry)) this.dimmed.add(id);
+    this.applyHidden(entry, new Set([...this.hidden, ...this.highlighted, ...this.installedDetailIds, ...this.dimmed]));
+    this.applyPasses(entry);
     this.lastBuildMs = performance.now() - t0;
     this.map.triggerRepaint();
   }
@@ -1004,7 +1066,7 @@ export class ThreeBuildings {
     for (const id of ids) {
       const range = entry.ranges.get(id);
       if (!range) continue;
-      attribute.array.fill(this.hidden.has(id) || entry.mesh.userData.coarse && this.installedDetailIds.has(id) ? 1 : this.highlighted.has(id) ? 2 : 0, range.start, range.start + range.count);
+      attribute.array.fill(this.hidden.has(id) || entry.mesh.userData.coarse && this.installedDetailIds.has(id) ? HIDDEN.hide : this.highlighted.has(id) ? HIDDEN.highlight : this.dimmed.has(id) ? HIDDEN.dim : HIDDEN.drawn, range.start, range.start + range.count);
       touched = true;
     }
     if (touched) { attribute.needsUpdate = true; this.hiddenRevision++; }
@@ -1100,7 +1162,7 @@ export class ThreeBuildings {
       return material;
     }
     return new THREE.RawShaderMaterial({
-      glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
+      glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT, defines: highlightDefines(),
       uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: LOOK_VARIANTS[this.look].shadeBands }, flatColour: { value: LOOK_VARIANTS[this.look].flatColour ? 1 : 0 }, cityFade: { value: 1 } }, side: THREE.FrontSide,
     });
   }

@@ -20,6 +20,7 @@
 import {fullPandId} from '../bagTiles.ts';
 import type {MeshIndex, MeshTileMeta} from './schema.ts';
 import {mercatorFromTile, nearBlock, tileFrame, tileId, type TileKey} from './tiles.ts';
+import {HIDDEN, applyMeshHighlight, attachHighlightPasses, detachHighlightPasses, highlightRecipe, withinDesaturation, type HighlightFocus, type LngLat} from '../look/highlight.ts';
 
 export const RECIPE_TILES_PARAM = 'recipeTiles';
 /** `?recipeTiles=1` (or `window.__canalRecallRecipeTiles = true`). */
@@ -114,12 +115,12 @@ export interface TileBuildingsHost {
 interface UnitMesh { geometry: any; material: any; local: any; triangles: number; city: boolean }
 interface TileState {
   id: string; meta: MeshTileMeta; group: any; ready: boolean; disposed: boolean;
-  merged: {mesh: any; ranges: number[][]; verts: Map<number, Uint32Array>}[];
+  merged: {mesh: any; ranges: number[][]; verts: Map<number, Uint32Array>; where?: Map<number, {local: [number, number, number]; lngLat: LngLat}>}[];
   instanced: {unit: string; matrices: Float32Array; pands: Int32Array; meshes: any[]; stub: any}[];
   triangles: number;
 }
 
-const HIDE = 1, HIGHLIGHT = 2;
+const HIDE = HIDDEN.hide, HIGHLIGHT = HIDDEN.highlight, DIM = HIDDEN.dim;
 
 export class TileBuildings {
   readonly root: any;
@@ -130,6 +131,8 @@ export class TileBuildings {
   private unregister: (() => void) | null = null;
   private clipFromWorld: any = null;
   private highlighted = new Set<string>();
+  private focus: HighlightFocus | null = null;
+  private readonly recipe = highlightRecipe();
   private lastHidden = '';
   private pendingHidden = false;
   private lastCheck = 0;
@@ -310,27 +313,36 @@ export class TileBuildings {
   }
 
   /** Highlight (the quiz answer) by pand id: merged pands through `hidden = 2`, instances through a highlight copy. */
-  setHighlighted(ids: Iterable<string | number>): void {
+  setHighlighted(ids: Iterable<string | number>, focus?: HighlightFocus | null): void {
     this.highlighted = new Set([...ids].map(id => fullPandId(String(id))));
+    this.focus = focus && this.highlighted.size ? focus : null;
     for (const t of this.tiles.values()) if (t.ready) this.applyHighlight(t);
     this.host.repaint();
   }
 
   private applyHighlight(t: TileState): void {
-    const THREE = this.host.THREE, look = this.host.cityLook;
+    const THREE = this.host.THREE, look = this.host.cityLook, recipe = this.recipe;
     const on = (pand: number) => this.highlighted.has(fullPandId(t.meta.pands[pand])) || t.meta.covers[pand].some(id => this.highlighted.has(id));
+    const dim = (lngLat: LngLat) => recipe.desaturate && withinDesaturation(this.focus?.lngLat, lngLat);
+    const mercator = new THREE.Vector3();
+    const lngLatOf = (v: any): LngLat => { mercator.copy(v).applyMatrix4(t.group.matrix); return mercToLngLat(mercator.x, mercator.y); };
     for (const m of t.merged) {
       const attr = m.mesh.geometry.getAttribute('hidden');
-      let changed = false;
+      let changed = false, lit: [number, number, number] | null = null;
+      if (recipe.desaturate || recipe.outline || recipe.rim) m.where ??= pandPlaces(THREE, m.mesh, m.verts, lngLatOf);
       for (const [pand, verts] of m.verts) {
-        const v = on(pand) ? HIGHLIGHT : 0;
+        const where = m.where?.get(pand);
+        const v = on(pand) ? HIGHLIGHT : where && this.focus && dim(where.lngLat) ? DIM : 0;
+        if (v === HIGHLIGHT && where) lit ??= where.local;
         if (attr.array[verts[0]] === v) continue;
         for (const i of verts) attr.array[i] = v;
         changed = true;
       }
       if (changed) attr.needsUpdate = true;
+      if (lit && (recipe.outline || recipe.rim)) attachHighlightPasses(THREE, m.mesh, {merged: true, centre: lit});
+      else detachHighlightPasses(m.mesh);
     }
-    const zero = new THREE.Matrix4().makeScale(0, 0, 0), m4 = new THREE.Matrix4();
+    const zero = new THREE.Matrix4().makeScale(0, 0, 0), m4 = new THREE.Matrix4(), at = new THREE.Vector3();
     for (const inst of t.instanced) for (const mesh of inst.meshes) {
       for (const h of mesh.userData.highlights ?? []) mesh.parent?.remove(h);
       mesh.userData.highlights = [];
@@ -338,9 +350,13 @@ export class TileBuildings {
       for (let i = 0; i < inst.pands.length; i++) {
         // The true matrix: saved while the instance is collapsed for its highlight copy.
         if (saved.has(i)) m4.copy(saved.get(i)); else mesh.getMatrixAt(i, m4);
-        if (on(inst.pands[i])) {
-          const copy = new THREE.Mesh(mesh.geometry, mesh.material?.userData?.cityVariant ? look.highlighted(mesh.material, true) : highlightMaterial(THREE, mesh.material));
-          copy.matrixAutoUpdate = false; copy.matrix.copy(m4); copy.name = 'recipe-tile/highlight';
+        const state = on(inst.pands[i]) ? 'highlight' : this.focus && recipe.desaturate && dim(lngLatOf(at.setFromMatrixPosition(m4))) ? 'dim' : 'plain';
+        if (state !== 'plain') {
+          const city = mesh.material?.userData?.cityVariant;
+          const material = recipe.keepMaterials || state === 'dim' ? mesh.material : city ? look.highlighted(mesh.material, true) : highlightMaterial(THREE, mesh.material);
+          const copy = new THREE.Mesh(mesh.geometry, material);
+          copy.matrixAutoUpdate = false; copy.matrix.copy(m4); copy.name = `recipe-tile/${state}`;
+          if (recipe.keepMaterials) applyMeshHighlight(THREE, copy, state, {cityVariant: (mat, s) => s === 'dim' ? look.dimmed(mat, true) : mat});
           mesh.parent.add(copy); mesh.userData.highlights.push(copy);
           saved.set(i, m4.clone());
           mesh.setMatrixAt(i, zero);
@@ -392,6 +408,18 @@ export class TileBuildings {
     this.host.setReplacedSpecs?.(new Set());
     this.unregister?.();
   }
+}
+
+/** Each pand's vertex centroid: in the mesh's space (the outline's centre) and on the map (style c's distance). */
+function pandPlaces(THREE: any, mesh: any, verts: Map<number, Uint32Array>, lngLatOf: (v: any) => LngLat): Map<number, {local: [number, number, number]; lngLat: LngLat}> {
+  const out = new Map<number, {local: [number, number, number]; lngLat: LngLat}>(), pos = mesh.geometry.getAttribute('position'), v = new THREE.Vector3();
+  for (const [pand, list] of verts) {
+    let x = 0, y = 0, z = 0;
+    for (const i of list) { x += pos.getX(i); y += pos.getY(i); z += pos.getZ(i); }
+    const n = Math.max(1, list.length), local: [number, number, number] = [x / n, y / n, z / n];
+    out.set(pand, {local, lngLat: lngLatOf(v.set(...local).applyMatrix4(mesh.matrix))});
+  }
+  return out;
 }
 
 function mercToLngLat(x: number, y: number): [number, number] {

@@ -190,6 +190,8 @@ class VectorBasemap {
       this._styleLandmarks();
       this._raisePoiLayers();
       this._ensureSharedFrame();
+      const hl = window.CanalRecallThree; // `?highlight=a|b|c`: ground ring / beacon (src/canalRecall/look/highlightMarker.ts)
+      if (hl && hl.HighlightMarker && hl.highlightStyle() !== 'yellow') this._highlightMarker = new hl.HighlightMarker(hl.THREE, this.map, { sharedFrame: this._sharedFrame, heightAt: p => (this._ownGround && this._ownGround.ready ? this._ownGround.heightAt(p) : 0) });
       if (window.CanalRecallDetailed3D && window.CanalRecallDetailed3D.DetailedBuildings) {
         this._detailedBuildings = new window.CanalRecallDetailed3D.DetailedBuildings(this.map, maplibregl, () => {
           this._syncDetailedBuildingLayers();
@@ -2519,8 +2521,9 @@ class VectorBasemap {
       threeHighlight = boatId ? [boatId] : this._highlightedBuildings.map(target => target.id);
       kitAnswerIds = new Set(this._highlightedBuildings.map(target => String(target.id)));
     }
-    if (this._threeBuildings) this._threeBuildings.setHighlighted(threeHighlight);
-    this._tileBuildings?.setHighlighted(threeHighlight);
+    const focus = landmark && landmark.lngLat ? { lngLat: landmark.lngLat, ids: threeHighlight.map(String) } : null;
+    if (this._threeBuildings) this._threeBuildings.setHighlighted(threeHighlight, focus);
+    this._tileBuildings?.setHighlighted(threeHighlight, focus);
     this._setKitAnswerIds(kitAnswerIds);
     // Never fabricate an extrusion from an OSM footprint. If no renderer can
     // identify the actual building, a point acknowledges the selection without
@@ -2540,6 +2543,7 @@ class VectorBasemap {
       ? [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: landmark.lngLat } }]
       : [];
     source.setData({ type: 'FeatureCollection', features: point });
+    this._highlightMarker?.set((threeHighlight.length || modelLit) && focus ? (this._threeBuildings?.highlightFootprint?.(threeHighlight) || focus) : null);
   }
 
   /** Landmark-kit prisms stay drawn for the answer building. Only a change

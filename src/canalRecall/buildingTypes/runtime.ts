@@ -1,3 +1,5 @@
+import {HIGHLIGHT_RECIPES, attachHighlightPasses, highlightMaterialFor, highlightStyle, withinDesaturation, type HighlightFocus} from '../look/highlight.ts';
+import {getCityLook} from '../look/cityLook.ts';
 /**
  * Building types at runtime (`?buildingTypes=1`, default off): one shared unit mesh per design, drawn with
  * THREE.InstancedMesh, placed from `public/canal-drive/building-types/instances.json`.
@@ -223,7 +225,11 @@ varying vec3 vTint;
 void main() {
   vec3 c;
   ${pick}
-  gl_FragColor = vec4(c * vTint * vShade, 1.0);
+  c *= vTint;
+#ifdef HL_DIM_ALL
+  c = mix(c, vec3(dot(c, vec3(0.2126, 0.7152, 0.0722))), 0.4);
+#endif
+  gl_FragColor = vec4(c * vShade, 1.0);
 }`,
   };
 }
@@ -252,6 +258,12 @@ export interface BuildingTypesArea {
   update(force?: boolean): void;
   /** Pand id under a raycast hit on one of the area's meshes (instance index -> pand). */
   pandForHit(object: any, instanceId: number | undefined): string | null;
+  /**
+   * The answer building(s) by BAG pand id (`NL.IMBAG.Pand.…` or bare): highlighted per the page's style
+   * (look/highlight.ts), as a one-instance copy while its instance is collapsed; style c also dims the instances
+   * within 60 m of `focus`. Returns how many instances are highlighted.
+   */
+  setHighlighted(ids: Iterable<string | number>, focus?: HighlightFocus | null): number;
   stats(): {instances: number; near: number; far: number; culled: number; units: number; drawCalls: number; nearTriangles: number; farTriangles: number};
   dispose(): void;
 }
@@ -394,7 +406,10 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
   }
 
   let partition: Partition | undefined, lastAt: {x: number; z: number} | null = null;
-  const tmp = new THREE.Matrix4();
+  const tmp = new THREE.Matrix4(), zero = new THREE.Matrix4().makeScale(0, 0, 0);
+  // Highlighted / dimmed instances: collapsed in their layers and drawn by a one-instance copy per layer.
+  const special = new Map<number, 'highlight' | 'dim'>();
+  let copies: {global: number; layer: Layer; mesh: any}[] = [];
   let counts = {near: 0, far: 0, culled: 0};
   const apply = (p: Partition) => {
     partition = p;
@@ -402,7 +417,7 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
     let drawn = 0;
     for (const layer of layers) {
       const wanted = layer.indices.map((global, k) => ({global, k})).filter(({global}) => (layer.far ? farSet : nearSet).has(global));
-      wanted.forEach(({global}, slot) => { tmp.multiplyMatrices(matrices[global], layer.local); layer.mesh.setMatrixAt(slot, tmp); });
+      wanted.forEach(({global}, slot) => { tmp.multiplyMatrices(matrices[global], layer.local); layer.mesh.setMatrixAt(slot, special.has(global) ? zero : tmp); });
       layer.mesh.userData.slotToGlobal = wanted.map(w => w.global);
       layer.mesh.count = wanted.length;
       layer.mesh.instanceMatrix.needsUpdate = true;
@@ -410,6 +425,7 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
       if (wanted.length) { layer.mesh.computeBoundingSphere(); layer.mesh.computeBoundingBox(); drawn++; }
     }
     counts = {near: p.near.length, far: p.far.length, culled: p.culled};
+    for (const c of copies) c.mesh.visible = (c.layer.far ? farSet : nearSet).has(c.global);
     void drawn;
   };
   const update = (force = false) => {
@@ -432,6 +448,35 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
 
   return {
     anchor: origin, group, suppress: suppressionIds(instances), radiusMetres, update,
+    setHighlighted(ids, focus) {
+      const style = highlightStyle(), recipe = HIGHLIGHT_RECIPES[style];
+      const want = new Set([...ids].map(id => String(id).replace(/^NL\.IMBAG\.Pand\./, '')));
+      for (const c of copies) { group.remove(c.mesh); c.mesh.dispose?.(); }
+      copies = [];
+      special.clear();
+      instances.forEach((inst, g) => {
+        if (want.has(inst.pand)) special.set(g, 'highlight');
+        else if (recipe.desaturate && focus && withinDesaturation(focus.lngLat, inst.anchor)) special.set(g, 'dim');
+      });
+      const city = getCityLook(THREE);
+      for (const [global, state] of special) for (const layer of layers) {
+        if (!layer.indices.includes(global)) continue;
+        const base = layer.mesh.material;
+        const material = state === 'highlight'
+          ? (recipe.keepMaterials ? base : isCity(base) ? city.highlighted(base, true) : highlightMaterialFor(THREE, base, 'highlight', style))
+          : isCity(base) ? city.dimmed(base, true) : highlightMaterialFor(THREE, base, 'dim', style);
+        const mesh = new THREE.InstancedMesh(layer.mesh.geometry, material, 1);
+        mesh.setMatrixAt(0, tmp.multiplyMatrices(matrices[global], layer.local));
+        mesh.name = `${layer.mesh.name}/${state}`;
+        mesh.userData.slotToGlobal = [global];
+        mesh.computeBoundingSphere(); mesh.computeBoundingBox();
+        if (state === 'highlight') attachHighlightPasses(THREE, mesh, {style});
+        group.add(mesh);
+        copies.push({global, layer, mesh});
+      }
+      if (partition) apply(partition);
+      return [...special.values()].filter(s => s === 'highlight').length;
+    },
     pandForHit(object, instanceId) {
       const map = object?.userData?.slotToGlobal as number[] | undefined;
       return instanceId === undefined || !map ? null : instances[map[instanceId]]?.pand ?? null;
@@ -443,6 +488,7 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
       return {instances: instances.length, ...counts, units: byUnit.size, drawCalls, nearTriangles, farTriangles};
     },
     dispose() {
+      for (const c of copies) c.mesh.dispose?.();
       for (const l of layers) l.mesh.dispose?.();
       for (const g of geometries) g.dispose();
       for (const m of merged.values()) m.dispose();
