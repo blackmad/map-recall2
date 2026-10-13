@@ -32,10 +32,12 @@ export interface GeometryAuditThresholds {
   weld: number;
   /** An opening part closer than this (m) to the wall/host geometry touches it. */
   touchTol: number;
-  /** Gap (m) beyond which an opening assembly floats off its wall, and distance within which stacked parts form one assembly. 10 cm: window sheets
+  /** Gap (m) beyond which an opening assembly floats off its wall, 10 cm: window sheets
    *  stand 4.5 cm (frame), 9 cm (glass) and 13.5 cm (bars) proud of an unholed wall on purpose (z-fight clearance, `zTightTol`), so a frame or a
    *  lone pane resting there is mounted, not detached. */
   floatTol: number;
+  /** Distance (m) within which opening parts join into one assembly: just over the 4.5 cm layer pitch (touchTol is 3 cm). */
+  joinTol: number;
   /** Floating gap (m) beyond which a detached opening is a hard problem (visible shadow line / halo). */
   floatFail: number;
   /** Fraction of an opening's face projected outside its wall's silhouette that counts as overhanging. */
@@ -70,7 +72,7 @@ export interface GeometryAuditThresholds {
 }
 
 export const GEOMETRY_THRESHOLDS: GeometryAuditThresholds = {
-  weld: 0.001, touchTol: 0.03, floatTol: 0.10, floatFail: 0.1, overhangWarn: 0.12, overhangFail: 0.35, balconyMax: 2, buriedWarn: 0.3,
+  weld: 0.001, touchTol: 0.03, floatTol: 0.03, joinTol: 0.03, floatFail: 0.1, overhangWarn: 0.12, overhangFail: 0.35, balconyMax: 2, buriedWarn: 0.3,
   maxOpeningDiag: 14, glazedSkinArea: 24, zPlaneTol: 0.02, zAbut: 0.005, zNearTol: 0.08, zAngleTol: 2.5, zMinPatch: 0.05, zNewExportFail: 0.5, zTightTol: 0.03, zWarnArea: 0.25, zFailArea: 2,
 };
 
@@ -391,7 +393,7 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
   // Assemblies: opening parts whose boxes touch (pane in frame, sill under frame, tracery bars in an arch).
   const pp = openingParts.map((_, i) => i);
   const findA = (a: number): number => { while (pp[a] !== a) { pp[a] = pp[pp[a]]; a = pp[a]; } return a; };
-  const tol = th.floatTol; // parts stacked 4.5-5 cm apart (frame, glass, bars: z-fight clearance) still form one assembly
+  const tol = th.joinTol; // parts stacked 4.5 cm apart (frame, glass, bars: z-fight clearance) still form one assembly
   const order = openingParts.map((p, i) => i).sort((a, b) => openingParts[a].min[0] - openingParts[b].min[0]);
   for (let ii = 0; ii < order.length; ii++) {
     const A = openingParts[order[ii]];
