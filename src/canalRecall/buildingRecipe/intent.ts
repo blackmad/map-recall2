@@ -9,6 +9,7 @@
  * compiler builds geometry.
  */
 import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
+import type {ArchKind} from '../blockBuilding/arch.ts';
 
 export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat'] as const;
 export type GableIntent = typeof GABLES[number];
@@ -352,6 +353,20 @@ export interface LargeWallIntent {
   police?: {stripe?: boolean; lamp?: boolean};
   /** Group colours when they differ from the house palette (`brick` = this group's wall). */
   palette?: Partial<Pick<PaletteIntent, 'brick' | 'frame' | 'stone'>>;
+  /**
+   * Arched heads: on the upper-storey windows, on the ground openings (with `ground: "portals"` or a windowed ground),
+   * and the band around each head: `brick` (a rowlock arch in the wall brick with stone imposts, default), `stone`,
+   * `voussoir` (stone with imposts and a keystone) or `none`.
+   */
+  arches?: {windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'none'};
+  /** Loading-door axis (warehouses): every `every`-th bay from bay `first` (default 0), or the listed `bays` of the widest panel, is a tall door opening on every upper storey and a wide portal on the ground. */
+  hoist?: {every?: number; first?: number; bays?: number[]; arch?: ArchKind};
+  /** false = no projecting stone sills under the punched windows (brick sills, flush heads). */
+  sills?: boolean;
+  /** false = no frame ring round the glass (dark frames that read as glass); glazing bars stay. */
+  frames?: boolean;
+  /** Name boards (white plates, lettered) over the ground portals of the hoist bays on the widest panel, left to right; "" leaves a hoist bay without a board. */
+  nameBoards?: string[];
 }
 
 export interface LargeBuildingIntent {
@@ -366,6 +381,8 @@ export interface LargeBuildingIntent {
   roofPlant?: boolean;
   roof?: {material: typeof ROOF_MATERIALS[number]};
   palette: PaletteIntent;
+  /** Close string courses, cornices and fascias (back face and end caps): for walls whose 3DBAG faces stand a few cm out of one plane (opt-in; earlier recipes stay byte-identical). */
+  closedBands?: boolean;
   notes?: string[];
 }
 

@@ -1,0 +1,70 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "overtoom-283-084999",
+ "pandId": "0363100012084999",
+ "address": "Overtoom 283, Amsterdam: Reade, rehabilitation and rheumatology centre (OSM way 152508198), BAG 1992",
+ "sources": [
+  {
+   "id": "pano-2023-01-10-overtoom",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002921_pano_0006_000316/",
+   "image": "staging/pand-reference-walls/0363100012084999/w02-340.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-31-corner",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-31",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-31_06-59-14_01566/",
+   "image": "staging/pand-reference-walls/0363100012084999/w05-340.thumb.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2023-01-10-west-oblique",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002921_pano_0007_000290/",
+   "image": "staging/pand-reference-walls/0363100012084999/w03-250.oblique.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [107, 234],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 16,
+   "windows": "cross",
+   "sills": false,
+   "blankStoreys": [3, 4],
+   "signage": {"text": "Reade", "colour": "#2d5aa0", "mount": "wall"}
+  },
+  {
+   "wallSurfaces": [87, 169, 280],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 8,
+   "windows": "cross",
+   "sills": false
+  },
+  {
+   "wallSurfaces": [1, 2, 22],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 13,
+   "windows": "transom",
+   "sills": false,
+   "blankStoreys": [5]
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {"material": "bitumen"},
+ "palette": {"brick": "#e4dcc2", "frame": "#f2f1ec", "door": "#2a2a2a", "stone": "#9c7a7e", "wallMaterial": "stucco"},
+ "notes": [
+  "Reade (rehabilitation and rheumatology; OSM way 152508198, building=hospital, ref:bag 0363100012084999), Overtoom 283. Cream render (stucco), white window frames with top lights, mauve-pink plinth and vertical strips between window pairs, a dark blue-grey roof pavilion, a glazed stair tower at the north-east end, a curved glass penthouse with railings and flagpoles over the rounded corner.",
+  "walls[0] (Overtoom front, panel 96) from the 2023-01-10 panorama, rectified: three window rows over a 1 m plinth on a 16-bay grid, the raised left part blank above (blankStoreys 3 and 4), READE in blue between the first and second rows (the photo continues 'revalidatie | reumatologie' further right; the kit letters A-Z only, so only the name is drawn, centred instead of left of centre). walls[1] (rounded corner, panel 79) from the 2025-07-31 panorama: three rows, 8 bays; 3DBAG gives the curve as straight facets. walls[2] (west side along the passage and the north-west corner block, panels 0 and 19) from an aimed thumbnail of the 2023-01-10 panorama 30 m away (the side has no panorama within 35 m): five rows of windows with top lights, the pavilion level blank.",
+  "Not modelled (the photos show them): the mauve plinth and pier strips; the glazed stair tower (north-east end) and the curved glass penthouse with its railings over the rounded corner; three flagpoles; the red LED temperature display beside the corner sign; the second READE sign on the rounded corner; the 'revalidatie | reumatologie' lettering; the low rendered boundary wall in front; the east and courtyard walls (no panorama) are blank."
+ ]
+}

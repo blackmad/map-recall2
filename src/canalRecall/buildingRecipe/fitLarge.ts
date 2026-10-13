@@ -34,6 +34,9 @@ export interface LargeGroupFit {
   garage: {panel: number; bays: number[]} | null;
   signage: {text: string; colour: string; mount: 'fascia' | 'wall' | 'glazing' | 'canopy'} | null;
   police: {stripe: boolean; lamp: boolean} | null;
+  /** loading-door axis (bay % every === first) and the name boards over its ground portals on the main panel */
+  hoist?: {every: number; first: number} | {bays: number[]};
+  nameBoards?: string[];
   slots: {wall: string; frame: string; stone: string; glass: string; door: string; curtain: string; sign: string};
 }
 export interface LargeBuildingRecipe {
@@ -55,6 +58,8 @@ export interface LargeFitReport {
 }
 
 const r3 = (v: number) => Math.round(v * 1000) / 1000;
+/** #rrggbb scaled by k (k < 1 darker). */
+const shade = (hex: string, k: number) => '#' + [1, 3, 5].map(i => Math.round(Math.min(255, parseInt(hex.slice(i, i + 2), 16) * k)).toString(16).padStart(2, '0')).join('');
 export const bearingOfNormal = (n: number[]) => (Math.atan2(n[0], -n[2]) * 180 / Math.PI + 360) % 360;
 
 /** 3DBAG facts → block-kit surface set in local metres around the BAG footprint centroid. */
@@ -169,6 +174,7 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
     wall: swatch(pal.brick), frame: swatch(pal.frame), door: swatch(pal.door), stone: swatch(pal.stone ?? 'sandstone'), glass: '#2a3a42',
     roof: '#555555', 'police-blue': '#1d3f8f', 'police-white': '#eeeeea', plant: '#8d8c88', sign: swatch(pal.frame),
   };
+  if (intent.walls.some(w => w.nameBoards?.length)) Object.assign(palette, {board: '#ecebe4', 'board-text': '#1c1c1c'});
   const aligned = new Map<number, ReturnType<typeof storeyLines>>();
   intent.walls.forEach((w: LargeWallIntent, gi) => {
     const own = panels.filter(p => panelGroup[p.index] === gi);
@@ -178,6 +184,9 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
     if (w.palette?.frame) { slots.frame = `frame@g${gi}`; palette[slots.frame] = swatch(w.palette.frame); }
     if (w.palette?.stone) { slots.stone = `stone@g${gi}`; palette[slots.stone] = swatch(w.palette.stone); }
     palette[slots.curtain] = palette[slots.frame];
+    // Flush brick arch bands (arches / hoist): a shade darker than the group's brick.
+    const arch = (w.arches || w.hoist) && (w.arches?.band ?? 'brick') === 'brick' ? `arch@g${gi}` : undefined;
+    if (arch) palette[arch] = shade(palette[slots.wall], 0.82);
     const sign = w.signage === undefined ? null : typeof w.signage === 'string' ? {text: w.signage, colour: undefined, mount: undefined} : w.signage;
     palette[slots.sign] = swatch(sign?.colour ?? (w.police ? '#1d3f8f' : pal.frame));
     // Widest panel that reaches the ground carries the entrance, garage doors and the bay count.
@@ -205,10 +214,12 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
       garage = {panel: main.index, bays: list.sort((a, b) => a - b)};
     }
     const specSystem = SYSTEM_SLOT(gi);
-    systems[specSystem] = largeSystem(w.system, {pitchM, lines: st.lines, ground, windows: w.windows, stringCourses: w.stringCourses, piers: w.piers, balconyStoreys: w.balconies?.storeys, balconyRail: w.balconies?.rail, blankStoreys: w.blankStoreys, slots});
+    systems[specSystem] = largeSystem(w.system, {pitchM, lines: st.lines, ground, windows: w.windows, stringCourses: w.stringCourses, piers: w.piers, balconyStoreys: w.balconies?.storeys, balconyRail: w.balconies?.rail, blankStoreys: w.blankStoreys, slots: {...slots, ...(arch ? {arch} : {})},
+      ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {})});
     groups.push({index: gi, system: w.system, specSystem, panels: own.map(p => p.index), surfaces: [...w.wallSurfaces], mainPanel: main?.index ?? null, bearingDeg: main ? Math.round(bearingOfNormal(main.n)) : null,
       widthM: r3(widthM), eavesM: r3(eaves), flatTop, storeys: st.storeys, storeyHeightsM: st.heights, lines: st.lines, bays, pitchM: r3(pitchM), ground, cornice: !!w.cornice,
-      entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null, slots});
+      entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
+      ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), slots});
   });
   // Unlisted walls: one system at the civic storey height and the system's default pitch.
   const otherName = intent.otherWalls ?? 'blank', otherTop = Math.max(0, ...panels.map(p => p.vMax));
