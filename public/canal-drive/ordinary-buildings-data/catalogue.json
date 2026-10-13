@@ -38069,6 +38069,146 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T23:05:25.512Z"
+    },
+    {
+      "id": "ordinary-0363100012186093",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012186093",
+      "name": "Plantage Middenlaan 52, Amsterdam (Plantage, former Artis-side block): 2022 courtyard housing block of 294 homes, brick piers with stone balcony slabs and a zinc mansard",
+      "hash": "220ae7c6b84b7c70831414ffa8b8551bdd4a50532741dd69e1502038c95ae3ba",
+      "sha256": "220ae7c6b84b7c70831414ffa8b8551bdd4a50532741dd69e1502038c95ae3ba",
+      "bytes": 768004,
+      "triangles": 10533,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -64.61,
+          -9.032,
+          -54.986
+        ],
+        "max": [
+          75.266,
+          24.319,
+          78.76
+        ]
+      },
+      "anchor": [
+        4.9144378,
+        52.364941
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9134945,
+              52.364712
+            ],
+            [
+              4.9136788,
+              52.3646489
+            ],
+            [
+              4.9139982,
+              52.364539
+            ],
+            [
+              4.9143809,
+              52.3644079
+            ],
+            [
+              4.9148846,
+              52.3642349
+            ],
+            [
+              4.9155407,
+              52.3649513
+            ],
+            [
+              4.9149897,
+              52.3651403
+            ],
+            [
+              4.9149555,
+              52.3651522
+            ],
+            [
+              4.9147942,
+              52.3652073
+            ],
+            [
+              4.9147711,
+              52.3652155
+            ],
+            [
+              4.9147018,
+              52.3652393
+            ],
+            [
+              4.9141506,
+              52.3654286
+            ],
+            [
+              4.9140496,
+              52.3653179
+            ],
+            [
+              4.9137392,
+              52.3649793
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 24.32,
+      "height": 24.32,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-plantage-middenlaan-52-186093.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012186093"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "plantage-middenlaan-52-186093",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012186093/w02-30.jpg",
+          "staging/pand-reference-walls/0363100012186093/w03-30.jpg",
+          "staging/pand-reference-walls/0363100012186093/w04-300.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 6st 15b",
+          "brick-bay-grid 6st 11b",
+          "brick-bay-grid 6st 13b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Simplified: the moulded stone slab edges are plain balcony slabs, the cantilevered stone balcony slabs are not drawn (balconies stacked 21k triangles and left 20 m2 of frame/glass z-fight at the 12k budget), the stone belt course over the ground floor is not drawn (the kit only offers a course on every storey line, which reads as a grid), the ground-floor double doors and recessed loggias are plain ground windows, the dormers are the 3DBAG roof geometry. Not modelled: the south-west and south-east walls and the inner courtyard walls other than panel 98 (no current photograph)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012186093",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T23:09:40.061Z"
     }
   ]
 }
