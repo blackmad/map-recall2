@@ -468,11 +468,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   (localStorage) — sync them with the signed-in recall store. The review
   repeat is now pinned with a real due backlog (2026-10-10); a fresh device
   no longer converges, but cross-device memory would still help.
-- **Failing e2e on main**: `review-ride.spec.ts` "a due street off every
-  landmark line is ridden as a via" (Avenhornstraat) fails on main before the
-  2026-10-10 home-picker change; on 2026-10-13 the seeded origin was Fo Guang
-  Shan He Hua Tempel → Kazerne Zebra, again `dueOnPath: []`, detour 0, no via,
-  so the origin varies between runs. Investigate the via/stop planner.
+- **Gameplay follow-ups left open (2026-10-13 lane)**: no road-graph unit
+  case for the coincident-node hop (the pinned `review-ride` e2e is the only
+  regression); on the 414×896 finish card the title truncates ("Vondelpark
+  Open Air...") and the Feedback widget overlaps the card near "Share this
+  route"; the questions-a-minute setting has no bottom-HUD check row (Off
+  shows no band, which existing rows cover).
 - **Renderer: give three.js the frame** (`docs/research/own-renderer-spike-20261009.md`,
   `renderer-spike.html`): spike shows lighting is the visible gap — shadows,
   sky, fog, tone mapping, sunken water — at ~2.6 ms CPU per throttled phone

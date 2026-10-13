@@ -115,8 +115,28 @@ out and, through the one-card rule, blocked every card until the next question.
   landscape, with postcard). `tests/e2e/riding-pacing.spec.ts` rides the seeded
   route and asserts the budget and zero frozen seconds.
 - Spaced repetition itself and the review-ride planner live outside
-  `game/`; see TODO for the open `review-ride` regression
-  (`tests/e2e/review-ride.spec.ts`, due street off every landmark line).
+  `game/`. `tests/e2e/review-ride.spec.ts` (seeded origin, mulberry32) pins
+  that a due street off every landmark line is ridden as a via: the planner
+  offers the chosen pair again with each grazed due name as a via
+  (`REVIEW_MISSED_VIA_TRIES = 2`), and `roadGraph.ts` counts consecutive
+  equal positions once so a bridge ramp meeting its deck is not a turn-back.
+- **Exposure** (`recallExposure.ts`): a `passed` name is parked by
+  `RecallStore.expose()` for 30 minutes, doubling per repeat up to a day. No
+  review event, no change to repetitions, lapses or ease; known names keep
+  their schedule. A parked name counts as "answered near here recently", so
+  the same ride does not ask it straight away; after the interval it is an
+  ordinary unlearned name. `buildKnowledgeReview` skips exposure-only states.
+- **Setting**: "Questions a minute" (1 / 2 / 3 / Off, default 2) in the ride
+  options and the live settings panel, persisted as `maxAsksPerMinute`;
+  `_askBudgetPerMinute()` reads it, an explicit `game.maxAsksPerMinute` still
+  wins as a test hook.
+- The riding-prompt CSS lives in `ridingPromptStyles.ts` and is pasted into
+  `index.html` as `<style id="canal-riding-prompt-styles">`;
+  `ridingPromptStyles.test.ts` fails if the pasted block drifts, and the
+  runtime injects the rules only while the block is absent.
+- On a ferry `_updateQuizOnFerry` keeps the feedback timeout and an open
+  riding prompt ticking, so a prompt opened at boarding expires at 12 s with
+  its name hidden instead of hanging until the ferry ends.
 
 ## Open questions
 

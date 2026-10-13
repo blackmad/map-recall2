@@ -314,6 +314,7 @@
   // src/canalRecall/game/preferences.ts
   var PREFERENCES_STORAGE_KEY = "canalRecall.preferences.v1";
   var ZOOM_DEFAULT_VERSION = 4;
+  var DEFAULT_ASK_BUDGET = 2;
   var DIFFICULTY_PRESETS = {
     easy: { answerMode: "multiple", line: true, arrow: true, minimap: true },
     medium: { answerMode: "multiple", line: false, arrow: true, minimap: true },
@@ -338,6 +339,7 @@
       googleTiles: false,
       reducedMotion: false,
       skipMastered: true,
+      maxAsksPerMinute: DEFAULT_ASK_BUDGET,
       gamey: true,
       sound: false,
       zoom: zoom.defaultZoom,
@@ -41012,6 +41014,19 @@ Learned names, exploration collection, personal bests, route settings and the ho
       ctx.restore();
     }
     // ---- The route question ----
+    /**
+     * The part of the question loop that must run on every racing frame, ferry
+     * or not. `game.js` skips `_updateCanalQuiz` while the rider is aboard an IJ
+     * ferry (nothing new may be asked mid-crossing), which also stopped the
+     * clocks of a question opened just before boarding: its 12 s never counted,
+     * and the "Passed" reveal waited for the ferry to end. A ferry frame now
+     * ticks only what is already open.
+     */
+    _updateQuizOnFerry(dt) {
+      if (!this.player) return;
+      this._tickFeedbackTimeout();
+      if (this.quizPromptName && this._ridingState) this._updateRidingPrompt(dt);
+    }
     _updateCanalQuiz(dt) {
       if (!this.player) return;
       this._tickFeedbackTimeout();
@@ -41504,6 +41519,13 @@ Learned names, exploration collection, personal bests, route settings and the ho
         transit: isTransit(this.travelMode) || choicesAreLines
       });
     }
+    /** Route questions per minute: an explicit `game.maxAsksPerMinute` (tests,
+     *  experiments) wins, then the rider's setting, then the default. */
+    _askBudgetPerMinute() {
+      if (typeof this.maxAsksPerMinute === "number") return this.maxAsksPerMinute;
+      const prefs = (this._overlay ?? window.CanalRecallOverlay?.getOverlay?.())?.store.getState().prefs;
+      return prefs?.maxAsksPerMinute;
+    }
     /** Classify the name under the vehicle for the question budget. */
     _budgetForRouteName(name) {
       const key = this._normaliseCanalName(name);
@@ -41516,7 +41538,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         teachingStreet: onRoute
       };
       return decideQuestion(this._questionBudget || EMPTY_BUDGET, event, this.raceTime, {
-        maxAsksPerMinute: this.maxAsksPerMinute
+        maxAsksPerMinute: this._askBudgetPerMinute()
       });
     }
     /** A new name the budget will not ask about: keep it hidden while the rider
