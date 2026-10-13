@@ -1,5 +1,35 @@
 # Canal Recall — what is built
 
+## One world-fixed sun and the mood pass (2026-10-13)
+
+User: "sun should be fixed, and the city is dour". Cause of the moving sun
+(`look/sun-and-mood-20261013`, Opus): the legacy three.js layers fold the
+model placement into the camera, so their lights lived in model space. The
+bike's key light turned with the heading (world azimuth 64/208/244/277° at
+headings 314/44/134/224°, and it sat below the model), every legacy
+landmark's key turned with its placement rotation (9–339° across 71 models
+at the Dam), and the streamed city's baked shade came from the north-west
+while the shared rig and MapLibre lit from the south-south-west.
+`lightRig.ts` now exports `SUN_DIRECTION` (215°/40°), the bake
+(`bakedWallShade`, `bakedFaceShade`, `BAKED_SHADE_GLSL`),
+`enuDirectionInLocal` and `mapLibreSunPosition`; vehicles, landmarks, trees,
+ARTIS animals, the baked city shade and MapLibre's light all re-aim from
+them. `tests/e2e/sun-heading.spec.ts` rides four headings beside a
+free-standing Nieuw-West slab: each wall seen from two headings within 10 %,
+the sun-facing wall brighter, the bike's lit half on the sun's side.
+
+Mood: rig sun `#ffe9cc` 2.15, sky `#e3ebf6` over `#998a72`; baked wall
+shade 0.84–1.0 (was 0.8); parity under the rig for mid-grey brick, sun side
+102–109, shade 70–75 (LOOK bands 95–110 / 65–75). Flat roofs are three
+kinds (`FLAT_ROOF_TONES`: gravel `#9e9281`, membrane `#c3c1bb`, bitumen
+`#56585e`) instead of four greys. Own ground (`GROUND_TONES`): lighter warm
+pavers, water `#46707c`; the drawn street surfaces keep the roads lane's
+`STREET_GROUND` vocabulary and the water stays matte (roughness 0.65, no sun
+disc). Foliage: yellow-greens +8° hue, +10 % saturation. Measured in
+`tests/e2e/mood-shots.spec.ts` (seven spots, sun and shade sides, luma and
+saturation of buildings vs the rest; `artifacts/mood/table.md` in the lane).
+
+
 ## Six lanes merged: highlight candidates, roofs and sheds, HUD tuck, POI labels, route-line bounce, GLB cleanup batch 3 (2026-10-13)
 
 **Highlight** (`look/highlight-redesign-20261013`, Opus): three candidates

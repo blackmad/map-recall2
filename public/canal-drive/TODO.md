@@ -1140,6 +1140,10 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+- **`check-manual-landmarks` fails on `homomonument`** ("exact replacement,
+  bounded host opening or native standalone landscape required"), already on
+  main before the 2026-10-13 merges (94e7780f). The check is not in
+  `check:canal`; fix the spec (or the gate) and add the check to the gate.
 - **Stipple on zoom out (user 2026-10-13, aerial over the Singelgracht)**: at
   camera heights of a few hundred metres every generic facade and roof shows
   a field of white dots — the window cells of the bay texture minifying

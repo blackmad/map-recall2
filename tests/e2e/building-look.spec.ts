@@ -141,7 +141,7 @@ test('city look: the highlight keeps the shading (sun side brighter than shade s
   console.log(JSON.stringify(summary, null, 1));
   expect(ratio('city-landmark-highlight')).toBeGreaterThanOrEqual(ratio('landmark-highlight'));
   expect(ratio('city-landmark-highlight')).toBeGreaterThan(1.25);
-  // Unlit: the city's baked light comes from the north-west, so the brightest and darkest faces are not south/north.
+  // Unlit: the city's baked light (the rig's sun azimuth, lightRig.ts) still separates the faces.
   const unlit = ['south', 'west', 'north'].map(f => result.walls[`city-landmark-highlight-unlit/${f}`]);
   expect(Math.max(...unlit) / Math.min(...unlit)).toBeGreaterThan(1.15);
   // Not clipped: the sun side stays under the full highlight yellow's luma (~201).

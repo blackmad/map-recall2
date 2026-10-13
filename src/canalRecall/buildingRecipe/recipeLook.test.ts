@@ -40,8 +40,13 @@ test('shade equals the city layer: wallShade for walls, the roof formula for up 
   }
   assert.ok(Math.abs(cityShade([0, 0, 1]) - (0.58 + 0.42 * 0.8)) < 1e-9, 'flat roof = LID_SHADE');
   assert.equal(cityShade([0, 0, -1]), 0.5);
-  const slope = [-Math.sin(0.7), 0, Math.cos(0.7)] as [number, number, number];
-  assert.ok(Math.abs(cityShade(slope) - Math.max(0.5, Math.min(1, 0.58 + 0.42 * (slope[0] * -0.35 + slope[2] * 0.8)))) < 1e-9);
+  // A roof slope facing the sun (azimuth 215°, lightRig.ts) catches more light than a flat roof.
+  const a = 215 * Math.PI / 180, slope = [Math.sin(a) * Math.sin(0.7), Math.cos(a) * Math.sin(0.7), Math.cos(0.7)] as [number, number, number];
+  assert.ok(Math.abs(cityShade(slope) - Math.max(0.5, Math.min(1, 0.58 + 0.42 * (0.6 * Math.sin(0.7) + 0.8 * Math.cos(0.7))))) < 1e-9);
+  assert.ok(cityShade(slope) > cityShade([0, 0, 1]));
+  // Walls: the one facing the sun is the brightest, the one facing away the darkest.
+  assert.ok(Math.abs(cityShade([Math.sin(a), Math.cos(a), 0]) - 1) < 1e-9);
+  assert.ok(Math.abs(cityShade([-Math.sin(a), -Math.cos(a), 0]) - 0.84) < 1e-9);
 });
 
 test('pane UVs span 0..1 across each window, v up', () => {

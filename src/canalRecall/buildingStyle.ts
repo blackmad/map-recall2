@@ -4,6 +4,7 @@ import {
   selectRenderableBuildings,
 } from './buildingComposition.js';
 import { FootprintGrid } from './buildingLadder.js';
+import { mapLibreSunPosition } from './rendererShared/lightRig.js';
 import { ringCentroid, type Ring } from './buildingGeometry.js';
 
 export type CanalTheme = 'clean' | '8bit' | '16bit' | 'psx' | 'cyberpunk';
@@ -77,7 +78,8 @@ export function buildingLight(theme:CanalTheme|string):BuildingLight {
     psx:{color:'#e7d3b5',intensity:.56},
     cyberpunk:{color:'#79dfff',intensity:.46},
   };
-  return{anchor:'map',...values[selected],position:[1.25,210,42]};
+  // The rig's sun (rendererShared/lightRig.ts): same azimuth and elevation as every three.js layer.
+  return{anchor:'map',...values[selected],position:mapLibreSunPosition()};
 }
 
 // OpenFreeMap's planet tiles are built with planetiler, which drops the OSM id

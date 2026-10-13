@@ -4,11 +4,13 @@
 // unlit material: no lights, no normals on the GPU. Every face is wound from
 // the normal its caller states, so callers never reason about winding.
 
+import { SUN_DIRECTION } from '../rendererShared/lightRig.js';
+
 export type V3 = [number, number, number];
 export type RGB = [number, number, number];
 
-/** Light from the south-west and high, like the building layers' sun. */
-const SUN: V3 = normalise([-0.45, -0.35, 0.82]);
+/** The rig's sun (rendererShared/lightRig.ts), like every other layer. */
+const SUN: V3 = [SUN_DIRECTION[0], SUN_DIRECTION[1], SUN_DIRECTION[2]];
 
 export function normalise(v: V3): V3 {
   const length = Math.hypot(v[0], v[1], v[2]) || 1;
