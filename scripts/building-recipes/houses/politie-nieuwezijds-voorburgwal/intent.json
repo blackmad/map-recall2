@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "politie-nieuwezijds-voorburgwal",
+  "pandId": "0363100012171032",
+  "address": "Politiebureau Nieuwezijds Voorburgwal, Nieuwezijds Voorburgwal 35, Amsterdam (Spui-Nieuwezijds corner, 1996)",
+  "sources": [
+    {"id": "pano-2025-01-09-nw-glass", "kind": "street-panorama", "capturedAt": "2025-01-09", "image": "staging/pand-reference-walls/0363100012171032/w01-315.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0", "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250109_1300_Track02_Sphere_00258/"},
+    {"id": "pano-2025-01-09-nw-brick", "kind": "street-panorama", "capturedAt": "2025-01-09", "image": "staging/pand-reference-walls/0363100012171032/w01-315.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0", "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250109_1300_Track02_Sphere_00258/"},
+    {"id": "pano-2022-04-22-entrance", "kind": "street-panorama", "capturedAt": "2022-04-22", "image": "staging/pand-reference-walls/0363100012171032/w03-316.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002537_pano_0001_000946/"},
+    {"id": "pano-2025-01-09-north", "kind": "street-panorama", "capturedAt": "2025-01-09", "image": "staging/pand-reference-walls/0363100012171032/w05-6.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0", "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250109_1300_Track02_Sphere_00264/"}
+  ],
+  "walls": [
+    {"wallSurfaces": [81], "system": "ribbon-windows", "storeys": 6, "ground": "glazed", "windows": "plain"},
+    {"wallSurfaces": [28, 85], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 1, "ground": "blank", "windows": "plain", "garageDoors": 1},
+    {"wallSurfaces": [12], "system": "ribbon-windows", "storeys": 6, "ground": "system", "windows": "plain", "entrance": {"bay": 2, "storeys": 2, "canopy": true}, "signage": {"text": "POLITIE", "mount": "glazing", "colour": "#1d3f9a"}, "police": {"lamp": true}},
+    {"wallSurfaces": [2], "system": "curtain-wall", "storeys": 5, "ground": "glazed", "windows": "plain"}
+  ],
+  "otherWalls": "blank",
+  "roof": {"material": "bitumen"},
+  "palette": {"brick": "#7a7266", "frame": "#cfd6d8", "door": "#26292c", "stone": "#c9c8c2", "wallMaterial": "stucco"},
+  "notes": [
+    "1996 police bureau at the Spui end of Nieuwezijds Voorburgwal. Walls from three panoramas: 2025-01-09 w01-315 (panel 26, 18.2 m), 2022-04-22 w03-316 (panel 10, the curved glazed entrance front, built straight in 3DBAG), 2025-01-09 w05-6 (north end, panel 1, glazed).",
+    "Ornaments: POLITIE lettering in blue capitals over the entrance on the curved glass at first-floor level, with the gold flame emblem (lettering MODELLED, via signage mount glazing on a two-storey entrance hall; emblem SKIPPED: a 0.9 m flame crest is a texture-scale decal, nothing in the kit or the 5 cm attachment grain carries it, and the letters alone read at gallery size). Flat entrance canopy under the glass (MODELLED, entrance.canopy). Blue projecting blade sign with the police logo on the white concrete pier beside the entrance (SIMPLIFIED as the kit blue lamp: same colour and position by the entrance, but a box not a diamond blade). Double dark garage doors in the brick-clad left part of the front (MODELLED, garageDoors 1, which takes the right-most bay of the group). Striped band: not on the building (livery on the cars only): skipped, not present.",
+    "Entrance front is a ribbon-windows system with a two-storey glazed entrance hall (a curtain-wall system with a glazed ground fails the parts-attached gate around the hall: fit warning, not a modelling choice). Not modelled: the continuous blue-green glazing bands of the photo (ribbons stand in), the vertical-slot brick cladding of the left part is simplified to two bays of ordinary punched windows (the slots are 0.3 m wide, below the grain of the bay system); the white concrete pier (panel 12 neighbour) is left as blank wall; the rooftop mast and flag are skipped (not part of the 3DBAG volume and not stable).",
+    "South, east and courtyard walls have no panorama (candidates 0) and are left to otherWalls (blank)."
+  ]
+}

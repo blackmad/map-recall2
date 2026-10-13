@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "politie-lijnbaansgracht",
+  "pandId": "0363100012169471",
+  "address": "Politiebureau Lijnbaansgracht, Lijnbaansgracht 219, Amsterdam",
+  "sources": [
+    {"id": "pano-2021-01-22-sw", "kind": "street-panorama", "capturedAt": "2021-01-22", "image": "staging/pand-reference-walls/0363100012169471/w01-232.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001974_pano_0000_000980/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
+  ],
+  "walls": [
+    {"wallSurfaces": [34], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 6, "ground": "system", "windows": "plain"},
+    {"wallSurfaces": [30, 39], "system": "brick-bay-grid", "storeys": 4, "baysPerStorey": 12, "ground": "system", "windows": "plain", "stringCourses": true},
+    {"wallSurfaces": [40, 53], "system": "brick-bay-grid", "alignWith": 1, "baysPerStorey": 12, "ground": "system", "windows": "plain"}
+  ],
+  "otherWalls": "blank",
+  "roof": {"material": "bitumen"},
+  "palette": {"brick": "dark-brown", "frame": "#2a3a44", "door": "#3a3a3a", "stone": "#d9d8d2"},
+  "notes": [
+    "1977 office block used as police bureau on the Lijnbaansgracht (south-west, bearing 232). Described from the 2021-01-22 panorama (w01-232.jpg, rectified, 24 m): dark brown brick, regular grid of small-pane dark-framed windows with white sills and lintel flashes. Left tall block = panel 32 (surface 34, 14.1 m, 19.9 m high, 5 rows, 6 axes); right wing = panel 28 (surfaces 30/39, 15.7 m, 4 rows, about 12 axes) with a setback fifth row above it (panel 37, surfaces 40/53).",
+    "Ornaments from the panorama: white projecting band under the fourth row of the left block (stringCourses: simplified, a course per storey on the wing instead of the single 2 m band); round street sign and red plate at the left ground corner (skipped: 0.3-0.4 m wall plates carry no text legible at gallery size and sit below the 5 cm attachment grain); ground-level canopy at the far left (skipped: the entrance lies outside the rectified wall, no evidence of its shape); no POLITIE lettering, blue lamp, striped band or crest on the building (the only POLITIE in the frame is the livery of a parked van, street furniture not building).",
+    "Rear/NE, SE and NW walls and courtyard faces have no panorama in the cache and are left to otherWalls (blank; audit:glb warns blank-wall for them)."
+  ]
+}
