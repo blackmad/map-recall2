@@ -22,6 +22,7 @@ import {DEFAULT_PITCH_M, largeSystem, type LargeGround, type LargeSystemName} fr
 
 /** Window reveal depth (m) for the large tier. */
 export const LARGE_RECESS_M = 0.18;
+export const CROSS_SIZE_M = {small: 1.4, medium: 2.2, large: 3.2} as const;
 export const CIVIC_STOREY_M = {pre1945: 4.2, post1945: 3.6};
 
 export interface PlantBox { centre: [number, number]; baseY: number; size: [number, number, number]; angleRad: number; kind: 'lift-overrun' | 'plant' }
@@ -37,6 +38,8 @@ export interface LargeGroupFit {
   /** loading-door axis (bay % every === first) and the name boards over its ground portals on the main panel */
   hoist?: {every: number; first: number} | {bays: number[]};
   nameBoards?: string[];
+  /** St Andrew's crosses stacked down a top corner of the main panel (slot `cross@g<index>`) */
+  crosses?: {count: number; sizeM: number; side: 'left' | 'right'};
   slots: {wall: string; frame: string; stone: string; glass: string; door: string; curtain: string; sign: string};
 }
 export interface LargeBuildingRecipe {
@@ -188,6 +191,7 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
     const arch = (w.arches || w.hoist) && (w.arches?.band ?? 'brick') === 'brick' ? `arch@g${gi}` : undefined;
     if (arch) palette[arch] = shade(palette[slots.wall], 0.82);
     const sign = w.signage === undefined ? null : typeof w.signage === 'string' ? {text: w.signage, colour: undefined, mount: undefined} : w.signage;
+    if (w.crosses) palette[`cross@g${gi}`] = swatch(w.crosses.colour ?? '#d9534f');
     palette[slots.sign] = swatch(sign?.colour ?? (w.police ? '#1d3f8f' : pal.frame));
     // Widest panel that reaches the ground carries the entrance, garage doors and the bay count.
     const main = [...own].sort((a, b) => Number(b.vMin < 0.6) - Number(a.vMin < 0.6) || (b.uMax - b.uMin) - (a.uMax - a.uMin) || a.index - b.index)[0];
@@ -219,7 +223,7 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
     groups.push({index: gi, system: w.system, specSystem, panels: own.map(p => p.index), surfaces: [...w.wallSurfaces], mainPanel: main?.index ?? null, bearingDeg: main ? Math.round(bearingOfNormal(main.n)) : null,
       widthM: r3(widthM), eavesM: r3(eaves), flatTop, storeys: st.storeys, storeyHeightsM: st.heights, lines: st.lines, bays, pitchM: r3(pitchM), ground, cornice: !!w.cornice,
       ...(w.deepBars ? {deepBars: true} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
-      ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), slots});
+      ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(w.crosses ? {crosses: {count: w.crosses.count, sizeM: CROSS_SIZE_M[w.crosses.size ?? 'medium'], side: w.crosses.side ?? 'left'}} : {}), slots});
   });
   // Unlisted walls: one system at the civic storey height and the system's default pitch.
   const otherName = intent.otherWalls ?? 'blank', otherTop = Math.max(0, ...panels.map(p => p.vMax));

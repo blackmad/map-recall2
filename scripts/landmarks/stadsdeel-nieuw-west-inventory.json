@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "stadsdeel-nieuw-west",
+  "pand": "0363100012076903",
+  "signature": ["andrew-crosses", "ribbon-windows", "vertical-fins"],
+  "walls": [
+    {"tag": "w01-15", "bearing": 15, "lengthM": 45.6, "evidence": "photo", "panoId": "TMX7316010203-001325_pano_0000_001133", "capturedAt": "2019-07-24", "checked": true, "items": [
+      {"id": "andrew-crosses", "kind": "crest", "where": "roof corner at the top right of the north front, three red St Andrew's crosses stacked vertically", "approxSizeM": [2.2, 8], "plan": "modelled", "how": "kit component crosses (closed prisms), three medium crosses at the right end of the upper north wall, a little lower than photographed", "seenIn": "TMX7316010203-001325_pano_0000_001133"},
+      {"id": "ribbon-windows", "kind": "window-shape", "where": "all storeys of the slab between concrete spandrel bands", "approxSizeM": [40, 30], "plan": "modelled", "how": "ribbon-windows system aligned over both north groups", "seenIn": "TMX7316010203-001325_pano_0000_001133"},
+      {"id": "vertical-fins", "kind": "other", "where": "eight tall dark vertical blades projecting from the north front and rising over the roof", "approxSizeM": [0.4, 36], "plan": "simplified", "how": "piers: true, shallow projecting piers at the bay joints without the roof-top extension", "seenIn": "TMX7316010203-001325_pano_0000_001133"},
+      {"id": "podium-crosses", "kind": "crest", "where": "podium fascia above the entrance, three small red crosses", "approxSizeM": [0.8, 3], "plan": "skipped", "skip": {"reason": "too-small", "note": "0.8 m crosses on a podium whose walls are not panels in the 3DBAG shell wide enough to host them"}, "seenIn": "TMX7316010203-001325_pano_0000_001133"},
+      {"id": "entrance-hall", "kind": "window-shape", "where": "podium centre, glazed hall with a revolving door under the slab", "approxSizeM": [8, 4], "plan": "skipped", "skip": {"reason": "too-small", "note": "the podium front is below the width threshold of a wall panel (no panel there to cut an entrance into)"}, "seenIn": "TMX7316010203-001325_pano_0000_001133"}
+    ]},
+    {"tag": "w04-285", "bearing": 285, "lengthM": 16.1, "evidence": "photo", "panoId": "TMX7316010203-002653_pano_0001_000277", "capturedAt": "2022-06-30", "checked": true, "items": [
+      {"id": "west-ribbons", "kind": "window-shape", "where": "five bays of large dark ribbon windows between pale spandrel bands, ten storeys", "approxSizeM": [14, 36], "plan": "modelled", "how": "ribbon-windows, 10 storeys", "seenIn": "TMX7316010203-002653_pano_0001_000277"},
+      {"id": "round-piers", "kind": "colonnade", "where": "ground level, two round piers carrying the slab over the glazed podium", "approxSizeM": [0.8, 5], "plan": "skipped", "skip": {"reason": "too-small", "note": "0.8 m piers inside the surveyed volume"}, "seenIn": "TMX7316010203-002653_pano_0001_000277"}
+    ]}
+  ],
+  "sources": [{"name": "Gemeente Amsterdam panorama", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001325_pano_0000_001133/", "licence": "CC BY 4.0"}]
+}

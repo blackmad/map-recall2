@@ -154,6 +154,31 @@ function closedBox(c: PanelCtx, slot: Slot, u0: number, u1: number, v0: number, 
   c.mesh.quad(slot, c.P(u1, v0, d0), c.P(u0, v0, d0), c.P(u0, v1, d0), c.P(u1, v1, d0), part, scale(c.p.n, -1));
 }
 
+/**
+ * St Andrew's cross (one of the three of Amsterdam's coat of arms): two diagonal bars of closed prisms standing on the wall,
+ * `sizeM` square. The second bar is 8 cm prouder than the first, so the faces of the crossing never share a plane, and
+ * every solid is closed (no open edges for the large-tier gate). Returns the triangle count.
+ */
+export function drawStAndrewsCross(c: PanelCtx, uc: number, vc: number, sizeM: number, slot: Slot): number {
+  const w = sizeM * 0.2, h = sizeM / 2 - w * 0.35, depths: [number, number][] = [[0.01, 0.09], [0.01, 0.17]];
+  let n = 0;
+  [1, -1].forEach((dir, k) => {
+    const [d0, d1] = depths[k], part = c.part(), t = [Math.SQRT1_2, dir * Math.SQRT1_2], q = [-t[1], t[0]];
+    const at = (a: number, b: number, d: number): V3 => c.P(uc + t[0] * a + q[0] * b, vc + t[1] * a + q[1] * b, d);
+    const dirOf = (du: number, dv: number): V3 => { const o = c.P(uc, vc, 0), e = c.P(uc + du, vc + dv, 0); return [e[0] - o[0], e[1] - o[1], e[2] - o[2]]; };
+    const L = h * Math.SQRT2, W = w / 2, ring: [number, number][] = [[-L, -W], [L, -W], [L, W], [-L, W]];
+    const front = ring.map(([a, b]) => at(a, b, d1)), back = ring.map(([a, b]) => at(a, b, d0));
+    c.mesh.quad(slot, front[0], front[1], front[2], front[3], part, c.p.n);
+    c.mesh.quad(slot, back[3], back[2], back[1], back[0], part, scale(c.p.n, -1));
+    for (let i = 0; i < 4; i++) {
+      const j = (i + 1) % 4, mid = [(ring[i][0] + ring[j][0]) / 2, (ring[i][1] + ring[j][1]) / 2];
+      c.mesh.quad(slot, back[i], back[j], front[j], front[i], part, dirOf(t[0] * mid[0] + q[0] * mid[1], t[1] * mid[0] + q[1] * mid[1]));
+    }
+    n += 12;
+  });
+  return n;
+}
+
 /** Blue police lamp on a bracket beside the entrance (wall-mounted lantern). */
 export function drawBlueLamp(c: PanelCtx, u: number, v: number, slots: { bracket: Slot; lamp: Slot; cap: Slot }): boolean {
   if (!fitsPanel(c.p, rectPoly(u - 0.1, u + 0.1, v - 0.1, v + 0.1))) return false;

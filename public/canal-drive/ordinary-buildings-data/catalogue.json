@@ -3574,7 +3574,7 @@
       "bounds": {
         "min": [
           -19.2172908782959,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -13.932360649108887
         ],
         "max": [
@@ -9258,7 +9258,7 @@
       "bounds": {
         "min": [
           -19.893112182617188,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -17.881860733032227
         ],
         "max": [
@@ -9924,7 +9924,7 @@
       "bounds": {
         "min": [
           -17.276670455932617,
-          -5.2452087118126656e-8,
+          -5.2452087118126656e-08,
           -19.4085750579834
         ],
         "max": [
@@ -19687,7 +19687,7 @@
       "bounds": {
         "min": [
           -14.545639991760254,
-          9.536743306171047e-8,
+          9.536743306171047e-08,
           -16.488889694213867
         ],
         "max": [
@@ -19786,7 +19786,7 @@
       "bounds": {
         "min": [
           -19.340869903564453,
-          -1.9073486612342094e-7,
+          -1.9073486612342094e-07,
           -29.3840274810791
         ],
         "max": [
@@ -20023,7 +20023,7 @@
       "bounds": {
         "min": [
           -22.37699317932129,
-          -1.9073486612342094e-7,
+          -1.9073486612342094e-07,
           -50.65300750732422
         ],
         "max": [
@@ -20240,7 +20240,7 @@
       "bounds": {
         "min": [
           -23.991369247436523,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -15.057171821594238
         ],
         "max": [
@@ -20355,7 +20355,7 @@
       "bounds": {
         "min": [
           -14.917290687561035,
-          -3.814697322468419e-7,
+          -3.814697322468419e-07,
           -12.036028861999512
         ],
         "max": [
@@ -20461,7 +20461,7 @@
       "bounds": {
         "min": [
           -22.194652557373047,
-          -4.7683716530855236e-8,
+          -4.7683716530855236e-08,
           -8.861071586608887
         ],
         "max": [
@@ -33387,6 +33387,1980 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T21:42:06.865Z"
+    },
+    {
+      "id": "ordinary-0363100012238726",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012238726",
+      "name": "OBA Javaplein, Javaplein 2, Amsterdam (2011; library in the ground floor of a perimeter housing block, one pand)",
+      "hash": "4c999dd1658ae5923dce1388a9a3452f0c769e04dfcf64f87fc672accbbc8dcd",
+      "sha256": "4c999dd1658ae5923dce1388a9a3452f0c769e04dfcf64f87fc672accbbc8dcd",
+      "bytes": 881076,
+      "triangles": 11740,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -53.178,
+          0,
+          -23.779
+        ],
+        "max": [
+          46.879,
+          36.106,
+          18.178
+        ]
+      },
+      "anchor": [
+        4.9386576,
+        52.3642473
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9393365,
+              52.3644627
+            ],
+            [
+              4.937904,
+              52.3644475
+            ],
+            [
+              4.9379047,
+              52.3644329
+            ],
+            [
+              4.9378749,
+              52.3644324
+            ],
+            [
+              4.9378768,
+              52.3643979
+            ],
+            [
+              4.9379061,
+              52.3643983
+            ],
+            [
+              4.9379068,
+              52.3643837
+            ],
+            [
+              4.938731,
+              52.3641421
+            ],
+            [
+              4.9387314,
+              52.3641425
+            ],
+            [
+              4.9387342,
+              52.3641417
+            ],
+            [
+              4.9387346,
+              52.3641399
+            ],
+            [
+              4.938733,
+              52.3641399
+            ],
+            [
+              4.9387341,
+              52.3640965
+            ],
+            [
+              4.9393466,
+              52.364103
+            ],
+            [
+              4.9393454,
+              52.3641467
+            ],
+            [
+              4.9393451,
+              52.3641467
+            ],
+            [
+              4.939345,
+              52.3641487
+            ],
+            [
+              4.9393455,
+              52.3641487
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 36.11,
+      "height": 36.11,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-oba-javaplein.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012238726"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "oba-javaplein",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012238726/w03-179.jpg",
+          "staging/pand-reference-walls/0363100012238726/w01-359.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 6st 14b",
+          "brick-bay-grid 5st 26b",
+          "brick-bay-grid 5st 20b",
+          "brick-bay-grid 5st 10b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Only 359 openings fit the 12k budget on a 98 m block: the north front uses 26 bays per storey (real pitch is finer) and frames:false (dark frames read as glass) on the long fronts. Courtyard and party walls have no panorama and stay blank (otherWalls)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012238726",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T21:17:23.845Z"
+    },
+    {
+      "id": "ordinary-0363100012073586",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012073586",
+      "name": "OBA Olympisch Kwartier, Laan der Hesperiden 18, Amsterdam (2005; library in the ground floor of a brick housing block, one pand)",
+      "hash": "8f5ca488568374e12fade9499d60edbd23b35e9e7581a074bd73c77885cafd2c",
+      "sha256": "8f5ca488568374e12fade9499d60edbd23b35e9e7581a074bd73c77885cafd2c",
+      "bytes": 821444,
+      "triangles": 10939,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -47.155,
+          0,
+          -49.67
+        ],
+        "max": [
+          52.059,
+          22.002,
+          48.384
+        ]
+      },
+      "anchor": [
+        4.8553631,
+        52.3455746
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8548711,
+              52.3453146
+            ],
+            [
+              4.8549155,
+              52.3452218
+            ],
+            [
+              4.8549466,
+              52.3451557
+            ],
+            [
+              4.8549533,
+              52.3451568
+            ],
+            [
+              4.8549624,
+              52.3451379
+            ],
+            [
+              4.8550025,
+              52.3451441
+            ],
+            [
+              4.8550033,
+              52.3451422
+            ],
+            [
+              4.855009,
+              52.345143
+            ],
+            [
+              4.8550093,
+              52.3451421
+            ],
+            [
+              4.856132,
+              52.3452931
+            ],
+            [
+              4.8560969,
+              52.3453891
+            ],
+            [
+              4.8560718,
+              52.3454604
+            ],
+            [
+              4.8560003,
+              52.3456588
+            ],
+            [
+              4.8559689,
+              52.345751
+            ],
+            [
+              4.8559455,
+              52.3457481
+            ],
+            [
+              4.8559147,
+              52.3458336
+            ],
+            [
+              4.8558949,
+              52.3458413
+            ],
+            [
+              4.8558294,
+              52.346023
+            ],
+            [
+              4.8555385,
+              52.3459789
+            ],
+            [
+              4.8553001,
+              52.3459409
+            ],
+            [
+              4.855061,
+              52.3458969
+            ],
+            [
+              4.8548241,
+              52.3458564
+            ],
+            [
+              4.854668,
+              52.3458269
+            ],
+            [
+              4.8547814,
+              52.345585
+            ],
+            [
+              4.8547716,
+              52.3455737
+            ],
+            [
+              4.854811,
+              52.3454894
+            ],
+            [
+              4.8547907,
+              52.3454853
+            ],
+            [
+              4.854834,
+              52.3453949
+            ]
+          ],
+          [
+            [
+              4.8557406,
+              52.345713
+            ],
+            [
+              4.8557777,
+              52.3456282
+            ],
+            [
+              4.8557895,
+              52.3455753
+            ],
+            [
+              4.8558123,
+              52.3455783
+            ],
+            [
+              4.8558197,
+              52.3455577
+            ],
+            [
+              4.8558582,
+              52.3455628
+            ],
+            [
+              4.8558649,
+              52.3455484
+            ],
+            [
+              4.8557892,
+              52.3455352
+            ],
+            [
+              4.8558562,
+              52.3453912
+            ],
+            [
+              4.8558128,
+              52.3453833
+            ],
+            [
+              4.8558078,
+              52.3453958
+            ],
+            [
+              4.8551919,
+              52.3453127
+            ],
+            [
+              4.8551979,
+              52.345298
+            ],
+            [
+              4.8551545,
+              52.345291
+            ],
+            [
+              4.8551481,
+              52.3453042
+            ],
+            [
+              4.8551036,
+              52.3454009
+            ],
+            [
+              4.8550769,
+              52.3453954
+            ],
+            [
+              4.8550592,
+              52.3454346
+            ],
+            [
+              4.8550187,
+              52.3455187
+            ],
+            [
+              4.8549467,
+              52.3456743
+            ],
+            [
+              4.8549069,
+              52.3456664
+            ],
+            [
+              4.8548736,
+              52.3457392
+            ],
+            [
+              4.8548885,
+              52.3457418
+            ],
+            [
+              4.8548935,
+              52.3457311
+            ],
+            [
+              4.8549451,
+              52.3457402
+            ],
+            [
+              4.8549548,
+              52.34572
+            ],
+            [
+              4.8556019,
+              52.3458344
+            ],
+            [
+              4.8555872,
+              52.3458654
+            ],
+            [
+              4.8556013,
+              52.3458679
+            ],
+            [
+              4.8556064,
+              52.3458571
+            ],
+            [
+              4.8556445,
+              52.3458639
+            ],
+            [
+              4.8556394,
+              52.3458747
+            ],
+            [
+              4.8556529,
+              52.3458771
+            ],
+            [
+              4.8556583,
+              52.3458657
+            ],
+            [
+              4.8556833,
+              52.3458701
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 22,
+      "height": 22,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-oba-olympisch-kwartier.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012073586"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "oba-olympisch-kwartier",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012073586/w01-168.jpg",
+          "staging/pand-reference-walls/0363100012073586/w02-78.jpg",
+          "staging/pand-reference-walls/0363100012073586/w03-344.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "storey-height/walls[4]:pass",
+          "eaves-vs-3dbag/walls[5]:pass",
+          "storey-height/walls[5]:pass",
+          "eaves-vs-3dbag/walls[6]:pass",
+          "storey-height/walls[6]:pass",
+          "eaves-vs-3dbag/walls[7]:pass",
+          "storey-height/walls[7]:pass",
+          "eaves-vs-3dbag/walls[8]:pass",
+          "storey-height/walls[8]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 6st 6b",
+          "brick-bay-grid 5st 5b",
+          "brick-bay-grid 5st 6b",
+          "brick-bay-grid 6st 4b",
+          "brick-bay-grid 5st 6b",
+          "brick-bay-grid 5st 7b",
+          "brick-bay-grid 5st 5b",
+          "brick-bay-grid 5st 5b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Ornaments: shopfront plinth MODELLED (plinth-shopfronts); string courses MODELLED; entrance door SIMPLIFIED (one recessed glazed entrance at bay 3 of the south front; the real library entrance is not identifiable from the panoramas); OBA lettering SIMPLIFIED (cream lettering OBA on the wall over that entrance: no OBA sign is legible in the panoramas, so this carries the library identity); cream stone plinth colour MODELLED only as the stone palette; stair/lift towers and balconies SKIPPED (inside the 3DBAG roof volume); the arched gate portal at the right of the east front SKIPPED (surfaces 5/127 are not planar: 6-10 cm off any plane, so they are a blank group); shop signs and parked vans SKIPPED (temporary).",
+        "Courtyard walls have no panorama and stay blank; wall groups are split per 3DBAG panel because merged panels with slightly different planes failed the parts-attached gate (gap 8 cm). closedBands closes the string courses (open-edge gate). Eaves differ 16/19 m between wings; each group follows its own eaves."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012073586",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T21:24:53.067Z"
+    },
+    {
+      "id": "ordinary-0363100012122086",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012122086",
+      "name": "OBA Linnaeus, Linnaeusstraat 44, Amsterdam (1916 pand; library in the ground floor of a 1950s-style brick front with two 1916 houses attached)",
+      "hash": "eef1abe8043916ee7bfa1c4e1249fa433aa45fac9acf94dde3bebcea1d97a93b",
+      "sha256": "eef1abe8043916ee7bfa1c4e1249fa433aa45fac9acf94dde3bebcea1d97a93b",
+      "bytes": 201052,
+      "triangles": 2539,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -13.579,
+          0.001,
+          -21.88
+        ],
+        "max": [
+          15.576,
+          19.718,
+          25.773
+        ]
+      },
+      "anchor": [
+        4.9260974,
+        52.3581909
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9261293,
+              52.3583799
+            ],
+            [
+              4.9261329,
+              52.3583848
+            ],
+            [
+              4.9261033,
+              52.3583927
+            ],
+            [
+              4.9260998,
+              52.3583878
+            ],
+            [
+              4.9259423,
+              52.3583437
+            ],
+            [
+              4.9259837,
+              52.3582883
+            ],
+            [
+              4.9260084,
+              52.3582952
+            ],
+            [
+              4.9260406,
+              52.3582525
+            ],
+            [
+              4.9260143,
+              52.3582451
+            ],
+            [
+              4.9260574,
+              52.358188
+            ],
+            [
+              4.9258986,
+              52.3581431
+            ],
+            [
+              4.9260373,
+              52.3579591
+            ],
+            [
+              4.9261101,
+              52.3579797
+            ],
+            [
+              4.9260999,
+              52.3579933
+            ],
+            [
+              4.9261795,
+              52.3580158
+            ],
+            [
+              4.9261896,
+              52.3580021
+            ],
+            [
+              4.9263123,
+              52.3580368
+            ],
+            [
+              4.9263259,
+              52.3580565
+            ],
+            [
+              4.926185,
+              52.3582831
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 19.72,
+      "height": 19.72,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-oba-linnaeus.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012122086"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "oba-linnaeus",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012122086/w01-70.jpg",
+          "staging/pand-reference-walls/0363100012122086/w02-246.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 4st 10b",
+          "brick-bay-grid+entrance 5st 4b",
+          "brick-bay-grid 4st 6b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012122086",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T21:31:37.473Z"
+    },
+    {
+      "id": "ordinary-0363100012151434",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012151434",
+      "name": "OBA Mercatorplein, Mercatorplein 103, Amsterdam (1927 Amsterdam School block; library under the glazed canopy at the ground floor)",
+      "hash": "9282667efd3fb1db3c6ba5c3290b8a824439dd0a87940d9033fb4157a521741c",
+      "sha256": "9282667efd3fb1db3c6ba5c3290b8a824439dd0a87940d9033fb4157a521741c",
+      "bytes": 397812,
+      "triangles": 5670,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -13.23,
+          0.001,
+          -41.201
+        ],
+        "max": [
+          17.187,
+          16.892,
+          20.643
+        ]
+      },
+      "anchor": [
+        4.850261,
+        52.3692204
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8502753,
+              52.3695908
+            ],
+            [
+              4.8500627,
+              52.369554
+            ],
+            [
+              4.8502302,
+              52.3691916
+            ],
+            [
+              4.8500952,
+              52.3691682
+            ],
+            [
+              4.8501433,
+              52.3690626
+            ],
+            [
+              4.850279,
+              52.3690861
+            ],
+            [
+              4.8503026,
+              52.3690351
+            ],
+            [
+              4.8505151,
+              52.3690719
+            ],
+            [
+              4.8504455,
+              52.3692234
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 16.89,
+      "height": 16.89,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-oba-mercatorplein.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012151434"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "oba-mercatorplein",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012151434/w01-75.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 5st 14b",
+          "brick-bay-grid+entrance 1st 14b",
+          "brick-bay-grid 4st 12b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Only the east front (surface 19, 41.7 m, and the low ground band 1/2) is described: the west, courtyard and north walls have no usable panorama (w02-255 has no candidates), so they are blank walls, except the 42 m west wall (surface 9), which has an INFERRED plain window grid (4 storeys, 12 bays; no photograph, the style follows the east front) because a 600 m2 blank wall fails the audit:glb blank-wall gate. The pand-reference run flagged the 2019 capture washed-out; the 2025 capture is used."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012151434",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T21:33:56.938Z"
+    },
+    {
+      "id": "ordinary-0363100012233553",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012233553",
+      "name": "Stadsloket Oost, Oranje-Vrijstaatplein 2, Amsterdam (2008 office block, 81 m long; stadsloket and municipal offices)",
+      "hash": "02790dbf931ac010ed219d2dc4ece81d30d84d2e5ee139d03ca1479eb5aa5e81",
+      "sha256": "02790dbf931ac010ed219d2dc4ece81d30d84d2e5ee139d03ca1479eb5aa5e81",
+      "bytes": 330948,
+      "triangles": 4262,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -70.617,
+          0.001,
+          -92.218
+        ],
+        "max": [
+          51.887,
+          21.596,
+          34.374
+        ]
+      },
+      "anchor": [
+        4.931693,
+        52.3567897
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9324376,
+              52.3568461
+            ],
+            [
+              4.9324406,
+              52.3568468
+            ],
+            [
+              4.9324316,
+              52.3568617
+            ],
+            [
+              4.9324285,
+              52.356861
+            ],
+            [
+              4.9324067,
+              52.3568991
+            ],
+            [
+              4.9324098,
+              52.3568998
+            ],
+            [
+              4.9324011,
+              52.3569148
+            ],
+            [
+              4.9323981,
+              52.3569141
+            ],
+            [
+              4.9323759,
+              52.3569527
+            ],
+            [
+              4.9323789,
+              52.3569533
+            ],
+            [
+              4.9323703,
+              52.3569684
+            ],
+            [
+              4.9323672,
+              52.3569677
+            ],
+            [
+              4.9323459,
+              52.3570046
+            ],
+            [
+              4.932349,
+              52.3570053
+            ],
+            [
+              4.9323403,
+              52.3570203
+            ],
+            [
+              4.9323373,
+              52.3570196
+            ],
+            [
+              4.9323153,
+              52.3570577
+            ],
+            [
+              4.9323185,
+              52.3570584
+            ],
+            [
+              4.9323098,
+              52.3570733
+            ],
+            [
+              4.9323068,
+              52.3570726
+            ],
+            [
+              4.9322851,
+              52.3571102
+            ],
+            [
+              4.9322881,
+              52.3571108
+            ],
+            [
+              4.9322789,
+              52.3571267
+            ],
+            [
+              4.9318977,
+              52.3570432
+            ],
+            [
+              4.9318842,
+              52.3570404
+            ],
+            [
+              4.9318845,
+              52.3570398
+            ],
+            [
+              4.9314033,
+              52.3569358
+            ],
+            [
+              4.9313683,
+              52.3569959
+            ],
+            [
+              4.9318474,
+              52.3570994
+            ],
+            [
+              4.9318478,
+              52.3570988
+            ],
+            [
+              4.9322467,
+              52.357185
+            ],
+            [
+              4.931996,
+              52.3576197
+            ],
+            [
+              4.9312366,
+              52.3574559
+            ],
+            [
+              4.931348,
+              52.3572653
+            ],
+            [
+              4.9314171,
+              52.3571454
+            ],
+            [
+              4.9306544,
+              52.3569808
+            ],
+            [
+              4.9307894,
+              52.3567463
+            ],
+            [
+              4.9308146,
+              52.356752
+            ],
+            [
+              4.9308633,
+              52.3566665
+            ],
+            [
+              4.9308021,
+              52.3566532
+            ],
+            [
+              4.9308941,
+              52.3564931
+            ],
+            [
+              4.9308954,
+              52.3564913
+            ],
+            [
+              4.9308969,
+              52.3564895
+            ],
+            [
+              4.9309007,
+              52.3564862
+            ],
+            [
+              4.9309029,
+              52.3564847
+            ],
+            [
+              4.9309079,
+              52.3564821
+            ],
+            [
+              4.9309135,
+              52.35648
+            ],
+            [
+              4.9309165,
+              52.3564792
+            ],
+            [
+              4.9309229,
+              52.3564781
+            ],
+            [
+              4.9309261,
+              52.3564779
+            ],
+            [
+              4.9309327,
+              52.3564778
+            ],
+            [
+              4.930936,
+              52.356478
+            ],
+            [
+              4.9309424,
+              52.3564791
+            ],
+            [
+              4.9309454,
+              52.3564798
+            ],
+            [
+              4.9309484,
+              52.3564807
+            ],
+            [
+              4.9309538,
+              52.356483
+            ],
+            [
+              4.9309585,
+              52.3564859
+            ],
+            [
+              4.9309605,
+              52.3564874
+            ],
+            [
+              4.9309637,
+              52.3564909
+            ],
+            [
+              4.930966,
+              52.3564946
+            ],
+            [
+              4.9309668,
+              52.3564965
+            ],
+            [
+              4.9309673,
+              52.3564985
+            ],
+            [
+              4.9309674,
+              52.3565026
+            ],
+            [
+              4.9309663,
+              52.3565067
+            ],
+            [
+              4.9309654,
+              52.3565087
+            ],
+            [
+              4.9316409,
+              52.3566545
+            ],
+            [
+              4.9316403,
+              52.3566557
+            ],
+            [
+              4.931665,
+              52.356661
+            ],
+            [
+              4.9316672,
+              52.3566573
+            ],
+            [
+              4.9316885,
+              52.3566619
+            ],
+            [
+              4.9316871,
+              52.3566643
+            ],
+            [
+              4.9318408,
+              52.356698
+            ],
+            [
+              4.9318422,
+              52.3566956
+            ],
+            [
+              4.9318603,
+              52.3566996
+            ],
+            [
+              4.9318589,
+              52.3567019
+            ],
+            [
+              4.932051,
+              52.356743
+            ],
+            [
+              4.9320524,
+              52.3567406
+            ],
+            [
+              4.9320705,
+              52.3567445
+            ],
+            [
+              4.9320692,
+              52.3567469
+            ],
+            [
+              4.9322611,
+              52.3567884
+            ],
+            [
+              4.9322625,
+              52.356786
+            ],
+            [
+              4.9322807,
+              52.3567899
+            ],
+            [
+              4.9322793,
+              52.3567923
+            ],
+            [
+              4.9324333,
+              52.3568256
+            ],
+            [
+              4.9324347,
+              52.3568232
+            ],
+            [
+              4.9324542,
+              52.3568274
+            ],
+            [
+              4.9324499,
+              52.3568347
+            ],
+            [
+              4.9324451,
+              52.3568337
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 21.6,
+      "height": 21.6,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-stadsloket-oost.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012233553"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "stadsloket-oost",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012233553/w03-161.jpg",
+          "staging/pand-reference-walls/0363100012233553/w01-341.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 3st 14b",
+          "brick-bay-grid 2st 14b",
+          "brick-bay-grid 2st 14b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Ornaments: no Stadsloket/Gemeente Amsterdam sign, logo band or crest is legible in the 2018/2019/2020 panoramas of these fronts, so no signage is modelled (SKIPPED: not-visible; the stadsloket entrance on the Oranje-Vrijstaatplein side has no panorama in range). Glazed door entrance MODELLED as one recessed glazed entrance at bay 6 of the south front; string courses MODELLED; the dark steel window frames MODELLED as the frame colour; the slot-window ribbon of the low wings SIMPLIFIED to low wide windows (two storeys, 14 bays, no concrete surround); the glass oriel on the south front SKIPPED (too-small); the stepped taller south wings (surfaces 36/65/157) and the courtyard walls have no panorama and stay blank; the saw-tooth roofs are kept as surveyed by 3DBAG."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012233553",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T21:35:54.752Z"
+    },
+    {
+      "id": "ordinary-0363100012104378",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012104378",
+      "name": "Stadsloket Noord, Buikslotermeerplein 2000, Amsterdam (1999 black-brick office tower with the three St Andrew's crosses)",
+      "hash": "e7d0853555c9d33700d3f30b8228b5eeace0bd21bf6221d266a428e9f56f687f",
+      "sha256": "e7d0853555c9d33700d3f30b8228b5eeace0bd21bf6221d266a428e9f56f687f",
+      "bytes": 254168,
+      "triangles": 3331,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -32.107,
+          0,
+          -43.4
+        ],
+        "max": [
+          26.968,
+          30.557,
+          33.863
+        ]
+      },
+      "anchor": [
+        4.9331994,
+        52.4010423
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9334173,
+              52.4011553
+            ],
+            [
+              4.9335928,
+              52.4013208
+            ],
+            [
+              4.933429,
+              52.4013864
+            ],
+            [
+              4.9334032,
+              52.401362
+            ],
+            [
+              4.9332554,
+              52.4014326
+            ],
+            [
+              4.9331054,
+              52.4013154
+            ],
+            [
+              4.9331682,
+              52.4012854
+            ],
+            [
+              4.9329502,
+              52.4011152
+            ],
+            [
+              4.9327549,
+              52.4009623
+            ],
+            [
+              4.9328466,
+              52.4009184
+            ],
+            [
+              4.9328489,
+              52.4009206
+            ],
+            [
+              4.9328616,
+              52.4009149
+            ],
+            [
+              4.9327286,
+              52.4008105
+            ],
+            [
+              4.9328827,
+              52.4007368
+            ],
+            [
+              4.9331211,
+              52.4009234
+            ],
+            [
+              4.933179,
+              52.4008958
+            ],
+            [
+              4.9331997,
+              52.4009043
+            ],
+            [
+              4.9332199,
+              52.4009133
+            ],
+            [
+              4.9332396,
+              52.4009227
+            ],
+            [
+              4.9332587,
+              52.4009326
+            ],
+            [
+              4.9332773,
+              52.4009429
+            ],
+            [
+              4.9332952,
+              52.4009535
+            ],
+            [
+              4.9333149,
+              52.4009663
+            ],
+            [
+              4.9333338,
+              52.4009795
+            ],
+            [
+              4.9333518,
+              52.4009932
+            ],
+            [
+              4.9333688,
+              52.4010074
+            ],
+            [
+              4.9333849,
+              52.401022
+            ],
+            [
+              4.9334,
+              52.401037
+            ],
+            [
+              4.9332981,
+              52.4010774
+            ],
+            [
+              4.9333356,
+              52.4011068
+            ],
+            [
+              4.9333565,
+              52.4010982
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 30.56,
+      "height": 30.56,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-stadsloket-noord.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012104378"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "stadsloket-noord",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012104378/w01-308.jpg",
+          "staging/pand-reference-walls/0363100012104378/w03-123.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 8st 5b",
+          "brick-bay-grid 8st 4b",
+          "brick-bay-grid 6st 6b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Signature: the three St Andrew's crosses MODELLED with a new kit component (`crosses`, `drawStAndrewsCross`: two diagonal closed prisms per cross, three crosses 3.2 m, pink-red, on the top-left of the main north-west panel); black brick MODELLED as the brick palette; low paired windows MODELLED (windows: low); glazed ground on round white piers MODELLED as ground glazed + piers (square projecting piers, not round columns: SIMPLIFIED); parking signs and the foot-of-wall bike park SKIPPED (temporary); the stadsloket entrance and signage are on the Buikslotermeerplein side which has no panorama in range (SKIPPED: not-visible); the stepped south-west block, the stair tower on the roof and the rear walls (surfaces 73/8/10/36/60/37/6/33/72/71/52/7) are one blank group (no panorama or closed seams)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012104378",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T21:41:18.388Z"
+    },
+    {
+      "id": "ordinary-0363100012078772",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012078772",
+      "name": "Stadsloket Zuidoost, Anton de Komplein 150, Amsterdam (2006 red-brick civic office on a glazed arcade)",
+      "hash": "a102b162271300d641e7fda5f5811411fb8b374437a5d8a345d257a06f4dff0d",
+      "sha256": "a102b162271300d641e7fda5f5811411fb8b374437a5d8a345d257a06f4dff0d",
+      "bytes": 632816,
+      "triangles": 8499,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -36.131,
+          -0.115,
+          -53.629
+        ],
+        "max": [
+          60.222,
+          32.829,
+          52.678
+        ]
+      },
+      "anchor": [
+        4.9566993,
+        52.3164124
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9565736,
+              52.316422
+            ],
+            [
+              4.9565729,
+              52.3164218
+            ],
+            [
+              4.9565635,
+              52.3164321
+            ],
+            [
+              4.957579,
+              52.3167796
+            ],
+            [
+              4.9574702,
+              52.3168993
+            ],
+            [
+              4.9567226,
+              52.3166436
+            ],
+            [
+              4.9564457,
+              52.3165486
+            ],
+            [
+              4.9564591,
+              52.3165347
+            ],
+            [
+              4.9563767,
+              52.3165064
+            ],
+            [
+              4.9563632,
+              52.3165204
+            ],
+            [
+              4.9561681,
+              52.3164538
+            ],
+            [
+              4.9566375,
+              52.3159387
+            ],
+            [
+              4.956833,
+              52.3160053
+            ],
+            [
+              4.9568165,
+              52.3160241
+            ],
+            [
+              4.9569076,
+              52.3160552
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 32.83,
+      "height": 32.83,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-stadsloket-zuidoost.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012078772"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "stadsloket-zuidoost",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012078772/w03-241.jpg",
+          "staging/pand-reference-walls/0363100012078772/w01-331.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 5st 16b",
+          "brick-bay-grid+entrance 4st 18b",
+          "brick-bay-grid 5st 10b",
+          "brick-bay-grid 4st 18b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "South-east and north-east walls (surfaces 74/87 etc.) have no panorama in range (candidates 0): surface 74/87 carries an INFERRED regular window grid copied from the north-west front so the 79 m wall is not a blank slab; the stepped taller blocks (58/121, 19/71/73, 101, 14) stay blank."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012078772",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T21:43:12.310Z"
+    },
+    {
+      "id": "ordinary-0363100012076903",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012076903",
+      "name": "Stadsdeelkantoor Nieuw-West, Plein '40-'45 1, Amsterdam (1964 ten-storey slab with vertical fins on a glazed podium)",
+      "hash": "f1612c19e93e24a14d500a691f6908fe2f2e262d09dba7c0ce70d072432c59e3",
+      "sha256": "f1612c19e93e24a14d500a691f6908fe2f2e262d09dba7c0ce70d072432c59e3",
+      "bytes": 755144,
+      "triangles": 10200,
+      "materials": 7,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -28.763,
+          0,
+          -18.785
+        ],
+        "max": [
+          28.768,
+          43.723,
+          18.784
+        ]
+      },
+      "anchor": [
+        4.8211067,
+        52.3790093
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8215291,
+              52.3790174
+            ],
+            [
+              4.8214604,
+              52.3790282
+            ],
+            [
+              4.8214801,
+              52.3790752
+            ],
+            [
+              4.8208309,
+              52.3791768
+            ],
+            [
+              4.8208113,
+              52.3791298
+            ],
+            [
+              4.8207426,
+              52.3791405
+            ],
+            [
+              4.8206844,
+              52.3790012
+            ],
+            [
+              4.8207531,
+              52.3789904
+            ],
+            [
+              4.8207335,
+              52.3789434
+            ],
+            [
+              4.8213826,
+              52.3788418
+            ],
+            [
+              4.8214022,
+              52.3788888
+            ],
+            [
+              4.8214709,
+              52.3788781
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 43.72,
+      "height": 43.72,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-stadsdeel-nieuw-west.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012076903"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "stadsdeel-nieuw-west",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012076903/w01-15.jpg",
+          "staging/pand-reference-walls/0363100012076903/w04-285.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "storey-height/walls[4]:pass",
+          "eaves-vs-3dbag/walls[5]:pass",
+          "storey-height/walls[5]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 7st 17b",
+          "ribbon-windows 7st 17b",
+          "ribbon-windows 10st 6b",
+          "ribbon-windows 10st 6b",
+          "ribbon-windows 10st 17b",
+          "ribbon-windows 7st 11b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "The south wall (surfaces 90 and 67) and the east end (56) have no panorama (candidates 0); they carry an INFERRED ribbon-window grid so the audit blank-wall gate passes, matching the west end. Colours: pale grey concrete is the wall palette, dark glass frames."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012076903",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T21:45:25.346Z"
+    },
+    {
+      "id": "ordinary-0363100012118358",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012118358",
+      "name": "Stadsloket West, Bos en Lommerplein 250, Amsterdam (2003; shops, housing and the stadsdeel office in one pand)",
+      "hash": "2aea2605d00c3173e91714ebb5e8f48ed1ddd36e6b3ff9f78e325d031f5b6606",
+      "sha256": "2aea2605d00c3173e91714ebb5e8f48ed1ddd36e6b3ff9f78e325d031f5b6606",
+      "bytes": 805340,
+      "triangles": 11250,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -33.112,
+          -0.001,
+          -85.242
+        ],
+        "max": [
+          38.45,
+          31.139,
+          63.526
+        ]
+      },
+      "anchor": [
+        4.8452105,
+        52.3785475
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8453808,
+              52.3790428
+            ],
+            [
+              4.8454281,
+              52.3790525
+            ],
+            [
+              4.8454232,
+              52.3790617
+            ],
+            [
+              4.8454193,
+              52.3790711
+            ],
+            [
+              4.8454163,
+              52.3790807
+            ],
+            [
+              4.8454142,
+              52.3790903
+            ],
+            [
+              4.8454132,
+              52.3791
+            ],
+            [
+              4.8454032,
+              52.3792798
+            ],
+            [
+              4.8454017,
+              52.3793194
+            ],
+            [
+              4.8451919,
+              52.379315
+            ],
+            [
+              4.8451728,
+              52.3792751
+            ],
+            [
+              4.8451424,
+              52.3792036
+            ],
+            [
+              4.8449285,
+              52.3787104
+            ],
+            [
+              4.8449304,
+              52.3787102
+            ],
+            [
+              4.8448799,
+              52.3785932
+            ],
+            [
+              4.8448776,
+              52.3785933
+            ],
+            [
+              4.8447294,
+              52.3782521
+            ],
+            [
+              4.8447757,
+              52.3782437
+            ],
+            [
+              4.8447274,
+              52.378133
+            ],
+            [
+              4.8448837,
+              52.3781085
+            ],
+            [
+              4.8449161,
+              52.3781042
+            ],
+            [
+              4.844949,
+              52.3781015
+            ],
+            [
+              4.844982,
+              52.3781003
+            ],
+            [
+              4.8450152,
+              52.3781007
+            ],
+            [
+              4.8450545,
+              52.378103
+            ],
+            [
+              4.8450812,
+              52.377976
+            ],
+            [
+              4.845123,
+              52.3779789
+            ],
+            [
+              4.8451234,
+              52.3779767
+            ],
+            [
+              4.8452052,
+              52.3779929
+            ],
+            [
+              4.8452053,
+              52.3779936
+            ],
+            [
+              4.8454434,
+              52.3780407
+            ],
+            [
+              4.8457805,
+              52.3781071
+            ],
+            [
+              4.84572,
+              52.3782221
+            ],
+            [
+              4.8454821,
+              52.3781752
+            ],
+            [
+              4.8454866,
+              52.3781668
+            ],
+            [
+              4.845357,
+              52.3781417
+            ],
+            [
+              4.8451018,
+              52.3786267
+            ],
+            [
+              4.8451254,
+              52.3786824
+            ],
+            [
+              4.845586,
+              52.3787734
+            ],
+            [
+              4.8455033,
+              52.3789299
+            ],
+            [
+              4.8454455,
+              52.3789188
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 31.14,
+      "height": 31.14,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-stadsloket-west.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012118358"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "stadsloket-west",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012118358/w03-163.jpg",
+          "staging/pand-reference-walls/0363100012118358/w03-163.jpg",
+          "staging/pand-reference-walls/0363100012118358/w01-285.jpg",
+          "staging/pand-reference-walls/0363100012118358/w01-285.jpg",
+          "staging/pand-reference-walls/0363100012118358/w01-285.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "storey-height/walls[4]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 5st 8b",
+          "brick-bay-grid 6st 6b",
+          "curtain-wall 6st 20b",
+          "curtain-wall 6st 20b",
+          "brick-bay-grid 5st 14b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Signature: the three crosses MODELLED (kit component crosses, red, at the left end of the south front); balcony galleries with bar rails MODELLED (balconies storeys 1 to 4, bars); shop plinth MODELLED (plinth-shopfronts; shop signs MANZARAM / FEBO SKIPPED: temporary tenants); the red-framed west window wall SIMPLIFIED (kit curtain wall with maroon frames, 36 bays; the perforated sun screens SKIPPED: too-small and temporary-looking panels 0.2 m proud); the left-edge crosses stand on a free pylon in the photograph, here on the wall; the stadsloket entrance is not identifiable in the panoramas (no sign legible): SKIPPED not-visible; the east wall (72/142/143, no panorama) carries an INFERRED plain window grid so it is not a blank slab."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012118358",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T21:48:22.853Z"
     }
   ]
 }

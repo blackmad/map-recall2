@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+## Libraries and stadsloketten as large recipes (2026-10-13, evening)
+
+Lane `large/public-buildings-2-20261013`. `libraries-match.ts` (25 OBA
+branches with pand ids, panorama years, reference status) and
+`civic-offices-match.ts` (8 stadsloketten / stadsdeelkantoren) share
+`public-match-lib.ts`, which falls back to the BAG pand under the OSM point
+when the address geocodes more than 100 m away (OBA Linnaeus 434 m off,
+Stadsloket Centrum 679 m). Nine recipes installed as `ordinary` entries:
+OBA Javaplein (11.7k tris), Olympisch Kwartier (10.9k), Linnaeus (2.5k,
+with the reversed-alphabet fascia band in plain capitals), Mercatorplein
+(5.7k, three balcony decks); Stadsloket Oost (4.3k), Noord (3.3k),
+Zuidoost (8.5k, "Stadsloket" on the two-storey hall), West (11.3k) and
+Stadsdeelkantoor Nieuw-West (10.2k). The red St Andrew's crosses on Noord,
+West and Nieuw-West come from a new `crosses` wall-group component
+(closed diagonal prisms; flat glyphs cost 38.7 m of open edge). Skipped
+with reasons: De Hallen and Stadsloket Centrum (already covered by
+`de-hallen` and `stadhuis`), Waterlandplein and Stadsloket Zuid (not in the
+building tiles), Slotermeer (identity unverified), Stadsloket Nieuw-West
+(a unit in the Osdorpplein rebuild). `build-poi-backlog.ts` tags 33
+entries `publicBuilding: library|civic`. Lane finding: `audit:glb --id`
+matches landmarks only, so ordinary entries get the shell audit by
+`--file`; with `--only-geometry` every large recipe shows ~0.06 m² of
+glass/frame overlap per opening (0.8 m² on the 48-opening Zeeburg police
+bureau), a kit-level item.
+
+
 ## Begijnhof and the Slavernijverleden memorial (2026-10-13, evening)
 
 Lane `landmarks/queue-5a-20261013`, continued. The Begijnhof is one
