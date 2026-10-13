@@ -689,6 +689,15 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Models in the game that fail the hard gates** (lane reports 2026-10-13):
+  `jodenbreestraat-11` (holes 116 loops, largest 53.7 m; z-fight 118 m²;
+  28 buried openings; 0 % material slots), `academie-theater-dans` (607
+  hole loops, a 2,913 m² detached part, z-fight 64 m²), `booking-hq`
+  (z-fight 2.8 m², window rhythm, buried 3 > baseline 2). Fix in their
+  builders or hold them (`status: held`) until fixed. Also: the Dam
+  look-consistency shot shows red pitched roofs right of the Palace turning
+  into flat grey lids after the sun/mood merge (cause not found; compare
+  against freshly built bundles).
 - **Z-fight survey backlog** (`artifacts/zfight-audit/report.md` in the lane,
   regenerate with `scripts/landmarks/zfight-survey.ts`): 286 of 390 models
   above the 0.5 m² new-export gate. Top class is "window frame 2 cm proud of
