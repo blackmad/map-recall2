@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+## Police bureaus, pass 2: twelve more bureaus as large recipes (2026-10-13)
+
+Lane `landmarks/police-bureaus-2-20261013` (Sonnet). All through the
+existing components (`entrance`, `canopy`, `signage`, `garageDoors`,
+`police.lamp`, `piers`), no bespoke builder, `test:block-kit-installed`
+identical. Installed as `ordinary-<pand>`: Lijnbaansgracht 3,250 tris,
+Nieuwezijds Voorburgwal 2,425 (POLITIE on the hall glazing, canopy, garage
+door), Zuid-De Pijp 840 (wall lettering, lamp), IJ-tunnel 2,442 (shared fire
+station: red BRANDWEER fascia, 8 garage doors), Houtmankade 2,999, Oost
+Watergraafsmeer 5,800 (gold POLITIE letters, roller door, lamp), Postjesweg
+2,113 (letters, 3 roller doors, lamp), Meer en Vaart 1,710, Flierbosdreef
+869, Boven-IJ 1,525, Politiepost IJburg 3,227 (gate portal; shares its pand
+with housing, whole block modelled), Johan Huizingalaan 757 6,839 (1959
+frame building; the unit is identified by BAG and the OSM label only). Every
+`audit:glb` PASS. Two 3DBAG seams (Flierbosdreef surface 105, Huizingalaan
+242, 13–14 m open roof edge in the bare shell) closed by giving the wall its
+own `system: blank` group. Ornament lists per bureau are in each
+`intent.json` notes (modelled / simplified / skipped with reason). The
+integrator added five OSM ways under the Zuid-De Pijp pand to its aliases
+and suppress so `check:osm-under-models` stays at 0, rebuilt covers and the
+signature bundle. `fit-golden` 54 identical. Panoramas CC BY 4.0, BAG, 3DBAG.
+
+
 ## Migration step 3 behind `?recipeTiles=1`: recipe tiles, compiler, `TileBuildings` near tier (2026-10-13)
 
 Lane `tiles/recipe-tiles-20261013` (Opus). **Schema**
