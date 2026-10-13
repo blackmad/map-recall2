@@ -892,6 +892,10 @@
    }
   ],
   "identical": [],
+  "roof": {
+   "source": "recipe",
+   "evidence": "strip.jpg: even dark roofs behind the dormers and gables; the crumpled 3DBAG roof over 145-153 is not on the photo (review 2026-10-11, strip.jpg vs ortho/street/overhead before-after)"
+  },
   "notes": [
    "Leaf-off capture 2023-01-12 (the 2024-11-29 strip is hidden behind street trees); 149-151 span on 2024-11-29. Face ends at 153; 155-167 is one 70 m building (236799) and 169 a 1979 block (152566): both left out as large-tier.",
    "Pass 2 (bilder-limits lane): 145, 147 and 153 have mansard roofs whose flat top 3DBAG carries out to the facade (eaves 2.5-3.5 m above the cornice); their eaves are strip-measured and the front roof is re-pitched (measuredEaves.frontRoof) instead of a photo-trusted cornice group. 135-139 and 149-151 are split into their houses."

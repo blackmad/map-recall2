@@ -673,8 +673,10 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       const zone: [number, number] = front.shopfront.residentialDoor || front.shopfront.bays ? [Math.max(0, layout.shopZone[0] - SHOP.pierM - 0.02), Math.min(mw, layout.shopZone[1] + SHOP.pierM + 0.02)] : [0, mw];
       const zw = Math.floor((zone[1] - zone[0]) * 1000 - 1) / 1000, at = (x: number, w: number) => round(flipX(place(0, x, w), w));
       const sign = front.shopfront.sign;
-      // Piers and stall riser in the shopfront paint.
-      const pierH = round(top - plinth - 0.02);
+      // Piers and stall riser in the shopfront paint. With a fascia the piers stop under it: both end on the zone edge,
+      // and their coplanar end faces counted as z-fight in the geometry audit (~0.05 m2 per shop end; with 6-8 shops a
+      // face failed --install, bilder-161259-236206 / 236022-167243).
+      const pierH = round((front.shopfront.fascia ? top - SHOP.fasciaM - SHOP.fasciaGapM : top) - plinth - 0.02);
       const blocks = [{id: 'shop-pier-left', leftM: at(zone[0], SHOP.pierM), bottomM: round(plinth), widthM: SHOP.pierM, heightM: pierH, depthM: 0.1, surface: 'shop' as const},
         {id: 'shop-pier-right', leftM: at(zone[1] - SHOP.pierM - 0.001, SHOP.pierM), bottomM: round(plinth), widthM: SHOP.pierM, heightM: pierH, depthM: 0.1, surface: 'shop' as const}];
       elevation.blocks = seen([...(elevation.blocks?.value ?? []), ...blocks]);

@@ -24516,7 +24516,9 @@
             ]
           ]
         ]
-      }
+      },
+      status: "held",
+      heldReason: '2026-10-13: user gallery review "some incorrect windows". Wing and old front now regular per-section grids, but the red-brick middle section was not reworked, the Dam-front rows (5,5,7,7,7) disagree with the photo count, the modern wing in game is unchecked, and three of four sides are blank 3DBAG massing at gallery size (Warmoesstraat / Oudezijds Voorburgwal fronts not modelled).'
     },
     {
       id: "fatih-moskee",
@@ -25087,11 +25089,11 @@
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#4b483c",
-        stone: "#6e6c62",
-        concrete: "#5e5c53",
-        greyBrick: "#3b392f",
-        red: "#8f5535",
+        brick: "#b69468",
+        stone: "#c9c5ba",
+        concrete: "#b7b3a8",
+        greyBrick: "#9a8160",
+        red: "#c4673a",
         glass: "#3d4a54",
         bronze: "#2c2e30"
       },

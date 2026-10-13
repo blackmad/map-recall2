@@ -85,7 +85,7 @@ export function buildMaartenLutherkerk(_w: number, _d: number, b: BuildingTools)
     quad(P(c - HW, Y0, 0), P(c + HW, Y0, 0), P(c + HW, Y0, -DEPTH), P(c - HW, Y0, -DEPTH), P(c, 9, -0.4));
     // timber double doors in a stone surround, hanging lamp, slit window
     sl(F, c, Y0 - 0.04, 1.5, 2.49, 0.1, 'ochre', -DEPTH);
-    sl(F, c, Y0 - 0.04, 0.05, 2.49, 0.14, 'dark', -DEPTH);
+    sl(F, c, Y0 - 0.04, 0.1, 2.49, 0.14, 'dark', -DEPTH); // photo: the leaves meet at a ~0.1 m dark stile
     for (const dt of [-0.37, 0.37]) sl(F, c + dt, Y0 + 0.9, 0.28, 0.95, 0.15, 'glass', -DEPTH);
     sl(F, c, Y0 + 2.45, 1.7, 0.18, 0.22, 'stone', -DEPTH);
     sl(F, c, 7.1, 0.27, 3.6, 0.1, 'dark', -DEPTH);

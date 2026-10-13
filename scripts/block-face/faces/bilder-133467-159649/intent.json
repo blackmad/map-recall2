@@ -332,6 +332,10 @@
     "frontRoof": {}
    }
   ],
+  "roof": {
+   "source": "recipe",
+   "evidence": "strip.jpg: tiled and slate mansards over the cornices; the 3DBAG pyramid and wedges on the right are not on the photo (review 2026-10-11, strip.jpg vs ortho/street/overhead before-after)"
+  },
   "notes": [
    "2024-11-29 capture. Folds the standalone recipe bilder-153782 into a face with its neighbours 169-171 (Mensink) and 175, which had no model."
   ]

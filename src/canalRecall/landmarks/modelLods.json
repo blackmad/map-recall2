@@ -1176,7 +1176,7 @@
   "triangles": 1004
  },
  "maarten-lutherkerk": {
-  "sourceHash": "fd98686c3bc0062a",
+  "sourceHash": "7a5661827df4e183",
   "buildVersion": 2,
   "bytes": 28348,
   "triangles": 938
@@ -1374,10 +1374,10 @@
   "triangles": 2145
  },
  "krasnapolsky": {
-  "sourceHash": "cf34aa9a4a1dae54",
+  "sourceHash": "cf57d032168012a0",
   "buildVersion": 2,
-  "bytes": 59072,
-  "triangles": 2898
+  "bytes": 58176,
+  "triangles": 2833
  },
  "fatih-moskee": {
   "sourceHash": "df6bdf127192554a",
@@ -1392,10 +1392,10 @@
   "triangles": 3088
  },
  "pakhuis-de-zwijger": {
-  "sourceHash": "e9f725734b0bb150",
+  "sourceHash": "c47b70cf06cc4b34",
   "buildVersion": 2,
-  "bytes": 41272,
-  "triangles": 2166
+  "bytes": 41780,
+  "triangles": 2194
  },
  "victoria-hotel": {
   "sourceHash": "5e9cae9e94546afc",

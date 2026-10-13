@@ -5,15 +5,23 @@
  *    otherwise; slivers from near-collinear outlines broke it on 087959, utrechtse 178874, wallen-oza 177922);
  *  - Bilderdijkstraat 136 (081118): the roof edge ended 0.1 mm past a near-collinear corner and the side wall at the
  *    face's left end lost its closure (an open side);
- *  - a 30 degree pitch with no flat top (marnix-124-138 174914) ordered two knots backwards and overlapped bands.
+ *  - a 30 degree pitch with no flat top (marnix-124-138 174914) ordered two knots backwards and overlapped bands;
+ *  - Bilderdijkstraat 158-162 (162443; after the tower-bay / split-front lane landed): one eaves for four fronts left
+ *    a 34 m open loop on the facade, and roof bands flush on the tower caps z-fought; per-front eaves, and tower
+ *    bays take the neighbour's roof;
+ *  - dormer gables 5 mm under steep dormer roofs counted as z-fight in the geometry audit (1.1 m2 on 166802), which
+ *    blocked --install for recipe and survey roofs alike; now 1.5 cm along the roof normal.
  *   node --import tsx --test src/canalRecall/blockFace/recipeRoof.test.ts
  */
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 import type {BuildingFacts} from '../buildingRecipe/facts.ts';
 import {surveyRecipe} from '../../../scripts/canalhouse-recipes/survey-recipe.ts';
+import {loadMaterialSoup} from '../../../scripts/landmarks/material-soup.ts';
+import {geometryAudit} from '../landmarks/geometryAudit.ts';
 import {compileBlockFace, decodePands} from './compile.ts';
 import {validateBlockFace} from './intent.ts';
 import {recipeRoofFacts} from './recipeRoof.ts';
@@ -75,4 +83,26 @@ test('a face without continuity.roof keeps the 3DBAG roof (no recipe roofs)', as
   assert.equal(face.continuity.roof, undefined);
   const r = await compileBlockFace(face, facts, 'face-survey-roof-test', {inferRears: false});
   assert.equal(r.recipeRoofs, undefined);
+});
+
+test('Bilderdijkstraat 158-162 (162443: one pand, two houses, tower bays): per-front eaves, towers take the neighbour roof', async () => {
+  const {face, facts} = load('bilder-233580-162444');
+  const sj = JSON.parse(fs.readFileSync(path.join(FACES, 'bilder-233580-162444', 'strip.json'), 'utf8'));
+  const r = await compileBlockFace(face, facts, 'face-recipe-towers-test', {inferRears: false, roofSource: 'recipe', strip: {heightPx: sj.height, pixelsPerMetre: sj.pixelsPerMetre, groundNAP: sj.groundNAP}});
+  assert.deepEqual(r.gates.filter(g => !g.pass), []);
+  const rr = r.recipeRoofs!.find(x => x.pandId.endsWith('162443'))!;
+  for (const t of ['t1', 't2']) assert.ok(rr.notes.some(n => n.startsWith(`front ${t}: tower bay`)), `${t} is a tower bay: ${rr.notes}`);
+  // The left house (l) and the house between the towers (m) keep their own fitted eaves at the frontage.
+  const fronts = r.perPand.find(p => p.pand.endsWith('162443'))!.fronts, per = rr.notes.find(n => n.startsWith('per-front eaves'))!;
+  for (const id of ['l', 'm']) assert.ok(per.includes(String(Math.round(fronts.find(f => f.id === id)!.eavesM * 1000) / 1000)), `${id} eaves in ${per}`);
+});
+
+test('dormer gable caps clear steep dormer roofs: no roof z-fight in the geometry audit (bilder-166802-235892)', async () => {
+  const {face, facts} = load('bilder-166802-235892');
+  const r = await compileBlockFace(face, facts, 'face-dormer-cap-test', {inferRears: false, roofSource: 'recipe'});
+  const tmp = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'dormer-')), 'chunk.glb');
+  fs.writeFileSync(tmp, r.chunk.glb);
+  const g = geometryAudit(await loadMaterialSoup(tmp), {skipRhythm: true});
+  const roof = g.zfight.patches.filter(p => p.orientation === 'roof' && !p.near);
+  assert.deepEqual(roof.map(p => p.materials), []);
 });

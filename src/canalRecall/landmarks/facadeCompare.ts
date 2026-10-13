@@ -24,8 +24,10 @@ export type FacadeInventory = {
   name: string;
   /** Compass bearing (degrees, 0 = north, 90 = east) of the facade's outward normal. */
   bearing: number;
-  /** Openings per row, bottom row first, as counted on the photo. A row is one storey band. */
-  rows?: number[];
+  /** Openings per row, bottom row first, as counted on the photo. A row is one storey band. `null` marks a band
+   * the photo does not show (cut off, hidden, too small to count): it is skipped in the comparison. A run of
+   * continuous glazing (ribbon window: panes divided only by mullions/bars <= ~0.3 m) is ONE opening. */
+  rows?: (number | null)[];
   /** Distinct vertical window axes across the facade. */
   columns?: number;
   /** Is the opening pattern mirror-symmetric about the facade centre? */
@@ -45,6 +47,11 @@ export type FacadeInventory = {
   openings?: string[];
   /** Restrict to [t0, t1] metres along the facade (viewer's left → right) when other wings face the same way. */
   span?: [number, number];
+  /** Crop the measured face to what the photo frames: metres from the face's viewer-left silhouette edge
+   * (after `span`/`depthBand`), viewer's left → right. Openings, symmetry centre, width and gables use only this window. */
+  alongM?: [number, number];
+  /** Crop the measured face vertically: metres above the model's ground (y = 0), [from, to]. */
+  heightM?: [number, number];
   /** Only geometry within this many metres of the facade's front-most plane counts (default 10). */
   depthBand?: number;
   /** Allowed per-row count difference (default 0; rows with ≥ 12 openings allow 1). */
@@ -72,6 +79,8 @@ export type FacadeMeasure = {
   bays?: {t0: number; t1: number; rows: number[]; symmetry: number}[];
   /** Pairwise opening-mask IoU between bays (bay-local frames), when `bays` is declared. */
   bayIoU?: number[][];
+  /** The crop window applied (metres, image frame: t from the render's left edge, y from its bottom), if `alongM`/`heightM` were given. */
+  crop?: {t0: number; t1: number; y0: number; y1: number};
   /** Rendered elevation: RGB bytes, `cols × rowsPx`, top row first. */
   image: {data: Uint8Array; width: number; height: number; cell: number; tMin: number; yMax: number};
 };
@@ -216,8 +225,25 @@ export function measureFacade(soup: MaterialSoup, f: FacadeInventory, cell = 0.1
   const {W, H, mat, shade} = r;
   const openingNames = new Set((f.openings ?? ['glass', 'dark']).map(s => s.toLowerCase()));
   const isOpening = soup.materials.map(m => openingNames.has(m.name.toLowerCase()));
+  // Silhouette: any rendered pixel (whole face), then the optional photo-span crop.
+  let sx0 = W, sx1 = -1;
+  for (let i = 0; i < W * H; i++) if (mat[i] >= 0) { const x = i % W; sx0 = Math.min(sx0, x); sx1 = Math.max(sx1, x); }
+  const fullX0 = sx0;
+  let cy0 = 0, cy1 = H;
+  if (f.alongM && sx1 >= sx0) {
+    sx1 = Math.min(sx1, fullX0 + Math.round(f.alongM[1] / cell) - 1);
+    sx0 = Math.min(sx1, fullX0 + Math.max(0, Math.round(f.alongM[0] / cell)));
+  }
+  if (f.heightM) {
+    cy0 = Math.max(0, Math.round((r.yMax - f.heightM[1]) / cell));
+    cy1 = Math.min(H, Math.round((r.yMax - f.heightM[0]) / cell));
+  }
+  const cropped = !!(f.alongM || f.heightM);
   const raw = new Uint8Array(W * H);
-  for (let i = 0; i < W * H; i++) raw[i] = mat[i] >= 0 && isOpening[mat[i]] && r.facing[i] >= 0.6 ? 1 : 0;
+  for (let y = cy0; y < cy1; y++) for (let x = Math.max(0, sx0); x <= sx1; x++) {
+    const i = y * W + x;
+    raw[i] = mat[i] >= 0 && isOpening[mat[i]] && r.facing[i] >= 0.6 ? 1 : 0;
+  }
   const mask = close(raw, W, H, Math.max(1, Math.round(0.15 / cell)));
   const minArea = 0.15 / (cell * cell);
   const openings: Opening[] = components(mask, W, H)
@@ -233,9 +259,7 @@ export function measureFacade(soup: MaterialSoup, f: FacadeInventory, cell = 0.1
   const rowHeights = rowGroups.map(g => +(g.reduce((a, b) => a + b, 0) / g.length).toFixed(1));
   const columns = cluster(openings.map(o => (o.t0 + o.t1) / 2), 0.5).length;
 
-  // Silhouette: any rendered pixel. Symmetry about the silhouette's horizontal centre.
-  let sx0 = W, sx1 = -1;
-  for (let i = 0; i < W * H; i++) if (mat[i] >= 0) { const x = i % W; sx0 = Math.min(sx0, x); sx1 = Math.max(sx1, x); }
+  // Symmetry about the (cropped) silhouette's horizontal centre.
   let inter = 0, uni = 0;
   for (let y = 0; y < H; y++) for (let x = sx0; x <= sx1; x++) {
     const m = sx0 + sx1 - x;
@@ -248,11 +272,11 @@ export function measureFacade(soup: MaterialSoup, f: FacadeInventory, cell = 0.1
   // Gables: peaks in the top profile with ≥ 1.5 m prominence on both sides, at least 2 m wide at half height.
   const top: number[] = [];
   for (let x = 0; x < W; x++) {
-    let y = 0;
-    while (y < H && mat[y * W + x] < 0) y++;
-    top.push(y < H ? (H - y) * cell : 0);
+    let y = cy0;
+    while (y < cy1 && (mat[y * W + x] < 0 || x < sx0 || x > sx1)) y++;
+    top.push(y < cy1 ? (H - y) * cell : 0);
   }
-  const gables = countPeaks(top, cell, 1.5);
+  const gables = countPeaks(top.slice(Math.max(0, sx0), sx1 + 1), cell, 1.5);
 
   let bays: FacadeMeasure['bays'], bayIoU: number[][] | undefined;
   if (f.bays && f.bays > 0 && sx1 >= sx0) {
@@ -290,8 +314,9 @@ export function measureFacade(soup: MaterialSoup, f: FacadeInventory, cell = 0.1
     data.set(rgb, i * 3);
   }
   return {
-    name: f.name, width: (sx1 - sx0 + 1) * cell, height: (r.yMax - r.yMin), openings, rows, rowHeights, columns,
+    name: f.name, width: (sx1 - sx0 + 1) * cell, height: (cy1 - cy0) * cell, openings, rows, rowHeights, columns,
     symmetry: +symmetry.toFixed(2), gables, bays, bayIoU,
+    crop: cropped ? {t0: sx0 * cell, t1: (sx1 + 1) * cell, y0: (H - cy1) * cell, y1: (H - cy0) * cell} : undefined,
     image: {data, width: W, height: H, cell, tMin: r.tMin, yMax: r.yMax},
   };
 }
@@ -326,8 +351,8 @@ export function compare(f: FacadeInventory, m: FacadeMeasure): Check[] {
   if (f.rows) {
     const tol = (n: number) => f.tolerance ?? (n >= 12 ? 1 : 0);
     const sameLength = f.rows.length === m.rows.length;
-    const rowsOk = sameLength && f.rows.every((n, i) => Math.abs(n - m.rows[i]) <= tol(n));
-    out.push({facade: f.name, what: 'openings per row (bottom→top)', expected: f.rows.join(','), measured: `${m.rows.join(',')} at y≈${m.rowHeights.join(',')} m`, pass: rowsOk});
+    const rowsOk = sameLength && f.rows.every((n, i) => n === null || Math.abs(n - m.rows[i]) <= tol(n));
+    out.push({facade: f.name, what: 'openings per row (bottom→top)', expected: f.rows.map(n => n ?? '?').join(','), measured: `${m.rows.join(',')} at y≈${m.rowHeights.join(',')} m`, pass: rowsOk});
   }
   if (f.columns !== undefined) out.push({facade: f.name, what: 'window axes', expected: String(f.columns), measured: String(m.columns), pass: Math.abs(f.columns - m.columns) <= (f.tolerance ?? 0)});
   if (f.symmetric !== undefined) {

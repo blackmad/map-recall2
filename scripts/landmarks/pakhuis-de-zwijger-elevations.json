@@ -16,7 +16,15 @@
       "columns": 8,
       "symmetric": false,
       "gables": 2,
-      "countedBy": "blind haiku counter 2026-10-11"
+      "countedBy": "blind haiku counter 2026-10-11",
+      "alongM": [
+        0,
+        30.5
+      ],
+      "heightM": [
+        6,
+        30
+      ]
     },
     {
       "name": "north (IJhaven side, tall glazed strips)",
@@ -34,7 +42,11 @@
       "columns": 5,
       "symmetric": true,
       "gables": 0,
-      "countedBy": "blind haiku counter 2026-10-11"
+      "countedBy": "blind haiku counter 2026-10-11",
+      "heightM": [
+        0,
+        22
+      ]
     },
     {
       "name": "east (blank lettered brick, oblique)",
@@ -48,7 +60,15 @@
       "columns": 3,
       "symmetric": false,
       "gables": 0,
-      "countedBy": "blind haiku counter 2026-10-11"
+      "countedBy": "blind haiku counter 2026-10-11",
+      "heightM": [
+        0,
+        22
+      ],
+      "alongM": [
+        18.0,
+        26.5
+      ]
     }
   ]
 }
