@@ -1,7 +1,8 @@
 /** Original kit/houseboat geometry shared by worker and inline fallback. */
 import { KITS, kitGeometry, type PartInput, type KitPartGeometry } from './landmarkKits.js';
 import { FRONT_LIST } from './landmarkFrontData.js';
-import { frontKitGeometry, lookHex } from './landmarkFronts.js';
+import { frontKitGeometry } from './landmarkFronts.js';
+import { lookHex } from './look/palette.js';
 import { houseboatGeometry, type Houseboat } from './houseboats.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
 import { ORIGIN, asPolygons, type Feature, type BuildingLook } from './threeBuildingFeatures.js';
