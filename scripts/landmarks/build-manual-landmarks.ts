@@ -1,3 +1,4 @@
+import {buildObrechtkerk} from './obrechtkerk-builder';
 import {buildDeDuif} from './de-duif-builder';
 import {buildMozesEnAaronkerk} from './mozes-en-aaronkerk-builder';
 import {buildOosterkerk} from './oosterkerk-builder';
@@ -526,6 +527,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='oosterkerk')buildOosterkerk(w,d,helpers);
     else if(id==='mozes-en-aaronkerk')buildMozesEnAaronkerk(w,d,helpers);
     else if(id==='de-duif')buildDeDuif(w,d,helpers);
+    else if(id==='obrechtkerk')buildObrechtkerk(w,d,helpers);
     else if(id==='electric-ladyland')buildElectricLadyland(w,d,helpers);
     else if(id==='cafe-kobalt')buildCafeKobalt(w,d,helpers);
     else if(id==='podium-mozaiek')buildPodiumMozaiek(w,d,helpers);
