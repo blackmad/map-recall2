@@ -16,6 +16,8 @@ import { plainBounds, withinView } from '../../../src/canalRecall/rendererShared
 import { normaliseLandmarkMaterials } from '../../../src/canalRecall/landmarks/landmarkShading.ts';
 import { cityLookEnabled } from '../../../src/canalRecall/look/cityLook.ts';
 import { INFERRED_SLOT_SOURCE } from '../../../src/canalRecall/look/materialSlotInference.ts';
+import { landmarkHighlightStates } from '../../../src/canalRecall/look/highlightLandmarks.ts';
+import { applyMeshHighlight, highlightRecipe } from '../../../src/canalRecall/look/highlight.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
 
@@ -308,6 +310,9 @@ export class SignatureLandmarks {
    *  question looks the same whichever representation is on screen. */
   setActiveLandmark(landmark) {
     this.activeLandmarkId = landmark && landmark.id ? landmark.id : null;
+    this._highlightLandmark = landmark || null;
+    // `?highlight=a|b|c` (look/highlight.ts): materials kept, passes, dimmed neighbours, building types per pand.
+    if (highlightRecipe().keepMaterials) return this._applyHighlightStyle(landmark);
     for (const entry of this._entries || []) {
       const highlighted = (entry.spec.landmarkId === this.activeLandmarkId || (entry.spec.relatedLandmarkIds || []).includes(this.activeLandmarkId));
       if (entry.highlighted === highlighted) continue;
@@ -332,6 +337,20 @@ export class SignatureLandmarks {
         }
       });
     }
+    this.map.triggerRepaint();
+  }
+
+  _applyHighlightStyle(landmark) {
+    const city = this._recipeLook?.city;
+    const { states, ids, focus } = landmarkHighlightStates(this._entries || [], landmark);
+    for (const entry of this._entries || []) {
+      const state = states.get(entry) || 'plain';
+      if (entry.highlightState === state) continue;
+      entry.highlightState = state;
+      entry.highlighted = state === 'highlight';
+      applyMeshHighlight(THREE, entry.group, state, { cityVariant: (m, s) => city ? city.dimmed(m, s === 'dim') : m });
+    }
+    for (const area of Object.values(window.__canalRecallBuildingTypes || {})) area.setHighlighted?.(ids, focus);
     this.map.triggerRepaint();
   }
 
@@ -906,10 +925,10 @@ export class SignatureLandmarks {
     entry.spare = outgoing; entry.spareLevel = entry.level;
     entry.level = level;
     // Highlight, depth bias and shadows are per material: reapply to the new level.
-    const active = entry.highlighted;
-    entry.highlighted = false; entry.depthBias = null;
+    const active = entry.highlighted || !!entry.highlightState;
+    entry.highlighted = false; entry.highlightState = null; entry.depthBias = null;
     this._applySuppression();
-    if (active) this.setActiveLandmark({ id: this.activeLandmarkId });
+    if (active) this.setActiveLandmark(this._highlightLandmark || { id: this.activeLandmarkId });
     if (this.sharedFrame) this.sharedFrame.constructor.setShadows(entry.group, true, true);
     this.map.triggerRepaint();
   }
