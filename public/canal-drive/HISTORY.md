@@ -1,5 +1,34 @@
 # Canal Recall — what is built
 
+## The black blocks under the shared frame were a depth-range bug (2026-10-14, night)
+
+Lane `look/shadow-fill-20261014`. MapLibre draws its 3D custom layer with
+`gl.depthRange(0, k)` (k = 0.968 measured in the game). Depth range is GL
+state, not framebuffer state, so three's shadow pass into its own
+framebuffer inherited it: every depth in the shadow map was scaled by k
+while receivers compared against the unscaled light depth, and a surface
+met a phantom occluder (1−k)·z nearer the sun, ~10 m in the middle of
+the 600 m box. Sun-facing walls shadowed themselves: 95 % of the Royal
+Palace's pixels and 64 % of the Nassaukade 318 chunk, 45 % of all
+building pixels at the Dam; CPU rays toward the sun found an occluder for
+only 1–8 % of them, which is how the lane proved it. Bias, map size and
+`shadowSide` changed nothing; the model's own `castShadow` off cleared it.
+`fullDepthRangeForShadowMap` in `sharedFrame.ts` draws the shadow map at
+[0, 1] and restores MapLibre's range for the main pass
+(`renderer.shadowMap.fullDepthRange = false` for before/after). After the
+fix 96 % of the chunk's remaining shadowed pixels have a real occluder
+(its own gables and dormers). `SHADOW_FILL = 0.5` (`shadowIntensity`):
+cast shadow keeps half the sun; the reference brick #9a5240 in cast
+shadow reads ≥ 70 luma in all six pipelines, lit walls unchanged within 1.
+Near-black pixels: Nassaukade 52 % → 6.6 %, Palace 29 % → 0.1 %. Ride
+perf: map render median 2.8 → 2.7 ms, all landmarks resident 6.4 → 3.8.
+`tests/e2e/shadow-fill.spec.ts` (four spots, both looks, three
+configurations) and a "shadow fill" case in `building-look.spec.ts`;
+`docs/LOOK.md` §Light has the rule and tables. Side finding: the Palace
+gets worse with normal bias ≥ 0.5, which hints at inward-facing normals
+in that GLB.
+
+
 ## Landmark queue, batch 7: five memorials (2026-10-14, night)
 
 Lane `landmarks/queue-7-20261014`. The lane checked the backlog's
