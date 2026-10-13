@@ -20,6 +20,9 @@ const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slic
 const CATALOGUE = 'public/canal-drive/ordinary-buildings-data/catalogue.json', MODELS = 'public/canal-drive/models/ordinary-buildings';
 const ids = (arg('house') ?? '').split(',').filter(Boolean);
 if (!ids.length) throw Error('Use --house=<id>[,<id>...]');
+const large = [];
+for (const id of ids) if (JSON.parse(await fs.readFile(`scripts/building-recipes/houses/${id}/intent.json`, 'utf8')).kind === 'large') large.push(id);
+if (large.length) throw Error(`${large.join(', ')}: kind "large" installs as an ordinary building via scripts/building-recipes/install-large.ts`);
 
 const results = [];
 for (const id of ids) results.push(await compileHouse(id));
