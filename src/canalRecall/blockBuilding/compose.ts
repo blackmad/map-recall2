@@ -161,14 +161,15 @@ class Ctx {
 
 export interface Cell { u0: number; u1: number; v0: number; v1: number; bay: number; floor: number; bays: number }
 /**
- * A glazing bar, door leaf or stile in front of the glass. With the default 1.5 cm offset it is one quad (its edges lie
- * within the 2 cm the open-edge gate treats as touching the glass). With `barOffsetM` set (opt-in) it is a box standing on
- * the glass plane `d0` out to `d1`: far enough to clear the coplanar z-fight band, and still closed (no open edges).
+ * A glazing bar, door leaf or stile in front of the glass. Within the default 1.5 cm standoff it is one quad (its edges lie
+ * within the 2 cm the open-edge gate treats as touching the glass). Deeper (`ComposeOptions.barOffsetM`, or a window's
+ * `barD` from the large tier's `deepBars`) it is a box standing on the glass plane `d0` out to `d1`: far enough to clear
+ * the coplanar z-fight band, and still closed (no open edges). One helper for the three lanes that needed it (2026-10-13).
  */
 export function barQuad(c: Ctx, slot: Slot, Q: (u: number, v: number, d: number) => V3, a: number, b: number, lo: number, hi: number, d0: number, d1: number, part: number) {
   const { mesh, p } = c;
   mesh.quad(slot, Q(a, lo, d1), Q(b, lo, d1), Q(b, hi, d1), Q(a, hi, d1), part, p.n);
-  if (c.barOut <= 0.015) return;
+  if (d1 - d0 <= 0.015) return; // within the default standoff: one quad, as every legacy export has it
   mesh.quad(slot, Q(a, hi, d0), Q(b, hi, d0), Q(b, hi, d1), Q(a, hi, d1), part, UP);
   mesh.quad(slot, Q(a, lo, d0), Q(b, lo, d0), Q(b, lo, d1), Q(a, lo, d1), part, DOWN);
   mesh.quad(slot, Q(a, lo, d0), Q(a, hi, d0), Q(a, hi, d1), Q(a, lo, d1), part, scale(p.r, -1));
@@ -268,8 +269,9 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
   if (mulls.length || rows.length || w.transom) {
     // frameW 0 (no frame ring: the glass fills the opening) still takes 6 cm glazing bars
     const bars = c.part(), bw = fw > 0 ? fw : 0.06;
-    for (const f of mulls) { const u = u0 + (u1 - u0) * f; barQuad(c, frameSlot, Q, u - bw / 2, u + bw / 2, v0 + fw, v1 - fw, 0, c.barOut, bars); }
-    for (const f of [...rows, ...(w.transom ? [w.transom] : [])]) { const v = v0 + (v1 - v0) * f; barQuad(c, frameSlot, Q, u0 + fw, u1 - fw, v - bw / 2, v + bw / 2, 0, c.barOut, bars); }
+    const bd = w.barD ?? c.barOut;
+    for (const f of mulls) { const u = u0 + (u1 - u0) * f; barQuad(c, frameSlot, Q, u - bw / 2, u + bw / 2, v0 + fw, v1 - fw, 0, bd, bars); }
+    for (const f of [...rows, ...(w.transom ? [w.transom] : [])]) { const v = v0 + (v1 - v0) * f; barQuad(c, frameSlot, Q, u0 + fw, u1 - fw, v - bw / 2, v + bw / 2, 0, bd, bars); }
   }
   if (w.surround) {
     const t = w.surround.t, out = w.surround.out ?? 0.06, sp = c.part();

@@ -1,0 +1,149 @@
+{
+ "schemaVersion": 1,
+ "id": "nieuwendijk-hm-165747",
+ "pand": "0363100012165747",
+ "signature": [
+  "curved-glass-shopfront",
+  "cream-render-front"
+ ],
+ "walls": [
+  {
+   "tag": "w05-115",
+   "bearing": 115,
+   "lengthM": 15.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001530_pano_0004_000217",
+   "capturedAt": "2019-12-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "curved-glass-shopfront",
+     "kind": "window-shape",
+     "where": "ground and first floor, whole width",
+     "approxSizeM": [
+      15.6,
+      8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001530_pano_0004_000217",
+     "how": "ground floor drawn as the same punched bays as the upper floors (the glazed ground system fails the z-fight gate on its 1.5 cm bars); the curve is not drawn (LoD2.2 is flat)"
+    },
+    {
+     "id": "hm-sign",
+     "kind": "sign",
+     "where": "centre of the glass, first floor level",
+     "approxSizeM": [
+      3,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001530_pano_0004_000217",
+     "how": "not drawn: lettering rides on the entrance component, which fails the z-fight gate; glazed bays stand in"
+    },
+    {
+     "id": "lattice-balcony-screen",
+     "kind": "balcony-ironwork",
+     "where": "above the glass, upper floors",
+     "approxSizeM": [
+      15.6,
+      5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001530_pano_0004_000217",
+     "how": "plain dark brick wall with punched windows; the timber lattice is not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w06-123",
+   "bearing": 123,
+   "lengthM": 13.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002037_pano_0000_000774",
+   "capturedAt": "2021-03-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "cream-render-front",
+     "kind": "window-shape",
+     "where": "whole front, three floors",
+     "approxSizeM": [
+      13.5,
+      12
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-002037_pano_0000_000774",
+     "how": "brick-bay-grid, cream palette, plain windows without sills (sills sit coplanar with a low roof at the base)"
+    }
+   ]
+  },
+  {
+   "tag": "w02-174",
+   "bearing": 174,
+   "lengthM": 26.3,
+   "evidence": "photo",
+   "panoId": "b_20250120_0926_Track01_Sphere_00078",
+   "capturedAt": "2025-01-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "steeg-house-fronts",
+     "kind": "window-shape",
+     "where": "three storeys, Dirk van Hasseltssteeg 20-28",
+     "approxSizeM": [
+      26.3,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250120_0926_Track01_Sphere_00078",
+     "how": "one regular five-bay punched front; the differing house widths and gable tops are not drawn"
+    },
+    {
+     "id": "cola-sign",
+     "kind": "sign",
+     "where": "ground floor, left house",
+     "approxSizeM": [
+      1.2,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250120_0926_Track01_Sphere_00078",
+     "skip": {
+      "reason": "too-small",
+      "note": "a shop sign about a metre wide"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-182",
+   "bearing": 182,
+   "lengthM": 16.0,
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000019_pano_0000_003375",
+   "capturedAt": "2016-08-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "corner-shop-glass",
+     "kind": "window-shape",
+     "where": "ground and first floor",
+     "approxSizeM": [
+      16,
+      6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316060226-000019_pano_0000_003375",
+     "how": "left as blank 3DBAG wall: its panel (28 m tall, 13.1 m eaves against an 11.8 m roof behind) fails the eaves gate when given a facade group"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

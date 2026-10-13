@@ -1,0 +1,159 @@
+{
+ "schemaVersion": 1,
+ "id": "nieuwe-achtergracht-253754",
+ "pand": "0363100012253754",
+ "signature": [
+  "paired-window-rows",
+  "roof-edge-dormers"
+ ],
+ "walls": [
+  {
+   "tag": "w03-163",
+   "bearing": 163,
+   "lengthM": 55.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000883",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "paired-window-rows",
+     "kind": "window-shape",
+     "where": "S front, three upper storeys",
+     "approxSizeM": [
+      45,
+      12
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "two-light windows with 3.5 cm proud bars, 13 bays"
+    },
+    {
+     "id": "roof-edge-dormers",
+     "kind": "window-shape",
+     "where": "S front, along the eaves",
+     "approxSizeM": [
+      45,
+      1.2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "how": "cornice band at the eaves; small dormers are not drawn"
+    },
+    {
+     "id": "red-shutters",
+     "kind": "other",
+     "where": "S front, over the windows",
+     "approxSizeM": [
+      1.2,
+      1.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_000883",
+     "skip": {
+      "reason": "temporary",
+      "note": "roller shutters pulled down in the 2021 photo; wall drawn with plain glass"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-30",
+   "bearing": 30,
+   "lengthM": 50.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_001010",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "wide-window-grid",
+     "kind": "window-shape",
+     "where": "NE front, three storeys",
+     "approxSizeM": [
+      45,
+      12
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001975_pano_0000_001010",
+     "how": "two-light windows, 12 bays under a cornice"
+    },
+    {
+     "id": "glazed-stair-tower",
+     "kind": "window-shape",
+     "where": "NE front east end, full-height glass",
+     "approxSizeM": [
+      4,
+      15
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001975_pano_0000_001010",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 4 m glazed stair tower on the end bay"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w01-280",
+   "bearing": 280,
+   "lengthM": 65.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001681_pano_0000_003275",
+   "capturedAt": "2020-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "glass-block-panels",
+     "kind": "window-shape",
+     "where": "west block, central glass-block window",
+     "approxSizeM": [
+      6,
+      6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001681_pano_0000_003275",
+     "how": "plain window group on the 3DBAG wall"
+    }
+   ]
+  },
+  {
+   "tag": "w02-253",
+   "bearing": 253,
+   "lengthM": 57.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0002_000218",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w04-343",
+   "bearing": 343,
+   "lengthM": 51.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000894",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w06-73",
+   "bearing": 73,
+   "lengthM": 47.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001975_pano_0000_000886",
+   "capturedAt": "2021-01-22",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

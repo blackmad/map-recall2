@@ -1,0 +1,134 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "beursplein-5-165051",
+ "pandId": "0363100012165051",
+ "address": "Beursplein 5, Amsterdam: 1913 stone-and-brick bank block (Euronext), Warmoesstraat front",
+ "sources": [
+  {
+   "id": "pano-2025-01-08-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250108_1349_Track26_Sphere_00050/",
+   "image": "staging/pand-reference-walls/0363100012165051/w03-314.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-01-08-w06",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250108_1349_Track28_Sphere_00013/",
+   "image": "staging/pand-reference-walls/0363100012165051/w06-314.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-01-08-w05",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250108_1349_Track28_Sphere_00020/",
+   "image": "staging/pand-reference-walls/0363100012165051/w05-312.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    543,
+    549,
+    387,
+    582,
+    47,
+    502
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "plain",
+   "cornice": true,
+   "palette": {
+    "brick": "#a8523a",
+    "frame": "#4a2a22",
+    "stone": "#b9ad98"
+   }
+  },
+  {
+   "wallSurfaces": [
+    106,
+    307
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "plain",
+   "palette": {
+    "brick": "#a8523a",
+    "frame": "#4a2a22",
+    "stone": "#b9ad98"
+   }
+  },
+  {
+   "wallSurfaces": [
+    190,
+    194
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "plain",
+   "cornice": true,
+   "palette": {
+    "brick": "#9a9384",
+    "frame": "#4a2a22",
+    "stone": "#b9ad98"
+   },
+   "entrance": {
+    "bay": 0,
+    "storeys": 1,
+    "canopy": true
+   },
+   "signage": {
+    "text": "BEURSPLEIN 5",
+    "colour": "#d8c48a"
+   },
+   "deepBars": true
+  },
+  {
+   "wallSurfaces": [
+    336,
+    617,
+    702
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "plain",
+   "cornice": true,
+   "palette": {
+    "brick": "#a8523a",
+    "frame": "#4a2a22",
+    "stone": "#b9ad98"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#a8523a",
+  "frame": "#4a2a22",
+  "door": "#2a2a2a",
+  "stone": "#b9ad98"
+ },
+ "notes": [
+  "Beursplein 5 / Warmoesstraat 121-133 (BAG), built 1913: a stone-and-brick bank block (now the Euronext trading house) filling the block between Warmoesstraat and Beursplein. Only the NW street run is exposed to the street (six 3DBAG panels 442, 344, 103, 44, 180, 301, ordered SW to NE; w03-314, w04-314, w02-314, w01-309, w06-314, w05-312), the rest is party wall or court.",
+  "Street run (panels 442/344/103/44/301, w03-314 as the model photo): rusticated granite ground storey with barred windows, two brick floors of three tall white-surrounded windows, an attic of paired windows under a stone cornice, slate mansard behind. Drawn as a 4-storey, 3-bay brick-bay-grid with stone surrounds and cornice. Panel 180 (w06-314) is the Beursplein 5 front: three portals on a granite base with a BEURSPLEIN 5 fascia plate and a revolving door in the left bay, a carved-corbel balcony slab over the entrance, a pedimented attic with a relief tympanum. The entrance (bay 0, with canopy) and the BEURSPLEIN 5 fascia lettering are NOT in the shipped intent: the entrance component's frames sit 1.5 cm proud of the glass and fail the 0.5 m2 z-fight gate (1.2 m2 on this house); add `entrance: {bay: 0, storeys: 1, canopy: true}, signage: {text: 'BEURSPLEIN 5', colour: '#d8c48a'}` to walls[2] once entrance frames are 3 cm proud.",
+  "Simplified: the rusticated stone bands (plain wall), the attic paired windows (one window per bay), the roof as the 3DBAG LoD2.2 massing. Not modelled: the carved corbels and tympanum relief, the planter balcony balustrade, the electronic ticker boards over the doors, the mansard dormers and roof cupola, the curved north corner. The SE, NE and court walls have no photograph (party or hidden) and stay blank.",
+  "Entrance, canopy and BEURSPLEIN 5 lettering on walls[2] (panel 180, w06-314) restored with the closed 3.5 cm entrance bars (deepBars); the revolving door is drawn as the kit's glazed door pair, the real door is a revolving drum.",
+  "walls[2] (the Beursplein 5 front, w06-314) is grey granite floor to cornice in the photo, so its wall colour is a granite grey rather than the brick of the Warmoesstraat run. The slab canopy requested on the entrance did not fit the panel (components.canopies = 0 in the report); it is not drawn."
+ ]
+}

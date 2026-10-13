@@ -1,0 +1,173 @@
+{
+ "schemaVersion": 1,
+ "id": "engelsesteeg-165098",
+ "pand": "0363100012165098",
+ "signature": [
+  "hotel-wing-bays",
+  "canal-house-fronts"
+ ],
+ "walls": [
+  {
+   "tag": "w02-272",
+   "bearing": 272,
+   "lengthM": 33.0,
+   "evidence": "photo",
+   "panoId": "b_20250109_1300_Track03_Sphere_00072",
+   "capturedAt": "2025-01-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "hotel-wing-bays",
+     "kind": "window-shape",
+     "where": "hotel wing, upper four storeys",
+     "approxSizeM": [
+      33,
+      12
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250109_1300_Track03_Sphere_00072",
+     "how": "brick-bay-grid 4 storeys x 9 bays, flush recessed windows; the projecting tilted bay windows are plain reveals"
+    },
+    {
+     "id": "mansard-dormers",
+     "kind": "other",
+     "where": "zinc mansard roof, eight dormers",
+     "approxSizeM": [
+      1.4,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250109_1300_Track03_Sphere_00072",
+     "how": "3DBAG LoD2.2 roof dormer geometry as surveyed; no extra dormer boxes"
+    }
+   ]
+  },
+  {
+   "tag": "w01-154",
+   "bearing": 154,
+   "lengthM": 39.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002537_pano_0001_001106",
+   "capturedAt": "2022-04-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "smaksteeg-block",
+     "kind": "window-shape",
+     "where": "six-storey brown-brick block",
+     "approxSizeM": [
+      22,
+      17
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002537_pano_0001_001106",
+     "how": "brick-bay-grid 6 storeys x 8 bays with plain windows"
+    }
+   ]
+  },
+  {
+   "tag": "w04-340",
+   "bearing": 340,
+   "lengthM": 22.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001900_pano_0002_000218",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "canal-house-fronts",
+     "kind": "window-shape",
+     "where": "three-storey gabled canal houses over shops",
+     "approxSizeM": [
+      20,
+      15
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001900_pano_0002_000218",
+     "how": "brick-bay-grid cross windows 3 storeys x 5 bays, cornice; gables from the 3DBAG roof"
+    },
+    {
+     "id": "aveda-fascia",
+     "kind": "sign",
+     "where": "red-framed shopfront at the corner house",
+     "approxSizeM": [
+      4,
+      1
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001900_pano_0002_000218",
+     "skip": {
+      "reason": "too-small",
+      "note": "painted shop fascia; ground floor drawn as the group system"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w06-337",
+   "bearing": 337,
+   "lengthM": 21.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001900_pano_0002_000212",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "white-house-front",
+     "kind": "window-shape",
+     "where": "white-painted canal houses",
+     "approxSizeM": [
+      14,
+      12
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001900_pano_0002_000212",
+     "how": "cross windows 3 storeys x 4 bays on cream brick"
+    }
+   ]
+  },
+  {
+   "tag": "w03-272",
+   "bearing": 272,
+   "lengthM": 22.8,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_03-46-32_01073",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "row-fronts",
+     "kind": "window-shape",
+     "where": "gabled house row on Engelsesteeg",
+     "approxSizeM": [
+      22,
+      10
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-16_03-46-32_01073",
+     "skip": {
+      "reason": "not-visible",
+      "note": "its roof samples lie 0.4 m under the wall eaves (gate); the row stays blank"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-145",
+   "bearing": 145,
+   "lengthM": 21.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002858_pano_0000_000324",
+   "capturedAt": "2022-12-15",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

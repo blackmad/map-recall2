@@ -1212,6 +1212,18 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+- **Large tier after batch 2** (2026-10-13): components still missing and
+  recurring in the batch: curved/rounded corners (Beursplein, Warmoesstraat,
+  Engelsesteeg, Achterburgwal, Westerdok), a tilted bay-window row, a
+  perforated-brick screen, a carved portal with crest, a per-group
+  `wallMaterial` (Oude Turfmarkt's white block draws as pale brick), a
+  signage mount under the cornice, group eaves differing from the roof
+  behind, string-course ends and the Beursplein cornice leave open edges.
+  Two authored houses blocked: `nieuwendijk-hm-165747` (shell gap, needs a
+  sealer) and `passeerdersstraat-242951` (LoD2.2 vs BAG footprint, decide
+  which is right). Quality: Beursplein 5 and Damrak 77 are too generic for
+  their spot by the Beurs (stone pilasters, lantern, white bands missing);
+  candidates for bespoke passes.
 - **Memorial figures are blocks** (2026-10-13): Rembrandtmonument and
   Vondelmonument carry coarse blocky figures with no inscriptions or
   attributes (lyre, mask), no carved post ornament, no terrace steps or

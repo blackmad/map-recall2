@@ -14,7 +14,7 @@ import {dissolveFaces} from '../blockBuilding/dissolve.ts';
 const HOUSES = 'scripts/building-recipes/houses';
 const raw = (id: string) => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/intent.json`, 'utf8'));
 const facts = (id: string): BuildingFacts => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/facts.json`, 'utf8'));
-const LARGE = ['politie-van-leijenberghlaan', 'leidsestraat-67-large', 'de-balie-large', 'social-history-large', 'kattenburg-wings-164938', 'heinekenplein-130580'];
+const LARGE = ['politie-van-leijenberghlaan', 'leidsestraat-67-large', 'de-balie-large', 'social-history-large', 'kattenburg-wings-164938', 'heinekenplein-130580', 'kattenburgerstraat-164930', 'beursplein-5-165051', 'damrak-77-165746', 'warmoesstraat-garage-165687', 'engelsesteeg-165098', 'oz-achterburgwal-233-180196', 'westerdok-186086', 'nieuwe-achtergracht-253754', 'aambeeldstraat-202176', 'oude-turfmarkt-168172'];
 
 async function gatesOf(intent: LargeBuildingIntent, f: BuildingFacts) {
   const built = compileBuilding(intent, f);
@@ -119,4 +119,29 @@ test('barOffsetM (opt-in hook): glazing bars stand clear of the glass as closed 
   // skipping every ground-floor cell removes openings
   const skipped = compileLargeBuilding(intent, f, {skipCell: (_p, floor) => floor === 0});
   assert.ok(skipped.stats.recessed < plain.stats.recessed);
+});
+
+test('deepBars: glazing bars stand 3.5 cm proud only when asked (ribbon and punched rows); default unchanged', async () => {
+  const {largeSystem} = await import('../blockBuilding/systems.ts');
+  const fit = {pitchM: 2.7, lines: [0, 3.3, 6.6, 9.9], ground: 'system' as const, slots: {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'frame'}};
+  for (const system of ['ribbon-windows', 'brick-bay-grid'] as const) {
+    assert.equal(largeSystem(system, fit).typical.win!.barD, undefined, `${system} default`);
+    assert.equal(largeSystem(system, {...fit, deepBars: true}).typical.win!.barD, 0.035, `${system} deepBars`);
+  }
+  const base = raw('kattenburg-wings-164938');
+  assert.equal(validateLargeIntent({...base, walls: [{...base.walls[0], deepBars: true}, base.walls[1]]}).walls[0].deepBars, true);
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], deepBars: 'yes'}, base.walls[1]]}), /deepBars/);
+});
+
+test('deepBars reaches the entrance (closed 3.5 cm frame, no open edge) and the footprint gate takes LoD2.2 courtyards when LoD0 has none', async () => {
+  const bp = validateLargeIntent(raw('beursplein-5-165051')), f = facts('beursplein-5-165051');
+  const {built, gates} = await gatesOf(bp, f);
+  assert.equal(built.components.entrances, 1);
+  assert.deepEqual(gates.filter(g => !g.pass).map(g => g.id), []);
+  // Westerdok 536: LoD0 is the courtyard-less outer ring, LoD2.2 ground has the courtyards.
+  const wd = facts('westerdok-186086');
+  assert.equal(wd.bagFootprintRD.length, 1);
+  const {gates: wg} = await gatesOf(validateLargeIntent(raw('westerdok-186086')), wd);
+  const fp = wg.find(g => g.id === 'footprint-vs-bag')!;
+  assert.ok(fp.pass && (fp.value as {courtyardsFromLod22: number}).courtyardsFromLod22 > 0, JSON.stringify(fp.value));
 });
