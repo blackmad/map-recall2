@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-11",
- "note": "Existing geometry-audit offenders (src/canalRecall/landmarks/geometryAudit.ts). audit:glb fails a model only when a gated count (opening-floating-fail, opening-overhang-fail, zfight-m2) grows past its entry. Lower an entry when you fix a model; never raise one to pass.",
+ "note": "Existing geometry-audit offenders (src/canalRecall/landmarks/geometryAudit.ts). audit:glb fails a model only when a gated count (opening-floating-fail, opening-overhang-fail, zfight-m2, and since 2026-10-11 window-rhythm-fail / window-mismatch-spec / window-missing-spec on photo-spec facades) grows past its entry. Lower an entry when you fix a model; never raise one to pass. The window-rhythm keys were recorded for every model with an <id>-elevations.json on 2026-10-11 (lane fix/american-hotel-windows-20261011); american-hotel has no allowance (0 failing facades).",
  "reasons": {
   "blankenstraat-15": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
   "booking-hq": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
@@ -72,7 +72,10 @@
    "zfight-near-m2": 121.2,
    "window-mismatch": 37,
    "window-missing": 4,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 4,
+   "window-missing-spec": 0
   },
   "amsta-de-poort": {
    "opening-floating": 200,
@@ -180,7 +183,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 3,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 3,
+   "window-missing-spec": 0
   },
   "arcam": {
    "opening-floating": 0,
@@ -204,7 +210,10 @@
    "zfight-near-m2": 0.5,
    "window-mismatch": 8,
    "window-missing": 0,
-   "window-misaligned": 1
+   "window-misaligned": 1,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 8,
+   "window-missing-spec": 0
   },
   "artis-aquarium": {
    "opening-floating": 0,
@@ -216,7 +225,10 @@
    "zfight-near-m2": 0.7,
    "window-mismatch": 8,
    "window-missing": 8,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 8,
+   "window-missing-spec": 8
   },
   "artis-entrance": {
    "opening-floating": 0,
@@ -240,7 +252,15 @@
    "zfight-near-m2": 0,
    "window-mismatch": 27,
    "window-missing": 1,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 27,
+   "window-missing-spec": 1
+  },
+  "asterweg-23": {
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "athenaeum": {
    "opening-floating": 44,
@@ -302,6 +322,11 @@
    "window-missing": 0,
    "window-misaligned": 0
   },
+  "bercylaan-801-855": {
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 6,
+   "window-missing-spec": 0
+  },
   "beta-boulders": {
    "opening-floating": 85,
    "opening-floating-fail": 45,
@@ -324,7 +349,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 150,
    "window-missing": 36,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 150,
+   "window-missing-spec": 42
   },
   "blauwe-theehuis": {
    "opening-floating": 0,
@@ -348,7 +376,10 @@
    "zfight-near-m2": 8,
    "window-mismatch": 8,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 8,
+   "window-missing-spec": 0
   },
   "booking-hq": {
    "opening-floating": 0,
@@ -360,7 +391,10 @@
    "zfight-near-m2": 37.6,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 8,
+   "window-missing-spec": 1
   },
   "boom-chicago": {
    "opening-floating": 8,
@@ -372,7 +406,10 @@
    "zfight-near-m2": 4.1,
    "window-mismatch": 4,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 4,
+   "window-missing-spec": 0
   },
   "boomkerk": {
    "opening-floating": 56,
@@ -396,7 +433,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 2,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 2,
+   "window-missing-spec": 0
   },
   "breitner-tower": {
    "opening-floating": 0,
@@ -480,7 +520,10 @@
    "zfight-near-m2": 10.8,
    "window-mismatch": 17,
    "window-missing": 20,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 17,
+   "window-missing-spec": 20
   },
   "centrale-markthal": {
    "opening-floating": 74,
@@ -494,6 +537,11 @@
    "window-missing": 2,
    "window-misaligned": 0
   },
+  "ceramiquelaan-437": {
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 52,
+   "window-missing-spec": 7
+  },
   "chassekerk": {
    "opening-floating": 0,
    "opening-floating-fail": 0,
@@ -504,7 +552,10 @@
    "zfight-near-m2": 0.7,
    "window-mismatch": 17,
    "window-missing": 2,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 17,
+   "window-missing-spec": 2
   },
   "christ-church-groenburgwal": {
    "opening-floating": 0,
@@ -516,7 +567,10 @@
    "zfight-near-m2": 3.2,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "cinecenter": {
    "opening-floating": 86,
@@ -576,7 +630,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 13,
    "window-missing": 1,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 13,
+   "window-missing-spec": 1
   },
   "conservatorium": {
    "opening-floating": 0,
@@ -600,7 +657,10 @@
    "zfight-near-m2": 0.8,
    "window-mismatch": 21,
    "window-missing": 4,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 21,
+   "window-missing-spec": 4
   },
   "dageraad": {
    "opening-floating": 18,
@@ -624,7 +684,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 9,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 9,
+   "window-missing-spec": 0
   },
   "de-bazel": {
    "opening-floating": 24,
@@ -636,7 +699,10 @@
    "zfight-near-m2": 405.7,
    "window-mismatch": 88,
    "window-missing": 78,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 4,
+   "window-mismatch-spec": 88,
+   "window-missing-spec": 78
   },
   "de-beurs-van-berlage": {
    "opening-floating": 4,
@@ -648,7 +714,10 @@
    "zfight-near-m2": 0.7,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "de-bijenkorf": {
    "opening-floating": 736,
@@ -732,7 +801,10 @@
    "zfight-near-m2": 2.5,
    "window-mismatch": 9,
    "window-missing": 1,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 3,
+   "window-missing-spec": 0
   },
   "de-papegaai": {
    "opening-floating": 0,
@@ -768,7 +840,10 @@
    "zfight-near-m2": 0.3,
    "window-mismatch": 2,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 2,
+   "window-missing-spec": 0
   },
   "de-wester": {
    "opening-floating": 17,
@@ -792,7 +867,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 1,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 1,
+   "window-missing-spec": 0
   },
   "dominicuskerk": {
    "opening-floating": 0,
@@ -888,7 +966,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "faralda-crane-hotel": {
    "opening-floating": 1,
@@ -912,7 +993,10 @@
    "zfight-near-m2": 3,
    "window-mismatch": 20,
    "window-missing": 4,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 20,
+   "window-missing-spec": 4
   },
   "felix-meritis": {
    "opening-floating": 12,
@@ -924,7 +1008,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "fire-station-anton": {
    "opening-floating": 52,
@@ -1140,7 +1227,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 2,
    "window-missing": 1,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 2,
+   "window-missing-spec": 1
   },
   "groot-melkhuis": {
    "opening-floating": 0,
@@ -1189,6 +1279,11 @@
    "window-mismatch": 0,
    "window-missing": 0,
    "window-misaligned": 0
+  },
+  "haarlemmerweg-333": {
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 94,
+   "window-missing-spec": 0
   },
   "hannekes-boom": {
    "opening-floating": 1,
@@ -1296,7 +1391,10 @@
    "zfight-near-m2": 319.7,
    "window-mismatch": 1,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 1,
+   "window-missing-spec": 0
   },
   "haparandaweg-788-868": {
    "opening-floating": 0,
@@ -1332,7 +1430,10 @@
    "zfight-near-m2": 782.1,
    "window-mismatch": 8,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 8,
+   "window-missing-spec": 0
   },
   "haparandaweg-9": {
    "opening-floating": 0,
@@ -1356,7 +1457,10 @@
    "zfight-near-m2": 233.9,
    "window-mismatch": 4,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 4,
+   "window-missing-spec": 0
   },
   "haparandaweg-952-1002": {
    "opening-floating": 0,
@@ -1368,7 +1472,10 @@
    "zfight-near-m2": 234.5,
    "window-mismatch": 1,
    "window-missing": 0,
-   "window-misaligned": 1
+   "window-misaligned": 1,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 1,
+   "window-missing-spec": 0
   },
   "hart-museum": {
    "opening-floating": 24,
@@ -1416,7 +1523,10 @@
    "zfight-near-m2": 0.9,
    "window-mismatch": 7,
    "window-missing": 2,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 7,
+   "window-missing-spec": 2
   },
   "hemp-gallery": {
    "opening-floating": 12,
@@ -1476,7 +1586,10 @@
    "zfight-near-m2": 1.2,
    "window-mismatch": 63,
    "window-missing": 6,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 3,
+   "window-mismatch-spec": 63,
+   "window-missing-spec": 6
   },
   "hnk-sloterdijk": {
    "opening-floating": 48,
@@ -1536,7 +1649,10 @@
    "zfight-near-m2": 7.4,
    "window-mismatch": 13,
    "window-missing": 3,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 3,
+   "window-mismatch-spec": 48,
+   "window-missing-spec": 8
   },
   "hotel-jakarta": {
    "opening-floating": 0,
@@ -1548,7 +1664,10 @@
    "zfight-near-m2": 161.1,
    "window-mismatch": 42,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 42,
+   "window-missing-spec": 0
   },
   "hotel-okura": {
    "opening-floating": 0,
@@ -1560,7 +1679,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 37,
    "window-missing": 0,
-   "window-misaligned": 1
+   "window-misaligned": 1,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 37,
+   "window-missing-spec": 0
   },
   "houseboat-museum": {
    "opening-floating": 0,
@@ -1658,6 +1780,16 @@
    "window-missing": 1,
    "window-misaligned": 1
   },
+  "hva-rhijnspoorplein-2": {
+   "window-rhythm-fail": 5,
+   "window-mismatch-spec": 15,
+   "window-missing-spec": 64
+  },
+  "hva-wibautstraat-3": {
+   "window-rhythm-fail": 4,
+   "window-mismatch-spec": 238,
+   "window-missing-spec": 26
+  },
   "idfa-pavilion": {
    "opening-floating": 10,
    "opening-floating-fail": 0,
@@ -1680,7 +1812,10 @@
    "zfight-near-m2": 3,
    "window-mismatch": 2,
    "window-missing": 2,
-   "window-misaligned": 1
+   "window-misaligned": 1,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 10,
+   "window-missing-spec": 4
   },
   "ing-house": {
    "opening-floating": 0,
@@ -1693,6 +1828,11 @@
    "window-mismatch": 0,
    "window-missing": 0,
    "window-misaligned": 0
+  },
+  "jacob-bontiusplaats-9": {
+   "window-rhythm-fail": 4,
+   "window-mismatch-spec": 149,
+   "window-missing-spec": 46
   },
   "jeruzalemkerk": {
    "opening-floating": 62,
@@ -1812,7 +1952,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "klimhal": {
    "opening-floating": 0,
@@ -1824,7 +1967,10 @@
    "zfight-near-m2": 77.5,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "klimmuur-centraal": {
    "opening-floating": 4,
@@ -1837,6 +1983,11 @@
    "window-mismatch": 3,
    "window-missing": 0,
    "window-misaligned": 0
+  },
+  "kohnstammhuis": {
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 87,
+   "window-missing-spec": 11
   },
   "koningskerk": {
    "opening-floating": 0,
@@ -1860,7 +2011,10 @@
    "zfight-near-m2": 15.1,
    "window-mismatch": 82,
    "window-missing": 2,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 28,
+   "window-missing-spec": 0
   },
   "kriterion": {
    "opening-floating": 0,
@@ -1920,7 +2074,10 @@
    "zfight-near-m2": 12.1,
    "window-mismatch": 10,
    "window-missing": 2,
-   "window-misaligned": 2
+   "window-misaligned": 2,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 10,
+   "window-missing-spec": 2
   },
   "lloyd-hotel": {
    "opening-floating": 0,
@@ -1932,7 +2089,10 @@
    "zfight-near-m2": 19.9,
    "window-mismatch": 102,
    "window-missing": 4,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 102,
+   "window-missing-spec": 4
   },
   "luther-museum": {
    "opening-floating": 17,
@@ -1956,7 +2116,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 1,
+   "window-missing-spec": 0
   },
   "machinegebouw": {
    "opening-floating": 0,
@@ -2016,7 +2179,10 @@
    "zfight-near-m2": 18.7,
    "window-mismatch": 2,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 2,
+   "window-missing-spec": 0
   },
   "melkweg": {
    "opening-floating": 117,
@@ -2028,7 +2194,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 1,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 1,
+   "window-missing-spec": 0
   },
   "micropia-ledenlokalen": {
    "opening-floating": 16,
@@ -2100,7 +2269,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "motorkade-1": {
    "opening-floating": 0,
@@ -2112,7 +2284,10 @@
    "zfight-near-m2": 4.8,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 24,
+   "window-missing-spec": 0
   },
   "mountain-network": {
    "opening-floating": 923,
@@ -2136,7 +2311,10 @@
    "zfight-near-m2": 149.5,
    "window-mismatch": 6,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 6,
+   "window-missing-spec": 0
   },
   "muiderpoort": {
    "opening-floating": 0,
@@ -2172,7 +2350,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "museum-amsterdam-noord": {
    "opening-floating": 0,
@@ -2208,7 +2389,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "naco-house": {
    "opening-floating": 4,
@@ -2292,7 +2476,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 6,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 6,
+   "window-missing-spec": 0
   },
   "nieuw-dakota": {
    "opening-floating": 0,
@@ -2388,7 +2575,10 @@
    "zfight-near-m2": 2,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "olvg-oost": {
    "opening-floating": 0,
@@ -2448,7 +2638,10 @@
    "zfight-near-m2": 34.7,
    "window-mismatch": 142,
    "window-missing": 16,
-   "window-misaligned": 12
+   "window-misaligned": 12,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 142,
+   "window-missing-spec": 16
   },
   "oosterparkkerk": {
    "opening-floating": 3,
@@ -2484,7 +2677,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 17,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 17,
+   "window-missing-spec": 0
   },
   "oude-kerk": {
    "opening-floating": 0,
@@ -2520,7 +2716,10 @@
    "zfight-near-m2": 5.3,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 2,
+   "window-missing-spec": 0
   },
   "overtoom-197": {
    "opening-floating": 0,
@@ -2532,7 +2731,10 @@
    "zfight-near-m2": 6.4,
    "window-mismatch": 27,
    "window-missing": 6,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 27,
+   "window-missing-spec": 6
   },
   "pakhuis-de-zwijger": {
    "opening-floating": 0,
@@ -2544,7 +2746,10 @@
    "zfight-near-m2": 0.3,
    "window-mismatch": 9,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 9,
+   "window-missing-spec": 2
   },
   "palace-on-the-dam": {
    "opening-floating": 7,
@@ -2556,7 +2761,10 @@
    "zfight-near-m2": 150.4,
    "window-mismatch": 7,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 7,
+   "window-missing-spec": 0
   },
   "paradiso": {
    "opening-floating": 8,
@@ -2604,7 +2812,10 @@
    "zfight-near-m2": 18.9,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "petruskerk": {
    "opening-floating": 0,
@@ -2760,7 +2971,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 1,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 1,
+   "window-missing-spec": 0
   },
   "rembrandt-tower": {
    "opening-floating": 2,
@@ -2796,7 +3010,10 @@
    "zfight-near-m2": 13.5,
    "window-mismatch": 19,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 19,
+   "window-missing-spec": 0
   },
   "rode-hoed": {
    "opening-floating": 37,
@@ -2820,7 +3037,10 @@
    "zfight-near-m2": 4.1,
    "window-mismatch": 2,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 2,
+   "window-missing-spec": 0
   },
   "royal-theater-carre": {
    "opening-floating": 57,
@@ -2880,7 +3100,10 @@
    "zfight-near-m2": 7.5,
    "window-mismatch": 5,
    "window-missing": 0,
-   "window-misaligned": 10
+   "window-misaligned": 10,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 5,
+   "window-missing-spec": 0
   },
   "sexmuseum-venustempel": {
    "opening-floating": 0,
@@ -2904,7 +3127,10 @@
    "zfight-near-m2": 55.3,
    "window-mismatch": 31,
    "window-missing": 7,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 31,
+   "window-missing-spec": 7
   },
   "silodam": {
    "opening-floating": 174,
@@ -3000,7 +3226,10 @@
    "zfight-near-m2": 2,
    "window-mismatch": 19,
    "window-missing": 2,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 19,
+   "window-missing-spec": 2
   },
   "stadhuis": {
    "opening-floating": 501,
@@ -3024,7 +3253,10 @@
    "zfight-near-m2": 0,
    "window-mismatch": 6,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 6,
+   "window-missing-spec": 0
   },
   "stedelijk-museum": {
    "opening-floating": 79,
@@ -3072,7 +3304,10 @@
    "zfight-near-m2": 0.7,
    "window-mismatch": 15,
    "window-missing": 0,
-   "window-misaligned": 6
+   "window-misaligned": 6,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 15,
+   "window-missing-spec": 0
   },
   "the-movies": {
    "opening-floating": 0,
@@ -3144,7 +3379,10 @@
    "zfight-near-m2": 32.2,
    "window-mismatch": 5,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 5,
+   "window-missing-spec": 0
   },
   "tobacco-theater": {
    "opening-floating": 18,
@@ -3168,7 +3406,10 @@
    "zfight-near-m2": 19.9,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "treehouse-ndsm": {
    "opening-floating": 183,
@@ -3192,7 +3433,10 @@
    "zfight-near-m2": 4,
    "window-mismatch": 2,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 2,
+   "window-missing-spec": 0
   },
   "tuschinski": {
    "opening-floating": 0,
@@ -3240,7 +3484,10 @@
    "zfight-near-m2": 151.3,
    "window-mismatch": 24,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 24,
+   "window-missing-spec": 0
   },
   "van-gogh-museum": {
    "opening-floating": 9,
@@ -3264,7 +3511,10 @@
    "zfight-near-m2": 5.8,
    "window-mismatch": 7,
    "window-missing": 4,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 7,
+   "window-missing-spec": 4
   },
   "vinoly": {
    "opening-floating": 0,
@@ -3288,7 +3538,10 @@
    "zfight-near-m2": 44,
    "window-mismatch": 31,
    "window-missing": 1,
-   "window-misaligned": 1
+   "window-misaligned": 1,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 31,
+   "window-missing-spec": 1
   },
   "vondelkerk": {
    "opening-floating": 0,
@@ -3300,7 +3553,10 @@
    "zfight-near-m2": 5.5,
    "window-mismatch": 20,
    "window-missing": 2,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 20,
+   "window-missing-spec": 2
   },
   "vondelpark-bandstand": {
    "opening-floating": 0,
@@ -3350,6 +3606,11 @@
    "window-missing": 1,
    "window-misaligned": 0
   },
+  "vriesseveem-9": {
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 16,
+   "window-missing-spec": 0
+  },
   "vrijburg": {
    "opening-floating": 0,
    "opening-floating-fail": 0,
@@ -3360,7 +3621,10 @@
    "zfight-near-m2": 0.2,
    "window-mismatch": 2,
    "window-missing": 1,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 2,
+   "window-missing-spec": 1
   },
   "w139": {
    "opening-floating": 10,
@@ -3372,7 +3636,10 @@
    "zfight-near-m2": 2.7,
    "window-mismatch": 7,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 7,
+   "window-missing-spec": 0
   },
   "walloon-church": {
    "opening-floating": 14,
@@ -3420,7 +3687,10 @@
    "zfight-near-m2": 10.3,
    "window-mismatch": 38,
    "window-missing": 2,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 38,
+   "window-missing-spec": 2
   },
   "westerkerk": {
    "opening-floating": 29,
@@ -3432,7 +3702,10 @@
    "zfight-near-m2": 0.3,
    "window-mismatch": 3,
    "window-missing": 0,
-   "window-misaligned": 6
+   "window-misaligned": 6,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 3,
+   "window-missing-spec": 0
   },
   "willem-de-zwijgerkerk": {
    "opening-floating": 0,
@@ -3444,7 +3717,10 @@
    "zfight-near-m2": 1.1,
    "window-mismatch": 4,
    "window-missing": 0,
-   "window-misaligned": 8
+   "window-misaligned": 8,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 4,
+   "window-missing-spec": 0
   },
   "willem-de-zwijgerlaan-350": {
    "opening-floating": 0,
@@ -3456,7 +3732,10 @@
    "zfight-near-m2": 17.8,
    "window-mismatch": 4,
    "window-missing": 9,
-   "window-misaligned": 1
+   "window-misaligned": 1,
+   "window-rhythm-fail": 2,
+   "window-mismatch-spec": 4,
+   "window-missing-spec": 9
   },
   "willet-holthuysen": {
    "opening-floating": 2,
@@ -3492,7 +3771,10 @@
    "zfight-near-m2": 0.1,
    "window-mismatch": 12,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 12,
+   "window-missing-spec": 0
   },
   "zevenlandenhuizen": {
    "opening-floating": 0,
@@ -3504,7 +3786,10 @@
    "zfight-near-m2": 40.9,
    "window-mismatch": 8,
    "window-missing": 1,
-   "window-misaligned": 1
+   "window-misaligned": 1,
+   "window-rhythm-fail": 3,
+   "window-mismatch-spec": 8,
+   "window-missing-spec": 1
   },
   "zuiderkerk": {
    "opening-floating": 0,
@@ -3516,7 +3801,10 @@
    "zfight-near-m2": 1.6,
    "window-mismatch": 4,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 4,
+   "window-missing-spec": 0
   },
   "zuiveringshal-west": {
    "opening-floating": 132,
