@@ -1,5 +1,25 @@
-{"id": "hotel-de-l-europe", "facades": [
-  {"name": "Amstel front (SW)", "bearing": 237, "photo": "artifacts/landmark-lanes/hotel-de-l-europe/ref-sw.jpg"},
-  {"name": "Nieuwe Doelenstraat side (SE)", "bearing": 148, "photo": "artifacts/landmark-lanes/hotel-de-l-europe/ref-se.jpg"},
-  {"name": "Oude Turfmarkt end (NW)", "bearing": 326, "photo": "artifacts/landmark-lanes/hotel-de-l-europe/ref-nw.jpg"}
-]}
+{
+  "id": "hotel-de-l-europe",
+  "source": "Facade rhythm spec (FACADE_SPEC in hotel-de-l-europe-builder.ts), counted on panoramas rectified onto each facade line: SE b_20241211_0954_Track19_Sphere_00235 + boat TMX7316010203-000354_pano_0001_001522; SW TMX7316010203-002925_pano_0000_000128 + boat _000236; NW TMX7316010203-001609_pano_0000_000090/_000094. One facade entry per section, so the window-rhythm check compares like with like; ground storeys (conservatory ribbons, entrance) and roofs are cropped out.",
+  "countedBy": "fix/europe-window-grid-20261011 lane, 2026-10-13",
+  "facades": [
+    {"name": "Amstel side (SE) section A", "bearing": 148, "alongM": [10.15, 19.05], "heightM": [7.8, 21.5], "rows": [2, 2, 2, null], "columns": 2,
+      "note": "one wide axis with balconies at storeys 1-2 and the white canted oriel (glazed tiers at storeys 1-2, windows above it); attic hidden by the tree in every leaf-off view"},
+    {"name": "Amstel side (SE) section B", "bearing": 148, "alongM": [19.85, 27.25], "heightM": [7.8, 21.5], "rows": [3, 3, 3, 3], "columns": 3,
+      "note": "crop centred on the three axes (u 10.0-17.4); full-width balcony at storey 2, two short ones at storey 3; DE L'EUROPE letters on the parapet"},
+    {"name": "Amstel side (SE) section C", "bearing": 148, "alongM": [28.25, 34.95], "heightM": [7.8, 21.5], "rows": [4, 4, 4, 4], "columns": 4, "symmetric": true,
+      "note": "darker brick annex, four narrow axes, flat roof at 22 m"},
+    {"name": "Amstel side (SE) white wing bay", "bearing": 148, "alongM": [35.6, 39.0], "heightM": [0.5, 18.0], "rows": [2, 2, 2, 2], "columns": 2,
+      "note": "ring edge 122: white stucco frame with brick panels; the rest of the white wing is BAG pand 0363100012168239"},
+    {"name": "Amstel front (SW) left pavilion", "bearing": 237, "alongM": [3.6, 17.2], "heightM": [7.8, 18.5], "rows": [3, 3, 3], "columns": 3, "symmetric": true,
+      "note": "three axes, balconies at storey 2 on every axis and storey 3 on the centre; gables and dormers above the cornice not counted"},
+    {"name": "Amstel front (SW) centre bay", "bearing": 237, "alongM": [17.3, 21.4], "heightM": [7.8, 18.5], "rows": [1, 1, 1], "columns": 1,
+      "note": "canted oriel at storey 1 (its glass is the storey-1 opening)"},
+    {"name": "Amstel front (SW) right pavilion", "bearing": 237, "alongM": [21.6, 28.2], "heightM": [7.8, 18.5], "rows": [2, 2, 2], "columns": 2, "symmetric": true},
+    {"name": "Nieuwe Doelenstraat (NW) annex 8-6", "bearing": 326, "alongM": [0.3, 16.0], "heightM": [4.6, 18.5], "rows": [6, 6, 6, 6], "columns": 6, "symmetric": true,
+      "note": "six axes between brick piers; stone ground storey (windows + door) cropped out"},
+    {"name": "Nieuwe Doelenstraat (NW) entrance bay", "bearing": 326, "alongM": [18.9, 25.0], "heightM": [7.8, 21.5], "rows": [2, 2, 2, 2], "columns": 2},
+    {"name": "Nieuwe Doelenstraat (NW) oriel bay", "bearing": 326, "alongM": [25.0, 33.1], "heightM": [7.8, 21.5], "rows": [2, 2, 2, 2], "columns": 2},
+    {"name": "Nieuwe Doelenstraat (NW) gable bay", "bearing": 326, "alongM": [33.1, 38.7], "heightM": [7.8, 18.5], "rows": [2, 2, 2], "columns": 2}
+  ]
+}
