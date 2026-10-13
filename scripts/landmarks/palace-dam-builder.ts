@@ -7,6 +7,8 @@ const sand='sandstone' as Colour,stone:Colour='stone';
 export function buildPalaceDam(_w:number,_d:number,b:BuildingTools){
  const {add,box}=b;
  function shape(rings:number[][][]){const s=new T.Shape(rings[0].map(p=>new T.Vector2(p[0],p[1])));for(const ring of rings.slice(1))s.holes.push(new T.Path(ring.map(p=>new T.Vector2(p[0],p[1]))));return s;}
+ /** ShapeGeometry faces +z; once its (x,y) become (x,z) the face points down. Reverse the winding and flip the stored normals so roofs face up (a downward roof shifts the shadow receiver under its own surface at high normal bias). */
+ function faceUp(g:T.BufferGeometry){const i=g.getIndex()!;for(let k=0;k<i.count;k+=3){const b=i.getX(k+1);i.setX(k+1,i.getX(k+2));i.setX(k+2,b);}const n=g.getAttribute('normal');if(n)for(let k=0;k<n.count;k++)n.setXYZ(k,-n.getX(k),-n.getY(k),-n.getZ(k));return g;}
  function mesh(v:number[],c:Colour){if(!v.length)return;const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.computeVertexNormals();add(g,c);}
  // Explicit roof panels own the top surface. Retain extrusion walls/bottoms,
  // omitting upward caps that otherwise flicker against the gray flat roofs.
@@ -15,7 +17,7 @@ export function buildPalaceDam(_w:number,_d:number,b:BuildingTools){
  function pairedWindow(x:number,y:number,z:number,a:number,w=2.1,h=2.4){const nx=Math.sin(a),nz=Math.cos(a);box(x,y,z,w+.28,h+.2,.11,'stone',a);box(x+nx*.1,y+.08,z+nz*.1,w,h,.09,'glass',a);box(x+nx*.2,y+.05,z+nz*.2,.12,h,.12,'stone',a);box(x+nx*.2,y+h*.52,z+nz*.2,w,.1,.12,'stone',a);box(x,y+h+.1,z,w+.42,.22,.35,'stone',a);}
  function band(ring:number[][],y:number,h:number,d:number,c:Colour){for(let i=0;i<ring.length-1;i++){const p=ring[i],q=ring[i+1];box((p[0]+q[0])/2,y,(p[1]+q[1])/2,Math.hypot(q[0]-p[0],q[1]-p[1]),h,d,c,-Math.atan2(q[1]-p[1],q[0]-p[0]));}}
  body(source.residualParentPolygons,0,25);
- for(const p of source.residualParentPolygons){const g=new T.ShapeGeometry(shape(p));g.rotateX(Math.PI/2);add(g,'slate',0,25,0);}
+ for(const p of source.residualParentPolygons){const g=faceUp(new T.ShapeGeometry(shape(p)));g.rotateX(Math.PI/2);add(g,'slate',0,25,0);}
  for(const part of source.parts){
   if(part.properties['roof:shape']==='dome')continue;
   const tags=part.properties as Record<string,string>,top=Number(tags.height),base=Number(tags.min_height||0),rise=Number(tags['roof:height']||0),eaves=top-rise,glass=tags['roof:material']==='glass';
@@ -29,7 +31,7 @@ export function buildPalaceDam(_w:number,_d:number,b:BuildingTools){
    const [x0,z0,x1,z1]=part.bounds,cx=(x0+x1)/2,cz=(z0+z1)/2;
    for(const p of part.localPolygons){const v:number[]=[];for(let i=0;i<p[0].length-1;i++)v.push(p[0][i][0],eaves,p[0][i][1],p[0][i+1][0],eaves,p[0][i+1][1],cx,top,cz);mesh(v,'slate');}
   }else{
-   for(const p of part.roofPolygons){const g=new T.ShapeGeometry(shape(p)),v=g.getAttribute('position');for(let i=0;i<v.count;i++){const x=v.getX(i),z=v.getY(i);v.setXYZ(i,x,roofHeight(x,z),z);}g.computeVertexNormals();add(g,glass?'glass':'slate');}
+   for(const p of part.roofPolygons){const g=new T.ShapeGeometry(shape(p)),v=g.getAttribute('position');for(let i=0;i<v.count;i++){const x=v.getX(i),z=v.getY(i);v.setXYZ(i,x,roofHeight(x,z),z);}faceUp(g).computeVertexNormals();add(g,glass?'glass':'slate');}
   }
   // Every sloping roof receives its exact end-wall infill, split at the ridge.
   if(rise&&!glass&&tags['roof:shape']!=='pyramidal'){

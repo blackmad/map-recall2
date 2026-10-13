@@ -654,12 +654,12 @@
         "depthCoverage": 0.8180758572061129
       },
       "triangles": 30372,
-      "bytes": 424916,
+      "bytes": 425540,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "479ec38799977a3a",
+        "sourceHash": "0b3213c7240b8985",
         "buildVersion": 2,
-        "bytes": 94104,
+        "bytes": 94660,
         "triangles": 4749
       }
     },
