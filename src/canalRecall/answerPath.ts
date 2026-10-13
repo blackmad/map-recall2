@@ -11,12 +11,26 @@ export interface AnswerScore {
 
 export interface AnswerRecallStore {
   record(feature: RecallFeature, correct: boolean): ReviewState;
+  /**
+   * The rider rode past a question without answering (riding prompt timed out
+   * or the street was left). A name that was only seen is exposure: it must
+   * not schedule a miss. Optional so a store that does not track exposure
+   * keeps working; the name simply stays unlearned and is asked again later.
+   */
+  expose?(feature: RecallFeature): void;
 }
 
 export interface SubmitAnswerInput {
   correctName: string;
   answer: string;
   noIdea?: boolean;
+  /**
+   * The grade `passed`: a non-blocking riding question ended unanswered. It
+   * is exposure, never a miss: no attempt, no points, the streak is kept, the
+   * name is revealed (the caller only passes once the rider has left the
+   * street, so the answer was never shown early) and it is not marked learned.
+   */
+  passed?: boolean;
   score: AnswerScore;
   difficultyMultiplier: number;
   /** Bounded bonus for correctly recalling a street that was new to this route. */
@@ -36,6 +50,8 @@ export interface SubmitAnswerInput {
 
 export interface AnswerResult extends AnswerScore {
   wasCorrect: boolean;
+  /** True for the `passed` grade. */
+  passed: boolean;
   feedback: string;
   feedbackColor: string;
 }
@@ -51,6 +67,15 @@ export function normaliseAnswer(value: string): string {
  * their contract can be tested without constructing the canvas application.
  */
 export function submitAnswer(input: SubmitAnswerInput): AnswerResult {
+  if (input.passed) {
+    input.revealName(input.correctName);
+    if (input.recallStore && input.recallFeature) input.recallStore.expose?.(input.recallFeature);
+    return {
+      ...input.score, wasCorrect: false, passed: true,
+      feedback: `Passed — that was ${input.correctName}`,
+      feedbackColor: '#3a5a86',
+    };
+  }
   const noIdea = input.noIdea === true;
   const wasCorrect = !noIdea
     && normaliseAnswer(input.answer) === normaliseAnswer(input.correctName);
@@ -101,7 +126,7 @@ export function submitAnswer(input: SubmitAnswerInput): AnswerResult {
   }
 
   return {
-    attempts, correct, points, streak, bestStreak, wasCorrect, feedback,
+    attempts, correct, points, streak, bestStreak, wasCorrect, passed: false, feedback,
     // Ink tones for the daylight paper card (all ≥ 5:1 on #fbf8f2). The old
     // neon green/amber/sky were built for a navy plate and fell under 2:1.
     feedbackColor: wasCorrect ? '#2f6f47' : noIdea ? '#3a5a86' : '#8a4a18',

@@ -85,4 +85,36 @@ const calmNovel = submitAnswer({
 assert.equal(calmNovel.points, 100, 'calm mode does not add arcade multipliers');
 assert.equal(calmNovel.feedback, 'Correct — Nes');
 
+// A riding question that ends unanswered is exposure, never a miss.
+{
+  const exposed: string[] = [];
+  const revealedOnPass: string[] = [];
+  const learned: string[] = [];
+  let recorded = false;
+  const passStore: AnswerRecallStore = {
+    record(): ReviewState { recorded = true; throw new Error('a pass must not schedule a review'); },
+    expose(exposedFeature) { exposed.push(exposedFeature.name); },
+  };
+  const passed = submitAnswer({
+    correctName: feature.name, answer: '', passed: true,
+    score: { attempts: 3, correct: 2, points: 250, streak: 2, bestStreak: 4 },
+    difficultyMultiplier: 1, gameyFeatures: true,
+    recallFeature: feature, recallStore: passStore,
+    revealName: name => revealedOnPass.push(name),
+    markLearned: name => learned.push(name),
+  });
+  assert.equal(passed.passed, true, 'the result says it was passed');
+  assert.equal(passed.wasCorrect, false);
+  assert.equal(passed.attempts, 3, 'a pass is not an attempt');
+  assert.equal(passed.correct, 2);
+  assert.equal(passed.points, 250, 'a pass earns and costs nothing');
+  assert.equal(passed.streak, 2, 'a pass is never a miss: the streak survives');
+  assert.equal(passed.feedback, 'Passed — that was Prinsengracht');
+  assert.deepEqual(revealedOnPass, ['Prinsengracht'], 'the name is revealed on the pass');
+  assert.deepEqual(learned, [], 'a pass does not mark the street learned');
+  assert.equal(recorded, false, 'a pass is not recorded as a review result');
+  assert.deepEqual(exposed, ['Prinsengracht'], 'a pass is reported to the store as exposure');
+  assert.equal(result.passed, false, 'a normal answer is not a pass');
+}
+
 process.stdout.write('Canal answer-path checks passed.\n');
