@@ -1,0 +1,64 @@
+{
+  "modelId": "fire-station-nico",
+  "reviewedOn": "2026-10-09",
+  "reviewer": "independent firestations_review_two",
+  "stage": "Corrected NW principal facade CPU source comparison; root GPU/scene acceptance pending",
+  "assetSha256": "5cdfab26a37acd0e28d981646563086482ccb139bce5d888f691606844fc6c76",
+  "state": "principal-front-visual-pass-rear-regression-pending",
+  "inspectedImages": [
+    "artifacts/landmark-offline-preview/fire-station-nico-cpu-front.png",
+    "artifacts/landmark-offline-preview/fire-station-nico-cpu-opposite.png",
+    "../map-recall2-source-data/models/fire-station-nico/raw/facade-2022.jpg",
+    "../map-recall2-source-data/models/fire-station-nico/raw/current-roof-photo.jpg"
+  ],
+  "findings": [
+    {
+      "id": "blank-rear-regression",
+      "severity": "required-bounded-correction",
+      "evidence": "CPU front now shows actual rear with very large blank three-to-four-storey wall. Generic returned facade loop excludes the previous mistaken principal indices20..26 as well as actual street frontage28..34.",
+      "requestedAction": "Restore bounded rear opening treatment on exposed surveyed rear edges without claiming exact source count."
+    }
+  ],
+  "supportedDecisions": [
+    "Greybrown flat-roof masses, nine white garage doors and genuine red heavy-sans BRANDWEER sign are supported by current sources.",
+    "Small tall rooftop equipment is modeled separately above main surveyed roofs rather than applying equipment maximum to whole building. No obvious pitched-roof substitution or whole-building maximum-height defect observed.",
+    "CPU opposite shows stepped surveyed mass and open concave frontage space; no visible filled parcel slab.",
+    "Corrected CPU opposite is actual principal facade: tall white panel now visible below six top window groups.",
+    "Corrected facade has left ribbon/right narrow windows at upper tier and left narrow/right ribbon windows above nine garage bays, consistent with both current sources.",
+    "Corrected NW frontage orientation has source-left low raised block and principal facade placed on actual street side; live geographic orientation remains root verification."
+  ],
+  "limitations": [
+    "Hidden rear opening rhythm remains approximate.",
+    "2025 roof-renovation scaffolding hides portions of right side and final roof equipment; survey/source uncertainty must remain explicit.",
+    "CPU lighting and isolated views cannot establish palette in live scene, exact suppression/neighbor retention, POI interaction or performance."
+  ],
+  "pending": [
+    "Restore bounded rear opening treatment",
+    "Root final gallery/live-game and POI/performance checks"
+  ],
+  "firstFailedReview": {
+    "assetSha256": "0f8396c0cb53ff35c6719b0951d2bc3b935639d9a8f59b687a7c2039f49a8b16",
+    "state": "changes-requested",
+    "findings": [
+      {
+        "id": "upper-white-panel",
+        "severity": "required-visual-correction",
+        "evidence": "Source top block has six long window groups above a tall white panel filling most of its upper face. Draft CPU render has only a thin white strip beneath those groups and a narrow-light row immediately below on the left.",
+        "requestedAction": "Restore exposed full-height panel using actual source-backed upper facade location and verify no survey wall buries it. Nominal panel dimensions alone do not prove exported visibility."
+      },
+      {
+        "id": "asymmetric-window-rhythm",
+        "severity": "required-visual-correction",
+        "evidence": "Sources show long horizontal upper-left glazing and six narrow vertical upper-right lights at the next tier down, then narrow vertical lights at lower-left and horizontal glazing above BRANDWEER at lower-right. CPU render has nearly full-width continuous glazing bands with the high-block narrow lights on the left.",
+        "requestedAction": "Correct source-backed asymmetric opening ownership and stop generic returned-facade windows from overlapping the principal facade."
+      }
+    ],
+    "inspectedImages": [
+      "artifacts/landmark-offline-preview/fire-station-nico-cpu-front.png",
+      "artifacts/landmark-offline-preview/fire-station-nico-cpu-opposite.png",
+      "../map-recall2-source-data/models/fire-station-nico/raw/facade-2022.jpg",
+      "../map-recall2-source-data/models/fire-station-nico/raw/current-roof-photo.jpg"
+    ],
+    "preservedImage": "docs/references/fire-station-nico/failed-frontage-cpu.png"
+  }
+}

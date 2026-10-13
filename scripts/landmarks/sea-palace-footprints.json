@@ -1,0 +1,268 @@
+{
+ "id": "sea-palace",
+ "status": "modelled (original geometry); no BAG pand",
+ "retrievedOn": "2026-10-10",
+ "anchor": [
+  4.906292382923983,
+  52.37574985135794
+ ],
+ "coordinateConvention": "native east/south metres from anchor (centre of the oriented hull rectangle); y above the pontoon waterline datum",
+ "identity": {
+  "osmPoiId": "n13404202880",
+  "osmOutlineId": "w454006714",
+  "name": "Sea Palace",
+  "address": "Oosterdokskade 8, 1011 AE Amsterdam",
+  "bagNote": "BAG has a VBO/ligplaats-style address (nummeraanduiding 0363200000513562, perceel ASD05-G-9563) but no live pand: the only pand in the bbox at this spot is 0363100012237483 (bouwjaar 1005, status 'Pand gesloopt'), a placeholder, not the restaurant. The vessel is represented in OSM as building=houseboat way w454006714. Only that way is suppressed."
+ },
+ "hull": {
+  "bearingDegrees": 115.68,
+  "halfLongMetres": 19.51,
+  "halfShortMetres": 12.03,
+  "note": "Oriented rectangle fitted to w454006714; +u runs toward bearing 115.68 (ESE), +v toward 205.68 (SSW, the quay-side long face)."
+ },
+ "nativeRing": [
+  [
+   -22.249,
+   2.655
+  ],
+  [
+   -22.452,
+   2.544
+  ],
+  [
+   -22.52,
+   2.321
+  ],
+  [
+   -22.52,
+   2.099
+  ],
+  [
+   -22.52,
+   1.987
+  ],
+  [
+   -12.598,
+   -18.83
+  ],
+  [
+   -12.462,
+   -18.941
+  ],
+  [
+   -12.259,
+   -19.052
+  ],
+  [
+   -12.123,
+   -19.052
+  ],
+  [
+   -11.919,
+   -19.052
+  ],
+  [
+   -10.56,
+   -18.384
+  ],
+  [
+   2.964,
+   -11.928
+  ],
+  [
+   7.449,
+   -9.701
+  ],
+  [
+   20.905,
+   -3.245
+  ],
+  [
+   22.264,
+   -2.577
+  ],
+  [
+   22.468,
+   -2.466
+  ],
+  [
+   22.536,
+   -2.354
+  ],
+  [
+   22.536,
+   -2.132
+  ],
+  [
+   22.536,
+   -1.909
+  ],
+  [
+   12.614,
+   18.797
+  ],
+  [
+   12.478,
+   19.019
+  ],
+  [
+   12.342,
+   19.019
+  ],
+  [
+   12.139,
+   19.13
+  ],
+  [
+   11.935,
+   19.019
+  ],
+  [
+   -22.249,
+   2.655
+  ]
+ ],
+ "buildingFootprint": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     4.905965,
+     52.375726
+    ],
+    [
+     4.905962,
+     52.375727
+    ],
+    [
+     4.905961,
+     52.375729
+    ],
+    [
+     4.905961,
+     52.375731
+    ],
+    [
+     4.905961,
+     52.375732
+    ],
+    [
+     4.906107,
+     52.375919
+    ],
+    [
+     4.906109,
+     52.37592
+    ],
+    [
+     4.906112,
+     52.375921
+    ],
+    [
+     4.906114,
+     52.375921
+    ],
+    [
+     4.906117,
+     52.375921
+    ],
+    [
+     4.906137,
+     52.375915
+    ],
+    [
+     4.906336,
+     52.375857
+    ],
+    [
+     4.906402,
+     52.375837
+    ],
+    [
+     4.9066,
+     52.375779
+    ],
+    [
+     4.90662,
+     52.375773
+    ],
+    [
+     4.906623,
+     52.375772
+    ],
+    [
+     4.906624,
+     52.375771
+    ],
+    [
+     4.906624,
+     52.375769
+    ],
+    [
+     4.906624,
+     52.375767
+    ],
+    [
+     4.906478,
+     52.375581
+    ],
+    [
+     4.906476,
+     52.375579
+    ],
+    [
+     4.906474,
+     52.375579
+    ],
+    [
+     4.906471,
+     52.375578
+    ],
+    [
+     4.906468,
+     52.375579
+    ],
+    [
+     4.905965,
+     52.375726
+    ]
+   ]
+  ]
+ },
+ "heightNotes": {
+  "osmTags": {
+   "osmId": "w454006714",
+   "name": "",
+   "colour": "#d2c9bc",
+   "roofColour": "#4c8162",
+   "material": "",
+   "roofMaterial": "tiles",
+   "roofShape": "hipped",
+   "height": 9,
+   "minHeight": 0,
+   "roofHeight": 4.0
+  },
+  "confidence": "OSM building height 9 m + roof 4 m used as the 13 m overall top; unverified (no AHN/BAG for a floating vessel). Storey heights measured by eye from the 2021 and 2025 municipal panoramas."
+ },
+ "topMetres": 13.0,
+ "sourceFiles": [
+  {
+   "path": "public/data/extracts/amsterdam/buildings-colored.geojson",
+   "sha256": "a9b0e0e36e68866c77865ce6c8e40e59dda45e15a9106aa46f1208bc013148bc",
+   "format": "installed processed OSM-derived extract; original HTTP response unavailable"
+  },
+  {
+   "path": "public/data/extracts/amsterdam/houseboats.json",
+   "sha256": "abcb49b3851f3b4487d0b900ede33a13e8c7ce1ec3846cfeb4307a471e83f458",
+   "format": "installed processed OSM-derived extract; original HTTP response unavailable",
+   "metadata": {
+    "version": 1,
+    "source": "OpenStreetMap building=houseboat (+boathouse, floating=yes) via Overpass",
+    "attribution": "\u00a9 OpenStreetMap contributors, ODbL 1.0",
+    "bbox": "52.28,4.75,52.43,5.05",
+    "fetched": "2026-10-02"
+   }
+  }
+ ],
+ "supersedes": "source-hold draft of 2026-10-05/06 (no photographs were inspected then)"
+}

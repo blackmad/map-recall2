@@ -1,0 +1,11 @@
+{
+  "id": "anne-frank-house",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "Prinsengracht canal front",
+      "bearing": 182.5,
+      "photo": "artifacts/landmark-lanes/anne-frank-house/ref-street.jpg"
+    }
+  ]
+}

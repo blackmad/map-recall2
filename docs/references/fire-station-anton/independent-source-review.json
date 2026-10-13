@@ -1,0 +1,262 @@
+{
+  "id": "fire-station-anton",
+  "reviewedOn": "2026-10-09",
+  "reviewer": "independent source/CPU failure-seeking reviewer",
+  "scope": "Cached source photographs, revised builder/site evidence and root-captured actual-game offset experiment screenshots; no independent browser/GPU execution.",
+  "inputs": [
+    {
+      "path": "artifacts/fire-station-anton-cpu/fire-station-anton-cpu-front.png",
+      "sha256": "c8a1ecd79f4e2cfc13ddfc5de28511184eb26436bee074908d0ff4b99ef12b6b"
+    },
+    {
+      "path": "artifacts/fire-station-anton-cpu/fire-station-anton-cpu-rear.png",
+      "sha256": "efc47d16042f538c29ae92e2eb70fd542ca64daef553ec61419b1f68898369c7"
+    },
+    {
+      "path": "artifacts/fire-station-anton-draft/fire-station-anton.glb",
+      "sha256": "95734a36aecb82fccfc7d875013cab08e9ea15494a641882b2c8108445edff17"
+    }
+  ],
+  "sourceImages": [
+    "../map-recall2-source-data/models/fire-station-anton/raw/photo-01.jpg",
+    "../map-recall2-source-data/models/fire-station-anton/raw/photo-02.jpg",
+    "../map-recall2-source-data/models/fire-station-anton/raw/photo-03.jpg",
+    "../map-recall2-source-data/models/fire-station-anton/processed/recording_2025-09-23_12-27-52_00259.jpg"
+  ],
+  "recognition": {
+    "supported": [
+      "Surveyed elbow massing and lower rear gym remain legible.",
+      "Three red-grid apparatus bays, white reveals and recessed white entrance identify the response front.",
+      "Gray/white horizontal brick bands continue over the principal masses.",
+      "Stepped flat roofs and open timber terrace screen are recognizable; current front masonry signage panel is retained.",
+      "Entrance cantilever exists in builder and front CPU view; isolated high view does not establish underside visibility from rider height."
+    ],
+    "status": "Conditional game visual recognition pass for revised model; installed-spec and low-front evidence pending."
+  },
+  "definiteFailures": [],
+  "boundedAdaptation": {
+    "preferred": "Retain native architectural elevations and relative roof levels; support them with source-derived local front apron and sloped/stepped site transition to the lower rear yard, if runtime ground/collision allows it. Keep the support within verified site scope, retain the open elbow and neighboring identities, and do not fill the yard as an opaque box.",
+    "constraint": "A raised front platform on a flat game street still needs a credible approach; adding a steep invented ramp to y=5 is not acceptance. Verify the native road datum/context before selecting this approach.",
+    "alternative": "If the runtime cannot represent separate front/rear ground levels, explicitly document a bounded game-ground adaptation and review its front/rear composition independently. A uniform -5 offset or a full-height replacement plinth is insufficient.",
+    "acceptance": "No adaptation accepted without actual front/rear game evidence and clear street contact."
+  },
+  "uncertainties": [
+    "CPU shading and camera angle do not establish relative gray band colors at rider height.",
+    "Rear photos are 2016 construction-period evidence; current rear alteration/occlusion remains unresolved.",
+    "The two roof equipment boxes are not established by these selected facade photographs; survey evidence must supply their heights and footprint.",
+    "No GPU roof normal/support, exact suppression, neighbor visibility, performance or route/pin/card evidence reviewed."
+  ],
+  "acceptance": "passed-scoped-source-and-installed-placement-visual-review; root-gameplay-performance-completion-pending",
+  "initialCpuReview": {
+    "recognition": {
+      "supported": [
+        "Surveyed elbow massing and lower rear gym remain legible.",
+        "Three red-grid apparatus bays, white reveals and recessed white entrance identify the response front.",
+        "Gray/white horizontal brick bands continue over the principal masses.",
+        "Stepped flat roofs and open timber terrace screen are recognizable; current front masonry signage panel is retained.",
+        "Entrance cantilever exists in builder and front CPU view; isolated high view does not establish underside visibility from rider height."
+      ],
+      "status": "Conditional game visual recognition pass for revised model; installed-spec and low-front evidence pending."
+    },
+    "definiteFailures": [
+      {
+        "id": "front-street-datum",
+        "severity": "placement-blocker",
+        "evidence": "2025 current front reference has all three apparatus thresholds flush with the asphalt apron. Front CPU exposes approximately five metres of banded masonry below those thresholds. Builder starts doors at y=5 and spec currently places the model at altitude zero.",
+        "consequence": "If game street is y=0, truck bays and public entrance are inaccessible high openings rather than ground-floor doors.",
+        "requiredReview": "Rider-height live front view with visible street/door contact; inspect both apparatus bays and white entrance."
+      },
+      {
+        "id": "uniform-minus-five-buries-gym",
+        "severity": "placement-blocker",
+        "evidence": "Photo03 shows the lower rear gym with glazing exposed near lower yard level. Builder gym glazing begins at y=1 and roof y=5.46. A global -5 translation places most gym and all its windows below flat y=0 ground.",
+        "consequence": "A whole-model front rebase cannot preserve the source-supported rear wing on a single flat ground plane.",
+        "requiredReview": "Live rear view must retain gym window faces and roof, while front threshold remains flush."
+      },
+      {
+        "id": "front-upper-window-grouping",
+        "severity": "facade-mismatch",
+        "evidence": "Current front panorama shows two upper glazed groups separated by a broad dark opaque panel; photo01 also shows substantial gray shutter/panel subdivisions. Builder creates one continuous 16.9m glass band with four evenly spaced divisions.",
+        "consequence": "The large upper facade loses its observed central solid interruption.",
+        "suggestion": "Use the current source state: two glazed groups and broad central dark panel; avoid treating the rolled historical shutters as permanent opaque glazing."
+      },
+      {
+        "id": "lower-gym-roof-stair-omitted",
+        "severity": "source-detail-gap",
+        "evidence": "Photo03 clearly shows a black exterior stair rising along the exposed low gym corner to its roof, plus a separate broad yard stair beside the elbow. Rear CPU includes the higher main-building escape stair but neither the gym-roof stair nor yard stair.",
+        "consequence": "Source-supported circulation and the explanation of the site slope are missing.",
+        "suggestion": "Address these with the site adaptation; broad yard level transition matters more than exact tread count."
+      }
+    ],
+    "boundedAdaptation": {
+      "preferred": "Retain native architectural elevations and relative roof levels; support them with source-derived local front apron and sloped/stepped site transition to the lower rear yard, if runtime ground/collision allows it. Keep the support within verified site scope, retain the open elbow and neighboring identities, and do not fill the yard as an opaque box.",
+      "constraint": "A raised front platform on a flat game street still needs a credible approach; adding a steep invented ramp to y=5 is not acceptance. Verify the native road datum/context before selecting this approach.",
+      "alternative": "If the runtime cannot represent separate front/rear ground levels, explicitly document a bounded game-ground adaptation and review its front/rear composition independently. A uniform -5 offset or a full-height replacement plinth is insufficient.",
+      "acceptance": "No adaptation accepted without actual front/rear game evidence and clear street contact."
+    },
+    "acceptance": "failed-placement-pending-game-evidence"
+  },
+  "gameOffsetExperiment": {
+    "offsetMetres": -4.4,
+    "status": "conditional visual pass pending installed-spec and lower-front evidence",
+    "views": [
+      {
+        "path": "artifacts/firestations-review/supplement/fire-station-anton-offset--4.4-bearing-0.png",
+        "sha256": "96b32d422debb3d3042e82cbdd6f28c53b32bbcd472fc69fec5d5c16606e91e7"
+      },
+      {
+        "path": "artifacts/firestations-review/supplement/fire-station-anton-offset--4.4-bearing-180.png",
+        "sha256": "e0371bedaee258480edaa03d19e38d696989012af43ad76f05223df56c02aa8e"
+      },
+      {
+        "path": "artifacts/firestations-review/supplement/fire-station-anton-offset-0-bearing-0.png",
+        "sha256": "f98ab5b9041937014a60e9279db66a570eead508ae3aaae3e92763d0b3a79888"
+      },
+      {
+        "path": "artifacts/firestations-review/supplement/fire-station-anton-offset-0-bearing-180.png",
+        "sha256": "61de25370f47323a93d97d25734af38c214c4db429cd35584a53a117b178eb48"
+      }
+    ],
+    "findings": [
+      "Rear gym glazing remains visibly exposed, disproving the initial predicted burial under flat depth-clipping terrain. Source-supported local graded plot is now present and rendered.",
+      "Broad yard stair, separate gym-roof stair and upper main escape stair are present in revised builder; broad yard stair and open elbow are visibly preserved in rear game context.",
+      "Front doors meet the local apron in the high game view, and two upper glazed groups with a broad dark central interruption are visible. Lower front view still needed for detailed street/apron/threshold contact.",
+      "The global road-relative offset retains the native five-metre front-to-rear height difference; it does not invent a five-metre driveway climb. AHN road 4.3\u20134.5m NAP and forecourt5.16\u20135.23m support roughly0.6\u20130.8m native approach rise.",
+      "Plot remains separate from adjacent retained blocks in these views; exact replacement identities and hidden-boundary collision are outside this independent image review."
+    ]
+  },
+  "routeSourceReview": {
+    "publicApproach": [
+      52.306919,
+      4.97352
+    ],
+    "verifiedInstalledRoadSource": "public/data/extracts/amsterdam/streets-routing.json",
+    "verifiedRoadSegments": [
+      {
+        "id": "routing_30833",
+        "name": "Langbroekdreef",
+        "highway": "primary",
+        "relationship": "Exact terminal path coordinate matches approach."
+      },
+      {
+        "id": "routing_43697",
+        "name": "Langbroekdreef",
+        "highway": "secondary",
+        "relationship": "Exact initial path coordinate matches approach."
+      }
+    ],
+    "finding": "Public approach is an exact shared mapped public-road network coordinate, not an invented private apron destination. Actual game screenshots retain KAZERNE ANTON destination and show its roadside pin beside the station plot.",
+    "limitations": "Screenshot labels verify retained chosen destination visually, not route finish execution or card pointer selection."
+  },
+  "resolvedOrReclassified": [
+    {
+      "id": "front-street-datum",
+      "state": "Native source-backed site and road-relative offset address high-view placement; lower front check pending."
+    },
+    {
+      "id": "uniform-minus-five-buries-gym",
+      "state": "Initial prediction disproved by actual-game rear view with rendered source graded plot; preserve original failed-risk evidence above."
+    },
+    {
+      "id": "front-upper-window-grouping",
+      "state": "Corrected in revised builder and visible in experiment front screenshot."
+    },
+    {
+      "id": "lower-gym-roof-stair-omitted",
+      "state": "Corrected in revised builder; broad yard stair visible; detailed gym stair rendering still requires closer installed view."
+    }
+  ],
+  "installedSpecReview": {
+    "evidenceDirectory": "artifacts/firestations-review/gpu-next/anton-explicit-fixed-native-recovery/fire-station-anton",
+    "assetSha256": "360780f74ef0c61b9b44cea3dc0a504e56bac444dd2dd944efe053bed4eb7dfe",
+    "groundAltitudeMetres": -4.4,
+    "images": [
+      {
+        "path": "artifacts/firestations-review/gpu-next/anton-explicit-fixed-native-recovery/fire-station-anton/gallery-angle-0.png",
+        "sha256": "0a374276316e8a88721e7f0fc8c7ea31ef46c9b583ce139d1cc4e0d0ed582dbc"
+      },
+      {
+        "path": "artifacts/firestations-review/gpu-next/anton-explicit-fixed-native-recovery/fire-station-anton/gallery-angle-1.png",
+        "sha256": "89f6d1ec3f94087729154b9950f3d5e6781744d34eb3381bfe5a9c507ab0e6f4"
+      },
+      {
+        "path": "artifacts/firestations-review/gpu-next/anton-explicit-fixed-native-recovery/fire-station-anton/gallery-angle-2.png",
+        "sha256": "c4c9253afa657d5957f4ba00a40454f71c676b62a20faa37eb3d4d69570cdd08"
+      },
+      {
+        "path": "artifacts/firestations-review/gpu-next/anton-explicit-fixed-native-recovery/fire-station-anton/gallery-angle-3.png",
+        "sha256": "56ec398ed3d8f53737f153406defc53a69b80d6bae1fd911474da43e9f360a8f"
+      },
+      {
+        "path": "artifacts/firestations-review/gpu-next/anton-explicit-fixed-native-recovery/fire-station-anton/live-front.png",
+        "sha256": "1c06bef05ce07a7f97ed545d7bd2948ed0401205979cfeec0f5723903b6b483b"
+      },
+      {
+        "path": "artifacts/firestations-review/gpu-next/anton-explicit-fixed-native-recovery/fire-station-anton/live-rear.png",
+        "sha256": "0d792d8f615dca2095ca5753c8742fa6b90bbc3dd093561df49644ac43c194b0"
+      },
+      {
+        "path": "artifacts/firestations-review/gpu-next/anton-explicit-fixed-native-recovery/fire-station-anton/low-driveway-boundary.png",
+        "sha256": "5682fca725f135eb4be210c9119cf3604cffb987633db98c235df6e5ec21785b"
+      }
+    ],
+    "recognition": "Four gallery rotations and installed live rear preserve characteristic elbow, flat roof steps, band rhythm, terrace screen, exposed gym, separate escape stairs and open stepped yard. Front two-group window correction retained.",
+    "technicalEvidence": "Read placement/opposite/physical-card/fixed-native-origin/received-asset JSON: current matching asset bytes, scale1, exact three hidden aliases, two resident drawn neighbors, genuinew819163075 active card, geographic pin, unchanged fixed GPS and public-road route arrival recorded.",
+    "routeHistory": "Initial seeded Surprise route failed clearly without identity substitution; later explicitly fixed Kelbergen GPS route reaches genuine Anton public approach. Keep both outcomes.",
+    "unresolvedVisualFailure": "low-driveway-boundary.png fails to frame actual driveway/public-road contact or apparatus thresholds. It shows the recessed pedestrian entrance, green platform and a large foreground striped lower shell wall. This is evidence of a potentially exposed below-grade wall, not proof of correct source-backed street contact. A source-matched front-road camera must determine whether this is a misplaced camera artifact or a visible placement defect.",
+    "requiredSupplement": {
+      "cameraLngLat": [
+        4.972976664584325,
+        52.306841399237065
+      ],
+      "targetLngLat": [
+        4.97316,
+        52.30718
+      ],
+      "eyeAboveRoadMetres": "2\u20133",
+      "source": "../map-recall2-source-data/models/fire-station-anton/processed/recording_2025-09-23_12-27-52_00259.json",
+      "reason": "Exact current panorama camera and target used for the accepted source front. Frame all apparatus bays and continuous driveway mouth, retaining street at foreground."
+    },
+    "status": "recognition pass; final driveway/ground-contact acceptance withheld pending supplement"
+  },
+  "finalSourceCameraReview": {
+    "reviewedOn": "2026-10-09",
+    "assetSha256": "ba76d5dc361a97255eb19ff5f9fb105bd7066f295367e9a90120de54d55ad88f",
+    "receivedBytes": 338280,
+    "groundAltitudeMetres": -4.4,
+    "views": [
+      {
+        "path": "artifacts/firestations-review/gpu-next/anton-final-native/fire-station-anton/source-road-eye5_5.png",
+        "sha256": "178cb9cd9e06e1d4c8675203c6fe7f9a1d987dd4751da2c2eb8615f6b0f6ee56"
+      },
+      {
+        "path": "artifacts/firestations-review/gpu-next/anton-final-native/fire-station-anton/source-road-eye3.png",
+        "sha256": "234e25f18ac70f603db9d6e07463f954f385d41eb98a26035d688b518af28c3d"
+      },
+      {
+        "path": "artifacts/firestations-review/gpu-next/anton-final-native/fire-station-anton/live-rear.png",
+        "sha256": "9292dfb9a7b36f29caf9401ff256cf2566f6ff963632b45ffd13cd5e015dfaee"
+      }
+    ],
+    "sourcePhoto": "../map-recall2-source-data/models/fire-station-anton/processed/recording_2025-09-23_12-27-52_00259.jpg",
+    "sourceAudit": "docs/references/fire-station-anton/final-front-source-audit.json",
+    "decision": "Pass scoped final source/placement visual review. No remaining critical recognition or exposed five-metre foreground-wall failure observed in these source-camera views. Overall completion still depends on root required gameplay/performance checks.",
+    "findings": [
+      "The source-supported horizontal road camera now frames the three apparatus thresholds and continuous open driveway/apron. Red opaque door bottoms meet the apron; no tall striped foundation wall remains between source road camera and garage.",
+      "The narrow full-height notch/glazing strip beside the garage and broad upper window group to its right match the source facade arrangement. Earlier instruction to place a broad opaque panel across an invented full-width group was a reviewer interpretation error; final source audit correctly maps the notch and upper office group.",
+      "Main operator word remains fitted to the real high masonry signage panel. Left terrace screen and three apparatus bays retain the characteristic composition.",
+      "Final live rear retains exposed gym glazing, gym roof stair, main escape stair, broad yard stair and open elbow. Source-backed elevations and relative roof levels are preserved after wall/band ground clipping.",
+      "Driveway approach reflects native AHN road/forecourt difference rather than an invented five-metre ramp; no additional large ramp structure appears."
+    ],
+    "boundedApproximation": [
+      "Rear detail uses2016 architect evidence because current rear panorama is occluded. Stair tread counts, paving/grass classification and interpolated ground triangles remain approximate.",
+      "Entrance approach appears green in model while source close photo shows paving. This is a local material/paving approximation, not evidence of buried entrance or incorrect site datum.",
+      "Eye5.5 view uses exact source horizontal camera but approximate altitude above flat game road. Eye3 lower view is pitch-clamped85degrees; both parameter files retain these limitations.",
+      "Thin dark edge under the right approach remains visible; it is not the earlier tall striped wall. These images establish visible composition and ground contact, not collision or pedestrian traversability."
+    ]
+  },
+  "reviewerCorrection": {
+    "initialFailureId": "front-upper-window-grouping",
+    "correction": "Initial broad central panel recommendation overreached the source projection and did not account for the native notch. Final narrower notch plus right window grouping supersedes it; initial statement remains archived in initialCpuReview."
+  }
+}

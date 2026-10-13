@@ -1,0 +1,162 @@
+{
+  "id": "de-bazel",
+  "name": "De Bazel",
+  "modelUrl": "./models/de-bazel.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012165077"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.892201604796647,
+      52.36457885814682
+    ],
+    "headingDegrees": 12,
+    "lengthMetres": 102.95,
+    "widthMetres": 31.93
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.892212410610806,
+      52.36466581599025
+    ],
+    "northOffsetDegrees": 0,
+    "source": "PDOK BAG 0363100012165077 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+  },
+  "materialOverrides": {
+    "brick": "#8a7566",
+    "sandstone": "#a89a8c",
+    "greyBrick": "#2c2f31",
+    "glass": "#6f8796",
+    "frame": "#5b3326",
+    "dark": "#1f2123",
+    "ochre": "#7d6a5c",
+    "slate": "#585c5e"
+  },
+  "preservePositionPrecision": true,
+  "attribution": {
+    "title": "De Bazel original architecture",
+    "author": "Map Recall",
+    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165077",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.892382464589033,
+          52.364409442190336
+        ],
+        [
+          4.89241215151248,
+          52.3644949676194
+        ],
+        [
+          4.892448807983026,
+          52.36460063669109
+        ],
+        [
+          4.892478409980771,
+          52.36468590110058
+        ],
+        [
+          4.89258135477692,
+          52.36498256659512
+        ],
+        [
+          4.892561505913477,
+          52.36500354190291
+        ],
+        [
+          4.8925315838432715,
+          52.365007524273615
+        ],
+        [
+          4.8922069848392935,
+          52.36505066578384
+        ],
+        [
+          4.892204014718219,
+          52.365051057813254
+        ],
+        [
+          4.892171313619358,
+          52.36505540595816
+        ],
+        [
+          4.8921636235012524,
+          52.365056434354464
+        ],
+        [
+          4.892131084088662,
+          52.365060765188886
+        ],
+        [
+          4.892080922353152,
+          52.36492205460332
+        ],
+        [
+          4.892119165691846,
+          52.36491705558073
+        ],
+        [
+          4.8921518953541145,
+          52.364912770483876
+        ],
+        [
+          4.892155497659912,
+          52.364912300209745
+        ],
+        [
+          4.892135891361852,
+          52.36485626065899
+        ],
+        [
+          4.892133715239649,
+          52.36485654815414
+        ],
+        [
+          4.891953634921339,
+          52.364341625265986
+        ],
+        [
+          4.891957238888248,
+          52.36434100221362
+        ],
+        [
+          4.891937156544218,
+          52.36428425060044
+        ],
+        [
+          4.891893516781748,
+          52.364290035881574
+        ],
+        [
+          4.891845182870388,
+          52.36415344493231
+        ],
+        [
+          4.892185418413816,
+          52.36410837453124
+        ],
+        [
+          4.892250436498878,
+          52.3640997664984
+        ],
+        [
+          4.892279649957784,
+          52.36411319046034
+        ],
+        [
+          4.892382464589033,
+          52.364409442190336
+        ]
+      ]
+    ]
+  }
+}

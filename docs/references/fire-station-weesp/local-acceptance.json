@@ -1,0 +1,63 @@
+{
+  "modelId": "fire-station-weesp",
+  "status": "verified-scoped-local",
+  "sha256": "ae5e8066de6020f9d155663efe16ce9f0e3f82352d87ad42efa256976b69ba95",
+  "sourceArchiveCommit": "88011e7ed8077cb10765450f4e1c7a0d654d91e2",
+  "nativeEvidence": "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-weesp",
+  "performanceEvidence": "artifacts/firestations-review/gpu-next/performance-weesp-corrected/fire-station-weesp/gameplay",
+  "performance": [
+    {
+      "mode": "desktop",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.599999994039536,
+        16.600000008940697,
+        16.700000002980232
+      ],
+      "p95Ms": [
+        18.099999994039536,
+        18.100000008940697,
+        17.899999991059303
+      ],
+      "fixedGps": [
+        5.044159,
+        52.299583
+      ],
+      "riderFixed": true,
+      "riderDriftPixels": 3.596609134804475e-05,
+      "physicalPan": true
+    },
+    {
+      "mode": "touch",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.700000002980232,
+        16.700000002980232,
+        16.700000002980232
+      ],
+      "p95Ms": [
+        18.299999997019768,
+        18.200000002980232,
+        18.400000005960464
+      ],
+      "fixedGps": [
+        5.044159,
+        52.299583
+      ],
+      "riderFixed": true,
+      "riderDriftPixels": 1.7498730130870823e-05,
+      "physicalPan": true
+    }
+  ],
+  "checks": [
+    "Root inspected current source and gallery/native composition; independent failure-seeking review passed.",
+    "Genuine selected destination, geographic pin and physically clicked sourced info card.",
+    "Scale1, exact replacement masks, retained neighbors and disabled/load-failure fallback.",
+    "Root inspected desktop/touch stationary-rider pan screenshots; ordinary windows/doors retained."
+  ],
+  "limitations": [
+    "Occluded rear/site detail remains explicitly bounded approximation.",
+    "Headless Chromium desktop/touch emulation on Apple M4 Pro; no physical-device performance claim."
+  ],
+  "failureHistory": "Earlier failures and corrected interpretations remain in source audit/independent review and artifacts."
+}

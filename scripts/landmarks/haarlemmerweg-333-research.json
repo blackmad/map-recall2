@@ -1,0 +1,39 @@
+{
+  "id": "haarlemmerweg-333",
+  "status": "ready-with-caveats-pending-integrator-blind-count",
+  "identity": {
+    "bagPandId": "0363100012088027",
+    "bouwjaar": 2001,
+    "addresses": ["Haarlemmerweg 333D/F/H/L", "Van Slingelandtplein 2", "Van Slingelandtplein 4"],
+    "name": "office block, Haarlemmerweg 333 / Van Slingelandtplein; no architect or name found",
+    "policy": "ordinary large building: category ordinary, no route destination, no POI card"
+  },
+  "sources": [
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012088027&f=json", "kind": "BAG pand", "retrievedOn": "2026-10-10", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012088027", "kind": "3DBAG LoD2.2 massing", "retrievedOn": "2026-10-10", "licence": "CC BY 4.0 (3DBAG)"},
+    {"file": "artifacts/landmark-lanes/haarlemmerweg-333/ref-n1c.jpg", "kind": "rectified wall 75 (N, east part), pano TMX7316010203-002058_pano_0000_000143 (2021-03-24, leafless)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/haarlemmerweg-333/ref-n2b.jpg", "kind": "rectified wall 73 (N, west part), pano TMX7316010203-001594_pano_0000_000334 (2020-01-27, leafless)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/haarlemmerweg-333/ref-n1.jpg", "kind": "rectified wall 75, pano 2025_10_02_06_52_49_00686 (2025-10-02, tree-covered)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/haarlemmerweg-333/ref-n1b.jpg", "kind": "rectified wall 75, pano recording_2024-09-11_07-28-02_01398", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/haarlemmerweg-333/ref-n2.jpg", "kind": "rectified wall 73, pano 2025_09_26_07_01_39_00559 (tree-covered)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/haarlemmerweg-333/ref-n2c.jpg", "kind": "rectified wall 73, pano recording_2024-09-11_08-54-20_00076", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/haarlemmerweg-333/ref-e1.jpg", "kind": "rectified wall 79 (E, 19 m), pano TMX7316060226-000473_pano_0000_000145 (2019-11-08)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/haarlemmerweg-333/ref-e2.jpg", "kind": "rectified wall 18 (E, low wing), pano 2025_10_02_06_52_49_00699 (2025-10-02)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/haarlemmerweg-333/ref-s.jpg", "kind": "rectified wall 127 (S), pano 2025_10_02_06_52_49_00757 (2025-10-02)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/haarlemmerweg-333/ref-w.jpg", "kind": "wall 98 (W) rectify, discarded: shows the neighbouring shop in front", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/haarlemmerweg-333/ref-w2.jpg", "kind": "wall 98 (W) rectify, pano recording_2024-09-11_08-54-20_00224, oblique 29 deg; only the blank brick top-left is usable", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"}
+  ],
+  "faces": {
+    "north (73, 75)": "evidence: ref-n1c.jpg, ref-n2b.jpg. Columns, rows, ground bays, entrance and stair core read from the photos (about 0.3 m).",
+    "east (79, 18)": "evidence: ref-e1.jpg, ref-e2.jpg. SPACES sign band positions measured; sign lettering only 'SPACES' modelled.",
+    "south (127)": "evidence: ref-s.jpg.",
+    "west gable 98": "INFERRED as plain brick: only the top above the neighbour is visible and it is blank.",
+    "everything else (south face of the north wing, courtyard walls, low east wing, 2, 32, 54, 55, 136, 135, 10)": "INFERRED: same window module, no photograph from that side."
+  },
+  "caveats": [
+    "The red storey overhangs the grey base on the north and east sides in the photographs; the model keeps both flush.",
+    "The east end of the ground floor of wall 75 (t < 2.5 m) is recessed in the photo and is drawn as plain wall.",
+    "Rooftop plant and the glazed penthouse are the 3DBAG massing only."
+  ],
+  "limits": ["roof plant", "shop signage text", "overhang depth", "recessed corners"]
+}

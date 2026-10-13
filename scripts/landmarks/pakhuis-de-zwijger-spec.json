@@ -1,0 +1,53 @@
+{
+  "id": "pakhuis-de-zwijger",
+  "name": "Pakhuis de Zwijger",
+  "landmarkId": "n6933045932",
+  "modelUrl": "./models/pakhuis-de-zwijger.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012088034"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.922050798947343,
+      52.37692880434443
+    ],
+    "headingDegrees": 105.8,
+    "lengthMetres": 35.5,
+    "widthMetres": 28.8
+  },
+  "surveyed": {
+    "anchor": [
+      4.922050798947343,
+      52.37692880434443
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012088034 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+  },
+  "throughPassages": [
+    {
+      "axisBearing": 17,
+      "corridor": [[9.2, -8.7], [-6, -13.5], [-17, 21.4], [-1.8, 26.2]],
+      "evidence": "OSM routing extract (streets-routing.json): Jan Schaeferbrug / Piet Heinkade carriageway routing_10374 runs (0.4,-7.3) -> (-8.2,20.0) m in model-local east/south metres, bearing 17.5 deg, straight through the 1934 cold-store; flanking cycleways routing_12505 (bearing 15.3 deg) and routing_23078 sit about 5 m either side. Corridor = carriageway plus both cycleways, centreline +/- 8 m (the roadway flares into the bridge approach at the north end, where the west cycleway starts 5.8 m off the centreline), extended 4 m past each end. Photo: ref-rce-2005-b.jpg shows the roadway running under the overhanging upper floors."
+    }
+  ],
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#b69468",
+    "stone": "#c9c5ba",
+    "concrete": "#b7b3a8",
+    "greyBrick": "#9a8160",
+    "red": "#c4673a",
+    "glass": "#3d4a54",
+    "bronze": "#2c2e30"
+  },
+  "attribution": {
+    "title": "Pakhuis de Zwijger",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Pakhuis_de_Zwijger",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry on the BAG footprint and 3DBAG LoD2.2 massing (walls cut at the soffit, ground floor rebuilt with the roadway portal); brick walls, window grid, stair towers with concrete hoods and orange shutters, splayed concrete piers, tall north glazing and fascia lettering measured by eye from Commons photographs and municipal panoramas (2005 RCE, 2014, 2018-2020), no pixels or meshes imported."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "symphony",
+  "retrieved": "2026-10-10",
+  "licence": "Amsterdam panorama thumbnails are municipal open data; used as private measurement references only, no pixels in the GLB.",
+  "bag": {"pand": "0363100012128931", "bouwjaar": 2010, "note": "one pand with seven 3DBAG building parts (two towers, office wing, hotel, two apartment blocks, two sliver artefacts)", "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012128931&f=json"},
+  "threeDBag": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012128931 (all parts merged by modern-prepare.mjs; parts 5 and 6 are thin artefacts and are dropped)",
+  "webpages": [
+    {"url": "https://zuidas.nl/en/threesixty_info/amsterdam-symphony-2/", "used": "29-floor 105 m residential tower, 97 m office tower, plinth with shops, hotel and art centre, orange brick"},
+    {"url": "https://www.cie.nl/Amsterdam-Symphony?lang=nl", "used": "architects: Pi de Bruijn / De Architekten Cie with INBO; AWG architecten for the low-rise base"}
+  ],
+  "measured": {"floors": "29 floors, 5.0 m ground storey, 3.5 m pitch (counted on the plaza panoramas; 16 window rows on the 58.8 m south block of tower A)", "towerA": "8 window axes across the 26 m south face, 3.25 m pitch", "towerB": "office tower, about 2.0 m axes", "planes": "tower faces refitted from 3DBAG wall vertices (fitFace, 2026-10-10)"},
+  "photos": [
+    {"file": "artifacts/landmark-lanes/symphony/ref-south-towers.jpg", "panorama": "recording_2025-07-15_13-02-15_00659", "captured": "2025-07-15", "heading": 10, "pitch": 34, "fov": 60, "facade": "south, from Gustav Mahlerplein"},
+    {"file": "artifacts/landmark-lanes/symphony/ref-south-A.jpg", "panorama": "recording_2025-07-15_13-02-15_00659", "captured": "2025-07-15", "heading": 354, "pitch": 34, "fov": 60, "facade": "south, tower A and dark apartment block"},
+    {"file": "artifacts/landmark-lanes/symphony/ref-hotel-south.jpg", "panorama": "TMX7316010203-000521_pano_0000_000986", "captured": "2017", "heading": 354, "pitch": 25, "fov": 80, "facade": "hotel south (foggy)"},
+    {"file": "artifacts/landmark-lanes/symphony/a1.jpg", "panorama": "recording_2024-09-03_06-13-33_00659", "captured": "2024-09-03", "heading": 3, "pitch": 40, "fov": 80, "facade": "south, tower A close view used for the window grid"}
+  ],
+  "inferred": ["north, east and west faces of both towers (no panorama sees them; grid repeated)", "hotel and apartment blocks (parts 0, 1, 3): window grids on the noisy 3DBAG walls, no balconies", "office wing east end and courtyard terraces", "crowns of both towers"]
+}

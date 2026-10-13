@@ -1,0 +1,53 @@
+{
+  "id": "scheepvaartmuseum",
+  "bagPand": "0363100012170236",
+  "address": "Kattenburgerplein 1, Amsterdam ('s Lands Zeemagazijn, Daniel Stalpaert, 1656)",
+  "retrieved": "2026-10-11",
+  "identity": "POI extract_landmarks_961954901 (Wikidata Q1616123). The native 'Scheepvaartmuseum' kit (museumKits.ts, hall r3604837, courtyard w269078550) is superseded by suppressing r3604837, w269078550 and BAG pand 0363100012170236.",
+  "sources": [
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001982_pano_0000_000462/?width=1600&fov=70&heading=148&pitch=0",
+      "use": "ref-nw.jpg: NW quay facade (pavilion, ten axes per wing)",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "panorama": "TMX7316010203-001982_pano_0000_000462",
+      "captured": "2021-01-26"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-19_08-46-57_00029/?width=1600&fov=70&heading=329&pitch=0",
+      "use": "ref-se.jpg: SE entrance facade (door, arched windows, cartouche, wings)",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "panorama": "recording_2025-06-19_08-46-57_00029",
+      "captured": "2025-06-19"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-000248_pano_0000_000099/?width=1600&fov=70&heading=244&pitch=0",
+      "use": "ref-ne.jpg: NE facade (pairs of arched windows, door, bridge)",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "panorama": "TMX7316010203-000248_pano_0000_000099",
+      "captured": "2017-04-06"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-000354_pano_0001_001682/?width=1600&fov=70&heading=66&pitch=0",
+      "use": "ref-sw.jpg: SW water-gate facade, ship away (HET SCHEEPVAARTMUSEUM lettering not reproduced)",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "panorama": "TMX7316010203-000354_pano_0001_001682",
+      "captured": "2017-07-06"
+    },
+    {
+      "url": "https://nl.wikipedia.org/wiki/Het_Scheepvaartmuseum",
+      "use": "history and identity (facts only)",
+      "licence": "Wikipedia, facts only"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012170236&f=json",
+      "use": "BAG pand footprint",
+      "licence": "CC0 (BAG)"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012170236",
+      "use": "LoD2.2 massing shell (footprints.json)",
+      "licence": "CC BY 4.0 (3DBAG)"
+    }
+  ],
+  "notes": "Facade planes (wing and pavilion distances d1/d2/dp) read from the 3DBAG wall surfaces; NW wing pitch and counts from the photograph (10 axes), SE 12 axes, NE/SW 9 axes per wing (SW from the 2017 photograph; NE wings repeat it). The SE photograph shows narrow windows on the pavilion side returns; the other returns are not photographed and carry none. The roof is steep (3DBAG: 17.6 m at the wall, ridge 22.5 m 4 m back); dormers sit on that roof above the arched axes. The pediment apex (22.9 m) is built up from a stone plate because 3DBAG trims the gable peak to 21.9 m."
+}

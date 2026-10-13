@@ -1,0 +1,20 @@
+{
+  "id": "n2847025649",
+  "name": "Brandweerkazerne IJsbrand",
+  "center": [
+    52.406279,
+    4.889718
+  ],
+  "type": "fire station",
+  "cityId": "amsterdam",
+  "website": "https://www.brandweer.nl/kazerne/amsterdam-ijsbrand/",
+  "description": "Built in 2001 on Displaystraat, IJsbrand is one of Amsterdam-Noord\u2019s two professional fire stations. It houses the crews of a fire engine and an aerial ladder: eight firefighters in total.",
+  "funFact": "The IJsbrand name reaches back to a 1916 fire post in a wooden emergency village near Grasweg. The current station, named for Cornelia Frida Katz, replaced both the Berberisstraat and Molenwijk stations in 2001.",
+  "sources": [
+    {
+      "title": "Official station and address",
+      "url": "https://www.brandweer.nl/kazerne/amsterdam-ijsbrand/"
+    }
+  ],
+  "sourceIdentity": "Genuine current OSM node 2847025649, amenity=fire_station. Public approach pin at eastern entrance/forecourt, supported by 2025 panorama. No duplicate destination."
+}

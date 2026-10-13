@@ -1,0 +1,709 @@
+{
+  "schemaVersion": 1,
+  "id": "herengracht-507-509-source-admission",
+  "observedOn": "2026-10-06",
+  "status": "dated-frontage-composition-reviewed;current-underpass-game-held",
+  "officialIdentity": {
+    "address": "Herengracht 507\u2013509",
+    "addressAliases": [
+      "Herengracht 507",
+      "Herengracht 509"
+    ],
+    "pandId": "0363100012175168",
+    "vboId": "0363010000965353",
+    "vboIds": [
+      "0363010000965353",
+      "0363010000965354"
+    ],
+    "vboSource": {
+      "rawPath": "/tmp/canalhouse-rough-batch-507-511-20261006/507-vbo.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000965353?_format=json&volgnummer=2",
+      "sha256": "592a2babd97ba0024f9d322ae8d0a6b64fd27bafd950c8baf6c824e321f5689f",
+      "bytes": 4562,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "localFileSavedAt": "2026-10-06T16:00:05.423103+00:00"
+    },
+    "pandSource": {
+      "rawPath": "/tmp/canalhouse-rough-batch-507-511-20261006/507-pand.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012175168?_format=json&volgnummer=3",
+      "sha256": "2c48d6ffc618d42c1f9ffc6d5d2ec26c1bb9bc152e09717f656628e1e5a66431",
+      "bytes": 8031,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "localFileSavedAt": "2026-10-06T16:02:06.836020+00:00"
+    },
+    "addressSuffixPolicy": "Two genuine VBOs share one physical Pand and one unified observed double-house facade; one native shell, no invented dividing facade."
+  },
+  "sourceProvenance": {
+    "raw3DBag": {
+      "rawPath": "/tmp/canalhouse-rough-batch-507-511-20261006/507-3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012175168",
+      "sha256": "b5ff6786fcb674930a2846b1462382f3e0293135861606326b64a32e0a4e6816",
+      "bytes": 44872,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "localFileSavedAt": "2026-10-06T16:02:06.371129+00:00"
+    },
+    "rawBag": {
+      "rawPath": "/tmp/canalhouse-rough-batch-507-511-20261006/507-pand.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012175168?_format=json&volgnummer=3",
+      "sha256": "2c48d6ffc618d42c1f9ffc6d5d2ec26c1bb9bc152e09717f656628e1e5a66431",
+      "bytes": 8031,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "localFileSavedAt": "2026-10-06T16:02:06.836020+00:00"
+    },
+    "privateLocalPack": "/tmp/canalhouse-rough-batch-507-511-20261006",
+    "sourceCommit": null,
+    "archiveSync": "local-commit-remote-push-pending",
+    "archiveModelManifestPath": "models/herengracht-507-509/manifest.json",
+    "beeldbankSearch": {
+      "raw": [
+        {
+          "rawPath": "/tmp/canalhouse-rough-batch-507-511-20261006/507-beeldbank-search.html",
+          "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=herengracht%20507&rows=1&page=1",
+          "sha256": "2c58f828ae2064223924ea0091b054f9491af3a922ebc52697104024f3ba5f04",
+          "bytes": 12357,
+          "status": 200,
+          "rawSavedBeforeExtraction": true,
+          "localFileSavedAt": "2026-10-06T15:58:50.656977+00:00"
+        },
+        {
+          "rawPath": "/tmp/canalhouse-rough-batch-507-511-20261006/509-beeldbank-search.html",
+          "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=herengracht%20509&rows=1&page=1",
+          "sha256": "2c58f828ae2064223924ea0091b054f9491af3a922ebc52697104024f3ba5f04",
+          "bytes": 12357,
+          "status": 200,
+          "rawSavedBeforeExtraction": true,
+          "localFileSavedAt": "2026-10-06T15:58:50.652791+00:00"
+        }
+      ],
+      "status": "Two bounded HTTP 200 viewer shells; archive original photos not inspected."
+    },
+    "currentPhoto": {
+      "rawPath": "/tmp/canalhouse-rough-batch-507-511-20261006/507-current.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00464/equirectangular/panorama_4000.jpg",
+      "sha256": "c7fb0d77d678969a7b3d22a1b991ae866d5d81b06a09f453edfb6507ea19ef8a",
+      "bytes": 1155445,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "localFileSavedAt": "2026-10-06T16:02:06.415871+00:00"
+    },
+    "registerCache": {
+      "path": "/tmp/canalhouse-rough-batch-507-511-20261006/507-509-early-register-cache.json",
+      "cachedGeneration": "datasets/amsterdam-monument-register/2026-10-05T06-10-55-572Z-83107"
+    },
+    "localArchiveCommit": "ced0dd95660128a1c1f9bb0c53dd2425b6063bcb"
+  },
+  "native": {
+    "coordinateSystem": "EPSG28992/NAP",
+    "municipalBagGeometryRD": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            121308.951,
+            486538.234
+          ],
+          [
+            121304.43,
+            486539.216
+          ],
+          [
+            121303.974,
+            486537.268
+          ],
+          [
+            121303.336,
+            486538.28
+          ],
+          [
+            121302.069,
+            486538.563
+          ],
+          [
+            121301.047,
+            486537.921
+          ],
+          [
+            121296.454,
+            486538.981
+          ],
+          [
+            121294.049,
+            486528.593
+          ],
+          [
+            121289.449,
+            486529.62
+          ],
+          [
+            121289.973,
+            486531.883
+          ],
+          [
+            121290.464,
+            486531.775
+          ],
+          [
+            121292.337,
+            486539.865
+          ],
+          [
+            121291.507,
+            486540.05
+          ],
+          [
+            121291.699,
+            486540.878
+          ],
+          [
+            121289.949,
+            486541.269
+          ],
+          [
+            121288.921,
+            486540.629
+          ],
+          [
+            121282.698,
+            486513.614
+          ],
+          [
+            121285.704,
+            486512.914
+          ],
+          [
+            121286.482,
+            486512.732
+          ],
+          [
+            121291.351,
+            486511.596
+          ],
+          [
+            121294.224,
+            486510.926
+          ],
+          [
+            121297.648,
+            486510.127
+          ],
+          [
+            121297.989,
+            486511.418
+          ],
+          [
+            121302.499,
+            486510.364
+          ],
+          [
+            121306.947,
+            486509.326
+          ],
+          [
+            121306.674,
+            486508.157
+          ],
+          [
+            121319.675,
+            486505.526
+          ],
+          [
+            121319.946,
+            486505.706
+          ],
+          [
+            121321.075,
+            486511.204
+          ],
+          [
+            121321.145,
+            486511.547
+          ],
+          [
+            121321.361,
+            486512.596
+          ],
+          [
+            121321.431,
+            486512.939
+          ],
+          [
+            121325.858,
+            486534.501
+          ],
+          [
+            121325.87,
+            486534.559
+          ],
+          [
+            121308.951,
+            486538.234
+          ]
+        ]
+      ]
+    },
+    "surveyFootprintPolygonsRD": [
+      [
+        [
+          [
+            121297.906875,
+            486511.1085
+          ],
+          [
+            121297.648875,
+            486510.1325
+          ],
+          [
+            121296.348875,
+            486510.4365
+          ],
+          [
+            121295.76887500001,
+            486510.57149999996
+          ],
+          [
+            121290.208875,
+            486511.8685
+          ],
+          [
+            121284.87487500001,
+            486513.1125
+          ],
+          [
+            121282.698875,
+            486513.62049999996
+          ],
+          [
+            121283.019875,
+            486515.0125
+          ],
+          [
+            121283.292875,
+            486516.1955
+          ],
+          [
+            121283.566875,
+            486517.3875
+          ],
+          [
+            121285.669875,
+            486526.51649999997
+          ],
+          [
+            121285.868875,
+            486527.3795
+          ],
+          [
+            121286.386875,
+            486529.62649999995
+          ],
+          [
+            121288.922875,
+            486540.6355
+          ],
+          [
+            121289.950875,
+            486541.2755
+          ],
+          [
+            121290.539875,
+            486541.1435
+          ],
+          [
+            121291.700875,
+            486540.8835
+          ],
+          [
+            121291.508875,
+            486540.05549999996
+          ],
+          [
+            121292.338875,
+            486539.87049999996
+          ],
+          [
+            121290.46587500001,
+            486531.7805
+          ],
+          [
+            121289.973875,
+            486531.8895
+          ],
+          [
+            121289.491875,
+            486529.80549999996
+          ],
+          [
+            121289.450875,
+            486529.62649999995
+          ],
+          [
+            121292.731875,
+            486528.8935
+          ],
+          [
+            121294.050875,
+            486528.59849999996
+          ],
+          [
+            121294.08287500001,
+            486528.74049999996
+          ],
+          [
+            121294.21187500001,
+            486529.2965
+          ],
+          [
+            121295.463875,
+            486528.7375
+          ],
+          [
+            121295.596875,
+            486528.7245
+          ],
+          [
+            121296.895875,
+            486530.0535
+          ],
+          [
+            121297.945875,
+            486528.31549999997
+          ],
+          [
+            121298.60187500001,
+            486529.60349999997
+          ],
+          [
+            121298.705875,
+            486530.1825
+          ],
+          [
+            121298.531875,
+            486530.6325
+          ],
+          [
+            121298.742875,
+            486530.39149999997
+          ],
+          [
+            121300.130875,
+            486538.1385
+          ],
+          [
+            121301.04887500001,
+            486537.9265
+          ],
+          [
+            121302.069875,
+            486538.5685
+          ],
+          [
+            121302.353875,
+            486538.50549999997
+          ],
+          [
+            121303.337875,
+            486538.2865
+          ],
+          [
+            121303.975875,
+            486537.2735
+          ],
+          [
+            121304.430875,
+            486539.2215
+          ],
+          [
+            121306.684875,
+            486538.7325
+          ],
+          [
+            121312.37487500001,
+            486537.4965
+          ],
+          [
+            121315.307875,
+            486536.85949999996
+          ],
+          [
+            121316.136875,
+            486536.67949999997
+          ],
+          [
+            121322.174875,
+            486535.3675
+          ],
+          [
+            121323.491875,
+            486535.0815
+          ],
+          [
+            121325.87087500001,
+            486534.5645
+          ],
+          [
+            121325.356875,
+            486532.0615
+          ],
+          [
+            121325.083875,
+            486530.7275
+          ],
+          [
+            121320.21587500001,
+            486507.0195
+          ],
+          [
+            121319.947875,
+            486505.7115
+          ],
+          [
+            121319.676875,
+            486505.5315
+          ],
+          [
+            121317.917875,
+            486505.8875
+          ],
+          [
+            121309.32187500001,
+            486507.6275
+          ],
+          [
+            121306.675875,
+            486508.16349999997
+          ],
+          [
+            121306.948875,
+            486509.33249999996
+          ],
+          [
+            121306.748875,
+            486509.3785
+          ],
+          [
+            121297.990875,
+            486511.4235
+          ]
+        ]
+      ]
+    ],
+    "policy": "Exact native shared ground rings and all surveyed roof surfaces; eastern attached wings are not the principal facade and receive no invented openings."
+  },
+  "principalFront": {
+    "orientedLeftToRightAsSeenFromCanal": [
+      [
+        121282.698875,
+        486513.62049999996
+      ],
+      [
+        121297.648875,
+        486510.1325
+      ]
+    ],
+    "straightFrontSpanM": 15.351502988293733,
+    "facadePlaneToleranceM": 0.3,
+    "selectionEvidence": "Original ground ring vertices bound the unified five-axis sandstone front, stopping before the eastern attached wing; June 2025 panorama confirms no 507/509 facade seam."
+  },
+  "heights": {
+    "groundNapM": 1.0440000295639038,
+    "bodyEavesNominalM": 16.21150106906891,
+    "bodyEavesRangeM": [
+      15.702501069068909,
+      16.21150106906891
+    ],
+    "bodyEavesAdmission": "Front shoulder wall:117 at original vertex [121284.874875,486513.1125] gives 17.2555 NAP; fitted front tops vary and central 19.1545 NAP crest is excluded from body. Approximate semantic cornice height, native roofs untouched.",
+    "nativeRoofMaximumNapM": 28.055501098632813
+  },
+  "houses": [
+    {
+      "id": "herengracht-507-509",
+      "pandId": "0363100012175168",
+      "sampleRole": "rough-batch-frozen-library-candidate",
+      "sources": {
+        "principalImage": "/tmp/canalhouse-rough-batch-507-511-20261006/507-wide.jpg",
+        "wideImage": "/tmp/canalhouse-rough-batch-507-511-20261006/507-wide.jpg",
+        "captureDate": "2025-06-16T06:56:24Z",
+        "projection": {
+          "headingDeg": 17.88691183952676,
+          "pitchDeg": 42,
+          "fovDeg": 110,
+          "width": 1100,
+          "height": 1500,
+          "camera": {
+            "_links": {
+              "self": {
+                "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00464/"
+              },
+              "equirectangular_full": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00464/equirectangular/panorama_8000.jpg"
+              },
+              "equirectangular_medium": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00464/equirectangular/panorama_4000.jpg"
+              },
+              "equirectangular_small": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00464/equirectangular/panorama_2000.jpg"
+              },
+              "cubic_img_preview": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00464/cubic/preview.jpg"
+              },
+              "thumbnail": {
+                "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_00464/"
+              },
+              "adjacencies": {
+                "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00464/adjacencies/"
+              }
+            },
+            "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00464/cubic/",
+            "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00464/cubic/{z}/{f}/{y}/{x}.jpg",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.892257774004561,
+                52.365413505773304,
+                0
+              ]
+            },
+            "pano_id": "recording_2025-06-16_06-42-40_00464",
+            "timestamp": "2025-06-16T06:56:24Z",
+            "filename": "recording_2025-06-16_06-42-40_00464.jpg",
+            "surface_type": "L",
+            "mission_distance": 5,
+            "mission_type": "bi",
+            "mission_year": "2025",
+            "tags": [
+              "mission-bi",
+              "mission-2025",
+              "mission-distance-5",
+              "surface-land"
+            ],
+            "roll": 0,
+            "pitch": 0,
+            "heading": 0
+          }
+        },
+        "nearCaptureDate": "2025-06-16T06:56:24Z",
+        "nearCamera": {
+          "_links": {
+            "self": {
+              "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00464/"
+            },
+            "equirectangular_full": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00464/equirectangular/panorama_8000.jpg"
+            },
+            "equirectangular_medium": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00464/equirectangular/panorama_4000.jpg"
+            },
+            "equirectangular_small": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00464/equirectangular/panorama_2000.jpg"
+            },
+            "cubic_img_preview": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00464/cubic/preview.jpg"
+            },
+            "thumbnail": {
+              "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_00464/"
+            },
+            "adjacencies": {
+              "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00464/adjacencies/"
+            }
+          },
+          "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00464/cubic/",
+          "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00464/cubic/{z}/{f}/{y}/{x}.jpg",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              4.892257774004561,
+              52.365413505773304,
+              0
+            ]
+          },
+          "pano_id": "recording_2025-06-16_06-42-40_00464",
+          "timestamp": "2025-06-16T06:56:24Z",
+          "filename": "recording_2025-06-16_06-42-40_00464.jpg",
+          "surface_type": "L",
+          "mission_distance": 5,
+          "mission_type": "bi",
+          "mission_year": "2025",
+          "tags": [
+            "mission-bi",
+            "mission-2025",
+            "mission-distance-5",
+            "surface-land"
+          ],
+          "roll": 0,
+          "pitch": 0,
+          "heading": 0
+        },
+        "rights": "Gemeente Amsterdam CC BY 4.0",
+        "registerUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1667",
+        "registerDescription": [
+          "Dubbel huis met zandstenen gevel met Korinthische pilasters in de middenrisaliet, waarop een fronton geflankeerd door twee dakkapellen (1668/1676); omlijste ingangstravee, versierde stoep met Louis XIV balusters en keldervensters, alles XVIIIb. Empire deur."
+        ],
+        "currentPhotoAccess": "Original saved before projection",
+        "rootInspection": "pending",
+        "registerIdentityMatch": "Exact VBOs 0965353/0965354 in cached RCE 1667 record"
+      },
+      "crown": {
+        "label": "fronton",
+        "profileNormalized": [
+          [
+            0,
+            1
+          ],
+          [
+            0.29,
+            1
+          ],
+          [
+            0.5,
+            1.117
+          ],
+          [
+            0.71,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "criticalTraits": [
+        "One broad pale sandstone double house: FIVE axes and THREE rows above basement",
+        "Four tall outer bel-etage windows around one central raised dark door/transom",
+        "Central pilaster pair and triangular fronton, white multi-pane sash frames",
+        "Four basement side apertures plus central low gated entrance; paired sweeping stone stoep and dark rails"
+      ],
+      "uncertainties": [
+        "Oblique near-bank source gives coarse proportions; scan fitted shoulder heights vary by ~0.51 m.",
+        "Lower central doorway bottom and outermost basement apertures partly outside crop; represented bounded continuation, not exact complete photo rectangles.",
+        "Fine Corinthian capitals, festoons, Louis XIV baluster carving, tread counts and roof dormer ornament omitted; no current gallery/game acceptance.",
+        "Two registered dormers are not clearly visible behind fronton; exact placement/shape unverified and omitted."
+      ],
+      "registerAssertions": [
+        {
+          "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1667",
+          "passage": "Dubbel huis met zandstenen gevel met Korinthische pilasters in de middenrisaliet, waarop een fronton geflankeerd door twee dakkapellen (1668/1676); omlijste ingangstravee, versierde stoep met Louis XIV balusters en keldervensters, alles XVIIIb. Empire deur.",
+          "part": "principal facade and stoep",
+          "date": "register date unspecified; cached 2026-10-05",
+          "confidence": "high named features; approximate current dimensions"
+        }
+      ]
+    }
+  ],
+  "rootCompileCorrections": {
+    "failedDrafts": [
+      "Five-point coarse stoep polyline exceeded drawing contour segment jump limit",
+      "Only inner basement positions acknowledged as flight-occluded; source sweep extends across outer positions too"
+    ],
+    "corrections": [
+      "Compact polyline subdivision preserves source anchors and contour exactly; no inferred treads",
+      "Explicit both flanking basement positions per flight; aperture dimensions retained"
+    ],
+    "evidence": "Root inspected507-wide current municipal crop; sweeping approaches cover flanking basement zone",
+    "limits": "Outer aperture extent and exact flight/base heights remain uncertain; no full acceptance"
+  }
+}

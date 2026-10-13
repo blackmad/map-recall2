@@ -8,7 +8,10 @@ import { CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
 import { ROOF_CELL_M } from './roofCells.js';
 import { roofPlanForFeature, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
-import { BAY_LAYER_COUNT, FATIH_MASONRY_LAYER, bayLookFor } from './bayLook.js';
+import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
+import { paletteFor } from './bayTextures.js';
+import { lookHex } from './landmarkFronts.js';
+import { largeTierSystem, plinthHex } from './largeBuildingTier.js';
 import type { Look, ShopKind } from './bayTextures.js';
 import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
@@ -51,6 +54,36 @@ export const ROOF_TONES: Record<BuildingLook, { tile: string[]; slate: string[] 
 };
 const roofHexFor = (look: BuildingLook, plan: RoofPlan) => { const set = ROOF_TONES[look][plan.material]; return set[Math.min(set.length - 1, Math.floor(plan.tone * set.length))]; };
 
+/**
+ * The large-building tier (largeBuildingTier.ts): a civic facade system from the shared cells,
+ * civic storey heights, one entrance per street run, a parapet band, no shopfront guesses.
+ */
+function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look: BuildingLook, id: string): void {
+  const wall = typeof p.largeTierWall === 'string' ? p.largeTierWall : building.wallHex;
+  const archetype = (['c19', 'school', 'modern'] as const).find(a => a === p.largeTier) ?? 'modern';
+  const system = largeTierSystem(id, archetype, wall, Number(p.height) || building.heightM);
+  const set = cellSetOf(look);
+  const nominal = STYLE_DIMS[set === 'procedural' ? building.style : system.layout];
+  if (set !== 'procedural') {
+    const bayLook = set as Look;
+    building.style = system.layout;
+    // A real shop in the building (shopfronts extract) keeps its shop windows; otherwise a ground floor of windows.
+    const front = shopfrontOf(p);
+    const shopCell = !system.tuned && front && front !== 'quiet' ? front : system.groundShop;
+    const ground = shopCell ? bayLayer(system.archetype, 0, shopCell) : bayLayer(system.archetype, system.style, 'ground');
+    building.layers = { upper: bayLayer(system.archetype, system.style, 'upper'), ground, door: bayLayer(system.archetype, system.style, 'groundDoor') };
+    building.plainLayer = bayLayer(system.archetype, system.style, 'plain');
+    building.openings = bayVariantOpenings({ archetype: system.archetype, kind: 'upper', ...BAY_STYLES[system.archetype][system.style] }, bayLook);
+    building.accentHex = paletteFor(id, system.archetype, bayLook).accent;
+    building.wallHex = lookHex(wall, bayLook);
+    // A darker plinth under the window grid (the shop paint keeps its own colour).
+    building.groundHex = shopCell ? undefined : lookHex(plinthHex(wall), bayLook);
+  } else building.wallHex = wall;
+  building.shop = false;
+  building.layoutScale = { bay: system.bayM / nominal.bay, storey: system.storeyM / nominal.storey, ground: system.groundM / nominal.ground, doorEvery: 1000 };
+  building.parapetM = system.parapetM;
+}
+
 export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = false, sourceRoofPlan?: RoofPlan): MeshBuilding | null {
   const p = feature.properties;
   const polygons = asPolygons(feature.geometry);
@@ -88,6 +121,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // A chain supermarket: its own fascia, logo panel and brand word (shopfronts.ts SUPERMARKET_CHAINS).
   const chain = Array.isArray(p.shopChain) ? p.shopChain as [string, number, number] : null;
   if (building.shopfront && chain && SUPERMARKET_CHAINS[chain[0]] && !p.frontCarrier) building.chain = { at: [chain[1], chain[2]], look: SUPERMARKET_CHAINS[chain[0]] };
+  if (p.largeTier && typeof p.facade === 'string') applyLargeTier(building, p, look, id);
   if (typeof p.facade !== 'string' || !p.facadeStyle) {
     // No facade (a shed, a landmark part, a building with no style or colour): bare walls in its mapped colour.
     building.bare = true;
@@ -121,7 +155,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   }
   // Facade extras for every faced building; the plain and Untextured looks stay light.
   // Never on a landmark kit's walls: church hosts drew hoist beams and stray strips (user 2026-10-03).
-  building.extras = !building.bare && !p.kitWall && look !== 'untextured';
+  building.extras = !building.bare && !p.kitWall && !p.largeTier && look !== 'untextured';
   if (look === 'untextured') {
     // Untextured: one flat layer for every wall and roof face, so only colour and shape remain.
     const flat = roofBase + 3;
@@ -154,7 +188,7 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
       // Continue into local facade context below: coarse LOD drops relief and
       // shaped roofs, while its existing cheap window cells keep the street rhythm.
     }
-    if (building && profiles.length && look !== 'untextured' && !f.properties.kitWall && !f.properties.frontCarrier) {
+    if (building && profiles.length && look !== 'untextured' && !f.properties.kitWall && !f.properties.frontCarrier && !f.properties.largeTier) {
       const localProfiles = profilesNearBuilding(profiles, building.polygons);
       if (!localProfiles.length) return building;
       const p = f.properties;

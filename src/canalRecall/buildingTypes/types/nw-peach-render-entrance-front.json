@@ -1,0 +1,534 @@
+{
+  "id": "nw-peach-render-entrance-front",
+  "label": "Nieuw-West cluster 2 design C, entrance side (Cornelis Outshoornstraat, Ruys de Beerenbrouckstraat, Jan de Greefstraat, Lieven de Keystraat, Steven Vennecoolstraat, Aalbersestraat): five-storey rendered portiekflat 17 x 10.6 m, four windows per floor either side of a central stair strip of coloured panels, tiled plinth with a row of small vents, two doors beside the strip",
+  "source": {
+    "clusterRank": 2,
+    "panden": 19,
+    "bouwjaar": [
+      1953,
+      1962
+    ],
+    "lengthM": 17.0,
+    "widthM": 10.6,
+    "bouwlagen": 5,
+    "roof": "pitched",
+    "dwellingsMedian": 8
+  },
+  "storeys": 5,
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.35,
+    "vergeOverhangM": 0.1,
+    "thicknessM": 0.12,
+    "pitchDeg": 10
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "peach-orange",
+  "variants": {
+    "peach-orange": {
+      "label": "Peach render (photo median #8a7c6f, authored lifted to #cfae92 because the stucco slot renders sampled medians far darker than the photo, checked on the contact sheet), orange-brown window surrounds and stair-strip panels #8b5337, pink-beige tiled plinth (Ruys de Beerenbrouckstraat, Aalbersestraat, Lieven de Keystraat)",
+      "evidence": "crops 0363100012102138 wall #8a7c6f (66 %), strip #8b5337 (57 %), 2127500",
+      "palette": {
+        "wall": {
+          "slot": "stucco",
+          "tint": "#cfae92"
+        },
+        "plinth": {
+          "slot": "stucco",
+          "tint": "#d8c3b4"
+        },
+        "frame": "#efece2",
+        "glass": "#506070",
+        "door": "#6a7480",
+        "accent": "#c0643a",
+        "rail": "#d8d4c8",
+        "dark": "#3f3d38",
+        "column": "#c9c4b6",
+        "joint": "#8a8070",
+        "roof": {
+          "slot": "bitumen",
+          "tint": "#5c5e60"
+        }
+      }
+    },
+    "ochre-yellow": {
+      "label": "Ochre-yellow render (#938e7f), ochre surrounds and panels #8b6734, grey-yellow tile plinth (Cornelis Outshoornstraat, Steven Vennecoolstraat, Jan de Greefstraat)",
+      "evidence": "crops 0363100012147868 wall #938e7f (36 %), strip #8b6734 (27 %), plinth #8c8874",
+      "palette": {
+        "wall": {
+          "slot": "stucco",
+          "tint": "#d2c59c"
+        },
+        "plinth": {
+          "slot": "stucco",
+          "tint": "#cfc8a4"
+        },
+        "frame": "#efece2",
+        "glass": "#506070",
+        "door": "#6a7480",
+        "accent": "#c99a3c",
+        "rail": "#d8d4c8",
+        "dark": "#3f3d38",
+        "column": "#c9c4b6",
+        "joint": "#8a8070",
+        "roof": {
+          "slot": "bitumen",
+          "tint": "#5c5e60"
+        }
+      }
+    },
+    "grey-blue": {
+      "label": "Grey render (#8d8e8a), blue-grey surrounds and panels #7e8688, grey tile plinth (Jan de Greefstraat, Steven Vennecoolstraat 2085861)",
+      "evidence": "crops 0363100012148009 wall #8d8e8a (67 %), strip #7e8688 (61 %), plinth #838783",
+      "palette": {
+        "wall": {
+          "slot": "stucco",
+          "tint": "#c6c9c8"
+        },
+        "plinth": {
+          "slot": "stucco",
+          "tint": "#c4c8c6"
+        },
+        "frame": "#efece2",
+        "glass": "#506070",
+        "door": "#6a7480",
+        "accent": "#8b9aa6",
+        "rail": "#d8d4c8",
+        "dark": "#3f3d38",
+        "column": "#c9c4b6",
+        "joint": "#8a8070",
+        "roof": {
+          "slot": "bitumen",
+          "tint": "#5c5e60"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "crops/0363100012102138.jpg",
+          "pand": "0363100012102138",
+          "address": "Ruys de Beerenbrouckstraat (frontal)",
+          "note": "four windows per floor left (staggered), stair strip of orange panels with a small window per floor, four windows right; two doors and a row of small vents on the tiled plinth"
+        },
+        {
+          "photo": "crops/0363100012063294.jpg",
+          "pand": "0363100012063294",
+          "address": "Ruys de Beerenbrouckstraat (frontal)",
+          "note": "same; second frame of the same view"
+        },
+        {
+          "photo": "crops/0363100012147868.jpg",
+          "pand": "0363100012147868",
+          "address": "Cornelis Outshoornstraat (frontal)",
+          "note": "ochre version: same grid, plinth tiles in blue-grey and ochre, entrance with small canopy"
+        },
+        {
+          "photo": "crops/0363100012148009.jpg",
+          "pand": "0363100012148009",
+          "address": "Jan de Greefstraat (oblique)",
+          "note": "grey-blue version of the same entrance side"
+        }
+      ],
+      "counted": {
+        "bays": 9,
+        "openingsPerUpperStorey": 9,
+        "groundDoors": 2,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "L1",
+          "w": 2.3,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.1,
+              "h": 1.2,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "count": 3,
+              "sill": 1.5
+            }
+          ]
+        },
+        {
+          "id": "L2",
+          "w": 2.3,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.1,
+              "h": 1.2,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "count": 3,
+              "sill": 1.5
+            }
+          ]
+        },
+        {
+          "id": "L3",
+          "w": 2.3,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.1,
+              "h": 1.2,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "count": 3,
+              "sill": 1.5
+            }
+          ]
+        },
+        {
+          "id": "L4",
+          "w": 2.3,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.1,
+              "h": 1.2,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 1.0,
+              "h": 2.2,
+              "steps": 0,
+              "u": -0.4
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "count": 2,
+              "sill": 1.5,
+              "u": 0.6
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 1.4,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "panel",
+              "levels": "upper",
+              "w": 1.3,
+              "h": 1.45,
+              "sill": 0.2,
+              "depth": 0.08,
+              "colour": "accent"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.0,
+              "h": 0.55,
+              "sill": 1.75,
+              "lights": 1
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 1.0,
+              "h": 2.2,
+              "steps": 0,
+              "u": -0.2
+            }
+          ]
+        },
+        {
+          "id": "R1",
+          "w": 2.3,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.1,
+              "h": 1.2,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "count": 3,
+              "sill": 1.5
+            }
+          ]
+        },
+        {
+          "id": "R2",
+          "w": 2.3,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.1,
+              "h": 1.2,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "count": 3,
+              "sill": 1.5
+            }
+          ]
+        },
+        {
+          "id": "R3",
+          "w": 2.3,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.1,
+              "h": 1.2,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "count": 3,
+              "sill": 1.5
+            }
+          ]
+        },
+        {
+          "id": "R4",
+          "w": 2.3,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.1,
+              "h": 1.2,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "count": 3,
+              "sill": 1.5
+            }
+          ]
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012085861.jpg",
+          "pand": "0363100012085861",
+          "address": "Steven Vennecoolstraat",
+          "note": "the opposite long side is the balcony side (type nw-peach-render-balcony-front); drawn here with that facade, balconies from the 2085861 / 2127500 oblique photos."
+        }
+      ],
+      "counted": {
+        "bays": 5,
+        "openingsPerUpperStorey": 3,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 2
+      },
+      "bays": [
+        {
+          "id": "BL",
+          "w": 3.2,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 3.0,
+              "depth": 1.5,
+              "railing": "slats"
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "count": 4,
+              "sill": 1.5
+            }
+          ]
+        },
+        {
+          "id": "WL",
+          "w": 2.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 2.0,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 3
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "count": 3,
+              "sill": 1.5
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 1.4,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "panel",
+              "levels": "upper",
+              "w": 1.3,
+              "h": 1.45,
+              "sill": 0.2,
+              "depth": 0.08,
+              "colour": "accent"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.0,
+              "h": 0.55,
+              "sill": 1.75,
+              "lights": 1
+            }
+          ]
+        },
+        {
+          "id": "WR",
+          "w": 2.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 2.0,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 3
+            }
+          ]
+        },
+        {
+          "id": "BR",
+          "w": 3.2,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 3.0,
+              "depth": 1.5,
+              "railing": "slats"
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "count": 4,
+              "sill": 1.5
+            }
+          ]
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012085861.jpg",
+          "pand": "0363100012085861",
+          "address": "Steven Vennecoolstraat (oblique; end wall plain render)",
+          "note": "gable / party-wall end modelled blank. NOT verified for end units: no straight-on photo of an end wall in the survey."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "end",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012087722.jpg",
+          "pand": "0363100012087722",
+          "address": "Steven Vennecoolstraat (oblique; end wall plain render)",
+          "note": "gable / party-wall end modelled blank. NOT verified for end units: no straight-on photo of an end wall in the survey."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "end",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "One design with a different street side on each pand: the entrance side (flat render, 4 + 4 window per floor either side of the stair strip; this type) and the balcony side (nw-peach-render-balcony-front, large curved white slatted balconies). The orientation step picks the front from the nearest street, the survey photo shows which side that was, and the pand is assigned to the type whose front matches the photo.",
+    "Both sides have an entrance door in the stair strip and a second door beside it; the strip carries coloured panels with a small stair window per floor. Window positions are staggered by row in the photos; drawn as a regular grid (spacing counted from the 2102138 and 2063294 frontals).",
+    "Colour variant per street, see variants. Plinth is a tiled band with a row of small dark vents; the vents are drawn as dark plates.",
+    "Photos: Gemeente Amsterdam panoramas (CC BY 4.0), crops made by scripts/building-types/camera-sheets.ts --survey (cached in .cache/building-types/crops).",
+    "The balcony side of this pand is drawn 1.5 m deep as in the photos (0363100012127500, 2087722: curved slatted decks); it was 0.75 m only to pass the geometry audit, which now accepts a balcony assembly up to 2.0 m."
+  ]
+}

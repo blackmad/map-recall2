@@ -1,0 +1,46 @@
+{
+  "id": "fire-station-nico",
+  "principalFacade": {
+    "nativeEdge": [
+      [
+        39.64716244686889,
+        -48.268166942526136
+      ],
+      [
+        7.443490753212043,
+        -13.481755442836914
+      ]
+    ],
+    "outwardNormal": [
+      -0.735,
+      -0.678
+    ],
+    "cameraLatLon": [
+      52.37036,
+      4.90928
+    ],
+    "note": "Corrected principal NORTHWEST IJtunnel street facade, BAG28\u219229; native u increases toward photographleft. Initial southeastedge23\u219224 was rear and failed independentreview."
+  },
+  "neighbors": [
+    "w1313783340",
+    "NL.IMBAG.Pand.0363100012254389",
+    "w268783372",
+    "NL.IMBAG.Pand.0363100012181527"
+  ],
+  "sourceImages": [
+    "../map-recall2-source-data/models/fire-station-nico/raw/facade-2022.jpg",
+    "../map-recall2-source-data/models/fire-station-nico/raw/current-roof-photo.jpg"
+  ],
+  "gallery": [
+    "Native northwest front (CPU opposite view) and lowfront; sourcephoto left corresponds increasingnativeu.",
+    "OppositeSWrearwing androofterraces",
+    "Fourrotationangles;doorsandupperpanelfirsthit"
+  ],
+  "game": [
+    "Exactreplacementw268783309/BAG0363100012165618, two namedneighborsretained",
+    "Disabled/loadfailurefallback",
+    "Route destination n1139360975 staysfixed, sourceentrancepin publicapron",
+    "Physicalbuildingcardclickand visiblepin",
+    "Actualridergamecamera/roofreadability andperformance"
+  ]
+}

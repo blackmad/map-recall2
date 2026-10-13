@@ -1,0 +1,515 @@
+{
+  "schemaVersion": 1,
+  "id": "herengracht-429",
+  "admissionFile": "docs/references/canalhouse-recipes/herengracht-429-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/herengracht-429-survey.json",
+  "windowGroups": [
+    {
+      "id": "bel-etage",
+      "bays": [
+        {
+          "id": "left-leaf",
+          "left": 0.09,
+          "width": 0.26
+        },
+        {
+          "id": "right-leaf",
+          "left": 0.35,
+          "width": 0.26
+        }
+      ],
+      "tiers": [
+        {
+          "id": "paired",
+          "bottom": 0.145,
+          "height": 0.265
+        }
+      ],
+      "frame": {
+        "template": "plain-frame",
+        "overrides": {
+          "verticalBars": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "horizontalBars": [
+            0.16,
+            0.32,
+            0.48,
+            0.64,
+            0.76,
+            0.88
+          ],
+          "horizontalBarWidthsM": [
+            0.03,
+            0.03,
+            0.03,
+            0.075,
+            0.03,
+            0.03
+          ]
+        }
+      }
+    },
+    {
+      "id": "first",
+      "bays": [
+        {
+          "id": "left",
+          "left": 0.09,
+          "width": 0.32
+        },
+        {
+          "id": "right",
+          "left": 0.55,
+          "width": 0.32
+        }
+      ],
+      "tiers": [
+        {
+          "id": "tier",
+          "bottom": 0.47,
+          "height": 0.17
+        }
+      ],
+      "frame": {
+        "template": "sash-four-by-four"
+      }
+    },
+    {
+      "id": "second",
+      "bays": [
+        {
+          "id": "left",
+          "left": 0.09,
+          "width": 0.32
+        },
+        {
+          "id": "right",
+          "left": 0.55,
+          "width": 0.32
+        }
+      ],
+      "tiers": [
+        {
+          "id": "tier",
+          "bottom": 0.68,
+          "height": 0.13
+        }
+      ],
+      "frame": {
+        "template": "sash-four-by-three"
+      }
+    },
+    {
+      "id": "attic-body-1",
+      "bays": [
+        {
+          "id": "opening",
+          "left": 0.095,
+          "width": 0.14
+        }
+      ],
+      "tiers": [
+        {
+          "id": "attic",
+          "bottom": 0.86,
+          "height": 0.115
+        }
+      ],
+      "frame": {
+        "template": "sash-single-three"
+      }
+    },
+    {
+      "id": "attic-body-2",
+      "bays": [
+        {
+          "id": "opening",
+          "left": 0.38,
+          "width": 0.24
+        }
+      ],
+      "tiers": [
+        {
+          "id": "attic",
+          "bottom": 0.86,
+          "height": 0.115
+        }
+      ],
+      "frame": {
+        "template": "sash-pair-three"
+      }
+    },
+    {
+      "id": "attic-body-3",
+      "bays": [
+        {
+          "id": "opening",
+          "left": 0.77,
+          "width": 0.13
+        }
+      ],
+      "tiers": [
+        {
+          "id": "attic",
+          "bottom": 0.86,
+          "height": 0.115
+        }
+      ],
+      "frame": {
+        "template": "sash-single-three"
+      }
+    }
+  ],
+  "openings": [
+    {
+      "id": "door-1",
+      "kind": "door",
+      "left": 0.735,
+      "bottom": 0.14,
+      "width": 0.175,
+      "height": 0.17,
+      "frame": {
+        "template": "four-panel-door"
+      }
+    },
+    {
+      "id": "door-transom",
+      "kind": "window",
+      "left": 0.735,
+      "bottom": 0.315,
+      "width": 0.175,
+      "height": 0.1,
+      "frame": {
+        "template": "diamond-transom"
+      }
+    },
+    {
+      "id": "crown-1",
+      "kind": "window",
+      "left": 0.405,
+      "bottom": 1.035,
+      "width": 0.23,
+      "height": 0.115,
+      "frame": {
+        "template": "plain-frame"
+      }
+    },
+    {
+      "id": "souterrain-3",
+      "kind": "window",
+      "left": 0.605,
+      "bottom": 0.015,
+      "width": 0.13,
+      "height": 0.12,
+      "frame": {
+        "template": "dark-cellar-frame"
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#6b5141",
+    "trim": "#dedfcd",
+    "glass": "#364344",
+    "door": "#28322d",
+    "stone": "#b5b6a4",
+    "roof": "#514d49"
+  },
+  "crown": {
+    "depthM": 0.18,
+    "trimWidthM": 0.085
+  },
+  "ornaments": [
+    {
+      "id": "pale-neck-cap",
+      "profile": [
+        [
+          0.34,
+          1.245
+        ],
+        [
+          0.42,
+          1.31
+        ],
+        [
+          0.5,
+          1.3333
+        ],
+        [
+          0.58,
+          1.31
+        ],
+        [
+          0.66,
+          1.245
+        ],
+        [
+          0.64,
+          1.22
+        ],
+        [
+          0.5,
+          1.26
+        ],
+        [
+          0.36,
+          1.22
+        ]
+      ],
+      "depthM": 0.09,
+      "fill": "trim",
+      "rimWidthM": 0.07
+    }
+  ],
+  "bands": [
+    {
+      "id": "stone-basement",
+      "left": 0,
+      "bottom": 0,
+      "width": 1,
+      "height": 0.14,
+      "depthM": 0.065,
+      "surface": "stone"
+    },
+    {
+      "id": "left-shoulder-cap",
+      "left": 0,
+      "bottom": 0.982,
+      "width": 0.23,
+      "height": 0.018,
+      "depthM": 0.075,
+      "surface": "trim"
+    },
+    {
+      "id": "right-shoulder-cap",
+      "left": 0.77,
+      "bottom": 0.982,
+      "width": 0.23,
+      "height": 0.018,
+      "depthM": 0.075,
+      "surface": "trim"
+    }
+  ],
+  "landing": {
+    "left": 0.7,
+    "width": 0.29,
+    "top": 0.14,
+    "depthM": 0.65,
+    "thicknessM": 0.05,
+    "supportToGround": false
+  },
+  "approaches": [
+    {
+      "id": "left-flight",
+      "input": {
+        "id": "single-left-ascent",
+        "topProfile": [
+          [
+            0.48,
+            -1
+          ],
+          [
+            0.48,
+            -0.875
+          ],
+          [
+            0.5075,
+            -0.875
+          ],
+          [
+            0.5075,
+            -0.75
+          ],
+          [
+            0.535,
+            -0.75
+          ],
+          [
+            0.535,
+            -0.625
+          ],
+          [
+            0.5625,
+            -0.625
+          ],
+          [
+            0.5625,
+            -0.5
+          ],
+          [
+            0.59,
+            -0.5
+          ],
+          [
+            0.59,
+            -0.375
+          ],
+          [
+            0.6175,
+            -0.375
+          ],
+          [
+            0.6175,
+            -0.25
+          ],
+          [
+            0.645,
+            -0.25
+          ],
+          [
+            0.645,
+            -0.125
+          ],
+          [
+            0.6725,
+            -0.125
+          ],
+          [
+            0.6725,
+            0
+          ],
+          [
+            0.7,
+            0
+          ]
+        ],
+        "railProfile": [
+          [
+            0.48,
+            -0.58
+          ],
+          [
+            0.7,
+            0.42
+          ],
+          [
+            0.98,
+            0.42
+          ]
+        ],
+        "posts": [
+          {
+            "x": 0.48,
+            "bottom": -1,
+            "top": -0.58
+          },
+          {
+            "x": 0.7,
+            "bottom": 0,
+            "top": 0.42
+          },
+          {
+            "x": 0.98,
+            "bottom": 0,
+            "top": 0.42
+          }
+        ],
+        "projectionDepthM": 0.65,
+        "exactCurrentTreadCount": null
+      },
+      "railWidthM": 0.035,
+      "postWidthM": 0.055,
+      "occludedOpeningIds": [
+        "souterrain-2/pair/right-leaf",
+        "souterrain-3"
+      ]
+    }
+  ],
+  "simplifications": [
+    "Unrectified current source proportions are bounded visual ratios, not pixel measurements; retained full and near photos control review.",
+    "Native 3DBAG footprint and all upward triangulated roof regions remain unchanged; eaves use the source-bounded 13.3985\u201313.6255 m range nominal.",
+    "Bel-etage paired leaves, two upper bays per tier and three attic apertures are explicit source-selected component groups.",
+    "Single lateral flight uses an original coarse drawing contour; contour vertices do not claim an exact current tread count. Landing/flight depth 0.65 m and rail dimensions are drawing assumptions, not measurements.",
+    "Diamond transom uses straight strokes; exact curved ornament, cap sculpture, hidden side/rear apertures and tread geometry remain secondary unresolved details.",
+    "This candidate is not visual, heldout-transfer or production acceptance. Herengracht 433 was source-exposed and is not a fresh heldout.",
+    "Near-source sash correction uses seven approximate vertical bands per leaf and a stronger meeting rail; pane intervals are bounded visual estimates.",
+    "Cellar paired leaves, upper grille fields and lower panels reuse shared opening groups and material slots. Grille drawing density (4 by 7) is a restrained approximation, not an observed exact wire count.",
+    "Stone landing support reuses aperture-aware facade blocks; the source aperture remains cut through the projected masonry."
+  ],
+  "openingGroups": [
+    {
+      "id": "souterrain-1",
+      "kind": "door",
+      "bays": [
+        {
+          "id": "left-leaf",
+          "left": 0.07,
+          "width": 0.1175
+        },
+        {
+          "id": "right-leaf",
+          "left": 0.1875,
+          "width": 0.1175
+        }
+      ],
+      "tiers": [
+        {
+          "id": "pair",
+          "bottom": 0.015,
+          "height": 0.12
+        }
+      ],
+      "frame": {
+        "template": "paneled-cellar-leaf"
+      },
+      "grille": {
+        "rect": [
+          0.18,
+          0.32,
+          0.64,
+          0.58
+        ],
+        "columns": 4,
+        "rows": 7
+      }
+    },
+    {
+      "id": "souterrain-2",
+      "kind": "door",
+      "bays": [
+        {
+          "id": "left-leaf",
+          "left": 0.33,
+          "width": 0.1225
+        },
+        {
+          "id": "right-leaf",
+          "left": 0.4525,
+          "width": 0.1225
+        }
+      ],
+      "tiers": [
+        {
+          "id": "pair",
+          "bottom": 0.015,
+          "height": 0.12
+        }
+      ],
+      "frame": {
+        "template": "paneled-cellar-leaf"
+      },
+      "grille": {
+        "rect": [
+          0.18,
+          0.32,
+          0.64,
+          0.58
+        ],
+        "columns": 4,
+        "rows": 7
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "id": "stoep-support",
+      "left": 0.7,
+      "bottom": 0,
+      "width": 0.29,
+      "height": 0.13629958600698094,
+      "depthM": 0.65,
+      "surface": "stone"
+    }
+  ]
+}

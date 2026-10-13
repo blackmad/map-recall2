@@ -30,6 +30,7 @@ import { decorateShopfront, setShopfronts } from './shopfronts.js';
 import { boatForLandmark, houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetSegments } from './streetFronts.js';
+import { buildPrismIndex, pickPrism, type PrismEntry } from './prismPick.js';
 import { ORIGIN, ROOF_TONES, asPolygons, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
 export { ORIGIN, ROOF_TONES, type BuildingLook };
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
@@ -37,6 +38,7 @@ import { validateStreetAppearanceCatalog, type StreetAppearanceCatalog, type Str
 import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { PROCEDURAL_RECIPE_LAYER_OFFSET } from './streetFacadeRendering.js';
 import { buildingProjectionScale } from './buildingProjectionScale.js';
+import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererShared/litFacadeMaterial.js';
 
 type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
 
@@ -258,6 +260,11 @@ export async function buildLookTextures(THREE: any, look: 'procedural' | Look, m
   return { colour: array(colour, THREE.RGBAFormat), mask: array(mask, THREE.RGFormat) };
 }
 
+/** Own ground: a feature's base height (metres), undefined while its relief is not resident, null where there is none. */
+export type GroundBaseFn = (feature: Feature) => number | null | undefined;
+/** Per chunk: what each building was lifted by, and which still wait for their relief. */
+type GroundLift = { applied: Map<string, number>; pending: Set<string>; features: Map<string, Feature> };
+
 export class ThreeBuildings {
   readonly layer: any;
   private visible = true;
@@ -266,7 +273,11 @@ export class ThreeBuildings {
   private material: any;
   private renderer: any;
   private camera: any;
-  private readonly chunks = new Map<string, { source: Feature[]; mesh: any; info: ChunkInfo; ranges: Map<string, { start: number; count: number }> }>();
+  private readonly chunks = new Map<string, { source: Feature[]; mesh: any; info: ChunkInfo; ranges: Map<string, { start: number; count: number }>; lift?: GroundLift }>();
+  /** Click index per installed chunk, built on its first click (`prismPick.ts`). */
+  private readonly pickIndex = new WeakMap<object, PrismEntry[]>();
+  /** Own ground (`?ownGround=1`): a building's base on the relief; undefined = not known yet, null = no relief there. */
+  private groundBase: GroundBaseFn | null = null;
   /** Ids hidden per reason (the answer building, signature models); a facade is hidden while any reason holds it. */
   private readonly hiddenBy = new Map<string, Set<string>>();
   private hidden = new Set<string>();
@@ -300,6 +311,7 @@ export class ThreeBuildings {
   private boatTiles = new Map<string, Houseboat[]>();
   private boatIds: ReadonlySet<string> = new Set();
   private boats: readonly Houseboat[] = [];
+  private waterLevel = 0;
   private lastFeatures: readonly Feature[] = [];
   private contextIndex?: BuildingContextIndex<Feature>;
   private detailTiles = new Set<string>();
@@ -311,9 +323,11 @@ export class ThreeBuildings {
     this.layer = this.makeLayer();
   }
 
-  /** Raycast the rendered mesh and resolve its vertex range to an exact
-   * building ID. Shader-hidden replacement meshes must never intercept a
-   * click on the manual model that replaced them. */
+  /** Resolve the building under a screen point to an exact building ID.
+   * Each chunk's buildings are tested as extruded footprints (`prismPick.ts`):
+   * the drawn buffers are released on the CPU, and rebuilding a chunk's whole
+   * facade layout per click cost ~2 s. Shader-hidden replacement meshes must
+   * never intercept a click on the manual model that replaced them. */
   inspectAtScreen(x: number, y: number, width: number, height: number): any {
     if (!this.visible || !this.ready || !this.camera || !this.THREE || !width || !height) return null;
     const T = this.THREE;
@@ -322,54 +336,39 @@ export class ThreeBuildings {
     const nx = x / width * 2 - 1, ny = 1 - y / height * 2;
     const near = new T.Vector3(nx, ny, -1).applyMatrix4(inverse);
     const far = new T.Vector3(nx, ny, 1).applyMatrix4(inverse);
-    const ray = new T.Raycaster(near, far.sub(near).normalize());
+    const ray = new T.Ray(near.clone(), far.clone().sub(near).normalize());
+    const toLocal = new T.Matrix4();
     let result: any = null;
     for (const [key, chunk] of this.chunks) {
-      if (!chunk.mesh || !chunk.source.length) continue;
-      chunk.mesh.updateWorldMatrix(true, true);
+      // Extras (dormers, chimneys) belong to buildings their walls chunk already holds.
+      if (!chunk.mesh || !chunk.source.length || key.startsWith(EXTRAS_PREFIX)) continue;
+      chunk.mesh.updateWorldMatrix(true, false);
       const sphere = chunk.mesh.geometry.boundingSphere?.clone().applyMatrix4(chunk.mesh.matrixWorld);
-      if (sphere && !ray.ray.intersectsSphere(sphere)) continue;
-      let pickMesh = chunk.mesh, temporary: any = null;
-      // Uploaded buffers are intentionally released on the CPU. Rebuild
-      // only a ray-intersecting chunk, with its installed build inputs, and
-      // discard it after the click rather than retaining city-wide buffers.
-      if (!chunk.mesh.geometry.getAttribute('position')?.array || chunk.mesh.geometry.index && !chunk.mesh.geometry.index.array) {
-        const installedLook = chunk.mesh.userData.installedLook as BuildingLook | undefined;
-        if (!installedLook) continue;
-        const rebuilt = key === KIT_KEY ? this.buildKits(chunk.source, installedLook)
-          : buildTransportedEnvelopeChunk(chunk.source, {look:installedLook,mode:chunkMode(key),streets:chunk.mesh.userData.installedStreets,profiles:chunk.mesh.userData.installedProfiles ?? [],contextFeatures:chunk.mesh.userData.installedContextFeatures ?? [],hostOpenings:chunk.mesh.userData.installedHostOpenings ?? [],surveyedEnvelopeData:chunk.mesh.userData.installedSurveyedEnvelopeData ?? []}).chunk;
-        if (rebuilt.vertexCount !== chunk.mesh.geometry.getAttribute('position').count
-          || rebuilt.ranges.length !== chunk.ranges.size
-          || rebuilt.ranges.some(range => {
-            const drawn = chunk.ranges.get(range.id);
-            return !drawn || drawn.start !== range.start || drawn.count !== range.count;
-          })) continue;
-        temporary = new T.BufferGeometry();
-        temporary.setAttribute('position', new T.BufferAttribute(rebuilt.positions, 3));
-        temporary.setIndex(new T.BufferAttribute(rebuilt.indices, 1));
-        temporary.boundingSphere = chunk.mesh.geometry.boundingSphere;
-        pickMesh = new T.Mesh(temporary, chunk.mesh.material);
-        pickMesh.matrixAutoUpdate = false;
-        pickMesh.matrixWorld.copy(chunk.mesh.matrixWorld);
-      }
-      try { for (const hit of ray.intersectObject(pickMesh, false)) {
-        const vertex = hit.face?.a;
-        if (vertex == null) continue;
-        const hidden = chunk.mesh.geometry.getAttribute('hidden')?.getX(vertex);
-        if (hidden > 0.5 && hidden < 1.5) continue;
-        const pair = [...chunk.ranges].find(([, range]) => vertex >= range.start && vertex < range.start + range.count);
-        if (!pair || this.hidden.has(pair[0])) continue;
-        const feature = chunk.source.find(feature => String(feature.properties.id) === pair[0]);
-        if (!feature) continue;
-        const depth = hit.point.clone().applyMatrix4(projection).z;
-        if (depth < -1 || depth > 1 || result && depth >= result.depth) continue;
-        const p = feature.properties || {};
-        const at = (this.map as any).unproject([x, y]);
-        result = { id: pair[0], name: p.name || p['name:en'] || '',
-          height: Number(p.height) || undefined, lngLat: [at.lng, at.lat], depth,
-          footprint: feature.geometry,
-          featureTarget: { source: 'osm-building-appearance', id: pair[0] } };
-      } } finally { temporary?.dispose(); }
+      if (sphere && !ray.intersectsSphere(sphere)) continue;
+      let index = this.pickIndex.get(chunk);
+      if (!index) this.pickIndex.set(chunk, index = buildPrismIndex(chunk.source, ORIGIN));
+      toLocal.copy(chunk.mesh.matrixWorld).invert();
+      const o = near.clone().applyMatrix4(toLocal), d = far.clone().applyMatrix4(toLocal).sub(o);
+      const hiddenAttribute = chunk.mesh.geometry.getAttribute('hidden');
+      const lift = chunk.lift?.applied;
+      const hit = pickPrism(index, [o.x, o.y, o.z], [d.x, d.y, d.z], id => lift?.get(id) ?? 0, id => {
+        const range = chunk.ranges.get(id);
+        if (!range || this.hidden.has(id)) return true;
+        const hidden = hiddenAttribute?.getX(range.start);
+        return hidden > 0.5 && hidden < 1.5;
+      });
+      if (!hit) continue;
+      const point = o.clone().addScaledVector(d, hit.t).applyMatrix4(chunk.mesh.matrixWorld);
+      const depth = point.applyMatrix4(projection).z;
+      if (depth < -1 || depth > 1 || result && depth >= result.depth) continue;
+      const feature = chunk.source.find(feature => String(feature.properties.id) === hit.entry.id);
+      if (!feature) continue;
+      const p = feature.properties || {};
+      const at = (this.map as any).unproject([x, y]);
+      result = { id: hit.entry.id, name: p.name || p['name:en'] || '',
+        height: Number(p.height) || undefined, lngLat: [at.lng, at.lat], depth,
+        footprint: feature.geometry,
+        featureTarget: { source: 'osm-building-appearance', id: hit.entry.id } };
     }
     return result;
   }
@@ -380,7 +379,8 @@ export class ThreeBuildings {
   private bindLookMaterial(look: BuildingLook, set: { colour: any; mask: any }): void {
     let material = this.materials.get(look);
     if (!material) {
-      material = this.material.clone();
+      // The lit material's onBeforeCompile does not survive clone().
+      material = this.lit ? this.newMaterial() : this.material.clone();
       this.materials.set(look, material);
     }
     material.uniforms.cells.value = set.colour;
@@ -735,6 +735,17 @@ export class ThreeBuildings {
     this.setFeatures(this.lastFeatures);
   }
 
+  /**
+   * Canal water height relative to the street (metres, ≤ 0). The opt-in
+   * elevation layer (`?elevation=1`) sinks canal water below the quays; boats
+   * follow it. Buildings, kits and trees stay at street level.
+   */
+  setWaterLevel(metres: number): void {
+    this.waterLevel = Number.isFinite(metres) ? Math.min(0, metres) : 0;
+    for (const [key, entry] of this.chunks) if (key.startsWith(BOAT_PREFIX) && entry.mesh) entry.mesh.position.z = this.waterLevel;
+    this.map.triggerRepaint();
+  }
+
   /** The drawn houseboat a landmark with no building is aboard, if any (see `boatForLandmark`). */
   boatForLandmark(lngLat: [number, number], type?: string): string | null {
     return boatForLandmark(this.boats, lngLat, type);
@@ -830,6 +841,66 @@ export class ThreeBuildings {
     return this.worker;
   }
 
+  /**
+   * Stand every building on the own ground's relief: each building is lifted
+   * by its footprint's lowest relief (the prototype's rule; nothing floats).
+   * Chunks keep their CPU positions only while some building still waits for
+   * its relief; call `refreshGroundBases()` when more relief is resident.
+   */
+  setGroundBase(fn: GroundBaseFn | null): void {
+    this.groundBase = fn;
+    this.refreshGroundBases();
+  }
+
+  /** Apply bases that became known since install (or since the last refresh). Returns buildings lifted. */
+  refreshGroundBases(): number {
+    if (!this.groundBase) return 0;
+    let lifted = 0;
+    for (const entry of this.chunks.values()) {
+      const lift = entry.lift, attribute = entry.mesh?.geometry?.getAttribute('position');
+      if (!lift || !lift.pending.size || !attribute?.array) continue;
+      const n = this.applyGroundLift(attribute.array as Float32Array, entry.ranges, lift);
+      if (!n) continue;
+      lifted += n;
+      attribute.needsUpdate = true;
+      entry.mesh.geometry.computeBoundingSphere();
+      // Settled: let the CPU copy go after the next upload.
+      if (!lift.pending.size) attribute.onUpload(function (this: any) { this.array = null; });
+    }
+    if (lifted) { this.hiddenRevision++; this.map.triggerRepaint(); }
+    return lifted;
+  }
+
+  /** Diagnostics for the own ground: buildings lifted, still waiting, base range, CPU copies kept. */
+  groundLiftStats(): { chunks: number; lifted: number; pending: number; minBase: number | null; maxBase: number | null; keptMB: number } {
+    let chunks = 0, lifted = 0, pending = 0, keptBytes = 0, minBase = Infinity, maxBase = -Infinity;
+    for (const entry of this.chunks.values()) {
+      if (!entry.lift) continue;
+      chunks++;
+      pending += entry.lift.pending.size;
+      for (const z of entry.lift.applied.values()) { lifted++; minBase = Math.min(minBase, z); maxBase = Math.max(maxBase, z); }
+      const array = entry.mesh?.geometry?.getAttribute('position')?.array;
+      if (array) keptBytes += array.byteLength;
+    }
+    return { chunks, lifted, pending, minBase: Number.isFinite(minBase) ? +minBase.toFixed(2) : null, maxBase: Number.isFinite(maxBase) ? +maxBase.toFixed(2) : null, keptMB: +(keptBytes / 1048576).toFixed(1) };
+  }
+
+  private applyGroundLift(positions: Float32Array, ranges: Map<string, { start: number; count: number }>, lift: GroundLift): number {
+    let n = 0;
+    for (const id of [...lift.pending]) {
+      const feature = lift.features.get(id);
+      const base = feature ? this.groundBase!(feature) : null;
+      if (base === undefined) continue;
+      lift.pending.delete(id);
+      const z = base ?? 0, delta = z - (lift.applied.get(id) ?? 0), range = ranges.get(id);
+      if (!range || !delta) continue;
+      for (let v = range.start; v < range.start + range.count; v++) positions[v * 3 + 2] += delta;
+      lift.applied.set(id, z);
+      n++;
+    }
+    return n;
+  }
+
   private install(key: string, source: Feature[], chunk: Chunk, buildMs: number, options?: BuildOptions, boundParentIds: string[] = []): void {
     if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
     if (options && (options.surveyedEnvelopeRevision !== this.surveyedEnvelopeTransport.revision || options.look !== this.look || options.appearanceRevision !== this.appearanceRevision || options.hostOpeningRevision !== this.openingRevision(key, source))) return;
@@ -844,7 +915,18 @@ export class ThreeBuildings {
     // (the `hidden` flags stay: they are rewritten when the answer changes).
     // A lost context rebuilds from `source`, see onAdd.
     const release = (attribute: any) => { attribute.onUpload(function (this: any) { this.array = null; }); return attribute; };
-    geometry.setAttribute('position', release(new THREE.BufferAttribute(chunk.positions, 3)));
+    // Own ground: lift each building onto its relief before upload. Houseboats
+    // follow the water level instead (mesh.position.z below).
+    let lift: GroundLift | undefined;
+    if (this.groundBase && !key.startsWith(BOAT_PREFIX)) {
+      const features = new Map<string, Feature>();
+      for (const f of source) { const id = String((f.properties as any)?.id ?? (f as any).id ?? ''); if (id) features.set(id, f); }
+      lift = { applied: new Map(), pending: new Set(chunk.ranges.map(r => r.id)), features };
+      const ranges = new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }]));
+      this.applyGroundLift(chunk.positions, ranges, lift);
+    }
+    const positionAttribute = new THREE.BufferAttribute(chunk.positions, 3);
+    geometry.setAttribute('position', lift?.pending.size ? positionAttribute : release(positionAttribute));
     geometry.setAttribute('uv', release(new THREE.BufferAttribute(chunk.uvs, 2)));
     geometry.setAttribute('layer', release(new THREE.BufferAttribute(chunk.layers, 1, false)));
     geometry.setAttribute('tint', release(new THREE.BufferAttribute(chunk.tints, 4, true)));
@@ -868,7 +950,16 @@ export class ThreeBuildings {
     mesh.userData.hostOpeningIds = chunk.hostOpeningIds ?? [];
     mesh.userData.appearanceRevision = options?.appearanceRevision;
     mesh.frustumCulled = true;
-    const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])) };
+    if (this.lit) {
+      // Coarse shells cover the whole city in a few huge meshes: drawing them
+      // into the shadow map would cost the full city per frame for a box
+      // that only spans the detailed tiles around the rider.
+      mesh.castShadow = !key.startsWith(COARSE_PREFIX);
+      mesh.receiveShadow = true;
+      mesh.customDepthMaterial = this.depthMaterial;
+    }
+    if (key.startsWith(BOAT_PREFIX)) mesh.position.z = this.waterLevel;
+    const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])), lift };
     this.chunks.set(key, entry);
     this.scene.add(mesh);
     this.refreshSurveyedRoofOwnership();
@@ -889,7 +980,7 @@ export class ThreeBuildings {
       attribute.array.fill(this.hidden.has(id) || entry.mesh.userData.coarse && this.installedDetailIds.has(id) ? 1 : this.highlighted.has(id) ? 2 : 0, range.start, range.start + range.count);
       touched = true;
     }
-    if (touched) attribute.needsUpdate = true;
+    if (touched) { attribute.needsUpdate = true; this.hiddenRevision++; }
   }
 
   private dropChunk(key: string): void {
@@ -920,6 +1011,107 @@ export class ThreeBuildings {
     for (const [key, entry] of this.chunks) if (key.startsWith(COARSE_PREFIX)) this.applyHidden(entry, changed);
   }
 
+  /** Set when the facades draw in the shared frame (`?sharedFrame=1`) instead of their own layer. */
+  private sharedFrame: any = null;
+  /** Lit material + sun shadows; only inside the shared frame (`?litFacades=0` keeps the unlit shader there). */
+  private lit = false;
+  private depthMaterial: any = null;
+  /** Bumped whenever suppressed/answer walls change (they cast differently). */
+  private hiddenRevision = 0;
+
+  /** One set-up for both the legacy layer and the shared frame. */
+  private setup(map: MapLike, renderer: any, camera: any, scene: any): void {
+    const THREE = this.THREE;
+    if (!this.appearanceLoaded) void this.loadStreetAppearance();
+    this.camera = camera;
+    this.scene = scene;
+    this.renderer = renderer;
+    // CPU copies are freed after upload, so a restored context needs fresh meshes.
+    map.getCanvas().addEventListener('webglcontextrestored', () => {
+      this.ready = false;
+      this.textureSets.clear();
+      for (const key of [...this.chunks.keys()]) this.dropChunk(key);
+      for (const material of this.materials.values()) material.dispose();
+      this.materials.clear();
+      this.material.uniforms.cells.value = null;
+      void this.setLook(this.requestedLook);
+    });
+    this.material = this.newMaterial();
+    if (this.lit) this.depthMaterial = createFacadeDepthMaterial(THREE);
+    this.materials.set(this.look, this.material);
+    const initialLook = this.requestedLook, token = ++this.lookToken;
+    void this.texturesFor(cellSetOf(initialLook)).then(set => {
+      // A newer mode can finish before the initial atlas. Never overwrite it.
+      if (token !== this.lookToken) return;
+      this.look = initialLook;
+      this.bindLookMaterial(initialLook, set);
+      this.ready = true;
+      this.invalidateBuilds();
+      for (const [key, source] of this.sourceGroups) this.pending.push(key, () => this.rebuild(key, source));
+      this.pump();
+      this.map.triggerRepaint();
+    });
+    const c = this.maplibregl.MercatorCoordinate.fromLngLat([ORIGIN.lng, ORIGIN.lat], 0);
+    const scale = c.meterInMercatorCoordinateUnits();
+    this.transform = new THREE.Matrix4().makeTranslation(c.x, c.y, c.z).scale(new THREE.Vector3(...buildingProjectionScale(scale)));
+  }
+
+  private newMaterial(): any {
+    const THREE = this.THREE;
+    if (this.lit) {
+      const material = createLitFacadeMaterial(THREE);
+      material.uniforms.bands.value = this.look === 'cartoon' ? 3 : 0;
+      material.uniforms.flatColour.value = this.look === 'untextured' ? 1 : 0;
+      return material;
+    }
+    return new THREE.RawShaderMaterial({
+      glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
+      uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: this.look === 'cartoon' ? 3 : 0 }, flatColour: { value: this.look === 'untextured' ? 1 : 0 }, cityFade: { value: 1 } }, side: THREE.FrontSide,
+    });
+  }
+
+  /** Per-frame state shared by both paths; false when nothing should draw. */
+  private prepareFrame(): boolean {
+    this.refreshSurveyedRoofOwnership();
+    if (!this.visible || !this.ready || !this.scene || !this.chunks.size || this.map.getZoom() < MIN_ZOOM) return false;
+    const fade = Math.max(0, Math.min(1, (this.map.getZoom() - MIN_ZOOM) / 1.6));
+    for (const material of this.materials.values()) material.uniforms.cityFade.value = fade;
+    return true;
+  }
+
+  /**
+   * Draw in the page's shared three.js frame instead of an own custom layer:
+   * one renderer, scene and light rig with the landmarks, trees and vehicles,
+   * plus (unless `lit: false`) the lit facade material and sun shadows. Call
+   * this instead of adding `layer` to the map.
+   */
+  attachToSharedFrame(frame: any, options: { lit?: boolean; order?: number } = {}): void {
+    if (this.sharedFrame) return;
+    const THREE = (window as any).CanalRecallThree?.THREE;
+    if (!THREE) { console.warn('three-building-facades: shared three.js missing'); return; }
+    this.THREE = THREE;
+    this.sharedFrame = frame;
+    this.lit = options.lit !== false;
+    const root = new THREE.Group();
+    root.name = 'three-building-facades';
+    const camera = new THREE.Camera();
+    frame.register('facades', {
+      root,
+      onAttach: (f: any) => this.setup(this.map, f.renderer, camera, root),
+      mercatorFromLocal: () => this.transform?.elements,
+      revision: () => this.hiddenRevision,
+      beforeRender: (ctx: any) => {
+        if (!this.prepareFrame()) return false;
+        // Picking (inspectAtScreen) raycasts world-space meshes with this projection.
+        camera.projectionMatrix.copy(ctx.clipFromWorld);
+        return true;
+      },
+    }, { order: options.order ?? 0 });
+  }
+
+  /** Whether this layer draws through the shared frame. */
+  get inSharedFrame(): boolean { return !!this.sharedFrame; }
+
   private makeLayer(): any {
     const owner = this;
     return {
@@ -928,47 +1120,12 @@ export class ThreeBuildings {
         const THREE = (window as any).CanalRecallThree?.THREE;
         if (!THREE) { console.warn('three-building-facades: shared three.js missing'); return; }
         owner.THREE = THREE;
-        if (!owner.appearanceLoaded) void owner.loadStreetAppearance();
-        owner.camera = new THREE.Camera();
-        owner.scene = new THREE.Scene();
-        owner.renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
-        owner.renderer.autoClear = false;
-        // CPU copies are freed after upload, so a restored context needs fresh meshes.
-        map.getCanvas().addEventListener('webglcontextrestored', () => {
-          owner.ready = false;
-          owner.textureSets.clear();
-          for (const key of [...owner.chunks.keys()]) owner.dropChunk(key);
-          for (const material of owner.materials.values()) material.dispose();
-          owner.materials.clear();
-          owner.material.uniforms.cells.value = null;
-          void owner.setLook(owner.requestedLook);
-        });
-        owner.material = new THREE.RawShaderMaterial({
-          glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
-          uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: owner.look === 'cartoon' ? 3 : 0 }, flatColour: { value: owner.look === 'untextured' ? 1 : 0 }, cityFade: { value: 1 } }, side: THREE.FrontSide,
-        });
-        owner.materials.set(owner.look, owner.material);
-        const initialLook = owner.requestedLook, token = ++owner.lookToken;
-        void owner.texturesFor(cellSetOf(initialLook)).then(set => {
-          // A newer mode can finish before the initial atlas. Never overwrite it.
-          if (token !== owner.lookToken) return;
-          owner.look = initialLook;
-          owner.bindLookMaterial(initialLook, set);
-          owner.ready = true;
-          owner.invalidateBuilds();
-          for (const [key, source] of owner.sourceGroups) owner.pending.push(key, () => owner.rebuild(key, source));
-          owner.pump();
-          owner.map.triggerRepaint();
-        });
-        const c = owner.maplibregl.MercatorCoordinate.fromLngLat([ORIGIN.lng, ORIGIN.lat], 0);
-        const scale = c.meterInMercatorCoordinateUnits();
-        owner.transform = new THREE.Matrix4().makeTranslation(c.x, c.y, c.z).scale(new THREE.Vector3(...buildingProjectionScale(scale)));
+        const renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
+        renderer.autoClear = false;
+        owner.setup(map, renderer, new THREE.Camera(), new THREE.Scene());
       },
       render(_gl: WebGL2RenderingContext, args: any) {
-        owner.refreshSurveyedRoofOwnership();
-        if (!owner.visible || !owner.ready || !owner.scene || !owner.chunks.size || owner.map.getZoom() < MIN_ZOOM) return;
-        const fade = Math.max(0, Math.min(1, (owner.map.getZoom() - MIN_ZOOM) / 1.6));
-        for (const material of owner.materials.values()) material.uniforms.cityFade.value = fade;
+        if (!owner.prepareFrame()) return;
         owner.camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(owner.transform);
         owner.renderer.resetState();
         owner.renderer.render(owner.scene, owner.camera);

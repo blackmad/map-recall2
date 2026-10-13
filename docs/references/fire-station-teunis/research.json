@@ -1,0 +1,410 @@
+{
+  "modelId": "fire-station-teunis",
+  "reviewState": "source-ready original draft; CPU/geometry checks passed; independent/GPU/live acceptance pending",
+  "rawArchivePath": "models/fire-station-teunis/raw/",
+  "photos": [
+    {
+      "path": "models/fire-station-teunis/raw/brandbase-2018.jpg",
+      "url": "https://brandbase.hetbrandweerforum.nl/wp-content/uploads/2018/05/Vredenhofweg-3-te-Amsterdam.jpg",
+      "credit": "John Lammes via Brandbase",
+      "date": "page upload May2018; photograph exact capture date unknown",
+      "features": [
+        "three vehicle doors",
+        "red soffit",
+        "open upper terrace",
+        "pale panel cladding",
+        "two southern window ribbons"
+      ],
+      "rights": "Unresolved image reuse restrictions; private reference only"
+    }
+  ],
+  "panoramas": [
+    {
+      "id": "2025_10_02_08_06_04_00483",
+      "captureTimestamp": "2025-10-02T08:20:13Z",
+      "rawImage": "models/fire-station-teunis/raw/2025_10_02_08_06_04_00483.jpg",
+      "metadata": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_08_06_04_00483/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00483/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00483/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00483/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00483/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_10_02_08_06_04_00483/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_08_06_04_00483/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00483/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00483/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.863173048273593,
+            52.38464091295802,
+            0.0
+          ]
+        },
+        "pano_id": "2025_10_02_08_06_04_00483",
+        "timestamp": "2025-10-02T08:20:13Z",
+        "filename": "2025_10_02_08_06_04_00483.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2025",
+        "tags": [
+          "mission-bi",
+          "mission-2025",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": 0.0,
+        "pitch": 0.0,
+        "heading": 0.0
+      },
+      "viewer": "https://data.amsterdam.nl/",
+      "derivedImage": "models/fire-station-teunis/processed/2025_10_02_08_06_04_00483.jpg",
+      "projection": {
+        "heading": "computed from stationtowestfront midpoint4.86333,52.38464",
+        "pitch": 16,
+        "fov": 100,
+        "width": 1500,
+        "height": 1100
+      },
+      "occlusion": "Truck and trees cover lower/rear details;2018photo corroborates closed-door rhythm."
+    },
+    {
+      "id": "2025_10_02_08_06_04_00481",
+      "captureTimestamp": "2025-10-02T08:20:12Z",
+      "rawImage": "models/fire-station-teunis/raw/2025_10_02_08_06_04_00481.jpg",
+      "metadata": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_08_06_04_00481/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00481/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00481/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00481/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00481/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_10_02_08_06_04_00481/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_08_06_04_00481/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00481/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00481/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.863182887123357,
+            52.38455038738865,
+            0.0
+          ]
+        },
+        "pano_id": "2025_10_02_08_06_04_00481",
+        "timestamp": "2025-10-02T08:20:12Z",
+        "filename": "2025_10_02_08_06_04_00481.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2025",
+        "tags": [
+          "mission-bi",
+          "mission-2025",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": 0.0,
+        "pitch": 0.0,
+        "heading": 0.0
+      },
+      "viewer": "https://data.amsterdam.nl/",
+      "derivedImage": "models/fire-station-teunis/processed/2025_10_02_08_06_04_00481.jpg",
+      "projection": {
+        "heading": "computed from stationtowestfront midpoint4.86333,52.38464",
+        "pitch": 16,
+        "fov": 100,
+        "width": 1500,
+        "height": 1100
+      },
+      "occlusion": "Truck and trees cover lower/rear details;2018photo corroborates closed-door rhythm."
+    },
+    {
+      "id": "2025_10_02_08_06_04_00485",
+      "captureTimestamp": "2025-10-02T08:20:14Z",
+      "rawImage": "models/fire-station-teunis/raw/2025_10_02_08_06_04_00485.jpg",
+      "metadata": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_08_06_04_00485/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00485/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00485/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00485/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00485/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_10_02_08_06_04_00485/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_08_06_04_00485/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00485/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00485/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.863168854586426,
+            52.384732272398374,
+            0.0
+          ]
+        },
+        "pano_id": "2025_10_02_08_06_04_00485",
+        "timestamp": "2025-10-02T08:20:14Z",
+        "filename": "2025_10_02_08_06_04_00485.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2025",
+        "tags": [
+          "mission-bi",
+          "mission-2025",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": 0.0,
+        "pitch": 0.0,
+        "heading": 0.0
+      },
+      "viewer": "https://data.amsterdam.nl/",
+      "derivedImage": "models/fire-station-teunis/processed/2025_10_02_08_06_04_00485.jpg",
+      "projection": {
+        "heading": "computed from stationtowestfront midpoint4.86333,52.38464",
+        "pitch": 16,
+        "fov": 100,
+        "width": 1500,
+        "height": 1100
+      },
+      "occlusion": "Truck and trees cover lower/rear details;2018photo corroborates closed-door rhythm."
+    },
+    {
+      "id": "2025_10_02_08_06_04_00531",
+      "captureTimestamp": "2025-10-02T08:22:31Z",
+      "rawImage": "models/fire-station-teunis/raw/2025_10_02_08_06_04_00531.jpg",
+      "metadata": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_08_06_04_00531/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00531/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00531/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00531/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00531/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_10_02_08_06_04_00531/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_08_06_04_00531/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00531/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00531/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.863088737382519,
+            52.38470919693595,
+            0.0
+          ]
+        },
+        "pano_id": "2025_10_02_08_06_04_00531",
+        "timestamp": "2025-10-02T08:22:31Z",
+        "filename": "2025_10_02_08_06_04_00531.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2025",
+        "tags": [
+          "mission-bi",
+          "mission-2025",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": 0.0,
+        "pitch": 0.0,
+        "heading": 0.0
+      },
+      "viewer": "https://data.amsterdam.nl/",
+      "derivedImage": "models/fire-station-teunis/processed/2025_10_02_08_06_04_00531.jpg",
+      "projection": {
+        "heading": "computed from stationtowestfront midpoint4.86333,52.38464",
+        "pitch": 16,
+        "fov": 100,
+        "width": 1500,
+        "height": 1100
+      },
+      "occlusion": "Truck and trees cover lower/rear details;2018photo corroborates closed-door rhythm."
+    },
+    {
+      "id": "2025_10_02_08_06_04_00479",
+      "captureTimestamp": "2025-10-02T08:20:11Z",
+      "rawImage": "models/fire-station-teunis/raw/2025_10_02_08_06_04_00479.jpg",
+      "metadata": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_08_06_04_00479/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00479/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00479/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00479/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00479/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_10_02_08_06_04_00479/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_08_06_04_00479/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00479/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00479/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.863196357625126,
+            52.38446079463206,
+            0.0
+          ]
+        },
+        "pano_id": "2025_10_02_08_06_04_00479",
+        "timestamp": "2025-10-02T08:20:11Z",
+        "filename": "2025_10_02_08_06_04_00479.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2025",
+        "tags": [
+          "mission-bi",
+          "mission-2025",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": 0.0,
+        "pitch": 0.0,
+        "heading": 0.0
+      },
+      "viewer": "https://data.amsterdam.nl/",
+      "derivedImage": "models/fire-station-teunis/processed/2025_10_02_08_06_04_00479.jpg",
+      "projection": {
+        "heading": "computed from stationtowestfront midpoint4.86333,52.38464",
+        "pitch": 16,
+        "fov": 100,
+        "width": 1500,
+        "height": 1100
+      },
+      "occlusion": "Truck and trees cover lower/rear details;2018photo corroborates closed-door rhythm."
+    }
+  ],
+  "architecturalAssertions": [
+    {
+      "trait": "three recessed vehicle bays, thin light piers, red flat soffit",
+      "confidence": "high observed",
+      "source": "2025_10_02_08_06_04_00483",
+      "part": "westgaragefront"
+    },
+    {
+      "trait": "Open upper terrace with dark slender rail, set-backglazing andthin projecting roof",
+      "confidence": "high observed",
+      "source": "brandbase-2018.jpg and2025panoramas",
+      "part": "westupperfront"
+    },
+    {
+      "trait": "Broad two-level southwingwindow ribbons,red horizontal subdivisions",
+      "confidence": "high observed",
+      "source": "2025_10_02_08_06_04_00479",
+      "part": "westsouthernwing"
+    },
+    {
+      "trait": "Exact steppedfootprint, currentPand usage,year2013",
+      "confidence": "officialBAG",
+      "source": "amsterdam-teunis-pand-0363100012241010.json",
+      "part": "whole currentPand"
+    }
+  ],
+  "approximationNotes": [
+    "Upper north/rear window rhythms are restrained inferred repetition; obscured/current sourcecounts are not measured.",
+    "Architectural lettering uses approximate Arial Bold outline, not exact fire-service font. Subordinate small district lettering omitted because pixels do not establish type reliably.",
+    "AHN5 main roof10.65NAP minus terrain0.432=10.22m; survey equipment12.21NAP kept a small roof box,not whole-height.",
+    "Raw surveyed roof ring near-collinear sliver below0.01m\u00b2removed; first failed compressed export retained.",
+    "One combined front overhang roof contour prevents coplanar roof overlap."
+  ],
+  "sourceUrls": [
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012241010",
+    "https://api.openstreetmap.org/api/0.6/map?bbox=4.8625,52.3840,4.8645,52.3852",
+    "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.8628,52.3842,4.8641,52.3850&page_size=100",
+    "https://www.brandweer.nl/wp-content/uploads/2024/03/SITRAP-150-jaar-BAA.pdf",
+    "https://brandbase.hetbrandweerforum.nl/kazernes/13-24-amsterdam-teunis/",
+    "https://klavergiant.nl/projecten/klimaatinstallatie-kazerne-teunis-te-amsterdam",
+    "https://archief.amsterdam/beeldbank/?mode=gallery&q=Vredenhofweg%203%20brandweerkazerne",
+    "https://brandbase.hetbrandweerforum.nl/wp-content/uploads/2018/05/Vredenhofweg-3-te-Amsterdam.jpg",
+    "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.86332,52.38464&radius=90&srid=4326&page_size=100&timestamp_after=2025-01-01",
+    "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00483/equirectangular/panorama_8000.jpg",
+    "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00481/equirectangular/panorama_8000.jpg",
+    "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00485/equirectangular/panorama_8000.jpg",
+    "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00531/equirectangular/panorama_8000.jpg",
+    "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_08_06_04_00479/equirectangular/panorama_8000.jpg"
+  ],
+  "failureEvidence": [
+    "artifacts/fire-station-teunis-draft/failed-first/fire-station-teunis.glb",
+    "artifacts/fire-station-teunis-draft/failed-first/compressed-roofs.json"
+  ],
+  "sourceArchive": {
+    "path": "models/fire-station-teunis/",
+    "commit": "PENDING_ROOT_SOURCE_PUSH"
+  }
+}

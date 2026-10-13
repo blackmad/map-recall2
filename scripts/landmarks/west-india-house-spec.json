@@ -1,0 +1,234 @@
+{
+  "id": "west-india-house",
+  "name": "West India House",
+  "landmarkId": "extract_landmarks_1399359542",
+  "modelUrl": "./models/west-india-house.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012167535"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.892066,
+      52.380013
+    ],
+    "headingDegrees": 22.5,
+    "lengthMetres": 34,
+    "widthMetres": 30.04
+  },
+  "surveyed": {
+    "anchor": [
+      4.892066,
+      52.380013
+    ],
+    "northOffsetDegrees": 0,
+    "source": "BAG pand 0363100012167535 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#7a5849",
+    "stone": "#8b8f91",
+    "slate": "#57544f",
+    "white": "#efeae0",
+    "glass": "#566872",
+    "dark": "#1d2023",
+    "concrete": "#c6c8c1",
+    "greyBrick": "#4c4944",
+    "bronze": "#4a4034",
+    "ochre": "#8a7e6e"
+  },
+  "attribution": {
+    "title": "West India House",
+    "author": "Map Recall",
+    "sourceUrl": "https://en.wikipedia.org/wiki/West-Indisch_Huis",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roofs, sliver spikes removed): grey-plastered pedimented north front with arched door, brown-brick west front, sash-windowed south and east ranges and courtyard with a Peter Stuyvesant statue; window rhythm measured by eye from rectified 2021-25 municipal panoramas. No imported mesh or photo textures."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.8916136,
+          52.3800465
+        ],
+        [
+          4.8916881,
+          52.3800269
+        ],
+        [
+          4.8916347,
+          52.3799512
+        ],
+        [
+          4.8916381,
+          52.3799503
+        ],
+        [
+          4.8919673,
+          52.379867
+        ],
+        [
+          4.892003,
+          52.3799178
+        ],
+        [
+          4.8920045,
+          52.3799174
+        ],
+        [
+          4.892025,
+          52.3799482
+        ],
+        [
+          4.8920235,
+          52.3799486
+        ],
+        [
+          4.8920455,
+          52.3799817
+        ],
+        [
+          4.8920468,
+          52.3799814
+        ],
+        [
+          4.8920502,
+          52.3799849
+        ],
+        [
+          4.8920513,
+          52.3799878
+        ],
+        [
+          4.8920498,
+          52.3799881
+        ],
+        [
+          4.8920617,
+          52.380006
+        ],
+        [
+          4.8920635,
+          52.3800056
+        ],
+        [
+          4.8920645,
+          52.3800078
+        ],
+        [
+          4.8920673,
+          52.3800122
+        ],
+        [
+          4.8920661,
+          52.3800125
+        ],
+        [
+          4.8921065,
+          52.3800733
+        ],
+        [
+          4.892108,
+          52.3800729
+        ],
+        [
+          4.8921554,
+          52.3801441
+        ],
+        [
+          4.8921434,
+          52.3801471
+        ],
+        [
+          4.8921428,
+          52.3801462
+        ],
+        [
+          4.892098,
+          52.3801578
+        ],
+        [
+          4.8920987,
+          52.3801587
+        ],
+        [
+          4.8920868,
+          52.3801618
+        ],
+        [
+          4.8920882,
+          52.3801638
+        ],
+        [
+          4.8920854,
+          52.3801646
+        ],
+        [
+          4.8918317,
+          52.3802319
+        ],
+        [
+          4.8918311,
+          52.380231
+        ],
+        [
+          4.8918203,
+          52.3802339
+        ],
+        [
+          4.8918197,
+          52.380233
+        ],
+        [
+          4.8917681,
+          52.3802468
+        ],
+        [
+          4.8917688,
+          52.3802477
+        ],
+        [
+          4.8917572,
+          52.3802504
+        ],
+        [
+          4.8916136,
+          52.3800465
+        ]
+      ],
+      [
+        [
+          4.8917977,
+          52.3799904
+        ],
+        [
+          4.891893,
+          52.3801246
+        ],
+        [
+          4.8920116,
+          52.3800938
+        ],
+        [
+          4.8920044,
+          52.3800836
+        ],
+        [
+          4.892025,
+          52.3800783
+        ],
+        [
+          4.8919368,
+          52.3799544
+        ],
+        [
+          4.8917977,
+          52.3799904
+        ]
+      ]
+    ]
+  }
+}

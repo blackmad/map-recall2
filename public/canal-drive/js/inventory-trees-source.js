@@ -1,29 +1,57 @@
 import {treeTypology} from '../da-costa-block/tree-typology.js';
 import {allotmentCanopyTrees,scopeAllotmentCrown} from './allotment-canopy.js';
+import {ViewResidency} from '../../../src/canalRecall/viewResidency.ts';
+import {roseBushInstances,roseBushVertexColours} from '../../../src/canalRecall/roseBeds.ts';
+import roseGardens from './rose-garden-data.js';
 const {THREE} = window.CanalRecallThree;
 const MIN_ZOOM = 15.5;
 const BUDGET = 12;
+// Rose bushes are ~0.7 m wide: draw them only once a bed reads as more than a speck.
+const ROSE_MIN_ZOOM = 16.5;
 // Include crowns whose trunks sit just beyond the viewport (max proxy radius <24m).
 function crownBounds(map) {
   const bounds=map.getBounds(),lat=(bounds.getNorth()+bounds.getSouth())/2;
   const dy=24/111320,dx=dy/Math.max(.1,Math.cos(lat*Math.PI/180));
-  return {getWest:()=>bounds.getWest()-dx,getEast:()=>bounds.getEast()+dx,
-    getSouth:()=>bounds.getSouth()-dy,getNorth:()=>bounds.getNorth()+dy};
+  return {west:bounds.getWest()-dx,east:bounds.getEast()+dx,south:bounds.getSouth()-dy,north:bounds.getNorth()+dy};
+}
+
+// One 20-triangle shrub; its upper faces take the instance (bed) bloom colour,
+// the rest a foliage green, so a rose bush costs no extra flower geometry.
+function roseBushGeometry() {
+  const geometry=new THREE.IcosahedronGeometry(1,0);
+  geometry.setAttribute('color',new THREE.BufferAttribute(roseBushVertexColours(geometry.attributes.position.array),3));
+  return geometry;
+}
+function roseBushMaterial() {
+  const material=new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.85,flatShading:true,vertexColors:true});
+  // color.r masks bloom faces, color.g shades foliage (linear #4a7a3a).
+  material.onBeforeCompile=shader=>{shader.vertexShader=shader.vertexShader.replace('#include <color_vertex>',
+    '#include <color_vertex>\n#ifdef USE_INSTANCING_COLOR\n vColor.rgb = mix(vec3(0.07,0.19,0.045)*color.g, instanceColor.rgb, color.r);\n#endif');};
+  material.customProgramCacheKey=()=>'canal-rose-bush';
+  return material;
 }
 
 /** Stream real municipal tree positions; at most seven instanced draws for the visible canopy. */
 export class InventoryTrees {
-  constructor(map, maplibregl, onReady = () => {}) {
+  constructor(map, maplibregl, onReady = () => {}, options = {}) {
     this.map=map; this.maplibregl=maplibregl; this.onReady=onReady;
     this.enabled=false; this.allotmentCanopyEnabled=true; this.ready=false; this.generation=0;
     this.tiles=new Map(); this.pending=new Map(); this.meshes=[]; this.theme='clean';
+    // `moveend` fires every riding frame (jumpTo); rebuild instances only when
+    // the view leaves the padded area last built, or the inputs change.
+    this.residency=new ViewResidency(.25,60);
     // Keep GPU geometry and shaders warm while streamed instance buffers change.
     this.geometries=new Map();this.materials=new Map();
-    this.scene=new THREE.Scene();
-    this.scene.add(new THREE.HemisphereLight(0xffffff,0x526048,2.15));
-    const sun=new THREE.DirectionalLight(0xfff0d5,1.7);sun.position.set(-2,-1,4);this.scene.add(sun);
+    // `?sharedFrame=1`: a root in the page's one three.js frame, lit by its rig.
+    this.sharedFrame=options.sharedFrame||null;
+    this.scene=this.sharedFrame?new THREE.Group():new THREE.Scene();
+    if(!this.sharedFrame){
+      this.scene.add(new THREE.HemisphereLight(0xffffff,0x526048,2.15));
+      const sun=new THREE.DirectionalLight(0xfff0d5,1.7);sun.position.set(-2,-1,4);this.scene.add(sun);
+    }
     this.origin=maplibregl.MercatorCoordinate.fromLngLat([4.9,52.37],0);
     this.scale=this.origin.meterInMercatorCoordinateUnits();
+    this.transform=new THREE.Matrix4().makeTranslation(this.origin.x,this.origin.y,this.origin.z).scale(new THREE.Vector3(this.scale,-this.scale,this.scale));
     this.layer={id:'municipal-inventory-trees',type:'custom',renderingMode:'3d',
       onAdd:(_map,gl)=>{this.camera=new THREE.Camera();this.renderer=new THREE.WebGLRenderer({canvas:map.getCanvas(),context:gl,antialias:true});this.renderer.autoClear=false;},
       onRemove:()=>{
@@ -39,7 +67,12 @@ export class InventoryTrees {
         this.camera.projectionMatrix.fromArray(args.defaultProjectionData?.mainMatrix || args).multiply(transform);
         this.renderer.resetState();this.renderer.render(this.scene,this.camera);
       }};
-    map.addLayer(this.layer);
+    if(this.sharedFrame)this.sharedFrame.register('trees',{
+      root:this.scene,
+      mercatorFromLocal:()=>this.transform.elements,
+      beforeRender:()=>this.enabled&&this.ready&&map.getZoom()>=MIN_ZOOM&&this.meshes.length>0,
+    },{order:options.sharedOrder??30});
+    else map.addLayer(this.layer);
     this.move=()=>this.update();map.on('moveend',this.move);
   }
   async load(root) {
@@ -57,7 +90,11 @@ export class InventoryTrees {
       this.ready=true;this.onReady(true);this.update();
     } catch (error) {console.warn('Municipal trees unavailable; retaining OSM trees.',error);}
   }
-  setAllotmentCanopyEnabled(value) {this.allotmentCanopyEnabled=!!value;if(this.enabled&&this.ready)this.rebuild();this.map.triggerRepaint();}
+  // Own ground (`?ownGround=1`): trees stand on the relief under the trunk.
+  // `fn([lng, lat])` → metres, or undefined while that relief is not resident.
+  setGroundBase(fn) {this.groundBase=fn||null;this.refreshGroundBases();}
+  refreshGroundBases() {this.residency.invalidate();if(this.enabled&&this.ready&&this.meshes.length)this.rebuild();this.map.triggerRepaint();}
+  setAllotmentCanopyEnabled(value) {this.allotmentCanopyEnabled=!!value;this.residency.invalidate();if(this.enabled&&this.ready)this.rebuild();this.map.triggerRepaint();}
   setEnabled(value) {this.enabled=!!value;if(this.enabled)this.update();else this.clear();this.map.triggerRepaint();}
   setTheme(value) {
     this.theme=value;
@@ -68,26 +105,32 @@ export class InventoryTrees {
   }
   clear() {
     for (const c of this.pending.values()) c.abort();
-    this.pending.clear();this.tiles.clear();this.queue=[];this.disposeMeshes();
+    this.pending.clear();this.tiles.clear();this.queue=[];this.residency.invalidate();this.disposeMeshes();
   }
   disposeMeshes() {
     for(const m of this.meshes){this.scene.remove(m);m.dispose?.();}
     this.meshes=[];this.debugTrees=0;
   }
+  // The start-of-ride flight holds the trees where it will land: its overview
+  // is below MIN_ZOOM (nothing draws), and planning each frame of the flight
+  // cleared the landing's trees, then rebuilt them as it touched down.
+  setSuspended(value) {if(this.suspended===!!value)return;this.suspended=!!value;if(!this.suspended)this.update();}
   update() {
-    if (!this.enabled || !this.ready) return;
+    if (!this.enabled || !this.ready || this.suspended) return;
     if (this.map.getZoom()<MIN_ZOOM) {this.clear();return;}
     const b=crownBounds(this.map),c=this.map.getCenter();
     const tile=(lng,lat)=>[Math.floor((lng+180)/360*32768),Math.floor((1-Math.asinh(Math.tan(lat*Math.PI/180))/Math.PI)/2*32768)];
-    const [x0,y1]=tile(b.getWest(),b.getSouth()),[x1,y0]=tile(b.getEast(),b.getNorth()),[cx,cy]=tile(c.lng,c.lat);
+    const [x0,y1]=tile(b.west,b.south),[x1,y0]=tile(b.east,b.north),[cx,cy]=tile(c.lng,c.lat);
     const wanted=[];
     for(let x=x0;x<=x1;x++)for(let y=y0;y<=y1;y++){const key=`15/${x}/${y}`;if(this.meta.has(key))wanted.push({key,d:(x-cx)**2+(y-cy)**2});}
     wanted.sort((a,b)=>a.d-b.d);const keys=new Set(wanted.slice(0,BUDGET).map(t=>t.key));
-    for(const key of this.tiles.keys())if(!keys.has(key))this.tiles.delete(key);
+    for(const key of this.tiles.keys())if(!keys.has(key)){this.tiles.delete(key);this.residency.invalidate();}
     for(const [key,c] of this.pending)if(!keys.has(key)){c.abort();this.pending.delete(key);}
     this.queue=[...keys].filter(k=>!this.tiles.has(k)&&!this.pending.has(k));
-    this.rebuild();this.pump();
+    if(this.residency.needsRebuild(b,this.buildKey()))this.rebuild();
+    this.pump();
   }
+  buildKey() {const z=this.map.getZoom();return `${z>=18}|${z>=ROSE_MIN_ZOOM}|${this.allotmentCanopyEnabled}`;}
   pump() {
     while(this.pending.size<2&&this.queue?.length){const key=this.queue.shift();void this.fetchTile(key);}
   }
@@ -100,48 +143,61 @@ export class InventoryTrees {
       const text=bytes[0]===0x1f&&bytes[1]===0x8b ? await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text() : new TextDecoder().decode(bytes);
       const data=JSON.parse(text);
       if(data.version!==1||data.key!==key||!Array.isArray(data.trees))throw Error('Invalid municipal tree tile');
-      if(!controller.signal.aborted&&generation===this.generation){this.tiles.set(key,data.trees);this.rebuild();}
+      if(!controller.signal.aborted&&generation===this.generation){this.tiles.set(key,data.trees);this.residency.invalidate();this.rebuild();}
     } catch(error){if(error.name!=='AbortError')console.warn(`Tree tile ${key} unavailable`,error);}
     finally{if(this.pending.get(key)===controller)this.pending.delete(key);this.pump();}
   }
   rebuild() {
     this.disposeMeshes();
-    const b=crownBounds(this.map),groups=new Map();let trees=0,authoredTrees=0;
+    const b=this.residency.built(crownBounds(this.map),this.buildKey()),groups=new Map();let trees=0,authoredTrees=0;
     const archetypes=new Set(), color=new THREE.Color();
     const append=(key,item)=>{if(!groups.has(key))groups.set(key,[]);groups.get(key).push(item);};
     for(const tile of [...this.tiles.values(),...(this.allotmentCanopyEnabled?[allotmentCanopyTrees]:[])])for(const tree of tile){
-      if(!Number.isFinite(tree.lng)||!Number.isFinite(tree.lat)||tree.lng<b.getWest()||tree.lng>b.getEast()||tree.lat<b.getSouth()||tree.lat>b.getNorth())continue;
+      if(!Number.isFinite(tree.lng)||!Number.isFinite(tree.lat)||tree.lng<b.west||tree.lng>b.east||tree.lat<b.south||tree.lat>b.north)continue;
       const point=this.maplibregl.MercatorCoordinate.fromLngLat([tree.lng,tree.lat],0);
       const x=(point.x-this.origin.x)/this.scale,south=(point.y-this.origin.y)/this.scale;
       const native=treeTypology({...tree,position:[x,south]});const t=this.allotmentCanopyEnabled?scopeAllotmentCrown(tree,native):native;if(!t)continue;
       trees++;if(tree.source==='allotment-prior')authoredTrees++;archetypes.add(t.archetype);
-      append('wood',{p:[x,-south,t.trunkHeight/2],s:[t.trunkWidth*2,t.trunkWidth*2,t.trunkHeight],color:t.bark});
+      // A few centimetres into the relief, so a trunk never shows a gap on a slope.
+      const z0=this.groundBase?(this.groundBase([tree.lng,tree.lat])??0)-.05:0;
+      append('wood',{p:[x,-south,z0+t.trunkHeight/2],s:[t.trunkWidth*2,t.trunkWidth*2,t.trunkHeight],color:t.bark});
       const co=Math.cos(t.rotation),si=Math.sin(t.rotation);
       for(const l of t.lobes){
         const dx=l.offset[0]*co-l.offset[2]*si,dz=l.offset[0]*si+l.offset[2]*co;
         color.set(t.foliage).multiplyScalar([1,1.10,.86][l.tone]);
         // The map-to-scene south-axis flip also reverses crown yaw.
-        append(`${t.crownGeometry}-${l.tone}`,{p:[x+dx,-(south+dz),l.offset[1]],s:[l.scale[0],l.scale[2],l.scale[1]],rotation:-(t.rotation+(l.rotation??0)),color:color.clone()});
+        append(`${t.crownGeometry}-${l.tone}`,{p:[x+dx,-(south+dz),z0+l.offset[1]],s:[l.scale[0],l.scale[2],l.scale[1]],rotation:-(t.rotation+(l.rotation??0)),color:color.clone()});
         // A short fork connects each offset crown to the recorded trunk position.
         // All forks share the trunk draw call; no per-tree meshes or materials.
         if(t.crownGeometry==='faceted'&&t.archetype!=='fan-palm'&&Math.hypot(dx,dz)>.1){
-          const from=new THREE.Vector3(x,-south,t.trunkHeight*.72);
-          const to=new THREE.Vector3(x+dx*.75,-(south+dz*.75),l.offset[1]);
+          const from=new THREE.Vector3(x,-south,z0+t.trunkHeight*.72);
+          const to=new THREE.Vector3(x+dx*.75,-(south+dz*.75),z0+l.offset[1]);
           const delta=to.clone().sub(from),length=delta.length();
           append('wood',{p:from.add(to).multiplyScalar(.5).toArray(),s:[t.trunkWidth,t.trunkWidth,length],q:new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),delta.divideScalar(length)),color:t.bark});
         }
       }
     }
+    // Mapped rose gardens: every visible bush in one instanced draw.
+    let roses=0;
+    if(this.map.getZoom()>=ROSE_MIN_ZOOM)for(const garden of roseGardens.gardens)for(const r of roseBushInstances(garden,b)){
+      const point=this.maplibregl.MercatorCoordinate.fromLngLat([r.lng,r.lat],0);
+      const x=(point.x-this.origin.x)/this.scale,north=-(point.y-this.origin.y)/this.scale;
+      const z0=this.groundBase?(this.groundBase([r.lng,r.lat])??0):0;
+      roses++;
+      // An icosahedron sunk a third into the bed reads as a rounded shrub.
+      append('rose-bush',{p:[x,north,z0+r.height*.3],s:[r.radius,r.radius*.92,r.height*.7],rotation:r.rotation,color:r.bloom});
+    }
     const dummy=new THREE.Object3D();
     for(const [key,items] of groups){
-      const wood=key==='wood',cone=key.startsWith('cone-');
-      const geometryKey=wood?'wood':cone?'cone':this.map.getZoom()>=18?'faceted-detail':'faceted';
+      const wood=key==='wood',cone=key.startsWith('cone-'),rose=key.startsWith('rose-');
+      const geometryKey=wood?'wood':cone?'cone':rose?key:this.map.getZoom()>=18?'faceted-detail':'faceted';
       if(!this.geometries.has(geometryKey))this.geometries.set(geometryKey,
         wood?new THREE.CylinderGeometry(.22,.28,1,7).rotateX(Math.PI/2)
           :cone?new THREE.ConeGeometry(1,2,8).rotateX(Math.PI/2)
+          :rose?roseBushGeometry()
           :new THREE.IcosahedronGeometry(1,this.map.getZoom()>=18?1:0));
-      const materialKey=wood?'wood':'foliage';
-      if(!this.materials.has(materialKey))this.materials.set(materialKey,new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.93,flatShading:true}));
+      const materialKey=wood?'wood':rose?'rose':'foliage';
+      if(!this.materials.has(materialKey))this.materials.set(materialKey,rose?roseBushMaterial():new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.93,flatShading:true}));
       const m=new THREE.InstancedMesh(this.geometries.get(geometryKey),this.materials.get(materialKey),items.length);
       m.userData.wood=wood;
       items.forEach((v,j)=>{
@@ -149,8 +205,11 @@ export class InventoryTrees {
         if(v.q)dummy.quaternion.copy(v.q);else if(v.rotation)dummy.rotation.z=v.rotation;
         dummy.updateMatrix();m.setMatrixAt(j,dummy.matrix);m.setColorAt(j,new THREE.Color(v.color));
       });
-      m.instanceMatrix.needsUpdate=true;m.instanceColor.needsUpdate=true;m.frustumCulled=false;this.scene.add(m);this.meshes.push(m);
+      m.instanceMatrix.needsUpdate=true;m.instanceColor.needsUpdate=true;m.frustumCulled=false;
+      if(this.sharedFrame){m.castShadow=true;m.receiveShadow=true;}
+      this.scene.add(m);this.meshes.push(m);
     }
+    this.debugRoses=roses;this.debugRoseTriangles=roses*20;
     this.debugTrees=trees;this.debugAuthoredTrees=authoredTrees;this.debugTiles=this.tiles.size;this.debugArchetypes=[...archetypes];this.debugDraws=this.meshes.length;this.setTheme(this.theme);
   }
 }

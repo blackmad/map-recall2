@@ -114,15 +114,29 @@ class RecallStore {
   private listeners: Array<(user: { uid: string; label: string } | null) => void> = [];
   /** Mastery gating is opt-in so a fresh player is still asked everything. */
   enabled = true;
+  private markHistoryReady: () => void = () => {};
+  /** Settles once the first sign-in answer and (when signed in) the cloud
+   *  pull have landed, or immediately for guests. Consumers that plan from
+   *  learning history (home destination picks) wait on this, briefly. */
+  private readonly historySettled = new Promise<void>(resolve => { this.markHistoryReady = resolve; });
+
+  /** Resolves when learning history is as complete as it will get, or after
+   *  `timeoutMs`, whichever is first. Never rejects. */
+  historyReady(timeoutMs = 1500): Promise<void> {
+    return Promise.race([
+      this.historySettled,
+      new Promise<void>(resolve => setTimeout(resolve, timeoutMs)),
+    ]);
+  }
 
   async init(): Promise<void> {
     this.states = read<StateMap>(STATES_KEY, {});
-    if (typeof window === 'undefined') return; // Node tests / scripts
+    if (typeof window === 'undefined') { this.markHistoryReady(); return; } // Node tests / scripts
     try {
       const response = await fetch(new URL(CONFIG_URL, window.location.href));
-      if (!response.ok) return;                       // guest mode
+      if (!response.ok) { this.markHistoryReady(); return; }  // guest mode
       const config = await response.json();
-      if (!config?.apiKey || !config?.projectId) return;
+      if (!config?.apiKey || !config?.projectId) { this.markHistoryReady(); return; }
       const [{ initializeApp }, authModule, firestoreModule] = await Promise.all([
         import('firebase/app'), import('firebase/auth'), import('firebase/firestore'),
       ]);
@@ -132,10 +146,12 @@ class RecallStore {
       authModule.onAuthStateChanged(this.auth, (user) => {
         this.uid = user ? user.uid : null;
         this._emitUser();
-        if (this.uid) void this.pull();
+        if (this.uid) void this.pull().finally(() => this.markHistoryReady());
+        else this.markHistoryReady();
       });
     } catch (reason) {
       console.warn('Canal Recall progress is local only:', reason);
+      this.markHistoryReady();
     }
   }
 

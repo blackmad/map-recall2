@@ -1,0 +1,123 @@
+{
+ "schemaVersion": 1,
+ "bagPandId": "0363100012169916",
+ "status": "ok",
+ "wallNote": "longest wall on the nearest road (preferred bearing 160)",
+ "panoramaCandidates": 318,
+ "facts": {
+  "bagPandId": "0363100012169916",
+  "footprint": {
+   "frontWidthM": 5.74,
+   "depthM": 22.65,
+   "heightM": 16.63
+  },
+  "roofShape": null,
+  "roofShapeSource": null,
+  "buildYear": 1843,
+  "registerGableType": null,
+  "monument": [
+   {
+    "number": 210060,
+    "status": "Gemeentelijk monument",
+    "name": "",
+    "architect": "Heide, C.C. van der",
+    "yearFrom": "1875",
+    "yearTo": "1875",
+    "originalFunction": null,
+    "sharedWithPanden": 3
+   }
+  ]
+ },
+ "quality": {
+  "frontWashedOut": 0.01,
+  "altWashedOut": 0.06,
+  "frontFoliage": 0,
+  "altFoliage": 0.15
+ },
+ "wall": {
+  "startLngLat": [
+   4.880893997020467,
+   52.37486700230552
+  ],
+  "endLngLat": [
+   4.880972997019933,
+   52.37488500230604
+  ],
+  "lengthM": 5.74,
+  "outwardBearingDeg": 160,
+  "nearestRoadM": 3,
+  "facingRoad": 0.92,
+  "tileHeightM": 16.63
+ },
+ "images": {
+  "front": "front.jpg",
+  "frontAlt": "front-alt.jpg",
+  "thumb": "thumb.jpg",
+  "frontDescription": "Rectified straight-on elevation; x runs wall start->end (left->right facing the wall), y top->bottom; one pixel = 1/pixelsPerMetre metres; grey = no data (outside the panorama image)."
+ },
+ "primary": {
+  "panoId": "TMX7316010203-002950_pano_0002_000399",
+  "timestamp": "2023-01-30T09:51:31.144740Z",
+  "missionYear": 2022,
+  "missionType": "oor",
+  "surface": "L",
+  "cameraDistM": 24.3,
+  "obliquityDeg": 0.5,
+  "distanceRangeRelaxed": false,
+  "washedOut": 0.01,
+  "crop": {
+   "width": 287,
+   "height": 907,
+   "pixelsPerMetre": 50,
+   "wallWidthM": 5.74,
+   "wallHeightM": 18.13,
+   "missingFraction": 0,
+   "groundNapM": -0.27,
+   "groundSource": "published camera height - 2.44 m",
+   "sourceImage": "equirectangular_full"
+  }
+ },
+ "alt": {
+  "panoId": "recording_2025-07-03_08-35-58_00685",
+  "timestamp": "2025-07-03T09:12:34Z",
+  "missionYear": 2025,
+  "missionType": "bi",
+  "surface": "L",
+  "cameraDistM": 24.5,
+  "obliquityDeg": 1.7,
+  "distanceRangeRelaxed": false,
+  "washedOut": 0.06,
+  "crop": {
+   "width": 287,
+   "height": 907,
+   "pixelsPerMetre": 50,
+   "wallWidthM": 5.74,
+   "wallHeightM": 18.13,
+   "missingFraction": 0,
+   "groundNapM": -0.27,
+   "groundSource": "published camera height - 2.44 m",
+   "sourceImage": "equirectangular_full"
+  }
+ },
+ "thumbnail": {
+  "panoId": "TMX7316010203-002950_pano_0002_000399",
+  "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002950_pano_0002_000399/?width=1000&aspect=1&fov=45&heading=340&pitch=15",
+  "fovDeg": 45,
+  "headingDeg": 340
+ },
+ "otherWalls": [
+  {
+   "lengthM": 5.8,
+   "outwardBearingDeg": 340,
+   "nearestRoadM": 10,
+   "facingRoad": -0.01
+  },
+  {
+   "lengthM": 3.43,
+   "outwardBearingDeg": 339,
+   "nearestRoadM": 9,
+   "facingRoad": -0.02
+  }
+ ],
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

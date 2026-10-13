@@ -41,25 +41,7 @@ export function buildKeizersgrachtkerk(_w:number,_d:number,b:BuildingTools){
  // Two equal circle arcs meet at the apex; their tangent approaches vertical at the jamb.
  function portal(x:number,y:number,w:number,h:number,c:C,z:number){const r=w/2,rise=w*.56,shoulder=y+h-rise,offset=(rise*rise-r*r)/(2*r),radius=r+offset,angle=Math.atan2(rise,offset),points=[[x-r,y],[x+r,y],[x+r,shoulder]];for(let i=1;i<=24;i++){const a=angle*i/24;points.push([x-offset+radius*Math.cos(a),shoulder+radius*Math.sin(a)]);}for(let i=23;i>=0;i--){const a=angle*i/24;points.push([x+offset-radius*Math.cos(a),shoulder+radius*Math.sin(a)]);}profile(points,c,z,.055);}
  // Six lobes share one dark opening. The pale perimeter never crosses its centre.
- function towerSixfoil(x:number,y:number){const points:number[][]=[],centres=.419,lobe=.336;for(let i=0;i<96;i++){const theta=i*Math.PI*2/96;let radius=0;for(let j=0;j<6;j++){const angle=Math.PI/2+j*Math.PI/3,delta=theta-angle,disc=lobe*lobe-centres*centres*Math.sin(delta)**2;if(disc>=0)radius=Math.max(radius,centres*Math.cos(delta)+Math.sqrt(disc));}points.push([Math.cos(theta)*radius,Math.sin(theta)*radius]);}profile(points.map(p=>[x+p[0]*(1+.065/.755),y+p[1]*(1+.065/.755)]),'stone',.48,.055);profile(points.map(p=>[x+p[0],y+p[1]]),'glass',.56,.055);}
- // Upper roundel occupies the photographed pointed recess rather than blank tiles.
- // Approximate photo proportions: true shallow setback, pierced proud mouldings.
- function towerRecess(x:number){
-  function arch(w:number,bottom:number,top:number){const r=w/2,rise=w*.73,shoulder=top-rise,offset=(rise*rise-r*r)/(2*r),radius=r+offset,angle=Math.atan2(rise,offset),pts=[[x-r,bottom],[x+r,bottom],[x+r,shoulder]];for(let i=1;i<=32;i++){const a=angle*i/32;pts.push([x-offset+radius*Math.cos(a),shoulder+radius*Math.sin(a)]);}for(let i=31;i>=0;i--){const a=angle*i/32;pts.push([x+offset-radius*Math.cos(a),shoulder+radius*Math.sin(a)]);}return pts;}
-  const outer=arch(2.84,15.87,18.83),inner=arch(2.56,16.02,18.62);
-  profile(inner,'concrete',.325,.025);
-  function moulding(out:number[][],inside:number[][],z:number,depth:number){const shape=new T.Shape(out.map(p=>new T.Vector2(...p as [number,number])));shape.holes.push(new T.Path(inside.map(p=>new T.Vector2(...p as [number,number]))));const g=new T.ExtrudeGeometry(shape,{depth,bevelEnabled:false});g.userData.sourcePart='upper-tower-pointed-recess-moulding';add(g,'stone',0,0,z);}
-  moulding(outer,inner,.33,.16);
-  moulding(arch(2.40,16.06,18.46),arch(2.25,16.13,18.34),.355,.075);
-  // Circular profile touches the inner pointed shoulders; sixfoil centre stays dark.
-  add(new T.CircleGeometry(1.02,64),'stone',x,17.15,.385);
-  ring(x,17.15,.435,1.06,.065,'stone');ring(x,17.15,.47,.925,.045,'stone');
-  box(x,15.97,.59,2.91,.16,.12,'stone');
-  for(const side of [-1,1])for(const [y,h] of [[16.11,.43],[15.25,.20]]){
-   box(x+side*1.49,y,.35,.21,h,.07,'brick');
-   for(let line=y+.10;line<y+h;line+=.12)box(x+side*1.49,line,.395,.21,.014,.025,'stone');
-  }
- }
+ function towerSixfoil(x:number,y:number){const points:number[][]=[],centres=.355,lobe=.285;for(let i=0;i<96;i++){const theta=i*Math.PI*2/96;let radius=0;for(let j=0;j<6;j++){const angle=Math.PI/2+j*Math.PI/3,delta=theta-angle,disc=lobe*lobe-centres*centres*Math.sin(delta)**2;if(disc>=0)radius=Math.max(radius,centres*Math.cos(delta)+Math.sqrt(disc));}points.push([Math.cos(theta)*radius,Math.sin(theta)*radius]);}profile(points.map(p=>[x+p[0]*(1+.065/.64),y+p[1]*(1+.065/.64)]),'stone',.39,.055);profile(points.map(p=>[x+p[0],y+p[1]]),'glass',.47,.055);}
  function lancet(x:number,y:number,w:number,h:number){pointed(x,y-.09,w+.19,h+.18,'stone',.30);pointed(x,y,w,h,'glass',.40);box(x,y+.07,.51,.065,h-.37,.06,'stone');box(x,y+h*.45,.51,w,.065,.06,'stone');}
  // Seven gallery lights and paired tower lights. Front glazing is exposed beyond parent walls.
  for(let i=-3;i<=3;i++){const x=i*1.17;lancet(x,8.10,.94,3.05);for(const dx of [-.54,.54]){box(x+dx,7.95,.58,.13,2.67,.17,'stone');add(new T.SphereGeometry(.13,6,4),'stone',x+dx,10.64,.58);}rod([x-.56,11.16,.59],[x,11.70,.59],.065,'stone');rod([x,11.70,.59],[x+.56,11.16,.59],.065,'stone');}
@@ -72,7 +54,7 @@ export function buildKeizersgrachtkerk(_w:number,_d:number,b:BuildingTools){
  // Six petal tracery around the rose's central eye; actual circular window geometry.
  add(new T.CircleGeometry(2.10,40),'glass',0,14.84,.44);ring(0,14.84,.53,2.13,.12,'stone');ring(0,14.84,.56,.78,.09,'stone');for(let i=0;i<6;i++){const a=i*Math.PI/3;ring(Math.sin(a)*1.15,14.84+Math.cos(a)*1.15,.55,.72,.065,'stone');}
  for(const x of [-3.05,3.05]){add(new T.CircleGeometry(.26,14),'glass',x,13.09,.46);ring(x,13.09,.53,.28,.065,'stone');}
- for(const x of [-5.65,5.65]){profile([[x-1.62,12.05],[x+1.62,12.05],[x+1.62,17.56],[x,19.6],[x-1.62,17.56]],'stone',.19,.12);pointed(x,13.05,2.52,2.08,'brick',.37);ring(x,14.08,.49,.55,.09,'stone');for(const dx of [-.70,0,.70])lancet(x+dx,15.37,.40,.72);towerRecess(x);towerSixfoil(x,17.15);for(const dx of [-1.5,1.5]){box(x+dx,17.56,.34,.18,1.17,.18,'stone');add(new T.ConeGeometry(.14,.55,6),'slate',x+dx,18.99,.34);}rod([x-1.63,17.56,.43],[x,19.65,.43],.09,'slate');rod([x,19.65,.43],[x+1.63,17.56,.43],.09,'slate');}
+ for(const x of [-5.65,5.65]){profile([[x-1.62,12.05],[x+1.62,12.05],[x+1.62,17.56],[x,19.6],[x-1.62,17.56]],'stone',.19,.12);pointed(x,13.05,2.52,2.08,'brick',.37);ring(x,14.08,.49,.55,.09,'stone');for(const dx of [-.70,0,.70])lancet(x+dx,15.37,.40,.72);towerSixfoil(x,17.02);for(const dx of [-1.5,1.5]){box(x+dx,17.56,.34,.18,1.17,.18,'stone');add(new T.ConeGeometry(.14,.55,6),'slate',x+dx,18.99,.34);}rod([x-1.63,17.56,.43],[x,19.65,.43],.09,'slate');rod([x,19.65,.43],[x+1.63,17.56,.43],.09,'slate');}
  for(const x of [-5.65,5.65]){
   const shape=new T.Shape([new T.Vector2(x-1.6,0),new T.Vector2(x+1.6,0),new T.Vector2(x+1.6,-3.2),new T.Vector2(x-1.6,-3.2)]);add(openTopPrism(shape,15,18.55),'stone');
   const vertices:number[]=[];const ring=[[x-1.6,18.55,0],[x+1.6,18.55,0],[x+1.6,18.55,-3.2],[x-1.6,18.55,-3.2]],tip=[x,23.65,-1.6];for(let i=0;i<4;i++){const a=ring[i],q=ring[(i+1)%4];vertices.push(...a,...q,...tip);rod(a,tip,.035,'frame');}const roof=new T.BufferGeometry();roof.setAttribute('position',new T.Float32BufferAttribute(vertices,3));roof.userData.role='roof';add(roof,'slate');

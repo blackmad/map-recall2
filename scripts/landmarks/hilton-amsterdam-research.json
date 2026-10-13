@@ -1,0 +1,44 @@
+{
+  "canonicalModelId": "hilton-amsterdam",
+  "researchedOn": "2026-10-10",
+  "state": "built (south, north and east fronts measured; west end and courtyard faces inferred)",
+  "destination": {
+    "landmarkId": "hilton-amsterdam",
+    "name": "Hilton Amsterdam",
+    "address": "Apollolaan 138, 1077 BG Amsterdam",
+    "bagPand": "NL.IMBAG.Pand.0363100012078084",
+    "note": "Candidate 2 of the big-o lane (listed as an anonymous 49 m 1962 pand, rijksmonument 532205). Identity confirmed from the RCE register entry (Apollolaan 138, Hilton Hotel) and Wikipedia. No installed model, native-kit POI, poi-work-queue task, backlog destination or OSM landmark covered the pand (checked by name and BAG id), so a model-local landmarkId is used, as for Hotel Jakarta."
+  },
+  "architecture": {
+    "sources": [
+      {"url": "https://kennis.cultureelerfgoed.nl/index.php/Monumenten/532205", "retrieved": "2026-10-10", "note": "RCE register description: ground floor with entrance under a far-projecting canopy; recessed constructive intermediate floor; nine-storey bed block; slabs visible as horizontal bands on front and rear, side facades clad in decorative concrete; dark piers between windows; windowless lift and stair bay in grey glazed brick; corner-room balconies alternating between front and side; lift shaft above the roof; 'HILTON' now on the lift tower."},
+      {"url": "https://en.wikipedia.org/wiki/Hilton_Amsterdam", "retrieved": "2026-10-10", "note": "Opened 9 May 1962, architect Hugh Maaskant, V-shaped plan; Lennon and Ono Bed-In 25-31 March 1969, presidential suite room 902 (renumbered 702)."},
+      {"url": "https://nl.wikipedia.org/wiki/Hilton_Amsterdam_Hotel", "retrieved": "2026-10-10"}
+    ]
+  },
+  "measuredBy": {
+    "3dbag": "NL.IMBAG.Pand.0363100012078084 LoD2.2: chevron slab (apex north at x about -11, arms to x -51 and x +26) 38.1 m above ground, 41.6 m cores, 49.2 m plant box over the lift core, podium 6-11 m.",
+    "storeys": "nine bed storeys on a 3.34 m pitch from y 8.0 to 38.1 (3DBAG wall base 7.9 m, roof 38.0 m; RCE: nine-storey bed block above a recessed intermediate floor), window ribbon module about 4.7 m (8 cells counted between the west gable and the lift core in the 2025 south panorama).",
+    "liftCore": "the windowless bay of the south front sits on 3DBAG wall 303 (x -6.1..2.3, 8.5 m), located by projecting the panorama bearing of the blank brick field onto the plan; the plant box above it carries the HILTON lettering (position on the tower inferred, RCE gives no height)."
+  },
+  "panoramas": [
+    {"id": "recording_2025-07-29_12-06-07_00668", "date": "2025-07-29", "use": "south front, ref-south-a.jpg"},
+    {"id": "recording_2025-07-29_12-06-07_00665", "date": "2025-07-29", "use": "south-east arm, ref-south-east.jpg"},
+    {"id": "recording_2025-07-29_12-06-07_00670", "date": "2025-07-29", "use": "south-west arm and canopy, ref-south-west.jpg, ref-south-b.jpg"},
+    {"id": "TMX7316010203-001967_pano_0000_000421", "date": "2021-01-18", "use": "north-east arm across the Noorder Amstelkanaal, ref-north-a.jpg"},
+    {"id": "TMX7316010203-001967_pano_0000_000418", "date": "2021-01-18", "use": "north-west arm, ref-north-b.jpg"},
+    {"id": "recording_2025-07-30_11-08-35_02328", "date": "2025-07-30", "use": "east end and ballroom podium, ref-east.jpg"},
+    {"id": "recording_2025-07-30_08-35-53_00698", "date": "2025-07-30", "use": "east end, ref-east-b.jpg"}
+  ],
+  "photoSource": "Amsterdam municipal panoramas (api.data.amsterdam.nl/panorama/thumbnail/<id>/, perspective crops aimed at the target; heading and fov recorded by big-camshot/shot scripts). Licence: CC0 / municipal open data.",
+  "limitations": [
+    "The west gable and the courtyard faces have no photograph (no panorama after 2020 stands west or inside the V), so they reuse the south-front module and the east-gable treatment: INFERRED.",
+    "The north podium (restaurant) is modelled as a generic glazed band with a concrete overhang from 3DBAG heights; the 2021 photo shows a lower, curved glass pavilion.",
+    "Corner balconies on the tower ends alternate by storey in the model; the exact alternation was not counted.",
+    "The 'HILTON' lettering position on the lift tower is inferred; colour guessed.",
+    "The kinked north faces are faceted as in 3DBAG; the real curve is smooth."
+  ],
+  "gates": {
+    "throughPassages": "audit:glb see-through needed a declared porte-cochere passage (evidence in the spec); nothing was removed from the canopy."
+  }
+}

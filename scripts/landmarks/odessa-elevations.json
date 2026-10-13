@@ -1,0 +1,8 @@
+{
+  "id": "odessa",
+  "countedBy": "pending blind count",
+  "facades": [
+    {"name": "south (quay side: lounge, five stern windows, bamboo screens)", "bearing": 197.5, "photo": "artifacts/landmark-lanes/odessa/ref-south.jpg"},
+    {"name": "stern (east transom with ODESSA lettering)", "bearing": 107.5, "photo": "artifacts/landmark-lanes/odessa/ref-stern.jpg"}
+  ]
+}

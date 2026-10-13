@@ -225,7 +225,22 @@ export function findBridgeRouteAt<T extends CrossableBridge & { name: string }>(
 export interface RouteQuizState {
   candidateName: string;
   candidateSeconds: number;
+  /** Metres travelled, aligned with it, since the candidate was nominated. */
+  candidateMetres?: number;
 }
+
+/**
+ * Metres along a newly entered street after which its question opens, even
+ * if the settle time has not run out. The settle delay alone was a time, and
+ * the arcade bike covers 15–60 m a second: at cruise 0.65 s is ~35 m, so a
+ * 40 m bridge such as the Noordsche Compagniebrug was asked as the rider
+ * reached the far quay (user report 2026-10-09, "asked me kinda too late").
+ * Clipping a corner is a spatial event, so a distance guards it as well as
+ * the clock did at turning speed (0.65 s ≈ 10–18 m there).
+ */
+export const ROUTE_QUIZ_SETTLE_METRES = 8;
+/** The quicker re-test for an already revealed name, in metres. */
+export const ROUTE_QUIZ_RETEST_METRES = 4;
 
 export interface RouteQuizInput {
   /** The road under the vehicle, if it has a name. */
@@ -239,6 +254,12 @@ export interface RouteQuizInput {
   alreadyRevealed: boolean;
   settleSeconds: number;
   retestSeconds: number;
+  /** Metres moved this frame. Omitted: the settle is judged on time alone. */
+  movedMetres?: number;
+  /** Distance settle for a fresh name; omitted or Infinity disables it. */
+  settleMetres?: number;
+  /** Distance settle for an already revealed name. */
+  retestMetres?: number;
 }
 
 export type RouteQuizDecision =
@@ -253,7 +274,7 @@ export type RouteQuizDecision =
 
 export type RouteQuizRecallStatus = 'none' | 'learning' | 'known';
 
-const CLEARED: RouteQuizState = { candidateName: '', candidateSeconds: 0 };
+const CLEARED: RouteQuizState = { candidateName: '', candidateSeconds: 0, candidateMetres: 0 };
 /** Beyond 45° off the road the vehicle is crossing it, not travelling it. */
 const MAX_HEADING_OFF_ROAD = Math.PI / 4;
 /** px/s below which the vehicle is not really under way. */
@@ -268,6 +289,12 @@ const MIN_QUIZ_SPEED = 5;
  * revealed comes back sooner: the point of the label is that you read it while
  * driving, so the re-test should feel like a quick check rather than a fresh
  * question.
+ *
+ * The settle is time *or* distance, whichever comes first. Time alone let a
+ * fast rider cover a whole short street or bridge before being asked; the
+ * distance keeps the ask within a few metres of committing to the street.
+ * A name that changes resets both, so the ask is always about the street
+ * under the vehicle on that frame, never one it has already left.
  */
 export function advanceRouteQuiz(
   state: RouteQuizState,
@@ -287,15 +314,50 @@ export function advanceRouteQuiz(
     return { action: 'idle', state: CLEARED };
   }
   if (roadName !== state.candidateName) {
-    return { action: 'idle', state: { candidateName: roadName, candidateSeconds: 0 } };
+    return { action: 'idle', state: { candidateName: roadName, candidateSeconds: 0, candidateMetres: 0 } };
   }
   const candidateSeconds = state.candidateSeconds + dt;
-  const settled = { candidateName: roadName, candidateSeconds };
+  const candidateMetres = (state.candidateMetres ?? 0) + Math.max(0, input.movedMetres ?? 0);
+  const settled = { candidateName: roadName, candidateSeconds, candidateMetres };
   const settleFor = input.alreadyRevealed ? input.retestSeconds : input.settleSeconds;
-  if (candidateSeconds < settleFor || Math.abs(input.speed) < MIN_QUIZ_SPEED) {
+  const settleMetres = (input.alreadyRevealed ? input.retestMetres : input.settleMetres) ?? Infinity;
+  const timeSettled = candidateSeconds >= settleFor;
+  const distanceSettled = candidateMetres >= settleMetres;
+  if ((!timeSettled && !distanceSettled) || Math.abs(input.speed) < MIN_QUIZ_SPEED) {
     return { action: 'idle', state: settled };
   }
   return { action: 'ask', name: roadName, state: settled };
+}
+
+/** Heading change, in radians, beyond which a new name counts as a turn. */
+export const ROUTE_QUIZ_TURN_RADIANS = Math.PI / 6;
+
+/**
+ * The line under a route question. It used to say "You made a turn" for any
+ * new name after the first, including riding straight on from Herenstraat
+ * onto the Noordsche Compagniebrug (user report 2026-10-09), which told the
+ * rider about a turn that did not happen. A turn is now measured: the
+ * heading on the previous corridor against the heading now.
+ */
+export function routeQuizContext(input: {
+  onBridge: boolean;
+  transit: boolean;
+  /** The ride has already settled on a corridor before this one. */
+  hadCorridor: boolean;
+  /** Heading on the last frame on the previous corridor, if known. */
+  corridorHeading: number | null;
+  heading: number;
+}): string {
+  if (input.onBridge) return 'Crossing a waterway';
+  if (input.transit) return 'Riding the corridor';
+  // The first ask of a ride follows no turn; saying so was false.
+  if (!input.hadCorridor) return 'Where you set off';
+  if (input.corridorHeading === null) return 'You made a turn';
+  const change = Math.abs(Math.atan2(
+    Math.sin(input.heading - input.corridorHeading),
+    Math.cos(input.heading - input.corridorHeading),
+  ));
+  return change > ROUTE_QUIZ_TURN_RADIANS ? 'You made a turn' : 'The street name changed';
 }
 
 /** How far the vehicle's heading is from the road's, folded into [0, π/2]. */

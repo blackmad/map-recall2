@@ -1,0 +1,29 @@
+{
+  "id": "de-school",
+  "bagPand": "0363100012121682",
+  "osmWay": "w57856852",
+  "retrieved": "2026-10-10",
+  "sources": [
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_09_25_08_37_35_00323/?width=1200&fov=80&heading=248", "use": "ref-t0.jpg: entrance porch, wing pavilion, slab north face ribbons, chimney; captured 2025-09-25", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_09_25_08_37_35_00322/?width=1200&fov=80&heading=263", "use": "ref-t1.jpg: same court, next station; 2025", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_09_25_08_37_35_00324/?width=1200&fov=80&heading=236", "use": "ref-t2.jpg: pavilion green-framed two-row ribbon and fascia, porch, slab; 2025", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_09_25_08_37_35_00321/?width=1200&fov=80&heading=273", "use": "ref-t3.jpg: court view; 2025", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_09_25_08_37_35_00325/?width=1200&fov=80&heading=225", "use": "ref-t4.jpg: pavilion, porch, slab; 2025", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_09_25_08_37_35_00283/?width=1200&fov=90&heading=183", "use": "ref-sa.jpg: gym block north of the site (not modelled); 2025", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-000266_pano_0000_001889/?width=1200&fov=90&heading=123", "use": "ref-sb.jpg: wing end seen from the north-west; 2017", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_09_25_08_37_35_00313/?width=1200&fov=90&heading=166", "use": "ref-sc.jpg: forecourt (context); 2025", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_09_25_08_37_35_00344/?width=1200&fov=90&heading=256", "use": "ref-sd.jpg: brick end wall of the neighbouring block (context, not modelled); 2025", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_09_25_08_37_35_00334/?width=1200&fov=90&heading=177", "use": "ref-se.jpg: street view of an adjacent building (context); 2025", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_09_25_08_03_55_00973/?width=1200&fov=80&heading=355", "use": "ref-south.jpg (copy ref-south-face.jpg): south (canal) face, three ribbons, glazed stair core; heavily occluded by trees; 2025", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_09_25_08_03_55_00979/?width=1200&fov=80&heading=356", "use": "ref-south-w.jpg: south face west part, almost fully hidden by trees; 2025", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_09_25_08_37_35_00321/?width=1200&fov=80&heading=208", "use": "ref-south-e.jpg (copy ref-north.jpg): slab north face and east end, plinth panels, ribbons, fascia; 2025", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/2025_09_25_08_37_35_00320/?width=1200&fov=80&heading=197", "use": "ref-east.jpg: blank ivy-covered east gable and north face; 2025", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002492_pano_0005_002192/?width=1200&fov=80&heading=98", "use": "ref-west.jpg: west gable end, blank concrete, seen through bare trees; 2022", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://en.wikipedia.org/wiki/De_School", "use": "club history (2016-2024), former technical school of the late 1960s (text only)", "licence": "Wikipedia, facts only"},
+    {"url": "https://djmag.com/top100clubs/2019/57/De-School", "use": "former technical school built in the 1960s; nightclub in the old bicycle store (text only)", "licence": "facts only"},
+    {"url": "https://api.openstreetmap.org/api/0.6/way/57856852/full.json", "use": "OSM way, ref:bag 0363100012121682, start_date 1966", "licence": "ODbL"},
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012121682&f=json", "use": "BAG pand 0363100012121682, bouwjaar 1966", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012121682", "use": "LoD2.2 massing shell", "licence": "CC BY 4.0 (3DBAG)"}
+  ],
+  "notes": "Scope is the main school slab and its saw-tooth wing (BAG pand 0363100012121682). The neighbouring pand 0363100012195030 (the low courtyard complex, address 1A) is not replaced. The photographed slab faces are gently curved in plan; the BAG/3DBAG outline is straight, so the model is straight. The south face is mostly hidden by trees in all panoramas, so its ribbon pitch (about 2 m) is carried over from the north face. Porch and pavilion positions on the wing's east face are estimated from the bearing of the court panoramas (about 2-3 m uncertain). Pane pitch and the ribbon heights were measured by eye."
+}

@@ -1,0 +1,12 @@
+{
+  "observation": "Actual map also labels Politiebureau Weesp over the station.",
+  "rawSource": "models/fire-station-weesp/raw/ OSM API snapshot",
+  "genuinePoliceNode": "n11116997895",
+  "coordinateLonLat": [
+    5.044969,
+    52.3026618
+  ],
+  "insideNativeFootprintExcludingCourtyardHoles": true,
+  "sourceAddress": "Aetsveldselaan65, same source address as the station",
+  "decision": "Retain genuine co-located police label. Selected destination, manual pin and physical card remain Kazerne Weesp; do not fabricate a duplicate building or replace the station identity."
+}

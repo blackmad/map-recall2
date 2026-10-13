@@ -1,0 +1,40 @@
+{
+  "id": "local-food-395",
+  "name": "Hannekes Boom",
+  "coordinates": [
+    4.9116163,
+    52.3762934
+  ],
+  "destinationCoordinates": null,
+  "website": "https://hannekesboom.nl/",
+  "description": "Hannekes Boom is a waterside cafe and cultural meeting place at the head of the Dijksgracht. Its name recalls the guarded harbour openings that once used floating timber barriers. The present venue reopened in 2011 after its foundation won a municipal competition to revive the site.",
+  "facts": [
+    {
+      "text": "The foundation won Amsterdam's 2010 competition to create a temporary hospitality and cultural location on the Kop van de Dijksgracht; Hannekes Boom opened again in 2011.",
+      "source": "https://hannekesboom.nl/en/history/"
+    },
+    {
+      "text": "Its name refers to the historic guarded harbour openings: floating tree trunks on chains closed these passages each evening, with bells announcing the opening and closing.",
+      "source": "https://hannekesboom.nl/en/history/"
+    },
+    {
+      "text": "The operator describes a waterside terrace, picnic-table area and roof terrace; the adjacent Hannekes Boot is a separate moored event venue.",
+      "source": "https://hannekesboom.nl/"
+    },
+    {
+      "text": "Architects Wouter Valkenier and Gijs de Waal built the pavilion from reused materials; the timber building sits beside its own small harbour.",
+      "source": "https://www.gijsdewaal.nl/teksten.html"
+    }
+  ],
+  "identityNotes": {
+    "genuineExtract": "public/data/extracts/amsterdam/branded-pois.json",
+    "canonicalExistingId": "local-food-395",
+    "candidateBagPand": "0363100012238899",
+    "relationship": "Confirmed official PDOK address Dijksgracht4 / nummeraanduiding0363200012061756 / VBO0363010012061677 and municipal VBO liesInPanden explicit Pand0363100012238899; reciprocal Pand VBO link. Genuine branded identity local-food-395 preserved for route/map/card integration.",
+    "osmPoi": null,
+    "officialVbo": "0363010012061677"
+  },
+  "preserveExistingFacts": true,
+  "destinationReason": "Public approach and actual entrance require geographic reference and route review; operator describes access from the Oosterdoksdraaibrug or Dijksgracht below the railway. Official boat GPS is a harbour-arrival coordinate, not proof of pedestrian entrance.",
+  "integrationState": "Physical sources confirmed; original private source pack acquired; native builder drafted. Gallery/game/route/pin/physical-card acceptance pending."
+}

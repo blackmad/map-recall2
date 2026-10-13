@@ -26,7 +26,7 @@ import { BAY_LAYER_COUNT, bayLookFor } from './bayLook.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
 import { CELL_VARIANTS, CELL_LAYER_COUNT, cellLayer } from './facadeCells.js';
-import { edgeGroundPieces, edgeLayout, layoutRun } from './facadeLayout.js';
+import { edgeGroundPieces, edgeLayout, layoutRun, type LayoutScale } from './facadeLayout.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetDistance } from './streetFronts.js';
 import { FACADE_CORNICE_M, type FacadeStyle } from './genericFacades.js';
 import type { KitPartGeometry } from './landmarkKits.js';
@@ -83,6 +83,10 @@ export type MeshBuilding = {
    * mid-air whenever the walls were rebuilt (user report 2026-10-02).
    */
   lid?: { hex: string; flatLayer: number };
+  /** Overrides the per-building rhythm jitter (large tier: civic storeys, one entrance per run). */
+  layoutScale?: LayoutScale;
+  /** A plain band this tall between the top window row and the wall top (large tier). */
+  parapetM?: number;
   /** A real roof for this building; its walls already stop at the eaves. */
   roof?: { plan: RoofPlan; layers: { slope: number; plain: number; dormer: number }; roofHex: string; dims: RoofDims };
 };
@@ -443,7 +447,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const groundPaint = b.groundHex && b.layers ? parseHex(b.groundHex) : null;
     const variant = Math.floor(hash01(`${b.id}:look`) * CELL_VARIANTS);
     // No two neighbours share a rhythm: bay width, storey and ground-floor height vary per building.
-    const scale = { bay: 0.88 + hash01(`${b.id}:bay`) * 0.3, storey: 0.93 + hash01(`${b.id}:storey`) * 0.16, ground: 0.92 + hash01(`${b.id}:ground`) * 0.2 };
+    const scale = b.layoutScale ?? { bay: 0.88 + hash01(`${b.id}:bay`) * 0.3, storey: 0.93 + hash01(`${b.id}:storey`) * 0.16, ground: 0.92 + hash01(`${b.id}:ground`) * 0.2 };
     const jitter = 0.9 + hash01(`${b.id}:tone`) * 0.2;
     let walls = 0;
     const extraSink = mode === 'extras' && b.extras ? new ExtraSink(EXTRA_BUDGET.building) : null;
@@ -482,7 +486,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         for(const p of [[A,B,C],[A,C,D]]as [number,number,number][][]){if(Math.hypot(...p[0].map((v,i)=>v-p[1][i]))<1e-8||Math.hypot(...p[0].map((v,i)=>v-p[2][i]))<1e-8)continue;cornice.push({p:p as RoofTri['p'],uv:p.map(uv)as RoofTri['uv'],part:'plate',n,facadeLayer:b.plainLayer,facadeTint:[r*jitter,g*jitter,bl*jitter]});}
       }
       const paintTint = b === fallbackBuilding ? groundPaint : b.groundHex && b.layers ? parseHex(b.groundHex) : null;
-      const layout = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), top - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
+      // A parapet band (large tier) only where the wall is tall enough to keep a storey under it.
+      const parapet = b.parapetM && !b.bare && top - b.parapetM - base >= 5 ? b.parapetM : 0, facadeTop = top - parapet;
+      const layout = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), facadeTop - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
       if(layout&&b.recipe?.facadeAssembly==='stacked-open-balcony'&&base<.5){
         const center=(layout.bays-1)/2;
         const eligible=Array.from({length:layout.bays},(_,i)=>i).filter(i=>{
@@ -574,7 +580,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         }else for (const piece of edgeGroundPieces(layout, k, e.len)) {
           quads.push({ e, u0: piece.a0 / bw, u1: piece.a1 / bw, v1: 1, tint: (piece.door && !b.recipe?.groundWallHex) || b.plainWalls ? tint : paint, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? (piece.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, piece.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, along0: (piece.a0 - s) / e.len, along1: (piece.a1 - s) / e.len });
         }
-        if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ e, u0: s / bw, u1: (s + e.len) / bw, v1: layout.storeys, layer: (b.plainWalls || interwar) && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: top, tint, along0: 0, along1: 1 });
+        if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ e, u0: s / bw, u1: (s + e.len) / bw, v1: layout.storeys, layer: (b.plainWalls || interwar) && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
+        if (parapet && b.plainLayer !== undefined) quads.push({ e, u0: s / bw, u1: (s + e.len) / bw, v1: parapet / layout.storeyM, layer: b.plainLayer, accent, z0: facadeTop, z1: top, tint, along0: 0, along1: 1 });
       });
     }
     const clampToSource=(q:Quad):Quad[]=>{

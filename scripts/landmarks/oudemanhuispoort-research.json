@@ -1,0 +1,43 @@
+{
+  "id": "oudemanhuispoort",
+  "bagPand": "0363100012180206",
+  "bagPands": {
+    "0363100012180206": "Oudezijds Achterburgwal 229, 1775: brick house south of the gate; its north-west jog is the portal south pier",
+    "0363100012179854": "Oudemanhuispoort 1A, 1550: white-fronted shop house north of the gate; its ragged south-west corner is the portal north pier",
+    "alley": "no pand over the gap between them: an open-air alley runs east to the university complex (pand 0363100012171179, 1757) that holds the covered book-market passage",
+    "0363100012180205": "Oudezijds Achterburgwal 231 (south neighbour, same cornice line, city layer)",
+    "0363100012179787": "north neighbour of 1A (city layer)"
+  },
+  "researchedOn": "2026-10-13",
+  "state": "built-ready-2026-10-13",
+  "sources": [
+    "https://nl.wikipedia.org/wiki/Oudemanhuispoort",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012180206",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012179854",
+    "https://service.pdok.nl/lv/bag/wfs/v2_0 (bag:pand, bag:verblijfsobject around the gate)",
+    "https://api.data.amsterdam.nl/panorama/thumbnail/ (CC BY 4.0, Gemeente Amsterdam)"
+  ],
+  "photos": [
+    {"file": "ref-across-canal.jpg", "panorama": "b_20250108_1349_Track16_Sphere_00088", "date": "2025-01-08", "heading": 113, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "whole canal row from across the water: 1A, portal, 229, roof, dormer, chimneys; all heights"},
+    {"file": "ref-across-canal-north.jpg", "panorama": "b_20250108_1349_Track16_Sphere_00086", "date": "2025-01-08", "heading": 138, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "229 alley-side wall above the portal (two window columns), chimney on that wall"},
+    {"file": "ref-pano-0.jpg", "panorama": "recording_2025-06-30_05-16-46_01361", "date": "2025-06-30", "heading": 111, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "229 bel-etage windows, basement arches, portal south column"},
+    {"file": "ref-pano-1.jpg", "panorama": "recording_2025-06-30_05-16-46_01362", "date": "2025-06-30", "heading": 151, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "portal soffit, gate leaves with arched glazed heads, open alley behind"},
+    {"file": "ref-pano-2.jpg", "panorama": "recording_2025-06-30_05-16-46_01360", "date": "2025-06-30", "heading": 78, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "229 door, fanlight, stoop descending north"},
+    {"file": "ref-pano-3.jpg", "panorama": "recording_2025-06-30_05-16-46_01363", "date": "2025-06-30", "heading": 172, "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "portal from the north beside 1A; columns, pediment, urns"}
+  ],
+  "facadeRhythm": {
+    "229 canal front (photo ref-across-canal, ref-pano-0/2)": "3 axes at 1.3 / 3.24 / 5.12 m from the gate corner, not symmetric. Basement: lights under axes 1-2 under brick relieving arches, stoop under axis 3. Bel-etage: two tall 2x4 sashes (axes 1-2) and the black panelled door with lozenge fanlight (axis 3) behind a stoop descending north with an iron railing. Second floor 3 sashes, top floor 3 shorter sashes. White eaves cornice; hipped red pantile roof with one white dormer over axis 2; chimney on the alley wall just behind the front, a second on the party wall with 231. No floor band, no signage.",
+    "229 alley wall (photo ref-across-canal-north, partial)": "two window columns near the front on the upper floors; further back and the bel-etage level inferred.",
+    "portal (photo ref-across-canal, ref-pano-1/3)": "one bay, symmetric: rusticated piers about 1.2 m, free-standing columns on plinths with volute capitals, opening 2.35 m wide x 3.85 m with rounded upper corners, entablature with dentils breaking forward over the columns (cornice top 4.55 m), segmental pediment over the opening with a cartouche and supporters (top 5.65 m, just under 1A's second-floor sills), urns over the columns. Gates stand open; the alley behind is open-air.",
+    "1A canal front (photo ref-across-canal)": "3 axes, painted boarding, ground floor two shop windows and the shop door on the south axis, two upper floors of 2x2 sashes, flat white cornice at about 8 m.",
+    "inferred": "229 back (east) wall windows, 229 bel-etage on the alley wall, 1A alley-side windows; south party wall of 229 and north party wall of 1A are blank (declared partyWallBearings 28)."
+  },
+  "notes": "Card complaint (2026-10-11): 'why this door without a building?' The previous model drew only 229 with an 8 m stone screen beside it; the default gallery camera faced the blank south party wall, and nothing stood on the gate's north side. The BAG shows the two piers belong to the two houses, so the gate is now modelled between them.",
+  "decisions": [
+    "Model both pier-holding houses (229 and 1A) plus the portal; suppress both BAG pands. The alley and the university complex stay with the city layer.",
+    "229 envelope rebuilt from the 3DBAG LoD2.2 planes (front hip, north slope, flat top against 231) on the ring without the pier jog; the jog becomes the portal south pier at portal height instead of a full-height stone strip.",
+    "Portal re-measured from the across-canal photo against 229's 3DBAG eaves: 4.8 m wide over the piers, pediment top 5.65 m (was about 2.6 m between columns and 8.2 m tall).",
+    "229 front corrected from two axes to three with the door and stoop; floor band removed; roof recoloured from slate to red pantile with the dormer and photo chimneys.",
+    "galleryView set to face the canal front (theta -2.45, phi 1.2) so the card opens on the gate rather than the blank party wall."
+  ]
+}

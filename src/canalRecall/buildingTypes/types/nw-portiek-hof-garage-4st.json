@@ -1,0 +1,578 @@
+{
+  "id": "nw-portiek-hof-garage-4st",
+  "label": "Nieuw-West type 1 sub-design C (hof blocks of Slotermeer / Geuzenveld: Hegelhof, Immanuel Kanthof, John Lockehof, Melis Stokehof, Hugo Verriesthof, Henric van Veldekehof): four-storey brick portiekflat, 14 or 16.3 m, wide core with big two-light windows, balcony bays at both ends over garage doors, entrance up steps",
+  "source": {
+    "clusterRank": 3,
+    "panden": 16,
+    "bouwjaar": [
+      1954,
+      1955
+    ],
+    "lengthM": 14.0,
+    "widthM": 10.5,
+    "bouwlagen": 4,
+    "roof": "pitched",
+    "dwellingsMedian": 6
+  },
+  "storeys": 4,
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.35,
+    "vergeOverhangM": 0.12,
+    "thicknessM": 0.12,
+    "pitchDeg": 30
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "brown-red",
+  "variants": {
+    "brown-red": {
+      "label": "Brown brick (sunlit photo median #6f5a4d), cream-framed windows, bar balconies, red garage and entrance doors (14 m members: two big windows + a stair window in the core)",
+      "evidence": "sunlit crops 0363100012076741 #685549, 0069526, 0098547 (Hegelhof, Melis Stokehof, Hugo Verriesthof, Herbert Spencerhof, Immanuel Kanthof)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#6f5a4d"
+        },
+        "frame": "#f2efe6",
+        "glass": "#4b5a6b",
+        "door": "#7a2630",
+        "accent": "#bdb7a8",
+        "rail": "#c9c4b6",
+        "dark": "#55575a",
+        "column": "#e4dfd0",
+        "joint": "#4f4037",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4b36"
+        }
+      }
+    },
+    "brown-red-4w": {
+      "label": "Brown brick (sunlit photo median #6f5a4d), cream-framed windows, bar balconies, red garage and entrance doors (16.3 m members: four equal windows in the core)",
+      "evidence": "sunlit crops 0363100012076741 #685549, 0069526, 0098547 (Hegelhof, Melis Stokehof, Hugo Verriesthof, Herbert Spencerhof, Immanuel Kanthof); long members 0363100012115478, 2115152, 2141187, 2145227",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#6f5a4d"
+        },
+        "frame": "#f2efe6",
+        "glass": "#4b5a6b",
+        "door": "#7a2630",
+        "accent": "#bdb7a8",
+        "rail": "#c9c4b6",
+        "dark": "#55575a",
+        "column": "#e4dfd0",
+        "joint": "#4f4037",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4b36"
+        }
+      }
+    },
+    "brown-green": {
+      "label": "Brown brick, same layout, green-grey doors (14 m members: two big windows + a stair window in the core)",
+      "evidence": "crops 0363100012076741 (John Lockehof, green doors), 2115478, 2139136, 2063869",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#6f5a4d"
+        },
+        "frame": "#f2efe6",
+        "glass": "#4b5a6b",
+        "door": "#3f8a63",
+        "accent": "#bdb7a8",
+        "rail": "#c9c4b6",
+        "dark": "#55575a",
+        "column": "#e4dfd0",
+        "joint": "#4f4037",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4b36"
+        }
+      }
+    },
+    "brown-green-4w": {
+      "label": "Brown brick, same layout, green-grey doors (16.3 m members: four equal windows in the core)",
+      "evidence": "crops 0363100012076741 (John Lockehof, green doors), 2115478, 2139136, 2063869; long members 0363100012115478, 2115152, 2141187, 2145227",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#6f5a4d"
+        },
+        "frame": "#f2efe6",
+        "glass": "#4b5a6b",
+        "door": "#3f8a63",
+        "accent": "#bdb7a8",
+        "rail": "#c9c4b6",
+        "dark": "#55575a",
+        "column": "#e4dfd0",
+        "joint": "#4f4037",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4b36"
+        }
+      }
+    },
+    "buff-green": {
+      "label": "Buff / yellow brick, same layout, green doors (John Lockehof, Henric van Veldekehof, Hugo Verriesthof) (14 m members: two big windows + a stair window in the core)",
+      "evidence": "sunlit crops 0363100012094150 #ad9064, 2115152 #b49972, 2152079 #b09f7d, 2127836 #b69d75",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#b29a73"
+        },
+        "frame": "#f2efe6",
+        "glass": "#4b5a6b",
+        "door": "#3f8a63",
+        "accent": "#cfc9b8",
+        "rail": "#d8d4c8",
+        "dark": "#55575a",
+        "column": "#e4dfd0",
+        "joint": "#8e7a5c",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4b36"
+        }
+      }
+    },
+    "buff-green-4w": {
+      "label": "Buff / yellow brick, same layout, green doors (John Lockehof, Henric van Veldekehof, Hugo Verriesthof) (16.3 m members: four equal windows in the core)",
+      "evidence": "sunlit crops 0363100012094150 #ad9064, 2115152 #b49972, 2152079 #b09f7d, 2127836 #b69d75; long members 0363100012115478, 2115152, 2141187, 2145227",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#b29a73"
+        },
+        "frame": "#f2efe6",
+        "glass": "#4b5a6b",
+        "door": "#3f8a63",
+        "accent": "#cfc9b8",
+        "rail": "#d8d4c8",
+        "dark": "#55575a",
+        "column": "#e4dfd0",
+        "joint": "#8e7a5c",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4b36"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012076741.jpg",
+          "pand": "0363100012076741",
+          "address": "John Lockehof (L 13.79 m, eaves 11.87 m)",
+          "note": "front, straight on, ground+3. Between two party-wall piers: [B ~2.5 m] balcony bay (one balcony ~2.2 m, glazed door + side lights behind it, garage door at ground) | [S ~8.2 m] wide core: two big two-light windows (1.4 m, 2.3 m either side of the axis) per storey with a small stair window on the axis at storeys 2-3; ground: entrance with two steps and railing, a flat door each side, low windows | [B] second balcony bay over a garage door."
+        },
+        {
+          "photo": "survey crop 0363100012145227.jpg",
+          "pand": "0363100012145227",
+          "address": "Henric van Veldekehof (L 16.27 m, eaves 12.02 m)",
+          "note": "long member (L 16.3 m): the same frame with four equal two-light windows (2.3 m pitch) in the core and no stair window; garage doors under both balcony bays, a red flat door each side of the portico."
+        },
+        {
+          "photo": "survey crop 0363100012096087.jpg",
+          "pand": "0363100012096087",
+          "address": "Melis Stokehof (L 14.01 m, eaves 11.98 m)",
+          "note": "short member in red-door brown brick: steps, two flat doors, low windows, red garage door on the right."
+        }
+      ],
+      "counted": {
+        "bays": 5,
+        "openingsPerUpperStorey": 4,
+        "groundDoors": 5,
+        "balconiesPerUpperStorey": 2
+      },
+      "bays": [
+        {
+          "id": "P0",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "Bl",
+          "w": 2.5,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 2.2,
+              "depth": 1.0,
+              "railing": "bars"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 2.0,
+              "h": 2.0,
+              "sill": 0.0,
+              "lights": 3,
+              "note": "glazed door + side lights behind the balcony"
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 2.3,
+              "h": 2.1,
+              "note": "garage door under the balcony bay"
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 8.2,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 1.0,
+              "h": 2.2,
+              "steps": 2
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": -0.75,
+              "w": 0.3,
+              "h": 1.0,
+              "sill": 1.0,
+              "colour": "accent",
+              "depth": 0.08,
+              "note": "letterbox panels"
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": 0.75,
+              "w": 0.3,
+              "h": 1.0,
+              "sill": 1.0,
+              "colour": "accent",
+              "depth": 0.08
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "u": -2.3,
+              "w": 0.95,
+              "h": 2.1,
+              "note": "flat entrance door beside the portico"
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "u": 2.3,
+              "w": 0.95,
+              "h": 2.1
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -3.3,
+              "w": 0.9,
+              "h": 0.6,
+              "sill": 1.2,
+              "note": "low window"
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": 3.3,
+              "w": 0.9,
+              "h": 0.6,
+              "sill": 1.2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -2.3,
+              "w": 1.4,
+              "h": 1.55,
+              "sill": 1.0,
+              "lights": 2,
+              "variants": [
+                "brown-red",
+                "brown-green",
+                "buff-green"
+              ]
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 2.3,
+              "w": 1.4,
+              "h": 1.55,
+              "sill": 1.0,
+              "lights": 2,
+              "variants": [
+                "brown-red",
+                "brown-green",
+                "buff-green"
+              ]
+            },
+            {
+              "kind": "window",
+              "levels": [
+                2,
+                3
+              ],
+              "u": 0,
+              "w": 0.75,
+              "h": 0.9,
+              "sill": 0.1,
+              "variants": [
+                "brown-red",
+                "brown-green",
+                "buff-green"
+              ],
+              "note": "small stair window on the axis at storeys 2-3"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -3.45,
+              "w": 1.4,
+              "h": 1.55,
+              "sill": 1.0,
+              "lights": 2,
+              "variants": [
+                "brown-red-4w",
+                "brown-green-4w",
+                "buff-green-4w"
+              ]
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.15,
+              "w": 1.4,
+              "h": 1.55,
+              "sill": 1.0,
+              "lights": 2,
+              "variants": [
+                "brown-red-4w",
+                "brown-green-4w",
+                "buff-green-4w"
+              ]
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 1.15,
+              "w": 1.4,
+              "h": 1.55,
+              "sill": 1.0,
+              "lights": 2,
+              "variants": [
+                "brown-red-4w",
+                "brown-green-4w",
+                "buff-green-4w"
+              ]
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 3.45,
+              "w": 1.4,
+              "h": 1.55,
+              "sill": 1.0,
+              "lights": 2,
+              "variants": [
+                "brown-red-4w",
+                "brown-green-4w",
+                "buff-green-4w"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "Br",
+          "w": 2.5,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 2.2,
+              "depth": 1.0,
+              "railing": "bars"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 2.0,
+              "h": 2.0,
+              "sill": 0.0,
+              "lights": 3,
+              "note": "glazed door + side lights behind the balcony"
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 2.3,
+              "h": 2.1,
+              "note": "garage door under the balcony bay"
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012076741.jpg",
+          "pand": "0363100012076741",
+          "address": "John Lockehof (L 13.79 m, eaves 11.87 m)",
+          "note": "no garden-side photo of a member was found; the model repeats the front window rhythm without balconies, doors or garages. NOT verified."
+        }
+      ],
+      "counted": {
+        "bays": 5,
+        "openingsPerUpperStorey": 4,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "P0",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "Bl",
+          "w": 2.5,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.4,
+              "h": 1.4,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 8.2,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -2.3,
+              "w": 1.4,
+              "h": 1.4,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 2.3,
+              "w": 1.4,
+              "h": 1.4,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "Br",
+          "w": 2.5,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.4,
+              "h": 1.4,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012076741.jpg",
+          "pand": "0363100012076741",
+          "address": "John Lockehof (L 13.79 m, eaves 11.87 m)",
+          "note": "terrace end / party wall, modelled blank. NOT verified for end units."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "gable",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012076741.jpg",
+          "pand": "0363100012076741",
+          "address": "John Lockehof (L 13.79 m, eaves 11.87 m)",
+          "note": "as left."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "gable",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Sub-design C of the type-1 cluster rank 3 (14-16 m, 4 storeys): the 2026-10-11 survey held these 16 panden as a \"4-storey hof sub-design\". The ground-floor doors vary per member (garage vs low windows under a balcony bay, red vs green); the model uses garage doors under both balcony bays.",
+    "Two member lengths: ~14 m (12 panden: two big windows + a small stair window in the core) and ~16.3 m (4 panden: four equal windows); the long ones are the -4w variants so each shared unit mesh has the right window axes.",
+    "Balcony depth 1.0 m (was 0.8 m): in the oblique 0363100012076741 the bar balconies project about 0.5 of their 2.0 m width."
+  ]
+}

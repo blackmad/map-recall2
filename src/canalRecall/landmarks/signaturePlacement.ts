@@ -76,13 +76,19 @@ export interface SignatureModelSpec {
   readonly surveyed?: SurveyedAnchor;
   /** Stable id for this placement, used in the manifest and in tests. */
   readonly id: string;
-  readonly assetKind?: 'building' | 'memorial' | 'ordinary-building' | 'landscape' | 'standalone-structure';
+  /** One GLB (in its frontage frame) shared by several placements: the runtime loads it once and clones per instance. */
+  readonly sharedModel?: boolean;
+  /** Left-right mirror of the shared mesh (X negated; the runtime's negative determinant flips triangle winding). */
+  readonly mirror?: boolean;
+  /** Street chunk (one mesh for a block face, see streetChunks/manifest.ts): the pands it draws, so hover resolves the building under the cursor. */
+  readonly chunkPands?: readonly { readonly buildingId: string; readonly address: string; readonly footprint: unknown }[];
+  readonly assetKind?: 'building' | 'memorial' | 'ordinary-building' | 'landscape';
+  /** Taxonomy (buildingCategory.ts). Absent = landmark; only landmarks become POIs, cards or route candidates. */
+  readonly buildingCategory?: import('../buildingCategory.js').BuildingCategory;
   /** Exact native plan for ordinary replacement picking, including courtyard holes. */
   readonly buildingFootprint?: { readonly type: 'Polygon' | 'MultiPolygon'; readonly coordinates: unknown };
   /** Source-supported per-model palette overrides; decals retain their original colors. */
   readonly materialOverrides?: Readonly<Record<string, string>>;
-  /** Export culling for source-owned single-sided surfaces; existing defaults remain double-sided. */
-  readonly doubleSided?: boolean;
   /** Human name, shown in the attribution panel. */
   readonly name: string;
   /** The landmark extract entry this model represents, so the existing card,
@@ -94,8 +100,6 @@ export interface SignatureModelSpec {
   readonly destinationLandmarkIds?: readonly string[];
   /** Keep graphics and their support positions exact while compressing ordinary geometry. */
   readonly preservePositionPrecision?: boolean;
-  /** Preserve all surveyed positions when quantization breaks thin walls or courtyard boundaries. */
-  readonly preserveAllPositionPrecision?: boolean;
   /** Runtime GLB, relative to the Canal Recall page. */
   readonly modelUrl: string;
   /** Building identities: OSM `w`/`r` ids and, where needed, BAG pand ids.
@@ -163,6 +167,8 @@ export interface SignaturePlacement {
   /** Single uniform factor. Non-uniform scaling would stretch a facade's
    *  windows and is never correct for a real building. */
   readonly scale: number;
+  /** Mirror the model in its own X axis (shared-mesh instances only). */
+  readonly mirror?: boolean;
 }
 
 /** Metres per degree of longitude at a latitude. */
@@ -445,6 +451,7 @@ function surveyedPlacement(
       ? normaliseBearing(spec.footprint.headingDegrees + spec.facingOffsetDegrees)
       : normaliseBearing(spec.facingOffsetDegrees),
     scale: 1,
+    ...(spec.mirror ? { mirror: true } : {}),
   };
 }
 

@@ -1,0 +1,148 @@
+{
+  "id": "de-nederlandsche-bank",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "north (main entrance, tile fascia, glazed ground floor)",
+      "bearing": 347.5,
+      "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-north.jpg",
+      "depthBand": 6,
+      "rows": [
+        null,
+        1,
+        1
+      ],
+      "symmetric": false,
+      "gables": 0,
+      "countedBy": "blind haiku counter 2026-10-11",
+      "heightM": [
+        0,
+        13.5
+      ],
+      "note": "2026-10-11 span/ribbon pass: rows follow the ribbon convention (continuous glazing = 1 per band; bands recounted by lane from the photo), ground arcade null, crop in alongM/heightM"
+    },
+    {
+      "name": "south (Singelgracht quay, glass-block ground floor)",
+      "bearing": 167.5,
+      "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-south.jpg",
+      "depthBand": 6,
+      "rows": [
+        1,
+        1
+      ],
+      "symmetric": false,
+      "gables": 0,
+      "countedBy": "blind haiku counter 2026-10-11",
+      "openings": [
+        "glass"
+      ],
+      "heightM": [
+        0,
+        13.5
+      ],
+      "note": "2026-10-11 span/ribbon pass: rows follow the ribbon convention (continuous glazing = 1 per band; bands recounted by lane from the photo), ground arcade null, crop in alongM/heightM"
+    },
+    {
+      "name": "west (second entrance, ribbon windows over white spandrel)",
+      "bearing": 257.5,
+      "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-west.jpg",
+      "depthBand": 6,
+      "rows": [
+        null,
+        1,
+        1
+      ],
+      "symmetric": false,
+      "gables": 1,
+      "countedBy": "blind haiku counter 2026-10-11",
+      "heightM": [
+        0,
+        13.5
+      ],
+      "note": "2026-10-11 span/ribbon pass: rows follow the ribbon convention (continuous glazing = 1 per band; bands recounted by lane from the photo), ground arcade null, crop in alongM/heightM"
+    },
+    {
+      "name": "east (service side, ribbon windows)",
+      "bearing": 77.5,
+      "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-east.jpg",
+      "depthBand": 6,
+      "rows": [
+        null,
+        1,
+        1
+      ],
+      "symmetric": false,
+      "gables": 0,
+      "countedBy": "blind haiku counter 2026-10-11",
+      "heightM": [
+        0,
+        13.5
+      ],
+      "note": "2026-10-11 span/ribbon pass: rows follow the ribbon convention (continuous glazing = 1 per band; bands recounted by lane from the photo), ground arcade null, crop in alongM/heightM"
+    },
+    {
+      "name": "tower west face (above the podium)",
+      "bearing": 257.5,
+      "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-2025-westeinde.jpg",
+      "depthBand": 90,
+      "rows": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "symmetric": false,
+      "gables": 1,
+      "countedBy": "blind haiku counter 2026-10-11",
+      "heightM": [
+        25,
+        70
+      ],
+      "alongM": [
+        41,
+        93
+      ],
+      "note": "2026-10-11 span/ribbon pass: rows follow the ribbon convention (continuous glazing = 1 per band; bands recounted by lane from the photo), ground arcade null, crop in alongM/heightM"
+    },
+    {
+      "name": "tower south end (above the podium)",
+      "bearing": 167.5,
+      "photo": "artifacts/landmark-lanes/de-nederlandsche-bank/ref-2025-frederiksplein.jpg",
+      "depthBand": 90,
+      "rows": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "symmetric": true,
+      "gables": 1,
+      "countedBy": "blind haiku counter 2026-10-11",
+      "heightM": [
+        25,
+        70
+      ],
+      "alongM": [
+        70,
+        91
+      ],
+      "note": "2026-10-11 span/ribbon pass: rows follow the ribbon convention (continuous glazing = 1 per band; bands recounted by lane from the photo), ground arcade null, crop in alongM/heightM"
+    }
+  ]
+}

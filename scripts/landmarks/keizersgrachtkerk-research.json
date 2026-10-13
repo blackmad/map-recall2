@@ -213,10 +213,10 @@
     "artifacts/keizersgrachtkerk/builder-v5-failed-portal-roundel.ts"
   ],
   "reviewViews": [
-    "artifacts/landmark-offline-preview/keizersgrachtkerk-cpu-front-v7.png",
-    "artifacts/landmark-offline-preview/keizersgrachtkerk-cpu-side-v7.png"
+    "artifacts/landmark-offline-preview/keizersgrachtkerk-cpu-front-v6.png",
+    "artifacts/landmark-offline-preview/keizersgrachtkerk-cpu-side-v6.png"
   ],
-  "draftRevision": "v7: source-supported upper tower pointed recess with circular cream profiles, pierced arch mouldings, side brick strips and lower beam; source dark sixfoil retained with larger crop-calibrated approximate proportions. v6 portal, roof junctions, exact BAG/native bounds retained.",
+  "draftRevision": "v6 repairs independent source failures: sampled two-circle Gothic portal shoulders/shallow pointed apex; tower sixfoil dark openings with perimeter only, removed false internal pale wheel. Roof junctions/exactBAG/facadeplacement retained.",
   "v5DecodedCpuEvidence": {
     "report": "artifacts/keizersgrachtkerk/v5-report.json",
     "frontFineReport": "artifacts/keizersgrachtkerk/v5-roof-holes.json",
@@ -263,61 +263,5 @@
     "sideGlassProbes": 120,
     "frontLowerAndTowerGlassProbes": 16,
     "status": "Passing CPU checks only. Root independent review and gallery/live game still required."
-  },
-  "v7SourceCorrections": {
-    "sourceCrop": "/Users/blackmad/Code/map-recall2-worktrees/keizersgrachtkerk/artifacts/keizersgrachtkerk/tower-reference-crop.jpg",
-    "sourceAuthority": "Existing cached Commons facade crop and RCE518347 six-lobed upper rose description; no new source acquisition",
-    "assertions": [
-      {
-        "part": "upper tower surrounding pointed recess",
-        "confidence": "high for visible assembly; approximate for dimensions",
-        "observed": "Shallow pointed arch enclosure, circular cream profiles/multiple mouldings around dark six-lobed opening, cream lower beam and short exposed brick strips at sides.",
-        "geometry": "Pierced double pointed mouldings, recessed cream backing, circular profile and sixfoil perimeter only; no invented spokes or pale wheel."
-      }
-    ],
-    "approximateDimensionsMetres": {
-      "outerArchWidth": 2.84,
-      "archBottom": 15.87,
-      "archTop": 18.83,
-      "sixfoilCentreHeight": 17.15,
-      "sixfoilDiameter": 1.51,
-      "profileOuterRadius": 1.06,
-      "profileDepth": 0.16
-    },
-    "recessMaterial": {
-      "nativeMaterial": "concrete",
-      "hex": "#b2ae9f",
-      "reason": "Source-shadowed cream stone recess; distinct from proud stone cream profile."
-    },
-    "limitations": "Photo-guided approximate proportions, not measured rectification. Textured embossing/small carving omitted. CPU only; independent gallery and live-game acceptance pending."
-  },
-  "v7DecodedCpuEvidence": {
-    "bounds": {
-      "min": [
-        -19.03947639465332,
-        -3.356933575560106e-07,
-        -12.756148338317871
-      ],
-      "max": [
-        11.436458587646484,
-        24.219999313354492,
-        18.501296997070312
-      ]
-    },
-    "roofFaces": 85,
-    "roofCoverageSamples": 5019,
-    "roofCoverageFailures": [],
-    "sourceAssemblyGlassProbes": 10,
-    "towerGlassProbes": 18,
-    "recessProbes": 6,
-    "firstHitGlassProbes": 32,
-    "triangles": 27071,
-    "bytes": 320776,
-    "scope": "CPU geometry/export preflight only; gallery/game acceptance pending",
-    "sha256": "e4d04deb037b5713b731e0a4dbda511a16f9d1c1c9fea5ea76b1759771df174a"
-  },
-  "failedRecessEvidence": [
-    "artifacts/keizersgrachtkerk/builder-v6-failed-pointed-recess.ts",
-    "artifacts/keizersgrachtkerk/keizersgrachtkerk-v6-failed-pointed-recess.glb"
-  ]
+  }
 }

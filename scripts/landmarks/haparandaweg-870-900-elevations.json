@@ -1,0 +1,30 @@
+{
+  "id": "haparandaweg-870-900",
+  "source": "Gemeente Amsterdam panoramas (CC BY 4.0), rectified to 50 px/m: NW front TMX7316010203-002216_pano_0002_000283 (2021, 15 m) = artifacts/haparandaweg/ref/0363100012243309/front.jpg; SE side TMX7316010203-002057_pano_0000_000342 (2021, 8 m, obliquity 31 deg) = ref/NL.IMBAG.Pand.0363100012243309/wall-140-0.jpg",
+  "countedBy": "Claude Sonnet 5.5 (Haparandaweg rebuild lane), 2026-10-10, from the rectified photos (SE side counted before it was modelled; the NW front already existed and was counted from the photo afterwards). NOT a blind count. Rule: one opening = a run of glass whose bars/mullions are narrower than 0.4 m (the gate closes such gaps); a double-height field with a thin transom is one opening.",
+  "facades": [
+    {
+      "name": "NW street front",
+      "bearing": 320,
+      "depthBand": 1.5,
+      "rows": [3, 3, 3, 3, 3, 3, 3, 3, 3],
+      "columns": 3,
+      "symmetric": false,
+      "gables": 0,
+      "photo": "artifacts/haparandaweg/ref/0363100012243309/front.jpg",
+      "note": "Photo: ground floor + 8 storeys; every band has a left window group, a central recessed balcony / entrance bay and a right window group (3 per row). The 3 m lift stub 2.2 m behind the parapet (3DBAG panel at 31.9 m) is invisible from the street (hidden by the parapet from 15 m), so depthBand 1.5 excludes it."
+    },
+    {
+      "name": "SE side (beige render block)",
+      "bearing": 140,
+      "depthBand": 4,
+      "openings": ["glassS"],
+      "rows": [2, 2, 2, 2, 1],
+      "columns": 4,
+      "symmetric": false,
+      "gables": 1,
+      "photo": "artifacts/haparandaweg/ref/NL.IMBAG.Pand.0363100012243309/wall-140-0.jpg",
+      "note": "Photo (14 m of beige render, 4 storeys, x 0-702 px): ground floor = glazed bay left (3 panes + narrow one) and glazed door/blind bay right (door panels 37, 39/41, 43 are not glass); first floor = 4-pane window band left and a balcony door + two roller blinds right (blinds are not glass); second and third floors = two storeys of 4-pane windows left and right, each pair separated only by a thin transom (<0.4 m) that the gate closes, so each storey counts one run per bay; on top a set-back roof storey (2.9 m behind) with two large windows, which merge into one run. 4 axes: left bay (window runs, centre x ~148 px), set-back roof windows (x ~355), the balcony-door bay of the first floor (x ~443) and the right bay (x ~542-565). One peak: the set-back roof storey is a box 3 m above the parapet."
+    }
+  ]
+}

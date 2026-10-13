@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-05",
+  "scope": "Bounded cached-photo review of Amsta de Poort, Rembrandt tower, Mondriaan tower and Amsterdam Pipe Museum; Heineken preserved explicitly. Other call sites remain unreviewed.",
+  "policy": "Names belong in map labels; retain only source-supported real defining architectural signage fitted to actual panel and wall plane.",
+  "inventory": "artifacts/landmarks/signage-audit/sign-call-inventory.json",
+  "privateEvidencePolicy": "Original third-party photos remain in private source archive or local cache; only paths/checksums/observations are written here.",
+  "findings": [
+    {
+      "modelId": "amsta-de-poort",
+      "builder": "scripts/landmarks/amsta-de-poort-builder.ts",
+      "line": 112,
+      "text": [
+        "AMSTA DE POORT"
+      ],
+      "decision": "remove",
+      "basis": "real-but-not-defining",
+      "evidence": [
+        {
+          "path": "/Users/blackmad/Code/map-recall2-source-data/models/amsta-de-poort/files/amsta-de-poort-front.jpg",
+          "sha256": "c28271d161478ff6afd7fd2f59639ff5f9ae3341816be71d9c15bd5a3bc4624d",
+          "visualObservation": "Small AMSTA De Poort operator lettering is present on the low entrance canopy. Broad room-window strips, yellow spandrels, concrete bands, columns and projecting bays define the architecture.",
+          "provenance": "Private source manifest links this original to /tmp/amsta-de-poort-front.jpg; source URL for exact photograph is not recorded."
+        }
+      ],
+      "recommendation": "Remove name glyphs under the defining-architectural-sign policy; preserve entrance canopy geometry. Do not call this an invented sign.",
+      "confidence": "medium",
+      "geometryAcceptance": "pending root decision and current exported gallery/live check"
+    },
+    {
+      "modelId": "rembrandt-tower",
+      "builder": "scripts/landmarks/amstel-towers-builders.ts",
+      "line": 105,
+      "text": [
+        "REMBRANDT"
+      ],
+      "decision": "remove",
+      "basis": "unsupported-identification-lettering",
+      "evidence": [
+        {
+          "path": "/private/tmp/rembrandt-primary.jpg",
+          "sha256": "a3ff86ec3f21236e9e444625e898c48af4bfcb7e3a93d7bc4b984638f5162500",
+          "visualObservation": "Tower/current-context photograph supports silhouette, glazing and crown; it does not establish modeled REMBRANDT entrance lettering. Low facade is partly obscured by trees/context.",
+          "provenance": "Cached original; exact URL/retrieval date not bound to this cache in available model manifest."
+        }
+      ],
+      "recommendation": "Remove unsupported entrance name glyphs; preserve the portico and glass. Absence in this photograph does not prove no real name sign exists on another face.",
+      "confidence": "medium",
+      "geometryAcceptance": "pending root decision and current exported gallery/live check"
+    },
+    {
+      "modelId": "mondriaan-tower",
+      "builder": "scripts/landmarks/amstel-towers-builders.ts",
+      "line": 138,
+      "text": [
+        "MONDRIAAN"
+      ],
+      "decision": "remove",
+      "basis": "unsupported-identification-lettering",
+      "evidence": [
+        {
+          "path": "/private/tmp/mondriaan-primary.jpg",
+          "sha256": "09d76d6e4df81a7892508c5b9610c9a136075cc5d91c9d5e865a430129a6542e",
+          "visualObservation": "Historical/context view visibly has delta lloyd lettering high on the tower. It does not support modeled low entrance MONDRIAAN lettering. Ground entrance is distant/partly occluded.",
+          "provenance": "Cached original; date and exact URL unknown. Historical tenant lettering is not an instruction to add delta lloyd."
+        }
+      ],
+      "recommendation": "Remove unsupported MONDRIAAN glyphs while preserving canopy/massing. Do not infer current tenant signage from this historical reference.",
+      "confidence": "medium",
+      "geometryAcceptance": "pending root decision and current exported gallery/live check"
+    },
+    {
+      "modelId": "amsterdam-pipe-museum",
+      "builder": "scripts/landmarks/canal-collection-builders.ts",
+      "line": 52,
+      "text": [
+        "PIPE",
+        "MUSEUM",
+        "PIPESHOP"
+      ],
+      "decision": "hold",
+      "basis": "real-entrance-panels-defining-status-unresolved",
+      "evidence": [
+        {
+          "path": "/private/tmp/pipe-ref.jpg",
+          "sha256": "8df3410eb92595de14e1316ca505896ffeea25be5266761c5c2d03213b4d545d",
+          "visualObservation": "White pipeMUSEUM panel is attached to the entrance stoop railing; PIPESHOP is visible over the basement shop aperture. Museum branding is visible in the original, rather than invented facade lettering.",
+          "provenance": "Cached museum-branded original with pipemuseum.nl watermark. Exact URL/date not recorded; no matching original image in current private model pack."
+        }
+      ],
+      "recommendation": "Do not classify as invented identification words. Root must decide whether this small entrance-panel identity is a defining architectural feature; if retained, review actual panel/rail plane and fit. Existing PIPE/MUSEUM two-line simplification differs from the photographed one-line branding.",
+      "confidence": "high for physical sign existence; unresolved for keep policy",
+      "geometryAcceptance": "pending defining-sign decision and panel fit review"
+    },
+    {
+      "modelId": "heineken-experience-amsterdam",
+      "builder": "scripts/landmarks/heineken-builder.ts",
+      "line": 38,
+      "additionalLines": [
+        51
+      ],
+      "text": [
+        "HEINEKEN BROUWERIJ"
+      ],
+      "decision": "keep",
+      "basis": "explicit-user-preservation",
+      "evidence": [],
+      "recommendation": "Retain user-explicit Heineken exception. This audit did not re-review the historical Heineken photo or panel fit.",
+      "confidence": "explicit instruction",
+      "geometryAcceptance": "unchanged; not re-reviewed"
+    }
+  ],
+  "pending": [
+    "Root approval of concrete removals and hold decisions",
+    "Re-export changed models and refresh current asset fingerprints/bundles",
+    "Gallery/native and actual live-game review of affected meshes",
+    "Archive cache-only photo evidence privately if subsequently used for model changes"
+  ],
+  "coordinatorDecision": {
+    "date": "2026-10-06",
+    "removedFromBuilderDrafts": [
+      "AMSTA DE POORT",
+      "REMBRANDT",
+      "MONDRIAAN",
+      "PIPE",
+      "MUSEUM",
+      "PIPESHOP"
+    ],
+    "scope": "Omit nondefining identification words; preserve source-supported canopy/panel geometry. Amsta lettering is real, not invented. Tower source coverage remains limited.",
+    "publication": "Meshes not yet replaced; native review and source sync pending",
+    "otherSigns": "Heineken retained; Pipe small real identity words removed under user threshold, panels preserved. Bookshop source-supported fascia lettering thinner; remaining inventory under review."
+  }
+}

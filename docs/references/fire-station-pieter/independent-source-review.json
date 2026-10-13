@@ -1,0 +1,132 @@
+{
+  "reviewedOn": "2026-10-09",
+  "reviewer": "independent source/CPU failure-seeking worker",
+  "sourceCommit": "2a64da08c7bb126572c59ac270af4d64ea156d99",
+  "acceptance": "Conditional scoped visual pass after correction; do not mark complete before root performance/publication gates",
+  "method": "Read recipe, builder, spec, footprints, POI and review plan; inspect archived original panorama and derived crops against isolated CPU images. No GPU/browser used. Geometry test passes are not visual acceptance.",
+  "requiredPending": [
+    "Root desktop/touch camera-pan performance and ordinary facade retention acceptance",
+    "Root source-correction archive publication and final release checks"
+  ],
+  "id": "fire-station-pieter",
+  "meshEvidence": {
+    "publicGlb": "public/canal-drive/models/fire-station-pieter.glb",
+    "publicSha256": "47503a2b783a42e4b258d72499679243e33f8c7856cbeed18e7dc927cb995847",
+    "cpuDraftGlb": "artifacts/fire-station-pieter/fire-station-pieter.glb",
+    "draftSha256": "b12a373bcb7fc1b8af2ed7d8baacec311d51ee3257c2e03e70644bbdc7efd968",
+    "limitation": "CPU images decode draft export; public export has different bytes. Root reports same native geometry with generator material ordering/compression; exact public visual check remains pending."
+  },
+  "state": "Repaired visual/source scope passes saved GPU review; final completion pending root performance/publication",
+  "sourcesInspected": [
+    "raw/recording_2025-08-01_09-43-20_00197.jpg",
+    "processed/recording_2025-08-01_09-43-20_00197.jpg",
+    "processed/recording_2025-08-01_09-43-20_00191.jpg",
+    "processed/b_20241029_0853_Track37_Sphere_00006.jpg",
+    "raw/osm-map.xml"
+  ],
+  "rendersInspected": [
+    "artifacts/fire-station-pieter/fire-station-pieter-cpu-southeast.png",
+    "artifacts/fire-station-pieter/fire-station-pieter-cpu-northwest.png"
+  ],
+  "recognition": [
+    "Five red glazed bays north of projecting watch-room",
+    "Beige concrete/brick, continuous white facade ribbon and narrow slots",
+    "Setback glazed top room with gray lower panels",
+    "Surveyed8.4/11.6/14.4m roof hierarchy"
+  ],
+  "findings": [
+    {
+      "severity": "source scope uncertainty blocking acceptance",
+      "feature": "Immediate south neighbor and reference attribution",
+      "evidence": "Original2025 panorama shows seven red doors across frontage: five north of watch-room, two south. Raw OSM identifies separate abutting south parent0363100012088592 / w276218420 named Reddingsbrigade Amsterdam at lat52.3486693\u201352.3487708. Main parent0363100012088589 starts ~52.348765. The2024 south-end reference camera at52.348568 faces through this south neighbor before reaching main station.",
+      "recommendation": "Do not put all seven doors into main footprint. Verify south pair belong retained south parent. Check whether modeled main south balcony was inferred from neighbor facade; compare source roof43/native perimeter and current context. Live review must retain south parent as well as west neighbor."
+    },
+    {
+      "severity": "superseded reviewer inference",
+      "feature": "Two additional doors missing from main mesh",
+      "evidence": "Initial panorama-only comparison inferred missing two bays; raw OSM proved a separate immediate south parent, invalidating direct addition to main.",
+      "recommendation": "Preserve this failed inference and resolve ownership; five bays on main may be correct."
+    },
+    {
+      "severity": "bounded simplification",
+      "feature": "Operator sign",
+      "evidence": "Source-visible bold sans BRANDWEER lettering modeled with approximate Arial Bold; placement follows real white panel.",
+      "recommendation": "Accept approximate family only after native-scale public render confirms fit/readability. Small operator subtitle omitted."
+    }
+  ],
+  "frontOrientation": {
+    "mainEastEdge": "nativeRing[4] to nativeRing[6]; outward approximately east",
+    "eastCamera": [
+      4.84385467033181,
+      52.34883957263572
+    ],
+    "southCamera": [
+      4.843591995918549,
+      52.348568139793
+    ],
+    "southCameraWarning": "South reference sees outer facade of adjoining south parent; cannot alone establish main south facade."
+  },
+  "neighborParents": {
+    "southAbutting": {
+      "bag": "0363100012088592",
+      "osm": "w276218420",
+      "sourceName": "Reddingsbrigade Amsterdam",
+      "mustRetain": true
+    },
+    "west": {
+      "bag": "0363100012227555",
+      "osm": "w276218466",
+      "mustRetain": true
+    }
+  },
+  "limitations": [
+    "West/rear windows approximate",
+    "South balcony inset2m approximate; source attribution unresolved",
+    "2025 foliage partly occludes facade; current clear east crop omits two neighboring south bays",
+    "Beeldbank JavaScript shell and null municipal dossier are explicit access gaps"
+  ],
+  "finalVisualReview": {
+    "reviewedOn": "2026-10-09",
+    "state": "Scoped source/gallery/live visual review passes after correction; root performance and final publication gates remain pending",
+    "publicSha256": "b5e22ca8fc13de129b3c4a325e1261f24dea9bb8ae19f0349a541ca2ecd3607c",
+    "publicBytes": 100568,
+    "receivedAssetMatchesPublic": true,
+    "gpuEvidenceOwner": "Root GPU worker; independent reviewer only inspected saved screenshots/proofs, launched no browser",
+    "screenshotsInspected": [
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/gallery.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/gallery-angle-0.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/gallery-angle-1.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/gallery-angle-2.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/gallery-angle-3.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/live-front.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/neutral-front.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/live-rear.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/disabled-fallback.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/failed-load-fallback.png"
+    ],
+    "proofsInspected": [
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/received-asset-native.json",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/received-asset-gallery.json",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/placement-proof.json",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/opposite-placement-proof.json",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/physical-card-proof.json",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/disabled-fallback-proof.json",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter/failed-load-fallback-proof.json"
+    ],
+    "findings": [
+      "Previous south source misattribution corrected: main mesh retains five red glazed east bays, watchroom, white ribbon and setback top glazing; invented south-neighbor balcony/ground door/windows removed. Full native roof43 wall restored.",
+      "All four gallery rotations preserve beige stepped silhouette and exposed main frontage assemblies. Blank south party boundary is valid because source identifies a physically abutting independent parent; no invented openings requested.",
+      "Native/opposite game views preserve both south0363100012088592 and west0363100012227555 resident drawable neighbors. South neighbor uses ordinary fallback, so its source-visible two red doors are not custom modeled by this scoped asset. Main scope/suppression stays correct.",
+      "Exact BAG0363100012088589 alone hidden; disabled/failed-load images restore ordinary main shell. Physical click selected genuine n8334401440 card; geographic entrance pin visible and route arrival matches pin.",
+      "Approximate Arial Bold BRANDWEER sign stays within source panel and follows wall plane in front rotation; five door/glazed-row rhythm and narrow-slot ribbon remain legible."
+    ],
+    "pending": [
+      "Root desktop/touch camera-pan performance and ordinary facade retention acceptance",
+      "Root source-correction archive publication and final release checks"
+    ],
+    "limitations": [
+      "Saved live cameras are elevated map views rather than a ground-level source-camera replica; trees and selection highlight obscure parts of facade, neutral view inspected separately.",
+      "Approximate rear opening rhythm and deliberately omitted fine details remain explicitly bounded."
+    ]
+  }
+}

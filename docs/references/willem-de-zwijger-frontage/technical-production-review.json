@@ -180,7 +180,7 @@
     {
       "id": "large-painted-emblem-clearance",
       "decision": "technical-defect-source-paint-interpretation",
-      "reason": "Large hall vector emblem is planar but4.6–12.7cm above corrugated-wall backing; it reads as a floating sheet rather than actual painted mural. Conform original vector geometry to shallow corrugation backing or provide source-supported flush carrier. Small black-panel emblem clearance7–27mm remains a technical limitation for true sticker interpretation."
+      "reason": "Large hall vector emblem is planar but4.6\u201312.7cm above corrugated-wall backing; it reads as a floating sheet rather than actual painted mural. Conform original vector geometry to shallow corrugation backing or provide source-supported flush carrier. Small black-panel emblem clearance7\u201327mm remains a technical limitation for true sticker interpretation."
     }
   ],
   "preservedFailure": {
@@ -382,7 +382,7 @@
         {
           "id": "large-painted-emblem-clearance",
           "decision": "technical-defect-source-paint-interpretation",
-          "reason": "Large hall vector emblem is planar but4.6–12.7cm above corrugated-wall backing; it reads as a floating sheet rather than actual painted mural. Conform original vector geometry to shallow corrugation backing or provide source-supported flush carrier. Small black-panel emblem clearance7–27mm remains a technical limitation for true sticker interpretation."
+          "reason": "Large hall vector emblem is planar but4.6\u201312.7cm above corrugated-wall backing; it reads as a floating sheet rather than actual painted mural. Conform original vector geometry to shallow corrugation backing or provide source-supported flush carrier. Small black-panel emblem clearance7\u201327mm remains a technical limitation for true sticker interpretation."
         }
       ],
       "preservedFailure": {
@@ -414,7 +414,7 @@
       "changes": [
         "Tall hall entrance at native z57 now carries CrossFit/AKA on actual exposed glass with4mm clearance; door mullions finish below uninterrupted sign transom.",
         "Padel lower storefront at z72 terminates below source fascia.",
-        "Padel/Beest use separate shallow local concrete fascia fields at Y3.46–4.15, with vector letters4mm proud. No full-wing opaque carrier introduced."
+        "Padel/Beest use separate shallow local concrete fascia fields at Y3.46\u20134.15, with vector letters4mm proud. No full-wing opaque carrier introduced."
       ],
       "signChecks": [
         {
@@ -888,7 +888,7 @@
         }
       ],
       "method": "Sample actual decoded triangle centroids and20%,50%,80% edge points inset1% to triangle centroid. Cast toward exact decoded non-unlit structural backing. Negative gap greater than1mm identifies burial. No sourcepositions used for this check.",
-      "reason": "16-bit precision repairs the word fields, which have strictly positive2.06–5.82mm near-edge backing gaps. Thin emblem patches still move across discontinuous cladding boundaries: cyan two centroid samples and24–33 near-edge samples per logo color remain behind adjacent outward folds.",
+      "reason": "16-bit precision repairs the word fields, which have strictly positive2.06\u20135.82mm near-edge backing gaps. Thin emblem patches still move across discontinuous cladding boundaries: cyan two centroid samples and24\u201333 near-edge samples per logo color remain behind adjacent outward folds.",
       "archivePath": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/failed-production-16bit-fold-attachment",
       "requiredRepair": "Retain float32 POSITION for Beest production while keeping meshopt compression and supported normal/reorder optimizations. Then recheck exact decoded attachment."
     },
@@ -1357,12 +1357,5 @@
       "KHR_materials_unlit",
       "KHR_mesh_quantization"
     ]
-  },
-  "releaseCheckpoint": {
-    "sourceRepository": "blackmad/map-recall2-source-data",
-    "sourceCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
-    "sourcePath": "models/beest-boulders/",
-    "userDiagnosticRenderApproval": "2026-10-06; commit/push explicitly authorized",
-    "actualGameplayReview": "pending; prior failure evidence preserved"
   }
 }

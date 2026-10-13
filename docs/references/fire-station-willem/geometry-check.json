@@ -1,0 +1,173 @@
+{
+  "bounds": {
+    "min": [
+      -47.79335021972656,
+      -7.629394360719743e-08,
+      -5.511404991149902
+    ],
+    "max": [
+      46.70937728881836,
+      22.29450035095215,
+      116.64016723632812
+    ]
+  },
+  "panes": 347,
+  "samples": 1388,
+  "upwardRoofFaces": 535,
+  "failures": [],
+  "rooflightExposure": [
+    {
+      "part": 492,
+      "samples": 15,
+      "visible": 15,
+      "blocked": []
+    },
+    {
+      "part": 493,
+      "samples": 9,
+      "visible": 9,
+      "blocked": []
+    },
+    {
+      "part": 495,
+      "samples": 15,
+      "visible": 15,
+      "blocked": []
+    },
+    {
+      "part": 505,
+      "samples": 9,
+      "visible": 9,
+      "blocked": []
+    },
+    {
+      "part": 508,
+      "samples": 18,
+      "visible": 18,
+      "blocked": []
+    },
+    {
+      "part": 509,
+      "samples": 15,
+      "visible": 15,
+      "blocked": []
+    },
+    {
+      "part": 515,
+      "samples": 12,
+      "visible": 12,
+      "blocked": []
+    },
+    {
+      "part": 517,
+      "samples": 15,
+      "visible": 15,
+      "blocked": []
+    },
+    {
+      "part": 518,
+      "samples": 12,
+      "visible": 12,
+      "blocked": []
+    },
+    {
+      "part": 521,
+      "samples": 6,
+      "visible": 6,
+      "blocked": []
+    },
+    {
+      "part": 522,
+      "samples": 15,
+      "visible": 15,
+      "blocked": []
+    },
+    {
+      "part": 523,
+      "samples": 30,
+      "visible": 30,
+      "blocked": []
+    },
+    {
+      "part": 530,
+      "samples": 12,
+      "visible": 12,
+      "blocked": []
+    },
+    {
+      "part": 533,
+      "samples": 21,
+      "visible": 21,
+      "blocked": []
+    },
+    {
+      "part": 534,
+      "samples": 12,
+      "visible": 12,
+      "blocked": []
+    },
+    {
+      "part": 537,
+      "samples": 12,
+      "visible": 12,
+      "blocked": []
+    },
+    {
+      "part": 544,
+      "samples": 12,
+      "visible": 12,
+      "blocked": []
+    },
+    {
+      "part": 545,
+      "samples": 18,
+      "visible": 18,
+      "blocked": []
+    },
+    {
+      "part": 546,
+      "samples": 24,
+      "visible": 24,
+      "blocked": []
+    },
+    {
+      "part": 551,
+      "samples": 30,
+      "visible": 30,
+      "blocked": []
+    },
+    {
+      "part": 552,
+      "samples": 27,
+      "visible": 27,
+      "blocked": []
+    },
+    {
+      "part": 559,
+      "samples": 15,
+      "visible": 15,
+      "blocked": []
+    },
+    {
+      "part": 561,
+      "samples": 42,
+      "visible": 42,
+      "blocked": []
+    },
+    {
+      "part": 562,
+      "samples": 33,
+      "visible": 33,
+      "blocked": []
+    }
+  ],
+  "solarPanels": 125,
+  "solarFailures": [],
+  "roofFrames": 497,
+  "solarSupportSamples": 625,
+  "unsupportedSolar": [],
+  "frameExposure": {
+    "samples": 497,
+    "visible": 495
+  }
+}

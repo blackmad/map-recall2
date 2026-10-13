@@ -1,12 +1,8 @@
 {
-  "id": "extract_landmarks_417591223",
+  "modelId": "torture-museum",
+  "landmarkId": "extract_landmarks_417591223",
   "name": "Torture Museum",
-  "lat": 52.3672872,
-  "lng": 4.8906653,
-  "funFact": "The museum has operated since 1985. Its exhibition uses more than forty instruments and explanatory engravings to discuss punishment and sentencing in medieval Europe, with historical notes in eight languages.",
-  "sourceUrls": [
-    "https://torturemuseum.org/"
-  ],
-  "preserveExistingWikipedia": true,
-  "note": "Operator describes display scope; do not claim every exhibited device is historically authentic. Preserve current researched caveat about invented/rare devices."
+  "description": "The Torture Museum stands on the Singel near the Bloemenmarkt, in a narrow brick canal house with a dark glass shopfront. It exhibits historical instruments of torture, though like many such museums it also shows devices that were seldom or never used in real history, such as the iron maiden, a literary invention of the 19th century.",
+  "funFact": "The Daily Telegraph called it one of the world's most unusual museums. It is not connected with the separate Museum of Medieval Torture Instruments elsewhere in Amsterdam.",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Torture_Museum,_Amsterdam"
 }

@@ -1,0 +1,138 @@
+{
+  "modelId": "fire-station-dirk",
+  "status": "worker-geometry-pass-root-visual-pending",
+  "pin": [
+    4.8859778711706,
+    52.35790109098007
+  ],
+  "routeFinish": [
+    4.885995529486836,
+    52.35788662010506
+  ],
+  "clickLocal": [
+    4.614292629399257,
+    2.6,
+    7.064503063221906
+  ],
+  "sourceViews": [
+    {
+      "camera": [
+        4.88599143534972,
+        52.357810582985394
+      ],
+      "altitudeMetres": 2.0,
+      "timestamp": "2025-09-29T09:04:52Z",
+      "panoramaId": "recording_2025-09-29_08-09-56_01639",
+      "privateReference": "models/fire-station-dirk/processed/recording_2025-09-29_08-09-56_01639.jpg",
+      "target": [
+        4.8859778711706,
+        52.35790109098007
+      ],
+      "viewerUrl": "https://data.amsterdam.nl/"
+    },
+    {
+      "camera": [
+        4.886266093199827,
+        52.35799229128535
+      ],
+      "altitudeMetres": 2.0,
+      "timestamp": "2025-09-29T09:04:33Z",
+      "panoramaId": "recording_2025-09-29_08-09-56_01632",
+      "privateReference": "models/fire-station-dirk/processed/recording_2025-09-29_08-09-56_01632.jpg",
+      "target": [
+        4.8859778711706,
+        52.35790109098007
+      ],
+      "viewerUrl": "https://data.amsterdam.nl/"
+    }
+  ],
+  "higherSourceCamera": {
+    "lnglat": [
+      4.886248455038646,
+      52.357680102813575
+    ],
+    "altitudeMetres": 20,
+    "target": [
+      4.8859778711706,
+      52.35790109098007
+    ]
+  },
+  "oppositeCamera": {
+    "lnglat": [
+      4.885606873526188,
+      52.35819833919009
+    ],
+    "altitudeMetres": 10,
+    "target": [
+      4.88591,
+      52.357965
+    ],
+    "note": "Northwest rear sits next to retained school; context occlusion expected. Rear row photo detail remains bounded reconstruction."
+  },
+  "neighborRetention": [
+    {
+      "bagId": "0363100012153592",
+      "osmIds": [
+        "NL.IMBAG.Pand.0363100012153592",
+        "w277216561"
+      ],
+      "mustRemainVisible": true
+    },
+    {
+      "bagId": "0363100012165275",
+      "osmIds": [
+        "NL.IMBAG.Pand.0363100012165275",
+        "w277216595"
+      ],
+      "mustRemainVisible": true
+    },
+    {
+      "bagId": "0363100012233523",
+      "osmIds": [
+        "NL.IMBAG.Pand.0363100012233523",
+        "w44508821"
+      ],
+      "mustRemainVisible": true
+    }
+  ],
+  "requiredChecks": [
+    "Compare Honthorst three arches/eight upper windows/paired wing windows/step-gable families to2025source.",
+    "Compare Hobbemakade side low bay and roof silhouette.",
+    "Exact loaded suppression includes ordinary and pyramidal layers, restore on disable/load failure.",
+    "Native gallery high view and4lower rotations; live game both source sides with retained school/canal opposite blocks.",
+    "Actual route to explicit Dirk destination, geographic manual pin/label, physical facade clicking useful researched card.",
+    "Desktop/touch stationary-rider camera pan; startup/frame evidence."
+  ],
+  "workerChecks": {
+    "triangles": 16474,
+    "bytes": 229688,
+    "textures": 0,
+    "paneProbes": 420,
+    "paneFailures": 0,
+    "upwardRoofFaces": 26,
+    "decodedSlopedRoofFaces": 24,
+    "draftSha256": "e705cf3082840d33f8b5086d1cb50f6897eeb2889702e8ce5f69d561e8307f6f"
+  },
+  "failedEvidence": [
+    {
+      "state": "corrected-before-export",
+      "finding": "Preliminary -Z frontage inference rejected using OSM road network and2025 panorama."
+    },
+    {
+      "state": "corrected",
+      "finding": "Initial CPU wing hips ridge ran along short frontage; corrected ridge down long wing depth."
+    },
+    {
+      "state": "corrected",
+      "finding": "One lantern intersected upper-pane ray. Lowered assembly below sill;408probes now pass."
+    },
+    {
+      "state": "corrected-draft-awaits-native-review",
+      "finding": "Independent source/CPU comparison found pale frames and short brown dormers. Fixed darker stone surrounds and pale pointed dormer family."
+    },
+    {
+      "state": "corrected-draft-awaits-native-review",
+      "finding": "AHN5 roof surfaces131/132 exposed missing raised rear stair tower. Added supported native original volume and flat coped roof."
+    }
+  ]
+}

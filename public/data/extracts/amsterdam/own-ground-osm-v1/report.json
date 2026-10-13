@@ -1,0 +1,75 @@
+{
+  "nassaukade": {
+    "ways": 2205,
+    "areas": 440,
+    "counts": {
+      "way:pedestrian": 84,
+      "way:steps": 80,
+      "way:footway": 556,
+      "way:cycleway": 376,
+      "area:park": 223,
+      "way:residential": 533,
+      "way:primary": 42,
+      "way:service": 89,
+      "way:unclassified": 82,
+      "way:living_street": 3,
+      "way:tertiary": 162,
+      "way:secondary": 69,
+      "way:construction": 1,
+      "way:path": 16,
+      "area:square": 21,
+      "area:grass": 150,
+      "way:platform": 18,
+      "area:parking": 27,
+      "way:busway": 89,
+      "area:wood": 10,
+      "area:paved": 9,
+      "way:corridor": 5
+    },
+    "tagCoverage": {
+      "width": 304,
+      "sidewalk": 552,
+      "cycleway": 155,
+      "lanes": 487
+    },
+    "bytes": 719231,
+    "osmBase": "2026-10-09T22:01:35Z"
+  },
+  "leidsegracht": {
+    "ways": 2741,
+    "areas": 431,
+    "counts": {
+      "way:pedestrian": 232,
+      "way:footway": 821,
+      "area:park": 187,
+      "way:cycleway": 321,
+      "way:residential": 727,
+      "way:unclassified": 89,
+      "way:service": 82,
+      "way:tertiary": 132,
+      "way:path": 11,
+      "way:living_street": 1,
+      "way:primary": 66,
+      "way:steps": 88,
+      "way:secondary": 27,
+      "way:construction": 1,
+      "area:square": 89,
+      "way:tertiary_link": 2,
+      "area:grass": 95,
+      "way:platform": 9,
+      "area:paved": 21,
+      "way:busway": 131,
+      "area:parking": 27,
+      "area:wood": 12,
+      "way:elevator": 1
+    },
+    "tagCoverage": {
+      "width": 248,
+      "sidewalk": 691,
+      "cycleway": 353,
+      "lanes": 461
+    },
+    "bytes": 889044,
+    "osmBase": "2026-10-09T22:01:35Z"
+  }
+}

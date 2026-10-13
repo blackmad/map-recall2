@@ -1,0 +1,43 @@
+{
+  "modelId": "amsterdam-pipe-museum",
+  "reviewedOn": "2026-10-06",
+  "scope": "Existing PIPE, MUSEUM and PIPESHOP glyph calls only; retain entrance-panel and storefront geometry.",
+  "policy": "Only source-supported signage that is a defining architectural feature warrants modeled words; user further requires supermajor signage.",
+  "decision": "remove-lettering-retain-panels",
+  "reason": "The inspected full-height original shows a small rail-mounted pipeMUSEUM identity placard and small basement PIPESHOP lettering. The signs identify the premises but do not dominate or define the canal-house composition; no exception to the lettering policy is warranted.",
+  "evidence": [
+    {
+      "path": "/private/tmp/pipe-ref.jpg",
+      "sha256": "8df3410eb92595de14e1316ca505896ffeea25be5266761c5c2d03213b4d545d",
+      "inspection": "Original image inspected using view_image; full-height oblique street facade includes raised entrance, stoop railing placard and basement shop fascia.",
+      "observations": [
+        "A white pipeMUSEUM panel is attached to the front stoop railing; the photographed branding occupies one line, unlike the previous PIPE/MUSEUM two-line simplification.",
+        "PIPESHOP lettering appears at the basement shop aperture beneath the raised entrance/window tier.",
+        "The real panel, rail, raised entrance and basement storefront remain architectural geometry even when lettering is deliberately simplified away."
+      ],
+      "attributionVisible": "Amsterdam Pipe Museum / www.pipemuseum.nl watermark",
+      "exactSourceUrl": null,
+      "photographDate": null,
+      "retrievalDate": null,
+      "reuseTerms": "Unknown; watermark is attribution evidence, not a reuse licence.",
+      "archiveState": "Cached original is readable in /private/tmp and matches signage audit checksum. No matching original image appears in the inspected private models/amsterdam-pipe-museum manifest/files; source archival remains pending."
+    }
+  ],
+  "relatedSourceUrls": [
+    "https://pipemuseum.nl/en/article/de-geschiedenis-van-het-pijpenkabinet-van-particuliere-collectie-tot-nationaal-museum",
+    "https://pipemuseum.nl/en/visit"
+  ],
+  "sourceUrlCaveat": "Existing research links provide model provenance; neither is claimed as the exact URL of the inspected cached photograph.",
+  "builderChange": {
+    "path": "scripts/landmarks/canal-collection-builders.ts",
+    "removedText": ["PIPE", "MUSEUM", "PIPESHOP"],
+    "preserved": ["White entrance rail panel", "Dark basement fascia", "Shop aperture", "Raised entrance", "Steps and railing", "All other model geometry"]
+  },
+  "acceptance": {
+    "sourcePolicyReview": "completed",
+    "exportedMeshReview": "pending coordinator export",
+    "independentVisualReview": "pending",
+    "galleryAndLiveGame": "pending; native browser currently unavailable",
+    "sourceArchiveSync": "pending; private archive read-only in current session"
+  }
+}

@@ -18,7 +18,7 @@ const extras=extract.flatMap((f:any)=>{
   if(seen.has(key)||(!f.manualPoi&&km(p,city.center)>4))return[];
   seen.add(key);return[p];
 }).sort((a:any,b:any)=>b.prominence-a.prominence);
-const requests=['Silodam','Embassy of the Free Mind','OLVG West','OLVG Oost','A’DAM Tower','Pontsteiger','REM-eiland','Paradiso','Melkweg','Amsterdam Centraal station complex','RAI Amsterdam','Amstel Hotel','Rembrandt Tower','Breitner Tower','Mondriaan Tower','De Piramides','Valley','Viñoly','The Rock','Symphony','World Trade Center Amsterdam','Westergasfabriek','Zuiveringshal','Machinegebouw','Transformatorhuis','Westergastheater','Blauwe Theehuis','Groot Melkhuis','VondelCS','Vondeltuin','Kinderkookkafé','Beest Boulders','Monk Amsterdam','Het Lab','Beta Boulders','Klimmuur Centraal','Mountain Network Amsterdam','Klimhal Amsterdam','Beest Boulders Het Lab','Amsterdam Sloterdijk station','HNK Amsterdam Sloterdijk','Amsta De Poort','Podium Mozaïek','Dorus Theus Brug'];
+const requests=["Silodam", "Embassy of the Free Mind", "OLVG West", "OLVG Oost", "A’DAM Tower", "Pontsteiger", "REM-eiland", "Paradiso", "Melkweg", "Amsterdam Centraal station complex", "RAI Amsterdam", "Amstel Hotel", "Rembrandt Tower", "Breitner Tower", "Mondriaan Tower", "De Piramides", "Valley", "Viñoly", "The Rock", "Symphony", "World Trade Center Amsterdam", "Westergasfabriek", "Zuiveringshal", "Machinegebouw", "Transformatorhuis", "Westergastheater", "Blauwe Theehuis", "Groot Melkhuis", "VondelCS", "Vondeltuin", "Kinderkookkafé", "Beest Boulders", "Monk Amsterdam", "Het Lab", "Beta Boulders", "Klimmuur Centraal", "Mountain Network Amsterdam", "Klimhal Amsterdam", "Beest Boulders Het Lab", "Amsterdam Sloterdijk station", "HNK Amsterdam Sloterdijk", "Amsta De Poort", "Podium Mozaïek", "Dorus Theus Brug", "MidWest", "Sea Palace", "Odessa", "Club Panama", "RAUM", "Lofi", "Tilla Tec", "The Eagle", "Parallel", "Toekomstmuziek", "Garage Noord", "RADION", "The Web", "Club Church", "De Trut", "Zevenlandenhuizen"];
 // VondelCS was the AVROTROS-era name of the current IDFA pavilion, not
 // another destination. Cached alias proof: docs/references/vondelcs/alias-coverage.json;
 // https://www.grachtenfestival.nl/locatie/vondelparkpaviljoen (2014–2021).
@@ -43,7 +43,7 @@ function coverage(p:any){
   const featureId=p.id.replace(/^lm-/,'');
   // Missing POI identities must not match an ordinary model's empty landmarkId.
   const aliasId=aliases[p.id];
-  const model=SIGNATURE_MODELS.find(m=>(aliasId&&m.id===aliasId)||(featureId&&(m.landmarkId===featureId||m.relatedLandmarkIds?.includes(featureId)))||canon(m.name)===canon(p.name));
+  const model=SIGNATURE_MODELS.find(m=>(aliasId&&m.id===aliasId)||(featureId&&(m.landmarkId===featureId||m.relatedLandmarkIds?.includes(featureId)))||(!!canon(p.name)&&canon(m.name)===canon(p.name)));
   if(model)return {status:MANUAL_LANDMARKS.some(m=>m.id===model.id)?'manual-model':'catalogue-model',modelId:model.id};
   const kit=kits.find(k=>k.key&&k.key===canon(p.name));
   if(kit)return{status:'procedural-kit',kitName:kit.name};
@@ -81,7 +81,7 @@ for (const spec of MANUAL_LANDMARKS) {
 // Keep its teaching identity while making the asset task explicit for reviewers.
 const treatments:Record<string,{kind:string;note:string}>={
   'podium mozaiek':{kind:'building',note:'Model the former Pniëlkerk theatre building, preserving its venue identity and adjoining open spaces.'},
-  'dorus theus brug':{kind:'landscape',note:'User-confirmed Erasmusgracht water parklet: planted filter beds, stone rims and wooden walks. Verify the public entrance and preserve open water.'},
+  'dorus theus brug':{kind:'landscape',note:'User-confirmed Erasmusgracht water parklet (Helofytenfilter Erasmusgracht): retain filter beds, wooden walks and open water. Use the sourced southern public access for the route pin; do not replace it with a road bridge.'},
   'red light district':{kind:'area',note:'Treat the streets and canals as an area; individual buildings have their own queue entries.'},
   'canal ring area of amsterdam':{kind:'area',note:'Treat the canal ensemble; there is no single building to replace.'},
   'amsterdam':{kind:'area',note:'City-wide identity; choose a specific mapped place before authoring geometry.'},
@@ -99,9 +99,39 @@ const treatments:Record<string,{kind:string;note:string}>={
   'equestrian statue of queen wilhelmina':{kind:'memorial',note:'Author the horse, rider and pedestal at the mapped position.'},
   'plaquette 7 mei 1945':{kind:'memorial',note:'Use a small mapped wall plaque rather than replacing the host building.'},
 };
+// Reviewed triage of the pending queue (duplicates of installed models, organisations
+// without a building of their own, sculptures, areas). Requested venues stay open.
+const triage=JSON.parse(fs.readFileSync('scripts/landmarks/backlog-triage.json','utf8')).treatments as Record<string,{kind:string;note:string}>;
+for(const [name,task] of Object.entries(triage))treatments[normaliseAnswer(name)]??=task;
+// Statues and sculptural monuments are not boxes: they go to their own queue
+// for multi-image Gaussian splats / baked impostors (user, 2026-10-09), not to
+// the building builders. Flat plaques and stones stay `memorial`. Membership
+// is a reviewed name list; a lane may move an entry after looking at photos.
+const SCULPTURES=['de schreeuw','de dokwerker','equestrian statue of queen wilhelmina','monument indie nederland','anne frank','living by numbers',
+  'amsterdam memorial to the canadian liberators','de knoop','martin luther king','vondelmonument','rembrandtmonument','mama baranka moeder rots',
+  'ravensbruck memorial','samen spelen samen leven','thorbecke statue','kunstenaarsverzet','mahatma gandhi','sarphatimonument',
+  'monument voor gefusilleerde verzetstrijders','jewish ww2 resistance memorial','van buurenmonument','zigeunermonument hel en vuur',
+  'annick van hardeveld','p w janssen','monument walraven van hall','tranen','waterdraagster','de hongerwinter','albert','levensboom',
+  'nationaal monument slavernijverleden','koningin emma','simon carmiggelt','fusillade','multatuli','westerman monument','spanjemonument',
+  '1936 1939 no pasaran'];
+const sculptureNote='Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes.';
+for(const name of SCULPTURES)if(!treatments[name])treatments[name]={kind:'sculpture',note:sculptureNote};
+else treatments[name]={...treatments[name],kind:'sculpture'};
 for(const p of destinations){const task=treatments[normaliseAnswer(p.name)];
   if(task)Object.assign(p,{treatment:task.kind,taskNote:task.note});
   else Object.assign(p,{treatment:p.status==='landscape'?'landscape':p.status==='pending'&&!['museum','cinema','library','music venue'].includes((p as any).type)?'review':'building'});
+}
+// Installed assets remain in the inventory when new source evidence invalidates
+// their physical coverage. Show that failure beside the asset rather than
+// treating its presence as architectural acceptance.
+const workQueue=JSON.parse(fs.readFileSync('public/canal-drive/poi-work-queue.json','utf8'));
+for(const task of workQueue.tasks??[]){
+  if(task.status!=='source-scope-failure-rebuilding'||!task.modelId)continue;
+  for(const destination of destinations){
+    if((destination as any).modelId!==task.modelId)continue;
+    Object.assign(destination,{acceptance:'withdrawn-physical-scope',
+      workTaskId:task.id,taskNote:task.validation,scopeEvidence:task.researchEvidence});
+  }
 }
 const counts=destinations.reduce((a:any,p)=>{a[p.status]=(a[p.status]||0)+1;return a;},{});
 fs.writeFileSync('public/canal-drive/landmark-backlog.json',JSON.stringify({version:1,cityId:'amsterdam',

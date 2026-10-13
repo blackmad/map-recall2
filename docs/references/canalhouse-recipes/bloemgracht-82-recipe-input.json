@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "id": "bloemgracht-82",
+  "admissionFile": "docs/references/canalhouse-recipes/bloemgracht-82-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/bloemgracht-82-survey.json",
+  "lowerReferenceTier": "full",
+  "bodyDatum": {
+    "heightM": 13.9,
+    "sourceReview": "Approximate cornice datum, native minimum13.835m; not whole-building equipment maximum"
+  },
+  "frameSets": {
+    "sash": {
+      "template": "broad-dark-paired-sash",
+      "overrides": {
+        "trimWidthM": 0.065
+      }
+    },
+    "door": {
+      "template": "plain-frame",
+      "overrides": {
+        "paneSurface": "door"
+      }
+    },
+    "transom": {
+      "template": "plain-frame"
+    }
+  },
+  "baySets": {
+    "three": {
+      "template": "regular",
+      "ids": [
+        "left",
+        "middle",
+        "right"
+      ],
+      "left": 0.075,
+      "width": 0.235,
+      "step": 0.31
+    }
+  },
+  "windowGroups": [
+    {
+      "id": "upperThree",
+      "baySet": "three",
+      "tiers": [
+        {
+          "id": "first",
+          "bottom": 0.32,
+          "height": 0.205
+        },
+        {
+          "id": "second",
+          "bottom": 0.58,
+          "height": 0.18
+        },
+        {
+          "id": "third",
+          "bottom": 0.81,
+          "height": 0.13
+        }
+      ],
+      "frame": {
+        "use": "sash"
+      }
+    }
+  ],
+  "openings": [
+    {
+      "id": "right-entry",
+      "kind": "door",
+      "left": 0.74,
+      "bottom": 0.01,
+      "width": 0.2,
+      "height": 0.215,
+      "frame": {
+        "use": "door"
+      }
+    },
+    {
+      "id": "left-shop",
+      "kind": "window",
+      "left": 0.07,
+      "bottom": 0.035,
+      "width": 0.64,
+      "height": 0.185,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "shop-transom",
+      "kind": "window",
+      "left": 0.07,
+      "bottom": 0.225,
+      "width": 0.64,
+      "height": 0.055,
+      "frame": {
+        "template": "sash-pair-three"
+      }
+    },
+    {
+      "id": "attic-light",
+      "kind": "window",
+      "left": 0.425,
+      "bottom": 1.01,
+      "width": 0.15,
+      "height": 0.12,
+      "frame": {
+        "template": "plain-frame"
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#916344",
+    "trim": "#e4dfce",
+    "door": "#23312a",
+    "glass": "#31464a",
+    "stone": "#b3afa0",
+    "roof": "#514d47"
+  },
+  "crown": {
+    "depthM": 0.12,
+    "trimWidthM": 0.09
+  },
+  "bands": [
+    {
+      "id": "ground-cap",
+      "left": 0,
+      "bottom": 0.3,
+      "width": 1,
+      "height": 0.018,
+      "depthM": 0.12,
+      "surface": "trim"
+    }
+  ],
+  "ornaments": [],
+  "hoists": [
+    {
+      "id": "central-hoist",
+      "center": 0.5,
+      "height": 1.29,
+      "widthM": 0.14,
+      "beamHeightM": 0.17,
+      "projectionM": 1.2,
+      "surface": "trim"
+    }
+  ],
+  "simplifications": [
+    "Frozen library82 transfer; no custom geometry. Whole-front source counts3axes\u00d73tiers independently observed.",
+    "Chevron attic glazing represented coarsely as rectangular light; fine yellowbrick ornament and transom lattice held.",
+    "Roof gable family supported by register; source street photos hide roof planes, ridge/depth drawing inference not metric. Exact native footprint and rear volumes retained.",
+    "Central private sourcearchive, independent gallery/game/performance acceptance pending root.",
+    "One bounded coarse repair: front-only depth9.5 captured only21, jagged native22 failed first diagnostic; whole connected slopes selected preserving raisedflat23. Failed draft preserved.",
+    "Independent source review rejected mirrored ground treatment; broad shop glazing and transom now left, entrance right. Shared source-side assertion guards this relation. Failed draft preserved."
+  ],
+  "groundFront": {
+    "id": "white-ground",
+    "left": 0,
+    "bottom": 0,
+    "width": 1,
+    "height": 0.3,
+    "depthM": 0.06,
+    "surface": "trim",
+    "openingIds": [
+      "right-entry",
+      "left-shop",
+      "shop-transom"
+    ]
+  },
+  "cornice": {
+    "bottom": 0.985,
+    "height": 0.025,
+    "depthM": 0.25,
+    "brackets": 0
+  },
+  "roofVolume": {
+    "seedSurfaceIds": [
+      "NL.IMBAG.Pand.0363100012169915-0:lod22:roof:21"
+    ],
+    "depthM": [
+      -0.2,
+      22.6
+    ],
+    "minHeightM": 13.5,
+    "excludedSurfaceIds": [
+      "NL.IMBAG.Pand.0363100012169915-0:lod22:roof:23"
+    ],
+    "sourceReview": "Whole connected sloping20/21/22 spans front and rear; opposite plane22 crosses fullowner. Preserve genuine raisedflat23. Roof gable family is register/photo supported; ridge/depth drawing inference notmetric."
+  },
+  "roofAssembly": {
+    "template": "symmetric-gable",
+    "surfaceIds": [
+      "NL.IMBAG.Pand.0363100012169915-0:lod22:roof:21",
+      "NL.IMBAG.Pand.0363100012169915-0:lod22:roof:22"
+    ],
+    "eavesM": 13.9,
+    "ridgeM": 17.8,
+    "fit": "native-envelope"
+  },
+  "frontagePlan": {
+    "maxInsetM": 0.4,
+    "maxOutsetM": 0.05
+  }
+}

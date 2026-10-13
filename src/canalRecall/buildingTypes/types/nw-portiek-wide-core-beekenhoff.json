@@ -1,0 +1,449 @@
+{
+  "id": "nw-portiek-wide-core-beekenhoff",
+  "label": "Nieuw-West type 1 sub-design A (Beek en Hoff / Osdorper Ban / Notweg / Hooge Venne / Bullepad / Braak en Bosch): five-storey red-brown brick portiekflat, 14.1 x 10.4 m, wide 5.5 m stair core with two window columns, entrance up two steps, two 3.8 m balcony bays with storage doors at the party walls",
+  "source": {
+    "clusterRank": 1,
+    "panden": 46,
+    "bouwjaar": [
+      1954,
+      1961
+    ],
+    "lengthM": 14.1,
+    "widthM": 10.4,
+    "bouwlagen": 5,
+    "roof": "pitched",
+    "dwellingsMedian": 8
+  },
+  "storeys": 5,
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.35,
+    "vergeOverhangM": 0.12,
+    "thicknessM": 0.12,
+    "pitchDeg": 30
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "brick-red",
+  "variants": {
+    "brick-red": {
+      "label": "Red-brown brick (sunlit photo median #70574b), cream-framed windows, open bar balconies with dark slab edges, dark grey doors (43 members)",
+      "evidence": "photo sampling of 12 sunlit crops (Hooge Venne 0363100012077230 #715a4e, 0120915 #73594d, 0127744 #725a4e, 0089162, 0108526 #765d50, 0112234); the authored tint IS the sunlit photo median: the recipe look of the game (cityWallTint) lifts a photo-sampled brick colour into the city brick range",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#70574b"
+        },
+        "frame": "#ece6d6",
+        "glass": "#4b5a6b",
+        "door": "#3d434b",
+        "accent": "#bdb7a8",
+        "rail": "#c9c4b6",
+        "dark": "#4a4a48",
+        "column": "#e4dfd0",
+        "joint": "#4f3d34",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4b36"
+        }
+      }
+    },
+    "brick-buff": {
+      "label": "Buff / yellow-grey brick, same layout (3 members)",
+      "evidence": "photo sampling of 0363100012115066, 2074344, 2095070 (#aa987a median)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#aa987a"
+        },
+        "frame": "#f2efe6",
+        "glass": "#4b5a6b",
+        "door": "#3d434b",
+        "accent": "#bdb7a8",
+        "rail": "#d8d4c8",
+        "dark": "#4a4a48",
+        "column": "#e4dfd0",
+        "joint": "#8a7a60",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4b36"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012074445.jpg",
+          "pand": "0363100012074445",
+          "address": "Osdorper Ban (L 14 m, eaves 14.46 m)",
+          "note": "front, straight on, ground+4 storeys. The pand is the section between two thick brick party-wall piers: [B] balcony bay | [S] wide core | [B] balcony bay (the balcony column and window column beyond each pier belong to the neighbouring pand). Core ~5.5 m: two small square windows per storey (~1.0 m, 1.8 m either side of the axis) plus a stair window on the axis at the floor line of storeys 2-4; ground: entrance with two steps, two letterbox panels, two rows of 2 ventilation grilles each side. Balcony bays ~3.8 m: one balcony ~3.5 m x 1.2 m per storey (open bars, dark slab edge), glazed door + side lights behind it, one storage door at ground beside the pier. Four balcony rows."
+        },
+        {
+          "photo": "survey crop 0363100012113343.jpg",
+          "pand": "0363100012113343",
+          "address": "Osdorper Ban (L 14.15 m, eaves 14.43 m)",
+          "note": "same layout, Beek en Hoff: the pier is ~0.5 m, core 5.4-5.6 m, balcony bays 3.6-3.9 m (px ratio 140 : 210 : 140); balcony slabs sometimes closed with solid coloured fronts at the lowest storey."
+        },
+        {
+          "photo": "survey crop 0363100012093885.jpg",
+          "pand": "0363100012093885",
+          "address": "Osdorper Ban (L 14.03 m, eaves 14.48 m)",
+          "note": "straight-on counting check: 4 storeys of balconies + ground, storage doors under both balcony bays, centred entrance."
+        }
+      ],
+      "counted": {
+        "bays": 5,
+        "openingsPerUpperStorey": 4,
+        "groundDoors": 3,
+        "balconiesPerUpperStorey": 2
+      },
+      "bays": [
+        {
+          "id": "P0",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "Bl",
+          "w": 3.8,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 3.5,
+              "depth": 1.3,
+              "railing": "bars"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 3.0,
+              "h": 2.1,
+              "sill": 0.0,
+              "lights": 3,
+              "note": "glazed door + side lights behind the balcony"
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "u": -0.65,
+              "w": 1.1,
+              "h": 2.1,
+              "note": "storage door beside the party-wall pier (outer third of the bay)"
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 5.5,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 1.0,
+              "h": 2.1,
+              "steps": 2
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": -1.1,
+              "w": 0.4,
+              "h": 1.2,
+              "sill": 0.9,
+              "colour": "frame",
+              "depth": 0.08,
+              "note": "letterbox/bell panels"
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": 1.1,
+              "w": 0.4,
+              "h": 1.2,
+              "sill": 0.9,
+              "colour": "frame",
+              "depth": 0.08
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "u": -1.85,
+              "count": 2,
+              "sill": 0.9,
+              "note": "two rows of small ventilation grilles each side of the entrance"
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "u": -1.85,
+              "count": 2,
+              "sill": 1.35
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "u": 1.85,
+              "count": 2,
+              "sill": 0.9
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "u": 1.85,
+              "count": 2,
+              "sill": 1.35
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.8,
+              "w": 0.95,
+              "h": 1.2,
+              "sill": 1.1,
+              "note": "small square window, one per storey"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 1.8,
+              "w": 0.95,
+              "h": 1.2,
+              "sill": 1.1
+            },
+            {
+              "kind": "window",
+              "levels": [
+                2,
+                3,
+                4
+              ],
+              "u": 0,
+              "w": 0.95,
+              "h": 1.0,
+              "sill": -0.5,
+              "note": "stair window centred on the landing at the floor line of storeys 2-4"
+            }
+          ]
+        },
+        {
+          "id": "Br",
+          "w": 3.8,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 3.5,
+              "depth": 1.3,
+              "railing": "bars"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 3.0,
+              "h": 2.1,
+              "sill": 0.0,
+              "lights": 3,
+              "note": "glazed door + side lights behind the balcony"
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "u": 0.65,
+              "w": 1.1,
+              "h": 2.1,
+              "note": "storage door beside the party-wall pier (outer third of the bay)"
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012062248.jpg",
+          "pand": "0363100012062248",
+          "address": "Braak en Bosch (L 14.24 m, eaves 14.34 m)",
+          "note": "no straight-on garden-side photo of any member was found; the model repeats the front window rhythm without balconies. NOT verified."
+        }
+      ],
+      "counted": {
+        "bays": 5,
+        "openingsPerUpperStorey": 6,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "P0",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "Bl",
+          "w": 3.8,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -0.9,
+              "w": 1.2,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 0.9,
+              "w": 1.2,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 5.5,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.8,
+              "w": 0.95,
+              "h": 1.2,
+              "sill": 1.1
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 1.8,
+              "w": 0.95,
+              "h": 1.2,
+              "sill": 1.1
+            },
+            {
+              "kind": "window",
+              "levels": [
+                2,
+                3,
+                4
+              ],
+              "u": 0,
+              "w": 0.95,
+              "h": 1.0,
+              "sill": -0.5
+            }
+          ]
+        },
+        {
+          "id": "Br",
+          "w": 3.8,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -0.9,
+              "w": 1.2,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 0.9,
+              "w": 1.2,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012062248.jpg",
+          "pand": "0363100012062248",
+          "address": "Braak en Bosch (L 14.24 m, eaves 14.34 m)",
+          "note": "the pands stand in terraces, the gable is a party wall (plain brick, thick piers visible between neighbours). Modelled blank. NOT verified for end units."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "gable",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012062248.jpg",
+          "pand": "0363100012062248",
+          "address": "Braak en Bosch (L 14.24 m, eaves 14.34 m)",
+          "note": "as left."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "gable",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Sub-design A of the footprint cluster of type 1 (ranks 1 and 3, 14.1 x 10.4 m): the 2026-10-11 survey held 359 of 444 panden as other designs; this is the largest group, 46 panden whose front photos show the wide-core layout above.",
+    "Not modelled: the balcony columns are the pand's own bays only; the far window column and balcony in the photos belong to the next pand.",
+    "Brick tint = sunlit photo median; the game lifts photo-sampled brick colours into its brick range (cityWallTint), so tints are authored dark.",
+    "Balcony depth 1.3 m (was 0.8 m): the oblique photo of the sibling design 0363100012123229 shows slabs projecting about 0.55 of their 2.4 m width; the frontal 0363100012074445 and 2113343 show only the dark slab edges. Estimated."
+  ]
+}

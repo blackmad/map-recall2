@@ -1,0 +1,256 @@
+{
+ "face": "wallen-ozv-115-125",
+ "image": "staging/block-face/wallen-ozv-115-125/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 1104,
+ "height": 840,
+ "groundNAP": 0.635,
+ "heightM": 21,
+ "frame": {
+  "midRD": [
+   121656.13628124997,
+   487345.5402500001
+  ],
+  "uRD": [
+   -0.625707558155555,
+   -0.7800577232916889
+  ],
+  "nRD": [
+   -0.7800577232916889,
+   0.625707558155555
+  ]
+ },
+ "x0M": -14.06,
+ "x1M": 13.55,
+ "date": "2021-01-25",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012171880",
+   "x0M": -14.06,
+   "x1M": -8.45,
+   "px": [
+    0,
+    224
+   ],
+   "date": "2021-01-25",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000167",
+     "timestamp": "2021-01-25T12:19:55.671480Z",
+     "distanceM": 21.9,
+     "obliquityDeg": 13.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000168",
+     "timestamp": "2021-01-25T12:20:00.321400Z",
+     "distanceM": 22.2,
+     "obliquityDeg": 13.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000255",
+     "timestamp": "2021-01-25T12:27:11.477650Z",
+     "distanceM": 15.9,
+     "obliquityDeg": 16.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171878",
+   "x0M": -8.54,
+   "x1M": -4.16,
+   "px": [
+    221,
+    396
+   ],
+   "date": "2021-01-25",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000255",
+     "timestamp": "2021-01-25T12:27:11.477650Z",
+     "distanceM": 14.9,
+     "obliquityDeg": 0.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000168",
+     "timestamp": "2021-01-25T12:20:00.321400Z",
+     "distanceM": 21.2,
+     "obliquityDeg": 1.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000167",
+     "timestamp": "2021-01-25T12:19:55.671480Z",
+     "distanceM": 23.2,
+     "obliquityDeg": 24.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178729",
+   "x0M": -4.16,
+   "x1M": 0.04,
+   "px": [
+    396,
+    564
+   ],
+   "date": "2021-01-25",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000168",
+     "timestamp": "2021-01-25T12:20:00.321400Z",
+     "distanceM": 21.8,
+     "obliquityDeg": 8.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000255",
+     "timestamp": "2021-01-25T12:27:11.477650Z",
+     "distanceM": 15.9,
+     "obliquityDeg": 14.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000169",
+     "timestamp": "2021-01-25T12:20:04.946350Z",
+     "distanceM": 22.5,
+     "obliquityDeg": 18.4,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178728",
+   "x0M": 0.04,
+   "x1M": 4.32,
+   "px": [
+    564,
+    735
+   ],
+   "date": "2021-01-25",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000254",
+     "timestamp": "2021-01-25T12:27:06.912690Z",
+     "distanceM": 15,
+     "obliquityDeg": 5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000169",
+     "timestamp": "2021-01-25T12:20:04.946350Z",
+     "distanceM": 21.5,
+     "obliquityDeg": 7.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000168",
+     "timestamp": "2021-01-25T12:20:00.321400Z",
+     "distanceM": 22.8,
+     "obliquityDeg": 18.7,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179002",
+   "x0M": 4.32,
+   "x1M": 8.55,
+   "px": [
+    735,
+    904
+   ],
+   "date": "2021-01-25",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000169",
+     "timestamp": "2021-01-25T12:20:04.946350Z",
+     "distanceM": 21.3,
+     "obliquityDeg": 3.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000254",
+     "timestamp": "2021-01-25T12:27:06.912690Z",
+     "distanceM": 15.2,
+     "obliquityDeg": 10.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000170",
+     "timestamp": "2021-01-25T12:20:09.516310Z",
+     "distanceM": 22.2,
+     "obliquityDeg": 23.5,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171879",
+   "x0M": 8.55,
+   "x1M": 13.55,
+   "px": [
+    904,
+    1104
+   ],
+   "date": "2021-01-25",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000253",
+     "timestamp": "2021-01-25T12:27:02.362680Z",
+     "distanceM": 14.7,
+     "obliquityDeg": 8.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000170",
+     "timestamp": "2021-01-25T12:20:09.516310Z",
+     "distanceM": 20.8,
+     "obliquityDeg": 11.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001981_pano_0000_000169",
+     "timestamp": "2021-01-25T12:20:04.946350Z",
+     "distanceM": 22.1,
+     "obliquityDeg": 15.4,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2016-06-09": 0,
+  "2022-09-05": 0,
+  "2025-01-14": 1,
+  "2025-06-30": 3,
+  "2019-05-16": 2,
+  "2020-04-21": 0,
+  "2020-01-10": 3,
+  "2023-01-13": 4,
+  "2017-03-29": 0,
+  "2019-01-14": 6,
+  "2021-03-08": 6,
+  "2019-05-10": 6,
+  "2021-12-27": 6,
+  "2021-01-25": 6,
+  "2017-07-06": 6,
+  "2022-06-27": 0,
+  "2025-06-16": 0,
+  "2021-09-15": 0,
+  "2022-12-15": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

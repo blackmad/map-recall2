@@ -1,0 +1,18 @@
+{
+  "modelId": "haarlemmermeerstation",
+  "updatedOn": "2026-10-06",
+  "status": "draft-policy-correction",
+  "source": {
+    "path": "/Users/blackmad/Code/map-recall2-source-data/models/haarlemmermeerstation/files/haarlemmermeerstation-front.jpg",
+    "sha256": "9824a481bd1cd22956572b9d7429434b5de59e88e01949129e147c8e59daca00",
+    "observation": "Root inspected original facade photo: thin entrance canopy with no readable defining station-name panel; street furniture partly occludes it. This does not establish exhaustive sign absence."
+  },
+  "change": "Removed unsupported HAARLEMMERMEERSTATION glyphs only. Original canopy and entrance geometry preserved.",
+  "acceptance": {
+    "sourceInspection": true,
+    "nativeGallery": false,
+    "liveGame": false,
+    "privateSourceCommitForNewReview": null,
+    "publication": false
+  }
+}

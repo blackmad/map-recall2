@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 1,
+  "id": "bloemgracht-122",
+  "admissionFile": "docs/references/canalhouse-recipes/bloemgracht-122-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/bloemgracht-122-survey.json",
+  "frameSets": {
+    "sash": {
+      "template": "plain-frame",
+      "overrides": {
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.25,
+          0.5,
+          0.75
+        ]
+      }
+    },
+    "upper": {
+      "template": "plain-frame",
+      "overrides": {
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.5
+        ]
+      }
+    },
+    "door": {
+      "template": "plain-frame",
+      "overrides": {
+        "verticalBars": [],
+        "horizontalBars": []
+      }
+    },
+    "transom": {
+      "template": "plain-frame",
+      "overrides": {
+        "verticalBars": [],
+        "horizontalBars": []
+      }
+    }
+  },
+  "baySets": {
+    "axes": {
+      "template": "regular",
+      "ids": [
+        "axis0",
+        "axis1",
+        "axis2"
+      ],
+      "left": 0.06,
+      "width": 0.22,
+      "step": 0.33
+    }
+  },
+  "windowGroups": [
+    {
+      "id": "main",
+      "baySet": "axes",
+      "tiers": [
+        {
+          "id": "lower",
+          "bottom": 0.36,
+          "height": 0.18
+        },
+        {
+          "id": "middle",
+          "bottom": 0.605,
+          "height": 0.14
+        }
+      ],
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "upper",
+      "baySet": "axes",
+      "tiers": [
+        {
+          "id": "top",
+          "bottom": 0.8,
+          "height": 0.12
+        }
+      ],
+      "frame": {
+        "use": "upper"
+      }
+    }
+  ],
+  "openings": [
+    {
+      "id": "entry",
+      "kind": "door",
+      "left": 0.055,
+      "bottom": 0.1,
+      "width": 0.22,
+      "height": 0.155,
+      "frame": {
+        "use": "door"
+      },
+      "transom": {
+        "bottom": 0.275,
+        "height": 0.055,
+        "frame": {
+          "use": "transom"
+        }
+      }
+    },
+    {
+      "id": "ground-axis1",
+      "kind": "window",
+      "left": 0.39,
+      "bottom": 0.1,
+      "width": 0.22,
+      "height": 0.22,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "ground-axis2",
+      "kind": "window",
+      "left": 0.72,
+      "bottom": 0.1,
+      "width": 0.22,
+      "height": 0.22,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "cellar-left",
+      "kind": "window",
+      "left": 0.055,
+      "bottom": 0.015,
+      "width": 0.22,
+      "height": 0.065,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "cellar-entry",
+      "kind": "door",
+      "left": 0.41,
+      "bottom": 0.005,
+      "width": 0.53,
+      "height": 0.085,
+      "frame": {
+        "use": "door"
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#654139",
+    "roof": "#494744",
+    "trim": "#e5e2d5",
+    "stone": "#858e89",
+    "glass": "#293e42",
+    "door": "#26342f"
+  },
+  "crown": {
+    "depthM": 0.1,
+    "trimWidthM": 0.065,
+    "surface": "trim",
+    "shape": {
+      "family": "lijst",
+      "top": 1.04,
+      "neckWidth": 0.32,
+      "shoulder": 1,
+      "crestWidth": 0.32,
+      "cap": "rounded",
+      "capRise": 0.04
+    }
+  },
+  "bands": [
+    {
+      "id": "attic-base-course",
+      "left": 0,
+      "width": 1,
+      "bottom": 0.926,
+      "height": 0.012,
+      "depthM": 0.14,
+      "surface": "trim"
+    }
+  ],
+  "ornaments": [],
+  "cornice": {
+    "bottom": 0.988,
+    "height": 0.012,
+    "depthM": 0.2,
+    "brackets": 0,
+    "assembly": {
+      "template": "lip-frieze-cap",
+      "overrides": {
+        "capUnderside": {
+          "riseM": 0.02,
+          "insetM": 0.08
+        }
+      }
+    },
+    "spans": [
+      {
+        "left": 0,
+        "width": 0.34
+      },
+      {
+        "left": 0.66,
+        "width": 0.34
+      }
+    ]
+  },
+  "simplifications": [
+    "Original native footprint/roof retained. Drawing proportions and camera height uncalibrated.",
+    "Fine carving, real text, plants/bicycles and exact stair counts omitted.",
+    "No custom geometry builder; shared components including raised-center list crown v3.",
+    "2023alternate nearfrontal reference resolves central arched paired attic glazing and2side lights, previously omitted behind solid pale cornice. Shared attic-front assembly uses existing crown, segmental/plain frames and aperture-aware facing; source metric/preciseprofile/roof/calibration held.",
+    "Shared Cornice6 side spans stop around the center arch; original continuous courses partially buried upper center glazing despite passing low primary rays. First candidate preserved."
+  ],
+  "landing": {
+    "left": 0.045,
+    "width": 0.25,
+    "top": 0.1,
+    "depthM": 1,
+    "thicknessM": 0.07
+  },
+  "approaches": [
+    {
+      "id": "source-right-flight",
+      "input": {
+        "id": "bloemgracht-122-right-flight",
+        "topProfile": {
+          "from": [
+            0.295,
+            0
+          ],
+          "to": [
+            0.96,
+            -1
+          ],
+          "segments": 30,
+          "roundDigits": 6
+        },
+        "railProfile": [
+          [
+            0.295,
+            0.6
+          ],
+          [
+            0.96,
+            -0.4
+          ]
+        ],
+        "posts": [
+          {
+            "x": 0.295,
+            "bottom": 0,
+            "top": 0.6
+          },
+          {
+            "x": 0.96,
+            "bottom": -1,
+            "top": -0.4
+          }
+        ],
+        "projectionDepthM": 1,
+        "exactCurrentTreadCount": null
+      },
+      "railWidthM": 0.035,
+      "postWidthM": 0.045,
+      "occludedOpeningIds": [
+        "cellar-entry"
+      ]
+    }
+  ],
+  "balconies": [],
+  "groundFront": {
+    "id": "stone-base",
+    "left": 0,
+    "bottom": 0,
+    "width": 1,
+    "height": 0.1,
+    "depthM": 0.055,
+    "surface": "stone",
+    "openingIds": [
+      "cellar-left",
+      "cellar-entry"
+    ]
+  },
+  "atticFront": {
+    "id": "attic-front",
+    "template": "arched-center-with-side-lights",
+    "bottom": 0.93,
+    "sideTop": 1,
+    "depthM": 0.04,
+    "surface": "trim",
+    "center": {
+      "left": 0.395,
+      "width": 0.21,
+      "bottom": 0.942,
+      "height": 0.081,
+      "headRiseM": 0.35,
+      "frame": {
+        "template": "plain-frame",
+        "overrides": {
+          "trimWidthM": 0.065,
+          "verticalBars": [
+            0.5
+          ],
+          "horizontalBars": []
+        }
+      }
+    },
+    "sideLights": {
+      "bays": [
+        {
+          "id": "left",
+          "left": 0.065,
+          "width": 0.21
+        },
+        {
+          "id": "right",
+          "left": 0.725,
+          "width": 0.21
+        }
+      ],
+      "bottom": 0.946,
+      "height": 0.03,
+      "frame": {
+        "template": "plain-frame",
+        "overrides": {
+          "trimWidthM": 0.045,
+          "verticalBars": [],
+          "horizontalBars": []
+        }
+      }
+    }
+  }
+}

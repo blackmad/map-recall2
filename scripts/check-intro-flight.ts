@@ -6,7 +6,7 @@
 import assert from 'node:assert/strict';
 import {
   INTRO_FLIGHT_S, INTRO_HOLD_S, INTRO_MAX_ZOOM_FRACTION, INTRO_MIN_ZOOM,
-  introFrame, introOverview, introPlan, type IntroCamera, type Point,
+  INTRO_LANDING_RADIUS_M, introFrame, introLandingArea, introOverview, introPlan, type IntroCamera, type Point,
 } from '../src/canalRecall/game/introFlight.ts';
 
 let checks = 0;
@@ -74,6 +74,23 @@ for (const [name, box] of [['phone', phone], ['desktop', desktop]] as const) {
   const to = { x: 5, y: 5, zoom: PLAY_ZOOM };
   ok(introFrame(plan, to, plan.hold - 0.01).overview === 1, 'reduced motion still shows the overview');
   ok(introFrame(plan, to, plan.hold).done, 'then cuts straight to driving');
+}
+
+
+// The flight streams buildings only for where it lands: the driving view the
+// map last showed when it contains the rider, else a box round the rider.
+{
+  const rider: [number, number] = [4.9, 52.37];
+  const view = { west: 4.897, south: 52.368, east: 4.904, north: 52.373 };
+  ok(JSON.stringify(introLandingArea(view, rider)) === JSON.stringify(view), 'landing area is the driving view');
+  const elsewhere = { west: 4.95, south: 52.36, east: 4.96, north: 52.365 };
+  const box = introLandingArea(elsewhere, rider);
+  ok(box.west < rider[0] && box.east > rider[0] && box.south < rider[1] && box.north > rider[1], 'a view elsewhere falls back to the rider');
+  ok(Math.abs((box.north - box.south) * 111320 - 2 * INTRO_LANDING_RADIUS_M) < 1, 'fallback box is the landing radius');
+  const overview = { west: 4.8, south: 52.33, east: 5.0, north: 52.42 };
+  const fromOverview = introLandingArea(overview, rider);
+  ok((fromOverview.east - fromOverview.west) < 0.05, 'a city-scale view never becomes the landing area');
+  ok(introLandingArea(null, rider).west < rider[0], 'no view falls back to the rider');
 }
 
 console.log(`Intro flight checks passed (${checks} assertions).`);

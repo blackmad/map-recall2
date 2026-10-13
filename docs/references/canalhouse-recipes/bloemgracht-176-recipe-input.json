@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "id": "bloemgracht-176",
+  "admissionFile": "docs/references/canalhouse-recipes/bloemgracht-176-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/bloemgracht-176-survey.json",
+  "lowerReferenceTier": "full",
+  "frameSets": {
+    "upperSash": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.05,
+        "frameDepthM": 0.12,
+        "frameSurface": "door",
+        "barSurface": "door",
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.66
+        ],
+        "mullionWidthM": 0.025
+      }
+    },
+    "groundSash": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.055,
+        "frameDepthM": 0.13,
+        "frameSurface": "door",
+        "barSurface": "door",
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.35,
+          0.7
+        ],
+        "mullionWidthM": 0.027
+      }
+    },
+    "recessedDoor": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.06,
+        "frameDepthM": 0.1,
+        "frameSurface": "trim",
+        "barSurface": "trim",
+        "paneSurface": "door",
+        "verticalBars": [
+          0.73
+        ],
+        "horizontalBars": [
+          0.68
+        ],
+        "mullionWidthM": 0.045,
+        "recessM": 0.65
+      }
+    },
+    "basementDoor": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.065,
+        "frameDepthM": 0.12,
+        "frameSurface": "trim",
+        "barSurface": "door",
+        "paneSurface": "door",
+        "verticalBars": [
+          0.5
+        ],
+        "mullionWidthM": 0.04
+      }
+    }
+  },
+  "baySets": {
+    "pair": [
+      {
+        "id": "left",
+        "left": 0.095,
+        "width": 0.345
+      },
+      {
+        "id": "right",
+        "left": 0.565,
+        "width": 0.345
+      }
+    ]
+  },
+  "windowGroups": [
+    {
+      "id": "upperTwo",
+      "baySet": "pair",
+      "tiers": [
+        {
+          "id": "first",
+          "bottom": 0.535,
+          "height": 0.175
+        },
+        {
+          "id": "second",
+          "bottom": 0.765,
+          "height": 0.175
+        }
+      ],
+      "frame": {
+        "use": "upperSash"
+      }
+    }
+  ],
+  "openingGroups": [],
+  "openings": [
+    {
+      "id": "raisedWindow",
+      "kind": "window",
+      "left": 0.095,
+      "width": 0.345,
+      "bottom": 0.215,
+      "height": 0.25,
+      "frame": {
+        "use": "groundSash"
+      }
+    },
+    {
+      "id": "recessedEntry",
+      "kind": "door",
+      "left": 0.565,
+      "width": 0.345,
+      "bottom": 0.128,
+      "height": 0.345,
+      "frame": {
+        "use": "recessedDoor"
+      }
+    },
+    {
+      "id": "leftBasementEntry",
+      "kind": "door",
+      "left": 0.095,
+      "width": 0.345,
+      "bottom": 0.012,
+      "height": 0.117,
+      "frame": {
+        "use": "basementDoor"
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#77776c",
+    "trim": "#d6d4bb",
+    "glass": "#293937",
+    "door": "#303b35",
+    "roof": "#514f49",
+    "stone": "#bbbba7"
+  },
+  "crown": {
+    "depthM": 0.06,
+    "trimWidthM": 0
+  },
+  "cornice": {
+    "bottom": 0.965,
+    "height": 0.035,
+    "depthM": 0.32,
+    "brackets": 4,
+    "assembly": {
+      "template": "lip-frieze-cap"
+    }
+  },
+  "bands": [],
+  "blocks": [],
+  "ornaments": [],
+  "groundFront": {
+    "id": "leftBasementFacing",
+    "left": 0,
+    "width": 0.51,
+    "bottom": 0,
+    "height": 0.18,
+    "depthM": 0.035,
+    "surface": "stone",
+    "openingIds": [
+      "leftBasementEntry"
+    ]
+  },
+  "landing": {
+    "left": 0.565,
+    "width": 0.345,
+    "top": 0.128,
+    "depthM": 0.28,
+    "thicknessM": 0.07
+  },
+  "entrance": {
+    "left": 0.565,
+    "width": 0.345,
+    "rise": 0.128,
+    "runM": 2.1,
+    "approximateRiserM": 0.22,
+    "attachToLanding": true,
+    "surface": "stone"
+  },
+  "approaches": [],
+  "dormers": [
+    {
+      "id": "centralAttic",
+      "left": 0.35,
+      "width": 0.3,
+      "bottom": 1.02,
+      "height": 0.098,
+      "depthM": 0.75,
+      "roofRiseM": 0.05,
+      "wallSurface": "trim",
+      "roofSurface": "trim",
+      "trimWidthM": 0.08,
+      "verticalBars": [
+        0.5
+      ],
+      "frontOverhangM": 0.2
+    }
+  ],
+  "simplifications": [
+    "Two source-observed upper axes x two upper tiers; raised window and recessed doorway are separate assemblies. Official176/178/180 are one native owner, not three models.",
+    "Deep right entry and outward frontal stoep are source-supported; recess depth0.65m, stair rise/run and approximate0.22m riser spacing are drawing estimates, not measured/current tread counts. No rail transferred from174.",
+    "Central pale attic head is source-observed; internal pane count/head dimensions simplified, projecting hoist and carved lintels omitted. Existing dormer overhang reused.",
+    "Lower exact roof-end height used as provisional cornice datum, not maximum13.1425m. Photo/body/cornice/native roof registration remains unresolved; native roof15 and separate lower rear14 retained unchanged. Unobserved roof material unset.",
+    "Rectangular recessed portal simplifies shallow source lintel arch. Hidden doorstep/basement extents, material color and fine cornice carving remain uncertain.",
+    "Full2023view is actual lower reference; opposite-bank ground crop remains context only. No register match/description found in exact cached identity join; bounded Beeldbank query returned application shell only.",
+    "Native attic aperture not declared: first validation correctly found no host wall at this above-roof aperture. Recessed ground entry still cuts its real host wall.",
+    "Shared hoist beam matches observed central projection and material family; mounting height, projection and slight rise are drawing estimates. Hidden hook/pulley/attachment hardware not inferred."
+  ],
+  "hoists": [
+    {
+      "id": "centralBeam",
+      "center": 0.5,
+      "height": 1.13,
+      "widthM": 0.15,
+      "beamHeightM": 0.2,
+      "projectionM": 1.25,
+      "setbackM": 0.1,
+      "endRiseM": 0.05,
+      "surface": "trim"
+    }
+  ]
+}

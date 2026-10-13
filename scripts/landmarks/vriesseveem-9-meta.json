@@ -1,0 +1,27 @@
+{
+  "name": "Piet Hein Buildings",
+  "landmarkId": "vriesseveem-9",
+  "sourceUrl": "https://www.heeswijk.nl/piet-hein-buildings&lang=en",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012239869",
+    "w755510627",
+    "w755510628",
+    "w755510629",
+    "w755510630",
+    "w755510631",
+    "w755510632",
+    "w755510633",
+    "w755510634",
+    "w755510635"
+  ],
+  "pandId": "0363100012239869",
+  "materialOverrides": {
+    "greyBrick": "#6b7b80",
+    "glass": "#3f566a",
+    "frame": "#aab4b6",
+    "dark": "#2f353a",
+    "concrete": "#d4d8d8"
+  },
+  "surveySource": "BAG 0363100012239869 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean.",
+  "modifications": "Original texture-free geometry on the 3DBAG LoD2.2 massing; the Piet Heinkade strip windows, entrance lobby with lettering and glass-block garage wall counted by eye from municipal panoramas, no pixels or meshes imported."
+}

@@ -472,7 +472,13 @@ class GameRouteRuntime {
       if (!address) { this._setRouteError('Enter a home address first.'); return; }
       try {
         this._setRouteError('Finding your home base…');
+        // Learning history (signed-in cloud pull) must land before the first
+        // home pick, or novelty sees an empty past. Short, bounded wait that
+        // overlaps the geocode round trip.
+        const historyWait = this.recall && typeof this.recall.historyReady === 'function'
+          ? this.recall.historyReady(1500) : Promise.resolve();
         this.homeBase = await this._geocodeHomeAddress(address);
+        await historyWait;
         this.homeLeg = 'outbound';
       } catch (error) {
         this._homeLearningRadiusKm = null;
@@ -599,12 +605,20 @@ class GameRouteRuntime {
       : this.routePattern === 'here' ? this.gpsOrigin : null);
     if (this.routePattern !== 'surprise' && !from) return null;
     let maxKm = Route.ROUTE_POI_MAX_PAIR_KM;
-    if (this.routePattern === 'home' && !fromOverride) {
+    let pois = from ? this.routePois : choices;
+    let recentIds = [];
+    // Home rides stay inside the learning ring round home, also when the next
+    // ride starts from the last arrival.
+    if (this.routePattern === 'home' && this.homeBase) {
       const samples = typeof this.recall.homeMasterySamples === 'function' ? this.recall.homeMasterySamples(cityId) : [];
-      this._homeLearningRadiusKm = Route.homeLearningRadiusKm(from, samples);
-      maxKm = this._homeLearningRadiusKm * Route.HOME_RADIUS_OVERSHOOT;
+      this._homeLearningRadiusKm = Route.homeLearningRadiusKm(this.homeBase, samples);
+      const ringKm = this._homeLearningRadiusKm * Route.HOME_RADIUS_OVERSHOOT;
+      maxKm = from === this.homeBase ? ringKm : Math.min(Route.ROUTE_POI_MAX_PAIR_KM, 2 * ringKm);
+      pois = this.routePois.filter(poi => Route.kmBetween(poi, this.homeBase) <= ringKm
+        && (from === this.homeBase || Route.kmBetween(poi, from) >= Route.HOME_NEXT_MIN_KM));
+      recentIds = this._recentHomeDestinationIds();
     }
-    return Route.pickReviewRoute({ pois: from ? this.routePois : choices, due, from, maxKm });
+    return Route.pickReviewRoute({ pois, due, from, maxKm, recentIds });
   }
 
   /** Stretches of a review via's street for the planner to ride along,
@@ -680,13 +694,36 @@ class GameRouteRuntime {
     return CanalRecallRoute.pickDestinationNear(this.routePois, from, undefined, alsoExcludeId);
   }
 
-  /** Home pattern: closer + novel destinations inside an expanding learning ring. */
+  /** Where recent rides from this home ended, most recent first. */
+  _recentHomeDestinationsKey() {
+    return CanalRecallRoute.recentDestinationsKey(
+      this.cityId || 'amsterdam', (this._prefs().homeAddress || '').trim());
+  }
+
+  _recentHomeDestinationIds() {
+    try {
+      return CanalRecallRoute.readRecentDestinations(localStorage, this._recentHomeDestinationsKey());
+    } catch (_) { return []; }
+  }
+
+  /** Remember where a home-mode ride really goes, so the next pick avoids it. */
+  _rememberHomeDestination(poi) {
+    if (this.routePattern !== 'home' || !this.homeBase || !poi || !poi.id || poi.id === 'home') return;
+    try {
+      CanalRecallRoute.recordRecentDestination(localStorage, this._recentHomeDestinationsKey(), poi.id);
+    } catch (_) { /* ignore */ }
+  }
+
+  /** Home pattern: closer + novel destinations inside an expanding learning
+   *  ring round home. `from` is home, or the last arrival on a next ride. */
   _pickHomeDestination(from, alsoExcludeId = null) {
     const samples = this.recall && typeof this.recall.homeMasterySamples === 'function'
       ? this.recall.homeMasterySamples(this.cityId || 'amsterdam')
       : [];
+    const home = this.homeBase || from;
     const picked = CanalRecallRoute.pickHomeDestination(
-      this.routePois, from, samples, undefined, alsoExcludeId);
+      this.routePois, home, samples, undefined, alsoExcludeId, this._recentHomeDestinationIds(),
+      from === home ? null : from);
     if (picked) {
       this._homeLearningRadiusKm = picked.radiusKm;
       try {
@@ -975,6 +1012,9 @@ class GameRouteRuntime {
   _launchPoiRoute(from, to, { explicitDestination = false } = {}) {
     this.routeFrom = from;
     this.routeTo = to;
+    // Remember home rides so the next launch picks somewhere else. Swaps
+    // made while planning (snap, review runner-up) are remembered too.
+    this._rememberHomeDestination(to);
     this._applyPrefsToRuntime(this._prefs());
     document.querySelector('#canal-card p').textContent = this.travelMode === 'car' ? 'Which street are you on now?' : 'Which waterway are you on now?';
     this._setRouteError('');
@@ -1005,16 +1045,20 @@ class GameRouteRuntime {
     this._launchPoiRoute(from, dest);
   }
 
+  /**
+   * Next ride in home mode: no ride back home. Start where this one ended and
+   * pick another landmark inside the learning ring round home, which widens
+   * as nearby names are learned (user request 2026-10-10).
+   */
   _startNextHomeLeg() {
     if (!this.homeBase) return;
-    this._reviewRoute = null;
-    if (this.homeLeg === 'outbound') {
-      this.homeLeg = 'return';
-      this._launchPoiRoute(this.routeTo, this.homeBase);
-      return;
-    }
+    const from = this.routeTo && this.routeTo.id !== 'home' && !this.routeTo.reviewStop ? this.routeTo : this.homeBase;
     this.homeLeg = 'outbound';
-    this._launchPoiRoute(this.homeBase, this._pickHomeDestination(this.homeBase, this.routeFrom.id));
+    this._reviewRoute = this._pickReviewRide(this.routePois, from);
+    const dest = this._reviewRoute ? this._reviewRoute.to
+      : this._pickHomeDestination(from, from === this.homeBase ? (this.routeFrom && this.routeFrom.id) : from.id);
+    if (!dest) { this._launchPoiRoute(this.homeBase, this._pickHomeDestination(this.homeBase)); return; }
+    this._launchPoiRoute(from, dest);
   }
 
   _returnToRouteSetup(message) {
@@ -1038,11 +1082,23 @@ class GameRouteRuntime {
   }
 
   _checkShareLink() {
+    if (new URLSearchParams(window.location.search).get('ferry') === 'F3') {
+      this._overlay.store.patchPrefs({ cityId: 'amsterdam', travelMode: 'car', viewMode: 'chase' }, this._overlayZoom());
+      this._ferryPreviewRef = 'F3';
+      this._launchPoiRoute(
+        { id: 'ferry-3980940', name: 'Centraal Station ferry terminal', lat: 52.380606, lng: 4.899643 },
+        { id: 'ferry-3980896', name: 'Buiksloterweg ferry terminal', lat: 52.382157, lng: 4.902990 },
+        { explicitDestination: true },
+      );
+      return;
+    }
     const hash = window.location.hash;
     if (!hash.startsWith('#race=')) return;
     const parts = hash.slice(6).split(',').map(Number);
     if (parts.length !== 6 || parts.some(n => !isFinite(n))) return;
     const [lat, lng, startLat, startLng, finishLat, finishLng] = parts;
+    // A share link plays once; the next load starts from the menu.
+    history.replaceState(null, '', window.location.pathname + window.location.search);
     // Bypass menu and map picker — load directly
     this._onLocationSelected(lat, lng, { lat: startLat, lng: startLng }, { lat: finishLat, lng: finishLng });
   }
@@ -1117,6 +1173,15 @@ class GameRouteRuntime {
       this.player.accel *= PLAYER_CAR_ACCEL_MULT;
       this.player.brakeForce *= PLAYER_CAR_BRAKE_MULT;
       this.player.liftOffBraking = PLAYER_CAR_LIFT_OFF_BRAKING;
+    }
+    if (this._ferryPreviewRef && this.travelMode === 'car') {
+      const link = this.track.segments.find(segment => segment.ferryLink?.ref === this._ferryPreviewRef)?.ferryLink;
+      if (link) {
+        this.player.x = link.from.land.x;
+        this.player.y = link.from.land.y;
+        this.player.angle = Math.atan2(link.from.y - link.from.land.y, link.from.x - link.from.land.x);
+      }
+      this._ferryPreviewRef = null;
     }
     this.cars.push(this.player);
     this.learnedStopNames = new Set();
@@ -1272,6 +1337,14 @@ class GameRouteRuntime {
         this.loadingProgress = 0.3;
         segments = await this.osmLoader.buildRoadSegmentsAsync(ways, lat, lng, stale);
         if (stale()) return;
+        if (this.travelMode === 'car' && this.osmLoader.ferryNetwork) {
+          const loader = this.osmLoader;
+          const project = (lat, lng) => ({
+            x: loader._lastOffsetX + (lng - loader._lastCenterLng) * 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180) * PIXELS_PER_METER,
+            y: loader._lastOffsetY - (lat - loader._lastCenterLat) * 111320 * PIXELS_PER_METER,
+          });
+          segments.push(...CanalRecallFerry.ferrySegments(loader.ferryNetwork, segments, project));
+        }
 
         if (segments.length === 0) {
           this.loadingMessage = 'Could not build the canal network.';
@@ -1314,6 +1387,7 @@ class GameRouteRuntime {
           if (swap) {
             finish = swap.point;
             this.routeTo = swap.poi;
+            this._rememberHomeDestination(swap.poi);
             finishLL = { lat: swap.poi.lat, lng: swap.poi.lng };
             console.info(`Destination swapped to ${swap.poi.name}: the original did not snap to the network`);
           }
@@ -1439,6 +1513,7 @@ class GameRouteRuntime {
             console.info(`Review stop ${this.routeTo.reviewStop} is unreachable; ending at ${near.poi.name}`);
             finish = near.point;
             this.routeTo = near.poi;
+            this._rememberHomeDestination(near.poi);
             finishLL = { lat: near.poi.lat, lng: near.poi.lng };
             this._reviewRoute = { ...this._reviewRoute, to: near.poi, stop: undefined, alternatives: [] };
             this.track.setEndpoints(start, finish);
@@ -1451,6 +1526,7 @@ class GameRouteRuntime {
           finish = chosen.finish;
           this.routeFrom = chosen.pick.from;
           this.routeTo = chosen.pick.to;
+          this._rememberHomeDestination(chosen.pick.to);
           startLL = { lat: chosen.pick.from.lat, lng: chosen.pick.from.lng };
           finishLL = { lat: chosen.pick.to.lat, lng: chosen.pick.to.lng };
           this._reviewRoute = { ...chosen.pick, alternatives: [] };
@@ -1551,8 +1627,11 @@ class GameRouteRuntime {
       // Generate shareable URL
       if (startLL && finishLL) {
         const raceHash = `#race=${keyCenter.lat.toFixed(4)},${keyCenter.lng.toFixed(4)},${startLL.lat.toFixed(4)},${startLL.lng.toFixed(4)},${finishLL.lat.toFixed(4)},${finishLL.lng.toFixed(4)}`;
+        // Only the copy/share action gets the route. Writing it into the
+        // address bar made every reload, restored tab and autocompleted URL
+        // replay the last route and skip the destination picker (user,
+        // 2026-10-09: "the same destination EVERY time I start the game").
         this._shareUrl = `${window.location.origin}${window.location.pathname}${raceHash}`;
-        history.replaceState(null, '', raceHash);
       } else {
         this._shareUrl = null;
       }

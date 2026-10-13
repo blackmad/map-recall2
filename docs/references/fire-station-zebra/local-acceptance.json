@@ -1,0 +1,63 @@
+{
+  "modelId": "fire-station-zebra",
+  "status": "verified-scoped-local",
+  "sha256": "7aa607aea03ace00ff85195fe4348775f2d513f59003291bce12c74ccbde6421",
+  "sourceArchiveCommit": "b1cf02299a6713051fb6475003b27af07cb87033",
+  "nativeEvidence": "artifacts/firestations-review/gpu-next/main-native/fire-station-zebra",
+  "performanceEvidence": "artifacts/firestations-review/gpu-next/performance/fire-station-zebra/gameplay",
+  "performance": [
+    {
+      "mode": "desktop",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.400000005960464,
+        16.600000008940697,
+        16.599999994039536
+      ],
+      "p95Ms": [
+        19.799999997019768,
+        18.899999991059303,
+        19.600000008940697
+      ],
+      "fixedGps": [
+        4.950382,
+        52.397757
+      ],
+      "riderFixed": true,
+      "riderDriftPixels": 0.00012702925859750904,
+      "physicalPan": true
+    },
+    {
+      "mode": "touch",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.69999998807907,
+        16.600000008940697,
+        16.600000008940697
+      ],
+      "p95Ms": [
+        19.400000005960464,
+        18.799999997019768,
+        18.899999991059303
+      ],
+      "fixedGps": [
+        4.950382,
+        52.397757
+      ],
+      "riderFixed": true,
+      "riderDriftPixels": 3.955094310167674e-05,
+      "physicalPan": true
+    }
+  ],
+  "checks": [
+    "Root inspected current source and gallery/native composition; independent failure-seeking review passed.",
+    "Genuine selected destination, geographic pin and physically clicked sourced info card.",
+    "Scale1, exact replacement masks, retained neighbors and disabled/load-failure fallback.",
+    "Root inspected desktop/touch stationary-rider pan screenshots; ordinary windows/doors retained."
+  ],
+  "limitations": [
+    "Occluded rear/site detail remains explicitly bounded approximation.",
+    "Headless Chromium desktop/touch emulation on Apple M4 Pro; no physical-device performance claim."
+  ],
+  "failureHistory": "Earlier failures and corrected interpretations remain in source audit/independent review and artifacts."
+}

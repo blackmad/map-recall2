@@ -1,0 +1,53 @@
+{
+  "id": "muiderkerk",
+  "name": "Muiderkerk",
+  "landmarkId": "extract_landmarks_1055638541",
+  "modelUrl": "./models/muiderkerk.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012118480"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.92456757055646,
+      52.36173861588029
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 42,
+    "widthMetres": 47
+  },
+  "surveyed": {
+    "anchor": [
+      4.92456757055646,
+      52.36173861588029
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012118480 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#6e4636",
+    "ochre": "#cdb98a",
+    "pink": "#b98e80",
+    "concrete": "#8d8a84",
+    "green": "#2f6068",
+    "red": "#b36b5a",
+    "slate": "#4a4a4e",
+    "stone": "#d6cdb5",
+    "glass": "#7d9aa0",
+    "white": "#e6e0d0",
+    "dark": "#35261c",
+    "frame": "#d8d3c4",
+    "copper": "#6aa38c",
+    "gold": "#d9b44a"
+  },
+  "attribution": {
+    "title": "Muiderkerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Muiderkerk",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+  }
+}

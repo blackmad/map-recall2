@@ -1,0 +1,146 @@
+{
+ "street": "Bilderdijkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T07:50:14.209Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012166802",
+   "addresses": [
+    "Bilderdijkstraat 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 92-H",
+     "use": "winkelfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000586067"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6841918972,
+     "lngLat": [
+      4.8703926,
+      52.3694421
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "92",
+      "addr:postcode": "1053KX",
+      "addr:street": "Bilderdijkstraat",
+      "amenity": "restaurant",
+      "cuisine": "pizza",
+      "name": "nNea Pizza",
+      "opening_hours": "Mo-Sa 17:30-22:30",
+      "payment:cash": "no",
+      "website": "https://www.nneapizza.com/"
+     },
+     "fetchedAt": "2026-10-10T07:50:14.209Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166801",
+   "addresses": [
+    "Bilderdijkstraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 90-H",
+     "use": "winkelfunctie",
+     "areaM2": 220,
+     "bagId": "0363010000586062"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11576187585,
+     "lngLat": [
+      4.8703708,
+      52.3694937
+     ],
+     "tags": {
+      "name": "'t Fietshokje",
+      "shop": "bicycle"
+     },
+     "fetchedAt": "2026-10-10T07:50:14.209Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162836",
+   "addresses": [
+    "Bilderdijkstraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 88-H",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000586055"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11576134525,
+     "lngLat": [
+      4.8703445,
+      52.3695666
+     ],
+     "tags": {
+      "name": "Hayestan",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-10T07:50:14.209Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012235892",
+   "addresses": [
+    "Bilderdijkstraat 84",
+    "Bilderdijkstraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 84-H",
+     "use": "winkelfunctie",
+     "areaM2": 194,
+     "bagId": "0363010000586040"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11576188034,
+     "lngLat": [
+      4.8703088,
+      52.3696482
+     ],
+     "tags": {
+      "amenity": "childcare",
+      "name": "Kidtopia"
+     },
+     "fetchedAt": "2026-10-10T07:50:14.209Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

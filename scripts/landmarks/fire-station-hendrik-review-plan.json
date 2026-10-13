@@ -1,0 +1,48 @@
+{
+  "specPath": "scripts/landmarks/fire-station-hendrik-spec.json",
+  "neighbors": [
+    [
+      "w269085000",
+      "NL.IMBAG.Pand.0363100012169827"
+    ],
+    [
+      "w269085239",
+      "NL.IMBAG.Pand.0363100012168432"
+    ]
+  ],
+  "zoom": 18.4,
+  "bearing": -50,
+  "clickLocal": [
+    1,
+    7,
+    1
+  ],
+  "sourceCamera": {
+    "from": [
+      4.876,
+      52.37235
+    ],
+    "to": [
+      4.87554,
+      52.37249
+    ],
+    "fromAltitude": 8,
+    "toAltitude": 6
+  },
+  "oppositeSourceCamera": {
+    "from": [
+      4.87511,
+      52.37262
+    ],
+    "to": [
+      4.8755,
+      52.37253
+    ],
+    "fromAltitude": 10,
+    "toAltitude": 8
+  },
+  "sourceReadyChecks": [
+    "Post-renovation November2025 current red letters override proposed gold render",
+    "Five front doors exposed, curtain roof ribbon, native curved footprint and tiny stack; no parcel slab"
+  ]
+}

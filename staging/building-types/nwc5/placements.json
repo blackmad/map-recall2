@@ -1,0 +1,1550 @@
+{
+ "area": "nwc5",
+ "frame": "x east, z south, y NAP metres from anchor; yaw about +y takes the local frame (front +z, tangent +x) to east/south",
+ "anchor": {
+  "lng": 4.8179,
+  "lat": 52.36438
+ },
+ "placements": [
+  {
+   "pand": "0363100012143308",
+   "type": "nw-brick-tower-stair-5st",
+   "variant": "brick-tower",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     263.183,
+     -0.89,
+     786.924
+    ],
+    "positionChunk": [
+     263.183,
+     0,
+     786.924
+    ],
+    "yawRad": -3.12269,
+    "lengthM": 20.47,
+    "widthM": 9.83,
+    "eavesM": 14.94
+   }
+  },
+  {
+   "pand": "0363100012102316",
+   "type": "nw-brick-tower-stair-5st",
+   "variant": "brick-tower",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     283.556,
+     -0.892,
+     786.542
+    ],
+    "positionChunk": [
+     283.556,
+     0,
+     786.542
+    ],
+    "yawRad": -3.12305,
+    "lengthM": 20.28,
+    "widthM": 9.83,
+    "eavesM": 14.94
+   }
+  },
+  {
+   "pand": "0363100012147037",
+   "type": "nw-brick-tower-stair-5st",
+   "variant": "brick-tower",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     303.829,
+     -0.871,
+     786.16
+    ],
+    "positionChunk": [
+     303.829,
+     0,
+     786.16
+    ],
+    "yawRad": -3.1225,
+    "lengthM": 20.28,
+    "widthM": 9.83,
+    "eavesM": 14.91
+   }
+  },
+  {
+   "pand": "0363100012077012",
+   "type": "nw-brick-tower-stair-5st",
+   "variant": "brick-tower",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     324.175,
+     -0.848,
+     785.778
+    ],
+    "positionChunk": [
+     324.175,
+     0,
+     785.778
+    ],
+    "yawRad": -3.12318,
+    "lengthM": 20.43,
+    "widthM": 9.83,
+    "eavesM": 14.89
+   }
+  },
+  {
+   "pand": "0363100012132942",
+   "type": "nw-brick-tower-stair-5st",
+   "variant": "brick-tower",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     378.635,
+     -0.915,
+     784.788
+    ],
+    "positionChunk": [
+     378.635,
+     0,
+     784.788
+    ],
+    "yawRad": -3.12331,
+    "lengthM": 20.44,
+    "widthM": 9.82,
+    "eavesM": 14.97
+   }
+  },
+  {
+   "pand": "0363100012149222",
+   "type": "nw-brick-tower-stair-5st",
+   "variant": "brick-tower",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     398.99,
+     -0.875,
+     784.416
+    ],
+    "positionChunk": [
+     398.99,
+     0,
+     784.416
+    ],
+    "yawRad": -3.1236,
+    "lengthM": 20.28,
+    "widthM": 9.82,
+    "eavesM": 14.92
+   }
+  },
+  {
+   "pand": "0363100012132500",
+   "type": "nw-brick-tower-stair-5st",
+   "variant": "brick-tower",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     419.263,
+     -0.966,
+     784.046
+    ],
+    "positionChunk": [
+     419.263,
+     0,
+     784.046
+    ],
+    "yawRad": -3.12305,
+    "lengthM": 20.28,
+    "widthM": 9.82,
+    "eavesM": 15
+   }
+  },
+  {
+   "pand": "0363100012101433",
+   "type": "nw-brick-tower-stair-5st",
+   "variant": "brick-tower",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     439.609,
+     -0.903,
+     783.674
+    ],
+    "positionChunk": [
+     439.609,
+     0,
+     783.674
+    ],
+    "yawRad": -3.12362,
+    "lengthM": 20.42,
+    "widthM": 9.83,
+    "eavesM": 14.94
+   }
+  },
+  {
+   "pand": "0363100012150806",
+   "type": "nw-brick-tower-stair-5st",
+   "variant": "brick-tower",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     494.191,
+     -0.8,
+     782.679
+    ],
+    "positionChunk": [
+     494.191,
+     0,
+     782.679
+    ],
+    "yawRad": -3.12305,
+    "lengthM": 20.44,
+    "widthM": 9.84,
+    "eavesM": 14.78
+   }
+  },
+  {
+   "pand": "0363100012147968",
+   "type": "nw-brick-tower-stair-5st",
+   "variant": "brick-tower",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     514.544,
+     -0.817,
+     782.296
+    ],
+    "positionChunk": [
+     514.544,
+     0,
+     782.296
+    ],
+    "yawRad": -3.12251,
+    "lengthM": 20.28,
+    "widthM": 9.84,
+    "eavesM": 14.8
+   }
+  },
+  {
+   "pand": "0363100012119402",
+   "type": "nw-brick-tower-stair-5st",
+   "variant": "brick-tower",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     534.816,
+     -0.835,
+     781.914
+    ],
+    "positionChunk": [
+     534.816,
+     0,
+     781.914
+    ],
+    "yawRad": -3.12305,
+    "lengthM": 20.28,
+    "widthM": 9.84,
+    "eavesM": 14.82
+   }
+  },
+  {
+   "pand": "0363100012133555",
+   "type": "nw-brick-tower-stair-5st",
+   "variant": "brick-tower",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     555.165,
+     -0.831,
+     781.535
+    ],
+    "positionChunk": [
+     555.165,
+     0,
+     781.535
+    ],
+    "yawRad": -3.12318,
+    "lengthM": 20.43,
+    "widthM": 9.85,
+    "eavesM": 14.84
+   }
+  },
+  {
+   "pand": "0363100012073090",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     710.103,
+     -0.825,
+     778.494
+    ],
+    "positionChunk": [
+     710.103,
+     0,
+     778.494
+    ],
+    "yawRad": -3.123,
+    "lengthM": 20.22,
+    "widthM": 9.91,
+    "eavesM": 14.85
+   }
+  },
+  {
+   "pand": "0363100012132262",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     730.187,
+     -0.84,
+     778.117
+    ],
+    "positionChunk": [
+     730.187,
+     0,
+     778.117
+    ],
+    "yawRad": -3.12274,
+    "lengthM": 19.96,
+    "widthM": 9.92,
+    "eavesM": 14.89
+   }
+  },
+  {
+   "pand": "0363100012086322",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     750.142,
+     -0.865,
+     777.744
+    ],
+    "positionChunk": [
+     750.142,
+     0,
+     777.744
+    ],
+    "yawRad": -3.12331,
+    "lengthM": 19.96,
+    "widthM": 9.92,
+    "eavesM": 14.86
+   }
+  },
+  {
+   "pand": "0363100012100448",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1003.894,
+     -0.919,
+     429.163
+    ],
+    "positionChunk": [
+     -1003.894,
+     0,
+     429.163
+    ],
+    "yawRad": 2.11652,
+    "lengthM": 19.04,
+    "widthM": 10.21,
+    "eavesM": 14.64
+   }
+  },
+  {
+   "pand": "0363100012092215",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1013.675,
+     -0.944,
+     413.054
+    ],
+    "positionChunk": [
+     -1013.675,
+     0,
+     413.054
+    ],
+    "yawRad": 2.11642,
+    "lengthM": 18.71,
+    "widthM": 10.21,
+    "eavesM": 14.65
+   }
+  },
+  {
+   "pand": "0363100012142908",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     770.197,
+     -0.863,
+     777.37
+    ],
+    "positionChunk": [
+     770.197,
+     0,
+     777.37
+    ],
+    "yawRad": -3.12274,
+    "lengthM": 20.17,
+    "widthM": 9.92,
+    "eavesM": 14.86
+   }
+  },
+  {
+   "pand": "0363100012076256",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1023.434,
+     -0.939,
+     396.994
+    ],
+    "positionChunk": [
+     -1023.434,
+     0,
+     396.994
+    ],
+    "yawRad": 2.11679,
+    "lengthM": 18.96,
+    "widthM": 10.2,
+    "eavesM": 14.66
+   }
+  },
+  {
+   "pand": "0363100012092595",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1046.369,
+     -0.882,
+     393.199
+    ],
+    "positionChunk": [
+     -1046.369,
+     0,
+     393.199
+    ],
+    "yawRad": -2.82386,
+    "lengthM": 19.06,
+    "widthM": 10.18,
+    "eavesM": 14.53
+   }
+  },
+  {
+   "pand": "0363100012093902",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     826.084,
+     -0.869,
+     776.241
+    ],
+    "positionChunk": [
+     826.084,
+     0,
+     776.241
+    ],
+    "yawRad": -3.12351,
+    "lengthM": 20.19,
+    "widthM": 9.81,
+    "eavesM": 14.95
+   }
+  },
+  {
+   "pand": "0363100012097305",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     744.894,
+     -0.816,
+     854.875
+    ],
+    "positionChunk": [
+     744.894,
+     0,
+     854.875
+    ],
+    "yawRad": -1.55218,
+    "lengthM": 18.68,
+    "widthM": 9.5,
+    "eavesM": 14.92
+   }
+  },
+  {
+   "pand": "0363100012139103",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1064.311,
+     -0.904,
+     399.094
+    ],
+    "positionChunk": [
+     -1064.311,
+     0,
+     399.094
+    ],
+    "yawRad": -2.8238,
+    "lengthM": 18.75,
+    "widthM": 10.19,
+    "eavesM": 14.54
+   }
+  },
+  {
+   "pand": "0363100012073307",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     846.148,
+     -0.865,
+     775.88
+    ],
+    "positionChunk": [
+     846.148,
+     0,
+     775.88
+    ],
+    "yawRad": -3.12385,
+    "lengthM": 19.96,
+    "widthM": 9.83,
+    "eavesM": 14.94
+   }
+  },
+  {
+   "pand": "0363100012133363",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1082.244,
+     -0.901,
+     405.002
+    ],
+    "positionChunk": [
+     -1082.244,
+     0,
+     405.002
+    ],
+    "yawRad": -2.82298,
+    "lengthM": 19.06,
+    "widthM": 10.19,
+    "eavesM": 14.54
+   }
+  },
+  {
+   "pand": "0363100012145548",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     783.606,
+     -0.813,
+     854.164
+    ],
+    "positionChunk": [
+     783.606,
+     0,
+     854.164
+    ],
+    "yawRad": -1.55261,
+    "lengthM": 18.69,
+    "widthM": 9.53,
+    "eavesM": 14.96
+   }
+  },
+  {
+   "pand": "0363100012097372",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     866.103,
+     -0.847,
+     775.518
+    ],
+    "positionChunk": [
+     866.103,
+     0,
+     775.518
+    ],
+    "yawRad": -3.12387,
+    "lengthM": 19.97,
+    "widthM": 9.85,
+    "eavesM": 14.93
+   }
+  },
+  {
+   "pand": "0363100012115703",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     886.15,
+     -0.854,
+     775.157
+    ],
+    "positionChunk": [
+     886.15,
+     0,
+     775.157
+    ],
+    "yawRad": -3.12376,
+    "lengthM": 20.16,
+    "widthM": 9.86,
+    "eavesM": 14.92
+   }
+  },
+  {
+   "pand": "0363100012126348",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1095.768,
+     -1.027,
+     459.409
+    ],
+    "positionChunk": [
+     -1095.768,
+     0,
+     459.409
+    ],
+    "yawRad": 2.11589,
+    "lengthM": 19.04,
+    "widthM": 10.22,
+    "eavesM": 14.65
+   }
+  },
+  {
+   "pand": "0363100012071079",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1105.54,
+     -0.983,
+     443.304
+    ],
+    "positionChunk": [
+     -1105.54,
+     0,
+     443.304
+    ],
+    "yawRad": 2.11641,
+    "lengthM": 18.71,
+    "widthM": 10.22,
+    "eavesM": 14.61
+   }
+  },
+  {
+   "pand": "0363100012146943",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1115.3,
+     -0.987,
+     427.236
+    ],
+    "positionChunk": [
+     -1115.3,
+     0,
+     427.236
+    ],
+    "yawRad": 2.11618,
+    "lengthM": 18.95,
+    "widthM": 10.21,
+    "eavesM": 14.62
+   }
+  },
+  {
+   "pand": "0363100012086999",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     409.726,
+     -0.716,
+     -1133.986
+    ],
+    "positionChunk": [
+     409.726,
+     0,
+     -1133.986
+    ],
+    "yawRad": -0.24803,
+    "lengthM": 18.21,
+    "widthM": 9.28,
+    "eavesM": 15.09
+   }
+  },
+  {
+   "pand": "0363100012089462",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1138.248,
+     -1,
+     423.405
+    ],
+    "positionChunk": [
+     -1138.248,
+     0,
+     423.405
+    ],
+    "yawRad": -2.82618,
+    "lengthM": 19.06,
+    "widthM": 10.18,
+    "eavesM": 14.62
+   }
+  },
+  {
+   "pand": "0363100012063258",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     860.856,
+     -0.79,
+     852.691
+    ],
+    "positionChunk": [
+     860.856,
+     0,
+     852.691
+    ],
+    "yawRad": -1.55209,
+    "lengthM": 18.69,
+    "widthM": 9.47,
+    "eavesM": 14.93
+   }
+  },
+  {
+   "pand": "0363100012085821",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     492.297,
+     -0.851,
+     -1112.889
+    ],
+    "positionChunk": [
+     492.297,
+     0,
+     -1112.889
+    ],
+    "yawRad": -0.24803,
+    "lengthM": 18.21,
+    "widthM": 9.28,
+    "eavesM": 15.48
+   }
+  },
+  {
+   "pand": "0363100012147408",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     942.088,
+     -0.81,
+     774.142
+    ],
+    "positionChunk": [
+     942.088,
+     0,
+     774.142
+    ],
+    "yawRad": -3.12407,
+    "lengthM": 20.2,
+    "widthM": 9.82,
+    "eavesM": 14.91
+   }
+  },
+  {
+   "pand": "0363100012127795",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1156.198,
+     -0.934,
+     429.264
+    ],
+    "positionChunk": [
+     -1156.198,
+     0,
+     429.264
+    ],
+    "yawRad": -2.82583,
+    "lengthM": 18.75,
+    "widthM": 10.19,
+    "eavesM": 14.55
+   }
+  },
+  {
+   "pand": "0363100012088318",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     962.153,
+     -0.817,
+     773.782
+    ],
+    "positionChunk": [
+     962.153,
+     0,
+     773.782
+    ],
+    "yawRad": -3.12386,
+    "lengthM": 19.97,
+    "widthM": 9.83,
+    "eavesM": 14.9
+   }
+  },
+  {
+   "pand": "0363100012122567",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     574.946,
+     -0.685,
+     -1091.802
+    ],
+    "positionChunk": [
+     574.946,
+     0,
+     -1091.802
+    ],
+    "yawRad": -0.24836,
+    "lengthM": 18.26,
+    "widthM": 9.34,
+    "eavesM": 15.04
+   }
+  },
+  {
+   "pand": "0363100012100903",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     899.499,
+     -0.851,
+     851.956
+    ],
+    "positionChunk": [
+     899.499,
+     0,
+     851.956
+    ],
+    "yawRad": -1.54978,
+    "lengthM": 18.68,
+    "widthM": 9.47,
+    "eavesM": 15.04
+   }
+  },
+  {
+   "pand": "0363100012097565",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     982.108,
+     -0.904,
+     773.417
+    ],
+    "positionChunk": [
+     982.108,
+     0,
+     773.417
+    ],
+    "yawRad": -3.12386,
+    "lengthM": 19.96,
+    "widthM": 9.85,
+    "eavesM": 14.99
+   }
+  },
+  {
+   "pand": "0363100012120976",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1174.151,
+     -0.927,
+     435.128
+    ],
+    "positionChunk": [
+     -1174.151,
+     0,
+     435.128
+    ],
+    "yawRad": -2.82551,
+    "lengthM": 19.06,
+    "widthM": 10.19,
+    "eavesM": 14.55
+   }
+  },
+  {
+   "pand": "0363100012096963",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     1002.129,
+     -0.908,
+     773.058
+    ],
+    "positionChunk": [
+     1002.129,
+     0,
+     773.058
+    ],
+    "yawRad": -3.1243,
+    "lengthM": 20.1,
+    "widthM": 9.87,
+    "eavesM": 14.98
+   }
+  },
+  {
+   "pand": "0363100012143200",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1187.664,
+     -0.948,
+     489.575
+    ],
+    "positionChunk": [
+     -1187.664,
+     0,
+     489.575
+    ],
+    "yawRad": 2.11773,
+    "lengthM": 19,
+    "widthM": 10.21,
+    "eavesM": 14.59
+   }
+  },
+  {
+   "pand": "0363100012147167",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1197.465,
+     -0.93,
+     473.485
+    ],
+    "positionChunk": [
+     -1197.465,
+     0,
+     473.485
+    ],
+    "yawRad": 2.11797,
+    "lengthM": 18.72,
+    "widthM": 10.21,
+    "eavesM": 14.56
+   }
+  },
+  {
+   "pand": "0363100012141915",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1207.257,
+     -0.915,
+     457.42
+    ],
+    "positionChunk": [
+     -1207.257,
+     0,
+     457.42
+    ],
+    "yawRad": 2.11825,
+    "lengthM": 18.95,
+    "widthM": 10.2,
+    "eavesM": 14.53
+   }
+  },
+  {
+   "pand": "0363100012121477",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     976.801,
+     -0.905,
+     850.602
+    ],
+    "positionChunk": [
+     976.801,
+     0,
+     850.602
+    ],
+    "yawRad": -1.55078,
+    "lengthM": 18.68,
+    "widthM": 9.45,
+    "eavesM": 15.05
+   }
+  },
+  {
+   "pand": "0363100012146175",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     1297.76,
+     -0.846,
+     -150.002
+    ],
+    "positionChunk": [
+     1297.76,
+     0,
+     -150.002
+    ],
+    "yawRad": -3.12325,
+    "lengthM": 19.84,
+    "widthM": 10.43,
+    "eavesM": 14.51
+   }
+  },
+  {
+   "pand": "0363100012087913",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1230.244,
+     -0.958,
+     453.602
+    ],
+    "positionChunk": [
+     -1230.244,
+     0,
+     453.602
+    ],
+    "yawRad": -2.82331,
+    "lengthM": 19.06,
+    "widthM": 10.18,
+    "eavesM": 14.61
+   }
+  },
+  {
+   "pand": "0363100012068408",
+   "type": "nw-tower-top-balcony-5st",
+   "variant": "brick-cream-balcony",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     1015.454,
+     -0.774,
+     849.883
+    ],
+    "positionChunk": [
+     1015.454,
+     0,
+     849.883
+    ],
+    "yawRad": -1.55078,
+    "lengthM": 18.68,
+    "widthM": 9.45,
+    "eavesM": 14.95
+   }
+  },
+  {
+   "pand": "0363100012113317",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     1317.496,
+     -0.864,
+     -150.364
+    ],
+    "positionChunk": [
+     1317.496,
+     0,
+     -150.364
+    ],
+    "yawRad": -3.12358,
+    "lengthM": 19.64,
+    "widthM": 10.43,
+    "eavesM": 14.53
+   }
+  },
+  {
+   "pand": "0363100012123082",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1248.186,
+     -0.983,
+     459.501
+    ],
+    "positionChunk": [
+     -1248.186,
+     0,
+     459.501
+    ],
+    "yawRad": -2.8238,
+    "lengthM": 18.75,
+    "widthM": 10.19,
+    "eavesM": 14.64
+   }
+  },
+  {
+   "pand": "0363100012101316",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     1337.216,
+     -0.861,
+     -150.718
+    ],
+    "positionChunk": [
+     1337.216,
+     0,
+     -150.718
+    ],
+    "yawRad": -3.12373,
+    "lengthM": 19.81,
+    "widthM": 10.43,
+    "eavesM": 14.52
+   }
+  },
+  {
+   "pand": "0363100012139248",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "dark-glass-entry",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1266.12,
+     -0.97,
+     465.406
+    ],
+    "positionChunk": [
+     -1266.12,
+     0,
+     465.406
+    ],
+    "yawRad": -2.82363,
+    "lengthM": 19.07,
+    "widthM": 10.19,
+    "eavesM": 14.62
+   }
+  },
+  {
+   "pand": "0363100012119826",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1525.922,
+     -0.766,
+     1152.995
+    ],
+    "positionChunk": [
+     -1525.922,
+     0,
+     1152.995
+    ],
+    "yawRad": -2.82565,
+    "lengthM": 19.39,
+    "widthM": 9.98,
+    "eavesM": 13.91
+   }
+  },
+  {
+   "pand": "0363100012146781",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1628.784,
+     -0.793,
+     1186.575
+    ],
+    "positionChunk": [
+     -1628.784,
+     0,
+     1186.575
+    ],
+    "yawRad": -2.82575,
+    "lengthM": 19.28,
+    "widthM": 9.99,
+    "eavesM": 13.94
+   }
+  },
+  {
+   "pand": "0363100012108576",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     141.792,
+     -0.837,
+     -2123.662
+    ],
+    "positionChunk": [
+     141.792,
+     0,
+     -2123.662
+    ],
+    "yawRad": 3.12766,
+    "lengthM": 18.26,
+    "widthM": 9.74,
+    "eavesM": 14.48
+   }
+  },
+  {
+   "pand": "0363100012137861",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     160.053,
+     -0.83,
+     -2123.409
+    ],
+    "positionChunk": [
+     160.053,
+     0,
+     -2123.409
+    ],
+    "yawRad": 3.12767,
+    "lengthM": 18.27,
+    "widthM": 9.75,
+    "eavesM": 14.47
+   }
+  },
+  {
+   "pand": "0363100012083970",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "red-door-porch",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -160.059,
+     -0.826,
+     -2154.692
+    ],
+    "positionChunk": [
+     -160.059,
+     0,
+     -2154.692
+    ],
+    "yawRad": -2.9212,
+    "lengthM": 19.05,
+    "widthM": 10.21,
+    "eavesM": 14.93
+   }
+  },
+  {
+   "pand": "0363100012096349",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "red-door-porch",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -141.643,
+     -0.872,
+     -2158.829
+    ],
+    "positionChunk": [
+     -141.643,
+     0,
+     -2158.829
+    ],
+    "yawRad": -2.92158,
+    "lengthM": 18.72,
+    "widthM": 10.24,
+    "eavesM": 14.97
+   }
+  },
+  {
+   "pand": "0363100012145639",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "red-door-porch",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -258.823,
+     -0.851,
+     -2151.981
+    ],
+    "positionChunk": [
+     -258.823,
+     0,
+     -2151.981
+    ],
+    "yawRad": -2.92127,
+    "lengthM": 19.07,
+    "widthM": 10.21,
+    "eavesM": 14.97
+   }
+  },
+  {
+   "pand": "0363100012068831",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "red-door-porch",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -123.347,
+     -0.825,
+     -2162.906
+    ],
+    "positionChunk": [
+     -123.347,
+     0,
+     -2162.906
+    ],
+    "yawRad": -2.92104,
+    "lengthM": 18.8,
+    "widthM": 10.2,
+    "eavesM": 14.95
+   }
+  },
+  {
+   "pand": "0363100012142001",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "red-door-porch",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -240.394,
+     -0.812,
+     -2156.126
+    ],
+    "positionChunk": [
+     -240.394,
+     0,
+     -2156.126
+    ],
+    "yawRad": -2.921,
+    "lengthM": 18.72,
+    "widthM": 10.24,
+    "eavesM": 14.94
+   }
+  },
+  {
+   "pand": "0363100012107475",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "red-door-porch",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -104.909,
+     -0.753,
+     -2167.01
+    ],
+    "positionChunk": [
+     -104.909,
+     0,
+     -2167.01
+    ],
+    "yawRad": -2.92153,
+    "lengthM": 19.02,
+    "widthM": 10.15,
+    "eavesM": 14.89
+   }
+  },
+  {
+   "pand": "0363100012152067",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "red-door-porch",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -222.101,
+     -0.896,
+     -2160.206
+    ],
+    "positionChunk": [
+     -222.101,
+     0,
+     -2160.206
+    ],
+    "yawRad": -2.92161,
+    "lengthM": 18.8,
+    "widthM": 10.21,
+    "eavesM": 15.02
+   }
+  },
+  {
+   "pand": "0363100012117915",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "red-door-porch",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -203.688,
+     -0.895,
+     -2164.298
+    ],
+    "positionChunk": [
+     -203.688,
+     0,
+     -2164.298
+    ],
+    "yawRad": -2.92147,
+    "lengthM": 18.97,
+    "widthM": 10.16,
+    "eavesM": 15.05
+   }
+  },
+  {
+   "pand": "0363100012097791",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "red-door-porch",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -357.533,
+     -0.846,
+     -2149.32
+    ],
+    "positionChunk": [
+     -357.533,
+     0,
+     -2149.32
+    ],
+    "yawRad": -2.92096,
+    "lengthM": 19.07,
+    "widthM": 10.18,
+    "eavesM": 14.98
+   }
+  },
+  {
+   "pand": "0363100012103414",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "red-door-porch",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -339.108,
+     -0.889,
+     -2153.458
+    ],
+    "positionChunk": [
+     -339.108,
+     0,
+     -2153.458
+    ],
+    "yawRad": -2.92215,
+    "lengthM": 18.72,
+    "widthM": 10.21,
+    "eavesM": 14.99
+   }
+  },
+  {
+   "pand": "0363100012088407",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "red-door-porch",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -320.808,
+     -0.894,
+     -2157.536
+    ],
+    "positionChunk": [
+     -320.808,
+     0,
+     -2157.536
+    ],
+    "yawRad": -2.92161,
+    "lengthM": 18.8,
+    "widthM": 10.2,
+    "eavesM": 15.04
+   }
+  },
+  {
+   "pand": "0363100012071475",
+   "type": "nw-slit-window-garage-5st",
+   "variant": "red-door-porch",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -302.39,
+     -0.836,
+     -2161.627
+    ],
+    "positionChunk": [
+     -302.39,
+     0,
+     -2161.627
+    ],
+    "yawRad": -2.92204,
+    "lengthM": 18.99,
+    "widthM": 10.15,
+    "eavesM": 14.97
+   }
+  }
+ ]
+}

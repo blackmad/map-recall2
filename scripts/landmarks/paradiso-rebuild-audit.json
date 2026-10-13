@@ -1,0 +1,57 @@
+{
+  "modelId": "paradiso",
+  "auditedOn": "2026-10-06",
+  "status": "existing-model-needs-native-source-review",
+  "currentCatalogue": {
+    "id": "paradiso",
+    "name": "Paradiso",
+    "landmarkId": "paradiso",
+    "modelUrl": "./models/paradiso.glb",
+    "suppressOsmIds": [
+      "w57857350"
+    ],
+    "footprint": {
+      "centre": [
+        4.883800679368446,
+        52.36216899080454
+      ],
+      "headingDegrees": 37.75613184714064,
+      "lengthMetres": 38.545097684005455,
+      "widthMetres": 20.61145838101024
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Paradiso",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.paradiso.nl/en/info/about-us/paradiso-vandaag",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+    }
+  },
+  "runtimeManifestContainsModel": true,
+  "currentMeshSha256": "910c44a76ca569b0e8f9d097641e677fd42ee66c54053d655b9c07a60c5d4ded",
+  "currentMeshBytes": 46060,
+  "existingInfo": {
+    "modelId": "paradiso",
+    "name": "Paradiso",
+    "description": "Paradiso is a music venue in a former church near Leidseplein. The main hall retains the church’s tall stained-glass windows.",
+    "sourceUrl": "https://www.paradiso.nl/en/info/about-us/paradiso-vandaag"
+  },
+  "sourcePack": "blackmad/map-recall2-source-data/models/paradiso",
+  "sourceImageGap": "No original photos in private model pack or bounded immediate /private/tmp filename search; cached operator webpage exists",
+  "builder": "scripts/landmarks/cultural-builders.ts#paradiso",
+  "scopeFindings": [
+    "Width/depth-fitted church body; no surveyed native polygon assembly in this branch",
+    "Existing front portal authored on positive-X short end; PARADISO identification word authored on positive-Z side; reference placement requires review",
+    "Existing model and POI should be preserved as fallback until a source-backed replacement loads"
+  ],
+  "remainingRequirements": [
+    "Exact current BAG/OSM parent and entrances, neighbors and height hierarchy",
+    "Bounded Beeldbank address search plus monument description and current original principal/opposite/roof photographs",
+    "Verify real defining signage and actual panel plane; remove unsupported identification lettering from replacement",
+    "Native gallery and live source comparison, exact suppression and physical card/pin/route checks"
+  ],
+  "acceptance": "No new visual or route traversal acceptance; existing coverage does not prove complete quality"
+}

@@ -1,0 +1,226 @@
+{
+  "id": "luther-museum",
+  "status": "Draft ready for coordinator integration and independent GPU acceptance; no visual acceptance claimed",
+  "existingDestination": {
+    "id": "extract_landmarks_218084814",
+    "name": "Luther Museum Amsterdam",
+    "center": [
+      52.3655242,
+      4.9088495
+    ],
+    "osmNode": "n4457150327",
+    "policy": "Preserve genuine identity and existing Wikipedia facts. Its coordinate is an address/POI point, not footprint proof."
+  },
+  "officialIdentity": {
+    "address": "Nieuwe Keizersgracht 570,1018VG Amsterdam",
+    "vbo": "0363010012105556",
+    "vboAreaSquareMetres": 466,
+    "vboFunction": "bijeenkomstfunctie",
+    "parentPand": "0363100012164939",
+    "parentUuid": "3a0f0730-1cc7-5827-b804-6c291e9395e8",
+    "proof": "Official VBO pand.href -> fetched Pand UUID -> exact Pand identificatie. Reciprocal parent has121VBOs; its entire geometry includes both main courts and later wing.",
+    "osmRelation": "r3604195",
+    "osmOuter": "w269000350",
+    "courtWays": [
+      "w269000320",
+      "w269000352"
+    ],
+    "independentBuildingParts": "None tagged in bounded current OSM map response",
+    "register": "525060",
+    "complexRegister": "525062"
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "localPath": "../map-recall2-source-data/models/luther-museum",
+    "commit": null,
+    "publicationOwner": "root owns both git indices; worker did not stage,commit,push or run shared archival indexing"
+  },
+  "architecturalAssertions": [
+    {
+      "part": "Historic main block",
+      "assertion": "Built1769\u20131771 as a large brick institutional block around two courtyards; projecting bays and corner strips define the facade.",
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/525060",
+      "date": "Register accessed2026-10-08",
+      "confidence": "high; compared with current2025BAG/aerial/2024facade"
+    },
+    {
+      "part": "Canal-facing centre",
+      "assertion": "Central projecting bay carries a triangular pediment with a clock.",
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/525060",
+      "confidence": "high for assembly; current clock partly tree-occluded;1880reference shows pediment"
+    },
+    {
+      "part": "Paired entrances",
+      "assertion": "Broad stone-framed doors and lanterns occupy the end bays; they historically separated elderly residents and orphans.",
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/525060",
+      "confidence": "high; current leaf-off2024view confirms museum west door, steps and lanterns"
+    },
+    {
+      "part": "Canal facade",
+      "assertion": "Current risalits/recesses yield3+3+5+3+3bays. Low basement openings, tall lower windows, medium middle tier and shorter upper tier have pale multi-pane frames.",
+      "source": "Municipal2024-12-10panorama00113 plus2021-01-22opposite-bank001062 and currentBAG boundary",
+      "confidence": "high for tier/rhythm; medium for complete count/approximate aperture dimensions"
+    },
+    {
+      "part": "Main roof",
+      "assertion": "Hip roofs enclose both courts; centre front/rear pediment roof slopes show green metal. Narrow brick chimney masses rise above the principal ridges; at least two pale canal-side dormers remain visible.",
+      "source": "PDOK2025orthoHR plus2023AHN5/3DBAG and current2021/2024views",
+      "confidence": "high for roof layout; medium for dormer count and green metal assignment; cap ornament simplified"
+    },
+    {
+      "part": "Later wing",
+      "assertion": "The lower later wing has three principal tiers, a complicated shorter roof, and a rounded corner with a pale glazed cupola. It belongs to the same current BAG parent.",
+      "source": "https://hillen-roosen.nl/project/wittenberg/ ; current2025aerial; exactBAG parent",
+      "confidence": "high for scope/silhouette; cupola face positions and peak height approximate"
+    },
+    {
+      "part": "Garden side",
+      "assertion": "Current2025garden-side panorama confirms tall white window groups and retained neighboring street houses around the garden wall.",
+      "source": "Municipal2025-06-19panorama02720",
+      "confidence": "high for exposed end; central garden elevation partly occluded"
+    }
+  ],
+  "references": [
+    {
+      "role": "current main facade and museum entrance",
+      "privatePath": "raw/b_20241210_1246_Track25_Sphere_00113.jpg",
+      "processedPath": "processed/b_20241210_1246_Track25_Sphere_00113-front.jpg",
+      "captureDate": "2024-12-10T13:08:08Z",
+      "note": "Leaf-off; close lower tiers and entrance useful. Panorama API mission year is not capture authority."
+    },
+    {
+      "role": "current main frontage near museum door",
+      "privatePath": "raw/recording_2025-06-19_03-28-47_02683.jpg",
+      "processedPath": "processed/recording_2025-06-19_03-28-47_02683-front.jpg",
+      "captureDate": "2025-06-19T04:00:23Z"
+    },
+    {
+      "role": "wide opposite-bank facade/roof",
+      "privatePath": "raw/TMX7316010203-001975_pano_0000_001062.jpg",
+      "processedPath": "processed/TMX7316010203-001975_pano_0000_001062-front.jpg",
+      "captureDate": "2021-01-22T12:22:30.506980Z",
+      "note": "Older leaf-off view cross-checked against2024/2025. Boats hide some basement tier."
+    },
+    {
+      "role": "opposite garden side and retained neighboring buildings",
+      "privatePath": "raw/recording_2025-06-19_03-28-47_02720.jpg",
+      "processedPath": "processed/recording_2025-06-19_03-28-47_02720-front.jpg",
+      "captureDate": "2025-06-19T04:00:58Z",
+      "note": "Central garden face occluded by foliage, end face clear."
+    },
+    {
+      "role": "current roof/courts/neighbor scope",
+      "privatePath": "raw/aerial-2025.png",
+      "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?service=WMS&version=1.3.0&request=GetMap&layers=2025_orthoHR&styles=&crs=EPSG:28992&bbox=122355,486435,122525,486580&width=1200&height=1024&format=image/png",
+      "captureYear": 2025,
+      "note": "Original WMS response is archived; calendar layer year does not establish exact capture day."
+    },
+    {
+      "role": "later wing context",
+      "privatePath": "raw/renovation.jpg",
+      "url": "https://hillen-roosen.nl/wp-content/uploads/2018/03/1-2.jpg",
+      "date": "Published in2018 URL; precise capture date unknown",
+      "rights": "Not independently established; private research only"
+    },
+    {
+      "role": "historic facade",
+      "privatePath": "raw/historic-rce.jpg",
+      "cataloguePath": "raw/historic-rce-page.html",
+      "metadataPath": "raw/commons-api.json",
+      "date": "1880 according to catalogue metadata",
+      "rights": "Commons catalogue saysCC BY-SA4.0",
+      "note": "Full-resolution original succeeded on later2026-10-08T19:51:35UTC retry after earlier429failures; original inspected. Historic windows/dormers cross-checked against current views. Served1280px derivative retained separately.",
+      "derivativePath": "raw/historic-rce-thumb.jpg"
+    },
+    {
+      "role": "operator facts/interior",
+      "privatePath": "raw/operator.html",
+      "extraImagePath": "raw/operator-facade.jpg",
+      "note": "Filename retained from acquisition guess: image is actually an interior, not facade evidence."
+    }
+  ],
+  "accessStates": {
+    "beeldbank": {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Nieuwe%20Keizersgracht%20570",
+      "privatePath": "raw/beeldbank.html",
+      "state": "One bounded address search obtained viewer shell; no inspected archive catalogue drawing from that shell. Historic RCE catalogue photo separately inspected."
+    },
+    "bouwdossiers": {
+      "url": "https://beta.archief.amsterdam/handleiding/bouwdossiers",
+      "privatePath": "raw/bouwdossiers.html",
+      "state": "Access instructions obtained; no building dossier sheets downloaded. Existing native survey/current photographs suffice for bounded geometry; exact hidden joinery remains unresolved."
+    },
+    "overpass": "First host timed out; second returned500 after bounded retries. Direct official OSM map API succeeded2026-10-08; not permanently unavailable."
+  },
+  "measuredVersusApproximate": {
+    "measured": "Native current BAG outline/holes, official identities, local metre axes,52supported2023AHN5roof planes,ground0.391mNAP; main eaves around15.3m and ridges20.3m; sparse chimney top23.036m is not a whole-building height.",
+    "approximate": "Window sizes and complete counts, trim/muntin thicknesses, door relief/steps/lantern shapes, two minimum visible dormers, minor roof/chimney/cupola ornament. No name signage invented.",
+    "numericalCleanup": "Original fitted roof polygons simplified only for in-line deviations below12mm to prevent quantization reversing skinny triangles; exact BAG ground outline remains unchanged."
+  },
+  "nativeReview": {
+    "anchor": [
+      4.9091,
+      52.3654
+    ],
+    "axes": "X east,Z south,Y ground-relative",
+    "scale": 1,
+    "galleryCanalThetaRadians": 2.63,
+    "galleryGardenThetaRadians": 5.77,
+    "liveCanalBearingDegrees": 209,
+    "liveGardenBearingDegrees": 29,
+    "sourceNormalEastSouth": [
+      0.488,
+      -0.872
+    ],
+    "required": "Default gallery and four lower rotations; both live sides; exact loaded suppression of BAG/relation/outer, retained resident/drawn neighbors, genuine chosen finish/pin and actual physical pointer sourced card. Root owns serial GPU and independent reviewer."
+  },
+  "checks": {
+    "focusedGeometry": "36court rays,5088pane fraction probes,finite native bounds,52planar upward roof-domain surfaces and actual matching support pass",
+    "decodedDraft": "26,657triangles,328,120bytes,no textures,no downward slate roof faces or slivers",
+    "types": "Focused tsc check passed after final cupola edit",
+    "visualStatus": "Worker CPU source comparison only; gallery/live/independent acceptance pending"
+  },
+  "uncertainties": [
+    "Main chimney caps and roof joinery simplified; compare silhouette at lower angles.",
+    "Court window rhythm inferred from photographed exterior family; complete court elevations not photographed.",
+    "Garden middle and some annex rear openings partly hidden; approximate window count should not be treated as measured.",
+    "Cupola peak and panes use photo-guided reconstruction above surveyed tower cap; root must inspect source/render.",
+    "Source-pack commit and publication are pending coordinator action."
+  ],
+  "independentRoofSeamReview": {
+    "retractedDiagnosis": "Initial CPU suspicion that all broad upper masonry faces were artificial is retracted. Nine of ten inspected visible edges coincide with official LoD2.2 WallSurface polygons. Preserve court walls, chimney steps and pediment side walls; surveyed membership alone is not visual acceptance.",
+    "demonstratedFailure": {
+      "roofDomain": 30,
+      "sourceRoofSurface": 330,
+      "edgeVertices": [
+        5,
+        6
+      ],
+      "lengthMetres": 9.13362757,
+      "source": "raw/3dbag.json LoD2.2 WallSurface polygons, native projected coordinates",
+      "samples": 41,
+      "heightRangeMetres": [
+        2,
+        19
+      ],
+      "edgeFractions": [
+        0.02,
+        0.1,
+        0.25,
+        0.5,
+        0.75,
+        0.9,
+        0.98
+      ],
+      "matchedWallSurfaces": 0,
+      "duplicateRoofDomain": 2,
+      "duplicateEdgeVertices": [
+        14,
+        15
+      ]
+    },
+    "repair": "Remove four artificial vertical extrusion triangles: two copies of the one internal seam, in adjoining domains 30 and 2. Retain both measured roof planes, surveyed shell boundaries, all other walls and both courts.",
+    "sourceVisualLimit": "Current 2025 aerial and 2021/2024 canal views support stepped roof/court/chimney composition, but small individual wall faces are partly occluded. Only independently demonstrated absent internal wall is removed.",
+    "failedExportSHA256": "e304c2c887e0ba0c2e62e5f7c1943b147754b1ee4013d018db36ae35d1f23c5b"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "n26612532",
+  "name": "Brandweerkazerne Victor",
+  "center": [
+    52.360452,
+    4.929157
+  ],
+  "type": "fire station",
+  "cityId": "amsterdam",
+  "website": "https://www.brandweer.nl/kazerne/amsterdam-victor/",
+  "description": "A rationalist brick fire station on the Dapperstraat\u2013Domselaerstraat corner, with twin arched fire-engine doors, paired corner gables and a small side balcony. Publieke Werken designed the 1911 building; the station opened in 1912.",
+  "funFact": "Victor was Amsterdam\u2019s first fire station without horse stables: its early electrically powered fire engines had a large charging station here. The V name dates from its former Pieter Vlamingstraat station. The original building combined fire station and living quarters; the whole building now serves the fire brigade.",
+  "sources": [
+    {
+      "title": "Official station address and operator",
+      "url": "https://www.brandweer.nl/kazerne/amsterdam-victor/"
+    },
+    {
+      "title": "Publieke Werken architecture and historical photographs",
+      "url": "https://amsterdamopdekaart.nl/1850-1940/Dapperstraat/325"
+    },
+    {
+      "title": "Official renovation brief: existing building and historic preservation",
+      "url": "https://www.tenderned.nl/papi/tenderned-rs-tns/v2/publicaties/413174/documenten/13778424/content"
+    }
+  ],
+  "sourceIdentity": "Genuine currentOSMnode26612532,updated2026-06-30amenityfire_station; nofakeextract. Publicentranceat actualDapperstraatportal, officialaddressBAG0363100012103300."
+}

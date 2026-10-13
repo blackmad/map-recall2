@@ -1,0 +1,54 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "bilder-092394",
+ "pandId": "0363100012092394",
+ "address": "Bilderdijkstraat (1939 plain block)",
+ "sources": [
+  {
+   "id": "pano-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/pand-reference/0363100012092394/front.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Bilderdijkstraat",
+   "hoist": false,
+   "windows": "sash-small-panes",
+   "basement": "none",
+   "cornice": "simple",
+   "gable": "cornice",
+   "storeys": 5,
+   "bays": 3,
+   "doorBay": null,
+   "shopfront": {
+    "colour": "dark-brown",
+    "fascia": true,
+    "fasciaColour": "#a8946a",
+    "entrance": "right",
+    "glazing": "transom",
+    "stallriser": "medium",
+    "residentialDoor": {
+     "side": "left",
+     "colour": "dark-red"
+    },
+    "evidence": "front.jpg 2024-11-29: tan fascia band without text, dark-red street door with slots at the left, one large pane with transom lights and a gold house emblem (not modelled), narrow door at the right. Use not identifiable."
+   },
+   "bands": "storey"
+  }
+ ],
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "red-brown",
+  "frame": "white",
+  "door": "dark-brown",
+  "stone": "sandstone"
+ },
+ "notes": []
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Vrijburg",
+  "landmarkId": "extract_landmarks_563908011",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Diepenbrockstraat_46",
+  "suppressOsmIds": ["NL.IMBAG.Pand.0363100012127929"],
+  "pandId": "0363100012127929",
+  "materialOverrides": {"brick": "#6b3f33", "stone": "#c9b99a", "slate": "#3c3f45", "glass": "#6f8790", "dark": "#2c2118", "white": "#e3dfd2", "frame": "#e6e2d4", "copper": "#6aa38c"},
+  "surveySource": "Current BAG 0363100012127929 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; entrance arch, gable window group, side gables and spire measured by eye from the 2025 municipal panoramas, no pixels or meshes imported."
+}

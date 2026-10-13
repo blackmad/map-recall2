@@ -1,0 +1,90 @@
+{
+  "id": "bercylaan-801-855",
+  "name": "BOLD, Bercylaan 801-855",
+  "category": "ordinary",
+  "modelUrl": "./models/bercylaan-801-855.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012250610",
+    "w1212855770",
+    "w1244980639"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.905327763569813,
+      52.38557058320185
+    ],
+    "headingDegrees": 53.5,
+    "lengthMetres": 120.04,
+    "widthMetres": 33.36
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.905399646658424,
+      52.38551282628485
+    ],
+    "northOffsetDegrees": 0,
+    "source": "PDOK BAG 0363100012250610 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+  },
+  "preservePositionPrecision": true,
+  "attribution": {
+    "title": "BOLD, Bercylaan 801-855 original architecture",
+    "author": "Map Recall",
+    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012250610",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.904612056909638,
+          52.385916443504
+        ],
+        [
+          4.9050208877403785,
+          52.385576334288096
+        ],
+        [
+          4.905655903952866,
+          52.385048033807756
+        ],
+        [
+          4.9057831385289905,
+          52.38511408923697
+        ],
+        [
+          4.905902773566651,
+          52.38518745657659
+        ],
+        [
+          4.906002816583049,
+          52.385259270210675
+        ],
+        [
+          4.905997605518138,
+          52.385264372013914
+        ],
+        [
+          4.905409602925798,
+          52.3857526816599
+        ],
+        [
+          4.904999623949092,
+          52.38609313804671
+        ],
+        [
+          4.904612056909638,
+          52.385916443504
+        ]
+      ]
+    ]
+  },
+  "materialOverrides": {
+    "slate": "#3a3d41"
+  }
+}

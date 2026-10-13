@@ -31,6 +31,8 @@ import type { Bridge, BridgeCrossing, Landmark, LandmarkNotice, Neighborhood, Wo
 
 /** The player's boat or car. */
 export interface Vehicle extends WorldPoint {
+  ferryOrigin?: import('../ferry/network').Terminal | null;
+  ferryDestinations?: string;
   angle: number;
   speed: number;
   vx: number;
@@ -195,6 +197,7 @@ export interface RecallStore extends AnswerRecallStore {
   }>;
   routeMastery(cityId: string): Record<string, number>;
   routeReviewDue?(cityId: string): Record<string, true>;
+  historyReady?(timeoutMs?: number): Promise<void>;
   homeMasterySamples?(cityId: string): Array<{ lat: number; lng: number; mastery: number }>;
   /** Makes every place-local chunk for one named item due without logging a quiz result. */
   queueForPractice(itemKey: string): number;
@@ -237,6 +240,10 @@ export interface RecallHost extends GameCoreHost {
   quizCurrentName: string;
   quizCandidateName: string;
   quizCandidateTimer: number;
+  /** Metres along the settling candidate; undefined reads as 0. */
+  quizCandidateMetres?: number;
+  /** Heading on the last frame spent on the settled corridor. */
+  _quizCorridorHeading?: number | null;
   quizPromptKind: QuizPromptKind;
   quizPromptSegmentIndex: number;
   quizPromptPointIndex: number;

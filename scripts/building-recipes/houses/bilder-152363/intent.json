@@ -1,0 +1,61 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "bilder-152363",
+ "pandId": "0363100012152363",
+ "address": "Bilderdijkstraat (1881 dark brick, pedimented dormer)",
+ "sources": [
+  {
+   "id": "pano-2025-07-31",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-31",
+   "image": "staging/pand-reference/0363100012152363/front.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Bilderdijkstraat",
+   "hoist": false,
+   "windows": "sash",
+   "basement": "none",
+   "cornice": "simple",
+   "gable": "cornice",
+   "storeys": 4,
+   "bays": 3,
+   "dormers": 1,
+   "doorBay": null,
+   "shopfront": {
+    "colour": "dark-blue",
+    "fascia": true,
+    "name": "De Japanner",
+    "sign": {
+     "text": "DE JAPANNER",
+     "textColour": "white",
+     "span": 0.6
+    },
+    "entrance": "none",
+    "glazing": "split",
+    "stallriser": "high",
+    "stallriserColour": "white",
+    "residentialDoor": {
+     "side": "left",
+     "colour": "black"
+    },
+    "shopShare": 0.7,
+    "evidence": "front.jpg 2025-07-31: black street door in a white surround at the left; navy fascia \"DE JAPANNER\" (white capitals, Heineken marks not modelled) over two navy-framed windows on white-painted walls at the right. OSM node De Japanner (restaurant, Bilderdijkstraat 203) 9 m away. Café entrance is not visible on this wall (corner house 156732)."
+   }
+  }
+ ],
+ "roof": {
+  "material": "red-tile"
+ },
+ "palette": {
+  "brick": "#5a3b30",
+  "frame": "white",
+  "door": "black",
+  "stone": "cream-painted"
+ },
+ "notes": []
+}

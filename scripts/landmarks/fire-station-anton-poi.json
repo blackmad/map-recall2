@@ -1,0 +1,32 @@
+{
+  "id": "w819163075",
+  "name": "Kazerne Anton",
+  "type": "fire_station",
+  "cityId": "amsterdam",
+  "center": [
+    52.307150805532515,
+    4.973277542354208
+  ],
+  "description": "ME-2 architects designed this 2016 station as an elbow around a private rear yard. Four gray brick shades echo the layers of stone and surrounding traffic. Three response vehicles leave from the raised ground floor; sports rooms occupy the lower level and recreation space sits above. A deliberate clean/dirty route keeps soot from equipment out of the living rooms.",
+  "sourceUrls": [
+    "https://www.brandweer.nl/kazerne/amsterdam-anton/",
+    "https://www.me-2.nl/project/kazerne-anton-amsterdam-amstelland/",
+    "https://www.openstreetmap.org/way/819163075"
+  ],
+  "architect": "ME-2 architecten",
+  "opened": 2016,
+  "identityNote": "Genuine current OSM amenity polygon; absent curated extract. No invented extract ID.",
+  "lng": 4.973277542354208,
+  "lat": 52.307150805532515,
+  "category": "building",
+  "facts": [
+    "Completed in 2016 to a design by ME-2 architects.",
+    "Three response vehicle bays occupy the raised working floor; a gym is below and living space above.",
+    "The four shades of gray brick suggest the layers of stone and the motion of nearby traffic."
+  ],
+  "destinationNote": "Pin on source-supported recessed public entrance below the front-right overhang. Route destination extends to the open forecourt beyond the frontage, not the inaccessible centroid of the OSM station grounds.",
+  "routeDestination": {
+    "lng": 4.973250036726173,
+    "lat": 52.30710402097107
+  }
+}

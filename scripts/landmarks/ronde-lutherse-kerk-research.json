@@ -1,0 +1,47 @@
+{
+  "canonicalModelId": "ronde-lutherse-kerk",
+  "researchedOn": "2026-10-10",
+  "state": "built",
+  "destination": {
+    "landmarkId": "requested-ronde-lutherse-kerk",
+    "name": "Ronde Lutherse Kerk (Koepelkerk)",
+    "address": "Singel 11 (register: Kattengat 2), Amsterdam",
+    "bagPand": "NL.IMBAG.Pand.0363100012179368",
+    "note": "No installed model or landmarks.json entry covered this pand (Oude Lutherse Kerk is a different church, Singel 411). Jan Roodenpoortstoren is demolished (1829) and was skipped."
+  },
+  "architecture": {
+    "sources": [
+      {"url": "https://nl.wikipedia.org/wiki/Ronde_Lutherse_Kerk", "retrieved": "2026-10-10"},
+      {"url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/2207", "retrieved": "2026-10-10", "licence": "register text, cited not copied"}
+    ],
+    "facts": [
+      "Round domed church by Adriaan Dortsman, 1668-1671 (Lutherans were forbidden a tower, so a dome with a small lantern carrying the Lutheran swan was built).",
+      "Burnt 18 Sept 1822, only the walls survived; rebuilt 1823-1826 to plans of T.F. Suys and Jan de Greef with a raised dome and Roman coffers.",
+      "Dome fire 3 Feb 1993, restored by June 1994; the roof is copper-coloured, no longer green.",
+      "Register 2207: round domed church in classicist forms with a 'zijbeuk' built against the rear half; copper roof."
+    ]
+  },
+  "measuredBy": {
+    "3dbag": "NL.IMBAG.Pand.0363100012179368, ground 0.461 m NAP, roofMax 43.3 m NAP; wall to 24.5-26.4 m at the drum, dome planes 27 to 34.7 m, lantern 34.7 to about 43; annex roofs 17.4-20.4 m; north-east tail roofs 8-12 m.",
+    "geometry": "Circle fitted to the exposed BAG arc: centre (-3.0, -3.5) native m from the footprint centroid (4.8937841, 52.3779083), radius 13.16 m (model R 13.3). Nine window bays of 40 degrees centred on bearings 237 + 40k read from ref-west.jpg (camera about 276 degrees).",
+    "uncertain": [
+      "Window bay phase (+-5 degrees) and the lower-tier window sizes are read from one oblique photograph.",
+      "The annex (zijbeuk) and the low houses at the north-east tail have no photographs; they are the BAG polygon extruded to the 3DBAG roof height with flat tops and no openings (audit blank-wall warnings are expected and left alone).",
+      "The 2025 municipal panoramas show the drum under scaffolding and sheeting and could not be used for detail."
+    ]
+  },
+  "photos": [
+    {"file": "ref-west.jpg", "url": "https://commons.wikimedia.org/wiki/File:Ronde_Lutherse_Kerk_2482.jpg", "author": "C messier", "date": "2016-09-01", "licence": "CC BY-SA 4.0", "retrieved": "2026-10-10", "feature": "drum, two window tiers, dome and lantern, annex at right"},
+    {"file": "ref-kattengat-1975.jpg", "url": "https://commons.wikimedia.org/wiki/File:Ronde_Lutherse_Kerk_gerestaureerd_exterieur_gezien_vanaf_Kattegat,_Bestanddeelnr_928-1705.jpg", "author": "Hans Peters for Anefo (Nationaal Archief)", "date": "1975-09-25", "licence": "CC0", "retrieved": "2026-10-10", "feature": "drum from the Kattengat side, lead-coloured dome before 1993"},
+    {"file": "ref-singel.jpg", "url": "https://commons.wikimedia.org/wiki/File:Singel_and_Ronde_Lutherse_Kerk.jpg", "author": "APK", "date": "2023-09-15", "licence": "CC BY-SA 4.0", "retrieved": "2026-10-10", "feature": "dome and lantern along the Singel, copper colour"},
+    {"file": "ref-old-view.jpg", "url": "https://commons.wikimedia.org/wiki/File:Stadsgezicht_met_ronde_koepelkerk_en_Singel_op_de_voorgrond_-_Amsterdam_-_20415453_-_RCE.jpg", "author": "unknown (RCE)", "licence": "CC BY-SA 4.0", "retrieved": "2026-10-10", "feature": "overview with the annex"},
+    {"file": "ref-lantern.jpg", "url": "https://commons.wikimedia.org/wiki/File:WLM_-_andrevanb_-_amsterdam,_ronde_lutherse_kerk_(1).jpg", "author": "Andre van B", "date": "2010-09-04", "licence": "CC BY-SA 2.0", "retrieved": "2026-10-10", "feature": "lantern: colonnade, gridded glazing, cap, ball, swan vane"},
+    {"file": "ref-lantern2.jpg", "url": "https://commons.wikimedia.org/wiki/File:WLM_-_andrevanb_-_amsterdam,_ronde_lutherse_kerk_(5).jpg", "author": "Andre van B", "date": "2010-09-04", "licence": "CC BY-SA 2.0", "retrieved": "2026-10-10", "feature": "lantern close-up"},
+    {"file": "ref-cornice.jpg", "url": "https://commons.wikimedia.org/wiki/File:WLM_-_andrevanb_-_amsterdam,_ronde_lutherse_kerk_(3).jpg", "author": "Andre van B", "date": "2010-09-04", "licence": "CC BY-SA 2.0", "retrieved": "2026-10-10", "feature": "entablature, modillions, pilaster capitals"}
+  ],
+  "raw": [
+    {"file": "artifacts/landmark-lanes/ronde-lutherse-kerk/raw/3dbag-NL.IMBAG.Pand.0363100012179368.json", "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012179368", "retrieved": "2026-10-10", "licence": "CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/ronde-lutherse-kerk/raw/register-2207.html", "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/2207", "retrieved": "2026-10-10"},
+    {"file": "artifacts/landmark-lanes/ronde-lutherse-kerk/raw/wikipedia-nl-ronde-lutherse-kerk.json", "url": "https://nl.wikipedia.org/wiki/Ronde_Lutherse_Kerk", "retrieved": "2026-10-10", "licence": "CC BY-SA 4.0"}
+  ]
+}

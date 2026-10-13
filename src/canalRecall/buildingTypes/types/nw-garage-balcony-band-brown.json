@@ -1,0 +1,474 @@
+{
+  "id": "nw-garage-balcony-band-brown",
+  "label": "Nieuw-West cluster 8 design C (Karel Klinkenbergstraat): five-storey brown-brick portiekflat 17 x 11.7 m, cream slab band at every floor, two grey-clad balconies at each end over garage doors, window / small window / window core with a numbered entrance canopy",
+  "source": {
+    "clusterRank": 8,
+    "panden": 11,
+    "bouwjaar": [
+      1956,
+      1960
+    ],
+    "lengthM": 17.0,
+    "widthM": 11.7,
+    "bouwlagen": 5,
+    "roof": "pitched",
+    "dwellingsMedian": 8
+  },
+  "storeys": 5,
+  "roof": {
+    "form": "flat",
+    "ridge": "long",
+    "eavesOverhangM": 0.2,
+    "vergeOverhangM": 0,
+    "thicknessM": 0.22,
+    "pitchDeg": 0
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "brown-brick",
+  "variants": {
+    "brown-brick": {
+      "label": "Brown brick (sunlit photo warm median #635139 at 0363100012150669, #6e5948 at 2135872), cream slab bands, grey metal-clad balconies, grey garage doors",
+      "evidence": "crops 0363100012150669 #5e4f38 (blue-sky frame), 2073950 #5a5f58 and 2135872 #4c5047 are the same wall in shade",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#6a5540"
+        },
+        "frame": "#f0ede3",
+        "glass": "#46525e",
+        "door": "#6a6e70",
+        "accent": "#b8b2a4",
+        "rail": "#9a9c9c",
+        "dark": "#55575a",
+        "column": "#e6e1d2",
+        "joint": "#4b3f30",
+        "roof": {
+          "slot": "bitumen",
+          "tint": "#5c5e60"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "crops/0363100012135872.jpg",
+          "pand": "0363100012135872",
+          "address": "Karel Klinkenbergstraat 119-121 (frontal)",
+          "note": "two grey balconies at each end per floor, two windows with a small window between them over the entrance, cream floor bands, garage doors between red-brick piers, number sign over the entrance"
+        },
+        {
+          "photo": "crops/0363100012073950.jpg",
+          "pand": "0363100012073950",
+          "address": "Karel Klinkenbergstraat 111-113 (frontal)",
+          "note": "same layout; entrance with glazed screen; garage doors left and right"
+        },
+        {
+          "photo": "crops/0363100012136087.jpg",
+          "pand": "0363100012136087",
+          "address": "Karel Klinkenbergstraat 103-105 (frontal)",
+          "note": "same layout, window sizes identical, balconies with corrugated grey cladding"
+        },
+        {
+          "photo": "crops/0363100012150669.jpg",
+          "pand": "0363100012150669",
+          "address": "Karel Klinkenbergstraat 36-34 (frontal)",
+          "note": "same layout, blue sky: wall colour sampled here"
+        }
+      ],
+      "counted": {
+        "bays": 7,
+        "openingsPerUpperStorey": 3,
+        "groundDoors": 5,
+        "balconiesPerUpperStorey": 4
+      },
+      "bays": [
+        {
+          "id": "B1",
+          "w": 2.3,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 1.7,
+              "depth": 1.1,
+              "railing": "solid"
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 2.0,
+              "h": 2.2
+            }
+          ]
+        },
+        {
+          "id": "B2",
+          "w": 2.3,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 1.7,
+              "depth": 1.1,
+              "railing": "solid"
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 2.0,
+              "h": 2.2
+            }
+          ]
+        },
+        {
+          "id": "Wl",
+          "w": 2.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.1,
+              "h": 1.2,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "w": 1.4,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.8,
+              "h": 0.8,
+              "sill": 1.1,
+              "lights": 1
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 1.6,
+              "h": 2.3,
+              "steps": 0
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "w": 2.2,
+              "h": 0.45,
+              "sill": 2.5,
+              "depth": 0.4,
+              "colour": "accent"
+            }
+          ]
+        },
+        {
+          "id": "Wr",
+          "w": 2.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.1,
+              "h": 1.2,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "B3",
+          "w": 2.3,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 1.7,
+              "depth": 1.1,
+              "railing": "solid"
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 2.0,
+              "h": 2.2
+            }
+          ]
+        },
+        {
+          "id": "B4",
+          "w": 2.3,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 1.7,
+              "depth": 1.1,
+              "railing": "solid"
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 2.0,
+              "h": 2.2
+            }
+          ]
+        }
+      ],
+      "bands": [
+        {
+          "floor": 1,
+          "below": 0.3,
+          "above": 0.12,
+          "palette": "column"
+        },
+        {
+          "floor": 2,
+          "below": 0.3,
+          "above": 0.12,
+          "palette": "column"
+        },
+        {
+          "floor": 3,
+          "below": 0.3,
+          "above": 0.12,
+          "palette": "column"
+        },
+        {
+          "floor": 4,
+          "below": 0.3,
+          "above": 0.12,
+          "palette": "column"
+        },
+        {
+          "floor": 5,
+          "below": 0.3,
+          "above": 0.12,
+          "palette": "column"
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012087899.jpg",
+          "pand": "0363100012087899",
+          "address": "Karel Klinkenbergstraat (oblique along the block)",
+          "note": "back not photographed; copied from the front without garage doors. NOT verified."
+        }
+      ],
+      "counted": {
+        "bays": 7,
+        "openingsPerUpperStorey": 3,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 4
+      },
+      "bays": [
+        {
+          "id": "B1",
+          "w": 2.3,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 1.7,
+              "depth": 1.1,
+              "railing": "solid"
+            }
+          ]
+        },
+        {
+          "id": "B2",
+          "w": 2.3,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 1.7,
+              "depth": 1.1,
+              "railing": "solid"
+            }
+          ]
+        },
+        {
+          "id": "Wl",
+          "w": 2.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.1,
+              "h": 1.2,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "w": 1.4,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.8,
+              "h": 0.8,
+              "sill": 1.1,
+              "lights": 1
+            }
+          ]
+        },
+        {
+          "id": "Wr",
+          "w": 2.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.1,
+              "h": 1.2,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "B3",
+          "w": 2.3,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 1.7,
+              "depth": 1.1,
+              "railing": "solid"
+            }
+          ]
+        },
+        {
+          "id": "B4",
+          "w": 2.3,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 1.7,
+              "depth": 1.1,
+              "railing": "solid"
+            }
+          ]
+        }
+      ],
+      "bands": [
+        {
+          "floor": 1,
+          "below": 0.3,
+          "above": 0.12,
+          "palette": "column"
+        },
+        {
+          "floor": 2,
+          "below": 0.3,
+          "above": 0.12,
+          "palette": "column"
+        },
+        {
+          "floor": 3,
+          "below": 0.3,
+          "above": 0.12,
+          "palette": "column"
+        },
+        {
+          "floor": 4,
+          "below": 0.3,
+          "above": 0.12,
+          "palette": "column"
+        },
+        {
+          "floor": 5,
+          "below": 0.3,
+          "above": 0.12,
+          "palette": "column"
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012087899.jpg",
+          "pand": "0363100012087899",
+          "address": "Karel Klinkenbergstraat (oblique)",
+          "note": "gable / party-wall end modelled blank. NOT verified for end units: no straight-on photo of an end wall in the survey."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "end",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012085172.jpg",
+          "pand": "0363100012085172",
+          "address": "Karel Klinkenbergstraat (oblique)",
+          "note": "gable / party-wall end modelled blank. NOT verified for end units: no straight-on photo of an end wall in the survey."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "end",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Nine panden are confirmed from frontal or oblique photos of the facade; Karel Klinkenbergstraat 69 and 57-59 (0363100012064119, 0363100012063393) only have close-ups of the numbered entrance sign and garage doors in the survey, which match, and are assigned with that caveat.",
+    "Balcony count per end (two side by side) is counted from the oblique photos; the exact balcony width is read from the 111-113 frontal view.",
+    "Photos: Gemeente Amsterdam panoramas (CC BY 4.0), crops made by scripts/building-types/camera-sheets.ts --survey (cached in .cache/building-types/crops).",
+    "Balcony depth 1.1 m (was 0.75 m): in the oblique 0363100012073950 and 2135872 the grey metal-clad balcony fronts stand about 0.55 of their 2.0 m width off the cream slab edge. Estimated from the photos."
+  ]
+}

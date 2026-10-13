@@ -1,0 +1,503 @@
+{
+  "id": "hannekes-boom",
+  "reviewedOn": "2026-10-08",
+  "privateSourcePath": "models/hannekes-boom/raw",
+  "sourceCommit": "pending root additive source publisher",
+  "rawSources": [
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/aerial.jpg",
+      "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?request=GetMap&service=WMS&version=1.3.0&layers=Actueel_orthoHR&styles=&crs=EPSG:4326&bbox=52.3761,4.9112,52.37655,4.9120&width=1200&height=1100&format=image/jpeg",
+      "sha256": "98db4192267745ae6cbe6b8786a7d8b4e0b7be905cec832751a34308d7d0fd72",
+      "bytes": 271162,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/EmiroSmolders-HannekesBoom-08151-10-scaled.jpg",
+      "url": "https://hannekesboom.nl/wp-content/uploads/EmiroSmolders-HannekesBoom-08151-10-scaled.jpg",
+      "sha256": "47e20362edd41df14ad136a504ebd509a76d71f2b9a7e2eb0bd319ba52b9e9c0",
+      "bytes": 1555833,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/architect-Hannekesboom_wp_1600.jpg",
+      "url": "https://storage.googleapis.com/studiovalkenier/hannekesboom/Hannekesboom_wp_1600.jpg",
+      "sha256": "3804c9fd54d70dc77081ad572c09928e6104b29c74222728d061ab3556dab304",
+      "bytes": 1063268,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/beeldbank-search.html",
+      "url": "https://archief.amsterdam/beeldbank/?q=Dijksgracht%204",
+      "sha256": "517a6fc9353af159c0830f1ea3237017e4a32e6c96e15d48b3015ef565face72",
+      "bytes": 17923,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/DSC_8123.jpg",
+      "url": "https://hannekesboom.nl/wp-content/uploads/DSC_8123.jpg",
+      "sha256": "4a6ecab7af63a333c1ac9b9da5820fc1177737a2e31527e84d1572b1ea2afb02",
+      "bytes": 668466,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/pdok-address.json",
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Dijksgracht%204%20Amsterdam&rows=5",
+      "sha256": "bd6d2a595a261e2df1d72c039ddd4d451405bdd4d2fa6e1010d8be826f3e4142",
+      "bytes": 5034,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/bag-pand.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012238899/",
+      "sha256": "e249c1356301d1429f7cede58359b66e545f1bf3c2355fcba0a9eccafc759287",
+      "bytes": 2186,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/bag-vbo.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012061677/",
+      "sha256": "8e0dd1abc02674eb8f8cb006977a44c7de2d5f3ee6c08633eda74f5353aa58c3",
+      "bytes": 2535,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/recording_2025-06-19_03-28-47_00816.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-19_03-28-47_00816/equirectangular/panorama_8000.jpg",
+      "sha256": "e4649083f8e5b9bd9b0e0883e96b6a4a5bee882b5ebd9709a17fe89a8df4f9bf",
+      "bytes": 10110330,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/gijs-images.js",
+      "url": "https://www.gijsdewaal.nl/meth/images-array.js",
+      "sha256": "8c2b106230274686159262a0c796716297b7b0833a5afdbfd061b20874465957",
+      "bytes": 1769,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/panorama-selected.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-19_03-28-47_00816/",
+      "sha256": "2c7a8a3427745c7efe09f3bab9f9b63236f9f7e819a52cf3cd557bff2ea64276",
+      "bytes": 1870,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "processed selected metadata from original panorama-near.json"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/valkenier.js",
+      "url": "https://studiovalkenier.nl/assets/index-BJKPkOK0.js",
+      "sha256": "690c11c0e887affd097da079f6e3471b1471999cd97aa53082d436a44dcb555b",
+      "bytes": 375306,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/EmiroSmolders-HannekesBoom-08162-15-scaled.jpg",
+      "url": "https://hannekesboom.nl/wp-content/uploads/EmiroSmolders-HannekesBoom-08162-15-scaled.jpg",
+      "sha256": "e00fda20cb485a9ef41d52db9ff64f25fe6012e71236787fef642c399bd0cbf1",
+      "bytes": 1193879,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/DSC_8235.jpg",
+      "url": "https://hannekesboom.nl/wp-content/uploads/DSC_8235.jpg",
+      "sha256": "3ef358b01e7d5a9070510039278a1baf8917d2874b8e1757be62ea78e681a779",
+      "bytes": 908673,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/valkenier.html",
+      "url": "https://studiovalkenier.nl/",
+      "sha256": "ee161b6dae5f070da74f589946e6bb2bf520c8c221c6d6ec4a635baa31e844a8",
+      "bytes": 4217,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/EmiroSmolders-HannekesBoot-07604-e1769698004347.jpg",
+      "url": "https://hannekesboom.nl/wp-content/uploads/EmiroSmolders-HannekesBoot-07604-e1769698004347.jpg",
+      "sha256": "f4248d06178e9a0898f1ad444c765872fafb08c06092f64a48fc31fd06e6071f",
+      "bytes": 6833352,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/architect-5-cmyk_wp_1600.jpg",
+      "url": "https://storage.googleapis.com/studiovalkenier/hannekesboom/5-cmyk_wp_1600.jpg",
+      "sha256": "e92dd22c9b0c4d1a405c9125cd3b4523f44cc6e8df8647ea4e97f2211f849d6d",
+      "bytes": 390927,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/43.EmiroSmolders-HannekesBoom-DSC01871-.jpg",
+      "url": "https://hannekesboom.nl/wp-content/uploads/43.EmiroSmolders-HannekesBoom-DSC01871-.jpg",
+      "sha256": "7dc13ec43cccef70d37f682ba0661bb494f32a5ba827659be8088a3cdf3343a7",
+      "bytes": 20102955,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/gijs-beeld.html",
+      "url": "https://www.gijsdewaal.nl/beeld.html",
+      "sha256": "fa9050b31f116b5b3ce4222c191b58437b563690eb7ec7fc2024b15b4b51c98e",
+      "bytes": 3713,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/architect-_DSC6549_wp_1600.jpg",
+      "url": "https://storage.googleapis.com/studiovalkenier/hannekesboom/_DSC6549_wp_1600.jpg",
+      "sha256": "fbe3d12ccc74a5aa7425190aacf1e402058b2f0fe5e6d38e46a6cefd0e2654aa",
+      "bytes": 890197,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/architect-406586_288373941212499_194492350600659_749476_996806035_n-cmyk_wp_1600.jpg",
+      "url": "https://storage.googleapis.com/studiovalkenier/hannekesboom/406586_288373941212499_194492350600659_749476_996806035_n-cmyk_wp_1600.jpg",
+      "sha256": "230ecf9a5e3e4f6ef1fb03dd9e6f0636b8c2033f3bd4c03b6686b1c7aa0db9f0",
+      "bytes": 642125,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012238899",
+      "sha256": "cf32aa0f976ca1f43ffa5f1d99a12a66ed180d90103aa11ed5eadd3dc401ce6d",
+      "bytes": 8159,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/history.html",
+      "url": "https://hannekesboom.nl/geschiedenis/",
+      "sha256": "112bda2002dd0d0b41538e8eddf3f19d6e9fa6130b0a34f5fb4644bd9700342f",
+      "bytes": 302447,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/EmiroSmolders-HannekesBoom-08252-47-1-e1769697876806.jpg",
+      "url": "https://hannekesboom.nl/wp-content/uploads/EmiroSmolders-HannekesBoom-08252-47-1-e1769697876806.jpg",
+      "sha256": "037429a7a9cfee3db1adf154e2ff6ea539e934f7d364e0de1decc0b9f3a74d40",
+      "bytes": 11421575,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/operator-home.html",
+      "url": "https://hannekesboom.nl/",
+      "sha256": "b481fb0e8e43e4cced7acb5a2516684c268e3961fe23be7509368eb140842db0",
+      "bytes": 523461,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/architect-_DSC6570_wp_1600.jpg",
+      "url": "https://storage.googleapis.com/studiovalkenier/hannekesboom/_DSC6570_wp_1600.jpg",
+      "sha256": "5701982cfad55dabbb8104f02471520b7312f7d66ca582eb1657a39757e4798a",
+      "bytes": 930140,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/panorama-near.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.9116,52.37645&srid=4326&page_size=5&radius=45&newest_in_range=true",
+      "sha256": "e26c6d93bdfcd23149cbcf5414a8d679e81a417f801a84cc860e9127cda98d1d",
+      "bytes": 8577,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/hannekesboom__2025-10-18T134438.000Z.jpg",
+      "url": "https://hannekesboom.nl/wp-content/uploads/hannekesboom__2025-10-18T134438.000Z.jpg",
+      "sha256": "20e8696d5ebd1cd7b34f20ab583d78e89f46b880dec845222332e70e790b7343",
+      "bytes": 781033,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/480561828_1065220202316484_561737201217535619_n.jpg",
+      "url": "https://hannekesboom.nl/wp-content/uploads/480561828_1065220202316484_561737201217535619_n.jpg",
+      "sha256": "934bfaf6276539d337d2725280608f4a8e454d18cade027e57272cdce8487fc7",
+      "bytes": 634787,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/valkenier-api.html",
+      "url": "https://studiovalkenier.nl/hannekes-boom",
+      "sha256": "ee161b6dae5f070da74f589946e6bb2bf520c8c221c6d6ec4a635baa31e844a8",
+      "bytes": 4217,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/architect-20210610-Valkenier-9109_wp_1600.jpg",
+      "url": "https://storage.googleapis.com/studiovalkenier/hannekesboom/20210610-Valkenier-9109_wp_1600.jpg",
+      "sha256": "e06e4d6e17d063041a9bf2957832690e6e72bb4ecaf4e6888be89ad9862a3e55",
+      "bytes": 737643,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/architect-VisualHBV2_wp_1600.jpg",
+      "url": "https://storage.googleapis.com/studiovalkenier/hannekesboom/VisualHBV2_wp_1600.jpg",
+      "sha256": "8beb0df745582eec1b922a2f80c1931880592d0d0b535918fcc571b35d4abac8",
+      "bytes": 653718,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/hannekesboom__2025-09-28T103417.000Z.jpg",
+      "url": "https://hannekesboom.nl/wp-content/uploads/hannekesboom__2025-09-28T103417.000Z.jpg",
+      "sha256": "4e3af9a5a2102d7b751d9a76ef91f8c910739be92d7d8f23b8f9b86f5abe813d",
+      "bytes": 278634,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/8_EmiroSmolders-HannekesBoom_DSC00698.jpg",
+      "url": "https://hannekesboom.nl/wp-content/uploads/8_EmiroSmolders-HannekesBoom_DSC00698.jpg",
+      "sha256": "16b05bac08ef22c5926e8473d2d5e89dd7ddfce46207361a296fb4b4b6c40599",
+      "bytes": 15399006,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/gijs-text.html",
+      "url": "https://www.gijsdewaal.nl/teksten.html",
+      "sha256": "04ff6fc0f7928d2ca5e1fb3d62e72065a8275d9b24d914b124a9c7dbc02a2670",
+      "bytes": 12175,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/architect-20210610-Valkenier-9103_wp_1600.jpg",
+      "url": "https://storage.googleapis.com/studiovalkenier/hannekesboom/20210610-Valkenier-9103_wp_1600.jpg",
+      "sha256": "865e6640d68c49cee6efcfdf0dac0a746fc15868995f0eacf4e100366ead543f",
+      "bytes": 1087928,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/Copy-of-HannekesBoom-36-scaled-1.jpg",
+      "url": "https://hannekesboom.nl/wp-content/uploads/Copy-of-HannekesBoom-36-scaled-1.jpg",
+      "sha256": "bc31a025b89f2826b7952ed372571fc765db87508762ce067d2132584b2a629b",
+      "bytes": 1012877,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/23_EmiroSmolders-HannekesBoom_DSC00763-1-e1769691113265.jpg",
+      "url": "https://hannekesboom.nl/wp-content/uploads/23_EmiroSmolders-HannekesBoom_DSC00763-1-e1769691113265.jpg",
+      "sha256": "3b283b670deedb15627c2b9c227022a46ca4bedf14fedeac1a9934002a116aca",
+      "bytes": 13524596,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/EmiroSmolders-HannekesBoom-07310-1.jpg",
+      "url": "https://hannekesboom.nl/wp-content/uploads/EmiroSmolders-HannekesBoom-07310-1.jpg",
+      "sha256": "c1d0cd59869d600bd76ec38af9856dc0a16fedd32c3b98a72753f3125dad1a4f",
+      "bytes": 17378736,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/gijs-home.html",
+      "url": "https://www.gijsdewaal.nl/",
+      "sha256": "086bdce868c7d1a3db29e74ad8336678ef6e766470ce540123f0c2d1d9e59c74",
+      "bytes": 648,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Reference only; no photo pixels imported, exact provider license not inferred",
+      "access": "downloaded original bytes"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/hannekes-boom/raw/history-en.html",
+      "url": "https://hannekesboom.nl/en/history/",
+      "sha256": "8d96b7b771f936269757ccccaabffa6e100d4b8c4579dce4b65b07e967fe7c53",
+      "bytes": 303495,
+      "retrievedOn": "2026-10-08",
+      "httpStatus": 200,
+      "rights": "Provider attribution retained; exact license not inferred",
+      "access": "downloaded original page bytes"
+    }
+  ],
+  "assertions": [
+    {
+      "feature": "2011 freestanding single-storey pavilion; official Dijksgracht4 address VBO0363010012061677 maps exactly Pand0363100012238899",
+      "source": "bag-vbo.json and bag-pand.json",
+      "confidence": "high"
+    },
+    {
+      "feature": "Reused-material timber pavilion by Wouter Valkenier and Gijs de Waal",
+      "source": "https://www.gijsdewaal.nl/teksten.html",
+      "confidence": "high"
+    },
+    {
+      "feature": "Occupied flat roof terrace with reclaimed differently painted vertical-board parapet; exposed upper glass windscreens; gray corrugated lean-to frontage roof; timber lower wall and real opening groups",
+      "source": "EmiroSmolders-HannekesBoom-08252-47-1-e1769697876806.jpg",
+      "confidence": "high",
+      "date": "Current operator photo, retrieved2026-10-08; capture date unspecified"
+    },
+    {
+      "feature": "External straight stair on eastern side, rising south-to-north toward deck. Remains outside main opaque walls.",
+      "source": "architect-Hannekesboom_wp_1600.jpg and current aerial.jpg",
+      "confidence": "medium-high",
+      "note": "Architect photo shows east-side right stair; aerial confirms east edge location. Exact tread count approximate, not measured."
+    },
+    {
+      "feature": "Main deck~3.8m above0.582NAP; lower north service roof~3.15m; small north-west canopy5.7\u20136.02m. Equipment maxima never whole-building heights.",
+      "source": "3dbag.json AHN5/2023 with current aerial and photos",
+      "confidence": "high",
+      "note": "Small central high fitted plane and steep fitted roof plane excluded: point-cloud interpretation uncertain; photos do not establish whole-building pitched roof."
+    },
+    {
+      "feature": "Observed principal south/waterside minimum: two broad pale/white framed assemblies left of a narrow tall white glazed door; additional right-hand window visible partly. Lower windows have shallow upper lights; exact obscured rear count remains unknown.",
+      "source": "architect-_DSC6549_wp_1600.jpg; corroborated architect-_DSC6570 and operator08151 white framing",
+      "confidence": "medium-high",
+      "note": "Bounded original widths/positions photographic approximations; explicit native groups replace equal per-length repetition."
+    },
+    {
+      "feature": "Continuous red awning fascia and red posts, gray corrugated plane with small dark solar bank on source-visible western waterside return. Panels attached to roof plane rather than floating global boxes.",
+      "source": "EmiroSmolders-HannekesBoom-08151-10-scaled.jpg; architect-_DSC6549/_DSC6570 fascia/lean-to",
+      "confidence": "medium-high",
+      "note": "Photo capture dates unspecified. Select coherent white-frame/red-fascia state corroborated by multiple views; current operator includes mixed states,08252yellow does not prove newer repaint."
+    },
+    {
+      "feature": "External stair upper landing connects straight east run across gap into deck; bounded parapet access opening and supports retained.",
+      "source": "architect-Hannekesboom_wp_1600.jpg and current aerial.jpg",
+      "confidence": "medium",
+      "note": "Upper landing dimensions/rail details a bounded physically necessary reconstruction, not surveyed measurements. Primary roof and lower annex wall junction follows source height split; installed-to-survey rounding seam closed."
+    },
+    {
+      "feature": "Installed GeoJSON shell and current surveyed roof/BAG borders differ roughly0.1\u20130.3m at perimeter; edge6 north recess wrongly had open seam. Generic 2D difference finds only these uncovered occupied-shell strips, assigns lower adjacent source height and closes elevated owning roof with source-border risers. Lower north service roof retained, no global north wall-height increase.",
+      "source": "officialBag.pand.geometrie;3dbag.json surfaces33/35; installed mainCandidateFeature GeoJSON; independent-v3 edge6 ownership",
+      "confidence": "high for gap; bounded original seam reconstruction",
+      "note": "Source-aware61station regression distinguishes setback return intersections from an unconditional nearwall distance. Tiny original north recess awnings lacked photograph evidence and were removed."
+    }
+  ],
+  "sourceAccess": {
+    "beeldbank": "Bounded exact Dijksgracht4 search HTTP200 shell saved; no digitized catalogue photo inspected. Current pavilion built2011, not a historic registered building.",
+    "monumentRegister": "No historic monument identity found for this2011 pavilion; not applicable; name1662 does not date present building.",
+    "bouwdossiers": "No linked dossier in municipal VBO/Pand API; architectural photos+survey sufficient for roof/facade recognition; no drawing claimed inspected.",
+    "oldBrochure": "Operator2022PDF URL returned404 three bounded attempts2026-10-08; raw PDF unavailable. Fact source replaced with current operator page/photo.",
+    "commons": "Page/image original capture blocked403 despite readable web index. Not used to author mesh; architect/operator original bytes used instead.",
+    "panorama": "Near2025station recording_2025-06-19_03-28-47_00816 is underground IJtunnel; saved original image is failed facade evidence, not facade source."
+  },
+  "reviewState": "Frozen7552triangles; authored61source-owning perimeter stations,16pane,6east upperwall,9landing and72solar support probes pass. Exact compressed reexport/review/GPU/game pending.",
+  "failedEvidence": {
+    "firstCpuDraft": "artifacts/hannekes-boom/draft/hannekes-boom.glb",
+    "failure": "Native bronze material made timber facades/deck green. Corrected ochre/brown. First CPU6243tri source-color comparison fails; preserved before images.",
+    "additionalGeometryFailure": "Canopy bases initially had no occupied deck under elevated AHN cells. Corrected projected supported deck beneath source canopy/windscreen footprint;4bases pass authored and require compressed-export pass.",
+    "pending": "GPU/gallery/live, independent source/render review, route/pin/physical-card/neighbors",
+    "independent6954Failures": {
+      "preservedExport": "artifacts/hannekes-boom/current/failed-6954-before-wall-landing.glb",
+      "sha256": "6a5e357eba3b29cb5bb3c3dd7db653d0287f928133c9440fd218716192e9be37",
+      "failures": [
+        "East wall capped by lower annex endpoint across full main wall, leaving unsupported roof band.",
+        "Stair upper exit disconnected from deck and no compatible railing opening.",
+        "Generic equal windows and unjustified newer-yellow date claim.",
+        "Missing defining red fascia/solar awning assemblage."
+      ],
+      "corrections": "Main/annex east height partition and roof seam, supported upper landing with bounded parapet entry, explicit photographed white opening groups, red fascia/posts and source-face solar bank."
+    },
+    "e71b1561Seams": {
+      "sha256": "e71b15618f4900f6dc6925f868fa9f38b791ff10383d3c918d1aa281b1c2f4d2",
+      "reason": "North recess had0.1\u20130.2m uncovered installed/survey seam; rear tiny awnings generated from normal filter lacked source evidence. Source-aware closure and explicit facade-only awning scope correct those failures.",
+      "evidence": "artifacts/hannekes-boom-independent-v3/edge6-ownership.json"
+    }
+  }
+}
