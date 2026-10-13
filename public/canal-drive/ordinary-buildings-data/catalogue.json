@@ -35734,6 +35734,233 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T22:51:24.727Z"
+    },
+    {
+      "id": "ordinary-0363100012202277",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012202277",
+      "name": "Centrale Groothandelsmarkt 190, Amsterdam (Food Center, Jan van Galenstraat): 1935 wholesale market hall with loading docks (Miedema AGF, Gebr. de Mooij)",
+      "hash": "6a796c7985ef82e7d65a20a6d1bc1cc59194365ae3d83da0ca3316e43d4fc66e",
+      "sha256": "6a796c7985ef82e7d65a20a6d1bc1cc59194365ae3d83da0ca3316e43d4fc66e",
+      "bytes": 205024,
+      "triangles": 2544,
+      "materials": 13,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -59.834,
+          0.001,
+          -74.372
+        ],
+        "max": [
+          36.204,
+          14.602,
+          82.079
+        ]
+      },
+      "anchor": [
+        4.8655926,
+        52.3800589
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.864759,
+              52.3800718
+            ],
+            [
+              4.8647489,
+              52.3800699
+            ],
+            [
+              4.8647183,
+              52.3800404
+            ],
+            [
+              4.8647967,
+              52.3798286
+            ],
+            [
+              4.8648012,
+              52.3798158
+            ],
+            [
+              4.864812,
+              52.3797885
+            ],
+            [
+              4.8648693,
+              52.3796374
+            ],
+            [
+              4.8649879,
+              52.3793185
+            ],
+            [
+              4.8660644,
+              52.3794677
+            ],
+            [
+              4.8660785,
+              52.3794295
+            ],
+            [
+              4.8661316,
+              52.3794368
+            ],
+            [
+              4.8661174,
+              52.3794747
+            ],
+            [
+              4.8661225,
+              52.3794759
+            ],
+            [
+              4.8659871,
+              52.3798426
+            ],
+            [
+              4.86594,
+              52.3799687
+            ],
+            [
+              4.8659615,
+              52.3799717
+            ],
+            [
+              4.86595,
+              52.3800022
+            ],
+            [
+              4.865929,
+              52.3799997
+            ],
+            [
+              4.8658852,
+              52.3801166
+            ],
+            [
+              4.8658567,
+              52.3801123
+            ],
+            [
+              4.8658558,
+              52.3801142
+            ],
+            [
+              4.8657999,
+              52.3802648
+            ],
+            [
+              4.8660745,
+              52.380303
+            ],
+            [
+              4.8660487,
+              52.3803736
+            ],
+            [
+              4.8660768,
+              52.3803776
+            ],
+            [
+              4.8660631,
+              52.3804147
+            ],
+            [
+              4.866035,
+              52.3804109
+            ],
+            [
+              4.8659171,
+              52.3807287
+            ],
+            [
+              4.8655135,
+              52.3806723
+            ],
+            [
+              4.8655989,
+              52.3805719
+            ],
+            [
+              4.8653594,
+              52.3804944
+            ],
+            [
+              4.8653635,
+              52.3804829
+            ],
+            [
+              4.865369,
+              52.3804834
+            ],
+            [
+              4.8654376,
+              52.380299
+            ],
+            [
+              4.8647121,
+              52.3801985
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 14.6,
+      "height": 14.6,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-cgm-190-202277.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012202277"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "cgm-190-202277",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012202277/w01-258.jpg",
+          "staging/pand-reference-walls/0363100012202277/w01-258.jpg",
+          "staging/pand-reference-walls/0363100012202277/w03-78.jpg",
+          "staging/pand-reference-walls/0363100012202277/w05-78.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 2st 10b",
+          "brick-bay-grid 1st 6b",
+          "brick-bay-grid 2st 10b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Modelled: west dock front as two groups: the two-storey office block (surfaces 9, 10, 49 of panel 7 and panel 0) with blue-framed two-light windows, and the single-storey dock block (surface 13 of panel 7, 5.5 m) of six tall yellow-framed transom openings with the name MIEDEMA AGF; east arcade front (panels 65, 63, 18) as a pale concrete face with a glazed ground floor, a closed upper storey and the Gebr. de Mooij lettering on the cornice; east gable (panel 33) as a blank white wall.",
+        "Simplified: the yellow roller doors are tall transom openings with yellow frames (the kit's garage doors and portals left 2.4-7 m2 of coplanar frame/door overlap in this wall, so they are not used), the blue office window blocks and the corner-cut canopy are plain window rows, the shop signs along the arcade are not drawn (only the largest name), the yellow canopy struts are not drawn. Not modelled: the north and south walls and the long west wall behind the dock block (no panorama, or hidden by the dock block), roof plant and the brick tower."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012202277",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T22:55:36.566Z"
     }
   ]
 }
