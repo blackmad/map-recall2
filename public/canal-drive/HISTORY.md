@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## Scheepvaartmuseum and Waag replace their native kits (2026-10-13)
+
+The landmark backlog had no plain unbuilt building left; the most
+recognisable remaining ones were procedural-kit POIs. Following the Fatih
+precedent, bespoke GLBs keep the kit POI's landmarkId and suppress the pand
+and OSM parts, and an in-game shot shows one building. Scheepvaartmuseum:
+four pedimented fronts, regular window rhythm per section; inner roofs are
+the 3DBAG shell. Waag: turrets, towers, shutters, terrace canopy; the shell
+is walls only, clipped at each part's eaves, under one clean hipped slate
+roof (ridge 22.5 m against a 25.7 m survey apex, because a hip that tall
+would read about 60 degrees). A wallPlanes clustering false positive (seed
+facet swallowing a 2-degree-off return wall) is noted, not patched.
+
 ## Krasnapolsky, Pakhuis de Zwijger, DNB released (2026-10-11)
 
 Rebuilt from their held reasons. Krasnapolsky's modern wing and lower
