@@ -13,19 +13,46 @@ and the look-consistency lane (2026-10-13). Code owners: `src/canalRecall/look/p
   3DBAG detailed buildings) is lit by `DEFAULT_LIGHT_RIG` and nothing else.
   `tests/e2e/look-consistency.spec.ts` asserts the frame's scene holds exactly
   `shared-frame-sun` and `shared-frame-sky`.
-- **Sun:** azimuth **215°** (south-south-west), elevation **40°**, `#fff1dc`,
-  intensity **2.1**. Shadows fall north-north-east, so canal-belt street
+- **Sun:** azimuth **215°** (south-south-west), elevation **40°**, `#ffe9cc`,
+  intensity **2.15**. Shadows fall north-north-east, so canal-belt street
   facades stay mostly lit. (The spike used 225°/34°; the game keeps 215°/40°.)
-- **Sky:** hemisphere `#dbe8ff` over ground `#8d8270`, intensity **1.75**.
+  A summer afternoon: high enough that streets are not in permanent shadow,
+  low enough that walls separate by orientation.
+- **Sky:** hemisphere `#e3ebf6` over ground `#998a72`, intensity **1.75**.
+- **One sun in every frame, not only the shared one** (lane sun-and-mood,
+  2026-10-13). `lightRig.ts` exports `SUN_DIRECTION`, the bake
+  (`bakedWallShade`, `bakedFaceShade`, `BAKED_SHADE_GLSL`),
+  `enuDirectionInLocal` and `mapLibreSunPosition`; nothing else may hold a sun
+  direction. `tests/e2e/sun-heading.spec.ts` turns the rider through four
+  headings beside a free-standing tower and asserts: each wall seen from two
+  headings within 10 %, the sun-facing wall brighter, the bike's lit half on
+  the sun's side, every legacy landmark's sun at 215°/40°.
+- **Why the sun "moved with" the rider** (user, 2026-10-13). Legacy custom
+  layers fold a model's placement into the camera's projection, so their
+  lights lived in model space. Measured before the fix: the bike's key light
+  pointed at world azimuth 64/208/244/277° at headings 314/44/134/224 (it
+  turned with the bike, and sat *below* it: the bike looked identical at every
+  heading, luma 113.4 ± 0.7, left/right halves 108/119 always); the 71 legacy
+  landmarks around the Dam had their keys anywhere from 9° to 339° (209° plus
+  each model's placement rotation); the streamed city baked its light from the
+  north-west (north wall 140 vs west 129 on the test tower) while MapLibre's
+  extrusion light and the shared rig came from the south-south-west. After:
+  bike and every landmark at 215°/40°, bike luma 108–117 by heading, the
+  tower's sun-facing wall brightest. Tree crowns also took their sky from the
+  north (hemisphere "up" was +y in an east/north/up frame); now +z.
 - **Shadows:** one sun shadow map, **2048²** desktop / **1024²** phone, box
   half-size 160 m at z18 doubling per zoom step (100–640 m), texel-snapped,
   redrawn only when the box steps **16 m** or casters change. Off below z15.
+  Cost at the flip: see §Mood, "Shadows".
 - **Materials are diffuse only** (Lambert, or Standard at roughness ≥ 0.8 for
   the facade atlas). No GGX hotspots on landmarks (`landmarkShading.ts`).
-- **Legacy (flag off) is baked:** the streamed city bakes a fixed light from
-  the **north-west** into vertex shade (0.8–1.0 walls, 0.5–1.0 roofs); recipe
-  houses copy it; landmarks carry their own three-light rig. This is the
-  inconsistency the shared rig removes; do not tune new art against it.
+- **Legacy (flag off) is baked:** the streamed city bakes the rig's sun into
+  vertex shade: walls **0.84–1.0** by azimuth (0.8–1.0 before the mood pass),
+  other faces `0.58 + 0.42·max(0, n·L)` with L at the sun's azimuth and the
+  bake's own 53° (so a flat roof keeps 0.916), down faces 0.5. Recipe houses,
+  building types and the unlit city look use the same GLSL. Legacy landmarks,
+  vehicles, trees and ARTIS keep their own intensities but aim them from
+  `SUN_DIRECTION`. MapLibre's extrusion light is `[1.25, 215, 50]`.
 
 ## Sky, fog, tone mapping (targets for the own-frame phases)
 
@@ -48,8 +75,14 @@ and the look-consistency lane (2026-10-13). Code owners: `src/canalRecall/look/p
 - Storybook = natural palette, hue −4°, saturation ×1.15, lightness +0.03.
   Cartoon = saturation ×1.7 + 0.08, lightness ×1.08 above L 0.35; darks (glass,
   iron) never lift, so windows read (`LOOK_VARIANTS[*].tone`).
-- Roofs: one table (`ROOF_TONES`, `FLAT_ROOF_GREYS`); pantile reds and slate
-  greys; flat roofs bitumen/gravel greys, never a wall colour.
+- Roofs: one table (`ROOF_TONES`, `FLAT_ROOF_TONES`); pantile reds and slate
+  greys; flat roofs are **three kinds**, never one grey and never a wall
+  colour: warm gravel `#9e9281`, pale membrane `#c3c1bb`, dark bitumen
+  `#56585e` (§Mood). Which kind a roof is belongs to the roof-slot lane
+  (orthophoto); how each kind looks belongs here.
+- Ground (own ground, `GROUND_TONES`): warm light pavers, klinker warm
+  grey-rose `rgb(158,124,114)`, asphalt darker and cooler `rgb(68,72,80)`,
+  water `#46707c`. Foliage: `foliageDisplayHex` (yellow-greens +8° hue).
 
 ## Parity (the "is this building really this dark?" rule)
 
@@ -57,13 +90,19 @@ The same brick slot must read the same whichever pipeline draws it. Under the
 shared rig a mid-grey (`#808080`) brick wall on a generic extrusion, a recipe
 house and a landmark GLB must land within **8 %** relative luma of each other
 on every wall orientation (`PARITY_TOLERANCE`; `tests/e2e/look-parity.spec.ts`,
-real materials, real rig). Measured 2026-10-13, mean sRGB luma 0–255:
+real materials, real rig). Measured 2026-10-13 after the mood pass (warmer
+sun, warmer bounce; before it in brackets), mean sRGB luma 0–255:
 
 | wall | generic | recipe | landmark | spread |
 |---|---|---|---|---|
-| south (sun) | 108.2 | 102.1 | 105.7 | 5.8 % |
-| west | 98.9 | 93.4 | 96.5 | 5.7 % |
-| north / east (sky only) | 70.7 | 67.7 | 70.0 | 4.3 % |
+| south (sun) | 108.3 (108.2) | 102.4 (102.1) | 106.0 (105.7) | 5.7 % |
+| west | 99.4 (98.9) | 94.1 (93.4) | 96.9 (96.5) | 5.6 % |
+| north / east (sky only) | 72.7 (70.7) | 69.7 (67.7) | 72.0 (70.0) | 4.3 % |
+
+City look under the same rig: south 105.4 / 109.4 / 109.4, west 96.8 / 100.5
+/ 100.6, north and east 71.8 / 74.9 / 74.9 (generic / recipe / landmark); the
+shade side sits at the top of its band on purpose, so do not raise the sky or
+the bounce again without lowering something else.
 
 Before the lane, under `?sharedFrame=1` recipe houses were still unlit
 (north wall 122.7 against 61.5 generic and 70.0 landmark: 72 % spread) and
@@ -180,6 +219,69 @@ signature-landmarks bundles; publish `bagYear` into the placement catalogue
 canal brick, which is the pre-review look); measure iPhone 13 at 4× before
 flipping on touch.
 
+## Mood (lane sun-and-mood, 2026-10-13)
+
+User: "the whole city is a little dark/dour", then on a Kinkerbuurt aerial
+"so much grey". The cause was not the walls under the rig (they sat in their
+bands) but everything around them: flat roofs, streets, pavements and water in
+one mid-grey band, a cold bounce on the shade sides, olive trees, teal-black
+canals under the own ground. The pass, inside the §Parity bands:
+
+- **Rig:** warmer sun `#ffe9cc` ×2.15, less blue sky `#e3ebf6`, lighter warm
+  bounce `#998a72` (§Light). Shade sides +2 luma, sun sides unchanged.
+- **Bake (flag off):** walls 0.84–1.0, from the sun's azimuth (§Light).
+- **Flat roofs:** gravel / membrane / bitumen (`FLAT_ROOF_TONES`), and the
+  citywide caps follow them (§Palette). The grey left in the Kinkerbuurt shot
+  is mostly *walls*: the citywide wall priors `priorModernGrey` /
+  `priorModernLight` on whole blocks. Not changed here (it is a wall-prior
+  question, not light); the next candidate.
+- **Own ground:** `GROUND_TONES`: pavers lighter and warmer, klinker warm
+  grey-rose, asphalt darker and cooler than the klinker, water `#46707c`.
+- **Trees:** `foliageDisplayHex`, and the legacy tree layer's sky now comes
+  from above (it came from the north).
+
+`tests/e2e/mood-shots.spec.ts` shoots seven spots from the sun side (rider
+facing away from the sun) and the shade side, in the default frame, the flip
+(`?sharedFrame=1&cityLook=1`) and the own ground (`?ownGround=1&cityLook=1`):
+Dam, Westerkerk, Rijksmuseum, Bilderdijkstraat, Osdorpplein, the Amstel from
+the cockpit, and the Kinkerbuurt aerial (Ten Katestraat, 200 m, looking
+north-east; the acceptance shot for "so much grey"). "Buildings" are the pixels
+that change when the streamed buildings and landmarks are hidden; "rest" is
+ground, water, trees, sky. Means of the 14 shots, before → after:
+
+| frame | building luma | building sat | rest luma | rest sat |
+|---|---|---|---|---|
+| default | 95.0 → 96.3 | 0.281 → 0.285 | 209.3 → 210.4 | 0.176 → 0.177 |
+| flip (`sharedFrame` + `cityLook`) | 77.8 → 79.5 | 0.305 → 0.309 | 207.7 → 207.9 | 0.170 → 0.177 |
+| own ground + city look | 77.9 → 82.0 | 0.285 → 0.291 | 99.8 → 114.0 | 0.255 → 0.295 |
+
+Kinkerbuurt aerial, sun side: default buildings 101.1 → 110.1; flip 90.7 →
+94.1 (sat 0.284 → 0.293); own ground buildings 87.1 → 92.6, rest 100.9 →
+114.0 (sat 0.242 → 0.295). Sun-side/shade-side building luma in the default
+frame went from 0.91–1.03 (no time of day: the bake lit the north-west, the
+views face north-east and south-west) to 1.02–1.34; in the flip it stays
+1.04–1.20. The default frame's ground is MapLibre's basemap and did not
+change; its shade-side buildings got darker where the old bake lit them from
+the wrong side (Rijksmuseum shade 94 → 77) and lighter where it did not.
+
+### Shadows at the flip
+
+Fixed route (Anne Frank Huis → Rijksmuseum), desktop 1440×900, 20 s, two
+alternating rounds, bundles built from this source:
+
+| run | frame median / p95 / p99 ms | > 50 ms | three.js ms/frame | MapLibre render median / p95 | shadow redraws |
+|---|---|---|---|---|---|
+| flip, shadows on | 16.7 / 16.8 / 16.8 (both) | 0, 1 | 1.12, 1.81 | 2.5 / 3.7, 3.7 / 7.4 | 31, 30 |
+| flip, `shadows=0` | 16.7 / 16.7 / 16.8 (both) | 0, 0 | 1.57, 1.68 | 3.5 / 4.8, 3.7 / 5.2 | 0 |
+| default | 16.7 / 16.7 / 16.8 (both) | 0, 0 | 1.67, 1.41 | 3.8 / 5.6, 3.5 / 4.9 | — |
+
+Frames are vsync-bound in every run; the shadow map redraws ~1.5 times a
+second while riding (box steps of 16 m), and its cost is inside run-to-run
+noise (three.js 1.1–1.8 ms with or without it). The shadows are what make the
+shared frame read as a place at a time of day (walls separate, trees and
+landmarks sit on the street), so **keep them on at the flip on desktop**;
+touch keeps the 1024² map and needs its own iPhone 13 4× measurement first.
+
 ## Outlines
 
 - Photo, procedural, untextured: **no outlines**.
@@ -208,6 +310,11 @@ flipping on touch.
   frame competes with them for saturation (no bloom, no saturated sky).
 
 ## How reviews cite this
+
+- A light or mood change runs `tests/e2e/sun-heading.spec.ts` (the sun stays
+  put at four headings) and `tests/e2e/mood-shots.spec.ts` before/after
+  (`MOOD_OUT=…`, `LOOK_BUNDLES_DIR=…` for unbuilt source), and quotes the
+  luma/saturation table against §Mood.
 
 - Gallery and release reviews look at gallery-size renders from all sides,
   then cite the section that a flaw breaks ("LOOK §Parity: recipe house 20 %
