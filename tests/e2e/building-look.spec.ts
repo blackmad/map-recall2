@@ -149,3 +149,56 @@ test('city look: the highlight keeps the shading (sun side brighter than shade s
   // Not clipped: the sun side stays under the full highlight yellow's luma (~201).
   expect(result.walls['city-landmark-highlight/south']).toBeLessThan(200);
 });
+
+// Shadow fill (docs/LOOK.md §Light "Shadow fill", rendererShared/lightRig.ts SHADOW_FILL): under the shared rig a
+// brick wall in another surface's cast shadow keeps part of the sun, so shadowed dark brick does not drop to
+// near-black (the Nassaukade block and the Royal Palace, 2026-10-14), while a lit wall reads exactly as it did
+// without shadows (no acne, sun side unchanged). Same harness as the city-look test: real materials, real rig,
+// an invisible slab between the wall and the sun. Chunk walls carry no normal attribute, as in the game.
+//   PW_PORT=4475 npx playwright test building-look -g "shadow fill" --project=desktop
+const SHADOW_PIPELINES = ['generic', 'recipe', 'landmark', 'city-generic', 'city-recipe', 'city-landmark'];
+test('shadow fill: brick in cast shadow stays readable, lit walls do not move', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop', 'one renderer is enough');
+  test.setTimeout(240_000);
+  const { build } = await import('esbuild');
+  const { mkdirSync, writeFileSync } = await import('node:fs');
+  const bundle = await build({ entryPoints: ['src/canalRecall/look/lookParity.ts'], bundle: true, format: 'iife', globalName: 'LookParity', write: false, logLevel: 'error' });
+  await page.route('**/canal-drive/__city-look.js', route => route.fulfill({ body: bundle.outputFiles[0].text, contentType: 'application/javascript' }));
+  await page.route('**/canal-drive/__city-look.html', route => route.fulfill({ body: '<!doctype html><meta charset="utf-8"><script src="__city-look.js"></script>', contentType: 'text/html' }));
+  const errors: string[] = [];
+  page.on('pageerror', e => errors.push(e.message));
+  await page.goto('/canal-drive/__city-look.html');
+  const run = (hex: string, shadow?: { caster: boolean; shadowIntensity?: number }) => page.evaluate(({ hex, shadow, pipelines }) =>
+    (window as any).LookParity.runLookParity({ hex, pipelines, shadow, brickUrl: new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href }), { hex, shadow, pipelines: SHADOW_PIPELINES });
+  const rows: Record<string, Record<string, number>> = {};
+  for (const hex of ['#808080', '#9a5240', '#6f4335']) {
+    const plain = await run(hex), lit = await run(hex, { caster: false }), shaded = await run(hex, { caster: true });
+    const sweep: Record<string, any> = {};
+    for (const intensity of [1, 0.65, 0.55, 0.5, 0.45]) sweep[intensity] = await run(hex, { caster: true, shadowIntensity: intensity });
+    for (const pipeline of SHADOW_PIPELINES) for (const face of ['south', 'west']) {
+      const key = `${pipeline}/${face}`;
+      rows[`${hex} ${key}`] = { noShadows: plain.walls[key], lit: lit.walls[key], shaded: shaded.walls[key], ...Object.fromEntries(Object.entries(sweep).map(([i, r]) => [`intensity${i}`, r.walls[key]])) };
+    }
+  }
+  const out = process.env.CITY_LOOK_OUT || 'artifacts/city-look';
+  mkdirSync(out, { recursive: true });
+  writeFileSync(`${out}/shadow-fill.json`, JSON.stringify(rows, null, 1));
+  console.log(Object.entries(rows).map(([k, v]) => `${k.padEnd(30)} ${Object.entries(v).map(([a, b]) => `${a}=${b}`).join(' ')}`).join('\n'));
+  expect(errors).toEqual([]);
+  for (const pipeline of SHADOW_PIPELINES) {
+    // The sun side does not move: a lit wall reads as it did with shadows off (and as docs/LOOK.md §Parity says).
+    for (const face of ['south', 'west']) for (const hex of ['#808080', '#9a5240']) {
+      const r = rows[`${hex} ${pipeline}/${face}`];
+      expect(Math.abs(r.lit - r.noShadows), `${hex} ${pipeline}/${face} lit vs no shadows`).toBeLessThanOrEqual(1);
+    }
+    expect(Math.abs(rows[`#808080 ${pipeline}/south`].lit - SUN_SIDE_GREY[pipeline]), `${pipeline} sun side vs LOOK table`).toBeLessThanOrEqual(5);
+    // The city's reference brick in cast shadow stays readable on a sun-facing wall…
+    const brick = rows[`#9a5240 ${pipeline}/south`];
+    expect(brick.shaded, `#9a5240 ${pipeline}/south in shadow`).toBeGreaterThanOrEqual(70);
+    // …and still reads as a shadow, darker than the same wall in sun, lighter than with sky-only fill.
+    expect(brick.shaded, `#9a5240 ${pipeline}/south shadow vs sun`).toBeLessThanOrEqual(brick.lit - 8);
+    expect(brick.shaded, `#9a5240 ${pipeline}/south fill`).toBeGreaterThan(brick['intensity1'] + 8);
+  }
+});
+/** Mid-grey brick, south wall, under the rig with no shadows (docs/LOOK.md §Parity and §City look, 2026-10-13). */
+const SUN_SIDE_GREY: Record<string, number> = { generic: 108.3, recipe: 102.4, landmark: 106.0, 'city-generic': 105.1, 'city-recipe': 109.2, 'city-landmark': 109.2 };
