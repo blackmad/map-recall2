@@ -15949,7 +15949,7 @@
         "min": [
           -32.36106872558594,
           -1.4495849143258965e-7,
-          -35.5670280456543
+          -35.57686233520508
         ],
         "max": [
           13.79544734954834,
@@ -15968,19 +15968,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 58.51220893859863,
+        "widthMetres": 58.522043228149414,
         "heightMetres": 17.34050002288818,
         "depthMetres": 46.15651607513428,
         "depthCoverage": 1.0034025233724844
       },
-      "triangles": 12116,
-      "bytes": 162164,
+      "triangles": 12440,
+      "bytes": 166508,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "4079166ea75bb47b",
+        "sourceHash": "8045baf2124c6bc9",
         "buildVersion": 2,
-        "bytes": 43288,
-        "triangles": 1928
+        "bytes": 42912,
+        "triangles": 1962
       }
     },
     "fire-station-dirk": {
@@ -33018,7 +33018,8 @@
         "buildVersion": 2,
         "bytes": 58176,
         "triangles": 2833
-      }
+      },
+      "held": true
     },
     "fatih-moskee": {
       "id": "fatih-moskee",
