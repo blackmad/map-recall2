@@ -354,15 +354,15 @@
   "triangles": 1432
  },
  "lab111": {
-  "sourceHash": "a3d2d2d50f344d18",
+  "sourceHash": "79ac4b5b88e8bc12",
   "buildVersion": 2,
-  "bytes": 50568,
-  "triangles": 2864
+  "bytes": 50580,
+  "triangles": 2836
  },
  "ketelhuis": {
-  "sourceHash": "ae7a77d4b2cfa278",
+  "sourceHash": "912ec931af099c42",
   "buildVersion": 2,
-  "bytes": 24780,
+  "bytes": 25440,
   "triangles": 970
  },
  "wereldmuseum-amsterdam": {
@@ -396,22 +396,22 @@
   "triangles": 1792
  },
  "badhuistheater": {
-  "sourceHash": "e5ae0193173a6585",
+  "sourceHash": "357b69f104d17af6",
   "buildVersion": 2,
-  "bytes": 31664,
-  "triangles": 1519
+  "bytes": 32096,
+  "triangles": 1507
  },
  "cinecenter": {
-  "sourceHash": "0843494fcf43a495",
+  "sourceHash": "0103e3b35170fd11",
   "buildVersion": 2,
-  "bytes": 43172,
-  "triangles": 1789
+  "bytes": 43024,
+  "triangles": 1770
  },
  "studiok": {
-  "sourceHash": "c41ea486ca160306",
+  "sourceHash": "d5c4028124eac762",
   "buildVersion": 2,
-  "bytes": 57276,
-  "triangles": 3035
+  "bytes": 57264,
+  "triangles": 2976
  },
  "groote-museum": {
   "sourceHash": "83a3afa84a5d1246",
@@ -474,22 +474,22 @@
   "triangles": 1494
  },
  "ot301": {
-  "sourceHash": "7ef8609567eecf26",
+  "sourceHash": "580856d4e9ef91d6",
   "buildVersion": 2,
-  "bytes": 46520,
-  "triangles": 2372
+  "bytes": 46888,
+  "triangles": 2355
  },
  "cavia": {
-  "sourceHash": "d456b7533d9928a5",
+  "sourceHash": "fa6677a2e649764c",
   "buildVersion": 2,
-  "bytes": 40624,
-  "triangles": 1980
+  "bytes": 40892,
+  "triangles": 1936
  },
  "orgelpark": {
-  "sourceHash": "a4661cf39a58c0b3",
+  "sourceHash": "8e9f88f612f12ed9",
   "buildVersion": 2,
-  "bytes": 29392,
-  "triangles": 1243
+  "bytes": 29332,
+  "triangles": 1213
  },
  "huis-aan-drie-grachten": {
   "sourceHash": "ef516639b168b53b",

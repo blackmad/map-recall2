@@ -5683,6 +5683,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
       },
+      "bagYear": 1928,
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
@@ -5712,14 +5713,14 @@
         "depthMetres": 37.530479431152344,
         "depthCoverage": 1.0091595978194814
       },
-      "triangles": 10091,
-      "bytes": 127772,
+      "triangles": 10008,
+      "bytes": 127432,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "a3d2d2d50f344d18",
+        "sourceHash": "79ac4b5b88e8bc12",
         "buildVersion": 2,
-        "bytes": 50568,
-        "triangles": 2864
+        "bytes": 50580,
+        "triangles": 2836
       }
     },
     "occii": {
@@ -5759,6 +5760,8 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
       },
+      "bagYear": 1884,
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -6.694573879241943,
@@ -5787,8 +5790,8 @@
         "depthMetres": 13.369317531585693,
         "depthCoverage": 1.0000720247710322
       },
-      "triangles": 1559,
-      "bytes": 27164,
+      "triangles": 1536,
+      "bytes": 27780,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "ketelhuis": {
@@ -5828,6 +5831,8 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
       },
+      "bagYear": 1885,
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -11.835000038146973,
@@ -5857,12 +5862,12 @@
         "depthCoverage": 1.0615335817517193
       },
       "triangles": 6074,
-      "bytes": 72896,
+      "bytes": 73560,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "ae7a77d4b2cfa278",
+        "sourceHash": "912ec931af099c42",
         "buildVersion": 2,
-        "bytes": 24780,
+        "bytes": 25440,
         "triangles": 970
       }
     },
@@ -6326,6 +6331,8 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
       },
+      "bagYear": 1922,
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -9.704999923706055,
@@ -6354,14 +6361,14 @@
         "depthMetres": 19.40999984741211,
         "depthCoverage": 1.0194124506233329
       },
-      "triangles": 8915,
-      "bytes": 111928,
+      "triangles": 8832,
+      "bytes": 112044,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "e5ae0193173a6585",
+        "sourceHash": "357b69f104d17af6",
         "buildVersion": 2,
-        "bytes": 31664,
-        "triangles": 1519
+        "bytes": 32096,
+        "triangles": 1507
       }
     },
     "cinecenter": {
@@ -6401,6 +6408,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
       },
+      "bagYear": 1981,
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
@@ -6410,7 +6418,7 @@
         ],
         "max": [
           12.914999961853027,
-          20.579999923706055,
+          20.549999237060547,
           15.781200408935547
         ]
       },
@@ -6426,18 +6434,18 @@
       },
       "extent": {
         "widthMetres": 30.838655471801758,
-        "heightMetres": 20.580000305175787,
+        "heightMetres": 20.54999961853028,
         "depthMetres": 26.335000038146973,
         "depthCoverage": 1.0372643267328723
       },
-      "triangles": 8549,
-      "bytes": 113704,
+      "triangles": 8516,
+      "bytes": 113500,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "0843494fcf43a495",
+        "sourceHash": "0103e3b35170fd11",
         "buildVersion": 2,
-        "bytes": 43172,
-        "triangles": 1789
+        "bytes": 43024,
+        "triangles": 1770
       }
     },
     "studiok": {
@@ -6447,7 +6455,8 @@
       "modelUrl": "./models/studiok.glb",
       "suppressOsmIds": [
         "r3699016",
-        "NL.IMBAG.Pand.0363100012237325"
+        "NL.IMBAG.Pand.0363100012237325",
+        "w278379946"
       ],
       "footprint": {
         "centre": [
@@ -6477,6 +6486,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -37.724998474121094,
@@ -6505,14 +6515,14 @@
         "depthMetres": 52.15999984741211,
         "depthCoverage": 1.021117715792731
       },
-      "triangles": 15669,
-      "bytes": 186516,
+      "triangles": 15574,
+      "bytes": 186488,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "c41ea486ca160306",
+        "sourceHash": "d5c4028124eac762",
         "buildVersion": 2,
-        "bytes": 57276,
-        "triangles": 3035
+        "bytes": 57264,
+        "triangles": 2976
       }
     },
     "groote-museum": {
@@ -7368,6 +7378,8 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
       },
+      "bagYear": 1896,
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -19.424999237060547,
@@ -7396,14 +7408,14 @@
         "depthMetres": 16.945000171661377,
         "depthCoverage": 1.0341194707040704
       },
-      "triangles": 12322,
-      "bytes": 151912,
+      "triangles": 12288,
+      "bytes": 152232,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "7ef8609567eecf26",
+        "sourceHash": "580856d4e9ef91d6",
         "buildVersion": 2,
-        "bytes": 46520,
-        "triangles": 2372
+        "bytes": 46888,
+        "triangles": 2355
       }
     },
     "cavia": {
@@ -7447,6 +7459,8 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
       },
+      "bagYear": 1913,
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -32.291656494140625,
@@ -7475,14 +7489,14 @@
         "depthMetres": 42.99499988555908,
         "depthCoverage": 1.018100218660802
       },
-      "triangles": 10435,
-      "bytes": 131368,
+      "triangles": 10368,
+      "bytes": 131488,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "d456b7533d9928a5",
+        "sourceHash": "fa6677a2e649764c",
         "buildVersion": 2,
-        "bytes": 40624,
-        "triangles": 1980
+        "bytes": 40892,
+        "triangles": 1936
       }
     },
     "orgelpark": {
@@ -7522,6 +7536,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
       },
+      "bagYear": 1924,
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
@@ -7551,14 +7566,14 @@
         "depthMetres": 26.17730140686035,
         "depthCoverage": 1.002794824545056
       },
-      "triangles": 6149,
-      "bytes": 79916,
+      "triangles": 6106,
+      "bytes": 79892,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "a4661cf39a58c0b3",
+        "sourceHash": "8e9f88f612f12ed9",
         "buildVersion": 2,
-        "bytes": 29392,
-        "triangles": 1243
+        "bytes": 29332,
+        "triangles": 1213
       }
     },
     "houten-huys": {

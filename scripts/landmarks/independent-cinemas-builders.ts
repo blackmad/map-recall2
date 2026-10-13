@@ -10,7 +10,10 @@ export function buildIndependentCinemaLandmark(id:string,_w:number,_d:number,b:B
  const ring=src.parts[0].polygons[0][0].map(([lng,lat])=>{const e=(lng-a[0])*111320*Math.cos(a[1]*Math.PI/180),n=(lat-a[1])*110540;return new T.Vector2(e*Math.sin(h)+n*Math.cos(h),e*Math.cos(h)-n*Math.sin(h));});
  const clip=(r:T.Vector2[],axis:'x'|'y',v:number,more:boolean)=>{const out:T.Vector2[]=[];for(let i=0;i<r.length;i++){const p=r[i],q=r[(i+1)%r.length],pi=more?p[axis]>=v:p[axis]<=v,qi=more?q[axis]>=v:q[axis]<=v;if(pi)out.push(p.clone());if(pi!==qi)out.push(p.clone().lerp(q,(v-p[axis])/(q[axis]-p[axis])));}return out;};
  const region=(x0:number,x1:number,z0:number,z1:number)=>clip(clip(clip(clip(ring,'x',x0,true),'x',x1,false),'y',z0,true),'y',z1,false);
- const body=(r:T.Vector2[],hh:number,c:C='brick')=>{if(r.length<3)return;const g=new T.ExtrudeGeometry(new T.Shape(r),{depth:hh,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,hh,0);add(g,c);};
+ const openTop=(g:T.BufferGeometry,hh:number)=>{const s=g.index?g.toNonIndexed():g,p=s.getAttribute('position'),keep:number[]=[];for(let i=0;i<p.count;i+=3){const ys=[p.getY(i),p.getY(i+1),p.getY(i+2)];if(ys.every(y=>Math.abs(y-hh)<1e-4))continue;for(let k=0;k<3;k++)keep.push(p.getX(i+k),p.getY(i+k),p.getZ(i+k));}const o=new T.BufferGeometry();o.setAttribute('position',new T.Float32BufferAttribute(keep,3));o.computeVertexNormals();return o;};
+ // `open`: no top cap, the slate roof sheet laid at hh is the top (a separate sheet 3 cm over the brick cap z-fought from the air,
+ // lane zfight-audit 2026-10-13).
+ const body=(r:T.Vector2[],hh:number,c:C='brick',open=false)=>{if(r.length<3)return;const g=new T.ExtrudeGeometry(new T.Shape(r),{depth:hh,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,hh,0);add(open?openTop(g,hh):g,c);};
  const roof=(r:T.Vector2[],base:number,height:(x:number,z:number)=>number,c:C='slate')=>{if(r.length<3)return;const g=new T.ShapeGeometry(new T.Shape(r)),p=g.getAttribute('position');for(let i=0;i<p.count;i++){const x=p.getX(i),z=p.getY(i);p.setXYZ(i,x,base+height(x,z),z);}const idx=g.getIndex()!;for(let i=0;i<idx.count;i+=3){const n=idx.getX(i);idx.setX(i,idx.getX(i+2));idx.setX(i+2,n);}g.computeVertexNormals();add(g,c);};
  const flat=(r:T.Vector2[],y:number)=>roof(r,y,()=>0);
  const sash=(x:number,y:number,z:number,w:number,hh:number,back=false)=>{const d=back?-1:1;box(x,y,z,w+.18,hh+.16,.15,'stone');box(x,y+.08,z+d*.12,w,hh,.06,'glass');box(x,y+.08,z+d*.17,.05,hh,.05,'frame');for(let yy=y+.08+.7;yy<y+hh;yy+=.75)box(x,yy,z+d*.17,w,.045,.05,'frame');};
@@ -18,10 +21,10 @@ export function buildIndependentCinemaLandmark(id:string,_w:number,_d:number,b:B
  const beam=(x1:number,y1:number,z1:number,x2:number,y2:number,z2:number,w:number,c:C)=>{const p=new T.Vector3(x1,y1,z1),q=new T.Vector3(x2,y2,z2),g=new T.BoxGeometry(w,p.distanceTo(q),w),m=new T.Matrix4().makeRotationFromQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),q.clone().sub(p).normalize()));g.applyMatrix4(m);add(g,c,...p.add(q).multiplyScalar(.5).toArray() as [number,number,number]);};
  if(id==='lab111'){
   // Hulshoff's flat-roofed laboratory has three unequal wings; the south recess is open.
-  body(ring,11.8);flat(ring,11.83);
-  const main=region(-3,29,-16,5.5);body(main,16.7);flat(main,16.73);
-  const west=region(-29,-11,-19,19);body(west,16.0);flat(west,16.03);
-  const tower=region(-11.2,-3.1,-3,8.1);body(tower,21.5);flat(tower,21.53);
+  body(ring,11.8,'brick',true);flat(ring,11.8);
+  const main=region(-3,29,-16,5.5);body(main,16.7,'brick',true);flat(main,16.7);
+  const west=region(-29,-11,-19,19);body(west,16.0,'brick',true);flat(west,16.0);
+  const tower=region(-11.2,-3.1,-3,8.1);body(tower,21.5,'brick',true);flat(tower,21.5);
   const front=5.18;for(let x=.8;x<24;x+=3.4)for(const y of [1.0,4.7,8.4,12.1])sash(x,y,front+.1,2.35,2.65);
   // Rear sashes follow the mapped rear wall (it steps between the wings): windows are set where the footprint really is, skipped where it is not.
   const rearAt=(x:number)=>{let z=Infinity;for(let i=0;i<ring.length;i++){const p=ring[i],q=ring[(i+1)%ring.length];if((p.x-x)*(q.x-x)<=0&&p.x!==q.x)z=Math.min(z,p.y+(q.y-p.y)*(x-p.x)/(q.x-p.x));}return z;};
@@ -41,7 +44,7 @@ export function buildIndependentCinemaLandmark(id:string,_w:number,_d:number,b:B
   // Lower former lecture/aula wing retains its daylight roof.
   box(-16.25,16.0,-9.8,9.0,.28,11.0,'glass');for(let z=-15;z<-5;z+=1.65)box(-16.25,16.22,z,9,.07,.07,'frame');
  }else if(id==='occii'){
-  body(ring,4.8);flat(ring,4.83);const lo=-6.4,hi=2.6,cx=(lo+hi)/2;
+  body(ring,4.8,'brick',true);flat(ring,4.8);const lo=-6.4,hi=2.6,cx=(lo+hi)/2;
   // The narrow tram house runs deep behind its carved street gable, not across the yard.
   for(const [min,max] of [[lo,cx],[cx,hi]])roof(clip(clip(ring,'x',min,true),'x',max,false),4.8,(x)=>3.65*(1-Math.abs(x-cx)/4.5));
   const f=(x:number)=>31.93+(x-cx)*.12;
