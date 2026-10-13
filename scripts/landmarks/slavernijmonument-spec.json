@@ -1,0 +1,35 @@
+{
+  "id": "slavernijmonument",
+  "name": "Nationaal monument Slavernijverleden",
+  "assetKind": "memorial",
+  "landmarkId": "extract_landmarks_1333703767",
+  "modelUrl": "./models/slavernijmonument.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [4.918031, 52.358616],
+    "headingDegrees": 0,
+    "lengthMetres": 12.4,
+    "widthMetres": 12.4
+  },
+  "surveyed": {
+    "anchor": [4.918031, 52.358616],
+    "northOffsetDegrees": 0,
+    "source": "Backlog destination point (OSM memorial); platform orientation is a visual estimate from Commons photographs, not a surveyed bearing"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "greyBrick": "#4a4d51",
+    "concrete": "#b4aea0",
+    "bronze": "#4a3d33"
+  },
+  "attribution": {
+    "title": "Nationaal monument Slavernijverleden - original low-poly interpretation",
+    "author": "Map Recall; commemorated sculpture by Erwin de Vries (2002)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Erwin_de_Vries_-_Nationaal_Monument_Slavernijverleden_1.jpg",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free geometric figures and platform. Composition read from CC0 photographs by RoMaVo and Ceescamel, a CC BY-SA 4.0 photograph by Arthena and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated. No pixels or third-party meshes imported."
+  }
+}
