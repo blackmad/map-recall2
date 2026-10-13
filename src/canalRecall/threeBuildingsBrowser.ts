@@ -40,6 +40,7 @@ import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { PROCEDURAL_RECIPE_LAYER_OFFSET } from './streetFacadeRendering.js';
 import { buildingProjectionScale } from './buildingProjectionScale.js';
 import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererShared/litFacadeMaterial.js';
+import { SLOT_LAYER_COUNT, cityLookEnabled, createCityLookMaterial, createCityUniforms, getCityLook, loadCityBrick, paintSlotLayers } from './look/cityLook.js';
 
 type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
 
@@ -185,12 +186,20 @@ type ChunkInfo = { buildingCount: number; wallCount: number; quadCount: number; 
 
 export type ThreeBuildingStats = { kitVertices: number; chunks: number; buildings: number; walls: number; quads: number; vertices: number; geometryMB: number; textureMB: number; drawCalls: number; triangles: number; buildMs: number };
 
-/** The game's colour and tint-mask texture arrays for a look (also used by the gallery pages). */
-export async function buildLookTextures(THREE: any, look: 'procedural' | Look, maxAnisotropy: number, size = CELL_PX): Promise<{ colour: any; mask: any }> {
+/**
+ * The game's colour and tint-mask texture arrays for a look (also used by the gallery pages).
+ * `slotLayers` (`?cityLook=1`, look/cityLook.ts `paintSlotLayers`): the material-slot layers,
+ * appended after the bay cells; `slotBase` is where they start. Without it the arrays are
+ * exactly the bay cells, as before.
+ */
+export async function buildLookTextures(THREE: any, look: 'procedural' | Look, maxAnisotropy: number, size = CELL_PX, options: { slotLayers?: { colour: Uint8Array; mask: Uint8Array } } = {}): Promise<{ colour: any; mask: any; slotBase: number }> {
   if (size !== CELL_PX && size !== CELL_PX / 2) throw new Error('Unsupported building texture size');
   const layers = (look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET + BAY_LAYER_COUNT : BAY_LAYER_COUNT + ROOF_LAYER_COUNT) + 1;
+  // Facade chunks store their layer as a byte; slot meshes carry their own (small) slot ordinal.
   if (layers > 256) throw new Error('Building texture array exceeds byte layer indices');
-  const px = size * size, colour = new Uint8Array(px * 4 * layers), mask = new Uint8Array(px * 2 * layers);
+  const slotLayers = options.slotLayers ? SLOT_LAYER_COUNT : 0, total = layers + slotLayers;
+  const px = size * size, colour = new Uint8Array(px * 4 * total), mask = new Uint8Array(px * 2 * total);
+  if (options.slotLayers) { colour.set(options.slotLayers.colour, px * 4 * layers); mask.set(options.slotLayers.mask, px * 2 * layers); }
   let batchStart = performance.now();
   const yieldBudget = async () => {
     if (performance.now() - batchStart < 6) return;
@@ -250,7 +259,7 @@ export async function buildLookTextures(THREE: any, look: 'procedural' | Look, m
     await yieldBudget();
   }
   const array = (data: Uint8Array, format: any) => {
-    const t = new THREE.DataArrayTexture(data, size, size, layers);
+    const t = new THREE.DataArrayTexture(data, size, size, total);
     t.format = format; t.type = THREE.UnsignedByteType;
     t.wrapS = t.wrapT = THREE.RepeatWrapping; t.minFilter = THREE.LinearMipmapLinearFilter; t.magFilter = THREE.LinearFilter;
     t.userData = { bytes: data.byteLength };
@@ -258,7 +267,7 @@ export async function buildLookTextures(THREE: any, look: 'procedural' | Look, m
     t.generateMipmaps = true; t.anisotropy = maxAnisotropy; t.unpackAlignment = 1; t.needsUpdate = true;
     return t;
   };
-  return { colour: array(colour, THREE.RGBAFormat), mask: array(mask, THREE.RGFormat) };
+  return { colour: array(colour, THREE.RGBAFormat), mask: array(mask, THREE.RGFormat), slotBase: layers };
 }
 
 /** Own ground: a feature's base height (metres), undefined while its relief is not resident, null where there is none. */
@@ -294,7 +303,9 @@ export class ThreeBuildings {
   private readonly materials = new Map<BuildingLook, any>();
   private sourceGroups = new Map<string, Feature[]>();
   private contextGroups = new Map<string, Feature[]>();
-  private textureSets = new Map<BuildingLook, Promise<{ colour: any; mask: any }>>();
+  private textureSets = new Map<BuildingLook, Promise<{ colour: any; mask: any; slotBase: number }>>();
+  /** `?cityLook=1`: facades draw with the city look (look/cityLook.ts) and their array carries the slot layers. */
+  private readonly cityLook = cityLookEnabled();
   private lookToken = 0;
   private appearanceToken = 0;
   private envelopeLoadToken = 0;
@@ -377,11 +388,11 @@ export class ThreeBuildings {
   getLook(): BuildingLook { return this.requestedLook; }
 
   /** Keep every resident mesh paired with the atlas and palette it was built for. */
-  private bindLookMaterial(look: BuildingLook, set: { colour: any; mask: any }): void {
+  private bindLookMaterial(look: BuildingLook, set: { colour: any; mask: any; slotBase: number }): void {
     let material = this.materials.get(look);
     if (!material) {
-      // The lit material's onBeforeCompile does not survive clone().
-      material = this.lit ? this.newMaterial() : this.material.clone();
+      // The lit material's onBeforeCompile does not survive clone(); city-look materials get their own uniforms.
+      material = this.lit || this.cityLook ? this.newMaterial() : this.material.clone();
       this.materials.set(look, material);
     }
     material.uniforms.cells.value = set.colour;
@@ -391,6 +402,14 @@ export class ThreeBuildings {
     if (material.uniforms.wallGain) material.uniforms.wallGain.value = LOOK_VARIANTS[look].litWallGain;
     this.material = material;
     this.textureMB = (set.colour.userData.bytes + set.mask.userData.bytes) * 4 / 3 / 1048576;
+    if (this.cityLook) {
+      // Slot meshes (recipe houses, landmarks, building types) follow the look's shading rules, and in the
+      // shared frame (one renderer) sample this very array: one texture for every building.
+      const city = getCityLook(this.THREE);
+      city.uniforms.bands.value = LOOK_VARIANTS[look].shadeBands;
+      city.uniforms.flatColour.value = LOOK_VARIANTS[look].flatColour ? 1 : 0;
+      if (this.sharedFrame) city.bindAtlas(set);
+    }
   }
 
   /** Invalidate work at request time, before awaiting textures or pumping queued jobs. */
@@ -480,14 +499,16 @@ export class ThreeBuildings {
   }
 
   /** Build (once) the colour and tint-mask texture arrays for a look. */
-  private texturesFor(look: 'procedural' | Look): Promise<{ colour: any; mask: any }> {
+  private texturesFor(look: 'procedural' | Look): Promise<{ colour: any; mask: any; slotBase: number }> {
     let set = this.textureSets.get(look);
     if (!set) this.textureSets.set(look, set = this.buildTextures(look));
     return set;
   }
 
-  private buildTextures(look: 'procedural' | Look): Promise<{ colour: any; mask: any }> {
-    return buildLookTextures(this.THREE, look, Math.min(this.renderer.capabilities.getMaxAnisotropy(), this.detailZoom === 17 ? 4 : 16), this.detailZoom === 17 ? CELL_PX / 2 : CELL_PX);
+  private async buildTextures(look: 'procedural' | Look): Promise<{ colour: any; mask: any; slotBase: number }> {
+    const size = this.detailZoom === 17 ? CELL_PX / 2 : CELL_PX;
+    const slotLayers = this.cityLook ? paintSlotLayers(document, await loadCityBrick(document), size) : undefined;
+    return buildLookTextures(this.THREE, look, Math.min(this.renderer.capabilities.getMaxAnisotropy(), this.detailZoom === 17 ? 4 : 16), size, { slotLayers });
   }
 
   setVisible(visible: boolean): void {
@@ -655,6 +676,8 @@ export class ThreeBuildings {
     for (const material of new Set([this.material, ...this.materials.values()])) material?.dispose();
     this.materials.clear();
     for (const set of this.textureSets.values()) void set.then(t => { t.colour.dispose(); t.mask.dispose(); });
+    // Slot meshes go back to the city look's own slot array before this one is freed.
+    if (this.cityLook && this.sharedFrame && this.THREE) getCityLook(this.THREE).bindAtlas(null);
   }
 
   private textureMB = 0;
@@ -1060,6 +1083,13 @@ export class ThreeBuildings {
 
   private newMaterial(): any {
     const THREE = this.THREE;
+    if (this.cityLook) {
+      // One shader for every building mesh (look/cityLook.ts); chunks keep their own uniforms per look.
+      const variant = LOOK_VARIANTS[this.look];
+      return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide }, createCityUniforms(THREE, {
+        bands: { value: variant.shadeBands }, flatColour: { value: variant.flatColour ? 1 : 0 }, wallGain: { value: variant.litWallGain },
+      }));
+    }
     if (this.lit) {
       const material = createLitFacadeMaterial(THREE);
       material.uniforms.bands.value = LOOK_VARIANTS[this.look].shadeBands;

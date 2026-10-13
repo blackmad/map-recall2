@@ -14,6 +14,8 @@
 import { createRecipeLook, RECIPE_LOOK_SHARED } from '../../../src/canalRecall/buildingRecipe/recipeLook.ts';
 import { plainBounds, withinView } from '../../../src/canalRecall/rendererShared/residency.ts';
 import { normaliseLandmarkMaterials } from '../../../src/canalRecall/landmarks/landmarkShading.ts';
+import { cityLookEnabled } from '../../../src/canalRecall/look/cityLook.ts';
+import { INFERRED_SLOT_SOURCE } from '../../../src/canalRecall/look/materialSlotInference.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
 
@@ -313,6 +315,11 @@ export class SignatureLandmarks {
       entry.group.traverse(child => {
         if (!child.isMesh || !child.material) return;
         const materials = Array.isArray(child.material) ? child.material : [child.material];
+        // City look (`?cityLook=1`): one material per variant is shared by every building; swap to its highlight variant.
+        if (!Array.isArray(child.material) && child.material.userData?.cityLook && this._recipeLook?.city) {
+          child.material = this._recipeLook.city.highlighted(child.material, highlighted);
+          return;
+        }
         for (const material of materials) {
           // Recipe-look materials are shared by every house with that slot and tint; tinting one would light them all.
           if (!material.emissive || material.userData?.[RECIPE_LOOK_SHARED]) continue;
@@ -520,17 +527,27 @@ export class SignatureLandmarks {
    * they keep the synchronous load path).
    */
   _dress(gltf) {
+    // `?cityLook=1`: every model takes the city look (look/cityLook.ts); untagged landmark materials take the slot
+    // their name and colour say. Flag off, slots inferred into a GLB (`materialSlotSource: 'inferred'`) are ignored.
+    const city = cityLookEnabled();
     let tagged = false;
-    gltf.scene.traverse(child => { if (child.isMesh && child.material?.userData?.materialSlot) tagged = true; });
-    if (!tagged) return null;
+    gltf.scene.traverse(child => { if (child.isMesh && child.material?.userData?.materialSlot && (city || child.material.userData.materialSlotSource !== INFERRED_SLOT_SOURCE)) tagged = true; });
+    if (!tagged && !city) return null;
     if (!this._recipeLookReady) {
       const image = new Image();
       image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
       this._recipeLookReady = image.decode().then(() => image, () => null)
         // `?sharedFrame=1`: lit by the one rig like the facades and landmarks around them (docs/LOOK.md); otherwise the baked city shade.
-        .then(brick => { this._recipeLook = createRecipeLook(THREE, { brick, anisotropy: window.matchMedia?.('(pointer: coarse)').matches ? 1 : 4, lit: !!this.sharedFrame }); return this._recipeLook; });
+        .then(brick => { this._recipeLook = createRecipeLook(THREE, { brick, anisotropy: window.matchMedia?.('(pointer: coarse)').matches ? 1 : 4, lit: !!this.sharedFrame, cityLook: city, inferSlots: city }); return this._recipeLook; })
+        .then(look => (look.ready ? look.ready.then(() => look) : look));
     }
     return this._recipeLookReady.then(look => { look.apply(gltf.scene); gltf.scene.userData.recipeLook = true; return gltf; });
+  }
+
+  /** LOD levels load synchronously into place: dress them too once the city look exists (`?cityLook=1` only). */
+  _dressLevel(gltf) {
+    if (this._recipeLook?.city) { this._recipeLook.apply(gltf.scene); gltf.scene.userData.recipeLook = true; }
+    return gltf;
   }
 
   /** Free a model's GPU resources. A shared-mesh clone only drops its reference; the master is freed with the last instance. */
@@ -859,7 +876,7 @@ export class SignatureLandmarks {
     const done = () => { if (generation === this._generation) { entry.levelLoading = false; this._lodLoads--; } };
     this._loader.load(url, gltf => {
       if (this._removed || generation !== this._generation || !this._entries.includes(entry)) { this._disposeResources(gltf.scene); done(); return; }
-      this._swapLevel(entry, this._shade(gltf).scene, level);
+      this._swapLevel(entry, this._shade(this._dressLevel(gltf)).scene, level);
       done();
       this._updateLevels();
     }, undefined, error => {

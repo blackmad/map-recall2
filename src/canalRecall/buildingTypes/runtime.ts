@@ -298,6 +298,10 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
   const loaded: Loaded[] = [];
   const textures: any[] = [];
   const isRecipe = (m: any) => !!(m?.isShaderMaterial && m.uniforms?.map?.value && m.uniforms.tint?.value && m.uniforms.uvScale && m.uniforms.enuFromWorld);
+  // `?cityLook=1`: the recipe look dressed the units with the city look (look/cityLook.ts): slot and tint are vertex
+  // attributes and every unit shares one material per side, so units merge into one draw the same way.
+  const isCity = (m: any) => !!m?.userData?.cityLook;
+  const mergeable = (m: any) => isRecipe(m) || isCity(m);
   for (const [unit, indices] of byUnit) {
     const scene = await deps.loadUnit(unit);
     scene.updateMatrixWorld(true);
@@ -311,6 +315,7 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
   // One shared material per side; every unit and the far massing draw through it (same textures, tint and fixed-light shade).
   const merged = new Map<number, any>();
   const mergedMaterial = (source: any) => {
+    if (isCity(source)) return source;
     let m = merged.get(source.side);
     if (!m) {
       const uniforms: Record<string, any> = {enuFromWorld: source.uniforms.enuFromWorld};
@@ -323,16 +328,21 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
     return m;
   };
   const partOf = (m: any, data: {positions: ArrayLike<number>; normals: ArrayLike<number>; uvs: ArrayLike<number>; index?: ArrayLike<number> | null}, matrix: ArrayLike<number>): MergePart => {
+    if (isCity(m.material)) {
+      // City look: `texture` carries the slot ordinal (the `layer` attribute), UVs stay in metres (the shader scales per slot).
+      const layer = m.geometry.getAttribute('layer'), tint = m.geometry.getAttribute('tint');
+      return {...data, matrix, uvScale: 1, texture: layer.getX(0), tint: [tint.getX(0), tint.getY(0), tint.getZ(0)]};
+    }
     const t = m.material.uniforms.tint.value;
     return {...data, matrix, uvScale: m.material.uniforms.uvScale.value, texture: textures.indexOf(m.material.uniforms.map.value), tint: [t.x, t.y, t.z]};
   };
-  const geometryOf = (mm: MergedMesh) => {
+  const geometryOf = (mm: MergedMesh, city = false) => {
     const g = new THREE.BufferGeometry();
     g.setAttribute('position', new THREE.BufferAttribute(mm.positions, 3));
     g.setAttribute('normal', new THREE.BufferAttribute(mm.normals, 3));
     g.setAttribute('uv', new THREE.BufferAttribute(mm.uvs, 2));
-    g.setAttribute('aTex', new THREE.BufferAttribute(mm.textures, 1));
-    g.setAttribute('aTint', new THREE.BufferAttribute(mm.tints, 3));
+    g.setAttribute(city ? 'layer' : 'aTex', new THREE.BufferAttribute(mm.textures, 1));
+    g.setAttribute(city ? 'tint' : 'aTint', new THREE.BufferAttribute(mm.tints, 3));
     g.setIndex(new THREE.BufferAttribute(mm.index, 1));
     geometries.push(g);
     return g;
@@ -348,7 +358,7 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
     const near = new Map<number, MergePart[]>(), far = new Map<number, MergePart[]>(), sources = new Map<number, any>();
     for (const m of meshes) {
       const geo = m.geometry;
-      if (!isRecipe(m.material)) {
+      if (!mergeable(m.material)) {
         // Anything that is not a recipe-look material keeps its own instanced draw.
         const mesh = new THREE.InstancedMesh(geo, instancedMaterial(THREE, m.material, materialCache), indices.length);
         mesh.name = `${unit}/near/${m.name}`; mesh.userData.layer = 'near';
@@ -362,7 +372,8 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
     }
     if (nominal) {
       // Far LOD from the unit's nominal size: wall box + roof in the unit's own wall and roof materials, one draw.
-      const pick = (slots: Set<string>) => meshes.filter(m => isRecipe(m.material) && slots.has(m.material?.userData?.materialSlot)).sort((a, b) => b.geometry.attributes.position.count - a.geometry.attributes.position.count)[0];
+      const slotOf = (m: any) => (isCity(m.material) ? m.userData?.citySlot?.slot : m.material?.userData?.materialSlot);
+      const pick = (slots: Set<string>) => meshes.filter(m => mergeable(m.material) && slots.has(slotOf(m))).sort((a, b) => b.geometry.attributes.position.count - a.geometry.attributes.position.count)[0];
       const wall = pick(WALL_SLOTS), roofMesh = pick(ROOF_SLOTS), raw = farMassing(nominal);
       for (const [source, data] of [[wall, raw.walls], [roofMesh, raw.roof]] as const) {
         if (!source || !data.index.length) continue;
@@ -373,7 +384,7 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
     }
     for (const [parts, isFar] of [[near, false], [far, true]] as const) {
       for (const [side, list] of parts) {
-        const mm = mergeParts(list), mesh = new THREE.InstancedMesh(geometryOf(mm), mergedMaterial(sources.get(side)), indices.length);
+        const source = sources.get(side), mm = mergeParts(list), mesh = new THREE.InstancedMesh(geometryOf(mm, isCity(source)), mergedMaterial(source), indices.length);
         mesh.name = `${unit}/${isFar ? 'far' : 'near'}/merged-${side}`; mesh.userData.layer = isFar ? 'far' : 'near';
         layers.push({mesh, indices, local: new THREE.Matrix4(), far: isFar, triangles: mm.index.length / 3});
         group.add(mesh);

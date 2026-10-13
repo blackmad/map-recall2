@@ -22,7 +22,10 @@
  * the page's three.js namespace so the game (shared CanalRecallThree) and the
  * headless sheet renderer use the identical code path.
  */
-import {paintRoofCell} from '../roofCells.ts';
+import {paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, roofCanvas} from '../look/slotCells.ts';
+export {paintBrickCanvas, paintGlassCanvas, paintStuccoCanvas};
+import {cityLookEnabled, getCityLook, type CityLook} from '../look/cityLook.ts';
+import {INFERRED_SLOT_SOURCE} from '../look/materialSlotInference.ts';
 import {MATERIAL_SLOTS, SLOT_CELL, SLOT_TILE_M, cityTint, hexToRgb, type MaterialSlot} from '../look/palette.ts';
 
 /** A GLB material's `materialSlot` extra (look/palette.ts owns the slot → cell/tint mapping). */
@@ -68,89 +71,6 @@ void main() {
   gl_FragColor = vec4(c * vShade, 1.0);
 }`;
 
-/** Brick cell: the city's bay-texture wall (Bricks057 photo + mortar coursing), neutralised and lifted like calmBayLayers('photo'). */
-export function paintBrickCanvas(doc: Document, brick?: CanvasImageSource | null): HTMLCanvasElement {
-  const size = 336, canvas = doc.createElement('canvas');
-  canvas.width = canvas.height = size;
-  const ctx = canvas.getContext('2d', {willReadFrequently: true})!;
-  if (brick) for (let y = 0; y < size; y += 112) for (let x = 0; x < size; x += 112) ctx.drawImage(brick, x, y, 112, 112);
-  else {
-    // Fallback when the photo cannot load: stretcher bond with per-brick variation.
-    let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-    for (let row = 0, y = 0; y < size; y += 14, row++) for (let x = -(row % 2) * 24; x < size; x += 48) { const v = 150 + rnd() * 50; ctx.fillStyle = `rgb(${v},${v * 0.92},${v * 0.86})`; ctx.fillRect(x, y, 48, 14); }
-  }
-  ctx.strokeStyle = 'rgba(235,223,205,0.18)'; ctx.lineWidth = 1.7;
-  for (let row = 0, y = 6; y < size; y += 14, row++) {
-    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(size, y); ctx.stroke();
-    for (let x = (row % 2) * 24; x < size; x += 48) { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + 14); ctx.stroke(); }
-  }
-  const image = ctx.getImageData(0, 0, size, size), px = image.data;
-  let mean = 0;
-  for (let i = 0; i < px.length; i += 4) mean += (px[i] + px[i + 1] + px[i + 2]) / 3;
-  mean /= px.length / 4;
-  const lift = mean > 0 ? Math.min(2.4, 225 / mean) : 1;
-  for (let i = 0; i < px.length; i += 4) {
-    const lum = (px[i] + px[i + 1] + px[i + 2]) / 3, neutral = Math.min(255, (lum + (mean - lum) * 0.7) * lift);
-    px[i] = px[i + 1] = px[i + 2] = neutral; px[i + 3] = 255;
-  }
-  ctx.putImageData(image, 0, 0);
-  return canvas;
-}
-
-/** Glass pane (UV 0..1 per pane): the city's lifted photo-look gradient plus a soft sky reflection. */
-export function paintGlassCanvas(doc: Document): HTMLCanvasElement {
-  const canvas = doc.createElement('canvas'); canvas.width = 64; canvas.height = 128;
-  const ctx = canvas.getContext('2d')!;
-  // Canvas y runs down; texture v runs up (flipY), so the top of the canvas is the top of the pane.
-  const g = ctx.createLinearGradient(0, 0, 0, 128);
-  g.addColorStop(0, '#8aa1b0'); g.addColorStop(0.5, '#4d606c'); g.addColorStop(1, '#3c474e');
-  ctx.fillStyle = g; ctx.fillRect(0, 0, 64, 128);
-  ctx.fillStyle = 'rgba(235,242,248,0.16)';
-  ctx.beginPath(); ctx.moveTo(10, 0); ctx.lineTo(34, 0); ctx.lineTo(4, 70); ctx.lineTo(-20, 70); ctx.closePath(); ctx.fill();
-  return canvas;
-}
-
-function paintDoorCanvas(doc: Document): HTMLCanvasElement {
-  const canvas = doc.createElement('canvas'); canvas.width = canvas.height = 128;
-  const ctx = canvas.getContext('2d')!;
-  ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, 128, 128);
-  ctx.fillStyle = 'rgba(0,0,0,0.10)';
-  for (let x = 0; x < 128; x += 16) ctx.fillRect(x, 0, 1.5, 128);
-  return canvas;
-}
-/** Plaster: near-white fine grain with a few darker specks and faint trowel streaks (no mortar courses, no brick photo). */
-export function paintStuccoCanvas(doc: Document): HTMLCanvasElement {
-  const canvas = doc.createElement('canvas'); canvas.width = canvas.height = 128;
-  const ctx = canvas.getContext('2d')!, image = ctx.createImageData(128, 128);
-  let seed = 23; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-  for (let y = 0; y < 128; y++) {
-    const streak = (rnd() - 0.5) * 3;
-    for (let x = 0; x < 128; x++) {
-      const i = (y * 128 + x) * 4, speck = rnd() < 0.012 ? -14 : 0, v = 243 + (rnd() - 0.5) * 8 + streak + speck;
-      image.data[i] = image.data[i + 1] = image.data[i + 2] = v; image.data[i + 3] = 255;
-    }
-  }
-  ctx.putImageData(image, 0, 0);
-  return canvas;
-}
-function paintStoneCanvas(doc: Document): HTMLCanvasElement {
-  const canvas = doc.createElement('canvas'); canvas.width = canvas.height = 128;
-  const ctx = canvas.getContext('2d')!, image = ctx.createImageData(128, 128);
-  let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-  for (let i = 0; i < image.data.length; i += 4) { const v = 228 + (rnd() - 0.5) * 16; image.data[i] = image.data[i + 1] = image.data[i + 2] = v; image.data[i + 3] = 255; }
-  ctx.putImageData(image, 0, 0);
-  ctx.fillStyle = 'rgba(80,70,60,0.18)'; ctx.fillRect(0, 0, 128, 1.5);
-  return canvas;
-}
-function roofCanvas(doc: Document, kind: 'tile' | 'slate' | 'flat'): HTMLCanvasElement {
-  const data = paintRoofCell(kind, false), size = Math.round(Math.sqrt(data.length / 4)), canvas = doc.createElement('canvas');
-  canvas.width = canvas.height = size;
-  const ctx = canvas.getContext('2d')!, image = ctx.createImageData(size, size);
-  for (let i = 0; i < data.length; i += 4) { image.data[i] = data[i]; image.data[i + 1] = data[i + 1]; image.data[i + 2] = data[i + 2]; image.data[i + 3] = 255; }
-  ctx.putImageData(image, 0, 0);
-  return canvas;
-}
-
 /** Marks resources the look owns, so per-model disposal leaves them for other houses. */
 export const RECIPE_LOOK_SHARED = 'recipeLookShared';
 
@@ -161,6 +81,10 @@ export interface RecipeLook {
   readonly lit: boolean;
   /** Replace slot-tagged materials under `root`; returns how many meshes changed. */
   apply(root: any): number;
+  /** `?cityLook=1`: the shared city look behind this adapter (look/cityLook.ts); absent on the legacy path. */
+  readonly city?: CityLook;
+  /** `?cityLook=1`: resolves when its atlas is painted (apply before this and the slots would draw black for a frame). */
+  readonly ready?: Promise<void>;
 }
 
 export type RecipeLookOptions = {
@@ -175,6 +99,14 @@ export type RecipeLookOptions = {
    * (false) keeps the unlit material with the city's baked shade.
    */
   lit?: boolean;
+  /**
+   * `?cityLook=1` (default: the page URL): slot materials become the city
+   * look's (look/cityLook.ts): one texture array shared with the streamed
+   * facades, one shader, attributes instead of per-material uniforms.
+   */
+  cityLook?: boolean;
+  /** City look only: untagged materials take the slot their name and colour say (landmark GLBs; look/materialSlotInference.ts). */
+  inferSlots?: boolean;
 };
 
 /**
@@ -183,6 +115,11 @@ export type RecipeLookOptions = {
  */
 export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): RecipeLook {
   const lit = !!options.lit;
+  if (options.cityLook ?? cityLookEnabled()) {
+    // Thin adapter: callers keep `apply` / `enuFromWorld`; the city look does the work.
+    const city = getCityLook(THREE, {document: options.document, brick: options.brick, anisotropy: options.anisotropy});
+    return {enuFromWorld: city.uniforms.enuFromWorld, lit, city, ready: city.ready, apply: root => city.dress(root, {lit, infer: !!options.inferSlots})};
+  }
   const doc = options.document ?? document;
   const enuFromWorld = {value: new THREE.Matrix3()};
   const textures = new Map<string, any>();
@@ -203,7 +140,7 @@ export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): R
       case 'stucco': return texture('stucco', () => paintStuccoCanvas(doc));
       case 'door': return texture('door', () => paintDoorCanvas(doc));
       case 'stone': return texture('stone', () => paintStoneCanvas(doc));
-      case 'frame': return texture('flat-white', () => { const c = doc.createElement('canvas'); c.width = c.height = 4; const x = c.getContext('2d')!; x.fillStyle = '#fff'; x.fillRect(0, 0, 4, 4); return c; });
+      case 'frame': return texture('flat-white', () => paintWhiteCanvas(doc));
       case 'tile': return texture('tile', () => roofCanvas(doc, 'tile'));
       case 'slate': return texture('slate', () => roofCanvas(doc, 'slate'));
       case 'flat': return texture('flat', () => roofCanvas(doc, 'flat'));
@@ -246,6 +183,8 @@ export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): R
         if (!o.isMesh || Array.isArray(o.material)) return;
         const slot = o.material?.userData?.materialSlot as RecipeSlot | undefined, tint = o.material?.userData?.tint as string | undefined;
         if (!slot || !RECIPE_SLOTS.includes(slot) || !tint || !o.geometry.getAttribute('uv')) return;
+        // Slots inferred into a legacy GLB (look/materialSlotInference.ts) only take part in the city look (`?cityLook=1`).
+        if (o.material.userData.materialSlotSource === INFERRED_SLOT_SOURCE) return;
         const previous = o.material;
         o.material = materialFor(slot, tint, previous.side);
         if (!previous.userData?.[RECIPE_LOOK_SHARED]) previous.dispose();
