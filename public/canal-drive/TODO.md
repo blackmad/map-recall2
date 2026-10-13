@@ -1223,6 +1223,17 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+- **Large tier after batch 3** (2026-10-14): fix the kit overlaps that
+  batch 3 worked around (`garageDoors`/`portals`, `arches` with frames,
+  `curtain-wall`: 2–18 m² coplanar frame/glass; stacked balconies 9k tris
+  and z-fighting) so the Hotel Arena gets its arched ground-floor heads
+  and docks get real doors; Distelweg 88 to `render`+`stucco`; Plantage
+  Middenlaan 52 is 6 storeys (7 in the photo: the top pier floats); the
+  Utrechtsestraat 15 roof pavilion, Weteringstraat cantilever bands and
+  Funenpark loggias are not modelled; six dropped pands need shell or
+  footprint fixes first (Westerdoksdijk 9, Volewijkshof 6, Grasweg 698,
+  Looiersgracht 83, Jan van Galenstraat); re-running `install-large.ts`
+  for Marnixstraat 248 drops its duplicate-pand alias.
 - **American Hotel leftovers** (2026-10-14): the tower drum (R 1.75 at
   [-7.6, 18.3]) stands inside the 3DBAG tower block below 28 m while the
   footprint's bulge fits a circle at (-7.66, 19.59); decide whether the

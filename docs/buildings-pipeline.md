@@ -467,6 +467,17 @@ before the bundles are rebuilt. iPhone measurement is still pending.
 
 ### Known gaps
 
+- Large-tier kit overlaps (2026-10-14, batch 3): `garageDoors` and
+  `ground: "portals"` leave 2.4–7 m² of coplanar frame/door overlap even
+  with `deepBars` and `frames: false`; `arches` combined with window
+  frames leaves up to 18 m² of frame/glass overlap; `curtain-wall` leaves
+  frame/glass overlap. Until fixed, use tall transom openings for docks,
+  drop arch heads where frames are needed, and `ribbon-windows` for
+  glazed pavilions. Stacked balconies on three storeys cost ~9k tris and
+  z-fight. A panel with several heights needs `wallSurfaces` groups per
+  height or flush windows appear above the eaves. `sources[]` is indexed
+  by group order.
+
 - Measured roofs (2026-10-13 orthophoto slots): the PDOK tile is 0.21 m/px,
   so a roof under ~12 m² or split by a party wall takes its neighbour's
   slot; chimneys and dormers skew the luma on small roofs; roofs under tree

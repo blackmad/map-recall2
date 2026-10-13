@@ -1,5 +1,38 @@
 # Canal Recall — what is built
 
+## Dominant buildings, batch 3 (2026-10-14, night)
+
+Lane `large/dominant-3-20261014`. Twelve more `kind: large` recipes by
+footprint ÷ distance from the Dam, each its own commit with GLB, catalogue
+entry, intent, facts, 3DBAG and inventory: the 1908 Kromhout/Stork works
+on the Gedempt Hamerkanaal (STORK and KROMHOUTHAL lettering, arched canal
+wing), Distelweg 88 (1948 clad warehouse), Centrale Groothandelsmarkt 190
+and 114 (1935, arcade with the Gebr. de Mooij lettering; a 191 m sign
+fascia), Hotel Arena (the 1890 orphanage with hotel wings and the glazed
+pavilion, 7.8k tris), Utrechtsestraat 15 (Booking HQ: granite bases,
+brick piers, lettering), the Marnixstraat 248 car park (six white ribbon
+decks), Funenpark 427 (eight height groups, curved east arc), Plantage
+Middenlaan 52 (2022 courtyard block), Westerdok 748, Buitenzagerij 45
+(1984 comb of rows) and Nieuwe Weteringstraat 16. All pass the gates and
+`audit:glb`; goldens re-recorded for the twelve only (92 fit, 59 large
+meshes). Six ranked pands were dropped for data reasons: Westerdoksdijk 9
+(14 m open edge on the bare 3DBAG roof), Volewijkshof 6 (LoD2.2 ground
+IoU 0.37), Grasweg 698 (IoU 0.009), Vrouwenverdrietstraat 38 (no panorama
+within 35 m), Looiersgracht 83 and Jan van Galenstraat (IoU 0.55/0.89).
+Marnixstraat 248 suppresses the duplicate pand 0363100012245310 through
+an `aliases` entry (`ordinaryModels.ts` reads `aliases`, not `suppress`);
+re-running `install-large.ts` for it drops the alias. Kit findings that
+cost time: `garageDoors`/`portals` and `arches` with frames and
+`curtain-wall` all leave coplanar frame overlap (2–18 m²), so docks use
+tall transoms, the Arena's arch heads were dropped and its pavilion uses
+`ribbon-windows`; stacked balconies cost 9k tris and z-fight; a panel
+with several heights puts flush windows above the eaves unless the
+intent's `wallSurfaces` splits groups per height; white concrete is
+`wallMaterial: render` in the group plus `palette.wallMaterial: stucco`.
+Walls without a current photo stay blank (Hamerkanaal N/E/W, Funenpark
+and Westerdok courtyards, Plantage Middenlaan SW, Weteringstraat N).
+
+
 ## The black blocks under the shared frame were a depth-range bug (2026-10-14, night)
 
 Lane `look/shadow-fill-20261014`. MapLibre draws its 3D custom layer with
