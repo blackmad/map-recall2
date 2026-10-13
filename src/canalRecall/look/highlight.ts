@@ -86,8 +86,8 @@ export function outlineWidthPx(distanceM: number, nearPx = OUTLINE_PX, farPx = O
  * `SMALL_TARGET_FADE_SHARE`. The share is the footprint's equivalent circle (radius √(area/π)) at its on-screen
  * scale: π r_px² / frame area.
  */
-export const SMALL_TARGET_SHARE = 0.01;
-export const SMALL_TARGET_FADE_SHARE = 0.02;
+export const SMALL_TARGET_SHARE = 0.02; // integrator 2026-10-14: 1 % left the Westermarkt block (2.6 %) and the terrace at the edge (1.04 %) unboosted
+export const SMALL_TARGET_FADE_SHARE = 0.04;
 /**
  * Roof wash opacity at full boost (the accent over the roof's own colour, unlit). Measured at the Oud-West terrace
  * (chase, default frame, dark slate roof; accent pixels = RGB distance < 60 of the coral): 0.55 → 0.13 %, 0.65 →

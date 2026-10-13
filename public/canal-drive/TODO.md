@@ -733,16 +733,10 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   "flush cladding band on a wall" (Jacob Bontiusplaats 9's 6,411 m²,
   Valley, Pllek, Frascati's doubled face; pllek/frascati/valley/jacob not
   re-exported). The 4.5 cm near band still tints a few pixels at 1,800 m.
-- **Highlight: small targets under the coral default**. Style a (coral
-  outline + ground ring + beacon) is the default since 2026-10-13 evening
-  (`?highlight=yellow` compares). On the chase sheets an ordinary terrace
-  house carries 0.08 % accent pixels against 0.55 % under yellow: the
-  outline at 2–3.5 px is not enough for a 6 m house at 200 m. Add a mark
-  that scales with how small the target is on screen (a coral roof wash or
-  a taller beacon when the footprint is under ~1 % of the frame), measured
-  the same way (`scripts/highlight-outline-width.mjs`, accent-pixel share).
-  Also open: 3DBAG detailed mode untested live (tiles load 0 meshes
-  headless), a `building-3d` basemap target gets no casing, iPhone profile.
+- **Highlight leftovers** (2026-10-14): 3DBAG detailed mode untested live
+  (tiles load 0 meshes headless) and gets no roof wash; a `building-3d`
+  basemap target gets no casing; the wash pass not perf-measured; iPhone
+  profile.
 - **Roofs after the attachment fix**: pitched-vs-flat split pands still
   follow one plan (the roof-facts slot now colours the lid; the shape is one).
 - **Own ground after the 2026-10-13 lanes (HISTORY)**: still open before a

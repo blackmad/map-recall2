@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## Small targets under the coral highlight (2026-10-14, night)
+
+Lane `look/highlight-small-target-20261014`. When the lit building's
+footprint covers under `SMALL_TARGET_SHARE` of the frame (from its real
+distance, not the map-centre zoom), the marker adds a coral wash over the
+building's upward-facing faces only (walls keep their colours; the hull
+prism's top cap on the MapLibre fallback; skipped on 3DBAG detailed mode)
+and raises the beacon up to 3× and from 3 to 4 px; both fade out by
+`SMALL_TARGET_FADE_SHARE`. Wash strength is 0.75: on the terrace's dark
+slate roof 0.55 gives 0.13 % accent pixels and reads rust, 0.75 gives
+0.69 %. Oud-West terrace, chase: 0.08 → 0.69 % (yellow was 0.55 %); every
+other spot and every saddle view unchanged. The lane shipped 1 % / 2 %;
+the integrator widened it to 2 % / 4 % so the Westermarkt block (2.6 %)
+and the terrace (1.04 %, at the edge) are inside the full boost. Storybook
+states (desktop/phone, wash and fallback, long name), an e2e pin at the
+terrace (boost > 0.9, accent ≥ 0.3 %, cleared on closing the card), the
+measuring script records accent share and boost. Still open: 3DBAG
+detailed mode untested live, `building-3d` basemap targets get no casing,
+iPhone profile, perf with the wash pass not re-measured (one draw per lit
+mesh while boosted).
+
+
 ## Street-survey chunks retired; why the block was black (2026-10-14, night)
 
 Lane `buildings/street-survey-retire-20261013` (user, Singelgracht shot:
