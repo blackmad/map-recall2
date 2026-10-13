@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+## Schools as large recipes; hospitals surveyed (2026-10-14, night)
+
+Lane `public/schools-20261014`. Eight `kind: large` recipes: the
+Barlaeus Gymnasium (arched storeys, balcony over the portal, lettering
+on the frieze), Vossius Gymnasium (four fronts, wide four-light windows
+with transoms), the Berlage Lyceum, Montessori Lyceum (Van Ostadestraat),
+Het Amsterdams Lyceum (its two gateway fronts with HET AMSTERDAMS LYCEUM
+lettering and wide arched carriage openings), the Rijksakademie (south
+and north ranges), the Cygnus block on the Vrolikstraat and the Reade
+west wing. Four new components with tests and byte-identical default
+compose: `arches.storeys`, `balconies.bays`, `windows: 'wide'` and
+`gateways` (92 % of a bay; a wider opening falls back to flush and
+z-fights). `hospitals-match.ts` / `schools-match.ts` with
+`addrOverride` for campuses OSM maps without an address;
+`build-poi-backlog.ts` tags `publicBuilding: hospital|school`
+(`landmark-backlog.json` regenerated). Premise corrections: OLVG Oost and
+West already exist as bespoke campus models; AMC has no BAG pand at its
+OSM point; AvL and VUmc are `no-wall`, BovenIJ `no-panorama`; the
+Rijksakademie's polychrome fronts are on neighbouring pands. Every one of
+the eight shows the same `audit:glb` coplanar glass/frame z-fight as the
+OBA Javaplein and Stadsloket Noord (1.5–51.9 m²): a kit cause, fixed by
+the layered kit (next entry) and to be re-installed with `layeredKit`.
+Roeterseiland REC-A (pand 0363100012185420: 672 surfaces, tower to 59 m,
+eaves 8–51 m in one panel) needs its own survey lane.
+
+
 ## Desktop perf, second pass (2026-10-14, night)
 
 Lane `perf/desktop-two-20261014`, four fixes that change nothing on

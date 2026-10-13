@@ -353,7 +353,7 @@ export interface LargeWallIntent {
   /** Projecting piers at the bay joints. */
   piers?: boolean;
   /** Storeys (0 = ground) with a balcony in every bay. */
-  balconies?: {storeys: number[]; rail?: 'glass' | 'bars' | 'solid'};
+  balconies?: {storeys: number[]; rail?: 'glass' | 'bars' | 'solid'; /** Only in these bays of the widest panel (a balcony over the entrance); default every bay. */ bays?: number[]};
   /** Storeys (0 = ground) with no openings (a blank floor over a shop, a plant floor). */
   blankStoreys?: number[];
   /** Police signature components: blue-and-white striped POLITIE band over the ground floor, blue lamp beside the entrance. */
@@ -367,9 +367,11 @@ export interface LargeWallIntent {
    * and the band around each head: `brick` (a rowlock arch in the wall brick with stone imposts, default), `stone`,
    * `voussoir` (stone with imposts and a keystone) or `none`.
    */
-  arches?: {windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'none'};
+  arches?: {windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'none'; /** Only these storeys (0 = ground) get arched heads (the rest stay square-headed); default every storey. */ storeys?: number[]};
   /** Loading-door axis (warehouses): every `every`-th bay from bay `first` (default 0), or the listed `bays` of the widest panel, is a tall door opening on every upper storey and a wide portal on the ground. */
   hoist?: {every?: number; first?: number; bays?: number[]; arch?: ArchKind};
+  /** A carriage gateway through the ground storey in the listed bays of the widest panel (dark arched openings 92 % of a bay wide, plain wall between); default none. */
+  gateways?: {bays: number[]; arch?: ArchKind};
   /** false = no projecting stone sills under the punched windows (brick sills, flush heads). */
   sills?: boolean;
   /** false = no frame ring round the glass (dark frames that read as glass); glazing bars stay. */

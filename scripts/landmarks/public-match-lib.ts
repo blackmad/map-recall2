@@ -56,13 +56,13 @@ export function referenceStatus(name: string, pandIds: string[]): Record<string,
   return out;
 }
 /** Shared main: query, match, attach panorama status, write JSON. */
-export async function runMatch(o: {out: string; key: string; refName: string; query: string; source: string; exclude: RegExp; addrCity?: string}) {
+export async function runMatch(o: {out: string; key: string; refName: string; query: string; source: string; exclude: RegExp; addrCity?: string; addrOverride?: Record<string, string>}) {
   const prev: any[] = fs.existsSync(o.out) ? JSON.parse(fs.readFileSync(o.out, 'utf8'))[o.key] : [];
   const j = await overpass(o.query), seen = new Set<string>();
   const els = j.elements.filter((e: any) => e.tags?.name && !o.exclude.test(e.tags.name) && !seen.has(e.tags.name) && seen.add(e.tags.name));
   const rows: any[] = [];
   for (const e of els) {
-    const t = e.tags, c = e.center || e, addr = t['addr:street'] ? `${t['addr:street']} ${t['addr:housenumber']}` : '';
+    const t = e.tags, c = e.center || e, addr = o.addrOverride?.[t.name] ?? (t['addr:street'] ? `${t['addr:street']} ${t['addr:housenumber']}` : '');
     const m = addr ? await matchAddress(`${addr} Amsterdam`, c) : NO_MATCH;
     const old = prev.find(p => p.osm === `${e.type}/${e.id}`) ?? {};
     rows.push({name: t.name, address: addr ? `${addr}, Amsterdam` : '(no address in OSM)', osm: `${e.type}/${e.id}`, osmLatLng: [c.lat, c.lon], ...m,

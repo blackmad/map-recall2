@@ -1,0 +1,81 @@
+{
+ "schemaVersion": 1,
+ "id": "cygnus",
+ "pand": "0363100012109375",
+ "signature": [
+  "concrete-grid",
+  "pilotis",
+  "plant-block"
+ ],
+ "walls": [
+  {
+   "tag": "w01-260",
+   "bearing": 260,
+   "lengthM": 72.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001658_pano_0000_000507",
+   "capturedAt": "2020-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "concrete-grid",
+     "kind": "window-shape",
+     "where": "eight storeys of a square concrete egg-crate grid, a glazed cell per ~1.8 m bay, some with red and yellow frames",
+     "approxSizeM": [
+      65,
+      26
+     ],
+     "plan": "simplified",
+     "how": "brick-bay-grid 9 storeys x 26 bays, plain windows in a stucco-textured grey wall; no deep ribs or coloured frames",
+     "seenIn": "TMX7316010203-001658_pano_0000_000507"
+    },
+    {
+     "id": "pilotis",
+     "kind": "colonnade",
+     "where": "ground storey glazed between round concrete pilotis columns",
+     "approxSizeM": [
+      65,
+      4
+     ],
+     "plan": "simplified",
+     "how": "ground glazed with piers true (square projecting piers)",
+     "seenIn": "TMX7316010203-001658_pano_0000_000507"
+    },
+    {
+     "id": "plant-block",
+     "kind": "other",
+     "where": "rooftop plant block with a curved concrete face above the grid",
+     "approxSizeM": [
+      8,
+      6
+     ],
+     "plan": "modelled",
+     "how": "3DBAG roof massing verbatim",
+     "seenIn": "TMX7316010203-001658_pano_0000_000507"
+    },
+    {
+     "id": "end-relief",
+     "kind": "relief",
+     "where": "relief sculpture on the plain concrete end wall at the right",
+     "approxSizeM": [
+      3,
+      2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "too small and dark in the crop to read"
+     },
+     "seenIn": "TMX7316010203-001658_pano_0000_000507"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001658_pano_0000_000507/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

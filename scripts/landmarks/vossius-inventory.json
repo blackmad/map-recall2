@@ -1,0 +1,164 @@
+{
+ "schemaVersion": 1,
+ "id": "vossius",
+ "pand": "0363100012096365",
+ "signature": [
+  "sash-grid",
+  "dormer-bands",
+  "wing-bands",
+  "chimney-tower"
+ ],
+ "walls": [
+  {
+   "tag": "w01-185",
+   "bearing": 185,
+   "lengthM": 53.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001163_pano_0000_000554",
+   "capturedAt": "2019-05-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "sash-grid",
+     "kind": "window-shape",
+     "where": "three storeys of paired cream sashes with hooded heads on a ~2.8 m rhythm",
+     "approxSizeM": [
+      50,
+      14
+     ],
+     "plan": "modelled",
+     "how": "brick-bay-grid, 3 storeys, 19 bays, cross windows, string courses",
+     "seenIn": "TMX7316010203-001163_pano_0000_000554"
+    },
+    {
+     "id": "dormer-bands",
+     "kind": "other",
+     "where": "four long dormer bands of small lights above the eaves",
+     "approxSizeM": [
+      8,
+      2
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001163_pano_0000_000554",
+     "how": "left as the plain 3DBAG roof plane: 3DBAG roof kept verbatim; dormers are not in LoD2.2"
+    },
+    {
+     "id": "awnings",
+     "kind": "sign",
+     "where": "striped awnings over the east bays",
+     "approxSizeM": [
+      8,
+      1.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "seasonal fabric"
+     },
+     "seenIn": "TMX7316010203-001163_pano_0000_000554"
+    }
+   ]
+  },
+  {
+   "tag": "w02-275",
+   "bearing": 275,
+   "lengthM": 32.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002116_pano_0000_001785",
+   "capturedAt": "2021-04-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "wing-bands",
+     "kind": "window-shape",
+     "where": "two storeys of wide multi-light windows between grey stone piers, raised basement with grilles",
+     "approxSizeM": [
+      30,
+      9
+     ],
+     "plan": "simplified",
+     "how": "brick-bay-grid, 2 storeys, 8 bays, piers in grey stone; single cross windows instead of four-light bands",
+     "seenIn": "TMX7316010203-002116_pano_0000_001785"
+    },
+    {
+     "id": "basement-grilles",
+     "kind": "other",
+     "where": "barred basement vents along the foot",
+     "approxSizeM": [
+      30,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "bars about 1 cm"
+     },
+     "seenIn": "TMX7316010203-002116_pano_0000_001785"
+    },
+    {
+     "id": "bay-window",
+     "kind": "window-shape",
+     "where": "canted bay window at the south end of the ground floor",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002116_pano_0000_001785",
+     "how": "left as the plain 3DBAG roof plane: tiltedBays would need the bay on a 3DBAG panel boundary"
+    }
+   ]
+  },
+  {
+   "tag": "w04-95",
+   "bearing": 95,
+   "lengthM": 27.9,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002797_pano_0002_000334",
+   "capturedAt": "2022-09-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-wing",
+     "kind": "window-shape",
+     "where": "irregular groups of cross windows under the eaves band and at ground",
+     "approxSizeM": [
+      27,
+      8
+     ],
+     "plan": "simplified",
+     "how": "brick-bay-grid, 2 storeys, 9 bays; the irregular spacing is regularised",
+     "seenIn": "TMX7316010203-002797_pano_0002_000334"
+    }
+   ]
+  },
+  {
+   "tag": "tower",
+   "bearing": 0,
+   "lengthM": 6,
+   "evidence": "inferred",
+   "checked": false,
+   "items": [
+    {
+     "id": "chimney-tower",
+     "kind": "tower",
+     "where": "brick tower to 32.9 m in the angle of the wings",
+     "approxSizeM": [
+      6,
+      33
+     ],
+     "plan": "modelled",
+     "how": "3DBAG massing verbatim, blank brick (no panorama in range)",
+     "seenIn": "3DBAG LoD2.2"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001163_pano_0000_000554/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

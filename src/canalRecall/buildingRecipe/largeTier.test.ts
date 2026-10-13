@@ -333,3 +333,46 @@ test('closed bands: Beursplein cornices and Damrak string-course ends leave no o
   assert.equal(after.topology.openEdges, 0);
   assert.deepEqual(after.gates.filter(x => !x.pass).map(x => x.id), []);
 });
+
+test('arches.storeys and balconies.bays: round heads only on the listed storeys, a balcony only over the listed bay (Barlaeus front)', async () => {
+  const base = raw('barlaeus'), f = facts('barlaeus');
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], arches: {windows: 'round', storeys: []}}, ...base.walls.slice(1)]}), /arches.storeys/);
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], balconies: {storeys: [1], bays: [7]}}, ...base.walls.slice(1)]}), /balconies.bays/);
+  const intent = validateLargeIntent(base);
+  const sys = Object.values(fitLarge(intent, f).recipe.spec.systems)[0];
+  assert.equal(sys.typical.win?.arch, undefined, 'the default storey is square-headed');
+  assert.ok(sys.rowOverrides?.['2']?.win?.arch, 'storey 2 is round-headed');
+  const bal = sys.rowOverrides?.['1'];
+  assert.ok(bal?.cycle?.[1]?.kind === 'balcony' && bal.cycle[0]?.kind !== 'balcony' && bal.cycle[0]?.win?.arch, 'bay 1 holds the balcony, the others the arched window');
+  // without storeys the arches are on every storey and the typical row carries them (default compose unchanged)
+  const all = validateLargeIntent({...base, walls: [{...base.walls[0], arches: {windows: 'round', band: 'voussoir'}, balconies: undefined}, ...base.walls.slice(1)]});
+  assert.ok(Object.values(fitLarge(all, f).recipe.spec.systems)[0].typical.win?.arch);
+  const {gates} = await gatesOf(intent, f);
+  assert.deepEqual(gates.filter(x => !x.pass).map(x => x.id), []);
+});
+
+test('windows: wide draws a four-light window with a transom two thirds of the bay (school classrooms); others unchanged', async () => {
+  const {largeSystem, LARGE_WINDOWS} = await import('../blockBuilding/systems.ts');
+  assert.ok(LARGE_WINDOWS.includes('wide'));
+  const slots = {frame: 'f', stone: 's', glass: 'g', door: 'd', curtain: 'c'};
+  const wide = largeSystem('brick-bay-grid', {pitchM: 8, lines: [0, 5, 10], ground: 'system', windows: 'wide', slots} as never).typical.win!;
+  assert.equal(wide.mull, 3); assert.ok(wide.w! > 0.6 && wide.w! < 0.75 && wide.transom);
+  const plain = largeSystem('brick-bay-grid', {pitchM: 8, lines: [0, 5, 10], ground: 'system', slots} as never).typical.win!;
+  assert.equal(plain.mull, undefined);
+});
+
+test('gateways: arched carriage openings (92 % of a bay) in the listed ground bays, plain wall between, deterministic; validated (Amsterdams Lyceum)', async () => {
+  const base = raw('amsterdams-lyceum'), f = facts('amsterdams-lyceum');
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], gateways: {bays: [9]}}, ...base.walls.slice(1)]}), /gateways.bays/);
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], gateways: {bays: [2], arch: 'ogee'}}, ...base.walls.slice(1)]}), /gateways.arch/);
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], entrance: true}, ...base.walls.slice(1)]}), /gateways/);
+  const intent = validateLargeIntent(base);
+  const g = Object.values(fitLarge(intent, f).recipe.spec.systems)[0].ground;
+  assert.deepEqual(g.cycle?.map(r => r.kind), ['wall', 'punched', 'punched', 'wall']);
+  assert.ok(g.cycle![1].win?.arch && g.cycle![1].win!.w! > 0.9);
+  const {gates} = await gatesOf(intent, f);
+  assert.deepEqual(gates.filter(x => !x.pass).map(x => x.id), []);
+  // without gateways the ground row is the system's own (default compose unchanged)
+  const plain = validateLargeIntent({...base, walls: [{...base.walls[0], gateways: undefined}, ...base.walls.slice(1)]});
+  assert.equal(Object.values(fitLarge(plain, f).recipe.spec.systems)[0].ground.cycle, undefined);
+});
