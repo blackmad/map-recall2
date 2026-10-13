@@ -2,6 +2,7 @@ import {treeTypology} from '../da-costa-block/tree-typology.js';
 import {allotmentCanopyTrees,scopeAllotmentCrown} from './allotment-canopy.js';
 import {ViewResidency} from '../../../src/canalRecall/viewResidency.ts';
 import {SUN_DIRECTION} from '../../../src/canalRecall/rendererShared/lightRig.ts';
+import {foliageDisplayHex} from '../../../src/canalRecall/look/palette.ts';
 import {roseBushInstances,roseBushVertexColours} from '../../../src/canalRecall/roseBeds.ts';
 import roseGardens from './rose-garden-data.js';
 const {THREE} = window.CanalRecallThree;
@@ -168,7 +169,7 @@ export class InventoryTrees {
       const co=Math.cos(t.rotation),si=Math.sin(t.rotation);
       for(const l of t.lobes){
         const dx=l.offset[0]*co-l.offset[2]*si,dz=l.offset[0]*si+l.offset[2]*co;
-        color.set(t.foliage).multiplyScalar([1,1.10,.86][l.tone]);
+        color.set(foliageDisplayHex(t.foliage)).multiplyScalar([1,1.10,.86][l.tone]);
         // The map-to-scene south-axis flip also reverses crown yaw.
         append(`${t.crownGeometry}-${l.tone}`,{p:[x+dx,-(south+dz),z0+l.offset[1]],s:[l.scale[0],l.scale[2],l.scale[1]],rotation:-(t.rotation+(l.rotation??0)),color:color.clone()});
         // A short fork connects each offset crown to the recorded trunk position.

@@ -46,7 +46,7 @@ test('shade equals the city layer: wallShade for walls, the roof formula for up 
   assert.ok(cityShade(slope) > cityShade([0, 0, 1]));
   // Walls: the one facing the sun is the brightest, the one facing away the darkest.
   assert.ok(Math.abs(cityShade([Math.sin(a), Math.cos(a), 0]) - 1) < 1e-9);
-  assert.ok(Math.abs(cityShade([-Math.sin(a), -Math.cos(a), 0]) - 0.8) < 1e-9);
+  assert.ok(Math.abs(cityShade([-Math.sin(a), -Math.cos(a), 0]) - 0.84) < 1e-9);
 });
 
 test('pane UVs span 0..1 across each window, v up', () => {

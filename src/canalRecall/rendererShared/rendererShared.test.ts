@@ -108,7 +108,7 @@ test('the baked shade and MapLibre light follow the rig sun', () => {
   // Walls facing the sun bake brightest, walls facing away darkest.
   const toward = bakedWallShade(Math.sin(215 * Math.PI / 180), Math.cos(215 * Math.PI / 180));
   const away = bakedWallShade(Math.sin(35 * Math.PI / 180), Math.cos(35 * Math.PI / 180));
-  close(toward, 1, 1e-12); close(away, 0.8, 1e-12);
+  close(toward, 1, 1e-12); close(away, 0.84, 1e-12);
   assert.ok(bakedWallShade(0, -1) > bakedWallShade(0, 1), 'south wall over north wall');
   close(BAKED_LID_SHADE, 0.58 + 0.42 * 0.8, 1e-12, 'flat roof level unchanged');
   close(bakedFaceShade([0, 0, -1]), 0.58, 1e-12, 'no sun from below');
