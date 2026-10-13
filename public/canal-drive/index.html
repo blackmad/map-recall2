@@ -613,6 +613,10 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--accent); ba
 #utility-buttons #open-help { transition: opacity .25s ease; }
 #utility-buttons.tucked #open-settings,
 #utility-buttons.tucked #open-help { opacity: 0; pointer-events: none; }
+/* Desktop (presentationRuntime `tucked-all`, 2026-10-13): the whole corner goes, Feedback and the build stamp too,
+   3 s into the ride and 3 s after the mouse last moved; a wiggle or a key brings it back. */
+#utility-buttons > * { transition: opacity .25s ease; }
+#utility-buttons.tucked.tucked-all > * { opacity: 0; pointer-events: none; }
 /* Same paper plate as the canvas readouts (hudSurface.card). */
 #utility-buttons button {
   width: 44px; height: 44px; border: 1px solid var(--day-line); border-radius: 8px;

@@ -25,7 +25,7 @@
 import earcut from 'earcut';
 import { largeTierProperties } from './largeBuildingTier.js';
 import { RoofSink, type V2, type V3 } from './roofSink.js';
-import { findChamfer, inscribedRects, insetRing, openRing, parapetRingOk, perimeterRoofInset, signedArea } from './roofFootprint.js';
+import { findChamfer, inscribedRects, insetRing, openRing, parapetRingOk, perimeterRoofInset, rectHangM, ringAreaM2, signedArea, uncoveredShare } from './roofFootprint.js';
 import { gableAccents, outlineBand, vergeBoards } from './gableTrim.js';
 import { repeatedTerraceRoofTriangles, type RepeatedTerraceRoof } from './repeatedTerraceRoof.js';
 
@@ -65,6 +65,8 @@ export type RoofPlan = {
   pieces?: Array<{ rect: Rect; plan: RoofPlan }>;
   /** Draw the flat lid at the eaves as well (around pieces, or inside a parapet). */
   keepLid?: boolean;
+  /** The roof box is larger than the footprint (a cut corner, a notch, a skewed row): cut the slopes at the walls and close them. */
+  clipToOutline?: boolean;
   /** Sloping perimeter and flat deck following a convex, nonrectangular wall outline. */
   perimeterInsetM?: number;
   /** Parapet height above the lid, metres (kind 'parapet'). */
@@ -80,6 +82,15 @@ type Vec2 = [number, number];
 export type RoofPart = 'slope' | 'plate' | 'dormerFace' | 'dormerSide' | 'trim' | 'decal';
 export type RoofTri = { p: [V3, V3, V3]; uv: [V2, V2, V2]; part: RoofPart; n: V3; /** Flat colour for trim and decals (or a tint override). */ hex?: string; /** Shape of an explicitly admitted, exterior crown plate. */ sourceCrownShape?: GableShape; sourceCrownPairedOculi?: boolean };
 
+/** The generated eave overhang (0.3 m) the hang measure allows for. */
+export const ROOF_CLIP_OVERHANG_M = 0.32;
+/** A roof box whose eave line runs this far past the wall outline is cut at the walls. */
+export const ROOF_HANG_CLIP_M = 0.5;
+/** A gable crown is already warped onto its end walls and carries trim a cut would lose: cut only a real hang. */
+export const ROOF_HANG_CLIP_GABLE_M = 2.0;
+/** Bare flat deck beside the roof: this share of the footprint and this many square metres make the roof a hat on a box. */
+export const ROOF_BARE_DECK_SHARE = 0.15;
+export const ROOF_BARE_DECK_MIN_M2 = 8;
 export const TRIM_WHITE = '#efebe2';
 const TRIM_CREAM = '#e6dcc5';
 
@@ -275,6 +286,10 @@ export function planBuildingRoof(id: string, style: string, heightM: number, min
     const plan = planRoof(id, style, heightM, minHeightM, rect, tagged, year, measured);
     if (plan) {
       const out: RoofPlan = { ...plan, pieces: [{ rect: rect!, plan }] };
+      // A roof box over a cut corner or a skewed wall hangs over the street: cut it at the walls.
+      // Gable ends are warped onto their own walls by the mesh, so a gable only measures its long sides.
+      const endsWarped = ['pitched', 'halfHipped', 'mansard'].includes(plan.kind);
+      if (!measured && rectHangM(rect!, pts, ROOF_CLIP_OVERHANG_M, !endsWarped) > (plan.kind === 'gable' ? ROOF_HANG_CLIP_GABLE_M : ROOF_HANG_CLIP_M)) out.clipToOutline = true;
       // A cut corner on a 19th-century block: a small turret with a spire.
       if (style === 'c19' && plan.kind !== 'gable' && plan.kind !== 'sawtooth' && rect!.len * rect!.wid >= 90 && hash01(`${id}:turret`) < 0.6) {
         const ch = findChamfer(pts, rect!);
@@ -292,6 +307,20 @@ export function planBuildingRoof(id: string, style: string, heightM: number, min
         if (perimeterInsetM !== null) {
           return { ...plan, kind: 'mansardHip', gable: 'plain', dormers: false, chimney: false, perimeterInsetM };
         }
+        // A roof over half the plan with a bare flat deck beside it reads as a hat on a box: roof the whole footprint
+        // from its fitted box instead, cut at the walls. Too low for that roof, the building stays flat (a parapet period
+        // keeps its parapet) rather than wearing the hat.
+        const area = ringAreaM2(pts), bareShare = uncoveredShare(pts, ins.second ? [ins.main, ins.second] : [ins.main]);
+        if (frame && !measured && bareShare * area >= ROOF_BARE_DECK_MIN_M2 && bareShare >= ROOF_BARE_DECK_SHARE) {
+          const kind: RoofKind = plan.kind === 'gable' ? 'pitched' : plan.kind;
+          const riseM = Math.min(riseFor(kind, frame.wid), heightM - 4.5);
+          if (frame.coverage >= 0.5 && riseM >= 1.2) {
+            const box: Rect = { ...frame, coverage: 1, maxDev: 0 };
+            const boxPlan: RoofPlan = { ...plan, kind, gable: 'plain', riseM, chimney: false, shutters: undefined };
+            return { ...boxPlan, pieces: [{ rect: box, plan: boxPlan }], clipToOutline: true };
+          }
+          return finishFlat(id, style, heightM, pts, tagged);
+        }
         const mainPlan = plan.kind === 'gable' ? { ...plan, gableEnds: exteriorGableEnds(ins.main, pts) } : plan;
         const pieces: RoofPlan['pieces'] = [{ rect: ins.main, plan: mainPlan }];
         if (ins.second) {
@@ -303,6 +332,11 @@ export function planBuildingRoof(id: string, style: string, heightM: number, min
       }
     }
   }
+  return finishFlat(id, style, heightM, pts, tagged);
+}
+
+/** No pitched roof: the flat lid, or a parapet in the flat-roofed periods. */
+function finishFlat(id: string, style: string, heightM: number, pts: readonly Vec2[], tagged: string | undefined): RoofPlan | null {
   if (tagged) return null;
   const par = PARAPET[style];
   if (par && hash01(`${id}:parapet`) < par.p && parapetRingOk(pts, 0.25, 40)) {
@@ -703,12 +737,53 @@ export function parapetTriangles(ring: readonly Vec2[], h0: number, hp: number, 
   return s.out;
 }
 
+function pointInOutline(x:number,y:number,ring:readonly Vec2[]):boolean{
+  let inside=false;
+  for(let i=0,j=ring.length-1;i<ring.length;j=i++){const [xi,yi]=ring[i],[xj,yj]=ring[j];if((yi>y)!==(yj>y)&&x<((xj-xi)*(y-yi))/(yj-yi)+xi)inside=!inside;}
+  return inside;
+}
+
 /** Clip admitted generated slopes to the actual surveyed footprint.
  * Approximate rectangular end closures can stick through a trapezoid's street wall;
  * native boundary closures replace them, while the source frontage owns its crown. */
-function sourceRoofWithinOutline(triangles:RoofTri[],outline:Vec2[],h0:number,dims:RoofDims):RoofTri[] {
+function sourceRoofWithinOutline(triangles:RoofTri[],outline:Vec2[],h0:number,dims:RoofDims,keepOthers?:Vec2[]):RoofTri[] {
   const ring=openRing(outline),indices=earcut(ring.flat()),result:RoofTri[]=[];
+  // Roof trim, dormers and gable plates that stand inside the cut outline stay; a gable plate that already closes a
+  // wall edge makes a second closure there redundant.
+  const closed=new Set<number>();
   type Vertex={p:V3;uv:V2};
+  const half=(poly:Vertex[],a:Vec2,b:Vec2,sign:number):Vertex[]=>{
+    const side=(p:V3)=>((b[0]-a[0])*(p[1]-a[1])-(b[1]-a[1])*(p[0]-a[0]))*sign,next:Vertex[]=[];
+    for(let i=0;i<poly.length;i++){
+      const v=poly[i],w=poly[(i+1)%poly.length],dv=side(v.p),dw=side(w.p);
+      if(dv>=-1e-8)next.push(v);
+      if((dv>=0)!==(dw>=0)){const f=dv/(dv-dw);next.push({p:v.p.map((x,j)=>x+(w.p[j]-x)*f) as V3,uv:v.uv.map((x,j)=>x+(w.uv[j]-x)*f) as V2});}
+    }
+    return next;
+  };
+  if(keepOthers){
+    const near=(p:V3,a:Vec2,b:Vec2)=>{const dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy)||1;return Math.abs(((p[0]-a[0])*dy-(p[1]-a[1])*dx)/l)<.08;};
+    for(const t of triangles){
+      if(t.part==='slope')continue;
+      // A vertical plate standing on one wall edge (a gable or mansard end) is cut to that edge's extent and keeps closing it.
+      const wall=Math.abs(t.n[2])<.05?ring.findIndex((r0,j)=>t.p.every(q=>near(q,r0,ring[(j+1)%ring.length]))):-1;
+      if(wall>=0){
+        const r0=ring[wall],r1=ring[(wall+1)%ring.length],dx=r1[0]-r0[0],dy=r1[1]-r0[1];
+        let poly:Vertex[]=half(t.p.map((p,i)=>({p,uv:t.uv[i]})),r0,[r0[0]-dy,r0[1]+dx],-1);
+        poly=half(poly,r1,[r1[0]-dy,r1[1]+dx],1);
+        if(poly.length<3)continue;
+        for(let i=1;i<poly.length-1;i++){
+          const p=[poly[0].p,poly[i].p,poly[i+1].p] as RoofTri['p'],ab=p[1].map((v,k)=>v-p[0][k]),ac=p[2].map((v,k)=>v-p[0][k]);
+          if(Math.hypot(ab[1]*ac[2]-ab[2]*ac[1],ab[2]*ac[0]-ab[0]*ac[2],ab[0]*ac[1]-ab[1]*ac[0])<1e-8)continue;
+          result.push({...t,p,uv:[poly[0].uv,poly[i].uv,poly[i+1].uv]});
+        }
+        if(t.part==='plate'&&Math.max(...t.p.map(q=>q[2]))>h0+.2)closed.add(wall);
+        continue;
+      }
+      const [cx,cy]=[(t.p[0][0]+t.p[1][0]+t.p[2][0])/3,(t.p[0][1]+t.p[1][1]+t.p[2][1])/3];
+      if(pointInOutline(cx,cy,keepOthers))result.push(t);
+    }
+  }
   const cross=(a:Vec2,b:Vec2,p:V3)=>(b[0]-a[0])*(p[1]-a[1])-(b[1]-a[1])*(p[0]-a[0]);
   const ccw=signedArea(ring)>0;
   for(const t of triangles.filter(t=>t.part==='slope'))for(let k=0;k<indices.length;k+=3){
@@ -733,7 +808,7 @@ function sourceRoofWithinOutline(triangles:RoofTri[],outline:Vec2[],h0:number,di
     for(let i=0;i<polygon.length;i++){
       const a=polygon[i].p,b=polygon[(i+1)%polygon.length].p,l=Math.hypot(b[0]-a[0],b[1]-a[1]);if(l<1e-5)continue;
       const edge=ring.findIndex((v,j)=>Math.abs(cross(v,ring[(j+1)%ring.length],a))<1e-6&&Math.abs(cross(v,ring[(j+1)%ring.length],b))<1e-6);
-      if(edge<0||Math.max(a[2],b[2])<=h0+1e-6)continue;
+      if(edge<0||Math.max(a[2],b[2])<=h0+1e-6||closed.has(edge))continue;
       const r0=ring[edge],r1=ring[(edge+1)%ring.length],dx=r1[0]-r0[0],dy=r1[1]-r0[1],el=Math.hypot(dx,dy),n:V3=ccw?[dy/el,-dx/el,0]:[-dy/el,dx/el,0];
       const aTop:V3=[a[0],a[1],Math.max(h0,a[2])],bTop:V3=[b[0],b[1],Math.max(h0,b[2])];
       let p:RoofTri['p']=[[a[0],a[1],h0],[b[0],b[1],h0],bTop],q:RoofTri['p']=[[a[0],a[1],h0],bTop,aTop];
@@ -847,6 +922,13 @@ export function roofTrianglesForOutline(outer: readonly number[][], origin: { ln
     const envelope=front.shape==='cornice'?Math.min(plan.riseM,corniceHeight(plan.riseM)+.05):plan.riseM;
     const scale=envelope/top;
     out.push(...sink.out.map(t=>{const nz=t.n[2]/scale,l=Math.hypot(t.n[0],t.n[1],nz);return {...t,p:t.p.map(([x,y,z])=>[x,y,h0+(z-h0)*scale]) as RoofTri['p'],n:[t.n[0]/l,t.n[1]/l,nz/l] as V3,sourceCrownShape:front.shape,sourceCrownPairedOculi:front.pairedOculi};}));
+  }
+  if (plan.clipToOutline && !plan.sourceCrownFront) {
+    // Cut the fitted box at the walls, so every eave stands on a wall top and the cut faces are closed. Fascia boards and
+    // end plates that stood on the old box edge outside the walls are dropped; those on the walls stay (0.05 m of slack).
+    const wallRing = openRing(mesh), keepRing = insetRing(wallRing, -0.05) ?? wallRing;
+    const clipped = sourceRoofWithinOutline(out, wallRing, h0, dims, keepRing);
+    out.length = 0; out.push(...clipped);
   }
   if (plan.turret) {
     const main = mapRect(plan.pieces[0].rect), [tx, ty] = at(plan.turret.x, plan.turret.y);
