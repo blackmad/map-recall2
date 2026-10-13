@@ -80,7 +80,8 @@
     "colour": "#3f8a3f",
     "mount": "wall"
    },
-   "sills": false
+   "sills": false,
+   "garageDoors": 6
   },
   {
    "wallSurfaces": [
@@ -137,8 +138,9 @@
  },
  "notes": [
   "Centrale Groothandelsmarkt 190 (BAG: 1935; five shops and one industrial unit, 9,421 m2): one of the wholesale market halls at the Jan van Galenstraat Food Center. Three walls are photographed: the west dock front (w01-258, panorama 2022-04-29: a low beige-brown brick block of loading docks with yellow roller doors, blue-trimmed office windows over the docks and a pale cladding bay carrying a large Miedema AGF banner), the east arcade front (w03-78, 2020-02-07: a pale concrete frame with a deep canopy, roller doors under it and shop signs such as De Stigter AGF, Fresco del Sol and the red Gebr. de Mooij Amsterdam roof lettering) and the east gable (w05-78: white cladding with green rib trim, no openings).",
-  "Modelled: west dock front as two groups: the two-storey office block (surfaces 9, 10, 49 of panel 7 and panel 0) with blue-framed two-light windows, and the single-storey dock block (surface 13 of panel 7, 5.5 m) of six tall yellow-framed transom openings with the name MIEDEMA AGF; east arcade front (panels 65, 63, 18) as a pale concrete face with a glazed ground floor, a closed upper storey and the Gebr. de Mooij lettering on the cornice; east gable (panel 33) as a blank white wall.",
-  "Simplified: the yellow roller doors are tall transom openings with yellow frames (the kit's garage doors and portals left 2.4-7 m2 of coplanar frame/door overlap in this wall, so they are not used), the blue office window blocks and the corner-cut canopy are plain window rows, the shop signs along the arcade are not drawn (only the largest name), the yellow canopy struts are not drawn. Not modelled: the north and south walls and the long west wall behind the dock block (no panorama, or hidden by the dock block), roof plant and the brick tower."
+  "Modelled: west dock front as two groups: the two-storey office block (surfaces 9, 10, 49 of panel 7 and panel 0) with blue-framed two-light windows, and the single-storey dock block (surface 13 of panel 7, 5.5 m) of six yellow sectional dock doors with the name MIEDEMA AGF; east arcade front (panels 65, 63, 18) as a pale concrete face with a glazed ground floor, a closed upper storey and the Gebr. de Mooij lettering on the cornice; east gable (panel 33) as a blank white wall.",
+  "Simplified: the yellow roller doors are recessed sectional garage doors (layered kit: leaf, ribs and frame on separate sheet layers), the blue office window blocks and the corner-cut canopy are plain window rows, the shop signs along the arcade are not drawn (only the largest name), the yellow canopy struts are not drawn. Not modelled: the north and south walls and the long west wall behind the dock block (no panorama, or hidden by the dock block), roof plant and the brick tower."
  ],
- "closedBands": true
+ "closedBands": true,
+ "layeredKit": true
 }
