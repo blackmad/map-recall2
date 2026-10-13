@@ -165,6 +165,10 @@ export function snapDetachedParts(soup: MaterialSoup, opts: {maxGap?: number; em
         if (dd < lo) lo = dd; if (dd > hi) hi = dd;
       }
       const k = (hi - lo < 0.02 ? part.gap - 0.025 : part.gap + embed) / part.gap, d = [part.towardOther[0] * k, part.towardOther[1] * k, part.towardOther[2] * k];
+      // Never sink a part below the ground it stands on.
+      let minY = Infinity;
+      for (const t of part.triangleIds) for (let c = 0; c < 3; c++) minY = Math.min(minY, soup.positions[soup.indices[t * 3 + c] * 3 + 1]);
+      if (minY + d[1] < -0.02 && minY > -0.02) { report.skipped++; continue; }
       const seen = new Set<number>();
       for (const t of part.triangleIds) for (let c = 0; c < 3; c++) {
         const v = soup.indices[t * 3 + c];

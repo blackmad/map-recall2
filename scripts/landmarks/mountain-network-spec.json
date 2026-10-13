@@ -33,5 +33,29 @@
     "licence": "Original project asset",
     "licenceUrl": "./LICENSE",
     "modifications": "Original texture-free house-style reconstruction of surveyed full host; no source photo pixels or third-party artistic mesh."
-  }
+  },
+  "throughPassages": [
+    {
+      "axisBearing": 15,
+      "corridor": [
+        [
+          -14,
+          -88
+        ],
+        [
+          -1,
+          -88
+        ],
+        [
+          -1,
+          -68
+        ],
+        [
+          -14,
+          -68
+        ]
+      ],
+      "evidence": "The city-side 2025 photograph shows the northern housing bridge open below: two pedestrian passages (survey x -13.2..-8.2 and -6.2..-1.8, up to 7 m high) run straight through the building under it; the builder cuts exactly these two openings in both bridge wall faces (surfaces 99 and 134)."
+    }
+  ]
 }
