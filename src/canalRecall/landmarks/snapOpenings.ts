@@ -157,6 +157,9 @@ export interface SnapDetachedReport {
  * towards its closest point on the rest of the model, `embed` metres past contact. Parts beyond `maxGap` are reported, not moved.
  * Mutates `soup.positions`; the soup's triangles must own their vertices.
  */
+/** Distance (m) a detached sheet is left in front of what it meets (see snapDetachedParts). */
+export const SHEET_REST = 0.05;
+
 export function snapDetachedParts(soup: MaterialSoup, opts: {maxGap?: number; embed?: number; passes?: number} = {}): SnapDetachedReport {
   const {maxGap = 0.6, embed = 0.015, passes = 4} = opts;
   const report: SnapDetachedReport = {moved: 0, skipped: 0};
@@ -171,13 +174,15 @@ export function snapDetachedParts(soup: MaterialSoup, opts: {maxGap?: number; em
       if (!part.towardOther || !part.triangleIds || !(part.gap > DEFAULT_THRESHOLDS.failGap) || part.area < DEFAULT_THRESHOLDS.failArea) continue;
       if (part.gap > maxGap) { report.skipped++; continue; }
       // A sheet (a glass quad) rests in front of what it meets: embedded, it would sink behind a frame slab and render as the frame.
+      // It rests 5 cm off: inside the shell audit's 8 cm detached gap, clear of the 2-3 cm band that z-fights at distance (2.5 cm laid
+      // RAI's roof bands 2.2 cm over the hall roofs, 3,692 m2; geometryAudit zfight-tight, lane zfight-audit 2026-10-13).
       const dir = [part.towardOther[0] / part.gap, part.towardOther[1] / part.gap, part.towardOther[2] / part.gap];
       let lo = Infinity, hi = -Infinity;
       for (const t of part.triangleIds) for (let c = 0; c < 3; c++) {
         const v = soup.indices[t * 3 + c], dd = soup.positions[v * 3] * dir[0] + soup.positions[v * 3 + 1] * dir[1] + soup.positions[v * 3 + 2] * dir[2];
         if (dd < lo) lo = dd; if (dd > hi) hi = dd;
       }
-      const k = (hi - lo < 0.02 ? part.gap - 0.025 : part.gap + embed) / part.gap, d = [part.towardOther[0] * k, part.towardOther[1] * k, part.towardOther[2] * k];
+      const k = (hi - lo < 0.02 ? part.gap - SHEET_REST : part.gap + embed) / part.gap, d = [part.towardOther[0] * k, part.towardOther[1] * k, part.towardOther[2] * k];
       // Never sink a part below the ground it stands on.
       let minY = Infinity;
       for (const t of part.triangleIds) for (let c = 0; c < 3; c++) minY = Math.min(minY, soup.positions[soup.indices[t * 3 + c] * 3 + 1]);
