@@ -1,0 +1,6532 @@
+[
+  {
+    "sourceRoofIndex": 331,
+    "ringsUV": [
+      [
+        [
+          -2.0450879977979746,
+          -21.98483889316707
+        ],
+        [
+          -1.0268484655983858,
+          -21.29009154189075
+        ],
+        [
+          -0.421101154970291,
+          -22.917602790273257
+        ],
+        [
+          -1.7357722320536233,
+          -23.435898003618192
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        -1.3072024626050687,
+        -22.407107807237317
+      ],
+      "coefficients": [
+        0.0166450276728332,
+        -0.018081170270778022,
+        16.484250518798827
+      ],
+      "residualMaxMetres": 0.000332758711969916,
+      "sourceMinimumAGL": 16.464000518798827,
+      "sourceMaximumAGL": 16.508000518798827
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 12,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.021000518798829,
+        "maxAGL": 16.496000518798827
+      },
+      {
+        "sourceWallIndex": 149,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.915000518798827,
+        "maxAGL": 16.508000518798827
+      },
+      {
+        "sourceWallIndex": 164,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.259000518798828,
+        "maxAGL": 16.508000518798827
+      },
+      {
+        "sourceWallIndex": 165,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.681000518798829,
+        "maxAGL": 16.469000518798826
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 332,
+    "ringsUV": [
+      [
+        [
+          5.189625628120879,
+          -18.134275102922224
+        ],
+        [
+          5.222772891868204,
+          -17.00960189898849
+        ],
+        [
+          5.32452307747864,
+          -17.009731495086257
+        ],
+        [
+          5.315396802063635,
+          -18.13410164293349
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        5.26307959988284,
+        -17.571927534982613
+      ],
+      "coefficients": [
+        -2.2290371260665167,
+        -0.0021213041127171365,
+        9.723750518798827
+      ],
+      "residualMaxMetres": 0.0004023814872589071,
+      "sourceMinimumAGL": 9.586000518798826,
+      "sourceMaximumAGL": 9.889000518798827
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 15,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 9.608000518798828
+      },
+      {
+        "sourceWallIndex": 16,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 9.812000518798829
+      },
+      {
+        "sourceWallIndex": 23,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 9.889000518798827
+      },
+      {
+        "sourceWallIndex": 166,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.812000518798829,
+        "maxAGL": 13.776000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 333,
+    "ringsUV": [
+      [
+        [
+          -1.4950657103798664,
+          -17.260407774661125
+        ],
+        [
+          5.058648691997844,
+          -23.910543719532455
+        ],
+        [
+          3.5393463185959586,
+          -23.967163136537632
+        ],
+        [
+          3.5358483328974906,
+          -23.83082678831032
+        ],
+        [
+          1.3220629836881983,
+          -23.82695681626319
+        ],
+        [
+          1.3230343361561765,
+          -23.92304688192526
+        ],
+        [
+          -0.033959168079919166,
+          -23.959245009761887
+        ],
+        [
+          -0.421101154970291,
+          -22.917602790273257
+        ],
+        [
+          -1.0268484655983858,
+          -21.29009154189075
+        ],
+        [
+          -2.0450879977979746,
+          -21.98483889316707
+        ],
+        [
+          -1.7357722320536233,
+          -23.435898003618192
+        ],
+        [
+          -3.072965777005818,
+          -23.962956679630324
+        ],
+        [
+          -4.260699646060109,
+          -23.96733975917038
+        ],
+        [
+          -4.262185182529976,
+          -23.820378424317916
+        ],
+        [
+          -6.502090848012482,
+          -23.818954063277378
+        ],
+        [
+          -6.5033313506740225,
+          -23.9758426973059
+        ],
+        [
+          -7.945505627254361,
+          -23.9735413928758
+        ],
+        [
+          -7.949489675968294,
+          -23.719202995183753
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        -1.8041756762805252,
+        -23.196935409316815
+      ],
+      "coefficients": [
+        0.0014734619575637266,
+        0.4554198586927371,
+        14.129722741021043
+      ],
+      "residualMaxMetres": 0.00047962455415984095,
+      "sourceMinimumAGL": 13.767000518798827,
+      "sourceMaximumAGL": 16.834000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 8,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.916000518798828,
+        "maxAGL": 14.259000518798828
+      },
+      {
+        "sourceWallIndex": 12,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.021000518798829,
+        "maxAGL": 16.496000518798827
+      },
+      {
+        "sourceWallIndex": 28,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.849000518798828
+      },
+      {
+        "sourceWallIndex": 29,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.84700051879883
+      },
+      {
+        "sourceWallIndex": 30,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.849000518798828
+      },
+      {
+        "sourceWallIndex": 31,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.804000518798826
+      },
+      {
+        "sourceWallIndex": 33,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.842000518798827
+      },
+      {
+        "sourceWallIndex": 34,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.842000518798827
+      },
+      {
+        "sourceWallIndex": 35,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.779000518798828
+      },
+      {
+        "sourceWallIndex": 100,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.81500051879883
+      },
+      {
+        "sourceWallIndex": 137,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.768000518798829
+      },
+      {
+        "sourceWallIndex": 138,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.840000518798828
+      },
+      {
+        "sourceWallIndex": 140,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.767000518798827,
+        "maxAGL": 13.88500051879883
+      },
+      {
+        "sourceWallIndex": 142,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.91100051879883,
+        "maxAGL": 14.021000518798829
+      },
+      {
+        "sourceWallIndex": 149,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.915000518798827,
+        "maxAGL": 16.508000518798827
+      },
+      {
+        "sourceWallIndex": 164,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.259000518798828,
+        "maxAGL": 16.508000518798827
+      },
+      {
+        "sourceWallIndex": 165,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.681000518798829,
+        "maxAGL": 16.469000518798826
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 334,
+    "ringsUV": [
+      [
+        [
+          39.93580272313637,
+          -7.688460236012121
+        ],
+        [
+          39.7994130788977,
+          -7.686648697096224
+        ],
+        [
+          39.80994625145994,
+          -3.835371424742899
+        ],
+        [
+          39.907342842207115,
+          -3.8242491841793687
+        ],
+        [
+          39.86863057138443,
+          1.334380582418543
+        ],
+        [
+          39.85143309217766,
+          3.6653410309984444
+        ],
+        [
+          44.5490214741055,
+          3.5055809315345563
+        ],
+        [
+          44.89838764299816,
+          3.474659460276605
+        ],
+        [
+          44.86959804082214,
+          -6.610042573808183
+        ],
+        [
+          44.520545784885414,
+          -6.610209146982779
+        ],
+        [
+          44.51818594334903,
+          -7.774768204484069
+        ],
+        [
+          39.93671688470667,
+          -7.778897602771403
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        41.872085360844174,
+        -3.319057088737408
+      ],
+      "coefficients": [
+        -0.022434941599534058,
+        0.0008330786791963156,
+        15.976167185465497
+      ],
+      "residualMaxMetres": 0.0003184354677401302,
+      "sourceMinimumAGL": 15.906000518798827,
+      "sourceMaximumAGL": 16.02700051879883
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 78,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 15.914000518798826
+      },
+      {
+        "sourceWallIndex": 79,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 15.914000518798826
+      },
+      {
+        "sourceWallIndex": 131,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.419000518798828,
+        "maxAGL": 16.022000518798826
+      },
+      {
+        "sourceWallIndex": 157,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 15.922000518798828
+      },
+      {
+        "sourceWallIndex": 158,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 16.02700051879883
+      },
+      {
+        "sourceWallIndex": 159,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 16.02700051879883
+      },
+      {
+        "sourceWallIndex": 160,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 15.914000518798826
+      },
+      {
+        "sourceWallIndex": 161,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 16.016000518798826
+      },
+      {
+        "sourceWallIndex": 162,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 16.016000518798826
+      },
+      {
+        "sourceWallIndex": 190,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.421000518798827,
+        "maxAGL": 16.025000518798826
+      },
+      {
+        "sourceWallIndex": 191,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 16.022000518798826
+      },
+      {
+        "sourceWallIndex": 192,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 16.019000518798826
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 335,
+    "ringsUV": [
+      [
+        [
+          34.73979431084815,
+          -7.7816043183950505
+        ],
+        [
+          34.46382720256405,
+          -7.113080150466404
+        ],
+        [
+          33.84044921240927,
+          -6.467313246680424
+        ],
+        [
+          33.795331872496966,
+          -6.267905751580658
+        ],
+        [
+          33.337250674437946,
+          -4.2195073745843885
+        ],
+        [
+          35.39666851729535,
+          -4.191394765150664
+        ],
+        [
+          35.38279257479046,
+          -7.7819681242774195
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        34.42230205212031,
+        -6.260396247305001
+      ],
+      "coefficients": [
+        -0.444996186009158,
+        0.025737407542974818,
+        12.026429090227401
+      ],
+      "residualMaxMetres": 0.00023463493044850736,
+      "sourceMinimumAGL": 11.560000518798827,
+      "sourceMaximumAGL": 12.562000518798829
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 21,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.846000518798828
+      },
+      {
+        "sourceWallIndex": 92,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.646000518798829
+      },
+      {
+        "sourceWallIndex": 193,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.646000518798829,
+        "maxAGL": 13.25100051879883
+      },
+      {
+        "sourceWallIndex": 196,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.214000518798827,
+        "maxAGL": 12.305000518798828
+      },
+      {
+        "sourceWallIndex": 197,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.305000518798828,
+        "maxAGL": 13.239000518798829
+      },
+      {
+        "sourceWallIndex": 198,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.92000051879883,
+        "maxAGL": 12.280000518798829
+      },
+      {
+        "sourceWallIndex": 199,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.615000518798826,
+        "maxAGL": 11.986000518798829
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 336,
+    "ringsUV": [
+      [
+        [
+          6.592504092564443,
+          4.071012254234445
+        ],
+        [
+          5.8208523970308335,
+          3.587127291120191
+        ],
+        [
+          5.0405505491925195,
+          3.399919197049134
+        ],
+        [
+          6.433290259554196,
+          4.793302657548584
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        5.971799324585499,
+        3.962840349988088
+      ],
+      "coefficients": [
+        0.0018364060738705603,
+        0.0031988152114002435,
+        10.02050051879883
+      ],
+      "residualMaxMetres": 2.0963497577852763e-05,
+      "sourceMinimumAGL": 10.017000518798827,
+      "sourceMaximumAGL": 10.024000518798829
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 133,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.017000518798827,
+        "maxAGL": 11.72500051879883
+      },
+      {
+        "sourceWallIndex": 134,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 10.024000518798829
+      },
+      {
+        "sourceWallIndex": 200,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.022000518798826,
+        "maxAGL": 12.230000518798828
+      },
+      {
+        "sourceWallIndex": 202,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.01900051879883,
+        "maxAGL": 11.782000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 337,
+    "ringsUV": [
+      [
+        [
+          -12.732906638233944,
+          -6.399143722968907
+        ],
+        [
+          -13.254460483378825,
+          -6.390175204542791
+        ],
+        [
+          -14.57866154769319,
+          -4.426884859220393
+        ],
+        [
+          -13.410426695571047,
+          -3.891362833636829
+        ],
+        [
+          -12.5697064657477,
+          -3.8793471820589325
+        ],
+        [
+          -12.625492835079896,
+          -5.6310907173774325
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        -13.195275777617434,
+        -5.103000753300881
+      ],
+      "coefficients": [
+        -0.4550808198096489,
+        0.030131367991674637,
+        12.030167185465492
+      ],
+      "residualMaxMetres": 0.00041396917814040535,
+      "sourceMinimumAGL": 11.755000518798827,
+      "sourceMaximumAGL": 12.680000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 129,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.165000518798827,
+        "maxAGL": 13.39400051879883
+      },
+      {
+        "sourceWallIndex": 172,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.782000518798828,
+        "maxAGL": 13.404000518798828
+      },
+      {
+        "sourceWallIndex": 175,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.706000518798827,
+        "maxAGL": 11.781000518798827
+      },
+      {
+        "sourceWallIndex": 204,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.018000518798829,
+        "maxAGL": 13.142000518798827
+      },
+      {
+        "sourceWallIndex": 206,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.781000518798827,
+        "maxAGL": 12.243000518798826
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 338,
+    "ringsUV": [
+      [
+        [
+          11.094675951894747,
+          -7.7259622417390315
+        ],
+        [
+          11.06476507532722,
+          -8.54179461494239
+        ],
+        [
+          10.241653704091235,
+          -7.709165668611238
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        10.800364910437734,
+        -7.992307508430887
+      ],
+      "coefficients": [
+        0.0024152681208322872,
+        0.003588674965010086,
+        9.98933385213216
+      ],
+      "residualMaxMetres": 0.0,
+      "sourceMinimumAGL": 9.988000518798827,
+      "sourceMaximumAGL": 9.991000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 10,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.989000518798829,
+        "maxAGL": 11.660000518798828
+      },
+      {
+        "sourceWallIndex": 87,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.912000518798828,
+        "maxAGL": 9.989000518798829
+      },
+      {
+        "sourceWallIndex": 209,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.912000518798828,
+        "maxAGL": 9.991000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 339,
+    "ringsUV": [
+      [
+        [
+          -38.28765981211905,
+          1.315920385233209
+        ],
+        [
+          -38.27080172399327,
+          5.663352406826409
+        ],
+        [
+          -37.937990094904066,
+          5.66260104205611
+        ],
+        [
+          -37.696353047961836,
+          5.244492403832403
+        ],
+        [
+          -37.37487436497261,
+          4.686769820854746
+        ],
+        [
+          -36.017095549956395,
+          2.3366576497166243
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        -37.597462432317876,
+        4.1516322847532505
+      ],
+      "coefficients": [
+        0.4474529789731957,
+        -0.026326696168877905,
+        11.861167185465499
+      ],
+      "residualMaxMetres": 0.0003240428373096904,
+      "sourceMinimumAGL": 11.520000518798827,
+      "sourceMaximumAGL": 12.616000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 176,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.669000518798828
+      },
+      {
+        "sourceWallIndex": 177,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.947000518798827,
+        "maxAGL": 11.788000518798828
+      },
+      {
+        "sourceWallIndex": 179,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.627000518798827,
+        "maxAGL": 13.520000518798827
+      },
+      {
+        "sourceWallIndex": 182,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.947000518798827,
+        "maxAGL": 13.04500051879883
+      },
+      {
+        "sourceWallIndex": 183,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.687000518798829,
+        "maxAGL": 11.947000518798827
+      },
+      {
+        "sourceWallIndex": 211,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.627000518798827
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 340,
+    "ringsUV": [
+      [
+        [
+          13.438675123084675,
+          -19.00535263423731
+        ],
+        [
+          13.53817691420716,
+          -18.084059844159707
+        ],
+        [
+          16.517810800866737,
+          -15.352775082391165
+        ],
+        [
+          16.555348614298193,
+          -15.431444379628804
+        ],
+        [
+          16.4670544517371,
+          -16.83239966948715
+        ],
+        [
+          13.960596434610082,
+          -18.631317483045923
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        15.079610389800658,
+        -17.222891515491675
+      ],
+      "coefficients": [
+        -1.844553242937102,
+        -0.8598981261476353,
+        8.446833852132158
+      ],
+      "residualMaxMetres": 0.0008864846068936671,
+      "sourceMinimumAGL": 4.1850005187988275,
+      "sourceMaximumAGL": 13.006000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 103,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.121000518798828,
+        "maxAGL": 12.031000518798827
+      },
+      {
+        "sourceWallIndex": 212,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.166000518798828,
+        "maxAGL": 5.552000518798828
+      },
+      {
+        "sourceWallIndex": 217,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.72200051879883,
+        "maxAGL": 13.006000518798828
+      },
+      {
+        "sourceWallIndex": 218,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.552000518798828,
+        "maxAGL": 11.72200051879883
+      },
+      {
+        "sourceWallIndex": 219,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.723000518798827,
+        "maxAGL": 13.006000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 341,
+    "ringsUV": [
+      [
+        [
+          -32.291559366643,
+          -11.621183002072726
+        ],
+        [
+          -33.12625035944175,
+          -9.432656100239527
+        ],
+        [
+          -36.86093952858684,
+          -10.86615748886288
+        ],
+        [
+          -38.08173814633325,
+          -7.667767499115341
+        ],
+        [
+          -38.32054978445734,
+          -7.669364650119041
+        ],
+        [
+          -38.31953702437578,
+          -7.349952534886846
+        ],
+        [
+          -33.02480464067563,
+          -7.44431806681982
+        ],
+        [
+          -31.464281983483083,
+          -11.747133790679888
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        -35.18620760424958,
+        -9.224816641599508
+      ],
+      "coefficients": [
+        0.0005705697020248193,
+        0.054893086418552756,
+        9.917125518798825
+      ],
+      "residualMaxMetres": 0.000279800095562166,
+      "sourceMinimumAGL": 9.781000518798827,
+      "sourceMaximumAGL": 10.018000518798829
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 36,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.01600051879883,
+        "maxAGL": 11.682000518798827
+      },
+      {
+        "sourceWallIndex": 67,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 10.018000518798829
+      },
+      {
+        "sourceWallIndex": 68,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 10.00100051879883
+      },
+      {
+        "sourceWallIndex": 69,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 9.907000518798828
+      },
+      {
+        "sourceWallIndex": 70,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 10.00100051879883
+      },
+      {
+        "sourceWallIndex": 98,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.979000518798828,
+        "maxAGL": 10.01600051879883
+      },
+      {
+        "sourceWallIndex": 235,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.985000518798828,
+        "maxAGL": 9.787000518798827
+      },
+      {
+        "sourceWallIndex": 236,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 9.907000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 342,
+    "ringsUV": [
+      [
+        [
+          -27.96824451771193,
+          -11.729908035196951
+        ],
+        [
+          -31.70223233051587,
+          -13.162698466027624
+        ],
+        [
+          -32.291559366643,
+          -11.621183002072726
+        ],
+        [
+          -31.464281983483083,
+          -11.747133790679888
+        ],
+        [
+          -33.02480464067563,
+          -7.44431806681982
+        ],
+        [
+          -20.421520007781673,
+          -7.7072728640050245
+        ],
+        [
+          -20.440225163381456,
+          -13.058855865724125
+        ],
+        [
+          -20.771023822742567,
+          -13.187395040637414
+        ],
+        [
+          -20.751455683997136,
+          -13.235906114635416
+        ],
+        [
+          -26.54422347861693,
+          -15.459947889703681
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        -26.537957099554927,
+        -11.835461913550267
+      ],
+      "coefficients": [
+        -0.00450420461237317,
+        -0.003000260601860385,
+        3.9629005187988264
+      ],
+      "residualMaxMetres": 0.0001973724702790669,
+      "sourceMinimumAGL": 3.923000518798828,
+      "sourceMaximumAGL": 3.990000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "low-annex",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 59,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 3.939000518798828
+      },
+      {
+        "sourceWallIndex": 60,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 3.974000518798828
+      },
+      {
+        "sourceWallIndex": 62,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 3.990000518798828
+      },
+      {
+        "sourceWallIndex": 63,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 3.9410005187988277
+      },
+      {
+        "sourceWallIndex": 64,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 3.9410005187988277
+      },
+      {
+        "sourceWallIndex": 65,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 3.974000518798828
+      },
+      {
+        "sourceWallIndex": 98,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.979000518798828,
+        "maxAGL": 10.01600051879883
+      },
+      {
+        "sourceWallIndex": 234,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.923000518798828,
+        "maxAGL": 11.66400051879883
+      },
+      {
+        "sourceWallIndex": 235,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.985000518798828,
+        "maxAGL": 9.787000518798827
+      },
+      {
+        "sourceWallIndex": 237,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 3.990000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 343,
+    "ringsUV": [
+      [
+        [
+          -0.3659712979383549,
+          -23.967673217466896
+        ],
+        [
+          -0.3695263817336265,
+          -23.825684472941504
+        ],
+        [
+          -2.5946163490511154,
+          -23.821955216245332
+        ],
+        [
+          -2.5946294997822097,
+          -23.96045582117461
+        ],
+        [
+          -3.072965777005818,
+          -23.962956679630324
+        ],
+        [
+          -1.7357722320536233,
+          -23.435898003618192
+        ],
+        [
+          -0.421101154970291,
+          -22.917602790273257
+        ],
+        [
+          -0.033959168079919166,
+          -23.959245009761887
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        -1.3985677325768697,
+        -23.731433901388996
+      ],
+      "coefficients": [
+        0.0017327825618775646,
+        0.003234521842765033,
+        9.91462551879883
+      ],
+      "residualMaxMetres": 0.0003498561325727678,
+      "sourceMinimumAGL": 9.91100051879883,
+      "sourceMaximumAGL": 9.919000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 8,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.916000518798828,
+        "maxAGL": 14.259000518798828
+      },
+      {
+        "sourceWallIndex": 32,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 9.916000518798828
+      },
+      {
+        "sourceWallIndex": 91,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 9.912000518798827
+      },
+      {
+        "sourceWallIndex": 142,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.91100051879883,
+        "maxAGL": 14.021000518798829
+      },
+      {
+        "sourceWallIndex": 149,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.915000518798827,
+        "maxAGL": 16.508000518798827
+      },
+      {
+        "sourceWallIndex": 150,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 9.912000518798827
+      },
+      {
+        "sourceWallIndex": 151,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 9.916000518798828
+      },
+      {
+        "sourceWallIndex": 250,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 9.916000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 344,
+    "ringsUV": [
+      [
+        [
+          -1.475239637405084,
+          5.531612768360569
+        ],
+        [
+          -0.9772642951927519,
+          5.058796334223302
+        ],
+        [
+          -2.4537025383239235,
+          4.536344502277048
+        ],
+        [
+          -3.743854985346215,
+          4.668465285032416
+        ],
+        [
+          -4.154338748070452,
+          5.153691719257676
+        ],
+        [
+          -4.101592812291569,
+          9.864774950655203
+        ],
+        [
+          -7.7623236203671,
+          7.266246842261471
+        ],
+        [
+          -8.092808364865782,
+          7.596316628440738
+        ],
+        [
+          -8.033260733048778,
+          43.195099681057656
+        ],
+        [
+          -1.3991141867111523,
+          43.19466520292794
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        -4.219349992162281,
+        13.606601391449402
+      ],
+      "coefficients": [
+        0.4654471341278482,
+        -0.000691185053983282,
+        13.360700518798833
+      ],
+      "residualMaxMetres": 0.0006276113512768688,
+      "sourceMinimumAGL": 11.562000518798829,
+      "sourceMaximumAGL": 14.875000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 124,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.716000518798829,
+        "maxAGL": 13.418000518798827
+      },
+      {
+        "sourceWallIndex": 125,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.716000518798829
+      },
+      {
+        "sourceWallIndex": 127,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.588000518798829,
+        "maxAGL": 15.149000518798829
+      },
+      {
+        "sourceWallIndex": 141,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 14.653000518798827
+      },
+      {
+        "sourceWallIndex": 143,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.39400051879883,
+        "maxAGL": 13.588000518798829
+      },
+      {
+        "sourceWallIndex": 249,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.56500051879883
+      },
+      {
+        "sourceWallIndex": 252,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.189000518798828,
+        "maxAGL": 15.149000518798829
+      },
+      {
+        "sourceWallIndex": 253,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.416000518798828,
+        "maxAGL": 14.875000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 345,
+    "ringsUV": [
+      [
+        [
+          10.144827694909516,
+          -7.706854094060393
+        ],
+        [
+          10.241653704091235,
+          -7.709165668611238
+        ],
+        [
+          11.06476507532722,
+          -8.54179461494239
+        ],
+        [
+          11.094675951894747,
+          -7.7259622417390315
+        ],
+        [
+          23.722427999608357,
+          -7.966580306685396
+        ],
+        [
+          22.681080637582813,
+          -10.359661097546688
+        ],
+        [
+          17.602885198601072,
+          -10.365090817021
+        ],
+        [
+          17.549220832045542,
+          -10.508507881332722
+        ],
+        [
+          17.325225143793293,
+          -10.507801122034685
+        ],
+        [
+          17.082146854753947,
+          -10.506628503587491
+        ],
+        [
+          15.425907337085274,
+          -9.388433783316529
+        ],
+        [
+          14.07429682080529,
+          -9.327758019887348
+        ],
+        [
+          11.041647141653772,
+          -9.190775826504083
+        ],
+        [
+          10.816207765298207,
+          -15.339213154036628
+        ],
+        [
+          10.184108550097914,
+          -14.809439960355842
+        ],
+        [
+          10.17518610648225,
+          -7.774307894155523
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        14.389141425876902,
+        -9.85799843661356
+      ],
+      "coefficients": [
+        0.0011392977255175636,
+        0.028259240176635586,
+        3.878875518798831
+      ],
+      "residualMaxMetres": 0.0004995104548215501,
+      "sourceMinimumAGL": 3.7200005187988276,
+      "sourceMaximumAGL": 3.9430005187988275
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "low-annex",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 10,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.989000518798829,
+        "maxAGL": 11.660000518798828
+      },
+      {
+        "sourceWallIndex": 20,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.7200005187988276,
+        "maxAGL": 4.132000518798828
+      },
+      {
+        "sourceWallIndex": 75,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.9350005187988275,
+        "maxAGL": 11.652000518798829
+      },
+      {
+        "sourceWallIndex": 87,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.912000518798828,
+        "maxAGL": 9.989000518798829
+      },
+      {
+        "sourceWallIndex": 97,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8930005187988277,
+        "maxAGL": 6.319000518798828
+      },
+      {
+        "sourceWallIndex": 185,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8640005187988278,
+        "maxAGL": 6.313000518798828
+      },
+      {
+        "sourceWallIndex": 187,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8640005187988278,
+        "maxAGL": 5.715000518798828
+      },
+      {
+        "sourceWallIndex": 188,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8640005187988278,
+        "maxAGL": 5.754000518798828
+      },
+      {
+        "sourceWallIndex": 209,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.912000518798828,
+        "maxAGL": 9.991000518798828
+      },
+      {
+        "sourceWallIndex": 232,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.894000518798828,
+        "maxAGL": 5.913000518798828
+      },
+      {
+        "sourceWallIndex": 233,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.7200005187988276,
+        "maxAGL": 5.811000518798828
+      },
+      {
+        "sourceWallIndex": 251,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 3.9330005187988277
+      },
+      {
+        "sourceWallIndex": 260,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8640005187988278,
+        "maxAGL": 6.304000518798828
+      },
+      {
+        "sourceWallIndex": 263,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8740005187988276,
+        "maxAGL": 5.926000518798828
+      },
+      {
+        "sourceWallIndex": 264,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8680005187988282,
+        "maxAGL": 5.754000518798828
+      },
+      {
+        "sourceWallIndex": 326,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.9330005187988277,
+        "maxAGL": 10.026000518798828
+      },
+      {
+        "sourceWallIndex": 327,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.9350005187988275,
+        "maxAGL": 10.026000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 346,
+    "ringsUV": [
+      [
+        [
+          17.602885198601072,
+          -10.365090817021
+        ],
+        [
+          22.681080637582813,
+          -10.359661097546688
+        ],
+        [
+          22.562880505024673,
+          -13.136100862880422
+        ],
+        [
+          17.60444034206812,
+          -12.336578122060343
+        ],
+        [
+          17.325225143793293,
+          -10.507801122034685
+        ],
+        [
+          17.549220832045542,
+          -10.508507881332722
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        19.220955443185918,
+        -11.202289983812646
+      ],
+      "coefficients": [
+        -0.004026361716652516,
+        0.2769959429375072,
+        5.515333852132161
+      ],
+      "residualMaxMetres": 0.0003512045658862206,
+      "sourceMinimumAGL": 4.966000518798828,
+      "sourceMaximumAGL": 5.754000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "low-annex",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 89,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.966000518798828,
+        "maxAGL": 5.984000518798828
+      },
+      {
+        "sourceWallIndex": 108,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.235000518798828,
+        "maxAGL": 5.208000518798828
+      },
+      {
+        "sourceWallIndex": 186,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.208000518798828,
+        "maxAGL": 6.303000518798828
+      },
+      {
+        "sourceWallIndex": 187,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8640005187988278,
+        "maxAGL": 5.715000518798828
+      },
+      {
+        "sourceWallIndex": 188,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8640005187988278,
+        "maxAGL": 5.754000518798828
+      },
+      {
+        "sourceWallIndex": 264,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8680005187988282,
+        "maxAGL": 5.754000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 347,
+    "ringsUV": [
+      [
+        [
+          12.985087710415904,
+          -20.61725488202486
+        ],
+        [
+          13.954874053478253,
+          -20.441785728779983
+        ],
+        [
+          15.14591022549314,
+          -21.253518704502483
+        ],
+        [
+          12.202687603508679,
+          -22.414204601449526
+        ],
+        [
+          11.168930717390953,
+          -20.944729797104152
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        13.091498062057386,
+        -21.1342987427722
+      ],
+      "coefficients": [
+        0.06775631259831713,
+        -0.018217205796410937,
+        12.600800518798826
+      ],
+      "residualMaxMetres": 0.0003164785279956561,
+      "sourceMinimumAGL": 12.467000518798827,
+      "sourceMaximumAGL": 12.742000518798829
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 215,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.0520005187988275,
+        "maxAGL": 12.564000518798828
+      },
+      {
+        "sourceWallIndex": 216,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.061000518798828,
+        "maxAGL": 12.584000518798828
+      },
+      {
+        "sourceWallIndex": 220,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.755000518798827,
+        "maxAGL": 12.742000518798829
+      },
+      {
+        "sourceWallIndex": 221,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 12.742000518798829
+      },
+      {
+        "sourceWallIndex": 265,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.782000518798828,
+        "maxAGL": 12.647000518798826
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 348,
+    "ringsUV": [
+      [
+        [
+          17.025442189287478,
+          -16.43105215590323
+        ],
+        [
+          18.645123275840408,
+          -19.873825326720294
+        ],
+        [
+          15.14591022549314,
+          -21.253518704502483
+        ],
+        [
+          13.954874053478253,
+          -20.441785728779983
+        ],
+        [
+          12.985087710415904,
+          -20.61725488202486
+        ],
+        [
+          12.135299044133632,
+          -19.941835669136076
+        ],
+        [
+          12.664927612925759,
+          -19.561343622902974
+        ],
+        [
+          13.438675123084675,
+          -19.00535263423731
+        ],
+        [
+          13.960596434610082,
+          -18.631317483045923
+        ],
+        [
+          16.4670544517371,
+          -16.83239966948715
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        14.642299012100642,
+        -19.25896858767403
+      ],
+      "coefficients": [
+        -0.04543982227884843,
+        -0.03324210950440812,
+        11.71150051879883
+      ],
+      "residualMaxMetres": 0.000402988990266806,
+      "sourceMinimumAGL": 11.509000518798828,
+      "sourceMaximumAGL": 11.848000518798827
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 217,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.72200051879883,
+        "maxAGL": 13.006000518798828
+      },
+      {
+        "sourceWallIndex": 218,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.552000518798828,
+        "maxAGL": 11.72200051879883
+      },
+      {
+        "sourceWallIndex": 220,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.755000518798827,
+        "maxAGL": 12.742000518798829
+      },
+      {
+        "sourceWallIndex": 222,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.083000518798828,
+        "maxAGL": 11.848000518798827
+      },
+      {
+        "sourceWallIndex": 223,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.083000518798828,
+        "maxAGL": 11.848000518798827
+      },
+      {
+        "sourceWallIndex": 265,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.782000518798828,
+        "maxAGL": 12.647000518798826
+      },
+      {
+        "sourceWallIndex": 266,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.758000518798827,
+        "maxAGL": 12.508000518798827
+      },
+      {
+        "sourceWallIndex": 268,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.166000518798828,
+        "maxAGL": 11.54800051879883
+      },
+      {
+        "sourceWallIndex": 269,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.755000518798827
+      },
+      {
+        "sourceWallIndex": 270,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.146000518798828,
+        "maxAGL": 11.550000518798829
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 349,
+    "ringsUV": [
+      [
+        [
+          -7.28527770341225,
+          1.6608851836697505
+        ],
+        [
+          -9.282728990607234,
+          1.6533597285325912
+        ],
+        [
+          -9.973343517618403,
+          2.1004289712218362
+        ],
+        [
+          -5.846411704471355,
+          6.042494951537739
+        ],
+        [
+          -4.971535978783217,
+          4.841652467779197
+        ],
+        [
+          -5.31176783505185,
+          4.387942451200278
+        ],
+        [
+          -6.4165891982036385,
+          4.359875698324754
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        -7.012522132592563,
+        3.578091350323735
+      ],
+      "coefficients": [
+        -0.007074338741044279,
+        0.011211227902237442,
+        16.060571947370256
+      ],
+      "residualMaxMetres": 0.0003808581858564253,
+      "sourceMinimumAGL": 16.04100051879883,
+      "sourceMaximumAGL": 16.080000518798826
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 5,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.389000518798827,
+        "maxAGL": 16.080000518798826
+      },
+      {
+        "sourceWallIndex": 144,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.396000518798829,
+        "maxAGL": 16.080000518798826
+      },
+      {
+        "sourceWallIndex": 145,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.395000518798827,
+        "maxAGL": 16.060000518798827
+      },
+      {
+        "sourceWallIndex": 163,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.177000518798827,
+        "maxAGL": 16.065000518798826
+      },
+      {
+        "sourceWallIndex": 167,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.395000518798827,
+        "maxAGL": 16.065000518798826
+      },
+      {
+        "sourceWallIndex": 271,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.384000518798828,
+        "maxAGL": 16.065000518798826
+      },
+      {
+        "sourceWallIndex": 275,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.384000518798828,
+        "maxAGL": 16.055000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 350,
+    "ringsUV": [
+      [
+        [
+          2.073224458979905,
+          5.184189292181881
+        ],
+        [
+          2.304885333964036,
+          4.844394311234707
+        ],
+        [
+          2.793481739125846,
+          5.160062726284185
+        ],
+        [
+          2.7757123725565234,
+          5.100481400133058
+        ],
+        [
+          2.6309162297578137,
+          4.955208424836354
+        ],
+        [
+          4.372589016823328,
+          3.2134216821130126
+        ],
+        [
+          3.395095685512289,
+          2.961542656275195
+        ],
+        [
+          2.6374872663007096,
+          2.7661415607232778
+        ],
+        [
+          1.674376528343048,
+          4.098009494000146
+        ],
+        [
+          1.3526260920254545,
+          4.542663159076362
+        ],
+        [
+          1.6677665645262745,
+          4.8222251949024315
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        2.516196480719566,
+        4.331667263796419
+      ],
+      "coefficients": [
+        0.18999446751373625,
+        -0.19129122222735015,
+        13.465273246071563
+      ],
+      "residualMaxMetres": 0.0004906117861676051,
+      "sourceMinimumAGL": 13.204000518798829,
+      "sourceMaximumAGL": 14.032000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 73,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.368000518798826
+      },
+      {
+        "sourceWallIndex": 74,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.368000518798826
+      },
+      {
+        "sourceWallIndex": 116,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.694000518798827,
+        "maxAGL": 14.032000518798828
+      },
+      {
+        "sourceWallIndex": 117,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.788000518798828,
+        "maxAGL": 15.600000518798826
+      },
+      {
+        "sourceWallIndex": 118,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 14.032000518798828
+      },
+      {
+        "sourceWallIndex": 189,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.622000518798828,
+        "maxAGL": 13.35900051879883
+      },
+      {
+        "sourceWallIndex": 276,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.35000051879883,
+        "maxAGL": 15.332000518798829
+      },
+      {
+        "sourceWallIndex": 278,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.204000518798829,
+        "maxAGL": 15.332000518798829
+      },
+      {
+        "sourceWallIndex": 279,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.025000518798826,
+        "maxAGL": 13.218000518798828
+      },
+      {
+        "sourceWallIndex": 280,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.204000518798829,
+        "maxAGL": 13.35300051879883
+      },
+      {
+        "sourceWallIndex": 281,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.70200051879883,
+        "maxAGL": 13.32700051879883
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 351,
+    "ringsUV": [
+      [
+        [
+          1.674376528343048,
+          4.098009494000146
+        ],
+        [
+          -1.48277633930114,
+          0.05298835016394243
+        ],
+        [
+          -4.388280507329908,
+          4.040619897906915
+        ],
+        [
+          -4.285417340973157,
+          4.140139314118161
+        ],
+        [
+          -4.341167044010858,
+          4.4129033539771925
+        ],
+        [
+          -3.9978514994784096,
+          4.421473198761182
+        ],
+        [
+          -3.743854985346215,
+          4.668465285032416
+        ],
+        [
+          -2.4537025383239235,
+          4.536344502277048
+        ],
+        [
+          -0.9772642951927519,
+          5.058796334223302
+        ],
+        [
+          -0.40435706613343614,
+          4.5127286015773524
+        ],
+        [
+          1.3526260920254545,
+          4.542663159076362
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        -2.0952426359746634,
+        4.044102862828547
+      ],
+      "coefficients": [
+        -0.008933231204620789,
+        -0.4994765106504606,
+        15.392091427889737
+      ],
+      "residualMaxMetres": 0.0005090664958231628,
+      "sourceMinimumAGL": 14.875000518798828,
+      "sourceMaximumAGL": 17.380000518798827
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 115,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.154000518798828,
+        "maxAGL": 15.143000518798829
+      },
+      {
+        "sourceWallIndex": 122,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.393000518798829,
+        "maxAGL": 15.228000518798826
+      },
+      {
+        "sourceWallIndex": 123,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.392000518798827,
+        "maxAGL": 15.364000518798829
+      },
+      {
+        "sourceWallIndex": 126,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.393000518798829,
+        "maxAGL": 15.221000518798828
+      },
+      {
+        "sourceWallIndex": 127,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.588000518798829,
+        "maxAGL": 15.149000518798829
+      },
+      {
+        "sourceWallIndex": 146,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.392000518798827,
+        "maxAGL": 15.414000518798826
+      },
+      {
+        "sourceWallIndex": 252,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.189000518798828,
+        "maxAGL": 15.149000518798829
+      },
+      {
+        "sourceWallIndex": 277,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.35300051879883,
+        "maxAGL": 15.143000518798829
+      },
+      {
+        "sourceWallIndex": 278,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.204000518798829,
+        "maxAGL": 15.332000518798829
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 352,
+    "ringsUV": [
+      [
+        [
+          39.80994625145994,
+          -3.835371424742899
+        ],
+        [
+          35.397936339767355,
+          -3.827463231215832
+        ],
+        [
+          35.852396694684174,
+          -2.301761698172605
+        ],
+        [
+          35.31019989282409,
+          -1.2288713666946478
+        ],
+        [
+          35.33277880584115,
+          -1.1558032973735948
+        ],
+        [
+          36.1119368912272,
+          1.451609530352286
+        ],
+        [
+          39.86863057138443,
+          1.334380582418543
+        ],
+        [
+          39.907342842207115,
+          -3.8242491841793687
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        37.19889603617443,
+        -1.6734412612010148
+      ],
+      "coefficients": [
+        0.014575352125316337,
+        0.012778648884219786,
+        13.408750518798826
+      ],
+      "residualMaxMetres": 0.00025785335452610525,
+      "sourceMinimumAGL": 13.355000518798828,
+      "sourceMaximumAGL": 13.486000518798829
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 81,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.486000518798829
+      },
+      {
+        "sourceWallIndex": 99,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.387000518798828,
+        "maxAGL": 14.634000518798828
+      },
+      {
+        "sourceWallIndex": 104,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.381000518798828,
+        "maxAGL": 14.601000518798827
+      },
+      {
+        "sourceWallIndex": 107,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.38800051879883,
+        "maxAGL": 14.634000518798828
+      },
+      {
+        "sourceWallIndex": 131,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.419000518798828,
+        "maxAGL": 16.022000518798826
+      },
+      {
+        "sourceWallIndex": 190,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.421000518798827,
+        "maxAGL": 16.025000518798826
+      },
+      {
+        "sourceWallIndex": 284,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.355000518798828,
+        "maxAGL": 14.11200051879883
+      },
+      {
+        "sourceWallIndex": 285,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.419000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 353,
+    "ringsUV": [
+      [
+        [
+          15.866465624269386,
+          -13.967512500477143
+        ],
+        [
+          12.648340058953211,
+          -15.613589557930089
+        ],
+        [
+          10.911692757346799,
+          -15.418564673586113
+        ],
+        [
+          10.816207765298207,
+          -15.339213154036628
+        ],
+        [
+          11.041647141653772,
+          -9.190775826504083
+        ],
+        [
+          14.07429682080529,
+          -9.327758019887348
+        ],
+        [
+          13.601818467063904,
+          -12.286740665955366
+        ],
+        [
+          15.600004435690154,
+          -13.40062145431844
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        13.07005913388509,
+        -13.068096981586901
+      ],
+      "coefficients": [
+        0.03458204264030137,
+        -0.0017465715860971365,
+        5.884875518798826
+      ],
+      "residualMaxMetres": 0.00033954201804320405,
+      "sourceMinimumAGL": 5.808000518798828,
+      "sourceMaximumAGL": 5.9830005187988275
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "low-annex",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 102,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.902000518798828,
+        "maxAGL": 6.319000518798828
+      },
+      {
+        "sourceWallIndex": 136,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.131000518798828,
+        "maxAGL": 5.814000518798828
+      },
+      {
+        "sourceWallIndex": 226,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.131000518798828,
+        "maxAGL": 5.875000518798828
+      },
+      {
+        "sourceWallIndex": 232,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.894000518798828,
+        "maxAGL": 5.913000518798828
+      },
+      {
+        "sourceWallIndex": 233,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.7200005187988276,
+        "maxAGL": 5.811000518798828
+      },
+      {
+        "sourceWallIndex": 261,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.902000518798828,
+        "maxAGL": 6.317000518798828
+      },
+      {
+        "sourceWallIndex": 286,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.973000518798828,
+        "maxAGL": 6.307000518798828
+      },
+      {
+        "sourceWallIndex": 287,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.145000518798828,
+        "maxAGL": 5.9830005187988275
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 354,
+    "ringsUV": [
+      [
+        [
+          12.241596642951123,
+          -19.27343196972309
+        ],
+        [
+          13.53817691420716,
+          -18.084059844159707
+        ],
+        [
+          13.438675123084675,
+          -19.00535263423731
+        ],
+        [
+          12.664927612925759,
+          -19.561343622902974
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        12.970844073292179,
+        -18.98104701775577
+      ],
+      "coefficients": [
+        -1.01913794805766,
+        0.0712808426416448,
+        12.237000518798828
+      ],
+      "residualMaxMetres": 0.0005929573020821977,
+      "sourceMinimumAGL": 11.723000518798827,
+      "sourceMaximumAGL": 12.959000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 219,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.723000518798827,
+        "maxAGL": 13.006000518798828
+      },
+      {
+        "sourceWallIndex": 266,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.758000518798827,
+        "maxAGL": 12.508000518798827
+      },
+      {
+        "sourceWallIndex": 267,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.093000518798828,
+        "maxAGL": 12.959000518798828
+      },
+      {
+        "sourceWallIndex": 288,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.093000518798828,
+        "maxAGL": 12.959000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 355,
+    "ringsUV": [
+      [
+        [
+          16.695039033969902,
+          -14.012174881254678
+        ],
+        [
+          16.256594142272476,
+          -13.766852355099488
+        ],
+        [
+          15.866465624269386,
+          -13.967512500477143
+        ],
+        [
+          15.600004435690154,
+          -13.40062145431844
+        ],
+        [
+          13.601818467063904,
+          -12.286740665955366
+        ],
+        [
+          14.07429682080529,
+          -9.327758019887348
+        ],
+        [
+          15.425907337085274,
+          -9.388433783316529
+        ],
+        [
+          17.082146854753947,
+          -10.506628503587491
+        ],
+        [
+          17.325225143793293,
+          -10.507801122034685
+        ],
+        [
+          17.60444034206812,
+          -12.336578122060343
+        ],
+        [
+          17.665002272092853,
+          -12.735768418459466
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        16.10881277035133,
+        -12.021533620586455
+      ],
+      "coefficients": [
+        -0.0043479505762587314,
+        0.0012921998586401836,
+        6.3065459733442815
+      ],
+      "residualMaxMetres": 0.0004242653690962328,
+      "sourceMinimumAGL": 6.299000518798828,
+      "sourceMaximumAGL": 6.319000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "low-annex",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 97,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8930005187988277,
+        "maxAGL": 6.319000518798828
+      },
+      {
+        "sourceWallIndex": 102,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.902000518798828,
+        "maxAGL": 6.319000518798828
+      },
+      {
+        "sourceWallIndex": 105,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.231000518798828,
+        "maxAGL": 6.300000518798828
+      },
+      {
+        "sourceWallIndex": 185,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8640005187988278,
+        "maxAGL": 6.313000518798828
+      },
+      {
+        "sourceWallIndex": 186,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.208000518798828,
+        "maxAGL": 6.303000518798828
+      },
+      {
+        "sourceWallIndex": 260,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8640005187988278,
+        "maxAGL": 6.304000518798828
+      },
+      {
+        "sourceWallIndex": 261,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.902000518798828,
+        "maxAGL": 6.317000518798828
+      },
+      {
+        "sourceWallIndex": 286,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.973000518798828,
+        "maxAGL": 6.307000518798828
+      },
+      {
+        "sourceWallIndex": 289,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.197000518798828,
+        "maxAGL": 6.305000518798828
+      },
+      {
+        "sourceWallIndex": 290,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.205000518798828,
+        "maxAGL": 6.301000518798828
+      },
+      {
+        "sourceWallIndex": 291,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.204000518798828,
+        "maxAGL": 6.304000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 356,
+    "ringsUV": [
+      [
+        [
+          30.378809202361538,
+          -10.095749732085066
+        ],
+        [
+          30.8717544389051,
+          -11.32896196169657
+        ],
+        [
+          30.958748177324182,
+          -11.546920136844333
+        ],
+        [
+          30.240566406031018,
+          -12.2173926017277
+        ],
+        [
+          30.12865012060085,
+          -13.448346167092804
+        ],
+        [
+          29.65158724270865,
+          -13.64657133172405
+        ],
+        [
+          28.260902804713673,
+          -14.054184327509915
+        ],
+        [
+          22.562880505024673,
+          -13.136100862880422
+        ],
+        [
+          22.681080637582813,
+          -10.359661097546688
+        ],
+        [
+          23.722427999608357,
+          -7.966580306685396
+        ],
+        [
+          30.581894590322513,
+          -8.097656181950706
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        28.185391102289397,
+        -11.445284064340335
+      ],
+      "coefficients": [
+        -0.017427948892859105,
+        -0.020103722242797994,
+        5.852000518798826
+      ],
+      "residualMaxMetres": 0.0006425580784892304,
+      "sourceMinimumAGL": 5.743000518798828,
+      "sourceMaximumAGL": 5.984000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "low-annex",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 88,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.272000518798828,
+        "maxAGL": 5.984000518798828
+      },
+      {
+        "sourceWallIndex": 89,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.966000518798828,
+        "maxAGL": 5.984000518798828
+      },
+      {
+        "sourceWallIndex": 101,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.743000518798828,
+        "maxAGL": 11.53600051879883
+      },
+      {
+        "sourceWallIndex": 224,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.891000518798828,
+        "maxAGL": 5.786000518798828
+      },
+      {
+        "sourceWallIndex": 239,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.314000518798828,
+        "maxAGL": 5.903000518798828
+      },
+      {
+        "sourceWallIndex": 240,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.849000518798828,
+        "maxAGL": 5.8580005187988275
+      },
+      {
+        "sourceWallIndex": 241,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.190000518798828,
+        "maxAGL": 5.832000518798828
+      },
+      {
+        "sourceWallIndex": 258,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.333000518798828,
+        "maxAGL": 5.871000518798828
+      },
+      {
+        "sourceWallIndex": 259,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.373000518798828,
+        "maxAGL": 5.806000518798828
+      },
+      {
+        "sourceWallIndex": 263,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8740005187988276,
+        "maxAGL": 5.926000518798828
+      },
+      {
+        "sourceWallIndex": 294,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8560005187988278,
+        "maxAGL": 5.803000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 357,
+    "ringsUV": [
+      [
+        [
+          33.0571662965437,
+          -12.231307638725907
+        ],
+        [
+          34.30148544914405,
+          -13.700943863890563
+        ],
+        [
+          33.30915206674578,
+          -14.092224129840135
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        33.55593460414451,
+        -13.341491877485536
+      ],
+      "coefficients": [
+        0.3758250508247939,
+        -0.8841328683811616,
+        11.911000518798831
+      ],
+      "residualMaxMetres": 2.3092638912203256e-14,
+      "sourceMinimumAGL": 10.742000518798829,
+      "sourceMaximumAGL": 12.509000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 295,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 12.509000518798828
+      },
+      {
+        "sourceWallIndex": 296,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.658000518798828,
+        "maxAGL": 12.482000518798827
+      },
+      {
+        "sourceWallIndex": 297,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.793000518798828,
+        "maxAGL": 12.509000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 358,
+    "ringsUV": [
+      [
+        [
+          -9.886856324458318,
+          5.42976499058649
+        ],
+        [
+          -10.02826985618738,
+          5.089504042231413
+        ],
+        [
+          -37.696353047961836,
+          5.244492403832403
+        ],
+        [
+          -37.937990094904066,
+          5.66260104205611
+        ],
+        [
+          -10.086017916477463,
+          5.63005722755893
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        -21.127097447997812,
+        5.411283941253069
+      ],
+      "coefficients": [
+        0.00039495100810469985,
+        -0.08538027193987559,
+        9.975200518798824
+      ],
+      "residualMaxMetres": 0.00011823718643988457,
+      "sourceMinimumAGL": 9.947000518798827,
+      "sourceMaximumAGL": 10.00700051879883
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 148,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 9.97800051879883
+      },
+      {
+        "sourceWallIndex": 177,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.947000518798827,
+        "maxAGL": 11.788000518798828
+      },
+      {
+        "sourceWallIndex": 203,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 9.961000518798826
+      },
+      {
+        "sourceWallIndex": 214,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.983000518798828,
+        "maxAGL": 11.781000518798827
+      },
+      {
+        "sourceWallIndex": 298,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.97800051879883,
+        "maxAGL": 13.404000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 359,
+    "ringsUV": [
+      [
+        [
+          -9.886856324458318,
+          5.42976499058649
+        ],
+        [
+          -9.547065554556195,
+          5.087799618051947
+        ],
+        [
+          -7.566730300643414,
+          7.069442905445425
+        ],
+        [
+          -7.7623236203671,
+          7.266246842261471
+        ],
+        [
+          -4.101592812291569,
+          9.864774950655203
+        ],
+        [
+          -4.154338748070452,
+          5.153691719257676
+        ],
+        [
+          -3.743854985346215,
+          4.668465285032416
+        ],
+        [
+          -3.9978514994784096,
+          4.421473198761182
+        ],
+        [
+          -4.341167044010858,
+          4.4129033539771925
+        ],
+        [
+          -4.285417340973157,
+          4.140139314118161
+        ],
+        [
+          -4.388280507329908,
+          4.040619897906915
+        ],
+        [
+          -6.8274235260455205,
+          1.6624198331144977
+        ],
+        [
+          -7.28527770341225,
+          1.6608851836697505
+        ],
+        [
+          -6.4165891982036385,
+          4.359875698324754
+        ],
+        [
+          -5.31176783505185,
+          4.387942451200278
+        ],
+        [
+          -4.971535978783217,
+          4.841652467779197
+        ],
+        [
+          -5.846411704471355,
+          6.042494951537739
+        ],
+        [
+          -9.973343517618403,
+          2.1004289712218362
+        ],
+        [
+          -11.411463490022092,
+          3.030595362999054
+        ],
+        [
+          -10.509757975233397,
+          3.9302055833557983
+        ],
+        [
+          -10.02826985618738,
+          5.089504042231413
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        -6.7789199772645095,
+        4.698158410547066
+      ],
+      "coefficients": [
+        -0.0010595174402466415,
+        0.0045260984294820195,
+        13.39752432832263
+      ],
+      "residualMaxMetres": 0.00043473172476637956,
+      "sourceMinimumAGL": 13.384000518798828,
+      "sourceMaximumAGL": 13.418000518798827
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 5,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.389000518798827,
+        "maxAGL": 16.080000518798826
+      },
+      {
+        "sourceWallIndex": 119,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.384000518798828,
+        "maxAGL": 15.414000518798826
+      },
+      {
+        "sourceWallIndex": 122,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.393000518798829,
+        "maxAGL": 15.228000518798826
+      },
+      {
+        "sourceWallIndex": 123,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.392000518798827,
+        "maxAGL": 15.364000518798829
+      },
+      {
+        "sourceWallIndex": 124,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.716000518798829,
+        "maxAGL": 13.418000518798827
+      },
+      {
+        "sourceWallIndex": 126,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.393000518798829,
+        "maxAGL": 15.221000518798828
+      },
+      {
+        "sourceWallIndex": 143,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.39400051879883,
+        "maxAGL": 13.588000518798829
+      },
+      {
+        "sourceWallIndex": 144,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.396000518798829,
+        "maxAGL": 16.080000518798826
+      },
+      {
+        "sourceWallIndex": 145,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.395000518798827,
+        "maxAGL": 16.060000518798827
+      },
+      {
+        "sourceWallIndex": 146,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.392000518798827,
+        "maxAGL": 15.414000518798826
+      },
+      {
+        "sourceWallIndex": 147,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.781000518798827,
+        "maxAGL": 13.403000518798827
+      },
+      {
+        "sourceWallIndex": 167,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.395000518798827,
+        "maxAGL": 16.065000518798826
+      },
+      {
+        "sourceWallIndex": 210,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.741000518798828,
+        "maxAGL": 13.395000518798827
+      },
+      {
+        "sourceWallIndex": 247,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.410000518798828
+      },
+      {
+        "sourceWallIndex": 248,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.409000518798827
+      },
+      {
+        "sourceWallIndex": 254,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.322000518798827,
+        "maxAGL": 13.398000518798828
+      },
+      {
+        "sourceWallIndex": 271,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.384000518798828,
+        "maxAGL": 16.065000518798826
+      },
+      {
+        "sourceWallIndex": 298,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.97800051879883,
+        "maxAGL": 13.404000518798828
+      },
+      {
+        "sourceWallIndex": 299,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.404000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 360,
+    "ringsUV": [
+      [
+        [
+          34.10325004155753,
+          3.1857708305489663
+        ],
+        [
+          34.647278650802036,
+          3.6795062379650343
+        ],
+        [
+          35.29556891638465,
+          1.4773441282793875
+        ],
+        [
+          33.57943763716211,
+          1.5305877772452234
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        34.40638381147658,
+        2.468302243509653
+      ],
+      "coefficients": [
+        -0.48976555240854,
+        -0.012145034992023282,
+        12.026500518798832
+      ],
+      "residualMaxMetres": 0.0002507971828205058,
+      "sourceMinimumAGL": 11.60300051879883,
+      "sourceMaximumAGL": 12.44300051879883
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 19,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.60300051879883,
+        "maxAGL": 13.421000518798827
+      },
+      {
+        "sourceWallIndex": 80,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.166000518798828,
+        "maxAGL": 13.397000518798826
+      },
+      {
+        "sourceWallIndex": 208,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.06500051879883,
+        "maxAGL": 11.89400051879883
+      },
+      {
+        "sourceWallIndex": 301,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.89400051879883,
+        "maxAGL": 12.634000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 361,
+    "ringsUV": [
+      [
+        [
+          35.440172975293436,
+          5.557140836576419
+        ],
+        [
+          35.422223861922745,
+          1.5997767094683084
+        ],
+        [
+          36.15568178767465,
+          1.597727799053434
+        ],
+        [
+          36.1119368912272,
+          1.451609530352286
+        ],
+        [
+          35.29556891638465,
+          1.4773441282793875
+        ],
+        [
+          34.647278650802036,
+          3.6795062379650343
+        ],
+        [
+          34.459975365466725,
+          4.314524128516412
+        ],
+        [
+          34.703049382962675,
+          5.082874052106066
+        ],
+        [
+          6.601179471769967,
+          4.960772655148496
+        ],
+        [
+          7.2545386839972235,
+          5.613463899551535
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        29.60916059875013,
+        3.533473997701738
+      ],
+      "coefficients": [
+        0.001807257887038186,
+        0.0034166464076966396,
+        10.061500518798828
+      ],
+      "residualMaxMetres": 0.0003989445368048905,
+      "sourceMinimumAGL": 10.025000518798826,
+      "sourceMaximumAGL": 10.079000518798829
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 76,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.025000518798826,
+        "maxAGL": 11.820000518798828
+      },
+      {
+        "sourceWallIndex": 82,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 10.067000518798828
+      },
+      {
+        "sourceWallIndex": 90,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.073000518798828,
+        "maxAGL": 12.114000518798829
+      },
+      {
+        "sourceWallIndex": 106,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.06500051879883,
+        "maxAGL": 13.433000518798828
+      },
+      {
+        "sourceWallIndex": 181,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 10.079000518798829
+      },
+      {
+        "sourceWallIndex": 208,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.06500051879883,
+        "maxAGL": 11.89400051879883
+      },
+      {
+        "sourceWallIndex": 246,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 10.028000518798827
+      },
+      {
+        "sourceWallIndex": 300,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.07100051879883,
+        "maxAGL": 12.407000518798828
+      },
+      {
+        "sourceWallIndex": 302,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 10.067000518798828
+      },
+      {
+        "sourceWallIndex": 303,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 10.079000518798829
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 362,
+    "ringsUV": [
+      [
+        [
+          -1.3991141867111523,
+          43.19466520292794
+        ],
+        [
+          4.82379134063309,
+          43.194706876616834
+        ],
+        [
+          4.758254565272596,
+          7.982406604303506
+        ],
+        [
+          2.756437688777137,
+          8.477237743213994
+        ],
+        [
+          1.866640813881276,
+          5.489675576725942
+        ],
+        [
+          2.073224458979905,
+          5.184189292181881
+        ],
+        [
+          1.6677665645262745,
+          4.8222251949024315
+        ],
+        [
+          1.3526260920254545,
+          4.542663159076362
+        ],
+        [
+          -0.40435706613343614,
+          4.5127286015773524
+        ],
+        [
+          -0.9772642951927519,
+          5.058796334223302
+        ],
+        [
+          -1.475239637405084,
+          5.531612768360569
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        1.3675242126048461,
+        12.544627941282737
+      ],
+      "coefficients": [
+        -0.45588867232743124,
+        0.0011713367944074468,
+        13.355818700617004
+      ],
+      "residualMaxMetres": 0.000475880824440722,
+      "sourceMinimumAGL": 11.805000518798828,
+      "sourceMaximumAGL": 14.653000518798827
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 66,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.032000518798828,
+        "maxAGL": 11.816000518798827
+      },
+      {
+        "sourceWallIndex": 115,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.154000518798828,
+        "maxAGL": 15.143000518798829
+      },
+      {
+        "sourceWallIndex": 128,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.07700051879883,
+        "maxAGL": 13.120000518798829
+      },
+      {
+        "sourceWallIndex": 253,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.416000518798828,
+        "maxAGL": 14.875000518798828
+      },
+      {
+        "sourceWallIndex": 277,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.35300051879883,
+        "maxAGL": 15.143000518798829
+      },
+      {
+        "sourceWallIndex": 279,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.025000518798826,
+        "maxAGL": 13.218000518798828
+      },
+      {
+        "sourceWallIndex": 280,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.204000518798829,
+        "maxAGL": 13.35300051879883
+      },
+      {
+        "sourceWallIndex": 282,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.900000518798826,
+        "maxAGL": 13.120000518798829
+      },
+      {
+        "sourceWallIndex": 304,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 14.653000518798827
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 363,
+    "ringsUV": [
+      [
+        [
+          -7.796442887336525,
+          -2.715385876883365
+        ],
+        [
+          -7.616392879071071,
+          -2.6325587797247625
+        ],
+        [
+          -7.639714713585558,
+          -2.5621895137045025
+        ],
+        [
+          -7.013529939058458,
+          -1.947293336891347
+        ],
+        [
+          -7.277477585512094,
+          -1.1394065022763273
+        ],
+        [
+          -7.735392747579059,
+          0.26384630328552205
+        ],
+        [
+          -7.494242906970735,
+          1.0130930419128519
+        ],
+        [
+          -6.8274235260455205,
+          1.6624198331144977
+        ],
+        [
+          -4.388280507329908,
+          4.040619897906915
+        ],
+        [
+          -1.48277633930114,
+          0.05298835016394243
+        ],
+        [
+          -1.4571862327602965,
+          -3.8084421292915316
+        ],
+        [
+          -7.3576386382919585,
+          -3.9054764398227495
+        ],
+        [
+          -8.007735469408416,
+          -2.9229745996838985
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        -6.314941105557749,
+        -1.123135365530366
+      ],
+      "coefficients": [
+        0.38231612809892324,
+        -0.21445615092129292,
+        15.784846672644978
+      ],
+      "residualMaxMetres": 0.0005101221781931287,
+      "sourceMinimumAGL": 14.87600051879883,
+      "sourceMaximumAGL": 18.218000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 119,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.384000518798828,
+        "maxAGL": 15.414000518798826
+      },
+      {
+        "sourceWallIndex": 154,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 17.380000518798827,
+        "maxAGL": 18.218000518798828
+      },
+      {
+        "sourceWallIndex": 155,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.320000518798828,
+        "maxAGL": 15.694000518798827
+      },
+      {
+        "sourceWallIndex": 156,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.034000518798827,
+        "maxAGL": 15.694000518798827
+      },
+      {
+        "sourceWallIndex": 168,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.03600051879883,
+        "maxAGL": 15.420000518798826
+      },
+      {
+        "sourceWallIndex": 242,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.002000518798827,
+        "maxAGL": 15.611000518798829
+      },
+      {
+        "sourceWallIndex": 272,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.384000518798828,
+        "maxAGL": 14.992000518798829
+      },
+      {
+        "sourceWallIndex": 274,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.686000518798828,
+        "maxAGL": 14.944000518798827
+      },
+      {
+        "sourceWallIndex": 283,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.162000518798827,
+        "maxAGL": 18.218000518798828
+      },
+      {
+        "sourceWallIndex": 305,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.866000518798828,
+        "maxAGL": 15.983000518798828
+      },
+      {
+        "sourceWallIndex": 307,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.866000518798828,
+        "maxAGL": 15.560000518798827
+      },
+      {
+        "sourceWallIndex": 308,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.962000518798828,
+        "maxAGL": 15.611000518798829
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 364,
+    "ringsUV": [
+      [
+        [
+          4.744675900825265,
+          -4.031236203740907
+        ],
+        [
+          4.63664585677316,
+          -4.038958696497159
+        ],
+        [
+          4.138070440840582,
+          -3.716663551917362
+        ],
+        [
+          -1.4571862327602965,
+          -3.8084421292915316
+        ],
+        [
+          -1.48277633930114,
+          0.05298835016394243
+        ],
+        [
+          1.674376528343048,
+          4.098009494000146
+        ],
+        [
+          2.6374872663007096,
+          2.7661415607232778
+        ],
+        [
+          2.7908479888471622,
+          2.5532595402587264
+        ],
+        [
+          3.281716560907388,
+          1.87472376352505
+        ],
+        [
+          4.227767928964134,
+          1.8817111300005998
+        ],
+        [
+          4.439751295438011,
+          0.2725546514265802
+        ],
+        [
+          4.880465802558708,
+          -0.3373635242397519
+        ],
+        [
+          4.693609845515122,
+          -0.9354125819574455
+        ],
+        [
+          4.33355689098783,
+          -2.0847006847922254
+        ],
+        [
+          4.81470583140791,
+          -2.570447979763676
+        ],
+        [
+          4.961819341213303,
+          -3.7034455302905456
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        3.3322209316788056,
+        -0.7329551495245176
+      ],
+      "coefficients": [
+        -0.3702537141988861,
+        -0.2174987634621466,
+        15.768563018798837
+      ],
+      "residualMaxMetres": 0.0004625606091934742,
+      "sourceMinimumAGL": 14.868000518798826,
+      "sourceMaximumAGL": 18.211000518798826
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 55,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.310000518798827,
+        "maxAGL": 18.211000518798826
+      },
+      {
+        "sourceWallIndex": 95,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.08000051879883,
+        "maxAGL": 16.119000518798828
+      },
+      {
+        "sourceWallIndex": 114,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.489000518798829,
+        "maxAGL": 15.811000518798828
+      },
+      {
+        "sourceWallIndex": 152,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.151000518798828,
+        "maxAGL": 15.254000518798826
+      },
+      {
+        "sourceWallIndex": 153,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 15.254000518798826,
+        "maxAGL": 15.600000518798826
+      },
+      {
+        "sourceWallIndex": 154,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 17.380000518798827,
+        "maxAGL": 18.218000518798828
+      },
+      {
+        "sourceWallIndex": 195,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.005000518798827,
+        "maxAGL": 15.692000518798828
+      },
+      {
+        "sourceWallIndex": 257,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.226000518798827,
+        "maxAGL": 15.692000518798828
+      },
+      {
+        "sourceWallIndex": 276,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.35000051879883,
+        "maxAGL": 15.332000518798829
+      },
+      {
+        "sourceWallIndex": 309,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.980000518798828,
+        "maxAGL": 15.140000518798828
+      },
+      {
+        "sourceWallIndex": 310,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.239000518798829,
+        "maxAGL": 15.140000518798828
+      },
+      {
+        "sourceWallIndex": 312,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.023000518798828,
+        "maxAGL": 15.220000518798827
+      },
+      {
+        "sourceWallIndex": 313,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.261000518798827,
+        "maxAGL": 15.309000518798829
+      },
+      {
+        "sourceWallIndex": 314,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.933000518798828,
+        "maxAGL": 15.963000518798829
+      },
+      {
+        "sourceWallIndex": 315,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.031000518798827,
+        "maxAGL": 16.005000518798827
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 365,
+    "ringsUV": [
+      [
+        [
+          4.693609845515122,
+          -0.9354125819574455
+        ],
+        [
+          4.880465802558708,
+          -0.3373635242397519
+        ],
+        [
+          4.439751295438011,
+          0.2725546514265802
+        ],
+        [
+          4.227767928964134,
+          1.8817111300005998
+        ],
+        [
+          4.206301282110735,
+          2.0482057890122034
+        ],
+        [
+          5.261551776543568,
+          2.436739497856548
+        ],
+        [
+          5.386496652171534,
+          1.8892616434426446
+        ],
+        [
+          7.069475550795436,
+          1.900599325075473
+        ],
+        [
+          6.592504092564443,
+          4.071012254234445
+        ],
+        [
+          6.433290259554196,
+          4.793302657548584
+        ],
+        [
+          6.601179471769967,
+          4.960772655148496
+        ],
+        [
+          34.703049382962675,
+          5.082874052106066
+        ],
+        [
+          34.459975365466725,
+          4.314524128516412
+        ],
+        [
+          34.647278650802036,
+          3.6795062379650343
+        ],
+        [
+          34.10325004155753,
+          3.1857708305489663
+        ],
+        [
+          33.57943763716211,
+          1.5305877772452234
+        ],
+        [
+          35.29556891638465,
+          1.4773441282793875
+        ],
+        [
+          36.1119368912272,
+          1.451609530352286
+        ],
+        [
+          35.33277880584115,
+          -1.1558032973735948
+        ],
+        [
+          5.2675872761783165,
+          -1.1677206916239973
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        17.16466284627841,
+        2.0690038096782084
+      ],
+      "coefficients": [
+        -0.00013043744285647695,
+        -0.4607272342434833,
+        13.150900518798828
+      ],
+      "residualMaxMetres": 0.0003827172269872392,
+      "sourceMinimumAGL": 11.76000051879883,
+      "sourceMaximumAGL": 14.64400051879883
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 19,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.60300051879883,
+        "maxAGL": 13.421000518798827
+      },
+      {
+        "sourceWallIndex": 71,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.782000518798828,
+        "maxAGL": 13.230000518798828
+      },
+      {
+        "sourceWallIndex": 76,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.025000518798826,
+        "maxAGL": 11.820000518798828
+      },
+      {
+        "sourceWallIndex": 80,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.166000518798828,
+        "maxAGL": 13.397000518798826
+      },
+      {
+        "sourceWallIndex": 90,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.073000518798828,
+        "maxAGL": 12.114000518798829
+      },
+      {
+        "sourceWallIndex": 106,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.06500051879883,
+        "maxAGL": 13.433000518798828
+      },
+      {
+        "sourceWallIndex": 107,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.38800051879883,
+        "maxAGL": 14.634000518798828
+      },
+      {
+        "sourceWallIndex": 113,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.993000518798826,
+        "maxAGL": 13.235000518798827
+      },
+      {
+        "sourceWallIndex": 200,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.022000518798826,
+        "maxAGL": 12.230000518798828
+      },
+      {
+        "sourceWallIndex": 201,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.897000518798826
+      },
+      {
+        "sourceWallIndex": 208,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.06500051879883,
+        "maxAGL": 11.89400051879883
+      },
+      {
+        "sourceWallIndex": 213,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.245000518798829,
+        "maxAGL": 13.235000518798827
+      },
+      {
+        "sourceWallIndex": 255,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.697000518798827,
+        "maxAGL": 13.162000518798827
+      },
+      {
+        "sourceWallIndex": 256,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.537000518798827,
+        "maxAGL": 14.750000518798828
+      },
+      {
+        "sourceWallIndex": 300,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.07100051879883,
+        "maxAGL": 12.407000518798828
+      },
+      {
+        "sourceWallIndex": 301,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.89400051879883,
+        "maxAGL": 12.634000518798828
+      },
+      {
+        "sourceWallIndex": 309,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.980000518798828,
+        "maxAGL": 15.140000518798828
+      },
+      {
+        "sourceWallIndex": 310,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.239000518798829,
+        "maxAGL": 15.140000518798828
+      },
+      {
+        "sourceWallIndex": 311,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.023000518798828,
+        "maxAGL": 13.239000518798829
+      },
+      {
+        "sourceWallIndex": 313,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.261000518798827,
+        "maxAGL": 15.309000518798829
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 366,
+    "ringsUV": [
+      [
+        [
+          4.961819341213303,
+          -3.7034455302905456
+        ],
+        [
+          5.9197886483611475,
+          -3.68712088392109
+        ],
+        [
+          6.16035608459147,
+          -3.929287888619325
+        ],
+        [
+          9.726045951907961,
+          -3.67372776680752
+        ],
+        [
+          9.733385755465179,
+          -7.196909169472491
+        ],
+        [
+          9.315050640910092,
+          -6.773967079688109
+        ],
+        [
+          9.315349409085131,
+          -6.593771778863313
+        ],
+        [
+          5.323760003904633,
+          -6.586891029084825
+        ],
+        [
+          5.341903324550779,
+          -7.123703721558642
+        ],
+        [
+          5.212635460897147,
+          -7.127454370425873
+        ],
+        [
+          5.21028920846546,
+          -8.783126760705706
+        ],
+        [
+          5.324727750561733,
+          -8.780269808388933
+        ],
+        [
+          5.34284592212289,
+          -9.87391032879938
+        ],
+        [
+          5.207212402843479,
+          -9.877034673514089
+        ],
+        [
+          5.203211344590995,
+          -11.508702717256103
+        ],
+        [
+          5.234189949187538,
+          -12.616313895054091
+        ],
+        [
+          5.197919401285832,
+          -14.271001651411968
+        ],
+        [
+          5.318723620667189,
+          -14.268770983476946
+        ],
+        [
+          5.326381279362298,
+          -15.375969946309326
+        ],
+        [
+          5.194972420329638,
+          -15.377627775620942
+        ],
+        [
+          5.222772891868204,
+          -17.00960189898849
+        ],
+        [
+          5.189625628120879,
+          -18.134275102922224
+        ],
+        [
+          5.186298240375852,
+          -19.76240245236466
+        ],
+        [
+          5.310670714336042,
+          -19.76365989391657
+        ],
+        [
+          5.306212054966245,
+          -20.86041264072086
+        ],
+        [
+          5.183266853474371,
+          -20.86055047002994
+        ],
+        [
+          5.209856235946097,
+          -22.512326274926735
+        ],
+        [
+          5.206271414169581,
+          -23.905148086365195
+        ],
+        [
+          5.058648691997844,
+          -23.910543719532455
+        ],
+        [
+          -1.4950657103798664,
+          -17.260407774661125
+        ],
+        [
+          -1.4571862327602965,
+          -3.8084421292915316
+        ],
+        [
+          4.138070440840582,
+          -3.716663551917362
+        ],
+        [
+          4.63664585677316,
+          -4.038958696497159
+        ],
+        [
+          4.744675900825265,
+          -4.031236203740907
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        5.3238626735546415,
+        -11.667754019268955
+      ],
+      "coefficients": [
+        -0.45698060814882296,
+        0.003661183759030634,
+        13.738471107034124
+      ],
+      "residualMaxMetres": 0.0006367968542768665,
+      "sourceMinimumAGL": 11.740000518798826,
+      "sourceMaximumAGL": 16.866000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 2,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.75700051879883
+      },
+      {
+        "sourceWallIndex": 3,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.806000518798829
+      },
+      {
+        "sourceWallIndex": 6,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.80100051879883
+      },
+      {
+        "sourceWallIndex": 7,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.806000518798829
+      },
+      {
+        "sourceWallIndex": 9,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.749000518798827
+      },
+      {
+        "sourceWallIndex": 11,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.79800051879883
+      },
+      {
+        "sourceWallIndex": 13,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.78600051879883
+      },
+      {
+        "sourceWallIndex": 14,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.784000518798827
+      },
+      {
+        "sourceWallIndex": 18,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.772000518798826
+      },
+      {
+        "sourceWallIndex": 22,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.776000518798828
+      },
+      {
+        "sourceWallIndex": 24,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.76900051879883
+      },
+      {
+        "sourceWallIndex": 26,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.784000518798827
+      },
+      {
+        "sourceWallIndex": 40,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.78600051879883
+      },
+      {
+        "sourceWallIndex": 55,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.310000518798827,
+        "maxAGL": 18.211000518798826
+      },
+      {
+        "sourceWallIndex": 77,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.73100051879883
+      },
+      {
+        "sourceWallIndex": 84,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.75100051879883
+      },
+      {
+        "sourceWallIndex": 85,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.81500051879883
+      },
+      {
+        "sourceWallIndex": 94,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.794000518798828
+      },
+      {
+        "sourceWallIndex": 95,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.08000051879883,
+        "maxAGL": 16.119000518798828
+      },
+      {
+        "sourceWallIndex": 109,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 16.834000518798828,
+        "maxAGL": 16.866000518798828
+      },
+      {
+        "sourceWallIndex": 132,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.79800051879883
+      },
+      {
+        "sourceWallIndex": 166,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.812000518798829,
+        "maxAGL": 13.776000518798828
+      },
+      {
+        "sourceWallIndex": 169,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.76900051879883
+      },
+      {
+        "sourceWallIndex": 184,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.756000518798828,
+        "maxAGL": 13.500000518798828
+      },
+      {
+        "sourceWallIndex": 227,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.75700051879883
+      },
+      {
+        "sourceWallIndex": 228,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.054000518798826,
+        "maxAGL": 11.932000518798827
+      },
+      {
+        "sourceWallIndex": 229,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.933000518798828
+      },
+      {
+        "sourceWallIndex": 262,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.740000518798826,
+        "maxAGL": 13.500000518798828
+      },
+      {
+        "sourceWallIndex": 273,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.715000518798828
+      },
+      {
+        "sourceWallIndex": 314,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.933000518798828,
+        "maxAGL": 15.963000518798829
+      },
+      {
+        "sourceWallIndex": 315,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.031000518798827,
+        "maxAGL": 16.005000518798827
+      },
+      {
+        "sourceWallIndex": 316,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.489000518798829,
+        "maxAGL": 13.933000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 367,
+    "ringsUV": [
+      [
+        [
+          5.9197886483611475,
+          -3.68712088392109
+        ],
+        [
+          4.961819341213303,
+          -3.7034455302905456
+        ],
+        [
+          4.81470583140791,
+          -2.570447979763676
+        ],
+        [
+          4.33355689098783,
+          -2.0847006847922254
+        ],
+        [
+          4.693609845515122,
+          -0.9354125819574455
+        ],
+        [
+          5.2675872761783165,
+          -1.1677206916239973
+        ],
+        [
+          35.33277880584115,
+          -1.1558032973735948
+        ],
+        [
+          35.31019989282409,
+          -1.2288713666946478
+        ],
+        [
+          35.852396694684174,
+          -2.301761698172605
+        ],
+        [
+          35.397936339767355,
+          -3.827463231215832
+        ],
+        [
+          35.39666851729535,
+          -4.191394765150664
+        ],
+        [
+          33.337250674437946,
+          -4.2195073745843885
+        ],
+        [
+          33.795331872496966,
+          -6.267905751580658
+        ],
+        [
+          33.84044921240927,
+          -6.467313246680424
+        ],
+        [
+          34.46382720256405,
+          -7.113080150466404
+        ],
+        [
+          34.73979431084815,
+          -7.7816043183950505
+        ],
+        [
+          32.60163324768337,
+          -7.7789125093591345
+        ],
+        [
+          32.59959488406001,
+          -8.136494247235492
+        ],
+        [
+          30.581894590322513,
+          -8.097656181950706
+        ],
+        [
+          23.722427999608357,
+          -7.966580306685396
+        ],
+        [
+          11.094675951894747,
+          -7.7259622417390315
+        ],
+        [
+          10.241653704091235,
+          -7.709165668611238
+        ],
+        [
+          9.733385755465179,
+          -7.196909169472491
+        ],
+        [
+          9.726045951907961,
+          -3.67372776680752
+        ],
+        [
+          6.16035608459147,
+          -3.929287888619325
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        21.756774781058283,
+        -4.8367299813257425
+      ],
+      "coefficients": [
+        -0.0005007804594125362,
+        0.4557583470358121,
+        12.96352051879883
+      ],
+      "residualMaxMetres": 0.0005655663738295402,
+      "sourceMinimumAGL": 11.454000518798829,
+      "sourceMaximumAGL": 14.750000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 10,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.989000518798829,
+        "maxAGL": 11.660000518798828
+      },
+      {
+        "sourceWallIndex": 75,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.9350005187988275,
+        "maxAGL": 11.652000518798829
+      },
+      {
+        "sourceWallIndex": 99,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.387000518798828,
+        "maxAGL": 14.634000518798828
+      },
+      {
+        "sourceWallIndex": 101,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.743000518798828,
+        "maxAGL": 11.53600051879883
+      },
+      {
+        "sourceWallIndex": 104,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.381000518798828,
+        "maxAGL": 14.601000518798827
+      },
+      {
+        "sourceWallIndex": 114,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.489000518798829,
+        "maxAGL": 15.811000518798828
+      },
+      {
+        "sourceWallIndex": 120,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.947000518798828,
+        "maxAGL": 11.473000518798827
+      },
+      {
+        "sourceWallIndex": 121,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.617000518798829
+      },
+      {
+        "sourceWallIndex": 135,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.617000518798829
+      },
+      {
+        "sourceWallIndex": 184,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.756000518798828,
+        "maxAGL": 13.500000518798828
+      },
+      {
+        "sourceWallIndex": 193,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.646000518798829,
+        "maxAGL": 13.25100051879883
+      },
+      {
+        "sourceWallIndex": 194,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.41700051879883
+      },
+      {
+        "sourceWallIndex": 195,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.005000518798827,
+        "maxAGL": 15.692000518798828
+      },
+      {
+        "sourceWallIndex": 196,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.214000518798827,
+        "maxAGL": 12.305000518798828
+      },
+      {
+        "sourceWallIndex": 197,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.305000518798828,
+        "maxAGL": 13.239000518798829
+      },
+      {
+        "sourceWallIndex": 198,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.92000051879883,
+        "maxAGL": 12.280000518798829
+      },
+      {
+        "sourceWallIndex": 199,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.615000518798826,
+        "maxAGL": 11.986000518798829
+      },
+      {
+        "sourceWallIndex": 231,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.026000518798828,
+        "maxAGL": 11.89400051879883
+      },
+      {
+        "sourceWallIndex": 256,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.537000518798827,
+        "maxAGL": 14.750000518798828
+      },
+      {
+        "sourceWallIndex": 257,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.226000518798827,
+        "maxAGL": 15.692000518798828
+      },
+      {
+        "sourceWallIndex": 262,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.740000518798826,
+        "maxAGL": 13.500000518798828
+      },
+      {
+        "sourceWallIndex": 284,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.355000518798828,
+        "maxAGL": 14.11200051879883
+      },
+      {
+        "sourceWallIndex": 316,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.489000518798829,
+        "maxAGL": 13.933000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 368,
+    "ringsUV": [
+      [
+        [
+          32.59647363980584,
+          -8.736464598438003
+        ],
+        [
+          34.51120750757084,
+          -13.617740624558955
+        ],
+        [
+          34.30148544914405,
+          -13.700943863890563
+        ],
+        [
+          33.0571662965437,
+          -12.231307638725907
+        ],
+        [
+          32.177032510745654,
+          -11.140069364243228
+        ],
+        [
+          31.727226966140677,
+          -10.889238862945662
+        ],
+        [
+          30.8717544389051,
+          -11.32896196169657
+        ],
+        [
+          30.378809202361538,
+          -10.095749732085066
+        ],
+        [
+          30.581894590322513,
+          -8.097656181950706
+        ],
+        [
+          32.59959488406001,
+          -8.136494247235492
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        32.28026454856,
+        -10.797462707577017
+      ],
+      "coefficients": [
+        0.0011165967211141,
+        0.028240064276451853,
+        3.8729005187988275
+      ],
+      "residualMaxMetres": 0.0005442028897979512,
+      "sourceMinimumAGL": 3.793000518798828,
+      "sourceMaximumAGL": 3.9480005187988283
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "low-annex",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 93,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 3.9480005187988283
+      },
+      {
+        "sourceWallIndex": 120,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.947000518798828,
+        "maxAGL": 11.473000518798827
+      },
+      {
+        "sourceWallIndex": 224,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.891000518798828,
+        "maxAGL": 5.786000518798828
+      },
+      {
+        "sourceWallIndex": 225,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 3.796000518798828
+      },
+      {
+        "sourceWallIndex": 238,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.833000518798828,
+        "maxAGL": 5.480000518798828
+      },
+      {
+        "sourceWallIndex": 292,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8630005187988283,
+        "maxAGL": 5.552000518798828
+      },
+      {
+        "sourceWallIndex": 293,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8560005187988278,
+        "maxAGL": 5.552000518798828
+      },
+      {
+        "sourceWallIndex": 294,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8560005187988278,
+        "maxAGL": 5.803000518798828
+      },
+      {
+        "sourceWallIndex": 297,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.793000518798828,
+        "maxAGL": 12.509000518798828
+      },
+      {
+        "sourceWallIndex": 317,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 3.9320005187988283
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 369,
+    "ringsUV": [
+      [
+        [
+          29.948588453720284,
+          -15.417178064424036
+        ],
+        [
+          29.9511001745294,
+          -15.386054514364703
+        ],
+        [
+          30.12865012060085,
+          -13.448346167092804
+        ],
+        [
+          30.240566406031018,
+          -12.2173926017277
+        ],
+        [
+          30.958748177324182,
+          -11.546920136844333
+        ],
+        [
+          30.8717544389051,
+          -11.32896196169657
+        ],
+        [
+          31.727226966140677,
+          -10.889238862945662
+        ],
+        [
+          32.177032510745654,
+          -11.140069364243228
+        ],
+        [
+          33.0571662965437,
+          -12.231307638725907
+        ],
+        [
+          33.30915206674578,
+          -14.092224129840135
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        31.236998561128665,
+        -12.76976934419051
+      ],
+      "coefficients": [
+        -0.003965632610568418,
+        0.27708982669971055,
+        5.032700518798829
+      ],
+      "residualMaxMetres": 0.0005454557304718222,
+      "sourceMinimumAGL": 4.304000518798828,
+      "sourceMaximumAGL": 5.552000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "low-annex",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 238,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.833000518798828,
+        "maxAGL": 5.480000518798828
+      },
+      {
+        "sourceWallIndex": 240,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.849000518798828,
+        "maxAGL": 5.8580005187988275
+      },
+      {
+        "sourceWallIndex": 241,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.190000518798828,
+        "maxAGL": 5.832000518798828
+      },
+      {
+        "sourceWallIndex": 259,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.373000518798828,
+        "maxAGL": 5.806000518798828
+      },
+      {
+        "sourceWallIndex": 292,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8630005187988283,
+        "maxAGL": 5.552000518798828
+      },
+      {
+        "sourceWallIndex": 293,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.8560005187988278,
+        "maxAGL": 5.552000518798828
+      },
+      {
+        "sourceWallIndex": 296,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.658000518798828,
+        "maxAGL": 12.482000518798827
+      },
+      {
+        "sourceWallIndex": 318,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 4.658000518798828
+      },
+      {
+        "sourceWallIndex": 319,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.304000518798828,
+        "maxAGL": 4.313000518798828
+      },
+      {
+        "sourceWallIndex": 320,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.313000518798828,
+        "maxAGL": 4.849000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 370,
+    "ringsUV": [
+      [
+        [
+          30.12865012060085,
+          -13.448346167092804
+        ],
+        [
+          29.9511001745294,
+          -15.386054514364703
+        ],
+        [
+          29.948588453720284,
+          -15.417178064424036
+        ],
+        [
+          18.645123275840408,
+          -19.873825326720294
+        ],
+        [
+          17.025442189287478,
+          -16.43105215590323
+        ],
+        [
+          16.4670544517371,
+          -16.83239966948715
+        ],
+        [
+          16.555348614298193,
+          -15.431444379628804
+        ],
+        [
+          16.517810800866737,
+          -15.352775082391165
+        ],
+        [
+          13.53817691420716,
+          -18.084059844159707
+        ],
+        [
+          12.241596642951123,
+          -19.27343196972309
+        ],
+        [
+          12.664927612925759,
+          -19.561343622902974
+        ],
+        [
+          12.135299044133632,
+          -19.941835669136076
+        ],
+        [
+          12.985087710415904,
+          -20.61725488202486
+        ],
+        [
+          11.168930717390953,
+          -20.944729797104152
+        ],
+        [
+          12.202687603508679,
+          -22.414204601449526
+        ],
+        [
+          10.146938574036268,
+          -23.22521379889549
+        ],
+        [
+          10.184108550097914,
+          -14.809439960355842
+        ],
+        [
+          10.816207765298207,
+          -15.339213154036628
+        ],
+        [
+          10.911692757346799,
+          -15.418564673586113
+        ],
+        [
+          12.648340058953211,
+          -15.613589557930089
+        ],
+        [
+          15.866465624269386,
+          -13.967512500477143
+        ],
+        [
+          16.256594142272476,
+          -13.766852355099488
+        ],
+        [
+          16.695039033969902,
+          -14.012174881254678
+        ],
+        [
+          17.665002272092853,
+          -12.735768418459466
+        ],
+        [
+          17.60444034206812,
+          -12.336578122060343
+        ],
+        [
+          22.562880505024673,
+          -13.136100862880422
+        ],
+        [
+          28.260902804713673,
+          -14.054184327509915
+        ],
+        [
+          29.65158724270865,
+          -13.64657133172405
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        17.194500857116637,
+        -16.466846417527936
+      ],
+      "coefficients": [
+        0.009536828583172832,
+        0.013085803782392364,
+        4.177250518798828
+      ],
+      "residualMaxMetres": 0.0005282320494366388,
+      "sourceMinimumAGL": 4.022000518798828,
+      "sourceMaximumAGL": 4.340000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "low-annex",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 20,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.7200005187988276,
+        "maxAGL": 4.132000518798828
+      },
+      {
+        "sourceWallIndex": 83,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 4.313000518798828
+      },
+      {
+        "sourceWallIndex": 86,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 4.0520005187988275
+      },
+      {
+        "sourceWallIndex": 88,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.272000518798828,
+        "maxAGL": 5.984000518798828
+      },
+      {
+        "sourceWallIndex": 103,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.121000518798828,
+        "maxAGL": 12.031000518798827
+      },
+      {
+        "sourceWallIndex": 105,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.231000518798828,
+        "maxAGL": 6.300000518798828
+      },
+      {
+        "sourceWallIndex": 108,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.235000518798828,
+        "maxAGL": 5.208000518798828
+      },
+      {
+        "sourceWallIndex": 130,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 4.132000518798828
+      },
+      {
+        "sourceWallIndex": 136,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.131000518798828,
+        "maxAGL": 5.814000518798828
+      },
+      {
+        "sourceWallIndex": 212,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.166000518798828,
+        "maxAGL": 5.552000518798828
+      },
+      {
+        "sourceWallIndex": 215,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.0520005187988275,
+        "maxAGL": 12.564000518798828
+      },
+      {
+        "sourceWallIndex": 216,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.061000518798828,
+        "maxAGL": 12.584000518798828
+      },
+      {
+        "sourceWallIndex": 222,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.083000518798828,
+        "maxAGL": 11.848000518798827
+      },
+      {
+        "sourceWallIndex": 223,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.083000518798828,
+        "maxAGL": 11.848000518798827
+      },
+      {
+        "sourceWallIndex": 226,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.131000518798828,
+        "maxAGL": 5.875000518798828
+      },
+      {
+        "sourceWallIndex": 239,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.314000518798828,
+        "maxAGL": 5.903000518798828
+      },
+      {
+        "sourceWallIndex": 258,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.333000518798828,
+        "maxAGL": 5.871000518798828
+      },
+      {
+        "sourceWallIndex": 267,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.093000518798828,
+        "maxAGL": 12.959000518798828
+      },
+      {
+        "sourceWallIndex": 268,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.166000518798828,
+        "maxAGL": 11.54800051879883
+      },
+      {
+        "sourceWallIndex": 270,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.146000518798828,
+        "maxAGL": 11.550000518798829
+      },
+      {
+        "sourceWallIndex": 287,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.145000518798828,
+        "maxAGL": 5.9830005187988275
+      },
+      {
+        "sourceWallIndex": 288,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.093000518798828,
+        "maxAGL": 12.959000518798828
+      },
+      {
+        "sourceWallIndex": 289,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.197000518798828,
+        "maxAGL": 6.305000518798828
+      },
+      {
+        "sourceWallIndex": 290,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.205000518798828,
+        "maxAGL": 6.301000518798828
+      },
+      {
+        "sourceWallIndex": 291,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.204000518798828,
+        "maxAGL": 6.304000518798828
+      },
+      {
+        "sourceWallIndex": 319,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.304000518798828,
+        "maxAGL": 4.313000518798828
+      },
+      {
+        "sourceWallIndex": 320,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 4.313000518798828,
+        "maxAGL": 4.849000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 371,
+    "ringsUV": [
+      [
+        [
+          4.7812352848564466,
+          7.106471637044546
+        ],
+        [
+          4.758254565272596,
+          7.982406604303506
+        ],
+        [
+          4.82379134063309,
+          43.194706876616834
+        ],
+        [
+          5.326174354360653,
+          43.19468317090551
+        ],
+        [
+          5.266691284660338,
+          7.593105693204839
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        4.991229365956625,
+        21.814274796415045
+      ],
+      "coefficients": [
+        0.00238131982041645,
+        0.0033442465586021163,
+        10.078800518798825
+      ],
+      "residualMaxMetres": 0.00011341683218191179,
+      "sourceMinimumAGL": 10.029000518798828,
+      "sourceMaximumAGL": 10.151000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 66,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.032000518798828,
+        "maxAGL": 11.816000518798827
+      },
+      {
+        "sourceWallIndex": 243,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 10.151000518798828
+      },
+      {
+        "sourceWallIndex": 244,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 10.151000518798828
+      },
+      {
+        "sourceWallIndex": 321,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 10.032000518798828
+      },
+      {
+        "sourceWallIndex": 322,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.029000518798828,
+        "maxAGL": 11.805000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 372,
+    "ringsUV": [
+      [
+        [
+          4.758254565272596,
+          7.982406604303506
+        ],
+        [
+          4.7812352848564466,
+          7.106471637044546
+        ],
+        [
+          2.793481739125846,
+          5.160062726284185
+        ],
+        [
+          2.304885333964036,
+          4.844394311234707
+        ],
+        [
+          2.073224458979905,
+          5.184189292181881
+        ],
+        [
+          1.866640813881276,
+          5.489675576725942
+        ],
+        [
+          2.756437688777137,
+          8.477237743213994
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        3.0477371264081774,
+        6.320633984426967
+      ],
+      "coefficients": [
+        -0.37551836757414275,
+        0.3263143810899829,
+        11.904857661655967
+      ],
+      "residualMaxMetres": 0.0003763809753536407,
+      "sourceMinimumAGL": 11.51000051879883,
+      "sourceMaximumAGL": 12.718000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 128,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.07700051879883,
+        "maxAGL": 13.120000518798829
+      },
+      {
+        "sourceWallIndex": 189,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.622000518798828,
+        "maxAGL": 13.35900051879883
+      },
+      {
+        "sourceWallIndex": 245,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.622000518798828
+      },
+      {
+        "sourceWallIndex": 281,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.70200051879883,
+        "maxAGL": 13.32700051879883
+      },
+      {
+        "sourceWallIndex": 282,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.900000518798826,
+        "maxAGL": 13.120000518798829
+      },
+      {
+        "sourceWallIndex": 322,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.029000518798828,
+        "maxAGL": 11.805000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 373,
+    "ringsUV": [
+      [
+        [
+          5.261551776543568,
+          2.436739497856548
+        ],
+        [
+          5.0405505491925195,
+          3.399919197049134
+        ],
+        [
+          5.8208523970308335,
+          3.587127291120191
+        ],
+        [
+          6.592504092564443,
+          4.071012254234445
+        ],
+        [
+          7.069475550795436,
+          1.900599325075473
+        ],
+        [
+          5.386496652171534,
+          1.8892616434426446
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        5.8619051697163895,
+        2.880776534796406
+      ],
+      "coefficients": [
+        0.31800776278844517,
+        -0.38793815226294165,
+        12.011667185465495
+      ],
+      "residualMaxMetres": 0.0004088409891114253,
+      "sourceMinimumAGL": 11.549000518798827,
+      "sourceMaximumAGL": 12.776000518798828
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 71,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.782000518798828,
+        "maxAGL": 13.230000518798828
+      },
+      {
+        "sourceWallIndex": 113,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.993000518798826,
+        "maxAGL": 13.235000518798827
+      },
+      {
+        "sourceWallIndex": 133,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.017000518798827,
+        "maxAGL": 11.72500051879883
+      },
+      {
+        "sourceWallIndex": 202,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.01900051879883,
+        "maxAGL": 11.782000518798828
+      },
+      {
+        "sourceWallIndex": 213,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.245000518798829,
+        "maxAGL": 13.235000518798827
+      },
+      {
+        "sourceWallIndex": 325,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.697000518798827,
+        "maxAGL": 11.993000518798826
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 374,
+    "ringsUV": [
+      [
+        [
+          5.0405505491925195,
+          3.399919197049134
+        ],
+        [
+          5.261551776543568,
+          2.436739497856548
+        ],
+        [
+          4.206301282110735,
+          2.0482057890122034
+        ],
+        [
+          4.227767928964134,
+          1.8817111300005998
+        ],
+        [
+          3.281716560907388,
+          1.87472376352505
+        ],
+        [
+          2.7908479888471622,
+          2.5532595402587264
+        ],
+        [
+          2.6374872663007096,
+          2.7661415607232778
+        ],
+        [
+          3.395095685512289,
+          2.961542656275195
+        ],
+        [
+          4.372589016823328,
+          3.2134216821130126
+        ],
+        [
+          4.613141691519657,
+          2.972667662583686
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        3.9827049746721492,
+        2.6108332479397434
+      ],
+      "coefficients": [
+        -2.2496366553262117,
+        -0.0022108663791243883,
+        12.573000518798823
+      ],
+      "residualMaxMetres": 0.0010922997808187063,
+      "sourceMinimumAGL": 9.697000518798827,
+      "sourceMaximumAGL": 15.600000518798826
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 116,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.694000518798827,
+        "maxAGL": 14.032000518798828
+      },
+      {
+        "sourceWallIndex": 117,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.788000518798828,
+        "maxAGL": 15.600000518798826
+      },
+      {
+        "sourceWallIndex": 152,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.151000518798828,
+        "maxAGL": 15.254000518798826
+      },
+      {
+        "sourceWallIndex": 153,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 15.254000518798826,
+        "maxAGL": 15.600000518798826
+      },
+      {
+        "sourceWallIndex": 255,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.697000518798827,
+        "maxAGL": 13.162000518798827
+      },
+      {
+        "sourceWallIndex": 311,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.023000518798828,
+        "maxAGL": 13.239000518798829
+      },
+      {
+        "sourceWallIndex": 312,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.023000518798828,
+        "maxAGL": 15.220000518798827
+      },
+      {
+        "sourceWallIndex": 323,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.153000518798827
+      },
+      {
+        "sourceWallIndex": 324,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.694000518798827
+      },
+      {
+        "sourceWallIndex": 325,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.697000518798827,
+        "maxAGL": 11.993000518798826
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 375,
+    "ringsUV": [
+      [
+        [
+          10.241653704091235,
+          -7.709165668611238
+        ],
+        [
+          10.144827694909516,
+          -7.706854094060393
+        ],
+        [
+          10.17518610648225,
+          -7.774307894155523
+        ],
+        [
+          9.31171626649013,
+          -7.772482263829118
+        ],
+        [
+          9.315050640910092,
+          -6.773967079688109
+        ],
+        [
+          9.733385755465179,
+          -7.196909169472491
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        9.820303361391401,
+        -7.488947694969479
+      ],
+      "coefficients": [
+        0.000721278120245421,
+        0.055013408391727726,
+        10.038000518798823
+      ],
+      "residualMaxMetres": 0.0004426680172855413,
+      "sourceMinimumAGL": 10.022000518798826,
+      "sourceMaximumAGL": 10.07700051879883
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 4,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 10.07700051879883
+      },
+      {
+        "sourceWallIndex": 228,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.054000518798826,
+        "maxAGL": 11.932000518798827
+      },
+      {
+        "sourceWallIndex": 230,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 10.023000518798828
+      },
+      {
+        "sourceWallIndex": 231,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.026000518798828,
+        "maxAGL": 11.89400051879883
+      },
+      {
+        "sourceWallIndex": 326,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.9330005187988277,
+        "maxAGL": 10.026000518798828
+      },
+      {
+        "sourceWallIndex": 327,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.9350005187988275,
+        "maxAGL": 10.026000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 376,
+    "ringsUV": [
+      [
+        [
+          -8.062985408805048,
+          -2.839581961482299
+        ],
+        [
+          -10.239713936152599,
+          -3.8457228750920542
+        ],
+        [
+          -10.947612118930852,
+          -3.856063865392702
+        ],
+        [
+          -11.392591690182783,
+          -4.152809036424089
+        ],
+        [
+          -12.042672078709513,
+          -3.8712873673564365
+        ],
+        [
+          -12.5697064657477,
+          -3.8793471820589325
+        ],
+        [
+          -13.410426695571047,
+          -3.891362833636829
+        ],
+        [
+          -14.57866154769319,
+          -4.426884859220393
+        ],
+        [
+          -13.254460483378825,
+          -6.390175204542791
+        ],
+        [
+          -12.732906638233944,
+          -6.399143722968907
+        ],
+        [
+          -12.82048174563649,
+          -7.032686029433553
+        ],
+        [
+          -12.570850430509463,
+          -7.402640862562571
+        ],
+        [
+          -12.687001416655507,
+          -7.515753942151912
+        ],
+        [
+          -12.69348046984927,
+          -7.713693321370789
+        ],
+        [
+          -18.07632492185737,
+          -7.70949859964217
+        ],
+        [
+          -20.421520007781673,
+          -7.7072728640050245
+        ],
+        [
+          -33.02480464067563,
+          -7.44431806681982
+        ],
+        [
+          -38.31953702437578,
+          -7.349952534886846
+        ],
+        [
+          -38.295980223915564,
+          -1.008308109819822
+        ],
+        [
+          -7.277477585512094,
+          -1.1394065022763273
+        ],
+        [
+          -7.013529939058458,
+          -1.947293336891347
+        ],
+        [
+          -7.639714713585558,
+          -2.5621895137045025
+        ],
+        [
+          -7.616392879071071,
+          -2.6325587797247625
+        ],
+        [
+          -7.796442887336525,
+          -2.715385876883365
+        ],
+        [
+          -8.007735469408416,
+          -2.9229745996838985
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        -14.539720456745371,
+        -4.734252473921285
+      ],
+      "coefficients": [
+        0.004723707435429921,
+        0.46092070910733757,
+        13.000080518798834
+      ],
+      "residualMaxMetres": 0.0006338148427218471,
+      "sourceMinimumAGL": 11.602000518798828,
+      "sourceMaximumAGL": 14.691000518798827
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 36,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 10.01600051879883,
+        "maxAGL": 11.682000518798827
+      },
+      {
+        "sourceWallIndex": 96,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 14.605000518798828
+      },
+      {
+        "sourceWallIndex": 110,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.022000518798826,
+        "maxAGL": 13.409000518798827
+      },
+      {
+        "sourceWallIndex": 111,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.319000518798827,
+        "maxAGL": 13.422000518798828
+      },
+      {
+        "sourceWallIndex": 112,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.522000518798826,
+        "maxAGL": 13.430000518798828
+      },
+      {
+        "sourceWallIndex": 129,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.165000518798827,
+        "maxAGL": 13.39400051879883
+      },
+      {
+        "sourceWallIndex": 155,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.320000518798828,
+        "maxAGL": 15.694000518798827
+      },
+      {
+        "sourceWallIndex": 156,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.034000518798827,
+        "maxAGL": 15.694000518798827
+      },
+      {
+        "sourceWallIndex": 170,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.666000518798828,
+        "maxAGL": 11.94900051879883
+      },
+      {
+        "sourceWallIndex": 172,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.782000518798828,
+        "maxAGL": 13.404000518798828
+      },
+      {
+        "sourceWallIndex": 173,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.63500051879883
+      },
+      {
+        "sourceWallIndex": 174,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.666000518798828,
+        "maxAGL": 12.241000518798828
+      },
+      {
+        "sourceWallIndex": 204,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.018000518798829,
+        "maxAGL": 13.142000518798827
+      },
+      {
+        "sourceWallIndex": 205,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.727000518798828
+      },
+      {
+        "sourceWallIndex": 206,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.781000518798827,
+        "maxAGL": 12.243000518798826
+      },
+      {
+        "sourceWallIndex": 207,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.779000518798828
+      },
+      {
+        "sourceWallIndex": 234,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 3.923000518798828,
+        "maxAGL": 11.66400051879883
+      },
+      {
+        "sourceWallIndex": 242,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.002000518798827,
+        "maxAGL": 15.611000518798829
+      },
+      {
+        "sourceWallIndex": 306,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.840000518798828,
+        "maxAGL": 13.904000518798828
+      },
+      {
+        "sourceWallIndex": 307,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.866000518798828,
+        "maxAGL": 15.560000518798827
+      },
+      {
+        "sourceWallIndex": 308,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.962000518798828,
+        "maxAGL": 15.611000518798829
+      },
+      {
+        "sourceWallIndex": 328,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.61200051879883
+      },
+      {
+        "sourceWallIndex": 329,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.782000518798828,
+        "maxAGL": 13.409000518798827
+      },
+      {
+        "sourceWallIndex": 330,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.846000518798828,
+        "maxAGL": 13.904000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 377,
+    "ringsUV": [
+      [
+        [
+          -7.277477585512094,
+          -1.1394065022763273
+        ],
+        [
+          -38.295980223915564,
+          -1.008308109819822
+        ],
+        [
+          -38.28765981211905,
+          1.315920385233209
+        ],
+        [
+          -36.017095549956395,
+          2.3366576497166243
+        ],
+        [
+          -37.37487436497261,
+          4.686769820854746
+        ],
+        [
+          -37.696353047961836,
+          5.244492403832403
+        ],
+        [
+          -10.02826985618738,
+          5.089504042231413
+        ],
+        [
+          -10.509757975233397,
+          3.9302055833557983
+        ],
+        [
+          -11.411463490022092,
+          3.030595362999054
+        ],
+        [
+          -9.973343517618403,
+          2.1004289712218362
+        ],
+        [
+          -9.282728990607234,
+          1.6533597285325912
+        ],
+        [
+          -7.28527770341225,
+          1.6608851836697505
+        ],
+        [
+          -6.8274235260455205,
+          1.6624198331144977
+        ],
+        [
+          -7.494242906970735,
+          1.0130930419128519
+        ],
+        [
+          -7.735392747579059,
+          0.26384630328552205
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        -18.366489419874245,
+        2.12269757985761
+      ],
+      "coefficients": [
+        0.0008079740421429331,
+        -0.46681259853050167,
+        13.159467185465488
+      ],
+      "residualMaxMetres": 0.00044451524174249357,
+      "sourceMinimumAGL": 11.687000518798829,
+      "sourceMaximumAGL": 14.691000518798827
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 147,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.781000518798827,
+        "maxAGL": 13.403000518798827
+      },
+      {
+        "sourceWallIndex": 163,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.177000518798827,
+        "maxAGL": 16.065000518798826
+      },
+      {
+        "sourceWallIndex": 168,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.03600051879883,
+        "maxAGL": 15.420000518798826
+      },
+      {
+        "sourceWallIndex": 178,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 14.605000518798828
+      },
+      {
+        "sourceWallIndex": 179,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.627000518798827,
+        "maxAGL": 13.520000518798827
+      },
+      {
+        "sourceWallIndex": 182,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.947000518798827,
+        "maxAGL": 13.04500051879883
+      },
+      {
+        "sourceWallIndex": 183,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.687000518798829,
+        "maxAGL": 11.947000518798827
+      },
+      {
+        "sourceWallIndex": 210,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.741000518798828,
+        "maxAGL": 13.395000518798827
+      },
+      {
+        "sourceWallIndex": 214,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 9.983000518798828,
+        "maxAGL": 11.781000518798827
+      },
+      {
+        "sourceWallIndex": 254,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.322000518798827,
+        "maxAGL": 13.398000518798828
+      },
+      {
+        "sourceWallIndex": 272,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.384000518798828,
+        "maxAGL": 14.992000518798829
+      },
+      {
+        "sourceWallIndex": 274,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.686000518798828,
+        "maxAGL": 14.944000518798827
+      },
+      {
+        "sourceWallIndex": 275,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.384000518798828,
+        "maxAGL": 16.055000518798828
+      }
+    ]
+  },
+  {
+    "sourceRoofIndex": 378,
+    "ringsUV": [
+      [
+        [
+          -10.239713936152599,
+          -3.8457228750920542
+        ],
+        [
+          -8.062985408805048,
+          -2.839581961482299
+        ],
+        [
+          -8.007735469408416,
+          -2.9229745996838985
+        ],
+        [
+          -7.3576386382919585,
+          -3.9054764398227495
+        ],
+        [
+          -1.4571862327602965,
+          -3.8084421292915316
+        ],
+        [
+          -1.4950657103798664,
+          -17.260407774661125
+        ],
+        [
+          -7.949489675968294,
+          -23.719202995183753
+        ],
+        [
+          -7.945505627254361,
+          -23.9735413928758
+        ],
+        [
+          -8.26206064382379,
+          -23.973294442733582
+        ],
+        [
+          -8.287548573654224,
+          -22.50028169833171
+        ],
+        [
+          -8.168171447368117,
+          -22.49665604671761
+        ],
+        [
+          -8.161332288309694,
+          -20.866362746503825
+        ],
+        [
+          -8.274372322617142,
+          -20.867788548277517
+        ],
+        [
+          -8.271611182145392,
+          -19.742790842550285
+        ],
+        [
+          -8.157129591877947,
+          -19.74417340617291
+        ],
+        [
+          -8.15245896093607,
+          -18.108961339583285
+        ],
+        [
+          -8.283896538333144,
+          -18.107792630634883
+        ],
+        [
+          -8.264935217512882,
+          -16.9776443726887
+        ],
+        [
+          -8.14832701140154,
+          -16.979706768701725
+        ],
+        [
+          -8.14085797675548,
+          -15.341633195371019
+        ],
+        [
+          -8.268027964129859,
+          -15.343237175062047
+        ],
+        [
+          -8.276369563659655,
+          -14.238165726661133
+        ],
+        [
+          -8.137196228805731,
+          -14.235703725675126
+        ],
+        [
+          -8.131895714951128,
+          -12.59271138863546
+        ],
+        [
+          -8.270398234031763,
+          -12.59163174071624
+        ],
+        [
+          -8.262825261950832,
+          -11.453147963221395
+        ],
+        [
+          -8.12787667338062,
+          -11.452152541918828
+        ],
+        [
+          -8.122261037519795,
+          -9.840248477698294
+        ],
+        [
+          -8.279860436881952,
+          -9.837289761291453
+        ],
+        [
+          -8.252747238158333,
+          -8.74449099575432
+        ],
+        [
+          -8.117755840366671,
+          -8.747734865531154
+        ],
+        [
+          -8.112496235823205,
+          -7.100503893392708
+        ],
+        [
+          -8.26572809678658,
+          -7.11020948161764
+        ],
+        [
+          -8.304780576381665,
+          -6.531968542087249
+        ],
+        [
+          -12.24690573171052,
+          -6.5258618732657325
+        ],
+        [
+          -12.249016012483331,
+          -7.086249622792758
+        ],
+        [
+          -12.570850430509463,
+          -7.402640862562571
+        ],
+        [
+          -12.82048174563649,
+          -7.032686029433553
+        ],
+        [
+          -12.732906638233944,
+          -6.399143722968907
+        ],
+        [
+          -12.625492835079896,
+          -5.6310907173774325
+        ],
+        [
+          -12.5697064657477,
+          -3.8793471820589325
+        ],
+        [
+          -12.042672078709513,
+          -3.8712873673564365
+        ],
+        [
+          -11.392591690182783,
+          -4.152809036424089
+        ],
+        [
+          -10.947612118930852,
+          -3.856063865392702
+        ]
+      ]
+    ],
+    "fit": {
+      "center": [
+        -8.82310175690474,
+        -11.900882108301282
+      ],
+      "coefficients": [
+        0.45672780531854884,
+        0.00042888231063623104,
+        13.489273246071557
+      ],
+      "residualMaxMetres": 0.0007171021848808579,
+      "sourceMinimumAGL": 11.666000518798828,
+      "sourceMaximumAGL": 16.857000518798827
+    },
+    "bodyPartBase": 0,
+    "semanticClass": "roof-main-or-raised-part",
+    "authority": "Current3DBAG AHN5 roof-ring survey; original footprint shells and centered fittedplanes, no imported mesh faces.",
+    "matchedSourceWallSurfaces": [
+      {
+        "sourceWallIndex": 1,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.790000518798827
+      },
+      {
+        "sourceWallIndex": 17,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.788000518798828
+      },
+      {
+        "sourceWallIndex": 25,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.74000051879883
+      },
+      {
+        "sourceWallIndex": 27,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.784000518798827
+      },
+      {
+        "sourceWallIndex": 37,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.788000518798828
+      },
+      {
+        "sourceWallIndex": 38,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.738000518798827
+      },
+      {
+        "sourceWallIndex": 39,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.793000518798827
+      },
+      {
+        "sourceWallIndex": 41,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.796000518798827
+      },
+      {
+        "sourceWallIndex": 42,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.793000518798827
+      },
+      {
+        "sourceWallIndex": 43,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.799000518798827
+      },
+      {
+        "sourceWallIndex": 44,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.810000518798827
+      },
+      {
+        "sourceWallIndex": 45,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.807000518798827
+      },
+      {
+        "sourceWallIndex": 46,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.742000518798829
+      },
+      {
+        "sourceWallIndex": 47,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.742000518798829
+      },
+      {
+        "sourceWallIndex": 48,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.799000518798827
+      },
+      {
+        "sourceWallIndex": 49,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.80100051879883
+      },
+      {
+        "sourceWallIndex": 50,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.745000518798829
+      },
+      {
+        "sourceWallIndex": 51,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.805000518798828
+      },
+      {
+        "sourceWallIndex": 52,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.75100051879883
+      },
+      {
+        "sourceWallIndex": 53,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.813000518798827
+      },
+      {
+        "sourceWallIndex": 54,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.810000518798827
+      },
+      {
+        "sourceWallIndex": 56,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.816000518798827
+      },
+      {
+        "sourceWallIndex": 57,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.816000518798827
+      },
+      {
+        "sourceWallIndex": 58,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.746000518798827
+      },
+      {
+        "sourceWallIndex": 61,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.928000518798829
+      },
+      {
+        "sourceWallIndex": 72,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.72800051879883
+      },
+      {
+        "sourceWallIndex": 109,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 16.834000518798828,
+        "maxAGL": 16.866000518798828
+      },
+      {
+        "sourceWallIndex": 110,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.022000518798826,
+        "maxAGL": 13.409000518798827
+      },
+      {
+        "sourceWallIndex": 111,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.319000518798827,
+        "maxAGL": 13.422000518798828
+      },
+      {
+        "sourceWallIndex": 112,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.522000518798826,
+        "maxAGL": 13.430000518798828
+      },
+      {
+        "sourceWallIndex": 139,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.88500051879883
+      },
+      {
+        "sourceWallIndex": 140,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.767000518798827,
+        "maxAGL": 13.88500051879883
+      },
+      {
+        "sourceWallIndex": 170,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.666000518798828,
+        "maxAGL": 11.94900051879883
+      },
+      {
+        "sourceWallIndex": 171,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 11.927000518798827
+      },
+      {
+        "sourceWallIndex": 174,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.666000518798828,
+        "maxAGL": 12.241000518798828
+      },
+      {
+        "sourceWallIndex": 175,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.706000518798827,
+        "maxAGL": 11.781000518798827
+      },
+      {
+        "sourceWallIndex": 180,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 5.187988278976263e-07,
+        "maxAGL": 13.805000518798828
+      },
+      {
+        "sourceWallIndex": 283,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 14.162000518798827,
+        "maxAGL": 18.218000518798828
+      },
+      {
+        "sourceWallIndex": 305,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.866000518798828,
+        "maxAGL": 15.983000518798828
+      },
+      {
+        "sourceWallIndex": 306,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 13.840000518798828,
+        "maxAGL": 13.904000518798828
+      },
+      {
+        "sourceWallIndex": 329,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 11.782000518798828,
+        "maxAGL": 13.409000518798827
+      },
+      {
+        "sourceWallIndex": 330,
+        "sharedRoofXYVertices": 2,
+        "minAGL": 12.846000518798828,
+        "maxAGL": 13.904000518798828
+      }
+    ]
+  }
+]

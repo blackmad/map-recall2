@@ -47,7 +47,7 @@ export function buildHaparandaweg24(_w:number,_d:number,b:BuildingTools){
    for(const y of fullHeight?[.25,4.25,8.25]:[4.15,8.30]){glazed(paneU,y,glassWidth,3.03);panel(paneU,y+3.04,glassWidth,.97,.08,'concrete',.145);}
    if(!fullHeight){glazed(u,.18,pitch-.12,3.22);panel(u,.05,pitch,.13,.09,'concrete',.23);}
    // Sun shading wood frames remain projecting, without hiding the glazing.
-   panel(k*pitch+.05,fullHeight?.10:3.45,.12,12.85-(fullHeight?.10:3.45),.70,'bronze',.34);
+   panel(k*pitch,fullHeight?.10:3.45,.10,12.85-(fullHeight?.10:3.45),.70,'bronze',.34);
    panel(u,12.76,pitch+.06,.16,.70,'bronze',.34);
    // West entrance broad orange composition reaches to the low entrance floor.
    if(wide&&k!==13){panel(u+pitch/2-colWidth/2-.05,.15,colWidth,3.48,.08,'red',.25);}

@@ -2534,5 +2534,64 @@
       "https://nl.wikipedia.org/wiki/Elandsgracht"
     ],
     "preferDescription": true
+  },
+  {
+    "modelId": "max-euwe-centrum",
+    "name": "Max Euwe Centrum",
+    "description": "The Max Euwe Centrum preserves the memory and work of the Netherlands’ only world chess champion, Max Euwe, who won the title in 1935. Its museum and chess library have occupied the Max Euweplein since December 1991, inside the retained cross-shaped former prison building.",
+    "sourceUrl": "https://maxeuwe.nl/geschiedenis/",
+    "destinations": [
+      {
+        "landmarkId": "extract_landmarks_1145162580",
+        "name": "Max Euwe Centrum",
+        "center": [
+          52.3628148,
+          4.883196
+        ],
+        "destinationOverride": {
+          "center": [
+            52.3628148,
+            4.883196
+          ]
+        },
+        "description": "The Max Euwe Centrum preserves the memory and work of the Netherlands’ only world chess champion, Max Euwe, who won the title in 1935. Its museum and chess library have occupied the Max Euweplein since December 1991, inside the retained cross-shaped former prison building.",
+        "funFact": "The centre occupies the first floor of the former prison’s retained cross-shaped building. Its public entrance is under the covered passage linking Leidseplein with Max Euweplein.",
+        "sourceUrl": "https://maxeuwe.nl/route-parkeren/"
+      }
+    ]
+  },
+  {
+    "modelId": "holocaust-namenmonument",
+    "name": "Nationaal Holocaust Namenmonument",
+    "description": "Opened on 19 September 2021, Daniel Libeskind’s memorial commemorates Holocaust victims who have no known grave. Four mirror-steel volumes form the Hebrew word לזכר, meaning “In memory of”, above a labyrinth of brick walls bearing individual names.",
+    "sourceUrl": "https://libeskind.com/work/names-monument/"
+  },
+  {
+    "modelId": "voormalige-schouwburgpoort",
+    "name": "Voormalige Schouwburgpoort",
+    "description": "This sandstone gateway is the surviving entrance to Jacob van Campen’s theatre, opened in1638. Its three arches echo a Roman triumphal arch. The theatre burned in1772; the separate1773 Armenkantoor stands beyond the open forecourt. The gateway still bears Vondel’s verse comparing the world to a stage.",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/2587"
+  },
+  {
+    "modelId": "academie-theater-dans",
+    "name": "Academie voor Theater en Dans",
+    "description": "The Academy for Theatre and Dance brings its bachelor programmes together at Jodenbreestraat 3. Students make around 400 dance and theatre productions a year, using professional studios, a black-box theatre, dance theatre and costume and scenery workshops. Its 1996 building was designed by Teun Koolhaas/TKA on the site of the demolished Maupoleum.",
+    "sourceUrl": "https://www.atd.ahk.nl/de-atd/voorzieningen/",
+    "destinations": [
+      {
+        "landmarkId": "extract_landmarks_968719411",
+        "name": "Academie voor Theater en Dans",
+        "description": "The Academy for Theatre and Dance brings its bachelor programmes together at Jodenbreestraat 3. Students make around 400 dance and theatre productions a year, using professional studios, a black-box theatre, dance theatre and costume and scenery workshops. Its 1996 building was designed by Teun Koolhaas/TKA on the site of the demolished Maupoleum.",
+        "sourceUrl": "https://www.atd.ahk.nl/de-atd/voorzieningen/",
+        "preferDescription": true
+      },
+      {
+        "landmarkId": "extract_landmarks_1383482004",
+        "name": "Amsterdamse Hogeschool voor de Kunsten",
+        "description": "Amsterdam University of the Arts teaches through specialist arts academies across the city. Its central student administration, executive board and Servicebureau share Jodenbreestraat 3 with the Academy for Theatre and Dance; this destination identifies the university administration within that genuine shared building. The academy studios and theatres occupy the same compact 1996 complex.",
+        "sourceUrl": "https://www.ahk.nl/contact/",
+        "preferDescription": true
+      }
+    ]
   }
 ]
