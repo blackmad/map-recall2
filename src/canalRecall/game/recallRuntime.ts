@@ -847,8 +847,11 @@ export class GameRecallRuntime {
     document.getElementById('canal-card')?.classList.remove('answered');
     if (this._promptFeedback) this._promptFeedback.textContent = '';
     this._clearLandmarkNotice();
-    this._neighborhoodNotice = null;
-    this._neighborhoodNoticeTimer = 0;
+    // A riding question leaves the postcard's corner alone on a desktop.
+    if (!(mode === 'riding' && this.viewport?.mode !== 'compact')) {
+      this._neighborhoodNotice = null;
+      this._neighborhoodNoticeTimer = 0;
+    }
     const speedBefore = this.player.speed;
     this.quizPromptMode = mode;
     this._ridingState = mode === 'riding' ? openRidingPrompt(name) : null;

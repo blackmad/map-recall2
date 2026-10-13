@@ -16,6 +16,10 @@ export interface TeachingGateInput {
   promptVisible: boolean;
   /** Settings, help, or the expanded landmark article. */
   utilityOpen: boolean;
+  /** A non-blocking riding question is on screen (see `ridingPrompt.ts`). It
+   *  sits in the trivia slot, so landmark and street cards still wait; the
+   *  neighbourhood postcard keeps its own corner on a desktop. */
+  ridingPromptOpen?: boolean;
 }
 
 /** Quiz and feedback own teaching attention; cards must not stack under them. */
@@ -25,6 +29,19 @@ export function teachingOwnsBottom(input: TeachingGateInput): boolean {
 
 export function canShowTeachingCard(input: TeachingGateInput): boolean {
   return !teachingOwnsBottom(input);
+}
+
+/**
+ * The "welcome to" postcard. It waits for everything a trivia card waits for,
+ * except a riding question on a desktop: the strip shifts left to clear the
+ * postcard's corner (`ridingPromptBand`), so the two can share the band. On a
+ * phone they want the same row above the d-pad and the postcard waits.
+ */
+export function canShowPostcard(viewportMode: string | undefined, input: TeachingGateInput): boolean {
+  if (input.ridingPromptOpen && viewportMode !== 'compact') {
+    return !input.feedbackVisible && !input.utilityOpen;
+  }
+  return canShowTeachingCard(input);
 }
 
 /**
