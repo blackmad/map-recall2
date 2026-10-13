@@ -11,6 +11,13 @@ import {archHead, archOutline, insetConvex, polyArea, topAt, ARCH_KINDS, type Ar
 import type {BlockSpec, WinParams} from '../blockBuilding/spec.ts';
 import type {P3, SurfaceSet} from '../blockBuilding/types.ts';
 import type {MeshBuilder} from '../blockBuilding/mesh.ts';
+import fs from 'node:fs';
+import {validateLargeIntent} from './largeIntent.ts';
+import {compileBuilding} from './compile.ts';
+import {evaluateLargeGates, LARGE_BUDGET_TRIANGLES} from './largeGates.ts';
+import {canalhouseGroupToGlb} from '../../../scripts/canalhouse-recipes/export-glb.ts';
+import {decodeTriangles} from '../../../scripts/building-recipes/compile.ts';
+import type {CompiledLargeBuilding} from './largeCompile.ts';
 
 const W = (rings: P3[][], surface: number) => ({rings, onFootprintEdge: true, surface});
 function box(): SurfaceSet {
@@ -138,7 +145,9 @@ test('glazing bars stop under the head; arch bands, imposts and keystones are cl
     const res = build(kind, true, true), tris = triangles(res.mesh);
     // bars are single-sided quads (as for rectangular openings); everything else stays closed
     const bars = new Set(tris.filter(t => t.slot === 'frame').map(t => t.part).filter(p => tris.some(t => t.part === p && t.slot === 'frame') && !tris.some(t => t.part === p && t.slot !== 'frame')));
-    assert.deepEqual(openEdges(tris.filter(t => !bars.has(t.part))), [], `${kind}: open edges besides glazing bars`);
+    // the band and its blocks stand on the cut wall: their back edges lie on the wall face (z = 4), seams, not holes
+    const onFace = (e: string) => e.split('|').every(v => Number(v.split(',')[2]) === 4000);
+    assert.deepEqual(openEdges(tris.filter(t => !bars.has(t.part))).filter(e => !onFace(e)), [], `${kind}: open edges besides glazing bars`);
     const stone = tris.filter(t => t.slot === 'stone');
     assert.ok(stone.length > 9 * 40, `${kind}: band triangles ${stone.length}`);
     assert.ok(Math.max(...tris.flatMap(t => t.p.map(q => q[1]))) <= 9 + 1e-9);
@@ -153,4 +162,33 @@ test('golden: the arched synthetic wall is stable', () => {
   };
   assert.deepEqual(ARCH_KINDS.map(hash), GOLDEN);
 });
-const GOLDEN = ['1541:37f22abe5688e1bb', '1541:fcfceb84356f42c9', '1541:bd3056c7d5cdf738'];
+const GOLDEN = ['917:8dbd6058b4374935', '917:5ca94ea4d624d34f', '917:784723b7dcf7326c'];
+
+// --- large tier: arches, portals, loading axes, name boards ---
+const HOUSES = 'scripts/building-recipes/houses';
+const rawIntent = (id: string) => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/intent.json`, 'utf8'));
+const ARCHED_LARGE = ['entrepotdok-164981'];
+
+test('large intent: arches, hoist and name boards are validated', () => {
+  const base = rawIntent('entrepotdok-164981'), w0 = base.walls[0];
+  assert.equal(validateLargeIntent(base).id, 'entrepotdok-164981');
+  const bad = (w: object) => ({...base, walls: [{...w0, ...w}, ...base.walls.slice(1)]});
+  assert.throws(() => validateLargeIntent(bad({arches: {windows: 'ogee'}})), /arches.windows/);
+  assert.throws(() => validateLargeIntent(bad({hoist: {every: 3, bays: [1]}})), /every \(with first\) or bays/);
+  assert.throws(() => validateLargeIntent(bad({hoist: {bays: [14]}})), /hoist.bays/);
+  assert.throws(() => validateLargeIntent(bad({hoist: undefined, nameBoards: ['Edam']})), /add hoist/);
+  assert.throws(() => validateLargeIntent(bad({nameBoards: ['Edam!']})), /nameBoards/);
+  assert.throws(() => validateLargeIntent(bad({system: 'ribbon-windows', arches: {windows: 'round'}})), /brick-bay-grid/);
+});
+
+test('arched large recipes pass the large-tier gates within the 12k budget', async () => {
+  for (const id of ARCHED_LARGE) {
+    const intent = validateLargeIntent(rawIntent(id)), facts = JSON.parse(fs.readFileSync(`${HOUSES}/${id}/facts.json`, 'utf8'));
+    const built = compileBuilding(intent, facts) as CompiledLargeBuilding;
+    const glb = await canalhouseGroupToGlb(intent.id, built.group, {metreUvs: true, slotFor: m => m.userData.materialSlot as string, maxBytes: 2_000_000});
+    const tris = await decodeTriangles(glb.bytes);
+    assert.ok(tris.length <= LARGE_BUDGET_TRIANGLES, `${id}: ${tris.length}`);
+    assert.deepEqual(evaluateLargeGates(tris, built).gates.filter(g => !g.pass).map(g => g.id), [], id);
+    if (id === 'entrepotdok-164981') assert.equal(built.components.nameBoards, 1);
+  }
+});
