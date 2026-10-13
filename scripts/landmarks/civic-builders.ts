@@ -54,7 +54,7 @@ export function buildCivicLandmark(id:string,w:number,d:number,b:BuildingTools){
   // Open porticos on both sides, with inhabited side pavilions. No solid box
   // through the central gate: the passage remains visibly open at street level.
   const passage=w*.48,wing=(w-passage)/2;
-  for(const x of [-(passage+wing)/2,(passage+wing)/2]){box(x,0,0,wing*.98,10.7,d*.94,'stone');for(const z of [-d*.48,d*.48]){multiWindow(x,1.6,z,2.1,3.4,z>0?0:Math.PI);multiWindow(x,6.6,z,2.1,1.6,z>0?0:Math.PI);}box(x,10.7,0,wing+1,.55,d+.2,'stone');}
+  for(const x of [-(passage+wing)/2,(passage+wing)/2]){box(x,0,0,wing*.98,10.7,d*.94,'stone');for(const z of [-(d*.47+.07),d*.47+.07]){multiWindow(x,1.6,z,2.1,3.4,z>0?0:Math.PI);multiWindow(x,6.6,z,2.1,1.6,z>0?0:Math.PI);}/* frame back 1 cm proud of the wing face (d*.47); at d*.48 it stood 12 cm off (geometry audit 2026-10-13) */box(x,10.7,0,wing+1,.55,d+.2,'stone');}
   box(0,10.35,0,w+.2,1.4,d*.95,'stone');box(0,11.75,0,w+.6,.55,d+.4,'stone');box(0,12.3,0,passage+1.5,1.85,d*.81,'stone');box(0,14.15,0,passage+2,.2,d*.84,'slate');
   for(const side of [-1,1]){const z=side*d*.42;for(const x of [-passage*.42,-passage*.15,passage*.15,passage*.42])column(x,.1,z,.52,10.25);for(let x=-w*.48;x<=w*.48;x+=.8)box(x,11.5,z+side*.85,.28,.5,.22,'stone');}
   // Clock cartouches facing both approaches; inset dark circular dials.

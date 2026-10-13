@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import {GEOMETRY_THRESHOLDS, analyseRhythm, auditOpenings, auditZFight, coplanarOverlap, geometryAudit, materialSlotCoverage, regressions, rhythmVerdict, RHYTHM_FAIL} from './geometryAudit';
+import {GEOMETRY_THRESHOLDS, analyseRhythm, auditOpenings, auditZFight, coplanarOverlap, geometryAudit, materialSlotCoverage, nonOpeningShape, regressions, rhythmVerdict, RHYTHM_FAIL} from './geometryAudit';
 import type {MaterialSoup, Opening} from './facadeCompare';
 import {zFightArea} from '../blockFace/compile';
 
@@ -320,4 +320,117 @@ test('windows flush on a polygonal drum (12-32 facets, curved wall) are attached
   }
   const sunk = auditOpenings(drumSoup(16, 8, 10, -0.3));
   assert.ok(sunk.issues.length >= 12 && sunk.issues.every(i => i.kind === 'buried'), JSON.stringify(sunk.issues.map(i => i.kind)));
+});
+
+// ----------------------------------------------------------------------------------------------------------
+// Detached-opening false-positive classes (precision sweep 2026-10-13: 22 of 30 sampled fail-grade issues were these).
+
+/** Rotate a soup about the vertical axis through (cx, cz). */
+function rotY(s: MaterialSoup, deg: number, cx = 6, cz = 4): MaterialSoup {
+  const a = (deg * Math.PI) / 180, c = Math.cos(a), sn = Math.sin(a), p = [...s.positions];
+  for (let i = 0; i < p.length; i += 3) { const x = p[i] - cx, z = p[i + 2] - cz; p[i] = cx + x * c - z * sn; p[i + 2] = cz + x * sn + z * c; }
+  return {...s, positions: p};
+}
+
+test('railing posts on a parapet, a fence past the wall end and a frame-clad column are not openings', () => {
+  // Posts fixed to the face of the 9 m wall and standing 1.1 m above its top (not resting on the top edge: guard-rail rule does not apply).
+  const posts = [1, 3, 5, 7].map(x => ({min: [x, 8.7, 8] as V3, max: [x + 0.06, 10.1, 8.06] as V3, mat: 'white'}));
+  assert.deepEqual(auditOpenings(boxes(block, ...posts)).issues, []);
+  // Pickets on a plinth that runs on past the block's east end (x = 12).
+  const plinth = {min: [0, 0, 8] as V3, max: [16, 0.4, 8.3] as V3, mat: 'stone'};
+  const pickets = [12.5, 12.8, 13.1, 13.4].map(x => ({min: [x, 0.4, 8.1] as V3, max: [x + 0.05, 3.2, 8.15] as V3, mat: 'white'}));
+  assert.deepEqual(auditOpenings(boxes(block, plinth, ...pickets)).issues, []);
+  // A 0.5 m square frame-clad column past the wall end, carrying a deck that oversails it.
+  const deck = {min: [0, 3.3, 8] as V3, max: [14, 3.6, 10] as V3, mat: 'stone'};
+  assert.deepEqual(auditOpenings(boxes(block, deck, {min: [12.2, 0.01, 8], max: [12.7, 3.3, 8.5], mat: 'white'})).issues, []);
+});
+
+test('shape classes: a handrail or beam is not an opening, a loose sill or a window is', () => {
+  const tris = (s: MaterialSoup) => Array.from({length: s.indices.length / 3}, (_, i) => i);
+  const beam = boxes({min: [0, 9, 7.85], max: [8, 9.08, 7.95], mat: 'frame'});
+  assert.equal(nonOpeningShape(beam, tris(beam), [0, 1]), 'post');
+  // Treehouse NDSM: the same beam rotated 11 degrees (its axis-aligned box is 1.1 x 4.9 m) is still a beam.
+  const skew = rotY(boxes({min: [0, 6.34, 0], max: [0.1, 6.42, 4.9], mat: 'frame'}), 11, 0, 0);
+  assert.equal(nonOpeningShape(skew, tris(skew), [Math.cos(11 * Math.PI / 180), Math.sin(11 * Math.PI / 180)]), 'post');
+  const sill = boxes({min: [0, 3, 8], max: [1.2, 3.1, 8.15], mat: 'white'});
+  assert.equal(nonOpeningShape(sill, tris(sill), [0, 1]), undefined);
+  const win = boxes({min: [0, 3, 8], max: [1.2, 5, 8.1], mat: 'glass'});
+  assert.equal(nonOpeningShape(win, tris(win), [0, 1]), undefined);
+});
+
+test('a window on a 45-degree wall is not mistaken for a column; one floating off it still fails', () => {
+  const ok = auditOpenings(rotY(boxes(block, {min: [5, 3, 8], max: [6, 5, 8.1], mat: 'glass'}), 45));
+  assert.deepEqual(ok.issues, []);
+  const off = auditOpenings(rotY(boxes(block, {min: [5, 3, 8.25], max: [6, 5, 8.35], mat: 'glass'}), 45)).issues;
+  assert.equal(off[0]?.kind, 'floating');
+  assert.equal(off[0]?.severity, 'fail');
+});
+
+test('a glass canopy and a frame floor plate are not wall openings', () => {
+  const canopy = {min: [3, 3, 8] as V3, max: [7, 3.08, 9.6] as V3, mat: 'glass'};
+  assert.deepEqual(auditOpenings(boxes(block, canopy)).issues, []);
+  const plate = {min: [-1, 6, -1] as V3, max: [13, 6.1, 9] as V3, mat: 'white'};
+  assert.deepEqual(auditOpenings(boxes(block, plate)).issues, []);
+});
+
+/** Tilt a soup about the horizontal x axis through (y0, z0) (positive deg leans +z faces upward). */
+function rotX(s: MaterialSoup, deg: number, y0: number, z0: number): MaterialSoup {
+  const a = (deg * Math.PI) / 180, c = Math.cos(a), sn = Math.sin(a), p = [...s.positions];
+  for (let i = 0; i < p.length; i += 3) { const y = p[i + 1] - y0, z = p[i + 2] - z0; p[i + 1] = y0 + y * c - z * sn; p[i + 2] = z0 + y * sn + z * c; }
+  return {...s, positions: p};
+}
+test('sawtooth roof glazing leaning 25 degrees is not a wall opening; a roof-only floater is a warning', () => {
+  // A 2.5 m frame-and-glass light standing on the block roof (y = 9) near the south edge, leaning back 25 degrees.
+  const light = rotX(boxes({min: [3, 9, 6] as V3, max: [6, 11.5, 6.08] as V3, mat: 'glass'}), -25, 9, 6);
+  assert.deepEqual(auditOpenings(merge(boxes(block), light)).issues.filter(i => i.severity === 'fail'), []);
+  // A rib 15 cm above the roof, nowhere near a wall plane: reported, not failed.
+  const rib = auditOpenings(boxes(block, {min: [3, 9.15, 2] as V3, max: [3.08, 9.6, 5] as V3, mat: 'white'})).issues;
+  assert.deepEqual(rib.map(i => [i.kind, i.severity]), [['floating', 'warn']]);
+});
+
+test('a window beside a projecting band is judged against the wall it stands on, not the band\'s back face', () => {
+  // A 1.2 m stone band 13-33 cm proud of the south face; its back face (z = 8.13, facing north) is a wall-sized plane the
+  // window straddles. The window (z 8.01-8.2) stands on the brick face below the band.
+  const band = {min: [0, 6, 8.13] as V3, max: [12, 7.2, 8.33] as V3, mat: 'stone'};
+  const win = [{min: [2, 3.7, 8.01] as V3, max: [3.5, 6.0, 8.15] as V3, mat: 'white'}, {min: [2.1, 3.8, 8.15] as V3, max: [3.4, 5.9, 8.2] as V3, mat: 'glass'}];
+  assert.deepEqual(auditOpenings(boxes(block, band, ...win)).issues.filter(i => i.severity === 'fail'), []);
+});
+
+/** U-shaped plan: two brick masses 6 m apart, a recessed brick mass between them, glass spanning the gap flush with the front. */
+const uMasses = [
+  {min: [0, 0, 0] as V3, max: [2, 9, 8.5] as V3, mat: 'brick'}, {min: [8, 0, 0] as V3, max: [10, 9, 8.5] as V3, mat: 'brick'},
+  {min: [2, 0, 0] as V3, max: [8, 9, 6] as V3, mat: 'brick'},
+];
+test('curtain-wall glazing spanning between two masses is the envelope, not an overhang', () => {
+  const panels = [0.5, 3, 5.5].map(y => ({min: [2, y, 8.45] as V3, max: [8, y + 2.4, 8.5] as V3, mat: 'glass'}));
+  assert.deepEqual(auditOpenings(boxes(...uMasses, ...panels)).issues, []);
+  // Without the right-hand mass the same panel hangs into the air past the left mass's edge.
+  const free = auditOpenings(boxes(uMasses[0], uMasses[2], {min: [2, 0.5, 8.45], max: [8, 2.9, 8.5], mat: 'glass'})).issues;
+  assert.equal(free[0]?.kind, 'overhang');
+});
+
+/** Regular n-gon prism (a drum) of radius r around (cx, cz), outward faces, brick. */
+function drum(n: number, r: number, h: number, cx = 0, cz = 0): MaterialSoup {
+  const positions: number[] = [], indices: number[] = [], triMaterial: number[] = [];
+  const at = (k: number) => [cx + r * Math.cos((2 * Math.PI * k) / n), cz + r * Math.sin((2 * Math.PI * k) / n)];
+  for (let k = 0; k < n; k++) {
+    const [x0, z0] = at(k), [x1, z1] = at(k + 1), b = positions.length / 3;
+    positions.push(x0, 0, z0, x1, 0, z1, x1, h, z1, x0, h, z0);
+    indices.push(b, b + 2, b + 1, b, b + 3, b + 2);
+    triMaterial.push(0, 0);
+    const c = positions.length / 3;
+    positions.push(cx, h, cz, x0, h, z0, x1, h, z1);
+    indices.push(c, c + 1, c + 2);
+    triMaterial.push(0);
+  }
+  return {positions, indices, triMaterial, materials: MATS.map(name => ({name, rgb: [128, 128, 128] as [number, number, number]}))};
+}
+function merge(a: MaterialSoup, b: MaterialSoup): MaterialSoup {
+  const off = a.positions.length / 3;
+  return {...a, positions: [...a.positions, ...b.positions], indices: [...a.indices, ...b.indices.map(i => i + off)], triMaterial: [...a.triMaterial, ...b.triMaterial]};
+}
+test('a window across two facets of a curved drum is on the wall', () => {
+  // 24-gon drum r = 10 (facets 2.6 m wide, 15 degrees apart); a 1.6 m pane across the vertex at angle 0, touching it (its ends stand 10 cm off the facets).
+  const r = auditOpenings(merge(drum(24, 10, 9), boxes({min: [9.99, 3, -0.8] as V3, max: [10.05, 5, 0.8] as V3, mat: 'glass'})));
+  assert.deepEqual(r.issues.filter(i => i.kind === 'overhang'), []);
 });

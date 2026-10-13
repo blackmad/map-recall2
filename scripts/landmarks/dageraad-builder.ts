@@ -130,15 +130,17 @@ export function buildDageraad(_id: string, _w: number, _d: number, b: BuildingTo
     const frontDirection=new T.Vector2(nx,nz);if(normal.dot(frontDirection)<0)normal.negate();
     const facing=Math.atan2(normal.x,normal.y);
     function flankPane(y:number,w:number,h:number){
-      const frame=mid.clone().addScaledVector(normal,.10),glass=mid.clone().addScaledVector(normal,.14),rods=mid.clone().addScaledVector(normal,.19);
-      b.add(new T.PlaneGeometry(w+.18,h+.18),'white',frame.x,y+h/2,frame.y,facing);
+      // Frame is a 6 cm slab half sunk into the flank wall (was a plane 10 cm out: frames, glass and rods floated 10-13 cm off it;
+      // geometry audit 2026-10-13), so it neither floats nor lies coplanar with the wall.
+      const frame=mid.clone(),glass=mid.clone().addScaledVector(normal,.065),rods=mid.clone().addScaledVector(normal,.115);
+      b.box(frame.x,y-.09,frame.y,w+.18,h+.18,.06,'white',facing);
       b.add(new T.PlaneGeometry(w,h),'glass',glass.x,y+h/2,glass.y,facing);
       for(let j=1;j<5;j++)b.box(rods.x,y+h*j/5,rods.y,w,.045,.045,'white',facing);
       for(const u of [-w/6,w/6]){const r=rods.clone().addScaledVector(tangent,u);b.box(r.x,y,r.y,.055,h,.055,'white',facing);}
     }
     for(const y of [5.38,8.72,12.45])flankPane(y,2.25,1.35);
     flankPane(15.45,.82,1.05);
-    for(const offset of [-.8,0,.8]){const c=mid.clone().addScaledVector(tangent,offset),v=c.clone().addScaledVector(normal,.13);b.add(new T.PlaneGeometry(.33,.65),'white',v.x,4.15,v.y,facing);b.add(new T.PlaneGeometry(.24,.55),'glass',v.x+normal.x*.035,4.15,v.y+normal.y*.035,facing);}
+    for(const offset of [-.8,0,.8]){const c=mid.clone().addScaledVector(tangent,offset),v=c.clone().addScaledVector(normal,.025);b.box(c.x,3.825,c.y,.33,.65,.06,'white',facing);b.add(new T.PlaneGeometry(.24,.55),'glass',v.x+normal.x*.035,4.15,v.y+normal.y*.035,facing);}
   }
   // Pale ceramic crown follows each wave; small relief figure is source-supported, without inscription lettering.
   for(let i=0;i<=25;i++){
