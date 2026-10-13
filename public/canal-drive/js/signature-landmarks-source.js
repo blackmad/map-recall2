@@ -96,6 +96,9 @@ export class SignatureLandmarks {
     this._generation = 0;
     this._removed = false;
     this._onMove = () => { this._requestModels(); this._updateLevels(); };
+    // The view's bounds, computed once per camera change (see _viewBounds).
+    this._viewBoundsCache = null;
+    this._dropViewBounds = () => { this._viewBoundsCache = null; };
     this.enabled = true;
     this.suppressing = true;
     /** Specs whose model has loaded and is in the scene. */
@@ -232,6 +235,7 @@ export class SignatureLandmarks {
     this._loader = loader;
     this._lightScene = lightScene;
     map.on('moveend', this._onMove);
+    for (const type of ['move', 'resize', 'render']) map.on(type, this._dropViewBounds);
     this._requestModels();
   }
 
@@ -471,7 +475,17 @@ export class SignatureLandmarks {
   _nearby(spec, anchor = spec.surveyed?.anchor || spec.footprint?.centre, bounds = null) {
     if (!anchor) return !this.loadVisibleOnly;
     const radius = Math.hypot(spec.footprint?.lengthMetres || 0, spec.footprint?.widthMetres || 0) / 2;
-    return withinView(bounds || plainBounds(this.map.getBounds()), anchor, radius);
+    return withinView(bounds || this._viewBounds(), anchor, radius);
+  }
+
+  /**
+   * `map.getBounds()` unprojects the four screen corners; `_nearby` asked for
+   * it once per model on every `moveend` (each frame of a ride: the game jumps
+   * the camera every frame) and once per entry in render, levels and picking.
+   * Kept until the camera moves, the map resizes or a frame has drawn.
+   */
+  _viewBounds() {
+    return this._viewBoundsCache ??= plainBounds(this.map.getBounds());
   }
 
   _requestModels() {
@@ -661,6 +675,7 @@ export class SignatureLandmarks {
         owner._hostOpeningRevision = '[]';
         owner.onHostWallOpeningsChanged();
         map.off('moveend', owner._onMove);
+        for (const type of ['move', 'resize', 'render']) map.off(type, owner._dropViewBounds);
         owner._pending.clear();
         for (const entry of owner._entries) { owner._disposeModel(entry.group, entry.spec, entry.url); owner._disposeSpare(entry); }
         owner._entries = [];
