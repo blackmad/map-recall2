@@ -1,0 +1,88 @@
+{
+ "schemaVersion": 1,
+ "id": "aambeeldstraat-202176",
+ "pand": "0363100012202176",
+ "signature": [
+  "ribbon-band"
+ ],
+ "walls": [
+  {
+   "tag": "w04-349",
+   "bearing": 349,
+   "lengthM": 59.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002572_pano_0000_002009",
+   "capturedAt": "2022-05-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "ribbon-band",
+     "kind": "window-shape",
+     "where": "north front, band under the eaves",
+     "approxSizeM": [
+      58,
+      1.6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002572_pano_0000_002009",
+     "how": "recessed ribbon-windows, 12 bays, 3.5 cm bars; the long run reads as one band"
+    },
+    {
+     "id": "white-piers",
+     "kind": "other",
+     "where": "north front, every ~20 m",
+     "approxSizeM": [
+      2,
+      9
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-002572_pano_0000_002009",
+     "skip": {
+      "reason": "too-small",
+      "note": "white concrete piers 2 m wide against 59 m of steel cladding; wall colour is one blue-grey"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-259",
+   "bearing": 259,
+   "lengthM": 77.1,
+   "evidence": "photo",
+   "panoId": "recording_2024-10-22_09-10-27_02012",
+   "capturedAt": "2024-10-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-ribbon",
+     "kind": "window-shape",
+     "where": "west front behind the hedge",
+     "approxSizeM": [
+      70,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "recording_2024-10-22_09-10-27_02012",
+     "how": "same ribbon-windows group as the north front"
+    }
+   ]
+  },
+  {
+   "tag": "w01-349",
+   "bearing": 349,
+   "lengthM": 95.9,
+   "evidence": "photo",
+   "panoId": "recording_2024-10-22_09-10-27_02130",
+   "capturedAt": "2024-10-22",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
