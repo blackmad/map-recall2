@@ -1,0 +1,101 @@
+{
+ "schemaVersion": 1,
+ "id": "damrak-77-165746",
+ "pand": "0363100012165746",
+ "signature": [
+  "banded-brick",
+  "shop-fronts"
+ ],
+ "walls": [
+  {
+   "tag": "w01-128",
+   "bearing": 128,
+   "lengthM": 26.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001658_pano_0000_001927",
+   "capturedAt": "2020-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "beurspassage-arch",
+     "kind": "window-shape",
+     "where": "right end, ground storey",
+     "approxSizeM": [
+      6,
+      6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001658_pano_0000_001927",
+     "how": "plain shopfront bay at the right end; the white-and-brick banded round arch is not cut"
+    },
+    {
+     "id": "banded-brick",
+     "kind": "other",
+     "where": "whole front, vertical dashed white strips between bays",
+     "approxSizeM": [
+      26.6,
+      24
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001658_pano_0000_001927",
+     "how": "stone cornice only (string courses fail the open-edge gate at the arch side); strip pilasters not drawn"
+    },
+    {
+     "id": "bay-windows",
+     "kind": "window-shape",
+     "where": "upper four rows, left two pairs",
+     "approxSizeM": [
+      4,
+      16
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001658_pano_0000_001927",
+     "how": "flat recessed two-light windows with stone sills"
+    },
+    {
+     "id": "primark-lettering",
+     "kind": "lettering",
+     "where": "fascia over the left shop",
+     "approxSizeM": [
+      6,
+      0.9
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001658_pano_0000_001927",
+     "how": "not drawn: lettering is mounted by the entrance component, which fails the z-fight gate; plain shopfront stands in"
+    },
+    {
+     "id": "corner-tower",
+     "kind": "tower",
+     "where": "upper right",
+     "approxSizeM": [
+      3.5,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001658_pano_0000_001927",
+     "how": "3DBAG massing only (tower mass and stepped roof from LoD2.2)"
+    },
+    {
+     "id": "shop-fronts",
+     "kind": "other",
+     "where": "ground storey",
+     "approxSizeM": [
+      26.6,
+      7.8
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001658_pano_0000_001927",
+     "how": "ground storey drawn as the same punched two-light bays at 5.5 m storey height; shop glazing not drawn"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

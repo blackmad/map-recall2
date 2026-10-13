@@ -28,6 +28,8 @@ export interface WinParams {
   rowsAt?: number[];
   /** recess mode: stand the sill on the cut wall's own plane (3DBAG walls merged into a panel can sit cm off its plane; opt-in) */
   sillOnWall?: boolean;
+  /** recess mode: glazing bars stand this far (m) in front of the glass (default 0.015; 0.035 clears the audit's z-fight band; opt-in) */
+  barD?: number;
   /** arched head (round, segmental or pointed) with reveals and an optional arch band (opt-in, arch.ts) */
   arch?: import('./arch.ts').ArchParams;
 }

@@ -46,6 +46,8 @@ export interface SystemFit {
   sills?: boolean;
   /** false = no frame ring around the glass (dark frames that read as glass; saves triangles); glazing bars stay */
   frames?: boolean;
+  /** true = glazing bars 3.5 cm proud of the glass (clears the z-fight audit's under-3 cm band) */
+  deepBars?: boolean;
 }
 
 /** Arch params for a head of this kind with the group's band (brick bands are drawn in the wall slot). */
@@ -78,9 +80,9 @@ function groundRow(f: SystemFit, upper: Row): Row {
     case 'blank': return { kind: 'wall' };
     // Tall arched (or square-headed) doors in every bay: warehouse ground floors.
     case 'portals': return { kind: 'punched', win: { w: 0.5, h: 0.78, sill: 0.06, mull: 1, frameW: 0, frame: s.frame, glass: s.door, ...archFor(f.arches?.ground ?? 'round', f) } };
-    case 'glazed': return { kind: 'glazed', win: { w: 0.9, h: 0.86, sill: 0.1, mull: 1, transom: 0.82, frame: s.frame, glass: s.glass } };
+    case 'glazed': return { kind: 'glazed', win: { w: 0.9, h: 0.86, sill: 0.1, mull: 1, transom: 0.82, ...(f.deepBars ? { barD: 0.035 } : {}), frame: s.frame, glass: s.glass } };
     // Shop windows down to a low stall riser, a transom light under the fascia (the fascia band is a component).
-    case 'plinth-shopfronts': return { kind: 'glazed', win: { w: 0.86, h: 0.74, sill: 0.35, mull: 1, transom: 0.8, frame: s.frame, glass: s.glass } };
+    case 'plinth-shopfronts': return { kind: 'glazed', win: { w: 0.86, h: 0.74, sill: 0.35, mull: 1, transom: 0.8, ...(f.deepBars ? { barD: 0.035 } : {}), frame: s.frame, glass: s.glass } };
     default: return upper;
   }
 }
@@ -94,11 +96,11 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   switch (name) {
     case 'brick-bay-grid':
       // Narrow bays (canal-house rhythm, < 2 m) take proportionally wider windows than civic 3 m bays.
-      typical = { kind: 'punched', win: { w: f.pitchM < 2 ? 0.66 : 0.48, h: 0.6, sill: 0.85, frame: s.frame, glass: s.glass, sillSlot: f.sills === false ? null : s.stone, sillH: 0.08, sillOut: 0.1, frameW: f.frames === false ? 0 : 0.07, ...g, ...archFor(f.arches?.windows, f) } };
+      typical = { kind: 'punched', win: { w: f.pitchM < 2 ? 0.66 : 0.48, h: 0.6, sill: 0.85, frame: s.frame, glass: s.glass, sillSlot: f.sills === false ? null : s.stone, sillH: 0.08, sillOut: 0.1, frameW: f.frames === false ? 0 : 0.07, ...(f.deepBars ? {barD: 0.035} : {}), ...g, ...archFor(f.arches?.windows, f) } };
       break;
     case 'ribbon-windows':
       // One opening per bay per storey with a slim pier between bays: reads as a continuous band of glazing.
-      typical = { kind: 'ribbon', pier: 0.18, win: { h: 0.56, sill: 0.9, mull: 1, frame: s.frame, glass: s.glass, frameW: 0.06, ...g } };
+      typical = { kind: 'ribbon', pier: 0.18, win: { h: 0.56, sill: 0.9, mull: 1, frame: s.frame, glass: s.glass, frameW: 0.06, ...(f.deepBars ? {barD: 0.035} : {}), ...g } };
       break;
     case 'curtain-wall':
       // Nearly full cells: the wall left between openings is the mullion/transom grid (the group's curtain slot).
@@ -123,7 +125,7 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   if (f.hoist && name !== 'blank') {
     const list = f.hoist.bays, every = list ? Math.max(1, f.bays ?? 1, ...list.map(b => b + 1)) : Math.max(1, f.hoist.every ?? 1), at = ((f.hoist.first ?? 0) % every + every) % every, kind = f.hoist.arch;
     const isHoist = (k: number) => (list ? list.includes(k) : k === at);
-    const door: Row = { kind: 'punched', win: { w: 0.72, h: 0.86, sill: 0.1, mull: 1, rowsAt: [0.36], frameW: f.frames === false ? 0 : 0.07, frame: s.frame, glass: s.glass, sillSlot: s.stone, sillH: 0.1, sillOut: 0.14, sillOnWall: true, ...archFor(kind, f, { springBar: true }) } };
+    const door: Row = { kind: 'punched', win: { w: 0.72, h: 0.86, sill: 0.1, mull: 1, rowsAt: [0.36], frameW: f.frames === false ? 0 : 0.07, frame: s.frame, glass: s.glass, sillSlot: s.stone, sillH: 0.1, sillOut: 0.14, sillOnWall: true, ...(f.deepBars ? { barD: 0.035 } : {}), ...archFor(kind, f, { springBar: true }) } };
     const portal: Row = { kind: 'punched', win: { w: 0.8, h: 0.84, sill: 0.06, mull: 1, frameW: 0, frame: s.frame, glass: s.door, ...archFor(f.arches?.ground ?? kind, f) } };
     const cycle = (hoistRow: Row, other: Row): Row => ({ kind: 'wall', cycle: Array.from({ length: every }, (_, k) => (isHoist(k) ? hoistRow : other)) });
     typical = cycle(door, typical);

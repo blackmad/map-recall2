@@ -1,0 +1,198 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "westerdok-186086",
+ "pandId": "0363100012186086",
+ "address": "Westerdok 536 / Westerdoksdijk 265-267, Amsterdam (Westerdokseiland): 2008 brick apartment block around courtyards, stepped to 34 m",
+ "sources": [
+  {
+   "id": "pano-2022-04-21-s",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002532_pano_0000_000228/",
+   "image": "staging/pand-reference-walls/0363100012186086/w03-185.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-21-w",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241121_0951_Track02_Sphere_00063/",
+   "image": "staging/pand-reference-walls/0363100012186086/w01-275.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-11-21-n",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241121_0951_Track05_Sphere_00059/",
+   "image": "staging/pand-reference-walls/0363100012186086/w02-5.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-06-22-e",
+   "kind": "street-panorama",
+   "capturedAt": "2022-06-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002620_pano_0007_000043/",
+   "image": "staging/pand-reference-walls/0363100012186086/w04-104.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    3,
+    13,
+    45,
+    298,
+    373,
+    592,
+    844,
+    845,
+    911
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 14,
+   "ground": "system",
+   "windows": "narrow",
+   "palette": {
+    "brick": "#8a7766",
+    "frame": "#e8e6df",
+    "stone": "#b9ada0"
+   },
+   "sills": false,
+   "frames": false
+  },
+  {
+   "wallSurfaces": [
+    354,
+    386,
+    389,
+    403,
+    405,
+    416
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 14,
+   "ground": "system",
+   "windows": "narrow",
+   "palette": {
+    "brick": "#8a7766",
+    "frame": "#e8e6df",
+    "stone": "#b9ada0"
+   },
+   "sills": false,
+   "frames": false
+  },
+  {
+   "wallSurfaces": [
+    29,
+    30,
+    507
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 14,
+   "ground": "system",
+   "windows": "narrow",
+   "palette": {
+    "brick": "#8a7766",
+    "frame": "#e8e6df",
+    "stone": "#b9ada0"
+   },
+   "sills": false,
+   "frames": false
+  },
+  {
+   "wallSurfaces": [
+    279,
+    522,
+    785,
+    873,
+    7,
+    474,
+    172,
+    481,
+    484,
+    423,
+    634,
+    636,
+    745,
+    252,
+    20,
+    1,
+    85,
+    765,
+    176,
+    109,
+    12
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 8,
+   "ground": "system",
+   "windows": "plain",
+   "palette": {
+    "brick": "#8a7766",
+    "frame": "#e8e6df",
+    "stone": "#b9ada0"
+   },
+   "sills": false,
+   "frames": false
+  },
+  {
+   "wallSurfaces": [
+    124,
+    783,
+    396,
+    497,
+    515,
+    44,
+    454,
+    73,
+    617,
+    35,
+    344,
+    345,
+    981,
+    506,
+    744,
+    225,
+    226,
+    923,
+    933,
+    618,
+    679
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 9,
+   "baysPerStorey": 4,
+   "ground": "system",
+   "windows": "narrow",
+   "palette": {
+    "brick": "#8a7766",
+    "frame": "#e8e6df",
+    "stone": "#b9ada0"
+   },
+   "sills": false,
+   "frames": false
+  }
+ ],
+ "otherWalls": "blank",
+ "palette": {
+  "brick": "#8a7766",
+  "frame": "#e8e6df",
+  "door": "#2a2a2a",
+  "stone": "#b9ada0"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "notes": [
+  "Westerdok 536 / Westerdoksdijk 265-267 (BAG), built 2008: a courtyard block on Westerdokseiland, brick base of about 10 m with set-back 34 m towers (tall narrow windows on the south front, w03-185 2022-04-21; stacked cantilevered balconies and a glazed ground floor on the west front, w01-275 2024-11-21; curved east front of grey-brown brick with ribbon balcony bands, w04-104; perforated-brick screens and loggias on the north, w02-5).",
+  "Modelled: brick-bay-grid with narrow windows (no frame rings, no sills, to fit 12k) on the S, W and N base fronts (3 storeys under the 10.4 m eaves), a 9-storey group on the 34 m tower walls (4 bays, courtyard walls included), and a 6-storey group on the curved east front (facets share one group). Simplified: the cantilevered dark balcony stacks on the west front, the perforated-brick screens and the loggia bays are plain punched windows; the glazed ground floor is a window row.",
+  "Known gate false negative: the BAG LoD0 footprint is the outer ring (10,004 m2) while 3DBAG LoD2.2 has a 3,755 m2 courtyard void, so footprint-vs-bag is 0.624 (needs >= 0.90). Every other gate passes. Not installable until the gate accepts a BAG footprint that spans a LoD2.2 courtyard."
+ ]
+}

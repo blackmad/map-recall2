@@ -42,7 +42,7 @@ export interface EntranceResult { u0: number; u1: number; v0: number; doorTop: n
  * Recessed entrance in a cell span: a glazed door pair with side lights and a transom light, 0.6 m deep. A span of
  * several storeys (`hall`) becomes one tall glazed entrance hall with a transom bar at every storey line.
  */
-export function drawEntrance(c: PanelCtx, span: { u0: number; u1: number; v0: number; v1: number }, levels: number[], slots: EntranceSlots, hall: boolean): EntranceResult | null {
+export function drawEntrance(c: PanelCtx, span: { u0: number; u1: number; v0: number; v1: number }, levels: number[], slots: EntranceSlots, hall: boolean, barD?: number): EntranceResult | null {
   const cw = span.u1 - span.u0, w = hall ? cw - 0.3 : Math.min(cw - (cw < 2 ? 0.3 : 0.5), 3.0), uc = (span.u0 + span.u1) / 2;
   const v0 = Math.max(span.v0, c.p.vMin) + 0.05, top = hall ? span.v1 - 0.3 : Math.min(v0 + 3.0, span.v1 - 0.45);
   if (w < 0.9 || top - v0 < 2.2) return null;
@@ -50,7 +50,7 @@ export function drawEntrance(c: PanelCtx, span: { u0: number; u1: number; v0: nu
   // The recess is closed by the glass itself; frame, door stiles and push bars sit 1.5 cm in front of it.
   const r = recess(c, u0, u1, v0, top, 0.6, slots.glass);
   if (!r) return null;
-  const g = r.back, bar = r.back + c.barOut, fw = 0.08;
+  const g = r.back, bar = r.back + (barD ?? c.barOut), fw = 0.08;
   // Under 1.6 m: one door filling the opening; wider: a door pair in the middle with side lights either side.
   const single = w < 1.6, dw = single ? w : Math.min(2.0, w * 0.5), d0 = uc - dw / 2, d1 = uc + dw / 2, bars = c.part();
   const qb = (a: number, b: number, lo: number, hi: number, slot: Slot = slots.frame) => barQuad(c, slot, r.Q, a, b, lo, hi, g, bar, bars);

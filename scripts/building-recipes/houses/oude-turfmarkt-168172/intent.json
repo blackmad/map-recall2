@@ -1,0 +1,88 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "oude-turfmarkt-168172",
+ "pandId": "0363100012168172",
+ "address": "Oude Turfmarkt 139 / Binnengasthuisstraat 46, Amsterdam: Binnengasthuis complex (UvA), brick civic front on the canal and white balconied housing block in the courtyard street",
+ "sources": [
+  {
+   "id": "pano-2017-07-06-sw",
+   "kind": "street-panorama",
+   "capturedAt": "2017-07-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000354_pano_0001_000246/",
+   "image": "staging/pand-reference-walls/0363100012168172/w05-235.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2016-06-09-e",
+   "kind": "street-panorama",
+   "capturedAt": "2016-06-09",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7315120208-000073_pano_0003_000676/",
+   "image": "staging/pand-reference-walls/0363100012168172/w03-91.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    55,
+    233,
+    499,
+    58,
+    319,
+    320,
+    65,
+    70,
+    274
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 9,
+   "ground": "system",
+   "windows": "plain",
+   "cornice": true,
+   "palette": {
+    "brick": "#7a4e3e",
+    "frame": "#e8e6df",
+    "stone": "#d8cfb8"
+   }
+  },
+  {
+   "wallSurfaces": [
+    112,
+    269,
+    606,
+    719
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "low",
+   "blankStoreys": [
+    3
+   ],
+   "palette": {
+    "brick": "#f6f3ea",
+    "frame": "#c98a3a",
+    "stone": "#e8e6df"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#7a4e3e",
+  "frame": "#e8e6df",
+  "door": "#2a2a2a",
+  "stone": "#d8cfb8"
+ },
+ "notes": [
+  "Oude Turfmarkt 139 / Binnengasthuisstraat 46 (BAG), the Binnengasthuis complex of the Universiteit van Amsterdam (3DBAG built 1643; a 17th-century hospital quadrangle with later 20th-century housing). 3DBAG holds the whole complex as one pand: 746 wall surfaces. Only two walls have usable panoramas (the other long walls have 0 candidates within 35 m).",
+  "Group 0 (SW run on the canal, surfaces from panels 54/195/57/64/69/226; w05-235, 2017-07-06): five-storey brown brick civic front with a pale cornice and a UNIVERSITEIT VAN AMSTERDAM name band under it, nine axes of tall white-framed sashes. Modelled as brick-bay-grid, 5 storeys, 8-9 bays, cornice; the name band lettering, the banded arched cellar windows and the entrance are not modelled (the entrance and lettering sit on a neighbouring wall).",
+  "Group 1 (E wall, panel 104; w03-91, 2016-06-09): white rendered block with orange-framed wide windows, glass-block stair, a curved balcony stack and a glass entrance canopy. Modelled as 3 storeys of low windows in pale cream brick (the house has one wall material, brick; render would need a per-group wallMaterial). Not modelled: curved balconies, glass-block stair, canopy and the fourth floor (the eaves allow three storeys here).",
+  "All other walls (courtyard, N, S, NE) are blank: no photograph."
+ ]
+}

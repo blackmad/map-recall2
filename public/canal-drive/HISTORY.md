@@ -1,5 +1,30 @@
 # Canal Recall — what is built
 
+## Dominant buildings, batch 2: ten large recipes installed (2026-10-13, evening)
+
+Lane `large/dominant-2-20261013`, ranked by footprint ÷ distance from the
+Dam among unmodelled pands within 3 km. Installed as `ordinary` catalogue
+entries through `install-large.ts --install`: Kattenburgerstraat 206-266
+(1976 gallery slab, 11.7k tris), Beursplein 5 / Warmoesstraat (1913 bank
+block, 4.8k), Damrak 77 (1893, Primark, 3.0k), Warmoesstraat 157 car park
+(8.2k), Engelsesteeg 9 hotel block (6.8k), Oudezijds Achterburgwal 233
+rounded wing (3.7k), Westerdok 536 courtyard block (11.4k), Nieuwe
+Achtergracht 127 UvA wing (9.4k), Aambeeldstraat 2 hall (4.4k), Oude
+Turfmarkt 139 (9.4k). Every one passes the gates and `audit:glb
+--only-geometry`, with an inventory. Two authored but not installable: H&M
+Nieuwendijk (the 3DBAG shell has a 0.7 × 16 m wall gap, 54 m of open
+edge) and Nieuwe Passeerdersstraat 278 (LoD2.2 ground a third smaller than
+the BAG outline). Kit additions: a `deepBars` group option (bars 3.5 cm
+proud as closed solids, reaching ribbon, punched, glazed, shopfront and
+hoist rows and the entrance) and a footprint gate that takes LoD2.2
+courtyards when LoD0 has none (Westerdok). The three bar-standoff
+mechanisms from today's lanes (Hoofdbureau `barOffsetM`, Maagdenhuis
+`glassBackM`, this lane's `barD`) now share one `barQuad` helper: a single
+quad within the 1.5 cm default, a closed box beyond it; all 71 house
+recipes, the 27 earlier large meshes and both landmark GLBs stay
+byte-identical.
+
+
 ## The frame-sheet z-fight class, fixed in the helpers (2026-10-13, evening)
 
 Lane `glb/zfight-frames-20261013`. The survey's biggest class was frames,

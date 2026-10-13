@@ -49,7 +49,7 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
   if (g.entrance?.panel === p.index) {
     const e = g.entrance, cells = info.cells.filter(x => x.bay === e.bay && x.floor < e.storeys);
     if (cells.length) {
-      entrance = drawEntrance(c, cellSpan(cells), levels, {frame: s.frame, glass: s.glass, door: s.door, stone: s.stone}, e.storeys > 1);
+      entrance = drawEntrance(c, cellSpan(cells), levels, {frame: s.frame, glass: s.glass, door: s.door, stone: s.stone}, e.storeys > 1, g.deepBars ? 0.035 : undefined);
       if (entrance) {
         counts.entrances++; if (e.storeys > 1) counts.halls++;
         skip.push([entrance.u0 - 0.3, entrance.u1 + 0.3]);

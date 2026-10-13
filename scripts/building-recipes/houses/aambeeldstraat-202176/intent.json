@@ -1,0 +1,81 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "aambeeldstraat-202176",
+ "pandId": "0363100012202176",
+ "address": "Aambeeldstraat 2 / Hamerstraat, Amsterdam (Zeeburg): large blue-and-white steel-clad industrial hall",
+ "sources": [
+  {
+   "id": "pano-2022-05-11-n",
+   "kind": "street-panorama",
+   "capturedAt": "2022-05-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002572_pano_0000_002009/",
+   "image": "staging/pand-reference-walls/0363100012202176/w04-349.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2024-10-22-w",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-22_09-10-27_02012/",
+   "image": "staging/pand-reference-walls/0363100012202176/w03-259.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    69,
+    70,
+    71,
+    90
+   ],
+   "system": "ribbon-windows",
+   "storeys": 2,
+   "baysPerStorey": 12,
+   "deepBars": true,
+   "ground": "blank",
+   "windows": "low",
+   "palette": {
+    "brick": "#5b7189",
+    "frame": "#d8dde2",
+    "stone": "#d8dde2"
+   }
+  },
+  {
+   "wallSurfaces": [
+    54,
+    36,
+    174,
+    197,
+    267,
+    210
+   ],
+   "system": "ribbon-windows",
+   "storeys": 2,
+   "baysPerStorey": 12,
+   "deepBars": true,
+   "ground": "blank",
+   "windows": "low",
+   "palette": {
+    "brick": "#5b7189",
+    "frame": "#d8dde2",
+    "stone": "#d8dde2"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#5b7189",
+  "frame": "#d8dde2",
+  "door": "#2a2a2a",
+  "stone": "#d8dde2"
+ },
+ "notes": [
+  "Aambeeldstraat 2 / Hamerstraat 2 (BAG), a large steel-framed hall complex (3DBAG: built 1910, roof max 18.9 m). North fronts (w04-349, 2022-05-11) and west fronts (w03-259, 2024-10-22) show blue-grey steel cladding with a white concrete pier every ~20 m and a continuous ribbon-window band under the eaves, behind a hedge.",
+  "Modelled as ribbon-windows on the north and west runs (2 storeys, 12 bays, 3.5 cm proud bars), ground blank. The walls facing south and east (w02-169, w05-79, w06-259) have no panorama and stay blank. Not modelled: the pitched shed roof ribs, the loading doors, hedge and fence."
+ ]
+}

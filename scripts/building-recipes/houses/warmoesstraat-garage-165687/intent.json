@@ -1,0 +1,160 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "warmoesstraat-garage-165687",
+ "pandId": "0363100012165687",
+ "address": "Warmoesstraat 157-163, Amsterdam: 1981 perforated-brick car park with a stone-and-brick wing at its north end",
+ "sources": [
+  {
+   "id": "pano-2022-09-05-w06-312",
+   "kind": "street-panorama",
+   "capturedAt": "2022-09-05",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002793_pano_0000_000105/",
+   "image": "staging/pand-reference-walls/0363100012165687/w06-312.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-01-15-w04-135",
+   "kind": "street-panorama",
+   "capturedAt": "2019-01-15",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001055_pano_0000_000764/",
+   "image": "staging/pand-reference-walls/0363100012165687/w04-135.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-08-w01-136",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-08",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002031_pano_0003_000169/",
+   "image": "staging/pand-reference-walls/0363100012165687/w01-136.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-05-10-w03-29",
+   "kind": "street-panorama",
+   "capturedAt": "2019-05-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001174_pano_0001_000129/",
+   "image": "staging/pand-reference-walls/0363100012165687/w03-29.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    18,
+    19,
+    222,
+    31,
+    81,
+    82,
+    87,
+    150,
+    173,
+    175,
+    206,
+    207,
+    244,
+    247,
+    282,
+    288,
+    290,
+    37,
+    69,
+    72,
+    95,
+    127,
+    168,
+    30,
+    101,
+    103,
+    248,
+    94,
+    39,
+    14,
+    17
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 8,
+   "ground": "blank",
+   "windows": "low",
+   "palette": {
+    "brick": "#8a6a52",
+    "frame": "#3a3835",
+    "stone": "#8d8a82"
+   }
+  },
+  {
+   "wallSurfaces": [
+    132,
+    26,
+    129,
+    41
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "baysPerStorey": 8,
+   "ground": "system",
+   "windows": "low",
+   "palette": {
+    "brick": "#8a6a52",
+    "frame": "#3a3835",
+    "stone": "#8d8a82"
+   }
+  },
+  {
+   "wallSurfaces": [
+    57,
+    243,
+    12,
+    188,
+    301,
+    305,
+    232
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 8,
+   "ground": "system",
+   "windows": "low",
+   "palette": {
+    "brick": "#8a6a52",
+    "frame": "#3a3835",
+    "stone": "#8d8a82"
+   }
+  },
+  {
+   "wallSurfaces": [
+    16,
+    54,
+    83,
+    302
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 4,
+   "ground": "system",
+   "windows": "plain",
+   "cornice": true,
+   "palette": {
+    "brick": "#a8553a",
+    "frame": "#4a2a22",
+    "stone": "#8f877b"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#8a6a52",
+  "frame": "#3a3835",
+  "door": "#2a2a2a",
+  "stone": "#8d8a82"
+ },
+ "notes": [
+  "Warmoesstraat 157-163 (BAG), built 1981: the Beurs-quarter car park. A 32 m block clad in a perforated brown brick screen (square grid of open and glass-block cells over bare concrete decks), curved on its Warmoesstraat end where a casino (PLAYERS) fills the glazed ground floor; a stone-based brick wing with tall timber windows closes the north-east end; a blue-glass cylinder stands behind (2025 panorama w02-130).",
+  "Modelled: the screen as brick-bay-grid with wide low windows (7 decks, 8 bays: the perforation grid reads as a window field, not as 1 m open cells), the SE podium (4 decks), the stone-and-brick wing with 4 storeys x 4 bays and a cornice. Walls without a photograph and the large NW party walls stay blank. The 49 m SE wall (panel 30) carries the blue-glass cylinder: its eaves (23.5 m) do not match the lower LoD2.2 roof behind it (19.3 m), so no group may own it and it stays blank. Not modelled: the PLAYERS lettering, the curved glazed casino ground floor, the car-park ramps and gate, the stone plinth of the wing."
+ ]
+}

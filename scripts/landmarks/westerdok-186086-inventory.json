@@ -1,0 +1,157 @@
+{
+ "schemaVersion": 1,
+ "id": "westerdok-186086",
+ "pand": "0363100012186086",
+ "signature": [
+  "tall-narrow-windows",
+  "cantilever-balconies"
+ ],
+ "walls": [
+  {
+   "tag": "w03-185",
+   "bearing": 185,
+   "lengthM": 80.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002532_pano_0000_000228",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "tall-narrow-windows",
+     "kind": "window-shape",
+     "where": "south front, tower and base",
+     "approxSizeM": [
+      60,
+      30
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002532_pano_0000_000228",
+     "how": "tall narrow openings as narrow punched windows, 14 bays on the base and 4 per storey on the tower"
+    },
+    {
+     "id": "glazed-ground-floor",
+     "kind": "window-shape",
+     "where": "south ground floor, wide shopfront panes",
+     "approxSizeM": [
+      4,
+      3
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002532_pano_0000_000228",
+     "how": "ground storey uses the same punched window rows"
+    }
+   ]
+  },
+  {
+   "tag": "w01-275",
+   "bearing": 275,
+   "lengthM": 114,
+   "evidence": "photo",
+   "panoId": "b_20241121_0951_Track02_Sphere_00063",
+   "capturedAt": "2024-11-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "cantilever-balconies",
+     "kind": "balcony-ironwork",
+     "where": "west front, central stacked dark balcony slabs",
+     "approxSizeM": [
+      25,
+      25
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241121_0951_Track02_Sphere_00063",
+     "how": "plain punched windows on the 3DBAG wall; the stepped slab overhangs are not drawn"
+    },
+    {
+     "id": "loggia-grid",
+     "kind": "window-shape",
+     "where": "west front right block, balcony bays in a brick grid",
+     "approxSizeM": [
+      25,
+      28
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20241121_0951_Track02_Sphere_00063",
+     "how": "punched window grid"
+    }
+   ]
+  },
+  {
+   "tag": "w02-5",
+   "bearing": 5,
+   "lengthM": 87.7,
+   "evidence": "photo",
+   "panoId": "b_20241121_0951_Track05_Sphere_00059",
+   "capturedAt": "2024-11-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "perforated-brick-screen",
+     "kind": "other",
+     "where": "north front, brick screen over loggias",
+     "approxSizeM": [
+      40,
+      12
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20241121_0951_Track05_Sphere_00059",
+     "skip": {
+      "reason": "too-small",
+      "note": "pattern of 0.3 m holes; the wall is drawn with plain windows"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w04-104",
+   "bearing": 104,
+   "lengthM": 64.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002620_pano_0007_000043",
+   "capturedAt": "2022-06-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "ribbon-balcony-bands",
+     "kind": "balcony-ironwork",
+     "where": "east curved front, balcony bands",
+     "approxSizeM": [
+      60,
+      20
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002620_pano_0007_000043",
+     "how": "6-storey punched window group on the curved facets"
+    }
+   ]
+  },
+  {
+   "tag": "w05-96",
+   "bearing": 96,
+   "lengthM": 19.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000224_pano_0000_001832",
+   "capturedAt": "2017-03-27",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w06-86",
+   "bearing": 86,
+   "lengthM": 18.9,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_09-10-34_02251",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

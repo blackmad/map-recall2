@@ -1,0 +1,109 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "nieuwendijk-hm-165747",
+ "pandId": "0363100012165747",
+ "address": "Nieuwendijk / Dirk van Hasseltssteeg, Amsterdam: 1997 H&M department store block behind retained house fronts",
+ "sources": [
+  {
+   "id": "pano-2019-12-20-hm",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-20",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001530_pano_0004_000217/",
+   "image": "staging/pand-reference-walls/0363100012165747/w05-115.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-01-20-steeg",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-20",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250120_0926_Track01_Sphere_00078/",
+   "image": "staging/pand-reference-walls/0363100012165747/w02-174.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2016-08-15-w04",
+   "kind": "street-panorama",
+   "capturedAt": "2016-08-15",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000019_pano_0000_003375/",
+   "image": "staging/pand-reference-walls/0363100012165747/w04-182.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-11-w06",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002037_pano_0000_000774/",
+   "image": "staging/pand-reference-walls/0363100012165747/w06-123.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    92,
+    225
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "plain",
+   "palette": {
+    "brick": "#4a3f3a",
+    "frame": "#2f2a28",
+    "stone": "#6a625c"
+   }
+  },
+  {
+   "wallSurfaces": [
+    10,
+    101,
+    227
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "plain",
+   "sills": false,
+   "palette": {
+    "brick": "#d8cdb8",
+    "frame": "#e8e2d4",
+    "stone": "#c9bda6"
+   }
+  },
+  {
+   "wallSurfaces": [
+    119,
+    190
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "windows": "plain",
+   "palette": {
+    "brick": "#4a3f3a",
+    "frame": "#2f2a28",
+    "stone": "#6a625c"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#4a3f3a",
+  "frame": "#2f2a28",
+  "door": "#2a2a2a",
+  "stone": "#6a625c"
+ },
+ "notes": [
+  "H&M Nieuwendijk / Dirk van Hasseltssteeg 20-28 (BAG), a 1997 H&M department-store complex built behind retained and rebuilt Nieuwendijk fronts: two linked blocks (the footprint is 4,152 m2 with 700 3DBAG wall surfaces) whose exposed street walls are the curved glass shopfront on the SE (panel 84, w05-115, 2019-12-20), a cream rendered front (panel 9, w06-123, 2021-03-11), the dark brick and white-framed house fronts on the Dirk van Hasseltssteeg (panel 106, w02-174, 2025-01-20) and a glass-and-grey corner (panel 113, w04-182, 2016-08-15).",
+  "Modelled: three groups on three of the four photographed walls (the fourth, the glass corner panel 113, is left blank: its eaves 13.1 m disagree with the 11.8 m roof behind it and fail the eaves gate), storeys and bays counted from the crops; punched bays on all floors. Simplified: the curved glass shopfront is straight glazed bays on the 3DBAG plane (LoD2.2 has it as flat facets), the perforated timber-lattice balcony screens over the shop are plain wall, the historic gables behind are 3DBAG massing only. Not modelled: the red H&M sign (entrance component's frames fail the z-fight gate so no entrance or lettering is drawn; add entrance + signage H&M to walls[0] once frames are 3 cm proud), the shop interiors visible behind the glass, the Cola/Gelato signs on the steeg houses, the blank north block (no photograph).",
+  "Walls with no panorama (N side, the interior block, party walls) stay blank.",
+  "GATE STATUS: authored but NOT installable. `open-edges` fails (6 edges, 54.2 m) because the 3DBAG LoD2.2 shell itself has a ~0.7 m wide, 16 m tall wall gap near local x 14-16, z -18; dropping any wall group leaves it at 54.16 m. Needs a shell-gap sealer in the block kit (not written) or a corrected 3DBAG item."
+ ]
+}
