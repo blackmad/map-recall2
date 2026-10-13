@@ -1,0 +1,150 @@
+{
+ "schemaVersion": 1,
+ "id": "utrechtsestraat-15-169214",
+ "pand": "0363100012169214",
+ "signature": [
+  "booking-lettering",
+  "granite-base",
+  "brick-piers-triple-windows"
+ ],
+ "walls": [
+  {
+   "tag": "w01-257",
+   "bearing": 257,
+   "lengthM": 57.5,
+   "evidence": "photo",
+   "panoId": "b_20241203_1333_Track01_Sphere_00298",
+   "capturedAt": "2024-12-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "brick-piers-triple-windows",
+     "kind": "window-shape",
+     "where": "five floors of triple windows between tall vertical brick piers",
+     "approxSizeM": [
+      55,
+      20
+     ],
+     "plan": "modelled",
+     "how": "6-storey brick-bay-grid with piers and cornice on walls[0]",
+     "seenIn": "b_20241203_1333_Track01_Sphere_00298"
+    },
+    {
+     "id": "loggia-arcade",
+     "kind": "canopy",
+     "where": "ground floor: deep open loggias under green copper canopies",
+     "approxSizeM": [
+      55,
+      5
+     ],
+     "plan": "simplified",
+     "how": "stone-faced ground storey with window row; no open loggia recess or copper canopy",
+     "seenIn": "b_20241203_1333_Track01_Sphere_00298"
+    },
+    {
+     "id": "roof-pavilion",
+     "kind": "other",
+     "where": "glass roof pavilion with copper frame over the cornice",
+     "approxSizeM": [
+      55,
+      3
+     ],
+     "plan": "simplified",
+     "how": "3DBAG LoD2.2 roof geometry only",
+     "seenIn": "b_20241203_1333_Track01_Sphere_00298"
+    }
+   ]
+  },
+  {
+   "tag": "w03-258",
+   "bearing": 258,
+   "lengthM": 26.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001664_pano_0000_001944",
+   "capturedAt": "2020-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "booking-lettering",
+     "kind": "lettering",
+     "where": "upper left, Booking.com lettering over the attic rows",
+     "approxSizeM": [
+      8,
+      2
+     ],
+     "plan": "modelled",
+     "how": "signage wall mount Booking.com on walls[1]",
+     "seenIn": "TMX7316010203-001664_pano_0000_001944"
+    },
+    {
+     "id": "granite-base",
+     "kind": "window-shape",
+     "where": "rusticated granite ground floor with shop glazing",
+     "approxSizeM": [
+      24,
+      4.5
+     ],
+     "plan": "modelled",
+     "how": "stoneStoreys [0] on walls[1] (granite-faced storey round the shop openings)",
+     "seenIn": "TMX7316010203-001664_pano_0000_001944"
+    }
+   ]
+  },
+  {
+   "tag": "w02-3",
+   "bearing": 3,
+   "lengthM": 34.9,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002031_pano_0001_001992",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-front-windows",
+     "kind": "window-shape",
+     "where": "north front: four rows of triple windows, stair tower right",
+     "approxSizeM": [
+      35,
+      22
+     ],
+     "plan": "modelled",
+     "how": "5-storey brick-bay-grid with piers on walls[2], tower included in the group",
+     "seenIn": "TMX7316010203-002031_pano_0001_001992"
+    },
+    {
+     "id": "shop-signs",
+     "kind": "sign",
+     "where": "Vapiano and Shiso signs on the base",
+     "approxSizeM": [
+      4,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "tenant signs under 4 m that change"
+     },
+     "seenIn": "TMX7316010203-002031_pano_0001_001992"
+    }
+   ]
+  },
+  {
+   "tag": "w04-77",
+   "bearing": 77,
+   "lengthM": 23.3,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

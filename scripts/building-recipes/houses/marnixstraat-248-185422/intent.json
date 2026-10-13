@@ -1,0 +1,94 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "marnixstraat-248-185422",
+ "pandId": "0363100012185422",
+ "address": "Marnixstraat 248, Amsterdam (Marnixstraat car park): 1972 white concrete parking garage of six decks on an open pillared undercroft, round ramp towers",
+ "sources": [
+  {
+   "id": "pano-2023-03-06-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2023-03-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002989_pano_0007_000039/",
+   "image": "staging/pand-reference-walls/0363100012185422/w01-67.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-06-28-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2022-06-28",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002637_pano_0000_000010/",
+   "image": "staging/pand-reference-walls/0363100012185422/w03-157.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-01-25-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001979_pano_0001_000202/",
+   "image": "staging/pand-reference-walls/0363100012185422/w02-247.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    186,
+    189,
+    212
+   ],
+   "system": "ribbon-windows",
+   "storeys": 7,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "wallMaterial": "render",
+   "deepBars": true,
+   "windows": "low"
+  },
+  {
+   "wallSurfaces": [
+    165,
+    193
+   ],
+   "system": "ribbon-windows",
+   "storeys": 7,
+   "baysPerStorey": 7,
+   "ground": "glazed",
+   "wallMaterial": "render",
+   "deepBars": true,
+   "windows": "low"
+  },
+  {
+   "wallSurfaces": [
+    61,
+    65,
+    169,
+    180
+   ],
+   "system": "ribbon-windows",
+   "storeys": 7,
+   "baysPerStorey": 5,
+   "ground": "glazed",
+   "wallMaterial": "render",
+   "deepBars": true,
+   "windows": "low"
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "wallMaterial": "stucco",
+  "brick": "#e2dfd6",
+  "frame": "#3a4044",
+  "door": "#2a2a2a",
+  "stone": "#d8d4ca"
+ },
+ "notes": [
+  "Marnixstraat 248 (BAG: built 1972; one shop and one dwelling units; 3,241 m2 footprint, 22 m): the multi-storey car park on the Lijnbaansgracht / Marnixstraat corner with a petrol station in its undercroft. Three walls are photographed: the north-east front (w01-67, panorama 2023-03-06: a fuel-station canopy fascia with a red and white striped band under white decks), the south-east front (w03-157, 2022-06-28: six white concrete deck fronts, each a long ribbon of grey glass or louvre panels between white parapet bands with small slots, over an open undercroft carried on round pillars) and the south-west canal front (w02-247, 2021-01-25: the same decks wrapping the round ramp towers over the water).",
+  "Modelled: three ribbon-window groups (NE panels 179, 182, 204, 202; SE panels 160, 186; SW panels 63, 174, 59) as 7 storeys (a dark glazed undercroft and six deck ribbons), white wall colour, dark ribbon frames. Roofs are the 3DBAG LoD2.2 shell.",
+  "Simplified: the undercroft is a dark glazed ground row (the real one is open with round pillars, petrol pumps and a canopy), the ribbons are low windows cut into the white wall (the real deck fronts are glass or louvre panels set flush between parapet bands), the red/white striped fascia over the station is not drawn, the slot perforations in the parapet bands are not drawn, the round ramp towers keep the 3DBAG facets. Not modelled: the north-west side and the interior ramps (no useful view)."
+ ],
+ "closedBands": true
+}

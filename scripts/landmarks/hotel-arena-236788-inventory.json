@@ -1,0 +1,152 @@
+{
+ "schemaVersion": 1,
+ "id": "hotel-arena-236788",
+ "pand": "0363100012236788",
+ "signature": [
+  "old-north-wings",
+  "glazed-pavilion",
+  "new-wing-ribbed-brick"
+ ],
+ "walls": [
+  {
+   "tag": "w04-341",
+   "bearing": 341,
+   "lengthM": 23.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001674_pano_0000_003516",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "old-north-wings",
+     "kind": "window-shape",
+     "where": "north fronts: red brick, arched ground windows, tall upper windows with white surrounds",
+     "approxSizeM": [
+      60,
+      12
+     ],
+     "plan": "modelled",
+     "how": "3-storey brick-bay-grid, cross windows, string courses on walls[0]; the arch heads over the ground windows are not drawn (frame/glass z-fight)",
+     "seenIn": "TMX7316010203-001674_pano_0000_003516"
+    },
+    {
+     "id": "ironwork-fence",
+     "kind": "balcony-ironwork",
+     "where": "cast-iron fence along the pavement",
+     "approxSizeM": [
+      60,
+      1.8
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "free-standing fence outside the pand footprint, bars under 3 cm"
+     },
+     "seenIn": "TMX7316010203-001674_pano_0000_003516"
+    }
+   ]
+  },
+  {
+   "tag": "w03-162",
+   "bearing": 162,
+   "lengthM": 23.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002138_pano_0000_000140",
+   "capturedAt": "2021-05-12",
+   "checked": true,
+   "items": [
+    {
+     "id": "new-wing-ribbed-brick",
+     "kind": "window-shape",
+     "where": "new wing: buff ribbed brick with deep dark window openings, glass attic",
+     "approxSizeM": [
+      23,
+      17
+     ],
+     "plan": "simplified",
+     "how": "4-storey brick-bay-grid in buff brick, plain deep-reveal windows on walls[1]; the glass attic is the same window grid",
+     "seenIn": "TMX7316010203-002138_pano_0000_000140"
+    },
+    {
+     "id": "hotel-arena-gate-lettering",
+     "kind": "lettering",
+     "where": "HOTEL ARENA ENTRANCE on the arched gate wall in front of the wing",
+     "approxSizeM": [
+      3.5,
+      0.9
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "the lettering is on a free-standing gate wall outside this pand's footprint (a separate BAG object); the pand model cannot carry it"
+     },
+     "seenIn": "TMX7316010203-002138_pano_0000_000140"
+    }
+   ]
+  },
+  {
+   "tag": "w01-161",
+   "bearing": 161,
+   "lengthM": 26.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002468_pano_0001_001067",
+   "capturedAt": "2022-03-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "glazed-pavilion",
+     "kind": "window-shape",
+     "where": "south garden front: glass ground floor and glass box over a thin roof plate",
+     "approxSizeM": [
+      22,
+      10
+     ],
+     "plan": "simplified",
+     "how": "curtain-wall group on walls[2], ground glazed, 3 storeys",
+     "seenIn": "TMX7316010203-002468_pano_0001_001067"
+    },
+    {
+     "id": "timber-gable",
+     "kind": "other",
+     "where": "right of the pavilion: slate roof with a timber-clad gable and a dormer",
+     "approxSizeM": [
+      6,
+      6
+     ],
+     "plan": "simplified",
+     "how": "3DBAG LoD2.2 roof geometry as surveyed; no timber cladding",
+     "seenIn": "TMX7316010203-002468_pano_0001_001067"
+    }
+   ]
+  },
+  {
+   "tag": "w02-161",
+   "bearing": 161,
+   "lengthM": 26.4,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w05-341",
+   "bearing": 341,
+   "lengthM": 22.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001674_pano_0000_003531",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

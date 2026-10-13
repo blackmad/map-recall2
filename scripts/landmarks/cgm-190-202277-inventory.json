@@ -1,0 +1,161 @@
+{
+ "schemaVersion": 1,
+ "id": "cgm-190-202277",
+ "pand": "0363100012202277",
+ "signature": [
+  "dock-doors",
+  "arcade-lettering",
+  "arcade-canopy-front"
+ ],
+ "walls": [
+  {
+   "tag": "w01-258",
+   "bearing": 258,
+   "lengthM": 82.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002552_pano_0002_000516",
+   "capturedAt": "2022-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "dock-doors",
+     "kind": "window-shape",
+     "where": "ground floor, left: loading bays with yellow roller doors",
+     "approxSizeM": [
+      20,
+      4
+     ],
+     "plan": "simplified",
+     "how": "six tall yellow-framed transom openings on walls[1] (single-storey dock block), frames yellow; not the kit garage doors, which z-fight",
+     "seenIn": "TMX7316010203-002552_pano_0002_000516"
+    },
+    {
+     "id": "miedema-name",
+     "kind": "lettering",
+     "where": "pale bay right of centre, large green apple banner",
+     "approxSizeM": [
+      10,
+      3
+     ],
+     "plan": "simplified",
+     "how": "MIEDEMA AGF lettered on the wall; the apple/fruit banner graphic is not drawn",
+     "seenIn": "TMX7316010203-002552_pano_0002_000516"
+    },
+    {
+     "id": "blue-office-blocks",
+     "kind": "window-shape",
+     "where": "left end and centre: blue-trimmed office windows over the docks",
+     "approxSizeM": [
+      10,
+      3
+     ],
+     "plan": "simplified",
+     "how": "two-light windows with blue frames in the brick-bay-grid, no projecting block",
+     "seenIn": "TMX7316010203-002552_pano_0002_000516"
+    }
+   ]
+  },
+  {
+   "tag": "w03-78",
+   "bearing": 78,
+   "lengthM": 56.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001630_pano_0001_001272",
+   "capturedAt": "2020-02-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "arcade-lettering",
+     "kind": "lettering",
+     "where": "red roof-top lettering Gebr. de Mooij Amsterdam, right",
+     "approxSizeM": [
+      20,
+      1.5
+     ],
+     "plan": "simplified",
+     "how": "GEBR. DE MOOIJ AMSTERDAM on the cornice of walls[1] (the real letters stand on the roof)",
+     "seenIn": "TMX7316010203-001630_pano_0001_001272"
+    },
+    {
+     "id": "arcade-canopy-front",
+     "kind": "canopy",
+     "where": "full-width deep canopy over the roller doors with yellow diagonal struts",
+     "approxSizeM": [
+      42,
+      3
+     ],
+     "plan": "simplified",
+     "how": "glazed ground floor under a closed upper storey and cornice; the strut rods are not drawn",
+     "seenIn": "TMX7316010203-001630_pano_0001_001272"
+    },
+    {
+     "id": "shop-signs",
+     "kind": "sign",
+     "where": "along the canopy edge: De Stigter AGF, Fresco del Sol, LLONA",
+     "approxSizeM": [
+      6,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "individual tenant signs change often and are under 6 m each"
+     },
+     "seenIn": "TMX7316010203-001630_pano_0001_001272"
+    }
+   ]
+  },
+  {
+   "tag": "w05-78",
+   "bearing": 78,
+   "lengthM": 36.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002552_pano_0002_000863",
+   "capturedAt": "2022-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "white-gable",
+     "kind": "window-shape",
+     "where": "whole wall: white cladding with green rib trim",
+     "approxSizeM": [
+      36,
+      9
+     ],
+     "plan": "simplified",
+     "how": "blank wall group in white; the green ribs are not drawn",
+     "seenIn": "TMX7316010203-002552_pano_0002_000863"
+    }
+   ]
+  },
+  {
+   "tag": "w02-168",
+   "bearing": 168,
+   "lengthM": 75.1,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w04-348",
+   "bearing": 348,
+   "lengthM": 50.6,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

@@ -1,0 +1,105 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "plantage-middenlaan-52-186093",
+ "pandId": "0363100012186093",
+ "address": "Plantage Middenlaan 52, Amsterdam (Plantage, former Artis-side block): 2022 courtyard housing block of 294 homes, brick piers with stone balcony slabs and a zinc mansard",
+ "sources": [
+  {
+   "id": "pano-2023-01-13-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-13",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002933_pano_0009_000098/",
+   "image": "staging/pand-reference-walls/0363100012186093/w02-30.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-06-19-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2025-06-19",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-19_04-38-42_00954/",
+   "image": "staging/pand-reference-walls/0363100012186093/w03-30.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2023-01-13-w04",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-13",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002933_pano_0009_000180/",
+   "image": "staging/pand-reference-walls/0363100012186093/w04-300.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    8,
+    10,
+    49,
+    161
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 15,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "windows": "narrow",
+   "piers": true,
+   "cornice": true
+  },
+  {
+   "wallSurfaces": [
+    109,
+    118,
+    141,
+    152
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 11,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "windows": "narrow",
+   "piers": true,
+   "palette": {
+    "brick": "#b8a58e",
+    "frame": "#2a2e32",
+    "stone": "#e0d8c8"
+   },
+   "cornice": true
+  },
+  {
+   "wallSurfaces": [
+    17,
+    27
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 13,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "windows": "narrow",
+   "piers": true,
+   "cornice": true
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "zinc"
+ },
+ "palette": {
+  "brick": "#4a3a32",
+  "frame": "#2a2e32",
+  "door": "#2a2a2a",
+  "stone": "#cfc4b0"
+ },
+ "notes": [
+  "Plantage Middenlaan 52 (BAG: built 2022; 294 dwellings, a health-care, a sport, an office and five other units; 6,543 m2 footprint, 22 m): a courtyard housing block on the site of the 1970s Plantage building (the 2018 panorama w01-210 shows that demolished building behind site fencing, so no south-west wall is cited). The new block is photographed on three walls: the north-east street front (w02-30, 2023-01-13: dark brown brick, tall vertical piers between narrow windows, cream stone balcony slabs with moulded edges and a continuous stone belt course over a high ground floor, a zinc mansard roof with dormers), the courtyard front (w03-30, 2025-06-19: the same grid in buff brick with glazed balcony rails) and the north-west front (w04-300, 2023-01-13: dark brick with deep cream balcony slabs on brick piers).",
+  "Modelled: three 6-storey groups (street front panels 8 and 6; courtyard panel 98 in buff brick; north-west panels 24 and 14) of narrow-window bays between brick piers under a stone cornice (a top parapet band in the photographs); six storeys rather than the seven counted in the photograph because a seventh storey leaves the last pier of panel 8 floating (no-floating-parts gate). Zinc roof as surveyed by 3DBAG LoD2.2. The cornice is also what attaches the last top-storey pier of panel 8 to the shell (gate no-floating-parts).",
+  "Simplified: the moulded stone slab edges are plain balcony slabs, the cantilevered stone balcony slabs are not drawn (balconies stacked 21k triangles and left 20 m2 of frame/glass z-fight at the 12k budget), the stone belt course over the ground floor is not drawn (the kit only offers a course on every storey line, which reads as a grid), the ground-floor double doors and recessed loggias are plain ground windows, the dormers are the 3DBAG roof geometry. Not modelled: the south-west and south-east walls and the inner courtyard walls other than panel 98 (no current photograph)."
+ ],
+ "closedBands": true
+}
