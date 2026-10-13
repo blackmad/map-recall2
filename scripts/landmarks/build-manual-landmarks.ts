@@ -75,6 +75,7 @@ import {buildMediamatic} from './mediamatic-builder';
 import {buildHaparandaweg13} from './haparandaweg-13-builder';
 import {buildHaparandaweg11} from './haparandaweg-11-builder';
 import {buildHaparandaweg9} from './haparandaweg-9-builder';
+import {buildDaCostakade13} from './da-costakade-13-builder';
 import {buildVriesseveem9} from './vriesseveem-9-builder';
 import {buildBercylaan801855} from './bercylaan-801-855-builder';
 import {buildJacobBontiusplaats9} from './jacob-bontiusplaats-9-builder';
@@ -247,6 +248,11 @@ import {buildObaOosterdok} from './oba-oosterdok-builder';
 import {buildSintAgneskerk} from './sint-agneskerk-builder';
 import {buildPetruskerk} from './petruskerk-builder';
 import {buildBoomkerk} from './boomkerk-builder';
+import {buildOpstandingskerk} from './opstandingskerk-builder';
+import {buildObrechtkerk} from './obrechtkerk-builder';
+import {buildDeDuif} from './de-duif-builder';
+import {buildMozesEnAaronkerk} from './mozes-en-aaronkerk-builder';
+import {buildOosterkerk} from './oosterkerk-builder';
 import hospitals from './hospital-footprints.json';
 import {ALL_MANUAL_LANDMARKS as MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
@@ -601,6 +607,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='haparandaweg-2-4')buildHaparandaweg24(w,d,helpers);
     else if(id==='haparandaweg-8-338')buildHaparandaweg8338(w,d,helpers);
     else if(id==='haparandaweg-9')buildHaparandaweg9(w,d,helpers);
+    else if(id==='da-costakade-13')buildDaCostakade13(w,d,helpers);
     else if(id==='vriesseveem-9')buildVriesseveem9(w,d,helpers);
     else if(id==='bercylaan-801-855')buildBercylaan801855(w,d,helpers);
     else if(id==='jacob-bontiusplaats-9')buildJacobBontiusplaats9(w,d,helpers);
@@ -627,6 +634,11 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='haparandaweg-13')buildHaparandaweg13(w,d,helpers);
     else if(id==='valley')buildValley(w,d,helpers);
     else if(id==='ndsm-warehouse-complex')buildNdsmWarehouseComplex(w,d,helpers);
+    else if(id==='oosterkerk')buildOosterkerk(w,d,helpers);
+    else if(id==='mozes-en-aaronkerk')buildMozesEnAaronkerk(w,d,helpers);
+    else if(id==='de-duif')buildDeDuif(w,d,helpers);
+    else if(id==='obrechtkerk')buildObrechtkerk(w,d,helpers);
+    else if(id==='opstandingskerk')buildOpstandingskerk(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   {const lod1=manifest.models[id]?.lod1;manifest.models[id]=await save(id);if(lod1)manifest.models[id].lod1=lod1;}// keep the lod1 record; build:landmark-lods / check:landmark-lods catch it going stale

@@ -486,6 +486,16 @@
       "version": "5e790336eebbeef2",
       "dateSource": "asset-update"
     },
+    "da-costakade-13": {
+      "updatedAt": "2026-10-13T10:57:14.932Z",
+      "version": "d1522f9fab5d9f9d",
+      "dateSource": "asset-update"
+    },
+    "da-costakade-13.lod1": {
+      "updatedAt": "2026-10-13T10:57:12.654Z",
+      "version": "54d994062c20df3a",
+      "dateSource": "asset-update"
+    },
     "dageraad": {
       "updatedAt": "2026-10-05T18:07:25+02:00",
       "version": "42d83ce27bf06493",
@@ -549,6 +559,16 @@
     "de-dolphijn.lod1": {
       "updatedAt": "2026-10-10T13:42:19.929Z",
       "version": "bde99feaf70a9ac1",
+      "dateSource": "asset-update"
+    },
+    "de-duif": {
+      "updatedAt": "2026-10-13T09:43:53.717Z",
+      "version": "6840e55193fbcf90",
+      "dateSource": "asset-update"
+    },
+    "de-duif.lod1": {
+      "updatedAt": "2026-10-13T09:44:10.511Z",
+      "version": "c185786e1ba032d5",
       "dateSource": "asset-update"
     },
     "de-gooyer": {
@@ -1182,13 +1202,13 @@
       "dateSource": "asset-update"
     },
     "hotel-de-l-europe": {
-      "updatedAt": "2026-10-11T03:31:30.124Z",
-      "version": "6b8c2170785da848",
+      "updatedAt": "2026-10-13T08:59:51.289Z",
+      "version": "acdc894d4fd84547",
       "dateSource": "asset-update"
     },
     "hotel-de-l-europe.lod1": {
-      "updatedAt": "2026-10-11T03:35:47.449Z",
-      "version": "2e3ae6470121911c",
+      "updatedAt": "2026-10-13T10:56:57.096Z",
+      "version": "d60f33a2e98e5aba",
       "dateSource": "asset-update"
     },
     "hotel-jakarta": {
@@ -1691,6 +1711,16 @@
       "version": "f21d0c3dd1ed1d4a",
       "dateSource": "asset-update"
     },
+    "mozes-en-aaronkerk": {
+      "updatedAt": "2026-10-13T09:06:03.216Z",
+      "version": "93dd16804fae9219",
+      "dateSource": "asset-update"
+    },
+    "mozes-en-aaronkerk.lod1": {
+      "updatedAt": "2026-10-13T09:07:16.117Z",
+      "version": "a3644acfa9a3124f",
+      "dateSource": "asset-update"
+    },
     "muiderkerk": {
       "updatedAt": "2026-10-09T22:24:10.567Z",
       "version": "90d7d5ddf84cd9ce",
@@ -1876,6 +1906,16 @@
       "version": "b209aebb5704ca37",
       "dateSource": "asset-update"
     },
+    "obrechtkerk": {
+      "updatedAt": "2026-10-13T09:40:01.382Z",
+      "version": "750277800f2895c4",
+      "dateSource": "asset-update"
+    },
+    "obrechtkerk.lod1": {
+      "updatedAt": "2026-10-13T09:44:10.746Z",
+      "version": "695dbaa5e5e46169",
+      "dateSource": "asset-update"
+    },
     "occii": {
       "updatedAt": "2026-10-08T14:56:35.271Z",
       "version": "89ac812d7b80642b",
@@ -1941,6 +1981,16 @@
       "version": "1919950d6a2a0fee",
       "dateSource": "asset-update"
     },
+    "oosterkerk": {
+      "updatedAt": "2026-10-13T09:08:14.204Z",
+      "version": "75c95d3a8d162feb",
+      "dateSource": "asset-update"
+    },
+    "oosterkerk.lod1": {
+      "updatedAt": "2026-10-13T09:08:24.859Z",
+      "version": "78d69c5fbdc08a60",
+      "dateSource": "asset-update"
+    },
     "oosterparkkerk": {
       "updatedAt": "2026-10-08T15:07:49.973Z",
       "version": "2ad382a7bb22d73d",
@@ -1949,6 +1999,16 @@
     "oosterparkkerk.lod1": {
       "updatedAt": "2026-10-10T13:42:20.227Z",
       "version": "fa414400a3530f29",
+      "dateSource": "asset-update"
+    },
+    "opstandingskerk": {
+      "updatedAt": "2026-10-13T09:53:39.487Z",
+      "version": "6a8a533200b8ad96",
+      "dateSource": "asset-update"
+    },
+    "opstandingskerk.lod1": {
+      "updatedAt": "2026-10-13T10:49:08.208Z",
+      "version": "7017d07d58d53cd4",
       "dateSource": "asset-update"
     },
     "orgelpark": {
