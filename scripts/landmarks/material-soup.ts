@@ -20,7 +20,8 @@ export async function loadMaterialSoup(file: string): Promise<MaterialSoup> {
       ...(m.getExtension('KHR_materials_unlit') ? {unlit: true} : {}),
       ...(m.getDoubleSided() ? {doubleSided: true} : {})};
   });
-  const positions: number[] = [], indices: number[] = [], triMaterial: number[] = [];
+  const positions: number[] = [], indices: number[] = [], triMaterial: number[] = [], normals: number[] = [];
+  let haveNormals = true;
   for (const node of doc.getRoot().listNodes()) {
     const mesh = node.getMesh();
     if (!mesh) continue;
@@ -34,6 +35,13 @@ export async function loadMaterialSoup(file: string): Promise<MaterialSoup> {
         pos.getElement(i, v);
         positions.push(m[0] * v[0] + m[4] * v[1] + m[8] * v[2] + m[12], m[1] * v[0] + m[5] * v[1] + m[9] * v[2] + m[13], m[2] * v[0] + m[6] * v[1] + m[10] * v[2] + m[14]);
       }
+      const nrm = prim.getAttribute('NORMAL');
+      if (!nrm) haveNormals = false;
+      else for (let i = 0; i < nrm.getCount(); i++) {
+        nrm.getElement(i, v);
+        const x = m[0] * v[0] + m[4] * v[1] + m[8] * v[2], y = m[1] * v[0] + m[5] * v[1] + m[9] * v[2], z = m[2] * v[0] + m[6] * v[1] + m[10] * v[2], l = Math.hypot(x, y, z) || 1;
+        normals.push(x / l, y / l, z / l);
+      }
       const idx = prim.getIndices(), n = idx ? idx.getCount() : pos.getCount();
       const mi = Math.max(0, mats.indexOf(prim.getMaterial()!));
       for (let i = 0; i + 2 < n; i += 3) {
@@ -42,5 +50,5 @@ export async function loadMaterialSoup(file: string): Promise<MaterialSoup> {
       }
     }
   }
-  return {positions, indices, triMaterial, materials};
+  return {positions, indices, triMaterial, materials, ...(haveNormals && normals.length === positions.length ? {normals} : {})};
 }
