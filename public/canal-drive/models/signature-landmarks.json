@@ -6683,9 +6683,7 @@
       "assetKind": "memorial",
       "landmarkId": "extract_landmarks_1098130181",
       "modelUrl": "./models/de-dokwerker.glb",
-      "suppressOsmIds": [
-        "n34051159"
-      ],
+      "suppressOsmIds": [],
       "spatialSuppression": false,
       "footprint": {
         "centre": [
@@ -6714,16 +6712,17 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free geometric silhouette with documented1.60m pedestal and2.60m standing figure; body/pose divisions and facing approximate. Exact node position. No surrounding buildings or plaza replaced."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -0.8500000238418579,
+          -0.7129079699516296,
           -1.1920929132713809e-8,
           -0.550000011920929
         ],
         "max": [
-          0.8500000238418579,
-          4.199999809265137,
-          0.550000011920929
+          0.7129079699516296,
+          4.127633094787598,
+          0.5899999737739563
         ]
       },
       "placement": {
@@ -6737,13 +6736,13 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 1.7000000476837158,
-        "heightMetres": 4.199999821186066,
-        "depthMetres": 1.100000023841858,
-        "depthCoverage": 0.9166666865348816
+        "widthMetres": 1.4258159399032593,
+        "heightMetres": 4.127633106708527,
+        "depthMetres": 1.1399999856948853,
+        "depthCoverage": 0.949999988079071
       },
-      "triangles": 1364,
-      "bytes": 14520,
+      "triangles": 516,
+      "bytes": 11000,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "willet-holthuysen": {
@@ -47123,7 +47122,8 @@
         "concrete": "#8c8e90",
         "greyBrick": "#3d3f42",
         "bronze": "#a3a49f",
-        "gold": "#9b8348"
+        "gold": "#9b8348",
+        "copper": "#4a524c"
       },
       "attribution": {
         "title": "Rembrandtmonument - original low-poly interpretation",
@@ -47136,14 +47136,14 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -5.650000095367432,
+          -11.242998123168945,
           0,
           -3.4000000953674316
         ],
         "max": [
           5.650000095367432,
-          6.769999980926514,
-          3.4000000953674316
+          6.588562965393066,
+          11.242998123168945
         ]
       },
       "placement": {
@@ -47157,14 +47157,20 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 11.300000190734863,
-        "heightMetres": 6.769999980926514,
-        "depthMetres": 6.800000190734863,
-        "depthCoverage": 1.0000000280492447
+        "widthMetres": 16.892998218536377,
+        "heightMetres": 6.588562965393066,
+        "depthMetres": 14.642998218536377,
+        "depthCoverage": 2.153382090961232
       },
-      "triangles": 1852,
-      "bytes": 21288,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 8142,
+      "bytes": 95524,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "789043ca1e977063",
+        "buildVersion": 2,
+        "bytes": 37992,
+        "triangles": 1672
+      }
     },
     "vondelmonument": {
       "id": "vondelmonument",
@@ -47216,7 +47222,7 @@
         ],
         "max": [
           6.21539306640625,
-          7.239999771118164,
+          7.1599626541137695,
           6.21539306640625
         ]
       },
@@ -47232,13 +47238,19 @@
       },
       "extent": {
         "widthMetres": 12.4307861328125,
-        "heightMetres": 7.239999771118164,
+        "heightMetres": 7.1599626541137695,
         "depthMetres": 12.4307861328125,
         "depthCoverage": 0.927670606926306
       },
-      "triangles": 2056,
-      "bytes": 27220,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 4392,
+      "bytes": 65972,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "6ac87d4c2310cfcf",
+        "buildVersion": 2,
+        "bytes": 37856,
+        "triangles": 1794
+      }
     },
     "begijnhof": {
       "id": "begijnhof",
@@ -47409,7 +47421,7 @@
         ],
         "max": [
           6.199999809265137,
-          6.218507289886475,
+          8.118855476379395,
           6.199999809265137
         ]
       },
@@ -47425,13 +47437,19 @@
       },
       "extent": {
         "widthMetres": 12.399999618530273,
-        "heightMetres": 6.21850728854537,
+        "heightMetres": 8.11885547503829,
         "depthMetres": 12.399999618530273,
         "depthCoverage": 0.9999999692363123
       },
-      "triangles": 2400,
-      "bytes": 25632,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 4400,
+      "bytes": 50092,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "876f3d4dfca9523a",
+        "buildVersion": 2,
+        "bytes": 16868,
+        "triangles": 644
+      }
     }
   }
 }
