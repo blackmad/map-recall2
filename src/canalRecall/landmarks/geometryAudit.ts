@@ -41,6 +41,8 @@ export interface GeometryAuditThresholds {
   buriedWarn: number;
   /** Opening parts larger than this (bbox diagonal, m) are treated as host geometry (walls, roofs). */
   maxOpeningDiag: number;
+  /** A glass/frame assembly whose outward-facing area is at least this (m2) is a glazed facade (curtain wall, glazed atrium, skewed glass tower), not a window: it IS the wall, so overhang/buried against some other wall plane do not apply. */
+  glazedSkinArea: number;
   /** Coplanar plane tolerance (m) and abutment shrink (m) for z-fighting. */
   zPlaneTol: number;
   zAbut: number;
@@ -53,7 +55,7 @@ export interface GeometryAuditThresholds {
 
 export const GEOMETRY_THRESHOLDS: GeometryAuditThresholds = {
   weld: 0.001, touchTol: 0.03, floatFail: 0.1, overhangWarn: 0.12, overhangFail: 0.35, balconyMax: 2, buriedWarn: 0.3,
-  maxOpeningDiag: 14, zPlaneTol: 0.01, zAbut: 0.005, zNearTol: 0.03, zWarnArea: 0.25, zFailArea: 2,
+  maxOpeningDiag: 14, glazedSkinArea: 24, zPlaneTol: 0.01, zAbut: 0.005, zNearTol: 0.03, zWarnArea: 0.25, zFailArea: 2,
 };
 
 /** Materials that make up openings and their trim. Kits glaze in `glass`/`dark`, frame in `frame`/`white`. */
@@ -111,6 +113,8 @@ export interface GeometryAuditReport {
   openings: {assemblies: number; issues: OpeningIssue[]};
   zfight: {area: number; nearArea: number; hiddenArea: number; patches: ZFightPatch[]};
   rhythm: RhythmFacade[];
+  /** Share of visible surface area with `materialSlot` + `tint` (see `materialSlotCoverage`). */
+  materialSlots: MaterialSlotCoverage;
   /** Per-kind counts used by the baseline gate. */
   counts: Record<string, number>;
   findings: GeometryFinding[];
@@ -193,6 +197,8 @@ export function closedParts(s: MaterialSoup, part: Int32Array, weld = 0.001): Se
 /** Uniform grid over triangle AABBs for proximity queries (numeric cell keys; |coordinate| < 500 m). */
 class TriGrid {
   private cells = new Map<number, number[]>();
+  /** Triangles whose box spans too many cells to bin (a big diagonal wall or roof): kept aside and tested by box on every query. */
+  private big: number[] = [];
   readonly box: Float64Array;
   private static key = (x: number, y: number, z: number) => ((x + 1024) * 2048 + (y + 1024)) * 2048 + (z + 1024);
   constructor(private s: MaterialSoup, tris: number[], private cell = 1) {
@@ -201,7 +207,8 @@ class TriGrid {
       const [a, b, c] = triVerts(s, t);
       for (let k = 0; k < 3; k++) { this.box[t * 6 + k] = Math.min(a[k], b[k], c[k]); this.box[t * 6 + 3 + k] = Math.max(a[k], b[k], c[k]); }
       const lo = [0, 1, 2].map(k => Math.floor(this.box[t * 6 + k] / cell)), hi = [0, 1, 2].map(k => Math.floor(this.box[t * 6 + 3 + k] / cell));
-      if ((hi[0] - lo[0] + 1) * (hi[1] - lo[1] + 1) * (hi[2] - lo[2] + 1) > 20000) continue; // pathological sliver
+      // A large diagonal wall spans a huge box. It must stay queryable, or its windows read as floating in front of nothing.
+      if ((hi[0] - lo[0] + 1) * (hi[1] - lo[1] + 1) * (hi[2] - lo[2] + 1) > 20000) { this.big.push(t); continue; }
       for (let x = lo[0]; x <= hi[0]; x++) for (let y = lo[1]; y <= hi[1]; y++) for (let z = lo[2]; z <= hi[2]; z++) {
         const k = TriGrid.key(x, y, z); const l = this.cells.get(k); if (l) l.push(t); else this.cells.set(k, [t]);
       }
@@ -216,6 +223,10 @@ class TriGrid {
         if (B[t * 6] > max[0] || B[t * 6 + 3] < min[0] || B[t * 6 + 1] > max[1] || B[t * 6 + 4] < min[1] || B[t * 6 + 2] > max[2] || B[t * 6 + 5] < min[2]) continue;
         out.add(t);
       }
+    }
+    for (const t of this.big) {
+      if (B[t * 6] > max[0] || B[t * 6 + 3] < min[0] || B[t * 6 + 1] > max[1] || B[t * 6 + 4] < min[1] || B[t * 6 + 2] > max[2] || B[t * 6 + 5] < min[2]) continue;
+      out.add(t);
     }
     return [...out];
   }
@@ -430,7 +441,8 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
 
     // A grounded part only belongs to a wall it stands against (railings and gates stand off it).
     const best = cands[0] && (bb.min[1] > 0.02 || cands[0].sd <= 0.25) ? cands[0].w : undefined;
-    const group = best ? cands.filter(c => c.w.n[0] * best.n[0] + c.w.n[1] * best.n[1] > 0.985).map(c => c.w) : [];
+    // Facets of a curved wall (a drum or an apse, 11-20 degrees between facets) continue the wall: a window wider than its facet is still on it.
+    const group = best ? cands.filter(c => c.w.n[0] * best.n[0] + c.w.n[1] * best.n[1] > 0.94).map(c => c.w) : [];
     let outside = 0, buried = 0;
     if (best) ({outside, buried} = sample(best, group, 0.8));
 
@@ -494,6 +506,16 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
       let resting = x0 >= 0 && x1 < r.nu;
       for (let x = Math.max(0, x0); resting && x <= Math.min(r.nu - 1, x1); x++) resting = Number.isFinite(r.colHi[x]) && bb.min[1] >= r.colHi[x] - 0.15 && bb.min[1] <= r.colHi[x] + 0.1;
       if (resting) { outside = 0; buried = 0; }
+    }
+
+    // Glazed facade: large and made of glazing, so it is the wall itself (a curtain wall, a skewed glass tower face): it cannot overhang or
+    // sink behind "the" wall because no other wall is its host. It must still touch the building (floating stays checked above).
+    if (outside > 0 || buried > 0) {
+      let skin = 0;
+      for (const t of tris) { const [a, b, cc] = triVerts(s, t), {n, area} = triNormal(a, b, cc); if (Math.abs(n[1]) < 0.7) skin += area; }
+      const glazed = tris.some(t => /^(glass|window|pane|sash)/i.test(s.materials[s.triMaterial[t]].name));
+      // Closed glass boxes carry both faces of every pane, so the outward area is about half the summed area.
+      if (glazed && skin / 2 >= th.glazedSkinArea) { outside = 0; buried = 0; }
     }
 
     const mats = [...new Set(tris.map(t => s.materials[s.triMaterial[t]].name))].sort();
@@ -825,7 +847,13 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
     const v = rhythmVerdict(f);
     findings.push({kind: 'window-rhythm', severity: v.fail ? 'fail' : 'warn', message: `${f.name}: ${f.openings} openings in ${f.rows.length} rows; ${odd} off-size/off-level (${Math.round(v.oddFraction * 100)}%), ${miss} predicted missing, ${f.misaligned} off-axis${f.fromSpec ? ` (photo-spec facade; fails above ${RHYTHM_FAIL.oddFraction * 100}% off-size or any missing)` : ' (inferred facade)'}`});
   }
+  const slots = materialSlotCoverage(s);
+  if (slots.ratio < 1) {
+    findings.push({kind: 'material-slot-coverage', severity: 'warn', message: `${(slots.ratio * 100).toFixed(1)}% of ${slots.area} m2 visible surface carries materialSlot+tint; untagged: ${slots.untagged.slice(0, 4).map(u => `${u.material} ${u.area} m2`).join(', ')}`});
+  }
   const counts: Record<string, number> = {
+    // Share of visible surface WITHOUT a materialSlot+tint, in tenths of a percent (0 = fully tagged). Gated only for new exports and recorded models.
+    'material-slot-untagged-permille': Math.round((1 - slots.ratio) * 1000),
     'opening-floating': byKind('floating').length, 'opening-floating-fail': byKind('floating').filter(i => i.severity === 'fail').length,
     'opening-overhang': byKind('overhang').length, 'opening-overhang-fail': byKind('overhang').filter(i => i.severity === 'fail').length,
     'opening-buried': byKind('buried').length,
@@ -840,16 +868,58 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
     'window-missing-spec': rhythm.filter(f => f.fromSpec).reduce((t, f) => t + f.missing.length, 0),
   };
   const score = openings.issues.reduce((t, i) => t + issueWeight(i), 0) + Math.min(zfight.area, 100) * 2 + Math.min(zfight.nearArea, 100) * 0.3 + counts['window-mismatch'] * 0.5 + counts['window-missing'] + counts['window-misaligned'] * 0.3;
-  return {openings, zfight, rhythm, counts, findings, score: +score.toFixed(1)};
+  return {openings, zfight, rhythm, materialSlots: slots, counts, findings, score: +score.toFixed(1)};
+}
+
+export interface MaterialSlotCoverage {
+  /** Visible surface area (m2): everything except downward faces and the ground plate. */
+  area: number;
+  /** Area (m2) whose material carries both `materialSlot` and `tint`. */
+  tagged: number;
+  /** tagged / area, 0..1 (1 for an empty model). */
+  ratio: number;
+  /** Untagged materials by visible area, largest first. */
+  untagged: {material: string; area: number}[];
+}
+
+/**
+ * Share of visible surface area whose material carries `materialSlot` + `tint` extras: the contract that lets the shared city look (atlas
+ * brick, glass gradient, roof cells) dress a model instead of the flat paint it was exported with. Downward faces and triangles lying on the
+ * ground plate are not visible and do not count.
+ */
+export function materialSlotCoverage(s: MaterialSoup): MaterialSlotCoverage {
+  const byMat = new Map<number, number>();
+  const nTri = s.indices.length / 3;
+  for (let t = 0; t < nTri; t++) {
+    const [a, b, c] = triVerts(s, t), {n, area} = triNormal(a, b, c);
+    if (!(area > 0) || n[1] < -0.9 || (a[1] <= 0.02 && b[1] <= 0.02 && c[1] <= 0.02)) continue;
+    byMat.set(s.triMaterial[t], (byMat.get(s.triMaterial[t]) ?? 0) + area);
+  }
+  let area = 0, tagged = 0;
+  const untagged: {material: string; area: number}[] = [];
+  for (const [m, a] of byMat) {
+    area += a;
+    const mat = s.materials[m];
+    if (mat?.slot && mat.tint) tagged += a; else untagged.push({material: mat?.name ?? 'unnamed', area: +a.toFixed(1)});
+  }
+  untagged.sort((p, q) => q.area - p.area);
+  return {area: +area.toFixed(1), tagged: +tagged.toFixed(1), ratio: area > 0 ? tagged / area : 1, untagged};
 }
 
 /** Gate: which counts grew beyond the recorded baseline (plus slack)? Empty = no new regression. */
 export function regressions(counts: Record<string, number>, baseline: Record<string, number> | undefined): string[] {
   const slack: Record<string, number> = {'zfight-m2': 0.3, 'zfight-near-m2': 1, 'window-mismatch': 1, 'window-missing': 1, 'window-misaligned': 1};
-  const hard = new Set(['opening-floating-fail', 'opening-overhang-fail', 'zfight-m2', 'window-rhythm-fail', 'window-mismatch-spec', 'window-missing-spec']);
+  const hard = new Set(['opening-floating-fail', 'opening-overhang-fail', 'zfight-m2', 'window-rhythm-fail', 'window-mismatch-spec', 'window-missing-spec',
+    // Since the 2026-10-13 cleanup pass every detached or sunk window counts, not only the 10 cm fails; a recorded model may not add any.
+    'opening-floating', 'opening-buried', 'opening-overhang']);
+  // Recorded-only: a model without the key in its entry predates the gate (legacy, reported as a warning); a model with NO entry is a new
+  // export and must be 100% tagged.
+  const recordedOnly = new Set(['material-slot-untagged-permille', 'opening-floating', 'opening-buried', 'opening-overhang']);
   const out: string[] = [];
   for (const [k, v] of Object.entries(counts)) {
-    if (!hard.has(k)) continue; // warn-level counts are reported, not gated
+    const gated = hard.has(k) || k === 'material-slot-untagged-permille';
+    if (!gated) continue; // warn-level counts are reported, not gated
+    if (recordedOnly.has(k) && baseline && baseline[k] === undefined) continue;
     const b = baseline?.[k] ?? 0;
     if (v > b + (slack[k] ?? 0)) out.push(`${k} ${v} > baseline ${b}`);
   }

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import {analyseRhythm, auditOpenings, auditZFight, coplanarOverlap, geometryAudit, regressions, rhythmVerdict, RHYTHM_FAIL} from './geometryAudit';
+import {GEOMETRY_THRESHOLDS, analyseRhythm, auditOpenings, auditZFight, coplanarOverlap, geometryAudit, materialSlotCoverage, regressions, rhythmVerdict, RHYTHM_FAIL} from './geometryAudit';
 import type {MaterialSoup, Opening} from './facadeCompare';
 import {zFightArea} from '../blockFace/compile';
 
@@ -135,7 +135,67 @@ test('baseline gate: only growth past the recorded counts fails', () => {
   assert.deepEqual(regressions({'opening-floating-fail': 2, 'zfight-m2': 30}, {'opening-floating-fail': 2, 'zfight-m2': 30}), []);
   assert.equal(regressions({'opening-floating-fail': 3, 'zfight-m2': 30}, {'opening-floating-fail': 2, 'zfight-m2': 30}).length, 1);
   assert.equal(regressions({'zfight-m2': 0.5}, undefined).length, 1, 'a new model with visible z-fighting fails');
-  assert.deepEqual(regressions({'window-missing': 9, 'opening-buried': 4}, undefined), [], 'warn-level counts are never gated');
+  assert.deepEqual(regressions({'window-missing': 9, 'window-misaligned': 4}, undefined), [], 'warn-level counts are never gated');
+});
+
+test('baseline gate: every detached or sunk window is gated for new and recorded models, never for unrecorded legacy ones', () => {
+  assert.equal(regressions({'opening-floating': 1}, undefined).length, 1, 'a new export may not float any window (not only the 10 cm fails)');
+  assert.equal(regressions({'opening-buried': 1}, undefined).length, 1);
+  assert.equal(regressions({'opening-floating': 5}, {'opening-floating': 5}).length, 0);
+  assert.equal(regressions({'opening-floating': 6}, {'opening-floating': 5}).length, 1);
+  assert.deepEqual(regressions({'opening-floating': 9}, {'zfight-m2': 0}), [], 'an entry without the key predates the gate');
+});
+
+test('baseline gate: a new export must carry materialSlot+tint on all visible surface; recorded models may not get worse', () => {
+  assert.equal(regressions({'material-slot-untagged-permille': 0}, undefined).length, 0);
+  assert.equal(regressions({'material-slot-untagged-permille': 1}, undefined).length, 1);
+  assert.equal(regressions({'material-slot-untagged-permille': 400}, {'material-slot-untagged-permille': 400}).length, 0);
+  assert.equal(regressions({'material-slot-untagged-permille': 401}, {'material-slot-untagged-permille': 400}).length, 1);
+  assert.deepEqual(regressions({'material-slot-untagged-permille': 1000}, {'zfight-m2': 0}), [], 'legacy entry without the key: warning only');
+});
+
+test('materialSlotCoverage: area-weighted share of visible surface whose material has slot and tint', () => {
+  const soup = boxes(block, {min: [0, 9, 0], max: [12, 9.5, 8], mat: 'slate'});
+  // Brick block 12 x 9 x 8 (visible: 4 walls + roof = 2*(12+8)*9 + 96 = 456 m2) plus a slate slab (visible: 4 sides + top = 2*20*0.5 + 96 = 116 m2).
+  soup.materials[MATS.indexOf('brick')] = {...soup.materials[MATS.indexOf('brick')], slot: 'brick', tint: '#9a5240'};
+  soup.materials[MATS.indexOf('slate')] = {...soup.materials[MATS.indexOf('slate')], slot: 'slate'}; // no tint: does not count
+  const c = materialSlotCoverage(soup);
+  assert.ok(Math.abs(c.tagged - 456) < 1, `tagged ${c.tagged}`);
+  assert.ok(Math.abs(c.ratio - 456 / 572) < 0.01, `ratio ${c.ratio}`);
+  assert.equal(c.untagged[0].material, 'slate');
+  soup.materials[MATS.indexOf('slate')].tint = '#4a525d';
+  assert.equal(materialSlotCoverage(soup).ratio, 1);
+  assert.equal(geometryAudit(soup, {skipRhythm: true}).counts['material-slot-untagged-permille'], 0);
+});
+
+test('a window on a large diagonal wall is attached (the proximity grid used to drop the wall)', () => {
+  // A 120 m long wall at 40 degrees to the axes: its two triangles span far more than the grid's cell cap.
+  const a = 40 * Math.PI / 180, c = Math.cos(a), sn = Math.sin(a);
+  const rot = (x: number, y: number, z: number): V3 => [x * c - z * sn, y, x * sn + z * c];
+  const positions: number[] = [], indices: number[] = [], triMaterial: number[] = [];
+  const quad = (q: V3[], m: string) => { const b = positions.length / 3; for (const p of q) positions.push(...p); indices.push(b, b + 1, b + 2, b, b + 2, b + 3); triMaterial.push(MATS.indexOf(m), MATS.indexOf(m)); };
+  const L = 120, H = 30;
+  // Wall slab 0.3 m thick, outward face at z = 0.3 (facing +z before the turn).
+  const box = (x0: number, y0: number, z0: number, x1: number, y1: number, z1: number, m: string) => {
+    const f: V3[][] = [[[x0, y1, z1], [x1, y1, z1], [x1, y1, z0], [x0, y1, z0]], [[x0, y0, z0], [x1, y0, z0], [x1, y0, z1], [x0, y0, z1]], [[x0, y0, z1], [x1, y0, z1], [x1, y1, z1], [x0, y1, z1]], [[x1, y0, z0], [x0, y0, z0], [x0, y1, z0], [x1, y1, z0]], [[x1, y0, z1], [x1, y0, z0], [x1, y1, z0], [x1, y1, z1]], [[x0, y0, z0], [x0, y0, z1], [x0, y1, z1], [x0, y1, z0]]];
+    for (const q of f) quad(q.map(p => rot(...p)), m);
+  };
+  box(0, 0, 0, L, H, 0.3, 'brick');
+  box(60, 10, 0.3, 61.2, 12, 0.4, 'glass'); // pane standing on the wall's outer face
+  box(61.7, 10, 0.3, 63, 12, 0.5, 'brick'); // a brick pilaster 50 cm beside it: the nearest host geometry once the wall is not found
+  const soup: MaterialSoup = {positions, indices, triMaterial, materials: MATS.map(name => ({name, rgb: [128, 128, 128] as [number, number, number]}))};
+  const r = auditOpenings(soup);
+  assert.equal(r.assemblies, 1);
+  assert.deepEqual(r.issues.map(i => `${i.kind} gap ${i.gap}`), []);
+});
+
+test('a large glazed skin is the wall, not a window overhanging it; a small window past a wall end still overhangs', () => {
+  // 10 x 3.4 m glass band (34 m2) running 4 m past the end of the block (curtain wall continuing round a corner).
+  const band = {min: [6, 3, 8] as V3, max: [16, 6.4, 8.15] as V3, mat: 'glass'};
+  assert.deepEqual(auditOpenings(boxes(block, band)).issues, [], 'glazed skin');
+  assert.equal(auditOpenings(boxes(block, band), {...GEOMETRY_THRESHOLDS, glazedSkinArea: 1e9}).issues[0]?.kind, 'overhang', 'the exemption is what clears it');
+  const [i] = auditOpenings(boxes(block, pane(11.4, 8))).issues;
+  assert.equal(i.kind, 'overhang');
 });
 
 test('rhythm verdict: photo-spec facades fail above the off-size fraction or on any predicted-missing window; inferred ones never fail', () => {
@@ -219,4 +279,45 @@ test('a window-sized pane floating above the wall top, or a rail hanging past th
   assert.equal(past[0].kind, 'overhang');
   const tall = auditOpenings(boxes(block, {min: [2, 8.95, 7.8] as V3, max: [6, 11.5, 7.9] as V3, mat: 'glass'})).issues;
   assert.ok(tall.length > 0, 'a 2.5 m glass screen is not a rail');
+});
+
+const DMATS = ['brick', 'dark'];
+/** Closed n-gon prism (outward faces) with a window box centred on each facet, `depth` proud (negative = sunk). */
+function drumSoup(n: number, R: number, H: number, depth: number, wallThickness = 0) {
+  const positions: number[] = [], indices: number[] = [], triMaterial: number[] = [];
+  const quad = (q: V3[], m: string) => { const b = positions.length / 3; for (const p of q) positions.push(...p); indices.push(b, b + 1, b + 2, b, b + 2, b + 3); triMaterial.push(DMATS.indexOf(m), DMATS.indexOf(m)); };
+  const ring = (r: number) => Array.from({length: n}, (_, i) => [r * Math.cos((2 * Math.PI * i) / n), r * Math.sin((2 * Math.PI * i) / n)] as [number, number]);
+  const P = ring(R);
+  for (let i = 0; i < n; i++) {
+    const a = P[i], b = P[(i + 1) % n];
+    quad([[a[0], 0, a[1]], [b[0], 0, b[1]], [b[0], H, b[1]], [a[0], H, a[1]]].reverse() as V3[], 'brick');
+    quad([[a[0], 0, a[1]], [a[0], H, a[1]], [b[0], H, b[1]], [b[0], 0, b[1]]] as V3[], 'brick');
+  }
+  void wallThickness;
+  // top and bottom fans
+  for (let i = 1; i < n - 1; i++) { quad([[P[0][0], H, P[0][1]], [P[i + 1][0], H, P[i + 1][1]], [P[i][0], H, P[i][1]], [P[0][0], H, P[0][1]]] as V3[], 'brick'); }
+  // windows
+  for (let i = 0; i < n; i++) {
+    const a = P[i], b = P[(i + 1) % n], mx = (a[0] + b[0]) / 2, mz = (a[1] + b[1]) / 2;
+    const L = Math.hypot(mx, mz), nx = mx / L, nz = mz / L, tx = -nz, tz = nx, hw = 0.6;
+    const o = (u: number, y: number, d: number): V3 => [mx + tx * u + nx * d, y, mz + tz * u + nz * d];
+    const d0 = depth >= 0 ? 0 : depth, d1 = depth >= 0 ? depth : 0;
+    // front face of the window (the visible one) plus back/sides as a closed box
+    const f = (d: number) => [o(-hw, 3, d), o(hw, 3, d), o(hw, 6, d), o(-hw, 6, d)];
+    quad(f(d1), 'dark'); quad([...f(d0)].reverse(), 'dark');
+    for (const [u0, u1] of [[-hw, hw]]) { quad([o(u0, 3, d0), o(u1, 3, d0), o(u1, 3, d1), o(u0, 3, d1)], 'dark'); quad([o(u0, 6, d1), o(u1, 6, d1), o(u1, 6, d0), o(u0, 6, d0)], 'dark'); }
+    quad([o(-hw, 3, d1), o(-hw, 3, d0), o(-hw, 6, d0), o(-hw, 6, d1)], 'dark'); quad([o(hw, 3, d0), o(hw, 3, d1), o(hw, 6, d1), o(hw, 6, d0)], 'dark');
+  }
+  return {positions, indices, triMaterial, materials: DMATS.map(name => ({name, rgb: [1, 1, 1] as [number, number, number]}))};
+}
+
+
+test('windows flush on a polygonal drum (12-32 facets, curved wall) are attached; sunk ones are buried', () => {
+  for (const n of [12, 16, 24, 32]) {
+    const flush = auditOpenings(drumSoup(n, 8, 10, 0.1));
+    assert.equal(flush.assemblies, n);
+    assert.deepEqual(flush.issues.map(i => i.kind), [], `${n}-gon drum, flush windows`);
+  }
+  const sunk = auditOpenings(drumSoup(16, 8, 10, -0.3));
+  assert.ok(sunk.issues.length >= 12 && sunk.issues.every(i => i.kind === 'buried'), JSON.stringify(sunk.issues.map(i => i.kind)));
 });

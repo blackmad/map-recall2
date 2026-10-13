@@ -17,7 +17,8 @@ export type MaterialSoup = {
   indices: Uint32Array | number[];
   /** One material index per triangle. */
   triMaterial: Uint16Array | number[];
-  materials: {name: string; rgb: [number, number, number]}[];
+  /** `slot`/`tint` mirror the GLB material extras `materialSlot`/`tint` (the shared-look contract); absent on untagged legacy materials. */
+  materials: {name: string; rgb: [number, number, number]; slot?: string; tint?: string}[];
 };
 
 export type FacadeInventory = {

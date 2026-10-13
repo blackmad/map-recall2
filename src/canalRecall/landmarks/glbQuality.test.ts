@@ -338,3 +338,24 @@ test('a declared detached structure is exempt from far-outside; undeclared, part
   const other = soup(boxQuads(0, 0, 0, 10, 8, 10), kiosk, boxQuads(60, 0, 0, 64, 3, 4));
   assert.ok(analyseSoup(other, boxes([29, -1, 35, 5])).findings.some(f => f.kind === 'far-outside'), 'a second undeclared part still fails');
 });
+
+test('concave (L-shaped) footprints: closed walls raise no see-through, a missing inner-notch wall does', () => {
+  // L = a 20 x 6 bar plus a 6 x 14 leg. The notch faces (inner walls of the L) lie well inside the convex hull of the body, so a
+  // hull-limited test would never look at them.
+  const closed = analyseSoup(soup(boxQuads(0, 0, 0, 20, 8, 6), boxQuads(0, 0, 6, 6, 8, 20)));
+  assert.equal(closed.seeThrough.rays, 0, JSON.stringify(closed.seeThrough));
+  assert.ok(closed.seeThrough.tested > 0);
+  const open = analyseSoup(soup(boxQuads(0, 0, 0, 20, 8, 6), boxQuads(0, 0, 6, 6, 8, 20, ['east'])));
+  assert.ok(open.seeThrough.rays > 0, JSON.stringify(open.seeThrough));
+});
+
+test('a long diagonal slab (wall triangles far past the grid cap) is still solid to the see-through rays', () => {
+  // 135 x 20 x 10 m slab turned 45 degrees: each long wall is two triangles whose boxes span ~95 x 20 x 95 m (> 120k cells). The old
+  // grid dropped them, so a tall diagonal wall read as absent and every ray into the slab looked like it passed through.
+  const a = Math.PI / 4, c = Math.cos(a), s = Math.sin(a);
+  const rot = (set: Record<string, Quad>): Record<string, Quad> => Object.fromEntries(Object.entries(set).map(([k, q]) => [k, q.map(([x, y, z]) => [x * c - z * s, y, x * s + z * c] as [number, number, number])]));
+  const r = analyseSoup(soup(rot(boxQuads(0, 0, 0, 135, 20, 10))));
+  assert.equal(r.seeThrough.rays, 0, JSON.stringify(r.seeThrough));
+  assert.equal(r.holes.loops, 0);
+  assert.ok(r.seeThrough.tested > 0);
+});

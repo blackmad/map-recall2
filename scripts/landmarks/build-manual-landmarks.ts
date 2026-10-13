@@ -1,3 +1,4 @@
+import {slotExtras} from '../../src/canalRecall/landmarks/materialSlots';
 import {buildWaag} from './waag-builder';
 import {buildScheepvaartmuseum} from './scheepvaartmuseum-builder';
 import {buildOdessa} from './odessa-builder';
@@ -337,7 +338,7 @@ async function save(id:string){
   const positions=Float32Array.from(group.geometries.flatMap(g=>Array.from(g.getAttribute('position').array)));
   const normals=Float32Array.from(group.geometries.flatMap(g=>Array.from(g.getAttribute('normal').array)));
   for(const value of positions)all.push(value);
-  const rgb=new T.Color(group.hex),material=doc.createMaterial(name).setBaseColorFactor([rgb.r,rgb.g,rgb.b,1]).setMetallicFactor(0).setRoughnessFactor(.9).setDoubleSided(true);
+  const rgb=new T.Color(group.hex),material=doc.createMaterial(name).setBaseColorFactor([rgb.r,rgb.g,rgb.b,1]).setMetallicFactor(0).setRoughnessFactor(.9).setDoubleSided(true).setExtras(slotExtras(name,group.hex)??{});
   if(group.unlit)material.setExtension('KHR_materials_unlit',unlitExtension!.createUnlit());
   if(id==='conservatorium'&&!name.startsWith('decal-')&&group.colour==='glass')material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,.28]).setAlphaMode('BLEND');
   const opacity=(spec as {materialOpacity?:Record<string,number>}).materialOpacity?.[group.colour];
