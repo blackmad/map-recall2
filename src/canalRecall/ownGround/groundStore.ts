@@ -277,6 +277,11 @@ export class GroundStore {
     }
     return rings;
   }
+  /** Register id and movable flag of each flat deck of `flatDecks(key)`, same order. */
+  flatDeckMeta(key: string): { id: string; movable: boolean }[] {
+    return (this.fallbackByCell.get(key) ?? []).map(b => ({ id: b.id, movable: b.type === 'Beweegbare brug' }));
+  }
+
   /** Measured bridge ids per cell, for diagnostics and named regressions. */
   deckIds(key: string): string[] { return this.decks(key).map(d => d.profile.id); }
 
@@ -358,7 +363,7 @@ export class GroundStore {
     return {
       key, lod, rect, surface: this.surface, water,
       waterAround: waterAround.filter((g): g is WaterGeometry => !!g),
-      decks: this.decks(key), deckRingsAround, flatDecks: this.flatDecks(key),
+      decks: this.decks(key), deckRingsAround, flatDecks: this.flatDecks(key), flatDeckMeta: this.flatDeckMeta(key),
       osm, osmAround: osmAround.filter((o): o is OsmGroundExtract => !!o),
       project: p => toLocal(p[0], p[1]),
     };

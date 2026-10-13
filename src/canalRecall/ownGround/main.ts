@@ -40,7 +40,7 @@ import type { OsmGroundExtract } from './osmGround.js';
 import { buildStreets, isBridgeWay, prepareWays, routeRibbon, streetTriangles, LIFT, type LocalWay } from './streets.js';
 import { drapeTriangles, emptyMesh, reliefGrid, merge, triangleCount, type MeshArrays } from './drape.js';
 import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMesh, type WaterGeometry } from './water.js';
-import { flatDeckBody, measuredDeckBody } from './decks.js';
+import { flatDeckBody, measuredDeckBody, measuredDeckTop } from './decks.js';
 import { footprintBase, liftRanges } from './placement.js';
 import { routeAhead } from './route.js';
 
@@ -309,7 +309,7 @@ async function loadWater(surface: GroundSurface): Promise<{ geo: WaterGeometry; 
   maskUniforms.waterMask.value = tex; maskUniforms.maskOrigin.value.set(X0, Y0); maskUniforms.maskSize.value.set(mask.width * mask.res, mask.height * mask.res);
   const overWater = (x: number, y: number) => maskDistance(mask, x, y) < 0;
   proto.mask = mask; proto.maskDistance = (x: number, y: number) => maskDistance(mask, x, y);
-  const deckBodies = surface.decks.map(deck => measuredDeckBody(deck, surface.ground, overWater, WATER_Z));
+  const deckBodies = surface.decks.map(deck => measuredDeckBody(deck, surface.ground, overWater, WATER_Z, surface.height));
   const flatTops: MeshArrays[] = [], flatBodies: MeshArrays[] = [];
   for (const pts of flatRings) {
     const { top, body } = flatDeckBody(pts, surface.height, overWater);
@@ -322,7 +322,7 @@ async function loadWater(surface: GroundSurface): Promise<{ geo: WaterGeometry; 
   const shores = geo.shores.map(line => line.filter(inBuilt)).filter(line => line.length > 1);
   meshFrom('quay', quayWallMesh({ polygons: [], shores }, surface.height, WATER_Z, 4, 0.35), M.quay);
   meshFrom('decks', merge([...deckBodies, ...flatBodies]), M.deck, { cast: true });
-  meshFrom('decks', merge(flatTops), M.deck);
+  meshFrom('decks', merge([...flatTops, ...surface.decks.map(deck => measuredDeckTop(deck, surface.height))]), M.deck);
   log('water', { cells: cells.length, measuredDecks: measured.length, flatDecks: flatTops.length, maxDeckEndErrorM: +endError.toFixed(2), mask: `${mask.width}x${mask.height}` });
   return { geo, overWater };
 }
