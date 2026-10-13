@@ -689,6 +689,17 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Shared-frame shadow fill** (2026-10-14, street-survey lane): under the
+  shared rig, shadowed dark-tinted brick drops below luma 60 on block-face
+  chunks, recipe tiles and landmark GLBs (Royal Palace 36 % near-black in
+  shadow; the chunk 50–59 %); the fill is sky-only. Raise the shadow fill
+  (hemisphere/ambient in shadow, or a shadow-intensity floor ~0.45) under
+  `lightRig.ts`, keep the sun-side contrast, measure luma in shadow on the
+  Palace, the Nassaukade block and a canal-house run; also explain why CPU
+  ray casts find 1–10 % occluders where the screen shows 50 % shadow.
+  Recipe tiles need a shared-frame default decision or a legacy-layer path
+  plus tiles for Nassaukade and De Clercqstraat before they replace the
+  generic extrusions.
 - **Desktop perf, next** (profile 2026-10-14, `scripts/ride-perf-owners.mjs`,
   `docs/performance/desktop-20261013.md`): the HUD street-name pass
   (`drawLabels`) walks all 28,931 label anchors every frame and runs the
