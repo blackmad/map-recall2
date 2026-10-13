@@ -1,0 +1,42 @@
+{
+  "canonicalModelId": "mozes-en-aaronkerk",
+  "researchedOn": "2026-10-13",
+  "state": "built-2026-10-13 (replaces the procedural kit in src/canalRecall/landmarkKits.ts via suppressOsmIds)",
+  "destination": {"name": "Mozes en Aäronkerk", "address": "Waterlooplein 205, Amsterdam", "bagPand": "NL.IMBAG.Pand.0363100012253765", "landmarkId": "extract_landmarks_784457716"},
+  "survey": {
+    "bag": "artifacts/landmark-lanes/mozes-en-aaronkerk/raw/bag-pand.json",
+    "3dbag": "artifacts/landmark-lanes/mozes-en-aaronkerk/raw/3dbag.json",
+    "roofHeightmap": "artifacts/landmark-lanes/mozes-en-aaronkerk/roof-heightmap.png",
+    "readings": "Axis 56 degrees counter-clockwise from east, front to the south-west. Hall 23 m wide; front tower blocks 5 m square at the corners with a 3 m recess between; back corner blocks lower with a stuccoed centre. 3DBAG: hall eaves 21.2 m, hipped ridge 27.8 m, tower stages to 36.5-37.4 m (caps), back corner blocks about 15 m, back centre to about 21 m."
+  },
+  "photos": [
+    {"file": "artifacts/landmark-lanes/mozes-en-aaronkerk/commons/Moses_and_Aaron_Church_Amsterdam_2917.jpg", "source": "https://commons.wikimedia.org/wiki/File:Moses_and_Aaron_Church,_Amsterdam_2917.jpg", "licence": "CC BY-SA 4.0", "use": "south-west front head-on (portico, towers, attic, colours); camera-matched render cam-front"},
+    {"file": "artifacts/landmark-lanes/mozes-en-aaronkerk/commons/Amsterdam_Mozes_en_A_ronkerk_side.jpg", "source": "https://commons.wikimedia.org/wiki/File:Amsterdam_Mozes_en_A%C3%A4ronkerk_side.jpg", "licence": "CC BY 3.0", "use": "south-east flank, roof, back corner block"},
+    {"file": "artifacts/landmark-lanes/mozes-en-aaronkerk/commons/Amsterdam_Mozes_en_A_ronkerk_back.jpg", "source": "https://commons.wikimedia.org/wiki/File:Amsterdam_Mozes_en_A%C3%A4ronkerk_back.jpg", "licence": "CC BY 3.0", "use": "north-east back frontispiece and corner block"},
+    {"file": "artifacts/landmark-lanes/mozes-en-aaronkerk/commons/Exterieur_-_Amsterdam_-_20013477_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "east corner, flank and back in one view"},
+    {"file": "artifacts/landmark-lanes/mozes-en-aaronkerk/commons/Exterieur_-_Amsterdam_-_20013478_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "north-west flank (three arched windows)"},
+    {"file": "artifacts/landmark-lanes/mozes-en-aaronkerk/commons/Achterzijde_-_Amsterdam_-_20013471_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "back frontispiece (niche, pilasters, pediment, oculus); neighbours since demolished"},
+    {"file": "artifacts/landmark-lanes/mozes-en-aaronkerk/commons/Gevel_voorzijde_-_Amsterdam_-_20013470_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "front"},
+    {"file": "artifacts/landmark-lanes/mozes-en-aaronkerk/commons/Amsterdam_-_Mozes_en_A_ronkerk_-_belltowers.jpg", "licence": "CC BY-SA 3.0", "use": "tower stages close-up"},
+    {"file": "artifacts/landmark-lanes/mozes-en-aaronkerk/commons/Amsterdam_-_Mozes_en_A_ronkerk_-_facade.jpg", "licence": "CC BY-SA 3.0", "use": "portico close-up"},
+    {"file": "artifacts/landmark-lanes/mozes-en-aaronkerk/commons/AmsterdamMozes.jpg", "licence": "CC BY-SA 3.0", "use": "context"},
+    {"file": "artifacts/landmark-lanes/mozes-en-aaronkerk/commons/Amsterdam_-_Blauwbrug_-_View_NW_towards_Mozes_A_ronkerk.jpg", "licence": "CC BY-SA 4.0", "use": "context"},
+    {"file": "artifacts/landmark-lanes/mozes-en-aaronkerk/commons/J_D_Meijerplein_Casina_Mozes_Aaronkerk_C_Cnobloch.jpg", "licence": "Public domain", "use": "context (historic postcard)"}
+  ],
+  "facadeRhythm": {
+    "south-west front (Waterlooplein)": "Symmetric, cream stucco. Two tower blocks, each with Ionic corner pilasters and a blind round-arched niche over a sunk panel, cornice at 16 m. Between them a portico of four grey stone Ionic columns, one bay deep, grey entablature with the inscription frieze, stucco pediment with a cartouche, slate-roofed. Behind the columns a grey wall: central door, a niche with a statue over it. Above: attic with a balustrade and the statue of Christ. Towers: a square open stage (arched opening per face, slate-blue panels flanking, balustraded sill) with a pediment on each face, a narrower open stage of the same pattern, a slate ogee cap, ball and cross.",
+    "flanks (north-west and south-east)": "Brown brick, three tall round-arched windows with small-paned glazing and light bars, cream cornice at 21.2 m, stone plinth; the stucco tower block shows at the front end, the lower brick corner block at the back.",
+    "north-east back (Jodenbreestraat)": "Symmetric. Stuccoed frontispiece with four pilasters, a round-arched niche with a statue, entablature and pediment with an oculus; either side a lower brick corner block with a cream cornice and a hipped slate roof, each with a door at the foot and two windows above on its outer faces.",
+    "roofs": "Hall: one hipped slate roof (eaves 21.2 m, ridge 27.8 m). Back corner blocks: low hipped slate roofs. Frontispiece: pitched roof behind the pediment. Nothing from the 3DBAG roof meshes."
+  },
+  "colours": {
+    "sampled": "Front (Commons 2917, overcast): stucco #e6ceac / upper #ead4b3, columns #a89690, portico wall #746c67, cornices in shade #777072, tower caps #a1a7b9, tower panels slate-blue grey. Flank (Commons side, sunlit but underexposed): brick #56514d-#4a4341, roof #565758.",
+    "chosen": "stucco (stone slot) #f6e2c0 (renders #bbaa8d on the sunlit front in the game shading, against the photo's #e6ceac under bright overcast; first try #e9d4b2 read too tan), columns/frieze #b9aba4, portico wall #7a726c, brick #7a6258 (brown, not orange), slate #5e6168, tower caps #a1a7b9, tower panels #8e90a8, statues #d8d4cc."
+  },
+  "decisions": [
+    "Plan and heights from BAG/3DBAG; all roofs and facades from intent and photographs.",
+    "Bell-tower openings are dark panels, not real holes.",
+    "Statues are simple lathed figures; the inscription and pediment carving are not modelled.",
+    "The north-west flank is taken as the mirror of the south-east (RCE 20013478 shows the same three windows)."
+  ]
+}

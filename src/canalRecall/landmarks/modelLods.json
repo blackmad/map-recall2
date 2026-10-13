@@ -1548,9 +1548,15 @@
   "triangles": 4565
  },
  "oosterkerk": {
-  "sourceHash": "3b644545a01486eb",
+  "sourceHash": "75c95d3a8d162feb",
   "buildVersion": 2,
-  "bytes": 56128,
-  "triangles": 2560
+  "bytes": 56252,
+  "triangles": 2567
+ },
+ "mozes-en-aaronkerk": {
+  "sourceHash": "93dd16804fae9219",
+  "buildVersion": 2,
+  "bytes": 41464,
+  "triangles": 1384
  }
 }

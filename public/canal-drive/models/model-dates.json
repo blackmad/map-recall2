@@ -1691,6 +1691,16 @@
       "version": "f21d0c3dd1ed1d4a",
       "dateSource": "asset-update"
     },
+    "mozes-en-aaronkerk": {
+      "updatedAt": "2026-10-13T09:06:03.216Z",
+      "version": "93dd16804fae9219",
+      "dateSource": "asset-update"
+    },
+    "mozes-en-aaronkerk.lod1": {
+      "updatedAt": "2026-10-13T09:07:16.117Z",
+      "version": "a3644acfa9a3124f",
+      "dateSource": "asset-update"
+    },
     "muiderkerk": {
       "updatedAt": "2026-10-09T22:24:10.567Z",
       "version": "90d7d5ddf84cd9ce",
@@ -1942,8 +1952,13 @@
       "dateSource": "asset-update"
     },
     "oosterkerk": {
-      "updatedAt": "2026-10-13T08:53:17.303Z",
-      "version": "3b644545a01486eb",
+      "updatedAt": "2026-10-13T09:08:14.204Z",
+      "version": "75c95d3a8d162feb",
+      "dateSource": "asset-update"
+    },
+    "oosterkerk.lod1": {
+      "updatedAt": "2026-10-13T08:53:26.928Z",
+      "version": "4d814972b0babe46",
       "dateSource": "asset-update"
     },
     "oosterparkkerk": {
