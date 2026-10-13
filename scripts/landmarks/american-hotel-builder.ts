@@ -5,6 +5,7 @@ import type {Surface} from './worship-shell';
 import {poly, put, ringFrame, setSink, slab, wallProbe} from './nearbar-kit';
 import type {Frame} from './nearbar-kit';
 import source from './american-hotel-footprints.json';
+import {raisedLettering} from './ornament-kit';
 
 // Local round-head primitives with 4 curve segments per half circle (the shared kit uses 8). The Hotel carries several hundred
 // round-headed openings and the lane budget is < 30000 triangles; at window scale (0.5-1.3 m wide) the polygonal head is invisible.
@@ -128,6 +129,11 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
     }
     slab(b, f, 5.9, 3.35, 6.4, 0.12, 0.4, 'white');                // canopy
     slab(b, f, 5.9, 3.1, 6.4, 0.3, 0.12, 'slate', 0.4);            // canopy valance
+    // AMERICAN in standing letters on the canopy (panoramas 2019/2025; ornament inventory 2026-10-13)
+    {
+      const am = raisedLettering({text: 'AMERICAN', heightM: 0.55, maxWidthM: 5.6, depthM: 0.08});
+      put(b, f, am.geometry.translate(0, am.heightM / 2, 0), 5.9, 3.47, 0.18, 'stone');
+    }
     // big round entrance arch with door
     // the entrance doorway is drawn in the dark bronze, not the pane colour: it is a door, and the rhythm audit counts dark panes as windows
     archSlab(b, f, 12.4, 0.9, 5.4, 6.4, 0.2, 'bronze');
@@ -139,6 +145,12 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
     for (const t of [19.2, 25.9, 32.6]) {
       archBand(b, f, t, 0.7, 5.9, 6.2, 0.45, 0.25, 'stone');
       archWindows(b, f, [t], {y: 1.0, w: 5.0, h: 5.2, bars: 3, rows: 4, sill: 'stone'});
+    }
+    // striped cafe awnings over the three arches (panorama 2019, the Leidseplein terrace; ornament inventory 2026-10-13):
+    // eight cloth strips sloping 1.2 m out from the arch band below the arch head, ochre and cream alternating
+    for (const t of [19.2, 25.9, 32.6]) for (let k = 0; k < 8; k++) {
+      const strip = new T.BoxGeometry(5.6 / 8, 0.04, 1.2).translate(0, 0, 0.6).rotateX(0.6);
+      put(b, f, strip, t - 2.8 + 5.6 * (k + 0.5) / 8, 5.5, 0.25, k % 2 ? 'stone' : 'ochre');
     }
     // Loggia storey: a balcony balustrade runs across the entrance bay and the cafe part, and every bay (the entrance and the three
     // cafe arches) carries the same three tall windows (bay centre -1.8, 0, +1.8). Until 2026-10-11 the entrance bay had a solid

@@ -4,6 +4,7 @@ import {addShell} from './worship-shell';
 import {onWall, wallsOf, type Wall} from './worship-walls';
 import {archWindow, wallBetween, wallPoint} from './worship-kit';
 import source from './willem-de-zwijgerkerk-footprints.json';
+import {raisedLettering} from './ornament-kit';
 
 /**
  * Willem de Zwijgerkerk, Olympiaweg 14 (Cornelis Kruyswijk, 1931, Amsterdam School). Dark red-brown brick, dark tiled roofs:
@@ -68,7 +69,14 @@ export function buildWillemDeZwijgerkerk(_w: number, _d: number, b: BuildingTool
   // windows either side of the entrance and a slit at the apex. There is no tall window between entrance and group.
   const ax = 6.6;
   archWindow(b, sg, ax, 0, 3.0, 3.7, {trim: 'stone', glass: 'dark', mullions: 1}); // round-arched entrance, double doors
-  onWall(b, sg, ax, 5.9, 3.2, 0.8, 0.08, 'greyBrick', 0.02); // lettering plate "WILLEM DE ZWIJGER KERK"
+  // Lettering plate: green-blue enamel with WILLEM DE ZWIJGER over a large KERK in cream raised letters (panorama 2024;
+  // until the ornament inventory of 2026-10-13 it was a blank grey plate).
+  onWall(b, sg, ax, 5.9, 3.2, 0.8, 0.08, 'copper', 0.02);
+  for (const [text, y, h, wmax] of [['WILLEM DE ZWIJGER', 6.53, 0.15, 2.6], ['KERK', 6.2, 0.36, 1.9]] as const) {
+    const {geometry} = raisedLettering({text, heightM: h, maxWidthM: wmax, depthM: 0.03});
+    const q = wallPoint(sg, ax, 0.1);
+    b.add(geometry, 'stone', q[0], y, q[1], Math.atan2(sg.n[0], sg.n[1]));
+  }
   onWall(b, sg, ax, 6.1, 2.2, 0.3, 0.1, 'stone', 0.1);
   onWall(b, sg, ax, 9.3, 4.9, 4.1, 0.08, 'white', 0); // pale frame of the three-light group
   for (const dx of [-1.6, 0, 1.6]) {
