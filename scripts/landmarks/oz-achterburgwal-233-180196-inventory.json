@@ -1,0 +1,139 @@
+{
+ "schemaVersion": 1,
+ "id": "oz-achterburgwal-233-180196",
+ "pand": "0363100012180196",
+ "signature": [
+  "string-courses-cornice",
+  "rounded-brick-wing"
+ ],
+ "walls": [
+  {
+   "tag": "w02-283",
+   "bearing": 283,
+   "lengthM": 23.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000224_pano_0000_000756",
+   "capturedAt": "2017-03-27",
+   "checked": true,
+   "items": [
+    {
+     "id": "string-courses-cornice",
+     "kind": "other",
+     "where": "whole west front, between window rows and under the roof",
+     "approxSizeM": [
+      23,
+      14
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000224_pano_0000_000756",
+     "how": "stringCourses and cornice on the brick-bay-grid group"
+    },
+    {
+     "id": "rounded-brick-wing",
+     "kind": "tower",
+     "where": "curved brick wing",
+     "approxSizeM": [
+      23,
+      15
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000224_pano_0000_000756",
+     "how": "straight wall: the 3DBAG LoD2.2 plane is flat here; 4 storeys x 5 bays"
+    },
+    {
+     "id": "segmental-heads",
+     "kind": "window-shape",
+     "where": "arched brick heads over first-floor windows",
+     "approxSizeM": [
+      1.2,
+      0.5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000224_pano_0000_000756",
+     "how": "flat window heads; arched openings need system brick-bay-grid arches, left out for the 5 m bays"
+    },
+    {
+     "id": "iron-stair",
+     "kind": "other",
+     "where": "right end, stair to the side door",
+     "approxSizeM": [
+      3,
+      3
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000224_pano_0000_000756",
+     "skip": {
+      "reason": "too-small",
+      "note": "thin iron stair and railing, not a mass"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w01-282",
+   "bearing": 282,
+   "lengthM": 28.7,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-30_05-16-46_01358",
+   "capturedAt": "2025-06-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "baroque-gate-crest",
+     "kind": "crest",
+     "where": "carved stone gateway with cartouche and volutes over the double door",
+     "approxSizeM": [
+      4,
+      4
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-06-30_05-16-46_01358",
+     "skip": {
+      "reason": "not-visible",
+      "note": "the gateway stands on a wall (3DBAG panel 266) that is an all-party wall in the shell, so no group can place it; component wanted: carved portal with crest"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-103",
+   "bearing": 103,
+   "lengthM": 23.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002999_pano_0002_000035",
+   "capturedAt": "2023-03-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "arched-door-keystones",
+     "kind": "window-shape",
+     "where": "arched door and window heads with keystone blocks",
+     "approxSizeM": [
+      2,
+      4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002999_pano_0002_000035",
+     "how": "plain rectangular windows in 4 storeys x 6 bays with string courses"
+    }
+   ]
+  },
+  {
+   "tag": "w04-103",
+   "bearing": 103,
+   "lengthM": 19.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002999_pano_0002_000035",
+   "capturedAt": "2023-03-20",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
