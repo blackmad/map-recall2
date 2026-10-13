@@ -1,0 +1,137 @@
+{
+ "schemaVersion": 1,
+ "id": "hamerkanaal-209-243116",
+ "pand": "0363100012243116",
+ "signature": [
+  "kromhouthal-lettering",
+  "kromhouthal-gable",
+  "canal-wing-arches"
+ ],
+ "walls": [
+  {
+   "tag": "w01-169",
+   "bearing": 169,
+   "lengthM": 89.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001587_pano_0000_002256",
+   "capturedAt": "2020-01-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "kromhouthal-lettering",
+     "kind": "lettering",
+     "where": "white board between the two window rows of the engine-hall gable",
+     "approxSizeM": [
+      12,
+      1.2
+     ],
+     "plan": "modelled",
+     "how": "signage wall mount KROMHOUTHAL on walls[1]",
+     "seenIn": "TMX7316010203-001587_pano_0000_002256"
+    },
+    {
+     "id": "kromhouthal-gable",
+     "kind": "tower",
+     "where": "east end: tall dark-brick gable with glazed ground floor",
+     "approxSizeM": [
+      19,
+      12
+     ],
+     "plan": "simplified",
+     "how": "3DBAG gable silhouette, 3 storeys of 9 bays (glazed ground floor plus two rows of small windows); the stepped corbel top and the shield emblem are not drawn",
+     "seenIn": "TMX7316010203-001587_pano_0000_002256"
+    },
+    {
+     "id": "canal-wing-arches",
+     "kind": "window-shape",
+     "where": "long two-storey wing, arched windows",
+     "approxSizeM": [
+      58,
+      8
+     ],
+     "plan": "modelled",
+     "how": "arches segmental band brick on walls[0], 15 bays x 2 storeys",
+     "seenIn": "TMX7316010203-001587_pano_0000_002256"
+    },
+    {
+     "id": "stork-lettering",
+     "kind": "lettering",
+     "where": "white STORK board on the wing",
+     "approxSizeM": [
+      4,
+      1
+     ],
+     "plan": "modelled",
+     "how": "signage wall mount STORK on walls[0]",
+     "seenIn": "TMX7316010203-001587_pano_0000_002256"
+    },
+    {
+     "id": "het-ij-board",
+     "kind": "sign",
+     "where": "pale blue HET IJ board on the western wing",
+     "approxSizeM": [
+      10,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a painted board on a wing the recipe leaves blank-lettered; text not legible enough to letter"
+     },
+     "seenIn": "TMX7316010203-001587_pano_0000_002256"
+    }
+   ]
+  },
+  {
+   "tag": "w02-79",
+   "bearing": 79,
+   "lengthM": 85.6,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w03-350",
+   "bearing": 350,
+   "lengthM": 55.7,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w04-259",
+   "bearing": 259,
+   "lengthM": 51.1,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w05-79",
+   "bearing": 79,
+   "lengthM": 50.3,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
