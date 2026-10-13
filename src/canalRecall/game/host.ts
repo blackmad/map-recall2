@@ -237,6 +237,31 @@ export interface RecallHost extends GameCoreHost {
   /** Normalised names due for spaced review — overview warm tint. */
   _routeReviewDue: Record<string, true>;
 
+  _updateRacing(dt: number): void;
+  _liveRoutePath: WorldPoint[] | null;
+  showMiniMap: boolean;
+  /** How the open question holds the vehicle: `riding` leaves it moving. */
+  quizPromptMode?: import('./ridingPrompt').PromptMode;
+  /** Timing of the open riding question; `expired` once its card is gone but
+   *  the street has not been left (name still withheld). */
+  _ridingState?: import('./ridingPrompt').RidingPromptState | null;
+  /** The riding state is a budget-declined name with no question behind it. */
+  _ridingSilent?: boolean;
+  /** `false` turns riding questions off; otherwise they follow the page. */
+  ridingPrompts?: boolean;
+  /** Cached: does the frame loop call `_quizFreezesRide`? */
+  _frameLoopHonoursRiding?: boolean;
+  /** Route asks per rolling minute (default 2; Infinity = ask everything). */
+  maxAsksPerMinute?: number;
+  _questionBudget?: import('./questionBudget').QuestionBudgetState;
+  /** The plaque feedback line being timed, and when it appeared. */
+  _feedbackText?: string;
+  _feedbackSince?: number | null;
+  _promptLog?: Array<{
+    at: number; name: string; kind: string; mode: import('./ridingPrompt').PromptMode;
+    speedBefore?: number; speedAfter?: number; event?: string;
+  }>;
+
   quizCurrentName: string;
   quizCandidateName: string;
   quizCandidateTimer: number;
@@ -371,6 +396,7 @@ export interface PresentationHost extends GameCoreHost {
   quizCurrentName: string;
   quizCandidateName: string;
   quizPromptSubject: string;
+  _ridingState?: import('./ridingPrompt').RidingPromptState | null;
   _activeTransitLine: string;
   _transitLineStickyAt: number | null;
   quizPromptSegmentIndex: number;
