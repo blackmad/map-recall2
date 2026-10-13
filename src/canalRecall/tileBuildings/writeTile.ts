@@ -251,12 +251,20 @@ export async function convertGlbUnit(source: Uint8Array, extras: Record<string, 
     prim.setMaterial(cityMaterial(doc, cache, {uv: prim.getAttribute('TEXCOORD_0') ? 'uv' : 'box', doubleSided: !!m!.getDoubleSided()}));
     cityTriangles += tri;
   }
-  await doc.transform(join({keepNamed: false}), prune());
+  // keepAttributes: prune would drop TEXCOORD_0 (no texture reads it), but the city-look shader does.
+  await doc.transform(join({keepNamed: false}), prune({keepAttributes: true}));
   const all: number[] = [];
   for (const mesh of doc.getRoot().listMeshes()) for (const prim of mesh.listPrimitives()) { const p = prim.getAttribute('POSITION')!; for (let i = 0; i < p.getCount(); i++) all.push(...p.getElement(i, [])); }
   const bounds = boundsOf(all);
   doc.getRoot().setExtras({unit: {...extras, triangles, cityTriangles, passthrough: passthrough.length}});
-  await doc.transform(quantize({pattern: /^(POSITION|NORMAL)$/, quantizePosition: 16, quantizeNormal: 8}));
+  // Box-projected primitives take their UVs from `position` in the shader, scaled by the model matrix only; quantized
+  // positions put the dequantization in the node transform, which the runtime folds into the instance matrix, so the
+  // brick would be laid out in normalised units. Such units keep float positions.
+  const box = doc.getRoot().listMaterials().some(m => (m.getExtras() as any)?.cityLook?.uv === 'box');
+  await doc.transform(quantize({pattern: box ? /^NORMAL$/ : /^(POSITION|NORMAL)$/, quantizePosition: 16, quantizeNormal: 8}));
+  // Gate: a primitive drawn with authored UVs must still have them.
+  for (const mesh of doc.getRoot().listMeshes()) for (const prim of mesh.listPrimitives())
+    if ((prim.getMaterial()?.getExtras() as any)?.cityLook?.uv === 'uv' && !prim.getAttribute('TEXCOORD_0')) throw Error(`unit ${String(extras.source ?? '')}: uv material without TEXCOORD_0`);
   await compress(doc);
   const primitives = doc.getRoot().listMeshes().reduce((s, m) => s + m.listPrimitives().length, 0);
   return {bytes: await io.writeBinary(doc), triangles, primitives, vertices: all.length / 3, report: {triangles, cityTriangles, passthrough, inferred, bounds, primitives}};

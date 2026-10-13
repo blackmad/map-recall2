@@ -810,7 +810,7 @@ Code: `src/canalRecall/tileBuildings/` (schema, tile math, soups, writer, runtim
 {"version": 1, "z": 14, "x": 8413, "y": 5384, "sources": {"faces": "<sha>", "types": "<sha>", "catalogue": "<sha>"},
  "pands": {"0363100012081118": {"kind": "canal-house", "intent": "face:bilder-081118-155417/0",
    "fitted": {"eavesM": 14.2, "storeyHeightsM": [4.1, 3.4, 3.3, 3.4], "frontWidthM": 6.1, "roofMaxM": 17.1, "triangles": 2481},
-   "mid": [2, 5, 3, 142, 171, 1894, 1, 3, 1, 8, 1], "covers": ["NL.IMBAG.Pand.0363100012081118"], "mesh": [33654, 21538]}}}
+   "mid": [2, 5, 3, 33, 0, 1909, 1, 4, 1, 7, 1], "covers": ["NL.IMBAG.Pand.0363100012081118"], "mesh": [33654, 21538]}}}
 ```
 
 Decisions (each one changes the schema, so the reason is kept here):
@@ -926,3 +926,41 @@ hash; the machinery is in place and tested (`compiler.test.ts` instances two equ
   (IIFE, global `CanalRecallTileBuildings`; THREE comes from `CanalRecallThree`), publish `artifacts/recipe-tiles/`
   `{index.json, building-mesh/, units/}` to `public/canal-drive/recipe-tiles/` after review. Without the bundle or
   the data the flag logs one warning and nothing changes.
+
+### Pilots and measurements (desktop 1280×800, Chrome, 2026-10-13)
+
+Staging: 3,149 pands (61 canal-house faces/houses on Bilderdijkstraat, 6 large recipes, 3,072 Nieuw-West type
+instances, 10 landmarks as `kind: glb`) in 17 z14 recipe tiles (1.7 MB JSON) and 64 z16 mesh tiles (4.49 MB) plus
+units (4.72 MB; landmark units keep float positions where box-projected, see below). 0 failed pands; 13/15
+Bilderdijkstraat chunks byte-identical to the installed ones. Golden: `golden.test.ts` recompiles four tiles
+(211 pands, every kind) and compares per-pand triangle hashes with `pilot-golden.json`.
+
+Static spots (`tests/e2e/recipe-tiles.spec.ts`, look-consistency camera, 6 s of forced repaints, means). Off is
+`?sharedFrame=1&cityLook=1`, on adds `&recipeTiles=1`, types is `&buildingTypes=1`. "ms" is the CPU time of the
+shared frame's main pass; frames are vsync-bound (16.67 ms) in every mode.
+
+| spot | main pass ms off / on / types | draw calls off / on / types | triangles k off / on | recipe-tile meshes | px differ off→on |
+|---|---|---|---|---|---|
+| bilderdijk | 0.74 / 0.69 / 0.68 | 301 / 144 / 277 | 2057 / 2127 | 4 | 2.5% |
+| bilderdijk-north | 0.97 / 0.89 / 1.48 | 425 / 226 / 428 | 3626 / 3436 | 5 | 3.4% |
+| nieuw-west | 0.50 / 0.54 / 0.74 | 66 / 63 / 98 | 2344 / 2423 | 3 | 44.9% (types replace the BAG blocks; 31.8% vs types) |
+| slotermeer | 0.47 / 0.54 / 0.68 | 53 / 64 / 87 | 2338 / 2415 | 23 | 16.2% |
+| dam | 2.63 / 2.73 / 2.77 | 403 / 385 / 404 | 2564 / 2560 | 4 | 25.3% (shading of the Palace) |
+| westerkerk | 0.96 / 1.07 / 1.06 | 218 / 198 / 219 | 2572 / 2569 | 3 | 6.6% |
+| rijksmuseum | 3.27 / 3.94 / 3.55 | 932 / 925 / 924 | 5100 / 4886 | 1 | 16.4% (UV'd brick; shadow edges) |
+| politie-leijenbergh | 0.68 / 0.75 / 0.81 | 35 / 25 / 35 | 2907 / 2907 | 1 | 0.7% |
+| leidsestraat-67 | 2.28 / 2.94 / 2.46 | 199 / 182 / 191 | 2754 / 2226 | 2 | 2.7% |
+
+Ride (`scripts/ride-perf-fixed-route.mjs`, Anne Frank Huis → Rijksmuseum, `RECIPE_TILES_DIR=artifacts/recipe-tiles`):
+desktop 20 s, off / on / off again: map render mean 2.61 / 2.35 / 2.72 ms (p95 3.6 / 3.1 / 4.0), three layers per
+frame 1.07 / 0.99 / 1.10 ms, draw calls mean 439 / 430 / 439, heap 639 / 601 / 658 MB. iPhone 13 at 4× throttle,
+12 s, off / on: map render 7.11 / 6.73 ms, three layers 3.08 / 2.92 ms, draw calls 320 / 311.
+
+Findings that shaped the code:
+- gltf-transform `prune()` drops `TEXCOORD_0` when no texture reads it; the city-look shader does. Units are pruned
+  with `keepAttributes: true`, and the converter refuses a `uv` material without UVs.
+- Box-projected primitives derive UVs from `position` in the shader; quantized positions would move the scale
+  into the instance matrix and lay the brick out in normalised units, so units with a `box` material keep float
+  positions (+0.7 MB over the pilots).
+- The draw-call win is where the legacy loaders draw many small meshes (Bilderdijkstraat block faces: 301 → 144);
+  landmark-heavy spots are dominated by landmarks outside the pilot list, so they barely move.
