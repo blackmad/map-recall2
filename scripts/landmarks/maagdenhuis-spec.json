@@ -1,0 +1,43 @@
+{
+  "id": "maagdenhuis",
+  "name": "Maagdenhuis — University of Amsterdam",
+  "landmarkId": "extract_landmarks_1617200654",
+  "modelUrl": "./models/maagdenhuis.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012167925"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [4.8901964, 52.3685622],
+    "headingDegrees": 0,
+    "lengthMetres": 55.5,
+    "widthMetres": 45.5
+  },
+  "surveyed": {
+    "anchor": [4.8901964, 52.3685622],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG pand 0363100012167925 footprint centroid and 3DBAG LoD2.2 walls and roofs verbatim; native east/south metres from the anchor (the large-tier frame, origin = BAG footprint centroid)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#7a4a3b",
+    "stone": "#e9e5d8",
+    "frame": "#ece8dc",
+    "glass": "#566d79",
+    "dark": "#2a2e32",
+    "slate": "#4b5056",
+    "concrete": "#85878a",
+    "white": "#e4dfd0",
+    "blue": "#c6a24a"
+  },
+  "attribution": {
+    "title": "Maagdenhuis, Spui 21",
+    "author": "Map Recall",
+    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167925",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) with block-kit facade systems cut into the wall groups, plus hand-modelled plinth, string course, keystone consoles, entrance stair, pediment and tympanum relief read from Gemeente Amsterdam panoramas (CC BY 4.0) and Commons photographs RCE 20014425 (G.Th. Delemarre, CC BY-SA 4.0), 20408833 (Sergé Technau, CC BY-SA 4.0) and UvAMaagdenhuis.jpg (Mtcv, CC BY-SA 3.0). No pixels or meshes imported."
+  },
+  "bagYear": 1787
+}

@@ -190,12 +190,12 @@ export function drawArchedOpening(c: PanelCtx, u0: number, u1: number, v0: numbe
   // frameW 0: no frame ring, the glass (or door leaf) fills the opening
   const fw = Math.max(0, Math.min(w.frameW, (u1 - u0) / 4, (v1 - v0) / 4)), inner = fw > 0 ? insetConvex(outline, fw) : outline;
   if (fw > 0) triPoly(c, w.frame, outline, [inner], (u, v) => Q(u, v, 0), part);
-  triPoly(c, w.glass, inner, [], (u, v) => Q(u, v, 0), part);
+  triPoly(c, w.glass, inner, [], (u, v) => Q(u, v, -c.glassBack), part);
   const bw = fw > 0 ? fw : 0.06;
   const s = v1 - archRise(u1 - u0, v1 - v0, w.arch);
   const rows = [...w.rowsAt.map(f => v0 + (v1 - v0) * f).filter(v => v < s - fw), ...(w.arch.springBar ? [s] : [])];
   if (w.mullAt.length || rows.length) {
-    const bars = c.part(), fw = bw, g = (a: number, b: number, lo: number, hi: number) => c.mesh.quad(w.frame, Q(a, lo, 0.015), Q(b, lo, 0.015), Q(b, hi, 0.015), Q(a, hi, 0.015), bars, n);
+    const bars = c.part(), fw = bw, g = (a: number, b: number, lo: number, hi: number) => c.mesh.quad(w.frame, Q(a, lo, c.barOut), Q(b, lo, c.barOut), Q(b, hi, c.barOut), Q(a, hi, c.barOut), bars, n);
     for (const f of w.mullAt) {
       const u = u0 + (u1 - u0) * f, top = Math.min(topAt(inner, u - fw / 2), topAt(inner, u + fw / 2));
       if (top > v0 + fw + 0.1) g(u - fw / 2, u + fw / 2, v0 + fw, top);

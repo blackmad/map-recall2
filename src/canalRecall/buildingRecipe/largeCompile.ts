@@ -166,6 +166,8 @@ export interface LargeCompileHooks {
   budget?: number;
   /** glazing bars and doors this far in front of the glass (`ComposeOptions.barOffsetM`; default 0.015, unchanged output) */
   barOffsetM?: number;
+  /** glass setback behind the frame ring in recessed openings (compose `glassBackM`; default 0) */
+  glassBackM?: number;
   /** leave a fitted cell empty (after the entrance/garage rule) so the bespoke builder can draw that part of the wall itself */
   skipCell?: (p: Panel, floor: number, bay: number, bays: number, group: LargeGroupFit | undefined) => boolean;
 }
@@ -180,6 +182,7 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, facts: Buildin
     closedBoxes: true,
     closedBands: !!intent.closedBands,
     ...(hooks.barOffsetM !== undefined ? {barOffsetM: hooks.barOffsetM} : {}),
+    ...(hooks.glassBackM !== undefined ? {glassBackM: hooks.glassBackM} : {}),
     mergeKey: wi => recipe.wallGroup[wi],
     systemFor: p => groupOf(p.index)?.specSystem ?? recipe.other.specSystem,
     wallSlotFor: p => { const g = groupOf(p.index); return !g ? 'wall' : g.system === 'curtain-wall' ? g.slots.curtain : g.slots.wall; },

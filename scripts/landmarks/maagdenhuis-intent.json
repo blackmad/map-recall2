@@ -1,0 +1,22 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "maagdenhuis",
+ "pandId": "0363100012167925",
+ "address": "Maagdenhuis, Spui 21, Amsterdam (Jacob Otten Husly, 1787; University of Amsterdam administration)",
+ "sources": [
+  {"id": "pano-2019-spui-front", "kind": "street-panorama", "capturedAt": "2019-01-15", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001054_pano_0000_000815/", "image": "artifacts/landmark-briefs/maagdenhuis/w07-346.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+  {"id": "pano-2023-east-alley", "kind": "street-panorama", "capturedAt": "2023-01-13", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002931_pano_0002_000013/", "image": "artifacts/landmark-briefs/maagdenhuis/w02-73.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+  {"id": "pano-2022-west", "kind": "street-panorama", "capturedAt": "2022-06-27", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002628_pano_0000_000244/", "image": "artifacts/landmark-briefs/maagdenhuis/w08-259.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
+ ],
+ "walls": [
+  {"wallSurfaces": [45, 39, 37, 141, 34, 28, 2, 4, 88, 89], "system": "brick-bay-grid", "storeys": 4, "baysPerStorey": 3, "windows": "cross", "ground": "portals", "frames": false, "arches": {"ground": "round", "band": "voussoir"}, "blankStoreys": [4], "cornice": true},
+  {"wallSurfaces": [3, 8, 12, 147, 277, 279, 9, 16, 205, 13, 153, 255, 276], "system": "brick-bay-grid", "alignWith": 0, "windows": "cross", "ground": "system", "stringCourses": true, "cornice": true},
+  {"wallSurfaces": [51, 55, 125, 56, 52, 93, 94, 317, 65, 66, 145, 152, 63, 121, 210, 216], "system": "brick-bay-grid", "alignWith": 0, "windows": "cross", "ground": "system", "stringCourses": true, "cornice": true},
+  {"wallSurfaces": [6, 87, 68, 70, 77, 81], "system": "brick-bay-grid", "alignWith": 0, "windows": "cross", "ground": "system", "cornice": true}
+ ],
+ "otherWalls": "blank",
+ "roof": {"material": "slate"},
+ "palette": {"brick": "#6e4636", "frame": "#e6e2d6", "door": "#34444e", "stone": "#e3ded0", "wallMaterial": "brick"},
+ "notes": ["draft 2"]
+}

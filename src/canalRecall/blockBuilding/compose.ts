@@ -27,8 +27,11 @@ export interface ComposeOptions {
   /** large tier (opt-in): bands (string courses, cornices, fascias) are closed solids (back face, and end caps at mitred joints), so they leave no open edge where 3DBAG faces stand a few cm off the panel plane or the next panel's band stops short. Default off: earlier large recipes stay byte-identical. */
   closedBands?: boolean;
   /** recess mode (opt-in): glazing bars and doors stand this far in front of the glass (default 0.015). The 1.5 cm default is
-   *  inside the audit's 2 cm coplanar band (bars z-fight with the glass at range); 0.05 clears it. Unset: output byte-identical. */
+   *  inside the audit's 2 cm coplanar band (bars z-fight with the glass at range); 0.05 clears it as closed boxes, 0 puts the
+   *  bars on the glass plane (pair with glassBackM). Unset: output byte-identical. */
   barOffsetM?: number;
+  /** Glass of recessed openings sits this far (m) behind the frame ring and bars; default 0. With barOffsetM 0 the bars never overlap the glass within the audit's 2 cm. */
+  glassBackM?: number;
   /** Walls (indices into `set.walls`) with different keys never merge into one panel (large-tier wall groups). */
   mergeKey?: (wall: number) => number;
   /** Host wall slot per panel (recess mode only, where walls are emitted after the facade systems). */
@@ -60,6 +63,7 @@ class Ctx {
   closedBands = false;
   /** `ComposeOptions.barOffsetM` */
   barOut = 0.015;
+  glassBack = 0;
   constructor(public mesh: MeshBuilder, public p: Panel, public panels: Panel[]) {}
   /**
    * Cut a rectangular opening into one member wall when it lies inside it with 3 cm to spare and clear of other holes.
@@ -147,7 +151,7 @@ export interface Cell { u0: number; u1: number; v0: number; v1: number; bay: num
 export function barQuad(c: Ctx, slot: Slot, Q: (u: number, v: number, d: number) => V3, a: number, b: number, lo: number, hi: number, d0: number, d1: number, part: number) {
   const { mesh, p } = c;
   mesh.quad(slot, Q(a, lo, d1), Q(b, lo, d1), Q(b, hi, d1), Q(a, hi, d1), part, p.n);
-  if (c.barOut === 0.015) return;
+  if (c.barOut <= 0.015) return;
   mesh.quad(slot, Q(a, hi, d0), Q(b, hi, d0), Q(b, hi, d1), Q(a, hi, d1), part, UP);
   mesh.quad(slot, Q(a, lo, d0), Q(b, lo, d0), Q(b, lo, d1), Q(a, lo, d1), part, DOWN);
   mesh.quad(slot, Q(a, lo, d0), Q(a, hi, d0), Q(a, hi, d1), Q(a, lo, d1), part, scale(p.r, -1));
@@ -241,7 +245,7 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
   const g = (a: number, b: number, lo: number, hi: number, slot: string, d: number, pt = part) => c.mesh.quad(slot, Q(a, lo, d), Q(b, lo, d), Q(b, hi, d), Q(a, hi, d), pt, n);
   g(u0, u1, v0, v0 + fw, frameSlot, 0); g(u0, u1, v1 - fw, v1, frameSlot, 0);
   g(u0, u0 + fw, v0 + fw, v1 - fw, frameSlot, 0); g(u1 - fw, u1, v0 + fw, v1 - fw, frameSlot, 0);
-  g(u0 + fw, u1 - fw, v0 + fw, v1 - fw, glassSlot, 0);
+  g(u0 + fw, u1 - fw, v0 + fw, v1 - fw, glassSlot, -c.glassBack);
   const mulls = w.mullAt?.length ? w.mullAt : Array.from({ length: w.mull ?? 0 }, (_, k) => (k + 1) / ((w.mull ?? 0) + 1));
   const rows = w.rowsAt?.length ? w.rowsAt : Array.from({ length: w.rows ?? 0 }, (_, k) => (k + 1) / ((w.rows ?? 0) + 1));
   if (mulls.length || rows.length || w.transom) {
@@ -555,6 +559,7 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
     c.closedBoxes = !!opts.closedBoxes;
     if (opts.barOffsetM !== undefined) c.barOut = opts.barOffsetM;
     c.closedBands = recess > 0 && !!opts.closedBands;
+    c.glassBack = opts.glassBackM ?? 0;
     c.recess = recess; c.wallSlot = recess > 0 ? opts.wallSlotFor?.(p) ?? wallSlot : wallSlot;
     const cells: Cell[] = [];
     const finish = (levels: number[]) => {

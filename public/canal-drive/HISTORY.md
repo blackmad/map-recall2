@@ -1,5 +1,39 @@
 # Canal Recall — what is built
 
+## Hoofdbureau rebuilt from measured facades; Maagdenhuis and two memorials (2026-10-13, evening)
+
+Lane `rework/hoofdbureau-20261013`: every street front of the Hoofdbureau
+van Politie (Elandsgracht) measured on rectified panorama crops
+(`hoofdbureau-elandsgracht-facades.json`, ten walls; `elevation-grid.ts`
+puts a metre grid on a crop, `-walls.ts` maps a wall to its 3DBAG panel).
+The hand-made parts are now kit mesh drawn in the wall's frame: the open
+corner ground storey as a 2 m recess on columns (the kit had filled it with
+windows), the arms relief and banner, POLITIE lettering with the emblem,
+the Marnixstraat end block's balcony, ledge, glazed top and bowed roof
+slab, four French windows on the Singelgracht end, the quay front's
+measured 1.85 m pitch. Marnixstraat cut from five to four storeys to match
+the photos. 35,530 tris, 484 KB, slots 100 %, coplanar z-fight 47.4 →
+0.1 m², open edges 108 → 0; inventory 31 items, 0 open. The user's "poor
+reconstruction" / "weird use of kit" sheets (a spire tower, a curved
+arcade) do not match any Hoofdbureau wall; they match the American Hotel,
+which gets its own lane.
+
+Lane `landmarks/queue-5a-20261013`: Maagdenhuis (Spui 21, large-tier kit
+on the 3DBAG massing, 10,004 tris, full-width pediment, relief figures as
+blocks), Rembrandtmonument (1,852 tris) and Vondelmonument (2,056 tris,
+three allegories, posts and chains). Both memorials are coarse figures and
+are on the board for a sculpture pass.
+
+Both lanes added a glazing-bar standoff to the facade kit; the merge keeps
+one: `barOffsetM` (closed-box bars when above the 1.5 cm default, on-glass
+bars at 0) and `glassBackM` (glass set back behind the frame ring), both
+opt-in with byte-identical default output (fit-golden: 59 house recipes
+identical; both GLBs re-export byte-identical to the lanes').
+`check-manual-landmarks` now admits free-standing kinds (memorial,
+standalone structure, the three vessels, Sloterdijk station) instead of
+failing on `homomonument` as it had since 94e7780f.
+
+
 ## Own ground: junction strays, area:highway, dissolve, the edge from the air (2026-10-13, evening)
 
 Lane `ground/own-ground-defects-20261013`. The Rozengracht × Marnixstraat

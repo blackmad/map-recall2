@@ -1,0 +1,43 @@
+{
+ "schemaVersion": 1,
+ "id": "vondelmonument",
+ "signature": ["v-figure", "v-allegories", "v-pedestal"],
+ "walls": [
+  {
+   "tag": "front-130", "bearing": 130, "lengthM": 3.4, "centre": [4.874086, 52.360017],
+   "evidence": "photo", "panoId": "TMX7316010203-000259_pano_0003_000839", "capturedAt": "2017-04-13", "checked": true,
+   "note": "Front of the monument from the south-east (artifacts/landmark-refs/vondelmonument/pano-b.jpg); bronze poet, three seated allegories, inscription panel, chain posts.",
+   "items": [
+    {"id": "v-figure", "kind": "sculpture", "where": "bronze Vondel seated in a high-backed chair, cloak over the shoulders, forearm on a book on the knee", "approxSizeM": [1.2, 2.9], "plan": "simplified",
+     "how": "builder: chair boxes, tapered limbs, extruded cloak, ellipsoid head; no facial or costume detail", "seenIn": "TMX7316010203-000259_pano_0003_000839"},
+    {"id": "v-allegories", "kind": "sculpture", "where": "three seated stone allegorical figures (poetry, drama and the arts) against the die, the central one raised", "approxSizeM": [3.4, 1.4], "plan": "simplified",
+     "how": "builder: three seated block-and-cylinder figures on the base step with arms and heads; attributes (lyre, mask) omitted", "seenIn": "TMX7316010203-000259_pano_0003_000839"},
+    {"id": "v-pedestal", "kind": "other", "where": "pale sandstone pedestal: stepped base, die, moulded cap and dark bronze plinth, about 4.7 m high", "approxSizeM": [5.2, 4.7], "plan": "modelled",
+     "how": "builder: stacked boxes at panorama-measured proportions", "seenIn": "TMX7316010203-000259_pano_0003_000839"},
+    {"id": "v-inscription", "kind": "sign", "where": "inscription panel and carved relief panels on the die", "approxSizeM": [1.2, 0.8], "plan": "simplified",
+     "how": "raised plates 6 cm proud of the die; text not legible, left out", "seenIn": "TMX7316010203-000259_pano_0003_000839"},
+    {"id": "v-posts", "kind": "other", "where": "ring of eight carved sandstone posts with gabled caps joined by chains, round the monument", "approxSizeM": [12.8, 1.7], "plan": "simplified",
+     "how": "builder: eight box posts with cone caps and thin dark chain bars on an octagonal kerb; carved ornament omitted", "seenIn": "TMX7316010203-000259_pano_0003_000839"}
+   ]
+  },
+  {
+   "tag": "back-310", "bearing": 310, "lengthM": 3.4, "centre": [4.874086, 52.360017],
+   "evidence": "photo", "panoId": "TMX7316010203-000259_pano_0003_000838", "capturedAt": "2017-04-13", "checked": true,
+   "note": "Rear and sides seen from the park paths: plain die panels, the poet from behind.", "items": []
+  },
+  {
+   "tag": "side-40", "bearing": 40, "lengthM": 3.4, "centre": [4.874086, 52.360017],
+   "evidence": "photo", "panoId": "TMX7316010203-000259_pano_0003_000840", "capturedAt": "2017-04-13", "checked": true,
+   "note": "Side face with a plain panel.", "items": []
+  },
+  {
+   "tag": "side-220", "bearing": 220, "lengthM": 3.4, "centre": [4.874086, 52.360017],
+   "evidence": "photo", "panoId": "TMX7316010203-000259_pano_0003_000841", "capturedAt": "2017-04-13", "checked": true,
+   "note": "Opposite side face with a plain panel.", "items": []
+  }
+ ],
+ "sources": [
+  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/panoramas/", "licence": "CC BY 4.0"},
+  {"name": "Dguendel, Vondelpark monument (Commons)", "url": "https://commons.wikimedia.org/wiki/File:Amsterdam,_Vondelpark_monument_of_Joost_van_den_Vondel.jpg", "licence": "CC BY 4.0"}
+ ]
+}
