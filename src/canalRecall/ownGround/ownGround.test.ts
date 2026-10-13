@@ -9,6 +9,7 @@ import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extend
 import { DECK_BLEND_M, GroundSurface, riderPose, type Vec2 } from './surface';
 import { cutIntervals, drapeTriangles, edgeWall, emptyMesh, endCap, reliefGrid, ribbon, type MeshArrays } from './drape';
 import { crossSection, parseMetres, areaKind } from './osmGround';
+import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
 import { buildStreets, prepareWays, routeRibbon, LIFT } from './streets';
 import { buildWaterMask, maskDistance, quayWallMesh, waterSurfaceMesh, waterZAt } from './water';
 import { flatDeckBody, measuredDeckBody } from './decks';
@@ -561,4 +562,50 @@ test('regression (polder levels): Osdorpplein ground sits above its local water;
   const belt = await probe(4.8985, 52.3695);
   assert.ok(belt.water.levels!.every(z => Math.abs(z + 1.77) < 0.011) && belt.water.shoreLevels!.every(z => Math.abs(z + 1.77) < 0.011), 'canal belt at −1.77');
   assert.equal(store.sceneZ(-0.4), -1.77);
+});
+
+// ------------------------------------------------------------- BGT widths
+test('BGT widths: own surface, footpath and cycle path per side from a cross-line', () => {
+  const rect = (x0: number, x1: number): Vec2[][] => [[[x0, -50], [x1, -50], [x1, 50], [x0, 50]]];
+  const poly = (cls: SurfaceClass, x0: number, x1: number): BgtPolygon => { const rings = rect(x0, x1); return { cls, h: 0, rings, bbox: polygonBox(rings) }; };
+  // A street running north: footpath 2 m | cycle path 2 m | carriageway 5.5 m | footpath 2.4 m, offset so the centreline is x = 0.
+  const polys = [poly('foot', -9.1, -7.1), poly('cycle', -7.1, -5.1), poly('carriage', -5.1, 0.4), poly('foot', 0.4, 2.8)].map(p => ({ ...p }));
+  // Re-centre: the way's own run is −5.1…0.4, so the centreline x = −2.35.
+  const s = sectionWidths(polys, [-2.35, 0], [1, 0], new Set<SurfaceClass>(['carriage']))!;
+  assert.ok(Math.abs(s.widthM - 5.5) < 1e-6, `carriageway ${s.widthM}`);
+  assert.ok(Math.abs(s.cycleM - 2) < 1e-6 && Math.abs(s.sidewalkM - (2 + 2.4) / 2) < 1e-6, `cycle ${s.cycleM}, footpath ${s.sidewalkM}`);
+  // A parking bay is not the carriageway; a centreline far from any own surface finds nothing.
+  assert.equal(sectionWidths([poly('parking', -5, 5)], [0, 0], [1, 0], new Set<SurfaceClass>(['carriage'])), null);
+  assert.equal(sectionWidths(polys, [30, 0], [1, 0], new Set<SurfaceClass>(['carriage'])), null);
+  // Median over stations along a way drops a junction that inflates one of three.
+  const wideRings: Vec2[][] = [[[-5.1, 10], [12, 10], [12, 30], [-5.1, 30]]];
+  const idx = new BgtIndex([poly('carriage', -5.1, 0.4), { cls: 'carriage', h: 0, rings: wideRings, bbox: polygonBox(wideRings) }]);
+  const w = wayWidths(idx, [[-2.35, -40], [-2.35, 40]], new Set<SurfaceClass>(['carriage']))!;
+  assert.ok(Math.abs(w.widths.widthM - 5.5) < 1e-6 && w.stations === 3);
+  // A dual carriageway merged with its tram bed: the way on one half measures its own half.
+  const dual = [poly('carriage', -3, 9)];
+  assert.ok(Math.abs(sectionWidths(dual, [0, 0], [1, 0], new Set<SurfaceClass>(['carriage']))!.widthM - 6) < 1e-6, 'twice the distance to the near edge');
+  assert.ok(Math.abs(sectionWidths(dual, [3, 0], [1, 0], new Set<SurfaceClass>(['carriage']))!.widthM - 12) < 1e-6, 'a centred way keeps the whole run');
+  assert.equal(classOf('rijbaan lokale weg'), 'carriage');
+  assert.equal(classOf('voetpad op trap'), 'foot');
+  assert.equal(classOf('fietspad'), 'cycle');
+  assert.equal(toDm(5.54), 55);
+});
+
+test('crossSection prefers the BGT width, takes painted lanes off it, and says where each width came from', () => {
+  const tags = { highway: 'residential', cycleway: 'lane', sidewalk: 'both' };
+  const prior = crossSection(tags)!;
+  assert.equal(prior.source.width, 'prior');
+  const measured = crossSection({ ...tags, width: '4' }, [74, 22, 0])!;
+  assert.equal(measured.source.width, 'bgt');
+  assert.ok(Math.abs(measured.bands[0].width - (7.4 - 2 * 1.6)) < 1e-9, 'two painted lanes come off the BGT rijbaan');
+  const sidewalk = measured.bands.find(b => b.kind === 'sidewalk')!;
+  assert.ok(Math.abs(sidewalk.width - 2.2) < 1e-9 && measured.source.sidewalk === 'bgt');
+  // Without a measurement nothing changes.
+  assert.deepEqual(crossSection(tags, undefined), prior);
+  assert.equal(crossSection({ highway: 'cycleway' }, [31, 0, 0])!.bands[0].width, 3.1);
+  assert.equal(crossSection({ highway: 'cycleway' }, [31, 0, 0])!.source.width, 'bgt');
+  assert.equal(crossSection({ highway: 'footway', width: '1' }, [0, 0, 0])!.source.width, 'tag', 'bw zero = not measured');
+  const track = crossSection({ highway: 'secondary', cycleway: 'track' }, [70, 0, 22])!;
+  assert.ok(Math.abs(track.bands.find(b => b.kind === 'cycle_track')!.width - (2.2 + 0.8)) < 1e-9 && track.source.cycleway === 'bgt');
 });
