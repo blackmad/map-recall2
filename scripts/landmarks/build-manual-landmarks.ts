@@ -1,3 +1,4 @@
+import {buildMozesEnAaronkerk} from './mozes-en-aaronkerk-builder';
 import {buildOosterkerk} from './oosterkerk-builder';
 import {buildOdessa} from './odessa-builder';
 import {buildHotelJakarta} from './hotel-jakarta-builder';
@@ -522,6 +523,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='rijksmuseum')buildRijksmuseum(w,d,helpers);
     else if(id==='westerkerk')buildWesterkerk(w,d,helpers);
     else if(id==='oosterkerk')buildOosterkerk(w,d,helpers);
+    else if(id==='mozes-en-aaronkerk')buildMozesEnAaronkerk(w,d,helpers);
     else if(id==='electric-ladyland')buildElectricLadyland(w,d,helpers);
     else if(id==='cafe-kobalt')buildCafeKobalt(w,d,helpers);
     else if(id==='podium-mozaiek')buildPodiumMozaiek(w,d,helpers);
