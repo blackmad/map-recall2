@@ -22,12 +22,18 @@ const XC0 = -9, XC1 = 3; // crossing and transepts
 const XA = -14.2; // chancel end / apse centre
 const EAVE = 17.5, RIDGE = 23.4, TOWER_TOP = 29.2;
 
-const BELL_PITCH = 1.15, ARC_PITCH = 1.15;
+const BELL_PITCH = 1.15, ARC_PITCH = 0.97;
 
-/** Five-bay blind arcade with white panels, the band that runs round the towers and aisles at 4.6-7.6 m. */
+/** One arch of the blind arcade: a white round-headed panel in a brick surround. */
+function blindArch(k: Kit, f: ReturnType<typeof frame>, t: number) {
+  archSlab(k, f, t, 4.7, 0.5, 2.8, 0.08, 'white', -0.04);
+  archBand(k, f, t, 4.7, 0.9, 3.0, 0.2, 0.18, 'brick', -0.04);
+}
+
+/** Blind arcade (six bays on a tower face) with white panels, the band that runs round the towers and aisles at 4.6-7.6 m. */
 function arcade(k: Kit, f: ReturnType<typeof frame>, t0: number, t1: number) {
   const n = Math.floor((t1 - t0) / ARC_PITCH), s = (t1 - t0 - n * ARC_PITCH) / 2;
-  for (let i = 0; i < n; i++) win(k, f, t0 + s + ARC_PITCH * (i + 0.5), {w: 0.78, y0: 4.7, y1: 7.5, blind: true, fill: 'white', surround: 'brick'});
+  for (let i = 0; i < n; i++) blindArch(k, f, t0 + s + ARC_PITCH * (i + 0.5));
   onWall(k, f, (t0 + t1) / 2, 7.85, t1 - t0 - 0.1, 0.35, 0.12, 'pink');
 }
 
@@ -48,37 +54,38 @@ function tower(k: Kit, z0: number, z1: number, clocks: boolean) {
     if (low) {
       onWall(k, fr.f, t, 0, w - 0.1, 4.4, 0.12, 'concrete');
       arcade(k, fr.f, t - w / 2 + 0.3, t + w / 2 - 0.3);
-      for (const s of [-1.9, 0, 1.9]) onWall(k, fr.f, t + s, 9.3, 0.3, 1.5, 0.06, 'dark');
+      for (const s of [-1.9, 0, 1.9]) onWall(k, fr.f, t + s, 9.3, 0.36, 1.5, 0.08, 'dark');
     }
     // Three tall windows in round-headed recesses between brick strips, the chequered band, the clock.
     if (tall) for (const s of [-1.9, 0, 1.9]) {
-      archSlab(k, fr.f, t + s, 11.6, 1.5, 9.0, 0.06, 'greyBrick', -0.04);
+      archBand(k, fr.f, t + s, 11.6, 1.5, 9.0, 0.35, 0.1, 'greyBrick', -0.04);
       win(k, fr.f, t + s, {w: 0.8, y0: 13.2, y1: 19.6, bars: 1, rowM: 0.8, surround: 'brick', bar: 'frame'});
     }
     onWall(k, fr.f, t, 20.9, w - 0.1, 0.9, 0.08, 'pink');
     if (clock) clockFace(k, fr.f, t, 22.6, 0.95);
     // Belfry: five round-headed openings on colonnettes.
-    for (let i = -2; i <= 2; i++) {
+    const nb = low || tall ? 2 : 1; // inner and back faces: three openings (photos show only the front and outer faces; with five, the audit read the opening beside the front gable as overhanging)
+    for (let i = -nb; i <= nb; i++) {
       archSlab(k, fr.f, t + i * BELL_PITCH, 23.8, 0.8, 4.0, 0.1, 'dark', -0.06);
-      if (i < 2) onWall(k, fr.f, t + (i + 0.5) * BELL_PITCH, 23.8, 0.22, 3.2, 0.14, 'stone');
+      if (i < nb) onWall(k, fr.f, t + (i + 0.5) * BELL_PITCH, 23.8, 0.22, 3.2, 0.14, 'stone');
     }
     onWall(k, fr.f, t, 23.5, 6.0, 0.3, 0.16, 'stone');
     onWall(k, fr.f, t, 27.9, w - 0.1, 0.35, 0.14, 'pink');
   }
   // Striped helm: square ogive in brick with light stone bands, ball and cross.
-  const prof: [number, number][] = [[3.2, 0], [3.15, 1.2], [2.95, 2.4], [2.6, 3.6], [2.1, 4.8], [1.5, 6.0], [0.85, 7.2], [0.3, 8.0], [0.12, 8.3]];
+  const HELM = 8.8, prof: [number, number][] = [[3.2, 0], [3.1, 1.5], [2.8, 3.0], [2.3, 4.5], [1.65, 6.0], [0.95, 7.3], [0.4, 8.3], [0.12, HELM]];
   const r = (y: number) => { for (let i = 1; i < prof.length; i++) if (y <= prof[i][1]) { const [a, b] = [prof[i - 1], prof[i]]; return a[0] + (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]); } return 0.12; };
   let y = 0, band = 0;
-  while (y < 8.3 - 1e-6) {
-    const h = band % 2 ? 0.3 : 0.9, y1 = Math.min(8.3, y + h);
+  while (y < HELM - 1e-6) {
+    const h = band % 2 ? 0.3 : 0.9, y1 = Math.min(HELM, y + h);
     const pts: [number, number][] = [[r(y), TOWER_TOP + y], [r((y + y1) / 2), TOWER_TOP + (y + y1) / 2], [r(y1), TOWER_TOP + y1]];
-    if (y1 >= 8.3) pts.push([0, TOWER_TOP + y1]);
+    if (y1 >= HELM) pts.push([0, TOWER_TOP + y1]);
     lathe(k, xc, zc, pts, band % 2 ? 'stone' : 'brick', 4);
     y = y1; band++;
   }
-  lathe(k, xc, zc, [[0.02, TOWER_TOP + 8.25], [0.28, TOWER_TOP + 8.45], [0.3, TOWER_TOP + 8.6], [0.2, TOWER_TOP + 8.8], [0.02, TOWER_TOP + 8.9]], 'gold', 10);
-  block(k, xc - 0.07, xc + 0.07, zc - 0.07, zc + 0.07, TOWER_TOP + 8.85, TOWER_TOP + 10.3, 'gold');
-  block(k, xc - 0.07, xc + 0.07, zc - 0.45, zc + 0.45, TOWER_TOP + 9.6, TOWER_TOP + 9.74, 'gold');
+  lathe(k, xc, zc, [[0.02, TOWER_TOP + HELM - 0.05], [0.28, TOWER_TOP + HELM + 0.15], [0.3, TOWER_TOP + HELM + 0.3], [0.2, TOWER_TOP + HELM + 0.5], [0.02, TOWER_TOP + HELM + 0.6]], 'gold', 10);
+  block(k, xc - 0.07, xc + 0.07, zc - 0.07, zc + 0.07, TOWER_TOP + HELM + 0.55, TOWER_TOP + HELM + 2.0, 'gold');
+  block(k, xc - 0.07, xc + 0.07, zc - 0.45, zc + 0.45, TOWER_TOP + HELM + 1.3, TOWER_TOP + HELM + 1.44, 'gold');
 }
 
 /** Lean-to roof from the outer eave at z = zo (y0) up to the wall at z = zi (y1), between x0 and x1. */
@@ -108,6 +115,9 @@ export function buildObrechtkerk(_w: number, _d: number, b: BuildingTools) {
   extrude(k, rect(XC1, 9.4, ZN1, 20.6), 0, 9.7, 'brick');
   extrude(k, rect(-20.4, XC0, 13.0, 22.3), 0, 8.9, 'brick');
   extrude(k, rect(-20.0, XC0, -20.1, -11.4), 0, 9.6, 'brick');
+  // Sacristies between the chancel and the west chapels.
+  extrude(k, rect(-16.3, XC0, -11.4, ZN0), 0, 10.5, 'brick');
+  extrude(k, rect(-16.6, XC0, ZN1, 13.0), 0, 10.8, 'brick');
   // Apse: half of a 14-sided polygon.
   const R = 6.4, apse: V2[] = [];
   for (let i = 0; i <= 7; i++) { const a = Math.PI / 2 + i * Math.PI / 7; apse.push([XA + R * Math.cos(a), ZC - R * Math.sin(a)]); }
@@ -117,13 +127,13 @@ export function buildObrechtkerk(_w: number, _d: number, b: BuildingTools) {
   lathe(k, -15.4, -8.1, [[1.8, 0], [1.8, 11.6], [2.0, 11.7], [2.0, 12.0], [0, 14.2]], 'brick', 12);
 
   // ---- Roofs from intent -------------------------------------------------------------------------------------------
-  extrude(k, rect(XC1, XF - 0.6, ZN0 - 0.3, ZN1 + 0.3), EAVE - 0.4, EAVE, 'stone');
+  extrude(k, rect(XC1, XF - 0.3, ZN0 - 0.3, ZN1 + 0.3), EAVE - 0.4, EAVE, 'stone');
   gable(k, XC1, XF - 0.6, ZN0 - 0.3, ZN1 + 0.3, EAVE, RIDGE - EAVE, 'x', 'slate', 'brick');
   for (const [z0, z1] of [[-17.2, ZN0], [ZN1, 20.2]]) {
     extrude(k, rect(XC0 - 0.3, XC1 + 0.3, z0 - (z0 < 0 ? 0.3 : 0), z1 + (z1 > 10 ? 0.3 : 0)), EAVE - 0.4, EAVE - 0.02, 'stone');
-    gable(k, XC0 - 0.3, XC1 + 0.3, z0 - (z0 < 0 ? 0.3 : 0), z1 + (z1 > 10 ? 0.3 : 0), EAVE, RIDGE - EAVE - 0.3, 'z', 'slate', 'brick');
+    gable(k, XC0 - 0.3, XC1 + 0.3, z0, z1, EAVE, RIDGE - EAVE - 0.3, 'z', 'slate', 'brick');
   }
-  extrude(k, rect(XA, XC0, ZN0 - 0.3, ZN1 + 0.3), EAVE - 0.4, EAVE - 0.02, 'stone');
+  extrude(k, rect(XA - 0.3, XC0, ZN0 - 0.3, ZN1 + 0.3), EAVE - 0.4, EAVE - 0.02, 'stone');
   gable(k, XA, XC0, ZN0 - 0.3, ZN1 + 0.3, EAVE, RIDGE - EAVE - 0.2, 'x', 'slate', 'brick');
   // Apse roof: a half cone of facets to the chancel end wall.
   const top: [number, number, number] = [XA, 21.0, ZC];
@@ -142,6 +152,8 @@ export function buildObrechtkerk(_w: number, _d: number, b: BuildingTools) {
   hipRoof(k, XC1, 9.8, -17.0, ZN0, 10.7, 1.6, 'slate');
   hipRoof(k, XC1, 9.4, ZN1, 20.6, 9.7, 2.6, 'slate');
   hipRoof(k, -20.4, XC0, 13.0, 22.3, 8.9, 3.0, 'slate');
+  leanTo(k, -16.3, XC0, -11.4, ZN0, 10.5, 12.4);
+  leanTo(k, -16.6, XC0, 13.0, ZN1, 10.8, 12.8);
   hipRoof(k, -20.0, XC0, -20.1, -11.4, 9.6, 2.6, 'slate');
 
   // ---- Windows on the body ---------------------------------------------------------------------------------------
@@ -158,7 +170,7 @@ export function buildObrechtkerk(_w: number, _d: number, b: BuildingTools) {
   for (const [n, plane] of [[[0, -1], -17.2], [[0, 1], 20.2]] as [V2, number][]) {
     const fr = face(n, plane), t = fr.at((XC0 + XC1) / 2);
     for (const s of [-2.2, 0, 2.2]) win(k, fr.f, t + s, TRANS);
-    disc(k, fr.f, t, 19.6, 1.0, 0.06, 'glass', -0.04);
+    disc(k, fr.f, t, 19.6, 1.0, 0.1, 'glass', -0.04);
     ringSlab(k, fr.f, t, 19.6, 1.0, 1.35, 0.12, 'stone', -0.04);
   }
   for (let i = 1; i < 6; i++) {
@@ -170,20 +182,20 @@ export function buildObrechtkerk(_w: number, _d: number, b: BuildingTools) {
   // ---- Towered front --------------------------------------------------------------------------------------------
   tower(k, ZTA[0], ZTA[1], false);
   tower(k, ZTB[0], ZTB[1], true);
-  extrude(k, rect(XF - 0.6, XF, ZN0, ZN1), 0, 20.6, 'brick');
+  extrude(k, rect(XF - 0.6, XF, ZN0 - 0.1, ZN1 + 0.1), 0, 20.6, 'brick');
   const fr = face([1, 0], XF), tc = fr.at(ZC), W = ZN1 - ZN0;
   onWall(k, fr.f, tc, 0, W - 0.1, 0.9, 0.3, 'concrete'); // steps
   // Portal: two wooden doors under a light tympanum, a banded arch and a gabled hood.
   for (const s of [-1, 1]) onWall(k, fr.f, tc + s * 1.25, 0.9, 2.1, 4.5, 0.08, 'ochre');
   onWall(k, fr.f, tc, 0.9, 0.4, 4.5, 0.14, 'white');
-  archSlab(k, fr.f, tc, 5.4, 5.2, 2.6, 0.06, 'white', -0.04);
+  archSlab(k, fr.f, tc, 5.4, 5.2, 2.6, 0.1, 'white', -0.04);
   onWall(k, fr.f, tc, 5.4, 5.2, 0.3, 0.12, 'white');
   for (const s of [-1, 1]) onWall(k, fr.f, tc + s * 2.95, 0.9, 0.7, 4.5, 0.2, 'white');
   archBand(k, fr.f, tc, 5.4, 7.2, 3.6, 1.0, 0.3, 'red', -0.04);
-  poly(k, fr.f, tc, 9.2, [[-4.6, 0], [4.6, 0], [0, 4.4]], 0.35, 'brick', -0.04);
+  poly(k, fr.f, tc, 9.2, [[-4.6, 0], [4.6, 0], [0, 4.4]], 0.35, 'pink', -0.04);
   disc(k, fr.f, tc, 14.1, 0.45, 0.25, 'gold', 0);
   // Rose window: glass disc with a five-circle star, moulded rings.
-  disc(k, fr.f, tc, 17.2, 3.0, 0.06, 'glass', -0.04);
+  disc(k, fr.f, tc, 17.2, 3.0, 0.08, 'glass', -0.04);
   ringSlab(k, fr.f, tc, 17.2, 3.0, 3.5, 0.22, 'stone', -0.04);
   ringSlab(k, fr.f, tc, 17.2, 3.5, 4.1, 0.12, 'pink', -0.04);
   ringSlab(k, fr.f, tc, 17.2, 0.95, 1.15, 0.12, 'dark', -0.04);
@@ -192,15 +204,18 @@ export function buildObrechtkerk(_w: number, _d: number, b: BuildingTools) {
   onWall(k, fr.f, tc, 20.3, W - 0.1, 0.3, 0.14, 'stone');
   poly(k, fr.f, tc, 20.6, [[-W / 2, 0], [W / 2, 0], [0, 4.6]], 0.6, 'brick', -0.6);
   poly(k, fr.f, tc, 20.75, [[-W / 2 + 0.6, 0], [W / 2 - 0.6, 0], [0, 4.05]], 0.05, 'pink', 0);
-  poly(k, fr.f, tc, 23.0, [[-1.6, 0], [1.6, 0], [0, 1.65]], 0.08, 'gold', 0);
+  poly(k, fr.f, tc, 23.0, [[-1.6, 0], [1.6, 0], [0, 1.65]], 0.12, 'gold', 0);
   block(k, XF - 0.5, XF - 0.1, ZC - 0.3, ZC + 0.3, 25.1, 25.9, 'stone');
-  // Side doors at the towers' inner corners.
-  for (const z of [ZTA[1] - 0.9, ZTB[0] + 0.9]) door(k, face([1, 0], XT1).f, z, {w: 1.1, y0: 0.9, y1: 3.4, leaf: 'ochre', surround: 'stone'});
+  // Side bays of the centre front: a small door under one arch of the arcade, either side of the portal.
+  for (const s of [-1, 1]) {
+    door(k, fr.f, tc + s * 4.75, {w: 1.0, y0: 0.9, y1: 3.4, leaf: 'ochre', surround: 'stone'});
+    blindArch(k, fr.f, tc + s * 4.75);
+  }
 
   // ---- Parish hall forward of the north tower ----------------------------------------------------------------------
   const H0 = 33.0, H1 = 49.2, HZ0 = -22.1, HZ1 = -9.6;
   extrude(k, rect(H0, H1, HZ0, HZ1), 0, 8.6, 'brick');
-  gable(k, H0, H1 + 0.3, HZ0 - 0.3, HZ1 + 0.3, 8.6, 9.2, 'x', 'red', 'brick');
+  gable(k, H0, H1, HZ0 - 0.3, HZ1 + 0.3, 8.6, 9.2, 'x', 'red', 'brick');
   {
     const hf = face([1, 0], H1), t = hf.at((HZ0 + HZ1) / 2);
     win(k, hf.f, t, {w: 4.4, y0: 9.2, y1: 14.2, head: 'flat', bars: 3, rowM: 1.25, surround: 'stone', bar: 'frame'});
