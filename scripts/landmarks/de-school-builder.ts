@@ -1,7 +1,8 @@
 import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {addShell} from './worship-shell';
-import {wallsOf} from './worship-walls';
+import {wallsOf, wallTop} from './worship-walls';
+import {raisedLettering} from './ornament-kit';
 import type {Wall} from './worship-walls';
 import {faceOut, frameOf, put, slab} from './nearbar-kit';
 import source from './de-school-footprints.json';
@@ -108,5 +109,8 @@ export function buildDeSchool(_w: number, _d: number, b: BuildingTools & {mark?:
       slab(b, f, pc - (pw - 0.4) / 2 + (pw - 0.4) * (k + 0.5) / 6, 0.5, (pw - 0.4) / 6 - 0.12, 2.2, 0.14, c);
     slab(b, f, pc, 3.3, pw + 0.4, 0.4, 3.2, 'greyBrick');
     for (const s of [-1, 1]) slab(b, f, pc + s * (pw / 2 - 0.1), 0.45, 0.14, 2.85, 0.14, 'dark', 3.0);
+    // LTS: the school's big letters standing on the roof edge above the porch (panorama 2024; ornament inventory 2026-10-13).
+    const top = wallTop(w, pc), lts = raisedLettering({text: 'LTS', heightM: 0.95, maxWidthM: 2.4, depthM: 0.12});
+    put(b, f, lts.geometry.translate(0, lts.heightM / 2, 0), pc, top, 0.04, 'blue');
   }
 }

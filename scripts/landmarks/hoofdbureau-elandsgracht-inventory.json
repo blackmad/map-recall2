@@ -1,0 +1,845 @@
+{
+ "schemaVersion": 1,
+ "id": "hoofdbureau-elandsgracht",
+ "pand": "0363100012169550",
+ "brief": "scripts/landmarks/hoofdbureau-elandsgracht-brief.md",
+ "signature": [
+  "n-arms-relief",
+  "n-krop-figures",
+  "n-banner",
+  "n-colonnade",
+  "e-ribbons",
+  "e-politie-lettering",
+  "sw-sculpture-group"
+ ],
+ "walls": [
+  {
+   "tag": "w01-247",
+   "bearing": 247,
+   "lengthM": 59.5,
+   "centre": [
+    4.8776235,
+    52.367617
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001979_pano_0001_000179",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-curved-ribbons",
+     "kind": "window-shape",
+     "where": "curved wing with white ribbon windows over the quay",
+     "approxSizeM": [
+      59,
+      9
+     ],
+     "plan": "modelled",
+     "how": "block kit ribbon-windows (intent walls[5])",
+     "seenIn": "TMX7316010203-001979_pano_0001_000179"
+    }
+   ]
+  },
+  {
+   "tag": "w02-67",
+   "bearing": 67,
+   "lengthM": 56.1,
+   "centre": [
+    4.8781,
+    52.368392
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241216_0911_Track03_Sphere_00008",
+   "capturedAt": "2024-12-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-ribbons",
+     "kind": "window-shape",
+     "where": "white steel-window ribbons on all storeys over dark brick, full length",
+     "approxSizeM": [
+      56,
+      14
+     ],
+     "plan": "modelled",
+     "how": "block kit ribbon-windows system (intent walls[3])",
+     "seenIn": "b_20241216_0911_Track03_Sphere_00008"
+    },
+    {
+     "id": "e-politie-lettering",
+     "kind": "lettering",
+     "where": "POLITIE word mark with the police emblem on the wall over the entrance canopy, right of centre",
+     "approxSizeM": [
+      2.6,
+      0.6
+     ],
+     "plan": "open",
+     "seenIn": "b_20241216_0911_Track03_Sphere_00008",
+     "note": "cheap: signage.ts stroke font plus a flat emblem slab; the builder has only a blank blue plate on a bracket at the end block. For the builder lane."
+    },
+    {
+     "id": "e-entrance-canopy",
+     "kind": "canopy",
+     "where": "flat canopy over the glazed entrance, right of centre",
+     "approxSizeM": [
+      5,
+      0.3
+     ],
+     "plan": "modelled",
+     "how": "hoofdbureauHooks entrance canopy (stone slab on one post)",
+     "seenIn": "b_20241216_0911_Track03_Sphere_00008"
+    }
+   ]
+  },
+  {
+   "tag": "w03-67",
+   "bearing": 67,
+   "lengthM": 50.2,
+   "centre": [
+    4.877878,
+    52.3676125
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w04-157",
+   "bearing": 157,
+   "lengthM": 47.8,
+   "centre": [
+    4.877558,
+    52.3683075
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w05-337",
+   "bearing": 337,
+   "lengthM": 47.4,
+   "centre": [
+    4.877481,
+    52.3684235
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000076_pano_0000_006599",
+   "capturedAt": "2016-08-17",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-portholes",
+     "kind": "window-shape",
+     "where": "column of round porthole windows on the end pier, right",
+     "approxSizeM": [
+      1,
+      7
+     ],
+     "plan": "open",
+     "seenIn": "TMX7316010203-000076_pano_0000_006599",
+     "note": "intent notes: not modelled"
+    },
+    {
+     "id": "nw-vehicle-gate",
+     "kind": "other",
+     "where": "gated vehicle entrance, left",
+     "approxSizeM": [
+      5,
+      4
+     ],
+     "plan": "open",
+     "seenIn": "TMX7316010203-000076_pano_0000_006599",
+     "note": "intent notes: not modelled"
+    }
+   ]
+  },
+  {
+   "tag": "w06-337",
+   "bearing": 337,
+   "lengthM": 40,
+   "centre": [
+    4.877808,
+    52.3680425
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w07-157",
+   "bearing": 157,
+   "lengthM": 35.5,
+   "centre": [
+    4.8781315,
+    52.3679905
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-03_10-31-52_00292",
+   "capturedAt": "2025-07-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "se-hoods",
+     "kind": "window-shape",
+     "where": "heavy white stone hoods and sills over every sash window",
+     "approxSizeM": [
+      1.8,
+      0.3
+     ],
+     "plan": "modelled",
+     "how": "hoofdbureauHooks stone hoods on HOOD_SURFACES",
+     "seenIn": "recording_2025-07-03_10-31-52_00292"
+    },
+    {
+     "id": "se-chequer-bands",
+     "kind": "relief",
+     "where": "raised chequer brick bands between the window rows",
+     "approxSizeM": [
+      35,
+      0.6
+     ],
+     "plan": "open",
+     "seenIn": "recording_2025-07-03_10-31-52_00292",
+     "note": "intent notes: not modelled; one dark-brick relief strip per storey would read"
+    },
+    {
+     "id": "se-barred-basement",
+     "kind": "window-shape",
+     "where": "barred basement windows at street level",
+     "approxSizeM": [
+      1.4,
+      1.2
+     ],
+     "plan": "open",
+     "seenIn": "recording_2025-07-03_10-31-52_00292"
+    }
+   ]
+  },
+  {
+   "tag": "w08-247",
+   "bearing": 247,
+   "lengthM": 30.8,
+   "centre": [
+    4.8779765,
+    52.3682515
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w09-247",
+   "bearing": 247,
+   "lengthM": 27,
+   "centre": [
+    4.877569,
+    52.3673575
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001979_pano_0001_000176",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-sculpture-group",
+     "kind": "sculpture",
+     "where": "stone sculpture group on a bracket high on the left corner over the water",
+     "approxSizeM": [
+      1.5,
+      2
+     ],
+     "plan": "open",
+     "seenIn": "TMX7316010203-001979_pano_0001_000176",
+     "note": "not identified in the sources found; intent notes: not modelled. Check the Beeldbank and the Krop catalogue"
+    },
+    {
+     "id": "sw-glazed-bay",
+     "kind": "window-shape",
+     "where": "tall yellow-framed glazed bay cantilevered over the quay, left",
+     "approxSizeM": [
+      5,
+      8
+     ],
+     "plan": "open",
+     "seenIn": "TMX7316010203-001979_pano_0001_000176",
+     "note": "intent notes: not modelled"
+    },
+    {
+     "id": "sw-yellow-frames",
+     "kind": "window-shape",
+     "where": "square yellow-framed windows in pink stone cladding, three rows",
+     "approxSizeM": [
+      1,
+      1
+     ],
+     "plan": "modelled",
+     "how": "bay grid with pink wall and gold frame palette (intent walls[2])",
+     "seenIn": "TMX7316010203-001979_pano_0001_000176"
+    }
+   ]
+  },
+  {
+   "tag": "w10-157",
+   "bearing": 157,
+   "lengthM": 26.1,
+   "centre": [
+    4.878008,
+    52.367261
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w11-157",
+   "bearing": 157,
+   "lengthM": 20.3,
+   "centre": [
+    4.877726,
+    52.367934
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w12-67",
+   "bearing": 67,
+   "lengthM": 18.2,
+   "centre": [
+    4.8776815,
+    52.36743
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w13-247",
+   "bearing": 247,
+   "lengthM": 16.6,
+   "centre": [
+    4.8773505,
+    52.3680025
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001968_pano_0000_000063",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-glass-block-ribbons",
+     "kind": "window-shape",
+     "where": "three long glass-block ribbon windows in pink stone",
+     "approxSizeM": [
+      15,
+      1
+     ],
+     "plan": "simplified",
+     "how": "kit two-light ribbons in place of glass block",
+     "seenIn": "TMX7316010203-001968_pano_0000_000063"
+    }
+   ]
+  },
+  {
+   "tag": "w14-247",
+   "bearing": 247,
+   "lengthM": 14,
+   "centre": [
+    4.8771945,
+    52.368281
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001967_pano_0000_001027",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-stacked-balconies",
+     "kind": "balcony-ironwork",
+     "where": "four stacked semicircular balconies with railings, centre of the tower end",
+     "approxSizeM": [
+      2,
+      1
+     ],
+     "plan": "open",
+     "seenIn": "TMX7316010203-001967_pano_0000_001027"
+    }
+   ]
+  },
+  {
+   "tag": "w15-67",
+   "bearing": 67,
+   "lengthM": 13.9,
+   "centre": [
+    4.878331,
+    52.3681105
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001900_pano_0004_000544",
+   "capturedAt": "2020-08-31",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-police-sign",
+     "kind": "sign",
+     "where": "blue POLITIE sign on a bracket beside the entrance",
+     "approxSizeM": [
+      0.4,
+      0.8
+     ],
+     "plan": "simplified",
+     "how": "blue plate on a frame bracket, no lettering",
+     "seenIn": "TMX7316010203-001900_pano_0004_000544"
+    },
+    {
+     "id": "ne-curved-top",
+     "kind": "window-shape",
+     "where": "curved glazed top storey under an overhanging roof",
+     "approxSizeM": [
+      13,
+      3
+     ],
+     "plan": "open",
+     "seenIn": "TMX7316010203-001900_pano_0004_000544",
+     "note": "intent notes: not modelled; 3DBAG gives a flat top"
+    },
+    {
+     "id": "ne-balcony",
+     "kind": "balcony-ironwork",
+     "where": "first-floor balcony with railing, centre",
+     "approxSizeM": [
+      4,
+      1.1
+     ],
+     "plan": "open",
+     "seenIn": "TMX7316010203-001900_pano_0004_000544"
+    }
+   ]
+  },
+  {
+   "tag": "w16-337",
+   "bearing": 337,
+   "lengthM": 13.9,
+   "centre": [
+    4.8778445,
+    52.368599
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002553_pano_0000_001265",
+   "capturedAt": "2022-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "n-arms-relief",
+     "kind": "relief",
+     "where": "upper centre of the Marnixstraat end wall, over the figures",
+     "approxSizeM": [
+      11,
+      5
+     ],
+     "plan": "modelled",
+     "how": "addEndWallRelief: shield with a pale and three saltires under an imperial crown, two extruded rampant lions",
+     "seenIn": "TMX7316010203-002553_pano_0000_001265",
+     "note": "Wapen van Amsterdam with keizerskroon and two lions (nl.wikipedia Elandsgracht 117, Beeldhouwwerken)",
+     "sheetBox": [
+      0.3,
+      0.3,
+      0.65,
+      0.55
+     ]
+    },
+    {
+     "id": "n-banner",
+     "kind": "relief",
+     "where": "ribbon under the arms, sweeping far left and curling up right",
+     "approxSizeM": [
+      12.5,
+      2.5
+     ],
+     "plan": "modelled",
+     "how": "addEndWallRelief banner ribbon",
+     "seenIn": "TMX7316010203-002553_pano_0000_001265",
+     "sheetBox": [
+      0.2,
+      0.4,
+      0.62,
+      0.62
+     ]
+    },
+    {
+     "id": "n-banner-verse",
+     "kind": "lettering",
+     "where": "two lines on the banner",
+     "approxSizeM": [
+      6,
+      0.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "two lines of ~0.2 m letters about 10 m up, unreadable from the street; the ribbon carrying them is modelled"
+     },
+     "seenIn": "TMX7316010203-002553_pano_0000_001265",
+     "note": "verse by P.H. van Moerkerken: 't Gezag dat rust behoedt in stad en staat, / waakt rustloos tegen d'onrust van het Kwaad (nl.wikipedia Elandsgracht 117)"
+    },
+    {
+     "id": "n-krop-figures",
+     "kind": "sculpture",
+     "where": "three standing figures on stone consoles under the banner",
+     "approxSizeM": [
+      5,
+      2.4
+     ],
+     "plan": "simplified",
+     "how": "turned robe/torso, sphere head and box arms on stone brackets; the attributes (boy and dragon, lion on a cog-ship shield, winged wheel) are not modelled",
+     "seenIn": "TMX7316010203-002553_pano_0000_001265",
+     "note": "Hildo Krop: De kinderpolitie, Het gezag, De verkeerspolitie (travertine; replicas by Ton Mooy 1996/97; nl.wikipedia Elandsgracht 117)",
+     "sheetBox": [
+      0.38,
+      0.5,
+      0.62,
+      0.68
+     ]
+    },
+    {
+     "id": "n-round-windows",
+     "kind": "window-shape",
+     "where": "row of six round windows over the colonnade",
+     "approxSizeM": [
+      8,
+      0.7
+     ],
+     "plan": "modelled",
+     "how": "addEndWallRelief round windows",
+     "seenIn": "TMX7316010203-002553_pano_0000_001265",
+     "sheetBox": [
+      0.22,
+      0.64,
+      0.8,
+      0.73
+     ]
+    },
+    {
+     "id": "n-colonnade",
+     "kind": "colonnade",
+     "where": "open ground storey behind white columns, full width",
+     "approxSizeM": [
+      13.9,
+      3.5
+     ],
+     "plan": "modelled",
+     "how": "addEndWallRelief recess, lintel and columns",
+     "seenIn": "TMX7316010203-002553_pano_0000_001265",
+     "sheetBox": [
+      0.18,
+      0.7,
+      0.85,
+      1
+     ]
+    }
+   ],
+   "note": "The wall the stock all-walls.ts (--min-len=14, --max=8) and review-sheet (--walls=6) never showed: 13.9 m. The 2020 second view is clearer of the tree. review-sheet --inventory (2026-10-13): in the photo the left of this wall is blank brick and the arms sit about one storey higher and larger than the model's; the model wraps four ribbon windows round the left 5 m and adds a raised block on top. For the builder lane."
+  },
+  {
+   "tag": "w17-67",
+   "bearing": 67,
+   "lengthM": 11.8,
+   "centre": [
+    4.877623,
+    52.367849
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w18-157",
+   "bearing": 157,
+   "lengthM": 10.2,
+   "centre": [
+    4.8777825,
+    52.36717
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w19-337",
+   "bearing": 337,
+   "lengthM": 10.2,
+   "centre": [
+    4.8775605,
+    52.367487
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001979_pano_0001_000179",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [],
+   "note": "Same wing and bay as w09/w01 seen obliquely; nothing further."
+  },
+  {
+   "tag": "w20-247",
+   "bearing": 247,
+   "lengthM": 8.7,
+   "centre": [
+    4.877417,
+    52.367897
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000199_pano_0002_000236",
+   "capturedAt": "2017-03-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-stair-bay",
+     "kind": "window-shape",
+     "where": "projecting dark-framed glazed stair bay, full height, centre",
+     "approxSizeM": [
+      6,
+      7
+     ],
+     "plan": "open",
+     "seenIn": "TMX7316010203-000199_pano_0002_000236"
+    },
+    {
+     "id": "sw-round-window",
+     "kind": "window-shape",
+     "where": "single round window right of the bay",
+     "approxSizeM": [
+      1,
+      1
+     ],
+     "plan": "open",
+     "seenIn": "TMX7316010203-000199_pano_0002_000236"
+    }
+   ]
+  },
+  {
+   "tag": "w21-67",
+   "bearing": 67,
+   "lengthM": 8.3,
+   "centre": [
+    4.87816,
+    52.3673415
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w22-246",
+   "bearing": 246,
+   "lengthM": 8.2,
+   "centre": [
+    4.877776,
+    52.3685405
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000705_pano_0000_002623",
+   "capturedAt": "2018-05-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "w-script-lettering",
+     "kind": "lettering",
+     "where": "large white script lettering high on the brick end pier, left, partly behind a tree",
+     "approxSizeM": [
+      2.5,
+      2
+     ],
+     "plan": "open",
+     "seenIn": "TMX7316010203-000705_pano_0000_002623",
+     "note": "text not legible in the 2018 crop; check the 2024 second view"
+    },
+    {
+     "id": "w-pier-portholes",
+     "kind": "window-shape",
+     "where": "column of small round windows on the pier",
+     "approxSizeM": [
+      0.6,
+      5
+     ],
+     "plan": "open",
+     "seenIn": "TMX7316010203-000705_pano_0000_002623"
+    }
+   ]
+  },
+  {
+   "tag": "w23-248",
+   "bearing": 248,
+   "lengthM": 8.1,
+   "centre": [
+    4.877647,
+    52.3672065
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000199_pano_0002_000244",
+   "capturedAt": "2017-03-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "sw-framed-bay",
+     "kind": "window-shape",
+     "where": "projecting dark-framed bay window in the pink stone wall, centre",
+     "approxSizeM": [
+      7,
+      5
+     ],
+     "plan": "open",
+     "seenIn": "TMX7316010203-000199_pano_0002_000244"
+    }
+   ]
+  },
+  {
+   "tag": "w24-336",
+   "bearing": 336,
+   "lengthM": 6.1,
+   "centre": [
+    4.878095,
+    52.3673645
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w25-337",
+   "bearing": 337,
+   "lengthM": 5.6,
+   "centre": [
+    4.877695,
+    52.36781
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w26-67",
+   "bearing": 67,
+   "lengthM": 5.6,
+   "centre": [
+    4.877522,
+    52.367995
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w27-68",
+   "bearing": 68,
+   "lengthM": 5.4,
+   "centre": [
+    4.8775375,
+    52.3680525
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w28-67",
+   "bearing": 67,
+   "lengthM": 5.3,
+   "centre": [
+    4.8774585,
+    52.368085
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w29-247",
+   "bearing": 247,
+   "lengthM": 5.1,
+   "centre": [
+    4.8778775,
+    52.367949
+   ],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w30-337",
+   "bearing": 337,
+   "lengthM": 4.5,
+   "centre": [
+    4.8777645,
+    52.367363
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001979_pano_0001_000178",
+   "capturedAt": "2021-01-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-glazed-corner-hall",
+     "kind": "window-shape",
+     "where": "two-storey yellow-framed glazed hall under the cantilevered wing",
+     "approxSizeM": [
+      8,
+      6
+     ],
+     "plan": "open",
+     "seenIn": "TMX7316010203-001979_pano_0001_000178"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas (ids per wall)",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Wikipedia (nl), Elandsgracht 117, section Beeldhouwwerken",
+   "url": "https://nl.wikipedia.org/wiki/Elandsgracht_117",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "3DBAG LoD2.2",
+   "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169550",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

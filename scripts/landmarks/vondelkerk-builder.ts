@@ -1,4 +1,5 @@
 import * as T from 'three';
+import {clockHands} from './ornament-kit';
 import type {BuildingTools} from './cultural-builders';
 import {openTopPrism, upwardRoofPlane} from './house-geometry';
 import {facePoly} from './worship-kit';
@@ -300,6 +301,8 @@ export function buildVondelkerk(_w: number, _d: number, b: BuildingTools & {mark
         const cx = (rf + 0.06) * Math.cos(al), cz = (rf + 0.06) * Math.sin(al);
         lput(new T.CylinderGeometry(0.8, 0.8, 0.08, 20).rotateZ(Math.PI / 2).translate(0, 0.0, 0), 'gold', cx, 35.6, cz, -al);
         lput(new T.CylinderGeometry(0.66, 0.66, 0.1, 20).rotateZ(Math.PI / 2), 'white', cx, 35.6, cz, -al);
+        // gilt hands (ornament inventory 2026-10-13: the faces had none; the 2019 panorama shows them from Vondelstraat)
+        for (const h of clockHands(0.66, 10, 10)) lput(h.rotateY(Math.PI / 2), 'gold', (rf + 0.11) * Math.cos(al), 35.6, (rf + 0.11) * Math.sin(al), -al);
         // stone gablet above the clock
         const f = frame([Math.cos(al) * rf + Math.sin(al) * -1.15, Math.sin(al) * rf + Math.cos(al) * 1.15], [Math.cos(al) * rf + Math.sin(al) * 1.15, Math.sin(al) * rf - Math.cos(al) * 1.15], [Math.cos(al), Math.sin(al)]);
         poly(b, f, 1.15, 37.8, [[-1.3, 0], [1.3, 0], [0, 2.9]], 0.3, 'stone', 0);

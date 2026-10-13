@@ -1,0 +1,4100 @@
+{
+ "description": "Retro-fit signature-ornament survey of bespoke landmarks (scripts/landmarks/ornament-inventory.ts). Judged 2026-10-13 from artifacts/ornament-inventory/<id>/review.jpg: camera-matched panorama (Gemeente Amsterdam, CC BY 4.0) next to the render, the four longest exposed walls per landmark. Schema src/canalRecall/landmarks/ornamentInventory.ts.",
+ "landmarks": {
+  "maarten-lutherkerk": {
+   "schemaVersion": 1,
+   "id": "maarten-lutherkerk",
+   "pand": "0363100012135926",
+   "signature": [
+    "w-gable-cross",
+    "tower-spire"
+   ],
+   "walls": [
+    {
+     "tag": "w01-5",
+     "bearing": 5,
+     "lengthM": 25.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002114_pano_0000_001276",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": [
+      {
+       "id": "n-banner",
+       "kind": "sign",
+       "where": "tall printed MLK banner on the left end of the nave wall",
+       "approxSizeM": [
+        1.2,
+        4
+       ],
+       "plan": "skipped",
+       "skip": {
+        "reason": "temporary",
+        "note": "printed cloth banner"
+       },
+       "seenIn": "TMX7316010203-002114_pano_0000_001276"
+      },
+      {
+       "id": "n-door-canopy",
+       "kind": "canopy",
+       "where": "small pitched canopy over the side door, right",
+       "approxSizeM": [
+        1.5,
+        0.8
+       ],
+       "plan": "simplified",
+       "how": "door with a small pediment",
+       "seenIn": "TMX7316010203-002114_pano_0000_001276"
+      },
+      {
+       "id": "tower-spire",
+       "kind": "tower",
+       "where": "roof turret with a copper spire",
+       "approxSizeM": [
+        2,
+        5
+       ],
+       "plan": "modelled",
+       "how": "hand turret and spire",
+       "seenIn": "TMX7316010203-002114_pano_0000_001276"
+      }
+     ]
+    },
+    {
+     "tag": "w02-185",
+     "bearing": 185,
+     "lengthM": 15.5,
+     "evidence": "photo",
+     "panoId": "recording_2025-07-14_11-54-16_01566",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": [
+      {
+       "id": "s-tower",
+       "kind": "tower",
+       "where": "square brick tower with slit windows",
+       "approxSizeM": [
+        5,
+        20
+       ],
+       "plan": "modelled",
+       "how": "hand tower",
+       "seenIn": "recording_2025-07-14_11-54-16_01566"
+      }
+     ]
+    },
+    {
+     "tag": "w03-274",
+     "bearing": 274,
+     "lengthM": 8.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002409_pano_0001_000227",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-275",
+     "bearing": 275,
+     "lengthM": 7.4,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002800_pano_0002_000033",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": [
+      {
+       "id": "w-gable-cross",
+       "kind": "crest",
+       "where": "large cross on the west gable",
+       "approxSizeM": [
+        2,
+        4
+       ],
+       "plan": "modelled",
+       "how": "hand cross",
+       "seenIn": "TMX7316010203-002800_pano_0002_000033"
+      }
+     ]
+    }
+   ]
+  },
+  "museum-amsterdam-noord": {
+   "schemaVersion": 1,
+   "id": "museum-amsterdam-noord",
+   "pand": "0363100012158267",
+   "signature": [
+    "s-lettering",
+    "n-lettering",
+    "pyramid-roof"
+   ],
+   "walls": [
+    {
+     "tag": "w01-168",
+     "bearing": 168,
+     "lengthM": 10.1,
+     "evidence": "photo",
+     "panoId": "recording_2025-09-22_10-53-43_00828",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": [
+      {
+       "id": "s-lettering",
+       "kind": "lettering",
+       "where": "GEMEENTE BADHUIS name board under the eaves",
+       "approxSizeM": [
+        3.5,
+        0.3
+       ],
+       "plan": "modelled",
+       "seenIn": "recording_2025-09-22_10-53-43_00828",
+       "how": "GEMEENTE BADHUIS in raised stroke-font letters on a dark green board (museum-amsterdam-noord-builder.ts)",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/museum-amsterdam-noord/strip.png"
+      },
+      {
+       "id": "pyramid-roof",
+       "kind": "other",
+       "where": "steep pyramid roof with central chimney and dormers (whole building)",
+       "approxSizeM": [
+        10,
+        6
+       ],
+       "plan": "modelled",
+       "how": "hand hip roof, chimney, dormers",
+       "seenIn": "recording_2025-09-22_10-53-43_00828"
+      }
+     ]
+    },
+    {
+     "tag": "w02-348",
+     "bearing": 348,
+     "lengthM": 10.1,
+     "evidence": "photo",
+     "panoId": "recording_2025-09-22_10-53-43_00760",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": [
+      {
+       "id": "n-lettering",
+       "kind": "lettering",
+       "where": "MUSEUM AMSTERDAM NOORD on the fascia board",
+       "approxSizeM": [
+        4,
+        0.3
+       ],
+       "plan": "modelled",
+       "seenIn": "recording_2025-09-22_10-53-43_00760",
+       "how": "raised stroke-font letters on a dark green board",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/museum-amsterdam-noord/strip.png"
+      },
+      {
+       "id": "n-hoarding",
+       "kind": "other",
+       "where": "X-braced timber panels over the wall",
+       "approxSizeM": [
+        3,
+        2.5
+       ],
+       "plan": "skipped",
+       "skip": {
+        "reason": "temporary",
+        "note": "protective hoarding"
+       },
+       "seenIn": "recording_2025-09-22_10-53-43_00760"
+      }
+     ]
+    },
+    {
+     "tag": "w03-257",
+     "bearing": 257,
+     "lengthM": 9.9,
+     "evidence": "photo",
+     "panoId": "recording_2024-09-10_08-02-29_00015",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-77",
+     "bearing": 77,
+     "lengthM": 9.9,
+     "evidence": "photo",
+     "panoId": "recording_2025-09-22_10-53-43_00842",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": [
+      {
+       "id": "e-lettering",
+       "kind": "lettering",
+       "where": "MUSEUM AMSTERDAM NOORD on the fascia board",
+       "approxSizeM": [
+        4,
+        0.3
+       ],
+       "plan": "modelled",
+       "seenIn": "recording_2025-09-22_10-53-43_00842",
+       "how": "raised stroke-font letters on a dark green board",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/museum-amsterdam-noord/strip.png"
+      }
+     ]
+    }
+   ]
+  },
+  "oudemanhuispoort": {
+   "schemaVersion": 1,
+   "id": "oudemanhuispoort",
+   "pand": "0363100012180206",
+   "signature": [
+    "gate-portal",
+    "gate-pediment-relief"
+   ],
+   "walls": [
+    {
+     "tag": "w01-12",
+     "bearing": 12,
+     "lengthM": 7.4,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002974_pano_0002_000010",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-298",
+     "bearing": 298,
+     "lengthM": 6.3,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-30_05-16-46_01406",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": [
+      {
+       "id": "gate-portal",
+       "kind": "other",
+       "where": "stone gateway left of the house, Oudezijds Achterburgwal",
+       "approxSizeM": [
+        4,
+        6
+       ],
+       "plan": "simplified",
+       "how": "hand portal: pilasters, round arch, urns",
+       "seenIn": "recording_2025-06-30_05-16-46_01406"
+      },
+      {
+       "id": "gate-pediment-relief",
+       "kind": "relief",
+       "where": "carved pediment over the gateway arch (the \"spectacles\" relief)",
+       "approxSizeM": [
+        3.5,
+        1.5
+       ],
+       "plan": "open",
+       "note": "the model has a plain arch top; a low-relief slab with the spectacles and scrolls would read",
+       "seenIn": "recording_2025-06-30_05-16-46_01406"
+      }
+     ]
+    }
+   ]
+  },
+  "torture-museum": {
+   "schemaVersion": 1,
+   "id": "torture-museum",
+   "pand": "0363100012175875",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-331",
+     "bearing": 331,
+     "lengthM": 6.3,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002359_pano_0002_000168",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-192",
+     "bearing": 192,
+     "lengthM": 5.4,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-000354_pano_0001_000211",
+     "capturedAt": "2017",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "Singel 449: the camera-matched views frame the shop next door (VAN LIER) and the canal row; no signature ornament on the museum front is distinguishable in these crops."
+  },
+  "theo-thijssen-museum": {
+   "schemaVersion": 1,
+   "id": "theo-thijssen-museum",
+   "pand": "0363100012168755",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-70",
+     "bearing": 70,
+     "lengthM": 5.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001674_pano_0000_000508",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "Only an oblique (45 deg), tree-screened view; nothing signature-like distinguishable."
+  },
+  "sint-olofskapel": {
+   "schemaVersion": 1,
+   "id": "sint-olofskapel",
+   "pand": "0363100012177887",
+   "signature": [
+    "portal"
+   ],
+   "walls": [
+    {
+     "tag": "w01-58",
+     "bearing": 58,
+     "lengthM": 16.9,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-17_08-04-10_03794",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-231",
+     "bearing": 231,
+     "lengthM": 11.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002031_pano_0000_000485",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-49",
+     "bearing": 49,
+     "lengthM": 5.2,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-17_08-04-10_03793",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-58",
+     "bearing": 58,
+     "lengthM": 3.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002629_pano_0001_000206",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": [
+      {
+       "id": "portal",
+       "kind": "relief",
+       "where": "carved Renaissance stone portal on the Zeedijk front: scrolled pediment with a skeleton/skull relief, pilasters, cartouche",
+       "approxSizeM": [
+        3.5,
+        5
+       ],
+       "plan": "simplified",
+       "how": "plain stone door surround only: the pediment, scrolls and relief are missing",
+       "seenIn": "TMX7316010203-002629_pano_0001_000206"
+      },
+      {
+       "id": "sun-plaque",
+       "kind": "gable-stone",
+       "where": "gilded sun plaque right of the portal",
+       "approxSizeM": [
+        0.6,
+        0.6
+       ],
+       "plan": "open",
+       "note": "cheap: gold disc slab",
+       "seenIn": "TMX7316010203-002629_pano_0001_000206"
+      },
+      {
+       "id": "lantern",
+       "kind": "lamp",
+       "where": "wrought-iron lanterns either side of the portal",
+       "approxSizeM": [
+        0.4,
+        0.8
+       ],
+       "plan": "open",
+       "seenIn": "TMX7316010203-002629_pano_0001_000206"
+      }
+     ]
+    }
+   ]
+  },
+  "nassaukerk": {
+   "schemaVersion": 1,
+   "id": "nassaukerk",
+   "pand": "0363100012237328",
+   "signature": [
+    "nw-lettering",
+    "arched-windows"
+   ],
+   "walls": [
+    {
+     "tag": "w01-224",
+     "bearing": 224,
+     "lengthM": 26.9,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-18_07-44-47_02189",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-135",
+     "bearing": 135,
+     "lengthM": 24.8,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-000280_pano_0000_000149",
+     "capturedAt": "2017",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-315",
+     "bearing": 315,
+     "lengthM": 9.2,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001951_pano_0000_000428",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-314",
+     "bearing": 314,
+     "lengthM": 8.6,
+     "evidence": "photo",
+     "panoId": "recording_2024-09-11_11-32-11_00979",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": [
+      {
+       "id": "nw-lettering",
+       "kind": "lettering",
+       "where": "NASSAUKERK in relief letters on the brick wall right of the porch",
+       "approxSizeM": [
+        2.6,
+        0.35
+       ],
+       "plan": "modelled",
+       "seenIn": "recording_2024-09-11_11-32-11_00979",
+       "how": "dark raised stroke-font letters on the brick, replacing the blank band",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/nassaukerk/strip.png"
+      },
+      {
+       "id": "arched-windows",
+       "kind": "window-shape",
+       "where": "triplets of round-arched windows in the gables",
+       "approxSizeM": [
+        4,
+        2
+       ],
+       "plan": "modelled",
+       "how": "hand arched windows",
+       "seenIn": "recording_2024-09-11_11-32-11_00979"
+      },
+      {
+       "id": "nw-porch",
+       "kind": "canopy",
+       "where": "hipped porch roof over the entrance",
+       "approxSizeM": [
+        4,
+        2
+       ],
+       "plan": "modelled",
+       "how": "hand porch",
+       "seenIn": "recording_2024-09-11_11-32-11_00979"
+      },
+      {
+       "id": "nw-flag",
+       "kind": "sign",
+       "where": "pink feather flag by the door",
+       "approxSizeM": [
+        0.6,
+        3
+       ],
+       "plan": "skipped",
+       "skip": {
+        "reason": "temporary",
+        "note": "feather banner"
+       },
+       "seenIn": "recording_2024-09-11_11-32-11_00979"
+      }
+     ]
+    }
+   ]
+  },
+  "west-india-house": {
+   "schemaVersion": 1,
+   "id": "west-india-house",
+   "pand": "0363100012167535",
+   "signature": [
+    "ne-pediment-relief",
+    "ne-portal"
+   ],
+   "walls": [
+    {
+     "tag": "w01-294",
+     "bearing": 294,
+     "lengthM": 24.7,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001549_pano_0000_000198",
+     "capturedAt": "2019",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-24",
+     "bearing": 24,
+     "lengthM": 18.8,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001672_pano_0000_001583",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": [
+      {
+       "id": "ne-pediment-relief",
+       "kind": "relief",
+       "where": "carved relief in the tympanum of the central pediment",
+       "approxSizeM": [
+        4,
+        1.2
+       ],
+       "plan": "open",
+       "note": "the model pediment is plain; a low-relief slab would read on the card",
+       "seenIn": "TMX7316010203-001672_pano_0000_001583"
+      },
+      {
+       "id": "ne-portal",
+       "kind": "other",
+       "where": "stone door frame with round-arched doorway and cornice, centre",
+       "approxSizeM": [
+        3,
+        4.5
+       ],
+       "plan": "simplified",
+       "how": "flat stone surround with a lintel block",
+       "seenIn": "TMX7316010203-001672_pano_0000_001583"
+      },
+      {
+       "id": "ne-lanterns",
+       "kind": "lamp",
+       "where": "two green lanterns either side of the door",
+       "approxSizeM": [
+        0.4,
+        0.7
+       ],
+       "plan": "open",
+       "note": "cheap",
+       "seenIn": "TMX7316010203-001672_pano_0000_001583"
+      },
+      {
+       "id": "ne-stoep-railing",
+       "kind": "balcony-ironwork",
+       "where": "stoep railings with stone posts at the entrance",
+       "approxSizeM": [
+        6,
+        1
+       ],
+       "plan": "open",
+       "seenIn": "TMX7316010203-001672_pano_0000_001583"
+      }
+     ]
+    },
+    {
+     "tag": "w03-294",
+     "bearing": 294,
+     "lengthM": 9.2,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-113",
+     "bearing": 113,
+     "lengthM": 8.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002037_pano_0001_000493",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "thomaskerk": {
+   "schemaVersion": 1,
+   "id": "thomaskerk",
+   "pand": "0363100012099552",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-87",
+     "bearing": 87,
+     "lengthM": 20.7,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-177",
+     "bearing": 177,
+     "lengthM": 18.8,
+     "evidence": "photo",
+     "panoId": "recording_2025-07-29_10-56-07_00522",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": [
+      {
+       "id": "s-statue",
+       "kind": "sculpture",
+       "where": "free-standing statue on a plinth on the lawn",
+       "approxSizeM": [
+        0.8,
+        2
+       ],
+       "plan": "skipped",
+       "skip": {
+        "reason": "not-visible",
+        "note": "free-standing in the garden, not part of the building"
+       },
+       "seenIn": "recording_2025-07-29_10-56-07_00522"
+      }
+     ]
+    },
+    {
+     "tag": "w03-352",
+     "bearing": 352,
+     "lengthM": 18.2,
+     "evidence": "photo",
+     "panoId": "TMX7316060226-000013_pano_0001_001181",
+     "capturedAt": "2016",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-13",
+     "bearing": 13,
+     "lengthM": 15.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001163_pano_0000_002567",
+     "capturedAt": "2019",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "The four longest exposed walls are the low wings and are tree-screened; the tower front is not among them. Re-run --walls=8 before judging the tower."
+  },
+  "willem-de-zwijgerkerk": {
+   "schemaVersion": 1,
+   "id": "willem-de-zwijgerkerk",
+   "pand": "0363100012098714",
+   "signature": [
+    "se-name-plaque",
+    "tower"
+   ],
+   "walls": [
+    {
+     "tag": "w01-248",
+     "bearing": 248,
+     "lengthM": 21.7,
+     "evidence": "photo",
+     "panoId": "TMX7316060226-000006_pano_0002_000659",
+     "capturedAt": "2016",
+     "checked": true,
+     "items": [
+      {
+       "id": "tower",
+       "kind": "tower",
+       "where": "tall square brick tower (whole building)",
+       "approxSizeM": [
+        5,
+        30
+       ],
+       "plan": "modelled",
+       "how": "hand tower",
+       "seenIn": "TMX7316060226-000006_pano_0002_000659"
+      }
+     ]
+    },
+    {
+     "tag": "w02-67",
+     "bearing": 67,
+     "lengthM": 16.4,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-000263_pano_0001_003116",
+     "capturedAt": "2017",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-157",
+     "bearing": 157,
+     "lengthM": 13.9,
+     "evidence": "photo",
+     "panoId": "b_20241105_1332_Track11_Sphere_00007",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": [
+      {
+       "id": "se-name-plaque",
+       "kind": "lettering",
+       "where": "WILLEM DE ZWIJGER KERK name plaque over the arched entrance",
+       "approxSizeM": [
+        2,
+        0.8
+       ],
+       "plan": "modelled",
+       "how": "green-blue plate with WILLEM DE ZWIJGER over KERK in cream raised letters",
+       "seenIn": "b_20241105_1332_Track11_Sphere_00007",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/willem-de-zwijgerkerk/strip.png"
+      },
+      {
+       "id": "se-noticeboard",
+       "kind": "sign",
+       "where": "notice board on posts by the gate",
+       "approxSizeM": [
+        1,
+        0.8
+       ],
+       "plan": "skipped",
+       "skip": {
+        "reason": "too-small",
+        "note": "standard notice board"
+       },
+       "seenIn": "b_20241105_1332_Track11_Sphere_00007"
+      }
+     ]
+    },
+    {
+     "tag": "w04-337",
+     "bearing": 337,
+     "lengthM": 10.4,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001160_pano_0000_004114",
+     "capturedAt": "2019",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "vrijburg": {
+   "schemaVersion": 1,
+   "id": "vrijburg",
+   "pand": "0363100012127929",
+   "signature": [
+    "sw-door-lettering",
+    "sw-window-fan",
+    "spire"
+   ],
+   "walls": [
+    {
+     "tag": "w01-141",
+     "bearing": 141,
+     "lengthM": 26.0,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-321",
+     "bearing": 321,
+     "lengthM": 18.0,
+     "evidence": "photo",
+     "panoId": "recording_2025-07-15_11-16-59_00488",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-231",
+     "bearing": 231,
+     "lengthM": 16.6,
+     "evidence": "photo",
+     "panoId": "recording_2025-07-14_12-49-24_01163",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": [
+      {
+       "id": "sw-door-lettering",
+       "kind": "lettering",
+       "where": "lettering band in an arc over the round-arched door",
+       "approxSizeM": [
+        4,
+        0.3
+       ],
+       "plan": "open",
+       "note": "cheap: stroke-font letters following the arch",
+       "seenIn": "recording_2025-07-14_12-49-24_01163"
+      },
+      {
+       "id": "sw-window-fan",
+       "kind": "window-shape",
+       "where": "stepped fan of tall narrow windows in the gable",
+       "approxSizeM": [
+        3,
+        5
+       ],
+       "plan": "modelled",
+       "how": "hand stepped lancets",
+       "seenIn": "recording_2025-07-14_12-49-24_01163"
+      },
+      {
+       "id": "sw-banners",
+       "kind": "sign",
+       "where": "printed banners and a flag in front of the gable",
+       "approxSizeM": [
+        1.5,
+        2.5
+       ],
+       "plan": "skipped",
+       "skip": {
+        "reason": "temporary",
+        "note": "printed banners"
+       },
+       "seenIn": "recording_2025-07-14_12-49-24_01163"
+      },
+      {
+       "id": "spire",
+       "kind": "tower",
+       "where": "slender copper ridge spire",
+       "approxSizeM": [
+        1,
+        5
+       ],
+       "plan": "modelled",
+       "how": "hand spire",
+       "seenIn": "recording_2025-07-14_12-49-24_01163"
+      }
+     ]
+    },
+    {
+     "tag": "w04-51",
+     "bearing": 51,
+     "lengthM": 16.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002797_pano_0002_000414",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "van-gendt-hallen": {
+   "schemaVersion": 1,
+   "id": "van-gendt-hallen",
+   "pand": "0363100012169224",
+   "signature": [
+    "sw-stepped-gables"
+   ],
+   "walls": [
+    {
+     "tag": "w01-136",
+     "bearing": 136,
+     "lengthM": 157.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002624_pano_0010_000327",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": [
+      {
+       "id": "se-gantry",
+       "kind": "other",
+       "where": "yellow pipe gantry over the central door",
+       "approxSizeM": [
+        12,
+        1
+       ],
+       "plan": "skipped",
+       "skip": {
+        "reason": "temporary",
+        "note": "services gantry"
+       },
+       "seenIn": "TMX7316010203-002624_pano_0010_000327"
+      }
+     ]
+    },
+    {
+     "tag": "w02-317",
+     "bearing": 317,
+     "lengthM": 110.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001982_pano_0000_000856",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-226",
+     "bearing": 226,
+     "lengthM": 82.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001982_pano_0000_000840",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": [
+      {
+       "id": "sw-stepped-gables",
+       "kind": "other",
+       "where": "three tall pointed gables with stepped brick corbelling",
+       "approxSizeM": [
+        25,
+        8
+       ],
+       "plan": "open",
+       "note": "the model gables are rounded (segmental) where the photo has pointed, stepped ones",
+       "seenIn": "TMX7316010203-001982_pano_0000_000840"
+      }
+     ]
+    },
+    {
+     "tag": "w04-47",
+     "bearing": 47,
+     "lengthM": 47.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001643_pano_0003_000268",
+     "capturedAt": "2019",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "zuiderkerk": {
+   "schemaVersion": 1,
+   "id": "zuiderkerk",
+   "pand": "0363100012171559",
+   "signature": [
+    "tower-clock",
+    "tower"
+   ],
+   "walls": [
+    {
+     "tag": "w01-299",
+     "bearing": 299,
+     "lengthM": 14.7,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-298",
+     "bearing": 298,
+     "lengthM": 9.5,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002791_pano_0001_000026",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": [
+      {
+       "id": "tower",
+       "kind": "tower",
+       "where": "tower with sandstone quoins, clock stage and openwork lantern",
+       "approxSizeM": [
+        8,
+        70
+       ],
+       "plan": "modelled",
+       "how": "hand tower",
+       "seenIn": "TMX7316010203-002791_pano_0001_000026"
+      },
+      {
+       "id": "tower-clock",
+       "kind": "clock",
+       "where": "clock faces on the tower",
+       "approxSizeM": [
+        2,
+        2
+       ],
+       "plan": "modelled",
+       "how": "hand clock discs",
+       "seenIn": "TMX7316010203-002791_pano_0001_000026"
+      }
+     ]
+    },
+    {
+     "tag": "w03-119",
+     "bearing": 119,
+     "lengthM": 5.5,
+     "evidence": "photo",
+     "panoId": "TMX7315120208-000073_pano_0003_000033",
+     "capturedAt": "2016",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-299",
+     "bearing": 299,
+     "lengthM": 5.5,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001174_pano_0000_002982",
+     "capturedAt": "2019",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "muiderkerk": {
+   "schemaVersion": 1,
+   "id": "muiderkerk",
+   "pand": "0363100012118480",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-71",
+     "bearing": 71,
+     "lengthM": 30.1,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-000749_pano_0000_001131",
+     "capturedAt": "2018",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-161",
+     "bearing": 161,
+     "lengthM": 26.0,
+     "evidence": "photo",
+     "panoId": "recording_2024-09-17_08-20-13_00890",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-341",
+     "bearing": 341,
+     "lengthM": 26.0,
+     "evidence": "photo",
+     "panoId": "recording_2024-09-17_08-20-13_00191",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-251",
+     "bearing": 251,
+     "lengthM": 13.1,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001184_pano_0000_003467",
+     "capturedAt": "2019",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "The sheets frame the office/apartment blocks of the merged pand; the small spire is the only church sign. Shop signs on the ground floor are tenants (temporary)."
+  },
+  "aron-schuster-synagoge": {
+   "schemaVersion": 1,
+   "id": "aron-schuster-synagoge",
+   "pand": "0363100012074574",
+   "signature": [
+    "n-canopy"
+   ],
+   "walls": [
+    {
+     "tag": "w01-248",
+     "bearing": 248,
+     "lengthM": 13.2,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-67",
+     "bearing": 67,
+     "lengthM": 13.1,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001160_pano_0000_002406",
+     "capturedAt": "2019",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-340",
+     "bearing": 340,
+     "lengthM": 9.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002118_pano_0000_007598",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-338",
+     "bearing": 338,
+     "lengthM": 8.9,
+     "evidence": "photo",
+     "panoId": "TMX7316060226-000012_pano_0000_002833",
+     "capturedAt": "2016",
+     "checked": true,
+     "items": [
+      {
+       "id": "n-canopy",
+       "kind": "canopy",
+       "where": "flat concrete entrance canopy, right",
+       "approxSizeM": [
+        4,
+        0.4
+       ],
+       "plan": "modelled",
+       "how": "hand canopy",
+       "seenIn": "TMX7316060226-000012_pano_0000_002833"
+      }
+     ]
+    }
+   ],
+   "note": "Street clock in front of the NE wall is street furniture; scaffolding in the 2021 view."
+  },
+  "zevenlandenhuizen": {
+   "schemaVersion": 1,
+   "id": "zevenlandenhuizen",
+   "pand": "0363100012137523",
+   "signature": [
+    "se-carved-fronts"
+   ],
+   "walls": [
+    {
+     "tag": "w01-337",
+     "bearing": 337,
+     "lengthM": 5.5,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-155",
+     "bearing": 155,
+     "lengthM": 3.3,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002117_pano_0000_001187",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": [
+      {
+       "id": "se-carved-fronts",
+       "kind": "relief",
+       "where": "neo-Gothic/Renaissance carved stone bands, balconies and oriels on the seven fronts",
+       "approxSizeM": [
+        20,
+        15
+       ],
+       "plan": "simplified",
+       "how": "hand facades with arched windows, white trim and balconies; carving not modelled",
+       "seenIn": "TMX7316010203-002117_pano_0000_001187"
+      }
+     ]
+    }
+   ]
+  },
+  "ij-toren": {
+   "schemaVersion": 1,
+   "id": "ij-toren",
+   "pand": "0363100012090447",
+   "signature": [
+    "n-portholes"
+   ],
+   "walls": [
+    {
+     "tag": "w01-16",
+     "bearing": 16,
+     "lengthM": 305.8,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002532_pano_0000_002595",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": [
+      {
+       "id": "n-portholes",
+       "kind": "window-shape",
+       "where": "row of porthole windows in the base",
+       "approxSizeM": [
+        1,
+        1
+       ],
+       "plan": "modelled",
+       "how": "hand portholes",
+       "seenIn": "TMX7316010203-002532_pano_0000_002595"
+      }
+     ]
+    },
+    {
+     "tag": "w02-196",
+     "bearing": 196,
+     "lengthM": 204.8,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-196",
+     "bearing": 196,
+     "lengthM": 75.6,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-16_09-52-43_01767",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-16",
+     "bearing": 16,
+     "lengthM": 59.1,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002532_pano_0000_002594",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "de-school": {
+   "schemaVersion": 1,
+   "id": "de-school",
+   "pand": "0363100012121682",
+   "signature": [
+    "e-lts-letters"
+   ],
+   "walls": [
+    {
+     "tag": "w01-179",
+     "bearing": 179,
+     "lengthM": 82.9,
+     "evidence": "photo",
+     "panoId": "2025_09_25_08_03_55_00974",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-359",
+     "bearing": 359,
+     "lengthM": 21.5,
+     "evidence": "photo",
+     "panoId": "b_20241217_0841_Track76_Sphere_00304",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-90",
+     "bearing": 90,
+     "lengthM": 18.8,
+     "evidence": "photo",
+     "panoId": "b_20241217_0841_Track76_Sphere_00307",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": [
+      {
+       "id": "e-lts-letters",
+       "kind": "lettering",
+       "where": "big purple LTS letters on the roof edge over the entrance",
+       "approxSizeM": [
+        2.2,
+        0.9
+       ],
+       "plan": "modelled",
+       "seenIn": "b_20241217_0841_Track76_Sphere_00307",
+       "how": "LTS in 0.95 m standing raised letters on the wing roof edge over the porch (blue; the photo is purple-blue)",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/de-school/strip.png"
+      }
+     ]
+    },
+    {
+     "tag": "w04-269",
+     "bearing": 269,
+     "lengthM": 18.7,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002492_pano_0005_002194",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "christ-church-groenburgwal": {
+   "schemaVersion": 1,
+   "id": "christ-church-groenburgwal",
+   "pand": "0363100012171165",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-208",
+     "bearing": 208,
+     "lengthM": 19.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001660_pano_0000_001088",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-29",
+     "bearing": 29,
+     "lengthM": 15.8,
+     "evidence": "photo",
+     "panoId": "recording_2025-07-03_03-29-47_03568",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-299",
+     "bearing": 299,
+     "lengthM": 7.2,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002031_pano_0001_001286",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-298",
+     "bearing": 298,
+     "lengthM": 4.0,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "The camera-matched views frame neighbouring houses (the pand outline includes them); the church front is not judged here. Re-run with the church wall."
+  },
+  "ljg-synagoge": {
+   "schemaVersion": 1,
+   "id": "ljg-synagoge",
+   "pand": "0363100012241744",
+   "signature": [
+    "n-hebrew-text",
+    "perforations"
+   ],
+   "walls": [
+    {
+     "tag": "w01-275",
+     "bearing": 275,
+     "lengthM": 57.4,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-95",
+     "bearing": 95,
+     "lengthM": 57.4,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-184",
+     "bearing": 184,
+     "lengthM": 17.2,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-4",
+     "bearing": 4,
+     "lengthM": 17.2,
+     "evidence": "photo",
+     "panoId": "recording_2025-07-14_11-01-54_00271",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": [
+      {
+       "id": "n-hebrew-text",
+       "kind": "lettering",
+       "where": "three lines of perforated Hebrew text on the north wall",
+       "approxSizeM": [
+        9,
+        3
+       ],
+       "plan": "modelled",
+       "how": "dot pattern text",
+       "seenIn": "recording_2025-07-14_11-01-54_00271"
+      },
+      {
+       "id": "perforations",
+       "kind": "other",
+       "where": "scattered perforation dots over the upper walls",
+       "approxSizeM": [
+        17,
+        6
+       ],
+       "plan": "modelled",
+       "how": "decal dots",
+       "seenIn": "recording_2025-07-14_11-01-54_00271"
+      }
+     ]
+    }
+   ]
+  },
+  "trippenhuis": {
+   "schemaVersion": 1,
+   "id": "trippenhuis",
+   "pand": "0363100012171636",
+   "signature": [
+    "nw-pilasters",
+    "nw-mortar-chimneys",
+    "nw-pediment"
+   ],
+   "walls": [
+    {
+     "tag": "w01-118",
+     "bearing": 118,
+     "lengthM": 24.3,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-301",
+     "bearing": 301,
+     "lengthM": 23.9,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001975_pano_0000_001233",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": [
+      {
+       "id": "nw-pilasters",
+       "kind": "relief",
+       "where": "giant Corinthian pilasters with fluting",
+       "approxSizeM": [
+        1,
+        15
+       ],
+       "plan": "modelled",
+       "how": "hand pilasters",
+       "seenIn": "TMX7316010203-001975_pano_0000_001233"
+      },
+      {
+       "id": "nw-mortar-chimneys",
+       "kind": "other",
+       "where": "chimneys shaped as mortars on the roof",
+       "approxSizeM": [
+        1.5,
+        2
+       ],
+       "plan": "modelled",
+       "how": "hand chimneys",
+       "seenIn": "TMX7316010203-001975_pano_0000_001233"
+      },
+      {
+       "id": "nw-pediment",
+       "kind": "relief",
+       "where": "pediment with the Trip arms and trophies",
+       "approxSizeM": [
+        12,
+        2.5
+       ],
+       "plan": "simplified",
+       "how": "pediment with a raised panel; the arms not carved",
+       "seenIn": "TMX7316010203-001975_pano_0000_001233"
+      },
+      {
+       "id": "nw-festoons",
+       "kind": "relief",
+       "where": "carved festoon panels between the storeys",
+       "approxSizeM": [
+        2,
+        0.6
+       ],
+       "plan": "simplified",
+       "how": "raised panels",
+       "seenIn": "TMX7316010203-001975_pano_0000_001233"
+      }
+     ]
+    },
+    {
+     "tag": "w03-27",
+     "bearing": 27,
+     "lengthM": 4.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002992_pano_0004_000020",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-298",
+     "bearing": 298,
+     "lengthM": 3.4,
+     "evidence": "photo",
+     "panoId": "b_20250108_1041_Track23_Sphere_00038",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "american-hotel": {
+   "schemaVersion": 1,
+   "id": "american-hotel",
+   "pand": "0363100012168734",
+   "signature": [
+    "se-american-lettering",
+    "se-awnings",
+    "tower"
+   ],
+   "walls": [
+    {
+     "tag": "w01-143",
+     "bearing": 143,
+     "lengthM": 35.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001178_pano_0001_003767",
+     "capturedAt": "2019",
+     "checked": true,
+     "items": [
+      {
+       "id": "se-american-lettering",
+       "kind": "lettering",
+       "where": "AMERICAN name sign on the corner at first-floor level, left",
+       "approxSizeM": [
+        3,
+        0.5
+       ],
+       "plan": "modelled",
+       "seenIn": "TMX7316010203-001178_pano_0001_003767",
+       "how": "AMERICAN in 0.55 m standing letters on the Bar Americain canopy",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/american-hotel/strip.png"
+      },
+      {
+       "id": "se-awnings",
+       "kind": "canopy",
+       "where": "striped fabric awnings over the cafe windows",
+       "approxSizeM": [
+        4,
+        1.2
+       ],
+       "plan": "modelled",
+       "seenIn": "TMX7316010203-001178_pano_0001_003767",
+       "how": "eight alternating ochre/cream sloping strips per cafe arch",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/american-hotel/strip.png"
+      },
+      {
+       "id": "tower",
+       "kind": "tower",
+       "where": "corner tower with clock stage",
+       "approxSizeM": [
+        5,
+        30
+       ],
+       "plan": "modelled",
+       "how": "hand tower",
+       "seenIn": "TMX7316010203-001178_pano_0001_003767"
+      }
+     ]
+    },
+    {
+     "tag": "w02-53",
+     "bearing": 53,
+     "lengthM": 19.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002857_pano_0006_000019",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-220",
+     "bearing": 220,
+     "lengthM": 17.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002979_pano_0000_000041",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-53",
+     "bearing": 53,
+     "lengthM": 12.2,
+     "evidence": "photo",
+     "panoId": "b_20241211_0954_Track09_Sphere_00111",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "vondelkerk": {
+   "schemaVersion": 1,
+   "id": "vondelkerk",
+   "pand": "0363100012236196",
+   "signature": [
+    "tower-clock",
+    "sw-front"
+   ],
+   "walls": [
+    {
+     "tag": "w01-247",
+     "bearing": 247,
+     "lengthM": 10.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002789_pano_0000_000841",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": [
+      {
+       "id": "sw-front",
+       "kind": "other",
+       "where": "twin-turreted west front with rose window and portal",
+       "approxSizeM": [
+        15,
+        25
+       ],
+       "plan": "modelled",
+       "how": "hand front",
+       "seenIn": "TMX7316010203-002789_pano_0000_000841"
+      }
+     ]
+    },
+    {
+     "tag": "w02-109",
+     "bearing": 109,
+     "lengthM": 3.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-000786_pano_0003_000792",
+     "capturedAt": "2018",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-22",
+     "bearing": 22,
+     "lengthM": 3.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001502_pano_0000_000006",
+     "capturedAt": "2019",
+     "checked": true,
+     "items": [
+      {
+       "id": "tower-clock",
+       "kind": "clock",
+       "where": "gilded clock faces on the four cardinal faces of the crossing-tower belfry",
+       "approxSizeM": [
+        1.5,
+        1.5
+       ],
+       "plan": "modelled",
+       "seenIn": "TMX7316010203-001502_pano_0000_000006",
+       "how": "gilt faces (already there) plus gilt hands, ornament-kit clockHands",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/vondelkerk/strip.png"
+      }
+     ]
+    },
+    {
+     "tag": "w04-200",
+     "bearing": 200,
+     "lengthM": 3.3,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002789_pano_0000_000816",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "lloyd-hotel": {
+   "schemaVersion": 1,
+   "id": "lloyd-hotel",
+   "pand": "0363100012118149",
+   "signature": [
+    "n-lettering"
+   ],
+   "walls": [
+    {
+     "tag": "w01-106",
+     "bearing": 106,
+     "lengthM": 20.8,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-000739_pano_0000_001616",
+     "capturedAt": "2018",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-196",
+     "bearing": 196,
+     "lengthM": 19.2,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002136_pano_0000_002335",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-16",
+     "bearing": 16,
+     "lengthM": 13.7,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002534_pano_0000_000313",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-16",
+     "bearing": 16,
+     "lengthM": 12.7,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-16_09-52-43_01127",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": [
+      {
+       "id": "n-lettering",
+       "kind": "lettering",
+       "where": "LLOYD HOTEL plaque on the wing",
+       "approxSizeM": [
+        3,
+        0.6
+       ],
+       "plan": "modelled",
+       "how": "lettering plaque",
+       "seenIn": "recording_2025-06-16_09-52-43_01127"
+      }
+     ]
+    }
+   ]
+  },
+  "ronde-lutherse-kerk": {
+   "schemaVersion": 1,
+   "id": "ronde-lutherse-kerk",
+   "pand": "0363100012179368",
+   "signature": [
+    "dome",
+    "weathervane"
+   ],
+   "walls": [
+    {
+     "tag": "w01-339",
+     "bearing": 339,
+     "lengthM": 13.1,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001900_pano_0002_000056",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-97",
+     "bearing": 97,
+     "lengthM": 12.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001900_pano_0002_000205",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-314",
+     "bearing": 314,
+     "lengthM": 8.5,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-16_03-46-32_01174",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-97",
+     "bearing": 97,
+     "lengthM": 7.7,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001900_pano_0002_000202",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": [
+      {
+       "id": "dome",
+       "kind": "dome",
+       "where": "copper dome with lantern",
+       "approxSizeM": [
+        30,
+        10
+       ],
+       "plan": "modelled",
+       "how": "hand dome",
+       "seenIn": "TMX7316010203-001900_pano_0002_000202"
+      },
+      {
+       "id": "weathervane",
+       "kind": "other",
+       "where": "weathervane on the lantern",
+       "approxSizeM": [
+        1,
+        1.5
+       ],
+       "plan": "modelled",
+       "how": "hand vane",
+       "seenIn": "TMX7316010203-001900_pano_0002_000202"
+      }
+     ]
+    }
+   ],
+   "note": "Pand missing from the building tiles; the catalogue footprint includes the neighbouring canal houses, which the model shows as blank brick blocks where the photo has windows."
+  },
+  "hotel-okura": {
+   "schemaVersion": 1,
+   "id": "hotel-okura",
+   "pand": "0363100012150422",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-185",
+     "bearing": 185,
+     "lengthM": 42.2,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001793_pano_0000_004828",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": [
+      {
+       "id": "s-stairs",
+       "kind": "balcony-ironwork",
+       "where": "external steel stairs and galleries over the podium",
+       "approxSizeM": [
+        20,
+        6
+       ],
+       "plan": "open",
+       "note": "the podium is a plain block in the model",
+       "seenIn": "TMX7316010203-001793_pano_0000_004828"
+      }
+     ]
+    },
+    {
+     "tag": "w02-185",
+     "bearing": 185,
+     "lengthM": 17.2,
+     "evidence": "photo",
+     "panoId": "recording_2025-07-15_08-32-06_03351",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-275",
+     "bearing": 275,
+     "lengthM": 15.8,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-5",
+     "bearing": 5,
+     "lengthM": 13.4,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "coymanshuis": {
+   "schemaVersion": 1,
+   "id": "coymanshuis",
+   "pand": "0363100012165021",
+   "signature": [
+    "sw-lanterns",
+    "sw-fanlight"
+   ],
+   "walls": [
+    {
+     "tag": "w01-300",
+     "bearing": 300,
+     "lengthM": 25.1,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-000355_pano_0000_000947",
+     "capturedAt": "2017",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-120",
+     "bearing": 120,
+     "lengthM": 20.7,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-210",
+     "bearing": 210,
+     "lengthM": 12.3,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002865_pano_0016_000006",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": [
+      {
+       "id": "sw-lanterns",
+       "kind": "lamp",
+       "where": "wrought-iron lanterns on scrolled brackets either side of the door",
+       "approxSizeM": [
+        1,
+        1.5
+       ],
+       "plan": "open",
+       "note": "cheap",
+       "seenIn": "TMX7316010203-002865_pano_0016_000006"
+      },
+      {
+       "id": "sw-fanlight",
+       "kind": "window-shape",
+       "where": "gilded fanlight in the arched door",
+       "approxSizeM": [
+        1.5,
+        0.8
+       ],
+       "plan": "simplified",
+       "how": "dark arch",
+       "seenIn": "TMX7316010203-002865_pano_0016_000006"
+      }
+     ]
+    },
+    {
+     "tag": "w04-29",
+     "bearing": 29,
+     "lengthM": 11.2,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "artis-aquarium": {
+   "schemaVersion": 1,
+   "id": "artis-aquarium",
+   "pand": "0363100012170226",
+   "signature": [
+    "sw-portico",
+    "sw-frieze-lettering"
+   ],
+   "walls": [
+    {
+     "tag": "w01-210",
+     "bearing": 210,
+     "lengthM": 43.5,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002625_pano_0001_000086",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": [
+      {
+       "id": "sw-portico",
+       "kind": "colonnade",
+       "where": "columned portico with pediment",
+       "approxSizeM": [
+        14,
+        12
+       ],
+       "plan": "modelled",
+       "how": "hand portico",
+       "seenIn": "TMX7316010203-002625_pano_0001_000086"
+      },
+      {
+       "id": "sw-frieze-lettering",
+       "kind": "lettering",
+       "where": "NATURA ARTIS MAGISTRA on the frieze",
+       "approxSizeM": [
+        8,
+        0.5
+       ],
+       "plan": "modelled",
+       "how": "lettering",
+       "seenIn": "TMX7316010203-002625_pano_0001_000086"
+      }
+     ]
+    },
+    {
+     "tag": "w02-30",
+     "bearing": 30,
+     "lengthM": 15.1,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-30",
+     "bearing": 30,
+     "lengthM": 10.7,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-30",
+     "bearing": 30,
+     "lengthM": 9.1,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "fatih-moskee": {
+   "schemaVersion": 1,
+   "id": "fatih-moskee",
+   "pand": "0363100012167944",
+   "signature": [
+    "s-rose-window"
+   ],
+   "walls": [
+    {
+     "tag": "w01-69",
+     "bearing": 69,
+     "lengthM": 34.2,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002542_pano_0006_000017",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-340",
+     "bearing": 340,
+     "lengthM": 28.9,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001674_pano_0000_001304",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-158",
+     "bearing": 158,
+     "lengthM": 15.5,
+     "evidence": "photo",
+     "panoId": "b_20241216_0911_Track02_Sphere_00066",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": [
+      {
+       "id": "s-rose-window",
+       "kind": "window-shape",
+       "where": "rose window in the front gable",
+       "approxSizeM": [
+        2.5,
+        2.5
+       ],
+       "plan": "modelled",
+       "how": "hand rose",
+       "seenIn": "b_20241216_0911_Track02_Sphere_00066"
+      }
+     ]
+    },
+    {
+     "tag": "w04-71",
+     "bearing": 71,
+     "lengthM": 14.5,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002044_pano_0000_001651",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "chassekerk": {
+   "schemaVersion": 1,
+   "id": "chassekerk",
+   "pand": "0363100012117919",
+   "signature": [
+    "ne-window-rows"
+   ],
+   "walls": [
+    {
+     "tag": "w01-117",
+     "bearing": 117,
+     "lengthM": 52.4,
+     "evidence": "photo",
+     "panoId": "TMX7316060226-000017_pano_0001_000522",
+     "capturedAt": "2016",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-298",
+     "bearing": 298,
+     "lengthM": 13.7,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002378_pano_0008_000138",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-27",
+     "bearing": 27,
+     "lengthM": 12.5,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001041_pano_0002_002266",
+     "capturedAt": "2018",
+     "checked": true,
+     "items": [
+      {
+       "id": "ne-window-rows",
+       "kind": "window-shape",
+       "where": "two rows of windows and a row of small arched windows on the NE hall wall",
+       "approxSizeM": [
+        30,
+        6
+       ],
+       "plan": "open",
+       "note": "the model wall is blank brick",
+       "seenIn": "TMX7316010203-001041_pano_0002_002266"
+      }
+     ]
+    },
+    {
+     "tag": "w04-27",
+     "bearing": 27,
+     "lengthM": 11.8,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001702_pano_0000_001909",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "The SE sheet frames the attached school (its red lettering is the school name)."
+  },
+  "pakhuis-de-zwijger": {
+   "schemaVersion": 1,
+   "id": "pakhuis-de-zwijger",
+   "pand": "0363100012088034",
+   "signature": [
+    "lettering",
+    "piers"
+   ],
+   "walls": [
+    {
+     "tag": "w01-196",
+     "bearing": 196,
+     "lengthM": 35.5,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-000724_pano_0000_000000",
+     "capturedAt": "2018",
+     "checked": true,
+     "items": [
+      {
+       "id": "lettering",
+       "kind": "lettering",
+       "where": "DE ZWIJGER on the front",
+       "approxSizeM": [
+        3,
+        0.5
+       ],
+       "plan": "modelled",
+       "how": "lettering",
+       "seenIn": "TMX7316010203-000724_pano_0000_000000"
+      }
+     ]
+    },
+    {
+     "tag": "w02-16",
+     "bearing": 16,
+     "lengthM": 34.5,
+     "evidence": "photo",
+     "panoId": "recording_2024-10-23_11-21-30_02698",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-106",
+     "bearing": 106,
+     "lengthM": 28.8,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-000739_pano_0000_001030",
+     "capturedAt": "2018",
+     "checked": true,
+     "items": [
+      {
+       "id": "piers",
+       "kind": "other",
+       "where": "raking concrete piers carrying the warehouse over the road",
+       "approxSizeM": [
+        30,
+        6
+       ],
+       "plan": "modelled",
+       "how": "hand piers",
+       "seenIn": "TMX7316010203-000739_pano_0000_001030"
+      }
+     ]
+    }
+   ]
+  },
+  "victoria-hotel": {
+   "schemaVersion": 1,
+   "id": "victoria-hotel",
+   "pand": "0363100012185508",
+   "signature": [
+    "se-balconies",
+    "se-stucco"
+   ],
+   "walls": [
+    {
+     "tag": "w01-130",
+     "bearing": 130,
+     "lengthM": 14.4,
+     "evidence": "photo",
+     "panoId": "recording_2025-07-03_03-29-47_02484",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": [
+      {
+       "id": "se-balconies",
+       "kind": "balcony-ironwork",
+       "where": "wrought-iron balconies on the Damrak front",
+       "approxSizeM": [
+        1.5,
+        0.9
+       ],
+       "plan": "open",
+       "note": "cheap: railing boxes",
+       "seenIn": "recording_2025-07-03_03-29-47_02484"
+      },
+      {
+       "id": "se-stucco",
+       "kind": "relief",
+       "where": "white stucco window surrounds, garlands and cornices",
+       "approxSizeM": [
+        14,
+        20
+       ],
+       "plan": "simplified",
+       "how": "beige facade with pediment hoods; the model colour is beige where the photo is white",
+       "seenIn": "recording_2025-07-03_03-29-47_02484"
+      }
+     ]
+    },
+    {
+     "tag": "w02-315",
+     "bearing": 315,
+     "lengthM": 13.8,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001187_pano_0000_001674",
+     "capturedAt": "2019",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-44",
+     "bearing": 44,
+     "lengthM": 13.5,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-16_06-42-40_02652",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-130",
+     "bearing": 130,
+     "lengthM": 5.8,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-16_06-42-40_01929",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "woongebouw-wladiwostok": {
+   "schemaVersion": 1,
+   "id": "woongebouw-wladiwostok",
+   "pand": "0363100012089568",
+   "signature": [
+    "loggias"
+   ],
+   "walls": [
+    {
+     "tag": "w01-186",
+     "bearing": 186,
+     "lengthM": 38.4,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002533_pano_0001_000037",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": [
+      {
+       "id": "loggias",
+       "kind": "window-shape",
+       "where": "deep framed window boxes",
+       "approxSizeM": [
+        2,
+        2
+       ],
+       "plan": "simplified",
+       "how": "flat windows",
+       "seenIn": "TMX7316010203-002533_pano_0001_000037"
+      }
+     ]
+    },
+    {
+     "tag": "w02-16",
+     "bearing": 16,
+     "lengthM": 38.2,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002136_pano_0000_003707",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-275",
+     "bearing": 275,
+     "lengthM": 16.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002134_pano_0000_000902",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-186",
+     "bearing": 186,
+     "lengthM": 9.8,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-16_08-26-12_03062",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": [
+      {
+       "id": "s-balcony-stack",
+       "kind": "balcony-ironwork",
+       "where": "stacked glazed balconies on the end",
+       "approxSizeM": [
+        5,
+        15
+       ],
+       "plan": "open",
+       "seenIn": "recording_2025-06-16_08-26-12_03062"
+      }
+     ]
+    }
+   ]
+  },
+  "hotel-jakarta": {
+   "schemaVersion": 1,
+   "id": "hotel-jakarta",
+   "pand": "0363100012247056",
+   "signature": [
+    "n-lettering"
+   ],
+   "walls": [
+    {
+     "tag": "w01-196",
+     "bearing": 196,
+     "lengthM": 95.9,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001587_pano_0000_000738",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": [
+      {
+       "id": "s-flags",
+       "kind": "sign",
+       "where": "flagpoles on the quay",
+       "approxSizeM": [
+        1,
+        8
+       ],
+       "plan": "skipped",
+       "skip": {
+        "reason": "not-visible",
+        "note": "free-standing on the quay"
+       },
+       "seenIn": "TMX7316010203-001587_pano_0000_000738"
+      }
+     ]
+    },
+    {
+     "tag": "w02-350",
+     "bearing": 350,
+     "lengthM": 87.5,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-16_08-26-12_02040",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": [
+      {
+       "id": "n-lettering",
+       "kind": "lettering",
+       "where": "HOTEL JAKARTA vertical lettering",
+       "approxSizeM": [
+        1,
+        8
+       ],
+       "plan": "modelled",
+       "how": "lettering",
+       "seenIn": "recording_2025-06-16_08-26-12_02040"
+      }
+     ]
+    },
+    {
+     "tag": "w03-80",
+     "bearing": 80,
+     "lengthM": 50.2,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-16_10-53-53_00107",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-260",
+     "bearing": 260,
+     "lengthM": 18.7,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-16_08-26-12_02403",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "hilton-amsterdam": {
+   "schemaVersion": 1,
+   "id": "hilton-amsterdam",
+   "pand": "0363100012078084",
+   "signature": [
+    "lettering"
+   ],
+   "walls": [
+    {
+     "tag": "w01-187",
+     "bearing": 187,
+     "lengthM": 56.0,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": [
+      {
+       "id": "lettering",
+       "kind": "lettering",
+       "where": "HILTON on the tower top",
+       "approxSizeM": [
+        6,
+        1
+       ],
+       "plan": "modelled",
+       "how": "lettering",
+       "seenIn": "artifacts/ornament-inventory/hilton-amsterdam/sheet"
+      }
+     ]
+    },
+    {
+     "tag": "w02-7",
+     "bearing": 7,
+     "lengthM": 25.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001967_pano_0000_000425",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-347",
+     "bearing": 347,
+     "lengthM": 25.5,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-347",
+     "bearing": 347,
+     "lengthM": 24.2,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "shell-technology-centre": {
+   "schemaVersion": 1,
+   "id": "shell-technology-centre",
+   "pand": "0363100012202175",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-343",
+     "bearing": 343,
+     "lengthM": 75.8,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-164",
+     "bearing": 164,
+     "lengthM": 75.8,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-343",
+     "bearing": 343,
+     "lengthM": 57.7,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-73",
+     "bearing": 73,
+     "lengthM": 56.6,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "No panorama reaches any of the four longest walls (private campus)."
+  },
+  "kohnstammhuis": {
+   "schemaVersion": 1,
+   "id": "kohnstammhuis",
+   "pand": "0363100012125963",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-251",
+     "bearing": 251,
+     "lengthM": 19.8,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002544_pano_0000_000021",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-160",
+     "bearing": 160,
+     "lengthM": 15.2,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001527_pano_0000_000236",
+     "capturedAt": "2019",
+     "checked": true,
+     "items": [
+      {
+       "id": "s-banner",
+       "kind": "sign",
+       "where": "OPEN DAG banner over the entrance",
+       "approxSizeM": [
+        4,
+        1
+       ],
+       "plan": "skipped",
+       "skip": {
+        "reason": "temporary",
+        "note": "event banner"
+       },
+       "seenIn": "TMX7316010203-001527_pano_0000_000236"
+      }
+     ]
+    },
+    {
+     "tag": "w03-340",
+     "bearing": 340,
+     "lengthM": 15.2,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-160",
+     "bearing": 160,
+     "lengthM": 13.9,
+     "evidence": "photo",
+     "panoId": "TMX7315120208-000059_pano_0000_001028",
+     "capturedAt": "2016",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "No ornament; the model is beige where the photo shows dark red-brown brick (colour, not ornament)."
+  },
+  "scheepvaartmuseum": {
+   "schemaVersion": 1,
+   "id": "scheepvaartmuseum",
+   "pand": "0363100012170236",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-332",
+     "bearing": 332,
+     "lengthM": 24.8,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001982_pano_0000_000475",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-152",
+     "bearing": 152,
+     "lengthM": 24.7,
+     "evidence": "photo",
+     "panoId": "recording_2024-10-23_12-42-53_03409",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-332",
+     "bearing": 332,
+     "lengthM": 24.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001982_pano_0000_000459",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-152",
+     "bearing": 152,
+     "lengthM": 24.6,
+     "evidence": "photo",
+     "panoId": "b_20250108_1041_Track02_Sphere_00010",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "The four longest walls are the courtyard-side wings; the north front with the pediment sculpture and the Oosterdok front are not among them. Re-run --walls=8."
+  },
+  "waag": {
+   "schemaVersion": 1,
+   "id": "waag",
+   "pand": "0363100012171850",
+   "signature": [
+    "guild-portals",
+    "towers"
+   ],
+   "walls": [
+    {
+     "tag": "w01-335",
+     "bearing": 335,
+     "lengthM": 10.7,
+     "evidence": "photo",
+     "panoId": "b_20250108_1041_Track23_Sphere_00092",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": [
+      {
+       "id": "nw-portal",
+       "kind": "relief",
+       "where": "carved stone guild portal with relief tympanum over the NW door",
+       "approxSizeM": [
+        3,
+        4.5
+       ],
+       "plan": "simplified",
+       "how": "stone arch surround; the carved tympanum and guild arms are missing",
+       "seenIn": "b_20250108_1041_Track23_Sphere_00092"
+      }
+     ]
+    },
+    {
+     "tag": "w02-245",
+     "bearing": 245,
+     "lengthM": 8.1,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001051_pano_0002_001030",
+     "capturedAt": "2018",
+     "checked": true,
+     "items": [
+      {
+       "id": "guild-portals",
+       "kind": "relief",
+       "where": "carved guild portal (Metselaarspoort) over the SW door",
+       "approxSizeM": [
+        3,
+        4
+       ],
+       "plan": "open",
+       "note": "the model has a plain arched door; a relief slab over the arch would read",
+       "seenIn": "TMX7316010203-001051_pano_0002_001030"
+      },
+      {
+       "id": "sw-market-stall",
+       "kind": "sign",
+       "where": "market stall banners in front",
+       "approxSizeM": [
+        6,
+        1
+       ],
+       "plan": "skipped",
+       "skip": {
+        "reason": "temporary",
+        "note": "market stall"
+       },
+       "seenIn": "TMX7316010203-001051_pano_0002_001030"
+      }
+     ]
+    },
+    {
+     "tag": "w03-65",
+     "bearing": 65,
+     "lengthM": 6.3,
+     "evidence": "photo",
+     "panoId": "b_20250108_1041_Track23_Sphere_00085",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": [
+      {
+       "id": "towers",
+       "kind": "tower",
+       "where": "round corner towers with conical roofs",
+       "approxSizeM": [
+        6,
+        20
+       ],
+       "plan": "modelled",
+       "how": "hand towers",
+       "seenIn": "b_20250108_1041_Track23_Sphere_00085"
+      }
+     ]
+    },
+    {
+     "tag": "w04-65",
+     "bearing": 65,
+     "lengthM": 4.9,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001660_pano_0000_002058",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "obrechtkerk": {
+   "schemaVersion": 1,
+   "id": "obrechtkerk",
+   "pand": "0363100012124153",
+   "signature": [
+    "ne-rose-window",
+    "domes"
+   ],
+   "walls": [
+    {
+     "tag": "w01-336",
+     "bearing": 336,
+     "lengthM": 30.5,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-157",
+     "bearing": 157,
+     "lengthM": 17.9,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-67",
+     "bearing": 67,
+     "lengthM": 12.7,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002942_pano_0008_000108",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": [
+      {
+       "id": "ne-rose-window",
+       "kind": "window-shape",
+       "where": "rose window in the transept gable",
+       "approxSizeM": [
+        3,
+        3
+       ],
+       "plan": "modelled",
+       "how": "hand rose",
+       "seenIn": "TMX7316010203-002942_pano_0008_000108"
+      },
+      {
+       "id": "ne-medallion",
+       "kind": "window-shape",
+       "where": "oval medallion window with a carved frame over the presbytery door",
+       "approxSizeM": [
+        1.5,
+        2
+       ],
+       "plan": "simplified",
+       "how": "small round window",
+       "seenIn": "TMX7316010203-002942_pano_0008_000108"
+      },
+      {
+       "id": "ne-mosaic",
+       "kind": "relief",
+       "where": "framed religious mosaic/painted panel on the church wall, right",
+       "approxSizeM": [
+        1.5,
+        2
+       ],
+       "plan": "open",
+       "note": "cheap: flat coloured panel",
+       "seenIn": "TMX7316010203-002942_pano_0008_000108"
+      },
+      {
+       "id": "domes",
+       "kind": "dome",
+       "where": "ribbed domes on the towers",
+       "approxSizeM": [
+        5,
+        4
+       ],
+       "plan": "modelled",
+       "how": "hand domes",
+       "seenIn": "TMX7316010203-002942_pano_0008_000108"
+      }
+     ]
+    },
+    {
+     "tag": "w04-336",
+     "bearing": 336,
+     "lengthM": 12.0,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "da-costakade-13": {
+   "schemaVersion": 1,
+   "id": "da-costakade-13",
+   "pand": "0363100012166570",
+   "signature": [
+    "balconies"
+   ],
+   "walls": [
+    {
+     "tag": "w01-136",
+     "bearing": 136,
+     "lengthM": 9.2,
+     "evidence": "photo",
+     "panoId": "recording_2024-09-11_08-03-34_00029",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-43",
+     "bearing": 43,
+     "lengthM": 7.6,
+     "evidence": "photo",
+     "panoId": "b_20241211_0838_Track65_Sphere_00009",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-327",
+     "bearing": 327,
+     "lengthM": 5.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001967_pano_0000_001112",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": [
+      {
+       "id": "balconies",
+       "kind": "balcony-ironwork",
+       "where": "wrought-iron balconies",
+       "approxSizeM": [
+        2,
+        1
+       ],
+       "plan": "modelled",
+       "how": "hand balconies",
+       "seenIn": "TMX7316010203-001967_pano_0000_001112"
+      }
+     ]
+    },
+    {
+     "tag": "w04-339",
+     "bearing": 339,
+     "lengthM": 4.9,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-000199_pano_0001_000238",
+     "capturedAt": "2017",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "de-duif": {
+   "schemaVersion": 1,
+   "id": "de-duif",
+   "pand": "0363100012171729",
+   "signature": [
+    "n-front"
+   ],
+   "walls": [
+    {
+     "tag": "w01-163",
+     "bearing": 163,
+     "lengthM": 10.9,
+     "evidence": "photo",
+     "panoId": "recording_2025-07-14_06-43-08_01448",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-254",
+     "bearing": 254,
+     "lengthM": 10.8,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002988_pano_0007_000223",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-164",
+     "bearing": 164,
+     "lengthM": 10.0,
+     "evidence": "photo",
+     "panoId": "b_20241203_1333_Track05_Sphere_00020",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-344",
+     "bearing": 344,
+     "lengthM": 4.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002952_pano_0003_000849",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": [
+      {
+       "id": "n-front",
+       "kind": "other",
+       "where": "stuccoed Prinsengracht front with lunette and plaque",
+       "approxSizeM": [
+        10,
+        18
+       ],
+       "plan": "simplified",
+       "how": "plain grey front, a blue plaque and a gold lunette",
+       "seenIn": "TMX7316010203-002952_pano_0003_000849"
+      }
+     ]
+    }
+   ],
+   "note": "The camera-matched views mostly frame the neighbouring canal houses; the church front is narrow and seen obliquely."
+  },
+  "mozes-en-aaronkerk": {
+   "schemaVersion": 1,
+   "id": "mozes-en-aaronkerk",
+   "pand": "0363100012253765",
+   "signature": [
+    "sw-portico",
+    "statue-niche"
+   ],
+   "walls": [
+    {
+     "tag": "w01-34",
+     "bearing": 34,
+     "lengthM": 12.9,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002541_pano_0000_001052",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-304",
+     "bearing": 304,
+     "lengthM": 12.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001181_pano_0000_005546",
+     "capturedAt": "2019",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-214",
+     "bearing": 214,
+     "lengthM": 11.3,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001181_pano_0000_005551",
+     "capturedAt": "2019",
+     "checked": true,
+     "items": [
+      {
+       "id": "sw-portico",
+       "kind": "colonnade",
+       "where": "four giant Ionic columns under a pediment",
+       "approxSizeM": [
+        12,
+        14
+       ],
+       "plan": "modelled",
+       "how": "hand portico",
+       "seenIn": "TMX7316010203-001181_pano_0000_005551"
+      },
+      {
+       "id": "statue-niche",
+       "kind": "sculpture",
+       "where": "statue in a niche over the door",
+       "approxSizeM": [
+        1,
+        2
+       ],
+       "plan": "modelled",
+       "how": "white figure in a niche",
+       "seenIn": "TMX7316010203-001181_pano_0000_005551"
+      },
+      {
+       "id": "sw-frieze-text",
+       "kind": "lettering",
+       "where": "inscription on the frieze over the columns",
+       "approxSizeM": [
+        10,
+        0.4
+       ],
+       "plan": "open",
+       "note": "cheap: stroke-font text on the frieze",
+       "seenIn": "TMX7316010203-001181_pano_0000_005551"
+      },
+      {
+       "id": "sw-lanterns",
+       "kind": "lamp",
+       "where": "wall lanterns either side of the portal",
+       "approxSizeM": [
+        0.4,
+        0.7
+       ],
+       "plan": "open",
+       "note": "cheap",
+       "seenIn": "TMX7316010203-001181_pano_0000_005551"
+      },
+      {
+       "id": "sw-railings",
+       "kind": "balcony-ironwork",
+       "where": "iron railings between the columns",
+       "approxSizeM": [
+        10,
+        2
+       ],
+       "plan": "open",
+       "seenIn": "TMX7316010203-001181_pano_0000_005551"
+      }
+     ]
+    },
+    {
+     "tag": "w04-124",
+     "bearing": 124,
+     "lengthM": 10.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-000221_pano_0000_001806",
+     "capturedAt": "2017",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "oosterkerk": {
+   "schemaVersion": 1,
+   "id": "oosterkerk",
+   "pand": "0363100012170274",
+   "signature": [
+    "lantern"
+   ],
+   "walls": [
+    {
+     "tag": "w01-45",
+     "bearing": 45,
+     "lengthM": 14.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002048_pano_0001_000511",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-225",
+     "bearing": 225,
+     "lengthM": 13.9,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002546_pano_0002_003540",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": [
+      {
+       "id": "lantern",
+       "kind": "tower",
+       "where": "roof lantern with cupola",
+       "approxSizeM": [
+        3,
+        5
+       ],
+       "plan": "modelled",
+       "how": "hand lantern",
+       "seenIn": "TMX7316010203-002546_pano_0002_003540"
+      },
+      {
+       "id": "sw-balustrade",
+       "kind": "balcony-ironwork",
+       "where": "stone balustrade over the front",
+       "approxSizeM": [
+        10,
+        1
+       ],
+       "plan": "modelled",
+       "how": "hand balustrade",
+       "seenIn": "TMX7316010203-002546_pano_0002_003540"
+      }
+     ]
+    },
+    {
+     "tag": "w03-226",
+     "bearing": 226,
+     "lengthM": 6.9,
+     "evidence": "photo",
+     "panoId": "b_20241210_1246_Track01_Sphere_00124",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-225",
+     "bearing": 225,
+     "lengthM": 6.8,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-19_07-14-50_01366",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "vriesseveem-9": {
+   "schemaVersion": 1,
+   "id": "vriesseveem-9",
+   "pand": "0363100012239869",
+   "signature": [
+    "s-piet-hein-letters"
+   ],
+   "walls": [
+    {
+     "tag": "w01-16",
+     "bearing": 16,
+     "lengthM": 125.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002532_pano_0000_002478",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-196",
+     "bearing": 196,
+     "lengthM": 124.6,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-16_09-52-43_02456",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": [
+      {
+       "id": "s-piet-hein-letters",
+       "kind": "lettering",
+       "where": "giant PIET HEIN letters on the glazed entrance hall",
+       "approxSizeM": [
+        4,
+        2
+       ],
+       "plan": "open",
+       "note": "cheap: stroke-font letters on the glazing",
+       "seenIn": "recording_2025-06-16_09-52-43_02456"
+      }
+     ]
+    },
+    {
+     "tag": "w03-286",
+     "bearing": 286,
+     "lengthM": 31.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001475_pano_0005_000276",
+     "capturedAt": "2019",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-106",
+     "bearing": 106,
+     "lengthM": 20.5,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002313_pano_0003_000500",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    }
+   ]
+  },
+  "bercylaan-801-855": {
+   "schemaVersion": 1,
+   "id": "bercylaan-801-855",
+   "pand": "0363100012250610",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-234",
+     "bearing": 234,
+     "lengthM": 119.9,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-30_12-53-56_00740",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-324",
+     "bearing": 324,
+     "lengthM": 32.9,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001512_pano_0000_001376",
+     "capturedAt": "2019",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-135",
+     "bearing": 135,
+     "lengthM": 11.5,
+     "evidence": "photo",
+     "panoId": "recording_2024-10-21_08-31-01_01316",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-140",
+     "bearing": 140,
+     "lengthM": 11.4,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002896_pano_0003_000073",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "Contemporary block; no ornament, lettering or sign a rider would note in the crops (tenant signs and construction banners are temporary)."
+  },
+  "jacob-bontiusplaats-9": {
+   "schemaVersion": 1,
+   "id": "jacob-bontiusplaats-9",
+   "pand": "0363100012165819",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-315",
+     "bearing": 315,
+     "lengthM": 178.1,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-19_08-46-57_00968",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-135",
+     "bearing": 135,
+     "lengthM": 178.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001643_pano_0003_000461",
+     "capturedAt": "2019",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-45",
+     "bearing": 45,
+     "lengthM": 66.4,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001670_pano_0000_000690",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-225",
+     "bearing": 225,
+     "lengthM": 39.0,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-19_08-46-57_00992",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "Contemporary block; no ornament, lettering or sign a rider would note in the crops (tenant signs and construction banners are temporary)."
+  },
+  "hva-wibautstraat-3": {
+   "schemaVersion": 1,
+   "id": "hva-wibautstraat-3",
+   "pand": "0363100012241500",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-160",
+     "bearing": 160,
+     "lengthM": 47.6,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-20_12-01-53_00430",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-70",
+     "bearing": 70,
+     "lengthM": 45.4,
+     "evidence": "photo",
+     "panoId": "TMX7315120208-000062_pano_0000_000123",
+     "capturedAt": "2016",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-250",
+     "bearing": 250,
+     "lengthM": 38.2,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-19_03-28-47_03476",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-250",
+     "bearing": 250,
+     "lengthM": 38.1,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002138_pano_0000_000349",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "Scaffolding in 2025; no ornament in the 2016/2021 views."
+  },
+  "hva-rhijnspoorplein-2": {
+   "schemaVersion": 1,
+   "id": "hva-rhijnspoorplein-2",
+   "pand": "0363100012245513",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-324",
+     "bearing": 324,
+     "lengthM": 66.8,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001906_pano_0000_000310",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-70",
+     "bearing": 70,
+     "lengthM": 40.4,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-234",
+     "bearing": 234,
+     "lengthM": 16.9,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-20_12-01-53_00701",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-340",
+     "bearing": 340,
+     "lengthM": 16.3,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001906_pano_0000_000322",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "Contemporary block; no ornament, lettering or sign a rider would note in the crops (tenant signs and construction banners are temporary)."
+  },
+  "blankenstraat-15": {
+   "schemaVersion": 1,
+   "id": "blankenstraat-15",
+   "pand": "0363100012238656",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-135",
+     "bearing": 135,
+     "lengthM": 137.7,
+     "evidence": "photo",
+     "panoId": "b_20241204_1003_Track22_Sphere_00289",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-315",
+     "bearing": 315,
+     "lengthM": 137.6,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-19_09-55-15_00093",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-45",
+     "bearing": 45,
+     "lengthM": 24.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002624_pano_0008_000262",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-225",
+     "bearing": 225,
+     "lengthM": 24.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-000739_pano_0000_003040",
+     "capturedAt": "2018",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "Contemporary block; no ornament, lettering or sign a rider would note in the crops (tenant signs and construction banners are temporary)."
+  },
+  "bogortuin-101": {
+   "schemaVersion": 1,
+   "id": "bogortuin-101",
+   "pand": "0363100012141457",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-177",
+     "bearing": 177,
+     "lengthM": 76.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-000172_pano_0000_001192",
+     "capturedAt": "2016",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-357",
+     "bearing": 357,
+     "lengthM": 71.2,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-000725_pano_0000_000745",
+     "capturedAt": "2018",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-357",
+     "bearing": 357,
+     "lengthM": 47.4,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-177",
+     "bearing": 177,
+     "lengthM": 42.7,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-000172_pano_0000_001186",
+     "capturedAt": "2016",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "Contemporary block; no ornament, lettering or sign a rider would note in the crops (tenant signs and construction banners are temporary)."
+  },
+  "haarlemmerweg-333": {
+   "schemaVersion": 1,
+   "id": "haarlemmerweg-333",
+   "pand": "0363100012088027",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-359",
+     "bearing": 359,
+     "lengthM": 92.9,
+     "evidence": "photo",
+     "panoId": "2025_09_26_07_01_39_00554",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-179",
+     "bearing": 179,
+     "lengthM": 51.1,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-89",
+     "bearing": 89,
+     "lengthM": 45.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002026_pano_0000_000245",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-269",
+     "bearing": 269,
+     "lengthM": 44.9,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "Contemporary block; no ornament, lettering or sign a rider would note in the crops (tenant signs and construction banners are temporary)."
+  },
+  "oostenburgermiddenstraat-228": {
+   "schemaVersion": 1,
+   "id": "oostenburgermiddenstraat-228",
+   "pand": "0363100012254998",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-315",
+     "bearing": 315,
+     "lengthM": 58.9,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002624_pano_0010_000505",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-225",
+     "bearing": 225,
+     "lengthM": 35.2,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001670_pano_0000_000696",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-45",
+     "bearing": 45,
+     "lengthM": 24.1,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002372_pano_0005_000465",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-45",
+     "bearing": 45,
+     "lengthM": 10.9,
+     "evidence": "photo",
+     "panoId": "b_20241204_1003_Track32_Sphere_00043",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "Contemporary block; no ornament, lettering or sign a rider would note in the crops (tenant signs and construction banners are temporary)."
+  },
+  "ceramiquelaan-437": {
+   "schemaVersion": 1,
+   "id": "ceramiquelaan-437",
+   "pand": "0363100012252989",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-74",
+     "bearing": 74,
+     "lengthM": 66.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002896_pano_0003_000359",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-254",
+     "bearing": 254,
+     "lengthM": 45.9,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-344",
+     "bearing": 344,
+     "lengthM": 28.8,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002896_pano_0003_000333",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-164",
+     "bearing": 164,
+     "lengthM": 28.8,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002569_pano_0000_001907",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "Contemporary block; no ornament, lettering or sign a rider would note in the crops (tenant signs and construction banners are temporary)."
+  },
+  "asterweg-23": {
+   "schemaVersion": 1,
+   "id": "asterweg-23",
+   "pand": "0363100012064810",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-254",
+     "bearing": 254,
+     "lengthM": 95.0,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-164",
+     "bearing": 164,
+     "lengthM": 86.5,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-74",
+     "bearing": 74,
+     "lengthM": 81.5,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-344",
+     "bearing": 344,
+     "lengthM": 32.2,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "Contemporary block; no ornament, lettering or sign a rider would note in the crops (tenant signs and construction banners are temporary)."
+  },
+  "grasweg-116": {
+   "schemaVersion": 1,
+   "id": "grasweg-116",
+   "pand": "0363100012252853",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-33",
+     "bearing": 33,
+     "lengthM": 49.4,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-123",
+     "bearing": 123,
+     "lengthM": 32.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002894_pano_0007_000313",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-213",
+     "bearing": 213,
+     "lengthM": 15.2,
+     "evidence": "photo",
+     "panoId": "recording_2025-06-30_11-38-09_02536",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-302",
+     "bearing": 302,
+     "lengthM": 11.2,
+     "evidence": "photo",
+     "panoId": "recording_2024-10-21_10-00-27_00302",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "Contemporary block; no ornament, lettering or sign a rider would note in the crops (tenant signs and construction banners are temporary)."
+  },
+  "willem-de-zwijgerlaan-350": {
+   "schemaVersion": 1,
+   "id": "willem-de-zwijgerlaan-350",
+   "pand": "0363100012107360",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-44",
+     "bearing": 44,
+     "lengthM": 59.9,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001952_pano_0000_000464",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-224",
+     "bearing": 224,
+     "lengthM": 59.9,
+     "evidence": "photo",
+     "panoId": "terdam_21112024_Track18_Sphere_00012",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-134",
+     "bearing": 134,
+     "lengthM": 44.9,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "Contemporary block; no ornament, lettering or sign a rider would note in the crops (tenant signs and construction banners are temporary)."
+  },
+  "overtoom-197": {
+   "schemaVersion": 1,
+   "id": "overtoom-197",
+   "pand": "0363100012236683",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-337",
+     "bearing": 337,
+     "lengthM": 43.6,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002921_pano_0007_000438",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-158",
+     "bearing": 158,
+     "lengthM": 23.3,
+     "evidence": "photo",
+     "panoId": "b_20241129_0829_Track66_Sphere_00040",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-158",
+     "bearing": 158,
+     "lengthM": 19.5,
+     "evidence": "photo",
+     "panoId": "recording_2025-07-31_10-53-44_01173",
+     "capturedAt": "2025",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "Ground-floor tenant signs (AVIS etc.) are temporary; the carved brick arch over the door (158 deg) is part of the neighbouring house in the crop."
+  },
+  "de-bazel": {
+   "schemaVersion": 1,
+   "id": "de-bazel",
+   "pand": "0363100012165077",
+   "signature": [
+    "e-entrance-figures",
+    "e-banding"
+   ],
+   "walls": [
+    {
+     "tag": "w01-102",
+     "bearing": 102,
+     "lengthM": 99.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-002925_pano_0001_000012",
+     "capturedAt": "2022",
+     "checked": true,
+     "items": [
+      {
+       "id": "e-entrance-figures",
+       "kind": "sculpture",
+       "where": "two tall stone figures flanking the Vijzelstraat entrance",
+       "approxSizeM": [
+        1.2,
+        3.5
+       ],
+       "plan": "open",
+       "note": "the model entrance is a plain pale block; figure primitives like the Hoofdbureau Krop figures would read Retro-fit attempted 2026-10-13 (two primitive figures + raised-letter panel, +600 tris); reverted: either part flips the de-bazel window-rhythm audit to FAIL (east and south elevations, predicted-missing rows), so the fix needs an audit-aware placement.",
+       "seenIn": "TMX7316010203-002925_pano_0001_000012"
+      },
+      {
+       "id": "e-entrance-panel",
+       "kind": "lettering",
+       "where": "carved inscription panel over the entrance",
+       "approxSizeM": [
+        4,
+        1
+       ],
+       "plan": "open",
+       "note": "cheap: stone slab with stroke-font text Retro-fit attempted 2026-10-13 (two primitive figures + raised-letter panel, +600 tris); reverted: either part flips the de-bazel window-rhythm audit to FAIL (east and south elevations, predicted-missing rows), so the fix needs an audit-aware placement.",
+       "seenIn": "TMX7316010203-002925_pano_0001_000012"
+      },
+      {
+       "id": "e-banding",
+       "kind": "relief",
+       "where": "diamond-pattern patterned stone/brick bands on the piers",
+       "approxSizeM": [
+        99,
+        20
+       ],
+       "plan": "simplified",
+       "how": "flat brown wall with vertical strips",
+       "seenIn": "TMX7316010203-002925_pano_0001_000012"
+      },
+      {
+       "id": "e-banners",
+       "kind": "sign",
+       "where": "red vertical banners either side of the entrance",
+       "approxSizeM": [
+        0.6,
+        4
+       ],
+       "plan": "skipped",
+       "skip": {
+        "reason": "temporary",
+        "note": "printed banners"
+       },
+       "seenIn": "TMX7316010203-002925_pano_0001_000012"
+      }
+     ]
+    },
+    {
+     "tag": "w02-282",
+     "bearing": 282,
+     "lengthM": 58.6,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-13",
+     "bearing": 13,
+     "lengthM": 30.0,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001975_pano_0000_000583",
+     "capturedAt": "2021",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-193",
+     "bearing": 193,
+     "lengthM": 28.2,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-000355_pano_0000_001132",
+     "capturedAt": "2017",
+     "checked": true,
+     "items": [
+      {
+       "id": "s-flag",
+       "kind": "sign",
+       "where": "flag on the roof",
+       "approxSizeM": [
+        1,
+        1.5
+       ],
+       "plan": "skipped",
+       "skip": {
+        "reason": "temporary",
+        "note": "flag"
+       },
+       "seenIn": "TMX7316010203-000355_pano_0000_001132"
+      }
+     ]
+    }
+   ]
+  },
+  "motorkade-1": {
+   "schemaVersion": 1,
+   "id": "motorkade-1",
+   "pand": "0363100012247879",
+   "signature": [],
+   "walls": [
+    {
+     "tag": "w01-169",
+     "bearing": 169,
+     "lengthM": 48.7,
+     "evidence": "photo",
+     "panoId": "recording_2024-10-22_09-10-27_02439",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w02-80",
+     "bearing": 80,
+     "lengthM": 44.2,
+     "evidence": "inferred",
+     "panoId": null,
+     "capturedAt": null,
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w03-259",
+     "bearing": 259,
+     "lengthM": 14.5,
+     "evidence": "photo",
+     "panoId": "TMX7316010203-001729_pano_0000_001818",
+     "capturedAt": "2020",
+     "checked": true,
+     "items": []
+    },
+    {
+     "tag": "w04-260",
+     "bearing": 260,
+     "lengthM": 13.8,
+     "evidence": "photo",
+     "panoId": "recording_2024-10-22_09-10-27_02449",
+     "capturedAt": "2024",
+     "checked": true,
+     "items": []
+    }
+   ],
+   "note": "A small hotel logo by the entrance; nothing a rider would note."
+  }
+ }
+}

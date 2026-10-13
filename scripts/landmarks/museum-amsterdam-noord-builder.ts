@@ -2,6 +2,7 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {bar, edgeBox, edgeDoor, edgesOf, edgeWindow, hipRoof, p3, ringPoints, walls} from './civic-kit';
 import source from './museum-amsterdam-noord-footprints.json';
+import {raisedLettering} from './ornament-kit';
 
 /**
  * Former municipal bath house of Vogeldorp (1919): a single-storey buff-brick
@@ -49,6 +50,17 @@ export function buildMuseumAmsterdamNoord(_w: number, _d: number, b: BuildingToo
       edgeBox(b, e, t, base + 1.3, 2.0, .1, 1.3, -inward - .3, 'slate');
     }
   });
+  // Name boards under the eaves (ornament inventory 2026-10-13, panoramas 2025): GEMEENTE BADHUIS on the south front,
+  // MUSEUM AMSTERDAM NOORD on the north and east fronts; cream letters (front faces, 4 cm proud) on a dark green board below the string course.
+  const bearingOf = (e: typeof es[number]) => (Math.atan2(e.out.x, -e.out.y) * 180 / Math.PI + 360) % 360;
+  const facing = (deg: number) => es.reduce((best, e) => Math.abs(((bearingOf(e) - deg + 540) % 360) - 180) < Math.abs(((bearingOf(best) - deg + 540) % 360) - 180) ? e : best);
+  for (const [deg, text, width] of [[168, 'GEMEENTE BADHUIS', 3.6], [348, 'MUSEUM AMSTERDAM NOORD', 4.2], [77, 'MUSEUM AMSTERDAM NOORD', 4.2]] as const) {
+    const e = facing(deg), y0 = wall - .5, h = .28;
+    edgeBox(b, e, e.len / 2, y0, width, h, .04, .02, 'green');
+    const {geometry} = raisedLettering({text, heightM: .17, maxWidthM: width - .2, depthM: .04, sides: false});
+    const at = e.p.clone().addScaledVector(e.u, e.len / 2).addScaledVector(e.out, .04);
+    b.add(geometry, 'stone', at.x, y0 + h / 2, at.y, e.angle);
+  }
   // Brick chimney near the ridge with a stone cap.
   const ch = c0.clone().add(new T.Vector2(.9, -.6));
   b.box(ch.x, wall, ch.y, 1.0, chimney - wall - .12, 1.0, 'brick', es[0].angle);
