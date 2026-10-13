@@ -4,7 +4,17 @@
   "landmarkId": "krijtberg",
   "modelUrl": "./models/krijtberg.glb",
   "suppressOsmIds": [
-    "NL.IMBAG.Pand.0363100012185920"
+    "NL.IMBAG.Pand.0363100012185920",
+    "w751713218",
+    "w751713219",
+    "w751713221",
+    "w751713222",
+    "w751713223",
+    "w751905303",
+    "w751979070",
+    "w751713220",
+    "w751905304",
+    "w751905305"
   ],
   "spatialSuppression": false,
   "footprint": {
