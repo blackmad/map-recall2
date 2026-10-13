@@ -12,6 +12,7 @@ import { join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { buildCell, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
+import { KIT_BUDGET } from '../../src/canalRecall/ownGround/bridgeKit.ts';
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
 import { bandCoverage, junctionCoverage, DE_CLERCQSTRAAT, JUNCTIONS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 
@@ -149,9 +150,12 @@ async function main(): Promise<void> {
       check(!bad.length, `${id}: deck top under ${probes - bad.length}/${probes} probes edge to edge${bad.length ? ` (${bad.slice(0, 6).join(' ')})` : ''}`);
     }
     {
-      const info = near.stats.bridges.decks.find(d => d.id === id);
-      const spanM = deck.span[1] - deck.span[0], wantPosts = 2 * Math.floor(spanM / 1.8 * 0.8);
-      check(!!info && info.railingPosts >= wantPosts, `${id}: railings on both edges (${info?.railingPosts} posts, want ≥ ${wantPosts})`);
+      // The bridge kit (lane bridge-kit 2026-10-13): these are all canal-belt arch bridges (masonry, or pre-1940 humped iron
+      // decks behind brick arch faces), each within the kit's budget at both rings, pillars and railing on both edges.
+      const info = near.stats.bridges.decks.find(d => d.id === id), farInfo = far.stats.bridges.decks.find(d => d.id === id);
+      check(!!info && info.kind === 'arch' && info.arches >= 1, `${id}: drawn as an arch bridge (${info?.kind}, ${info?.arches} arches)`);
+      check(!!info && info.triangles <= KIT_BUDGET.near && !!farInfo && farInfo.triangles <= KIT_BUDGET.far, `${id}: ${info?.triangles} triangles near (≤ ${KIT_BUDGET.near}), ${farInfo?.triangles} far (≤ ${KIT_BUDGET.far})`);
+      check(!!info && info.railingPosts >= 4, `${id}: railings on both edges (${info?.railingPosts} posts, want ≥ 4)`);
       check(!!info && info.abutments >= 2, `${id}: abutments at both banks (${info?.abutments})`);
       const waterM = p.water ? p.water[1] - p.water[0] : 0;
       check(!!info && (waterM > 13 ? info.piers >= 1 : waterM < 11 ? info.piers === 0 : true), `${id}: ${info?.piers} piers for ${waterM.toFixed(1)} m of water`);
