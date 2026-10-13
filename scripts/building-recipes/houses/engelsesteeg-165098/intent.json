@@ -55,7 +55,7 @@
     748
    ],
    "system": "brick-bay-grid",
-   "storeys": 4,
+   "storeys": 5,
    "baysPerStorey": 9,
    "ground": "system",
    "windows": "plain",
@@ -64,7 +64,57 @@
     "brick": "#9a5a3c",
     "frame": "#3b4a4a",
     "stone": "#d8d2c4"
-   }
+   },
+   "tiltedBays": [
+    {
+     "bays": [
+      0,
+      3,
+      5,
+      6
+     ],
+     "storeys": [
+      1
+     ]
+    },
+    {
+     "bays": [
+      1,
+      2,
+      5,
+      6,
+      7
+     ],
+     "storeys": [
+      2
+     ]
+    },
+    {
+     "bays": [
+      0,
+      1,
+      2,
+      3,
+      6,
+      7
+     ],
+     "storeys": [
+      3
+     ]
+    },
+    {
+     "bays": [
+      2
+     ],
+     "storeys": [
+      4
+     ]
+    }
+   ],
+   "deepBars": true,
+   "stoneStoreys": [
+    0
+   ]
   },
   {
    "wallSurfaces": [
@@ -140,6 +190,7 @@
  "notes": [
   "Engelsesteeg block (BAG built 1974 for the shell; the hotel conversion shows on the panoramas, 2025 construction hoarding names Kondor Wessels / Renaissance Hotel): a curved red-brick hotel wing with projecting tilted bay windows and a zinc mansard with dormers (w02-272), a six-storey brown-brick block on Smaksteeg (w01-154) and canal-house fronts of three storeys with gables on Engelsesteeg and Spuistraat sides (w03-272, w04-340, w06-337).",
   "Modelled: the hotel wing as brick-bay-grid (4 storeys x 9 bays, cornice), the Smaksteeg block (6 x 8), and the canal-house fronts as 3-storey cross-window groups with cornices. Simplified: the tilted/projecting bay windows are flush recessed windows; gables are the 3DBAG roof outlines. Not modelled: the dormers, the green wall strip, the shopfronts and the street-level hotel entrance, the shop signs (painted AVEDA fascia, w04-340). The curved corner plan is straight in 3DBAG. Walls without photographs stay blank.",
-  "Correction: the w03-272 gabled house row is NOT modelled (its 3DBAG roof samples sit 0.4 m below the wall eaves and fail eaves-vs-3dbag); the canal-house groups drawn are the two cross-window fronts listed in walls[]. The gabled fronts on w03-272, w04-340 and w06-337 are otherwise left to the LoD2.2 shell."
+  "Correction: the w03-272 gabled house row is NOT modelled (its 3DBAG roof samples sit 0.4 m below the wall eaves and fail eaves-vs-3dbag); the canal-house groups drawn are the two cross-window fronts listed in walls[]. The gabled fronts on w03-272, w04-340 and w06-337 are otherwise left to the LoD2.2 shell.",
+  "Components lane (2026-10-13): the hotel wing (walls[0], w02-272) re-counted to the photograph: ground plus four storeys (was 4 in all), nine bay axes (the middle one is the green wall strip between the two blocks, still drawn as windows), the projecting box windows as tilted bay frames placed per storey from the photo (storey 1 axes 0,3,5,6; storey 2 axes 1,2,5,6,7; storey 3 axes 0-3,6,7; storey 4 axis 2; the two-storey boxes are two stacked frames), a white stone plinth (stoneStoreys 0), glazing bars 3.5 cm proud. Supersedes the earlier note that the bay windows are flush. The curved corner is straight in 3DBAG LoD2.2 (runs.ts: no BAG arc on this pand), so curve does not apply."
  ]
 }

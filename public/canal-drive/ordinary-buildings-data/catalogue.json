@@ -29808,18 +29808,18 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165051",
       "name": "Beursplein 5, Amsterdam: 1913 stone-and-brick bank block (Euronext), Warmoesstraat front",
-      "hash": "2d4c087da0a7806bd2fcb7ee57e6e11ae3adb4f97cbd5cd6a471bf22ccdb3683",
-      "sha256": "2d4c087da0a7806bd2fcb7ee57e6e11ae3adb4f97cbd5cd6a471bf22ccdb3683",
-      "bytes": 410556,
-      "triangles": 4829,
-      "materials": 10,
+      "hash": "3bb22922302a5add5117a44e71977ec31f34d72188697a213e4c0bc323b94d8c",
+      "sha256": "3bb22922302a5add5117a44e71977ec31f34d72188697a213e4c0bc323b94d8c",
+      "bytes": 671632,
+      "triangles": 8557,
+      "materials": 12,
       "textures": 0,
       "scale": 1,
       "bounds": {
         "min": [
           -49.46,
           0,
-          -50.727
+          -50.82
         ],
         "max": [
           44.234,
@@ -30519,24 +30519,25 @@
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
         "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Simplified: the rusticated stone bands (plain wall), the attic paired windows (one window per bay), the roof as the 3DBAG LoD2.2 massing. Not modelled: the carved corbels and tympanum relief, the planter balcony balustrade, the electronic ticker boards over the doors, the mansard dormers and roof cupola, the curved north corner. The SE, NE and court walls have no photograph (party or hidden) and stay blank."
+        "Simplified: the rusticated stone bands (plain wall), the attic paired windows (one window per bay), the roof as the 3DBAG LoD2.2 massing. Not modelled: the carved corbels and tympanum relief, the planter balcony balustrade, the electronic ticker boards over the doors, the mansard dormers and roof cupola, the curved north corner. The SE, NE and court walls have no photograph (party or hidden) and stay blank.",
+        "Components lane (2026-10-13): the street run (walls[0], [1], [3]; w03-314, w04-314, w01-309) now has the granite ground storey and the ashlar attic as stone-faced storeys (stoneStoreys 0 and 3), banded two-tone stone pilasters at both ends of every unit, cross windows with 3.5 cm bars, and the glazed roof lantern behind walls[0] (w03-314 shows it on the mansard ridge). walls[2] (Beursplein 5 front, w06-314) is granite (wallMaterial stone) with a carved portal round the entrance: stone jambs, an entablature lettered BEURSPLEIN 5, a pediment block with a crest. closedBands closes the cornices. Still simplified: the portal stands for the three granite portals and their carved roundels; the corbelled balcony, the attic pediment relief and the mansard dormers are not modelled; the pilaster banding is two-tone courses, not rustication."
       ],
       "reviewState": "large-recipe-gates-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165051",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:41:59.221Z"
+      "updatedAt": "2026-10-13T22:18:58.768Z"
     },
     {
       "id": "ordinary-0363100012165746",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165746",
       "name": "Damrak 77, Amsterdam: 1893 red-brick block with white bands, Damrak front with the Beurspassage arch",
-      "hash": "656a1332bc97cf562bda2aa6df1004eeb755591cc73aa4cf035ec5302c48df3a",
-      "sha256": "656a1332bc97cf562bda2aa6df1004eeb755591cc73aa4cf035ec5302c48df3a",
-      "bytes": 238260,
-      "triangles": 2952,
+      "hash": "e1e38bc430833dee3b6b011454ffe8aed334f3b3167567681843e4a07651aa2a",
+      "sha256": "e1e38bc430833dee3b6b011454ffe8aed334f3b3167567681843e4a07651aa2a",
+      "bytes": 242880,
+      "triangles": 3018,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -30858,25 +30859,25 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165746",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:41:59.891Z"
+      "updatedAt": "2026-10-13T22:22:38.631Z"
     },
     {
       "id": "ordinary-0363100012165687",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165687",
       "name": "Warmoesstraat 157-163, Amsterdam: 1981 perforated-brick car park with a stone-and-brick wing at its north end",
-      "hash": "22c300d59d9d1da9fa43c84bc92bf3b9233d7b50375e10b8a3fafb414fb79833",
-      "sha256": "22c300d59d9d1da9fa43c84bc92bf3b9233d7b50375e10b8a3fafb414fb79833",
-      "bytes": 618564,
-      "triangles": 8161,
-      "materials": 10,
+      "hash": "ded9c4ae97b627a02b2cf68bb11b03e6e25413735174224ac6dfd53a737c2bec",
+      "sha256": "ded9c4ae97b627a02b2cf68bb11b03e6e25413735174224ac6dfd53a737c2bec",
+      "bytes": 635096,
+      "triangles": 8623,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
         "min": [
           -57.16,
           -0.001,
-          -54.226
+          -54.286
         ],
         "max": [
           43.146,
@@ -31062,33 +31063,34 @@
           "parts-attached:pass"
         ],
         "wallGroups": [
-          "brick-bay-grid 7st 8b",
-          "brick-bay-grid 7st 8b",
-          "brick-bay-grid 4st 8b",
+          "brick-bay-grid 7st 32b",
+          "brick-bay-grid 7st 10b",
+          "brick-bay-grid 4st 18b",
           "brick-bay-grid 4st 4b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
         "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Modelled: the screen as brick-bay-grid with wide low windows (7 decks, 8 bays: the perforation grid reads as a window field, not as 1 m open cells), the SE podium (4 decks), the stone-and-brick wing with 4 storeys x 4 bays and a cornice. Walls without a photograph and the large NW party walls stay blank. The 49 m SE wall (panel 30) carries the blue-glass cylinder: its eaves (23.5 m) do not match the lower LoD2.2 roof behind it (19.3 m), so no group may own it and it stays blank. Not modelled: the PLAYERS lettering, the curved glazed casino ground floor, the car-park ramps and gate, the stone plinth of the wing."
+        "Modelled: the screen as brick-bay-grid with wide low windows (7 decks, 8 bays: the perforation grid reads as a window field, not as 1 m open cells), the SE podium (4 decks), the stone-and-brick wing with 4 storeys x 4 bays and a cornice. Walls without a photograph and the large NW party walls stay blank. The 49 m SE wall (panel 30) carries the blue-glass cylinder: its eaves (23.5 m) do not match the lower LoD2.2 roof behind it (19.3 m), so no group may own it and it stays blank. Not modelled: the PLAYERS lettering, the curved glazed casino ground floor, the car-park ramps and gate, the stone plinth of the wing.",
+        "Components lane (2026-10-13): walls[0]-[2] are now the perforated-brick screen (screen: true): a concrete lattice of posts at every bay joint and rails at every deck line (w01-136, w06-312: cells about 1.5 m wide, one deck tall), with glass-block perforations in one bay of three, staggered per deck. Bays re-counted to the lattice: 32 on walls[0], 10 on walls[1], 18 on walls[2]. Simplified: the glass-block clusters are scattered by a fixed stagger, not placed cell by cell from the photograph; the thin cross ribs inside each lattice cell are not modelled."
       ],
       "reviewState": "large-recipe-gates-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165687",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:42:00.372Z"
+      "updatedAt": "2026-10-13T22:19:44.283Z"
     },
     {
       "id": "ordinary-0363100012165098",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165098",
       "name": "Engelsesteeg 9 / Smaksteeg 24, Amsterdam: Renaissance Amsterdam City Centre Hotel block (Kondor Wessels) with canal-house fronts on the street sides",
-      "hash": "5b0ab757a93bb271ee0cc86ee8ea61b19e449110cff22ba3dca902af9d1cfb26",
-      "sha256": "5b0ab757a93bb271ee0cc86ee8ea61b19e449110cff22ba3dca902af9d1cfb26",
-      "bytes": 562004,
-      "triangles": 6760,
+      "hash": "636d02ba58b342f7932918e7ac6440497297adb4343d6c9b55dcfb74e407376f",
+      "sha256": "636d02ba58b342f7932918e7ac6440497297adb4343d6c9b55dcfb74e407376f",
+      "bytes": 631384,
+      "triangles": 7624,
       "materials": 13,
       "textures": 0,
       "scale": 1,
@@ -31600,7 +31602,7 @@
           "parts-attached:pass"
         ],
         "wallGroups": [
-          "brick-bay-grid 4st 9b",
+          "brick-bay-grid 5st 9b",
           "brick-bay-grid 6st 8b",
           "brick-bay-grid 3st 5b",
           "brick-bay-grid 3st 4b"
@@ -31617,7 +31619,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165098",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:42:01.531Z"
+      "updatedAt": "2026-10-13T22:21:52.646Z"
     },
     {
       "id": "ordinary-0363100012180196",
@@ -31896,9 +31898,9 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012186086",
       "name": "Westerdok 536 / Westerdoksdijk 265-267, Amsterdam (Westerdokseiland): 2008 brick apartment block around courtyards, stepped to 34 m",
-      "hash": "a1089ed6cc6d0662980818547b67afcc85aad305cc508896594ef3ccdd5de331",
-      "sha256": "a1089ed6cc6d0662980818547b67afcc85aad305cc508896594ef3ccdd5de331",
-      "bytes": 907868,
+      "hash": "830a18f2937a9455ecb52c93fd19e67312e840d5e5812bd2d55a7bbb7281241b",
+      "sha256": "830a18f2937a9455ecb52c93fd19e67312e840d5e5812bd2d55a7bbb7281241b",
+      "bytes": 907480,
       "triangles": 11434,
       "materials": 5,
       "textures": 0,
@@ -32075,7 +32077,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012186086",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:42:02.464Z"
+      "updatedAt": "2026-10-13T22:25:33.539Z"
     },
     {
       "id": "ordinary-0363100012253754",
@@ -32795,11 +32797,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012168172",
       "name": "Oude Turfmarkt 139 / Binnengasthuisstraat 46, Amsterdam: Binnengasthuis complex (UvA), brick civic front on the canal and white balconied housing block in the courtyard street",
-      "hash": "f03dec7d9789250a18d5a723968cf573eed6e3b6ee9250e844c99424111e4dae",
-      "sha256": "f03dec7d9789250a18d5a723968cf573eed6e3b6ee9250e844c99424111e4dae",
-      "bytes": 739160,
-      "triangles": 9362,
-      "materials": 10,
+      "hash": "06c897b84d5b903ee43b6a2f52dca8b5845f929c9392c1471634db8a7775fa1e",
+      "sha256": "06c897b84d5b903ee43b6a2f52dca8b5845f929c9392c1471634db8a7775fa1e",
+      "bytes": 754820,
+      "triangles": 9552,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -33379,14 +33381,15 @@
         "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
         "Group 0 (SW run on the canal, surfaces from panels 54/195/57/64/69/226; w05-235, 2017-07-06): five-storey brown brick civic front with a pale cornice and a UNIVERSITEIT VAN AMSTERDAM name band under it, nine axes of tall white-framed sashes. Modelled as brick-bay-grid, 5 storeys, 8-9 bays, cornice; the name band lettering, the banded arched cellar windows and the entrance are not modelled (the entrance and lettering sit on a neighbouring wall).",
         "Group 1 (E wall, panel 104; w03-91, 2016-06-09): white rendered block with orange-framed wide windows, glass-block stair, a curved balcony stack and a glass entrance canopy. Modelled as 3 storeys of low windows in pale cream brick (the house has one wall material, brick; render would need a per-group wallMaterial). Not modelled: curved balconies, glass-block stair, canopy and the fourth floor (the eaves allow three storeys here).",
-        "All other walls (courtyard, N, S, NE) are blank: no photograph."
+        "All other walls (courtyard, N, S, NE) are blank: no photograph.",
+        "Components lane (2026-10-13): walls[0] carries the UNIVERSITEIT VAN AMSTERDAM name on its cornice face (signage mount cornice; w05-235 shows it on the pale entablature); walls[1] is white render (wallMaterial render: the stucco slot), no longer cream brick. Supersedes the notes that the name band is not modelled and that render needs a per-group wallMaterial."
       ],
       "reviewState": "large-recipe-gates-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012168172",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:42:06.865Z"
+      "updatedAt": "2026-10-13T22:23:18.069Z"
     },
     {
       "id": "ordinary-0363100012238726",
