@@ -202,6 +202,31 @@ export const FLAT_ROOF_GREYS: readonly string[] = ['#8f8a83', '#9a958c', '#85817
 /** The photo look's roofs, as one table (recipe houses map onto it). */
 export const CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS } as const;
 
+/**
+ * Measured roof slots (roof-facts sidecar, `roofs/roofSlots.ts`): the slot a roof gets is chosen
+ * from the PDOK orthophoto; how a slot looks is this table. `hex` is the slot's display base,
+ * `luma` its sRGB Rec.709 band (0-255): a measured tint is pulled into the band, never outside it
+ * (LOOK §Palette, roof band check in `roofSlots.test.ts`). `cell` is the texture cell it draws on.
+ */
+export type RoofSlot = 'gravel' | 'bitumen-dark' | 'bitumen-light' | 'white-membrane' | 'pantile-red' | 'pantile-dark' | 'slate' | 'zinc' | 'sedum' | 'solar' | 'terrace' | 'glass';
+export const ROOF_SLOTS: readonly RoofSlot[] = ['gravel', 'bitumen-dark', 'bitumen-light', 'white-membrane', 'pantile-red', 'pantile-dark', 'slate', 'zinc', 'sedum', 'solar', 'terrace', 'glass'];
+export const ROOF_SLOT_TONES: Readonly<Record<RoofSlot, { hex: string; luma: readonly [number, number]; cell: 'tile' | 'slate' | 'flat' }>> = {
+  'gravel': { hex: '#8f8a83', luma: [112, 156], cell: 'flat' },
+  'bitumen-dark': { hex: '#55585b', luma: [62, 96], cell: 'flat' },
+  'bitumen-light': { hex: '#a9a8a3', luma: [150, 182], cell: 'flat' },
+  'white-membrane': { hex: '#d9d9d3', luma: [196, 228], cell: 'flat' },
+  'pantile-red': { hex: '#b5543a', luma: [84, 124], cell: 'tile' },
+  'pantile-dark': { hex: '#6a5248', luma: [64, 98], cell: 'tile' },
+  'slate': { hex: '#4b525c', luma: [62, 104], cell: 'slate' },
+  'zinc': { hex: '#9aa1a6', luma: [138, 176], cell: 'slate' },
+  'sedum': { hex: '#7a8350', luma: [96, 132], cell: 'flat' },
+  'solar': { hex: '#2e3a52', luma: [44, 70], cell: 'flat' },
+  'terrace': { hex: '#a38d74', luma: [124, 162], cell: 'flat' },
+  'glass': { hex: '#8fa3ad', luma: [130, 170], cell: 'flat' },
+};
+/** sRGB Rec.709 luma, 0..255. */
+export const lumaOf = ([r, g, b]: RGB): number => 0.2126 * r + 0.7152 * g + 0.0722 * b;
+
 /** A pitched roof's colour from its plan material and 0..1 tone. */
 export function roofTone(look: BuildingLook, material: 'tile' | 'slate', tone: number): string {
   const set = ROOF_TONES[look][material];

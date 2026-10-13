@@ -10,7 +10,9 @@ import { roofPlanForFeature, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
 import { paletteFor } from './bayTextures.js';
-import { BARE_WALL_HEX, DEFAULT_FACADE_WALL_HEX, DEFAULT_SHOP_SIGN_HEX, FLAT_ROOF_GREYS, cellSetOf, lookHex, roofTone, type BuildingLook } from './look/palette.js';
+import { BARE_WALL_HEX, DEFAULT_FACADE_WALL_HEX, DEFAULT_SHOP_SIGN_HEX, FLAT_ROOF_GREYS, ROOF_SLOT_TONES, cellSetOf, hexToRgb, lookHex, roofTone, type BuildingLook } from './look/palette.js';
+import { decodeFurniture, roofSlotHex } from './roofs/roofSlots.js';
+import { isRoofSlot } from './roofs/roofFacts.js';
 import { largeTierSystem, plinthHex } from './largeBuildingTier.js';
 import type { Look, ShopKind } from './bayTextures.js';
 import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
@@ -41,6 +43,16 @@ export const asPolygons = (geometry: unknown): number[][][][] => {
 };
 
 const roofHexFor = (look: BuildingLook, plan: RoofPlan) => roofTone(look, plan.material, plan.tone);
+
+/** The roof-facts stamp (roofs/roofFacts.ts) as a display colour, texture cell and measured furniture; null without one. */
+function measuredRoofOf(p: Record<string, unknown>, look: BuildingLook): { hex: string; cell: 'tile' | 'slate' | 'flat'; furniture?: MeshBuilding['measuredRoof'] } | null {
+  if (!isRoofSlot(p.roofSlot)) return null;
+  const rgb = typeof p.roofMeasured === 'string' && /^#[0-9a-f]{6}$/i.test(p.roofMeasured) ? hexToRgb(p.roofMeasured) : null;
+  const base = roofSlotHex(p.roofSlot, rgb), hex = cellSetOf(look) === 'procedural' ? base : lookHex(base, look);
+  const encoded = typeof p.roofFurniture === 'string' && p.roofFurniture ? p.roofFurniture.split(',').map(Number) : [];
+  const furniture = encoded.length || p.roofTerrace ? { furniture: decodeFurniture(encoded), terrace: p.roofTerrace === true } : undefined;
+  return { hex, cell: ROOF_SLOT_TONES[p.roofSlot].cell, furniture };
+}
 
 /**
  * The large-building tier (largeBuildingTier.ts): a civic facade system from the shared cells,
@@ -119,7 +131,10 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // The mesh owns the top: walls to full height and, for a flat roof, a lid in the mapped roof
   // colour (or a neutral bitumen/gravel grey when the roof colour just repeats the wall's).
   const mapped = typeof p.roofColour === 'string' && p.roofColour !== p.colour ? p.roofColour : null;
-  building.lid = { hex: mapped ?? FLAT_ROOF_GREYS[lookVariant(id) % FLAT_ROOF_GREYS.length], flatLayer: roofBase + 3 };
+  // A roof read from the orthophoto (roof-facts sidecar) outranks the mapped tag and the grey prior.
+  const measured = measuredRoofOf(p, look);
+  building.lid = { hex: measured?.hex ?? mapped ?? FLAT_ROOF_GREYS[lookVariant(id) % FLAT_ROOF_GREYS.length], flatLayer: roofBase + 3 };
+  if (measured?.furniture) building.measuredRoof = measured.furniture;
   if (p.kitWall) {
     // A landmark kit's walls: its own stone or brick colour, bare or in a window grid.
     building.wallHex = String(p.kitWallHex ?? building.wallHex);
@@ -129,10 +144,12 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   }
   if (p.roofPlanned && !coarse) {
     // The decorator's own plan, recomputed from the same feature (pure), so the two agree.
-    const plan = sourceRoofPlan ?? roofPlanForFeature(feature);
+    let plan = sourceRoofPlan ?? roofPlanForFeature(feature);
     if (plan) {
       const dims = STYLE_DIMS[layout];
-      building.roof = { plan, roofHex: roofHexFor(look, plan), dims: { bayM: dims.bay, storeyM: dims.storey, cellM: ROOF_CELL_M },
+      // A measured pitched slot picks the cell (pantile or slate) and the tint; other slots keep the planned tone.
+      if (measured?.cell && measured.cell !== 'flat') plan = { ...plan, material: measured.cell };
+      building.roof = { plan, roofHex: measured?.cell && measured.cell !== 'flat' ? measured.hex : roofHexFor(look, plan), dims: { bayM: dims.bay, storeyM: dims.storey, cellM: ROOF_CELL_M },
         layers: { slope: roofBase + (plan.material === 'tile' ? 0 : 1), plain, dormer: roofBase + 2 } };
       if(plan.repeatedTerrace){
         // One observed material family also owns exposed returns and roof-side closures.

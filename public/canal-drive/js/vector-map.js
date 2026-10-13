@@ -1310,7 +1310,11 @@ class VectorBasemap {
     if (Facades && this._completeCity.setTileEnricher && this._completeCity.setFeatureDecorator) {
       // Construction years ride in from the building-facts tiles cut on the
       // same z14 grid; the decorator turns year + size into a facade key.
-      this._completeCity.setTileEnricher(Facades.constructionYearEnricher(this._extractPath || '../data/extracts/amsterdam'));
+      // Measured roofs (roof-facts, PDOK orthophoto) ride in on the same grid; `?roofFacts=0` turns them off.
+      const extract = this._extractPath || '../data/extracts/amsterdam';
+      const years = Facades.constructionYearEnricher(extract);
+      this._completeCity.setTileEnricher(Facades.composeEnrichers && Facades.roofFactsEnabled()
+        ? Facades.composeEnrichers(years, Facades.roofFactsEnricher(extract)) : years);
       this._applyFeatureDecorator();
       this._loadLandmarkBuildingIds();
       this._loadMonumentGables();
