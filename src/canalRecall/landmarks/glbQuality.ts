@@ -10,6 +10,7 @@
  */
 
 import {clusterWalls, bearingDelta, type WallSegment} from './wallPlanes';
+import type {MaterialSoup} from './facadeCompare';
 
 export interface TriSoup {
   /** xyz triples, world space. */
@@ -1100,4 +1101,54 @@ function emptyReport(nTri: number, bmin: V3, bmax: V3, nonFinite: number): Quali
 
 function compass(bearing: number): string {
   return ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'][Math.round(bearing / 45) % 8];
+}
+
+// ---------------------------------------------------------------------------------------------------------------
+// Material slot coverage (docs/plans/digital-twin-direction-20261013.md §7 GLB cleanup goal 2)
+
+/** Share of a model's surface that answers to the shared look (look/cityLook.ts): material carries `materialSlot` + `tint`. */
+export interface SlotCoverage {
+  /** slotted area / (total area - exempt area); 1 when there is nothing to cover. */
+  coverage: number;
+  /** Total triangle area, m^2 (double-sided surfaces once). */
+  area: number;
+  slottedArea: number;
+  /** Unlit (KHR_materials_unlit) decals and printed signs: deliberately outside the lit look, not counted either way. */
+  exemptArea: number;
+  /** Slotted area whose slot was inferred (`materialSlotSource: 'inferred'`), not authored by a recipe pipeline. */
+  inferredArea: number;
+  /** Per material, largest first. */
+  materials: {name: string; area: number; share: number; slot?: string; inferred?: boolean; exempt?: boolean}[];
+}
+
+/** New exports are hard-gated at full coverage (tolerance for float noise only). */
+export const SLOT_COVERAGE_GATE = 0.9999;
+
+const SLOT_NAMES = new Set(['brick', 'stucco', 'accent', 'stone', 'frame', 'door', 'glass', 'roofTile', 'slate', 'bitumen', 'paint']);
+
+export function materialSlotCoverage(soup: MaterialSoup): SlotCoverage {
+  const p = soup.positions, idx = soup.indices;
+  const areas = new Float64Array(soup.materials.length);
+  for (let t = 0; t * 3 + 2 < idx.length; t++) {
+    const a = idx[t * 3] * 3, b = idx[t * 3 + 1] * 3, c = idx[t * 3 + 2] * 3;
+    const ux = p[b] - p[a], uy = p[b + 1] - p[a + 1], uz = p[b + 2] - p[a + 2];
+    const vx = p[c] - p[a], vy = p[c + 1] - p[a + 1], vz = p[c + 2] - p[a + 2];
+    const area = 0.5 * Math.hypot(uy * vz - uz * vy, uz * vx - ux * vz, ux * vy - uy * vx);
+    if (Number.isFinite(area)) areas[soup.triMaterial[t] ?? 0] += area;
+  }
+  let area = 0, slottedArea = 0, exemptArea = 0, inferredArea = 0;
+  const materials: SlotCoverage['materials'] = [];
+  soup.materials.forEach((m, i) => {
+    const a = areas[i];
+    area += a;
+    const slotted = !!m.materialSlot && SLOT_NAMES.has(m.materialSlot) && typeof m.tint === 'string';
+    const inferred = slotted && m.materialSlotSource === 'inferred';
+    if (m.unlit) exemptArea += a;
+    else if (slotted) { slottedArea += a; if (inferred) inferredArea += a; }
+    if (a > 0) materials.push({name: m.name, area: +a.toFixed(2), share: 0, ...(slotted ? {slot: m.materialSlot} : {}), ...(inferred ? {inferred} : {}), ...(m.unlit ? {exempt: true} : {})});
+  });
+  for (const m of materials) m.share = area ? +(m.area / area).toFixed(4) : 0;
+  materials.sort((x, y) => y.area - x.area);
+  const counted = area - exemptArea;
+  return {coverage: counted > 1e-9 ? slottedArea / counted : 1, area, slottedArea, exemptArea, inferredArea, materials};
 }
