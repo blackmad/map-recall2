@@ -247,7 +247,6 @@ import {buildObaOosterdok} from './oba-oosterdok-builder';
 import {buildSintAgneskerk} from './sint-agneskerk-builder';
 import {buildPetruskerk} from './petruskerk-builder';
 import {buildBoomkerk} from './boomkerk-builder';
-import {buildRuysdaelPetrusPauluskerk} from './ruysdael-petrus-pauluskerk-builder';
 import {buildMaxEuwe} from './max-euwe-centrum-builder';
 import {buildHolocaustNamenmonument} from './holocaust-namenmonument-builder';
 import {buildSchouwburgpoort} from './voormalige-schouwburgpoort-builder';
@@ -632,7 +631,6 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='haparandaweg-13')buildHaparandaweg13(w,d,helpers);
     else if(id==='valley')buildValley(w,d,helpers);
     else if(id==='ndsm-warehouse-complex')buildNdsmWarehouseComplex(w,d,helpers);
-    else if(id==='ruysdael-petrus-pauluskerk')buildRuysdaelPetrusPauluskerk(w,d,helpers);
     else if(id==='max-euwe-centrum')buildMaxEuwe(helpers);
     else if(id==='holocaust-namenmonument')buildHolocaustNamenmonument(w,d,helpers);
     else if(id==='voormalige-schouwburgpoort')buildSchouwburgpoort(helpers);
