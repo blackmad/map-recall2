@@ -29,7 +29,12 @@ export function buildValley(_width:number,_depth:number,b:BuildingTools):void {
  const outer=(p:P)=>Math.min(...boundary.map((a,i)=>distance(p,a,boundary[(i+1)%boundary.length])))<1.05;
  function shape(rings:P[][]){const s=new T.Shape(rings[0].map(p=>new T.Vector2(p[0],p[1])));for(const r of rings.slice(1))s.holes.push(new T.Path(r.map(p=>new T.Vector2(p[0],p[1]))));return s;}
  // Plane aperture: exposed glazing without an opaque decorative back-box.
- function pane(x:number,y:number,z:number,w:number,h:number,angle:number,c:C='glass',outward?:number[]) {const g=new T.PlaneGeometry(w,h);g.userData.outward=outward;g.userData.facade=!!outward;b.add(g,c,x,y+h/2,z,angle);}
+ // Zero-thickness sheets: a run longer than MAX_SHEET is cut into equal sheets 2 cm apart (hidden behind the 9 cm mullion bars). The hole audit
+ // links sheets that share a welded edge into one loop; the 97 m east-front skin was a single 110 m loop.
+ function pane(x:number,y:number,z:number,w:number,h:number,angle:number,c:C='glass',outward?:number[]) {
+  const n=Math.max(1,Math.ceil(w/Math.max(3,14.2-h))),sw=w/n; // a sheet's loop is 2(w+h): keep it under the audit's 30 m
+  for(let k=0;k<n;k++){const off=(k+.5)*sw-w/2,g=new T.PlaneGeometry(n>1?sw-.02:w,h);g.userData.outward=outward;g.userData.facade=!!outward;b.add(g,c,x+Math.cos(angle)*off,y+h/2,z-Math.sin(angle)*off,angle);}
+ }
  function edges(r:P[],hole=false){const area=r.reduce((s,p,i)=>{const q=r[(i+1)%r.length];return s+p[0]*q[1]-q[0]*p[1]},0);return r.map((a,i)=>{const q=r[(i+1)%r.length],dx=q[0]-a[0],dz=q[1]-a[1],len=Math.hypot(dx,dz),sign=(area>0?1:-1)*(hole?-1:1);return {a,q,dx,dz,len,nx:sign*dz/len,nz:-sign*dx/len,angle:-Math.atan2(dz,dx)}});}
  // Cut rail spans against the actual pedestrian solid: individual treads
  // and turning landings, not a blanket terrace/approach exclusion. Vertical
@@ -131,7 +136,7 @@ export function buildValley(_width:number,_depth:number,b:BuildingTools):void {
      const p=point(.5,.055);pane(p[0],l.base+.06,p[1],e.len-.28,l.top-l.base-.10,e.angle,'glass',[e.nx,0,e.nz]);
      {const f=point(.5,.075);pane(f[0],l.base,f[1],e.len,.14,e.angle,'frame');} // sill rail stands proud of the glass plane (it shared it: coplanar z-fight along every skin)
      const n=Math.max(1,Math.round(e.len/2.3));
-     for(let k=0;k<=n;k++){const p=point(k/n,.13);pane(p[0],l.base,p[1],.09,l.top-l.base,e.angle,'frame');}
+     for(let k=0;k<=n;k++){const p=point(k/n,.13);pane(p[0],l.base+.01,p[1],.09,l.top-l.base-.02,e.angle,'frame');}
     } else {
      if(wallHoles.length) {
       const a=wallHoles[0],project=a.depth,p=point(.5,project+.055),h=a.h,y=l.base+a.sill;
@@ -181,7 +186,7 @@ export function buildValley(_width:number,_depth:number,b:BuildingTools):void {
     for(const [start,end]of railSpans(e.a,e.q,l.top+.06,l.top+.94)){
      const length=e.len*(end-start);if(length<.03)continue;
      const t=(start+end)/2,x=e.a[0]+e.dx*t,z=e.a[1]+e.dz*t;
-     pane(x,l.top+.06,z,length,.78,e.angle);pane(x,l.top+.87,z,length,.07,e.angle,'bronze');
+     pane(x,l.top+.02,z,length,.82,e.angle);pane(x,l.top+.86,z,length-.02,.07,e.angle,'bronze');
     }
    }
    // Sparse native terrace planting, geometry-only. Photographs establish
