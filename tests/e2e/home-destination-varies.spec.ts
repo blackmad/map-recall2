@@ -65,3 +65,27 @@ test('the next home ride starts at the arrival and stays near home', async ({ pa
   expect(next.to).not.toBe(first);
   expect(next.fromHomeKm).toBeLessThanOrEqual(next.ringKm + 0.01);
 });
+
+// Named regression (user, 2026-10-13): starting a signed-in boat ride from home
+// on the live site threw "Maximum call stack size exceeded". The home-ring
+// plaque note asked for the HUD layout while the layout was sizing the plaque.
+test('a boat ride from home starts without a HUD layout stack overflow', async ({ page }) => {
+  test.setTimeout(300_000);
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+  await page.addInitScript(() => {
+    localStorage.setItem('canalRecall.preferences.v1', JSON.stringify({
+      routePattern: 'home',
+      homeAddress: 'Da Costakade 13-3',
+      travelMode: 'boat',
+    }));
+    localStorage.setItem('canalRecall.homeGeocodes.v2', JSON.stringify({
+      'amsterdam|da costakade 13-3, amsterdam': { lat: 52.3728, lng: 4.8737, label: 'Da Costakade 13-3' },
+    }));
+  });
+  await openRoute(page, { travelMode: 'boat', viewMode: 'chase' });
+  const pattern = await page.evaluate(() => (window as any).canalRecallGame.routePattern as string);
+  expect(pattern).toBe('home');
+  expect(errors.filter(text => /call stack/i.test(text))).toEqual([]);
+});

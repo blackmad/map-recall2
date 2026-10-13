@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## Home-route start no longer overflows the stack (2026-10-13)
+
+User: the live site crashed with "Maximum call stack size exceeded" after
+pressing Start Route (signed in, boat, Home route). `_syncHudLayout` sizes the
+plaque by calling `_plaqueNotes`, and on a home ride `_plaqueNotes` asked
+`_hudRects().mode` for the home-ring note; before the first layout was cached
+that re-entered `_syncHudLayout` forever. The note now reads
+`viewport.mode`, which is what the layout's `mode` echoes anyway. Named
+regression: `home-destination-varies.spec.ts` "a boat ride from home starts
+without a HUD layout stack overflow" (fails on the old bundle).
+
 ## Roofs read from the orthophoto: slots, furniture, dormers (2026-10-13)
 
 User: "many of these roofs have decks, HVAC equipment, etc., could look at
