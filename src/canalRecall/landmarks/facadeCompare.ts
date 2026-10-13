@@ -17,6 +17,8 @@ export type MaterialSoup = {
   indices: Uint32Array | number[];
   /** One material index per triangle. */
   triMaterial: Uint16Array | number[];
+  /** Optional per-vertex normals (xyz triplets, parallel to `positions`); `auditNormals` compares them with the face normals. */
+  normals?: Float32Array | number[];
   materials: {name: string; rgb: [number, number, number];
     /** glTF extras: the shared-look slot (look/palette.ts MaterialSlot) under both names, its tint, and `inferred` when not authored. */
     slot?: string; materialSlot?: string; tint?: string; materialSlotSource?: string;
