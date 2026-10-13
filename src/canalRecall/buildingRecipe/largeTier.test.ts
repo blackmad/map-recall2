@@ -97,3 +97,26 @@ test('large-tier compile seals tiny 3DBAG wall slivers and closes wall-mounted b
   assert.ok(open.pass, JSON.stringify(open.value));
   assert.ok(gates.find(g => g.id === 'footprint-vs-bag')!.pass, 'courtyard holes are part of the BAG footprint');
 });
+
+test('barOffsetM (opt-in hook): glazing bars stand clear of the glass as closed boxes, skipCell leaves cells to the builder', async () => {
+  const {compileLargeBuilding} = await import('./largeCompile.ts');
+  const {topology} = await import('./gates.ts');
+  const intent = validateLargeIntent(raw('politie-van-leijenberghlaan')), f = facts('politie-van-leijenberghlaan');
+  const trisOf = (b: ReturnType<typeof compileLargeBuilding>) => {
+    const out: {a: number[]; b: number[]; c: number[]; surface: string; metallic: number}[] = [];
+    b.group.traverse(o => {
+      const m = o as unknown as {isMesh?: boolean; name: string; geometry: {getAttribute(n: string): {array: ArrayLike<number>}}};
+      if (!m.isMesh) return;
+      const a = m.geometry.getAttribute('position').array;
+      for (let i = 0; i < a.length; i += 9) out.push({a: [a[i], a[i + 1], a[i + 2]], b: [a[i + 3], a[i + 4], a[i + 5]], c: [a[i + 6], a[i + 7], a[i + 8]], surface: m.name, metallic: 0});
+    });
+    return out;
+  };
+  const plain = compileLargeBuilding(intent, f), clear = compileLargeBuilding(intent, f, {barOffsetM: 0.04});
+  // more triangles (each bar is a box), but no new open edges: the boxes stand on the glass
+  assert.ok(clear.stats.triangles > plain.stats.triangles);
+  assert.equal(topology(trisOf(clear)).openEdges, topology(trisOf(plain)).openEdges);
+  // skipping every ground-floor cell removes openings
+  const skipped = compileLargeBuilding(intent, f, {skipCell: (_p, floor) => floor === 0});
+  assert.ok(skipped.stats.recessed < plain.stats.recessed);
+});

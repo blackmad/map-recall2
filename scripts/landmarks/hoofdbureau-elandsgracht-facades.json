@@ -1,0 +1,107 @@
+{
+  "id": "hoofdbureau-elandsgracht",
+  "measuredBy": "hoofdbureau rework lane, 2026-10-13: read off the rectified panorama crops of `landmark-brief.ts` (artifacts/landmark-briefs/hoofdbureau-elandsgracht/, Gemeente Amsterdam panoramas CC BY 4.0) with the metre grid of `elevation-grid.ts`; not counted blind, not guessed. Values marked in `inferred` lists are not visible in any crop.",
+  "frame": "s = metres along the photographed wall from its viewer-left corner (the crop's left edge, `Wall.a` of pand-reference); y = metres above the 3DBAG ground (crop bottom row) after the crop's `yShift`. On the builder's panel: u = s + sToU (hoofdbureau-elandsgracht-walls.ts prints the panels and offsets).",
+  "walls": {
+    "w16-337": {
+      "what": "north end wall of the Marnixstraat wing on the Elandsgracht: the Amsterdam arms relief, banner, three Krop figures, six round windows, open ground storey on four columns",
+      "surface": 190, "sToU": -0.31,
+      "crop": "w16-337.jpg", "pano": "TMX7316010203-002553_pano_0000_001265", "captured": "2022-05-02", "ppm": 50, "yShift": 0,
+      "registration": "parapet top 16.72 m in the crop vs 3DBAG 16.96 m: crop heights kept as read (0.24 m inside the tolerance of a 24 m camera)",
+      "openGround": {"top": 4.5, "slab": [4.5, 4.95], "depth": 2.0, "columns": [2.17, 4.75, 8.95, 13.05], "columnDiameter": 0.42,
+        "backWindows": [[3.0, 4.0, 3.65, 3.95], [5.0, 5.5, 2.3, 2.6], [6.1, 6.6, 2.3, 2.6], [7.2, 7.6, 2.3, 2.6]], "gate": [11.8, 13.6, 0.0, 3.6]},
+      "roundWindows": {"y": 6.5, "s": [1.5, 3.63, 5.8, 7.93, 10.1, 12.25], "outerDiameter": 0.7, "glassDiameter": 0.5},
+      "figures": {"s": [5.25, 6.9, 8.63], "console": [7.17, 8.25], "consoleWidth": 0.6, "figure": [8.25, 10.5], "figureWidth": 0.6},
+      "banner": {"band": [11.33, 12.25], "flatS": [3.7, 10.0], "curlLowest": 9.1, "leftCurlS": [0.75, 2.4], "rightCurlS": [11.3, 12.9],
+        "centreline": [[1.6, 9.55], [0.85, 9.35], [0.75, 10.0], [1.4, 10.65], [2.4, 11.2], [3.7, 11.7], [5.2, 11.8], [6.9, 11.82], [8.6, 11.8], [10.0, 11.65], [11.0, 11.1], [11.7, 10.3], [12.4, 9.8], [12.9, 9.4], [12.4, 9.15], [11.95, 9.5]]},
+      "arms": {"shieldCentreS": 6.9, "shieldTop": 14.0, "shieldPoint": 12.4, "shieldWidth": 1.4, "crownTop": 15.0, "lionsS": [[3.5, 6.0], [7.8, 10.3]], "lionTop": 15.4, "lionFoot": 12.3},
+      "inferred": ["ground-storey depth 2.0 m (the back wall is in shadow; the 2018 view w22 shows it a few metres in)", "relief depth (0.2-0.3 m)", "console projection 0.5 m", "right lion and the crown are behind the tree in 2022; mirrored from the left"]
+    },
+    "w22-246": {
+      "what": "south-west return of the same end block: brick, three ribbon storeys, the open ground storey continues round the corner",
+      "surface": 167, "sToU": -0.11,
+      "crop": "w22-246.alt.jpg", "pano": "b_20241217_0841_Track32_Sphere_00017", "captured": "2024-12-17", "ppm": 50, "yShift": 0,
+      "openGround": {"top": 4.3, "depth": 2.0},
+      "ribbons": [[5.05, 6.95], [9.15, 11.4], [13.2, 15.1]],
+      "inferred": ["open-ground depth as w16"]
+    },
+    "w02-67": {
+      "what": "the 56 m Marnixstraat front: dark brick with a ground ribbon and three upper ribbons of white steel windows, the main entrance with POLITIE and the police emblem, and the open corner bay on columns",
+      "surfaces": {"233": 0.14, "72": -44.70},
+      "crop": "w02-67.jpg + w02-67.alt.jpg", "pano": "b_20241216_0911_Track03_Sphere_00008 (2021 second view TMX7316010203-002306_pano_0002_001042)", "captured": "2024-12-16", "ppm": 39.52, "yShift": 0,
+      "storeys": 4,
+      "rows": {"ground": [2.1, 4.3], "ribbons": [[6.0, 8.1], [9.7, 11.85], [13.3, 15.5]], "parapet": [15.5, 16.4], "pitch": 2.1},
+      "entrance": {"s": [34.3, 38.3], "y": [0.05, 3.6], "lintel": {"s": [34.3, 41.5], "y": [3.9, 4.3], "out": 0.25}},
+      "lettering": {"text": "POLITIE", "s": [34.8, 38.0], "y": [4.85, 5.3], "colour": "police blue", "emblem": {"s": [35.2, 35.9], "y": [4.9, 6.05]}},
+      "openGround": {"from": 41.5, "top": 4.4, "depth": 2.0, "columns": [46.1, 53.9], "columnDiameter": 0.55},
+      "inferred": ["a third column seen at s 47.4 in 2024 stands behind the front row (not in the 2021 view): not modelled", "emblem drawn as the police badge outline (shield with a flame), not its detail"]
+    },
+    "w15-67": {
+      "what": "the Marnixstraat end block at the Elandsgracht corner (the tall block): brick piers, a ground hall behind a corner column, a two-storey white window block with a cantilevered balcony, a stone ledge and a two-storey glazed top under a thin roof slab that bows out over the street",
+      "surface": 38, "sToU": -5.84,
+      "crop": "w15-67.alt.jpg", "pano": "b_20241216_0911_Track03_Sphere_00015", "captured": "2024-12-16", "ppm": 50, "yShift": 0.45,
+      "registration": "s from the 2024 crop (the 2020 crop TMX7316010203-001900_pano_0004_000544 is 2.8 m off along the wall: its building edge stands at s 2.6 in open sky); y from the 2020 crop, whose roof edge matches the 3DBAG wall top (19.5 m): the 2024 heights are 0.45 m low (cornice 13.3 vs 13.95, window block 5.41 vs 5.87, 11.85 vs 12.38)",
+      "groundHall": {"s": [4.8, 13.15], "y": [0.05, 4.8], "depth": 1.2, "glass": [0.9, 4.8], "doors": [9.4, 12.4], "column": {"s": 12.95, "diameter": 0.45}, "lintel": [4.8, 5.05]},
+      "windowBlock": {"s": [4.8, 12.9], "y": [5.85, 12.3], "lower": [5.86, 8.46], "spandrel": [8.46, 9.32], "upper": [9.32, 11.9], "piers": [[6.75, 7.0], [8.7, 8.95], [10.8, 11.05]]},
+      "balcony": {"s": [4.2, 7.35], "top": 9.82, "frontUnderside": 8.96, "rail": 1.17, "out": 1.2},
+      "ledge": {"s": [0.45, 13.05], "y": [13.68, 13.88], "out": 0.3},
+      "glazedTop": {"s": [0.65, 12.8], "y": [13.88, 18.25], "lower": [13.88, 15.2], "spandrel": [15.2, 16.95], "upper": [16.95, 17.95], "posts": [2.5, 4.57, 6.7, 8.8, 10.9]},
+      "roof": {"y": [18.25, 18.6], "endOverhang": 0.4, "bow": 1.2},
+      "sign": {"s": 0.35, "y": [5.3, 6.1], "out": 0.85, "kind": "blue police diamond on a wall bracket, turned to the street"},
+      "lantern": {"s": 2.2, "y": [3.75, 4.6], "kind": "red lantern on the brick pier (2020 crop, shifted 2.8 m); measured but not modelled: under the opening audit it read as a detached fixture"},
+      "inferred": ["balcony projection 1.2 m (seen square-on only)", "glazed-top depth: flush with the wall", "roof bow 1.2 m in plan, from the 0.5 m rise of its edge in the rectified elevation", "ground hall depth 1.2 m"]
+    },
+    "w14-247": {
+      "what": "the tall brick end of the west wing on the Singelgracht: blank brick with four French windows on stacked semicircular balconies",
+      "surface": 10, "sToU": -0.09,
+      "crop": "w14-247.jpg", "pano": "TMX7316010203-001967_pano_0000_001027", "captured": "2021-01-18", "ppm": 50.14, "yShift": 0,
+      "doors": {"s": [6.25, 7.8], "y": [[4.0, 6.1], [7.85, 10.0], [11.7, 13.85], [15.65, 17.8]]},
+      "balconies": {"s": [5.8, 8.25], "slab": 0.2, "out": 0.85, "rail": 1.0},
+      "inferred": ["balcony projection 0.85 m (seen square-on only; the rail returns read 0.8-0.9 m against the 1.55 m doors)"]
+    },
+    "w09-247": {
+      "what": "the quay front of the south-west wing (pink stone cladding): yellow-framed square windows on a 1.85 m pitch, a yellow-framed glazed bay, a low ribbon, a top ribbon and the stone pair on a round console",
+      "surface": 4, "sToU": -0.15,
+      "crop": "w09-247.jpg", "pano": "TMX7316010203-001979_pano_0001_000176", "captured": "2021-01-25", "ppm": 50, "yShift": -1.1,
+      "registration": "panorama taken from a boat: its 'ground' is the water; the crop's parapet stands 1.1 m above the 3DBAG top (19.38 m), so every height is lowered 1.1 m",
+      "windows": {"width": 1.15, "pitch": 1.85, "rows": [
+        {"y": [15.47, 16.67], "s0": 6.0, "count": 11},
+        {"y": [11.52, 12.77], "s0": 6.0, "count": 11},
+        {"y": [8.05, 9.39], "s0": 13.4, "count": 7}]},
+      "lowRibbon": {"s": [13.4, 26.85], "y": [3.52, 4.85], "pitch": 0.9},
+      "topRibbon": {"s": [0.25, 26.85], "y": [19.25, 20.1], "pitch": 1.85},
+      "glazedBay": {"s": [5.5, 10.9], "y": [2.9, 10.0], "columns": 3, "rows": 6},
+      "void": {"s": [0.25, 5.4], "y": [2.4, 10.0], "note": "open under the cantilevered wing (the glazed bridge wing shows through)"},
+      "sculpture": {"s": [2.8, 4.4], "console": {"s": [2.67, 4.8], "y": [11.65, 12.6]}, "figures": [12.6, 14.7], "count": 2},
+      "inferred": ["void depth 2.5 m", "console projection 1.0 m (a half-round shelf)"]
+    },
+    "w05-337": {
+      "what": "the long north-west wall on the Elandsgracht (behind trees): four ribbon storeys; a gated vehicle entrance at the left, two rows of four round windows on the end pier at the right",
+      "surface": 177, "sToU": -0.34,
+      "crop": "w05-337.alt.jpg", "pano": "recording_2025-06-30_05-16-46_00546", "captured": "2025-06-30", "ppm": 42.95, "yShift": 0,
+      "portholes": {"s": [39.7, 40.5, 41.3, 42.1], "y": [6.2, 10.0], "diameter": 0.6},
+      "gate": {"s": [0.2, 4.3], "y": [0.05, 4.0], "bars": 0.2}
+    },
+    "w20-247": {
+      "what": "stair bay on the Singelgracht: a dark-framed glazed bay over three storeys",
+      "surface": 44, "sToU": -0.27,
+      "crop": "w20-247.jpg", "pano": "TMX7316010203-000199_pano_0002_000236", "captured": "2017-03-10", "ppm": 50, "yShift": 0,
+      "bay": {"s": [0.45, 8.2], "y": [4.1, 12.5], "glass": [[4.3, 6.0], [7.4, 9.0], [10.6, 12.2]], "out": 0.6},
+      "inferred": ["bay projection 0.6 m", "the round window right of the bay stands on the next wall (w13/w20 corner), outside this crop"]
+    },
+    "w23-248": {
+      "what": "framed bay in the pink stone wall on the Singelgracht",
+      "surface": 164, "sToU": -0.39,
+      "crop": "w23-248.jpg", "pano": "TMX7316010203-000199_pano_0002_000244", "captured": "2017-03-10", "ppm": 49.88, "yShift": -1.1,
+      "frame": {"s": [0.1, 8.0], "y": [6.2, 14.0], "border": 0.4, "out": 0.35, "glass": [[7.1, 9.0], [10.4, 13.0]]},
+      "inferred": ["same water-level registration as w09 (-1.1 m)"]
+    },
+    "w07-157": {
+      "what": "1941 brick wing on the Lijnbaansgracht: sash windows under white stone hoods, raised chequer brick panels between the windows, barred basement windows",
+      "surface": 41,
+      "crop": "w07-157.jpg (46 deg oblique: proportions only)", "pano": "recording_2025-07-03_10-31-52_00292", "captured": "2025-07-03",
+      "chequer": {"width": 1.6, "height": 0.9, "out": 0.06, "note": "one panel between neighbouring windows, centred on the window's lower half"},
+      "basement": {"width": 1.2, "y": [0.3, 1.1], "bars": 4}
+    }
+  }
+}
