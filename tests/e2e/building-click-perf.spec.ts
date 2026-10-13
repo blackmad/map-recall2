@@ -41,7 +41,8 @@ async function serveBefore(page: Page) {
 
 async function boot(page: Page) {
   if (process.env.BEFORE) await serveBefore(page);
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false });
+  // Street chunks are retired by default (2026-10-13); the chunk-picking budget below still covers them.
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, query: '?streetChunks=1' });
   await page.waitForFunction(() => {
     const vm = (window as any).canalRecallGame.vectorMap;
     return vm._completeCityHasBuildings && vm._threeBuildings?.ready && vm._threeBuildings.chunks.size > 3;

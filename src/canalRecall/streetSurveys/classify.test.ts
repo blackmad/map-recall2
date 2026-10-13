@@ -2,7 +2,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {addressRange, liveFor, pandRows, recipeStatus} from './classify.ts';
+import {addressRange, inGameNow, liveFor, pandRows, recipeStatus} from './classify.ts';
 
 const chunks = [{id: 'chunk-face-a', pandIds: ['1', '2']}, {id: 'chunk-bilder-x2', pandIds: ['3']}];
 const recipes = [{id: 'r1', pandId: '1'}, {id: 'r3', pandId: '3'}, {id: 'r4', pandId: '4'}];
@@ -41,4 +41,11 @@ test('regression: Bilderdijkstraat 128 (1903 orange brick, pand 156287) is drawn
   assert.equal(recipe.status, 'superseded');
   assert.equal(recipe.model, undefined, 'a superseded per-house model must not be shown');
   for (const id of ['bilder-153622', 'bilder-153782', 'bilder-154127']) assert.equal(street.recipeHouses.find((r: any) => r.id === id).status, 'standalone', id);
+});
+
+test('retired street surveys: every survey representation now draws as the generic city mesh', () => {
+  assert.deepEqual(inGameNow('generic'), {label: 'Generic city mesh', kind: 'live generic', retired: false});
+  assert.deepEqual(inGameNow('face'), {label: 'Generic city mesh (block face retired)', kind: 'live generic retired', retired: true});
+  assert.equal(inGameNow('standalone').retired, true);
+  assert.equal(inGameNow('chunk').label, 'Generic city mesh (recipe chunk retired)');
 });

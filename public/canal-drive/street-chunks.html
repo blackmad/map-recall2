@@ -44,7 +44,7 @@
 <header>
   <h1>Street chunks</h1>
   <p><a href="whats-new.html">What's new</a> &middot; <a href="manual-ordinary-buildings.html">Ordinary building models</a> &middot; <a href="manual-landmarks.html">Custom models</a></p>
-  <p>Each block face of recipe houses is drawn in the game as <strong>one mesh</strong> instead of one model per house (the game default; <code>?streetChunks=0</code> turns it off).
+  <p>Each block face of recipe houses is drawn in the game as <strong>one mesh</strong> instead of one model per house (retired from the game default on 2026-10-13: the chunks drew as dark masses and recipe tiles replace them; <code>?streetChunks=1</code> draws them again, <code>?streetChunks=0</code> draws the per-house models).
   Left: the individual house models as they are installed. Right: the chunk. Both use the same orbit camera and move together: drag to orbit, scroll to zoom.
   Numbers come from the build report (<code>scripts/street-chunks/build.ts</code>); the fidelity table is <code>scripts/street-chunks/gates.ts</code>.</p>
 </header>
@@ -250,8 +250,10 @@ async function build(chunk, report, gates, catalogue) {
   }
 
   const links = el('p', 'links');
-  const play = el('a', '', 'Open the game on this street →'); play.href = gameLink(chunk); play.dataset.link = 'game';
-  const off = el('a', '', 'Same ride without chunks'); off.href = gameLink(chunk).replace('./index.html#', './index.html?streetChunks=0#'); off.dataset.link = 'game-off';
+  // Chunks are retired from the default (2026-10-13): the link asks for them; "without" draws the per-house models.
+  const withFlag = (href, flag) => href.replace(/^\.\/index\.html\??([^#]*)#/, (_, q) => `./index.html?${q ? `${q}&` : ''}${flag}#`);
+  const play = el('a', '', 'Open the game on this street →'); play.href = withFlag(gameLink(chunk), 'streetChunks=1'); play.dataset.link = 'game';
+  const off = el('a', '', 'Same ride without chunks'); off.href = withFlag(gameLink(chunk), 'streetChunks=0'); off.dataset.link = 'game-off';
   links.append(play, off);
   article.append(links);
 
