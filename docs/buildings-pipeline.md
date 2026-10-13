@@ -321,6 +321,55 @@ Fit/compile takes 50–170 ms per building.
   elevation, so only the first module gets a stoop.
 - Shared meshes are consumed by the ordinary layer (see *Shared meshes at runtime*), but only genuinely identical designs share: palette differences between neighbours, 0.3-0.5 m eaves steps and rear footprint notches keep most rows at one mesh per house.
 
+## Bespoke landmark lane: photo first, inventory before geometry (2026-10-13)
+
+The Hoofdbureau van Politie shipped without its sculpted Amsterdam-arms relief
+(lion, banner, three figures on the Marnixstraat end wall). The lane had seen
+"a sculpture group" and filed it under "what the facade systems could not
+express". The root cause was the process, not the lane: the brief described
+the building from memory ("corner tower, carved portal"; both wrong), the
+lane rightly discarded it and was then left with a geometry checklist that
+never asks *what makes this building recognisable*. The rule from the user
+(2026-10-13): a hand-modelled building must carry its signature ornaments,
+reliefs, sculpture, lettering and signs; the lane infers them from the
+photos. The process that would have caught it:
+
+1. **No brief from memory.** The integrator starts a bespoke lane with
+   `node --import tsx scripts/landmarks/landmark-brief.ts --pand=<id>`
+   (ornament-inventory lane, 2026-10-13), which fetches the panoramas
+   (`pand-reference`, `all-walls.ts`), the BAG/3DBAG facts and any monument
+   register text, and writes `scripts/landmarks/<id>-brief.md` with one
+   rectified crop per exposed wall. The handoff links the brief; it does not
+   describe the building in its own words beyond what a source says.
+2. **Signature inventory before geometry.** The lane's first deliverable is
+   `scripts/landmarks/<id>-inventory.json`: per wall, every feature a rider
+   would notice at 1.7 m or on a gallery card — relief, sculpture, crest,
+   gable stone, lettering, sign, clock, canopy, ironwork, tower, dome,
+   colonnade, unusual window shape — with its approximate size, the panorama
+   id it was seen in, and the plan: `modelled`, `simplified` (how) or
+   `skipped` with a reason. "No component" and "the facade systems cannot
+   express it" are not reasons: a bespoke builder exists for exactly those
+   parts (`largeCompile` hooks for the regular walls, hand geometry for the
+   rest). Budget the hand triangles against the inventory, not the other way
+   round.
+3. **The inventory is a gate.** `build-manual-landmarks.ts` refuses to export
+   a landmark newer than 2026-10-13 without an inventory in which every item
+   is resolved (`scripts/landmarks/check-landmark-inventory.ts`, in
+   `check:canal`); `audit:glb` prints the inventory next to the geometry
+   gates so the integrator sees them together.
+4. **The lane proves each item.** The report lists the inventory with a crop
+   of the photo and the matching render for every `modelled` item (the
+   `review:sheet` per-wall sheet already does photo / model / overlay; the
+   inventory rows link to it). A four-side aerial strip is not evidence for
+   an ornament.
+5. **The integrator reviews against the inventory**, wall by wall on the
+   per-wall sheet, before installing; HISTORY records the inventory
+   outcome (modelled / simplified / skipped with reasons). Un-holding and
+   installing from the strip alone is what let the relief through.
+6. **Retro-fit.** Existing bespoke landmarks get inventories in batches
+   (`ornament-inventory.ts`), cheapest misses fixed in the builders, the
+   sculpture groups that need a modeller go to the splat/impostor track.
+
 ## Acceptance checklist (every building, every tier — 2026-10-09)
 
 Two models passed review while plainly wrong: Nassaukerk (blank walls where
@@ -328,9 +377,12 @@ the photo has windows, accepted twice) and Het Pakhuis (five identical
 symmetric gabled bays modelled as scattered windows and invented setbacks).
 Both were judged as "recognisable from its best side". That is not the bar.
 
-1. **Rhythm spec before modelling.** Per visible wall, from photos: bay count,
-   which bays are identical, windows per bay per storey, symmetry axis,
-   ground-floor type, signage, gable/roof line, setbacks only if seen. Cite
+1. **Rhythm spec and signature inventory before modelling.** Per visible
+   wall, from photos: bay count, which bays are identical, windows per bay
+   per storey, symmetry axis, ground-floor type, gable/roof line, setbacks
+   only if seen — and every ornament, relief, sculpture, crest, lettering,
+   sign, clock or canopy, each with its plan (modelled / simplified /
+   skipped with a reason that is not "no component"; see the section above). Cite
    the photo for each item. Store it next to the builder/recipe; for landmarks
    the machine-checked part is `scripts/landmarks/<id>-elevations.json`
    (counted blind from the photo, format in `docs/landmark-building-recipe.md` §7).
