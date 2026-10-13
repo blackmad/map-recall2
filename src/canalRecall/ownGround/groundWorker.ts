@@ -2,7 +2,7 @@
 // thread (all ground modules are DOM-free). Bundled as
 // public/canal-drive/js/own-ground-worker.bundle.js (scripts/build-3d-bundles.mjs).
 //
-// Messages in:  { type: 'init', root }            extract root URL (absolute)
+// Messages in:  { type: 'init', root, parks }     extract root URL (absolute); parks: load parks-v1
 //               { type: 'build', key, lod, gen }  build one cell
 //               { type: 'evict', x, y, keepM, keep: string[] }
 // Messages out: { type: 'ready', cells: string[] }
@@ -13,7 +13,7 @@ import { GroundStore, httpFetchBytes } from './groundStore.js';
 import { buildCell, cellTransferables } from './groundCell.js';
 
 type In =
-  | { type: 'init'; root: string }
+  | { type: 'init'; root: string; parks?: boolean }
   | { type: 'build'; key: string; lod: 0 | 1; gen: number }
   | { type: 'evict'; x: number; y: number; keepM: number; keep: string[] };
 
@@ -26,7 +26,7 @@ let chain: Promise<void> = Promise.resolve();
 ctx.onmessage = event => {
   const msg = event.data;
   if (msg.type === 'init') {
-    store = new GroundStore(httpFetchBytes(msg.root));
+    store = new GroundStore(httpFetchBytes(msg.root), { parks: msg.parks !== false });
     ready = store.init().then(() => ctx.postMessage({ type: 'ready', cells: [...store!.osmCells] }))
       .catch(error => ctx.postMessage({ type: 'error', message: `init: ${String(error?.message ?? error)}` }));
     return;

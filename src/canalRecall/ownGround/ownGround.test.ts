@@ -15,6 +15,7 @@ import { basemapGroundPatches } from './basemapPalette';
 import { GROUND_TONES, STREET_GROUND } from '../look/palette';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
 import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, shadowedWays, LIFT } from './streets';
+import { benchesAlong, bgtParkSurface, buildParks, decodeLine, encodeLine, playgroundKit, playgroundPiece, PARK_LIFT, type ParksCell } from './parks';
 import { buildWaterMask, maskDistance, quayWallMesh, waterSurfaceMesh, waterZAt } from './water';
 import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableFrame, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
@@ -870,3 +871,67 @@ test('crossSection prefers the BGT width, takes painted lanes off it, and says w
 
 // The bridge kit's own tests (lane bridge-kit 2026-10-13), run with this file.
 import './bridgeKit.test';
+// ------------------------------------------------------------- parks (lane parks 2026-10-13)
+
+test('parks: BGT terrain classes map to park surfaces; streets and yards are not parks', () => {
+  assert.equal(bgtParkSurface('begroeidterreindeel', { fysiek_voorkomen: 'groenvoorziening', plus_fysiek_voorkomen: 'gras- en kruidachtigen' }), 'lawn');
+  assert.equal(bgtParkSurface('begroeidterreindeel', { fysiek_voorkomen: 'groenvoorziening', plus_fysiek_voorkomen: null }), 'lawn');
+  assert.equal(bgtParkSurface('begroeidterreindeel', { fysiek_voorkomen: 'groenvoorziening', plus_fysiek_voorkomen: 'heesters' }), 'shrub');
+  assert.equal(bgtParkSurface('begroeidterreindeel', { fysiek_voorkomen: 'groenvoorziening', plus_fysiek_voorkomen: 'bosplantsoen' }), 'shrub');
+  assert.equal(bgtParkSurface('begroeidterreindeel', { fysiek_voorkomen: 'groenvoorziening', plus_fysiek_voorkomen: 'struikrozen' }), 'bed');
+  assert.equal(bgtParkSurface('begroeidterreindeel', { fysiek_voorkomen: 'groenvoorziening', plus_fysiek_voorkomen: 'boomschors' }), 'bark');
+  assert.equal(bgtParkSurface('begroeidterreindeel', { fysiek_voorkomen: 'loofbos' }), 'shrub');
+  assert.equal(bgtParkSurface('onbegroeidterreindeel', { fysiek_voorkomen: 'zand' }), 'sand');
+  assert.equal(bgtParkSurface('onbegroeidterreindeel', { fysiek_voorkomen: 'half verhard' }), 'gravel');
+  assert.equal(bgtParkSurface('onbegroeidterreindeel', { fysiek_voorkomen: 'erf' }), null);
+  assert.equal(bgtParkSurface('wegdeel', { functie: 'voetpad', fysiek_voorkomen: 'gesloten verharding' }), 'path');
+  assert.equal(bgtParkSurface('wegdeel', { functie: 'fietspad', fysiek_voorkomen: 'gesloten verharding' }), 'cycle');
+  assert.equal(bgtParkSurface('wegdeel', { functie: 'voetpad', fysiek_voorkomen: 'half verhard' }), 'gravel');
+  assert.equal(bgtParkSurface('wegdeel', { functie: 'rijbaan lokale weg', fysiek_voorkomen: 'gesloten verharding' }), null);
+  assert.equal(bgtParkSurface('waterdeel', {}), 'pond');
+  assert.equal(playgroundPiece('basketswing'), 'swing');
+  assert.equal(playgroundPiece('climbingframe'), 'climb');
+  assert.equal(playgroundPiece('bench'), null);
+});
+
+test('parks: the default playground kit fits inside, apart and clear of the edge; benches follow a path at the spacing, facing it', () => {
+  const rect: Vec2[] = [[0, 0], [30, 0], [30, 20], [0, 20], [0, 0]];
+  const kit = playgroundKit([rect]);
+  assert.deepEqual(kit.map(k => k.k), ['sandpit', 'swing', 'slide']);
+  for (const k of kit) assert.ok(k.p[0] >= 2.2 && k.p[0] <= 27.8 && k.p[1] >= 2.2 && k.p[1] <= 17.8, `${k.k} inside`);
+  for (let i = 0; i < kit.length; i++) for (let j = i + 1; j < kit.length; j++) assert.ok(Math.hypot(kit[i].p[0] - kit[j].p[0], kit[i].p[1] - kit[j].p[1]) >= 6);
+  assert.equal(playgroundKit([[[0, 0], [4, 0], [4, 4], [0, 4], [0, 0]]]).length, 0, 'too small for a kit');
+  const benches = benchesAlong([[[0, 0], [100, 0]]], 40, 2, () => true);
+  assert.deepEqual(benches.map(b => b.p.map(v => +v.toFixed(3))), [[20, 2], [60, 2]]);
+  // Left of an eastbound path, facing south (toward it): a = −π/2.
+  for (const b of benches) assert.ok(Math.abs(b.a + Math.PI / 2) < 1e-9);
+  assert.equal(benchesAlong([[[0, 0], [100, 0]]], 40, 2, x => x > 50).length, 1, 'vetoed spots are skipped');
+});
+
+test('parks: surfaces drape between the OSM areas and the street bands; furniture only in the near ring', () => {
+  const sq = (x: number, y: number, s: number) => encodeLine([[x, y], [x + s, y], [x + s, y + s], [x, y + s], [x, y]]);
+  const cell: ParksCell = {
+    version: 2, key: '0_0', parks: [{ id: 'a1', kind: 'park' }],
+    surfaces: [{ k: 'lawn', r: [sq(0, 0, 20)] }, { k: 'path', r: [sq(20, 0, 3)] }, { k: 'sand', r: [sq(30, 0, 5)] }],
+    hedges: [[sq(40, 0, 2)]],
+    lines: [{ k: 'hedge', g: encodeLine([[0, -2], [20, -2]]) }, { k: 'fence', g: encodeLine([[0, -4], [20, -4]]) }],
+    points: [{ k: 'bench', p: [50, 50], a: 0 }, { k: 'lamp', p: [100, 100] }, { k: 'swing', p: [320, 100], a: 0, gen: 1 }],
+    dropWays: [7],
+  };
+  assert.deepEqual(decodeLine(encodeLine([[1.04, -2.26], [1.04, -2.26], [3, 4]])), [[1, -2.3], [3, 4]], 'decimetres, duplicates dropped');
+  const ground = (x: number, y: number) => 0.01 * x;
+  const near = buildParks(cell, ground, 0);
+  assert.ok(near.layers.lawn && near.layers.parkPath && near.layers.sand && near.layers.hedge && near.layers.furniture);
+  const lawn = near.layers.lawn!;
+  for (let i = 0; i < lawn.positions.length; i += 3) assert.ok(Math.abs(lawn.positions[i + 2] - ground(lawn.positions[i], lawn.positions[i + 1]) - PARK_LIFT.lawn) < 1e-9);
+  assert.ok(PARK_LIFT.lawn > LIFT.area && PARK_LIFT.path < LIFT.carriageway && PARK_LIFT.cycle < LIFT.carriageway, 'park lifts sit between areas and street bands');
+  assert.deepEqual([near.stats.benches, near.stats.lamps, near.stats.play, near.stats.generated], [1, 1, 1, 1]);
+  assert.ok(Math.abs(near.stats.hedgeM - 20) < 1e-9 && Math.abs(near.stats.fenceM - 20) < 1e-9);
+  let top = -Infinity;
+  const f = near.layers.furniture!;
+  for (let i = 2; i < f.positions.length; i += 3) top = Math.max(top, f.positions[i]);
+  assert.ok(top > 4.5 && top < 5, `lamp head ${top}`);
+  const far = buildParks(cell, ground, 1);
+  assert.ok(far.layers.lawn && far.layers.hedge && !far.layers.furniture, 'far ring: surfaces and hedges, no furniture');
+  assert.ok(far.layers.lawn!.indices.length < lawn.indices.length);
+});

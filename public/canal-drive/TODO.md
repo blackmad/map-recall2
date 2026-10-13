@@ -1265,18 +1265,12 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   undrawn projecting face; the Marnixstraat ground ribbon is taller than
   the measured 2.1–4.3 m; the red lantern and the w13 glass-block ribbons
   are not modelled; walls with no photo stay inferred kit walls.
-- **Parks modelled realistically** (user 2026-10-13, Cremerplein: one flat
-  green with a scatter of trees around a dark box). Real parks have paths,
-  lawns vs planting, hedges, playgrounds, benches, a pond; the sources are
-  BGT (`begroeidterreindeel`, `onbegroeidterreindeel` with `fysiekVoorkomen`
-  such as gras, bosschage, verharding; `wegdeel` voetpad), OSM
-  (`leisure=playground`, `natural=water`, `barrier=hedge`, benches, paths)
-  and the Gemeente tree inventory already used. Own-ground cells get park
-  surfaces (lawn, planting, path, play sand), hedges as low boxes along
-  `barrier=hedge`, playground kit, benches along paths; neighbourhood
-  centres and kiosks inside parks take their real footprint. Start with the
-  Vondelpark, Oosterpark, Westerpark, Sarphatipark and the squares
-  (Cremerplein, Bellamyplein).
+- **Parks, next** (2026-10-14, HISTORY "Parks from the BGT survey"):
+  skip the OSM park fill where BGT surfaces cover it (20–160k tris per
+  park cell); lawn/bed/shrub as flat tones only (a stipple or relief
+  pass); BGT walls all at 0.75 m; 22 parks and 110 playgrounds without
+  BGT polygons; the raw BGT cache is archived in
+  `map-recall2-source-data/datasets/bgt-parks-20261014`.
 - **Roof slots: the Bonboon-class corner** (flat block after the attachment
   fix) can take its real slot and furniture now; check the Rozengracht corner
   reads as a roof, not a grey lid.

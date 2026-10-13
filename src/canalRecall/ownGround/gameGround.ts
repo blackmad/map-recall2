@@ -18,7 +18,7 @@
 // (repaint, hiding the basemap's own ground). THREE is injected.
 
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type Rect } from './groundStore.js';
-import { GROUND_LAYERS, type BuiltCell, type GroundLayer, type PackedMesh } from './groundCell.js';
+import { GROUND_LAYERS, PARK_RANK, type BuiltCell, type GroundLayer, type PackedMesh } from './groundCell.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
 import { residentRadius, viewReachM } from './residency.js';
@@ -46,6 +46,15 @@ export interface OwnGroundOptions {
   nearM?: number;
   /** Below this map zoom the ground is not drawn (overview, minimap: flat cartography). */
   minZoom?: number;
+  /** Park surfaces and furniture from parks-v1 (default on; `?parks=0` or `window.__canalRecallParks = false` turns them off). */
+  parks?: boolean;
+}
+
+/** The parks flag from the page: `?parks=0` or `window.__canalRecallParks = false` turns parks off. */
+function parksFlag(): boolean {
+  const g = globalThis as { __canalRecallParks?: boolean; location?: { search?: string } };
+  if (g.__canalRecallParks === false) return false;
+  return !/[?&]parks=0\b/.test(g.location?.search ?? '');
 }
 
 type LngLat = [number, number];
@@ -64,10 +73,11 @@ const RESIDENCY_STEP_M = 60;
 /** Which mask channel cuts a layer: R = water (land, parks), G = water minus decks (street bands). */
 const CUT: Partial<Record<GroundLayer, 'r' | 'g'>> = {
   land: 'r', park: 'r', wood: 'r', square: 'r', parking: 'r',
+  lawn: 'r', bed: 'r', shrub: 'r', bark: 'r', sand: 'r', parkGravel: 'r', parkPath: 'r', pond: 'r',
   asphalt: 'g', klinker: 'g', cycle: 'g', paving: 'g', gravel: 'g', kerb: 'g', paint: 'g', tram: 'g', bollard: 'g',
 };
 /** Polygon-offset rank of coplanar ground layers (later wins), as the prototype. */
-const OFFSET: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
+const OFFSET: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, ...PARK_RANK, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
 
 export class OwnGround {
   readonly root: any;
@@ -108,13 +118,15 @@ export class OwnGround {
   private overlayDirty = true;
   /** When each pending build was asked for (cell load latency: request → installed). */
   private readonly requestedAt = new Map<string, number>();
+  /** The last build's stats per cell key (cost per park cell: triangles per layer, build ms). */
+  private readonly cellBuilds = new Map<string, BuiltCell['stats'] & { lod: 0 | 1 }>();
   readonly stats = { cellsBuilt: 0, buildMs: [] as number[], installMs: [] as number[], latencyMs: [] as number[], errors: [] as string[], lastBuild: null as null | Record<string, unknown> };
 
   constructor(THREE: any, frame: any, host: GroundHost, options: OwnGroundOptions) {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, ...options };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), ...options };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -127,7 +139,7 @@ export class OwnGround {
   /** Load the extract indexes (absolute extract root URL) and start the worker. */
   async load(root: string): Promise<void> {
     this.dispose(false);
-    this.store = new GroundStore(httpFetchBytes(root));
+    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks });
     this.ready = false;
     if (!/\/amsterdam\/?$/.test(root)) return;
     await this.store.init();
@@ -135,7 +147,7 @@ export class OwnGround {
       this.worker = new Worker(this.opts.workerUrl);
       this.worker.onmessage = event => this.onWorker(event.data);
       this.worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
-      this.worker.postMessage({ type: 'init', root });
+      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks });
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
@@ -282,6 +294,7 @@ export class OwnGround {
     this.stats.cellsBuilt++;
     this.stats.buildMs.push(cell.stats.buildMs);
     this.stats.lastBuild = { key: cell.key, lod: cell.lod, ...cell.stats };
+    this.cellBuilds.set(cell.key, { ...cell.stats, lod: cell.lod });
     this.installQueue.push(cell);
     this.host.repaint();
   }
@@ -319,6 +332,16 @@ export class OwnGround {
       }
     });
     const std = (o: Record<string, unknown>) => new THREE.MeshStandardMaterial({ roughness: 0.95, metalness: 0, ...o });
+    // Lawn: faint mowing stripes, 1.25 m wide (half the 5 m tile at 256 px).
+    const stripes = (g: CanvasRenderingContext2D, s: number) => { g.fillStyle = 'rgba(255,255,255,0.05)'; for (let x = 0; x < s; x += s / 4) g.fillRect(x, 0, s / 8, s); };
+    // Leaf dabs: `n` round clumps of `rgb`, radius rMin..rMax px, a little darker or lighter each.
+    const dabs = (g: CanvasRenderingContext2D, s: number, rgb: readonly number[], n: number, rMin: number, rMax: number) => {
+      for (let i = 0; i < n; i++) {
+        const v = (rnd() - 0.5) * 30, r = rMin + rnd() * (rMax - rMin), x = rnd() * s, y = rnd() * s;
+        g.fillStyle = `rgb(${rgb[0] + v},${rgb[1] + v},${rgb[2] + v})`;
+        for (const [dx, dy] of [[0, 0], [s, 0], [-s, 0], [0, s], [0, -s]]) { g.beginPath(); g.arc(x + dx, y + dy, r, 0, Math.PI * 2); g.fill(); }
+      }
+    };
     const M: Record<string, any> = {
       land: std({ map: pavers(G.land.base, G.land.joint, 3, 0.3, 0.3) }),
       klinker: std({ map: pavers([...STREET_GROUND.klinker.base], STREET_GROUND.klinker.joint, 2, 0.2, 0.1), roughness: 0.9 }),
@@ -340,6 +363,17 @@ export class OwnGround {
       deckTop: std({ vertexColors: true, roughness: 0.85 }),
       // Matte water (user 2026-10-13 'do not need this reflection'); the mood pass's bluer tone (GROUND_TONES.water).
       water: std({ color: G.water, roughness: 0.65, envMapIntensity: 0.5 }),
+      // Parks (parks.ts): textured surfaces, ponds like the canals, one vertex-coloured mesh each for hedges and furniture.
+      lawn: std({ map: this.canvasTexture(256, 5, (g, s) => { noise(g, s, G.lawn, 18, 2); stripes(g, s); }), roughness: 1 }),
+      bed: std({ map: this.canvasTexture(256, 3, (g, s) => { noise(g, s, G.bed.soil, 24, 2); dabs(g, s, G.bed.leaf, 260, 3, 7); }), roughness: 1 }),
+      shrub: std({ map: this.canvasTexture(256, 6, (g, s) => { noise(g, s, G.shrub.base, 22, 3); dabs(g, s, G.shrub.leaf, 160, 6, 14); }), roughness: 1 }),
+      bark: std({ map: this.canvasTexture(256, 2, (g, s) => noise(g, s, G.bark, 40, 3)), roughness: 1 }),
+      sand: std({ map: this.canvasTexture(256, 3, (g, s) => noise(g, s, G.sand, 22, 2)), roughness: 1 }),
+      parkGravel: std({ map: this.canvasTexture(256, 3, (g, s) => noise(g, s, G.parkGravel, 34, 2)), roughness: 1 }),
+      parkPath: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, G.parkPath, 16)), roughness: 0.92 }),
+      pond: std({ color: G.pond, roughness: 0.6, envMapIntensity: 0.5 }),
+      hedge: std({ vertexColors: true, roughness: 1, side: THREE.DoubleSide }),
+      furniture: std({ vertexColors: true, roughness: 0.8, side: THREE.DoubleSide }),
     };
     for (const [layer, k] of Object.entries(OFFSET)) Object.assign(M[layer], { polygonOffset: true, polygonOffsetFactor: -k!, polygonOffsetUnits: -2 * k! });
     // Overlays: the game's own route / active-street colours (vector-map.js), draped.
@@ -455,8 +489,8 @@ export class OwnGround {
       mesh.name = layer;
       mesh.matrixAutoUpdate = false;
       mesh.receiveShadow = true;
-      // Deck bodies and kerbs stand up; the rest is ground.
-      mesh.castShadow = layer === 'deckBody';
+      // Deck bodies, hedges and park furniture stand up; the rest is ground.
+      mesh.castShadow = layer === 'deckBody' || layer === 'hedge' || layer === 'furniture';
       mesh.renderOrder = layer === 'water' || layer === 'quay' ? 0 : layer === 'land' ? 1 : 2;
       group.add(mesh);
       triangles += p.indices.length / 3;
@@ -676,6 +710,20 @@ export class OwnGround {
     hits.sort((p, q) => (Math.abs(p.z - q.z) > 0.02 ? q.z - p.z : q.rank - p.rank));
     const top = hits.find(h => !h.cut && h.layer !== 'water')?.layer ?? null;
     return { top, hits: hits.map(({ layer, z, cut }) => ({ layer, z: +z.toFixed(3), cut })) };
+  }
+
+  /** The streamed cell key under a lng/lat. */
+  cellKeyAt(lngLat: LngLat): string | null {
+    if (!this.ready) return null;
+    const [x, y] = toLocal(lngLat[0], lngLat[1]);
+    return this.store.cellAt(x, y);
+  }
+
+  /** One cell's last build: LOD, triangles (total and per layer), build ms, park stats. Diagnostics. */
+  cellStats(key: string): Record<string, unknown> | null {
+    const b = this.cellBuilds.get(key);
+    if (!b) return null;
+    return { lod: b.lod, triangles: b.triangles, byLayer: b.byLayer, buildMs: b.buildMs, bytes: b.bytes, parks: b.parks, hasParks: this.store.parkCells.has(key) };
   }
 
   status(): Record<string, unknown> {

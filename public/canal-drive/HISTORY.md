@@ -1,5 +1,34 @@
 # Canal Recall — what is built
 
+## Parks from the BGT survey (2026-10-14, night)
+
+Lane `ground/parks-20261013` (user, Cremerplein: "try to model the parks
+more realistically"). `ownGround/parks.ts` draws surveyed BGT ground
+inside OSM parks, public gardens and playgrounds: lawn, planting bed,
+shrub planting, bark, play sand, gravel/half-paved, asphalt paths and
+plazas, paving, red cycle paths and ponds, each with its own
+`GROUND_TONES` colour and draw rank between the OSM park fill and the
+street bands; yards are not drawn; 3,713 OSM path ways covered by a BGT
+path polygon are no longer drawn as bands. Furniture in the near ring:
+BGT hedges extruded 1.05 m and OSM hedges as boxes, BGT fences
+(post-and-rail) and walls (0.75 m, BGT has no height), the real BGT
+light-mast positions (never invented: a park with no mast is unlit on
+purpose), OSM benches turned to the nearest path, mapped playground
+pieces, plus rule-placed benches at the measured spacing (median 158 m of
+path per bench over 100 parks) and a sandpit/swing/slide kit in
+playgrounds that map none. Buildings keep their BAG footprints (the
+Cremerplein buurtcentrum is a named regression). Extract `parks-v1`: 193
+cells, 2.1 MB gz (delta-encoded decimetres); 303 of 325 parks and 1,027 of
+1,137 playgrounds have BGT polygons, named parks 86–99 % surveyed; 6,905
+lamps, 2,869 benches, 72 placed benches, 532 playground kits. Cost: park
+cells carry 6–52 % more triangles (Cremerplein 266k → 404k at LOD 0,
+~378k after the drape change), frame time unchanged at display cadence.
+`?parks=0` switches it off. Left: flat lawn/bed textures, BGT walls at one
+height, the hidden OSM park fill still drawn under the BGT surfaces
+(20–160k tris per park cell, the next saving), large paved courts read
+grey because the survey says so, iPhone unmeasured.
+
+
 ## American Hotel rebuilt from measured facades (2026-10-14, night)
 
 Lane `rework/american-hotel-20261014`. The user's "poor reconstruction"

@@ -1,0 +1,514 @@
+// Parks on the own ground (pure, DOM-free; built in the ground worker).
+// docs/handoffs/lane-parks-20261013.md.
+//
+// A park used to be one flat green (the OSM `leisure=park` area) with the
+// tree inventory scattered on it. The parks-v1 extract
+// (scripts/own-ground/fetch-bgt-parks.ts) carries, per 1 km cell, what the
+// city surveyed inside OSM parks, public gardens and playgrounds:
+//
+//   surfaces   BGT polygons: lawn, planting beds, shrub planting, bark, play
+//              sand, half-paved (gravel) and closed (asphalt) paths, tiled
+//              paving, red cycle paths, ponds
+//   hedges     BGT `vegetatieobject` haag polygons and OSM `barrier=hedge`
+//   lines      BGT `scheiding` hek/muur and OSM `barrier=fence|wall`
+//   points     BGT light masts, OSM benches and playground equipment, plus
+//              benches and a playground kit placed by measured rules where
+//              the data has none (`gen: 1`, so a review can tell them apart)
+//   dropWays   OSM path ways a BGT path polygon covers (the survey's width
+//              and surface replace the drawn band)
+//
+// Surfaces are drawn only from features the extractor kept inside a park, at
+// lifts between the OSM area (0.015) and the carriageway (0.03), so a street
+// band always wins and a park never paints over a street.
+
+import earcut from 'earcut';
+import { emptyMesh, vertex, type MeshArrays } from './drape.js';
+import type { HeightFn, Vec2 } from './surface.js';
+
+/**
+ * Geometry in the cell file is in the game's local frame (groundStore toLocal, metres east/north of 4.9 E
+ * 52.37 N) as whole decimetres, each polyline delta-encoded: [x0, y0, dx1, dy1, ...]. Half the size of
+ * lng/lat floats after gzip, and what the worker draws in anyway.
+ */
+export type EncodedLine = number[];
+
+export type ParkSurface = 'lawn' | 'bed' | 'shrub' | 'bark' | 'sand' | 'gravel' | 'path' | 'paving' | 'cycle' | 'pond';
+export type ParkLineKind = 'hedge' | 'fence' | 'wall';
+export type ParkPointKind = 'bench' | 'lamp' | 'swing' | 'slide' | 'sandpit' | 'climb' | 'seesaw' | 'springy' | 'playhouse' | 'structure';
+
+export interface ParksCell {
+  version: 2;
+  key: string;
+  /** Parks, gardens and playgrounds whose bbox centre lies in this cell (diagnostics, the review report). */
+  parks: { id: string; name?: string; kind: 'park' | 'garden' | 'playground' }[];
+  surfaces: { k: ParkSurface; r: EncodedLine[] }[];
+  /** Hedge polygons (BGT haag) extruded whole. */
+  hedges: EncodedLine[][];
+  /** Hedge / fence / wall centrelines. */
+  lines: { k: ParkLineKind; g: EncodedLine }[];
+  /** `p`: decimetres, local frame; `a`: the way the thing faces (radians, 0 = east, CCW); `gen`: placed by rule, not mapped. */
+  points: { k: ParkPointKind; p: [number, number]; a?: number; gen?: 1 }[];
+  /** OSM path ways a BGT path polygon covers: not drawn as bands. */
+  dropWays: number[];
+}
+
+/** Delta-encode a polyline (metres, local frame) as whole decimetres; consecutive duplicates dropped. */
+export function encodeLine(pts: readonly Vec2[]): EncodedLine {
+  const out: number[] = [];
+  let px = 0, py = 0;
+  for (const [x, y] of pts) {
+    const qx = Math.round(x * 10), qy = Math.round(y * 10);
+    if (out.length && qx === px && qy === py) continue;
+    out.push(qx - px, qy - py); px = qx; py = qy;
+  }
+  return out;
+}
+
+export function decodeLine(e: readonly number[]): Vec2[] {
+  const out: Vec2[] = [];
+  let x = 0, y = 0;
+  for (let i = 0; i + 1 < e.length; i += 2) { x += e[i]; y += e[i + 1]; out.push([x / 10, y / 10]); }
+  return out;
+}
+
+export interface ParksManifest { version: 1; cells: string[]; fetched: string; attribution: string; report?: Record<string, unknown> }
+
+// ------------------------------------------------------------------ classification (extractor)
+
+/**
+ * A BGT terrain polygon's park surface, or null when it is not drawn as one.
+ * `begroeidterreindeel`: groenvoorziening with plus types gras → lawn,
+ * heesters/bosplantsoen/struiken → shrub, planten/struikrozen/bodembedekkers → bed,
+ * anything mentioning schors → bark; untyped groenvoorziening is grass in practice.
+ * `onbegroeidterreindeel`: zand → sand, half verhard / onverhard → gravel,
+ * gesloten → path, open → paving, erf (yards) → null.
+ * `wegdeel`: only foot/cycle/bridle paths and pedestrian areas.
+ * `waterdeel`: ponds.
+ */
+export function bgtParkSurface(collection: string, p: { fysiek_voorkomen?: string | null; plus_fysiek_voorkomen?: string | null; functie?: string | null }): ParkSurface | null {
+  const fv = (p.fysiek_voorkomen ?? '').toLowerCase(), plus = (p.plus_fysiek_voorkomen ?? '').toLowerCase(), fn = (p.functie ?? '').toLowerCase();
+  if (collection === 'begroeidterreindeel') {
+    if (plus.includes('schors')) return 'bark';
+    if (/heester|bosplantsoen|struiken|houtwal|haag/.test(plus) || /bos|struiken|houtwal/.test(fv)) return 'shrub';
+    if (/planten|rozen|bodembedekker|bloem|vaste/.test(plus) || /heide|rietland|moeras/.test(fv)) return 'bed';
+    return 'lawn';
+  }
+  if (collection === 'onbegroeidterreindeel') {
+    if (fv === 'zand') return 'sand';
+    if (fv === 'half verhard' || fv === 'onverhard') return 'gravel';
+    if (fv === 'gesloten verharding') return 'path';
+    if (fv === 'open verharding') return 'paving';
+    return null;
+  }
+  if (collection === 'wegdeel') {
+    if (!/^(voetpad|fietspad|ruiterpad|voetgangersgebied)/.test(fn)) return null;
+    if (fv === 'half verhard' || fv === 'onverhard') return 'gravel';
+    if (fn.startsWith('fietspad') && fv === 'gesloten verharding') return 'cycle';
+    if (fv === 'gesloten verharding') return 'path';
+    return 'paving';
+  }
+  if (collection === 'waterdeel') return 'pond';
+  return null;
+}
+
+/** OSM `playground=*` value → the kit piece drawn. */
+export function playgroundPiece(v: string | undefined): ParkPointKind | null {
+  if (!v) return null;
+  if (v === 'swing' || v === 'basketswing' || v === 'baby_swing') return 'swing';
+  if (v === 'slide') return 'slide';
+  if (v === 'sandpit') return 'sandpit';
+  if (v === 'seesaw') return 'seesaw';
+  if (v === 'springy') return 'springy';
+  if (v === 'playhouse') return 'playhouse';
+  if (v === 'climbingframe' || v === 'climbing_frame' || v === 'climbingwall' || v === 'horizontal_bar' || v === 'monkey_bars') return 'climb';
+  if (['structure', 'balancebeam', 'trampoline', 'roundabout', 'zipwire', 'activitypanel', 'cushion'].includes(v)) return 'structure';
+  return null;
+}
+
+// ------------------------------------------------------------------ geometry helpers (extractor and tests)
+
+/** Even-odd point in a polygon given as rings (outer and holes, any order). */
+export function inRings(rings: readonly (readonly Vec2[])[], x: number, y: number): boolean {
+  let inside = false;
+  for (const ring of rings) for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const a = ring[i], b = ring[j];
+    if ((a[1] > y) !== (b[1] > y) && x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
+  }
+  return inside;
+}
+
+/** Distance from a point to a polyline / ring boundary. */
+export function distToLine(pts: readonly Vec2[], x: number, y: number, closed = false): number {
+  let best = Infinity;
+  const n = pts.length, last = closed ? n : n - 1;
+  for (let i = 0; i < last; i++) {
+    const a = pts[i], b = pts[(i + 1) % n], dx = b[0] - a[0], dy = b[1] - a[1], l2 = dx * dx + dy * dy;
+    const t = l2 ? Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / l2)) : 0;
+    best = Math.min(best, Math.hypot(a[0] + t * dx - x, a[1] + t * dy - y));
+  }
+  return best;
+}
+
+/** A point surely inside a polygon: the centroid of its largest earcut triangle. */
+export function interiorPoint(rings: readonly (readonly Vec2[])[]): Vec2 | null {
+  const { flat, holes } = flatten(rings);
+  const tris = earcut(flat, holes);
+  let best = -1, out: Vec2 | null = null;
+  for (let t = 0; t < tris.length; t += 3) {
+    const a = tris[t] * 2, b = tris[t + 1] * 2, c = tris[t + 2] * 2;
+    const area = Math.abs((flat[b] - flat[a]) * (flat[c + 1] - flat[a + 1]) - (flat[b + 1] - flat[a + 1]) * (flat[c] - flat[a])) / 2;
+    if (area > best) { best = area; out = [(flat[a] + flat[b] + flat[c]) / 3, (flat[a + 1] + flat[b + 1] + flat[c + 1]) / 3]; }
+  }
+  return out;
+}
+
+/** Polygon area (outer minus holes, by earcut), square metres. */
+export function polygonArea(rings: readonly (readonly Vec2[])[]): number {
+  const { flat, holes } = flatten(rings);
+  const tris = earcut(flat, holes);
+  let s = 0;
+  for (let t = 0; t < tris.length; t += 3) {
+    const a = tris[t] * 2, b = tris[t + 1] * 2, c = tris[t + 2] * 2;
+    s += Math.abs((flat[b] - flat[a]) * (flat[c + 1] - flat[a + 1]) - (flat[b + 1] - flat[a + 1]) * (flat[c] - flat[a])) / 2;
+  }
+  return s;
+}
+
+/** Rings (closed or not; the first is the outer) as earcut input. */
+function flatten(rings: readonly (readonly Vec2[])[]): { flat: number[]; holes: number[] } {
+  const flat: number[] = [], holes: number[] = [];
+  rings.forEach((r, i) => {
+    const pts = r.length > 1 && r[0][0] === r[r.length - 1][0] && r[0][1] === r[r.length - 1][1] ? r.slice(0, -1) : r;
+    if (i > 0) holes.push(flat.length / 2);
+    for (const p of pts) flat.push(p[0], p[1]);
+  });
+  return { flat, holes };
+}
+
+/**
+ * Bench spots along path centrelines every `spacing` metres (first at half a
+ * spacing), set `offset` metres to the left of travel and facing the path.
+ * `ok` vetoes a spot (outside the park, on a path or in a pond).
+ */
+export function benchesAlong(lines: readonly (readonly Vec2[])[], spacing: number, offset: number, ok: (x: number, y: number) => boolean): { p: Vec2; a: number }[] {
+  const out: { p: Vec2; a: number }[] = [];
+  for (const line of lines) {
+    let next = spacing / 2, run = 0;
+    for (let i = 1; i < line.length; i++) {
+      const a = line[i - 1], b = line[i], len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+      if (!len) continue;
+      const ux = (b[0] - a[0]) / len, uy = (b[1] - a[1]) / len;
+      while (next < run + len) {
+        const t = next - run, x = a[0] + ux * t - uy * offset, y = a[1] + uy * t + ux * offset;
+        // Facing the path: from the bench toward the line, i.e. to the right of travel.
+        if (ok(x, y)) out.push({ p: [x, y], a: Math.atan2(-ux, uy) });
+        next += spacing;
+      }
+      run += len;
+    }
+  }
+  return out;
+}
+
+/**
+ * The default playground kit (sandpit ring, swing, slide) inside a playground
+ * polygon that maps no equipment: the sandpit at the point deepest inside,
+ * the swing and slide at the next deepest spots at least 6 m from the others,
+ * each at least `clear` metres inside the edge. `ok` vetoes spots (paths).
+ * Returns fewer pieces when the playground is too small.
+ */
+export function playgroundKit(rings: readonly (readonly Vec2[])[], ok: (x: number, y: number) => boolean = () => true, clear = 2.2): { k: ParkPointKind; p: Vec2; a: number }[] {
+  const outer = rings[0];
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  for (const [x, y] of outer) { x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y); }
+  const step = Math.max(1, Math.min(3, Math.sqrt((x1 - x0) * (y1 - y0)) / 30));
+  const spots: { p: Vec2; d: number }[] = [];
+  for (let y = y0 + step / 2; y < y1; y += step) for (let x = x0 + step / 2; x < x1; x += step) {
+    if (!inRings(rings, x, y) || !ok(x, y)) continue;
+    const d = Math.min(...rings.map(r => distToLine(r, x, y, true)));
+    if (d >= clear) spots.push({ p: [x, y], d });
+  }
+  spots.sort((a, b) => b.d - a.d);
+  // Long axis of the bbox: the swing's beam and the slide's run follow it.
+  const a = x1 - x0 >= y1 - y0 ? 0 : Math.PI / 2;
+  const kit: { k: ParkPointKind; p: Vec2; a: number }[] = [];
+  for (const k of ['sandpit', 'swing', 'slide'] as const) {
+    const need = k === 'sandpit' ? 2.6 : clear;
+    const s = spots.find(s => s.d >= need && kit.every(q => Math.hypot(q.p[0] - s.p[0], q.p[1] - s.p[1]) >= 6));
+    if (s) kit.push({ k, p: s.p, a });
+  }
+  return kit;
+}
+
+// ------------------------------------------------------------------ meshes (worker)
+
+/**
+ * Earcut triangles draped by longest-edge bisection until no edge exceeds
+ * `maxEdge` (drape.ts drapeTriangles splits every triangle into n², which
+ * on the long slivers earcut makes of park paths and pond banks cost 6-10x
+ * the triangles: a Vondelpark cell went from 0.39 M to 0.80 M). Shared
+ * vertices are reused per triangle; neighbours may meet at T-junctions a few
+ * millimetres apart, hidden by the lawn and park fill beneath.
+ */
+export function drapeBisect(m: MeshArrays, coords: ArrayLike<number>, tris: ArrayLike<number>, height: HeightFn, lift: number, maxEdge: number): void {
+  const max2 = maxEdge * maxEdge;
+  const stack: number[] = [];
+  for (let t = 0; t < tris.length; t += 3) {
+    const ax = coords[tris[t] * 2], ay = coords[tris[t] * 2 + 1], bx = coords[tris[t + 1] * 2], by = coords[tris[t + 1] * 2 + 1], cx = coords[tris[t + 2] * 2], cy = coords[tris[t + 2] * 2 + 1];
+    // CCW from above.
+    if ((bx - ax) * (cy - ay) - (by - ay) * (cx - ax) > 0) stack.push(ax, ay, bx, by, cx, cy); else stack.push(ax, ay, cx, cy, bx, by);
+    while (stack.length) {
+      const y3 = stack.pop()!, x3 = stack.pop()!, y2 = stack.pop()!, x2 = stack.pop()!, y1 = stack.pop()!, x1 = stack.pop()!;
+      const e1 = (x2 - x1) ** 2 + (y2 - y1) ** 2, e2 = (x3 - x2) ** 2 + (y3 - y2) ** 2, e3 = (x1 - x3) ** 2 + (y1 - y3) ** 2;
+      const longest = Math.max(e1, e2, e3);
+      if (longest <= max2 || stack.length > 6e5) {
+        const i = vertex(m, x1, y1, height(x1, y1) + lift), j = vertex(m, x2, y2, height(x2, y2) + lift), k = vertex(m, x3, y3, height(x3, y3) + lift);
+        m.indices.push(i, j, k);
+        continue;
+      }
+      // Split the longest edge at its midpoint; both halves keep the winding.
+      if (longest === e1) { const mx = (x1 + x2) / 2, my = (y1 + y2) / 2; stack.push(x1, y1, mx, my, x3, y3, mx, my, x2, y2, x3, y3); }
+      else if (longest === e2) { const mx = (x2 + x3) / 2, my = (y2 + y3) / 2; stack.push(x1, y1, x2, y2, mx, my, x1, y1, mx, my, x3, y3); }
+      else { const mx = (x3 + x1) / 2, my = (y3 + y1) / 2; stack.push(x1, y1, x2, y2, mx, my, mx, my, x2, y2, x3, y3); }
+    }
+  }
+}
+
+export type ParkLayer = 'lawn' | 'bed' | 'shrub' | 'bark' | 'sand' | 'parkGravel' | 'parkPath' | 'pond' | 'hedge' | 'furniture';
+/** Park surfaces drawn into existing street layers (same look as the street's paving and cycle paths). */
+export type SharedLayer = 'paving' | 'cycle';
+
+/** Lift above the relief per park surface (metres): above OSM areas (0.015), below every street band (0.03+). */
+export const PARK_LIFT: Record<ParkSurface, number> = {
+  lawn: 0.018, bed: 0.021, shrub: 0.021, bark: 0.021, sand: 0.022, gravel: 0.024, path: 0.024, paving: 0.024, cycle: 0.025, pond: 0.023,
+};
+const SURFACE_LAYER: Record<ParkSurface, ParkLayer | SharedLayer> = {
+  lawn: 'lawn', bed: 'bed', shrub: 'shrub', bark: 'bark', sand: 'sand', gravel: 'parkGravel', path: 'parkPath', paving: 'paving', cycle: 'cycle', pond: 'pond',
+};
+
+type RGB = [number, number, number];
+/** Furniture colours (sRGB 0..1), vertex-coloured into one layer per cell. */
+export const PARK_FURNITURE_COLOURS = {
+  hedge: [0.25, 0.38, 0.17], hedgeTop: [0.31, 0.45, 0.2],
+  fence: [0.17, 0.22, 0.19], wall: [0.55, 0.36, 0.28], wallCap: [0.62, 0.6, 0.55],
+  wood: [0.5, 0.36, 0.22], steel: [0.2, 0.24, 0.22], lamp: [0.13, 0.17, 0.15], lampHead: [0.9, 0.88, 0.78],
+  red: [0.75, 0.2, 0.15], yellow: [0.88, 0.7, 0.16], blue: [0.18, 0.38, 0.66], green: [0.2, 0.5, 0.3], sandRing: [0.55, 0.42, 0.27],
+} satisfies Record<string, RGB>;
+const C = PARK_FURNITURE_COLOURS as Record<string, RGB>;
+
+export interface ParkBuildStats { surfaces: number; pondsInWater: number; hedgeM: number; fenceM: number; wallM: number; benches: number; lamps: number; play: number; generated: number; dropWays: number }
+
+/**
+ * A square-section prism `w` × `d` between two 3D points (posts, rails,
+ * chains, swing legs): four sides and the two ends, unshared vertices so the
+ * normals stay flat.
+ */
+export function beam(m: MeshArrays, a: [number, number, number], b: [number, number, number], w: number, d: number, colour: RGB): void {
+  const dx = b[0] - a[0], dy = b[1] - a[1], dz = b[2] - a[2], len = Math.hypot(dx, dy, dz);
+  if (len < 1e-6) return;
+  const u = [dx / len, dy / len, dz / len];
+  // Two axes across the beam: horizontal first (vertical beams: east/north).
+  let s = Math.hypot(u[0], u[1]) > 1e-3 ? [-u[1], u[0], 0] : [1, 0, 0];
+  const sl = Math.hypot(s[0], s[1], s[2]); s = s.map(v => v / sl);
+  const t = [u[1] * s[2] - u[2] * s[1], u[2] * s[0] - u[0] * s[2], u[0] * s[1] - u[1] * s[0]];
+  const corner = (p: [number, number, number], i: number, j: number): [number, number, number] =>
+    [p[0] + s[0] * i * w / 2 + t[0] * j * d / 2, p[1] + s[1] * i * w / 2 + t[1] * j * d / 2, p[2] + s[2] * i * w / 2 + t[2] * j * d / 2];
+  const ring: [number, number][] = [[-1, -1], [1, -1], [1, 1], [-1, 1]];
+  const quad = (q: [number, number, number][]) => {
+    const i0 = vertex(m, q[0][0], q[0][1], q[0][2], colour), i1 = vertex(m, q[1][0], q[1][1], q[1][2], colour);
+    const i2 = vertex(m, q[2][0], q[2][1], q[2][2], colour), i3 = vertex(m, q[3][0], q[3][1], q[3][2], colour);
+    m.indices.push(i0, i1, i2, i0, i2, i3);
+  };
+  for (let k = 0; k < 4; k++) {
+    const [i, j] = ring[k], [i2, j2] = ring[(k + 1) % 4];
+    quad([corner(a, i, j), corner(a, i2, j2), corner(b, i2, j2), corner(b, i, j)]);
+  }
+  quad(ring.map(([i, j]) => corner(b, i, j)));
+  quad([...ring].reverse().map(([i, j]) => corner(a, i, j)));
+}
+
+/** An upright box `l` (along `ang`) × `w`, from z0 to z1 above the ground at its centre. */
+function box(m: MeshArrays, x: number, y: number, ang: number, l: number, w: number, z0: number, z1: number, colour: RGB): void {
+  const ux = Math.cos(ang), uy = Math.sin(ang);
+  beam(m, [x, y, z0], [x, y, z1], l, w, colour);
+  // beam() puts the first cross axis east for vertical beams; rotate the last 24 vertices about the centre.
+  const n = m.positions.length / 3;
+  for (let v = n - 24; v < n; v++) {
+    const px = m.positions[v * 3] - x, py = m.positions[v * 3 + 1] - y;
+    m.positions[v * 3] = x + px * ux - py * uy; m.positions[v * 3 + 1] = y + px * uy + py * ux;
+    m.uvs[v * 2] = m.positions[v * 3]; m.uvs[v * 2 + 1] = m.positions[v * 3 + 1];
+  }
+}
+
+/** A wall-like strip along a polyline: `w` wide, from the ground to `h`, in straight boxes per segment. */
+function strip(m: MeshArrays, line: readonly Vec2[], height: HeightFn, w: number, h: number, colour: RGB, top?: RGB): number {
+  let len = 0;
+  for (let i = 1; i < line.length; i++) {
+    const a = line[i - 1], b = line[i], l = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    if (l < 0.05) continue;
+    len += l;
+    // Long segments are split so the strip follows the relief.
+    const n = Math.max(1, Math.ceil(l / 6));
+    for (let k = 0; k < n; k++) {
+      const p: Vec2 = [a[0] + (b[0] - a[0]) * k / n, a[1] + (b[1] - a[1]) * k / n], q: Vec2 = [a[0] + (b[0] - a[0]) * (k + 1) / n, a[1] + (b[1] - a[1]) * (k + 1) / n];
+      const cx = (p[0] + q[0]) / 2, cy = (p[1] + q[1]) / 2, z = Math.min(height(p[0], p[1]), height(q[0], q[1]));
+      box(m, cx, cy, Math.atan2(q[1] - p[1], q[0] - p[0]), l / n + w * 0.5, w, z - 0.05, z + h, colour);
+      if (top) box(m, cx, cy, Math.atan2(q[1] - p[1], q[0] - p[0]), l / n + w * 0.6, w * 1.15, z + h, z + h + 0.06, top);
+    }
+  }
+  return len;
+}
+
+/** Post-and-rail fence along a polyline: posts every 2.5 m, a top and a middle rail per segment. */
+function fence(m: MeshArrays, line: readonly Vec2[], height: HeightFn): number {
+  let len = 0, run = 0;
+  for (let i = 1; i < line.length; i++) {
+    const a = line[i - 1], b = line[i], l = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    if (l < 0.05) continue;
+    for (; run <= len + l; run += 2.5) {
+      const t = (run - len) / l, x = a[0] + (b[0] - a[0]) * t, y = a[1] + (b[1] - a[1]) * t, z = height(x, y);
+      beam(m, [x, y, z - 0.05], [x, y, z + 1.2], 0.06, 0.06, C.fence);
+    }
+    const za = height(a[0], a[1]), zb = height(b[0], b[1]);
+    for (const h of [0.55, 1.12]) beam(m, [a[0], a[1], za + h], [b[0], b[1], zb + h], 0.05, 0.04, C.fence);
+    len += l;
+  }
+  return len;
+}
+
+/** A hedge polygon (BGT haag) extruded to `h`: earcut top and walls along every ring. */
+function hedgeBlock(m: MeshArrays, rings: readonly Vec2[][], height: HeightFn, h: number): void {
+  const { flat, holes } = flatten(rings);
+  if (flat.length < 6) return;
+  let zmin = Infinity;
+  for (let i = 0; i < flat.length; i += 2) zmin = Math.min(zmin, height(flat[i], flat[i + 1]));
+  const top = zmin + h;
+  const tris = earcut(flat, holes);
+  const base = m.positions.length / 3;
+  for (let i = 0; i < flat.length; i += 2) vertex(m, flat[i], flat[i + 1], top, C.hedgeTop);
+  for (let t = 0; t < tris.length; t += 3) {
+    const a = tris[t], b = tris[t + 1], c = tris[t + 2];
+    const ccw = (flat[b * 2] - flat[a * 2]) * (flat[c * 2 + 1] - flat[a * 2 + 1]) - (flat[b * 2 + 1] - flat[a * 2 + 1]) * (flat[c * 2] - flat[a * 2]) > 0;
+    if (ccw) m.indices.push(base + a, base + b, base + c); else m.indices.push(base + a, base + c, base + b);
+  }
+  for (const r of rings) {
+    const pts = r.length > 1 && r[0][0] === r[r.length - 1][0] && r[0][1] === r[r.length - 1][1] ? r.slice(0, -1) : r;
+    for (let i = 0; i < pts.length; i++) {
+      const p = pts[i], q = pts[(i + 1) % pts.length];
+      const zp = height(p[0], p[1]) - 0.05, zq = height(q[0], q[1]) - 0.05;
+      const a = vertex(m, p[0], p[1], zp, C.hedge), b = vertex(m, q[0], q[1], zq, C.hedge), c = vertex(m, q[0], q[1], top, C.hedge), d = vertex(m, p[0], p[1], top, C.hedge);
+      // Winding does not matter for a double-sided read of a hedge; keep both faces cheap by one side (the material is DoubleSide).
+      m.indices.push(a, b, c, a, c, d);
+    }
+  }
+}
+
+/** A park bench (seat, back, two frames) at `p` facing `a` (the sitter looks along `a`). */
+function bench(m: MeshArrays, p: Vec2, a: number, z: number): void {
+  const fx = Math.cos(a), fy = Math.sin(a), along = a + Math.PI / 2;
+  box(m, p[0], p[1], along, 1.8, 0.45, z + 0.4, z + 0.46, C.wood);
+  box(m, p[0] - fx * 0.24, p[1] - fy * 0.24, along, 1.8, 0.05, z + 0.55, z + 0.88, C.wood);
+  for (const s of [-0.75, 0.75]) {
+    const x = p[0] + Math.cos(along) * s, y = p[1] + Math.sin(along) * s;
+    box(m, x, y, a, 0.45, 0.06, z, z + 0.4, C.steel);
+    box(m, x - fx * 0.24, y - fy * 0.24, a, 0.05, 0.06, z + 0.4, z + 0.88, C.steel);
+  }
+}
+
+/** An Amsterdam park light: a dark green 4.5 m mast with a lantern head. */
+function lamp(m: MeshArrays, p: Vec2, z: number): void {
+  beam(m, [p[0], p[1], z], [p[0], p[1], z + 4.3], 0.12, 0.12, C.lamp);
+  box(m, p[0], p[1], 0, 0.36, 0.36, z + 4.3, z + 4.65, C.lampHead);
+  box(m, p[0], p[1], 0, 0.44, 0.44, z + 4.65, z + 4.72, C.lamp);
+}
+
+/** One playground piece at `p` (axis `a`). */
+function playPiece(m: MeshArrays, k: ParkPointKind, p: Vec2, a: number, z: number): void {
+  const ux = Math.cos(a), uy = Math.sin(a), vx = -uy, vy = ux;
+  const at = (s: number, t: number, h: number): [number, number, number] => [p[0] + ux * s + vx * t, p[1] + uy * s + vy * t, z + h];
+  if (k === 'swing') {
+    // A-frame each end, a 3 m beam at 2.3 m, two seats on chains.
+    for (const s of [-1.6, 1.6]) { beam(m, at(s, -0.9, 0), at(s, 0, 2.3), 0.08, 0.08, C.steel); beam(m, at(s, 0.9, 0), at(s, 0, 2.3), 0.08, 0.08, C.steel); }
+    beam(m, at(-1.7, 0, 2.3), at(1.7, 0, 2.3), 0.1, 0.1, C.steel);
+    for (const s of [-0.7, 0.7]) {
+      for (const e of [-0.2, 0.2]) beam(m, at(s + e, 0, 2.28), at(s + e, 0, 0.45), 0.02, 0.02, C.steel);
+      box(m, ...(at(s, 0, 0).slice(0, 2) as Vec2), a, 0.5, 0.18, z + 0.4, z + 0.45, C.red);
+    }
+  } else if (k === 'slide') {
+    // Ladder up to a 1.5 m platform, chute down along the axis.
+    const ph = 1.5;
+    for (const t of [-0.3, 0.3]) beam(m, at(-1.2, t, 0), at(-0.4, t, ph + 0.8), 0.06, 0.06, C.steel);
+    for (const t of [-0.35, 0.35]) for (const s of [-0.4, 0.35]) beam(m, at(s, t, 0), at(s, t, ph), 0.08, 0.08, C.steel);
+    box(m, ...(at(0, 0, 0).slice(0, 2) as Vec2), a, 0.8, 0.8, z + ph - 0.06, z + ph, C.yellow);
+    beam(m, at(0.4, 0, ph - 0.05), at(2.8, 0, 0.25), 0.55, 0.06, C.blue);
+    for (const t of [-0.3, 0.3]) beam(m, at(0.4, t, ph + 0.15), at(2.8, t, 0.4), 0.05, 0.12, C.blue);
+  } else if (k === 'sandpit') {
+    // A wooden kerb ring (the sand itself is a surface polygon).
+    const r = 2.2, n = 10;
+    for (let i = 0; i < n; i++) {
+      const t0 = (i / n) * Math.PI * 2, t1 = ((i + 1) / n) * Math.PI * 2;
+      beam(m, [p[0] + Math.cos(t0) * r, p[1] + Math.sin(t0) * r, z + 0.12], [p[0] + Math.cos(t1) * r, p[1] + Math.sin(t1) * r, z + 0.12], 0.25, 0.3, C.sandRing);
+    }
+  } else if (k === 'seesaw') {
+    box(m, p[0], p[1], a, 0.3, 0.3, z, z + 0.45, C.steel);
+    beam(m, at(-1.6, 0, 0.25), at(1.6, 0, 0.65), 0.22, 0.06, C.red);
+  } else if (k === 'springy') {
+    beam(m, at(0, 0, 0), at(0, 0, 0.5), 0.12, 0.12, C.steel);
+    box(m, p[0], p[1], a, 0.7, 0.3, z + 0.5, z + 0.75, C.yellow);
+  } else if (k === 'playhouse') {
+    box(m, p[0], p[1], a, 1.6, 1.4, z, z + 1.3, C.wood);
+    beam(m, at(0, 0, 1.3), at(0, 0, 1.9), 1.2, 1.0, C.red);
+  } else {
+    // Climbing frame / generic structure: a 2.4 m cube of bars.
+    const h = k === 'climb' ? 2.2 : 1.6, s = 1.2;
+    for (const [i, j] of [[-1, -1], [1, -1], [1, 1], [-1, 1]]) beam(m, at(i * s, j * s, 0), at(i * s, j * s, h), 0.07, 0.07, k === 'climb' ? C.green : C.blue);
+    for (const hh of [h / 2, h]) {
+      beam(m, at(-s, -s, hh), at(s, -s, hh), 0.05, 0.05, C.yellow); beam(m, at(s, -s, hh), at(s, s, hh), 0.05, 0.05, C.yellow);
+      beam(m, at(s, s, hh), at(-s, s, hh), 0.05, 0.05, C.yellow); beam(m, at(-s, s, hh), at(-s, -s, hh), 0.05, 0.05, C.yellow);
+    }
+  }
+}
+
+/**
+ * The park meshes of one cell. `height` is the land surface the other flat
+ * layers drape on (groundCell `onLand`); `lod` 1 (far ring) keeps surfaces
+ * (coarser) and hedges, drops benches, lamps, fences and the playground kit.
+ */
+export function buildParks(cell: ParksCell, height: HeightFn, lod: 0 | 1, isWater: (x: number, y: number) => boolean = () => false): { layers: Partial<Record<ParkLayer | SharedLayer, MeshArrays>>; stats: ParkBuildStats } {
+  const layers: Partial<Record<ParkLayer | SharedLayer, MeshArrays>> = {};
+  const get = (l: ParkLayer | SharedLayer, colours = false) => (layers[l] ??= emptyMesh(colours));
+  const stats: ParkBuildStats = { surfaces: 0, pondsInWater: 0, hedgeM: 0, fenceM: 0, wallM: 0, benches: 0, lamps: 0, play: 0, generated: 0, dropWays: cell.dropWays.length };
+  for (const s of cell.surfaces) {
+    const rings = s.r.map(decodeLine);
+    const { flat, holes } = flatten(rings);
+    if (flat.length < 6) continue;
+    const tris = earcut(flat, holes);
+    if (s.k === 'pond') {
+      // A pond the canal water already draws (elevation-v1 water, the land is cut there) is not drawn twice.
+      const at = interiorPoint(rings);
+      if (at && isWater(at[0], at[1])) { stats.pondsInWater++; continue; }
+    }
+    drapeBisect(get(SURFACE_LAYER[s.k]), flat, tris, height, PARK_LIFT[s.k], lod === 0 ? 8 : 20);
+    stats.surfaces++;
+  }
+  const hedge = get('hedge', true);
+  for (const h of cell.hedges) hedgeBlock(hedge, h.map(decodeLine), height, 1.05);
+  for (const l of cell.lines) {
+    const line = decodeLine(l.g);
+    if (l.k === 'hedge') stats.hedgeM += strip(hedge, line, height, 0.8, 1.1, C.hedge, C.hedgeTop);
+    else if (lod === 0 && l.k === 'fence') stats.fenceM += fence(get('furniture', true), line, height);
+    else if (lod === 0 && l.k === 'wall') stats.wallM += strip(get('furniture', true), line, height, 0.3, 0.75, C.wall, C.wallCap);
+  }
+  if (lod === 0) {
+    const f = get('furniture', true);
+    for (const pt of cell.points) {
+      const p: Vec2 = [pt.p[0] / 10, pt.p[1] / 10], z = height(p[0], p[1]);
+      if (pt.k === 'bench') { bench(f, p, pt.a ?? 0, z); stats.benches++; }
+      else if (pt.k === 'lamp') { lamp(f, p, z); stats.lamps++; }
+      else { playPiece(f, pt.k, p, pt.a ?? 0, z); stats.play++; }
+      if (pt.gen) stats.generated++;
+    }
+  }
+  for (const k of Object.keys(layers) as (ParkLayer | SharedLayer)[]) if (!layers[k]!.indices.length) delete layers[k];
+  return { layers, stats };
+}
