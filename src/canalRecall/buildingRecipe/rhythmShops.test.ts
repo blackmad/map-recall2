@@ -13,7 +13,7 @@ import {validateIntent, type CanalHouseIntent} from './intent.ts';
 import {compileBuilding} from './compile.ts';
 import {mirrorIntent} from './instances.ts';
 import {letteringGeometry} from './signage.ts';
-import {cityDoorTint, hexToRgb, rgbToHsl} from './recipeLook.ts';
+import {cityDoorTint, hexToRgb, rgbToHsl} from '../look/palette.ts';
 import type {BuildingFacts} from './facts.ts';
 
 const H = 'scripts/building-recipes/houses/bilder-087959';

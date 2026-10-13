@@ -7,15 +7,17 @@
  * `cartoon` (flat colour, thick outlines). Browser only.
  */
 import { hashSeed } from './wallBays.js';
+import { LOOK_VARIANTS, OUTLINE_INK, PALETTES, periodForYear, type Period, type TexturedLook } from './look/palette.js';
 
 export const PX_PER_M = 100;
 export const BAY_PX = 520;
 export const STOREY_PX = 310;
 export const GROUND_PX = 340;
 
-export type Look = 'photo' | 'storybook' | 'cartoon';
-/** Construction periods inform palette and details; opening family is independent. */
-export type Archetype = 'canal' | 'c19' | 'school' | 'modern';
+/** The textured Building looks (look/palette.ts). */
+export type Look = TexturedLook;
+/** Construction periods inform palette and details; opening family is independent (the palette's one era scheme). */
+export type Archetype = Period;
 export type BayKind = 'plain' | 'groundDoor' | 'groundShop' | 'shopCafe' | 'shopWindow' | 'shopBar' | 'shopDeli' | 'shopFlorist' | 'shopBike' | 'ground' | 'upper' | 'upperTall' | 'attic';
 export const SHOP_KINDS = ['groundShop', 'shopCafe', 'shopWindow', 'shopBar', 'shopDeli', 'shopFlorist', 'shopBike'] as const;
 export type ShopKind = (typeof SHOP_KINDS)[number];
@@ -62,33 +64,6 @@ export function buildingStyle(seed: string, archetype: Archetype): Omit<BayVaria
   };
 }
 
-export const PALETTES: Record<Look, Record<Archetype, { walls: string[]; accents: string[] }>> = {
-  cartoon: {
-    canal: { walls: ['#d9674a', '#e58a5c', '#eab85f', '#f0dfb8', '#e5a396', '#9dbb9b', '#7ea3c2', '#c9714a', '#f2c14e', '#b9a1c9'],
-      accents: ['#2a8c8c', '#e0a526', '#d9453d', '#2c4a7c', '#7a3b6e', '#2f6b45', '#4aa3d9'] },
-    c19: { walls: ['#d9674a', '#e58a5c', '#eab85f', '#f0dfb8', '#e5a396', '#9dbb9b', '#7ea3c2', '#c9714a', '#f2c14e', '#b9a1c9'],
-      accents: ['#2a8c8c', '#e0a526', '#d9453d', '#2c4a7c', '#7a3b6e', '#2f6b45', '#4aa3d9'] },
-    school: { walls: ['#9c5a42', '#8a4b3a', '#a8664c', '#7a4a40'], accents: ['#2c4a7c', '#2a8c8c', '#e0a526'] },
-    modern: { walls: ['#f4efe6', '#dcdcd6', '#e9d9c0', '#b9c4cc', '#f0c9a9'], accents: ['#2a8c8c', '#d9453d', '#2c4a7c', '#e0a526'] },
-  },
-  storybook: {
-    canal: { walls: ['#d9674a', '#e58a5c', '#eab85f', '#f0dfb8', '#e5a396', '#9dbb9b', '#7ea3c2', '#c9714a', '#f2c14e', '#b9a1c9'],
-      accents: ['#2a8c8c', '#e0a526', '#d9453d', '#2c4a7c', '#7a3b6e', '#2f6b45', '#4aa3d9'] },
-    c19: { walls: ['#d9674a', '#e58a5c', '#eab85f', '#f0dfb8', '#e5a396', '#9dbb9b', '#7ea3c2', '#c9714a', '#f2c14e', '#b9a1c9'],
-      accents: ['#2a8c8c', '#e0a526', '#d9453d', '#2c4a7c', '#7a3b6e', '#2f6b45', '#4aa3d9'] },
-    school: { walls: ['#9c5a42', '#8a4b3a', '#a8664c', '#7a4a40'], accents: ['#2c4a7c', '#2a8c8c', '#e0a526'] },
-    modern: { walls: ['#f4efe6', '#dcdcd6', '#e9d9c0', '#b9c4cc', '#f0c9a9'], accents: ['#2a8c8c', '#d9453d', '#2c4a7c', '#e0a526'] },
-  },
-  photo: {
-    canal: { walls: ['#ffffff', '#f2d9c8', '#d9b9a4', '#e6c9b0', '#c9a38c', '#f0e4d2', '#ffd9b0', '#e8c0b0', '#d0c8c0'],
-      accents: ['#243a2f', '#1f2a3a', '#3a1f1c', '#222222', '#2f4a3c', '#6b2b2b', '#2c3e50'] },
-    c19: { walls: ['#ffffff', '#f2d9c8', '#d9b9a4', '#e6c9b0', '#c9a38c', '#f0e4d2', '#ffd9b0', '#e8c0b0', '#d0c8c0'],
-      accents: ['#243a2f', '#1f2a3a', '#3a1f1c', '#222222', '#2f4a3c', '#6b2b2b', '#2c3e50'] },
-    school: { walls: ['#b89080', '#a88070', '#9c7868'], accents: ['#1f2a3a', '#243a2f', '#3a1f1c'] },
-    modern: { walls: ['#f2f2ee', '#d8d8d2', '#e8dcc8', '#c8d0d4'], accents: ['#2c3e50', '#6b2b2b', '#243a2f'] },
-  },
-};
-
 /** Wall and accent colour for a building. */
 export function paletteFor(seed: string, archetype: Archetype, look: Look): { wall: string; accent: string } {
   const h = hashSeed(seed), p = PALETTES[look][archetype];
@@ -98,19 +73,19 @@ export function paletteFor(seed: string, archetype: Archetype, look: Look): { wa
 /** Known construction period, otherwise a conservative low-rise masonry/tall punched fallback. */
 export function archetypeFor(_seed: string, year: number | null, heightM: number): Archetype {
   // The same periods as `facadeStyleFor`: 1860-1914 and post-war blocks no longer draw as canal houses.
-  if (year !== null && year > 1500 && year < 2100) return year < 1860 ? 'canal' : year < 1915 ? 'c19' : year < 1945 ? 'school' : 'modern';
+  if (year !== null && year > 1500 && year < 2100) return periodForYear(year);
   if (heightM >= 28) return 'modern';
   return 'c19';
 }
 
 type Pass = 'colour' | 'mask';
-const OUTLINE = '#3b2a2a';
+const OUTLINE = OUTLINE_INK;
 const cache = new Map<string, { colour: HTMLCanvasElement; mask: HTMLCanvasElement }>();
 
 class Painter {
   constructor(readonly ctx: CanvasRenderingContext2D, readonly pass: Pass, readonly look: Look) {}
   /** Both illustrated looks draw outlined, flat-filled shapes; `toon` is the bolder of the two. */
-  get cartoon() { return this.look !== 'photo'; }
+  get cartoon() { return LOOK_VARIANTS[this.look].outline; }
   get toon() { return this.look === 'cartoon'; }
   get lineW() { return this.toon ? 9 : 3.5; }
   get glass(): [string, string] { return this.toon ? ['#a9e0f7', '#5aa8d8'] : ['#a3bccb', '#6a8799']; }

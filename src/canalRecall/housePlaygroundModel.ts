@@ -9,8 +9,8 @@
 // user asks for a roof kind the model tries ids until the real planner produces it (up to
 // MAX_TRIES per house) rather than overriding the plan; if none does, it says so.
 
-import { CONTEXTUAL_BUILDING_COLOURS } from './cityAppearancePalette.js';
-import { FACADE_STYLES, FACADE_STYLE_COLOURS, facadeKey, facadeStyleFor, mutedWallHex, type FacadeStyle } from './genericFacades.js';
+import { CONTEXTUAL_BUILDING_COLOURS, FACADE_STYLE_COLOURS } from './look/palette.js';
+import { FACADE_STYLES, facadeKey, facadeStyleFor, mutedWallHex, type FacadeStyle } from './genericFacades.js';
 import { STYLE_DIMS } from './facadeCells.js';
 import { GABLE_SHAPES, ROOF_KINDS, roofPlanForFeature, type GableShape, type RoofKind, type RoofPlan } from './roofMesh.js';
 import { SHOP_KINDS, type ShopKind } from './bayTextures.js';
@@ -18,7 +18,8 @@ import { SUPERMARKET_CHAINS, setShopfronts, businessColour, type ShopfrontExtrac
 import { buildFeatureChunk, ORIGIN, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
 import { KITS, KIT_HIDE_IDS, kitGeometry, type KitPartGeometry, type PartInput } from './landmarkKits.js';
 import { FRONT_LIST } from './landmarkFrontData.js';
-import { frontKitGeometry, lookHex } from './landmarkFronts.js';
+import { frontKitGeometry } from './landmarkFronts.js';
+import { lookHex } from './look/palette.js';
 import { kitLayersFor } from './galleryLayers.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
 import { fromLocal, gameDecorator, outerRing, ringsFrame, type Vec2 } from './galleryPipeline.js';

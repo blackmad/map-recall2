@@ -16,6 +16,8 @@
  * into evidence.
  */
 
+import { PERIOD_PRIORS, UNKNOWN_ROOF_HEX, UNKNOWN_WALL_HEX, materialWallDisplayPrior, periodForYear, type Period } from './look/palette.js';
+
 /** Where a colour came from, best evidence first. */
 export type AppearanceSource =
   /** An explicit OSM `building:colour` — someone looked at the building. */
@@ -35,8 +37,8 @@ export function isMeasured(source: AppearanceSource): boolean {
 }
 
 export interface Era {
-  /** First construction year this era covers. */
-  from: number;
+  /** The renderer's period (look/palette.ts, the one era scheme: 1860 / 1915 / 1945). */
+  period: Period;
   /** Short label, used in review sheets and the coverage report. */
   label: string;
   /** Representative wall colour. */
@@ -46,49 +48,25 @@ export interface Era {
 }
 
 /**
- * Amsterdam's building periods, as the street actually reads them.
+ * The era a construction year falls in, or undefined when the year is unusable.
  *
- * These are priors over a housing stock, not claims about any one building.
- * The boundaries are the ones that changed what buildings were made of:
- *
- *  - Before 1800 the centre is hand-made red-brown brick under red clay
- *    pantile, weathered dark.
- *  - The 19th-century ring (1800-1900) is machine brick, lighter and more
- *    uniform, still under clay tile.
- *  - 1900-1940 is the Amsterdamse School: deep orange-red brick, expressive
- *    and dark-roofed, the Pijp and Oud-West.
- *  - 1945-1975 reconstruction is pale brick, concrete panel and flat grey
- *    bitumen — the Westelijke Tuinsteden and Buitenveldert.
- *  - 1975-2000 returns to a browner brick at smaller scale.
- *  - After 2000 is mixed glass, panel and pale brick: IJburg, Zuidas,
- *    Houthavens.
+ * Eras are the renderer's periods (`PERIOD_FROM` in look/palette.ts), not a
+ * second scheme: canal houses before 1860, the 19th-century ring 1860-1914,
+ * the Amsterdamse School 1915-1944, post-war and contemporary from 1945. The
+ * colours are the palette's own representatives (`PERIOD_PRIORS`), so a
+ * coverage report and the city name the same colour for the same period.
+ * Priors over a housing stock, never claims about one building. (The
+ * six-era 1800/1900/1945/1975/2000 scheme that used to live here had no
+ * runtime consumer and was deleted in the 2026-10-13 palette merge.)
  */
-export const AMSTERDAM_ERAS: readonly Era[] = [
-  { from: 0,    label: 'pre-1800 centre',        wall: '#8C6A57', roof: '#7C4A3A' },
-  { from: 1800, label: '19th-century ring',      wall: '#A8836B', roof: '#7E5344' },
-  { from: 1900, label: 'Amsterdamse School',     wall: '#9C5B45', roof: '#5E4238' },
-  { from: 1945, label: 'post-war reconstruction',wall: '#C3B7A6', roof: '#6E6A64' },
-  { from: 1975, label: 'late-century brick',     wall: '#A98A73', roof: '#6A625A' },
-  { from: 2000, label: 'contemporary',           wall: '#B9B4AE', roof: '#77736E' },
-] as const;
-
-/** The era a construction year falls in, or undefined when the year is unusable. */
 export function eraForYear(year: number | undefined | null): Era | undefined {
   // BAG uses 1005 and similar placeholders for "older than the register", and
   // a year in the future is a data error, not a building.
   if (typeof year !== 'number' || !Number.isFinite(year)) return undefined;
   if (year < 1100 || year > new Date().getUTCFullYear() + 5) return undefined;
-  let match: Era | undefined;
-  for (const era of AMSTERDAM_ERAS) if (year >= era.from) match = era;
-  return match;
+  const period = periodForYear(year);
+  return { period, ...PERIOD_PRIORS[period] };
 }
-
-/** Colours for OSM `building:material`, which describes a real surface. */
-const MATERIAL_COLOURS: Record<string, string> = {
-  brick: '#A5674F', red_brick: '#9C5B45', concrete: '#C6BEB2', cement_block: '#B3B0A9',
-  glass: '#7E93A5', wood: '#9A7048', stone: '#B0A692', metal: '#A9A9A4',
-  plaster: '#D6D0C4', stucco: '#D6D0C4', masonry: '#A5674F', sandstone: '#C4AE8C',
-};
 
 export interface AppearanceInput {
   /** OSM `building:colour`, already validated as a CSS colour. */
@@ -120,7 +98,8 @@ export interface ResolvedAppearance {
  */
 export function resolveAppearance(input: AppearanceInput): ResolvedAppearance {
   const era = eraForYear(input.constructionYear);
-  const material = input.osmMaterial ? MATERIAL_COLOURS[input.osmMaterial.toLocaleLowerCase()] : undefined;
+  // The runtime's material table (look/palette.ts): a material suggests a hue, never a measured colour.
+  const material = materialWallDisplayPrior(input.osmMaterial) ?? undefined;
 
   const wall = input.osmColour
     ? { colour: input.osmColour, source: 'osm-tag' as const }
@@ -128,13 +107,13 @@ export function resolveAppearance(input: AppearanceInput): ResolvedAppearance {
       ? { colour: material, source: 'material-tag' as const }
       : era
         ? { colour: era.wall, source: 'era-prior' as const }
-        : { colour: '#B4ADA3', source: 'none' as const };
+        : { colour: UNKNOWN_WALL_HEX, source: 'none' as const };
 
   const roof = input.measuredRoofColour
     ? { colour: input.measuredRoofColour, source: 'measured-aerial' as const }
     : era
       ? { colour: era.roof, source: 'era-prior' as const }
-      : { colour: '#7A756E', source: 'none' as const };
+      : { colour: UNKNOWN_ROOF_HEX, source: 'none' as const };
 
   return {
     wallColour: wall.colour, wallSource: wall.source,

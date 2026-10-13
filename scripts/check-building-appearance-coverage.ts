@@ -6,26 +6,30 @@
  */
 import assert from 'node:assert/strict';
 import {
-  AMSTERDAM_ERAS, eraForYear, isMeasured, measuredHeight, resolveAppearance,
+  eraForYear, isMeasured, measuredHeight, resolveAppearance,
 } from '../src/canalRecall/buildingAppearance.ts';
+import { PERIOD_PRIORS, PERIODS } from '../src/canalRecall/look/palette.ts';
 
 let checks = 0;
 const check = (label: string, run: () => void) => { run(); checks++; void label; };
 
 // --- Eras ------------------------------------------------------------------
+// The eras are the renderer's periods (look/palette.ts, 1860 / 1915 / 1945): one scheme.
 check('a year lands in the era that was building then', () => {
-  assert.equal(eraForYear(1650)?.label, 'pre-1800 centre');
-  assert.equal(eraForYear(1875)?.label, '19th-century ring');
-  assert.equal(eraForYear(1921)?.label, 'Amsterdamse School');
-  assert.equal(eraForYear(1960)?.label, 'post-war reconstruction');
-  assert.equal(eraForYear(1988)?.label, 'late-century brick');
-  assert.equal(eraForYear(2019)?.label, 'contemporary');
+  assert.equal(eraForYear(1650)?.period, 'canal');
+  assert.equal(eraForYear(1875)?.period, 'c19');
+  assert.equal(eraForYear(1921)?.period, 'school');
+  assert.equal(eraForYear(1960)?.period, 'modern');
+  assert.equal(eraForYear(2019)?.period, 'modern');
 });
 
 check('an era boundary belongs to the era it opens', () => {
-  assert.equal(eraForYear(1900)?.label, 'Amsterdamse School');
-  assert.equal(eraForYear(1899)?.label, '19th-century ring');
-  assert.equal(eraForYear(2000)?.label, 'contemporary');
+  assert.equal(eraForYear(1859)?.period, 'canal');
+  assert.equal(eraForYear(1860)?.period, 'c19');
+  assert.equal(eraForYear(1914)?.period, 'c19');
+  assert.equal(eraForYear(1915)?.period, 'school');
+  assert.equal(eraForYear(1944)?.period, 'school');
+  assert.equal(eraForYear(1945)?.period, 'modern');
 });
 
 check('a year the register cannot mean is refused', () => {
@@ -40,9 +44,10 @@ check('a year the register cannot mean is refused', () => {
 });
 
 check('every era has a distinct colour pair', () => {
-  const walls = new Set(AMSTERDAM_ERAS.map((era) => era.wall));
-  assert.equal(walls.size, AMSTERDAM_ERAS.length, 'two eras painting the same colour teach nothing');
-  for (const era of AMSTERDAM_ERAS) {
+  const eras = PERIODS.map((period) => PERIOD_PRIORS[period]);
+  const walls = new Set(eras.map((era) => era.wall));
+  assert.equal(walls.size, eras.length, 'two eras painting the same colour teach nothing');
+  for (const era of eras) {
     assert.match(era.wall, /^#[0-9A-Fa-f]{6}$/, `${era.label} wall`);
     assert.match(era.roof, /^#[0-9A-Fa-f]{6}$/, `${era.label} roof`);
   }
@@ -61,14 +66,14 @@ check('an OSM colour tag beats everything', () => {
 check('a material tag beats the era prior', () => {
   const resolved = resolveAppearance({ osmMaterial: 'glass', constructionYear: 1650 });
   assert.equal(resolved.wallSource, 'material-tag');
-  assert.notEqual(resolved.wallColour, AMSTERDAM_ERAS[0].wall);
+  assert.notEqual(resolved.wallColour, PERIOD_PRIORS.canal.wall);
   assert.equal(isMeasured(resolved.wallSource), false, 'a material is a tag about a surface, not a colour reading');
 });
 
 check('an unknown material falls through to the era rather than to grey', () => {
   const resolved = resolveAppearance({ osmMaterial: 'unobtainium', constructionYear: 1921 });
   assert.equal(resolved.wallSource, 'era-prior');
-  assert.equal(resolved.wallColour, AMSTERDAM_ERAS[2].wall);
+  assert.equal(resolved.wallColour, PERIOD_PRIORS.school.wall);
 });
 
 check('a measured roof wins, and does not colour the wall with it', () => {
@@ -78,7 +83,7 @@ check('a measured roof wins, and does not colour the wall with it', () => {
   const resolved = resolveAppearance({ measuredRoofColour: '#334455', constructionYear: 1650 });
   assert.equal(resolved.roofColour, '#334455');
   assert.equal(resolved.roofSource, 'measured-aerial');
-  assert.equal(resolved.wallColour, AMSTERDAM_ERAS[0].wall);
+  assert.equal(resolved.wallColour, PERIOD_PRIORS.canal.wall);
   assert.equal(resolved.wallSource, 'era-prior');
 });
 
@@ -104,7 +109,7 @@ check('an era prior is never reported as a measurement', () => {
   assert.equal(isMeasured('material-tag'), false);
   assert.equal(isMeasured('none'), false);
   assert.ok(isMeasured('osm-tag') && isMeasured('measured-aerial'));
-  assert.equal(resolved.era, 'Amsterdamse School');
+  assert.equal(resolved.era, PERIOD_PRIORS.school.label);
 });
 
 // --- Height ----------------------------------------------------------------
