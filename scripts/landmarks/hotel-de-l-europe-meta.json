@@ -7,7 +7,7 @@
   ],
   "pandId": "0363100012168170",
   "materialOverrides": {
-    "brick": "#a5503c",
+    "brick": "#94594a",
     "stone": "#e4dccb",
     "slate": "#4a4f5a",
     "glass": "#6b7f8c",
@@ -16,7 +16,8 @@
     "dark": "#2a2c2f",
     "copper": "#6aa593",
     "greyBrick": "#8a8478",
-    "sandstone": "#d6cdb8"
+    "sandstone": "#d6cdb8",
+    "red": "#74463c"
   },
   "surveySource": "Current BAG 0363100012168170 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor.",
   "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; stone courses, ground-storey arched windows, balcony, window rows and corner turret cap approximated from 2025 municipal panoramas; the real stone pilasters, dormers and gable are not modelled; no pixels or meshes imported."

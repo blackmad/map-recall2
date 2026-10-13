@@ -30436,7 +30436,7 @@
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "materialOverrides": {
-        "brick": "#a5503c",
+        "brick": "#94594a",
         "stone": "#e4dccb",
         "slate": "#4a4f5a",
         "glass": "#6b7f8c",
@@ -30445,7 +30445,8 @@
         "dark": "#2a2c2f",
         "copper": "#6aa593",
         "greyBrick": "#8a8478",
-        "sandstone": "#d6cdb8"
+        "sandstone": "#d6cdb8",
+        "red": "#74463c"
       },
       "attribution": {
         "title": "Hotel de l'Europe",
@@ -30973,14 +30974,14 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -9.087714195251465,
-          -4.7683716530855236e-8,
-          -27.5003604888916
+          -8.92298412322998,
+          -0.010000037960708141,
+          -27.464399337768555
         ],
         "max": [
           43.582000732421875,
           29.8799991607666,
-          19.927433013916016
+          19.5318660736084
         ]
       },
       "placement": {
@@ -30994,13 +30995,13 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 52.66971492767334,
-        "heightMetres": 29.879999208450318,
-        "depthMetres": 47.42779350280762,
-        "depthCoverage": 1.0091019894214386
+        "widthMetres": 52.504984855651855,
+        "heightMetres": 29.88999919872731,
+        "depthMetres": 46.99626541137695,
+        "depthCoverage": 0.9999205406675947
       },
-      "triangles": 25350,
-      "bytes": 372736,
+      "triangles": 52106,
+      "bytes": 724856,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
         "sourceHash": "6b8c2170785da848",
