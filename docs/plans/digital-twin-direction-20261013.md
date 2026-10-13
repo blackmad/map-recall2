@@ -17,7 +17,7 @@ plus one architecture review, all checked against code, TODO.md and HISTORY.md.
 
 1. The SF demos are not better data, they are a lit game frame over stolen
    photogrammetry. We already have the frame (behind flags) and better data.
-2. Per-building GLBs are the wrong unit for everything but ~100 icons. The
+2. Per-building GLBs are the wrong unit for the ~10k houses and ~1.8k large buildings; bespoke landmark builders (300+ today, no cap) stay first-class. The
    scalable unit is a recipe per BAG pand, compiled into per-tile meshes and
    instance tables. The one tier that already works this way (Nieuw-West
    building types) is off by default.
@@ -76,8 +76,8 @@ plus one architecture review, all checked against code, TODO.md and HISTORY.md.
 ### Verdict on "a GLB per building"
 **No.** A GLB is opaque: it cannot re-render when the component library or
 lighting improves, cannot instance across twins, cannot change LOD without a
-second file, and needs a human per model. Keep GLB for ~100 bespoke icons,
-referenced by key from the same tile system.
+second file, and needs a human per model. Bespoke landmark GLBs (300+ today, no cap; user 2026-10-13) stay
+first-class, referenced by key from the same tile system.
 
 ### Target architecture (R4)
 Three tiers, one key (BAG pand id), one look, one runtime participant:
@@ -136,10 +136,10 @@ BAG/3DBAG facts (BAG-keyed base tiles) ─────────────�
 
 | # | Step | Flag | Effort |
 |---|---|---|---|
-| 0 | **Freeze**: no new per-house GLBs into `catalogue.json`; no new one-off ordinary builders; new landmark builders only from the ~100-icon list and must export `materialSlot`; faces and types continue (they are recipe data). | — | now |
+| 0 | **Freeze**: no new per-house GLBs into `catalogue.json`; no new one-off ordinary builders; new landmark builders unrestricted but must export `materialSlot`; faces and types continue (they are recipe data). | — | now |
 | 1 | BAG-keyed base tiles + facts sidecar (`build-bag-buildings.ts`, `bag3dTiles.ts` exist); `suppressOsmIds` → `covers`; `check:osm-under-models` becomes a join check. | `?bagTiles=1` | 1.5–2 wk |
 | 2 | `cityLook.ts` slot table + array texture + shaders; port `recipeLook`, types shader, `litFacadeMaterial`; legacy slot inference + gate; `tests/e2e/building-look.spec.ts`. | `?cityLook=1` | 1.5 wk |
-| 3 | Recipe tile compiler + `TileBuildings` near tier with content-hash instancing. Pilots: Bilderdijkstraat faces, Nieuw-West (instances.json is already a tile), 10 landmarks as `kind: glb`. Measure on iPhone 4× before step 5. | `?recipeTiles=1` | 3–4 wk |
+| 3 | Recipe tile compiler + `TileBuildings` near tier with content-hash instancing. Pilots: Bilderdijkstraat faces, Nieuw-West (instances.json is already a tile), 10 landmarks as `kind: glb`. Measure on desktop (iPhone 4× as secondary) before step 5. | `?recipeTiles=1` | 3–4 wk |
 | 4 | Mid tier reads descriptors; near hides mid ranges; delete suppression lists; fold `largeBuildingTier.ts` overrides into `kind: large` (`fitLarge()` is specified in `docs/buildings-pipeline.md`). | same | 1–2 wk |
 | 5 | Batch-convert 302 landmarks + 38 ordinary to `kind: glb` with baked placement, lod1 as mid unit; flip default; delete the drawing half of `signature-landmarks-source.js`. | flip | 2–3 wk |
 | 6 | House-type library seeding + detector (`blockFace/houseType.ts` exists; Sol doc §4.2) toward the 67% canal-belt family coverage. | — | 2 wk seed, then content |
@@ -290,13 +290,13 @@ the same wall colour renders differently in every layer.
 
 **New landmark models.** The queue keeps running, but the authoring product
 changes:
-- **Icon list (~100)**: bespoke builders as today (`scripts/landmarks/*-builder.ts`,
-  kits), the only tier that still exports a GLB. New rule from now: builders
-  must tag every material with `materialSlot` + `tint` (0 of 190 builders do
-  today; `signature-landmarks-source.js:514-522` already honours it), and
-  pass `audit:glb` hard gates before install. Agree the list first
-  (`landmark-queue.html` prominence order; Palace, Rijksmuseum, Centraal,
-  the churches, museums with signature silhouettes).
+- **Bespoke builders continue, no cap** (user 2026-10-13: keep doing what we
+  do with the 300+): `scripts/landmarks/*-builder.ts` and kits remain the
+  tier that exports a GLB, for any landmark whose signature the component
+  library cannot express, or simply because someone wants to build it. New
+  rules only: tag every material with `materialSlot` + `tint` (0 of 190
+  builders do today; `signature-landmarks-source.js:514-522` already honours
+  it) and pass the `audit:glb` hard gates before install.
 - **Everything else in the 420-item backlog (107 pending, ~80 review) and the
   1,828-candidate mid-sized `dominant-building-backlog`**: authored as
   `kind: large` recipes, or `kind: kit` for churches/halls (`landmarkKits.ts`).
@@ -472,8 +472,9 @@ check output. Suggested split by model strength:
 | New icons, kits, building types, block faces, `large` recipes incl. police stations (§7) | Sonnet (Opus for new kit components) | ongoing content lanes |
 | Docs compaction + code retire list (R5) | Sonnet | mechanical, guided by this plan |
 
-Two decision points stay with the user: the icon list, and the real-iPhone
-GPU result before flipping shared frame / own ground / tiles by default. The
+Decision points: none blocking. Default flips (shared frame, own ground,
+tiles) are gated on desktop measurements first (user 2026-10-13: desktop is
+~10x as important; iPhone numbers come later and are recorded as pending). The
 integrator also needs a human look at gallery-size strips before un-holding
 (memory rule).
 

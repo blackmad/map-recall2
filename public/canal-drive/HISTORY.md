@@ -1,5 +1,35 @@
 # Canal Recall — what is built
 
+## Route questions no longer freeze the rider; spaced repetition budgets them (2026-10-13)
+
+Assessment finding: every route question zeroed the bike's speed and `game.js`
+returned early each frame until it was answered, after 0.65 s on every new
+unlearned name, a stop every block in the centre; SRS never chose questions.
+Lane `gameplay/riding-prompts-20261013` (Sonnet, from
+`docs/handoffs/lane-gameplay-pacing-20261013.md`): `questionBudget.ts`
+(default 2 asks/min, 15 s minimum gap, last slot reserved for due reviews and
+teaching streets; everything else revealed only after the rider has left the
+street), a riding prompt (`ridingPrompt.ts`, bottom band, keys 1–4/tap,
+12 s timeout or 1.2 s off the street → new `passed` grade: no attempt, no
+points, streak kept, name revealed), one `teachingPacer.ts` holding the
+drive-by, postcard, bridge and transit cooldowns plus a 6 s plaque-feedback
+timeout (values unchanged), drive-by and street cards fold to a title line
+after 8 s, six Storybook states, `ridingPromptBand.ts` in the bottom-HUD
+check, `tests/e2e/riding-pacing.spec.ts`. Integrator flipped the hook:
+`game.js:462` `if (this.quizPromptName)` → `if (this._quizFreezesRide())`
+(typed mode, bridge/crossing and transit questions keep the freeze;
+`game.ridingPrompts = false` restores the old behaviour). Measured on the
+seeded Anne Frank → Rijksmuseum ride (autopilot 80 px/s, 3 s answers):
+10 prompts / 125.7 s / 4.8 per min / 30.3 s frozen before; 3 prompts / 93.2 s
+/ 1.9 per min / 0 s frozen after, max 2 in any minute. Checks: lint, 27 game
+unit tests, notice cards, answer path (`passed` case), bottom HUD (544
+scenarios), Storybook build, canal-car, reachability, riding-pacing / quiz /
+turn-question-timing e2e. Also 2026-10-13 (user): no cap on bespoke landmark
+builders (the "~100 icons" tiering is dropped); desktop performance outranks
+iPhone ~10x, iPhone measurements come later; the integrator merges on its own
+judgement.
+
+
 ## Housekeeping sweep: worktrees, caches, source archive (2026-10-13)
 
 User: "clean up git worktrees", "symlink node_modules/python env between

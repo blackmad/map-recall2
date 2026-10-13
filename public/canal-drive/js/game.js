@@ -459,7 +459,7 @@ class Game {
     if (this.routeOptions.arrow) this._assistUsage.arrow = true;
     if (this.showMiniMap) this._assistUsage.minimap = true;
 
-    if (this.quizPromptName) {
+    if (this._quizFreezesRide()) {
       // The bike waits for the answer, so the question must be on screen. If
       // anything hid its card, show it again rather than freeze the bike
       // behind an invisible question (user reports 2026-10-01).

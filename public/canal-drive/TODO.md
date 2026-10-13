@@ -20,18 +20,24 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 `docs/plans/digital-twin-direction-20261013.md` is the assessment and plan the
 user approved on 2026-10-13. Short form: open NL/Amsterdam data only; buildings
 move from one GLB per building to **recipe tiles** (per-pand recipe data
-compiled into per-z16-tile meshes + instance tables, GLB only for ~100 icons);
+compiled into per-z16-tile meshes + instance tables; bespoke landmark GLB
+builders stay, 300+ today, no cap);
 own-ground becomes the default after per-polder water levels, BGT width per
-way, AHN profiles for the 891 unmeasured bridges and a real-iPhone GPU
-measurement; the gameplay loop stops freezing the rider and lets spaced
-repetition budget the questions; one light rig, one palette, one material
+way, AHN profiles for the 891 unmeasured bridges and a desktop measurement
+(user 2026-10-13: desktop is ~10x as important; iPhone numbers later); the gameplay loop no longer freezes the rider and spaced
+repetition budgets the questions (landed 2026-10-13, see HISTORY); one light rig, one palette, one material
 atlas and a written `docs/LOOK.md`. Content lanes continue: icon builders,
 kits, building types, block faces, `kind: large` recipes (police stations
 added to the to-build list), the GLB cleanup pass (attached windows, material
 coverage, no holes) and the sculpture splat track. Freeze: no new per-house
 GLBs into `catalogue.json` and no new one-off ordinary builders; new builders
 tag every material with `materialSlot` + `tint`. Order: housekeeping (done
-2026-10-13) → gameplay loop → shared frame + palette → ground → recipe tiles.
+2026-10-13) → gameplay loop (done 2026-10-13) → shared frame + palette →
+ground → recipe tiles. Integrator merges on its own judgement (user).
+Open after the gameplay merge: `RecallStore.expose()` so a passed name is
+scheduled instead of re-asked; a settings control for `maxAsksPerMinute`
+(field on the game today); fold `ridingPromptStyles.ts` into `index.html`;
+a prompt opened just before a ferry does not time out until the ferry ends.
 
 ## Takeover board (2026-10-09) — active
 
