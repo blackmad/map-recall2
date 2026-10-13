@@ -1,5 +1,96 @@
 # Canal Recall — what is built
 
+## Map Recall quiz: gameplay and aesthetics pass, wave 1 (2026-10-13)
+
+A play-through review of the quiz surface (desktop and iPhone emulation,
+main @ 94e7780f; the write-up with screenshots is the "Map Recall Quiz
+Review" artifact) found the reveal, the facts and the postcards each falling
+short of the data behind them. Seven lanes in separate worktrees shipped the
+shortlist plus two longlist data items; the rest is the wave-2 block in TODO.
+
+- **Area reveal shows the area.** `MapComponent` fills a neighbourhood's
+  `areaGeometry` (copper at 0.14 over a dark casing, holes kept) and places
+  the plaque at the pole of inaccessibility (`src/mapRecall/polygonLabel.ts`,
+  grid cells plus priority queue, tested on a square, a U, a ring and the real
+  Grachtengordel), not the bbox centre, which for the horseshoe was the Dam.
+  Fits now pad for whichever card is open (`#guess-bottom-card` as well as
+  `[data-result-card]`), give features under 1.2 km a 1.2 km frame so a short
+  street has water and parks in view, and on wide maps try the open map beside
+  the centred card for a closer zoom. A new Pinpoint question fits the search
+  boundary, never the feature. Found on the way: Leaflet drops a zoom requested
+  during a zoom animation, which is why the re-fit when the card grew was often
+  lost and an iPhone reveal sometimes stayed at the city view; fits now wait for
+  the running animation. The game-over map gives each round its own hue
+  (`roundPalette.ts`, 8 hues at ≥3:1 on CARTO paper), a numbered plaque at the
+  pole/midpoint, dashed lines for misses, and folds overlapping names to
+  their number.
+- **Hints cost, labels teach.** `hintCost.ts`: the round ceiling is 5,000 /
+  4,000 / 3,000 / 2,000 for 0–3 revealed hints; the Hint button says what the
+  round is still worth; `rateRound` clamps a hinted round to "good" and two
+  hints to "hard", so a hinted bullseye no longer schedules as "easy". Tier
+  labels are distance-anchored ("Within 60 m", "Within a block", "A few
+  streets off", "Right neighbourhood", "Nearby", "Wrong part of town"); the
+  old arcade copy truncated on phones. The reveal names the answer once (the
+  subtitle: "Spuistraat · off by 109 m"); Guess Name shows "In <neighbourhood>"
+  for non-area features.
+- **Answer card uses the fact store.** The fold is the first sentence of the
+  name origin, two lines (`answerText.ts` sentence split keeps St./ca./lit.,
+  initials and patronymics). Expanded: Name → story/local line → "Where it is"
+  (district · quarter · landmark relation from the locate hints, which were the
+  most useful facts and only showed on request) → every reviewed fact with its
+  kind chip → the lede (no longer suppressed by facts) → History → Around here
+  → credits last. Register prose without a subject gets one ("Jan Veth:
+  Painter and draughtsman…", 826 of 5,333 entries; connective openings such as
+  "After…" are left alone). Around here ranks landmarks, schools, churches,
+  parks and culture first and allows one shop/food/bike place. Water extracts
+  carried `wikipediaExtractSource: "translated"` as a string, which emptied the
+  lede's source link; ignored unless an object.
+- **Postcards at a size that reads.** On phones the fold shows a 44 px
+  "Greetings from X" strip (Pacifico and Anton over the first photo at 25%)
+  that opens the full card; on desktop the fold shows the card up to 520 px
+  when the card is ≥480 px wide and the window ≥800 px tall, otherwise the
+  strip (the review's 1352×761 viewport gets the strip: the result header plus
+  MapComponent's 60% padding cap leave no room). The caption is "ZUID ·
+  AMSTERDAM" when the stadsdeel is known and fits. Compositor round 5
+  (`LARGE_LETTER_CRAFT.md`): one photograph spans a run of 2–4 letters (3–5
+  photographs a card, `windowsPerPhoto: 'run'`; `'letter'` keeps the old
+  card), a measured per-photo tone skips the posterise step for brick-heavy,
+  busy or already-saturated photographs (13 of 32 sample Commons photos go
+  soft), and two-line names keep ≥0.62 of a one-line face. `PostcardExport`
+  renders a 1280×800 PNG (Commons sends CORS headers, so photos draw clean).
+- **The learning loop is visible, and postcards are collected.**
+  `progress.ts` (due/known counts, session groups, earned areas) feeds a start
+  rail line ("Due today 3 · Known 12"), a `PostcardRack` of earned neighbourhood
+  postcards (an area is earned when any mode's state has repetitions ≥1; a
+  lapse in every mode loses it; rail strip on phones, a panel over the vista on
+  desktop; cards fill in from the extract lazily) with a full-size popover, and
+  an end screen titled "Session complete" that leads with the session's best new
+  postcard and groups answers Known / Still shaky / New with the next review
+  day. The floating "Review guesses on map" pill moved into the button row.
+- **Neighbourhood text is cleaned at build.** `scripts/clean-neighborhood-text.ts`
+  (`npm run check:neighborhood-text`) drops resident-count and area/density
+  sentences from ledes and histories (never the first sentence), fixes the
+  stripped-IPA "(, lit." artefact, and turns "Schinkel (waterway here): …"
+  prefixes into `borrowedFrom = "Schinkel (waterway)"` on 91 histories and 57
+  descriptions across the four cities; the card heads those "History of the
+  Schinkel, which runs through here" / "About the Orgelpark, which is here".
+  The crime and planning rules of the local-fact policy are deliberately not
+  applied to prose: they deleted Weesperbuurt's "Many of its residents were
+  deported and murdered."
+- **Every Amsterdam area has a story.** `scripts/build-neighborhood-stories.ts`
+  replaces the ad-hoc import script; `scripts/data/neighborhood-stories-picks.json`
+  holds 61 areas of reviewed picks, each resolved to a verbatim quote in a
+  sourced record (neighborhood-history fields, approved area-fact cites, or a
+  facts.json `sourceQuote` for a landmark inside the polygon) and refused when
+  the quote, a number or the landmark's position fails. Coverage 17 → 78 areas,
+  34 → 154 top and 24 → 222 rotating facts; Dutch originals are quoted so edits
+  to the English do not break the gate.
+- **Checks.** `npm run check:map-recall` (lint, Map Recall unit tests, trivia,
+  postcard, neighbourhood text and story checks). Playwright
+  `map-recall-trivia`, `map-recall-phone-chrome` and `card-gallery`: 28 passed,
+  2 skipped on the merged branch; `build-storybook` clean. The postcard e2e
+  count is now ≥3 windows (one per run).
+
 ## Hosting: deploys failing on the storage quota again (2026-10-13)
 
 Every "Deploy to Firebase Hosting" run since 14:27 (the push after 922de98,
