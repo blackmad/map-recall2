@@ -751,6 +751,31 @@ in-builder use of the `kind: large` facade systems once that lane lands, so
 only the signature parts are hand work. The 23 neighbourhood bureaus stay on
 the `large` recipe path.
 
+**GLB cleanup batch 1 landed 2026-10-13 (HISTORY).** Gates are now
+trustworthy and hard (`opening-floating`, `opening-buried`,
+`opening-overhang`; `materialSlotCoverage` metric), `snapOpenings.ts` attaches
+assemblies at build time, every `build-manual-landmarks.ts` material carries
+`materialSlot`+`tint`. Of the worst 15, 11 PASS; still FAIL on shell holes
+(builder work: close walls/caps): centraal-station (376 open loops, largest
+802 m around roof and glazing), rai-amsterdam (103), valley (~3,070
+zero-thickness aperture walls and glass skin + one detached 657 m² skin part),
+madame-tussauds (one 33.8 m loop at the clipped hip cut). **Batch 2 = the 21
+models the corrected measurement now fails** (baselines not raised, by rule):
+stadhuis, heineken-experience-amsterdam, nieuwe-kerk, jewish-museum,
+dutch-resistance-museum, allard-pierson, cinecenter, straat-museum,
+haparandaweg-2-4, fire-station-hendrik, fire-station-zebra, this-is-holland,
+posthoornkerk, petrus-en-paulus-kerk, oudemanhuispoort, american-hotel,
+krasnapolsky, hilton-amsterdam, booking-hq, scheepvaartmuseum and waag (the
+last two have no baseline entry). Also for batch 2: opstandingskerk east gable
+(37/46 openings off-size), obrechtkerk 43k tris, felix-meritis,
+jodenbreestraat-11, and the three recovered landmarks on
+`wip/recovery-landmark-integration-20261009`. Known: `check-landmark-attachment`
+fails on american-hotel ("builder must call b.mark('shell')") on main already;
+the slot/tint tags do nothing in game until the legacy GLBs export UVs
+(cityLook lane); the "hull-limited see-through" TODO note was wrong — lab111
+and mountain-network were real geometry problems or declared passages
+(`mountain-network-spec.json` `throughPassages`).
+
 **Large tier landed 2026-10-13 (`fitLarge`, `kind: large`; HISTORY).** Open:
 `scripts/building-recipes/install.ts` cannot place a `large` recipe yet, so
 the four compiled customers (politie-van-leijenberghlaan 6.1k tris,
