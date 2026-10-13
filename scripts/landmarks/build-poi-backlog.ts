@@ -77,6 +77,18 @@ for (const spec of MANUAL_LANDMARKS) {
     queueRank:destinations.length+1,origin:'Landmark catalogue',
     status:'manual-model',modelId:spec.id} as any);
 }
+// Police bureaus (OSM amenity=police matched to BAG pands by scripts/landmarks/police-stations-match.ts)
+// become `kind: large` recipe candidates; publicBuilding lets landmark-queue.html filter them.
+if(fs.existsSync('scripts/landmarks/police-stations.json')){
+  const police=JSON.parse(fs.readFileSync('scripts/landmarks/police-stations.json','utf8')).stations as any[];
+  for(const st of police){
+    const key=normaliseAnswer(st.name),have=destinations.find(p=>normaliseAnswer(p.name)===key);
+    if(have){Object.assign(have,{publicBuilding:'police',pandIds:st.pandIds});continue;}
+    destinations.push({id:`police-${key.replaceAll(' ','-')}`,name:st.name,lat:st.osmLatLng[0],lng:st.osmLatLng[1],queueRank:destinations.length+1,
+      origin:'Police bureaus',status:'pending',publicBuilding:'police',pandIds:st.pandIds,osm:st.osm,address:st.address,
+      taskNote:'Large-tier recipe candidate (houses/<id>/intent.json, kind: large); see scripts/landmarks/police-stations.json.'} as any);
+  }
+}
 // A destination can describe a whole district, a complex or a small memorial.
 // Keep its teaching identity while making the asset task explicit for reviewers.
 const treatments:Record<string,{kind:string;note:string}>={
