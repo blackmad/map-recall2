@@ -428,6 +428,13 @@ before the bundles are rebuilt. iPhone measurement is still pending.
 
 ### Known gaps
 
+- Measured roofs (2026-10-13 orthophoto slots): the PDOK tile is 0.21 m/px,
+  so a roof under ~12 m² or split by a party wall takes its neighbour's
+  slot; chimneys and dormers skew the luma on small roofs; roofs under tree
+  canopy or in the orthophoto's shadow side read darker than they are
+  (`roofSlots.ts` leaves them unmeasured below a confidence floor). Flat vs
+  pitched comes from 3DBAG, not the photo, so a pitched roof re-tiled flat
+  since the lidar keeps its pitch.
 - Curved fronts (De Balie's bow, the IISG's curve) are straight in 3DBAG.
 - Pediments, basement windows, colonnades and masts are below the component
   grain; notes say so per house. Arched openings: see above.
