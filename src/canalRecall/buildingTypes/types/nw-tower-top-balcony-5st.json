@@ -1,0 +1,444 @@
+{
+  "id": "nw-tower-top-balcony-5st",
+  "label": "Nieuw-West cluster 5 design B (Cornelis Lelylaan, Pieter Calandlaan, Andries Vierlinghstraat, Fijnje van Salverdastraat): five-storey brick portiekflat 19.1 x 10 m, brick stair tower with one small window per floor and a cap above the roof, narrow window either side, cream balcony stacks, wide ribbon windows at both ends, garages at the ends and red doors flanking the entrance",
+  "source": {
+    "clusterRank": 5,
+    "panden": 18,
+    "bouwjaar": [
+      1955,
+      1962
+    ],
+    "lengthM": 19.1,
+    "widthM": 10.0,
+    "bouwlagen": 5,
+    "roof": "pitched",
+    "dwellingsMedian": 10
+  },
+  "storeys": 5,
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.3,
+    "vergeOverhangM": 0.1,
+    "thicknessM": 0.12,
+    "pitchDeg": 16
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "brick-cream-balcony",
+  "variants": {
+    "brick-cream-balcony": {
+      "label": "Brick (sunlit photo warm-pixel median #695043), white frames, cream balcony slabs, red doors",
+      "evidence": "crops 0363100012073090 #594b42 (60 % cluster)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#695043"
+        },
+        "frame": "#efe9da",
+        "glass": "#3f4a55",
+        "door": "#7a1f24",
+        "accent": "#c9c2ac",
+        "rail": "#d6cfbb",
+        "dark": "#55575a",
+        "column": "#e4dfd0",
+        "joint": "#44382f",
+        "roof": {
+          "slot": "bitumen",
+          "tint": "#5c5e60"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "crops/0363100012073090.jpg",
+          "pand": "0363100012073090",
+          "address": "Cornelis Lelylaan (frontal)",
+          "note": "central brick tower with a small window per floor and a cap above the roof; narrow window each side; balcony slab column each side; wide ribbon windows beyond; ground: garage, red door, intercom entrance, red door"
+        },
+        {
+          "photo": "crops/0363100012132262.jpg",
+          "pand": "0363100012132262",
+          "address": "Cornelis Lelylaan (frontal)",
+          "note": "same layout, tower cap with a small window at the top"
+        },
+        {
+          "photo": "crops/0363100012097565.jpg",
+          "pand": "0363100012097565",
+          "address": "Cornelis Lelylaan (oblique)",
+          "note": "same layout; yellow entrance door; two garage doors on the left"
+        },
+        {
+          "photo": "crops/0363100012121477.jpg",
+          "pand": "0363100012121477",
+          "address": "Andries Vierlinghstraat (frontal)",
+          "note": "balconies with white bar balustrades: variant of the balustrade only; same bays and ground floor with yellow entrance door"
+        }
+      ],
+      "counted": {
+        "bays": 9,
+        "openingsPerUpperStorey": 7,
+        "groundDoors": 5,
+        "balconiesPerUpperStorey": 2
+      },
+      "bays": [
+        {
+          "id": "R1",
+          "w": 2.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "ribbon",
+              "levels": "upper",
+              "w": 2.0,
+              "h": 1.1,
+              "sill": 0.9,
+              "lights": 3
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 2.3,
+              "h": 2.2
+            }
+          ]
+        },
+        {
+          "id": "R2",
+          "w": 2.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "ribbon",
+              "levels": "upper",
+              "w": 2.0,
+              "h": 1.1,
+              "sill": 0.9,
+              "lights": 3
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "w": 1.4,
+              "h": 0.55,
+              "sill": 1.4,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "BL",
+          "w": 2.0,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 1.8,
+              "depth": 1.1,
+              "railing": "solid"
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 1.0,
+              "h": 2.2,
+              "steps": 0
+            }
+          ]
+        },
+        {
+          "id": "NL",
+          "w": 1.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.9,
+              "h": 1.2,
+              "sill": 0.85,
+              "lights": 1
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "w": 0.9,
+              "h": 0.5,
+              "sill": 1.5,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "T",
+          "w": 2.4,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.55,
+              "h": 0.65,
+              "sill": 1.0,
+              "lights": 1
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 1.4,
+              "h": 2.3,
+              "steps": 0
+            }
+          ]
+        },
+        {
+          "id": "NR",
+          "w": 1.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.9,
+              "h": 1.2,
+              "sill": 0.85,
+              "lights": 1
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "w": 0.9,
+              "h": 0.5,
+              "sill": 1.5,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "BR",
+          "w": 2.0,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 1.8,
+              "depth": 1.1,
+              "railing": "solid"
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 1.0,
+              "h": 2.2,
+              "steps": 0
+            }
+          ]
+        },
+        {
+          "id": "R3",
+          "w": 2.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "ribbon",
+              "levels": "upper",
+              "w": 2.0,
+              "h": 1.1,
+              "sill": 0.9,
+              "lights": 3
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "w": 1.4,
+              "h": 0.55,
+              "sill": 1.4,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "R4",
+          "w": 2.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "ribbon",
+              "levels": "upper",
+              "w": 2.0,
+              "h": 1.1,
+              "sill": 0.9,
+              "lights": 3
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 2.3,
+              "h": 2.2
+            }
+          ]
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012073090.jpg",
+          "pand": "0363100012073090",
+          "address": "Cornelis Lelylaan",
+          "note": "back not photographed; assumed to be the slit-window access side (design A) of the same footprint. Modelled as plain window rows. NOT verified."
+        }
+      ],
+      "counted": {
+        "bays": 5,
+        "openingsPerUpperStorey": 5,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "R1",
+          "w": 2.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.7,
+              "h": 1.2,
+              "sill": 0.85,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "R2",
+          "w": 2.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.7,
+              "h": 1.2,
+              "sill": 0.85,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 1.6,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": [
+                1,
+                2,
+                3
+              ],
+              "w": 1.5,
+              "h": 0.35,
+              "sill": 1.5,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "R3",
+          "w": 2.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.7,
+              "h": 1.2,
+              "sill": 0.85,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "R4",
+          "w": 2.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.7,
+              "h": 1.2,
+              "sill": 0.85,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012073090.jpg",
+          "pand": "0363100012073090",
+          "address": "Cornelis Lelylaan (corner, pale cladding on the end)",
+          "note": "gable / party-wall end modelled blank. NOT verified for end units: no straight-on photo of an end wall in the survey."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "end",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012100903.jpg",
+          "pand": "0363100012100903",
+          "address": "Pieter Calandlaan (oblique)",
+          "note": "gable / party-wall end modelled blank. NOT verified for end units: no straight-on photo of an end wall in the survey."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "end",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "This is the balcony / tower side. Whether it is the other long side of design A (same footprint) cannot be told from the survey: both sides have ground doors and both occur as the street side. Kept as a separate type; the front is whichever side the nearest street picks.",
+    "Balcony balustrade (solid sheet vs white bars) varies between pands; drawn as solid.",
+    "Photos: Gemeente Amsterdam panoramas (CC BY 4.0), crops made by scripts/building-types/camera-sheets.ts --survey (cached in .cache/building-types/crops)."
+  ]
+}

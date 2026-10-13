@@ -1,0 +1,484 @@
+{
+  "schemaVersion": 1,
+  "id": "herengracht-473-source-admission",
+  "observedOn": "2026-10-06",
+  "status": "rough-batch-candidate-no-visual-acceptance",
+  "officialIdentity": {
+    "address": "Herengracht 473",
+    "pandId": "0363100012167962",
+    "vboId": "0363010000968285",
+    "vboSource": {
+      "rawPath": "/tmp/canalhouse-rough-batch-459-469-20261006/473-vbo.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000968285?_format=json&volgnummer=2",
+      "sha256": "25e4b104e41920bb56ee01936f3d01518f8995a9e7d6f2778f8599d18dc663c5",
+      "bytes": 4598,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "accessed": "2026-10-06; exact root HTTP completion timestamp unavailable",
+      "localFileSavedAt": "2026-10-06T11:27:46.168463+00:00"
+    },
+    "pandSource": {
+      "rawPath": "/tmp/canalhouse-rough-batch-459-469-20261006/473-pand.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012167962?_format=json&volgnummer=7",
+      "sha256": "5716463c2b9edbe60319139756606bbaac3316e07fdb3289b74e28d5a19646c5",
+      "bytes": 3412,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "accessed": "2026-10-06; exact root HTTP completion timestamp unavailable",
+      "localFileSavedAt": "2026-10-06T11:38:15.567157+00:00"
+    },
+    "addressSuffixPolicy": "473 and475 have distinct current VBOs within one physical Pand; separate fa\u00e7ade observations, exactly one shared shell/roof owner herengracht-473-475."
+  },
+  "sourceProvenance": {
+    "raw3DBag": {
+      "rawPath": "/tmp/canalhouse-rough-batch-459-469-20261006/473-3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167962",
+      "sha256": "6c5e60fc37174238f80d786373ede326975749d4ddf662ae7b135adecb87a0ca",
+      "bytes": 18403,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "accessed": "2026-10-06; exact root HTTP completion timestamp unavailable",
+      "localFileSavedAt": "2026-10-06T11:38:13.722601+00:00"
+    },
+    "rawBag": {
+      "rawPath": "/tmp/canalhouse-rough-batch-459-469-20261006/473-pand.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012167962?_format=json&volgnummer=7",
+      "sha256": "5716463c2b9edbe60319139756606bbaac3316e07fdb3289b74e28d5a19646c5",
+      "bytes": 3412,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "accessed": "2026-10-06; exact root HTTP completion timestamp unavailable",
+      "localFileSavedAt": "2026-10-06T11:38:15.567157+00:00"
+    },
+    "privateLocalPack": "/tmp/canalhouse-rough-batch-459-469-20261006",
+    "sourceCommit": null,
+    "archiveSync": "pending-private-source-pack-sync-no-commit",
+    "beeldbankSearch": {
+      "raw": {
+        "rawPath": "/tmp/canalhouse-rough-batch-459-469-20261006/473-beeldbank-search.html",
+        "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=herengracht%20473&rows=1&page=1",
+        "sha256": "2c58f828ae2064223924ea0091b054f9491af3a922ebc52697104024f3ba5f04",
+        "bytes": 12357,
+        "status": 200,
+        "rawSavedBeforeExtraction": true,
+        "accessed": "2026-10-06; exact root HTTP completion timestamp unavailable",
+        "localFileSavedAt": "2026-10-06T11:28:14.217693+00:00"
+      },
+      "status": "bounded HTTP200 viewer shell only; no original archive photo inspected"
+    },
+    "currentPhoto": {
+      "rawPath": "/tmp/canalhouse-rough-batch-459-469-20261006/473-current.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00504/equirectangular/panorama_4000.jpg",
+      "sha256": "58f86759cbe675612fbd63a820b6b2ee1b6fb3653293b042d45affe7eb9d1910",
+      "bytes": 1233315,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "accessed": "2026-10-06; exact root HTTP completion timestamp unavailable",
+      "localFileSavedAt": "2026-10-06T11:39:47.007796+00:00"
+    },
+    "registerCache": {
+      "path": "/tmp/canalhouse-rough-batch-459-469-20261006/473-early-register-cache.json",
+      "cachedGeneration": "datasets/amsterdam-monument-register/2026-10-05T06-10-55-572Z-83107",
+      "privateArchiveReadOnly": true
+    }
+  },
+  "native": {
+    "coordinateSystem": "EPSG28992/NAP",
+    "municipalBagGeometryRD": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            121122.027,
+            486592.966
+          ],
+          [
+            121122.931,
+            486592.106
+          ],
+          [
+            121128.178,
+            486587.113
+          ],
+          [
+            121130.36,
+            486585.045
+          ],
+          [
+            121132.319,
+            486583.188
+          ],
+          [
+            121135.148,
+            486580.505
+          ],
+          [
+            121137.108,
+            486578.647
+          ],
+          [
+            121139.176,
+            486576.685
+          ],
+          [
+            121153.795,
+            486592.491
+          ],
+          [
+            121155.331,
+            486594.134
+          ],
+          [
+            121154.242,
+            486595.166
+          ],
+          [
+            121150.144,
+            486590.783
+          ],
+          [
+            121147.421,
+            486593.363
+          ],
+          [
+            121148.446,
+            486594.459
+          ],
+          [
+            121147.72,
+            486595.147
+          ],
+          [
+            121149.428,
+            486596.973
+          ],
+          [
+            121148.157,
+            486598.177
+          ],
+          [
+            121146.449,
+            486596.351
+          ],
+          [
+            121145.723,
+            486597.039
+          ],
+          [
+            121144.699,
+            486595.944
+          ],
+          [
+            121135.002,
+            486605.131
+          ],
+          [
+            121134.154,
+            486605.935
+          ],
+          [
+            121122.027,
+            486592.966
+          ]
+        ]
+      ]
+    },
+    "surveyFootprintPolygonsRD": [
+      [
+        [
+          [
+            121139.176875,
+            486576.6915
+          ],
+          [
+            121125.934875,
+            486589.2635
+          ],
+          [
+            121125.077875,
+            486590.0765
+          ],
+          [
+            121122.027875,
+            486592.97150000004
+          ],
+          [
+            121123.210875,
+            486594.2365
+          ],
+          [
+            121127.998875,
+            486599.35750000004
+          ],
+          [
+            121134.154875,
+            486605.9415
+          ],
+          [
+            121135.147875,
+            486605.0005
+          ],
+          [
+            121140.976875,
+            486599.4785
+          ],
+          [
+            121144.700875,
+            486595.95050000004
+          ],
+          [
+            121145.723875,
+            486597.0455
+          ],
+          [
+            121145.952875,
+            486596.8285
+          ],
+          [
+            121146.450875,
+            486596.35750000004
+          ],
+          [
+            121148.158875,
+            486598.18350000004
+          ],
+          [
+            121149.428875,
+            486596.9785
+          ],
+          [
+            121148.039875,
+            486595.49350000004
+          ],
+          [
+            121147.720875,
+            486595.1525
+          ],
+          [
+            121148.447875,
+            486594.4655
+          ],
+          [
+            121147.429875,
+            486593.3625
+          ],
+          [
+            121148.646875,
+            486592.2085
+          ],
+          [
+            121148.613875,
+            486592.1555
+          ],
+          [
+            121150.796875,
+            486590.0685
+          ],
+          [
+            121151.196875,
+            486589.6865
+          ],
+          [
+            121147.117875,
+            486585.27650000004
+          ],
+          [
+            121143.471875,
+            486581.3345
+          ],
+          [
+            121141.593875,
+            486579.3045
+          ]
+        ]
+      ]
+    ],
+    "policy": "Exact same native Pand ground rings/roofs/anchor for both fa\u00e7ade inputs; compound owns one shell; no endpoint insertion"
+  },
+  "principalFront": {
+    "orientedLeftToRightAsSeenFromCanal": [
+      [
+        121122.027875,
+        486592.97150000004
+      ],
+      [
+        121125.077875,
+        486590.0765
+      ]
+    ],
+    "straightFrontSpanM": 4.205178355328772,
+    "facadePlaneToleranceM": 0.025,
+    "selectionEvidence": "Current address473 door and475 sandstone corner establish seam at original ground vertex121125.077875/486590.0765;473originaledge2,475originaledges1+0, disjoint frontage ranges."
+  },
+  "heights": {
+    "groundNapM": 1.0379999876022339,
+    "bodyEavesNominalM": 15.964501111030579,
+    "bodyEavesRangeM": [
+      15.86450111103058,
+      15.964501111030579
+    ],
+    "bodyEavesAdmission": "NL.IMBAG.Pand.0363100012167962-0:lod22:wall:5 broad front top 17.002501098632813 NAP; narrow high475wall71 not body height",
+    "nativeRoofMaximumNapM": 23.115501098632816
+  },
+  "houses": [
+    {
+      "id": "herengracht-473",
+      "pandId": "0363100012167962",
+      "sampleRole": "rough-batch-frozen-library-candidate",
+      "sources": {
+        "principalImage": "/tmp/canalhouse-rough-batch-459-469-20261006/473-front.jpg",
+        "captureDate": "2025-06-16T06:57:27Z",
+        "projection": {
+          "headingDeg": 101.20709463471542,
+          "pitchDeg": 27,
+          "fovDeg": 75,
+          "width": 1100,
+          "height": 1500,
+          "camera": {
+            "_links": {
+              "self": {
+                "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00504/"
+              },
+              "equirectangular_full": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00504/equirectangular/panorama_8000.jpg"
+              },
+              "equirectangular_medium": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00504/equirectangular/panorama_4000.jpg"
+              },
+              "equirectangular_small": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00504/equirectangular/panorama_2000.jpg"
+              },
+              "cubic_img_preview": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00504/cubic/preview.jpg"
+              },
+              "thumbnail": {
+                "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_00504/"
+              },
+              "adjacencies": {
+                "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00504/adjacencies/"
+              }
+            },
+            "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00504/cubic/",
+            "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00504/cubic/{z}/{f}/{y}/{x}.jpg",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.889708609235319,
+                52.36617647562493,
+                0
+              ]
+            },
+            "pano_id": "recording_2025-06-16_06-42-40_00504",
+            "timestamp": "2025-06-16T06:57:27Z",
+            "filename": "recording_2025-06-16_06-42-40_00504.jpg",
+            "surface_type": "L",
+            "mission_distance": 5,
+            "mission_type": "bi",
+            "mission_year": "2025",
+            "tags": [
+              "mission-bi",
+              "mission-2025",
+              "mission-distance-5",
+              "surface-land"
+            ],
+            "roll": 0,
+            "pitch": 0,
+            "heading": 0
+          }
+        },
+        "nearCaptureDate": "2025-06-16T06:57:27Z",
+        "nearCamera": {
+          "_links": {
+            "self": {
+              "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00504/"
+            },
+            "equirectangular_full": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00504/equirectangular/panorama_8000.jpg"
+            },
+            "equirectangular_medium": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00504/equirectangular/panorama_4000.jpg"
+            },
+            "equirectangular_small": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00504/equirectangular/panorama_2000.jpg"
+            },
+            "cubic_img_preview": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00504/cubic/preview.jpg"
+            },
+            "thumbnail": {
+              "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_00504/"
+            },
+            "adjacencies": {
+              "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00504/adjacencies/"
+            }
+          },
+          "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00504/cubic/",
+          "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00504/cubic/{z}/{f}/{y}/{x}.jpg",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              4.889708609235319,
+              52.36617647562493,
+              0
+            ]
+          },
+          "pano_id": "recording_2025-06-16_06-42-40_00504",
+          "timestamp": "2025-06-16T06:57:27Z",
+          "filename": "recording_2025-06-16_06-42-40_00504.jpg",
+          "surface_type": "L",
+          "mission_distance": 5,
+          "mission_type": "bi",
+          "mission_year": "2025",
+          "tags": [
+            "mission-bi",
+            "mission-2025",
+            "mission-distance-5",
+            "surface-land"
+          ],
+          "roll": 0,
+          "pitch": 0,
+          "heading": 0
+        },
+        "rights": "Gemeente Amsterdam CC BY4.0",
+        "registerUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1650",
+        "registerDescription": [
+          "Pand met gevel onder rechte triglyfenlijst met rozetten en dakkapel (plm 1800/XIXa)."
+        ],
+        "currentPhotoAccess": "Original source saved before crop; private sync pending",
+        "rootInspection": "pending",
+        "registerIdentityMatch": "Exact current VBO matched cached RCE record; current Pand is survey owner."
+      },
+      "crown": {
+        "label": "straight-cornice",
+        "profileNormalized": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "criticalTraits": [
+        "Narrow dark three-axis front beside much broader pale475",
+        "Street-level left entry and pale stone basement with two neighboring aperture positions",
+        "Straight pale cornice, diminishing three above-basement window tiers"
+      ],
+      "uncertainties": [
+        "Current near-bank crops oblique; fa\u00e7ade ratios are rough estimates.",
+        "Original native seam selected; no added polygon vertex.",
+        "Fine carving, balusters, exact sash/tread counts omitted in authorized rough pass."
+      ],
+      "registerAssertions": [
+        {
+          "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1650",
+          "passage": "Pand met gevel onder rechte triglyfenlijst met rozetten en dakkapel (plm 1800/XIXa).",
+          "part": "principal historic facade",
+          "date": "register description date unspecified; cached2026-10-05",
+          "confidence": "high for named features, not dimensions"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "kind": "canal-house",
+  "id": "leidsestraat-67-kerkstraat-50",
+  "pandId": "0363100012172459",
+  "address": "Leidsestraat 67-71 / Kerkstraat 50A/B, 52",
+  "sources": [
+    {"id": "pano-2025-06-16-00039", "kind": "street-panorama", "capturedAt": "2025-06-16", "image": "public/canal-drive/ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+    {"id": "pano-2025-06-16-00180", "kind": "street-panorama", "capturedAt": "2025-06-16", "image": "public/canal-drive/ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00180-ekerk50.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
+  ],
+  "fronts": [
+    {
+      "id": "leidsestraat", "street": "Leidsestraat",
+      "gable": "flat",
+      "storeys": 5, "bays": [0, 4, 4, 4, 4],
+      "doorBay": null, "tallGround": true,
+      "basement": "none", "cornice": "none", "windows": "plain", "hoist": false,
+      "shopfront": {"colour": "grey", "fascia": true}
+    },
+    {
+      "id": "kerkstraat", "street": "Kerkstraat",
+      "gable": "neck", "crownCap": "pediment", "atticWindows": 1,
+      "repeat": {"count": 2},
+      "storeys": 4, "bays": [2, 0, 3, 3],
+      "doorBay": 1, "tallGround": true,
+      "basement": "none", "cornice": "simple", "windows": "sash-small-panes", "hoist": true,
+      "shopfront": {"colour": "grey-painted", "fascia": true},
+      "palette": {"brick": "red-brown"}
+    }
+  ],
+  "roof": {"material": "bitumen"},
+  "palette": {"brick": "dark-brown", "frame": "grey", "door": "black", "stone": "grey-painted"},
+  "notes": [
+    "Leidsestraat: 1966 front with two ribbon-window storeys and a taller stair pier; ribbons and the closed shop shutter are approximated by plain windows and a shopfront.",
+    "Kerkstraat: two neck gables with hoists over a pale glazed double-height base; the mezzanine glazing is approximated by the shopfront storey."
+  ]
+}

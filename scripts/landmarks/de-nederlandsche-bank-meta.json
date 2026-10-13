@@ -1,0 +1,21 @@
+{
+  "name": "De Nederlandsche Bank",
+  "landmarkId": "de-nederlandsche-bank",
+  "sourceUrl": "https://arcam.nl/architectuur-gids/de-nederlandsche-bank-2/",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012165684"
+  ],
+  "pandId": "0363100012165684",
+  "materialOverrides": {
+    "brick": "#8a3d2e",
+    "concrete": "#bdb9ae",
+    "stone": "#a9a597",
+    "glass": "#4d6676",
+    "frame": "#c9ced0",
+    "dark": "#23282c",
+    "white": "#e7e5df",
+    "slate": "#4a4f55"
+  },
+  "surveySource": "Current BAG 0363100012165684 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free flat-colour geometry on the 3DBAG LoD2.2 massing; podium storeys, tile fascias, pilotis, tower window strips measured by eye from Commons photographs (2018, 2022, 2025), no pixels or meshes imported."
+}

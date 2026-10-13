@@ -1,0 +1,13 @@
+{
+ "landmarkId":"extract_landmarks_218084814",
+ "name":"Luther Museum Amsterdam",
+ "center":[52.3655242,4.9088495],
+ "scope":"Keep the genuine existing destination and its researched Wikipedia facts. Model its containing Wittenberg BAG parent, not a duplicate museum destination.",
+ "description":"The museum occupies the historic regents’ rooms of Wittenberg, the former Lutheran Diaconiehuis. The building’s paired entrances once separated the elderly residents from the orphans; its two courtyards remain open within the large brick block.",
+ "funFact":"Wittenberg’s two grand canal-side entrances originally led to separate departments: one for elderly residents and one for orphaned children.",
+ "sourceUrl":"https://luthermuseum.nl/nl/over-het-museum",
+ "sourceUrls":["https://luthermuseum.nl/nl/over-het-museum","https://monumentenregister.cultureelerfgoed.nl/monumenten/525060"],
+ "website":"https://luthermuseum.nl/nl",
+ "publicEntrance":{"source":"Current municipal2024panorama00113 and2025panorama02683 show museum banner and panel by west/photographic-right historic door; coordinate reconstructed on that surveyed frontage, exact address point preserved until route accessibility review.","coordinate":[52.365537,4.908862],"accuracyMetres":2,"observed":true},
+ "acceptance":"Root must audit chosen genuine route/pin and actual physical pointer card; not accepted by geometry export."
+}

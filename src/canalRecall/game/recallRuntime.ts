@@ -10,6 +10,9 @@
 
 import {
   advanceRouteQuiz,
+  ROUTE_QUIZ_RETEST_METRES,
+  ROUTE_QUIZ_SETTLE_METRES,
+  routeQuizContext,
   bridgeGate,
   crossingQuestionKind,
   findBridgeRouteAt,
@@ -342,27 +345,39 @@ export class GameRecallRuntime {
     }
     const heading = this.player.angle;
     const name = this.track.getRoadName(this.player.x, this.player.y, heading);
+    // Remember the heading while still on the settled corridor, so the
+    // question can tell a real turn from a name change straight ahead.
+    if (name && name === this.quizCurrentName) this._quizCorridorHeading = heading;
     // Only worth a spatial query once there is a name that could become a
     // question; on most frames there is not.
     const interesting = !!name && name !== this.quizCurrentName;
     const nearestRoad = interesting
       ? this.track.getNearestRoad(this.player.x, this.player.y, heading)
       : null;
+    const transit = isTransit(this.travelMode);
     const decision = advanceRouteQuiz({
       candidateName: this.quizCandidateName,
       candidateSeconds: this.quizCandidateTimer,
+      candidateMetres: this.quizCandidateMetres || 0,
     }, {
       roadName: name,
       currentName: this.quizCurrentName,
       headingOffRoad: nearestRoad ? headingOffRoad(this.player.angle, nearestRoad.angle) : null,
       speed: this.player.speed,
       alreadyRevealed: this.revealedNames.has(name),
-      settleSeconds: isTransit(this.travelMode) ? Math.max(QUIZ_CANDIDATE_DELAY, 2.4) : QUIZ_CANDIDATE_DELAY,
+      settleSeconds: transit ? Math.max(QUIZ_CANDIDATE_DELAY, 2.4) : QUIZ_CANDIDATE_DELAY,
       retestSeconds: QUIZ_RETEST_DELAY,
+      // Street and water asks also settle on distance, so a fast rider is
+      // asked a few metres into the street rather than at its far end. Transit
+      // keeps its deliberate time-only pacing between line questions.
+      movedMetres: Math.abs(this.player.speed) * dt / PIXELS_PER_METER,
+      settleMetres: transit ? Infinity : ROUTE_QUIZ_SETTLE_METRES,
+      retestMetres: transit ? Infinity : ROUTE_QUIZ_RETEST_METRES,
     }, dt, interesting ? this._recallStatusHere(name) : 'none');
 
     this.quizCandidateName = decision.state.candidateName;
     this.quizCandidateTimer = decision.state.candidateSeconds;
+    this.quizCandidateMetres = decision.state.candidateMetres ?? 0;
     if (decision.action === 'idle') return;
 
     const profile = travelProfile(this.travelMode);
@@ -429,11 +444,13 @@ export class GameRecallRuntime {
       name: decision.name,
       subject: routeBridge ? 'bridge' : profile.quizRouteSubject,
       question: routeBridge ? 'Which bridge are you on?' : profile.quizRouteQuestion,
-      context: routeBridge
-        ? 'Crossing a waterway'
-        : isTransit(this.travelMode) ? 'Riding the corridor'
-          // The first ask of a ride follows no turn; saying so was false.
-          : this.quizCurrentName ? 'You made a turn' : 'Where you set off',
+      context: routeQuizContext({
+        onBridge: !!routeBridge,
+        transit: isTransit(this.travelMode),
+        hadCorridor: !!this.quizCurrentName,
+        corridorHeading: this._quizCorridorHeading ?? null,
+        heading: this.player.angle,
+      }),
       choices: routeBridge && bridgeAlternatives.length >= 2
         ? [decision.name, ...bridgeAlternatives]
         : lineChoices,
@@ -1122,6 +1139,7 @@ export class GameRecallRuntime {
     this.quizPromptKind = 'route';
     this.quizCandidateName = '';
     this.quizCandidateTimer = 0;
+    this.quizCandidateMetres = 0;
     this.quizPromptName = '';
     this.quizPromptSubject = '';
     this.quizPromptSegmentIndex = -1;

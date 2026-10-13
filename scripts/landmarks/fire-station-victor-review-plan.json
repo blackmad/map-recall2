@@ -1,0 +1,34 @@
+{
+  "id": "fire-station-victor",
+  "state": "draft-CPU-checked; rootGPU/gallery/game/suppression/POIacceptancepending",
+  "nativeCameras": {
+    "Dapperstraat": [
+      4.928958857133795,
+      52.36042546400292
+    ],
+    "Domselaerstraat": [
+      4.92930477090498,
+      52.36035569168049
+    ]
+  },
+  "cpuViews": {
+    "env": {
+      "LANDMARK_CPU_VIEWS": "[[-1.18,\"dapperstraat\"],[-0.4,\"corner\"]]",
+      "LANDMARK_CPU_ELEVATION": ".2"
+    },
+    "command": "node scripts/landmarks/render-cpu-preflight.mjs fire-station-victor"
+  },
+  "sources": [
+    "../map-recall2-source-data/models/fire-station-victor/raw/architecture-photo-0.webp",
+    "../map-recall2-source-data/models/fire-station-victor/raw/architecture-photo-1.webp",
+    "../map-recall2-source-data/models/fire-station-victor/processed/recording_2025-09-26_09-39-19_02040.jpg",
+    "../map-recall2-source-data/models/fire-station-victor/processed/recording_2025-09-26_09-39-19_01842.jpg"
+  ],
+  "reviewCriteria": [
+    "Two tallarched apparatusdoors, four upperwindowgroups and pairedcornerbay; smallrealBRANDWEERserifplaque noaddedVictorwords",
+    "Twincornergables and zincslopes with dormers; rearflatroof around17.3m, lowerterrace10.1m remains exposed; unsupported22.4m boundaryartifact omitted",
+    "Domselaerstraatpairunderbalcony plus irregularsecondaryopeninggroups; retainednorthschool not masked",
+    "Retain alladjacentBAGparents, shared rearplotemergencyroute/gate remainsopen, no courtyardfill/paddedsuppression",
+    "Destinationn26612532 fixed, usefulcardfromphysicalclick, maplabelpin and chosenfinish nearactualDapperstraatportal, fallback restoredwhenmodelunavailable"
+  ]
+}

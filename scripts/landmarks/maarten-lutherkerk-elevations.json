@@ -1,0 +1,46 @@
+{
+  "id": "maarten-lutherkerk",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "east front",
+      "bearing": 92.5,
+      "photo": "artifacts/landmark-lanes/maarten-lutherkerk/ref-east-front.jpg",
+      "depthBand": 30,
+      "rows": [
+        3,
+        3
+      ],
+      "columns": 3,
+      "symmetric": true,
+      "gables": 1,
+      "countedBy": "blind haiku counter 2026-10-11",
+      "alongM": [
+        12.5,
+        19.8
+      ]
+    },
+    {
+      "name": "north wall",
+      "bearing": 2.5,
+      "photo": "artifacts/landmark-lanes/maarten-lutherkerk/ref-north-wall.jpg",
+      "depthBand": 30,
+      "rows": [
+        15,
+        5
+      ],
+      "columns": 5,
+      "symmetric": false,
+      "gables": 1,
+      "countedBy": "blind haiku counter 2026-10-11",
+      "alongM": [
+        2.7,
+        28.4
+      ],
+      "heightM": [
+        0,
+        15
+      ]
+    }
+  ]
+}

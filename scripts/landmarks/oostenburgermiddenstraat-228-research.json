@@ -1,0 +1,32 @@
+{
+  "id": "oostenburgermiddenstraat-228",
+  "status": "ready-with-caveats-pending-integrator-blind-count",
+  "identity": {
+    "bagPandId": "0363100012254998",
+    "bouwjaar": 2023,
+    "addresses": ["Oostenburgermiddenstraat 228-636 (BAG lists ~197 units)", "Van Reedestraat 155/157", "Willem Theunisse Blokstraat 395/397"],
+    "name": "40 m corten-clad residential tower on a 23-27 m brick wing, Oostenburg; the tower entrance carries a STORK sign (lettering not reproduced)",
+    "policy": "ordinary large building: category ordinary, no route destination, no POI card"
+  },
+  "sources": [
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012254998&f=json", "kind": "BAG pand", "retrievedOn": "2026-10-10", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012254998", "kind": "3DBAG LoD2.2 massing, BuildingParts -0 (wing) and -1 (tower); the BAG ring also holds ~1,060 m2 of open ground with no 3DBAG volume, left empty", "retrievedOn": "2026-10-10", "licence": "CC BY 4.0 (3DBAG)"},
+    {"file": "artifacts/landmark-lanes/oostenburgermiddenstraat-228/ref-wing-sw.jpg", "kind": "rectified wall 6 (SW wing face), 16 px/m, pano b_20241204_1003_Track33_Sphere_00042 (2024-12-04)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/oostenburgermiddenstraat-228/ref-tower-nw.jpg", "kind": "rectified wall 33 (tower NW), pano recording_2025-06-19_08-46-57_00901 (2025-06-19); ref-t-a.jpg is the aimed thumbnail of the same pano", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/oostenburgermiddenstraat-228/ref-tower-ne.jpg", "kind": "rectified wall 74 (tower NE), pano recording_2025-06-19_08-46-57_00856 (2025-06-19)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/oostenburgermiddenstraat-228/ref-wing-nw.jpg", "kind": "rectified wall 19 (NW wing, 26 m part), pano recording_2025-06-19_08-46-57_00906 (2025-06-19)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/oostenburgermiddenstraat-228/ref-wing-end.jpg", "kind": "rectified wall 11 (NW end of the SW wing), pano b_20241204_1003_Track33_Sphere_00016 (2024-12-04)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"}
+  ],
+  "faces": {
+    "wing SW (wall 6)": "evidence: ref-wing-sw.jpg. 7 columns x 5 upper rows (3.96 m pitch) + 6 glazed ground bays. The top row is clipped to the 3DBAG wall top (the photo shows it continuing past the 23 m crop).",
+    "tower NW (wall 33) and tower NE (wall 74)": "evidence: ref-tower-nw.jpg, ref-tower-ne.jpg. Corten bands every 5.95 m, per-floor irregular window pattern, cantilevered terraces (2 m).",
+    "wing NW (wall 19), wing end (wall 11)": "evidence: ref-wing-nw.jpg (6 x 7 grid, arched entrance), ref-wing-end.jpg (open galleries, windows at the right).",
+    "tower SE/SW (59, 61, 34, 60), wing SE (12, 15), all inner walls": "INFERRED: no usable post-2023 panorama sees them; nearest observed grid, no invented features. ref-w12 rectification showed a neighbouring building and was not used."
+  },
+  "caveats": [
+    "The wing's top row and the true wing height (3DBAG measured before completion: AHN4->AHN5 mutation flagged) may be 1 m taller than the model.",
+    "Window glass tone is a neutral blue-grey, the photographs show reflections.",
+    "The tower's irregular window pattern is read per floor-pair and repeated (A/B rows), small shifts exist between floors."
+  ],
+  "limits": ["rooftop plant", "balcony railings other than the two terraces", "window louvre detail", "ground-floor interiors", "sign lettering"]
+}

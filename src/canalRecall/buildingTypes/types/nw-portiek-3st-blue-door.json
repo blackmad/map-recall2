@@ -1,0 +1,445 @@
+{
+  "id": "nw-portiek-3st-blue-door",
+  "label": "Nieuw-West cluster 3 leftovers (Van Gilsestraat, Burgemeester van de Pollstraat, Burgemeester van Tienhovengracht in Slotermeer): three-storey red-brown brick portiekflat with pitched roof, 14.9 x 10.4 m, central blue door with a glazed grid under a small canopy, balcony with french door either side of the stair window on each upper floor, windows with glazing bars",
+  "source": {
+    "clusterRank": 3,
+    "panden": 34,
+    "bouwjaar": [
+      1953,
+      1959
+    ],
+    "lengthM": 14.9,
+    "widthM": 10.4,
+    "bouwlagen": 4,
+    "roof": "pitched",
+    "dwellingsMedian": 6
+  },
+  "footprintRangeM": {
+    "frontage": [
+      13.9,
+      16.2
+    ],
+    "depth": [
+      9.6,
+      11.2
+    ]
+  },
+  "storeys": 3,
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.4,
+    "vergeOverhangM": 0.1,
+    "thicknessM": 0.12,
+    "pitchDeg": 22
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "brick-white",
+  "variants": {
+    "brick-white": {
+      "label": "Red-brown brick (sunlit photo median #bfa088 incl. lit mortar), white window frames, blue door, grey steel balconies (Van Gilsestraat)",
+      "evidence": "crops 0363100012080833 #c3a58d, 2125474 #c7a68b / #b69e86, 2080833 #b7947c",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#bfa088"
+        },
+        "frame": "#f0eee4",
+        "glass": "#4b5a6b",
+        "door": "#2f4f9a",
+        "accent": "#9a9d9a",
+        "rail": "#4a4d4a",
+        "dark": "#6b6e6b",
+        "column": "#b9b6aa",
+        "joint": "#7a6a5c",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#5a5c58"
+        }
+      }
+    },
+    "brick-green": {
+      "label": "Same brick with teal-green window frames and door frames (Burgemeester van de Pollstraat, Burgemeester van Tienhovengracht)",
+      "evidence": "crops 0363100012065698 (teal frames, backlit), 2137659 (teal frames, backlit)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#bfa088"
+        },
+        "frame": "#4f8b7e",
+        "glass": "#4b5a6b",
+        "door": "#2f4f9a",
+        "accent": "#9a9d9a",
+        "rail": "#4a4d4a",
+        "dark": "#6b6e6b",
+        "column": "#b9b6aa",
+        "joint": "#7a6a5c",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#5a5c58"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012080833.jpg",
+          "pand": "0363100012080833",
+          "address": "Van Gilsestraat (oblique, white frames)",
+          "note": "three storeys: ground = big window | glazed door+side light | BLUE DOOR | glazed door+side light | big window; upper floors = window | balcony + french door | stair window | balcony + french door | window; balconies on both floors above the ground."
+        },
+        {
+          "photo": "survey crop 0363100012125474.jpg",
+          "pand": "0363100012125474",
+          "address": "Van Gilsestraat (frontal)",
+          "note": "same seven bays; balconies 2.0 m bar balustrade, stair window on the axis at both upper floors, blue door with grid glazing and brick piers."
+        },
+        {
+          "photo": "survey crop 0363100012065698.jpg",
+          "pand": "0363100012065698",
+          "address": "Burgemeester van de Pollstraat (oblique, teal frames)",
+          "note": "same frame; teal-framed windows, balcony pair per floor, blue door with grid."
+        },
+        {
+          "photo": "survey crop 0363100012137659.jpg",
+          "pand": "0363100012137659",
+          "address": "Burgemeester van Tienhovengracht (frontal, teal frames)",
+          "note": "same: window | balcony | stair window | balcony | window on both upper floors; blue door in the middle."
+        }
+      ],
+      "counted": {
+        "bays": 7,
+        "openingsPerUpperStorey": 5,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 2
+      },
+      "bays": [
+        {
+          "id": "P0",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "Wl",
+          "w": 3.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "ground",
+              "w": 1.8,
+              "h": 1.3,
+              "sill": 0.85,
+              "u": 0.0,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.5,
+              "h": 1.45,
+              "sill": 0.85,
+              "u": 0.0,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "Bl",
+          "w": 2.6,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "u": 0.0,
+              "w": 2.0,
+              "depth": 1.0,
+              "railing": "bars",
+              "note": "steel bar balustrade, ~2.0 m, projects ~1.0 m"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.2,
+              "h": 2.1,
+              "sill": 0.0,
+              "u": 0.0,
+              "lights": 2,
+              "note": "french door with side lights behind the balcony"
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "w": 1.2,
+              "h": 2.0,
+              "sill": 0.0,
+              "u": 0.0,
+              "lights": 2,
+              "note": "glazed door + side light, ground floor"
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 2.5,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": 0.0,
+              "w": 1.0,
+              "h": 2.2,
+              "steps": 2,
+              "note": "blue door with a glazed grid, brick piers, small flat canopy"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.55,
+              "h": 0.8,
+              "sill": 1.0,
+              "u": 0.0,
+              "note": "blue-framed stair window on the axis, each floor"
+            }
+          ]
+        },
+        {
+          "id": "Br",
+          "w": 2.6,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "u": 0.0,
+              "w": 2.0,
+              "depth": 1.0,
+              "railing": "bars"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.2,
+              "h": 2.1,
+              "sill": 0.0,
+              "u": 0.0,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "w": 1.2,
+              "h": 2.0,
+              "sill": 0.0,
+              "u": 0.0,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "Wr",
+          "w": 3.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "ground",
+              "w": 1.8,
+              "h": 1.3,
+              "sill": 0.85,
+              "u": 0.0,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.5,
+              "h": 1.45,
+              "sill": 0.85,
+              "u": 0.0,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012080833.jpg",
+          "pand": "0363100012080833",
+          "address": "Van Gilsestraat",
+          "note": "no garden-side photo of a member was found; the model repeats the front window rhythm without balconies or doors. NOT verified."
+        }
+      ],
+      "counted": {
+        "bays": 7,
+        "openingsPerUpperStorey": 5,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "P0",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "B1",
+          "w": 3.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.2,
+              "h": 1.3,
+              "sill": 0.9,
+              "u": 0.0,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "B2",
+          "w": 2.6,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.2,
+              "h": 1.3,
+              "sill": 0.9,
+              "u": 0.0,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 2.5,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.55,
+              "h": 0.8,
+              "sill": 1.0,
+              "u": 0.0
+            }
+          ]
+        },
+        {
+          "id": "B3",
+          "w": 2.6,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.2,
+              "h": 1.3,
+              "sill": 0.9,
+              "u": 0.0,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "B4",
+          "w": 3.0,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.2,
+              "h": 1.3,
+              "sill": 0.9,
+              "u": 0.0,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012080833.jpg",
+          "pand": "0363100012080833",
+          "address": "Van Gilsestraat",
+          "note": "terrace end: blank brick gable. NOT verified for end units."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "gable",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012080833.jpg",
+          "pand": "0363100012080833",
+          "address": "Van Gilsestraat",
+          "note": "as left."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "gable",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Counted from four photos (two oblique): the frame [pier | window | balcony | stair+door | balcony | window | pier] repeats on every block; the same blue door and a stair window above it.",
+    "3DBAG bouwlagen reads 4 because it counts the attic under the pitched roof: the block is three storeys (ground and two upper floors). variants.json pins storeys 3."
+  ]
+}

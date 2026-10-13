@@ -1,0 +1,20 @@
+{
+  "name": "Hilton Amsterdam",
+  "landmarkId": "hilton-amsterdam",
+  "sourceUrl": "https://en.wikipedia.org/wiki/Hilton_Amsterdam",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012078084"
+  ],
+  "pandId": "0363100012078084",
+  "materialOverrides": {
+    "brick": "#7a726b",
+    "red": "#7a5a4c",
+    "concrete": "#a8a69f",
+    "glass": "#8fa5b3",
+    "frame": "#e4e3dc",
+    "dark": "#26282b",
+    "white": "#e9e8e2"
+  },
+  "surveySource": "BAG 0363100012078084 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean.",
+  "modifications": "Original texture-free geometry on the 3DBAG LoD2.2 massing; storey grid, window ribbons, lift-core bay, entrance canopy and podium cladding measured by eye from the 2021 and 2025 municipal panoramas and the RCE register description, no pixels or meshes imported."
+}

@@ -1,0 +1,235 @@
+{
+ "area": "rh2-05",
+ "chunkGroundNapM": -0.708,
+ "generatedAt": "2026-10-11",
+ "instances": 6,
+ "perType": {
+  "nw-rowhouse-red-panel-door": {
+   "instances": 6,
+   "trisPerInstance": {
+    "min": 168,
+    "median": 168,
+    "max": 168
+   },
+   "trianglesTotal": 1008,
+   "warnings": 6
+  }
+ },
+ "glb": {
+  "baked": {
+   "parts": [
+    {
+     "file": "rh2-05-baked-1.glb",
+     "instances": 6,
+     "triangles": 1008,
+     "bytes": 58644
+    }
+   ],
+   "bytes": 58644,
+   "bytesUncompressed": 97084,
+   "triangles": 1008,
+   "vertices": 2004
+  },
+  "merged": {
+   "bytes": 35392,
+   "bytesUncompressed": 77132,
+   "triangles": 1008,
+   "primitives": 6,
+   "vertices": 2004
+  },
+  "instanced": {
+   "bytes": 17752,
+   "bytesUncompressed": 18024,
+   "triangles": 1008,
+   "primitives": 6,
+   "vertices": 334,
+   "designGroups": 1,
+   "maxScaleDeviation": 0.034
+  },
+  "bucketed": {
+   "note": "one unit mesh per (design group, +-0.25 m length/width, +-0.2 m eaves bucket) instead of per-instance scale",
+   "meshes": 2,
+   "bytesEstimate": 28392
+  },
+  "saving": {
+   "bytesVsMerged": 0.498,
+   "bytesVsBaked": 0.697,
+   "bytesUncompressedVsMerged": 0.766
+  }
+ },
+ "groups": [
+  {
+   "key": "nw-rowhouse-red-panel-door|brown-red|2|gable|long|solid",
+   "members": 6,
+   "dimensionBuckets": 2,
+   "bucketedBytesEstimate": 28152,
+   "maxScaleDeviation": 0.034,
+   "nominal": {
+    "L": 4.76,
+    "W": 8.29,
+    "eaves": 6.1,
+    "ridge": 8.58
+   },
+   "unitTriangles": 168,
+   "unitBytes": 14076
+  }
+ ],
+ "instancesDetail": [
+  {
+   "pandId": "0363100012093553",
+   "held": null,
+   "type": "nw-rowhouse-red-panel-door",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 2,
+   "tris": 168,
+   "lengthM": 4.72,
+   "widthM": 8.29,
+   "eavesM": 6.1,
+   "ridgeM": 8.58,
+   "roof3dbag": "gable",
+   "roofUsed": "gable",
+   "ridge": "long",
+   "rectIoU": 0.997,
+   "frontBearingDeg": 99,
+   "frontStreet": "Thomas van Aquinostraat",
+   "frontStreetDistM": 9,
+   "ambiguous": false,
+   "warnings": [
+    "3DBAG bouwlagen 3 != type storeys 2"
+   ]
+  },
+  {
+   "pandId": "0363100012122868",
+   "held": null,
+   "type": "nw-rowhouse-red-panel-door",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 2,
+   "tris": 168,
+   "lengthM": 4.76,
+   "widthM": 8.29,
+   "eavesM": 6.1,
+   "ridgeM": 8.56,
+   "roof3dbag": "gable",
+   "roofUsed": "gable",
+   "ridge": "long",
+   "rectIoU": 0.995,
+   "frontBearingDeg": 99,
+   "frontStreet": "Thomas van Aquinostraat",
+   "frontStreetDistM": 9,
+   "ambiguous": false,
+   "warnings": [
+    "3DBAG bouwlagen 3 != type storeys 2"
+   ]
+  },
+  {
+   "pandId": "0363100012121278",
+   "held": null,
+   "type": "nw-rowhouse-red-panel-door",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 2,
+   "tris": 168,
+   "lengthM": 4.7,
+   "widthM": 8.29,
+   "eavesM": 6.11,
+   "ridgeM": 8.58,
+   "roof3dbag": "gable",
+   "roofUsed": "gable",
+   "ridge": "long",
+   "rectIoU": 0.998,
+   "frontBearingDeg": 99,
+   "frontStreet": "Thomas van Aquinostraat",
+   "frontStreetDistM": 9,
+   "ambiguous": false,
+   "warnings": [
+    "3DBAG bouwlagen 3 != type storeys 2"
+   ]
+  },
+  {
+   "pandId": "0363100012151665",
+   "held": null,
+   "type": "nw-rowhouse-red-panel-door",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 2,
+   "tris": 168,
+   "lengthM": 4.69,
+   "widthM": 8.29,
+   "eavesM": 6.08,
+   "ridgeM": 8.51,
+   "roof3dbag": "gable",
+   "roofUsed": "gable",
+   "ridge": "long",
+   "rectIoU": 0.995,
+   "frontBearingDeg": 99,
+   "frontStreet": "Thomas van Aquinostraat",
+   "frontStreetDistM": 9.1,
+   "ambiguous": false,
+   "warnings": [
+    "3DBAG bouwlagen 3 != type storeys 2"
+   ]
+  },
+  {
+   "pandId": "0363100012139523",
+   "held": null,
+   "type": "nw-rowhouse-red-panel-door",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 2,
+   "tris": 168,
+   "lengthM": 4.76,
+   "widthM": 8.29,
+   "eavesM": 6.09,
+   "ridgeM": 8.58,
+   "roof3dbag": "gable",
+   "roofUsed": "gable",
+   "ridge": "long",
+   "rectIoU": 0.994,
+   "frontBearingDeg": 99,
+   "frontStreet": "Thomas van Aquinostraat",
+   "frontStreetDistM": 9.1,
+   "ambiguous": false,
+   "warnings": [
+    "3DBAG bouwlagen 3 != type storeys 2"
+   ]
+  },
+  {
+   "pandId": "0363100012133799",
+   "held": null,
+   "type": "nw-rowhouse-red-panel-door",
+   "variant": "brown-red",
+   "groundMode": "solid",
+   "sides": null,
+   "mirrored": false,
+   "storeys": 2,
+   "tris": 168,
+   "lengthM": 4.92,
+   "widthM": 8.29,
+   "eavesM": 6.12,
+   "ridgeM": 8.53,
+   "roof3dbag": "gable",
+   "roofUsed": "gable",
+   "ridge": "long",
+   "rectIoU": 0.998,
+   "frontBearingDeg": 99,
+   "frontStreet": "Thomas van Aquinostraat",
+   "frontStreetDistM": 9,
+   "ambiguous": false,
+   "warnings": [
+    "3DBAG bouwlagen 3 != type storeys 2"
+   ]
+  }
+ ]
+}

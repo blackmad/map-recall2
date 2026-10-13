@@ -1,0 +1,23 @@
+{
+  "modelId": "huize-frankendael",
+  "id": "extract_landmarks_746892406",
+  "name": "Huize Frankendael",
+  "sourceUrl": "https://huizefrankendael.nl/nl/over/geschiedenis-huize-frankendael/",
+  "description": "Frankendael is the last surviving country estate in the Watergraafsmeer, where wealthy Amsterdammers once built many summer retreats. Izaak Balde gave the house its present central pavilion and lower coach-house wings around 1733. Restaurant Merkelbach occupies a former coach house, named for city architect Ben Merkelbach, who moved into the house in 1957.",
+  "sources": [
+    "https://huizefrankendael.nl/nl/over/geschiedenis-huize-frankendael/",
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/422420"
+  ],
+  "destinationRecommendation": {
+    "keepExistingId": true,
+    "existingLatLng": [
+      52.351122,
+      4.933403
+    ],
+    "publicEntranceLatLng": [
+      52.351191,
+      4.933559
+    ],
+    "reason": "Existing center falls on rear bay; sourced public main entrance is northeast. Root should only relocate pin if routing requires or improves actual entrance."
+  }
+}

@@ -1,0 +1,66 @@
+{
+ "date": "2026-10-11",
+ "method": "Per terrace, the representative photo (survey crop, camera centred on the rep house) was cropped to three house widths with the rep footprint (green) and its centre (pink) drawn; the rep house handedness is read from the door against the centre line and the order small window / door / big window, the neighbours decide alternating pairs against a uniform row. Normal = big window left of the door, small window right (the spec order); mirrored = the reverse.",
+ "findings": "The earlier start parity (leftmost house normal, then alternating) matched ~25 % of 40 read terraces; leftmost house mirrored matched ~80 % of the even-sized ones, odd-sized terraces split, so the start parity is pinned per terrace here. The Geuzenveld porch group (terraces 233-282) is a uniform row, not alternating pairs. The render-tile design (D) is uniform in all 81 terraces.",
+ "door-window": {
+  "alternatingNormal": [
+   25,
+   26,
+   28,
+   30,
+   35,
+   39,
+   41,
+   48,
+   69,
+   75,
+   76,
+   77,
+   86,
+   89,
+   352
+  ],
+  "alternatingMirrored": [
+   33,
+   36,
+   38,
+   40,
+   44,
+   45,
+   50,
+   51,
+   54,
+   60,
+   61,
+   62,
+   64,
+   67,
+   68,
+   71,
+   73,
+   78,
+   80,
+   81,
+   83,
+   84,
+   92,
+   94,
+   315,
+   320,
+   339,
+   344,
+   347,
+   349
+  ],
+  "uniformNormalRange": [
+   233,
+   282
+  ],
+  "singleNormal": [
+   43
+  ],
+  "default": "unread (flip close-ups, dark or hidden photos, the 305+ porch pairs): leftmost house of the terrace mirrored, then alternating"
+ },
+ "render-tile": "uniform, not mirrored (spec alternateMirror removed)",
+ "garage-door": "uniform, not mirrored (6 terraces checked on camera sheets)"
+}

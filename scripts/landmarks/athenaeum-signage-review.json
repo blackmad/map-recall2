@@ -1,0 +1,214 @@
+{
+  "modelId": "athenaeum",
+  "reviewedOn": "2026-10-06",
+  "status": "geometry_repaired_visual_acceptance_pending",
+  "scope": "Principal shop fascia only; existing Athenaeum shell, roofs, upper facade, storefront glass and awnings retained. Scheltema and station branches untouched.",
+  "sourcePack": {
+    "repository": "blackmad/map-recall2-source-data",
+    "path": "models/athenaeum",
+    "observedHead": "9926aa1fba89e7758fc9e11d1b0dfde0fb4fc4aa",
+    "image": "files/athenaeum-front.jpg",
+    "imageSha256": "5307304e995f3557d84ff204d9b2e85792983d2f50fde383465c8e5e80c2645c",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:Amsterdam_Athenaeum_Boekhandel.jpg",
+    "scopeSource": "scripts/landmarks/bookshops-station-footprints.json",
+    "bagParent": "0363100012175036",
+    "osmId": "w266697389",
+    "access": "Cached original image inspected with view_image. Existing archive reused read-only; no new download, source mutation or commit."
+  },
+  "assertions": [
+    {
+      "part": "principal shop frontage below upper windows and above striped awning",
+      "observation": "Dark ATHENAEUM and BOEKHANDEL words are readable on a narrow white fascia. The fascia is subordinate to the architectural front; dark band continues around the curved corner. Separate projecting two-line white signboards are visible.",
+      "confidence": "high for words, colors and fascia location; medium for photo-relative dimensions",
+      "modelTreatment": "Dark ATHENAEUM BOEKHANDEL on one narrow white principal-front panel; retain the existing dark corner band. Shared uppercase bitmap glyphs simplify the photographed serif lettering. Small central emblem and projecting boards omitted."
+    },
+    {
+      "part": "left news-shop and side face",
+      "observation": "The awning, lamp, tree and street activity obstruct portions of the lower frontage. NIEUWSCENTRUM is not independently legible in this cached reference.",
+      "confidence": "unverified for news-shop text, not proof that the real shop has no signage",
+      "modelTreatment": "Remove the unsupported name words. Do not extrapolate side text or projecting billboard geometry."
+    },
+    {
+      "part": "dimensions and wall relief",
+      "observation": "Surveyed BAG footprint and native placement are retained. No measured fascia width, elevation, letter height or relief is available in the inspected sources.",
+      "confidence": "approximate",
+      "modelTreatment": "White panel x=-2.9..3.6, y=3.2..3.52 follows the existing principal-front shop band, staying left of the cylindrical corner. Width6.5m, height0.32m and all sign offsets are photo-relative model coordinates, not measurements. White panel front z4.235 is0.04m beyond existing dark fascia front4.195. Glyph rear z4.245 clears white panel by0.01m; inherited glyph thickness is0.08m. Existing glass ends y3.15 and first front window arches start y3.8."
+    }
+  ],
+  "priorFailure": {
+    "evidence": "artifacts/landmarks/signage-audit/bookshops-artis-review.json",
+    "description": "Previous white ATHENAEUM letters floated y3.67..4.45775 above dark fascia y3.2..3.52 and crossed the lowest upper-window tier. NIEUWSCENTRUM was also unsupported above the dark fascia. Preserved audit remains failed evidence."
+  },
+  "changedGeometry": {
+    "addedPanel": {
+      "centerX": 0.35,
+      "baseY": 3.2,
+      "centerZ": 4.215,
+      "width": 6.5,
+      "height": 0.32,
+      "depth": 0.04,
+      "color": "white"
+    },
+    "sign": {
+      "text": "ATHENAEUM BOEKHANDEL",
+      "x": 0.35,
+      "y": 3.245,
+      "z": 4.285,
+      "pixel": 0.035,
+      "width": 4.0600000000000005,
+      "color": "dark",
+      "maxWidth": 5.8
+    },
+    "actualGlyphBounds": {
+      "min": [
+        -1.6948750003427269,
+        3.2449999996572734,
+        4.24500000089407
+      ],
+      "max": [
+        2.3248750003427263,
+        3.4847500003427268,
+        4.3249999991059305
+      ]
+    },
+    "removedText": [
+      "NIEUWSCENTRUM"
+    ],
+    "notAdded": [
+      "side-face words",
+      "projecting signboards",
+      "small central fascia emblem"
+    ]
+  },
+  "checks": {
+    "method": "In-memory esbuild/Three.js capture against /tmp/athenaeum-fascia-before.ts; actual shared glyph table and width fitting; complete non-sign geometry/transform/material hashes and per-glyph local +Z FrontSide ray probes. No export or generated bundle mutated.",
+    "beforeNonSignMeshes": 186,
+    "afterNonSignMeshes": 187,
+    "retainedNonSignMeshes": 186,
+    "removedNonSignMeshes": 0,
+    "addedPanelMeshes": 1,
+    "glyphMeshes": 303,
+    "occludedGlyphsFromFront": 0,
+    "horizontalAndVerticalContainment": "passed",
+    "openingFirstHitsBefore": [
+      {
+        "xy": [
+          -1.15,
+          4.5
+        ],
+        "material": "glass",
+        "point": [
+          -1.15,
+          4.5,
+          4.04
+        ]
+      },
+      {
+        "xy": [
+          1.95,
+          4.5
+        ],
+        "material": "glass",
+        "point": [
+          1.95,
+          4.5,
+          4.04
+        ]
+      },
+      {
+        "xy": [
+          -0.7,
+          1.4
+        ],
+        "material": "glass",
+        "point": [
+          -0.7000000000000002,
+          1.4,
+          4.004999999701977
+        ]
+      },
+      {
+        "xy": [
+          2.2,
+          1.4
+        ],
+        "material": "glass",
+        "point": [
+          2.2,
+          1.4,
+          4.004999999701977
+        ]
+      }
+    ],
+    "openingFirstHitsAfter": [
+      {
+        "xy": [
+          -1.15,
+          4.5
+        ],
+        "material": "glass",
+        "point": [
+          -1.15,
+          4.5,
+          4.04
+        ]
+      },
+      {
+        "xy": [
+          1.95,
+          4.5
+        ],
+        "material": "glass",
+        "point": [
+          1.95,
+          4.5,
+          4.04
+        ]
+      },
+      {
+        "xy": [
+          -0.7,
+          1.4
+        ],
+        "material": "glass",
+        "point": [
+          -0.7000000000000002,
+          1.4,
+          4.004999999701977
+        ]
+      },
+      {
+        "xy": [
+          2.2,
+          1.4
+        ],
+        "material": "glass",
+        "point": [
+          2.2,
+          1.4,
+          4.004999999701977
+        ]
+      }
+    ],
+    "roofUpperFacadeStorefrontAndScope": "All186 original non-sign meshes hash-identical; only white fascia face added. Fascia y3.2..3.52 has no vertical overlap with existing storefront panes y0.25..3.15 or first windows beginning y3.8. Existing door treatment was not redesigned.",
+    "reproduction": "NODE_PATH=\"$PWD/node_modules\" node /tmp/athenaeum-fascia-check.cjs"
+  },
+  "limitations": "Source page association is recorded in footprint references; photo acquisition URL, photo date and current storefront state were not independently extracted or reverified. All fascia/sign dimensions are inferred, not field measurements. GPU/browser unavailable. Front rays cover the standalone facade only and cannot establish city-context visibility, visual recognition, suppression, neighboring building retention or performance.",
+  "pending": [
+    "Coordinator isolated export and exact draft reference/render comparison",
+    "Independent failure-seeking visual review of white fascia proportions and subordinate text",
+    "Native-scale gallery and actual game-scene checks, exact suppression, neighbor retention and GPU performance"
+  ],
+  "reliefFollowup": {
+    "date": "2026-10-06",
+    "basis": "Independent reviewer flagged previous8cm relief unsupported by source; narrower subordinate letters inferred from photo.",
+    "authoredReliefMetres": 0.012,
+    "panelFrontGapMetres": 0.005,
+    "sourcePrecision": "Approximate, not measured sign construction; serif/mixed-case font remains simplified.",
+    "sharedDefault": "Other sign calls keep prior8cm default; only these two opt in.",
+    "pending": [
+      "Exact export/first-hit and independent review",
+      "Native gallery/game/source archive sync before publication"
+    ]
+  }
+}

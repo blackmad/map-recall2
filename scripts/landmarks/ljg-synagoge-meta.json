@@ -1,0 +1,17 @@
+{
+  "name": "LJG Synagogue",
+  "landmarkId": "extract_landmarks_1186428295",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Liberaal_Joodse_Gemeente_Amsterdam",
+  "suppressOsmIds": ["w277313909", "NL.IMBAG.Pand.0363100012241744"],
+  "pandId": "0363100012241744",
+  "materialOverrides": {
+    "concrete": "#b0b3b6",
+    "frame": "#7d8085",
+    "dark": "#2f3338",
+    "glass": "#4d6b82",
+    "slate": "#6b6d70",
+    "white": "#f4f4f2"
+  },
+  "surveySource": "Current BAG 0363100012241744 footprint (OSM w277313909) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the star-shaped glazing, window rows, entrance and the white perforation dots (seeded imitation, plus dotted text lines) measured by eye from the Commons photographs and municipal panoramas in the research record, no pixels or meshes imported."
+}

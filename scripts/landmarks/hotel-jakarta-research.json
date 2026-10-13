@@ -1,0 +1,142 @@
+{
+  "canonicalModelId": "hotel-jakarta",
+  "researchedOn": "2026-10-10",
+  "state": "built (south and north fronts and prow measured; east end inferred)",
+  "destination": {
+    "landmarkId": "hotel-jakarta",
+    "name": "Hotel Jakarta",
+    "address": "Javakade 766, 1019 SH Amsterdam (Java-eiland)",
+    "bagPand": "NL.IMBAG.Pand.0363100012247056",
+    "note": "No installed model, native-kit POI or poi-work-queue task covered this pand (checked by name and landmarkId); no OSM or backlog destination exists, so a model-local landmarkId is used (as for Woongebouw Wladiwostok). BAG pand 2018, status in gebruik; verblijfsobject Javakade 766 (nummeraanduiding 0363200012107293) lies inside it."
+  },
+  "architecture": {
+    "sources": [
+      {
+        "url": "https://nl.wikipedia.org/wiki/Hotel_Jakarta",
+        "retrieved": "2026-10-10"
+      }
+    ],
+    "facts": [
+      "Designed by SeARCH for WestCord Hotels on the west tip of Java-eiland; first pile April 2016, opened summer 2018.",
+      "Eight storeys above ground with a skybar on top and a car park below; concrete basement, concrete columns and walls on the ground floor and first floor, timber structure above; rooms prefabricated off site; 16,500 m2, energy neutral.",
+      "V-shaped volume with tapering north and south fronts; the glazed point holds a partly public subtropical garden made with the Hortus Botanicus.",
+      "A perforated aluminium panel on the east side shows the silhouette of a VOC ship (photographed ghosted on the copper panel wall beside the north entrance).",
+      "Public prize at the Amsterdam Architecture Prize 2019."
+    ]
+  },
+  "measuredBy": {
+    "3dbag": "NL.IMBAG.Pand.0363100012247056 LoD2.2: ground 1.3 m NAP, roof about 32 m above ground over the west part (west of x = 27 on the north line, x = 21.5 on the south line) and 20 m over the east block, roofMax 33.6 m NAP. The BAG ring also covers open garden: a ray probe finds no shell wall on its north and west edges, so the north front is the sawtooth wall line 19 m inside the ring.",
+    "panoramas": "municipal panoramas of 2024-10-23 and 2025-06-16 for the south front, north front with the rotating-door drum, copper panel wall and glazed prow; capture points were mapped into native metres to place the door (about x = 31 on the north line) and the lettering.",
+    "storeys": "two glazed storeys (7.4 m) on the IJ side, 5.6 m glass ground floor under a copper spandrel on the north front, then 4 storeys of loggias in the 20 m block and 8 in the 32 m part on a 3.05 m pitch."
+  },
+  "limitations": [
+    "The east facade (about 31 m, facing the Verbindingsdam) has no photograph (no panorama is taken east of x = 40), so it is inferred from the south front.",
+    "The facade photographs in Commons suggest a very slight arc in the south front; BAG and 3DBAG give a straight chord, so the model is straight.",
+    "Corten planters and umbrellas of the quay terrace are street furniture and are not modelled."
+  ],
+  "photos": [
+    {
+      "file": "ref-kleon-01.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:2023 Amsterdam, Hotel Jakarta (01).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/c/c3/2023_Amsterdam%2C_Hotel_Jakarta_%2801%29.jpg",
+      "author": "Kleon3",
+      "date": "2023-06-17 14:23:33",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "878248ff14914ef2b0f2f98e0a0c0f2883dfdbda9ecdf01b57586bae8df10694",
+      "retrieved": "2026-10-10",
+      "feature": "south front from the east quay: glazed plinth and loggia rhythm"
+    },
+    {
+      "file": "ref-kleon-02.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:2023 Amsterdam, Hotel Jakarta (02).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/9/97/2023_Amsterdam%2C_Hotel_Jakarta_%2802%29.jpg",
+      "author": "Kleon3",
+      "date": "2023-06-17 14:25:26",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "819d98c85730d80d853144586a270cb485f52874b0ba3e19581c864c87ac1298",
+      "retrieved": "2026-10-10",
+      "feature": "interior garden under the timber and glass roof (roof construction only)"
+    },
+    {
+      "file": "ref-ainali-main.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Hotel Jakarta Amsterdam.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/2/26/Hotel_Jakarta_Amsterdam.jpg",
+      "author": "Ainali",
+      "date": "unknown (file uploaded 2022-2023)",
+      "licence": "CC BY-SA 3.0",
+      "sha256": "b5e5f9ff186d58841f29c847932a8fc45c86d6d6ffc8cf3174589b4764845c4c",
+      "retrieved": "2026-10-10",
+      "feature": "north-west corner: entrance drum, perforated copper wall with ship ghost and vertical lettering, glass prow"
+    },
+    {
+      "file": "ref-ainali-entrance.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Hotel Jakarta Amsterdam entrance.jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/1/14/Hotel_Jakarta_Amsterdam_entrance.jpg",
+      "author": "Ainali",
+      "date": "2023-02-25",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "61722e3a5800bf96edc49eda924c9006bec69ce0a7c92d0985eb55af91f6b7f2",
+      "retrieved": "2026-10-10",
+      "feature": "rotating-door drum and copper panels"
+    },
+    {
+      "file": "ref-ainali-south.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:Amsterdam, Hotel Jakarta (cropped).jpg",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/4/41/Amsterdam%2C_Hotel_Jakarta_%28cropped%29.jpg",
+      "author": "Ainali",
+      "date": "2022-03-19",
+      "licence": "CC BY-SA 4.0",
+      "sha256": "aa5d33c20b48f149fd3d47878761c4dc0e192566e996101eed2b0fdde079ce04",
+      "retrieved": "2026-10-10",
+      "feature": "south elevation along the IJ"
+    },
+    {
+      "file": "ref-south.jpg",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_08-26-12_02416/?width=1400&fov=70&heading=16",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "date": "2025-06-16",
+      "panoramaId": "recording_2025-06-16_08-26-12_02416",
+      "sha256": "7a9e76d41023ee097f9dc695686aacd86ad3ba303ef5572aad8ba424552c576d",
+      "feature": "south front, frontal"
+    },
+    {
+      "file": "ref-north.jpg",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_08-26-12_02388/?width=1400&fov=70&heading=169",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "date": "2025-06-16",
+      "panoramaId": "recording_2025-06-16_08-26-12_02388",
+      "sha256": "4f3cf3779fe9d25bb4a93163a2f07608c9c6a9c632fd91418e5f43408dabdd0a",
+      "feature": "north front at the entrance drum"
+    },
+    {
+      "file": "ref-west-tip.jpg",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_08-26-12_02405/?width=1400&fov=100&heading=90",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "date": "2025-06-16",
+      "panoramaId": "recording_2025-06-16_08-26-12_02405",
+      "sha256": "dbfcbf510b904f5d461fb29cb38c9410eadda2064018e8d5f8c60096a2e1f91b",
+      "feature": "glazed west prow and the south front receding east"
+    },
+    {
+      "file": "ref-south-oblique.jpg",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_08-26-12_02422/?width=1400&fov=100&heading=330",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "date": "2025-06-16",
+      "panoramaId": "recording_2025-06-16_08-26-12_02422",
+      "sha256": "cce34aae42c83c2874b6d87b314d89971824c2022a8f061f23db7cfe1cd8059f",
+      "feature": "south front and east end from the south-east"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.9215,52.3788,4.9235,52.3800&f=json",
+      "use": "pand 0363100012247056, bouwjaar 2018",
+      "licence": "CC0 (BAG)"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012247056",
+      "use": "LoD2.2 shell",
+      "licence": "CC BY 4.0 (3DBAG)"
+    }
+  ]
+}

@@ -290,6 +290,18 @@ class Renderer {
     return ctx; // still in save/translate/rotate state
   }
 
+  drawFerry(car, camera) {
+    const ctx = this.ctx, point = camera.worldToScreen(car.x, car.y);
+    ctx.save(); ctx.translate(point.x, point.y); ctx.rotate(car.angle - camera.rotation);
+    ctx.scale(camera.zoom || 1, camera.zoom || 1);
+    ctx.fillStyle = '#008bce'; ctx.strokeStyle = '#092b56'; ctx.lineWidth = 3;
+    roundRect(ctx, -48, -14, 96, 28, 6); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#f2f0e7'; ctx.fillRect(-30,-12,60,24);
+    ctx.fillStyle = '#284856'; ctx.fillRect(-11,-10,22,20);
+    ctx.fillStyle = '#e8bd35'; ctx.fillRect(-47,-9,3,18); ctx.fillRect(44,-9,3,18);
+    ctx.restore();
+  }
+
   drawCar(car, camera) {
     const ctx = this.ctx;
     const s = camera.worldToScreen(car.x, car.y);

@@ -1,0 +1,21 @@
+{
+  "id": "haparandaweg-650-706",
+  "pandId": "0363100012242823",
+  "name": "Haparandaweg 650-706",
+  "palette": {
+    "wall": "#8a867c", "roof": "#6f6c68", "frame": "#a7a99f", "glass": "#7b878a", "slab": "#7a746a",
+    "rail": "#6b665d", "glassRail": "#8aa0a3", "dark": "#2e2f30", "door": "#4d5456", "stone": "#9a9488", "sign": "#d8d4c8"
+  },
+  "levels": { "groundM": 3.9, "storeyM": 2.95 },
+  "default": "stone",
+  "systems": {
+    "stone": {
+      "pitch": 3.1,
+      "ground": { "kind": "glazed", "win": { "w": 0.82, "h": 0.8, "sill": 0.1, "mull": 1, "transom": 0.62, "frame": "dark" },
+        "door": { "bays": [0, 2], "w": 1.1, "h": 2.3, "slot": "door" } },
+      "typical": { "kind": "punched", "win": { "w": 0.6, "h": 0.52, "sill": 0.82, "mull": 1, "transom": 0.62, "frame": "frame" } },
+      "bands": [ { "slot": "slab", "h": 0.42, "out": 0.4 } ]
+    }
+  },
+  "signs": []
+}

@@ -1,0 +1,175 @@
+{
+ "street": "Bilderdijkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T07:26:05.088Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012233580",
+   "addresses": [],
+   "groundUnits": [
+    {
+     "address": "Kinkerstraat 86-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000705558"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 494157345,
+     "lngLat": [
+      4.8718715,
+      52.3672623
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "88",
+      "addr:street": "Kinkerstraat",
+      "amenity": "fast_food",
+      "changing_table": "no",
+      "check_date": "2025-01-16",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "name": "Corner Inn",
+      "opening_hours": "Mo-Th 14:00-01:00; Fr-Sa 14:00-04:00; Su 14:00-03:00",
+      "outdoor_seating": "no",
+      "payment:cash": "yes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-10T07:26:05.088Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236055",
+   "addresses": [
+    "Bilderdijkstraat 164",
+    "Bilderdijkstraat 166"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 164-H",
+     "use": "winkelfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000586262"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809209029,
+     "lngLat": [
+      4.8717919,
+      52.3673923
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "164-H",
+      "addr:postcode": "1053LC",
+      "addr:street": "Bilderdijkstraat",
+      "name": "Brioche",
+      "opening_hours": "We-Fr 08:00-17:30; Sa-Su 08:00-17:00",
+      "panoramax": "7e8d87c9-2370-4326-9862-9b46708681a7",
+      "phone": "+31 6 11805227",
+      "shop": "bakery",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://briocheamsterdam.nl"
+     },
+     "fetchedAt": "2026-10-10T07:26:05.088Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162443",
+   "addresses": [
+    "Bilderdijkstraat 158",
+    "Bilderdijkstraat 160",
+    "Bilderdijkstraat 162"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 158-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 367,
+     "bagId": "0363010000586242"
+    }
+   ],
+   "units": 13,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3889189976,
+     "lngLat": [
+      4.8716895,
+      52.3675003
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "158HS",
+      "addr:postcode": "1053LC",
+      "addr:street": "Bilderdijkstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-09-20",
+      "check_date:opening_hours": "2026-09-20",
+      "contact:instagram": "vegitalian.nl",
+      "cuisine": "spanish;tapas",
+      "name": "Peps",
+      "opening_hours": "Su-We 16:00-00:00; Th-Sa 16:00-01:00",
+      "website": "http://peps-amsterdam.nl"
+     },
+     "fetchedAt": "2026-10-10T07:26:05.088Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162444",
+   "addresses": [
+    "Bilderdijkstraat 156"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 156-H",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000586232"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3680268345,
+     "lngLat": [
+      4.871626,
+      52.3675705
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "156",
+      "addr:postcode": "1053LC",
+      "addr:street": "Bilderdijkstraat",
+      "beauty": "nails",
+      "name": "Dany",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-10T07:26:05.088Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

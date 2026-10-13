@@ -1,0 +1,70 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "bilder-156287",
+ "pandId": "0363100012156287",
+ "address": "Bilderdijkstraat (1903 orange brick, stepped gable, balconies)",
+ "sources": [
+  {
+   "id": "pano-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/pand-reference/0363100012156287/front-alt.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Bilderdijkstraat",
+   "hoist": false,
+   "windows": "sash",
+   "basement": "none",
+   "cornice": "simple",
+   "gable": "step",
+   "storeys": 5,
+   "bays": 3,
+   "atticWindows": 2,
+   "doorBay": 2,
+   "shopfront": {
+    "colour": "dark-red",
+    "fascia": true,
+    "awning": {
+     "style": "fabric-straight",
+     "colour": "black",
+     "extent": {
+      "from": 0.0,
+      "to": 0.58
+     }
+    }
+   },
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "bays": [
+     1
+    ]
+   },
+   "bands": "both",
+   "windowSurround": "stone-lintel",
+   "surroundStoreys": [
+    4
+   ]
+  }
+ ],
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "orange-brick",
+  "frame": "dark-green",
+  "door": "dark-green",
+  "stone": "#b8b4a6"
+ },
+ "notes": [
+  "2026-10-09 surrounds: grey stone lintel slabs over the top-storey windows; black straight fabric awning over the left shop (front-alt.jpg)."
+ ]
+}

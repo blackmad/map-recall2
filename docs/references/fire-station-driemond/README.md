@@ -1,0 +1,11 @@
+# Kazerne Driemond draft
+
+Official operator: [Driemond, Lentestraat 30](https://www.brandweer.nl/kazerne/driemond/). Original geometry, native east-X/south-Z metres, BAG0363100012070690 / OSMw57853130. Genuine mapped station identity n2862198151 (absent current extract; coordinator must add it without inventing a duplicate). Alias Kazerne Maxima shares identity. Public entrance is the northern office's west facade/forecourt.
+
+Raw originals/provenance are private at `models/fire-station-driemond/raw/` and derived municipal views at `processed/`. Each fetched response has checksum and retrieval/access status. Archived bounded Beeldbank address search returns viewer shell, no inspected archive photographs; register search found no matched monument description. BAG reports original year1934 and no linked dossier; original building drawings remain unresolved. Roof comes from AHN5 2023 semantic planes with canalbank terrain -1.573NAP; current photos guide the facades. Rear municipal 2022-09-22 and front 2021-06-11 capture dates frozen by panorama IDs. Brandbase photograph publication path2022-01, actual capture date unknown; rights not presumed open.
+
+Recognition: southern west-facing pair of red sectional doors with five glazed tiers/three columns, white metal enclosure and dark brick base; north brick/glazed office set back at the L-shaped west notch, shallow projecting cornice; east canal-bank metal-ribbed garage rear and office glazed return. Front and rear rib/window detail is simplified original geometry; hidden openings not inferred. No building-name lettering. Operator shield uses simplified red/gold geometry.
+
+Checks:144 fractional pane samples clear of masonry (one intentional frame hit), finite native bounds,2,200 triangles/~45KB, no textures;15 decoded roof faces upward. Compression reversed a source-rounded tiny sliver; failed report preserved and only <2mm plan-altitude source roof remnants removed. Initial CPU swapped garage/office wings corrected after source comparison; failed image retained.
+
+Draft acceptance only: coordinator must independently inspect current CPU comparison and actual gallery/live-game, exact suppression/neighbor retention, public pin/route and physically clicked useful card, current residency and performance before acceptance. Do not treat CPU/checks as game acceptance.

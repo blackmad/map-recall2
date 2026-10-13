@@ -1,0 +1,1526 @@
+{
+  "area": "city",
+  "ways": 116888,
+  "areas": 55378,
+  "droppedOutsideGame": 26197,
+  "counts": {
+    "way:cycleway": 12163,
+    "way:footway": 37150,
+    "way:service": 17049,
+    "way:pedestrian": 2678,
+    "way:residential": 13597,
+    "way:unclassified": 4633,
+    "way:primary": 1296,
+    "way:tertiary": 4864,
+    "way:secondary": 4006,
+    "way:construction": 486,
+    "way:steps": 3228,
+    "way:living_street": 976,
+    "way:trunk_link": 152,
+    "way:trunk": 217,
+    "way:path": 5598,
+    "way:track": 3840,
+    "way:primary_link": 116,
+    "way:platform": 453,
+    "way:tertiary_link": 26,
+    "way:secondary_link": 204,
+    "way:corridor": 60,
+    "way:busway": 1318,
+    "way:motorway_link": 1408,
+    "way:motorway": 1009,
+    "way:proposed": 160,
+    "way:elevator": 10,
+    "way:bridleway": 162,
+    "way:services": 18,
+    "way:bus_stop": 9,
+    "way:footpath": 1,
+    "way:hitchhiking": 1,
+    "area:square": 912,
+    "area:park": 12160,
+    "area:grass": 32019,
+    "area:parking": 5553,
+    "area:wood": 3406,
+    "area:paved": 1328
+  },
+  "tagCoverage": {
+    "width": 27818,
+    "sidewalk": 13138,
+    "cycleway": 3053,
+    "lanes": 33269
+  },
+  "cells": 294,
+  "gzBytes": 8541257,
+  "osmBase": "2026-10-10T12:47:49Z",
+  "perCell": {
+    "-10_-1": {
+      "ways": 70,
+      "areas": 39,
+      "gzBytes": 9078
+    },
+    "-10_-2": {
+      "ways": 145,
+      "areas": 97,
+      "gzBytes": 14943
+    },
+    "-10_-3": {
+      "ways": 266,
+      "areas": 90,
+      "gzBytes": 18249
+    },
+    "-10_-7": {
+      "ways": 426,
+      "areas": 59,
+      "gzBytes": 19231
+    },
+    "-10_0": {
+      "ways": 98,
+      "areas": 92,
+      "gzBytes": 13977
+    },
+    "-10_1": {
+      "ways": 256,
+      "areas": 79,
+      "gzBytes": 19933
+    },
+    "-10_2": {
+      "ways": 105,
+      "areas": 38,
+      "gzBytes": 11173
+    },
+    "-10_3": {
+      "ways": 82,
+      "areas": 76,
+      "gzBytes": 10987
+    },
+    "-10_4": {
+      "ways": 75,
+      "areas": 89,
+      "gzBytes": 10798
+    },
+    "-10_5": {
+      "ways": 54,
+      "areas": 10,
+      "gzBytes": 4010
+    },
+    "-10_6": {
+      "ways": 73,
+      "areas": 46,
+      "gzBytes": 11544
+    },
+    "-11_1": {
+      "ways": 355,
+      "areas": 48,
+      "gzBytes": 15953
+    },
+    "-11_2": {
+      "ways": 143,
+      "areas": 93,
+      "gzBytes": 21467
+    },
+    "-11_3": {
+      "ways": 90,
+      "areas": 80,
+      "gzBytes": 11550
+    },
+    "-11_4": {
+      "ways": 133,
+      "areas": 48,
+      "gzBytes": 9932
+    },
+    "-11_5": {
+      "ways": 15,
+      "areas": 3,
+      "gzBytes": 1123
+    },
+    "-11_6": {
+      "ways": 44,
+      "areas": 35,
+      "gzBytes": 10377
+    },
+    "-12_3": {
+      "ways": 66,
+      "areas": 37,
+      "gzBytes": 10736
+    },
+    "-12_4": {
+      "ways": 34,
+      "areas": 17,
+      "gzBytes": 6553
+    },
+    "-12_5": {
+      "ways": 106,
+      "areas": 28,
+      "gzBytes": 10336
+    },
+    "-12_6": {
+      "ways": 66,
+      "areas": 25,
+      "gzBytes": 14598
+    },
+    "-13_6": {
+      "ways": 90,
+      "areas": 27,
+      "gzBytes": 16189
+    },
+    "-1_-1": {
+      "ways": 562,
+      "areas": 72,
+      "gzBytes": 27162
+    },
+    "-1_-2": {
+      "ways": 638,
+      "areas": 344,
+      "gzBytes": 47965
+    },
+    "-1_-3": {
+      "ways": 540,
+      "areas": 290,
+      "gzBytes": 38252
+    },
+    "-1_-4": {
+      "ways": 1222,
+      "areas": 572,
+      "gzBytes": 94692
+    },
+    "-1_-5": {
+      "ways": 570,
+      "areas": 270,
+      "gzBytes": 41963
+    },
+    "-1_-6": {
+      "ways": 316,
+      "areas": 161,
+      "gzBytes": 26209
+    },
+    "-1_0": {
+      "ways": 860,
+      "areas": 82,
+      "gzBytes": 44441
+    },
+    "-1_1": {
+      "ways": 555,
+      "areas": 79,
+      "gzBytes": 25300
+    },
+    "-1_2": {
+      "ways": 123,
+      "areas": 25,
+      "gzBytes": 7256
+    },
+    "-1_3": {
+      "ways": 252,
+      "areas": 95,
+      "gzBytes": 14914
+    },
+    "-1_4": {
+      "ways": 516,
+      "areas": 189,
+      "gzBytes": 29481
+    },
+    "-1_5": {
+      "ways": 570,
+      "areas": 360,
+      "gzBytes": 54181
+    },
+    "-1_6": {
+      "ways": 91,
+      "areas": 87,
+      "gzBytes": 20673
+    },
+    "-2_-1": {
+      "ways": 676,
+      "areas": 56,
+      "gzBytes": 34744
+    },
+    "-2_-2": {
+      "ways": 552,
+      "areas": 176,
+      "gzBytes": 42763
+    },
+    "-2_-3": {
+      "ways": 511,
+      "areas": 205,
+      "gzBytes": 32904
+    },
+    "-2_-4": {
+      "ways": 614,
+      "areas": 296,
+      "gzBytes": 41097
+    },
+    "-2_-5": {
+      "ways": 534,
+      "areas": 234,
+      "gzBytes": 28344
+    },
+    "-2_-6": {
+      "ways": 381,
+      "areas": 298,
+      "gzBytes": 33445
+    },
+    "-2_0": {
+      "ways": 714,
+      "areas": 90,
+      "gzBytes": 31866
+    },
+    "-2_1": {
+      "ways": 563,
+      "areas": 164,
+      "gzBytes": 35170
+    },
+    "-2_2": {
+      "ways": 583,
+      "areas": 213,
+      "gzBytes": 39411
+    },
+    "-2_3": {
+      "ways": 221,
+      "areas": 166,
+      "gzBytes": 26632
+    },
+    "-2_4": {
+      "ways": 163,
+      "areas": 94,
+      "gzBytes": 11473
+    },
+    "-2_5": {
+      "ways": 499,
+      "areas": 138,
+      "gzBytes": 30304
+    },
+    "-2_6": {
+      "ways": 203,
+      "areas": 48,
+      "gzBytes": 16835
+    },
+    "-3_-1": {
+      "ways": 337,
+      "areas": 86,
+      "gzBytes": 18903
+    },
+    "-3_-2": {
+      "ways": 465,
+      "areas": 107,
+      "gzBytes": 32521
+    },
+    "-3_-3": {
+      "ways": 661,
+      "areas": 161,
+      "gzBytes": 35175
+    },
+    "-3_-4": {
+      "ways": 733,
+      "areas": 227,
+      "gzBytes": 38956
+    },
+    "-3_-5": {
+      "ways": 501,
+      "areas": 178,
+      "gzBytes": 24716
+    },
+    "-3_-6": {
+      "ways": 472,
+      "areas": 108,
+      "gzBytes": 22919
+    },
+    "-3_-7": {
+      "ways": 548,
+      "areas": 223,
+      "gzBytes": 31482
+    },
+    "-3_0": {
+      "ways": 625,
+      "areas": 177,
+      "gzBytes": 36263
+    },
+    "-3_1": {
+      "ways": 440,
+      "areas": 182,
+      "gzBytes": 28308
+    },
+    "-3_2": {
+      "ways": 410,
+      "areas": 280,
+      "gzBytes": 46887
+    },
+    "-3_3": {
+      "ways": 217,
+      "areas": 115,
+      "gzBytes": 19079
+    },
+    "-3_4": {
+      "ways": 142,
+      "areas": 82,
+      "gzBytes": 18211
+    },
+    "-3_5": {
+      "ways": 128,
+      "areas": 36,
+      "gzBytes": 11099
+    },
+    "-3_6": {
+      "ways": 224,
+      "areas": 63,
+      "gzBytes": 16174
+    },
+    "-4_-1": {
+      "ways": 459,
+      "areas": 136,
+      "gzBytes": 29400
+    },
+    "-4_-2": {
+      "ways": 571,
+      "areas": 134,
+      "gzBytes": 29247
+    },
+    "-4_-3": {
+      "ways": 547,
+      "areas": 220,
+      "gzBytes": 33412
+    },
+    "-4_-4": {
+      "ways": 352,
+      "areas": 127,
+      "gzBytes": 21813
+    },
+    "-4_-5": {
+      "ways": 273,
+      "areas": 113,
+      "gzBytes": 22911
+    },
+    "-4_-6": {
+      "ways": 228,
+      "areas": 120,
+      "gzBytes": 20640
+    },
+    "-4_-7": {
+      "ways": 508,
+      "areas": 220,
+      "gzBytes": 32910
+    },
+    "-4_0": {
+      "ways": 663,
+      "areas": 237,
+      "gzBytes": 37474
+    },
+    "-4_1": {
+      "ways": 596,
+      "areas": 154,
+      "gzBytes": 31106
+    },
+    "-4_2": {
+      "ways": 515,
+      "areas": 232,
+      "gzBytes": 35553
+    },
+    "-4_3": {
+      "ways": 501,
+      "areas": 413,
+      "gzBytes": 59334
+    },
+    "-4_4": {
+      "ways": 320,
+      "areas": 144,
+      "gzBytes": 31643
+    },
+    "-4_5": {
+      "ways": 126,
+      "areas": 26,
+      "gzBytes": 5912
+    },
+    "-5_-1": {
+      "ways": 541,
+      "areas": 143,
+      "gzBytes": 26160
+    },
+    "-5_-2": {
+      "ways": 661,
+      "areas": 135,
+      "gzBytes": 31165
+    },
+    "-5_-3": {
+      "ways": 681,
+      "areas": 268,
+      "gzBytes": 37427
+    },
+    "-5_-4": {
+      "ways": 283,
+      "areas": 89,
+      "gzBytes": 21029
+    },
+    "-5_-5": {
+      "ways": 52,
+      "areas": 27,
+      "gzBytes": 8297
+    },
+    "-5_0": {
+      "ways": 630,
+      "areas": 183,
+      "gzBytes": 32745
+    },
+    "-5_1": {
+      "ways": 594,
+      "areas": 168,
+      "gzBytes": 30607
+    },
+    "-5_2": {
+      "ways": 646,
+      "areas": 269,
+      "gzBytes": 45647
+    },
+    "-5_3": {
+      "ways": 314,
+      "areas": 268,
+      "gzBytes": 38177
+    },
+    "-5_4": {
+      "ways": 220,
+      "areas": 140,
+      "gzBytes": 28753
+    },
+    "-5_5": {
+      "ways": 208,
+      "areas": 98,
+      "gzBytes": 21570
+    },
+    "-6_-1": {
+      "ways": 126,
+      "areas": 69,
+      "gzBytes": 17417
+    },
+    "-6_-2": {
+      "ways": 436,
+      "areas": 221,
+      "gzBytes": 29609
+    },
+    "-6_-3": {
+      "ways": 653,
+      "areas": 272,
+      "gzBytes": 37812
+    },
+    "-6_-4": {
+      "ways": 422,
+      "areas": 124,
+      "gzBytes": 27062
+    },
+    "-6_-5": {
+      "ways": 77,
+      "areas": 41,
+      "gzBytes": 7892
+    },
+    "-6_-6": {
+      "ways": 162,
+      "areas": 43,
+      "gzBytes": 14341
+    },
+    "-6_0": {
+      "ways": 471,
+      "areas": 152,
+      "gzBytes": 29337
+    },
+    "-6_1": {
+      "ways": 443,
+      "areas": 167,
+      "gzBytes": 26800
+    },
+    "-6_2": {
+      "ways": 159,
+      "areas": 59,
+      "gzBytes": 12805
+    },
+    "-6_3": {
+      "ways": 31,
+      "areas": 10,
+      "gzBytes": 2701
+    },
+    "-6_4": {
+      "ways": 41,
+      "areas": 31,
+      "gzBytes": 9615
+    },
+    "-6_5": {
+      "ways": 177,
+      "areas": 75,
+      "gzBytes": 16555
+    },
+    "-7_-1": {
+      "ways": 412,
+      "areas": 205,
+      "gzBytes": 37225
+    },
+    "-7_-2": {
+      "ways": 832,
+      "areas": 657,
+      "gzBytes": 80804
+    },
+    "-7_-3": {
+      "ways": 583,
+      "areas": 233,
+      "gzBytes": 37165
+    },
+    "-7_-4": {
+      "ways": 330,
+      "areas": 103,
+      "gzBytes": 20887
+    },
+    "-7_-5": {
+      "ways": 174,
+      "areas": 69,
+      "gzBytes": 16794
+    },
+    "-7_0": {
+      "ways": 378,
+      "areas": 272,
+      "gzBytes": 30578
+    },
+    "-7_1": {
+      "ways": 433,
+      "areas": 161,
+      "gzBytes": 28467
+    },
+    "-7_2": {
+      "ways": 189,
+      "areas": 97,
+      "gzBytes": 19367
+    },
+    "-7_3": {
+      "ways": 97,
+      "areas": 55,
+      "gzBytes": 13867
+    },
+    "-7_4": {
+      "ways": 119,
+      "areas": 19,
+      "gzBytes": 6511
+    },
+    "-7_5": {
+      "ways": 30,
+      "areas": 19,
+      "gzBytes": 3937
+    },
+    "-8_-1": {
+      "ways": 236,
+      "areas": 86,
+      "gzBytes": 15818
+    },
+    "-8_-2": {
+      "ways": 531,
+      "areas": 246,
+      "gzBytes": 32365
+    },
+    "-8_-3": {
+      "ways": 529,
+      "areas": 193,
+      "gzBytes": 34094
+    },
+    "-8_-4": {
+      "ways": 351,
+      "areas": 187,
+      "gzBytes": 23185
+    },
+    "-8_0": {
+      "ways": 185,
+      "areas": 149,
+      "gzBytes": 17793
+    },
+    "-8_1": {
+      "ways": 222,
+      "areas": 174,
+      "gzBytes": 22370
+    },
+    "-8_2": {
+      "ways": 139,
+      "areas": 101,
+      "gzBytes": 13867
+    },
+    "-8_3": {
+      "ways": 108,
+      "areas": 38,
+      "gzBytes": 7310
+    },
+    "-8_4": {
+      "ways": 28,
+      "areas": 10,
+      "gzBytes": 2300
+    },
+    "-8_5": {
+      "ways": 47,
+      "areas": 14,
+      "gzBytes": 2802
+    },
+    "-9_-1": {
+      "ways": 86,
+      "areas": 63,
+      "gzBytes": 11371
+    },
+    "-9_-2": {
+      "ways": 439,
+      "areas": 179,
+      "gzBytes": 32570
+    },
+    "-9_-3": {
+      "ways": 436,
+      "areas": 154,
+      "gzBytes": 27326
+    },
+    "-9_0": {
+      "ways": 208,
+      "areas": 79,
+      "gzBytes": 16926
+    },
+    "-9_1": {
+      "ways": 227,
+      "areas": 103,
+      "gzBytes": 27260
+    },
+    "-9_2": {
+      "ways": 161,
+      "areas": 46,
+      "gzBytes": 12536
+    },
+    "-9_3": {
+      "ways": 106,
+      "areas": 31,
+      "gzBytes": 6919
+    },
+    "-9_4": {
+      "ways": 22,
+      "areas": 3,
+      "gzBytes": 1801
+    },
+    "-9_5": {
+      "ways": 17,
+      "areas": 9,
+      "gzBytes": 1552
+    },
+    "-9_6": {
+      "ways": 398,
+      "areas": 211,
+      "gzBytes": 41765
+    },
+    "0_-1": {
+      "ways": 836,
+      "areas": 184,
+      "gzBytes": 43432
+    },
+    "0_-2": {
+      "ways": 612,
+      "areas": 267,
+      "gzBytes": 38411
+    },
+    "0_-3": {
+      "ways": 589,
+      "areas": 442,
+      "gzBytes": 53594
+    },
+    "0_-4": {
+      "ways": 878,
+      "areas": 725,
+      "gzBytes": 110672
+    },
+    "0_-5": {
+      "ways": 248,
+      "areas": 132,
+      "gzBytes": 22094
+    },
+    "0_-6": {
+      "ways": 92,
+      "areas": 82,
+      "gzBytes": 12255
+    },
+    "0_-7": {
+      "ways": 159,
+      "areas": 88,
+      "gzBytes": 15255
+    },
+    "0_0": {
+      "ways": 1442,
+      "areas": 110,
+      "gzBytes": 54606
+    },
+    "0_1": {
+      "ways": 1012,
+      "areas": 695,
+      "gzBytes": 96027
+    },
+    "0_2": {
+      "ways": 623,
+      "areas": 169,
+      "gzBytes": 33871
+    },
+    "0_3": {
+      "ways": 531,
+      "areas": 194,
+      "gzBytes": 34849
+    },
+    "0_4": {
+      "ways": 419,
+      "areas": 190,
+      "gzBytes": 27671
+    },
+    "0_5": {
+      "ways": 456,
+      "areas": 151,
+      "gzBytes": 29392
+    },
+    "10_-10": {
+      "ways": 55,
+      "areas": 78,
+      "gzBytes": 15963
+    },
+    "10_-5": {
+      "ways": 293,
+      "areas": 66,
+      "gzBytes": 18545
+    },
+    "10_-6": {
+      "ways": 244,
+      "areas": 104,
+      "gzBytes": 18207
+    },
+    "10_-7": {
+      "ways": 92,
+      "areas": 58,
+      "gzBytes": 17016
+    },
+    "10_-8": {
+      "ways": 116,
+      "areas": 90,
+      "gzBytes": 14092
+    },
+    "10_-9": {
+      "ways": 70,
+      "areas": 71,
+      "gzBytes": 12635
+    },
+    "10_4": {
+      "ways": 27,
+      "areas": 15,
+      "gzBytes": 4159
+    },
+    "10_5": {
+      "ways": 35,
+      "areas": 85,
+      "gzBytes": 12225
+    },
+    "11_-10": {
+      "ways": 41,
+      "areas": 54,
+      "gzBytes": 11058
+    },
+    "11_-11": {
+      "ways": 40,
+      "areas": 29,
+      "gzBytes": 6196
+    },
+    "11_-6": {
+      "ways": 109,
+      "areas": 70,
+      "gzBytes": 14092
+    },
+    "11_-7": {
+      "ways": 76,
+      "areas": 62,
+      "gzBytes": 9562
+    },
+    "11_-8": {
+      "ways": 22,
+      "areas": 80,
+      "gzBytes": 13912
+    },
+    "11_-9": {
+      "ways": 96,
+      "areas": 84,
+      "gzBytes": 17466
+    },
+    "11_4": {
+      "ways": 2,
+      "areas": 0,
+      "gzBytes": 1071
+    },
+    "11_5": {
+      "ways": 54,
+      "areas": 33,
+      "gzBytes": 9123
+    },
+    "12_-10": {
+      "ways": 20,
+      "areas": 48,
+      "gzBytes": 8611
+    },
+    "12_-7": {
+      "ways": 60,
+      "areas": 68,
+      "gzBytes": 11240
+    },
+    "12_-8": {
+      "ways": 65,
+      "areas": 84,
+      "gzBytes": 15365
+    },
+    "12_-9": {
+      "ways": 99,
+      "areas": 81,
+      "gzBytes": 21577
+    },
+    "13_-10": {
+      "ways": 40,
+      "areas": 57,
+      "gzBytes": 12000
+    },
+    "13_-11": {
+      "ways": 29,
+      "areas": 71,
+      "gzBytes": 18587
+    },
+    "13_-7": {
+      "ways": 53,
+      "areas": 60,
+      "gzBytes": 9655
+    },
+    "13_-8": {
+      "ways": 12,
+      "areas": 17,
+      "gzBytes": 7159
+    },
+    "1_-1": {
+      "ways": 827,
+      "areas": 263,
+      "gzBytes": 54577
+    },
+    "1_-2": {
+      "ways": 576,
+      "areas": 200,
+      "gzBytes": 38678
+    },
+    "1_-3": {
+      "ways": 1781,
+      "areas": 989,
+      "gzBytes": 138727
+    },
+    "1_-4": {
+      "ways": 564,
+      "areas": 320,
+      "gzBytes": 47289
+    },
+    "1_-5": {
+      "ways": 359,
+      "areas": 109,
+      "gzBytes": 19326
+    },
+    "1_-7": {
+      "ways": 86,
+      "areas": 64,
+      "gzBytes": 11851
+    },
+    "1_0": {
+      "ways": 507,
+      "areas": 115,
+      "gzBytes": 23575
+    },
+    "1_1": {
+      "ways": 469,
+      "areas": 199,
+      "gzBytes": 25491
+    },
+    "1_2": {
+      "ways": 865,
+      "areas": 338,
+      "gzBytes": 73410
+    },
+    "1_3": {
+      "ways": 588,
+      "areas": 422,
+      "gzBytes": 51107
+    },
+    "1_4": {
+      "ways": 712,
+      "areas": 186,
+      "gzBytes": 39423
+    },
+    "1_5": {
+      "ways": 50,
+      "areas": 57,
+      "gzBytes": 13569
+    },
+    "2_-1": {
+      "ways": 550,
+      "areas": 156,
+      "gzBytes": 30350
+    },
+    "2_-2": {
+      "ways": 685,
+      "areas": 288,
+      "gzBytes": 42463
+    },
+    "2_-3": {
+      "ways": 1140,
+      "areas": 568,
+      "gzBytes": 107687
+    },
+    "2_-4": {
+      "ways": 675,
+      "areas": 326,
+      "gzBytes": 69217
+    },
+    "2_-5": {
+      "ways": 677,
+      "areas": 364,
+      "gzBytes": 71890
+    },
+    "2_-6": {
+      "ways": 289,
+      "areas": 155,
+      "gzBytes": 27697
+    },
+    "2_-7": {
+      "ways": 535,
+      "areas": 133,
+      "gzBytes": 32576
+    },
+    "2_-8": {
+      "ways": 277,
+      "areas": 86,
+      "gzBytes": 18939
+    },
+    "2_-9": {
+      "ways": 110,
+      "areas": 66,
+      "gzBytes": 14173
+    },
+    "2_0": {
+      "ways": 566,
+      "areas": 130,
+      "gzBytes": 29139
+    },
+    "2_1": {
+      "ways": 95,
+      "areas": 35,
+      "gzBytes": 6724
+    },
+    "2_2": {
+      "ways": 602,
+      "areas": 228,
+      "gzBytes": 34569
+    },
+    "2_3": {
+      "ways": 1012,
+      "areas": 367,
+      "gzBytes": 69042
+    },
+    "2_4": {
+      "ways": 246,
+      "areas": 111,
+      "gzBytes": 19508
+    },
+    "3_-1": {
+      "ways": 476,
+      "areas": 233,
+      "gzBytes": 37742
+    },
+    "3_-10": {
+      "ways": 105,
+      "areas": 91,
+      "gzBytes": 20833
+    },
+    "3_-11": {
+      "ways": 70,
+      "areas": 71,
+      "gzBytes": 13419
+    },
+    "3_-2": {
+      "ways": 742,
+      "areas": 532,
+      "gzBytes": 102186
+    },
+    "3_-3": {
+      "ways": 682,
+      "areas": 450,
+      "gzBytes": 81748
+    },
+    "3_-4": {
+      "ways": 1176,
+      "areas": 1008,
+      "gzBytes": 159820
+    },
+    "3_-5": {
+      "ways": 1199,
+      "areas": 954,
+      "gzBytes": 146241
+    },
+    "3_-6": {
+      "ways": 741,
+      "areas": 346,
+      "gzBytes": 54048
+    },
+    "3_-7": {
+      "ways": 867,
+      "areas": 220,
+      "gzBytes": 43166
+    },
+    "3_-8": {
+      "ways": 1052,
+      "areas": 488,
+      "gzBytes": 123956
+    },
+    "3_-9": {
+      "ways": 630,
+      "areas": 328,
+      "gzBytes": 63433
+    },
+    "3_0": {
+      "ways": 156,
+      "areas": 50,
+      "gzBytes": 13027
+    },
+    "3_1": {
+      "ways": 134,
+      "areas": 42,
+      "gzBytes": 10589
+    },
+    "3_2": {
+      "ways": 592,
+      "areas": 515,
+      "gzBytes": 42252
+    },
+    "3_3": {
+      "ways": 403,
+      "areas": 215,
+      "gzBytes": 35648
+    },
+    "3_4": {
+      "ways": 67,
+      "areas": 45,
+      "gzBytes": 10751
+    },
+    "3_5": {
+      "ways": 146,
+      "areas": 82,
+      "gzBytes": 17061
+    },
+    "3_6": {
+      "ways": 83,
+      "areas": 70,
+      "gzBytes": 12552
+    },
+    "4_-1": {
+      "ways": 228,
+      "areas": 43,
+      "gzBytes": 12729
+    },
+    "4_-10": {
+      "ways": 271,
+      "areas": 144,
+      "gzBytes": 38414
+    },
+    "4_-11": {
+      "ways": 626,
+      "areas": 166,
+      "gzBytes": 41605
+    },
+    "4_-2": {
+      "ways": 429,
+      "areas": 284,
+      "gzBytes": 69340
+    },
+    "4_-3": {
+      "ways": 1037,
+      "areas": 811,
+      "gzBytes": 129908
+    },
+    "4_-5": {
+      "ways": 959,
+      "areas": 871,
+      "gzBytes": 126625
+    },
+    "4_-6": {
+      "ways": 2105,
+      "areas": 1178,
+      "gzBytes": 187901
+    },
+    "4_-7": {
+      "ways": 936,
+      "areas": 384,
+      "gzBytes": 85966
+    },
+    "4_-8": {
+      "ways": 625,
+      "areas": 183,
+      "gzBytes": 41033
+    },
+    "4_-9": {
+      "ways": 660,
+      "areas": 194,
+      "gzBytes": 44884
+    },
+    "4_0": {
+      "ways": 350,
+      "areas": 161,
+      "gzBytes": 28236
+    },
+    "4_1": {
+      "ways": 402,
+      "areas": 136,
+      "gzBytes": 26923
+    },
+    "4_2": {
+      "ways": 309,
+      "areas": 143,
+      "gzBytes": 22306
+    },
+    "4_3": {
+      "ways": 97,
+      "areas": 80,
+      "gzBytes": 15512
+    },
+    "4_4": {
+      "ways": 137,
+      "areas": 104,
+      "gzBytes": 19099
+    },
+    "4_6": {
+      "ways": 55,
+      "areas": 65,
+      "gzBytes": 12843
+    },
+    "5_-1": {
+      "ways": 242,
+      "areas": 35,
+      "gzBytes": 10426
+    },
+    "5_-10": {
+      "ways": 37,
+      "areas": 78,
+      "gzBytes": 9914
+    },
+    "5_-11": {
+      "ways": 419,
+      "areas": 184,
+      "gzBytes": 31935
+    },
+    "5_-2": {
+      "ways": 155,
+      "areas": 44,
+      "gzBytes": 11283
+    },
+    "5_-3": {
+      "ways": 632,
+      "areas": 419,
+      "gzBytes": 72905
+    },
+    "5_-5": {
+      "ways": 842,
+      "areas": 715,
+      "gzBytes": 109844
+    },
+    "5_-6": {
+      "ways": 1026,
+      "areas": 522,
+      "gzBytes": 111765
+    },
+    "5_-7": {
+      "ways": 670,
+      "areas": 149,
+      "gzBytes": 50824
+    },
+    "5_-8": {
+      "ways": 537,
+      "areas": 182,
+      "gzBytes": 35452
+    },
+    "5_-9": {
+      "ways": 725,
+      "areas": 177,
+      "gzBytes": 34481
+    },
+    "5_0": {
+      "ways": 213,
+      "areas": 135,
+      "gzBytes": 36107
+    },
+    "5_1": {
+      "ways": 99,
+      "areas": 122,
+      "gzBytes": 30589
+    },
+    "5_2": {
+      "ways": 39,
+      "areas": 55,
+      "gzBytes": 10072
+    },
+    "5_3": {
+      "ways": 63,
+      "areas": 65,
+      "gzBytes": 12408
+    },
+    "5_4": {
+      "ways": 28,
+      "areas": 62,
+      "gzBytes": 11679
+    },
+    "5_5": {
+      "ways": 35,
+      "areas": 82,
+      "gzBytes": 16939
+    },
+    "6_-1": {
+      "ways": 52,
+      "areas": 4,
+      "gzBytes": 2465
+    },
+    "6_-10": {
+      "ways": 45,
+      "areas": 66,
+      "gzBytes": 7791
+    },
+    "6_-2": {
+      "ways": 456,
+      "areas": 77,
+      "gzBytes": 17484
+    },
+    "6_-3": {
+      "ways": 114,
+      "areas": 78,
+      "gzBytes": 22736
+    },
+    "6_-5": {
+      "ways": 258,
+      "areas": 367,
+      "gzBytes": 100255
+    },
+    "6_-6": {
+      "ways": 265,
+      "areas": 222,
+      "gzBytes": 53155
+    },
+    "6_-7": {
+      "ways": 372,
+      "areas": 233,
+      "gzBytes": 56544
+    },
+    "6_-8": {
+      "ways": 204,
+      "areas": 65,
+      "gzBytes": 17400
+    },
+    "6_-9": {
+      "ways": 325,
+      "areas": 145,
+      "gzBytes": 23500
+    },
+    "6_0": {
+      "ways": 131,
+      "areas": 74,
+      "gzBytes": 13970
+    },
+    "6_1": {
+      "ways": 277,
+      "areas": 247,
+      "gzBytes": 60085
+    },
+    "6_2": {
+      "ways": 120,
+      "areas": 82,
+      "gzBytes": 17467
+    },
+    "6_3": {
+      "ways": 28,
+      "areas": 67,
+      "gzBytes": 10966
+    },
+    "6_4": {
+      "ways": 31,
+      "areas": 42,
+      "gzBytes": 8257
+    },
+    "6_5": {
+      "ways": 71,
+      "areas": 42,
+      "gzBytes": 12746
+    },
+    "6_6": {
+      "ways": 187,
+      "areas": 70,
+      "gzBytes": 18182
+    },
+    "7_-2": {
+      "ways": 216,
+      "areas": 42,
+      "gzBytes": 12147
+    },
+    "7_-3": {
+      "ways": 341,
+      "areas": 91,
+      "gzBytes": 18358
+    },
+    "7_-5": {
+      "ways": 129,
+      "areas": 97,
+      "gzBytes": 26498
+    },
+    "7_-6": {
+      "ways": 121,
+      "areas": 140,
+      "gzBytes": 23130
+    },
+    "7_-7": {
+      "ways": 147,
+      "areas": 106,
+      "gzBytes": 17814
+    },
+    "7_-8": {
+      "ways": 168,
+      "areas": 82,
+      "gzBytes": 14766
+    },
+    "7_-9": {
+      "ways": 78,
+      "areas": 86,
+      "gzBytes": 14064
+    },
+    "7_1": {
+      "ways": 80,
+      "areas": 97,
+      "gzBytes": 37458
+    },
+    "7_2": {
+      "ways": 44,
+      "areas": 59,
+      "gzBytes": 22282
+    },
+    "7_3": {
+      "ways": 27,
+      "areas": 79,
+      "gzBytes": 11750
+    },
+    "7_4": {
+      "ways": 18,
+      "areas": 47,
+      "gzBytes": 8782
+    },
+    "7_5": {
+      "ways": 53,
+      "areas": 62,
+      "gzBytes": 9833
+    },
+    "8_-1": {
+      "ways": 13,
+      "areas": 0,
+      "gzBytes": 937
+    },
+    "8_-10": {
+      "ways": 52,
+      "areas": 47,
+      "gzBytes": 7046
+    },
+    "8_-11": {
+      "ways": 239,
+      "areas": 82,
+      "gzBytes": 19486
+    },
+    "8_-2": {
+      "ways": 133,
+      "areas": 11,
+      "gzBytes": 5693
+    },
+    "8_-3": {
+      "ways": 27,
+      "areas": 0,
+      "gzBytes": 1604
+    },
+    "8_-5": {
+      "ways": 160,
+      "areas": 99,
+      "gzBytes": 22327
+    },
+    "8_-6": {
+      "ways": 123,
+      "areas": 57,
+      "gzBytes": 15242
+    },
+    "8_-7": {
+      "ways": 204,
+      "areas": 63,
+      "gzBytes": 12842
+    },
+    "8_-8": {
+      "ways": 245,
+      "areas": 61,
+      "gzBytes": 17233
+    },
+    "8_-9": {
+      "ways": 47,
+      "areas": 49,
+      "gzBytes": 8480
+    },
+    "8_1": {
+      "ways": 24,
+      "areas": 25,
+      "gzBytes": 4387
+    },
+    "8_2": {
+      "ways": 36,
+      "areas": 26,
+      "gzBytes": 9661
+    },
+    "8_3": {
+      "ways": 38,
+      "areas": 69,
+      "gzBytes": 12988
+    },
+    "8_4": {
+      "ways": 70,
+      "areas": 71,
+      "gzBytes": 13056
+    },
+    "8_5": {
+      "ways": 63,
+      "areas": 62,
+      "gzBytes": 11275
+    },
+    "9_-1": {
+      "ways": 1,
+      "areas": 8,
+      "gzBytes": 556
+    },
+    "9_-2": {
+      "ways": 22,
+      "areas": 8,
+      "gzBytes": 1407
+    },
+    "9_-5": {
+      "ways": 120,
+      "areas": 54,
+      "gzBytes": 14911
+    },
+    "9_-6": {
+      "ways": 336,
+      "areas": 55,
+      "gzBytes": 16445
+    },
+    "9_-7": {
+      "ways": 555,
+      "areas": 102,
+      "gzBytes": 28721
+    },
+    "9_-8": {
+      "ways": 484,
+      "areas": 126,
+      "gzBytes": 31182
+    },
+    "9_-9": {
+      "ways": 117,
+      "areas": 81,
+      "gzBytes": 13474
+    },
+    "9_3": {
+      "ways": 13,
+      "areas": 6,
+      "gzBytes": 2256
+    },
+    "9_4": {
+      "ways": 67,
+      "areas": 67,
+      "gzBytes": 15785
+    }
+  }
+}

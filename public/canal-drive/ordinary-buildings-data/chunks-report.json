@@ -1,0 +1,268 @@
+{
+ "totals": {
+  "chunks": 2,
+  "houses": 4,
+  "skippedFaces": [
+   [
+    "bilder-153622"
+   ],
+   [
+    "bilder-153782"
+   ],
+   [
+    "bilder-154127"
+   ]
+  ],
+  "coveredByBlockFaces": [
+   "bilder-080336 (face bilder-080336-090492)",
+   "bilder-081118 (face bilder-081118-155417)",
+   "bilder-087959 (face bilder-081118-155417)",
+   "bilder-090492 (face bilder-080336-090492)",
+   "bilder-092394 (face bilder-080336-090492)",
+   "bilder-092395 (face bilder-080336-090492)",
+   "bilder-155417 (face bilder-081118-155417)",
+   "bilder-155418 (face bilder-081118-155417)",
+   "bilder-156286 (face bilder-081118-155417)",
+   "bilder-156287 (face bilder-081118-155417)",
+   "bilder-157154 (face bilder-161259-236206)",
+   "bilder-157650 (face bilder-081118-155417)"
+  ],
+  "triangles": {
+   "individual": 6520,
+   "chunk": 6649
+  },
+  "primitives": {
+   "individual": 34,
+   "chunk": 25
+  },
+  "bytes": {
+   "individual": 452336,
+   "chunk": 446720
+  }
+ },
+ "chunks": [
+  {
+   "name": "bilder-079721-x2",
+   "houses": 2,
+   "triangles": {
+    "individual": 4691,
+    "merged": 4835,
+    "chunk": 4823,
+    "partyWallDropped": 12
+   },
+   "primitives": {
+    "individual": 17,
+    "chunk": 13
+   },
+   "bytes": {
+    "individual": 319156,
+    "chunk": 315504
+   },
+   "gzipBytes": {
+    "individual": 77277,
+    "chunk": 70660
+   },
+   "partyWalls": [
+    {
+     "a": "bilder-152669",
+     "b": "bilder-079721",
+     "lengthM": 3.34,
+     "removedAreaA": 48.5,
+     "exposedAreaA": 0,
+     "topA": 14.53,
+     "topB": 14.58,
+     "keptWhole": 0
+    },
+    {
+     "a": "bilder-152669",
+     "b": "bilder-079721",
+     "lengthM": 0.46,
+     "removedAreaA": 6.63,
+     "exposedAreaA": 1.1,
+     "topA": 16.87,
+     "topB": 17.73,
+     "keptWhole": 4
+    },
+    {
+     "a": "bilder-152669",
+     "b": "bilder-079721",
+     "lengthM": 13.19,
+     "removedAreaA": 225.03,
+     "exposedAreaA": 2.85,
+     "topA": 17.69,
+     "topB": 17.82,
+     "keptWhole": 0
+    },
+    {
+     "a": "bilder-079721",
+     "b": "bilder-152669",
+     "lengthM": 0.46,
+     "removedAreaA": 6.63,
+     "exposedAreaA": 0,
+     "topA": 14.49,
+     "topB": 16.87,
+     "keptWhole": 0
+    },
+    {
+     "a": "bilder-079721",
+     "b": "bilder-152669",
+     "lengthM": 3.34,
+     "removedAreaA": 48.51,
+     "exposedAreaA": 0.09,
+     "topA": 14.58,
+     "topB": 16.84,
+     "keptWhole": 0
+    },
+    {
+     "a": "bilder-079721",
+     "b": "bilder-152669",
+     "lengthM": 13.19,
+     "removedAreaA": 225.05,
+     "exposedAreaA": 5.87,
+     "topA": 17.82,
+     "topB": 17.69,
+     "keptWhole": 1
+    }
+   ],
+   "joints": [
+    {
+     "left": "bilder-152669",
+     "right": "bilder-079721",
+     "lateralGapM": -1.096,
+     "depthStepM": 0,
+     "eavesStepBeforeM": -1.77,
+     "eavesStepAfterM": -1.77,
+     "sharedFrontVertex": true
+    }
+   ],
+   "ground": {
+    "sharedNapM": 0.33,
+    "shiftsM": {
+     "bilder-152669": 0.16,
+     "bilder-079721": -0.16
+    }
+   },
+   "eaves": {
+    "before": {
+     "bilder-152669": 17.56,
+     "bilder-079721": 15.79
+    },
+    "after": {
+     "bilder-152669": 17.56,
+     "bilder-079721": 15.79
+    },
+    "clusters": []
+   },
+   "warnings": [],
+   "timingsMs": {
+    "compile": 35.5,
+    "trim": 1.7,
+    "write": 15.6
+   }
+  },
+  {
+   "name": "bilder-152363-x2",
+   "houses": 2,
+   "triangles": {
+    "individual": 1829,
+    "merged": 1829,
+    "chunk": 1826,
+    "partyWallDropped": 3
+   },
+   "primitives": {
+    "individual": 17,
+    "chunk": 12
+   },
+   "bytes": {
+    "individual": 133180,
+    "chunk": 131216
+   },
+   "gzipBytes": {
+    "individual": 32787,
+    "chunk": 31729
+   },
+   "partyWalls": [
+    {
+     "a": "bilder-152363",
+     "b": "bilder-156732",
+     "lengthM": 2.92,
+     "removedAreaA": 44,
+     "exposedAreaA": 0,
+     "topA": 15.12,
+     "topB": 16.01,
+     "keptWhole": 2
+    },
+    {
+     "a": "bilder-152363",
+     "b": "bilder-156732",
+     "lengthM": 2.87,
+     "removedAreaA": 41.86,
+     "exposedAreaA": 0.16,
+     "topA": 16.02,
+     "topB": 16.01,
+     "keptWhole": 2
+    },
+    {
+     "a": "bilder-156732",
+     "b": "bilder-152363",
+     "lengthM": 2.87,
+     "removedAreaA": 41.85,
+     "exposedAreaA": 0,
+     "topA": 16.01,
+     "topB": 16.02,
+     "keptWhole": 2
+    },
+    {
+     "a": "bilder-156732",
+     "b": "bilder-152363",
+     "lengthM": 2.92,
+     "removedAreaA": 44.01,
+     "exposedAreaA": 0.19,
+     "topA": 15.26,
+     "topB": 16.02,
+     "keptWhole": 0
+    }
+   ],
+   "joints": [
+    {
+     "left": "bilder-152363",
+     "right": "bilder-156732",
+     "lateralGapM": 0,
+     "depthStepM": 0,
+     "eavesStepBeforeM": -0.1,
+     "eavesStepAfterM": 0,
+     "sharedFrontVertex": true
+    }
+   ],
+   "ground": {
+    "sharedNapM": 0.68,
+    "shiftsM": {
+     "bilder-152363": 0.13,
+     "bilder-156732": -0.14
+    }
+   },
+   "eaves": {
+    "before": {
+     "bilder-152363": 13.35,
+     "bilder-156732": 13.25
+    },
+    "after": {
+     "bilder-152363": 13.3,
+     "bilder-156732": 13.3
+    },
+    "clusters": [
+     [
+      "bilder-152363",
+      "bilder-156732"
+     ]
+    ]
+   },
+   "warnings": [],
+   "timingsMs": {
+    "compile": 8,
+    "trim": 0.3,
+    "write": 6.8
+   }
+  }
+ ]
+}

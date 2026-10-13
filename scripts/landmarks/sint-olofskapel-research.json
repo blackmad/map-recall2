@@ -1,0 +1,11 @@
+{
+  "id": "sint-olofskapel",
+  "bagPand": "NL.IMBAG.Pand.0363100012177887",
+  "bagBouwjaar": 1440,
+  "sources": [
+    "https://nl.wikipedia.org/wiki/Sint-Olofskapel",
+    "https://commons.wikimedia.org/wiki/File:Amsterdam,_Sint_Olofskapel_3.jpg",
+    "https://commons.wikimedia.org/wiki/File:Sint_Olofskapel_of_Oudezijds_Kapel_Zeedijk2A_Amsterdam.jpg"
+  ],
+  "notes": "3DBAG LoD2.2 for this pand is unreliable (a roof slab reaches 25.5 m, a flat 17 m slab spans the valleys). Massing uses the BAG ring corners and the clean roof planes: two steep gables, eave 9.1 m, ridge 17.3 m above local ground (ground 1.80 m NAP). Photographs show a slim bell turret in the valley and round windows on the flank."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Coymanshuis",
+  "landmarkId": "requested-coymanshuis",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Coymanshuis",
+  "suppressOsmIds": [
+    "w266616361",
+    "NL.IMBAG.Pand.0363100012165021"
+  ],
+  "pandId": "0363100012165021",
+  "materialOverrides": {
+    "brick": "#7a4a3b",
+    "stone": "#d9d2c2",
+    "white": "#ece8dd",
+    "sandstone": "#bdb39d",
+    "slate": "#4b4f55",
+    "glass": "#4e5f6b",
+    "frame": "#e4e1d8",
+    "dark": "#2a2d30"
+  },
+  "surveySource": "Current BAG 0363100012165021 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the eight-axis front, pilaster orders, cornices, doors and the two neighbouring fronts of the same BAG pand measured by eye from the 2021 and 2025 municipal panoramas, no pixels or meshes imported."
+}

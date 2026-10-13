@@ -1,0 +1,13 @@
+{
+  "file": "artifacts/landmark-next-batch/fire-station-zebra.glb",
+  "sha256": "8f06d1a2bb1086d3a024447e3a8fe87caf85b384a3ce279ed4a551ab1d2e7efe",
+  "triangles": 8717,
+  "roofSlopeFaces": 23,
+  "failed": [
+    {
+      "triangle": 141,
+      "ny": -1,
+      "area": 0.001812152764770758
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "christ-church-groenburgwal",
+  "bagPand": "0363100012171165",
+  "osmWay": "w266927240",
+  "rijksmonument": "1269",
+  "retrieved": "2026-10-10",
+  "sources": [
+    {"url": "https://commons.wikimedia.org/wiki/File:English-episcopal-church-am.jpg", "file": "artifacts/landmark-lanes/christ-church-groenburgwal/ref-se.jpg", "original": "https://upload.wikimedia.org/wikipedia/commons/b/b9/English-episcopal-church-am.jpg", "use": "straight-on view of the south-east front from the opposite quay (window axes, gable, piers, spires, door, plaque); photographed 2008-06-08 by Jvhertum", "licence": "Public domain (Wikimedia Commons)"},
+    {"url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Groenburgwal_42.JPG", "file": "artifacts/landmark-lanes/christ-church-groenburgwal/ref-se-oblique.jpg", "original": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Amsterdam_-_Groenburgwal_42.JPG", "use": "close oblique view: corner piers and spires, lower right bay, plinth, plaque, raking copings and iron tie-fleurs; 2011-09-03 by Rudolphous", "licence": "CC BY-SA 3.0"},
+    {"url": "https://commons.wikimedia.org/wiki/File:Engelse_Episcopale_kerk.JPG", "file": "artifacts/landmark-lanes/christ-church-groenburgwal/ref-engelse-episcopale-kerk.jpg", "original": "https://upload.wikimedia.org/wikipedia/commons/3/32/Engelse_Episcopale_kerk.JPG", "use": "second close oblique view of the front (uploaded 2010-12-06)", "licence": "CC BY-SA 3.0 nl"},
+    {"url": "https://commons.wikimedia.org/wiki/File:Groenburgwal_met_Engelse_Episc.Kerk_-_Amsterdam_-_20016958_-_RCE.jpg", "file": "artifacts/landmark-lanes/christ-church-groenburgwal/ref-rce-1930.jpg", "original": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Groenburgwal_met_Engelse_Episc.Kerk_-_Amsterdam_-_20016958_-_RCE.jpg", "use": "c.1930 street view, context only (no present-day detail taken from it)", "licence": "CC BY-SA 4.0 (RCE)"},
+    {"url": "https://nl.wikipedia.org/wiki/Christ_Church_(Amsterdam)", "use": "history: cloth hall of 1626 (Staalhof), Episcopal congregation from 1771, neo-Gothic front possibly by J.J. Janssen, one of the first neo-Gothic facades in the Netherlands; smooth red brick with fine joints, pointed arches", "licence": "CC BY-SA, facts only"},
+    {"url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1269", "use": "rijksmonument 1269 (identity; page is a JavaScript viewer, text not retrieved)", "licence": "RCE register, facts only"},
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012171165&f=json", "use": "BAG pand 0363100012171165, bouwjaar 1829", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171165", "use": "LoD2.2 massing shell (front doorway recess 0.74 m deep, front wall line used as facade frame)", "licence": "CC BY 4.0 (3DBAG)"},
+    {"url": "https://overpass-api.de/api/interpreter (way[ref:bag=0363100012171165])", "use": "OSM way w266927240 Church of England, ref:rce 1269", "licence": "ODbL"}
+  ],
+  "notes": "Scope is the BAG pand 0363100012171165 only. The front (122.5 deg) is measured from the straight-on and oblique photographs (scale ~64 px/m from the 11.08 m front width); left and right bays differ in the photographs (wide three-lancet window, taller left corner pier; narrower two-lancet window, lower right corner pier) and are modelled that way. Side (NE, SW) and rear walls are party walls with no photograph: plain 3DBAG brick, inferred, and the audit reports them as blank-wall warnings. The EPISCOPAL CHURCH plaque is left blank; no lettering is modelled. Frames in the photographs are hidden behind trees in the right bay, so the right window's lancet count (two) comes from the oblique view. No in-game shot: the game bundles are rebuilt by the integrator."
+}

@@ -1,0 +1,40 @@
+{
+  "id": "haparandaweg-952-1002",
+  "building": "Haparandaweg 952-1002 (BAG NL.IMBAG.Pand.0363100012244592, 2014, 3DBAG ridge 32.2 m). ONE pand spanning a red-framed building (1002 end), a grey-framed building (952 end) and, on the SE side, a row of low townhouses.",
+  "units": "metres; u from the left end of the wall looking at it from outside (NE end for the NW front); v above 3DBAG ground. Rectified photo px -> m: x/50 for u; v = (1471 - y_px)/50 * 1.0217 (1471 = ground row, the crop base is 0.9 m below 3DBAG ground; 1.0217 reconciles the top beam y=66 with the 3DBAG 28.8 m wall top).",
+  "evidence": {
+    "redFront": "artifacts/haparandaweg/ref/0363100012244592/front.jpg (2021 pano TMX7316010203-002216_pano_0002_000283, 15 m, obliquity 1 deg, 928 x 1515 px, 50 px/m, not washed out)",
+    "greyFront": "artifacts/haparandaweg/ref/NL.IMBAG.Pand.0363100012244592/wall-320-1.jpg (2019 pano TMX7316060226-000463_pano_0000_003365, 19 m, obliquity 1 deg, 458 x 1515 px)",
+    "se": "artifacts/haparandaweg/ref/NL.IMBAG.Pand.0363100012244592/wall-140-0.jpg (2017 pano, 8 m, obliquity 32 deg)",
+    "footprint": "artifacts/haparandaweg/haparandaweg-952-1002/plan.png (scripts/haparandaweg/plan.ts); panels from scripts/haparandaweg/panels-at.ts",
+    "measuring": "scripts/haparandaweg/measure.ts (frame lines), rowcols.ts (vertical bars per floor band), crop.ts (zoomed crops)"
+  },
+  "extent": {
+    "answer": "The model spans the whole BAG pand, which is correct: 3DBAG/BAG have ONE pand for the red building (panel 35, 18.6 m, NE) and the grey building (panels 2 + 42, 2.5 + 9.2 m, SW) plus the SE townhouse row. The photo's 'red next to grey' is two buildings inside the same pand; the dark-grey building to the SW (house 942) and the brick block to the NE are different pands and are not modelled.",
+    "boundaryRedGrey": "Red frames end at x = 905 px of front.jpg (u 18.1 m); the grey frames start at the 0.5 m joint at u 18.6 m (panel 2)."
+  },
+  "walls": [
+    {
+      "name": "NW front, red building (panel 35)", "bearing": 320, "widthM": 18.57, "photographed": true,
+      "grid": {
+        "modules": "3 heavy red posts-to-posts modules of 5.8 m (posts at x 27, 310, 601, 890 px; 0.46 m wide) each split by a thin post (0.2 m, x 164, 457, 747) into 2 half-bays of 2.9 m: 6 half-bays, strict",
+        "floorLines": "red beams at y 1307, 1176, 1043, 915, 780, 656, 516, 390, 244 px -> v 3.35, 6.03, 8.75, 11.36, 14.12, 16.66, 19.52, 22.1, 25.08; roof beam 28.8",
+        "storeys": "ground 3.35 m + 9 storeys (2.5-2.9 m, the top one 3.7 m with the roof beam); two storeys share one heavy double-height frame (4 frames + top storey)",
+        "posts": "heavy posts 0.46-0.5 m, light 0.2 m, floor beams 0.3-0.5 m; all RED (#7b1422); panes are large, uniform, dark glass"
+      },
+      "pattern": "top storey: 6 half-bays x 2 equal panes. Storeys 8,6,4,2: small stacked 2-pane tilt windows (0.8 m wide) in half-bays 2 and 4 (and 1 of storeys 8 and 2); the other half-bays carry one large pane. Storeys 7,5,3,1: mullions at 0.33-0.37 of a half-bay in half-bays 0 and 2 (and 5), one pane elsewhere. Exact table: scripts/haparandaweg/specs/haparandaweg-952-1002.json systems.red.typical.panes.table (row index = storey above the ground floor).",
+      "ground": "6 bays: glazed (2 panes each) except bay 1 = one pane + a SOLID red door panel carrying '1002' (x 232-300 px); bays 3-5 hidden by a van in the photo -> modelled as 2 panes each (INFERRED)",
+      "noStripe": "there is NO solid red vertical stripe and NO grey panels: the earlier stripe was the wall-colour pier system and the grey panels were random 'glass2' picks; both removed"
+    },
+    {
+      "name": "NW front, grey building (panels 2 and 42)", "bearing": 320, "photographed": true, "widthM": 11.7,
+      "grid": "4 bays of 2.76 m between thin grey posts (0.14 m) and heavy posts every 2 bays (x 165 and the ends of wall-320-1.jpg): 2 modules of 5.6 m, the first bay straddling the 0.5 m panel jog (panel 2 + 0.54 m of panel 42); the same floor lines as the red building; grey frames (#86888a), light-grey reflective glass",
+      "pattern": "top storey 2 panes per bay; storeys 8,6,4,2: bay 1 sliver stacked window (the 0.5 m sliver in wall-320-1.jpg at x 0-25), bay 3 small stacked pair; storeys 7,5,3,1: 2 panes in bay 1, 2 panes (0.45/0.55) in bay 2 on storeys 7 and 3, 0.3/0.7 in bay 3 on storeys 5 and 1",
+      "ground": "bay 1 glazed door (0.3) + grey solid; bay 2 grey door '952' + glass; bay 3 three panes. Bay 0 (panel 2, left of the jog) is INFERRED (photo shows only its right 0.5 m)."
+    },
+    { "name": "SE side (townhouses 69-75, red tower face between them)", "bearing": 140, "photographed": true, "modelled": false,
+      "note": "NOT rebuilt in this pass: the rectified crop mixes surfaces at different depths (white house, garage block, tower face 24 m behind), so horizontal registration is unreliable. The SE panels now carry no facade system (plain wall) instead of the old red patchwork; see UNCERTAIN." },
+    { "name": "NE side (house 77, dark grey, and the red building face behind)", "bearing": 50, "photographed": true, "modelled": false, "note": "as SE: plain wall, UNVERIFIED" },
+    { "name": "SW side, rear/courtyard", "inferred": true, "note": "party wall / not visible" }
+  ]
+}

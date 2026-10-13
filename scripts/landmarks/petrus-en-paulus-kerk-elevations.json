@@ -1,0 +1,25 @@
+{
+  "id": "petrus-en-paulus-kerk",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "north gable front with tower",
+      "bearing": 343,
+      "photo": "artifacts/landmark-lanes/petrus-en-paulus-kerk/ref-front.jpg",
+      "depthBand": 30,
+      "rows": [
+        4,
+        4,
+        1
+      ],
+      "columns": 3,
+      "symmetric": false,
+      "gables": 3,
+      "countedBy": "blind haiku counter 2026-10-11",
+      "alongM": [
+        7.7,
+        21.3
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "failedApron": [
+    52.30710402097107,
+    4.973250036726173
+  ],
+  "failure": "Nearest private service network did not yield a route; chosen Anton identity retained and clear route failure shown.",
+  "publicApproach": [
+    52.306919,
+    4.97352
+  ],
+  "source": "Current installed streets-routing.json Langbroekdreef primary/secondary coordinate; source station OSM plot/driveway and current front pano.",
+  "distanceFromFailedApronMetres": 27.6,
+  "status": "pending actualrouteandvisualconfirmation"
+}

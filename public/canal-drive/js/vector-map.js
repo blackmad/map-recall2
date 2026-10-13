@@ -16,7 +16,37 @@ const BUILDING_FADE_IN = ['interpolate', ['linear'], ['zoom'], 15, 0, 15.6, 1];
 // `?trees3d=0` (or window.__canalRecallFacades / __canalRecallTrees3d = false
 // before load) bring back the old flat look for A/B comparison.
 const GENERIC_FACADES_DEFAULT = true;
+// Experiment (2026-10-09): canal water below quay level and measured bridge
+// decks (docs/elevation.md). Visual only — routing and physics stay 2D. Off by
+// default; `?elevation=1` or window.__canalRecallElevation = true. The bundle
+// is fetched only when the flag is on.
+const CANAL_ELEVATION_DEFAULT = false;
+const CANAL_ELEVATION_BUNDLE = 'js/canal-elevation.bundle.js';
 const STYLISED_TREES_DEFAULT = true;
+// Phase 1 of docs/research/own-renderer-spike-20261009.md (2026-10-10): every
+// three.js layer (facades, landmarks, trees, pyramidal roofs, ARTIS, vehicles)
+// draws through one renderer / scene / light rig (src/canalRecall/
+// rendererShared/), with lit facades and sun shadows. Off by default while it
+// is measured; `?sharedFrame=1` or window.__canalRecallSharedFrame = true.
+// Inside it, `?shadows=0` and `?litFacades=0` turn those two parts off.
+const SHARED_FRAME_DEFAULT = false;
+// Phase 2 (2026-10-10): three.js draws the riding-view ground itself — AHN
+// relief, streets by OSM cross-section, quays, sunken water and measured
+// bridge decks — streamed per 1 km cell from a worker, with the route line
+// and the question street draped on it (src/canalRecall/ownGround/,
+// docs/research/own-ground-20261009.md). Off by default; `?ownGround=1` or
+// window.__canalRecallOwnGround = true. Implies the shared frame, and replaces
+// the `?elevation=1` stencil layer (no MapLibre private state).
+const OWN_GROUND_DEFAULT = false;
+const OWN_GROUND_BUNDLE = 'js/own-ground-game.bundle.js';
+const OWN_GROUND_WORKER = 'js/own-ground-worker.bundle.js';
+// Basemap ground the own ground replaces while it covers the rider: fills and
+// lines of these OpenMapTiles source layers. Water stays (isWater() queries
+// its rendered fill, and it is the flat horizon beyond the streamed radius);
+// labels (symbol layers) are never touched.
+const OWN_GROUND_HIDDEN_SOURCE_LAYERS = ['transportation', 'landuse', 'landcover', 'park', 'aeroway', 'waterway'];
+// The game's own flat overlays that the draped ribbons replace.
+const OWN_GROUND_HIDDEN_OVERLAYS = ['navigation-route-casing', 'navigation-route-line', 'active-street-line', 'cycle-tracks'];
 function canalRecallLookFlag(param, global, fallback) {
   try {
     if (typeof window !== 'undefined' && typeof window[global] === 'boolean') return window[global];
@@ -58,6 +88,14 @@ class VectorBasemap {
     this._treesVisible = false;
     this._facadesEnabled = canalRecallLookFlag('facades', '__canalRecallFacades', GENERIC_FACADES_DEFAULT);
     this._trees3dEnabled = canalRecallLookFlag('trees3d', '__canalRecallTrees3d', STYLISED_TREES_DEFAULT);
+    this._elevationEnabled = canalRecallLookFlag('elevation', '__canalRecallElevation', CANAL_ELEVATION_DEFAULT);
+    this._sharedFrameEnabled = canalRecallLookFlag('sharedFrame', '__canalRecallSharedFrame', SHARED_FRAME_DEFAULT);
+    this._ownGroundEnabled = canalRecallLookFlag('ownGround', '__canalRecallOwnGround', OWN_GROUND_DEFAULT);
+    if (this._ownGroundEnabled) this._sharedFrameEnabled = true;
+    this._ownGround = null;
+    this._sharedFrame = null;
+    this._elevation = null;
+    this._riderSurfaceM = 0;
     this._rawTrees = null;
     this._treeRoute = null;
     this._facadeImages = null;
@@ -103,6 +141,7 @@ class VectorBasemap {
     this._activeLandmark = null;
     this._playerBike = null;
     this._playerBoat = null;
+    this._playerFerry = null;
     this._labelsVisible = false;
     this._lastCameraClearance = { constrained: false, reason: 'not-synchronised' };
     this._cameraClearanceCheck = null;
@@ -144,6 +183,7 @@ class VectorBasemap {
       this._ensureLandmarkLayers();
       this._styleLandmarks();
       this._raisePoiLayers();
+      this._ensureSharedFrame();
       if (window.CanalRecallDetailed3D && window.CanalRecallDetailed3D.DetailedBuildings) {
         this._detailedBuildings = new window.CanalRecallDetailed3D.DetailedBuildings(this.map, maplibregl, () => {
           this._syncDetailedBuildingLayers();
@@ -158,11 +198,14 @@ class VectorBasemap {
         this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
       }
       const signature = window.CanalRecallSignature3D;
-      if (window.CanalRecallArtisAnimals) this._artisAnimals = new window.CanalRecallArtisAnimals.ArtisAnimals(this.map, maplibregl, this._extractPath);
+      const shared = this._sharedFrame ? { sharedFrame: this._sharedFrame } : {};
+      if (window.CanalRecallArtisAnimals) this._artisAnimals = new window.CanalRecallArtisAnimals.ArtisAnimals(this.map, maplibregl, this._extractPath, shared);
       const manualModels = window.CanalRecallSignatureLandmarks?.GAME_BUILDING_MODELS || window.CanalRecallSignatureLandmarks?.MANUAL_LANDMARKS;
       if (signature?.SignatureLandmarks && manualModels) {
         this._signatureLandmarks = new signature.SignatureLandmarks(this.map, maplibregl, {
+          ...shared,
           models: manualModels,
+          streetChunks: true,
           loadVisibleOnly: true,
           depthBiasEnabled: !this._completeCityHasBuildings,
           manageBasemapFilter: false,
@@ -179,14 +222,18 @@ class VectorBasemap {
         this._signatureLandmarks.setEnabled(!this._detailedBuildingsVisible && !this._measuredColoursOnly);
       }
       if (window.CanalRecallVehicles) {
-        const { PlayerBike3D, PlayerBoat3D, PlayerTransit3D } = window.CanalRecallVehicles;
+        const { PlayerBike3D, PlayerBoat3D, PlayerFerry3D, PlayerTransit3D } = window.CanalRecallVehicles;
         if (PlayerBike3D) this._playerBike = new PlayerBike3D(this.map, maplibregl);
+        if (PlayerFerry3D) this._playerFerry = new PlayerFerry3D(this.map, maplibregl);
         if (PlayerBoat3D) this._playerBoat = new PlayerBoat3D(this.map, maplibregl);
         if (PlayerTransit3D) this._playerTransit = new PlayerTransit3D(this.map, maplibregl);
       }
       this.ready = true;
+      // Own ground retires the stencil elevation layer: one ground, one water.
+      if (this._ownGroundEnabled) void this._ensureOwnGround();
+      else if (this._elevationEnabled) void this._ensureElevation();
       if (window.CanalRecallInventoryTrees && this._trees3dEnabled) {
-        this._inventoryTrees = new window.CanalRecallInventoryTrees.InventoryTrees(this.map, maplibregl, () => this._syncTreeVisibility());
+        this._inventoryTrees = new window.CanalRecallInventoryTrees.InventoryTrees(this.map, maplibregl, () => this._syncTreeVisibility(), this._sharedFrame ? { sharedFrame: this._sharedFrame } : {});
         this._inventoryTrees.setEnabled(this._treesVisible);
         this._inventoryTrees.load(this._extractPath);
       }
@@ -201,10 +248,37 @@ class VectorBasemap {
     });
   }
 
+  /**
+   * The one three.js frame every 3D layer draws through (`?sharedFrame=1`).
+   * Its main pass takes the slot the facade layer had — under the coloured
+   * building layers and the game's labels — and its overlay pass (the
+   * vehicles) stays last. Participants find it on `map._canalSharedFrame`.
+   */
+  _ensureSharedFrame() {
+    if (!this._sharedFrameEnabled || this._sharedFrame) return this._sharedFrame;
+    const api = window.CanalRecallThree;
+    if (!api || !api.SharedFrame || !api.THREE) return null;
+    const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const slotIds = ['city-building-overview', 'osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs'];
+    this._sharedFrame = new api.SharedFrame(api.THREE, this.map, {
+      shadows: canalRecallLookFlag('shadows', '__canalRecallShadows', true),
+      shadowMapSize: coarse ? 1024 : 2048,
+      beforeId: () => {
+        const order = this.map.getLayersOrder ? this.map.getLayersOrder() : [];
+        return order.find(id => slotIds.includes(id));
+      },
+    });
+    this._sharedFrame.attach();
+    this.map._canalSharedFrame = this._sharedFrame;
+    return this._sharedFrame;
+  }
+
   /** Point building / tile fetches at the active city's extract root. */
   setExtractRoot(path) {
     if (!path || path === this._extractPath) return;
     this._extractPath = path;
+    if (this._elevation) void this._elevation.load(path).then(() => this._syncElevationConsumers());
+    if (this._ownGround) void this._ownGround.load(this._absoluteExtractRoot()).then(() => this._syncElevationConsumers());
     if (this._artisAnimals) this._artisAnimals.setExtractRoot(path);
     if (this._parkLandscape) this._parkLandscape.load(path);
     this._rawTrees = null;
@@ -606,7 +680,8 @@ class VectorBasemap {
     const api = window.CanalRecallPyramidalRoofs;
     if (!api || !api.PyramidalRoofs || !this.map) return;
     if (!this._pyramidalRoofs) {
-      this._pyramidalRoofs = new api.PyramidalRoofs(this.map, maplibregl);
+      this._ensureSharedFrame();
+      this._pyramidalRoofs = new api.PyramidalRoofs(this.map, maplibregl, this._sharedFrame ? { sharedFrame: this._sharedFrame } : {});
     }
     this._pyramidFeatures = features || [];
     // In the three.js looks a landmark kit draws its own cones (the Waag's towers): no second cone.
@@ -903,7 +978,13 @@ class VectorBasemap {
       this._threeBuildings = new api.ThreeBuildings(this.map, window.maplibregl, this._buildings3dLook);
       if (this._streetFrontWays && this._threeBuildings.setStreets) this._threeBuildings.setStreets(this._streetFrontWays);
     }
-    if (!this.map.getLayer(this._threeBuildings.layer.id)) {
+    this._ensureSharedFrame();
+    if (this._sharedFrame && this._threeBuildings.attachToSharedFrame) {
+      if (!this._threeBuildings.inSharedFrame) {
+        this._threeBuildings.attachToSharedFrame(this._sharedFrame, { lit: canalRecallLookFlag('litFacades', '__canalRecallLitFacades', true) });
+        if (this._tileFeatures.length) this._threeBuildings.setFeatures(this._tileFeatures);
+      }
+    } else if (!this.map.getLayer(this._threeBuildings.layer.id)) {
       this.map.addLayer(this._threeBuildings.layer, this.map.getLayer('osm-colored-building-roofs') ? 'osm-colored-building-roofs' : undefined);
       if (this._tileFeatures.length) this._threeBuildings.setFeatures(this._tileFeatures);
     }
@@ -915,6 +996,7 @@ class VectorBasemap {
     this._syncMaplibreBuildingVisibility();
     this._loadHouseboats();
     this._loadShopfronts();
+    if (this._elevation) this._syncElevationConsumers();
   }
 
   /** Where the city's shops, cafés and bars really are (shopfronts extract); re-decorates the resident tiles. */
@@ -1413,7 +1495,7 @@ class VectorBasemap {
     if (!this.map || !this._poiLayerIds || typeof this.map.getLayersOrder !== 'function') return;
     const order = this.map.getLayersOrder();
     let topBuilding = -1;
-    order.forEach((id, index) => { if (/^osm-colored-building|^building-3d|^three-building|detailed|signature/.test(id)) topBuilding = index; });
+    order.forEach((id, index) => { if (/^osm-colored-building|^building-3d|^three-building|^shared-frame-main|detailed|signature/.test(id)) topBuilding = index; });
     if (topBuilding < 0) return;
     const buried = this._poiLayerIds.filter(id => { const index = order.indexOf(id); return index >= 0 && index < topBuilding; });
     for (const id of buried) this.map.moveLayer(id);
@@ -1850,29 +1932,259 @@ class VectorBasemap {
     ]) this[alias] = list.find(layer => layer.areaId === active) || list[0] || null;
   }
 
+  /** Load the elevation bundle on demand (flag on only) and add its layer. */
+  async _ensureElevation() {
+    if (this._elevation || this._elevationLoading || !this.map) return;
+    this._elevationLoading = true;
+    try {
+      if (!window.CanalRecallElevation) {
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = CANAL_ELEVATION_BUNDLE;
+          script.onload = resolve;
+          script.onerror = () => reject(new Error(`${CANAL_ELEVATION_BUNDLE} failed to load`));
+          document.head.appendChild(script);
+        });
+      }
+      const api = window.CanalRecallElevation;
+      if (!api || !api.CanalElevation) throw new Error('CanalRecallElevation missing');
+      this._elevation = new api.CanalElevation(this.map, maplibregl, { beforeId: 'building' });
+      await this._elevation.load(this._extractPath);
+      this._syncElevationConsumers();
+    } catch (error) {
+      console.warn('Canal elevation unavailable; the flat map stays.', error);
+    } finally {
+      this._elevationLoading = false;
+    }
+  }
+
+  _absoluteExtractRoot() {
+    return new URL(this._extractPath || '../data/extracts/amsterdam', window.location.href).href.replace(/\/$/, '');
+  }
+
+  /**
+   * Load the own-ground bundle on demand (flag on only) and register it in the
+   * shared frame. Everything MapLibre-specific it needs goes through the host
+   * adapter below (repaint, hiding the basemap's ground), so the ground itself
+   * never touches the map and survives a camera/renderer swap.
+   */
+  async _ensureOwnGround() {
+    if (this._ownGround || this._ownGroundLoading || !this.map) return;
+    this._ownGroundLoading = true;
+    try {
+      const frame = this._ensureSharedFrame();
+      const three = window.CanalRecallThree;
+      if (!frame || !three || !three.THREE) throw new Error('own ground needs the shared frame');
+      if (!window.CanalRecallOwnGround) {
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = OWN_GROUND_BUNDLE;
+          script.onload = resolve;
+          script.onerror = () => reject(new Error(`${OWN_GROUND_BUNDLE} failed to load`));
+          document.head.appendChild(script);
+        });
+      }
+      const api = window.CanalRecallOwnGround;
+      if (!api || !api.OwnGround) throw new Error('CanalRecallOwnGround missing');
+      const host = {
+        repaint: () => this.map && this.map.triggerRepaint(),
+        setBasemapGroundHidden: hidden => this._setBasemapGroundHidden(hidden),
+      };
+      this._ownGround = new api.OwnGround(three.THREE, frame, host, { workerUrl: new URL(OWN_GROUND_WORKER, window.location.href).href });
+      await this._ownGround.load(this._absoluteExtractRoot());
+      this._syncElevationConsumers();
+      this._ownGroundReplay();
+    } catch (error) {
+      console.warn('Own ground unavailable; the basemap ground stays.', error);
+      this._ownGround = null;
+    } finally {
+      this._ownGroundLoading = false;
+    }
+  }
+
+  /** Overlays set before the bundle arrived. */
+  _ownGroundReplay() {
+    if (!this._ownGround) return;
+    if (this._ownGroundRoute !== undefined) this._ownGround.setRoute(this._ownGroundRoute);
+    if (this._ownGroundHighlight !== undefined) this._ownGround.setHighlight(this._ownGroundHighlight);
+    if (this._ownGroundDestination !== undefined) this._ownGround.setDestination(this._ownGroundDestination);
+  }
+
+  /**
+   * Adapter: hide (opacity 0, so isWater()/queryRenderedFeatures and layer
+   * order are untouched) or restore the basemap's ground fills/lines and the
+   * game's flat route/street overlays while the own ground covers the rider.
+   * The overview and the minimap zooms show the basemap again (the own ground
+   * reports itself not covering below its minimum zoom).
+   */
+  _setBasemapGroundHidden(hidden) {
+    if (!this.map || !this.map.getStyle()) return;
+    this._basemapGroundHidden = !!hidden;
+    const layers = this.map.getStyle().layers || [];
+    const targets = [];
+    for (const layer of layers) {
+      if ((layer.type === 'fill' || layer.type === 'line') && OWN_GROUND_HIDDEN_SOURCE_LAYERS.includes(layer['source-layer'])) targets.push(layer);
+      else if (OWN_GROUND_HIDDEN_OVERLAYS.includes(layer.id)) targets.push(layer);
+    }
+    this._ownGroundSaved = this._ownGroundSaved || new Map();
+    for (const layer of targets) {
+      const property = layer.type === 'fill' ? 'fill-opacity' : 'line-opacity';
+      const key = `${layer.id}:${property}`;
+      try {
+        if (hidden) {
+          if (!this._ownGroundSaved.has(key)) this._ownGroundSaved.set(key, this.map.getPaintProperty(layer.id, property));
+          this.map.setPaintProperty(layer.id, property, 0);
+        } else if (this._ownGroundSaved.has(key)) {
+          const value = this._ownGroundSaved.get(key);
+          this.map.setPaintProperty(layer.id, property, value === undefined ? null : value);
+          this._ownGroundSaved.delete(key);
+        }
+      } catch (_) { /* layer gone with a style swap */ }
+    }
+  }
+
+  /**
+   * Stand the city on the own ground's relief: buildings by their footprint's
+   * lowest relief, trees at the trunk, landmark models round their anchor.
+   * Hooks consumers as they appear, and re-applies when more relief is
+   * resident (the ground bumps `surfaceRevision`). Cheap when nothing changed.
+   */
+  _syncOwnGroundConsumers() {
+    const ground = this._ownGround;
+    if (!ground || !ground.ready) return;
+    const hooks = this._ownGroundHooks || (this._ownGroundHooks = new WeakMap());
+    const footprint = feature => {
+      const ring = this._ownGroundRing(feature);
+      return ring ? ground.footprintBase(ring) : null;
+    };
+    const hook = (consumer, install) => {
+      if (!consumer || hooks.get(consumer) === ground) return false;
+      hooks.set(consumer, ground);
+      install(consumer);
+      return true;
+    };
+    hook(this._threeBuildings, c => c.setGroundBase && c.setGroundBase(footprint));
+    hook(this._inventoryTrees, c => c.setGroundBase && c.setGroundBase(lngLat => ground.pointBase(lngLat)));
+    hook(this._signatureLandmarks, c => c.setGroundBase && c.setGroundBase((anchor, halfM) => ground.pointBase(anchor, halfM)));
+    if (ground.surfaceRevision === this._ownGroundRevision) return;
+    // Throttle: relief arrives a cell at a time; refreshing walks pending chunks.
+    const now = performance.now();
+    if (this._ownGroundRefreshAt && now - this._ownGroundRefreshAt < 400) return;
+    this._ownGroundRefreshAt = now;
+    this._ownGroundRevision = ground.surfaceRevision;
+    if (this._threeBuildings && this._threeBuildings.refreshGroundBases) this._threeBuildings.refreshGroundBases();
+    if (this._inventoryTrees && this._inventoryTrees.refreshGroundBases) this._inventoryTrees.refreshGroundBases();
+    if (this._signatureLandmarks && this._signatureLandmarks.refreshGroundBases) this._signatureLandmarks.refreshGroundBases();
+  }
+
+  /** A building feature's outer ring as [lng, lat] pairs, or null. */
+  _ownGroundRing(feature) {
+    const g = feature && feature.geometry;
+    if (!g || !g.coordinates) return null;
+    const ring = g.type === 'Polygon' ? g.coordinates[0] : g.type === 'MultiPolygon' ? g.coordinates[0] && g.coordinates[0][0] : null;
+    return ring && ring.length >= 3 ? ring : null;
+  }
+
+  /** The surface the rider stands on: the own ground when present, else the opt-in elevation layer. */
+  _riderSurface() {
+    if (this._ownGround && this._ownGround.ready) return this._ownGround;
+    return this._elevation;
+  }
+
+  /** Houseboats float on the sunken water; everything else on land stays at z = 0 (or stands on the own ground's relief). */
+  _syncElevationConsumers() {
+    const surface = this._riderSurface();
+    const water = surface ? surface.waterLevelM() : 0;
+    if (this._threeBuildings && typeof this._threeBuildings.setWaterLevel === 'function') this._threeBuildings.setWaterLevel(water);
+  }
+
+  elevationStatus() {
+    if (this._ownGround) return this._ownGround.status();
+    return this._elevation ? this._elevation.stats() : { enabled: false, ready: false };
+  }
+
+  ownGroundStatus() {
+    return this._ownGround ? this._ownGround.status() : { enabled: !!this._ownGroundEnabled, ready: false };
+  }
+
+  /** Ease the rider's visual surface height (deck ramps are continuous, footprint edges are not). */
+  _easeRiderSurface(target) {
+    const value = Number.isFinite(target) ? target : 0;
+    const delta = value - this._riderSurfaceM;
+    this._riderSurfaceM = Math.abs(delta) < 0.01 ? value : this._riderSurfaceM + delta * 0.35;
+    return this._riderSurfaceM;
+  }
+
   setPlayerBike(player, loader, visible, zoomScale = 1) {
     if (!this._playerBike || !player || !loader) return;
     this._playerBike.zoomScale = zoomScale;
+    const lngLat = this.worldToLngLat(player.x, player.y, loader);
+    const surface = this._riderSurface();
+    if (surface && visible) {
+      const pose = surface.riderPose(lngLat, player.angle, this._playerBike.surfaceContactOffsets?.());
+      const height = this._easeRiderSurface(pose.heightM);
+      if (typeof this._playerBike.setSurfacePose === 'function') this._playerBike.setSurfacePose(height + 0.22, pose.pitch);
+    }
     this._playerBike.update(
-      this.worldToLngLat(player.x, player.y, loader), player.angle, visible,
+      lngLat, player.angle, visible,
       player.steerInput || 0, player.distancePx || 0
     );
   }
 
   setPlayerBoat(player, loader, visible) {
     if (!this._playerBoat || !player || !loader) return;
+    const surface = this._riderSurface();
+    if (surface && visible && typeof this._playerBoat.setAltitude === 'function') {
+      this._playerBoat.setAltitude(this._easeRiderSurface(surface.waterLevelM()) + 0.22);
+    }
     this._playerBoat.update(
       this.worldToLngLat(player.x, player.y, loader), player.angle, visible,
       player.steerInput || 0
     );
   }
 
+  setFerryTerminals(track, loader) {
+    if (!this.ready || !this.map || this._ferryTerminalTrack === track) return;
+    this._ferryTerminalTrack = track;
+    const terminals = new Map();
+    for (const segment of track.segments) if (segment.ferryLink) {
+      for (const terminal of [segment.ferryLink.from, segment.ferryLink.to]) terminals.set(terminal.id, terminal);
+    }
+    const data = { type: 'FeatureCollection', features: [...terminals.values()].map(t => ({
+      type: 'Feature', properties: { name: `${t.name} ⛴` },
+      geometry: { type: 'Point', coordinates: this.worldToLngLat(t.x, t.y, loader) },
+    })) };
+    const source = this.map.getSource('cycling-ferry-terminals');
+    if (source) source.setData(data);
+    else {
+      this.map.addSource('cycling-ferry-terminals', { type: 'geojson', data });
+      this.map.addLayer({ id: 'cycling-ferry-terminal-pins', type: 'circle', source: 'cycling-ferry-terminals', paint: {
+        'circle-radius': 6, 'circle-color': '#008bce', 'circle-stroke-color': '#f2f0e7', 'circle-stroke-width': 2,
+      }});
+      this.map.addLayer({ id: 'cycling-ferry-terminal-labels', type: 'symbol', source: 'cycling-ferry-terminals', layout: {
+        'text-field': ['get', 'name'], 'text-size': 12, 'text-offset': [0, 1.4],
+      }, paint: { 'text-color': '#153c54', 'text-halo-color': '#f2f0e7', 'text-halo-width': 2 } });
+    }
+  }
+
+  setPlayerFerry(player, loader, visible) {
+    // Own ground: the ferry floats on the sunken water like the boat, not at street level.
+    const surface = this._ownGround && this._ownGround.ready ? this._ownGround : null;
+    if (this._playerFerry && typeof this._playerFerry.setAltitude === 'function') this._playerFerry.setAltitude(surface ? surface.waterLevelM() + 0.22 : 0.22);
+    this._playerFerry?.update(this.worldToLngLat(player.x, player.y, loader), player.angle, visible);
+  }
+
+  isPlayerFerryReady() { return !!this._playerFerry?.ready; }
+
   setPlayerTransit(player, loader, visible, underground = false) {
     if (!this._playerTransit || !player || !loader) return;
     if (typeof this._playerTransit.setAltitude === 'function') {
       // Metro GTFS shapes are ground projections of tunnels — drop the mesh so
       // it does not sit inside extruded buildings along the corridor.
-      this._playerTransit.setAltitude(underground ? -9 : 0.22);
+      // Own ground: a tram rides the relief and bridge decks (eased like the bike).
+      const lngLat = this.worldToLngLat(player.x, player.y, loader);
+      const ground = !underground && visible && this._ownGround && this._ownGround.ready ? this._easeRiderSurface(this._ownGround.heightAt(lngLat)) : 0;
+      this._playerTransit.setAltitude(underground ? -9 : ground + 0.22);
     }
     this._playerTransit.update(
       this.worldToLngLat(player.x, player.y, loader), player.angle, visible
@@ -1956,10 +2268,22 @@ class VectorBasemap {
     for (const id of ['navigation-route-casing', 'navigation-route-line']) {
       if (this.map.getLayer(id) && this.map.getLayoutProperty(id, 'visibility') !== visibility) this.map.setLayoutProperty(id, 'visibility', visibility);
     }
-    if (!visible || !routePath || routePath.length < 2 || this._routePathRef === routePath) return;
+    if (this._ownGroundEnabled && !visible && this._ownGroundRoute) this._setOwnGroundRoute(null);
+    if (!visible || !routePath || routePath.length < 2) return;
+    if (this._routePathRef === routePath) {
+      if (this._ownGroundEnabled && !this._ownGroundRoute && this._routeCoordinates) this._setOwnGroundRoute(this._routeCoordinates);
+      return;
+    }
     this._routePathRef = routePath;
     const coordinates = routePath.map(point => this.worldToLngLat(point.x, point.y, loader));
+    this._routeCoordinates = coordinates;
     this.map.getSource('navigation-route').setData({ type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates } });
+    if (this._ownGroundEnabled) this._setOwnGroundRoute(coordinates);
+  }
+
+  _setOwnGroundRoute(coordinates) {
+    this._ownGroundRoute = coordinates || null;
+    if (this._ownGround) this._ownGround.setRoute(this._ownGroundRoute);
   }
 
   /** Polylines for the named street through `segmentIndex`, its same-name
@@ -2030,17 +2354,31 @@ class VectorBasemap {
         : connected.map(segment => segment.points).filter(points => points && points.length > 1);
       const stitch = window.CanalRecallStreets && window.CanalRecallStreets.stitchOverlayPaths;
       const chains = stitch ? stitch(paths) : paths;
+      const lines = chains.map(points => points.map(point => this.worldToLngLat(point.x, point.y, loader)));
       this.map.getSource('active-street').setData({
         type: 'FeatureCollection',
-        features: chains.map(points => ({
+        features: lines.map(coordinates => ({
           type: 'Feature',
           properties: { name: activeName || '' },
-          geometry: {
-            type: 'LineString',
-            coordinates: points.map(point => this.worldToLngLat(point.x, point.y, loader)),
-          },
+          geometry: { type: 'LineString', coordinates },
         })),
       });
+      // The draped highlight is the same centreline geometry; the ground
+      // never draws a name, so it reveals no more than the flat line did.
+      if (this._ownGroundEnabled) {
+        this._ownGroundHighlight = lines.length ? lines : null;
+        if (this._ownGround) this._ownGround.setHighlight(this._ownGroundHighlight);
+      }
+    }
+    if (this._ownGroundEnabled) {
+      const finish = track.isOpenTrack && track.finishPoint;
+      const destination = finish ? this.worldToLngLat(finish.x, finish.y, loader) : null;
+      const key = destination ? destination.map(v => v.toFixed(7)).join(',') : '';
+      if (key !== this._ownGroundDestinationKey) {
+        this._ownGroundDestinationKey = key;
+        this._ownGroundDestination = destination;
+        if (this._ownGround) this._ownGround.setDestination(destination);
+      }
     }
   }
 
@@ -2093,8 +2431,11 @@ class VectorBasemap {
     }
     this._highlightedBuildings = [];
     this._highlightedBuilding = null;
-    if (this._threeBuildings) this._threeBuildings.setHighlighted([]);
-    if (this._kitAnswerIds && this._kitAnswerIds.size) { this._kitAnswerIds = new Set(); if (this._buildings3dEnabled) this._refreshColoredBuildingFilter(); }
+    // The 3D highlight and the kit-answer filter are applied once, below: a
+    // click used to clear and re-set both, re-uploading every chunk's hidden
+    // flags twice and re-filtering four MapLibre layers twice per click.
+    let threeHighlight = [];
+    let kitAnswerIds = new Set();
     const detailed = !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
     if (this._detailedBuildings) this._detailedBuildings.setActiveLandmark(detailed ? landmark : null);
     if (this._signatureLandmarks) this._signatureLandmarks.setActiveLandmark(detailed ? null : landmark);
@@ -2129,10 +2470,11 @@ class VectorBasemap {
         } catch (_) {}
       }
       this._highlightedBuilding = this._highlightedBuildings[0] || null;
-      if (this._threeBuildings) this._threeBuildings.setHighlighted(boatId ? [boatId] : this._highlightedBuildings.map(target => target.id));
-      this._kitAnswerIds = new Set(this._highlightedBuildings.map(target => String(target.id)));
-      if (this._buildings3dEnabled) this._refreshColoredBuildingFilter();
+      threeHighlight = boatId ? [boatId] : this._highlightedBuildings.map(target => target.id);
+      kitAnswerIds = new Set(this._highlightedBuildings.map(target => String(target.id)));
     }
+    if (this._threeBuildings) this._threeBuildings.setHighlighted(threeHighlight);
+    this._setKitAnswerIds(kitAnswerIds);
     // Never fabricate an extrusion from an OSM footprint. If no renderer can
     // identify the actual building, a point acknowledges the selection without
     // turning a whole block into a fixed-height yellow box.
@@ -2151,6 +2493,17 @@ class VectorBasemap {
       ? [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: landmark.lngLat } }]
       : [];
     source.setData({ type: 'FeatureCollection', features: point });
+  }
+
+  /** Landmark-kit prisms stay drawn for the answer building. Only a change
+   *  among the kit ids re-filters the colored-building layers; an ordinary
+   *  building's highlight does not touch them. */
+  _setKitAnswerIds(ids) {
+    const kitIds = window.CanalRecallThreeBuildings && window.CanalRecallThreeBuildings.KIT_HIDE_IDS || [];
+    const before = this._kitAnswerIds || new Set();
+    const changed = kitIds.some(id => before.has(id) !== ids.has(id));
+    this._kitAnswerIds = ids;
+    if (changed && this._buildings3dEnabled) this._refreshColoredBuildingFilter();
   }
 
   _styleLandmarks() {
@@ -2338,7 +2691,37 @@ class VectorBasemap {
     }
     this._clearancePitchRequested = pitch;
     const appliedPitch = Math.min(pitch, this._clearancePitch);
-    this.map.jumpTo({ center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch });
+    // The start flight streams no buildings for its flat overview, only for
+    // where it lands. Suspend before the jump: `jumpTo` fires `moveend`
+    // synchronously, and the streamer used to plan the overview's first frame.
+    // The landing is the driving view the map shows right now, before the
+    // first overview jump (`introLandingArea`); a 600 m box round the rider
+    // pulled in two extra z14 tiles (~6.5k buildings) before take-off.
+    const city = this._completeCity;
+    if (introFlat > 0 && city && typeof city.setSuspended === 'function') {
+      if (!this._introLandingView) this._introLandingView = this._mapBounds() || 'none';
+      city.setSuspended(true);
+      const view = this._introLandingView === 'none' ? null : this._introLandingView;
+      if (typeof city.preloadLanding === 'function') city.preloadLanding(view, subject[0], subject[1]);
+      else if (typeof city.preloadAt === 'function') city.preloadAt(subject[0], subject[1]);
+    }
+    if (introFlat === 0) this._introLandingView = null;
+    // Landmark models and street trees hold what the driving view loaded too:
+    // "visible" at city scale is every landmark in Amsterdam.
+    for (const streamer of [this._signatureLandmarks, this._inventoryTrees]) {
+      if (introFlat > 0 && streamer && typeof streamer.setSuspended === 'function') streamer.setSuspended(true);
+    }
+    // With elevation on, the camera centre rides at the rider's surface (a deck
+    // or the sunken water) so the cockpit eye never ends up inside a bridge.
+    const cameraOptions = { center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch };
+    if (this._riderSurface()) cameraOptions.elevation = detached || introFlat > 0 ? 0 : this._riderSurfaceM;
+    // Own-ground residency follows the rider (not the led view centre); below
+    // its minimum zoom (start flight, overview) it hides and the basemap shows.
+    if (this._ownGround) {
+      this._ownGround.update(subject, introFlat > 0 ? 0 : mapZoom);
+      this._syncOwnGroundConsumers();
+    }
+    this.map.jumpTo(cameraOptions);
     // Near detail (facade extras) follows the rider.
     if (this._threeBuildings && this._buildings3dEnabled && this._threeBuildings.setDetailCentre) this._threeBuildings.setDetailCentre(subject[0], subject[1]);
     this._syncFacadeZoom(mapZoom);
@@ -2349,10 +2732,12 @@ class VectorBasemap {
     // followCamera no-ops until the centre tile / zoom bucket changes.
     // Not during the start flight: every half-step of zoom re-planned and
     // re-flushed the building tiles, which is where the flight stuttered. The
-    // landing area preloads once; the first frame after landing resumes camera planning.
-    if (this._completeCity && typeof this._completeCity.setSuspended === 'function') {
-      this._completeCity.setSuspended(introFlat > 0);
-      if (introFlat > 0 && typeof this._completeCity.preloadAt === 'function') this._completeCity.preloadAt(subject[0], subject[1]);
+    // landing area preloads once (above, before the jump); the first frame
+    // after landing resumes camera planning from the landed view.
+    if (introFlat === 0) {
+      for (const streamer of [this._completeCity, this._signatureLandmarks, this._inventoryTrees]) {
+        if (streamer && typeof streamer.setSuspended === 'function') streamer.setSuspended(false);
+      }
     }
     if (introFlat === 0 && this._completeCity && typeof this._completeCity.followCamera === 'function') {
       this._completeCity.followCamera();
@@ -2375,6 +2760,14 @@ class VectorBasemap {
    * see-through, and comes back once the rider is out. The decision and its
    * hysteresis live in `src/canalRecall/coveredPassage.ts`.
    */
+  /** The map's current view as a lng/lat box, or null before it can say. */
+  _mapBounds() {
+    try {
+      const b = this.map.getBounds();
+      return { west: b.getWest(), south: b.getSouth(), east: b.getEast(), north: b.getNorth() };
+    } catch (_) { return null; }
+  }
+
   _updateRiderCover(rider, active) {
     const helpers = window.CanalRecallBuildings;
     if (!helpers || typeof helpers.coveringBuilding !== 'function' || !this.map) return;
@@ -2673,6 +3066,14 @@ class VectorBasemap {
     const lon = loader._lastCenterLng + (worldX - loader._lastOffsetX) / (metersPerDegreeLng * PIXELS_PER_METER);
     const lat = loader._lastCenterLat - (worldY - loader._lastOffsetY) / (metersPerDegreeLat * PIXELS_PER_METER);
     const projected = this.map.project([lon, lat]);
+    // Own ground: canvas pins (destination, question feature) stand on the
+    // relief/deck there, not at MapLibre's z = 0.
+    const lift = this._ownGround && this._ownGround.ready ? this._ownGround.screenLift([lon, lat]) : null;
+    if (lift) {
+      const el = this.map.getCanvas();
+      projected.x += lift[0] / 2 * el.clientWidth;
+      projected.y -= lift[1] / 2 * el.clientHeight;
+    }
     const rect = canvas.getBoundingClientRect();
     return { x: projected.x * CANVAS_W / rect.width, y: projected.y * CANVAS_H / rect.height };
   }
@@ -2750,5 +3151,11 @@ class VectorBasemap {
     } catch (_) {}
     if (this._parkLandscape) this._parkLandscape.setTheme(this.theme);
     if (this._inventoryTrees) this._inventoryTrees.setTheme(this.theme);
+    if (this._elevation) this._elevation.applyTheme();
+    // A theme restores the basemap's paint; keep its ground hidden under the own ground.
+    if (this._basemapGroundHidden) {
+      if (this._ownGroundSaved) this._ownGroundSaved.clear();
+      this._setBasemapGroundHidden(true);
+    }
   }
 }

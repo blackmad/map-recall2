@@ -1,0 +1,58 @@
+{
+  "id": "fire-station-nico",
+  "sourcePack": "../map-recall2-source-data/models/fire-station-nico",
+  "sourceCommit": "acda02460c197118b05678b683b3743a6b8920a0",
+  "identity": {
+    "address": "IJ-tunnel4Amsterdam",
+    "bag": "0363100012165618",
+    "osmBuilding": "w268783309",
+    "poi": "n1139360975",
+    "year": "BAG1972 vs operator stationmove1973"
+  },
+  "architecturalAssertions": [
+    {
+      "feature": "Greybrownbricksteppedflat-roofmasswithwhiteupperpanel/sixlongwindowgroups,ninewhiteapparatusdoors andheavyred BRANDWEERsign",
+      "source": "raw/current-roof-photo.jpg",
+      "date": "2025-07-14filename",
+      "confidence": "highvisiblecurrentaerial"
+    },
+    {
+      "feature": "Continuouswhitewindowstripaboveapparatusdoors,narrowverticalwindows/whiteframes,roofaerials",
+      "source": "raw/facade-2022.jpg",
+      "date": "2022photocaption",
+      "confidence": "highcurrentfacade"
+    }
+  ],
+  "heightNotes": "2023AHN5 1.768NAP ground. Variable flat roof masses, equipment max24.982NAP is not wholebuildingheight. 2025roofrenovation photo confirms greybrick/whiteglazinglargeupperpanel.",
+  "sourceUrls": [
+    "https://www.oplarchitecten.nl/project/brandweerkazerne-nico/",
+    "https://www.boko.nl/projecten/brandweerkazerne-nico-amsterdam/",
+    "https://archief.amsterdam/beeldbank/?mode=gallery&q=IJ-tunnel%204%20brandweerkazerne",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165618",
+    "https://api.openstreetmap.org/api/0.6/map?bbox=4.9085,52.3693,4.9105,52.3707",
+    "https://www.boko.nl/wp-content/uploads/2025/08/250714_Boko_AMS_Brandweerkazerne_Nico_MR-52.jpg",
+    "https://brandbase.hetbrandweerforum.nl/kazernes/13-31-amsterdam-nico/",
+    "https://brandbase.hetbrandweerforum.nl/wp-content/uploads/2022/01/IJ-Tunnel-4-te-Amsterdam-1.jpg",
+    "https://brandbase.hetbrandweerforum.nl/wp-content/uploads/2018/05/IJ-Tunnel-4-te-Amsterdam.jpg",
+    "https://www.oplarchitecten.nl/wp-content/uploads/2017/06/01-OPL-Architecten_Kazerne-Nico-Amsterdam-1516x878-72dpi.jpg",
+    "https://www.brandweer.nl/wp-content/uploads/2024/03/SITRAP-150-jaar-BAA.pdf"
+  ],
+  "archiveSearch": {
+    "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=IJ-tunnel%204%20brandweerkazerne",
+    "state": "HTTP200 JavaScriptshell,noindividualcataloguerecordinspected"
+  },
+  "cpuPreflight": "Corrected CPU opposite.png is now principal photographedfront. Directly compared2022front and2025aerial: full-height whitepanel below sixgroups, high-left horizontalglazing/high-right narrowlights, low-left verticals/low-right horizontals. Independent re-review/rootGPU pending.",
+  "geometry": "Final candidate 27862triangles396872bytes,no textures. Current fractional firsthit/decoded roof checks pass.",
+  "signage": "Actual definingred BRANDWEERfascia, ArialBold approximation of observedheavy sans. Noaddedstationnameletters. Smallactualoperatorname/logo simplified/omitted.",
+  "acceptance": "DraftCPUonly; root gallery/livegame/neighbor/suppression/pin/card/route/performancepending",
+  "remainingUncertainty": [
+    "Visitorentrancecoordinate approximate; routepinrootmustverifypublicapronaccess.",
+    "Roofrenovation2025scaffolding obscuresfar-right narrow block, AHN5usedforpriorroofdimensions.",
+    "Hiddenrearopeningrhythms approximate, lowannex retained but exactjoineryunverified."
+  ],
+  "failedEvidence": [
+    "First compressed export contained one downward numerical triangle (0.00478m\u00b2). Failed GLB retained in artifacts/landmark-next-batch/fire-station-nico-failed-sliver.glb. Source roofsliver report identifies part98 triangle2 altitude0.277mm and part106triangle0 altitude0.457mm, below 3DBAG1mm sourcevertexresolution. Only these two numerical faces removed; the legitimate part105 triangle8 (66.5mm altitude) retained. Corrected decoded roof check passes.",
+    "Initial principal facade authored on southeast rearedge23\u219224, hiding most whitepanel and reversing asymmetricopeningrhythm. Independent reviewer rejected it. Failed mesh/CPU retained. Corrected northwestedge28\u219229, removed generic mainfront loop, matched upper-left ribbon/upper-right narrowlights and lower-left narrowlights/lower-right broadglazing.",
+    "Corrected front first CPU draft inadvertently kept old rearedge exclusion and removed bounded rear rhythms; independentreview rejected blank multi-storey rear. failed-blank-rear-cpu.png preserved. Restored surveyheight-clipped rear23..26 windows while currentfront28..34 and explicitlymodeledstaircase20..21 stayexclusive. Rear count remains approximate."
+  ]
+}

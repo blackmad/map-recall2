@@ -1,0 +1,14 @@
+{
+  "id": "zevenlandenhuizen",
+  "countedBy": "pending: integrator blind count from the photos below (this lane leaves rows/columns/symmetric/gables out)",
+  "note": "One shared south-east front (bearing 156) for seven houses; each facade is one house, selected with span (metres along the row, viewer's left to right, = u in the builder). Photos are per-house crops of the RCE 2003 frontals and the Commons 2008 views; the Russian photo is an oblique 1981 RCE view because no frontal shot shows both the tower and the ground floor.",
+  "facades": [
+    {"name": "30a England", "bearing": 156, "span": [-23.8, -17.85], "photo": "artifacts/landmark-lanes/zevenlandenhuizen/ref-en-crop.jpg"},
+    {"name": "30 Netherlands", "bearing": 156, "span": [-17.85, -12.15], "photo": "artifacts/landmark-lanes/zevenlandenhuizen/ref-nl-crop.jpg"},
+    {"name": "28 Russia", "bearing": 156, "span": [-12.15, -5.85], "photo": "artifacts/landmark-lanes/zevenlandenhuizen/ref-ru-crop.jpg"},
+    {"name": "26 Italy", "bearing": 156, "span": [-5.85, -0.2], "photo": "artifacts/landmark-lanes/zevenlandenhuizen/ref-it-crop.jpg"},
+    {"name": "24 Spain", "bearing": 156, "span": [-0.2, 5.95], "photo": "artifacts/landmark-lanes/zevenlandenhuizen/ref-es-crop.jpg"},
+    {"name": "22 France", "bearing": 156, "span": [5.95, 11.95], "photo": "artifacts/landmark-lanes/zevenlandenhuizen/ref-fr-crop.jpg"},
+    {"name": "20 Germany", "bearing": 156, "span": [11.95, 17.5], "photo": "artifacts/landmark-lanes/zevenlandenhuizen/ref-de-crop.jpg"}
+  ]
+}

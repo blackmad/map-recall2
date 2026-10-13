@@ -1,0 +1,6 @@
+{"id": "de-school", "facades": [
+  {"name": "north (entrance court)", "bearing": 357.5, "photo": "artifacts/landmark-lanes/de-school/ref-north.jpg"},
+  {"name": "south (canal)", "bearing": 177.5, "photo": "artifacts/landmark-lanes/de-school/ref-south-face.jpg"},
+  {"name": "east (wing pavilion and porch, oblique photo)", "bearing": 87.5, "photo": "artifacts/landmark-lanes/de-school/ref-east-wing.jpg"},
+  {"name": "west end (blank, trees)", "bearing": 267.5, "photo": "artifacts/landmark-lanes/de-school/ref-west.jpg"}
+]}

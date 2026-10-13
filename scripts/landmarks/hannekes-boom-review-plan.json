@@ -1,0 +1,10 @@
+{
+  "specPath":"scripts/landmarks/hannekes-boom-spec.json",
+  "neighbors":[["NL.IMBAG.Pand.0363100012170819"],["NL.IMBAG.Pand.0363100012180471"],["NL.IMBAG.Pand.0363100012170821"]],
+  "sourceCamera":{"from":[4.91118,52.37613],"fromAltitude":9,"to":[4.9116163,52.3762934],"toAltitude":2.8},
+  "cameraCenter":[4.9116163,52.3762934],"bearing":55,"zoom":19.1,"pitch":63,
+  "oppositeBearing":235,"oppositeZoom":19.1,"oppositePitch":63,
+  "clickLocal":[-8,1.7,2],
+  "nativeReferenceCameras":{"watersideFront":[-26,7,16],"oppositeStreet":[18,8,-20],"roof":[-18,18,16]},
+  "sourceReadyChecks":["Municipal address0363200012061756/VBO0363010012061677/Pand0363100012238899 explicit linkage","Current original operator facade and architect two-sided/context photos archived privately","Main roof3.8m; canopy localized5.7–6.02m; lower north wing3.15m","Occupied roof terrace and water/parcel paths remain open; Hannekes Boot separate","Near2025panorama is IJtunnel failed facade evidence, preserved"]
+}

@@ -1,0 +1,32 @@
+{
+  "id": "ceramiquelaan-437",
+  "status": "ready-with-caveats-pending-integrator-blind-count",
+  "identity": {
+    "bagPandId": "0363100012252989",
+    "bouwjaar": 2021,
+    "addresses": ["Céramiquelaan 437-723 (BAG lists ~108 residential units)", "Docklandsweg 11/13"],
+    "name": "residential perimeter block, Buiksloterham, stepped 16.5 / 19.6 / 22.9 m around a courtyard; name not found",
+    "policy": "ordinary large building: category ordinary, no route destination, no POI card"
+  },
+  "sources": [
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012252989&f=json", "kind": "BAG pand", "retrievedOn": "2026-10-10", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012252989", "kind": "3DBAG LoD2.2 massing", "retrievedOn": "2026-10-10", "licence": "CC BY 4.0 (3DBAG)"},
+    {"file": "artifacts/landmark-lanes/ceramiquelaan-437/ref-e1.jpg", "kind": "rectified wall 512 (E), 16 px/m, pano recording_2025-06-30_11-38-09_02078 (2025-06-30)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/ceramiquelaan-437/ref-e2.jpg", "kind": "rectified wall 707 (E, north part), pano recording_2024-10-21_08-31-01_01527 (2024-10-21)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/ceramiquelaan-437/ref-s1.jpg", "kind": "rectified wall 36 (S), pano TMX7316010203-002569_pano_0000_001907 (2022-05-10, entrance under scaffolding)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/ceramiquelaan-437/ref-s2.jpg", "kind": "rectified wall 489 (S, east part), pano recording_2025-06-30_12-53-56_00594 (2025-06-30)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/ceramiquelaan-437/ref-n.jpg", "kind": "rectified wall 645 (N), pano TMX7316010203-002896_pano_0003_000333 (2022-12-27)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"}
+  ],
+  "faces": {
+    "east (512, 707)": "evidence: ref-e1.jpg, ref-e2.jpg. Window columns and ground bays read per row; balcony positions and floor heights measured, depth 1.5 m ESTIMATED (rectified photos cannot give depth).",
+    "south (36, 489)": "evidence: ref-s1.jpg, ref-s2.jpg. Entrance gaps, loggias, window columns per row.",
+    "north (645)": "evidence: ref-n.jpg. Gold-lined portal, loggias, 8 columns.",
+    "west (313, 226, 89, 114, 113), all courtyard walls and the upper setbacks": "INFERRED: no usable panorama (ref rect of wall 313 was an oblique 34 m shot of a neighbour and was discarded). Same window module evenly spread, no features."
+  },
+  "caveats": [
+    "Window column positions inside each observed row are taken from the rectified photo to about 0.3 m; rows alternate slightly in reality and are encoded per row.",
+    "Brick tone is a single mottled grey, the photographs show dark and light brick mixed.",
+    "Roof terraces and the roof plant visible above the 19.6 m rim are not modelled."
+  ],
+  "limits": ["roof terraces", "scaffolding", "shop signage", "brick relief", "balcony depth measurement"]
+}

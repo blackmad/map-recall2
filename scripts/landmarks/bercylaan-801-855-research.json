@@ -1,0 +1,93 @@
+{
+  "id": "bercylaan-801-855",
+  "status": "reworked-2026-10-11-after-integrator-hold",
+  "identity": {
+    "bagPandId": "0363100012250610",
+    "bouwjaar": 2021,
+    "addresses": [
+      "Bercylaan 801-855 (lettering on the glass: BOLD Bercylaan 809 t/m 1215)"
+    ],
+    "bag": "BAG API 2026-10-11: no pand name, aantalBouwlagen 27, oorspronkelijkBouwjaar 2021; 367 verblijfsobjecten (all pages): 359 woonfunctie (median 21 m2), 5 overige, 2 sport, 1 winkel; 30,790 m2 in total. 3DBAG tower 79 m, shoulder 27 m, detached low block 8 m.",
+    "name": "BOLD (Overhoeks): the pand carries the BOLD lettering; architect OZ (Chris Zwiers), almost 80 m, 24 storeys, 143 apartments plus 203 student apartments, solar-panel facade (stedenbouw.nl, 2022-05-09). Unit counts differ from BAG's 367, so the match is by lettering, height and neighbourhood, not by address register.",
+    "policy": "ordinary large building: category ordinary, no route destination, no POI card (a residential block; the name is not confirmed by the BAG and the sources give no address)",
+    "notDuplicate": "Checked manualCatalogue.json, signature-landmarks.json, native-kit-pois.json, poi-work-queue.json, landmark-backlog.json, ordinary-buildings-data and building-types/instances.json: pand id not present. Not Yvie (Team V, 32 floors, about 107 m, finished 2024), which is a different tower."
+  },
+  "sources": [
+    {
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012250610/?_format=json",
+      "kind": "BAG pand (Amsterdam BAG API)",
+      "retrievedOn": "2026-10-11",
+      "licence": "CC0 (BAG)"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012250610&_pageSize=500",
+      "kind": "BAG verblijfsobjecten, all pages",
+      "retrievedOn": "2026-10-11",
+      "licence": "CC0 (BAG)"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012250610",
+      "kind": "3DBAG LoD2.2 massing",
+      "retrievedOn": "2026-10-11",
+      "licence": "CC BY 4.0 (3DBAG)"
+    },
+    {
+      "url": "https://stedenbouw.nl/en/?p=14931",
+      "kind": "press article on BOLD (architect OZ, height, storeys)",
+      "retrievedOn": "2026-10-11",
+      "licence": "read for facts only"
+    },
+    {
+      "url": "https://skyscraperpage.com/b116485",
+      "kind": "Yvie Overhoeks entry, used to rule Yvie out",
+      "retrievedOn": "2026-10-11",
+      "licence": "read for facts only"
+    },
+    {
+      "file": "artifacts/landmark-lanes/bercylaan-801-855/ref-southwest.jpg",
+      "kind": "south-west long front, panorama recording_2025-06-30_12-53-56_00737 (2025-06-30)",
+      "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+    },
+    {
+      "file": "artifacts/landmark-lanes/bercylaan-801-855/ref-northwest.jpg, ref-northwest-2.jpg",
+      "kind": "north-west end with BOLD lettering, panoramas recording_2025-06-30_12-53-56_00751 and _00746",
+      "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+    },
+    {
+      "file": "artifacts/landmark-lanes/bercylaan-801-855/ref-southeast.jpg, ref-south.jpg",
+      "kind": "tower nose and ground floor, panoramas recording_2025-06-30_12-53-56_00631 and _00641",
+      "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+    },
+    {
+      "file": "artifacts/landmark-lanes/bercylaan-801-855/ref-northeast.jpg",
+      "kind": "north-east face of the 8 m low block only, panorama recording_2025-06-30_12-53-56_00622",
+      "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+    },
+    {
+      "file": "artifacts/landmark-lanes/bercylaan-801-855/ref-southwest-far.jpg",
+      "kind": "south-west lane, panorama recording_2025-06-30_12-53-56_00735 (2025-06-30), shows the neighbour with the cream bands",
+      "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"
+    }
+  ],
+  "faces": {
+    "south-west (232.5), north-west end (322.5), south-east nose (132.5)": "evidence: the ref-*.jpg photographs, up to about 20 m; the grid is the photographed module repeated to the roof.",
+    "north-east long front (52.5), upper floors of every face": "INFERRED: no panorama of the tower's north-east face (the lane is closed by the A'DAM-side buildings) and no panorama above about 20 m."
+  },
+  "caveats": [
+    "Window pitch (2.7 m columns, 3 m storeys, 1.6 x 1.9 m windows) is estimated from the lower storeys; the photos show paired sashes with a transom, drawn as one pane.",
+    "The tower is photographed in 2025 with the neighbouring Yvie tower under construction; this pand is complete in 3DBAG.",
+    "Solar-panel cladding pattern, wooden balconies and the yellow soffit are not modelled."
+  ],
+  "limits": [
+    "balconies",
+    "solar cladding",
+    "signage",
+    "roof plant"
+  ],
+  "rework": {
+    "whiteBandedVolume": "The cream/white stacked-band volume with cantilevered stone slab edges and deep glazed strips in ref-southwest.jpg (right half) and ref-southwest-far.jpg is NOT this pand: it is a neighbour, the 2026 pand 0363100012247366 centred about 63 m west / 61 m south of this pand (PDOK BAG). Evidence: camera-matched geometry (artifacts/landmark-lanes/bercylaan-801-855/contact-far.png) puts this pand 50-90 m east of the camera behind that building; the black grid block and the grey panel block left of it are this pand (27 m shoulder and 8 m block).",
+    "photographedCladding": "black ceramic/solar-panel grid with paired-sash windows (shoulder, north-west end with BOLD lettering, tower nose); grey metal panels on the 8 m block. The 79 m tower above about 20 m is hidden behind neighbours in every panorama: INFERRED as the same black grid.",
+    "osm": "two OSM ways stood on the footprint un-suppressed (w1244980639, 75 m tower; w1212855770, 9 m block) and are now suppressed with the BAG pand",
+    "colours": "slate (wall) overridden to #3a3d41, a neutral graphite, since the photographed panels are black-grey and the first build read navy"
+  }
+}

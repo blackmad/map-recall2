@@ -1,0 +1,304 @@
+{
+  "id": "nw-rowhouse-render-pilaster",
+  "label": "Nieuw-West terraced house, white or grey rendered upper storey with yellow-brick party-wall pilasters, a small square window and a three-light ribbon window above a glazed garden-side ground storey with glazed door, dark tile roof (Slotermeer: Wessel Gansfortstraat, Geert Grootestraat, Rudolf Agricolastraat, Thomas a Kempisstraat, Carry van Bruggenstraat)",
+  "frontOnShort": true,
+  "source": {
+    "clusterRank": 1,
+    "panden": 50,
+    "bouwjaar": [
+      1950,
+      1956
+    ],
+    "lengthM": 7.8,
+    "widthM": 4.75,
+    "bouwlagen": 3,
+    "roof": "pitched",
+    "dwellingsMedian": 1
+  },
+  "storeys": 2,
+  "eavesRangeM": [
+    5.2,
+    6.7
+  ],
+  "footprintRangeM": {
+    "frontage": [
+      4.5,
+      5.5
+    ],
+    "depth": [
+      7.1,
+      9.0
+    ]
+  },
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.3,
+    "vergeOverhangM": 0.0,
+    "thicknessM": 0.12,
+    "pitchDeg": 30
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "white",
+  "variants": {
+    "white": {
+      "label": "White render, buff brick pilasters, dark roof",
+      "evidence": "survey terraces #174, 175, 179, 180, 273 (Wessel Gansfortstraat, Carry van Bruggenstraat)",
+      "palette": {
+        "wall": {
+          "slot": "stucco",
+          "tint": "#e8e6d6"
+        },
+        "frame": "#f0eee6",
+        "glass": "#586878",
+        "door": "#e8e8e0",
+        "accent": "#e6e3d6",
+        "rail": "#c9ad82",
+        "dark": "#3a3a3a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "slate",
+          "tint": "#4a4640"
+        }
+      }
+    },
+    "grey": {
+      "label": "Grey render, buff brick pilasters, dark roof",
+      "evidence": "survey terraces #191, 195, 199 (Geert Grootestraat, Rudolf Agricolastraat, Thomas a Kempisstraat)",
+      "palette": {
+        "wall": {
+          "slot": "stucco",
+          "tint": "#6d7070"
+        },
+        "frame": "#f0eee6",
+        "glass": "#586878",
+        "door": "#e8e8e0",
+        "accent": "#e6e3d6",
+        "rail": "#c9ad82",
+        "dark": "#3a3a3a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "slate",
+          "tint": "#4a4640"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012109016.jpg",
+          "pand": "0363100012109016",
+          "address": "Wessel Gansfortstraat (terrace #174)",
+          "note": "between two buff-brick pilasters (pitch 345 px): upper storey render with a 0.75 m square window left and a 2.8 m three-light ribbon right; glazed ground storey behind a garden fence; same order in the neighbouring houses"
+        },
+        {
+          "photo": "survey crop 0363100012090308.jpg",
+          "pand": "0363100012090308",
+          "address": "Wessel Gansfortstraat (terrace #179)",
+          "note": "ground storey: 2.7 m window group, glazed door and sidelight; render above; dormer additions on some roofs"
+        },
+        {
+          "photo": "survey crop 0363100012113712.jpg",
+          "pand": "0363100012113712",
+          "address": "Geert Grootestraat (terrace #191)",
+          "note": "grey render version: pilasters, small window + ribbon window, glazed ground storey"
+        },
+        {
+          "photo": "survey crop 0363100012103477.jpg",
+          "pand": "0363100012103477",
+          "address": "Carry van Bruggenstraat (terrace #273)",
+          "note": "white render, pilasters, ribbon window and small window, same order"
+        },
+        {
+          "photo": "survey crop 0363100012128487.jpg",
+          "pand": "0363100012128487",
+          "address": "Thomas a Kempisstraat (terrace #199)",
+          "note": "grey render, same scheme"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 2,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "house",
+          "w": 5.2,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": -2.28,
+              "w": 0.4,
+              "h": 5.6,
+              "sill": 0.0,
+              "colour": "rail",
+              "depth": 0.05
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -0.85,
+              "w": 2.3,
+              "h": 2.05,
+              "sill": 0.15,
+              "lights": 3
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": 1.25,
+              "w": 0.9,
+              "h": 2.15,
+              "steps": 0
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.5,
+              "w": 0.7,
+              "h": 0.65,
+              "sill": 1.25,
+              "lights": 1
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 0.95,
+              "w": 2.8,
+              "h": 1.25,
+              "sill": 1.0,
+              "lights": 3
+            }
+          ]
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012109016.jpg",
+          "pand": "0363100012109016",
+          "address": "Wessel Gansfortstraat",
+          "note": "rear (garden side) NOT seen in any photo: generic two-window upper storey, garden door and kitchen window inferred from the frontage scheme; it is hidden between the rear gardens in practice"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 2,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "back",
+          "w": 1,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": 1.0,
+              "w": 0.9,
+              "h": 2.1,
+              "steps": 0
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -1.0,
+              "w": 1.8,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012109016.jpg",
+          "pand": "0363100012109016",
+          "address": "Wessel Gansfortstraat",
+          "note": "end wall seen edge-on beside the front at the end of a terrace: plain wall, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012109016.jpg",
+          "pand": "0363100012109016",
+          "address": "Wessel Gansfortstraat",
+          "note": "end wall seen edge-on beside the front at the end of a terrace: plain wall, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Front on the SHORT side (frontOnShort). Measured on survey crop 0363100012090308: 67 px per metre, pilasters at 350 px pitch.",
+    "The glazed ground storey faces the garden fences (the photos are taken from the garden path), so these houses may have their street side on the opposite short side; the front is the photographed (glazed) side.",
+    "Not mirrored: small window left, ribbon window right in every terrace read. Dormers and the render colour per house are not modelled."
+  ]
+}

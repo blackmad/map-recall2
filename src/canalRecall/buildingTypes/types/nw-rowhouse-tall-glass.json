@@ -1,0 +1,298 @@
+{
+  "id": "nw-rowhouse-tall-glass",
+  "label": "Nieuw-West terraced house, brown brick, double-height glazed bay with cream spandrels beside a dark red door, low pitched roof along the street (the 8.5 x 5.0 m cluster, Slotermeer: Justus Halbertsmastraat, Johan Kernstraat, Drusiushof...)",
+  "frontOnShort": true,
+  "source": {
+    "clusterRank": 1,
+    "panden": 2922,
+    "bouwjaar": [
+      1952,
+      1972
+    ],
+    "lengthM": 8.5,
+    "widthM": 5.0,
+    "bouwlagen": 3,
+    "roof": "pitched",
+    "dwellingsMedian": 1
+  },
+  "storeys": 2,
+  "eavesRangeM": [
+    5.2,
+    6.7
+  ],
+  "footprintRangeM": {
+    "frontage": [
+      4.4,
+      5.8
+    ],
+    "depth": [
+      7.9,
+      9.4
+    ]
+  },
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.3,
+    "vergeOverhangM": 0.0,
+    "thicknessM": 0.12,
+    "pitchDeg": 25
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "cream",
+  "variants": {
+    "cream": {
+      "label": "Cream bay frames, dark red door, terracotta roof",
+      "evidence": "survey tiles 150-173; brick median of 0363100012137339/0139255/0072154 = #55473c-#65574c",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#5e4e43"
+        },
+        "frame": "#e9e4d2",
+        "glass": "#7f8d98",
+        "door": "#7d1f2b",
+        "accent": "#e9e3d2",
+        "rail": "#c9c4b6",
+        "dark": "#3a3a3a",
+        "column": "#e4dfd0",
+        "joint": "#3a3430",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4a38"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012137339.jpg",
+          "pand": "0363100012137339",
+          "address": "Justus Halbertsmastraat",
+          "note": "three houses: 2.5 m tall glazed bay from window sill to just under the eaves (ground window + glazed door, mid strip, four-light upper), dark red door, small 0.4 m window high up"
+        },
+        {
+          "photo": "survey crop 0363100012139255.jpg",
+          "pand": "0363100012139255",
+          "address": "Johan Kernstraat",
+          "note": "camera-matched: same bay, red door right of the bay"
+        },
+        {
+          "photo": "survey crop 0363100012072154.jpg",
+          "pand": "0363100012072154",
+          "address": "Johan Kernstraat",
+          "note": "bay with cream spandrel between ground window and the strip"
+        },
+        {
+          "photo": "survey crop 0363100012121915.jpg",
+          "pand": "0363100012121915",
+          "address": "Justus Halbertsmastraat",
+          "note": "grey spandrel variant of the bay (not modelled separately)"
+        }
+      ],
+      "counted": {
+        "bays": 2,
+        "openingsPerUpperStorey": 3,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "bay",
+          "w": 3.1,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": 0.4,
+              "w": 2.5,
+              "h": 4.55,
+              "sill": 0.65,
+              "colour": "frame",
+              "depth": 0.03
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -0.25,
+              "w": 0.95,
+              "h": 1.5,
+              "sill": 0.75,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": 1.1,
+              "w": 1.0,
+              "h": 2.2,
+              "sill": 0.07,
+              "lights": 3
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 0.4,
+              "w": 2.3,
+              "h": 1.15,
+              "sill": 1.05,
+              "lights": 4
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 0.4,
+              "w": 2.3,
+              "h": 0.55,
+              "sill": 0.35,
+              "lights": 3
+            }
+          ]
+        },
+        {
+          "id": "door",
+          "w": 1.9,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": 0.15,
+              "w": 0.85,
+              "h": 2.2,
+              "steps": 0
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 0.1,
+              "w": 0.4,
+              "h": 0.4,
+              "sill": 1.7,
+              "lights": 1
+            }
+          ]
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012137339.jpg",
+          "pand": "0363100012137339",
+          "address": "Justus Halbertsmastraat",
+          "note": "rear (garden side) NOT seen in any photo: generic two-window upper storey, garden door and kitchen window, inferred from the frontage scheme; it is hidden between the rear gardens in practice"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 2,
+        "groundDoors": 1,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "back",
+          "w": 1,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 1.1,
+              "w": 1.2,
+              "h": 1.2,
+              "sill": 0.95,
+              "lights": 2
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "u": 1.0,
+              "w": 0.9,
+              "h": 2.1
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -1.0,
+              "w": 1.8,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012128219.jpg",
+          "pand": "0363100012128219",
+          "address": "Joseph Scaligerstraat",
+          "note": "end wall: plain wall seen edge-on beside the front at the end of the terrace, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012071380.jpg",
+          "pand": "0363100012071380",
+          "address": "Mattheus Sladushof",
+          "note": "end wall: plain wall seen edge-on beside the front at the end of the terrace, no openings read; party walls (mid-terrace houses) get no openings at all"
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "wall",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Front on the SHORT side (frontOnShort)."
+  ]
+}

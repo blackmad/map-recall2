@@ -1,0 +1,784 @@
+{
+  "id": "nw-portiek-brick-pitched",
+  "label": "Nieuw-West type 1: four/five-storey brick portiekflat, pitched roof, five-bay front with balconies either side of the stair core (14.4 x 10.5 m footprint cluster, 357 panden, 1953-64)",
+  "source": {
+    "clusterRank": 1,
+    "panden": 357,
+    "bouwjaar": [
+      1953,
+      1964
+    ],
+    "lengthM": 14.4,
+    "widthM": 10.5,
+    "bouwlagen": 5,
+    "roof": "pitched",
+    "dwellingsMedian": 8
+  },
+  "storeys": 5,
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.35,
+    "vergeOverhangM": 0.12,
+    "thicknessM": 0.12,
+    "pitchDeg": 30
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "brick",
+  "variants": {
+    "brick": {
+      "label": "Original brown brick, open balconies with painted solid parapets, white-framed windows, blue/green doors (grey-brown brick; 42 4-storey Slotermeer/Geuzenveld members, see evidence)",
+      "evidence": "survey sheets of Geuzenveld and Sonderbuur: 0363100012121235 (Herbert Spencerhof), 0363100012102349 (Kierkegaardstraat), 0363100012112708 (Sonderbuur); 4-storey members (ground + 3 rows): 0363100012091451, 2072021, 2121235 (Herbert Spencerhof, camera-matched sheet), 2076957, 2129796 (David Humehof), 2113469, 2096174 (Hegelhof), 2119805, 2078333 (Immanuel Kanthof); colour: median of brick-hued pixels of the sunlit crops 0121235 #595149, 0072021 #60564b, 0091451 #524a42, 0076957 #5c5248, 0113469 #554c43, 0096174 #544b42 = #584f46 (the overcast David Humehof 0129796 and Immanuel Kanthof 0119805/0078333 crops sample darker, #3f3730-#4a423b)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#584f46"
+        },
+        "frame": "#ece6d6",
+        "glass": "#4b5a6b",
+        "door": "#3b5878",
+        "accent": "#bdb7a8",
+        "rail": "#c9c4b6",
+        "dark": "#4a4a48",
+        "column": "#e4dfd0",
+        "joint": "#443c34",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4b36"
+        }
+      }
+    },
+    "clad-panel": {
+      "label": "Re-clad: grey ribbed panels under three-light ribbon windows (balconies enclosed, window bays turned into ribbons), brown brick piers and plinth kept, blue doors",
+      "evidence": "13 members of nieuw-e and 11 of 24 Sonderbuur/Reinveen members (0363100012063732, 0363100012125614, 0363100012150871, ...); colour of the brown piers: 0063732 #5b4a43, 0125614 #5c4b43",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#5b4a43"
+        },
+        "frame": "#f2f2f0",
+        "glass": "#4b5a6b",
+        "door": "#4d6f9c",
+        "accent": "#a9b0b4",
+        "rail": "#c9c4b6",
+        "dark": "#4a4a48",
+        "column": "#e4e4e0",
+        "joint": "#7e8588",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#8a4c3c"
+        }
+      }
+    },
+    "render": {
+      "label": "Rendered cream walls over the brick plinth, balconies kept (parameter exercise: not seen on a type-1 pand)",
+      "evidence": "none",
+      "palette": {
+        "wall": {
+          "slot": "stucco",
+          "tint": "#d6cdb6"
+        },
+        "plinth": {
+          "slot": "brick",
+          "tint": "#584f46"
+        },
+        "frame": "#f2efe6",
+        "glass": "#4b5a6b",
+        "door": "#3b5878",
+        "accent": "#bdb7a8",
+        "rail": "#c9c4b6",
+        "dark": "#4a4a48",
+        "column": "#e4dfd0",
+        "joint": "#a89c84",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4b36"
+        }
+      }
+    },
+    "brick-cream": {
+      "label": "Brown brick with cream-painted spandrel/window bands in the window bays (every one of the 13 non-re-clad Sonderbuur survey members), balconies with painted solid parapets",
+      "evidence": "survey montage staging/building-types/sonderbuur/sheets/survey-a.jpg and survey-b.jpg: 13 of 24 members (0363100012061842, 2079084, 2127297, 2126028, 2112708, 2075965, 2098636, 2070756, 2070899, 2088472, 2146294, 2082757, 2074491); close crop 0363100012127297: cream panel from ~0.25 m under to ~0.1 m over the window row, brick bands (~1 m) between the rows, a cream band behind the small ground windows; colour: Sonderbuur brick of 0127297, 0126028, 0112708 = #554741 (the cream bands are painted, the brick is the same dark red-brown)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#554741"
+        },
+        "frame": "#ece6d6",
+        "glass": "#4b5a6b",
+        "door": "#3b5878",
+        "accent": "#bdb7a8",
+        "rail": "#c9c4b6",
+        "dark": "#4a4a48",
+        "column": "#efe8d2",
+        "joint": "#443936",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4b36"
+        }
+      }
+    },
+    "clad-full": {
+      "label": "Re-clad over everything: light grey ribbed panels cover the brick piers and the stair core as well (brick kept only on the ground storey), ribbon windows, blue doors",
+      "evidence": "survey montages of nieuw-e and nieuw-e2 (staging/building-types): 18 members, e.g. 0363100012106777, 2103930, 2086925, 2148442, 2154904, 2088999, 2080398, 2108116, 2229433 (Wildeman 30-1, the type-1-c.jpg photo), 2124414, 2229432, 2140618, 2069794, 2133889 (Wildeman, Ookmeerweg); the window layout equals clad-panel, only the brown piers are covered",
+      "palette": {
+        "wall": {
+          "slot": "stucco",
+          "tint": "#b4babd"
+        },
+        "plinth": {
+          "slot": "brick",
+          "tint": "#5b4a43"
+        },
+        "frame": "#f2f2f0",
+        "glass": "#4b5a6b",
+        "door": "#4d6f9c",
+        "accent": "#a3abaf",
+        "rail": "#c9c4b6",
+        "dark": "#4a4a48",
+        "column": "#e4e4e0",
+        "joint": "#8a9195",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#8a4c3c"
+        }
+      }
+    },
+    "brick-yellow": {
+      "label": "Yellow brick, same five-bay front (4-storey Slotermeer members with painted balcony fronts and red doors)",
+      "evidence": "survey montage slotermeer-c/g: 0363100012095188 (Paulus van Hemertstraat), 2098549 (same street), 2068572 (De Savornin Lohmanstraat): same balcony-flanked stair core as the brown 4-storey members, yellow-buff brick; colour: 0095188 #af946a, 0098549 #a1855d, 0068572 #b19364 = #ab8f64",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#ab8f64"
+        },
+        "frame": "#f2efe6",
+        "glass": "#4b5a6b",
+        "door": "#b83a30",
+        "accent": "#cfc9b8",
+        "rail": "#d8d4c8",
+        "dark": "#4a4a48",
+        "column": "#e9e2cc",
+        "joint": "#8a7550",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#a85a3c"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012121235.jpg",
+          "pand": "0363100012121235",
+          "address": "Herbert Spencerhof (4 storeys, L 14.6 m)",
+          "note": "front, straight on. Five bays left to right: (A) one two-light window per storey; (B) balcony column (balcony ~2.4 m wide, ~1.0 m deep, painted solid parapet, French door ~1.5 m behind it) with a door at ground; (S) stair core ~2.4 m: entrance door with letterbox panels at ground and ONE small window (~0.7 x 0.85 m) per upper storey; (B) second balcony column with a door at ground; (D) two two-light windows (~1.5 m wide each) per storey. Relative widths from the crop: 3.4 : 2.4 : 2.4 : 2.4 : 5.6. Row of small low windows along the plinth under bays A and D. Pitched roof with the ridge along the facade, chimneys, a small dormer over the core."
+        },
+        {
+          "photo": "survey crop 0363100012102349.jpg",
+          "pand": "0363100012102349",
+          "address": "Kierkegaardstraat (4 storeys, L 14.9 m)",
+          "note": "same layout with two windows left of the balconies instead of one (A has 2 columns): the left window bay varies 1-2 windows between members."
+        },
+        {
+          "photo": "type-1-c.jpg",
+          "pand": "0363100012229433",
+          "address": "Wildeman 30-1",
+          "note": "re-clad member: balconies closed into ribbon windows, grey panels, brick plinth with three adjacent blue doors (B door, S entrance, B door), narrow brick stair core with its single small window column."
+        }
+      ],
+      "counted": {
+        "bays": 5,
+        "openingsPerUpperStorey": 6,
+        "groundDoors": 3,
+        "balconiesPerUpperStorey": 2
+      },
+      "bays": [
+        {
+          "id": "A",
+          "w": 3.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.2,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2,
+              "exceptVariants": [
+                "clad-panel",
+                "clad-full"
+              ]
+            },
+            {
+              "kind": "ribbon",
+              "levels": "upper",
+              "w": 2.4,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 3,
+              "variants": [
+                "clad-panel",
+                "clad-full"
+              ]
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -0.7,
+              "w": 0.6,
+              "h": 0.5,
+              "sill": 1.3
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": 0.7,
+              "w": 0.6,
+              "h": 0.5,
+              "sill": 1.3
+            },
+            {
+              "kind": "panel",
+              "levels": "upper",
+              "u": 0,
+              "w": 2.7,
+              "h": 0.84,
+              "sill": 0,
+              "colour": "accent",
+              "depth": 0.1,
+              "variants": [
+                "clad-panel",
+                "clad-full"
+              ],
+              "note": "grey spandrel panel under the ribbon window"
+            },
+            {
+              "kind": "panel",
+              "levels": "upper",
+              "u": 0,
+              "w": 2.9,
+              "h": 1.85,
+              "sill": 0.25,
+              "colour": "column",
+              "depth": 0.03,
+              "variants": [
+                "brick-cream"
+              ],
+              "note": "cream spandrel/window band"
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": 0,
+              "w": 2.9,
+              "h": 0.95,
+              "sill": 1.1,
+              "colour": "column",
+              "depth": 0.03,
+              "variants": [
+                "brick-cream"
+              ],
+              "note": "cream spandrel/window band"
+            }
+          ]
+        },
+        {
+          "id": "B1",
+          "w": 2.4,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 2.2,
+              "depth": 1,
+              "railing": "solid",
+              "exceptVariants": [
+                "clad-panel",
+                "clad-full"
+              ]
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.5,
+              "h": 2.1,
+              "sill": 0,
+              "lights": 2,
+              "exceptVariants": [
+                "clad-panel",
+                "clad-full"
+              ],
+              "note": "French door behind the balcony"
+            },
+            {
+              "kind": "ribbon",
+              "levels": "upper",
+              "w": 1.8,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 3,
+              "variants": [
+                "clad-panel",
+                "clad-full"
+              ]
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 1,
+              "h": 2.1
+            },
+            {
+              "kind": "panel",
+              "levels": "upper",
+              "u": 0,
+              "w": 2.1,
+              "h": 0.84,
+              "sill": 0,
+              "colour": "accent",
+              "depth": 0.1,
+              "variants": [
+                "clad-panel",
+                "clad-full"
+              ],
+              "note": "grey spandrel panel under the ribbon window"
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 2.4,
+          "role": "stair",
+          "core": true,
+          "elements": [
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 0.95,
+              "h": 2.1,
+              "steps": 2
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": -0.8,
+              "w": 0.28,
+              "h": 0.9,
+              "sill": 1,
+              "colour": "frame",
+              "depth": 0.08
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": 0.8,
+              "w": 0.28,
+              "h": 0.9,
+              "sill": 1,
+              "colour": "frame",
+              "depth": 0.08
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.7,
+              "h": 0.85,
+              "sill": 1,
+              "note": "one small stair window per upper storey"
+            }
+          ]
+        },
+        {
+          "id": "B2",
+          "w": 2.4,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 2.2,
+              "depth": 1,
+              "railing": "solid",
+              "exceptVariants": [
+                "clad-panel",
+                "clad-full"
+              ]
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.5,
+              "h": 2.1,
+              "sill": 0,
+              "lights": 2,
+              "exceptVariants": [
+                "clad-panel",
+                "clad-full"
+              ]
+            },
+            {
+              "kind": "ribbon",
+              "levels": "upper",
+              "w": 1.8,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 3,
+              "variants": [
+                "clad-panel",
+                "clad-full"
+              ]
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 1,
+              "h": 2.1
+            },
+            {
+              "kind": "panel",
+              "levels": "upper",
+              "u": 0,
+              "w": 2.1,
+              "h": 0.84,
+              "sill": 0,
+              "colour": "accent",
+              "depth": 0.1,
+              "variants": [
+                "clad-panel",
+                "clad-full"
+              ],
+              "note": "grey spandrel panel under the ribbon window"
+            }
+          ]
+        },
+        {
+          "id": "D",
+          "w": 5.6,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.45,
+              "w": 1.5,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2,
+              "exceptVariants": [
+                "clad-panel",
+                "clad-full"
+              ]
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 1.45,
+              "w": 1.5,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2,
+              "exceptVariants": [
+                "clad-panel",
+                "clad-full"
+              ]
+            },
+            {
+              "kind": "ribbon",
+              "levels": "upper",
+              "u": -1.3,
+              "w": 2.2,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 3,
+              "variants": [
+                "clad-panel",
+                "clad-full"
+              ]
+            },
+            {
+              "kind": "ribbon",
+              "levels": "upper",
+              "u": 1.3,
+              "w": 2.2,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 3,
+              "variants": [
+                "clad-panel",
+                "clad-full"
+              ]
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -1.8,
+              "w": 0.7,
+              "h": 0.5,
+              "sill": 1.3
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": 0,
+              "w": 0.7,
+              "h": 0.5,
+              "sill": 1.3
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": 1.8,
+              "w": 0.7,
+              "h": 0.5,
+              "sill": 1.3
+            },
+            {
+              "kind": "panel",
+              "levels": "upper",
+              "u": -1.3,
+              "w": 2.3,
+              "h": 0.84,
+              "sill": 0,
+              "colour": "accent",
+              "depth": 0.1,
+              "variants": [
+                "clad-panel",
+                "clad-full"
+              ],
+              "note": "grey spandrel panel under the ribbon window"
+            },
+            {
+              "kind": "panel",
+              "levels": "upper",
+              "u": 1.3,
+              "w": 2.3,
+              "h": 0.84,
+              "sill": 0,
+              "colour": "accent",
+              "depth": 0.1,
+              "variants": [
+                "clad-panel",
+                "clad-full"
+              ],
+              "note": "grey spandrel panel under the ribbon window"
+            },
+            {
+              "kind": "panel",
+              "levels": "upper",
+              "u": 0,
+              "w": 4.9,
+              "h": 1.85,
+              "sill": 0.25,
+              "colour": "column",
+              "depth": 0.03,
+              "variants": [
+                "brick-cream"
+              ],
+              "note": "cream spandrel/window band"
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": 0,
+              "w": 4.9,
+              "h": 0.95,
+              "sill": 1.1,
+              "colour": "column",
+              "depth": 0.03,
+              "variants": [
+                "brick-cream"
+              ],
+              "note": "cream spandrel/window band"
+            }
+          ]
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "type-1.jpg",
+          "pand": "0363100012061842",
+          "address": "Sonderbuur 23-H",
+          "note": "oblique garden-side view: balcony columns and two-light windows, trees in front; no straight-on back photo of any member was found in the survey. The model uses the front rhythm without balconies and without the ground doors. NOT verified."
+        }
+      ],
+      "counted": {
+        "bays": 5,
+        "openingsPerUpperStorey": 6,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "A",
+          "w": 5.6,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.45,
+              "w": 1.5,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 1.45,
+              "w": 1.5,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "B1",
+          "w": 2.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.5,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 2.4,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.7,
+              "h": 0.85,
+              "sill": 1
+            }
+          ]
+        },
+        {
+          "id": "B2",
+          "w": 2.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.5,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "D",
+          "w": 3.4,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.2,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012121235.jpg",
+          "pand": "0363100012121235",
+          "address": "Herbert Spencerhof",
+          "note": "the left gable is seen edge-on at the left of the crop: plain brick, one window column. One small window per upper storey; NOT verified."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 1,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "gable",
+          "w": 1,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.8,
+              "h": 1,
+              "sill": 0.9
+            }
+          ]
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012121235.jpg",
+          "pand": "0363100012121235",
+          "address": "Herbert Spencerhof",
+          "note": "same as the left gable. NOT verified."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 1,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "gable",
+          "w": 1,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.8,
+              "h": 1,
+              "sill": 0.9
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Storeys come from the eaves height (3DBAG), not from b3_bouwlagen: the cluster mixes 4-storey members (eaves ~12.3 m, 3DBAG says 5 because it counts the attic) and 5-storey members (eaves 14.2-14.7 m). The five-bay layout is the same.",
+    "The earlier survey photo type-1-b.jpg (Beek en Hoff 12-2: wide 5.5 m core with two small window columns, storage doors at the outer edges, 3.5 m balcony bays at the ends) is a different sub-design that the footprint cluster also contains; it is not modelled.",
+    "Roof: 3DBAG decides gable/hip and the ridge direction per pand; all 63 pilot members have a gable roof with the ridge along the long side.",
+    "Cladding is a per-pand variant that BAG/3DBAG do not know: variants.json per area, from looking at the panorama.",
+    "Cream bands: variant brick-cream (2026-10-10) is the design of all 13 non-re-clad survey members of Sonderbuur; plain brick is the fallback only.",
+    "Extension 2026-10-11 (types/nw-type1-extend-20261011): 444 panden of cluster ranks 1 and 3 were surveyed photo by photo. Only about 40 % share the five-bay front; the rest are other designs held with a reason (Beek en Hoff / Slotermeerlaan wide-core sub-design, Grasrijk symmetric wide-window sub-design, 4-storey hof blocks with offset balcony pairs, shops, pastel blocks).",
+    "Colour 2026-10-11 (types/nw-subtypes-20261011): the 4-storey 'brick' variant rendered red (#8f5a44) but its photos are dark brown-grey. Wall tints are now the median of brick-hued pixels (hue 5-40 deg) of sunlit panorama crops, because the game's recipe look (buildingRecipe/recipeLook.ts cityWallTint) lifts a photo-sampled brick colour into the city brick range: brick #584f46 (6 sunlit Herbert Spencerhof / Hegelhof / Kanthof / David Humehof crops: #595149 #60564b #524a42 #5c5248 #554c43 #544b42), brick-cream #554741 (Sonderbuur 0127297 #554740, 0126028 #554742, 0112708 #544741), clad-panel piers and clad-full plinth #5b4a43 (0063732 #5b4a43, 0125614 #5c4b43), brick-yellow #ab8f64 (0095188 #af946a, 0098549 #a1855d, 0068572 #b19364), render plinth = brick."
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "ordinary-0363100012172459",
+  "hash": "bb1bcea2396bac298bcfbadbb55012c9a99f6aa2e75181cfc807cd648b114ce1",
+  "sourceCommit": "e21680c666d878aa74d42fe74b7c9a103bfee5ca",
+  "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary38-source51",
+  "reviewEvidenceCommit": "8732ed43c5291d04ef31b0803377d75978c8d073",
+  "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/leids67-final-native56/0363100012172459",
+  "gallery": "Root and independent actual GPU PASS",
+  "native": "Root and independent desktop/touch emulation PASS; six neighbors retained",
+  "cards": "Physical mouse click selects genuine Club Church / Kerkstraat 52 / OSM 1760114383; no curated route POI added. Website HTTP 200 verified 2026-10-09.",
+  "fallback": "Delayed and disabled keep ordinary fallback; restored hides exact parent. Desktop cold model failure retains fallback. Target pyramid entries absent; no claim of exercised target pyramid geometry.",
+  "performance": "90 settled rAF frames median 16.7 ms/P95 16.8 ms desktop, P95 16.7 ms touch emulation. Startup long tasks preserved.",
+  "hosted": "Pending deployment and actual hosted checks.",
+  "priorFailures": {
+    "failedHash": "8dabf6535996a914891df1d9393cb800f962105a4e8f4da1cd3d7a230da7f706",
+    "sourceCommit": "d6509d17f",
+    "sourcePack": "experiments/canal-belt-continuation-20261007/leids67-failed-gallery54",
+    "reason": "Missing native street masonry left floating windows; repaired explicit native walls and bounded survey-edge ownership."
+  },
+  "limits": [
+    "Bounded native/survey wall ownership bridge up to 0.868 m; rear apertures unresolved.",
+    "CHURCH blade lettering uses approximate Anton Regular outlines; exact typeface unknown.",
+    "Full native frontage exposure uses normal user camera tilt to 12 degrees; source gallery establishes proportions.",
+    "Touch checks use iPhone 13 browser emulation on Apple M4 Pro, not a physical phone."
+  ],
+  "checks": {
+    "facadeProbes": 189,
+    "rawRoofOwners": 17,
+    "rawInteriorRings": 0,
+    "allPrior37HashesUnchanged": true,
+    "regeneratedBytesExact": true
+  }
+}

@@ -19,7 +19,7 @@
 
 import surveyedCatalogue from './surveyedLandmarks.json';
 import { MANUAL_LANDMARKS } from './manualModels';
-import { ORDINARY_BUILDINGS } from './ordinaryModels';
+import { countsAsLandmark } from '../buildingCategory';
 import type { LngLat, OrientedFootprint, SignatureModelSpec } from './signaturePlacement';
 
 interface SurveyedCatalogueEntry {
@@ -127,8 +127,12 @@ function specFromCatalogue(entry: SurveyedCatalogueEntry): SignatureModelSpec {
   };
 }
 
+/** The curated LANDMARK list: surveyed batch + manual models whose category is
+ * landmark. Ordinary buildings and street surveys are deliberately absent —
+ * they are drawn (landmarks/browser.ts GAME_BUILDING_MODELS) but never become
+ * destinations, cards, quiz items or route candidates (buildingCategory.ts). */
 export const SIGNATURE_MODELS: readonly SignatureModelSpec[] =
-  [...(surveyedCatalogue as SurveyedCatalogueEntry[]).filter(entry => !MANUAL_LANDMARKS.some(model => model.id === entry.id)).map(specFromCatalogue), ...MANUAL_LANDMARKS, ...ORDINARY_BUILDINGS];
+  [...(surveyedCatalogue as SurveyedCatalogueEntry[]).filter(entry => !MANUAL_LANDMARKS.some(model => model.id === entry.id)).map(specFromCatalogue), ...MANUAL_LANDMARKS.filter(countsAsLandmark)];
 
 /** Looks up a spec by id. */
 export function signatureModel(id: string): SignatureModelSpec | undefined {

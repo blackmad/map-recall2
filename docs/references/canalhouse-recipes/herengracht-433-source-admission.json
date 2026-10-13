@@ -1,0 +1,1555 @@
+{
+  "schemaVersion": 1,
+  "id": "herengracht-433-source-admission",
+  "observedOn": "2026-10-06",
+  "status": "bounded-source-aware-candidate-not-visual-acceptance",
+  "sampling": {
+    "sourceExposedCandidate": "herengracht-433",
+    "blindHeldout": false,
+    "retainedContext": "Herengracht 431 church and forecourt kept separate"
+  },
+  "officialIdentity": {
+    "status": "confirmed-current-official-direct-join",
+    "address": "Herengracht 433",
+    "addressId": "0363200000127069",
+    "vboId": "0363010000665048",
+    "pandId": "0363100012177602",
+    "addressSearch": {
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=straatnaam%3AHerengracht%20AND%20huisnummer%3A433&fq=woonplaatsnaam%3AAmsterdam&rows=100&fl=*",
+      "status": 200,
+      "accessed": "2026-10-06T05:45:40.799535+00:00",
+      "sha256": "71e339a9bfb67d28c8b6c5a3840e5a565f03636e84dcba7eb37b609ea766d18e",
+      "bytes": 1730,
+      "rawPath": "curl-direct-pdok433-v2.bin",
+      "accessState": "downloaded-original-http-body-before-extraction",
+      "transport": "direct-curl-or-inline-node",
+      "timestampLimit": "Metadata finalized after acquisition in same2026-10-06session; exact earlier time absent for direct command captures"
+    },
+    "vboSource": {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0363010000665048&f=json",
+      "status": 200,
+      "accessed": "2026-10-06T05:45:40.799535+00:00",
+      "sha256": "16bf20c40fcbd4594a6e05939c99092d9e600e0d5031cd4342c14f02da803c4a",
+      "bytes": 1859,
+      "rawPath": "curl-direct-vbo433-v2.bin",
+      "accessState": "downloaded-original-http-body-before-extraction",
+      "transport": "direct-curl-or-inline-node",
+      "timestampLimit": "Metadata finalized after acquisition in same2026-10-06session; exact earlier time absent for direct command captures"
+    },
+    "pandSource": {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/993d51f8-8470-5c18-9f55-ff51e4cb0504?f=json",
+      "status": 200,
+      "accessed": "2026-10-06T05:45:40.799535+00:00",
+      "sha256": "f86a129d5fd6386150535de5ca4f99aba8c58ea268b2aae308893bc4a6587a37",
+      "bytes": 2574,
+      "rawPath": "curl-direct-pand433.bin",
+      "accessState": "downloaded-original-http-body-before-extraction",
+      "transport": "direct-curl-or-inline-node",
+      "timestampLimit": "Metadata finalized after acquisition in same2026-10-06session; exact earlier time absent for direct command captures"
+    }
+  },
+  "sourceProvenance": {
+    "raw3DBag": {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012177602",
+      "status": 200,
+      "accessed": "2026-10-06T05:45:40.799535+00:00",
+      "sha256": "50a2f2bb083bca94b85337ee64db76c74a9e3065f419a56641d870c1e3f0b732",
+      "bytes": 14864,
+      "rawPath": "node-3dbag433.bin",
+      "accessState": "downloaded-original-http-body-before-extraction",
+      "transport": "direct-curl-or-inline-node",
+      "timestampLimit": "Metadata finalized after acquisition in same2026-10-06session; exact earlier time absent for direct command captures"
+    },
+    "rawBag": {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/993d51f8-8470-5c18-9f55-ff51e4cb0504?f=json",
+      "status": 200,
+      "accessed": "2026-10-06T05:45:40.799535+00:00",
+      "sha256": "f86a129d5fd6386150535de5ca4f99aba8c58ea268b2aae308893bc4a6587a37",
+      "bytes": 2574,
+      "rawPath": "curl-direct-pand433.bin",
+      "accessState": "downloaded-original-http-body-before-extraction",
+      "transport": "direct-curl-or-inline-node",
+      "timestampLimit": "Metadata finalized after acquisition in same2026-10-06session; exact earlier time absent for direct command captures"
+    },
+    "privateLocalPack": "/tmp/canalhouse-recipes-next-source-pack",
+    "sourceCommit": null,
+    "archiveSync": "pending-before-model-commit",
+    "processedSurvey": {
+      "path": "processed/herengracht-433-survey.json",
+      "sha256": "f1057c2e2711896a66529a3c593e9466eefbd03fb6f66dab559c1c50ffe6321c",
+      "stablePublicPath": "docs/references/canalhouse-recipes/herengracht-433-survey.json"
+    },
+    "nativeConversionNote": "Shared converter omits only roof triangulation subminimum slivers under a cumulative1e-4m\u00b2 budget, preserves raw roof rings/exactgroundscope and reports omission in recipe simplifications. No source acquisition/geometryedited.",
+    "reproducibleProcessedSurvey": {
+      "path": "docs/references/canalhouse-recipes/herengracht-433-survey.json",
+      "sha256": "f1057c2e2711896a66529a3c593e9466eefbd03fb6f66dab559c1c50ffe6321c",
+      "role": "Processed native survey copy for reproducible authoring; original API body remains in pending private source pack."
+    }
+  },
+  "native": {
+    "coordinateSystem": "RD EPSG28992 horizontal,NAPmetresvertical",
+    "bagGeometryWgs84": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.888447010860783,
+            52.36727550702718
+          ],
+          [
+            4.8884784896335205,
+            52.36729778537665
+          ],
+          [
+            4.888505052132605,
+            52.36731723884063
+          ],
+          [
+            4.888522763879431,
+            52.367329905241
+          ],
+          [
+            4.8883864155936685,
+            52.36742436702918
+          ],
+          [
+            4.888207929933963,
+            52.36733061895881
+          ],
+          [
+            4.8881868584532935,
+            52.367319034852436
+          ],
+          [
+            4.888166939433422,
+            52.36730550526431
+          ],
+          [
+            4.888148649697157,
+            52.367290715271736
+          ],
+          [
+            4.88802903236236,
+            52.3671913370805
+          ],
+          [
+            4.888037322420589,
+            52.36718661752767
+          ],
+          [
+            4.888038488885316,
+            52.367187341463335
+          ],
+          [
+            4.88805920804733,
+            52.36717542121911
+          ],
+          [
+            4.88808252820384,
+            52.36716200199905
+          ],
+          [
+            4.8880813617390535,
+            52.36716127806381
+          ],
+          [
+            4.888085204317252,
+            52.367159047332606
+          ],
+          [
+            4.888083163003967,
+            52.36715778044596
+          ],
+          [
+            4.888090404668225,
+            52.36715358674529
+          ],
+          [
+            4.888092445981526,
+            52.36715485363176
+          ],
+          [
+            4.888114909106239,
+            52.36714191612938
+          ],
+          [
+            4.888113160420147,
+            52.36714074035409
+          ],
+          [
+            4.888120402078788,
+            52.367136546651544
+          ],
+          [
+            4.888122442381114,
+            52.367137903410445
+          ],
+          [
+            4.888126283944176,
+            52.367135762550824
+          ],
+          [
+            4.888127304600918,
+            52.36713639599379
+          ],
+          [
+            4.888150698530256,
+            52.367122941120414
+          ],
+          [
+            4.888171048158078,
+            52.36711123500425
+          ],
+          [
+            4.888170027501291,
+            52.3671106015617
+          ],
+          [
+            4.888179220101083,
+            52.36710526565035
+          ],
+          [
+            4.888214804705743,
+            52.36708491463726
+          ],
+          [
+            4.888397687357319,
+            52.36723933936192
+          ],
+          [
+            4.888447010860783,
+            52.36727550702718
+          ]
+        ]
+      ]
+    },
+    "surveyFootprintPolygonsRD": [
+      [
+        [
+          [
+            121024.2631875,
+            486730.68799999997
+          ],
+          [
+            121026.4681875,
+            486732.553
+          ],
+          [
+            121032.1471875,
+            486726.03599999996
+          ],
+          [
+            121032.91018749999,
+            486725.16
+          ],
+          [
+            121035.68218749999,
+            486721.98
+          ],
+          [
+            121034.4661875,
+            486720.57899999997
+          ],
+          [
+            121032.64118749999,
+            486718.426
+          ],
+          [
+            121030.4811875,
+            486715.962
+          ],
+          [
+            121027.0931875,
+            486711.962
+          ],
+          [
+            121017.6611875,
+            486699.136
+          ],
+          [
+            121014.52018749999,
+            486694.865
+          ],
+          [
+            121012.0821875,
+            486697.181
+          ],
+          [
+            121011.49018749999,
+            486697.745
+          ],
+          [
+            121011.5591875,
+            486697.814
+          ],
+          [
+            121008.6001875,
+            486700.635
+          ],
+          [
+            121008.5291875,
+            486700.564
+          ],
+          [
+            121008.27018749999,
+            486700.805
+          ],
+          [
+            121008.13018749999,
+            486700.654
+          ],
+          [
+            121007.6391875,
+            486701.124
+          ],
+          [
+            121007.75918749999,
+            486701.255
+          ],
+          [
+            121006.24018749999,
+            486702.70399999997
+          ],
+          [
+            121006.1001875,
+            486702.564
+          ],
+          [
+            121005.61018749999,
+            486703.034
+          ],
+          [
+            121005.7491875,
+            486703.174
+          ],
+          [
+            121005.49018749999,
+            486703.424
+          ],
+          [
+            121005.5701875,
+            486703.505
+          ],
+          [
+            121002.5891875,
+            486706.344
+          ],
+          [
+            121002.50918749999,
+            486706.26399999997
+          ],
+          [
+            121002.0341875,
+            486706.713
+          ],
+          [
+            121002.52018749999,
+            486707.359
+          ],
+          [
+            121002.43218749999,
+            486707.441
+          ],
+          [
+            121003.6511875,
+            486709.071
+          ],
+          [
+            121009.84518749999,
+            486717.358
+          ],
+          [
+            121010.17118749999,
+            486717.794
+          ],
+          [
+            121011.3731875,
+            486719.359
+          ],
+          [
+            121011.42918749999,
+            486719.432
+          ],
+          [
+            121012.79618749999,
+            486720.928
+          ],
+          [
+            121014.24018749999,
+            486722.206
+          ],
+          [
+            121014.37618749999,
+            486722.322
+          ]
+        ]
+      ]
+    ],
+    "holeCount": 0,
+    "policy": "Exact semantic GroundSurface rings including tiny frontage offsets preserved; no hull or rectangle. 431 church identities and forecourt excluded."
+  },
+  "principalFront": {
+    "orientedLeftToRightAsSeenFromCanal": [
+      [
+        121002.0341875,
+        486706.713
+      ],
+      [
+        121012.0821875,
+        486697.181
+      ]
+    ],
+    "straightFrontSpanM": 13.849957689467082,
+    "facadePlaneToleranceM": 0.22,
+    "selectionEvidence": "Principal five-axis frontage corresponds to southwest roof77 edge chain from121002.034/486706.713 to121012.082/486697.181. Small source offsets preserved. Further3.36m low flatroof72 appendix remains in native shell but receives no invented principal facade. Correspondence is bounded and needs root native context review."
+  },
+  "heights": {
+    "groundNapM": 1.0809999704360962,
+    "bodyEavesNominalM": 15.606501662254331,
+    "bodyEavesRangeM": [
+      15.561501662254333,
+      15.813501662254335
+    ],
+    "bodyEavesAdmission": "Front wall roof77 cornice boundary nominal uses end vertices16.6425 and16.7325NAP. Central small roof-line offsets up to16.8945NAP retained in native roof, not translated into added floors. Front corner17.8905NAP forms localized raised end, not whole-body height.",
+    "frontWallsRD": [
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:1",
+        "exterior": true,
+        "vertices": [
+          [
+            121005.49018749999,
+            486703.424,
+            16.69050163269043
+          ],
+          [
+            121005.49018749999,
+            486703.424,
+            1.0805016326904298
+          ],
+          [
+            121005.7491875,
+            486703.174,
+            1.0805016326904298
+          ],
+          [
+            121005.7491875,
+            486703.174,
+            16.68450163269043
+          ]
+        ],
+        "normal": [
+          -0.6944953545386594,
+          -0.71949718729417,
+          0
+        ],
+        "areaSquareMetres": 5.618108133978765
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:2",
+        "exterior": true,
+        "vertices": [
+          [
+            121005.5701875,
+            486703.505,
+            16.85350163269043
+          ],
+          [
+            121005.5701875,
+            486703.505,
+            1.0805016326904298
+          ],
+          [
+            121005.49018749999,
+            486703.424,
+            1.0805016326904298
+          ],
+          [
+            121005.49018749999,
+            486703.424,
+            16.69050163269043
+          ]
+        ],
+        "normal": [
+          -0.7114850248256467,
+          0.7027012590346262,
+          0
+        ],
+        "areaSquareMetres": 1.7864205932294697
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:18",
+        "exterior": true,
+        "vertices": [
+          [
+            121002.50918749999,
+            486706.26399999997,
+            16.73050163269043
+          ],
+          [
+            121002.50918749999,
+            486706.26399999997,
+            1.0805016326904298
+          ],
+          [
+            121002.5891875,
+            486706.344,
+            1.0805016326904298
+          ],
+          [
+            121002.5891875,
+            486706.344,
+            16.89450163269043
+          ]
+        ],
+        "normal": [
+          0.7071067812334767,
+          -0.7071067811396183,
+          0
+        ],
+        "areaSquareMetres": 1.779872621289535
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:19",
+        "exterior": true,
+        "vertices": [
+          [
+            121002.5891875,
+            486706.344,
+            16.89450163269043
+          ],
+          [
+            121002.5891875,
+            486706.344,
+            1.0805016326904298
+          ],
+          [
+            121005.5701875,
+            486703.505,
+            1.0805016326904298
+          ],
+          [
+            121005.5701875,
+            486703.505,
+            16.85350163269043
+          ]
+        ],
+        "normal": [
+          -0.6896491066150109,
+          -0.7241437079372555,
+          0
+        ],
+        "areaSquareMetres": 65.01530426031397
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:20",
+        "exterior": true,
+        "vertices": [
+          [
+            121005.61018749999,
+            486703.034,
+            16.39850163269043
+          ],
+          [
+            121005.61018749999,
+            486703.034,
+            1.0805016326904298
+          ],
+          [
+            121006.1001875,
+            486702.564,
+            1.0805016326904298
+          ],
+          [
+            121006.1001875,
+            486702.564,
+            16.38950163269043
+          ]
+        ],
+        "normal": [
+          -0.6922251836987421,
+          -0.7216815745557336,
+          0
+        ],
+        "areaSquareMetres": 10.39740415270018
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:21",
+        "exterior": true,
+        "vertices": [
+          [
+            121005.7491875,
+            486703.174,
+            16.68450163269043
+          ],
+          [
+            121005.7491875,
+            486703.174,
+            1.0805016326904298
+          ],
+          [
+            121005.61018749999,
+            486703.034,
+            1.0805016326904298
+          ],
+          [
+            121005.61018749999,
+            486703.034,
+            16.39850163269043
+          ]
+        ],
+        "normal": [
+          -0.7096366558807838,
+          0.7045678225907979,
+          0
+        ],
+        "areaSquareMetres": 3.050208838658447
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:22",
+        "exterior": true,
+        "vertices": [
+          [
+            121007.6391875,
+            486701.124,
+            16.39750163269043
+          ],
+          [
+            121007.6391875,
+            486701.124,
+            1.0805016326904298
+          ],
+          [
+            121008.13018749999,
+            486700.654,
+            1.0805016326904298
+          ],
+          [
+            121008.13018749999,
+            486700.654,
+            16.38750163269043
+          ]
+        ],
+        "normal": [
+          -0.6914898355696971,
+          -0.7223861898623155,
+          0
+        ],
+        "areaSquareMetres": 10.40744148448658
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:23",
+        "exterior": true,
+        "vertices": [
+          [
+            121007.75918749999,
+            486701.255,
+            16.65250163269043
+          ],
+          [
+            121007.75918749999,
+            486701.255,
+            1.0805016326904298
+          ],
+          [
+            121007.6391875,
+            486701.124,
+            1.0805016326904298
+          ],
+          [
+            121007.6391875,
+            486701.124,
+            16.39750163269043
+          ]
+        ],
+        "normal": [
+          -0.7373877491555074,
+          0.6754696939133351,
+          0
+        ],
+        "areaSquareMetres": 2.7437796489296122
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:24",
+        "exterior": true,
+        "vertices": [
+          [
+            121006.1001875,
+            486702.564,
+            16.38950163269043
+          ],
+          [
+            121006.1001875,
+            486702.564,
+            1.0805016326904298
+          ],
+          [
+            121006.24018749999,
+            486702.70399999997,
+            1.0805016326904298
+          ],
+          [
+            121006.24018749999,
+            486702.70399999997,
+            16.67450163269043
+          ]
+        ],
+        "normal": [
+          0.7071067810904859,
+          -0.7071067812826092,
+          0
+        ],
+        "areaSquareMetres": 3.059240919477382
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:25",
+        "exterior": true,
+        "vertices": [
+          [
+            121002.0341875,
+            486706.713,
+            16.73250163269043
+          ],
+          [
+            121002.0341875,
+            486706.713,
+            1.0805016326904298
+          ],
+          [
+            121002.50918749999,
+            486706.26399999997,
+            1.0805016326904298
+          ],
+          [
+            121002.50918749999,
+            486706.26399999997,
+            16.73050163269043
+          ]
+        ],
+        "normal": [
+          -0.6869379402120303,
+          -0.7267160836924232,
+          0
+        ],
+        "areaSquareMetres": 10.22988917755035
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:27",
+        "exterior": true,
+        "vertices": [
+          [
+            121008.13018749999,
+            486700.654,
+            16.38750163269043
+          ],
+          [
+            121008.13018749999,
+            486700.654,
+            1.0805016326904298
+          ],
+          [
+            121008.27018749999,
+            486700.805,
+            1.0805016326904298
+          ],
+          [
+            121008.27018749999,
+            486700.805,
+            16.68350163269043
+          ]
+        ],
+        "normal": [
+          0.7333121785929898,
+          -0.679892086089552,
+          0
+        ],
+        "areaSquareMetres": 3.1824168044424637
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:28",
+        "exterior": true,
+        "vertices": [
+          [
+            121011.49018749999,
+            486697.745,
+            16.64850163269043
+          ],
+          [
+            121011.49018749999,
+            486697.745,
+            1.0805016326904298
+          ],
+          [
+            121012.0821875,
+            486697.181,
+            1.0805016326904298
+          ],
+          [
+            121012.0821875,
+            486697.181,
+            14.92450163269043
+          ],
+          [
+            121012.0821875,
+            486697.181,
+            16.64250163269043
+          ]
+        ],
+        "normal": [
+          -0.6897773181293085,
+          -0.7240215821329766,
+          0
+        ],
+        "areaSquareMetres": 12.726802939648408
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:29",
+        "exterior": true,
+        "vertices": [
+          [
+            121011.5591875,
+            486697.814,
+            16.79150163269043
+          ],
+          [
+            121011.5591875,
+            486697.814,
+            1.0805016326904298
+          ],
+          [
+            121011.49018749999,
+            486697.745,
+            1.0805016326904298
+          ],
+          [
+            121011.49018749999,
+            486697.745,
+            16.64850163269043
+          ]
+        ],
+        "normal": [
+          -0.7071067812878217,
+          0.7071067810852734,
+          0
+        ],
+        "areaSquareMetres": 1.5261139181691115
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:30",
+        "exterior": true,
+        "vertices": [
+          [
+            121006.24018749999,
+            486702.70399999997,
+            16.67450163269043
+          ],
+          [
+            121006.24018749999,
+            486702.70399999997,
+            1.0805016326904298
+          ],
+          [
+            121007.75918749999,
+            486701.255,
+            1.0805016326904298
+          ],
+          [
+            121007.75918749999,
+            486701.255,
+            16.65250163269043
+          ]
+        ],
+        "normal": [
+          -0.6902377895211579,
+          -0.7235826102919733,
+          0
+        ],
+        "areaSquareMetres": 32.7130263539931
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:31",
+        "exterior": true,
+        "vertices": [
+          [
+            121008.27018749999,
+            486700.805,
+            16.68350163269043
+          ],
+          [
+            121008.27018749999,
+            486700.805,
+            1.0805016326904298
+          ],
+          [
+            121008.5291875,
+            486700.564,
+            1.0805016326904298
+          ],
+          [
+            121008.5291875,
+            486700.564,
+            16.68750163269043
+          ]
+        ],
+        "normal": [
+          -0.6812096560953234,
+          -0.7320883856765461,
+          0
+        ],
+        "areaSquareMetres": 5.520774648883057
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:32",
+        "exterior": true,
+        "vertices": [
+          [
+            121008.5291875,
+            486700.564,
+            16.68750163269043
+          ],
+          [
+            121008.5291875,
+            486700.564,
+            1.0805016326904298
+          ],
+          [
+            121008.6001875,
+            486700.635,
+            1.0805016326904298
+          ],
+          [
+            121008.6001875,
+            486700.635,
+            16.83050163269043
+          ]
+        ],
+        "normal": [
+          0.707106781210202,
+          -0.707106781162893,
+          0
+        ],
+        "areaSquareMetres": 1.5742650610487896
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:37",
+        "exterior": true,
+        "vertices": [
+          [
+            121008.6001875,
+            486700.635,
+            16.83050163269043
+          ],
+          [
+            121008.6001875,
+            486700.635,
+            1.0805016326904298
+          ],
+          [
+            121011.5591875,
+            486697.814,
+            1.0805016326904298
+          ],
+          [
+            121011.5591875,
+            486697.814,
+            16.79150163269043
+          ]
+        ],
+        "normal": [
+          -0.6900276585631282,
+          -0.7237829995363854,
+          0
+        ],
+        "areaSquareMetres": 64.31008952916828
+      },
+      {
+        "buildingId": "bag:0363100012177602",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:wall:39",
+        "exterior": true,
+        "vertices": [
+          [
+            121012.0821875,
+            486697.181,
+            14.92450163269043
+          ],
+          [
+            121012.0821875,
+            486697.181,
+            1.0805016326904298
+          ],
+          [
+            121014.52018749999,
+            486694.865,
+            1.0805016326904298
+          ],
+          [
+            121014.52018749999,
+            486694.865,
+            14.96250163269043
+          ]
+        ],
+        "normal": [
+          -0.6887338307025779,
+          -0.7250142829253453,
+          0
+        ],
+        "areaSquareMetres": 46.61700437597415
+      }
+    ],
+    "mainFrontRoofSurfaceIds": [
+      "NL.IMBAG.Pand.0363100012177602-0:lod22:roof:77"
+    ],
+    "otherParts": [
+      {
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:roof:72",
+        "heightRangeNapM": [
+          14.92450163269043,
+          15.00550163269043
+        ],
+        "role": "native-separate-roof-part-not-front-cornice"
+      },
+      {
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:roof:73",
+        "heightRangeNapM": [
+          17.28350163269043,
+          20.78850163269043
+        ],
+        "role": "native-separate-roof-part-not-front-cornice"
+      },
+      {
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:roof:74",
+        "heightRangeNapM": [
+          16.17250163269043,
+          17.09850163269043
+        ],
+        "role": "native-separate-roof-part-not-front-cornice"
+      },
+      {
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:roof:75",
+        "heightRangeNapM": [
+          23.70750163269043,
+          23.76150163269043
+        ],
+        "role": "native-separate-roof-part-not-front-cornice"
+      },
+      {
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:roof:76",
+        "heightRangeNapM": [
+          23.57750163269043,
+          23.74950163269043
+        ],
+        "role": "native-separate-roof-part-not-front-cornice"
+      },
+      {
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:roof:78",
+        "heightRangeNapM": [
+          22.86650163269043,
+          22.90650163269043
+        ],
+        "role": "native-separate-roof-part-not-front-cornice"
+      },
+      {
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:roof:79",
+        "heightRangeNapM": [
+          20.61550163269043,
+          20.807501632690432
+        ],
+        "role": "native-separate-roof-part-not-front-cornice"
+      },
+      {
+        "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:roof:80",
+        "heightRangeNapM": [
+          21.04050163269043,
+          21.24950163269043
+        ],
+        "role": "native-separate-roof-part-not-front-cornice"
+      }
+    ],
+    "roofLimits": "Front crest/side returns and rear flat raised23.76NAP roofs are separate. Survey RMSE1.27m; exact stone/attic heights unknown. All source roof triangles preserved."
+  },
+  "normalization": {
+    "x": "fraction of13.85m principal front width",
+    "y": "fraction of15.61m source-bounded cornice height",
+    "precision": "Unrectified source visual ratios; no pixel rectangle or surveyed window dimensions claimed."
+  },
+  "houses": [
+    {
+      "id": "herengracht-433",
+      "pandId": "0363100012177602",
+      "sampleRole": "source-exposed-transfer-candidate",
+      "sources": {
+        "registerUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1640",
+        "registerSources": [
+          {
+            "originalPath": "/Users/blackmad/Code/map-recall2-source-data/datasets/amsterdam-monument-register/2026-10-05T06-10-55-572Z-83107/raw/responses/31b327152358011e67d28d344f5c73d4742912b55393a362e329c17c47f25184.json.gz",
+            "stagedPath": "cached-originals/204e8c21b68e842af901303bbd909e760b6d020baf9c0268dc29a9cdf7b60408.gz",
+            "sha256": "204e8c21b68e842af901303bbd909e760b6d020baf9c0268dc29a9cdf7b60408",
+            "bytes": 355560,
+            "kind": "existing-gzip-container-of-original-HTTP-response",
+            "acquiredThisTurn": false,
+            "sourceUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/?_format=json&_pageSize=500&page=18",
+            "retrievedAt": "2026-10-05T06:24:44.992Z",
+            "rawHttpBodySha256": "e879822537f0389df0ce50fd6b9be81e7768f3b1ff1b655ab3b458d24d744e58",
+            "expectedRawHttpBodySha256": "e879822537f0389df0ce50fd6b9be81e7768f3b1ff1b655ab3b458d24d744e58"
+          },
+          {
+            "originalPath": "/Users/blackmad/Code/map-recall2-source-data/datasets/amsterdam-monument-register/2026-10-05T06-10-55-572Z-83107/raw/responses/573bb8e2e843cbfc4c9ae2bd674ed2eb2a697f38111a0c23ee3203906f98c94a.json.gz",
+            "stagedPath": "cached-originals/bd903d97a8554a5cee4107014728c42b5659ace5fd68b475d90f30ba2a81a726.gz",
+            "sha256": "bd903d97a8554a5cee4107014728c42b5659ace5fd68b475d90f30ba2a81a726",
+            "bytes": 12345,
+            "kind": "existing-gzip-container-of-original-HTTP-response",
+            "acquiredThisTurn": false,
+            "sourceUrl": "https://api.linkeddata.cultureelerfgoed.nl/datasets/rce/cho/sparql",
+            "retrievedAt": "2026-10-05T06:25:36.200Z",
+            "rawHttpBodySha256": "cfb6e3dfb2d4198aadea66ba4176735c3aa2e6f025247fe33108b1aa765cfa93",
+            "expectedRawHttpBodySha256": "cfb6e3dfb2d4198aadea66ba4176735c3aa2e6f025247fe33108b1aa765cfa93"
+          },
+          {
+            "originalPath": "/Users/blackmad/Code/map-recall2-source-data/datasets/amsterdam-monument-register/2026-10-05T06-10-55-572Z-83107/raw/responses/581806191c621a41fccf4d34c7105152a2d79dd7bad84e5f62b45011846579cf.json.gz",
+            "stagedPath": "cached-originals/d00b4fb7a9ba083fe56fbe3694c8dc0560ae84b1e4677f079ab1328803311d6a.gz",
+            "sha256": "d00b4fb7a9ba083fe56fbe3694c8dc0560ae84b1e4677f079ab1328803311d6a",
+            "bytes": 24753,
+            "kind": "existing-gzip-container-of-original-HTTP-response",
+            "acquiredThisTurn": false,
+            "sourceUrl": "https://api.linkeddata.cultureelerfgoed.nl/datasets/rce/cho/sparql",
+            "retrievedAt": "2026-10-05T06:26:29.422Z",
+            "rawHttpBodySha256": "0fdf4e60dc5868d7b3b0a28b872ae51fbf6952b6039b95b87d857605f9320427",
+            "expectedRawHttpBodySha256": "0fdf4e60dc5868d7b3b0a28b872ae51fbf6952b6039b95b87d857605f9320427"
+          }
+        ],
+        "captureDate": "2024-12-03T09:21:49Z",
+        "nearCaptureDate": "2025-06-16T06:58:18Z",
+        "rights": "GemeenteAmsterdam panorama CC BY4.0",
+        "projection": {
+          "camera": {
+            "_links": {
+              "self": {
+                "href": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241203_0939_Track01_Sphere_00859/"
+              },
+              "equirectangular_full": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00859/equirectangular/panorama_8000.jpg"
+              },
+              "equirectangular_medium": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00859/equirectangular/panorama_4000.jpg"
+              },
+              "equirectangular_small": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00859/equirectangular/panorama_2000.jpg"
+              },
+              "cubic_img_preview": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00859/cubic/preview.jpg"
+              },
+              "thumbnail": {
+                "href": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20241203_0939_Track01_Sphere_00859/"
+              },
+              "adjacencies": {
+                "href": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241203_0939_Track01_Sphere_00859/adjacencies/"
+              }
+            },
+            "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00859/cubic/",
+            "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00859/cubic/{z}/{f}/{y}/{x}.jpg",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.887585902804281,
+                52.3669247615472,
+                0.0
+              ]
+            },
+            "pano_id": "b_20241203_0939_Track01_Sphere_00859",
+            "timestamp": "2024-12-03T09:21:49Z",
+            "filename": "Job_20241203_0939_Track01_Sphere_00859.jpg",
+            "surface_type": "L",
+            "mission_distance": 5,
+            "mission_type": "bi",
+            "mission_year": "2024",
+            "tags": [
+              "mission-bi",
+              "mission-2024",
+              "mission-distance-5",
+              "surface-land"
+            ],
+            "roll": 1.638702678770457,
+            "pitch": -0.07461427053665948,
+            "heading": 132.8698958237695
+          },
+          "headingDeg": 56.77161490362448,
+          "pitchDeg": 16,
+          "fovDeg": 32,
+          "privateImage": "processed/herengracht-433-b_20241203_0939_Track01_Sphere_00859-full.jpg",
+          "width": 1300,
+          "height": 1500,
+          "targetWgs84": [
+            4.888124,
+            52.36714
+          ],
+          "method": "Reproduced cached extract-native.mts source projection, not inferred from image pixels."
+        },
+        "nearCamera": {
+          "_links": {
+            "self": {
+              "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00534/"
+            },
+            "equirectangular_full": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00534/equirectangular/panorama_8000.jpg"
+            },
+            "equirectangular_medium": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00534/equirectangular/panorama_4000.jpg"
+            },
+            "equirectangular_small": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00534/equirectangular/panorama_2000.jpg"
+            },
+            "cubic_img_preview": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00534/cubic/preview.jpg"
+            },
+            "thumbnail": {
+              "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_00534/"
+            },
+            "adjacencies": {
+              "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00534/adjacencies/"
+            }
+          },
+          "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00534/cubic/",
+          "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00534/cubic/{z}/{f}/{y}/{x}.jpg",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              4.88810066145104,
+              52.36709672871705,
+              0
+            ]
+          },
+          "pano_id": "recording_2025-06-16_06-42-40_00534",
+          "timestamp": "2025-06-16T06:58:18Z",
+          "filename": "recording_2025-06-16_06-42-40_00534.jpg",
+          "surface_type": "L",
+          "mission_distance": 5,
+          "mission_type": "bi",
+          "mission_year": "2025",
+          "tags": [
+            "mission-bi",
+            "mission-2025",
+            "mission-distance-5",
+            "surface-land"
+          ],
+          "roll": 0,
+          "pitch": 0,
+          "heading": 0
+        },
+        "nearPrivateImage": "processed/herengracht-433-near-lower.jpg",
+        "beeldbank": {
+          "status": "bounded-exact-address-catalogue-and-selected-originals-acquired",
+          "search": {
+            "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Herengracht%20433",
+            "status": 200,
+            "accessed": "2026-10-06T05:45:40.799535+00:00",
+            "sha256": "2c58f828ae2064223924ea0091b054f9491af3a922ebc52697104024f3ba5f04",
+            "bytes": 12357,
+            "rawPath": "curl-direct-beeldbank433.bin",
+            "accessState": "downloaded-original-http-body-before-extraction",
+            "transport": "direct-curl-or-inline-node",
+            "timestampLimit": "Metadata finalized after acquisition in same2026-10-06session; exact earlier time absent for direct command captures"
+          },
+          "catalogueSource": {
+            "status": 200,
+            "accessed": "2026-10-06T05:42:54.226Z",
+            "sha256": "3eb64ef8662fbebe35334902cdb0aa983ebec2ef6fd73ad0fc8262f508d02596",
+            "bytes": 12161,
+            "rawPath": "beeldbank-catalogue-433.bin",
+            "accessState": "downloaded-original-http-body-before-extraction",
+            "url": "https://archief.amsterdam/beeldbank/"
+          },
+          "catalogueItems": [
+            {
+              "id": "b0d50783-3e8c-af06-cda0-141754976724",
+              "title": "Interieur Herengracht 433, Amsterdamsche Credietbank Maatschappij",
+              "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/b0d50783-3e8c-af06-cda0-141754976724",
+              "date": "1925 ca.",
+              "rights": "Auteursrechtvrij",
+              "creator": [
+                "Eilers, Bernard F. (1878-1951)"
+              ],
+              "sourceRecordPath": "beeldbank-catalogue-433.bin",
+              "state": "catalogue-acquired",
+              "inspectionState": "Catalogue text only; no original/preview downloaded or inspected"
+            },
+            {
+              "id": "19b85ebb-f81e-0f19-2759-06638bfa5b2e",
+              "title": "Interieur Herengracht 433, Amsterdamsche Credietbank Maatschappij",
+              "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/19b85ebb-f81e-0f19-2759-06638bfa5b2e",
+              "date": "1925 ca.",
+              "rights": "Auteursrechtvrij",
+              "creator": [
+                "Eilers, Bernard F. (1878-1951)"
+              ],
+              "sourceRecordPath": "beeldbank-catalogue-433.bin",
+              "state": "catalogue-acquired",
+              "inspectionState": "Catalogue text only; no original/preview downloaded or inspected"
+            },
+            {
+              "id": "76ce96ac-a09e-e2ca-3995-2cd3b2182a10",
+              "title": "Herengracht 433, achtergevel van het voorhuis",
+              "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/76ce96ac-a09e-e2ca-3995-2cd3b2182a10",
+              "date": "1964",
+              "rights": "Stadsarchief Amsterdam",
+              "creator": [
+                "Schaap, C.P."
+              ],
+              "sourceRecordPath": "beeldbank-catalogue-433.bin",
+              "state": "original-and-preview-acquired;current-alteration-cross-check-required",
+              "downloadSource": {
+                "status": 200,
+                "accessed": "2026-10-06T05:43:24.440Z",
+                "sha256": "502b1549f6789f9d49789aec54ad0b8e36a9f35e94aa3ad1d70ded005f7a394e",
+                "bytes": 380371,
+                "rawPath": "beeldbank-76ce96ac-a09e-e2ca-3995-2cd3b2182a10-download.bin",
+                "accessState": "downloaded-original-http-body-before-extraction"
+              },
+              "previewSource": {
+                "status": 200,
+                "accessed": "2026-10-06T05:43:24.483Z",
+                "sha256": "b0512bf0002dc2b43d6d08467f0889f68cd5a5380323b668023687523761efb5",
+                "bytes": 33953,
+                "rawPath": "beeldbank-76ce96ac-a09e-e2ca-3995-2cd3b2182a10-preview.bin",
+                "accessState": "downloaded-original-http-body-before-extraction"
+              },
+              "inspectionState": "Preview personally inspected; original full-resolution bytes downloaded but not separately opened",
+              "actualMediaType": "historical photograph, not construction drawing",
+              "inspection": "1964433rearfront-housephoto: broadwindowrow, shallowupperatticstripandpitchedtile roof withsmallcenter dormer behindcornice;foregroundglassroof. Historicalonly; current roof planes/currentalterationsmustoverride unsupportedcarryover."
+            }
+          ],
+          "limits": "Three results per exact address.433returnedtwointeriors and1964rear; nofrontphoto in this limited433resultset. Shared1940partial429\u2013433 source supplies dated approach context; nohistoric current geometry assumption.",
+          "constructionDrawingSearch": {
+            "query": "Herengracht 433 bouwtekening",
+            "status": 200,
+            "rawPath": "beeldbank-drawing-query-433.bin",
+            "sha256": "872755e83e08bdfee6d23af3ca70899188ca4bcabd8cb614be52d34134d90a66",
+            "resultCount": 0,
+            "admission": "No returned drawings; no inspected constructiondrawing existsinthispack"
+          }
+        }
+      },
+      "registerAssertions": [
+        {
+          "text": "Dubbel huis met gevel onder rechte lijst met triglyfen, consoles en attiek. Geblokte hoeklisenen; zandstenen versiering tegen astravee (alles plm 1725); deur, kalk en snijraam plm 1800.",
+          "date": "1992-03-28",
+          "part": "principal frontage",
+          "confidence": "registered prose cross-checked current photographs"
+        }
+      ],
+      "crown": {
+        "label": "lijst",
+        "profileNormalized": [
+          [
+            0,
+            1
+          ],
+          [
+            0.08,
+            1.07
+          ],
+          [
+            0.32,
+            1.07
+          ],
+          [
+            0.42,
+            1.1
+          ],
+          [
+            0.5,
+            1.115
+          ],
+          [
+            0.58,
+            1.1
+          ],
+          [
+            0.68,
+            1.07
+          ],
+          [
+            0.92,
+            1.07
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "notes": "Straight cornice under low attic with centrally raised ornament, not neckgable. Sparse silhouette only; actual carved center secondary unresolved."
+      },
+      "criticalTraits": [
+        {
+          "id": "broad-double-house",
+          "relationship": "Broad double-house window/frontage grouping must differ from a narrow residential frontage.",
+          "source": "RCE1640 Dubbel huis",
+          "confidence": "Register assertion cross-checked against personally inspected2024frontage/2025near-lower source; bounded assembly relationship, exactdimensionalfitpending"
+        },
+        {
+          "id": "cornice-attic-assembly",
+          "relationship": "Straight cornice with triglyphs/consoles and attic must not be replaced by a neck gable.",
+          "source": "RCE1640 register description",
+          "confidence": "Register assertion cross-checked against personally inspected2024frontage/2025near-lower source; bounded assembly relationship, exactdimensionalfitpending"
+        },
+        {
+          "id": "central-axis-corner-blocks",
+          "relationship": "Blocked corner pilasters and sandstone decoration on the central bay organize the frontage; doorway/transom date around1800 remains distinct from circa1725 upper front.",
+          "source": "RCE1640 register description",
+          "confidence": "Register assertion cross-checked against personally inspected2024frontage/2025near-lower source; bounded assembly relationship, exactdimensionalfitpending"
+        },
+        {
+          "id": "central-double-flight-basement-access",
+          "relationship": "Central raised main door and arched transom align with broad landing; opposing stair flights flank basement door beneathlanding; basementwindows remainfullheight.",
+          "source": "2025municipalnear433visibleaddressnumber",
+          "confidence": "personally-inspected"
+        }
+      ],
+      "observations": {
+        "mainAxisCount": 5,
+        "belEtageWindows": 4,
+        "mainDoorAxis": 3,
+        "firstUpperWindows": 5,
+        "secondUpperWindows": 5,
+        "frontage": "Broad brick double house with white blocked corners, central sandstone entrance and low ornate attic over straight cornice.",
+        "entrance": "Central raised main door and segmental decorative transom; opposing stair flights share landing; basement door beneathlanding.",
+        "basement": "Two broad outer apertures plus narrower openings beneath flights; occluded widths approximate, not erase the apertures."
+      },
+      "uncertainties": [
+        "Exact current step count, landing depth, stone carving, triglyph/console counts and side/rear openings unmeasured.",
+        "Main/front flatappendix correspondence requires native context review.",
+        "Corner-block cadence is drawn coarsely from visible source repetition, not a claimed measured block count.",
+        "2024 trees obscure left upper apertures; five-axis layout corroborated by2025near source and registered doublehouse."
+      ],
+      "capabilityGaps": [
+        "Curved iron transom scrolls and carved sandstone central attic relief remain simplified through shared ornament/segmental-head primitives.",
+        "Cornice triglyph/console layout not yet selected from sources; candidate omits discrete accents rather than guesses an exact count."
+      ]
+    }
+  ],
+  "capabilityAudit": {
+    "supported": [
+      "surveyRecipe native rings/all9roofparts",
+      "canalhouseWindowGroup source-selected5axes",
+      "named plain-frame and four-panel-door with explicit sash overrides",
+      "segmental-head opening",
+      "shared bands/ornaments for blocked corners/central surround",
+      "shared cornice layers",
+      "mapStoepProfile opposing flights and aperture-aware support"
+    ],
+    "customGeometryBuilders": 0,
+    "sharedCodeChangesRequired": "Generic cornice passthrough, explicit facadegroups, bounded native fragment reporting and shaped-head masonry repair; noaddressspecificgeometry.",
+    "secondaryGaps": [
+      "Curved transom scrollwork and carved center-attic sculpture not reproduced."
+    ],
+    "gate": "Compile is not visual, blind-heldout, game or performance acceptance.",
+    "unresolvedCriticalTraits": [
+      "Friezeconstructionisnowpresentinboundedindependentreview; sourcecompletecountsandfrontal/gameplayreadabilityremainunproven."
+    ]
+  },
+  "acceptance": {
+    "identityJoin": true,
+    "visual": false,
+    "transfer": false,
+    "game": false,
+    "performance": false,
+    "sourceArchiveCommitted": false,
+    "nextAction": "Inspectactualgame/gallerystreetcamera frieze/pairedleafreadability andnativecontext; preservefailedheldouts andfreezeanewsourcechallengebeforetransferacceptance.",
+    "preservedFailures": [
+      {
+        "path": "/tmp/433-compile-attempt-1.txt",
+        "cause": "tsx CLI IPC blocked; retry via node --import tsx"
+      },
+      {
+        "path": "/tmp/433-compile-attempt-2.txt",
+        "cause": "Numeric bay IDs invalid; corrected axis names"
+      },
+      {
+        "path": "/tmp/433-compile-attempt-3.txt",
+        "cause": "Right contour backtracking; reversed native x ordering"
+      },
+      {
+        "path": "/tmp/433-compile-attempt-4.txt",
+        "cause": "Native roof80 triangle area5.49997e-6m2 falls below shared compiler area threshold1e-5; shared contract fix pending"
+      },
+      {
+        "path": "/tmp/433-compile-attempt-5.txt",
+        "cause": "Full-width attic band above unsupported end shoulders; corrected attic band spans only raised attic x.08\u2013.92 while cornice remains full-width."
+      }
+    ],
+    "compiler": {
+      "status": "pass",
+      "attempt": 7,
+      "output": "/tmp/herengracht-433-recipes.json",
+      "stats": {
+        "output": "/tmp/herengracht-433-recipes.json",
+        "id": "herengracht-433",
+        "triangles": 4114,
+        "meshes": 400,
+        "bounds": {
+          "min": [
+            -11.868324261254159,
+            -4.705906064828014e-08,
+            -22.396076202392578
+          ],
+          "max": [
+            22.166255950927734,
+            22.68050193786621,
+            15.291923522949219
+          ]
+        },
+        "acceptance": "pending-visual-review"
+      },
+      "visualAcceptance": false
+    },
+    "nativeConversion": {
+      "omittedRoofFragments": [
+        {
+          "surfaceId": "NL.IMBAG.Pand.0363100012177602-0:lod22:roof:80",
+          "verticesRD": [
+            [
+              121019.1631875,
+              486707.539,
+              21.09250163269043
+            ],
+            [
+              121020.17918749999,
+              486708.68799999997,
+              21.10350163269043
+            ],
+            [
+              121021.2181875,
+              486709.863,
+              21.11450163269043
+            ]
+          ],
+          "areaM2": 5.49997287380144e-06
+        }
+      ],
+      "omittedRoofAreaM2": 5.49997287380144e-06
+    },
+    "candidateCheckpoint": {
+      "triangles": 4930,
+      "bytes": 250756,
+      "fingerprint": "9304172d85910c4b",
+      "preview": "./canalhouse-recipes.html?chunk=next&house=herengracht-433&view=basement",
+      "review": "herengracht-433-independent-review.json",
+      "status": "bounded-frieze-presence-improved-frontal-readability-unproven"
+    }
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "modelId": "huize-frankendael",
+  "status": "draft prepared; root integration and visual/game acceptance pending",
+  "researchDate": "2026-10-08",
+  "privateArchive": "../map-recall2-source-data/models/huize-frankendael",
+  "sourceCommit": "pending root; worker prohibited from git operations",
+  "identity": {
+    "bagPand": "0363100012162192",
+    "bagVbo": "0363010000743675",
+    "address": "Middenweg 72,1097BS Amsterdam",
+    "osmParent": "w44980011",
+    "poiId": "extract_landmarks_746892406",
+    "rceMonument": "422420",
+    "rceComplex": "422277",
+    "floorAreaVboMetres2": 705,
+    "footprintMetres2": 289.03,
+    "areaAuthority": "3DBAG ground footprint;705 is usable VBO area, never footprint",
+    "scope": "Central pavilion, two coach-house wings and cut-corner garden-room bay, all one current BAG parent; park, detached gate/fountain/statues and southeast church excluded",
+    "osmParts": [
+      "w1562613213",
+      "w1562613214",
+      "w1562613215",
+      "w1562613216"
+    ]
+  },
+  "architecturalAssertions": [
+    {
+      "feature": "central undercellared two-storey pavilion, flanked by lower former coach houses",
+      "part": "whole house",
+      "authority": "RCE422420 register description",
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/422420",
+      "confidence": "high",
+      "comparison": "2022 front confirms three unequal roof masses; BAG confirms actual small parent"
+    },
+    {
+      "feature": "three grey-tiled truncated hip roofs",
+      "part": "main pavilion and both wings",
+      "authority": "RCE422420, OSM parts and 3DBAG AHN5 2023",
+      "confidence": "high",
+      "dimensionStatus": "Measured semantics, smoothed original roof assemblies; slopes52-55degrees in AHN planes. Wing eaves6/top8.6, main eaves11.6/top14.6 relative ground."
+    },
+    {
+      "feature": "pierced wooden balustrade around roof plateau; front corners hide chimneys beneath shaped lead caps and vanes; central Gildemeester armorial panel",
+      "part": "main roof",
+      "authority": "RCE422420 and 2022 front",
+      "confidence": "high",
+      "dimensionStatus": "Baluster silhouette, spacing and carved heraldry simplified from photograph; silhouette16.63m uses bounded OSM16.6m total height rather than full-height walls."
+    },
+    {
+      "feature": "three front bays, masonry corner pilasters and broad pale cornice; rococo entrance, upper sash and central dormer surrounds",
+      "part": "NE principal facade",
+      "authority": "RCE422420, operator2016 upload and dated2022 photo",
+      "confidence": "high",
+      "dimensionStatus": "Observed composition; approximate original ornamental profiles, not imported pixels/mesh."
+    },
+    {
+      "feature": "seven hardstone entrance steps, raised landing, double door, six-pane transom and basement windows",
+      "part": "NE central entrance",
+      "authority": "RCE422420, dated2022 front",
+      "confidence": "high",
+      "dimensionStatus": "Seven steps explicitly registered; overall rise1.62m and tread0.29m approximate from photograph."
+    },
+    {
+      "feature": "front outer lower windows16panes, upper windows12panes, upper central sash12panes",
+      "part": "central front",
+      "authority": "RCE422420 and2022 front",
+      "confidence": "high"
+    },
+    {
+      "feature": "four wing front dormers; side dormers on central roof; former carriage doors with transoms",
+      "part": "wing fronts and main roof",
+      "authority": "RCE422420,2022 front",
+      "confidence": "high",
+      "uncertainty": "Dormer pane pattern simplified to visible front4x2/central4x3; side4x4 follows register double8-pane description. Exact sash joinery is not surveyed."
+    },
+    {
+      "feature": "projecting cut-corner rear risalit with flat attic and taller ground/upper windows; rear wing glazed door groups",
+      "part": "garden facade",
+      "authority": "Current BAG six bay vertices, RCE422420,2014-03-14 garden photo",
+      "confidence": "high massing,medium current joinery",
+      "uncertainty": "Back photograph predates2023 survey; matching current BAG and survey establish retained projection but not every present door leaf."
+    },
+    {
+      "feature": "muted brown/red brick, cream woodwork, grey tile and dark green doors",
+      "part": "exterior",
+      "authority": "Operator photograph and2022 front",
+      "confidence": "high observed family,approximate flat palette"
+    }
+  ],
+  "historicalComparison": {
+    "register": "1992 inscription and architectural description; original ca1700 core, appearance around1733 per operator",
+    "oldFront": "P.H. Louw2005-09-10 tiny180x135 original",
+    "principalFront": "Mschapink2022-04-17 CC BY-SA4.0,1920px original thumbnail response; full-size429",
+    "operatorFront": "Current operator website uses Vooraanzicht-zomer.jpg uploaded2016-12; capture date unknown",
+    "opposite": "Marcelmulder68 rear2014-03-14 CC BY-SA3.0 NL;960px thumbnail response, full-size429",
+    "finding": "Distinctive three roof masses, balustrade/chimneys, three sash bays, rococo surround and four wing dormers recur. Closed carriage door in2022 differs from open2016 view; model retains leaf/mapped opening. No demolished historical orangery reconstructed."
+  },
+  "archiveSearch": {
+    "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Frankendael%20Middenweg%2072",
+    "raw": "raw/beeldbank-search.html",
+    "result": "HTTP200 JavaScript pic-mediabank shell; no catalogue record/drawing inspected",
+    "state": "bounded search completed, image/drawing access gap",
+    "bouwdossiers": "No dossier sheets requested; native footprint, explicit register and photographed silhouette sufficient for draft. Exact ornament dimensions remain approximate."
+  },
+  "currentSurvey": {
+    "bagSnapshot": "raw/bag.json",
+    "address": "raw/address.json",
+    "vboParentLink": "raw/vbo-bounded.json",
+    "osm": "raw/osm.json",
+    "roof": "raw/3dbag.json",
+    "roofDate": "2023 AHN5",
+    "groundNap": -3.746,
+    "heightRule": "Add3.746m to absolute NAP roof elevations. AHN roof max and chimney fitted planes are not whole-building walls or plateaus.",
+    "noCourtyard": "Current BAG ring has no holes. Rear garden and forecourt remain outside house.",
+    "currentOsmCrossCheck": "raw/osm-small-map.json and raw/osm-se-wing-full.json: official API includes southeast wing w1562613216 absent from earlier Overpass response; four mapped parts, no building-part relations in bounded official map",
+    "bagDerivedLocalFootprintAreaMetres2": 286.91,
+    "areaNote": "289.03m2 is 3DBAG processed ground area;286.91m2 is approximate WGS84-derived local current BAG polygon area.705m2 VBO floor area is not footprint."
+  },
+  "nativeReview": {
+    "anchorLngLat": [
+      4.9335095,
+      52.351162
+    ],
+    "frontNormalEastNorth": [
+      0.7209,
+      0.693
+    ],
+    "frontBearing": 46.086,
+    "cameraFrontLngLat": [
+      4.933754,
+      52.351554
+    ],
+    "cameraAuthority": "2022 Commons metadata camera location",
+    "frontMapBearing": 226.086,
+    "rearMapBearing": 46.086,
+    "localGallery": "+Z front; +X northwest wing (right when facing frontage)",
+    "publicDoorLngLat": [
+      4.933559,
+      52.351191
+    ],
+    "entranceUncertainty": "Projected from surveyed main-front mid-edge plus source door, no OSM entrance node returned"
+  },
+  "acceptance": {
+    "geometry": "passes source and compressed draft upward roof, exposed fractional glazing, absence of promoted wing rear wall and open surroundings",
+    "typescript": "focused compiler passes",
+    "cpuComparison": "front/rear/NW/SE compared to references; native footprint and distinctive composition prepared",
+    "gpuGallery": "pending root",
+    "liveBothSides": "pending root",
+    "suppressionAndNeighbors": "pending root",
+    "routePinPhysicalCard": "pending root",
+    "independentReviewer": "pending root; worker forbidden to spawn further workers"
+  },
+  "boundedRepairReview": {
+    "reviewedOn": "2026-10-08",
+    "principalSourceEvidence": [
+      "models/huize-frankendael/raw/operator-front.jpg: operator uses the photograph on its current site; upload2016, capture unknown.",
+      "models/huize-frankendael/raw/front-2022-thumb.jpg: dated2022-04-17 front view independently confirms round sash head, continuous substantial volute cheeks and arched entrance transom."
+    ],
+    "centralDormer": "Existing corrected builder retained: rounded sash head, connected broad cheeks and shallow sculpted crown replace the rejected flat box/pointed crest. Low front CPU close-up compared against both originals. Ornament remains approximate original geometry.",
+    "entranceTransom": "Arched aperture and matching perimeter retained; high-central pane rays and outer-corner exclusions establish that the actual glazing head is curved, not hidden by a flat lintel.",
+    "northwestEndEmpireDoor": {
+      "register": "RCE422420 states glazed double leaf, half-round transom with two diagonals, pilasters and cornice.",
+      "currentPhotoState": "Uncorroborated: available current front images do not expose the NW end; garden2014 image is not current end evidence.",
+      "treatment": "Existing register-derived end assembly retained as a provisional historical-description reconstruction; no new end-joinery feature added by this bounded repair audit and no current confirmation claimed."
+    },
+    "northwestRearSixPaneSash": {
+      "register": "RCE422420 states a six-pane empire sash alongside the three door group.",
+      "currentPhotoState": "Unknown: no useful contemporary rear view in cached pack;2014 garden view too limited/occluded.",
+      "treatment": "Not added. Exact placement and current survival unresolved; do not silently infer geometry from the historical text."
+    },
+    "simplifications": [
+      "Central dormer pane subdivisions remain12total rather than interpreting double12 as24; current photo silhouette is primary recognition gate.",
+      "Rear flanking basement panes remain8total; exact double8 interpretation/current joinery unresolved."
+    ],
+    "checks": "Authored and decoded FrontSide curved-aperture exclusions, exposed upper panes, broad cheek/crown rays, existing roof/glazing/open-space checks; old reviewed export fails the new assembly probes.",
+    "gpuAcceptance": "Pending root integration/gallery/live/three POI surfaces."
+  }
+}

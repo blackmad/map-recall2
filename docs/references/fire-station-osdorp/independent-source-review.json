@@ -1,0 +1,118 @@
+{
+  "modelId": "fire-station-osdorp",
+  "reviewedOn": "2026-10-09",
+  "reviewer": "independent nico_osdorp_review",
+  "stage": "cached-source versus compressed CPU preflight",
+  "state": "independent-final-gallery-live-visual-pass",
+  "assetSha256": "b70e015aef1ca790e4c605b0a50157ad5aa7b94ab0066ae9551469048dd5dfe2",
+  "inspectedImages": [
+    "artifacts/fire-station-osdorp-draft/cpu/fire-station-osdorp-cpu-front.png",
+    "artifacts/fire-station-osdorp-draft/cpu/fire-station-osdorp-cpu-west.png",
+    "artifacts/fire-station-osdorp-draft/cpu/fire-station-osdorp-cpu-rear.png",
+    "../map-recall2-source-data/models/fire-station-osdorp/raw/arcam-front.jpg",
+    "../map-recall2-source-data/models/fire-station-osdorp/raw/arcam-rear.jpg",
+    "../map-recall2-source-data/models/fire-station-osdorp/processed/recording_2025-07-17_05-37-20_00273.jpg",
+    "../map-recall2-source-data/models/fire-station-osdorp/processed/recording_2025-07-17_05-37-20_00277.jpg",
+    "../map-recall2-source-data/models/fire-station-osdorp/processed/recording_2025-07-17_05-37-20_00247.jpg"
+  ],
+  "findings": [],
+  "supportedDecisions": [
+    "Hall sampled wave has crest, trough and rising end consistent with ARCAM detail and current western panoramas; green upper surface represents source-supported sedum, not an invented pitched roof.",
+    "Curtain glazing remains exposed with white fine grid; the western lower masonry strip and southern all-glazed vehicle elevation are distinct, matching references.",
+    "Tall brown masonry volume, low glazed connector and inter-wing exterior space remain distinct rather than filling the parcel.",
+    "South-facing masonry has four upper window pairs, broad lower openings, balcony/canopy and east tall stair window matching ARCAM current photo.",
+    "Upper terrace has two framed openings and lower recessed floor, with main roof bounded around the void; the CPU front shows recessed geometry rather than a glazed window substitute.",
+    "Real white Fanny Blankers-Koen lettering and running figure remain on photographed south plane; red/gold service badge is source-supported. Approximate Arial Regular family documented."
+  ],
+  "limitations": [
+    "CPU isolated mesh rendering cannot establish geographic placement, exact suppression, retained neighbors, POI route/pin/card behavior or gameplay performance.",
+    "Palette and low-angle roof fascia/soffit visibility require actual gallery and live-game images.",
+    "Rear masonry opening counts and curtain grid dimensions remain approximate; current western panoramas are partly tree-obscured.",
+    "CPU high views do not resolve small sign letter shapes or fully expose timber soffit. No failure is inferred from that occlusion."
+  ],
+  "pending": [],
+  "runtimeVisualReview": {
+    "reviewedOn": "2026-10-09",
+    "assetSha256": "1f77d294f3c7cc765bb554adb9ac61779fc50adb818c00babbe3f502f932ab0e",
+    "bytes": 303500,
+    "state": "changes-requested-low-view-frame-overrun",
+    "images": [
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/gallery.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/gallery-angle-0.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/gallery-angle-1.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/gallery-angle-2.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/gallery-angle-3.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/live-front.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/live-rear.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/neutral-front.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/disabled-fallback.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/failed-load-fallback.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/gallery-low-west-soffit.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/gallery-low-south-soffit.png"
+    ],
+    "findings": [
+      "Gallery and neutral live views retain source-derived main silhouette, exposed opening rhythm and distinct source material families. Gold selected-state rendering was separated from neutral material review.",
+      "Both live camera sides show the replacement and surrounding retained buildings; fallback images show ordinary building restored when disabled or unavailable.",
+      "Route destination marker and useful sourced card are visible; placement and physical-card receipts corroborate native scale1, exact source IDs, drawn neighbors and actual pointer selection.",
+      "Sampled wave crest/trough/upturned ends match current western panoramas. Sedum green top and fine light curtain frame rhythm remain visible.",
+      "Gallery side and live opposite show terrace recessed floor and roof boundary around opening. Connector remains low and glazed with open exterior around wings.",
+      "Observed real white Fanny Blankers-Koen/runner and service shield sit on source facade; no invented Osdorp-name geometry observed.",
+      "Eye1.8m views confirm exposed ochre timber soffit and beams beneath silver wave fascia; the remaining soffit evidence gap is resolved."
+    ],
+    "requiredCorrections": [
+      {
+        "id": "curtain-horizontal-frame-overrun",
+        "severity": "required-bounded-correction",
+        "evidence": "Low west eye-height view shows multiple horizontal curtain-frame rods extending past final vertical/glazed edge into open air at the southern end. Current western panorama shows grid terminating at its corner mullion.",
+        "requestedAction": "Clip horizontal curtain-grid segments to actual hall edge z1 and inspect fresh low west/south render; keep failed low view evidence.",
+        "image": "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/gallery-low-west-soffit.png",
+        "preservedImage": "docs/references/fire-station-osdorp/failed-curtain-frame-overrun.png"
+      }
+    ],
+    "limitations": [
+      "Rear exact opening counts remain source-uncertain as documented.",
+      "These screenshots cannot independently establish performance; root timing review is pending."
+    ],
+    "receipts": [
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/received-asset-gallery.json",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/received-asset-native.json",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/placement-proof.json",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/physical-card-proof.json",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/disabled-fallback-proof.json",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-osdorp/failed-load-fallback-proof.json"
+    ]
+  },
+  "finalCorrectedReview": {
+    "reviewedOn": "2026-10-09",
+    "reviewer": "independent nico_osdorp_review",
+    "state": "gallery-live-visual-pass",
+    "assetSha256": "9edad63f86b9243db8f3e663bb5f6adbcd1fc274859daff8a24b55b7646e46a0",
+    "triangles": 22837,
+    "bytes": 303552,
+    "sourceCommit": "acda024",
+    "sourcePath": "models/fire-station-osdorp",
+    "images": [
+      "artifacts/firestations-review/supplement/fire-station-osdorp-low-west-soffit.png",
+      "artifacts/firestations-review/supplement/fire-station-osdorp-low-south-soffit.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-osdorp/gallery-angle-0.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-osdorp/gallery-angle-1.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-osdorp/gallery-angle-2.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-osdorp/gallery-angle-3.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-osdorp/neutral-front.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-osdorp/live-rear.png"
+    ],
+    "findings": [
+      "Corrected low west view has horizontal grid ending at corner mullion; floating frame tails are removed. Low south view retains coherent bounded curtain wall.",
+      "Ochre timber soffit and exposed beam ends remain visible below silver curved fascia at genuine eye-height, matching ARCAM detail and current western panorama.",
+      "Fresh four gallery angles and both neutral front/opposite live context preserve wave silhouette, green sedum top, exposed hall glass and low connector, masonry window groups, real sign plane and recessed terrace void.",
+      "No further required visual correction found."
+    ],
+    "resolvedFinding": "curtain-horizontal-frame-overrun",
+    "preservedFailure": "docs/references/fire-station-osdorp/failed-curtain-frame-overrun.png",
+    "requiredCorrections": [],
+    "limitations": [
+      "Rear masonry exact aperture counts and curtain grid dimensions retain documented approximation.",
+      "Root reports desktop/touch timing16.6\u201316.7ms with fixed-rider camera pans; performance execution is root-owned, not independently rerun by this reviewer."
+    ]
+  }
+}

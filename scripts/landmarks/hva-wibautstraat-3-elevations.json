@@ -1,0 +1,10 @@
+{
+  "id": "hva-wibautstraat-3",
+  "countedBy": "pending blind count by integrator",
+  "facades": [
+    {"name": "west (Wibautstraat front, wall 132)", "bearing": 250, "photo": "artifacts/landmark-lanes/hva-wibautstraat-3/ref-west.jpg"},
+    {"name": "east (wall 17)", "bearing": 70, "photo": "artifacts/landmark-lanes/hva-wibautstraat-3/ref-east.jpg"},
+    {"name": "south (wall 138)", "bearing": 160, "photo": "artifacts/landmark-lanes/hva-wibautstraat-3/ref-south.jpg"},
+    {"name": "north (wall 51)", "bearing": 340, "photo": "artifacts/landmark-lanes/hva-wibautstraat-3/ref-north.jpg"}
+  ]
+}

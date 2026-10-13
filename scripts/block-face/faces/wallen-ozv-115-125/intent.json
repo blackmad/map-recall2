@@ -1,0 +1,94 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "wallen-ozv-115-125",
+ "street": "Oudezijds Voorburgwal",
+ "sources": [
+  {"id": "strip-2021-01-25", "kind": "street-panorama", "capturedAt": "2021-01-25", "image": "staging/block-face/wallen-ozv-115-125/strip.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0 (canal-boat capture TMX7316010203-001981, 15-22 m off the fronts, obliquity 1-24 deg)"},
+  {"id": "street-2021-03-08", "kind": "street-panorama", "capturedAt": "2021-03-08", "image": "staging/block-face/wallen-ozv-115-125/strip-2021-03-08.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0 (quay-level capture, used for ground storeys only: its upper storeys shear badly)"},
+  {"id": "rijksmonument-6062", "kind": "monument-record", "capturedAt": "2026-10-10", "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6062", "license": "RCE Rijksmonumentenregister"},
+  {"id": "rijksmonument-6063", "kind": "monument-record", "capturedAt": "2026-10-10", "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6063", "license": "RCE Rijksmonumentenregister"},
+  {"id": "rijksmonument-6064", "kind": "monument-record", "capturedAt": "2026-10-10", "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6064", "license": "RCE Rijksmonumentenregister"},
+  {"id": "rijksmonument-6065", "kind": "monument-record", "capturedAt": "2026-10-10", "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6065", "license": "RCE Rijksmonumentenregister"},
+  {"id": "rijksmonument-6066", "kind": "monument-record", "capturedAt": "2026-10-10", "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6066", "license": "RCE Rijksmonumentenregister"}
+ ],
+ "authoring": {"author": "claude-opus-5.5 (wallen OZV face lane)", "passes": 2, "note": "Pass 2 after the strip sheet: tall window proportion on the cornice fronts (photo sashes ~2 m, the default sat high and short), 119 crownRise 1.6 -> 1.35 (crown overshot the cap by ~0.8 m), greyer bricks (wall-colour check), and fix-facts.ts for 117 (3DBAG wedge + BAG stoep bump broke the 115|117 party line). Oudezijds Voorburgwal 115-125 (odd, east side), 6 pands. Strip from the 2021-01-25 canal-boat capture, picked by hand: the default pick (2021-12-27, quay level 5-6 m from the fronts) and 2021-03-08 (quay) shear and ghost the upper storeys and gables. Rows are strip.jpg pixel rows (ground = row 840, 40 px/m), read on 2x zoom crops with a row ruler. Ground storeys read on the 2021-03-08 quay strip (cars hide them on the boat strip). Lean measured on a level perspective view of boat panorama 000252 (25 m, 55 deg oblique): party lines 121|123 and 123|125 stay within 5 px over ~750 px at ~40 px/m, i.e. <= 0.5 deg, inside the noise; no lean modelled. 113 (171881) and 127-129 (171877) were left out: their BAG/3DBAG fronts have a 1.3-1.4 m forward projection (stoep/risaliet) that the frontage finder takes as the front (113: a 2.2 m front of a ~5.9 m facade)."},
+ "houses": [
+  {
+   "pandId": "0363100012171880", "slug": "wface-171880", "address": "Oudezijds Voorburgwal 115",
+   "design": {"fronts": [{"id": "front0", "street": "Oudezijds Voorburgwal", "gable": "bell", "crownCap": "rounded", "storeys": 3, "bays": 3, "atticWindows": 1, "doorBay": 2, "basement": "stoop-and-windows", "cornice": "none", "windows": "sash-small-panes", "hoist": false, "tallGround": true,
+      "storeyBayWidths": {"2": [0.8, 1.4, 0.8]},
+      "crownRise": 1.5, "gableOrnament": {"wings": "scrolls"}}],
+    "roof": {"material": "black-tile"}, "palette": {"brick": "#36302e", "frame": "cream-painted", "door": "#2a2a2a", "stone": "cream"}},
+   "groundFloor": {"use": "residential", "bag": ["woonfunctie"], "photoDate": "2021-03-08", "agreement": "photo-only",
+    "note": "Raised ground storey: two tall windows and the door at the right over a basement with a railed stoop; no business."},
+   "rhythm": {"bays": "3 on every storey", "identicalBays": "storey 1", "windowsPerStorey": "ground (raised): 2 tall windows + door right | 1: 3 | 2: 3 (centre window wider, flower box) | gable: 1 window (red shutter)", "symmetry": "symmetric above the ground storey; door off-centre right", "groundFloor": "raised ground storey over a basement with stoop and railings", "signage": "none", "roofline": "klokgevel, very dark (soot-black) brick; bell foot at strip row 400 (11.0 m; 3DBAG eaves 11.01), shoulders with scrolled stone pieces, cap with a moulded rounded top at row 232 (15.2 m); Rijksmonument 6062: 'Pand met klokgevel (1685). Goede roedenverdeling.'", "citation": "strip.jpg pand 1 (x 0-224, 2021-01-25); zoom z1; quay strip g1; monument 6062", "photoRows": [3, 3, 3, 1], "photoGables": 1,
+    "schemaLimits": ["the red shutter on the gable light is a glazed light in the model", "the scrolled shoulder pieces are the library's generic scrolls", "basement depth on the photo ~1.4 m; library basement <= 1.2 m"]}
+  },
+  {
+   "pandId": "0363100012171878", "slug": "wface-171878", "address": "Oudezijds Voorburgwal 117",
+   "design": {"fronts": [{"id": "front0", "street": "Oudezijds Voorburgwal", "gable": "cornice", "storeys": 4, "bays": 3, "doorBay": 0, "basement": "stoop-and-windows", "cornice": "heavy", "windows": "sash", "windowProportion": "tall", "hoist": false, "tallGround": false}],
+    "roof": {"material": "bitumen"}, "palette": {"brick": "#4c3830", "frame": "white", "door": "#2a2a2a", "stone": "cream", "cornice": "#d9ccaa"}},
+   "groundFloor": {"use": "residential", "bag": ["woonfunctie"], "photoDate": "2021-03-08", "agreement": "photo-only",
+    "note": "Door at the left over a stoop, two windows; basement below."},
+   "rhythm": {"bays": "3, identical on all storeys", "identicalBays": "storeys 0-3", "windowsPerStorey": "ground: door (fanlight) + 2 windows | 1: 3 | 2: 3 | 3: 3 (tall sashes, white frames)", "symmetry": "symmetric above the ground storey", "groundFloor": "raised ground storey, door left, stoop over a basement", "signage": "none", "roofline": "straight cornice over a deep cream frieze, cornice top at strip row 265 (14.4 m; 3DBAG eaves 5.61 m is a rear roof); Rijksmonument 6063: 'Ouder huis waarvoor een XIX rechtgezette of herbouwde gevel onder rechte lijst (midden XIX). Deur midden XIX.'", "citation": "strip.jpg pand 2 (x 221-396, 2021-01-25); zoom z2; quay strip g2; monument 6063", "photoRows": [3, 3, 3, 3], "photoGables": 0,
+    "schemaLimits": ["the frieze is ~1.7 m deep on the photo; the heavy cornice is ~0.8 m"]}
+  },
+  {
+   "pandId": "0363100012178729", "slug": "wface-178729", "address": "Oudezijds Voorburgwal 119",
+   "design": {"fronts": [{"id": "front0", "street": "Oudezijds Voorburgwal", "gable": "bell", "crownCap": "rounded", "storeys": 3, "bays": [2, 2, 3], "axisGrid": 3, "atticWindows": 1, "doorBay": 1, "basement": "stoop-and-windows", "cornice": "none", "windows": "sash", "hoist": true, "tallGround": true,
+      "bayWidths": [0.7, 1.3, 0.7], "storeyBayWidths": {"0": [1.25, 0.75], "1": [1, 1]},
+      "crownRise": 1.35, "gableOrnament": {"wings": "scrolls"}}],
+    "roof": {"material": "black-tile"}, "palette": {"brick": "#46342e", "frame": "cream-painted", "door": "#2a2a2a", "stone": "cream"}},
+   "groundFloor": {"use": "residential", "bag": ["woonfunctie"], "photoDate": "2021-03-08", "agreement": "photo-only",
+    "note": "Tall ground storey: one wide window and the door with a tall fanlight (XIXa per the register) at the right, over a stoop; a basement entrance with a green sign below (illegible)."},
+   "rhythm": {"bays": "ground 2 (wide window, door), storey 1 two large windows, storey 2 three (narrow, wide, narrow)", "windowsPerStorey": "ground: 1 wide window + door | 1: 2 | 2: 3 | gable: 1 wide window, a small attic light and a hoist hatch above it", "symmetry": "symmetric above the ground storey", "groundFloor": "tall ground storey, door right, stoop over a basement", "signage": "basement sign, illegible", "roofline": "klokgevel; bell foot at strip row 345 (12.4 m; 3DBAG eaves 12.92), cream scrolled shoulder pieces, moulded rounded cap at row 165 (16.9 m); Rijksmonument 6064: 'Pand met klokgevel, (XVIIB). Deur en bovenlicht XIXa. Goede roedenverdeling.'", "citation": "strip.jpg pand 3 (x 396-564, 2021-01-25); zoom z3; quay strip g3; monument 6064", "photoRows": [2, 2, 3, 2], "photoGables": 1,
+    "schemaLimits": ["the gable holds a wide window and, above it, a small light and a hatch stacked on the axis; the model has one attic light + hoist", "the basement entrance with its sign is not modelled", "photo ground storey is ~4.75 m over a ~1.5 m basement (1.6x the top storey); tallGround gives 1.32x, so storey 1 sits ~1 m low on the sheet"]}
+  },
+  {
+   "pandId": "0363100012178728", "slug": "wface-178728", "address": "Oudezijds Voorburgwal 121",
+   "design": {"fronts": [{"id": "front0", "street": "Oudezijds Voorburgwal", "gable": "cornice", "storeys": 4, "bays": 3, "dormers": 1, "dormerStyle": "pediment", "doorBay": null, "basement": "none", "cornice": "bracketed", "windows": "sash", "windowProportion": "tall", "hoist": false, "tallGround": false,
+      "groundFront": {"kind": "pui", "bays": ["window", "window"], "colour": "cream-painted", "evidence": "quay strip 2021-03-08 rows 640-790 (x 564-735): cream timber pui with two windows behind pink panels, chequer-plate stallriser"}}],
+    "roof": {"material": "slate"}, "palette": {"brick": "#57403a", "frame": "white", "door": "#2a2a2a", "stone": "cream", "cornice": "#d9ccaa"}},
+   "groundFloor": {"use": "other", "category": "window-fronted ground floor behind pink panels (BAG industriefunctie); no OSM node", "bag": ["industriefunctie"], "photoDate": "2021-03-08", "agreement": "photo-only",
+    "note": "Cream timber pui with two windows covered by pink panels; no legible sign."},
+   "rhythm": {"bays": "3, identical on all upper storeys", "identicalBays": "storeys 1-3", "windowsPerStorey": "ground: pui with 2 windows | 1: 3 | 2: 3 | 3: 3 | roof: a pedimented gable/dormer behind the cornice", "symmetry": "symmetric", "groundFloor": "cream timber pui, 2 bays", "signage": "none", "roofline": "straight cornice with consoles over a cream frieze, top at strip row 325 (12.9 m; 3DBAG eaves 12.73), a pediment rising behind it to ~row 295; Rijksmonument 6065: 'Pand met gevel onder rechte lijst met 2 consoles (negentiende eeuw). Goede late roedenverdeling op de twee eerste verdiepingen.'", "citation": "strip.jpg pand 4 (x 564-735, 2021-01-25); zoom z4; quay strip g4; perspective persp-000252; monument 6065", "photoRows": [2, 3, 3, 3], "photoGables": 0,
+    "schemaLimits": ["a tree in front of the facade (not modelled)", "the pediment behind the cornice is modelled as a pedimented dormer"]}
+  },
+  {
+   "pandId": "0363100012179002", "slug": "wface-179002", "address": "Oudezijds Voorburgwal 123",
+   "design": {"fronts": [{"id": "front0", "street": "Oudezijds Voorburgwal", "gable": "cornice", "storeys": 5, "bays": 3, "doorBay": null, "basement": "none", "cornice": "heavy", "windows": "sash", "windowProportion": "tall", "hoist": false, "tallGround": true,
+      "groundFront": {"kind": "pui", "bays": ["door", "door", "glazed-door"], "colour": "cream-painted", "evidence": "quay strip 2021-03-08 rows 630-790 (x 735-904): cream timber pui with transom lights; dark door left, wide double door centre, narrow glazed door right"}}],
+    "roof": {"material": "bitumen"}, "palette": {"brick": "#523b32", "frame": "white", "door": "#1f2a3a", "stone": "cream", "cornice": "#d9ccaa"}},
+   "groundFloor": {"use": "other", "category": "BAG industriefunctie; doors only, no shop glass; no OSM node", "bag": ["industriefunctie"], "photoDate": "2021-03-08", "agreement": "photo-only",
+    "note": "Cream pui with three doors under transom lights; no sign."},
+   "rhythm": {"bays": "3, identical on all upper storeys", "identicalBays": "storeys 1-4", "windowsPerStorey": "ground: pui with 3 doors | 1: 3 | 2: 3 | 3: 3 | 4: 3; a gevelsteen between storeys 1 and 2 on the centre axis", "symmetry": "symmetric above the ground storey", "groundFloor": "cream timber pui, 3 door bays", "signage": "none", "roofline": "straight cornice over a deep cream frieze, top at strip row 215 (15.6 m; 3DBAG eaves 14.55 reads the roof behind it); Rijksmonument 6066: 'Pand met gevel, (achttiende eeuw), onder rechte lijst (eerste helft negentiende eeuw). Gevelsteen (zeventiende eeuw).'", "citation": "strip.jpg pand 5 (x 735-904, 2021-01-25); zoom z5; quay strip g5; monument 6066", "photoRows": [3, 3, 3, 3, 3], "photoGables": 0,
+    "schemaLimits": ["the 17th-c. gevelsteen (carved stone tablet) is not modelled", "the frieze is ~1.6 m deep on the photo; the heavy cornice is ~0.8 m"]}
+  },
+  {
+   "pandId": "0363100012171879", "slug": "wface-171879", "address": "Oudezijds Voorburgwal 125",
+   "design": {"fronts": [{"id": "front0", "street": "Oudezijds Voorburgwal", "gable": "cornice", "storeys": 4, "bays": 3, "doorBay": null, "basement": "none", "cornice": "bracketed", "windows": "sash", "windowProportion": "tall", "hoist": false, "tallGround": false,
+      "groundFront": {"kind": "wall", "bays": ["glazed-door", "window", "glazed-door"], "evidence": "quay strip 2021-03-08 rows 640-790 (x 904-1104): brick piers banded with cream stone, glazed door left, wide display window, glazed door right; pink script lettering on a cream fascia, illegible"}}],
+    "roof": {"material": "bitumen"}, "palette": {"brick": "#513b33", "frame": "white", "door": "#2a2a2a", "stone": "cream", "cornice": "#d9ccaa"}},
+   "groundFloor": {"use": "other", "category": "BAG bijeenkomstfunctie; display window with notices, pink lettering illegible; no OSM node", "bag": ["bijeenkomstfunctie"], "photoDate": "2021-03-08", "agreement": "photo-only",
+    "note": "Glazed doors either side of a display window between banded brick piers; the fascia lettering is not legible, so no sign is modelled."},
+   "rhythm": {"bays": "3, identical on all upper storeys", "identicalBays": "storeys 1-3", "windowsPerStorey": "ground: glazed door, display window, glazed door | 1: 3 | 2: 3 | 3: 3", "symmetry": "symmetric", "groundFloor": "brick piers with stone bands, display window between two glazed doors", "signage": "pink script on a cream fascia, illegible", "roofline": "straight cream cornice with four consoles and a carved centre piece in the frieze, top at strip row 315 (13.1 m; 3DBAG eaves 12.1, flat roof); not a Rijksmonument", "citation": "strip.jpg pand 6 (x 904-1104, 2021-01-25); zoom z6; quay strip g6", "photoRows": [3, 3, 3, 3], "photoGables": 0,
+    "schemaLimits": ["not a Rijksmonument: from the strip only", "the carved centre piece in the frieze is not modelled", "cream stone banding on the ground-storey piers is not modelled"]}
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {"pand": "0363100012171880", "stripRow": 400, "evidence": "bell gable foot (top of the full front under the shoulders), zoom z1"},
+   {"pand": "0363100012171878", "stripRow": 265, "evidence": "top of the straight cornice, zoom z2"},
+   {"pand": "0363100012178729", "stripRow": 345, "evidence": "bell gable foot, zoom z3"},
+   {"pand": "0363100012178728", "stripRow": 325, "evidence": "top of the console cornice, zoom z4"},
+   {"pand": "0363100012179002", "stripRow": 215, "evidence": "top of the straight cornice, zoom z5"},
+   {"pand": "0363100012171879", "stripRow": 315, "evidence": "top of the console cornice, zoom z6"}
+  ],
+  "partyClip": true,
+  "notes": ["No two houses share a design; eaves step house by house (strip 11.0-15.6 m).", "Two bell gables (115, 119) between cornice fronts; 117 and 123 have the deep 19th-c. friezes."]
+ }
+}

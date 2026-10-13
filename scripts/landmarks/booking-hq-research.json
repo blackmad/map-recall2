@@ -1,0 +1,57 @@
+{
+  "canonicalModelId": "booking-hq",
+  "landmarkId": "booking-hq",
+  "researchedOn": "2026-10-10",
+  "state": "built; south, south-east and east fronts photographed, north and west faces inferred; the south office front is modelled as stacked plan-curved plates (rounded corner, per-band offset curves); lobby recess 1.7 m (west) to 5.7 m (east corner), measured from the photos; slanted terrace fins, irregular tower windows and the curved east face are not modelled",
+  "destination": {
+    "name": "Booking.com headquarters",
+    "address": "Oosterdokskade 163, 1011 DL Amsterdam",
+    "bagPand": "NL.IMBAG.Pand.0363100012250152",
+    "note": "Identity: nummeraanduiding 0363200012125802 (Oosterdokskade 163) -> verblijfsobject 0363010012123969 (kantoorfunctie, 51,543 m2, 12 storeys) -> ligtInPanden 0363100012250152, the single pand of the campus (office + 41 apartments in the tower + car park, so the ~60 other verblijfsobjecten are in the same building). The 'Booking.com' sign is visible in the 2025 panoramas. No installed model, native-kit POI, work-queue task or backlog entry covered it (checked by name and BAG id)."
+  },
+  "sources": [
+    {
+      "url": "https://nl.wikipedia.org/wiki/Hoofdkantoor_van_Booking.com",
+      "retrieved": "2026-10-10",
+      "note": "Plot, Post CS predecessor, UNStudio/Ben van Berkel, 2018-2022 build, 63,500 m2, 5,000 staff, 41 apartments + Club 11, steel structure 6,000,000 kg. CC BY-SA."
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012123969/",
+      "retrieved": "2026-10-10",
+      "note": "BAG verblijfsobject at Oosterdokskade 163."
+    }
+  ],
+  "panoramas": [
+    {
+      "id": "recording_2025-10-01_11-02-55_00996",
+      "date": "2025-10-01",
+      "file": "ref-south.jpg",
+      "licence": "Gemeente Amsterdam panorama API (CC0)"
+    },
+    {
+      "id": "recording_2025-06-17_09-10-34_00557",
+      "date": "2025-06-17",
+      "file": "ref-east.jpg",
+      "licence": "Gemeente Amsterdam panorama API (CC0)"
+    },
+    {
+      "id": "recording_2025-06-17_09-10-34_00566",
+      "date": "2025-06-17",
+      "file": "ref-south-east.jpg",
+      "licence": "Gemeente Amsterdam panorama API (CC0)"
+    }
+  ],
+  "measurements": [
+    {
+      "item": "lobby recess",
+      "method": "pinhole sketch on ref-south (door threshold y=762, lobby-head transom y=632, slab front underside y=620, camera 2.5 m, horizon solved from the ratio) gives the glass 1.5-2 m behind the slab edge at the centre; soffit width in ref-south-east gives about 5-6 m near the east corner",
+      "used": "1.7 m west growing to 5.7 m at the corner",
+      "uncertainty": "about 50 percent at the centre; single views"
+    },
+    {
+      "item": "colours",
+      "method": "mean RGB of sunlit crops: glass top #7099b2 / mid #6290ab, slab face #262729, plate edge #4b5a5e, timber soffit #4d3e31 (shaded)",
+      "used": "glass #78a5c1, dark #2b2927, frame #3b3633, soffit #9c6b3b"
+    }
+  ]
+}

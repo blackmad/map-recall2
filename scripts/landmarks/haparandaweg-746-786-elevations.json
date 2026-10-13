@@ -1,0 +1,31 @@
+{
+  "id": "haparandaweg-746-786",
+  "source": "Gemeente Amsterdam panorama 2025_09_29_07_54_42_00165 (2025, 15 m, obliquity 1 deg) rectified to 50 px/m: artifacts/haparandaweg/ref/0363100012242477/front.jpg (2025 view washed out; front-alt.jpg is the second year); SE wing: TMX7316010203-000277_pano_0001_001608 (2017, 9 m) rectified in ref/NL.IMBAG.Pand.0363100012242477/wall-140-0.jpg",
+  "countedBy": "Claude Sonnet 5.5 (Haparandaweg rebuild lane), 2026-10-10, from the rectified photos before the model was rebuilt. NOT a blind count. Counted opening = one continuous glass balustrade run (one per half per storey); the balconies are recessed, the balustrade glass is the visible glazing.",
+  "facades": [
+    {
+      "name": "NW street front",
+      "bearing": 320,
+      "rows": [2, 2, 2, 2, 2, 2, 2, 2],
+      "columns": 2,
+      "symmetric": true,
+      "gables": 0,
+      "depthBand": 5,
+      "openings": ["glassRail"],
+      "photo": "artifacts/haparandaweg/ref/0363100012242477/front.jpg",
+      "note": "Photo (front.jpg 808 x 1510 px, 16.2 m): 8 storeys above a 3.6 m ground floor, each a recessed balcony with a flush glass balustrade (1.2 m) under a 0.55 m travertine fascia; one continuous 0.34 m pier splits every storey into a left and a right half; no projecting slabs. Ground floor (not counted here): metal gate, glazed entrance + door, glazed shopfront, metal gate."
+    },
+    {
+      "name": "SE wing (5 storeys)",
+      "bearing": 140,
+      "rows": [3, 4, 4, 4, 4],
+      "columns": 5,
+      "symmetric": false,
+      "gables": 0,
+      "depthBand": 5,
+      "openings": ["glass", "glassRail"],
+      "photo": "artifacts/haparandaweg/ref/NL.IMBAG.Pand.0363100012242477/wall-140-0.jpg",
+      "note": "Photo (wall-140-0.jpg, 2017 pano, 9 m, obliquity 30 deg, rectified; stone frame x 180-790 px = 12.2 m): ground floor glazed (3 openings: small left, wide centre with door, right); above it four bays on every storey between stone piers; storeys 1 and 3 are window storeys (4 white-framed windows, the two middle ones with two sashes), storeys 2 and 4 are recessed balconies with a glass balustrade per bay (4); stone parapet band on top. Axes: 4 bay axes + the wide ground-floor shopfront whose centre (x 400 px) falls between bays 2 and 3 = 5. The tower above (29 m) is not in this count."
+    }
+  ]
+}

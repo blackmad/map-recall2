@@ -1,0 +1,602 @@
+{
+  "version": 1,
+  "researchedOn": "2026-10-05",
+  "scope": "Bounded identity and physical-host discovery for 14 requested nightlife venues; no new destinations/models registered.",
+  "cacheInputs": [
+    ".cache/osm-source/derived/amsterdam-named-nodes.osm.pbf",
+    ".cache/osm-source/derived/amsterdam-buildings.geojsonseq",
+    "public/canal-drive/landmark-backlog.json",
+    "src/canalRecall/landmarks/manualCatalogue.json"
+  ],
+  "coordinateConvention": "latLng arrays are latitude, longitude; processed GeoJSON source uses longitude, latitude",
+  "priority": [
+    "club-panama",
+    "raum",
+    "lofi",
+    "odessa"
+  ],
+  "priorityReason": "Panama has named surveyed footprint and matching operator address; RAUM and Lofi have genuine points and containing host candidates; Odessa requires vessel/mooring evidence rather than ordinary Pand treatment.",
+  "ownershipDependencies": [
+    "Coordinator owns queue/catalogue/destination/card/registration and git index.",
+    "Source worker must validate official address/VBO/Pand ownership and capture/archive original source bytes privately before modeling.",
+    "Model workers own one bounded host each; Parallel/Tolhuistuin and RADION/ACTA use one shared physical host plan.",
+    "Gallery/live gameplay and exact suppression review remain required; this scope research is not visual acceptance."
+  ],
+  "venues": [
+    {
+      "requestedId": "odessa",
+      "name": "Odessa",
+      "destinationId": null,
+      "queueRecordId": "requested-odessa",
+      "genuineOsmVenueIds": [
+        "n4594648817"
+      ],
+      "latLng": [
+        52.3745071,
+        4.9376457
+      ],
+      "coordinateProof": "cached OSM venue point; entrance not yet verified",
+      "address": "Veemkade 259, 1019 CZ Amsterdam",
+      "scopeTreatment": "vessel",
+      "sharedHost": "Ship Odessa; mapped BAG ref has 036302 prefix, not a Pand. Preserve mooring and gangway; do not create rectangular land suppression.",
+      "hostCandidates": [
+        {
+          "osmId": "w277087161",
+          "bagRef": "0363020000998904",
+          "bagRefObjectType": "ligplaats-candidate-not-pand",
+          "proof": "cached point containment excludes holes; not official address ownership",
+          "heightTagMetres": null
+        }
+      ],
+      "existingModelIds": [],
+      "referenceUrls": [
+        "https://www.odessa.amsterdam/contact"
+      ],
+      "processedCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/first4-pages.json"
+      ],
+      "actualAccessGaps": [
+        "Current vessel profile, deck/mast dimensions, gangway and mooring entrance need visual/survey proof.",
+        "Original HTTP bodies/reference photos not obtained or privately archived; private source pack commit required before any model commit."
+      ],
+      "state": "identity-scoped-not-model-accepted",
+      "searchCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/search-other.json"
+      ]
+    },
+    {
+      "requestedId": "club-panama",
+      "name": "Club Panama",
+      "destinationId": null,
+      "queueRecordId": "requested-club-panama",
+      "genuineOsmVenueIds": [
+        "n30170536"
+      ],
+      "latLng": [
+        52.3749358,
+        4.9304264
+      ],
+      "coordinateProof": "cached OSM venue point; entrance not yet verified",
+      "address": "Oostelijke Handelskade 4, 1019 BM Amsterdam",
+      "scopeTreatment": "full-building-candidate",
+      "sharedHost": "Named mapped Panama building; current operator address agrees. Ownership and neighbor scope still need BAG/VBO verification.",
+      "hostCandidates": [
+        {
+          "osmId": "w57863961",
+          "bagRef": "0363100012078164",
+          "bagRefObjectType": "pand-candidate",
+          "proof": "cached point containment excludes holes; not official address ownership",
+          "heightTagMetres": "12.5"
+        }
+      ],
+      "existingModelIds": [],
+      "referenceUrls": [
+        "https://panama.nl/contact-us-2/"
+      ],
+      "processedCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/first4-pages.json"
+      ],
+      "actualAccessGaps": [
+        "Historic monument description, bounded Beeldbank search, current facade/roof photos and semantic heights not yet researched.",
+        "Original HTTP bodies/reference photos not obtained or privately archived; private source pack commit required before any model commit."
+      ],
+      "state": "identity-scoped-not-model-accepted",
+      "searchCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/search-first4.json"
+      ]
+    },
+    {
+      "requestedId": "raum",
+      "name": "RAUM",
+      "destinationId": null,
+      "queueRecordId": "requested-raum",
+      "genuineOsmVenueIds": [
+        "n13110299459"
+      ],
+      "latLng": [
+        52.3911262,
+        4.8309665
+      ],
+      "coordinateProof": "cached OSM venue point; entrance not yet verified",
+      "address": "Humberweg 3, 1043 AC Amsterdam",
+      "scopeTreatment": "industrial-host-candidate",
+      "sharedHost": "Club RAUM inside mapped industrial host; operator confirms address, not full leased scope.",
+      "hostCandidates": [
+        {
+          "osmId": "w268460708",
+          "bagRef": "0363100012134632",
+          "bagRefObjectType": "pand-candidate",
+          "proof": "cached point containment excludes holes; not official address ownership",
+          "heightTagMetres": "8.1"
+        }
+      ],
+      "existingModelIds": [],
+      "referenceUrls": [
+        "https://www.clubraum.nl/contact",
+        "https://www.clubraum.nl/info"
+      ],
+      "processedCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/first4-pages.json"
+      ],
+      "actualAccessGaps": [
+        "Verify leased volume, entrance, roof and retained adjacent industrial units before whole-parent replacement.",
+        "Original HTTP bodies/reference photos not obtained or privately archived; private source pack commit required before any model commit."
+      ],
+      "state": "identity-scoped-not-model-accepted",
+      "searchCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/search-first4.json"
+      ]
+    },
+    {
+      "requestedId": "lofi",
+      "name": "Lofi",
+      "destinationId": null,
+      "queueRecordId": "requested-lofi",
+      "genuineOsmVenueIds": [
+        "n2738010320"
+      ],
+      "latLng": [
+        52.3912546,
+        4.8242219
+      ],
+      "coordinateProof": "cached OSM venue point; entrance not yet verified",
+      "address": "Basisweg 63, 1043 AN Amsterdam",
+      "scopeTreatment": "shared-host",
+      "sharedHost": "Cached node name Lief Amsterdam, alt_name Lofi. Same address; reuse identity while resolving operator alias. Indoor warehouse and outdoor courtyard are explicit operator evidence.",
+      "hostCandidates": [
+        {
+          "osmId": "w57864627",
+          "bagRef": "0363100012092649",
+          "bagRefObjectType": "pand-candidate",
+          "proof": "cached point containment excludes holes; not official address ownership",
+          "heightTagMetres": "6.3"
+        }
+      ],
+      "existingModelIds": [],
+      "referenceUrls": [
+        "https://lofi.amsterdam/information/"
+      ],
+      "processedCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/first4-pages.json"
+      ],
+      "actualAccessGaps": [
+        "Resolve current Lief/Lofi identity and host boundary; outdoor courtyard must remain open.",
+        "Original HTTP bodies/reference photos not obtained or privately archived; private source pack commit required before any model commit."
+      ],
+      "state": "identity-scoped-not-model-accepted",
+      "searchCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/search-first4.json"
+      ]
+    },
+    {
+      "requestedId": "tilla-tec",
+      "name": "Tilla Tec",
+      "destinationId": null,
+      "queueRecordId": "requested-tilla-tec",
+      "genuineOsmVenueIds": [
+        "n2811980599"
+      ],
+      "latLng": [
+        52.3699549,
+        4.843713
+      ],
+      "coordinateProof": "cached OSM venue point; entrance not yet verified",
+      "address": "Dr Jan van Breemenstraat 1, 1056 AB Amsterdam",
+      "scopeTreatment": "school-complex-candidate",
+      "sharedHost": "Former technical school; operator describes garden and courtyards. Do not flatten site.",
+      "hostCandidates": [
+        {
+          "osmId": "w57856852",
+          "bagRef": "0363100012121682",
+          "bagRefObjectType": "pand-candidate",
+          "proof": "cached point containment excludes holes; not official address ownership",
+          "heightTagMetres": "18.3"
+        }
+      ],
+      "existingModelIds": [],
+      "referenceUrls": [
+        "https://www.tillatec.com/about",
+        "https://www.tillatec.com/"
+      ],
+      "processedCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/rest-pages.json"
+      ],
+      "actualAccessGaps": [
+        "Homepage search result advertises grand finale closing weekender: check current operation/date before active destination admission. Operator gives 1967, cached building 1966; distinguish dates.",
+        "Original HTTP bodies/reference photos not obtained or privately archived; private source pack commit required before any model commit."
+      ],
+      "state": "identity-scoped-not-model-accepted",
+      "searchCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/search-other.json"
+      ]
+    },
+    {
+      "requestedId": "the-eagle",
+      "name": "The Eagle",
+      "destinationId": null,
+      "queueRecordId": "requested-the-eagle",
+      "genuineOsmVenueIds": [
+        "n1519491824"
+      ],
+      "latLng": [
+        52.3746491,
+        4.897024
+      ],
+      "coordinateProof": "cached OSM venue point; entrance not yet verified",
+      "address": "Warmoesstraat 90, 1012 JH Amsterdam",
+      "scopeTreatment": "frontage-host-review",
+      "sharedHost": "Street-row host; venue extends upstairs and basement but complete building ownership is not established. Dirty Dicks at 86 is a separate neighbor/venue, not the same destination.",
+      "hostCandidates": [
+        {
+          "osmId": "w266941180",
+          "bagRef": "0363100012177731",
+          "bagRefObjectType": "pand-candidate",
+          "proof": "cached point containment excludes holes; not official address ownership",
+          "heightTagMetres": "18.5"
+        }
+      ],
+      "existingModelIds": [],
+      "referenceUrls": [
+        "https://www.eagleamsterdam.com/"
+      ],
+      "processedCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/rest-pages.json"
+      ],
+      "actualAccessGaps": [
+        "Historic register and current frontage/full host scope needed. Cached start_date 1485 is a clue, not independently researched architecture.",
+        "Original HTTP bodies/reference photos not obtained or privately archived; private source pack commit required before any model commit."
+      ],
+      "state": "identity-scoped-not-model-accepted",
+      "searchCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/search-followup.json"
+      ]
+    },
+    {
+      "requestedId": "parallel",
+      "name": "Parallel",
+      "destinationId": null,
+      "queueRecordId": "requested-parallel",
+      "genuineOsmVenueIds": [
+        "n12097962050"
+      ],
+      "latLng": [
+        52.3833541,
+        4.9036483
+      ],
+      "coordinateProof": "cached OSM venue point; entrance not yet verified",
+      "address": "Buiksloterweg 5C, 1031 CC Amsterdam",
+      "scopeTreatment": "shared-host",
+      "sharedHost": "Inside Tolhuistuin/Tolhuis Paviljoen; entrance is rear facing Galgenveldbrug. Coordinate is cached nightclub node, not the unrelated Parallel restaurant on Overtoom. One shared host model and genuine destination identity.",
+      "hostCandidates": [
+        {
+          "osmId": "w44824402",
+          "bagRef": "0363100012119827",
+          "bagRefObjectType": "pand-candidate",
+          "proof": "cached point containment excludes holes; not official address ownership",
+          "heightTagMetres": "11.1"
+        }
+      ],
+      "existingModelIds": [],
+      "referenceUrls": [
+        "https://parallel.am/about",
+        "https://tolhuistuin.nl/en/huisgenoten/parallel"
+      ],
+      "processedCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/rest-pages.json"
+      ],
+      "actualAccessGaps": [
+        "Retain raised/open pavilion geometry; verify entire host scope and route entrance. Never clone a destination for Paradiso Noord alias.",
+        "Original HTTP bodies/reference photos not obtained or privately archived; private source pack commit required before any model commit."
+      ],
+      "state": "identity-scoped-not-model-accepted",
+      "searchCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/search-other.json"
+      ]
+    },
+    {
+      "requestedId": "toekomstmuziek",
+      "name": "Toekomstmuziek",
+      "destinationId": null,
+      "queueRecordId": "requested-toekomstmuziek",
+      "genuineOsmVenueIds": [
+        "n2738399729"
+      ],
+      "latLng": [
+        52.3966283,
+        4.8755183
+      ],
+      "coordinateProof": "cached OSM venue point; entrance not yet verified",
+      "address": "Danzigerbocht 29, 1013 AM Amsterdam",
+      "scopeTreatment": "industrial-host-candidate",
+      "sharedHost": "Operator cultural hub; host footprint candidate contains genuine mapped venue point.",
+      "hostCandidates": [
+        {
+          "osmId": "w268508568",
+          "bagRef": "0363100012110275",
+          "bagRefObjectType": "pand-candidate",
+          "proof": "cached point containment excludes holes; not official address ownership",
+          "heightTagMetres": null
+        }
+      ],
+      "existingModelIds": [],
+      "referenceUrls": [
+        "https://www.toekomstmuziek.com/"
+      ],
+      "processedCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/rest-pages.json"
+      ],
+      "actualAccessGaps": [
+        "Current entrance, full host scope, heights and facade photographs still needed.",
+        "Original HTTP bodies/reference photos not obtained or privately archived; private source pack commit required before any model commit."
+      ],
+      "state": "identity-scoped-not-model-accepted",
+      "searchCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/search-rest.json"
+      ]
+    },
+    {
+      "requestedId": "paradiso",
+      "name": "Paradiso",
+      "destinationId": "lm-paradiso",
+      "queueRecordId": "lm-paradiso",
+      "genuineOsmVenueIds": [
+        "n13273974101"
+      ],
+      "latLng": [
+        52.3621851,
+        4.8838199
+      ],
+      "coordinateProof": "cached OSM venue point; entrance not yet verified",
+      "address": "Weteringschans 6–8, 1017 SG Amsterdam",
+      "scopeTreatment": "existing-model-review",
+      "sharedHost": "Existing model and destination lm-paradiso; retain existing researched card and exact w57857350 suppression.",
+      "hostCandidates": [
+        {
+          "osmId": "w57857350",
+          "bagRef": "0363100012169473",
+          "bagRefObjectType": "pand-candidate",
+          "proof": "cached point containment excludes holes; not official address ownership",
+          "heightTagMetres": "21.4"
+        }
+      ],
+      "existingModelIds": [
+        "paradiso"
+      ],
+      "referenceUrls": [
+        "https://www.paradiso.nl/en/info/about-us/paradiso-vandaag"
+      ],
+      "processedCaptureFiles": [],
+      "actualAccessGaps": [
+        "Existing rebuild/review queue task remains; catalogue presence is not current gallery/game visual acceptance.",
+        "Original HTTP bodies/reference photos not obtained or privately archived; private source pack commit required before any model commit."
+      ],
+      "state": "identity-scoped-not-model-accepted",
+      "searchCaptureFiles": []
+    },
+    {
+      "requestedId": "garage-noord",
+      "name": "Garage Noord",
+      "destinationId": null,
+      "queueRecordId": "requested-garage-noord",
+      "genuineOsmVenueIds": [
+        "n5891849386"
+      ],
+      "latLng": [
+        52.3855398,
+        4.9256868
+      ],
+      "coordinateProof": "cached OSM venue point; entrance not yet verified",
+      "address": "Gedempt Hamerkanaal 40, 1021 KM Amsterdam",
+      "scopeTreatment": "garage-host-candidate",
+      "sharedHost": "Former car repair shop; club and restaurant share host. Nearby family venues do not prove shared building ownership.",
+      "hostCandidates": [
+        {
+          "osmId": "w280838939",
+          "bagRef": "0363100012079768",
+          "bagRefObjectType": "pand-candidate",
+          "proof": "cached point containment excludes holes; not official address ownership",
+          "heightTagMetres": "8"
+        }
+      ],
+      "existingModelIds": [],
+      "referenceUrls": [
+        "https://www.garagenoord.com/info"
+      ],
+      "processedCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/rest-pages.json"
+      ],
+      "actualAccessGaps": [
+        "Entrance, full host/Bar40 extent and retained neighboring buildings need survey/photo verification.",
+        "Original HTTP bodies/reference photos not obtained or privately archived; private source pack commit required before any model commit."
+      ],
+      "state": "identity-scoped-not-model-accepted",
+      "searchCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/search-rest.json"
+      ]
+    },
+    {
+      "requestedId": "radion",
+      "name": "RADION",
+      "destinationId": null,
+      "queueRecordId": "requested-radion",
+      "genuineOsmVenueIds": [
+        "n3942354213",
+        "n3942353859"
+      ],
+      "latLng": [
+        52.3457359,
+        4.8255056
+      ],
+      "coordinateProof": "cached OSM venue point; entrance not yet verified",
+      "address": "Louwesweg 1, 1066 EA Amsterdam",
+      "scopeTreatment": "shared-complex",
+      "sharedHost": "Club level1 and restaurant level0 are genuine mapped records inside former ACTA host, not separate automatic destinations.",
+      "hostCandidates": [
+        {
+          "osmId": "w545327453",
+          "bagRef": "0363100012114496",
+          "bagRefObjectType": "pand-candidate",
+          "proof": "cached point containment excludes holes; not official address ownership",
+          "heightTagMetres": "42.9"
+        }
+      ],
+      "existingModelIds": [],
+      "referenceUrls": [
+        "https://radion.amsterdam/"
+      ],
+      "processedCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/rest-pages.json"
+      ],
+      "actualAccessGaps": [
+        "Large nine-level mapped parent is not proof RADION occupies all floors; isolate actual club/restaurant scope and preserve other ACTA occupants.",
+        "Original HTTP bodies/reference photos not obtained or privately archived; private source pack commit required before any model commit."
+      ],
+      "state": "identity-scoped-not-model-accepted",
+      "searchCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/search-rest.json"
+      ]
+    },
+    {
+      "requestedId": "the-web",
+      "name": "The Web",
+      "destinationId": null,
+      "queueRecordId": "requested-the-web",
+      "genuineOsmVenueIds": [
+        "n1757244178"
+      ],
+      "latLng": [
+        52.3765096,
+        4.8957377
+      ],
+      "coordinateProof": "cached OSM venue point; entrance not yet verified",
+      "address": "Sint Jacobsstraat 6, 1012 NC Amsterdam",
+      "scopeTreatment": "alias-frontage-host-review",
+      "sharedHost": "The Web official site says closed and reopening as Bears Amsterdam 10 May 2025. Genuine current cached node is Bears Amsterdam, not a new The Web destination.",
+      "hostCandidates": [
+        {
+          "osmId": "w266648525",
+          "bagRef": "0363100012170940",
+          "bagRefObjectType": "pand-candidate",
+          "proof": "cached point containment excludes holes; not official address ownership",
+          "heightTagMetres": "6.7"
+        }
+      ],
+      "existingModelIds": [],
+      "referenceUrls": [
+        "https://thewebamsterdam.nl/",
+        "https://www.bearsamsterdam.com/"
+      ],
+      "processedCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/web-bears-pages.json"
+      ],
+      "actualAccessGaps": [
+        "Bears operator retrieval failed. Preserve requested alias, verify successor/location and frontage extent before admission.",
+        "Original HTTP bodies/reference photos not obtained or privately archived; private source pack commit required before any model commit."
+      ],
+      "state": "identity-scoped-not-model-accepted",
+      "searchCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/search-added.json"
+      ]
+    },
+    {
+      "requestedId": "club-church",
+      "name": "Club Church",
+      "destinationId": null,
+      "queueRecordId": "requested-club-church",
+      "genuineOsmVenueIds": [
+        "n1760114383"
+      ],
+      "latLng": [
+        52.3652055,
+        4.8856002
+      ],
+      "coordinateProof": "cached OSM venue point; entrance not yet verified",
+      "address": "Kerkstraat 52, 1017 GM Amsterdam",
+      "scopeTreatment": "frontage-host-review",
+      "sharedHost": "Cached genuine club node inside mapped host; full-building tenancy is unverified.",
+      "hostCandidates": [
+        {
+          "osmId": "w267556434",
+          "bagRef": "0363100012172459",
+          "bagRefObjectType": "pand-candidate",
+          "proof": "cached point containment excludes holes; not official address ownership",
+          "heightTagMetres": "23.4"
+        }
+      ],
+      "existingModelIds": [],
+      "referenceUrls": [
+        "https://www.clubchurch.nl/"
+      ],
+      "processedCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/added-pages.json"
+      ],
+      "actualAccessGaps": [
+        "Official site returned verification shell only; address currently supported by cached OSM, not inspected operator text. Resolve 50–52 host extent via official address/VBO relationships.",
+        "Original HTTP bodies/reference photos not obtained or privately archived; private source pack commit required before any model commit."
+      ],
+      "state": "identity-scoped-not-model-accepted",
+      "searchCaptureFiles": []
+    },
+    {
+      "requestedId": "de-trut",
+      "name": "De Trut",
+      "destinationId": null,
+      "queueRecordId": "requested-de-trut",
+      "genuineOsmVenueIds": [
+        "n1759917596"
+      ],
+      "latLng": [
+        52.3677493,
+        4.8721301
+      ],
+      "coordinateProof": "cached OSM venue point; entrance not yet verified",
+      "address": "Bilderdijkstraat 165 E, Amsterdam",
+      "scopeTreatment": "shared-complex-frontage-review",
+      "sharedHost": "De Trut operator describes Tetterode complex. Club entrance/occupied space belongs to a larger residential/work complex; no whole-site suppression.",
+      "hostCandidates": [
+        {
+          "osmId": "w276304280",
+          "bagRef": "0363100012236799",
+          "bagRefObjectType": "pand-candidate",
+          "proof": "cached point containment excludes holes; not official address ownership",
+          "heightTagMetres": null
+        }
+      ],
+      "existingModelIds": [],
+      "referenceUrls": [
+        "https://www.trutfonds.nl/"
+      ],
+      "processedCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/added-pages.json"
+      ],
+      "actualAccessGaps": [
+        "Operator and cache disagree postcode (1053 KP vs 1057 KP); resolve official address. Full Tetterode parts and courts require ownership/survey review.",
+        "Original HTTP bodies/reference photos not obtained or privately archived; private source pack commit required before any model commit."
+      ],
+      "state": "identity-scoped-not-model-accepted",
+      "searchCaptureFiles": [
+        "artifacts/landmarks/nightlife-batch/processed/search-added.json"
+      ]
+    }
+  ]
+}

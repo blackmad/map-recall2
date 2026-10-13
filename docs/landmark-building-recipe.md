@@ -21,6 +21,11 @@ Save source footprints and their provenance alongside the builder. Keep source I
 
 Use primary architectural, operator, heritage or municipal references. Obtain a clear principal facade and roof view, plus an opposite/context view when needed. Identify the few features that distinguish the building: silhouette, roof profile, tower, entrance, window rhythm, materials and open spaces.
 
+For canalhouse facades, inventory the full height from pavement to crown on the first pass. Record the souterrain windows/doors, bel-etage sill, raised main-door threshold, stoep/landing and plinth together. A pale base is masonry around apertures, not evidence for a blank panel. Check an adjacent panorama when vehicles, shrubs or trees hide the lower tier; record remaining occlusions explicitly. Distinguish visible above-pavement basement apertures from genuinely below-grade geometry. Reuse the shared aperture-aware plinth assembly and source-specific opening records; do not invent hidden openings or stair tread counts. Include a low-front reference/render comparison in review.
+
+Include near-bank lower-detail stations as well as opposite-bank full-height context on the first source pass. Target the surveyed principal front-edge midpoint and verify camera side; footprint-centroid proximity can select a rear view. Low-resolution visible fragments must not become complete opening rectangles.
+
+Verify the pavement datum at actual facade/street contact using lower-focused projections of archived panoramas from adjacent stations. The top of a parked vehicle or a foreground boat is not ground, and a visible strip above it is not a complete basement window. If the datum changes, rebase the whole facade (openings, door thresholds, base, crown and ornament) consistently while retaining original photo pixels and uncertainty. Record bounded reconstructions separately from observed complete apertures. Review a close-up of the full basement tier and entrance approach before accepting the street row.
 Before the first export, cross-check exposed facade openings across the cached dated views. Record a visible minimum separately from a complete count: a clearer partial view must not delete an opening seen elsewhere unless a current alteration is supported. Match openings by their projected wall positions so distinct openings are not mistaken for the same one.
 
 Use actual dimensions and survey data where available. OSM/BAG/AHN/3DBAG each describe different things: equipment maxima are not whole-building heights; a fitted roof can omit a thin spire or open crane. Record uncertainty instead of inventing precision. A historical construction date may not date every present wing.
@@ -71,7 +76,7 @@ Treat archival accessibility and open-data licensing separately. Record each sou
 
 Raw reference inputs live in the private repository [map-recall2-source-data](https://github.com/blackmad/map-recall2-source-data), cloned at `/Users/blackmad/Code/map-recall2-source-data`. Keep the public game repository’s source URLs, architectural assertions and reproducible model code; keep complete raw photos, scans, register descriptions/pages, BAG/3DBAG/OSM responses and original imported-reference files in the private archive, grouped by canonical model ID.
 
-At research time, save the original downloaded bytes before parsing or cropping. Record URL, retrieval date, HTTP/access state, content checksum, attribution/reuse terms when known, and the feature informed. Preserve a processed crop/extracted text separately from its original. Never describe extracted JSON or a screenshot as the original HTTP response. An unavailable original gets an explicit missing/access entry; do not silently substitute a similar image or invent a successful download. Preserve useful superseded references and explain why current evidence overrides them.
+At research time, save the original downloaded bytes before parsing or cropping. Record URL, retrieval date, HTTP/access state, content checksum, attribution/reuse terms when known, and the feature informed. Preserve a processed crop/extracted text separately from its original. If a reference image came from a downloaded archive, preserve the original ZIP/container as well as the extracted image and record their relationship. Never describe extracted JSON or a screenshot as the original HTTP response. An unavailable original gets an explicit missing/access entry; do not silently substitute a similar image or invent a successful download. Preserve useful superseded references and explain why current evidence overrides them.
 
 Before each model commit, sync available inputs using `scripts/landmarks/archive-model-sources.py`, inspect the per-model manifest and unresolved-source report, and commit/push the source pack to the private repository. Record its commit/model path in the model source record. Reuse that cached pack in short worker handoffs. Keep third-party photos/scans and raw imported geometry out of the public asset repository; private archival storage does not change their licensing or the original-house-style asset policy. Archive only task-relevant source files, not account tokens, cookies or unrelated personal downloads.
 
@@ -85,9 +90,13 @@ Use Three.js geometry and the shared `BuildingTools` palette/primitives in `scri
 
 Build silhouette and main volumes first, then the characteristic facade assemblies. For distinctive buildings, compare the first inexpensive massing/critical-assembly render with two useful source views before fine joinery; catch blank facade regions, wrong roof families and frontage orientation early. The source handoff supplies native source-facing camera positions and axis expectations. Batch source sync, export, bundle rebuilding and native checks for two or three ready assets from a frozen review base, retaining the final independent, gallery/live-game, native-scale, courtyard and route/pin/card checks. This moves diagnosis earlier without adding a duplicate review pass or reducing model detail. Clip details to the real perimeter. On angled walls, derive each window's position and tangent from that wall; fixed coordinates can leave windows floating. Glazing and columns must be physically exposed, not buried in the main extrusion.
 
-Give explicit roofs ownership of their surfaces. Avoid duplicate wall caps, downward winding, coplanar trims, unsupported roof plates and rotated/nonuniformly scaled primitives whose bounds no longer match the intended roof. For unusual roofs, directly construct bounded surfaces from the intended profile.
+Give explicit roofs ownership of their surfaces. Avoid duplicate wall caps, downward winding, coplanar trims, unsupported roof plates and rotated/nonuniformly scaled primitives whose bounds no longer match the intended roof. For unusual roofs, directly construct bounded surfaces from the intended profile. When projecting surveyed roof rings onto a plane, fit all original outer and hole vertices with a stable centered least-squares solve; rounded near-collinear first vertices can produce tall fins. Check vertex residuals, upward normals and interior roof-to-wall support separately. Singelkerk’s source-rounded rings are a regression example; a good outline alone does not prove a supported roof.
+
+Check winding again on the compressed export. Canal-collection roof clipping produced nominal triangle areas below one square millimetre that became visible downward slivers after quantization. Its cleanup removes only those numerical top-plane remnants before adding the vertical skirts. Keep an area-aware record of source versus decoded faces and preserve failed exports; a two-sided preview can hide both reversed faces and compression slivers.
 
 Do not add building-name lettering for identification. Retain lettering only when the actual sign is a defining part of the architecture, supported by references. Map labels handle names. Architectural signs must fit their actual panels, follow the wall plane and remain subordinate to the building.
+
+For retained fascia lettering, `BuildingTools.sign` accepts optional `maxWidth` and `reliefDepth` after the colour. Set the depth and wall offset together so the glyph backs clear the actual panel without floating. Athenaeum and Scheltema use an explicitly approximate 12 mm relief and 5 mm panel clearance; these are photo-guided simplifications, not measured sign construction. Existing calls retain their prior depth unless they opt in. Check the exported glyphs against the fascia, rather than relying only on nominal text width.
 
 ## 5. Persist the reusable deliverable
 
@@ -117,7 +126,59 @@ The generator updates the GLB, asset manifest and content fingerprints. Rebuild 
 
 ## 7. Keep the same acceptance checks
 
+### Structured facade comparison (required for every principal facade)
+
+"Looks roughly right" on a contact sheet is not acceptance. On 2026-10-10 the Het Pakhuis rear passed
+review with scattered, off-centre windows on a front the photo shows as five symmetric gabled bays.
+Every model now carries `scripts/landmarks/<id>-elevations.json`, a photo inventory per principal
+facade, and must pass `npm run compare:facades -- --id=<id>`:
+
+```json
+{"id": "<id>", "countedBy": "blind counter (haiku) from ref-north.jpg, 2026-10-10", "facades": [
+  {"name": "north (street)", "bearing": 317.5, "photo": "artifacts/landmark-lanes/<id>/ref-north.jpg",
+   "rows": [5, 5, 5, 5, 5, 5, 5], "columns": 5, "symmetric": true, "gables": 5}
+]}
+```
+
+- `bearing` is the compass direction the facade faces (`--probe` lists the model's big facing directions).
+- `rows` counts openings per storey band from the bottom, as seen on the photo: one window is one
+  opening however many glazing bars it has; a glazed door counts; a tall window spanning two storeys
+  counts once in the band where its centre lies. `columns` counts distinct vertical window axes.
+- **Ribbon convention (counter and model both follow it):** horizontally continuous glazing is ONE
+  opening. A ribbon window, strip of shopfront or curtain wall whose panes are divided only by
+  mullions, glazing bars or piers narrower than about 0.3 m counts once per storey band, however many
+  panes the photo shows. The tool merges glazing across gaps of that size, so a model ribbon is one
+  opening. Do not count panes in a ribbon; if two glazed runs are separated by solid wall wider than
+  that, they are two openings. (The 2026-10-11 DNB counts of 8 panes per row were pane counts; a
+  ribbon storey is `1`.)
+- A band the photo cannot show (cut off by the frame, hidden by trees, a car, scaffolding, a parapet,
+  or too dark to count) is `null` in `rows` and is skipped in the comparison. The band count must
+  still line up, so `null` marks the position; trailing bands the photo does not reach are `null`.
+  `null` is for what the photo hides, never for a band the model gets wrong.
+- Optional span fields crop the measured face to what the photo frames, so a partial photo is not
+  compared with the whole facade: `alongM: [from, to]` (metres from the face's viewer-left silhouette
+  edge) and `heightM: [from, to]` (metres above the model's ground). Fill them by looking at the photo
+  and the model elevation side by side; the tool dims everything outside the crop and outlines it in
+  blue on `elevations/<facade>.png`. Rows, axes, symmetry (about the crop centre), width and gables all
+  use only the crop. Pick edges in plain wall between windows. A crop may not be used to drop a bay the
+  photo shows, only one it does not.
+- `symmetric` asks whether the opening pattern mirrors about the facade centre (gate: IoU ≥ 0.70).
+- `gables` counts separate peaks on the silhouette: gables, towers, spires and hipped-roof tops alike
+  (0 for a level cornice or flat roof).
+- Optional: `alongM`, `heightM` (see below), `span` (metres along the facade, viewer's left to right) when two wings face the same
+  way, `depthBand` (default 10 m from the front-most plane), `openings` (material names, default
+  `glass` and `dark`, counted only on faces turned to the viewer), `tolerance`.
+
+**Count blind.** The inventory is written from the reference photo by someone who has not seen the
+model: the integrator dispatches a small counter agent with only the photo and the counting rules.
+A lane must not edit counts to match its model; if it disputes a count, it flags it to the integrator
+with the photo region. The tool renders an orthographic material elevation of the GLB (only visible
+glazing counts), boxes every detected opening, and writes `artifacts/landmark-lanes/<id>/elevations/
+<facade>.png` with the photo beside it. Look at those images, not just the PASS lines.
+
 Run focused geometry checks, the shared asset check, POI contract and TypeScript check. Test real risks: finite bounds, native scale, roof support/winding, actual first-hit glazing/column visibility, open-space rays and exact source identities. Avoid tests that merely repeat constants from the implementation.
+
+For angled or narrow glazing, sample fractions across the actual face endpoints at several heights. Fixed metre offsets around a bounding-box centre can miss covered pane edges or leave the face entirely. Treat deliberately modeled mullions separately from masonry occlusion; preserve both near-pane failures and wider context occlusions. Markthal's 2026-10-06 fractional check exposed six masonry overlaps that the earlier fixed-offset checks missed. A passing old probe set must not override that failed evidence or the reference/render comparison.
 
 ```sh
 node --import tsx scripts/check-MODEL_ID-geometry.ts
@@ -140,19 +201,25 @@ Keep worker context small, references cached on disk, tool output bounded and sh
 
 ## Large ordinary buildings: standard treatment
 
-Large candidates first receive a recognition check, not automatic landmark detail. Historic age alone does not exclude a repetitive warehouse from a fast building-specific treatment; recognition-critical arches, cornices and open upper assemblies still need to survive. The generated backlog screens footprint complexity, courtyards, raised parts, unusual mapped roofs, skyline height and mapped POIs. These are clues: a rectangular footprint can still belong to a distinctive building. An unreviewed quick-loop candidate is not an approved simpler model.
+Large candidates first receive a recognition check, not automatic landmark detail. The generated backlog screens footprint complexity, courtyards, raised parts, unusual mapped roofs, skyline height and mapped POIs. These are clues: a rectangular footprint can still belong to a distinctive building. An unreviewed quick-loop candidate is not an approved simpler model.
 
 Record decisions by exact candidate ID in `public/canal-drive/dominant-building-fidelity.json`. A review needs `treatment` (`standard` or `landmark`), `reviewedOn`, `sourceUrls`, `referenceImage` (saved source image/crop or direct image URL), `reason`, and four boolean `checks`: `ordinarySilhouette`, `repetitiveFacade`, `noDefiningDetailsLost`, `openSpacesUnderstood`. Standard approval requires all four true. Mapped POIs and raised structures require landmark review. Recognizable architecture, user-requested landmarks such as ING House, distinctive roofs, historic ornament or unresolved structure stay in the full loop. No evidence means unreviewed.
 
-For an approved standard building, author a building-specific treatment that captures its visible character at gameplay distance. Start from the existing installed city geometry: native footprint, surveyed massing/height, roof surfaces and courtyard/underpass openings. Use a per-building facade generator, custom procedural window/material atlas, or lightweight GLB according to what most efficiently captures the observed bay spacing, window groups, frame colors, ground-floor treatment, roofline and major setbacks. Generic texture coverage alone is not acceptance for a large building that occupies a substantial part of the landscape. Keep the established flat-color house style; original procedural textures may encode facade patterns, but do not paste reference-photo pixels onto buildings.
-
-Use cached facade/context references to identify the few features responsible for recognition, and record those features before implementation. Reuse native shells and shared primitives wherever they fit; a lightweight custom GLB is allowed when it is quicker or clearer than extending the installed geometry. Omit tiny ornament, interiors and invented lettering. Reuse the implementation machinery across buildings while keeping each building's observed proportions and facade pattern. Apply treatments by exact surveyed identity, preserving picking and neighboring geometry. If recognition requires substantial bespoke detail or the structure remains unresolved, promote the building to the full landmark loop.
+For an approved standard building, use one cached facade/context reference, surveyed native massing and height, correct roof/open spaces, restrained real material colors, and a reusable facade rhythm. Omit tiny ornament, interiors and invented lettering. Reuse a parameterized builder and batch similar buildings after one accepted example. Record which details were deliberately simplified. If the model fails recognition or needs substantial bespoke geometry, promote it to the full loop rather than iterate a cheap model indefinitely.
 
 Keep the inexpensive shared geometry/identity checks and one gallery plus live-game visual comparison, including exact suppression and the adjacent building. Use the shared harness rather than writing a bespoke test/review script per ordinary block; add focused probes only for actual risks. A faster loop reduces researched/detail scope and repeated plumbing, not native placement or acceptance. If promoted to a POI, it still requires a genuine destination, map pin/label and meaningful sourced card. Anonymous background improvements do not automatically become trivia destinations.
 
-Use Amsterdam Data's live panorama viewer as a primary current facade/context reference and a visual check on our rectified crops. Save a reproducible viewer URL with panorama identity/date, location, heading, pitch, field of view and image provenance in the private source pack. Its perspective view is often sufficient to identify facade character; only generate wall-plane rectifications when measurements require them. Do not assume a clean viewer image is an orthographic elevation, or that our crop is better without comparison. Verified 2026-10-06: the user's Herengracht example resolves to `recording_2025-06-16_03-46-32_00875`, selected through the live panorama API and displayed from municipal cubic tiles. See [the supplied portal view](https://data.amsterdam.nl/data/geozoek?center=52.3790416%2C4.8921349&fov=90&heading=123&lagen=pano-pano2025bi&locatie=52.3790409%2C4.8921338&pitch=10&zoom=14). A successful viewer check establishes access and reference usability, not comparative rectification accuracy.
+Track elapsed time for the first small batch to calibrate the faster loop before promising timing or token savings. Review records survive backlog regeneration, and the dashboard distinguishes suggestions, approved standard buildings and full landmark treatment.
 
-Run a bounded pilot on a few large ordinary buildings and track research, authoring, integration and visual-review time separately. Compare building-specific native facade treatments and lightweight GLBs where appropriate, including actual game-frame performance, before choosing the faster loop or promising timing or token savings. Review records survive backlog regeneration, and the dashboard distinguishes suggestions, approved standard buildings and full landmark treatment.
+### Verify the actual street frontage before authoring
+
+Identify the photographed frontage against the current mapped street and **all immediately adjacent BAG parents**, including the opposite and rear buildings. A short coherent boundary chain and two retained side neighbors do not establish which side faces the street. Record its native vertices, outward normal, street gap and a geographic reference camera. Check the exposed panes and entrance against nearby retained buildings before export. Wine guildhall failed twice because its facade was first put on a side party wall and then an abutting rear edge; the opposite street chain was the correct frontage. Preserve failed views and assertions when correcting this, rather than weakening neighbor retention or hiding an obstruction.
+
+### Fast mesh preflight when the browser is unavailable
+
+Use `node scripts/landmarks/render-cpu-preflight.mjs model-id [model-id ...]` for exact exported draft meshes in `artifacts/landmark-next-batch/`. It writes two orthographic PNG views per model under `artifacts/landmark-offline-preview/`, directly decoding compressed GLBs. Preserve before images and record the input SHA-256 before replacing a preview. Compare against cached original reference images and request an independent failure-seeking review. This inexpensive preflight caught Vondeltuin solar attachment, missing roof-step closure and NDSM material mismatches.
+
+These isolated CPU images use simple local shading and omit city context. They cannot establish gallery/live-game acceptance, exact suppression, neighbor retention, route/pin/card behavior or GPU performance. Keep those checks pending; do not publish an unaccepted draft merely because geometry checks or CPU comparisons pass.
 
 ### Source-supported signage lettering
 

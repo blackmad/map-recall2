@@ -1,0 +1,52 @@
+{
+  "id": "vondelkerk",
+  "name": "Vondelkerk",
+  "landmarkId": "requested-vondelkerk",
+  "modelUrl": "./models/vondelkerk.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012236196"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8737837927040095,
+      52.36129550202287
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 43,
+    "widthMetres": 31
+  },
+  "surveyed": {
+    "anchor": [
+      4.8737837927040095,
+      52.36129550202287
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012236196 footprint and 3DBAG LoD2.2 roof planes, native east/south metres from the anchor; church axis bearing 66 degrees."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#9b5a3d",
+    "stone": "#d8c8a8",
+    "slate": "#59616f",
+    "glass": "#6f8590",
+    "dark": "#2b211b",
+    "white": "#dcd8ca",
+    "frame": "#3b3a3a",
+    "copper": "#6f8f7e",
+    "gold": "#d9b44a",
+    "ochre": "#a9733f",
+    "bronze": "#4b4a42",
+    "red": "#7e2d24",
+    "greyBrick": "#6a3a2c"
+  },
+  "attribution": {
+    "title": "Vondelkerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Vondelkerk",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry built in the church's own axis frame from the BAG ring and 3DBAG roof planes; west front, towers, chapels, apse and crossing tower measured by eye from photographs, no pixels or meshes imported. Shows the church as it stood before the 2026 New Year's fire."
+  }
+}

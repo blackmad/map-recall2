@@ -1,0 +1,18 @@
+[
+ {
+  "front": "front0",
+  "panoId": "TMX7316010203-003013_pano_0001_000036",
+  "timestamp": "2023-03-27T09:34:57.213540Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2023/03/27/TMX7316010203-003013/pano_0001_000036/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   120520.56322067323,
+   487559.10863093863
+  ],
+  "headingDeg": 340.85179064037544,
+  "fovDeg": 110,
+  "pitchDeg": 59.9232918112358,
+  "distanceM": 4.306906171162683,
+  "image": "artifacts/building-recipes/bloemgracht-82/photo-front0.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

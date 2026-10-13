@@ -1,0 +1,101 @@
+{
+  "modelId": "sea-palace",
+  "retrievedOn": "2026-10-06",
+  "status": "source-hold",
+  "scope": "Bounded missing-source recovery for the requested new Sea Palace model. No builder, geometry, catalogue or shared registration changes.",
+  "identity": {
+    "osmOutlineId": "w454006714",
+    "osmPoiId": "n13404202880",
+    "mappedPlaceId": "local-food-3079",
+    "bagParent": null,
+    "identityNotes": "Reuse floating-vessel identity. Both ordinary buildings and houseboats represent the same exact outline; suppress only after replacement load."
+  },
+  "cachedSourceReuse": {
+    "filesRead": [
+      "scripts/landmarks/sea-palace-footprints.json",
+      "scripts/landmarks/sea-palace-poi.json",
+      "artifacts/landmarks/sea-palace/source-access.json"
+    ],
+    "privatePackPath": "/Users/blackmad/Code/map-recall2-source-data/models/sea-palace",
+    "privatePackState": "Path absent; filename search in the private repository found no Sea Palace files. No cached photographs recovered.",
+    "privatePackCommit": null
+  },
+  "boundedSearches": [
+    {
+      "query": "site.seapalace.nl Sea Palace Amsterdam exterior",
+      "kind": "official operator web search",
+      "result": "No useful official exterior photograph returned; direct operator pages reused next."
+    },
+    {
+      "query": "site.archief.amsterdam \"Sea Palace\" \"Oosterdok\"",
+      "kind": "Beeldbank name search",
+      "result": "No useful indexed archive image/catalogue record identified."
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Sea%20Palace%20Oosterdokskade%208",
+      "kind": "Beeldbank name/address viewer",
+      "result": "Web tool reported URL inaccessible; no viewer or scan inspected."
+    },
+    {
+      "query": "site.seapalace.nl Sea Palace Amsterdam exterior",
+      "kind": "image search",
+      "result": "Returned external image URLs and generated descriptions; no image content blocks were supplied. Descriptions were not accepted as visual evidence or architectural assertions."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://seapalace.nl/en/",
+      "accessState": "Extracted operator page text read via web tool; original HTTP body unavailable. Direct urllib request failed with DNS resolution error [Errno 8].",
+      "originalBytesSaved": false,
+      "informed": "Reconfirmed qualitative operator text already cached, without adding dimensions or roof geometry.",
+      "rights": "Page states copyright 2026 Sea Palace, all rights reserved."
+    },
+    {
+      "url": "https://seapalace.nl/en/about-us/",
+      "accessState": "Extracted page text read via web tool; original HTTP body unavailable.",
+      "originalBytesSaved": false,
+      "informed": "Reconfirmed three occupied floors and top-floor roof terrace access; does not establish visible roof-tier count, terrace extent or height.",
+      "rights": "Page states copyright 2026 Sea Palace, all rights reserved."
+    },
+    {
+      "url": "https://seapalace.nl/wp-content/uploads/2020/03/zaalverhuur_1-768x793.jpg",
+      "accessState": "Operator home-page Image link resolves to URL. Both web click and direct open returned an empty textual result, with no inspectable image block or local image bytes.",
+      "originalBytesSaved": false,
+      "imageVisuallyInspected": false,
+      "featureInformed": null,
+      "dateNotes": "2020/03 is URL path only; photograph date unknown.",
+      "rights": "Unknown photo-specific attribution/reuse terms; operator page reserves rights."
+    }
+  ],
+  "uninspectedDiscoveryLeads": [
+    {
+      "pageUrl": "https://www.amsterdamobile.com/en/blog/accessible-restaurants/sea-palace-restaurant-accessibility",
+      "imageUrl": "https://www.amsterdamobile.com/images/easyblog_articles/141/IMG2023021316513_20231228-152721_1.jpg",
+      "potentialUse": "Entrance/gangway context candidate only. No photographs inspected, no entrance coordinate accepted.",
+      "originalBytesSaved": false,
+      "rights": "Unknown",
+      "dateNotes": "Filename includes date-like text; capture date unverified."
+    },
+    {
+      "pageUrl": "https://unsplash.com/photos/green-and-red-wooden-house-near-body-of-water-during-daytime-ODWlbNW3nGI",
+      "imageUrl": "https://images.unsplash.com/photo-1616235209734-d25f58ff20e1",
+      "potentialUse": "Exterior/roof context candidate only. Image-search description is not image inspection.",
+      "originalBytesSaved": false,
+      "rights": "Not checked; no reuse or capture-date claim."
+    }
+  ],
+  "architecturalAssertionsAdded": [],
+  "originalImagesInspected": 0,
+  "originalImagesSaved": 0,
+  "blockers": [
+    "No principal exterior/roof photograph inspected and saved as original bytes.",
+    "No opposite/context image establishes current roof tiers, opening rhythm or terrace extent.",
+    "Native height and water clearance remain unresolved; cached 9 m and 4 m tags are unverified mapped values.",
+    "Quay entrance/gangway coordinate remains unresolved; discovery caption cannot establish it.",
+    "Private archive is outside writable roots; no private source commit can be produced in this environment."
+  ],
+  "stagingPath": "artifacts/landmarks/sea-palace/source-recovery",
+  "stagingContentType": "Access/provenance log only. No original photos, raw HTML bodies, scans or render screenshots.",
+  "nextUsefulAction": "In an environment with source download access, retrieve actual operator/current exterior and gangway/context images, inspect them, save originals and source pages privately with checksums, then resolve height/entrance before builder authoring. Do not repeat bounded searches or build a generic pagoda draft from captions.",
+  "visualAcceptance": "not-built; no gallery/live-game acceptance claimed"
+}

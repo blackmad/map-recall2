@@ -15,6 +15,517 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
+## Direction (2026-10-13) — approved plan
+
+`docs/plans/digital-twin-direction-20261013.md` is the assessment and plan the
+user approved on 2026-10-13. Short form: open NL/Amsterdam data only; buildings
+move from one GLB per building to **recipe tiles** (per-pand recipe data
+compiled into per-z16-tile meshes + instance tables, GLB only for ~100 icons);
+own-ground becomes the default after per-polder water levels, BGT width per
+way, AHN profiles for the 891 unmeasured bridges and a real-iPhone GPU
+measurement; the gameplay loop stops freezing the rider and lets spaced
+repetition budget the questions; one light rig, one palette, one material
+atlas and a written `docs/LOOK.md`. Content lanes continue: icon builders,
+kits, building types, block faces, `kind: large` recipes (police stations
+added to the to-build list), the GLB cleanup pass (attached windows, material
+coverage, no holes) and the sculpture splat track. Freeze: no new per-house
+GLBs into `catalogue.json` and no new one-off ordinary builders; new builders
+tag every material with `materialSlot` + `tint`. Order: housekeeping (done
+2026-10-13) → gameplay loop → shared frame + palette → ground → recipe tiles.
+
+## Takeover board (2026-10-09) — active
+
+Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
+
+- **Landmark geometry audit offenders** (`audit:glb` geometry checks, baseline
+  `scripts/landmarks/geometry-audit-baseline.json`, pins
+  `geometry-audit-pins.json`): 200 of 281 GLBs have ≥0.25 m² visible coplanar
+  overlap; mixed-material ones are visible (brick/stone 43, stone/white 16,
+  frame/glass 18) — trim placed flush on wall/roof planes. Open pins: Oude
+  Lutherse Kerk zz 17.4 east window still detected floating after the rebuild
+  (zz 1.5 buried and H'ART portico now fixed), Rijksmuseum tower pilaster,
+  Hotel de l'Europe and American Hotel window-rhythm pins still detected after
+  their rework (rhythm is a warning; review whether the pins or the models are
+  wrong). Hotel de l'Europe lettering and roofscape, OLK south court and RLK
+  aisle south of 141° are inferred; Hendrik keeps its pre-existing detached-
+  parts fail; the six models' sources are not yet archived. After a fix: flip the pin to `fixed` and
+  lower the baseline with `--only-geometry --write-baseline`; never raise it.
+  Overhang over-flags glass curtain walls; "buried" over-flags curved drums.
+  Confirm the in-game depth-bias fix by a close drive past the Rijksmuseum
+  entrance.
+- **Landmark filler audit offenders (measured, unconfirmed in game)**:
+  `npm run audit:landmark-filler` lists models that hide buildings they do not
+  cover (hotel-jakarta BAG …247056 1,640 m², sint-agneskerk, national-holocaust-
+  museum) and generic boxes inside/above models (OBA Oosterdok 48 m vs 37 m
+  model, RAI ~11,000 m² above the roof, Sloterdijk, Melkweg, Felix Meritis,
+  Stadsschouwburg, Pathé City — the Pathé shot shows a grey box in front).
+  Review each in game. Also: kiosks under 14 m² draw as bare boxes (Westermarkt
+  76/78/82); the Muziekgebouw model's Bimhuis box is half off its OSM part;
+  Mövenpick could get an ordinary one-off later.
+- **Recipe roofs on the remaining faces**: on for 14 faces (all
+  Bilderdijkstraat faces but 080336-090492 and 159426-165632, both Marnix
+  rows). clercq-236681 now on recipe roofs (fixes 2.8 m² of wall/roof flicker), but
+  its Nassaukade corner (116526) gains an attic the photo lacks; keeping that
+  pand on 3DBAG (`keepSurvey`) fails z-fight at 0.4 m² — fix the corner's
+  overlap, then keepSurvey it. Not yet: nassau-162289 (10–12 m²
+  slate/brick wall z-fight with either roof), utrechtse-48-76 (178705 over
+  triangle budget), wallen-oza-41-57 (54 m open loops), wallen-ozv-115-125
+  (171879 above 3DBAG max), 159426-165632 (no gain, 14.6 m loop),
+  080336-090492 (1920s eave). Defects: stray brick block in Bilderdijkstraat
+  175's attic (133467) and its rounded mansard + dormer missing; tower rule
+  (eaves > 1 m over lowest front) from one pand; 70° attic from one strip;
+  cornice-group 2 cm stagger is a workaround. Per-house recipe GLBs with
+  fascia shops or steep dormers change on next rebuild (fit-golden re-recorded).
+- **Rosarium follow-ups**: low box hedges around each bed; check Noord
+  "Rozentuin" (a36994921, ~1,500 bushes on 1,380 m², maybe over-planted) and
+  a288299874 in game; park-landscape draws the paved centre hex green;
+  archive the reference photos to the source pack.
+- **Shared material textures for landmark walls (user idea, backlog)**:
+  landmark and ordinary models look bare where a wall is inferred or
+  unmodelled (e.g. the fire station Hendrik rear, probably brick). Pull the
+  city's shared texture cells (brick/stucco/stone, as the large-building
+  tier already does) onto plain landmark wall materials, chosen from the
+  photo colour or BAG era, so unphotographed sides read as brick rather than
+  flat paint. Must stay cheap (shared atlas, no per-model textures) and must
+  not hide missing evidence: inferred walls keep their "inferred" label.
+- **Interwar perimeter blocks** (e.g. Indische buurt/Oost courtyard blocks):
+  drawn by the generic house facade today; not in the large-tier (post-1945
+  / > 26 m) or ordinary backlog. Treat as street-survey block types (one
+  architect's design repeated round a block) — candidate after the
+  Nassaukade/De Clercqstraat type pilot.
+- **Gable details seen at street level**: hoist beams read as loose black
+  poles (worst on Utrechtsestraat neck gables) — check length/visibility;
+  OZA 45 and 47 crests modelled as grey domes (photo: carved crest, spiky
+  ornament); gable-peak check counts crests/pediments as peaks and never
+  applies its "2 m wide at half height" rule.
+- **Photo crowns, follow-ups**: check Utrechtsestraat 178784 (point gable
+  ~3 m higher in photo) and 178875 front b (5 steps, not 3); bilder 162444
+  authored neck 4.1 m above the photo eaves (likely authoring error); compiled
+  eaves 2.2–2.8 m below the visible facade top on 178876/178875c/178784; the
+  gallery's lopsided 156287 gable is not in the photo nor the authored
+  outline — trace it (the gallery model is the retired per-house GLB); no
+  canal-house gold set for the classifier (heuristic confidence 0.4–0.5).
+- **Building taxonomy (user, 2026-10-10)**, done (see HISTORY); remaining:
+  Bilderdijkstraat defects table on street-surveys.html (gables drawn as
+  dormers, 3DBAG roof slabs, missing awnings, 158–162 drawn as the corner
+  block); refile 156732 under Jacob van Lennepstraat. Definitions: (1) landmark buildings = curated list only (only these count for
+  discovery/quiz/What's new/route selection); (2) ordinary buildings = one-off
+  medium-fidelity reconstructions of large non-landmark buildings; (3) street
+  surveys = repetitive canal-house / block-face work aiming at reusable
+  geometry (faces, per-house recipes, street chunks). Galleries today show
+  stale per-house Bilderdijkstraat models the game no longer draws.
+- **Street-survey house types — Stage 2 and follow-ups**: Stage 1 landed
+  (Nassaukade 318–300 and De Clercqstraat 22–2 installed with
+  `blockFace/houseType.ts`). Next: `scripts/street-surveys/build.ts` must call
+  `validateBlockFace` before reading `rhythm.schemaLimits` (typed houses show no
+  limits in the gallery). Stage 2 instancing needs slot-level hashing (whole-
+  house equality finds 28% on Nassaukade, 0% on De Clercqstraat),
+  `EXT_mesh_gpu_instancing` in `streetChunks/gltf.ts`, loader support in
+  `signature-landmarks-source.js`, mirrored geometry nodes; pays only once types
+  recur across ~20 faces. Limits: pair dormers are two halves with a 0.5 m gap;
+  3DBAG LoD2.2 dormer masses show as brick boxes (154241, 162368/164663,
+  236262 — see the roof lane); Nassaukade white stucco storeys and tympana not
+  modelled; De Clercqstraat strip is 2021 (shops may have changed).
+- **UvA Roeterseiland held**: builder simplified 37.2k → 21.9k tris but not
+  installed — its spec says `do-not-suppress` (composite BAG parent not
+  partitioned; bridge underside height estimated). Needs a suppression
+  scope decision, then a check against the Tim Soar photos.
+- **Landmark polish from contact sheets**: This is Holland sign is thin and
+  its panels too regular; Luther Museum roof uniformly dark, frames should be
+  pale; Frankendael roof should read as tile; Nieuwendammerkerk nave roof
+  reads khaki not red tile; Posthoornkerk is 39k tris (cap 40k) — reduce.
+- **Held landmarks (`status: "held"`, out of game/galleries/What's new)**:
+  Torture Museum (attached now, but sign/shopfront only suggested), Pathé de
+  Munt (rebuilt twice; awaiting the user's call on
+  `artifacts/landmark-lanes/pathe-de-munt/contact.png`; audit: 40 open shell
+  loops), Sint-Petrus-en-Pauluskerk (tower/gable wrong, dark), Maarten
+  Lutherkerk (3DBAG tower the photo lacks), Oudemanhuispoort and Levend
+  Paardenmuseum (bare massing), Koningskerk (curved grid hall missing),
+  Compagnietheater (faint wing windows, too brown), Haparandaweg 65,
+  650–706, 708–744, 788–868 (unreviewed/weak), mediamatic. Integrator views
+  every contact sheet before un-holding; run `npm run audit:glb -- --id=<id>`
+  and `scripts/check-landmark-attachment.ts`.
+  Gerard Dou Synagogue: side/rear walls open (audit: 7/30 see-through rays).
+- **Facade gate follow-ups (2026-10-10)**: Royal Palace, De Balie and the
+  Concertgebouw entrance were reworked and installed. Still open: the Palace's
+  N and S fronts are blank (audit blank-wall FAIL, 45 x 25 m each); De Balie's
+  front is straight where the real one is bowed; Concertgebouw has 151 open
+  loops and 24/42 see-through rays from its glass promenade. Aron Schuster
+  synagogue installed after rework; its rounded corner is still squared.
+- **Lanes cut off by the usage limit (2026-10-10)**, resume from their branches:
+  audit see-through still FAIL on footprint-edge rays: haarlemmermeerstation,
+  hart-museum, pulitzer-amsterdam (check each against photos). adam-tower,
+  de-gooyer and huis-bartolotti now pass under the cantilever rules (rays
+  hit a wall <= 2.5 m behind an overhang >= 6 m up); whether those recesses
+  match the photos is still unchecked.
+  geometryAudit.ts proximity grid skips any triangle spanning > 20,000 1 m
+  cells ("pathological sliver", line ~199): a large diagonal wall reads as
+  absent, so its windows FAIL opening-floating. HvA lane worked around it by
+  tessellating shell faces (big-facade.ts addShellTess); fix the grid
+  (bin by plane, or rasterise only the triangle) and re-run the baseline.
+  Kohnstammhuis stone reads too warm/tan against the grey photo.
+- **Nieuw-West building types (2026-10-11)**: opt-in `?buildingTypes=1`
+  draws 3,072 photo-confirmed instances (2026-10-11 latest: +85 post-war
+  flats west of the A10 in three designs: loggia-stack 5st 30 (Osdorp),
+  portiek 3st blue-door 31 (Slotermeer; 14.2 and 16.0 m frontages share
+  one mesh), garage-pair balcony 5st 24. Flat clusters split 3-6 designs
+  per street/hof, so most stay held (220 in six areas, reasons per pand);
+  tile-stripe cluster 10 (~29 blocks) needs a street-front photo; the
+  6-9 storey clusters 21/26/30 are not surveyed.)
+  draws 2,987 photo-confirmed instances (2026-10-11 later: +611 terraced
+  houses in seven more designs: red-panel-door E2 272, garage-door 3st/2st
+  120, white-sheds E1 99 (shed rhythm unread, not re-sheeted), tall-glass
+  panel B2 97, ribbon-fascia 10, render-pilaster 7; 518 held. Mirror
+  parity now pinned per house from ~160 terraces read by eye (old
+  leftmost-normal rule matched ~25%). Densest rowhouse view was 86 draw
+  calls desktop / 69 iPhone; each unit now bakes into one merged draw
+  with a shared shader: 18 / 16, layer render time -30-45%, screenshots
+  identical. Layer can now be turned on by default once the user agrees.) Earlier: +1,921 terraced houses
+  of the 8.5 x 5 m cluster in four front designs A garage-door, G door-window
+  mirrored pairs, B tall glass, D render with tile plinth; one street photo
+  per terrace, 457 terraces classified; 677 held incl. undesigned classes E,
+  K, C, B2, F and extended houses; mirror parity along a terrace is not
+  photo-verified; toilet windows beside doors simplified; densest rowhouse
+  view 24 draw calls. Earlier: 455 instances, (2026-10-11: +202 from type-6
+  leftovers and clusters 2/5/8, 11 new designs; 124 held with reasons).
+  Balcony depths restored from photos (1.0-1.5 m) after the
+  opening-overhang fix; steel-stack rebuilt (frame rises a little too far
+  above the roof; balcony rails render faint). geometry-audit-baseline.json
+  re-recorded 2026-10-11 with a `reasons` map; 17 models then fixed in
+  their builders, `audit:glb --only-geometry` 302 pass / 0 fail. Remaining
+  (at or below baseline): shell-technology-centre overhang 12 / zfight 4.3
+  (long window ribbons; three fixes failed), overtoom-197 overhang 4 (bay
+  prisms and a 1.3 m canopy), de-bazel floating 6, voc-kade-600 overhang
+  14, hilton-amsterdam overhang 14 (balcony rule may apply), ij-toren
+  overhang 10, fire-station-hendrik 4, american-hotel 1 dormer window. Densest view
+  (peach-street) is 88 draw calls (12 cluster-2 unit variants); 12 panden
+  assigned from entrance close-ups only. Earlier: as shared InstancedMesh units (box LOD
+  past 140 m): type-1 portiekflat (Sonderbuur, Wildeman/Notweg, Slotermeer
+  hofs; brick-cream, clad-panel, clad-full, 4-storey brick, brick-yellow),
+  wide-core portiek (Beek en Hoff/Osdorper Ban 46, Slotermeerlaan 30), 4-st
+  hof with garages (16), tall plinth gable/hip (36), and type 6 on
+  Comeniusstraat. Brick colours are photo medians (the game's cityWallTint
+  lifts them). Densest view (Osdorper Ban): 55.5k tris, 20 draw calls,
+  iPhone 4x median 16.7 ms. Next: the ~85 remaining held pool pands (Jan de
+  Greef pastel blocks, pre-war, 3-storey, shops), 54 more type-6 pands,
+  clusters 2/4/5/7/8 and the 2,922 rowhouses (needs street-facing photos);
+  backs and gables are inferred everywhere; then decide default-on. Review
+  renders are archived in the source repo under building-types/.
+  Piet Hein Buildings (landmark) and Bercylaan 801-855 installed after a
+  facade rework (2026-10-11): perforated panel pattern not modelled; the
+  white banded volume in Bercylaan photos is the neighbouring 2026 pand.
+  `npm run check:osm-under-models` (in check:canal) covers all 813 placed
+  models (>= 50% area overlap; footprints from nativeRing, plan, GLB
+  occupancy or BAG pand); 5 building-type instances lack a footprint.
+  16 partial-overlap neighbours/annexes are allow-listed with reasons in
+  scripts/landmarks/osm-under-models-allowlist.json; review them.
+  Booking.com HQ held (2026-10-11, second rework): curved stepped south
+  front from per-band plan offsets, thin bronze plates, sampled glass, lobby
+  recess measured 1.7-5.7 m (allowed by the new glbQuality undercroft rule,
+  which changed no other model). Still reads as a tidy striped glass drum:
+  missing the faceted, irregularly shaded glass skin, slanted terrace fins,
+  the curved east face and the tower's irregular window rhythm. Rejected
+  checker changes from that lane, kept on branches: wallPlanes centroid
+  clustering (checker/wallplanes-centroid-20261011; re-clusters 55 models,
+  11 PASS->FAIL, Mondriaan Tower's pier-and-glass wall becomes a false
+  positive) and a z-fight overlap-distance filter (estimator noise pushes
+  pulitzer-amsterdam past its baseline). Shell Technology Centre installed with only two
+  photographed views (south, east); north half, west and courtyards inferred.
+  Krasnapolsky held (2026-10-10): old Dam front matches; the modern wing and
+  lower brick building need photo counts and the dark glass bays.
+  Pakhuis de Zwijger held (2026-10-10): colour fixed (dark weathered brick,
+  rust strips). Specs can now declare `throughPassages` (corridor + axis +
+  evidence); its Piet Heinkade roadway is declared. Still FAILs see-through
+  10/61: 4 oblique pier-edge rays inside the corridor (bearings 17–40° off
+  axis) and 6 at the east pilotis, where the glazed ground floor sits ~7 m
+  behind the pier line, beyond the 7 m reach. Needs a tested rule for a deep
+  recess under a LOW soffit, not wider tolerances.
+  De Nederlandsche Bank held (2026-10-10): the 1990 Abma round tower is
+  demolished (Mecanoo renovation 2025); the 3DBAG link core on the tower's
+  west face probably belonged to it and shows as a blank fin. Confirm with a
+  2025 west-side photo, drop it, fix tower proportions, then blind-count.
+  Bloemgrachtkerk (tower removed 2019, redevelopment) and Gemaal
+  Mercatorstraat (tiny kiosk) skipped.
+  Chassékerk towers follow the 3DBAG lidar (23.5 m, ~2 m over the ridge);
+  lidar truncates slender towers (Vondelkerk spire was 12 m short), so
+  check the real tower height in a source and raise if needed.
+  Large ordinary buildings (2026-10-10): Willem de Zwijgerlaan 350's canal
+  roof is solid to 15.2-15.6 m because 3DBAG closes it with one lid; the real
+  white storey stops at ~13 m under an open pergola. Grasweg 116 rows above
+  32 m are extrapolated (rectifier cap). De Bazel lacks piers/banding/
+  sculpture. Oostenburgermiddenstraat 228's tower is squared where the real
+  corten tower is rounded; Asterweg 23 has only its east gable photographed;
+  Céramiquelaan 437 brick is one flat grey. Haarlemmerweg 333's red storeys
+  should overhang the grey base. Audit site path now needs 2+ grounded
+  volumes (not just a > 150 m diagonal); 21 models newly checked. ij-toren
+  now passes after rework (recessed brick wall behind the quay colonnade,
+  glass-block wall, arcades declared as throughPassages, pavilion and vent
+  pipes declared as `detachedStructures`; recess 3.7 m and column pitch
+  11.4 m are photo estimates, +-1 m). asterweg-23's 95 m rear wall is
+  declared blank on partial evidence (hedges hide the bottom 3-5 m; corrugated
+  cladding above has no openings): revisit if a ground-level photo appears.
+  Krasnapolsky (held) still fails blank-wall. New see-through FAILs on already-failing rijksmuseum 9, stadhuis 28,
+  eye-filmmuseum 33, straat-museum 49, mountain-network 17,
+  ndsm-warehouse-complex 17. A real campus whose volumes weld can declare
+  `siteModel: true` in its spec. Wibautstraat 3B/3C
+  and pand 0363100012125963 are multi-volume towers, not ordinary slabs.
+  Next candidates: scratch
+  big-buildings-1.json (Haiku list).
+  World Trade Center Amsterdam held (2026-10-10): towers A–G are ONE BAG
+  pand (0363100012096613, ~200 x 95 m); a recognizable model needs a photo
+  of each tower face (Commons has only atrium/logo/tower H). Footprints and
+  research are in scripts/landmarks/world-trade-center-amsterdam-*.json;
+  needs a panorama pass per tower before modelling.
+  Full audit with the new rules (2026-10-10, 259 models): 88 pass, 171 fail;
+  vs the pre-change baseline 16 FAIL→PASS (two spot-checked visually: no
+  holes) and 2 PASS→FAIL: concertgebouw (canopy restored to its real depth)
+  and haparandaweg-902-950 (passes again since the deep-cornice rule).
+  Elevation skeletons with photos exist for 25 landmarks
+  (`scripts/landmarks/*-elevations.json`, photos in `artifacts/landmark-lanes/`);
+  counts are not filled: Haiku blind counts were too noisy — use a stronger
+  counter or rectified `pand-reference` crops. `check-manual-landmarks.ts`
+  fails on main: eight Haparandaweg manifest entries have no `bytes`.
+  Lane runs of `archive-model-sources.py` into the private repo are sometimes
+  denied by the auto-mode classifier; refs for vrijburg, van-gendt-hallen and
+  the 25 elevation photos are not archived yet.
+- **GLB quality audit** (`npm run audit:glb`, `src/canalRecall/landmarks/glbQuality.ts`,
+  2026-10-09): 184 of 236 installed models flag at least one FAIL (detached
+  124, see-through 84, holes 61, far-outside 32). Detached-part detection is
+  noisy (recessed glazing vs floating facade is geometry-ambiguous) — keep it
+  a warning for installs and hard-fail holes/see-through/far-outside. Worst
+  15: de-bijenkorf, oude-kerk, beta-boulders, fire-station-willem,
+  mountain-network, centraal-station, rai-amsterdam, westerkerk, valley,
+  lab111, vredeskerk, scheepvaarthuis, dominicuskerk, magna-plaza,
+  madame-tussauds — review their contact images before fixing. Het Pakhuis
+  (live) has rear-step wall gaps in its 3DBAG shell. Ordinary set not audited.
+- **Intro/landmark streaming follow-ups (2026-10-09)**: the flight still runs
+  ~4.0 s vs 3.5 s designed (MapLibre intermediate-zoom tiles + three chunk
+  installs, ~0.47 s long tasks). 25–40 landmark models load during the spawn
+  settle because the pitched chase view's bounds reach the horizon — cap
+  `_nearby` by distance or make it pitch-aware. `setActiveLandmark(null)` fires
+  ~every 100 ms while riding, each with a GeoJSON `setData` — find the caller.
+  `scripts/check-building-look-transition.ts` fails on main
+  (`chunks.get(first.key).mesh` undefined) and is not in check:canal.
+- **Shared material textures (user, 2026-10-09)**: models are flat-shaded
+  colour only, so brick and roofs read as plastic. Add one shared tiling set
+  (brick bonds, roof tile, slate, stone, timber, glass) at 256–512 px with
+  mipmaps; the building compiler/kits emit box-projected UVs; distant LOD
+  keeps flat colour. Not per-building photo textures.
+- **Canal house reuse (user, 2026-10-09)**: identical/near-identical houses
+  should share one mesh (canonical recipe hash + dimension tolerance) and a
+  `sameAs`+overrides recipe for neighbours; runtime instancing follows.
+  Measured (massing only, `scripts/analysis/canal-belt-reuse.ts`, canal-belt
+  core, ~10k houses): 13% have an adjoining near-twin (574 runs, longest 8),
+  so shared meshes save ~8%; 67% share a coarse family signature, so the
+  real win is drafting from the nearest done house, not GPU memory.
+  Long 19th-century rows (Marnixstraat, user Street View 2026-10-09) repeat
+  one module inside a single 30–60 m BAG parent, which that measure excludes:
+  recipes need `repeat` along a frontage, compiled once and instanced. Build
+  on the installed Marnixstraat pilot (`repeatedTerraceRoof.ts`).
+- **Perf cycle**: landmark layer renders one `THREE.Scene` per model with a
+  `getBounds()` per entry per frame, no frustum cull, no eviction
+  (`signature-landmarks-source.js`). Re-baseline against
+  `docs/performance/2026-10-06/` first.
+- **Recipe pipeline next steps** (pipeline on main, see HISTORY 2026-10-09):
+  runtime instancing in the ordinary layer from `instances.json`; install a
+  first recipe street; components for stepped/neck crowns, brick banding,
+  pilasters, ribbon windows, shutters; stoops on every repeated module;
+  Haiku/Sonnet drafting from the pand-reference feed (all recipes so far were
+  written by the lane agent); `kind: "large"` tier.
+  Tiers (user, 2026-10-09; landmarks will reach ~1,000): base (every
+  building: 3DBAG LoD2.2 + era facade grammar) → house recipe (row/canal
+  houses, ≤15 min, ≤3k tris) → **large building** (schools, blocks,
+  warehouses, offices, most landmarks: keep 3DBAG massing, recipe picks a
+  facade system per wall plus entrance/signage/roof plant, ~20–30 min, ≤12k
+  tris) → icon (~100 bespoke builders).
+- **Continuous fan-out (user, 2026-10-09)**: landmark lanes pull from the
+  `pending` ("Needs work") list on `landmark-queue.html`; integrator merges,
+  reviews contact sheets, batch-deploys and relaunches. In flight: museums2,
+  worship, civic lanes; pand-reference feed (ordinary); recipe pipeline.
+  Next: triage the ~80 `review` items into building / splat / area, and a
+  discovery pass (Arcam guide, monument register) to grow toward ~1,000.
+  When buildings run out: notable businesses and restaurants (user).
+- **Sculptures and statues → splats/impostors (user, 2026-10-09)**: De
+  Dokwerker, Vondel-, Rembrandt- and Wilhelmina-monuments etc. are not boxes.
+  38 are now `treatment: sculpture` in the backlog (filter "Sculpture (splat)"
+  on `landmark-queue.html`; list in `build-poi-backlog.ts`), incl. Mama
+  Baranka; De Dokwerker's hand-built model should be replaced first.
+  Capture a multi-image Gaussian splat (or photogrammetry mesh) from Commons
+  photos + panorama crops; render the splat only within ~50 m and a baked
+  8–16-view impostor beyond. Start from `docs/landmark-splat-reference-pilot.md`.
+- **Docs compaction**: ~135 markdown files across root, `docs/` and here.
+- `scripts/check-cinema-facade-surfaces.ts` fails on main (32 front pane
+  triangles, expects 24); not in `check:canal`.
+- Street-appearance fingerprints (`public/data/street-appearance/*.json`)
+  hash an older `signature-landmarks.json`; re-bake rather than hand-edit.
+- **Worktree hygiene (recurring)**: run `scripts/worktrees/triage.sh` before
+  removing anything; `--remove-merged-clean` and `--archive-dirty` apply the
+  2026-10-13 rules (see HISTORY). Create lane worktrees with
+  `scripts/worktrees/new.sh <branch>` so `node_modules` and `.cache` are
+  symlinked. After the 2026-10-13 sweep: 15 worktrees remain (11 unmerged
+  lanes to review, 4 kept), 164 local branches (159 unmerged, mostly old
+  lanes; triage them next), disk 148 GB free. Unmerged lanes awaiting
+  integrator review: `feat/kit-only-churches-20261011` (De Duif, Mozes en
+  Aaronkerk, Oosterkerk hand-built GLBs + Obrechtkerk WIP),
+  `feat/da-costakade-13-20261013`, `big/ordinary-a2-20261013` (Jodenbreestraat
+  11), `qa/detached-openings-sweep-20261013` (+ Haparandaweg 8-338 rails),
+  `fix/europe-window-grid-20261011`, `fix/felix-meritis-20261011`,
+  `big/ordinary-b2-20261013` and `landmarks/kit-churches2-20261013`
+  (footprints only), `rework/booking-hq-20261011` (held),
+  `exp/photo-colors-20261011`, `render/drop-maplibre-step1-20261010`; plus
+  five `wip/recovery-*-20261013` branches with author iterations recovered
+  from the 2026-10-08 clones (nieuwespiegel555, kerk136, prinsen211/215), and
+  `wip/recovery-landmark-integration-20261009` holding **five landmark models
+  that never reached main**: Academie voor Theater en Dans, Holocaust
+  Namenmonument, Max Euwe Centrum, Ruysdael Petrus-Pauluskerk, Voormalige
+  Schouwburgpoort (builders, GLBs, catalogue entries; audit and review them
+  at gallery size before installing).
+- **Perf findings (2026-10-09 baseline, `tests/e2e/ride-perf.spec.ts`,
+  iphone 4x throttle):** steady ride holds 16.7 ms median, p99 33 ms. Landmark
+  layer costs only 0.1–0.8 ms/frame even with 250 models resident. The game
+  calls `jumpTo` every frame, so `moveend` fires every frame: ~4.5 ms/frame of
+  handlers, led by inventory trees rebuilding (`inventory-trees-source.js`),
+  then road labels (`road-network.js` `drawLabels`). Gate those on real view
+  change.
+- **Unmerged landmark lanes awaiting rework (2026-10-09)**: integrator
+  viewed all 9 sheets; none installed. `landmark/historic-20261009c`
+  (Bellevue, West India House, West Indian Warehouse, Compagnietheater,
+  Rijksakademie, KIT) and `landmark/nightlife-20261009c` (Sea Palace,
+  Club Panama, Toekomstmuziek) are 3DBAG shells + generic windows missing
+  each building's signature (Bellevue lettering, pagoda upswept roofs,
+  PANAMA sign, KIT tower stages). Closest to the bar: Club Panama,
+  Compagnietheater, West India House. Koningskerk held for its grid hall.
+- **Sculptures** (38 in the backlog's sculpture treatment): splats only where
+  30–60 recent multi-angle colour photos exist (mask the statue; auto-find
+  centre/ground; ~1 h per statue); otherwise impostors baked from a clean
+  mesh, with nearest-tile switching (blending doubles the figure). Untested
+  alternative: single-photo image-to-3D mesh generation, then decimate.
+  The Dokwerker hand model has wrong arms and a hat disc — fix as far LOD.
+  Needs a real-iPhone GPU check before any splat ships.
+- **Destination memory follow-ups**: recent destinations are per device
+  (localStorage) — sync them with the signed-in recall store. The review
+  repeat is now pinned with a real due backlog (2026-10-10); a fresh device
+  no longer converges, but cross-device memory would still help.
+- **Failing e2e on main**: `review-ride.spec.ts` "a due street off every
+  landmark line is ridden as a via" (Avenhornstraat) fails on main before the
+  2026-10-10 home-picker change: surprise ride Artis Bibliotheek → Kazerne
+  Zebra with `dueOnPath: []`, no via. Investigate the via/stop planner.
+- **Renderer: give three.js the frame** (`docs/research/own-renderer-spike-20261009.md`,
+  `renderer-spike.html`): spike shows lighting is the visible gap — shadows,
+  sky, fog, tone mapping, sunken water — at ~2.6 ms CPU per throttled phone
+  frame vs 7.1 ms for MapLibre's render. Phase 1 (days, reversible): merge
+  the ~dozen three.js layers into one shared lit frame with shadows inside
+  MapLibre. Phase 2–3 (4–6 weeks, flagged, after a real-iPhone GPU test):
+  three.js owns ground, overlays, labels and camera; MapLibre only for
+  minimap/overview, dropping the live OpenFreeMap dependency. Gaps: no road
+  widths/sidewalks in our extracts (centrelines only), humped bridges render
+  as grey slabs, no route line/labels/HUD in the spike.
+- **Haparandaweg held/skipped**: 952-1002 rebuilt but held — grey
+  neighbour building needs its light-grey framed grid, SE/NE faces plain;
+  746-786 rebuilt, held for user review of its sheet; 870-900 NE side still
+  dark glass, unverified. Review 65 (needs the terracotta upper volume),
+  650–706 (paired casements, stone bands), 708–744, 788–868 (glass bays);
+  retry 940–950 with another photo source; 582–648 after scaffolding. The
+  street sheet framing was poor (bike drawn over a roof) — reshoot.
+- **Audit see-through test is hull-limited**: cast rays fully through the
+  bbox (or from outside the footprint) in `glbQuality.ts`; today concave
+  footprints flag false holes. Madame Tussauds has small roof-junction gaps.
+- **De Wallen next**: OZA 41–57 and OZV 115–125 installed. Next — a
+  frontage override for BAG stoop projections (OZV 113, 127–129); a face-level
+  3DBAG/BAG geometry correction field instead of per-face fix scripts; bell
+  gables with flat moulded caps; basements > 1.2 m and taller ground floors;
+  label depth (Casa Rosso floats over OZV);
+  lean from a non-rectified photo; adopt crownGroups/tower/split fronts on
+  Bilderdijkstraat 102–106, 149–151, 88–90, 162443, 236022, 236189; reviewer
+  row counts confuse mezzanines and arcade bays with storeys (177922/23/43/46).
+- **Bilderdijkstraat faces**: even side 72–166, 113–115, 131–153, 169–175,
+  198–202, 199–203 installed (standalone 153622/153782/154127 folded into
+  faces). Left: chunk-bilder-079721-x2 is not a face; 66–70 (pand 167348);
+  155–167 large-tier. Limits: 175 roof reads as a hip with no dormer (footprint
+  jog fails the dormer check); 200/198 cornice kept 0.55 m above the photo;
+  tower lights vanish when the rise is < 0.88 storey; the 2021 and 2023 strips
+  differ ~1.5 m in vertical registration. Gallery recipes
+  `recipe-bilder-{153622,153782,154127}.glb` are stale (game draws the faces);
+  reinstall via `scripts/building-recipes/install.ts`. Document `frontRoof` in
+  docs/buildings-pipeline.md. iPhone e2e street shots frame too close.
+- **Inferred rears**: the rear window grid is generic (2.5 m pitch); use rear
+  photos (`pand-reference --prefer-bearing`) where they exist. Raw audit still
+  reports party-wall "holes" on several faces (exempted by the compile).
+- **Block faces next** (`docs/buildings-pipeline.md` "Block-face authoring";
+  now the default unit for attached ordinary buildings): schema for per-bay
+  widths and off-centre gables (081118, 156286, Utrechtse 76), a shopfront
+  that must not cover a residential entrance bay (157650), two-storey
+  shopfronts (Concerto), white stucco reads beige under the recipe look;
+  facade-compare gable count is unreliable on chunk spans; small/faint signs
+  (KROM, TUI); 087959 strip vs proposal disagree on the ground-floor panes.
+  Re-author the rest of Bilderdijkstraat (24 pands on that face) as faces.
+- **Street chunk fallback**: if a chunk GLB fails to load, its houses are
+  already out of the model list and the OSM extrusion shows; restore the
+  per-house specs on failure. Demo page stats table scrolls sideways on phone.
+- **Review harness follow-ups**: `review-sheet.ts` needs ordinary-house
+  support (no catalogue entry/anchor) before Bilderdijkstraat re-review; ground
+  NAP offset not applied to the matched camera; record party-wall bearings per
+  model so blank-wall warns become signal; triage the 34 ≥600 m² blank walls
+  (Viñoly, The Rock, DeLaMar, Palace on the Dam first).
+- **Re-review the 19 Bilderdijkstraat recipe houses** under the new
+  acceptance checklist: bilder-156287 has 4 upper storeys and small 4-pane
+  windows where the photo shows 3 storeys + gable, large 1-over-1 windows,
+  middle-bay balconies, brick relieving arches and a 3-window gable. They
+  were accepted on overall resemblance. Run facade-compare on each.
+  Surround/awning evidence still open: Toko Persama (bilder-157154) awning
+  ambiguous; quoins, full-frame and dutch awnings have no house yet.
+- **Recipe houses next**: shop-sign lettering, patterned banding,
+  per-house brick variation; fix `check-host-opening-availability` mock
+  (needs `SharedAssetCache`); street chunks are piloted (opt-in `?streetChunks=1`, see HISTORY); next
+  apply the shared ground line + eaves snap to the per-house path and re-run
+  the fidelity gates on shifted facts.
+- **Large-tier follow-ups** (`src/canalRecall/largeBuildingTier.ts`,
+  ranked list via `npm run audit:large-tier`): untuned buildings show a
+  uniform window grid; tune next Roeterseiland/LLC, VU, Benno Premselahuis,
+  IJ-toren; roof shapes for tuned entries (Nyenrode's mansard); per-wall
+  front vs blind walls; Nyenrode shows a Jumbo shopfront its panorama does
+  not support — shopfront assignment can contradict photos.
+- **Pand reference feed follow-ups** (`npm run pand-reference`, merged
+  2026-10-09): street trees hide whole canal fronts in every year (Bloemgracht
+  3/7 unusable) — add a third laterally offset panorama or the per-pixel median
+  fusion from `build-pano-facade.ts`; washed-out/foliage thresholds (0.3) are
+  untuned; `roofShape` is null outside `buildings-colored.geojson`; Beeldbank
+  and monument-register facts are not yet joined in.
+- **Drop MapLibre** — lives on its own long-lived branch
+  `render/drop-maplibre-step1-20261010` (own worktree), merging main in;
+  not merged to main until ready (user, 2026-10-10). (go; ~3–4 weeks after city-wide own ground;
+  `docs/research/drop-maplibre-20261010.md` §6, prototype `no-maplibre.html`):
+  overview/route preview/street labels from our own extracts match the game's
+  MapLibre cameras within 1.1–3.2 px; iPhone 4× 5.8 ms frame CPU. Remaining:
+  wire `ownMap` into the game behind a flag, ferry/transit/neighbourhood
+  overlays, brand icons, roofline POI labels, answered-street lettering; rail,
+  tram, footways, landuse, piers missing from extracts; Utrecht/Rotterdam/Den
+  Haag need extracts; footprint tiles to a worker; the Leaflet map picker
+  (`map-picker.js:243`) also loads live OSM tiles — replace it too.
+- **Own ground in game behind `?ownGround=1`** (city-wide, 294 cells, 29.1 MB
+  gzip): blockers for default-on — per-polder water levels (Osdorp land −2.17 m
+  under water at −1.77 m); GPU time on a real iPhone (1.35M tris resident);
+  labels still MapLibre symbol layers; road widths from OSM (BGT: store one
+  measured width per way offline, not polygons). Recommendation: default-on in
+  the canal belt first after a real-iPhone measurement. Per-building chunk
+  bases verified only on flat streets. Size cuts if needed: 4 m relief
+  everywhere (−4 MB), drop pad tiles. Firebase deploy grows ~24.6 MB net —
+  hosting storage is already over quota.
+- **Elevation follow-ups** (`?elevation=1`, `docs/elevation.md`): no AHN
+  ground relief; one water level everywhere (polders, IJ shore get the same
+  quay wall); route line hidden on humped decks and ramps paint over ~20 m of
+  street; boats below street level not clipped at steep angles (boat mode not
+  reviewed); relies on MapLibre private stencil fields; no settings toggle —
+  decide default-on after a review drive.
+- **Bridge register gaps**: `bridges.json` has 300 bridges; 611 named bridge
+  ways (≈112 "brug"/"sluis", e.g. Noordsche Compagniebrug) get a street
+  question instead of a bridge question.
+- **P2: audit every installed GLB for holes** (open edges, missing faces,
+  flipped normals) with a batch mesh check over `public/canal-drive/models/`;
+  user has seen visible holes.
+
+---
+
 ## P0 — Red, or actively teaching something false
 
 *Anything that makes the game teach something false, or traps the rider,
@@ -38,6 +549,29 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- Kit-only landmarks still without a GLB: Noorderkerk (main pand to
+  identify: 0363100012177299 or ...177297) and Krijtberg (not started).
+  Another session is building Obrechtkerk, Oosterkerk, Mozes en Aäronkerk,
+  De Duif and Opstandingskerk. Scheepvaartmuseum and Waag done 2026-10-13.
+- Facade comparison now crops to the photo's span (alongM/heightM), skips
+  null bands and counts ribbon glazing as one opening (2026-10-11): failing
+  checks 45 -> 24 over the 7 newly released landmarks. Real model gaps it
+  found, fixed 2026-10-13: Maarten Lutherkerk (door stile lost in the
+  raster; east front now passes), Pakhuis de Zwijger (east ground slits;
+  warm ochre brick #b69468 in a light concrete frame after the user asked
+  "is this building really this dark?"). Krasnapolsky re-held after the
+  user's "some incorrect windows": wing and old front are regular grids
+  now, but the red-brick middle, Dam-front rows and three blank 3DBAG
+  sides remain. Oudemanhuispoort and Petrus en Paulus are being redone by
+  another session. Metric limits still open: gable peaks count
+  roof steps/plateaus as peaks (DNB podium), row clustering splits
+  staggered stair windows (Petrus en Paulus), counters count panes in tall
+  strips (Pakhuis north).
+  Petrus en Paulus, Maarten Lutherkerk, Oudemanhuispoort and the Torture
+  Museum released 2026-10-11 (second held batch). Levend Paardenmuseum
+  still held: gateway detailed, long walls plain 3DBAG massing (inferred
+  windows overhung the 3DBAG walls). Torture Museum's 3DBAG body behind the
+  narrow Singel front reads as a large blank box from the side.
 
 **Handoff 2026-10-02 — Map Recall neighbourhood cards, Utrecht and Rotterdam.** `WIKIMEDIA_TOKEN` now reaches wikipedia, wikidata and commons hosts (checked 18:56 UTC: each answers as user Whizziwig). Every response `fill-neighborhood-gaps.ts` fetches is kept in the durable scrape store (`scripts/lib/scrapeStore.ts`; `/mnt/project-files/scrape-store/` in cloud sessions), so reruns and new sessions ask Wikimedia only for what is missing.
 - *Utrecht and Rotterdam text:* published 2026-10-02 (see HISTORY). Coverage now Utrecht description 111/135, history 105, name origin 24, photo 87; Rotterdam 106/128, 81, 39, 88. Still open: name origins are the thinnest field in both cities (no street-name register for them yet); 38 Dutch fields were rejected as junk and 73 geosearch photos rejected, so those areas wait for better sources; review both cities on `/?gallery=cards&city=X` before relying on them. Rerunning `online` costs nothing for answered requests (scrape store).
@@ -1079,8 +1613,11 @@ grace before line/transfer asks; map idle settle on load. Still open: bus,
 GTFS-RT, dedicated mesh, OSM tunnel tagging in extract, GTFS `transfers.txt`
 merge when cached. Canal-belt teaching streets via `amsterdam-curation` +
 `ensure:amsterdam-teaching-streets`. Pedestrian `bicycle=no` corridors
-(Kalverstraat) playable with `bicycleRestricted`. Ferry water hops stay out of
-scope.
+(Kalverstraat) playable with `bicycleRestricted`. Bike ferries (GVB IJ
+F1–F9) are playable in bike mode (HISTORY 2026-10-09); open: no timetable or
+waiting, router treats crossings as plain distance, terminal accesses are
+projected (some 30–43 m, Sporenburg's over water), 33 m ferry overlaps the
+iPhone thumbstick in chase view, no Storybook visual baseline.
 
 **25. Large-letter postcard compositor (standalone).**
 Craft board: [`LARGE_LETTER_CRAFT.md`](LARGE_LETTER_CRAFT.md). **Check loop:**

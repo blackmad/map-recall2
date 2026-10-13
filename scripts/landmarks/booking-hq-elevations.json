@@ -1,0 +1,9 @@
+{
+  "id": "booking-hq",
+  "countedBy": "pending blind count",
+  "facades": [
+    {"name": "south front (Oosterdokskade plaza, office terraces and sign)", "bearing": 180, "photo": "artifacts/landmark-lanes/booking-hq/ref-south.jpg"},
+    {"name": "south-east corner (restaurant terrace)", "bearing": 135, "photo": "artifacts/landmark-lanes/booking-hq/ref-south-east.jpg"},
+    {"name": "east end (curved glazed ground floor)", "bearing": 95, "photo": "artifacts/landmark-lanes/booking-hq/ref-east.jpg"}
+  ]
+}

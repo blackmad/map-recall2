@@ -1,0 +1,81 @@
+{
+  "modelId": "hannekes-boom",
+  "reviewedOn": "2026-10-08",
+  "state": "independent-review-required-corrections-implemented-reexport-pending",
+  "assetSha256": "6a5e357eba3b29cb5bb3c3dd7db653d0287f928133c9440fd218716192e9be37",
+  "triangles": 6954,
+  "bytes": 122672,
+  "nativeBounds": {
+    "min": [
+      -9.592754,
+      0,
+      -8.632892
+    ],
+    "max": [
+      7.497599,
+      6.0195,
+      8.614155
+    ]
+  },
+  "sourceComparison": {
+    "referenceFiles": [
+      "models/hannekes-boom/raw/EmiroSmolders-HannekesBoom-08252-47-1-e1769697876806.jpg",
+      "models/hannekes-boom/raw/architect-Hannekesboom_wp_1600.jpg",
+      "models/hannekes-boom/raw/architect-_DSC6549_wp_1600.jpg",
+      "models/hannekes-boom/raw/architect-20210610-Valkenier-9109_wp_1600.jpg",
+      "models/hannekes-boom/raw/aerial.jpg"
+    ],
+    "renderFiles": [
+      "artifacts/hannekes-boom/current/hannekes-boom-cpu-waterside.png",
+      "artifacts/hannekes-boom/current/hannekes-boom-cpu-opposite.png"
+    ],
+    "findings": [
+      "Single low pavilion and distinct lower northern service wing; flat occupied deck rather than erroneous whole-height6m block.",
+      "Differently painted vertical roof-parapet boards and separate glass windbreaks; terrace remains open.",
+      "Corrugated south/west awnings, source-supported east stair and local NW canopy.",
+      "Architect roof-deck furniture and current parapet flower boxes simplified natively.",
+      "White-frame state follows multiple architect/operator views; source08252yellow capture date cannot establish latest state.",
+      "Explicit two broad windows, narrow adjacent white glazed door, right aperture replace generic principal repetition.",
+      "Continuous red source fascia/posts and source-west roof-plane solar bank.",
+      "Main east wall reaches deck; lower service edge kept separate. Supported landing joins stair exit through bounded parapet access opening."
+    ],
+    "limitations": [
+      "Fine facade opening divisions, exact rear opening counts, stair treads, flower/furniture distribution approximate.",
+      "Outdoor pergola, real trees and moored Hannekes Boot not buildings in exact replaced Pand; surrounding context/vegetation remains game renderer.",
+      "CPU isolated views cannot establish real neighbor/context/route/pin/card or GPU performance."
+    ]
+  },
+  "checks": {
+    "authorGeometry": "passed",
+    "compressedGeometry": "passed",
+    "fractionalGlazingFirstHits": 32,
+    "canopySupportedBases": 4,
+    "roofsSingleSidedUpward": "passed",
+    "openParcelWater": "passed",
+    "independentSourceRender": "pending root reviewer",
+    "galleryFourRotations": "pending",
+    "actualGameBothSides": "pending",
+    "realRouteDestination": "pending",
+    "geographicPin": "pending",
+    "physicalClickedSourcedCard": "pending",
+    "exactSuppressionResidentNeighbors": "pending"
+  },
+  "failedEvidence": [
+    {
+      "file": "artifacts/hannekes-boom/draft/hannekes-boom.glb",
+      "reason": "First native palette bronze gave green timber/deck; rejected source color match."
+    },
+    {
+      "reason": "Elevated AHN canopy roof cells initially left missing occupied deck below support corners; failed authored base-support probe; corrected supported deck projections and tested exact compressed export."
+    },
+    {
+      "file": "models/hannekes-boom/raw/recording_2025-06-19_03-28-47_00816.jpg",
+      "reason": "Geographically near station actually underground IJtunnel; no facade evidence."
+    },
+    {
+      "file": "artifacts/hannekes-boom/current/failed-6954-before-wall-landing.glb",
+      "sha256": "6a5e357eba3b29cb5bb3c3dd7db653d0287f928133c9440fd218716192e9be37",
+      "reason": "Independent east wall/roof and disconnected upper stair failure; generic facade and missing source fascia/solar."
+    }
+  ]
+}

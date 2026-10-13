@@ -1,0 +1,23 @@
+{
+  "name": "Park Plaza Victoria Amsterdam",
+  "landmarkId": "n237912528",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Victoria_Hotel",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012185508"
+  ],
+  "pandId": "0363100012185508",
+  "materialOverrides": {
+    "stone": "#d2c8ad",
+    "sandstone": "#b7aa8c",
+    "slate": "#4b5159",
+    "greyBrick": "#8b8780",
+    "glass": "#5d7280",
+    "dark": "#2f3235",
+    "white": "#ece7da",
+    "gold": "#cdb04e",
+    "copper": "#5c7466",
+    "frame": "#e4dfd0"
+  },
+  "surveySource": "Current BAG 0363100012185508 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free flat-colour geometry on the BAG footprint and 3DBAG LoD2.2 massing; stone facade bays, corner tower and dome, mansard roof with dormers measured by eye from Commons photographs (2005 RCE, 2007, 2016, 2017), no pixels or meshes imported."
+}

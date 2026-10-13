@@ -24,7 +24,9 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   // tease and a personal best (user report 2026-10-02: ran off the screen).
   | 'finish-full' | 'finish-full-touch'
   | 'landmark-panel-touch'
-  | 'stacked-notices-touch' | 'neighborhood-fallback-touch';
+  | 'stacked-notices-touch' | 'neighborhood-fallback-touch'
+  // Aboard a cycling IJ ferry: the departure/destination notice under the plaque.
+  | 'hud-ferry' | 'touch-hud-ferry';
 
 function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
   const configure = useCallback((frame: HTMLIFrameElement) => {
@@ -105,7 +107,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       win.localStorage.setItem('mapRecall_reviewEvents_v1', JSON.stringify(events));
       doc.getElementById('knowledge-button')?.click();
     }
-    if (scenario === 'hud' || scenario === 'neighborhood' || scenario === 'neighborhood-fallback'
+    if (scenario === 'hud' || scenario === 'hud-ferry' || scenario === 'neighborhood' || scenario === 'neighborhood-fallback'
       || scenario === 'stacked-notices' || scenario === 'stacked-notices-touch'
       || scenario === 'neighborhood-fallback-touch'
       || scenario.startsWith('finish')
@@ -323,8 +325,9 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           frameMath.random = random;
           return;
         }
-        if (scenario === 'hud' || scenario.startsWith('touch-hud')) {
-          const asking = scenario === 'touch-hud-question';
+        if (scenario === 'hud' || scenario === 'hud-ferry' || scenario.startsWith('touch-hud')) {
+          const ferry = scenario.endsWith('-ferry');
+          const asking = scenario === 'touch-hud-question' || ferry;
           const long = scenario === 'touch-hud-long';
           const hood = long ? 'Van Lennepbuurt en Kinkerbuurt-Noord' : 'Jordaan';
           const destinationName = long ? 'Rijksmuseum en Museumplein (hoofdingang)' : 'Westerkerk';
@@ -365,6 +368,12 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
             game.hud.drawStick(ctx, null);
           }
           if (scenario === 'touch-hud') game.hud.drawTouchHint(ctx, 'relative');
+          if (ferry) {
+            game._renderFerryNotice({
+              ferryOrigin: { id: '3980940', name: 'Centraal Station', x: 0, y: 0, land: { x: 0, y: 0 } },
+              ferryDestinations: 'Buiksloterweg',
+            }, true);
+          }
           return;
         }
         const image = new Image();
@@ -425,6 +434,8 @@ export const TransitBriefingPhone: Story = {
   parameters: { viewport: { defaultViewport: 'mobile1' } },
 };
 export const LiveHud: Story = { args: { scenario: 'hud' } };
+/** Aboard an IJ ferry: the notice names the departure and the pier to dock at. */
+export const LiveHudFerry: Story = { args: { scenario: 'hud-ferry' } };
 export const FinishCard: Story = { args: { scenario: 'finish' } };
 /** Every block at once; the card must still fit a laptop screen. */
 export const FinishCardFull: Story = { args: { scenario: 'finish-full' } };
@@ -509,6 +520,12 @@ export const PortraitHudAsking: Story = {
  *  line: the merged plaque has to trim, never overflow. */
 export const PortraitHudLongNames: Story = {
   args: { scenario: 'touch-hud-long' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+/** Aboard an IJ ferry on a phone: the notice sits below the plaque and minimap. */
+export const PortraitHudFerry: Story = {
+  args: { scenario: 'touch-hud-ferry' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };
 

@@ -1,0 +1,10 @@
+{
+  "id": "jacob-bontiusplaats-9",
+  "countedBy": "pending blind count by integrator",
+  "facades": [
+    {"name": "south-east long front (louvre belt)", "bearing": 132.5, "photo": "artifacts/landmark-lanes/jacob-bontiusplaats-9/ref-southeast.jpg"},
+    {"name": "north-west long front", "bearing": 312.5, "photo": "artifacts/landmark-lanes/jacob-bontiusplaats-9/ref-northwest.jpg"},
+    {"name": "south-west end", "bearing": 222.5, "photo": "artifacts/landmark-lanes/jacob-bontiusplaats-9/ref-southwest.jpg"},
+    {"name": "north-east end (inferred, no photo)", "bearing": 42.5}
+  ]
+}

@@ -1,0 +1,538 @@
+{
+ "area": "sonderbuur",
+ "frame": "x east, z south, y NAP metres from anchor; yaw about +y takes the local frame (front +z, tangent +x) to east/south",
+ "anchor": {
+  "lng": 4.7993,
+  "lat": 52.3639
+ },
+ "placements": [
+  {
+   "pand": "0363100012061842",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick-cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     1.224,
+     -0.805,
+     -0.608
+    ],
+    "positionChunk": [
+     1.224,
+     0,
+     -0.608
+    ],
+    "yawRad": -1.2502,
+    "lengthM": 13.95,
+    "widthM": 10.22,
+    "eavesM": 14.8
+   }
+  },
+  {
+   "pand": "0363100012079084",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick-cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -3.185,
+     -0.796,
+     -13.872
+    ],
+    "positionChunk": [
+     -3.185,
+     0,
+     -13.872
+    ],
+    "yawRad": -1.25034,
+    "lengthM": 14.05,
+    "widthM": 10.23,
+    "eavesM": 14.79
+   }
+  },
+  {
+   "pand": "0363100012127297",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick-cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     5.659,
+     -0.797,
+     12.749
+    ],
+    "positionChunk": [
+     5.659,
+     0,
+     12.749
+    ],
+    "yawRad": -1.25018,
+    "lengthM": 14.23,
+    "widthM": 10.22,
+    "eavesM": 14.8
+   }
+  },
+  {
+   "pand": "0363100012126028",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick-cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -7.607,
+     -0.817,
+     -27.19
+    ],
+    "positionChunk": [
+     -7.607,
+     0,
+     -27.19
+    ],
+    "yawRad": -1.25034,
+    "lengthM": 14.07,
+    "widthM": 10.23,
+    "eavesM": 14.8
+   }
+  },
+  {
+   "pand": "0363100012063732",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "clad-panel",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -40.62,
+     -0.974,
+     0.592
+    ],
+    "positionChunk": [
+     -40.62,
+     0,
+     0.592
+    ],
+    "yawRad": 1.8905,
+    "lengthM": 14.53,
+    "widthM": 10.58,
+    "eavesM": 14.8
+   }
+  },
+  {
+   "pand": "0363100012112708",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick-cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -12.008,
+     -0.782,
+     -40.442
+    ],
+    "positionChunk": [
+     -12.008,
+     0,
+     -40.442
+    ],
+    "yawRad": -1.25012,
+    "lengthM": 13.92,
+    "widthM": 10.23,
+    "eavesM": 14.78
+   }
+  },
+  {
+   "pand": "0363100012125614",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "clad-panel",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -45.13,
+     -0.985,
+     -13.037
+    ],
+    "positionChunk": [
+     -45.13,
+     0,
+     -13.037
+    ],
+    "yawRad": 1.89029,
+    "lengthM": 14.21,
+    "widthM": 10.58,
+    "eavesM": 14.82
+   }
+  },
+  {
+   "pand": "0363100012075965",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick-cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -16.44,
+     -0.763,
+     -53.783
+    ],
+    "positionChunk": [
+     -16.44,
+     0,
+     -53.783
+    ],
+    "yawRad": -1.25022,
+    "lengthM": 14.26,
+    "widthM": 10.23,
+    "eavesM": 14.76
+   }
+  },
+  {
+   "pand": "0363100012121830",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "clad-panel",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -49.586,
+     -0.992,
+     -26.488
+    ],
+    "positionChunk": [
+     -49.586,
+     0,
+     -26.488
+    ],
+    "yawRad": 1.89012,
+    "lengthM": 14.18,
+    "widthM": 10.58,
+    "eavesM": 14.8
+   }
+  },
+  {
+   "pand": "0363100012086137",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "clad-panel",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     51.36,
+     -0.972,
+     -29.628
+    ],
+    "positionChunk": [
+     51.36,
+     0,
+     -29.628
+    ],
+    "yawRad": 1.8905,
+    "lengthM": 14.53,
+    "widthM": 10.58,
+    "eavesM": 14.89
+   }
+  },
+  {
+   "pand": "0363100012144762",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "clad-panel",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     46.85,
+     -0.967,
+     -43.257
+    ],
+    "positionChunk": [
+     46.85,
+     0,
+     -43.257
+    ],
+    "yawRad": 1.89029,
+    "lengthM": 14.21,
+    "widthM": 10.58,
+    "eavesM": 14.89
+   }
+  },
+  {
+   "pand": "0363100012073058",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "clad-panel",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -54.062,
+     -0.999,
+     -39.995
+    ],
+    "positionChunk": [
+     -54.062,
+     0,
+     -39.995
+    ],
+    "yawRad": 1.89082,
+    "lengthM": 14.34,
+    "widthM": 10.57,
+    "eavesM": 14.83
+   }
+  },
+  {
+   "pand": "0363100012098636",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick-cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -20.886,
+     -0.781,
+     -67.157
+    ],
+    "positionChunk": [
+     -20.886,
+     0,
+     -67.157
+    ],
+    "yawRad": -1.25023,
+    "lengthM": 13.99,
+    "widthM": 10.23,
+    "eavesM": 14.78
+   }
+  },
+  {
+   "pand": "0363100012150871",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "clad-panel",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     42.394,
+     -0.928,
+     -56.708
+    ],
+    "positionChunk": [
+     42.394,
+     0,
+     -56.708
+    ],
+    "yawRad": 1.89012,
+    "lengthM": 14.18,
+    "widthM": 10.58,
+    "eavesM": 14.85
+   }
+  },
+  {
+   "pand": "0363100012145200",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "clad-panel",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -58.559,
+     -1.012,
+     -53.562
+    ],
+    "positionChunk": [
+     -58.559,
+     0,
+     -53.562
+    ],
+    "yawRad": 1.8904,
+    "lengthM": 14.31,
+    "widthM": 10.58,
+    "eavesM": 14.85
+   }
+  },
+  {
+   "pand": "0363100012151348",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "clad-panel",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     37.918,
+     -0.892,
+     -70.214
+    ],
+    "positionChunk": [
+     37.918,
+     0,
+     -70.214
+    ],
+    "yawRad": 1.89082,
+    "lengthM": 14.34,
+    "widthM": 10.57,
+    "eavesM": 14.81
+   }
+  },
+  {
+   "pand": "0363100012063448",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "clad-panel",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     33.421,
+     -0.913,
+     -83.782
+    ],
+    "positionChunk": [
+     33.421,
+     0,
+     -83.782
+    ],
+    "yawRad": 1.89061,
+    "lengthM": 14.31,
+    "widthM": 10.58,
+    "eavesM": 14.84
+   }
+  },
+  {
+   "pand": "0363100012126865",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "clad-panel",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -63.032,
+     -0.98,
+     -67.063
+    ],
+    "positionChunk": [
+     -63.032,
+     0,
+     -67.063
+    ],
+    "yawRad": 1.89036,
+    "lengthM": 14.17,
+    "widthM": 10.58,
+    "eavesM": 14.82
+   }
+  },
+  {
+   "pand": "0363100012070756",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick-cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -90.691,
+     -0.786,
+     29.634
+    ],
+    "positionChunk": [
+     -90.691,
+     0,
+     29.634
+    ],
+    "yawRad": -1.2502,
+    "lengthM": 13.95,
+    "widthM": 10.23,
+    "eavesM": 14.76
+   }
+  },
+  {
+   "pand": "0363100012070899",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick-cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -86.256,
+     -0.788,
+     42.986
+    ],
+    "positionChunk": [
+     -86.256,
+     0,
+     42.986
+    ],
+    "yawRad": -1.25063,
+    "lengthM": 14.24,
+    "widthM": 10.23,
+    "eavesM": 14.77
+   }
+  },
+  {
+   "pand": "0363100012088472",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick-cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -95.096,
+     -0.794,
+     16.365
+    ],
+    "positionChunk": [
+     -95.096,
+     0,
+     16.365
+    ],
+    "yawRad": -1.25034,
+    "lengthM": 14.04,
+    "widthM": 10.23,
+    "eavesM": 14.77
+   }
+  },
+  {
+   "pand": "0363100012146294",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick-cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -99.522,
+     -0.812,
+     3.052
+    ],
+    "positionChunk": [
+     -99.522,
+     0,
+     3.052
+    ],
+    "yawRad": -1.25084,
+    "lengthM": 14.06,
+    "widthM": 10.23,
+    "eavesM": 14.78
+   }
+  },
+  {
+   "pand": "0363100012082757",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick-cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     93.176,
+     -0.745,
+     -30.867
+    ],
+    "positionChunk": [
+     93.176,
+     0,
+     -30.867
+    ],
+    "yawRad": 1.89036,
+    "lengthM": 14.02,
+    "widthM": 10.23,
+    "eavesM": 14.73
+   }
+  },
+  {
+   "pand": "0363100012074491",
+   "type": "nw-portiek-brick-pitched",
+   "variant": "brick-cream",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     88.781,
+     -0.777,
+     -44.136
+    ],
+    "positionChunk": [
+     88.781,
+     0,
+     -44.136
+    ],
+    "yawRad": 1.89043,
+    "lengthM": 13.97,
+    "widthM": 10.23,
+    "eavesM": 14.76
+   }
+  }
+ ]
+}

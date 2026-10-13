@@ -1,0 +1,494 @@
+{
+ "area": "rh2-02",
+ "frame": "x east, z south, y NAP metres from anchor; yaw about +y takes the local frame (front +z, tangent +x) to east/south",
+ "anchor": {
+  "lng": 4.78818,
+  "lat": 52.35419
+ },
+ "placements": [
+  {
+   "pand": "0363100012144935",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "green",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -0.659,
+     -2.853,
+     8.993
+    ],
+    "positionChunk": [
+     -0.659,
+     0,
+     8.993
+    ],
+    "yawRad": -1.25383,
+    "lengthM": 5.74,
+    "widthM": 9.14,
+    "eavesM": 5.68
+   }
+  },
+  {
+   "pand": "0363100012130573",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "green",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     1.074,
+     -2.832,
+     14.259
+    ],
+    "positionChunk": [
+     1.074,
+     0,
+     14.259
+    ],
+    "yawRad": -1.25449,
+    "lengthM": 5.38,
+    "widthM": 9.14,
+    "eavesM": 5.62
+   }
+  },
+  {
+   "pand": "0363100012097401",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "navy",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -6.667,
+     -2.793,
+     -11.334
+    ],
+    "positionChunk": [
+     -6.667,
+     0,
+     -11.334
+    ],
+    "yawRad": -2.82185,
+    "lengthM": 5.39,
+    "widthM": 9.1,
+    "eavesM": 5.64
+   }
+  },
+  {
+   "pand": "0363100012078419",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "navy",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -1.547,
+     -2.792,
+     -13.015
+    ],
+    "positionChunk": [
+     -1.547,
+     0,
+     -13.015
+    ],
+    "yawRad": -2.82185,
+    "lengthM": 5.39,
+    "widthM": 9.1,
+    "eavesM": 5.63
+   }
+  },
+  {
+   "pand": "0363100012085669",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "navy",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -11.786,
+     -2.788,
+     -9.653
+    ],
+    "positionChunk": [
+     -11.786,
+     0,
+     -9.653
+    ],
+    "yawRad": -2.82185,
+    "lengthM": 5.39,
+    "widthM": 9.1,
+    "eavesM": 5.63
+   }
+  },
+  {
+   "pand": "0363100012123339",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "navy",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     3.566,
+     -2.801,
+     -14.695
+    ],
+    "positionChunk": [
+     3.566,
+     0,
+     -14.695
+    ],
+    "yawRad": -2.82185,
+    "lengthM": 5.39,
+    "widthM": 9.1,
+    "eavesM": 5.65
+   }
+  },
+  {
+   "pand": "0363100012143015",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "green",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     2.754,
+     -2.8,
+     19.362
+    ],
+    "positionChunk": [
+     2.754,
+     0,
+     19.362
+    ],
+    "yawRad": -1.25426,
+    "lengthM": 5.37,
+    "widthM": 9.15,
+    "eavesM": 5.65
+   }
+  },
+  {
+   "pand": "0363100012074566",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "navy",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -16.899,
+     -2.795,
+     -7.972
+    ],
+    "positionChunk": [
+     -16.899,
+     0,
+     -7.972
+    ],
+    "yawRad": -2.82185,
+    "lengthM": 5.39,
+    "widthM": 9.1,
+    "eavesM": 5.67
+   }
+  },
+  {
+   "pand": "0363100012082266",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "navy",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     8.686,
+     -2.804,
+     -16.376
+    ],
+    "positionChunk": [
+     8.686,
+     0,
+     -16.376
+    ],
+    "yawRad": -2.82185,
+    "lengthM": 5.39,
+    "widthM": 9.1,
+    "eavesM": 5.65
+   }
+  },
+  {
+   "pand": "0363100012134737",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "navy",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -22.019,
+     -2.834,
+     -6.292
+    ],
+    "positionChunk": [
+     -22.019,
+     0,
+     -6.292
+    ],
+    "yawRad": -2.82185,
+    "lengthM": 5.39,
+    "widthM": 9.1,
+    "eavesM": 5.68
+   }
+  },
+  {
+   "pand": "0363100012122561",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "navy",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     13.806,
+     -2.8,
+     -18.057
+    ],
+    "positionChunk": [
+     13.806,
+     0,
+     -18.057
+    ],
+    "yawRad": -2.82185,
+    "lengthM": 5.39,
+    "widthM": 9.1,
+    "eavesM": 5.64
+   }
+  },
+  {
+   "pand": "0363100012083570",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "green",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     4.436,
+     -2.809,
+     24.459
+    ],
+    "positionChunk": [
+     4.436,
+     0,
+     24.459
+    ],
+    "yawRad": -1.25426,
+    "lengthM": 5.37,
+    "widthM": 9.14,
+    "eavesM": 5.66
+   }
+  },
+  {
+   "pand": "0363100012103016",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "navy",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -27.258,
+     -2.94,
+     -4.567
+    ],
+    "positionChunk": [
+     -27.258,
+     0,
+     -4.567
+    ],
+    "yawRad": -2.82185,
+    "lengthM": 5.64,
+    "widthM": 9.09,
+    "eavesM": 5.8
+   }
+  },
+  {
+   "pand": "0363100012102310",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "navy",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     19.045,
+     -2.798,
+     -19.782
+    ],
+    "positionChunk": [
+     19.045,
+     0,
+     -19.782
+    ],
+    "yawRad": -2.82147,
+    "lengthM": 5.65,
+    "widthM": 9.1,
+    "eavesM": 5.64
+   }
+  },
+  {
+   "pand": "0363100012133600",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "green",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     6.116,
+     -2.818,
+     29.556
+    ],
+    "positionChunk": [
+     6.116,
+     0,
+     29.556
+    ],
+    "yawRad": -1.25426,
+    "lengthM": 5.37,
+    "widthM": 9.14,
+    "eavesM": 5.68
+   }
+  },
+  {
+   "pand": "0363100012133829",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     9.478,
+     -2.769,
+     39.757
+    ],
+    "positionChunk": [
+     9.478,
+     0,
+     39.757
+    ],
+    "yawRad": -1.25541,
+    "lengthM": 5.37,
+    "widthM": 9.15,
+    "eavesM": 5.65
+   }
+  },
+  {
+   "pand": "0363100012141116",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     11.161,
+     -2.76,
+     44.854
+    ],
+    "positionChunk": [
+     11.161,
+     0,
+     44.854
+    ],
+    "yawRad": -1.25541,
+    "lengthM": 5.37,
+    "widthM": 9.14,
+    "eavesM": 5.62
+   }
+  },
+  {
+   "pand": "0363100012147521",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     12.837,
+     -2.77,
+     49.952
+    ],
+    "positionChunk": [
+     12.837,
+     0,
+     49.952
+    ],
+    "yawRad": -1.25518,
+    "lengthM": 5.37,
+    "widthM": 9.13,
+    "eavesM": 5.64
+   }
+  },
+  {
+   "pand": "0363100012143329",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     14.56,
+     -2.79,
+     55.176
+    ],
+    "positionChunk": [
+     14.56,
+     0,
+     55.176
+    ],
+    "yawRad": -1.25403,
+    "lengthM": 5.65,
+    "widthM": 9.13,
+    "eavesM": 5.62
+   }
+  },
+  {
+   "pand": "0363100012064745",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "red",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -12.123,
+     -2.782,
+     63.934
+    ],
+    "positionChunk": [
+     -12.123,
+     0,
+     63.934
+    ],
+    "yawRad": 1.88709,
+    "lengthM": 5.7,
+    "widthM": 9.18,
+    "eavesM": 5.62
+   }
+  },
+  {
+   "pand": "0363100012089722",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "navy",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -14.051,
+     -2.779,
+     -102.027
+    ],
+    "positionChunk": [
+     -14.051,
+     0,
+     -102.027
+    ],
+    "yawRad": -2.82185,
+    "lengthM": 5.39,
+    "widthM": 9.1,
+    "eavesM": 5.69
+   }
+  },
+  {
+   "pand": "0363100012130298",
+   "type": "nw-rowhouse-ribbon-fascia",
+   "variant": "navy",
+   "groundMode": "solid",
+   "transform": {
+    "positionEastNapSouth": [
+     -8.805,
+     -2.94,
+     -103.746
+    ],
+    "positionChunk": [
+     -8.805,
+     0,
+     -103.746
+    ],
+    "yawRad": -2.82185,
+    "lengthM": 5.65,
+    "widthM": 9.1,
+    "eavesM": 5.77
+   }
+  }
+ ]
+}

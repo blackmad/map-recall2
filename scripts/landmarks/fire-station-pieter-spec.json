@@ -1,0 +1,153 @@
+{
+  "id": "fire-station-pieter",
+  "name": "Kazerne Pieter",
+  "landmarkId": "n8334401440",
+  "modelUrl": "./models/fire-station-pieter.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012088589"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.84366381,
+      52.34880645
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 39,
+    "widthMetres": 18
+  },
+  "surveyed": {
+    "anchor": [
+      4.84366381,
+      52.34880645
+    ],
+    "northOffsetDegrees": 0,
+    "source": "CurrentBAG3DBAG native eastX southZ"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "materialOverrides": {
+    "brick": "#b8b39a",
+    "stone": "#bdbdae",
+    "slate": "#717e80",
+    "white": "#e3e2ca",
+    "glass": "#3d5155",
+    "dark": "#303c38",
+    "frame": "#707f83",
+    "copper": "#6b8b86",
+    "bronze": "#d9aa45",
+    "greyBrick": "#726c65",
+    "red": "#b64442"
+  },
+  "attribution": {
+    "title": "Kazerne Pieter",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-pieter/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original native BAG/3DBAG texture-free reconstruction guided by2025 municipal panoramas. Beige flat-roof composition, five red glazed apparatus doors, white east facade band, setback top room, real operator sign. South abutting Reddingsbrigade building excluded."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.843704925692914,
+          52.34880349505072
+        ],
+        [
+          4.843712248789477,
+          52.348803537666306
+        ],
+        [
+          4.84371156312699,
+          52.34884395257592
+        ],
+        [
+          4.843704239803662,
+          52.34884392793484
+        ],
+        [
+          4.843680773674746,
+          52.348843784223654
+        ],
+        [
+          4.843677807463303,
+          52.34902968288054
+        ],
+        [
+          4.843677758120544,
+          52.34903251380534
+        ],
+        [
+          4.843645618580437,
+          52.34903232126882
+        ],
+        [
+          4.843644347836292,
+          52.34911211795067
+        ],
+        [
+          4.843521571408839,
+          52.34911140123898
+        ],
+        [
+          4.843499734160339,
+          52.34911126497473
+        ],
+        [
+          4.843500406537591,
+          52.34903121388693
+        ],
+        [
+          4.843468120351073,
+          52.34903101164075
+        ],
+        [
+          4.843471298230314,
+          52.348842282807205
+        ],
+        [
+          4.843450312309507,
+          52.34884215044442
+        ],
+        [
+          4.8434513130313555,
+          52.3487940074898
+        ],
+        [
+          4.843451917367347,
+          52.34876504264225
+        ],
+        [
+          4.843554351912638,
+          52.34876569295754
+        ],
+        [
+          4.843554245506619,
+          52.34877198391671
+        ],
+        [
+          4.843629090201827,
+          52.34877246249592
+        ],
+        [
+          4.843629196597238,
+          52.34876617153667
+        ],
+        [
+          4.843682028315174,
+          52.34876649505481
+        ],
+        [
+          4.843681430343899,
+          52.348803342217636
+        ],
+        [
+          4.843704925692914,
+          52.34880349505072
+        ]
+      ]
+    ]
+  }
+}

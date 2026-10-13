@@ -1,0 +1,191 @@
+{
+ "street": "Marnixstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T07:30:19.757Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169803",
+   "addresses": [],
+   "groundUnits": [
+    {
+     "address": "Tweede Marnixplantsoen 1-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000552739"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1328359948,
+     "lngLat": [
+      4.8766421,
+      52.374901
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1-H",
+      "addr:postcode": "1015ZP",
+      "addr:street": "Tweede Marnixplantsoen",
+      "amenity": "pub",
+      "name": "Café 't Mannetje",
+      "opening_hours": "Mo,Tu,Th-Sa 16:00-24:00",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.cafebiljartmannetje.com/"
+     },
+     "fetchedAt": "2026-10-10T07:30:19.757Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169809",
+   "addresses": [
+    "Marnixstraat 142"
+   ],
+   "groundUnits": [
+    {
+     "address": "Marnixstraat 142-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000966069"
+    },
+    {
+     "address": "Marnixstraat 142-2A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000961361"
+    },
+    {
+     "address": "Marnixstraat 142-2V",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000975134"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11220468687,
+     "lngLat": [
+      4.876721,
+      52.3749657
+     ],
+     "tags": {
+      "female": "yes",
+      "male": "yes",
+      "name": "ID4You",
+      "opening_hours": "Mo-Sa 09:00-19:00",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-10T07:30:19.757Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169810",
+   "addresses": [
+    "Marnixstraat 140"
+   ],
+   "groundUnits": [
+    {
+     "address": "Marnixstraat 140-H",
+     "use": "winkelfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000737245"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11220470749,
+     "lngLat": [
+      4.8767479,
+      52.3750197
+     ],
+     "tags": {
+      "name": "Ruparo",
+      "shop": "copyshop"
+     },
+     "fetchedAt": "2026-10-10T07:30:19.757Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168447",
+   "addresses": [
+    "Marnixstraat 138K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Egelantiersstraat 3",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000992495"
+    },
+    {
+     "address": "Marnixkade 109F",
+     "use": "kantoorfunctie",
+     "areaM2": 3067,
+     "bagId": "0363010001009702"
+    },
+    {
+     "address": "Marnixstraat 138K",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001009703"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2743653913,
+     "lngLat": [
+      4.8765982,
+      52.3753587
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "109F",
+      "addr:postcode": "1015ZL",
+      "addr:street": "Marnixkade",
+      "amenity": "social_facility",
+      "name": "HVO Querido - Team West",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-10T07:30:19.757Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11220479744,
+     "lngLat": [
+      4.8765515,
+      52.3752559
+     ],
+     "tags": {
+      "name": "Motivaction",
+      "office": "company"
+     },
+     "fetchedAt": "2026-10-10T07:30:19.757Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

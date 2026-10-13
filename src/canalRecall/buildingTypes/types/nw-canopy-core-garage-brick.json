@@ -1,0 +1,423 @@
+{
+  "id": "nw-canopy-core-garage-brick",
+  "label": "Nieuw-West cluster 2 design B (Van Suchtelen van de Haarestraat, Martini van Geffenstraat): five-storey brick portiekflat 17 x 10.6 m, blue entrance door in a tall concrete frame at the centre of a stair strip with small windows, a stack of bar balconies each side of the strip, window pairs at the ends, garage roller doors and a side door at the ground storey",
+  "source": {
+    "clusterRank": 2,
+    "panden": 12,
+    "bouwjaar": [
+      1953,
+      1962
+    ],
+    "lengthM": 17.0,
+    "widthM": 10.6,
+    "bouwlagen": 5,
+    "roof": "pitched",
+    "dwellingsMedian": 8
+  },
+  "storeys": 5,
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.35,
+    "vergeOverhangM": 0.1,
+    "thicknessM": 0.12,
+    "pitchDeg": 12
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "brick-canopy",
+  "variants": {
+    "brick-canopy": {
+      "label": "Brick (sunlit photo warm-pixel median #806859), white frames, blue doors, white roller doors",
+      "evidence": "crops 0363100012098314 #79695e (60 % cluster), 2101643 #897566",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#806859"
+        },
+        "frame": "#f1efe8",
+        "glass": "#44525f",
+        "door": "#25408a",
+        "accent": "#a9a699",
+        "rail": "#c9c6bb",
+        "dark": "#55575a",
+        "column": "#e4dfd0",
+        "joint": "#4b3f36",
+        "roof": {
+          "slot": "bitumen",
+          "tint": "#5c5e60"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "crops/0363100012098314.jpg",
+          "pand": "0363100012098314",
+          "address": "Van Suchtelen van de Haarestraat (frontal)",
+          "note": "window pair, balcony column, centre strip with a small window per floor, balcony column, window pair; concrete-framed blue entrance door in the centre, blue side door left, two white roller garage doors right"
+        },
+        {
+          "photo": "crops/0363100012101643.jpg",
+          "pand": "0363100012101643",
+          "address": "Van Suchtelen van de Haarestraat (frontal)",
+          "note": "same upper facade; ground mirrored: garage left, entrance, side door right"
+        },
+        {
+          "photo": "crops/0363100012066281.jpg",
+          "pand": "0363100012066281",
+          "address": "Martini van Geffenstraat (frontal)",
+          "note": "same upper facade, no garages: side door and slit windows at ground"
+        },
+        {
+          "photo": "crops/0363100012065585.jpg",
+          "pand": "0363100012065585",
+          "address": "Van Suchtelen van de Haarestraat (frontal)",
+          "note": "same as 2098314 with one drainpipe crossing the left bay"
+        }
+      ],
+      "counted": {
+        "bays": 7,
+        "openingsPerUpperStorey": 5,
+        "groundDoors": 4,
+        "balconiesPerUpperStorey": 2
+      },
+      "bays": [
+        {
+          "id": "W1",
+          "w": 2.3,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.5,
+              "h": 1.25,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 0.9,
+              "h": 2.1,
+              "steps": 0
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "count": 2,
+              "sill": 1.7
+            }
+          ]
+        },
+        {
+          "id": "W2",
+          "w": 2.3,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.5,
+              "h": 1.25,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "count": 3,
+              "sill": 1.7
+            }
+          ]
+        },
+        {
+          "id": "BL",
+          "w": 2.0,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 1.6,
+              "depth": 1.2,
+              "railing": "bars"
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 3.2,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.6,
+              "h": 0.8,
+              "sill": 1.0,
+              "lights": 1
+            },
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 1.3,
+              "h": 2.3,
+              "steps": 1
+            }
+          ]
+        },
+        {
+          "id": "BR",
+          "w": 2.0,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 1.6,
+              "depth": 1.2,
+              "railing": "bars"
+            }
+          ]
+        },
+        {
+          "id": "W3",
+          "w": 2.3,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.5,
+              "h": 1.25,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 2.1,
+              "h": 2.1
+            }
+          ]
+        },
+        {
+          "id": "W4",
+          "w": 2.3,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.5,
+              "h": 1.25,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "w": 2.1,
+              "h": 2.1
+            }
+          ]
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012098314.jpg",
+          "pand": "0363100012098314",
+          "address": "Van Suchtelen van de Haarestraat",
+          "note": "back copied from the front windows, balconies and stair strip without the ground doors; NOT verified: no photo of the back of this design."
+        }
+      ],
+      "counted": {
+        "bays": 7,
+        "openingsPerUpperStorey": 5,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 2
+      },
+      "bays": [
+        {
+          "id": "W1",
+          "w": 2.3,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.5,
+              "h": 1.25,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "count": 2,
+              "sill": 1.7
+            }
+          ]
+        },
+        {
+          "id": "W2",
+          "w": 2.3,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.5,
+              "h": 1.25,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "vents",
+              "levels": "ground",
+              "count": 3,
+              "sill": 1.7
+            }
+          ]
+        },
+        {
+          "id": "BL",
+          "w": 2.0,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 1.6,
+              "depth": 1.2,
+              "railing": "bars"
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 3.2,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 0.6,
+              "h": 0.8,
+              "sill": 1.0,
+              "lights": 1
+            }
+          ]
+        },
+        {
+          "id": "BR",
+          "w": 2.0,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 1.6,
+              "depth": 1.2,
+              "railing": "bars"
+            }
+          ]
+        },
+        {
+          "id": "W3",
+          "w": 2.3,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.5,
+              "h": 1.25,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "W4",
+          "w": 2.3,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 1.5,
+              "h": 1.25,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012098314.jpg",
+          "pand": "0363100012098314",
+          "address": "Van Suchtelen van de Haarestraat (oblique)",
+          "note": "gable / party-wall end modelled blank. NOT verified for end units: no straight-on photo of an end wall in the survey."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "end",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "crops/0363100012101643.jpg",
+          "pand": "0363100012101643",
+          "address": "Van Suchtelen van de Haarestraat (oblique)",
+          "note": "gable / party-wall end modelled blank. NOT verified for end units: no straight-on photo of an end wall in the survey."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "end",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "The ground storey differs per pand (garages left or right, no garages at all on Martini van Geffenstraat); drawn as the 2098314 layout (side door left, two garages right). Door and garage positions are the least reliable part of this spec.",
+    "Photos: Gemeente Amsterdam panoramas (CC BY 4.0), crops made by scripts/building-types/camera-sheets.ts --survey (cached in .cache/building-types/crops).",
+    "Balcony depth 1.2 m (was drawn 0.75 m to pass the geometry audit, which now accepts balcony assemblies up to 2.0 m): in 0363100012098314 and 2101643 the slab projects about 0.6 of its 1.9 m width, white bar rail with returns. Estimated from the frontal photos, not measured on site."
+  ]
+}

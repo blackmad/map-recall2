@@ -1,0 +1,51 @@
+{
+  "id": "petrus-en-paulus-kerk",
+  "name": "Sint-Petrus-en-Pauluskerk",
+  "landmarkId": "extract_landmarks_1828911806",
+  "modelUrl": "./models/petrus-en-paulus-kerk.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012097854"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.884583111087057,
+      52.35409934503864
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 24,
+    "widthMetres": 36
+  },
+  "surveyed": {
+    "anchor": [
+      4.884583111087057,
+      52.35409934503864
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012097854 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#93736b",
+    "greyBrick": "#725a54",
+    "stone": "#bdb3a2",
+    "sandstone": "#9a9386",
+    "slate": "#b65a38",
+    "ochre": "#8a4636",
+    "red": "#a3402a",
+    "glass": "#3e4b52",
+    "dark": "#2c2826",
+    "white": "#e4dfd2",
+    "frame": "#48413c",
+    "bronze": "#4c4e52"
+  },
+  "attribution": {
+    "title": "Sint-Petrus-en-Pauluskerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Petrus-en-Pauluskerk_%28Amsterdam%29",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry authored on the BAG/3DBAG footprint and heights; reference photographs guided architectural detail, no pixels or meshes imported."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "modelId": "fire-station-zebra",
+  "researchedOn": "2026-10-09",
+  "status": "draft; root acceptance pending",
+  "sourceArchivePath": "models/fire-station-zebra/",
+  "sourceEvidence": [
+    "Current official operator address IJdoornlaan60 and identity",
+    "Official2024 Brandweer150-year PDF history",
+    "Current municipal BAG polygon/1973year/VBO identity",
+    "3DBAG AHN5 2023 surveyed roofs/terrain",
+    "2022JanKorte two frontage photos and olderDennisKempers frontage",
+    "Municipal2024-09-10 southwestfront/2025-09-24 closefront/2024-08-29 northeastrear exact captures archived"
+  ],
+  "assertions": [
+    {
+      "part": "principal frontage",
+      "features": "Three red sectional vehicle doors, broad upper ribbon windows, gray metal parapet and left projecting office bay",
+      "authority": "2022 original photos cross-checked2024/2025 municipal captures",
+      "confidence": "high for composition; approximate metric opening sizes"
+    },
+    {
+      "part": "massing",
+      "features": "Main flat roof9.1m, separate hose tower17.4m and low3.5m neck",
+      "authority": "AHN5 2023 semantic roof surfaces rebased\u2212.292mNAP",
+      "confidence": "surveyed"
+    },
+    {
+      "part": "right frontage strip",
+      "features": "Low extension under clerestory/parapet; upper eastern body setback3.3m behind front",
+      "authority": "2022 front photographs/current2025 closefront",
+      "confidence": "bounded reconstruction6.2mheight/3.3mdepth; AHN roof fitter merged with upper plane"
+    }
+  ],
+  "accessGaps": [
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=IJdoornlaan%2060%20brandweerkazerne",
+      "state": "HTTP200 JavaScript viewer shell, no catalogue photograph/drawing inspected"
+    },
+    "No monument registration established; modern1973station",
+    "No inspected permit drawings; geometric facade dimensions approximate",
+    "Trees hide rear ground-tier wall apertures; not invented from blurred fragments"
+  ],
+  "deployedAwning": "2022 red retractable awning present, current2025 closefront shows retracted/absent state; omitted",
+  "checks": {
+    "fractionalFirstHit": "74panes444samples0failures",
+    "decodedRoof": "21positivearea roof faces;0failed",
+    "bytes": 135620,
+    "triangles": 8718,
+    "textures": 0
+  },
+  "preservedFailures": [
+    "failed-compressed-roof.json: quantized0.001812m\u00b2downwardroofsliver culled small source top-plane numerical remnants<.004m\u00b2 before export",
+    "failed-firsthit.json: bay side masonry occlusion corrected by moving to exposed plane; vehicle narrow aperture framing reduced to25mm clear fraction probes"
+  ],
+  "visualReview": "Author CPU source comparison recognizes door count, office bay, wraparound upper glazing, tower placement and setback. Native city context/gallery/live/independent review/performance pendingroot."
+}

@@ -1,0 +1,431 @@
+{
+ "street": "Oudezijds Achterburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T07:29:18.653Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012177916",
+   "addresses": [
+    "Oudezijds Achterburgwal 41A",
+    "Oudezijds Achterburgwal 41B",
+    "Oudezijds Achterburgwal 41C",
+    "Oudezijds Achterburgwal 41D",
+    "Oudezijds Achterburgwal 41E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 41A",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001009070"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 41B",
+     "use": "kantoorfunctie",
+     "areaM2": 18,
+     "bagId": "0363010001009071"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 41C",
+     "use": "woonfunctie",
+     "areaM2": 20,
+     "bagId": "0363010001009072"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 41D",
+     "use": "woonfunctie",
+     "areaM2": 16,
+     "bagId": "0363010001009073"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 41E",
+     "use": "woonfunctie",
+     "areaM2": 18,
+     "bagId": "0363010001009074"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5531914368,
+     "lngLat": [
+      4.899421,
+      52.3736262
+     ],
+     "tags": {
+      "amenity": "brothel",
+      "check_date": "2024-07-29"
+     },
+     "fetchedAt": "2026-10-10T07:29:18.653Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177915",
+   "addresses": [
+    "Oudezijds Achterburgwal 43A",
+    "Oudezijds Achterburgwal 43B",
+    "Oudezijds Achterburgwal 43C",
+    "Oudezijds Achterburgwal 43D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 43A",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001009077"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 43B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010001009078"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 43C",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010001009079"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 43D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010001009080"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5531941310,
+     "lngLat": [
+      4.8993929,
+      52.3735891
+     ],
+     "tags": {
+      "amenity": "brothel",
+      "check_date": "2024-07-29"
+     },
+     "fetchedAt": "2026-10-10T07:29:18.653Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177924",
+   "addresses": [
+    "Oudezijds Achterburgwal 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 45-H",
+     "use": "industriefunctie",
+     "areaM2": 185,
+     "bagId": "0363010000953583"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5531937104,
+     "lngLat": [
+      4.8993411,
+      52.3735592
+     ],
+     "tags": {
+      "amenity": "social_facility",
+      "check_date": "2024-08-15",
+      "name": "Leger des Heils",
+      "operator": "Leger des Heils",
+      "operator:wikidata": "Q11688635",
+      "operator:wikipedia": "en:Leger des Heils"
+     },
+     "fetchedAt": "2026-10-10T07:29:18.653Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177922",
+   "addresses": [
+    "Oudezijds Achterburgwal 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 47",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 350,
+     "bagId": "0363010000758942"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1741487897,
+     "lngLat": [
+      4.8992952,
+      52.3735134
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "47",
+      "addr:postcode": "1012DB",
+      "addr:street": "Oudezijds Achterburgwal",
+      "email": "info@hotelroyaltaste.nl",
+      "name": "Hotel Royal Taste",
+      "phone": "+31 20 623 24 78",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "hotel",
+      "website": "https://www.hotelroyaltaste.nl/"
+     },
+     "fetchedAt": "2026-10-10T07:29:18.653Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177923",
+   "addresses": [
+    "Oudezijds Achterburgwal 49A",
+    "Oudezijds Achterburgwal 49B",
+    "Oudezijds Achterburgwal 49C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 49A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000758946"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 49B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000758947"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 49C",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001009118"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5531937102,
+     "lngLat": [
+      4.8992582,
+      52.3734805
+     ],
+     "tags": {
+      "amenity": "brothel"
+     },
+     "fetchedAt": "2026-10-10T07:29:18.653Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177920",
+   "addresses": [
+    "Oudezijds Achterburgwal 51A",
+    "Oudezijds Achterburgwal 51B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 51A",
+     "use": "winkelfunctie",
+     "areaM2": 387,
+     "bagId": "0363010001008443"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 51B",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010001008444"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5531937100,
+     "lngLat": [
+      4.8992076,
+      52.3734402
+     ],
+     "tags": {
+      "amenity": "brothel"
+     },
+     "fetchedAt": "2026-10-10T07:29:18.653Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177943",
+   "addresses": [
+    "Oudezijds Achterburgwal 53",
+    "Oudezijds Achterburgwal 53E",
+    "Oudezijds Achterburgwal 53D",
+    "Oudezijds Achterburgwal 53C",
+    "Oudezijds Achterburgwal 53B",
+    "Oudezijds Achterburgwal 53A",
+    "Oudezijds Achterburgwal 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 53",
+     "use": "winkelfunctie",
+     "areaM2": 270,
+     "bagId": "0363010000758957"
+    },
+    {
+     "address": "Monnikenstraat 1-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001011581"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 55-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001011583"
+    },
+    {
+     "address": "Monnikenstraat 7",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001166650"
+    },
+    {
+     "address": "Monnikenstraat 5A",
+     "use": "industriefunctie",
+     "areaM2": 270,
+     "bagId": "0363010001971096"
+    },
+    {
+     "address": "Monnikenstraat 5B",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001971097"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 53E",
+     "use": "kantoorfunctie",
+     "areaM2": 251,
+     "bagId": "0363010012592848"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 53D",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012592847"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 53C",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010012592846"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 53B",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010012592845"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 53A",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010012592844"
+    },
+    {
+     "address": "Monnikenstraat 3",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010001011582"
+    }
+   ],
+   "units": 17,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177946",
+   "addresses": [
+    "Oudezijds Achterburgwal 57",
+    "Oudezijds Achterburgwal 57B",
+    "Oudezijds Achterburgwal 57A",
+    "Oudezijds Achterburgwal 57C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 57",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000945564"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 57A",
+     "use": "winkelfunctie",
+     "areaM2": 129,
+     "bagId": "0363010012064191"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 57C",
+     "use": "woonfunctie",
+     "areaM2": 163,
+     "bagId": "0363010012087320"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5531937101,
+     "lngLat": [
+      4.898982,
+      52.3732533
+     ],
+     "tags": {
+      "amenity": "brothel"
+     },
+     "fetchedAt": "2026-10-10T07:29:18.653Z",
+     "match": "frontage",
+     "distanceM": 7.4
+    },
+    {
+     "type": "node",
+     "id": 5531937103,
+     "lngLat": [
+      4.8990671,
+      52.3733235
+     ],
+     "tags": {
+      "shop": "convenience",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-10T07:29:18.653Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

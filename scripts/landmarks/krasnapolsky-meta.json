@@ -1,0 +1,21 @@
+{
+  "name": "Grand Hotel Krasnapolsky",
+  "landmarkId": "n251150450",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Grand_Hotel_Krasnapolsky",
+  "suppressOsmIds": [
+    "w266940974",
+    "NL.IMBAG.Pand.0363100012165293"
+  ],
+  "pandId": "0363100012165293",
+  "materialOverrides": {
+    "stone": "#c4b79c",
+    "brick": "#7a4a3b",
+    "white": "#e4dfd2",
+    "slate": "#4b4f55",
+    "glass": "#4e5f6b",
+    "frame": "#d9d6cc",
+    "dark": "#2a2d30"
+  },
+  "surveySource": "Current BAG 0363100012165293 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the Dam front measured by eye from municipal panoramas, no pixels or meshes imported."
+}

@@ -1,0 +1,5 @@
+{"id": "ij-toren", "facades": [
+  {"name": "tower north (IJ quay)", "bearing": 17.5, "photo": "artifacts/landmark-lanes/ij-toren/ref-north.jpg", "span": [-42, 16], "depthBand": 90},
+  {"name": "tower south (Piet Heinkade)", "bearing": 197.5, "photo": "artifacts/landmark-lanes/ij-toren/ref-south.jpg", "span": [-16, 42], "depthBand": 90},
+  {"name": "tower east end", "bearing": 107.5, "photo": "artifacts/landmark-lanes/ij-toren/ref-east.jpg", "span": [11, 29], "depthBand": 60}
+]}

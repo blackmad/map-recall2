@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "selectionStartedAt": "2026-10-07T17:52:35.421569+00:00",
+  "status": "seeded-source-candidate-not-acceptance",
+  "entries": [
+    {
+      "address": "Bloemgracht 88",
+      "addresses": [
+        "Bloemgracht 88"
+      ],
+      "cachedOwnerId": "0363100012169913",
+      "selectedFacade": "0363100012169913:e:neighbor-perspective",
+      "orderedFrontageRD": [
+        {
+          "x": 120503.0148125,
+          "y": 487557.3965
+        },
+        {
+          "x": 120505.59981249999,
+          "y": 487558.3515
+        }
+      ],
+      "images": [
+        {
+          "tier": "context",
+          "path": "/private/tmp/canalhouse-bloemgracht-88-batch-20261007/88-context-neighbor-perspective.jpg",
+          "sha256": "ec2518dd3a28d9d2acf7711388929b9d57337431fa8e04b7fefeb351c1d8bee3",
+          "captureDate": "2023-02-27T11:37:08.054920Z",
+          "panoramaId": "TMX7316010203-002985_pano_0016_000133",
+          "nativeDimensions": [
+            4000,
+            2000
+          ],
+          "manifestPath": "/private/tmp/canalhouse-bloemgracht-88-batch-20261007/88-neighbor-camera-manifest.json",
+          "originalPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/15cc14e544469be45acfb4adaee0017f74456d8c0d1da5a35037e2b8b7a5379d/evidence/panoramas/TMX7316010203-002985_pano_0016_000133.jpg",
+          "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2023/02/27/TMX7316010203-002985/pano_0016_000133/equirectangular/panorama_4000.jpg",
+          "metricEligible": false,
+          "derivationKey": "ee2ff66607dd9bbaebce740d4c7a2a1cb96607501cceb54d8b8d7e3a65b08309"
+        },
+        {
+          "tier": "full",
+          "path": "/private/tmp/canalhouse-bloemgracht-88-batch-20261007/88-full-neighbor-perspective.jpg",
+          "sha256": "da6957ad34466a055fe5a39df0df79f030fa5a0fe1fd001678b5a7246ff47bcc",
+          "captureDate": "2023-02-27T11:37:08.054920Z",
+          "panoramaId": "TMX7316010203-002985_pano_0016_000133",
+          "nativeDimensions": [
+            4000,
+            2000
+          ],
+          "manifestPath": "/private/tmp/canalhouse-bloemgracht-88-batch-20261007/88-neighbor-camera-manifest.json",
+          "originalPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/15cc14e544469be45acfb4adaee0017f74456d8c0d1da5a35037e2b8b7a5379d/evidence/panoramas/TMX7316010203-002985_pano_0016_000133.jpg",
+          "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2023/02/27/TMX7316010203-002985/pano_0016_000133/equirectangular/panorama_4000.jpg",
+          "metricEligible": false,
+          "derivationKey": "ee2ff66607dd9bbaebce740d4c7a2a1cb96607501cceb54d8b8d7e3a65b08309"
+        },
+        {
+          "tier": "ground",
+          "path": "/private/tmp/canalhouse-bloemgracht-88-batch-20261007/88-ground-neighbor-perspective.jpg",
+          "sha256": "357e7b4b554b05c12b1bd1ffa3b4f2e2bb1896320fbdd6cff503bafadb24bc18",
+          "captureDate": "2025-07-03T09:12:20Z",
+          "panoramaId": "recording_2025-07-03_08-35-58_00680",
+          "nativeDimensions": [
+            4000,
+            2000
+          ],
+          "manifestPath": "/private/tmp/canalhouse-bloemgracht-88-batch-20261007/88-neighbor-camera-manifest.json",
+          "originalPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/15cc14e544469be45acfb4adaee0017f74456d8c0d1da5a35037e2b8b7a5379d/evidence/panoramas/recording_2025-07-03_08-35-58_00680.jpg",
+          "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-03_08-35-58_00680/equirectangular/panorama_4000.jpg",
+          "metricEligible": false,
+          "derivationKey": "ee2ff66607dd9bbaebce740d4c7a2a1cb96607501cceb54d8b8d7e3a65b08309"
+        },
+        {
+          "tier": "roof",
+          "path": "/private/tmp/canalhouse-bloemgracht-88-batch-20261007/88-roof-neighbor-perspective.jpg",
+          "sha256": "8b5f70ef5f2ce4fe512664080be50ae7d3b570b4a5a8d3ac5965e9c035285c75",
+          "captureDate": "2023-02-27T11:37:08.054920Z",
+          "panoramaId": "TMX7316010203-002985_pano_0016_000133",
+          "nativeDimensions": [
+            4000,
+            2000
+          ],
+          "manifestPath": "/private/tmp/canalhouse-bloemgracht-88-batch-20261007/88-neighbor-camera-manifest.json",
+          "originalPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/15cc14e544469be45acfb4adaee0017f74456d8c0d1da5a35037e2b8b7a5379d/evidence/panoramas/TMX7316010203-002985_pano_0016_000133.jpg",
+          "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2023/02/27/TMX7316010203-002985/pano_0016_000133/equirectangular/panorama_4000.jpg",
+          "metricEligible": false,
+          "derivationKey": "ee2ff66607dd9bbaebce740d4c7a2a1cb96607501cceb54d8b8d7e3a65b08309"
+        }
+      ],
+      "nativeRawSource": {
+        "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/raw/3dbag-36.json",
+        "sha256": "604b19cc713b1ac3e7d5d7e90b344b35a09e51cd4522ea81f6e5f8b2412b32f4",
+        "featureIds": [
+          "NL.IMBAG.Pand.0363100012169913"
+        ],
+        "state": "Cached exact owner feature; no new request"
+      },
+      "sourceSelection": "Official reciprocal parent with explicit source-selected native endpoints; adjacency not claimed",
+      "seedProvenance": {
+        "anchorPath": "/Users/blackmad/Code/map-recall2/docs/references/canalhouse-recipes/bloemgracht-102-trial.json",
+        "anchorSha256": "30b0182dd31b286acaab03749ab07c823dd9811ec0b51eaddcac63b433abcd1f",
+        "anchorOwner": "0363100012168158",
+        "side": "right",
+        "explicitPandId": null,
+        "officialAddressParentUuids": [
+          "68a10ddc-e34b-5ff6-bc71-df2b9b9fb538"
+        ],
+        "pandPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/raw/bag-0.json",
+        "pandSha256": "9d973ec882741f6f3a5ca1366d414b28312d2af1f703b8a3a1062d833544eb32",
+        "vboPaths": [
+          ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/raw/addresses-1.json"
+        ],
+        "joinDistanceM": 29.463657276343692,
+        "groundPolygonIndex": 0,
+        "adjacencyLimitM": 0.1,
+        "continuationLineToleranceM": 0.08,
+        "selectionMethod": "explicit-native-endpoints"
+      },
+      "criticalTraits": [
+        "Three upper axes over full88physicalowner: oneleftpart, tworightpart",
+        "Four upper tiers including short top openings",
+        "Dark red-brown brick,pale flatlijst cornice/windowtrim,dark sash divisions",
+        "Pale ground portal with asymmetric doors/transoms; dimensions approximate"
+      ],
+      "rootInspection": {
+        "date": "2026-10-07",
+        "inspector": "batch88 author; root independent review pending",
+        "images": [
+          "full",
+          "roof",
+          "context",
+          "88-source-detail.jpg"
+        ],
+        "limits": "Very oblique close source; ground2025 selection faces opposite row and excluded. Narrow88 is immediately left of broad86; source crop shows neighboring90 multi-axis facade; whole ownership/crown registration requires root comparison.",
+        "correction": "Initial supplied frontage selects right roofhalf wall15only; native wall18 is second source-facing axis under sameowner. First narrow one-axis admission rejected; compound uses wall18 and15 with nativejog17 retained.",
+        "countCorrection": "Root opposite133source /tmp/b90-opposite-inspection.jpg establishes three axes and one hoist; prior two-axis interpretation rejected."
+      }
+    }
+  ],
+  "draftingStartedAt": "2026-10-07T17:54:15.126468+00:00"
+}

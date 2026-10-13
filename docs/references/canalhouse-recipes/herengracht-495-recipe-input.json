@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 1,
+  "id": "herengracht-495",
+  "admissionFile": "docs/references/canalhouse-recipes/herengracht-495-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/herengracht-495-survey.json",
+  "baySets": {
+    "principal": [
+      {
+        "id": "axis0",
+        "left": 0.09,
+        "width": 0.19
+      },
+      {
+        "id": "axis1",
+        "left": 0.405,
+        "width": 0.19
+      },
+      {
+        "id": "axis2",
+        "left": 0.72,
+        "width": 0.19
+      }
+    ]
+  },
+  "windowGroups": [
+    {
+      "id": "upper-tiers",
+      "baySet": "principal",
+      "tiers": [
+        {
+          "id": "middle",
+          "bottom": 0.51,
+          "height": 0.2
+        },
+        {
+          "id": "top",
+          "bottom": 0.77,
+          "height": 0.12
+        }
+      ],
+      "frame": {
+        "use": "sash"
+      }
+    }
+  ],
+  "openings": [
+    {
+      "id": "raised-axis0",
+      "kind": "window",
+      "left": 0.09,
+      "width": 0.19,
+      "bottom": 0.18,
+      "height": 0.29,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "raised-axis1",
+      "kind": "door",
+      "left": 0.405,
+      "width": 0.19,
+      "bottom": 0.18,
+      "height": 0.29,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "raised-axis2",
+      "kind": "window",
+      "left": 0.72,
+      "width": 0.19,
+      "bottom": 0.18,
+      "height": 0.29,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "cellar-axis0",
+      "kind": "window",
+      "left": 0.09,
+      "width": 0.19,
+      "bottom": 0.005,
+      "height": 0.13,
+      "frame": {
+        "use": "cellar"
+      }
+    },
+    {
+      "id": "cellar-axis2",
+      "kind": "window",
+      "left": 0.72,
+      "width": 0.19,
+      "bottom": 0.005,
+      "height": 0.13,
+      "frame": {
+        "use": "cellar"
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#b1ad9b",
+    "trim": "#dedfd0",
+    "glass": "#384749",
+    "door": "#29322f",
+    "stone": "#a0a295",
+    "roof": "#484943"
+  },
+  "crown": {
+    "depthM": 0.1,
+    "trimWidthM": 0.055
+  },
+  "cornice": {
+    "bottom": 0.94,
+    "height": 0.06,
+    "depthM": 0.3,
+    "brackets": 0,
+    "assembly": {
+      "template": "lip-frieze-cap"
+    }
+  },
+  "bands": [
+    {
+      "id": "basecap",
+      "left": 0,
+      "width": 1,
+      "bottom": 0.155,
+      "height": 0.02,
+      "depthM": 0.12,
+      "surface": "stone"
+    },
+    {
+      "id": "central-entry-left",
+      "left": 0.38,
+      "width": 0.025,
+      "bottom": 0.18,
+      "height": 0.53,
+      "depthM": 0.1,
+      "surface": "trim"
+    },
+    {
+      "id": "central-entry-right",
+      "left": 0.6,
+      "width": 0.025,
+      "bottom": 0.18,
+      "height": 0.53,
+      "depthM": 0.1,
+      "surface": "trim"
+    },
+    {
+      "id": "entry-head",
+      "left": 0.38,
+      "width": 0.245,
+      "bottom": 0.47,
+      "height": 0.02,
+      "depthM": 0.14,
+      "surface": "trim"
+    }
+  ],
+  "ornaments": [],
+  "simplifications": [
+    "Compactroughtrial:sharedframes/source-selected baytiers, coarsecontourdescriptor; zero custombuilders.",
+    "Currentphotos verifyTHREE abovebasementrows for495497499; nativefootprint/roofunchanged.",
+    "Finecarving/treads/awnings omitted; privatepush/sourcearchive androotrow/game/performanceacceptancepending.",
+    "495 source-selecteddeepmarblebalcony usesrootsharedprojectionassembly; 3.81mwidth/.8mdepth are roughphoto-deriveddimensions; no corbelcarving. Reviewpending."
+  ],
+  "groundFront": {
+    "id": "stonebase",
+    "left": 0,
+    "bottom": 0,
+    "width": 1,
+    "height": 0.17,
+    "depthM": 0.085,
+    "surface": "stone",
+    "openingIds": [
+      "cellar-axis0",
+      "cellar-axis2"
+    ]
+  },
+  "landing": {
+    "left": 0.38,
+    "width": 0.245,
+    "top": 0.18,
+    "depthM": 1.15,
+    "thicknessM": 0.07,
+    "supportToGround": true
+  },
+  "approaches": [
+    {
+      "id": "coarse-left-flight",
+      "input": {
+        "id": "herengracht-495-left-source",
+        "topProfile": {
+          "from": [
+            0.16,
+            -1
+          ],
+          "to": [
+            0.38,
+            0
+          ],
+          "segments": 30,
+          "roundDigits": 6
+        },
+        "railProfile": [],
+        "posts": [],
+        "projectionDepthM": 1.15,
+        "exactCurrentTreadCount": null
+      },
+      "railWidthM": 0.035,
+      "postWidthM": 0.045,
+      "occludedOpeningIds": [
+        "cellar-axis0"
+      ]
+    },
+    {
+      "id": "coarse-right-flight",
+      "input": {
+        "id": "herengracht-495-right-source",
+        "topProfile": {
+          "from": [
+            0.625,
+            0
+          ],
+          "to": [
+            0.845,
+            -1
+          ],
+          "segments": 30,
+          "roundDigits": 6
+        },
+        "railProfile": [],
+        "posts": [],
+        "projectionDepthM": 1.15,
+        "exactCurrentTreadCount": null
+      },
+      "railWidthM": 0.035,
+      "postWidthM": 0.045,
+      "occludedOpeningIds": [
+        "cellar-axis2"
+      ]
+    }
+  ],
+  "frameSets": {
+    "sash": {
+      "template": "broad-dark-paired-sash"
+    },
+    "cellar": {
+      "template": "dark-cellar-frame",
+      "overrides": {
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.65
+        ]
+      }
+    }
+  },
+  "detailGroups": [
+    {
+      "id": "cornerlisenes",
+      "target": "bands",
+      "columns": [
+        {
+          "id": "left",
+          "left": 0,
+          "width": 0.04
+        },
+        {
+          "id": "right",
+          "left": 0.96,
+          "width": 0.04
+        }
+      ],
+      "rows": [
+        {
+          "id": "body",
+          "bottom": 0.17,
+          "height": 0.76
+        }
+      ],
+      "depthM": 0.07,
+      "surface": "trim"
+    }
+  ],
+  "balconies": [
+    {
+      "id": "central-marble-balcony",
+      "openingId": "upper-tiers/middle/axis1",
+      "heightM": 0.65,
+      "depthM": 0.8,
+      "barWidthM": 0.03,
+      "posts": 4,
+      "projection": {
+        "widthM": 3.81,
+        "slabThicknessM": 0.16,
+        "pierWidthM": 0.2,
+        "supportHeightM": 0.5
+      }
+    }
+  ]
+}

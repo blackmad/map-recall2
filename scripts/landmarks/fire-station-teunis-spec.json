@@ -1,0 +1,50 @@
+{
+  "id": "fire-station-teunis",
+  "name": "Kazerne Teunis",
+  "landmarkId": "n3974782727",
+  "modelUrl": "./models/fire-station-teunis.glb",
+  "suppressOsmIds": [
+    "w394471798",
+    "NL.IMBAG.Pand.0363100012241010"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.863303,
+      52.384564
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 38,
+    "widthMetres": 37
+  },
+  "surveyed": {
+    "anchor": [
+      4.863303,
+      52.384564
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Exact BAG native RD polygon, facade-axis rotation into native east/south; surveyed AHN5 roof family and current 2025 municipal panoramas."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "materialOverrides": {
+    "brick": "#c6c5b4",
+    "stone": "#bbbdb1",
+    "slate": "#606867",
+    "white": "#d2d4c9",
+    "glass": "#5a7881",
+    "dark": "#222e2e",
+    "frame": "#3c494a",
+    "copper": "#616967",
+    "bronze": "#b7a45d",
+    "greyBrick": "#b92b28"
+  },
+  "attribution": {
+    "title": "Kazerne Teunis",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-teunis/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native surveyed footprint; recessed three-bay hall, red soffits and open upper terrace. No third-party mesh or pixels."
+  }
+}

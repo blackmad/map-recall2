@@ -1,0 +1,453 @@
+{
+  "id": "nw-portiek-wide-core-slotermeerlaan",
+  "label": "Nieuw-West type 1 sub-design B (Slotermeerlaan / Nieuwenhuysenstraat / Van Hanxleden Houwertstraat): five-storey brick portiekflat, 14.1 x 10.4 m, same wide-core frame as sub-design A but with a row of low windows at ground, dark bar balconies and teal storage doors",
+  "source": {
+    "clusterRank": 1,
+    "panden": 32,
+    "bouwjaar": [
+      1954,
+      1955
+    ],
+    "lengthM": 14.1,
+    "widthM": 10.4,
+    "bouwlagen": 5,
+    "roof": "pitched",
+    "dwellingsMedian": 8
+  },
+  "storeys": 5,
+  "roof": {
+    "form": "gable",
+    "ridge": "long",
+    "eavesOverhangM": 0.35,
+    "vergeOverhangM": 0.12,
+    "thicknessM": 0.12,
+    "pitchDeg": 30
+  },
+  "ground": {
+    "mode": "solid"
+  },
+  "defaultVariant": "brick-red",
+  "variants": {
+    "brick-red": {
+      "label": "Dark red-brown brick (sunlit photo median #866a58), white-framed windows, dark bar balconies, teal storage doors",
+      "evidence": "sunlit crops 0363100012075375 #866b59, 0068610 #866a57, 0075960 #866856 (Slotermeerlaan, Nieuwenhuysenstraat)",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#866a58"
+        },
+        "frame": "#f2efe6",
+        "glass": "#4b5a6b",
+        "door": "#2d6a66",
+        "accent": "#c4c0b6",
+        "rail": "#2e3033",
+        "dark": "#55575a",
+        "column": "#e4dfd0",
+        "joint": "#5f4a3d",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4b36"
+        }
+      }
+    },
+    "brick-buff": {
+      "label": "Buff / yellow-grey brick (Van Hanxleden Houwertstraat, Nieuwenhuysenstraat), same layout",
+      "evidence": "sunlit crops 0363100012123229 #ac9674, 0083797 #ad926f, 0117311 #b39a79, 0139761 #ad9e87",
+      "palette": {
+        "wall": {
+          "slot": "brick",
+          "tint": "#ae9776"
+        },
+        "frame": "#f2efe6",
+        "glass": "#4b5a6b",
+        "door": "#2d6a66",
+        "accent": "#c4c0b6",
+        "rail": "#2e3033",
+        "dark": "#55575a",
+        "column": "#e4dfd0",
+        "joint": "#8b7a5f",
+        "roof": {
+          "slot": "roofTile",
+          "tint": "#9a4b36"
+        }
+      }
+    }
+  },
+  "facades": {
+    "front": {
+      "confidence": "measured",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012070656.jpg",
+          "pand": "0363100012070656",
+          "address": "Slotermeerlaan (L 14.37 m, eaves 14.73 m)",
+          "note": "front, straight on, ground+4. Between two party-wall piers: [B 3.8 m] balcony bay with a storage door at the pier edge and one low window | [S 5.5 m] core: red entrance door up two steps with two letterbox panels, a low window each side at ground, two small square windows per storey 1.8 m either side and a stair window on the axis at the floor line of storeys 2-4 | [B 3.8 m] second balcony bay, door at the right pier. Four rows of balconies (dark steel bars), glazed doors with side lights behind. The balcony column and window column outside each pier belong to the neighbouring pand."
+        },
+        {
+          "photo": "survey crop 0363100012123229.jpg",
+          "pand": "0363100012123229",
+          "address": "Van Hanxleden Houwertstraat (L 14.19 m, eaves 14.87 m)",
+          "note": "buff-brick member, Van Hanxleden Houwertstraat: same layout, entrance door up steps with railings, low windows both sides."
+        },
+        {
+          "photo": "survey crop 0363100012065454.jpg",
+          "pand": "0363100012065454",
+          "address": "Nieuwenhuysenstraat (L 13.94 m, eaves 14.78 m)",
+          "note": "close view of the core: low windows, entrance up a stepped approach, red door; confirms the core window columns and stair windows."
+        }
+      ],
+      "counted": {
+        "bays": 5,
+        "openingsPerUpperStorey": 4,
+        "groundDoors": 3,
+        "balconiesPerUpperStorey": 2
+      },
+      "bays": [
+        {
+          "id": "P0",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "Bl",
+          "w": 3.8,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 3.5,
+              "depth": 1.3,
+              "railing": "bars"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 3.0,
+              "h": 2.1,
+              "sill": 0.0,
+              "lights": 3,
+              "note": "glazed door + side lights behind the balcony"
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "u": -1.25,
+              "w": 1.1,
+              "h": 2.1,
+              "note": "storage door under the party-wall pier side of the bay"
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": 0.7,
+              "w": 1.0,
+              "h": 0.55,
+              "sill": 1.0,
+              "note": "low window"
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 5.5,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "door",
+              "levels": "ground",
+              "w": 1.0,
+              "h": 2.1,
+              "steps": 2
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": -1.1,
+              "w": 0.4,
+              "h": 1.2,
+              "sill": 0.9,
+              "colour": "frame",
+              "depth": 0.08,
+              "note": "letterbox/bell panels"
+            },
+            {
+              "kind": "panel",
+              "levels": "ground",
+              "u": 1.1,
+              "w": 0.4,
+              "h": 1.2,
+              "sill": 0.9,
+              "colour": "frame",
+              "depth": 0.08
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -2.1,
+              "w": 1.1,
+              "h": 0.55,
+              "sill": 1.0,
+              "note": "low window each side of the entrance"
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": 2.1,
+              "w": 1.1,
+              "h": 0.55,
+              "sill": 1.0
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.8,
+              "w": 0.95,
+              "h": 1.2,
+              "sill": 1.1
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 1.8,
+              "w": 0.95,
+              "h": 1.2,
+              "sill": 1.1
+            },
+            {
+              "kind": "window",
+              "levels": [
+                2,
+                3,
+                4
+              ],
+              "u": 0,
+              "w": 0.95,
+              "h": 1.0,
+              "sill": -0.5,
+              "note": "stair window centred on the landing at the floor line of storeys 2-4"
+            }
+          ]
+        },
+        {
+          "id": "Br",
+          "w": 3.8,
+          "role": "balcony",
+          "elements": [
+            {
+              "kind": "balcony",
+              "levels": "upper",
+              "w": 3.5,
+              "depth": 1.3,
+              "railing": "bars"
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "w": 3.0,
+              "h": 2.1,
+              "sill": 0.0,
+              "lights": 3,
+              "note": "glazed door + side lights behind the balcony"
+            },
+            {
+              "kind": "storageDoor",
+              "levels": "ground",
+              "u": 1.25,
+              "w": 1.1,
+              "h": 2.1,
+              "note": "storage door under the party-wall pier side of the bay"
+            },
+            {
+              "kind": "window",
+              "levels": "ground",
+              "u": -0.7,
+              "w": 1.0,
+              "h": 0.55,
+              "sill": 1.0,
+              "note": "low window"
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        }
+      ]
+    },
+    "back": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012069553.jpg",
+          "pand": "0363100012069553",
+          "address": "Nieuwenhuysenstraat (L 13.94 m, eaves 14.87 m)",
+          "note": "no straight-on garden-side photo found; the model repeats the front window rhythm without balconies. NOT verified."
+        }
+      ],
+      "counted": {
+        "bays": 5,
+        "openingsPerUpperStorey": 6,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "P0",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        },
+        {
+          "id": "Bl",
+          "w": 3.8,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -0.9,
+              "w": 1.2,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 0.9,
+              "w": 1.2,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "w": 5.5,
+          "role": "stair",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -1.8,
+              "w": 0.95,
+              "h": 1.2,
+              "sill": 1.1
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 1.8,
+              "w": 0.95,
+              "h": 1.2,
+              "sill": 1.1
+            },
+            {
+              "kind": "window",
+              "levels": [
+                2,
+                3,
+                4
+              ],
+              "u": 0,
+              "w": 0.95,
+              "h": 1.0,
+              "sill": -0.5
+            }
+          ]
+        },
+        {
+          "id": "Br",
+          "w": 3.8,
+          "role": "windows",
+          "elements": [
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": -0.9,
+              "w": 1.2,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            },
+            {
+              "kind": "window",
+              "levels": "upper",
+              "u": 0.9,
+              "w": 1.2,
+              "h": 1.3,
+              "sill": 0.9,
+              "lights": 2
+            }
+          ]
+        },
+        {
+          "id": "P1",
+          "w": 0.5,
+          "role": "corner",
+          "elements": []
+        }
+      ]
+    },
+    "left": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012069553.jpg",
+          "pand": "0363100012069553",
+          "address": "Nieuwenhuysenstraat (L 13.94 m, eaves 14.87 m)",
+          "note": "party wall / terrace end, modelled blank. NOT verified for end units."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "gable",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    },
+    "right": {
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "photo": "survey crop 0363100012069553.jpg",
+          "pand": "0363100012069553",
+          "address": "Nieuwenhuysenstraat (L 13.94 m, eaves 14.87 m)",
+          "note": "as left."
+        }
+      ],
+      "counted": {
+        "bays": 1,
+        "openingsPerUpperStorey": 0,
+        "groundDoors": 0,
+        "balconiesPerUpperStorey": 0
+      },
+      "bays": [
+        {
+          "id": "gable",
+          "w": 1,
+          "role": "windows",
+          "elements": []
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Same frame as sub-design A (nw-portiek-wide-core-beekenhoff): kept as a separate type because the ground storey (low windows, door at the pier edge, red entrance door) and the dark railings differ in the photos, and the 32 members cluster in Slotermeer (1954-55) while A clusters in Tuinstad / Osdorp.",
+    "Brick tint from sunlit photos; the Street View exposure is dark.",
+    "Balcony depth 1.3 m (was 0.8 m): oblique 0363100012123229 (same wide-core family) shows slabs projecting about 0.55 of their 2.4 m width; the frontal 0363100012070656 shows only the dark slab edges. Estimated."
+  ]
+}

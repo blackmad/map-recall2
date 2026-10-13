@@ -1,0 +1,84 @@
+{
+  "modelId": "fire-station-victor",
+  "reviewedOn": "2026-10-09",
+  "state": "rear repair CPU/geometrychecked; independent gallery/live rereview pending",
+  "reason": "Independent actualgallery rear angles1/2 failed because exposed rear walls wereblank. Preserve that failure in independent-source-review.json.",
+  "sourceAuthority": [
+    {
+      "path": "models/fire-station-victor/raw/2025-renovation-plan.pdf",
+      "sheet": "ENZO VO-B-12 / Doorsneden Bestaande situatie,2024-09-30",
+      "parts": "sectionsA/B/E",
+      "assertions": "Current irregular stair-side openings, rectangular room/attic lights, floor datums0/4.970/9.840/13.710, lower rear terrace. Existingcondition, not completedrenovation."
+    },
+    {
+      "path": "models/fire-station-victor/raw/architecture-photo-3.webp",
+      "type": "1911 PubliekeWerken elevation drawing",
+      "parts": "ACHTERGEVEL",
+      "assertions": "Two southern stair-side bays and northern room groups; crosscheck only. Historical broadglazed bands/landing openings do not establish unchanged current windows."
+    }
+  ],
+  "rearFaces": [
+    {
+      "nativeVertices": [
+        [
+          10.26,
+          -1.23
+        ],
+        [
+          8.1,
+          -6.48
+        ]
+      ],
+      "role": "rear-stair",
+      "assembly": "Two bounded stair/windowcolumns with currentsectionheightdifferences. Eightpanes acrossfourfloorlevels. Only two arch-headed stair/entrance lights retained; remaining current rectangular lights.",
+      "confidence": "Currentopeningpresence andstoreyheight strong; exactoutwardhorizontalpositions/widths approximatefromnativeface andhistoricalgroupproportions."
+    },
+    {
+      "nativeVertices": [
+        [
+          6.6,
+          -5.86
+        ],
+        [
+          4.53,
+          -10.9
+        ]
+      ],
+      "role": "rear-room-low",
+      "assembly": "Two rectangular roomlights perlowerfloor below10.07mterrace, fourpanes. Historicalbroadband notcopied.",
+      "confidence": "Currentroomopenings supported bysections; approximatepair subdivision andfacewidth, notclaimofprecise2025rearphoto."
+    },
+    {
+      "nativeVertices": [
+        [
+          2.55,
+          -4.84
+        ],
+        [
+          0.66,
+          -9.18
+        ]
+      ],
+      "role": "rear-room-upper",
+      "assembly": "Two current rectangular room/atticlights above lowerterrace, fourpanes. Attach toactualrecessedsemanticroofboundary.",
+      "confidence": "CurrentsectionE roofstoreyroomlights andsectionsA/B currentupperlights corroborate. Approximatehorizontalproportions."
+    }
+  ],
+  "retainedPartyWall": "North face ring0\u21922 adjoins adjacent school and staysblank; it isnot rearpublicfacade. No footprint/suppression changes; rearplot outsideBAGremainsopen.",
+  "checks": {
+    "panes": 54,
+    "fractionalSamples": 324,
+    "rearFractionalSamples": 96,
+    "failures": 0,
+    "compressedUpwardRoofFaces": 41,
+    "triangles": 21231,
+    "bytes": 260156,
+    "textures": 0,
+    "draftSHA256": "c42e26e97acd6360a21aa128d3905f86a5c24cb7e7e37afa6767c47331fdfb60"
+  },
+  "cpuEvidence": [
+    "artifacts/landmark-offline-preview/fire-station-victor-cpu-rear-east.png",
+    "artifacts/landmark-offline-preview/fire-station-victor-cpu-rear-context.png"
+  ],
+  "pending": "Rootreexport+gallery rearangle1/2 andactualgame independent reviewer. CPU imagescannot establishneighborrays or sceneacceptance."
+}

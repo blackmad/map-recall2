@@ -1,0 +1,41 @@
+{
+  "centraal-station": {
+    "w752738610": "reviewed: 54% under the model, 12m, 43 m2; annex/neighbour only partly under the model, left drawn"
+  },
+  "muziekgebouw-bimhuis": {
+    "w755464127": "Moevenpick wing w755464127 is deliberately NOT in the model (see manualModels.ts comment; scripts/audit-landmark-filler.ts pins it): hiding it left a canopy under the label."
+  },
+  "van-gogh-museum": {
+    "w754324684": "reviewed: 78% under the model, 18m, 766 m2; annex/neighbour only partly under the model, left drawn",
+    "w754324679": "reviewed: 72% under the model, 6m, 326 m2; annex/neighbour only partly under the model, left drawn"
+  },
+  "stedelijk-museum": {
+    "w754299888": "reviewed: 70% under the model, 9m, 199 m2; annex/neighbour only partly under the model, left drawn"
+  },
+  "the-movies": {
+    "NL.IMBAG.Pand.0363100012172951": "reviewed: 77% under the model, 9.6m, 67 m2; annex/neighbour only partly under the model, left drawn"
+  },
+  "delamar": {
+    "NL.IMBAG.Pand.0363100012169854": "reviewed: 70% under the model, 20.06m, 80 m2; annex/neighbour only partly under the model, left drawn",
+    "NL.IMBAG.Pand.0363100012168520": "reviewed: 60% under the model, 20.02m, 99 m2; annex/neighbour only partly under the model, left drawn"
+  },
+  "kleine-komedie": {
+    "NL.IMBAG.Pand.0363100012179634": "reviewed: 60% under the model, 15.73m, 109 m2; annex/neighbour only partly under the model, left drawn"
+  },
+  "theater-amsterdam": {
+    "w848177890": "reviewed: 62% under the model, 1m, 435 m2; annex/neighbour only partly under the model, left drawn"
+  },
+  "westerkerk": {
+    "NL.IMBAG.Pand.0363100012174225": "reviewed: 69% under the model, 4m, 10 m2; annex/neighbour only partly under the model, left drawn",
+    "NL.IMBAG.Pand.0363100012174404": "reviewed: 69% under the model, 3.69m, 10 m2; annex/neighbour only partly under the model, left drawn",
+    "NL.IMBAG.Pand.0363100012174226": "reviewed: 66% under the model, 3.75m, 10 m2; annex/neighbour only partly under the model, left drawn",
+    "NL.IMBAG.Pand.0363100012174405": "reviewed: 59% under the model, 3.72m, 10 m2; annex/neighbour only partly under the model, left drawn",
+    "NL.IMBAG.Pand.0363100012174406": "reviewed: 57% under the model, 3.75m, 10 m2; annex/neighbour only partly under the model, left drawn"
+  },
+  "rai-amsterdam": {
+    "w806950190": "reviewed: 71% under the model, 8m, 552 m2; annex/neighbour only partly under the model, left drawn"
+  },
+  "olvg-oost": {
+    "NL.IMBAG.Pand.0363100012243155": "reviewed: 69% under the model, 7.44m, 224 m2; annex/neighbour only partly under the model, left drawn"
+  }
+}

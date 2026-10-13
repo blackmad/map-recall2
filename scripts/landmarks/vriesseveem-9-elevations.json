@@ -1,0 +1,11 @@
+{
+  "id": "vriesseveem-9",
+  "countedBy": "pending blind count by integrator",
+  "facades": [
+    {"name": "south front on Piet Heinkade (cladding strips)", "bearing": 197.5, "photo": "artifacts/landmark-lanes/vriesseveem-9/ref-south.jpg"},
+    {"name": "south entrance lobby (Piet Hein 81-95)", "bearing": 192.5, "photo": "artifacts/landmark-lanes/vriesseveem-9/ref-entrance.jpg"},
+    {"name": "east end with glass-block garage wall", "bearing": 107.5, "photo": "artifacts/landmark-lanes/vriesseveem-9/ref-east.jpg"},
+    {"name": "north harbour front (inferred, no photo)", "bearing": 17.5},
+    {"name": "west end (inferred, no photo)", "bearing": 287.5}
+  ]
+}

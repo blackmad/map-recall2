@@ -1,0 +1,64 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "bilder-152669",
+ "pandId": "0363100012152669",
+ "address": "Bilderdijkstraat (1894 arched windows, pedimented dormer)",
+ "sources": [
+  {
+   "id": "pano-2022-04-29",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-29",
+   "image": "staging/pand-reference/0363100012152669/front.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Bilderdijkstraat",
+   "hoist": false,
+   "windows": "arched",
+   "basement": "none",
+   "cornice": "bracketed",
+   "gable": "cornice",
+   "storeys": 5,
+   "bays": 3,
+   "dormers": 1,
+   "doorBay": null,
+   "shopfront": {
+    "colour": "black",
+    "fascia": true,
+    "name": "COLORS",
+    "sign": {
+     "text": "COLORS",
+     "textColour": "#e3a526",
+     "span": 0.55,
+     "align": "left"
+    },
+    "glazing": "split",
+    "stallriser": "low",
+    "residentialDoor": {
+     "side": "right",
+     "colour": "black"
+    },
+    "shopShare": 0.6,
+    "evidence": "front.jpg 2022-04-29: black fascia with multicoloured capitals \"COLORS\" (modelled in one yellow-orange), glazed shop at the left, high arched street door up a flight of steps at the right. Not in OSM."
+   },
+   "bands": "lintel",
+   "windowSurround": "keystone"
+  }
+ ],
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "red-brown",
+  "frame": "cream-painted",
+  "door": "dark-brown",
+  "stone": "cream"
+ },
+ "notes": [
+  "2026-10-09 surrounds: cream keystones over the arched heads (front.jpg)."
+ ]
+}

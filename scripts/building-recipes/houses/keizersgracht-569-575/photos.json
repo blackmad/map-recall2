@@ -1,0 +1,18 @@
+[
+ {
+  "front": "front0",
+  "panoId": "TMX7316010203-003014_pano_0005_000097",
+  "timestamp": "2023-03-27T11:18:20.230680Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2023/03/27/TMX7316010203-003014/pano_0005_000097/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   121184.96723878151,
+   486338.5091201829
+  ],
+  "headingDeg": 13.0396998262691,
+  "fovDeg": 48.89530275340387,
+  "pitchDeg": 11.610441423592462,
+  "distanceM": 44.259661031487525,
+  "image": "artifacts/building-recipes/keizersgracht-569-575/photo-front0.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]
