@@ -184,7 +184,7 @@ export function calculatePinpointScore(distanceMeters: number): {
       score,
       accuracyPercentage,
       tier: 'bullseye',
-      tierLabel: 'Bullseye! Pinpoint Accuracy',
+      tierLabel: 'Within 60 m',
       tierColor: 'text-emerald-600 dark:text-emerald-400',
     };
   } else if (distanceMeters <= 250) {
@@ -192,7 +192,7 @@ export function calculatePinpointScore(distanceMeters: number): {
       score,
       accuracyPercentage,
       tier: 'excellent',
-      tierLabel: 'Spectacular Guess!',
+      tierLabel: 'Within a block',
       tierColor: 'text-teal-600 dark:text-teal-400',
     };
   } else if (distanceMeters <= 600) {
@@ -200,7 +200,7 @@ export function calculatePinpointScore(distanceMeters: number): {
       score,
       accuracyPercentage,
       tier: 'great',
-      tierLabel: 'Great Intuition',
+      tierLabel: 'A few streets off',
       tierColor: 'text-blue-600 dark:text-blue-400',
     };
   } else if (distanceMeters <= 1400) {
@@ -208,7 +208,7 @@ export function calculatePinpointScore(distanceMeters: number): {
       score,
       accuracyPercentage,
       tier: 'good',
-      tierLabel: 'Close Vicinity',
+      tierLabel: 'Right neighbourhood',
       tierColor: 'text-amber-600 dark:text-amber-400',
     };
   } else if (distanceMeters <= 3000) {
@@ -216,7 +216,7 @@ export function calculatePinpointScore(distanceMeters: number): {
       score,
       accuracyPercentage,
       tier: 'fair',
-      tierLabel: 'Right Neighborhood',
+      tierLabel: 'Nearby',
       tierColor: 'text-orange-600 dark:text-orange-400',
     };
   } else {
@@ -224,7 +224,7 @@ export function calculatePinpointScore(distanceMeters: number): {
       score,
       accuracyPercentage,
       tier: 'miss',
-      tierLabel: 'A Bit Off Course',
+      tierLabel: 'Wrong part of town',
       tierColor: 'text-rose-600 dark:text-rose-400',
     };
   }
