@@ -324,18 +324,22 @@ touch keeps the 1024² map and needs its own iPhone 13 4× measurement first.
   range above, and shadows are off below z15.
 - The vehicle draws last (overlay pass) with its x-ray through buildings.
 - The street or canal under question is never revealed by colour, label or
-  highlight before the answer (CLAUDE.md product principles). Highlight yellow
-  (`#ffd21f`) is reserved for the answer and active landmark (§Highlight: the
-  candidates use the `#ff8033` accent instead).
+  highlight before the answer (CLAUDE.md product principles). The highlight's
+  coral `#ff8033` is the destination's one accent in the world (the lit
+  building's outline, ring and beacon, the HUD finish arrow and pin, the
+  destination label, the locator dot); the old yellow `#ffd21f` survives only
+  under `?highlight=yellow`.
 - Trivia/neighbourhood cards stay compact at the bottom; nothing in the 3D
   frame competes with them for saturation (no bloom, no saturated sky).
 
 ## Highlight (the destination / the tapped building)
 
-User 2026-10-13: "The yellow highlight is bad." `?highlight=a|b|c` (`look/highlight.ts`,
-`look/highlightMarker.ts`) runs three candidates through every building pipeline
-(landmark GLBs, recipe houses, recipe tiles, building types, generic extrusions) in
-both frames; unset, every program and path is today's. Sheets:
+User 2026-10-13: "The yellow highlight is bad." **Style a is the default** (since
+2026-10-13); `?highlight=yellow` keeps the old yellow for comparison, `?highlight=b|c`
+the other candidates (`look/highlight.ts`, `look/highlightMarker.ts`), through every
+building pipeline (landmark GLBs, recipe houses, recipe tiles, building types, generic
+extrusions, MapLibre's fallback extrusions, 3DBAG detailed mode) in both frames.
+Candidate sheets:
 `docs/reports/highlight-redesign-20261013/sheet-{default,shared}-{chase,saddle}.jpg`
 (Westermarkt block, Westerkerk, Rijksmuseum, an Oud-West terrace house).
 
@@ -359,17 +363,44 @@ Cost (desktop 1440×900, parked, 180 forced frames off → on, `scripts/highligh
 | b | +20–24 | within ±0.7 | ±0.1 | ~20 / 4 ms | **redraws every frame while shown** (the pulse): 2.5–4.4 ms CPU per vsync when the map would idle |
 | c | +2 (ring) | within ±0.2 | 0 | 27–37 / 4 ms | prism index of every resident chunk on the first highlight |
 
-**Recommendation: ship a**, behind the flag first, then as the default with the
-shared-frame flip. It is the only candidate that still points at the building when the
+Default-a sheets (yellow beside a, both frames, chase and saddle):
+`docs/reports/highlight-redesign-20261013/default-a/sheet-{default,shared}-{chase,saddle}.jpg`.
+
+- **Outline width by distance** (`outlineWidthPx`): 2 px to 100 m, linear to 3.5 px at
+  300 m, by the camera's distance to the building's centre (one width per outline, in
+  the vertex shader). Measured (`scripts/highlight-outline-width.mjs`, 1280×800, the
+  outline isolated by diffing against `__canalRecallHighlightOutlinePx = 0`; local
+  width = shorter accent run through each pixel): Oud-West terrace chase (213 m) mean
+  1.73 → 2.40 px, 446 → 661 px of outline (shared frame 1.60 → 2.25); Westermarkt
+  chase 1.66 → 2.22; saddle (83–86 m) unchanged at 1.76–1.80 px.
+- **Marker above the city** (default frame): the ring and beacon do not write depth,
+  and the three.js city (added after the marker) painted over them wherever a building
+  stood behind; at the terrace only 830 px of ring and a stub of beacon survived. The
+  marker layer moves after the last 3D layer on every highlight (`markerSlot`).
+- **MapLibre fallback** (three.js does not own the city): feature-state `accent`
+  instead of the yellow `highlighted` fill (no +12 m box, facade kept), a 3-px coral
+  footprint casing under every building layer, and the marker's **hull** (the outline
+  pass round an invisible prism of the footprint, from `GeoJSONSource.getData()`) when
+  no model or pipeline outlines the building. The ring hugs that footprint too.
+- **3DBAG detailed mode**: the hit feature of the batched tile keeps its faces and gets
+  the outline pass restricted to its `_feature_id_N` (`highlightFeature`); the marker
+  follows it. Not verified live: 3DBAG tiles load no meshes in headless Chrome.
+- Cost re-measured (desktop, 180 frames, `perf-desktop.jsonl`): a +26 draw calls at the
+  Westermarkt, +22 at the Westerkerk, both frames; MapLibre render median within the
+  yellow's own run-to-run spread (yellow 3.0–5.0 ms, a 3.3–4.4 ms); three.js layers
+  ±0.2 ms. iPhone profile pending.
+
+**Recommendation (shipped as the default 2026-10-13): a**. It is the only candidate that still points at the building when the
 building is small or half hidden (the beacon over the roof, the ring at the street
 edge), it keeps the building's own colours (so the player learns the building, not a
 yellow box), it adds no per-frame work, and the ring hugs the footprint without naming
 any street. b reads as a pink wash on flat-shaded walls from the chase height and costs
 a frame every vsync; c is too subtle to find a building by (the 60 m neighbours lose
 colour, the target does not gain any) and it costs the largest hitch.
-Known gaps: MapLibre's fallback extrusion layers (only when three.js does not own the
-city) and 3DBAG detailed mode keep yellow; the outline is subtle at chase distance on
-an ordinary terrace house (the beacon carries it there).
+Gaps closed by the default lane (above): the fallback extrusions and 3DBAG take the
+accent, the outline widens at chase distance. Still open: on the chase sheets an
+ordinary terrace house is far less findable than under yellow (0.08 % accent pixels vs
+0.55 %); the beacon and ring carry it, and 3DBAG mode is unverified live.
 
 ## Labels (POI names, `src/canalRecall/labels/`, 2026-10-13)
 
