@@ -755,11 +755,12 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
           quad([x0,top,overhang],[mid,top+d.roofRiseM,overhang],[mid,top+d.roofRiseM,-d.depthM],[x0,top,-d.depthM]);
           quad([mid,top+d.roofRiseM,overhang],[x1,top,overhang],[x1,top,-d.depthM],[mid,top+d.roofRiseM,-d.depthM]);
           // Roof owns the top: solid gable ends sit just below its planes,
-          // avoiding coplanar pale wedges at the rear cap join. 1.5 cm measured
-          // along the roof normal (5 mm vertical was within the geometry audit's
-          // 1 cm coplanar tolerance on steep dormer roofs and counted as z-fight,
-          // bilder-166802-235892: 1.1 m2 over ten dormers).
-          const capClearance=Math.max(.005,.015*Math.hypot(d.widthM/2,d.roofRiseM)/(d.widthM/2));
+          // avoiding coplanar pale wedges at the rear cap join. 4 cm measured
+          // along the roof normal: 1.5 cm sat in the audit's coplanar band
+          // (< 2 cm) and 2-3 cm bleeds through at 900-1800 m (z-fight
+          // calibration, 2026-10-13); 4 cm is past both and inside the 2-8 cm
+          // informational band (bilder-166802-235892: ten dormers).
+          const capClearance=Math.max(.005,.04*Math.hypot(d.widthM/2,d.roofRiseM)/(d.widthM/2));
           const gable=new T.Shape([new T.Vector2(x0,top-capClearance),new T.Vector2(x1,top-capClearance),new T.Vector2(mid,top+d.roofRiseM-capClearance)]);
           const g=new T.ExtrudeGeometry(gable,{depth:wall,bevelEnabled:false});g.translate(0,0,overhang-wall);add(g,wallSurface,`${label}/front-gable`,facade);
           const back=g.clone();back.translate(0,0,-d.depthM+wall-overhang);add(back,wallSurface,`${label}/back-gable`,facade);
