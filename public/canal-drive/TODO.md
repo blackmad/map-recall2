@@ -689,10 +689,15 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
-- **Shared-frame look leftovers** (2026-10-14, HISTORY "black blocks"): the
-  Royal Palace GLB gets worse with normal bias ≥ 0.5 (inward-facing
-  normals?); recipe-tile default under the shared frame still to decide;
-  iPhone shots of the shadow spots unmeasured.
+- **Shared-frame look leftovers** (2026-10-14, HISTORY "black blocks",
+  "Inward-facing normals"): recipe-tile default under the shared frame
+  still to decide; iPhone shots of the shadow spots unmeasured; normals
+  metric is warn-only (baseline and gate it); check the `scale(±1)`
+  mirrors in mountain-network, Maagdenhuis, Hoofdbureau and Sea Palace
+  builders; studiok, het-veem, concertgebouw, lab111, orgelpark and
+  cinecenter rank high on inward area but may be hidden interpenetrating
+  solids; other `hip()` users change on rebuild; rename the `royal-palace`
+  `OVER_BUDGET` key to `palace-on-the-dam` or drop it.
 - **Desktop perf, third pass** (2026-10-14, HISTORY "Desktop perf, second
   pass"): MapLibre's own render is the largest owner (1.0–1.9 ms); the
   legacy signature-landmarks layer does one `renderer.render` per model

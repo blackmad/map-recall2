@@ -1,5 +1,38 @@
 # Canal Recall — what is built
 
+## Inward-facing normals: the Palace and the shared hip() helper (2026-10-14, night)
+
+Lane `glb/normals-20261014`, from the shadow lane's side finding that the
+Palace got more self-shadowed as normal bias rose. `auditNormals` in
+`geometryAudit.ts`: `MaterialSoup` now carries the GLB `NORMAL`
+attribute; per material, the share of triangle area whose face normal
+points into its closed edge-connected shell (ray parity from 2 mm outside
+the face, ~1,200 sampled triangles per model, hidden interfaces within
+5 mm skipped; open shells are reported as `openShare` and left unjudged)
+and the area share of vertex normals more than 90° from their face.
+`audit:glb` warns at 2 % (`normals-inward-permille`, `normals-bad-permille`
+counts, not gated); `scripts/landmarks/audit-normals.ts` ranks all 331
+GLBs in ~3 minutes. Causes found and fixed, one commit each:
+`palace-on-the-dam` roof panels from `ShapeGeometry` were wound downward
+(55 triangles, `faceUp()` in `palace-dam-builder.ts`; slate 79 % → 0 %
+inward, the `inverted-roof` warning gone); the shared `hip()` helper in
+`build-manual-landmarks.ts` wound all four slopes inward (Stadsschouwburg
+10.6 %, Museum Van Loon 26.6 %, Moco 15.0 % → 0; other `hip()` users
+change on their next rebuild); ING House legs wound inward and its belly
+mirrored with `scale(1,-1,1)` without flipping winding (16.7 % inward,
+10.7 % bad vertex normals → 0). Palace shadowed share at normal bias
+0.5: 21.3 % → 0.6 % (0.8 % at 0.25), so the 3 → 25 % self-shadowing is
+reproduced and gone (`SHADOW_NORMAL_BIAS` env on the shadow spec). The
+rest of the worst-20 (studiok, het-veem, concertgebouw, lab111, orgelpark,
+cinecenter: flat slate/brick/gold faces at constant heights) look like
+interpenetrating solids, mostly hidden false positives, not investigated.
+`mountain-network`, Maagdenhuis, Hoofdbureau and Sea Palace builders also
+mirror with `scale(±1)` and were not checked. Loader area figures are
+inflated; shares are consistent. Note: `OVER_BUDGET` names `royal-palace`
+but the model id is `palace-on-the-dam` (425 KB, 30k tris, within the
+default budget anyway).
+
+
 ## Schools as large recipes; hospitals surveyed (2026-10-14, night)
 
 Lane `public/schools-20261014`. Eight `kind: large` recipes: the
