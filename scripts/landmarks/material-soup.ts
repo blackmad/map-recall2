@@ -8,7 +8,14 @@ export async function loadMaterialSoup(file: string): Promise<MaterialSoup> {
   await MeshoptDecoder.ready;
   const doc = await new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.decoder': MeshoptDecoder}).read(file);
   const mats = doc.getRoot().listMaterials();
-  const materials = mats.map(m => ({name: m.getName() || 'unnamed', rgb: m.getBaseColorFactor().slice(0, 3).map(c => Math.round(255 * Math.pow(c, 1 / 2.2))) as [number, number, number]}));
+  const materials = mats.map(m => {
+    const extras = (m.getExtras() ?? {}) as {materialSlot?: unknown; tint?: unknown; materialSlotSource?: unknown};
+    return {name: m.getName() || 'unnamed', rgb: m.getBaseColorFactor().slice(0, 3).map(c => Math.round(255 * Math.pow(c, 1 / 2.2))) as [number, number, number],
+      ...(typeof extras.materialSlot === 'string' ? {materialSlot: extras.materialSlot} : {}),
+      ...(typeof extras.tint === 'string' ? {tint: extras.tint} : {}),
+      ...(typeof extras.materialSlotSource === 'string' ? {materialSlotSource: extras.materialSlotSource} : {}),
+      ...(m.getExtension('KHR_materials_unlit') ? {unlit: true} : {})};
+  });
   const positions: number[] = [], indices: number[] = [], triMaterial: number[] = [];
   for (const node of doc.getRoot().listNodes()) {
     const mesh = node.getMesh();
