@@ -1648,5 +1648,11 @@
   "buildVersion": 2,
   "bytes": 51948,
   "triangles": 2204
+ },
+ "krijtberg": {
+  "sourceHash": "0c77e3b173b19e93",
+  "buildVersion": 2,
+  "bytes": 33260,
+  "triangles": 1316
  }
 }
