@@ -264,3 +264,7 @@ export function roofLiftTranslate(pitchDegrees: number, latitude: number, height
 // The cycle-track layer is drawn by the same map adapter, so it shares this bundle.
 export * from './cycleTracks';
 export * from './ownPois';
+// POI label overlay (lane 2026-10-13): ships in this bundle so vector-map.js
+// can mount it without a new build script.
+export { mountLabelOverlay, labelOverlayEnabled, REPLACED_LAYER_IDS } from './labels/labelOverlay';
+export * as Labels from './labels/labelPlan';
