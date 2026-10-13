@@ -47223,7 +47223,7 @@
         ],
         "max": [
           6.21539306640625,
-          7.239999771118164,
+          7.1599626541137695,
           6.21539306640625
         ]
       },
@@ -47239,13 +47239,19 @@
       },
       "extent": {
         "widthMetres": 12.4307861328125,
-        "heightMetres": 7.239999771118164,
+        "heightMetres": 7.1599626541137695,
         "depthMetres": 12.4307861328125,
         "depthCoverage": 0.927670606926306
       },
-      "triangles": 2056,
-      "bytes": 27220,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 4392,
+      "bytes": 65964,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "6b0fbe12dd0a0e54",
+        "buildVersion": 2,
+        "bytes": 37560,
+        "triangles": 1776
+      }
     },
     "begijnhof": {
       "id": "begijnhof",
