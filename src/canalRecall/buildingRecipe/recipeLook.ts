@@ -5,7 +5,8 @@
  * `cell texture x vertex tint x baked shade`: unlit, sRGB values straight to
  * the framebuffer, brick = the Bricks057 photo neutralised to luminance and
  * lifted (calmBayLayers), white-cream frames, lifted blue-grey glass, roof
- * cells (pantile/slate/flat) tinted by ROOF_TONES, and a fixed light baked as
+ * cells (pantile/slate/flat) tinted by the palette's roof tones (look/palette.ts),
+ * and a fixed light baked as
  * `wallShade` / the roof shading formula. Recipe GLBs are lit meshes with flat
  * photo-sampled colours, so next to procedural neighbours they read as dark,
  * untextured blocks.
@@ -14,113 +15,21 @@
  * `materialSlot` extra (brick, stucco, accent, stone, frame, door, glass, roofTile,
  * slate, bitumen) are replaced by one small shader that samples the same kind
  * of cell texture, multiplies by the slot tint mapped into the city palette
- * range, and applies the city's fixed-light shade from the ENU normal.
+ * range (`cityTint`, look/palette.ts), and applies the city's fixed-light
+ * shade from the ENU normal.
  *
  * Pure colour/shade helpers are exported for tests; the material factory takes
  * the page's three.js namespace so the game (shared CanalRecallThree) and the
  * headless sheet renderer use the identical code path.
  */
 import {paintRoofCell} from '../roofCells.ts';
+import {MATERIAL_SLOTS, SLOT_CELL, SLOT_TILE_M, cityTint, hexToRgb, type MaterialSlot} from '../look/palette.ts';
 
-export type RecipeSlot = 'brick' | 'stucco' | 'accent' | 'stone' | 'frame' | 'door' | 'glass' | 'roofTile' | 'slate' | 'bitumen';
-export const RECIPE_SLOTS: readonly RecipeSlot[] = ['brick', 'stucco', 'accent', 'stone', 'frame', 'door', 'glass', 'roofTile', 'slate', 'bitumen'];
-
-type RGB = [number, number, number];
+/** A GLB material's `materialSlot` extra (look/palette.ts owns the slot → cell/tint mapping). */
+export type RecipeSlot = MaterialSlot;
+export const RECIPE_SLOTS = MATERIAL_SLOTS;
 const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
-
-export function hexToRgb(hex: string): RGB {
-  const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
-  if (!m) throw Error(`Bad colour ${hex}`);
-  const v = parseInt(m[1], 16);
-  return [(v >> 16) & 255, (v >> 8) & 255, v & 255];
-}
-export const rgbToHex = (c: RGB) => '#' + c.map(v => Math.round(clamp(v, 0, 255)).toString(16).padStart(2, '0')).join('');
-
-export function rgbToHsl([r, g, b]: RGB): RGB {
-  const R = r / 255, G = g / 255, B = b / 255, max = Math.max(R, G, B), min = Math.min(R, G, B), l = (max + min) / 2;
-  if (max === min) return [0, 0, l];
-  const d = max - min, s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-  const h = max === R ? (G - B) / d + (G < B ? 6 : 0) : max === G ? (B - R) / d + 2 : (R - G) / d + 4;
-  return [h * 60, s, l];
-}
-export function hslToRgb([h, s, l]: RGB): RGB {
-  const c = (1 - Math.abs(2 * l - 1)) * s, x = c * (1 - Math.abs(((h / 60) % 2) - 1)), m = l - c / 2;
-  const [r, g, b] = h < 60 ? [c, x, 0] : h < 120 ? [x, c, 0] : h < 180 ? [0, c, x] : h < 240 ? [0, x, c] : h < 300 ? [x, 0, c] : [c, 0, x];
-  return [(r + m) * 255, (g + m) * 255, (b + m) * 255];
-}
-const mix = (a: RGB, b: RGB, t: number): RGB => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
-
-/** Lightness range of the city's brick tints (priorBrickDark #6a3b2e .. buff #c49a5c, cityAppearancePalette.ts). */
-export const CITY_BRICK_LIGHTNESS = [0.3, 0.6] as const;
-/** City frame woodwork (bayTextures.ts photo look) and stone dressing. */
-export const CITY_FRAME = '#f1ede2';
-export const CITY_STONE = '#cfc8b8';
-/** ROOF_TONES.photo (threeBuildingFeatures.ts) and the flat-roof greys. */
-export const CITY_ROOF = {tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'], flat: ['#8f8a83', '#9a958c', '#85817c', '#a09789']} as const;
-
-/**
- * Photo-sampled brick → city tint. Panorama samples are underexposed and hazy
- * (a dark-brown 1909 front samples #5e4033, L 0.28), while the city multiplies
- * its tint into a lifted brick texture. Keep the hue, lift lightness into the
- * city brick range preserving order (darker brick stays darker), restore some
- * saturation.
- */
-export function cityWallTint(hex: string): string {
-  const [h, s, l] = rgbToHsl(hexToRgb(hex));
-  const lifted = clamp(0.12 + l * 0.9, CITY_BRICK_LIGHTNESS[0], CITY_BRICK_LIGHTNESS[1]);
-  return rgbToHex(hslToRgb([h, clamp(s, 0.12, 0.5), lifted]));
-}
-/**
- * Rendered/painted plaster (`stucco` slot, intent `palette.wallMaterial: 'stucco'`). The brick tint is wrong for it twice:
- * it clamps lightness to the city brick range (L <= 0.6, so a white wall lands at tan) and floors saturation at 0.12
- * (so any neutral gains a warm cast), and the brick texture is a mid-grey photo. Stucco keeps the authored hue and
- * saturation and only lifts lightness a little (the city multiplies tint x texture x shade, which darkens a pale
- * wall by about 10 %), so white stays white, cream cream and grey grey.
- */
-export function cityStuccoTint(hex: string): string {
-  const [h, s, l] = rgbToHsl(hexToRgb(hex));
-  return rgbToHex(hslToRgb([h, clamp(s, 0, 0.55), clamp(l * 1.06 + 0.03, 0.4, 0.97)]));
-}
-/** Light frames take the city's cream-white; dark painted frames stay dark but readable. */
-export function cityFrameTint(hex: string): string {
-  const rgb = hexToRgb(hex), [h, s, l] = rgbToHsl(rgb);
-  if (l >= 0.5) return rgbToHex(mix(rgb, hexToRgb(CITY_FRAME), 0.75));
-  return rgbToHex(hslToRgb([h, s, Math.max(l, 0.16)]));
-}
-export function cityStoneTint(hex: string): string {
-  const [h, s, l] = rgbToHsl(hexToRgb(hex));
-  return rgbToHex(mix(hslToRgb([h, s, Math.max(l, 0.62)]), hexToRgb(CITY_STONE), 0.45));
-}
-/** Doors and shopfront joinery: authored colour, never black holes. */
-export function cityDoorTint(hex: string): string {
-  const [h, s, l] = rgbToHsl(hexToRgb(hex));
-  if (l >= 0.17) return hex.startsWith('#') ? hex.toLowerCase() : '#' + hex.toLowerCase();
-  // Near-neutral blacks lift to a neutral grey: an HSL lift would adopt the arbitrary hue of #1f2121 as a teal cast.
-  return rgbToHex(hslToRgb([h, s < 0.15 ? 0 : s, 0.17]));
-}
-/** Roof slots onto the city's roof tones; the authored steep/low/flat classes keep their order. */
-export function cityRoofTint(slot: 'roofTile' | 'slate' | 'bitumen', hex: string): string {
-  const l = rgbToHsl(hexToRgb(hex))[2];
-  if (slot === 'roofTile') {
-    const [h, s] = rgbToHsl(hexToRgb(hex));
-    // Red/black tile intents: red keeps the city pantile, black tile reads as dark slate tone.
-    if (s < 0.2) return CITY_ROOF.slate[1];
-    return rgbToHex(hslToRgb([h, clamp(s * 1.1, 0.35, 0.6), clamp(0.2 + l * 0.85, 0.38, 0.5)]));
-  }
-  if (slot === 'slate') return l < 0.27 ? CITY_ROOF.slate[1] : l < 0.31 ? CITY_ROOF.slate[0] : CITY_ROOF.slate[2];
-  return l < 0.4 ? CITY_ROOF.flat[2] : CITY_ROOF.flat[0];
-}
-export function cityTint(slot: RecipeSlot, hex: string): string {
-  switch (slot) {
-    case 'brick': case 'accent': return cityWallTint(hex);
-    case 'stucco': return cityStuccoTint(hex);
-    case 'stone': return cityStoneTint(hex);
-    case 'frame': return cityFrameTint(hex);
-    case 'door': return cityDoorTint(hex);
-    case 'glass': return '#ffffff';
-    default: return cityRoofTint(slot, hex);
-  }
-}
+type RGB = [number, number, number];
 
 /** The city's fixed light (threeBuildingMesh.ts `wallShade` and roof formula), for an ENU unit normal. */
 export function cityShade([e, n, u]: RGB): number {
@@ -131,9 +40,6 @@ export function cityShade([e, n, u]: RGB): number {
   if (u < 0) return 0.5;
   return clamp(0.58 + 0.42 * Math.max(0, e * -0.35 + n * 0.5 + u * 0.8), 0.5, 1);
 }
-
-/** Texture repeat per slot in metres (UVs are metres; glass UVs are 0..1 per pane). */
-export const SLOT_TILE_M: Record<RecipeSlot, number> = {brick: 3.36, stucco: 2.4, accent: 3.36, stone: 1.28, frame: 1, door: 1, glass: 1, roofTile: 1.2, slate: 1.2, bitumen: 1.2};
 
 const VERTEX = /* glsl */ `
 uniform mat3 enuFromWorld;
@@ -249,17 +155,34 @@ function roofCanvas(doc: Document, kind: 'tile' | 'slate' | 'flat'): HTMLCanvasE
 export const RECIPE_LOOK_SHARED = 'recipeLookShared';
 
 export interface RecipeLook {
-  /** Shared normal frame: maps world (model scene) directions to east/north/up. Set before rendering each model. */
+  /** Shared normal frame: maps world (model scene) directions to east/north/up. Set before rendering each model. Unused when lit. */
   readonly enuFromWorld: {value: any};
+  /** True when the slots are lit by the scene's lights (the shared frame's rig) instead of the baked city shade. */
+  readonly lit: boolean;
   /** Replace slot-tagged materials under `root`; returns how many meshes changed. */
   apply(root: any): number;
 }
+
+export type RecipeLookOptions = {
+  document?: Document;
+  brick?: CanvasImageSource | null;
+  anisotropy?: number;
+  /**
+   * `?sharedFrame=1`: diffuse-only lit materials (MeshLambertMaterial, like the
+   * landmarks; landmarks/landmarkShading.ts) with the same cell textures and
+   * the same slot tints, so the one light rig shades recipe houses exactly as
+   * it shades the lit facades and the landmark GLBs beside them. Default
+   * (false) keeps the unlit material with the city's baked shade.
+   */
+  lit?: boolean;
+};
 
 /**
  * One look per page. `brick` is the decoded Bricks057 photo (the city's own
  * brick source); without it a drawn bond is used.
  */
-export function createRecipeLook(THREE: any, options: {document?: Document; brick?: CanvasImageSource | null; anisotropy?: number} = {}): RecipeLook {
+export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): RecipeLook {
+  const lit = !!options.lit;
   const doc = options.document ?? document;
   const enuFromWorld = {value: new THREE.Matrix3()};
   const textures = new Map<string, any>();
@@ -274,22 +197,34 @@ export function createRecipeLook(THREE: any, options: {document?: Document; bric
     return t;
   };
   const slotTexture = (slot: RecipeSlot) => {
-    switch (slot) {
-      case 'brick': case 'accent': return texture('brick', () => paintBrickCanvas(doc, options.brick));
+    switch (SLOT_CELL[slot]) {
+      case 'brick': return texture('brick', () => paintBrickCanvas(doc, options.brick));
       case 'glass': { const t = texture('glass', () => paintGlassCanvas(doc)); t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping; return t; }
       case 'stucco': return texture('stucco', () => paintStuccoCanvas(doc));
       case 'door': return texture('door', () => paintDoorCanvas(doc));
       case 'stone': return texture('stone', () => paintStoneCanvas(doc));
       case 'frame': return texture('flat-white', () => { const c = doc.createElement('canvas'); c.width = c.height = 4; const x = c.getContext('2d')!; x.fillStyle = '#fff'; x.fillRect(0, 0, 4, 4); return c; });
-      case 'roofTile': return texture('tile', () => roofCanvas(doc, 'tile'));
+      case 'tile': return texture('tile', () => roofCanvas(doc, 'tile'));
       case 'slate': return texture('slate', () => roofCanvas(doc, 'slate'));
-      case 'bitumen': return texture('flat', () => roofCanvas(doc, 'flat'));
+      case 'flat': return texture('flat', () => roofCanvas(doc, 'flat'));
     }
   };
   const materials = new Map<string, any>();
   const materialFor = (slot: RecipeSlot, tintHex: string, side: number) => {
     const tint = cityTint(slot, tintHex), key = `${slot}|${tint}|${side}`;
     let m = materials.get(key);
+    if (!m && lit) {
+      // Same cell, same tint, same metre scale; the texture is decoded from
+      // sRGB and the tint is linearised, so cell × tint matches the facades'
+      // `pow(cell * tint, 2.2)` before the rig lights it.
+      const map = slotTexture(slot);
+      map.colorSpace = THREE.SRGBColorSpace;
+      if (SLOT_CELL[slot] !== 'glass') map.repeat.set(1 / SLOT_TILE_M[slot], 1 / SLOT_TILE_M[slot]);
+      m = new THREE.MeshLambertMaterial({map, color: new THREE.Color(tint), side});
+      m.name = `recipe-look-lit/${slot}`;
+      m.userData = {[RECIPE_LOOK_SHARED]: true, materialSlot: slot, tint};
+      materials.set(key, m);
+    }
     if (!m) {
       const [r, g, b] = hexToRgb(tint).map(v => v / 255);
       m = new THREE.ShaderMaterial({
@@ -304,6 +239,7 @@ export function createRecipeLook(THREE: any, options: {document?: Document; bric
   };
   return {
     enuFromWorld,
+    lit,
     apply(root: any) {
       let changed = 0;
       root.traverse((o: any) => {

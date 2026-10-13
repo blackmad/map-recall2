@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import * as THREE from 'three';
 import { createCityAppearanceThreeAdapter, triangulateAppearanceSurface, type BlockAppearanceGeometry } from '../src/canalRecall/cityAppearanceThree.js';
-import { contextualBuildingPalette } from '../src/canalRecall/cityAppearancePalette.js';
+import { contextualBuildingPalette } from '../src/canalRecall/look/palette.js';
 import { compileBlockAppearance } from './city-appearance/compile-block-tiles.js';
 import type { AppearanceTile } from '../src/canalRecall/cityAppearanceTiles.js';
 

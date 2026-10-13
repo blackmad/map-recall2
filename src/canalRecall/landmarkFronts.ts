@@ -12,6 +12,8 @@
 // reference only: no photo pixels reach the game, so there is no texture
 // licence to clear and nothing that clashes with the flat-shaded city.
 
+import { lookHex, type BuildingLook } from './look/palette.js';
+
 export type FrontBox = {
   /** Along the wall from its start, metres. */ x0: number; x1: number;
   /** Height above the wall's base, metres. */ z0: number; z1: number;
@@ -145,34 +147,8 @@ export function frontTriangles(front: Front, toWorld: (along: number, up: number
 
 // --- Game adapter -----------------------------------------------------------
 
-export type FrontLook = 'procedural' | 'untextured' | 'photo' | 'storybook' | 'cartoon';
-
-const toHsl = (hex: string): [number, number, number] => {
-  const n = parseInt(hex.replace('#', ''), 16), r = (n >> 16 & 255) / 255, g = (n >> 8 & 255) / 255, b = (n & 255) / 255;
-  const max = Math.max(r, g, b), min = Math.min(r, g, b), l = (max + min) / 2, d = max - min;
-  if (!d) return [0, 0, l];
-  const s = d / (1 - Math.abs(2 * l - 1));
-  const h = max === r ? ((g - b) / d + 6) % 6 : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
-  return [h * 60, s, l];
-};
-const fromHsl = ([h, s, l]: [number, number, number]) => {
-  const c = (1 - Math.abs(2 * l - 1)) * s, x = c * (1 - Math.abs(((h / 60) % 2) - 1)), m = l - c / 2;
-  const [r, g, b] = h < 60 ? [c, x, 0] : h < 120 ? [x, c, 0] : h < 180 ? [0, c, x] : h < 240 ? [0, x, c] : h < 300 ? [x, 0, c] : [c, 0, x];
-  return '#' + [r, g, b].map(v => Math.round(Math.min(1, Math.max(0, v + m)) * 255).toString(16).padStart(2, '0')).join('');
-};
-
-/**
- * A front's colours per Building look. Fronts are authored in measured, natural colours
- * (the photo look); storybook warms and lifts them a little and cartoon saturates them, so a
- * landmark sits in each look like its neighbours do without per-look authoring.
- */
-export function lookHex(hex: string, look: FrontLook): string {
-  if (look === 'photo' || look === 'procedural' || look === 'untextured') return hex;
-  const [h, s, l] = toHsl(hex);
-  if (look === 'storybook') return fromHsl([(h + 360 - 4) % 360, Math.min(1, s * 1.15), Math.min(0.9, l + 0.03)]);
-  // Cartoon: punchy but not neon; darks (glass, iron) stay dark so windows still read.
-  return fromHsl([h, Math.min(1, s * 1.7 + 0.08), l < 0.35 ? l : Math.min(0.85, l * 1.08)]);
-}
+/** A front's colours follow the Building look through the palette's per-look tone shift (look/palette.ts `lookHex`). */
+export type FrontLook = BuildingLook;
 
 /** A front as landmark-kit triangles in local metres from `origin` (x east, y north, z up). */
 export function frontKitGeometry(front: Front, origin: { lng: number; lat: number }, look: FrontLook) {

@@ -5,7 +5,7 @@
 import * as THREE from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {MeshoptDecoder} from 'three/examples/jsm/libs/meshopt_decoder.module.js';
-import {cityTint, type RecipeSlot} from '../../src/canalRecall/buildingRecipe/recipeLook.ts';
+import {cityTint, type MaterialSlot as RecipeSlot} from '../../src/canalRecall/look/palette.ts';
 
 /** Review-render brightness of the brick slot, tuned so a sunlit-photo tint renders about as dark as the photo (the game: lifted tint x neutral brick texture x wall shade). */
 const BRICK_GAIN = 1.12;

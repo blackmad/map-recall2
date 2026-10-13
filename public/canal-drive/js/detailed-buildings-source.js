@@ -26,11 +26,20 @@ export class DetailedBuildings {
     this.onReady = onReady;
     this.activeLandmark = null;
     this._highlightedMesh = null;
-    this.layer = this._makeLayer();
+    // `?sharedFrame=1`: tiles draw in the page's one three.js frame, lit by its
+    // rig (no private ambient light), instead of in their own custom layer.
+    this.sharedFrame = map._canalSharedFrame || null;
+    this._sharedAttached = false;
+    this.layer = this.sharedFrame ? null : this._makeLayer();
   }
 
   setEnabled(enabled) {
     this.enabled = !!enabled;
+    if (this.sharedFrame) {
+      if (this.enabled && !this._sharedAttached) this._attachShared();
+      this.map.triggerRepaint();
+      return;
+    }
     if (this.enabled && !this.map.getLayer(this.layer.id) && !this.loading) {
       this.loading = true;
       this.map.addLayer(this.layer);
@@ -58,10 +67,14 @@ export class DetailedBuildings {
     this._highlightedMesh = null;
   }
 
-  _highlightLandmark(tiles, localTransform) {
+  /**
+   * `fromMercator` maps a Mercator point into the space `tiles.group`'s matrixWorld is expressed in:
+   * the tiles' local frame for the legacy layer (default), the frame's world in the shared frame.
+   */
+  _highlightLandmark(tiles, localTransform, fromMercator = null) {
     if (!this.activeLandmark || this._highlightedMesh || !localTransform) return;
     const [lng, lat] = this.activeLandmark.lngLat;
-    const inverse = localTransform.clone().invert();
+    const inverse = fromMercator || localTransform.clone().invert();
     const toLocal = altitude => {
       const point = this.maplibregl.MercatorCoordinate.fromLngLat([lng, lat], altitude);
       return new THREE.Vector3(point.x, point.y, point.z).applyMatrix4(inverse);
@@ -113,6 +126,87 @@ export class DetailedBuildings {
     // The map drops its locator dot once the building itself is lit (user
     // report 2026-09-29, "both the yellow dot and the yellow building").
     if (typeof this.onLandmarkHighlighted === 'function') this.onLandmarkHighlighted(this.activeLandmark);
+  }
+
+  /** Loader and tileset for either path; calls `onRoot(localTransform)` once the tileset is placed. */
+  _createTiles(onPlaced) {
+    const owner = this;
+    const tiles = new TilesRenderer(TILESET_URL);
+    tiles.registerPlugin(new GLTFExtensionsPlugin({ meshoptDecoder: MeshoptDecoder }));
+    tiles.group.name = '3DBAG LoD2.2';
+    let handled = false;
+    tiles.addEventListener('load-tileset', () => {
+      if (handled) return;
+      handled = true;
+      const sphere = new THREE.Sphere();
+      tiles.getBoundingSphere(sphere);
+      const center = sphere.center.clone();
+      const rootTransform = tiles.root && tiles.root.transform || [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1];
+      const origin = ecefToLngLatAlt(center.x, center.y, center.z);
+      const coordinate = owner.maplibregl.MercatorCoordinate.fromLngLat([origin.lng, origin.lat], origin.alt);
+      const localTransform = new THREE.Matrix4()
+        .makeTranslation(coordinate.x, coordinate.y, coordinate.z)
+        .scale(new THREE.Vector3(coordinate.meterInMercatorCoordinateUnits(), -coordinate.meterInMercatorCoordinateUnits(), coordinate.meterInMercatorCoordinateUnits()))
+        .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
+      const rotation = new THREE.Matrix3().set(rootTransform[0], rootTransform[1], rootTransform[2], rootTransform[8], rootTransform[9], rootTransform[10], -rootTransform[4], -rootTransform[5], -rootTransform[6]);
+      tiles.group.matrix.copy(new THREE.Matrix4().setFromMatrix3(rotation).multiply(new THREE.Matrix4().makeTranslation(-center.x, -center.y, -center.z)));
+      tiles.group.matrixAutoUpdate = false;
+      tiles.group.updateMatrixWorld(true);
+      onPlaced(localTransform);
+      owner.ready = true;
+      owner.loading = false;
+      owner.setEnabled(owner.enabled);
+      owner.onReady();
+    });
+    tiles.addEventListener('load-error', event => {
+      owner.loading = false;
+      owner.ready = false;
+      console.warn('Detailed 3D BAG buildings unavailable; retaining OSM extrusions.', event.error || event);
+    });
+    return tiles;
+  }
+
+  /**
+   * Shared-frame participant: the tileset's local frame is placed in Mercator
+   * by `localTransform`, the frame maps that to its eye-relative world, and the
+   * rig lights and shadows the tiles like every other layer. The LOD camera
+   * lives in that world: the eye is the origin and the view is folded into the
+   * projection (`ctx.clipFromWorld`), as the frame's own camera does.
+   */
+  _attachShared() {
+    this._sharedAttached = true;
+    this.loading = true;
+    const owner = this, tilesCamera = new THREE.PerspectiveCamera();
+    tilesCamera.matrixAutoUpdate = false;
+    tilesCamera.matrixWorldAutoUpdate = false;
+    let localTransform = null;
+    const tiles = this._createTiles(transform => { localTransform = transform; });
+    tiles.setCamera(tilesCamera);
+    tiles.addEventListener('load-model', ({ scene }) => this.sharedFrame.constructor.setShadows(scene, true, true));
+    const root = new THREE.Group();
+    root.name = 'detailed-buildings-3dbag';
+    root.add(tiles.group);
+    const fromMercator = new THREE.Matrix4();
+    this.sharedFrame.register('detailed-buildings', {
+      root,
+      onAttach: frame => tiles.setResolutionFromRenderer(tilesCamera, frame.renderer),
+      mercatorFromLocal: () => localTransform ? localTransform.elements : null,
+      beforeRender: ctx => {
+        if (!owner.enabled) return false;
+        tilesCamera.projectionMatrix.copy(ctx.clipFromWorld);
+        tilesCamera.projectionMatrixInverse.copy(ctx.clipFromWorld).invert();
+        tilesCamera.matrixWorld.identity();
+        tilesCamera.matrixWorldInverse.identity();
+        // 3d-tiles-renderer 0.5 fetches the root tileset on the first update(), so
+        // it must run before the tileset is placed (the legacy layer's render()
+        // returns before update() until ready, and so never loads).
+        tiles.update();
+        if (!owner.ready || !localTransform) return false;
+        owner._highlightLandmark(tiles, localTransform, fromMercator.copy(ctx.worldFromMercator));
+        owner.map.triggerRepaint();
+        return true;
+      },
+    }, { order: 25 });
   }
 
   _makeLayer() {

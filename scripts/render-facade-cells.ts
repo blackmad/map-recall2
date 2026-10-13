@@ -4,8 +4,8 @@
 import sharp from 'sharp';
 import { CELL_KINDS, CELL_PX, paintCell, STYLE_DIMS } from '../src/canalRecall/facadeCells.ts';
 import { layoutWall } from '../src/canalRecall/facadeLayout.ts';
-import { FACADE_STYLES, FACADE_STYLE_COLOURS } from '../src/canalRecall/genericFacades.ts';
-import { CONTEXTUAL_BUILDING_COLOURS } from '../src/canalRecall/cityAppearancePalette.ts';
+import { FACADE_STYLES } from '../src/canalRecall/genericFacades.ts';
+import { CONTEXTUAL_BUILDING_COLOURS, FACADE_STYLE_COLOURS } from '../src/canalRecall/look/palette.ts';
 import { mutedWallHex } from '../src/canalRecall/genericFacades.ts';
 
 const out = process.argv[2] ?? 'facade-cells.png';

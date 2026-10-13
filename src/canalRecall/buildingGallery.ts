@@ -4,14 +4,14 @@
 // exactly as the game's shader does: colour x mix(1, wall, mask.r) x mix(1, accent, mask.g).
 
 import { CELL_KINDS, CELL_PX, CELL_VARIANTS, paintCell, STYLE_DIMS } from './facadeCells.js';
-import { FACADE_STYLES, FACADE_STYLE_COLOURS, mutedWallHex } from './genericFacades.js';
-import { CONTEXTUAL_BUILDING_COLOURS } from './cityAppearancePalette.js';
-import { BAY_ENTRIES, BAY_STYLES, CARTOON_WALLS, PERIOD_WALLS, PHOTO_WALLS, STORYBOOK_WALLS, bayVariant } from './bayLook.js';
-import { PALETTES, bayTextures, type Look } from './bayTextures.js';
+import { FACADE_STYLES, mutedWallHex } from './genericFacades.js';
+import { CARTOON_WALLS, CONTEXTUAL_BUILDING_COLOURS, FACADE_STYLE_COLOURS, PALETTES, PERIOD_WALLS, PHOTO_WALLS, ROOF_TONES, STORYBOOK_WALLS } from './look/palette.js';
+import { BAY_ENTRIES, BAY_STYLES, bayVariant } from './bayLook.js';
+import { bayTextures, type Look } from './bayTextures.js';
 import { ROOF_CELL_KINDS, paintRoofCell } from './roofCells.js';
 import { GABLE_SHAPES, fitRect, gableProfile, roofTriangles, type RoofPlan } from './roofMesh.js';
 import { MAT_HEX } from './landmarkKits.js';
-import { ROOF_TONES, calmBayLayers } from './threeBuildingsBrowser.js';
+import { calmBayLayers } from './threeBuildingsBrowser.js';
 
 const hex = (h: string): [number, number, number] => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)) as [number, number, number];
 const el = <K extends keyof HTMLElementTagNameMap>(tag: K, props: Partial<HTMLElementTagNameMap[K]> & { cls?: string } = {}, ...kids: Array<Node | string>) => {
