@@ -109,3 +109,34 @@ test('city look: landmark, recipe house and generic extrusion share one brick un
     expect(spread, `${face}: ${min[0]} ${min[1]} vs ${max[0]} ${max[1]}`).toBeLessThanOrEqual(CITY_LOOK_TOLERANCE);
   }
 });
+
+// City look highlight (review 2026-10-13): the active landmark's yellow keeps the light. The first city-look variant
+// drew a flat yellow (lit: albedo plus a 0.45 glow, so the sun side clipped and the shade side was mostly glow); the
+// default highlight keeps the model's own shading under a yellow glow. Sun side over shade side, mean sRGB luma:
+// the city-look highlight must separate the faces at least as well as the default one does, and never clip.
+//   PW_PORT=4446 npx playwright test building-look -g "highlight" --project=desktop
+test('city look: the highlight keeps the shading (sun side brighter than shade side, no clipping)', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop', 'one renderer is enough');
+  test.setTimeout(180_000);
+  const { build } = await import('esbuild');
+  const { mkdirSync, writeFileSync } = await import('node:fs');
+  const bundle = await build({ entryPoints: ['src/canalRecall/look/lookParity.ts'], bundle: true, format: 'iife', globalName: 'LookParity', write: false, logLevel: 'error' });
+  await page.route('**/canal-drive/__city-look.js', route => route.fulfill({ body: bundle.outputFiles[0].text, contentType: 'application/javascript' }));
+  await page.route('**/canal-drive/__city-look.html', route => route.fulfill({ body: '<!doctype html><meta charset="utf-8"><script src="__city-look.js"></script>', contentType: 'text/html' }));
+  await page.goto('/canal-drive/__city-look.html');
+  const pipelines = ['landmark-highlight', 'city-landmark-highlight', 'city-landmark-highlight-unlit'];
+  const result = await page.evaluate((pipelines) => (window as any).LookParity.runLookParity({ pipelines, brickUrl: new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href }), pipelines);
+  const ratio = (p: string) => result.walls[`${p}/south`] / result.walls[`${p}/north`];
+  const summary = Object.fromEntries(pipelines.map(p => [p, { south: result.walls[`${p}/south`], west: result.walls[`${p}/west`], north: result.walls[`${p}/north`], ratio: +ratio(p).toFixed(3) }]));
+  const out = process.env.CITY_LOOK_OUT || 'artifacts/city-look';
+  mkdirSync(out, { recursive: true });
+  writeFileSync(`${out}/highlight.json`, JSON.stringify(summary, null, 1));
+  console.log(JSON.stringify(summary, null, 1));
+  expect(ratio('city-landmark-highlight')).toBeGreaterThanOrEqual(ratio('landmark-highlight'));
+  expect(ratio('city-landmark-highlight')).toBeGreaterThan(1.25);
+  // Unlit: the city's baked light comes from the north-west, so the brightest and darkest faces are not south/north.
+  const unlit = ['south', 'west', 'north'].map(f => result.walls[`city-landmark-highlight-unlit/${f}`]);
+  expect(Math.max(...unlit) / Math.min(...unlit)).toBeGreaterThan(1.15);
+  // Not clipped: the sun side stays under the full highlight yellow's luma (~201).
+  expect(result.walls['city-landmark-highlight/south']).toBeLessThan(200);
+});
