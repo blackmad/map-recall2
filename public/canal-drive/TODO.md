@@ -15,6 +15,24 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
+## Direction (2026-10-13) — approved plan
+
+`docs/plans/digital-twin-direction-20261013.md` is the assessment and plan the
+user approved on 2026-10-13. Short form: open NL/Amsterdam data only; buildings
+move from one GLB per building to **recipe tiles** (per-pand recipe data
+compiled into per-z16-tile meshes + instance tables, GLB only for ~100 icons);
+own-ground becomes the default after per-polder water levels, BGT width per
+way, AHN profiles for the 891 unmeasured bridges and a real-iPhone GPU
+measurement; the gameplay loop stops freezing the rider and lets spaced
+repetition budget the questions; one light rig, one palette, one material
+atlas and a written `docs/LOOK.md`. Content lanes continue: icon builders,
+kits, building types, block faces, `kind: large` recipes (police stations
+added to the to-build list), the GLB cleanup pass (attached windows, material
+coverage, no holes) and the sculpture splat track. Freeze: no new per-house
+GLBs into `catalogue.json` and no new one-off ordinary builders; new builders
+tag every material with `materialSlot` + `tint`. Order: housekeeping (done
+2026-10-13) → gameplay loop → shared frame + palette → ground → recipe tiles.
+
 ## Takeover board (2026-10-09) — active
 
 Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
@@ -340,10 +358,23 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   triangles, expects 24); not in `check:canal`.
 - Street-appearance fingerprints (`public/data/street-appearance/*.json`)
   hash an older `signature-landmarks.json`; re-bake rather than hand-edit.
-- `/private/tmp/canal-heren208-author40` holds an uncommitted Herengracht 208
-  ordinary draft. 27 merged+clean worktrees were removed 2026-10-09 (disk hit
-  100%); 87 remain (38 merged-but-dirty 24 GB, 49 unmerged 96 GB) — triage
-  each before removing.
+- **Worktree hygiene (recurring)**: run `scripts/worktrees/triage.sh` before
+  removing anything; `--remove-merged-clean` and `--archive-dirty` apply the
+  2026-10-13 rules (see HISTORY). Create lane worktrees with
+  `scripts/worktrees/new.sh <branch>` so `node_modules` and `.cache` are
+  symlinked. After the 2026-10-13 sweep: 15 worktrees remain (11 unmerged
+  lanes to review, 4 kept), 164 local branches (159 unmerged, mostly old
+  lanes; triage them next), disk 148 GB free. Unmerged lanes awaiting
+  integrator review: `feat/kit-only-churches-20261011` (De Duif, Mozes en
+  Aaronkerk, Oosterkerk hand-built GLBs + Obrechtkerk WIP),
+  `feat/da-costakade-13-20261013`, `big/ordinary-a2-20261013` (Jodenbreestraat
+  11), `qa/detached-openings-sweep-20261013` (+ Haparandaweg 8-338 rails),
+  `fix/europe-window-grid-20261011`, `fix/felix-meritis-20261011`,
+  `big/ordinary-b2-20261013` and `landmarks/kit-churches2-20261013`
+  (footprints only), `rework/booking-hq-20261011` (held),
+  `exp/photo-colors-20261011`, `render/drop-maplibre-step1-20261010`; plus
+  five `wip/recovery-*-20261013` branches with author iterations recovered
+  from the 2026-10-08 clones (nieuwespiegel555, kerk136, prinsen211/215).
 - **Perf findings (2026-10-09 baseline, `tests/e2e/ride-perf.spec.ts`,
   iphone 4x throttle):** steady ride holds 16.7 ms median, p99 33 ms. Landmark
   layer costs only 0.1–0.8 ms/frame even with 250 models resident. The game

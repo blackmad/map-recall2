@@ -1,5 +1,43 @@
 # Canal Recall — what is built
 
+## Housekeeping sweep: worktrees, caches, source archive (2026-10-13)
+
+User: "clean up git worktrees", "symlink node_modules/python env between
+worktrees so we don't run out of disk", "I did just kill a bunch of
+in-progress claude work, see if any of those are worth saving". Disk was 98%
+full (23 GB free). Measured first: the 117 worktrees (108 agent worktrees,
+82 GB) were full of untracked `artifacts/` and `.cache/`, not `node_modules`
+(0.56 GB over 57 copies, 48 already symlinked); the real hogs were
+`~/.cache/uv` (65 GB of torch wheel versions; Python has no per-worktree env,
+scripts run under `uv run` with inline deps), `~/.npm` (9 GB), two loose
+source-data directories (33 GB) and ~90 stray `canal-*` dirs from the
+2026-10-08 recovery. The main checkout was on a detached HEAD three commits
+ahead of `main` with no branch.
+
+Done: branched and merged the detached HEAD (American Hotel window rhythm;
+the generated bundle conflict was resolved by rebuilding), pushed `main`.
+WIP-committed every salvageable killed lane to its branch (kit-only churches,
+Da Costakade 13, Jodenbreestraat 11, detached-openings sweep, footprints,
+block-face intents clercq-236681 / nassau-162289 / wallen-ovw-39-47, recipe
+house bilder-087959x) and recovered five author iterations from the recovery
+clones as `wip/recovery-*` branches. `scripts/worktrees/triage.sh` classifies
+every worktree and removes merged ones (tracked dirt → WIP commit; untracked
+evidence JSON kept; `_`-prefixed scratch and generated bundles deleted);
+`scripts/worktrees/new.sh` creates a lane worktree with `node_modules` and
+`.cache` symlinked. 101 worktrees removed, 296 merged branches deleted,
+`uv cache prune` (−49 GB), npm cache cleaned, regenerable build outputs
+removed. Source archive: the root `map-recall2-source-data` checkout was 382
+commits behind origin with 1,264 dirty files; its state is on
+`archive/root-checkout-leftovers-20261013`, main was reset to origin, the
+files not yet upstream (review dumps, `_unassigned` pand references, lane
+raws) committed and pushed; the loose worktrees were verified byte-identical
+upstream by blob hash and their differing files archived under
+`experiments/loose-worktree-leftovers-20261013/` before removal; five
+`kerk206-details-report.json` over GitHub's 100 MB limit were gzipped.
+Result: 15 worktrees, 164 branches, 148 GB free. The approved direction plan
+is `docs/plans/digital-twin-direction-20261013.md`.
+
+
 ## Scheepvaartmuseum and Waag replace their native kits (2026-10-13)
 
 The landmark backlog had no plain unbuilt building left; the most
