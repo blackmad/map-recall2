@@ -136,9 +136,11 @@ const GL: Record<string, string[]> = {
   c: ['00000', '00000', '01110', '10000', '10000', '10001', '01110'],
   m: ['00000', '00000', '11010', '10101', '10101', '10001', '10001'],
   '.': ['00000', '00000', '00000', '00000', '00000', '01100', '01100'],
+  "'": ['00100', '00100', '01000', '00000', '00000', '00000', '00000'],
+  ' ': ['00000', '00000', '00000', '00000', '00000', '00000', '00000'],
 };
-/** Letters as solid pixel runs in a wall frame; back face at `out`. Returns total width. */
-export function letters(b: BuildingTools, f: Frame, text: string, t: number, y: number, out: number, px: number, d: number, colour: Col) {
+/** Letters as solid pixel runs in a wall frame; back face at `out`. `pxY` (default px) stretches the glyphs vertically. Returns total width. */
+export function letters(b: BuildingTools, f: Frame, text: string, t: number, y: number, out: number, px: number, d: number, colour: Col, pxY = px) {
   const total = ([...text].length * 6 - 1) * px; let u = t - total / 2;
   for (const ch of text) {
     const rows = GL[ch];
@@ -147,7 +149,7 @@ export function letters(b: BuildingTools, f: Frame, text: string, t: number, y: 
       while (k < 5) {
         if (row[k] !== '1') { k++; continue; }
         let e = k; while (e < 5 && row[e] === '1') e++;
-        slab(b, f, u + (k + e) / 2 * px, y + (6 - j) * px, (e - k) * px, px, d, colour, out);
+        slab(b, f, u + (k + e) / 2 * px, y + (6 - j) * pxY, (e - k) * px, pxY, d, colour, out);
         k = e;
       }
     }
