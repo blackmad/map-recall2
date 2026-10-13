@@ -119,16 +119,16 @@ export function buildBegijnhof(_w: number, _d: number, b: BuildingTools) {
   const lawn = new T.Shape(LAWN.map(p => new T.Vector2(p[0], p[1])));
   const lg = new T.ExtrudeGeometry(lawn, {depth: .04, bevelEnabled: false}); lg.rotateX(Math.PI / 2); lg.translate(0, .04, 0); b.add(lg, 'green');
   // Weeping beech (dark leaves) and horse chestnut (green) from the photographs; the statue of a Beguine and lamps.
-  const trunk = (x: number, z: number, h: number) => { const g = new T.CylinderGeometry(.28, .38, h, 8); b.add(g, 'bronze', x, h / 2, z); };
+  const trunk = (x: number, z: number, h: number) => { const g = new T.CylinderGeometry(.15, .19, h, 8); b.add(g, 'bronze', x, h / 2, z); };
   trunk(-44, 27, 3.2);
   { const g = new T.SphereGeometry(1, 12, 8); g.scale(5.5, 5.5, 5.5); b.add(g, 'green', -44, 8, 27); }
-  trunk(-24, 22, 2.2);
-  { const g = new T.ConeGeometry(3.0, 7.5, 10); b.add(g, 'bronze', -24, 3.9, 22); }
+  trunk(-24, 22, 3.6);
+  { const g = new T.SphereGeometry(1, 12, 8); g.scale(3.0, 2.6, 3.0); b.add(g, 'bronze', -24, 5.2, 22); }
   trunk(-31, 24.5, 4.0);
   { const g = new T.SphereGeometry(1, 10, 8); g.scale(2.6, 3.0, 2.6); b.add(g, 'green', -31, 6, 24.5); }
   // Beguine statue on a stone plinth near the east end of the lawn.
-  b.box(-20, 0, 27, 1.1, .55, 1.1, 'stone'); b.box(-20, .55, 27, .8, .35, .8, 'stone');
-  { const g = new T.CylinderGeometry(.3, .38, 1.7, 8); b.add(g, 'stone', -20, .9 + .85, 27); const h = new T.SphereGeometry(.2, 8, 6); b.add(h, 'stone', -20, 2.8, 27); }
+  b.box(-20, 0, 27, .7, .4, .7, 'stone');
+  { b.add(new T.CylinderGeometry(.14, .3, 1.0, 8), 'stone', -20, .4 + .5, 27); b.add(new T.CylinderGeometry(.11, .14, .4, 8), 'stone', -20, 1.6, 27); b.add(new T.SphereGeometry(.11, 8, 6), 'stone', -20, 1.78, 27); }
   // Lamp posts at the path (cast iron, 3.2 m).
   for (const [x, z] of [[-48, 30], [-33, 28.5], [-16, 24]]) { b.box(x, 0, z, .12, 3.0, .12, 'bronze'); b.box(x, 3.0, z, .4, .5, .4, 'stone'); b.box(x, 3.5, z, .5, .1, .5, 'bronze'); }
 }
