@@ -1,0 +1,698 @@
+{
+ "schemaVersion": 1,
+ "id": "american-hotel",
+ "pand": "0363100012168734",
+ "brief": "scripts/landmarks/american-hotel-brief.md",
+ "signature": [
+  "tower",
+  "tower-clock",
+  "curve-arcade",
+  "cafe-awnings",
+  "ne-gable",
+  "rooftop-sign",
+  "bar-americain-canopy"
+ ],
+ "walls": [
+  {
+   "tag": "w01-143",
+   "bearing": 143,
+   "lengthM": 35.6,
+   "centre": [
+    4.881393,
+    52.363791
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001178_pano_0001_003767",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "tower",
+     "kind": "tower",
+     "where": "the round corner tower at the left (Leidsekade) end, above the roofline from 28 m",
+     "approxSizeM": [
+      3.5,
+      39.4
+     ],
+     "plan": "modelled",
+     "how": "builder tower section: 3DBAG corner block cut at 28 m and capped, drum R 1.75 with plinth/string courses, cornice, belfry, clock stage, cap and cone",
+     "seenIn": "TMX7316010203-001968_pano_0000_000121 (pitched cut tower/canal-2021-top.jpg)"
+    },
+    {
+     "id": "tower-clock",
+     "kind": "clock",
+     "where": "square clock stage on top of the tower, one dial per face",
+     "approxSizeM": [
+      3.2,
+      4.0
+     ],
+     "plan": "modelled",
+     "how": "four gilt dials (dark rim, gold disc, four hour marks, two hands) on a stone stage turned to the two streets, sandstone panel under each dial",
+     "seenIn": "TMX7316010203-001968_pano_0000_000121 (pitched cut tower/canal-2021-top.jpg)"
+    },
+    {
+     "id": "tower-belfry",
+     "kind": "colonnade",
+     "where": "open arcaded drum between the tower cornice and the clock stage",
+     "approxSizeM": [
+      3.5,
+      3.4
+     ],
+     "plan": "simplified",
+     "how": "dark core with ten stone piers and hood arches (10 round openings, 5 seen)",
+     "seenIn": "TMX7316010203-001968_pano_0000_000121 (pitched cut tower/canal-2021-top.jpg)"
+    },
+    {
+     "id": "bar-americain-canopy",
+     "kind": "canopy",
+     "where": "ground floor left of the entrance, over the bar windows",
+     "approxSizeM": [
+      10.5,
+      1.3
+     ],
+     "plan": "modelled",
+     "how": "cloth canopy on the measured s 0-10.5, y 2.0-3.3",
+     "seenIn": "TMX7316010203-001178_pano_0001_003767 / b_20241217_0841_Track38_Sphere_00010"
+    },
+    {
+     "id": "bar-americain-lettering",
+     "kind": "lettering",
+     "where": "on the canopy valance",
+     "approxSizeM": [
+      6.0,
+      0.35
+     ],
+     "plan": "modelled",
+     "how": "raised BAR AMERICAIN lettering in red on the valance",
+     "seenIn": "b_20241217_0841_Track38_Sphere_00010"
+    },
+    {
+     "id": "se-small-arched",
+     "kind": "window-shape",
+     "where": "row of five small round-headed windows over the canopy",
+     "approxSizeM": [
+      9.6,
+      1.4
+     ],
+     "plan": "modelled",
+     "how": "five windows at the measured s 1.5-10.1, y 4.3-5.7",
+     "seenIn": "b_20241217_0841_Track38_Sphere_00010"
+    },
+    {
+     "id": "se-entrance-arch",
+     "kind": "window-shape",
+     "where": "hotel entrance, the tall arch right of the bar",
+     "approxSizeM": [
+      5.1,
+      7.3
+     ],
+     "plan": "modelled",
+     "how": "arch hood, grey-brick porch field, door and two side lights at the measured s 12.0-17.1",
+     "seenIn": "b_20241217_0841_Track38_Sphere_00010"
+    },
+    {
+     "id": "cafe-arches",
+     "kind": "window-shape",
+     "where": "three wide segmental cafe windows right of the entrance",
+     "approxSizeM": [
+      17.5,
+      5.1
+     ],
+     "plan": "modelled",
+     "how": "segmental windows on the measured 6.05 m pitch (centres s 20.6, 26.6, 32.6) with transom and mullion bars",
+     "seenIn": "b_20241217_0841_Track38_Sphere_00010"
+    },
+    {
+     "id": "cafe-awnings",
+     "kind": "canopy",
+     "where": "striped awnings hanging in the first-floor loggia arches",
+     "approxSizeM": [
+      22.0,
+      1.0
+     ],
+     "plan": "simplified",
+     "how": "six alternating ochre/cream sloping strips in each of the four loggia arches",
+     "seenIn": "TMX7316010203-001178_pano_0001_003767"
+    },
+    {
+     "id": "se-loggia",
+     "kind": "colonnade",
+     "where": "first-floor loggia over the cafe: segmental arches on piers",
+     "approxSizeM": [
+      26.0,
+      3.0
+     ],
+     "plan": "simplified",
+     "how": "darker brick back field with three windows per arch; arch hoods and piers stand 0.4-0.7 m proud of it (the shell wall is not cut back)",
+     "seenIn": "b_20241217_0841_Track38_Sphere_00010"
+    },
+    {
+     "id": "se-balustrades",
+     "kind": "other",
+     "where": "first-floor balcony and eaves balustrades along the whole front",
+     "approxSizeM": [
+      35.0,
+      0.9
+     ],
+     "plan": "modelled",
+     "how": "stone rail, posts every 0.7 m, coping",
+     "seenIn": "b_20241217_0841_Track38_Sphere_00010"
+    },
+    {
+     "id": "se-dormer-gables",
+     "kind": "other",
+     "where": "five stepped dormer gables on the roof",
+     "approxSizeM": [
+      3.6,
+      7.5
+     ],
+     "plan": "modelled",
+     "how": "roofline section: dormer slab, stepped gable plates, paired windows, chimney stacks with rods",
+     "seenIn": "TMX7316010203-001178_pano_0001_003767"
+    },
+    {
+     "id": "se-turret",
+     "kind": "tower",
+     "where": "small round roof turret near the tower",
+     "approxSizeM": [
+      2.3,
+      7.5
+     ],
+     "plan": "modelled",
+     "how": "stone cylinder, slate dome, finial ball, dark rods",
+     "seenIn": "TMX7316010203-001178_pano_0001_003767"
+    },
+    {
+     "id": "se-terrace",
+     "kind": "other",
+     "where": "cafe terrace furniture and screens in front of the cafe",
+     "approxSizeM": [
+      20.0,
+      1.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "seasonal terrace furniture, not part of the building"
+     },
+     "seenIn": "b_20241217_0841_Track38_Sphere_00010"
+    }
+   ]
+  },
+  {
+   "tag": "w02-53",
+   "bearing": 53,
+   "lengthM": 19,
+   "centre": [
+    4.8815235,
+    52.363983
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002857_pano_0006_000019",
+   "capturedAt": "2022-12-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-gable",
+     "kind": "other",
+     "where": "big pointed gable over the centre bay of the Marnixstraat pavilion",
+     "approxSizeM": [
+      8.6,
+      5.8
+     ],
+     "plan": "modelled",
+     "how": "stone rake copings, lunette window, blue star, finial at the measured base 20.5 / apex 24.0",
+     "seenIn": "TMX7316010203-002857_pano_0006_000019"
+    },
+    {
+     "id": "ne-big-arch",
+     "kind": "window-shape",
+     "where": "three-light arched window two storeys tall in the centre bay",
+     "approxSizeM": [
+      7.2,
+      5.5
+     ],
+     "plan": "modelled",
+     "how": "sandstone tympanum field, stone hood, two round-headed side lights and the tall square-headed centre light with mullion piers",
+     "seenIn": "TMX7316010203-002857_pano_0006_000019"
+    },
+    {
+     "id": "ne-loggia",
+     "kind": "colonnade",
+     "where": "three-arch loggia on four columns over the big arch",
+     "approxSizeM": [
+      7.9,
+      3.1
+     ],
+     "plan": "modelled",
+     "how": "columns, capitals and round arch hoods in front of a darker back field with three windows",
+     "seenIn": "TMX7316010203-002857_pano_0006_000019"
+    },
+    {
+     "id": "ne-disc-balustrade",
+     "kind": "other",
+     "where": "balustrade with eleven blue discs over the loggia",
+     "approxSizeM": [
+      8.4,
+      0.8
+     ],
+     "plan": "modelled",
+     "how": "stone rails with eleven blue discs",
+     "seenIn": "TMX7316010203-002857_pano_0006_000019"
+    },
+    {
+     "id": "ne-star-gablets",
+     "kind": "other",
+     "where": "small gablets with blue stars over the two side bays",
+     "approxSizeM": [
+      3.0,
+      2.0
+     ],
+     "plan": "modelled",
+     "how": "stone gablet plates, blue fields, gold stars",
+     "seenIn": "TMX7316010203-002857_pano_0006_000019"
+    },
+    {
+     "id": "ne-zigzag-frieze",
+     "kind": "other",
+     "where": "blue zig-zag frieze under the big gable",
+     "approxSizeM": [
+      8.3,
+      1.2
+     ],
+     "plan": "simplified",
+     "how": "blue diamond plates on the buff wall",
+     "seenIn": "TMX7316010203-002857_pano_0006_000019"
+    },
+    {
+     "id": "ne-pinnacles",
+     "kind": "other",
+     "where": "piers with pinnacles between the bays",
+     "approxSizeM": [
+      0.6,
+      0.9
+     ],
+     "plan": "modelled",
+     "how": "stone piers with triangular pinnacle plates",
+     "seenIn": "TMX7316010203-002857_pano_0006_000019"
+    },
+    {
+     "id": "ne-tile-panel",
+     "kind": "other",
+     "where": "tile panel in the narrow door bay",
+     "approxSizeM": [
+      0.5,
+      2.7
+     ],
+     "plan": "simplified",
+     "how": "blue panel slab",
+     "seenIn": "TMX7316010203-002857_pano_0006_000019"
+    },
+    {
+     "id": "ne-staircase-oriel",
+     "kind": "window-shape",
+     "where": "canted oriel on the staircase tower",
+     "approxSizeM": [
+      2.0,
+      5.0
+     ],
+     "plan": "simplified",
+     "how": "sandstone block with three copper lights and a stone ledge",
+     "seenIn": "TMX7316010203-002857_pano_0006_000019"
+    }
+   ]
+  },
+  {
+   "tag": "w03-220",
+   "bearing": 220,
+   "lengthM": 17.6,
+   "centre": [
+    4.880818,
+    52.363896
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002979_pano_0000_000041",
+   "capturedAt": "2023-02-20",
+   "checked": true,
+   "items": [
+    {
+     "id": "curve-arcade",
+     "kind": "colonnade",
+     "where": "arcade storey of the curved 1927 block: paired round-headed windows between caryatid piers",
+     "approxSizeM": [
+      24.0,
+      3.4
+     ],
+     "plan": "modelled",
+     "how": "ten bays on the measured 2.34 m pitch: paired arcade windows, piers, hanging brackets",
+     "seenIn": "TMX7316010203-002979_pano_0000_000041"
+    },
+    {
+     "id": "curve-caryatids",
+     "kind": "sculpture",
+     "where": "figures on the arcade piers",
+     "approxSizeM": [
+      0.45,
+      2.5
+     ],
+     "plan": "simplified",
+     "how": "low-poly figures: robe cylinder, shoulder box, head, capital block",
+     "seenIn": "TMX7316010203-002979_pano_0000_000041"
+    },
+    {
+     "id": "curve-corbel-table",
+     "kind": "other",
+     "where": "projecting arched corbel table over the arcade",
+     "approxSizeM": [
+      24.0,
+      0.8
+     ],
+     "plan": "modelled",
+     "how": "two round arch hoods per bay from the pier capitals to the bracket, brick top",
+     "seenIn": "TMX7316010203-002979_pano_0000_000041"
+    },
+    {
+     "id": "curve-striped-hoods",
+     "kind": "other",
+     "where": "cream/orange striped hoods over the ground-floor windows",
+     "approxSizeM": [
+      1.9,
+      0.75
+     ],
+     "plan": "simplified",
+     "how": "three alternating voussoir plates per window",
+     "seenIn": "TMX7316010203-002979_pano_0000_000041"
+    },
+    {
+     "id": "curve-oriels",
+     "kind": "other",
+     "where": "six canted three-light oriels on three storeys",
+     "approxSizeM": [
+      3.0,
+      10.4
+     ],
+     "plan": "modelled",
+     "how": "canted brick bodies with front and cant lights, hood and sill slabs, mullions",
+     "seenIn": "TMX7316010203-002979_pano_0000_000041"
+    },
+    {
+     "id": "rooftop-sign",
+     "kind": "sign",
+     "where": "AMERICAN HOTEL letters standing on the roof over the curve",
+     "approxSizeM": [
+      14.0,
+      1.0
+     ],
+     "plan": "modelled",
+     "how": "raised stone letters on slate posts and rail, 2.2 m behind the wall",
+     "seenIn": "TMX7316010203-000355_pano_0000_000079"
+    },
+    {
+     "id": "curve-basement-bars",
+     "kind": "other",
+     "where": "barred basement windows in the plinth",
+     "approxSizeM": [
+      1.6,
+      0.7
+     ],
+     "plan": "modelled",
+     "how": "dark windows with three bars",
+     "seenIn": "TMX7316010203-002979_pano_0000_000041"
+    },
+    {
+     "id": "curve-flags",
+     "kind": "other",
+     "where": "flags on the roof edge",
+     "approxSizeM": [
+      1.0,
+      1.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "flags change and are taken down"
+     },
+     "seenIn": "TMX7316010203-002979_pano_0000_000041"
+    }
+   ]
+  },
+  {
+   "tag": "w04-53",
+   "bearing": 53,
+   "lengthM": 12.2,
+   "centre": [
+    4.881356,
+    52.3640915
+   ],
+   "evidence": "photo",
+   "panoId": "b_20241211_0954_Track09_Sphere_00111",
+   "capturedAt": "2024-12-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-fan-windows",
+     "kind": "window-shape",
+     "where": "four fan-tracery windows over the double-height ground windows",
+     "approxSizeM": [
+      2.2,
+      4.4
+     ],
+     "plan": "simplified",
+     "how": "round-headed windows with four radiating bars",
+     "seenIn": "b_20241211_0954_Track09_Sphere_00111"
+    },
+    {
+     "id": "ne-ground-windows",
+     "kind": "window-shape",
+     "where": "four double-height ground windows under segmental hoods",
+     "approxSizeM": [
+      2.3,
+      5.9
+     ],
+     "plan": "modelled",
+     "how": "windows with glazing grid and stone hoods",
+     "seenIn": "b_20241211_0954_Track09_Sphere_00111"
+    }
+   ]
+  },
+  {
+   "tag": "w05-227",
+   "bearing": 227,
+   "lengthM": 9.8,
+   "centre": [
+    4.8809675,
+    52.363814
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000355_pano_0000_000079",
+   "capturedAt": "2017-07-07",
+   "checked": true,
+   "items": [
+    {
+     "id": "gable-front-tracery",
+     "kind": "window-shape",
+     "where": "five-arch arcade with ring tracery on the Jugendstil gable front",
+     "approxSizeM": [
+      10.2,
+      4.5
+     ],
+     "plan": "simplified",
+     "how": "round-headed windows and hoods on colonnettes, stone torus rings as the tracery",
+     "seenIn": "TMX7316010203-000355_pano_0000_000079"
+    },
+    {
+     "id": "gable-front-gable",
+     "kind": "other",
+     "where": "stepped gable with copings and finial over the right half",
+     "approxSizeM": [
+      5.0,
+      4.7
+     ],
+     "plan": "modelled",
+     "how": "stone rake copings to the 3DBAG gable apex, finial plate",
+     "seenIn": "TMX7316010203-000355_pano_0000_000079"
+    },
+    {
+     "id": "gable-front-zigzag",
+     "kind": "other",
+     "where": "blue zig-zag band under the gable",
+     "approxSizeM": [
+      6.0,
+      1.0
+     ],
+     "plan": "simplified",
+     "how": "blue diamond plates",
+     "seenIn": "TMX7316010203-000355_pano_0000_000079"
+    },
+    {
+     "id": "gable-front-balustrade",
+     "kind": "other",
+     "where": "stone balustrade over the arcade",
+     "approxSizeM": [
+      10.2,
+      0.7
+     ],
+     "plan": "modelled",
+     "how": "rails and posts",
+     "seenIn": "TMX7316010203-000355_pano_0000_000079"
+    }
+   ]
+  },
+  {
+   "tag": "w06-234",
+   "bearing": 234,
+   "lengthM": 6.8,
+   "centre": [
+    4.8810465,
+    52.3637575
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000199_pano_0002_000291",
+   "capturedAt": "2017-03-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "gable-front-fanlights",
+     "kind": "window-shape",
+     "where": "paired lights with segmental fanlights on the first floor",
+     "approxSizeM": [
+      1.5,
+      2.8
+     ],
+     "plan": "modelled",
+     "how": "paired lights and a barred fanlight per bay with a stone surround",
+     "seenIn": "TMX7316010203-000199_pano_0002_000291"
+    },
+    {
+     "id": "gable-front-dormers",
+     "kind": "window-shape",
+     "where": "row of four arched dormer windows and the lunette in the gable",
+     "approxSizeM": [
+      5.0,
+      4.0
+     ],
+     "plan": "modelled",
+     "how": "four arched windows at the measured y 22.05-23.75, lunette at u 8.4",
+     "seenIn": "TMX7316010203-000199_pano_0002_000291"
+    },
+    {
+     "id": "canal-signs",
+     "kind": "sign",
+     "where": "parking and boat-company signs on the quay in front",
+     "approxSizeM": [
+      1.0,
+      2.0
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "not-visible",
+      "note": "street furniture on the quay, not on the building"
+     },
+     "seenIn": "TMX7316010203-000199_pano_0002_000291"
+    }
+   ]
+  },
+  {
+   "tag": "w07-53",
+   "bearing": 53,
+   "lengthM": 5.7,
+   "centre": [
+    4.8812685,
+    52.3641535
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002996_pano_0003_000116",
+   "capturedAt": "2023-03-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "ne-recessed-bays",
+     "kind": "window-shape",
+     "where": "three tall arched windows on corbelled piers over panels",
+     "approxSizeM": [
+      7.5,
+      5.0
+     ],
+     "plan": "simplified",
+     "how": "arched windows with white/slate panels under them and stone piers",
+     "seenIn": "TMX7316010203-002996_pano_0003_000116"
+    }
+   ]
+  },
+  {
+   "tag": "w08-233",
+   "bearing": 233,
+   "lengthM": 5.5,
+   "centre": [
+    4.8811155,
+    52.3637175
+   ],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002951_pano_0004_000044",
+   "capturedAt": "2023-01-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "mosaic-panel",
+     "kind": "lettering",
+     "where": "AMERICAN HOTEL tile panel on the tower shaft facing the canal",
+     "approxSizeM": [
+      1.9,
+      1.6
+     ],
+     "plan": "simplified",
+     "how": "flat blue tile panel proud of the faceted tower shell with raised ochre AMERICAN / HOTEL lettering",
+     "seenIn": "TMX7316010203-002951_pano_0004_000044"
+    },
+    {
+     "id": "corner-entrance",
+     "kind": "window-shape",
+     "where": "entrance and arched windows of the narrow bay between the gable front and the tower",
+     "approxSizeM": [
+      5.5,
+      4.2
+     ],
+     "plan": "modelled",
+     "how": "door, arched ground windows with hood, rusticated stone blocks",
+     "seenIn": "TMX7316010203-002951_pano_0004_000044"
+    },
+    {
+     "id": "corner-balustrade",
+     "kind": "other",
+     "where": "pierced balustrade over the ground storey",
+     "approxSizeM": [
+      5.5,
+      1.0
+     ],
+     "plan": "simplified",
+     "how": "stone rails with posts",
+     "seenIn": "TMX7316010203-002951_pano_0004_000044"
+    },
+    {
+     "id": "tower-window-groups",
+     "kind": "window-shape",
+     "where": "groups of three narrow lights up the tower shaft",
+     "approxSizeM": [
+      1.3,
+      1.8
+     ],
+     "plan": "modelled",
+     "how": "three groups of three lights with stone sill and head slabs on bearings 150/190/230",
+     "seenIn": "TMX7316010203-001968_pano_0000_000121 (pitched cut tower/canal-2021-top.jpg)"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "3D BAG (LoD2.2)",
+   "url": "https://3dbag.nl/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
