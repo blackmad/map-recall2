@@ -1,0 +1,608 @@
+{
+ "generatedAt": "2026-10-13",
+ "source": "OSM amenity=library operator OBA (Overpass), PDOK Locatieserver + BAG WFS, pand-reference panoramas (CC BY 4.0)",
+ "libraries": [
+  {
+   "name": "OBA Banne",
+   "address": "Bezaanjachtplein 249, Amsterdam",
+   "osm": "node/2847285456",
+   "osmLatLng": [
+    52.4080958,
+    4.9168938
+   ],
+   "pandIds": [
+    "0363100012239467"
+   ],
+   "verblijfsobject": "0363010012063676",
+   "bagAddress": "Bezaanjachtplein 249, 1034CR Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 2013,
+   "osmToAddressM": 41,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [],
+   "referenceStatus": "no-wall"
+  },
+  {
+   "name": "OBA Bijlmerplein",
+   "address": "Bijlmerplein 393, Amsterdam",
+   "osm": "node/2862834835",
+   "osmLatLng": [
+    52.3153892,
+    4.9535813
+   ],
+   "pandIds": [
+    "0363100012079410"
+   ],
+   "verblijfsobject": "0363010011032365",
+   "bagAddress": "Bijlmerplein 393, 1102DK Amsterdam",
+   "gebruiksdoel": "winkelfunctie",
+   "bouwjaar": 1987,
+   "osmToAddressM": 12,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [],
+   "referenceStatus": "no-wall"
+  },
+  {
+   "name": "OBA Bos en Lommer",
+   "address": "Bos en Lommerweg 233, Amsterdam",
+   "osm": "node/2808743217",
+   "osmLatLng": [
+    52.3787701,
+    4.8512273
+   ],
+   "pandIds": [
+    "0363100012074641"
+   ],
+   "verblijfsobject": "0363010000593354",
+   "bagAddress": "Bos en Lommerweg 233, 1055DV Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 1940,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2018,
+    2021
+   ],
+   "referenceStatus": "washed-out"
+  },
+  {
+   "name": "OBA Buitenveldert",
+   "address": "Willem van Weldammelaan 5, Amsterdam",
+   "osm": "node/412161775",
+   "osmLatLng": [
+    52.3326071,
+    4.8759451
+   ],
+   "pandIds": [
+    "0363100012135359"
+   ],
+   "verblijfsobject": "",
+   "bagAddress": "(pand under the OSM point; address geocode was far away)",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 1968,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2025,
+    2017
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "OBA CC Amstel",
+   "address": "Cullinanplein 1, Amsterdam",
+   "osm": "node/9139791976",
+   "osmLatLng": [
+    52.353355,
+    4.9063659
+   ],
+   "pandIds": [
+    "0363100012246190"
+   ],
+   "verblijfsobject": "0363010012098736",
+   "bagAddress": "Cullinanplein 1, 1074JN Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 2018,
+   "osmToAddressM": 4,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [],
+   "referenceStatus": "no-panorama"
+  },
+  {
+   "name": "OBA De Hallen",
+   "address": "Hannie Dankbaarpassage 10, Amsterdam",
+   "osm": "node/2772298378",
+   "osmLatLng": [
+    52.366904,
+    4.8688921
+   ],
+   "pandIds": [
+    "0363100012236693"
+   ],
+   "verblijfsobject": "0363010012078680",
+   "bagAddress": "Hannie Dankbaarpassage 10, 1053RT Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 1906,
+   "osmToAddressM": 29,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2022,
+    2018
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "OBA Ganzenhoef",
+   "address": "Bijlmerdreef 1289, Amsterdam",
+   "osm": "node/2862569283",
+   "osmLatLng": [
+    52.322699,
+    4.9758804
+   ],
+   "pandIds": [
+    "0363100012131914"
+   ],
+   "verblijfsobject": "0363010001033576",
+   "bagAddress": "Bijlmerdreef 1289, 1103TV Amsterdam",
+   "gebruiksdoel": "kantoorfunctie,sportfunctie",
+   "bouwjaar": 2003,
+   "osmToAddressM": 15,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [],
+   "referenceStatus": "no-wall"
+  },
+  {
+   "name": "OBA Geuzenveld",
+   "address": "Albardakade 3, Amsterdam",
+   "osm": "node/2793473647",
+   "osmLatLng": [
+    52.3780277,
+    4.8025806
+   ],
+   "pandIds": [
+    "0363100012121137"
+   ],
+   "verblijfsobject": "0363010001014512",
+   "bagAddress": "Albardakade 3, 1067DD Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 2002,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2018,
+    2020
+   ],
+   "referenceStatus": "rectify-failed"
+  },
+  {
+   "name": "OBA IJburg",
+   "address": "Diemerparklaan 79, Amsterdam",
+   "osm": "node/2842394971",
+   "osmLatLng": [
+    52.3566548,
+    4.996847
+   ],
+   "pandIds": [
+    "0363100012070481"
+   ],
+   "verblijfsobject": "0363010001983754",
+   "bagAddress": "Diemerparklaan 79, 1087GN Amsterdam",
+   "gebruiksdoel": "overige gebruiksfunctie",
+   "bouwjaar": 2008,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2021,
+    2024
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "OBA Javaplein",
+   "address": "Javaplein 2, Amsterdam",
+   "osm": "node/1278624660",
+   "osmLatLng": [
+    52.3641781,
+    4.93883
+   ],
+   "pandIds": [
+    "0363100012238726"
+   ],
+   "verblijfsobject": "0363010012072188",
+   "bagAddress": "Javaplein 2, 1094HW Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 2011,
+   "osmToAddressM": 6,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2020,
+    2024
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "OBA Linnaeus",
+   "address": "Linnaeusstraat 44, Amsterdam",
+   "osm": "node/2826146001",
+   "osmLatLng": [
+    52.3581084,
+    4.926209
+   ],
+   "pandIds": [
+    "0363100012122086"
+   ],
+   "verblijfsobject": "",
+   "bagAddress": "(pand under the OSM point; address geocode was far away)",
+   "gebruiksdoel": "bijeenkomstfunctie,winkelfunctie,woonfunctie",
+   "bouwjaar": 1916,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2021,
+    2018
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "OBA Mercatorplein",
+   "address": "Mercatorplein 103, Amsterdam",
+   "osm": "node/2678712018",
+   "osmLatLng": [
+    52.3693887,
+    4.8502319
+   ],
+   "pandIds": [
+    "0363100012151434"
+   ],
+   "verblijfsobject": "0363010000984311",
+   "bagAddress": "Mercatorplein 103, 1057CA Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 1927,
+   "osmToAddressM": 11,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2024,
+    2019
+   ],
+   "referenceStatus": "washed-out"
+  },
+  {
+   "name": "OBA Molenwijk",
+   "address": "Molenwijk 21, Amsterdam",
+   "osm": "node/2846666788",
+   "osmLatLng": [
+    52.4178054,
+    4.8929718
+   ],
+   "pandIds": [
+    "0363100012098534"
+   ],
+   "verblijfsobject": "0363010000745340",
+   "bagAddress": "Molenwijk 21, 1035EG Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 1987,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2025,
+    2024
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "OBA Next",
+   "address": "(no address in OSM)",
+   "osm": "way/1462541851",
+   "osmLatLng": [
+    52.3167638,
+    4.9798658
+   ],
+   "pandIds": [],
+   "verblijfsobject": "",
+   "bagAddress": "",
+   "gebruiksdoel": "",
+   "bouwjaar": null,
+   "osmToAddressM": null,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [],
+   "referenceStatus": "no-pand"
+  },
+  {
+   "name": "OBA Olympisch Kwartier",
+   "address": "Laan der Hesperiden 18, Amsterdam",
+   "osm": "node/279185367",
+   "osmLatLng": [
+    52.3452848,
+    4.8558875
+   ],
+   "pandIds": [
+    "0363100012073586"
+   ],
+   "verblijfsobject": "0363010001027287",
+   "bagAddress": "Laan der Hesperiden 18, 1076DN Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 2005,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2019,
+    2021
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "OBA Oosterdok",
+   "address": "Oosterdokskade 143, Amsterdam",
+   "osm": "node/251154465",
+   "osmLatLng": [
+    52.3762463,
+    4.9081983
+   ],
+   "pandIds": [
+    "0363100012164964"
+   ],
+   "verblijfsobject": "0363010001166450",
+   "bagAddress": "Oosterdokskade 143, 1011DL Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 2008,
+   "osmToAddressM": 48,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [],
+   "referenceStatus": "no-wall"
+  },
+  {
+   "name": "OBA Osdorp",
+   "address": "Osdorpplein 16, Amsterdam",
+   "osm": "node/2081487344",
+   "osmLatLng": [
+    52.3589218,
+    4.8068695
+   ],
+   "pandIds": [
+    "0363100012085435"
+   ],
+   "verblijfsobject": "0363010000998224",
+   "bagAddress": "Osdorpplein 16, 1068EL Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 1999,
+   "osmToAddressM": 6,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2016,
+    2022
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "OBA Postjesweg",
+   "address": "Postjesweg 340, Amsterdam",
+   "osm": "node/4906785858",
+   "osmLatLng": [
+    52.364284,
+    4.8350577
+   ],
+   "pandIds": [
+    "0363100012248844"
+   ],
+   "verblijfsobject": "0363010012115740",
+   "bagAddress": "Postjesweg 340, 1061AX Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 2019,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2025,
+    2020
+   ],
+   "referenceStatus": "washed-out"
+  },
+  {
+   "name": "OBA Reigersbos",
+   "address": "Rossumplein 1, Amsterdam",
+   "osm": "node/2862327848",
+   "osmLatLng": [
+    52.2962871,
+    4.9764586
+   ],
+   "pandIds": [
+    "0363100012073560"
+   ],
+   "verblijfsobject": "0363010000923199",
+   "bagAddress": "Rossumplein 1, 1106AX Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 1984,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2020,
+    2025
+   ],
+   "referenceStatus": "washed-out"
+  },
+  {
+   "name": "OBA Roelof Hartplein",
+   "address": "Roelof Hartplein 430, Amsterdam",
+   "osm": "node/324817976",
+   "osmLatLng": [
+    52.3526099,
+    4.8826015
+   ],
+   "pandIds": [
+    "0363100012148010"
+   ],
+   "verblijfsobject": "0363010000794948",
+   "bagAddress": "Roelof Hartplein 430, 1071TT Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 1928,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2021,
+    2025
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "OBA Slotermeer",
+   "address": "Slotermeerlaan 103, Amsterdam",
+   "osm": "node/2793322501",
+   "osmLatLng": [
+    52.3786962,
+    4.8199166
+   ],
+   "pandIds": [
+    "0363100012083385"
+   ],
+   "verblijfsobject": "",
+   "bagAddress": "(pand under the OSM point; address geocode was far away)",
+   "gebruiksdoel": "onderwijsfunctie",
+   "bouwjaar": 1977,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2022,
+    2025
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "OBA Spaarndammerbuurt",
+   "address": "Spaarndammerstraat 490, Amsterdam",
+   "osm": "node/2788129544",
+   "osmLatLng": [
+    52.3889092,
+    4.8799997
+   ],
+   "pandIds": [
+    "0363100012127052"
+   ],
+   "verblijfsobject": "0363010000815385",
+   "bagAddress": "Spaarndammerstraat 490, 1013SZ Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 1981,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2021,
+    2020
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "OBA Staatsliedenbuurt",
+   "address": "Van Hallstraat 615, Amsterdam",
+   "osm": "node/2321844596",
+   "osmLatLng": [
+    52.3796714,
+    4.8720423
+   ],
+   "pandIds": [
+    "0363100012069991"
+   ],
+   "verblijfsobject": "0363010001033532",
+   "bagAddress": "Van Hallstraat 615, 1051HE Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 2005,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2024,
+    2025
+   ],
+   "referenceStatus": "washed-out"
+  },
+  {
+   "name": "OBA Van der Pek",
+   "address": "Gentiaanstraat 1, Amsterdam",
+   "osm": "node/4249153858",
+   "osmLatLng": [
+    52.3909375,
+    4.9117961
+   ],
+   "pandIds": [
+    "0363100012106652"
+   ],
+   "verblijfsobject": "0363010012111518",
+   "bagAddress": "Gentiaanstraat 1, 1031AE Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 1923,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2021,
+    2018
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "OBA Waterlandplein",
+   "address": "Waterlandplein 302, Amsterdam",
+   "osm": "node/3951558425",
+   "osmLatLng": [
+    52.3931152,
+    4.9548315
+   ],
+   "pandIds": [
+    "0363100012239985"
+   ],
+   "verblijfsobject": "0363010012066498",
+   "bagAddress": "Waterlandplein 302, 1024NB Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 2013,
+   "osmToAddressM": 1,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [],
+   "referenceStatus": "no-wall"
+  }
+ ]
+}
