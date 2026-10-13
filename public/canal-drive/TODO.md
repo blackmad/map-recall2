@@ -518,18 +518,26 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   tram, footways, landuse, piers missing from extracts; Utrecht/Rotterdam/Den
   Haag need extracts; footprint tiles to a worker; the Leaflet map picker
   (`map-picker.js:243`) also loads live OSM tiles — replace it too.
-- **Own ground in game behind `?ownGround=1`** (city-wide, 294 cells, 29.1 MB
-  gzip): blockers for default-on — per-polder water levels (Osdorp land −2.17 m
-  under water at −1.77 m); GPU time on a real iPhone (1.35M tris resident);
-  labels still MapLibre symbol layers; road widths from OSM (BGT: store one
-  measured width per way offline, not polygons). Recommendation: default-on in
-  the canal belt first after a real-iPhone measurement. Per-building chunk
-  bases verified only on flat streets. Size cuts if needed: 4 m relief
+- **Own ground in game behind `?ownGround=1`** (city-wide, 294 cells, 29.6 MB
+  gzip after 2026-10-13). Data blockers cleared 2026-10-13 (HISTORY): per-polder
+  water levels, BGT width per way (73.6% of drawable ways), 931 measured
+  bridges. Remaining before default-on: a desktop ride-perf measurement with
+  `?ownGround=1&sharedFrame=1` (iPhone later; desktop outranks it ~10x, user);
+  labels still MapLibre symbol layers; hosting quota (+0.53 MB more). Then
+  default-on in the canal belt. Follow-ups from the lane: wire
+  `bgt-width-by-class.json` into the 2D `ROAD_WIDTHS` reader so the corridor
+  felt matches the road seen (medians: residential 5.0 m vs prior 5.2,
+  tertiary 6.6 vs 4.5, secondary 7.2 vs 6.2, cycleway 3.0 vs 2.5, footway 2.8
+  vs 2.0); houseboats still take one city-wide level (`setWaterLevel`); the
+  per-way `bgt-way-widths.json` (311 KB gz) is staged, not published; 25
+  unnumbered bridge-register rows were skipped because their positional ids
+  shift; 118 movable bridges stay flat by design. Per-building chunk bases
+  verified only on flat streets. Size cuts if needed: 4 m relief
   everywhere (−4 MB), drop pad tiles. Firebase deploy grows ~24.6 MB net —
   hosting storage is already over quota.
 - **Elevation follow-ups** (`?elevation=1`, `docs/elevation.md`): no AHN
-  ground relief; one water level everywhere (polders, IJ shore get the same
-  quay wall); route line hidden on humped decks and ramps paint over ~20 m of
+  ground relief (own ground has it); water level is per polder since
+  2026-10-13 but every shore gets the same quay wall; route line hidden on humped decks and ramps paint over ~20 m of
   street; boats below street level not clipped at steep angles (boat mode not
   reviewed); relies on MapLibre private stencil fields; no settings toggle —
   decide default-on after a review drive.
