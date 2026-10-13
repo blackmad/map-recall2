@@ -1,5 +1,33 @@
 # Canal Recall — what is built
 
+## Large tier, second customers: Kattenburg quadrangle and Heinekenplein block; courtyard footprints, sealed slivers, closed boxes (2026-10-13)
+
+Lane `lane/dominant-large-20261013` (Sonnet) after the elevation-skeleton
+brief proved stale. Selection from `dominant-building-backlog.json`: 250
+pands in the central box, 206 without a model, ranked by footprint ÷
+distance, ~70 looked at through `pand-reference`, 26 probed with a
+one-window recipe against the gates. Two authored: `kattenburg-wings-164938`
+(1782 brick quadrangle, 3,738 m², 4 storeys × 14 bays on both photographed
+ranges, 10,161 tris, audit 49.3; name unverified, courtyard and ends blank)
+and `heinekenplein-130580` (1995 block, 7,747 tris, audit 37.4; gateway,
+brand lettering and the unphotographed 32 m tower not modelled). Installed
+as `ordinary-0363100012164938` / `-130580`; the Heinekenplein footprint
+encloses three pands (29, 1,415, 51 m²) that the integrator added to its
+`aliases`/`suppress` so `check:osm-under-models` stays at 0.
+
+Shared fixes that every later large recipe gets: `decodeThreeDBag` keeps
+LoD0 hole rings (courtyard buildings failed footprint IoU at 0.686;
+`courtyardFootprint.test.ts`; cached `facts.json` for courtyard pands must
+be regenerated); compose options `sealSlivers` (3DBAG wall surfaces under
+1 cm² kept as plain wall, otherwise 2.6 m of open edge) and `closedBoxes`
+(sills, heads and surrounds get a back face — 176 m of false open edges on
+Kattenburg); `windows: 'low'`; `audit-glb-quality.ts` exempts measured party
+walls (`partyWallBearings` from a large `report.json` next to the GLB) from
+the 600 m² blank-wall limit; `scripts/pand-reference/all-walls.ts` gives one
+rectified crop per exposed wall. `fit-golden` 41 identical, block-kit 8
+identical, building-recipes 77, geometry-audit 36.
+
+
 ## Gameplay follow-ups: review-ride planner, exposure scheduling, questions-a-minute setting, finish-card story, ferry prompts (2026-10-13)
 
 Lane `gameplay/followups-20261013` (Sonnet), merged with the `game.js` ferry

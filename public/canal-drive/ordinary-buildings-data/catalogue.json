@@ -3561,7 +3561,7 @@
       "bounds": {
         "min": [
           -19.2172908782959,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -13.932360649108887
         ],
         "max": [
@@ -9241,7 +9241,7 @@
       "bounds": {
         "min": [
           -19.893112182617188,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -17.881860733032227
         ],
         "max": [
@@ -9906,7 +9906,7 @@
       "bounds": {
         "min": [
           -17.276670455932617,
-          -5.2452087118126656e-8,
+          -5.2452087118126656e-08,
           -19.4085750579834
         ],
         "max": [
@@ -19659,7 +19659,7 @@
       "bounds": {
         "min": [
           -14.545639991760254,
-          9.536743306171047e-8,
+          9.536743306171047e-08,
           -16.488889694213867
         ],
         "max": [
@@ -19757,7 +19757,7 @@
       "bounds": {
         "min": [
           -19.340869903564453,
-          -1.9073486612342094e-7,
+          -1.9073486612342094e-07,
           -29.3840274810791
         ],
         "max": [
@@ -19993,7 +19993,7 @@
       "bounds": {
         "min": [
           -22.37699317932129,
-          -1.9073486612342094e-7,
+          -1.9073486612342094e-07,
           -50.65300750732422
         ],
         "max": [
@@ -20209,7 +20209,7 @@
       "bounds": {
         "min": [
           -23.991369247436523,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -15.057171821594238
         ],
         "max": [
@@ -20323,7 +20323,7 @@
       "bounds": {
         "min": [
           -14.917290687561035,
-          -3.814697322468419e-7,
+          -3.814697322468419e-07,
           -12.036028861999512
         ],
         "max": [
@@ -20428,7 +20428,7 @@
       "bounds": {
         "min": [
           -22.194652557373047,
-          -4.7683716530855236e-8,
+          -4.7683716530855236e-08,
           -8.861071586608887
         ],
         "max": [
@@ -24567,6 +24567,530 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T12:55:30.511Z"
+    },
+    {
+      "id": "ordinary-0363100012164938",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012164938",
+      "name": "Kattenburg (Marineterrein), Amsterdam: 1782 brick wings on Kattenburgerstraat and the canal",
+      "hash": "0098100d5e0f48d7f0b57489cbcceb9a963b421d34be657d57c8695b9f5ab94a",
+      "sha256": "0098100d5e0f48d7f0b57489cbcceb9a963b421d34be657d57c8695b9f5ab94a",
+      "bytes": 750512,
+      "triangles": 10161,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -61.683,
+          0,
+          -38.343
+        ],
+        "max": [
+          50.62,
+          21.18,
+          39.726
+        ]
+      },
+      "anchor": [
+        4.9099367,
+        52.3645834
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.910578,
+              52.3647619
+            ],
+            [
+              4.9105732,
+              52.364761
+            ],
+            [
+              4.910538,
+              52.3648335
+            ],
+            [
+              4.9105146,
+              52.3648292
+            ],
+            [
+              4.9104666,
+              52.3649277
+            ],
+            [
+              4.9098579,
+              52.3648166
+            ],
+            [
+              4.9098476,
+              52.3648377
+            ],
+            [
+              4.9096276,
+              52.3647975
+            ],
+            [
+              4.9096379,
+              52.3647764
+            ],
+            [
+              4.9090283,
+              52.3646653
+            ],
+            [
+              4.9090742,
+              52.364571
+            ],
+            [
+              4.9090499,
+              52.3645666
+            ],
+            [
+              4.9091724,
+              52.3643157
+            ],
+            [
+              4.9091962,
+              52.36432
+            ],
+            [
+              4.9092423,
+              52.3642253
+            ],
+            [
+              4.9098511,
+              52.3643362
+            ],
+            [
+              4.9098613,
+              52.3643151
+            ],
+            [
+              4.9100814,
+              52.3643552
+            ],
+            [
+              4.9100711,
+              52.3643763
+            ],
+            [
+              4.9106809,
+              52.3644874
+            ],
+            [
+              4.9106329,
+              52.3645859
+            ],
+            [
+              4.9106563,
+              52.3645902
+            ],
+            [
+              4.9106211,
+              52.3646627
+            ],
+            [
+              4.9106257,
+              52.3646635
+            ]
+          ],
+          [
+            [
+              4.910308,
+              52.3647862
+            ],
+            [
+              4.9103611,
+              52.3646771
+            ],
+            [
+              4.9103491,
+              52.3646749
+            ],
+            [
+              4.9103608,
+              52.3646508
+            ],
+            [
+              4.9103728,
+              52.364653
+            ],
+            [
+              4.9104259,
+              52.3645439
+            ],
+            [
+              4.9099391,
+              52.3644552
+            ],
+            [
+              4.9099169,
+              52.3645008
+            ],
+            [
+              4.9100026,
+              52.3645165
+            ],
+            [
+              4.9099862,
+              52.3645503
+            ],
+            [
+              4.9100127,
+              52.3645551
+            ],
+            [
+              4.9100054,
+              52.3645701
+            ],
+            [
+              4.9100368,
+              52.3645758
+            ],
+            [
+              4.9100088,
+              52.3646333
+            ],
+            [
+              4.909951,
+              52.3646228
+            ],
+            [
+              4.9099292,
+              52.3646675
+            ],
+            [
+              4.9098435,
+              52.3646518
+            ],
+            [
+              4.9098213,
+              52.3646975
+            ]
+          ],
+          [
+            [
+              4.9092889,
+              52.3646005
+            ],
+            [
+              4.9097749,
+              52.364689
+            ],
+            [
+              4.9097971,
+              52.3646434
+            ],
+            [
+              4.9097218,
+              52.3646297
+            ],
+            [
+              4.909744,
+              52.3645841
+            ],
+            [
+              4.9096884,
+              52.3645739
+            ],
+            [
+              4.9097171,
+              52.3645151
+            ],
+            [
+              4.9097599,
+              52.3645229
+            ],
+            [
+              4.9097825,
+              52.3644764
+            ],
+            [
+              4.9098705,
+              52.3644924
+            ],
+            [
+              4.9098927,
+              52.3644467
+            ],
+            [
+              4.9094548,
+              52.3643669
+            ],
+            [
+              4.9094445,
+              52.3643883
+            ],
+            [
+              4.9093964,
+              52.3643795
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 21.18,
+      "height": 21.18,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-kattenburg-wings-164938.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012164938"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "kattenburg-wings-164938",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012164938/w02-344.jpg",
+          "staging/pand-reference-walls/0363100012164938/w01-164.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 4st 14b",
+          "brick-bay-grid 4st 14b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Not modelled: the barred round-headed ground-floor openings in the boundary wall, the roof dormers, the downpipes, the blind 15th axis at the north wing's right end. Western and eastern gable ends, the rooftop volumes at 19.7 m (panels 49/164/75/64/51) and the courtyard walls have no panorama and are left blank. Name of the institution not established from the sources used."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012164938",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T14:22:44.798Z"
+    },
+    {
+      "id": "ordinary-0363100012130580",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012130580",
+      "name": "Heinekenplein block, Amsterdam (De Pijp): 1995 brick block with a 32 m tower at its north end",
+      "hash": "22755e07286996170904cdb7b3980c5321966e2d184856c93c5b43e2036bde8c",
+      "sha256": "22755e07286996170904cdb7b3980c5321966e2d184856c93c5b43e2036bde8c",
+      "bytes": 573728,
+      "triangles": 7747,
+      "materials": 7,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -36.256,
+          0.001,
+          -35.351
+        ],
+        "max": [
+          14.099,
+          35.166,
+          74.721
+        ]
+      },
+      "anchor": [
+        4.8924996,
+        52.3575303
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8919744,
+              52.3568945
+            ],
+            [
+              4.8925612,
+              52.356859
+            ],
+            [
+              4.8926213,
+              52.3572313
+            ],
+            [
+              4.892615,
+              52.3572317
+            ],
+            [
+              4.8926147,
+              52.3572299
+            ],
+            [
+              4.8925933,
+              52.3572312
+            ],
+            [
+              4.8926035,
+              52.3572935
+            ],
+            [
+              4.8926247,
+              52.3572922
+            ],
+            [
+              4.8926244,
+              52.3572904
+            ],
+            [
+              4.8926307,
+              52.35729
+            ],
+            [
+              4.892656,
+              52.357449
+            ],
+            [
+              4.892672,
+              52.3575466
+            ],
+            [
+              4.8927041,
+              52.3577475
+            ],
+            [
+              4.8926978,
+              52.3577479
+            ],
+            [
+              4.8926972,
+              52.3577445
+            ],
+            [
+              4.8926789,
+              52.3577457
+            ],
+            [
+              4.89269,
+              52.3578136
+            ],
+            [
+              4.892579,
+              52.3578202
+            ],
+            [
+              4.8925806,
+              52.35783
+            ],
+            [
+              4.8925945,
+              52.3578292
+            ],
+            [
+              4.892595,
+              52.357833
+            ],
+            [
+              4.8923557,
+              52.3578475
+            ],
+            [
+              4.8923555,
+              52.3578465
+            ],
+            [
+              4.8923548,
+              52.3578465
+            ],
+            [
+              4.8923314,
+              52.357693
+            ],
+            [
+              4.892237,
+              52.3576987
+            ],
+            [
+              4.892217,
+              52.3575745
+            ],
+            [
+              4.8924522,
+              52.35756
+            ],
+            [
+              4.8924378,
+              52.3574703
+            ],
+            [
+              4.8920711,
+              52.3574931
+            ],
+            [
+              4.8920655,
+              52.3574591
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 35.17,
+      "height": 35.17,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-heinekenplein-130580.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012080460",
+        "NL.IMBAG.Pand.0363100012130580",
+        "NL.IMBAG.Pand.0363100012139518",
+        "NL.IMBAG.Pand.0363100012232488"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "heinekenplein-130580",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012130580/w01-96.jpg",
+          "staging/pand-reference-walls/0363100012130580/w05-186.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 4st 26b",
+          "brick-bay-grid 4st 22b",
+          "brick-bay-grid 4st 10b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "East front (surfaces 1, 80, 102, 21; panels 0, 68, 20 of walls.ts), from the 2020-07-07 and 2022-01-11 panoramas (w01-96 and w02-96, rectified; CC BY 4.0): four storeys of orange-brown brick; the upper floors carry two rows of small low windows at about 1.5 m spacing (26 axes on the 41.6 m panel, `windows: low`) under a top row of paired horizontal ribbons, which the kit draws as the same low windows (no per-storey window style). The ground floor is a brick base with a drive-through gateway (left and centre) and a four-pane shop window at the right; the recipe draws small windows on the whole ground row instead of that mix. The curved plan is straight in 3DBAG (known gap). The gateway, the beer-brand lettering and the shop fascia are not modelled.",
+        "South end (surfaces 7, 121, 122, 126 and the taller 58) from the 2018-07-29 thumbnail only (w05-186: brick with three window rows over a car-park entrance); the car-park opening is not modelled. The 32 m tower at the north end, the west back walls and the roof terrace have no photograph in the cache and stay blank. The 2024-11-21 panorama (w04-6) shows the stone-clad north face of a different rounded block and is not used."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012130580",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T14:22:45.752Z",
+      "aliases": [
+        "NL.IMBAG.Pand.0363100012080460",
+        "NL.IMBAG.Pand.0363100012139518",
+        "NL.IMBAG.Pand.0363100012232488"
+      ]
     }
   ]
 }
