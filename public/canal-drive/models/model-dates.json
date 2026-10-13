@@ -1192,8 +1192,8 @@
       "dateSource": "git-history"
     },
     "hoofdbureau-elandsgracht": {
-      "updatedAt": "2026-10-13T13:28:08.688Z",
-      "version": "2be8617b69f2c08d",
+      "updatedAt": "2026-10-13T14:37:11.898Z",
+      "version": "aadf1d3a0dfbf858",
       "dateSource": "asset-update"
     },
     "hoofdbureau-elandsgracht.lod1": {
@@ -2889,6 +2889,11 @@
     "zuiveringshal-west.lod1": {
       "updatedAt": "2026-10-10T13:42:20.789Z",
       "version": "d7525cb723557381",
+      "dateSource": "asset-update"
+    },
+    "hoofdbureau-elandsgracht.lod1": {
+      "updatedAt": "2026-10-13T14:27:36.077Z",
+      "version": "75889df3c22cb536",
       "dateSource": "asset-update"
     }
   }
