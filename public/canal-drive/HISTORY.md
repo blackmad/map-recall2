@@ -1,5 +1,25 @@
 # Canal Recall — what is built
 
+## A figure kit, and four memorials with real figures (2026-10-14, night)
+
+Lane `landmarks/memorial-figures-20261013`. `scripts/landmarks/figure-kit.ts`
+poses a low-poly human by joint angles (standing, seated, striding, arms
+raised; hats and skirts; ≤ 300 tris each, enforced by `figure-kit-check.ts`),
+solves the pelvis so the lowest foot stands on y = 0, returns joints in the
+model frame for props, and has stroke-font raised lettering. Rebuilt with
+it: Rembrandtmonument (standing with beret and cloak, REMBRANDT in raised
+gold on the die, the 22 Night Watch bronzes on their steel plates with
+flag, shield, drum, pikes and sword; 8,142 tris; the old builder had no
+group at all), Vondelmonument (seated, writing, pen and book; the four
+winged allegories with lyre, mask, book and a praying figure; the two
+lettered lines; 4,392), Slavernijverleden (the giant's sweep re-read from
+the photos, it runs west not east; thirteen walkers on the rope; 4,400) and
+De Dokwerker (boots apart, chin up, cap, 1941 on the pedestal; 516). All
+pass `audit:glb` at slots 100 %. Night Watch plan positions come from two
+photos, not a measured plan; faces, costume detail, the dog and the
+chicken are not modelled.
+
+
 ## Libraries and stadsloketten as large recipes (2026-10-13, evening)
 
 Lane `large/public-buildings-2-20261013`. `libraries-match.ts` (25 OBA
