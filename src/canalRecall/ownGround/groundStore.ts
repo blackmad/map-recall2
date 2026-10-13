@@ -20,7 +20,7 @@ import { applyLocalToRd, extendTile, fitLocalToRd, GroundField, readGroundTile, 
 import { GroundSurface, type DeckSurface, type Vec2 } from './surface.js';
 import type { OsmGroundExtract } from './osmGround.js';
 import type { ParksCell, ParksManifest } from './parks.js';
-import { waterZAt, type WaterGeometry } from './water.js';
+import { openUnderFootbridges, waterZAt, type OpeningDeck, type WaterGeometry } from './water.js';
 import type { CellInput } from './groundCell.js';
 
 /** The game's local frame (galleryPipeline.toLocal), duplicated so the worker bundle stays small. */
@@ -71,7 +71,7 @@ export class GroundStore {
   readonly loadedBytes = { relief: 0, water: 0, osm: 0, parks: 0 };
 
   /** `parks`: load the parks-v1 extract (BGT park surfaces and furniture, parks.ts); off with `?parks=0`. */
-  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean } = {}) {}
+  constructor(private readonly fetchBytes: FetchBytes, private readonly options: { parks?: boolean; openings?: boolean } = {}) {}
 
   private async json<T>(path: string): Promise<T> {
     return JSON.parse(new TextDecoder().decode(await this.fetchBytes(path))) as T;
@@ -305,12 +305,32 @@ export class GroundStore {
         const ring = (r: number[]) => { const out: Vec2[] = []; for (let i = 0; i < r.length; i += 2) out.push(this.toScene(ox + r[i] * quant, oy + r[i + 1] * quant)); return out; };
         const geo: WaterGeometry = { polygons: cell.water.map(poly => poly.map(ring)), shores: cell.shore.map(ring) };
         this.attachLevels(key, geo);
-        this.waterResident.set(key, geo);
-        return geo;
+        const out = this.options.openings === false ? geo : this.withOpenings(key, geo);
+        this.waterResident.set(key, out);
+        return out;
       }).catch(() => null);
       this.water.set(key, p);
     }
     return p;
+  }
+
+  /** Measured deck profiles decoded for the openings rule (not placed on the surface), by register id. */
+  private readonly openingProfiles = new Map<string, OpeningDeck & { bbox: [number, number, number, number] }>();
+  /** Water ids opened per cell (named regressions, the lane report). */
+  readonly openedDecks = new Map<string, string[]>();
+
+  /** Open the water under footbridges whose water polygon stops at the bridge (water.ts openUnderFootbridges). */
+  private withOpenings(key: string, geo: WaterGeometry): WaterGeometry {
+    const rect = this.cellRect(key), quant = this.elevation.quantization.xy, decks: OpeningDeck[] = [];
+    for (const k of GroundStore.neighbours(key)) for (const b of this.measuredByCell.get(k) ?? []) {
+      let p = this.openingProfiles.get(b.id);
+      if (!p) { p = decodeProfile(b, quant, this.toScene); this.openingProfiles.set(b.id, p); }
+      const [a0, b0, a1, b1] = p.bbox;
+      if (!(a1 < rect[0] || a0 > rect[2] || b1 < rect[1] || b0 > rect[3])) decks.push(p);
+    }
+    const r = openUnderFootbridges(geo, decks, rect, WATER_Z);
+    if (r.opened.length) this.openedDecks.set(key, r.opened);
+    return r.geo;
   }
 
   /** Scene z of a NAP level under this extract's datum. */

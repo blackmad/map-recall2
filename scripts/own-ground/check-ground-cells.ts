@@ -26,6 +26,8 @@ const readExtract = async (path: string) => {
 const store = new GroundStore(readExtract);
 /** The same ground without parks-v1 (the parks regressions compare against it: streets must not change). */
 const noParks = new GroundStore(readExtract, { parks: false });
+/** The same ground without water opened under footbridges (the openings regressions show the pin is live). */
+const noOpenings = new GroundStore(readExtract, { openings: false });
 
 let failed = 0;
 const check = (ok: boolean, what: string) => { console.log(`${ok ? 'ok  ' : 'FAIL'} ${what}`); if (!ok) failed++; };
@@ -213,6 +215,7 @@ async function main(): Promise<void> {
   }
   await deckTopRegressions();
   await pocketRegressions();
+  await openingRegressions();
   // Named road regressions: every band of the listed ways reads as street at both LODs.
   for (const reg of [DE_CLERCQSTRAAT]) {
     const [x, y] = toLocal(reg.at[0], reg.at[1]), key = store.cellAt(x, y);
@@ -324,6 +327,44 @@ async function pocketRegressions(): Promise<void> {
     const street = on.filter(t => ['asphalt', 'klinker', 'paving', 'cycle', 'kerb', 'paint'].includes(t)).length;
     check(street === on.length, `${id}: ${street}/${on.length} probes are street with the pocket fill (${[...new Set(on)].join(', ')})`);
     check(off.includes('land'), `${id}: without it ${off.filter(t => t === 'land').length}/${off.length} probes read land (the pin is live)`);
+  }
+}
+
+/**
+ * Water under footbridges (lane belt audit 2026-10-14): the Melkmeisjesbrug's water polygon stops at both deck edges,
+ * so a land strip and two quay walls crossed the Brouwersgracht under it. Along the middle half of the span, on the
+ * axis and 0.5 m either side of it, nothing but the deck lies over the water: no uncut land, no quay wall.
+ */
+const OPENINGS: [string, number, number, string][] = [['BRU0016', 4.89226, 52.37917, 'Melkmeisjesbrug, Brouwersgracht']];
+async function openingRegressions(): Promise<void> {
+  await noOpenings.init();
+  for (const [id, lng, lat, label] of OPENINGS) {
+    const [x, y] = toLocal(lng, lat);
+    let owner = '';
+    for (const k of GroundStore.neighbours(store.cellAt(x, y))) { if (!store.osmCells.has(k)) continue; await store.prepareCell(k); if (store.decks(k).some(d => d.profile.id === id)) { owner = k; break; } }
+    if (!owner) { check(false, `${id}: placed in a streamed cell`); continue; }
+    const p = store.surface.decks.find(d => d.profile.id === id)!.profile, last = p.x.length - 1;
+    const keys = GroundStore.neighbours(owner).filter(k => store.covers(k));
+    const under = async (s: GroundStore) => {
+      const cells: BuiltCell[] = [];
+      for (const k of keys) cells.push(buildCell(await s.cellInput(k, 0)));
+      const bad: string[] = [];
+      let probes = 0;
+      for (const f of [0.3, 0.4, 0.5, 0.6, 0.7]) {
+        const i = p.s.findIndex(q => q >= p.deck[0] + (p.deck[1] - p.deck[0]) * f), a = Math.max(0, i - 1), b = Math.min(last, i + 1);
+        const dx = p.x[b] - p.x[a], dy = p.y[b] - p.y[a], l = Math.hypot(dx, dy) || 1;
+        for (const o of [-0.5, 0, 0.5]) {
+          const qx = p.x[i] - dy / l * o, qy = p.y[i] + dx / l * o;
+          const hits = cells.flatMap(c => layersAt(c, qx, qy).hits).filter(h => !h.cut && (h.layer === 'land' || h.layer === 'quay'));
+          probes++;
+          if (hits.length) bad.push(`${f}/${o}:${hits.map(h => `${h.layer}@${h.z}`).join(',')}`);
+        }
+      }
+      return { probes, bad };
+    };
+    const on = await under(store), off = await under(noOpenings);
+    check(!on.bad.length && (store.openedDecks.get(owner) ?? [...store.openedDecks.values()].flat()).includes(id), `${id} (${label}): water opened under it, ${on.probes - on.bad.length}/${on.probes} probes free of land and quay walls${on.bad.length ? ` (${on.bad.slice(0, 4).join(' ')})` : ''}`);
+    check(off.bad.length > 0, `${id}: without the opening ${off.bad.length}/${off.probes} probes hit land or a quay wall (the pin is live)`);
   }
 }
 
