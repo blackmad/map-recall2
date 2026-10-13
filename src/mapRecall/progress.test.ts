@@ -86,3 +86,24 @@ test('newlyEarned lists neighbourhoods answered well this session that were not 
   const results = [pin(old, 90, 4500), pin(a, 75, 2000), pin(b, 96, 4900), pin(miss, 10, 50), pin(street, 99, 5000), pin(a, 80, 2200)];
   assert.deepEqual(newlyEarned(results, before).map((r) => [r.feature.name, r.pointsEarned]), [['B', 4900], ['A', 2200]]);
 });
+
+test('formatDaysAgo counts calendar days', async () => {
+  const { formatDaysAgo } = await import('./progress');
+  assert.equal(formatDaysAgo(NOW - 60_000, NOW), 'today');
+  assert.equal(formatDaysAgo(new Date(2026, 9, 12, 23, 50).getTime(), new Date(2026, 9, 13, 0, 10).getTime()), 'yesterday');
+  assert.equal(formatDaysAgo(NOW - 3 * DAY, NOW), '3 days ago');
+  assert.equal(formatDaysAgo(NOW - 21 * DAY, NOW), '3 weeks ago');
+  assert.equal(formatDaysAgo(NOW - 90 * DAY, NOW), '3 months ago');
+  assert.equal(formatDaysAgo(NOW - 400 * DAY, NOW), 'a year ago');
+});
+
+test('seenBeforeLabel: missed before, known after two reviews, nothing for a first sight', async () => {
+  const { seenBeforeLabel } = await import('./progress');
+  const a = feature('Jordaan');
+  assert.equal(seenBeforeLabel([], a, 'pinpoint', NOW), null);
+  assert.equal(seenBeforeLabel([state(a, { lastReviewedAt: NOW - 3 * DAY, lapses: 1, repetitions: 0 })], a, 'pinpoint', NOW), 'Seen 3 days ago · missed before');
+  assert.equal(seenBeforeLabel([state(a, { lastReviewedAt: NOW - 3 * DAY, repetitions: 2 })], a, 'pinpoint', NOW), 'Seen 3 days ago · known · 2 reviews');
+  assert.equal(seenBeforeLabel([state(a, { lastReviewedAt: NOW - DAY })], a, 'pinpoint', NOW), 'Seen yesterday');
+  // Other mode does not count.
+  assert.equal(seenBeforeLabel([state(a)], a, 'guess_name', NOW), null);
+});

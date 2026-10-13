@@ -42,6 +42,11 @@ interface MapComponentProps {
   searchBoundary?: SearchBoundary | null;
   showSearchBoundary?: boolean;
   showLocate?: boolean;
+  /** Question forms (wave 2): a relation question's second candidate, drawn like the highlight and unnamed until the answer. */
+  relationPair?: { other: StreetFeature } | null;
+  /** Question forms (wave 2): the bonus pin after the reveal; `guess` is null while waiting for the tap. */
+  bonusPin?: { name: string; center: [number, number]; guess: [number, number] | null } | null;
+  onBonusClick?: (latlng: [number, number]) => void;
 }
 
 function getFeatureColors(type: string) {
@@ -301,6 +306,9 @@ export const MapComponent: React.FC<MapComponentProps> = ({
   searchBoundary,
   showSearchBoundary,
   showLocate = true,
+  relationPair,
+  bonusPin,
+  onBonusClick,
 }) => {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
@@ -481,6 +489,95 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     map.on('zoomend', schedule);
     return () => { cancelAnimationFrame(frame); map.off('zoomend', schedule); };
   }, [currentFeature, gameMode, isRoundComplete, isGameOver, showPlaceClues]);
+
+  // Question forms (wave-2 lane, 2026-10-13), self-contained: its own layer group and click handler.
+  // A relation question's second candidate is drawn exactly like the Guess Name highlight (in the
+  // target's colours, so the style never tells them apart) and named only after the answer; the
+  // bonus pin after the reveal takes one tap, then shows the pin, the landmark's true dot and the
+  // gap. Both re-fit, after the reveal effect's own fit, to include everything they drew.
+  const questionFormsRef = useRef<L.LayerGroup | null>(null);
+  useEffect(() => {
+    const map = mapInstanceRef.current;
+    if (!map) return;
+    questionFormsRef.current?.remove();
+    questionFormsRef.current = null;
+    if (isGameOver || !currentFeature || (!relationPair && !bonusPin)) return;
+    const group = L.layerGroup().addTo(map);
+    questionFormsRef.current = group;
+    const cleanups: Array<() => void> = [];
+    const extend: L.LatLngBounds[] = [];
+
+    if (relationPair) {
+      const other = relationPair.other;
+      const colors = getFeatureColors(currentFeature.type);
+      const lines = featureLines(other);
+      if (lines) {
+        group.addLayer(L.polyline(lines, { color: '#26372f', weight: 14, opacity: 0.82, lineCap: 'round', lineJoin: 'round', className: 'qf-relation-other' }));
+        group.addLayer(L.polyline(lines, { color: colors.glow, weight: 12, opacity: 0.4, lineCap: 'round', lineJoin: 'round' }));
+        const core = L.polyline(lines, { color: colors.core, weight: 6, opacity: 0.95, lineCap: 'round', lineJoin: 'round' });
+        group.addLayer(core);
+        extend.push(core.getBounds());
+      } else {
+        group.addLayer(L.circle(other.center, { radius: other.radius || 90, color: colors.core, fillColor: colors.fill, fillOpacity: 0.3, weight: 3, className: 'qf-relation-other' }));
+        extend.push(L.latLngBounds([other.center]));
+      }
+      const targetLines = featureLines(currentFeature);
+      extend.push(targetLines ? L.polyline(targetLines).getBounds() : L.latLngBounds([currentFeature.center]));
+      if (isRoundComplete) {
+        // Halfway along the line; below it when it lies south of the target, whose label stands above.
+        const anchor = reviewAnchor(other);
+        const below = anchor[0] < currentFeature.center[0];
+        group.addLayer(L.marker(anchor, {
+          icon: L.divIcon({
+            className: 'custom-map-icon qf-relation-label',
+            html: `<div class="inline-flex px-3 py-1.5 rounded-lg bg-[#0b3a8c] text-white font-bold text-xs shadow-lg border border-white/35 items-center gap-1.5 whitespace-nowrap" style="font-family:'Barlow Condensed',sans-serif;letter-spacing:.04em;text-transform:uppercase"><span class="w-2 h-2 rounded-full bg-[#c4a35a]"></span><span>${escapeHtml(other.name)}</span></div>`,
+            iconSize: [180, 32],
+            iconAnchor: [90, below ? -10 : 42],
+          }),
+        }));
+      }
+    }
+
+    if (bonusPin && isRoundComplete) {
+      if (!bonusPin.guess) {
+        const handleBonusClick = (event: L.LeafletMouseEvent) => onBonusClick?.([event.latlng.lat, event.latlng.lng]);
+        map.on('click', handleBonusClick);
+        map.getContainer().classList.add('qf-bonus-armed');
+        cleanups.push(() => { map.off('click', handleBonusClick); map.getContainer().classList.remove('qf-bonus-armed'); });
+      } else {
+        if (L.latLng(bonusPin.guess).distanceTo(bonusPin.center) > 25) {
+          group.addLayer(L.polyline([bonusPin.guess, bonusPin.center], { color: '#c4a35a', weight: 3, dashArray: '6, 8', opacity: 0.9, interactive: false }));
+        }
+        group.addLayer(L.marker(bonusPin.guess, {
+          icon: L.divIcon({ className: 'custom-map-icon', html: '<div class="qf-bonus-guess"></div>', iconSize: [0, 0], iconAnchor: [0, 0] }),
+          interactive: false,
+        }));
+        group.addLayer(L.circleMarker(bonusPin.center, { radius: 7, color: '#fff', weight: 2.5, fillColor: '#8a4a18', fillOpacity: 1, className: 'qf-bonus-target' })
+          .bindTooltip(escapeHtml(bonusPin.name), { permanent: true, direction: 'top', offset: [0, -8], className: 'notable-place-label qf-bonus-label' }));
+        extend.push(L.latLngBounds([bonusPin.guess, bonusPin.center]));
+      }
+    }
+
+    // After the reveal effect's fit (it runs later in this commit): fit what this effect added too.
+    let frame = 0;
+    if (extend.length) {
+      frame = requestAnimationFrame(() => {
+        const bounds = L.latLngBounds([]);
+        if (revealBoundsRef.current) bounds.extend(revealBoundsRef.current);
+        extend.forEach((part) => bounds.extend(part));
+        if (!bounds.isValid()) return;
+        const framed = withMinimumFrame(bounds);
+        revealBoundsRef.current = framed;
+        fitAboveCard(map, framed, isRoundComplete ? RESULT_CARD : GUESS_QUESTION_CARD);
+      });
+    }
+    return () => {
+      cancelAnimationFrame(frame);
+      cleanups.forEach((cleanup) => cleanup());
+      group.remove();
+      if (questionFormsRef.current === group) questionFormsRef.current = null;
+    };
+  }, [currentFeature, relationPair, bonusPin, onBonusClick, isRoundComplete, isGameOver]);
 
   // Both location-based modes use a dropped pin. Keep this list in sync with
   // the crosshair cursor below so a map that looks clickable is clickable.
