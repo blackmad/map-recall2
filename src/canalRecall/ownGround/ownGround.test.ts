@@ -16,7 +16,7 @@ import { GROUND_TONES, STREET_GROUND } from '../look/palette';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
 import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, shadowedWays, LIFT } from './streets';
 import { benchesAlong, bgtParkSurface, buildParks, decodeLine, encodeLine, playgroundKit, playgroundPiece, PARK_LIFT, type ParksCell } from './parks';
-import { buildWaterMask, maskDistance, quayWallMesh, waterSurfaceMesh, waterZAt } from './water';
+import { buildWaterMask, maskDistance, openUnderFootbridges, quayWallMesh, waterSurfaceMesh, waterZAt } from './water';
 import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableFrame, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
@@ -971,4 +971,20 @@ test('land pockets: a small gap enclosed by sidewalks near a junction is paved; 
   assert.ok(tris.every(f => Math.abs(f.c[2] - POCKET_LIFT) < 1e-9), 'under every band');
   assert.equal(fillPockets(cover, [0, 0, 40, 40], [[12, 80]], () => 0, POCKET_LIFT).stats.pockets, 0, 'no junction within POCKET_NEAR_M');
   assert.equal(fillPockets(cover, [0, 0, 40, 40], [[12, 20]], () => 0, POCKET_LIFT, { maxM2: 10 }).stats.pockets, 0, 'larger than the cap');
+});
+
+test('water opens under a footbridge whose water polygon stops at it (Melkmeisjesbrug), not under a wide deck', () => {
+  // A canal along x (y 0..10) cut by a 3 m land strip at x 19..21; a footbridge along y at x = 20, 2.4 m wide.
+  const west: Vec2[] = [[0, 0], [19, 0], [19, 10], [0, 10]], east: Vec2[] = [[21, 0], [40, 0], [40, 10], [21, 10]];
+  const geo = { polygons: [[west], [east]], shores: [[[19, 10], [19, 0]], [[21, 0], [21, 10]], [[0, 0], [19, 0]]] as Vec2[][] };
+  const n = 31, deck = (hw: number) => ({ id: 'B', x: Float64Array.from({ length: n }, () => 20), y: Float64Array.from({ length: n }, (_, i) => -2.5 + i * 0.5), s: Float64Array.from({ length: n }, (_, i) => i * 0.5), halfWidth: Float64Array.from({ length: n }, () => hw), deck: [2, 13] as [number, number] });
+  const r = openUnderFootbridges(geo, [deck(1.2)], [0, -5, 40, 15], -1.77);
+  assert.deepEqual(r.opened, ['B']);
+  assert.equal(r.geo.polygons.length, 3, 'one opening polygon added');
+  assert.equal(r.geo.shores.length, 1, 'the two walls across the canal dropped, the bank kept');
+  const mask = buildWaterMask(r.geo, 0, -5, 40, 15, 0.5, 4);
+  for (const y of [1, 5, 9]) assert.ok(maskDistance(mask, 20, y) < 0, `water under the deck at y ${y}`);
+  for (const x of [18.5, 21.5]) assert.ok(maskDistance(mask, x, 5) < 0, 'the overlap with the water either side stays water (OR, not even-odd)');
+  assert.ok(maskDistance(mask, 20, 12) > 0, 'land beyond the bank');
+  assert.equal(openUnderFootbridges(geo, [deck(4)], [0, -5, 40, 15], -1.77).opened.length, 0, 'an 8 m deck (a road on a dam) is left alone');
 });
