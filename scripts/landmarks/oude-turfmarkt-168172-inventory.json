@@ -1,0 +1,138 @@
+{
+ "schemaVersion": 1,
+ "id": "oude-turfmarkt-168172",
+ "pand": "0363100012168172",
+ "signature": [
+  "uva-brick-front"
+ ],
+ "walls": [
+  {
+   "tag": "w05-235",
+   "bearing": 235,
+   "lengthM": 21.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000354_pano_0001_000246",
+   "capturedAt": "2017-07-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "uva-brick-front",
+     "kind": "window-shape",
+     "where": "SW canal front, five storeys of white-framed sashes",
+     "approxSizeM": [
+      20,
+      17
+     ],
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000354_pano_0001_000246",
+     "how": "brick-bay-grid 5 storeys 8-9 bays with cornice"
+    },
+    {
+     "id": "name-band",
+     "kind": "lettering",
+     "where": "under the cornice, full width",
+     "approxSizeM": [
+      16,
+      0.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000354_pano_0001_000246",
+     "skip": {
+      "reason": "too-small",
+      "note": "0.4 m letters in a 0.5 m band at 17 m height, below the reading size at gallery distance; the large-tier signage mounts (fascia, wall, glazing, canopy) have no cornice-band position, a wall mount lands mid-facade, so none is drawn"
+     }
+    },
+    {
+     "id": "cellar-arches",
+     "kind": "window-shape",
+     "where": "ground floor, row of small arched cellar windows",
+     "approxSizeM": [
+      0.5,
+      0.6
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000354_pano_0001_000246",
+     "skip": {
+      "reason": "too-small",
+      "note": "a row of 0.5 m cellar windows at street level"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w03-91",
+   "bearing": 91,
+   "lengthM": 34.2,
+   "evidence": "photo",
+   "panoId": "TMX7315120208-000073_pano_0003_000676",
+   "capturedAt": "2016-06-09",
+   "checked": true,
+   "items": [
+    {
+     "id": "curved-balconies",
+     "kind": "balcony-ironwork",
+     "where": "E block, left stack, three levels",
+     "approxSizeM": [
+      2.5,
+      7
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7315120208-000073_pano_0003_000676",
+     "skip": {
+      "reason": "too-small",
+      "note": "round balconies 2.5 m wide; the block is drawn with plain low windows"
+     }
+    },
+    {
+     "id": "glass-block-stair",
+     "kind": "window-shape",
+     "where": "centre, two glass-block panels",
+     "approxSizeM": [
+      2,
+      5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7315120208-000073_pano_0003_000676",
+     "skip": {
+      "reason": "too-small",
+      "note": "2 m wide glass-block stair light"
+     }
+    },
+    {
+     "id": "orange-windows",
+     "kind": "window-shape",
+     "where": "all levels, wide two-light windows",
+     "approxSizeM": [
+      3.5,
+      1.4
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7315120208-000073_pano_0003_000676",
+     "how": "windows low in the group palette frame colour orange-brown"
+    },
+    {
+     "id": "entrance-canopy",
+     "kind": "canopy",
+     "where": "right of the stair, glass canopy over orange door",
+     "approxSizeM": [
+      3,
+      2.5
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7315120208-000073_pano_0003_000676",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 3 m glass canopy over a single door"
+     }
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
