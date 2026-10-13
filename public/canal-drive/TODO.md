@@ -72,7 +72,7 @@ presentation bug, recorded as is. `check-manual-landmarks` still fails on its
 american-hotel 504 KB, hotel-de-l-europe 725 KB (52k tris); and eight
 Haparandaweg block-face entries carry no `bytes` (they are not built by
 `build-manual-landmarks`). Decide whether the budget is right or shrink those
-models (cleanup batch 2 has american-hotel). Integrator merges on its own judgement (user).
+models (cleanup batch 2 fixed american-hotel: `b.mark('shell')`, 486 KB). Integrator merges on its own judgement (user).
 Open after the gameplay merge: `RecallStore.expose()` so a passed name is
 scheduled instead of re-asked; a settings control for `maxAsksPerMinute`
 (field on the game today); fold `ridingPromptStyles.ts` into `index.html`;
@@ -817,25 +817,27 @@ the `large` recipe path.
 trustworthy and hard (`opening-floating`, `opening-buried`,
 `opening-overhang`; `materialSlotCoverage` metric), `snapOpenings.ts` attaches
 assemblies at build time, every `build-manual-landmarks.ts` material carries
-`materialSlot`+`tint`. Of the worst 15, 11 PASS; still FAIL on shell holes
-(builder work: close walls/caps): centraal-station (376 open loops, largest
-802 m around roof and glazing), rai-amsterdam (103), valley (~3,070
-zero-thickness aperture walls and glass skin + one detached 657 m² skin part),
-madame-tussauds (one 33.8 m loop at the clipped hip cut). **Batch 2 = the 21
-models the corrected measurement now fails** (baselines not raised, by rule):
-stadhuis, heineken-experience-amsterdam, nieuwe-kerk, jewish-museum,
-dutch-resistance-museum, allard-pierson, cinecenter, straat-museum,
-haparandaweg-2-4, fire-station-hendrik, fire-station-zebra, this-is-holland,
-posthoornkerk, petrus-en-paulus-kerk, oudemanhuispoort, american-hotel,
-krasnapolsky, hilton-amsterdam, booking-hq, scheepvaartmuseum and waag (the
-last two have no baseline entry). Also for batch 2: opstandingskerk east gable
-(37/46 openings off-size), obrechtkerk 43k tris, felix-meritis,
-jodenbreestraat-11, and the three recovered landmarks on
-`wip/recovery-landmark-integration-20261009`. Known: `check-landmark-attachment`
-fails on american-hotel ("builder must call b.mark('shell')") on main already;
-the slot/tint tags do nothing in game until the legacy GLBs export UVs
-(cityLook lane); the "hull-limited see-through" TODO note was wrong — lab111
-and mountain-network were real geometry problems or declared passages
+`materialSlot`+`tint`. Batch 2 landed 2026-10-13 (HISTORY): `audit:glb --only-geometry` 308 pass,
+3 fail. **Batch 3 (open)**: haparandaweg-2-4 (one window 40% buried at
+(-20.3, 9.8/5.7, 19.8); snap cannot lift it, move it in the builder),
+petrus-en-paulus-kerk (north gable needs a photo recount: turret slits,
+fanlight and a 2.8 m sash mixed in one crop), booking-hq (held; 3 hidden
+frame posts), valley (~3,070 open loops, zero-thickness aperture walls and
+glass skin), opstandingskerk east gable (37/46 openings off-size), rialto
+coplanar roof, felix-meritis and jodenbreestraat-11 branches, the recovered
+landmarks on `wip/recovery-landmark-integration-20261009` (academie-theater-
+dans, holocaust-namenmonument, max-euwe-centrum; voormalige-schouwburgpoort
+four-side strip), hotel-de-l-europe window budget (52k tris, 725 KB; 21k
+tris in `sashWindows`, 7.7k at `hotel-de-l-europe-builder.ts:162`; fewer
+mullions saved 1k only — needs a real decision, e.g. lod-style sashes above
+the first floor), mountain-network 649 KB, palace-on-the-dam over 500 KB.
+Strips not viewed by the lane: jewish-museum, dutch-resistance-museum,
+fire-station-hendrik, fire-station-zebra, this-is-holland, oudemanhuispoort,
+waag, scheepvaartmuseum — look at `artifacts/glb-cleanup-2/strips/contact.png`
+(lane worktree) or re-shoot. Known: the slot/tint tags do nothing in game
+until `?cityLook=1` is on (slots are inferred at load there); the
+"hull-limited see-through" TODO note was wrong — lab111 and mountain-network
+were real geometry problems or declared passages
 (`mountain-network-spec.json` `throughPassages`).
 
 **Large tier landed 2026-10-13 (`fitLarge`, `kind: large`; HISTORY).** Open:
