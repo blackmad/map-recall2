@@ -13,19 +13,19 @@
  * three.js draw calls, in `<out>/<frame>-<style>.json`.
  */
 import { test, expect, type Page } from '@playwright/test';
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import sharp from 'sharp';
 import { openRoute } from './helpers';
 
-export type HighlightSpot = { name: string; landmarkId?: string; pick?: [number, number]; standDeg: number; standM: number; saddleM: number };
+export type HighlightSpot = { name: string; landmarkId?: string; pand?: string; pick?: [number, number]; standDeg: number; standM: number; saddleM: number };
 export const HIGHLIGHT_SPOTS: HighlightSpot[] = [
   // Anne Frank House: the three pands on the Westermarkt corner of the Prinsengracht (the user's screenshot block).
   { name: 'westermarkt', landmarkId: 'extract_landmarks_614625734', standDeg: 115, standM: 75, saddleM: 45 },
   { name: 'westerkerk', landmarkId: 'extract_landmarks_1692085215', standDeg: 140, standM: 90, saddleM: 60 },
   { name: 'rijksmuseum', landmarkId: 'extract_landmarks_512243549', standDeg: 195, standM: 150, saddleM: 120 },
   // An ordinary 1890s house on the Bilderdijkstraat (the "building you tapped" path: no landmark, just its id).
-  { name: 'oudwest-terrace', pick: [4.87177, 52.36696], standDeg: 7, standM: 60, saddleM: 35 },
+  { name: 'oudwest-terrace', pand: 'NL.IMBAG.Pand.0363100012236453', pick: [4.87177, 52.36696], standDeg: 7, standM: 60, saddleM: 35 },
 ];
 const STYLES = (process.env.HIGHLIGHT_STYLES || 'yellow,a,b,c').split(',').filter(Boolean);
 const FRAMES = [{ name: 'default', query: '' }, { name: 'shared', query: 'sharedFrame=1' }].filter(f => !process.env.HIGHLIGHT_FRAMES || process.env.HIGHLIGHT_FRAMES.split(',').includes(f.name));
@@ -62,6 +62,7 @@ export async function teleport(page: Page, p: { lng: number; lat: number; bearin
 
 /** The spot's landmark, or a synthetic "tapped building" landmark for the nearest streamed building to `pick`. */
 export async function spotLandmark(page: Page, spot: HighlightSpot): Promise<any> {
+  if (spot.pand) return { id: `tapped-${spot.pand}`, name: 'Terrace house', lngLat: spot.pick, buildingIds: [spot.pand], featureTarget: { source: 'osm-building-appearance', id: spot.pand } };
   return page.evaluate(({ id, pick }) => {
     const g = (window as any).canalRecallGame, vm = g.vectorMap;
     if (id) return (g.landmarks || []).find((l: any) => l.id === id) ?? (g._allLandmarks || []).find((l: any) => l.id === id) ?? null;
@@ -112,7 +113,9 @@ for (const frame of FRAMES) for (const style of STYLES) {
       await teleport(page, p);
       await page.waitForTimeout(4000);
       await teleport(page, p);
-      await page.waitForTimeout(8000);
+      await page.waitForTimeout(4000);
+      await page.waitForFunction(() => { const t = (window as any).canalRecallGame.vectorMap._threeBuildings; return t?.ready && !t.pending.length && !t.inflight.size; }, null, { timeout: 90_000 }).catch(() => {});
+      await page.waitForTimeout(3000);
       const landmark = await spotLandmark(page, spot);
       expect(landmark, `${spot.name}: landmark`).toBeTruthy();
       const state = await page.evaluate((l) => {
@@ -134,6 +137,9 @@ for (const frame of FRAMES) for (const style of STYLES) {
         for (const e of Array.from(document.body.querySelectorAll('*'))) (e as HTMLElement).style.visibility = '';
       });
     }
-    writeFileSync(`${OUT}/${frame.name}-${style}.json`, JSON.stringify({ frame: frame.name, style, query, records }, null, 1));
+    // Merge with an earlier run of other spots (HIGHLIGHT_SPOT_NAMES re-shoots a subset).
+    const json = `${OUT}/${frame.name}-${style}.json`;
+    const kept = existsSync(json) ? JSON.parse(readFileSync(json, 'utf8')).records.filter((r: any) => !records.some(n => n.spot === r.spot && n.view === r.view)) : [];
+    writeFileSync(json, JSON.stringify({ frame: frame.name, style, query, records: [...kept, ...records] }, null, 1));
   });
 }
