@@ -7,6 +7,9 @@
  *    the fallback extrusions' source (`HULL_SOURCE`);
  *  - beacon (style a): a thin camera-facing column from just above the roof, ~3 px wide at any distance, fading
  *    upward and with distance (full to 150 m, 30 % beyond 900 m);
+ *  - small targets (style a): each frame the footprint's on-screen share (`footprintShare`) sets the page's boost
+ *    (`smallTargetBoost`, `HIGHLIGHT_BOOST_GLOBAL`): the roof-wash passes read it, and the beacon rises by
+ *    `BEACON_RAISE` × weight × (1 + shortfall) / 2 of its height;
  *  - hull (style a, `focus.hull`): when no pipeline outlines the building (MapLibre's fallback extrusions), the
  *    outline pass round an invisible prism of the footprint, so the fallback reads like every other pipeline.
  *
@@ -15,7 +18,7 @@
  * Style b also keeps the map redrawing while shown (the rim's pulse).
  */
 import {
-  HIGHLIGHT_RECIPES, HULL_SOURCE, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightAccent, highlightStyle, mPerDegLng,
+  HIGHLIGHT_BOOST_GLOBAL, HIGHLIGHT_RECIPES, HULL_SOURCE, footprintShare, smallTargetBoost, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightAccent, highlightStyle, mPerDegLng,
   type HighlightFocus, type HighlightStyle, type LngLat,
 } from './highlight.ts';
 import { hexToRgb } from './palette.ts';
@@ -31,6 +34,44 @@ export const BEACON_HEIGHT_M = 45;
 export const BEACON_PX = 3;
 export const BEACON_FADE_M: readonly [number, number] = [150, 900];
 export const BEACON_FAR_ALPHA = 0.3;
+/** At full small-target boost and full shortfall the beacon is (1 + BEACON_RAISE) × its height. */
+export const BEACON_RAISE = 2;
+/** Beacon width at full small-target boost (CSS px). */
+export const BEACON_BOOST_PX = 4;
+
+/** Beacon height factor for a small-target boost (1 with none). */
+export const beaconRaise = (boost: { weight: number; shortfall: number }) => 1 + BEACON_RAISE * boost.weight * (1 + boost.shortfall) / 2;
+
+/** Area (m²) of local rings (shoelace; either winding), outer rings only. */
+export function ringsArea(rings: readonly (readonly [number, number][])[]): number {
+  let total = 0;
+  for (const ring of rings) {
+    let a = 0;
+    for (let i = 0; i < ring.length; i++) { const [x0, y0] = ring[i], [x1, y1] = ring[(i + 1) % ring.length]; a += x0 * y1 - x1 * y0; }
+    total += Math.abs(a) / 2;
+  }
+  return total;
+}
+
+/**
+ * On-screen radius (CSS px) of a footprint's equivalent circle of `radiusM` at `centre` (local metres), given the
+ * local → clip matrix (column-major) and the CSS viewport: the largest screen offset of the four points `radiusM`
+ * east/west/north/south of the centre (the one across the view is not foreshortened). 0 behind the camera.
+ */
+export function footprintRadiusPx(mvp: ArrayLike<number>, centre: readonly [number, number, number], radiusM: number, cssWidth: number, cssHeight: number): number {
+  const screen = (x: number, y: number, z: number): [number, number] | null => {
+    const m = mvp, cx = m[0] * x + m[4] * y + m[8] * z + m[12], cy = m[1] * x + m[5] * y + m[9] * z + m[13], w = m[3] * x + m[7] * y + m[11] * z + m[15];
+    return w > 1e-9 ? [(cx / w) * cssWidth / 2, (cy / w) * cssHeight / 2] : null;
+  };
+  const c = screen(centre[0], centre[1], centre[2]);
+  if (!c || !(radiusM > 0)) return 0;
+  let best = 0;
+  for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+    const p = screen(centre[0] + dx * radiusM, centre[1] + dy * radiusM, centre[2]);
+    if (p) best = Math.max(best, Math.hypot(p[0] - c[0], p[1] - c[1]));
+  }
+  return best;
+}
 
 /** Mercator [x, y] (0..1) of a point, as maplibregl.MercatorCoordinate.fromLngLat. */
 export function mercatorOf(lng: number, lat: number): [number, number] {
@@ -163,11 +204,15 @@ const BEACON_VERTEX = /* glsl */ `
 attribute float aSide;
 uniform vec2 viewport;
 uniform float widthPx;
+uniform float baseM;
+uniform float raise;
 varying float vUp;
 void main() {
-  // Screen-space width: offset across the projected column, widthPx wide at any distance.
+  // Screen-space width: offset across the projected column, widthPx wide at any distance. Raised (small targets) by
+  // stretching the column above its base.
   mat4 mvp = projectionMatrix * modelViewMatrix;
-  vec4 c0 = mvp * vec4(position, 1.0), c1 = mvp * vec4(position + vec3(0.0, 0.0, 1.0), 1.0);
+  vec3 q = vec3(position.xy, baseM + (position.z - baseM) * raise);
+  vec4 c0 = mvp * vec4(q, 1.0), c1 = mvp * vec4(q + vec3(0.0, 0.0, 1.0), 1.0);
   vec2 d = (c1.xy / c1.w - c0.xy / c0.w) * viewport;
   d = dot(d, d) > 1e-8 ? normalize(d) : vec2(0.0, 1.0);
   c0.xy += vec2(-d.y, d.x) * aSide * widthPx / viewport * c0.w;
@@ -208,6 +253,10 @@ export class HighlightMarker {
   private readonly accent: any;
   /** Last frame's camera distance (m) to the beacon base, for tests. */
   lastDistanceM = NaN;
+  /** Equivalent-circle radius (m) of the focus footprint (0: none known, no small-target boost). */
+  private radiusM = 0;
+  /** Last frame's small-target boost (footprint share of the frame, weight, shortfall). */
+  lastBoost = { share: 0, weight: 0, shortfall: 0 };
 
   constructor(private readonly THREE: any, private readonly map: any, private readonly options: HighlightMarkerOptions = {}) {
     this.style = options.style ?? highlightStyle();
@@ -233,6 +282,8 @@ export class HighlightMarker {
     for (const child of [...this.root.children]) { this.root.remove(child); child.geometry?.dispose(); child.material?.dispose(); }
     this.ring = this.beacon = this.hull = null;
     this.anchor = null;
+    this.radiusM = 0;
+    this.publishBoost({ share: 0, weight: 0, shortfall: 0 });
     cancelAnimationFrame(this.raf);
     if (!focus || (!this.recipe.ring && !this.recipe.beacon)) { this.focus = null; this.map.triggerRepaint?.(); return; }
     const asked = focus;
@@ -253,6 +304,8 @@ export class HighlightMarker {
     this.anchor = anchor;
     this.altitude = Number(this.options.heightAt?.(anchor)) || 0;
     this.local = mercatorFromLocal(anchor, this.altitude);
+    // Only a real footprint gets the small-target boost (the 12 m circle stands for "unknown").
+    if (focus.polygons?.length) this.radiusM = Math.sqrt(ringsArea(focus.polygons.map(p => localRing(p[0] ?? [], anchor))) / Math.PI);
     if (this.recipe.ring) {
       const positions: number[] = [], alphas: number[] = [], index: number[] = [];
       for (const ring of ringOutlines(focus.polygons, anchor)) {
@@ -298,20 +351,27 @@ export class HighlightMarker {
       g.setAttribute('aSide', new THREE.Float32BufferAttribute([-1, 1, -1, 1], 1));
       g.setIndex([0, 1, 2, 2, 1, 3]);
       g.boundingSphere = new THREE.Sphere(new THREE.Vector3(0, 0, (base + top) / 2), BEACON_HEIGHT_M);
-      const m = new THREE.ShaderMaterial({ uniforms: { accent: { value: this.accent }, opacity: { value: 1 }, viewport: { value: new THREE.Vector2(1, 1) }, widthPx: { value: BEACON_PX } },
+      const m = new THREE.ShaderMaterial({ uniforms: { accent: { value: this.accent }, opacity: { value: 1 }, viewport: { value: new THREE.Vector2(1, 1) }, widthPx: { value: BEACON_PX },
+        baseM: { value: base }, raise: { value: 1 } },
         vertexShader: BEACON_VERTEX, fragmentShader: BEACON_FRAGMENT, transparent: true, depthWrite: false, side: THREE.DoubleSide });
       const mesh = new THREE.Mesh(g, m), inv = new THREE.Matrix4(), eye = new THREE.Vector4(), size = new THREE.Vector2();
+      const roofM = focus.heightM ?? 20;
       mesh.name = 'highlight-marker/beacon';
       mesh.frustumCulled = false;
       mesh.renderOrder = 6;
       mesh.onBeforeRender = (renderer: any, _scene: any, camera: any) => {
         renderer.getDrawingBufferSize(size);
-        inv.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse).multiply(mesh.matrixWorld).invert();
+        inv.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse).multiply(mesh.matrixWorld);
+        const dpr = size.x / (renderer.domElement?.clientWidth || size.x);
+        const boost = this.radiusM > 0 ? smallTargetBoost(footprintShare(footprintRadiusPx(inv.elements, [0, 0, roofM], this.radiusM, size.x / dpr, size.y / dpr), size.x / dpr, size.y / dpr)) : smallTargetBoost(0);
+        this.publishBoost(boost);
+        m.uniforms.raise.value = beaconRaise(boost);
+        inv.invert();
         eye.set(0, 0, 1, 0).applyMatrix4(inv);
         const d = Math.abs(eye.w) > 1e-12 ? Math.hypot(eye.x / eye.w, eye.y / eye.w, eye.z / eye.w - base) : 500;
         this.lastDistanceM = d;
         m.uniforms.viewport.value.copy(size);
-        m.uniforms.widthPx.value = BEACON_PX * (size.x / (renderer.domElement?.clientWidth || size.x));
+        m.uniforms.widthPx.value = (BEACON_PX + (BEACON_BOOST_PX - BEACON_PX) * boost.weight) * dpr;
         m.uniforms.opacity.value = beaconAlpha(d);
         m.uniformsNeedUpdate = true;
       };
@@ -327,8 +387,23 @@ export class HighlightMarker {
   }
 
   /** What is shown, for tests and the readout. */
-  status(): { style: HighlightStyle; anchor: LngLat | null; ring: boolean; beacon: boolean; hull: boolean; distanceM: number } {
-    return { style: this.style, anchor: this.anchor, ring: !!this.ring, beacon: !!this.beacon, hull: !!this.hull, distanceM: this.lastDistanceM };
+  status(): { style: HighlightStyle; anchor: LngLat | null; ring: boolean; beacon: boolean; hull: boolean; distanceM: number;
+    boost: { share: number; weight: number; shortfall: number; radiusM: number } } {
+    const b = this.lastBoost, r = (v: number, d = 4) => +v.toFixed(d);
+    return { style: this.style, anchor: this.anchor, ring: !!this.ring, beacon: !!this.beacon, hull: !!this.hull, distanceM: this.lastDistanceM,
+      boost: { share: r(b.share, 5), weight: r(b.weight, 3), shortfall: r(b.shortfall, 3), radiusM: r(this.radiusM, 2) } };
+  }
+
+  /**
+   * The page's small-target boost for the roof-wash passes (`HIGHLIGHT_BOOST_GLOBAL`). The passes of a pipeline drawn
+   * before the marker read last frame's value, so a change asks for one more frame.
+   */
+  private publishBoost(boost: { share: number; weight: number; shortfall: number }): void {
+    const changed = Math.abs(boost.weight - this.lastBoost.weight) > 0.01;
+    this.lastBoost = boost;
+    if (!this.recipe.wash) return;
+    (globalThis as any)[HIGHLIGHT_BOOST_GLOBAL] = boost.weight;
+    if (changed) this.map.triggerRepaint?.();
   }
 
   /**
