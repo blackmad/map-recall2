@@ -12,6 +12,16 @@ export function buildPiramides(_width: number, _depth: number, b: BuildingTools)
     const e = (x - lng) * 111320 * Math.cos(lat * Math.PI / 180), n = (y - lat) * 110540;
     return [e * Math.sin(h) + n * Math.cos(h), e * Math.cos(h) - n * Math.sin(h)];
   }
+  /** The extrusion without its top cap (local y = 0 after the rotation): the slate roofing sheet closes the tier instead. */
+  function withoutTopCap(g: T.BufferGeometry): T.BufferGeometry {
+    const src = g.index ? g.toNonIndexed() : g, p = src.getAttribute('position'), keep: number[] = [];
+    for (let i = 0; i < p.count; i += 3) {
+      if ([0, 1, 2].every(k => Math.abs(p.getY(i + k)) < 1e-6)) continue;
+      for (let k = 0; k < 3; k++) keep.push(p.getX(i + k), p.getY(i + k), p.getZ(i + k));
+    }
+    const out = new T.BufferGeometry(); out.setAttribute('position', new T.Float32BufferAttribute(keep, 3)); out.computeVertexNormals();
+    return out;
+  }
   function simplify(points: P[]): P[] {
     const ring = points.slice(); ring.pop();
     let again = true;
@@ -33,14 +43,14 @@ export function buildPiramides(_width: number, _depth: number, b: BuildingTools)
       const ring = simplify(polygon[0].map(local));
       const shape = new T.Shape(ring.map(p => new T.Vector2(...p)));
       const wall = new T.ExtrudeGeometry(shape, { depth: part.height - part.base, bevelEnabled: false });
-      wall.rotateX(Math.PI / 2); b.add(wall, 'brick', 0, part.height, 0);
+      wall.rotateX(Math.PI / 2); b.add(withoutTopCap(wall), 'brick', 0, part.height, 0);
       // Thin flat roofing follows the tier outline without filling the gap
       // between the two crowns or turning the raised public square into a box.
       const roof = new T.ShapeGeometry(shape); roof.rotateX(Math.PI / 2);
       const indices = roof.index!;
       for (let j = 0; j < indices.count; j += 3) { const a = indices.getX(j); indices.setX(j, indices.getX(j + 2)); indices.setX(j + 2, a); }
       roof.computeVertexNormals();
-      b.add(roof, 'slate', 0, part.height + .012, 0);
+      b.add(roof, 'slate', 0, part.height, 0); // the roofing is the tier's top: it lay 1.2 cm over a brick cap (710 m2 z-fight, zfight-audit 2026-10-13)
       const area = ring.reduce((sum, p, i) => sum + p[0] * ring[(i + 1) % ring.length][1] - ring[(i + 1) % ring.length][0] * p[1], 0);
       for (let i = 0; i < ring.length; i++) {
         const a = ring[i], q = ring[(i + 1) % ring.length], dx = q[0] - a[0], dz = q[1] - a[1], length = Math.hypot(dx, dz);
