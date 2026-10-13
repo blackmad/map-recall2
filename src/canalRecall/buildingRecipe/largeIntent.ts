@@ -8,7 +8,7 @@ import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/syst
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'curve', 'wallMaterial'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'curve', 'wallMaterial', 'tiltedBays', 'screen'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -118,6 +118,21 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     }
     bool(w.sills, `${at}.sills`); bool(w.frames, `${at}.frames`); bool(w.deepBars, `${at}.deepBars`); bool(w.curve, `${at}.curve`);
     if (w.wallMaterial !== undefined) oneOf(w.wallMaterial, GROUP_WALL_MATERIALS, `${at}.wallMaterial`);
+    bool(w.screen, `${at}.screen`);
+    if (w.screen && w.system !== 'brick-bay-grid') problems.push(`${at}.screen: the screen lattice follows a brick-bay-grid`);
+    if (w.screen && (w.hoist || w.tiltedBays)) problems.push(`${at}.screen: not with hoist or tiltedBays`);
+    const tiltSeen = new Set<number>();
+    for (const [ti, t] of (w.tiltedBays === undefined ? [] : Array.isArray(w.tiltedBays) ? w.tiltedBays : [w.tiltedBays]).entries()) {
+      if (Array.isArray(w.tiltedBays)) { if (t.storeys === undefined) problems.push(`${at}.tiltedBays[${ti}]: a list entry names its storeys`); else for (const st of t.storeys) { if (tiltSeen.has(st)) problems.push(`${at}.tiltedBays: storey ${st} in two entries`); tiltSeen.add(st); } }
+      for (const k of Object.keys(t)) if (!['every', 'first', 'bays', 'storeys'].includes(k)) problems.push(`${at}.tiltedBays.${k}: unknown field (every, first, bays, storeys)`);
+      if ((t.every === undefined) === (t.bays === undefined)) problems.push(`${at}.tiltedBays: give every (with first) or bays`);
+      if (t.every !== undefined) count(t.every, `${at}.tiltedBays.every`, 1, 12);
+      if (t.first !== undefined) count(t.first, `${at}.tiltedBays.first`, 0, Math.max(0, (t.every ?? 1) - 1));
+      if (t.bays !== undefined) { if (!Array.isArray(t.bays) || !t.bays.length) problems.push(`${at}.tiltedBays.bays: list of bay indices`); else t.bays.forEach(b => count(b, `${at}.tiltedBays.bays`, 0, (w.baysPerStorey ?? 80) - 1)); if (w.baysPerStorey === undefined) problems.push(`${at}.tiltedBays.bays needs baysPerStorey`); }
+      if (t.storeys !== undefined) { if (!Array.isArray(t.storeys) || !t.storeys.length) problems.push(`${at}.tiltedBays.storeys: list of storeys (0 = ground)`); else t.storeys.forEach(s => count(s, `${at}.tiltedBays.storeys`, 0, 39)); }
+      if (w.hoist) problems.push(`${at}.tiltedBays: not with hoist (both are per-bay cycles)`);
+      if (w.system === 'blank') problems.push(`${at}.tiltedBays: a blank wall has no windows`);
+    }
     if (w.nameBoards !== undefined) {
       if (!Array.isArray(w.nameBoards) || !w.nameBoards.length) problems.push(`${at}.nameBoards: list of names (one per hoist bay, "" to skip)`);
       else w.nameBoards.forEach((n, k) => { if (typeof n !== 'string' || (n !== '' && !SIGN_TEXT.test(n)) || n.length > 24) problems.push(`${at}.nameBoards[${k}]: up to 24 of A-Z a-z 0-9 & ' - . space`); });

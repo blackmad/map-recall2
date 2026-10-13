@@ -4,7 +4,7 @@
  * (blue-and-white striped POLITIE band, blue lamp), plus roof plant boxes on the roof. Every part is built on or
  * cut into the exact wall plane, so attachment holds by construction (block-kit gates check it).
  */
-import { type PanelCtx, type Cell, stripBox, intervals, barQuad } from './compose.ts';
+import { type PanelCtx, type Cell, stripBox, intervals, barQuad, SHEET_PITCH } from './compose.ts';
 import { fitsPanel, rectPoly } from './panels.ts';
 import { MeshBuilder, type V3, add, scale, sub } from './mesh.ts';
 import { letteringGeometry } from '../buildingRecipe/signage.ts';
@@ -178,4 +178,50 @@ export function drawRoofBoxes(mesh: MeshBuilder, boxes: RoofBox[], slot: Slot) {
       mesh.quad(slot, a, bb, t[(k + 1) % 4], t[k], part, mid);
     }
   }
+}
+
+/** Perforated-brick screen lattice: rails on the 9 cm sheet layer, posts on the 13.5 cm one, so the crossings never share a plane. */
+export const SCREEN = { postW: 0.14, postOut: 3 * SHEET_PITCH, railH: 0.12, railOut: 2 * SHEET_PITCH, maxSegM: 9 };
+
+/**
+ * Perforated-brick screen (car parks, 1970s-80s): a concrete lattice in front of the brick infill, posts at every bay
+ * joint and rails at every storey line and the top, as closed boxes (one lattice cell per bay per storey), over the
+ * storeys the facade system laid out (not down a party wall). Posts stand on the 13.5 cm sheet layer and rails on the
+ * 9 cm one, so where they cross the front faces are 4.5 cm apart (never coplanar) and the boxes simply interpenetrate;
+ * rails skip the openings already cut. Returns the number of boxes drawn.
+ */
+export function drawScreen(c: PanelCtx, cells: Cell[], levels: number[], slot: Slot, top: number): number {
+  const p = c.p, part = c.part(), bot = Math.max(p.vMin, 0, Math.min(...cells.map(x => x.v0))) + 0.02;
+  let n = 0;
+  const joints = [...new Set(cells.flatMap(x => [x.u0, x.u1]).map(u => Math.round(u * 1000) / 1000))].sort((a, b) => a - b);
+  for (const u of joints) {
+    const a = Math.max(p.uMin, u - SCREEN.postW / 2), b = Math.min(p.uMax, u + SCREEN.postW / 2);
+    if (b - a < SCREEN.postW * 0.6) continue;
+    // vertical runs where the wall is present, in 0.5 m steps, split at maxSegM (no box taller than the audit's loop limit)
+    let start: number | null = null;
+    const flush = (end: number) => {
+      if (start === null) return;
+      const k = Math.max(1, Math.ceil((end - start) / SCREEN.maxSegM));
+      for (let i = 0; i < k; i++) { c.box(slot, a, b, start + (end - start) * i / k, start + (end - start) * (i + 1) / k, 0, SCREEN.postOut, part); n++; }
+      start = null;
+    };
+    for (let v = bot; v < top - 0.01; v += 0.5) {
+      const hi = Math.min(top, v + 0.5), ok = fitsPanel(p, rectPoly(a, b, v, hi), 0.0);
+      if (ok && start === null) start = v;
+      if (!ok) flush(v);
+    }
+    flush(top);
+  }
+  const rails = new Set<number>();
+  levels.forEach((L, f) => { if (f > 0 && L > bot + 0.3 && L < top - 0.3) rails.add(L); });
+  rails.add(top - SCREEN.railH / 2);
+  for (const v of [...rails].sort((x, y) => x - y)) {
+    const v0 = v - SCREEN.railH / 2, v1 = v + SCREEN.railH / 2, skip = holeSpans(c, v0, v1);
+    for (const [a0, b0] of intervals(p, v0, v1, 0.25)) {
+      let pieces: [number, number][] = [[a0, b0]];
+      for (const [s0, s1] of skip) pieces = pieces.flatMap(([a, b]) => (s1 <= a || s0 >= b ? [[a, b]] : [[a, s0], [s1, b]].filter(([x, y]) => y - x > 0.2)) as [number, number][]);
+      for (const [a, b] of pieces) if (b - a > 0.2) { c.box(slot, a, b, v0, v1, 0, SCREEN.railOut, part); n++; }
+    }
+  }
+  return n;
 }

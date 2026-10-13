@@ -194,3 +194,55 @@ test('wallMaterial per group: render, stucco and stone groups export their own m
   assert.equal(slots.get(`wall/${g0.slots.wall}`), 'stone');
   assert.deepEqual(gates.filter(x => !x.pass).map(x => x.id), []);
 });
+
+/** Decoded GLB triangles and the large gates' topology (open edges) for an intent. */
+async function topoOf(intent: LargeBuildingIntent, f: BuildingFacts) {
+  const built = compileBuilding(intent, f);
+  const glb = await canalhouseGroupToGlb(intent.id, built.group, {metreUvs: true, slotFor: m => m.userData.materialSlot as string, maxBytes: 2_000_000});
+  const tris = await decodeTriangles(glb.bytes), ev = evaluateLargeGates(tris, built);
+  return {built, tris, gates: ev.gates, topology: ev.topology};
+}
+
+test('tiltedBays: box frames (closed solids leaning out to the sill) on the chosen bays and storeys; no new open edges', async () => {
+  const {largeSystem, TILT_FRAME} = await import('../blockBuilding/systems.ts');
+  const base = raw('engelsesteeg-165098'), f = facts('engelsesteeg-165098');
+  const walls = (t: unknown) => base.walls.map((w: object, i: number) => (i === 0 ? {...w, tiltedBays: t} : w));
+  assert.throws(() => validateLargeIntent({...base, walls: walls({every: 2, hoist: 1})}), /tiltedBays/);
+  assert.throws(() => validateLargeIntent({...base, walls: walls([{bays: [0], storeys: [1]}, {bays: [1], storeys: [1, 2]}])}), /storey 1 in two/);
+  assert.throws(() => validateLargeIntent({...base, walls: walls([{bays: [0]}])}), /names its storeys/);
+  // largeSystem: storey 2 cycles the box row on bays 1 and 3 of 4; storey 1 keeps the plain row; the box has no sill.
+  const fit = {pitchM: 3, lines: [0, 4, 7, 10, 13], ground: 'system' as const, bays: 4, slots: {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'frame'}};
+  const sys = largeSystem('brick-bay-grid', {...fit, tilted: [{bays: [1, 3], storeys: [2]}]});
+  assert.equal(sys.rowOverrides?.['1'], undefined);
+  const cyc = sys.rowOverrides!['2'].cycle!;
+  assert.deepEqual(cyc.map(r => !!r.win?.tilt), [false, true, false, true]);
+  assert.deepEqual(cyc[1].win!.tilt, {slot: 'stone', ...TILT_FRAME});
+  assert.equal(cyc[1].win!.sillSlot, null);
+  assert.ok(TILT_FRAME.outBottom > TILT_FRAME.outTop && TILT_FRAME.outTop >= 0.09, 'leans out to the sill, clear of the sheet layers');
+  const plain = await topoOf(validateLargeIntent({...base, walls: walls(undefined)}), f);
+  const tilted = await topoOf(validateLargeIntent({...base, walls: walls([{bays: [0, 2, 4], storeys: [1]}, {every: 2, first: 1, storeys: [2, 3]}])}), f);
+  // four closed solids of 12 triangles per framed window, replacing its closed sill box (12)
+  const extra = tilted.tris.length - plain.tris.length;
+  assert.ok(extra > 0 && extra % 36 === 0, `${extra} triangles`);
+  assert.equal(tilted.topology.openEdges, plain.topology.openEdges);
+  assert.deepEqual(tilted.gates.filter(x => !x.pass).map(x => x.id), []);
+});
+
+test('screen: perforated-brick lattice (posts and rails as closed boxes on the 9/13.5 cm layers) and scattered glass blocks', async () => {
+  const {largeSystem} = await import('../blockBuilding/systems.ts');
+  const {SCREEN} = await import('../blockBuilding/components.ts');
+  const {SHEET_PITCH} = await import('../blockBuilding/compose.ts');
+  const base = raw('warmoesstraat-garage-165687'), f = facts('warmoesstraat-garage-165687');
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], system: 'ribbon-windows', screen: true}, ...base.walls.slice(1)]}), /screen/);
+  assert.deepEqual([SCREEN.railOut, SCREEN.postOut], [2 * SHEET_PITCH, 3 * SHEET_PITCH]);
+  const fit = {pitchM: 1.5, lines: [0, 3, 6, 9], ground: 'system' as const, slots: {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'frame'}};
+  const typical = largeSystem('brick-bay-grid', {...fit, screen: true}).typical;
+  assert.equal(typical.cycle!.filter(r => r.kind === 'punched').length, 1, 'one bay in three is a perforation');
+  assert.equal(typical.cycle![0].win!.barD, 0.035, 'glass-block bars clear the glass');
+  const off = await topoOf(validateLargeIntent({...base, walls: base.walls.map((w: object) => ({...w, screen: undefined}))}), f);
+  const on = await topoOf(validateLargeIntent(base), f);
+  assert.ok((on.built.components.screens ?? 0) >= 3, JSON.stringify(on.built.components));
+  assert.equal(off.built.components.screens, undefined);
+  assert.ok(on.topology.openEdges <= off.topology.openEdges, `${on.topology.openEdges} vs ${off.topology.openEdges}`);
+  assert.deepEqual(on.gates.filter(x => !x.pass).map(x => x.id), []);
+});

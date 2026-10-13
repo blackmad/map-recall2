@@ -325,6 +325,7 @@ export interface CanalHouseIntent {
  * windows into the exact walls. Validated by `validateLargeIntent` (largeIntent.ts); list a house's surfaces with
  * `scripts/building-recipes/walls.ts`.
  */
+export interface TiltedBaysIntent {every?: number; first?: number; bays?: number[]; storeys?: number[]}
 export interface LargeWallIntent {
   /** 3DBAG LoD2.2 WallSurface indices (shell boundary index) of this wall group. */
   wallSurfaces: number[];
@@ -375,6 +376,14 @@ export interface LargeWallIntent {
   frames?: boolean;
   /** true = glazing bars 3.5 cm proud of the glass (large tier; ribbons with a mullion otherwise sit in the audit's z-fight band) */
   deepBars?: boolean;
+  /**
+   * Tilted bay (box) windows: a projecting stone frame leaning out towards the sill round the windows of every `every`-th
+   * bay from `first`, or the listed `bays` of the widest panel, on the listed `storeys` (0 = ground; default every upper storey).
+   * A list gives each storey its own pattern (the storeys of the entries must not overlap).
+   */
+  tiltedBays?: TiltedBaysIntent | TiltedBaysIntent[];
+  /** Perforated-brick screen (car parks): a concrete lattice of posts and rails over the wall, glass-block perforations in one bay of three; brick-bay-grid only. */
+  screen?: boolean;
   /**
    * true = the group's 3DBAG facets that link end to end (a curved front kept as a chain of narrow planes) carry one
    * bay rhythm along their arc length, `baysPerStorey`'s pitch continuing round the curve (curve.ts); default: each

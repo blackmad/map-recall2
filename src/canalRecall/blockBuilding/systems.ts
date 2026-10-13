@@ -48,7 +48,19 @@ export interface SystemFit {
   frames?: boolean;
   /** true = glazing bars 3.5 cm proud of the glass (clears the z-fight audit's under-3 cm band) */
   deepBars?: boolean;
+  /** tilted bay (box) windows in every `every`-th bay from `first`, or the listed bays, on the listed storeys (default every upper storey) */
+  tilted?: TiltedBays | TiltedBays[];
+  /** perforated-brick screen: the windows become scattered glass-block perforations (one bay in three, staggered per storey); the lattice is a component */
+  screen?: boolean;
 }
+
+/** Glass-block perforation in a screen cell: a small square opening with a cross of 3.5 cm closed bars, no frame ring or sill. */
+const glassBlock = (f: SystemFit): WinParams => ({ w: 0.62, h: 0.34, sill: 0.95, mull: 1, rows: 1, frameW: 0, sillSlot: null, barD: 0.035, frame: f.slots.stone, glass: f.slots.glass });
+
+export interface TiltedBays { every?: number; first?: number; bays?: number[]; storeys?: number[] }
+
+/** Tilted bay frame: 14 cm ring, 42 cm off the wall at the sill leaning back to 12 cm at the head (Engelsesteeg hotel wing). */
+export const TILT_FRAME = { t: 0.14, outBottom: 0.42, outTop: 0.12 };
 
 /** Arch params for a head of this kind with the group's band (brick bands are drawn in the wall slot). */
 export function archFor(kind: ArchKind | undefined, f: SystemFit, extra: Partial<ArchParams> = {}): { arch?: ArchParams } {
@@ -113,6 +125,8 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
       typical = { kind: 'wall' };
       break;
   }
+  // Perforated screen: glass blocks in one bay of three, the pattern shifted by two bays per storey (scattered, as built).
+  if (f.screen && name !== 'blank') typical = { kind: 'wall', cycle: [{ kind: 'punched', win: glassBlock(f) }, { kind: 'wall' }, { kind: 'wall' }], shift: 2 };
   const rowOverrides: Record<string, Row> = {};
   if (f.balconyStoreys?.length && name !== 'blank') {
     const balcony: Row = { kind: 'balcony', balcony: { depth: 1.2, slab: { h: 0.18, slot: s.stone }, rail: { kind: f.balconyRail ?? 'bars', h: 1.0, slot: s.frame, top: s.frame }, back: { w: 0.7, h: 0.72, sill: 0.25, frame: s.frame, glass: s.glass, mull: 1 } } };
@@ -131,6 +145,17 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
     typical = cycle(door, typical);
     if (f.ground !== 'blank') ground = cycle(portal, ground);
     for (const k of Object.keys(rowOverrides)) if (rowOverrides[k].kind === 'balcony') rowOverrides[k] = cycle(door, rowOverrides[k]);
+  }
+  // Tilted bay windows: a cycle per bay on the chosen storeys, the box frame replacing the sill.
+  for (const tb of !f.tilted || name === 'blank' ? [] : Array.isArray(f.tilted) ? f.tilted : [f.tilted]) {
+    const list = tb.bays, every = list ? Math.max(1, f.bays ?? 1, ...list.map(b => b + 1)) : Math.max(1, tb.every ?? 1), at = ((tb.first ?? 0) % every + every) % every;
+    const storeys = tb.storeys ?? Array.from({ length: Math.max(0, f.lines.length - 2) }, (_, k) => k + 1);
+    for (const st of storeys) {
+      const under = rowOverrides[String(st)] ?? (st === 0 ? ground : typical);
+      if (!under.win || under.cycle) continue; // blank or balcony storeys, loading-door cycles: no box frame
+      const box: Row = { ...under, win: { ...under.win, sillSlot: null, tilt: { slot: s.stone, ...TILT_FRAME } } };
+      rowOverrides[String(st)] = { kind: 'wall', cycle: Array.from({ length: every }, (_, k) => ((list ? list.includes(k) : k === at) ? box : under)) };
+    }
   }
   return { pitch: f.pitchM, lines: f.lines, ground, typical, bands, piers, ...(Object.keys(rowOverrides).length ? { rowOverrides } : {}) };
 }

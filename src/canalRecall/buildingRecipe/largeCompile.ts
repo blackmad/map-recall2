@@ -7,7 +7,7 @@
 import * as T from 'three';
 import {compose, type Cell, type PanelCtx} from '../blockBuilding/compose.ts';
 import {runGates, type GateReport} from '../blockBuilding/gates.ts';
-import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawEntrance, drawGarageDoor, drawLettering, drawPoliceStripe, drawRoofBoxes, lowestHoleAbove} from '../blockBuilding/components.ts';
+import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawEntrance, drawGarageDoor, drawLettering, drawPoliceStripe, drawRoofBoxes, drawScreen, lowestHoleAbove} from '../blockBuilding/components.ts';
 import type {MeshBuilder} from '../blockBuilding/mesh.ts';
 import {fitsPanel, rectPoly, type Panel} from '../blockBuilding/panels.ts';
 import type {BuildingFacts} from './facts.ts';
@@ -15,7 +15,7 @@ import type {LargeBuildingIntent} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit} from './fitLarge.ts';
 
-export interface LargeComponentCounts { nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { screens?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -58,6 +58,8 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
     }
   }
   if (g.garage?.panel === p.index) for (const cell of info.cells) if (cell.floor === 0 && g.garage.bays.includes(cell.bay) && drawGarageDoor(c, cell, {door: s.door, frame: s.frame})) { counts.garageDoors++; skip.push([cell.u0, cell.u1]); }
+  // Screen lattice after the openings (rails skip them), before the cornice.
+  if (g.screen && info.cells.length) { const top = panelEaves(p) - 0.1; if (top - p.vMin > 3 && drawScreen(c, info.cells, levels, s.stone, top)) counts.screens = (counts.screens ?? 0) + 1; }
   if (g.cornice) { const top = panelEaves(p); if (top - p.vMin > 3 && drawBand(c, s.stone, top - 0.45, top - 0.02, 0.28)) counts.cornices++; }
   if (g.ground === 'plinth-shopfronts' && groundTop - p.vMin > 3 && drawBand(c, s.stone, groundTop - 0.62, groundTop - 0.12, 0.1, entrance && g.entrance!.storeys > 1 ? skip : [])) {
     counts.fascias++;
