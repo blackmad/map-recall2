@@ -1,0 +1,138 @@
+{
+ "unit": "metres (full width of the way's own surface)",
+ "source": "BGT wegdeel (PDOK)",
+ "classes": {
+  "footway": {
+   "medianM": 2.8,
+   "p10M": 1.4,
+   "p90M": 9.4,
+   "n": 22401
+  },
+  "service": {
+   "medianM": 5.8,
+   "p10M": 3.1,
+   "p90M": 13.3,
+   "n": 6841
+  },
+  "residential": {
+   "medianM": 5,
+   "p10M": 3,
+   "p90M": 8.1,
+   "n": 11238
+  },
+  "cycleway": {
+   "medianM": 3,
+   "p10M": 1.8,
+   "p90M": 4.6,
+   "n": 9016
+  },
+  "path": {
+   "medianM": 2.1,
+   "p10M": 1.2,
+   "p90M": 6.9,
+   "n": 1800
+  },
+  "tertiary": {
+   "medianM": 6.6,
+   "p10M": 3.5,
+   "p90M": 14.3,
+   "n": 4059
+  },
+  "unclassified": {
+   "medianM": 6.3,
+   "p10M": 3.5,
+   "p90M": 11.9,
+   "n": 3577
+  },
+  "secondary": {
+   "medianM": 7.2,
+   "p10M": 3.7,
+   "p90M": 15.1,
+   "n": 3374
+  },
+  "steps": {
+   "medianM": 2.8,
+   "p10M": 1.2,
+   "p90M": 12.3,
+   "n": 1777
+  },
+  "pedestrian": {
+   "medianM": 6.4,
+   "p10M": 2.7,
+   "p90M": 18.2,
+   "n": 2042
+  },
+  "track": {
+   "medianM": 3.3,
+   "p10M": 1.6,
+   "p90M": 9.1,
+   "n": 147
+  },
+  "busway": {
+   "medianM": 7.6,
+   "p10M": 3.6,
+   "p90M": 24.7,
+   "n": 1127
+  },
+  "motorway_link": {
+   "medianM": 11.3,
+   "p10M": 5.1,
+   "p90M": 21.7,
+   "n": 1130
+  },
+  "primary": {
+   "medianM": 8.2,
+   "p10M": 4,
+   "p90M": 16.4,
+   "n": 1067
+  },
+  "living_street": {
+   "medianM": 5.2,
+   "p10M": 3.1,
+   "p90M": 8.5,
+   "n": 707
+  },
+  "motorway": {
+   "medianM": 15.8,
+   "p10M": 10.5,
+   "p90M": 24,
+   "n": 756
+  },
+  "trunk": {
+   "medianM": 10.1,
+   "p10M": 6.9,
+   "p90M": 15.2,
+   "n": 205
+  },
+  "secondary_link": {
+   "medianM": 6.5,
+   "p10M": 3.9,
+   "p90M": 16.9,
+   "n": 154
+  },
+  "trunk_link": {
+   "medianM": 5.3,
+   "p10M": 3.9,
+   "p90M": 11.8,
+   "n": 142
+  },
+  "bridleway": {
+   "medianM": 1.9,
+   "p10M": 1.2,
+   "p90M": 4.1,
+   "n": 44
+  },
+  "primary_link": {
+   "medianM": 7.2,
+   "p10M": 3.5,
+   "p90M": 17.7,
+   "n": 79
+  },
+  "tertiary_link": {
+   "medianM": 7.4,
+   "p10M": 4,
+   "p90M": 35.4,
+   "n": 20
+  }
+ }
+}

@@ -5,7 +5,7 @@
 // junction on their side, so a kerb never runs across a side street; the
 // carriageways themselves get a draped disc at every shared or end node.
 
-import { crossSection, type Band, type CrossSection, type OsmWay, type Surface } from './osmGround.js';
+import { crossSection, type BgtWidthDm, type Band, type CrossSection, type OsmWay, type Surface } from './osmGround.js';
 import { cutIntervals, disc, edgeWall, emptyMesh, endCap, ribbon, stations, triangleCount, type MeshArrays } from './drape.js';
 import type { HeightFn, Vec2 } from './surface.js';
 
@@ -26,7 +26,7 @@ export type StreetMeshes = Record<StreetLayer, MeshArrays> & {
   stats: { ways: number; bands: number; metres: number; widthFromTags: number; sidewalkFromTags: number; trims: number };
 };
 
-export interface LocalWay { id: number; tags: Record<string, string>; points: Vec2[]; section: CrossSection }
+export interface LocalWay { id: number; tags: Record<string, string>; points: Vec2[]; section: CrossSection; bw?: BgtWidthDm }
 
 const key = (p: Vec2) => `${Math.round(p[0] * 10)}:${Math.round(p[1] * 10)}`;
 const isCarriage = (w: LocalWay) => w.section.bands[0]?.kind === 'carriageway';
@@ -36,9 +36,9 @@ export const isBridgeWay = (w: LocalWay) => !!w.tags.bridge && w.tags.bridge !==
 export function prepareWays(ways: readonly OsmWay[], project: (lngLat: [number, number]) => Vec2): LocalWay[] {
   const out: LocalWay[] = [];
   for (const w of ways) {
-    const section = crossSection(w.tags);
+    const section = crossSection(w.tags, w.bw);
     if (!section || w.g.length < 2) continue;
-    out.push({ id: w.id, tags: w.tags, points: w.g.map(project), section });
+    out.push({ id: w.id, tags: w.tags, points: w.g.map(project), section, bw: w.bw });
   }
   return out;
 }
@@ -107,7 +107,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
     if (opts.only && !opts.only(w)) continue;
     out.stats.ways++;
     if (w.section.source.width !== 'prior') out.stats.widthFromTags++;
-    if (w.section.source.sidewalk === 'tag') out.stats.sidewalkFromTags++;
+    if (w.section.source.sidewalk !== 'prior') out.stats.sidewalkFromTags++;
     const st = stations(w.points);
     out.stats.metres += st[st.length - 1];
     // A footway crossing a road is the road's surface plus paint, not a paved strip over it.
