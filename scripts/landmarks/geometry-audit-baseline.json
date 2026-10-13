@@ -135,14 +135,14 @@
    "window-misaligned": 0
   },
   "amsterdam-museum": {
-   "opening-floating": 340,
-   "opening-floating-fail": 37,
+   "opening-floating": 309,
+   "opening-floating-fail": 6,
    "opening-overhang": 8,
    "opening-overhang-fail": 8,
    "opening-buried": 2,
    "zfight-m2": 0.4,
    "zfight-near-m2": 0,
-   "window-mismatch": 12,
+   "window-mismatch": 10,
    "window-missing": 2,
    "window-misaligned": 0
   },
