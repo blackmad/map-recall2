@@ -147,10 +147,38 @@ sourced years, so no builder material was re-tagged in this pass.
 
 Flag on, slot materials follow the Building look (cartoon bands, untextured
 flat colour) and the active landmark highlights in the facade answer yellow.
-Cost (ride-perf fixed route, 2026-10-13): no frame-time or draw-call change on
-desktop or iPhone 4x; texture memory +4.5 MB desktop (slot layers at 256²:
-appended to the facade array in the shared frame, a separate slot-only array in
-the legacy layers), +1.1 MB on touch (128²).
+
+#### Cost and the default flip (desktop, 2026-10-13, after the review)
+
+`scripts/ride-perf-fixed-route.mjs` (Anne Frank Huis → Rijksmuseum, 1440×900,
+20 s ride, two alternating rounds, bundles rebuilt from this source):
+
+| flags | frame median / p95 / p99 ms | frames > 50 ms | three.js layers ms/frame | MapLibre render median ms | draw calls | building textures |
+|---|---|---|---|---|---|---|
+| off | 16.7 / 16.7 / 16.8 | 0 | 0.74, 0.78 | 1.9, 2.0 | 407 | 98 MB |
+| `?sharedFrame=1` | 16.7 / 16.7–16.8 / 16.8 | 0 | 0.90, 0.89 | 2.1, 2.0 | 407 | 98 MB |
+| `?sharedFrame=1&cityLook=1` | 16.7 / 16.7 / 16.8 | 0 | 0.89, 0.85 | 2.1, 1.9 | 407 | 103.5 MB (+5.5) |
+| `?cityLook=1` (legacy layers) | 16.7 / 16.7–16.8 / 16.8 | 0 | 0.73, 0.76 | 1.8, 1.8 | 407 | 98 + 5.5 MB slot-only array |
+
+Frames are vsync-bound in every configuration; the city look adds no frame
+time and no draw calls (the shared frame costs ~0.1 ms of three.js work with
+or without it). The slot table is now 11 layers (+2 variants): +5.5 MB at
+256² desktop (was +4.5 MB), +1.4 MB at 128² on touch (computed, not yet
+measured). Flag off renders pixel-identically (look-consistency: 0 px in 3 of
+4 shots, the Dam's 182 px / 0.025 % is far-skyline streaming noise that two
+runs of the same bundle also show).
+
+**Recommendation: flip both together** (`sharedFrame` and `cityLook`), desktop
+first, not `sharedFrame` alone. Under the shared rig without the city look the
+three pipelines disagree by 4.3–5.8 % on brick and landmarks keep private flat
+colours; with it they agree to 0.15 %, brick sits in the band, the highlight
+keeps its shading, and 293 of 311 gallery models land within 10 % of their
+flag-off brightness (the other 18 by palette rule). Before the flip: rebuild
+the three-buildings, building-types, signature-placement and
+signature-landmarks bundles; publish `bagYear` into the placement catalogue
+(`scripts/landmarks/landmark-bag-years.ts`, otherwise every landmark keeps the
+canal brick, which is the pre-review look); measure iPhone 13 at 4× before
+flipping on touch.
 
 ## Outlines
 
