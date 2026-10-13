@@ -2823,6 +2823,7 @@
       "window-misaligned": 0
     },
     "opstandingskerk": {
+      "material-slot-untagged-permille": 0,
       "opening-floating": 0,
       "opening-floating-fail": 0,
       "opening-overhang": 0,
@@ -2830,11 +2831,11 @@
       "opening-buried": 0,
       "zfight-m2": 0,
       "zfight-near-m2": 0,
-      "window-mismatch": 37,
+      "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
-      "window-rhythm-fail": 1,
-      "window-mismatch-spec": 37,
+      "window-rhythm-fail": 0,
+      "window-mismatch-spec": 0,
       "window-missing-spec": 0
     },
     "orgelpark": {
