@@ -19625,16 +19625,18 @@
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "materialOverrides": {
-        "brick": "#8a766b",
-        "greyBrick": "#6f5d55",
-        "stone": "#b9ad98",
-        "slate": "#b4573a",
-        "red": "#a8472b",
-        "glass": "#4f6068",
-        "dark": "#3a3330",
-        "white": "#d8d2c2",
-        "frame": "#5b524a",
-        "bronze": "#6b5a3d"
+        "brick": "#93736b",
+        "greyBrick": "#725a54",
+        "stone": "#bdb3a2",
+        "sandstone": "#9a9386",
+        "slate": "#b65a38",
+        "ochre": "#8a4636",
+        "red": "#a3402a",
+        "glass": "#3e4b52",
+        "dark": "#2c2826",
+        "white": "#e4dfd2",
+        "frame": "#48413c",
+        "bronze": "#4c4e52"
       },
       "attribution": {
         "title": "Sint-Petrus-en-Pauluskerk",
@@ -19642,7 +19644,7 @@
         "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Petrus-en-Pauluskerk_%28Amsterdam%29",
         "licence": "Original project asset",
         "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+        "modifications": "Original texture-free flat-colour geometry authored on the BAG/3DBAG footprint and heights; reference photographs guided architectural detail, no pixels or meshes imported."
       },
       "buildingFootprint": {
         "type": "Polygon",
@@ -19798,14 +19800,14 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -12.368947982788086,
-          -4.7683716530855236e-8,
-          -10.672526359558105
+          -12.68851089477539,
+          -9.536743306171047e-8,
+          -10.385065078735352
         ],
         "max": [
-          11.819999694824219,
-          20.704999923706055,
-          24.799999237060547
+          11.978784561157227,
+          21.127208709716797,
+          24.90694236755371
         ]
       },
       "placement": {
@@ -19819,19 +19821,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 35.47252559661865,
-        "heightMetres": 20.70499997138977,
-        "depthMetres": 24.188947677612305,
-        "depthCoverage": 0.6719152132670084
+        "widthMetres": 35.29200744628906,
+        "heightMetres": 21.12720880508423,
+        "depthMetres": 24.667295455932617,
+        "depthCoverage": 0.6852026515536838
       },
-      "triangles": 5139,
-      "bytes": 79648,
+      "triangles": 12264,
+      "bytes": 180484,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "f8d65f15b591bc3e",
+        "sourceHash": "5edcd9c091ada20e",
         "buildVersion": 2,
-        "bytes": 29192,
-        "triangles": 1004
+        "bytes": 48772,
+        "triangles": 1912
       }
     },
     "maarten-lutherkerk": {
