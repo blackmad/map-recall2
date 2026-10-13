@@ -228,8 +228,17 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
   if (mulls.length || rows.length || w.transom) {
     // frameW 0 (no frame ring: the glass fills the opening) still takes 6 cm glazing bars
     const bars = c.part(), bw = fw > 0 ? fw : 0.06;
-    for (const f of mulls) { const u = u0 + (u1 - u0) * f; g(u - bw / 2, u + bw / 2, v0 + fw, v1 - fw, frameSlot, 0.015, bars); }
-    for (const f of [...rows, ...(w.transom ? [w.transom] : [])]) { const v = v0 + (v1 - v0) * f; g(u0 + fw, u1 - fw, v - bw / 2, v + bw / 2, frameSlot, 0.015, bars); }
+    const bar = (a: number, b: number, lo: number, hi: number) => {
+      const d = w.barD ?? 0.015;
+      g(a, b, lo, hi, frameSlot, d, bars);
+      // Deep bars (>= 3 cm, out of the audit's z-fight band) are closed solids so they add no open edge.
+      if (d >= 0.03) {
+        const side = (p0: [number, number], p1: [number, number], facing: V3) => c.mesh.quad(frameSlot, Q(p0[0], p0[1], 0), Q(p1[0], p1[1], 0), Q(p1[0], p1[1], d), Q(p0[0], p0[1], d), bars, facing);
+        side([a, lo], [b, lo], DOWN); side([a, hi], [b, hi], UP); side([a, lo], [a, hi], scale(c.p.r, -1)); side([b, lo], [b, hi], c.p.r);
+      }
+    };
+    for (const f of mulls) { const u = u0 + (u1 - u0) * f; bar(u - bw / 2, u + bw / 2, v0 + fw, v1 - fw); }
+    for (const f of [...rows, ...(w.transom ? [w.transom] : [])]) { const v = v0 + (v1 - v0) * f; bar(u0 + fw, u1 - fw, v - bw / 2, v + bw / 2); }
   }
   if (w.surround) {
     const t = w.surround.t, out = w.surround.out ?? 0.06, sp = c.part();

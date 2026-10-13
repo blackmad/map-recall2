@@ -365,6 +365,8 @@ export interface LargeWallIntent {
   sills?: boolean;
   /** false = no frame ring round the glass (dark frames that read as glass); glazing bars stay. */
   frames?: boolean;
+  /** true = glazing bars 3.5 cm proud of the glass (large tier; ribbons with a mullion otherwise sit in the audit's z-fight band) */
+  deepBars?: boolean;
   /** Name boards (white plates, lettered) over the ground portals of the hoist bays on the widest panel, left to right; "" leaves a hoist bay without a board. */
   nameBoards?: string[];
 }

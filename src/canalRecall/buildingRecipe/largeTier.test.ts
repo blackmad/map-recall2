@@ -14,7 +14,7 @@ import {dissolveFaces} from '../blockBuilding/dissolve.ts';
 const HOUSES = 'scripts/building-recipes/houses';
 const raw = (id: string) => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/intent.json`, 'utf8'));
 const facts = (id: string): BuildingFacts => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/facts.json`, 'utf8'));
-const LARGE = ['politie-van-leijenberghlaan', 'leidsestraat-67-large', 'de-balie-large', 'social-history-large', 'kattenburg-wings-164938', 'heinekenplein-130580'];
+const LARGE = ['politie-van-leijenberghlaan', 'leidsestraat-67-large', 'de-balie-large', 'social-history-large', 'kattenburg-wings-164938', 'heinekenplein-130580', 'kattenburgerstraat-164930'];
 
 async function gatesOf(intent: LargeBuildingIntent, f: BuildingFacts) {
   const built = compileBuilding(intent, f);
@@ -96,4 +96,16 @@ test('large-tier compile seals tiny 3DBAG wall slivers and closes wall-mounted b
   const open = gates.find(g => g.id === 'open-edges')!;
   assert.ok(open.pass, JSON.stringify(open.value));
   assert.ok(gates.find(g => g.id === 'footprint-vs-bag')!.pass, 'courtyard holes are part of the BAG footprint');
+});
+
+test('deepBars: glazing bars stand 3.5 cm proud only when asked (ribbon and punched rows); default unchanged', async () => {
+  const {largeSystem} = await import('../blockBuilding/systems.ts');
+  const fit = {pitchM: 2.7, lines: [0, 3.3, 6.6, 9.9], ground: 'system' as const, slots: {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'frame'}};
+  for (const system of ['ribbon-windows', 'brick-bay-grid'] as const) {
+    assert.equal(largeSystem(system, fit).typical.win!.barD, undefined, `${system} default`);
+    assert.equal(largeSystem(system, {...fit, deepBars: true}).typical.win!.barD, 0.035, `${system} deepBars`);
+  }
+  const base = raw('kattenburg-wings-164938');
+  assert.equal(validateLargeIntent({...base, walls: [{...base.walls[0], deepBars: true}, base.walls[1]]}).walls[0].deepBars, true);
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], deepBars: 'yes'}, base.walls[1]]}), /deepBars/);
 });
