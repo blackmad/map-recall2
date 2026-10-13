@@ -26,7 +26,7 @@ export interface OsmGroundExtract {
 }
 
 /** Tags (and their `:` sub-keys) the extract keeps; everything else is dropped at build time. */
-export const KEPT_TAGS = ['highway', 'name', 'width', 'est_width', 'lanes', 'sidewalk', 'cycleway', 'surface', 'bridge', 'layer', 'tunnel', 'oneway', 'footway', 'area', 'service', 'bicycle', 'segregated', 'railway', 'embedded_rails', 'crossing', 'covered', 'level'];
+export const KEPT_TAGS = ['highway', 'name', 'width', 'est_width', 'lanes', 'sidewalk', 'cycleway', 'surface', 'bridge', 'layer', 'tunnel', 'oneway', 'footway', 'area', 'service', 'bicycle', 'segregated', 'railway', 'embedded_rails', 'crossing', 'covered', 'level', 'cyclestreet', 'bicycle_road'];
 
 export function areaKind(tags: Record<string, string>): AreaKind | null {
   if (tags['area:highway']) return 'paved';
@@ -66,7 +66,7 @@ export interface CrossSection {
   coreHalfWidth: number;
   /** Outermost extent either side. */
   halfWidth: number;
-  source: { width: 'bgt' | 'tag' | 'lanes' | 'prior'; sidewalk: 'bgt' | 'tag' | 'prior'; cycleway: 'bgt' | 'tag' | 'prior' };
+  source: { width: 'bgt' | 'tag' | 'lanes' | 'prior'; sidewalk: 'bgt' | 'tag' | 'prior'; cycleway: 'bgt' | 'tag' | 'prior'; /** Which sides carry a sidewalk: from tags, or the class prior (then a mapped neighbour may veto one). */ sidewalkSides?: 'tag' | 'prior' };
 }
 
 const KERB_M = 0.11;
@@ -162,10 +162,18 @@ export function crossSection(tags: Record<string, string>, bw?: BgtWidthDm): Cro
   if (tags.level && Number(tags.level) !== 0 && !tags.bridge) return null;
   const tagWidth = parseMetres(tags.width) ?? parseMetres(tags.est_width);
   // Measured BGT widths win over tags and priors (survey polygons, not guesses).
-  const bgtWidth = bw && bw[0] >= 8 ? bw[0] / 10 : null;
+  let bgtWidth = bw && bw[0] >= 8 ? bw[0] / 10 : null;
   const bgtSidewalk = bw && bw[1] >= 5 ? Math.min(bw[1] / 10, 6) : null;
   const bgtCycle = bw && bw[2] >= 10 ? Math.max(1.2, Math.min(bw[2] / 10, 4)) : null;
   const path = PATHS[hw];
+  // A BGT width read inside a junction measures the junction (De Clercqstraat: a 30 m tertiary stub at
+  // 21.3 m, a cycleway at 14.2 m): cap it at what the way's class and lanes can hold, or a tagged width.
+  if (bgtWidth) {
+    const cap = path ? (hw === 'pedestrian' ? 30 : hw === 'cycleway' || (hw === 'path' && tags.bicycle === 'designated') ? 4.5 : 6)
+      : ((Number(tags.lanes) > 0 ? Number(tags.lanes) : tags.oneway === 'yes' ? 1 : 2) * 3.75 + 1.5);
+    if (path && tagWidth && bgtWidth > tagWidth * 1.8) bgtWidth = null;
+    else if (bgtWidth > cap) bgtWidth = cap;
+  }
   if (path) {
     let kind = path.kind, surface = path.surface;
     // A path the city signs for bikes looks like a cycle path; a mapped sidewalk is raised.
@@ -178,6 +186,12 @@ export function crossSection(tags: Record<string, string>, bw?: BgtWidthDm): Cro
     const band: Band = { kind: sidewalk ? 'sidewalk' : kind, surface, offset: 0, width, raised: sidewalk ? KERB_M : 0, kerb: sidewalk ? 'both' : 'none' };
     const marked = ['zebra', 'marked', 'uncontrolled'].includes(tags.crossing) || (!!tags['crossing:markings'] && tags['crossing:markings'] !== 'no');
     const paint: PaintLine[] = crossing && marked && !sidewalk && kind === 'footway' ? [{ offset: 0, width: Math.min(width, 3), dash: [0.5, 0.5] }] : [];
+    // A cycle crossing is red only where OSM says so; otherwise the road shows through between
+    // the white block markings (blokmarkering) along both edges.
+    if (tags.cycleway === 'crossing' && tags['surface:colour'] !== 'red') {
+      const e = Math.max(0.6, Math.min(width, 4) / 2 - 0.2);
+      paint.push({ offset: e, width: 0.4, dash: [0.4, 0.4] }, { offset: -e, width: 0.4, dash: [0.4, 0.4] });
+    }
     return { bands: [band], paint, coreHalfWidth: width / 2, halfWidth: width / 2, source: { width: bgtWidth ? 'bgt' : tagWidth ? 'tag' : 'prior', sidewalk: 'prior', cycleway: 'prior' } };
   }
   const style = CARRIAGEWAY[hw];
@@ -214,10 +228,12 @@ export function crossSection(tags: Record<string, string>, bw?: BgtWidthDm): Cro
     bands.push({ kind: 'sidewalk', surface: 'paving', offset: s * (edge[side] + w / 2), width: w, raised: KERB_M, kerb: side });
     edge[side] += w;
   }
-  const centre = (lanes >= 2 && !oneway) || (style.centre && !oneway && !lanes);
+  // No centre line on a one-way street or a fietsstraat (cyclestreet / bicycle_road): it is one lane.
+  const cycleStreet = tags.cyclestreet === 'yes' || tags.bicycle_road === 'yes';
+  const centre = !cycleStreet && ((lanes >= 2 && !oneway) || (style.centre && !oneway && !lanes));
   if (centre) paint.push({ offset: 0, width: 0.12, dash: [3, 5] });
   if (hw.startsWith('primary') || hw.startsWith('secondary') || hw.startsWith('trunk')) {
     paint.push({ offset: half - 0.3, width: 0.12, dash: null }, { offset: -(half - 0.3), width: 0.12, dash: null });
   }
-  return { bands, paint, coreHalfWidth: half, halfWidth: Math.max(edge.left, edge.right), source: { width: widthSource, sidewalk: bgtSidewalk && sw.sides.length ? 'bgt' : sw.source, cycleway: bgtCycle && (cyc.left === 'track' || cyc.right === 'track') ? 'bgt' : cyc.source } };
+  return { bands, paint, coreHalfWidth: half, halfWidth: Math.max(edge.left, edge.right), source: { width: widthSource, sidewalk: bgtSidewalk && sw.sides.length ? 'bgt' : sw.source, cycleway: bgtCycle && (cyc.left === 'track' || cyc.right === 'track') ? 'bgt' : cyc.source, sidewalkSides: sw.source } };
 }
