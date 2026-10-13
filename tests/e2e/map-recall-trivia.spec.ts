@@ -156,8 +156,8 @@ test('a neighbourhood answer opens folded, its postcard ready, above the outline
   await page.getByTestId('answer-details').click();
   const postcard = page.locator('[data-testid="answer-postcard"]');
   await expect(postcard).toHaveAttribute('data-painted', 'yes');
-  // One photo window per letter, each a plain image the browser loads on its own.
-  expect(await postcard.locator('img').count()).toBeGreaterThan(3);
+  // One photo window per run of 2–4 letters, each a plain image the browser loads on its own.
+  expect(await postcard.locator('img').count()).toBeGreaterThanOrEqual(3);
   await expect(postcard).toHaveAttribute('data-photos', /^0\//);
   await page.getByRole('button', { name: /Less/ }).click();
   await expect(page.locator('[data-testid="answer-details"]')).toHaveAttribute('data-expanded', 'no');
