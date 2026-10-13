@@ -1,4 +1,5 @@
 import {envelopeFootprintFingerprint} from './surveyedBuildingEnvelope.js';
+import { BAKED_LID_SHADE, bakedFaceShade, bakedWallShade } from './rendererShared/lightRig.js';
 import type {SurveyedMeshBinding,SurveyedMeshWallEdge} from './surveyedEnvelopeMeshBinding.js';
 import { planInterwarGroundFrontage, type InterwarGroundFrontagePlan } from './interwarGroundFrontage.js';
 import { planCompoundFrontage, type CompoundFrontagePlan } from './compoundFrontageLayout.js';
@@ -158,10 +159,9 @@ const parseHex = (hex: string): [number, number, number] => {
   return [(v >> 16) & 255, (v >> 8) & 255, v & 255];
 };
 
-/** Fixed light from the north-west, so walls facing it read lighter. */
+/** The baked shade under the rig's sun (rendererShared/lightRig.ts): walls facing the sun read lighter. */
 export function wallShade(nx: number, ny: number): number {
-  const d = nx * -0.45 + ny * 0.89;
-  return 0.8 + 0.2 * (0.5 + 0.5 * d);
+  return bakedWallShade(nx, ny);
 }
 
 type Edge = { x0: number; y0: number; x1: number; y1: number; len: number; nx: number; ny: number; hole: boolean };
@@ -191,7 +191,7 @@ function ringEdges(ring: number[][], origin: Origin, hole: boolean): Edge[] {
 
 type LidMesh = { xy: number[]; index: number[] };
 /** An upward face's shade under the fixed light (matches the roof shading formula for n = up). */
-const LID_SHADE = 0.58 + 0.42 * 0.8;
+const LID_SHADE = BAKED_LID_SHADE;
 
 /** A flat lid over every polygon (courtyards kept open) at the wall top, as shared vertices plus earcut indices facing up. */
 function lidMesh(b: MeshBuilding, origin: Origin): LidMesh | null {
@@ -708,7 +708,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const jitter = 0.9 + hash01(`${b.id}:tone`) * 0.2, white: [number, number, number] = [255, 255, 255];
       const defaultWallTint = [wr*jitter,wg*jitter,wb*jitter];
       for (const t of roof) {
-        const shade = Math.max(0.5, Math.min(1, 0.58 + 0.42 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8)));
+        const shade = bakedFaceShade(t.n);
         const wall = t.part === 'plate' || t.part === 'dormerFace', flat = t.part === 'trim' || t.part === 'decal';
         // Trim and decals (white stone, cornices, shutters) are flat colour on the lid's flat layer.
         const layer = flat ? (b.lid?.flatLayer ?? b.roof?.layers.slope ?? b.lid!.flatLayer) : t.part === 'plate' ? (t.facadeLayer ?? b.plainLayer ?? b.roof?.layers.plain ?? b.plainLayer!) : t.part === 'dormerFace' ? b.roof?.layers.dormer ?? b.plainLayer! : b.roof?.layers.slope ?? b.lid!.flatLayer;
@@ -739,7 +739,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     }
     for (const t of sign) {
       // Signature storefront boxes: flat colour on the flat layer, shaded by facing.
-      const shade = Math.max(t.lit ? 0.9 : 0.55, Math.min(1, 0.58 + 0.42 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8)));
+      const shade = Math.max(t.lit ? 0.9 : 0.55, bakedFaceShade(t.n));
       const [sr, sg, sb] = parseHex(t.hex);
       for (const [qi,q] of t.p.entries()) {
         positions[v * 3] = q[0]; positions[v * 3 + 1] = q[1]; positions[v * 3 + 2] = q[2];
@@ -918,7 +918,7 @@ export function buildKitChunk(parts: readonly KitPartGeometry[], layers: { plain
     const start = v;
     for (const t of part.tris) {
       const [r, g, b] = parseHex(t.hex);
-      const shade = Math.max(0.5, Math.min(1, 0.58 + 0.42 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8)));
+      const shade = bakedFaceShade(t.n);
       for (let k = 0; k < 3; k++) {
         positions[v * 3] = t.p[k][0]; positions[v * 3 + 1] = t.p[k][1]; positions[v * 3 + 2] = t.p[k][2];
         uvs[v * 2] = t.uv[k][0]; uvs[v * 2 + 1] = t.uv[k][1];

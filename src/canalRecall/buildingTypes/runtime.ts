@@ -13,6 +13,8 @@
  * which takes THREE and a unit loader as arguments (the landmark bundle owns the one three copy).
  */
 
+import { BAKED_SHADE_GLSL } from '../rendererShared/lightRig.ts';
+
 export interface RuntimeInstance {
   pand: string;
   unit: string;
@@ -207,10 +209,7 @@ void main() {
   vTex = aTex;
   vTint = aTint;
   vec3 n = normalize(enuFromWorld * (mat3(modelMatrix * instanceMatrix) * normal));
-  float shade;
-  if (abs(n.z) < 0.5) { vec2 h = normalize(n.xy + vec2(1e-6, 0.0)); shade = 0.8 + 0.2 * (0.5 + 0.5 * (h.x * -0.45 + h.y * 0.89)); }
-  else if (n.z < 0.0) shade = 0.5;
-  else shade = clamp(0.58 + 0.42 * max(0.0, n.x * -0.35 + n.y * 0.5 + n.z * 0.8), 0.5, 1.0);
+${BAKED_SHADE_GLSL}
   vShade = shade;
   gl_Position = projectionMatrix * modelViewMatrix * instanceMatrix * vec4(position, 1.0);
 }`,

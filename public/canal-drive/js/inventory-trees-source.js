@@ -1,6 +1,7 @@
 import {treeTypology} from '../da-costa-block/tree-typology.js';
 import {allotmentCanopyTrees,scopeAllotmentCrown} from './allotment-canopy.js';
 import {ViewResidency} from '../../../src/canalRecall/viewResidency.ts';
+import {SUN_DIRECTION} from '../../../src/canalRecall/rendererShared/lightRig.ts';
 import {roseBushInstances,roseBushVertexColours} from '../../../src/canalRecall/roseBeds.ts';
 import roseGardens from './rose-garden-data.js';
 const {THREE} = window.CanalRecallThree;
@@ -46,8 +47,11 @@ export class InventoryTrees {
     this.sharedFrame=options.sharedFrame||null;
     this.scene=this.sharedFrame?new THREE.Group():new THREE.Scene();
     if(!this.sharedFrame){
-      this.scene.add(new THREE.HemisphereLight(0xffffff,0x526048,2.15));
-      const sun=new THREE.DirectionalLight(0xfff0d5,1.7);sun.position.set(-2,-1,4);this.scene.add(sun);
+      // Local frame is east/north/up: the sky's "up" is +z (three's default +y
+      // here was north, so crowns took the sky on their north side and the dark
+      // ground colour on top), and the sun is the rig's (lane-sun-and-mood 2026-10-13).
+      const sky=new THREE.HemisphereLight(0xffffff,0x526048,2.15);sky.position.set(0,0,1);this.scene.add(sky);
+      const sun=new THREE.DirectionalLight(0xfff0d5,1.7);sun.position.set(...SUN_DIRECTION);this.scene.add(sun);
     }
     this.origin=maplibregl.MercatorCoordinate.fromLngLat([4.9,52.37],0);
     this.scale=this.origin.meterInMercatorCoordinateUnits();
