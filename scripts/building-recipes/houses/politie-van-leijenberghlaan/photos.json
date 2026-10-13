@@ -1,0 +1,18 @@
+[
+ {
+  "front": "wall-van-leijenberghlaan",
+  "panoId": "TMX7316010203-001034_pano_0005_000064",
+  "timestamp": "2019-01-03T09:50:27.471740Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/01/03/TMX7316010203-001034/pano_0005_000064/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   120393.99799727336,
+   482674.38242335495
+  ],
+  "headingDeg": 87.81354421860698,
+  "fovDeg": 37.98538723814005,
+  "pitchDeg": 8.896624549027004,
+  "distanceM": 14.614767817908376,
+  "image": "artifacts/building-recipes/politie-van-leijenberghlaan/photo-wall-van-leijenberghlaan.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

@@ -1,0 +1,144 @@
+/**
+ * `kind: large` compile: fitLarge recipe → block-kit compose (windows cut into the exact 3DBAG walls, recessed
+ * `LARGE_RECESS_M`) → wall-group components (entrances, canopies, garage doors, cornices, fascias, lettering, police
+ * band and lamp) → roof plant → a Three group whose meshes carry the recipe material slot (`userData.materialSlot`)
+ * and surface, so the GLB exporter writes `materialSlot` + `tint` on every material.
+ */
+import * as T from 'three';
+import {compose, type Cell, type PanelCtx} from '../blockBuilding/compose.ts';
+import {runGates, type GateReport} from '../blockBuilding/gates.ts';
+import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawEntrance, drawGarageDoor, drawLettering, drawPoliceStripe, drawRoofBoxes, lowestHoleAbove} from '../blockBuilding/components.ts';
+import type {MeshBuilder} from '../blockBuilding/mesh.ts';
+import type {Panel} from '../blockBuilding/panels.ts';
+import type {BuildingFacts} from './facts.ts';
+import type {LargeBuildingIntent} from './intent.ts';
+import {ROOF_COLOURS} from './fit.ts';
+import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit} from './fitLarge.ts';
+
+export interface LargeComponentCounts { entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface CompiledLargeBuilding {
+  kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
+  stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
+  /** block-kit wall panels (index = `recipe.panelGroup` index) */
+  panels: Panel[];
+}
+
+/** Block-kit slot → recipe material slot (recipeLook RECIPE_SLOTS) and surface. Roofs are split by slope separately. */
+export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe, 'wallMaterial'>): {materialSlot: string; surface: string} {
+  const base = slot.split('@')[0];
+  switch (base) {
+    case 'wall': return {materialSlot: recipe.wallMaterial, surface: 'wall'};
+    case 'curtain': return {materialSlot: 'frame', surface: 'wall'};
+    case 'glass': return {materialSlot: 'glass', surface: 'glass'};
+    case 'frame': case 'rail': return {materialSlot: 'frame', surface: 'joinery'};
+    case 'door': return {materialSlot: 'door', surface: 'door'};
+    case 'stone': case 'slab': return {materialSlot: 'stone', surface: 'stone'};
+    case 'police-white': return {materialSlot: 'stucco', surface: 'sign'};
+    case 'police-blue': case 'sign': return {materialSlot: 'accent', surface: 'sign'};
+    case 'plant': return {materialSlot: 'stone', surface: 'plant'};
+    default: throw Error(`large tier: block-kit slot "${slot}" has no recipe material slot`);
+  }
+}
+
+function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: LargeGroupFit | undefined, counts: LargeComponentCounts) {
+  if (!g || !info.levels.length) return;
+  const p = c.p, levels = info.levels, groundTop = levels[1] ?? p.vMax, s = g.slots;
+  const skip: [number, number][] = [];
+  let entrance: ReturnType<typeof drawEntrance> = null, canopy: ReturnType<typeof drawCanopy> = null;
+  if (g.entrance?.panel === p.index) {
+    const e = g.entrance, cells = info.cells.filter(x => x.bay === e.bay && x.floor < e.storeys);
+    if (cells.length) {
+      entrance = drawEntrance(c, cellSpan(cells), levels, {frame: s.frame, glass: s.glass, door: s.door, stone: s.stone}, e.storeys > 1);
+      if (entrance) {
+        counts.entrances++; if (e.storeys > 1) counts.halls++;
+        skip.push([entrance.u0 - 0.3, entrance.u1 + 0.3]);
+        if (e.canopy) { canopy = drawCanopy(c, entrance.u0, entrance.u1, entrance.top + 0.2, s.stone, g.signage?.mount === 'canopy' ? 0.5 : 0.3); if (canopy) counts.canopies++; }
+      }
+    }
+  }
+  if (g.garage?.panel === p.index) for (const cell of info.cells) if (cell.floor === 0 && g.garage.bays.includes(cell.bay) && drawGarageDoor(c, cell, {door: s.door, frame: s.frame})) { counts.garageDoors++; skip.push([cell.u0, cell.u1]); }
+  if (g.cornice) { const top = panelEaves(p); if (top - p.vMin > 3 && drawBand(c, s.stone, top - 0.45, top - 0.02, 0.28)) counts.cornices++; }
+  if (g.ground === 'plinth-shopfronts' && groundTop - p.vMin > 3 && drawBand(c, s.stone, groundTop - 0.62, groundTop - 0.12, 0.1, entrance && g.entrance!.storeys > 1 ? skip : [])) {
+    counts.fascias++;
+    // A group without an entrance letters its shop fascia, centred on the widest panel.
+    if (g.signage && !g.entrance && g.mainPanel === p.index) counts.letters += drawLettering(c, g.signage.text, (p.uMin + p.uMax) / 2, groundTop - 0.37, 0.115, 0.34, Math.min((p.uMax - p.uMin) * 0.6, 6), s.sign);
+  }
+  if (entrance && g.signage) {
+    const {text, mount} = g.signage, uc = (entrance.u0 + entrance.u1) / 2, w = entrance.u1 - entrance.u0;
+    if (mount === 'glazing') counts.letters += drawLettering(c, text, uc, (Math.max(entrance.doorTop, levels[1] ?? entrance.doorTop) + entrance.top) / 2, entrance.glassDepth + 0.015, 0.7, w * 0.85, s.sign);
+    else if (mount === 'canopy' && canopy) counts.letters += drawLettering(c, text, uc, (canopy.v0 + canopy.v1) / 2, canopy.d + 0.012, (canopy.v1 - canopy.v0) * 0.62, w + 1.0, s.sign);
+    else if (mount === 'wall') counts.letters += drawLettering(c, text, uc, groundTop + 0.45, 0.012, 0.6, Math.max(w * 1.6, 3), s.sign);
+    else {
+      const v0 = (canopy ? canopy.v1 : entrance.top) + 0.15, v1 = v0 + 0.55;
+      if (v1 < (levels[1] ?? p.vMax) + 1.2) {
+        c.box(g.police ? 'police-white' : s.stone, entrance.u0 - 0.2, entrance.u1 + 0.2, v0, v1, 0, 0.08, c.part());
+        counts.letters += drawLettering(c, text, uc, (v0 + v1) / 2, 0.092, 0.38, w + 0.2, s.sign);
+      }
+    }
+  }
+  if (g.police?.stripe && g.entrance?.panel === p.index && entrance) {
+    // Over the entrance (and canopy), but under the first-floor openings: 0.7 m, squeezed to >= 0.4 m, else dropped under the canopy line.
+    let v0 = Math.max(entrance.top + (canopy ? 0.75 : 0.2), groundTop - 0.85);
+    const room = lowestHoleAbove(c, v0 - 0.01) - 0.08 - v0;
+    if (room < 0.4) v0 = Math.max(entrance.top + 0.2, Math.min(v0, lowestHoleAbove(c, entrance.top) - 0.78));
+    const height = Math.max(0.4, Math.min(0.7, lowestHoleAbove(c, v0 - 0.01) - 0.08 - v0)), hall = g.entrance.storeys > 1;
+    const plateAt = hall || g.signage ? Math.min(p.uMax - 2.6, entrance.u1 + 2.9) : (entrance.u0 + entrance.u1) / 2;
+    drawPoliceStripe(c, v0, height, plateAt, {white: 'police-white', blue: 'police-blue'}, hall ? [[entrance.u0 - 0.3, entrance.u1 + 0.3]] : []);
+    counts.policeStripes++;
+  }
+  if (g.police?.lamp && entrance && drawBlueLamp(c, Math.min(p.uMax - 0.4, entrance.u1 + 0.55), Math.min(entrance.doorTop + 0.9, groundTop - 0.2), {bracket: s.frame, lamp: 'police-blue', cap: 'police-white'})) counts.lamps++;
+}
+
+function slopeClass(a: number[], b: number[], c: number[]): 'steep' | 'low' | 'flat' {
+  const e1 = [b[0] - a[0], b[1] - a[1], b[2] - a[2]], e2 = [c[0] - a[0], c[1] - a[1], c[2] - a[2]];
+  const n = [e1[1] * e2[2] - e1[2] * e2[1], e1[2] * e2[0] - e1[0] * e2[2], e1[0] * e2[1] - e1[1] * e2[0]], l = Math.hypot(n[0], n[1], n[2]) || 1;
+  const deg = Math.acos(Math.min(1, Math.abs(n[1]) / l)) * 180 / Math.PI;
+  return deg > 30 ? 'steep' : deg > 8 ? 'low' : 'flat';
+}
+
+/** MeshBuilder slots → Three meshes (one per slot; roofs one per slope class) tagged for the GLB exporter. */
+export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe): T.Group {
+  const group = new T.Group(); group.name = recipe.id;
+  const roofColours = ROOF_COLOURS[recipe.roof.material], roofSlot = ['slate', 'zinc', 'bitumen', 'copper'].includes(recipe.roof.material) ? 'slate' : 'roofTile';
+  const add = (name: string, positions: number[], colour: string, materialSlot: string, surface: string) => {
+    if (!positions.length) return;
+    const geo = new T.BufferGeometry(); geo.setAttribute('position', new T.Float32BufferAttribute(positions, 3)); geo.computeVertexNormals();
+    const m = new T.Mesh(geo, new T.MeshStandardMaterial({color: colour, roughness: 0.9, metalness: 0}));
+    m.name = name; m.userData = {surface, materialSlot, component: name.split('/')[0], pandId: recipe.pandId};
+    group.add(m);
+  };
+  for (const [slot, s] of [...mesh.slots].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
+    if (slot === 'roof') {
+      const by = {steep: [] as number[], low: [] as number[], flat: [] as number[]}, v = s.positions;
+      for (let i = 0; i < v.length; i += 9) by[slopeClass(v.slice(i, i + 3), v.slice(i + 3, i + 6), v.slice(i + 6, i + 9))].push(...v.slice(i, i + 9));
+      for (const k of ['steep', 'low', 'flat'] as const) add(`roof/${k}`, by[k], roofColours[k], k === 'flat' ? 'bitumen' : roofSlot, 'roof');
+      continue;
+    }
+    const colour = recipe.spec.palette[slot];
+    if (!colour) throw Error(`large tier: slot ${slot} has no palette colour`);
+    const {materialSlot, surface} = largeMaterialSlot(slot, recipe);
+    add(`${surface}/${slot}`, s.positions, colour, materialSlot, surface);
+  }
+  return group;
+}
+
+export function compileLargeBuilding(intent: LargeBuildingIntent, facts: BuildingFacts): CompiledLargeBuilding {
+  const {recipe, report} = fitLarge(intent, facts);
+  const groupOf = (index: number) => recipe.groups[recipe.panelGroup[index]];
+  const counts: LargeComponentCounts = {entrances: 0, halls: 0, canopies: 0, garageDoors: 0, letters: 0, cornices: 0, fascias: 0, policeStripes: 0, lamps: 0, roofPlant: recipe.roofPlant.length};
+  const res = compose(recipe.set, recipe.spec, {
+    recessM: recipe.recessM,
+    mergeKey: wi => recipe.wallGroup[wi],
+    systemFor: p => groupOf(p.index)?.specSystem ?? recipe.other.specSystem,
+    wallSlotFor: p => { const g = groupOf(p.index); return !g ? 'wall' : g.system === 'curtain-wall' ? g.slots.curtain : g.slots.wall; },
+    skipCell: (p, floor, bay) => {
+      const g = groupOf(p.index); if (!g) return false;
+      if (g.entrance?.panel === p.index && bay === g.entrance.bay && floor < g.entrance.storeys) return true;
+      return !!(g.garage?.panel === p.index && floor === 0 && g.garage.bays.includes(bay));
+    },
+    panelHook: (c, info) => decorate(c, info, groupOf(c.p.index), counts),
+  });
+  drawRoofBoxes(res.mesh, recipe.roofPlant, 'plant');
+  const blockGates = runGates(res.mesh, recipe.set, {budget: 12000});
+  return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, panels: res.panels};
+}

@@ -7,7 +7,8 @@
  */
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
-import {fitIntent} from '../../src/canalRecall/buildingRecipe/fit.ts';
+import {fitIntent, fitLarge} from '../../src/canalRecall/buildingRecipe/fit.ts';
+import {validateLargeIntent} from '../../src/canalRecall/buildingRecipe/largeIntent.ts';
 import {resolveIntent} from '../../src/canalRecall/buildingRecipe/compile.ts';
 import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
 
@@ -21,6 +22,12 @@ export function fitHashes(): Record<string, string> {
     if (!fs.existsSync(`${HOUSES}/${id}/intent.json`)) continue;
     try {
       const facts: BuildingFacts = JSON.parse(fs.readFileSync(`${HOUSES}/${id}/facts.json`, 'utf8'));
+      if (raw(id).kind === 'large') {
+        // kind: large: the fitted wall groups, panel assignment, storey lines, systems and roof plant.
+        const {recipe: r, report} = fitLarge(validateLargeIntent(raw(id)), facts);
+        out[id] = createHash('sha256').update(JSON.stringify({anchorRD: r.anchorRD, groups: r.groups, panelGroup: r.panelGroup, wallGroup: r.wallGroup, roofPlant: r.roofPlant, systems: r.spec.systems, palette: r.spec.palette, report})).digest('hex').slice(0, 16);
+        continue;
+      }
       const fit = fitIntent(resolveIntent(raw(id), raw), facts);
       out[id] = createHash('sha256').update(JSON.stringify({anchorRD: fit.anchorRD, recipe: fit.recipe, report: fit.report})).digest('hex').slice(0, 16);
     } catch (e) { out[id] = `error: ${(e as Error).message.slice(0, 80)}`; }

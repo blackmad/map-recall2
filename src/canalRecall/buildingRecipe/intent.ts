@@ -8,6 +8,7 @@
  * terra/facade-component-contract: the model selects and classifies, a
  * compiler builds geometry.
  */
+import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
 
 export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat'] as const;
 export type GableIntent = typeof GABLES[number];
@@ -311,18 +312,59 @@ export interface CanalHouseIntent {
 }
 
 /**
- * Planned tier for large buildings (schools, blocks, warehouses, most
- * landmarks): keep 3DBAG LoD2.2 massing as-is and choose a facade SYSTEM per
- * wall, addressed by 3DBAG wall surface index (never coordinates). Typed here
- * so the union and compiler dispatch exist; the compiler rejects it until built.
+ * Large buildings (schools, blocks, offices, police stations, most landmarks): keep the 3DBAG LoD2.2 massing as-is and
+ * choose a facade SYSTEM per wall group, addressed by 3DBAG LoD2.2 wall-surface index (never coordinates); the fit
+ * (`fitLarge`) derives storey lines, bay pitch, entrance and garage bays from the surfaces, and compose.ts cuts the
+ * windows into the exact walls. Validated by `validateLargeIntent` (largeIntent.ts); list a house's surfaces with
+ * `scripts/building-recipes/walls.ts`.
  */
+export interface LargeWallIntent {
+  /** 3DBAG LoD2.2 WallSurface indices (shell boundary index) of this wall group. */
+  wallSurfaces: number[];
+  /** Optional street the group faces (the facts step fetches a reference crop for it). */
+  street?: string;
+  system: LargeSystemName;
+  /** Full storeys incl. ground on this wall (default: civic storey height, 4.2 m before 1945, 3.6 m after). */
+  storeys?: number;
+  /** Share the storey lines of an earlier group (index into `walls`), so wings' windows line up with the main block. Replaces `storeys`. */
+  alignWith?: number;
+  /** Bays per storey on the group's widest panel (default: the system's pitch). */
+  baysPerStorey?: number;
+  /** Ground-floor system: `system` (the upper rows), shop windows, a glazed plinth, or blank. */
+  ground?: LargeGround;
+  windows?: LargeWindow;
+  /** Recessed entrance on the widest panel: `bay` from the viewer's left (default the middle), `storeys` > 1 = a glazed entrance hall that tall, `canopy` = a cantilevered slab over it. */
+  entrance?: boolean | {bay?: number; storeys?: number; canopy?: boolean};
+  /** Stroke-font lettering: over the entrance (`fascia`, default), on the wall above the ground floor (`wall`), on the entrance-hall glass (`glazing`) or the canopy edge (`canopy`). */
+  signage?: string | {text: string; colour?: string; mount?: 'fascia' | 'wall' | 'glazing' | 'canopy'};
+  /** Recessed sectional garage doors in the ground storey, from the right end of the widest panel. */
+  garageDoors?: number;
+  stringCourses?: boolean;
+  /** Projecting cornice along the wall top. */
+  cornice?: boolean;
+  /** Projecting piers at the bay joints. */
+  piers?: boolean;
+  /** Storeys (0 = ground) with a balcony in every bay. */
+  balconies?: {storeys: number[]; rail?: 'glass' | 'bars' | 'solid'};
+  /** Storeys (0 = ground) with no openings (a blank floor over a shop, a plant floor). */
+  blankStoreys?: number[];
+  /** Police signature components: blue-and-white striped POLITIE band over the ground floor, blue lamp beside the entrance. */
+  police?: {stripe?: boolean; lamp?: boolean};
+  /** Group colours when they differ from the house palette (`brick` = this group's wall). */
+  palette?: Partial<Pick<PaletteIntent, 'brick' | 'frame' | 'stone'>>;
+}
+
 export interface LargeBuildingIntent {
   schemaVersion: 1;
   kind: 'large';
   id: string; pandId: string; address: string;
   sources: IntentSource[];
-  walls: {wallSurfaces: number[]; system: 'brick-bay-grid' | 'ribbon-windows' | 'curtain-wall' | 'plinth-shopfronts' | 'blank'; storeys?: number; baysPerStorey?: number; entrance?: boolean; signage?: string}[];
+  walls: LargeWallIntent[];
+  /** System for wall surfaces no group lists (default `blank`). */
+  otherWalls?: LargeSystemName;
+  /** Lift overrun and plant boxes on the largest flat roof. */
   roofPlant?: boolean;
+  roof?: {material: typeof ROOF_MATERIALS[number]};
   palette: PaletteIntent;
   notes?: string[];
 }
@@ -335,7 +377,7 @@ const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset
 export function validateIntent(input: unknown): CanalHouseIntent {
   const problems: string[] = [];
   const intent = input as CanalHouseIntent;
-  if ((input as {kind?: string})?.kind === 'large') throw new Error(`Intent ${intent?.id}: kind "large" is planned but not implemented yet`);
+  if ((input as {kind?: string})?.kind === 'large') throw new Error(`Intent ${intent?.id}: kind "large" is validated by validateLargeIntent / validateBuildingIntent (largeIntent.ts)`);
   if (intent?.kind !== 'canal-house') problems.push('kind must be "canal-house"');
   const oneOf = (value: unknown, allowed: readonly string[], where: string) => {
     if (!allowed.includes(value as string)) problems.push(`${where}: ${JSON.stringify(value)} not in ${allowed.join('|')}`);

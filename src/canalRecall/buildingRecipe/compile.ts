@@ -12,7 +12,8 @@ import {compileCanalHouseRecipe, type CanalHouseRecipe} from '../canalhouseRecip
 import type {BuildingFacts} from './facts.ts';
 import {fitIntent, ROOF_COLOURS, type FitReport} from './fit.ts';
 import {addLettering} from './signage.ts';
-import {swatch, validateIntent, type CanalHouseIntent} from './intent.ts';
+import {swatch, validateIntent, type BuildingIntent, type CanalHouseIntent, type LargeBuildingIntent} from './intent.ts';
+import {compileLargeBuilding, type CompiledLargeBuilding} from './largeCompile.ts';
 import {applyHistoricPasses} from './historicPasses.ts';
 
 /** `{sameAs, overrides}` recipes: deep-merge onto the named neighbour; fronts merge by index. */
@@ -182,7 +183,13 @@ export function backJogs(group: T.Group, recipe: CanalHouseRecipe, fit: FitRepor
 /** `facts` are the facts the fit used: the 3DBAG roof after roofCleanup.ts (gates compare against these). */
 export interface CompiledBuilding { group: T.Group; recipe: CanalHouseRecipe; anchorRD: [number, number]; fit: FitReport; roofClasses: {steep: number; low: number; flat: number}; vergeTriangles: number; facts: BuildingFacts }
 
-export function compileBuilding(intent: CanalHouseIntent, facts: BuildingFacts): CompiledBuilding {
+/** Dispatch on `kind`: canal houses through the canalhouse library, `large` through the block-kit facade systems (largeCompile.ts). */
+export function compileBuilding(intent: CanalHouseIntent, facts: BuildingFacts): CompiledBuilding;
+export function compileBuilding(intent: LargeBuildingIntent, facts: BuildingFacts): CompiledLargeBuilding;
+// Repeated last so `ReturnType<typeof compileBuilding>` (canal-house callers) stays `CompiledBuilding`.
+export function compileBuilding(intent: CanalHouseIntent, facts: BuildingFacts): CompiledBuilding;
+export function compileBuilding(intent: BuildingIntent, facts: BuildingFacts): CompiledBuilding | CompiledLargeBuilding {
+  if (intent.kind === 'large') return compileLargeBuilding(intent, facts);
   const {recipe, anchorRD, report, facts: fitted} = fitIntent(intent, facts);
   const built = compileCanalHouseRecipe(recipe);
   backJogs(built.group, recipe, report);

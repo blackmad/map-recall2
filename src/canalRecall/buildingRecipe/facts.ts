@@ -52,6 +52,41 @@ export interface BuildingFacts {
    * (blockFace/recipeRoof.ts); 3DBAG is then an upper bound only (`surveyRoofMaxM`, main-body p95 `capM`).
    */
   roofSource?: {kind: 'recipe'; surveyRoofMaxM: number; capM: number};
+  /**
+   * LoD2.2 wall surfaces (large tier only, `buildFacts(..., {walls: true})`): `surface` is the boundary index in the
+   * BuildingPart's LoD2.2 shell, the same index as `extractFacadeWallPlanes`' `:wall:<i>` id and a `kind: large` intent's
+   * `walls[].wallSurfaces`. Rings are RD x, y and NAP z.
+   */
+  wallsRD?: WallSurfaceFacts[];
+  /** Neighbouring footprints (building-tile extract, within 90 m) for party-wall detection: RD ring, height above ground. */
+  neighboursRD?: {id: string; heightM: number; ringRD: RD[]}[];
+}
+
+export interface WallSurfaceFacts { surface: number; ringsRD: number[][][]; onFootprintEdge: boolean; areaM2: number; bearingDeg: number; bottomM: number; topM: number }
+
+/** Every LoD2.2 WallSurface of the item (shell 0), with its shell boundary index. Heights are relative to `groundNAP`. */
+export function decodeWalls(item: CityJsonItem, groundNAP: number): WallSurfaceFacts[] {
+  const t = item.metadata.transform, verts = item.feature.vertices.map(v => v.map((x, i) => x * t.scale[i] + t.translate[i]));
+  const out: WallSurfaceFacts[] = [];
+  for (const o of Object.values(item.feature.CityObjects)) for (const g of o.geometry ?? []) {
+    if (String(g.lod) !== '2.2' || !g.semantics) continue;
+    const shell = (g.boundaries as number[][][][])[0] ?? [];
+    shell.forEach((surface, j) => {
+      const sem = g.semantics!.surfaces[g.semantics!.values[0][j]] as {type: string; on_footprint_edge?: boolean} | undefined;
+      if (sem?.type !== 'WallSurface') return;
+      const rings = surface.map(r => r.map(k => verts[k]));
+      const ring = rings[0];
+      let nx = 0, ny = 0, nz = 0;
+      for (let i = 0; i < ring.length; i++) {
+        const a = ring[i], b = ring[(i + 1) % ring.length];
+        nx += (a[1] - b[1]) * (a[2] + b[2]); ny += (a[2] - b[2]) * (a[0] + b[0]); nz += (a[0] - b[0]) * (a[1] + b[1]);
+      }
+      const zs = ring.map(p => p[2] - groundNAP);
+      out.push({surface: j, ringsRD: rings, onFootprintEdge: !!sem.on_footprint_edge, areaM2: Math.hypot(nx, ny, nz) / 2,
+        bearingDeg: (Math.atan2(nx, ny) * 180 / Math.PI + 360) % 360, bottomM: Math.min(...zs), topM: Math.max(...zs)});
+    });
+  }
+  return out;
 }
 
 const dist = (a: number[], b: number[]) => Math.hypot(a[0] - b[0], a[1] - b[1]);
@@ -210,7 +245,7 @@ export function findFrontage(ground: RD[][][], roofs: BuildingFacts['roofsRD'], 
     topProfile, eavesM: hs[Math.floor(hs.length * 0.1)] ?? NaN, topM: hs.at(-1) ?? NaN, uncertainty};
 }
 
-export function buildFacts(pandId: string, item: CityJsonItem, streets: StreetPath[], frontStreets: string[], toRD: (lngLat: [number, number]) => RD, meta: BuildingFacts['source']): BuildingFacts {
+export function buildFacts(pandId: string, item: CityJsonItem, streets: StreetPath[], frontStreets: string[], toRD: (lngLat: [number, number]) => RD, meta: BuildingFacts['source'], options: {walls?: boolean} = {}): BuildingFacts {
   const {attributes, bag, ground, roofs} = decodeThreeDBag(item);
   const g = Number(attributes.b3_h_maaiveld);
   if (!Number.isFinite(g)) throw Error('Missing b3_h_maaiveld');
@@ -222,5 +257,6 @@ export function buildFacts(pandId: string, item: CityJsonItem, streets: StreetPa
     heights: {groundNAP: g, roofMinM: Math.min(...roofZ), roofMaxM: Math.max(...roofZ), ridgeM: Number.isFinite(Number(attributes.b3_h_nok)) && attributes.b3_h_nok !== null ? Math.max(rel(attributes.b3_h_nok), rel(attributes.b3_h_dak_max)) : rel(attributes.b3_h_dak_max), dak50pM: rel(attributes.b3_h_dak_50p), dak70pM: rel(attributes.b3_h_dak_70p),
       storeys: Number.isFinite(Number(attributes.b3_bouwlagen)) ? Number(attributes.b3_bouwlagen) : null, builtYear: Number.isFinite(Number(attributes.oorspronkelijkbouwjaar)) ? Number(attributes.oorspronkelijkbouwjaar) : null},
     fronts: unique.map(s => findFrontage(ground, roofs, g, streets, s, toRD)),
+    ...(options.walls ? {wallsRD: decodeWalls(item, g)} : {}),
   };
 }
