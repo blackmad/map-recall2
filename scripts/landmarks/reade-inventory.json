@@ -1,0 +1,80 @@
+{
+ "schemaVersion": 1,
+ "id": "reade",
+ "pand": "0363100012137257",
+ "signature": [
+  "ribbon-windows",
+  "render-bands"
+ ],
+ "walls": [
+  {
+   "tag": "w01-269",
+   "bearing": 269,
+   "lengthM": 63.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002556_pano_0000_001433",
+   "capturedAt": "2022-05-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "ribbon-windows",
+     "kind": "window-shape",
+     "where": "two storeys of long ribbons of paired casements between concrete piers",
+     "approxSizeM": [
+      60,
+      7
+     ],
+     "plan": "simplified",
+     "how": "ribbon-windows 2 storeys x 10 bays, two-light; plain strips instead of paired casements",
+     "seenIn": "TMX7316010203-002556_pano_0000_001433"
+    },
+    {
+     "id": "render-bands",
+     "kind": "other",
+     "where": "grey render bands above and between the ribbons",
+     "approxSizeM": [
+      60,
+      8
+     ],
+     "plan": "modelled",
+     "how": "group wallMaterial render (stucco texture), palette grey",
+     "seenIn": "TMX7316010203-002556_pano_0000_001433"
+    },
+    {
+     "id": "louvre-box",
+     "kind": "other",
+     "where": "dark louvred box on the roof at the right",
+     "approxSizeM": [
+      10,
+      4
+     ],
+     "plan": "simplified",
+     "how": "3DBAG roof massing without louvres",
+     "seenIn": "TMX7316010203-002556_pano_0000_001433"
+    },
+    {
+     "id": "parking-signs",
+     "kind": "sign",
+     "where": "a row of no-parking signs along the ground storey",
+     "approxSizeM": [
+      0.6,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "traffic signs"
+     },
+     "seenIn": "TMX7316010203-002556_pano_0000_001433"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002556_pano_0000_001433/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

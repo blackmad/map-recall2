@@ -1,0 +1,77 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "rijksakademie",
+ "pandId": "0363100012165748",
+ "address": "Rijksakademie van beeldende kunsten, Sarphatistraat 470, Amsterdam (1865 former barracks, courtyard complex of round-arched brick ranges)",
+ "sources": [
+  {
+   "id": "pano-2021-01-26-south",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-26",
+   "image": "staging/pand-reference-walls/0363100012165748/w02-162.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001984_pano_0000_000252/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-04-24-north",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-24",
+   "image": "staging/pand-reference-walls/0363100012165748/w04-342.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001675_pano_0000_006181/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    88,
+    53
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 14,
+   "ground": "system",
+   "windows": "narrow",
+   "arches": {
+    "windows": "round",
+    "band": "brick"
+   },
+   "frames": true,
+   "sills": true
+  },
+  {
+   "wallSurfaces": [
+    98,
+    7
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 10,
+   "ground": "system",
+   "windows": "narrow",
+   "arches": {
+    "windows": "round",
+    "band": "brick"
+   },
+   "frames": true,
+   "sills": true
+  }
+ ],
+ "otherWalls": "blank",
+ "closedBands": true,
+ "roof": {
+  "material": "red-tile"
+ },
+ "palette": {
+  "brick": "#6a4a3e",
+  "frame": "#e8e2d2",
+  "door": "#2a2a2a",
+  "stone": "#d9d2bd",
+  "wallMaterial": "brick"
+ },
+ "notes": [
+  "Rijksakademie van beeldende kunsten, Sarphatistraat 470 (pand 0363100012165748, built 1865, 349 LoD2.2 surfaces in 274 panels, roof max 21.4 m): a courtyard complex of former barracks ranges with an annex block to the north-east. Two outer ranges have a panorama: the 51 m south range (2021-01-26 w02-162, surface 88, plus the 31 m panel 53; eaves 8.2 m: one tall storey of round-headed windows paired with plain and painted-over arches, small arched lights above) and the 34 m north range (2020-04-24 w04-342, surfaces 98 and 7, eaves 11.1 m: two storeys of round-arched windows in pairs over a brick ground with a fire stair). The west range (surfaces 105/130/345, 55 m, no photo within range) and the courtyard walls are blank.",
+  "MODELLED: round-arched windows with brick rowlock arch bands on both ranges (arches.windows round), two storeys at the measured eaves, red-tile roof from the 3DBAG roof planes. SIMPLIFIED: the windows are regularised to an even 14 / 10 bay rhythm; the south range's arches are in two storeys though the photo shows mostly one tall arched row with a few small lights above; the painted-white and bricked-up arches and the tall central entrance bays are not distinguished; no polychrome. SKIPPED: the fence in front of the north range, the fire stair (too thin), the striped polychrome ornamental house fronts on the Rijksakademie's east side (they stand on other BAG pands and are not part of this massing), the rear and courtyard walls (no photo: blank), roof dormers and rooflights (not in LoD2.2)."
+ ]
+}

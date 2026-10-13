@@ -1221,6 +1221,13 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+- **Public buildings, next** (2026-10-14, HISTORY "Schools as large
+  recipes"): re-install the eight schools with `layeredKit: true` and
+  re-audit (1.5–51.9 m² glass/frame z-fight today); Roeterseiland REC-A
+  survey lane (pand 0363100012185420); remaining with usable panoramas:
+  Hogeschool van Amsterdam, Gerrit Rietveld Academie, Het 4e Gymnasium,
+  Metis and Oostpoort Montessori, Spinoza, the UvA Spui building; AMC,
+  VUmc, AvL and BovenIJ are blocked on panoramas or BAG matching.
 - **Large tier after batch 3** (2026-10-14): fix the kit overlaps that
   batch 3 worked around (`garageDoors`/`portals`, `arches` with frames,
   `curtain-wall`: 2–18 m² coplanar frame/glass; stacked balconies 9k tris

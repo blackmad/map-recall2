@@ -1,0 +1,167 @@
+{
+ "generatedAt": "2026-10-13",
+ "source": "OSM amenity=hospital (Overpass), PDOK Locatieserver + BAG WFS, pand-reference panoramas (CC BY 4.0)",
+ "hospitals": [
+  {
+   "name": "Amsterdam UMC - locatie VUMC",
+   "address": "De Boelelaan 1117, Amsterdam",
+   "osm": "way/25723907",
+   "osmLatLng": [
+    52.3345352,
+    4.8599263
+   ],
+   "pandIds": [
+    "0363100012116268"
+   ],
+   "verblijfsobject": "0363010000837257",
+   "bagAddress": "De Boelelaan 1117, 1081HV Amsterdam",
+   "gebruiksdoel": "gezondheidszorgfunctie",
+   "bouwjaar": 1964,
+   "osmToAddressM": 11,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending-no-usable-panorama",
+   "panoramaYears": [],
+   "referenceStatus": "no-wall"
+  },
+  {
+   "name": "Amsterdam UMC locatie AMC",
+   "address": "Meibergdreef 9, Amsterdam",
+   "osm": "way/11575103",
+   "osmLatLng": [
+    52.2925002,
+    4.9569165
+   ],
+   "pandIds": [],
+   "verblijfsobject": "",
+   "bagAddress": "(pand under the OSM point; address geocode was far away)",
+   "gebruiksdoel": "",
+   "bouwjaar": null,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending-no-usable-panorama",
+   "panoramaYears": [],
+   "referenceStatus": "no-pand"
+  },
+  {
+   "name": "Antoni van Leeuwenhoek",
+   "address": "Plesmanlaan 121, Amsterdam",
+   "osm": "way/25711528",
+   "osmLatLng": [
+    52.3502898,
+    4.8257571
+   ],
+   "pandIds": [
+    "0363100012149452"
+   ],
+   "verblijfsobject": "0363010000778363",
+   "bagAddress": "Plesmanlaan 121, 1066CX Amsterdam",
+   "gebruiksdoel": "gezondheidszorgfunctie",
+   "bouwjaar": 1973,
+   "osmToAddressM": 78,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending-no-usable-panorama",
+   "panoramaYears": [],
+   "referenceStatus": "no-wall"
+  },
+  {
+   "name": "BovenIJ Ziekenhuis",
+   "address": "Statenjachtstraat 1, Amsterdam",
+   "osm": "way/37379077",
+   "osmLatLng": [
+    52.4046484,
+    4.9219157
+   ],
+   "pandIds": [
+    "0363100012090318"
+   ],
+   "verblijfsobject": "0363010000820648",
+   "bagAddress": "Statenjachtstraat 1, 1034CS Amsterdam",
+   "gebruiksdoel": "gezondheidszorgfunctie",
+   "bouwjaar": 1987,
+   "osmToAddressM": 29,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending-no-usable-panorama",
+   "panoramaYears": [],
+   "referenceStatus": "no-panorama"
+  },
+  {
+   "name": "OLVG West",
+   "address": "Jan Tooropstraat 164, Amsterdam",
+   "osm": "way/750745530",
+   "osmLatLng": [
+    52.3710107,
+    4.839731
+   ],
+   "pandIds": [
+    "0363100012074757"
+   ],
+   "verblijfsobject": "0363010000686941",
+   "bagAddress": "Jan Tooropstraat 164, 1061AE Amsterdam",
+   "gebruiksdoel": "gezondheidszorgfunctie",
+   "bouwjaar": 1966,
+   "osmToAddressM": 46,
+   "signatureElements": [],
+   "sharedWith": "bespoke campus model olvg-oost/olvg-west (OSM building rings, manualCatalogue); the entrance pand is inside it",
+   "modelStatus": "modelled-before-this-lane",
+   "panoramaYears": [
+    2025,
+    2022
+   ],
+   "referenceStatus": "washed-out"
+  },
+  {
+   "name": "OLVG, locatie Oost",
+   "address": "Oosterpark 9, Amsterdam",
+   "osm": "way/26989989",
+   "osmLatLng": [
+    52.3581509,
+    4.915322
+   ],
+   "pandIds": [
+    "0363100012124921"
+   ],
+   "verblijfsobject": "",
+   "bagAddress": "(pand under the OSM point; address geocode was far away)",
+   "gebruiksdoel": "gezondheidszorgfunctie,overige gebruiksfunctie",
+   "bouwjaar": 1900,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "bespoke campus model olvg-oost/olvg-west (OSM building rings, manualCatalogue); the entrance pand is inside it",
+   "modelStatus": "modelled-before-this-lane",
+   "panoramaYears": [
+    2019,
+    2024
+   ],
+   "referenceStatus": "washed-out"
+  },
+  {
+   "name": "Reade (JBI)",
+   "address": "Dr. Jan van Breemenstraat 2, Amsterdam",
+   "osm": "way/57863245",
+   "osmLatLng": [
+    52.3706314,
+    4.8444902
+   ],
+   "pandIds": [
+    "0363100012137257"
+   ],
+   "verblijfsobject": "",
+   "bagAddress": "(pand under the OSM point; address geocode was far away)",
+   "gebruiksdoel": "gezondheidszorgfunctie",
+   "bouwjaar": 1967,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "large-installed",
+   "panoramaYears": [
+    2022,
+    2018
+   ],
+   "referenceStatus": "ok"
+  }
+ ]
+}

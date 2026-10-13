@@ -1,0 +1,80 @@
+{
+ "schemaVersion": 1,
+ "id": "montessori-van-ostade",
+ "pand": "0363100012236840",
+ "signature": [
+  "window-groups",
+  "string-courses"
+ ],
+ "walls": [
+  {
+   "tag": "w02-168",
+   "bearing": 168,
+   "lengthM": 10.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001063_pano_0001_000014",
+   "capturedAt": "2019-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "window-groups",
+     "kind": "window-shape",
+     "where": "three tall storeys, each two or three light groups between slender white piers",
+     "approxSizeM": [
+      10,
+      14
+     ],
+     "plan": "simplified",
+     "how": "brick-bay-grid, 3 storeys x 2 bays, windows wide, piers; windows 58 % of the storey instead of 80 %",
+     "seenIn": "TMX7316010203-001063_pano_0001_000014"
+    },
+    {
+     "id": "string-courses",
+     "kind": "other",
+     "where": "thin stone string courses at each floor",
+     "approxSizeM": [
+      10,
+      0.15
+     ],
+     "plan": "modelled",
+     "how": "stringCourses true",
+     "seenIn": "TMX7316010203-001063_pano_0001_000014"
+    },
+    {
+     "id": "roof-dormers",
+     "kind": "other",
+     "where": "two small dormers with lit lights above the cornice",
+     "approxSizeM": [
+      2,
+      1.5
+     ],
+     "plan": "simplified",
+     "how": "left as the plain 3DBAG roof plane (dormers are not in LoD2.2)",
+     "seenIn": "TMX7316010203-001063_pano_0001_000014"
+    },
+    {
+     "id": "mia-sign",
+     "kind": "sign",
+     "where": "yellow MIA MAVO/HAVO plate at ground, right",
+     "approxSizeM": [
+      1,
+      1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "school branding plate"
+     },
+     "seenIn": "TMX7316010203-001063_pano_0001_000014"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001063_pano_0001_000014/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

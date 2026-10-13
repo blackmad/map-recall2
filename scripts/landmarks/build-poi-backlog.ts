@@ -89,10 +89,12 @@ if(fs.existsSync('scripts/landmarks/police-stations.json')){
       taskNote:'Large-tier recipe candidate (houses/<id>/intent.json, kind: large); see scripts/landmarks/police-stations.json.'} as any);
   }
 }
-// OBA libraries and civic offices (scripts/landmarks/libraries-match.ts, civic-offices-match.ts): same tagging as the police bureaus.
+// OBA libraries, civic offices, hospitals and schools (scripts/landmarks/{libraries,civic-offices,hospitals,schools}-match.ts): same tagging as the police bureaus.
 for(const [file,key,tag,origin,note] of [
   ['libraries.json','libraries','library','OBA libraries','Large-tier recipe candidate; see scripts/landmarks/libraries.json.'],
   ['civic-offices.json','offices','civic','Civic offices','Large-tier recipe candidate; see scripts/landmarks/civic-offices.json.'],
+  ['hospitals.json','hospitals','hospital','Hospitals','Large-tier recipe candidate (campus: entrance building and street wing); see scripts/landmarks/hospitals.json.'],
+  ['schools.json','schools','school','Schools','Large-tier recipe candidate; see scripts/landmarks/schools.json.'],
 ] as const){
   const path=`scripts/landmarks/${file}`;
   if(!fs.existsSync(path))continue;
