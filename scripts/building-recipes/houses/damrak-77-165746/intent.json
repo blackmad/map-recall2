@@ -35,7 +35,8 @@
    "signage": {
     "text": "PRIMARK",
     "colour": "#e9e4d0"
-   }
+   },
+   "stringCourses": true
   },
   {
    "wallSurfaces": [
@@ -67,6 +68,8 @@
   "Damrak 77 / Beurspassage / Nieuwendijk 187 (BAG), built 1893 (rebuilt as the Primark and Beurspassage block): red brick with white stone bands, a 26.6 m Damrak front (3DBAG panel 46, bearing 128; w01-128, panorama 2020-04-21) with seven window axes: two bay-windowed pairs on the left, a stepped three-window part with a corner tower on the right, and a banded round-arch passage into the Beurspassage at the right end.",
   "Modelled: six storeys (double-height shop floor plus five upper rows, the count from the rectified crop), seven bays, paired windows, tall windows on the ground (plinth-shopfronts left out: its transom bars sit 1.5 cm proud and fail the z-fight gate; deepBars does not reach that row), the stone cornice (string courses left off: their ends leave 2.0 m of open edge at the arch side). Simplified: the projecting bay windows (flat recessed windows), the stepped gables and the tower (3DBAG massing only), the brick-and-white banded arch (the right bays are shopfront bays). Not modelled: the PRIMARK fascia lettering and the entrance doors (the entrance component's 1.5 cm frames fail the 0.5 m2 z-fight gate, so no entrance is drawn; add entrance + signage PRIMARK to walls[0] once they are 3 cm proud), the white bay-window brackets, the banded pilaster strips between bays.",
   "Only the Damrak front has a panorama; the rear (Nieuwendijk side, NW), the upper setback (panel 65) and the court walls are party or unphotographed and stay blank.",
-  "Ground floor is now the plinth-shopfronts system with 3.5 cm closed bars (deepBars reaches the glazed/plinth rows) and the PRIMARK fascia lettering; string courses stay off (open edge at the arch side)."
- ]
+  "Ground floor is now the plinth-shopfronts system with 3.5 cm closed bars (deepBars reaches the glazed/plinth rows) and the PRIMARK fascia lettering; string courses stay off (open edge at the arch side).",
+  "Components lane (2026-10-13): the white bands are back as stone string courses at every storey line (stringCourses), closed with closedBands so their ends at the Beurspassage arch side leave no open edge (was 2.0 m). Supersedes the note that string courses stay off."
+ ],
+ "closedBands": true
 }
