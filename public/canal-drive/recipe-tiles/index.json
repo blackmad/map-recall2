@@ -1,0 +1,1055 @@
+{
+ "specs": {
+  "anne-frank-house": "16/33657/21536",
+  "chunk-bilder-079721-x2": "16/33654/21538",
+  "chunk-face-bilder-080336-090492": "16/33654/21538",
+  "chunk-face-bilder-081118-155417": "16/33654/21538",
+  "chunk-face-bilder-133467-159649": "16/33655/21538",
+  "chunk-face-bilder-153622-156732": "16/33655/21538",
+  "chunk-face-bilder-157757-164549": "16/33654/21538",
+  "chunk-face-bilder-159426-165632": "16/33655/21538",
+  "chunk-face-bilder-161259-236206": "16/33654/21538",
+  "chunk-face-bilder-161281-157756": "16/33654/21538",
+  "chunk-face-bilder-164451-156126": "16/33654/21537",
+  "chunk-face-bilder-166802-235892": "16/33654/21537",
+  "chunk-face-bilder-233580-162444": "16/33654/21538",
+  "chunk-face-bilder-233645-236975": "16/33654/21538",
+  "chunk-face-bilder-236022-167243": "16/33654/21538",
+  "chunk-face-bilder-236189-166159": "16/33654/21537",
+  "de-hallen": "16/33654/21538",
+  "hoofdbureau-elandsgracht": "16/33655/21538",
+  "huis-bartolotti": "16/33657/21536",
+  "magna-plaza": "16/33658/21536",
+  "national-monument-on-the-dam": "16/33658/21536",
+  "nieuwe-kerk": "16/33658/21536",
+  "ordinary-0363100012064423": "16/33673/21559",
+  "ordinary-0363100012079721": "16/33654/21538",
+  "ordinary-0363100012080336": "16/33654/21538",
+  "ordinary-0363100012081118": "16/33654/21538",
+  "ordinary-0363100012087959": "16/33654/21538",
+  "ordinary-0363100012090492": "16/33654/21538",
+  "ordinary-0363100012092394": "16/33654/21538",
+  "ordinary-0363100012092395": "16/33654/21538",
+  "ordinary-0363100012102565": "16/33656/21549",
+  "ordinary-0363100012130580": "16/33658/21541",
+  "ordinary-0363100012152363": "16/33655/21538",
+  "ordinary-0363100012152669": "16/33654/21538",
+  "ordinary-0363100012153622": "16/33655/21538",
+  "ordinary-0363100012153782": "16/33655/21538",
+  "ordinary-0363100012154127": "16/33655/21538",
+  "ordinary-0363100012155417": "16/33654/21538",
+  "ordinary-0363100012155418": "16/33654/21538",
+  "ordinary-0363100012156286": "16/33654/21538",
+  "ordinary-0363100012156287": "16/33654/21538",
+  "ordinary-0363100012156732": "16/33655/21538",
+  "ordinary-0363100012157154": "16/33654/21538",
+  "ordinary-0363100012157650": "16/33654/21538",
+  "ordinary-0363100012164938": "16/33661/21539",
+  "ordinary-0363100012172459": "16/33657/21539",
+  "ordinary-0363100012253728": "16/33673/21537",
+  "palace-on-the-dam": "16/33658/21536",
+  "rijksmuseum": "16/33657/21540",
+  "westerkerk": "16/33657/21536"
+ },
+ "tiles": {
+  "16/33638/21541": {
+   "bytes": 30316,
+   "draws": 4,
+   "pands": 196,
+   "triangles": 29582,
+   "units": [
+    "g3bd2519bd10d4ca",
+    "g4850e1b288832cc",
+    "g9b0e38ff88ab5b2",
+    "ga072a002e17e553"
+   ]
+  },
+  "16/33639/21539": {
+   "bytes": 5772,
+   "draws": 2,
+   "pands": 3,
+   "triangles": 4482,
+   "units": [
+    "g408c2125b4e807f",
+    "gde7ce4d608cfd98"
+   ]
+  },
+  "16/33639/21541": {
+   "bytes": 4356,
+   "draws": 1,
+   "pands": 11,
+   "triangles": 1518,
+   "units": [
+    "g3bd2519bd10d4ca"
+   ]
+  },
+  "16/33639/21542": {
+   "bytes": 13864,
+   "draws": 3,
+   "pands": 57,
+   "triangles": 7752,
+   "units": [
+    "g0041054e3037776",
+    "g573864e906b6b34",
+    "gd2304822b781c91"
+   ]
+  },
+  "16/33640/21533": {
+   "bytes": 5776,
+   "draws": 1,
+   "pands": 25,
+   "triangles": 3900,
+   "units": [
+    "g82e51650fee5249"
+   ]
+  },
+  "16/33640/21534": {
+   "bytes": 3820,
+   "draws": 1,
+   "pands": 6,
+   "triangles": 852,
+   "units": [
+    "gcc609af980204a8"
+   ]
+  },
+  "16/33640/21535": {
+   "bytes": 10920,
+   "draws": 2,
+   "pands": 52,
+   "triangles": 7384,
+   "units": [
+    "g2438119e55e8caa",
+    "gcc609af980204a8"
+   ]
+  },
+  "16/33640/21539": {
+   "bytes": 8376,
+   "draws": 2,
+   "pands": 27,
+   "triangles": 40338,
+   "units": [
+    "g408c2125b4e807f",
+    "gde7ce4d608cfd98"
+   ]
+  },
+  "16/33640/21540": {
+   "bytes": 6092,
+   "draws": 2,
+   "pands": 6,
+   "triangles": 6612,
+   "units": [
+    "g3556b4730769b1c",
+    "g6f8d63a5ab51c45"
+   ]
+  },
+  "16/33640/21541": {
+   "bytes": 12448,
+   "draws": 3,
+   "pands": 45,
+   "triangles": 63030,
+   "units": [
+    "g34767c2efee9e7b",
+    "g3556b4730769b1c",
+    "g6f8d63a5ab51c45"
+   ]
+  },
+  "16/33641/21533": {
+   "bytes": 21472,
+   "draws": 2,
+   "pands": 154,
+   "triangles": 24024,
+   "units": [
+    "g5015ad9cc11d4ff",
+    "g82e51650fee5249"
+   ]
+  },
+  "16/33641/21534": {
+   "bytes": 28952,
+   "draws": 10,
+   "pands": 48,
+   "triangles": 46338,
+   "units": [
+    "g00ab1abaf568843",
+    "g14beefdbdcc2957",
+    "g3d297d735fe2890",
+    "g5077496bbfe4d34",
+    "g71d75288e45a782",
+    "g751f10d2e7deeae",
+    "ga8278226fb9d495",
+    "gb54e914bdb5066b",
+    "gcc609af980204a8",
+    "gd674ef004b323e7"
+   ]
+  },
+  "16/33641/21535": {
+   "bytes": 14544,
+   "draws": 3,
+   "pands": 64,
+   "triangles": 21970,
+   "units": [
+    "g2438119e55e8caa",
+    "gcc609af980204a8",
+    "gcccc98d942636aa"
+   ]
+  },
+  "16/33641/21539": {
+   "bytes": 14504,
+   "draws": 3,
+   "pands": 64,
+   "triangles": 79084,
+   "units": [
+    "g65be57970d54da3",
+    "ge0f1580708f638f",
+    "gfe015bfb6655443"
+   ]
+  },
+  "16/33641/21540": {
+   "bytes": 14656,
+   "draws": 4,
+   "pands": 42,
+   "triangles": 50968,
+   "units": [
+    "g1258566c12cc741",
+    "g3556b4730769b1c",
+    "g47bda5e6efa02d8",
+    "g6f8d63a5ab51c45"
+   ]
+  },
+  "16/33641/21541": {
+   "bytes": 10984,
+   "draws": 4,
+   "pands": 9,
+   "triangles": 14230,
+   "units": [
+    "g34767c2efee9e7b",
+    "g3556b4730769b1c",
+    "g8865a724d8c7f30",
+    "ge7e9786e556134b"
+   ]
+  },
+  "16/33642/21534": {
+   "bytes": 12812,
+   "draws": 5,
+   "pands": 6,
+   "triangles": 9276,
+   "units": [
+    "g42ae8741b2e7af2",
+    "g5077496bbfe4d34",
+    "g751f10d2e7deeae",
+    "ga8278226fb9d495",
+    "gd674ef004b323e7"
+   ]
+  },
+  "16/33642/21535": {
+   "bytes": 7228,
+   "draws": 2,
+   "pands": 17,
+   "triangles": 11356,
+   "units": [
+    "g71b10d8974290d9",
+    "ge6760d90fdc7be1"
+   ]
+  },
+  "16/33642/21536": {
+   "bytes": 26592,
+   "draws": 2,
+   "pands": 204,
+   "triangles": 33240,
+   "units": [
+    "g20f0e38ae65cda5",
+    "g71b10d8974290d9"
+   ]
+  },
+  "16/33642/21540": {
+   "bytes": 8000,
+   "draws": 2,
+   "pands": 23,
+   "triangles": 24684,
+   "units": [
+    "g1258566c12cc741",
+    "g47bda5e6efa02d8"
+   ]
+  },
+  "16/33642/21541": {
+   "bytes": 4048,
+   "draws": 1,
+   "pands": 8,
+   "triangles": 13600,
+   "units": [
+    "g8865a724d8c7f30"
+   ]
+  },
+  "16/33642/21542": {
+   "bytes": 11788,
+   "draws": 2,
+   "pands": 61,
+   "triangles": 8418,
+   "units": [
+    "g97258b73c5646d3",
+    "gbb3d9f201571827"
+   ]
+  },
+  "16/33642/21543": {
+   "bytes": 21512,
+   "draws": 2,
+   "pands": 156,
+   "triangles": 21528,
+   "units": [
+    "g97258b73c5646d3",
+    "gbb3d9f201571827"
+   ]
+  },
+  "16/33643/21535": {
+   "bytes": 18628,
+   "draws": 7,
+   "pands": 17,
+   "triangles": 16608,
+   "units": [
+    "g1a669d5c41a27a8",
+    "g41d1c47d1e67e1c",
+    "g4ff51a73ead7828",
+    "g7efb5978a9b161d",
+    "gb275fe8db78d3e3",
+    "gb9f19f3d17a3ba3",
+    "gbc5d032eb68da6e"
+   ]
+  },
+  "16/33643/21536": {
+   "bytes": 35264,
+   "draws": 7,
+   "pands": 172,
+   "triangles": 41066,
+   "units": [
+    "g1a669d5c41a27a8",
+    "g1f5cc502c12d11c",
+    "g3d0eb992f1e4de1",
+    "g4e24c65c265f619",
+    "g798b48413a9e0fe",
+    "gcc56e50946ec00d",
+    "gfda62d0487348d6"
+   ]
+  },
+  "16/33643/21542": {
+   "bytes": 12376,
+   "draws": 3,
+   "pands": 45,
+   "triangles": 6210,
+   "units": [
+    "g69a304a7439f36f",
+    "gbb3d9f201571827",
+    "gcd60206682a5e70"
+   ]
+  },
+  "16/33643/21543": {
+   "bytes": 6716,
+   "draws": 1,
+   "pands": 34,
+   "triangles": 4692,
+   "units": [
+    "gbb3d9f201571827"
+   ]
+  },
+  "16/33644/21533": {
+   "bytes": 24244,
+   "draws": 5,
+   "pands": 114,
+   "triangles": 22764,
+   "units": [
+    "g2438119e55e8caa",
+    "g6d317380a6dad5c",
+    "g83a8da7169de8bd",
+    "gcc609af980204a8",
+    "gf264d2cb6d771b5"
+   ]
+  },
+  "16/33644/21534": {
+   "bytes": 25756,
+   "draws": 4,
+   "pands": 150,
+   "triangles": 21300,
+   "units": [
+    "g2438119e55e8caa",
+    "g83a8da7169de8bd",
+    "gcc609af980204a8",
+    "gf264d2cb6d771b5"
+   ]
+  },
+  "16/33644/21535": {
+   "bytes": 11956,
+   "draws": 4,
+   "pands": 19,
+   "triangles": 18840,
+   "units": [
+    "g1a669d5c41a27a8",
+    "g4ff51a73ead7828",
+    "g7efb5978a9b161d",
+    "gb275fe8db78d3e3"
+   ]
+  },
+  "16/33644/21536": {
+   "bytes": 14124,
+   "draws": 5,
+   "pands": 17,
+   "triangles": 7752,
+   "units": [
+    "g1a669d5c41a27a8",
+    "g1f5cc502c12d11c",
+    "g4e24c65c265f619",
+    "g4ff51a73ead7828",
+    "g7efb5978a9b161d"
+   ]
+  },
+  "16/33644/21541": {
+   "bytes": 8328,
+   "draws": 2,
+   "pands": 28,
+   "triangles": 3976,
+   "units": [
+    "g83a8da7169de8bd",
+    "gcc609af980204a8"
+   ]
+  },
+  "16/33644/21542": {
+   "bytes": 41084,
+   "draws": 4,
+   "pands": 300,
+   "triangles": 42600,
+   "units": [
+    "g2438119e55e8caa",
+    "g83a8da7169de8bd",
+    "gcc609af980204a8",
+    "gf264d2cb6d771b5"
+   ]
+  },
+  "16/33645/21533": {
+   "bytes": 5404,
+   "draws": 1,
+   "pands": 19,
+   "triangles": 26600,
+   "units": [
+    "g90a7a02e6617451"
+   ]
+  },
+  "16/33645/21534": {
+   "bytes": 6212,
+   "draws": 2,
+   "pands": 6,
+   "triangles": 8400,
+   "units": [
+    "g90a7a02e6617451",
+    "g99b0d9257772c29"
+   ]
+  },
+  "16/33645/21535": {
+   "bytes": 3956,
+   "draws": 1,
+   "pands": 7,
+   "triangles": 938,
+   "units": [
+    "g798b48413a9e0fe"
+   ]
+  },
+  "16/33645/21536": {
+   "bytes": 3520,
+   "draws": 1,
+   "pands": 3,
+   "triangles": 3060,
+   "units": [
+    "g1a669d5c41a27a8"
+   ]
+  },
+  "16/33645/21541": {
+   "bytes": 9292,
+   "draws": 3,
+   "pands": 15,
+   "triangles": 19872,
+   "units": [
+    "g4ba4200cd92d3c5",
+    "gb3d71d18c333f32",
+    "gd289bb7bc05c36f"
+   ]
+  },
+  "16/33645/21542": {
+   "bytes": 14992,
+   "draws": 2,
+   "pands": 94,
+   "triangles": 13348,
+   "units": [
+    "g83a8da7169de8bd",
+    "gcc609af980204a8"
+   ]
+  },
+  "16/33646/21534": {
+   "bytes": 11324,
+   "draws": 3,
+   "pands": 33,
+   "triangles": 26804,
+   "units": [
+    "g1c4f5bdb22c7260",
+    "g99b0d9257772c29",
+    "ga580b4384bc1b7c"
+   ]
+  },
+  "16/33646/21540": {
+   "bytes": 15704,
+   "draws": 1,
+   "pands": 123,
+   "triangles": 20418,
+   "units": [
+    "g28205d97efdb7ee"
+   ]
+  },
+  "16/33646/21541": {
+   "bytes": 16736,
+   "draws": 5,
+   "pands": 42,
+   "triangles": 73182,
+   "units": [
+    "g4ba4200cd92d3c5",
+    "g9250c0de3386453",
+    "gb3d71d18c333f32",
+    "gbe471f1f138064f",
+    "gd289bb7bc05c36f"
+   ]
+  },
+  "16/33646/21542": {
+   "bytes": 13904,
+   "draws": 2,
+   "pands": 82,
+   "triangles": 11644,
+   "units": [
+    "g83a8da7169de8bd",
+    "gcc609af980204a8"
+   ]
+  },
+  "16/33647/21534": {
+   "bytes": 21404,
+   "draws": 4,
+   "pands": 109,
+   "triangles": 15478,
+   "units": [
+    "g2438119e55e8caa",
+    "g83a8da7169de8bd",
+    "gcc609af980204a8",
+    "gf264d2cb6d771b5"
+   ]
+  },
+  "16/33647/21535": {
+   "bytes": 11600,
+   "draws": 2,
+   "pands": 56,
+   "triangles": 11300,
+   "units": [
+    "g20f0e38ae65cda5",
+    "g5d1c5bb11e08b71"
+   ]
+  },
+  "16/33647/21536": {
+   "bytes": 10452,
+   "draws": 2,
+   "pands": 46,
+   "triangles": 9882,
+   "units": [
+    "g20f0e38ae65cda5",
+    "g5d1c5bb11e08b71"
+   ]
+  },
+  "16/33647/21540": {
+   "bytes": 20484,
+   "draws": 3,
+   "pands": 125,
+   "triangles": 34248,
+   "units": [
+    "g28205d97efdb7ee",
+    "gb3d71d18c333f32",
+    "gbe471f1f138064f"
+   ]
+  },
+  "16/33647/21541": {
+   "bytes": 10424,
+   "draws": 3,
+   "pands": 25,
+   "triangles": 44968,
+   "units": [
+    "g9250c0de3386453",
+    "gb3d71d18c333f32",
+    "gbe471f1f138064f"
+   ]
+  },
+  "16/33648/21534": {
+   "bytes": 18488,
+   "draws": 4,
+   "pands": 81,
+   "triangles": 11502,
+   "units": [
+    "g2438119e55e8caa",
+    "g83a8da7169de8bd",
+    "gcc609af980204a8",
+    "gf264d2cb6d771b5"
+   ]
+  },
+  "16/33648/21535": {
+   "bytes": 3260,
+   "draws": 1,
+   "pands": 1,
+   "triangles": 628,
+   "units": [
+    "g5d1c5bb11e08b71"
+   ]
+  },
+  "16/33648/21538": {
+   "bytes": 4384,
+   "draws": 1,
+   "pands": 11,
+   "triangles": 23254,
+   "units": [
+    "g7223f65b05700a8"
+   ]
+  },
+  "16/33648/21539": {
+   "bytes": 4664,
+   "draws": 1,
+   "pands": 14,
+   "triangles": 22764,
+   "units": [
+    "g55b9f8691fe422b"
+   ]
+  },
+  "16/33654/21537": {
+   "bytes": 884040,
+   "draws": 1,
+   "pands": 14,
+   "triangles": 32482,
+   "units": []
+  },
+  "16/33654/21538": {
+   "bytes": 2092132,
+   "draws": 2,
+   "pands": 38,
+   "triangles": 87966,
+   "units": [
+    "g67e5078f17036d6"
+   ]
+  },
+  "16/33655/21538": {
+   "bytes": 360864,
+   "draws": 2,
+   "pands": 11,
+   "triangles": 44943,
+   "units": [
+    "g59d00144ed7bb83"
+   ]
+  },
+  "16/33656/21539": {
+   "bytes": 47168,
+   "draws": 1,
+   "pands": 1,
+   "triangles": 1211,
+   "units": []
+  },
+  "16/33656/21549": {
+   "bytes": 176908,
+   "draws": 1,
+   "pands": 1,
+   "triangles": 6125,
+   "units": []
+  },
+  "16/33657/21536": {
+   "bytes": 8424,
+   "draws": 3,
+   "pands": 3,
+   "triangles": 28115,
+   "units": [
+    "gd57f3d6c081aa7a",
+    "ge319f4604379bd1",
+    "gfaab2d584852f03"
+   ]
+  },
+  "16/33657/21539": {
+   "bytes": 51808,
+   "draws": 1,
+   "pands": 1,
+   "triangles": 1527,
+   "units": []
+  },
+  "16/33657/21540": {
+   "bytes": 3672,
+   "draws": 1,
+   "pands": 1,
+   "triangles": 39354,
+   "units": [
+    "g381195c4c52ea1e"
+   ]
+  },
+  "16/33658/21536": {
+   "bytes": 11124,
+   "draws": 4,
+   "pands": 4,
+   "triangles": 91992,
+   "units": [
+    "g6e625ba52933862",
+    "g7aa6a9410ee4677",
+    "g7aa6b6b49124c85",
+    "g93bd761f6b8f3ab"
+   ]
+  },
+  "16/33658/21541": {
+   "bytes": 234708,
+   "draws": 1,
+   "pands": 1,
+   "triangles": 7747,
+   "units": []
+  },
+  "16/33661/21539": {
+   "bytes": 310260,
+   "draws": 1,
+   "pands": 1,
+   "triangles": 10161,
+   "units": []
+  },
+  "16/33667/21537": {
+   "bytes": 85496,
+   "draws": 1,
+   "pands": 1,
+   "triangles": 2885,
+   "units": []
+  },
+  "16/33673/21537": {
+   "bytes": 57780,
+   "draws": 1,
+   "pands": 1,
+   "triangles": 1844,
+   "units": []
+  },
+  "16/33673/21559": {
+   "bytes": 14972,
+   "draws": 1,
+   "pands": 1,
+   "triangles": 323,
+   "units": []
+  }
+ },
+ "units": {
+  "g0041054e3037776": {
+   "bytes": 6584,
+   "triangles": 136
+  },
+  "g00ab1abaf568843": {
+   "bytes": 33936,
+   "triangles": 1546
+  },
+  "g1258566c12cc741": {
+   "bytes": 17716,
+   "triangles": 690
+  },
+  "g14beefdbdcc2957": {
+   "bytes": 34176,
+   "triangles": 1560
+  },
+  "g1a669d5c41a27a8": {
+   "bytes": 24304,
+   "triangles": 1020
+  },
+  "g1c4f5bdb22c7260": {
+   "bytes": 16268,
+   "triangles": 628
+  },
+  "g1f5cc502c12d11c": {
+   "bytes": 7376,
+   "triangles": 168
+  },
+  "g20f0e38ae65cda5": {
+   "bytes": 7684,
+   "triangles": 186
+  },
+  "g2438119e55e8caa": {
+   "bytes": 6716,
+   "triangles": 142
+  },
+  "g28205d97efdb7ee": {
+   "bytes": 7188,
+   "triangles": 166
+  },
+  "g34767c2efee9e7b": {
+   "bytes": 38092,
+   "triangles": 1742
+  },
+  "g3556b4730769b1c": {
+   "bytes": 25408,
+   "triangles": 1102
+  },
+  "g381195c4c52ea1e": {
+   "bytes": 643564,
+   "triangles": 39354
+  },
+  "g3bd2519bd10d4ca": {
+   "bytes": 6708,
+   "triangles": 138
+  },
+  "g3d0eb992f1e4de1": {
+   "bytes": 7368,
+   "triangles": 168
+  },
+  "g3d297d735fe2890": {
+   "bytes": 34112,
+   "triangles": 1560
+  },
+  "g408c2125b4e807f": {
+   "bytes": 33452,
+   "triangles": 1494
+  },
+  "g41d1c47d1e67e1c": {
+   "bytes": 22964,
+   "triangles": 972
+  },
+  "g42ae8741b2e7af2": {
+   "bytes": 33996,
+   "triangles": 1546
+  },
+  "g47bda5e6efa02d8": {
+   "bytes": 30360,
+   "triangles": 1368
+  },
+  "g4850e1b288832cc": {
+   "bytes": 7796,
+   "triangles": 194
+  },
+  "g4ba4200cd92d3c5": {
+   "bytes": 31272,
+   "triangles": 1388
+  },
+  "g4e24c65c265f619": {
+   "bytes": 7344,
+   "triangles": 168
+  },
+  "g4ff51a73ead7828": {
+   "bytes": 21668,
+   "triangles": 912
+  },
+  "g5015ad9cc11d4ff": {
+   "bytes": 6992,
+   "triangles": 156
+  },
+  "g5077496bbfe4d34": {
+   "bytes": 33772,
+   "triangles": 1546
+  },
+  "g55b9f8691fe422b": {
+   "bytes": 35556,
+   "triangles": 1626
+  },
+  "g573864e906b6b34": {
+   "bytes": 6576,
+   "triangles": 136
+  },
+  "g59d00144ed7bb83": {
+   "bytes": 563464,
+   "triangles": 32053
+  },
+  "g5d1c5bb11e08b71": {
+   "bytes": 16080,
+   "triangles": 628
+  },
+  "g65be57970d54da3": {
+   "bytes": 27304,
+   "triangles": 1148
+  },
+  "g67e5078f17036d6": {
+   "bytes": 167616,
+   "triangles": 10037
+  },
+  "g69a304a7439f36f": {
+   "bytes": 6680,
+   "triangles": 138
+  },
+  "g6d317380a6dad5c": {
+   "bytes": 17844,
+   "triangles": 690
+  },
+  "g6e625ba52933862": {
+   "bytes": 533704,
+   "triangles": 30372
+  },
+  "g6f8d63a5ab51c45": {
+   "bytes": 25360,
+   "triangles": 1102
+  },
+  "g71b10d8974290d9": {
+   "bytes": 7220,
+   "triangles": 162
+  },
+  "g71d75288e45a782": {
+   "bytes": 34084,
+   "triangles": 1560
+  },
+  "g7223f65b05700a8": {
+   "bytes": 45080,
+   "triangles": 2114
+  },
+  "g751f10d2e7deeae": {
+   "bytes": 33952,
+   "triangles": 1546
+  },
+  "g798b48413a9e0fe": {
+   "bytes": 6592,
+   "triangles": 134
+  },
+  "g7aa6a9410ee4677": {
+   "bytes": 73444,
+   "triangles": 6052
+  },
+  "g7aa6b6b49124c85": {
+   "bytes": 416888,
+   "triangles": 29268
+  },
+  "g7efb5978a9b161d": {
+   "bytes": 21436,
+   "triangles": 912
+  },
+  "g82e51650fee5249": {
+   "bytes": 6996,
+   "triangles": 156
+  },
+  "g83a8da7169de8bd": {
+   "bytes": 6768,
+   "triangles": 142
+  },
+  "g8865a724d8c7f30": {
+   "bytes": 37288,
+   "triangles": 1700
+  },
+  "g90a7a02e6617451": {
+   "bytes": 30992,
+   "triangles": 1400
+  },
+  "g9250c0de3386453": {
+   "bytes": 27560,
+   "triangles": 1206
+  },
+  "g93bd761f6b8f3ab": {
+   "bytes": 380352,
+   "triangles": 26300
+  },
+  "g97258b73c5646d3": {
+   "bytes": 6684,
+   "triangles": 138
+  },
+  "g99b0d9257772c29": {
+   "bytes": 31040,
+   "triangles": 1400
+  },
+  "g9b0e38ff88ab5b2": {
+   "bytes": 6668,
+   "triangles": 138
+  },
+  "ga072a002e17e553": {
+   "bytes": 6848,
+   "triangles": 152
+  },
+  "ga580b4384bc1b7c": {
+   "bytes": 30428,
+   "triangles": 1368
+  },
+  "ga8278226fb9d495": {
+   "bytes": 33764,
+   "triangles": 1546
+  },
+  "gb275fe8db78d3e3": {
+   "bytes": 21552,
+   "triangles": 912
+  },
+  "gb3d71d18c333f32": {
+   "bytes": 45908,
+   "triangles": 2392
+  },
+  "gb54e914bdb5066b": {
+   "bytes": 34072,
+   "triangles": 1560
+  },
+  "gb9f19f3d17a3ba3": {
+   "bytes": 22948,
+   "triangles": 972
+  },
+  "gbb3d9f201571827": {
+   "bytes": 6708,
+   "triangles": 138
+  },
+  "gbc5d032eb68da6e": {
+   "bytes": 23024,
+   "triangles": 972
+  },
+  "gbe471f1f138064f": {
+   "bytes": 55936,
+   "triangles": 2984
+  },
+  "gcc56e50946ec00d": {
+   "bytes": 6540,
+   "triangles": 134
+  },
+  "gcc609af980204a8": {
+   "bytes": 6724,
+   "triangles": 142
+  },
+  "gcccc98d942636aa": {
+   "bytes": 20228,
+   "triangles": 820
+  },
+  "gcd60206682a5e70": {
+   "bytes": 6684,
+   "triangles": 138
+  },
+  "gd2304822b781c91": {
+   "bytes": 6548,
+   "triangles": 136
+  },
+  "gd289bb7bc05c36f": {
+   "bytes": 21800,
+   "triangles": 900
+  },
+  "gd57f3d6c081aa7a": {
+   "bytes": 103920,
+   "triangles": 5804
+  },
+  "gd674ef004b323e7": {
+   "bytes": 33672,
+   "triangles": 1546
+  },
+  "gde7ce4d608cfd98": {
+   "bytes": 33472,
+   "triangles": 1494
+  },
+  "ge0f1580708f638f": {
+   "bytes": 27416,
+   "triangles": 1156
+  },
+  "ge319f4604379bd1": {
+   "bytes": 30044,
+   "triangles": 1684
+  },
+  "ge6760d90fdc7be1": {
+   "bytes": 22404,
+   "triangles": 944
+  },
+  "ge7e9786e556134b": {
+   "bytes": 38028,
+   "triangles": 1742
+  },
+  "gf264d2cb6d771b5": {
+   "bytes": 6748,
+   "triangles": 142
+  },
+  "gfaab2d584852f03": {
+   "bytes": 324324,
+   "triangles": 20627
+  },
+  "gfda62d0487348d6": {
+   "bytes": 24352,
+   "triangles": 1020
+  },
+  "gfe015bfb6655443": {
+   "bytes": 31788,
+   "triangles": 1408
+  }
+ },
+ "version": 1
+}

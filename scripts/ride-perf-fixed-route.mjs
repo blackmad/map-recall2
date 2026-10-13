@@ -17,6 +17,11 @@ if (process.env.BUNDLES_DIR) await page.route(/\/canal-drive\/js\/([\w-]+\.bundl
   const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
   return fs.existsSync(file) ? route.fulfill({path: file, contentType: 'application/javascript'}) : route.continue();
 });
+// RECIPE_TILES_DIR=<dir> serves staged recipe tiles (compile-recipes.ts output) at /canal-drive/recipe-tiles/.
+if (process.env.RECIPE_TILES_DIR) await page.route(/\/canal-drive\/recipe-tiles\/([^?]*)/, route => {
+  const file = path.join(process.env.RECIPE_TILES_DIR, /\/canal-drive\/recipe-tiles\/([^?]*)/.exec(route.request().url())[1]);
+  return fs.existsSync(file) ? route.fulfill({path: file}) : route.fulfill({status: 404, body: ''});
+});
 await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
 await page.goto(`http://127.0.0.1:${process.env.PORT || 4402}/canal-drive/` + qs);
 await page.waitForFunction(() => window.canalRecallGame?.routePois?.length, null, {timeout: 60000});

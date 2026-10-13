@@ -18,7 +18,7 @@
     "street-surveys": "node --import tsx scripts/street-surveys/build.ts",
     "block-face:gables": "node --import tsx scripts/block-face/gable-from-photo.ts",
     "test:landmark-lod": "node --import tsx --test src/canalRecall/landmarks/landmarkLod.test.ts",
-    "review:sheet":"node --import tsx scripts/landmarks/review-sheet.ts",
+    "review:sheet": "node --import tsx scripts/landmarks/review-sheet.ts",
     "test:facade-compare": "node --import tsx --test src/canalRecall/landmarks/facadeCompare.test.ts",
     "test:own-map": "node --import tsx --test src/canalRecall/ownMap/ownMap.test.ts",
     "build:own-map": "node --import tsx scripts/own-map/build-own-map.ts",
@@ -193,7 +193,7 @@
     "check:covers": "node --max-old-space-size=8192 --import tsx scripts/check-covers.ts",
     "build:bag-tiles": "node --max-old-space-size=12288 --import tsx scripts/build-bag-buildings.ts --tiles && node --max-old-space-size=8192 --import tsx scripts/build-covers.ts",
     "test:look": "node --import tsx --test src/canalRecall/look/*.test.ts src/canalRecall/rendererShared/*.test.ts",
-    "check:canal": "tsx scripts/check-canal.ts && npm run test:look && npm run test:bag-tiles && npm run check:covers && npm run test:building-types && npm run check:osm-under-models && npm run test:osm-under-models",
+    "check:canal": "tsx scripts/check-canal.ts && npm run test:look && npm run test:bag-tiles && npm run test:tile-buildings && npm run check:covers && npm run test:building-types && npm run check:osm-under-models && npm run test:osm-under-models",
     "test:shopfronts": "tsx scripts/check-shopfronts.ts",
     "build:shopfronts": "tsx scripts/build-shopfronts.ts",
     "test:facade-extras": "tsx scripts/check-facade-extras.ts",
@@ -468,7 +468,10 @@
     "test:street-rendering-core": "node --import tsx --test src/canalRecall/surveyedBuildingEnvelope.test.ts src/canalRecall/surveyedEnvelopeMeshBinding.test.ts src/canalRecall/surveyedEnvelopeNative.test.ts src/canalRecall/surveyedEnvelopeTransport.test.ts src/canalRecall/compoundFrontageLayout.test.ts src/canalRecall/compoundNativeFrontage.test.ts src/canalRecall/regularCanalFrontage.test.ts src/canalRecall/regularCanalNative.test.ts src/canalRecall/interwarFrontageLayout.test.ts src/canalRecall/interwarGroundFrontage.test.ts src/canalRecall/interwarNativeFrontage.test.ts src/canalRecall/repeatedTerraceFrontage.test.ts src/canalRecall/repeatedTerraceRoof.test.ts",
     "build:canal-ferry": "esbuild src/canalRecall/ferry/index.ts --bundle --format=iife --global-name=CanalRecallFerry --outfile=public/canal-drive/js/ferry-network.bundle.js --minify",
     "test:ferry": "node --import tsx src/canalRecall/ferry/network.test.ts && node --import tsx src/canalRecall/ferry/travel.test.ts",
-    "build:ferry-model": "node scripts/build-ferry-model.mjs"
+    "build:ferry-model": "node scripts/build-ferry-model.mjs",
+    "test:tile-buildings": "node --import tsx --test src/canalRecall/tileBuildings/*.test.ts",
+    "build:canal-tile-buildings": "esbuild src/canalRecall/tileBuildings/browser.ts --bundle --format=iife --global-name=CanalRecallTileBuildings --outfile=public/canal-drive/js/tile-buildings.bundle.js --minify",
+    "build:recipe-tiles": "node --max-old-space-size=8192 --import tsx scripts/building-tiles/compile-recipes.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
