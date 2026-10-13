@@ -603,13 +603,13 @@
    "window-misaligned": 0
   },
   "dageraad": {
-   "opening-floating": 18,
-   "opening-floating-fail": 11,
+   "opening-floating": 4,
+   "opening-floating-fail": 1,
    "opening-overhang": 0,
    "opening-overhang-fail": 0,
    "opening-buried": 0,
    "zfight-m2": 0,
-   "zfight-near-m2": 3,
+   "zfight-near-m2": 2.9,
    "window-mismatch": 6,
    "window-missing": 0,
    "window-misaligned": 0
