@@ -430,6 +430,7 @@ export class GamePresentationRuntime {
     return {
       // An expired riding question has no card; only its name is withheld.
       quizOpen: !!this.quizPromptName && !this._ridingState?.expired,
+      ridingPromptOpen: !!this.quizPromptName && !!this._ridingState && !this._ridingState.expired,
       feedbackVisible: !!this.quizFeedback,
       promptVisible,
       utilityOpen: !!this._utilityOpen || landmarkPanelOpen,

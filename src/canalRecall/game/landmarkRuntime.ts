@@ -44,7 +44,7 @@ import type { FactChoice } from '../facts/factRotation';
 import type { LandmarkHost } from './host';
 import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
 import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge, streetCardText, type StreetNameOrigin } from './routeKnowledge';
-import { canShowDriveByCard, canShowMiniMap, canShowTeachingCard } from './teachingSurface';
+import { canShowDriveByCard, canShowMiniMap, canShowPostcard, canShowTeachingCard } from './teachingSurface';
 import { isTransit } from './modes';
 import { BuildingFactStore, describeBuilding } from '../buildingFacts';
 import { manualPoiBuildingIds, mergeManualPoiFeatures } from './manualPoiCatalog';
@@ -523,7 +523,7 @@ export class GameLandmarkRuntime {
       this._postcardPending = this.currentNeighborhood;
     }
     if (this._postcardPending && this._postcardPending === this.currentNeighborhood
-      && canShowDriveByCard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+      && this.viewport?.mode !== 'compact' && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
       this._postcardPending = null;
       this._lastPostcardAt = this.raceTime;
       if (hood) this._ensureNeighborhoodImage(hood);
@@ -761,7 +761,7 @@ export class GameLandmarkRuntime {
   _renderNeighborhoodNotice(): void {
     const hood = this._neighborhoodNotice;
     if (!hood || this._neighborhoodNoticeTimer <= 0) return;
-    if (!canShowTeachingCard(this._teachingGate())) return;
+    if (!canShowPostcard(this.viewport?.mode, this._teachingGate())) return;
     const ctx = this.ctx;
     const duration = NEIGHBORHOOD_NOTICE_SECONDS;
     const alpha = Math.min(1, this._neighborhoodNoticeTimer * 2.5, (duration - this._neighborhoodNoticeTimer) * 2.5);
