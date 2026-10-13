@@ -6,6 +6,7 @@
  *
  *   tsx scripts/roofs/build-roof-facts.mts [--out=artifacts/roofs/roof-facts] [--tiles=14/8414/5385,...] [--fresh]
  *   tsx scripts/roofs/build-roof-facts.mts --report        (histograms from the staged tiles)
+ *   tsx scripts/roofs/build-roof-facts.mts --merge-3dbag  (after bag3d-roof-attributes.mts: dormer flags, glass roofs)
  *   tsx scripts/roofs/build-roof-facts.mts --publish
  */
 import fs from 'node:fs';
@@ -102,6 +103,29 @@ async function build() {
   }
 }
 
+/**
+ * Fold 3DBAG roof attributes into the staged tiles (`bag3d-roof-attributes.mts`): the dormer flag on every
+ * stored pand (true or false, so the runtime stops guessing), and a glass roof (b3_is_glas_dak) as the glass slot.
+ */
+function merge3dbag() {
+  const attrs = JSON.parse(fs.readFileSync(path.resolve('artifacts/roofs/bag3d-roof-attributes.json'), 'utf8')) as Record<string, [number, number]>;
+  let dormers = 0, glass = 0;
+  for (const x of fs.readdirSync(path.join(OUT, '14')).filter(n => /^\d+$/.test(n))) for (const f of fs.readdirSync(path.join(OUT, '14', x)).filter(n => n.endsWith('.json.gz'))) {
+    const file = path.join(OUT, '14', x, f), tile = JSON.parse(zlib.gunzipSync(fs.readFileSync(file)).toString('utf8')) as RoofFactTile;
+    const facts = decodeRoofFactTile(tile);
+    for (const [id, fact] of facts) {
+      const a = attrs[id];
+      fact.dormer = a?.[0] === 1;
+      if (fact.dormer) dormers++;
+      if (a?.[1] === 1) { fact.slot = 'glass'; glass++; }
+    }
+    const encoded = encodeRoofFactTile([...facts.entries()], tile.licence, tile.imagery, 0);
+    encoded.read = tile.read;
+    fs.writeFileSync(file, zlib.gzipSync(JSON.stringify(encoded), { level: 9 }));
+  }
+  console.log(`merged 3DBAG attributes: ${dormers} stored pands with dormers, ${glass} glass roofs`);
+}
+
 function publish() {
   fs.rmSync(PUBLISHED, { recursive: true, force: true });
   fs.cpSync(path.join(OUT, '14'), path.join(PUBLISHED, '14'), { recursive: true });
@@ -111,4 +135,5 @@ function publish() {
 
 if (process.argv.includes('--publish')) publish();
 else if (process.argv.includes('--report')) report();
+else if (process.argv.includes('--merge-3dbag')) { merge3dbag(); report(); }
 else { await build(); report(); }
