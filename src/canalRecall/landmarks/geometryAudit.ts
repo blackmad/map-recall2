@@ -7,7 +7,10 @@
  *     skewed wall).
  *  2. Window rhythm (`auditRhythm`): per facade elevation, openings in one storey row should share size, sill and head;
  *     columns should align across storeys; a gap where the row's spacing predicts a window is a missing opening.
- *     Irregular facades exist, so these are review warnings, never failures.
+ *     On a facade counted from a photo (`<id>-elevations.json`) the rhythm is a FAIL when more than 15% of the openings are
+ *     off-size/off-level or any window is predicted missing (`rhythmVerdict`, RHYTHM_FAIL); inferred facades (dominant wall
+ *     bearings, no photo spec) stay warnings, since irregular facades exist and nobody has checked them against a photo.
+ *     Gated through the baseline: a model may not add failing facades or off-size/missing windows on photo-spec facades.
  *  3. Coplanar z-fighting (`auditZFight`): same-facing coplanar triangles from different parts overlapping by more than a
  *     sliver (H'ART front roof, Rijksmuseum entrance canopy). Same measure as the block-face `zFightArea` (abutment
  *     shrink, convex clip; a test pins the two together) but returning the overlap polygon so hidden overlaps
@@ -703,6 +706,20 @@ export function auditZFight(s: MaterialSoup, th: GeometryAuditThresholds = GEOME
 // ---------------------------------------------------------------------------------------------------------------
 // 2. Window rhythm
 
+/**
+ * Photo-spec facades fail the rhythm check above these limits. 15%: a facade with one deliberately different opening per
+ * ~7 (a door in a row of windows, an entrance arch among cafe arches) still passes, while the American Hotel's canal side
+ * before 2026-10-11 (42 of 69 off-size) or its Leidseplein front (22 of 55) fail. Any predicted-missing window fails: it is
+ * a gap exactly where the row's own spacing says a window stands, which is what reviewers keep finding by eye.
+ */
+export const RHYTHM_FAIL = {oddFraction: 0.15, missing: 1};
+
+/** Fail/warn verdict for one measured facade: only photo-spec facades can fail. */
+export function rhythmVerdict(f: Pick<RhythmFacade, 'fromSpec' | 'openings' | 'mismatched' | 'missing'>): {fail: boolean; oddFraction: number} {
+  const oddFraction = f.openings ? f.mismatched.length / f.openings : 0;
+  return {fail: f.fromSpec && (oddFraction > RHYTHM_FAIL.oddFraction || f.missing.length >= RHYTHM_FAIL.missing), oddFraction};
+}
+
 const median = (v: number[]) => { const s = [...v].sort((a, b) => a - b); return s.length ? s[Math.floor(s.length / 2)] : 0; };
 
 /** Facades to inspect when there is no photo inventory: the dominant outward wall bearings (≥ minArea m^2). */
@@ -805,7 +822,8 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
   for (const f of rhythm) {
     const odd = f.mismatched.length, miss = f.missing.length;
     if (odd + miss + f.misaligned === 0) continue;
-    findings.push({kind: 'window-rhythm', severity: 'warn', message: `${f.name}: ${f.openings} openings in ${f.rows.length} rows; ${odd} off-size/off-level, ${miss} predicted missing, ${f.misaligned} off-axis${f.fromSpec ? ' (photo-spec facade)' : ' (inferred facade)'}`});
+    const v = rhythmVerdict(f);
+    findings.push({kind: 'window-rhythm', severity: v.fail ? 'fail' : 'warn', message: `${f.name}: ${f.openings} openings in ${f.rows.length} rows; ${odd} off-size/off-level (${Math.round(v.oddFraction * 100)}%), ${miss} predicted missing, ${f.misaligned} off-axis${f.fromSpec ? ` (photo-spec facade; fails above ${RHYTHM_FAIL.oddFraction * 100}% off-size or any missing)` : ' (inferred facade)'}`});
   }
   const counts: Record<string, number> = {
     'opening-floating': byKind('floating').length, 'opening-floating-fail': byKind('floating').filter(i => i.severity === 'fail').length,
@@ -816,6 +834,10 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
     'window-mismatch': rhythm.reduce((t, f) => t + f.mismatched.length, 0),
     'window-missing': rhythm.reduce((t, f) => t + f.missing.length, 0),
     'window-misaligned': rhythm.reduce((t, f) => t + f.misaligned, 0),
+    // Gated: photo-spec facades only.
+    'window-rhythm-fail': rhythm.filter(f => rhythmVerdict(f).fail).length,
+    'window-mismatch-spec': rhythm.filter(f => f.fromSpec).reduce((t, f) => t + f.mismatched.length, 0),
+    'window-missing-spec': rhythm.filter(f => f.fromSpec).reduce((t, f) => t + f.missing.length, 0),
   };
   const score = openings.issues.reduce((t, i) => t + issueWeight(i), 0) + Math.min(zfight.area, 100) * 2 + Math.min(zfight.nearArea, 100) * 0.3 + counts['window-mismatch'] * 0.5 + counts['window-missing'] + counts['window-misaligned'] * 0.3;
   return {openings, zfight, rhythm, counts, findings, score: +score.toFixed(1)};
@@ -824,7 +846,7 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
 /** Gate: which counts grew beyond the recorded baseline (plus slack)? Empty = no new regression. */
 export function regressions(counts: Record<string, number>, baseline: Record<string, number> | undefined): string[] {
   const slack: Record<string, number> = {'zfight-m2': 0.3, 'zfight-near-m2': 1, 'window-mismatch': 1, 'window-missing': 1, 'window-misaligned': 1};
-  const hard = new Set(['opening-floating-fail', 'opening-overhang-fail', 'zfight-m2']);
+  const hard = new Set(['opening-floating-fail', 'opening-overhang-fail', 'zfight-m2', 'window-rhythm-fail', 'window-mismatch-spec', 'window-missing-spec']);
   const out: string[] = [];
   for (const [k, v] of Object.entries(counts)) {
     if (!hard.has(k)) continue; // warn-level counts are reported, not gated
