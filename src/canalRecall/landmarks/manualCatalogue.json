@@ -30438,5 +30438,97 @@
         ]
       ]
     }
+  },
+  {
+    "id": "da-costakade-13",
+    "name": "Da Costakade 13",
+    "landmarkId": "da-costakade-13",
+    "modelUrl": "./models/da-costakade-13.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012166570"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.873669215756019,
+        52.37278390846556
+      ],
+      "headingDegrees": 132.5,
+      "lengthMetres": 11.15,
+      "widthMetres": 9.84
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.8736735064516035,
+        52.372784346431544
+      ],
+      "northOffsetDegrees": 0,
+      "source": "PDOK BAG 0363100012166570 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+    },
+    "materialOverrides": {
+      "brick": "#9a7666",
+      "stone": "#b8b2a4",
+      "white": "#ece8df",
+      "concrete": "#e6e2d8",
+      "glass": "#3a4950",
+      "dark": "#22262a",
+      "bronze": "#26292b",
+      "red": "#842629",
+      "slate": "#5a5e60",
+      "green": "#44705a"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "Da Costakade 13 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012166570",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry on the BAG footprint with 3DBAG eave/ridge heights; roof modelled from intent (mansard plus gable saddle), facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.873696382023926,
+            52.37282862672355
+          ],
+          [
+            4.8736293134885385,
+            52.37281251744883
+          ],
+          [
+            4.873559878854225,
+            52.37278516322131
+          ],
+          [
+            4.873673284177957,
+            52.37272834941839
+          ],
+          [
+            4.873680861157177,
+            52.372724562498966
+          ],
+          [
+            4.873778443435477,
+            52.3727825789862
+          ],
+          [
+            4.873696382023926,
+            52.37282862672355
+          ]
+        ]
+      ]
+    },
+    "partyWallBearings": [
+      219
+    ],
+    "galleryView": {
+      "theta": 3.75,
+      "phi": 1.08
+    }
   }
 ]
