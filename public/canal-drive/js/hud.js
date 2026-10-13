@@ -184,7 +184,10 @@ class HUD {
     ctx.fillStyle = surface.accent;
     ctx.fillText(distance, right, midY + 1);
     let distanceLeft = right - ctx.measureText(distance).width;
-    if (Number.isFinite(expectedNovelty)) {
+    // On desktop the "% new" badge is a hover detail; a phone keeps it.
+    const p = this.hoverPoint;
+    const hovered = !!p && p.x >= rect.x && p.x <= rect.x + rect.width && p.y >= rect.y && p.y <= rect.y + rect.height;
+    if (Number.isFinite(expectedNovelty) && (compact || hovered)) {
       const novelty = `${Math.round(expectedNovelty * 100)}% new  `;
       ctx.font = this._font(500, compact ? 10 : 11, surface.fontUi);
       ctx.fillStyle = surface.inkMuted;

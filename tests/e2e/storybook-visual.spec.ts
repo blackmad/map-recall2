@@ -17,6 +17,8 @@ const STORIES: Array<[string, number, number]> = [
   ['canal-recall-route-setup--advanced-options-questions-off-phone', 320, 568],
   ['canal-recall-route-setup--transit-briefing-phone', 320, 568],
   ['canal-recall-route-setup--live-hud', 1280, 800],
+  ['canal-recall-route-setup--live-hud-idle', 1280, 800],
+  ['canal-recall-route-setup--live-hud-wiggle', 1280, 800],
   ['canal-recall-route-setup--finish-card', 1280, 800],
   ['canal-recall-route-setup--finish-card-calm-mode', 1280, 800],
   ['canal-recall-route-setup--finish-card-calm-bare', 1280, 800],
