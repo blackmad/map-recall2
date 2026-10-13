@@ -30373,10 +30373,10 @@
         "min": [
           -38.32979202270508,
           -5.9604643443123e-10,
-          -36.13422775268555
+          -36.04499816894531
         ],
         "max": [
-          24.626850128173828,
+          24.639286041259766,
           39.51300048828125,
           20.718000411987305
         ]
@@ -30392,19 +30392,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 62.956642150878906,
+        "widthMetres": 62.969078063964844,
         "heightMetres": 39.513000488877296,
-        "depthMetres": 56.85222816467285,
-        "depthCoverage": 0.9974075116609272
+        "depthMetres": 56.76299858093262,
+        "depthCoverage": 0.9958420803672389
       },
-      "triangles": 33842,
-      "bytes": 459516,
+      "triangles": 37274,
+      "bytes": 504060,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "0dcb30cc2f62b41b",
+        "sourceHash": "74029d40028221be",
         "buildVersion": 2,
-        "bytes": 116320,
-        "triangles": 5631
+        "bytes": 132388,
+        "triangles": 6503
       }
     },
     "hotel-de-l-europe": {
