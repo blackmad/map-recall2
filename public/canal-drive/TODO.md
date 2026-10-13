@@ -328,7 +328,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Elevation skeletons with photos exist for 25 landmarks
   (`scripts/landmarks/*-elevations.json`, photos in `artifacts/landmark-lanes/`);
   counts are not filled: Haiku blind counts were too noisy — use a stronger
-  counter or rectified `pand-reference` crops. `check-manual-landmarks.ts`
+  counter or rectified `pand-reference` crops. Correction 2026-10-13: all 25
+  are rhythm specs for models that already exist on main (24 hand
+  builders/specs plus the bilder-087959 recipe), so they are not large-tier
+  inputs; the large-tier customer list is `dominant-building-backlog.json`
+  (1,828 mid-sized pands), filtered to unmodelled, central, two-front
+  candidates (lane running 2026-10-13). Heineken Experience fails
+  window-rhythm (2 predicted missing) and is a batch-2 candidate. `check-manual-landmarks.ts`
   status is in the Direction block above (2026-10-13).
   Lane runs of `archive-model-sources.py` into the private repo are sometimes
   denied by the auto-mode classifier; refs for vrijburg, van-gendt-hallen and
