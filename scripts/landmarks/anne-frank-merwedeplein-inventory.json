@@ -1,0 +1,113 @@
+{
+ "schemaVersion": 1,
+ "id": "anne-frank-merwedeplein",
+ "signature": [
+  "af-girl",
+  "af-lettering"
+ ],
+ "walls": [
+  {
+   "tag": "s-200",
+   "bearing": 200,
+   "lengthM": 0.74,
+   "centre": [
+    4.9002337,
+    52.3455675
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-07-15_08-32-06_02007",
+   "capturedAt": "2025-07-15",
+   "checked": true,
+   "note": "Front: the girl with the two bags and the lettered block (Michelides 03; panorama 02007 shows the statue on the lawn from the west).",
+   "items": [
+    {
+     "id": "af-girl",
+     "kind": "sculpture",
+     "where": "bronze girl about 1.5 m: bobbed hair, belted coat over a pleated skirt, a bag hanging from the lowered right hand and one tucked under the left arm",
+     "approxSizeM": [
+      0.7,
+      1.55
+     ],
+     "plan": "simplified",
+     "how": "builder: figure kit pose with skirt, a coat cylinder over the trunk, collar, hair mass and ear balls, a hanging case and an under-arm case as boxes; no face, coat folds or belt",
+     "seenIn": "Michelides 03"
+    },
+    {
+     "id": "af-block",
+     "kind": "other",
+     "where": "block of polished red granite, 0.74 m square and 1.3 m high with a moulded cap, on a bronze foot plate and a low footing",
+     "approxSizeM": [
+      0.8,
+      1.4
+     ],
+     "plan": "modelled",
+     "how": "builder: footing, shaft, cap slab and a bronze plate",
+     "seenIn": "Michelides 03"
+    },
+    {
+     "id": "af-lettering",
+     "kind": "lettering",
+     "where": "ANNE FRANK and 1929 - 1945 in white capitals on the front of the block",
+     "approxSizeM": [
+      0.56,
+      0.3
+     ],
+     "plan": "modelled",
+     "how": "builder: raised stroke-font capitals and digits (letterBoxes), two lines",
+     "seenIn": "Michelides 03"
+    }
+   ]
+  },
+  {
+   "tag": "e-110",
+   "bearing": 110,
+   "lengthM": 0.74,
+   "centre": [
+    4.9002337,
+    52.3455675
+   ],
+   "evidence": "photo",
+   "panoId": "Maaike98 Merwedeplein - Statue Anne Frank.jpg",
+   "capturedAt": "2007",
+   "checked": true,
+   "note": "Side: coat, sleeve and the under-arm bag in profile; plain block face.",
+   "items": []
+  },
+  {
+   "tag": "n-20",
+   "bearing": 20,
+   "lengthM": 0.74,
+   "centre": [
+    4.9002337,
+    52.3455675
+   ],
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Back: plain block face; the girl from behind (Maaike98 photograph shows the shoulders and hair from the rear).",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Christian Michelides, Anne Frank-Denkmal Amsterdam 03",
+   "url": "https://commons.wikimedia.org/wiki/File:Anne_Frank-Denkmal_Amsterdam_03.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Franklin Heijnen, Anne Frank Merwedeplein Amsterdam",
+   "url": "https://commons.wikimedia.org/wiki/File:Anne_Frank_Merwedeplein_Amsterdam.jpg",
+   "licence": "CC BY-SA 2.0"
+  },
+  {
+   "name": "Maaike98, Merwedeplein - Statue Anne Frank",
+   "url": "https://commons.wikimedia.org/wiki/File:Merwedeplein_-_Statue_Anne_Frank.jpg",
+   "licence": "CC BY-SA 3.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

@@ -1,0 +1,108 @@
+{
+ "schemaVersion": 1,
+ "id": "multatuli-standbeeld",
+ "signature": [
+  "mu-bust",
+  "mu-lettering"
+ ],
+ "walls": [
+  {
+   "tag": "s-350",
+   "bearing": 350,
+   "lengthM": 2.0,
+   "centre": [
+    4.8894308,
+    52.3747139
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_03-46-32_01395",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "note": "Front: lettered face and the bust three-quarter view (Commons 4133292208, RCE 20536120; panorama 01395 shows the bust in profile from the south-west).",
+   "items": [
+    {
+     "id": "mu-bust",
+     "kind": "sculpture",
+     "where": "bronze bust of Multatuli: head with high forehead, heavy brow, drooping moustache and swept-back hair, chest and shoulders tapering to a point, left arm a stump, bow tie",
+     "approxSizeM": [
+      1.2,
+      1.9
+     ],
+     "plan": "simplified",
+     "how": "builder: ellipsoid head and hair mass, brow ridge, nose, moustache and chin boxes, ear balls, tapered chest cylinder, shoulder ellipsoid, two arm stumps, collar band and three-part bow tie; no skin texture or coat folds",
+     "seenIn": "Commons 4133292208"
+    },
+    {
+     "id": "mu-block",
+     "kind": "other",
+     "where": "block of polished red granite, 2.0 x 1.2 m and 1.05 m high, on a thin pale plinth slab",
+     "approxSizeM": [
+      2.0,
+      1.05
+     ],
+     "plan": "modelled",
+     "how": "builder: box on a slab",
+     "seenIn": "RCE 20536120"
+    },
+    {
+     "id": "mu-lettering",
+     "kind": "lettering",
+     "where": "MULTATULI in light serif capitals on the front face of the block",
+     "approxSizeM": [
+      1.5,
+      0.25
+     ],
+     "plan": "simplified",
+     "how": "builder: raised stroke-font capitals (letterBoxes) in cream; the real lettering is mixed-case serif, cut in",
+     "seenIn": "Commons 4133292208"
+    }
+   ]
+  },
+  {
+   "tag": "e-80",
+   "bearing": 80,
+   "lengthM": 1.2,
+   "centre": [
+    4.8894308,
+    52.3747139
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_03-46-32_01395",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "note": "Side: plain granite face; the bust from the side shows the left-arm stump (RCE 20536120).",
+   "items": []
+  },
+  {
+   "tag": "n-170",
+   "bearing": 170,
+   "lengthM": 2.0,
+   "centre": [
+    4.8894308,
+    52.3747139
+   ],
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Back: plain granite face, bust seen from behind; not photographed.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "FaceMePLS, Multatuli Amsterdam (4133292208)",
+   "url": "https://commons.wikimedia.org/wiki/File:Multatuli_Amsterdam_(4133292208).jpg",
+   "licence": "CC BY 2.0"
+  },
+  {
+   "name": "Paul van Galen / RCE, Brug 9 Torensluis, standbeeld van Multatuli (20536120, 20536118)",
+   "url": "https://commons.wikimedia.org/wiki/Category:Multatuli_statue,_Torensluis,_Amsterdam",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

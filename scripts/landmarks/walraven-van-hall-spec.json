@@ -1,0 +1,42 @@
+{
+  "id": "walraven-van-hall",
+  "name": "Monument Walraven van Hall",
+  "landmarkId": "extract_landmarks_2141455457",
+  "modelUrl": "./models/walraven-van-hall.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8996307,
+      52.359946
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 11.0,
+    "widthMetres": 11.0
+  },
+  "surveyed": {
+    "anchor": [
+      4.8996307,
+      52.359946
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Backlog destination point (OSM memorial) in the Frederiksplein park; orientation read from Gemeente Amsterdam panoramas recording_2025-06-19_04-38-42_02947 and recording_2025-07-14_06-43-08_01048; the facing is a visual estimate"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "assetKind": "memorial",
+  "materialOverrides": {
+    "bronze": "#37403f",
+    "brick": "#8a4b40",
+    "concrete": "#8f8c75",
+    "gold": "#9aa39a"
+  },
+  "attribution": {
+    "title": "Monument Walraven van Hall - original low-poly reconstruction",
+    "author": "Map Recall; commemorated sculpture by Fernando Sanchez Castillo (2010)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Monument_Walraven_van_Hall",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free low-poly fallen tree, stump, paving, wall and plaque. Layout and proportions from Commons photographs (CC BY-SA 4.0) and Gemeente Amsterdam panoramas (CC BY 4.0); the branch pattern is procedural. No pixels or third-party meshes imported."
+  }
+}

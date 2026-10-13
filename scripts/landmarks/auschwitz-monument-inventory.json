@@ -1,0 +1,119 @@
+{
+ "schemaVersion": 1,
+ "id": "auschwitz-monument",
+ "signature": [
+  "au-pane",
+  "au-lettering"
+ ],
+ "walls": [
+  {
+   "tag": "s-160",
+   "bearing": 160,
+   "lengthM": 3.3,
+   "centre": [
+    4.9092058,
+    52.3679407
+   ],
+   "evidence": "photo",
+   "panoId": "FaceMePLS 21615229722",
+   "capturedAt": "2015",
+   "checked": true,
+   "note": "Lettered face: the pane with NOOIT MEER AUSCHWITZ and the shattered plate in front (Commons FaceMePLS, Maussen).",
+   "items": [
+    {
+     "id": "au-pane",
+     "kind": "sculpture",
+     "where": "upright pane of clear glass about 3.3 x 1.85 m standing on the gravel, in two steel shoes",
+     "approxSizeM": [
+      3.3,
+      1.85
+     ],
+     "plan": "simplified",
+     "how": "builder: thin glass box on two frame-coloured shoes; thickness and exact size estimated",
+     "seenIn": "FaceMePLS 21615229722"
+    },
+    {
+     "id": "au-lettering",
+     "kind": "lettering",
+     "where": "NOOIT MEER / AUSCHWITZ cut into the pane in outline capitals (two lines, about 0.35 m high)",
+     "approxSizeM": [
+      2.9,
+      0.9
+     ],
+     "plan": "simplified",
+     "how": "builder: raised stroke-font capitals (letterBoxes) in pale accent; the real letters are cut outlines in the glass",
+     "seenIn": "FaceMePLS 21615229722"
+    },
+    {
+     "id": "au-plates",
+     "kind": "other",
+     "where": "two shattered mirror plates laid flat in steel trays in front of the pane, cracked into shards",
+     "approxSizeM": [
+      6.2,
+      1.45
+     ],
+     "plan": "simplified",
+     "how": "builder: tray box, glass slab and 14 thin dark crack boxes radiating from an impact point per plate; real shard pattern not copied",
+     "seenIn": "FaceMePLS 21615229722"
+    },
+    {
+     "id": "au-bed",
+     "kind": "other",
+     "where": "gravel bed round the pane and plates, framed by park planting",
+     "approxSizeM": [
+      6.6,
+      4.2
+     ],
+     "plan": "simplified",
+     "how": "builder: pale slab 6.6 x 4.2 m",
+     "seenIn": "Maussen"
+    }
+   ]
+  },
+  {
+   "tag": "n-340",
+   "bearing": 340,
+   "lengthM": 3.3,
+   "centre": [
+    4.9092058,
+    52.3679407
+   ],
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Back of the pane: the cut letters read mirrored through the glass; not separately modelled.",
+   "items": []
+  },
+  {
+   "tag": "e-70",
+   "bearing": 70,
+   "lengthM": 4.2,
+   "centre": [
+    4.9092058,
+    52.3679407
+   ],
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Edge of the pane and the bed: not photographed.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "FaceMePLS, 'Auschwitz monument' Wertheimpark Amsterdam (21615229722, 21439711389)",
+   "url": "https://commons.wikimedia.org/wiki/File:%27Auschwitz_monument%27_Wertheimpark_Amsterdam_(21615229722).jpg",
+   "licence": "CC BY 2.0"
+  },
+  {
+   "name": "Gus Maussen, Auschwitz Monument Jan Wolkers",
+   "url": "https://commons.wikimedia.org/wiki/File:Auschwitz_Monument,_Jan_Wolkers.JPG",
+   "licence": "CC BY-SA 3.0 nl"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
