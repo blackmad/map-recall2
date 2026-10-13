@@ -203,9 +203,51 @@ flipping on touch.
 - The vehicle draws last (overlay pass) with its x-ray through buildings.
 - The street or canal under question is never revealed by colour, label or
   highlight before the answer (CLAUDE.md product principles). Highlight yellow
-  (`#ffd21f`) is reserved for the answer and active landmark.
+  (`#ffd21f`) is reserved for the answer and active landmark (§Highlight: the
+  candidates use the `#ff8033` accent instead).
 - Trivia/neighbourhood cards stay compact at the bottom; nothing in the 3D
   frame competes with them for saturation (no bloom, no saturated sky).
+
+## Highlight (the destination / the tapped building)
+
+User 2026-10-13: "The yellow highlight is bad." `?highlight=a|b|c` (`look/highlight.ts`,
+`look/highlightMarker.ts`) runs three candidates through every building pipeline
+(landmark GLBs, recipe houses, recipe tiles, building types, generic extrusions) in
+both frames; unset, every program and path is today's. Sheets:
+`docs/reports/highlight-redesign-20261013/sheet-{default,shared}-{chase,saddle}.jpg`
+(Westermarkt block, Westerkerk, Rijksmuseum, an Oud-West terrace house).
+
+- **a) outline + ground ring + beacon**: materials kept; 2-px inverted-hull outline
+  (back faces, 0.3 m behind the surface) in the accent; a soft 4 m band on the ground
+  round each footprint; a 3-px beacon above the roof, full to 150 m, 30 % beyond 900 m.
+- **b) rim + pulse + ring**: additive fresnel rim (power 2.2, 55–100 % over 2.4 s).
+- **c) desaturate the rest + ring**: buildings within 60 m (centroid) lose 40 % saturation.
+- **Accent `#ff8033`** (orange-coral). Colour-blind check (Machado 2009, CIELAB ΔE76
+  against brick, dark brick, pantile, slate, stucco, street, canal, sky, trees): min ΔE
+  40 normal / 25 protan / 38 deutan / 24 tritan. CSS coral `#ff7f50` drops to 14 (protan,
+  trees); the **HUD accent `#b4682c` fails** (17 normal, 9 protan, 6.5 tritan against
+  pantile): it is a brick colour, and on the sheets its pixel count is mostly ordinary roofs.
+
+Cost (desktop 1440×900, parked, 180 forced frames off → on, `scripts/highlight-perf.mjs`):
+
+| style | extra draw calls | MapLibre render ms (median) | three.js layers ms | first highlight / later | other |
+|---|---|---|---|---|---|
+| yellow | 0 | 2.0–2.9 → 2.0–3.0 | 0.1–0.6 | 0.6 / 0.2 ms | — |
+| a | +22–26 (one outline per GLB mesh, ring, beacon) | within ±0.5 (noise) | ±0.1 | 20 / 4 ms | none |
+| b | +20–24 | within ±0.7 | ±0.1 | ~20 / 4 ms | **redraws every frame while shown** (the pulse): 2.5–4.4 ms CPU per vsync when the map would idle |
+| c | +2 (ring) | within ±0.2 | 0 | 27–37 / 4 ms | prism index of every resident chunk on the first highlight |
+
+**Recommendation: ship a**, behind the flag first, then as the default with the
+shared-frame flip. It is the only candidate that still points at the building when the
+building is small or half hidden (the beacon over the roof, the ring at the street
+edge), it keeps the building's own colours (so the player learns the building, not a
+yellow box), it adds no per-frame work, and the ring hugs the footprint without naming
+any street. b reads as a pink wash on flat-shaded walls from the chase height and costs
+a frame every vsync; c is too subtle to find a building by (the 60 m neighbours lose
+colour, the target does not gain any) and it costs the largest hitch.
+Known gaps: MapLibre's fallback extrusion layers (only when three.js does not own the
+city) and 3DBAG detailed mode keep yellow; the outline is subtle at chase distance on
+an ordinary terrace house (the beacon carries it there).
 
 ## How reviews cite this
 

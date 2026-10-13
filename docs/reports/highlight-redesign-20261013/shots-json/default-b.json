@@ -1,0 +1,245 @@
+{
+ "frame": "default",
+ "style": "b",
+ "query": "highlight=b",
+ "records": [
+  {
+   "spot": "oudwest-terrace",
+   "view": "chase",
+   "file": "artifacts/highlight-redesign/shots/default-b-oudwest-terrace-chase.png",
+   "share": 0.000009765625,
+   "state": {
+    "models": [],
+    "extrusions": 1,
+    "marker": {
+     "style": "b",
+     "anchor": [
+      4.871810384615385,
+      52.366905076923075
+     ],
+     "ring": true,
+     "beacon": false,
+     "distanceM": null
+    }
+   },
+   "landmark": {
+    "id": "tapped-NL.IMBAG.Pand.0363100012236453",
+    "name": "Terrace house",
+    "lngLat": [
+     4.87177,
+     52.36696
+    ]
+   }
+  },
+  {
+   "spot": "oudwest-terrace",
+   "view": "saddle",
+   "file": "artifacts/highlight-redesign/shots/default-b-oudwest-terrace-saddle.png",
+   "share": 0.0057109375,
+   "state": {
+    "models": [],
+    "extrusions": 1,
+    "marker": {
+     "style": "b",
+     "anchor": [
+      4.871810384615385,
+      52.366905076923075
+     ],
+     "ring": true,
+     "beacon": false,
+     "distanceM": null
+    }
+   },
+   "landmark": {
+    "id": "tapped-NL.IMBAG.Pand.0363100012236453",
+    "name": "Terrace house",
+    "lngLat": [
+     4.87177,
+     52.36696
+    ]
+   }
+  },
+  {
+   "spot": "westermarkt",
+   "view": "chase",
+   "file": "artifacts/highlight-redesign/shots/default-b-westermarkt-chase.png",
+   "share": 0.001361328125,
+   "state": {
+    "models": [
+     "anne-frank-house"
+    ],
+    "extrusions": 4,
+    "marker": {
+     "style": "b",
+     "anchor": [
+      4.884166653846153,
+      52.37515715384614
+     ],
+     "ring": true,
+     "beacon": false,
+     "distanceM": null
+    }
+   },
+   "landmark": {
+    "id": "extract_landmarks_614625734",
+    "name": "Anne Frank House",
+    "lngLat": [
+     4.883821,
+     52.375075
+    ]
+   }
+  },
+  {
+   "spot": "westermarkt",
+   "view": "saddle",
+   "file": "artifacts/highlight-redesign/shots/default-b-westermarkt-saddle.png",
+   "share": 0.004630859375,
+   "state": {
+    "models": [
+     "anne-frank-house"
+    ],
+    "extrusions": 4,
+    "marker": {
+     "style": "b",
+     "anchor": [
+      4.884166653846153,
+      52.37515715384614
+     ],
+     "ring": true,
+     "beacon": false,
+     "distanceM": null
+    }
+   },
+   "landmark": {
+    "id": "extract_landmarks_614625734",
+    "name": "Anne Frank House",
+    "lngLat": [
+     4.883821,
+     52.375075
+    ]
+   }
+  },
+  {
+   "spot": "westerkerk",
+   "view": "chase",
+   "file": "artifacts/highlight-redesign/shots/default-b-westerkerk-chase.png",
+   "share": 0.001884765625,
+   "state": {
+    "models": [
+     "westerkerk"
+    ],
+    "extrusions": 14,
+    "marker": {
+     "style": "b",
+     "anchor": [
+      4.883698063095239,
+      52.37453130119047
+     ],
+     "ring": true,
+     "beacon": false,
+     "distanceM": null
+    }
+   },
+   "landmark": {
+    "id": "extract_landmarks_1692085215",
+    "name": "Westerkerk",
+    "lngLat": [
+     4.883614,
+     52.374392
+    ]
+   }
+  },
+  {
+   "spot": "westerkerk",
+   "view": "saddle",
+   "file": "artifacts/highlight-redesign/shots/default-b-westerkerk-saddle.png",
+   "share": 0.0012978515625,
+   "state": {
+    "models": [
+     "westerkerk"
+    ],
+    "extrusions": 14,
+    "marker": {
+     "style": "b",
+     "anchor": [
+      4.883698063095239,
+      52.37453130119047
+     ],
+     "ring": true,
+     "beacon": false,
+     "distanceM": null
+    }
+   },
+   "landmark": {
+    "id": "extract_landmarks_1692085215",
+    "name": "Westerkerk",
+    "lngLat": [
+     4.883614,
+     52.374392
+    ]
+   }
+  },
+  {
+   "spot": "rijksmuseum",
+   "view": "chase",
+   "file": "artifacts/highlight-redesign/shots/default-b-rijksmuseum-chase.png",
+   "share": 0.004205078125,
+   "state": {
+    "models": [
+     "rijksmuseum",
+     "herepoort-bergpoort"
+    ],
+    "extrusions": 36,
+    "marker": {
+     "style": "b",
+     "anchor": [
+      4.884930190087461,
+      52.35975093702624
+     ],
+     "ring": true,
+     "beacon": false,
+     "distanceM": null
+    }
+   },
+   "landmark": {
+    "id": "extract_landmarks_512243549",
+    "name": "Rijksmuseum",
+    "lngLat": [
+     4.88654,
+     52.360119
+    ]
+   }
+  },
+  {
+   "spot": "rijksmuseum",
+   "view": "saddle",
+   "file": "artifacts/highlight-redesign/shots/default-b-rijksmuseum-saddle.png",
+   "share": 0.0089794921875,
+   "state": {
+    "models": [
+     "rijksmuseum",
+     "herepoort-bergpoort"
+    ],
+    "extrusions": 36,
+    "marker": {
+     "style": "b",
+     "anchor": [
+      4.884930190087461,
+      52.35975093702624
+     ],
+     "ring": true,
+     "beacon": false,
+     "distanceM": null
+    }
+   },
+   "landmark": {
+    "id": "extract_landmarks_512243549",
+    "name": "Rijksmuseum",
+    "lngLat": [
+     4.88654,
+     52.360119
+    ]
+   }
+  }
+ ]
+}

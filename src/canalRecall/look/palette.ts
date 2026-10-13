@@ -502,3 +502,13 @@ export const STREET_GROUND = {
   rail: '#6c6e72',
   bollard: '#5a2a26',
 } as const;
+
+// Highlight accents (look/highlight.ts; LOOK §Driving corridor readability)
+// ---------------------------------------------------------------------------
+
+/** Today's highlight: the answer / active landmark painted yellow (`?highlight` unset). */
+export const HIGHLIGHT_YELLOW = '#ffd21f';
+/** The candidates' accent: a saturated orange-coral. Of the orange-corals it keeps the widest margin from brick, pantile, street, canal, sky and trees in normal, protan, deutan and tritan vision (min ΔE 24; CSS coral #ff7f50 drops to 14 against trees for protans). highlight.test.ts. */
+export const HIGHLIGHT_CORAL = '#ff8033';
+/** The HUD accent (`--accent` in css/enamel.css), tested as the alternative accent (`?highlightAccent=hud`). */
+export const HUD_ACCENT = '#b4682c';

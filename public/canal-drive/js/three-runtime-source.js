@@ -20,3 +20,7 @@ export { SharedFrame } from '../../../src/canalRecall/rendererShared/sharedFrame
 export { createLitFacadeMaterial, createFacadeDepthMaterial } from '../../../src/canalRecall/rendererShared/litFacadeMaterial.ts';
 export { withinView } from '../../../src/canalRecall/rendererShared/residency.ts';
 export { PARTICIPANT_ORDER } from '../../../src/canalRecall/rendererShared/layerRegistry.ts';
+
+// The landmark highlight candidates (`?highlight=a|b|c`): the page's ground ring / beacon, and the style.
+export { HighlightMarker } from '../../../src/canalRecall/look/highlightMarker.ts';
+export { highlightStyle } from '../../../src/canalRecall/look/highlight.ts';
