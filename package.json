@@ -481,7 +481,10 @@
     "test:sculptures": "node --import tsx --test src/canalRecall/sculptures/*.test.ts",
     "check:signature-fallback": "node scripts/check-signature-fallback-refresh.mjs",
     "check:own-ground-belt": "node --import tsx scripts/own-ground/audit-belt.ts --probe",
-    "hosting:prune": "node scripts/hosting/prune-versions.mjs"
+    "hosting:prune": "node scripts/hosting/prune-versions.mjs",
+    "test:roofs": "node --import tsx --test src/canalRecall/roofs/*.test.ts src/canalRecall/roofTier.test.ts src/canalRecall/gardenSheds.test.ts",
+    "check:roof-attachment": "node --import tsx scripts/check-roof-attachment.ts",
+    "check:garden-sheds": "node --import tsx scripts/check-garden-sheds.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
