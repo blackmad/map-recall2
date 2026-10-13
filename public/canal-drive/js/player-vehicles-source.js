@@ -261,6 +261,8 @@ class Vehicle3D {
     if (this._modelRoot && this._scene) {
       this._scene.remove(this._modelRoot);
     }
+    // Legacy layer: the x-ray as a twin of each mesh in the same scene, so one render draws both.
+    if (!this.sharedFrame && this._occlusionMaterial) addXrayTwins(imported, this._occlusionMaterial);
     const model = new THREE.Group();
     model.add(imported);
     this._bind(imported);
@@ -280,13 +282,8 @@ class Vehicle3D {
     const renderer = this._renderer;
     if (!renderer || !this._scene) return;
     try {
-      const camera = new THREE.Camera();
-      renderer.compile(this._scene, camera);
-      if (this._occlusionMaterial) {
-        this._scene.overrideMaterial = this._occlusionMaterial;
-        renderer.compile(this._scene, camera);
-        this._scene.overrideMaterial = null;
-      }
+      // The x-ray twins are in the scene: one compile covers both looks.
+      renderer.compile(this._scene, new THREE.Camera());
       renderer.resetState();
     } catch (error) {
       this._scene.overrideMaterial = null;
@@ -343,21 +340,51 @@ class Vehicle3D {
         sun.position.fromArray(enuDirectionInLocal(transform.elements, SUN_DIRECTION));
         sky.position.fromArray(enuDirectionInLocal(transform.elements, [0, 0, 1]));
         renderer.resetState();
-        // X-ray first, against the map's depth alone: it paints only where
-        // nearer map geometry covers the model. Drawn after the normal pass it
-        // also passed on the model's own far side (back faces, the far wheel),
-        // so the whole bike came out yellow. The normal pass then draws every
-        // visible fragment over it.
-        if (occlusionMaterial) {
-          owner._scene.overrideMaterial = occlusionMaterial;
-          renderer.render(owner._scene, camera);
-          owner._scene.overrideMaterial = null;
-        }
+        // One render: the x-ray twins (see `addXrayTwins`) sort ahead of the model and paint, against the
+        // map's depth alone, only where nearer map geometry covers it; the model then draws every visible
+        // fragment over them. (Two renders, x-ray then normal, until 2026-10-14.)
         renderer.render(owner._scene, camera);
         owner.map.triggerRepaint();
       },
     };
   }
+}
+
+/**
+ * The x-ray look as part of the scene instead of a second render with an
+ * override material. Each mesh gets a twin sharing its geometry and the
+ * occlusion material, made opaque-list: same colour, opacity, depth test
+ * (GreaterDepth, no depth write) and both sides, blended with the same
+ * factors as three's NormalBlending (straight alpha) through CustomBlending,
+ * which three still blends on an opaque material and does not force to
+ * alpha 1. Being opaque, the twins sort by renderOrder ahead of every model
+ * mesh (all opaque: `_mountGltf` sets `transparent = false`), so the depth
+ * buffer they test holds only the map's depth, as in the old first pass.
+ * Children of their mesh: they follow its pose and its visibility.
+ */
+function addXrayTwins(root, material) {
+  // In place: the legacy layer has no other use for it, and tests toggle it (bike-xray.spec colorWrite).
+  material.transparent = false;
+  material.blending = THREE.CustomBlending;
+  material.blendEquation = THREE.AddEquation;
+  material.blendSrc = THREE.SrcAlphaFactor;
+  material.blendDst = THREE.OneMinusSrcAlphaFactor;
+  material.blendEquationAlpha = THREE.AddEquation;
+  material.blendSrcAlpha = THREE.OneFactor;
+  material.blendDstAlpha = THREE.OneMinusSrcAlphaFactor;
+  material.needsUpdate = true;
+  const meshes = [];
+  root.traverse(child => { if (child.isMesh && !child.isSkinnedMesh) meshes.push(child); });
+  for (const mesh of meshes) {
+    const twin = new THREE.Mesh(mesh.geometry, material);
+    twin.name = `${mesh.name || 'mesh'}/xray`;
+    twin.renderOrder = -1e6;
+    twin.frustumCulled = mesh.frustumCulled;
+    twin.castShadow = twin.receiveShadow = false;
+    twin.raycast = () => {};
+    mesh.add(twin);
+  }
+  return material;
 }
 
 export class PlayerBike3D extends Vehicle3D {
