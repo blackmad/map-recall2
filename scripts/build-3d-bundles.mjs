@@ -85,9 +85,13 @@ const targets = [
 ];
 
 const only = process.argv.find(arg => arg.startsWith('--only='))?.slice(7).split(',');
+// --outdir=<dir>: write the bundles there instead of public/canal-drive/js (A/B of a source change
+// through LOOK_BUNDLES_DIR / BUNDLES_DIR without touching the committed bundles).
+const outdir = process.argv.find(arg => arg.startsWith('--outdir='))?.slice(9);
 const selected = only ? targets.filter(target => only.includes(basename(target.out, '.bundle.js'))) : targets;
 if (only && (new Set(only).size !== only.length || selected.length !== only.length)) throw new Error('Unknown or duplicate 3D bundle target');
 for (const target of selected) {
+  if (outdir) target.out = resolve(outdir, basename(target.out));
   await build({
     entryPoints: [target.entry],
     outfile: target.out,

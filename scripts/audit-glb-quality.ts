@@ -15,6 +15,14 @@
  *   --only-geometry          skip the shell checks (fast geometry-only run)
  *   --geometry-shots         close-up evidence of the worst issue per top offender (artifacts/glb-audit/geometry/)
  *
+ * Material slot coverage (glbQuality.ts `materialSlotCoverage`): share of lit surface area whose material carries
+ * `materialSlot` + `tint` (the shared city look, look/cityLook.ts). Models listed in
+ * scripts/landmarks/material-slot-baseline.json fail only when their coverage drops below the baseline; any other
+ * model (a new export) must reach 100 %. Fix a new export with
+ * `npx tsx scripts/landmarks/infer-material-slots.ts --file=<glb> --write --in-place`, or name its materials after the
+ * palette (brick, stone, slate, glass, frame, …; build-manual-landmarks.ts sets the slot from the name by default).
+ *   --no-slots               skip it            --write-slot-baseline  record current coverage as the baseline
+ *
  * Install scripts call it with --id=<id> and must see exit code 0. Thresholds live in
  * src/canalRecall/landmarks/glbQuality.ts (DEFAULT_THRESHOLDS) and are documented there.
  */
@@ -23,7 +31,7 @@ import path from 'node:path';
 import {NodeIO} from '@gltf-transform/core';
 import {ALL_EXTENSIONS} from '@gltf-transform/extensions';
 import {MeshoptDecoder} from 'meshoptimizer';
-import {analyseSoup, DEFAULT_THRESHOLDS, type QualityReport, type Thresholds, type TriSoup} from '../src/canalRecall/landmarks/glbQuality';
+import {analyseSoup, DEFAULT_THRESHOLDS, materialSlotCoverage, SLOT_COVERAGE_GATE, type QualityReport, type SlotCoverage, type Thresholds, type TriSoup} from '../src/canalRecall/landmarks/glbQuality';
 import {geometryAudit, regressions, type GeometryAuditReport} from '../src/canalRecall/landmarks/geometryAudit';
 import type {ElevationsFile} from '../src/canalRecall/landmarks/facadeCompare';
 import {loadMaterialSoup} from './landmarks/material-soup';
@@ -93,7 +101,25 @@ function modelThresholds(id: string): Partial<Thresholds> {
   } catch { return {}; }
 }
 
-interface Row {id: string; file: string; status?: string; report: QualityReport; ms: number; geometry?: GeometryAuditReport}
+interface Row {id: string; file: string; status?: string; report: QualityReport; ms: number; geometry?: GeometryAuditReport; slots?: SlotCoverage}
+
+const SLOT_BASELINE = path.join(ROOT, 'scripts/landmarks/material-slot-baseline.json');
+type SlotBaseline = {generated: string; note: string; models: Record<string, number>};
+function readSlotBaseline(): SlotBaseline | undefined {
+  try { return JSON.parse(fs.readFileSync(SLOT_BASELINE, 'utf8')); } catch { return undefined; }
+}
+
+/** Slot coverage joins the report: never below the model's baseline; a model without one (a new export) must be complete. */
+function mergeSlots(report: QualityReport, slots: SlotCoverage, base: number | undefined): void {
+  const need = base ?? SLOT_COVERAGE_GATE;
+  const missing = slots.materials.filter(m => !m.slot && !m.exempt).slice(0, 6).map(m => `${m.name} ${(m.share * 100).toFixed(1)}%`).join(', ');
+  if (slots.coverage + 1e-4 < need) {
+    report.findings.push({kind: 'material-slots', severity: 'fail', message: `material slot coverage ${(slots.coverage * 100).toFixed(1)}% < ${base === undefined ? 'required 100% (new export)' : `baseline ${(base * 100).toFixed(1)}%`}; untagged: ${missing}`});
+    report.pass = false;
+  } else if (slots.coverage < SLOT_COVERAGE_GATE) {
+    report.findings.push({kind: 'material-slots', severity: 'warn', message: `material slot coverage ${(slots.coverage * 100).toFixed(1)}% (baselined); untagged: ${missing}`});
+  }
+}
 
 const BASELINE = path.join(ROOT, 'scripts/landmarks/geometry-audit-baseline.json');
 type Baseline = {generated: string; note: string; reasons?: Record<string, string>; models: Record<string, Record<string, number>>};
@@ -193,12 +219,25 @@ function geometryMd(rows: Row[]): string {
   return lines.join('\n') + '\n';
 }
 
+function slotsMd(rows: Row[]): string {
+  const s = rows.filter(r => r.slots);
+  if (!s.length) return '';
+  const mean = s.reduce((a, r) => a + r.slots!.coverage, 0) / s.length;
+  const full = s.filter(r => r.slots!.coverage >= SLOT_COVERAGE_GATE).length;
+  return ['', '## Material slot coverage', '',
+    `${s.length} models, mean ${(mean * 100).toFixed(1)}%, ${full} at 100%. Coverage = share of lit surface area whose material carries materialSlot + tint (unlit decals exempt).`, '',
+    '| id | coverage | inferred share | untagged (largest) |', '|---|---|---|---|',
+    ...[...s].sort((a, b) => a.slots!.coverage - b.slots!.coverage).map(r => `| ${r.id} | ${(r.slots!.coverage * 100).toFixed(1)}% | ${r.slots!.slottedArea ? (r.slots!.inferredArea / r.slots!.slottedArea * 100).toFixed(0) + '%' : '-'} | ${r.slots!.materials.filter(m => !m.slot && !m.exempt).slice(0, 4).map(m => `${m.name} ${(m.share * 100).toFixed(1)}%`).join(', ')} |`),
+  ].join('\n') + '\n';
+}
+
 async function main(): Promise<void> {
   const targets = listTargets();
   if (!targets.length) { console.error('No matching models'); process.exit(2); }
   const th = {...DEFAULT_THRESHOLDS};
   const rows: Row[] = [];
   const baseline = readBaseline();
+  const slotBaseline = readSlotBaseline();
   for (const t of targets) {
     const t0 = Date.now();
     let report: QualityReport;
@@ -217,9 +256,16 @@ async function main(): Promise<void> {
         mergeGeometry(report, geometry, flag('write-baseline') ? geometry.counts : baseline?.models[t.id]);
       } catch (e) { report.findings.push({kind: 'geometry-audit-error', severity: 'warn', message: String(e).slice(0, 200)}); }
     }
-    rows.push({id: t.id, file: path.relative(ROOT, t.file), status: t.status, report, ms: Date.now() - t0, geometry});
+    let slots: SlotCoverage | undefined;
+    if (!flag('no-slots')) {
+      try {
+        slots = materialSlotCoverage(await loadMaterialSoup(t.file));
+        mergeSlots(report, slots, flag('write-slot-baseline') ? slots.coverage : slotBaseline?.models[t.id]);
+      } catch (e) { report.findings.push({kind: 'material-slots-error', severity: 'warn', message: String(e).slice(0, 200)}); }
+    }
+    rows.push({id: t.id, file: path.relative(ROOT, t.file), status: t.status, report, ms: Date.now() - t0, geometry, slots});
     if (!flag('quiet') || targets.length === 1) {
-      console.log(`${report.pass ? 'PASS' : 'FAIL'} ${t.id} (${report.triangles} tris, score ${report.score.toFixed(1)}, ${Date.now() - t0} ms)`);
+      console.log(`${report.pass ? 'PASS' : 'FAIL'} ${t.id} (${report.triangles} tris, score ${report.score.toFixed(1)}${slots ? `, slots ${(slots.coverage * 100).toFixed(1)}%` : ''}, ${Date.now() - t0} ms)`);
       for (const f of report.findings) console.log(`   ${f.severity === 'fail' ? 'FAIL' : 'warn'} ${f.kind}: ${f.message}`);
     }
   }
@@ -228,7 +274,14 @@ async function main(): Promise<void> {
     fs.mkdirSync(out, {recursive: true});
     const tag = arg('set') === 'ordinary' ? 'ordinary-' : '';
     fs.writeFileSync(path.join(out, `${tag}report.json`), JSON.stringify({thresholds: th, models: rows.map(r => ({...r, geometry: r.geometry && slim(r.geometry)}))}, null, 1));
-    fs.writeFileSync(path.join(out, `${tag}summary.md`), md(rows, th) + geometryMd(rows));
+    fs.writeFileSync(path.join(out, `${tag}summary.md`), md(rows, th) + geometryMd(rows) + slotsMd(rows));
+    if (flag('write-slot-baseline')) {
+      const models: Record<string, number> = {...(slotBaseline?.models ?? {})};
+      for (const r of rows) if (r.slots) models[r.id] = +r.slots.coverage.toFixed(4);
+      const sorted = Object.fromEntries(Object.entries(models).sort(([a], [b]) => a.localeCompare(b)));
+      fs.writeFileSync(SLOT_BASELINE, JSON.stringify({generated: new Date().toISOString().slice(0, 10), note: slotBaseline?.note ?? 'Material slot coverage per legacy model (glbQuality.ts materialSlotCoverage). A model listed here fails audit:glb only when its coverage drops below this value; models not listed must reach 100 %. Lower a value never; raise it when a model gains slots (infer-material-slots.ts --write, builder edits).', models: sorted}, null, 1) + '\n');
+      console.log(`Wrote ${path.relative(ROOT, SLOT_BASELINE)} (${Object.keys(sorted).length} models)`);
+    }
     if (flag('write-baseline')) {
       const models: Baseline['models'] = {...(baseline?.models ?? {})};
       for (const r of rows) if (r.geometry) models[r.id] = r.geometry.counts;

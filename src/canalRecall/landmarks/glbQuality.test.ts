@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {Accessor, Document} from '@gltf-transform/core';
 import {soupFromDocument} from '../../../scripts/audit-glb-quality';
-import {analyseSoup} from './glbQuality';
+import {analyseSoup, materialSlotCoverage, SLOT_COVERAGE_GATE} from './glbQuality';
 
 type Quad = [number, number, number][];
 
@@ -358,4 +358,26 @@ test('a long diagonal slab (wall triangles far past the grid cap) is still solid
   assert.equal(r.seeThrough.rays, 0, JSON.stringify(r.seeThrough));
   assert.equal(r.holes.loops, 0);
   assert.ok(r.seeThrough.tested > 0);
+});
+
+test('material slot coverage is area-weighted; unlit decals are exempt; an empty model is complete', () => {
+  // A 2 m² brick wall (slotted, inferred), a 1 m² glass pane (untagged), a 1 m² unlit decal.
+  const square = (x: number, w: number) => [[x, 0, 0], [x + w, 0, 0], [x + w, 1, 0], [x, 1, 0]];
+  const quads = [square(0, 2), square(3, 1), square(5, 1)];
+  const positions = quads.flat(2), indices: number[] = [], triMaterial: number[] = [];
+  quads.forEach((_, q) => { const b = q * 4; indices.push(b, b + 1, b + 2, b, b + 2, b + 3); triMaterial.push(q, q); });
+  const materials = [
+    {name: 'brick', rgb: [154, 82, 64] as [number, number, number], materialSlot: 'brick', tint: '#9a5240', materialSlotSource: 'inferred'},
+    {name: 'glass', rgb: [82, 119, 135] as [number, number, number]},
+    {name: 'decal', rgb: [255, 255, 255] as [number, number, number], unlit: true},
+  ];
+  const c = materialSlotCoverage({positions, indices, triMaterial, materials});
+  assert.equal(c.area, 4);
+  assert.equal(c.exemptArea, 1);
+  assert.ok(Math.abs(c.coverage - 2 / 3) < 1e-9);
+  assert.equal(c.inferredArea, 2);
+  assert.deepEqual(c.materials.map(m => m.name), ['brick', 'glass', 'decal']);
+  const full = materialSlotCoverage({positions, indices, triMaterial, materials: materials.map(m => ({...m, materialSlot: m.materialSlot ?? 'glass', tint: m.tint ?? '#527787'}))});
+  assert.ok(full.coverage >= SLOT_COVERAGE_GATE);
+  assert.equal(materialSlotCoverage({positions: [], indices: [], triMaterial: [], materials: []}).coverage, 1);
 });

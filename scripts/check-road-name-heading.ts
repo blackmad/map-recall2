@@ -82,6 +82,8 @@ const host = {
   // Cold-open review is a separate delight path; this fixture only pins heading.
   _tryColdOpenReview: () => false,
 };
+// The pacer tick (2026-10-13) lives on the runtime; this host only exercises the heading logic.
+(host as Record<string, unknown>)._tickFeedbackTimeout ??= () => {};
 GameRecallRuntime.prototype._updateCanalQuiz.call(host as unknown as GameRecallRuntime, 1 / 60);
 
 assert.equal(host.quizCandidateName, 'Kinkerstraat',

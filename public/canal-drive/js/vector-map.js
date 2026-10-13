@@ -870,7 +870,12 @@ class VectorBasemap {
 
   _signatureSuppressOsmIds() {
     if (!this._signatureLandmarks) return [];
-    const ids = new Set(this._signatureLandmarks.shownSuppressOsmIds());
+    // ?bagTiles=1: the base tiles are BAG-keyed, so hide the pands covers.json lists for each
+    // shown model instead of its hand-kept suppressOsmIds (bagTiles.ts hiddenIdsFor).
+    const tiles = window.CanalRecallBuildingTiles;
+    const ids = new Set(this._bagCovers && tiles && tiles.hiddenIdsFor && this._signatureLandmarks.shownSuppressModels
+      ? tiles.hiddenIdsFor(this._bagCovers, this._signatureLandmarks.shownSuppressModels())
+      : this._signatureLandmarks.shownSuppressOsmIds());
     const helpers = window.CanalRecallSignatureLandmarks;
     if (!helpers || !helpers.footprintPolygon || !helpers.pointInRing) return [...ids];
     for (const footprint of this._signatureLandmarks.shownFootprints()) {
@@ -1299,6 +1304,13 @@ class VectorBasemap {
       available = false;
     }
     if (!available || !this.map.getSource('osm-building-appearance')) return false;
+
+    // ?bagTiles=1 and the BAG-keyed tiles were published: load covers.json (model -> pands). Without it
+    // (or without the tiles) the legacy suppressOsmIds path runs unchanged.
+    this._bagCovers = null;
+    if (this._completeCity.usingBagTiles && runtime.loadBagCovers) {
+      this._bagCovers = await runtime.loadBagCovers('./models/covers.json');
+    }
 
     // The Da Costa appearance study (city-expansion) was retired on 2026-10-01;
     // the game no longer loads the appearance catalog, so _appearanceAreas stays

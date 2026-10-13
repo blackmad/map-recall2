@@ -1,5 +1,94 @@
 # Canal Recall — what is built
 
+## Migration steps 1 and 2 behind flags: BAG tiles + covers, cityLook atlas; Hoofdbureau van Politie (2026-10-13)
+
+**BAG tiles** (lane `tiles/bag-base-20261013`, Sonnet): correction to the plan —
+the shipped z14 tiles were already BAG-keyed (335,123 of 347,040 features are
+`NL.IMBAG.Pand.*`; `build-lod1-city.ts` merges 3DBAG and OSM); what was
+missing was 3DBAG facts, OSM aliases and a join to models. New
+`public/data/extracts/amsterdam/bag-tiles/` (today's features + `eaves`,
+`ridge`, `roof`, `year`, `osm[]`; 17.9 MB gz, 1.19× the old set),
+`bag-facts/` sidecar (`[archetype, storeys, roof, eavesDm, ridgeDm, year,
+terraced]`, 2.2 MB gz) and `models/covers.json` (18 KB gz; 376 of 378 specs,
+575 model–pand links, 560 from today's lists and 15 from footprint overlap
+alone; 3,072 building-type pands separately). Facts coverage 100% of pands
+(eaves 333,807, ridge 146,739 — flat roofs have none, year 334,397); OSM
+match agrees with `ref:bag` in 99.6% of 334,798 cases. Of 1,539
+`suppressOsmIds` entries only 1,158 name a tile feature; `check-covers`
+reports 15 hidden bugs (pands under a model that its list does not hide) and
+114 stale ids. Runtime behind `?bagTiles=1` (`bagTiles.ts`, `bagPandIndex.ts`,
+`buildingTileSource.ts` tile-set dir, ~14 lines in `vector-map.js`,
+`shownSuppressModels()` in `signature-landmarks-source.js`); flag off is
+pixel-identical (0–0.86% far-skyline streaming noise), flag on differs only
+where covers hides the 15 hidden bugs. `tests/e2e/bag-tiles.spec.ts`,
+`bagTiles.test.ts` (16). Integrator: `test:bag-tiles` and `check:covers`
+in `check:canal`; `build:bag-tiles`; `covers.json` is rebuilt after every
+install (it caught the two bureaus and the Hoofdbureau).
+
+**cityLook** (lane `look/citylook-atlas-20261013`, Opus): `look/cityLook.ts`
+— one texture array (bay cells + 9 slot layers: brick, stucco, stone, white,
+door, glass, pantile, slate, flat roof; painters in `look/slotCells.ts`),
+vertex attributes `layer, tint, accent, hidden`, one shader with unlit-baked
+and lit-Lambert variants, highlight as a variant swap; legacy landmarks have
+no UVs (0 of 2,387 primitives) so the shader box-projects from object space.
+`createRecipeLook`, `ThreeBuildings` materials, `buildLookTextures`, building
+types and `signature-landmarks-source.js` `_dress` are thin adapters; new
+`paint` slot. `glbQuality.materialSlotCoverage` gated in `audit:glb`
+(`material-slot-baseline.json` holds all 310 at 0%, new exports must reach
+100%); `build-manual-landmarks.ts` infers slots from material names by
+default; `scripts/landmarks/infer-material-slots.ts` (dry run by default,
+`--write` patches only the JSON chunk; 310/310 reach 100%; no GLB in
+`public/` rewritten — slots are inferred at load under the flag). Proof:
+flag-off 0 px in all 8 look-consistency shots; `tests/e2e/building-look.spec.ts`
+— the same #808080 brick through generic, recipe and landmark pipelines:
+luma spread 0.14% (was 4.3–5.8% under the legacy shared rig, 72% before the
+look lane). Perf, desktop: three.js layers 0.75 → 0.8 ms per frame; shared
+frame + city look 0.92 ms (shared frame alone 1.26); +4.5 MB texture
+(+1.1 MB touch). Integrator rebuilt three-buildings, signature-landmarks and
+signature-placement bundles; merge conflicts with cleanup batch 1 resolved
+by carrying the slot under both `slot` and `materialSlot` in
+`material-soup.ts`.
+
+**Hoofdbureau van Politie, Elandsgracht 117** (lane
+`landmarks/hoofdbureau-elandsgracht-20261013`, Sonnet): the first bespoke
+builder that calls the large-tier facade systems for its regular walls
+(`largeCompile.ts` gained `hooks`: `panelHook`, `afterCompose`, `budget`;
+default output unchanged). 3DBAG massing verbatim (IoU 0.998, ridge Δ 0),
+15 wall groups, hand-modelled 68 stone window hoods, canopy, blue POLITIE
+plate; sunken ramp clipped at y = 0; 26,552 tris, 38 gates PASS,
+`audit:glb` PASS, slots 100%. Installed with a POI card; registry, snap and
+16-bit quantization entries by the integrator. Panoramas CC BY 4.0
+(2016–2025), BAG, 3DBAG; Beeldbank refused automated fetch.
+
+
+## Checks lane: baselines re-recorded, stale rules fixed, docs index (2026-10-13)
+
+Lane `process/checks-and-docs-20261013` (Sonnet, `docs/handoffs/lane-checks-and-docs-20261013.md`).
+The handoff's premise that the 37 failing `storybook-visual` baselines
+differed only in the Feedback button and attribution text was wrong: the
+cards had become compact (MORE chip, close ×, shorter text) and the portrait
+settings panel had been redesigned; all 37 re-recorded, 46/46 pass.
+`check-three-buildings`: the rule, not the model, was stale — `635fc6a1`
+added segmental heads to canal houses on purpose; the assertion now allows
+rect or segmental and still bans semicircular/round as 19th century; the
+integrator republished `kit-locations.json` (239 → 246 ids) and the check
+passes. `check-building-look-transition`: the worker stub did not echo
+`appearanceRevision`/`surveyedEnvelopeRevision`, so the adapter dropped its
+reply; fixed, and it already runs through `test:city-startup`.
+`check-cinema-facade-surfaces`: Kriterion count restricted to the frontage;
+the Rialto half exposes a real coplanar roof/wall defect (board).
+`check-manual-landmarks`: the integrator regenerated 22 drifted manifest
+entries (15 stale byte counts plus felix-meritis, amsterdam-museum,
+cinecenter, orgelpark, rode-hoed, heineken-experience-amsterdam, dageraad
+after the detached-openings sweep); what remains is the 500 KB budget (four
+models) and the Haparandaweg block faces without `bytes` (board).
+`review-ride` is a real routing regression (board). Docs: `docs/README.md`
+indexes the four living documents, the plan, the handoffs and a dated
+research list with "superseded by" marks; `docs/gameplay/loop.md` written
+from `questionBudget.ts`, `ridingPrompt.ts`, `teachingPacer.ts`. Nothing
+moved or deleted.
+
+
 ## Police bureaus: 17 matched, two more large recipes installed (2026-10-13)
 
 Lane `content/police-bureaus-20261013` (Sonnet, `docs/handoffs/lane-police-bureaus-20261013.md`).

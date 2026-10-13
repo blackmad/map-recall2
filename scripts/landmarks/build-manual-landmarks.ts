@@ -1,6 +1,7 @@
 import {slotExtras} from '../../src/canalRecall/landmarks/materialSlots';
 import {snapDetachedParts,snapOpenings} from '../../src/canalRecall/landmarks/snapOpenings';
 import {buildWaag} from './waag-builder';
+import {inferredSlotExtras} from '../../src/canalRecall/look/materialSlotInference';
 import {buildScheepvaartmuseum} from './scheepvaartmuseum-builder';
 import {buildOdessa} from './odessa-builder';
 import {buildHotelJakarta} from './hotel-jakarta-builder';
@@ -250,6 +251,7 @@ import {buildObaOosterdok} from './oba-oosterdok-builder';
 import {buildSintAgneskerk} from './sint-agneskerk-builder';
 import {buildPetruskerk} from './petruskerk-builder';
 import {buildBoomkerk} from './boomkerk-builder';
+import {buildHoofdbureauElandsgracht} from './hoofdbureau-elandsgracht-builder';
 import {buildOpstandingskerk} from './opstandingskerk-builder';
 import {buildObrechtkerk} from './obrechtkerk-builder';
 import {buildDeDuif} from './de-duif-builder';
@@ -327,7 +329,7 @@ function hospital(id:string){let s=hospitals.sites.find(s=>s.id===id)!;let spec=
 const DROP_OVERHANG_IDS=new Map<string,number>([['fire-station-willem',4],['mountain-network',14],['valley',16],['rai-amsterdam',13],['beta-boulders',5],['stadhuis',6],['straat-museum',8],['hilton-amsterdam',5]]); // id -> largest assembly (m) that may be dropped
 const DROP_MIN_OUTSIDE=new Map<string,number>([['beta-boulders',.25],['mountain-network',.15],['rai-amsterdam',.3]]); // default .35
 const SNAP_OPTS=new Map<string,{embed?:number;maxBuried?:number;maxFloat?:number;clearMargin?:number;keepLiftOverhang?:boolean;dropBuried?:{minHidden:number;maxExtent:number}}>([['oudemanhuispoort',{clearMargin:.08}],['haparandaweg-2-4',{maxBuried:1.2,keepLiftOverhang:true}],['american-hotel',{clearMargin:.08,keepLiftOverhang:true,dropBuried:{minHidden:.95,maxExtent:4}}],['hilton-amsterdam',{maxBuried:1.5,keepLiftOverhang:true}]]); // per-model snapOpenings overrides
-const SNAP_OPENING_IDS=new Set(['de-bijenkorf','oude-kerk','beta-boulders','fire-station-willem','mountain-network','centraal-station','rai-amsterdam','westerkerk','valley','lab111','vredeskerk','scheepvaarthuis','dominicuskerk','magna-plaza','madame-tussauds','stadhuis','heineken-experience-amsterdam','nieuwe-kerk','jewish-museum','dutch-resistance-museum','allard-pierson','cinecenter','straat-museum','haparandaweg-2-4','fire-station-hendrik','fire-station-zebra','this-is-holland','posthoornkerk','petrus-en-paulus-kerk','oudemanhuispoort','american-hotel','krasnapolsky','hilton-amsterdam','booking-hq','scheepvaartmuseum','waag']);
+const SNAP_OPENING_IDS=new Set(['hoofdbureau-elandsgracht','de-bijenkorf','oude-kerk','beta-boulders','fire-station-willem','mountain-network','centraal-station','rai-amsterdam','westerkerk','valley','lab111','vredeskerk','scheepvaarthuis','dominicuskerk','magna-plaza','madame-tussauds','stadhuis','heineken-experience-amsterdam','nieuwe-kerk','jewish-museum','dutch-resistance-museum','allard-pierson','cinecenter','straat-museum','haparandaweg-2-4','fire-station-hendrik','fire-station-zebra','this-is-holland','posthoornkerk','petrus-en-paulus-kerk','oudemanhuispoort','american-hotel','krasnapolsky','hilton-amsterdam','booking-hq','scheepvaartmuseum','waag']);
 function snapPartOpenings(id:string){
  if(!SNAP_OPENING_IDS.has(id)||process.env.SNAP_SKIP===id)return;
  const positions:number[]=[],indices:number[]=[],triMaterial:number[]=[],names:string[]=[],spans:{g:T.BufferGeometry;from:number}[]=[];
@@ -384,6 +386,8 @@ async function save(id:string){
   for(const value of positions)all.push(value);
   const rgb=new T.Color(group.hex),material=doc.createMaterial(name).setBaseColorFactor([rgb.r,rgb.g,rgb.b,1]).setMetallicFactor(0).setRoughnessFactor(.9).setDoubleSided(true).setExtras(slotExtras(name,group.hex)??{});
   if(group.unlit)material.setExtension('KHR_materials_unlit',unlitExtension!.createUnlit());
+  // Shared look (`?cityLook=1`, look/cityLook.ts): the slot follows from the palette name; audit:glb gates new exports at 100 %.
+  else material.setExtras(inferredSlotExtras(name,group.hex));
   if(id==='conservatorium'&&!name.startsWith('decal-')&&group.colour==='glass')material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,.28]).setAlphaMode('BLEND');
   const opacity=(spec as {materialOpacity?:Record<string,number>}).materialOpacity?.[group.colour];
   if(opacity!==undefined&&id!=='conservatorium'&&!name.startsWith('decal-'))material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,opacity]).setAlphaMode('BLEND');
@@ -399,7 +403,7 @@ async function save(id:string){
   await quantizeOrdinaryMesh(doc,mesh,ordinaryNode);
   await doc.transform(quantize({pattern:/^(?!POSITION$).+/,patternTargets:/^(?!POSITION$).+/}));
   doc.createExtension(EXTMeshoptCompression).setRequired(true).setEncoderOptions({method:EXTMeshoptCompression.EncoderMethod.QUANTIZE});
- }else await doc.transform(meshopt({encoder:MeshoptEncoder,level:'medium',...(['electric-ladyland','westerkerk','cafe-kobalt','collectie-six'].includes(id)?{quantizePosition:16}:{})}));
+ }else await doc.transform(meshopt({encoder:MeshoptEncoder,level:'medium',...(['electric-ladyland','westerkerk','cafe-kobalt','collectie-six','hoofdbureau-elandsgracht'].includes(id)?{quantizePosition:16}:{})}));
  await new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.encoder':MeshoptEncoder}).write(dest,doc);
  const bounds={min:[Infinity,Infinity,Infinity],max:[-Infinity,-Infinity,-Infinity]};
  for(let i=0;i<all.length;i++){const axis=i%3;bounds.min[axis]=Math.min(bounds.min[axis],all[i]);bounds.max[axis]=Math.max(bounds.max[axis],all[i]);}
@@ -673,6 +677,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='haparandaweg-13')buildHaparandaweg13(w,d,helpers);
     else if(id==='valley')buildValley(w,d,helpers);
     else if(id==='ndsm-warehouse-complex')buildNdsmWarehouseComplex(w,d,helpers);
+    else if(id==='hoofdbureau-elandsgracht')buildHoofdbureauElandsgracht(w,d,helpers);
     else if(id==='oosterkerk')buildOosterkerk(w,d,helpers);
     else if(id==='mozes-en-aaronkerk')buildMozesEnAaronkerk(w,d,helpers);
     else if(id==='de-duif')buildDeDuif(w,d,helpers);

@@ -9,13 +9,15 @@ export async function loadMaterialSoup(file: string): Promise<MaterialSoup> {
   const doc = await new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.decoder': MeshoptDecoder}).read(file);
   const mats = doc.getRoot().listMaterials();
   const materials = mats.map(m => {
-    const extras = (m.getExtras() ?? {}) as {materialSlot?: unknown; tint?: unknown};
-    return {
-      name: m.getName() || 'unnamed',
-      rgb: m.getBaseColorFactor().slice(0, 3).map(c => Math.round(255 * Math.pow(c, 1 / 2.2))) as [number, number, number],
-      ...(typeof extras.materialSlot === 'string' && extras.materialSlot ? {slot: extras.materialSlot} : {}),
-      ...(typeof extras.tint === 'string' && extras.tint ? {tint: extras.tint} : {}),
-    };
+    const extras = (m.getExtras() ?? {}) as {materialSlot?: unknown; tint?: unknown; materialSlotSource?: unknown};
+    const slot = typeof extras.materialSlot === 'string' && extras.materialSlot ? extras.materialSlot : undefined;
+    const tint = typeof extras.tint === 'string' && extras.tint ? extras.tint : undefined;
+    return {name: m.getName() || 'unnamed', rgb: m.getBaseColorFactor().slice(0, 3).map(c => Math.round(255 * Math.pow(c, 1 / 2.2))) as [number, number, number],
+      // `slot` (cleanup batch 1 consumers) and `materialSlot` (cityLook coverage) carry the same extra.
+      ...(slot ? {slot, materialSlot: slot} : {}),
+      ...(tint ? {tint} : {}),
+      ...(typeof extras.materialSlotSource === 'string' ? {materialSlotSource: extras.materialSlotSource} : {}),
+      ...(m.getExtension('KHR_materials_unlit') ? {unlit: true} : {})};
   });
   const positions: number[] = [], indices: number[] = [], triMaterial: number[] = [];
   for (const node of doc.getRoot().listNodes()) {

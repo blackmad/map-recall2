@@ -2521,5 +2521,18 @@
       "https://api.data.amsterdam.nl/v1/monumenten/monumenten/?betreftBagPand.identificatie=0363100012166570&_format=json"
     ],
     "preferDescription": true
+  },
+  {
+    "modelId": "hoofdbureau-elandsgracht",
+    "landmarkId": "n11117002807",
+    "name": "Hoofdbureau van Politie",
+    "description": "The Amsterdam police headquarters at Elandsgracht 117, on the corner of Marnixstraat in the Jordaan, is not one building but a Z-shaped chain of five- and six-storey wings built round courtyards, first raised in 1941 and extended since. Walk round it and the facades change: dark brick with long white window ribbons on the Marnixstraat side, brick with heavy white stone window hoods on the south-east fronts, and a pink stone wing with yellow window frames on the Singelgracht.",
+    "funFact": "The complex measures about 164 by 83 metres; the municipal 3D survey counts 237 separate wall surfaces around its courtyards.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012169550/?_format=json",
+    "additionalSources": [
+      "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169550",
+      "https://nl.wikipedia.org/wiki/Elandsgracht"
+    ],
+    "preferDescription": true
   }
 ]

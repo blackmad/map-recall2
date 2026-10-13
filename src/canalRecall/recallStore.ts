@@ -16,6 +16,7 @@ import type { TransitMode } from './transit/network';
 import { RoundResult, StreetFeature } from '../types';
 import { LatLon, chunkCenter, isKnownNear, isSuppressedNear } from './recallChunks';
 import { belongsToKnowledgeItem } from './knowledgeReview';
+import { scheduleExposure } from './recallExposure';
 
 export { RECALL_LOCAL_RADIUS_METERS, RECALL_CHUNK_METERS } from './recallChunks';
 
@@ -432,6 +433,28 @@ class RecallStore {
     write(EVENTS_KEY, events);
     if (this.uid && this.db) void this.push(scheduled.state, scheduled.event);
     return scheduled.state;
+  }
+
+  /**
+   * Note that a name was shown but not asked (a riding question that timed
+   * out, or was left behind). Exposure, not recall: no review event, no
+   * repetition, and a name already known keeps its schedule. An unknown name is
+   * parked for a short first interval so it is not asked again straight away;
+   * see `recallExposure.ts`.
+   */
+  expose(feature: RecallFeature, now = Date.now()): ReviewState {
+    const chunked = { ...feature, center: chunkCenter(feature.center) };
+    const key = `${this.keyFor(chunked)}_guess_name`;
+    const previous = this.states[key];
+    const next = scheduleExposure({
+      featureKey: getFeatureKey(chunked as unknown as StreetFeature),
+      snapshot: { name: chunked.name, type: chunked.type as StreetFeature['type'], cityId: chunked.cityId, center: chunked.center },
+    }, previous, now);
+    if (next === previous) return next;
+    this.states[key] = next;
+    write(STATES_KEY, this.states);
+    if (this.uid && this.db) void this.push(next);
+    return next;
   }
 
   private async push(state: ReviewState, event?: unknown): Promise<void> {
