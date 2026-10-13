@@ -10,11 +10,11 @@ import { readFileSync, existsSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
-import { buildCell, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
+import { buildCell, compareHits, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
 import { flatHintAt, KIT_BUDGET } from '../../src/canalRecall/ownGround/bridgeKit.ts';
 import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
-import { bandCoverage, junctionCoverage, strayHits, DE_CLERCQSTRAAT, JUNCTIONS, STRAYS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
+import { bandCoverage, deckStreetTop, junctionCoverage, strayHits, DE_CLERCQSTRAAT, JUNCTIONS, STRAYS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
 const readExtract = async (path: string) => {
@@ -211,6 +211,7 @@ async function main(): Promise<void> {
     const hit = ring ? flatHintAt(ring.reduce((s, q) => s + q[0], 0) / ring.length, ring.reduce((s, q) => s + q[1], 0) / ring.length) : null;
     check(hit?.id === id && hit.hint.material === want, `${id}: register hint found at its footprint (${hit?.id} ${hit?.hint.material})`);
   }
+  await deckTopRegressions();
   // Named road regressions: every band of the listed ways reads as street at both LODs.
   for (const reg of [DE_CLERCQSTRAAT]) {
     const [x, y] = toLocal(reg.at[0], reg.at[1]), key = store.cellAt(x, y);
@@ -257,6 +258,48 @@ async function main(): Promise<void> {
     check(shared > 20 && worst < 1e-4, `seam ${a}|${b}: ${shared} shared land vertices, worst mismatch ${worst.toExponential(1)} m`);
   }
   process.exitCode = failed ? 1 : 0;
+}
+
+/**
+ * Deck tops from the belt audit (lane own-ground belt audit 2026-10-14): at 30/50/70 % of the span and
+ * 0, ±0.75 m off the axis, the topmost layer is a street band (or a tram rail lying on one, `deckStreetTop`).
+ * Bands narrower than the mapped carriageway were draped with vertices on their two edges only, so where the
+ * deck is narrower than the band they spanned from the relief beside the deck and sagged under the deck top
+ * (BRU0292 Schottenburchsbrug 0.15 m, BRU0293 0.10 m, BRU0052 0.05 m); the tram bridges read rail-on-asphalt.
+ */
+const DECK_TOPS: [string, number, number, string][] = [
+  ['BRU0292', 4.90252, 52.37201, 'Schottenburchsbrug, Kromboomssloot'],
+  ['BRU0293', 4.90234, 52.37149, 'Kromboomssloot, Koningsstraat'],
+  ['BRU0052', 4.88571, 52.37547, 'Prinsengracht, Bloemgracht'],
+  ['BRU0030', 4.89282, 52.36517, 'tram bridge, Reguliersgracht / Utrechtsestraat'],
+  ['BRU0285', 4.90221, 52.37720, 'tram bridge, Prins Hendrikkade'],
+];
+async function deckTopRegressions(): Promise<void> {
+  const cache = new Map<string, BuiltCell>();
+  const cell = async (k: string) => { if (!cache.has(k)) cache.set(k, await build(k, 0)); return cache.get(k)!; };
+  for (const [id, lng, lat, label] of DECK_TOPS) {
+    const [x, y] = toLocal(lng, lat);
+    let owner = '';
+    for (const k of GroundStore.neighbours(store.cellAt(x, y))) { if (!store.osmCells.has(k)) continue; await store.prepareCell(k); if (store.decks(k).some(d => d.profile.id === id)) { owner = k; break; } }
+    check(!!owner, `${id} (${label}): placed in a streamed cell (${owner || 'none'})`);
+    if (!owner) continue;
+    const near: BuiltCell[] = [];
+    for (const k of GroundStore.neighbours(owner)) if (store.covers(k)) near.push(await cell(k));
+    const p = store.surface.decks.find(d => d.profile.id === id)!.profile, last = p.x.length - 1;
+    const bad: string[] = [];
+    let probes = 0;
+    for (const f of [0.3, 0.5, 0.7]) {
+      const i = p.s.findIndex(s => s >= p.deck[0] + (p.deck[1] - p.deck[0]) * f), a = Math.max(0, i - 1), b = Math.min(last, i + 1);
+      const dx = p.x[b] - p.x[a], dy = p.y[b] - p.y[a], l = Math.hypot(dx, dy) || 1;
+      for (const o of [-0.75, 0, 0.75]) {
+        const qx = p.x[i] - dy / l * o, qy = p.y[i] + dx / l * o;
+        const hits = near.flatMap(c => layersAt(c, qx, qy).hits).filter(h => !h.cut && h.layer !== 'water').sort(compareHits);
+        probes++;
+        if (!deckStreetTop(hits)) bad.push(`${f}/${o}:${hits.slice(0, 2).map(h => `${h.layer}@${h.z}`).join('>')}`);
+      }
+    }
+    check(!bad.length, `${id} (${label}): deck top is a street band at ${probes - bad.length}/${probes} probes${bad.length ? ` (${bad.slice(0, 4).join(' ')})` : ''}`);
+  }
 }
 
 /**
