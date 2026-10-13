@@ -41,10 +41,27 @@ mountain-network, palace-on-the-dam): another lane owns them.
    still PASS, a before/after strip per model under
    `artifacts/ornament-inventory/`. Leave sculpture groups needing a modeller
    as `modelled: no` with a note; they feed the splat/impostor track.
-4. Add the inventory to the lane process: a short section in
-   `docs/buildings-pipeline.md` ("Signature inventory") and a check
-   `scripts/landmarks/check-ornament-inventory.ts` that fails when a landmark
-   newer than the inventory has no entry.
+4. **Make the process enforce it** (the section "Bespoke landmark lane:
+   photo first, inventory before geometry" in `docs/buildings-pipeline.md`
+   is the spec; the user asked that the process be right the first time):
+   - `scripts/landmarks/landmark-brief.ts --pand=<id> [--id=<slug>]`: fetches
+     panoramas (`pand-reference`, `all-walls.ts`), BAG/3DBAG facts, monument
+     register text (data.amsterdam.nl `monumenten`, CC0) and writes
+     `scripts/landmarks/<id>-brief.md` with one rectified crop per exposed
+     wall and an empty inventory skeleton, so no brief is written from
+     memory. Run it for the Hoofdbureau as the worked example and compare
+     with the wrong brief in `lane-hoofdbureau-elandsgracht-20261013.md`.
+   - Per-landmark `scripts/landmarks/<id>-inventory.json` (schema in
+     `src/canalRecall/landmarks/ornamentInventory.ts`, validated, tests).
+   - `scripts/landmarks/check-landmark-inventory.ts`: every landmark whose
+     first export date (`model-dates.json`) is after 2026-10-13 must have an
+     inventory with every item resolved, and no `skipped` reason may be
+     "no component" / "cannot express"; `build-manual-landmarks.ts` refuses
+     to export such a landmark without it; `audit:glb` prints the inventory
+     rows under the gates. Report the `package.json` line for `check:canal`
+     (integrator adds it).
+   - `review-sheet.ts`: an optional inventory column so each `modelled` item
+     shows its photo crop and render side by side.
 
 ## Checks
 `npm run lint`, `npm run test:geometry-audit`, `npm run audit:glb -- --id=<each fixed id>`,
