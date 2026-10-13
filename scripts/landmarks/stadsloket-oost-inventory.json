@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "stadsloket-oost",
+  "pand": "0363100012233553",
+  "signature": ["south-front-grid", "glazed-ground"],
+  "walls": [
+    {"tag": "w03-161", "bearing": 161, "lengthM": 48.8, "evidence": "photo", "panoId": "TMX7316010203-001679_pano_0000_000714", "capturedAt": "2020-04-29", "checked": true, "items": [
+      {"id": "south-front-grid", "kind": "window-shape", "where": "three storeys of tall paired windows in dark steel frames in yellow-brown brick", "approxSizeM": [40, 12], "plan": "modelled", "how": "brick-bay-grid, 3 storeys, 14 bays, dark frames", "seenIn": "TMX7316010203-001679_pano_0000_000714"},
+      {"id": "glazed-ground", "kind": "window-shape", "where": "ground storey, full-height glazed doors on a grey stone plinth", "approxSizeM": [40, 3.5], "plan": "simplified", "how": "ground storey of the bay grid with one recessed glazed entrance; no separate plinth band", "seenIn": "TMX7316010203-001679_pano_0000_000714"},
+      {"id": "oriel", "kind": "window-shape", "where": "top storey centre-right, a projecting grey-framed glass oriel", "approxSizeM": [3, 3], "plan": "skipped", "skip": {"reason": "too-small", "note": "a 3 m by 3 m box 30 cm proud of the wall, not a separate 3DBAG face"}, "seenIn": "TMX7316010203-001679_pano_0000_000714"},
+      {"id": "stadsloket-sign", "kind": "sign", "where": "none visible on this front", "approxSizeM": [1, 1], "plan": "skipped", "skip": {"reason": "not-visible", "note": "no Stadsloket or Gemeente Amsterdam sign legible on the south front; the stadsloket entrance faces another street with no panorama in range"}, "seenIn": "TMX7316010203-001679_pano_0000_000714"}
+    ]},
+    {"tag": "w01-341", "bearing": 341, "lengthM": 54.9, "evidence": "photo", "panoId": "TMX7316010203-000749_pano_0000_002486", "capturedAt": "2018-05-24", "checked": true, "items": [
+      {"id": "slot-ribbons", "kind": "window-shape", "where": "two bands of long slot windows in a concrete frame under a deep flat eaves slab", "approxSizeM": [50, 4], "plan": "simplified", "how": "two storeys of low wide windows, 14 bays, no concrete surround", "seenIn": "TMX7316010203-000749_pano_0000_002486"},
+      {"id": "eaves-slab", "kind": "other", "where": "roof edge, a deep flat eaves slab", "approxSizeM": [55, 0.8], "plan": "modelled", "how": "3DBAG roof overhang kept as surveyed", "seenIn": "TMX7316010203-000749_pano_0000_002486"}
+    ]}
+  ],
+  "sources": [{"name": "Gemeente Amsterdam panorama", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001679_pano_0000_000714/", "licence": "CC BY 4.0"}]
+}

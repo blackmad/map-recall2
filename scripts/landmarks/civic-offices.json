@@ -1,0 +1,220 @@
+{
+ "generatedAt": "2026-10-13",
+ "source": "OSM amenity=townhall / office=government Stadsloket*, Stadsdeel* (Overpass), PDOK Locatieserver + BAG WFS, pand-reference panoramas (CC BY 4.0)",
+ "offices": [
+  {
+   "name": "Stadsdeel Nieuw-West",
+   "address": "Plein '40-'45 1, Amsterdam",
+   "osm": "node/329182722",
+   "osmLatLng": [
+    52.3791065,
+    4.821145
+   ],
+   "pandIds": [
+    "0363100012076903"
+   ],
+   "verblijfsobject": "0363010000778174",
+   "bagAddress": "Plein '40-'45 1, 1064SW Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 1964,
+   "osmToAddressM": 0,
+   "signatureElements": [
+    "three red crosses",
+    "ribbon windows",
+    "vertical fins"
+   ],
+   "sharedWith": "",
+   "modelStatus": "large-installed",
+   "panoramaYears": [
+    2022,
+    2020
+   ],
+   "referenceStatus": "ok",
+   "recipe": "stadsdeel-nieuw-west"
+  },
+  {
+   "name": "Stadsloket Centrum",
+   "address": "Amstel 1, Amsterdam",
+   "osm": "node/2741064863",
+   "osmLatLng": [
+    52.3676842,
+    4.9002256
+   ],
+   "pandIds": [
+    "0363100012186092"
+   ],
+   "verblijfsobject": "",
+   "bagAddress": "(pand under the OSM point; address geocode was far away)",
+   "gebruiksdoel": "bijeenkomstfunctie,industriefunctie,kantoorfunctie,overige gebruiksfunctie,winkelfunctie",
+   "bouwjaar": 1985,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "inside the Stopera (catalogue id stadhuis, pand 0363100012186092); the first locatieserver match (679 m away) was wrong and is replaced by the pand under the OSM point",
+   "modelStatus": "skipped-modelled-elsewhere",
+   "panoramaYears": [],
+   "referenceStatus": "no-wall"
+  },
+  {
+   "name": "Stadsloket Nieuw-West",
+   "address": "Osdorpplein 946, Amsterdam",
+   "osm": "node/6352142945",
+   "osmLatLng": [
+    52.3580513,
+    4.8053967
+   ],
+   "pandIds": [
+    "0363100012253671"
+   ],
+   "verblijfsobject": "0363010012154842",
+   "bagAddress": "Osdorpplein 946, 1068TD Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 2022,
+   "osmToAddressM": 6,
+   "signatureElements": [],
+   "sharedWith": "ground-floor unit of the Osdorpplein shopping-centre rebuild (382 wall surfaces, housing over shops, no sign photographed)",
+   "modelStatus": "skipped",
+   "panoramaYears": [
+    2017,
+    2016
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "Stadsloket Noord",
+   "address": "Buikslotermeerplein 2000, Amsterdam",
+   "osm": "node/601660174",
+   "osmLatLng": [
+    52.4009279,
+    4.9329769
+   ],
+   "pandIds": [
+    "0363100012104378"
+   ],
+   "verblijfsobject": "0363010000994527",
+   "bagAddress": "Buikslotermeerplein 2000, 1025XL Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 1999,
+   "osmToAddressM": 11,
+   "signatureElements": [
+    "three St Andrews crosses",
+    "black brick grid"
+   ],
+   "sharedWith": "",
+   "modelStatus": "large-installed",
+   "panoramaYears": [
+    2024,
+    2025
+   ],
+   "referenceStatus": "ok",
+   "recipe": "stadsloket-noord"
+  },
+  {
+   "name": "Stadsloket Oost",
+   "address": "Oranje-Vrijstaatplein 2, Amsterdam",
+   "osm": "node/599303571",
+   "osmLatLng": [
+    52.3567474,
+    4.9308964
+   ],
+   "pandIds": [
+    "0363100012233553"
+   ],
+   "verblijfsobject": "0363010012061588",
+   "bagAddress": "Oranje-Vrijstaatplein 2, 1093NG Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie,kantoorfunctie",
+   "bouwjaar": 2008,
+   "osmToAddressM": 0,
+   "signatureElements": [
+    "south front grid",
+    "glazed ground"
+   ],
+   "sharedWith": "",
+   "modelStatus": "large-installed",
+   "panoramaYears": [
+    2020,
+    2022
+   ],
+   "referenceStatus": "ok",
+   "recipe": "stadsloket-oost"
+  },
+  {
+   "name": "Stadsloket West",
+   "address": "Bos en Lommerplein 250, Amsterdam",
+   "osm": "node/713179121",
+   "osmLatLng": [
+    52.3781391,
+    4.8452606
+   ],
+   "pandIds": [
+    "0363100012118358"
+   ],
+   "verblijfsobject": "0363010001021020",
+   "bagAddress": "Bos en Lommerplein 250, 1055EK Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 2003,
+   "osmToAddressM": 17,
+   "signatureElements": [
+    "three red crosses",
+    "balcony galleries",
+    "red window wall"
+   ],
+   "sharedWith": "shops and housing in one pand",
+   "modelStatus": "large-installed",
+   "panoramaYears": [],
+   "referenceStatus": "no-panorama",
+   "recipe": "stadsloket-west"
+  },
+  {
+   "name": "Stadsloket Zuid",
+   "address": "President Kennedylaan 923, Amsterdam",
+   "osm": "node/2818520236",
+   "osmLatLng": [
+    52.3404776,
+    4.8939533
+   ],
+   "pandIds": [
+    "0363100012090647"
+   ],
+   "verblijfsobject": "0363010012083877",
+   "bagAddress": "President Kennedylaan 923, 1079MZ Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 2008,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "pand 0363100012090647 is not in the building tiles, so no panorama reference can be produced",
+   "modelStatus": "skipped",
+   "panoramaYears": [],
+   "referenceStatus": "no-wall"
+  },
+  {
+   "name": "Stadsloket Zuidoost",
+   "address": "Anton de Komplein 150, Amsterdam",
+   "osm": "node/384473844",
+   "osmLatLng": [
+    52.3162408,
+    4.9564754
+   ],
+   "pandIds": [
+    "0363100012078772"
+   ],
+   "verblijfsobject": "0363010001025436",
+   "bagAddress": "Anton de Komplein 150, 1102CW Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 2006,
+   "osmToAddressM": 0,
+   "signatureElements": [
+    "Stadsloket lettering",
+    "glazed arcade",
+    "entrance hall"
+   ],
+   "sharedWith": "",
+   "modelStatus": "large-installed",
+   "panoramaYears": [
+    2025,
+    2016
+   ],
+   "referenceStatus": "ok",
+   "recipe": "stadsloket-zuidoost"
+  }
+ ]
+}

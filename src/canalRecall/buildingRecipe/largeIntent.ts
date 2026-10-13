@@ -8,7 +8,7 @@ import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/syst
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -87,6 +87,13 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
         if (w.signage.mount === 'canopy' && !(typeof w.entrance === 'object' && w.entrance.canopy)) problems.push(`${at}.signage.mount: canopy needs entrance.canopy`);
         if (w.signage.mount === 'glazing' && !(typeof w.entrance === 'object' && (w.entrance.storeys ?? 1) > 1)) problems.push(`${at}.signage.mount: glazing needs an entrance hall (entrance.storeys >= 2)`);
       }
+    }
+    if (w.crosses !== undefined) {
+      for (const k of Object.keys(w.crosses)) if (!['count', 'size', 'colour', 'side'].includes(k)) problems.push(`${at}.crosses.${k}: unknown field (count, size, colour, side)`);
+      count(w.crosses.count, `${at}.crosses.count`, 1, 6);
+      if (w.crosses.size !== undefined) oneOf(w.crosses.size, ['small', 'medium', 'large'], `${at}.crosses.size`);
+      if (w.crosses.colour !== undefined) colour(w.crosses.colour, `${at}.crosses.colour`);
+      if (w.crosses.side !== undefined) oneOf(w.crosses.side, ['left', 'right'], `${at}.crosses.side`);
     }
     if (w.garageDoors !== undefined) count(w.garageDoors, `${at}.garageDoors`, 1, 8);
     for (const k of ['stringCourses', 'cornice', 'piers'] as const) bool(w[k], `${at}.${k}`);

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "stadsloket-west",
+  "pand": "0363100012118358",
+  "signature": ["andrew-crosses", "balcony-galleries", "red-window-wall"],
+  "walls": [
+    {"tag": "w03-163", "bearing": 163, "lengthM": 41.1, "evidence": "photo", "panoId": "TMX7316010203-002324_pano_0006_000014", "capturedAt": "2021-09-23", "checked": true, "items": [
+      {"id": "andrew-crosses", "kind": "crest", "where": "far left edge of the south front, three red St Andrew's crosses stacked on a pylon", "approxSizeM": [2.5, 7], "plan": "modelled", "how": "kit component crosses, three medium red crosses at the left end of the south wall (on the wall rather than on a free pylon)", "seenIn": "TMX7316010203-002324_pano_0006_000014"},
+      {"id": "balcony-galleries", "kind": "balcony-ironwork", "where": "four storeys of continuous balcony galleries with fine steel rails", "approxSizeM": [30, 14], "plan": "modelled", "how": "balconies storeys 1 to 4 with bar rails", "seenIn": "TMX7316010203-002324_pano_0006_000014"},
+      {"id": "shop-plinth", "kind": "other", "where": "ground storey, shopfronts under cream timber fascias", "approxSizeM": [40, 4], "plan": "modelled", "how": "plinth-shopfronts ground", "seenIn": "TMX7316010203-002324_pano_0006_000014"},
+      {"id": "shop-signs", "kind": "sign", "where": "fascias: MANZARAM in green letters, FEBO in red", "approxSizeM": [4, 0.6], "plan": "skipped", "skip": {"reason": "temporary", "note": "tenant signs that change with the shop"}, "seenIn": "TMX7316010203-002324_pano_0006_000014"}
+    ]},
+    {"tag": "w01-285", "bearing": 285, "lengthM": 56.8, "evidence": "photo", "panoId": "TMX7316010203-002324_pano_0006_001423", "capturedAt": "2021-09-23", "checked": true, "items": [
+      {"id": "red-window-wall", "kind": "window-shape", "where": "whole west wall, red-framed window wall in five storeys over a dark mesh plinth", "approxSizeM": [56, 20], "plan": "simplified", "how": "kit curtain wall with maroon frames, 6 storeys, blank ground", "seenIn": "TMX7316010203-002324_pano_0006_001423"},
+      {"id": "perforated-screens", "kind": "other", "where": "dark perforated sun screens in front of the glazing, irregular rhythm on all four storeys", "approxSizeM": [1.2, 3.5], "plan": "skipped", "skip": {"reason": "too-small", "note": "screens about 0.2 m proud of the glazing, about 40 of them in an irregular rhythm"}, "seenIn": "TMX7316010203-002324_pano_0006_001423"}
+    ]}
+  ],
+  "sources": [{"name": "Gemeente Amsterdam panorama", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002324_pano_0006_000014/", "licence": "CC BY 4.0"}]
+}

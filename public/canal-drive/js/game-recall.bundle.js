@@ -5071,7 +5071,11 @@
         "w751083597",
         "w751083598",
         "w751083599",
-        "NL.IMBAG.Pand.0363100012164998"
+        "NL.IMBAG.Pand.0363100012164998",
+        "NL.IMBAG.Pand.0363100012168591",
+        "NL.IMBAG.Pand.0363100012174220",
+        "NL.IMBAG.Pand.0363100012174222",
+        "NL.IMBAG.Pand.0363100012174224"
       ],
       spatialSuppression: false,
       footprint: {
@@ -36654,6 +36658,517 @@
         ]
       },
       preserveAllPositionPrecision: true
+    },
+    {
+      id: "maagdenhuis",
+      name: "Maagdenhuis \u2014 University of Amsterdam",
+      landmarkId: "extract_landmarks_1617200654",
+      modelUrl: "./models/maagdenhuis.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012167925"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8901964,
+          52.3685622
+        ],
+        headingDegrees: 0,
+        lengthMetres: 55.5,
+        widthMetres: 45.5
+      },
+      surveyed: {
+        anchor: [
+          4.8901964,
+          52.3685622
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG pand 0363100012167925 footprint centroid and 3DBAG LoD2.2 walls and roofs verbatim; native east/south metres from the anchor (the large-tier frame, origin = BAG footprint centroid)."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#7a4a3b",
+        stone: "#e9e5d8",
+        frame: "#ece8dc",
+        glass: "#566d79",
+        dark: "#2a2e32",
+        slate: "#4b5056",
+        concrete: "#85878a",
+        white: "#e4dfd0",
+        blue: "#c6a24a"
+      },
+      attribution: {
+        title: "Maagdenhuis, Spui 21",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167925",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) with block-kit facade systems cut into the wall groups, plus hand-modelled plinth, string course, keystone consoles, entrance stair, pediment and tympanum relief read from Gemeente Amsterdam panoramas (CC BY 4.0) and Commons photographs RCE 20014425 (G.Th. Delemarre, CC BY-SA 4.0), 20408833 (Serg\xE9 Technau, CC BY-SA 4.0) and UvAMaagdenhuis.jpg (Mtcv, CC BY-SA 3.0). No pixels or meshes imported."
+      },
+      bagYear: 1787,
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.8905236,
+              52.3685041
+            ],
+            [
+              4.8905222,
+              52.3685039
+            ],
+            [
+              4.8905101,
+              52.3685288
+            ],
+            [
+              4.8904878,
+              52.3685727
+            ],
+            [
+              4.8904668,
+              52.3686158
+            ],
+            [
+              4.8904682,
+              52.3686161
+            ],
+            [
+              4.8904177,
+              52.3687195
+            ],
+            [
+              4.8903974,
+              52.3687163
+            ],
+            [
+              4.8903977,
+              52.3687154
+            ],
+            [
+              4.8903676,
+              52.3687107
+            ],
+            [
+              4.8903672,
+              52.3687116
+            ],
+            [
+              4.8903456,
+              52.3687082
+            ],
+            [
+              4.8903457,
+              52.3687079
+            ],
+            [
+              4.8903155,
+              52.3687031
+            ],
+            [
+              4.8903151,
+              52.3687039
+            ],
+            [
+              4.8903043,
+              52.3687022
+            ],
+            [
+              4.8903035,
+              52.3687041
+            ],
+            [
+              4.8902827,
+              52.3687008
+            ],
+            [
+              4.8902831,
+              52.3687
+            ],
+            [
+              4.890253,
+              52.3686952
+            ],
+            [
+              4.8902526,
+              52.368696
+            ],
+            [
+              4.890231,
+              52.3686926
+            ],
+            [
+              4.8902314,
+              52.3686917
+            ],
+            [
+              4.8902013,
+              52.368687
+            ],
+            [
+              4.8902009,
+              52.3686878
+            ],
+            [
+              4.8901795,
+              52.3686843
+            ],
+            [
+              4.8901805,
+              52.3686814
+            ],
+            [
+              4.8901505,
+              52.3686767
+            ],
+            [
+              4.8901492,
+              52.3686794
+            ],
+            [
+              4.8900248,
+              52.3686601
+            ],
+            [
+              4.8900257,
+              52.368658
+            ],
+            [
+              4.8900111,
+              52.3686557
+            ],
+            [
+              4.8900113,
+              52.3686545
+            ],
+            [
+              4.8899908,
+              52.3686512
+            ],
+            [
+              4.8899901,
+              52.3686523
+            ],
+            [
+              4.8899592,
+              52.3686474
+            ],
+            [
+              4.8899594,
+              52.3686463
+            ],
+            [
+              4.8899389,
+              52.368643
+            ],
+            [
+              4.8899383,
+              52.3686441
+            ],
+            [
+              4.8899128,
+              52.3686398
+            ],
+            [
+              4.8899371,
+              52.3685651
+            ],
+            [
+              4.8899408,
+              52.3685656
+            ],
+            [
+              4.8899472,
+              52.3685466
+            ],
+            [
+              4.8899433,
+              52.3685459
+            ],
+            [
+              4.8899831,
+              52.368425
+            ],
+            [
+              4.89,
+              52.3683914
+            ],
+            [
+              4.8900036,
+              52.368392
+            ],
+            [
+              4.8900129,
+              52.3683735
+            ],
+            [
+              4.8900097,
+              52.3683728
+            ],
+            [
+              4.89005,
+              52.3682924
+            ],
+            [
+              4.8900996,
+              52.3682146
+            ],
+            [
+              4.8902342,
+              52.3682425
+            ],
+            [
+              4.8902258,
+              52.3682577
+            ],
+            [
+              4.8902715,
+              52.3682671
+            ],
+            [
+              4.8902588,
+              52.36829
+            ],
+            [
+              4.8902136,
+              52.3682806
+            ],
+            [
+              4.8902032,
+              52.3682993
+            ],
+            [
+              4.8902481,
+              52.3683086
+            ],
+            [
+              4.8902356,
+              52.368331
+            ],
+            [
+              4.8903712,
+              52.3683592
+            ],
+            [
+              4.8905744,
+              52.3684011
+            ],
+            [
+              4.8905236,
+              52.3685041
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "rembrandtmonument",
+      name: "Rembrandtmonument",
+      assetKind: "memorial",
+      landmarkId: "extract_landmarks_202176253",
+      modelUrl: "./models/rembrandtmonument.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8965948,
+          52.3660041
+        ],
+        headingDegrees: 0,
+        lengthMetres: 11.3,
+        widthMetres: 6.8
+      },
+      surveyed: {
+        anchor: [
+          4.8965948,
+          52.3660041
+        ],
+        northOffsetDegrees: 0,
+        source: "Backlog destination point (OSM memorial); statue position and facing read from Gemeente Amsterdam panoramas (2025-06-19); the facing is a visual estimate, not a surveyed bearing"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        concrete: "#8c8e90",
+        greyBrick: "#3d3f42",
+        bronze: "#a3a49f",
+        gold: "#9b8348"
+      },
+      attribution: {
+        title: "Rembrandtmonument - original low-poly interpretation",
+        author: "Map Recall; commemorated sculpture by Louis Royer (1852)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Standbeeld_van_Rembrandt_Harmensz._van_Rijn_op_het_Rembrandtplein_te_Amsterdam,_RP-P-1933-342.jpg",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free geometric figure and terrace. Pose and costume from the Rijksmuseum print RP-P-1933-342 (CC0) and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated from the panoramas. No pixels or third-party meshes imported."
+      }
+    },
+    {
+      id: "vondelmonument",
+      name: "Vondelmonument",
+      assetKind: "memorial",
+      landmarkId: "extract_landmarks_1159979789",
+      modelUrl: "./models/vondelmonument.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.874086,
+          52.360017
+        ],
+        headingDegrees: 0,
+        lengthMetres: 13.4,
+        widthMetres: 13.4
+      },
+      surveyed: {
+        anchor: [
+          4.874086,
+          52.360017
+        ],
+        northOffsetDegrees: 0,
+        source: "Backlog destination point (OSM memorial); statue facing read from Gemeente Amsterdam panoramas (2017-04-13) - a visual estimate, not a surveyed bearing"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        sandstone: "#c9b98f",
+        stone: "#d9ceb0",
+        bronze: "#34382f",
+        dark: "#2c2e30"
+      },
+      attribution: {
+        title: "Vondelmonument - original low-poly interpretation",
+        author: "Map Recall; commemorated sculpture by Louis Royer (1867)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Amsterdam,_Vondelpark_monument_of_Joost_van_den_Vondel.jpg",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free geometric figures, pedestal and kerb. Proportions and pose from Gemeente Amsterdam panoramas (CC BY 4.0), Commons photograph by Dguendel (CC BY 4.0) and Rijksmuseum RP-F-F01187-BS (CC0); dimensions estimated. No pixels or third-party meshes imported."
+      }
+    },
+    {
+      id: "begijnhof",
+      name: "Begijnhof",
+      assetKind: "building",
+      landmarkId: "extract_landmarks_1490092282",
+      modelUrl: "./models/begijnhof.glb",
+      suppressOsmIds: [
+        "w266903885",
+        "w266903911",
+        "w266903957",
+        "w266903965",
+        "w266903851",
+        "w266903933",
+        "w266903958",
+        "w266903924",
+        "w266903828",
+        "w266903986",
+        "w266903927",
+        "w266903827",
+        "w266903992",
+        "w266903925",
+        "w266903996",
+        "w266904029",
+        "w266904009",
+        "NL.IMBAG.Pand.0363100012175497",
+        "NL.IMBAG.Pand.0363100012175502",
+        "NL.IMBAG.Pand.0363100012175511",
+        "NL.IMBAG.Pand.0363100012175035",
+        "NL.IMBAG.Pand.0363100012175503",
+        "NL.IMBAG.Pand.0363100012175504",
+        "NL.IMBAG.Pand.0363100012168061",
+        "NL.IMBAG.Pand.0363100012168197",
+        "NL.IMBAG.Pand.0363100012175729",
+        "NL.IMBAG.Pand.0363100012175667",
+        "NL.IMBAG.Pand.0363100012175668",
+        "NL.IMBAG.Pand.0363100012168146",
+        "NL.IMBAG.Pand.0363100012175500",
+        "NL.IMBAG.Pand.0363100012175499",
+        "NL.IMBAG.Pand.0363100012175501",
+        "NL.IMBAG.Pand.0363100012175596",
+        "NL.IMBAG.Pand.0363100012175602"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8899505,
+          52.369242
+        ],
+        headingDegrees: 0,
+        lengthMetres: 70,
+        widthMetres: 73
+      },
+      surveyed: {
+        anchor: [
+          4.8905,
+          52.3694
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG pand footprints of the 17 court houses (CC0) with 3DBAG ridge heights (CC BY 4.0); court layout (lawn, trees, statue) read from Commons photographs and panoramas, positions approximate"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#8a5445",
+        red: "#b3694f",
+        white: "#e6dfcf",
+        stone: "#cdbfa0",
+        green: "#6d8a4f",
+        bronze: "#3f3a42",
+        dark: "#262b2f",
+        concrete: "#a7a49c"
+      },
+      attribution: {
+        title: "Begijnhof court houses - original low-poly interpretation",
+        author: "Map Recall",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Amsterdam_(NL),_Begijnhof_--_2015_--_7220.jpg",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free houses extruded from BAG footprints and 3DBAG heights. Gable types, window rhythm, fences, trees and statue read from CC BY-SA photographs by Dietmar Rabich and Dennis G. Jarvis and Gemeente Amsterdam panoramas (CC BY 4.0); no pixels or third-party meshes imported."
+      },
+      siteModel: true
+    },
+    {
+      id: "slavernijmonument",
+      name: "Nationaal monument Slavernijverleden",
+      assetKind: "memorial",
+      landmarkId: "extract_landmarks_1333703767",
+      modelUrl: "./models/slavernijmonument.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.918031,
+          52.358616
+        ],
+        headingDegrees: 0,
+        lengthMetres: 12.4,
+        widthMetres: 12.4
+      },
+      surveyed: {
+        anchor: [
+          4.918031,
+          52.358616
+        ],
+        northOffsetDegrees: 0,
+        source: "Backlog destination point (OSM memorial); platform orientation is a visual estimate from Commons photographs, not a surveyed bearing"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        greyBrick: "#4a4d51",
+        concrete: "#b4aea0",
+        bronze: "#4a3d33"
+      },
+      attribution: {
+        title: "Nationaal monument Slavernijverleden - original low-poly interpretation",
+        author: "Map Recall; commemorated sculpture by Erwin de Vries (2002)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Erwin_de_Vries_-_Nationaal_Monument_Slavernijverleden_1.jpg",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free geometric figures and platform. Composition read from CC0 photographs by RoMaVo and Ceescamel, a CC BY-SA 4.0 photograph by Arthena and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated. No pixels or third-party meshes imported."
+      }
     }
   ];
 

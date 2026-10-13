@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "stadsloket-zuidoost",
+  "pand": "0363100012078772",
+  "signature": ["stadsloket-lettering", "glazed-arcade", "entrance-hall"],
+  "walls": [
+    {"tag": "w03-241", "bearing": 241, "lengthM": 65.6, "evidence": "photo", "panoId": "TMX7316010203-001253_pano_0000_000393", "capturedAt": "2019-06-26", "checked": true, "items": [
+      {"id": "stadsloket-lettering", "kind": "lettering", "where": "white lettering Stadsloket on the glazing above the double doors, centre of the arcade", "approxSizeM": [4, 0.7], "plan": "modelled", "how": "kit glazing lettering STADSLOKET, white, on the two-storey entrance hall glass", "seenIn": "TMX7316010203-001253_pano_0000_000393"},
+      {"id": "entrance-hall", "kind": "window-shape", "where": "centre of the arcade, two pairs of timber double doors in a glazed hall", "approxSizeM": [6, 5], "plan": "modelled", "how": "entrance with storeys 2, door colour timber", "seenIn": "TMX7316010203-001253_pano_0000_000393"},
+      {"id": "glazed-arcade", "kind": "colonnade", "where": "ground storey, fully glazed on white square piers", "approxSizeM": [60, 5], "plan": "simplified", "how": "ground glazed along the wall; the piers option runs the full wall height so the white piers are not drawn", "seenIn": "TMX7316010203-001253_pano_0000_000393"},
+      {"id": "window-box", "kind": "window-shape", "where": "fourth storey right of centre, a long projecting ribbon window box in a grey frame", "approxSizeM": [14, 1.5], "plan": "skipped", "skip": {"reason": "too-small", "note": "a 1.5 m high band standing 0.4 m proud of the brick; not a separate 3DBAG face"}, "seenIn": "TMX7316010203-001253_pano_0000_000393"}
+    ]},
+    {"tag": "w01-331", "bearing": 331, "lengthM": 80, "evidence": "photo", "panoId": "recording_2025-09-01_11-37-05_02661", "capturedAt": "2025-09-01", "checked": true, "items": [
+      {"id": "nw-windows", "kind": "window-shape", "where": "three storeys of narrow and ribbon windows in red brick", "approxSizeM": [60, 10], "plan": "simplified", "how": "regular low-window grid, 18 bays", "seenIn": "recording_2025-09-01_11-37-05_02661"},
+      {"id": "stair-core", "kind": "window-shape", "where": "centre, a dark glazed stair core between two brick blocks", "approxSizeM": [5, 12], "plan": "skipped", "skip": {"reason": "too-small", "note": "recessed glazed core inside the 3DBAG volume"}, "seenIn": "recording_2025-09-01_11-37-05_02661"}
+    ]}
+  ],
+  "sources": [{"name": "Gemeente Amsterdam panorama", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001253_pano_0000_000393/", "licence": "CC BY 4.0"}]
+}
