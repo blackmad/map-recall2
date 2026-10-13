@@ -1,6 +1,7 @@
 import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
-import {addShell} from './worship-shell';
+import {planarPolygon} from './worship-shell';
+import type {Surface} from './worship-shell';
 import {archSlab, put, setSink, slab} from './nearbar-kit';
 import type {Frame} from './nearbar-kit';
 import {facePoly} from './worship-kit';
@@ -39,7 +40,54 @@ const BIG = [{name: 'A', u: 1.64, v: -7.55, r: 3.57, top: 11.6}, {name: 'B', u: 
 
 export function buildWaag(_w: number, _d: number, b: BuildingTools & {mark?: (n: string) => void}) {
   setSink(0.2);
-  addShell(b, source as never, {wall: 'brick', roof: 'slate'});
+  // Shell walls only, clipped at each part's eaves (turret cornice, tower cornice, main eaves); the shell's roofs and the hip infill
+  // above the eaves are 3DBAG artefacts, replaced below by clean slate roofs, so no brick shows above the eaves.
+  const eaveAt = (x: number, z: number) => {
+    for (const t of TURRETS) { const [cx, cz] = world(t.u, t.v); if (Math.hypot(x - cx, z - cz) < t.r + 0.7) return t.top - 0.2; }
+    for (const t of BIG) { const [cx, cz] = world(t.u, t.v); if (Math.hypot(x - cx, z - cz) < t.r + 0.7) return t.top - 0.3; }
+    return 13.1;
+  };
+  for (const surf of (source as {surfaces: Surface[]}).surfaces) {
+    if (surf.type !== 'WallSurface') continue;
+    const g = planarPolygon(surf.rings);
+    if (!g) continue;
+    const pos = g.getAttribute('position'), idx = g.getIndex()!, out: number[] = [];
+    for (let k = 0; k < idx.count; k += 3) {
+      const P = [0, 1, 2].map(j => [pos.getX(idx.getX(k + j)), pos.getY(idx.getX(k + j)), pos.getZ(idx.getX(k + j))]);
+      const cx = (P[0][0] + P[1][0] + P[2][0]) / 3, cz = (P[0][2] + P[1][2] + P[2][2]) / 3, h = eaveAt(cx, cz);
+      const poly: number[][] = [];
+      for (let j = 0; j < 3; j++) {
+        const A = P[j], B = P[(j + 1) % 3], ia = A[1] <= h, ib = B[1] <= h;
+        if (ia) poly.push(A);
+        if (ia !== ib) { const q = (h - A[1]) / (B[1] - A[1]); poly.push([A[0] + (B[0] - A[0]) * q, h, A[2] + (B[2] - A[2]) * q]); }
+      }
+      for (let j = 1; j + 1 < poly.length; j++) out.push(...poly[0], ...poly[j], ...poly[j + 1]);
+    }
+    if (!out.length) continue;
+    const cg = new T.BufferGeometry();
+    cg.setAttribute('position', new T.Float32BufferAttribute(out, 3));
+    cg.computeVertexNormals();
+    b.add(cg, 'brick' as never);
+  }
+  // main roof: one hipped slate roof, eaves 13.0, ridge 22.5 along the long axis
+  {
+    const U = 11.3, V = 6.3, R0 = -4, R1 = 4, YE = 13.0, YR = 22.5;
+    const w = (u: number, v: number, y: number) => [...world(u, v), y] as [number, number, number];
+    const c = [w(-U, -V, YE), w(U, -V, YE), w(U, V, YE), w(-U, V, YE)], r0 = w(R0, 0, YR), r1 = w(R1, 0, YR);
+    const tri = (A: number[], B: number[], C: number[]) => {
+      // world x,z,y -> three (x, y, z)
+      const g = new T.BufferGeometry();
+      g.setAttribute('position', new T.Float32BufferAttribute([A[0], A[2], A[1], B[0], B[2], B[1], C[0], C[2], C[1]], 3));
+      g.computeVertexNormals();
+      const n = g.getAttribute('normal');
+      if (n.getY(0) < 0) { g.setAttribute('position', new T.Float32BufferAttribute([A[0], A[2], A[1], C[0], C[2], C[1], B[0], B[2], B[1]], 3)); g.computeVertexNormals(); }
+      b.add(g, 'slate' as never);
+    };
+    tri(c[0], c[1], r1); tri(c[0], r1, r0);       // long slope at v = -V
+    tri(c[2], c[3], r0); tri(c[2], r0, r1);       // long slope at v = +V
+    tri(c[1], c[2], r1);                            // SSE hip
+    tri(c[3], c[0], r0);                            // NNW hip
+  }
   b.mark?.('shell');
 
   const quad = (f: Frame, t: number, y: number, w: number, h: number, out: number, colour: string) =>
@@ -97,6 +145,8 @@ export function buildWaag(_w: number, _d: number, b: BuildingTools & {mark?: (n:
     setSink(0.5);   // flat frames on a round wall: the chord edges stand off the cylinder, so the backs go deeper
     for (const y of [1.9, 4.3, 6.7, 9.1]) band(cx, cz, t.r, y, 0.3, 'sandstone');
     band(cx, cz, t.r, t.top - 0.3, 0.5, 'stone', 0.3);
+    b.add(new T.ConeGeometry(t.r + 0.4, 6.4, 28).translate(cx, t.top + 0.2 + 3.2, cz), 'slate' as never);
+    b.add(new T.SphereGeometry(0.16, 8, 6).translate(cx, t.top + 6.7, cz), 'gold' as never);
     for (const [da, y] of [[-0.5, 4.8], [0.5, 4.8], [-0.55, 7.4], [0.55, 7.4]] as [number, number][]) {
       const a = rad(s > 0 ? 64 : 244) + da, nx = Math.sin(a), nz = -Math.cos(a);
       const f: Frame = {origin: [cx + nx * t.r, cz + nz * t.r], tangent: [nz, -nx], n: [nx, nz]};
@@ -113,6 +163,7 @@ export function buildWaag(_w: number, _d: number, b: BuildingTools & {mark?: (n:
     archSlab(b, f, 0.1, 0.0, 1.8, 2.7, 0.09, 'dark', 0.03);
     quad(f, 0.1, 0.1, 1.4, 2.0, 0.14, 'glass');
     slab(b, f, 0.1, 9.45, 8.9, 0.5, 0.45, 'stone');
+    slab(b, f, 0.1, 10.6, 8.4, 2.5, 0.06, 'brick');   // the shell front stops at 10.9: carry it up to the roof's eaves
     // zinc canopy of the terrace: a sloping plane from the wall (5.1 m) out to a lip 2.7 m in front (3.4 m), with two hip triangles
     const P = (t: number, y: number, out: number) => [f.origin[0] + f.tangent[0] * t + f.n[0] * out, y, f.origin[1] + f.tangent[1] * t + f.n[1] * out];
     const t0 = -4.4, t1 = 4.5;
@@ -149,6 +200,16 @@ export function buildWaag(_w: number, _d: number, b: BuildingTools & {mark?: (n:
     win(fs, 7.0, 6.3, 1.3, 1.9, true, 2);
     slab(b, fn, -6.4, 11.0, 7.0, 0.5, 0.4, 'stone');
     slab(b, fs, 7.0, 9.8, 4.7, 0.5, 0.4, 'stone');
+  }
+  // dormer on the SSE hip (the shuttered one above the three front windows): front at u = 8.4, roof there is y 16.7
+  {
+    const f = frame(EU, 6.8, 0);
+    slab(b, f, 0, 16.0, 1.9, 3.0, 1.6, 'slate');
+    slab(b, frame(EU, 8.3, 0), 0, 16.0, 2.0, 2.7, 0.1, 'brick');
+    const f1 = frame(EU, 8.4, 0);
+    win(f1, 0, 16.9, 0.9, 1.3, true, 2);
+    slab(b, f1, 0, 18.7, 2.3, 0.22, 0.12, 'stone');
+    slab(b, f, 0, 18.92, 2.5, 0.2, 1.9, 'slate');
   }
   setSink(0);
   void facePoly;
