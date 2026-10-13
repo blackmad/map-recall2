@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "politie-zuid-de-pijp",
+  "pandId": "0363100012142138",
+  "address": "Politiebureau Zuid (De Pijp), President Kennedylaan 11, Amsterdam (1995)",
+  "sources": [
+    {"id": "pano-2025-07-14-north", "kind": "street-panorama", "capturedAt": "2025-07-14", "image": "staging/pand-reference-walls/0363100012142138/w03-5.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-14_11-01-54_00454/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+    {"id": "pano-2021-04-22-west", "kind": "street-panorama", "capturedAt": "2021-04-22", "image": "staging/pand-reference-walls/0363100012142138/w01-275.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002113_pano_0000_003453/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+    {"id": "pano-2021-04-22-west-low", "kind": "street-panorama", "capturedAt": "2021-04-22", "image": "staging/pand-reference-walls/0363100012142138/w01-275.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002113_pano_0000_003453/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
+  ],
+  "walls": [
+    {"wallSurfaces": [10, 17], "system": "ribbon-windows", "storeys": 3, "baysPerStorey": 5, "ground": "blank", "windows": "plain", "entrance": {"bay": 4, "storeys": 1}, "signage": {"text": "POLITIE", "colour": "#1d3f9a", "mount": "wall"}, "police": {"lamp": true}},
+    {"wallSurfaces": [14, 31], "system": "ribbon-windows", "storeys": 3, "baysPerStorey": 4, "ground": "blank", "windows": "plain"},
+    {"wallSurfaces": [1], "system": "ribbon-windows", "storeys": 2, "baysPerStorey": 4, "ground": "blank", "windows": "plain"}
+  ],
+  "otherWalls": "blank",
+  "roof": {"material": "bitumen"},
+  "palette": {"brick": "#cfcbb0", "frame": "#f2f1ea", "door": "#2d3136", "stone": "#3d3737", "wallMaterial": "stucco"},
+  "notes": [
+    "1995 police bureau (Zuid, President Kennedylaan): two-storey cream rendered curved upper volume on a dark brown brick ground floor, white-framed ribbon windows, 27.5 m north front on the President Kennedylaan side (2025-07-14 panorama, w03-5, rectified and thumbnail), west side (2021-04-22, w01-275) with funnel-shaped window boxes on the cream part and an open carport behind gates at the south end. The pand is outside the building-tile extract, so the wall crops were made from the facts.json footprint (scratch variant of all-walls.ts).",
+    "Ornaments from the north panorama: POLITIE in blue capitals with the gold flame emblem on the cream band at the right end, above the entrance end of the front (letters MODELLED as wall signage; the kit places wall lettering just above the entrance (right-hand bay, ground storey) while the photo has it one storey higher on the cream band: a position deviation of about 3 m; the flame emblem SKIPPED: a 0.6 m texture-scale decal below the kit's component grain, the letters read at gallery size); recessed glazed entrance with a tall glass slit beside it (entrance MODELLED, the glass slit SKIPPED, one window cut); small blue police plate beside the door (SIMPLIFIED as the kit blue lamp); no striped band, canopy or garage doors on the building (the carport is an open gated bay, SKIPPED: not a wall component, its 3DBAG outline is already a recess); funnel window boxes on the west cream part (SKIPPED: 0.6 m angled reveals, simplified to flush ribbon openings).",
+    "The cream colour is the majority of the wall area (two upper storeys); the dark brick ground floor is simplified to the same colour (one palette per wall group; a per-storey colour split is not available), so the dark/cream contrast of the photo is lost. East and south walls: 2017 panorama is 32 % washed out and oblique (24 deg), left to otherWalls (blank)."
+  ]
+}
