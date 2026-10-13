@@ -6,7 +6,7 @@ import {
   detachHighlightPasses, highlightAccent, highlightDefines, highlightMaterialFor, highlightStyle, metresBetween, withinDesaturation,
 } from './highlight.ts';
 import { landmarkHighlightStates } from './highlightLandmarks.ts';
-import { beaconAlpha, convexHull, mercatorFromLocal, mercatorOf, ringBand, ringOutline } from './highlightMarker.ts';
+import { beaconAlpha, mercatorFromLocal, mercatorOf, ringBand, ringOutlines } from './highlightMarker.ts';
 import { HIGHLIGHT_CORAL, HIGHLIGHT_YELLOW, HUD_ACCENT } from './palette.ts';
 import { createCityLookMaterial, createCityUniforms, variantDefines } from './cityLook.ts';
 
@@ -53,7 +53,7 @@ test('distance helpers: 60 m radius', () => {
   assert.equal(withinDesaturation(null, b), false);
 });
 
-test('ring: band outside either winding, convex hull of several footprints, circle without one', () => {
+test('ring: band outside either winding, one ring per footprint, circle without one', () => {
   const square: [number, number][] = [[0, 0], [10, 0], [10, 10], [0, 10]];
   for (const ring of [square, [...square].reverse()]) {
     const band = ringBand(ring, 0.4, 4);
@@ -63,12 +63,10 @@ test('ring: band outside either winding, convex hull of several footprints, circ
     assert.ok(Math.min(...xs) < -4 && Math.max(...xs) > 14 && Math.min(...ys) < -4 && Math.max(...ys) > 14);
     assert.deepEqual(band.alphas.slice(0, 2).map(a => a > 0), [true, false]);
   }
-  assert.equal(convexHull([[0, 0], [2, 0], [1, 1], [2, 2], [0, 2], [1, 0.2]]).length, 4);
   const anchor: [number, number] = [4.9, 52.37];
-  assert.equal(ringOutline(undefined, anchor).length, 40);
+  assert.deepEqual(ringOutlines(undefined, anchor).map(r => r.length), [40]);
   const fp = (dx: number) => [[[4.9 + dx, 52.37], [4.9001 + dx, 52.37], [4.9001 + dx, 52.3701], [4.9 + dx, 52.3701], [4.9 + dx, 52.37]]] as [number, number][][];
-  assert.equal(ringOutline([fp(0)], anchor).length, 5);
-  assert.equal(ringOutline([fp(0), fp(0.0002)], anchor).length, 4);
+  assert.deepEqual(ringOutlines([fp(0), fp(0.0002)], anchor).map(r => r.length), [5, 5]);
 });
 
 test('beacon fades with distance, never below 30 %', () => {

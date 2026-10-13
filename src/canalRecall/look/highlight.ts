@@ -55,7 +55,7 @@ export const DESATURATE_AMOUNT = 0.4;
 /** Outline width, CSS pixels. */
 export const OUTLINE_PX = 2;
 /** The outline hull sits this far behind the surface along the view ray (mesh units: metres). */
-export const OUTLINE_PUSH_M = 0.6;
+export const OUTLINE_PUSH_M = 0.3;
 /** Rim pulse period, seconds; the rim swings between 55 % and 100 % of `RIM_STRENGTH`. */
 export const RIM_PULSE_S = 2.4;
 export const RIM_STRENGTH = 0.9;
@@ -310,7 +310,8 @@ export function createHighlightPassMaterial(THREE: any, kind: PassKind, options:
     },
     vertexShader: PASS_VERTEX,
     fragmentShader: PASS_FRAGMENT,
-    side: THREE.DoubleSide,
+    // Outline: the inverted hull (back faces only), so a wall seen at a grazing angle is never painted over.
+    side: kind === 'outline' ? THREE.BackSide : THREE.FrontSide,
     transparent: true,
     depthTest: true,
     // The outline keeps its pixels against anything drawn later behind it; the rim only adds light.

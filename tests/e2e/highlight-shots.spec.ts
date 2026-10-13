@@ -23,7 +23,7 @@ export const HIGHLIGHT_SPOTS: HighlightSpot[] = [
   // Anne Frank House: the three pands on the Westermarkt corner of the Prinsengracht (the user's screenshot block).
   { name: 'westermarkt', landmarkId: 'extract_landmarks_614625734', standDeg: 115, standM: 75, saddleM: 45 },
   { name: 'westerkerk', landmarkId: 'extract_landmarks_1692085215', standDeg: 140, standM: 90, saddleM: 60 },
-  { name: 'rijksmuseum', landmarkId: 'extract_landmarks_512243549', standDeg: 15, standM: 170, saddleM: 110 },
+  { name: 'rijksmuseum', landmarkId: 'extract_landmarks_512243549', standDeg: 195, standM: 150, saddleM: 120 },
   // An ordinary 1890s house on the Bilderdijkstraat (the "building you tapped" path: no landmark, just its id).
   { name: 'oudwest-terrace', pick: [4.87177, 52.36696], standDeg: 7, standM: 60, saddleM: 35 },
 ];
@@ -105,7 +105,8 @@ for (const frame of FRAMES) for (const style of STYLES) {
     for (const spot of spots) for (const view of VIEWS) {
       // Get near first, so the streamed buildings around the spot are resident before picking.
       const first = await spotLandmark(page, spot);
-      const centre: [number, number] = first?.lngLat ?? spot.pick!;
+      // A picked house: stand off the pick itself (its chunk may not be resident yet, so the nearest loaded building is not it).
+      const centre: [number, number] = spot.pick ?? first?.lngLat;
       const p = standpoint(centre, spot.standDeg, view === 'saddle' ? spot.saddleM : spot.standM);
       await page.evaluate((mode) => { const g = (window as any).canalRecallGame; g.viewMode = mode; g.camera.viewMode = mode; }, view === 'saddle' ? 'cockpit' : 'chase');
       await teleport(page, p);

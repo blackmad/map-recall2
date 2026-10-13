@@ -2,7 +2,7 @@
  * The ground ring and the beacon of the highlight candidates (`?highlight=a|b|c`, look/highlight.ts): one object for
  * the page, whichever pipeline draws the building.
  *
- *  - ring: a soft band on the ground hugging the footprint (offset 0.4–4.4 m outward, alpha 0.85 → 0), or a circle
+ *  - ring: a soft band on the ground hugging each footprint (offset 0.4–4.4 m outward, alpha 0.85 → 0), or a circle
  *    when no footprint is known (a GLB landmark without building ids);
  *  - beacon (style a): a thin camera-facing column from just above the roof, ~3 px wide at any distance, fading
  *    upward and with distance (full to 150 m, 30 % beyond 900 m).
@@ -68,22 +68,13 @@ export function ringBand(ring: readonly [number, number][], innerM = RING_INNER_
   return { positions, alphas, index };
 }
 
-/** Convex hull (counter-clockwise) of points: the ring hugs a group of footprints as one outline. */
-export function convexHull(points: readonly [number, number][]): [number, number][] {
-  const p = [...points].sort((a, b) => a[0] - b[0] || a[1] - b[1]);
-  if (p.length < 3) return p;
-  const cross = (o: [number, number], a: [number, number], b: [number, number]) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
-  const lower: [number, number][] = [], upper: [number, number][] = [];
-  for (const q of p) { while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], q) <= 0) lower.pop(); lower.push(q); }
-  for (const q of p.reverse()) { while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], q) <= 0) upper.pop(); upper.push(q); }
-  return [...lower.slice(0, -1), ...upper.slice(0, -1)];
-}
-
-/** The ring's outline: one footprint's outer ring, or the convex hull of several (split ways, a church and its tower). */
-export function ringOutline(polygons: readonly (readonly (readonly LngLat[])[])[] | undefined, anchor: LngLat): [number, number][] {
+/**
+ * The ring's outlines: each footprint's outer ring (a complex such as the Rijksmuseum keeps its separate buildings;
+ * bands between touching parts lie under the buildings and are hidden by them), or a circle without a footprint.
+ */
+export function ringOutlines(polygons: readonly (readonly (readonly LngLat[])[])[] | undefined, anchor: LngLat): [number, number][][] {
   const rings = (polygons ?? []).map(p => localRing(p[0] ?? [], anchor)).filter(r => r.length >= 3);
-  if (!rings.length) return circleRing();
-  return rings.length === 1 ? rings[0] : convexHull(rings.flat());
+  return rings.length ? rings : [circleRing()];
 }
 
 /** A circle of `segments` points, radius `r` metres (the ring when no footprint is known). */
@@ -183,7 +174,11 @@ export class HighlightMarker {
     this.altitude = Number(this.options.heightAt?.(anchor)) || 0;
     this.local = mercatorFromLocal(anchor, this.altitude);
     if (this.recipe.ring) {
-      const { positions, alphas, index } = ringBand(ringOutline(focus.polygons, anchor));
+      const positions: number[] = [], alphas: number[] = [], index: number[] = [];
+      for (const ring of ringOutlines(focus.polygons, anchor)) {
+        const band = ringBand(ring), base = positions.length / 3;
+        positions.push(...band.positions); alphas.push(...band.alphas); index.push(...band.index.map(i => i + base));
+      }
       for (let i = 2; i < positions.length; i += 3) positions[i] = 0.3;
       const g = new THREE.BufferGeometry();
       g.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
