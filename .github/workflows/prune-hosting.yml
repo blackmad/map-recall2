@@ -1,0 +1,41 @@
+name: Prune Firebase Hosting versions
+
+# Manual only. Deletes stored Hosting versions except the live release and
+# the newest `keep` per site, so deploys stop failing on the storage quota
+# (see scripts/hosting/prune-versions.mjs). Run it from the Actions tab,
+# then re-run the failed "Deploy to Firebase Hosting" run.
+on:
+  workflow_dispatch:
+    inputs:
+      keep:
+        description: Finalized versions to keep per site
+        default: '3'
+      apply:
+        description: Set to "true" to delete; anything else is a dry run
+        default: 'false'
+
+permissions:
+  contents: read
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Write credentials
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/firebase-service-account.json"
+      - name: Prune
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-service-account.json
+        run: |
+          if [ "${{ inputs.apply }}" = "true" ]; then
+            node scripts/hosting/prune-versions.mjs --keep=${{ inputs.keep }} --apply
+          else
+            node scripts/hosting/prune-versions.mjs --keep=${{ inputs.keep }}
+          fi

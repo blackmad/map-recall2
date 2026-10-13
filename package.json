@@ -476,7 +476,8 @@
     "build:canal-sculptures": "node scripts/sculptures/build-bundle.mjs",
     "test:sculptures": "node --import tsx --test src/canalRecall/sculptures/*.test.ts",
     "check:signature-fallback": "node scripts/check-signature-fallback-refresh.mjs",
-    "check:own-ground-belt": "node --import tsx scripts/own-ground/audit-belt.ts --probe"
+    "check:own-ground-belt": "node --import tsx scripts/own-ground/audit-belt.ts --probe",
+    "hosting:prune": "node scripts/hosting/prune-versions.mjs"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
