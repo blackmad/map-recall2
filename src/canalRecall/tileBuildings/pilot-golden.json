@@ -1,0 +1,1276 @@
+{
+ "16/33655/21538": {
+  "0363100012133467": {
+   "kind": "canal-house",
+   "triangles": 1772,
+   "triangleHash": "86e0e13c54982df2",
+   "unit": null
+  },
+  "0363100012152363": {
+   "kind": "canal-house",
+   "triangles": 1161,
+   "triangleHash": "73d665b4d1d40093",
+   "unit": null
+  },
+  "0363100012153622": {
+   "kind": "canal-house",
+   "triangles": 1605,
+   "triangleHash": "9f983d8c3083170e",
+   "unit": null
+  },
+  "0363100012153782": {
+   "kind": "canal-house",
+   "triangles": 1536,
+   "triangleHash": "433ad348a2384389",
+   "unit": null
+  },
+  "0363100012154127": {
+   "kind": "canal-house",
+   "triangles": 930,
+   "triangleHash": "1235023b53e7d5cb",
+   "unit": null
+  },
+  "0363100012156732": {
+   "kind": "canal-house",
+   "triangles": 738,
+   "triangleHash": "a26b2816dba2e95b",
+   "unit": null
+  },
+  "0363100012159426": {
+   "kind": "canal-house",
+   "triangles": 1439,
+   "triangleHash": "d543655f83c35d3f",
+   "unit": null
+  },
+  "0363100012159649": {
+   "kind": "canal-house",
+   "triangles": 1669,
+   "triangleHash": "aad452a894b0dda6",
+   "unit": null
+  },
+  "0363100012161613": {
+   "kind": "canal-house",
+   "triangles": 1122,
+   "triangleHash": "cbd314d2b424c1a9",
+   "unit": null
+  },
+  "0363100012165632": {
+   "kind": "canal-house",
+   "triangles": 918,
+   "triangleHash": "3cc5353389ed809e",
+   "unit": null
+  },
+  "0363100012169550": {
+   "kind": "glb",
+   "triangles": 26552,
+   "triangleHash": "7928f2f63161ccef",
+   "unit": "g3d798ce597d88ce"
+  }
+ },
+ "16/33656/21539": {
+  "0363100012168684": {
+   "kind": "large",
+   "triangles": 1178,
+   "triangleHash": "c0aeb3568a9be2a1",
+   "unit": null
+  }
+ },
+ "16/33657/21536": {
+  "0363100012164998": {
+   "kind": "glb",
+   "triangles": 20627,
+   "triangleHash": "10a1038a366af9de",
+   "unit": "gfaab2d584852f03"
+  },
+  "0363100012169583": {
+   "kind": "glb",
+   "triangles": 1684,
+   "triangleHash": "d64d730b1bfc8553",
+   "unit": "ge319f4604379bd1"
+  },
+  "0363100012176355": {
+   "kind": "glb",
+   "triangles": 5804,
+   "triangleHash": "814621485d6d8ff9",
+   "unit": "gd57f3d6c081aa7a"
+  }
+ },
+ "16/33638/21541": {
+  "0363100012061499": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "8b5761dff37b3eee",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012061507": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "37573a60f70c65f8",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012062878": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "a4f5de4badf291e7",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012063197": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "42510bece159c8a3",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012063581": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "21664bf52843200f",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012063761": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "28d1827148aefd1a",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012064060": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "c5916714a4475a1a",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012064443": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "79db807d33ee1252",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012064742": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "687cbeb56a8deb41",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012064794": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "def660203eaf1e65",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012064822": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "2c9bb5828a7630cb",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012064985": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "0eb672affb1405fe",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012065035": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "5b4d8e87b6a73cc3",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012065044": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "66f4abaa9c118e3f",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012066611": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "16bf45a46f96a778",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012067030": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "7eefed5929a53157",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012067113": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "fea2437a0818a3b1",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012067115": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "82edb3231b98c2a7",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012068064": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "59b396c538bf463e",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012068578": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "53edfa576810053a",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012068911": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "90f2ba0966e76435",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012069282": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "a71b0c17a00a218e",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012069548": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "18d424a6fc569c46",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012069676": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "c9e1c7c2451a4c70",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012071990": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "6b90f3ca9eb5027a",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012072159": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "2db79041f460ed2f",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012072250": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "f12e631f10902859",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012072405": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "f480489c70d06f8f",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012072735": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "9462e41652ef3045",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012073781": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "05bd9d81a92078d7",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012074336": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "875826bb73d2adba",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012074794": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "c39f4cfa80db8334",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012075771": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "b01e38920bcb3274",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012076345": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "63b61f8330024d83",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012076582": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "054bcd4461d2c41a",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012076601": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "757cd0a428485e80",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012076675": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "c544ed8be4731d7e",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012076835": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "75cc27f752a55872",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012077035": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "c16a774f3c19a1b8",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012077497": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "915f1bbe41ef5b1d",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012077741": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "ad3166561f65853f",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012078589": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "55c9a2a1f9b3550d",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012078943": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "707d5a032b800370",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012079161": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "660e2ee0e2ba54cb",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012079887": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "b2e0db1056967a9b",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012080048": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "3363ffcc094ceba6",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012080651": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "43874e93b1c28112",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012080835": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "d9e7cdb1c8daadee",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012081645": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "bd930f930b9201d9",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012081701": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "e7dff81892b63d3f",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012082259": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "fc6c4197aff2aa3e",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012084043": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "829eb8285f89f2f7",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012084304": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "b4124f87b71e8374",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012084555": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "022e0c3c42536e98",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012084562": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "a3c12ea5808cd3e5",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012084694": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "ad22e2b4f63936ce",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012084823": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "bb1ee753500f2478",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012085196": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "097a80775d675878",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012085808": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "ab669b134776124e",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012085874": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "1058488160675b37",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012086238": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "9fe0aaccb2406b8a",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012087395": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "2dd87cb9d67a7b9f",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012088414": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "77655edc2b05fff9",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012088473": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "f39704022b64e543",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012089791": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "72382f9feda11ade",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012090789": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "72bb50d624776e69",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012091042": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "46fe271e0e7f76b5",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012091156": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "0ab37346c188674b",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012091446": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "a32433cb0fbd98ff",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012091966": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "73363d71c6ebccbc",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012092807": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "aa5b7c8cf3652666",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012094181": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "5386140149040a85",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012094339": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "d6d81ec08d0623ce",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012094398": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "183345c809e79b9a",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012094503": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "dd5dbc4b1f718927",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012095175": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "98af055fbcfe0b59",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012095583": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "7411a349a112d4dc",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012096871": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "3912e9cdcd177458",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012097635": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "537336ce14697a35",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012097999": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "5923bfee32265d46",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012098192": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "632bb29a7dfc091f",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012099006": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "7d9bb0cb24e8cbc3",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012099041": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "ea0bfbe7d6e71b0d",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012100796": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "d024bb8919ffec26",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012101370": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "5285c80dd5b49268",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012101538": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "ab07286cf28fa4a9",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012102509": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "158af3d317e2f274",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012102927": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "71edea6b95cd9594",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012102964": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "1c3b83180de8016d",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012104132": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "b384296a6da782d1",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012104140": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "86d66e7653a34b25",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012104716": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "8e25553551a2a0c0",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012104829": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "91c58a455727a042",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012106118": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "b8ec950e8298cd99",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012106458": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "6a5ff4a81763e799",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012107078": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "59168d93180e605f",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012107899": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "55646993f270fd4f",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012108382": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "9c0d43cb9c92f3be",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012109380": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "48c358807cddb94d",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012109562": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "0bf63e4e62ee657d",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012110456": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "9f6f457ef0ab5378",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012110460": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "ecc81f195ab9c1bf",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012110915": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "2310cdf2b916bcb0",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012111060": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "c77cb85851e87181",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012111263": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "ce9c611faa7dbfbc",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012111287": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "ea18babcab00a3ef",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012111792": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "ad624303f8d23be7",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012112410": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "7de6383f242f122d",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012112778": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "c566d7f5c725c55f",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012113207": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "2f3a8f4a5101b8ed",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012113288": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "fca881d9d26c7789",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012113929": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "e625ed04b2e8b1c0",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012115029": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "bf5cb070f3efa376",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012115196": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "ff8ca93a5032fb55",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012115248": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "39a44b5b0efabf95",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012115340": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "8fd244f4c3819490",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012116353": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "9eb96b9eba7cd909",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012116681": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "030a2d336bbdf563",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012117555": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "7609a9d6f34a0aef",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012117973": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "2f66114c20ce7b26",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012117976": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "e72cdc6b4fbae331",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012118664": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "2bda68464755cad0",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012119187": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "b82792e7ad22182b",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012120945": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "903f8a547354a0c6",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012122823": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "fbe3ee4ca86947c0",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012123242": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "3da4dd5c7f55137c",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012123738": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "3a83fea00650b352",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012123921": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "d610f64a00625724",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012124531": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "f808e4759da5a9d4",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012124860": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "cfa74a74a0203792",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012125065": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "df4a03690ee3a7e9",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012125250": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "2703b99f425115d5",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012126957": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "e4d99c1a865aaaba",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012127142": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "03b3a57679547f98",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012127398": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "00f3c36e065b017d",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012128056": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "c995df3ef3a8aa4f",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012128250": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "e8340d8383df9bc2",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012128273": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "d18282a7c65b74ef",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012129480": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "8afe51bb0607d586",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012131665": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "b0c4540a156c3be6",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012131938": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "6e8492ef08eea6d4",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012132994": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "12343161d693f2f6",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012133415": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "8e7055c1aa839eef",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012134134": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "40395cecfe0b7605",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012135353": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "74eb9c90f8b87d75",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012135857": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "03e7236f3319ef42",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012136123": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "cce220efc57cb60b",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012136363": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "195588d9234ce655",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012137409": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "a70ae41ec80fa3bd",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012137499": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "c5c5caf9f17e8d66",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012137713": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "7cdd179b258287cb",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012137952": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "e8a68a2fd52e173b",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012138037": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "27cd175b170facec",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012138741": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "efb790455ce3ccea",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012138833": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "e25704835af62e8c",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012139162": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "efb7a6f4366d0ad6",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012139176": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "11597c588dff5e72",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012139513": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "53528322d9dcf536",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012139580": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "b06672f3df752027",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012139772": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "d5cb2b403c7beacf",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012140953": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "fe0982e104390d7a",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012141167": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "cf580ca34a574262",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012142063": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "a5d582d9c27064dd",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012143182": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "15fe6aa97ef62d54",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012143247": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "bb1841408f8cac82",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012144021": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "c55a2caafc8b66f9",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012144590": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "592be86dcba1621c",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012145509": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "c7359f3a3beb49d9",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012145636": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "f095d633c8c8f153",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012145648": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "bed09a2692cc2bd1",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012145808": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "bc7518c654a92d89",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012145811": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "104c87b607f6e7b0",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012145961": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "ae9d5f35a943309c",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012146027": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "0a686cdb0e3c26a6",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012146722": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "1534bfff534ff7fa",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012146773": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "6001f9161e55586c",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012147240": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "7d1f6735b8e147d3",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012148449": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "a540256d16f54568",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012148481": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "042a762afecf6b5f",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012149064": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "94e4c306d1695eea",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012149129": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "8c3d7209ad9c9d1f",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012149350": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "a8692a9057c9222c",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012149619": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "c9012f934d34102b",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012149714": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "ab37d829f72c793d",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012150172": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "a1b80418cc5922cc",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012150416": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "526094ffb17437c2",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012150427": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "9b4265b802fc7f3d",
+   "unit": "g9b0e38ff88ab5b2"
+  },
+  "0363100012151159": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "efbf2f6ae644d7c5",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012151242": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "039e7a6ecd166522",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012151363": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "6a092d846db458dd",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012151886": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "f064e1444a30e75b",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012154002": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "2e5129c53933f00e",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012154467": {
+   "kind": "type",
+   "triangles": 194,
+   "triangleHash": "6b9f9bd57775c686",
+   "unit": "g4850e1b288832cc"
+  },
+  "0363100012154483": {
+   "kind": "type",
+   "triangles": 138,
+   "triangleHash": "18908241b869ec76",
+   "unit": "g3bd2519bd10d4ca"
+  },
+  "0363100012155145": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "c932272f5e90721a",
+   "unit": "ga072a002e17e553"
+  },
+  "0363100012155304": {
+   "kind": "type",
+   "triangles": 152,
+   "triangleHash": "2fd3e31e782461a2",
+   "unit": "ga072a002e17e553"
+  }
+ }
+}
