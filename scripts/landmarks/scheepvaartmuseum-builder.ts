@@ -134,8 +134,8 @@ export function buildScheepvaartmuseum(_w: number, _d: number, b: BuildingTools 
       }
     });
 
-    // windows on the pavilion's two side returns (one per storey, as in the photographs)
-    {
+    // windows on the pavilion's two side returns (one per storey): photographed only on the SE (entrance) pavilion, so only drawn there
+    if (F.name === 'SE') {
       const dm = (F.dp - F.d1) / 2, dn = (F.dp - F.d2) / 2;
       const L: Frame = {origin: [nrm[0] * F.d1 + tan[0] * (F.t0 + w1), nrm[1] * F.d1 + tan[1] * (F.t0 + w1)], tangent: nrm, n: [-tan[0], -tan[1]]};
       const R: Frame = {origin: [nrm[0] * F.dp + tan[0] * (F.t0 + p1), nrm[1] * F.dp + tan[1] * (F.t0 + p1)], tangent: [-nrm[0], -nrm[1]], n: tan};
