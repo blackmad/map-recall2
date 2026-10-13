@@ -19,7 +19,20 @@ export type LightRigOptions = {
   skyIntensity?: number;
   shadows?: boolean;
   shadowMapSize?: number;
+  /**
+   * How much of the sun a cast shadow removes (three's `shadow.intensity`):
+   * 1 = all of it (sky-only fill), 0 = no shadow. See `SHADOW_FILL`.
+   */
+  shadowIntensity?: number;
 };
+
+/**
+ * The fill in cast shadow: the share of the sun that still reaches a surface
+ * in another surface's shadow (1 − `shadowIntensity`). Sun-side and shade-side
+ * (facing away from the sun) walls are untouched: only pixels the shadow map
+ * darkens are lifted. docs/LOOK.md §Light "Shadow fill".
+ */
+export const SHADOW_FILL = 0.5;
 
 export const DEFAULT_LIGHT_RIG: Required<LightRigOptions> = {
   // South-south-west afternoon sun: shadows fall north-north-east, so the
@@ -36,6 +49,7 @@ export const DEFAULT_LIGHT_RIG: Required<LightRigOptions> = {
   skyIntensity: 1.75,
   shadows: true,
   shadowMapSize: 2048,
+  shadowIntensity: 1 - SHADOW_FILL,
 };
 
 /** Unit vector toward the sun in ENU. */
@@ -164,6 +178,7 @@ export function createLightRig(THREE: any, overrides: LightRigOptions = {}): Lig
   sun.shadow.camera.up.set(0, 0, 1);
   sun.shadow.bias = -0.0005;
   sun.shadow.normalBias = 0.25;
+  sun.shadow.intensity = options.shadowIntensity;
   // Direction is what lights; position only matters to the shadow camera.
   sun.position.set(toSun[0] * 100, toSun[1] * 100, toSun[2] * 100);
   sun.name = 'shared-frame-sun';

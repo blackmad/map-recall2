@@ -97,6 +97,8 @@ export class SharedFrame {
   private shadowAge = 0;
   /** Frames whose main pass redrew the shadow map (diagnostics / perf). */
   shadowRedraws = 0;
+  /** MapLibre's depth range when the shadow map was last drawn (diagnostics; the map itself is drawn at [0, 1]). */
+  shadowDepthRange: [number, number] | null = null;
 
   constructor(THREE: any, map: any, options: SharedFrameOptions = {}) {
     this.THREE = THREE;
@@ -211,6 +213,7 @@ export class SharedFrame {
           // The shadow map is rendered once per frame, in the main pass; the
           // overlay pass samples the same map.
           this.renderer.shadowMap.autoUpdate = false;
+          fullDepthRangeForShadowMap(this.renderer, gl, range => { this.shadowDepthRange = range; });
           for (const entry of this.registry.all()) this.attachParticipant(entry.participant);
         }
         this.removedLayers = Math.max(0, this.removedLayers - 1);
@@ -300,7 +303,7 @@ export class SharedFrame {
       // below the shadow zoom, or when switched off, the map is not redrawn and
       // its contribution is zeroed instead.
       const shadows = this.rig.options.shadows && this.shadowsOn && ctx.zoom >= (this.options.shadowMinZoom ?? 15);
-      this.rig.sun.shadow.intensity = shadows ? 1 : 0;
+      this.rig.sun.shadow.intensity = shadows ? this.rig.options.shadowIntensity : 0;
       let redraw = false;
       if (shadows) {
         const c = this.map.getCenter();
@@ -335,4 +338,39 @@ export class SharedFrame {
     const s = this.stats[pass];
     s.ms = performance.now() - t0; s.calls = renderer.info.render.calls; s.triangles = renderer.info.render.triangles; s.frames++;
   }
+}
+
+/**
+ * Draw the sun's shadow map at the full depth range.
+ *
+ * MapLibre renders a 3D custom layer with `gl.depthRange(0, k)`, where
+ * k = 1 − (style layers + 2) · 2 / 2¹⁶ (its `depthRangeFor3D`, so 3D layers sit
+ * under the 2D sublayers). The range is GL state, not framebuffer state, so
+ * three's shadow pass inherited it: every depth written into the shadow map
+ * was scaled by k, while the receivers compare against the unscaled
+ * light-space depth. With ~300 style layers k ≈ 0.991, so a surface at light
+ * depth z read an occluder (1 − k)·z closer to the sun than itself: metres in
+ * a 600 m deep box. Every sun-facing surface beyond the first few metres of
+ * the box shadowed itself (Royal Palace 95 % of its sun-side pixels, the
+ * Nassaukade block 64 %), and no bias short of metres hid it, while a CPU ray
+ * cast toward the sun found nothing in the way (docs/LOOK.md §Light).
+ * The main pass keeps MapLibre's range: its depths must compare with
+ * MapLibre's own extrusions.
+ */
+export function fullDepthRangeForShadowMap(renderer: any, gl: WebGL2RenderingContext, seen?: (range: [number, number]) => void): void {
+  const shadowMap = renderer.shadowMap;
+  if (!shadowMap || shadowMap.__fullDepthRange) return;
+  const render = shadowMap.render;
+  shadowMap.render = function (this: any, ...args: unknown[]) {
+    if (!this.enabled || (!this.autoUpdate && !this.needsUpdate)) return render.apply(this, args);
+    const range = gl.getParameter(gl.DEPTH_RANGE) as Float32Array;
+    const lo = range[0], hi = range[1];
+    seen?.([lo, hi]);
+    // `renderer.shadowMap.fullDepthRange = false` restores the old behaviour (diagnostics, before/after shots).
+    if ((lo === 0 && hi === 1) || this.fullDepthRange === false) return render.apply(this, args);
+    gl.depthRange(0, 1);
+    try { return render.apply(this, args); }
+    finally { gl.depthRange(lo, hi); }
+  };
+  shadowMap.__fullDepthRange = true;
 }
