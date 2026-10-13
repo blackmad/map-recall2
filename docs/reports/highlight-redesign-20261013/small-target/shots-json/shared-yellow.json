@@ -1,0 +1,171 @@
+{
+ "frame": "shared",
+ "style": "yellow",
+ "query": "sharedFrame=1&highlight=yellow",
+ "records": [
+  {
+   "spot": "westermarkt",
+   "view": "chase",
+   "file": "/private/tmp/claude-501/-Users-blackmad-Code-map-recall2/7c6aa0e3-4257-489d-8e64-91e8e6721bbb/scratchpad/shots/shared-yellow-westermarkt-chase.png",
+   "share": 0.0214482421875,
+   "state": {
+    "models": [
+     "anne-frank-house"
+    ],
+    "extrusions": 4,
+    "marker": null
+   },
+   "landmark": {
+    "id": "extract_landmarks_614625734",
+    "name": "Anne Frank House",
+    "lngLat": [
+     4.883821,
+     52.375075
+    ]
+   }
+  },
+  {
+   "spot": "westermarkt",
+   "view": "saddle",
+   "file": "/private/tmp/claude-501/-Users-blackmad-Code-map-recall2/7c6aa0e3-4257-489d-8e64-91e8e6721bbb/scratchpad/shots/shared-yellow-westermarkt-saddle.png",
+   "share": 0.1273359375,
+   "state": {
+    "models": [
+     "anne-frank-house"
+    ],
+    "extrusions": 4,
+    "marker": null
+   },
+   "landmark": {
+    "id": "extract_landmarks_614625734",
+    "name": "Anne Frank House",
+    "lngLat": [
+     4.883821,
+     52.375075
+    ]
+   }
+  },
+  {
+   "spot": "westerkerk",
+   "view": "chase",
+   "file": "/private/tmp/claude-501/-Users-blackmad-Code-map-recall2/7c6aa0e3-4257-489d-8e64-91e8e6721bbb/scratchpad/shots/shared-yellow-westerkerk-chase.png",
+   "share": 0.0076650390625,
+   "state": {
+    "models": [
+     "westerkerk"
+    ],
+    "extrusions": 12,
+    "marker": null
+   },
+   "landmark": {
+    "id": "extract_landmarks_1692085215",
+    "name": "Westerkerk",
+    "lngLat": [
+     4.883614,
+     52.374392
+    ]
+   }
+  },
+  {
+   "spot": "westerkerk",
+   "view": "saddle",
+   "file": "/private/tmp/claude-501/-Users-blackmad-Code-map-recall2/7c6aa0e3-4257-489d-8e64-91e8e6721bbb/scratchpad/shots/shared-yellow-westerkerk-saddle.png",
+   "share": 0.022947265625,
+   "state": {
+    "models": [
+     "westerkerk"
+    ],
+    "extrusions": 12,
+    "marker": null
+   },
+   "landmark": {
+    "id": "extract_landmarks_1692085215",
+    "name": "Westerkerk",
+    "lngLat": [
+     4.883614,
+     52.374392
+    ]
+   }
+  },
+  {
+   "spot": "rijksmuseum",
+   "view": "chase",
+   "file": "/private/tmp/claude-501/-Users-blackmad-Code-map-recall2/7c6aa0e3-4257-489d-8e64-91e8e6721bbb/scratchpad/shots/shared-yellow-rijksmuseum-chase.png",
+   "share": 0.0459765625,
+   "state": {
+    "models": [
+     "rijksmuseum"
+    ],
+    "extrusions": 35,
+    "marker": null
+   },
+   "landmark": {
+    "id": "extract_landmarks_512243549",
+    "name": "Rijksmuseum",
+    "lngLat": [
+     4.88654,
+     52.360119
+    ]
+   }
+  },
+  {
+   "spot": "rijksmuseum",
+   "view": "saddle",
+   "file": "/private/tmp/claude-501/-Users-blackmad-Code-map-recall2/7c6aa0e3-4257-489d-8e64-91e8e6721bbb/scratchpad/shots/shared-yellow-rijksmuseum-saddle.png",
+   "share": 0.1180576171875,
+   "state": {
+    "models": [
+     "rijksmuseum"
+    ],
+    "extrusions": 35,
+    "marker": null
+   },
+   "landmark": {
+    "id": "extract_landmarks_512243549",
+    "name": "Rijksmuseum",
+    "lngLat": [
+     4.88654,
+     52.360119
+    ]
+   }
+  },
+  {
+   "spot": "oudwest-terrace",
+   "view": "chase",
+   "file": "/private/tmp/claude-501/-Users-blackmad-Code-map-recall2/7c6aa0e3-4257-489d-8e64-91e8e6721bbb/scratchpad/shots/shared-yellow-oudwest-terrace-chase.png",
+   "share": 0.0115546875,
+   "state": {
+    "models": [],
+    "extrusions": 1,
+    "marker": null
+   },
+   "landmark": {
+    "id": "tapped-NL.IMBAG.Pand.0363100012236453",
+    "name": "Terrace house",
+    "lngLat": [
+     4.87177,
+     52.36696
+    ]
+   }
+  },
+  {
+   "spot": "oudwest-terrace",
+   "view": "saddle",
+   "file": "/private/tmp/claude-501/-Users-blackmad-Code-map-recall2/7c6aa0e3-4257-489d-8e64-91e8e6721bbb/scratchpad/shots/shared-yellow-oudwest-terrace-saddle.png",
+   "share": 0.058169921875,
+   "state": {
+    "models": [],
+    "extrusions": 1,
+    "marker": null
+   },
+   "landmark": {
+    "id": "tapped-NL.IMBAG.Pand.0363100012236453",
+    "name": "Terrace house",
+    "lngLat": [
+     4.87177,
+     52.36696
+    ]
+   }
+  }
+ ]
+}

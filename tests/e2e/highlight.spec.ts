@@ -115,6 +115,60 @@ for (const frame of FRAMES) {
   });
 }
 
+// Small targets (LOOK §Highlight): an ordinary terrace house from the chase camera covers ~0.2 % of the frame, and
+// outline + ring + beacon alone gave 0.08 % accent pixels (the yellow 0.55 %). The roof wash and the raised beacon
+// bring it to at least 0.3 %; the facade keeps its own colours and no street name is shown.
+const TERRACE = { pand: 'NL.IMBAG.Pand.0363100012236453', pick: [4.87177, 52.36696] as [number, number], standDeg: 7, standM: 60 };
+test('highlight (default a): a terrace house from the chase camera carries ≥ 0.3 % accent pixels (small-target boost)', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop', 'desktop frame, as the sheets');
+  test.setTimeout(240_000);
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: true });
+  const [lng, lat] = TERRACE.pick, b = TERRACE.standDeg * Math.PI / 180;
+  const p = { lng: lng + TERRACE.standM * Math.sin(b) / (111320 * Math.cos(lat * Math.PI / 180)), lat: lat + TERRACE.standM * Math.cos(b) / 111320, bearing: (TERRACE.standDeg + 180) % 360 };
+  const teleport = () => page.evaluate(({ lng, lat, bearing }) => {
+    const g = (window as any).canalRecallGame, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER') as number, r = bearing * Math.PI / 180;
+    g.player.x = l._lastOffsetX + (lng - l._lastCenterLng) * 111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm;
+    g.player.y = l._lastOffsetY - (lat - l._lastCenterLat) * 111320 * ppm;
+    g.player.angle = Math.atan2(-Math.cos(r), Math.sin(r));
+    Object.assign(g.player, { speed: 0, vx: 0, vy: 0 }); g.player.handleInput = () => {};
+    g._updateCanalQuiz = () => {}; g._updateBridgeQuiz = () => {};
+  }, p);
+  await teleport(); await page.waitForTimeout(4000); await teleport();
+  await page.waitForFunction(() => { const t = (window as any).canalRecallGame.vectorMap._threeBuildings; return t?.ready && !t.pending.length && !t.inflight.size; }, null, { timeout: 120_000 });
+  await page.waitForTimeout(5000);
+  await page.evaluate(() => {
+    const g = (window as any).canalRecallGame;
+    g._lastDriveByAt = Infinity;
+    g.vectorMap.setActiveLandmark(null);
+    g._landmarkNotice = null;
+    const map = g.vectorMap.map, canvas = map.getCanvas();
+    for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none');
+    for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
+  });
+  const canvas = page.locator('canvas.maplibregl-canvas').first();
+  const scale = await page.evaluate(() => window.devicePixelRatio);
+  const before = await colourPixels(await canvas.screenshot(), CORAL, scale, 60);
+  await page.evaluate(({ pand, pick }) => (window as any).canalRecallGame.vectorMap.setActiveLandmark({
+    id: `tapped-${pand}`, name: 'Terrace house', lngLat: pick, buildingIds: [pand], featureTarget: { source: 'osm-building-appearance', id: pand },
+  }), TERRACE);
+  await page.waitForTimeout(2500);
+  const marker = await page.evaluate(() => (window as any).canalRecallGame.vectorMap._highlightMarker?.status());
+  const shot = await canvas.screenshot();
+  await info.attach('highlight-a-terrace-chase', { body: shot, contentType: 'image/png' });
+  const after = await colourPixels(shot, CORAL, scale, 60);
+  const size = await canvas.boundingBox();
+  const area = size!.width * size!.height;
+  const detail = JSON.stringify({ before: before.n / area, after: after.n / area, boost: marker?.boost });
+  expect(marker?.boost?.weight, `small target: ${detail}`).toBeGreaterThan(0.9);
+  expect(after.n / area, `accent share at the terrace: ${detail}`).toBeGreaterThanOrEqual(0.003);
+  // Clearing the card clears the boost (roof wash and raised beacon).
+  await page.evaluate(() => (window as any).canalRecallGame.vectorMap.setActiveLandmark(null));
+  await page.waitForTimeout(1000);
+  expect(await page.evaluate(() => (window as any).__canalRecallHighlightBoost)).toBe(0);
+  expect((await colourPixels(await canvas.screenshot(), CORAL, scale, 60)).n).toBeLessThan(before.n + area * 0.0002);
+});
+
 // `?highlight=yellow` keeps the old look for comparison: the building is painted yellow, no ring, beacon or coral.
 test('highlight=yellow: the old yellow comparison still paints the destination', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop', 'one comparison is enough');
