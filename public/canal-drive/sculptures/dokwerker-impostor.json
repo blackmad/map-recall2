@@ -1,0 +1,65 @@
+{
+ "version": 1,
+ "id": "dokwerker",
+ "cols": 4,
+ "rows": 2,
+ "tilePx": [
+  256,
+  512
+ ],
+ "figureHeightM": 2.6,
+ "tileHeightM": 2.766,
+ "tileWidthM": 1.383,
+ "feetFromBottom": 0.015,
+ "views": [
+  {
+   "azimuthDeg": -90,
+   "tile": 5,
+   "photo": "a059.jpg",
+   "figurePx": 477,
+   "widthOverHeight": 0.354
+  },
+  {
+   "azimuthDeg": -45,
+   "tile": 6,
+   "photo": "a057.jpg",
+   "figurePx": 366,
+   "widthOverHeight": 0.443
+  },
+  {
+   "azimuthDeg": 0,
+   "tile": 0,
+   "photo": "a007.jpg",
+   "figurePx": 541,
+   "widthOverHeight": 0.479
+  },
+  {
+   "azimuthDeg": 45,
+   "tile": 1,
+   "photo": "a004.jpg",
+   "figurePx": 444,
+   "widthOverHeight": 0.435
+  },
+  {
+   "azimuthDeg": 90,
+   "tile": 2,
+   "photo": "a073.jpg",
+   "figurePx": 941,
+   "widthOverHeight": 0.412
+  },
+  {
+   "azimuthDeg": 135,
+   "tile": 3,
+   "photo": "a053.jpg",
+   "figurePx": 531,
+   "widthOverHeight": 0.45
+  },
+  {
+   "azimuthDeg": 180,
+   "tile": 4,
+   "photo": "a061.jpg",
+   "figurePx": 532,
+   "widthOverHeight": 0.459
+  }
+ ]
+}

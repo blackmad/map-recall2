@@ -1,0 +1,18 @@
+{
+ "id": "dokwerker",
+ "note": "One Commons photo per azimuth slot. azimuthDeg is where the camera stands about the statue: 0 = in front of the figure, +90 = at the figure's own left hand, 180 = behind. Slots were read off the photos (face or back visible, which way the figure turns); boxes are rough crops containing figure + plinth top, in pixels of the 1200 px cache copies. Seven views: no usable Commons photo shows the figure from behind its right shoulder (every back view is taken from the square side, behind-left), so -135 is covered by the -90 and 180 neighbours. Rejected after a bake: a127 (head lost against foliage), a121 (figure 130 px tall, and it faces away-left, i.e. +135, not -135). See docs/sculptures.md.",
+ "figureHeightM": 2.6,
+ "tilePx": [256, 512],
+ "cols": 4,
+ "gamma": 1.5,
+ "tone": [0.05, 0.52],
+ "views": [
+  { "azimuthDeg": 0,   "photo": "a007.jpg", "box": [170, 60, 580, 760] },
+  { "azimuthDeg": 45,  "photo": "a004.jpg", "box": [200, 240, 560, 840] },
+  { "azimuthDeg": 90,  "photo": "a073.jpg", "box": [380, 120, 799, 1150], "plinthTopY": 1095 },
+  { "azimuthDeg": 135, "photo": "a053.jpg", "box": [400, 60, 760, 700] },
+  { "azimuthDeg": 180, "photo": "a061.jpg", "box": [430, 60, 790, 730] },
+  { "azimuthDeg": -90, "photo": "a059.jpg", "box": [400, 110, 740, 720] },
+  { "azimuthDeg": -45, "photo": "a057.jpg", "box": [440, 240, 760, 740], "model": "isnet-general-use" }
+ ]
+}
