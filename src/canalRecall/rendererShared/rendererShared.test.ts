@@ -178,7 +178,7 @@ test('lit facade materials expose game-compatible uniforms', () => {
   m.onBeforeCompile(shader, null);
   assert.match(shader.vertexShader, /attribute float hidden/);
   assert.match(shader.vertexShader, /gl_Position = vec4\(2\.0, 2\.0, 2\.0, 1\.0\)/);
-  assert.match(shader.fragmentShader, /texture\(cells, fp\)/);
+  assert.match(shader.fragmentShader, /cellTierSample\(fp, vFacDist, fc, fm\)/);
   assert.match(shader.fragmentShader, /cityFade/);
   assert.equal(shader.uniforms.cityFade, m.uniforms.cityFade, 'uniform objects are shared, not copied');
   const depth = createFacadeDepthMaterial(THREE);
