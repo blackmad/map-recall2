@@ -378,8 +378,18 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   `wip/recovery-landmark-integration-20261009` holding **five landmark models
   that never reached main**: Academie voor Theater en Dans, Holocaust
   Namenmonument, Max Euwe Centrum, Ruysdael Petrus-Pauluskerk, Voormalige
-  Schouwburgpoort (builders, GLBs, catalogue entries; audit and review them
-  at gallery size before installing).
+  Schouwburgpoort (builders, specs, catalogue entries). Status 2026-10-13:
+  branch merged with main (`bab86d13`), GLBs re-exported from the builders
+  (the clone's sparse checkout had dropped the binaries), Ruysdael
+  Petrus-Pauluskerk dropped as a duplicate of `petrus-en-paulus-kerk`.
+  `audit:glb`: Voormalige Schouwburgpoort PASS (16.6k tris) — review its
+  sheet and install; Academie voor Theater en Dans FAIL (666 open loops, 19
+  detached parts, 979 m² blank SE wall), Holocaust Namenmonument FAIL (2
+  openings off the wall), Max Euwe Centrum FAIL (see-through 4/151, 80
+  floating openings) — hand to the GLB cleanup lane. Review sheets for these
+  and for the kit-only churches (Oosterkerk, Mozes en Aaronkerk, De Duif,
+  Obrechtkerk WIP; all four PASS with warnings) are in
+  `map-recall2-worktrees/integrator/artifacts/review-20261013/`.
 - **Perf findings (2026-10-09 baseline, `tests/e2e/ride-perf.spec.ts`,
   iphone 4x throttle):** steady ride holds 16.7 ms median, p99 33 ms. Landmark
   layer costs only 0.1–0.8 ms/frame even with 250 models resident. The game
