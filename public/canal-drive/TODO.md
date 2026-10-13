@@ -1210,11 +1210,6 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   centres and kiosks inside parks take their real footprint. Start with the
   Vondelpark, Oosterpark, Westerpark, Sarphatipark and the squares
   (Cremerplein, Bellamyplein).
-- **One flat-roof table**: `FLAT_ROOF_TONES` (mood pass: gravel `#9e9281`,
-  membrane `#c3c1bb`, bitumen `#56585e`) and `ROOF_SLOT_TONES` (orthophoto
-  slots: gravel `#8f8a83`, white membrane `#d9d9d3`, bitumen dark `#55585b`)
-  disagree by a few points; make the unmeasured fallback pick from the slot
-  table so a measured and an unmeasured gravel roof match side by side.
 - **Roof slots: the Bonboon-class corner** (flat block after the attachment
   fix) can take its real slot and furniture now; check the Rozengracht corner
   reads as a roof, not a grey lid.

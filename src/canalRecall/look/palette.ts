@@ -205,10 +205,7 @@ export const ROOF_TONES: Record<BuildingLook, { tile: readonly string[]; slate: 
  * kind a roof is belongs to the roof-slot lane (orthophoto), not to this table.
  * Were #8f8a83 #9a958c #85817c #a09789 (one grey band, L 0.5–0.58).
  */
-export const FLAT_ROOF_TONES = { gravel: '#9e9281', membrane: '#c3c1bb', bitumen: '#56585e', pebble: '#a99b84' } as const;
-export const FLAT_ROOF_GREYS: readonly string[] = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
 /** The photo look's roofs, as one table (recipe houses map onto it). */
-export const CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS } as const;
 
 /**
  * Measured roof slots (roof-facts sidecar, `roofs/roofSlots.ts`): the slot a roof gets is chosen
@@ -219,9 +216,9 @@ export const CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.
 export type RoofSlot = 'gravel' | 'bitumen-dark' | 'bitumen-light' | 'white-membrane' | 'pantile-red' | 'pantile-dark' | 'slate' | 'zinc' | 'sedum' | 'solar' | 'terrace' | 'glass';
 export const ROOF_SLOTS: readonly RoofSlot[] = ['gravel', 'bitumen-dark', 'bitumen-light', 'white-membrane', 'pantile-red', 'pantile-dark', 'slate', 'zinc', 'sedum', 'solar', 'terrace', 'glass'];
 export const ROOF_SLOT_TONES: Readonly<Record<RoofSlot, { hex: string; luma: readonly [number, number]; cell: 'tile' | 'slate' | 'flat' }>> = {
-  'gravel': { hex: '#8f8a83', luma: [112, 156], cell: 'flat' },
-  'bitumen-dark': { hex: '#55585b', luma: [62, 96], cell: 'flat' },
-  'bitumen-light': { hex: '#a9a8a3', luma: [150, 182], cell: 'flat' },
+  'gravel': { hex: '#9e9281', luma: [112, 156], cell: 'flat' },
+  'bitumen-dark': { hex: '#56585e', luma: [62, 96], cell: 'flat' },
+  'bitumen-light': { hex: '#a99b84', luma: [150, 182], cell: 'flat' },
   'white-membrane': { hex: '#d9d9d3', luma: [196, 228], cell: 'flat' },
   'pantile-red': { hex: '#b5543a', luma: [84, 124], cell: 'tile' },
   'pantile-dark': { hex: '#6a5248', luma: [64, 98], cell: 'tile' },
@@ -232,6 +229,14 @@ export const ROOF_SLOT_TONES: Readonly<Record<RoofSlot, { hex: string; luma: rea
   'terrace': { hex: '#a38d74', luma: [124, 162], cell: 'flat' },
   'glass': { hex: '#8fa3ad', luma: [130, 170], cell: 'flat' },
 };
+/**
+ * Flat roofs without a measurement (the mood pass's three kinds plus pebble)
+ * take their colour from the slot table, so a measured and an unmeasured
+ * gravel roof match side by side (one table, 2026-10-13).
+ */
+export const FLAT_ROOF_TONES = { gravel: ROOF_SLOT_TONES.gravel.hex, membrane: ROOF_SLOT_TONES['white-membrane'].hex, bitumen: ROOF_SLOT_TONES['bitumen-dark'].hex, pebble: ROOF_SLOT_TONES['bitumen-light'].hex } as const;
+export const FLAT_ROOF_GREYS: readonly string[] = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
+export const CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS } as const;
 /** sRGB Rec.709 luma, 0..255. */
 export const lumaOf = ([r, g, b]: RGB): number => 0.2126 * r + 0.7152 * g + 0.0722 * b;
 
