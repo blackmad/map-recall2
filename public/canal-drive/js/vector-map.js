@@ -181,6 +181,9 @@ class VectorBasemap {
       void this._ensureBuildingOverview();
       this._ensurePlaceLayers();
       this._ensureOwnPoiLayers();
+      // POI names as a DOM layer in the HUD's face, budgeted, faded and
+      // occlusion-tested (src/canalRecall/labels/; `?labels=maplibre` keeps the symbol layers).
+      if (!this._labelOverlay && window.CanalRecallOrientationPois?.mountLabelOverlay) this._labelOverlay = window.CanalRecallOrientationPois.mountLabelOverlay(this, () => window.canalRecallGame);
       this.setPlaces(this._pendingPlaces.landmarks, this._pendingPlaces.boundaries);
       this.setBrandedPois(this._rawBrandedPois || this._pendingBrandedPois);
       this._applyBasemapSpoilerFilter();
@@ -2257,7 +2260,8 @@ class VectorBasemap {
     if (tiles && (!surface || tiles.depth < surface.depth)) surface = tiles;
     // Curated POIs must win over the much larger building extrusion under the
     // pointer. The hit box is forgiving because dots are intentionally small.
-    let poiResult = null;
+    let poiResult = this._labelOverlay ? this._labelOverlay.hitTest(pixel.x, pixel.y) : null;
+    if (poiResult) return poiResult;
     const poiLayers = ['poi-labels'].filter(id => this.map.getLayer(id));
     if (poiLayers.length) {
       const hitRadius = 8;
