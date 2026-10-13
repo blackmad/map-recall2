@@ -19,6 +19,10 @@ export interface ComposeOptions {
    * straddle two surfaces stay proud (flush, within 2 cm of the wall). Unset = the original block-kit path, unchanged.
    */
   recessM?: number;
+  /** keep tiny 3DBAG wall slivers as wall triangles (closes 0.1-0.4 m shell gaps); default off so installed block-kit output is byte-identical */
+  sealSlivers?: boolean;
+  /** large tier (opt-in): wall-mounted boxes (sills, heads, surrounds) get a back face, so a box on a 3DBAG wall that sits a few cm off the panel's reference plane has no open edge. Default off: installed block-kit output is byte-identical. */
+  closedBoxes?: boolean;
   /** Walls (indices into `set.walls`) with different keys never merge into one panel (large-tier wall groups). */
   mergeKey?: (wall: number) => number;
   /** Host wall slot per panel (recess mode only, where walls are emitted after the facade systems). */
@@ -43,6 +47,8 @@ class Ctx {
   /** holes cut per member wall (index into `p.members`) */
   holes = new Map<number, HoleRect[]>();
   stats = { recessed: 0, proud: 0 };
+  /** `ComposeOptions.closedBoxes` */
+  closedBoxes = false;
   constructor(public mesh: MeshBuilder, public p: Panel, public panels: Panel[]) {}
   /**
    * Cut a rectangular opening into one member wall when it lies inside it with 3 cm to spare and clear of other holes.
@@ -89,6 +95,7 @@ class Ctx {
     mesh.quad(slot, P(u0, v0, d0), P(u1, v0, d0), P(u1, v0, d1), P(u0, v0, d1), part, DOWN);
     mesh.quad(slot, P(u0, v0, d0), P(u0, v1, d0), P(u0, v1, d1), P(u0, v0, d1), part, scale(p.r, -1));
     mesh.quad(slot, P(u1, v0, d0), P(u1, v1, d0), P(u1, v1, d1), P(u1, v0, d1), part, p.r);
+    if (this.closedBoxes) mesh.quad(slot, P(u0, v0, d0), P(u1, v0, d0), P(u1, v1, d0), P(u0, v1, d0), part, scale(p.n, -1));
   }
 }
 
@@ -462,7 +469,7 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
   const mesh = new MeshBuilder();
   const roofSlot = spec.roofSlot ?? 'roof', wallSlot = spec.wallSlot ?? 'wall';
   const recess = opts.recessM ?? 0;
-  const { panels, stats: hostStats } = buildHost(set, mesh, roofSlot, wallSlot, { deferWalls: recess > 0, dissolve: recess > 0, mergeKey: opts.mergeKey });
+  const { panels, stats: hostStats } = buildHost(set, mesh, roofSlot, wallSlot, { deferWalls: recess > 0, dissolve: recess > 0, mergeKey: opts.mergeKey, sealSlivers: opts.sealSlivers });
   const openingStats = { recessed: 0, proud: 0 };
   const hostTris = mesh.triangles;
   const assignment: ComposeResult['assignment'] = [];
@@ -472,6 +479,7 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
     const sysName = opts.systemFor ? opts.systemFor(p) : pickSystem(spec, p);
     assignment.push({ panel: p.index, system: sysName, width: W, centre });
     const c = new Ctx(mesh, p, panels);
+    c.closedBoxes = !!opts.closedBoxes;
     c.recess = recess; c.wallSlot = recess > 0 ? opts.wallSlotFor?.(p) ?? wallSlot : wallSlot;
     const cells: Cell[] = [];
     const finish = (levels: number[]) => {

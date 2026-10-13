@@ -120,7 +120,7 @@ export function decodeThreeDBag(item: CityJsonItem) {
   for (const [objectId, o] of Object.entries(item.feature.CityObjects)) {
     if (o.type === 'Building') attributes = o.attributes;
     for (const g of o.geometry ?? []) {
-      if (String(g.lod) === '0') for (const surface of g.boundaries as number[][][]) bag.push(open(surface[0].map(k => [verts[k][0], verts[k][1]] as RD)));
+      if (String(g.lod) === '0') for (const surface of g.boundaries as number[][][]) for (const ring of surface) bag.push(open(ring.map(k => [verts[k][0], verts[k][1]] as RD))); // outer ring then courtyard holes (even-odd in the IoU gate)
       if (String(g.lod) !== '2.2' || !g.semantics) continue;
       const shells = g.boundaries as number[][][][];
       for (let si = 0; si < shells.length; si++) for (let j = 0; j < shells[si].length; j++) {
