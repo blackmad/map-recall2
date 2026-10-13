@@ -1,0 +1,9 @@
+{"id": "da-costakade-13", "countedBy": "lane (not blind) from ref-north-far-2021.jpg, ref-north-gable-2020.jpg, ref-north-entrance-2020.jpg, ref-northeast-2024.jpg, 2026-10-13; pending blind count by integrator", "facades": [
+  {"name": "wall 0, gabled section on Da Costakade (NNW)", "bearing": 338.5, "photo": "artifacts/landmark-lanes/da-costakade-13/ref-north-far-2021.jpg",
+   "alongM": [3.6, 8.3], "rows": [2, 2, 2, 2, 1], "columns": 3, "symmetric": true, "gables": 1},
+  {"name": "wall 1, entrance section on Da Costakade (NW)", "bearing": 327.2, "photo": "artifacts/landmark-lanes/da-costakade-13/ref-north-entrance-2020.jpg",
+   "alongM": [8.5, 13.9], "rows": [2, 3, 3, 3, 1], "symmetric": false, "gables": 0},
+  {"name": "NE end wall over the garden (blank, ivy)", "bearing": 42.6, "photo": "artifacts/landmark-lanes/da-costakade-13/ref-northeast-2024.jpg",
+   "columns": 0, "gables": 1},
+  {"name": "SE courtyard wall (inferred, no photo)", "bearing": 136.2}
+]}
