@@ -1,0 +1,53 @@
+{
+  "id": "waag",
+  "bagPand": "0363100012171850",
+  "address": "Nieuwmarkt 4, Amsterdam (Sint-Antoniespoort / De Waag, 1488)",
+  "retrieved": "2026-10-11",
+  "identity": "POI extract_landmarks_1875747488 (Wikidata Q2466999). The native 'Waag' kit (landmarkKits.ts, OSM parts w749066938-950) is superseded: BAG pand 0363100012171850 plus OSM parts w749066938-w749066950 (incl. the terrace canopy w749066941) are suppressed; the kit's part ids are among them so the kit no longer draws.",
+  "sources": [
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001660_pano_0000_002064/?width=1600&fov=75&heading=328&pitch=0",
+      "use": "ref-sse.jpg: SSE front over the Nieuwmarkt terrace (turrets, three shuttered windows, canopy, doors)",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "panorama": "TMX7316010203-001660_pano_0000_002064",
+      "captured": "2020-04-21"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02881/?width=1600&fov=75&heading=156&pitch=0",
+      "use": "ref-nnw.jpg: NNW gate side (stone gate arch, eight-light window, window columns)",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "panorama": "recording_2025-07-03_03-29-47_02881",
+      "captured": "2025-07-03"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20250108_1041_Track23_Sphere_00082/?width=1600&fov=75&heading=246&pitch=0",
+      "use": "ref-ene.jpg: ENE long side (big tower, gate arch, turrets, roofs)",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "panorama": "b_20250108_1041_Track23_Sphere_00082",
+      "captured": "2025-01-08"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-03_03-29-47_02924/?width=1600&fov=75&heading=64&pitch=0",
+      "use": "ref-wsw.jpg: WSW long side (big tower, turret, dormers); a stall trailer hides the ground floor",
+      "licence": "Amsterdam municipal panorama (CC0)",
+      "panorama": "recording_2025-07-03_03-29-47_02924",
+      "captured": "2025-07-03"
+    },
+    {
+      "url": "https://nl.wikipedia.org/wiki/Waag_(Amsterdam)",
+      "use": "history: city gate 1488, weigh house from 1617, guild rooms, Theatrum Anatomicum (facts only)",
+      "licence": "Wikipedia, facts only"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012171850&f=json",
+      "use": "BAG pand footprint",
+      "licence": "CC0 (BAG)"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171850",
+      "use": "LoD2.2 massing shell (footprints.json)",
+      "licence": "CC BY 4.0 (3DBAG)"
+    }
+  ],
+  "notes": "Turret and big-tower centres/radii fitted to the BAG ring (u,v frame: u along bearing 154, v along 64 from c0 -2.565,-4.815). Heights and cones: 3DBAG roofs kept; front turret cone apex 16.9 m, rear 17.3 m. Window/door sizes from the panoramas (distance-scaled); the roofs and the tall central roof are the survey shell, not re-measured. NNW/ENE/WSW dormers not modelled."
+}

@@ -1,0 +1,24 @@
+{
+  "name": "Het Scheepvaartmuseum (’s Lands Zeemagazijn)",
+  "landmarkId": "extract_landmarks_961954901",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Het_Scheepvaartmuseum",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012170236",
+    "r3604837",
+    "w269078550"
+  ],
+  "pandId": "0363100012170236",
+  "materialOverrides": {
+    "stone": "#e2ddcc",
+    "slate": "#474c54",
+    "glass": "#5e6f7a",
+    "frame": "#ebe8de",
+    "dark": "#2b2e32",
+    "white": "#f3f0e6",
+    "concrete": "#8d8e8b",
+    "gold": "#c9a24a",
+    "sandstone": "#b9b3a0"
+  },
+  "surveySource": "Current BAG 0363100012170236 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the four pedimented pavilions, window axes, arched tall openings, plinth, cornice, dormers and chimneys measured by eye from the 2017-2025 municipal panoramas, no pixels or meshes imported."
+}

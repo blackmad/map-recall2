@@ -1,0 +1,9 @@
+{
+  "id": "waag",
+  "facades": [
+    {"name": "SSE front (Nieuwmarkt terrace)", "bearing": 152.5, "photo": "artifacts/landmark-lanes/waag/ref-sse.jpg"},
+    {"name": "NNW gate (Kloveniersburgwal side)", "bearing": 332.5, "photo": "artifacts/landmark-lanes/waag/ref-nnw.jpg"},
+    {"name": "ENE long side", "bearing": 62.5, "photo": "artifacts/landmark-lanes/waag/ref-ene.jpg"},
+    {"name": "WSW long side", "bearing": 242.5, "photo": "artifacts/landmark-lanes/waag/ref-wsw.jpg"}
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "De Waag (Sint-Antoniespoort)",
+  "landmarkId": "extract_landmarks_1875747488",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Waag_(Amsterdam)",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012171850",
+    "w749066938",
+    "w749066939",
+    "w749066940",
+    "w749066942",
+    "w749066941",
+    "w749066946",
+    "w749066947",
+    "w749066948",
+    "w749066949",
+    "w749066950",
+    "w749066943",
+    "w749066944",
+    "w749066945"
+  ],
+  "pandId": "0363100012171850",
+  "materialOverrides": {
+    "brick": "#8a4a39",
+    "greyBrick": "#6c3d30",
+    "stone": "#d9cfae",
+    "sandstone": "#c9bd98",
+    "slate": "#4a5058",
+    "glass": "#566672",
+    "frame": "#ece6d2",
+    "dark": "#2a2d30",
+    "white": "#eee9d9",
+    "red": "#a2362b",
+    "gold": "#c9a24a",
+    "copper": "#6d9a86",
+    "concrete": "#8e8f8c"
+  },
+  "surveySource": "Current BAG 0363100012171850 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the two stone-banded round towers with corbelled arcades, the four conical caps, the central gate arch, mullioned windows with red shutters and the roof dormers measured by eye from the 2020-2025 municipal panoramas, no pixels or meshes imported."
+}
