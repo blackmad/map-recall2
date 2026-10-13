@@ -3,9 +3,11 @@
  * (docs/gameplay/loop.md), in every building pipeline and both frames.
  *
  * `?highlight=` picks a style (window.__canalRecallHighlight takes the same values):
- *   - unset / `yellow`: today's look, the building painted #ffd21f (pixel-identical: nothing below changes a shader);
- *   - `a` outline + ground ring + beacon: real materials, a 2-px screen-space silhouette in the accent,
- *     a soft ring on the ground at the footprint and a thin vertical beacon above the roof that fades with distance;
+ *   - unset / `a` (the default since 2026-10-13) outline + ground ring + beacon: real materials, a screen-space
+ *     silhouette in the accent (2 px, wider far away: `outlineWidthPx`), a soft ring on the ground at the footprint
+ *     and a thin vertical beacon above the roof that fades with distance;
+ *   - `yellow`: the old look kept for comparison, the building painted #ffd21f (pixel-identical: nothing below
+ *     changes a shader);
  *   - `b` rim light + pulse: real materials, a fresnel rim in the accent pulsing slowly, plus the ground ring;
  *   - `c` desaturate the rest: real materials, buildings within 60 m lose 40 % saturation, plus the ground ring.
  *
@@ -52,8 +54,23 @@ export const HIGHLIGHT_RECIPES: Readonly<Record<HighlightStyle, HighlightRecipe>
 export const HIGHLIGHT_STYLES: readonly HighlightStyle[] = ['yellow', 'a', 'b', 'c'];
 export const DESATURATE_RADIUS_M = 60;
 export const DESATURATE_AMOUNT = 0.4;
-/** Outline width, CSS pixels. */
+/** Outline width near the camera, CSS pixels. */
 export const OUTLINE_PX = 2;
+/**
+ * Far away the outline widens, so it still reads at chase distance on an ordinary 6 m house (measured 2026-10-13 at
+ * the Oud-West terrace, chase camera 213 m from the roof: median 2.0 px but a quarter of the outline at 1 px, and
+ * too thin to find the house by; `scripts/highlight-outline-width.mjs`). Linear in the camera's distance to the
+ * building's centre from `OUTLINE_NEAR_M` to `OUTLINE_FAR_M`, clamped. Per building, so one outline is one width.
+ */
+export const OUTLINE_FAR_PX = 3.5;
+export const OUTLINE_NEAR_M = 100;
+export const OUTLINE_FAR_M = 300;
+
+/** Outline width (CSS px) at a camera distance (metres) from the building's centre. */
+export function outlineWidthPx(distanceM: number, nearPx = OUTLINE_PX, farPx = OUTLINE_FAR_PX): number {
+  const t = Math.min(1, Math.max(0, (distanceM - OUTLINE_NEAR_M) / (OUTLINE_FAR_M - OUTLINE_NEAR_M)));
+  return nearPx + (farPx - nearPx) * (Number.isFinite(t) ? t : 0);
+}
 /** The outline hull sits this far behind the surface along the view ray (mesh units: metres). */
 export const OUTLINE_PUSH_M = 0.3;
 /** Rim pulse period, seconds; the rim swings between 55 % and 100 % of `RIM_STRENGTH`. */
@@ -70,11 +87,15 @@ function parseStyle(raw: unknown): HighlightStyle | null {
   if (v === 'a' || v === 'outline') return 'a';
   if (v === 'b' || v === 'rim') return 'b';
   if (v === 'c' || v === 'desaturate') return 'c';
-  if (v === 'yellow' || v === '0' || v === 'off' || v === 'default') return 'yellow';
+  if (v === 'yellow' || v === '0' || v === 'off' || v === 'old') return 'yellow';
+  if (v === 'default') return DEFAULT_HIGHLIGHT_STYLE;
   return null;
 }
 
-/** The page's style: window.__canalRecallHighlight, else `?highlight=`, else today's yellow. */
+/** The style when nothing asks for one: a (LOOK §Highlight; the yellow hid the building the player is meant to learn). */
+export const DEFAULT_HIGHLIGHT_STYLE: HighlightStyle = 'a';
+
+/** The page's style: window.__canalRecallHighlight, else `?highlight=`, else the default (a). */
 export function highlightStyle(search?: string): HighlightStyle {
   try {
     const g = globalThis as any;
@@ -82,8 +103,8 @@ export function highlightStyle(search?: string): HighlightStyle {
       const forced = parseStyle(g[HIGHLIGHT_GLOBAL]);
       if (forced) return forced;
     }
-    return parseStyle(new URLSearchParams(search ?? g.location?.search ?? '').get(HIGHLIGHT_PARAM)) ?? 'yellow';
-  } catch { return 'yellow'; }
+    return parseStyle(new URLSearchParams(search ?? g.location?.search ?? '').get(HIGHLIGHT_PARAM)) ?? DEFAULT_HIGHLIGHT_STYLE;
+  } catch { return DEFAULT_HIGHLIGHT_STYLE; }
 }
 
 export const highlightRecipe = (style: HighlightStyle = highlightStyle()): HighlightRecipe => HIGHLIGHT_RECIPES[style];
@@ -100,7 +121,7 @@ export function highlightAccent(style: HighlightStyle = highlightStyle(), search
   return HIGHLIGHT_CORAL;
 }
 
-/** Material defines for the page's style (empty for yellow: the programs are today's). */
+/** Material defines for the page's style (empty for yellow: the programs are the old ones). */
 export function highlightDefines(style: HighlightStyle = highlightStyle()): Record<string, string> {
   return HIGHLIGHT_RECIPES[style].keepMaterials ? { HL_KEEP: '' } : {};
 }
@@ -144,7 +165,18 @@ export interface HighlightFocus {
   polygons?: LngLat[][][];
   /** Roof top, metres above the ground. */
   heightM?: number;
+  /**
+   * No pipeline outlines this building (MapLibre's fallback extrusions draw it): the marker draws the outline itself,
+   * round a prism of the footprint (`HighlightMarker`), with the footprint read from the map's building source
+   * (`HULL_SOURCE`) when `polygons` are not given.
+   */
+  hull?: boolean;
+  /** Bottom of the hull, metres above the ground (a building on stilts). */
+  baseM?: number;
 }
+
+/** The MapLibre source of the fallback extrusions (vector-map.js), keyed by `promoteId: 'id'`. */
+export const HULL_SOURCE = 'osm-building-appearance';
 
 /** Centroid (vertex mean of outer rings) of footprint polygons, or null. */
 export function footprintCentroid(polygons: readonly (readonly (readonly LngLat[])[])[] | undefined): [number, number] | null {
@@ -213,6 +245,7 @@ const PASS_VERTEX = /* glsl */ `
 attribute float hidden;
 uniform vec2 hlViewport;
 uniform float hlWidthPx;
+uniform float hlFarScale;
 uniform vec3 hlCentre;
 uniform float hlDepthPush;
 uniform vec3 hlEye;
@@ -229,6 +262,10 @@ void main() {
   vHlNormal = n;
 #ifdef HL_MERGED
   if (hidden < 1.5 || hidden > 2.5) { gl_Position = vec4(2.0, 2.0, 2.0, 1.0); return; }
+#endif
+#ifdef HL_FEATURE
+  // A batched tile (3DBAG detailed mode): only the highlighted feature's vertices.
+  if (abs(HL_FEATURE - hlFeatureId) > 0.5) { gl_Position = vec4(2.0, 2.0, 2.0, 1.0); return; }
 #endif
   mat4 mvp = projectionMatrix * modelViewMatrix;
 #ifdef HL_OUTLINE
@@ -253,7 +290,10 @@ void main() {
     vec2 dr = (clip.xy / clip.w - cc.xy / cc.w) * hlViewport;
     if (dot(dr, dr) > 1e-6) dir += normalize(dr);
   }
-  if (dot(dir, dir) > 1e-12) clip.xy += normalize(dir) * hlWidthPx * 2.0 / hlViewport * clip.w;
+  // Wider far away (outlineWidthPx): by the camera's distance to the building's centre, one width per outline.
+  float far = clamp((length(c4.xyz - hlEye) - ${OUTLINE_NEAR_M.toFixed(1)}) / ${(OUTLINE_FAR_M - OUTLINE_NEAR_M).toFixed(1)}, 0.0, 1.0);
+  float width = hlWidthPx * mix(1.0, hlFarScale, far);
+  if (dot(dir, dir) > 1e-12) clip.xy += normalize(dir) * width * 2.0 / hlViewport * clip.w;
 #endif
   gl_Position = clip;
 }`;
@@ -278,9 +318,14 @@ void main() {
 }`;
 
 export type PassKind = 'outline' | 'rim';
+/** A feature of a batched mesh (3D Tiles `_feature_id_N`): the float vertex attribute and the feature's id. */
+export interface FeatureSelector { attribute: string; id: number }
+
 export interface PassOptions {
   /** Merged mesh: draw only `hidden == 2` vertices. */
   merged?: boolean;
+  /** Batched mesh: draw only this feature's vertices. */
+  feature?: FeatureSelector | null;
   /** Centre of the highlighted building in the mesh's (pre-instance) space; default the geometry's bounding-box centre. */
   centre?: readonly [number, number, number] | null;
   style?: HighlightStyle;
@@ -288,27 +333,45 @@ export interface PassOptions {
 }
 
 const PASS_TAG = 'canalRecallHighlightPass';
+/**
+ * Measurement override: a fixed outline width in CSS px at every distance (`window.__canalRecallHighlightOutlinePx`;
+ * 0 hides the outline, `2` is the width before the distance rule).
+ */
+export const OUTLINE_PX_GLOBAL = '__canalRecallHighlightOutlinePx';
+function forcedOutlinePx(): number | null {
+  const raw = (globalThis as any)[OUTLINE_PX_GLOBAL];
+  const forced = raw == null || raw === '' ? NaN : Number(raw);
+  return Number.isFinite(forced) && forced >= 0 ? forced : null;
+}
 /** Linear RGB of an sRGB hex (three's ShaderMaterial output is written as-is, so the accent stays sRGB). */
 const accentVector = (THREE: any, hex: string) => { const [r, g, b] = hexToRgb(hex); return new THREE.Vector3(r / 255, g / 255, b / 255); };
 
 /** One pass material (per pass mesh: its uniforms are per object). */
-export function createHighlightPassMaterial(THREE: any, kind: PassKind, options: { merged?: boolean; accent?: string } = {}): any {
+export function createHighlightPassMaterial(THREE: any, kind: PassKind, options: { merged?: boolean; accent?: string; feature?: FeatureSelector | null } = {}): any {
   const defines: Record<string, string> = {};
   if (options.merged) defines.HL_MERGED = '';
   if (kind === 'outline') defines.HL_OUTLINE = '';
+  let vertexShader = PASS_VERTEX;
+  if (options.feature) {
+    if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(options.feature.attribute)) throw new Error(`highlight: bad feature attribute ${options.feature.attribute}`);
+    defines.HL_FEATURE = options.feature.attribute;
+    vertexShader = `attribute float ${options.feature.attribute};\nuniform float hlFeatureId;\n${PASS_VERTEX}`;
+  }
   const material = new THREE.ShaderMaterial({
     defines,
     uniforms: {
       hlViewport: { value: new THREE.Vector2(1, 1) },
       hlWidthPx: { value: OUTLINE_PX },
+      hlFarScale: { value: OUTLINE_FAR_PX / OUTLINE_PX },
       hlCentre: { value: new THREE.Vector3() },
       hlDepthPush: { value: OUTLINE_PUSH_M },
       hlAccent: { value: accentVector(THREE, options.accent ?? highlightAccent()) },
       hlEye: { value: new THREE.Vector3() },
       hlTime: { value: 0 },
       hlHasNormal: { value: 1 },
+      hlFeatureId: { value: options.feature?.id ?? 0 },
     },
-    vertexShader: PASS_VERTEX,
+    vertexShader,
     fragmentShader: PASS_FRAGMENT,
     // Outline: the inverted hull (back faces only), so a wall seen at a grazing angle is never painted over.
     side: kind === 'outline' ? THREE.BackSide : THREE.FrontSide,
@@ -353,7 +416,7 @@ export function attachHighlightPasses(THREE: any, mesh: any, options: PassOption
   const passes: any[] = [];
   const mvp = new THREE.Matrix4(), eye = new THREE.Vector4(), size = new THREE.Vector2();
   for (const kind of kinds) {
-    const material = createHighlightPassMaterial(THREE, kind, { merged: options.merged, accent: options.accent ?? highlightAccent(options.style) });
+    const material = createHighlightPassMaterial(THREE, kind, { merged: options.merged, feature: options.feature, accent: options.accent ?? highlightAccent(options.style) });
     material.uniforms.hlCentre.value.set(centre[0], centre[1], centre[2]);
     material.uniforms.hlHasNormal.value = hasNormal;
     const pass = mesh.isInstancedMesh ? new THREE.InstancedMesh(geometry, material, mesh.count) : new THREE.Mesh(geometry, material);
@@ -370,7 +433,9 @@ export function attachHighlightPasses(THREE: any, mesh: any, options: PassOption
       renderer.getDrawingBufferSize(size);
       u.hlViewport.value.copy(size);
       const css = renderer.domElement?.clientWidth || size.x;
-      u.hlWidthPx.value = OUTLINE_PX * (size.x / css);
+      const forced = forcedOutlinePx();
+      u.hlWidthPx.value = (forced ?? OUTLINE_PX) * (size.x / css);
+      u.hlFarScale.value = forced == null ? OUTLINE_FAR_PX / OUTLINE_PX : 1;
       // The eye in the mesh's space: the point clip space sends to w = 0 (works for MapLibre's baked projection too).
       mvp.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse).multiply(pass.matrixWorld).invert();
       eye.set(0, 0, 1, 0).applyMatrix4(mvp);
@@ -463,4 +528,30 @@ export function applyMeshHighlight(THREE: any, root: any, state: 'plain' | 'high
     if (state === 'highlight') attachHighlightPasses(THREE, child, { style });
     else detachHighlightPasses(child);
   }
+}
+
+/** Centre (bounding-box centre, mesh space) of one feature's vertices in a batched mesh, or null if it has none. */
+export function featureCentre(geometry: any, feature: FeatureSelector): [number, number, number] | null {
+  const ids = geometry?.getAttribute?.(feature.attribute), position = geometry?.getAttribute?.('position');
+  if (!ids || !position) return null;
+  const lo = [Infinity, Infinity, Infinity], hi = [-Infinity, -Infinity, -Infinity];
+  for (let i = 0; i < position.count; i++) {
+    if (Math.abs(ids.getX(i) - feature.id) > 0.5) continue;
+    const v = [position.getX(i), position.getY(i), position.getZ(i)];
+    for (let k = 0; k < 3; k++) { lo[k] = Math.min(lo[k], v[k]); hi[k] = Math.max(hi[k], v[k]); }
+  }
+  return lo[0] <= hi[0] ? [(lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, (lo[2] + hi[2]) / 2] : null;
+}
+
+/**
+ * The highlight on one feature of a batched mesh (3DBAG detailed mode, `detailed-buildings-source.js`): the mesh
+ * keeps its materials and gets the style's passes restricted to the feature. Returns false for the yellow style
+ * (the caller keeps its own yellow tint) or when the feature is not in the mesh; `detachHighlightPasses` clears it.
+ */
+export function highlightFeature(THREE: any, mesh: any, feature: FeatureSelector, style: HighlightStyle = highlightStyle()): boolean {
+  if (!HIGHLIGHT_RECIPES[style].keepMaterials) return false;
+  const centre = featureCentre(mesh?.geometry, feature);
+  if (!centre) return false;
+  attachHighlightPasses(THREE, mesh, { feature, centre, style });
+  return true;
 }

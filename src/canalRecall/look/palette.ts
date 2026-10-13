@@ -573,6 +573,8 @@ export const LABEL_INK = {
   paperSunk: '#ebe4d6',
   copper: '#b4682c',
   copperInk: '#8a4a18',
+  /** The destination's chip arrow, stem and dot: the landmark highlight's accent (one accent in the world). */
+  destination: HIGHLIGHT_CORAL,
 } as const;
 
 /** `ink`: warm dark text on a thin paper halo (default). `paper`: paper text on an ink halo. */

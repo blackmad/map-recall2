@@ -3,19 +3,23 @@ import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import {
   DESATURATE_RADIUS_M, HIDDEN, HIGHLIGHT_GLSL, HIGHLIGHT_RECIPES, accentSeparation, applyMeshHighlight, attachHighlightPasses, baseMaterialOf,
-  detachHighlightPasses, highlightAccent, highlightDefines, highlightMaterialFor, highlightStyle, metresBetween, withinDesaturation,
+  detachHighlightPasses, featureCentre, highlightAccent, highlightDefines, highlightFeature, highlightMaterialFor, highlightStyle, metresBetween,
+  OUTLINE_FAR_PX, OUTLINE_PX, outlineWidthPx, withinDesaturation,
 } from './highlight.ts';
 import { landmarkHighlightStates } from './highlightLandmarks.ts';
-import { beaconAlpha, mercatorFromLocal, mercatorOf, ringBand, ringOutlines } from './highlightMarker.ts';
+import { beaconAlpha, markerSlot, mercatorFromLocal, mercatorOf, ringBand, ringOutlines } from './highlightMarker.ts';
 import { HIGHLIGHT_CORAL, HIGHLIGHT_YELLOW, HUD_ACCENT } from './palette.ts';
 import { createCityLookMaterial, createCityUniforms, variantDefines } from './cityLook.ts';
 
-test('style: ?highlight=a|b|c, aliases, and today\'s yellow by default', () => {
-  assert.equal(highlightStyle(''), 'yellow');
+test('style: ?highlight=a|b|c|yellow, aliases, and a by default', () => {
+  assert.equal(highlightStyle(''), 'a');
+  assert.equal(highlightStyle('?highlight=default'), 'a');
+  assert.equal(highlightStyle('?highlight=yellow'), 'yellow');
+  assert.equal(highlightStyle('?highlight=off'), 'yellow');
   assert.equal(highlightStyle('?highlight=a'), 'a');
   assert.equal(highlightStyle('?highlight=rim'), 'b');
   assert.equal(highlightStyle('?highlight=C'), 'c');
-  assert.equal(highlightStyle('?highlight=bogus'), 'yellow');
+  assert.equal(highlightStyle('?highlight=bogus'), 'a');
   assert.equal(highlightAccent('yellow', ''), HIGHLIGHT_YELLOW);
   assert.equal(highlightAccent('a', ''), HIGHLIGHT_CORAL);
   assert.equal(highlightAccent('a', '?highlightAccent=hud'), HUD_ACCENT);
@@ -140,4 +144,52 @@ test('city look: a dim variant, and the shader reads the shared state', () => {
   assert.match(m.vertexShader, /vHighlight = hlState\(hidden\)/);
   assert.match(m.fragmentShader, /if \(HL_PAINT\(vHighlight\)\)/);
   assert.equal(variantDefines({ lit: true, kind: 'slot', highlight: true, dim: true }).CITY_DIM, undefined, 'highlight wins');
+});
+
+test('outline: 2 px near, widening to 3.5 px by 300 m (chase on a terrace house reads ≥ 1.5 px), clamped', () => {
+  assert.equal(outlineWidthPx(30), OUTLINE_PX);
+  assert.equal(outlineWidthPx(100), OUTLINE_PX);
+  // The Oud-West terrace from the chase camera (213 m, scripts/highlight-outline-width.mjs).
+  assert.ok(outlineWidthPx(213) > 2.7 && outlineWidthPx(213) < 2.9);
+  assert.equal(outlineWidthPx(300), OUTLINE_FAR_PX);
+  assert.equal(outlineWidthPx(5000), OUTLINE_FAR_PX);
+  assert.equal(outlineWidthPx(NaN), OUTLINE_PX);
+  const [pass] = attachHighlightPasses(THREE, new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1)), { style: 'a' });
+  assert.equal(pass.material.uniforms.hlFarScale.value, OUTLINE_FAR_PX / OUTLINE_PX);
+  assert.match(pass.material.vertexShader, /mix\(1\.0, hlFarScale, far\)/);
+});
+
+test('3DBAG detailed mode: the outline keeps to one feature of a batched tile; yellow declines', () => {
+  const g = new THREE.BoxGeometry(2, 2, 2).toNonIndexed();
+  const n = g.getAttribute('position').count, ids = new Float32Array(n);
+  // Second half of the box is feature 7, shifted 10 m east.
+  for (let i = n / 2; i < n; i++) { ids[i] = 7; g.getAttribute('position').setX(i, g.getAttribute('position').getX(i) + 10); }
+  g.setAttribute('_feature_id_0', new THREE.BufferAttribute(ids, 1));
+  const feature = { attribute: '_feature_id_0', id: 7 };
+  const centre = featureCentre(g, feature)!;
+  assert.ok(centre[0] > 8 && centre[0] < 12, String(centre));
+  assert.equal(featureCentre(g, { attribute: '_feature_id_0', id: 3 }), null);
+  const mesh = new THREE.Mesh(g, new THREE.MeshLambertMaterial());
+  assert.equal(highlightFeature(THREE, mesh, feature, 'yellow'), false);
+  assert.equal(mesh.children.length, 0);
+  assert.equal(highlightFeature(THREE, mesh, feature, 'a'), true);
+  const [pass] = mesh.children as any[];
+  assert.equal(pass.material.defines.HL_FEATURE, '_feature_id_0');
+  assert.match(pass.material.vertexShader, /^attribute float _feature_id_0;/);
+  assert.equal(pass.material.uniforms.hlFeatureId.value, 7);
+  assert.deepEqual(pass.material.uniforms.hlCentre.value.toArray(), centre);
+  assert.throws(() => attachHighlightPasses(THREE, mesh, { style: 'a', feature: { attribute: 'x;discard', id: 1 } }));
+  detachHighlightPasses(mesh);
+  assert.equal(mesh.children.length, 0);
+});
+
+test('default-frame marker layer: after the last 3D layer, so buildings streamed in later never paint over it', () => {
+  const layers = [
+    { id: 'background', type: 'background' }, { id: 'roads', type: 'line' }, { id: 'highlight-marker', type: 'custom' },
+    { id: 'osm-colored-buildings', type: 'fill-extrusion' }, { id: 'labels', type: 'symbol' }, { id: 'three-building-facades', type: 'custom' },
+    { id: 'poi-labels', type: 'symbol' },
+  ];
+  assert.equal(layers[markerSlot(layers, 'highlight-marker')].id, 'poi-labels');
+  assert.equal(markerSlot(layers.slice(0, 6), 'highlight-marker'), 6, 'top when a 3D layer is last');
+  assert.equal(markerSlot(layers.slice(0, 3), 'highlight-marker'), -1, 'no 3D layer yet: stays');
 });

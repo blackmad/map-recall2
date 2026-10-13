@@ -1,8 +1,10 @@
 /**
- * The recommended highlight (`?highlight=a`: outline + ground ring + beacon, src/canalRecall/look/highlight.ts) is
- * found on screen by its colour, in the default frame and the shared frame: parked facing the Anne Frank House on
- * the Westermarkt corner (the block of the user's 2026-10-13 screenshot), the accent appears only once the card
- * names it, and it sits on that building, not elsewhere. The building keeps its own colours (no yellow).
+ * The default highlight (style a since 2026-10-13: outline + ground ring + beacon, src/canalRecall/look/highlight.ts)
+ * is found on screen by its colour, in the default frame, the shared frame and MapLibre's fallback extrusions
+ * (`?buildings3d=off`, where the marker draws the outline round the footprint's prism): parked facing the Anne Frank
+ * House on the Westermarkt corner (the block of the user's 2026-10-13 screenshot), the accent appears only once the
+ * card names it, and it sits on that building, not elsewhere. The building keeps its own colours (no yellow).
+ * `?highlight=yellow` keeps the old yellow for comparison.
  *
  *   PW_PORT=4451 npx playwright test highlight.spec.ts
  */
@@ -25,7 +27,7 @@ async function colourPixels(png: Buffer, rgb: [number, number, number], scale: n
   return { n, x: n ? sx / n / scale : NaN, y: n ? sy / n / scale : NaN };
 }
 
-async function park(page: Page): Promise<any> {
+async function park(page: Page, waitForThree = true): Promise<any> {
   const landmark = await page.evaluate(id => (window as any).canalRecallGame.landmarks.find((l: any) => l.id === id), ANNE_FRANK);
   expect(landmark, 'Anne Frank House in game.landmarks').toBeTruthy();
   const [lng, lat] = landmark.lngLat, deg = 115, m = 75, b = deg * Math.PI / 180;
@@ -39,40 +41,64 @@ async function park(page: Page): Promise<any> {
     g._updateCanalQuiz = () => {}; g._updateBridgeQuiz = () => {};
   }, p);
   await teleport(); await page.waitForTimeout(3000); await teleport();
-  await page.waitForFunction(() => { const t = (window as any).canalRecallGame.vectorMap._threeBuildings; return t?.ready && !t.pending.length && !t.inflight.size; }, null, { timeout: 120_000 });
+  if (waitForThree) await page.waitForFunction(() => { const t = (window as any).canalRecallGame.vectorMap._threeBuildings; return t?.ready && !t.pending.length && !t.inflight.size; }, null, { timeout: 120_000 });
   await page.waitForTimeout(5000);
-  // Only the 3D frame: no labels, HUD or minimap in the colour count.
+  // Only the 3D frame: no labels, HUD or minimap in the colour count, and no drive-by card's highlight yet.
   await page.evaluate(() => {
-    const map = (window as any).canalRecallGame.vectorMap.map, canvas = map.getCanvas();
+    const g = (window as any).canalRecallGame;
+    g._lastDriveByAt = Infinity; // no drive-by card takes the highlight from here on
+    g.vectorMap.setActiveLandmark(null);
+    g._landmarkNotice = null;
+    const map = g.vectorMap.map, canvas = map.getCanvas();
     for (const layer of map.getStyle().layers) if (layer.type === 'symbol') map.setLayoutProperty(layer.id, 'visibility', 'none');
     for (const e of Array.from(document.body.querySelectorAll('*'))) if (e !== canvas && !e.contains(canvas)) (e as HTMLElement).style.visibility = 'hidden';
   });
   return landmark;
 }
 
-for (const frame of [{ name: 'default frame', query: '?highlight=a' }, { name: 'shared frame', query: '?highlight=a&sharedFrame=1' }]) {
-  test(`highlight a: the destination is found by its accent (${frame.name})`, async ({ page }, info) => {
-    test.skip(info.project.name !== 'desktop' && frame.name === 'shared frame', 'phone: the default frame');
+const FRAMES = [
+  { name: 'default frame', query: '' },
+  { name: 'shared frame', query: '?sharedFrame=1' },
+  { name: 'MapLibre fallback', query: '?buildings3d=off' },
+];
+for (const frame of FRAMES) {
+  test(`highlight (default a): the destination is found by its accent (${frame.name})`, async ({ page }, info) => {
+    test.skip(info.project.name !== 'desktop' && frame.name !== 'default frame', 'phone: the default frame');
     test.setTimeout(240_000);
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: frame.query, abortHeavyTiles: true });
-    const landmark = await park(page);
+    const fallback = frame.name === 'MapLibre fallback';
+    const landmark = await park(page, !fallback);
     const canvas = page.locator('canvas.maplibregl-canvas').first();
     const scale = await page.evaluate(() => window.devicePixelRatio);
     const before = await colourPixels(await canvas.screenshot(), CORAL, scale);
-    const state = await page.evaluate((l) => {
+    const state: any = await page.evaluate((l) => {
       const vm = (window as any).canalRecallGame.vectorMap;
       vm.setActiveLandmark(l);
       const at = vm.map.project(l.lngLat);
-      return { at: [at.x, at.y], marker: vm._highlightMarker?.status(), models: (vm._signatureLandmarks?._entries ?? []).filter((e: any) => e.highlighted).length, extrusions: vm._threeBuildings?.highlighted?.size ?? 0 };
+      return { at: [at.x, at.y], models: (vm._signatureLandmarks?._entries ?? []).filter((e: any) => e.highlighted).length, extrusions: vm._threeBuildings?.highlighted?.size ?? 0,
+        owns: vm._threeOwnsTops(), states: vm._highlightedBuildings.map((t: any) => vm.map.getFeatureState(t)) };
     }, landmark);
     await page.waitForTimeout(1500);
+    // The hull's footprint arrives asynchronously (GeoJSONSource.getData), so read the marker after the wait.
+    state.marker = await page.evaluate(() => (window as any).canalRecallGame.vectorMap._highlightMarker?.status());
     const shot = await canvas.screenshot();
     const after = await colourPixels(shot, CORAL, scale);
     const yellow = await colourPixels(shot, YELLOW, scale, 40);
     await info.attach(`highlight-a-${frame.name}`, { body: shot, contentType: 'image/png' });
     expect(state.marker?.ring, 'ground ring').toBe(true);
     expect(state.marker?.beacon, 'beacon').toBe(true);
-    expect(state.models + state.extrusions, 'a pipeline lit the building').toBeGreaterThan(0);
+    if (fallback) {
+      // MapLibre draws the buildings: no yellow fill (feature-state `accent`, not `highlighted`), and the marker's hull
+      // outlines the extrusion.
+      expect(state.owns, 'three.js does not own the city').toBe(false);
+      expect(state.states.length, 'the card resolved its building').toBeGreaterThan(0);
+      for (const s of state.states) expect(s).toMatchObject({ highlighted: false, accent: true });
+      // The outline: the marker's hull round the extrusion, or the landmark's own model (a GLB keeps its passes).
+      expect(state.marker?.hull || state.models > 0, 'outline round the fallback extrusion').toBe(true);
+    } else {
+      expect(state.models + state.extrusions, 'a pipeline lit the building').toBeGreaterThan(0);
+      expect(state.marker?.hull, 'the pipeline draws its own outline').toBe(false);
+    }
     const size = await canvas.boundingBox();
     const area = size!.width * size!.height;
     // The accent appears (outline, ring, beacon: ≥ 0.05 % of the frame) and only then.
@@ -88,3 +114,20 @@ for (const frame of [{ name: 'default frame', query: '?highlight=a' }, { name: '
     expect(cleared.n).toBeLessThan(before.n + area * 0.0002);
   });
 }
+
+// `?highlight=yellow` keeps the old look for comparison: the building is painted yellow, no ring, beacon or coral.
+test('highlight=yellow: the old yellow comparison still paints the destination', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop', 'one comparison is enough');
+  test.setTimeout(240_000);
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?highlight=yellow', abortHeavyTiles: true });
+  const landmark = await park(page);
+  const canvas = page.locator('canvas.maplibregl-canvas').first();
+  const scale = await page.evaluate(() => window.devicePixelRatio);
+  const before = await colourPixels(await canvas.screenshot(), YELLOW, scale, 40);
+  const marker = await page.evaluate((l) => { const vm = (window as any).canalRecallGame.vectorMap; vm.setActiveLandmark(l); return !!vm._highlightMarker; }, landmark);
+  await page.waitForTimeout(1500);
+  const size = await canvas.boundingBox();
+  const after = await colourPixels(await canvas.screenshot(), YELLOW, scale, 40);
+  expect(marker, 'no marker under yellow').toBe(false);
+  expect(after.n - before.n, 'yellow paint').toBeGreaterThan(size!.width * size!.height * 0.001);
+});
