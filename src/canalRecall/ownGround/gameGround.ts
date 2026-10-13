@@ -175,6 +175,12 @@ export class OwnGround {
     return visible && this.resident.size > 0;
   }
 
+  /**
+   * The route, highlight and destination are drawn draped on the ground this frame. The game's flat canvas
+   * lines (projected at z = 0, a frame behind the map) must not draw then: they read as a second, drifting line.
+   */
+  drapesOverlays(): boolean { return this.visibleAtZoom(this.zoom) && this.resident.size > 0 && this.coversRider(); }
+
   /** The rider's cell and its 8 neighbours are drawn: the basemap's ground underneath is redundant. */
   private coversRider(): boolean {
     if (!this.centre || !this.ready) return false;
