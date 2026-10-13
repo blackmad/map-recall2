@@ -39,11 +39,22 @@ default flip waits on a desktop ride-perf decision: +0.2 ms/frame three.js,
 → ground → recipe tiles. Open from the look lane: 3DBAG detailed buildings
 never stream (3d-tiles-renderer root tileset only loads on the first
 `update()`, the old layer never calls it before ready; in the shared frame it
-loads but traverses zero tiles — LOD camera in the shared world); the 40
-`storybook-visual` baselines are stale on main (Feedback button and
-attribution text, 37 fail on `640675c2` too); `check-three-buildings` fails on
-"canal houses have flat lintels" on main; `?buildingTypes=1` under the shared
-frame skips that runtime's merged recipe shader. Integrator merges on its own judgement (user).
+loads but traverses zero tiles — LOD camera in the shared world);
+`?buildingTypes=1` under the shared frame skips that runtime's merged recipe
+shader. Checks lane 2026-10-13: the 37 `storybook-visual` baselines were
+re-recorded (diffs were compact cards with MORE/close, the redesigned
+portrait settings panel, the Feedback button and the attribution line — not
+only the last two), `check-three-buildings` passes again (the stale "flat
+lintels" rule now allows segmental heads, which `635fc6a1` added on purpose;
+`kit-locations.json` republished with 246 ids). To look at: the
+`portrait-finish-card` baseline (414×896) shows a translucent ghost of a
+second card behind the finish card — stable across runs, likely a
+presentation bug, recorded as is. `check-manual-landmarks` still fails on its
+500 KB budget: royal-palace 637 KB, mountain-network 649 KB (47k tris),
+american-hotel 504 KB, hotel-de-l-europe 725 KB (52k tris); and eight
+Haparandaweg block-face entries carry no `bytes` (they are not built by
+`build-manual-landmarks`). Decide whether the budget is right or shrink those
+models (cleanup batch 2 has american-hotel). Integrator merges on its own judgement (user).
 Open after the gameplay merge: `RecallStore.expose()` so a passed name is
 scheduled instead of re-asked; a settings control for `maxAsksPerMinute`
 (field on the game today); fold `ridingPromptStyles.ts` into `index.html`;
@@ -300,7 +311,7 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   (`scripts/landmarks/*-elevations.json`, photos in `artifacts/landmark-lanes/`);
   counts are not filled: Haiku blind counts were too noisy — use a stronger
   counter or rectified `pand-reference` crops. `check-manual-landmarks.ts`
-  fails on main: eight Haparandaweg manifest entries have no `bytes`.
+  status is in the Direction block above (2026-10-13).
   Lane runs of `archive-model-sources.py` into the private repo are sometimes
   denied by the auto-mode classifier; refs for vrijburg, van-gendt-hallen and
   the 25 elevation photos are not archived yet.
@@ -320,8 +331,6 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   settle because the pitched chase view's bounds reach the horizon — cap
   `_nearby` by distance or make it pitch-aware. `setActiveLandmark(null)` fires
   ~every 100 ms while riding, each with a GeoJSON `setData` — find the caller.
-  `scripts/check-building-look-transition.ts` fails on main
-  (`chunks.get(first.key).mesh` undefined) and is not in check:canal.
 - **Shared material textures (user, 2026-10-09)**: models are flat-shaded
   colour only, so brick and roofs read as plastic. Add one shared tiling set
   (brick bonds, roof tile, slate, stone, timber, glass) at 256–512 px with
@@ -370,8 +379,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   photos + panorama crops; render the splat only within ~50 m and a baked
   8–16-view impostor beyond. Start from `docs/landmark-splat-reference-pilot.md`.
 - **Docs compaction**: ~135 markdown files across root, `docs/` and here.
-- `scripts/check-cinema-facade-surfaces.ts` fails on main (32 front pane
-  triangles, expects 24); not in `check:canal`.
+- `scripts/check-cinema-facade-surfaces.ts`: the Kriterion half is fixed
+  (count restricted to the frontage, z ≥ 10; the extra 8 panes were the real
+  rear east bay). The Rialto half fails on a genuine model defect: at
+  y = 14.04 the slate roof and the cream wall share the plane x = 12.30
+  (`rialto.glb` unchanged since 2026-10-04) — a landmark lane fixes the
+  builder, then the check can join `check:canal`.
 - Street-appearance fingerprints (`public/data/street-appearance/*.json`)
   hash an older `signature-landmarks.json`; re-bake rather than hand-edit.
 - **Worktree hygiene (recurring)**: run `scripts/worktrees/triage.sh` before
@@ -433,8 +446,9 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   no longer converges, but cross-device memory would still help.
 - **Failing e2e on main**: `review-ride.spec.ts` "a due street off every
   landmark line is ridden as a via" (Avenhornstraat) fails on main before the
-  2026-10-10 home-picker change: surprise ride Artis Bibliotheek → Kazerne
-  Zebra with `dueOnPath: []`, no via. Investigate the via/stop planner.
+  2026-10-10 home-picker change; on 2026-10-13 the seeded origin was Fo Guang
+  Shan He Hua Tempel → Kazerne Zebra, again `dueOnPath: []`, detour 0, no via,
+  so the origin varies between runs. Investigate the via/stop planner.
 - **Renderer: give three.js the frame** (`docs/research/own-renderer-spike-20261009.md`,
   `renderer-spike.html`): spike shows lighting is the visible gap — shadows,
   sky, fog, tone mapping, sunken water — at ~2.6 ms CPU per throttled phone
