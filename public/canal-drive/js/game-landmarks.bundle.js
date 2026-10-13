@@ -599,10 +599,7 @@ Map source: ${osmUrl(places[i][0])}`);
   function canShowTeachingCard(input) {
     return !teachingOwnsBottom(input);
   }
-  function canShowPostcard(viewportMode, input) {
-    if (input.ridingPromptOpen && viewportMode !== "compact") {
-      return !input.feedbackVisible && !input.utilityOpen;
-    }
+  function canShowPostcard(_viewportMode, input) {
     return canShowTeachingCard(input);
   }
   function canShowDriveByCard(viewportMode, input) {
@@ -1094,7 +1091,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_2070637412",
       modelUrl: "./models/van-gogh-museum.glb",
       suppressOsmIds: [
-        "r6577680",
         "w754324680",
         "w754324683",
         "w754324685",
@@ -1126,7 +1122,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1719479765",
       modelUrl: "./models/stedelijk-museum.glb",
       suppressOsmIds: [
-        "w44508819",
         "w754299889",
         "w754299890",
         "w754299892",
@@ -1163,7 +1158,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "adam-tower",
       modelUrl: "./models/adam-tower.glb",
       suppressOsmIds: [
-        "w44824385",
         "w593068473",
         "w593068474",
         "w750257534",
@@ -1199,7 +1193,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "pontsteiger",
       modelUrl: "./models/pontsteiger.glb",
       suppressOsmIds: [
-        "r13123696",
         "w995816139",
         "w1509448156",
         "w995816140",
@@ -1310,7 +1303,8 @@ Map source: ${osmUrl(places[i][0])}`);
         northOffsetDegrees: 50.856118282596185,
         source: "Existing native OSM w169906479 footprint centre and heading; current ref:bag 0363100012238479 verified 2026-10-06. Stair appendages do not rescale the platform."
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 2012
     },
     {
       id: "paradiso",
@@ -1339,7 +1333,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
-      }
+      },
+      bagYear: 1880
     },
     {
       id: "melkweg",
@@ -1369,7 +1364,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
-      }
+      },
+      bagYear: 1905
     },
     {
       id: "embassy-free-mind",
@@ -1402,7 +1398,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1622
     },
     {
       id: "the-movies",
@@ -1432,7 +1429,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 1956
     },
     {
       id: "delamar",
@@ -1464,7 +1462,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 2010
     },
     {
       id: "magna-plaza",
@@ -1494,7 +1493,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 1899
     },
     {
       id: "felix-meritis",
@@ -1525,7 +1525,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 1788
     },
     {
       id: "kleine-komedie",
@@ -1559,7 +1560,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 1788
     },
     {
       id: "de-balie",
@@ -1588,7 +1590,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 1936
     },
     {
       id: "anne-frank-house",
@@ -1625,7 +1628,8 @@ Map source: ${osmUrl(places[i][0])}`);
         ],
         northOffsetDegrees: 119.51208512104333
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1635
     },
     {
       id: "rembrandt-house",
@@ -1663,7 +1667,8 @@ Map source: ${osmUrl(places[i][0])}`);
         ],
         northOffsetDegrees: 214.19839036962065
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1607
     },
     {
       id: "moco-museum",
@@ -1700,7 +1705,8 @@ Map source: ${osmUrl(places[i][0])}`);
         ],
         northOffsetDegrees: 59.387481311342526
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1906
     },
     {
       id: "museum-van-loon",
@@ -1737,7 +1743,8 @@ Map source: ${osmUrl(places[i][0])}`);
         ],
         northOffsetDegrees: 192.3449814578558
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1671
     },
     {
       id: "amstelkerk",
@@ -1766,7 +1773,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 1668
     },
     {
       id: "he-hua-temple",
@@ -1796,7 +1804,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 2e3
     },
     {
       id: "haarlemmerpoort",
@@ -1825,7 +1834,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 1840
     },
     {
       id: "het-schip",
@@ -1849,7 +1859,6 @@ Map source: ${osmUrl(places[i][0])}`);
         "w274040276",
         "w274040281",
         "w274040284",
-        "w274040290",
         "w274040293",
         "w274040296",
         "w274040305",
@@ -1939,7 +1948,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly architectural reconstruction. Exact OpenStreetMap building polygons retain courtyards and offsets; heights and sculptural details are approximated from building tags and photographs."
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1920
     },
     {
       id: "scheepvaarthuis",
@@ -1976,7 +1986,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly architectural reconstruction. Exact OpenStreetMap building polygons retain courtyards and offsets; heights and sculptural details are approximated from building tags and photographs."
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1916
     },
     {
       id: "rialto",
@@ -2014,7 +2025,8 @@ Map source: ${osmUrl(places[i][0])}`);
         northOffsetDegrees: 257.64151226366334,
         source: "OSM building w277244583 footprint, short north-facing Ceintuurbaan facade"
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1920
     },
     {
       id: "kriterion",
@@ -2057,7 +2069,8 @@ Map source: ${osmUrl(places[i][0])}`);
       materialOverrides: {
         greyBrick: "#756b5c",
         concrete: "#8c918a"
-      }
+      },
+      bagYear: 1899
     },
     {
       id: "de-bijenkorf",
@@ -2065,7 +2078,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "de-bijenkorf",
       modelUrl: "./models/de-bijenkorf.glb",
       suppressOsmIds: [
-        "w23582490",
         "w751128372",
         "w751128373",
         "w751128376",
@@ -2086,7 +2098,6 @@ Map source: ${osmUrl(places[i][0])}`);
         "w751235778",
         "w751235779",
         "w751235780",
-        "NL.IMBAG.Pand.0363100012168052",
         "w751128374",
         "w751128375"
       ],
@@ -2125,7 +2136,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "gashouder",
       modelUrl: "./models/gashouder.glb",
       suppressOsmIds: [
-        "w57865152",
         "w1488057568",
         "w1488057569",
         "w1488057570",
@@ -2197,7 +2207,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-colour low-poly reconstruction using museum and venue photographs for architectural silhouette and OpenStreetMap polygons for placement. Includes the full mapped venue footprint; dimensions and roof ornament are approximate."
-      }
+      },
+      bagYear: 1894
     },
     {
       id: "tuschinski",
@@ -2235,7 +2246,8 @@ Map source: ${osmUrl(places[i][0])}`);
         northOffsetDegrees: 0,
         source: "OSM w267116768 outline and repository measured Reguliersbreestraat front; local east/south metres"
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1922
     },
     {
       id: "pathe-city",
@@ -2265,7 +2277,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1935
     },
     {
       id: "oude-kerk",
@@ -2273,7 +2286,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1522513904",
       modelUrl: "./models/oude-kerk.glb",
       suppressOsmIds: [
-        "w57857592",
         "w747868970",
         "w747868971",
         "w747868972",
@@ -2339,7 +2351,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free Gothic reconstruction using museum photographic references and actual OpenStreetMap church/chapel/tower polygons. Surveyed placement in metres; decorative tracery and roof details are approximate."
-      }
+      },
+      bagYear: 1646
     },
     {
       id: "nieuwe-kerk",
@@ -2347,7 +2360,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_239964759",
       modelUrl: "./models/nieuwe-kerk.glb",
       suppressOsmIds: [
-        "w220749328",
         "w174987150",
         "w747911435",
         "w747911436",
@@ -2367,7 +2379,6 @@ Map source: ${osmUrl(places[i][0])}`);
         "w747924626",
         "w748997143",
         "w748997144",
-        "NL.IMBAG.Pand.0363100012169079",
         "w748997142"
       ],
       spatialSuppression: false,
@@ -2435,7 +2446,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
-      }
+      },
+      bagYear: 1609
     },
     {
       id: "english-reformed-church",
@@ -2474,7 +2486,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
-      }
+      },
+      bagYear: 1665
     },
     {
       id: "de-papegaai",
@@ -2512,7 +2525,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
-      }
+      },
+      bagYear: 1848
     },
     {
       id: "de-hallen",
@@ -2554,7 +2568,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official architectural imagery, with surveyed OpenStreetMap contours; no imported mesh or image textures."
-      }
+      },
+      bagYear: 1906
     },
     {
       id: "huis-bartolotti",
@@ -2594,7 +2609,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official architectural imagery, with surveyed OpenStreetMap contours; no imported mesh or image textures."
-      }
+      },
+      bagYear: 1622
     },
     {
       id: "hart-museum",
@@ -2631,7 +2647,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
-      }
+      },
+      bagYear: 1681
     },
     {
       id: "amsterdam-museum",
@@ -2668,7 +2685,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
-      }
+      },
+      bagYear: 1696
     },
     {
       id: "national-holocaust-museum",
@@ -2707,7 +2725,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by Office Winhov and museum official imagery; current BAG contours fetched 2026-10-04, no imported meshes/textures."
-      }
+      },
+      bagYear: 1932
     },
     {
       id: "hollandsche-schouwburg",
@@ -2745,7 +2764,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by Office Winhov and museum official imagery; current BAG contours fetched 2026-10-04, no imported meshes/textures."
-      }
+      },
+      bagYear: 1892
     },
     {
       id: "jewish-museum",
@@ -2784,7 +2804,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of the surveyed historic synagogue complex from actual OpenStreetMap polygons and official Jewish Cultural Quarter exterior photographs. Separate historic roof volumes, arched windows, classical stone cornices and entrance details; Esnoga courtyard kept open. Heights and ornament approximate."
-      }
+      },
+      bagYear: 1671
     },
     {
       id: "portuguese-synagogue",
@@ -2829,7 +2850,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of the surveyed historic synagogue complex from actual OpenStreetMap polygons and official Jewish Cultural Quarter exterior photographs. Separate historic roof volumes, arched windows, classical stone cornices and entrance details; Esnoga courtyard kept open. Heights and ornament approximate."
-      }
+      },
+      bagYear: 1675
     },
     {
       id: "homomonument",
@@ -2837,9 +2859,7 @@ Map source: ${osmUrl(places[i][0])}`);
       assetKind: "memorial",
       landmarkId: "extract_landmarks_7630368",
       modelUrl: "./models/homomonument.glb",
-      suppressOsmIds: [
-        "w37737807"
-      ],
+      suppressOsmIds: [],
       spatialSuppression: false,
       footprint: {
         centre: [
@@ -2905,7 +2925,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction; no imported meshes or textures. Individual footprints preserve public Artisplein and neighboring Groote Museum."
-      }
+      },
+      bagYear: 1838
     },
     {
       id: "artis-entrance",
@@ -2986,7 +3007,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of three separate surveyed buildings with no garden parcel fill: the 1911 Palm House circular dome/perpendicular wings, 2025 Climate House ETFE canopy and retained external steel cable skeleton, and historic orangery. Actual OpenStreetMap building outlines; official Hortus aerial photography and ZJA 2025 architect plan/section references. Heights and ornamental details approximate."
-      }
+      },
+      bagYear: 1992
     },
     {
       id: "arcam",
@@ -3024,7 +3046,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original simplified curved shell and window reconstruction. Footprint and height sourced; folds, seams and glass-opening contours approximate. No imported mesh or photo texture."
-      }
+      },
+      bagYear: 1996
     },
     {
       id: "brakke-grond",
@@ -3062,7 +3085,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
-      }
+      },
+      bagYear: 1880
     },
     {
       id: "frascati",
@@ -3100,7 +3124,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
-      }
+      },
+      bagYear: 1817
     },
     {
       id: "boom-chicago",
@@ -3138,7 +3163,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
-      }
+      },
+      bagYear: 1913
     },
     {
       id: "foam",
@@ -3179,7 +3205,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
-      }
+      },
+      bagYear: 1861
     },
     {
       id: "huis-marseille",
@@ -3218,7 +3245,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
-      }
+      },
+      bagYear: 1905
     },
     {
       id: "agnietenkapel",
@@ -3256,7 +3284,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Exact mapped chapel plan and courtyard wall; roof divisions, tracery and carved gate details approximate. Reference photos guide geometry only."
-      }
+      },
+      bagYear: 1470
     },
     {
       id: "lab111",
@@ -3294,7 +3323,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
-      }
+      },
+      bagYear: 1928
     },
     {
       id: "occii",
@@ -3332,7 +3362,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
-      }
+      },
+      bagYear: 1884
     },
     {
       id: "ketelhuis",
@@ -3370,7 +3401,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
-      }
+      },
+      bagYear: 1885
     },
     {
       id: "wereldmuseum-amsterdam",
@@ -3378,7 +3410,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_754896207",
       modelUrl: "./models/wereldmuseum-amsterdam.glb",
       suppressOsmIds: [
-        "r3697339",
         "w750932737",
         "w750932738",
         "w750932739",
@@ -3416,8 +3447,7 @@ Map source: ${osmUrl(places[i][0])}`);
         "w751004894",
         "w751004895",
         "w751004896",
-        "w751004897",
-        "NL.IMBAG.Pand.0363100012237251"
+        "w751004897"
       ],
       spatialSuppression: false,
       footprint: {
@@ -3483,7 +3513,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Exact OpenStreetMap parent/parts polygons cross-checked against current PDOK BAG footprints; original texture-free meshes informed by primary architecture photographs. Whole actual cadastral building is represented with separate measured roof/body portions, preserving genuine open courts."
-      }
+      },
+      bagYear: 1876
     },
     {
       id: "allard-pierson",
@@ -3520,7 +3551,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Exact OpenStreetMap parent/parts polygons cross-checked against current PDOK BAG footprints; original texture-free meshes informed by primary architecture photographs. Whole actual cadastral building is represented with separate measured roof/body portions, preserving genuine open courts."
-      }
+      },
+      bagYear: 1870
     },
     {
       id: "dominicuskerk",
@@ -3528,8 +3560,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1569842434",
       modelUrl: "./models/dominicuskerk.glb",
       suppressOsmIds: [
-        "w266621545",
-        "NL.IMBAG.Pand.0363100012171033",
         "w749287651",
         "w749287652",
         "w749287653",
@@ -3571,8 +3601,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_77247220",
       modelUrl: "./models/vredeskerk.glb",
       suppressOsmIds: [
-        "w44451461",
-        "NL.IMBAG.Pand.0363100012107328",
         "w995323510",
         "w995323511",
         "w995323512"
@@ -3642,7 +3670,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
-      }
+      },
+      bagYear: 1922
     },
     {
       id: "cinecenter",
@@ -3680,7 +3709,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
-      }
+      },
+      bagYear: 1981
     },
     {
       id: "studiok",
@@ -3689,7 +3719,6 @@ Map source: ${osmUrl(places[i][0])}`);
       modelUrl: "./models/studiok.glb",
       suppressOsmIds: [
         "r3699016",
-        "NL.IMBAG.Pand.0363100012237325",
         "w278379946"
       ],
       footprint: {
@@ -3756,7 +3785,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction of the exact mapped individual ARTIS building, cross-checked against current PDOK BAG and primary museum/architect imagery. Actual historic permanent roof silhouette retained; dates follow documented architecture history, and temporary works or unconfirmed solar-panel layout are not represented."
-      }
+      },
+      bagYear: 1855
     },
     {
       id: "artis-library",
@@ -3793,7 +3823,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction of the exact mapped individual ARTIS building, cross-checked against current PDOK BAG and primary museum/architect imagery. Actual historic permanent roof silhouette retained; dates follow documented architecture history, and temporary works or unconfirmed solar-panel layout are not represented."
-      }
+      },
+      bagYear: 1956
     },
     {
       id: "de-dokwerker",
@@ -3801,9 +3832,7 @@ Map source: ${osmUrl(places[i][0])}`);
       assetKind: "memorial",
       landmarkId: "extract_landmarks_1098130181",
       modelUrl: "./models/de-dokwerker.glb",
-      suppressOsmIds: [
-        "n34051159"
-      ],
+      suppressOsmIds: [],
       spatialSuppression: false,
       footprint: {
         centre: [
@@ -3868,7 +3897,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly museum reconstruction from primary museum photographs and exact OSM/current PDOK BAG building outlines. Willet-Holthuysen\u2019s open French garden and the Pipe Museum\u2019s central courtyard notch are retained; adjacent canal houses are outside the model and suppression scope."
-      }
+      },
+      bagYear: 1687
     },
     {
       id: "amsterdam-pipe-museum",
@@ -3905,7 +3935,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly museum reconstruction from primary museum photographs and exact OSM/current PDOK BAG building outlines. Willet-Holthuysen\u2019s open French garden and the Pipe Museum\u2019s central courtyard notch are retained; adjacent canal houses are outside the model and suppression scope."
-      }
+      },
+      bagYear: 1710
     },
     {
       id: "athenaeum",
@@ -3946,7 +3977,8 @@ Map source: ${osmUrl(places[i][0])}`);
       },
       relatedLandmarkIds: [
         "osm_shop_3868737201"
-      ]
+      ],
+      bagYear: 1884
     },
     {
       id: "scheltema",
@@ -3984,7 +4016,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
-      }
+      },
+      bagYear: 1830
     },
     {
       id: "haarlemmermeerstation",
@@ -4022,7 +4055,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
-      }
+      },
+      bagYear: 1915
     },
     {
       id: "begijnhofkapel",
@@ -4060,7 +4094,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction. Exact sharedBAG plan, two bent three-bay fronts, Empire windows and projecting stone portal. Authored simplified rear roof/wall divisions within current3DBAG height; church has no spire. EnglishReformedChurch and neighboring houses retained."
-      }
+      },
+      bagYear: 1671
     },
     {
       id: "huis-de-pinto",
@@ -4097,7 +4132,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction of the exact mapped museum/cultural-house building, cross-checked against current PDOK BAG. Pinto\u2019s twin historic roofs remain behind the monumental parapet; the Tulip Museum occupies the actual combined 1927 Prinsengracht116\u2013118 apartment/shop block with straight brick cornice. Neighboring buildings and any open rear spaces are retained."
-      }
+      },
+      bagYear: 1680
     },
     {
       id: "amsterdam-tulip-museum",
@@ -4134,7 +4170,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction of the exact mapped museum/cultural-house building, cross-checked against current PDOK BAG. Pinto\u2019s twin historic roofs remain behind the monumental parapet; the Tulip Museum occupies the actual combined 1927 Prinsengracht116\u2013118 apartment/shop block with straight brick cornice. Neighboring buildings and any open rear spaces are retained."
-      }
+      },
+      bagYear: 1927
     },
     {
       id: "ot301",
@@ -4172,7 +4209,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
-      }
+      },
+      bagYear: 1896
     },
     {
       id: "cavia",
@@ -4214,7 +4252,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
-      }
+      },
+      bagYear: 1913
     },
     {
       id: "orgelpark",
@@ -4252,7 +4291,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
-      }
+      },
+      bagYear: 1924
     },
     {
       id: "houten-huys",
@@ -4290,7 +4330,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly model: narrow black timber gables, overhanging upper front, white masonry base and leaded windows. Exact BAG plan and current3DBAG height; side/rear details and roof are simplified. No photograph pixels or downloaded mesh geometry. Courtyard statue, trees, fences and neighboring houses retained."
-      }
+      },
+      bagYear: 1455
     },
     {
       id: "herepoort-bergpoort",
@@ -4328,7 +4369,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction of pairedmuseumgardenfacades: openarch passage, sandstoneHerepoort with pairedcolumns/niches and brick/stoneBergpoort reverse. Surveyedparent and publisheddimensions; carvedreliefs, roof and archproportions simplified from photos. No downloadedmesh geometry or referenceimage pixels. Othermuseumgarden objects retained."
-      }
+      },
+      bagYear: 1885
     },
     {
       id: "huis-aan-drie-grachten",
@@ -4365,7 +4407,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction from primary monument descriptions and original photographer references, scoped to current PDOK BAG. Huis aan de Drie Grachten retains three stepped gables and transverse tiled roofs; De Dolphijn models both current restored Renaissance facade halves within ONE actual parent whose VBO addresses are Singel140 and142. Adjacent Singel138/BAG0363100012167969 and house247/BAG0363100012179859 are retained. Current photographic silhouette takes priority over older register wording about incomplete/restored tops."
-      }
+      },
+      bagYear: 1610
     },
     {
       id: "de-dolphijn",
@@ -4402,7 +4445,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction from primary monument descriptions and original photographer references, scoped to current PDOK BAG. Huis aan de Drie Grachten retains three stepped gables and transverse tiled roofs; De Dolphijn models both current restored Renaissance facade halves within ONE actual parent whose VBO addresses are Singel140 and142. Adjacent Singel138/BAG0363100012167969 and house247/BAG0363100012179859 are retained. Current photographic silhouette takes priority over older register wording about incomplete/restored tops."
-      }
+      },
+      bagYear: 1605
     },
     {
       id: "rode-hoed",
@@ -4440,7 +4484,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-palette low-poly geometry; no imported meshes or texture images. Exact mapped scope with neighboring houses, courtyard recesses and park grounds retained."
-      }
+      },
+      bagYear: 1630
     },
     {
       id: "theater-amsterdam",
@@ -4448,8 +4493,7 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_707691223",
       modelUrl: "./models/theater-amsterdam.glb",
       suppressOsmIds: [
-        "w265853828",
-        "NL.IMBAG.Pand.0363100012242100"
+        "w265853828"
       ],
       footprint: {
         centre: [
@@ -4589,7 +4633,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of the current Oost-Indisch Huis/Bushuis university complex from exact mapped geometry and original primary photographer references, cross-checked against current PDOK BAG and its Kloveniersburgwal48 onderwijsfunctie VBO. Height references measured from 3DBAG AHN5 LoD2.2 planes (NAP ground0.834; Bushuis roof about14.2\u201321.7m relative, historic courtyard wings about10.3\u201317.1m); mesh uses original authored simplified roofs and details, no imported source triangles. The single actual courtyard hole and west perimeter notches remain open; adjoining Waalse Kerk and neighboring houses are retained. The historical courtyard Renaissance gable and separate 1890/1891 Peters Bushuis23-bay Neo-Renaissance canal facade have distinct silhouettes."
-      }
+      },
+      bagYear: 1606
     },
     {
       id: "het-veem",
@@ -4627,7 +4672,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
-      }
+      },
+      bagYear: 1900
     },
     {
       id: "tobacco-theater",
@@ -4665,7 +4711,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
-      }
+      },
+      bagYear: 1905
     },
     {
       id: "plein-theater",
@@ -4703,7 +4750,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
-      }
+      },
+      bagYear: 1989
     },
     {
       id: "hash-marihuana-hemp-museum",
@@ -4740,7 +4788,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of the actual narrow red-brick three-bay Oudezijds Achterburgwal148 house, cross-checked against the museum owner\u2019s original frontage photographs and current148H VBO/Pand records. The adjoining black Sensi Seeds146 house is retained. Exact mapped rear recesses remain open. Height references use 3DBAG AHN5 relative roofmax16.672m; simplified roof and facade meshes are authored originally, with no imported source faces or textures."
-      }
+      },
+      bagYear: 1757
     },
     {
       id: "hemp-gallery",
@@ -4777,7 +4826,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of the single actual five-bay Oudezijds Achterburgwal128\u2013132 block containing Hemp Gallery130, verified against RCE518459, the museum owner and current original photographer reference. Rademaker\u2019s1879\u20131881 neo-Renaissance facade has a rusticated ground floor, three full upper floors and mezzanine, with white pilasters and projecting cornices. The OSM1993 date is a register mismatch, not the architectural date. Exact rear return remains scoped to the actual building; adjoining houses remain unsuppressed. Roof reference measured from3DBAG AHN5 maxrelative19.311m; all asset meshes are original simplified geometry."
-      }
+      },
+      bagYear: 1993
     },
     {
       id: "madame-tussauds",
@@ -4814,7 +4864,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of Joling\u2019s1914\u20131917 Peek & Cloppenburg department-store building occupied in part by Madame Tussauds. RCE518421 and original photographer frontage guide the stone11-bay Dam facade,9-bay Rokin facade,colossal pilasters,open balconies,rose-window central gable,dormers and decorative roof vents. CurrentPDOK confirms single actualBAG2175378 with Dam20,Rokin6,Kromelleboogsteeg2 VBOs; mapped1900 date is not the architecturaldate. ExactL-shaped parent outline and rear recesses are retained. Original simplified roof regions follow AHN5 approximate21.8m eaves,31.3m mainhips,33.9m vents, and lower innerrear rooms13.85/17.3m. No imported source faces or textures; exact-only suppression retains all neighboring buildings."
-      }
+      },
+      bagYear: 1900
     },
     {
       id: "amsterdam-dungeon",
@@ -4853,7 +4904,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free model scoped to the two actual buildings used by Amsterdam Dungeon: currentPDOK Rokin78 bijeenkomstfunctie1277m\xB2 VBO0363010003702386 is linked to both BAG2168346 (chapel/side rooms) and2175269 (entrance wing). Other RCE518455 compound buildings including Rokin80/82 BAG2175268 andKalverstraat81/87 BAG2168348 remain visible and unsuppressed. PrimaryArcam exterior confirms two gabled venue wings and portal; the neighboring streetcorner dome is outside model scope. Original octagonal chapel,tent roof/open lantern,sculpted brick gables,stone bands and measured lower wings refer to Posthumus Meyjes\u20191908\u20131912 architecture. Heights approximate13.3\u201317.8m front,7\u201316m side rooms,18m chapel eaves,24.7m truncated tent roof and29m lantern: AHN5 raw height26.9m and reconstructedplanepeaks29.1m differ; OSM32.3m is not used as a flat mass. Exact mapped recesses retained; no imported mesh faces or textures."
-      }
+      },
+      bagYear: 1707
     },
     {
       id: "sint-jorishof",
@@ -4899,8 +4951,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_56521997",
       modelUrl: "./models/walloon-church.glb",
       suppressOsmIds: [
-        "w158206091",
-        "NL.IMBAG.Pand.0363100012171206",
         "w749356521",
         "w749356522",
         "w749356523",
@@ -4972,7 +5022,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
-      }
+      },
+      bagYear: 1480
     },
     {
       id: "huize-lydia",
@@ -5010,7 +5061,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
-      }
+      },
+      bagYear: 1927
     },
     {
       id: "eye-filmmuseum",
@@ -5020,8 +5072,7 @@ Map source: ${osmUrl(places[i][0])}`);
       suppressOsmIds: [
         "NL.IMBAG.Pand.0363100012237838",
         "w127505497",
-        "w1206726812",
-        "w1207014127"
+        "w1206726812"
       ],
       spatialSuppression: false,
       footprint: {
@@ -5050,7 +5101,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free folded-shell reconstruction. Current BAG parent scope, recorded lower-level outline and approximate roof heights constrain original rounded control points. White inclined panels, southern glass ribbon, recessed lower storey and eastern cantilever are interpreted from architect photographs and the supplied Warehouse viewer. Individual roof folds, glazing contours, mullion spacing and stairs remain approximations. No imported Warehouse or survey mesh geometry; no photo pixels. The extract teaching ID681957397 is retained only as teaching identity, not suppressed as a current OSM way: current OSM way681957397 is in another country. Only verified EYE parent/levels are suppressed; A\u2019DAM, promenade and park remain separate."
-      }
+      },
+      bagYear: 2011
     },
     {
       id: "royal-theater-carre",
@@ -5088,7 +5140,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly theatre, facade and ornament geometry. No imported mesh or image; exact current parent replacement preserves neighboring Amstel houses and Onbekendegracht."
-      }
+      },
+      bagYear: 1887
     },
     {
       id: "sint-nicolaas",
@@ -5096,8 +5149,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1272308587",
       modelUrl: "./models/sint-nicolaas.glb",
       suppressOsmIds: [
-        "w174996833",
-        "NL.IMBAG.Pand.0363100012165691",
         "w645534930",
         "w645534931",
         "w749289632",
@@ -5146,7 +5197,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_512243549",
       modelUrl: "./models/rijksmuseum.glb",
       suppressOsmIds: [
-        "w431070185",
         "w431070791",
         "w431070942",
         "w517791046",
@@ -5205,7 +5255,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free shared-palette reconstruction of Cuypers museum from official exterior imagery and exact current OpenStreetMap polygons/heights. Open central bicycle passage, hollow roofed atria, tall paired towers and Philips wing retained. Warehouse reference viewed only; no imported geometry or photo textures."
-      }
+      },
+      bagYear: 1885
     },
     {
       id: "silodam",
@@ -5213,8 +5264,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "silodam",
       modelUrl: "./models/silodam.glb",
       suppressOsmIds: [
-        "w57864184",
-        "NL.IMBAG.Pand.0363100012149391",
         "w1038324509",
         "w1038324510",
         "w1038324511"
@@ -5253,7 +5302,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1692085215",
       modelUrl: "./models/westerkerk.glb",
       suppressOsmIds: [
-        "w99203577",
         "w99205257",
         "w749268115",
         "w749268116",
@@ -5265,7 +5313,6 @@ Map source: ${osmUrl(places[i][0])}`);
         "w751083597",
         "w751083598",
         "w751083599",
-        "NL.IMBAG.Pand.0363100012174221",
         "NL.IMBAG.Pand.0363100012164998"
       ],
       spatialSuppression: false,
@@ -5295,7 +5342,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free shared-palette reconstruction from current mapped church/tower polygons and official church/municipal exterior references. Double-cross roof plan, Renaissance arched windows/pilasters, stone clock tiers and blue-gold imperial crown. No imported geometry or reference pixels. Ornamental details approximate; exact source grounds and neighboring buildings retained."
-      }
+      },
+      bagYear: 1631
     },
     {
       id: "sexmuseum-venustempel",
@@ -5333,7 +5381,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free architectural reconstruction; no imported mesh or photograph. Exact current parent scope, neighboring narrow houses and mapped courts preserved."
-      }
+      },
+      bagYear: 1725
     },
     {
       id: "oude-lutherse-kerk",
@@ -5371,7 +5420,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free architectural reconstruction; no imported mesh or photograph. Exact current parent scope, neighboring narrow houses and mapped courts preserved."
-      }
+      },
+      bagYear: 1633
     },
     {
       id: "kattenkabinet",
@@ -5408,7 +5458,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original low-poly reconstruction of Herengracht497: exact currentBAG parent, six-bay doublehouse with central classicalpediment, nineteenth-centuryT-windows, currentground-levelentrance and hippedroof withtwo dormers/twochimneys. Historicaldouble stoopremoved1837 is not invented; neighboringHerengracht495/499 remain. Native roofenvelope calibrated to AHN5 approximate13.86m eaves/19.53m ridge andlower rearreturns, sourceimages visualreference only, no imported mesh/texture."
-      }
+      },
+      bagYear: 1667
     },
     {
       id: "pianola-museum",
@@ -5445,7 +5496,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original low-poly reconstruction of the1905former police stationWesterstraat106/currentPianolaMuseum parent: exactcurrentBAGplan with projectingoriel, asymmetricfivebaystreetfront, centralcrenellatedtower, round-head dormers, reddishtile roof andlowerrearflatwings. Actual3DBAGapprox12.84m eaves/16.37m ridge, currentmuseumground-levelentrance; adjacentparents retained. Sourcesvisualreferenceonly; no importedmesh/texture."
-      }
+      },
+      bagYear: 1905
     },
     {
       id: "montelbaanstoren-amsterdam",
@@ -5453,12 +5505,10 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1027016792",
       modelUrl: "./models/montelbaanstoren-amsterdam.glb",
       suppressOsmIds: [
-        "w57864086",
         "w751647817",
         "w751647818",
         "w751647819",
-        "w751647820",
-        "NL.IMBAG.Pand.0363100012181906"
+        "w751647820"
       ],
       spatialSuppression: false,
       footprint: {
@@ -5495,7 +5545,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1375175685",
       modelUrl: "./models/munttoren-amsterdam.glb",
       suppressOsmIds: [
-        "w57862728",
         "w751683816",
         "w751683817",
         "w751683818",
@@ -5503,8 +5552,7 @@ Map source: ${osmUrl(places[i][0])}`);
         "w751683820",
         "w751698382",
         "w751698383",
-        "w751698384",
-        "NL.IMBAG.Pand.0363100012168045"
+        "w751698384"
       ],
       spatialSuppression: false,
       footprint: {
@@ -5542,11 +5590,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_720777797",
       modelUrl: "./models/national-monument-on-the-dam.glb",
       suppressOsmIds: [
-        "w168680619",
-        "n5413222221",
-        "n5413222222",
-        "w940729263",
-        "w1320477257",
         "r18117445",
         "w1320477258",
         "w1320477259",
@@ -5588,7 +5631,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1104215352",
       modelUrl: "./models/de-beurs-van-berlage.glb",
       suppressOsmIds: [
-        "w57858502",
         "w749918629",
         "w749918630",
         "w749918631",
@@ -5628,8 +5670,7 @@ Map source: ${osmUrl(places[i][0])}`);
         "w750166476",
         "w750166477",
         "w750166478",
-        "w750166479",
-        "NL.IMBAG.Pand.0363100012171966"
+        "w750166479"
       ],
       spatialSuppression: false,
       footprint: {
@@ -5695,7 +5736,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original low-poly reconstruction of actual1966 nursing-home parent with1969 operation recorded separately: six occupied facade rows, recessed brick-column ground storey, ochre-panel glass room strips, projecting front bays, rooftop ribbon/setback, actual14.1m rear wing and23.65/27.75m main roofs. Small service structure reaches31.7m; whole footprint is not extruded to the old31.7m OSM maximum. Official facade imagery is visual reference only, no imported mesh or photo texture. CurrentBAG and AHN5 survey calibrate native massing; attached neighboring residential/school parents and courtyard void remain. Front glazing follows the owner facade photograph; rear/side window rhythm is inferred rather than measured. Explicit roof panels own upward caps to avoid coplanar flicker."
-      }
+      },
+      bagYear: 1966
     },
     {
       id: "rembrandt-tower",
@@ -5703,8 +5745,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "osm_building_44451577",
       modelUrl: "./models/rembrandt-tower.glb",
       suppressOsmIds: [
-        "w44451577",
-        "NL.IMBAG.Pand.0363100012113758",
         "w754399963",
         "w754399964",
         "w754399965",
@@ -5752,8 +5792,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "osm_building_279841030",
       modelUrl: "./models/breitner-tower.glb",
       suppressOsmIds: [
-        "w279841030",
-        "NL.IMBAG.Pand.0363100012070861",
         "w754399978",
         "w463020446",
         "w754399974",
@@ -5761,8 +5799,7 @@ Map source: ${osmUrl(places[i][0])}`);
         "w754399976",
         "w754399977",
         "w754399979",
-        "w754399980",
-        "r10396839"
+        "w754399980"
       ],
       footprint: {
         centre: [
@@ -5799,8 +5836,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "osm_building_279842059",
       modelUrl: "./models/mondriaan-tower.glb",
       suppressOsmIds: [
-        "w279842059",
-        "NL.IMBAG.Pand.0363100012097541",
         "w754399954",
         "w754399955",
         "w754399956",
@@ -5808,8 +5843,7 @@ Map source: ${osmUrl(places[i][0])}`);
         "w754399958",
         "w754399959",
         "w754399960",
-        "w754399961",
-        "r10396838"
+        "w754399961"
       ],
       footprint: {
         centre: [
@@ -5846,8 +5880,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "osm_building_276272893",
       modelUrl: "./models/de-piramides.glb",
       suppressOsmIds: [
-        "w276272893",
-        "NL.IMBAG.Pand.0363100012110293",
         "w1080809439",
         "w1080809440",
         "w1080809441",
@@ -5955,7 +5987,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
-      }
+      },
+      bagYear: 1885
     },
     {
       id: "amsterdam-in-motion",
@@ -6006,7 +6039,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
-      }
+      },
+      bagYear: 1885
     },
     {
       id: "de-krakeling",
@@ -6053,7 +6087,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
-      }
+      },
+      bagYear: 1885
     },
     {
       id: "nemo",
@@ -6061,7 +6096,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1875483593",
       modelUrl: "./models/nemo.glb",
       suppressOsmIds: [
-        "w57856769",
         "w1390692763",
         "w1390692764",
         "w1390692765",
@@ -6071,8 +6105,7 @@ Map source: ${osmUrl(places[i][0])}`);
         "w1390692769",
         "w1390692770",
         "w1390692771",
-        "w1390692772",
-        "NL.IMBAG.Pand.0363100012164988"
+        "w1390692772"
       ],
       spatialSuppression: false,
       footprint: {
@@ -6108,10 +6141,7 @@ Map source: ${osmUrl(places[i][0])}`);
       name: "Amsterdam Sloterdijk Station",
       landmarkId: "osm_building_268460687",
       modelUrl: "./models/sloterdijk-station.glb",
-      suppressOsmIds: [
-        "w268460687",
-        "NL.IMBAG.Pand.0363100012120833"
-      ],
+      suppressOsmIds: [],
       footprint: {
         centre: [
           4.838214466204455,
@@ -6177,7 +6207,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original white pronged office block, curved glazing, exposed escape stairs and measured roof plant. Former FNV/ArboNed labels are historical occupants, not additional destinations or exterior architect attribution."
-      }
+      },
+      bagYear: 1992
     },
     {
       id: "palace-on-the-dam",
@@ -6185,7 +6216,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_342809743",
       modelUrl: "./models/palace-on-the-dam.glb",
       suppressOsmIds: [
-        "r3580875",
         "w748659170",
         "w748659171",
         "w748659172",
@@ -6203,9 +6233,7 @@ Map source: ${osmUrl(places[i][0])}`);
         "w748659184",
         "w748659185",
         "w748659186",
-        "w748659187",
-        "w57856712",
-        "NL.IMBAG.Pand.0363100012167579"
+        "w748659187"
       ],
       spatialSuppression: false,
       footprint: {
@@ -6271,7 +6299,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly architecture. Exact current BAG/OSM outline and AHN5/3DBAG roof envelope guide manually authored walls and unequal roof levels; primary owner photographs and RCE descriptions guide original arched windows, masonry bands and current entrance. Window ornament is approximate. Machinegebouw retains two parallel unequal ridges at 12.8 and 10.15 metres; De Wester retains the 15.33-metre main hall and separate low western entrance roof. No imported mesh or textures, no vanished chimney or roof ventilator. Exact-only parent replacement preserves adjacent WestWeelde and all other Westergas buildings."
-      }
+      },
+      bagYear: 1885
     },
     {
       id: "de-wester",
@@ -6308,7 +6337,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly architecture. Exact current BAG/OSM outline and AHN5/3DBAG roof envelope guide manually authored walls and unequal roof levels; primary owner photographs and RCE descriptions guide original arched windows, masonry bands and current entrance. Window ornament is approximate. Machinegebouw retains two parallel unequal ridges at 12.8 and 10.15 metres; De Wester retains the 15.33-metre main hall and separate low western entrance roof. No imported mesh or textures, no vanished chimney or roof ventilator. Exact-only parent replacement preserves adjacent WestWeelde and all other Westergas buildings."
-      }
+      },
+      bagYear: 1904
     },
     {
       id: "amstel-hotel",
@@ -6345,7 +6375,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly architecture calibrated to the current canonical PDOK parent and large AHN5/3DBAG roof levels. Principal mansard roofs25.3\u201327.1m, end pavilions28.35m and central pavilion29.54m retain low3.5m terrace and8.5\u201311.5m river conservatory. Primary hotel/Intercontinental photos guide original masonry/window/dormer rhythm and simplified corner lion sculptures. Ornament and turrets approximate from photographs; no imported mesh or texture and no neighboring suppression."
-      }
+      },
+      bagYear: 1867
     },
     {
       id: "concertgebouw",
@@ -6353,8 +6384,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_626684803",
       modelUrl: "./models/concertgebouw.glb",
       suppressOsmIds: [
-        "w46696080",
-        "NL.IMBAG.Pand.0363100012233435",
         "w754269603",
         "w754269604",
         "w754269605",
@@ -6403,8 +6432,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1919682395",
       modelUrl: "./models/stadhuis.glb",
       suppressOsmIds: [
-        "w268782345",
-        "w751591420",
         "w751559653",
         "w751559654",
         "w751559655",
@@ -6427,8 +6454,7 @@ Map source: ${osmUrl(places[i][0])}`);
         "w751591419",
         "w751612860",
         "w751612861",
-        "w751612862",
-        "NL.IMBAG.Pand.0363100012186092"
+        "w751612862"
       ],
       spatialSuppression: false,
       footprint: {
@@ -6494,7 +6520,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original manual facade details and regional massing. AHN5 2023 roof-plane samples calibrate rebuilt roof patch surfaces; no imported asset mesh. Current single BAG parent encloses three surviving historic fronts and low museum wings; surrounding 1990s residences/retail stay outside exact suppression. BAG nominal 1886 does not date all present parts: RCE identifies 1911\u201313/1925/1933\u201334."
-      }
+      },
+      bagYear: 1886
     },
     {
       id: "faralda-crane-hotel",
@@ -6532,7 +6559,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original project-native open steel crane, red hotel suites/lifts, yellow lattice boom and counterweight. No imported meshes/textures."
-      }
+      },
+      bagYear: 2014
     },
     {
       id: "ing-house",
@@ -6570,7 +6598,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free flat-color glass/aluminium wedge, rounded auditorium nose, 16steel supports, double-skin facade and ground lobby. Exact surveyed BAG boundary, open undercroft. Heights use real roof planes;equipment peaks excluded. No imported third-party meshes or image pixels."
-      }
+      },
+      bagYear: 2002
     },
     {
       id: "muiderpoort",
@@ -6608,7 +6637,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original surveyedtexture-free citygate with openarchedpassage, sandstoneDoricorders, heraldicpediments, brickwings, offsetoctagonal dome and clocklantern. Photos guideoriginalgeometry only; no downloadedmeshes or photopixels. Carvings/vault simplified; stageheights estimated."
-      }
+      },
+      bagYear: 1770
     },
     {
       id: "idfa-pavilion",
@@ -6646,7 +6676,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free plaster/brick pavilion with exposed arched loggias, balustrades, corner domes, central classical facade and native surveyed roof contours. No imported mesh or photo pixels."
-      }
+      },
+      bagYear: 1881
     },
     {
       id: "social-history",
@@ -6684,7 +6715,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of the1961 concrete cocoa warehouse transformed by AtelierPRO in1989; off-white vertical ribs, blind archives, raised entrance, library cantilever, tall harbour atrium and rounded glass pavilion. No imported meshes or image pixels. Exact BAG/OSM suppression preserves the adjacent historic warehouse and waterfront."
-      }
+      },
+      bagYear: 1905
     },
     {
       id: "dageraad",
@@ -6721,7 +6753,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly corner parent only, with rounded stepped brickwork, scalloped narrow tower crown, horizontal white window rods and green shop entrances. Native survey17.56m main roof and21.34m narrow tower. Museum-name lettering omitted. Operator/heritage photographs guide geometry; no imported mesh or photo pixels. Adjoining estate parents and court remain."
-      }
+      },
+      bagYear: 1923
     },
     {
       id: "ons-lieve-heer-op-solder",
@@ -6763,7 +6796,8 @@ Map source: ${osmUrl(places[i][0])}`);
       },
       relatedLandmarkIds: [
         "extract_landmarks_769225968"
-      ]
+      ],
+      bagYear: 1630
     },
     {
       id: "canals-museum",
@@ -6799,7 +6833,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG footprint model; source-supported pilaster facade and central pediment. Dimensions/ornament approximate. Current facade checked against operator photo; removed inter-pilaster festoons omitted."
-      }
+      },
+      bagYear: 1663
     },
     {
       id: "niod",
@@ -6836,7 +6871,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free sandstone French neo-Renaissance double house. Exact BAG perimeter at scale1 with separately low middle/rear roof zones. Salm1888drawing resolves window groups, carriage entry, dormer assemblies;2016municipalphoto overrides obsolete standing ridge figures and small dormers. AHN5roof levels guide heights; carved reliefs and skylight are visual approximations. No imported mesh or reference-photo pixels."
-      }
+      },
+      bagYear: 1889
     },
     {
       id: "multatuli",
@@ -6873,7 +6909,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native current BAG house, restrained bell gable and cream timber pui after2022facade photos. Coherent main gable and lower rear extensions informed by AHN5survey; facade details and fine ornament approximate. No photo pixels or third-party mesh."
-      }
+      },
+      bagYear: 1749
     },
     {
       id: "singelkerk",
@@ -6913,7 +6950,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free hidden church and domestic Singel 452 frontage, sourced straight cornices, round-head tracery, open forecourt, iron rail and surveyed intersecting hipped roofs. No imported render meshes or photo pixels. Tiny reliefs and roof details simplified; source pack archived privately."
-      }
+      },
+      bagYear: 1639
     },
     {
       id: "sint-agneskerk",
@@ -6953,7 +6991,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original native-scale texture-free geometry using current BAG plan, researched neo-Romanesque basilica and detached open campanile. Pastorie and neighboring school preserved; no photo pixels or downloaded meshes."
-      }
+      },
+      bagYear: 1914
     },
     {
       id: "petruskerk",
@@ -6992,7 +7031,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free geometry from native BAG footprint, operator facade photographs and roof survey. Separate houses, tomb parents and open churchyard preserved."
-      }
+      },
+      bagYear: 1850
     },
     {
       id: "boomkerk",
@@ -7030,7 +7070,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG church reconstruction; separate presbytery and school retained. Roof heights from AHN5/3DBAG, architectural detail from RCE and reference photographs."
-      }
+      },
+      bagYear: 1911
     },
     {
       id: "w139",
@@ -7074,7 +7115,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native current BAG complex with interpreted AHN5 bounded roof surfaces; restored four-storey plaster three-bay front, low bent-cornice entrance wing, red deep-house roof and low rear theatre. Fine facade detail approximate. No imported mesh or photo pixels."
-      }
+      },
+      bagYear: 2007
     },
     {
       id: "conservatorium",
@@ -7111,7 +7153,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free flat-color architecture built at native surveyed BAG scope and scale1 with coherent footprint-clipped gable, hip and flattened-tent roofs calibrated to major AHN5 measurements, exposed arches and dormers, pale stone main gable, open polygonal corner turret and transparent courtyard frame. Thin ornament heights/spacing approximate from source photos. No neighboring rectangular suppression."
-      }
+      },
+      bagYear: 1902
     },
     {
       id: "kinderkookkafe",
@@ -7151,7 +7194,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native survey reconstruction. No reference pixels or downloaded meshes. Gable/entrance relief and pane divisions photographic approximations."
-      }
+      },
+      bagYear: 1992
     },
     {
       id: "beta-boulders",
@@ -7188,7 +7232,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original native texture-free surveyed shared building and photo-guided curtain walls. No imported mesh/photo pixels. Exact BAG parent only; other tenants retained."
-      }
+      },
+      bagYear: 1964
     },
     {
       id: "beest-boulders",
@@ -7233,7 +7278,8 @@ Map source: ${osmUrl(places[i][0])}`);
         "n8805218642",
         "n3974788355"
       ],
-      preservePositionPrecision: true
+      preservePositionPrecision: true,
+      bagYear: 1959
     },
     {
       id: "klimmuur-centraal",
@@ -7271,7 +7317,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original house-style geometry; no photo textures or imported asset mesh. Only exact BAG host replaced."
-      }
+      },
+      bagYear: 2005
     },
     {
       id: "mountain-network",
@@ -7308,7 +7355,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free house-style reconstruction of surveyed full host; no source photo pixels or third-party artistic mesh."
-      }
+      },
+      bagYear: 2011
     },
     {
       id: "keith-haring-mural",
@@ -7349,7 +7397,8 @@ Map source: ${osmUrl(places[i][0])}`);
       galleryView: {
         theta: -1.3,
         phi: 1.15
-      }
+      },
+      bagYear: 1935
     },
     {
       id: "valley",
@@ -7387,7 +7436,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free house-style reconstruction; surveyed tier contours and photo-guided stone/glass assemblies. No downloaded render mesh or photograph pixels."
-      }
+      },
+      bagYear: 2021
     },
     {
       id: "ndsm-warehouse-complex",
@@ -7425,7 +7475,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-color native shipbuilding warehouse; survey-derived six-bay rooflights, high transverse mallenzolder and low attached halls. Brick/steel grid, tall glazed groups and blue doors, physical open entry. Independent shipyard buildings and existing Faralda/Treehouse retained; no downloaded mesh or photo pixels."
-      }
+      },
+      bagYear: 1900
     },
     {
       id: "midwest",
@@ -7463,7 +7514,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native scale school reconstruction, surveyed stepped roofs, twin open-headed towers and facade rhythms from archived references."
-      }
+      },
+      bagYear: 1927
     },
     {
       id: "nikolaas-myrakerk",
@@ -7501,7 +7553,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free surveyed church and former monastery, grouped round-headed windows, oculus, open slate bell lantern, courtyard and iron entrance. Photographic proportions approximate small details. No source mesh or photo pixels."
-      }
+      },
+      bagYear: 1912
     },
     {
       id: "naco-house",
@@ -7539,7 +7592,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free timber office on five concrete supports, open ground-floor passage, orange curved-gable/hip roof, white glazing and sawtooth trims. No third-party pixels/meshes."
-      }
+      },
+      bagYear: 2022
     },
     {
       id: "jeruzalemkerk",
@@ -7578,7 +7632,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-color native surveyed church and corner residences, stepped cubic masses, projecting brick window piers, stained glazing, three entrances and squat open bell tower. No imported meshes/photo pixels; lettering omitted."
-      }
+      },
+      bagYear: 1929
     },
     {
       id: "blauwe-theehuis",
@@ -7616,7 +7671,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free geometry. Exact BAG ground core and OSM terrace; upper dodecagon/window partitions/vertical tiers estimated from register/photo ratios under surveyed overall height."
-      }
+      },
+      bagYear: 1937
     },
     {
       id: "groot-melkhuis",
@@ -7654,7 +7710,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction with exact BAG ground footprint, photo-backed hipped upper house/veranda/awnings. Roof surface simplified from photo with survey envelope; no imported mesh or pixels."
-      }
+      },
+      bagYear: 1949
     },
     {
       id: "beest-het-lab",
@@ -7691,7 +7748,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free geometry based on survey polygons and municipal panorama observations; exact source suppression preserves adjacent east warehouse."
-      }
+      },
+      bagYear: 1964
     },
     {
       id: "kesbeke",
@@ -7732,7 +7790,8 @@ Map source: ${osmUrl(places[i][0])}`);
       materialOverrides: {
         brick: "#8a7159",
         gold: "#f4c400"
-      }
+      },
+      bagYear: 1948
     },
     {
       id: "kesbeke-shop",
@@ -7773,7 +7832,8 @@ Map source: ${osmUrl(places[i][0])}`);
       materialOverrides: {
         brick: "#8a7159",
         gold: "#f4c400"
-      }
+      },
+      bagYear: 1934
     },
     {
       id: "ndsm-container-arch",
@@ -7855,7 +7915,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free flat-colour house style; actual BAG holed plan and variable measured roof regions constrain newly generated geometry. Principal facade follows actual northeast13.856m street boundary0\u21929 with source-supported six sash groups, three reconstructed neck tops, sober block ornament and right-half1633 Saint Urbanus portal. Thin front masonry support stays on true perimeter. No neighboring buildings or source pixels/lettering/imported mesh. Superseded partywall9\u219210 and rear10\u219214 facade placements failed native acceptance."
-      }
+      },
+      bagYear: 1611
     },
     {
       id: "the-rock",
@@ -7896,7 +7957,8 @@ Map source: ${osmUrl(places[i][0])}`);
       },
       materialOverrides: {
         greyBrick: "#4b4a44"
-      }
+      },
+      bagYear: 2009
     },
     {
       id: "rai-amsterdam",
@@ -7904,18 +7966,13 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "n2817982961",
       modelUrl: "./models/rai-amsterdam.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012093034",
         "w806950194",
         "w806950195",
         "w806950196",
         "w806950197",
-        "w43783760",
-        "NL.IMBAG.Pand.0363100012093905",
-        "w277270903",
         "w461439852",
         "NL.IMBAG.Pand.0363100012218586",
         "w277270901",
-        "w1238963818",
         "w807090339",
         "w807204806",
         "w807204801",
@@ -7961,7 +8018,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original native flat-color texture-free Elicium, Europacomplex barrel and surrounding halls,1963 Westhal,1969 Amstelhal and Signaal. Source-supported exact named hall/strip outlines; OSM heights and repeated glazing approximate. Full RAI coverage including separate Amtrium/Hollandcomplex/Congress Centre pending. Broad partially owned compoundw807090334 remains unsuppressed."
-      }
+      },
+      bagYear: 2009
     },
     {
       id: "pulitzer-amsterdam",
@@ -7999,7 +8057,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free flat-color connected historic canal houses. Native currentBAG exteriors; original shells constructed from clipped survey roof-plane regions, four preserved sourcecourts, independently authored street elevations/windows/entries/plinths/crowns. Modern2016black entrance; diverse tuit/hals/klok/lijst family mixture; Saxenburg four-bay sandstonefront with attiek; Jansz corner/Reestraat row. Tinycarvedrelief and joinery spacing photo-guided; retiredaddress fuzzyfallbacks rejected. No downloadedmesh or photo pixels."
-      }
+      },
+      bagYear: 1625
     },
     {
       id: "de-gooyer",
@@ -8037,7 +8096,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native-scale square brick base, thatched octagons, open gallery, rounded cap, old-Dutch lattice sails; no imported meshes or photo pixels."
-      }
+      },
+      bagYear: 1725
     },
     {
       id: "nieuw-dakota",
@@ -8075,7 +8135,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of measured twin-gabled host, pale metal corrugation, blue front and green glazing; preserves northern tenant front and low extension. No copied source pixels or meshes; painted name words omitted."
-      }
+      },
+      bagYear: 1989
     },
     {
       id: "pllek",
@@ -8113,7 +8174,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-color container restaurant compound with two red barrelvaults and waterfront glass,source-supported tall yellowtower; nativeplan/exactIDs retain Treehouse,NDSMbeach and shipyardneighbors. No photo textures or copiedmeshes."
-      }
+      },
+      bagYear: 2014
     },
     {
       id: "monk-amsterdam",
@@ -8158,7 +8220,8 @@ Map source: ${osmUrl(places[i][0])}`);
         tenantVbo: "0363010012074249",
         tenantCount: 14,
         labelPolicy: "Monk labels the venue destination; whole shared factory not renamed or assigned exclusive tenant ownership."
-      }
+      },
+      bagYear: 1948
     },
     {
       id: "straat-museum",
@@ -8196,7 +8259,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-color reconstruction using survey dimensions and primary current photographs. Four flattened roof lights, brick walls, annex glazing and restrained original geometric mural interpretation; no copied mesh or photo pixels."
-      }
+      },
+      bagYear: 1900
     },
     {
       id: "treehouse-ndsm",
@@ -8233,7 +8297,6 @@ Map source: ${osmUrl(places[i][0])}`);
         "w717022792",
         "NL.IMBAG.Pand.0363100012252491",
         "w717022783",
-        "NL.IMBAG.Pand.0363100012252492",
         "w717022804",
         "NL.IMBAG.Pand.0363100012252493"
       ],
@@ -8264,7 +8327,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free studio/container village;16nativeseparatefootprints,sourcewhitepitchedcabinsandlargeworkhalls,observedcoloredcorrugationandnorthblackslats. Source-derivedroofplanes,notimportedmesh. Courtyards/alleys/Pllekneighbors retained."
-      }
+      },
+      bagYear: 2020
     },
     {
       id: "vondeltuin",
@@ -8302,7 +8366,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-color reconstruction of surveyed shell and source-backed glazing/shingle/sunshade assemblies. No copied reference pixels or third-party mesh. Fine pane/slat divisions photographic approximations."
-      }
+      },
+      bagYear: 2020
     },
     {
       id: "centrale-markthal",
@@ -8310,8 +8375,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "manual_centrale_markthal",
       modelUrl: "./models/centrale-markthal.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012210502",
-        "w276272968",
         "w1080812379",
         "w1080812380",
         "w1080812381",
@@ -8478,7 +8541,8 @@ Map source: ${osmUrl(places[i][0])}`);
         commit: "b48b9e9e33a15680e2cccacc02cacae5b2305604",
         rawSourceCommit: "b9ecc5f2",
         acceptedCheckpointCommit: "b48b9e9e33a15680e2cccacc02cacae5b2305604"
-      }
+      },
+      bagYear: 1905
     },
     {
       id: "vinoly",
@@ -8486,12 +8550,10 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "osm_building_27653949",
       modelUrl: "./models/vinoly.glb",
       suppressOsmIds: [
-        "w27653949",
         "w754894011",
         "w754894012",
         "w754894013",
-        "w754894014",
-        "NL.IMBAG.Pand.0363100012107681"
+        "w754894014"
       ],
       spatialSuppression: false,
       footprint: {
@@ -8565,7 +8627,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-color native reconstruction, survey bounded stepped roofs and photographed factory cornice and opening assemblies. No third-party pixels or meshes."
-      }
+      },
+      bagYear: 1914
     },
     {
       id: "haparandaweg-2-4",
@@ -8619,7 +8682,8 @@ Map source: ${osmUrl(places[i][0])}`);
         modifications: "Original texture-free metre geometry; architectural references guide geometry only. Requested Haparandaweg2/4 share single BAGparent."
       },
       preservePositionPrecision: true,
-      landmarkId: "n4337412612"
+      landmarkId: "n4337412612",
+      bagYear: 2015
     },
     {
       id: "afrikahuis",
@@ -8657,7 +8721,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native reconstruction of raised octagonal church, limestone facades, glazed stairs and taller presbytery. Source archive c3ffff8f22f2261b6869975cf8453ba11eecaa5f models/afrikahuis. Photo-guided undercroft supports and seven-riser fan stairs; no third-party meshes or pixels."
-      }
+      },
+      bagYear: 1968
     },
     {
       id: "haparandaweg-8-338",
@@ -9141,7 +9206,8 @@ Map source: ${osmUrl(places[i][0])}`);
           ]
         ]
       },
-      heightMetres: 31.5
+      heightMetres: 31.5,
+      bagYear: 2022
     },
     {
       id: "haparandaweg-9",
@@ -9239,7 +9305,8 @@ Map source: ${osmUrl(places[i][0])}`);
           ]
         ]
       },
-      heightMetres: 7.28
+      heightMetres: 7.28,
+      bagYear: 2002
     },
     {
       id: "haparandaweg-11",
@@ -9329,7 +9396,8 @@ Map source: ${osmUrl(places[i][0])}`);
           ]
         ]
       },
-      heightMetres: 7.187
+      heightMetres: 7.187,
+      bagYear: 2002
     },
     {
       id: "haparandaweg-13",
@@ -9415,7 +9483,8 @@ Map source: ${osmUrl(places[i][0])}`);
           ]
         ]
       },
-      heightMetres: 7.15
+      heightMetres: 7.15,
+      bagYear: 2002
     },
     {
       id: "electric-ladyland",
@@ -9463,7 +9532,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native two-parent ensemble, interpreted from BAG/3DBAG, municipal monument212005 and dated references. Museum occupancy only number5; dimensions/joinery approximate."
-      }
+      },
+      bagYear: 1905
     },
     {
       id: "cafe-kobalt",
@@ -9514,7 +9584,8 @@ Map source: ${osmUrl(places[i][0])}`);
         slate: "#4a525d",
         bronze: "#8a624b"
       },
-      landmarkId: "osm_node_539179321"
+      landmarkId: "osm_node_539179321",
+      bagYear: 1610
     },
     {
       id: "podium-mozaiek",
@@ -9567,7 +9638,8 @@ Map source: ${osmUrl(places[i][0])}`);
         slate: "#655348",
         frame: "#b8bcb2",
         dark: "#343b36"
-      }
+      },
+      bagYear: 1954
     },
     {
       id: "dorus-theus-brug",
@@ -9673,7 +9745,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native interpretation of source footprint/roof planes, current facade photos and municipal/register description; joinery/stoop/dormer proportions approximate. No photo pixels or third-party mesh imported."
-      }
+      },
+      bagYear: 1668
     },
     {
       id: "oosterparkkerk",
@@ -9725,7 +9798,8 @@ Map source: ${osmUrl(places[i][0])}`);
       routeCenter: [
         4.915873654538593,
         52.36005012574633
-      ]
+      ],
+      bagYear: 1904
     },
     {
       id: "mediamatic",
@@ -9775,7 +9849,8 @@ Map source: ${osmUrl(places[i][0])}`);
         white: "#d3d4cb",
         frame: "#9ca7a6",
         dark: "#404946"
-      }
+      },
+      bagYear: 1957
     },
     {
       id: "fire-station-hendrik",
@@ -10144,7 +10219,8 @@ Map source: ${osmUrl(places[i][0])}`);
         slate: "#4b5053",
         glass: "#415763",
         blue: "#263e53"
-      }
+      },
+      bagYear: 1900
     },
     {
       id: "fire-station-dirk",
@@ -10194,7 +10270,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG reconstruction;2025 panorama-backed front arches/stepped gables/divided windows and roof families. Roof and ornament geometry approximated; no third-party pixels or mesh imported."
-      }
+      },
+      bagYear: 1896
     },
     {
       id: "fire-station-nico",
@@ -10400,7 +10477,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1972
     },
     {
       id: "fire-station-osdorp",
@@ -10450,7 +10528,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG geometry; curved sedum-roof glass hall, glazing connector, dark-brick open terrace accommodation block. No third-party mesh or pixels."
-      }
+      },
+      bagYear: 2005
     },
     {
       id: "fire-station-teunis",
@@ -10500,7 +10579,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native surveyed footprint; recessed three-bay hall, red soffits and open upper terrace. No third-party mesh or pixels."
-      }
+      },
+      bagYear: 2013
     },
     {
       id: "fire-station-victor",
@@ -10598,7 +10678,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1911
     },
     {
       id: "fire-station-willem",
@@ -11291,7 +11372,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1984
     },
     {
       id: "fire-station-ijsbrand",
@@ -11449,7 +11531,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2001
     },
     {
       id: "fire-station-pieter",
@@ -11602,7 +11685,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1973
     },
     {
       id: "fire-station-zebra",
@@ -11652,7 +11736,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG brick station, three red truck doors, gray metal office bay and ribbon clerestory, offset hose tower. No third-party meshes or photo pixels."
-      }
+      },
+      bagYear: 1973
     },
     {
       id: "fire-station-weesp",
@@ -11702,7 +11787,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native surveyed geometry and source-observed curved garage frontage and trapezoidal upper glazing; no imported mesh or pixels."
-      }
+      },
+      bagYear: 2010
     },
     {
       id: "fire-station-driemond",
@@ -11789,7 +11875,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1934
     },
     {
       id: "fire-station-anton",
@@ -11842,7 +11929,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free BAG reconstruction; source-guided gray bands, timber terrace, red/white bays and entrance overhang. No reference pixels or third-party mesh imported."
-      }
+      },
+      bagYear: 2016
     },
     {
       id: "this-is-holland",
@@ -11896,7 +11984,8 @@ Map source: ${osmUrl(places[i][0])}`);
       },
       materialOpacity: {
         glass: 0.3
-      }
+      },
+      bagYear: 2018
     },
     {
       id: "luther-museum",
@@ -11905,8 +11994,7 @@ Map source: ${osmUrl(places[i][0])}`);
       modelUrl: "./models/luther-museum.glb",
       suppressOsmIds: [
         "NL.IMBAG.Pand.0363100012164939",
-        "r3604195",
-        "w269000350"
+        "r3604195"
       ],
       spatialSuppression: false,
       footprint: {
@@ -11942,7 +12030,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG parent with two courtyards and later wing; surveyed supported roof domains, photo-guided original apertures and stone entrances. Scale1. Window dimensions and trim depths approximate; no imported mesh or photo textures."
-      }
+      },
+      bagYear: 1771
     },
     {
       id: "huize-frankendael",
@@ -11951,11 +12040,7 @@ Map source: ${osmUrl(places[i][0])}`);
       modelUrl: "./models/huize-frankendael.glb",
       suppressOsmIds: [
         "w44980011",
-        "NL.IMBAG.Pand.0363100012162192",
-        "w1562613213",
-        "w1562613214",
-        "w1562613215",
-        "w1562613216"
+        "NL.IMBAG.Pand.0363100012162192"
       ],
       spatialSuppression: false,
       footprint: {
@@ -11994,7 +12079,8 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG brick pavilion, coach-house wings, truncated grey hip roofs, rear polygonal projection, pale rococo surrounds, balustrade, dormers and entrance steps. No imported meshes or photo pixels."
-      }
+      },
+      bagYear: 1700
     },
     {
       id: "uilenburger-synagoge",
@@ -12085,7 +12171,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1766
     },
     {
       id: "nieuwendammerkerk",
@@ -12203,7 +12290,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1849
     },
     {
       id: "meerpadkerk",
@@ -12292,7 +12380,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1924
     },
     {
       id: "hannekes-boom",
@@ -12396,7 +12485,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2011
     },
     {
       id: "posthoornkerk",
@@ -12404,8 +12494,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_213091641",
       modelUrl: "./models/posthoornkerk.glb",
       suppressOsmIds: [
-        "w43040630",
-        "NL.IMBAG.Pand.0363100012167529",
         "w750036045",
         "w750036049",
         "w750036051",
@@ -12536,7 +12624,8 @@ Map source: ${osmUrl(places[i][0])}`);
           ]
         ]
       },
-      heightMetres: 8.27
+      heightMetres: 8.27,
+      bagYear: 1979
     },
     {
       id: "keizersgrachtkerk",
@@ -12628,7 +12717,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1888
     },
     {
       id: "gerard-dou-synagogue",
@@ -12722,7 +12812,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1892
     },
     {
       id: "lekstraat-synagoge",
@@ -12886,7 +12977,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1937
     },
     {
       id: "petrus-en-paulus-kerk",
@@ -13088,7 +13180,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1914
     },
     {
       id: "maarten-lutherkerk",
@@ -13324,7 +13417,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1937
     },
     {
       id: "museum-amsterdam-noord",
@@ -13398,7 +13492,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1918
     },
     {
       id: "levend-paardenmuseum",
@@ -13776,7 +13871,8 @@ Map source: ${osmUrl(places[i][0])}`);
       galleryView: {
         theta: -2.45,
         phi: 1.2
-      }
+      },
+      bagYear: 1775
     },
     {
       id: "torture-museum",
@@ -13854,7 +13950,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1815
     },
     {
       id: "theo-thijssen-museum",
@@ -13939,7 +14036,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1994
     },
     {
       id: "pathe-de-munt",
@@ -14109,9 +14207,7 @@ Map source: ${osmUrl(places[i][0])}`);
       name: "Houseboat Museum (Hendrika Maria)",
       landmarkId: "extract_landmarks_941219842",
       modelUrl: "./models/houseboat-museum.glb",
-      suppressOsmIds: [
-        "w174999382"
-      ],
+      suppressOsmIds: [],
       spatialSuppression: false,
       footprint: {
         centre: [
@@ -14496,7 +14592,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1440
     },
     {
       id: "koningskerk",
@@ -14931,7 +15028,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1926
     },
     {
       id: "club-panama",
@@ -15060,7 +15158,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1885
     },
     {
       id: "compagnietheater",
@@ -15430,7 +15529,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1617
     },
     {
       id: "haparandaweg-902-950",
@@ -15594,7 +15694,8 @@ Map source: ${osmUrl(places[i][0])}`);
           ]
         ]
       },
-      heightMetres: 30.25
+      heightMetres: 30.25,
+      bagYear: 2015
     },
     {
       id: "haparandaweg-650-706",
@@ -16356,7 +16457,8 @@ Map source: ${osmUrl(places[i][0])}`);
           ]
         ]
       },
-      heightMetres: 31.88
+      heightMetres: 31.88,
+      bagYear: 2016
     },
     {
       id: "haparandaweg-952-1002",
@@ -17103,7 +17205,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1966
     },
     {
       id: "willem-de-zwijgerkerk",
@@ -17337,7 +17440,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1931
     },
     {
       id: "vrijburg",
@@ -17595,7 +17699,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1933
     },
     {
       id: "van-gendt-hallen",
@@ -17702,7 +17807,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1900
     },
     {
       id: "zuiderkerk",
@@ -17712,8 +17818,7 @@ Map source: ${osmUrl(places[i][0])}`);
       suppressOsmIds: [
         "w749385556",
         "w749385557",
-        "w749385558",
-        "NL.IMBAG.Pand.0363100012171559"
+        "w749385558"
       ],
       spatialSuppression: false,
       footprint: {
@@ -18225,7 +18330,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1996
     },
     {
       id: "aron-schuster-synagoge",
@@ -18405,7 +18511,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1928
     },
     {
       id: "zevenlandenhuizen",
@@ -18824,7 +18931,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1894
     },
     {
       id: "klimhal",
@@ -18953,7 +19061,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1996
     },
     {
       id: "symphony",
@@ -18976,8 +19085,7 @@ Map source: ${osmUrl(places[i][0])}`);
         "w985991444",
         "w985991445",
         "w985991446",
-        "w985991447",
-        "NL.IMBAG.Pand.0363100012128931"
+        "w985991447"
       ],
       spatialSuppression: false,
       footprint: {
@@ -19088,8 +19196,7 @@ Map source: ${osmUrl(places[i][0])}`);
         "w755504259",
         "w755504260",
         "w755504261",
-        "w755504262",
-        "NL.IMBAG.Pand.0363100012090447"
+        "w755504262"
       ],
       spatialSuppression: false,
       footprint: {
@@ -19474,9 +19581,7 @@ Map source: ${osmUrl(places[i][0])}`);
       name: "Sea Palace",
       landmarkId: "n13404202880",
       modelUrl: "./models/sea-palace.glb",
-      suppressOsmIds: [
-        "w454006714"
-      ],
+      suppressOsmIds: [],
       spatialSuppression: false,
       footprint: {
         centre: [
@@ -19734,7 +19839,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1966
     },
     {
       id: "west-indisch-pakhuis",
@@ -19908,7 +20014,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1642
     },
     {
       id: "christ-church-groenburgwal",
@@ -20080,7 +20187,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1829
     },
     {
       id: "ljg-synagoge",
@@ -20161,7 +20269,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2010
     },
     {
       id: "trippenhuis",
@@ -20269,7 +20378,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1662
     },
     {
       id: "american-hotel",
@@ -20614,7 +20724,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1900
     },
     {
       id: "hotel-de-l-europe",
@@ -21179,7 +21290,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1896
     },
     {
       id: "vondelkerk",
@@ -21938,7 +22050,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1880
     },
     {
       id: "lloyd-hotel",
@@ -22171,7 +22284,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1918
     },
     {
       id: "ronde-lutherse-kerk",
@@ -22179,7 +22293,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "requested-ronde-lutherse-kerk",
       modelUrl: "./models/ronde-lutherse-kerk.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012179368",
         "w749586949",
         "w749586950",
         "w749586951",
@@ -23074,7 +23187,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "n2817713466",
       modelUrl: "./models/hotel-okura.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012150422",
         "w753577527",
         "w753577528",
         "w753577537",
@@ -23603,7 +23715,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1624
     },
     {
       id: "artis-aquarium",
@@ -24192,7 +24305,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1746
     },
     {
       id: "krasnapolsky",
@@ -25123,7 +25237,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1886
     },
     {
       id: "chassekerk",
@@ -25429,7 +25544,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1927
     },
     {
       id: "pakhuis-de-zwijger",
@@ -25437,7 +25553,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "n6933045932",
       modelUrl: "./models/pakhuis-de-zwijger.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012088034",
         "w1533880135",
         "w1533880136",
         "w1533880137"
@@ -26061,7 +26176,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1890
     },
     {
       id: "woongebouw-wladiwostok",
@@ -26470,7 +26586,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1995
     },
     {
       id: "de-nederlandsche-bank",
@@ -26478,7 +26595,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "de-nederlandsche-bank",
       modelUrl: "./models/de-nederlandsche-bank.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012165684",
         "w1533847438"
       ],
       spatialSuppression: false,
@@ -26703,16 +26819,15 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2018
     },
     {
       id: "odessa",
       name: "Odessa",
       landmarkId: "n4594648817",
       modelUrl: "./models/odessa.glb",
-      suppressOsmIds: [
-        "w277087161"
-      ],
+      suppressOsmIds: [],
       spatialSuppression: false,
       footprint: {
         centre: [
@@ -26868,7 +26983,8 @@ Map source: ${osmUrl(places[i][0])}`);
           ]
         ]
       },
-      category: "ordinary"
+      category: "ordinary",
+      bagYear: 2021
     },
     {
       id: "motorkade-1",
@@ -27010,7 +27126,8 @@ Map source: ${osmUrl(places[i][0])}`);
           ]
         ]
       },
-      category: "ordinary"
+      category: "ordinary",
+      bagYear: 2020
     },
     {
       id: "de-bazel",
@@ -27173,7 +27290,8 @@ Map source: ${osmUrl(places[i][0])}`);
           ]
         ]
       },
-      category: "ordinary"
+      category: "ordinary",
+      bagYear: 1924
     },
     {
       id: "overtoom-197",
@@ -27327,7 +27445,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1925
     },
     {
       id: "willem-de-zwijgerlaan-350",
@@ -27423,7 +27542,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1949
     },
     {
       id: "grasweg-116",
@@ -27549,7 +27669,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2022
     },
     {
       id: "asterweg-23",
@@ -27673,7 +27794,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1923
     },
     {
       id: "oostenburgermiddenstraat-228",
@@ -27783,7 +27905,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2023
     },
     {
       id: "ceramiquelaan-437",
@@ -27986,7 +28109,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2021
     },
     {
       id: "haarlemmerweg-333",
@@ -28097,7 +28221,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2001
     },
     {
       id: "bogortuin-101",
@@ -28250,7 +28375,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2001
     },
     {
       id: "blankenstraat-15",
@@ -28339,7 +28465,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2011
     },
     {
       id: "hilton-amsterdam",
@@ -28687,7 +28814,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1962
     },
     {
       id: "booking-hq",
@@ -29883,7 +30011,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2009
     },
     {
       id: "kohnstammhuis",
@@ -29891,7 +30020,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "kohnstammhuis",
       modelUrl: "./models/kohnstammhuis.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012125963",
         "w742039458",
         "w754512898",
         "w754512899",
@@ -30415,7 +30543,6 @@ Map source: ${osmUrl(places[i][0])}`);
       category: "ordinary",
       modelUrl: "./models/hva-wibautstraat-3.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012241500",
         "w754512892",
         "w754512893",
         "w754512894",
@@ -31243,7 +31370,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2023
     },
     {
       id: "jacob-bontiusplaats-9",
@@ -31392,7 +31520,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2005
     },
     {
       id: "bercylaan-801-855",
@@ -31400,7 +31529,6 @@ Map source: ${osmUrl(places[i][0])}`);
       category: "ordinary",
       modelUrl: "./models/bercylaan-801-855.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012250610",
         "w1212855770",
         "w1244980639"
       ],
@@ -31490,7 +31618,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "vriesseveem-9",
       modelUrl: "./models/vriesseveem-9.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012239869",
         "w755510627",
         "w755510628",
         "w755510629",
@@ -31655,7 +31782,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_961954901",
       modelUrl: "./models/scheepvaartmuseum.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012170236",
         "r3604837",
         "w269078550"
       ],
@@ -31808,7 +31934,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1875747488",
       modelUrl: "./models/waag.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012171850",
         "w749066938",
         "w749066939",
         "w749066940",
@@ -33142,7 +33267,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1905
     },
     {
       id: "mozes-en-aaronkerk",
@@ -33437,7 +33563,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1841
     },
     {
       id: "de-duif",
@@ -33679,7 +33806,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1890
     },
     {
       id: "obrechtkerk",
@@ -34414,7 +34542,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1910
     },
     {
       id: "opstandingskerk",
@@ -34965,7 +35094,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1955
     },
     {
       id: "da-costakade-13",
@@ -35057,7 +35187,8 @@ Map source: ${osmUrl(places[i][0])}`);
       galleryView: {
         theta: 3.75,
         phi: 1.08
-      }
+      },
+      bagYear: 1904
     },
     {
       id: "hoofdbureau-elandsgracht",
@@ -35421,7 +35552,8 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1941
     }
   ];
 
@@ -37900,6 +38032,7 @@ Map source: ${osmUrl(places[i][0])}`);
 
   // src/canalRecall/landmarks/manualModels.ts
   var ownAttribution = (title, sourceUrl) => ({ title, author: "Map Recall", sourceUrl, licence: "Original project asset", licenceUrl: "./LICENSE", modifications: "Original low-poly reconstruction; reference used for silhouette only. Flat materials, no imported model geometry or image textures. Hospital footprints from OpenStreetMap (ODbL); heights and architectural details are approximate." });
+  var OLVG_STALE_SUPPRESS = /* @__PURE__ */ new Set(["w274704704", "NL.IMBAG.Pand.0363100012186327", "w1837609", "w12206467"]);
   var ALL_MANUAL_LANDMARKS = [
     {
       id: "centraal-station",
@@ -37907,20 +38040,12 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_332626598",
       modelUrl: "./models/centraal-station.glb",
       suppressOsmIds: [
-        "w332626598",
-        "w57856845",
         "w1239767708",
         "w1239767706",
         "w451533145",
         "w451533147",
         "w451533149",
         "w506192827",
-        "NL.IMBAG.Pand.0363100012185598",
-        "NL.IMBAG.Pand.0363100012242112",
-        "NL.IMBAG.Pand.0363100012240304",
-        "NL.IMBAG.Pand.0363100012245758",
-        "NL.IMBAG.Pand.0363100012245759",
-        "NL.IMBAG.Pand.0363100012246251",
         // 2026-10-11 check:osm-under-models: building:part ways of the train-shed roofs and station wings under the model (>=80% of their area)
         "w269124500",
         "w424523117",
@@ -37990,7 +38115,7 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     // `category` in the JSON (absent = landmark) becomes the spec's `buildingCategory` (buildingCategory.ts).
     ...manualCatalogue_default.map((entry) => ({ ...entry, buildingCategory: manualEntryCategory(entry) })),
-    ...hospital_footprints_default.sites.map((s) => ({ id: s.id, name: s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", landmarkId: s.id, modelUrl: `./models/${s.id}.glb`, suppressOsmIds: s.buildings.filter((f) => f.properties.building !== "construction").flatMap((f) => [f.id, ...f.properties["ref:bag"] ? [`NL.IMBAG.Pand.${f.properties["ref:bag"]}`] : []]), spatialSuppression: false, groundAltitudeMetres: 0, facingOffsetDegrees: 0, surveyed: { anchor: s.id === "olvg-west" ? [4.8397, 52.37115] : [4.9153, 52.3582], northOffsetDegrees: 0, source: "OSM building rings; local east/south metres" }, attribution: ownAttribution(s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", "https://www.olvg.nl/over-olvg/") }))
+    ...hospital_footprints_default.sites.map((s) => ({ id: s.id, name: s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", landmarkId: s.id, modelUrl: `./models/${s.id}.glb`, suppressOsmIds: s.buildings.filter((f) => f.properties.building !== "construction").flatMap((f) => [f.id, ...f.properties["ref:bag"] ? [`NL.IMBAG.Pand.${f.properties["ref:bag"]}`] : []]).filter((id) => !OLVG_STALE_SUPPRESS.has(id)), spatialSuppression: false, groundAltitudeMetres: 0, facingOffsetDegrees: 0, surveyed: { anchor: s.id === "olvg-west" ? [4.8397, 52.37115] : [4.9153, 52.3582], northOffsetDegrees: 0, source: "OSM building rings; local east/south metres" }, attribution: ownAttribution(s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", "https://www.olvg.nl/over-olvg/") }))
   ];
   var MANUAL_LANDMARKS = ALL_MANUAL_LANDMARKS.filter((model) => model.status !== "held");
   var MANUAL_ORDINARY_BUILDINGS = MANUAL_LANDMARKS.filter((model) => model.buildingCategory === "ordinary");

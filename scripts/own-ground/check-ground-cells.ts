@@ -12,6 +12,8 @@ import { join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { buildCell, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
+import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGround/streets.ts';
+import { bandCoverage, junctionCoverage, DE_CLERCQSTRAAT, JUNCTIONS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
 const store = new GroundStore(async path => {
@@ -172,6 +174,31 @@ async function main(): Promise<void> {
     check(r.hits.some(h => h.layer === 'deckTop') && r.top !== 'water', `${id}: deck top at the footprint centre (top ${r.top})`);
     check(!!info && info.railingPosts >= 8, `${id}: railings along the water (${info?.railingPosts} posts)`);
     check(!!info && info.frames === frames, `${id}: ${info?.frames} movable-bridge frame units (want ${frames})`);
+  }
+  // Named road regressions: every band of the listed ways reads as street at both LODs.
+  for (const reg of [DE_CLERCQSTRAAT]) {
+    const [x, y] = toLocal(reg.at[0], reg.at[1]), key = store.cellAt(x, y);
+    const keys = GroundStore.neighbours(key).filter(k => store.covers(k));
+    const input = await store.cellInput(key, 0);
+    const ids = new Set(reg.ways), seen = new Set<number>();
+    // As the cell builds them: every way of the 3×3, prior sidewalks resolved against their neighbours.
+    const ways = resolvePriorSidewalks([input.osm, ...input.osmAround].flatMap(e => (e ? prepareWays(e.ways, input.project) : [])).filter(w => !seen.has(w.id) && seen.add(w.id))).filter(w => ids.has(w.id));
+    check(ways.length === reg.ways.length, `${reg.id}: ${ways.length}/${reg.ways.length} ways found`);
+    for (const lod of [0, 1] as const) {
+      const cells: BuiltCell[] = [];
+      for (const k of keys) cells.push(await build(k, lod));
+      const r = bandCoverage(cells, ways, reg.fractions);
+      check(r.share >= reg.minShare, `${reg.id} LOD ${lod}: ${r.street}/${r.probes} band probes read as street (${(100 * r.share).toFixed(1)} %)${r.misses.length ? ` misses ${JSON.stringify(r.misses.slice(0, 4))}` : ''}`);
+    }
+  }
+  for (const j of JUNCTIONS) {
+    const [x, y] = toLocal(j.at[0], j.at[1]), keys = GroundStore.neighbours(store.cellAt(x, y)).filter(k => store.covers(k));
+    for (const lod of [0, 1] as const) {
+      const cells: BuiltCell[] = [];
+      for (const k of keys) cells.push(await build(k, lod));
+      const r = junctionCoverage(cells, [x, y], j.radiusM, j.surface);
+      check(r.share >= j.minShare, `${j.id} LOD ${lod}: junction interior ${r.ok}/${r.probes} ${j.surface} (${JSON.stringify(r.tops)})`);
+    }
   }
   // Seams: two neighbouring cells' land grids meet at the same heights (one height function, shared grid lines).
   const [ax, ay] = toLocal(4.8875, 52.3665), a = store.cellAt(ax, ay), [cx, cy] = a.split('_').map(Number), b = `${cx + 1}_${cy}`;
