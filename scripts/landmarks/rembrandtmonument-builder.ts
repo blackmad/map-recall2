@@ -1,5 +1,7 @@
 import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
+import {placeFigure, localFrame, letterBoxes} from './figure-kit';
+import {buildNightWatch} from './nightwatch-group';
 
 /**
  * Rembrandtmonument, Rembrandtplein (Louis Royer, bronze cast in iron, unveiled 27 May 1852; the plaza was renamed after it).
@@ -45,43 +47,27 @@ export function buildRembrandtmonument(_w: number, _d: number, b: BuildingTools)
   for (const [px, pz, w, d] of [[0, 0.97, 1.1, 0.06], [0, -0.97, 1.1, 0.06], [0.97, 0, 0.06, 1.1], [-0.97, 0, 0.06, 1.1]]) box(px, top + 1.2, pz, w, 1.0, d, 'dark');
   const base = top + 3.23;
 
-  // The figure (local frame): standing on the cap, weight on the left leg, right foot forward; contrapposto.
-  const F = 2.9;
-  // Shoes and legs (stockings and knee breeches).
-  box(0.2, base, 0.25, 0.3, 0.12, 0.55, 'bronze');
-  box(-0.22, base, 0.05, 0.3, 0.12, 0.55, 'bronze');
-  limb([0.2, base + 0.12, 0.12], [0.18, base + 0.95, 0.05], 0.1, 0.13, 'bronze');
-  limb([-0.22, base + 0.12, 0.0], [-0.2, base + 0.95, 0.0], 0.1, 0.13, 'bronze');
-  // Breeches and skirt of the jerkin.
-  cyl(0, base + 0.9, 0.02, 0.4, 0.34, 0.6, 'bronze');
-  // Torso: tapered doublet with a row of buttons and a flat collar.
-  cyl(0, base + 1.5, 0.02, 0.32, 0.37, 0.7, 'bronze');
-  for (let k = 0; k < 6; k++) put(new T.SphereGeometry(0.025, 5, 4), 0, base + 1.55 + k * 0.1, 0.36, 'gold');
-  box(0, base + 2.15, 0.04, 0.5, 0.06, 0.4, 'bronze');
+  // The figure from the figure kit (standing, weight on the right leg, left foot forward, hands crossed at the belt, beret), ~2.9 m with the beret.
+  const fr = localFrame(yaw), at = fr.pt(0, base, 0);
+  placeFigure(b, {
+    height: 2.78, stout: 1.25, hat: 'beret', skirt: {len: 0.3, flare: 1.3}, lean: 0.03,
+    legs: {l: {pitch: 0.22, bend: 0.12}, r: {pitch: -0.04}},
+    arms: {l: {pitch: 0.15, roll: -0.12, bend: 1.15}, r: {pitch: 0.2, roll: -0.3, bend: 1.25}},
+    head: {yaw: -0.15, pitch: 0.12},
+  }, {x: at.x, y: at.y, z: at.z, yaw}, 'bronze');
+  for (let k = 0; k < 6; k++) put(new T.SphereGeometry(0.025, 5, 4), 0, base + 1.55 + k * 0.1, 0.3, 'gold');
   // Cloak: a heavy drape from the left shoulder across the body and over the left forearm.
   const cloak = new T.Shape();
   cloak.moveTo(0, 0); cloak.lineTo(0.15, 0.1); cloak.lineTo(0.5, 0.0); cloak.lineTo(0.55, -0.9); cloak.lineTo(0.3, -1.45); cloak.lineTo(-0.4, -1.5); cloak.lineTo(-0.55, -0.9); cloak.lineTo(-0.35, -0.2); cloak.closePath();
-  const cg = new T.ExtrudeGeometry(cloak, {depth: 0.14, bevelEnabled: false});
-  put(cg, -0.12, base + 2.25, 0.28, 'bronze');
-  ball(-0.38, base + 1.65, 0.06, 0.15, 0.55, 0.28, 'bronze');
-  // Arms: left forearm raised under the cloak holding the hem, right hand at the belt holding a brush.
-  limb([-0.36, base + 2.0, 0.0], [-0.42, base + 1.45, 0.22], 0.09, 0.08, 'bronze');
-  limb([-0.42, base + 1.45, 0.22], [-0.1, base + 1.35, 0.4], 0.08, 0.07, 'bronze');
-  limb([0.36, base + 2.0, 0.0], [0.42, base + 1.55, 0.2], 0.09, 0.08, 'bronze');
-  limb([0.42, base + 1.55, 0.2], [0.14, base + 1.35, 0.36], 0.08, 0.07, 'bronze');
-  ball(-0.05, base + 1.35, 0.42, 0.09, 0.08, 0.08, 'bronze');
-  ball(0.12, base + 1.35, 0.38, 0.08, 0.07, 0.08, 'bronze');
-  // Head with a soft wide beret, beard and moustache.
-  cyl(0, base + 2.2, 0.04, 0.09, 0.08, 0.14, 'bronze');
-  ball(0, base + 2.5, 0.06, 0.19, 0.24, 0.21, 'bronze');
-  ball(0, base + 2.38, 0.2, 0.12, 0.09, 0.07, 'bronze');
-  cyl(0.02, base + 2.68, 0.06, 0.3, 0.2, 0.2, 'bronze', 12);
-  ball(0.04, base + 2.84, 0.04, 0.2, 0.08, 0.2, 'bronze');
+  put(new T.ExtrudeGeometry(cloak, {depth: 0.14, bevelEnabled: false}), 0.12, base + 2.2, -0.2, 'bronze');
   // Stump behind the left leg with the painter's palette, a portfolio and a scroll (print RP-P-1933-342).
   box(-0.62, base, -0.1, 0.5, 0.95, 0.4, 'bronze');
   box(-0.62, base + 0.95, -0.1, 0.56, 0.06, 0.46, 'bronze');
   put(new T.CylinderGeometry(0.2, 0.2, 0.03, 10).rotateX(Math.PI / 2.3), -0.5, base + 1.2, 0.2, 'bronze');
   box(-0.82, base + 0.5, 0.08, 0.04, 0.5, 0.4, 'bronze');
   put(new T.CylinderGeometry(0.06, 0.06, 0.5, 8).rotateZ(Math.PI / 2), -0.6, base + 1.05, -0.28, 'bronze');
-  void F;
+  // Plinth inscription: REMBRANDT in raised stroke lettering on the front plaque (the photographs show a script signature; the stroke font stands in).
+  for (const g of letterBoxes('REMBRANDT', 0.2, 0.95, 0.025)) put(g, 0, top + 1.7, 0.98, 'gold');
+  // The Night Watch (Dronov and Taratynov): 22 bronze figures on steel plates on the plaza in front of the terrace.
+  buildNightWatch(b, fr, 1.2, 'copper', 'dark');
 }
