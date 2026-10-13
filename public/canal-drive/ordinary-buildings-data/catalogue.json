@@ -37644,6 +37644,431 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T23:02:33.693Z"
+    },
+    {
+      "id": "ordinary-0363100012184743",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012184743",
+      "name": "Funenpark 427, Amsterdam (Funenpark / Oostelijke Handelskade side): 2002 curved apartment arcs of 273 homes with shops, brick west side, glazed and green-finned east side",
+      "hash": "ef85462ee9ba464f863df7cfd6a96ac27dbe3250aaa8ef7f79bedb052448ee30",
+      "sha256": "ef85462ee9ba464f863df7cfd6a96ac27dbe3250aaa8ef7f79bedb052448ee30",
+      "bytes": 787608,
+      "triangles": 10281,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -234.265,
+          -4.667,
+          -175.733
+        ],
+        "max": [
+          69.207,
+          28.502,
+          123.907
+        ]
+      },
+      "anchor": [
+        4.9317865,
+        52.3686743
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.932528,
+              52.3696524
+            ],
+            [
+              4.932523,
+              52.3695699
+            ],
+            [
+              4.932517,
+              52.3695046
+            ],
+            [
+              4.9325065,
+              52.3694173
+            ],
+            [
+              4.9325018,
+              52.3693915
+            ],
+            [
+              4.9324958,
+              52.3693523
+            ],
+            [
+              4.9324928,
+              52.3693394
+            ],
+            [
+              4.9324874,
+              52.369309
+            ],
+            [
+              4.9324747,
+              52.3692493
+            ],
+            [
+              4.9324581,
+              52.3691801
+            ],
+            [
+              4.9324406,
+              52.3691157
+            ],
+            [
+              4.9324207,
+              52.3690499
+            ],
+            [
+              4.9323928,
+              52.3689648
+            ],
+            [
+              4.932387,
+              52.3689521
+            ],
+            [
+              4.9323582,
+              52.3688767
+            ],
+            [
+              4.9323514,
+              52.3688593
+            ],
+            [
+              4.9323246,
+              52.3687963
+            ],
+            [
+              4.9323038,
+              52.3687508
+            ],
+            [
+              4.9322655,
+              52.3686712
+            ],
+            [
+              4.9322331,
+              52.3686091
+            ],
+            [
+              4.9322082,
+              52.3685644
+            ],
+            [
+              4.9321661,
+              52.3684912
+            ],
+            [
+              4.931698,
+              52.3677142
+            ],
+            [
+              4.9314454,
+              52.3677104
+            ],
+            [
+              4.9314448,
+              52.3677254
+            ],
+            [
+              4.9314111,
+              52.367725
+            ],
+            [
+              4.9314109,
+              52.3677936
+            ],
+            [
+              4.9304211,
+              52.3677786
+            ],
+            [
+              4.9304236,
+              52.3677238
+            ],
+            [
+              4.9303774,
+              52.3677228
+            ],
+            [
+              4.9303076,
+              52.3677217
+            ],
+            [
+              4.9303051,
+              52.3677765
+            ],
+            [
+              4.9296118,
+              52.3677662
+            ],
+            [
+              4.929614,
+              52.3677115
+            ],
+            [
+              4.9295682,
+              52.3677108
+            ],
+            [
+              4.9294984,
+              52.3677093
+            ],
+            [
+              4.9294962,
+              52.3677644
+            ],
+            [
+              4.9287594,
+              52.3677531
+            ],
+            [
+              4.9287615,
+              52.3676981
+            ],
+            [
+              4.9286018,
+              52.3676957
+            ],
+            [
+              4.9283584,
+              52.3675474
+            ],
+            [
+              4.9295044,
+              52.3675648
+            ],
+            [
+              4.9295736,
+              52.367566
+            ],
+            [
+              4.9303137,
+              52.3675773
+            ],
+            [
+              4.9303833,
+              52.3675786
+            ],
+            [
+              4.9314504,
+              52.3675947
+            ],
+            [
+              4.9316274,
+              52.3675972
+            ],
+            [
+              4.9318751,
+              52.3676015
+            ],
+            [
+              4.9322074,
+              52.3681534
+            ],
+            [
+              4.9322384,
+              52.3682043
+            ],
+            [
+              4.9323819,
+              52.3684425
+            ],
+            [
+              4.9324251,
+              52.3685177
+            ],
+            [
+              4.9324508,
+              52.3685638
+            ],
+            [
+              4.9324845,
+              52.3686284
+            ],
+            [
+              4.9325243,
+              52.3687109
+            ],
+            [
+              4.9325461,
+              52.3687584
+            ],
+            [
+              4.9325739,
+              52.3688238
+            ],
+            [
+              4.9325818,
+              52.3688437
+            ],
+            [
+              4.9325931,
+              52.3688693
+            ],
+            [
+              4.9326065,
+              52.368905
+            ],
+            [
+              4.9326244,
+              52.3689556
+            ],
+            [
+              4.9326473,
+              52.3690242
+            ],
+            [
+              4.9326694,
+              52.3690968
+            ],
+            [
+              4.9326874,
+              52.3691637
+            ],
+            [
+              4.9327024,
+              52.3692262
+            ],
+            [
+              4.9327165,
+              52.3692917
+            ],
+            [
+              4.9327288,
+              52.3693606
+            ],
+            [
+              4.9327352,
+              52.3694005
+            ],
+            [
+              4.9327383,
+              52.3694233
+            ],
+            [
+              4.9327464,
+              52.3694906
+            ],
+            [
+              4.9327528,
+              52.3695582
+            ],
+            [
+              4.9327581,
+              52.369639
+            ],
+            [
+              4.9327593,
+              52.3696674
+            ],
+            [
+              4.9327634,
+              52.3696673
+            ],
+            [
+              4.9327733,
+              52.3698872
+            ],
+            [
+              4.9327688,
+              52.3698872
+            ],
+            [
+              4.9327715,
+              52.3699516
+            ],
+            [
+              4.9327866,
+              52.3702608
+            ],
+            [
+              4.9325497,
+              52.3701159
+            ],
+            [
+              4.9325423,
+              52.3699559
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 28.5,
+      "height": 28.5,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-funenpark-427-184743.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012184743"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "funenpark-427-184743",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012184743/w01-179.jpg",
+          "staging/pand-reference-walls/0363100012184743/w01-179.jpg",
+          "staging/pand-reference-walls/0363100012184743/w01-179.jpg",
+          "staging/pand-reference-walls/0363100012184743/w02-110.jpg",
+          "staging/pand-reference-walls/0363100012184743/w02-110.jpg",
+          "staging/pand-reference-walls/0363100012184743/w03-291.jpg",
+          "staging/pand-reference-walls/0363100012184743/w03-291.jpg",
+          "staging/pand-reference-walls/0363100012184743/w03-291.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "storey-height/walls[4]:pass",
+          "eaves-vs-3dbag/walls[5]:pass",
+          "storey-height/walls[5]:pass",
+          "eaves-vs-3dbag/walls[6]:pass",
+          "storey-height/walls[6]:pass",
+          "eaves-vs-3dbag/walls[7]:pass",
+          "storey-height/walls[7]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 4st 6b",
+          "ribbon-windows 6st 3b",
+          "ribbon-windows 5st 6b",
+          "ribbon-windows 5st 6b",
+          "ribbon-windows 6st 3b",
+          "brick-bay-grid 4st 4b",
+          "brick-bay-grid 5st 4b",
+          "brick-bay-grid 6st 3b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Modelled: eight wall groups split by the height steps of the 3DBAG walls (surface lists, not panels, because panel 7, 17 and 86 each hold two or three heights): the south front in three groups (4, 6 and 5 storeys) and the east arc in two (5 storeys as one curve, 6 storeys at the north end) as ribbon windows over a glazed ground floor with green frames; the west brick front in three groups (4, 5 and 6 storeys) as a brick bay grid. Roofs and unlisted walls are the 3DBAG LoD2.2 shell (the courtyard side, the arm ends and the north block are blank). Bays are wide (6-9 m ribbons) to stay under 12k triangles.",
+        "Simplified: the green timber shutters and the vertical green fins are the frame colour only, the loggia recesses are plain ribbon windows, the stepped upper storeys keep the 3DBAG roof lines. Not modelled: balconies, the entrance arches to the courtyards and the shop signs (no frontal photograph)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012184743",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T23:05:25.512Z"
     }
   ]
 }
