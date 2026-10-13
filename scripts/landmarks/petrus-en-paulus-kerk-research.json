@@ -1,7 +1,7 @@
 {
   "canonicalModelId": "petrus-en-paulus-kerk",
   "researchedOn": "2026-10-11",
-  "state": "built-ready-2026-10-11b",
+  "state": "rework-2026-10-11c",
   "destination": {
     "name": "Sint-Petrus-en-Pauluskerk",
     "address": "Ruysdaelstraat 39, Amsterdam",
@@ -39,14 +39,28 @@
       "heading": 75
     }
   ],
+  "facadeRhythm": {
+    "frame": "Local plan frame used by the builder: a = metres along bearing 73 (east along Ruysdaelstraat), f = metres along bearing 343 (out of the street front). Every BAG/3DBAG wall lies on this grid.",
+    "north (Ruysdaelstraat), east to west": [
+      "1 Parsonage gable house (no. 37 main block, a 4.9..10.4, projects 1.3 m): 2 identical bays, symmetric about its own centre; ground floor 2 large white-framed windows with small-pane top lights; first floor 2 white sashes; gable 2 small attic windows; stone-coped rakes; eave 9.5, apex 12.2 (3DBAG walls 1/41, consistent with floor-height scaling of ref-commons-ruysdaelstraat-37). Evidence: ref-commons-ruysdaelstraat-37 (left, partly behind a tree), ref-pano-1 left edge.",
+      "2 Link (a 2.5..4.9, set back 1.3 m from the gable house): 1 bay; ground floor timber door '37' with transom beside the gable house, small red-framed window and basement grille beside the turret; first floor one wide white sash; white timber cornice at the 9.45 m eave; hipped tile roof rising behind with a black flue. Evidence: ref-pano-1, ref-commons-ruysdaelstraat-37/39.",
+      "3 Round stair turret (centre a 0.95, r 1.47): stone plinth; 3 small ground lights (front and two diagonals) with stone heads and sills; brick shaft; small corbel; stone string course; octagonal oriel with a flat face to the street, 3 windows and stone quoins; white cornice; low tiled pyramid roof whose apex stays below the link eave. Evidence: ref-pano-0/1, ref-commons-ruysdaelstraat-37/39.",
+      "4 Church gable (one plane a -10.4..2.7, west end hidden by the tower): not symmetric in content. Ground: twin tall lights between turret and porch. Middle: 2 tall stone-trimmed windows of 2 lights x 3 rows, the east one (a -2.5) a little taller than the west one (a -4.5), which is centred over the porch. Top: louvred twin light under the apex. Stone coping on both rakes, stone kneeler on the east shoulder, stone shoulder block where the west rake meets the tower, stone cross on the apex. No roof is visible beside the gable from the street. Evidence: ref-commons-ruysdaelstraat-37/39, ref-commons-oud-katholieke-kerk.",
+      "5 Porch (a -6.0..-1.8, projects 1.3 m): one gabled bay, orange-red tile roof behind a parapet gable with stone coping and a stone cross; stone kneeler blocks on both piers; deep round arch with a moulded stone archivolt; red double door recessed at the church wall with a fanlight and a stone band above. Evidence: ref-pano-0, ref-commons-ruysdaelstraat-39, ref-commons-oud-katholieke-kerk.",
+      "6 Tower (a -10.4..-7.7, projects 1.3 m, 20.7 m): north face from the bottom: one narrow light, louvred twin opening, stepped brick corbel band with 2 round-arched niches per face, stone clock stage with a clock, stone corner posts, stone-coped gable of a saddleback roof (ridge north-south). The east face shows the same corbels and clock under a flat cornice. Evidence: ref-tower-crop, ref-tower-crop2, ref-commons-ruysdaelstraat-37/39; 3DBAG roofs 58/65 slope east-west."
+    ],
+    "west (wall 50)": "Tower west face: twin narrow lights low down (2.6-4.5 m). Nave: 4 identical windows of 3 lights x 3 rows with brick mullions, sills on a grey brick plinth (2.7 m). Evidence: ref-pano-2/3/4; the count of 4 is inferred from the panorama spacing over the 21 m wall.",
+    "inferred (no photograph)": "Parsonage wing east wall, nave east wall south of the wing, rear low block, rear nave gable: plain windows on a regular pitch.",
+    "roofs": "Rebuilt from intent; 3DBAG supplies only heights. Nave pitched roof (ridge 15.8, eaves 9.4) behind the screen gable; parsonage wing ridge 13.6, hipped at the street end and gabled at the south; gable house cross-gable 12.2 dying into the hip; porch gable 4.4/6.5; tower saddleback 19.3/20.7; rear block flat at 5.3."
+  },
   "decisions": [
-    "Gable front plane: 3DBAG wall 35 (t 0..2.3, y to 15.8) stands on the front line while the gable face west of t -0.6 is 1.1-1.3 m behind it; gable windows, slot and cross are placed on the measured wall offsets (-1.3 / -1.25 / -1.1 m) so none hovers.",
-    "Gable: two four-light windows (sill 7.6 m, 4.6 m tall) either side of the apex, louvred slot above, stone cross, pointed red door in the gabled porch; offsets measured from the straight-on Ruysdaelstraat 37 photo.",
-    "Tower: 20.7 m; stepped brick corbel cornice at 15.2-16.2 m, stone clock stage 16.2-19.8 m with a clock on the north and west faces, two louvre slots on the west face (12.3-15.2 m), stone corner posts.",
-    "Round stair turret: the 3DBAG ring has a faceted arc (centre -0.9/-6.2 m, r 1.47 m) whose facets are extruded up to the gable roof plane (10.4-12.1 m). The builder drops those seven facets, closes the gable front with one wall plane and builds the turret itself: stone plinth, brick shaft to 5.4 m, corbelled-out base, octagonal oriel 7.15-9.1 m with a window on each front face, white cornice and tiled pyramid roof to 10.7 m (heights from ref-front.jpg and ref-pano-0.jpg).",
-    "Parsonage wing (Ruysdaelstraat 37): white painted sashes upstairs, red-framed light and timber door below on the stepped east wall faces (5, 1, 41); two tall lights beside the turret on wall 9.",
-    "Colours: sampled brick/mortar mean of ref-front.jpg gable wall is #847670; brick set to #8a766b, grey brick #6f5d55.",
-    "Bays: this builder carries its own addBays that sinks every solid 4 cm behind the wall and insets the bars, which removed the coplanar stone/frame faces the audit counted as z-fight (4.8 m2 down to 3.0 m2).",
-    "Still inferred: the east wing walls and roofs beyond the photographed 2.5 m of parsonage front (raw 3DBAG massing with windows), and the whole south and west elevations."
+    "2026-10-11c rework: the 3DBAG LoD2.2 shell is no longer rendered. Every volume is built on the local a/f grid from BAG/3DBAG measurements (footprint, eaves, ridges) and the photos. This removes the jagged parsonage roof, the roof slab showing beside the gable and the chopped rear roof slabs.",
+    "Gable: one brick plane at f 6.42 (the 3DBAG wall 9/57 line). 3DBAG wall 35, which stands 1.3 m forward up to 15.8 m, is the porch merged into the gable by the LoD2 fit; the porch is modelled separately on the BAG ring (a -6.2..-1.8, f to 7.7).",
+    "Gable heights: apex 15.8 plus coping, with the cross reaching about 17.6. East shoulder 9.5 at a 2.66 (the nave east eave and 3DBAG roof edge); the west rake meets the tower at 11.9 (3DBAG 12.1). Window sills 6.4, tops about 10.1-10.4, scaled from ref-commons-ruysdaelstraat-37 using the 9.45 m link eave and the 6.5 m porch apex as rulers. The earlier 7.6 m sill came from an apex-only scale and also put the turret too high.",
+    "Turret lowered: oriel 6.1-7.4, roof apex 8.9, so the white link cornice (9.45 m, 3DBAG) sits above the turret roof as in every photo. Oriel apothem 1.52; the photos show the oriel barely wider than the shaft, and the previous 1.88 was too fat.",
+    "Tower top: saddleback, not a pyramid. In the crops, the face with the louvres and the stone gable is the north (street) face; the face with the flat cornice is the east face.",
+    "Parsonage: link eave 9.45 (3DBAG roof 60 front edge), wing ridge 13.6 (3DBAG roofs 59/61), gable house apex 12.2 (3DBAG walls 1/41).",
+    "Colours sampled from ref-commons-ruysdaelstraat-39 in overcast light: gable brick #85776f-#877872, porch tiles #9d4f34, tower stone #827c78.",
+    "Still inferred: the parsonage wing east wall, the rear block and the rear nave gable (no photographs)."
   ]
 }
