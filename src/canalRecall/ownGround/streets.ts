@@ -37,6 +37,8 @@ export const LIFT = {
 
 export type StreetLayer = Surface | 'paint' | 'kerb' | 'tram' | 'bollard';
 export type StreetMeshes = Record<StreetLayer, MeshArrays> & {
+  /** Every junction node of the graph (not only the owned ones): the pocket fill looks near them (pockets.ts). */
+  junctionPoints: Vec2[];
   stats: { ways: number; bands: number; metres: number; widthFromTags: number; sidewalkFromTags: number; trims: number; junctions: number; corners: number };
 };
 
@@ -389,7 +391,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
   // vertices only on its two edges spans from the relief beside the deck to the relief beside it and sags under the
   // deck top in the middle; BRU0292 Schottenburchsbrug sat 0.15 m under it).
   const acrossOf = (width: number) => (opts.acrossStep ? Math.max(width > 7 ? 2 : 1, Math.ceil(width / opts.acrossStep)) : undefined);
-  const out = { asphalt: emptyMesh(), klinker: emptyMesh(), cycle: emptyMesh(), paving: emptyMesh(), gravel: emptyMesh(), paint: emptyMesh(), kerb: emptyMesh(), tram: emptyMesh(), bollard: emptyMesh(), stats: { ways: 0, bands: 0, metres: 0, widthFromTags: 0, sidewalkFromTags: 0, trims: 0, junctions: 0, corners: 0 } } as StreetMeshes;
+  const out = { asphalt: emptyMesh(), klinker: emptyMesh(), cycle: emptyMesh(), paving: emptyMesh(), gravel: emptyMesh(), paint: emptyMesh(), kerb: emptyMesh(), tram: emptyMesh(), bollard: emptyMesh(), stats: { ways: 0, bands: 0, metres: 0, widthFromTags: 0, sidewalkFromTags: 0, trims: 0, junctions: 0, corners: 0 }, junctionPoints: [] as Vec2[] } as StreetMeshes;
   const nodes = junctionGeometry(ways);
   const byId = new Map(ways.map(w => [w.id, w]));
   const discDone = new Set<string>();
@@ -466,6 +468,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
   }
   // Junction fills and kerb corners: emitted once, by the node's owner way.
   for (const n of nodes.values()) {
+    if (n.kind === 'junction') out.junctionPoints.push(n.p);
     if (n.kind === 'none' || !n.polygon.length) continue;
     const owner = byId.get(n.owner);
     if (!owner || (opts.only && !opts.only(owner))) continue;
