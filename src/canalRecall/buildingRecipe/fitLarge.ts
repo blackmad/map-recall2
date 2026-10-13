@@ -20,6 +20,8 @@ import type {P3, SurfaceSet} from '../blockBuilding/types.ts';
 import type {BlockSpec, System} from '../blockBuilding/spec.ts';
 import {DEFAULT_PITCH_M, largeSystem, type LargeGround, type LargeSystemName} from '../blockBuilding/systems.ts';
 import {panelRuns, runBayAxes} from '../blockBuilding/curve.ts';
+import type {Lantern} from '../blockBuilding/components.ts';
+import {roofHeightAt} from './facts.ts';
 
 /** Window reveal depth (m) for the large tier. */
 export const LARGE_RECESS_M = 0.18;
@@ -35,9 +37,11 @@ export interface LargeGroupFit {
   bays: number; pitchM: number; ground: LargeGround; cornice: boolean; deepBars?: boolean;
   /** perforated-brick screen lattice over the group's walls */
   screen?: boolean;
-  entrance: {panel: number; bay: number; storeys: number; canopy: boolean} | null;
+  entrance: {panel: number; bay: number; storeys: number; canopy: boolean; portal?: boolean} | null;
+  /** storeys faced in stone, banded end pilasters (with the darker band slot) */
+  stoneStoreys?: number[]; pilasters?: string;
   garage: {panel: number; bays: number[]} | null;
-  signage: {text: string; colour: string; mount: 'fascia' | 'wall' | 'glazing' | 'canopy'} | null;
+  signage: {text: string; colour: string; mount: 'fascia' | 'wall' | 'glazing' | 'canopy' | 'cornice'} | null;
   police: {stripe: boolean; lamp: boolean} | null;
   /** loading-door axis (bay % every === first) and the name boards over its ground portals on the main panel */
   hoist?: {every: number; first: number} | {bays: number[]};
@@ -58,6 +62,8 @@ export interface LargeBuildingRecipe {
   wallMaterial: 'brick' | 'stucco';
   /** per-panel spec system replacing the group's (curved runs: bay axes along the arc); only present when a group opts in */
   panelSystem?: Record<number, string>;
+  /** roof lanterns (`walls[].lantern`), local metres; only present when a group asks for one */
+  lanterns?: Lantern[];
   /** recipe material slot per block-kit wall slot of a group with its own `wallMaterial` (only present when a group sets one) */
   slotMaterial?: Record<string, string>;
 }
@@ -152,6 +158,27 @@ export function placeRoofPlant(set: SurfaceSet): PlantBox[] {
 
 const SYSTEM_SLOT = (k: number | 'o') => `g${k}`;
 
+/** Roof lantern size (m, square) and how far it rises over the highest roof point under it. */
+export const LANTERN = {sizeM: 2.4, riseM: 3.0};
+/**
+ * Lantern behind a wall panel: walk inward from the panel's middle (0.25 m steps, up to 30 m) over the 3DBAG roofs and
+ * centre the lantern on the highest roof point, on the panel's axes; its base at the lowest roof point under its
+ * corners (so it sits in a pitched roof), its top `riseM` over the highest.
+ */
+export function placeLantern(facts: BuildingFacts, anchorRD: [number, number], p: Panel): Lantern | null {
+  const [ax, ay] = anchorRD, g = facts.heights.groundNAP, um = (p.uMin + p.uMax) / 2;
+  const at = (u: number, d: number): [number, number] => [p.o[0] + p.r[0] * u + p.n[0] * d, p.o[2] + p.r[2] * u + p.n[2] * d];
+  const roof = ([x, z]: [number, number]) => roofHeightAt(facts.roofsRD, [ax + x, ay - z], g);
+  let best: {d: number; h: number} | null = null;
+  for (let d = -0.5; d >= -30; d -= 0.25) { const h = roof(at(um, d)); if (h !== null && (!best || h > best.h + 1e-6)) best = {d, h}; }
+  if (!best) return null;
+  const s = LANTERN.sizeM / 2, corners: [number, number][] = [[-s, -s], [s, -s], [s, s], [-s, s]].map(([du, dd]) => at(um + du, best!.d + dd));
+  const hs = corners.map(roof).filter((h): h is number => h !== null);
+  if (hs.length < 4) return null;
+  const c = at(um, best.d);
+  return {centre: [r3(c[0]), r3(c[1])], baseY: r3(Math.min(...hs) - 0.1), topY: r3(Math.max(best.h, ...hs) + LANTERN.riseM), size: LANTERN.sizeM, angleRad: +Math.atan2(p.r[2], p.r[0]).toFixed(6)};
+}
+
 export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {recipe: LargeBuildingRecipe; report: LargeFitReport} {
   const warnings: string[] = [];
   const {set, anchorRD} = largeSurfaceSet(facts);
@@ -186,7 +213,7 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
     roof: '#555555', 'police-blue': '#1d3f8f', 'police-white': '#eeeeea', plant: '#8d8c88', sign: swatch(pal.frame),
   };
   if (intent.walls.some(w => w.nameBoards?.length)) Object.assign(palette, {board: '#ecebe4', 'board-text': '#1c1c1c'});
-  const aligned = new Map<number, ReturnType<typeof storeyLines>>(), panelSystem: Record<number, string> = {}, slotMaterial: Record<string, string> = {};
+  const aligned = new Map<number, ReturnType<typeof storeyLines>>(), panelSystem: Record<number, string> = {}, slotMaterial: Record<string, string> = {}, lanterns: Lantern[] = [];
   intent.walls.forEach((w: LargeWallIntent, gi) => {
     const own = panels.filter(p => panelGroup[p.index] === gi);
     const ground = w.ground ?? (w.system === 'plinth-shopfronts' ? 'plinth-shopfronts' : 'system');
@@ -222,7 +249,13 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
     const bays = w.baysPerStorey ?? Math.max(1, Math.round(widthM / DEFAULT_PITCH_M[w.system]));
     const pitchM = widthM > 0 ? widthM / bays : DEFAULT_PITCH_M[w.system];
     const e = w.entrance === undefined || w.entrance === false ? null : w.entrance === true ? {} : w.entrance;
-    const entrance = e && main ? {panel: main.index, bay: Math.min(bays - 1, e.bay ?? Math.floor((bays - 1) / 2)), storeys: Math.min(e.storeys ?? 1, st.storeys), canopy: !!e.canopy} : null;
+    const entrance = e && main ? {panel: main.index, bay: Math.min(bays - 1, e.bay ?? Math.floor((bays - 1) / 2)), storeys: Math.min(e.storeys ?? 1, st.storeys), canopy: !!e.canopy, ...(e.portal ? {portal: true} : {})} : null;
+    // Banded pilasters: their darker course slot.
+    let pilasters: string | undefined;
+    if (w.pilasters) { pilasters = `band@g${gi}`; palette[pilasters] = shade(palette[slots.stone] ?? palette.stone, 0.7); }
+    // A portal's crest: carved in the group's stone a shade darker, so it reads against the tympanum.
+    if (entrance?.portal) palette[`crest@g${gi}`] = shade(palette[slots.stone] ?? palette.stone, 0.68);
+    if (w.lantern && main) { const l = placeLantern(facts, anchorRD, main); if (l) lanterns.push(l); else warnings.push(`walls[${gi}].lantern: no roof behind the main panel`); }
     let garage: LargeGroupFit['garage'] = null;
     if (w.garageDoors && main) {
       const list: number[] = [];
@@ -248,7 +281,7 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
     }
     groups.push({index: gi, system: w.system, specSystem, panels: own.map(p => p.index), surfaces: [...w.wallSurfaces], mainPanel: main?.index ?? null, bearingDeg: main ? Math.round(bearingOfNormal(main.n)) : null,
       widthM: r3(widthM), eavesM: r3(eaves), flatTop, storeys: st.storeys, storeyHeightsM: st.heights, lines: st.lines, bays, pitchM: r3(pitchM), ground, cornice: !!w.cornice,
-      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
+      ...(w.deepBars ? {deepBars: true} : {}), ...(w.screen ? {screen: true} : {}), ...(w.stoneStoreys ? {stoneStoreys: [...w.stoneStoreys]} : {}), ...(pilasters ? {pilasters} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
       ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(curve ? {curve} : {}), slots});
   });
   // Unlisted walls: one system at the civic storey height and the system's default pitch.
@@ -260,7 +293,7 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
   const roofPlant = intent.roofPlant ? placeRoofPlant(set) : [];
   if (intent.roofPlant && !roofPlant.length) warnings.push('roofPlant: no flat roof of 40 m² with room for a lift overrun');
   const recipe: LargeBuildingRecipe = {id: intent.id, pandId: intent.pandId, anchorRD, set, spec, panelGroup, wallGroup, groups, other: {system: otherName, specSystem: 'other'}, roofPlant, recessM: LARGE_RECESS_M,
-    roof: {material: intent.roof?.material ?? 'bitumen'}, wallMaterial: pal.wallMaterial ?? 'brick', ...(Object.keys(panelSystem).length ? {panelSystem} : {}), ...(Object.keys(slotMaterial).length ? {slotMaterial} : {})};
+    roof: {material: intent.roof?.material ?? 'bitumen'}, wallMaterial: pal.wallMaterial ?? 'brick', ...(Object.keys(panelSystem).length ? {panelSystem} : {}), ...(Object.keys(slotMaterial).length ? {slotMaterial} : {}), ...(lanterns.length ? {lanterns} : {})};
   const report: LargeFitReport = {
     groups: groups.map(g => ({index: g.index, system: g.system, panels: g.panels.length, surfaces: g.surfaces.length, widthM: g.widthM, eavesM: g.eavesM, storeys: g.storeys, storeyHeightsM: g.storeyHeightsM, bays: g.bays, pitchM: g.pitchM, entrance: !!g.entrance, garageDoors: g.garage?.bays.length ?? 0})),
     panels: panels.map(p => ({index: p.index, group: panelGroup[p.index], system: panelGroup[p.index] >= 0 ? groups[panelGroup[p.index]].system : otherName, widthM: r3(p.uMax - p.uMin), heightM: r3(p.vMax), bearingDeg: Math.round(bearingOfNormal(p.n)), surfaces: p.walls.map(wi => set.walls[wi].surface!)})),

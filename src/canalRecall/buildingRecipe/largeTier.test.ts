@@ -240,9 +240,84 @@ test('screen: perforated-brick lattice (posts and rails as closed boxes on the 9
   assert.equal(typical.cycle!.filter(r => r.kind === 'punched').length, 1, 'one bay in three is a perforation');
   assert.equal(typical.cycle![0].win!.barD, 0.035, 'glass-block bars clear the glass');
   const off = await topoOf(validateLargeIntent({...base, walls: base.walls.map((w: object) => ({...w, screen: undefined}))}), f);
-  const on = await topoOf(validateLargeIntent(base), f);
+  const on = await topoOf(validateLargeIntent({...base, walls: base.walls.map((w: object, i: number) => (i < 3 ? {...w, screen: true, windows: undefined} : w))}), f);
   assert.ok((on.built.components.screens ?? 0) >= 3, JSON.stringify(on.built.components));
   assert.equal(off.built.components.screens, undefined);
   assert.ok(on.topology.openEdges <= off.topology.openEdges, `${on.topology.openEdges} vs ${off.topology.openEdges}`);
   assert.deepEqual(on.gates.filter(x => !x.pass).map(x => x.id), []);
+});
+
+test('portal: carved stone surround, pediment and crest round an entrance, lettered on its frieze; closed solids only', async () => {
+  const {PORTAL} = await import('../blockBuilding/components.ts');
+  const base = raw('beursplein-5-165051'), f = facts('beursplein-5-165051');
+  const withEntrance = (e: object) => ({...base, walls: base.walls.map((w: object, i: number) => (i === 2 ? {...w, entrance: e, signage: {text: 'BEURSPLEIN 5', colour: '#d8c48a'}} : w))});
+  assert.throws(() => validateLargeIntent(withEntrance({bay: 0, canopy: true, portal: true})), /portal/);
+  assert.throws(() => validateLargeIntent(withEntrance({bay: 0, storeys: 2, portal: true})), /portal/);
+  const plain = await topoOf(validateLargeIntent(withEntrance({bay: 0})), f);
+  const carved = await topoOf(validateLargeIntent(withEntrance({bay: 0, portal: true})), f);
+  assert.equal(carved.built.components.portals, 1);
+  assert.equal(plain.built.components.portals, undefined);
+  assert.ok(PORTAL.out >= 0.09, 'the portal stands on the 9 cm layer');
+  const crest = carved.built.group.children.find(m => m.name.includes('crest@g2'));
+  assert.ok(crest, 'the crest has its own darker stone slot');
+  assert.equal(crest!.userData.materialSlot, 'stone');
+  assert.ok(carved.built.components.letters > 0, 'lettering moves to the frieze');
+  assert.equal(carved.topology.openEdges, plain.topology.openEdges);
+  assert.deepEqual(carved.gates.filter(x => !x.pass).map(x => x.id), []);
+});
+
+test('signage mount cornice: the name lettered on the cornice face of the widest panel (Universiteit van Amsterdam)', async () => {
+  const base = raw('oude-turfmarkt-168172'), f = facts('oude-turfmarkt-168172');
+  const intent = validateLargeIntent({...base, walls: [{...base.walls[0], signage: {text: 'UNIVERSITEIT VAN AMSTERDAM', colour: '#3a3430', mount: 'cornice'}}, base.walls[1]]});
+  const {built, gates, topology: t} = await topoOf(intent, f);
+  assert.equal(built.components.nameBands, 1);
+  assert.ok(built.components.letters > 100, `${built.components.letters} lettering triangles`);
+  assert.equal(t.openEdgeLengthM <= 2, true);
+  assert.deepEqual(gates.filter(x => !x.pass).map(x => x.id), []);
+});
+
+test('stone storeys and banded pilasters (Beursplein 5 street run): facing on the 9 cm layer, pilasters 4.5 cm over it, no z-fight planes', async () => {
+  const {FACING_OUT} = await import('../blockBuilding/components.ts');
+  const {SHEET_PITCH} = await import('../blockBuilding/compose.ts');
+  assert.equal(FACING_OUT, 2 * SHEET_PITCH);
+  const base = raw('beursplein-5-165051'), f = facts('beursplein-5-165051');
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], stoneStoreys: [0], stringCourses: true}, ...base.walls.slice(1)]}), /stoneStoreys/);
+  const intent = validateLargeIntent({...base, closedBands: true, walls: base.walls.map((w: object, i: number) => (i === 0 ? {...w, stoneStoreys: [0, 3], pilasters: true} : w))});
+  const {built, gates} = await topoOf(intent, f);
+  assert.ok((built.components.stoneStoreys ?? 0) >= 2 && (built.components.pilasters ?? 0) >= 2, JSON.stringify(built.components));
+  assert.ok(built.recipe.spec.palette['band@g0'], 'pilaster courses in a darker stone');
+  assert.deepEqual(gates.filter(x => !x.pass).map(x => x.id), []);
+});
+
+test('lantern: a closed glazed lantern seated on the highest roof point behind the panel; deterministic, attached', async () => {
+  const {placeLantern, LANTERN} = await import('./fitLarge.ts');
+  const base = raw('beursplein-5-165051'), f = facts('beursplein-5-165051');
+  const intent = validateLargeIntent({...base, walls: base.walls.map((w: object, i: number) => (i === 0 ? {...w, lantern: true} : {...w, lantern: undefined}))});
+  const a = fitLarge(intent, f).recipe, b = fitLarge(intent, f).recipe;
+  assert.equal(a.lanterns?.length, 1);
+  assert.deepEqual(a.lanterns, b.lanterns);
+  const l = a.lanterns![0];
+  assert.ok(l.topY - l.baseY >= LANTERN.riseM && l.size === LANTERN.sizeM, JSON.stringify(l));
+  const {built, gates} = await topoOf(intent, f);
+  assert.equal(built.components.lanterns, 1);
+  assert.deepEqual(gates.filter(x => !x.pass).map(x => x.id), []);
+  // the ridge gate still reads the 3DBAG roof (the lantern is not roof surface)
+  assert.ok(gates.find(x => x.id === 'ridge-vs-3dbag')!.pass);
+  void placeLantern;
+});
+
+test('closed bands: Beursplein cornices and Damrak string-course ends leave no open edge of their own', async () => {
+  const {topology} = await import('./gates.ts');
+  const stoneOnly = (tris: Awaited<ReturnType<typeof topoOf>>['tris']) => tris.filter(t => /stone/.test(t.surface));
+  const bp = raw('beursplein-5-165051'), bf = facts('beursplein-5-165051');
+  const open = await topoOf(validateLargeIntent({...bp, closedBands: undefined}), bf), closed = await topoOf(validateLargeIntent({...bp, closedBands: true}), bf);
+  assert.ok(topology(stoneOnly(open.tris)).openEdges > 0, 'open cornices have open back edges');
+  assert.equal(topology(stoneOnly(closed.tris)).openEdges, 0, 'closed cornices are watertight on their own');
+  // Damrak 77: string courses stop at the Beurspassage arch; without closed ends they left 2 m of open edge.
+  const dm = raw('damrak-77-165746'), df = facts('damrak-77-165746');
+  const sc = {...dm, walls: [{...dm.walls[0], stringCourses: true}, ...dm.walls.slice(1)]};
+  const before = await topoOf(validateLargeIntent({...sc, closedBands: undefined}), df), after = await topoOf(validateLargeIntent({...sc, closedBands: true}), df);
+  assert.ok(before.topology.openEdges > 0);
+  assert.equal(after.topology.openEdges, 0);
+  assert.deepEqual(after.gates.filter(x => !x.pass).map(x => x.id), []);
 });

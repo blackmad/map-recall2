@@ -8,7 +8,7 @@ import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/syst
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'curve', 'wallMaterial', 'tiltedBays', 'screen'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -71,7 +71,9 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     if (w.windows !== undefined) oneOf(w.windows, LARGE_WINDOWS, `${at}.windows`);
     if (w.entrance !== undefined && typeof w.entrance !== 'boolean') {
       const e = w.entrance;
-      for (const k of Object.keys(e)) if (!['bay', 'storeys', 'canopy'].includes(k)) problems.push(`${at}.entrance.${k}: unknown field (bay, storeys, canopy)`);
+      for (const k of Object.keys(e)) if (!['bay', 'storeys', 'canopy', 'portal'].includes(k)) problems.push(`${at}.entrance.${k}: unknown field (bay, storeys, canopy, portal)`);
+      bool(e.portal, `${at}.entrance.portal`);
+      if (e.portal && ((e.storeys ?? 1) > 1 || e.canopy)) problems.push(`${at}.entrance.portal: a portal frames a single-storey entrance without a canopy`);
       if (e.bay !== undefined) count(e.bay, `${at}.entrance.bay`, 0, 79);
       if (e.storeys !== undefined) count(e.storeys, `${at}.entrance.storeys`, 1, 4);
       bool(e.canopy, `${at}.entrance.canopy`);
@@ -83,7 +85,7 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (typeof w.signage === 'object') {
         for (const k of Object.keys(w.signage)) if (!['text', 'colour', 'mount'].includes(k)) problems.push(`${at}.signage.${k}: unknown field (text, colour, mount)`);
         if (w.signage.colour !== undefined) colour(w.signage.colour, `${at}.signage.colour`);
-        if (w.signage.mount !== undefined) oneOf(w.signage.mount, ['fascia', 'wall', 'glazing', 'canopy'], `${at}.signage.mount`);
+        if (w.signage.mount !== undefined) oneOf(w.signage.mount, ['fascia', 'wall', 'glazing', 'canopy', 'cornice'], `${at}.signage.mount`);
         if (w.signage.mount === 'canopy' && !(typeof w.entrance === 'object' && w.entrance.canopy)) problems.push(`${at}.signage.mount: canopy needs entrance.canopy`);
         if (w.signage.mount === 'glazing' && !(typeof w.entrance === 'object' && (w.entrance.storeys ?? 1) > 1)) problems.push(`${at}.signage.mount: glazing needs an entrance hall (entrance.storeys >= 2)`);
       }
@@ -118,7 +120,8 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     }
     bool(w.sills, `${at}.sills`); bool(w.frames, `${at}.frames`); bool(w.deepBars, `${at}.deepBars`); bool(w.curve, `${at}.curve`);
     if (w.wallMaterial !== undefined) oneOf(w.wallMaterial, GROUP_WALL_MATERIALS, `${at}.wallMaterial`);
-    bool(w.screen, `${at}.screen`);
+    bool(w.screen, `${at}.screen`); bool(w.pilasters, `${at}.pilasters`); bool(w.lantern, `${at}.lantern`);
+    if (w.stoneStoreys !== undefined) { if (!Array.isArray(w.stoneStoreys) || !w.stoneStoreys.length) problems.push(`${at}.stoneStoreys: list of storeys (0 = ground)`); else w.stoneStoreys.forEach(s => count(s, `${at}.stoneStoreys`, 0, 39)); if (w.stringCourses) problems.push(`${at}.stoneStoreys: not with stringCourses (the course would sit 5 mm off the facing)`); }
     if (w.screen && w.system !== 'brick-bay-grid') problems.push(`${at}.screen: the screen lattice follows a brick-bay-grid`);
     if (w.screen && (w.hoist || w.tiltedBays)) problems.push(`${at}.screen: not with hoist or tiltedBays`);
     const tiltSeen = new Set<number>();

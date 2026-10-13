@@ -342,9 +342,9 @@ export interface LargeWallIntent {
   ground?: LargeGround;
   windows?: LargeWindow;
   /** Recessed entrance on the widest panel: `bay` from the viewer's left (default the middle), `storeys` > 1 = a glazed entrance hall that tall, `canopy` = a cantilevered slab over it. */
-  entrance?: boolean | {bay?: number; storeys?: number; canopy?: boolean};
-  /** Stroke-font lettering: over the entrance (`fascia`, default), on the wall above the ground floor (`wall`), on the entrance-hall glass (`glazing`) or the canopy edge (`canopy`). */
-  signage?: string | {text: string; colour?: string; mount?: 'fascia' | 'wall' | 'glazing' | 'canopy'};
+  entrance?: boolean | {bay?: number; storeys?: number; canopy?: boolean; /** carved stone portal: jambs, entablature, a pediment block with a crest (single-storey entrances) */ portal?: boolean};
+  /** Stroke-font lettering: over the entrance (`fascia`, default; on the frieze of a portal), on the wall above the ground floor (`wall`), on the entrance-hall glass (`glazing`), the canopy edge (`canopy`) or a name band under the cornice (`cornice`, on the widest panel). */
+  signage?: string | {text: string; colour?: string; mount?: 'fascia' | 'wall' | 'glazing' | 'canopy' | 'cornice'};
   /** Recessed sectional garage doors in the ground storey, from the right end of the widest panel. */
   garageDoors?: number;
   stringCourses?: boolean;
@@ -382,6 +382,12 @@ export interface LargeWallIntent {
    * A list gives each storey its own pattern (the storeys of the entries must not overlap).
    */
   tiltedBays?: TiltedBaysIntent | TiltedBaysIntent[];
+  /** Storeys (0 = ground) faced in the group's stone over the wall (a granite base, an ashlar attic), round their openings. */
+  stoneStoreys?: number[];
+  /** Banded stone pilasters at both ends of every panel of the group (two-tone courses). */
+  pilasters?: boolean;
+  /** A glazed roof lantern on the highest roof point behind the group's widest panel. */
+  lantern?: boolean;
   /** Perforated-brick screen (car parks): a concrete lattice of posts and rails over the wall, glass-block perforations in one bay of three; brick-bay-grid only. */
   screen?: boolean;
   /**
