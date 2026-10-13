@@ -1,3 +1,4 @@
+import {buildAllardPierson} from './allard-pierson-builder';
 import {buildMediamatic} from './mediamatic-builder';
 import {buildHaparandaweg13} from './haparandaweg-13-builder';
 import {buildHaparandaweg11} from './haparandaweg-11-builder';
@@ -102,6 +103,15 @@ import {buildPodiumMozaiek} from './podium-mozaiek-builder';
 import {buildDorusTheusBrug} from './dorus-theus-brug-builder';
 import {buildCollectieSix} from './collectie-six-builder';
 import {buildOosterparkkerk} from './oosterparkkerk-builder';
+import {buildKeizersgrachtkerk} from './keizersgrachtkerk-builder';
+import {buildGerardDouSynagogue} from './gerard-dou-synagogue-builder';
+import {buildLekstraatSynagoge} from './lekstraat-synagoge-builder';
+import {buildRuysdaelPetrusPauluskerk} from './ruysdael-petrus-pauluskerk-builder';
+import {buildTortureMuseum} from './torture-museum-builder';
+import {buildMaxEuwe} from './max-euwe-centrum-builder';
+import {buildHolocaustNamenmonument} from './holocaust-namenmonument-builder';
+import {buildSchouwburgpoort} from './voormalige-schouwburgpoort-builder';
+import {buildAcademieTheaterDans} from './academie-theater-dans-builder';
 import {buildMontelbaanstoren} from './montelbaanstoren-builder';
 import {buildMunttoren} from './munttoren-builder';
 import {buildNationalMonument} from './national-monument-builder';
@@ -212,6 +222,18 @@ function hospital(id:string){let s=hospitals.sites.find(s=>s.id===id)!;let spec=
  }else{ // Oosterpark entrance: tall glazed hall framed by pale concrete columns.
  let p=coord([4.91615,52.35875]);sign('OLVG',p.x+18,9,p.y+6,.25,'blue');let angle=-24*Math.PI/180;box(p.x,0,p.y,33,12,8,'glass',angle);for(let u=-15;u<=15;u+=5)box(p.x+u*Math.cos(angle),0,p.y-u*Math.sin(angle),.9,13,8.5,'stone',angle);box(p.x,12.7,p.y,34,.6,9,'stone',angle);}
 }
+// Thin surveyed boundary builders can contain collapsed taper faces. Keep only actual triangles
+// before exact-position export; legacy exports retain their existing processing.
+function withoutCollapsedTriangles(g:T.BufferGeometry):T.BufferGeometry{
+ const flat=g.index?g.toNonIndexed():g,p=flat.getAttribute('position'),n=flat.getAttribute('normal');
+ const positions:number[]=[],normals:number[]=[];
+ for(let i=0;i<p.count;i+=3){
+  const a=new T.Vector3().fromBufferAttribute(p,i),b=new T.Vector3().fromBufferAttribute(p,i+1),c=new T.Vector3().fromBufferAttribute(p,i+2);
+  if(b.sub(a).cross(c.sub(a)).lengthSq()<1e-18)continue;
+  for(let k=0;k<3;k++){positions.push(p.getX(i+k),p.getY(i+k),p.getZ(i+k));normals.push(n.getX(i+k),n.getY(i+k),n.getZ(i+k));}
+ }
+ const result=new T.BufferGeometry();result.setAttribute('position',new T.Float32BufferAttribute(positions,3));result.setAttribute('normal',new T.Float32BufferAttribute(normals,3));return result;
+}
 async function save(id:string){
  const spec=MANUAL_LANDMARKS.find(s=>s.id===id)!;
  for(const [name,hex]of Object.entries(spec.materialOverrides??{})){
@@ -231,7 +253,7 @@ async function save(id:string){
    const precise=precision==='precise',key=`${materialName}|${precise?'precise':'ordinary'}`;
    let group=groups.get(key);
    if(!group){group={colour:part.c,hex,unlit,precise,geometries:[]};groups.set(key,group);}
-   group.geometries.push(g.index?g.toNonIndexed():g);
+   group.geometries.push(spec.preserveAllPositionPrecision?withoutCollapsedTriangles(g):(g.index?g.toNonIndexed():g));
   }
  }
  const unlitExtension=[...groups.values()].some(group=>group.unlit)?doc.createExtension(KHRMaterialsUnlit):null;
@@ -240,7 +262,7 @@ async function save(id:string){
   const positions=Float32Array.from(group.geometries.flatMap(g=>Array.from(g.getAttribute('position').array)));
   const normals=Float32Array.from(group.geometries.flatMap(g=>Array.from(g.getAttribute('normal').array)));
   for(const value of positions)all.push(value);
-  const rgb=new T.Color(group.hex),material=doc.createMaterial(name).setBaseColorFactor([rgb.r,rgb.g,rgb.b,1]).setMetallicFactor(0).setRoughnessFactor(.9).setDoubleSided(true);
+  const rgb=new T.Color(group.hex),material=doc.createMaterial(name).setBaseColorFactor([rgb.r,rgb.g,rgb.b,1]).setMetallicFactor(0).setRoughnessFactor(.9).setDoubleSided(spec.doubleSided??true);
   if(group.unlit)material.setExtension('KHR_materials_unlit',unlitExtension!.createUnlit());
   if(id==='conservatorium'&&!name.startsWith('decal-')&&group.colour==='glass')material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,.28]).setAlphaMode('BLEND');
   (group.precise?preciseMesh!:mesh).addPrimitive(doc.createPrimitive().setExtras(spec.preservePositionPrecision?{positionPrecision:group.precise?'exact':'ordinary'}:{}).setAttribute('POSITION',doc.createAccessor().setType('VEC3').setArray(positions).setBuffer(buffer)).setAttribute('NORMAL',doc.createAccessor().setType('VEC3').setArray(normals).setBuffer(buffer)).setMaterial(material));
@@ -250,12 +272,16 @@ async function save(id:string){
  await doc.transform(weld(),dedup(),prune());
  const dest=path.join(out,`${id}.glb`);
  // Printed paint on folded cladding must retain the shared fold boundaries.
- if(spec.preservePositionPrecision){
+ if(spec.preserveAllPositionPrecision){
+  await doc.transform(reorder({encoder:MeshoptEncoder,target:'size'}));
+  await doc.transform(quantize({pattern:/^(?!POSITION$).+/,patternTargets:/^(?!POSITION$).+/,quantizeNormal:8}));
+  doc.createExtension(EXTMeshoptCompression).setRequired(true).setEncoderOptions({method:EXTMeshoptCompression.EncoderMethod.QUANTIZE});
+ }else if(spec.preservePositionPrecision){
   await doc.transform(reorder({encoder:MeshoptEncoder,target:'size'}));
   await quantizeOrdinaryMesh(doc,mesh,ordinaryNode);
   await doc.transform(quantize({pattern:/^(?!POSITION$).+/,patternTargets:/^(?!POSITION$).+/}));
   doc.createExtension(EXTMeshoptCompression).setRequired(true).setEncoderOptions({method:EXTMeshoptCompression.EncoderMethod.QUANTIZE});
- }else await doc.transform(meshopt({encoder:MeshoptEncoder,level:'medium',...(['electric-ladyland','westerkerk','cafe-kobalt','collectie-six'].includes(id)?{quantizePosition:16}:{})}));
+ }else await doc.transform(meshopt({encoder:MeshoptEncoder,level:'medium',...(['electric-ladyland','westerkerk','cafe-kobalt','collectie-six','voormalige-schouwburgpoort'].includes(id)?{quantizePosition:16}:{})}));
  await new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.encoder':MeshoptEncoder}).write(dest,doc);
  const bounds={min:[Infinity,Infinity,Infinity],max:[-Infinity,-Infinity,-Infinity]};
  for(let i=0;i<all.length;i++){const axis=i%3;bounds.min[axis]=Math.min(bounds.min[axis],all[i]);bounds.max[axis]=Math.max(bounds.max[axis],all[i]);}
@@ -353,6 +379,15 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='dorus-theus-brug')buildDorusTheusBrug(w,d,helpers);
     else if(id==='collectie-six')buildCollectieSix(w,d,helpers);
     else if(id==='oosterparkkerk')buildOosterparkkerk(w,d,helpers);
+    else if(id==='keizersgrachtkerk')buildKeizersgrachtkerk(w,d,helpers);
+    else if(id==='gerard-dou-synagogue')buildGerardDouSynagogue(w,d,helpers);
+    else if(id==='lekstraat-synagoge')buildLekstraatSynagoge(w,d,helpers);
+    else if(id==='ruysdael-petrus-pauluskerk')buildRuysdaelPetrusPauluskerk(w,d,helpers);
+    else if(id==='torture-museum')buildTortureMuseum(w,d,helpers);
+    else if(id==='max-euwe-centrum')buildMaxEuwe(helpers);
+    else if(id==='holocaust-namenmonument')buildHolocaustNamenmonument(w,d,helpers);
+    else if(id==='voormalige-schouwburgpoort')buildSchouwburgpoort(helpers);
+    else if(id==='academie-theater-dans')buildAcademieTheaterDans(w,d,helpers);
     else if(id==='montelbaanstoren-amsterdam')buildMontelbaanstoren(w,d,helpers);
     else if(id==='munttoren-amsterdam')buildMunttoren(w,d,helpers);
     else if(id==='national-monument-on-the-dam')buildNationalMonument(w,d,helpers);
@@ -392,7 +427,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(['dominicuskerk','vredeskerk'].includes(id))buildNeoChurchLandmark(id,w,d,helpers);
     else if(['badhuistheater','cinecenter','studiok'].includes(id))buildNeighbourhoodVenueLandmark(id,w,d,helpers);
     else if(['lab111','occii','ketelhuis'].includes(id))buildIndependentCinemaLandmark(id,w,d,helpers);
-    else if(['wereldmuseum-amsterdam','dutch-resistance-museum','allard-pierson'].includes(id))buildEasternBankMuseumLandmark(id,w,d,helpers);
+    else if(id==='allard-pierson')buildAllardPierson(w,d,helpers);
+    else if(['wereldmuseum-amsterdam','dutch-resistance-museum'].includes(id))buildEasternBankMuseumLandmark(id,w,d,helpers);
     else if(['brakke-grond','frascati','boom-chicago'].includes(id))buildNesRozentheaterLandmark(id,w,d,helpers);
     else if(['foam','huis-marseille','ons-lieve-heer-op-solder'].includes(id))buildCanalMuseumLandmark(id,w,d,helpers);
     else if(id==='rem-eiland')buildRemEiland(w,d,helpers);

@@ -1,0 +1,12 @@
+{
+  "id": "extract_landmarks_417591223",
+  "name": "Torture Museum",
+  "lat": 52.3672872,
+  "lng": 4.8906653,
+  "funFact": "The museum has operated since 1985. Its exhibition uses more than forty instruments and explanatory engravings to discuss punishment and sentencing in medieval Europe, with historical notes in eight languages.",
+  "sourceUrls": [
+    "https://torturemuseum.org/"
+  ],
+  "preserveExistingWikipedia": true,
+  "note": "Operator describes display scope; do not claim every exhibited device is historically authentic. Preserve current researched caveat about invented/rare devices."
+}

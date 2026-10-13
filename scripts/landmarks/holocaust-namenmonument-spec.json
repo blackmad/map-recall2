@@ -1,0 +1,58 @@
+{
+  "id": "holocaust-namenmonument",
+  "name": "Nationaal Holocaust Namenmonument",
+  "assetKind": "memorial",
+  "landmarkId": "extract_landmarks_1974741421",
+  "modelUrl": "./models/holocaust-namenmonument.glb",
+  "suppressOsmIds": [
+    "r13236148",
+    "r13236149",
+    "r13236150",
+    "r13236507",
+    "w984818187",
+    "w984815753",
+    "w984816579",
+    "w984816676"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.904975,
+      52.3657056
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 90,
+    "widthMetres": 50
+  },
+  "surveyed": {
+    "anchor": [
+      4.904975,
+      52.3657056
+    ],
+    "northOffsetDegrees": -90,
+    "source": "OSM current surveyed steel-letter multipolygons; native x east / z south"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "stone": "#c5beb0",
+    "ochre": "#b48a4e",
+    "frame": "#b9c3c9",
+    "dark": "#37393b",
+    "bronze": "#5c4938"
+  },
+  "attribution": {
+    "title": "Nationaal Holocaust Namenmonument \u2014 original native memorial geometry",
+    "author": "Map Recall; memorial architecture Daniel Libeskind / Rijnboutt",
+    "sourceUrl": "https://libeskind.com/work/names-monument/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free four current surveyed hollow steel-letter volumes, native thin paving and source-plan traced discontinuous brick walls. Steel taper directions checked againstengineeringdrawings/current2021photos; wall endpoints and central-north crest approximate. No imported mesh/photo pixels; no invented inscriptions."
+  },
+  "geometryExport": {
+    "positionPrecision": "FLOAT32 preserved, meshopt compression without quantized positions",
+    "reason": "Thin sourcehole boundary failed14/16bitpositions; preserve exactsourceouter/inner topology."
+  },
+  "doubleSided": false,
+  "preserveAllPositionPrecision": true
+}
