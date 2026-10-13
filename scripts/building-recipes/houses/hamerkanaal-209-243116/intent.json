@@ -1,0 +1,81 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "hamerkanaal-209-243116",
+ "pandId": "0363100012243116",
+ "address": "Gedempt Hamerkanaal 209, Amsterdam-Noord: 1908 Kromhout shipyard engine hall and workshops (Stork, now Kromhouthal and restaurant Stork)",
+ "sources": [
+  {
+   "id": "pano-2020-01-23-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2020-01-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001587_pano_0000_002256/",
+   "image": "staging/pand-reference-walls/0363100012243116/w01-169.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-01-23-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2020-01-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001587_pano_0000_002256/",
+   "image": "staging/pand-reference-walls/0363100012243116/w01-169.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    132,
+    165,
+    411
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 15,
+   "ground": "system",
+   "deepBars": true,
+   "arches": {
+    "windows": "segmental",
+    "band": "none"
+   },
+   "signage": {
+    "text": "STORK",
+    "colour": "#f0eee6",
+    "mount": "wall"
+   }
+  },
+  {
+   "wallSurfaces": [
+    109,
+    227,
+    382
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "deepBars": true,
+   "windows": "plain",
+   "signage": {
+    "text": "KROMHOUTHAL",
+    "colour": "#f0eee6",
+    "mount": "wall"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#4a3228",
+  "frame": "#e8e6df",
+  "door": "#2a2a2a",
+  "stone": "#b0aca4"
+ },
+ "notes": [
+  "Gedempt Hamerkanaal 209 (BAG: 1908, 4 industrial, 23 office and 3 assembly units): the Kromhout/Stork shipyard works on the Hamerkanaal, Amsterdam-Noord. Only the south (canal) front is photographed (w01-169, panorama 2020-01-23, 89.6 m): a long two-storey dark-brick wing of arched ground windows and small upper windows under white sign boards (HET IJ, STORK), and at the east end the Kromhouthal engine hall: a taller dark-brick gable with two rows of small white-framed windows, a white sign board KROMHOUTHAL, a glazed ground floor and a stepped gable top with a shield emblem.",
+  "Modelled: the canal wing (panel 99) as a 2-storey brick-bay-grid with segmental-arched windows and STORK lettered on the wall; the Kromhouthal gable (panel 82) as 3 storeys (glazed ground floor and two window rows, 9 bays) with KROMHOUTHAL lettered between the rows. Walls and the sawtooth roofs are the 3DBAG LoD2.2 shell as surveyed.",
+  "Simplified: the white sign boards are plain lettering on the brick, the stepped brick corbelling and the shield emblem on the gable are not drawn, the HET IJ board and the timber terrace pergola in front of the wing are not drawn. Not modelled: every wall other than panels 99 and 82 (north, east and west fronts have no panorama within 35 m, so they are blank brick under the real roofs)."
+ ]
+}
