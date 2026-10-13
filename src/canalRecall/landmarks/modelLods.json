@@ -1638,16 +1638,16 @@
   "triangles": 3299
  },
  "rembrandtmonument": {
-  "sourceHash": "872c2e51a599c19a",
+  "sourceHash": "789043ca1e977063",
   "buildVersion": 2,
-  "bytes": 37984,
-  "triangles": 1668
+  "bytes": 37992,
+  "triangles": 1672
  },
  "vondelmonument": {
-  "sourceHash": "6b0fbe12dd0a0e54",
+  "sourceHash": "6ac87d4c2310cfcf",
   "buildVersion": 2,
-  "bytes": 37560,
-  "triangles": 1776
+  "bytes": 37856,
+  "triangles": 1794
  },
  "begijnhof": {
   "sourceHash": "f4572b102b6d517e",
@@ -1656,9 +1656,9 @@
   "triangles": 1788
  },
  "slavernijmonument": {
-  "sourceHash": "79f6f502beedd6a2",
+  "sourceHash": "876f3d4dfca9523a",
   "buildVersion": 2,
-  "bytes": 17492,
-  "triangles": 674
+  "bytes": 16868,
+  "triangles": 644
  }
 }

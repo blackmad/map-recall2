@@ -61,7 +61,7 @@ export function buildSlavernijmonument(_w: number, _d: number, b: BuildingTools)
     const pose: Pose = {
       ...POSES.striding(stride), height: 1.95 + (k % 4) * 0.03, stout: 0.78, lean: 0.34,
       legs: {l: {pitch: stride, bend: 0.15}, r: {pitch: -stride * 0.9, bend: 0.4}},
-      arms: {l: {pitch: 1.15, roll: 0.05, bend: 0.25}, r: {pitch: 0.7 + (k % 2) * 0.3, bend: 0.5}}, head: {pitch: -0.15},
+      arms: {l: {pitch: 1.15, roll: 0.05, bend: 0.25}, r: {pitch: 0.7 + (k % 2) * 0.3, bend: 0.5}}, head: {pitch: -0.35},
     };
     joints.push(placeFigure(b, pose, {x, y: top, z, yaw: Math.PI / 2 + yawJitter}, 'bronze'));
   });
