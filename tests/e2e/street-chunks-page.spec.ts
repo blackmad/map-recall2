@@ -33,8 +33,9 @@ test('street chunks demo page draws individual vs chunk views with stats and a g
   await expect(cards.first().locator('details[data-gates]')).toHaveAttribute('data-gates', 'pass');
 
   const href = await cards.first().locator('a[data-link="game"]').getAttribute('href');
-  expect(href).toMatch(/^\.\/index\.html#race=(-?\d+\.\d+,){5}-?\d+\.\d+$/);
-  expect(await cards.first().locator('a[data-link="game-off"]').getAttribute('href')).toContain('?streetChunks=0#race=');
+  // Chunks are retired from the default (2026-10-13): the game link asks for them, "without" for the per-house models.
+  expect(href).toMatch(/^\.\/index\.html\?travel=car&streetChunks=1#race=(-?\d+\.\d+,){5}-?\d+\.\d+$/);
+  expect(await cards.first().locator('a[data-link="game-off"]').getAttribute('href')).toContain('&streetChunks=0#race=');
 
   // Dragging one view moves the other (synced camera): the pixels of the second canvas change.
   const canvases = cards.first().locator('canvas');

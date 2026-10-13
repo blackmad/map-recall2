@@ -111,15 +111,21 @@ export class SignatureLandmarks {
   }
 
   /**
-   * Default on (`?streetChunks=0` disables; hosts opt in with `options.streetChunks`, so review
-   * pages that pass a single candidate model are untouched): draw each block face as ONE chunk model (one mesh,
-   * per-pand ranges in glTF extras; see streetChunks/manifest.ts) instead of its
-   * houses. The houses a chunk replaces leave the model list, and any already
-   * drawn are dropped, so nothing is drawn twice. No flag or no manifest: no change.
+   * Street surveys (hosts opt in with `options.streetChunks`, so review pages that pass a single candidate model are
+   * untouched; ordinaryChunks.ts `streetSurveyMode`). Retired by default (2026-10-13): the block-face chunks and the
+   * per-house recipe models leave the model list, so their pands draw as generic extrusions (or recipe tiles) like
+   * their neighbours. `?streetChunks=0` keeps the per-house models. `?streetChunks=1` draws each block face as ONE
+   * chunk model (one mesh, per-pand ranges in glTF extras; see streetChunks/manifest.ts) instead of its houses: the
+   * houses a chunk replaces leave the model list, and any already drawn are dropped, so nothing is drawn twice.
    */
   _loadStreetChunks() {
-    const { streetChunksEnabled, applyStreetChunks } = window.CanalRecallSignatureLandmarks;
+    const { streetChunksEnabled, streetSurveyMode, withoutStreetSurveys, applyStreetChunks } = window.CanalRecallSignatureLandmarks;
     if (this.streetChunks !== true) return;
+    if (streetSurveyMode?.(window.location.search) === 'retired') {
+      this.models = withoutStreetSurveys(this.models);
+      this._dropEntries(new Set((this._entries || []).filter(e => e.spec.buildingCategory === 'street-survey').map(e => e.spec.id)));
+      return;
+    }
     if (!streetChunksEnabled?.(window.location.search)) return;
     fetch(new URL('./ordinary-buildings-data/chunks.json', window.location.href), { cache: 'no-cache' })
       .then(response => response.ok ? response.json() : Promise.reject(new Error(`chunks.json ${response.status}`)))

@@ -5,7 +5,7 @@ import {NodeIO} from '@gltf-transform/core';
 import {KHRMeshQuantization} from '@gltf-transform/extensions';
 import {resolveIntent} from '../buildingRecipe/compile.ts';
 import type {BuildingFacts} from '../buildingRecipe/facts.ts';
-import {applyStreetChunks, chunkSpecFor, streetChunksEnabled} from '../landmarks/ordinaryChunks.ts';
+import {applyStreetChunks, chunkSpecFor, streetChunksEnabled, streetSurveyMode, withoutStreetSurveys} from '../landmarks/ordinaryChunks.ts';
 import {compileChunk, groupBlockFaces, findContacts, trimPartyWalls, remainder, planGround, pandIndexForFace, readChunkExtras, buildChunkManifest} from './index.ts';
 import type {Bucket, BucketMap, ChunkHouseInput, P2} from './types.ts';
 
@@ -92,13 +92,30 @@ test('extras: pand index from a primitive range table', () => {
   assert.equal(readChunkExtras({other: 1}), null);
 });
 
-test('?streetChunks flag parsing', () => {
+test('?streetChunks flag parsing: street surveys are retired by default (2026-10-13)', () => {
   assert.equal(streetChunksEnabled('?streetChunks=1'), true);
   assert.equal(streetChunksEnabled('?a=b&streetChunks=true'), true);
   assert.equal(streetChunksEnabled('?streetChunks=0'), false);
-  assert.equal(streetChunksEnabled(''), true);
+  assert.equal(streetChunksEnabled(''), false);
   assert.equal(streetChunksEnabled('?streetChunks=false'), false);
-  assert.equal(streetChunksEnabled('?a=b'), true);
+  assert.equal(streetChunksEnabled('?a=b'), false);
+  assert.equal(streetSurveyMode(''), 'retired');
+  assert.equal(streetSurveyMode('?streetChunks='), 'retired');
+  assert.equal(streetSurveyMode('?streetChunks=maybe'), 'retired');
+  assert.equal(streetSurveyMode('?streetChunks=1'), 'chunks');
+  assert.equal(streetSurveyMode('?streetChunks=on'), 'chunks');
+  assert.equal(streetSurveyMode('?streetChunks=0'), 'houses');
+  assert.equal(streetSurveyMode('?x=1&streetChunks=off'), 'houses');
+});
+
+test('retired street surveys leave landmarks and one-off ordinary buildings alone', () => {
+  const base = {name: '', landmarkId: '', modelUrl: '', suppressOsmIds: [], heightMetres: 10, groundAltitudeMetres: 0, facingOffsetDegrees: 0} as any;
+  const models = [
+    {...base, id: 'landmark'}, {...base, id: 'one-off', assetKind: 'ordinary-building', buildingCategory: 'ordinary'},
+    {...base, id: 'house', assetKind: 'ordinary-building', buildingCategory: 'street-survey'},
+    {...base, id: 'chunk-face-x', assetKind: 'ordinary-building', buildingCategory: 'street-survey'},
+  ];
+  assert.deepEqual(withoutStreetSurveys(models).map(m => m.id), ['landmark', 'one-off']);
 });
 
 // The real Bilderdijkstraat block face: 155417 .. 081118, seven houses along the west side.
