@@ -1,5 +1,37 @@
 # Canal Recall — what is built
 
+## Large tier: `fitLarge()`, `kind: large` recipes, civic components, first police station (2026-10-13)
+
+Lane `buildings/large-tier-20261013` (Opus, `docs/handoffs/lane-large-tier-20261013.md`),
+the "not flat buildings" answer from the 2026-10-13 plan. `fitLarge()`
+(`src/canalRecall/buildingRecipe/fitLarge.ts`) builds per-wall panels from the
+3DBAG LoD2.2 walls (coplanar walls in different wall groups stay separate via
+`mergeKey`), storey lines per group from the eaves (`alignWith` lets wings
+share a group's lines), bays and pitch from the group's widest ground-reaching
+wall, material slots and colours per group; schema `LargeBuildingIntent`
+(`intent.ts`, validated by `largeIntent.ts`). `compileBuilding` dispatches
+`kind: 'large'` to `largeCompile.ts`, which drives `blockBuilding/compose.ts`
+in a new recess mode (openings cut 0.18 m into the wall, glass and frame on
+the back plane; `dissolve.ts` merges 3DBAG strip seams so openings can cross
+them); default compose output is byte-identical (`test:block-kit-installed`).
+Civic components in `blockBuilding/components.ts`: entrance/entrance hall,
+canopy, garage doors, lettering, bands, police stripe, blue lamp, roof plant.
+Gates (`largeGates.ts`): ≤ 12k tris, footprint IoU ≥ 0.9, ridge and eaves
+within ±0.3 m per group, storeys 2.3–6.2 m (De Balie needs 5.9), no floating
+parts, open edges ≤ 2 m, every component attached; `fit-golden` covers large
+intents. Customers: politie-van-leijenberghlaan (6,123 tris, 240 recessed
+openings, IoU 0.942; the 2016/2019/2025 panoramas show no stripe, lamp, canopy
+or garage doors, so the intent omits them and `largeTier.test.ts` exercises
+the full kit on this shape instead), leidsestraat-67-large (1,487 tris, was
+4,324 as a canal house), de-balie-large (1,178), social-history-large (2,801);
+all gates and `audit:glb` PASS. Contact sheets under
+`artifacts/building-recipes/<id>/`. Checks: lint, building-recipes 74,
+fit-golden 37 identical, geometry-audit 22, block-kit identical. Docs: "Large
+tier" in `docs/buildings-pipeline.md`, `scripts/building-recipes/README.md`.
+Integrator also repointed the Hotel de l'Europe geometry pin (facade split
+into sections by the window-grid merge; now `fixed` on the centre bay).
+
+
 ## Hotel de l'Europe window grid and Da Costakade 13 landed; two lanes held back by the audit (2026-10-13)
 
 Integrator review of the small landmark lanes killed on 2026-10-13, judged on
