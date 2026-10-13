@@ -10,7 +10,10 @@ export function buildHistoricMuseumLandmark(id:string,w:number,d:number,b:Buildi
  const polygons=site.buildings[0].geometry.coordinates.map(poly=>poly.map(r=>r.slice(0,-1).map(point)));
  const rings=polygons.flat(),height=hart?10:10.6;
  function geometry(vertices:number[],colour:'slate'|'stone'|'brick'){const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(vertices,3));g.computeVertexNormals();add(g,colour);}
- function panel(x:number,y:number,z:number,width:number,h:number,angle:number,blind=false){const nx=Math.sin(angle),nz=Math.cos(angle);if(hart){box(x,y,z,width+.22,h+.22,.16,'stone',angle);box(x+nx*.13,y+.12,z+nz*.13,width,h,.2,blind?'dark':'glass',angle);}else{add(new T.PlaneGeometry(width+.22,h+.22),'stone',x,y+(h+.22)/2,z,angle);add(new T.PlaneGeometry(width,h),blind?'dark':'glass',x+nx*.035,y+.12+h/2,z+nz*.035,angle);}if(!blind){box(x+nx*.26,y+.13,z+nz*.26,.09,h,.12,'white',angle);for(let yy of [h*.33,h*.66])box(x+nx*.25,y+.12+yy,z+nz*.25,width,.08,.12,'white',angle);}}
+ // Glazing bars rest on the glass: on the flat (non-H'ART) panel the glass is a plane 3.5 cm out, so bars centred 10 cm out
+ // touch it; at 25 cm they floated 15 cm off it (geometry audit 2026-10-13). H'ART's boxed glass reaches 23 cm, so its bars stay.
+ // The flat panel itself stands 4 cm off the wall line (was 12 cm: the stone surround hovered as a detached part).
+ function panel(x:number,y:number,z:number,width:number,h:number,angle:number,blind=false){const nx=Math.sin(angle),nz=Math.cos(angle);if(hart){box(x,y,z,width+.22,h+.22,.16,'stone',angle);box(x+nx*.13,y+.12,z+nz*.13,width,h,.2,blind?'dark':'glass',angle);}else{add(new T.PlaneGeometry(width+.22,h+.22),'stone',x,y+(h+.22)/2,z,angle);add(new T.PlaneGeometry(width,h),blind?'dark':'glass',x+nx*.035,y+.12+h/2,z+nz*.035,angle);}if(!blind){const o=hart?.26:.10,o2=hart?.25:.10;box(x+nx*o,y+.13,z+nz*o,.09,h,.12,'white',angle);for(let yy of [h*.33,h*.66])box(x+nx*o2,y+.12+yy,z+nz*o2,width,.08,.12,'white',angle);}}
  /** Rewinds roof triangles so every face normal points up (the hip slopes were half downward-facing). */
  function upward(v:number[]){for(let i=0;i<v.length;i+=9){const ax=v[i+3]-v[i],az=v[i+5]-v[i+2],bx=v[i+6]-v[i],bz=v[i+8]-v[i+2];if(az*bx-ax*bz<0)for(let k=0;k<3;k++){const t=v[i+3+k];v[i+3+k]=v[i+6+k];v[i+6+k]=t;}}return v;}
  /** Gabled roof with its ridge along z (x centre xc, z0..z1; eave heights ea at -x, ec at +x), slate slopes and ends. */
@@ -25,7 +28,7 @@ export function buildHistoricMuseumLandmark(id:string,w:number,d:number,b:Buildi
   for(let ri=0;ri<poly.length;ri++){const r=poly[ri];let area=0;for(let i=0;i<r.length;i++)area+=r[i].x*r[(i+1)%r.length].y-r[(i+1)%r.length].x*r[i].y;
    for(let i=0;i<r.length;i++){const a=r[i],c=r[(i+1)%r.length],v=c.clone().sub(a),length=v.length();if(length<3.1)continue;v.normalize();const n=new T.Vector2(v.y,-v.x).multiplyScalar((area>0?1:-1)*(ri? -1:1)),angle=Math.atan2(n.x,n.y),count=Math.max(1,Math.round(length/(hart?3.05:3.5)));
     const mid=a.clone().add(c).multiplyScalar(.5);for(let y of [0.45,height-.55])box(mid.x+n.x*.12,y,mid.y+n.y*.12,length,.24,.25,'stone',angle);
-    for(let k=0;k<count;k++){const q=a.clone().addScaledVector(v,length*(k+.5)/count).addScaledVector(n,.12);for(let y of hart?[1.0,4.1,7.2]:[1.25,5.8])panel(q.x,y,q.y,hart?1.3:1.6,hart?2.05:2.6,angle,hart&&ri===0&&Math.abs(q.x)<5&&q.y>37);}
+    for(let k=0;k<count;k++){const q=a.clone().addScaledVector(v,length*(k+.5)/count).addScaledVector(n,hart?.12:.04);for(let y of hart?[1.0,4.1,7.2]:[1.25,5.8])panel(q.x,y,q.y,hart?1.3:1.6,hart?2.05:2.6,angle,hart&&ri===0&&Math.abs(q.x)<5&&q.y>37);}
    }
   }
  }

@@ -73,7 +73,14 @@ export function buildCommunityMusicLandmark(id:string,_w:number,_d:number,b:Buil
   for(let i=0;i<7;i++)box(4.0,i*.35,16.87-i*.58,4.4,.35,.65,'stone');
   for(const x of [1.6,6.4]){box(x,2.3,12.86,.57,.72,.57,'stone');add(new T.SphereGeometry(.32,8,5),'dark',x,3.23,12.86);}
   for(const x of [-.1,8.1]){box(x,.05,12.63,1.45,2.25,.1,'glass');box(x,.05,12.71,.06,2.25,.04,'gold');}sign('ORGELPARK',8.1,2.72,12.76,.047,'white');
-  for(let z=-13;z<10;z+=4.2)for(const yy of [1.0,5.0,8.9])sash(15.69,yy,z,1.65,2.45,Math.PI/2);
-  for(let z=-13;z<10;z+=4.2)for(const yy of [1.0,5.0,8.9])sash(-9.99,yy,z,1.65,2.45,-Math.PI/2);
+  // East sashes follow the footprint's skewed east edge (x 15.25 at z -13 to 15.57 at z 8, a recess near z 4): at a fixed
+  // x 15.69 they stood 12-44 cm off it and 2.2 m off the recess (geometry audit 2026-10-13).
+  const eastEdge=(z:number)=>{let x=-Infinity,dxdz=0;const r=rings[0];for(let i=0;i<r.length;i++){const p=r[i],q=r[(i+1)%r.length];if((p.y-z)*(q.y-z)<=0&&Math.abs(q.y-p.y)>1e-6){const xx=p.x+(q.x-p.x)*(z-p.y)/(q.y-p.y);if(xx>x){x=xx;dxdz=(q.x-p.x)/(q.y-p.y);}}}return Number.isFinite(x)?{x,dxdz}:{x:15.57,dxdz:0};};
+  for(let z=-13;z<10;z+=4.2)for(const yy of [1.0,5.0,8.9]){const e=eastEdge(z),wall=yy>8.65?Math.min(e.x,15.57):e.x;sash(wall+.05,yy,z,1.65,2.45,Math.PI/2+Math.atan(e.dxdz));}
+  // West sashes sit 5 cm off the brick they belong to: the footprint's stepped west edge (down to x -9.33) under the 8.65 m
+  // periphery, the main body's face (no further west than -9.94) above it. A fixed x -9.99 left some columns 0.6 m in front
+  // of the recessed steps (geometry audit 2026-10-13).
+  const westEdge=(z:number)=>{let x=Infinity;const r=rings[0];for(let i=0;i<r.length;i++){const p=r[i],q=r[(i+1)%r.length];if((p.y-z)*(q.y-z)<=0&&Math.abs(q.y-p.y)>1e-6)x=Math.min(x,p.x+(q.x-p.x)*(z-p.y)/(q.y-p.y));}return Number.isFinite(x)?x:-9.94;};
+  for(let z=-13;z<10;z+=4.2)for(const yy of [1.0,5.0,8.9]){const edge=westEdge(z),wall=yy>8.65?Math.max(edge,-9.94):edge;sash(wall-.05,yy,z,1.65,2.45,-Math.PI/2);}
  }else throw new Error(`No community music builder for ${id}`);
 }

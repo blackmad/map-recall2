@@ -20,7 +20,7 @@ export function buildTheaterLandmark(id:string,w:number,d:number,b:BuildingTools
   const z=front+.06;box(0,0,z,width,23,.4,'stone');for(const y of [.2,5.8,21.7,23])box(0,y,z+.3,width+.5,.4,.6,'white');
   for(let i=0;i<5;i++){let x=(i-2)*width*.185;win(x,.8,z+.26,width*.14,4.1);win(x,6.5,z+.26,width*.14,7,true);win(x,16,z+.26,width*.14,3.3);}
   for(const x of [-width*.29,-width*.1,width*.1,width*.29]){cylinder(x,5.8,z+.58,.45,15.8,'stone');box(x,5.7,z+.58,1.25,.35,1.25,'white');box(x,21.1,z+.58,1.35,.6,1.35,'white');}
-  gable(0,23.3,z+.3,width+1,4.1,1.2,'stone');gable(0,23.6,z+.96,width-1,3.3,.16,'white');text('FELIX MERITIS',0,22,z+.95,.17,'dark');
+  gable(0,23.3,z+.3,width+1,4.1,1.2,'stone');gable(0,23.6,z+.96,width-1,3.3,.16,'white');box(0,22.1,z+.3,width+.5,.9,.6,'stone');text('FELIX MERITIS',0,22.12,z+.64,.17,'dark');// frieze flush with the entablature bands, lettering on it (it floated 0.7 m in front of the recessed wall; geometry audit 2026-10-13)
   // Low faceted observation pavilion and open roof platform behind the pediment.
   box(0,23.5,front-fd*.66,width*.58,.5,fd*.32,'stone');cylinder(0,24,front-fd*.66,3.2,3.5,'stone');add(new T.ConeGeometry(3.5,2.1,8),'slate',0,28.55,front-fd*.66);for(let i=0;i<8;i++){let a=i*Math.PI/4;box(3.15*Math.sin(a),24.8,front-fd*.66+3.15*Math.cos(a),.7,1.7,.12,'dark');}
  }else if(id==='kleine-komedie'){
