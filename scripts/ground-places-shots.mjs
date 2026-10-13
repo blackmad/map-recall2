@@ -3,6 +3,7 @@
 // Places are the user-reported ground defects of 2026-10-13 plus the named bridge regressions.
 import { chromium } from 'playwright';
 import fs from 'node:fs';
+import path from 'node:path';
 const [tag = 'x', qs = '?ownGround=1&sharedFrame=1', only] = process.argv.slice(2);
 const PLACES = {
   'rozengracht-marnixstraat': [4.8760, 52.3722, 100],   // junction by the fire station
@@ -18,6 +19,13 @@ fs.mkdirSync(`artifacts/ground-places/${tag}`, { recursive: true });
 const browser = await chromium.launch({ headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
 const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
 await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
+// BUNDLES_DIR=<dir> serves any *.bundle.js found there (a source change measured before the integrator rebuilds the committed bundles):
+//   node scripts/build-3d-bundles.mjs --only=own-ground-game,own-ground-worker --outdir=<dir>
+if (process.env.BUNDLES_DIR) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+  const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
+  return fs.existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
+});
+if (process.env.INIT_JS) await page.addInitScript(process.env.INIT_JS);
 await page.goto(`http://127.0.0.1:${process.env.PORT || 4447}/canal-drive/` + qs);
 await page.waitForFunction(() => window.canalRecallGame?.routePois?.length, null, { timeout: 60000 });
 await page.locator('#travel-mode').selectOption('car', { force: true }); await page.locator('#view-mode').selectOption('chase', { force: true });
@@ -38,8 +46,11 @@ for (const [id, [lng, lat, bearing]] of Object.entries(PLACES)) {
     g.player.handleInput = () => {};
   }, { lng, lat, bearing });
   // Cell-load latency: time until the rider's cell is resident at LOD 0 and nothing is queued (or 60 s).
-  const ready = await page.waitForFunction(() => { const g = canalRecallGame.vectorMap._ownGround; if (!g) return true; const s = g.status(); return s.ready && !s.queued && !Object.keys(s.pending).length && Object.values(s.cells).includes(0); }, null, { timeout: 60000, polling: 100 }).then(() => true).catch(() => false);
-  latencies[id] = { ms: Date.now() - t0, ready };
+  // The rider's cell and its 8 neighbours resident (`basemapHidden` is the ground's own "covers the rider" flag), after a
+  // teleport; the first frame after the jump may still carry the old place's flag, so wait for it to drop first (1 s grace).
+  let drop = await page.waitForFunction(() => !canalRecallGame.vectorMap._ownGround.status().basemapHidden, null, { timeout: 1500, polling: 16 }).then(() => true).catch(() => false);
+  const ready = await page.waitForFunction(() => { const g = canalRecallGame.vectorMap._ownGround; if (!g) return true; const s = g.status(); return s.ready && s.basemapHidden && !s.queued && !Object.keys(s.pending).length; }, null, { timeout: 60000, polling: 16 }).then(() => true).catch(() => false);
+  latencies[id] = { ms: Date.now() - t0, ready, flagDropped: drop };
   await page.waitForTimeout(3000);
   await page.screenshot({ path: `artifacts/ground-places/${tag}/${id}.png` });
 }

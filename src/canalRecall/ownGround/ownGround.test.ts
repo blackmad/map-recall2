@@ -7,7 +7,7 @@ import { deflateSync, gunzipSync, inflateSync } from 'node:zlib';
 import { readGeoTiff, undoFloatPredictor } from './geotiff';
 import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extendTile, readGroundTile, upsampleTile, fitLocalToRd, GroundField, NODATA, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
 import { DECK_BLEND_M, GroundSurface, riderPose, type Vec2 } from './surface';
-import { cutIntervals, drapeTriangles, edgeWall, emptyMesh, endCap, reliefGrid, ribbon, type MeshArrays } from './drape';
+import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, reliefGrid, ribbon, type MeshArrays } from './drape';
 import { crossSection, parseMetres, areaKind } from './osmGround';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
 import { buildStreets, prepareWays, routeRibbon, LIFT } from './streets';
@@ -562,6 +562,29 @@ test('regression (polder levels): Osdorpplein ground sits above its local water;
   const belt = await probe(4.8985, 52.3695);
   assert.ok(belt.water.levels!.every(z => Math.abs(z + 1.77) < 0.011) && belt.water.shoreLevels!.every(z => Math.abs(z + 1.77) < 0.011), 'canal belt at −1.77');
   assert.equal(store.sceneZ(-0.4), -1.77);
+});
+
+// ------------------------------------------------------------- 2026-10-13 ground review regressions
+test('regression: a junction disc follows a ramp (bridge-end seam: 56 of 365 deck ends tore by 0.10-0.29 m under centre-and-rim fans)', () => {
+  // A deck approach: height rises quadratically; the old fan chorded across it.
+  const ramp = (x: number) => 0.012 * Math.max(0, x) ** 2;
+  const m = emptyMesh();
+  disc(m, [0, 0], 6, x => ramp(x), 0.03, 14);
+  let worst = 0;
+  const p = m.positions, idx = m.indices;
+  for (let t = 0; t < idx.length; t += 3) {
+    const [a, b, c] = [idx[t] * 3, idx[t + 1] * 3, idx[t + 2] * 3];
+    for (const [u, v] of [[1 / 3, 1 / 3], [0.6, 0.2], [0.2, 0.6]]) {
+      const w = 1 - u - v, x = u * p[a] + v * p[b] + w * p[c], z = u * p[a + 2] + v * p[b + 2] + w * p[c + 2];
+      worst = Math.max(worst, Math.abs(z - (ramp(x) + 0.03)));
+    }
+    assert.ok((p[b] - p[a]) * (p[c + 1] - p[a + 1]) - (p[b + 1] - p[a + 1]) * (p[c] - p[a]) > 0, 'disc triangle wound CCW');
+  }
+  assert.ok(worst < 0.03, `disc deviates ${worst.toFixed(3)} m from the surface it drapes`);
+});
+
+test('regression: allotments are the park ground class (Westerpark / Sloterdijkermeer allotments were painted as dark land)', () => {
+  assert.equal(areaKind({ landuse: 'allotments' }), 'park');
 });
 
 // ------------------------------------------------------------- BGT widths

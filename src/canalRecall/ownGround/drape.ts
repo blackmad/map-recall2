@@ -158,13 +158,32 @@ export function endCap(m: MeshArrays, p: Vec2, dir: Vec2, offset: number, width:
 
 /** A draped disc (junction fill), `sides` around. */
 export function disc(m: MeshArrays, c: Vec2, r: number, height: HeightFn, lift: number, sides = 12, colour?: [number, number, number]): void {
-  const centre = vertex(m, c[0], c[1], height(c[0], c[1]) + lift, colour);
-  const first = m.positions.length / 3;
-  for (let s = 0; s < sides; s++) {
-    const t = (s / sides) * Math.PI * 2, x = c[0] + Math.cos(t) * r, y = c[1] + Math.sin(t) * r;
-    vertex(m, x, y, height(x, y) + lift, colour);
+  // A centre-and-rim fan cuts across a ramp: a junction disc at a bridge end sat up to 0.25 m above the deck under it, a visible tear
+  // where the approach meets the deck. Where the surface under the disc is not planar (half-radius samples off the centre/rim
+  // average by over 1.5 cm) it gets concentric rings about 1.5 m apart; flat ground, nearly all discs, keeps the cheap fan
+  // (rings on every disc added 47% triangles and 10x the cell build time).
+  const h0 = height(c[0], c[1]);
+  let bump = 0;
+  for (let s = 0; s < 8; s++) {
+    const t = (s / 8) * Math.PI * 2, cx = Math.cos(t), cy = Math.sin(t);
+    bump = Math.max(bump, Math.abs(height(c[0] + cx * r / 2, c[1] + cy * r / 2) - (h0 + height(c[0] + cx * r, c[1] + cy * r)) / 2));
   }
-  for (let s = 0; s < sides; s++) m.indices.push(centre, first + s, first + ((s + 1) % sides));
+  const rings = bump > 0.015 ? Math.max(2, Math.min(4, Math.ceil(r / 1.5))) : 1;
+  const centre = vertex(m, c[0], c[1], h0 + lift, colour);
+  let prev = -1;
+  for (let k = 1; k <= rings; k++) {
+    const first = m.positions.length / 3, rk = (r * k) / rings;
+    for (let s = 0; s < sides; s++) {
+      const t = (s / sides) * Math.PI * 2, x = c[0] + Math.cos(t) * rk, y = c[1] + Math.sin(t) * rk;
+      vertex(m, x, y, height(x, y) + lift, colour);
+    }
+    for (let s = 0; s < sides; s++) {
+      const n = (s + 1) % sides;
+      if (prev < 0) m.indices.push(centre, first + s, first + n);
+      else m.indices.push(prev + s, first + s, first + n, prev + s, first + n, prev + n);
+    }
+    prev = first;
+  }
 }
 
 /**

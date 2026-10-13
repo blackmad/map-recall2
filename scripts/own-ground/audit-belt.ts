@@ -36,6 +36,7 @@ const failures: Failure[] = [], steep: string[] = [];
 /** Reviewed findings, 2026-10-13 (docs/elevation.md, own-ground ride review). A new failure is not in this list and fails the audit. */
 const KNOWN: Record<string, string> = {
   'deck-continuity:BRU0077': 'Henrick de Keijserbrug: AHN hump of 1.7 m over a 6.7 m span (57% grade at s 31-34 m), implausible; a DSM artefact (canopy or vehicle) is likely, not verified. Re-measure from the raw AHN rasters.',
+  'deck-seam:BRU0031': 'masonry arch: the band inside the span at its end sits 0.29 m above the deck surface (0.25 m tear, was 0.23 with centre-and-rim discs at 0.59 m before); the steepest ramp in the box',
   'deck-top:BRU0313': 'quay coping at the bridge end sits 1 mm above the klinker band (z 2.136 vs 2.135): the water polygon ends at the bridge, its shore wall crosses the road',
   'quay-flooded:4.86232,52.37057': 'Westerpark: the -1.77 plane (default or boezem level; the join was not verified) stands 1.08 m above the ground',
   'quay-flooded:4.90719,52.38449': 'IJ-side docks: default -1.77 plane over ground 0.6 m lower',
@@ -54,7 +55,8 @@ const cellBuild = async (k: string): Promise<BuiltCell | null> => { if (!store.c
 
 // ---- decks
 const seen = new Set<string>();
-let decks = 0, probes = 0;
+let decks = 0, probes = 0, seams = 0;
+const gaps: string[] = [], seamWarn: string[] = [];
 for (const k of cells) for (const deck of store.decks(k)) {
   const p = deck.profile, id = p.id;
   if (seen.has(id)) continue; seen.add(id);
@@ -94,9 +96,28 @@ for (const k of cells) for (const deck of store.decks(k)) {
       }
     }
     if (bad.length) fail('deck-top', id, at(p.x[mid], p.y[mid]), `topmost layer not a street band at ${bad.length} probes (${bad.slice(0, 4).join(' ')})`);
+    // Seam: the street band 1 m before the span and 0.5 m inside it, on the axis, at both ends: the road must not step (tear) where it meets the deck.
+    const topZ = (qx: number, qy: number): number | null => {
+      const hits = near.flatMap(c => layersAt(c, qx, qy).hits).filter(h => !h.cut && ['asphalt', 'klinker'].includes(h.layer)).sort((a, b) => b.z - a.z);
+      return hits.length ? hits[0].z : null;
+    };
+    for (const [edge, dir, label] of [[p.deck[0], -1, 'start'], [p.deck[1], 1, 'end']] as const) {
+      const i = p.s.findIndex(s => s >= edge);
+      if (i < 1) continue;
+      const a = Math.max(0, i - 1), b = Math.min(last, i + 1), dx = p.x[b] - p.x[a], dy = p.y[b] - p.y[a], l = Math.hypot(dx, dy) || 1, ux = dx / l, uy = dy / l;
+      // Height of the band above the riding surface under it (the band's own lift is a few cm); a tear is that offset changing across the seam.
+      const rise = (qx: number, qy: number): number | null => { const z = topZ(qx, qy); return z === null ? null : z - store.surface.height(qx, qy); };
+      const out = rise(p.x[i] + dir * ux, p.y[i] + dir * uy), inn = rise(p.x[i] - dir * ux * 0.5, p.y[i] - dir * uy * 0.5);
+      seams++;
+      if (out === null || inn === null) { gaps.push(`${id} ${label}: ${out === null ? 'no band outside' : 'no band inside'}`); continue; }
+      const tear = Math.abs(out - inn), detail = `${label}: band sits ${out.toFixed(2)} m above the surface outside the span and ${inn.toFixed(2)} m inside (tear ${(inn - out).toFixed(2)} m)`;
+      // 56 of 365 deck ends tore by more than 0.10 m (up to 0.29) while junction discs were centre-and-rim fans; with 1 m rings 16 do (max 0.20).
+      if (tear > 0.25) fail('deck-seam', id, at(p.x[i], p.y[i]), detail);
+      else if (tear > 0.10) seamWarn.push(`${id} @ ${at(p.x[i], p.y[i])}: ${detail}`);
+    }
   }
 }
-console.log(`decks audited: ${decks}${probe ? `, ${probes} deck-top probes` : ''}`);
+console.log(`decks audited: ${decks}${probe ? `, ${probes} deck-top probes, ${seams} deck ends compared to the road band outside them (${gaps.length} with no band on one side, not failures)` : ''}`);
 
 // ---- quays
 const footprints: { ring: [number, number][]; box: [number, number, number, number] }[] = [];
@@ -135,7 +156,36 @@ const cluster = (list: Q[], sign: number) => {
 const floodSpots = cluster(flooded, -1), cliffSpots = cluster(cliffs, 1);
 for (const s of floodSpots.slice(0, 15)) { console.log(`  flooded quay ${at(s.x, s.y)}: ${s.n} samples, ground ${s.worst.toFixed(2)} m vs water ${s.level.toFixed(2)}`); fail('quay-flooded', at(s.x, s.y), at(s.x, s.y), `${s.n} samples, worst ground ${s.worst.toFixed(2)} m relative to water ${s.level.toFixed(2)}`); }
 for (const s of cliffSpots.slice(0, 8)) console.log(`  cliff quay ${at(s.x, s.y)}: ${s.n} samples, ${s.worst.toFixed(2)} m above water ${s.level.toFixed(2)} (railway / dike embankments read as walls)`);
+if (seamWarn.length) { console.log(`deck ends with a band offset change of 0.10-0.25 m (not failing): ${seamWarn.length}`); for (const t of seamWarn.slice(0, 8)) console.log("  " + t); }
 if (steep.length) { console.log(`steep decks (not failing): ${steep.length}`); for (const t of steep.slice(0, 12)) console.log('  ' + t); }
+
+// ---- named locations reported by ride review (2026-10-13). Each is pinned: a failure here is a regression of that place.
+console.log('named locations:');
+{
+  // Westerkerk bridge (Rozengracht over the Prinsengracht = Nieuwe-Wercksbrug): the deck was audited, seams included.
+  if (!seen.has('BRU0063')) fail('named', 'westerkerk-bridge', '4.8830,52.3742', 'BRU0063 Nieuwe-Wercksbrug was not found among the decks in the box');
+  else console.log('  westerkerk-bridge: BRU0063 audited (continuity, ends, clearance, deck top, seams)');
+  // Rozengracht x Marnixstraat x Lijnbaansgracht junction (fire station): bridge ways BRU-less (Rozengracht bridges 65421584/87 are unmeasured, flat decks); pinned by its cell.
+  const [jx, jy] = toLocal(4.8760, 52.3722), jk = store.cellAt(jx, jy);
+  if (!store.covers(jk)) fail('named', 'rozengracht-marnixstraat', '4.8760,52.3722', `cell ${jk} is not covered`);
+  else console.log(`  rozengracht-marnixstraat: cell ${jk} covered, ${(await store.osmCell(jk))?.ways.filter(w => /Rozengracht|Marnixstraat|Lijnbaansgracht/.test(w.tags.name ?? '')).length ?? 0} named ways in the cell`);
+  // Ryckerbrug / De Clercqstraat: no measured deck (flat deck over the Kostverlorenvaart); the street continues as OSM area:highway polygons.
+  const [rx, ry] = toLocal(4.8705, 52.3709), rk = store.cellAt(rx, ry), rOsm = await store.osmCell(rk);
+  const paved = (rOsm?.areas ?? []).filter(a => a.kind === 'paved' && /Cler[c]?qstraat/i.test(a.name ?? '')).map(a => a.id);
+  console.log(`  ryckerbrug / De Clercqstraat: cell ${rk}, paved areas named De Clerqstraat: ${paved.join(' ') || 'none'} (drawn as square paving, not asphalt)`);
+  if (!paved.length) fail('named', 'declercq-plaza', '4.8705,52.3709', 'the paved De Clercqstraat areas are gone from the cell data');
+  // Allotments (Westerpark / Sloterdijkermeer): an allotment polygon's interior is the park (green) layer, not the dark land layer.
+  const [ax, ay] = toLocal(4.8590, 52.3860), ak = store.cellAt(ax, ay);
+  const aCell = await cellBuild(ak), aOsm = await store.osmCell(ak);
+  const allot = (aOsm?.areas ?? []).filter(a => /^a\d+$/.test(a.id) && a.kind === 'park').sort((a, b) => b.rings[0].length - a.rings[0].length)[0];
+  if (!aCell || !allot) fail('named', 'allotments-westerpark', '4.8590,52.3860', `no allotment park area in cell ${ak}`);
+  else {
+    const ring = allot.rings[0].map(([lng, lat]) => toLocal(lng, lat)), cx = ring.reduce((s, p) => s + p[0], 0) / ring.length, cy = ring.reduce((s, p) => s + p[1], 0) / ring.length;
+    const top = layersAt(aCell, cx, cy).hits.filter(h => !h.cut && h.layer !== 'water')[0]?.layer;
+    console.log(`  allotments-westerpark: area ${allot.id} ${allot.name ?? ''} centroid top layer ${top}`);
+    if (inRing(ring as [number, number][], cx, cy) && top !== 'park') fail('named', 'allotments-westerpark', at(cx, cy), `allotment interior is ${top}, not park`);
+  }
+}
 
 const byKind = new Map<string, Failure[]>();
 for (const f of failures) byKind.set(f.kind, [...(byKind.get(f.kind) ?? []), f]);
