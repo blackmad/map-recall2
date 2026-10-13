@@ -35572,6 +35572,168 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T22:50:25.741Z"
+    },
+    {
+      "id": "ordinary-0363100012114605",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012114605",
+      "name": "Distelweg 88, Amsterdam-Noord: 1948 distribution warehouse clad in grey sandwich panels on the Buiksloterkanaal side (BAG: one industrial unit)",
+      "hash": "dad180926af825765daf47e80dc6a4750b72cfd686b3ab981895fad333106667",
+      "sha256": "dad180926af825765daf47e80dc6a4750b72cfd686b3ab981895fad333106667",
+      "bytes": 51940,
+      "triangles": 522,
+      "materials": 5,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -101.071,
+          0,
+          -106.304
+        ],
+        "max": [
+          84.806,
+          11.878,
+          56.576
+        ]
+      },
+      "anchor": [
+        4.9013871,
+        52.3948273
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9007217,
+              52.3957799
+            ],
+            [
+              4.8998998,
+              52.3949783
+            ],
+            [
+              4.9003635,
+              52.3948003
+            ],
+            [
+              4.9006209,
+              52.3950508
+            ],
+            [
+              4.9010108,
+              52.3948976
+            ],
+            [
+              4.9010581,
+              52.3948799
+            ],
+            [
+              4.9010549,
+              52.3948762
+            ],
+            [
+              4.9017732,
+              52.3946005
+            ],
+            [
+              4.9015952,
+              52.394426
+            ],
+            [
+              4.9017285,
+              52.3943749
+            ],
+            [
+              4.9017098,
+              52.3943578
+            ],
+            [
+              4.9017596,
+              52.3943385
+            ],
+            [
+              4.9017774,
+              52.394356
+            ],
+            [
+              4.9018695,
+              52.3943207
+            ],
+            [
+              4.9020458,
+              52.3944957
+            ],
+            [
+              4.9020753,
+              52.3944847
+            ],
+            [
+              4.9026309,
+              52.3950255
+            ],
+            [
+              4.9016087,
+              52.3954175
+            ],
+            [
+              4.9011568,
+              52.3949754
+            ],
+            [
+              4.9011089,
+              52.3949937
+            ],
+            [
+              4.9014213,
+              52.3952984
+            ],
+            [
+              4.9015255,
+              52.3954704
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 11.88,
+      "height": 11.88,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-distelweg-88-114605.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012114605"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "distelweg-88-114605",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012114605/w03-33.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": []
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Modelled: the north-east front (panels 0 and 71) as a blank wall group in the cladding grey with the K lettered high on the wall; the same grey is the house wall colour for every other wall (they are not photographed, but the cladding wraps the whole hall as far as the aerial shows) and the zinc-grey roof as surveyed by 3DBAG LoD2.2.",
+        "Simplified: the vertical rib pattern of the cladding is a plain wall colour; the blue round emblem is not drawn; the pedestrian door and the bank-side fence are not drawn. Not modelled: loading docks and doors on the other fronts (no panorama within 35 m)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012114605",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T22:51:24.727Z"
     }
   ]
 }

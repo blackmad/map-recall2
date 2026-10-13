@@ -1,0 +1,111 @@
+{
+ "schemaVersion": 1,
+ "id": "distelweg-88-114605",
+ "pand": "0363100012114605",
+ "signature": [
+  "cladding-wall"
+ ],
+ "walls": [
+  {
+   "tag": "w03-33",
+   "bearing": 33,
+   "lengthM": 64.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000353_pano_0000_000760",
+   "capturedAt": "2017-07-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "cladding-wall",
+     "kind": "window-shape",
+     "where": "whole north-east front: blank grey ribbed panels",
+     "approxSizeM": [
+      147,
+      8
+     ],
+     "plan": "simplified",
+     "how": "blank wall group in cladding grey, no openings (the real wall has none)",
+     "seenIn": "TMX7316010203-000353_pano_0000_000760"
+    },
+    {
+     "id": "k-emblem",
+     "kind": "sign",
+     "where": "upper left, round blue emblem with a letter K",
+     "approxSizeM": [
+      3,
+      2.5
+     ],
+     "plan": "simplified",
+     "how": "the letter K lettered on the wall; the blue disc is not drawn",
+     "seenIn": "TMX7316010203-000353_pano_0000_000760"
+    },
+    {
+     "id": "pedestrian-door",
+     "kind": "other",
+     "where": "ground level, left of centre",
+     "approxSizeM": [
+      1,
+      2.1
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a 1 m service door half hidden by the bank fence and vegetation"
+     },
+     "seenIn": "TMX7316010203-000353_pano_0000_000760"
+    }
+   ]
+  },
+  {
+   "tag": "w01-302",
+   "bearing": 302,
+   "lengthM": 105.3,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w02-32",
+   "bearing": 32,
+   "lengthM": 82.2,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w04-302",
+   "bearing": 302,
+   "lengthM": 58,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w05-212",
+   "bearing": 212,
+   "lengthM": 57.7,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
