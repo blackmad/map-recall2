@@ -31,13 +31,15 @@ export interface SystemFit {
   piers?: boolean;
   /** storeys (0 = ground) with balconies across every bay */
   balconyStoreys?: number[];
+  /** balconies only in these bays of `bays` (a balcony over the entrance); every bay when absent */
+  balconyBays?: number[];
   /** storeys (0 = ground) drawn as plain wall */
   blankStoreys?: number[];
   balconyRail?: 'glass' | 'bars' | 'solid';
   /** slot names for this wall group (per-group palette overrides get their own slots) */
   slots: { frame: string; stone: string; glass: string; door: string; curtain: string; wall?: string; /** flush brick arch bands (a shade darker than the wall) */ arch?: string };
   /** arched heads (upper windows / ground openings) and the band around them */
-  arches?: { windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'none' };
+  arches?: { windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'none'; /** only these storeys (0 = ground) get arched heads; the rest are square-headed */ storeys?: number[] };
   /** loading-door axis: every `every`-th bay from `first`, or the listed bays (of `bays` per storey) */
   hoist?: { every?: number; first?: number; bays?: number[]; arch?: ArchKind };
   /** bays per storey on the group's widest panel (for `hoist.bays`) */
@@ -108,7 +110,7 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   switch (name) {
     case 'brick-bay-grid':
       // Narrow bays (canal-house rhythm, < 2 m) take proportionally wider windows than civic 3 m bays.
-      typical = { kind: 'punched', win: { w: f.pitchM < 2 ? 0.66 : 0.48, h: 0.6, sill: 0.85, frame: s.frame, glass: s.glass, sillSlot: f.sills === false ? null : s.stone, sillH: 0.08, sillOut: 0.1, frameW: f.frames === false ? 0 : 0.07, ...(f.deepBars ? {barD: 0.035} : {}), ...g, ...archFor(f.arches?.windows, f) } };
+      typical = { kind: 'punched', win: { w: f.pitchM < 2 ? 0.66 : 0.48, h: 0.6, sill: 0.85, frame: s.frame, glass: s.glass, sillSlot: f.sills === false ? null : s.stone, sillH: 0.08, sillOut: 0.1, frameW: f.frames === false ? 0 : 0.07, ...(f.deepBars ? {barD: 0.035} : {}), ...g, ...archFor(f.arches?.storeys ? undefined : f.arches?.windows, f) } };
       break;
     case 'ribbon-windows':
       // One opening per bay per storey with a slim pier between bays: reads as a continuous band of glazing.
@@ -128,13 +130,24 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   // Perforated screen: glass blocks in one bay of three, the pattern shifted by two bays per storey (scattered, as built).
   if (f.screen && name !== 'blank') typical = { kind: 'wall', cycle: [{ kind: 'punched', win: glassBlock(f) }, { kind: 'wall' }, { kind: 'wall' }], shift: 2 };
   const rowOverrides: Record<string, Row> = {};
+  // Arched heads on chosen storeys only (a round-headed piano nobile between a square ground and attic).
+  const archedStoreys = name === 'brick-bay-grid' && f.arches?.windows && f.arches.storeys ? f.arches.storeys : [];
+  const archedRow = (): Row => ({ ...typical, win: { ...typical.win!, ...archFor(f.arches!.windows, f) } });
+  for (const st of archedStoreys) if (st > 0) rowOverrides[String(st)] = archedRow();
   if (f.balconyStoreys?.length && name !== 'blank') {
     const balcony: Row = { kind: 'balcony', balcony: { depth: 1.2, slab: { h: 0.18, slot: s.stone }, rail: { kind: f.balconyRail ?? 'bars', h: 1.0, slot: s.frame, top: s.frame }, back: { w: 0.7, h: 0.72, sill: 0.25, frame: s.frame, glass: s.glass, mull: 1 } } };
-    for (const st of f.balconyStoreys) rowOverrides[String(st)] = balcony;
+    for (const st of f.balconyStoreys) {
+      const under = rowOverrides[String(st)] ?? typical;
+      // balconies in the listed bays only: a cycle of bays with the balcony at those indices, the storey's own row elsewhere
+      if (f.balconyBays?.length) {
+        const every = Math.max(1, f.bays ?? 1, ...f.balconyBays.map(b => b + 1));
+        rowOverrides[String(st)] = { kind: 'wall', cycle: Array.from({ length: every }, (_, k) => (f.balconyBays!.includes(k) ? balcony : under)) };
+      } else rowOverrides[String(st)] = balcony;
+    }
   }
   // Storeys without openings (a blank storage floor over a shop, a plant floor): plain wall rows.
   for (const st of f.blankStoreys ?? []) rowOverrides[String(st)] = { kind: 'wall' };
-  let ground = groundRow({ ...f, ground: name === 'plinth-shopfronts' && f.ground === 'system' ? 'plinth-shopfronts' : f.ground }, typical);
+  let ground = groundRow({ ...f, ground: name === 'plinth-shopfronts' && f.ground === 'system' ? 'plinth-shopfronts' : f.ground }, archedStoreys.includes(0) ? archedRow() : typical);
   // Loading-door axis: a cycle of rows per bay with the hoist row at `first` (cycle index = bay % every).
   if (f.hoist && name !== 'blank') {
     const list = f.hoist.bays, every = list ? Math.max(1, f.bays ?? 1, ...list.map(b => b + 1)) : Math.max(1, f.hoist.every ?? 1), at = ((f.hoist.first ?? 0) % every + every) % every, kind = f.hoist.arch;

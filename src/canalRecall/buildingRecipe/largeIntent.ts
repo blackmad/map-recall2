@@ -102,12 +102,14 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     if (w.balconies !== undefined) {
       if (!Array.isArray(w.balconies.storeys) || !w.balconies.storeys.length) problems.push(`${at}.balconies.storeys: list of storeys (1 = first floor)`);
       else w.balconies.storeys.forEach(s => count(s, `${at}.balconies.storeys`, 1, 39));
+      if (w.balconies.bays !== undefined) { if (!Array.isArray(w.balconies.bays) || !w.balconies.bays.length) problems.push(`${at}.balconies.bays: list of bay indices`); else w.balconies.bays.forEach(b => count(b, `${at}.balconies.bays`, 0, (w.baysPerStorey ?? 80) - 1)); if (w.baysPerStorey === undefined) problems.push(`${at}.balconies.bays needs baysPerStorey`); }
       if (w.balconies.rail !== undefined) oneOf(w.balconies.rail, ['glass', 'bars', 'solid'], `${at}.balconies.rail`);
     }
     if (w.blankStoreys !== undefined) { if (!Array.isArray(w.blankStoreys) || !w.blankStoreys.length) problems.push(`${at}.blankStoreys: list of storeys (0 = ground)`); else w.blankStoreys.forEach(s => count(s, `${at}.blankStoreys`, 0, 39)); }
     if (w.police !== undefined) { bool(w.police.stripe, `${at}.police.stripe`); bool(w.police.lamp, `${at}.police.lamp`); if (w.police.lamp && !w.entrance) problems.push(`${at}.police.lamp: the lamp hangs beside an entrance; add entrance`); }
     if (w.arches !== undefined) {
-      for (const k of Object.keys(w.arches)) if (!['windows', 'ground', 'band'].includes(k)) problems.push(`${at}.arches.${k}: unknown field (windows, ground, band)`);
+      for (const k of Object.keys(w.arches)) if (!['windows', 'ground', 'band', 'storeys'].includes(k)) problems.push(`${at}.arches.${k}: unknown field (windows, ground, band, storeys)`);
+      if (w.arches.storeys !== undefined) { if (!Array.isArray(w.arches.storeys) || !w.arches.storeys.length) problems.push(`${at}.arches.storeys: list of storeys (0 = ground)`); else w.arches.storeys.forEach(s => count(s, `${at}.arches.storeys`, 0, 39)); }
       if (w.arches.windows !== undefined) oneOf(w.arches.windows, ARCH_KINDS, `${at}.arches.windows`);
       if (w.arches.ground !== undefined) oneOf(w.arches.ground, ARCH_KINDS, `${at}.arches.ground`);
       if (w.arches.band !== undefined) oneOf(w.arches.band, ['brick', 'stone', 'voussoir', 'none'], `${at}.arches.band`);
