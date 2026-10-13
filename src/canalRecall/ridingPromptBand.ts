@@ -21,7 +21,7 @@ export const RIDING_PROMPT_NARROW_WIDTH = 480;
 /** CSS px — one row of options under a one-line question. */
 export const RIDING_PROMPT_HEIGHT = 92;
 /** CSS px — two rows of options under a one-line question. */
-export const RIDING_PROMPT_NARROW_HEIGHT = 136;
+export const RIDING_PROMPT_NARROW_HEIGHT = 128;
 
 export interface RidingPromptSize {
   /** Canvas units. */
@@ -53,11 +53,24 @@ export interface RidingPromptBandInput {
   minimapVisible?: boolean;
 }
 
+/**
+ * Whether the neighbourhood postcard gives way while a riding question is up.
+ * On a desktop the postcard keeps its right-hand corner and the strip shifts
+ * left to clear it. On a phone the postcard and the strip want the same row
+ * above the d-pad, and a postcard stacked over a strip would climb into the
+ * driving corridor, so the postcard waits (the one-card rule already hides it
+ * while a question is open; this states it for the layout).
+ */
+export function postcardYieldsToRidingPrompt(viewport: Viewport): boolean {
+  return viewport.mode === 'compact';
+}
+
 /** The riding prompt's rectangle in canvas units. */
 export function ridingPromptRect(input: RidingPromptBandInput): Rect {
   const size = ridingPromptSize(input.viewport);
   return hudLayout({
     ...input,
+    postcardVisible: !!input.postcardVisible && !postcardYieldsToRidingPrompt(input.viewport),
     tripWidth: input.tripWidth ?? 180,
     landmarkWidth: size.width,
     landmarkHeight: size.height,
