@@ -37318,6 +37318,488 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T23:19:17.682Z"
+    },
+    {
+      "id": "ordinary-0363100012109375",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012109375",
+      "name": "Cygnus Gymnasium block, Vrolikstraat 8, Amsterdam (1956 concrete frame office slab on pilotis, a grid of square cells)",
+      "hash": "ce86cece0107aa56d1c956f95b99d7d065648cfdf9aa1e269e26eea80699f019",
+      "sha256": "ce86cece0107aa56d1c956f95b99d7d065648cfdf9aa1e269e26eea80699f019",
+      "bytes": 634484,
+      "triangles": 8527,
+      "materials": 7,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -10.516,
+          0.001,
+          -11.751
+        ],
+        "max": [
+          20.106,
+          32.577,
+          60.867
+        ]
+      },
+      "anchor": [
+        4.9122788,
+        52.3552867
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9125129,
+              52.354973
+            ],
+            [
+              4.9123927,
+              52.3553585
+            ],
+            [
+              4.9122802,
+              52.3553451
+            ],
+            [
+              4.9122687,
+              52.3553806
+            ],
+            [
+              4.9122514,
+              52.355379
+            ],
+            [
+              4.9122508,
+              52.3553804
+            ],
+            [
+              4.9122489,
+              52.3553831
+            ],
+            [
+              4.9122464,
+              52.3553855
+            ],
+            [
+              4.9122449,
+              52.3553866
+            ],
+            [
+              4.9122414,
+              52.3553886
+            ],
+            [
+              4.9122374,
+              52.3553901
+            ],
+            [
+              4.9122331,
+              52.3553913
+            ],
+            [
+              4.9122285,
+              52.3553919
+            ],
+            [
+              4.9122262,
+              52.3553921
+            ],
+            [
+              4.9122215,
+              52.355392
+            ],
+            [
+              4.9122191,
+              52.3553918
+            ],
+            [
+              4.9122146,
+              52.355391
+            ],
+            [
+              4.9122104,
+              52.3553897
+            ],
+            [
+              4.9122066,
+              52.355388
+            ],
+            [
+              4.9122033,
+              52.3553859
+            ],
+            [
+              4.9122019,
+              52.3553847
+            ],
+            [
+              4.9121996,
+              52.3553822
+            ],
+            [
+              4.912198,
+              52.3553795
+            ],
+            [
+              4.9121972,
+              52.3553766
+            ],
+            [
+              4.9121972,
+              52.3553737
+            ],
+            [
+              4.912198,
+              52.3553709
+            ],
+            [
+              4.9121997,
+              52.3553682
+            ],
+            [
+              4.912202,
+              52.3553656
+            ],
+            [
+              4.9122051,
+              52.3553634
+            ],
+            [
+              4.9122087,
+              52.3553615
+            ],
+            [
+              4.9122127,
+              52.3553601
+            ],
+            [
+              4.9122149,
+              52.3553595
+            ],
+            [
+              4.9122195,
+              52.3553587
+            ],
+            [
+              4.9122242,
+              52.3553584
+            ],
+            [
+              4.9122289,
+              52.3553586
+            ],
+            [
+              4.9122349,
+              52.3553397
+            ],
+            [
+              4.9121222,
+              52.3553263
+            ],
+            [
+              4.9123232,
+              52.3546828
+            ],
+            [
+              4.9125933,
+              52.3547149
+            ],
+            [
+              4.9125245,
+              52.3549357
+            ],
+            [
+              4.9125777,
+              52.3549421
+            ],
+            [
+              4.9125728,
+              52.3549577
+            ],
+            [
+              4.9125403,
+              52.354954
+            ],
+            [
+              4.9125337,
+              52.3549753
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 32.58,
+      "height": 32.58,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-cygnus.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012109375"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "cygnus",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012109375/w01-260.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 9st 26b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Cygnus Gymnasium block, Vrolikstraat 8 (pand 0363100012109375, 1956, 188 LoD2.2 surfaces, roof max 32.6 m): a nine-storey concrete-frame slab. West front (2020-04-21 w01-260, 24 m away, 72.8 m long over surfaces 136/151/152 and 58): a ground storey of glazed bays between round pilotis columns, above it eight storeys of a square concrete grid with a glazed cell in every bay (about 1.8 m pitch), some coloured frames, a plain concrete end wall to the right with a relief, and a rooftop plant block. The east, south and north fronts have no usable panorama (the east has none in range, the south is washed out) and stay blank.",
+        "MODELLED: the pilotis ground with glazed bays and columns (ground glazed + piers), eight upper storeys on a 26-bay grid of window cells in concrete-grey walls (stucco texture, group wallMaterial), the plant block and the stepped roof from the 3DBAG massing. SIMPLIFIED: the real concrete grid is a deep egg-crate (frames 40 cm deep, cells nearly all glass); ours are punched windows at 66 % of the cell in a flat wall, so the relief is shallower; the coloured frames (red, yellow) are not drawn; the pilotis are square projecting piers, not round columns. SKIPPED: the relief sculpture on the end wall (not resolvable in the crop), signs and bicycle racks (temporary), the north, east and south fronts (no panorama: blank)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012109375",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T23:26:33.712Z"
+    },
+    {
+      "id": "ordinary-0363100012137257",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012137257",
+      "name": "Reade (Jan van Breemen Instituut), Dr. Jan van Breemenstraat 3, Amsterdam (1967 rehabilitation centre, long low ribbon-window wings)",
+      "hash": "357c9593db6890b9b3eed9f57d31a95d1b9b89df9678bb617efd82eb047914f3",
+      "sha256": "357c9593db6890b9b3eed9f57d31a95d1b9b89df9678bb617efd82eb047914f3",
+      "bytes": 95348,
+      "triangles": 1097,
+      "materials": 7,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -28.119,
+          0.001,
+          -56.53
+        ],
+        "max": [
+          27.48,
+          17.366,
+          51.857
+        ]
+      },
+      "anchor": [
+        4.8444978,
+        52.37061
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8443456,
+              52.3701988
+            ],
+            [
+              4.8443464,
+              52.3701744
+            ],
+            [
+              4.8443881,
+              52.3701749
+            ],
+            [
+              4.8443891,
+              52.3701434
+            ],
+            [
+              4.8444913,
+              52.3701446
+            ],
+            [
+              4.8444864,
+              52.3702922
+            ],
+            [
+              4.8446472,
+              52.3702939
+            ],
+            [
+              4.8446473,
+              52.3702928
+            ],
+            [
+              4.8448352,
+              52.3702946
+            ],
+            [
+              4.8448335,
+              52.3703525
+            ],
+            [
+              4.8447684,
+              52.3703662
+            ],
+            [
+              4.8448281,
+              52.3704729
+            ],
+            [
+              4.8446558,
+              52.3704992
+            ],
+            [
+              4.8446266,
+              52.3703825
+            ],
+            [
+              4.8445911,
+              52.3703897
+            ],
+            [
+              4.8445941,
+              52.3704006
+            ],
+            [
+              4.844483,
+              52.3704231
+            ],
+            [
+              4.8444732,
+              52.3707107
+            ],
+            [
+              4.8444382,
+              52.3707103
+            ],
+            [
+              4.8444378,
+              52.3707238
+            ],
+            [
+              4.8445043,
+              52.3707246
+            ],
+            [
+              4.8445032,
+              52.3707587
+            ],
+            [
+              4.8444367,
+              52.3707579
+            ],
+            [
+              4.8444352,
+              52.3708071
+            ],
+            [
+              4.8448975,
+              52.3709215
+            ],
+            [
+              4.844892,
+              52.3711078
+            ],
+            [
+              4.8446658,
+              52.371052
+            ],
+            [
+              4.8446218,
+              52.3711187
+            ],
+            [
+              4.8444478,
+              52.3711154
+            ],
+            [
+              4.8444511,
+              52.3710522
+            ],
+            [
+              4.8445149,
+              52.3710534
+            ],
+            [
+              4.8445363,
+              52.37102
+            ],
+            [
+              4.8441262,
+              52.3709186
+            ],
+            [
+              4.8441298,
+              52.3708037
+            ],
+            [
+              4.8440825,
+              52.3708032
+            ],
+            [
+              4.8440838,
+              52.3707643
+            ],
+            [
+              4.844131,
+              52.3707649
+            ],
+            [
+              4.844149,
+              52.3701965
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 17.37,
+      "height": 17.37,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-reade.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012137257"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "reade",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012137257/w01-269.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 2st 10b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Reade (Jan van Breemen Instituut), Dr. Jan van Breemenstraat 3 (pand 0363100012137257, 1967, 145 LoD2.2 surfaces, roof max 17.4 m). West front (2022-05-03 w01-269, 10 m away, surfaces 8 and 91, 63 m): two storeys of grey rendered bands carrying long ribbons of paired casement windows between concrete piers, a flat roof edge with a recessed top storey and a louvred stair/plant box at the right. The east, north and south wings have photos of their own but were not described (they are 3-storey wings of the same ribbon type); they stay blank.",
+        "MODELLED: the 63 m west wing as two storeys of ribbon windows with a pier between ten bays, grey render, the rest of the massing verbatim. SIMPLIFIED: the real windows are paired casements with a lighter central pane; the kit's ribbon is a plain glazed strip with narrow piers; the louvred box at the right is the 3DBAG roof block without louvres. SKIPPED: no-parking signs and cars (temporary), the three-storey east and south wings (not photographed in this pass: blank), the dark vertical louvres on the roof box (too small)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012137257",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T23:26:36.733Z"
     }
   ]
 }

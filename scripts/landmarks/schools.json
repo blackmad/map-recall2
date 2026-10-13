@@ -20,7 +20,7 @@
    "osmToAddressM": 26,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "large-installed",
    "panoramaYears": [
     2025,
     2022
@@ -45,7 +45,7 @@
    "osmToAddressM": 25,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "large-installed",
    "panoramaYears": [
     2022,
     2021
@@ -70,7 +70,7 @@
    "osmToAddressM": 32,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "large-installed",
    "panoramaYears": [
     2025,
     2020
@@ -93,7 +93,7 @@
    "osmToAddressM": null,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "pending-no-usable-panorama",
    "panoramaYears": [],
    "referenceStatus": "no-pand"
   },
@@ -115,7 +115,7 @@
    "osmToAddressM": 14,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "large-installed",
    "panoramaYears": [
     2020,
     2022
@@ -190,7 +190,7 @@
    "osmToAddressM": 0,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "pending-no-usable-panorama",
    "panoramaYears": [],
    "referenceStatus": "no-wall"
   },
@@ -210,7 +210,7 @@
    "osmToAddressM": null,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "pending-no-usable-panorama",
    "panoramaYears": [],
    "referenceStatus": "no-pand"
   },
@@ -257,7 +257,7 @@
    "osmToAddressM": 0,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "large-installed",
    "panoramaYears": [
     2018,
     2024
@@ -294,20 +294,18 @@
    "address": "Fred. Roeskestraat 98, Amsterdam",
    "osm": "way/62923641",
    "osmLatLng": [
-    52.3416328,
-    4.774451
+    52.34152,
+    4.7742458
    ],
-   "pandIds": [
-    "0394100000208189"
-   ],
+   "pandIds": [],
    "verblijfsobject": "",
    "bagAddress": "(pand under the OSM point; address geocode was far away)",
    "gebruiksdoel": "onderwijsfunctie",
    "bouwjaar": 1963,
    "osmToAddressM": 0,
    "signatureElements": [],
-   "sharedWith": "",
-   "modelStatus": "pending",
+   "sharedWith": "wrong BAG match (pand 0394... is outside Amsterdam); same institution as Gerrit Rietveld Academie",
+   "modelStatus": "skipped-duplicate",
    "panoramaYears": [],
    "referenceStatus": "no-panorama"
   },
@@ -329,7 +327,7 @@
    "osmToAddressM": 1,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "large-installed",
    "panoramaYears": [
     2022,
     2021
@@ -338,7 +336,7 @@
   },
   {
    "name": "Roeterseiland (UvA)",
-   "address": "Roetersstraat 11, Amsterdam",
+   "address": "Nieuwe Achtergracht 166, Amsterdam",
    "osm": "way/27062097",
    "osmLatLng": [
     52.3637653,
@@ -351,8 +349,8 @@
    "bouwjaar": null,
    "osmToAddressM": 0,
    "signatureElements": [],
-   "sharedWith": "",
-   "modelStatus": "pending",
+   "sharedWith": "campus of several pands: REC-A is pand 0363100012185420 (Nieuwe Achtergracht 166 / Roetersstraat 11, 1990, 672 LoD2.2 surfaces, tower to 59 m, mixed brick and glass fronts; panoramas exist, see staging/pand-reference-walls). Needs its own survey lane: eaves vary 8-51 m within one panel",
+   "modelStatus": "pending-survey-lane",
    "panoramaYears": [],
    "referenceStatus": "no-pand"
   },
@@ -372,7 +370,7 @@
    "osmToAddressM": 0,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "pending-no-usable-panorama",
    "panoramaYears": [],
    "referenceStatus": "no-pand"
   },
@@ -394,7 +392,7 @@
    "osmToAddressM": 0,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "pending-no-usable-panorama",
    "panoramaYears": [
     2024,
     2025
@@ -444,7 +442,7 @@
    "osmToAddressM": 0,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "large-installed",
    "panoramaYears": [
     2021,
     2022

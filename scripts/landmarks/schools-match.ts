@@ -10,6 +10,6 @@ await runMatch({
   query: `[out:json][timeout:60];(nwr["amenity"~"^(school|college|university)$"]["name"~"${NAMES}"](52.27,4.72,52.44,5.05);nwr["name"~"Rijksakademie"](52.27,4.72,52.44,5.05););out center tags;`,
   source: 'OSM amenity=school|college|university shortlist (Overpass), PDOK Locatieserver + BAG WFS, pand-reference panoramas (CC BY 4.0)',
   // no address tag in OSM: the street address by hand (BAG/PDOK)
-  addrOverride: {'Amsterdams Lyceum': 'Valeriusplein 15', 'Gerrit Rietveld Academie': 'Fred. Roeskestraat 98', 'Roeterseiland (UvA)': 'Roetersstraat 11', 'Spinoza Lyceum': 'Spinozastraat 41', 'Hogeschool van Amsterdam': 'Wibautstraat 3b', 'Rietveldschool': 'Fred. Roeskestraat 98'},
+  addrOverride: {'Amsterdams Lyceum': 'Valeriusplein 15', 'Gerrit Rietveld Academie': 'Fred. Roeskestraat 98', 'Roeterseiland (UvA)': 'Nieuwe Achtergracht 166', 'Spinoza Lyceum': 'Spinozastraat 41', 'Hogeschool van Amsterdam': 'Wibautstraat 3b', 'Rietveldschool': 'Fred. Roeskestraat 98'},
   exclude: /Diemen|Duivendrecht|Ouderkerk|Weesp|Amstelveen|Zaanstad/,
 });

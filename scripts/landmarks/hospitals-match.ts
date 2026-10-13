@@ -11,5 +11,5 @@ await runMatch({
   source: 'OSM amenity=hospital (Overpass), PDOK Locatieserver + BAG WFS, pand-reference panoramas (CC BY 4.0)',
   // OSM maps these campuses as areas without an address tag: the main entrance address by hand (BAG/PDOK)
   addrOverride: {'Amsterdam UMC locatie AMC': 'Meibergdreef 9', 'Antoni van Leeuwenhoek': 'Plesmanlaan 121', 'BovenIJ Ziekenhuis': 'Statenjachtstraat 1', 'OLVG, locatie Oost': 'Oosterpark 9'},
-  exclude: /Diemen|Duivendrecht|Ouderkerk|Weesp|Amstelveen|Zaanstad/,
+  exclude: /Amstelland|Diemen|Duivendrecht|Ouderkerk|Weesp|Amstelveen|Zaanstad/,
 });
