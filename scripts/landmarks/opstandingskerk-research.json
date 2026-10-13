@@ -1,0 +1,49 @@
+{
+  "canonicalModelId": "opstandingskerk",
+  "researchedOn": "2026-10-13",
+  "state": "built-2026-10-13 (replaces the procedural kit in src/canalRecall/landmarkKits.ts via suppressOsmIds)",
+  "destination": {"name": "Opstandingskerk (De Kolenkit)", "address": "Bos en Lommerplein 1, Amsterdam", "bagPand": "NL.IMBAG.Pand.0363100012133302", "landmarkId": "extract_landmarks_945535287"},
+  "survey": {
+    "bag": "artifacts/landmark-lanes/opstandingskerk/raw/bag-pand.json",
+    "3dbag": "artifacts/landmark-lanes/opstandingskerk/raw/3dbag.json",
+    "roofHeightmap": "artifacts/landmark-lanes/opstandingskerk/roof-heightmap.png",
+    "readings": "Axis 15.3 degrees clockwise from east. Hall: long walls pleated in 1 m folds (BAG ring alternates 6.6/7.3 m off the axis), pointed west end, slanted plain east gable; eaves about 14.6-15 m, low ridge 17.6 m. Low ring 3.6-5 m round the west end and the south side. Tower at the north-east corner, top sloping from 34.5 m (south) to 45.5 m (north). Parish wing to the south-east, 8.5 m, and a 6.9 m link."
+  },
+  "photos": [
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/Amsterdam_Opstandingskerk_001.jpg", "source": "https://commons.wikimedia.org/wiki/File:Amsterdam_Opstandingskerk_001.JPG", "licence": "CC BY 3.0", "use": "west point: pleat crown rising to the middle, three central slits, ring with blinds, wing"},
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/Overzicht_noordwestgevel_met_kerktoren_-_Amsterdam_-_20357069_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE, 2002)", "use": "east gable: 43-window diamond lattice, three doors, name board, pier, tower; facade compare"},
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/Overzicht_noordoostgevel_-_Amsterdam_-_20357073_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE, 2002)", "use": "south long wall over the ring: a slit in every inward fold up to the tower (eight), the plain east end and pier, wing"},
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/2023_Opstandingskerk_Asd_1_.jpg", "source": "https://commons.wikimedia.org/wiki/File:2023_Opstandingskerk,_Asd_(1).jpg", "licence": "CC0", "use": "south-west view in sun, colour, tower top and lip"},
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/2023_Opstandingskerk_Asd_2_.jpg", "licence": "CC0", "use": "context"},
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/2023_Opstandingskerk_Asd_3_.jpg", "licence": "CC0", "use": "context"},
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/Kolenkit1.jpg", "licence": "Public domain", "use": "tower from the street, belfry opening and cross"},
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/Aanzicht_toren_-_Amsterdam_-_20418845_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "tower"},
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/Zicht_op_toren_zuidzijde_-_Amsterdam_-_20418847_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "tower, south side"},
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/Overzicht_zuidoostgevel_met_kerktoren_-_Amsterdam_-_20357068_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "context"},
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/Overzicht_westgevel_met_kerktoren_-_Amsterdam_-_20357071_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "context"},
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/Overzicht_van_de_westgevel_-_Amsterdam_-_20418855_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "context"},
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/Overzicht_zuidgevel_entree_-_Amsterdam_-_20418849_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "context"},
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/Straatbeeld_noordgevel_-_Amsterdam_-_20418857_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "north side from the street"},
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/Zicht_op_de_noord_en_westzijde_vanaf_de_Bos_en_Lommerweg_-_Amsterdam_-_20418842_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "north and west sides"},
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/Amsterdam_Opstandingskerk_002.jpg", "licence": "CC BY 3.0", "use": "context"},
+    {"file": "artifacts/landmark-lanes/opstandingskerk/commons/Resurrection_150427451_.jpg", "licence": "CC BY 3.0", "use": "context"}
+  ],
+  "facadeRhythm": {
+    "long walls": "Brick pleated in 1 m folds from the ground to the crown; each fold's top rises above the low roof, the outer folds 1.5 m higher than the inner, so the crown reads as a zigzag. South wall: a tall narrow glass slit in every inward fold from the west corner to the tower (eight, RCE 20357073), above the low ring. North wall: taken as the same (no ring; slits from 2 m), inferred.",
+    "west point": "The pleated walls meet in a point; the crown rises towards the middle (it follows the roof's section); three tall slits in the central inward folds (photo 001).",
+    "east gable": "Plain brick gable: a diamond lattice of 43 small square windows (nine staggered columns, 4-5-5-5-5-5-5-5-4) centred about 10.8 m up; three entrance doors at the head of a stair under a name board; a plain brick pier rising behind the south corner; the tower beside it to the north (RCE 20357069).",
+    "low ring": "Single storey round the west point and along the south: concrete posts, glazing, wooden blinds (some panels ochre), a thin concrete fascia and a dark roof.",
+    "tower": "Brick slab, the top a single slope rising to the north from 34.5 to 45.5 m, zinc-clad with a projecting lip; a belfry opening with a cross beside it on the two broad faces.",
+    "parish wing": "Brick, two storeys, a band of windows on the upper floor (and the ground floor on the south end), flat roof."
+  },
+  "colours": {
+    "sampled": "2023 (1) (sun, south-west): brick in shade #6c4d4d, panels #66462d, posts #868380, ring roof #b5afa2; 001 (sun, west): brick lit #d3ac8e.",
+    "chosen": "brick #b07462 (salmon-red; #9a6452 rendered too dark against the sunlit photos), concrete posts and fascias #d6d0c4, ochre blinds #b98d52, roofing #5a5c5e, tower top zinc #9aa3ac, glass #2f363c."
+  },
+  "decisions": [
+    "Plan from BAG (pleats and all), heights from 3DBAG; the roof is a low gable from intent, the tower top a single plane, nothing from the 3DBAG meshes.",
+    "The hall outline runs clockwise in plan coordinates, so its outward normals are to the left of travel; the first build had the crowns and slits on the inside (caught on the facade elevation).",
+    "The south long wall's slits are not checked by the facade compare: the folds stand 33 degrees off the wall, and the orthographic elevation sees the slits too narrow to count. The east gable is checked instead (passes).",
+    "The north wall's slits and the parish wing's window bands are inferred from the south side and from distant views."
+  ]
+}

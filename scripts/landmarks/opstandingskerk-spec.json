@@ -1,0 +1,48 @@
+{
+  "id": "opstandingskerk",
+  "name": "Opstandingskerk",
+  "landmarkId": "extract_landmarks_945535287",
+  "modelUrl": "./models/opstandingskerk.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012133302"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.842782429380898,
+      52.37772648378752
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 42,
+    "widthMetres": 38
+  },
+  "surveyed": {
+    "anchor": [
+      4.842782429380898,
+      52.37772648378752
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012133302 footprint and 3DBAG LoD2.2 heights (hall eaves and ridge, low ring, tower slope, parish wing), native east/south metres from the anchor; roofs and facades built from intent and photographs."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#b07462",
+    "concrete": "#d6d0c4",
+    "slate": "#5a5c5e",
+    "glass": "#2f363c",
+    "frame": "#d6d0c4",
+    "dark": "#2b2724",
+    "ochre": "#b98d52",
+    "white": "#e8e4dc",
+    "bronze": "#9aa3ac"
+  },
+  "attribution": {
+    "title": "Opstandingskerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Opstandingskerk_(Amsterdam)",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry: plan from the BAG footprint, heights from 3DBAG LoD2.2, pleated hall, ring, tower and wing modelled from photographs (Wikimedia Commons, RCE). No pixels or meshes imported."
+  }
+}
