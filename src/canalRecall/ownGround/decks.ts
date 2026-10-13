@@ -259,6 +259,8 @@ export function flatDeckBody(ring: readonly Vec2[], height: HeightFn, overWater:
     // A bascule's portals (movableFrame, drawn by the cell beside this body) share its budget.
     budget: kind === 'bascule' ? (lod === 0 ? KIT_BUDGET.near : KIT_BUDGET.far) - frameTriangles(ringFrame(ring, u).along, lod === 0) : undefined,
   });
+  // The far ring of a double bascule: its two portals are the silhouette; a fascia that does not fit beside them is dropped.
+  if (kind === 'bascule' && lod === 1 && info.triangles > KIT_BUDGET.far - frameTriangles(ringFrame(ring, u).along, false)) return { top, body: emptyMesh(true), railingPosts: 0, kind, triangles: 0, level: info.level };
   return { top, body: mesh, railingPosts: info.railingPosts, kind, triangles: info.triangles, level: info.level };
 }
 
