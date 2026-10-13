@@ -70,7 +70,9 @@ const GOOD = '#8a4a18';
 const COPPER = '#c9844a';
 const RULE = 'rgba(31,28,23,0.16)';
 /** How long a tap or mouse move keeps the settings/help buttons up mid-ride. */
-const UTILITY_REVEAL_MS = 3500;
+const UTILITY_REVEAL_MS = 3000;
+/** Steering keys never wake the utilities; every other key does. */
+const STEERING_KEYS = new Set(['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'w', 'a', 's', 'd', 'W', 'A', 'S', 'D', ' ', 'Shift']);
 
 export interface GamePresentationRuntime extends PresentationHost {}
 
@@ -369,12 +371,18 @@ export class GamePresentationRuntime {
     this.canvas.addEventListener('pointerdown', event => {
       if (!window.CanalRecallUi.isInsideDpad(this._eventPoint(event), this.input.dpad)) revealUtility();
     });
+    // Desktop wiggle: any mouse movement (window-wide, so the corner buttons
+    // themselves count) or a non-steering key wakes the utilities for 3 s.
     let lastMouse = { x: 0, y: 0 };
-    this.canvas.addEventListener('pointermove', event => {
-      if (event.pointerType !== 'mouse') return;
-      if (Math.hypot(event.clientX - lastMouse.x, event.clientY - lastMouse.y) > 12) revealUtility();
+    window.addEventListener('mousemove', event => {
+      this._utilityPointer = { x: event.clientX, y: event.clientY };
+      if (Math.hypot(event.clientX - lastMouse.x, event.clientY - lastMouse.y) > 2) revealUtility();
       lastMouse = { x: event.clientX, y: event.clientY };
-    });
+      this.hud.hoverPoint = this._eventPoint(event);
+    }, { passive: true });
+    window.addEventListener('keydown', event => {
+      if (!STEERING_KEYS.has(event.key)) revealUtility();
+    }, { passive: true });
     this.canvas.addEventListener('pointerdown', event => {
       if (event.button !== 0 || this.state === GameState.MENU || livePinch.size >= 2 || window.CanalRecallUi.isInsideDpad(this._eventPoint(event), this.input.dpad)) return;
       // A debug-overlay tool link owns the tap: don't start a camera drag, so
@@ -531,7 +539,21 @@ export class GamePresentationRuntime {
       // the map (not the stick) or a mouse move brings them up for a moment.
       // Keys G and ? work regardless.
       const riding = this.state === GameState.RACING && !this._utilityOpen;
-      const revealed = !riding || performance.now() < (this._utilityRevealUntil || 0);
+      const now = performance.now();
+      // The ride's first seconds count as a reveal, so they fade out 3 s in.
+      if (riding && !this._wasRiding) this._utilityRevealUntil = now + UTILITY_REVEAL_MS;
+      this._wasRiding = riding;
+      // Hover keeps them: while the pointer rests on the corner cluster the
+      // timer is held open.
+      const box = utility.getBoundingClientRect();
+      const pointer = this._utilityPointer;
+      if (pointer && pointer.x >= box.left - 8 && pointer.x <= box.right + 8 && pointer.y >= box.top - 8 && pointer.y <= box.bottom + 8) {
+        this._utilityRevealUntil = Math.max(this._utilityRevealUntil || 0, now + 600);
+      }
+      const revealed = !riding || now < (this._utilityRevealUntil || 0);
+      // Desktop tucks the whole cluster (feedback, build stamp too); a phone
+      // keeps its older rule of tucking only settings and help.
+      utility.classList.toggle('tucked-all', this._hudRects().mode !== 'compact');
       utility.classList.toggle('tucked', !revealed);
     }
 
@@ -743,7 +765,10 @@ export class GamePresentationRuntime {
         }) || 'No cycling in real life';
       }
     }
+    // The home radius is fixed for the ride and the setup screen already says
+    // it, so on desktop the plaque's fourth line is left to quiz feedback.
     const homeLearningNote = this.routePattern === 'home'
+      && this._hudRects().mode === 'compact'
       && Number.isFinite(this._homeLearningRadiusKm)
       && this._homeLearningRadiusKm > 0
       ? `Learning near home · ~${this._homeLearningRadiusKm.toFixed(1)} km`
@@ -820,7 +845,7 @@ export class GamePresentationRuntime {
     ctx.font = `700 12px ${surface.fontPlaque}`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'alphabetic';
-    const label = compact ? 'RE-CENTER' : 'RE-CENTER (R)';
+    const label = 'RE-CENTER';
     const metrics = ctx.measureText(label);
     const textY = y + height / 2 + (metrics.actualBoundingBoxAscent - metrics.actualBoundingBoxDescent) / 2;
     ctx.fillText(label, CANVAS_W / 2, textY);

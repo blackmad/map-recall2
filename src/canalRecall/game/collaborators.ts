@@ -150,6 +150,8 @@ export interface LoadingScreen {
 
 /** The canvas HUD. Everything here draws; nothing here decides. */
 export interface Hud {
+  /** Pointer in canvas coordinates; desktop-only hover details read it. */
+  hoverPoint?: { x: number; y: number } | null;
   setTime(seconds: number): void;
   formatTime(seconds: number): string;
   /** Speed and odometer as one string; drawn on the plaque's second line. */

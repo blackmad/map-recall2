@@ -341,6 +341,8 @@ export interface PresentationHost extends GameCoreHost {
   /** The start-of-ride orientation flight while it runs; see introFlight.ts. */
   /** performance.now() until which the settings/help buttons show mid-ride. */
   _utilityRevealUntil?: number;
+  _utilityPointer?: { x: number; y: number };
+  _wasRiding?: boolean;
   /** An overview planned and pre-loaded behind the loading screen. */
   _introPrepared?: { plan: import('./introFlight.ts').IntroPlan; playZoom: number } | null;
   _intro?: { plan: import('./introFlight.ts').IntroPlan; elapsed: number; playZoom: number; overview: number } | null;
