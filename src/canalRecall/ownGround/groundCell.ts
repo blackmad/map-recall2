@@ -21,7 +21,7 @@ import earcut from 'earcut';
 import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water.js';
 import { drapeTriangles, emptyMesh, merge, reliefGrid, type MeshArrays } from './drape.js';
 import { buildStreets, isBridgeWay, prepareWays, LIFT, type LocalWay } from './streets.js';
-import { flatDeckBody, footprintAxis, measuredDeckBody, measuredDeckTop, pointInRing, type DeckBuildInfo } from './decks.js';
+import { flatDeckBody, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, pointInRing, type DeckBuildInfo } from './decks.js';
 import type { OsmGroundExtract } from './osmGround.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
 import type { Rect } from './groundStore.js';
@@ -62,6 +62,8 @@ export interface CellInput {
   /** Every placed deck's footprint near the cell (street mask exceptions). */
   deckRingsAround: readonly Vec2[][];
   flatDecks: readonly Vec2[][];
+  /** Per flat deck (same order): register id and whether it is movable ('Beweegbare brug'). */
+  flatDeckMeta?: readonly { id: string; movable: boolean }[];
   osm: OsmGroundExtract | null;
   osmAround: OsmGroundExtract[];
   project: (lngLat: [number, number]) => Vec2;
@@ -190,14 +192,19 @@ export function buildCell(input: CellInput): BuiltCell {
     if (top.indices.length) { add('deckTop', top); bridges.tops++; }
   }
   for (const d of bridges.decks) { bridges.railingPosts += d.railingPosts; bridges.piers += d.piers; bridges.arches += d.arches; bridges.abutments += d.abutments; if (d.railingPosts) bridges.railed++; }
-  // Bridge ways through the flat footprints give their crossing axis (railings run along it).
+  // Bridge ways near the flat footprints give their crossing axis (movable frames).
   const bridgeLines = ways.filter(isBridgeWay).map(w => w.points);
   input.flatDecks.forEach((ring, k) => {
     const through = bridgeLines.filter(l => l.some(q => pointInRing(ring, q[0], q[1])) || l.some((q, i) => i > 0 && pointInRing(ring, (q[0] + l[i - 1][0]) / 2, (q[1] + l[i - 1][1]) / 2)));
     const { top, body, railingPosts } = flatDeckBody(ring, surface.height, overWater, 0.02, 0.45, { railings: lod === 0, axis: footprintAxis(ring, through).u });
     add('deckTop', top); add('deckBody', body);
     bridges.tops++; bridges.railingPosts += railingPosts; if (railingPosts) bridges.railed++;
-    bridges.flat.push({ id: String(k), railingPosts, frames: 0 });
+    let frames = 0;
+    if (input.flatDeckMeta?.[k]?.movable) {
+      const frame = movableFrame(ring, surface.height, through);
+      add('deckBody', frame.mesh); frames = frame.units; bridges.frames += frames;
+    }
+    bridges.flat.push({ id: input.flatDeckMeta?.[k]?.id ?? '', railingPosts, frames });
   });
 
   const packed: Partial<Record<GroundLayer, PackedMesh>> = {};

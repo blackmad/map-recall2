@@ -12,7 +12,7 @@ import { crossSection, parseMetres, areaKind } from './osmGround';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
 import { buildStreets, prepareWays, routeRibbon, LIFT } from './streets';
 import { buildWaterMask, maskDistance, quayWallMesh, waterSurfaceMesh, waterZAt } from './water';
-import { DECK_TOP_LIFT, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, type DeckBuildInfo } from './decks';
+import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableFrame, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
 import type { DeckProfile } from '../elevation/bridgeDeck';
@@ -286,6 +286,22 @@ test('deck grade clamp: spikes over 1:8 come out, the crown stays', () => {
   assert.ok(out[10] < h[10] - 0.3, 'the spike is gone');
   assert.ok(Math.abs(Math.max(...out) - 1) < 1e-9, 'the crown is kept');
   assert.equal(out[0], h[0], 'outside the deck span untouched');
+});
+
+test('movable frame: one portal unit across the crossing axis, two on a long double bascule', () => {
+  const ring: Vec2[] = [[0, -4], [14, -4], [14, 4], [0, 4]];
+  const one = movableFrame(ring, () => 0.5);
+  assert.equal(one.units, 1);
+  let zMax = -Infinity, yMax = 0; for (let i = 0; i < one.mesh.positions.length; i += 3) { zMax = Math.max(zMax, one.mesh.positions[i + 2]); yMax = Math.max(yMax, Math.abs(one.mesh.positions[i + 1])); }
+  assert.ok(zMax > 0.5 + FRAME.postHeight && zMax < 0.5 + FRAME.postHeight + 1.2, `frame top ${zMax}`);
+  assert.ok(yMax > 4.3 && yMax < 5.2, `posts stand beside the deck (|y| ${yMax})`);
+  // A footprint 8 m long but 20 m wide, with the road along +y through it: the posts go either side of the road, not of the long axis.
+  const squat: Vec2[] = [[0, 0], [20, 0], [20, 8], [0, 8]];
+  const across = movableFrame(squat, () => 0, [[[10, -5], [10, 13]]]);
+  let xs = [Infinity, -Infinity]; for (let i = 0; i < across.mesh.positions.length; i += 3) { xs = [Math.min(xs[0], across.mesh.positions[i]), Math.max(xs[1], across.mesh.positions[i])]; }
+  assert.ok(xs[0] < 0 && xs[1] > 20, 'posts outside the 20 m width');
+  const dbl = movableFrame([[0, -4], [40, -4], [40, 4], [0, 4]], () => 0);
+  assert.equal(dbl.units, 2);
 });
 
 test('flat deck: draped top, fascia only over water', () => {
