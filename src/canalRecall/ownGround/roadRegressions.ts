@@ -90,3 +90,39 @@ export function junctionCoverage(cells: readonly BuiltCell[], centre: [number, n
   }
   return { probes, ok, share: ok / probes, tops };
 }
+
+/**
+ * Stray surface fragments at a junction (user, 2026-10-13: "red cycle-lane smear
+ * and brown holes at Rozengracht/Marnixstraat"). Each probe point lies where a
+ * fragment was drawn; the top surface there must not be one of `forbid`.
+ *  - a 2.4 m klinker stub of De Clercqstraat (way 1410733518, 13 m, OSM maps it
+ *    through the junction) lay as a brown parallelogram on the Rozengracht asphalt;
+ *  - two cycleway slivers (1410733519 between two junction cuts, 813875405 at
+ *    the kerb) lay as red stubs on the road.
+ * Offsets are scene metres (east, north) from `at`.
+ */
+export interface StrayRegression { id: string; label: string; at: [number, number]; probes: { offset: [number, number]; forbid: GroundLayer[] }[] }
+
+export const STRAYS: StrayRegression[] = [
+  {
+    id: 'rozengracht-marnixstraat-fragments',
+    label: 'Rozengracht × Marnixstraat × De Clercqstraat: klinker stub and red slivers on the junction asphalt',
+    at: [4.874103, 52.371797],
+    probes: [
+      { offset: [-9.0, -7.0], forbid: ['klinker'] }, { offset: [-7.5, -5.9], forbid: ['klinker'] }, { offset: [-6.2, -4.9], forbid: ['klinker'] },
+      { offset: [-7.0, -7.9], forbid: ['cycle'] }, { offset: [-6.0, -7.85], forbid: ['cycle'] },
+      { offset: [6.0, -5.0], forbid: ['cycle'] },
+    ],
+  },
+];
+
+/** Probes of a stray regression that still read as a forbidden surface (empty: clean). */
+export function strayHits(cells: readonly BuiltCell[], centre: [number, number], reg: StrayRegression): { offset: [number, number]; top: string }[] {
+  const out: { offset: [number, number]; top: string }[] = [];
+  for (const p of reg.probes) {
+    const x = centre[0] + p.offset[0], y = centre[1] + p.offset[1];
+    const top = cells.map(c => layersAt(c, x, y)).filter(h => h.hits.length).map(h => h.top).find(Boolean) ?? 'none';
+    if ((p.forbid as string[]).includes(top)) out.push({ offset: p.offset, top });
+  }
+  return out;
+}
