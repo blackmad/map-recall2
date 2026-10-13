@@ -7,7 +7,7 @@
 import * as T from 'three';
 import {compose, type Cell, type PanelCtx} from '../blockBuilding/compose.ts';
 import {runGates, type GateReport} from '../blockBuilding/gates.ts';
-import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawEntrance, drawGarageDoor, drawLettering, drawPoliceStripe, drawRoofBoxes, drawScreen, lowestHoleAbove} from '../blockBuilding/components.ts';
+import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawEntrance, drawGarageDoor, drawLantern, drawLettering, drawNameBand, drawPilasters, drawPoliceStripe, drawPortal, drawRoofBoxes, drawScreen, drawStoneStorey, LETTER_STANDOFF, lowestHoleAbove, type PortalResult} from '../blockBuilding/components.ts';
 import type {MeshBuilder} from '../blockBuilding/mesh.ts';
 import {fitsPanel, rectPoly, type Panel} from '../blockBuilding/panels.ts';
 import type {BuildingFacts} from './facts.ts';
@@ -15,7 +15,7 @@ import type {LargeBuildingIntent} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit} from './fitLarge.ts';
 
-export interface LargeComponentCounts { screens?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -32,7 +32,7 @@ export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe
     case 'glass': return {materialSlot: 'glass', surface: 'glass'};
     case 'frame': case 'rail': return {materialSlot: 'frame', surface: 'joinery'};
     case 'door': return {materialSlot: 'door', surface: 'door'};
-    case 'stone': case 'slab': return {materialSlot: 'stone', surface: 'stone'};
+    case 'stone': case 'slab': case 'band': case 'crest': return {materialSlot: 'stone', surface: 'stone'};
     case 'police-white': case 'board': return {materialSlot: 'stucco', surface: 'sign'};
     case 'board-text': return {materialSlot: 'accent', surface: 'sign'};
     case 'police-blue': case 'sign': return {materialSlot: 'accent', surface: 'sign'};
@@ -41,11 +41,14 @@ export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe
   }
 }
 
+/** Cornice projection (m) over the wall top: a stone band 0.43 m tall. */
+const CORNICE_OUT = 0.28;
+
 function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: LargeGroupFit | undefined, counts: LargeComponentCounts) {
   if (!g || !info.levels.length) return;
   const p = c.p, levels = info.levels, groundTop = levels[1] ?? p.vMax, s = g.slots;
   const skip: [number, number][] = [];
-  let entrance: ReturnType<typeof drawEntrance> = null, canopy: ReturnType<typeof drawCanopy> = null;
+  let entrance: ReturnType<typeof drawEntrance> = null, canopy: ReturnType<typeof drawCanopy> = null, portal: PortalResult | null = null;
   if (g.entrance?.panel === p.index) {
     const e = g.entrance, cells = info.cells.filter(x => x.bay === e.bay && x.floor < e.storeys);
     if (cells.length) {
@@ -53,24 +56,39 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
       if (entrance) {
         counts.entrances++; if (e.storeys > 1) counts.halls++;
         skip.push([entrance.u0 - 0.3, entrance.u1 + 0.3]);
+        if (e.portal) { portal = drawPortal(c, entrance, s.stone, `crest@g${g.index}`); if (portal) { counts.portals = (counts.portals ?? 0) + 1; skip.push([portal.u0 - 0.1, portal.u1 + 0.1]); } }
         if (e.canopy) { canopy = drawCanopy(c, entrance.u0, entrance.u1, entrance.top + 0.2, s.stone, g.signage?.mount === 'canopy' ? 0.5 : 0.3); if (canopy) counts.canopies++; }
       }
     }
   }
   if (g.garage?.panel === p.index) for (const cell of info.cells) if (cell.floor === 0 && g.garage.bays.includes(cell.bay) && drawGarageDoor(c, cell, {door: s.door, frame: s.frame})) { counts.garageDoors++; skip.push([cell.u0, cell.u1]); }
+  // Stone-faced storeys and banded end pilasters, round the openings already cut; under the cornice.
+  const eaves = panelEaves(p), underCornice = eaves - (g.cornice ? 0.45 : 0.05);
+  for (const st of g.stoneStoreys ?? []) {
+    if (st >= levels.length - 1 && st > 0) continue;
+    const v0 = Math.max(p.vMin, levels[st]), v1 = Math.min(underCornice, levels[st + 1] ?? underCornice);
+    if (v1 - v0 > 0.5 && drawStoneStorey(c, v0, v1, s.stone)) counts.stoneStoreys = (counts.stoneStoreys ?? 0) + 1;
+  }
+  if (g.pilasters && underCornice - Math.max(0, p.vMin) > 3) counts.pilasters = (counts.pilasters ?? 0) + drawPilasters(c, Math.max(0, p.vMin), underCornice, s.stone, g.pilasters);
+  if (g.signage?.mount === 'cornice' && g.mainPanel === p.index) {
+    const n = drawNameBand(c, g.signage.text, underCornice, s.stone, s.sign, g.cornice && eaves - p.vMin > 3 ? {v0: eaves - 0.45, v1: eaves - 0.02, out: CORNICE_OUT} : undefined);
+    if (n) { counts.letters += n; counts.nameBands = (counts.nameBands ?? 0) + 1; }
+  }
   // Screen lattice after the openings (rails skip them), before the cornice.
   if (g.screen && info.cells.length) { const top = panelEaves(p) - 0.1; if (top - p.vMin > 3 && drawScreen(c, info.cells, levels, s.stone, top)) counts.screens = (counts.screens ?? 0) + 1; }
-  if (g.cornice) { const top = panelEaves(p); if (top - p.vMin > 3 && drawBand(c, s.stone, top - 0.45, top - 0.02, 0.28)) counts.cornices++; }
+  if (g.cornice) { const top = panelEaves(p); if (top - p.vMin > 3 && drawBand(c, s.stone, top - 0.45, top - 0.02, CORNICE_OUT)) counts.cornices++; }
   if (g.ground === 'plinth-shopfronts' && groundTop - p.vMin > 3 && drawBand(c, s.stone, groundTop - 0.62, groundTop - 0.12, 0.1, entrance && g.entrance!.storeys > 1 ? skip : [])) {
     counts.fascias++;
     // A group without an entrance letters its shop fascia, centred on the widest panel.
-    if (g.signage && !g.entrance && g.mainPanel === p.index) counts.letters += drawLettering(c, g.signage.text, (p.uMin + p.uMax) / 2, groundTop - 0.37, 0.115, 0.34, Math.min((p.uMax - p.uMin) * 0.6, 6), s.sign);
+    if (g.signage && g.signage.mount !== 'cornice' && !g.entrance && g.mainPanel === p.index) counts.letters += drawLettering(c, g.signage.text, (p.uMin + p.uMax) / 2, groundTop - 0.37, 0.115, 0.34, Math.min((p.uMax - p.uMin) * 0.6, 6), s.sign);
   }
   if (entrance && g.signage) {
     const {text, mount} = g.signage, uc = (entrance.u0 + entrance.u1) / 2, w = entrance.u1 - entrance.u0;
     if (mount === 'glazing') counts.letters += drawLettering(c, text, uc, (Math.max(entrance.doorTop, levels[1] ?? entrance.doorTop) + entrance.top) / 2, entrance.glassDepth + 0.015, 0.7, w * 0.85, s.sign);
     else if (mount === 'canopy' && canopy) counts.letters += drawLettering(c, text, uc, (canopy.v0 + canopy.v1) / 2, canopy.d + 0.012, (canopy.v1 - canopy.v0) * 0.62, w + 1.0, s.sign);
     else if (mount === 'wall') counts.letters += drawLettering(c, text, uc, groundTop + 0.45, 0.012, 0.6, Math.max(w * 1.6, 3), s.sign);
+    else if (mount === 'cornice') { /* name band: drawn on the widest panel below */ }
+    else if (portal) { const f = portal.frieze; counts.letters += drawLettering(c, text, uc, (f.v0 + f.v1) / 2, f.d + LETTER_STANDOFF, (f.v1 - f.v0) * 0.55, portal.u1 - portal.u0 - 0.3, s.sign); }
     else {
       const v0 = (canopy ? canopy.v1 : entrance.top) + 0.15, v1 = v0 + 0.55;
       if (v1 < (levels[1] ?? p.vMax) + 1.2) {
@@ -198,6 +216,7 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, facts: Buildin
     panelHook: (c, info) => { decorate(c, info, groupOf(c.p.index), counts); hooks.panelHook?.(c, info, groupOf(c.p.index)); },
   });
   drawRoofBoxes(res.mesh, recipe.roofPlant, 'plant');
+  for (const l of recipe.lanterns ?? []) { drawLantern(res.mesh, l, {glass: 'glass', frame: 'frame', stone: 'stone'}); counts.lanterns = (counts.lanterns ?? 0) + 1; }
   hooks.afterCompose?.(res.mesh, recipe, res.panels);
   const blockGates = runGates(res.mesh, recipe.set, {budget: hooks.budget ?? 12000});
   return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, panels: res.panels};
