@@ -267,6 +267,8 @@ import hospitals from './hospital-footprints.json';
 import {ALL_MANUAL_LANDMARKS as MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
 // Landmark queue lane 5 (2026-10-13)
+import {buildSlavernijmonument} from './slavernijmonument-builder';
+import {buildBegijnhof} from './begijnhof-builder';
 import {buildVondelmonument} from './vondelmonument-builder';
 import {buildRembrandtmonument} from './rembrandtmonument-builder';
 import {buildMaagdenhuis} from './maagdenhuis-builder';
@@ -708,6 +710,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='maagdenhuis')buildMaagdenhuis(w,d,helpers);
     else if(id==='rembrandtmonument')buildRembrandtmonument(w,d,helpers);
     else if(id==='vondelmonument')buildVondelmonument(w,d,helpers);
+    else if(id==='begijnhof')buildBegijnhof(w,d,helpers);
+    else if(id==='slavernijmonument')buildSlavernijmonument(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   {const lod1=manifest.models[id]?.lod1;manifest.models[id]=await save(id);if(lod1)manifest.models[id].lod1=lod1;}// keep the lod1 record; build:landmark-lods / check:landmark-lods catch it going stale

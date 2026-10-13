@@ -1,0 +1,162 @@
+{
+ "schemaVersion": 1,
+ "id": "begijnhof",
+ "signature": [
+  "b-gables",
+  "b-lawn-trees",
+  "b-statue"
+ ],
+ "walls": [
+  {
+   "tag": "south-row-N",
+   "bearing": 20,
+   "lengthM": 45,
+   "centre": [
+    4.88995,
+    52.36918
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Amsterdam_NL_Begijnhof_--_2015_--_7220.jpg",
+   "capturedAt": "2015",
+   "checked": true,
+   "note": "Court-facing fronts of the south row (Begijnhof 1-27) from the lawn: Dietmar Rabich 2015 photographs 7215-8, 7220, 7225 (CC BY-SA 4.0) and Dennis G. Jarvis 4430 (CC BY-SA 2.0), in artifacts/landmark-refs/begijnhof/.",
+   "items": [
+    {
+     "id": "b-gables",
+     "kind": "gable-stone",
+     "where": "tall brick gables with step, neck and bell silhouettes and stone scrolls on the court front of each house",
+     "approxSizeM": [
+      5,
+      4
+     ],
+     "plan": "simplified",
+     "how": "builder: one extruded brick gable per house cycling step, neck, bell and spout profiles to ridge height; scrolls, finials and cartouches omitted; gable type per pand (last four BAG digits), assigned by a fixed rule not by the photographed order: 5497 spout, 5502 bell, 5511 neck, 5035 step, 5503 spout, 5504 bell, 8061 neck, 8197 step, 5729 spout, 5667 bell, 5668 neck, 8146 step, 5500 spout, 5499 bell, 5501 neck, 5596 step, 5602 spout",
+     "seenIn": "Rabich 7220"
+    },
+    {
+     "id": "b-windows",
+     "kind": "other",
+     "where": "white-framed sash windows in regular rows, three to four storeys, a door with a stoop on the ground floor",
+     "approxSizeM": [
+      1,
+      1.75
+     ],
+     "plan": "simplified",
+     "how": "builder: frame, glass and stone-lintel boxes per bay and storey from the measured frontage, a door with three concrete steps per house; glazing bars and shutters omitted",
+     "seenIn": "Rabich 7220"
+    },
+    {
+     "id": "b-fence",
+     "kind": "other",
+     "where": "low black picket fences enclosing narrow front gardens along the court",
+     "approxSizeM": [
+      45,
+      0.85
+     ],
+     "plan": "simplified",
+     "how": "builder: posts and two rails per house frontage and a green hedge strip behind",
+     "seenIn": "Rabich 7220"
+    }
+   ]
+  },
+  {
+   "tag": "court-lawn",
+   "bearing": 0,
+   "lengthM": 45,
+   "centre": [
+    4.8899,
+    52.36919
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Netherlands-4430_-_Begijnhof_12083455656_.jpg",
+   "capturedAt": "2013",
+   "checked": true,
+   "note": "The lawn with its trees and the stone statue of a Beguine, from the Jarvis and Rabich photographs.",
+   "items": [
+    {
+     "id": "b-lawn-trees",
+     "kind": "other",
+     "where": "open lawn with a large green chestnut and a dark weeping beech",
+     "approxSizeM": [
+      45,
+      12
+     ],
+     "plan": "simplified",
+     "how": "builder: green lawn polygon with a gravel ribbon, a sphere-crowned chestnut and trunks plus a cone-crowned dark beech",
+     "seenIn": "Rabich 7215-8"
+    },
+    {
+     "id": "b-statue",
+     "kind": "sculpture",
+     "where": "stone statue of a Beguine on a square plinth at the east end of the lawn",
+     "approxSizeM": [
+      1.1,
+      2.9
+     ],
+     "plan": "simplified",
+     "how": "builder: two-step plinth, cylinder body and a sphere head",
+     "seenIn": "Rabich 7220"
+    },
+    {
+     "id": "b-lamps",
+     "kind": "other",
+     "where": "cast-iron lamp posts along the court path",
+     "approxSizeM": [
+      0.4,
+      3.5
+     ],
+     "plan": "simplified",
+     "how": "builder: three lamp posts with glass heads",
+     "seenIn": "Jarvis 4430"
+    }
+   ]
+  },
+  {
+   "tag": "east-row-W",
+   "bearing": 270,
+   "lengthM": 25,
+   "centre": [
+    4.8904,
+    52.36925
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Netherlands-4433_-_Begijnhof_12083251294_.jpg",
+   "capturedAt": "2013",
+   "checked": true,
+   "note": "East and west rows seen across the lawn; same gable and window language as the south row.",
+   "items": []
+  },
+  {
+   "tag": "kapel-wall",
+   "bearing": 90,
+   "lengthM": 12,
+   "centre": [
+    4.8896,
+    52.3694
+   ],
+   "evidence": "photo",
+   "panoId": "commons:Amsterdam_NL_Begijnhof_--_2015_--_7225.jpg",
+   "capturedAt": "2015",
+   "checked": true,
+   "note": "The white wall with the nine painted gable plaques (gevelstenen) belongs to the Begijnhofkapel, a separate model; it is not part of this landmark.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Dietmar Rabich, Begijnhof 2015 (Commons)",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_(NL),_Begijnhof_--_2015_--_7220.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Dennis G. Jarvis, Netherlands-4430 Begijnhof (Commons)",
+   "url": "https://commons.wikimedia.org/wiki/File:Netherlands-4430_-_Begijnhof_(12083455656).jpg",
+   "licence": "CC BY-SA 2.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
