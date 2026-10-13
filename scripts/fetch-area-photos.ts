@@ -23,6 +23,7 @@ import path from 'node:path';
 import { readScrape, writeScrape } from './lib/scrapeStore';
 import { CommonsStore, apiError, type GeoHit } from '../src/mapRecall/commonsStore';
 import { areaSearchPoints, commonsAttribution, distanceToPolygonsKm, pointInPolygons, rankAreaPhotos, type AreaPhotoFile } from '../src/mapRecall/neighborhoodGaps';
+import { isUnsuitableAreaPhoto } from '../src/mapRecall/photoBlacklist';
 
 const arg = (name: string) => (process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : undefined);
 const cityId = arg('--city') ?? 'amsterdam';
@@ -123,7 +124,8 @@ for (const area of areas) {
     // 3. Rank from the store alone, so --offline gives the same answer.
     const files: AreaPhotoFile[] = inside.flatMap(hit => {
       const f = store.files.get(hit.pageid);
-      return f ? [{ title: f.title, url: f.url, thumbUrl: f.thumbUrl, width: f.width, height: f.height, mime: f.mime, license: f.meta.LicenseShortName, artist: f.meta.Artist, categories: f.meta.Categories, lat: hit.lat, lon: hit.lon }] : [];
+      // Not views of the place (toilets, plates, portraits, press archive): never admitted. See photoBlacklist.ts.
+      return f && !isUnsuitableAreaPhoto({ title: f.title, description: f.artist, categories: f.categories }) ? [{ title: f.title, url: f.url, thumbUrl: f.thumbUrl, width: f.width, height: f.height, mime: f.mime, license: f.meta.LicenseShortName, artist: f.meta.Artist, categories: f.meta.Categories, lat: hit.lat, lon: hit.lon }] : [];
     });
     // Too few inside (small islands, parks): allow photos taken just outside the boundary, flagged.
     const insidePicks = rankAreaPhotos(files, area.geometry, 8);
