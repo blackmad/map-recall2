@@ -17,12 +17,15 @@ import { prepareWays, resolvePriorSidewalks } from '../../src/canalRecall/ownGro
 import { bandCoverage, junctionCoverage, strayHits, DE_CLERCQSTRAAT, JUNCTIONS, STRAYS } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
-const store = new GroundStore(async path => {
+const readExtract = async (path: string) => {
   const file = join(ROOT, path);
   if (!existsSync(file)) throw new Error(`${path}: missing`);
   const bytes = readFileSync(file);
   return new Uint8Array(bytes[0] === 0x1f && bytes[1] === 0x8b ? gunzipSync(bytes) : bytes);
-});
+};
+const store = new GroundStore(readExtract);
+/** The same ground without parks-v1 (the parks regressions compare against it: streets must not change). */
+const noParks = new GroundStore(readExtract, { parks: false });
 
 let failed = 0;
 const check = (ok: boolean, what: string) => { console.log(`${ok ? 'ok  ' : 'FAIL'} ${what}`); if (!ok) failed++; };
@@ -242,6 +245,7 @@ async function main(): Promise<void> {
       check(r.share >= j.minShare, `${j.id} LOD ${lod}: junction interior ${r.ok}/${r.probes} ${j.surface} (${JSON.stringify(r.tops)})`);
     }
   }
+  await parkRegressions();
   // Seams: two neighbouring cells' land grids meet at the same heights (one height function, shared grid lines).
   const [ax, ay] = toLocal(4.8875, 52.3665), a = store.cellAt(ax, ay), [cx, cy] = a.split('_').map(Number), b = `${cx + 1}_${cy}`;
   if (store.covers(a) && store.covers(b)) {
@@ -253,6 +257,84 @@ async function main(): Promise<void> {
     check(shared > 20 && worst < 1e-4, `seam ${a}|${b}: ${shared} shared land vertices, worst mismatch ${worst.toExponential(1)} m`);
   }
   process.exitCode = failed ? 1 : 0;
+}
+
+/**
+ * Parks (lane parks 2026-10-13, the user's Cremerplein screenshot: one flat green with trees around a dark box).
+ * Per named park, a grid of probes over its box, built with and without parks-v1:
+ *  - streets untouched: every probe whose top was a street band still is (dropped park paths excepted, they are
+ *    replaced by the BGT path polygon under them);
+ *  - the OSM park fill is replaced by surveyed surfaces at ≥ `minPark` of its probes;
+ *  - the building in the park keeps its footprint: no park surface, hedge or furniture vertex inside it.
+ */
+const PARKS: { id: string; at: [number, number]; half: number; minPark: number; minSurfaces: string[]; building?: { pand: string; ring: [number, number][] } }[] = [
+  { id: 'J.J. Cremerplein', at: [4.8582, 52.3595], half: 70, minPark: 0.7, minSurfaces: ['lawn', 'sand', 'parkPath', 'furniture'],
+    // Buurtcentrum Cremerplein, BAG pand 0363100012215668 (bag-tiles 14/8413/5385), 13 vertices.
+    building: { pand: '0363100012215668', ring: [[4.858071, 52.35959], [4.85811, 52.359578], [4.858114, 52.359582], [4.858287, 52.359529], [4.858412, 52.359683], [4.858287, 52.359721], [4.858297, 52.359733], [4.858258, 52.359745], [4.858248, 52.359733], [4.858207, 52.359746], [4.858098, 52.359611], [4.858091, 52.359614], [4.858071, 52.35959]] } },
+  { id: 'Bellamyplein', at: [4.8677, 52.36795], half: 40, minPark: 0.6, minSurfaces: ['lawn'] },
+  { id: 'Sarphatipark', at: [4.8963, 52.3544], half: 110, minPark: 0.7, minSurfaces: ['lawn', 'shrub', 'furniture', 'hedge'] },
+];
+const STREET_TOPS = new Set(['asphalt', 'klinker', 'cycle', 'paving', 'kerb', 'paint', 'tram', 'bollard', 'gravel']);
+const PARK_TOPS = new Set(['lawn', 'bed', 'shrub', 'bark', 'sand', 'parkGravel', 'parkPath', 'pond', 'hedge', 'furniture', 'paving', 'cycle']);
+async function parkRegressions(): Promise<void> {
+  await noParks.init();
+  check(store.parkCells.size > 0, `parks-v1: ${store.parkCells.size} park cells in the manifest`);
+  for (const reg of PARKS) {
+    const [x, y] = toLocal(reg.at[0], reg.at[1]), h = reg.half;
+    const keys = GroundStore.neighbours(store.cellAt(x, y)).filter(k => {
+      if (!store.covers(k)) return false;
+      const r = store.cellRect(k);
+      return !(r[2] < x - h || r[0] > x + h || r[3] < y - h || r[1] > y + h);
+    });
+    const on: BuiltCell[] = [], off: BuiltCell[] = [];
+    const dropped = new Set<number>();
+    for (const k of keys) {
+      const input = await store.cellInput(k, 0);
+      (input.dropWays ?? []).forEach(id => dropped.add(id));
+      on.push(buildCell(input));
+      off.push(buildCell(await noParks.cellInput(k, 0)));
+    }
+    // Dropped path ways near the box, with their drawn half-width (a probe on one may legitimately change).
+    const input = await store.cellInput(keys[0], 0);
+    const droppedWays = [input.osm, ...input.osmAround].flatMap(e => (e ? prepareWays(e.ways.filter(w => dropped.has(w.id)), input.project) : []));
+    const onDropped = (px: number, py: number) => droppedWays.some(w => w.points.some((q, i) => {
+      if (!i) return false;
+      const a = w.points[i - 1], dx = q[0] - a[0], dy = q[1] - a[1], l2 = dx * dx + dy * dy, t = l2 ? Math.max(0, Math.min(1, ((px - a[0]) * dx + (py - a[1]) * dy) / l2)) : 0;
+      return Math.hypot(a[0] + t * dx - px, a[1] + t * dy - py) <= w.section.halfWidth + 0.6;
+    }));
+    const top = (cells: BuiltCell[], px: number, py: number) => cells.map(c => layersAt(c, px, py)).find(r => r.top)?.top ?? null;
+    let probes = 0, streets = 0, streetLost = 0, parkFill = 0, parkDrawn = 0;
+    const lost: string[] = [];
+    const step = h / 10;
+    for (let py = y - h; py <= y + h + 1e-6; py += step) for (let px = x - h; px <= x + h + 1e-6; px += step) {
+      probes++;
+      const before = top(off, px, py), after = top(on, px, py);
+      if (before && STREET_TOPS.has(before) && !onDropped(px, py)) {
+        streets++;
+        if (!after || !STREET_TOPS.has(after)) { streetLost++; lost.push(`${(px - x).toFixed(0)},${(py - y).toFixed(0)}:${before}->${after}`); }
+      }
+      if (before === 'park' || before === 'wood') { parkFill++; if (after && PARK_TOPS.has(after)) parkDrawn++; }
+    }
+    check(streetLost === 0, `${reg.id}: ${streets - streetLost}/${streets} street probes unchanged by the park${lost.length ? ` (${lost.slice(0, 6).join(' ')})` : ''}`);
+    check(parkFill > 0 && parkDrawn / parkFill >= reg.minPark, `${reg.id}: ${parkDrawn}/${parkFill} probes of the flat park fill now surveyed surfaces (want ≥ ${reg.minPark * 100} %)`);
+    const layers = new Set(on.flatMap(c => Object.keys(c.layers)));
+    const missing = reg.minSurfaces.filter(l => !layers.has(l));
+    check(!missing.length, `${reg.id}: layers ${reg.minSurfaces.join(', ')} built${missing.length ? ` (missing ${missing.join(', ')})` : ''}`);
+    const parkStats = on.map(c => c.stats.parks).filter(Boolean);
+    console.log('     ', JSON.stringify({ park: reg.id, cells: keys, trianglesOn: on.reduce((t, c) => t + c.stats.triangles, 0), trianglesOff: off.reduce((t, c) => t + c.stats.triangles, 0), parks: parkStats }));
+    if (reg.building) {
+      const ring = reg.building.ring.map(q => toLocal(q[0], q[1]));
+      const inside = (px: number, py: number) => { let c = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > py) !== (yj > py) && px < (xj - xi) * (py - yi) / (yj - yi) + xi) c = !c; } return c; };
+      // 0.3 m inside the footprint (BGT polygons share the pand's edge).
+      const deep = (px: number, py: number) => inside(px, py) && ring.every((q, i) => { if (!i) return true; const a = ring[i - 1], dx = q[0] - a[0], dy = q[1] - a[1], l2 = dx * dx + dy * dy, t = Math.max(0, Math.min(1, ((px - a[0]) * dx + (py - a[1]) * dy) / l2)); return Math.hypot(a[0] + t * dx - px, a[1] + t * dy - py) > 0.3; });
+      let n = 0;
+      for (const c of on) for (const l of ['lawn', 'bed', 'shrub', 'bark', 'sand', 'parkGravel', 'parkPath', 'pond', 'hedge', 'furniture'] as const) {
+        const m = c.layers[l];
+        if (m) for (let i = 0; i < m.positions.length; i += 3) if (deep(m.positions[i], m.positions[i + 1])) n++;
+      }
+      check(n === 0, `${reg.id}: BAG pand ${reg.building.pand} keeps its footprint (${n} park vertices inside)`);
+    }
+  }
 }
 
 main().catch(e => { console.error(e); process.exit(1); });
