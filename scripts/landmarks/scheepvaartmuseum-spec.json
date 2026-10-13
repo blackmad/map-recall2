@@ -1,0 +1,153 @@
+{
+  "id": "scheepvaartmuseum",
+  "name": "Het Scheepvaartmuseum (’s Lands Zeemagazijn)",
+  "landmarkId": "extract_landmarks_961954901",
+  "modelUrl": "./models/scheepvaartmuseum.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012170236",
+    "r3604837",
+    "w269078550"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.914806467033239,
+      52.37170550362289
+    ],
+    "headingDegrees": 241.8,
+    "lengthMetres": 69.95,
+    "widthMetres": 64.15
+  },
+  "surveyed": {
+    "anchor": [
+      4.914807823873647,
+      52.371706588591216
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012170236 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "stone": "#d5cfbd",
+    "slate": "#474c54",
+    "glass": "#5e6f7a",
+    "frame": "#ebe8de",
+    "dark": "#2b2e32",
+    "white": "#ece9e0",
+    "concrete": "#8d8e8b",
+    "gold": "#c9a24a",
+    "sandstone": "#a8a290"
+  },
+  "attribution": {
+    "title": "Het Scheepvaartmuseum (’s Lands Zeemagazijn)",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Het_Scheepvaartmuseum",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the four pedimented pavilions, window axes, arched tall openings, plinth, cornice, dormers and chimneys measured by eye from the 2017-2025 municipal panoramas, no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.915303864875416,
+          52.371803646178904
+        ],
+        [
+          4.915216726866209,
+          52.371903233073375
+        ],
+        [
+          4.915183582833776,
+          52.37189236964101
+        ],
+        [
+          4.915163827211867,
+          52.37191495785781
+        ],
+        [
+          4.915026207144453,
+          52.37207222411943
+        ],
+        [
+          4.91470483448867,
+          52.37196687358139
+        ],
+        [
+          4.914682863836161,
+          52.3719919784223
+        ],
+        [
+          4.914484804997337,
+          52.37192706963714
+        ],
+        [
+          4.914506790508892,
+          52.37190195590404
+        ],
+        [
+          4.914187966341282,
+          52.371797449981955
+        ],
+        [
+          4.914326911732911,
+          52.37163865307679
+        ],
+        [
+          4.914345210860075,
+          52.371617730892936
+        ],
+        [
+          4.914309828449271,
+          52.371606130271466
+        ],
+        [
+          4.9143981014033065,
+          52.371506278935556
+        ],
+        [
+          4.914432796127764,
+          52.3715176431051
+        ],
+        [
+          4.9144522099155195,
+          52.37149545808956
+        ],
+        [
+          4.91458975622868,
+          52.37133824610808
+        ],
+        [
+          4.914907000706187,
+          52.37144332886354
+        ],
+        [
+          4.914927971245365,
+          52.37141833683037
+        ],
+        [
+          4.915128735712848,
+          52.37148411849136
+        ],
+        [
+          4.915106438966088,
+          52.37150955465671
+        ],
+        [
+          4.915426756744142,
+          52.371614459520494
+        ],
+        [
+          4.915270720895915,
+          52.37179278277076
+        ],
+        [
+          4.915303864875416,
+          52.371803646178904
+        ]
+      ]
+    ]
+  }
+}

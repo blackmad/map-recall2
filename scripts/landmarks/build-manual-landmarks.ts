@@ -1,3 +1,5 @@
+import {buildWaag} from './waag-builder';
+import {buildScheepvaartmuseum} from './scheepvaartmuseum-builder';
 import {buildOdessa} from './odessa-builder';
 import {buildHotelJakarta} from './hotel-jakarta-builder';
 import {buildDeNederlandscheBank} from './de-nederlandsche-bank-builder';
@@ -392,7 +394,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='odessa')buildOdessa(w,d,helpers);
+    if(id==='waag')buildWaag(w,d,helpers);
+    else if(id==='scheepvaartmuseum')buildScheepvaartmuseum(w,d,helpers);
+    else if(id==='odessa')buildOdessa(w,d,helpers);
     else if(id==='hotel-jakarta')buildHotelJakarta(w,d,helpers);
     else if(id==='de-nederlandsche-bank')buildDeNederlandscheBank(w,d,helpers);
     else if(id==='chassekerk')buildChassekerk(w,d,helpers);
