@@ -1,5 +1,30 @@
 # Canal Recall — what is built
 
+## Street-survey chunks retired; why the block was black (2026-10-14, night)
+
+Lane `buildings/street-survey-retire-20261013` (user, Singelgracht shot:
+the Nassaukade 318 block-face chunk near-black beside normal extrusions;
+"should we drop all the street survey models… probably?"). Decision: yes.
+`streetSurveyMode` in `ordinaryChunks.ts` is `retired` by default
+(`?streetChunks=1` loads the 22 chunks, `=0` the 19 per-house models);
+nothing loads, so nothing suppresses those pands and they draw as the
+generic city. `street-surveys.html` shows the retired state; the face
+intents stay as recipe-tile input. The cause of the black: no light-aim
+or placement bug (normals, determinant +1.003, sun direction and
+`matrixWorld` all check out). Under the default unlit baked shade the chunk
+is darker than its neighbours (luma 99 vs 134, 4 % near-black) from its
+dark photo-measured tints, glass and slate; under the shared frame (which
+`?recipeTiles=1`, `?ownGround=1` and `?sculptures=1` all force) it
+self-shadows under the Lambert material and the dark tints are lit by sky
+only: 50–59 % of its pixels under luma 60 (5.5 % with shadow casting off).
+The Royal Palace shows the same (36 % near-black in shadow), so this is a
+shadow-fill level for the look lane, not a per-model fix; the CPU ray
+casts find fewer occluders than the screen shows, unexplained. Recipe
+tiles stay behind the flag: they exist only inside the shared frame, which
+is off by default, and the pilot has no tiles for Nassaukade or De
+Clercqstraat; ride perf is within noise in every mode.
+
+
 ## A bridge kit by type (2026-10-14, night)
 
 Lane `ground/bridge-kit-20261013` (user: the canal bridges drew as chunky
