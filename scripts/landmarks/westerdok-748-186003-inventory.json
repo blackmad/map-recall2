@@ -1,0 +1,133 @@
+{
+ "schemaVersion": 1,
+ "id": "westerdok-748-186003",
+ "pand": "0363100012186003",
+ "signature": [
+  "deep-set-square-windows",
+  "stepped-tower-wings"
+ ],
+ "walls": [
+  {
+   "tag": "w01-275",
+   "bearing": 275,
+   "lengthM": 114,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002532_pano_0000_000133",
+   "capturedAt": "2022-04-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "deep-set-square-windows",
+     "kind": "window-shape",
+     "where": "all floors: square windows set deep in the brick wall",
+     "approxSizeM": [
+      40,
+      35
+     ],
+     "plan": "modelled",
+     "how": "punched plain windows with 18 cm reveals on walls[0]-[2]",
+     "seenIn": "TMX7316010203-002532_pano_0000_000133"
+    },
+    {
+     "id": "stepped-tower-wings",
+     "kind": "tower",
+     "where": "tower wings stepping from 3 to 6 to 10 storeys",
+     "approxSizeM": [
+      60,
+      35
+     ],
+     "plan": "modelled",
+     "how": "three height groups from the 3DBAG wall steps (3, 6 and 10 storeys)",
+     "seenIn": "TMX7316010203-002532_pano_0000_000133"
+    },
+    {
+     "id": "passage-arch",
+     "kind": "window-shape",
+     "where": "central passage arch under the tower",
+     "approxSizeM": [
+      5,
+      4
+     ],
+     "plan": "simplified",
+     "how": "plain ground storey; the 3DBAG walls close the passage",
+     "seenIn": "TMX7316010203-002532_pano_0000_000133"
+    }
+   ]
+  },
+  {
+   "tag": "w02-185",
+   "bearing": 185,
+   "lengthM": 85.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000703_pano_0000_001100",
+   "capturedAt": "2018-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "south-tower-grid",
+     "kind": "window-shape",
+     "where": "south front: ten floors of square windows",
+     "approxSizeM": [
+      43,
+      35
+     ],
+     "plan": "modelled",
+     "how": "10-storey brick-bay-grid on walls[3]",
+     "seenIn": "TMX7316010203-000703_pano_0000_001100"
+    }
+   ]
+  },
+  {
+   "tag": "w03-5",
+   "bearing": 5,
+   "lengthM": 46,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000703_pano_0000_000707",
+   "capturedAt": "2018-05-02",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-balcony-stair",
+     "kind": "balcony-ironwork",
+     "where": "north front balcony decks on the base",
+     "approxSizeM": [
+      10,
+      4
+     ],
+     "plan": "simplified",
+     "how": "plain windows in the 10- and 6-storey north groups; no balcony decks",
+     "seenIn": "TMX7316010203-000703_pano_0000_000707"
+    }
+   ]
+  },
+  {
+   "tag": "w04-75",
+   "bearing": 75,
+   "lengthM": 23.8,
+   "evidence": "photo",
+   "panoId": "recording_2025-06-17_09-10-34_01935",
+   "capturedAt": "2025-06-17",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  },
+  {
+   "tag": "w05-75",
+   "bearing": 75,
+   "lengthM": 23.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002620_pano_0007_000079",
+   "capturedAt": "2022-06-22",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
