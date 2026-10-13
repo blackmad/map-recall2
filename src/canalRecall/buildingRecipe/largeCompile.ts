@@ -122,7 +122,19 @@ export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe)
   return group;
 }
 
-export function compileLargeBuilding(intent: LargeBuildingIntent, facts: BuildingFacts): CompiledLargeBuilding {
+/**
+ * Hooks for a bespoke builder that drives the large tier and adds hand-modelled parts of its own: `panelHook` runs after
+ * the standard components on every panel (with the wall group fit, if any), `afterCompose` once on the finished mesh
+ * (same slots, new parts must attach to the host like any block-kit part). Both default to nothing: output unchanged.
+ */
+export interface LargeCompileHooks {
+  panelHook?: (c: PanelCtx, info: {levels: number[]; cells: Cell[]}, group: LargeGroupFit | undefined) => void;
+  afterCompose?: (mesh: MeshBuilder, recipe: LargeBuildingRecipe, panels: Panel[]) => void;
+  /** triangle budget for the block-kit gate (default 12000, the large-tier budget) */
+  budget?: number;
+}
+
+export function compileLargeBuilding(intent: LargeBuildingIntent, facts: BuildingFacts, hooks: LargeCompileHooks = {}): CompiledLargeBuilding {
   const {recipe, report} = fitLarge(intent, facts);
   const groupOf = (index: number) => recipe.groups[recipe.panelGroup[index]];
   const counts: LargeComponentCounts = {entrances: 0, halls: 0, canopies: 0, garageDoors: 0, letters: 0, cornices: 0, fascias: 0, policeStripes: 0, lamps: 0, roofPlant: recipe.roofPlant.length};
@@ -136,9 +148,10 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, facts: Buildin
       if (g.entrance?.panel === p.index && bay === g.entrance.bay && floor < g.entrance.storeys) return true;
       return !!(g.garage?.panel === p.index && floor === 0 && g.garage.bays.includes(bay));
     },
-    panelHook: (c, info) => decorate(c, info, groupOf(c.p.index), counts),
+    panelHook: (c, info) => { decorate(c, info, groupOf(c.p.index), counts); hooks.panelHook?.(c, info, groupOf(c.p.index)); },
   });
   drawRoofBoxes(res.mesh, recipe.roofPlant, 'plant');
-  const blockGates = runGates(res.mesh, recipe.set, {budget: 12000});
+  hooks.afterCompose?.(res.mesh, recipe, res.panels);
+  const blockGates = runGates(res.mesh, recipe.set, {budget: hooks.budget ?? 12000});
   return {kind: 'large', group: largeMeshToGroup(res.mesh, recipe), recipe, fit: report, anchorRD: recipe.anchorRD, facts, stats: res.stats, components: counts, blockGates, panels: res.panels};
 }
