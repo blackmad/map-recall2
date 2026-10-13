@@ -513,11 +513,14 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 - Facade comparison now crops to the photo's span (alongM/heightM), skips
   null bands and counts ribbon glazing as one opening (2026-10-11): failing
   checks 45 -> 24 over the 7 newly released landmarks. Real model gaps it
-  found (fix lane running): Maarten Lutherkerk third door glazing narrower
-  than the other two; Oudemanhuispoort missing a house door and one window
-  column; Pakhuis de Zwijger east face lacks the small ground windows;
-  Krasnapolsky modern wing has small paired windows where the photo shows
-  wide stone-framed glazing. Metric limits still open: gable peaks count
+  found, fixed 2026-10-13: Maarten Lutherkerk (door stile lost in the
+  raster; east front now passes), Pakhuis de Zwijger (east ground slits;
+  warm ochre brick #b69468 in a light concrete frame after the user asked
+  "is this building really this dark?"). Krasnapolsky re-held after the
+  user's "some incorrect windows": wing and old front are regular grids
+  now, but the red-brick middle, Dam-front rows and three blank 3DBAG
+  sides remain. Oudemanhuispoort and Petrus en Paulus are being redone by
+  another session. Metric limits still open: gable peaks count
   roof steps/plateaus as peaks (DNB podium), row clustering splits
   staggered stair windows (Petrus en Paulus), counters count panes in tall
   strips (Pakhuis north).
