@@ -11,7 +11,7 @@ import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHe
 import { bandCoverage, DE_CLERCQSTRAAT } from './roadRegressions';
 import { crossSection, parseMetres, areaKind } from './osmGround';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
-import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, LIFT } from './streets';
+import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, shadowedWays, LIFT } from './streets';
 import { buildWaterMask, maskDistance, quayWallMesh, waterSurfaceMesh, waterZAt } from './water';
 import { DECK_TOP_LIFT, FRAME, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, movableFrame, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
@@ -411,6 +411,26 @@ test('junctions: one fill from the incoming cross-sections; lanes, paint and pat
   // A one-way fietsstraat has no centre line.
   assert.ok(!crossSection({ highway: 'residential', lanes: '2', cyclestreet: 'yes' })!.paint.some(p => p.offset === 0));
   assert.ok(crossSection({ highway: 'residential', lanes: '2' })!.paint.some(p => p.offset === 0));
+});
+
+test('a short carriageway lying inside a wider one draws nothing; cycle slivers left by a junction cut are dropped', () => {
+  const flat = () => 0;
+  const ll = (p: Vec2): [number, number] => p as [number, number];
+  const ways = prepareWays([
+    { id: 1, tags: { highway: 'primary', lanes: '4' }, g: [[-60, 0], [0, 0], [60, 0]] },
+    { id: 2, tags: { highway: 'residential', sidewalk: 'both' }, g: [[0, 0], [0, 60]] },
+    // De Clercqstraat's 13 m stub, mapped through the Rozengracht asphalt: klinker, 2.4 m wide, inside the wider road.
+    { id: 3, tags: { highway: 'residential', oneway: 'yes' }, g: [[-13, 0.5], [0, 0.5]] },
+    // A 12 m cycleway across a junction: the road's half-width cut either side leaves slivers under 3 m.
+    { id: 4, tags: { highway: 'cycleway' }, g: [[-6, 8], [0, 8], [6, 8]] },
+    { id: 5, tags: { highway: 'primary', lanes: '2' }, g: [[0, 8], [0, 50]] },
+    { id: 6, tags: { highway: 'primary', lanes: '2' }, g: [[-60, 8], [0, 8]] },
+    { id: 7, tags: { highway: 'primary', lanes: '2' }, g: [[0, 8], [60, 8]] },
+  ], p => ll(p as Vec2));
+  assert.deepEqual([...shadowedWays(ways)], [3], 'only the stub is a duplicate of the wider road');
+  const s = buildStreets(ways, flat);
+  assert.equal(faces(s.klinker).filter(f => f.c[0] < -3 && Math.abs(f.c[1] - 0.5) < 1.5).length, 0, 'no brown parallelogram on the asphalt');
+  assert.equal(faces(s.cycle).filter(f => Math.abs(f.c[0]) < 6 && Math.abs(f.c[1] - 8) < 2).length, 0, 'no red sliver between the cuts');
 });
 
 test('prior sidewalks are dropped where another mapped way lies (split carriageways, separate cycle paths)', () => {
