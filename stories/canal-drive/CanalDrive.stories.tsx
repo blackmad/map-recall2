@@ -27,6 +27,9 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   | 'stacked-notices-touch' | 'neighborhood-fallback-touch'
   // Aboard a cycling IJ ferry: the departure/destination notice under the plaque.
   | 'hud-ferry' | 'touch-hud-ferry'
+  // Desktop utilities: tucked a few seconds into the ride, and back after a
+  // mouse wiggle (with the destination card's hover-only "% new" badge).
+  | 'hud-idle' | 'hud-wiggle'
 ;
 
 function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
@@ -114,7 +117,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       win.localStorage.setItem('mapRecall_reviewEvents_v1', JSON.stringify(events));
       doc.getElementById('knowledge-button')?.click();
     }
-    if (scenario === 'hud' || scenario === 'hud-ferry' || scenario === 'neighborhood' || scenario === 'neighborhood-fallback'
+    if (scenario === 'hud' || scenario === 'hud-idle' || scenario === 'hud-wiggle' || scenario === 'hud-ferry' || scenario === 'neighborhood' || scenario === 'neighborhood-fallback'
       || scenario === 'stacked-notices' || scenario === 'stacked-notices-touch'
       || scenario === 'neighborhood-fallback-touch'
       || scenario.startsWith('finish')
@@ -341,7 +344,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           frameMath.random = random;
           return;
         }
-        if (scenario === 'hud' || scenario === 'hud-ferry' || scenario.startsWith('touch-hud')) {
+        if (scenario === 'hud' || scenario === 'hud-idle' || scenario === 'hud-wiggle' || scenario === 'hud-ferry' || scenario.startsWith('touch-hud')) {
           const ferry = scenario.endsWith('-ferry');
           const asking = scenario === 'touch-hud-question' || ferry;
           const long = scenario === 'touch-hud-long';
@@ -366,6 +369,17 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
             restrictionNote: long ? 'No cycling here in real life' : '',
             destination: merged ? { name: destinationName, distancePx: 1860, arrowAngle: -Math.PI / 3 } : null,
           });
+          // Desktop idle: the corner cluster fades out. The game loop only
+          // tucks while racing, so the story applies the same rule directly.
+          if (scenario === 'hud-idle') {
+            const style = doc.createElement('style');
+            style.textContent = '#utility-buttons > * { opacity: 0 !important; pointer-events: none; }';
+            doc.head.appendChild(style);
+          }
+          if (scenario === 'hud-wiggle') {
+            const d = game.hud.layout?.destination;
+            if (d) game.hud.hoverPoint = { x: d.x + 20, y: d.y + 20 };
+          }
           if (!merged) game.hud.drawDestination(ctx, destinationName, 1860, 0.42, -Math.PI / 3);
           game.hud.drawCompass(ctx, game.camera);
           game.hud.drawCityOverview(ctx, game);
@@ -456,6 +470,10 @@ export const TransitBriefingPhone: Story = {
 };
 export const LiveHud: Story = { args: { scenario: 'hud' } };
 /** Aboard an IJ ferry: the notice names the departure and the pier to dock at. */
+/** Desktop, a few seconds into the ride: Feedback, settings, help and the build stamp are gone. */
+export const LiveHudIdle: Story = { args: { scenario: 'hud-idle' } };
+/** Desktop after a mouse wiggle: the corner cluster is back and the destination card shows "% new" on hover. */
+export const LiveHudWiggle: Story = { args: { scenario: 'hud-wiggle' } };
 export const LiveHudFerry: Story = { args: { scenario: 'hud-ferry' } };
 export const FinishCard: Story = { args: { scenario: 'finish' } };
 /** Every block at once; the card must still fit a laptop screen. */
