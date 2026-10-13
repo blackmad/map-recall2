@@ -391,16 +391,23 @@ export const UNKNOWN_ROOF_HEX = '#7A756E';
 // Material slots (recipe GLBs, landmark GLBs, compiled tiles)
 // ---------------------------------------------------------------------------
 
-export type MaterialSlot = 'brick' | 'stucco' | 'accent' | 'stone' | 'frame' | 'door' | 'glass' | 'roofTile' | 'slate' | 'bitumen';
-export const MATERIAL_SLOTS: readonly MaterialSlot[] = ['brick', 'stucco', 'accent', 'stone', 'frame', 'door', 'glass', 'roofTile', 'slate', 'bitumen'];
+/**
+ * `paint`: a flat authored colour with no grain (metals, signage, painted
+ * trims, decals on landmark GLBs). Added 2026-10-13 for the legacy landmark
+ * slot inference (look/materialSlotInference.ts): gold, bronze, copper and the
+ * coloured paints have no brick/stone/roof cell, but should still answer to
+ * the shared atlas and light instead of a private material.
+ */
+export type MaterialSlot = 'brick' | 'stucco' | 'accent' | 'stone' | 'frame' | 'door' | 'glass' | 'roofTile' | 'slate' | 'bitumen' | 'paint';
+export const MATERIAL_SLOTS: readonly MaterialSlot[] = ['brick', 'stucco', 'accent', 'stone', 'frame', 'door', 'glass', 'roofTile', 'slate', 'bitumen', 'paint'];
 
 /** Which painted texture cell a slot samples. */
 export type SlotCell = 'brick' | 'stucco' | 'stone' | 'frame' | 'door' | 'glass' | 'tile' | 'slate' | 'flat';
 export const SLOT_CELL: Readonly<Record<MaterialSlot, SlotCell>> = {
-  brick: 'brick', accent: 'brick', stucco: 'stucco', stone: 'stone', frame: 'frame', door: 'door', glass: 'glass', roofTile: 'tile', slate: 'slate', bitumen: 'flat',
+  brick: 'brick', accent: 'brick', stucco: 'stucco', stone: 'stone', frame: 'frame', door: 'door', glass: 'glass', roofTile: 'tile', slate: 'slate', bitumen: 'flat', paint: 'frame',
 };
 /** Texture repeat per slot in metres (UVs are metres; glass UVs are 0..1 per pane). */
-export const SLOT_TILE_M: Readonly<Record<MaterialSlot, number>> = { brick: 3.36, stucco: 2.4, accent: 3.36, stone: 1.28, frame: 1, door: 1, glass: 1, roofTile: 1.2, slate: 1.2, bitumen: 1.2 };
+export const SLOT_TILE_M: Readonly<Record<MaterialSlot, number>> = { brick: 3.36, stucco: 2.4, accent: 3.36, stone: 1.28, frame: 1, door: 1, glass: 1, roofTile: 1.2, slate: 1.2, bitumen: 1.2, paint: 1 };
 
 /** Lightness range of the city's brick tints (priorBrickDark #6a3b2e .. buff #c49a5c). */
 export const CITY_BRICK_LIGHTNESS = [0.3, 0.6] as const;
@@ -469,6 +476,8 @@ export function cityTint(slot: MaterialSlot, hex: string): string {
     case 'frame': return cityFrameTint(hex);
     case 'door': return cityDoorTint(hex);
     case 'glass': return '#ffffff';
+    // Metals, signage and coloured paint keep the authored colour (it is the identity of the thing).
+    case 'paint': return hex.startsWith('#') ? hex.toLowerCase() : '#' + hex.toLowerCase();
     default: return cityRoofTint(slot, hex);
   }
 }

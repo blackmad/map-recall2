@@ -23,14 +23,24 @@ import { normaliseLandmarkMaterials } from '../landmarks/landmarkShading.js';
 import { buildLookTextures, VERTEX as FACADE_VERTEX, FRAGMENT as FACADE_FRAGMENT } from '../threeBuildingsBrowser.js';
 import { bayLayer } from '../bayLook.js';
 import { wallShade } from '../threeBuildingMesh.js';
-import { LOOK_VARIANTS, hexToRgb } from './palette.js';
+import { LOOK_VARIANTS, cityTint, hexToRgb } from './palette.js';
+import { createCityLook, createCityLookMaterial, createCityUniforms, paintSlotLayers } from './cityLook.js';
 import { faceNormal, lumaSpread, meanLuma, PARITY_FACES, type ParityFace, type ParityResult } from './lookParityMath.js';
 
 export { lumaSpread, PARITY_FACES };
 export type { ParityFace, ParityResult };
 
-export type ParityPipeline = 'generic' | 'recipe' | 'landmark' | 'generic-unlit' | 'recipe-unlit';
+export type ParityPipeline = 'generic' | 'recipe' | 'landmark' | 'generic-unlit' | 'recipe-unlit'
+  | 'city-generic' | 'city-recipe' | 'city-landmark' | 'city-generic-unlit' | 'city-recipe-unlit' | 'city-landmark-unlit';
 export const SHARED_PIPELINES: readonly ParityPipeline[] = ['generic', 'recipe', 'landmark'];
+/**
+ * `?cityLook=1` (look/cityLook.ts): the same three pipelines through the one
+ * city-look shader and one texture array. The landmark is an untagged GLB
+ * material named `brick` with no UVs, as every legacy landmark is: its slot is
+ * inferred and its UVs box-projected, exactly the game path.
+ */
+export const CITY_PIPELINES: readonly ParityPipeline[] = ['city-generic', 'city-recipe', 'city-landmark'];
+export const CITY_UNLIT_PIPELINES: readonly ParityPipeline[] = ['city-generic-unlit', 'city-recipe-unlit', 'city-landmark-unlit'];
 
 const SIZE = 96;
 const WALL_M = 10;
@@ -77,9 +87,19 @@ export async function runLookParity(options: ParityOptions = {}): Promise<Parity
   }
   const cells = await buildLookTextures(THREE, 'photo', 1);
   const plainLayer = bayLayer('canal', 0, 'plain');
-  const recipeLit = createRecipeLook(THREE, { brick, lit: true, anisotropy: 1 });
-  const recipeUnlit = createRecipeLook(THREE, { brick, lit: false, anisotropy: 1 });
+  const recipeLit = createRecipeLook(THREE, { brick, lit: true, anisotropy: 1, cityLook: false });
+  const recipeUnlit = createRecipeLook(THREE, { brick, lit: false, anisotropy: 1, cityLook: false });
   recipeUnlit.enuFromWorld.value.identity();
+  // City look: the facades' photo array with the slot layers appended, bound for slot meshes too (shared frame: one texture).
+  const wantsCity = pipelines.some(p => p.startsWith('city-'));
+  const city = wantsCity ? createCityLook(THREE, { brick, size: 256, anisotropy: 1 }) : null;
+  let cityCells: { colour: any; mask: any; slotBase: number } | null = null;
+  if (city) {
+    await city.ready;
+    cityCells = await buildLookTextures(THREE, 'photo', 1, 256, { slotLayers: paintSlotLayers(document, brick, 256) });
+    city.bindAtlas(cityCells);
+    city.uniforms.enuFromWorld.value.identity();
+  }
 
   const out: ParityResult = { hex, rig: { ...DEFAULT_LIGHT_RIG, shadows: false }, walls: {} };
   const pixels = new Uint8Array(SIZE * SIZE * 4);
@@ -107,6 +127,32 @@ export async function runLookParity(options: ParityOptions = {}): Promise<Parity
         source.userData = { materialSlot: 'brick', tint: hex };
         mesh = new THREE.Mesh(wallGeometry(normal, WALL_M), source);
         (pipeline === 'recipe' ? recipeLit : recipeUnlit).apply(mesh);
+      } else if (pipeline === 'city-generic' || pipeline === 'city-generic-unlit') {
+        // Generic extrusion in the city look: the plain bay cell, with the tint the city gives this brick.
+        const g = wallGeometry(normal, 1);
+        const uv = g.getAttribute('uv') as THREE.BufferAttribute;
+        for (let i = 0; i < uv.count; i++) uv.setXY(i, uv.getX(i) * WALL_M / 5, uv.getY(i) * WALL_M / 3.2);
+        facadeAttributes(g, cityTint('brick', hex), plainLayer, wallShade(normal[0], normal[1]));
+        const lit = pipeline === 'city-generic';
+        const material = createCityLookMaterial(THREE, { lit, kind: 'chunk' }, createCityUniforms(THREE, {
+          cells: { value: cityCells!.colour }, masks: { value: cityCells!.mask }, wallGain: { value: LOOK_VARIANTS.photo.litWallGain } }));
+        mesh = new THREE.Mesh(g, material);
+      } else if (pipeline === 'city-recipe' || pipeline === 'city-recipe-unlit') {
+        // Recipe GLB in the city look: UVs in metres, `materialSlot: brick`.
+        const source = new THREE.MeshStandardMaterial({ color: hex });
+        source.userData = { materialSlot: 'brick', tint: hex };
+        mesh = new THREE.Mesh(wallGeometry(normal, WALL_M), source);
+        city!.dress(mesh, { lit: pipeline === 'city-recipe' });
+      } else if (pipeline === 'city-landmark' || pipeline === 'city-landmark-unlit') {
+        // Legacy landmark GLB in the city look: glTF Y-up, no UVs, a material named for its palette entry; placed Z-up.
+        const g = wallGeometry(normal, 1);
+        g.deleteAttribute('uv');
+        g.rotateX(-Math.PI / 2);
+        const source = new THREE.MeshStandardMaterial({ color: hex, roughness: 0.9, metalness: 0 });
+        source.name = 'brick';
+        mesh = new THREE.Mesh(g, source);
+        mesh.rotation.x = Math.PI / 2;
+        city!.dress(mesh, { lit: pipeline === 'city-landmark', infer: true });
       } else {
         // Landmark GLB: flat authored colour, normalised to diffuse-only like the game does.
         mesh = new THREE.Mesh(wallGeometry(normal, 1), new THREE.MeshStandardMaterial({ color: hex, roughness: 0.9, metalness: 0 }));
