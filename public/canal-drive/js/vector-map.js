@@ -92,6 +92,9 @@ class VectorBasemap {
     this._sharedFrameEnabled = canalRecallLookFlag('sharedFrame', '__canalRecallSharedFrame', SHARED_FRAME_DEFAULT);
     this._ownGroundEnabled = canalRecallLookFlag('ownGround', '__canalRecallOwnGround', OWN_GROUND_DEFAULT);
     if (this._ownGroundEnabled) this._sharedFrameEnabled = true;
+    // ?recipeTiles=1: the recipe-tile near tier (src/canalRecall/tileBuildings/) is a shared-frame participant.
+    this._recipeTilesEnabled = canalRecallLookFlag('recipeTiles', '__canalRecallRecipeTiles', false);
+    if (this._recipeTilesEnabled) this._sharedFrameEnabled = true;
     this._ownGround = null;
     this._sharedFrame = null;
     this._elevation = null;
@@ -229,6 +232,7 @@ class VectorBasemap {
         if (PlayerTransit3D) this._playerTransit = new PlayerTransit3D(this.map, maplibregl);
       }
       this.ready = true;
+      if (this._recipeTilesEnabled) void this._ensureRecipeTiles();
       // Own ground retires the stencil elevation layer: one ground, one water.
       if (this._ownGroundEnabled) void this._ensureOwnGround();
       else if (this._elevationEnabled) void this._ensureElevation();
@@ -1980,6 +1984,14 @@ class VectorBasemap {
    * adapter below (repaint, hiding the basemap's ground), so the ground itself
    * never touches the map and survives a camera/renderer swap.
    */
+  /** `?recipeTiles=1`: load js/tile-buildings.bundle.js on demand; it wires itself (tileBuildings/browser.ts). */
+  async _ensureRecipeTiles() {
+    try {
+      if (!window.CanalRecallTileBuildings) await new Promise((resolve, reject) => { const s = document.createElement('script'); s.src = 'js/tile-buildings.bundle.js'; s.onload = resolve; s.onerror = reject; document.head.appendChild(s); });
+      this._tileBuildings = await window.CanalRecallTileBuildings.mountRecipeTiles(this);
+    } catch (error) { console.warn('Recipe tiles unavailable; the legacy loaders keep drawing.', error); }
+  }
+
   async _ensureOwnGround() {
     if (this._ownGround || this._ownGroundLoading || !this.map) return;
     this._ownGroundLoading = true;
@@ -2226,7 +2238,9 @@ class VectorBasemap {
     };
     const signature = this._signatureLandmarks?.inspectAtScreen?.(pixel.x, pixel.y, mapCanvas.clientWidth, mapCanvas.clientHeight);
     const generic = this._threeBuildings?.inspectAtScreen?.(pixel.x, pixel.y, mapCanvas.clientWidth, mapCanvas.clientHeight);
-    const surface = signature && (!generic || signature.depth < generic.depth) ? signature : generic;
+    let surface = signature && (!generic || signature.depth < generic.depth) ? signature : generic;
+    const tiles = this._tileBuildings?.inspectAtScreen(pixel.x, pixel.y, mapCanvas.clientWidth, mapCanvas.clientHeight);
+    if (tiles && (!surface || tiles.depth < surface.depth)) surface = tiles;
     // Curated POIs must win over the much larger building extrusion under the
     // pointer. The hit box is forgiving because dots are intentionally small.
     let poiResult = null;
@@ -2488,6 +2502,7 @@ class VectorBasemap {
       kitAnswerIds = new Set(this._highlightedBuildings.map(target => String(target.id)));
     }
     if (this._threeBuildings) this._threeBuildings.setHighlighted(threeHighlight);
+    this._tileBuildings?.setHighlighted(threeHighlight);
     this._setKitAnswerIds(kitAnswerIds);
     // Never fabricate an extrusion from an OSM footprint. If no renderer can
     // identify the actual building, a point acknowledges the selection without

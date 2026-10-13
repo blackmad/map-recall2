@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "politie-postjesweg",
+  "pandId": "0363100012092810",
+  "address": "Politiebureau Postjesweg, Postjesweg 179B, Amsterdam (2004)",
+  "sources": [
+    {"id": "pano-2019-12-18-north", "kind": "street-panorama", "capturedAt": "2019-12-18", "image": "staging/pand-reference-walls/0363100012092810/w04-359.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001523_pano_0000_001127/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+    {"id": "pano-2019-07-12-south", "kind": "street-panorama", "capturedAt": "2019-07-12", "image": "staging/pand-reference-walls/0363100012092810/w03-179.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001310_pano_0000_002947/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+    {"id": "pano-2022-12-07-west", "kind": "street-panorama", "capturedAt": "2022-12-07", "image": "staging/pand-reference-walls/0363100012092810/w02-269.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002834_pano_0011_000033/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+    {"id": "pano-2025-10-01-east", "kind": "street-panorama", "capturedAt": "2025-10-01", "image": "staging/pand-reference-walls/0363100012092810/w01-89.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_01_11_49_16_00432/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
+  ],
+  "walls": [
+    {"wallSurfaces": [28], "system": "brick-bay-grid", "storeys": 3, "baysPerStorey": 6, "ground": "system", "windows": "plain", "entrance": {"bay": 0, "storeys": 1}, "garageDoors": 3, "signage": {"text": "POLITIE", "colour": "#2a4a9a", "mount": "wall"}, "police": {"lamp": true}},
+    {"wallSurfaces": [2], "system": "ribbon-windows", "storeys": 3, "baysPerStorey": 6, "ground": "system", "windows": "plain"},
+    {"wallSurfaces": [1], "system": "ribbon-windows", "storeys": 3, "baysPerStorey": 6, "ground": "system", "windows": "plain"},
+    {"wallSurfaces": [12, 29], "system": "ribbon-windows", "storeys": 3, "baysPerStorey": 6, "ground": "system", "windows": "plain"}
+  ],
+  "otherWalls": "blank",
+  "roof": {"material": "bitumen"},
+  "palette": {"brick": "#9a3b28", "frame": "#4a5256", "door": "#5a6066", "stone": "#9aa0a0", "wallMaterial": "stucco"},
+  "notes": [
+    "2004 police bureau, a two-floor red-brick block with a curved roof edge (the whole pand: 24 m x 22 m, 11.4 m eaves, small 13.2 m rooftop volumes). North front (Postjesweg side, 2019-12-18, w04-359, 11.5 m): red brick, a row of seven grey-framed windows on the first floor, small windows above, a curved glazed ribbon at the upper right, three grey roller vehicle doors on the right of the ground floor, a glazed bay at the left. South wall (2019-07-12, w03-179): red brick, a long curved glazed ribbon on the second floor, a row of small windows, a plain ground floor with vertical brick grooves.",
+    "Ornaments from the north panorama: POLITIE in blue capitals with a gold flame emblem on the wall at the upper left (letters MODELLED as wall signage over the left entrance bay: left position as in the photo but about 3 m lower (the kit puts wall lettering just above the entrance, the photo has it at first-floor height); the flame emblem SKIPPED: a 0.4 m two-colour decal, below the attachment grain and carried by the letters' colour); blue diamond police sign on the wall at the left (SIMPLIFIED as the kit blue lamp by the entrance: a box not a diamond); three roller vehicle doors (MODELLED, garageDoors 3); glazed ground bay at the left (MODELLED as the entrance); curved glazed ribbon (SIMPLIFIED: flat ribbon windows because 3DBAG walls are straight); wall floodlights, flagpole, antenna (SKIPPED: slender fixtures that move between captures); no striped band, canopy or crest.",
+    "West (2022-12-07 w02-269, oblique 32 deg and hidden behind a shop) and east (2025-10-01 w01-89, oblique 45 deg, mosque in front) walls are INFERRED from the north and south walls (same brick and ribbon language); rooftop volumes are left to otherWalls (blank)."
+  ]
+}

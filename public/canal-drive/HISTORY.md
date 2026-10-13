@@ -1,5 +1,68 @@
 # Canal Recall — what is built
 
+## Police bureaus, pass 2: twelve more bureaus as large recipes (2026-10-13)
+
+Lane `landmarks/police-bureaus-2-20261013` (Sonnet). All through the
+existing components (`entrance`, `canopy`, `signage`, `garageDoors`,
+`police.lamp`, `piers`), no bespoke builder, `test:block-kit-installed`
+identical. Installed as `ordinary-<pand>`: Lijnbaansgracht 3,250 tris,
+Nieuwezijds Voorburgwal 2,425 (POLITIE on the hall glazing, canopy, garage
+door), Zuid-De Pijp 840 (wall lettering, lamp), IJ-tunnel 2,442 (shared fire
+station: red BRANDWEER fascia, 8 garage doors), Houtmankade 2,999, Oost
+Watergraafsmeer 5,800 (gold POLITIE letters, roller door, lamp), Postjesweg
+2,113 (letters, 3 roller doors, lamp), Meer en Vaart 1,710, Flierbosdreef
+869, Boven-IJ 1,525, Politiepost IJburg 3,227 (gate portal; shares its pand
+with housing, whole block modelled), Johan Huizingalaan 757 6,839 (1959
+frame building; the unit is identified by BAG and the OSM label only). Every
+`audit:glb` PASS. Two 3DBAG seams (Flierbosdreef surface 105, Huizingalaan
+242, 13–14 m open roof edge in the bare shell) closed by giving the wall its
+own `system: blank` group. Ornament lists per bureau are in each
+`intent.json` notes (modelled / simplified / skipped with reason). The
+integrator added five OSM ways under the Zuid-De Pijp pand to its aliases
+and suppress so `check:osm-under-models` stays at 0, rebuilt covers and the
+signature bundle. `fit-golden` 54 identical. Panoramas CC BY 4.0, BAG, 3DBAG.
+
+
+## Migration step 3 behind `?recipeTiles=1`: recipe tiles, compiler, `TileBuildings` near tier (2026-10-13)
+
+Lane `tiles/recipe-tiles-20261013` (Opus). **Schema**
+(`src/canalRecall/tileBuildings/{schema,tiles,writeTile}.ts`, reasons in
+`docs/buildings-pipeline.md` "Recipe tiles"): z14 recipe tiles
+`{version, z, x, y, sources, pands: {<pand> | "m:<specId>": PandRecipe}}`,
+`PandRecipe = {kind: canal-house|type|large|kit|glb, intent | sameAs,
+overrides?, fitted?, mid, covers[], mesh}`, intents `face:<id>/<i>`,
+`house:<id>`, `type:<unit>`, `kit:<id>`, `model:<specId>`; `mid` is 11 ints
+(the bag-facts 7 plus bays, wall, gable, shop); `sameAs` one hop, same
+kind. z16 mesh tiles: one `uniques` primitive per tile with `_LAYER` u8,
+`_TINT` u8x4 and per-pand `pandRanges`, one `unit:<hash>` node per
+instanced unit (EXT_mesh_gpu_instancing, TRS + float32 `_PAND`), root
+extras `recipeTile = {pands, covers, specs, units, names}`; units keyed by a
+slot-level content hash (positions 1 mm, normals 1e-3). **Compiler**
+`scripts/building-tiles/compile-recipes.ts` (`--stage=recipes|mesh|assemble|
+all|review`; review emits a page only for pands whose triangle hash or gate
+numbers changed — the integrator used it on this merge: 10 changed pands,
+all large recipes and the Hoofdbureau, as main's `sealSlivers`/`closedBoxes`
+and the relief predict). **Runtime** `TileBuildings` behind `?recipeTiles=1`
+(forces the shared frame), 16 lines in `vector-map.js`, picking through
+`inspectBuilding`, highlight of instanced pands as a separate mesh. **Pilot
+numbers**: 3,151 pands, 66 z16 tiles, mesh 5.0 MB + units 4.7 MB, 1.44 M
+triangles drawn, 168 draws, 0 failed pands; 13 of 15 Bilderdijkstraat chunks
+byte-identical to the installed ones. Desktop ride Anne Frank → Rijksmuseum:
+map render 2.61 → 2.35 ms mean (p95 3.6 → 3.1), three layers 1.07 → 0.99 ms,
+draw calls 439 → 430, heap 639 → 601 MB; static spots within ±0.7 ms, draw
+calls at Bilderdijkstraat 301 → 144. iPhone 4× ride 7.11 → 6.73 ms. Pixel
+diffs off → on 0.7–45% (Nieuw-West: BAG blocks replaced by types; Dam: Palace
+shading; Rijksmuseum: brick now has UVs); inspected, nothing missing. Found
+and fixed: gltf-transform `prune()` dropped `TEXCOORD_0` from converted units
+(flat roofs, Palace shading) — units pruned with `keepAttributes`. Slot-level
+instancing found 0 repeats (fitted widths differ by centimetres). Tests: 18
+unit incl. a compiler golden (`pilot-golden.json`, updated by the integrator
+for the Hoofdbureau relief), `tests/e2e/recipe-tiles.spec.ts` off/on/types.
+Integrator: `tile-buildings.bundle.js` (34 KB), `test:tile-buildings` in
+`check:canal`, `build:canal-tile-buildings`, `build:recipe-tiles`, pilots
+recompiled from main and published to `public/canal-drive/recipe-tiles/`.
+
+
 ## Hoofdbureau van Politie: ribbon fronts and the corner relief (2026-10-13)
 
 User report with a photo of the Marnixstraat/Elandsgracht corner: the model had

@@ -144,6 +144,7 @@ import {buildKeithHaringMural} from './keith-haring-mural-builder';
 import {buildMountainNetwork} from './mountain-network-builder';
 import {buildW139} from './w139-builder';
 import {refreshModelDates} from './model-dates';
+import {assertInventoryForExport} from './landmark-inventory-gate';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import * as T from 'three';
@@ -437,6 +438,8 @@ if (process.argv.some(arg => arg === '--only' || arg.startsWith('--only=')) && !
 for (const id of selectedIds) if (!MANUAL_LANDMARKS.some(model => model.id === id)) throw new Error(`Unknown manual landmark: ${id}`);
 for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || selectedIds.includes(model.id))){
   const id=spec.id;
+  // Signature-inventory gate (landmark-inventory-gate.ts): a landmark first exported after 2026-10-13 needs a resolved scripts/landmarks/<id>-inventory.json.
+  assertInventoryForExport(id);
   parts=[];
   if(id==='centraal-station'){station();buildCentraalComplex(helpers);}
   else if(id==='muziekgebouw-bimhuis')music();

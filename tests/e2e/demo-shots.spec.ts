@@ -40,6 +40,11 @@ const SPOTS: Spot[] = [
   { name: 'street-dam-default', centre: [4.8926, 52.3731], standDeg: 180, standM: 60, view: 'cockpit' },
   { name: 'kattenburg-quadrangle', centre: [4.9099367, 52.3645834], standDeg: 160, standM: 110 },
   { name: 'street-heinekenplein-block', centre: [4.8924996, 52.3575303], standDeg: 95, standM: 60, view: 'cockpit' },
+  { name: 'bilderdijk-recipe-tiles', centre: [4.8705, 52.3688], standDeg: 250, standM: 70, query: '?sharedFrame=1&recipeTiles=1' },
+  { name: 'bilderdijk-legacy', centre: [4.8705, 52.3688], standDeg: 250, standM: 70, query: '?sharedFrame=1' },
+  { name: 'street-politie-nz-voorburgwal', centre: [4.8944721, 52.3764406], standDeg: 179, standM: 45, view: 'cockpit' },
+  { name: 'street-politie-watergraafsmeer', centre: [4.9272823, 52.3575278], standDeg: 69, standM: 45, view: 'cockpit' },
+  { name: 'street-politie-postjesweg', centre: [4.8387086, 52.363678], standDeg: 135, standM: 45, view: 'cockpit' },
 ];
 
 const OUT = process.env.DEMO_OUT ?? 'artifacts/demo';
