@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## A stopped boat turns on the spot promptly (2026-10-13)
+
+User: "boat needs to be able to do a stopped turn when up against a wall
+faster, it's annoying when it gets stuck". With no way on, boat steering was
+floored at 0.28 of its turn rate (~0.48 rad/s, ~6.5 s for a half-turn), and
+nosed into a quay the boat has no way on: the quay guard rolls position back
+every frame but never heading, so the standstill floor was the whole story.
+`BOAT_MIN_STEER_FACTOR` (constants.js) is now 0.8, ~1.37 rad/s and a ~2.3 s
+half-turn. It only changes behaviour below 16 px/s, where the speed factor
+ramps to full, so handling under way is unchanged. Pinned by
+`tests/e2e/boat-stopped-turn.spec.ts` (one second of full lock at rest must
+turn more than 1.2 rad; the old floor gave ~0.48).
+
 ## Questions block again; the budget stays; bridge names leave medium (2026-10-13)
 
 User: "the non-blocking questions were a bad idea, questions should be
