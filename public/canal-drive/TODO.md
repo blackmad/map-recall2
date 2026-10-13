@@ -694,7 +694,11 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   28 buried openings; 0 % material slots), `academie-theater-dans` (607
   hole loops, a 2,913 m² detached part, z-fight 64 m²), `booking-hq`
   (z-fight 2.8 m², window rhythm, buried 3 > baseline 2). Fix in their
-  builders or hold them (`status: held`) until fixed. Also: the Dam
+  builders or hold them (`status: held`) until fixed. `hoofdbureau-elandsgracht`
+  is fixed (rework, 2026-10-13 evening). `check-manual-landmarks` passes
+  again (free-standing kinds admitted) but allow-lists `mountain-network`
+  (649 KB, 47k tris) and `royal-palace` (637 KB) over the 500 KB / 40k
+  budget: shrink them in their builders and drop them from `OVERSIZE_IDS`. Also: the Dam
   look-consistency shot shows red pitched roofs right of the Palace turning
   into flat grey lids after the sun/mood merge (cause not found; compare
   against freshly built bundles).
@@ -1202,6 +1206,19 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+- **Memorial figures are blocks** (2026-10-13): Rembrandtmonument and
+  Vondelmonument carry coarse blocky figures with no inscriptions or
+  attributes (lyre, mask), no carved post ornament, no terrace steps or
+  lawn at the Rembrandt; the sculpture splat/impostor track (TODO) or a
+  hand pass should take them. Begijnhof court houses and a fifth queue item
+  (Nationaal monument Slavernijverleden or the Wilhelmina statue) are not
+  started.
+- **Hoofdbureau leftovers** (2026-10-13): no columns on the w22 return;
+  the w15 glazed top is flat against the wall; the figures carry no
+  attributes and the banner is a smooth curve; w23's top 1.3 m sits on an
+  undrawn projecting face; the Marnixstraat ground ribbon is taller than
+  the measured 2.1–4.3 m; the red lantern and the w13 glass-block ribbons
+  are not modelled; walls with no photo stay inferred kit walls.
 - **Parks modelled realistically** (user 2026-10-13, Cremerplein: one flat
   green with a scatter of trees around a dark box). Real parks have paths,
   lawns vs planting, hedges, playgrounds, benches, a pond; the sources are
