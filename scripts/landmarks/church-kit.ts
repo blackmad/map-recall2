@@ -23,6 +23,34 @@ export function local(b: BuildingTools, deg: number, origin: V2 = [0, 0]): Kit {
   return {add, box: no, prism: no, gableRoof: no, hip: no, window: no, clock: no, sign: no} as Kit;
 }
 
+/**
+ * Like `local`, but in plan coordinates (a, b) with b to the LEFT of the axis (counter-clockwise from +a), as the
+ * plan readings in the research files are written. `local`'s own +z points to the right of the axis, so a builder
+ * that copies b straight into z mirrors the building across its axis; this frame mirrors it back. Geometry is
+ * reflected in z with its triangle winding restored, so normals and face orientation stay correct.
+ */
+export function localB(b: BuildingTools, deg: number, origin: V2 = [0, 0]): Kit {
+  const inner = local(b, deg, origin);
+  const add = (g: T.BufferGeometry, c: Col, x = 0, y = 0, z = 0, angle = 0) => {
+    g.rotateY(angle); g.translate(x, y, z); g.scale(1, 1, -1);
+    const idx = g.getIndex();
+    if (idx) {
+      for (let i = 0; i + 2 < idx.count; i += 3) { const v = idx.getX(i + 1); idx.setX(i + 1, idx.getX(i + 2)); idx.setX(i + 2, v); }
+      idx.needsUpdate = true;
+    } else {
+      for (const attr of Object.values(g.attributes)) {
+        const a = attr as T.BufferAttribute, n = a.itemSize;
+        for (let i = 0; i + 2 < a.count; i += 3) for (let j = 0; j < n; j++) {
+          const v = a.array[(i + 1) * n + j]; (a.array as Float32Array)[(i + 1) * n + j] = a.array[(i + 2) * n + j]; (a.array as Float32Array)[(i + 2) * n + j] = v;
+        }
+        a.needsUpdate = true;
+      }
+    }
+    inner.add(g, c);
+  };
+  return {...inner, add} as Kit;
+}
+
 /** Wall frame: origin on the wall plane, outward normal n; tangent is the viewer's right facing the wall. */
 export const frame = (origin: V2, n: V2): Frame => ({origin, n, tangent: [n[1], -n[0]]});
 /** Frame on an axis-aligned wall plane; `at(u)` maps the local x or z coordinate along the wall to the frame's t. */

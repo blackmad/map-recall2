@@ -8,8 +8,8 @@
       "photo": "artifacts/landmark-lanes/obrechtkerk/commons/Obrechtkerk_pic1.jpg",
       "depthBand": 10.5,
       "alongM": [
-        0,
-        24.5
+        12.6,
+        37.2
       ],
       "rows": [
         6,
@@ -24,7 +24,7 @@
         0,
         39
       ],
-      "note": "Openings as the tool reads them (glass and dark openings; the white blind-arcade panels and the wooden doors are not openings to it). Bottom to top: three slit windows a tower; three tall windows a tower and the rose; the clock dial on the south tower; five belfry openings a tower. Columns: the belfry axes (five a tower) plus the rose. Gables: the two helms and the front gable. The clock and the parish hall beside the north tower make the front asymmetric. The photo also shows six white arcade arches a tower plus one over each side door (modelled, not counted here)."
+      "note": "Openings as the tool reads them (glass and dark openings; the white blind-arcade panels and the wooden doors are not openings to it). Bottom to top: three slit windows a tower; three tall windows a tower and the rose; the clock dial on the south tower; five belfry openings a tower. Columns: the belfry axes (five a tower) plus the rose. Gables: the two helms and the front gable. The clock and the parish hall beside the south tower make the front asymmetric; alongM crops the hall off (it stands 9 m in front). The photo also shows six white arcade arches a tower plus one over each side door (modelled, not counted here)."
     }
   ]
 }
