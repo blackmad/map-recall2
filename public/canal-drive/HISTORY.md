@@ -90,6 +90,7 @@ shortlist plus two longlist data items; the rest is the wave-2 block in TODO.
   `map-recall-trivia`, `map-recall-phone-chrome` and `card-gallery`: 28 passed,
   2 skipped on the merged branch; `build-storybook` clean. The postcard e2e
   count is now ≥3 windows (one per run).
+
 ## Six lanes merged: highlight candidates, roofs and sheds, HUD tuck, POI labels, route-line bounce, GLB cleanup batch 3 (2026-10-13)
 
 **Highlight** (`look/highlight-redesign-20261013`, Opus): three candidates
