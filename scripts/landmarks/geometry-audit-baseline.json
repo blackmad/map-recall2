@@ -1,6 +1,6 @@
 {
   "generated": "2026-10-13",
-  "note": "Existing geometry-audit offenders (src/canalRecall/landmarks/geometryAudit.ts). audit:glb fails a model only when a gated count (opening-floating-fail, opening-overhang-fail, zfight-m2, and since 2026-10-11 window-rhythm-fail / window-mismatch-spec / window-missing-spec on photo-spec facades) grows past its entry. Lower an entry when you fix a model; never raise one to pass. The window-rhythm keys were recorded for every model with an <id>-elevations.json on 2026-10-11 (lane fix/american-hotel-windows-20261011); american-hotel has no allowance (0 failing facades).",
+  "note": "Existing geometry-audit offenders (src/canalRecall/landmarks/geometryAudit.ts). audit:glb fails a model only when a gated count (opening-floating-fail, opening-overhang-fail, zfight-m2, and since 2026-10-11 window-rhythm-fail / window-mismatch-spec / window-missing-spec on photo-spec facades) grows past its entry. Lower an entry when you fix a model; never raise one to pass. The window-rhythm keys were recorded for every model with an <id>-elevations.json on 2026-10-11 (lane fix/american-hotel-windows-20261011); american-hotel has no allowance (0 failing facades). The zfight keys were re-recorded for every landmark on 2026-10-13 (lane zfight-audit): zfight-m2 is now same-facing overlap under 2 cm (2.5 deg normal tolerance, measured against the larger triangle's plane), zfight-tight-m2 is 2-3 cm (gated like zfight-m2), zfight-near-m2 (2-8 cm) and zfight-same-m2 (a material against itself) are recorded for information only.",
   "reasons": {
     "blankenstraat-15": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
     "booking-hq": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
@@ -26,11 +26,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.1,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 96.1,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 4.1
     },
     "afrikahuis": {
       "opening-floating": 0,
@@ -38,11 +40,13 @@
       "opening-overhang": 9,
       "opening-overhang-fail": 6,
       "opening-buried": 13,
-      "zfight-m2": 24.5,
-      "zfight-near-m2": 4.7,
+      "zfight-m2": 27.7,
+      "zfight-near-m2": 20.1,
       "window-mismatch": 16,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 1.4,
+      "zfight-same-m2": 0
     },
     "agnietenkapel": {
       "opening-floating": 0,
@@ -50,11 +54,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 1,
-      "zfight-m2": 2.9,
-      "zfight-near-m2": 0.1,
+      "zfight-m2": 3,
+      "zfight-near-m2": 7.9,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.1
     },
     "allard-pierson": {
       "opening-floating": 4,
@@ -62,15 +68,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 1.6,
-      "zfight-near-m2": 3.9,
+      "zfight-m2": 13.7,
+      "zfight-near-m2": 2601.3,
       "window-mismatch": 8,
       "window-missing": 9,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 808.7,
+      "zfight-same-m2": 11
     },
     "american-hotel": {
       "opening-floating": 0,
@@ -78,15 +86,17 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 8,
-      "zfight-m2": 4.8,
-      "zfight-near-m2": 121.2,
+      "zfight-m2": 28.5,
+      "zfight-near-m2": 469.6,
       "window-mismatch": 4,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 4,
       "window-missing-spec": 0,
-      "material-slot-untagged-permille": 0
+      "material-slot-untagged-permille": 0,
+      "zfight-tight-m2": 135.4,
+      "zfight-same-m2": 4.3
     },
     "amsta-de-poort": {
       "opening-floating": 198,
@@ -94,11 +104,13 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 2,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0.3,
+      "zfight-m2": 37.5,
+      "zfight-near-m2": 1335.8,
       "window-mismatch": 41,
       "window-missing": 8,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "amstel-hotel": {
       "opening-floating": 0,
@@ -106,11 +118,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 14,
-      "zfight-m2": 17,
-      "zfight-near-m2": 0,
+      "zfight-m2": 12.5,
+      "zfight-near-m2": 1822.9,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 849.9,
+      "zfight-same-m2": 22.1
     },
     "amstelkerk": {
       "opening-floating": 2,
@@ -119,10 +133,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 23.6,
       "window-mismatch": 5,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 12.4,
+      "zfight-same-m2": 0
     },
     "amsterdam-dungeon": {
       "opening-floating": 0,
@@ -130,11 +146,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 4,
-      "zfight-m2": 11.8,
-      "zfight-near-m2": 1.4,
+      "zfight-m2": 0.5,
+      "zfight-near-m2": 200.8,
       "window-mismatch": 6,
       "window-missing": 0,
-      "window-misaligned": 2
+      "window-misaligned": 2,
+      "zfight-tight-m2": 68.2,
+      "zfight-same-m2": 1214.2
     },
     "amsterdam-in-motion": {
       "opening-floating": 54,
@@ -143,10 +161,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 2,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 282.5,
       "window-mismatch": 3,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 91.3,
+      "zfight-same-m2": 0.5
     },
     "amsterdam-museum": {
       "opening-floating": 300,
@@ -154,11 +174,13 @@
       "opening-overhang": 8,
       "opening-overhang-fail": 8,
       "opening-buried": 1,
-      "zfight-m2": 0.3,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 1270.2,
       "window-mismatch": 10,
       "window-missing": 2,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 5,
+      "zfight-same-m2": 13.7
     },
     "amsterdam-pipe-museum": {
       "opening-floating": 0,
@@ -166,11 +188,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 1,
-      "zfight-m2": 0.4,
-      "zfight-near-m2": 2.3,
+      "zfight-m2": 0.2,
+      "zfight-near-m2": 230.7,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 4.1,
+      "zfight-same-m2": 1.5
     },
     "amsterdam-tulip-museum": {
       "opening-floating": 1,
@@ -179,10 +203,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 1.4,
-      "zfight-near-m2": 0.5,
+      "zfight-near-m2": 200.4,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 2.6,
+      "zfight-same-m2": 0
     },
     "anne-frank-house": {
       "opening-floating": 0,
@@ -190,14 +216,16 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 4,
-      "zfight-m2": 30.4,
-      "zfight-near-m2": 0,
+      "zfight-m2": 5.5,
+      "zfight-near-m2": 6.9,
       "window-mismatch": 3,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 3,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 3.1,
+      "zfight-same-m2": 33.2
     },
     "arcam": {
       "opening-floating": 0,
@@ -205,11 +233,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.3,
-      "zfight-near-m2": 1.2,
+      "zfight-m2": 2.6,
+      "zfight-near-m2": 7.4,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 1.9,
+      "zfight-same-m2": 3.3
     },
     "aron-schuster-synagoge": {
       "opening-floating": 0,
@@ -217,14 +247,16 @@
       "opening-overhang": 24,
       "opening-overhang-fail": 5,
       "opening-buried": 0,
-      "zfight-m2": 0.8,
-      "zfight-near-m2": 0.5,
+      "zfight-m2": 0.3,
+      "zfight-near-m2": 10.8,
       "window-mismatch": 8,
       "window-missing": 0,
       "window-misaligned": 1,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 8,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0.3,
+      "zfight-same-m2": 0.3
     },
     "artis-aquarium": {
       "opening-floating": 0,
@@ -232,14 +264,16 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 2,
-      "zfight-near-m2": 0.7,
+      "zfight-m2": 1,
+      "zfight-near-m2": 205.3,
       "window-mismatch": 8,
       "window-missing": 8,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 8,
-      "window-missing-spec": 8
+      "window-missing-spec": 8,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.9
     },
     "artis-entrance": {
       "opening-floating": 0,
@@ -248,10 +282,12 @@
       "opening-overhang-fail": 3,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 0.1,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.1
     },
     "artis-library": {
       "opening-floating": 2,
@@ -259,19 +295,25 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 13,
-      "zfight-m2": 2.9,
-      "zfight-near-m2": 0,
+      "zfight-m2": 23.1,
+      "zfight-near-m2": 567.2,
       "window-mismatch": 27,
       "window-missing": 1,
       "window-misaligned": 0,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 27,
-      "window-missing-spec": 1
+      "window-missing-spec": 1,
+      "zfight-tight-m2": 26.3,
+      "zfight-same-m2": 21.4
     },
     "asterweg-23": {
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-m2": 0,
+      "zfight-tight-m2": 0.3,
+      "zfight-near-m2": 7,
+      "zfight-same-m2": 0
     },
     "athenaeum": {
       "opening-floating": 43,
@@ -279,11 +321,13 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 2,
       "opening-buried": 0,
-      "zfight-m2": 0.5,
-      "zfight-near-m2": 0,
+      "zfight-m2": 5.3,
+      "zfight-near-m2": 179.1,
       "window-mismatch": 7,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 32.5,
+      "zfight-same-m2": 0.5
     },
     "badhuistheater": {
       "opening-floating": 14,
@@ -291,11 +335,13 @@
       "opening-overhang": 4,
       "opening-overhang-fail": 3,
       "opening-buried": 0,
-      "zfight-m2": 0.1,
-      "zfight-near-m2": 1,
+      "zfight-m2": 0.9,
+      "zfight-near-m2": 32.7,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.2,
+      "zfight-same-m2": 0
     },
     "beest-boulders": {
       "opening-floating": 16,
@@ -303,11 +349,13 @@
       "opening-overhang": 13,
       "opening-overhang-fail": 0,
       "opening-buried": 5,
-      "zfight-m2": 51.7,
-      "zfight-near-m2": 22.3,
+      "zfight-m2": 19.4,
+      "zfight-near-m2": 1811.4,
       "window-mismatch": 42,
       "window-missing": 4,
-      "window-misaligned": 2
+      "window-misaligned": 2,
+      "zfight-tight-m2": 15.7,
+      "zfight-same-m2": 79.4
     },
     "beest-het-lab": {
       "opening-floating": 1,
@@ -315,11 +363,13 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 3.7,
-      "zfight-near-m2": 15.4,
+      "zfight-m2": 6.5,
+      "zfight-near-m2": 343.2,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 12.2,
+      "zfight-same-m2": 1.3
     },
     "begijnhofkapel": {
       "opening-floating": 62,
@@ -327,16 +377,22 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 15,
-      "zfight-m2": 0.1,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 48.4,
       "window-mismatch": 17,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 151
     },
     "bercylaan-801-855": {
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 6,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-m2": 3156.3,
+      "zfight-tight-m2": 4600.6,
+      "zfight-near-m2": 9499.7,
+      "zfight-same-m2": 119.8
     },
     "beta-boulders": {
       "opening-floating": 0,
@@ -344,15 +400,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.5,
-      "zfight-near-m2": 0.1,
+      "zfight-m2": 5.6,
+      "zfight-near-m2": 2820.8,
       "window-mismatch": 4,
       "window-missing": 0,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 2.9,
+      "zfight-same-m2": 1.1
     },
     "blankenstraat-15": {
       "opening-floating": 7,
@@ -360,14 +418,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 2.2,
-      "zfight-near-m2": 0,
+      "zfight-m2": 2,
+      "zfight-near-m2": 1342.7,
       "window-mismatch": 150,
       "window-missing": 36,
       "window-misaligned": 0,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 150,
-      "window-missing-spec": 42
+      "window-missing-spec": 42,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.2
     },
     "blauwe-theehuis": {
       "opening-floating": 0,
@@ -375,11 +435,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 3.8,
-      "zfight-near-m2": 13.8,
+      "zfight-m2": 19.5,
+      "zfight-near-m2": 2.4,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.9,
+      "zfight-same-m2": 0
     },
     "bogortuin-101": {
       "opening-floating": 0,
@@ -388,13 +450,15 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 8,
+      "zfight-near-m2": 3423,
       "window-mismatch": 8,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 8,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 15.1,
+      "zfight-same-m2": 0
     },
     "booking-hq": {
       "opening-floating": 0,
@@ -402,14 +466,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 2,
-      "zfight-m2": 2.8,
-      "zfight-near-m2": 37.2,
+      "zfight-m2": 42.4,
+      "zfight-near-m2": 1302.5,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 8,
-      "window-missing-spec": 1
+      "window-missing-spec": 1,
+      "zfight-tight-m2": 25.3,
+      "zfight-same-m2": 83.9
     },
     "boom-chicago": {
       "opening-floating": 8,
@@ -417,14 +483,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.1,
-      "zfight-near-m2": 4.1,
+      "zfight-m2": 0.8,
+      "zfight-near-m2": 37.6,
       "window-mismatch": 4,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 4,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 3.2,
+      "zfight-same-m2": 3.9
     },
     "boomkerk": {
       "opening-floating": 53,
@@ -432,11 +500,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 1,
-      "zfight-m2": 121.2,
-      "zfight-near-m2": 29.3,
+      "zfight-m2": 17,
+      "zfight-near-m2": 303.5,
       "window-mismatch": 12,
       "window-missing": 1,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 81.8,
+      "zfight-same-m2": 145.6
     },
     "brakke-grond": {
       "opening-floating": 4,
@@ -445,13 +515,15 @@
       "opening-overhang-fail": 3,
       "opening-buried": 2,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 177.6,
       "window-mismatch": 2,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 2,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 1673.4
     },
     "breitner-tower": {
       "opening-floating": 0,
@@ -459,11 +531,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 15,
-      "zfight-m2": 79,
-      "zfight-near-m2": 0,
+      "zfight-m2": 105.6,
+      "zfight-near-m2": 121.7,
       "window-mismatch": 51,
       "window-missing": 1,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 1.7,
+      "zfight-same-m2": 119.8
     },
     "brouwerij-het-ij": {
       "opening-floating": 0,
@@ -471,11 +545,13 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.1,
-      "zfight-near-m2": 44.9,
+      "zfight-m2": 72.3,
+      "zfight-near-m2": 117,
       "window-mismatch": 7,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 49.3,
+      "zfight-same-m2": 0.5
     },
     "buiksloterkerk": {
       "opening-floating": 0,
@@ -483,11 +559,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.1,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 18.9,
       "window-mismatch": 3,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 5.8
     },
     "cafe-kobalt": {
       "opening-floating": 0,
@@ -495,11 +573,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 2,
-      "zfight-m2": 3.2,
-      "zfight-near-m2": 0.7,
+      "zfight-m2": 3.3,
+      "zfight-near-m2": 82.6,
       "window-mismatch": 18,
       "window-missing": 1,
-      "window-misaligned": 2
+      "window-misaligned": 2,
+      "zfight-tight-m2": 1.3,
+      "zfight-same-m2": 1
     },
     "canals-museum": {
       "opening-floating": 29,
@@ -507,11 +587,13 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 2,
       "opening-buried": 4,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0.3,
+      "zfight-near-m2": 137.8,
       "window-mismatch": 4,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.5
     },
     "cavia": {
       "opening-floating": 0,
@@ -519,11 +601,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.5,
-      "zfight-near-m2": 0,
+      "zfight-m2": 3.5,
+      "zfight-near-m2": 590.2,
       "window-mismatch": 3,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.2,
+      "zfight-same-m2": 669.6
     },
     "centraal-station": {
       "opening-floating": 0,
@@ -531,15 +615,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 22,
-      "zfight-m2": 129.2,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 413.6,
       "window-mismatch": 11,
       "window-missing": 2,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 11,
       "window-missing-spec": 2,
-      "material-slot-untagged-permille": 0
+      "material-slot-untagged-permille": 0,
+      "zfight-tight-m2": 2.2,
+      "zfight-same-m2": 40.1
     },
     "centrale-markthal": {
       "opening-floating": 57,
@@ -547,16 +633,22 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 23.2,
-      "zfight-near-m2": 24.3,
+      "zfight-m2": 37.3,
+      "zfight-near-m2": 465.7,
       "window-mismatch": 4,
       "window-missing": 2,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 152.8,
+      "zfight-same-m2": 154.4
     },
     "ceramiquelaan-437": {
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 52,
-      "window-missing-spec": 7
+      "window-missing-spec": 7,
+      "zfight-m2": 2.9,
+      "zfight-tight-m2": 28.9,
+      "zfight-near-m2": 1525.6,
+      "zfight-same-m2": 14
     },
     "chassekerk": {
       "opening-floating": 0,
@@ -564,14 +656,16 @@
       "opening-overhang": 5,
       "opening-overhang-fail": 5,
       "opening-buried": 2,
-      "zfight-m2": 6.6,
-      "zfight-near-m2": 0.7,
+      "zfight-m2": 4.6,
+      "zfight-near-m2": 152.4,
       "window-mismatch": 17,
       "window-missing": 2,
       "window-misaligned": 0,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 17,
-      "window-missing-spec": 2
+      "window-missing-spec": 2,
+      "zfight-tight-m2": 3.3,
+      "zfight-same-m2": 7.4
     },
     "christ-church-groenburgwal": {
       "opening-floating": 0,
@@ -579,14 +673,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 5.3,
-      "zfight-near-m2": 3.2,
+      "zfight-m2": 5.5,
+      "zfight-near-m2": 26.8,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0.8,
+      "zfight-same-m2": 2.5
     },
     "cinecenter": {
       "opening-floating": 0,
@@ -594,15 +690,17 @@
       "opening-overhang": 6,
       "opening-overhang-fail": 0,
       "opening-buried": 4,
-      "zfight-m2": 2.6,
-      "zfight-near-m2": 0,
+      "zfight-m2": 42.1,
+      "zfight-near-m2": 422,
       "window-mismatch": 18,
       "window-missing": 2,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 27.2,
+      "zfight-same-m2": 372.6
     },
     "club-panama": {
       "opening-floating": 0,
@@ -610,11 +708,13 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 1,
       "opening-buried": 1,
-      "zfight-m2": 0.6,
-      "zfight-near-m2": 3.3,
+      "zfight-m2": 0.9,
+      "zfight-near-m2": 179.7,
       "window-mismatch": 4,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 45.1,
+      "zfight-same-m2": 0.2
     },
     "collectie-six": {
       "opening-floating": 0,
@@ -622,11 +722,13 @@
       "opening-overhang": 7,
       "opening-overhang-fail": 5,
       "opening-buried": 18,
-      "zfight-m2": 4.6,
-      "zfight-near-m2": 0,
+      "zfight-m2": 7.1,
+      "zfight-near-m2": 25.3,
       "window-mismatch": 2,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 2.5,
+      "zfight-same-m2": 1.4
     },
     "compagnietheater": {
       "opening-floating": 0,
@@ -634,11 +736,13 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 0,
       "opening-buried": 4,
-      "zfight-m2": 37.9,
-      "zfight-near-m2": 22,
+      "zfight-m2": 43.7,
+      "zfight-near-m2": 612.8,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 143.7,
+      "zfight-same-m2": 0
     },
     "concertgebouw": {
       "opening-floating": 10,
@@ -646,14 +750,16 @@
       "opening-overhang": 5,
       "opening-overhang-fail": 5,
       "opening-buried": 6,
-      "zfight-m2": 16.8,
-      "zfight-near-m2": 0,
+      "zfight-m2": 27.7,
+      "zfight-near-m2": 351.5,
       "window-mismatch": 13,
       "window-missing": 1,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 13,
-      "window-missing-spec": 1
+      "window-missing-spec": 1,
+      "zfight-tight-m2": 44.2,
+      "zfight-same-m2": 41.3
     },
     "conservatorium": {
       "opening-floating": 0,
@@ -661,11 +767,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 8,
-      "zfight-m2": 0.6,
-      "zfight-near-m2": 557.8,
+      "zfight-m2": 342.1,
+      "zfight-near-m2": 2018.7,
       "window-mismatch": 21,
       "window-missing": 9,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 1112,
+      "zfight-same-m2": 0.3
     },
     "coymanshuis": {
       "opening-floating": 0,
@@ -673,14 +781,16 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 1.1,
-      "zfight-near-m2": 0.8,
+      "zfight-m2": 2.1,
+      "zfight-near-m2": 254.9,
       "window-mismatch": 21,
       "window-missing": 4,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 21,
-      "window-missing-spec": 4
+      "window-missing-spec": 4,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.1
     },
     "da-costakade-13": {
       "opening-floating": 0,
@@ -688,14 +798,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 1,
+      "zfight-m2": 0.9,
+      "zfight-near-m2": 102.8,
       "window-mismatch": 3,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 3,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.7
     },
     "dageraad": {
       "opening-floating": 4,
@@ -704,10 +816,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 2.9,
+      "zfight-near-m2": 33.4,
       "window-mismatch": 6,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 3,
+      "zfight-same-m2": 4.3
     },
     "de-balie": {
       "opening-floating": 0,
@@ -716,13 +830,15 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 21.1,
       "window-mismatch": 9,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 9,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "de-bazel": {
       "opening-floating": 0,
@@ -730,14 +846,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 87,
-      "zfight-m2": 0,
-      "zfight-near-m2": 405.7,
+      "zfight-m2": 416.7,
+      "zfight-near-m2": 2077.1,
       "window-mismatch": 88,
       "window-missing": 78,
       "window-misaligned": 0,
       "window-rhythm-fail": 4,
       "window-mismatch-spec": 88,
-      "window-missing-spec": 78
+      "window-missing-spec": 78,
+      "zfight-tight-m2": 743.1,
+      "zfight-same-m2": 0
     },
     "de-beurs-van-berlage": {
       "opening-floating": 4,
@@ -745,14 +863,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 14,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0.7,
+      "zfight-m2": 0.1,
+      "zfight-near-m2": 1534.5,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 1985.2
     },
     "de-bijenkorf": {
       "opening-floating": 0,
@@ -760,15 +880,17 @@
       "opening-overhang": 3,
       "opening-overhang-fail": 2,
       "opening-buried": 5,
-      "zfight-m2": 70.9,
-      "zfight-near-m2": 73.4,
+      "zfight-m2": 123.7,
+      "zfight-near-m2": 2228.6,
       "window-mismatch": 19,
       "window-missing": 0,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 56,
+      "zfight-same-m2": 2.4
     },
     "de-dokwerker": {
       "opening-floating": 0,
@@ -777,10 +899,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 0.6,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "de-dolphijn": {
       "opening-floating": 0,
@@ -788,11 +912,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.2,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0.6,
+      "zfight-near-m2": 298.6,
       "window-mismatch": 1,
       "window-missing": 6,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 6.1,
+      "zfight-same-m2": 0
     },
     "de-duif": {
       "opening-floating": 0,
@@ -801,13 +927,15 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0.1,
+      "zfight-near-m2": 165.6,
       "window-mismatch": 1,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 1,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.1
     },
     "de-gooyer": {
       "opening-floating": 6,
@@ -815,11 +943,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0.1,
+      "zfight-near-m2": 19.7,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 2
+      "window-misaligned": 2,
+      "zfight-tight-m2": 0.6,
+      "zfight-same-m2": 2.7
     },
     "de-hallen": {
       "opening-floating": 50,
@@ -827,11 +957,13 @@
       "opening-overhang": 3,
       "opening-overhang-fail": 2,
       "opening-buried": 1,
-      "zfight-m2": 1.2,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 2631.2,
       "window-mismatch": 7,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 11,
+      "zfight-same-m2": 1.2
     },
     "de-krakeling": {
       "opening-floating": 66,
@@ -840,10 +972,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 345.4,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 86.6,
+      "zfight-same-m2": 0
     },
     "de-nederlandsche-bank": {
       "opening-floating": 0,
@@ -851,14 +985,16 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 0.9,
-      "zfight-near-m2": 2.5,
+      "zfight-m2": 22.4,
+      "zfight-near-m2": 45.7,
       "window-mismatch": 3,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 3,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0.4,
+      "zfight-same-m2": 3.2
     },
     "de-papegaai": {
       "opening-floating": 0,
@@ -866,11 +1002,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 4.9,
-      "zfight-near-m2": 0.2,
+      "zfight-m2": 4.8,
+      "zfight-near-m2": 3.8,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 1.2,
+      "zfight-same-m2": 1.2
     },
     "de-piramides": {
       "opening-floating": 0,
@@ -879,10 +1017,12 @@
       "opening-overhang-fail": 14,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 1438.8,
       "window-mismatch": 2,
       "window-missing": 0,
-      "window-misaligned": 3
+      "window-misaligned": 3,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "de-school": {
       "opening-floating": 0,
@@ -890,14 +1030,16 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0.3,
+      "zfight-m2": 0.2,
+      "zfight-near-m2": 489.7,
       "window-mismatch": 2,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 2,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.1
     },
     "de-wester": {
       "opening-floating": 17,
@@ -905,11 +1047,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 3,
-      "zfight-m2": 33.5,
-      "zfight-near-m2": 35.5,
+      "zfight-m2": 62.6,
+      "zfight-near-m2": 584.5,
       "window-mismatch": 7,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 349.9,
+      "zfight-same-m2": 31.5
     },
     "delamar": {
       "opening-floating": 71,
@@ -918,13 +1062,15 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 7.5,
       "window-mismatch": 1,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 1,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "dominicuskerk": {
       "opening-floating": 0,
@@ -932,15 +1078,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 16.9,
-      "zfight-near-m2": 154.7,
+      "zfight-m2": 5.5,
+      "zfight-near-m2": 311,
       "window-mismatch": 29,
       "window-missing": 1,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 4.7,
+      "zfight-same-m2": 374.8
     },
     "dorus-theus-brug": {
       "opening-floating": 0,
@@ -948,11 +1096,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 2.7,
+      "zfight-m2": 0,
       "zfight-near-m2": 0,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 4.6
     },
     "dutch-resistance-museum": {
       "opening-floating": 0,
@@ -960,15 +1110,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.2,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 479.6,
       "window-mismatch": 2,
       "window-missing": 0,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 102.8,
+      "zfight-same-m2": 94.3
     },
     "el-tawheed": {
       "opening-floating": 0,
@@ -976,11 +1128,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 3.8,
-      "zfight-near-m2": 1.8,
+      "zfight-m2": 0.4,
+      "zfight-near-m2": 8.3,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.1,
+      "zfight-same-m2": 5.5
     },
     "electric-ladyland": {
       "opening-floating": 4,
@@ -988,11 +1142,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.1,
-      "zfight-near-m2": 0,
+      "zfight-m2": 1,
+      "zfight-near-m2": 98.5,
       "window-mismatch": 10,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 7.6,
+      "zfight-same-m2": 0
     },
     "embassy-free-mind": {
       "opening-floating": 1,
@@ -1000,11 +1156,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 1.8,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 4.8,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.8,
+      "zfight-same-m2": 1.7
     },
     "english-reformed-church": {
       "opening-floating": 4,
@@ -1012,11 +1170,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 8,
-      "zfight-m2": 31.5,
-      "zfight-near-m2": 0.1,
+      "zfight-m2": 31.6,
+      "zfight-near-m2": 3.7,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 1.8,
+      "zfight-same-m2": 0
     },
     "eye-filmmuseum": {
       "opening-floating": 1,
@@ -1024,14 +1184,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 2.3,
-      "zfight-near-m2": 0,
+      "zfight-m2": 2,
+      "zfight-near-m2": 0.5,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 31.4
     },
     "faralda-crane-hotel": {
       "opening-floating": 0,
@@ -1039,11 +1201,13 @@
       "opening-overhang": 12,
       "opening-overhang-fail": 11,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0.2,
+      "zfight-m2": 1.5,
+      "zfight-near-m2": 37.8,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.7,
+      "zfight-same-m2": 4.6
     },
     "fatih-moskee": {
       "opening-floating": 0,
@@ -1051,14 +1215,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 3,
+      "zfight-m2": 3.9,
+      "zfight-near-m2": 81.2,
       "window-mismatch": 20,
       "window-missing": 4,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 20,
-      "window-missing-spec": 4
+      "window-missing-spec": 4,
+      "zfight-tight-m2": 23.4,
+      "zfight-same-m2": 0
     },
     "felix-meritis": {
       "opening-floating": 0,
@@ -1067,13 +1233,15 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 5,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "fire-station-anton": {
       "opening-floating": 19,
@@ -1081,11 +1249,13 @@
       "opening-overhang": 6,
       "opening-overhang-fail": 3,
       "opening-buried": 1,
-      "zfight-m2": 4.5,
-      "zfight-near-m2": 6.2,
+      "zfight-m2": 32.5,
+      "zfight-near-m2": 572.6,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 76.3,
+      "zfight-same-m2": 3.9
     },
     "fire-station-dirk": {
       "opening-floating": 0,
@@ -1093,11 +1263,13 @@
       "opening-overhang": 3,
       "opening-overhang-fail": 3,
       "opening-buried": 2,
-      "zfight-m2": 61.6,
-      "zfight-near-m2": 0.9,
+      "zfight-m2": 66.8,
+      "zfight-near-m2": 110.2,
       "window-mismatch": 9,
       "window-missing": 1,
-      "window-misaligned": 4
+      "window-misaligned": 4,
+      "zfight-tight-m2": 4.2,
+      "zfight-same-m2": 2.3
     },
     "fire-station-driemond": {
       "opening-floating": 2,
@@ -1105,11 +1277,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 2.7,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 92.4,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.1,
+      "zfight-same-m2": 3
     },
     "fire-station-hendrik": {
       "opening-floating": 0,
@@ -1118,14 +1292,16 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0.4,
-      "zfight-near-m2": 0.2,
+      "zfight-near-m2": 199.6,
       "window-mismatch": 20,
       "window-missing": 1,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 17.6,
+      "zfight-same-m2": 0.4
     },
     "fire-station-ijsbrand": {
       "opening-floating": 22,
@@ -1134,10 +1310,12 @@
       "opening-overhang-fail": 1,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 30.1,
       "window-mismatch": 6,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.8,
+      "zfight-same-m2": 0
     },
     "fire-station-nico": {
       "opening-floating": 170,
@@ -1146,10 +1324,12 @@
       "opening-overhang-fail": 2,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0.4,
+      "zfight-near-m2": 71.9,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.7,
+      "zfight-same-m2": 0.8
     },
     "fire-station-osdorp": {
       "opening-floating": 12,
@@ -1157,11 +1337,13 @@
       "opening-overhang": 3,
       "opening-overhang-fail": 2,
       "opening-buried": 0,
-      "zfight-m2": 16.4,
-      "zfight-near-m2": 2.4,
+      "zfight-m2": 6.3,
+      "zfight-near-m2": 181.3,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.1,
+      "zfight-same-m2": 13
     },
     "fire-station-pieter": {
       "opening-floating": 25,
@@ -1169,11 +1351,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 1.5,
-      "zfight-near-m2": 0,
+      "zfight-m2": 2,
+      "zfight-near-m2": 21.2,
       "window-mismatch": 2,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.1,
+      "zfight-same-m2": 0
     },
     "fire-station-teunis": {
       "opening-floating": 11,
@@ -1181,11 +1365,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 3.6,
-      "zfight-near-m2": 0.6,
+      "zfight-m2": 3.8,
+      "zfight-near-m2": 10.9,
       "window-mismatch": 3,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.6,
+      "zfight-same-m2": 0
     },
     "fire-station-victor": {
       "opening-floating": 0,
@@ -1193,11 +1379,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 2,
-      "zfight-m2": 2.1,
-      "zfight-near-m2": 1,
+      "zfight-m2": 0.8,
+      "zfight-near-m2": 143.1,
       "window-mismatch": 20,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 3.4,
+      "zfight-same-m2": 0.3
     },
     "fire-station-weesp": {
       "opening-floating": 10,
@@ -1205,11 +1393,13 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 2,
       "opening-buried": 0,
-      "zfight-m2": 0.1,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 27.9,
       "window-mismatch": 9,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 6.5,
+      "zfight-same-m2": 0
     },
     "fire-station-willem": {
       "opening-floating": 4,
@@ -1217,15 +1407,17 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.8,
-      "zfight-near-m2": 0.2,
+      "zfight-m2": 1.1,
+      "zfight-near-m2": 2535.7,
       "window-mismatch": 8,
       "window-missing": 0,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0.3,
+      "zfight-same-m2": 0.1
     },
     "fire-station-zebra": {
       "opening-floating": 1,
@@ -1233,15 +1425,17 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 1.4,
-      "zfight-near-m2": 2,
+      "zfight-m2": 1.7,
+      "zfight-near-m2": 18.8,
       "window-mismatch": 3,
       "window-missing": 0,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0.4,
+      "zfight-same-m2": 8.5
     },
     "foam": {
       "opening-floating": 302,
@@ -1249,11 +1443,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0.2,
+      "zfight-near-m2": 358,
       "window-mismatch": 21,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.4,
+      "zfight-same-m2": 0
     },
     "frascati": {
       "opening-floating": 10,
@@ -1261,11 +1457,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 1,
-      "zfight-m2": 327,
-      "zfight-near-m2": 0,
+      "zfight-m2": 499.8,
+      "zfight-near-m2": 158.7,
       "window-mismatch": 3,
       "window-missing": 0,
-      "window-misaligned": 3
+      "window-misaligned": 3,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 708.6
     },
     "gashouder": {
       "opening-floating": 10,
@@ -1274,10 +1472,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 2,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 68.1,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.3,
+      "zfight-same-m2": 0
     },
     "gerard-dou-synagogue": {
       "opening-floating": 2,
@@ -1286,10 +1486,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 3,
       "zfight-m2": 0.1,
-      "zfight-near-m2": 0.6,
+      "zfight-near-m2": 27.8,
       "window-mismatch": 4,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 1.8,
+      "zfight-same-m2": 0
     },
     "grasweg-116": {
       "opening-floating": 0,
@@ -1298,13 +1500,15 @@
       "opening-overhang-fail": 0,
       "opening-buried": 12,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 3579,
       "window-mismatch": 2,
       "window-missing": 1,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 2,
-      "window-missing-spec": 1
+      "window-missing-spec": 1,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "groot-melkhuis": {
       "opening-floating": 0,
@@ -1312,11 +1516,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.2,
-      "zfight-near-m2": 3.6,
+      "zfight-m2": 3.2,
+      "zfight-near-m2": 38.3,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "groote-museum": {
       "opening-floating": 34,
@@ -1324,11 +1530,13 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 2,
       "opening-buried": 0,
-      "zfight-m2": 0.9,
-      "zfight-near-m2": 0,
+      "zfight-m2": 1.2,
+      "zfight-near-m2": 431.1,
       "window-mismatch": 1,
       "window-missing": 4,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 1.2,
+      "zfight-same-m2": 26.2
     },
     "haarlemmermeerstation": {
       "opening-floating": 8,
@@ -1336,11 +1544,13 @@
       "opening-overhang": 4,
       "opening-overhang-fail": 4,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0.3,
+      "zfight-near-m2": 140.6,
       "window-mismatch": 4,
       "window-missing": 4,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 35.4,
+      "zfight-same-m2": 211.6
     },
     "haarlemmerpoort": {
       "opening-floating": 0,
@@ -1349,15 +1559,21 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 5.9,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "haarlemmerweg-333": {
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 94,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-m2": 221.5,
+      "zfight-tight-m2": 212.2,
+      "zfight-near-m2": 1742,
+      "zfight-same-m2": 0.1
     },
     "hannekes-boom": {
       "opening-floating": 0,
@@ -1365,11 +1581,13 @@
       "opening-overhang": 3,
       "opening-overhang-fail": 2,
       "opening-buried": 4,
-      "zfight-m2": 1,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 29.8,
       "window-mismatch": 3,
       "window-missing": 1,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 2.2
     },
     "haparandaweg-11": {
       "opening-floating": 0,
@@ -1377,11 +1595,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 0.2,
-      "zfight-near-m2": 3.3,
+      "zfight-m2": 2.4,
+      "zfight-near-m2": 116.2,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.4
     },
     "haparandaweg-13": {
       "opening-floating": 0,
@@ -1389,11 +1609,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.4,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 0.6,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.4
     },
     "haparandaweg-2-4": {
       "opening-floating": 0,
@@ -1401,11 +1623,13 @@
       "opening-overhang": 36,
       "opening-overhang-fail": 34,
       "opening-buried": 1,
-      "zfight-m2": 19.2,
-      "zfight-near-m2": 2.8,
+      "zfight-m2": 5.6,
+      "zfight-near-m2": 152.1,
       "window-mismatch": 5,
       "window-missing": 4,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 9.3,
+      "zfight-same-m2": 20.2
     },
     "haparandaweg-57": {
       "opening-floating": 6,
@@ -1413,11 +1637,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 1.4,
-      "zfight-near-m2": 3.2,
+      "zfight-m2": 3.9,
+      "zfight-near-m2": 29.3,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.1
     },
     "haparandaweg-65": {
       "opening-floating": 1,
@@ -1425,11 +1651,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 82.8,
-      "zfight-near-m2": 1287.8,
+      "zfight-m2": 1942,
+      "zfight-near-m2": 1514.2,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 502.7,
+      "zfight-same-m2": 67.3
     },
     "haparandaweg-650-706": {
       "opening-floating": 1,
@@ -1437,11 +1665,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 22.7,
-      "zfight-near-m2": 773.4,
+      "zfight-m2": 1230.6,
+      "zfight-near-m2": 1305.4,
       "window-mismatch": 4,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 463.9,
+      "zfight-same-m2": 22.6
     },
     "haparandaweg-708-744": {
       "opening-floating": 0,
@@ -1449,11 +1679,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 8.5,
-      "zfight-near-m2": 366.5,
+      "zfight-m2": 602.8,
+      "zfight-near-m2": 803.3,
       "window-mismatch": 6,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 306.4,
+      "zfight-same-m2": 11.9
     },
     "haparandaweg-746-786": {
       "opening-floating": 0,
@@ -1461,14 +1693,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 53.5,
-      "zfight-near-m2": 319.7,
+      "zfight-m2": 383.8,
+      "zfight-near-m2": 727.4,
       "window-mismatch": 1,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 1,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 165,
+      "zfight-same-m2": 1.5
     },
     "haparandaweg-788-868": {
       "opening-floating": 0,
@@ -1476,11 +1710,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 4.1,
-      "zfight-near-m2": 337.3,
+      "zfight-m2": 504.7,
+      "zfight-near-m2": 522.1,
       "window-mismatch": 15,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 140.4,
+      "zfight-same-m2": 8.1
     },
     "haparandaweg-8-338": {
       "opening-floating": 50,
@@ -1488,11 +1724,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 30.7,
-      "zfight-near-m2": 34.1,
+      "zfight-m2": 45.3,
+      "zfight-near-m2": 5481.7,
       "window-mismatch": 294,
       "window-missing": 17,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 1.8,
+      "zfight-same-m2": 18.1
     },
     "haparandaweg-870-900": {
       "opening-floating": 1,
@@ -1500,14 +1738,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 13,
-      "zfight-m2": 50.6,
-      "zfight-near-m2": 782.1,
+      "zfight-m2": 1416.4,
+      "zfight-near-m2": 1486.5,
       "window-mismatch": 8,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 8,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 403.4,
+      "zfight-same-m2": 10.3
     },
     "haparandaweg-9": {
       "opening-floating": 0,
@@ -1515,11 +1755,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 0.1,
-      "zfight-near-m2": 4.2,
+      "zfight-m2": 2.5,
+      "zfight-near-m2": 130.8,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.1,
+      "zfight-same-m2": 0
     },
     "haparandaweg-902-950": {
       "opening-floating": 0,
@@ -1527,14 +1769,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 8.4,
-      "zfight-near-m2": 233.9,
+      "zfight-m2": 443.1,
+      "zfight-near-m2": 374,
       "window-mismatch": 4,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 4,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 62.1,
+      "zfight-same-m2": 8.2
     },
     "haparandaweg-952-1002": {
       "opening-floating": 0,
@@ -1542,14 +1786,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.3,
-      "zfight-near-m2": 234.5,
+      "zfight-m2": 0,
+      "zfight-near-m2": 1390.1,
       "window-mismatch": 1,
       "window-missing": 0,
       "window-misaligned": 1,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 1,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "hart-museum": {
       "opening-floating": 0,
@@ -1557,11 +1803,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 3,
-      "zfight-m2": 0.9,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 5,
       "window-mismatch": 16,
       "window-missing": 15,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.9
     },
     "hash-marihuana-hemp-museum": {
       "opening-floating": 0,
@@ -1569,11 +1817,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0.1,
+      "zfight-near-m2": 124.6,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 2.5,
+      "zfight-same-m2": 7.5
     },
     "he-hua-temple": {
       "opening-floating": 0,
@@ -1582,10 +1832,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 1.7,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "heineken-experience-amsterdam": {
       "opening-floating": 11,
@@ -1593,15 +1845,17 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 2,
-      "zfight-m2": 1.8,
-      "zfight-near-m2": 0.9,
+      "zfight-m2": 6.9,
+      "zfight-near-m2": 540.2,
       "window-mismatch": 7,
       "window-missing": 2,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 7,
       "window-missing-spec": 2,
-      "material-slot-untagged-permille": 0
+      "material-slot-untagged-permille": 0,
+      "zfight-tight-m2": 201.1,
+      "zfight-same-m2": 108.7
     },
     "hemp-gallery": {
       "opening-floating": 0,
@@ -1609,11 +1863,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0.8,
+      "zfight-m2": 0.1,
+      "zfight-near-m2": 219.3,
       "window-mismatch": 2,
       "window-missing": 1,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 3.7,
+      "zfight-same-m2": 1.3
     },
     "herepoort-bergpoort": {
       "opening-floating": 0,
@@ -1621,11 +1877,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 3,
-      "zfight-near-m2": 0.1,
+      "zfight-m2": 2.7,
+      "zfight-near-m2": 5,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.1
     },
     "het-schip": {
       "opening-floating": 284,
@@ -1633,11 +1891,13 @@
       "opening-overhang": 13,
       "opening-overhang-fail": 0,
       "opening-buried": 3,
-      "zfight-m2": 2.3,
-      "zfight-near-m2": 4.5,
+      "zfight-m2": 7.3,
+      "zfight-near-m2": 151.3,
       "window-mismatch": 16,
       "window-missing": 8,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 3.5,
+      "zfight-same-m2": 15.4
     },
     "het-veem": {
       "opening-floating": 66,
@@ -1645,11 +1905,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 20,
-      "zfight-m2": 22.2,
-      "zfight-near-m2": 3.4,
+      "zfight-m2": 0,
+      "zfight-near-m2": 660.6,
       "window-mismatch": 98,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 61.8,
+      "zfight-same-m2": 645.1
     },
     "hilton-amsterdam": {
       "opening-floating": 0,
@@ -1657,15 +1919,17 @@
       "opening-overhang": 34,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 20.4,
-      "zfight-near-m2": 1.2,
+      "zfight-m2": 38.7,
+      "zfight-near-m2": 1461.1,
       "window-mismatch": 63,
       "window-missing": 6,
       "window-misaligned": 0,
       "window-rhythm-fail": 3,
       "window-mismatch-spec": 63,
       "window-missing-spec": 6,
-      "material-slot-untagged-permille": 0
+      "material-slot-untagged-permille": 0,
+      "zfight-tight-m2": 2.1,
+      "zfight-same-m2": 40.8
     },
     "hnk-sloterdijk": {
       "opening-floating": 48,
@@ -1674,10 +1938,12 @@
       "opening-overhang-fail": 11,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 1844.2,
       "window-mismatch": 16,
       "window-missing": 16,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "hollandsche-schouwburg": {
       "opening-floating": 3,
@@ -1685,11 +1951,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 36.5,
-      "zfight-near-m2": 0,
+      "zfight-m2": 36.4,
+      "zfight-near-m2": 63,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 3
     },
     "homomonument": {
       "opening-floating": 0,
@@ -1701,7 +1969,9 @@
       "zfight-near-m2": 0,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "hortus-greenhouses": {
       "opening-floating": 0,
@@ -1709,11 +1979,13 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 2,
       "opening-buried": 0,
-      "zfight-m2": 3.6,
-      "zfight-near-m2": 0.3,
+      "zfight-m2": 2.6,
+      "zfight-near-m2": 157.2,
       "window-mismatch": 12,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 4.7
     },
     "hotel-de-l-europe": {
       "opening-floating": 0,
@@ -1721,14 +1993,16 @@
       "opening-overhang": 4,
       "opening-overhang-fail": 2,
       "opening-buried": 8,
-      "zfight-m2": 33.2,
-      "zfight-near-m2": 7.4,
+      "zfight-m2": 10.4,
+      "zfight-near-m2": 1035.8,
       "window-mismatch": 13,
       "window-missing": 3,
       "window-misaligned": 0,
       "window-rhythm-fail": 3,
       "window-mismatch-spec": 48,
-      "window-missing-spec": 8
+      "window-missing-spec": 8,
+      "zfight-tight-m2": 207.1,
+      "zfight-same-m2": 12.5
     },
     "hotel-jakarta": {
       "opening-floating": 0,
@@ -1736,14 +2010,16 @@
       "opening-overhang": 6,
       "opening-overhang-fail": 6,
       "opening-buried": 14,
-      "zfight-m2": 10.2,
-      "zfight-near-m2": 161.1,
+      "zfight-m2": 4.6,
+      "zfight-near-m2": 796.5,
       "window-mismatch": 42,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 42,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 159.3,
+      "zfight-same-m2": 8.9
     },
     "hotel-okura": {
       "opening-floating": 0,
@@ -1751,14 +2027,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 63,
-      "zfight-near-m2": 0,
+      "zfight-m2": 62.4,
+      "zfight-near-m2": 1960.1,
       "window-mismatch": 37,
       "window-missing": 0,
       "window-misaligned": 1,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 37,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.6
     },
     "houseboat-museum": {
       "opening-floating": 0,
@@ -1766,11 +2044,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 4,
-      "zfight-m2": 6.1,
-      "zfight-near-m2": 0.6,
+      "zfight-m2": 6.6,
+      "zfight-near-m2": 5.2,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "houten-huys": {
       "opening-floating": 0,
@@ -1779,10 +2059,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0.3,
+      "zfight-near-m2": 11.5,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "huis-aan-drie-grachten": {
       "opening-floating": 1,
@@ -1790,11 +2072,13 @@
       "opening-overhang": 4,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 4.8,
-      "zfight-near-m2": 0.1,
+      "zfight-m2": 0.3,
+      "zfight-near-m2": 66.5,
       "window-mismatch": 0,
       "window-missing": 1,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 1.8,
+      "zfight-same-m2": 4
     },
     "huis-bartolotti": {
       "opening-floating": 2,
@@ -1803,10 +2087,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 1.3,
-      "zfight-near-m2": 0.1,
+      "zfight-near-m2": 32.9,
       "window-mismatch": 5,
       "window-missing": 0,
-      "window-misaligned": 1
+      "window-misaligned": 1,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 349.6
     },
     "huis-de-pinto": {
       "opening-floating": 0,
@@ -1815,10 +2101,12 @@
       "opening-overhang-fail": 1,
       "opening-buried": 2,
       "zfight-m2": 0.5,
-      "zfight-near-m2": 1,
+      "zfight-near-m2": 179.6,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 2.3,
+      "zfight-same-m2": 0.1
     },
     "huis-marseille": {
       "opening-floating": 114,
@@ -1826,11 +2114,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 1,
-      "zfight-m2": 0.3,
-      "zfight-near-m2": 0,
+      "zfight-m2": 1.3,
+      "zfight-near-m2": 165.5,
       "window-mismatch": 8,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 2
     },
     "huize-frankendael": {
       "opening-floating": 4,
@@ -1838,11 +2128,13 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 5,
-      "zfight-near-m2": 0,
+      "zfight-m2": 3.4,
+      "zfight-near-m2": 25.8,
       "window-mismatch": 13,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.2,
+      "zfight-same-m2": 10.2
     },
     "huize-lydia": {
       "opening-floating": 2,
@@ -1850,21 +2142,31 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 20,
-      "zfight-m2": 2.4,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0.1,
+      "zfight-near-m2": 431.6,
       "window-mismatch": 30,
       "window-missing": 1,
-      "window-misaligned": 1
+      "window-misaligned": 1,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 941.1
     },
     "hva-rhijnspoorplein-2": {
       "window-rhythm-fail": 5,
       "window-mismatch-spec": 15,
-      "window-missing-spec": 64
+      "window-missing-spec": 64,
+      "zfight-m2": 3068.2,
+      "zfight-tight-m2": 3529.1,
+      "zfight-near-m2": 7451.9,
+      "zfight-same-m2": 0
     },
     "hva-wibautstraat-3": {
       "window-rhythm-fail": 4,
       "window-mismatch-spec": 238,
-      "window-missing-spec": 26
+      "window-missing-spec": 26,
+      "zfight-m2": 4652.8,
+      "zfight-tight-m2": 5767.7,
+      "zfight-near-m2": 12549,
+      "zfight-same-m2": 0
     },
     "idfa-pavilion": {
       "opening-floating": 10,
@@ -1872,11 +2174,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 4.9,
-      "zfight-near-m2": 0.1,
+      "zfight-m2": 0.4,
+      "zfight-near-m2": 152.2,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.1,
+      "zfight-same-m2": 6.7
     },
     "ij-toren": {
       "opening-floating": 0,
@@ -1884,14 +2188,16 @@
       "opening-overhang": 4,
       "opening-overhang-fail": 3,
       "opening-buried": 2,
-      "zfight-m2": 14.3,
-      "zfight-near-m2": 3,
+      "zfight-m2": 74,
+      "zfight-near-m2": 802.3,
       "window-mismatch": 2,
       "window-missing": 2,
       "window-misaligned": 1,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 10,
-      "window-missing-spec": 4
+      "window-missing-spec": 4,
+      "zfight-tight-m2": 26.8,
+      "zfight-same-m2": 74.3
     },
     "ing-house": {
       "opening-floating": 0,
@@ -1900,15 +2206,21 @@
       "opening-overhang-fail": 1,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 146.7,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "jacob-bontiusplaats-9": {
       "window-rhythm-fail": 4,
       "window-mismatch-spec": 149,
-      "window-missing-spec": 46
+      "window-missing-spec": 46,
+      "zfight-m2": 2374.8,
+      "zfight-tight-m2": 4035.7,
+      "zfight-near-m2": 12504.3,
+      "zfight-same-m2": 2514.7
     },
     "jeruzalemkerk": {
       "opening-floating": 54,
@@ -1916,11 +2228,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 1,
-      "zfight-m2": 28.7,
-      "zfight-near-m2": 31.5,
+      "zfight-m2": 7.4,
+      "zfight-near-m2": 70.5,
       "window-mismatch": 2,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 9.1,
+      "zfight-same-m2": 43.7
     },
     "jewish-museum": {
       "opening-floating": 26,
@@ -1928,15 +2242,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 7,
-      "zfight-m2": 2.1,
-      "zfight-near-m2": 0.1,
+      "zfight-m2": 18.9,
+      "zfight-near-m2": 552.1,
       "window-mismatch": 12,
       "window-missing": 1,
       "window-misaligned": 2,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 40.2,
+      "zfight-same-m2": 23.9
     },
     "kattenkabinet": {
       "opening-floating": 3,
@@ -1945,10 +2261,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0.1,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 158,
       "window-mismatch": 6,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.8,
+      "zfight-same-m2": 0
     },
     "keith-haring-mural": {
       "opening-floating": 34,
@@ -1957,10 +2275,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 2,
       "zfight-m2": 0,
-      "zfight-near-m2": 9.9,
+      "zfight-near-m2": 339.1,
       "window-mismatch": 5,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 17.2,
+      "zfight-same-m2": 5.4
     },
     "keizersgrachtkerk": {
       "opening-floating": 12,
@@ -1968,11 +2288,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 7,
-      "zfight-m2": 372.4,
-      "zfight-near-m2": 617.6,
+      "zfight-m2": 0,
+      "zfight-near-m2": 88.2,
       "window-mismatch": 3,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 992.3
     },
     "kesbeke": {
       "opening-floating": 0,
@@ -1980,11 +2302,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 1.2,
-      "zfight-near-m2": 1.9,
+      "zfight-m2": 2.7,
+      "zfight-near-m2": 105.4,
       "window-mismatch": 6,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 1.4,
+      "zfight-same-m2": 0
     },
     "kesbeke-shop": {
       "opening-floating": 1,
@@ -1992,11 +2316,13 @@
       "opening-overhang": 4,
       "opening-overhang-fail": 4,
       "opening-buried": 0,
-      "zfight-m2": 2.4,
-      "zfight-near-m2": 0.8,
+      "zfight-m2": 2.8,
+      "zfight-near-m2": 75.1,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.6,
+      "zfight-same-m2": 0.2
     },
     "ketelhuis": {
       "opening-floating": 4,
@@ -2004,11 +2330,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.4,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0.6,
+      "zfight-near-m2": 123,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.4,
+      "zfight-same-m2": 0
     },
     "kinderkookkafe": {
       "opening-floating": 2,
@@ -2016,11 +2344,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 3.9,
-      "zfight-near-m2": 0.3,
+      "zfight-m2": 0,
+      "zfight-near-m2": 11,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 3.3
     },
     "kleine-komedie": {
       "opening-floating": 0,
@@ -2028,14 +2358,16 @@
       "opening-overhang": 3,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.3,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 15.1,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "klimhal": {
       "opening-floating": 0,
@@ -2043,14 +2375,16 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 2,
       "opening-buried": 0,
-      "zfight-m2": 2.4,
-      "zfight-near-m2": 77.5,
+      "zfight-m2": 10,
+      "zfight-near-m2": 106.2,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 102.4,
+      "zfight-same-m2": 0.3
     },
     "klimmuur-centraal": {
       "opening-floating": 4,
@@ -2058,16 +2392,22 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.3,
-      "zfight-near-m2": 563.9,
+      "zfight-m2": 167.9,
+      "zfight-near-m2": 473.1,
       "window-mismatch": 3,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 422.8,
+      "zfight-same-m2": 0
     },
     "kohnstammhuis": {
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 87,
-      "window-missing-spec": 11
+      "window-missing-spec": 11,
+      "zfight-m2": 3171.4,
+      "zfight-tight-m2": 3531.3,
+      "zfight-near-m2": 7513.6,
+      "zfight-same-m2": 0
     },
     "koningskerk": {
       "opening-floating": 0,
@@ -2075,11 +2415,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 10,
-      "zfight-m2": 29.8,
-      "zfight-near-m2": 67.4,
+      "zfight-m2": 58,
+      "zfight-near-m2": 84.7,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 47.8,
+      "zfight-same-m2": 8
     },
     "krasnapolsky": {
       "opening-floating": 0,
@@ -2087,15 +2429,17 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 2,
-      "zfight-near-m2": 6.1,
+      "zfight-m2": 4.4,
+      "zfight-near-m2": 211.9,
       "window-mismatch": 18,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 18,
       "window-missing-spec": 0,
-      "material-slot-untagged-permille": 0
+      "material-slot-untagged-permille": 0,
+      "zfight-tight-m2": 7.5,
+      "zfight-same-m2": 6.1
     },
     "kriterion": {
       "opening-floating": 0,
@@ -2103,11 +2447,13 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 25.8,
-      "zfight-near-m2": 7.7,
+      "zfight-m2": 36,
+      "zfight-near-m2": 80.3,
       "window-mismatch": 6,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "lab111": {
       "opening-floating": 0,
@@ -2115,15 +2461,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-m2": 3.2,
+      "zfight-near-m2": 620.4,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 1777.8
     },
     "lekstraat-synagoge": {
       "opening-floating": 0,
@@ -2131,11 +2479,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 8,
-      "zfight-m2": 0.5,
-      "zfight-near-m2": 0,
+      "zfight-m2": 3,
+      "zfight-near-m2": 17,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.8,
+      "zfight-same-m2": 0.5
     },
     "levend-paardenmuseum": {
       "opening-floating": 0,
@@ -2143,11 +2493,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0.3,
+      "zfight-near-m2": 38.5,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 15.7,
+      "zfight-same-m2": 0
     },
     "ljg-synagoge": {
       "opening-floating": 0,
@@ -2155,14 +2507,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 4,
-      "zfight-m2": 1.5,
-      "zfight-near-m2": 12.1,
+      "zfight-m2": 60.5,
+      "zfight-near-m2": 172.3,
       "window-mismatch": 10,
       "window-missing": 2,
       "window-misaligned": 2,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 10,
-      "window-missing-spec": 2
+      "window-missing-spec": 2,
+      "zfight-tight-m2": 9.4,
+      "zfight-same-m2": 1.2
     },
     "lloyd-hotel": {
       "opening-floating": 0,
@@ -2170,14 +2524,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 9,
-      "zfight-m2": 14.7,
-      "zfight-near-m2": 19.9,
+      "zfight-m2": 23.2,
+      "zfight-near-m2": 813.6,
       "window-mismatch": 102,
       "window-missing": 4,
       "window-misaligned": 0,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 102,
-      "window-missing-spec": 4
+      "window-missing-spec": 4,
+      "zfight-tight-m2": 0.1,
+      "zfight-same-m2": 3.6
     },
     "luther-museum": {
       "opening-floating": 17,
@@ -2185,11 +2541,13 @@
       "opening-overhang": 7,
       "opening-overhang-fail": 4,
       "opening-buried": 2,
-      "zfight-m2": 239.7,
-      "zfight-near-m2": 331,
+      "zfight-m2": 7.1,
+      "zfight-near-m2": 56.3,
       "window-mismatch": 7,
       "window-missing": 2,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 598.9
     },
     "maarten-lutherkerk": {
       "opening-floating": 0,
@@ -2197,14 +2555,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.7,
-      "zfight-near-m2": 0,
+      "zfight-m2": 1.8,
+      "zfight-near-m2": 15,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 1,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 3.5,
+      "zfight-same-m2": 3.9
     },
     "machinegebouw": {
       "opening-floating": 0,
@@ -2212,11 +2572,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.7,
-      "zfight-near-m2": 0,
+      "zfight-m2": 30.2,
+      "zfight-near-m2": 241.5,
       "window-mismatch": 0,
       "window-missing": 16,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 89,
+      "zfight-same-m2": 4.8
     },
     "madame-tussauds": {
       "opening-floating": 0,
@@ -2224,15 +2586,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 4,
-      "zfight-m2": 2.5,
-      "zfight-near-m2": 0,
+      "zfight-m2": 34,
+      "zfight-near-m2": 1033.3,
       "window-mismatch": 16,
       "window-missing": 2,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 887.4,
+      "zfight-same-m2": 20
     },
     "magna-plaza": {
       "opening-floating": 6,
@@ -2240,15 +2604,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 4,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-m2": 41.8,
+      "zfight-near-m2": 489,
       "window-mismatch": 10,
       "window-missing": 4,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 42.3,
+      "zfight-same-m2": 17.6
     },
     "mediamatic": {
       "opening-floating": 7,
@@ -2256,11 +2622,13 @@
       "opening-overhang": 4,
       "opening-overhang-fail": 3,
       "opening-buried": 13,
-      "zfight-m2": 1.5,
-      "zfight-near-m2": 0.2,
+      "zfight-m2": 0,
+      "zfight-near-m2": 32,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.4,
+      "zfight-same-m2": 1.4
     },
     "meerpadkerk": {
       "opening-floating": 0,
@@ -2268,14 +2636,16 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.7,
-      "zfight-near-m2": 18.7,
+      "zfight-m2": 16.2,
+      "zfight-near-m2": 31.6,
       "window-mismatch": 2,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 2,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 1.5,
+      "zfight-same-m2": 0.8
     },
     "melkweg": {
       "opening-floating": 117,
@@ -2283,14 +2653,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 9,
-      "zfight-m2": 2.9,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 13,
       "window-mismatch": 1,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 1,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 9.7
     },
     "micropia-ledenlokalen": {
       "opening-floating": 16,
@@ -2298,11 +2670,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 12,
-      "zfight-m2": 0.3,
-      "zfight-near-m2": 0,
+      "zfight-m2": 30.9,
+      "zfight-near-m2": 198.2,
       "window-mismatch": 5,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 34.7,
+      "zfight-same-m2": 325.3
     },
     "midwest": {
       "opening-floating": 30,
@@ -2310,11 +2684,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 2,
-      "zfight-m2": 2.2,
-      "zfight-near-m2": 0.7,
+      "zfight-m2": 2.3,
+      "zfight-near-m2": 235.7,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 1.4,
+      "zfight-same-m2": 1.5
     },
     "moco-museum": {
       "opening-floating": 9,
@@ -2322,11 +2698,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 14,
-      "zfight-m2": 0.4,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0.3,
+      "zfight-near-m2": 9.8,
       "window-mismatch": 6,
       "window-missing": 2,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "mondriaan-tower": {
       "opening-floating": 0,
@@ -2334,11 +2712,13 @@
       "opening-overhang": 24,
       "opening-overhang-fail": 3,
       "opening-buried": 0,
-      "zfight-m2": 40.4,
-      "zfight-near-m2": 4.6,
+      "zfight-m2": 30.4,
+      "zfight-near-m2": 87.5,
       "window-mismatch": 108,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 8.8,
+      "zfight-same-m2": 105.1
     },
     "monk-amsterdam": {
       "opening-floating": 13,
@@ -2346,11 +2726,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0.3,
+      "zfight-m2": 0.3,
+      "zfight-near-m2": 987.9,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 8.2,
+      "zfight-same-m2": 151.3
     },
     "montelbaanstoren-amsterdam": {
       "opening-floating": 0,
@@ -2358,14 +2740,16 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 6,
-      "zfight-m2": 0.3,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 12.2,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "motorkade-1": {
       "opening-floating": 0,
@@ -2373,14 +2757,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.1,
-      "zfight-near-m2": 4.8,
+      "zfight-m2": 2.5,
+      "zfight-near-m2": 241.1,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 24,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 2.5,
+      "zfight-same-m2": 0.1
     },
     "mountain-network": {
       "opening-floating": 0,
@@ -2388,15 +2774,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 14,
-      "zfight-near-m2": 89.3,
+      "zfight-m2": 76.9,
+      "zfight-near-m2": 3213.8,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 11.7,
+      "zfight-same-m2": 1.4
     },
     "mozes-en-aaronkerk": {
       "opening-floating": 0,
@@ -2404,14 +2792,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.1,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 468.9,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.1
     },
     "muiderkerk": {
       "opening-floating": 0,
@@ -2419,14 +2809,16 @@
       "opening-overhang": 5,
       "opening-overhang-fail": 0,
       "opening-buried": 5,
-      "zfight-m2": 18.2,
-      "zfight-near-m2": 149.5,
+      "zfight-m2": 51.8,
+      "zfight-near-m2": 1516,
       "window-mismatch": 6,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 6,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 184,
+      "zfight-same-m2": 9.1
     },
     "muiderpoort": {
       "opening-floating": 0,
@@ -2434,11 +2826,13 @@
       "opening-overhang": 5,
       "opening-overhang-fail": 5,
       "opening-buried": 4,
-      "zfight-m2": 10.8,
-      "zfight-near-m2": 4.6,
+      "zfight-m2": 13.6,
+      "zfight-near-m2": 80.7,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 19.2
     },
     "multatuli": {
       "opening-floating": 6,
@@ -2447,10 +2841,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 10.4,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.4
     },
     "munttoren-amsterdam": {
       "opening-floating": 35,
@@ -2459,13 +2855,15 @@
       "opening-overhang-fail": 6,
       "opening-buried": 3,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 10.4,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 10.7
     },
     "museum-amsterdam-noord": {
       "opening-floating": 0,
@@ -2474,10 +2872,12 @@
       "opening-overhang-fail": 1,
       "opening-buried": 4,
       "zfight-m2": 1.6,
-      "zfight-near-m2": 1,
+      "zfight-near-m2": 60.4,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.4,
+      "zfight-same-m2": 0
     },
     "museum-van-loon": {
       "opening-floating": 1,
@@ -2485,11 +2885,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 1,
-      "zfight-m2": 9.6,
-      "zfight-near-m2": 0,
+      "zfight-m2": 9.5,
+      "zfight-near-m2": 6.9,
       "window-mismatch": 2,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 1.1
     },
     "muziekgebouw-bimhuis": {
       "opening-floating": 11,
@@ -2497,14 +2899,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 14.1,
+      "zfight-m2": 13.7,
       "zfight-near-m2": 0,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.3
     },
     "naco-house": {
       "opening-floating": 4,
@@ -2513,10 +2917,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 15.4,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 3.9,
+      "zfight-same-m2": 0
     },
     "nassaukerk": {
       "opening-floating": 0,
@@ -2524,11 +2930,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 1.6,
-      "zfight-near-m2": 1.6,
+      "zfight-m2": 3.2,
+      "zfight-near-m2": 29.5,
       "window-mismatch": 4,
       "window-missing": 0,
-      "window-misaligned": 1
+      "window-misaligned": 1,
+      "zfight-tight-m2": 1,
+      "zfight-same-m2": 0.3
     },
     "national-holocaust-museum": {
       "opening-floating": 33,
@@ -2536,11 +2944,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 4,
-      "zfight-m2": 192.1,
-      "zfight-near-m2": 0,
+      "zfight-m2": 336,
+      "zfight-near-m2": 81.9,
       "window-mismatch": 5,
       "window-missing": 1,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 40.3
     },
     "national-monument-on-the-dam": {
       "opening-floating": 0,
@@ -2549,10 +2959,12 @@
       "opening-overhang-fail": 1,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 33.5,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "ndsm-container-arch": {
       "opening-floating": 0,
@@ -2560,11 +2972,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 3.5,
+      "zfight-m2": 12.1,
+      "zfight-near-m2": 214.1,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 56.9,
+      "zfight-same-m2": 0.2
     },
     "ndsm-warehouse-complex": {
       "opening-floating": 0,
@@ -2572,11 +2986,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 17.6,
-      "zfight-near-m2": 33,
+      "zfight-m2": 49.5,
+      "zfight-near-m2": 6.8,
       "window-mismatch": 2,
       "window-missing": 3,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 4.5
     },
     "nemo": {
       "opening-floating": 10,
@@ -2584,14 +3000,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 8,
-      "zfight-m2": 9.8,
+      "zfight-m2": 9.7,
       "zfight-near-m2": 0,
       "window-mismatch": 6,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 6,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.4
     },
     "nieuw-dakota": {
       "opening-floating": 0,
@@ -2600,10 +3018,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0.8,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 121.9,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 8.6
     },
     "nieuwe-kerk": {
       "opening-floating": 0,
@@ -2611,15 +3031,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 5,
-      "zfight-m2": 2.6,
-      "zfight-near-m2": 6.5,
+      "zfight-m2": 35.8,
+      "zfight-near-m2": 278,
       "window-mismatch": 3,
       "window-missing": 0,
       "window-misaligned": 1,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 33.6,
+      "zfight-same-m2": 0.3
     },
     "nieuwendammerkerk": {
       "opening-floating": 8,
@@ -2627,11 +3049,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 2,
-      "zfight-m2": 60,
-      "zfight-near-m2": 2.5,
+      "zfight-m2": 4.7,
+      "zfight-near-m2": 169.3,
       "window-mismatch": 2,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 1.9,
+      "zfight-same-m2": 70.7
     },
     "nikolaas-myrakerk": {
       "opening-floating": 2,
@@ -2639,11 +3063,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 1.1,
-      "zfight-near-m2": 23,
+      "zfight-m2": 19.1,
+      "zfight-near-m2": 29.1,
       "window-mismatch": 7,
       "window-missing": 1,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 14.1,
+      "zfight-same-m2": 0
     },
     "niod": {
       "opening-floating": 72,
@@ -2651,11 +3077,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 1,
-      "zfight-m2": 0.7,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0.3,
+      "zfight-near-m2": 224.1,
       "window-mismatch": 5,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 14.3,
+      "zfight-same-m2": 4.7
     },
     "oba-oosterdok": {
       "opening-floating": 0,
@@ -2663,11 +3091,13 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 1,
       "opening-buried": 3,
-      "zfight-m2": 172.5,
-      "zfight-near-m2": 362.9,
+      "zfight-m2": 392.3,
+      "zfight-near-m2": 232.4,
       "window-mismatch": 68,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 2.1,
+      "zfight-same-m2": 231.9
     },
     "obrechtkerk": {
       "opening-floating": 0,
@@ -2675,15 +3105,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.1,
-      "zfight-near-m2": 0.1,
+      "zfight-m2": 0.2,
+      "zfight-near-m2": 531.8,
       "window-mismatch": 1,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 1,
       "window-missing-spec": 0,
-      "material-slot-untagged-permille": 0
+      "material-slot-untagged-permille": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 1.1
     },
     "occii": {
       "opening-floating": 7,
@@ -2691,11 +3123,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 3,
-      "zfight-m2": 0.1,
-      "zfight-near-m2": 1.6,
+      "zfight-m2": 0.2,
+      "zfight-near-m2": 14,
       "window-mismatch": 2,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 2.6,
+      "zfight-same-m2": 0
     },
     "odessa": {
       "opening-floating": 0,
@@ -2703,14 +3137,16 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 4.2,
-      "zfight-near-m2": 2,
+      "zfight-m2": 5.2,
+      "zfight-near-m2": 65.4,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 5.5,
+      "zfight-same-m2": 0.7
     },
     "olvg-oost": {
       "opening-floating": 0,
@@ -2722,7 +3158,9 @@
       "zfight-near-m2": 0,
       "window-mismatch": 0,
       "window-missing": 5,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "olvg-west": {
       "opening-floating": 0,
@@ -2730,11 +3168,13 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 2,
       "opening-buried": 0,
-      "zfight-m2": 188.7,
-      "zfight-near-m2": 0,
+      "zfight-m2": 51.7,
+      "zfight-near-m2": 0.1,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 188.7
     },
     "ons-lieve-heer-op-solder": {
       "opening-floating": 0,
@@ -2742,11 +3182,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 0.4,
-      "zfight-near-m2": 0,
+      "zfight-m2": 1.7,
+      "zfight-near-m2": 246.1,
       "window-mismatch": 12,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.6,
+      "zfight-same-m2": 0.3
     },
     "oost-indisch-huis": {
       "opening-floating": 352,
@@ -2755,10 +3197,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0.5,
-      "zfight-near-m2": 0.3,
+      "zfight-near-m2": 1071.3,
       "window-mismatch": 7,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.1,
+      "zfight-same-m2": 0.2
     },
     "oostenburgermiddenstraat-228": {
       "opening-floating": 0,
@@ -2766,14 +3210,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 9,
-      "zfight-m2": 0.2,
-      "zfight-near-m2": 34.7,
+      "zfight-m2": 16.6,
+      "zfight-near-m2": 1794,
       "window-mismatch": 142,
       "window-missing": 16,
       "window-misaligned": 12,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 142,
-      "window-missing-spec": 16
+      "window-missing-spec": 16,
+      "zfight-tight-m2": 58.3,
+      "zfight-same-m2": 0
     },
     "oosterkerk": {
       "opening-floating": 0,
@@ -2781,14 +3227,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 5,
-      "zfight-m2": 0.2,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 486.7,
       "window-mismatch": 7,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 7,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0.2
     },
     "oosterparkkerk": {
       "opening-floating": 0,
@@ -2796,11 +3244,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 1,
-      "zfight-m2": 179.6,
-      "zfight-near-m2": 8.9,
+      "zfight-m2": 1.7,
+      "zfight-near-m2": 11.5,
       "window-mismatch": 5,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 3.2,
+      "zfight-same-m2": 190.6
     },
     "opstandingskerk": {
       "opening-floating": 0,
@@ -2809,13 +3259,15 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 246.8,
       "window-mismatch": 37,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 37,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "orgelpark": {
       "opening-floating": 17,
@@ -2824,10 +3276,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 242.2,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 774.3
     },
     "ot301": {
       "opening-floating": 0,
@@ -2835,14 +3289,16 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0.6,
+      "zfight-near-m2": 390.4,
       "window-mismatch": 17,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 17,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 301.1
     },
     "oude-kerk": {
       "opening-floating": 0,
@@ -2850,15 +3306,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 2,
-      "zfight-m2": 86.7,
-      "zfight-near-m2": 95.6,
+      "zfight-m2": 34.1,
+      "zfight-near-m2": 1673.1,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 50,
+      "zfight-same-m2": 593.7
     },
     "oude-lutherse-kerk": {
       "opening-floating": 8,
@@ -2867,10 +3325,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 1,
+      "zfight-near-m2": 291.2,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 96.8,
+      "zfight-same-m2": 0
     },
     "oudemanhuispoort": {
       "opening-floating": 0,
@@ -2878,15 +3338,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.5,
-      "zfight-near-m2": 0.7,
+      "zfight-m2": 2.7,
+      "zfight-near-m2": 36.5,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 2,
       "window-missing-spec": 0,
-      "material-slot-untagged-permille": 0
+      "material-slot-untagged-permille": 0,
+      "zfight-tight-m2": 3.9,
+      "zfight-same-m2": 0.6
     },
     "overtoom-197": {
       "opening-floating": 0,
@@ -2894,14 +3356,16 @@
       "opening-overhang": 3,
       "opening-overhang-fail": 3,
       "opening-buried": 45,
-      "zfight-m2": 1.4,
-      "zfight-near-m2": 6.4,
+      "zfight-m2": 5.5,
+      "zfight-near-m2": 257.9,
       "window-mismatch": 27,
       "window-missing": 6,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 27,
-      "window-missing-spec": 6
+      "window-missing-spec": 6,
+      "zfight-tight-m2": 92.4,
+      "zfight-same-m2": 2
     },
     "pakhuis-de-zwijger": {
       "opening-floating": 0,
@@ -2909,14 +3373,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.9,
-      "zfight-near-m2": 0.3,
+      "zfight-m2": 6.1,
+      "zfight-near-m2": 85.2,
       "window-mismatch": 9,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 9,
-      "window-missing-spec": 2
+      "window-missing-spec": 2,
+      "zfight-tight-m2": 20.8,
+      "zfight-same-m2": 0.5
     },
     "palace-on-the-dam": {
       "opening-floating": 7,
@@ -2924,14 +3390,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 12,
-      "zfight-m2": 248.3,
-      "zfight-near-m2": 150.4,
+      "zfight-m2": 64.9,
+      "zfight-near-m2": 1320.7,
       "window-mismatch": 7,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 7,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 17.4,
+      "zfight-same-m2": 596.4
     },
     "paradiso": {
       "opening-floating": 8,
@@ -2943,7 +3411,9 @@
       "zfight-near-m2": 0,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "pathe-city": {
       "opening-floating": 149,
@@ -2951,11 +3421,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-m2": 1.1,
+      "zfight-near-m2": 5,
       "window-mismatch": 12,
       "window-missing": 2,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "pathe-de-munt": {
       "opening-floating": 0,
@@ -2963,11 +3435,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 4,
-      "zfight-m2": 4.3,
-      "zfight-near-m2": 8,
+      "zfight-m2": 9.1,
+      "zfight-near-m2": 40.9,
       "window-mismatch": 2,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 22.8,
+      "zfight-same-m2": 0
     },
     "petrus-en-paulus-kerk": {
       "opening-floating": 0,
@@ -2975,14 +3449,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 4,
-      "zfight-m2": 3,
-      "zfight-near-m2": 18.9,
+      "zfight-m2": 9.9,
+      "zfight-near-m2": 318.3,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 57.3,
+      "zfight-same-m2": 5.2
     },
     "petruskerk": {
       "opening-floating": 0,
@@ -2991,10 +3467,12 @@
       "opening-overhang-fail": 2,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 37.4,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.2,
+      "zfight-same-m2": 10.2
     },
     "pianola-museum": {
       "opening-floating": 2,
@@ -3002,11 +3480,13 @@
       "opening-overhang": 4,
       "opening-overhang-fail": 2,
       "opening-buried": 0,
-      "zfight-m2": 1.3,
-      "zfight-near-m2": 0,
+      "zfight-m2": 4.1,
+      "zfight-near-m2": 109.7,
       "window-mismatch": 6,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "plein-theater": {
       "opening-floating": 0,
@@ -3014,11 +3494,13 @@
       "opening-overhang": 3,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0.7,
+      "zfight-near-m2": 793,
       "window-mismatch": 2,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "pllek": {
       "opening-floating": 0,
@@ -3026,11 +3508,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 1,
-      "zfight-m2": 0.1,
-      "zfight-near-m2": 530.1,
+      "zfight-m2": 532.8,
+      "zfight-near-m2": 179.8,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 3.4,
+      "zfight-same-m2": 1.8
     },
     "podium-mozaiek": {
       "opening-floating": 783,
@@ -3038,11 +3522,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 4.2,
+      "zfight-m2": 4,
+      "zfight-near-m2": 49.7,
       "window-mismatch": 73,
       "window-missing": 20,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.7,
+      "zfight-same-m2": 0
     },
     "pontsteiger": {
       "opening-floating": 0,
@@ -3050,11 +3536,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 54,
-      "zfight-m2": 1504.9,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 3.3,
       "window-mismatch": 46,
       "window-missing": 16,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 3940.5
     },
     "portuguese-synagogue": {
       "opening-floating": 121,
@@ -3062,11 +3550,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 1,
-      "zfight-m2": 5,
-      "zfight-near-m2": 1.7,
+      "zfight-m2": 0.3,
+      "zfight-near-m2": 900.4,
       "window-mismatch": 0,
       "window-missing": 1,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.6,
+      "zfight-same-m2": 4.3
     },
     "posthoornkerk": {
       "opening-floating": 21,
@@ -3074,15 +3564,17 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 196.8,
-      "zfight-near-m2": 41.1,
+      "zfight-m2": 24.4,
+      "zfight-near-m2": 1205.4,
       "window-mismatch": 9,
       "window-missing": 0,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 32.5,
+      "zfight-same-m2": 363.8
     },
     "pulitzer-amsterdam": {
       "opening-floating": 408,
@@ -3090,11 +3582,13 @@
       "opening-overhang": 14,
       "opening-overhang-fail": 12,
       "opening-buried": 0,
-      "zfight-m2": 19.1,
-      "zfight-near-m2": 25.2,
+      "zfight-m2": 72,
+      "zfight-near-m2": 2321.3,
       "window-mismatch": 92,
       "window-missing": 20,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 28,
+      "zfight-same-m2": 93.8
     },
     "rai-amsterdam": {
       "opening-floating": 0,
@@ -3102,15 +3596,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 17.6,
-      "zfight-near-m2": 0,
+      "zfight-m2": 1.4,
+      "zfight-near-m2": 4107.8,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 67.8
     },
     "rasphuispoort": {
       "opening-floating": 0,
@@ -3118,11 +3614,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 1.4,
-      "zfight-near-m2": 0.1,
+      "zfight-m2": 0,
+      "zfight-near-m2": 4.1,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 1.4
     },
     "rem-eiland": {
       "opening-floating": 4,
@@ -3130,11 +3628,13 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 2,
       "opening-buried": 0,
-      "zfight-m2": 12.7,
-      "zfight-near-m2": 0,
+      "zfight-m2": 6.3,
+      "zfight-near-m2": 2.6,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 6.6
     },
     "rembrandt-house": {
       "opening-floating": 0,
@@ -3142,14 +3642,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 4,
-      "zfight-m2": 0.3,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0.8,
+      "zfight-near-m2": 55.5,
       "window-mismatch": 1,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 1,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 33.9,
+      "zfight-same-m2": 1.9
     },
     "rembrandt-tower": {
       "opening-floating": 2,
@@ -3157,11 +3659,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 112.9,
-      "zfight-near-m2": 0,
+      "zfight-m2": 171.7,
+      "zfight-near-m2": 115.6,
       "window-mismatch": 56,
       "window-missing": 8,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 367.8
     },
     "rialto": {
       "opening-floating": 3,
@@ -3170,10 +3674,12 @@
       "opening-overhang-fail": 1,
       "opening-buried": 0,
       "zfight-m2": 3.9,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 10.3,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.4,
+      "zfight-same-m2": 0
     },
     "rijksmuseum": {
       "opening-floating": 0,
@@ -3181,14 +3687,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 40,
-      "zfight-m2": 282.3,
-      "zfight-near-m2": 13.5,
+      "zfight-m2": 91.8,
+      "zfight-near-m2": 4389.8,
       "window-mismatch": 19,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 19,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 197,
+      "zfight-same-m2": 368.7
     },
     "rode-hoed": {
       "opening-floating": 25,
@@ -3196,11 +3704,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.8,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 1190.4,
       "window-mismatch": 15,
       "window-missing": 2,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 22.4,
+      "zfight-same-m2": 287.8
     },
     "ronde-lutherse-kerk": {
       "opening-floating": 0,
@@ -3209,13 +3719,15 @@
       "opening-overhang-fail": 0,
       "opening-buried": 6,
       "zfight-m2": 0,
-      "zfight-near-m2": 4.1,
+      "zfight-near-m2": 238.4,
       "window-mismatch": 2,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 2,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 4.1,
+      "zfight-same-m2": 0
     },
     "royal-theater-carre": {
       "opening-floating": 27,
@@ -3223,11 +3735,13 @@
       "opening-overhang": 26,
       "opening-overhang-fail": 0,
       "opening-buried": 1,
-      "zfight-m2": 1,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0.5,
+      "zfight-near-m2": 492.5,
       "window-mismatch": 5,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 53.8,
+      "zfight-same-m2": 6.6
     },
     "scheepvaarthuis": {
       "opening-floating": 0,
@@ -3235,15 +3749,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.6,
-      "zfight-near-m2": 0.9,
+      "zfight-m2": 2.7,
+      "zfight-near-m2": 194.4,
       "window-mismatch": 40,
       "window-missing": 0,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 4.1,
+      "zfight-same-m2": 0.5
     },
     "scheepvaartmuseum": {
       "material-slot-untagged-permille": 0,
@@ -3252,14 +3768,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.2,
-      "zfight-near-m2": 3,
+      "zfight-m2": 0,
+      "zfight-near-m2": 1178.3,
       "window-mismatch": 90,
       "window-missing": 13,
       "window-misaligned": 0,
       "window-rhythm-fail": 4,
       "window-mismatch-spec": 90,
-      "window-missing-spec": 13
+      "window-missing-spec": 13,
+      "zfight-tight-m2": 9.5,
+      "zfight-same-m2": 0
     },
     "scheltema": {
       "opening-floating": 12,
@@ -3267,11 +3785,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 3.5,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 616.6,
       "window-mismatch": 2,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.8,
+      "zfight-same-m2": 4.6
     },
     "schreierstoren": {
       "opening-floating": 16,
@@ -3279,11 +3799,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 1,
-      "zfight-m2": 2.7,
-      "zfight-near-m2": 0,
+      "zfight-m2": 2.8,
+      "zfight-near-m2": 86.7,
       "window-mismatch": 3,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "sea-palace": {
       "opening-floating": 0,
@@ -3291,14 +3813,16 @@
       "opening-overhang": 4,
       "opening-overhang-fail": 2,
       "opening-buried": 0,
-      "zfight-m2": 10.9,
-      "zfight-near-m2": 7.5,
+      "zfight-m2": 15.8,
+      "zfight-near-m2": 487.8,
       "window-mismatch": 5,
       "window-missing": 0,
       "window-misaligned": 10,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 5,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 2.4,
+      "zfight-same-m2": 18.1
     },
     "sexmuseum-venustempel": {
       "opening-floating": 0,
@@ -3307,10 +3831,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 60.9,
       "window-mismatch": 2,
       "window-missing": 0,
-      "window-misaligned": 1
+      "window-misaligned": 1,
+      "zfight-tight-m2": 0.5,
+      "zfight-same-m2": 0
     },
     "shell-technology-centre": {
       "opening-floating": 0,
@@ -3318,14 +3844,16 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 2,
       "opening-buried": 22,
-      "zfight-m2": 4.3,
-      "zfight-near-m2": 55.3,
+      "zfight-m2": 263.9,
+      "zfight-near-m2": 436.1,
       "window-mismatch": 31,
       "window-missing": 7,
       "window-misaligned": 0,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 31,
-      "window-missing-spec": 7
+      "window-missing-spec": 7,
+      "zfight-tight-m2": 345.7,
+      "zfight-same-m2": 7.7
     },
     "silodam": {
       "opening-floating": 174,
@@ -3333,11 +3861,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 1,
-      "zfight-m2": 1.4,
-      "zfight-near-m2": 0,
+      "zfight-m2": 35,
+      "zfight-near-m2": 3691.9,
       "window-mismatch": 18,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 853.5,
+      "zfight-same-m2": 6.7
     },
     "singelkerk": {
       "opening-floating": 11,
@@ -3345,11 +3875,13 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 2,
       "opening-buried": 0,
-      "zfight-m2": 0.2,
-      "zfight-near-m2": 0.3,
+      "zfight-m2": 0.5,
+      "zfight-near-m2": 51.9,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.1,
+      "zfight-same-m2": 0
     },
     "sint-agneskerk": {
       "opening-floating": 0,
@@ -3358,10 +3890,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 16,
       "zfight-m2": 0,
-      "zfight-near-m2": 0.3,
+      "zfight-near-m2": 42.8,
       "window-mismatch": 2,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 1.4
     },
     "sint-jorishof": {
       "opening-floating": 8,
@@ -3369,11 +3903,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 221,
-      "zfight-m2": 0.3,
-      "zfight-near-m2": 0.5,
+      "zfight-m2": 0,
+      "zfight-near-m2": 1083.5,
       "window-mismatch": 6,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.7,
+      "zfight-same-m2": 745.4
     },
     "sint-nicolaas": {
       "opening-floating": 8,
@@ -3381,11 +3917,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 1,
-      "zfight-m2": 143,
-      "zfight-near-m2": 63.5,
+      "zfight-m2": 0.4,
+      "zfight-near-m2": 57.7,
       "window-mismatch": 6,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.1,
+      "zfight-same-m2": 274.1
     },
     "sint-olofskapel": {
       "opening-floating": 0,
@@ -3393,11 +3931,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 1,
-      "zfight-m2": 1.9,
-      "zfight-near-m2": 3.5,
+      "zfight-m2": 4,
+      "zfight-near-m2": 66.2,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 1.7,
+      "zfight-same-m2": 3.6
     },
     "sloterdijk-station": {
       "opening-floating": 144,
@@ -3405,11 +3945,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-m2": 112.6,
+      "zfight-near-m2": 80.4,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 4.8
     },
     "social-history": {
       "opening-floating": 102,
@@ -3417,14 +3959,16 @@
       "opening-overhang": 2,
       "opening-overhang-fail": 2,
       "opening-buried": 2,
-      "zfight-m2": 3.3,
-      "zfight-near-m2": 2,
+      "zfight-m2": 4,
+      "zfight-near-m2": 653.6,
       "window-mismatch": 19,
       "window-missing": 2,
       "window-misaligned": 0,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 19,
-      "window-missing-spec": 2
+      "window-missing-spec": 2,
+      "zfight-tight-m2": 79,
+      "zfight-same-m2": 9.4
     },
     "stadhuis": {
       "opening-floating": 8,
@@ -3432,15 +3976,17 @@
       "opening-overhang": 12,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 13.8,
-      "zfight-near-m2": 5.4,
+      "zfight-m2": 6.3,
+      "zfight-near-m2": 327.1,
       "window-mismatch": 28,
       "window-missing": 0,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 22.1,
+      "zfight-same-m2": 0
     },
     "stadsschouwburg": {
       "opening-floating": 44,
@@ -3448,14 +3994,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 5.5,
-      "zfight-near-m2": 0,
+      "zfight-m2": 9.8,
+      "zfight-near-m2": 90.7,
       "window-mismatch": 6,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 6,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0.1,
+      "zfight-same-m2": 9.7
     },
     "stedelijk-museum": {
       "opening-floating": 73,
@@ -3463,11 +4011,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 216.1,
+      "zfight-m2": 0.1,
       "zfight-near-m2": 0,
       "window-mismatch": 40,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 215.8
     },
     "straat-museum": {
       "opening-floating": 0,
@@ -3475,15 +4025,17 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 1,
-      "zfight-m2": 12,
-      "zfight-near-m2": 7.3,
+      "zfight-m2": 120.2,
+      "zfight-near-m2": 236.7,
       "window-mismatch": 0,
       "window-missing": 1,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 20.8,
+      "zfight-same-m2": 2.8
     },
     "studiok": {
       "opening-floating": 58,
@@ -3491,11 +4043,13 @@
       "opening-overhang": 8,
       "opening-overhang-fail": 5,
       "opening-buried": 0,
-      "zfight-m2": 20.1,
-      "zfight-near-m2": 4.6,
+      "zfight-m2": 39.1,
+      "zfight-near-m2": 1693.2,
       "window-mismatch": 7,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 1731.5
     },
     "symphony": {
       "opening-floating": 0,
@@ -3503,14 +4057,16 @@
       "opening-overhang": 13,
       "opening-overhang-fail": 10,
       "opening-buried": 21,
-      "zfight-m2": 408.2,
-      "zfight-near-m2": 0.7,
+      "zfight-m2": 364.9,
+      "zfight-near-m2": 10200.5,
       "window-mismatch": 15,
       "window-missing": 0,
       "window-misaligned": 6,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 15,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 117.9,
+      "zfight-same-m2": 262.8
     },
     "the-movies": {
       "opening-floating": 0,
@@ -3519,10 +4075,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 0.6,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "the-rock": {
       "opening-floating": 0,
@@ -3530,11 +4088,13 @@
       "opening-overhang": 7,
       "opening-overhang-fail": 3,
       "opening-buried": 0,
-      "zfight-m2": 460.9,
-      "zfight-near-m2": 103.6,
+      "zfight-m2": 364.8,
+      "zfight-near-m2": 399.5,
       "window-mismatch": 74,
       "window-missing": 18,
-      "window-misaligned": 3
+      "window-misaligned": 3,
+      "zfight-tight-m2": 4.1,
+      "zfight-same-m2": 460.5
     },
     "theater-amsterdam": {
       "opening-floating": 0,
@@ -3542,11 +4102,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-m2": 6.9,
+      "zfight-near-m2": 3234.8,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 2.5,
+      "zfight-same-m2": 0
     },
     "theo-thijssen-museum": {
       "opening-floating": 0,
@@ -3554,11 +4116,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.3,
-      "zfight-near-m2": 5.4,
+      "zfight-m2": 4.6,
+      "zfight-near-m2": 22,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 10.7,
+      "zfight-same-m2": 0
     },
     "this-is-holland": {
       "opening-floating": 0,
@@ -3566,15 +4130,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 1,
-      "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-m2": 1.3,
+      "zfight-near-m2": 295.9,
       "window-mismatch": 3,
       "window-missing": 0,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 290.1,
+      "zfight-same-m2": 1.4
     },
     "thomaskerk": {
       "opening-floating": 0,
@@ -3582,14 +4148,16 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 20.5,
-      "zfight-near-m2": 32.2,
+      "zfight-m2": 46.7,
+      "zfight-near-m2": 167.5,
       "window-mismatch": 5,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 5,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 3.8,
+      "zfight-same-m2": 3.8
     },
     "tobacco-theater": {
       "opening-floating": 7,
@@ -3597,11 +4165,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 3,
-      "zfight-m2": 21.8,
-      "zfight-near-m2": 0,
+      "zfight-m2": 6.2,
+      "zfight-near-m2": 100.6,
       "window-mismatch": 3,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.7,
+      "zfight-same-m2": 35.6
     },
     "torture-museum": {
       "opening-floating": 0,
@@ -3609,14 +4179,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.6,
-      "zfight-near-m2": 19.3,
+      "zfight-m2": 6.6,
+      "zfight-near-m2": 45.5,
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 13.5,
+      "zfight-same-m2": 1
     },
     "treehouse-ndsm": {
       "opening-floating": 183,
@@ -3624,11 +4196,13 @@
       "opening-overhang": 4,
       "opening-overhang-fail": 2,
       "opening-buried": 3,
-      "zfight-m2": 4.1,
-      "zfight-near-m2": 25.8,
+      "zfight-m2": 5.6,
+      "zfight-near-m2": 678.2,
       "window-mismatch": 17,
       "window-missing": 8,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 20.1,
+      "zfight-same-m2": 1.9
     },
     "trippenhuis": {
       "opening-floating": 0,
@@ -3636,14 +4210,16 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 2.2,
-      "zfight-near-m2": 4,
+      "zfight-m2": 2.7,
+      "zfight-near-m2": 52.2,
       "window-mismatch": 2,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 2,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 3.4,
+      "zfight-same-m2": 5.2
     },
     "tuschinski": {
       "opening-floating": 0,
@@ -3652,10 +4228,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 12,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 50.4,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.1,
+      "zfight-same-m2": 0
     },
     "uilenburger-synagoge": {
       "opening-floating": 1,
@@ -3663,11 +4241,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0,
-      "zfight-near-m2": 12.3,
+      "zfight-m2": 1.1,
+      "zfight-near-m2": 253.3,
       "window-mismatch": 2,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0.7,
+      "zfight-same-m2": 13.3
     },
     "valley": {
       "opening-floating": 266,
@@ -3675,15 +4255,17 @@
       "opening-overhang": 7,
       "opening-overhang-fail": 2,
       "opening-buried": 22,
-      "zfight-m2": 18.5,
-      "zfight-near-m2": 0,
+      "zfight-m2": 809.8,
+      "zfight-near-m2": 13551.1,
       "window-mismatch": 30,
       "window-missing": 1,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 2214.5,
+      "zfight-same-m2": 28.2
     },
     "van-gendt-hallen": {
       "opening-floating": 0,
@@ -3691,14 +4273,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 17.7,
-      "zfight-near-m2": 151.3,
+      "zfight-m2": 32.4,
+      "zfight-near-m2": 713.8,
       "window-mismatch": 24,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 24,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 245.7,
+      "zfight-same-m2": 2.3
     },
     "van-gogh-museum": {
       "opening-floating": 7,
@@ -3710,7 +4294,9 @@
       "zfight-near-m2": 0,
       "window-mismatch": 1,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "victoria-hotel": {
       "opening-floating": 0,
@@ -3718,14 +4304,16 @@
       "opening-overhang": 9,
       "opening-overhang-fail": 5,
       "opening-buried": 2,
-      "zfight-m2": 67.6,
-      "zfight-near-m2": 5.8,
+      "zfight-m2": 100.7,
+      "zfight-near-m2": 306.5,
       "window-mismatch": 7,
       "window-missing": 4,
       "window-misaligned": 0,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 7,
-      "window-missing-spec": 4
+      "window-missing-spec": 4,
+      "zfight-tight-m2": 6.9,
+      "zfight-same-m2": 3.6
     },
     "vinoly": {
       "opening-floating": 0,
@@ -3733,11 +4321,13 @@
       "opening-overhang": 4,
       "opening-overhang-fail": 2,
       "opening-buried": 1,
-      "zfight-m2": 52.2,
-      "zfight-near-m2": 21.4,
+      "zfight-m2": 21.2,
+      "zfight-near-m2": 78.6,
       "window-mismatch": 3,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 26.2,
+      "zfight-same-m2": 53.2
     },
     "voc-kade-600": {
       "opening-floating": 6,
@@ -3745,14 +4335,16 @@
       "opening-overhang": 8,
       "opening-overhang-fail": 7,
       "opening-buried": 18,
-      "zfight-m2": 27.7,
-      "zfight-near-m2": 44,
+      "zfight-m2": 24.6,
+      "zfight-near-m2": 2608,
       "window-mismatch": 31,
       "window-missing": 1,
       "window-misaligned": 1,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 31,
-      "window-missing-spec": 1
+      "window-missing-spec": 1,
+      "zfight-tight-m2": 817.5,
+      "zfight-same-m2": 30.2
     },
     "vondelkerk": {
       "opening-floating": 0,
@@ -3760,14 +4352,16 @@
       "opening-overhang": 4,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 1.2,
-      "zfight-near-m2": 5.5,
+      "zfight-m2": 5.8,
+      "zfight-near-m2": 290.1,
       "window-mismatch": 20,
       "window-missing": 2,
       "window-misaligned": 0,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 20,
-      "window-missing-spec": 2
+      "window-missing-spec": 2,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 3.7
     },
     "vondelpark-bandstand": {
       "opening-floating": 0,
@@ -3776,10 +4370,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 2.7,
+      "zfight-near-m2": 3.5,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 3.5,
+      "zfight-same-m2": 0
     },
     "vondelpark-open-air-theater": {
       "opening-floating": 0,
@@ -3788,10 +4384,12 @@
       "opening-overhang-fail": 1,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 95.7,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 0
     },
     "vondeltuin": {
       "opening-floating": 0,
@@ -3799,11 +4397,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.4,
-      "zfight-near-m2": 0.3,
+      "zfight-m2": 0.6,
+      "zfight-near-m2": 61.2,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 2
     },
     "vredeskerk": {
       "opening-floating": 0,
@@ -3811,20 +4411,26 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 9.8,
-      "zfight-near-m2": 6.1,
+      "zfight-m2": 11.7,
+      "zfight-near-m2": 10.4,
       "window-mismatch": 4,
       "window-missing": 1,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 8.7,
+      "zfight-same-m2": 90.9
     },
     "vriesseveem-9": {
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 16,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-m2": 6129.5,
+      "zfight-tight-m2": 5832.1,
+      "zfight-near-m2": 12995.5,
+      "zfight-same-m2": 0
     },
     "vrijburg": {
       "opening-floating": 0,
@@ -3832,14 +4438,16 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 0.7,
-      "zfight-near-m2": 0.2,
+      "zfight-m2": 2.5,
+      "zfight-near-m2": 32.2,
       "window-mismatch": 2,
       "window-missing": 1,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 2,
-      "window-missing-spec": 1
+      "window-missing-spec": 1,
+      "zfight-tight-m2": 12.5,
+      "zfight-same-m2": 0.1
     },
     "w139": {
       "opening-floating": 10,
@@ -3847,14 +4455,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.1,
-      "zfight-near-m2": 2.7,
+      "zfight-m2": 2.8,
+      "zfight-near-m2": 154,
       "window-mismatch": 7,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 7,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0.3,
+      "zfight-same-m2": 0.1
     },
     "waag": {
       "material-slot-untagged-permille": 0,
@@ -3864,13 +4474,15 @@
       "opening-overhang-fail": 0,
       "opening-buried": 0,
       "zfight-m2": 0,
-      "zfight-near-m2": 2.4,
+      "zfight-near-m2": 124.6,
       "window-mismatch": 15,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 3,
       "window-mismatch-spec": 15,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 35.8,
+      "zfight-same-m2": 0
     },
     "walloon-church": {
       "opening-floating": 14,
@@ -3878,11 +4490,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 1.8,
-      "zfight-near-m2": 3.5,
+      "zfight-m2": 10.1,
+      "zfight-near-m2": 155,
       "window-mismatch": 6,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 1.8,
+      "zfight-same-m2": 56.8
     },
     "wereldmuseum-amsterdam": {
       "opening-floating": 904,
@@ -3890,11 +4504,13 @@
       "opening-overhang": 14,
       "opening-overhang-fail": 0,
       "opening-buried": 21,
-      "zfight-m2": 7.2,
-      "zfight-near-m2": 6.9,
+      "zfight-m2": 0.7,
+      "zfight-near-m2": 2332.7,
       "window-mismatch": 5,
       "window-missing": 1,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 391.3,
+      "zfight-same-m2": 33.2
     },
     "west-india-house": {
       "opening-floating": 0,
@@ -3902,11 +4518,13 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.3,
-      "zfight-near-m2": 94.9,
+      "zfight-m2": 90.6,
+      "zfight-near-m2": 348.1,
       "window-mismatch": 2,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 123.5,
+      "zfight-same-m2": 0
     },
     "west-indisch-pakhuis": {
       "opening-floating": 0,
@@ -3914,14 +4532,16 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 1,
       "opening-buried": 0,
-      "zfight-m2": 3.7,
-      "zfight-near-m2": 10.3,
+      "zfight-m2": 8.3,
+      "zfight-near-m2": 268.2,
       "window-mismatch": 38,
       "window-missing": 2,
       "window-misaligned": 0,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 38,
-      "window-missing-spec": 2
+      "window-missing-spec": 2,
+      "zfight-tight-m2": 11,
+      "zfight-same-m2": 1.9
     },
     "westerkerk": {
       "opening-floating": 0,
@@ -3929,15 +4549,17 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 22.2,
-      "zfight-near-m2": 0.3,
+      "zfight-m2": 2.4,
+      "zfight-near-m2": 604.9,
       "window-mismatch": 1,
       "window-missing": 0,
       "window-misaligned": 6,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 1,
       "window-missing-spec": 0,
-      "material-slot-untagged-permille": 0
+      "material-slot-untagged-permille": 0,
+      "zfight-tight-m2": 0.5,
+      "zfight-same-m2": 49.7
     },
     "willem-de-zwijgerkerk": {
       "opening-floating": 0,
@@ -3945,14 +4567,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.5,
-      "zfight-near-m2": 1.1,
+      "zfight-m2": 1.3,
+      "zfight-near-m2": 126.9,
       "window-mismatch": 4,
       "window-missing": 0,
       "window-misaligned": 8,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 4,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 20.7,
+      "zfight-same-m2": 0
     },
     "willem-de-zwijgerlaan-350": {
       "opening-floating": 0,
@@ -3960,14 +4584,16 @@
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 0.9,
-      "zfight-near-m2": 17.8,
+      "zfight-m2": 7.6,
+      "zfight-near-m2": 1337.3,
       "window-mismatch": 4,
       "window-missing": 9,
       "window-misaligned": 1,
       "window-rhythm-fail": 2,
       "window-mismatch-spec": 4,
-      "window-missing-spec": 9
+      "window-missing-spec": 9,
+      "zfight-tight-m2": 509.9,
+      "zfight-same-m2": 0.2
     },
     "willet-holthuysen": {
       "opening-floating": 0,
@@ -3975,11 +4601,13 @@
       "opening-overhang": 4,
       "opening-overhang-fail": 4,
       "opening-buried": 0,
-      "zfight-m2": 0.8,
-      "zfight-near-m2": 0,
+      "zfight-m2": 0.2,
+      "zfight-near-m2": 358.8,
       "window-mismatch": 5,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 5.8,
+      "zfight-same-m2": 3.8
     },
     "wine-guildhall": {
       "opening-floating": 0,
@@ -3987,11 +4615,13 @@
       "opening-overhang": 1,
       "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 1.7,
-      "zfight-near-m2": 2.7,
+      "zfight-m2": 0.4,
+      "zfight-near-m2": 39.1,
       "window-mismatch": 4,
       "window-missing": 0,
-      "window-misaligned": 4
+      "window-misaligned": 4,
+      "zfight-tight-m2": 2.3,
+      "zfight-same-m2": 80.8
     },
     "woongebouw-wladiwostok": {
       "opening-floating": 0,
@@ -3999,14 +4629,16 @@
       "opening-overhang": 11,
       "opening-overhang-fail": 2,
       "opening-buried": 0,
-      "zfight-m2": 3.5,
-      "zfight-near-m2": 0.1,
+      "zfight-m2": 2.6,
+      "zfight-near-m2": 527,
       "window-mismatch": 12,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 12,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 0,
+      "zfight-same-m2": 3.4
     },
     "zevenlandenhuizen": {
       "opening-floating": 0,
@@ -4014,14 +4646,16 @@
       "opening-overhang": 4,
       "opening-overhang-fail": 3,
       "opening-buried": 8,
-      "zfight-m2": 9.2,
-      "zfight-near-m2": 40.9,
+      "zfight-m2": 20.8,
+      "zfight-near-m2": 246.5,
       "window-mismatch": 8,
       "window-missing": 1,
       "window-misaligned": 1,
       "window-rhythm-fail": 3,
       "window-mismatch-spec": 8,
-      "window-missing-spec": 1
+      "window-missing-spec": 1,
+      "zfight-tight-m2": 63.8,
+      "zfight-same-m2": 17.4
     },
     "zuiderkerk": {
       "opening-floating": 0,
@@ -4029,14 +4663,16 @@
       "opening-overhang": 8,
       "opening-overhang-fail": 7,
       "opening-buried": 0,
-      "zfight-m2": 8.3,
-      "zfight-near-m2": 1.6,
+      "zfight-m2": 6.7,
+      "zfight-near-m2": 248,
       "window-mismatch": 4,
       "window-missing": 0,
       "window-misaligned": 0,
       "window-rhythm-fail": 1,
       "window-mismatch-spec": 4,
-      "window-missing-spec": 0
+      "window-missing-spec": 0,
+      "zfight-tight-m2": 10.5,
+      "zfight-same-m2": 4.9
     },
     "zuiveringshal-west": {
       "opening-floating": 132,
@@ -4045,10 +4681,12 @@
       "opening-overhang-fail": 0,
       "opening-buried": 2,
       "zfight-m2": 0,
-      "zfight-near-m2": 0,
+      "zfight-near-m2": 618.5,
       "window-mismatch": 3,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "zfight-tight-m2": 172.9,
+      "zfight-same-m2": 1.1
     }
   }
 }

@@ -299,9 +299,8 @@ test('coplanarOverlap gate: new exports fail above 0.5 m2 under 3 cm apart; reco
   assert.deepEqual(regressions({'zfight-m2': 0.2, 'zfight-tight-m2': 0.3, 'zfight-near-m2': 40}, undefined), [], '3-8 cm is reported, not failed, on a new export');
   assert.equal(regressions({'zfight-m2': 0.2, 'zfight-tight-m2': 0.4, 'zfight-near-m2': 0.4}, undefined).length, 1, 'combined 0.6 m2 on a new export');
   assert.equal(regressions({'zfight-tight-m2': 3}, {'zfight-tight-m2': 2}).length, 1, 'tight overlap grew past the entry');
-  assert.deepEqual(regressions({'zfight-near-m2': 40}, {'zfight-near-m2': 40}), []);
-  assert.equal(regressions({'zfight-near-m2': 42}, {'zfight-near-m2': 40}).length, 1, 'near overlap grew past the entry');
-  assert.deepEqual(regressions({'zfight-near-m2': 42}, {'zfight-m2': 0}), [], 'an entry recorded before the near gate');
+  assert.deepEqual(regressions({'zfight-near-m2': 400}, {'zfight-near-m2': 40}), [], 'near (3-8 cm) is reported, never gated: lifting a 2-3 cm overlay to 5 cm moves it there');
+  assert.deepEqual(regressions({'zfight-tight-m2': 5}, {'zfight-m2': 0}), [], 'an entry recorded before the tight gate');
 });
 
 test('coplanarOverlap metric: 200k-triangle models finish in seconds', () => {
