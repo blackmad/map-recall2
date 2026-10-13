@@ -1,0 +1,72 @@
+/**
+ * Demo shots: drop the rider in front of named buildings and places and save a chase-camera screenshot per spot.
+ * Not part of check:canal. Run: PW_PORT=4425 DEMO_OUT=artifacts/demo-20261013 npx playwright test demo-shots --project=desktop
+ * Spots come from DEMO_SPOTS (comma-separated names) or default to all.
+ */
+import { test, type Page } from '@playwright/test';
+import { mkdirSync } from 'node:fs';
+import { openRoute } from './helpers';
+
+type Spot = { name: string; centre: [number, number]; standDeg: number; standM: number; query?: string; faceDeg?: number; view?: 'chase' | 'cockpit' };
+
+const SPOTS: Spot[] = [
+  { name: 'police-van-leijenberghlaan', centre: [4.8799828, 52.3311922], standDeg: 262, standM: 48 },
+  { name: 'leidsestraat-67', centre: [4.8853524, 52.3651691], standDeg: 323, standM: 34 },
+  { name: 'oosterkerk', centre: [4.9193125, 52.3699834], standDeg: 225, standM: 52 },
+  { name: 'mozes-en-aaronkerk', centre: [4.9032433, 52.3682715], standDeg: 215, standM: 58 },
+  { name: 'de-duif', centre: [4.8967391, 52.3612861], standDeg: 344, standM: 30 },
+  { name: 'obrechtkerk', centre: [4.8746329, 52.3557558], standDeg: 67, standM: 60 },
+  { name: 'hotel-de-l-europe', centre: [4.8941808, 52.3675477], standDeg: 237, standM: 62 },
+  { name: 'da-costakade-13', centre: [4.8736692, 52.3727839], standDeg: 327, standM: 34 },
+  { name: 'waag', centre: [4.9003229, 52.3727714], standDeg: 200, standM: 52 },
+  { name: 'westerkerk-default', centre: [4.8838960, 52.3744999], standDeg: 140, standM: 72 },
+  { name: 'westerkerk-shared-frame', centre: [4.8838960, 52.3744999], standDeg: 140, standM: 72, query: '?sharedFrame=1' },
+  { name: 'osdorpplein-flat', centre: [4.8076, 52.3585], standDeg: 0, standM: 0, faceDeg: 20 },
+  { name: 'osdorpplein-own-ground', centre: [4.8076, 52.3585], standDeg: 0, standM: 0, faceDeg: 20, query: '?ownGround=1' },
+  { name: 'street-police', centre: [4.8799828, 52.3311922], standDeg: 262, standM: 40, view: 'cockpit' },
+  { name: 'street-leidsestraat-67', centre: [4.8853524, 52.3651691], standDeg: 323, standM: 26, view: 'cockpit' },
+  { name: 'street-oosterkerk', centre: [4.9193125, 52.3699834], standDeg: 225, standM: 45, view: 'cockpit' },
+  { name: 'street-mozes-en-aaronkerk', centre: [4.9032433, 52.3682715], standDeg: 215, standM: 50, view: 'cockpit' },
+  { name: 'street-hotel-de-l-europe', centre: [4.8941808, 52.3675477], standDeg: 237, standM: 55, view: 'cockpit' },
+  { name: 'street-westerkerk-default', centre: [4.8838960, 52.3744999], standDeg: 140, standM: 60, view: 'cockpit' },
+  { name: 'street-westerkerk-shared-frame', centre: [4.8838960, 52.3744999], standDeg: 140, standM: 60, view: 'cockpit', query: '?sharedFrame=1' },
+  { name: 'street-osdorp-sloterplas-own-ground', centre: [4.8130, 52.3600], standDeg: 0, standM: 0, faceDeg: 300, view: 'cockpit', query: '?ownGround=1' },
+];
+
+const OUT = process.env.DEMO_OUT ?? 'artifacts/demo';
+const only = process.env.DEMO_SPOTS?.split(',').filter(Boolean);
+
+function standpoint(s: Spot): { lng: number; lat: number; bearing: number } {
+  const b = s.standDeg * Math.PI / 180;
+  const dLat = s.standM * Math.cos(b) / 111320;
+  const dLng = s.standM * Math.sin(b) / (111320 * Math.cos(s.centre[1] * Math.PI / 180));
+  return { lng: s.centre[0] + dLng, lat: s.centre[1] + dLat, bearing: s.faceDeg ?? (s.standDeg + 180) % 360 };
+}
+
+async function teleport(page: Page, p: { lng: number; lat: number; bearing: number }): Promise<void> {
+  await page.evaluate(({ lng, lat, bearing }) => {
+    const g = (window as any).canalRecallGame, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER') as number;
+    const b = bearing * Math.PI / 180;
+    g.player.x = l._lastOffsetX + (lng - l._lastCenterLng) * 111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm;
+    g.player.y = l._lastOffsetY - (lat - l._lastCenterLat) * 111320 * ppm;
+    g.player.angle = Math.atan2(-Math.cos(b), Math.sin(b));
+    Object.assign(g.player, { speed: 0, vx: 0, vy: 0 });
+    g.player.handleInput = () => {};
+  }, p);
+}
+
+for (const spot of SPOTS) {
+  if (only && !only.includes(spot.name)) continue;
+  test(`demo shot: ${spot.name}`, async ({ page }) => {
+    test.setTimeout(240_000);
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await openRoute(page, { travelMode: 'car', viewMode: spot.view ?? 'chase', query: spot.query ?? '', abortHeavyTiles: true });
+    const p = standpoint(spot);
+    await teleport(page, p);
+    await page.waitForTimeout(2500);
+    await teleport(page, p); // the game re-routes after the first jump; pin the spot again
+    await page.waitForTimeout(6000);
+    mkdirSync(OUT, { recursive: true });
+    await page.screenshot({ path: `${OUT}/${spot.name}.png` });
+  });
+}
