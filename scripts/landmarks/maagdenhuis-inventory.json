@@ -1,0 +1,243 @@
+{
+ "schemaVersion": 1,
+ "id": "maagdenhuis",
+ "pand": "0363100012167925",
+ "brief": "scripts/landmarks/maagdenhuis-brief.md",
+ "signature": [
+  "n-pediment",
+  "n-tympanum-relief",
+  "n-arched-ground-windows",
+  "n-door-stair",
+  "n-string-course"
+ ],
+ "walls": [
+  {
+   "tag": "w01-259",
+   "bearing": 259,
+   "lengthM": 13.7,
+   "centre": [4.889966, 52.3684875],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002538_pano_0000_001530",
+   "capturedAt": "2022-04-22",
+   "checked": true,
+   "note": "The rectified crop shows the neighbouring Spui 25 shop front (rusticated stone base, balcony, lantern), which stands in front of this west flank; the Maagdenhuis wall itself is only visible edge-on in w08. Nothing of the Maagdenhuis is claimed from this crop.",
+   "items": []
+  },
+  {
+   "tag": "w02-73",
+   "bearing": 73,
+   "lengthM": 13,
+   "centre": [4.890497, 52.368562],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002931_pano_0002_000013",
+   "capturedAt": "2023-01-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "e-sash-windows",
+     "kind": "window-shape",
+     "where": "east flank on the alley: four storeys of identical white sash windows in three axes, the top row shorter",
+     "approxSizeM": [13, 22],
+     "plan": "simplified",
+     "how": "block-kit brick-bay-grid with cross-bar sashes on the 3DBAG wall (intent walls[1]); axis count follows the kit pitch, not the photographed three axes per 13 m panel",
+     "seenIn": "TMX7316010203-002931_pano_0002_000013"
+    },
+    {
+     "id": "e-cornice",
+     "kind": "other",
+     "where": "heavy white stone entablature under the roof edge, full length of the flank",
+     "approxSizeM": [13, 1.2],
+     "plan": "modelled",
+     "how": "kit cornice (intent walls[1].cornice)",
+     "seenIn": "TMX7316010203-002931_pano_0002_000013"
+    },
+    {
+     "id": "e-plinth",
+     "kind": "other",
+     "where": "dark grey dressed-stone plinth with barred basement lights, 1.3 m high",
+     "approxSizeM": [13, 1.3],
+     "plan": "modelled",
+     "how": "maagdenhuisHooks drawBand 'stone@plinth' (grey) on every wall group",
+     "seenIn": "TMX7316010203-002931_pano_0002_000013"
+    },
+    {
+     "id": "e-basement-grilles",
+     "kind": "window-shape",
+     "where": "barred basement lights in the plinth under the first-floor axes",
+     "approxSizeM": [0.9, 0.8],
+     "plan": "skipped",
+     "skip": {"reason": "too-small", "note": "0.9 x 0.8 m grilles set in the plinth, dark against dark stone; they read as the plinth band at gallery size and from 1.7 m on the alley"},
+     "seenIn": "TMX7316010203-002931_pano_0002_000013"
+    }
+   ]
+  },
+  {
+   "tag": "w03-74",
+   "bearing": 74,
+   "lengthM": 12.1,
+   "centre": [4.8904455, 52.36867],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002628_pano_0000_000259",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "note": "North end of the east flank seen from the Spui through the plane trees: same sash windows and entablature as w02, arched ground windows turning the corner.",
+   "items": []
+  },
+  {
+   "tag": "w04-74",
+   "bearing": 74,
+   "lengthM": 12,
+   "centre": [4.8905515, 52.3684545],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002931_pano_0002_000012",
+   "capturedAt": "2023-01-13",
+   "checked": true,
+   "note": "Same flank, southern half: sash windows, entablature, plinth; a ground-floor door with a small porch at the right end (not modelled: the kit puts a window there).",
+   "items": []
+  },
+  {
+   "tag": "w05-253",
+   "bearing": 253,
+   "lengthM": 9.3,
+   "centre": [4.8900325, 52.368335],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w06-249",
+   "bearing": 249,
+   "lengthM": 9.3,
+   "centre": [4.8900775, 52.368256],
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": false,
+   "items": []
+  },
+  {
+   "tag": "w07-346",
+   "bearing": 346,
+   "lengthM": 8.7,
+   "centre": [4.89009, 52.3686715],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001054_pano_0000_000815",
+   "capturedAt": "2019-01-15",
+   "checked": true,
+   "note": "The Spui front. This 8.7 m panel is one of seven strips of the 31 m front; the elevation was read from the RCE photographs 20014425 (G.Th. Delemarre, CC BY-SA 4.0) and 20408833 (Serge Technau, CC BY-SA 4.0), UvAMaagdenhuis.jpg (Mtcv, CC BY-SA 3.0) and the 2019 panorama aimed at the door (artifacts/landmark-refs/maagdenhuis).",
+   "items": [
+    {
+     "id": "n-pediment",
+     "kind": "other",
+     "where": "full-width sandstone pediment over the whole Spui front, shallow slope, heavy raking cornices, above a stone entablature",
+     "approxSizeM": [31, 3.4],
+     "plan": "modelled",
+     "how": "addPediment: sandstone tympanum slab laid over the 3DBAG gable face and two raking cornice beams",
+     "seenIn": "TMX7316010203-001054_pano_0000_000815"
+    },
+    {
+     "id": "n-tympanum-relief",
+     "kind": "relief",
+     "where": "centre of the tympanum: a seated allegorical figure with flanking seated figures on a sweeping scroll, reclining figures at the ends",
+     "approxSizeM": [11, 2.4],
+     "plan": "simplified",
+     "how": "addPediment: sandstone scroll arms (boxes along a spline), central seated figure on a plinth, two flanking seated and two reclining figures from cylinders, boxes and spheres; the figures' faces, drapery and the foliage on the scrolls are not resolved in the photographs",
+     "seenIn": "RCE 20014425 (Commons, CC BY-SA 4.0)"
+    },
+    {
+     "id": "n-arched-ground-windows",
+     "kind": "window-shape",
+     "where": "ground storey: tall round-headed sash windows with white archivolt bands and radial heads, rectangular windows at the outer bays",
+     "approxSizeM": [31, 5.2],
+     "plan": "simplified",
+     "how": "kit portals (arches.ground round, stone band) in every strip of the front: the outer rectangular windows are drawn arched too, and the radial head bars are omitted",
+     "seenIn": "TMX7316010203-001054_pano_0000_000815"
+    },
+    {
+     "id": "n-door-stair",
+     "kind": "other",
+     "where": "centre bay: double doorway with a double stair of two side flights up to a railed landing and a basement door under it",
+     "approxSizeM": [8, 4.3],
+     "plan": "modelled",
+     "how": "maagdenhuisHooks panel 33: grey landing block, two four-step flights, black posts and rails, basement door in a pale surround",
+     "seenIn": "TMX7316010203-001054_pano_0000_000883"
+    },
+    {
+     "id": "n-fanlight",
+     "kind": "window-shape",
+     "where": "semicircular radial fanlight over the entrance doors, with a central roundel",
+     "approxSizeM": [1.9, 1],
+     "plan": "simplified",
+     "how": "the kit's arched portal and its stone archivolt band stand for the doorway; radial tracery omitted",
+     "seenIn": "TMX7316010203-001054_pano_0000_000883"
+    },
+    {
+     "id": "n-string-course",
+     "kind": "other",
+     "where": "white stone string course running the full width of the front on top of the ground storey",
+     "approxSizeM": [31, 0.3],
+     "plan": "modelled",
+     "how": "maagdenhuisHooks drawBand over every strip at 6.3 m",
+     "seenIn": "TMX7316010203-001054_pano_0000_000815"
+    },
+    {
+     "id": "n-keystone-consoles",
+     "kind": "other",
+     "where": "a small stone console above every ground-floor archivolt, touching the string course",
+     "approxSizeM": [0.35, 0.5],
+     "plan": "modelled",
+     "how": "kit voussoir arch band (arches.band voussoir): imposts at the springing and a keystone block on every ground opening",
+     "seenIn": "TMX7316010203-001054_pano_0000_000883"
+    },
+    {
+     "id": "n-lanterns",
+     "kind": "lamp",
+     "where": "two lanterns on iron brackets at the door jambs and a red cast-iron street lamp with a crown finial in front of the stair",
+     "approxSizeM": [0.5, 0.7],
+     "plan": "modelled",
+     "how": "maagdenhuisHooks: bracket lanterns on the jambs; street lamp (post, lantern, crown) at the end of addPediment",
+     "seenIn": "TMX7316010203-001054_pano_0000_000883"
+    },
+    {
+     "id": "n-name-plates",
+     "kind": "sign",
+     "where": "two stone name plates with incised UNIVERSITEIT VAN AMSTERDAM either side of the door at 2 m",
+     "approxSizeM": [0.9, 0.6],
+     "plan": "simplified",
+     "how": "plain stone plates in the brick; the incised lettering is not legible at panorama resolution and is left out rather than invented",
+     "seenIn": "UvAMaagdenhuis.jpg (Commons, CC BY-SA 3.0)"
+    },
+    {
+     "id": "n-plinth",
+     "kind": "other",
+     "where": "dark grey dressed-stone plinth under the ground storey with barred basement lights",
+     "approxSizeM": [31, 1.3],
+     "plan": "modelled",
+     "how": "maagdenhuisHooks drawBand 'stone@plinth'",
+     "seenIn": "TMX7316010203-001054_pano_0000_000815"
+    }
+   ]
+  },
+  {
+   "tag": "w08-259",
+   "bearing": 259,
+   "lengthM": 8.5,
+   "centre": [4.8899275, 52.3686045],
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002628_pano_0000_000244",
+   "capturedAt": "2022-06-27",
+   "checked": true,
+   "note": "As w01: the Neo-Renaissance Spui 25 front stands in front; the Maagdenhuis west flank behind it is the same brick sash-window wall as the east flank (left edge of the crop).",
+   "items": []
+  }
+ ],
+ "sources": [
+  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/panoramas/", "licence": "CC BY 4.0"},
+  {"name": "RCE 20014425 Spui, voorgevel (G.Th. Delemarre)", "url": "https://commons.wikimedia.org/wiki/File:Spui,_voorgevel_-_Amsterdam_-_20014425_-_RCE.jpg", "licence": "CC BY-SA 4.0"},
+  {"name": "RCE 20408833 Voorgevel met middenrisaliet (Serge Technau)", "url": "https://commons.wikimedia.org/wiki/File:Voorgevel_met_middenrisaliet,_zandstenen_fronton_met_reli%C3%ABfvoorstelling_-_Amsterdam_-_20408833_-_RCE.jpg", "licence": "CC BY-SA 4.0"},
+  {"name": "UvAMaagdenhuis.jpg (Mtcv)", "url": "https://commons.wikimedia.org/wiki/File:UvAMaagdenhuis.jpg", "licence": "CC BY-SA 3.0"},
+  {"name": "3DBAG LoD2.2", "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167925", "licence": "CC BY 4.0"}
+ ]
+}

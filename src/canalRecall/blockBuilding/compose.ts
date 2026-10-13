@@ -26,6 +26,10 @@ export interface ComposeOptions {
   closedBoxes?: boolean;
   /** large tier (opt-in): bands (string courses, cornices, fascias) are closed solids (back face, and end caps at mitred joints), so they leave no open edge where 3DBAG faces stand a few cm off the panel plane or the next panel's band stops short. Default off: earlier large recipes stay byte-identical. */
   closedBands?: boolean;
+  /** Standoff (m) of glazing bars in front of the glass in recessed openings; default 0.015. A bespoke landmark that must pass the 2 cm coplanar audit sets 0.025. */
+  barOffsetM?: number;
+  /** Glass of recessed openings sits this far (m) behind the frame ring and bars; default 0. With barOffsetM 0 the bars never overlap the glass within the audit's 2 cm. */
+  glassBackM?: number;
   /** Walls (indices into `set.walls`) with different keys never merge into one panel (large-tier wall groups). */
   mergeKey?: (wall: number) => number;
   /** Host wall slot per panel (recess mode only, where walls are emitted after the facade systems). */
@@ -55,6 +59,9 @@ class Ctx {
   closedBoxes = false;
   /** `ComposeOptions.closedBands` (recess mode only) */
   closedBands = false;
+  /** `ComposeOptions.barOffsetM` */
+  barOffset = 0.015;
+  glassBack = 0;
   constructor(public mesh: MeshBuilder, public p: Panel, public panels: Panel[]) {}
   /**
    * Cut a rectangular opening into one member wall when it lies inside it with 3 cm to spare and clear of other holes.
@@ -222,14 +229,14 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
   const g = (a: number, b: number, lo: number, hi: number, slot: string, d: number, pt = part) => c.mesh.quad(slot, Q(a, lo, d), Q(b, lo, d), Q(b, hi, d), Q(a, hi, d), pt, n);
   g(u0, u1, v0, v0 + fw, frameSlot, 0); g(u0, u1, v1 - fw, v1, frameSlot, 0);
   g(u0, u0 + fw, v0 + fw, v1 - fw, frameSlot, 0); g(u1 - fw, u1, v0 + fw, v1 - fw, frameSlot, 0);
-  g(u0 + fw, u1 - fw, v0 + fw, v1 - fw, glassSlot, 0);
+  g(u0 + fw, u1 - fw, v0 + fw, v1 - fw, glassSlot, -c.glassBack);
   const mulls = w.mullAt?.length ? w.mullAt : Array.from({ length: w.mull ?? 0 }, (_, k) => (k + 1) / ((w.mull ?? 0) + 1));
   const rows = w.rowsAt?.length ? w.rowsAt : Array.from({ length: w.rows ?? 0 }, (_, k) => (k + 1) / ((w.rows ?? 0) + 1));
   if (mulls.length || rows.length || w.transom) {
     // frameW 0 (no frame ring: the glass fills the opening) still takes 6 cm glazing bars
     const bars = c.part(), bw = fw > 0 ? fw : 0.06;
-    for (const f of mulls) { const u = u0 + (u1 - u0) * f; g(u - bw / 2, u + bw / 2, v0 + fw, v1 - fw, frameSlot, 0.015, bars); }
-    for (const f of [...rows, ...(w.transom ? [w.transom] : [])]) { const v = v0 + (v1 - v0) * f; g(u0 + fw, u1 - fw, v - bw / 2, v + bw / 2, frameSlot, 0.015, bars); }
+    for (const f of mulls) { const u = u0 + (u1 - u0) * f; g(u - bw / 2, u + bw / 2, v0 + fw, v1 - fw, frameSlot, c.barOffset, bars); }
+    for (const f of [...rows, ...(w.transom ? [w.transom] : [])]) { const v = v0 + (v1 - v0) * f; g(u0 + fw, u1 - fw, v - bw / 2, v + bw / 2, frameSlot, c.barOffset, bars); }
   }
   if (w.surround) {
     const t = w.surround.t, out = w.surround.out ?? 0.06, sp = c.part();
@@ -535,6 +542,8 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
     const c = new Ctx(mesh, p, panels);
     c.closedBoxes = !!opts.closedBoxes;
     c.closedBands = recess > 0 && !!opts.closedBands;
+    c.barOffset = opts.barOffsetM ?? 0.015;
+    c.glassBack = opts.glassBackM ?? 0;
     c.recess = recess; c.wallSlot = recess > 0 ? opts.wallSlotFor?.(p) ?? wallSlot : wallSlot;
     const cells: Cell[] = [];
     const finish = (levels: number[]) => {
