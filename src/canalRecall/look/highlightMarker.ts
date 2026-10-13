@@ -3,15 +3,21 @@
  * the page, whichever pipeline draws the building.
  *
  *  - ring: a soft band on the ground hugging each footprint (offset 0.4–4.4 m outward, alpha 0.85 → 0), or a circle
- *    when no footprint is known (a GLB landmark without building ids);
+ *    when no footprint is known (a GLB landmark without building ids); footprints missing from the focus are read from
+ *    the fallback extrusions' source (`HULL_SOURCE`);
  *  - beacon (style a): a thin camera-facing column from just above the roof, ~3 px wide at any distance, fading
- *    upward and with distance (full to 150 m, 30 % beyond 900 m).
+ *    upward and with distance (full to 150 m, 30 % beyond 900 m);
+ *  - hull (style a, `focus.hull`): when no pipeline outlines the building (MapLibre's fallback extrusions), the
+ *    outline pass round an invisible prism of the footprint, so the fallback reads like every other pipeline.
  *
  * Local space: metres east/north/up about the focus (the footprint centroid). In the shared frame it is a
  * participant (`mercatorFromLocal`); in the default frame it is its own MapLibre custom layer under the labels.
  * Style b also keeps the map redrawing while shown (the rim's pulse).
  */
-import { HIGHLIGHT_RECIPES, footprintCentroid, highlightAccent, highlightStyle, mPerDegLng, type HighlightFocus, type HighlightStyle, type LngLat } from './highlight.ts';
+import {
+  HIGHLIGHT_RECIPES, HULL_SOURCE, attachHighlightPasses, detachHighlightPasses, footprintCentroid, highlightAccent, highlightStyle, mPerDegLng,
+  type HighlightFocus, type HighlightStyle, type LngLat,
+} from './highlight.ts';
 import { hexToRgb } from './palette.ts';
 
 const EARTH_CIRCUMFERENCE = 2 * Math.PI * 6378137;
@@ -81,6 +87,63 @@ export function ringOutlines(polygons: readonly (readonly (readonly LngLat[])[])
 export const circleRing = (r = CIRCLE_RADIUS_M, segments = 40): [number, number][] =>
   Array.from({ length: segments }, (_, i) => [Math.cos((i / segments) * Math.PI * 2) * r, Math.sin((i / segments) * Math.PI * 2) * r]);
 
+/**
+ * Where the default-frame marker layer belongs: right after the last 3D layer (custom or fill-extrusion), so every
+ * building is drawn (and has written depth) before the ring and beacon. Returns the index of the layer to insert
+ * before, `layers.length` (the top), or -1 (no 3D layer yet: leave it).
+ */
+export function markerSlot(layers: readonly { id: string; type?: string }[], ownId: string): number {
+  let last = -1;
+  layers.forEach((l, i) => { if (l.id !== ownId && (l.type === 'custom' || l.type === 'fill-extrusion')) last = i; });
+  if (last < 0) return -1;
+  for (let i = last + 1; i < layers.length; i++) if (layers[i].id !== ownId) return i;
+  return layers.length;
+}
+
+/**
+ * A closed prism (walls, roof and floor) over local rings, as flat triangles: positions (x, y, z) in metres. The
+ * outline pass draws its back faces, so only the silhouette matters; caps are fan/ear triangulated by `triangulate`.
+ */
+export function prismPositions(rings: readonly (readonly [number, number][])[], baseM: number, topM: number,
+  triangulate: (ring: [number, number][]) => number[][]): number[] {
+  const out: number[] = [];
+  for (const raw of rings) {
+    const ring = raw.length > 1 && raw[0][0] === raw[raw.length - 1][0] && raw[0][1] === raw[raw.length - 1][1] ? raw.slice(0, -1) : raw.slice();
+    if (ring.length < 3) continue;
+    // Counter-clockwise, so every face points outward (the pass draws back faces: a wrong winding paints the walls).
+    let area = 0;
+    for (let i = 0; i < ring.length; i++) { const [x0, y0] = ring[i], [x1, y1] = ring[(i + 1) % ring.length]; area += x0 * y1 - x1 * y0; }
+    if (area < 0) ring.reverse();
+    for (let i = 0; i < ring.length; i++) {
+      const [ax, ay] = ring[i], [bx, by] = ring[(i + 1) % ring.length];
+      out.push(ax, ay, baseM, bx, by, baseM, bx, by, topM, ax, ay, baseM, bx, by, topM, ax, ay, topM);
+    }
+    for (let [a, b, c] of triangulate(ring as [number, number][])) {
+      const [ax, ay] = ring[a], [bx, by] = ring[b], [cx, cy] = ring[c];
+      if ((bx - ax) * (cy - ay) - (by - ay) * (cx - ax) < 0) [b, c] = [c, b];
+      out.push(ring[a][0], ring[a][1], topM, ring[b][0], ring[b][1], topM, ring[c][0], ring[c][1], topM);
+      out.push(ring[a][0], ring[a][1], baseM, ring[c][0], ring[c][1], baseM, ring[b][0], ring[b][1], baseM);
+    }
+  }
+  return out;
+}
+
+/** Footprints and height of buildings in a GeoJSON source (MapLibre `querySourceFeatures`), by feature id. */
+export function footprintFromFeatures(features: readonly any[], ids: readonly string[]): { polygons: LngLat[][][]; heightM: number; baseM: number } | null {
+  const want = new Set(ids.map(String)), polygons: LngLat[][][] = [];
+  let heightM = 0, baseM = Infinity;
+  for (const f of features) {
+    if (!want.has(String(f?.id ?? f?.properties?.id))) continue;
+    const g = f.geometry;
+    if (g?.type === 'Polygon') polygons.push(g.coordinates);
+    else if (g?.type === 'MultiPolygon') polygons.push(...g.coordinates);
+    else continue;
+    heightM = Math.max(heightM, Number(f.properties?.height) || 0);
+    baseM = Math.min(baseM, Number(f.properties?.minHeight) || 0);
+  }
+  return polygons.length ? { polygons, heightM: heightM || 10, baseM: Number.isFinite(baseM) ? baseM : 0 } : null;
+}
+
 /** Beacon opacity at a camera distance (metres). */
 export function beaconAlpha(distanceM: number): number {
   const [near, far] = BEACON_FADE_M, t = Math.min(1, Math.max(0, (distanceM - near) / (far - near)));
@@ -131,6 +194,8 @@ export class HighlightMarker {
   private readonly recipe;
   private ring: any = null;
   private beacon: any = null;
+  private hull: any = null;
+  private focus: HighlightFocus | null = null;
   private anchor: LngLat | null = null;
   private altitude = 0;
   private local: number[] | null = null;
@@ -164,11 +229,26 @@ export class HighlightMarker {
   /** Show the ring (and beacon) at a footprint, or hide with null. */
   set(focus: HighlightFocus | null | undefined): void {
     const THREE = this.THREE;
+    if (this.hull) detachHighlightPasses(this.hull);
     for (const child of [...this.root.children]) { this.root.remove(child); child.geometry?.dispose(); child.material?.dispose(); }
-    this.ring = this.beacon = null;
+    this.ring = this.beacon = this.hull = null;
     this.anchor = null;
     cancelAnimationFrame(this.raf);
-    if (!focus || (!this.recipe.ring && !this.recipe.beacon)) { this.map.triggerRepaint?.(); return; }
+    if (!focus || (!this.recipe.ring && !this.recipe.beacon)) { this.focus = null; this.map.triggerRepaint?.(); return; }
+    const asked = focus;
+    this.focus = asked;
+    if (!focus.polygons?.length && focus.ids?.length) {
+      // No pipeline knew the footprint (MapLibre's fallback extrusions, a landmark model there): read it from the
+      // building source's data, for the ring and the hull (querySourceFeatures and queryRenderedFeatures missed the
+      // Oud-West house on screen; GeoJSONSource.getData() serves the promoted-id map, < 1 ms for 10k features).
+      // Shown with a circle meanwhile; the answer re-enters set() with the footprint.
+      const source = this.map.getSource?.(HULL_SOURCE);
+      source?.getData?.().then((data: any) => {
+        const found = this.focus === asked ? footprintFromFeatures(data?.features ?? [], asked.ids ?? []) : null;
+        if (found) this.set({ ...asked, polygons: found.polygons, heightM: asked.heightM ?? found.heightM, baseM: found.baseM });
+      }, () => { /* no source */ });
+    }
+    const baseM = focus.baseM ?? 0;
     const anchor = footprintCentroid(focus.polygons) ?? focus.lngLat;
     this.anchor = anchor;
     this.altitude = Number(this.options.heightAt?.(anchor)) || 0;
@@ -191,6 +271,24 @@ export class HighlightMarker {
       this.ring.name = 'highlight-marker/ring';
       this.ring.renderOrder = 5;
       this.root.add(this.ring);
+    }
+    if (focus.hull && this.recipe.outline && focus.polygons?.length) {
+      const rings = focus.polygons.map(p => localRing(p[0] ?? [], anchor));
+      const positions = prismPositions(rings, baseM, focus.heightM ?? 10, ring => THREE.ShapeUtils.triangulateShape(ring.map(([x, y]) => new THREE.Vector2(x, y)), []));
+      if (positions.length) {
+        const g = new THREE.BufferGeometry();
+        g.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+        g.computeVertexNormals();
+        g.computeBoundingBox();
+        // The prism itself is never drawn (MapLibre draws the building); only its outline pass, a child of it.
+        const m = new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false });
+        m.visible = false;
+        this.hull = new THREE.Mesh(g, m);
+        this.hull.name = 'highlight-marker/hull';
+        this.hull.frustumCulled = false;
+        this.root.add(this.hull);
+        attachHighlightPasses(THREE, this.hull, { style: this.style });
+      }
     }
     if (this.recipe.beacon) {
       const base = (focus.heightM ?? 20) + BEACON_LIFT_M, top = base + BEACON_HEIGHT_M;
@@ -220,6 +318,7 @@ export class HighlightMarker {
       this.beacon = mesh;
       this.root.add(mesh);
     }
+    this.raise();
     if (this.recipe.animated) {
       const tick = () => { this.map.triggerRepaint?.(); this.raf = requestAnimationFrame(tick); };
       this.raf = requestAnimationFrame(tick);
@@ -228,8 +327,21 @@ export class HighlightMarker {
   }
 
   /** What is shown, for tests and the readout. */
-  status(): { style: HighlightStyle; anchor: LngLat | null; ring: boolean; beacon: boolean; distanceM: number } {
-    return { style: this.style, anchor: this.anchor, ring: !!this.ring, beacon: !!this.beacon, distanceM: this.lastDistanceM };
+  status(): { style: HighlightStyle; anchor: LngLat | null; ring: boolean; beacon: boolean; hull: boolean; distanceM: number } {
+    return { style: this.style, anchor: this.anchor, ring: !!this.ring, beacon: !!this.beacon, hull: !!this.hull, distanceM: this.lastDistanceM };
+  }
+
+  /**
+   * Default frame: draw after every building layer (just under the labels). The ring and beacon do not write depth,
+   * so a building layer added after the marker (the three.js city streams in later) painted over them wherever a
+   * building stood behind: at the Oud-West terrace (chase, 213 m) only 830 px of ring and a stub of beacon survived.
+   */
+  private raise(): void {
+    const id = this.layerId;
+    if (!id || !this.map.getLayer?.(id) || !this.map.moveLayer || !this.map.getLayersOrder) return;
+    const order: string[] = this.map.getLayersOrder();
+    const slot = markerSlot(order.map(l => ({ id: l, type: this.map.getLayer(l)?.type })), id);
+    try { if (slot >= 0 && order[slot - 1] !== id) this.map.moveLayer(id, order[slot]); } catch { /* style mid-reload: the next set() retries */ }
   }
 
   private addLayer(): void {

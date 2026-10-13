@@ -1,4 +1,4 @@
-// Frame cost of the highlight candidates (`?highlight=a|b|c`, look/highlight.ts) against today's yellow.
+// Frame cost of the highlight styles (default a; `?highlight=yellow|b|c`, look/highlight.ts) against the old yellow.
 //   PORT=4451 node scripts/highlight-perf.mjs [desktop|touch] [frames] [styles] [frames-set]
 // One page per (frame, style): the rider parked in chase view facing a spot, everything streamed, then
 // `frames` forced redraws with no highlight and `frames` with the spot highlighted, in the same page.
@@ -23,7 +23,7 @@ for (const frame of framesArg.split(',')) for (const style of stylesArg.split(',
   const page = await browser.newPage(device === 'touch' ? devices['iPhone 13'] : { viewport: { width: 1440, height: 900 } });
   await page.route(/3dbag|cesium3dtiles/i, r => r.abort());
   await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
-  const query = [frame === 'shared' ? 'sharedFrame=1' : '', style === 'yellow' ? '' : `highlight=${style}`].filter(Boolean).join('&');
+  const query = [frame === 'shared' ? 'sharedFrame=1' : '', `highlight=${style}`].filter(Boolean).join('&');
   await page.goto(`http://127.0.0.1:${PORT}/canal-drive/${query ? '?' + query : ''}`);
   await page.waitForFunction(() => !!window.canalRecallGame, null, { timeout: 60000 });
   await page.locator('#travel-mode').selectOption('car', { force: true });

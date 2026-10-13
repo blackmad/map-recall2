@@ -130,6 +130,8 @@ test('city look: the highlight keeps the shading (sun side brighter than shade s
   const bundle = await build({ entryPoints: ['src/canalRecall/look/lookParity.ts'], bundle: true, format: 'iife', globalName: 'LookParity', write: false, logLevel: 'error' });
   await page.route('**/canal-drive/__city-look.js', route => route.fulfill({ body: bundle.outputFiles[0].text, contentType: 'application/javascript' }));
   await page.route('**/canal-drive/__city-look.html', route => route.fulfill({ body: '<!doctype html><meta charset="utf-8"><script src="__city-look.js"></script>', contentType: 'text/html' }));
+  // The yellow under review (the default highlight is the outline since 2026-10-13; `?highlight=yellow` keeps this one).
+  await page.addInitScript(() => { (window as any).__canalRecallHighlight = 'yellow'; });
   await page.goto('/canal-drive/__city-look.html');
   const pipelines = ['landmark-highlight', 'city-landmark-highlight', 'city-landmark-highlight-unlit'];
   const result = await page.evaluate((pipelines) => (window as any).LookParity.runLookParity({ pipelines, brickUrl: new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href }), pipelines);
