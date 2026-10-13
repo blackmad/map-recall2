@@ -1099,7 +1099,16 @@ class GameRouteRuntime {
     const [lat, lng, startLat, startLng, finishLat, finishLng] = parts;
     // A share link plays once; the next load starts from the menu.
     history.replaceState(null, '', window.location.pathname + window.location.search);
-    // Bypass menu and map picker — load directly
+    // `?travel=car|boat` picks the mode (the gallery's "See it in the game" asks for the street ride,
+    // since a boat cannot reach most buildings); otherwise the saved preference stands.
+    const travel = new URLSearchParams(window.location.search).get('travel');
+    if (travel === 'car' || travel === 'boat') {
+      this._overlay.store.patchPrefs({ cityId: 'amsterdam', travelMode: travel }, this._overlayZoom());
+      this._applyPrefsToRuntime(this._prefs());
+    }
+    // Bypass menu and map picker — load directly. Close route setup as a launch from it does, or the
+    // ride loads hidden behind the setup rail and its hero photo (user report 2026-10-13).
+    this._overlay.store.setSetupOpen(false);
     this._onLocationSelected(lat, lng, { lat: startLat, lng: startLng }, { lat: finishLat, lng: finishLng });
   }
 
