@@ -333,16 +333,20 @@
    "window-missing-spec": 0
   },
   "beta-boulders": {
-   "opening-floating": 84,
-   "opening-floating-fail": 44,
-   "opening-overhang": 1,
-   "opening-overhang-fail": 1,
-   "opening-buried": 2,
-   "zfight-m2": 1.9,
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
+   "opening-overhang": 0,
+   "opening-overhang-fail": 0,
+   "opening-buried": 0,
+   "zfight-m2": 0.5,
    "zfight-near-m2": 0.1,
    "window-mismatch": 4,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "material-slot-untagged-permille": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "blankenstraat-15": {
    "opening-floating": 7,
@@ -516,19 +520,20 @@
    "window-misaligned": 0
   },
   "centraal-station": {
-   "opening-floating": 2,
-   "opening-floating-fail": 2,
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
    "opening-overhang": 0,
    "opening-overhang-fail": 0,
-   "opening-buried": 97,
+   "opening-buried": 22,
    "zfight-m2": 129.2,
    "zfight-near-m2": 10.8,
-   "window-mismatch": 17,
-   "window-missing": 20,
+   "window-mismatch": 11,
+   "window-missing": 2,
    "window-misaligned": 0,
    "window-rhythm-fail": 1,
-   "window-mismatch-spec": 17,
-   "window-missing-spec": 20
+   "window-mismatch-spec": 11,
+   "window-missing-spec": 2,
+   "material-slot-untagged-permille": 0
   },
   "centrale-markthal": {
    "opening-floating": 57,
@@ -725,16 +730,20 @@
    "window-missing-spec": 0
   },
   "de-bijenkorf": {
-   "opening-floating": 731,
+   "opening-floating": 0,
    "opening-floating-fail": 0,
    "opening-overhang": 3,
    "opening-overhang-fail": 2,
-   "opening-buried": 15,
+   "opening-buried": 5,
    "zfight-m2": 70.9,
    "zfight-near-m2": 73.4,
    "window-mismatch": 19,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "material-slot-untagged-permille": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "de-dokwerker": {
    "opening-floating": 0,
@@ -897,12 +906,16 @@
    "opening-floating-fail": 0,
    "opening-overhang": 0,
    "opening-overhang-fail": 0,
-   "opening-buried": 5,
-   "zfight-m2": 17.1,
-   "zfight-near-m2": 158.7,
-   "window-mismatch": 34,
+   "opening-buried": 0,
+   "zfight-m2": 16.9,
+   "zfight-near-m2": 154.7,
+   "window-mismatch": 29,
    "window-missing": 1,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "material-slot-untagged-permille": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "dorus-theus-brug": {
    "opening-floating": 0,
@@ -1166,16 +1179,20 @@
    "window-misaligned": 0
   },
   "fire-station-willem": {
-   "opening-floating": 315,
-   "opening-floating-fail": 12,
+   "opening-floating": 4,
+   "opening-floating-fail": 0,
    "opening-overhang": 2,
    "opening-overhang-fail": 0,
    "opening-buried": 0,
    "zfight-m2": 0.8,
-   "zfight-near-m2": 0.5,
+   "zfight-near-m2": 0.2,
    "window-mismatch": 8,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "material-slot-untagged-permille": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "fire-station-zebra": {
    "opening-floating": 24,
@@ -2049,16 +2066,20 @@
    "window-misaligned": 0
   },
   "lab111": {
-   "opening-floating": 98,
+   "opening-floating": 0,
    "opening-floating-fail": 0,
    "opening-overhang": 0,
    "opening-overhang-fail": 0,
-   "opening-buried": 4,
+   "opening-buried": 0,
    "zfight-m2": 0,
    "zfight-near-m2": 0,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "material-slot-untagged-permille": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "lekstraat-synagoge": {
    "opening-floating": 0,
@@ -2158,24 +2179,32 @@
    "opening-floating-fail": 0,
    "opening-overhang": 0,
    "opening-overhang-fail": 0,
-   "opening-buried": 6,
-   "zfight-m2": 4.1,
-   "zfight-near-m2": 0.4,
+   "opening-buried": 4,
+   "zfight-m2": 2.5,
+   "zfight-near-m2": 0,
    "window-mismatch": 16,
-   "window-missing": 5,
-   "window-misaligned": 0
+   "window-missing": 2,
+   "window-misaligned": 0,
+   "material-slot-untagged-permille": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "magna-plaza": {
-   "opening-floating": 166,
+   "opening-floating": 6,
    "opening-floating-fail": 0,
    "opening-overhang": 0,
    "opening-overhang-fail": 0,
-   "opening-buried": 94,
+   "opening-buried": 4,
    "zfight-m2": 0,
    "zfight-near-m2": 0,
    "window-mismatch": 10,
    "window-missing": 4,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "material-slot-untagged-permille": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "mediamatic": {
    "opening-floating": 7,
@@ -2310,16 +2339,20 @@
    "window-missing-spec": 0
   },
   "mountain-network": {
-   "opening-floating": 791,
-   "opening-floating-fail": 32,
-   "opening-overhang": 1,
-   "opening-overhang-fail": 1,
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
+   "opening-overhang": 0,
+   "opening-overhang-fail": 0,
    "opening-buried": 0,
-   "zfight-m2": 211.7,
-   "zfight-near-m2": 137,
+   "zfight-m2": 14,
+   "zfight-near-m2": 89.3,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "material-slot-untagged-permille": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "mozes-en-aaronkerk": {
    "opening-floating": 0,
@@ -2765,14 +2798,18 @@
   "oude-kerk": {
    "opening-floating": 0,
    "opening-floating-fail": 0,
-   "opening-overhang": 1,
+   "opening-overhang": 0,
    "opening-overhang-fail": 0,
-   "opening-buried": 4,
-   "zfight-m2": 90.6,
+   "opening-buried": 2,
+   "zfight-m2": 86.7,
    "zfight-near-m2": 95.6,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "material-slot-untagged-permille": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "oude-lutherse-kerk": {
    "opening-floating": 8,
@@ -3006,16 +3043,20 @@
    "window-misaligned": 0
   },
   "rai-amsterdam": {
-   "opening-floating": 13,
+   "opening-floating": 0,
    "opening-floating-fail": 0,
-   "opening-overhang": 4,
-   "opening-overhang-fail": 4,
+   "opening-overhang": 3,
+   "opening-overhang-fail": 2,
    "opening-buried": 0,
    "zfight-m2": 17.6,
-   "zfight-near-m2": 59.2,
+   "zfight-near-m2": 24.2,
    "window-mismatch": 0,
    "window-missing": 0,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "material-slot-untagged-permille": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "rasphuispoort": {
    "opening-floating": 0,
@@ -3139,12 +3180,16 @@
    "opening-floating-fail": 0,
    "opening-overhang": 0,
    "opening-overhang-fail": 0,
-   "opening-buried": 8,
-   "zfight-m2": 1.3,
-   "zfight-near-m2": 1.3,
+   "opening-buried": 0,
+   "zfight-m2": 0.6,
+   "zfight-near-m2": 0.9,
    "window-mismatch": 40,
-   "window-missing": 4,
-   "window-misaligned": 5
+   "window-missing": 0,
+   "window-misaligned": 0,
+   "material-slot-untagged-permille": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "scheltema": {
    "opening-floating": 12,
@@ -3543,16 +3588,20 @@
    "window-misaligned": 0
   },
   "valley": {
-   "opening-floating": 334,
+   "opening-floating": 266,
    "opening-floating-fail": 0,
-   "opening-overhang": 27,
-   "opening-overhang-fail": 20,
-   "opening-buried": 1091,
-   "zfight-m2": 60,
+   "opening-overhang": 7,
+   "opening-overhang-fail": 2,
+   "opening-buried": 22,
+   "zfight-m2": 18.5,
    "zfight-near-m2": 0,
-   "window-mismatch": 110,
-   "window-missing": 3,
-   "window-misaligned": 15
+   "window-mismatch": 30,
+   "window-missing": 1,
+   "window-misaligned": 0,
+   "material-slot-untagged-permille": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "van-gendt-hallen": {
    "opening-floating": 0,
@@ -3675,16 +3724,20 @@
    "window-misaligned": 0
   },
   "vredeskerk": {
-   "opening-floating": 1,
+   "opening-floating": 0,
    "opening-floating-fail": 0,
-   "opening-overhang": 2,
-   "opening-overhang-fail": 2,
-   "opening-buried": 10,
+   "opening-overhang": 0,
+   "opening-overhang-fail": 0,
+   "opening-buried": 0,
    "zfight-m2": 9.8,
-   "zfight-near-m2": 7.1,
+   "zfight-near-m2": 6.1,
    "window-mismatch": 4,
    "window-missing": 1,
-   "window-misaligned": 0
+   "window-misaligned": 0,
+   "material-slot-untagged-permille": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
   },
   "vriesseveem-9": {
    "window-rhythm-fail": 0,
@@ -3773,19 +3826,20 @@
    "window-missing-spec": 2
   },
   "westerkerk": {
-   "opening-floating": 3,
+   "opening-floating": 0,
    "opening-floating-fail": 0,
-   "opening-overhang": 3,
+   "opening-overhang": 0,
    "opening-overhang-fail": 0,
-   "opening-buried": 4,
+   "opening-buried": 0,
    "zfight-m2": 22.2,
    "zfight-near-m2": 0.3,
-   "window-mismatch": 3,
+   "window-mismatch": 1,
    "window-missing": 0,
    "window-misaligned": 6,
-   "window-rhythm-fail": 1,
-   "window-mismatch-spec": 3,
-   "window-missing-spec": 0
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 1,
+   "window-missing-spec": 0,
+   "material-slot-untagged-permille": 0
   },
   "willem-de-zwijgerkerk": {
    "opening-floating": 0,
