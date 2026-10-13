@@ -1,0 +1,455 @@
+{
+ "generatedAt": "2026-10-13",
+ "source": "OSM amenity=school|college|university shortlist (Overpass), PDOK Locatieserver + BAG WFS, pand-reference panoramas (CC BY 4.0)",
+ "schools": [
+  {
+   "name": "Amsterdams Lyceum",
+   "address": "Valeriusplein 15, Amsterdam",
+   "osm": "way/37177808",
+   "osmLatLng": [
+    52.3513403,
+    4.8648434
+   ],
+   "pandIds": [
+    "0363100012149878"
+   ],
+   "verblijfsobject": "0363010000850108",
+   "bagAddress": "Valeriusplein 15, 1075BJ Amsterdam",
+   "gebruiksdoel": "onderwijsfunctie",
+   "bouwjaar": 1920,
+   "osmToAddressM": 26,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2025,
+    2022
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "Barlaeus Gymnasium",
+   "address": "Weteringschans 29-31, Amsterdam",
+   "osm": "way/1015909065",
+   "osmLatLng": [
+    52.3623963,
+    4.884595
+   ],
+   "pandIds": [
+    "0363100012169564"
+   ],
+   "verblijfsobject": "0363010000867204",
+   "bagAddress": "Weteringschans 31, 1017RV Amsterdam",
+   "gebruiksdoel": "overige gebruiksfunctie",
+   "bouwjaar": 1866,
+   "osmToAddressM": 25,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2022,
+    2021
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "Berlage Lyceum",
+   "address": "Pieter Lodewijk Takstraat 33, Amsterdam",
+   "osm": "way/1173170192",
+   "osmLatLng": [
+    52.3489979,
+    4.90035
+   ],
+   "pandIds": [
+    "0363100012127997"
+   ],
+   "verblijfsobject": "0363010000775612",
+   "bagAddress": "Pieter Lodewijk Takstraat 33, 1073KJ Amsterdam",
+   "gebruiksdoel": "onderwijsfunctie",
+   "bouwjaar": 1924,
+   "osmToAddressM": 32,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2025,
+    2020
+   ],
+   "referenceStatus": "washed-out"
+  },
+  {
+   "name": "Berlage Lyceum (tijdelijke locatie bovenbouw)",
+   "address": "(no address in OSM)",
+   "osm": "way/1268126403",
+   "osmLatLng": [
+    52.3393321,
+    4.9051555
+   ],
+   "pandIds": [],
+   "verblijfsobject": "",
+   "bagAddress": "",
+   "gebruiksdoel": "",
+   "bouwjaar": null,
+   "osmToAddressM": null,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [],
+   "referenceStatus": "no-pand"
+  },
+  {
+   "name": "Cygnus Gymnasium",
+   "address": "Vrolikstraat 8, Amsterdam",
+   "osm": "way/385748321",
+   "osmLatLng": [
+    52.3550472,
+    4.9126089
+   ],
+   "pandIds": [
+    "0363100012109375"
+   ],
+   "verblijfsobject": "0363010000858542",
+   "bagAddress": "Vrolikstraat 8, 1091VG Amsterdam",
+   "gebruiksdoel": "onderwijsfunctie",
+   "bouwjaar": 1956,
+   "osmToAddressM": 14,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2020,
+    2022
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "Gerrit Rietveld Academie",
+   "address": "Fred. Roeskestraat 98, Amsterdam",
+   "osm": "way/25744051",
+   "osmLatLng": [
+    52.3416255,
+    4.8598466
+   ],
+   "pandIds": [
+    "0363100012091838"
+   ],
+   "verblijfsobject": "0363010001173154",
+   "bagAddress": "Fred. Roeskestraat 98A, 1076ED Amsterdam",
+   "gebruiksdoel": "onderwijsfunctie",
+   "bouwjaar": 2006,
+   "osmToAddressM": 42,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2016,
+    2024
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "Het 4e Gymnasium",
+   "address": "Archangelweg 4, Amsterdam",
+   "osm": "node/4337412612",
+   "osmLatLng": [
+    52.3941814,
+    4.8730885
+   ],
+   "pandIds": [
+    "0363100012244095"
+   ],
+   "verblijfsobject": "0363010012088523",
+   "bagAddress": "Archangelweg 4, 1013ZZ Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie,onderwijsfunctie,overige gebruiksfunctie,sportfunctie",
+   "bouwjaar": 2015,
+   "osmToAddressM": 22,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2020,
+    2025
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "Hogeschool van Amsterdam",
+   "address": "Wibautstraat 3b, Amsterdam",
+   "osm": "node/955166853",
+   "osmLatLng": [
+    52.2926611,
+    4.9619003
+   ],
+   "pandIds": [
+    "0363100012096559"
+   ],
+   "verblijfsobject": "",
+   "bagAddress": "(pand under the OSM point; address geocode was far away)",
+   "gebruiksdoel": "onderwijsfunctie",
+   "bouwjaar": 1993,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [],
+   "referenceStatus": "no-wall"
+  },
+  {
+   "name": "Hogeschool van Amsterdam (BSV)",
+   "address": "(no address in OSM)",
+   "osm": "way/445194076",
+   "osmLatLng": [
+    52.3679382,
+    4.8061424
+   ],
+   "pandIds": [],
+   "verblijfsobject": "",
+   "bagAddress": "",
+   "gebruiksdoel": "",
+   "bouwjaar": null,
+   "osmToAddressM": null,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [],
+   "referenceStatus": "no-pand"
+  },
+  {
+   "name": "Metis Montessori Lyceum",
+   "address": "Derde Oosterparkstraat 360, Amsterdam",
+   "osm": "way/1452340704",
+   "osmLatLng": [
+    52.3586234,
+    4.9254033
+   ],
+   "pandIds": [
+    "0363100012080098"
+   ],
+   "verblijfsobject": "0363010000948739",
+   "bagAddress": "Derde Oosterparkstraat 360, 1092SE Amsterdam",
+   "gebruiksdoel": "onderwijsfunctie",
+   "bouwjaar": 1991,
+   "osmToAddressM": 8,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2025,
+    2019
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "Montessori Lyceum Amsterdam",
+   "address": "Van Ostadestraat 103, Amsterdam",
+   "osm": "node/2817705366",
+   "osmLatLng": [
+    52.3523643,
+    4.8925558
+   ],
+   "pandIds": [
+    "0363100012236840"
+   ],
+   "verblijfsobject": "0363010000844593",
+   "bagAddress": "Van Ostadestraat 103, 1072ST Amsterdam",
+   "gebruiksdoel": "onderwijsfunctie",
+   "bouwjaar": 1900,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2018,
+    2024
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "Montessori Lyceum Oostpoort",
+   "address": "Soembawastraat 63, Amsterdam",
+   "osm": "node/2830042684",
+   "osmLatLng": [
+    52.363092,
+    4.9438059
+   ],
+   "pandIds": [
+    "0363100012080630"
+   ],
+   "verblijfsobject": "0363010000689751",
+   "bagAddress": "Soembawastraat 63, 1095VZ Amsterdam",
+   "gebruiksdoel": "onderwijsfunctie",
+   "bouwjaar": 1932,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2016,
+    2021
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "Rietveldschool",
+   "address": "Fred. Roeskestraat 98, Amsterdam",
+   "osm": "way/62923641",
+   "osmLatLng": [
+    52.3416328,
+    4.774451
+   ],
+   "pandIds": [
+    "0394100000208189"
+   ],
+   "verblijfsobject": "",
+   "bagAddress": "(pand under the OSM point; address geocode was far away)",
+   "gebruiksdoel": "onderwijsfunctie",
+   "bouwjaar": 1963,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [],
+   "referenceStatus": "no-panorama"
+  },
+  {
+   "name": "Rijksakademie van beeldende kunsten",
+   "address": "Sarphatistraat 470, Amsterdam",
+   "osm": "node/2742863349",
+   "osmLatLng": [
+    52.3629354,
+    4.9177925
+   ],
+   "pandIds": [
+    "0363100012165748"
+   ],
+   "verblijfsobject": "0363010000804695",
+   "bagAddress": "Sarphatistraat 470, 1018GW Amsterdam",
+   "gebruiksdoel": "onderwijsfunctie",
+   "bouwjaar": 1865,
+   "osmToAddressM": 1,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2022,
+    2021
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "Roeterseiland (UvA)",
+   "address": "Roetersstraat 11, Amsterdam",
+   "osm": "way/27062097",
+   "osmLatLng": [
+    52.3637653,
+    4.913226
+   ],
+   "pandIds": [],
+   "verblijfsobject": "",
+   "bagAddress": "(pand under the OSM point; address geocode was far away)",
+   "gebruiksdoel": "",
+   "bouwjaar": null,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [],
+   "referenceStatus": "no-pand"
+  },
+  {
+   "name": "Spinoza Lyceum",
+   "address": "Spinozastraat 41, Amsterdam",
+   "osm": "way/37140727",
+   "osmLatLng": [
+    52.3429479,
+    4.8663613
+   ],
+   "pandIds": [],
+   "verblijfsobject": "",
+   "bagAddress": "(pand under the OSM point; address geocode was far away)",
+   "gebruiksdoel": "",
+   "bouwjaar": null,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [],
+   "referenceStatus": "no-pand"
+  },
+  {
+   "name": "Spinoza20first",
+   "address": "H.J.E. Wenckebachweg 44, Amsterdam",
+   "osm": "node/11449965087",
+   "osmLatLng": [
+    52.336456,
+    4.9254988
+   ],
+   "pandIds": [
+    "0363100012253721"
+   ],
+   "verblijfsobject": "0363010012158469",
+   "bagAddress": "H.J.E. Wenckebachweg 44, 1096AN Amsterdam",
+   "gebruiksdoel": "onderwijsfunctie",
+   "bouwjaar": 2022,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2024,
+    2025
+   ],
+   "referenceStatus": "washed-out"
+  },
+  {
+   "name": "Universiteit van Amsterdam",
+   "address": "Spui 21, Amsterdam",
+   "osm": "node/478146921",
+   "osmLatLng": [
+    52.3685848,
+    4.8902006
+   ],
+   "pandIds": [
+    "0363100012167925"
+   ],
+   "verblijfsobject": "0363010001166530",
+   "bagAddress": "Spui 21, 1012WX Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 1787,
+   "osmToAddressM": 4,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2022,
+    2018
+   ],
+   "referenceStatus": "ok"
+  },
+  {
+   "name": "Vossius Gymnasium",
+   "address": "Messchaertstraat 1, Amsterdam",
+   "osm": "node/2816902154",
+   "osmLatLng": [
+    52.3456859,
+    4.883913
+   ],
+   "pandIds": [
+    "0363100012096365"
+   ],
+   "verblijfsobject": "0363010000742781",
+   "bagAddress": "Messchaertstraat 1, 1077WS Amsterdam",
+   "gebruiksdoel": "onderwijsfunctie",
+   "bouwjaar": 1930,
+   "osmToAddressM": 0,
+   "signatureElements": [],
+   "sharedWith": "",
+   "modelStatus": "pending",
+   "panoramaYears": [
+    2021,
+    2022
+   ],
+   "referenceStatus": "ok"
+  }
+ ]
+}
