@@ -52,8 +52,10 @@ export function buildHeinekenExperience(_id:string,_w:number,_d:number,b:Buildin
  // Current Mijksenaar entrance occupies the transition beside the brew house.
  const ex=-5.0,ez=frontZ(ex)+.13;pane(ex,.45,ez,7.35,12.4,'dark');pane(ex,.55,ez+.035,7.05,12.1);for(let x=ex-3.4;x<=ex+3.5;x+=1.18)b.box(x,.45,ez+.07,.095,12.3,.095,'frame');for(const y of [3.0,7.5,12.82])b.box(ex,y,ez+.07,7.35,.095,.10,'frame');b.box(ex,.4,ez+.13,.70,11.6,.13,'green');
  // Original cooling-hall clerestory: 37 opening lights per long side (RCE527811).
- // These sit below, and outside, the measured roof eaves rather than on its slope.
- for(const side of [-1,1])for(let i=0;i<37;i++){const x=.75+i*1.285,z=side>0?15.04:6.48,rot=side>0?0:Math.PI;pane(x,22.87,z,1.08,1.42,'dark',rot);pane(x,22.92,z+side*.025,.91,1.31,'glass',rot);b.box(x,22.88,z+side*.045,.055,1.42,.06,'frame');b.box(x,23.58,z+side*.045,1.08,.05,.06,'frame');}
+ // These sit below, and outside, the measured roof eaves rather than on its slope, on the hall's upper wall shell
+ // (geometry audit 2026-10-13: at a fixed z 15.04 / 6.48 they floated 10-22 cm off the measured, slightly irregular shell). The dark reveal is a solid sunk 4 cm into the shell and standing 4 cm out, so none of its faces is coplanar with the shell.
+ const shellZ=(x:number,near:number)=>{let best=near,d=1;for(const patch of data.roofZones){if(!patch.plan.some(p=>p[2]>24))continue;for(const r of [patch.plan,...patch.holes])for(let i=0;i<r.length;i++){const p=r[i],q=r[(i+1)%r.length];if(Math.abs(q[0]-p[0])<1e-4||x<Math.min(p[0],q[0])||x>Math.max(p[0],q[0]))continue;const z=p[1]+(q[1]-p[1])*(x-p[0])/(q[0]-p[0]);if(Math.abs(z-near)<d){d=Math.abs(z-near);best=z;}}}return best;};
+ for(const side of [-1,1])for(let i=0;i<37;i++){const x=.75+i*1.285,z=shellZ(x,side>0?15.04:6.48),rot=side>0?0:Math.PI;b.box(x,22.87,z,1.08,1.42,.08,'dark');pane(x,22.92,z+side*.075,.91,1.31,'glass',rot);b.box(x,22.88,z+side*.075,.055,1.42,.06,'frame');b.box(x,23.58,z+side*.075,1.08,.05,.06,'frame');}
  // West corner clock accents and restrained long cooling-hall side relief.
  const wx=49.42;b.box(wx,1,10.5,.24,22.7,1.7,'brick');b.box(wx,23.7,10.5,.42,.20,2.0,'stone');
  b.clock(46.8,19.2,frontZ(46.8)+.19);
