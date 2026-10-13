@@ -253,3 +253,58 @@ raised fill band to 60–78%, shrank the greeting reserve.
 
 Jordaan pixel: span 44%→64%, reach 71%→75%, topInk=0. Gallery in
 `.tmp/postcard-round4/`.
+
+## Session log — 2026-10-13 (round 5: photo runs, tone gate, two-line size, save)
+
+Review of main @ 94e7780f: fine at 500 px and up, but at the quiz's 150–520 px each letter's
+~60 px crop was texture; Helmersbuurt's brick went psychedelic under the poster filter;
+HOOFDDORPPLEINBUURT's lines shrank to 0.55 of a one-line face; nothing let a player keep a card.
+
+### Changes
+- **Photo runs** (`windowsPerPhoto: 'run'`, the default; `'letter'` keeps the old card).
+  `letterPhotoRuns` splits each word (space, hyphen, line end) into runs of 2–4 letters, at least
+  three runs when the words allow, at most five distinct photographs (the backdrop is photo 0, so
+  runs start at photo 1; a sixth run reuses a photo panned to its edge). One window per run: the
+  run's combined box, one cover crop, every letter face as a subpath of one `clip-path`. The canvas
+  still cuts each face, so rims and later lines stay painted over the photo. JORDAAN = JOR|DA|AN,
+  OUD-WEST = OUD|WE|ST, HOOFDDORP-/PLEINBUURT = 3+3+3 | 4+3+3.
+- **Tone gate.** `measurePhotoTone` samples a 32×32 grid: mean saturation, hue, brick share
+  (red-orange, mid saturation/value) and busy (mean neighbour luminance step). Soft when brick
+  ≥ 0.30, busy ≥ 0.10 or saturation ≥ 0.39; soft drops the posterise and keeps a light lift.
+  Measured on 32 Commons photos (Helmersbuurt, Da Costabuurt, Hoofddorppleinbuurt,
+  Marineterrein; fetched to /tmp only): brick wall 0.93/0.90, De Liefde 0.42, Elisabeth
+  Wolffstraat 0.50 → soft; Da Costagracht canal 0.13 brick / 0.23 sat, Hugo de Grootgracht
+  sat 0.37 → poster. 13 of 32 go soft (sharp downsample; the browser grid differs by ~0.01). Windows carry `filter` + `filterMode`.
+- **Two lines.** Font cap 0.34H → 0.37H, face pull cap 1.15 → 1.25, line gap set from the final
+  pull (0.72·pull − 0.01 em; Anton's real cap leaves ~4 px of air), greeting band 0.12H → 0.06H,
+  fill cap 0.85 for two lines. Each line is now 0.622 of JORDAAN's face (was 0.545). A short top
+  line (DA / COSTABUURT) puts the script beside it instead of over it.
+- **Save postcard.** `src/components/PostcardExport.tsx` repaints the frame (the shared frame
+  canvas holds a non-CORS backdrop and would taint), lays CORS copies of the photos
+  (`crossOrigin = 'anonymous'`; Commons sends `Access-Control-Allow-Origin: *`), adds the grain,
+  and downloads `greetings-from-<name>.png` at 1280×800. Checked end to end with live Commons
+  URLs for Hoofddorppleinbuurt.
+
+### Automated
+- `test:large-letter-postcard`, `test:large-letter-craft` (new: two-line face ≥ 0.62 of one-line
+  on HOOFDDORPPLEINBUURT, OVERTOOMSE VELD, DA COSTABUURT, HELMERSBUURT, measured with Anton),
+  `test:postcard-images` (runs cover every letter once, 2–4 adjacent letters, 3–5 photos; tone gate
+  on synthetic grids, plus the fetched Commons photos when `/tmp/mr-postcard/photos` exists).
+- Craft render round 5: `.tmp/postcard-round5/`; pixel P0 `topInk=0 leftCream=0px reach=72% span=65%`.
+
+### Vision checklist C (round 5 gallery + layered before/after at 220/420/640)
+
+| # | Criterion | Result |
+|---|-----------|--------|
+| 1 | Letter faces readable | **pass** — at 220 px a run shows a street, canal or façade, not texture |
+| 2 | No ghosting on faces | **pass** |
+| 3 | Extrusion is a block | **pass** |
+| 4 | Outline die-cut | **pass** |
+| 5 | Word is hero | **pass** — two-line names fill like one-line ones |
+| 6 | Type hierarchy | **pass** |
+| 7 | Place coherence | **partial** — data: Helmersbuurt's RT run is a Commons toilet photo |
+
+### Left
+- OUD-WEST still shows a wide gap where the (unpainted) hyphen sits.
+- SPAARNDAMMER- is width-bound (font 119) and reaches 0.62 only by vertical paint scale; tighter
+  tracking for two-line names was not needed for the others and was left out.
