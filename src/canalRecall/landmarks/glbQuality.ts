@@ -25,6 +25,8 @@ export interface Thresholds {
   weld: number;
   /** Components closer than this are "attached". */
   detachGap: number;
+  /** Keep the triangle ids of each detached part in the report (builder-time snapping). */
+  keepDetachedTriangles?: boolean;
   /** Component is a decal/plane (intentionally open) when its thinnest bbox side is below this. */
   flatThickness: number;
   /** Boundary loops on thick components shorter than this perimeter are ignored (T-junction noise). */
@@ -154,6 +156,10 @@ export interface DetachedPart {
   hovering: boolean;
   /** In front of the nearest surface (long ray escapes) rather than recessed in a cavity. */
   exposed: boolean;
+  /** Vector from the part's closest sample to the closest point of the rest of the model (length `gap`); absent when nothing is within the search radius. */
+  towardOther?: V3;
+  /** Triangle indices of the part, only filled when `keepDetachedTriangles` is set (the builder-time snap needs them; reports do not). */
+  triangleIds?: number[];
 }
 
 export interface BlankWall {
@@ -754,7 +760,7 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   /** Nearest approach of cluster k to any other cluster, plus whether that nearest face is exposed:
    *  the part sits on the side of the nearest surface from which a long ray escapes, i.e. it is in front of
    *  the wall (floating facade / hovering roof) rather than recessed into a cavity (window glass behind a wall). */
-  const nearestOther = (k: number): {gap: number; exposed: boolean} => {
+  const nearestOther = (k: number): {gap: number; exposed: boolean; toward?: V3} => {
     let best = Infinity, bestTri = -1;
     let bestP: V3 = [0, 0, 0];
     const list = trisOfCluster[k];
@@ -783,7 +789,8 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
     const n = triNormal[bestTri] ?? [0, 1, 0];
     const dv = sub(bestP, q);
     const side = dot(dv, n);
-    if (Math.abs(side) < 0.5 * Math.sqrt(best)) return {gap: Math.sqrt(best), exposed: false}; // beside, not in front
+    const toward = sub(q, bestP);
+    if (Math.abs(side) < 0.5 * Math.sqrt(best)) return {gap: Math.sqrt(best), exposed: false, toward}; // beside, not in front
     const dir: V3 = side > 0 ? n : [-n[0], -n[1], -n[2]];
     const o: V3 = [q[0] + dir[0] * 0.002, q[1] + dir[1] * 0.002, q[2] + dir[2] * 0.002];
     // Long ray from the surface towards the part; own cluster is transparent to it.
@@ -797,7 +804,7 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
         if (rayTriangle(o, dir, ta, tb, tc, 60) >= 0) { blocked = true; break; }
       }
     }
-    return {gap: Math.sqrt(best), exposed: !blocked};
+    return {gap: Math.sqrt(best), exposed: !blocked, toward};
   };
   const parts: DetachedPart[] = [];
   for (let k = 0; k < nClusters; k++) {
@@ -808,6 +815,8 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
       minY: cMin[k][1], maxY: cMax[k][1],
       centre: [(cMin[k][0] + cMax[k][0]) / 2, (cMin[k][1] + cMax[k][1]) / 2, (cMin[k][2] + cMax[k][2]) / 2],
       hovering: cMin[k][1] > 0.3,
+      ...(near.toward ? {towardOther: near.toward} : {}),
+      ...(th.keepDetachedTriangles ? {triangleIds: trisOfCluster[k]} : {}),
     });
   }
   parts.sort((a, b) => b.area - a.area);
@@ -1071,7 +1080,7 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
 
   return {
     triangles, bounds: {min: bmin, max: bmax}, components: nComp, clusters: nClusters, holes, seeThrough,
-    detached: {count: bad.length, parts: parts.slice(0, 20)},
+    detached: {count: bad.length, parts: th.keepDetachedTriangles ? parts : parts.slice(0, 20)},
     invertedRoof: {triangles: invTris, area: invArea, points: invPoints}, blankWalls,
     degenerate, nonFinite, belowGround: {vertices: below, minY: Number.isFinite(minY) ? minY : 0},
     farOutside: {vertices: farN, maxDistance: farMax}, findings, score,
