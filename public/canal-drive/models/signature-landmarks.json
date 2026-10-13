@@ -47327,14 +47327,14 @@
         "depthMetres": 74.29579329490662,
         "depthCoverage": 1.0177505930809125
       },
-      "triangles": 9804,
-      "bytes": 146416,
+      "triangles": 9972,
+      "bytes": 147308,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "37ac70941116c193",
+        "sourceHash": "f4572b102b6d517e",
         "buildVersion": 2,
-        "bytes": 41832,
-        "triangles": 1766
+        "bytes": 42680,
+        "triangles": 1788
       }
     },
     "slavernijmonument": {
