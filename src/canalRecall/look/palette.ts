@@ -481,3 +481,33 @@ export function cityTint(slot: MaterialSlot, hex: string): string {
     default: return cityRoofTint(slot, hex);
   }
 }
+
+// ---------------------------------------------------------------------------
+// Map labels (docs/LOOK.md §Labels)
+// ---------------------------------------------------------------------------
+
+/**
+ * POI labels speak the HUD's language: the plaque's warm near-black ink on
+ * its paper, with copper kept for the destination (the HUD's one accent).
+ * Values are the daylight HUD tokens (`hudTheme.ts` daylightTheme), repeated
+ * here so a label never picks a colour the rest of the look does not use.
+ * Before 2026-10-13 labels were white `#FFF7CC` / pale blue on a navy
+ * `#071E2B` halo: a dark-mode skin over a daylight city.
+ */
+export const LABEL_INK = {
+  ink: '#1f1c17',
+  inkMuted: '#5f584d',
+  paper: '#fbf8f2',
+  paperSunk: '#ebe4d6',
+  copper: '#b4682c',
+  copperInk: '#8a4a18',
+} as const;
+
+/** `ink`: warm dark text on a thin paper halo (default). `paper`: paper text on an ink halo. */
+export type LabelTone = 'ink' | 'paper';
+
+export function labelTone(tone: LabelTone): { text: string; muted: string; halo: string; dot: string } {
+  return tone === 'paper'
+    ? { text: LABEL_INK.paper, muted: LABEL_INK.paperSunk, halo: 'rgba(31,28,23,0.82)', dot: LABEL_INK.paper }
+    : { text: LABEL_INK.ink, muted: LABEL_INK.inkMuted, halo: 'rgba(251,248,242,0.94)', dot: LABEL_INK.ink };
+}
