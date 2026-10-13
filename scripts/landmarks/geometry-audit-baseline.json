@@ -3696,17 +3696,17 @@
       "window-misaligned": 0
     },
     "valley": {
-      "opening-floating": 266,
+      "material-slot-untagged-permille": 0,
+      "opening-floating": 250,
       "opening-floating-fail": 0,
-      "opening-overhang": 7,
-      "opening-overhang-fail": 2,
+      "opening-overhang": 6,
+      "opening-overhang-fail": 1,
       "opening-buried": 22,
-      "zfight-m2": 18.5,
+      "zfight-m2": 18,
       "zfight-near-m2": 0,
       "window-mismatch": 30,
       "window-missing": 1,
       "window-misaligned": 0,
-      "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
       "window-missing-spec": 0
