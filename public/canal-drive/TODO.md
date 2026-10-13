@@ -333,7 +333,18 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   builders/specs plus the bilder-087959 recipe), so they are not large-tier
   inputs; the large-tier customer list is `dominant-building-backlog.json`
   (1,828 mid-sized pands), filtered to unmodelled, central, two-front
-  candidates (lane running 2026-10-13). Heineken Experience fails
+  candidates. First pass 2026-10-13 (HISTORY): Kattenburg quadrangle and the
+  Heinekenplein block installed; every backlog entry is `priority: low` /
+  `needs-identification-and-research`, so rank by footprint ÷ distance from
+  the centre until a better "most seen" score exists. Shell probes that
+  passed baseline but are not authored yet: 084999 (pastel stucco,
+  rounded corner), 186290, 126319, 243844; 165427 hidden by scaffolding.
+  Bespoke-builder candidates found: Entrepotdok warehouses 164981 (arched
+  portals and windows; the large tier cuts rectangles only — an arched
+  cutter in `dissolve.ts`/`compose.ts` would unlock it), Houthaven block
+  186086 (curved walls, perforated brick), OBA Staatsliedenbuurt 069991
+  (striped bands, glazed balcony towers). Tall civic storeys fail the
+  storey-height gate on 186003, 118320, 137990, 135250, 236799, 169214. Heineken Experience fails
   window-rhythm (2 predicted missing) and is a batch-2 candidate. `check-manual-landmarks.ts`
   status is in the Direction block above (2026-10-13).
   Lane runs of `archive-model-sources.py` into the private repo are sometimes
