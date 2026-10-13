@@ -170,6 +170,12 @@ export interface TriviaText {
   sourceUrl: string;
   /** "Wikipedia", "Wikipedia (translated from Dutch)", "Gemeente Amsterdam"… */
   sourceLabel: string;
+  /**
+   * Set when the text is another place's history shown for an area, as "<Name> (<kind>)" with kind
+   * waterway | street | park | bridge | square: "Schinkel (waterway)". The card heads it
+   * "History of the Schinkel, which runs through here" (src/mapRecall/answerText.ts historyHeading).
+   */
+  borrowedFrom?: string;
 }
 
 export interface StreetFeature {
@@ -198,7 +204,12 @@ export interface StreetFeature {
   wikipediaExtractLang?: string;
   wikipediaUrl?: string;
   /** Where `wikipediaExtract` really came from (an article, or data a description was composed from). */
-  wikipediaExtractSource?: { sourceUrl: string; sourceLabel: string };
+  wikipediaExtractSource?: {
+    sourceUrl: string;
+    sourceLabel: string;
+    /** The lede is about a place in the area, "<Name> (<kind>)": "Orgelpark (landmark)" (see TriviaText.borrowedFrom). */
+    borrowedFrom?: string;
+  };
   wikipediaImageUrl?: string;
   /** Human-reviewed, statement-provenance trivia joined by exact extract id. */
   localFacts?: Fact[];
@@ -246,6 +257,7 @@ export interface RoundResult {
   isCorrect?: boolean; // for guess_name mode
   pointsEarned: number;
   timeSpentMs: number;
+  hintsUsed?: number; // hints revealed this round (caps the score and the review rating)
 }
 
 export interface GameState {

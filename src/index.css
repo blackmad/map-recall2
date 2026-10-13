@@ -319,3 +319,44 @@ input {
   color: #3b2412; font: 700 11px/1.4 system-ui, sans-serif; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 .leaflet-tooltip.notable-place-label::before { display: none; }
+
+/* Game-over review map (MapComponent): one enamel name plaque per round, its number in the round's colour. */
+.review-plaque {
+  position: absolute; left: 0; top: 0; transform: translate(-50%, -50%);
+  display: inline-flex; align-items: center; gap: 6px; max-width: 220px;
+  padding: 3px 9px 3px 3px; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 8px;
+  background: #0b3a8c; color: #fff; white-space: nowrap; cursor: pointer;
+  font: 800 13px/1.1 'Barlow Condensed', sans-serif; letter-spacing: 0.04em; text-transform: uppercase;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.35);
+}
+.review-plaque-number {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  min-width: 20px; height: 20px; padding: 0 4px; border-radius: 5px;
+  background: var(--round); color: #fff; font-size: 13px; letter-spacing: 0;
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.55);
+}
+.review-plaque-name { overflow: hidden; text-overflow: ellipsis; }
+.review-plaque.is-missed .review-plaque-number { background: #fff; color: var(--round); box-shadow: inset 0 0 0 2px var(--round); }
+.review-plaque.is-folded { padding-right: 3px; gap: 0; }
+.review-plaque.is-folded .review-plaque-name { display: none; }
+.review-guess-pin {
+  position: absolute; left: 0; top: 0; transform: translate(-50%, -50%);
+  display: flex; align-items: center; justify-content: center; width: 20px; height: 20px;
+  border: 2px solid #fff; border-radius: 999px; background: var(--round); color: #fff;
+  font: 800 11px/1 'Barlow Condensed', sans-serif; box-shadow: 0 1px 4px rgb(0 0 0 / 0.4);
+}
+.review-plaque { translate: 0 var(--nudge, 0px); }
+.review-plaque.is-above { transform: translate(-50%, calc(-100% - 6px)); }
+
+/* An area's reveal plaque (MapComponent areaPlaqueIcon): centred on the area's pole of
+   inaccessibility, or standing above a small area's top edge (.is-above). */
+.area-plaque {
+  position: absolute; left: 0; top: 0; transform: translate(-50%, -50%);
+  white-space: nowrap; filter: drop-shadow(0 4px 8px rgb(0 0 0 / 0.45));
+}
+.area-plaque.is-above { transform: translate(-50%, calc(-100% - 6px)); }
+.area-plaque > span {
+  display: block; padding: 6px 10px; border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 8px;
+  background: #0b3a8c; color: #fff; font: 800 14px/1.1 'Barlow Condensed', sans-serif;
+  letter-spacing: 0.04em; text-transform: uppercase; box-shadow: 0 4px 12px rgb(0 0 0 / 0.35);
+}

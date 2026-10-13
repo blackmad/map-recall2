@@ -1,4 +1,5 @@
 import type { FeatureType, TriviaText } from '../types';
+import { placeKindTier, splitBorrowedHistory, tidyLede } from './answerText';
 
 /** One entry of `street-name-origins.json` (Gemeente Amsterdam BAG register). */
 export interface StreetNameOrigin {
@@ -14,6 +15,8 @@ export interface PublishedText {
   /** Set for text composed from data rather than quoted from an article (see scripts/fill-neighborhood-gaps.ts). */
   sourceLabel?: string;
   kind?: 'wikipedia' | 'derived';
+  /** Another place's text shown for this area: "<Name> (<waterway|street|park|bridge|square|landmark>)". */
+  borrowedFrom?: string;
 }
 export interface NeighborhoodHistoryEntry {
   name: string;
@@ -82,6 +85,16 @@ export function attachNameOrigins<T extends TriviaBearing>(features: readonly T[
 const label = (text: PublishedText) => text.sourceLabel && text.kind === 'derived' ? text.sourceLabel : text.lang === 'nl' ? 'Wikipedia (translated from Dutch)' : 'Wikipedia';
 const asTrivia = (text: PublishedText | undefined): TriviaText | undefined =>
   text ? { text: text.en, sourceUrl: text.sourceUrl, sourceLabel: label(text) } : undefined;
+/**
+ * A history may be a canal's or a street's in the area: `borrowedFrom` says whose, and the
+ * older "Schinkel (waterway here): " prefix is read the same way, so both forms render alike.
+ */
+const asHistory = (text: PublishedText | undefined): TriviaText | undefined => {
+  const trivia = asTrivia(text);
+  if (!trivia) return undefined;
+  const borrowed = splitBorrowedHistory(trivia.text, text?.borrowedFrom);
+  return borrowed.borrowedFrom ? { ...trivia, text: borrowed.text, borrowedFrom: borrowed.borrowedFrom } : trivia;
+};
 
 /** A neighbourhood's local fact, description, photo, history and name origin, by exact name. */
 export function attachNeighborhoodTrivia<T extends TriviaBearing>(
@@ -99,14 +112,16 @@ export function attachNeighborhoodTrivia<T extends TriviaBearing>(
     // Only an article counts as "the Wikipedia page"; text composed from data links to its own source.
     const articleUrl = [entry?.description, entry?.history, entry?.nameOrigin].find(text => text && text.kind !== 'derived')?.sourceUrl;
     const description = entry?.description;
+    // A lede about a landmark or street here: `borrowedFrom`, or the older "Orgelpark (landmark here): " prefix.
+    const lede = description ? splitBorrowedHistory(description.en, description.borrowedFrom) : undefined;
     return {
       ...feature,
-      wikipediaExtract: feature.wikipediaExtract || description?.en,
+      wikipediaExtract: feature.wikipediaExtract || lede?.text,
       wikipediaUrl: feature.wikipediaUrl || (description && description.kind !== 'derived' ? description.sourceUrl : articleUrl),
       wikipediaExtractSource: feature.wikipediaExtract || !description ? feature.wikipediaExtractSource
-        : { sourceUrl: description.sourceUrl, sourceLabel: label(description) },
+        : { sourceUrl: description.sourceUrl, sourceLabel: label(description), ...(lede?.borrowedFrom ? { borrowedFrom: lede.borrowedFrom } : {}) },
       wikipediaImageUrl: feature.wikipediaImageUrl || photo,
-      history: feature.history || asTrivia(entry?.history),
+      history: feature.history || asHistory(entry?.history),
       nameOrigin: feature.nameOrigin || asTrivia(entry?.nameOrigin),
       localFact: feature.localFact || asTrivia(entry?.localFact),
     };
@@ -120,6 +135,8 @@ export function attachNeighborhoodTrivia<T extends TriviaBearing>(
  */
 export function descriptionWithoutOrigin(description: string | undefined, origin: string | undefined): string | undefined {
   if (!description) return undefined;
+  // "The Grachtengordel (, lit. 'canal belt')": what an IPA removal leaves behind.
+  description = tidyLede(description);
   if (!origin) return description;
   const words = (text: string) => new Set(text.toLowerCase().match(/[\p{L}\d]{4,}/gu) || []);
   const originWords = words(origin);
@@ -198,7 +215,11 @@ export function notablePlacesIn(
   const seen = new Set<string>();
   const perKindCount = new Map<string, number>();
   const out: NotablePlace[] = [];
-  for (const place of [...candidates].sort((a, b) => b.score - a.score)) {
+  let commercial = 0;
+  // Landmarks, parks, schools and churches before hotels, and those before shops and cafés
+  // (review 2026-10-13: Hoofddorppleinbuurt's places were HEMA, Retort and a bike shop).
+  const ranked = [...candidates].sort((a, b) => placeKindTier(a.kind) - placeKindTier(b.kind) || b.score - a.score);
+  for (const place of ranked) {
     if (out.length >= count) break;
     const [y, x] = place.center;
     if (y < minLat || y > maxLat || x < minLon || x > maxLon) continue;
@@ -206,7 +227,10 @@ export function notablePlacesIn(
     if (!flat || seen.has(flat) || forbidden.some((name) => flat.includes(name))) continue;
     // Two landmarks can both teach; a second bike shop says nothing new.
     if ((perKindCount.get(place.kind) || 0) >= (place.score >= 1000 ? perKind : 1)) continue;
+    // At most one shop, café or bike shop in all.
+    if (placeKindTier(place.kind) === 2 && commercial >= 1) continue;
     if (!inArea(place.center, polygons)) continue;
+    if (placeKindTier(place.kind) === 2) commercial++;
     seen.add(flat);
     perKindCount.set(place.kind, (perKindCount.get(place.kind) || 0) + 1);
     out.push({ name: place.name, center: place.center, kind: place.kind });

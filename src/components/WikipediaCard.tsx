@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { StreetFeature, TriviaText } from '../types';
 import { FACT_KIND_LABELS } from '../canalRecall/facts/factTypes';
 import { neighborhoodFactForRound } from '../mapRecall/neighborhoodStories';
 import { triviaForRound } from '../mapRecall/localFacts';
 import { descriptionWithoutOrigin } from '../mapRecall/trivia';
 import { PostcardHeader } from './PostcardHeader';
-import { postcardCityName, postcardPhotosFor } from '../mapRecall/postcardPhotos';
+import { postcardCaptionFor, postcardPhotosFor } from '../mapRecall/postcardPhotos';
+import { historyHeading, ledeHeading, withNamedSubject } from '../mapRecall/answerText';
+import { whereItIs } from '../mapRecall/answerPlace';
+import { useAnswerHints } from '../mapRecall/useAnswerHints';
 
 const Source: React.FC<{ href?: string; children: React.ReactNode }> = ({ href, children }) => href
   ? <a href={href} target="_blank" rel="noreferrer" className="mt-0.5 inline-block text-[11px] font-bold text-white/60 hover:text-white">{children} ↗</a>
@@ -36,45 +39,66 @@ const PlacesHere: React.FC<{ places?: StreetFeature['notablePlaces']; showPhotos
   </div>;
 };
 
+/** The encyclopedia lede, three lines until the player asks for the rest. */
+const Lede: React.FC<{ text: string; source: { href?: string; label: string }; heading?: string }> = ({ text, source, heading }) => {
+  const [open, setOpen] = useState(false);
+  const [clamped, setClamped] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+  useEffect(() => setOpen(false), [text]);
+  useLayoutEffect(() => {
+    const element = ref.current;
+    if (!element || open) return;
+    const check = () => setClamped(element.scrollHeight > element.clientHeight + 1);
+    check();
+    const observer = new ResizeObserver(check);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [text, open]);
+  return <p className="text-xs leading-relaxed text-white" data-testid="answer-lede">
+    {heading && <span className="block font-bold text-white/80" data-testid="answer-lede-heading">{heading}</span>}
+    <span ref={ref} className={open ? 'block' : 'line-clamp-3'}>“{text}”</span>
+    {clamped && !open && <button type="button" onClick={() => setOpen(true)} className="mr-2 text-[11px] font-bold text-[#8a4a18] hover:underline" data-testid="answer-lede-more">more</button>}
+    <Source href={source.href}>{source.label}</Source>
+  </p>;
+};
+
 /**
- * What the answer teaches beyond its position: for neighbourhoods a lead
- * line a local would tell you, why it is called this, a reviewed fact or the
- * encyclopedia lede, and (for neighbourhoods) a short history. Every line
- * names and links its source.
+ * What the answer teaches beyond its position, in reading order: why it is called this, what a
+ * local would tell you, where it is, every reviewed fact, the encyclopedia lede, its history and
+ * the places in it. Every line names and links its source; photo credits close the card.
  */
 export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number; roundIndex?: number }> = ({ feature, factSeed = 0, roundIndex = 0 }) => {
+  const hints = useAnswerHints(feature);
   const topFacts = feature.neighborhoodTopFacts;
   const storyFact = neighborhoodFactForRound(feature.neighborhoodRotatingFacts, factSeed, roundIndex);
   const hasStory = !!topFacts?.length;
-  const trivia = hasStory ? null : triviaForRound(feature.localFacts, factSeed, roundIndex);
+  // Every reviewed fact; the round's own (the one the fold may have shown) first.
+  const roundFact = triviaForRound(feature.localFacts, factSeed, roundIndex);
+  const facts = roundFact ? [roundFact, ...(feature.localFacts ?? []).filter((fact) => fact !== roundFact)] : [];
   const origin: TriviaText | undefined = feature.nameOrigin;
-  const description = trivia || hasStory ? undefined : descriptionWithoutOrigin(feature.wikipediaExtract, origin?.text);
-  const history = hasStory ? undefined : feature.history;
+  const originText = origin ? withNamedSubject(feature.name, origin.text) : undefined;
+  const description = descriptionWithoutOrigin(feature.wikipediaExtract, origin?.text);
+  const history = feature.history;
   const localFact = hasStory ? undefined : feature.localFact;
+  const where = hints ? whereItIs(hints, feature.name) : undefined;
   // The line under the description names where it really came from and links there: the article for
   // Wikipedia text, the data's own source for text composed from the map.
-  const extractSource = feature.wikipediaExtractSource;
+  // Some extracts carry a bare string here ("translated"); only an object names a source.
+  const extractSource = typeof feature.wikipediaExtractSource === 'object' ? feature.wikipediaExtractSource : undefined;
   const descriptionSource = extractSource
     ? { href: extractSource.sourceUrl, label: extractSource.sourceLabel === 'Wikipedia' ? 'From Wikipedia' : extractSource.sourceLabel }
     : { href: feature.wikipediaUrl, label: feature.wikipediaUrl?.includes('nl.wikipedia') ? 'Wikipedia (translated from Dutch)' : 'From Wikipedia' };
-  if (!hasStory && !localFact && !origin && !trivia && !description && !history && !feature.wikipediaImageUrl) return null;
+  if (!hasStory && !localFact && !origin && !facts.length && !description && !history && !feature.wikipediaImageUrl) return null;
   // Neighbourhoods open with a postcard cut from their own photographs and those of the places in them.
   const postcardPhotos = postcardPhotosFor(feature);
+  const caption = hints ? postcardCaptionFor(feature, hints) : undefined;
   return <div className="answer-detail-card flex flex-col gap-2 p-3 text-left" data-testid="answer-trivia">
-    {feature.type === 'neighborhood' && <PostcardHeader name={feature.name} cityName={postcardCityName(feature.cityId)} photos={postcardPhotos} />}
-    {postcardPhotos.length >= 2 && (feature.areaPhotos?.length ?? 0) > 0 && <details className="text-[11px] leading-snug text-white/70" data-testid="postcard-credits">
-      <summary className="cursor-pointer font-bold">Postcard photo credits</summary>
-      <ul className="mt-1 space-y-0.5">
-        {feature.areaPhotos!.slice(0, 8).map((entry) => <li key={entry.photo.imageUrl}>
-          <a href={entry.photo.sourceUrl} target="_blank" rel="noreferrer" className="font-bold hover:text-white">{entry.name}</a> · {entry.photo.imageAttribution}
-        </li>)}
-      </ul>
-    </details>}
+    {feature.type === 'neighborhood' && hints && <PostcardHeader name={feature.name} cityName={caption} photos={postcardPhotos} className="mx-auto w-full max-w-[520px] rounded-lg shadow-md" />}
     <div className="flex gap-3">
     {feature.wikipediaImageUrl && postcardPhotos.length < 2 && <img src={feature.wikipediaImageUrl} referrerPolicy="no-referrer" alt="" className="h-12 w-16 flex-none rounded-md object-cover sm:h-16 sm:w-20" />}
-    <div className="min-w-0 space-y-1.5">
+    <div className="min-w-0 flex-1 space-y-1.5">
       {origin && <p className="text-xs leading-relaxed text-white" data-testid="answer-name-origin">
-        <Chip>Name</Chip>{origin.text}{' '}<Source href={origin.sourceUrl}>{origin.sourceLabel}</Source>
+        <Chip>Name</Chip>{originText}{' '}<Source href={origin.sourceUrl}>{origin.sourceLabel}</Source>
       </p>}
       {topFacts?.map((fact, i) => <p key={fact.text} className="text-xs font-semibold leading-relaxed text-white" data-testid="answer-top-fact">
         {i === 0 && <Chip>About here</Chip>}{fact.text}{' '}<Source href={fact.sourceUrl}>{fact.sourceLabel}</Source>
@@ -82,27 +106,31 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
       {storyFact && <p className="text-xs leading-relaxed text-white" data-testid="answer-rotating-fact">
         <Chip>Did you know</Chip>{storyFact.text}{' '}<Source href={storyFact.sourceUrl}>{storyFact.sourceLabel}</Source>
       </p>}
-      {hasStory && feature.history && <details className="text-xs leading-relaxed text-white" data-testid="answer-story-background">
-        <summary className="cursor-pointer font-bold text-white/80">History</summary>
-        <p className="mt-1">{feature.history.text}{' '}<Source href={feature.history.sourceUrl}>{feature.history.sourceLabel}</Source></p>
-      </details>}
       {localFact && <p className="text-xs font-semibold leading-relaxed text-white" data-testid="answer-local-fact">
         <Chip>Local</Chip>{localFact.text}{' '}<Source href={localFact.sourceUrl}>{localFact.sourceLabel}</Source>
       </p>}
-      {trivia && <p className="text-xs leading-relaxed text-white">
-        <Chip>{FACT_KIND_LABELS[trivia.kind]}</Chip>“{trivia.text}”{' '}<Source href={trivia.sourceUrl}>Reviewed Wikipedia fact · {trivia.license}</Source>
+      {where && <p className="text-xs leading-relaxed text-white" data-testid="answer-where">
+        <Chip>Where</Chip>{where}
       </p>}
-      {description && <p className="text-xs leading-relaxed text-white">
-        <span className={origin || history || localFact ? 'line-clamp-2' : 'line-clamp-3'}>“{description}”</span>
-        <Source href={descriptionSource.href}>{descriptionSource.label}</Source>
-      </p>}
-      {!description && !trivia && !origin && feature.wikipediaUrl && <Source href={feature.wikipediaUrl}>View photo on Wikipedia</Source>}
-      {history && <details open className="text-xs leading-relaxed text-white" data-testid="answer-history">
-        <summary className="cursor-pointer font-bold text-white/80">History</summary>
+      {facts.map((fact) => <p key={fact.text} className="text-xs leading-relaxed text-white" data-testid="answer-fact">
+        <Chip>{FACT_KIND_LABELS[fact.kind]}</Chip>{fact.text}{' '}<Source href={fact.sourceUrl}>Wikipedia · {fact.license}</Source>
+      </p>)}
+      {description && <Lede text={description} source={descriptionSource} heading={ledeHeading(extractSource?.borrowedFrom)} />}
+      {!description && !facts.length && !origin && feature.wikipediaUrl && <Source href={feature.wikipediaUrl}>View photo on Wikipedia</Source>}
+      {history && <details open={!hasStory} className="text-xs leading-relaxed text-white" data-testid={hasStory ? 'answer-story-background' : 'answer-history'}>
+        <summary className="cursor-pointer font-bold text-white/80">{historyHeading(history.borrowedFrom)}</summary>
         <p className="mt-1">{history.text}</p>
         <Source href={history.sourceUrl}>{history.sourceLabel}</Source>
       </details>}
       <PlacesHere places={feature.notablePlaces} showPhotos={postcardPhotos.length < 2} />
+      {postcardPhotos.length >= 2 && (feature.areaPhotos?.length ?? 0) > 0 && <details className="text-[11px] leading-snug text-white/70" data-testid="postcard-credits">
+        <summary className="cursor-pointer font-bold">Postcard photo credits</summary>
+        <ul className="mt-1 space-y-0.5">
+          {feature.areaPhotos!.slice(0, 8).map((entry) => <li key={entry.photo.imageUrl}>
+            <a href={entry.photo.sourceUrl} target="_blank" rel="noreferrer" className="font-bold hover:text-white">{entry.name}</a> · {entry.photo.imageAttribution}
+          </li>)}
+        </ul>
+      </details>}
     </div>
     </div>
   </div>;

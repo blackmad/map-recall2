@@ -143,7 +143,8 @@ test('a neighbourhood answer opens folded, its postcard ready, above the outline
   await quietExternalRequests(page);
   await page.goto('/?city=amsterdam&mode=pinpoint&category=neighborhoods&radius=4500&map=light_nolabels&labels=off&rounds=10');
   await expect(page.locator('#target-feature-name')).toBeVisible();
-  const rounds = await skipUntil(page, '[data-testid="answer-postcard"]');
+  // Desktop folds with the postcard at card width; phones (and short windows) with a one-line strip (review 2026-10-13).
+  const rounds = await skipUntil(page, '[data-testid="answer-postcard"], [data-testid="answer-postcard-strip"]');
   expect(rounds, 'a neighbourhood with a postcard within ten rounds').toBeGreaterThan(0);
   const viewport = page.viewportSize()!;
   const card = (await page.locator('[data-result-card]').boundingBox())!;
@@ -156,8 +157,8 @@ test('a neighbourhood answer opens folded, its postcard ready, above the outline
   await page.getByTestId('answer-details').click();
   const postcard = page.locator('[data-testid="answer-postcard"]');
   await expect(postcard).toHaveAttribute('data-painted', 'yes');
-  // One photo window per letter, each a plain image the browser loads on its own.
-  expect(await postcard.locator('img').count()).toBeGreaterThan(3);
+  // One photo window per run of 2–4 letters, each a plain image the browser loads on its own.
+  expect(await postcard.locator('img').count()).toBeGreaterThanOrEqual(3);
   await expect(postcard).toHaveAttribute('data-photos', /^0\//);
   await page.getByRole('button', { name: /Less/ }).click();
   await expect(page.locator('[data-testid="answer-details"]')).toHaveAttribute('data-expanded', 'no');
@@ -191,6 +192,9 @@ test('Van Galenbuurt shows its photo postcard and name meaning while folded', as
   await expect(page.locator('#target-feature-name')).toHaveText('Van Galenbuurt');
   await page.getByRole('button', { name: 'No idea' }).click();
   await expect(page.getByTestId('answer-name-origin-summary')).toContainText('Jan van Galen');
+  // Phones fold to a one-line strip that opens the full postcard (review 2026-10-13).
+  await expect(page.locator('[data-testid="answer-postcard"], [data-testid="answer-postcard-strip"]').first()).toBeVisible();
+  if (await page.getByTestId('answer-postcard-strip').isVisible()) await page.getByTestId('answer-postcard-strip').click();
   const postcard = page.getByTestId('answer-postcard');
   await expect(postcard).toBeVisible();
   expect(await postcard.locator('img').count()).toBeGreaterThan(3);
