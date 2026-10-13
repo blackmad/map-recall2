@@ -23,15 +23,17 @@ import { drapeTriangles, emptyMesh, gridHeight, merge, reliefGrid, type MeshArra
 import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, type LocalWay } from './streets.js';
 import { flatDeckBody, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, pointInRing, type DeckBuildInfo } from './decks.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
+import { buildParks, type ParkBuildStats, type ParksCell } from './parks.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
 import type { Rect } from './groundStore.js';
 
 export type GroundLayer =
   | 'land' | 'park' | 'wood' | 'square' | 'parking'
+  | 'lawn' | 'bed' | 'shrub' | 'bark' | 'sand' | 'parkGravel' | 'parkPath' | 'pond' | 'hedge' | 'furniture'
   | 'asphalt' | 'klinker' | 'cycle' | 'paving' | 'gravel' | 'kerb' | 'paint' | 'tram' | 'bollard'
   | 'water' | 'quay' | 'deckBody' | 'deckTop';
 
-export const GROUND_LAYERS: readonly GroundLayer[] = ['land', 'park', 'wood', 'square', 'parking', 'asphalt', 'klinker', 'cycle', 'paving', 'gravel', 'kerb', 'paint', 'tram', 'bollard', 'water', 'quay', 'deckBody', 'deckTop'];
+export const GROUND_LAYERS: readonly GroundLayer[] = ['land', 'park', 'wood', 'square', 'parking', 'lawn', 'bed', 'shrub', 'bark', 'sand', 'parkGravel', 'parkPath', 'pond', 'hedge', 'furniture', 'asphalt', 'klinker', 'cycle', 'paving', 'gravel', 'kerb', 'paint', 'tram', 'bollard', 'water', 'quay', 'deckBody', 'deckTop'];
 
 /** Transferable mesh arrays. Colours are sRGB 0..1 when present. */
 export interface PackedMesh { positions: Float32Array; normals: Float32Array; uvs: Float32Array; indices: Uint32Array; colors?: Float32Array }
@@ -44,7 +46,7 @@ export interface BuiltCell {
   rect: Rect;
   layers: Partial<Record<GroundLayer, PackedMesh>>;
   mask: GroundMask | null;
-  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats };
+  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number }) | null };
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
@@ -66,6 +68,10 @@ export interface CellInput {
   flatDeckMeta?: readonly { id: string; movable: boolean }[];
   osm: OsmGroundExtract | null;
   osmAround: OsmGroundExtract[];
+  /** The cell's parks (parks-v1), null when it has none or parks are off. */
+  parks?: ParksCell | null;
+  /** OSM path ways the 3×3 neighbourhood's park path polygons replace (not drawn as bands). */
+  dropWays?: readonly number[];
   project: (lngLat: [number, number]) => Vec2;
 }
 
@@ -132,12 +138,13 @@ export function buildCell(input: CellInput): BuiltCell {
   const add = (layer: GroundLayer, m: MeshArrays) => { if (m.indices.length) (parts[layer] ??= []).push(m); };
 
   // Streets: the cell's own ways, with the neighbourhood in the junction graph.
-  const seen = new Set<number>(), all: LocalWay[] = [], own = new Set<number>();
+  const dropped = new Set<number>(input.dropWays ?? []);
+  const seen = new Set<number>(dropped), all: LocalWay[] = [], own = new Set<number>();
   for (const extract of [input.osm, ...input.osmAround]) if (extract) for (const w of prepareWays(extract.ways, input.project)) {
     if (seen.has(w.id)) continue;
     seen.add(w.id); all.push(w);
   }
-  for (const w of input.osm?.ways ?? []) own.add(w.id);
+  for (const w of input.osm?.ways ?? []) if (!dropped.has(w.id)) own.add(w.id);
   const resolved = resolvePriorSidewalks(all);
   const ways = lod === 0 ? resolved : resolved.map(farSection);
   const areas = input.osm?.areas ?? [];
@@ -185,6 +192,15 @@ export function buildCell(input: CellInput): BuiltCell {
       drapeTriangles(m, flat, earcut(flat), onLand, LIFT.area + (layer === 'square' ? 0.004 : 0), lod === 0 ? 8 : 16);
     }
     add(layer, m);
+  }
+
+  // Parks (parks-v1): BGT surfaces between the areas and the street bands, hedges, fences and furniture (parks.ts).
+  let parkStats: BuiltCell['stats']['parks'] = null;
+  if (input.parks) {
+    const tp = Date.now();
+    const built = input.parks.version === 2 ? buildParks(input.parks, onLand, lod, overWater) : { layers: {}, stats: null };
+    for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!);
+    if (built.stats) parkStats = { ...built.stats, ms: Date.now() - tp };
   }
 
   // Streets: bridge ways sampled finer (decks hump over metres).
@@ -242,14 +258,16 @@ export function buildCell(input: CellInput): BuiltCell {
   if (maskOut) bytes += maskOut.texels.byteLength;
   return {
     key, lod, rect, layers: packed, mask: maskOut,
-    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges },
+    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats },
   };
 }
 
+/** Park surfaces rank between the OSM areas (1) and the street bands (2+), as their lifts do (parks.ts PARK_LIFT). */
+export const PARK_RANK: Partial<Record<GroundLayer, number>> = { lawn: 1.2, bed: 1.4, shrub: 1.4, bark: 1.4, sand: 1.5, pond: 1.5, parkGravel: 1.7, parkPath: 1.7 };
 /** Polygon-offset rank of coplanar layers (gameGround.ts OFFSET): later wins a tie. */
-const DRAW_RANK: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
+const DRAW_RANK: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, ...PARK_RANK, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
 /** Mask channel that cuts a layer (gameGround.ts CUT): 0 = R (water), 1 = G (water minus decks). */
-const CUT_CHANNEL: Partial<Record<GroundLayer, 0 | 1>> = { land: 0, park: 0, wood: 0, square: 0, parking: 0, asphalt: 1, klinker: 1, cycle: 1, paving: 1, gravel: 1, kerb: 1, paint: 1, tram: 1, bollard: 1 };
+const CUT_CHANNEL: Partial<Record<GroundLayer, 0 | 1>> = { land: 0, park: 0, wood: 0, square: 0, parking: 0, lawn: 0, bed: 0, shrub: 0, bark: 0, sand: 0, parkGravel: 0, parkPath: 0, pond: 0, asphalt: 1, klinker: 1, cycle: 1, paving: 1, gravel: 1, kerb: 1, paint: 1, tram: 1, bollard: 1 };
 
 /**
  * What a camera straight above sees at (x, y) in one built cell: every
