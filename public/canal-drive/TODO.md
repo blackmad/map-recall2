@@ -1062,7 +1062,7 @@ is invisible in the game (caught by the demo shots 2026-10-13). Known gaps:
 curved fronts, arched portals, colonnades; 3DBAG surface indices shift if the
 extract is rebuilt; `compare:facades` needs rhythm specs for these.
 
-**Public buildings, next (after 2026-10-03, see HISTORY).** These are matched in staging but untreated: fire stations (19), police (23), hospitals (54) and civic offices (92). Red fire-station doors need a glass colour per window row in `KitWindows`. Big cinemas and theatres need a signage band, because plain brick boxes read as bare. The pitched-or-flat roof call on pre-1930 schools is a guess wherever the tile `roofShape` is missing.
+**Public buildings, next.** Done: the 13 Brandweer kazernes (bespoke builders, `scripts/landmarks/firestations-inventory.json`, 2026-10-09) and the 17 police bureaus (2026-10-13). Untreated: hospitals, civic offices (stadsdeelkantoren, stadsloketten), the OBA library branches, schools; the 2026-10-03 staging match is gone, re-match from OSM (`amenity=library|hospital`, `office=government`) the way `police-stations-match.ts` does. Red fire-station doors need a glass colour per window row in `KitWindows`. Big cinemas and theatres need a signage band, because plain brick boxes read as bare. The pitched-or-flat roof call on pre-1930 schools is a guess wherever the tile `roofShape` is missing.
 
 **Gallery upkeep.** Rerun `npx tsx scripts/build-kit-locations.ts --publish` whenever a hand kit is added; the check fails on a missing location. `kit-viewer.html` and `landmarkKitsViewer.ts` are unused now and can be deleted. The playground could load a real street graph so doors on real buildings face the street.
 
