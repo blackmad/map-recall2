@@ -1,6 +1,7 @@
 import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import survey from './centraal-complex-footprints.json';
+import {thickenSheet, trianglePositions} from './thicken-sheet';
 type Point = [number, number];
 type Colour = Parameters<BuildingTools['add']>[1];
 
@@ -40,31 +41,35 @@ export function buildCentraalComplex(b:BuildingTools){
    const step=span/segments,i=Math.min(segments-1,Math.max(0,Math.floor((z-z0)/step))),a=z0+i*step,c=a+step;
    return height(a)+(height(c)-height(a))*(z-a)/step;
   };
-  function panel(xa:number,za:number,xb:number,zb:number,c:Colour,lift=0){
+  function panel(xa:number,za:number,xb:number,zb:number,c:Colour,lift=0,sink?:number[],emit=true){
    for(const poly of part.localPolygons){
     const ring=clipRoofPanel(poly[0],xa,za,xb,zb);if(ring.length<3)continue;
     const area=Math.abs(ring.reduce((v,p,i)=>v+p[0]*ring[(i+1)%ring.length][1]-ring[(i+1)%ring.length][0]*p[1],0))/2;
     if(area<.00001)continue;
     const g=new T.ShapeGeometry(new T.Shape(ring.map(p=>new T.Vector2(...p))));
     const p=g.getAttribute('position');for(let i=0;i<p.count;i++){const x=p.getX(i),z=p.getY(i);p.setXYZ(i,x,heightLinear(z)+lift,z);}
-    g.computeVertexNormals();add(g,c);
+    g.computeVertexNormals();if(emit)add(g,c);if(sink)sink.push(...trianglePositions(g));
    }
   }
+  // The sheds are closed slabs, not single-sided sheets: an underside and skirts close every edge (the audit read 800 m of open roof perimeter).
+  function slab(sink:number[],d:number,c:Colour){if(!sink.length)return;const bottom:number[]=[];for(let j=0;j<segments;j++)panel(x0,z0+span*j/segments,x1,z0+span*(j+1)/segments,c,-d,bottom,false);const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(thickenSheet(sink,d,{vertical:true,bottom}),3));g.computeVertexNormals();add(g,c);}
+  const roofSink:number[]=[];
   for(let i=0;i<columns;i++)for(let j=0;j<segments;j++){
    let c:Colour=part.glass?'glass':'slate';
    // Letter colors belong to existing glass panels, not pasted text geometry.
    if(part.glass){const u=columns-1-i,glyph=Math.floor((u-3)/6),col=(u-3)%6,row=8-j,word='AMSTERDAM';
     if(glyph>=0&&glyph<word.length&&col>=0&&col<5&&row>=0&&row<7&&letters[word[glyph]][row][col]==='1')c=(i+j)%3===0?'gold':'red';
    }else if(j===7||j===8)c='glass';
-   panel(x0+(x1-x0)*i/columns,z0+span*j/segments,x0+(x1-x0)*(i+1)/columns,z0+span*(j+1)/segments,c);
+   panel(x0+(x1-x0)*i/columns,z0+span*j/segments,x0+(x1-x0)*(i+1)/columns,z0+span*(j+1)/segments,c,0,roofSink);
   }
+  slab(roofSink,.14,'slate');
   // Thin double-sided strips keep the repeated steel arches inexpensive.
   for(let i=0;i<part.frames;i++){
    const x=x0+.3+(x1-x0-.6)*i/(part.frames-1);
-   for(let j=0;j<segments;j++)panel(x-.1,z0+span*j/segments,x+.1,z0+span*(j+1)/segments,'frame',.06);
+   for(let j=0;j<segments;j++)panel(x-.1,z0+span*j/segments,x+.1,z0+span*(j+1)/segments,'frame',.022);
   }
   for(const j of [0,4,8,12,16]){
-   const z=z0+span*j/segments;panel(x0,z-.055,x1,z+.055,'frame',.065);
+   const z=z0+span*j/segments;panel(x0,z-.055,x1,z+.055,'frame',.016);
   }
   // Open supports. No filled ground-level station or bike-path slab.
   for(let i=0;i<8;i++)for(const z of [z0+.4,z1-.4]){

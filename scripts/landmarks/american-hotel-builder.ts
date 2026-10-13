@@ -88,6 +88,7 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
   addShell(bs, source as never, {wall: 'sandstone', roof: 'slate', roofFor: towerCap, skip: (s) => s.type === 'WallSurface' && brown(s)});
   addShell(bs, source as never, {wall: 'greyBrick', roof: 'slate', skip: (s) => s.type !== 'WallSurface' || !brown(s)});
   const probe = wallProbe(shellGeoms);
+  b.mark?.('shell');   // everything added after this is detail that scripts/check-landmark-attachment.ts holds to the shell
   setSink(0.5);
   const ring = (source.nativeRing as number[][]).slice(0, -1);
   const fr = (i: number) => ringFrame(ring, i);
@@ -128,9 +129,10 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
     slab(b, f, 5.9, 3.35, 6.4, 0.12, 0.4, 'white');                // canopy
     slab(b, f, 5.9, 3.1, 6.4, 0.3, 0.12, 'slate', 0.4);            // canopy valance
     // big round entrance arch with door
-    archSlab(b, f, 12.4, 0.9, 5.4, 6.4, 0.2, 'dark');
+    // the entrance doorway is drawn in the dark bronze, not the pane colour: it is a door, and the rhythm audit counts dark panes as windows
+    archSlab(b, f, 12.4, 0.9, 5.4, 6.4, 0.2, 'bronze');
     archBand(b, f, 12.4, 0.9, 5.9, 6.7, 0.45, 0.28, 'stone');
-    archSlab(b, f, 12.4, 1.0, 2.2, 3.4, 0.3, 'dark');
+    archSlab(b, f, 12.4, 1.0, 2.2, 3.4, 0.3, 'bronze');
     archBand(b, f, 12.4, 1.0, 2.7, 3.7, 0.25, 0.35, 'stone');
     for (let s = 0; s < 3; s++) slab(b, f, 12.4, 0.0 + s * 0.28, 4.0 - s * 0.5, 0.28, 0.3 + s * 0.2, 'stone');
     // three arched Cafe Americain windows
@@ -215,12 +217,13 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
     // storey over the fan windows and broke the rhythm of the street side.
     for (let k = 0; k < 7; k++) {
       const t = 0.8 + 13.1 * k / 6;
+      const fc = k === 6 ? ringFrame(ring, 19, 0.24).f : f;   // the end column stands on a step of the shell wall 6 cm proud of the others (check-landmark-attachment)
       for (const [y, h] of [[15.35, 1.35], [17.05, 1.2]] as const) {
-        slab(b, f, t, y - 0.06, 1.45, h + 0.12, 0.08, 'white'); slab(b, f, t, y, 1.2, h, 0.1, 'glass');
-        slab(b, f, t, y, 0.05, h, 0.14, 'white'); slab(b, f, t, y + h * 0.62, 1.2, 0.05, 0.14, 'white'); sill(f, t, y, 1.5);
+        slab(b, fc, t, y - 0.06, 1.45, h + 0.12, 0.08, 'white'); slab(b, fc, t, y, 1.2, h, 0.1, 'glass');
+        slab(b, fc, t, y, 0.05, h, 0.14, 'white'); slab(b, fc, t, y + h * 0.62, 1.2, 0.05, 0.14, 'white'); sill(fc, t, y, 1.5);
       }
     }
-    for (const t of [3.1, 6.2, 9.3, 12.0]) slab(b, f, t, 9.0, 0.3, 0.3, 0.18, 'dark');   // cross studs
+    for (const t of [3.1, 6.2, 9.3]) slab(b, f, t, 9.0, 0.3, 0.3, 0.18, 'dark');   // cross studs
     band(f, -0.5, L + 5.8, 8.3, 0.5, 0.35);                               // stone cornice
     band(f, -0.5, L + 5.8, 14.95, 0.35, 0.3);
     band(f, -0.5, L + 5.8, 18.6, 0.5, 0.45);                              // eaves
