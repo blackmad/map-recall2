@@ -408,6 +408,8 @@ export interface ReviewRoutePick {
 
 /** Pairs planned for real before a review ride starts, the pick included. */
 export const REVIEW_PLANNED_CANDIDATES = 5;
+/** Grazed due names a chosen pair is also offered with as a via. */
+export const REVIEW_MISSED_VIA_TRIES = 2;
 
 function kmToSegment(point: { lat: number; lng: number }, a: { lat: number; lng: number }, b: { lat: number; lng: number }): number {
   const kx = 111.32 * Math.cos(a.lat * Math.PI / 180), ky = 111.32;
@@ -546,6 +548,21 @@ function pickReviewRouteUnfiltered(input: ReviewRouteInput): ReviewRoutePick | n
     if (input.from && kmBetween(pair.to, chosen.to) > REVIEW_ALT_NEAR_KM) continue;
     seen.add(key);
     alternatives.push(strip(pair));
+  }
+  // The line only guesses what the router rides. A due name it grazed (the
+  // pick carries no via for it) may be skipped by the path, so the chosen pair
+  // is offered again with that name as a via, planned right after the direct
+  // ride and dropped there when the direct ride already passes every name.
+  // (2026-10-13: Avenhornstraat, beside the line ending at Kazerne Zebra.)
+  if (!chosen.via && !chosen.stop) {
+    const centreOf = new Map(due.map(place => [place.name, place]));
+    const missed = chosen.dueNear.map(name => centreOf.get(name)).filter((place): place is (typeof due)[number] => !!place)
+      .slice(0, REVIEW_MISSED_VIA_TRIES);
+    const viaAlternatives = missed.map(place => ({
+      ...strip(chosen), via: { name: place.name, center: [place.lat, place.lng] as [number, number] },
+    }));
+    alternatives.unshift(...viaAlternatives);
+    while (alternatives.length > REVIEW_PLANNED_CANDIDATES - 1) alternatives.pop();
   }
   if (stopPair) {
     if (alternatives.length >= REVIEW_PLANNED_CANDIDATES - 1) alternatives.pop();

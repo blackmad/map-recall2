@@ -15,6 +15,10 @@ export interface ReviewState {
   lastReviewedAt: number;
   lastEventId: string;
   schedulerVersion: 1;
+  /** Times the name was shown but not asked (a passed riding question); see
+   *  `canalRecall/recallExposure.ts`. Absent on states that were only graded. */
+  exposures?: number;
+  lastExposedAt?: number;
   featureSnapshot: Pick<StreetFeature, 'name' | 'type' | 'cityId' | 'center'>;
 }
 

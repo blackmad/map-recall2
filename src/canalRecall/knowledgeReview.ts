@@ -1,4 +1,5 @@
 import type { ReviewEvent, ReviewState } from '../spacedRepetition.ts';
+import { isExposureOnly } from './recallExposure.ts';
 
 export const REVIEW_STATES_KEY = 'mapRecall_reviewStates_v1';
 export const REVIEW_EVENTS_KEY = 'mapRecall_reviewEvents_v1';
@@ -85,7 +86,7 @@ export function buildKnowledgeReview(
 ): KnowledgeReview {
   const groups = new Map<string, ReviewState[]>();
   for (const state of states) {
-    if (state.mode !== 'guess_name' || !state.featureSnapshot?.name) continue;
+    if (state.mode !== 'guess_name' || !state.featureSnapshot?.name || isExposureOnly(state)) continue;
     const feature = state.featureSnapshot;
     const key = knowledgeItemKey(feature);
     const group = groups.get(key);

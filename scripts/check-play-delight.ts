@@ -119,7 +119,7 @@ console.log('play-delight checks passed');
   assert.ok(REVIEW_CORRIDOR_KM <= 0.25, 'the corridor stays tight enough to be location-honest');
   // The line only guesses what the router rides; runners-up are planned too.
   assert.ok(pick!.alternatives!.length >= 1 && pick!.alternatives!.length < REVIEW_PLANNED_CANDIDATES, 'runners-up travel with the pick');
-  assert.ok(pick!.alternatives!.every(alt => alt.to.id !== pick!.to.id && alt.dueNear.length >= 1), 'each runner-up passes a due name and ends elsewhere');
+  assert.ok(pick!.alternatives!.every(alt => (alt.to.id !== pick!.to.id || (alt.via && alt.from.id === pick!.from.id)) && alt.dueNear.length >= 1), 'each runner-up passes a due name and ends elsewhere, or is the pick itself with a grazed name as its via');
   const counts = pick!.alternatives!.map(alt => alt.dueNear.length);
   assert.deepEqual(counts, [...counts].sort((a, b) => b - a), 'runners-up by count');
   const synthetic = {
