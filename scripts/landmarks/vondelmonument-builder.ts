@@ -1,5 +1,6 @@
 import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
+import {placeFigure, localFrame, letterBoxes, rod} from './figure-kit';
 
 /**
  * Vondelmonument, Vondelpark (Louis Royer, unveiled 1867; pedestal and figures by Royer, the bronze Vondel seated on a chair).
@@ -57,46 +58,70 @@ export function buildVondelmonument(_w: number, _d: number, b: BuildingTools) {
   box(0, 4.2, 0, 2.6, 0.2, 2.6, 'sandstone');
   box(0, 4.4, 0, 2.2, 0.3, 2.2, 'dark');
   const top = 4.7;
-  // Inscription panel and carved reliefs on the die's front face; plain panels on the other faces.
-  box(0.55, 2.9, 1.72, 1.2, 0.8, 0.06, 'stone');
-  box(-0.7, 2.7, 1.72, 0.7, 1.1, 0.05, 'stone');
-  for (const [px, pz, w, d] of [[0, -1.72, 1.6, 0.06], [1.72, 0, 0.06, 1.6], [-1.72, 0, 0.06, 1.6]]) box(px, 2.5, pz, w, 1.2, d, 'stone');
-  // Three seated allegorical figures on the base step, in front of the die (left and right on stone seats, the central one raised).
-  const seatedStone = (x: number, h: number, sx: number) => {
-    box(x, 1.9, 1.95, 0.9, 0.45, 0.6, 'sandstone');
-    box(x, 2.35, 1.85, 0.55, 0.55 * h, 0.35, 'stone');
-    cyl(x, 2.75, 1.85, 0.28, 0.22, 0.6 * h, 'stone');
-    ball(x, 2.75 + 0.7 * h, 1.87, 0.17, 0.2, 0.18, 'stone');
-    limb([x + sx * 0.15, 3.0, 1.95], [x + sx * 0.5, 2.7, 2.15], 0.07, 0.06, 'stone');
+  // Inscription panel on the die's front face (gold lettering on the stone: the name, then the Amsterdam line); plain panels on the other faces.
+  box(0, 2.35, 1.75, 2.5, 1.45, 0.1, 'stone');
+  for (const g of letterBoxes('JOOST VAN DEN VONDEL', 0.2, 2.2, 0.04)) put(g, 0, 3.5, 1.8, 'gold');
+  for (const g of letterBoxes('GEVESTIGD TE AMSTERDAM', 0.12, 1.8, 0.035)) put(g, 0, 3.05, 1.8, 'gold');
+  for (const [px, pz, w, d] of [[0, -1.75, 1.6, 0.1], [1.75, 0, 0.1, 1.6], [-1.75, 0, 0.1, 1.6]]) box(px, 2.5, pz, w, 1.2, d, 'stone');
+  // Four seated winged allegories on the step at the die's corners (photographs Ceescamel 2019 and the Commons Hullernuc view): front left the
+  // tragic mask, front right the lyre, rear right the book, rear left the praying figure. Kit figures, 3.0 m standing height, in sandstone; wings behind.
+  const fr = localFrame(yaw);
+  const wing = (x: number, z: number, face: number, side: number) => {
+    const sh = new T.Shape();
+    sh.moveTo(0, 0); sh.lineTo(0.4 * side, 0.15); sh.lineTo(0.5 * side, 0.8); sh.lineTo(0.25 * side, 1.05); sh.lineTo(0.04 * side, 0.65); sh.closePath();
+    const g = new T.ExtrudeGeometry(sh, {depth: 0.07, bevelEnabled: false});
+    g.rotateY(face); put(g, x, 2.9, z, 'sandstone');
   };
-  seatedStone(-1.25, 1.0, -1);
-  seatedStone(0.05, 1.25, 1);
-  seatedStone(1.35, 1.0, 1);
-  // The bronze Vondel: seated in a high-backed chair, the cloak thrown over the shoulders, the right forearm resting on a book on the knee.
-  // chair
-  box(0, top, -0.15, 1.15, 0.6, 0.95, 'bronze');
-  box(0, top + 0.6, -0.55, 1.0, 1.4, 0.18, 'bronze');
-  for (const s of [-1, 1]) box(s * 0.55, top + 0.6, 0.05, 0.12, 0.45, 0.7, 'bronze');
-  // legs and shoes (knees forward, shoes on the plinth)
-  limb([0.22, top + 0.75, 0.0], [0.26, top + 0.65, 0.58], 0.15, 0.12, 'bronze');
-  limb([-0.22, top + 0.75, 0.0], [-0.24, top + 0.65, 0.58], 0.15, 0.12, 'bronze');
-  limb([0.26, top + 0.65, 0.58], [0.28, top + 0.15, 0.68], 0.11, 0.1, 'bronze');
-  limb([-0.24, top + 0.65, 0.58], [-0.26, top + 0.15, 0.68], 0.11, 0.1, 'bronze');
-  box(0.28, top, 0.78, 0.26, 0.1, 0.5, 'bronze');
-  box(-0.26, top, 0.78, 0.26, 0.1, 0.5, 'bronze');
-  // torso leaning slightly forward, with doublet and sash
-  put(new T.CylinderGeometry(0.36, 0.42, 1.0, 10).rotateX(0.12), 0, top + 1.45, -0.05, 'bronze');
-  // cloak: a long drape behind and over the left shoulder down to the seat
+  const allegory = (x: number, z: number, face: number, kind: 'mask' | 'lyre' | 'book' | 'pray') => {
+    box(x, 1.9, z, 1.0, 0.5, 0.9, 'sandstone');
+    const ground = fr.pt(x, 2.4, z);
+    const arms = kind === 'pray' ? {l: {pitch: 0.8, roll: -0.25, bend: 1.9}, r: {pitch: 0.8, roll: -0.25, bend: 1.9}}
+      : kind === 'lyre' ? {l: {pitch: 0.9, bend: 1.3}, r: {pitch: 1.0, bend: 1.5}}
+      : kind === 'mask' ? {l: {pitch: 0.4, bend: 1.2}, r: {pitch: 0.2, bend: 0.8}}
+      : {l: {pitch: 0.7, bend: 1.5}, r: {pitch: 0.4, bend: 1.0}};
+    const j = placeFigure(b, {
+      height: 3.0, pelvisY: 0.1, stout: 1.3, skirt: {len: 0.9, flare: 1.7}, lean: kind === 'pray' ? 0.12 : 0.04,
+      legs: {l: {pitch: 1.45, bend: 1.35}, r: {pitch: 1.5, bend: 1.4}}, arms, head: {pitch: kind === 'pray' ? 0.4 : 0.1, yaw: kind === 'book' ? 0.3 : 0},
+    }, {x: ground.x, y: ground.y, z: ground.z, yaw: fr.yaw + face}, 'stone');
+    wing(x, z - Math.cos(face) * 0.3, face, 1); wing(x, z - Math.cos(face) * 0.3, face, -1);
+    const prop = (g: T.BufferGeometry, c: Colour = 'sandstone') => b.add(g, c, 0, 0, 0);
+    if (kind === 'lyre') {
+      // a two-armed lyre held in the left hand: two uprights, a yoke and a sound box
+      const up = new T.Vector3(0, 1, 0), h = j.handL;
+      for (const dx of [-0.17, 0.17]) { const o = new T.Vector3(dx * Math.cos(fr.yaw + face), 0, -dx * Math.sin(fr.yaw + face)); prop(rod(h.clone().addScaledVector(up, -0.1).add(o), h.clone().addScaledVector(up, 0.7).add(o), 0.025)); }
+      prop(rod(h.clone().addScaledVector(up, 0.7).add(new T.Vector3(-0.17 * Math.cos(fr.yaw + face), 0, 0.17 * Math.sin(fr.yaw + face))), h.clone().addScaledVector(up, 0.7).add(new T.Vector3(0.17 * Math.cos(fr.yaw + face), 0, -0.17 * Math.sin(fr.yaw + face))), 0.025));
+      prop(new T.BoxGeometry(0.4, 0.16, 0.12).translate(h.x, h.y - 0.05, h.z));
+    } else if (kind === 'mask') {
+      const h = j.handL, f = new T.Vector3(Math.sin(fr.yaw + face), 0, Math.cos(fr.yaw + face));
+      const m = new T.CylinderGeometry(0.2, 0.17, 0.07, 6); m.rotateX(Math.PI / 2); m.rotateY(fr.yaw + face);
+      m.translate(h.x + f.x * 0.1, h.y + 0.05, h.z + f.z * 0.1); prop(m);
+    } else if (kind === 'book') {
+      const h = j.handL, bk = new T.BoxGeometry(0.5, 0.07, 0.4); bk.rotateY(fr.yaw + face); bk.translate(h.x, h.y - 0.05, h.z); prop(bk);
+    }
+  };
+  allegory(-1.5, 1.95, 0.25, 'mask');
+  allegory(1.5, 1.95, -0.25, 'lyre');
+  allegory(1.5, -1.95, Math.PI - 0.25, 'book');
+  allegory(-1.5, -1.95, Math.PI + 0.25, 'pray');
+  // The bronze Vondel (kit figure, 3.3 m standing height): seated on a carved chair with turned legs, writing: the right hand holds a pen at the
+  // chest, the left rests on a book on the knee; long hair, falling collar, the cloak over the shoulders and down behind the chair.
+  box(0, top, -0.2, 1.3, 0.12, 1.1, 'bronze'); // plinth block under the chair
+  for (const [cx, cz] of [[0.52, 0.3], [-0.52, 0.3], [0.52, -0.55], [-0.52, -0.55]]) cyl(cx, top + 0.12, cz, 0.07, 0.07, 0.62, 'bronze', 6);
+  box(0, top + 0.74, -0.15, 1.3, 0.14, 1.0, 'bronze'); // seat
+  box(0, top + 0.88, -0.62, 1.2, 1.5, 0.14, 'bronze'); // chair back
+  for (const sx of [-1, 1]) box(sx * 0.62, top + 0.88, -0.1, 0.1, 0.42, 0.7, 'bronze');
+  const sit = fr.pt(0, top + 0.88, -0.1), v = placeFigure(b, {
+    height: 3.3, pelvisY: 0.1, stout: 1.15, skirt: {len: 0.32, flare: 1.3}, lean: 0.08,
+    legs: {l: {pitch: 1.5, bend: 1.2, roll: 0.05}, r: {pitch: 1.45, bend: 1.15, roll: -0.05}},
+    arms: {l: {pitch: 0.3, bend: 0.95, roll: 0.1}, r: {pitch: 0.95, bend: 1.95, roll: -0.15}},
+    head: {yaw: 0.1, pitch: 0.12},
+  }, {x: sit.x, y: sit.y, z: sit.z, yaw: fr.yaw}, 'bronze');
+  // book on the left knee, pen in the right hand, long hair behind the head, cloak
+  const fw = new T.Vector3(Math.sin(fr.yaw), 0, Math.cos(fr.yaw));
+  const bk = new T.BoxGeometry(0.5, 0.07, 0.4); bk.rotateY(fr.yaw); bk.translate(v.handL.x, v.handL.y - 0.06, v.handL.z); b.add(bk, 'bronze', 0, 0, 0);
+  b.add(rod(v.handR, v.handR.clone().addScaledVector(fw, 0.25).add(new T.Vector3(0, 0.08, 0)), 0.012, 4), 'bronze');
+  const hair = new T.SphereGeometry(0.3, 6, 3); hair.scale(1, 1.1, 0.8); hair.translate(v.head.x - fw.x * 0.14, v.head.y - 0.08, v.head.z - fw.z * 0.14); b.add(hair, 'bronze', 0, 0, 0);
   const cloak = new T.Shape();
-  cloak.moveTo(-0.55, 0); cloak.lineTo(0.5, 0); cloak.lineTo(0.7, -1.7); cloak.lineTo(-0.2, -2.1); cloak.lineTo(-0.85, -1.9); cloak.closePath();
-  put(new T.ExtrudeGeometry(cloak, {depth: 0.2, bevelEnabled: false}), -0.05, top + 2.15, -0.5, 'bronze');
-  // arms: right forearm across the knee on a book, left hand on the chair arm
-  limb([0.4, top + 1.85, -0.05], [0.5, top + 1.35, 0.3], 0.1, 0.08, 'bronze');
-  limb([0.5, top + 1.35, 0.3], [0.1, top + 1.2, 0.55], 0.08, 0.07, 'bronze');
-  box(0.1, top + 1.1, 0.55, 0.4, 0.12, 0.3, 'bronze');
-  limb([-0.4, top + 1.85, -0.05], [-0.55, top + 1.35, 0.2], 0.1, 0.08, 'bronze');
-  // head: long hair, moustache, high forehead
-  cyl(0, top + 1.9, -0.02, 0.1, 0.09, 0.14, 'bronze');
-  ball(0, top + 2.28, 0.0, 0.2, 0.26, 0.22, 'bronze');
-  ball(0, top + 2.15, -0.12, 0.26, 0.3, 0.2, 'bronze');
+  cloak.moveTo(-0.5, 0); cloak.lineTo(0.5, 0); cloak.lineTo(0.75, -1.2); cloak.lineTo(-0.1, -1.55); cloak.lineTo(-0.8, -1.3); cloak.closePath();
+  put(new T.ExtrudeGeometry(cloak, {depth: 0.12, bevelEnabled: false}), -0.05, top + 2.15, -0.74, 'bronze');
 }
