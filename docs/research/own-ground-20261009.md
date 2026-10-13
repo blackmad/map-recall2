@@ -283,6 +283,91 @@ Bilderdijkstraat chunks.
 plots read as grey paving (Noord); labels are MapLibre symbols; real-iPhone
 GPU time unmeasured; BGT widths.
 
+## Roads drawing (2026-10-13, lane `docs/handoffs/lane-roads-drawing-20261013.md`)
+
+User shots at the Nassaukade / Raampoort and Rozengracht / Marnixstraat
+junctions and the Rijckerbrug: red smears pooling into blobs, grey junction
+patches with stray triangles, markings running across junctions, half of De
+Clercqstraat missing, bare white ground beyond the resident cells.
+
+**De Clercqstraat (cause).** The block between Bilderdijkstraat and the
+Kostverlorenvaart lies just west of the elevation-v1 cell seam at lng 4.87057
+(the Bilderdijkstraat junction itself). From ~350 m east (Raampoort,
+Rozengracht / Marnixstraat) that cell is in the far ring while the block east
+of the seam is near. LOD 1 kept carriageways only and draped them every 6 m
+over a 10 m land grid whose planar triangles rose through them: 35.6 % of band
+probes on the block read as street, the rest as the land's grey paving.
+Fixed: LOD 1 keeps every band (flat, no kerbs or paint); street bands and areas
+drape on the land grid's own surface (`gridHeight`) plus the deck lift, and
+on decks follow the measured surface (`GroundSurface.deckWeight`). Named
+regression `DE_CLERCQSTRAAT` (`roadRegressions.ts`, in `check-ground-cells.ts`
+and `ownGround.test.ts`): 100 % at both LODs. A second defect on the same
+street: BGT widths read inside the junction (a 30 m tertiary stub at 21.3 m, a
+cycleway at 14.2 m) and prior sidewalks on the inner sides of the split
+carriageways (a raised paving island between car lane and tram lane).
+
+**Junctions** (`streets.ts junctionGeometry`). Per node, the carriageway arms
+sorted by angle; each road edge (carriageway plus painted lanes) meets its
+neighbour's at a kerb corner; arms are trimmed to the corners and the polygon
+between them is filled in the widest arm's surface. Painted lanes, lane paint
+and centre lines stop at the junction edge; sidewalks and cycle tracks stop at
+the kerb corner on their side only (a T's through side keeps its sidewalk) and
+a corner patch at kerb height joins the two arms' bands; paths end at the
+kerb of the road they join and are cut where they cross one untagged. No
+discs over junctions. Prior sidewalks are dropped where another mapped way
+lies; BGT widths are capped by class and lanes (paths: a tagged width wins
+over a reading 1.8× wider). No centre line on `cyclestreet` / `bicycle_road`
+(the tags are now kept; the published extract predates them). Cycle crossings
+are red only with `surface:colour=red`, otherwise white block markings.
+Named regressions `JUNCTIONS`: Bilderdijkstraat × De Clercqstraat interior
+23/49 → 47/49 asphalt (was a red blob: 25 probes cycle), Nassaukade × De
+Clercqstraat 49/49 at LOD 0 and 22/49 → 49/49 at LOD 1.
+
+**Vocabulary** (colours in `look/palette.ts STREET_GROUND`, display priors):
+tram rails from `embedded_rails=tram` (two rails per track at 1.435 m, a track
+each way 3 m apart on two-way or bus/tram-two-way streets, through junctions;
+`railway=tram` ways are not in the extract, so tram-only beds have none);
+white edge lines on separated cycle paths and cycle tracks; grey-rose klinker
+pavements in stretcher bond with a pale granite kerb line; Amsterdammertjes
+(0.8 m oxblood posts every 1.6 m) along pavement kerbs within 3.8 m of water,
+near ring only. Not done: tiled bike-lane ends (no source for where the red
+gives way to tiles), bollards at OSM `barrier=bollard` nodes (not in the extract).
+
+**Far field.** The adapter hid the basemap's ground fills and lines
+everywhere while the own ground covered the rider. They sit below the first
+3D layer, so MapLibre draws them at the back of the depth range and the own
+ground covers them wherever it is resident: with them shown the 3D frame is
+pixel-identical in the resident area (only the HUD differs,
+`own-ground-roads.spec` "far field"); beyond it they now draw instead of bare
+white. `vector-map.js`: `OWN_GROUND_HIDDEN_SOURCE_LAYERS = []` (the flat
+route/street overlays stay hidden). Cell load latency (request → installed)
+is now in `status()`.
+
+**Cost.** Per LOD 0 cell (−2_0, node): 254.6 k → 293.6 k triangles (+15 %),
+14.5 → 16.1 MB; LOD 1 77.9 k → 93.1 k (+20 %), 4.9 → 5.8 MB.
+Desktop ride (`scripts/ride-perf-fixed-route.mjs`, Anne Frank Huis → Rijksmuseum,
+1440×900, 20 s, `?ownGround=1`, four interleaved rounds; before = the
+committed bundles and adapter, after = this branch via `BUNDLES_DIR`). The
+machine ran at load average 90–150 (other lanes), so single runs are noisy:
+
+| | frame median / p95 / p99 ms | frames > 50 ms | `map._render` median ms (runs) | three.js ms/frame | draw calls | resident ground | worker build median ms | cell latency median / max |
+|---|---|---|---|---|---|---|---|---|
+| before | 16.7 / 16.8 / 16.8 | 0, 0, 1, 0 | 3.0, 3.6, 3.5, 4.0 | 1.6–2.2 | 401–413 | 12 cells, 1.39 M tris, 65.5 MB | 124–213 | — |
+| after | 16.7 / 16.7–16.8 / 16.8 (one run 33.2) | 0, 5, 0, 0 | 3.0, 4.8, 4.0, 2.5 | 1.4–2.9 | 452–464 | 12 cells, 1.64 M tris, 77.3 MB | 235–363 (one loaded run 1555) | 2.6–4.7 s / 3.7–6.3 s at boot |
+
+Frames stay vsync-bound; `map._render` shows no change above the noise;
++51 draw calls (the tram and bollard meshes per cell, and the basemap's
+ground layers now drawn as the far field); +18 % resident triangles. Cell
+latency is request → installed for the 12 cells asked for at once on arrival
+(one worker, nearest first, one install per frame); riding, a new cell is
+asked for 350 m (LOD 0) or 1.4 km (LOD 1) ahead, and the basemap now covers
+the gap until it lands. iPhone not measured (desktop first).
+
+Tools: `scripts/own-ground/render-topdown.ts <lng> <lat> [halfM] [m/px] [out] [--lod=1] [--bgt]`
+rasterises built cells top-down (and the BGT wegdeel truth with `--bgt`);
+`OWN_GROUND=1 PW_PORT=4448 npx playwright test own-ground-roads` writes the
+spot shots (`ROADS_SHOTS_OUT`, `ROADS_ONLY`, `FAR_FIELD_TOGGLE=1`).
+
 ## Commands
 
 ```sh
