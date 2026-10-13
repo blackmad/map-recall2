@@ -446,6 +446,17 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Next: triage the ~80 `review` items into building / splat / area, and a
   discovery pass (Arcam guide, monument register) to grow toward ~1,000.
   When buildings run out: notable businesses and restaurants (user).
+- **Sculptures: De Dokwerker pilot landed 2026-10-13 as a seven-view photo
+  impostor behind `?sculptures=1` (HISTORY)**; splat no-go for this photo
+  set because the COLMAP poses do not hold at the statue (rays miss by a
+  median 1.59 units on a 1.09-unit figure). Next: the other 37 statues via
+  the impostor recipe (`docs/sculptures.md`), splats only for sets that
+  pass `registrationCheck` or a new walk-around capture. Impostor limits:
+  flat figure in 45° steps, cut-out look from above, no −135° view, lamp
+  post fragment at +45, washed head at +90, branch at +135, no shadow,
+  unlit; iPhone 4× unmeasured. `scripts/check-signature-fallback-refresh.mjs`
+  crashes ("SharedAssetCache is not a constructor") on main regardless of
+  the sculptures mount — pre-existing, fix or delete the check.
 - **Sculptures and statues → splats/impostors (user, 2026-10-09)**: De
   Dokwerker, Vondel-, Rembrandt- and Wilhelmina-monuments etc. are not boxes.
   38 are now `treatment: sculpture` in the backlog (filter "Sculpture (splat)"

@@ -1,5 +1,39 @@
 # Canal Recall — what is built
 
+## Sculptures: De Dokwerker as a seven-view photo impostor behind `?sculptures=1` (2026-10-13)
+
+Lane `sculptures/dokwerker-impostor-20261013` (Opus). Photo set: Commons
+`Category:De Dokwerker` depth 2, 278 admitted (259 CC0 Anefo / Nationaal
+Archief, 15 CC BY-SA, 4 CC BY, 1 PD), licence/author/date/sha1 per file in
+`scripts/sculptures/dokwerker/sources.json`; 20 in colour (mostly a 2013
+front series), the rest 1950s–80s scans; no usable view from behind the
+right shoulder (−135°); panoramas too far (statue ~25 px) and used only
+for the facing direction (252°). **Splat no-go**: the 2026-10-09 COLMAP
+model registered 214 photos at 0.6 px, but hand-labelled feet/head in 7
+photos triangulate with a median miss of 1.59 model units on a 1.09-unit
+figure (one point behind its camera): the registrations matched four
+decades of changing background, not the bronze — why the pilot splat was
+ghostly. **Impostor** (`scripts/sculptures/build_impostor.py`): rembg
+cut-outs for 0/+45 (Rietman 2013) and +90/+135/180/−90/−45 (Anefo), cut at
+the plinth, feet-aligned, brightness equalised and tinted bronze; 1024²
+webp atlas 210 KB (CC BY-SA 4.0, NOTICE updated), plinth box 1.1×1.2×1.55 m.
+Runtime `src/canalRecall/sculptures/` (`impostor.ts`: one quad facing the
+eye, tile by azimuth, narrow cross-fade so two photos never double; a 17
+B/splat CPU-sorted splat renderer is unit-tested and wired but unused),
+participant order 25 after landmarks, hides the hand model's holder within
+~50 m once loaded (the hidden model still answers picking: clicking returns
+`extract_landmarks_1098130181`), hand model back at 80 m. 14 lines in
+`vector-map.js` (`?sculptures=1` forces the shared frame). Perf at the
+statue: 16.7/16.8 ms frame, main pass 0.6/0.7 ms either way, one extra
+draw call and texture; fixed-route cost within run-to-run noise. Tests: 12
+unit, `tests/e2e/sculptures.spec.ts` 2/2 (flag off loads nothing and is
+pixel-identical with the layer mounted but disabled). Raw outputs archived
+in `~/Code/map-recall2-source-data/experiments/sculptures/dokwerker/`
+(images 82 MB, COLMAP model, pilot splat, impostor layouts, shots).
+Integrator: `build:canal-sculptures`, `test:sculptures` scripts; merged with
+the recipe-tiles mount in `vector-map.js`.
+
+
 ## City look review: shaded highlight, luma in the band, era brick, 311-model gallery triage (2026-10-13)
 
 Lane `look/citylook-review-20261013` (Opus). Highlight under `?cityLook=1`:
