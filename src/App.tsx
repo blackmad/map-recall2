@@ -14,6 +14,7 @@ import {
 } from './types';
 import { CITIES } from './data/cities';
 import { calculateShortestDistanceToFeature, calculatePinpointScore } from './utils/geo';
+import { applyHintCeiling, applyHintCeilingToAccuracy } from './mapRecall/hintCost';
 import { reverseGeocodeLocation, fetchContainingAdministrativeAreas, geocodeLocationSearch } from './utils/osm';
 import { fetchQuizAreas, fetchQuizFeatures } from './dataSources/featureProvider';
 import { sounds } from './utils/audio';
@@ -715,12 +716,22 @@ export default function App() {
     });
   };
 
+  // Hints revealed this round; the overlay resets it to 0 for each new feature.
+  const hintsUsedRef = useRef(0);
+  const handleHintsUsed = useCallback((count: number) => { hintsUsedRef.current = count; }, []);
+
   // Confirm guess in Pinpoint Mode
   const handleConfirmPinpoint = () => {
     if (!currentFeature || !userPinnedLocation || isRoundComplete) return;
 
     const distMeters = distanceToQuizFeature(userPinnedLocation, currentFeature);
-    const scoreResult = calculatePinpointScore(distMeters);
+    const rawScore = calculatePinpointScore(distMeters);
+    const hintsUsed = hintsUsedRef.current;
+    const scoreResult = {
+      ...rawScore,
+      score: applyHintCeiling(rawScore.score, hintsUsed),
+      accuracyPercentage: applyHintCeilingToAccuracy(rawScore.accuracyPercentage, hintsUsed),
+    };
     const timeSpent = Date.now() - timeRoundStarted;
 
     if (distMeters <= 80) {
@@ -745,6 +756,7 @@ export default function App() {
       accuracyPercentage: scoreResult.accuracyPercentage,
       pointsEarned: scoreResult.score,
       timeSpentMs: timeSpent,
+      hintsUsed,
     };
 
     setRoundResults((prev) => [...prev, result]);
@@ -762,6 +774,7 @@ export default function App() {
       gameMode,
       pointsEarned: 0,
       timeSpentMs: Date.now() - timeRoundStarted,
+      ...(gameMode === 'guess_name' ? {} : { hintsUsed: hintsUsedRef.current }),
     };
     setRoundResults((previous) => [...previous, result]);
     persistResult(result);
@@ -1078,6 +1091,7 @@ export default function App() {
             userPinnedLocation={userPinnedLocation}
             onConfirmGuess={handleConfirmPinpoint}
             onNoIdea={handleNoIdea}
+            onHintsUsed={handleHintsUsed}
             wasSkipped={wasRoundSkipped}
             isRoundComplete={isRoundComplete}
             distanceErrorMeters={currentDistanceError}

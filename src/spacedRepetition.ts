@@ -51,10 +51,16 @@ export function rateRound(result: RoundResult): ReviewRating {
     return 'good';
   }
   const accuracy = result.accuracyPercentage ?? 0;
-  if (accuracy >= 95 && result.timeSpentMs <= 12_000) return 'easy';
-  if (accuracy >= 70) return 'good';
-  if (accuracy >= 35) return 'hard';
-  return 'again';
+  // Help is not mastery: hinted rounds never schedule as "easy", and two or
+  // more hints never better than "hard".
+  const hints = result.hintsUsed ?? 0;
+  const ceiling: ReviewRating = hints >= 2 ? 'hard' : hints === 1 ? 'good' : 'easy';
+  const raw: ReviewRating = accuracy >= 95 && result.timeSpentMs <= 12_000 ? 'easy'
+    : accuracy >= 70 ? 'good'
+    : accuracy >= 35 ? 'hard'
+    : 'again';
+  const order: ReviewRating[] = ['again', 'hard', 'good', 'easy'];
+  return order[Math.min(order.indexOf(raw), order.indexOf(ceiling))];
 }
 
 export function scheduleReview(
