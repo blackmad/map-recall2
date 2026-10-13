@@ -29345,6 +29345,164 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T21:24:53.067Z"
+    },
+    {
+      "id": "ordinary-0363100012122086",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012122086",
+      "name": "OBA Linnaeus, Linnaeusstraat 44, Amsterdam (1916 pand; library in the ground floor of a 1950s-style brick front with two 1916 houses attached)",
+      "hash": "eef1abe8043916ee7bfa1c4e1249fa433aa45fac9acf94dde3bebcea1d97a93b",
+      "sha256": "eef1abe8043916ee7bfa1c4e1249fa433aa45fac9acf94dde3bebcea1d97a93b",
+      "bytes": 201052,
+      "triangles": 2539,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -13.579,
+          0.001,
+          -21.88
+        ],
+        "max": [
+          15.576,
+          19.718,
+          25.773
+        ]
+      },
+      "anchor": [
+        4.9260974,
+        52.3581909
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9261293,
+              52.3583799
+            ],
+            [
+              4.9261329,
+              52.3583848
+            ],
+            [
+              4.9261033,
+              52.3583927
+            ],
+            [
+              4.9260998,
+              52.3583878
+            ],
+            [
+              4.9259423,
+              52.3583437
+            ],
+            [
+              4.9259837,
+              52.3582883
+            ],
+            [
+              4.9260084,
+              52.3582952
+            ],
+            [
+              4.9260406,
+              52.3582525
+            ],
+            [
+              4.9260143,
+              52.3582451
+            ],
+            [
+              4.9260574,
+              52.358188
+            ],
+            [
+              4.9258986,
+              52.3581431
+            ],
+            [
+              4.9260373,
+              52.3579591
+            ],
+            [
+              4.9261101,
+              52.3579797
+            ],
+            [
+              4.9260999,
+              52.3579933
+            ],
+            [
+              4.9261795,
+              52.3580158
+            ],
+            [
+              4.9261896,
+              52.3580021
+            ],
+            [
+              4.9263123,
+              52.3580368
+            ],
+            [
+              4.9263259,
+              52.3580565
+            ],
+            [
+              4.926185,
+              52.3582831
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 19.72,
+      "height": 19.72,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-oba-linnaeus.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012122086"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "oba-linnaeus",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012122086/w01-70.jpg",
+          "staging/pand-reference-walls/0363100012122086/w02-246.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 4st 10b",
+          "brick-bay-grid+entrance 5st 4b",
+          "brick-bay-grid 4st 6b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012122086",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T21:31:37.473Z"
     }
   ]
 }

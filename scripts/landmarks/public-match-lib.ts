@@ -35,7 +35,7 @@ export async function matchAddress(addr: string, c: {lat: number; lon: number}):
   const distM = Math.round(Math.hypot((lat - c.lat) * 111320, (lon - c.lon) * 111320 * Math.cos(lat * Math.PI / 180)));
   const f = `<Filter><PropertyIsEqualTo><PropertyName>identificatie</PropertyName><Literal>${vbo}</Literal></PropertyIsEqualTo></Filter>`;
   const w = await getJson(`https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeNames=bag:verblijfsobject&outputFormat=application/json&filter=${encodeURIComponent(f)}`);
-  if (distM > 60) return pandsAtPoint(c);
+  if (distM > 100) return pandsAtPoint(c);
   return {
     pandIds: [...new Set<string>(w.features.map((x: any) => x.properties.pandidentificatie))], verblijfsobject: vbo, bagAddress: d.weergavenaam,
     gebruiksdoel: w.features[0]?.properties.gebruiksdoel ?? '', bouwjaar: w.features[0]?.properties.bouwjaar ?? null, osmToAddressM: distM,

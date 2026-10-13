@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "oba-linnaeus",
+  "pand": "0363100012122086",
+  "signature": ["alphabet-band", "oba-logo", "shopfront"],
+  "walls": [
+    {"tag": "w01-70", "bearing": 70, "lengthM": 38.4, "evidence": "photo", "panoId": "TMX7316010203-002586_pano_0001_000231", "capturedAt": "2022-05-18", "checked": true, "items": [
+      {"id": "alphabet-band", "kind": "lettering", "where": "fascia over the glazed shopfront of the library, red reversed alphabet in rotated glyphs", "approxSizeM": [20, 1], "plan": "modelled", "how": "ZYXWVU TSRQP ONM LKJIHG FEDCBA as fascia signage in red; glyph rotation simplified to plain capitals", "seenIn": "TMX7316010203-002586_pano_0001_000231"},
+      {"id": "oba-logo", "kind": "sign", "where": "red oba logos over the left shop unit and on a blade by the right unit", "approxSizeM": [2, 0.8], "plan": "simplified", "how": "one OBA fascia lettering in logo red over the right-hand unit; the left logo is not repeated", "seenIn": "TMX7316010203-002586_pano_0001_000231"},
+      {"id": "shopfront", "kind": "window-shape", "where": "ground storey, tall glazed bays between stone piers", "approxSizeM": [24, 4], "plan": "modelled", "how": "plinth-shopfronts ground", "seenIn": "TMX7316010203-002586_pano_0001_000231"},
+      {"id": "ribbon-windows", "kind": "window-shape", "where": "three upper storeys, white-framed ribbons between brick spandrels", "approxSizeM": [24, 10], "plan": "modelled", "how": "ribbon-windows system, 4 storeys", "seenIn": "TMX7316010203-002586_pano_0001_000231"},
+      {"id": "house-balconies", "kind": "balcony-ironwork", "where": "the right-hand 1916 house, three wrought-iron balconies", "approxSizeM": [1.2, 1], "plan": "skipped", "skip": {"reason": "too-small", "note": "railings about 2 cm thick, 1 m wide each"}, "seenIn": "TMX7316010203-002586_pano_0001_000231"}
+    ]},
+    {"tag": "w02-246", "bearing": 246, "lengthM": 22.6, "evidence": "photo", "panoId": "recording_2025-06-20_08-09-45_04783", "capturedAt": "2025-06-20", "checked": true, "items": [
+      {"id": "sw-windows", "kind": "window-shape", "where": "white rendered SW end wall, two window columns with railings", "approxSizeM": [8, 10], "plan": "simplified", "how": "plain brick-bay-grid, render colour not modelled", "seenIn": "recording_2025-06-20_08-09-45_04783"}
+    ]}
+  ],
+  "sources": [{"name": "Gemeente Amsterdam panorama", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002586_pano_0001_000231/", "licence": "CC BY 4.0"}]
+}
