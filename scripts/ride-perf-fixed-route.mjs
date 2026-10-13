@@ -3,13 +3,20 @@
 //   PORT=4402 node scripts/ride-perf-fixed-route.mjs <label> "<query>" [touch|desktop] [seconds]
 // e.g. "?sharedFrame=1" vs "". Same route every run (Anne Frank Huis -> Rijksmuseum),
 // iPhone 13 with 4x CPU throttle for touch; appends to artifacts/shared-frame/perf/ride.jsonl.
+// BUNDLES_DIR=<dir> serves any *.bundle.js found there instead of the committed one
+// (measure a source change before the integrator rebuilds the bundles).
 import {chromium, devices} from 'playwright';
 import fs from 'node:fs';
+import path from 'node:path';
 const [label = 'x', qs = '', device = 'touch', secs = '12'] = process.argv.slice(2);
 const browser = await chromium.launch({headless: true, executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
 const page = await browser.newPage(device === 'touch' ? devices['iPhone 13'] : {viewport: {width: 1440, height: 900}});
 const errors = [];
 page.on('pageerror', e => errors.push(e.message));
+if (process.env.BUNDLES_DIR) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+  const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
+  return fs.existsSync(file) ? route.fulfill({path: file, contentType: 'application/javascript'}) : route.continue();
+});
 await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
 await page.goto(`http://127.0.0.1:${process.env.PORT || 4402}/canal-drive/` + qs);
 await page.waitForFunction(() => window.canalRecallGame?.routePois?.length, null, {timeout: 60000});
