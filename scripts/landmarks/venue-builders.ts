@@ -5,7 +5,8 @@ export function buildVenueLandmark(id:string,w:number,d:number,b:BuildingTools){
  const shortFront=id==='embassy-free-mind'||id==='the-movies'||id==='delamar';
  const angle=shortFront?Math.PI/2:0, width=shortFront?d:w, depth=shortFront?w:d;
  type Colour=Parameters<BuildingTools['add']>[1];
- function add(g:T.BufferGeometry,c:Colour,x=0,y=0,z=0){g.translate(x,y,z);g.rotateY(angle);b.add(g,c);}
+ let turn=0; // extra yaw for the end elevations
+ function add(g:T.BufferGeometry,c:Colour,x=0,y=0,z=0){g.translate(x,y,z);g.rotateY(angle+turn);b.add(g,c);}
  function box(x:number,y:number,z:number,a:number,h:number,c:number,colour:Colour){add(new T.BoxGeometry(a,h,c),colour,x,y+h/2,z);}
  function gable(x:number,y:number,z:number,a:number,h:number,c:number,colour:Colour){const s=new T.Shape();s.moveTo(-a/2,0);s.lineTo(a/2,0);s.lineTo(0,h);s.closePath();add(new T.ExtrudeGeometry(s,{depth:c,bevelEnabled:false}),colour,x,y,z-c/2);}
  function arch(x:number,y:number,z:number,a:number,h:number,colour:Colour){const s=new T.Shape();s.moveTo(-a/2,0);s.lineTo(a/2,0);s.lineTo(a/2,h-a/2);s.absarc(0,h-a/2,a/2,0,Math.PI,false);s.closePath();add(new T.ExtrudeGeometry(s,{depth:.12,bevelEnabled:false,curveSegments:6}),colour,x,y,z);}
@@ -57,6 +58,11 @@ export function buildVenueLandmark(id:string,w:number,d:number,b:BuildingTools){
   box(0,0,0,width*.98,18.5,depth*.95,'brick');gable(0,18.5,0,width*.98,6,depth*.96,'slate');
   for(const z of [-depth*.48,depth*.48]){for(const y of [1,5.6,10.2,14.7,18.2])box(0,y,z,width,.35,.45,'stone');for(let x=-width*.44;x<=width*.44;x+=5.3){win(x,1.5,z+.15,2.5,3.6,true);win(x,6.4,z+.15,2.4,3.1,true);win(x,10.9,z+.15,2.4,3.1,true);box(x-2.1,.4,z,.35,18,.5,'stone');gable(x,18.8,z,3.7,3.5,2,'brick');win(x,19.1,z+1.06,1.5,2.2,true);}}
   for(const x of [-width*.43,width*.43])for(const z of [-depth*.39,depth*.39]){box(x,0,z,6,23.3,6,'brick');for(const y of [5.6,10.2,14.7,18.2,22.9])box(x,y,z,6.4,.4,6.4,'stone');for(const y of [6.4,11,16.1])win(x,y,z+3.1,2.4,3.7,true);add(new T.CylinderGeometry(2.2,3.1,2,8),'stone',x,24.4,z);add(new T.SphereGeometry(1,8,6).scale(2.9,4.5,2.9),'slate',x,29.6,z);add(new T.ConeGeometry(1.3,3,8),'slate',x,34.4,z);box(x,35.7,z,.14,2.4,.14,'gold');}
-  box(0,0,front+.6,11.5,21,2,'brick');for(const y of [5.6,10.2,14.7,20.6])box(0,y,front+1.7,12,.4,.4,'stone');arch(0,.3,front+1.9,5.5,5.5,'stone');arch(0,.4,front+2.05,4.7,5.1,'dark');for(const x of [-3.3,0,3.3])win(x,11,front+1.9,2,5.7,true);gable(0,21,front+.6,12,7,3,'brick');gable(0,21.3,front+.7,10.8,6,.7,'stone');gable(0,21.65,front+.72,9.6,5,.8,'brick');sign('MAGNA PLAZA',0,6.5,front+2,.23,'white');
+  // East and west elevations (643 m2 of blank brick each): the same stone-banded rhythm of arched windows as the long fronts, clear of the corner turrets.
+  for(const t of [Math.PI/2,-Math.PI/2]){turn=t;const zz=width*.49;
+   for(const y of [1,5.6,10.2,14.7,18.2])box(0,y,zz,depth*.95,.35,.45,'stone');
+   for(let x=-depth*.44;x<=depth*.44;x+=5.3){if(Math.abs(Math.abs(x)-depth*.39)<3.8)continue;win(x,1.5,zz,2.5,3.6,true);win(x,6.4,zz,2.4,3.1,true);win(x,10.9,zz,2.4,3.1,true);box(x-2.1,.4,zz-.05,.35,18,.5,'stone');}
+   turn=0;}
+  box(0,0,front+.6,11.5,21,2,'brick');for(const y of [5.6,10.2,14.7,20.6])box(0,y,front+1.7,12,.4,.4,'stone');arch(0,.3,front+1.9,5.5,5.5,'stone');arch(0,.4,front+2.05,4.7,5.1,'dark');for(const x of [-3.3,0,3.3])win(x,11,front+1.9,2,5.7,true);gable(0,21,front+.6,12,7,3,'brick');gable(0,21.3,front+.7,10.8,6,.7,'stone');gable(0,21.65,front+.72,9.6,5,.8,'brick');sign('MAGNA PLAZA',0,6.5,front+1.65,.23,'white'); // lettering stands on the entrance block's brick face (front + 1.6), not 40 cm in front of it
  }else throw new Error(`No venue builder for ${id}`);
 }
