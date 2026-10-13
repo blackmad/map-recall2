@@ -14,7 +14,9 @@
  *  3. Coplanar z-fighting (`auditZFight`): same-facing coplanar triangles from different parts overlapping by more than a
  *     sliver (H'ART front roof, Rijksmuseum entrance canopy). Same measure as the block-face `zFightArea` (abutment
  *     shrink, convex clip; a test pins the two together) but returning the overlap polygon so hidden overlaps
- *     (inside another solid) can be told from visible ones, plus a near-coplanar band (1-3 cm apart) that z-fights at street distance on a 24-bit depth buffer.
+ *     (inside another solid) can be told from visible ones, plus a near-coplanar band (2-8 cm apart) that z-fights from the air on a 24-bit depth buffer
+ *     (Centraal Station's roof strips, 2026-10-13). Coplanar means the smaller face's corners lie within 2 cm of
+ *     the larger face's plane.
  *
  * Input is a material soup (one material per triangle) in the GLB's native frame: x east, y up, z south, metres.
  * Pure geometry, no I/O: `scripts/audit-glb-quality.ts` loads GLBs, ranks models and gates against a baseline.
@@ -46,8 +48,18 @@ export interface GeometryAuditThresholds {
   /** Coplanar plane tolerance (m) and abutment shrink (m) for z-fighting. */
   zPlaneTol: number;
   zAbut: number;
-  /** Near-coplanar band (m): parallel same-facing faces this close z-fight at distance on a 24-bit depth buffer. */
+  /** Near-coplanar band (m): parallel same-facing faces this close z-fight at distance on a 24-bit depth buffer (the map camera, near 1 m, resolves about 6 cm at 1 km). */
   zNearTol: number;
+  /** Two faces may be coplanar when their normals agree within this many degrees (the corner offsets decide; see auditZFight). */
+  zAngleTol: number;
+  /** Overlap patches (per part pair and facing) smaller than this (m^2) are dropped as slivers. */
+  zMinPatch: number;
+  /** A new export (no baseline entry) fails above this much visible coplanar + near-coplanar overlap (m^2). */
+  zNewExportFail: number;
+  /** Inside the near band, faces closer than this (m) still bleed through in renders with the game's projection (zfight-validate.ts
+   *  --calibrate, 2026-10-13: 2 cm bleeds 9-17% from a driving camera at 900-1800 m, 3 cm and more never). Counted with the
+   *  coplanar area by the gate as `zfight-tight-m2`. */
+  zTightTol: number;
   /** Total coplanar overlap area (m^2) that warns / fails. */
   zWarnArea: number;
   zFailArea: number;
@@ -55,7 +67,7 @@ export interface GeometryAuditThresholds {
 
 export const GEOMETRY_THRESHOLDS: GeometryAuditThresholds = {
   weld: 0.001, touchTol: 0.03, floatFail: 0.1, overhangWarn: 0.12, overhangFail: 0.35, balconyMax: 2, buriedWarn: 0.3,
-  maxOpeningDiag: 14, glazedSkinArea: 24, zPlaneTol: 0.01, zAbut: 0.005, zNearTol: 0.03, zWarnArea: 0.25, zFailArea: 2,
+  maxOpeningDiag: 14, glazedSkinArea: 24, zPlaneTol: 0.02, zAbut: 0.005, zNearTol: 0.08, zAngleTol: 2.5, zMinPatch: 0.05, zNewExportFail: 0.5, zTightTol: 0.03, zWarnArea: 0.25, zFailArea: 2,
 };
 
 /** Materials that make up openings and their trim. Kits glaze in `glass`/`dark`, frame in `frame`/`white`. */
@@ -86,6 +98,15 @@ export interface ZFightPatch {
   area: number;
   /** Coplanar (≤ zPlaneTol) or near-coplanar (≤ zNearTol). */
   near: boolean;
+  /** Near-coplanar but under zTightTol apart: measured to bleed through from a distance. */
+  tight: boolean;
+  /** At least 90% of the overlap pairs one material with itself: both faces draw the same colour, so the tie cannot show (reported as
+   *  `sameArea`, not counted in `area` / `tightArea`). */
+  sameMaterial: boolean;
+  /** Area-weighted mean separation (m) of the two faces. */
+  gap: number;
+  /** Overlapping triangle pairs in the patch. */
+  pairs: number;
   orientation: 'roof' | 'wall' | 'underside';
   normal: V3;
   materials: [string, string];
@@ -93,8 +114,11 @@ export interface ZFightPatch {
   min: V3; max: V3;
   y: number;
   trisA: number[]; trisB: number[];
-  /** Area-weighted random overlap centroids used for the visibility test (`area` holds the reservoir key). */
-  samples: {p: V3; area: number}[];
+  /** Area-weighted random overlap centroids used for the visibility test (`area` holds the reservoir key): `p` on the front face,
+   *  `q` on the rear face (probed from behind when both materials are double-sided). */
+  samples: {p: V3; q: V3; area: number}[];
+  /** Both materials double-sided: the pair is drawn, and can fight, seen from behind too. */
+  doubleSided: boolean;
   /** Every sampled overlap point lies inside another closed part: never rendered, so not counted. */
   hidden: boolean;
   /** Overlap before the visibility weighting (`area` is the visible share). */
@@ -117,7 +141,7 @@ export interface GeometryFinding { kind: string; severity: 'fail' | 'warn'; mess
 
 export interface GeometryAuditReport {
   openings: {assemblies: number; issues: OpeningIssue[]};
-  zfight: {area: number; nearArea: number; hiddenArea: number; patches: ZFightPatch[]};
+  zfight: ZFightResult;
   rhythm: RhythmFacade[];
   /** Share of visible surface area with `materialSlot` + `tint` (see `materialSlotCoverage`). */
   materialSlots: MaterialSlotCoverage;
@@ -713,87 +737,139 @@ export function coplanarOverlap(pa: V3[], pb: V3[], n: V3, abut: number): {area:
 // ---------------------------------------------------------------------------------------------------------------
 // 3. Coplanar z-fighting
 
-export function auditZFight(s: MaterialSoup, th: GeometryAuditThresholds = GEOMETRY_THRESHOLDS, part = partsOf(s, th.weld)): {area: number; nearArea: number; hiddenArea: number; patches: ZFightPatch[]} {
+export interface ZFightResult {
+  /** Visible coplanar overlap (m^2): same-facing faces at most zPlaneTol apart, different materials (see `sameArea`). */
+  area: number;
+  /** Visible near-coplanar overlap (m^2): same-facing faces zPlaneTol..zNearTol apart. */
+  nearArea: number;
+  /** The part of `nearArea` under zTightTol apart (bleeds through at distance), different materials only. */
+  tightArea: number;
+  /** Coplanar + tight overlap of a material with itself (cannot show; reported, not gated). */
+  sameArea: number;
+  /** Overlap never drawn (inside another solid, under a cap). */
+  hiddenArea: number;
+  /** Overlapping triangle pairs behind `area` / `nearArea` (visible patches only). */
+  pairs: number;
+  nearPairs: number;
+  patches: ZFightPatch[];
+  /** Patches dropped as never drawn (or too small once weighted), largest raw overlap first: evidence for the visibility test. */
+  hidden: ZFightPatch[];
+}
+
+/**
+ * Coplanar overlap (lane zfight-audit 2026-10-13). Every pair of same-facing triangles whose normals agree within `zAngleTol`
+ * and whose smaller triangle's corners all lie within `zNearTol` of the larger one's plane is clipped in 2-D; the mean corner
+ * offset (under `zPlaneTol`: coplanar, else near-coplanar) is the gap. The corner test, not the angle, is what makes two faces
+ * coplanar: 2.5 degrees only admits the noisy normals of narrow strips in quantised GLBs. Pairs from different parts or
+ * materials always count; pairs of one part and one material count too (adjacent triangles share an edge, so the abutment
+ * shrink leaves them no overlap; what remains is a doubled face). Overlap is summed per part pair and facing into patches;
+ * patches under `zMinPatch` m^2 are dropped, and each surviving patch is weighted by its visible share.
+ *
+ * Candidates come from a spatial hash: quantised normal (bins as wide as the angle tolerance), 2 m cell, and the signed
+ * distance from that cell's centre to the plane (0.1 m bins). Measuring the offset at the cell rather than at the origin keeps
+ * two planes 2 degrees apart and 300 m from the origin in neighbouring bins (their origin offsets differ by metres).
+ */
+export function auditZFight(s: MaterialSoup, th: GeometryAuditThresholds = GEOMETRY_THRESHOLDS, part = partsOf(s, th.weld)): ZFightResult {
   const nTri = s.indices.length / 3;
   interface T { i: number; p: V3[]; n: V3; d: number; area: number; min: V3; max: V3 }
   const tris: T[] = [];
-  // Candidate pairs: same plane bin (azimuth, elevation, offset) and same 2 m spatial cell; a pair met in several cells
-  // is tested once (stamp).
-  const bins = new Map<number, Map<number, number[]>>();
-  const D_BIN = 0.05, A_BIN = 2, C = 2;
-  const AZN = 360 / A_BIN;
-  const keyOf = (n: V3, d: number) => {
-    const az = Math.round(((Math.atan2(n[0], n[2]) * 180) / Math.PI + 360) % 360 / A_BIN) % AZN, el = Math.round((Math.asin(Math.max(-1, Math.min(1, n[1]))) * 180) / Math.PI / A_BIN);
-    return [Math.abs(el * A_BIN) >= 88 ? 0 : az, el, Math.round(d / D_BIN)];
-  };
-  const planeKey = (az: number, el: number, db: number) => ((az * 128 + el + 64) * 1e6) + db + 5e5;
+  const C = 2, N_BIN = Math.max(0.02, 2 * Math.sin((th.zAngleTol * Math.PI) / 180)), D_BIN = Math.max(0.1, th.zNearTol * 1.25), HALF_DIAG = (C * Math.sqrt(3)) / 2;
+  const cosTol = Math.cos((th.zAngleTol * Math.PI) / 180);
+  const nKey = (a: number, b: number, c: number) => ((a + 64) * 128 + (b + 64)) * 128 + (c + 64);
   const cellKey = (x: number, y: number, z: number) => ((x + 512) * 1024 + (y + 512)) * 1024 + (z + 512);
-  const cellsOf = (t: T) => {
-    const out: number[] = [];
-    for (let x = Math.floor(t.min[0] / C); x <= Math.floor(t.max[0] / C); x++) for (let y = Math.floor(t.min[1] / C); y <= Math.floor(t.max[1] / C); y++) for (let z = Math.floor(t.min[2] / C); z <= Math.floor(t.max[2] / C); z++) out.push(cellKey(x, y, z));
+  // normal bin -> (offset bin, cell) -> triangle indices
+  const bins = new Map<number, Map<number, number[]>>();
+  const inner = (db: number, ck: number) => (db + 512) * 1073741824 + ck;
+  /** (cell key, offset bin) for every 2 m cell the triangle's plane passes near. */
+  const cellsOf = (t: T): [number, number][] => {
+    const out: [number, number][] = [];
+    for (let x = Math.floor(t.min[0] / C); x <= Math.floor(t.max[0] / C); x++) for (let y = Math.floor(t.min[1] / C); y <= Math.floor(t.max[1] / C); y++) for (let z = Math.floor(t.min[2] / C); z <= Math.floor(t.max[2] / C); z++) {
+      const dist = t.n[0] * (x + 0.5) * C + t.n[1] * (y + 0.5) * C + t.n[2] * (z + 0.5) * C - t.d;
+      if (Math.abs(dist) > HALF_DIAG + th.zNearTol) continue; // the plane misses this cell
+      out.push([cellKey(x, y, z), Math.round(dist / D_BIN)]);
+    }
     return out;
   };
+  const tCells: [number, number][][] = [];
   for (let t = 0; t < nTri; t++) {
     const p = triVerts(s, t), {n, area} = triNormal(p[0], p[1], p[2]);
     if (area < 1e-4) continue;
     const d = n[0] * p[0][0] + n[1] * p[0][1] + n[2] * p[0][2];
     const min: V3 = [0, 1, 2].map(k => Math.min(p[0][k], p[1][k], p[2][k])) as V3, max: V3 = [0, 1, 2].map(k => Math.max(p[0][k], p[1][k], p[2][k])) as V3;
-    const idx = tris.length;
-    const T0: T = {i: t, p, n, d, area, min, max};
+    const idx = tris.length, T0: T = {i: t, p, n, d, area, min, max};
     tris.push(T0);
-    const [az, el, db] = keyOf(n, d), pk = planeKey(az, el, db);
-    let m = bins.get(pk); if (!m) { m = new Map(); bins.set(pk, m); }
-    for (const ck of cellsOf(T0)) { const l = m.get(ck); if (l) l.push(idx); else m.set(ck, [idx]); }
+    const nk = nKey(Math.round(n[0] / N_BIN), Math.round(n[1] / N_BIN), Math.round(n[2] / N_BIN));
+    let m = bins.get(nk); if (!m) { m = new Map(); bins.set(nk, m); }
+    const cells = cellsOf(T0);
+    tCells.push(cells);
+    for (const [ck, db] of cells) { const k = inner(db, ck), l = m.get(k); if (l) l.push(idx); else m.set(k, [idx]); }
   }
-  // Pair -> accumulated overlap, keyed by the two parts.
   const patches = new Map<string, ZFightPatch>();
+  // Overlap per material pair inside each patch: one welded roof can carry slate and glass cells, so the patch is labelled with
+  // the pair that covers the most area, not the first one met.
+  const matArea = new Map<ZFightPatch, Map<string, number>>();
   const stamp = new Int32Array(tris.length).fill(-1);
   let rng = 0x5eed;
   for (let a = 0; a < tris.length; a++) {
-    const A = tris[a], [az, el, db] = keyOf(A.n, A.d);
-    const cells = cellsOf(A);
-    for (let dz = -1; dz <= 1; dz++) for (let de = -1; de <= 1; de++) for (let dd = -1; dd <= 1; dd++) {
-      const e = el + de, z = Math.abs(e * A_BIN) >= 88 ? 0 : (((az + dz) % AZN) + AZN) % AZN;
-      if (Math.abs(e * A_BIN) >= 88 && dz) continue;
-      const m = bins.get(planeKey(z, e, db + dd));
-      if (!m) continue;
-      for (const ck of cells) for (const b of m.get(ck) ?? []) {
-        if (b <= a || stamp[b] === a) continue;
-        stamp[b] = a;
-        const B = tris[b];
-        if (part[A.i] === part[B.i] && s.triMaterial[A.i] === s.triMaterial[B.i]) continue;
-        if (A.n[0] * B.n[0] + A.n[1] * B.n[1] + A.n[2] * B.n[2] < 0.999) continue;
-        const off = Math.abs(A.n[0] * B.p[0][0] + A.n[1] * B.p[0][1] + A.n[2] * B.p[0][2] - A.d);
-        if (off > th.zNearTol) continue;
-        if (B.min[0] > A.max[0] || A.min[0] > B.max[0] || B.min[1] > A.max[1] || A.min[1] > B.max[1] || B.min[2] > A.max[2] || A.min[2] > B.max[2]) continue;
-        const near = off > th.zPlaneTol;
-        const ov = coplanarOverlap(A.p, B.p, A.n, th.zAbut);
-        if (!ov || ov.area < 1e-4) continue;
-        const o = ov.area;
-        const pa = part[A.i], pb = part[B.i], k = `${Math.min(pa, pb)}|${Math.max(pa, pb)}|${near ? 1 : 0}|${Math.round(A.n[0] * 20)},${Math.round(A.n[1] * 20)},${Math.round(A.n[2] * 20)}`;
-        let P = patches.get(k);
-        if (!P) {
-          const ma = s.materials[s.triMaterial[A.i]].name, mb = s.materials[s.triMaterial[B.i]].name;
-          P = {area: 0, near, orientation: A.n[1] > 0.5 ? 'roof' : A.n[1] < -0.5 ? 'underside' : 'wall', normal: A.n, materials: [ma, mb].sort() as [string, string],
-            centre: [0, 0, 0], min: [Infinity, Infinity, Infinity], max: [-Infinity, -Infinity, -Infinity], y: 0, trisA: [], trisB: [], samples: [], hidden: false};
-          patches.set(k, P);
-        }
-        const g = ov.centroid;
-        // Area-weighted reservoir (A-Res, deterministic LCG): the kept samples estimate the visible share of the patch.
-        rng = (Math.imul(rng, 1664525) + 1013904223) >>> 0;
-        const key = Math.pow((rng + 1) / 4294967297, 1 / o);
-        if (P.samples.length < 64 || key > P.samples[P.samples.length - 1].area) { P.samples.push({p: g, area: key}); P.samples.sort((x, y) => y.area - x.area); P.samples.length = Math.min(64, P.samples.length); }
-        for (let k2 = 0; k2 < 3; k2++) { P.centre[k2] = (P.centre[k2] * P.area + g[k2] * o) / (P.area + o); P.min[k2] = Math.min(P.min[k2], A.min[k2], B.min[k2]); P.max[k2] = Math.max(P.max[k2], A.max[k2], B.max[k2]); }
-        P.area += o;
-        if (P.trisA.length < 400 && !P.trisA.includes(A.i)) P.trisA.push(A.i);
-        if (P.trisB.length < 400 && !P.trisB.includes(B.i)) P.trisB.push(B.i);
+    const A = tris[a], qa = [Math.round(A.n[0] / N_BIN), Math.round(A.n[1] / N_BIN), Math.round(A.n[2] / N_BIN)];
+    const maps: Map<number, number[]>[] = [];
+    for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) for (let k = -1; k <= 1; k++) { const m = bins.get(nKey(qa[0] + i, qa[1] + j, qa[2] + k)); if (m) maps.push(m); }
+    for (const m of maps) for (const [ck, db] of tCells[a]) for (let dd = -1; dd <= 1; dd++) for (const b of m.get(inner(db + dd, ck)) ?? []) {
+      if (b <= a || stamp[b] === a) continue;
+      stamp[b] = a;
+      const B = tris[b];
+      if (A.n[0] * B.n[0] + A.n[1] * B.n[1] + A.n[2] * B.n[2] < cosTol) continue;
+      if (B.min[0] > A.max[0] + th.zNearTol || A.min[0] > B.max[0] + th.zNearTol || B.min[1] > A.max[1] + th.zNearTol || A.min[1] > B.max[1] + th.zNearTol || B.min[2] > A.max[2] + th.zNearTol || A.min[2] > B.max[2] + th.zNearTol) continue;
+      // The larger triangle carries the plane; the smaller one's corners are measured against it. A narrow strip's own normal
+      // is noisy in a quantised GLB (3 mm of position error over a 20 cm strip tilts it 1.5 degrees), and extrapolating that
+      // plane across a big roof cell would turn the error into centimetres. All corners must lie within the band; the mean
+      // (signed) offset says which face is in front.
+      const R = A.area >= B.area ? A : B, Q = R === A ? B : A;
+      let offMax = 0, sd = 0;
+      for (const q of Q.p) { const o = R.n[0] * q[0] + R.n[1] * q[1] + R.n[2] * q[2] - R.d; offMax = Math.max(offMax, Math.abs(o)); sd += o / 3; }
+      if (offMax > th.zNearTol) continue;
+      const ov = coplanarOverlap(R.p, Q.p, R.n, th.zAbut);
+      if (!ov || ov.area < 1e-4) continue;
+      const near = Math.abs(sd) > th.zPlaneTol, tight = near && Math.abs(sd) < th.zTightTol, o = ov.area;
+      const pa = part[A.i], pb = part[B.i], k = `${Math.min(pa, pb)}|${Math.max(pa, pb)}|${near ? (tight ? 1 : 2) : 0}|${Math.round(R.n[0] * 20)},${Math.round(R.n[1] * 20)},${Math.round(R.n[2] * 20)}`;
+      let P = patches.get(k);
+      if (!P) {
+        const ma = s.materials[s.triMaterial[A.i]].name, mb = s.materials[s.triMaterial[B.i]].name;
+        P = {area: 0, near, tight, orientation: R.n[1] > 0.5 ? 'roof' : R.n[1] < -0.5 ? 'underside' : 'wall', normal: R.n, materials: [ma, mb].sort() as [string, string],
+          centre: [0, 0, 0], min: [Infinity, Infinity, Infinity], max: [-Infinity, -Infinity, -Infinity], y: 0, gap: 0, pairs: 0, trisA: [], trisB: [], samples: [], hidden: false, sameMaterial: false,
+          doubleSided: !!(s.materials[s.triMaterial[A.i]].doubleSided && s.materials[s.triMaterial[B.i]].doubleSided)};
+        patches.set(k, P);
       }
+      // The overlap centroid lies on R's plane; the visibility probe starts from whichever face is in front, or a strip
+      // floating 2 cm over a roof would hide the roof under it and read as never drawn.
+      const c = ov.centroid, cq: V3 = [c[0] + R.n[0] * sd, c[1] + R.n[1] * sd, c[2] + R.n[2] * sd];
+      const g = sd > 0 ? cq : c, rear = sd > 0 ? c : cq;
+      // Area-weighted reservoir (A-Res, deterministic LCG): the kept samples estimate the visible share of the patch.
+      rng = (Math.imul(rng, 1664525) + 1013904223) >>> 0;
+      const key = Math.pow((rng + 1) / 4294967297, 1 / o);
+      if (P.samples.length < 64 || key > P.samples[P.samples.length - 1].area) { P.samples.push({p: g, q: rear, area: key}); P.samples.sort((x, y) => y.area - x.area); P.samples.length = Math.min(64, P.samples.length); }
+      for (let k2 = 0; k2 < 3; k2++) { P.centre[k2] = (P.centre[k2] * P.area + ov.centroid[k2] * o) / (P.area + o); P.min[k2] = Math.min(P.min[k2], A.min[k2], B.min[k2]); P.max[k2] = Math.max(P.max[k2], A.max[k2], B.max[k2]); }
+      P.gap = (P.gap * P.area + Math.abs(sd) * o) / (P.area + o);
+      P.area += o;
+      P.pairs++;
+      { const mk = [s.materials[s.triMaterial[A.i]].name, s.materials[s.triMaterial[B.i]].name].sort().join('\u0000'); let m = matArea.get(P); if (!m) { m = new Map(); matArea.set(P, m); } m.set(mk, (m.get(mk) ?? 0) + o); }
+      // trisA: the lower part id's side, trisB: the other part's (the two fighting surfaces, for evidence renders).
+      const [ta, tb] = pa <= pb ? [A.i, B.i] : [B.i, A.i];
+      if (P.trisA.length < 400 && !P.trisA.includes(ta)) P.trisA.push(ta);
+      if (P.trisB.length < 400 && !P.trisB.includes(tb)) P.trisB.push(tb);
     }
   }
-  const list = [...patches.values()].filter(p => p.area >= 0.02).map(p => ({...p, area: +p.area.toFixed(3), y: +p.centre[1].toFixed(2)}));
+  for (const [P, m] of matArea) {
+    const ranked = [...m.entries()].sort((x, y) => y[1] - x[1]), total = ranked.reduce((t, e) => t + e[1], 0);
+    P.materials = ranked[0][0].split('\u0000') as [string, string];
+    P.sameMaterial = ranked.filter(([k]) => { const [a, b] = k.split('\u0000'); return a === b; }).reduce((t, e) => t + e[1], 0) >= 0.9 * total;
+  }
+  const list = [...patches.values()].filter(p => p.area >= th.zMinPatch).map(p => ({...p, area: +p.area.toFixed(3), gap: +p.gap.toFixed(3), y: +p.centre[1].toFixed(2)}));
   // Visibility: an overlap piece is seen when at least one of seven rays (along the surface normal and six at 55
-  // degrees around it), started 2 cm off the surface, leaves the model without hitting anything or the ground. A drum
-  // cap under its dome, a band end buried in a pilaster or a slab inside a wall mass never reaches the screen.
+  // degrees around it), started 2 cm off the front face, leaves the model without hitting anything or the ground. A drum
+  // cap under its dome, a band end buried in a pilaster or a slab inside a wall mass never reaches the screen. When both
+  // materials are double-sided the rear face is probed the other way too: Centraal's shed roof cells face down and are
+  // seen from the air through their back sides.
   const grid = new TriGrid(s, Array.from({length: nTri}, (_, i) => i), 2);
   const bmin: V3 = [Infinity, Infinity, Infinity], bmax: V3 = [-Infinity, -Infinity, -Infinity];
   for (const t of tris) for (let k = 0; k < 3; k++) { bmin[k] = Math.min(bmin[k], t.min[k]); bmax[k] = Math.max(bmax[k], t.max[k]); }
@@ -835,7 +911,7 @@ export function auditZFight(s: MaterialSoup, th: GeometryAuditThresholds = GEOME
     let seenArea = 0, sampled = 0;
     for (const sm of P.samples) {
       sampled++;
-      if (seenFrom(sm.p, P.normal)) seenArea++;
+      if (seenFrom(sm.p, P.normal) || (P.doubleSided && seenFrom(sm.q, [-P.normal[0], -P.normal[1], -P.normal[2]]))) seenArea++;
     }
     const f = sampled > 0 ? seenArea / sampled : 1;
     P.rawArea = P.area;
@@ -843,9 +919,13 @@ export function auditZFight(s: MaterialSoup, th: GeometryAuditThresholds = GEOME
     P.hidden = f === 0;
   }
   // Underside overlaps on the ground plane are never seen.
-  const seen = list.filter(p => !p.hidden && p.area >= 0.02 && !(p.orientation === 'underside' && p.max[1] <= 0.05));
+  const seen = list.filter(p => !p.hidden && p.area >= th.zMinPatch && !(p.orientation === 'underside' && p.max[1] <= 0.05));
   seen.sort((a, b) => b.area - a.area);
-  return {area: +seen.filter(p => !p.near).reduce((t, p) => t + p.area, 0).toFixed(2), nearArea: +seen.filter(p => p.near).reduce((t, p) => t + p.area, 0).toFixed(2), hiddenArea: +list.reduce((t, p) => t + (p.rawArea ?? p.area) - p.area, 0).toFixed(2), patches: seen};
+  const sum = (l: ZFightPatch[]) => +l.reduce((t, p) => t + p.area, 0).toFixed(2);
+  return {area: sum(seen.filter(p => !p.near && !p.sameMaterial)), nearArea: sum(seen.filter(p => p.near)), tightArea: sum(seen.filter(p => p.tight && !p.sameMaterial)),
+    sameArea: sum(seen.filter(p => (!p.near || p.tight) && p.sameMaterial)), hiddenArea: +list.reduce((t, p) => t + (p.rawArea ?? p.area) - p.area, 0).toFixed(2),
+    pairs: seen.filter(p => !p.near).reduce((t, p) => t + p.pairs, 0), nearPairs: seen.filter(p => p.near).reduce((t, p) => t + p.pairs, 0), patches: seen,
+    hidden: list.filter(p => !seen.includes(p)).sort((a, b) => (b.rawArea ?? 0) - (a.rawArea ?? 0))};
 }
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -958,12 +1038,14 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
     const what = k === 'floating' ? `not touching any wall (worst gap ${Math.max(...l.map(i => i.gap)).toFixed(2)} m)` : k === 'overhang' ? `sticking out past the wall's edge (worst ${Math.round(100 * Math.max(...l.map(i => i.outside)))}% of the face off the wall)` : `sunk behind the solid wall surface (worst ${Math.round(100 * Math.max(...l.map(i => i.buried)))}% hidden)`;
     findings.push({kind: `opening-${k}`, severity: fail ? 'fail' : 'warn', message: `${l.length} opening/trim assemblies ${what}; e.g. ${fmt(l[0])}`});
   }
-  const real = zfight.patches.filter(p => !p.near), near = zfight.patches.filter(p => p.near);
+  const real = zfight.patches.filter(p => !p.near && !p.sameMaterial), near = zfight.patches.filter(p => p.near);
   if (zfight.area >= th.zWarnArea) {
     const top = real[0];
-    findings.push({kind: 'zfight', severity: zfight.area >= th.zFailArea ? 'fail' : 'warn', message: `${zfight.area.toFixed(1)} m2 coplanar overlap in ${real.length} patches; worst ${top.area.toFixed(1)} m2 ${top.orientation} ${top.materials.join('/')} at y ${top.y}`});
+    findings.push({kind: 'zfight', severity: zfight.area >= th.zFailArea ? 'fail' : 'warn', message: `${zfight.area.toFixed(1)} m2 coplanar overlap in ${real.length} patches (${zfight.pairs} triangle pairs); worst ${top.area.toFixed(1)} m2 ${top.orientation} ${top.materials.join('/')} at (${top.centre.map(v => v.toFixed(1)).join(', ')})`});
   }
-  if (zfight.nearArea >= th.zFailArea) findings.push({kind: 'zfight-near', severity: 'warn', message: `${zfight.nearArea.toFixed(1)} m2 of same-facing faces 1-3 cm apart (${near.length} patches; z-fights at distance)`});
+  const tight = zfight.patches.filter(p => p.tight && !p.sameMaterial);
+  if (zfight.tightArea >= th.zWarnArea) findings.push({kind: 'zfight-tight', severity: zfight.tightArea >= th.zFailArea ? 'fail' : 'warn', message: `${zfight.tightArea.toFixed(1)} m2 of same-facing faces ${th.zPlaneTol * 100}-${th.zTightTol * 100} cm apart in ${tight.length} patches (bleeds through at distance); worst ${tight[0].area.toFixed(1)} m2 ${tight[0].orientation} ${tight[0].materials.join('/')} ${Math.round(tight[0].gap * 1000)} mm apart at (${tight[0].centre.map(v => v.toFixed(1)).join(', ')})`});
+  if (zfight.nearArea >= th.zFailArea) findings.push({kind: 'zfight-near', severity: 'warn', message: `${zfight.nearArea.toFixed(1)} m2 of same-facing faces ${th.zPlaneTol * 100}-${th.zNearTol * 100} cm apart (${near.length} patches, ${zfight.nearPairs} triangle pairs; may z-fight at long range); worst ${near[0].area.toFixed(1)} m2 ${near[0].orientation} ${near[0].materials.join('/')} ${Math.round(near[0].gap * 100)} cm apart at (${near[0].centre.map(v => v.toFixed(1)).join(', ')})`});
   for (const f of rhythm) {
     const odd = f.mismatched.length, miss = f.missing.length;
     if (odd + miss + f.misaligned === 0) continue;
@@ -982,6 +1064,9 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
     'opening-buried': byKind('buried').length,
     'zfight-m2': Math.round(zfight.area * 10) / 10,
     'zfight-near-m2': Math.round(zfight.nearArea * 10) / 10,
+    'zfight-tight-m2': Math.round(zfight.tightArea * 10) / 10,
+    // Reported only: a material overlapping itself draws the same colour whichever face wins.
+    'zfight-same-m2': Math.round(zfight.sameArea * 10) / 10,
     'window-mismatch': rhythm.reduce((t, f) => t + f.mismatched.length, 0),
     'window-missing': rhythm.reduce((t, f) => t + f.missing.length, 0),
     'window-misaligned': rhythm.reduce((t, f) => t + f.misaligned, 0),
@@ -990,7 +1075,7 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
     'window-mismatch-spec': rhythm.filter(f => f.fromSpec).reduce((t, f) => t + f.mismatched.length, 0),
     'window-missing-spec': rhythm.filter(f => f.fromSpec).reduce((t, f) => t + f.missing.length, 0),
   };
-  const score = openings.issues.reduce((t, i) => t + issueWeight(i), 0) + Math.min(zfight.area, 100) * 2 + Math.min(zfight.nearArea, 100) * 0.3 + counts['window-mismatch'] * 0.5 + counts['window-missing'] + counts['window-misaligned'] * 0.3;
+  const score = openings.issues.reduce((t, i) => t + issueWeight(i), 0) + Math.min(zfight.area, 100) * 2 + Math.min(zfight.tightArea, 100) * 1 + Math.min(zfight.nearArea, 100) * 0.3 + counts['window-mismatch'] * 0.5 + counts['window-missing'] + counts['window-misaligned'] * 0.3;
   return {openings, zfight, rhythm, materialSlots: slots, counts, findings, score: +score.toFixed(1)};
 }
 
@@ -1029,19 +1114,30 @@ export function materialSlotCoverage(s: MaterialSoup): MaterialSlotCoverage {
   return {area: +area.toFixed(1), tagged: +tagged.toFixed(1), ratio: area > 0 ? tagged / area : 1, untagged};
 }
 
-/** Gate: which counts grew beyond the recorded baseline (plus slack)? Empty = no new regression. */
+/**
+ * Gate: which counts grew beyond the recorded baseline (plus slack)? Empty = no new regression.
+ * Coplanar overlap since lane zfight-audit 2026-10-13: a new export (no baseline entry) fails above
+ * GEOMETRY_THRESHOLDS.zNewExportFail m2 of `zfight-m2` (under 2 cm apart) plus `zfight-tight-m2` (2-3 cm, still bleeds through
+ * at distance); the 3-8 cm rest of `zfight-near-m2` is reported, not failed, since renders with the game's projection never
+ * showed it bleed. A recorded model may not grow any of the three past its entry (plus slack).
+ */
 export function regressions(counts: Record<string, number>, baseline: Record<string, number> | undefined): string[] {
-  const slack: Record<string, number> = {'zfight-m2': 0.3, 'zfight-near-m2': 1, 'window-mismatch': 1, 'window-missing': 1, 'window-misaligned': 1};
-  const hard = new Set(['opening-floating-fail', 'opening-overhang-fail', 'zfight-m2', 'window-rhythm-fail', 'window-mismatch-spec', 'window-missing-spec',
+  const slack: Record<string, number> = {'zfight-m2': 0.3, 'zfight-tight-m2': 0.3, 'zfight-near-m2': 1, 'window-mismatch': 1, 'window-missing': 1, 'window-misaligned': 1};
+  const hard = new Set(['opening-floating-fail', 'opening-overhang-fail', 'zfight-m2', 'zfight-tight-m2', 'zfight-near-m2', 'window-rhythm-fail', 'window-mismatch-spec', 'window-missing-spec',
     // Since the 2026-10-13 cleanup pass every detached or sunk window counts, not only the 10 cm fails; a recorded model may not add any.
     'opening-floating', 'opening-buried', 'opening-overhang']);
   // Recorded-only: a model without the key in its entry predates the gate (legacy, reported as a warning); a model with NO entry is a new
   // export and must be 100% tagged.
-  const recordedOnly = new Set(['material-slot-untagged-permille', 'opening-floating', 'opening-buried', 'opening-overhang']);
+  const recordedOnly = new Set(['material-slot-untagged-permille', 'opening-floating', 'opening-buried', 'opening-overhang', 'zfight-tight-m2', 'zfight-near-m2']);
   const out: string[] = [];
+  if (!baseline) {
+    const z = (counts['zfight-m2'] ?? 0) + (counts['zfight-tight-m2'] ?? 0);
+    if (z > GEOMETRY_THRESHOLDS.zNewExportFail) out.push(`coplanar overlap ${+z.toFixed(1)} m2 (under 2 cm ${counts['zfight-m2'] ?? 0} + 2-3 cm ${counts['zfight-tight-m2'] ?? 0}) > ${GEOMETRY_THRESHOLDS.zNewExportFail} m2 allowed for a new export`);
+  }
   for (const [k, v] of Object.entries(counts)) {
     const gated = hard.has(k) || k === 'material-slot-untagged-permille';
     if (!gated) continue; // warn-level counts are reported, not gated
+    if (!baseline && k.startsWith('zfight-')) continue; // new export: the combined gate above
     if (recordedOnly.has(k) && baseline && baseline[k] === undefined) continue;
     const b = baseline?.[k] ?? 0;
     if (v > b + (slack[k] ?? 0)) out.push(`${k} ${v} > baseline ${b}`);

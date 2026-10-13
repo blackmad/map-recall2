@@ -21,7 +21,9 @@ export type MaterialSoup = {
     /** glTF extras: the shared-look slot (look/palette.ts MaterialSlot) under both names, its tint, and `inferred` when not authored. */
     slot?: string; materialSlot?: string; tint?: string; materialSlotSource?: string;
     /** KHR_materials_unlit (decals, printed signs): exempt from slot coverage. */
-    unlit?: boolean}[];
+    unlit?: boolean;
+    /** glTF doubleSided: both sides are drawn, so a face can z-fight from behind (geometryAudit auditZFight). */
+    doubleSided?: boolean}[];
 };
 
 export type FacadeInventory = {
