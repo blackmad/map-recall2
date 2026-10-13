@@ -50,7 +50,7 @@ export function drawEntrance(c: PanelCtx, span: { u0: number; u1: number; v0: nu
   // The recess is closed by the glass itself; frame, door stiles and push bars sit 1.5 cm in front of it.
   const r = recess(c, u0, u1, v0, top, 0.6, slots.glass);
   if (!r) return null;
-  const g = r.back, bar = r.back + (barD ?? c.barOut), fw = 0.08;
+  const g = r.back, bar = r.back + (barD ?? (c.layered ? SHEET_PITCH : c.barOut)), fw = 0.08;
   // Under 1.6 m: one door filling the opening; wider: a door pair in the middle with side lights either side.
   const single = w < 1.6, dw = single ? w : Math.min(2.0, w * 0.5), d0 = uc - dw / 2, d1 = uc + dw / 2, bars = c.part();
   const qb = (a: number, b: number, lo: number, hi: number, slot: Slot = slots.frame) => barQuad(c, slot, r.Q, a, b, lo, hi, g, bar, bars);
@@ -82,15 +82,31 @@ export function drawCanopy(c: PanelCtx, u0: number, u1: number, at: number, slot
   return { d: projection, v0: at, v1: at + edge };
 }
 
-/** Sectional garage door: recessed 0.25 m, panel with horizontal ribs. */
+/** Garage door frame ring width (m), layered kit. */
+export const GARAGE_FRAME_W = 0.08;
+
+/**
+ * Sectional garage door: recessed 0.25 m, panel with horizontal ribs. Layered kit (`c.layered`): the door leaf closes
+ * the recess at the back, the ribs are closed boxes on the first sheet layer (4.5 cm) and a frame ring of closed boxes
+ * stands on the second (9 cm) inside the reveals, so leaf, ribs, frame and reveals never share a plane.
+ */
 export function drawGarageDoor(c: PanelCtx, cell: Cell, slots: { door: Slot; frame: Slot }): boolean {
   const cw = cell.u1 - cell.u0, w = Math.min(cw - 0.6, 3.6), uc = (cell.u0 + cell.u1) / 2, v0 = Math.max(cell.v0, c.p.vMin) + 0.05;
   const h = Math.min(3.2, cell.v1 - v0 - 0.4);
   if (w < 2.2 || h < 2.2) return false;
   const r = recess(c, uc - w / 2, uc + w / 2, v0, v0 + h, 0.25, slots.door);
   if (!r) return false;
-  const part = c.part(), d = r.back + c.barOut;
-  for (let v = v0 + 0.5; v < v0 + h - 0.2; v += 0.5) barQuad(c, slots.frame, r.Q, uc - w / 2 + 0.05, uc + w / 2 - 0.05, v - 0.025, v + 0.025, r.back, d, part);
+  const part = c.part();
+  if (!c.layered) {
+    const d = r.back + c.barOut;
+    for (let v = v0 + 0.5; v < v0 + h - 0.2; v += 0.5) barQuad(c, slots.frame, r.Q, uc - w / 2 + 0.05, uc + w / 2 - 0.05, v - 0.025, v + 0.025, r.back, d, part);
+    return true;
+  }
+  const a = uc - w / 2, b = uc + w / 2, f = GARAGE_FRAME_W, top = v0 + h, rib = r.back + SHEET_PITCH, ring = r.back + 2 * SHEET_PITCH;
+  const box = (slot: Slot, u0: number, u1: number, lo: number, hi: number, d1: number) => barQuad(c, slot, r.Q, u0, u1, lo, hi, r.back, d1, part);
+  box(slots.frame, a, a + f, v0, top, ring); box(slots.frame, b - f, b, v0, top, ring);
+  box(slots.frame, a + f, b - f, top - f, top, ring);
+  for (let v = v0 + 0.5; v < top - f - 0.15; v += 0.5) box(slots.frame, a + f, b - f, v - 0.025, v + 0.025, rib);
   return true;
 }
 
@@ -340,22 +356,38 @@ export const SCREEN = { postW: 0.14, postOut: 3 * SHEET_PITCH, railH: 0.12, rail
  * rails skip the openings already cut. Returns the number of boxes drawn.
  */
 export function drawScreen(c: PanelCtx, cells: Cell[], levels: number[], slot: Slot, top: number): number {
+  return drawLattice(c, cells, levels, slot, top, SCREEN, false);
+}
+
+/** Curtain-wall grid (layered kit): mullions on the 13.5 cm sheet layer, transoms on the 9 cm one, 10 cm wide, on a glass skin. */
+export const CURTAIN_GRID = { postW: 0.1, postOut: 3 * SHEET_PITCH, railH: 0.1, railOut: 2 * SHEET_PITCH, maxSegM: 9 };
+
+/**
+ * Curtain wall (layered kit): the group's 3DBAG wall is the glass skin and this draws its mullion/transom grid as closed
+ * boxes standing off the glass (mullions at every bay joint, transoms at every storey line and under the top), skipping
+ * the openings cut into it (an entrance). Nothing lies on the glass plane, so the grid never z-fights the skin.
+ */
+export function drawCurtainGrid(c: PanelCtx, cells: Cell[], levels: number[], slot: Slot, top: number): number {
+  return drawLattice(c, cells, levels, slot, top, CURTAIN_GRID, true);
+}
+
+function drawLattice(c: PanelCtx, cells: Cell[], levels: number[], slot: Slot, top: number, dims: typeof SCREEN, postsSkipHoles: boolean): number {
   const p = c.p, part = c.part(), bot = Math.max(p.vMin, 0, Math.min(...cells.map(x => x.v0))) + 0.02;
   let n = 0;
   const joints = [...new Set(cells.flatMap(x => [x.u0, x.u1]).map(u => Math.round(u * 1000) / 1000))].sort((a, b) => a - b);
   for (const u of joints) {
-    const a = Math.max(p.uMin, u - SCREEN.postW / 2), b = Math.min(p.uMax, u + SCREEN.postW / 2);
-    if (b - a < SCREEN.postW * 0.6) continue;
+    const a = Math.max(p.uMin, u - dims.postW / 2), b = Math.min(p.uMax, u + dims.postW / 2);
+    if (b - a < dims.postW * 0.6) continue;
     // vertical runs where the wall is present, in 0.5 m steps, split at maxSegM (no box taller than the audit's loop limit)
     let start: number | null = null;
     const flush = (end: number) => {
       if (start === null) return;
-      const k = Math.max(1, Math.ceil((end - start) / SCREEN.maxSegM));
-      for (let i = 0; i < k; i++) { c.box(slot, a, b, start + (end - start) * i / k, start + (end - start) * (i + 1) / k, 0, SCREEN.postOut, part); n++; }
+      const k = Math.max(1, Math.ceil((end - start) / dims.maxSegM));
+      for (let i = 0; i < k; i++) { c.box(slot, a, b, start + (end - start) * i / k, start + (end - start) * (i + 1) / k, 0, dims.postOut, part); n++; }
       start = null;
     };
     for (let v = bot; v < top - 0.01; v += 0.5) {
-      const hi = Math.min(top, v + 0.5), ok = fitsPanel(p, rectPoly(a, b, v, hi), 0.0);
+      const hi = Math.min(top, v + 0.5), ok = fitsPanel(p, rectPoly(a, b, v, hi), 0.0) && !(postsSkipHoles && holeSpans(c, v, hi).some(([s0, s1]) => s0 < b && s1 > a));
       if (ok && start === null) start = v;
       if (!ok) flush(v);
     }
@@ -363,13 +395,13 @@ export function drawScreen(c: PanelCtx, cells: Cell[], levels: number[], slot: S
   }
   const rails = new Set<number>();
   levels.forEach((L, f) => { if (f > 0 && L > bot + 0.3 && L < top - 0.3) rails.add(L); });
-  rails.add(top - SCREEN.railH / 2);
+  rails.add(top - dims.railH / 2);
   for (const v of [...rails].sort((x, y) => x - y)) {
-    const v0 = v - SCREEN.railH / 2, v1 = v + SCREEN.railH / 2, skip = holeSpans(c, v0, v1);
+    const v0 = v - dims.railH / 2, v1 = v + dims.railH / 2, skip = holeSpans(c, v0, v1);
     for (const [a0, b0] of intervals(p, v0, v1, 0.25)) {
       let pieces: [number, number][] = [[a0, b0]];
       for (const [s0, s1] of skip) pieces = pieces.flatMap(([a, b]) => (s1 <= a || s0 >= b ? [[a, b]] : [[a, s0], [s1, b]].filter(([x, y]) => y - x > 0.2)) as [number, number][]);
-      for (const [a, b] of pieces) if (b - a > 0.2) { c.box(slot, a, b, v0, v1, 0, SCREEN.railOut, part); n++; }
+      for (const [a, b] of pieces) if (b - a > 0.2) { c.box(slot, a, b, v0, v1, 0, dims.railOut, part); n++; }
     }
   }
   return n;

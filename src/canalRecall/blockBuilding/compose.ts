@@ -32,6 +32,12 @@ export interface ComposeOptions {
   barOffsetM?: number;
   /** Glass of recessed openings sits this far (m) behind the frame ring and bars; default 0. With barOffsetM 0 the bars never overlap the glass within the audit's 2 cm. */
   glassBackM?: number;
+  /**
+   * Layered kit (recess mode, opt-in): glazing bars, door leaves and arched-head bars are closed boxes standing on the
+   * 4.5 cm sheet layer off the glass, a flush arch band is a closed ring 4.5 cm off the wall, and balconies are one slab,
+   * rail and pair of cheeks per storey run instead of per bay. Unset: output byte-identical.
+   */
+  layered?: boolean;
   /** Walls (indices into `set.walls`) with different keys never merge into one panel (large-tier wall groups). */
   mergeKey?: (wall: number) => number;
   /** Host wall slot per panel (recess mode only, where walls are emitted after the facade systems). */
@@ -75,6 +81,12 @@ class Ctx {
   /** `ComposeOptions.barOffsetM` */
   barOut = 0.015;
   glassBack = 0;
+  /** `ComposeOptions.layered` (recess mode only) */
+  layered = false;
+  /** layered balconies laid out on this panel (drawn per storey run after the rows) */
+  balconies: { b: BalconyParams; cell: Cell; a0: number; a1: number }[] = [];
+  /** Depth of glazing bars (closed boxes from the glass) for a window without its own `barD`. */
+  barDepth(w?: { barD?: number }) { return w?.barD ?? (this.layered ? SHEET_PITCH : this.barOut); }
   constructor(public mesh: MeshBuilder, public p: Panel, public panels: Panel[]) {}
   /**
    * Cut a rectangular opening into one member wall when it lies inside it with 3 cm to spare and clear of other holes.
@@ -295,7 +307,7 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
   if (mulls.length || rows.length || w.transom) {
     // frameW 0 (no frame ring: the glass fills the opening) still takes 6 cm glazing bars
     const bars = c.part(), bw = fw > 0 ? fw : 0.06;
-    const bd = w.barD ?? c.barOut;
+    const bd = c.barDepth(w);
     for (const f of mulls) { const u = u0 + (u1 - u0) * f; barQuad(c, frameSlot, Q, u - bw / 2, u + bw / 2, v0 + fw, v1 - fw, 0, bd, bars); }
     for (const f of [...rows, ...(w.transom ? [w.transom] : [])]) { const v = v0 + (v1 - v0) * f; barQuad(c, frameSlot, Q, u0 + fw, u1 - fw, v - bw / 2, v + bw / 2, 0, bd, bars); }
   }
@@ -318,7 +330,7 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
 
 /** Arched opening (`WinParams.arch`): arch.ts cuts it (recess mode) or lays it proud; sill as for a rectangular one. */
 function drawArched(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: WinParams): number {
-  const a = { frame: w.frame ?? 'frame', glass: w.glass ?? 'glass', frameW: w.frameW ?? 0.07, arch: w.arch!,
+  const a = { frame: w.frame ?? 'frame', glass: w.glass ?? 'glass', frameW: w.frameW ?? 0.07, arch: w.arch!, barD: c.barDepth(w),
     mullAt: w.mullAt?.length ? w.mullAt : Array.from({ length: w.mull ?? 0 }, (_, k) => (k + 1) / ((w.mull ?? 0) + 1)),
     rowsAt: [...(w.rowsAt?.length ? w.rowsAt : Array.from({ length: w.rows ?? 0 }, (_, k) => (k + 1) / ((w.rows ?? 0) + 1))), ...(w.transom ? [w.transom] : [])] };
   let back = 0.035, shift: V3 | null = null;
@@ -355,7 +367,10 @@ function drawRow(c: Ctx, row: Row, cell: Cell, seed: number) {
       const back = drawOpening(c, a, b, lo, hi, w, seed);
       if (door) {
         const dw = door.w ?? 1.1, dh = door.h ?? 2.3, uc = (a + b) / 2, part = c.part();
-        if (fitsPanel(c.p, rectPoly(uc - dw / 2, uc + dw / 2, lo, lo + dh))) c.quad(door.slot ?? 'door', uc - dw / 2, lo, uc + dw / 2, lo + dh, c.recess > 0 && back !== null ? back + c.barOut : 0.02, part);
+        if (!fitsPanel(c.p, rectPoly(uc - dw / 2, uc + dw / 2, lo, lo + dh))) return;
+        // layered: the leaf is a closed box on the glass (its own sheet layer), not a quad 1.5 cm in front of it
+        if (c.layered && back !== null) c.box(door.slot ?? 'door', uc - dw / 2, uc + dw / 2, lo, lo + dh, back, back + c.barDepth(w), part);
+        else c.quad(door.slot ?? 'door', uc - dw / 2, lo, uc + dw / 2, lo + dh, c.recess > 0 && back !== null ? back + c.barOut : 0.02, part);
       }
       return;
     }
@@ -498,6 +513,7 @@ function drawBalcony(c: Ctx, b: BalconyParams, cell: Cell, seed: number) {
   const inner = b.piers ? b.piers.w : 0;
   const ucb = (u0 + u1) / 2, a0 = b.w ? ucb - b.w / 2 : u0 + inner, a1 = b.w ? ucb + b.w / 2 : u1 - inner;
   if (!fitsPanel(c.p, rectPoly(a0, a1, v0 - 0.01, Math.min(v1, v0 + sh + rh)))) return;
+  if (c.layered) { c.balconies.push({ b, cell, a0, a1 }); drawBalconyBack(c, b, cell, a0, a1, seed); return; }
   let part = c.part();
   c.box(slab, a0, a1, v0 - 0.02, v0 - 0.02 + sh, 0, depth, part);
   part = c.part();
@@ -516,15 +532,72 @@ function drawBalcony(c: Ctx, b: BalconyParams, cell: Cell, seed: number) {
   c.box(cheek, a0, a0 + 0.06, rv0, rv0 + rh, 0, depth, part);
   c.box(cheek, a1 - 0.06, a1, rv0, rv0 + rh, 0, depth, part);
   if (rail.top !== null) { part = c.part(); c.box(rail.top ?? slab, a0, a1, rv0 + rh, rv0 + rh + 0.05, depth - 0.07, depth, part); }
+  drawBalconyBack(c, b, cell, a0, a1, seed);
+}
+
+/** The balcony's back window (French window behind the slab) and, with `piers`, the piers either side of the bay. */
+function drawBalconyBack(c: Ctx, b: BalconyParams, cell: Cell, a0: number, a1: number, seed: number) {
+  const { u0, u1, v0, v1 } = cell, sh = b.slab?.h ?? 0.2;
   if (b.back !== null) {
     const w = { w: 0.8, h: 0.72, sill: sh + 0.08, ...(b.back ?? {}) };
     const [a, bb, lo, hi] = winRect({ ...cell, u0: a0, u1: a1 }, w);
     drawOpening(c, a, bb, lo, hi, w, seed);
   }
   if (b.piers) {
-    part = c.part();
+    const part = c.part();
     const slot = b.piers.slot ?? 'wall', out = b.piers.out ?? 0.12;
     c.box(slot, u0, a0, v0, v1, 0, out, part); c.box(slot, a1, u1, v0, v1, 0, out, part);
+  }
+}
+
+/** Rods per balcony rail run at most (layered kit): a 40 m run of 13 cm rods cost 600 triangles a storey. */
+export const MAX_RAIL_RODS = 48;
+
+/**
+ * Layered balconies: one slab, one rail, one top rail and a cheek at each end per storey run (bays whose balconies
+ * abut), instead of a slab, rail and two cheeks per bay. Each storey's slab front stands on its own sheet layer
+ * (`SHEET_PITCH` further out on every other storey), so the slab and cheek faces of stacked storeys never share a plane.
+ */
+function drawBalconyRuns(c: Ctx) {
+  const byFloor = new Map<number, typeof c.balconies>();
+  for (const x of c.balconies) { const l = byFloor.get(x.cell.floor) ?? []; l.push(x); byFloor.set(x.cell.floor, l); }
+  for (const [floor, list] of [...byFloor].sort((a, b) => a[0] - b[0])) {
+    list.sort((a, b) => a.a0 - b.a0);
+    const runs: (typeof list)[] = [];
+    for (const x of list) {
+      const run = runs[runs.length - 1], last = run?.[run.length - 1];
+      if (last && last.b === x.b && Math.abs(last.a1 - x.a0) < 1e-6 && Math.abs(last.cell.v0 - x.cell.v0) < 1e-6) run.push(x); else runs.push([x]);
+    }
+    for (const run of runs) {
+      const { b, cell } = run[0], a0 = run[0].a0, a1 = run[run.length - 1].a1, v0 = cell.v0;
+      const depth = (b.depth ?? 1.4) + (floor % 2) * SHEET_PITCH, sh = b.slab?.h ?? 0.2, slab = b.slab?.slot ?? 'slab', rail = b.rail ?? {}, rh = rail.h ?? 1.05;
+      if (!fitsPanel(c.p, rectPoly(a0, a1, v0 - 0.01, Math.min(cell.v1, v0 + sh + rh)))) continue;
+      const part = c.part(), rv0 = v0 - 0.02 + sh, rs = rail.slot ?? (rail.kind === 'glass' ? 'glassRail' : rail.kind === 'solid' ? 'slab' : 'rail');
+      // Faces as needed: closed at the back (3DBAG faces merged into the panel stand a few cm off its plane, so a back edge
+      // need not lie on the wall); a cheek's bottom stands on the slab and is left out.
+      const F = (slot: Slot, u0: number, u1: number, lo: number, hi: number, d0: number, d1: number, faces: string) => {
+        const P = (u: number, v: number, d: number) => c.P(u, v, d), n = c.p.n, r = c.p.r, m = c.mesh;
+        if (faces.includes('f')) m.quad(slot, P(u0, lo, d1), P(u1, lo, d1), P(u1, hi, d1), P(u0, hi, d1), part, n);
+        if (faces.includes('k')) m.quad(slot, P(u0, lo, d0), P(u1, lo, d0), P(u1, hi, d0), P(u0, hi, d0), part, scale(n, -1));
+        if (faces.includes('t')) m.quad(slot, P(u0, hi, d0), P(u1, hi, d0), P(u1, hi, d1), P(u0, hi, d1), part, UP);
+        if (faces.includes('b')) m.quad(slot, P(u0, lo, d0), P(u1, lo, d0), P(u1, lo, d1), P(u0, lo, d1), part, DOWN);
+        if (faces.includes('l')) m.quad(slot, P(u0, lo, d0), P(u0, hi, d0), P(u0, hi, d1), P(u0, lo, d1), part, scale(r, -1));
+        if (faces.includes('r')) m.quad(slot, P(u1, lo, d0), P(u1, hi, d0), P(u1, hi, d1), P(u1, lo, d1), part, r);
+      };
+      F(slab, a0, a1, v0 - 0.02, rv0, 0, depth, 'fktblr');
+      // Cheeks (side rails) stand one sheet layer in from the slab ends: a pier or the next panel's wall ends exactly at a
+      // bay joint, and a cheek face there would share its plane. The top rail and the rail between them span the cheeks.
+      const cheek = rail.kind === 'solid' ? slab : (rail.slot ?? 'rail'), e0 = a0 + SHEET_PITCH, e1 = a1 - SHEET_PITCH, cw = 0.06, i0 = e0 + cw, i1 = e1 - cw;
+      F(cheek, e0, i0, rv0, rv0 + rh, 0, depth, 'fktlr');
+      F(cheek, i1, e1, rv0, rv0 + rh, 0, depth, 'fktlr');
+      if (rail.top !== null) F(rail.top ?? slab, i0, i1, rv0 + rh - 0.05, rv0 + rh, depth - 0.07, depth, 'fktb');
+      const railTop = rail.top !== null ? rv0 + rh - 0.05 : rv0 + rh;
+      if (rail.kind === 'rods') {
+        const n = Math.min(MAX_RAIL_RODS, Math.max(2, Math.round((i1 - i0) / 0.13)));
+        for (let k = 1; k < n; k++) { const u = i0 + (i1 - i0) * k / n; c.quadRaw(rs, u - 0.012, rv0, u + 0.012, railTop, depth - 0.03, part); }
+        c.quadRaw(rs, i0, rv0 + 0.05, i1, rv0 + 0.1, depth - 0.03, part);
+      } else c.quadRaw(rs, i0, rv0, i1, railTop, depth - 0.03, part);
+    }
   }
 }
 
@@ -606,6 +679,7 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
     if (opts.barOffsetM !== undefined) c.barOut = opts.barOffsetM;
     c.closedBands = recess > 0 && !!opts.closedBands;
     c.glassBack = opts.glassBackM ?? 0;
+    c.layered = recess > 0 && !!opts.layered;
     c.recess = recess; c.wallSlot = recess > 0 ? opts.wallSlotFor?.(p) ?? wallSlot : wallSlot;
     const cells: Cell[] = [];
     const finish = (levels: number[]) => {
@@ -640,6 +714,7 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
         drawRow(c, row, cell, p.index * 31 + 7);
       }
     }
+    if (c.layered) drawBalconyRuns(c);
     if (sys.cladding) for (const [a0, b0] of intervals(p, sys.cladding.from, p.vMax - 0.35)) for (const [a, b] of [[Math.max(a0, p.uMin + W * (sys.cladding.u?.[0] ?? 0)), Math.min(b0, p.uMin + W * (sys.cladding.u?.[1] ?? 1))]]) if (b - a > 0.3) { const part = c.part(); c.quad(sys.cladding.slot, a, sys.cladding.from, b, p.vMax - 0.35, 0.012, part); }
     if (sys.bands) drawBands(c, sys.bands, levels.slice(0, floors), sys);
     if (sys.piers) {

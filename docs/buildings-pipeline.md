@@ -467,16 +467,18 @@ before the bundles are rebuilt. iPhone measurement is still pending.
 
 ### Known gaps
 
-- Large-tier kit overlaps (2026-10-14, batch 3): `garageDoors` and
-  `ground: "portals"` leave 2.4–7 m² of coplanar frame/door overlap even
-  with `deepBars` and `frames: false`; `arches` combined with window
-  frames leaves up to 18 m² of frame/glass overlap; `curtain-wall` leaves
-  frame/glass overlap. Until fixed, use tall transom openings for docks,
-  drop arch heads where frames are needed, and `ribbon-windows` for
-  glazed pavilions. Stacked balconies on three storeys cost ~9k tris and
-  z-fight. A panel with several heights needs `wallSurfaces` groups per
-  height or flush windows appear above the eaves. `sources[]` is indexed
-  by group order.
+- Large-tier kit overlaps (2026-10-14, batch 3; fixed behind `layeredKit: true`): without the flag
+  `garageDoors` and `ground: "portals"` leave 2.4-7 m2 of coplanar frame/door overlap, `arches` with
+  frames up to 18 m2 (flush brick band 1.2 cm on the wall, bars 1.5 cm on the glass), `curtain-wall`
+  frame/glass overlap, and stacked balconies cost ~9k tris and z-fight. With `layeredKit` the door leaf,
+  ribs (4.5 cm) and frame ring (9 cm) are separate closed layers, arch bars are closed boxes off the
+  glass and the flush band is a ring 4.5 cm proud, a curtain wall is a glass skin with a closed mullion
+  grid, and balconies are one slab/rail/cheek set per storey run (`balconies.every`/`bays` picks bays).
+  All measure 0 m2 coplanar. Cost: closed bars and rings add triangles (Entrepotdok's portals and
+  hoists would go 11.2k -> 16k, over budget), and a balcony is still ~60 tris, so Plantage Middenlaan
+  52 has balconies on its street front only. Recipes without the flag are byte-identical. A panel
+  with several heights needs `wallSurfaces` groups per height or flush windows appear above the eaves.
+  `sources[]` is indexed by group order.
 
 - Measured roofs (2026-10-13 orthophoto slots): the PDOK tile is 0.21 m/px,
   so a roof under ~12 m² or split by a party wall takes its neighbour's
