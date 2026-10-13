@@ -610,17 +610,21 @@ export class GamePresentationRuntime {
     const litName = this.quizPromptName || reveal?.name || '';
     const litSegment = this.quizPromptName ? this.quizPromptSegmentIndex : (reveal?.segmentIndex ?? -1);
     const litPoint = this.quizPromptName ? this.quizPromptPointIndex : (reveal?.pointIndex ?? 0);
-    if (!byBoat) {
+    // Under own ground the highlight is one draped band in every travel mode, and the boat's flat canvas copy stays off.
+    const draped = !!this.vectorMap.ownGroundDrapesOverlays?.();
+    if (!byBoat || draped) {
       this.vectorMap.setStreetHighlights(
         this.track, this.osmLoader, this.learnedNames,
         litName, litSegment,
         this.routeOptions.line ? (this._liveRoutePath || this.routePath) : null);
+    }
+    if (!byBoat) {
       const stamp = this._answerStamp && this.raceTime < this._answerStamp.until ? this._answerStamp : null;
       this.vectorMap.setAnsweredStreetName?.(this.track, this.osmLoader, stamp, player);
     }
 
     this.renderer.drawTrack(this.camera, this.track);
-    if (byBoat) {
+    if (byBoat && !draped) {
       this.renderer.drawQuestionFeature(
         this.camera, this.track, litName,
         litSegment, litPoint, this.raceTime);
