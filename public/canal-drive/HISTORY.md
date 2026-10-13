@@ -1,5 +1,7 @@
 # Canal Recall — what is built
 
+# Canal Recall — what is built
+
 ## Large tier: `fitLarge()`, `kind: large` recipes, civic components, first police station (2026-10-13)
 
 Lane `buildings/large-tier-20261013` (Opus, `docs/handoffs/lane-large-tier-20261013.md`),
@@ -31,7 +33,25 @@ tier" in `docs/buildings-pipeline.md`, `scripts/building-recipes/README.md`.
 Integrator also repointed the Hotel de l'Europe geometry pin (facade split
 into sections by the window-grid merge; now `fixed` on the centre bay).
 
+## De Waag roof rebuilt from the measured 3DBAG planes (2026-10-13)
 
+User report: the Waag gallery card showed one long 22.5 m hip over the whole
+block, turret cones buried in it, a flat dormer box sticking out of the hip, and a
+see-through gap beside the front turret. The 3DBAG roof planes and the four
+municipal panoramas show four parts instead, now drawn as clean slate planes in
+`scripts/landmarks/waag-builder.ts`:
+- front (weigh-house) block: a truncated hip with eaves at 10.4 and a flat top at
+  16.7, with finials on the top corners;
+- rear (gate) block: a hip with gentle sides and a steep NNW end, ridge 16.8;
+- a 13.1 deck between the big towers;
+- a tall octagonal central spire with its apex at 25.6.
+
+The big towers get octagonal roofs up to the 3DBAG apex at 20.0. The five dormers
+are set into their slopes, so their caps end inside the roof. Raw 3DBAG roof
+planes were tried first and rendered as broken shards with holes, which is why
+the roofs are authored. Known leftover: the stone bands on the rear turrets and
+the ENE big tower stick out as crescents because the shell's towers are not
+circular.
 ## Hotel de l'Europe window grid and Da Costakade 13 landed; two lanes held back by the audit (2026-10-13)
 
 Integrator review of the small landmark lanes killed on 2026-10-13, judged on
