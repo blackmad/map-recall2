@@ -42,6 +42,8 @@ export interface SystemFit {
   arches?: { windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'none'; /** only these storeys (0 = ground) get arched heads; the rest are square-headed */ storeys?: number[] };
   /** loading-door axis: every `every`-th bay from `first`, or the listed bays (of `bays` per storey) */
   hoist?: { every?: number; first?: number; bays?: number[]; arch?: ArchKind };
+  /** a carriage gateway through the ground storey in the listed bays: a dark arched opening one bay wide, the other ground bays plain wall */
+  gateways?: { bays: number[]; arch?: ArchKind };
   /** bays per storey on the group's widest panel (for `hoist.bays`) */
   bays?: number;
   /** false = no projecting stone sills */
@@ -160,6 +162,12 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
     typical = cycle(door, typical);
     if (f.ground !== 'blank') ground = cycle(portal, ground);
     for (const k of Object.keys(rowOverrides)) if (rowOverrides[k].kind === 'balcony') rowOverrides[k] = cycle(door, rowOverrides[k]);
+  }
+  // Carriage gateways (Amsterdams Lyceum): wide arched openings in the listed bays of the ground storey, plain wall between them.
+  if (f.gateways && name !== 'blank') {
+    const every = Math.max(1, f.bays ?? 1, ...f.gateways.bays.map(b => b + 1));
+    const gate: Row = { kind: 'punched', win: { w: 0.92, h: 0.86, sill: 0.06, mull: 0, frameW: 0, frame: s.frame, glass: s.door, ...archFor(f.gateways.arch ?? 'round', f) } };
+    ground = { kind: 'wall', cycle: Array.from({ length: every }, (_, k) => (f.gateways!.bays.includes(k) ? gate : ({ kind: 'wall' } as Row))) };
   }
   // Tilted bay windows: a cycle per bay on the chosen storeys, the box frame replacing the sill.
   for (const tb of !f.tilted || name === 'blank' ? [] : Array.isArray(f.tilted) ? f.tilted : [f.tilted]) {

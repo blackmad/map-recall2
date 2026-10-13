@@ -36319,6 +36319,370 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T23:14:05.126Z"
+    },
+    {
+      "id": "ordinary-0363100012149878",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012149878",
+      "name": "Het Amsterdams Lyceum, Valeriusplein 15, Amsterdam (1920s Amsterdam School school, two carriage arches through the street fronts)",
+      "hash": "9d038de4b010bedc34a0d05cf0fe2d0948837ea14ea114bf8b3a8d17fc0d6289",
+      "sha256": "9d038de4b010bedc34a0d05cf0fe2d0948837ea14ea114bf8b3a8d17fc0d6289",
+      "bytes": 223344,
+      "triangles": 2633,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -38.77,
+          0,
+          -23.653
+        ],
+        "max": [
+          38.698,
+          19.915,
+          24.121
+        ]
+      },
+      "anchor": [
+        4.8649994,
+        52.3511181
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8654189,
+              52.3511454
+            ],
+            [
+              4.8654201,
+              52.3511437
+            ],
+            [
+              4.8654229,
+              52.3511444
+            ],
+            [
+              4.8654309,
+              52.3511332
+            ],
+            [
+              4.8655678,
+              52.3511694
+            ],
+            [
+              4.8655457,
+              52.3512007
+            ],
+            [
+              4.8655487,
+              52.3512015
+            ],
+            [
+              4.8655425,
+              52.3512102
+            ],
+            [
+              4.8654776,
+              52.3513022
+            ],
+            [
+              4.8654746,
+              52.3513014
+            ],
+            [
+              4.8654525,
+              52.3513327
+            ],
+            [
+              4.8653156,
+              52.3512964
+            ],
+            [
+              4.8653236,
+              52.3512852
+            ],
+            [
+              4.8653207,
+              52.3512845
+            ],
+            [
+              4.8653219,
+              52.3512827
+            ],
+            [
+              4.865163,
+              52.3512406
+            ],
+            [
+              4.8651618,
+              52.3512424
+            ],
+            [
+              4.865159,
+              52.3512416
+            ],
+            [
+              4.865151,
+              52.3512528
+            ],
+            [
+              4.8650786,
+              52.3512336
+            ],
+            [
+              4.8650824,
+              52.3512283
+            ],
+            [
+              4.865082,
+              52.3512275
+            ],
+            [
+              4.8650827,
+              52.3512215
+            ],
+            [
+              4.8650752,
+              52.3512195
+            ],
+            [
+              4.8650556,
+              52.3512471
+            ],
+            [
+              4.8648053,
+              52.3511803
+            ],
+            [
+              4.8648243,
+              52.3511536
+            ],
+            [
+              4.864813,
+              52.3511506
+            ],
+            [
+              4.8648057,
+              52.3511608
+            ],
+            [
+              4.8647834,
+              52.3511551
+            ],
+            [
+              4.8647792,
+              52.3511613
+            ],
+            [
+              4.8647516,
+              52.3511543
+            ],
+            [
+              4.8647559,
+              52.3511481
+            ],
+            [
+              4.8647336,
+              52.3511424
+            ],
+            [
+              4.8647416,
+              52.3511303
+            ],
+            [
+              4.8647396,
+              52.3511295
+            ],
+            [
+              4.8647407,
+              52.3511276
+            ],
+            [
+              4.864581,
+              52.3510856
+            ],
+            [
+              4.8645797,
+              52.3510875
+            ],
+            [
+              4.8645765,
+              52.3510868
+            ],
+            [
+              4.8645681,
+              52.3510976
+            ],
+            [
+              4.864431,
+              52.3510625
+            ],
+            [
+              4.8644779,
+              52.3509961
+            ],
+            [
+              4.8644752,
+              52.3509953
+            ],
+            [
+              4.8644967,
+              52.3509646
+            ],
+            [
+              4.8644995,
+              52.3509653
+            ],
+            [
+              4.8645458,
+              52.3508993
+            ],
+            [
+              4.8646827,
+              52.3509353
+            ],
+            [
+              4.8646751,
+              52.3509468
+            ],
+            [
+              4.8646781,
+              52.3509477
+            ],
+            [
+              4.8646772,
+              52.3509493
+            ],
+            [
+              4.8648361,
+              52.3509911
+            ],
+            [
+              4.8648372,
+              52.3509895
+            ],
+            [
+              4.8648403,
+              52.3509903
+            ],
+            [
+              4.8648482,
+              52.3509787
+            ],
+            [
+              4.8649204,
+              52.3509977
+            ],
+            [
+              4.8649164,
+              52.3510035
+            ],
+            [
+              4.8649183,
+              52.351004
+            ],
+            [
+              4.8649177,
+              52.3510095
+            ],
+            [
+              4.8649243,
+              52.3510112
+            ],
+            [
+              4.8649434,
+              52.3509843
+            ],
+            [
+              4.865194,
+              52.3510508
+            ],
+            [
+              4.8651749,
+              52.3510778
+            ],
+            [
+              4.8651814,
+              52.3510795
+            ],
+            [
+              4.8651873,
+              52.3510752
+            ],
+            [
+              4.8651906,
+              52.3510748
+            ],
+            [
+              4.8651937,
+              52.3510703
+            ],
+            [
+              4.8652657,
+              52.3510893
+            ],
+            [
+              4.8652577,
+              52.3511005
+            ],
+            [
+              4.8652606,
+              52.3511013
+            ],
+            [
+              4.8652594,
+              52.351103
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 19.91,
+      "height": 19.91,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-amsterdams-lyceum.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012149878"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "amsterdams-lyceum",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012149878/w01-157.jpg",
+          "staging/pand-reference-walls/0363100012149878/w02-337.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 3st 4b",
+          "brick-bay-grid 3st 4b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "MODELLED: both fronts' two round carriage arches (new `gateways` component: dark round-arched openings 92 % of a bay wide in bays 1 and 2 of 4, plain brick between), the lettering HET AMSTERDAMS LYCEUM on the wall above the arches, two window storeys between brick piers, the stepped end blocks from the 3DBAG massing. SIMPLIFIED: four wide multi-light windows per storey instead of six single columns (the arches need a 5 m bay to be as wide as the real ones); the openings are dark recesses, not a passage you see through (the 3DBAG massing is solid at ground); the stepped cornice and buttress corbelling are the plain massing; the lettering is the kit's capitals, not the Amsterdam School letterforms. SKIPPED: traffic signs and bicycle racks (temporary), the lamp posts and pavement (not building), the courtyard and side walls (no photo of their own: blank)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012149878",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T23:17:30.248Z"
     }
   ]
 }

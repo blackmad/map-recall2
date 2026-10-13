@@ -8,7 +8,7 @@ import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/syst
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -114,6 +114,15 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (w.arches.ground !== undefined) oneOf(w.arches.ground, ARCH_KINDS, `${at}.arches.ground`);
       if (w.arches.band !== undefined) oneOf(w.arches.band, ['brick', 'stone', 'voussoir', 'none'], `${at}.arches.band`);
       if (w.arches.windows !== undefined && w.system !== 'brick-bay-grid') problems.push(`${at}.arches.windows: arched windows need system brick-bay-grid`);
+    }
+    if (w.gateways !== undefined) {
+      for (const k of Object.keys(w.gateways)) if (!['bays', 'arch'].includes(k)) problems.push(`${at}.gateways.${k}: unknown field (bays, arch)`);
+      if (!Array.isArray(w.gateways.bays) || !w.gateways.bays.length) problems.push(`${at}.gateways.bays: list of bay indices`);
+      else w.gateways.bays.forEach(b => count(b, `${at}.gateways.bays`, 0, (w.baysPerStorey ?? 80) - 1));
+      if (w.baysPerStorey === undefined) problems.push(`${at}.gateways.bays needs baysPerStorey`);
+      if (w.gateways.arch !== undefined) oneOf(w.gateways.arch, ARCH_KINDS, `${at}.gateways.arch`);
+      if (w.system !== 'brick-bay-grid') problems.push(`${at}.gateways: needs system brick-bay-grid`);
+      if (w.hoist || w.entrance) problems.push(`${at}.gateways: not with hoist or entrance (both claim the ground storey)`);
     }
     if (w.hoist !== undefined) {
       for (const k of Object.keys(w.hoist)) if (!['every', 'first', 'bays', 'arch'].includes(k)) problems.push(`${at}.hoist.${k}: unknown field (every, first, bays, arch)`);

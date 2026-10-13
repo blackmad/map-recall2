@@ -370,6 +370,8 @@ export interface LargeWallIntent {
   arches?: {windows?: ArchKind; ground?: ArchKind; band?: 'brick' | 'stone' | 'voussoir' | 'none'; /** Only these storeys (0 = ground) get arched heads (the rest stay square-headed); default every storey. */ storeys?: number[]};
   /** Loading-door axis (warehouses): every `every`-th bay from bay `first` (default 0), or the listed `bays` of the widest panel, is a tall door opening on every upper storey and a wide portal on the ground. */
   hoist?: {every?: number; first?: number; bays?: number[]; arch?: ArchKind};
+  /** A carriage gateway through the ground storey in the listed bays of the widest panel (dark arched openings 92 % of a bay wide, plain wall between); default none. */
+  gateways?: {bays: number[]; arch?: ArchKind};
   /** false = no projecting stone sills under the punched windows (brick sills, flush heads). */
   sills?: boolean;
   /** false = no frame ring round the glass (dark frames that read as glass); glazing bars stay. */

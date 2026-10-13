@@ -1,0 +1,128 @@
+{
+ "schemaVersion": 1,
+ "id": "amsterdams-lyceum",
+ "pand": "0363100012149878",
+ "signature": [
+  "carriage-arches",
+  "legend",
+  "window-columns"
+ ],
+ "walls": [
+  {
+   "tag": "w01-157",
+   "bearing": 157,
+   "lengthM": 20.6,
+   "evidence": "photo",
+   "panoId": "b_20241106_1111_Track04_Sphere_00012",
+   "capturedAt": "2024-11-06",
+   "checked": true,
+   "items": [
+    {
+     "id": "carriage-arches",
+     "kind": "other",
+     "where": "two round arches through the ground storey on a stout central pier, brick buttresses at the ends",
+     "approxSizeM": [
+      14,
+      6
+     ],
+     "plan": "modelled",
+     "how": "gateways bays [1,2] of 4, round (dark openings; the passage is not drawn through)",
+     "seenIn": "b_20241106_1111_Track04_Sphere_00012"
+    },
+    {
+     "id": "legend",
+     "kind": "lettering",
+     "where": "HET AMSTERDAMS LYCEUM in light Amsterdam School capitals above the arches",
+     "approxSizeM": [
+      9,
+      0.5
+     ],
+     "plan": "simplified",
+     "how": "signage mount wall in the kit capitals",
+     "seenIn": "b_20241106_1111_Track04_Sphere_00012"
+    },
+    {
+     "id": "window-columns",
+     "kind": "window-shape",
+     "where": "two storeys of six white-framed window columns between brick piers over brick panels",
+     "approxSizeM": [
+      19,
+      10
+     ],
+     "plan": "simplified",
+     "how": "brick-bay-grid 4 bays x 3 storeys, wide windows, piers; four wide windows instead of six single columns",
+     "seenIn": "b_20241106_1111_Track04_Sphere_00012"
+    },
+    {
+     "id": "stepped-cornice",
+     "kind": "other",
+     "where": "deep stepped brick cornice with raised end blocks",
+     "approxSizeM": [
+      20,
+      2
+     ],
+     "plan": "simplified",
+     "how": "end blocks from the 3DBAG massing; the stepping is not drawn",
+     "seenIn": "b_20241106_1111_Track04_Sphere_00012"
+    },
+    {
+     "id": "traffic-signs",
+     "kind": "sign",
+     "where": "cycle and speed signs on the piers",
+     "approxSizeM": [
+      0.6,
+      0.6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "temporary",
+      "note": "street furniture"
+     },
+     "seenIn": "b_20241106_1111_Track04_Sphere_00012"
+    }
+   ]
+  },
+  {
+   "tag": "w02-337",
+   "bearing": 337,
+   "lengthM": 18.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000259_pano_0008_000142",
+   "capturedAt": "2017-04-13",
+   "checked": true,
+   "items": [
+    {
+     "id": "nw-arches",
+     "kind": "other",
+     "where": "the same two arches on the north-west front",
+     "approxSizeM": [
+      14,
+      6
+     ],
+     "plan": "modelled",
+     "how": "gateways bays [1,2] of 4, round",
+     "seenIn": "TMX7316010203-000259_pano_0008_000142"
+    },
+    {
+     "id": "nw-legend",
+     "kind": "lettering",
+     "where": "HET AMSTERDAMS LYCEUM plus a bell emblem over the central pier",
+     "approxSizeM": [
+      9,
+      0.5
+     ],
+     "plan": "simplified",
+     "how": "lettering only; the bell emblem (a temporary blue neon outline) skipped",
+     "seenIn": "TMX7316010203-000259_pano_0008_000142"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241106_1111_Track04_Sphere_00012/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
