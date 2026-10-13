@@ -32,6 +32,12 @@ export interface GeometryAuditThresholds {
   weld: number;
   /** An opening part closer than this (m) to the wall/host geometry touches it. */
   touchTol: number;
+  /** Gap (m) beyond which an opening assembly floats off its wall, 10 cm: window sheets
+   *  stand 4.5 cm (frame), 9 cm (glass) and 13.5 cm (bars) proud of an unholed wall on purpose (z-fight clearance, `zTightTol`), so a frame or a
+   *  lone pane resting there is mounted, not detached. */
+  floatTol: number;
+  /** Distance (m) within which opening parts join into one assembly: 10 cm for the layered-sheet models (sheets stack 4.5 cm apart up to 13.5 cm), else touchTol. */
+  joinTol: number;
   /** Floating gap (m) beyond which a detached opening is a hard problem (visible shadow line / halo). */
   floatFail: number;
   /** Fraction of an opening's face projected outside its wall's silhouette that counts as overhanging. */
@@ -66,7 +72,7 @@ export interface GeometryAuditThresholds {
 }
 
 export const GEOMETRY_THRESHOLDS: GeometryAuditThresholds = {
-  weld: 0.001, touchTol: 0.03, floatFail: 0.1, overhangWarn: 0.12, overhangFail: 0.35, balconyMax: 2, buriedWarn: 0.3,
+  weld: 0.001, touchTol: 0.03, floatTol: 0.03, joinTol: 0.03, floatFail: 0.1, overhangWarn: 0.12, overhangFail: 0.35, balconyMax: 2, buriedWarn: 0.3,
   maxOpeningDiag: 14, glazedSkinArea: 24, zPlaneTol: 0.02, zAbut: 0.005, zNearTol: 0.08, zAngleTol: 2.5, zMinPatch: 0.05, zNewExportFail: 0.5, zTightTol: 0.03, zWarnArea: 0.25, zFailArea: 2,
 };
 
@@ -387,7 +393,7 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
   // Assemblies: opening parts whose boxes touch (pane in frame, sill under frame, tracery bars in an arch).
   const pp = openingParts.map((_, i) => i);
   const findA = (a: number): number => { while (pp[a] !== a) { pp[a] = pp[pp[a]]; a = pp[a]; } return a; };
-  const tol = th.touchTol;
+  const tol = th.joinTol; // parts stacked 4.5 cm apart (frame, glass, bars: z-fight clearance) still form one assembly
   const order = openingParts.map((p, i) => i).sort((a, b) => openingParts[a].min[0] - openingParts[b].min[0]);
   for (let ii = 0; ii < order.length; ii++) {
     const A = openingParts[order[ii]];
@@ -669,7 +675,7 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
     if (buried > 0.5) issues.push({...base, kind: 'buried', severity: 'warn'});
     // Floating with no wall plane in reach (only roofs, slabs or other trim nearby) is reported but not failed: it is not a
     // window that came off its wall (sweep 2026-10-13: hidden skylight ribs under a glass ridge).
-    else if (gap > tol) issues.push({...base, kind: 'floating', severity: gap > th.floatFail && best ? 'fail' : 'warn'});
+    else if (gap > th.floatTol) issues.push({...base, kind: 'floating', severity: gap > th.floatFail && best ? 'fail' : 'warn'});
     else if (outside > th.overhangWarn) issues.push({...base, kind: 'overhang', severity: outside > th.overhangFail ? 'fail' : 'warn'});
     else if (buried > th.buriedWarn) issues.push({...base, kind: 'buried', severity: 'warn'});
   }

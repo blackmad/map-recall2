@@ -96,7 +96,7 @@ function cameras(p: ZFightPatch): {label: string; shot: Shot}[] {
   // Aerial: the model is the map centre (near = distance / 75). Driving: a pitched camera whose map centre is ~150 m ahead
   // (near 2 m) sees the model 900 m away, 8 degrees over the horizon.
   return [
-    ...[450, 900].map(d => ({label: `air-${d}m`, shot: {eye: at(d, el), target: p.centre, near: d / 75, far: d * 6}})),
+    ...[450, 900, 1800].map(d => ({label: `air-${d}m`, shot: {eye: at(d, el), target: p.centre, near: d / 75, far: d * 6}})),
     {label: 'drive-900m', shot: {eye: at(900, (8 * Math.PI) / 180), target: p.centre, near: 2, far: 5400}},
   ];
 }

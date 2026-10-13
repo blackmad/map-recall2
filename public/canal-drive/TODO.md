@@ -703,14 +703,16 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   into flat grey lids after the sun/mood merge (cause not found; compare
   against freshly built bundles).
 - **Z-fight survey backlog** (`artifacts/zfight-audit/report.md` in the lane,
-  regenerate with `scripts/landmarks/zfight-survey.ts`): 286 of 390 models
-  above the 0.5 m² new-export gate. Top class is "window frame 2 cm proud of
-  an unholed wall" (Vriesseveem 9, HvA Wibautstraat, Kohnstammhuis, HvA
-  Rhijnspoorplein, Conservatorium, De Bazel, Amstel Hotel, Allard Pierson):
-  fix once in the shared window/frame helper (lift 3 cm or hole the wall),
-  re-export, lower baselines. Then "flush cladding band on a wall" (Jacob
-  Bontiusplaats 9, Valley, the Haparandaweg blocks, Pllek, Frascati's
-  doubled brick face).
+  regenerate with `scripts/landmarks/zfight-survey.ts`): the top class
+  (frames 2 cm proud) is fixed in the helpers and 20 models re-exported
+  (HISTORY 2026-10-13 evening). Left: de-wester 412 m² (doubled brick
+  planes 3 cm apart; relayering raised opening-buried 3 → 18, reverted),
+  haparandaweg-746-786 105 m² (glass 1.5 cm from balcony rails),
+  Madame Tussauds 18 / VOC-kade 600 25 / Allard Pierson 14 / De Bazel 4 /
+  Kohnstammhuis 3 (non-planar walls; read the wall plane per window), then
+  "flush cladding band on a wall" (Jacob Bontiusplaats 9's 6,411 m²,
+  Valley, Pllek, Frascati's doubled face; pllek/frascati/valley/jacob not
+  re-exported). The 4.5 cm near band still tints a few pixels at 1,800 m.
 - **Highlight: small targets under the coral default**. Style a (coral
   outline + ground ring + beacon) is the default since 2026-10-13 evening
   (`?highlight=yellow` compares). On the chase sheets an ordinary terrace

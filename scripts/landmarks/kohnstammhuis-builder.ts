@@ -58,11 +58,11 @@ export function buildKohnstammhuis(_w: number, _d: number, b: BuildingTools & {m
       slab(b, f, doorT, 1.9, doorW, 3.1, 0.1, 'dark', 0.02);
       disc(b, f, doorT, 7.0, 0.9, 0.12, arms, 0.02);
       slab(b, f, winT, 7.3, 2.4, 3.7, 0.06, 'frame', 0.01);
-      slab(b, f, winT, 7.4, 2.2, 3.5, 0.08, 'glass', 0.01);
-      for (let m = 1; m < 4; m++) slab(b, f, winT, 7.4 + m * 3.5 / 4, 2.2, 0.06, 0.1, 'frame', 0.01);
-      slab(b, f, winT, 7.4, 0.06, 3.5, 0.1, 'frame', 0.01);
+      slab(b, f, winT, 7.4, 2.2, 3.5, 0.13, 'glass', 0.01); // fronts stand >= 4 cm apart (z-fight clearance)
+      for (let m = 1; m < 4; m++) slab(b, f, winT, 7.4 + m * 3.5 / 4, 2.2, 0.06, 0.2, 'frame', 0.01);
+      slab(b, f, winT, 7.4, 0.06, 3.5, 0.2, 'frame', 0.01);
       slab(b, f, leadT, 3.0, 1.3, 1.7, 0.08, 'frame', 0.01);
-      slab(b, f, leadT, 3.1, 1.1, 1.5, 0.1, 'glass', 0.01);
+      slab(b, f, leadT, 3.1, 1.1, 1.5, 0.15, 'glass', 0.01);
     };
     end(2.6, 2.6, 3.0, 'gold', 3.0, 6.2);
     end(59.8, 59.75, 2.0, 'red', 59.7, 56.5);

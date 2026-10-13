@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## The frame-sheet z-fight class, fixed in the helpers (2026-10-13, evening)
+
+Lane `glb/zfight-frames-20261013`. The survey's biggest class was frames,
+glass and louvres 2 cm proud of the wall. Fixed once: `big-facade.ts`
+`quad()` lifts the legacy 0.02/0.04/0.06 offsets to 4.5/9/13.5 cm (five
+builders), and the kit's `liftSheet()` in `compose.ts` puts sheets on
+4.5/9/13.5/18 cm layers (rails stay unlifted through `quadRaw`; door leaves
+moved to the lower layers; the kit gate links parts within 10 cm). Twenty
+models re-exported; coplanar+tight z-fight before → after in m²:
+Vriesseveem 9 11,962 → 0, HvA Wibautstraat 10,420 → 0, Kohnstammhuis
+6,703 → 3.3, HvA Rhijnspoorplein 6,597 → 0, Conservatorium 1,454 → 0.7,
+Silodam 888 → 0, Haparandaweg blocks 505–2,445 → 0–10 (746-786 stays at
+105: glass 1.5 cm from balcony rails). The audit gained per-id `floatTol`
+/ `joinTol` (10 cm for the 20 layered ids, 3 cm elsewhere; a global 10 cm
+regressed Stadhuis, Valley and Gashouder). Renders at 450/900/1800 m and
+the drive show the tinted bleed mostly gone; the 4.5 cm near band still
+tints a few pixels at 1,800 m, so 4.5 cm may not be fully clean that far.
+`check-manual-landmarks` admits explicit standalones (spatialSuppression
+false, nothing suppressed, finite surveyed anchor) and records a ceiling
+for the two over-budget legacy models; it passes end to end again.
+
+
 ## Coral highlight is the default (2026-10-13, evening)
 
 Lane `look/highlight-default-a-20261013`. `highlightStyle()` returns `a`

@@ -137,10 +137,12 @@ function readBaseline(): Baseline | undefined {
   try { return JSON.parse(fs.readFileSync(BASELINE, 'utf8')); } catch { return undefined; }
 }
 
+/** Models whose window sheets stand on the 4.5 / 9 / 13.5 cm z-fight layers (2026-10-13 frame-class fix): assemblies join at 10 cm and float beyond 10 cm. Other models keep the 3 cm tolerances (a wider join merges neighbouring windows and moves their overhang counts). */
+const LAYERED_SHEET_IDS = new Set(['vriesseveem-9', 'hva-wibautstraat-3', 'kohnstammhuis', 'hva-rhijnspoorplein-2', 'conservatorium', 'de-bazel', 'madame-tussauds', 'silodam', 'amstel-hotel', 'voc-kade-600', 'allard-pierson', 'haarlemmerweg-333', 'haparandaweg-65', 'haparandaweg-870-900', 'haparandaweg-650-706', 'haparandaweg-708-744', 'haparandaweg-788-868', 'haparandaweg-746-786', 'haparandaweg-902-950', 'haparandaweg-952-1002']);
 async function auditGeometry(id: string, file: string): Promise<GeometryAuditReport> {
   const specFile = path.join(ROOT, 'scripts/landmarks', `${id}-elevations.json`);
   const spec = fs.existsSync(specFile) ? (JSON.parse(fs.readFileSync(specFile, 'utf8')) as ElevationsFile) : undefined;
-  return geometryAudit(await loadMaterialSoup(file), {facades: spec?.facades});
+  return geometryAudit(await loadMaterialSoup(file), {facades: spec?.facades, th: LAYERED_SHEET_IDS.has(id) ? {floatTol: 0.10, joinTol: 0.10} : undefined});
 }
 
 /** Geometry findings join the report; within the baseline they stay warnings, growth past it fails the model. */

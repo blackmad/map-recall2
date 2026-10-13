@@ -126,9 +126,9 @@
   "triangles": 572
  },
  "silodam": {
-  "sourceHash": "7440fb0b33e0f13c",
+  "sourceHash": "59a513770337b2cb",
   "buildVersion": 2,
-  "bytes": 55608,
+  "bytes": 56584,
   "triangles": 2941
  },
  "the-movies": {
@@ -378,9 +378,9 @@
   "triangles": 1283
  },
  "allard-pierson": {
-  "sourceHash": "88b0856f25b0c3bc",
+  "sourceHash": "71b8e10eba70a3bf",
   "buildVersion": 2,
-  "bytes": 48336,
+  "bytes": 48228,
   "triangles": 2904
  },
  "dominicuskerk": {
@@ -558,10 +558,10 @@
   "triangles": 2119
  },
  "madame-tussauds": {
-  "sourceHash": "f77cadbfae7080a2",
+  "sourceHash": "9830bbe5b0a15ba9",
   "buildVersion": 2,
-  "bytes": 49124,
-  "triangles": 2787
+  "bytes": 48952,
+  "triangles": 2788
  },
  "amsterdam-dungeon": {
   "sourceHash": "3da6448fcbd9c489",
@@ -696,9 +696,9 @@
   "triangles": 753
  },
  "amstel-hotel": {
-  "sourceHash": "5edd095b81fd3700",
+  "sourceHash": "e41dd9b73159c0b8",
   "buildVersion": 2,
-  "bytes": 65408,
+  "bytes": 65952,
   "triangles": 4149
  },
  "faralda-crane-hotel": {
@@ -786,10 +786,10 @@
   "triangles": 1197
  },
  "conservatorium": {
-  "sourceHash": "fb2225321c56c3b1",
+  "sourceHash": "1ef280694b29e408",
   "buildVersion": 2,
-  "bytes": 80440,
-  "triangles": 4422
+  "bytes": 81120,
+  "triangles": 4430
  },
  "kinderkookkafe": {
   "sourceHash": "2a100f055a7ab05f",
@@ -1218,22 +1218,22 @@
   "triangles": 2607
  },
  "haparandaweg-650-706": {
-  "sourceHash": "d5f0b96126caa090",
+  "sourceHash": "0238fd0b70e128ff",
   "buildVersion": 2,
-  "bytes": 37980,
+  "bytes": 38000,
   "triangles": 1875
  },
  "haparandaweg-870-900": {
-  "sourceHash": "ce83205dfa44185a",
+  "sourceHash": "096faadbd3087afa",
   "buildVersion": 2,
-  "bytes": 30520,
+  "bytes": 30444,
   "triangles": 919
  },
  "haparandaweg-952-1002": {
-  "sourceHash": "7baf3c1be045a74f",
+  "sourceHash": "2fba735f311e532f",
   "buildVersion": 2,
-  "bytes": 26020,
-  "triangles": 1323
+  "bytes": 25688,
+  "triangles": 1327
  },
  "willem-de-zwijgerkerk": {
   "sourceHash": "509e8bfaa5a7f064",
@@ -1428,9 +1428,9 @@
   "triangles": 808
  },
  "voc-kade-600": {
-  "sourceHash": "d7c538aafed11c25",
+  "sourceHash": "3cf272c49a1b6e84",
   "buildVersion": 2,
-  "bytes": 93024,
+  "bytes": 99436,
   "triangles": 4885
  },
  "motorkade-1": {
@@ -1440,9 +1440,9 @@
   "triangles": 4431
  },
  "de-bazel": {
-  "sourceHash": "8ce75ddeb0bc34f9",
+  "sourceHash": "4b306c902d74445a",
   "buildVersion": 2,
-  "bytes": 108528,
+  "bytes": 108220,
   "triangles": 5537
  },
  "overtoom-197": {
@@ -1476,10 +1476,10 @@
   "triangles": 4049
  },
  "haarlemmerweg-333": {
-  "sourceHash": "1fa3a1d2f23dbe83",
+  "sourceHash": "4aaa1714e39647ba",
   "buildVersion": 2,
-  "bytes": 54288,
-  "triangles": 2656
+  "bytes": 55048,
+  "triangles": 2658
  },
  "bogortuin-101": {
   "sourceHash": "82c5783376a6297d",
@@ -1512,21 +1512,21 @@
   "triangles": 4423
  },
  "kohnstammhuis": {
-  "sourceHash": "c5a23ee839c95c33",
+  "sourceHash": "ca2d417b6b58b927",
   "buildVersion": 2,
-  "bytes": 39204,
+  "bytes": 39772,
   "triangles": 2155
  },
  "hva-wibautstraat-3": {
-  "sourceHash": "c4722e7167c48980",
+  "sourceHash": "92671806852d1fa7",
   "buildVersion": 2,
-  "bytes": 57464,
+  "bytes": 57832,
   "triangles": 4833
  },
  "hva-rhijnspoorplein-2": {
-  "sourceHash": "ff70134e689eae1a",
+  "sourceHash": "d0267f661bda5af4",
   "buildVersion": 2,
-  "bytes": 21216,
+  "bytes": 21540,
   "triangles": 1271
  },
  "jacob-bontiusplaats-9": {
@@ -1542,9 +1542,9 @@
   "triangles": 6217
  },
  "vriesseveem-9": {
-  "sourceHash": "8bb7185e4b235061",
+  "sourceHash": "36d804c5803b1713",
   "buildVersion": 2,
-  "bytes": 58424,
+  "bytes": 56988,
   "triangles": 4565
  },
  "scheepvaartmuseum": {
