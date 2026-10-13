@@ -1,0 +1,161 @@
+{
+ "schemaVersion": 1,
+ "id": "warmoesstraat-garage-165687",
+ "pand": "0363100012165687",
+ "signature": [
+  "perforated-screen",
+  "players-curved-front"
+ ],
+ "walls": [
+  {
+   "tag": "w06-312",
+   "bearing": 312,
+   "lengthM": 11.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002793_pano_0000_000105",
+   "capturedAt": "2022-09-05",
+   "checked": true,
+   "items": [
+    {
+     "id": "perforated-screen",
+     "kind": "window-shape",
+     "where": "whole NW end wall above the entrance",
+     "approxSizeM": [
+      11.8,
+      24
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002793_pano_0000_000105",
+     "how": "brick-bay-grid with wide low windows on 7 decks; the 1 m perforation grid is not drawn cell by cell"
+    }
+   ]
+  },
+  {
+   "tag": "w04-135",
+   "bearing": 135,
+   "lengthM": 13.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001055_pano_0000_000764",
+   "capturedAt": "2019-01-15",
+   "checked": true,
+   "items": [
+    {
+     "id": "players-curved-front",
+     "kind": "window-shape",
+     "where": "curved glazed casino ground floor",
+     "approxSizeM": [
+      13,
+      5
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001055_pano_0000_000764",
+     "how": "the podium takes the group ground system; the curve is straight (3DBAG LoD2.2 is straight here)"
+    },
+    {
+     "id": "players-lettering",
+     "kind": "lettering",
+     "where": "over the casino entrance",
+     "approxSizeM": [
+      3,
+      0.8
+     ],
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-001055_pano_0000_000764",
+     "skip": {
+      "reason": "too-small",
+      "note": "small ring-and-lettering sign; large-tier signage is not placed on a curved ground floor"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w01-136",
+   "bearing": 136,
+   "lengthM": 35.1,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002031_pano_0003_000169",
+   "capturedAt": "2021-03-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "perforated-curve",
+     "kind": "window-shape",
+     "where": "curved SE flank",
+     "approxSizeM": [
+      35,
+      16
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-002031_pano_0003_000169",
+     "how": "same window field as the NW screen on the podium decks"
+    }
+   ]
+  },
+  {
+   "tag": "w03-29",
+   "bearing": 29,
+   "lengthM": 18.3,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001174_pano_0001_000129",
+   "capturedAt": "2019-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "stone-plinth-wing",
+     "kind": "window-shape",
+     "where": "NE wing, stone-rusticated base under red brick",
+     "approxSizeM": [
+      18,
+      6
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001174_pano_0001_000129",
+     "how": "brick-bay-grid 4 storeys x 4 bays with a cornice; the rusticated plinth is plain wall"
+    }
+   ]
+  },
+  {
+   "tag": "w02-130",
+   "bearing": 130,
+   "lengthM": 21.5,
+   "evidence": "photo",
+   "panoId": "recording_2025-07-03_03-29-47_02661",
+   "capturedAt": "2025-07-03",
+   "checked": true,
+   "items": [
+    {
+     "id": "blue-glass-cylinder",
+     "kind": "tower",
+     "where": "rear cylinder behind a blue loading dock",
+     "approxSizeM": [
+      20,
+      16
+     ],
+     "plan": "skipped",
+     "seenIn": "recording_2025-07-03_03-29-47_02661",
+     "skip": {
+      "reason": "not-visible",
+      "note": "its LoD2.2 roof is lower than the wall eaves (gate); left to the blank group"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-49",
+   "bearing": 49,
+   "lengthM": 11.9,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001177_pano_0000_000054",
+   "capturedAt": "2019-05-13",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
