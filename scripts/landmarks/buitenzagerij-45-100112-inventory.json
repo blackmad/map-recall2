@@ -1,0 +1,124 @@
+{
+ "schemaVersion": 1,
+ "id": "buitenzagerij-45-100112",
+ "pand": "0363100012100112",
+ "signature": [
+  "terrace-house-rhythm",
+  "ribbon-upper-floor"
+ ],
+ "walls": [
+  {
+   "tag": "w04-259",
+   "bearing": 259,
+   "lengthM": 72.6,
+   "evidence": "photo",
+   "panoId": "TMX7316060226-000022_pano_0008_005745",
+   "capturedAt": "2016-08-16",
+   "checked": true,
+   "items": [
+    {
+     "id": "terrace-house-rhythm",
+     "kind": "window-shape",
+     "where": "ground floor: a front door and a window for each house along 70 m",
+     "approxSizeM": [
+      70,
+      3
+     ],
+     "plan": "simplified",
+     "how": "two-light windows at 5.4 m bays in a 2-storey group; doors drawn as windows",
+     "seenIn": "TMX7316060226-000022_pano_0008_005745"
+    },
+    {
+     "id": "ribbon-upper-floor",
+     "kind": "window-shape",
+     "where": "first floor: long window ribbon in white panels",
+     "approxSizeM": [
+      70,
+      1.6
+     ],
+     "plan": "simplified",
+     "how": "two-light windows per bay in the upper storey",
+     "seenIn": "TMX7316060226-000022_pano_0008_005745"
+    },
+    {
+     "id": "door-round-windows",
+     "kind": "other",
+     "where": "round porthole windows in the white doors",
+     "approxSizeM": [
+      0.3,
+      0.3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "30 cm portholes"
+     },
+     "seenIn": "TMX7316060226-000022_pano_0008_005745"
+    }
+   ]
+  },
+  {
+   "tag": "w01-79",
+   "bearing": 79,
+   "lengthM": 80.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000866_pano_0000_001691",
+   "capturedAt": "2018-07-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-faces",
+     "kind": "window-shape",
+     "where": "east faces of the rows",
+     "approxSizeM": [
+      80,
+      6
+     ],
+     "plan": "simplified",
+     "how": "same 2-storey group as the west faces (walls[1])",
+     "seenIn": "TMX7316010203-000866_pano_0000_001691"
+    }
+   ]
+  },
+  {
+   "tag": "w02-259",
+   "bearing": 259,
+   "lengthM": 78.6,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w03-79",
+   "bearing": 79,
+   "lengthM": 74.6,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w05-79",
+   "bearing": 79,
+   "lengthM": 70.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002183_pano_0001_002516",
+   "capturedAt": "2021-06-17",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

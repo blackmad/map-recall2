@@ -1,0 +1,97 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "buitenzagerij-45-100112",
+ "pandId": "0363100012100112",
+ "address": "Buitenzagerij 45, Amsterdam (Jordaan, former Zagerij site): 1984 comb of six rows of two-storey terraced houses (194 homes) in buff brick under a spine block",
+ "sources": [
+  {
+   "id": "pano-2016-08-16-w04",
+   "kind": "street-panorama",
+   "capturedAt": "2016-08-16",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316060226-000022_pano_0008_005745/",
+   "image": "staging/pand-reference-walls/0363100012100112/w04-259.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-07-24-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2018-07-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000866_pano_0000_001691/",
+   "image": "staging/pand-reference-walls/0363100012100112/w01-79.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-06-17-w05",
+   "kind": "street-panorama",
+   "capturedAt": "2021-06-17",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002183_pano_0001_002516/",
+   "image": "staging/pand-reference-walls/0363100012100112/w05-79.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    11,
+    16,
+    22,
+    52,
+    70,
+    77,
+    82,
+    83,
+    97,
+    105,
+    128,
+    151
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 13,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "windows": "two-light"
+  },
+  {
+   "wallSurfaces": [
+    19,
+    25,
+    72,
+    74,
+    76,
+    80,
+    95,
+    98,
+    103,
+    120,
+    139,
+    188
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 14,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "windows": "two-light"
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#c8a878",
+  "frame": "#f0eee6",
+  "door": "#f0eee6",
+  "stone": "#d8d0c0"
+ },
+ "notes": [
+  "Buitenzagerij 45 (BAG: built 1984; 194 dwellings; 5,964 m2 footprint, 11.6 m): the Buitenzagerij housing, a spine along the Jordaan side with six parallel rows of two-storey terraced houses reaching to the Singelgracht. Photographed: the west faces of the rows (w04-259, panorama 2016-08-16: a buff brick ground floor with a white front door with a round window and a window per house, a white-panelled first floor with a long window ribbon, a glazed band under a flat overhanging roof) and the east faces (w01-79, 2018-07-24, and w05-79, 2021-06-17: the same rows seen from the east garden side).",
+  "Modelled: the long west-facing walls (panels 20, 10, 65, 75, 47) and east-facing walls (panels 17, 67, 69, 73, 101) as two 2-storey groups of two-light windows over buff brick with white frames, about 5.4 m bays (one per house); panel 86 (the long east wall, 8.5 m) is left to the shell. Roofs and the spine walls are the 3DBAG LoD2.2 shell.",
+  "Simplified: doors are plain windows in the ground row (the kit's entrance needs a 1.6 m opening per panel, not one per house), the round door windows and the glazed top band are not drawn, the white upper panels are the same buff brick colour. Not modelled: the north spine wall and the end stair walls (no panorama within 35 m)."
+ ],
+ "closedBands": true
+}
