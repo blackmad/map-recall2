@@ -20268,6 +20268,7 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -6.77706241607666,
@@ -20296,8 +20297,8 @@
         "depthMetres": 13.361959457397461,
         "depthCoverage": 1.3531574668190531
       },
-      "triangles": 1792,
-      "bytes": 37408,
+      "triangles": 2410,
+      "bytes": 44624,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "levend-paardenmuseum": {
@@ -22096,6 +22097,7 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -17.899999618530273,
@@ -22124,14 +22126,14 @@
         "depthMetres": 43.17499923706055,
         "depthCoverage": 0.8994791507720947
       },
-      "triangles": 6751,
-      "bytes": 90824,
+      "triangles": 7269,
+      "bytes": 98672,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "caa9d9c5b3a443a4",
+        "sourceHash": "590828890bdf73fa",
         "buildVersion": 2,
-        "bytes": 34760,
-        "triangles": 1274
+        "bytes": 36736,
+        "triangles": 1352
       }
     },
     "club-panama": {
@@ -24739,6 +24741,7 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -17.11400032043457,
@@ -24767,14 +24770,14 @@
         "depthMetres": 33.97700119018555,
         "depthCoverage": 0.8287073461020865
       },
-      "triangles": 4432,
-      "bytes": 69620,
+      "triangles": 5192,
+      "bytes": 80364,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "013a0f0602250468",
+        "sourceHash": "509e8bfaa5a7f064",
         "buildVersion": 2,
-        "bytes": 28348,
-        "triangles": 913
+        "bytes": 29348,
+        "triangles": 917
       }
     },
     "vrijburg": {
@@ -27538,6 +27541,7 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -44.80195999145508,
@@ -27566,14 +27570,14 @@
         "depthMetres": 31.391952514648438,
         "depthCoverage": 1.0467473329325923
       },
-      "triangles": 11370,
-      "bytes": 141100,
+      "triangles": 11520,
+      "bytes": 145072,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "db225f08f9226a39",
+        "sourceHash": "17951767e52d0e71",
         "buildVersion": 2,
-        "bytes": 40836,
-        "triangles": 1635
+        "bytes": 44892,
+        "triangles": 1785
       }
     },
     "west-indisch-pakhuis": {
@@ -28872,6 +28876,7 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -27.230791091918945,
@@ -28900,14 +28905,14 @@
         "depthMetres": 30.027219772338867,
         "depthCoverage": 0.9686199926560924
       },
-      "triangles": 14369,
-      "bytes": 187656,
+      "triangles": 14465,
+      "bytes": 190076,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "535b21638d220e5f",
+        "sourceHash": "555ac8dda9d30fc7",
         "buildVersion": 2,
-        "bytes": 60812,
-        "triangles": 2677
+        "bytes": 62100,
+        "triangles": 2691
       }
     },
     "lloyd-hotel": {
@@ -30486,14 +30491,14 @@
         "depthMetres": 56.76299858093262,
         "depthCoverage": 0.9958420803672389
       },
-      "triangles": 35806,
-      "bytes": 487504,
+      "triangles": 36414,
+      "bytes": 497836,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "e9ecc811a4cb19c0",
+        "sourceHash": "9b1b61683c58d085",
         "buildVersion": 2,
-        "bytes": 131016,
-        "triangles": 6327
+        "bytes": 134328,
+        "triangles": 6447
       }
     },
     "hotel-de-l-europe": {

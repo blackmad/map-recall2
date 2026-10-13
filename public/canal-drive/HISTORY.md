@@ -1,5 +1,50 @@
 # Canal Recall — what is built
 
+## Bespoke landmark process: photo-first brief, signature inventory gate; six ornament retro-fits (2026-10-13)
+
+User 2026-10-13, after the Hoofdbureau shipped without its Amsterdam-arms
+relief: "fix your custom landmark process so it would have been right the
+first time". Root cause was the integrator's brief (written from memory:
+"corner tower, carved portal", both wrong) and a checklist that only knew
+windows and holes; the stock tools also skipped the wall — `all-walls
+--min-len=14` and `review-sheet --walls=6` both drop the 13.9 m Marnixstraat
+end wall that carries the relief. Lane `landmarks/ornament-inventory-20261013`
+(Opus): `scripts/landmarks/landmark-brief.ts --pand=<id> --id=<slug>` takes
+every exposed wall ≥ 4 m (up to 30), saves a rectified crop, a second year
+and an aimed thumbnail per wall, collects BAG/3DBAG/monument-register facts,
+quotes Wikipedia sections on sculpture and facade (the new Hoofdbureau brief
+quotes nl.wikipedia "Elandsgracht 117" § Beeldhouwwerken: the arms with
+imperial crown and two lions, the Van Moerkerken verse on the banner, the
+three Hildo Krop figures, architects Van der Wilk and Messer) and writes
+`<id>-brief.md` plus a skeleton `<id>-inventory.json`. Schema
+`src/canalRecall/landmarks/ornamentInventory.ts` (items with plan modelled /
+simplified / skipped-with-reason / open; excuse skips such as "cannot
+express" refused). Gate `landmark-inventory-gate.ts`: a landmark first
+exported after 2026-10-14 (git history) or never committed must have an
+inventory with no open items, no `needs-modeller` skips, every photographed
+wall checked and every signature item modelled or simplified;
+`build-manual-landmarks.ts` refuses the export (`LANDMARK_INVENTORY_GATE=warn`
+downgrades), `audit:glb` adds `signature-inventory`, `check-landmark-inventory.ts`
+is in `check:canal`, `review-sheet.ts --inventory` adds a photo-crop /
+render-crop column per item. The Hoofdbureau (exported 2026-10-13) is not
+gated; its inventory has 29 items (9 modelled, 3 simplified, 1 skipped, 16
+open) and the inventory column caught a second defect: the end wall is
+misregistered (arms a storey higher and larger in the photo; the model wraps
+ribbon windows round the blank left 5 m). Survey of 60 landmarks
+(`ornament-inventory.json`, `ornament-inventory.ts --strip`): 93 items, 21
+open, ranked in the board. Retro-fits (≤ 1.5k tris each, `audit:glb` PASS,
+strips panorama | before | after): museum-amsterdam-noord name boards
+GEMEENTE BADHUIS / MUSEUM AMSTERDAM NOORD (1,792 → 2,410 tris), nassaukerk
+NASSAUKERK raised letters on the blank band (6,751 → 7,269), vondelkerk hands
+on the four clock faces (14,369 → 14,465), de-school LTS letters over the
+porch, american-hotel AMERICAN on the canopy and striped awnings over the
+café arches (35,806 → 36,414), willem-de-zwijgerkerk green name plate.
+Shared helper `scripts/landmarks/ornament-kit.ts` (`raisedLettering`,
+`clockHands`). Integrator: manifests and lod1 regenerated; the first
+re-export of vondelkerk in a six-id process failed the audit (see board,
+export determinism), a single-id export is deterministic and passes.
+
+
 ## Police bureaus, pass 2: twelve more bureaus as large recipes (2026-10-13)
 
 Lane `landmarks/police-bureaus-2-20261013` (Sonnet). All through the
