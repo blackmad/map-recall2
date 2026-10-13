@@ -505,9 +505,9 @@ export class SignatureLandmarks {
         spec.sceneFactory().then(scene => onLoaded({ scene }), onError);
       } else if (spec.sharedModel) {
         // Shared mesh: decode once, then clone per instance (geometry and materials stay shared).
-        this._sharedAssets.acquire(url, () => loader.loadAsync(url).then(gltf => this._dress(gltf) ?? gltf).then(gltf => this._shade(gltf)))
+        this._sharedAssets.acquire(url, () => loader.loadAsync(url).then(gltf => this._dress(gltf, spec) ?? gltf).then(gltf => this._shade(gltf)))
           .then(gltf => onLoaded({ scene: gltf.scene.clone(true) }), onError);
-      } else loader.load(url, gltf => { const dressing = this._dress(gltf); if (dressing) dressing.then(dressed => onLoaded(this._shade(dressed)), onError); else onLoaded(this._shade(gltf)); }, undefined, onError);
+      } else loader.load(url, gltf => { const dressing = this._dress(gltf, spec); if (dressing) dressing.then(dressed => onLoaded(this._shade(dressed)), onError); else onLoaded(this._shade(gltf)); }, undefined, onError);
     }
   }
 
@@ -533,7 +533,7 @@ export class SignatureLandmarks {
    * one rig instead of the baked shade. Other models pass through untouched (returns null:
    * they keep the synchronous load path).
    */
-  _dress(gltf) {
+  _dress(gltf, spec = null) {
     // `?cityLook=1`: every model takes the city look (look/cityLook.ts); untagged landmark materials take the slot
     // their name and colour say. Flag off, slots inferred into a GLB (`materialSlotSource: 'inferred'`) are ignored.
     const city = cityLookEnabled();
@@ -548,12 +548,14 @@ export class SignatureLandmarks {
         .then(brick => { this._recipeLook = createRecipeLook(THREE, { brick, anisotropy: window.matchMedia?.('(pointer: coarse)').matches ? 1 : 4, lit: !!this.sharedFrame, cityLook: city, inferSlots: city }); return this._recipeLook; })
         .then(look => (look.ready ? look.ready.then(() => look) : look));
     }
-    return this._recipeLookReady.then(look => { look.apply(gltf.scene); gltf.scene.userData.recipeLook = true; return gltf; });
+    // `bagYear` (BAG construction year, published into the placement catalogue from scripts/landmarks/landmark-bag-years.ts)
+    // picks the city look's era brick; without it the model keeps the canal brick.
+    return this._recipeLookReady.then(look => { look.apply(gltf.scene, { year: spec?.bagYear ?? null }); gltf.scene.userData.recipeLook = true; return gltf; });
   }
 
   /** LOD levels load synchronously into place: dress them too once the city look exists (`?cityLook=1` only). */
-  _dressLevel(gltf) {
-    if (this._recipeLook?.city) { this._recipeLook.apply(gltf.scene); gltf.scene.userData.recipeLook = true; }
+  _dressLevel(gltf, spec = null) {
+    if (this._recipeLook?.city) { this._recipeLook.apply(gltf.scene, { year: spec?.bagYear ?? null }); gltf.scene.userData.recipeLook = true; }
     return gltf;
   }
 
@@ -883,7 +885,7 @@ export class SignatureLandmarks {
     const done = () => { if (generation === this._generation) { entry.levelLoading = false; this._lodLoads--; } };
     this._loader.load(url, gltf => {
       if (this._removed || generation !== this._generation || !this._entries.includes(entry)) { this._disposeResources(gltf.scene); done(); return; }
-      this._swapLevel(entry, this._shade(this._dressLevel(gltf)).scene, level);
+      this._swapLevel(entry, this._shade(this._dressLevel(gltf, spec)).scene, level);
       done();
       this._updateLevels();
     }, undefined, error => {

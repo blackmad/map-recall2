@@ -31,7 +31,8 @@ export { lumaSpread, PARITY_FACES };
 export type { ParityFace, ParityResult };
 
 export type ParityPipeline = 'generic' | 'recipe' | 'landmark' | 'generic-unlit' | 'recipe-unlit'
-  | 'city-generic' | 'city-recipe' | 'city-landmark' | 'city-generic-unlit' | 'city-recipe-unlit' | 'city-landmark-unlit';
+  | 'city-generic' | 'city-recipe' | 'city-landmark' | 'city-generic-unlit' | 'city-recipe-unlit' | 'city-landmark-unlit'
+  | 'landmark-highlight' | 'city-landmark-highlight' | 'city-landmark-highlight-unlit';
 export const SHARED_PIPELINES: readonly ParityPipeline[] = ['generic', 'recipe', 'landmark'];
 /**
  * `?cityLook=1` (look/cityLook.ts): the same three pipelines through the one
@@ -41,6 +42,15 @@ export const SHARED_PIPELINES: readonly ParityPipeline[] = ['generic', 'recipe',
  */
 export const CITY_PIPELINES: readonly ParityPipeline[] = ['city-generic', 'city-recipe', 'city-landmark'];
 export const CITY_UNLIT_PIPELINES: readonly ParityPipeline[] = ['city-generic-unlit', 'city-recipe-unlit', 'city-landmark-unlit'];
+/**
+ * The active-landmark highlight: the default one (the model's own material plus a
+ * yellow glow, signature-landmarks-source.js `setActiveLandmark`) and the city
+ * look's highlight variant, lit and unlit. Their sun/shade ratio says whether the
+ * yellow keeps the shading (docs/LOOK.md "City look").
+ */
+export const HIGHLIGHT_PIPELINES: readonly ParityPipeline[] = ['landmark-highlight', 'city-landmark-highlight', 'city-landmark-highlight-unlit'];
+/** signature-landmarks-source.js HIGHLIGHT_COLOUR. */
+const HIGHLIGHT_HEX = 0xffd21f;
 
 const SIZE = 96;
 const WALL_M = 10;
@@ -143,7 +153,7 @@ export async function runLookParity(options: ParityOptions = {}): Promise<Parity
         source.userData = { materialSlot: 'brick', tint: hex };
         mesh = new THREE.Mesh(wallGeometry(normal, WALL_M), source);
         city!.dress(mesh, { lit: pipeline === 'city-recipe' });
-      } else if (pipeline === 'city-landmark' || pipeline === 'city-landmark-unlit') {
+      } else if (pipeline === 'city-landmark' || pipeline === 'city-landmark-unlit' || pipeline === 'city-landmark-highlight' || pipeline === 'city-landmark-highlight-unlit') {
         // Legacy landmark GLB in the city look: glTF Y-up, no UVs, a material named for its palette entry; placed Z-up.
         const g = wallGeometry(normal, 1);
         g.deleteAttribute('uv');
@@ -152,7 +162,15 @@ export async function runLookParity(options: ParityOptions = {}): Promise<Parity
         source.name = 'brick';
         mesh = new THREE.Mesh(g, source);
         mesh.rotation.x = Math.PI / 2;
-        city!.dress(mesh, { lit: pipeline === 'city-landmark', infer: true });
+        city!.dress(mesh, { lit: pipeline === 'city-landmark' || pipeline === 'city-landmark-highlight', infer: true });
+        if (pipeline.includes('highlight')) mesh.material = city!.highlighted(mesh.material, true);
+      } else if (pipeline === 'landmark-highlight') {
+        // The game's default highlight: own colour, diffuse-only, plus half the highlight yellow as emissive.
+        const material = new THREE.MeshStandardMaterial({ color: hex, roughness: 0.9, metalness: 0 });
+        mesh = new THREE.Mesh(wallGeometry(normal, 1), material);
+        normaliseLandmarkMaterials(THREE, mesh);
+        const m = mesh.material as any;
+        m.emissive?.setHex(HIGHLIGHT_HEX).multiplyScalar(0.5);
       } else {
         // Landmark GLB: flat authored colour, normalised to diffuse-only like the game does.
         mesh = new THREE.Mesh(wallGeometry(normal, 1), new THREE.MeshStandardMaterial({ color: hex, roughness: 0.9, metalness: 0 }));

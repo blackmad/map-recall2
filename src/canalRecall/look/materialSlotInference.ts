@@ -119,5 +119,8 @@ export function linearToSrgbHex(r: number, g: number, b: number): string {
   return '#' + enc(r) + enc(g) + enc(b);
 }
 
+/** The material is named for white (the `white` colour-word rule): white render or white trim, never grained stucco. */
+export const isWhiteWord = (name: string | undefined | null): boolean => /white|cream|ivory/.test(materialWord(name));
+
 /** Whether a value is a slot the look understands. */
 export const isMaterialSlot = (v: unknown): v is MaterialSlot => typeof v === 'string' && (MATERIAL_SLOTS as readonly string[]).includes(v);
