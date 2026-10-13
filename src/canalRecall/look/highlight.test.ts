@@ -195,19 +195,19 @@ test('default-frame marker layer: after the last 3D layer, so buildings streamed
   assert.equal(markerSlot(layers.slice(0, 3), 'highlight-marker'), -1, 'no 3D layer yet: stays');
 });
 
-test('small targets: full boost under 1 % of the frame, gone past 2 %; the beacon rises by the shortfall', () => {
+test('small targets: full boost under SMALL_TARGET_SHARE of the frame, gone past the fade share; the beacon rises by the shortfall', () => {
   assert.deepEqual(smallTargetBoost(0), { share: 0, weight: 0, shortfall: 0 }, 'no footprint: no boost');
   // The Oud-West terrace house from the chase camera (~0.2 % of the frame): full boost, most of the shortfall.
   const terrace = smallTargetBoost(0.002);
   assert.equal(terrace.weight, 1);
-  assert.ok(Math.abs(terrace.shortfall - 0.8) < 1e-9);
+  assert.ok(Math.abs(terrace.shortfall - (1 - 0.002 / SMALL_TARGET_SHARE)) < 1e-9);
   assert.equal(smallTargetBoost(SMALL_TARGET_SHARE).weight, 1);
   const mid = smallTargetBoost((SMALL_TARGET_SHARE + SMALL_TARGET_FADE_SHARE) / 2);
   assert.ok(Math.abs(mid.weight - 0.5) < 1e-9 && mid.shortfall === 0);
   assert.equal(smallTargetBoost(SMALL_TARGET_FADE_SHARE).weight, 0);
   assert.equal(smallTargetBoost(0.08).weight, 0, 'a church from the saddle: none');
   assert.equal(beaconRaise({ weight: 0, shortfall: 0 }), 1);
-  assert.equal(beaconRaise(smallTargetBoost(0.01)), 2);
+  assert.equal(beaconRaise(smallTargetBoost(SMALL_TARGET_SHARE)), 2);
   assert.ok(beaconRaise(terrace) > 2.7 && beaconRaise(terrace) <= 3);
   // Share of a 6 × 12 m house (r = √(72/π) ≈ 4.8 m) at ~27 px in a 1280 × 800 frame.
   assert.ok(Math.abs(footprintShare(27, 1280, 800) - 0.00224) < 1e-4);
