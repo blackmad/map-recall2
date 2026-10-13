@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { allotmentHouseTriangles, isAllotmentHouse } from '../src/canalRecall/allotmentHouses.ts';
+import { HUT_MAX_HEIGHT_M, HUT_ROOFS, HUT_WALLS, allotmentHouseTriangles, isAllotmentHouse } from '../src/canalRecall/allotmentHouses.ts';
 import { buildFeatureChunk, ORIGIN, type Feature } from '../src/canalRecall/threeBuildingFeatures.ts';
 
 const features: Feature[] = JSON.parse(readFileSync('artifacts/sloterdijkermeer-review/mapped-houses.geojson', 'utf8')).features;
@@ -10,13 +10,15 @@ const start = performance.now();
 for (const f of features) {
   assert.ok(isAllotmentHouse(f), 'native MultiPolygon is admitted');
   const full = allotmentHouseTriangles(f, ORIGIN), coarse = allotmentHouseTriangles(f, ORIGIN, true);
-  assert.ok(full.length > 20 && full.length <= 250, `${f.properties.id}: bounded visible house`);
-  assert.ok(coarse.some(t => t.hex === '#526b76'), 'coarse LOD retains glazing');
-  assert.ok(coarse.some(t => t.hex === '#3e4840'), 'coarse LOD retains an entrance');
-  assert.ok(full.some(t => t.hex === '#e6e1d2'), 'white trim survives');
+  assert.ok(full.length >= 6 && full.length <= 120, `${f.properties.id}: bounded low box`);
+  assert.ok(coarse.length > 0);
+  assert.ok(full.every(t => HUT_WALLS.includes(t.hex) || HUT_ROOFS.includes(t.hex)), 'a hut is a muted box: no glazing, door or trim colours');
+  const tops = new Set(full.filter(t => t.n[2] > .1).map(t => t.p.map(p => p[2].toFixed(3)).join()));
+  assert.equal(new Set(full.filter(t => t.n[2] > .1).flatMap(t => t.p.map(p => p[2].toFixed(3)))).size, 1, 'one flat roof deck, no ridge');
+  void tops;
   for (const t of full) {
     assert.ok(t.p.flat().every(Number.isFinite));
-    assert.ok(t.p.every(p => p[2] >= 0 && p[2] < 3.6), 'one-storey height envelope');
+    assert.ok(t.p.every(p => p[2] >= 0 && p[2] <= HUT_MAX_HEIGHT_M + 1e-6), 'low box: the deck is at most 2.5 m');
     const [a,b,c] = t.p, ab = b.map((v,k)=>v-a[k]), ac = c.map((v,k)=>v-a[k]);
     const n = [ab[1]*ac[2]-ab[2]*ac[1],ab[2]*ac[0]-ab[0]*ac[2],ab[0]*ac[1]-ab[1]*ac[0]];
     assert.ok(n.reduce((sum,v,k)=>sum+v*t.n[k],0)>0, 'triangle winding matches outward normal');

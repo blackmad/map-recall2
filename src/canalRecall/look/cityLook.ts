@@ -40,7 +40,7 @@
 import { CITY_BRICK_LIGHTNESS, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLOT_CELL, SLOT_TILE_M, cityTint, hexToRgb, hslToRgb, rgbToHex, rgbToHsl, type MaterialSlot, type SlotCell } from './palette.ts';
 import { inferMaterialSlot, isMaterialSlot, isWhiteWord, INFERRED_SLOT_SOURCE } from './materialSlotInference.ts';
 import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
-import { ROOF_LAYERS_OFF, ROOF_TIER_GLSL, roofTierUniform } from '../roofTier.ts';
+import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, roofTierUniform } from '../roofTier.ts';
 
 // ---------------------------------------------------------------------------
 // Flag
@@ -389,6 +389,7 @@ uniform float flatColour;
 uniform float cityFade;
 uniform float wallGain;
 ${ROOF_TIER_GLSL}
+${FACADE_TIER_GLSL}
 varying vec2 vFacUv;
 flat varying float vLayer;
 flat varying vec4 vSlot;
@@ -405,11 +406,13 @@ if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.5698
 const FRAGMENT_CELL = /* glsl */ `
 vec2 cityUv = vSlot.y > 0.5 ? clamp(vFacUv, 0.0, 1.0) : vFacUv;
 vec3 cityP = vec3(cityUv, vLayer);
-vec3 cityC = texture(cells, cityP).rgb;
-#ifndef CITY_SLOT
+vec3 cityC; vec2 cityM;
+#ifdef CITY_SLOT
+cityC = texture(cells, cityP).rgb; cityM = texture(masks, cityP).rg;
+#else
+cellTierSample(cityP, vFacDist, cityC, cityM);
 cityC = roofTierColour(cityC, cityUv, vLayer, vFacDist);
 #endif
-vec2 cityM = texture(masks, cityP).rg;
 float cityG = cityGrain(cityC);
 cityC *= mix(vec3(1.0), vTint, cityM.r) * mix(vec3(1.0), vAccent, cityM.g);`;
 
@@ -471,6 +474,7 @@ export type CityLookUniforms = {
   /** `[lo, hi)` layers of the pantile and slate cells of the chunk atlas (roofTier.ts); lo < 0 = off. Slot meshes never set it. */
   roofLayers: { value: number[] };
   roofTier: { value: number[] };
+  cellTier: { value: number[] };
   /** Unlit slot meshes: world → east/north/up for the baked shade (set per model in the legacy layers). */
   enuFromWorld: { value: any };
 };
@@ -487,6 +491,7 @@ export function createCityUniforms(THREE: any, init: Partial<CityLookUniforms> =
     wallGain: init.wallGain ?? { value: 1 },
     roofLayers: init.roofLayers ?? { value: ROOF_LAYERS_OFF },
     roofTier: init.roofTier ?? { value: roofTierUniform() },
+    cellTier: init.cellTier ?? { value: FACADE_TIER_OFF },
     enuFromWorld: init.enuFromWorld ?? { value: new THREE.Matrix3() },
   };
 }

@@ -18,7 +18,7 @@ import {buildTransportedEnvelopeChunk,diagnosticEnvelopeTransport,EMPTY_ENVELOPE
 
 import { CELL_LAYER_COUNT, CELL_PX, STYLE_DIMS, cellLayer, CELL_KINDS, CELL_VARIANTS, paintCell, paintFatihMasonryCell } from './facadeCells.js';
 import { ROOF_CELL_M, paintRoofLayers } from './roofCells.js';
-import { ROOF_LAYERS_OFF, ROOF_TIER_GLSL, roofTierUniform } from './roofTier.js';
+import { FACADE_TIER_GLSL, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, facadeTierUniform, roofTierUniform } from './roofTier.js';
 import { withMonumentGable } from './monumentGables.js';
 import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, FATIH_MASONRY_LAYER, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
@@ -95,6 +95,7 @@ uniform float bands;
 uniform float flatColour;
 uniform float cityFade;
 ${ROOF_TIER_GLSL}
+${FACADE_TIER_GLSL}
 in vec2 vUv;
 flat in float vLayer;
 in vec3 vTint;
@@ -108,8 +109,9 @@ void main() {
   if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;
   if (vHighlight > 0.5) { fragColor = vec4(vec3(1.0, 0.824, 0.122) * vShade, 1.0); return; }
   vec3 p = vec3(vUv, vLayer);
-  vec3 c = roofTierColour(texture(cells, p).rgb, vUv, vLayer, vDist);
-  vec2 m = texture(masks, p).rg;
+  vec3 c; vec2 m;
+  cellTierSample(p, vDist, c, m);
+  c = roofTierColour(c, vUv, vLayer, vDist);
   c *= mix(vec3(1.0), vTint, m.r) * mix(vec3(1.0), vAccent, m.g);
   if (flatColour > 0.5) c = vTint;
   float shade = bands > 0.5 ? floor(vShade * bands + 0.5) / bands : vShade;
@@ -1099,11 +1101,11 @@ export class ThreeBuildings {
       const variant = LOOK_VARIANTS[this.look];
       return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide }, createCityUniforms(THREE, {
         bands: { value: variant.shadeBands }, flatColour: { value: variant.flatColour ? 1 : 0 }, wallGain: { value: variant.litWallGain },
-        roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() },
+        roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform() },
       }));
     }
     if (this.lit) {
-      const material = createLitFacadeMaterial(THREE, { roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() } });
+      const material = createLitFacadeMaterial(THREE, { roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform() } });
       material.uniforms.bands.value = LOOK_VARIANTS[this.look].shadeBands;
       material.uniforms.flatColour.value = LOOK_VARIANTS[this.look].flatColour ? 1 : 0;
       if (material.uniforms.wallGain) material.uniforms.wallGain.value = LOOK_VARIANTS[this.look].litWallGain;
@@ -1111,7 +1113,7 @@ export class ThreeBuildings {
     }
     return new THREE.RawShaderMaterial({
       glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
-      uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: LOOK_VARIANTS[this.look].shadeBands }, flatColour: { value: LOOK_VARIANTS[this.look].flatColour ? 1 : 0 }, cityFade: { value: 1 }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() } }, side: THREE.FrontSide,
+      uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: LOOK_VARIANTS[this.look].shadeBands }, flatColour: { value: LOOK_VARIANTS[this.look].flatColour ? 1 : 0 }, cityFade: { value: 1 }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() }, cellTier: { value: facadeTierUniform() } }, side: THREE.FrontSide,
     });
   }
 
