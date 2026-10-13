@@ -469,7 +469,7 @@ export async function createBuildingTypes(deps: RuntimeDeps, instances: readonly
         mesh.name = `${layer.mesh.name}/${state}`;
         mesh.userData.slotToGlobal = [global];
         mesh.computeBoundingSphere(); mesh.computeBoundingBox();
-        if (state === 'highlight') attachHighlightPasses(THREE, mesh, {style});
+        if (state === 'highlight') attachHighlightPasses(THREE, mesh, {style, up: [0, 1, 0]}); // area frame: +y up
         group.add(mesh);
         copies.push({global, layer, mesh});
       }

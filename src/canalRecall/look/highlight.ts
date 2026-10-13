@@ -22,6 +22,12 @@
  * merged mesh (chunks, recipe tiles, instanced types) the pass keeps only `hidden == 2` vertices.
  *
  * The ring and beacon are one object for the whole page (`highlightMarker.ts`).
+ *
+ * Small targets (style a): when the lit building's footprint covers under ~1 % of the frame (an ordinary terrace
+ * house from the chase camera), the marker raises the beacon and publishes a boost (`smallTargetBoost`, on
+ * `window.__canalRecallHighlightBoost`); a third pass, the roof wash, paints the building's upward faces in the
+ * accent at up to `ROOF_WASH_ALPHA`. Both fade out as the footprint grows past ~2 %. Walls are never washed, so the
+ * facade stays the building's own from the saddle.
  */
 import { HIGHLIGHT_CORAL, HIGHLIGHT_YELLOW, HUD_ACCENT, hexToRgb, type RGB } from './palette.ts';
 
@@ -40,15 +46,17 @@ export interface HighlightRecipe {
   desaturate: boolean;
   ring: boolean;
   beacon: boolean;
+  /** Small-target roof wash (`smallTargetBoost`). */
+  wash: boolean;
   /** Needs a redraw every frame while shown (the pulse). */
   animated: boolean;
 }
 
 export const HIGHLIGHT_RECIPES: Readonly<Record<HighlightStyle, HighlightRecipe>> = {
-  yellow: { keepMaterials: false, outline: false, rim: false, desaturate: false, ring: false, beacon: false, animated: false },
-  a: { keepMaterials: true, outline: true, rim: false, desaturate: false, ring: true, beacon: true, animated: false },
-  b: { keepMaterials: true, outline: false, rim: true, desaturate: false, ring: true, beacon: false, animated: true },
-  c: { keepMaterials: true, outline: false, rim: false, desaturate: true, ring: true, beacon: false, animated: false },
+  yellow: { keepMaterials: false, outline: false, rim: false, desaturate: false, ring: false, beacon: false, wash: false, animated: false },
+  a: { keepMaterials: true, outline: true, rim: false, desaturate: false, ring: true, beacon: true, wash: true, animated: false },
+  b: { keepMaterials: true, outline: false, rim: true, desaturate: false, ring: true, beacon: false, wash: false, animated: true },
+  c: { keepMaterials: true, outline: false, rim: false, desaturate: true, ring: true, beacon: false, wash: false, animated: false },
 };
 
 export const HIGHLIGHT_STYLES: readonly HighlightStyle[] = ['yellow', 'a', 'b', 'c'];
@@ -71,6 +79,49 @@ export function outlineWidthPx(distanceM: number, nearPx = OUTLINE_PX, farPx = O
   const t = Math.min(1, Math.max(0, (distanceM - OUTLINE_NEAR_M) / (OUTLINE_FAR_M - OUTLINE_NEAR_M)));
   return nearPx + (farPx - nearPx) * (Number.isFinite(t) ? t : 0);
 }
+/**
+ * Small-target boost (style a). The chase sheets of 2026-10-13 found an ordinary 6 m terrace house at 213 m carrying
+ * 0.08 % accent pixels against 0.55 % under the old yellow: outline, ring and beacon are too thin for a footprint of
+ * ~0.2 % of the frame. Under `SMALL_TARGET_SHARE` of the frame the boost is full; it fades out (smoothstep) by
+ * `SMALL_TARGET_FADE_SHARE`. The share is the footprint's equivalent circle (radius √(area/π)) at its on-screen
+ * scale: π r_px² / frame area.
+ */
+export const SMALL_TARGET_SHARE = 0.01;
+export const SMALL_TARGET_FADE_SHARE = 0.02;
+/**
+ * Roof wash opacity at full boost (the accent over the roof's own colour, unlit). Measured at the Oud-West terrace
+ * (chase, default frame, dark slate roof; accent pixels = RGB distance < 60 of the coral): 0.55 → 0.13 %, 0.65 →
+ * 0.15 %, 0.70 → 0.22 %, 0.75 → 0.69 % of the frame. Below ~0.75 a dark roof reads as rust rather than the accent.
+ */
+export const ROOF_WASH_ALPHA = 0.75;
+/** Faces whose normal is at least this far up (cos of the slope from vertical: ~70° roofs and flatter) are roof. */
+export const ROOF_WASH_MIN_UP = 0.35;
+/** The page's current boost weight (0..1), written by the marker each frame and read by the roof-wash passes. */
+export const HIGHLIGHT_BOOST_GLOBAL = '__canalRecallHighlightBoost';
+
+/** Share of the frame covered by a footprint of `radiusPx` (equivalent circle) in a `width` × `height` frame. */
+export function footprintShare(radiusPx: number, width: number, height: number): number {
+  const area = width * height;
+  return area > 0 && Number.isFinite(radiusPx) && radiusPx > 0 ? (Math.PI * radiusPx * radiusPx) / area : 0;
+}
+
+/**
+ * The small-target boost at a footprint share: `weight` 1 at or under `SMALL_TARGET_SHARE`, 0 at or over
+ * `SMALL_TARGET_FADE_SHARE` (smoothstep between); `shortfall` how far under `SMALL_TARGET_SHARE` (0..1). An unknown
+ * share (0: no footprint, off screen) gives no boost.
+ */
+export function smallTargetBoost(share: number): { share: number; weight: number; shortfall: number } {
+  if (!(share > 0) || !Number.isFinite(share)) return { share: 0, weight: 0, shortfall: 0 };
+  const t = Math.min(1, Math.max(0, (share - SMALL_TARGET_SHARE) / (SMALL_TARGET_FADE_SHARE - SMALL_TARGET_SHARE)));
+  return { share, weight: 1 - t * t * (3 - 2 * t), shortfall: Math.min(1, Math.max(0, 1 - share / SMALL_TARGET_SHARE)) };
+}
+
+/** The boost weight the marker last published (0 when none). */
+export function currentBoostWeight(): number {
+  const v = Number((globalThis as any)[HIGHLIGHT_BOOST_GLOBAL]);
+  return Number.isFinite(v) ? Math.min(1, Math.max(0, v)) : 0;
+}
+
 /** The outline hull sits this far behind the surface along the view ray (mesh units: metres). */
 export const OUTLINE_PUSH_M = 0.3;
 /** Rim pulse period, seconds; the rim swings between 55 % and 100 % of `RIM_STRENGTH`. */
@@ -303,11 +354,20 @@ uniform vec3 hlAccent;
 uniform vec3 hlEye;
 uniform float hlTime;
 uniform float hlHasNormal;
+uniform vec3 hlUp;
+uniform float hlWash;
 varying vec3 vHlPos;
 varying vec3 vHlNormal;
 void main() {
-#ifdef HL_OUTLINE
+#if defined(HL_OUTLINE)
   gl_FragColor = vec4(hlAccent, 1.0);
+#elif defined(HL_ROOF)
+  // Roof wash: upward faces only (walls keep their own colours). Derived normals have no reliable sign: |up|.
+  vec3 n = hlHasNormal > 0.5 ? normalize(vHlNormal) : normalize(cross(dFdx(vHlPos), dFdy(vHlPos)));
+  float up = dot(n, hlUp);
+  if (hlHasNormal < 0.5) up = abs(up);
+  if (up < ${ROOF_WASH_MIN_UP.toFixed(2)} || hlWash <= 0.0) discard;
+  gl_FragColor = vec4(hlAccent, hlWash * smoothstep(${ROOF_WASH_MIN_UP.toFixed(2)}, ${(ROOF_WASH_MIN_UP + 0.15).toFixed(2)}, up));
 #else
   vec3 n = hlHasNormal > 0.5 ? normalize(vHlNormal) : normalize(cross(dFdx(vHlPos), dFdy(vHlPos)));
   vec3 v = normalize(hlEye - vHlPos);
@@ -317,7 +377,7 @@ void main() {
 #endif
 }`;
 
-export type PassKind = 'outline' | 'rim';
+export type PassKind = 'outline' | 'rim' | 'roof';
 /** A feature of a batched mesh (3D Tiles `_feature_id_N`): the float vertex attribute and the feature's id. */
 export interface FeatureSelector { attribute: string; id: number }
 
@@ -330,6 +390,12 @@ export interface PassOptions {
   centre?: readonly [number, number, number] | null;
   style?: HighlightStyle;
   accent?: string;
+  /**
+   * Up in the mesh's world space (after `matrixWorld`) when that world is in metres; a Mercator world (scale < 1e-3)
+   * is always +z up. Default +z (the three.js city, the marker); glTF worlds (landmark models in the default frame,
+   * building types) pass +y.
+   */
+  up?: readonly [number, number, number];
 }
 
 const PASS_TAG = 'canalRecallHighlightPass';
@@ -351,6 +417,7 @@ export function createHighlightPassMaterial(THREE: any, kind: PassKind, options:
   const defines: Record<string, string> = {};
   if (options.merged) defines.HL_MERGED = '';
   if (kind === 'outline') defines.HL_OUTLINE = '';
+  if (kind === 'roof') defines.HL_ROOF = '';
   let vertexShader = PASS_VERTEX;
   if (options.feature) {
     if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(options.feature.attribute)) throw new Error(`highlight: bad feature attribute ${options.feature.attribute}`);
@@ -370,6 +437,8 @@ export function createHighlightPassMaterial(THREE: any, kind: PassKind, options:
       hlTime: { value: 0 },
       hlHasNormal: { value: 1 },
       hlFeatureId: { value: options.feature?.id ?? 0 },
+      hlUp: { value: new THREE.Vector3(0, 0, 1) },
+      hlWash: { value: 0 },
     },
     vertexShader,
     fragmentShader: PASS_FRAGMENT,
@@ -380,9 +449,9 @@ export function createHighlightPassMaterial(THREE: any, kind: PassKind, options:
     // The outline keeps its pixels against anything drawn later behind it; the rim only adds light.
     depthWrite: kind === 'outline',
     blending: kind === 'rim' ? THREE.AdditiveBlending : THREE.NormalBlending,
-    polygonOffset: kind === 'rim',
+    polygonOffset: kind !== 'outline',
     polygonOffsetFactor: -1,
-    polygonOffsetUnits: -2,
+    polygonOffsetUnits: kind === 'roof' ? -4 : -2,
   });
   material.name = `highlight/${kind}${options.merged ? '/merged' : ''}`;
   material.userData = { [PASS_TAG]: true };
@@ -403,7 +472,9 @@ export function detachHighlightPasses(mesh: any): void {
 export function attachHighlightPasses(THREE: any, mesh: any, options: PassOptions = {}): any[] {
   detachHighlightPasses(mesh);
   const recipe = HIGHLIGHT_RECIPES[options.style ?? highlightStyle()];
-  const kinds: PassKind[] = [...(recipe.outline ? ['outline' as const] : []), ...(recipe.rim ? ['rim' as const] : [])];
+  // The roof wash needs a known up: not on a batched 3D Tiles feature (3DBAG detailed mode, frame unverified).
+  const kinds: PassKind[] = [...(recipe.outline ? ['outline' as const] : []), ...(recipe.rim ? ['rim' as const] : []),
+    ...(recipe.wash && !options.feature ? ['roof' as const] : [])];
   if (!kinds.length || !mesh?.geometry) return [];
   const geometry = mesh.geometry;
   let centre = options.centre;
@@ -414,7 +485,8 @@ export function attachHighlightPasses(THREE: any, mesh: any, options: PassOption
   }
   const hasNormal = geometry.getAttribute?.('normal') ? 1 : 0;
   const passes: any[] = [];
-  const mvp = new THREE.Matrix4(), eye = new THREE.Vector4(), size = new THREE.Vector2();
+  const mvp = new THREE.Matrix4(), eye = new THREE.Vector4(), size = new THREE.Vector2(), toMesh = new THREE.Matrix3(), scale = new THREE.Vector3();
+  const metreUp = options.up ?? [0, 0, 1];
   for (const kind of kinds) {
     const material = createHighlightPassMaterial(THREE, kind, { merged: options.merged, feature: options.feature, accent: options.accent ?? highlightAccent(options.style) });
     material.uniforms.hlCentre.value.set(centre[0], centre[1], centre[2]);
@@ -426,10 +498,22 @@ export function attachHighlightPasses(THREE: any, mesh: any, options: PassOption
     pass.castShadow = pass.receiveShadow = false;
     pass.renderOrder = (mesh.renderOrder ?? 0) + 1;
     pass.raycast = () => {};
+    if (kind === 'roof') {
+      // Drawn only while the marker publishes a boost: no draw call for a large building.
+      Object.defineProperty(pass, 'visible', { get: () => mesh.visible && currentBoostWeight() > 0.001, set: () => {}, configurable: true });
+    }
     pass.onBeforeRender = (renderer: any, _scene: any, camera: any) => {
       if (mesh.isInstancedMesh) pass.count = mesh.count;
-      pass.visible = mesh.visible;
+      if (kind !== 'roof') pass.visible = mesh.visible;
       const u = material.uniforms;
+      if (kind === 'roof') {
+        // Up in the pass's own space: N_world ∝ M⁻ᵀ n, so n · M⁻¹ up is the world up component.
+        toMesh.setFromMatrix4(pass.matrixWorld);
+        scale.setFromMatrixColumn(pass.matrixWorld, 0);
+        const up = scale.length() < 1e-3 ? [0, 0, 1] : metreUp;
+        u.hlUp.value.set(up[0], up[1], up[2]).applyMatrix3(toMesh.invert()).normalize();
+        u.hlWash.value = ROOF_WASH_ALPHA * currentBoostWeight();
+      }
       renderer.getDrawingBufferSize(size);
       u.hlViewport.value.copy(size);
       const css = renderer.domElement?.clientWidth || size.x;
@@ -514,6 +598,8 @@ export function applyMeshHighlight(THREE: any, root: any, state: 'plain' | 'high
   style?: HighlightStyle;
   /** City look's own variants (`CityLook.highlighted` / `dimmed`), for materials carrying `userData.cityLook`. */
   cityVariant?: (material: any, state: 'plain' | 'highlight' | 'dim') => any;
+  /** Up in a metre world (`PassOptions.up`): +y for glTF models drawn in their own frame. */
+  up?: readonly [number, number, number];
 } = {}): void {
   const style = options.style ?? highlightStyle();
   const meshes: any[] = [];
@@ -525,7 +611,7 @@ export function applyMeshHighlight(THREE: any, root: any, state: 'plain' | 'high
       return highlightMaterialFor(THREE, baseMaterialOf(m), state, style);
     };
     child.material = Array.isArray(child.material) ? child.material.map(swap) : swap(child.material);
-    if (state === 'highlight') attachHighlightPasses(THREE, child, { style });
+    if (state === 'highlight') attachHighlightPasses(THREE, child, { style, up: options.up });
     else detachHighlightPasses(child);
   }
 }

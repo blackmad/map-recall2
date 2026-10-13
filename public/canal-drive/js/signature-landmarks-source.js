@@ -352,7 +352,7 @@ export class SignatureLandmarks {
       if (entry.highlightState === state) continue;
       entry.highlightState = state;
       entry.highlighted = state === 'highlight';
-      applyMeshHighlight(THREE, entry.group, state, { cityVariant: (m, s) => city ? city.dimmed(m, s === 'dim') : m });
+      applyMeshHighlight(THREE, entry.group, state, { cityVariant: (m, s) => city ? city.dimmed(m, s === 'dim') : m, up: [0, 1, 0] }); // glTF: +y up
     }
     for (const area of Object.values(window.__canalRecallBuildingTypes || {})) area.setHighlighted?.(ids, focus);
     this.map.triggerRepaint();
