@@ -331,6 +331,101 @@ recipe's mesh with `large-mesh-golden.json` (fit-golden covers only the fit).
 The Entrepotdok wall is 156 m: at 12k triangles only its canal front and one
 rear panel get openings; the rest is blank (notes list what the photos show).
 
+### BAG tiles (`?bagTiles=1`): review and default-on recommendation (2026-10-13)
+
+State after the ground-default lane: **recommend default-on for desktop and
+phone**, with the integrator steps below. Nothing here changes `game.js`,
+`index.html` or the bundles.
+
+**The 15 "hidden bug" covers, decided** (`scripts/covers-review.json`; pands
+a model's footprint covers that its `suppressOsmIds` do not hide). The model
+footprint is a dilated GLB occupancy raster (about 4 m cells), so for a
+terrace-width pand a share under 0.8 (the `check:osm-under-models` standard)
+is a neighbour; a pand under 25 m2 with its centroid under the footprint is
+an appurtenance of the host. Top-down plots: `npx tsx
+scripts/review-covers-plots.ts`; in-game shots with and without the flag:
+`scripts/review-covers-shots.mjs` (the chase camera is too high to settle a
+10 m2 pand by eye; the footprint plots decided).
+
+| model | pand | m2 | share under footprint | decision |
+|---|---|---|---|---|
+| westerkerk x5 | 0363100012174225, 174226, 174404, 174405, 174406 | 10 each | 0.58-0.68 | hide: buttress pands on the south flank |
+| walloon-church | 0363100012178656 | 19 | 0.36 | hide: annex sliver on the church edge |
+| the-movies | 0363100012172951 | 67 | 0.73 | keep: terrace-width house beside the cinema, centroid outside |
+| delamar x2 | 0363100012168520, 0363100012169854 | 98, 79 | 0.62, 0.71 | keep: end houses of the curved rows |
+| kleine-komedie | 0363100012179634 | 108 | 0.62 | keep: frontage house beside the theatre |
+| he-hua-temple | 0363100012177925 | 63 | 0.47 | keep: corner house |
+| oude-kerk | 0363100012178473 | 108 | 0.20 | keep: curved building on the square |
+| hortus-greenhouses | 0363100012247448 | 41 | 0.46 | keep: separate shed |
+| rijksmuseum | 0363100012241554 | 576 | 0.47 | keep: a missing building is worse than a doubled one |
+| sexmuseum-venustempel | 0363100012253755 | 186 | 0.27 | keep: long neighbour strip |
+
+`build-covers.ts` leaves 'keep' pands out of `covers.json`; `check-covers`
+counts 'hide' pands as reviewed and `--strict` fails only for a footprint-only
+pand with no decision (so a future install that covers a neighbour must be
+judged). Result: 0 hidden bugs, 6 reviewed hides, 574 model-pand links.
+
+**Stale ids and the 5 missing instance pands.** 109 stale `suppressOsmIds`
+removed (105 in `manualCatalogue.json` / `manualModels.ts`, 4 hospital-survey
+ids of `olvg-west` filtered in `manualModels.ts`); `check-covers` now reports
+0 stale. The 5 Nieuw-West building-type pands (area nwc8, garage blocks) were never missing from 3DBAG: `build-lod1-city`
+lets a hand-mapped OSM way stand in for a pand (tier 2), so the tile carried
+`w274854743` etc. and `NL.IMBAG.Pand.<pand>` named nothing; the OSM
+stand-in extrusion was not suppressed under the garage GLB, by id (flag on
+and off; not checked by eye).
+`scripts/reconcile-building-type-pands.ts` re-keys each stand-in to its pand
+id (footprint share 1.00 against the 3DBAG outline, old id kept in `osm`),
+patched in tile 14/8412/5384 of both `bag-tiles` and `building-tiles`;
+**re-run it after `npm run build:bag-tiles`** (the base tiles are patched too,
+so a rebuild keeps it, but the script is the audit trail). `check-covers`: 0
+stale, `check:osm-under-models`: 0 unsuppressed, 0 without footprint (was 5).
+
+**Desktop ride-perf** (`scripts/ride-perf-fixed-route.mjs`, 15 s chase ride,
+Anne Frank to Rijksmuseum, 2 runs; `scripts/ride-perf-places.mjs` at a place,
+10 s, 1 run; headless Chrome 1440x900, no throttle; the machine was shared
+with other lanes, so read differences under about 1 ms as noise). Frame
+median is pinned to the display cadence (33.3 or 16.7 ms) in every row: all
+four configurations make frame rate; the discriminating columns are map
+render and three.js CPU.
+
+| place | flags | runs | frame median / p95 ms | frames >50 ms | map render median / p95 ms | three.js ms per frame | draw calls | JS heap MB | own-ground triangles |
+|---|---|---|---|---|---|---|---|---|---|
+| canal-belt route | none | 2 | 33.3 / 33.4 | 0, 0 | 2.7 / 4.1 | 1.04 | 427 | 961 | - |
+| canal-belt route | ownGround | 2 | 33.3 / 33.4 | 0, 0 | 2.5 / 3.1 | 1.29 | 423 | 921 | 1.39 M, 65.5 MB |
+| canal-belt route | bagTiles | 2 | 33.3 / 33.4 | 0, 0 | 2.2 / 2.5 | 0.82 | 427 | 962 | - |
+| canal-belt route | both | 2 | 33.3 / 33.4 | 0, 0 | 2.8 / 3.2 | 1.41 | 423 | 914 | 1.39 M, 65.5 MB |
+| BRU0166 | none | 1 | 33.3 / 33.4 | 0 | 2.9 / 3.4 | 0.90 | 522 | 645 | - |
+| BRU0166 | ownGround | 1 | 33.3 / 33.4 | 2 | 3.3 / 5.1 | 1.88 | 452 | 1190 | 1.41 M, 64 MB |
+| BRU0166 | bagTiles | 1 | 33.3 / 33.4 | 3 | 4.7 / 8.7 | 1.72 | 524 | 842 | - |
+| BRU0166 | both | 1 | 33.3 / 33.4 | 3 | 4.5 / 7.5 | 2.61 | 451 | 1242 | 1.41 M, 64 MB |
+| BRU0044 | none | 1 | 33.3 / 33.4 | 2 | 3.9 / 5.7 | 1.51 | 445 | 1134 | - |
+| BRU0044 | ownGround | 1 | 33.3 / 33.4 | 3 | 5.6 / 11.7 | 3.51 | 441 | 944 | 0.83 M, 39 MB |
+| BRU0044 | bagTiles | 1 | 33.3 / 33.4 | 6 | 4.5 / 9.6 | 2.15 | 437 | 547 | - |
+| BRU0044 | both | 1 | 33.3 / 33.4 | 5 | 8.3 / 12.6 | 5.12 | 426 | 1260 | 0.83 M, 39 MB |
+| BRU0067 | none | 1 | 33.3 / 33.4 | 0 | 3.5 / 6.5 | 1.67 | 366 | 740 | - |
+| BRU0067 | ownGround | 1 | 33.3 / 33.4 | 1 | 6.2 / 10.2 | 3.87 | 380 | 737 | 1.30 M, 60.7 MB |
+| BRU0067 | bagTiles | 1 | 33.3 / 33.4 | 0 | 4.3 / 7.9 | 2.11 | 378 | 795 | - |
+| BRU0067 | both | 1 | 16.7 / 16.7 | 0 | 2.4 / 2.7 | 1.27 | 368 | 978 | 1.30 M, 60.7 MB |
+| NieuwWest | none | 1 | 16.7 / 16.8 | 2 | 3.1 / 4.9 | 1.04 | 405 | 1064 | - |
+| NieuwWest | ownGround | 1 | 16.7 / 16.7 | 1 | 3.5 / 5.7 | 1.82 | 432 | 1134 | 1.26 M, 51 MB |
+| NieuwWest | bagTiles | 1 | 16.7 / 16.8 | 1 | 2.4 / 3.0 | 0.85 | 399 | 1083 | - |
+| NieuwWest | both | 1 | 16.7 / 16.7 | 1 | 3.5 / 3.9 | 1.64 | 424 | 969 | 1.26 M, 51 MB |
+
+Reading: `?bagTiles=1` is neutral on the ride (map render 2.2 vs 2.7 ms,
+three.js 0.82 vs 1.04 ms, same draw calls, same heap) and within noise at the
+three bridge places; Nieuw-West 2.4 vs 3.1 ms. `tests/e2e/bag-tiles.spec.ts` passes alone (twice); it failed once when run
+together with the own-ground specs on the loaded machine and passed again
+alone, so treat it as load-sensitive.
+
+**Recommendation.** Flip `?bagTiles=1` to the default: perf-neutral to
+slightly better, `check:covers --strict` passes, covers.json is 86 KB raw next to the 17.9 MB gz tiles, and it
+suppresses the 5 garage-block stand-ins. Steps for the integrator: rebuild the bundles generated from
+the catalogue (`signature-placement`, `game-landmarks`, `route-selection`,
+`own-ground` etc. still contain the pruned ids, and
+`public/canal-drive/models/signature-landmarks.json`), keep the legacy
+fallback for a missing `covers.json`, run `npm run check:canal`. Do not flip
+before the bundles are rebuilt. iPhone measurement is still pending.
+
 ### Known gaps
 
 - Curved fronts (De Balie's bow, the IISG's curve) are straight in 3DBAG.

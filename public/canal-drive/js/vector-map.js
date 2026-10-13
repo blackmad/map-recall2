@@ -2061,7 +2061,10 @@ class VectorBasemap {
     const layers = this.map.getStyle().layers || [];
     const targets = [];
     for (const layer of layers) {
-      if ((layer.type === 'fill' || layer.type === 'line') && OWN_GROUND_HIDDEN_SOURCE_LAYERS.includes(layer['source-layer'])) targets.push(layer);
+      // The basemap's fills stay visible (2026-10-13): the own ground draws over them where its cells are resident, and beyond the
+      // resident ring (or until the next cells load) they are the ground instead of bare white. `__canalRecallHideBasemapFills = true`
+      // restores the old behaviour for A/B (measured on the fixed route, 2 runs each: map render 3.5/2.2 ms hidden vs 3.9/2.4 ms visible, about +30 draw calls, no long frames).
+      if ((layer.type === 'fill' || layer.type === 'line') && OWN_GROUND_HIDDEN_SOURCE_LAYERS.includes(layer['source-layer'])) { if (typeof window !== 'undefined' && window.__canalRecallHideBasemapFills) targets.push(layer); }
       else if (OWN_GROUND_HIDDEN_OVERLAYS.includes(layer.id)) targets.push(layer);
     }
     this._ownGroundSaved = this._ownGroundSaved || new Map();
