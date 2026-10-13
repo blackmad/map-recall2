@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+## GLB cleanup batch 2: 20 of the 21 newly failing models pass the hard opening gates (2026-10-13)
+
+Lane `glb/cleanup-batch2-20261013` (Sonnet). Builder fixes: stadhuis z-fight
+288 → 14 m²; nieuwe-kerk buried 27 → 5; allard-pierson panes 7 cm proud of
+the frame; cinecenter lettering moved to the ground-floor wall; straat-museum
+murals layered and loading-portal windows skipped; krasnapolsky Dam front
+split into three double-window bays plus the entrance group; madame-tussauds
+slate cap closes the cut east hip (largest loop 33.8 → 20.2 m);
+rai-amsterdam closed ribs, canopy, rim and concourse roof (103 loops → 0);
+centraal-station roof sheets closed with undersides and skirts (376 loops,
+802 m → 0); obrechtkerk 43,043 → 24,219 tris (optional `segments` on
+`archSlab`/`archBand`/`ringSlab`, `seg` on `win`, defaults unchanged);
+american-hotel `b.mark('shell')`, end column, bronze doorway, 504 → 486 KB;
+hilton `keepLiftOverhang`. Snap-only fixes (`SNAP_OPENING_IDS`, per-model
+`SNAP_OPTS`): heineken-experience, jewish-museum, dutch-resistance-museum,
+fire-station-hendrik, fire-station-zebra, this-is-holland, posthoornkerk,
+oudemanhuispoort. waag and scheepvaartmuseum rebuilt with material slots and
+given first baseline entries. Baselines merged min(old, new), never raised.
+New tools: `thicken-sheet.ts`, `list-holes.ts`, `list-boundary-edges.ts`,
+`TRIACCT=1` triangle accounting in `build-manual-landmarks.ts`;
+`glbQuality.holes.details` returns 60 loops. Still failing, no regression:
+haparandaweg-2-4, petrus-en-paulus-kerk, booking-hq (held). Integrator
+regenerated the manifests for 25 ids, rebuilt 25 lod1 models, the signature
+bundle and covers; `check:canal` 154/154.
+
+
 ## Large tier, second customers: Kattenburg quadrangle and Heinekenplein block; courtyard footprints, sealed slivers, closed boxes (2026-10-13)
 
 Lane `lane/dominant-large-20261013` (Sonnet) after the elevation-skeleton
