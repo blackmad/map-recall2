@@ -915,9 +915,9 @@
    "window-misaligned": 0
   },
   "felix-meritis": {
-   "opening-floating": 12,
-   "opening-floating-fail": 12,
-   "opening-overhang": 2,
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
+   "opening-overhang": 0,
    "opening-overhang-fail": 0,
    "opening-buried": 0,
    "zfight-m2": 0,
