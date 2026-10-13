@@ -75,6 +75,33 @@ shade-side **65–75**. Shade sides are ~35 % darker than the legacy baked look
 (96–123): that contrast is the sun reading as a time of day, not a bug, but
 any change to sky intensity must be checked against this table.
 
+### City look (`?cityLook=1`, `look/cityLook.ts`)
+
+One texture array and one shader for every building mesh: the bay cells
+followed by the slot table (brick, stucco, stone, white, door, glass, pantile,
+slate, flat roof), attributes `layer, tint, accent, hidden`, unlit (baked
+shade) and lit (Lambert under the rig) variants. Recipe houses, building types
+and landmarks go through it; the 310 legacy landmark GLBs take the slot their
+material name says (`look/materialSlotInference.ts`; colour words such as
+`white`, `dark`, `red`, `ochre` are listed as ambiguous by
+`scripts/landmarks/infer-material-slots.ts`). Slot tints pass through
+`cityTint` (so a mid-grey `#808080` brick lands at the city's lifted brick).
+Measured 2026-10-13 (`tests/e2e/building-look.spec.ts`, tolerance **6 %**),
+mean sRGB luma of the same `#808080` brick slot:
+
+| wall | generic | recipe | landmark | spread | unlit (default frame) spread |
+|---|---|---|---|---|---|
+| south (sun) | 117.2 | 117.3 | 117.3 | 0.14 % | 0.04 % |
+| west | 107.3 | 107.5 | 107.5 | 0.14 % | 0.13 % |
+| north / east | 78.3 | 78.4 | 78.4 | 0.14 % | 0.23 % / 0.15 % |
+
+Flag on, slot materials follow the Building look (cartoon bands, untextured
+flat colour) and the active landmark highlights in the facade answer yellow.
+Cost (ride-perf fixed route, 2026-10-13): no frame-time or draw-call change on
+desktop or iPhone 4x; texture memory +4.5 MB desktop (slot layers at 256²:
+appended to the facade array in the shared frame, a separate slot-only array in
+the legacy layers), +1.1 MB on touch (128²).
+
 ## Outlines
 
 - Photo, procedural, untextured: **no outlines**.
