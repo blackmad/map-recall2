@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## Integrator pass after the nine merges (2026-10-13, evening)
+
+- **One flat-roof table**: `FLAT_ROOF_TONES` now derives from
+  `ROOF_SLOT_TONES` (gravel `#9e9281`, bitumen-dark `#56585e`, bitumen-light
+  `#a99b84` moved into the slot table inside their luma bands; membrane takes
+  the slot's `#d9d9d3`), so a measured and an unmeasured gravel roof match.
+- **Landmark LOD** switch 45/30 → 30/20 px of footprint radius: in the chase
+  view a 15 m house is ~31 px, so every landmark along the route is full-res
+  (user: "LOD cutoff is too low"); lod1 stays for aerial views.
+- **Westerkerk**: four pands nestled in the church (two annex houses, two
+  sheds) suppressed; covers rebuilt.
+- **Labels** keep off the arrival card and the utility corner.
+- **Dormer gable caps** 4 cm off the dormer roof (were 1.5 cm; the new
+  z-fight metric caught them in the block-face test); tile golden updated.
+- **Hosting**: deploys recovered at ~19:45 without a prune; the prune script
+  found nothing left to delete afterwards.
+- **Orthophoto cache** (64,937 PDOK tiles, 822 MB, CC BY 4.0) committed to the
+  source archive (`datasets/luchtfoto-20261013`).
+- npm scripts `test:roofs`, `check:roof-attachment`, `check:garden-sheds`.
+
+
 ## Map Recall quiz: wave 2, the review's longlist (2026-10-13)
 
 Three lanes off main 4c46645d, merged on `map-recall/integrate-w2-20261013`.
