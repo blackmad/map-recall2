@@ -10,7 +10,8 @@
 //
 // Per frame (MapLibre `render`): project the chosen labels and move them.
 // Four times a second: rebuild the candidate set's screen positions, test the
-// best of them for occlusion against the picked building surfaces, and plan.
+// best of them for occlusion against the picked building surfaces (a few
+// picks per frame, OCCLUSION_BUDGET_MS), and plan when the last is in.
 
 import { HEIGHT_BAND_METRES, type HeightBand } from '../poiCatalog';
 import { buildSpoilerIndex, POI_ROOF_HEIGHT_METRES, type SpoilerIndex } from '../orientationPois';
@@ -34,6 +35,21 @@ const OCCLUSION_TESTS = 40;
 const OWN_SURFACE_M = 15;
 /** Two consecutive verdicts before a label changes occlusion state (hysteresis). */
 const OCCLUSION_HOLD = 2;
+/**
+ * Main-thread time the occlusion ray picks may take per frame. A plan's 40
+ * picks cost 25-35 ms at once on desktop (an aerial hold at 300 m, 2026-10-13:
+ * every plan was a 42-45 ms frame, four a second), so they run a few per
+ * frame and the plan finishes when the last verdict is in (typically 2-8
+ * frames later, well inside the 250 ms plan interval).
+ */
+const OCCLUSION_BUDGET_MS = 3;
+
+type ScreenEntry = ScreenCandidate & { ndcZ: number; w: number };
+/** A plan in progress: candidates on screen, the ones to pick for occlusion, and how far it got. */
+interface PlanJob {
+  game: GameLike; rules: LabelRules; cameraHeightM: number; width: number; height: number;
+  screen: ScreenEntry[]; tests: number[]; next: number; occluded: number;
+}
 
 type AnyMap = any;
 type VectorMapLike = any;
@@ -136,6 +152,7 @@ export class LabelOverlay {
   private drawn = new Map<string, number>();
   private occlusion = new Map<string, { occluded: boolean; votes: number }>();
   private lastPlan = 0;
+  private job: PlanJob | null = null;
   private placeWarned = false;
   private hiddenName = '';
   private hiddenIndex: SpoilerIndex | null = null;
@@ -186,10 +203,14 @@ export class LabelOverlay {
     if (!map || !styleReady(map)) return;
     this.hideReplacedLayers(map);
     const now = performance.now();
-    if (now - this.lastPlan >= PLAN_INTERVAL_MS) {
+    if (!this.job && now - this.lastPlan >= PLAN_INTERVAL_MS) {
       this.lastPlan = now;
       this.fit(map.getContainer());
-      try { this.plan(map); } catch (error) { console.warn('labels: plan failed', error); }
+      try { this.job = this.startPlan(map); } catch (error) { this.job = null; console.warn('labels: plan failed', error); }
+    }
+    if (this.job) {
+      try { if (this.stepPlan(map, this.job)) { const job = this.job; this.job = null; this.finishPlan(map, job); } }
+      catch (error) { this.job = null; console.warn('labels: plan failed', error); }
     }
     try { this.place(map); } catch (error) { if (!this.placeWarned) { this.placeWarned = true; console.warn('labels: place failed', error); } }
   }
@@ -382,11 +403,12 @@ export class LabelOverlay {
     return el;
   }
 
-  private plan(map: AnyMap): void {
+  /** Screen and rule pass for every candidate; queues the best few for occlusion picks. */
+  private startPlan(map: AnyMap): PlanJob | null {
     const game = this.game();
     this.rebuildCandidates(game);
     const project = this.projector(map);
-    if (!project) return;
+    if (!project) return null;
     const canvas = map.getCanvas() as HTMLCanvasElement;
     const width = canvas.clientWidth, height = canvas.clientHeight;
     const rules = this.rules(game);
@@ -400,7 +422,7 @@ export class LabelOverlay {
     }
     const mPerLng = 111320 * Math.cos((rider?.[1] ?? 52.37) * Math.PI / 180);
     // Cheap screen and rule pass first; occlusion (ray picks) only for the best few.
-    const screen: (ScreenCandidate & { ndcZ: number; w: number })[] = [];
+    const screen: ScreenEntry[] = [];
     for (const c of this.candidates) {
       const riderDistM = rider ? Math.hypot((c.lng - rider[0]) * mPerLng, (c.lat - rider[1]) * 111320) : Infinity;
       if (c.cls === 'venue' && riderDistM > VENUE_RADIUS_M) continue;
@@ -413,22 +435,41 @@ export class LabelOverlay {
     }
     const order = screen.map((c, i) => ({ i, score: labelPriority(c, c.distM) + (this.drawn.has(c.id) ? 150 : 0) }))
       .sort((a, b) => b.score - a.score);
+    return { game, rules, cameraHeightM, width, height, screen, tests: order.slice(0, OCCLUSION_TESTS).map(o => o.i), next: 0, occluded: 0 };
+  }
+
+  /**
+   * Occlusion picks within this frame's budget (at least one per frame), each
+   * against the current camera: the anchor is re-projected, so a pick a few
+   * frames after the plan started still aims at the label. True when all are done.
+   */
+  private stepPlan(map: AnyMap, job: PlanJob): boolean {
+    if (job.next >= job.tests.length) return true;
+    const project = this.projector(map);
+    if (!project) return false;
     const cameraAt = map.transform?.getCameraLngLat?.();
     const camera: [number, number] = cameraAt ? [cameraAt.lng, cameraAt.lat] : [map.getCenter().lng, map.getCenter().lat];
-    let occludedCount = 0;
-    for (const { i } of order.slice(0, OCCLUSION_TESTS)) {
-      const c = screen[i];
-      const now = this.occludedNow(c, { x: c.x, y: c.y, ndcZ: c.ndcZ, w: c.w, distM: c.distM, behind: false }, width, height, camera);
+    const deadline = performance.now() + OCCLUSION_BUDGET_MS;
+    do {
+      const c = job.screen[job.tests[job.next++]];
+      const p = project(c.lng, c.lat, c.heightM);
+      const now = !p.behind && this.occludedNow(c, p, job.width, job.height, camera);
       const state = this.occlusion.get(c.id) ?? { occluded: now, votes: OCCLUSION_HOLD };
       state.votes = now === state.occluded ? OCCLUSION_HOLD : state.votes - 1;
       if (state.votes <= 0) { state.occluded = now; state.votes = OCCLUSION_HOLD; }
       this.occlusion.set(c.id, state);
       c.occluded = state.occluded;
-      if (c.occluded) occludedCount++;
-    }
+      if (c.occluded) job.occluded++;
+    } while (job.next < job.tests.length && performance.now() < deadline);
+    return job.next >= job.tests.length;
+  }
+
+  /** Measure, plan against the HUD and swap the drawn set. */
+  private finishPlan(map: AnyMap, job: PlanJob): void {
+    const { game, rules, cameraHeightM, width, height, screen } = job;
+    const canvas = map.getCanvas() as HTMLCanvasElement;
     // Untested candidates rank below the tested ones; treat them as hidden rather than guess.
-    const tested = new Set(order.slice(0, OCCLUSION_TESTS).map(o => o.i));
-    const pool = screen.filter((_, i) => tested.has(i));
+    const pool = job.tests.map(i => screen[i]);
     for (const c of pool) Object.assign(c, this.size(c));
     const plan = planLabels({
       candidates: pool, rules, cameraHeightM, viewport: { width, height },
@@ -441,7 +482,7 @@ export class LabelOverlay {
       if (this.drawn.has(id) || previous.has(id)) continue;
       el.remove(); this.elements.delete(id); this.sizes.delete(id);
     }
-    this.stats = { candidates: this.candidates.length, inView: screen.length, occluded: occludedCount, drawn: plan.length, budget: labelBudget(cameraHeightM, width * height) };
+    this.stats = { candidates: this.candidates.length, inView: screen.length, occluded: job.occluded, drawn: plan.length, budget: labelBudget(cameraHeightM, width * height) };
   }
 
   /** Every frame: follow the camera; fade in the planned labels, fade out the rest. */
