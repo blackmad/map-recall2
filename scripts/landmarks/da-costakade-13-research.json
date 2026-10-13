@@ -1,0 +1,49 @@
+{
+  "id": "da-costakade-13",
+  "status": "ready-pending-integrator-blind-count",
+  "identity": {
+    "bagPandId": "0363100012166570",
+    "verblijfsobject": "0363010000613126 (Da Costakade 13-H, 1052SE)",
+    "bouwjaar": 1904,
+    "bag": "BAG API 2026-10-13: pand in gebruik, oorspronkelijkBouwjaar 1904, ligging 'Kopgebouw', typeWoonobject 'Meerdere woningen'; 5 verblijfsobjecten, all woonfunctie (13-H, 13-1, 13-2 x2, 13-3).",
+    "3dbag": "b3_bouwlagen 5, maaiveld 0.58 m NAP, roof min 14.51 / max 17.84 / nok 17.72 m NAP (eaves ~13.9 m, ridge ~17.3 m above ground), dak_type slanted, ground area 88.85 m2.",
+    "monument": "Not listed: Amsterdam monumenten API (rijks- and gemeentelijke monumenten) has no record for this pand (filter verified on a known monument pand).",
+    "policy": "User-requested landmark. English POI card limited to BAG/3DBAG/register facts and what the panoramas show; no history invented.",
+    "currentDrawing": "Before this model the pand was drawn only by the city layer (city-appearance tiles; c19 brick with a perimeter roof, see scripts/check-roof-shapes.ts). Not in any block face (scripts/block-face) or street chunk (chunks.json). suppressOsmIds removes it from the city layer; check:osm-under-models reports 0 unsuppressed OSM buildings.",
+    "notDuplicate": "Pand id and name absent from manualCatalogue.json, manual-poi-data.json, chunks.json and block faces before this change; it appears only in wall-colour review data (review-data/wall-colour/part-root-da-costakade-13.json, corrected brick #6d5e55)."
+  },
+  "sources": [
+    {"url": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000613126/?_format=json", "kind": "BAG verblijfsobject", "retrievedOn": "2026-10-13", "licence": "CC0 (BAG)"},
+    {"url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012166570/?_format=json", "kind": "BAG pand", "retrievedOn": "2026-10-13", "licence": "CC0 (BAG)"},
+    {"url": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012166570&_pageSize=500&_format=json", "kind": "BAG verblijfsobjecten in the pand", "retrievedOn": "2026-10-13", "licence": "CC0 (BAG)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012166570", "kind": "3DBAG LoD2.2 (footprint and heights only; roof modelled from intent)", "retrievedOn": "2026-10-13", "licence": "CC BY 4.0 (3DBAG)"},
+    {"url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/?betreftBagPand.identificatie=0363100012166570&_format=json", "kind": "monument register query (empty)", "retrievedOn": "2026-10-13", "licence": "CC0"},
+    {"url": "https://archief.amsterdam/beeldbank/?q=Da%20Costakade%2013", "kind": "Beeldbank search attempted, HTTP 403 to the fetcher; no record inspected", "retrievedOn": "2026-10-13"},
+    {"file": "artifacts/landmark-lanes/da-costakade-13/ref-north-far-2021.jpg", "kind": "full north front across the Singelgracht, panorama TMX7316010203-002055_pano_0000_000390 (2021-03-22), heading 177, pitch 14", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/da-costakade-13/ref-north-mid-2021.jpg", "kind": "north front, TMX7316010203-001967_pano_0000_001111 (2021-01-18)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/da-costakade-13/ref-north-gable-2020.jpg", "kind": "gabled section close, TMX7316010203-001702_pano_0000_005145 (2020-05-11), colour samples", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/da-costakade-13/ref-north-entrance-2020.jpg", "kind": "entrance section and door, TMX7316010203-001702_pano_0000_005142 (2020-05-11)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/da-costakade-13/ref-north-gable-2024.jpg", "kind": "gabled section during the 2024 redevelopment hoarding, b_20241211_0838_Track65_Sphere_00013 (2024-12-11)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/da-costakade-13/ref-north-entrance-2024.jpg", "kind": "entrance, b_20241211_0838_Track65_Sphere_00016 (2024-12-11)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"},
+    {"file": "artifacts/landmark-lanes/da-costakade-13/ref-northeast-2024.jpg", "kind": "NE end wall over the garden, b_20241211_0838_Track65_Sphere_00010 (2024-12-11)", "licence": "Gemeente Amsterdam panoramas, CC BY 4.0"}
+  ],
+  "rhythmSpec": {
+    "wall0 (NNW, 4.9 m, gabled section)": "2 identical bays, mirror-symmetric about the gable axis. Ground: 1 tall segmental-headed window per bay between stepped brick corbels. Floors 1-3: 1 segmental-headed French window per bay on its own stone balcony (black railing) carried by stepped corbels. Attic: 1 three-light segmental window centred in a pointed brick gable with stone coping and finial.",
+    "wall1 (NW, 5.6 m, entrance section)": "2 axes: wide segmental window (bend side) + pair of narrow round-headed windows (party-wall side) on floors 1-3; ground: window under the wide axis, red double door with glazed upper panels and fanlight in a round stone arch under the pair. Painted eaves cornice; slate mansard with one three-light dormer over the wide axis.",
+    "both street walls": "green glazed-brick hood over every opening, green glazed band at sill level on wall 1, grey stone plinth.",
+    "NE end wall (7.6 m)": "blank brick under the cornice (ivy in every capture), mansard hip above.",
+    "roof": "slate mansard on all free walls (eaves 14.0 m, flat top 16.4 m per 3DBAG) plus the gable's saddle roof (ridge 17.4 m per 3DBAG) running back from wall 0, hipped into the mansard.",
+    "colour": "brick sampled from ref-north-gable-2020.jpg (lit #5f4e45-#68564d) and the wall-colour review (#6d5e55); override lifted to #9a7666 so the in-game shaded north face reads ~#50433d, close to the photo."
+  },
+  "faces": {
+    "wall0, wall1, NE end": "evidence: panoramas above.",
+    "SE courtyard wall": "INFERRED: no photograph; two sash windows per storey and a balcony stack at the east end (its edge shows in ref-north-far-2021.jpg / ref-northeast-2024.jpg).",
+    "SW party wall": "party wall with the 1904 neighbour (pand 0363100012152665), plain brick."
+  },
+  "caveats": [
+    "Ivy and wisteria that cover much of the NE wall and the gabled section are not modelled.",
+    "The dormer count on wall 1 is read from distant, tree-obscured views (one wide dormer seen); a second smaller one cannot be ruled out.",
+    "The 2024 redevelopment (hoarding: 4 apartments) may have changed the roof or rear; the newest full-height photographs are from 2021.",
+    "No chimney modelled; 3DBAG has a high point (18.3 m NAP-relative) near the west party wall that may be a chimney on the party wall."
+  ]
+}
