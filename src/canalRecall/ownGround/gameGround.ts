@@ -21,6 +21,7 @@ import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type Rect } from './grou
 import { GROUND_LAYERS, type BuiltCell, type GroundLayer, type PackedMesh } from './groundCell.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
+import { residentRadius } from './residency.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
@@ -37,6 +38,8 @@ export interface OwnGroundOptions {
   workerUrl: string;
   /** Resident radius from the rider to a cell's nearest edge, metres. */
   radiusM?: number;
+  /** Largest resident radius from the air (zoomed out), metres: the radius grows from `radiusM` as the zoom falls below residency.ts AERIAL_ZOOM. */
+  aerialRadiusM?: number;
   /** LOD 0 within this distance of a cell's nearest edge. */
   nearM?: number;
   /** Below this map zoom the ground is not drawn (overview, minimap: flat cartography). */
@@ -48,6 +51,7 @@ type LngLat = [number, number];
 interface Resident { key: string; lod: 0 | 1; group: any; materials: any[]; textures: any[]; triangles: number; bytes: number; maskInfo: { x0: number; y0: number; res: number } | null }
 
 const RADIUS_M = 1400;
+const AERIAL_RADIUS_M = 2600;
 const NEAR_M = 350;
 const RESIDENCY_STEP_M = 60;
 
@@ -82,6 +86,8 @@ export class OwnGround {
   private centre: Vec2 | null = null;
   private residencyAt: Vec2 | null = null;
   private zoom = 0;
+  /** Current resident radius: `opts.radiusM`, grown from the air. */
+  private radiusM = RADIUS_M;
   private unregister: (() => void) | null = null;
   private basemapHidden = false;
   /** clip ← local of the last main pass (for lifting canvas overlays onto the surface). */
@@ -100,7 +106,8 @@ export class OwnGround {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, nearM: NEAR_M, minZoom: 15, ...options };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, nearM: NEAR_M, minZoom: 15, ...options };
+    this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
     this.store = new GroundStore(httpFetchBytes(''));
@@ -157,6 +164,8 @@ export class OwnGround {
   update(lngLat: LngLat, zoom: number): void {
     this.zoom = zoom;
     this.centre = toLocal(lngLat[0], lngLat[1]);
+    const radius = residentRadius(zoom, this.opts.radiusM, this.opts.aerialRadiusM, this.opts.minZoom);
+    if (radius !== this.radiusM) { this.radiusM = radius; this.residencyAt = null; }
     if (!this.ready) return;
     if (!this.residencyAt || Math.hypot(this.centre[0] - this.residencyAt[0], this.centre[1] - this.residencyAt[1]) >= RESIDENCY_STEP_M) this.updateResidency();
   }
@@ -204,7 +213,7 @@ export class OwnGround {
   /** Cells wanted now, nearest first, with their LOD. */
   wantedCells(): { key: string; lod: 0 | 1; d: number }[] {
     if (!this.centre || !this.ready) return [];
-    const [x, y] = this.centre, R = this.opts.radiusM, size = this.store.elevation.cellSizeM;
+    const [x, y] = this.centre, R = this.radiusM, size = this.store.elevation.cellSizeM;
     const out: { key: string; lod: 0 | 1; d: number }[] = [];
     const span = Math.ceil(R / size) + 1;
     const [cx, cy] = this.store.cellAt(x, y).split('_').map(Number);
@@ -236,7 +245,7 @@ export class OwnGround {
       this.worker?.postMessage({ type: 'build', key: w.key, lod: w.lod, gen: this.gen });
     }
     // Relief far behind is dropped on both sides (decks keep their placed heights).
-    const keepM = this.opts.radiusM + 2200;
+    const keepM = this.radiusM + 2200;
     this.worker?.postMessage({ type: 'evict', x: this.centre[0], y: this.centre[1], keepM, keep: [...keep].flatMap(k => GroundStore.neighbours(k)) });
     if (this.store.evictRelief(this.centre[0], this.centre[1], keepM)) {
       for (const key of [...this.prepared]) if (!keep.has(key)) this.prepared.delete(key);
@@ -547,7 +556,7 @@ export class OwnGround {
   /** Polyline pieces within the resident radius (the rest is drawn when we get there). */
   private clipToResident(line: readonly Vec2[]): Vec2[][] {
     if (!this.centre) return [];
-    const R = this.opts.radiusM + 200, [cx, cy] = this.centre, out: Vec2[][] = [];
+    const R = this.radiusM + 200, [cx, cy] = this.centre, out: Vec2[][] = [];
     let cur: Vec2[] = [];
     for (const p of line) {
       if (Math.hypot(p[0] - cx, p[1] - cy) <= R) cur.push(p);
@@ -622,7 +631,7 @@ export class OwnGround {
     for (const r of this.resident.values()) { triangles += r.triangles; bytes += r.bytes; cells[r.key] = r.lod; }
     const median = (a: number[]) => { const s = [...a].sort((x, y) => x - y); return s.length ? +s[s.length >> 1].toFixed(1) : null; };
     return {
-      enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), basemapHidden: this.basemapHidden,
+      enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), basemapHidden: this.basemapHidden, radiusM: this.radiusM, zoom: this.zoom,
       cells, pending: Object.fromEntries(this.pending), queued: this.installQueue.length, triangles, geometryMB: +(bytes / 1048576).toFixed(1),
       reliefTiles: this.store.reliefTileCount, decks: this.ready ? this.store.surface.decks.length : 0, surfaceRevision: this.surfaceRevision,
       built: this.stats.cellsBuilt, buildMsMedian: median(this.stats.buildMs), installMsMedian: median(this.stats.installMs),

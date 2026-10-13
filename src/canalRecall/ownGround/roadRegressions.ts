@@ -114,6 +114,18 @@ export const STRAYS: StrayRegression[] = [
       { offset: [6.0, -5.0], forbid: ['cycle'] },
     ],
   },
+  {
+    // De Clercqstraat 22-2 and the Bilderdijkstraat crossing: the `area:highway` polygons are tram and bus platforms
+    // (area:highway=platform). They were drawn as light square paving; they are pavement tiles under the street bands,
+    // never the plaza paving or bare land. (Carriageway and cycleway `area:highway` classes: osmGround.pavedAreaSurface.)
+    id: 'de-clercqstraat-platforms',
+    label: 'De Clercqstraat 22-2 and the Bilderdijkstraat crossing: area:highway platforms read as pavement or street',
+    at: [4.87043, 52.37058],
+    probes: [
+      { offset: [0, 0], forbid: ['square', 'land'] }, { offset: [56.4, 65.2], forbid: ['square', 'land'] },
+      { offset: [10.9, 88.4], forbid: ['square', 'land'] }, { offset: [-61.8, 16.6], forbid: ['square', 'land'] },
+    ],
+  },
 ];
 
 /** Probes of a stray regression that still read as a forbidden surface (empty: clean). */
