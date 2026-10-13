@@ -36,7 +36,7 @@ export function areaKind(tags: Record<string, string>): AreaKind | null {
   if (['park', 'garden', 'common', 'playground'].includes(tags.leisure)) return 'park';
   if (tags.leisure === 'pitch') return 'grass';
   if (['grass', 'meadow', 'village_green', 'flowerbed', 'recreation_ground'].includes(tags.landuse)) return 'grass';
-  if (tags.landuse === 'cemetery') return 'park';
+  if (tags.landuse === 'cemetery' || tags.landuse === 'allotments') return 'park';
   if (tags.natural === 'grass') return 'grass';
   if (tags.natural === 'scrub' || tags.natural === 'wood') return 'wood';
   return null;

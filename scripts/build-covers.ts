@@ -21,6 +21,7 @@ import {
   ROOT, allSpecs, buildingTypesPlaced, footprintOf,
 } from './lib/placedFootprints';
 import { loadBagTiles, nearbyPands, resolveSuppressed } from './lib/bagTileIndex';
+import { loadCoversReview, reviewKey } from './lib/coversReview';
 import { COVERS_VERSION, coversPand, shortPandId, type CoversEntry, type CoversFile } from '../src/canalRecall/bagTiles';
 import { ringsFootprint, unionFootprint } from '../src/canalRecall/landmarks/osmUnderModels';
 
@@ -29,10 +30,11 @@ const tilesDir = flag('tiles') ?? path.join(ROOT, 'artifacts/bag-tiles/bag-tiles
 const outFile = flag('out') ?? path.join(ROOT, 'artifacts/bag-tiles/covers.json');
 
 const index = loadBagTiles(tilesDir);
+const review = loadCoversReview();
 console.log(`bag tiles: ${index.pands.size} pands, ${index.osmOnly.size} OSM-only features, ${index.osmToPands.size} OSM ids aliased`);
 
 const models: Record<string, CoversEntry> = {};
-const stats = { models: 0, withFootprint: 0, noFootprint: [] as string[], pandsCovered: 0, suppressOnly: 0, geoOnly: 0, oOnly: 0 };
+const stats = { kept: 0, models: 0, withFootprint: 0, noFootprint: [] as string[], pandsCovered: 0, suppressOnly: 0, geoOnly: 0, oOnly: 0 };
 for (const spec of allSpecs()) {
   stats.models++;
   const {fp} = await footprintOf(spec);
@@ -47,7 +49,10 @@ for (const spec of allSpecs()) {
     const footprint = unionFootprint(parts);
     for (const pand of nearbyPands(index, footprint.bounds)) {
       if (covered.has(pand.id)) continue;
-      if (coversPand(footprint, pand.rings, pand.centroid)) { covered.add(pand.id); stats.geoOnly++; }
+      if (!coversPand(footprint, pand.rings, pand.centroid)) continue;
+      // Reviewed neighbours (scripts/covers-review.json 'keep') stay drawn; undecided pands are listed, as before, for check-covers --strict.
+      if (review[reviewKey(spec.id, pand.id)]?.decision === 'keep') { stats.kept++; continue; }
+      covered.add(pand.id); stats.geoOnly++;
     }
   } else stats.noFootprint.push(spec.id);
   stats.suppressOnly += resolved.pands.length;
@@ -63,6 +68,6 @@ const file: CoversFile = { version: COVERS_VERSION, generatedAt: new Date().toIS
 fs.mkdirSync(path.dirname(outFile), { recursive: true });
 fs.writeFileSync(outFile, `${JSON.stringify(file)}\n`);
 const bytes = fs.statSync(outFile).size;
-console.log(`covers: ${Object.keys(models).length}/${stats.models} models with entries (${stats.withFootprint} with a footprint), ${stats.pandsCovered} model-pand links (${stats.suppressOnly} from today's suppress ids, ${stats.geoOnly} from footprint only), ${stats.oOnly} non-pand ids kept, ${buildingTypes.length} building-type pands`);
+console.log(`covers: ${Object.keys(models).length}/${stats.models} models with entries (${stats.withFootprint} with a footprint), ${stats.pandsCovered} model-pand links (${stats.suppressOnly} from today's suppress ids, ${stats.geoOnly} from footprint only, ${stats.kept} reviewed neighbours left out), ${stats.oOnly} non-pand ids kept, ${buildingTypes.length} building-type pands`);
 console.log(`no footprint and no resolvable suppress ids: ${stats.noFootprint.length}${stats.noFootprint.length ? ` (${stats.noFootprint.slice(0, 8).join(', ')})` : ''}`);
 console.log(`wrote ${outFile} (${(bytes / 1024).toFixed(0)} KB raw)`);
