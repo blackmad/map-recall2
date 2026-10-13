@@ -31,8 +31,8 @@ const SPOTS: Spot[] = [
   { name: 'street-westerkerk-default', centre: [4.8838960, 52.3744999], standDeg: 140, standM: 60, view: 'cockpit' },
   { name: 'street-westerkerk-shared-frame', centre: [4.8838960, 52.3744999], standDeg: 140, standM: 60, view: 'cockpit', query: '?sharedFrame=1' },
   { name: 'street-osdorp-sloterplas-own-ground', centre: [4.8130, 52.3600], standDeg: 0, standM: 0, faceDeg: 300, view: 'cockpit', query: '?ownGround=1' },
-  { name: 'street-politie-oost-zeeburg', centre: [4.9715896, 52.3690872], standDeg: 131, standM: 45, view: 'cockpit' },
-  { name: 'street-politie-zuidoost-gaasperdam', centre: [4.9741204, 52.2971764], standDeg: 255, standM: 30, view: 'cockpit' },
+  { name: 'street-politie-oost-zeeburg', centre: [4.9715896, 52.3690872], standDeg: 131, standM: 70 },
+  { name: 'street-politie-zuidoost-gaasperdam', centre: [4.9741204, 52.2971764], standDeg: 255, standM: 55 },
 ];
 
 const OUT = process.env.DEMO_OUT ?? 'artifacts/demo';
@@ -62,12 +62,17 @@ for (const spot of SPOTS) {
   test(`demo shot: ${spot.name}`, async ({ page }) => {
     test.setTimeout(240_000);
     await page.setViewportSize({ width: 1440, height: 900 });
+    if (process.env.DEMO_LOG) {
+      page.on('response', r => { if (r.status() >= 400) console.log(`HTTP ${r.status()} ${r.url()}`); });
+      page.on('requestfailed', r => console.log(`FAILED ${r.url()} ${r.failure()?.errorText}`));
+      page.on('console', m => { if (m.type() === 'error' || /ordinary|recipe-large/i.test(m.text())) console.log(`CONSOLE ${m.type()} ${m.text().slice(0, 300)}`); });
+    }
     await openRoute(page, { travelMode: 'car', viewMode: spot.view ?? 'chase', query: spot.query ?? '', abortHeavyTiles: true });
     const p = standpoint(spot);
     await teleport(page, p);
     await page.waitForTimeout(2500);
     await teleport(page, p); // the game re-routes after the first jump; pin the spot again
-    await page.waitForTimeout(6000);
+    await page.waitForTimeout(Number(process.env.DEMO_WAIT ?? 6000));
     mkdirSync(OUT, { recursive: true });
     await page.screenshot({ path: `${OUT}/${spot.name}.png` });
   });
