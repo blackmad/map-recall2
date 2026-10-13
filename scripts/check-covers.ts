@@ -18,6 +18,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, allSpecs } from './lib/placedFootprints';
 import { loadBagTiles, resolveSuppressed } from './lib/bagTileIndex';
+import { loadCoversReview, reviewKey } from './lib/coversReview';
 import { fullPandId, type CoversFile } from '../src/canalRecall/bagTiles';
 
 const flag = (name: string): string | undefined => process.argv.find(a => a.startsWith(`--${name}=`))?.slice(name.length + 3);
@@ -27,9 +28,10 @@ const coversFile = flag('covers') ?? [path.join(ROOT, 'public/canal-drive/models
 if (!tilesDir || !coversFile) { console.error('missing bag tiles or covers.json: run `node --import tsx scripts/build-bag-buildings.ts --tiles` and scripts/build-covers.ts first'); process.exit(2); }
 
 const index = loadBagTiles(tilesDir);
+const review = loadCoversReview();
 const covers = JSON.parse(fs.readFileSync(coversFile, 'utf8')) as CoversFile;
 const problems: string[] = [];
-const hidden: string[] = [], aliasOnly: string[] = [], stale: string[] = [];
+const hidden: string[] = [], reviewedHide: string[] = [], aliasOnly: string[] = [], stale: string[] = [];
 let suppressIds = 0, effective = 0;
 
 for (const spec of allSpecs()) {
@@ -47,6 +49,7 @@ for (const spec of allSpecs()) {
   for (const id of covered) {
     if (today.has(id)) continue;
     if (viaAlias.has(id)) aliasOnly.push(`${spec.id} ${id}`);
+    else if (review[reviewKey(spec.id, id)]?.decision === 'hide') reviewedHide.push(`${spec.id} ${id}`);
     else hidden.push(`${spec.id} ${id}`);
   }
   for (const id of resolved.unresolved) stale.push(`${spec.id} ${id}`);
@@ -60,6 +63,7 @@ const show = (title: string, rows: string[]) => {
   if (!verbose && rows.length > 12) console.log(`  ... ${rows.length - 12} more (--verbose)`);
 };
 console.log(`covers join: ${Object.keys(covers.models).length} model entries, ${covers.buildingTypes.length} building-type pands; ${suppressIds} suppressOsmIds in ${allSpecs().length} specs, ${effective} effective in the BAG-keyed tiles`);
+show('reviewed hide (footprint-only, decided in scripts/covers-review.json: part of the model)', reviewedHide);
 show('hidden bugs (covered by footprint, not hidden by suppressOsmIds today)', hidden);
 show('alias-only (suppress id is an OSM alias of a covered pand, hides nothing in BAG-keyed tiles today)', aliasOnly);
 show('stale (suppress id matches no tile feature and no pand alias)', stale);

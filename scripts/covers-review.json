@@ -1,0 +1,20 @@
+{
+  "about": "Reviewed footprint-only covers links (pands a model's footprint covers that its suppressOsmIds do not hide). 'hide': the pand is part of the model's structure, covers.json lists it and ?bagTiles=1 hides it. 'keep': the pand is a neighbour or outbuilding, covers.json omits it and it stays drawn. A footprint-only pand with no decision here is a hidden bug: check:covers --strict fails until someone decides. Rule of thumb used on 2026-10-13 (docs/buildings-pipeline.md, BAG tiles): the model footprint is a dilated GLB occupancy raster (about 4 m cells), so a share under 0.8 (the check:osm-under-models standard) of a terrace-width pand is a neighbour; a pand under 25 m2 whose centroid is under the footprint is an appurtenance (buttress, porch) of the host. Review plots: scripts/review-covers-plots.ts.",
+  "decisions": {
+    "westerkerk 0363100012174225": { "decision": "hide", "reason": "10 m2 buttress pand on the south flank, inside the nave footprint (share 0.64)" },
+    "westerkerk 0363100012174226": { "decision": "hide", "reason": "10 m2 buttress pand on the south flank (share 0.66)" },
+    "westerkerk 0363100012174404": { "decision": "hide", "reason": "10 m2 buttress pand on the south flank (share 0.68)" },
+    "westerkerk 0363100012174405": { "decision": "hide", "reason": "10 m2 buttress pand on the south flank (share 0.61)" },
+    "westerkerk 0363100012174406": { "decision": "hide", "reason": "10 m2 buttress pand on the south flank (share 0.58)" },
+    "walloon-church 0363100012178656": { "decision": "hide", "reason": "19 m2 sliver on the church's south edge, centroid under the footprint (share 0.36); an annex of the church" },
+    "the-movies 0363100012172951": { "decision": "keep", "reason": "67 m2 terrace-width house beside the cinema block, centroid outside the footprint (share 0.73 is footprint dilation)" },
+    "delamar 0363100012168520": { "decision": "keep", "reason": "98 m2 end house of the curved west row, row-width, partly under the footprint halo (share 0.62); the audit's 80% standard does not hide it" },
+    "delamar 0363100012169854": { "decision": "keep", "reason": "79 m2 end house of the north row, row-width (share 0.71)" },
+    "kleine-komedie 0363100012179634": { "decision": "keep", "reason": "108 m2 frontage house south of the theatre block (share 0.62, under 0.8)" },
+    "he-hua-temple 0363100012177925": { "decision": "keep", "reason": "63 m2 corner house across the street frontage, 47% under the footprint" },
+    "oude-kerk 0363100012178473": { "decision": "keep", "reason": "108 m2 curved building along the east side of the church square; only 20% under the footprint" },
+    "hortus-greenhouses 0363100012247448": { "decision": "keep", "reason": "41 m2 separate shed beyond the greenhouse tip (share 0.46)" },
+    "rijksmuseum 0363100012241554": { "decision": "keep", "reason": "576 m2 pand west of the museum, 47% under the footprint; a missing building is worse than a doubled one, and the audit's 80% standard does not hide it" },
+    "sexmuseum-venustempel 0363100012253755": { "decision": "keep", "reason": "186 m2 long neighbour strip beside the museum, 27% under the footprint" }
+  }
+}
