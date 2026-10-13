@@ -24,6 +24,8 @@ import { MapComponent } from './components/MapComponent';
 import { PinpointModeOverlay } from './components/PinpointModeOverlay';
 import { GuessNameModeOverlay } from './components/GuessNameModeOverlay';
 import { GameOverSummary } from './components/GameOverSummary';
+import { PostcardRack } from './components/PostcardRack';
+import { ProgressLine } from './components/ProgressLine';
 import { LoadingProgressModal } from './components/LoadingProgressModal';
 import { useAuth } from './AuthContext';
 import { loadLocalReviewStates, recordReview, syncProgress } from './progressRepository';
@@ -963,9 +965,7 @@ export default function App() {
                 <h1 className="enamel-plaque enamel-framed enamel-brand px-4 py-3 text-center text-xl sm:text-2xl text-white">
                   Map Recall
                 </h1>
-                <p className="text-xs text-white/65 text-center leading-relaxed">
-                  Learn {currentCity.name} · {(searchRadiusMeters / 1000).toFixed(1)} km
-                </p>
+                <ProgressLine states={reviewStates} mode={gameMode} cityId={currentCityId} />
               </div>
 
               <div className="space-y-2">
@@ -989,6 +989,8 @@ export default function App() {
                   ))}
                 </div>
               </div>
+
+              <PostcardRack placement="rail" cityId={currentCityId} cityCenter={currentCity.center} states={reviewStates} />
 
               <div className="space-y-2 pt-1">
                 <p className="text-xs font-bold uppercase tracking-wider text-white/45">Also</p>
@@ -1066,8 +1068,9 @@ export default function App() {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
-              aria-hidden="true"
-            />
+            >
+              <PostcardRack placement="vista" cityId={currentCityId} cityCenter={currentCity.center} states={reviewStates} />
+            </div>
           </div>
         )}
 
@@ -1122,6 +1125,7 @@ export default function App() {
             onSwitchMode={(newMode) => resetGame(undefined, newMode)}
             onChangeCity={(cityId) => resetGame(cityId, gameMode)}
             allCities={CITIES}
+            reviewStatesBefore={reviewStates}
           />
         )}
 
