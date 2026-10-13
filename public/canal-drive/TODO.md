@@ -711,12 +711,16 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   re-export, lower baselines. Then "flush cladding band on a wall" (Jacob
   Bontiusplaats 9, Valley, the Haparandaweg blocks, Pllek, Frascati's
   doubled brick face).
-- **Highlight: pick one (user decision)**. Three candidates are live behind
-  `?highlight=a|b|c` with sheets in `docs/reports/highlight-redesign-20261013/`;
-  the lane recommends a (outline + ground ring + beacon). Open: the outline
-  is subtle at chase distance on a terrace house (the beacon carries it), the
-  MapLibre fallback extrusions and 3DBAG detailed mode keep yellow, and the
-  default is still yellow until the user chooses.
+- **Highlight: small targets under the coral default**. Style a (coral
+  outline + ground ring + beacon) is the default since 2026-10-13 evening
+  (`?highlight=yellow` compares). On the chase sheets an ordinary terrace
+  house carries 0.08 % accent pixels against 0.55 % under yellow: the
+  outline at 2–3.5 px is not enough for a 6 m house at 200 m. Add a mark
+  that scales with how small the target is on screen (a coral roof wash or
+  a taller beacon when the footprint is under ~1 % of the frame), measured
+  the same way (`scripts/highlight-outline-width.mjs`, accent-pixel share).
+  Also open: 3DBAG detailed mode untested live (tiles load 0 meshes
+  headless), a `building-3d` basemap target gets no casing, iPhone profile.
 - **Roofs after the attachment fix**: pitched-vs-flat split pands still
   follow one plan (the roof-facts slot now colours the lid; the shape is one).
 - **Own ground after the 2026-10-13 lanes (HISTORY)**: still open before a
