@@ -175,8 +175,8 @@ export function buildCell(input: CellInput): BuiltCell {
   // Streets: bridge ways sampled finer (decks hump over metres).
   const only = (bridge: boolean) => (w: LocalWay) => own.has(w.id) && isBridgeWay(w) === bridge;
   const streets = buildStreets(ways, surface.height, { step: lod === 0 ? 3 : 6, only: only(false) });
-  // 0.5 m at LOD 0: on a masonry hump a 1.5 m chord sags ~9 cm, under the deck top drawn beneath the bands.
-  const onBridges = buildStreets(ways, surface.height, { step: lod === 0 ? 0.5 : 3, only: only(true) });
+  // 0.75 m at LOD 0: on a hump a 1.5 m chord sags (~9 cm on a masonry arch, ~2 cm at 0.75 m); the bands follow the profile closer.
+  const onBridges = buildStreets(ways, surface.height, { step: lod === 0 ? 0.75 : 3, only: only(true) });
   for (const s of ['paving', 'klinker', 'asphalt', 'cycle', 'gravel', 'kerb', 'paint'] as const) { add(s, streets[s]); add(s, onBridges[s]); }
 
   // Water, quays, decks.
@@ -187,8 +187,8 @@ export function buildCell(input: CellInput): BuiltCell {
   const bridges: BridgeStats = { tops: 0, railed: 0, railingPosts: 0, piers: 0, arches: 0, abutments: 0, frames: 0, decks: [], flat: [] };
   for (const deck of input.decks) {
     const xs = deck.profile.x, ys = deck.profile.y, mid = xs.length >> 1;
-    add('deckBody', measuredDeckBody(deck, surface.ground, overWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks));
-    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 6 : 2);
+    add('deckBody', measuredDeckBody(deck, surface.ground, overWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks, lod === 0));
+    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 4 : 2, lod === 0 ? 2 : 4);
     if (top.indices.length) { add('deckTop', top); bridges.tops++; }
   }
   for (const d of bridges.decks) { bridges.railingPosts += d.railingPosts; bridges.piers += d.piers; bridges.arches += d.arches; bridges.abutments += d.abutments; if (d.railingPosts) bridges.railed++; }
