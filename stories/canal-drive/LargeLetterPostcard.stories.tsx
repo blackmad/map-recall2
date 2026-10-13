@@ -8,7 +8,9 @@ import {
   measureLargeLetterPostcard,
   type LargeLetterPostcardProps,
   type PostcardStyleId,
+  type WindowsPerPhoto,
 } from '../../src/canalRecall/largeLetterPostcard.ts';
+import { PostcardExport } from '../../src/components/PostcardExport';
 
 import canalUrl from './fixtures/amsterdam-canal.jpg';
 import housesUrl from './fixtures/amsterdam-houses.jpg';
@@ -57,12 +59,15 @@ type HostProps = LargeLetterPostcardProps & {
   frameWidth?: number;
   /** Show only the word-art overlay (transparent letter faces) over a photo. */
   overlayDemo?: boolean;
+  /** One photograph per letter, or one across each run of 2–4 letters (the default). */
+  windowsPerPhoto?: WindowsPerPhoto;
 };
 
 function LargeLetterHost({
   fixtures = 'many',
   frameWidth = 640,
   overlayDemo = false,
+  windowsPerPhoto = 'run',
   name,
   cityName,
   provinceCaption,
@@ -125,11 +130,11 @@ function LargeLetterHost({
         ctx.drawImage(images[0], 0, 0, layout.width, layout.height);
         drawWordArtOverlay(ctx, layout, otFont ? { font: otFont } : undefined);
       } else {
-        drawLargeLetterPostcard(ctx, layout, images, otFont ? { font: otFont } : undefined);
+        drawLargeLetterPostcard(ctx, layout, images, otFont ? { font: otFont, windowsPerPhoto } : { windowsPerPhoto });
       }
     })().catch((err) => console.error(err));
     return () => { cancelled = true; };
-  }, [ready, fixtures, name, cityName, provinceCaption, greeting, style, overlayDemo]);
+  }, [ready, fixtures, name, cityName, provinceCaption, greeting, style, overlayDemo, windowsPerPhoto]);
 
   const scale = Math.min(1, frameWidth / 640);
 
@@ -166,12 +171,51 @@ export default meta;
 
 type Story = StoryObj<typeof LargeLetterHost>;
 
-/** Default: one distinct photo window per letter. */
+/** Default: one photograph across each run of 2–4 letters (JORD | AA | AN), 3–5 photographs a card. */
+export const RunPhotos: Story = {
+  args: {
+    name: 'Jordaan',
+    cityName: 'Amsterdam',
+    provinceCaption: 'Noord-Holland',
+    fixtures: 'many',
+  },
+};
+
+/** The original card: one distinct photo window per letter (`windowsPerPhoto: 'letter'`). */
 export const PerLetterPhotos: Story = {
   args: {
     name: 'Jordaan',
     cityName: 'Amsterdam',
     provinceCaption: 'Noord-Holland',
+    fixtures: 'many',
+    windowsPerPhoto: 'letter',
+  },
+};
+
+/** A long name on two lines: each line keeps ≥ 0.62 of a one-line face (review 2026-10-13). */
+export const TwoLineLongName: Story = {
+  args: {
+    name: 'Hoofddorppleinbuurt',
+    cityName: 'Amsterdam',
+    fixtures: 'many',
+  },
+};
+
+export const TwoLineLongNamePhone: Story = {
+  args: {
+    name: 'Hoofddorppleinbuurt',
+    cityName: 'Amsterdam',
+    fixtures: 'many',
+    frameWidth: 340,
+  },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
+
+/** A short top line over a long one: the script sits beside DA rather than over it. */
+export const TwoLineShortTop: Story = {
+  args: {
+    name: 'Da Costabuurt',
+    cityName: 'Amsterdam',
     fixtures: 'many',
   },
 };
@@ -278,4 +322,21 @@ export const StyleDesertWarm: Story = {
     style: 'desert-warm',
     fixtures: 'many',
   },
+};
+
+/** "Save postcard": composes the layered card to a 1280 × 800 PNG (greetings-from-<name>.png). */
+export const SavePostcardButton: StoryObj<typeof PostcardExport> = {
+  render: (args) => <div style={{ padding: 24, background: '#f6f1e7', minHeight: '100vh', boxSizing: 'border-box' }}>
+    <PostcardExport {...args} />
+  </div>,
+  args: {
+    name: 'Hoofddorppleinbuurt',
+    cityName: 'Amsterdam',
+    photos: PLACE_TRUE_URLS.slice(0, 7),
+  },
+};
+
+export const SavePostcardButtonPhone: StoryObj<typeof PostcardExport> = {
+  ...SavePostcardButton,
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
 };
