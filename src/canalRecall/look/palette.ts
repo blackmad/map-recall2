@@ -481,3 +481,24 @@ export function cityTint(slot: MaterialSlot, hex: string): string {
     default: return cityRoofTint(slot, hex);
   }
 }
+
+// ---------------------------------------------------------------------------
+// Street ground (own ground, `?ownGround=1`): the Amsterdam street vocabulary
+// ---------------------------------------------------------------------------
+
+/**
+ * Display priors for the drawn street surfaces (not measured per street): red
+ * asphalt cycle paths, brick-red klinker carriageways, grey-rose klinker
+ * pavements with a pale granite kerb, steel tram rails, oxblood
+ * Amsterdammertjes. Base RGB for the procedural textures; joints darker.
+ */
+export const STREET_GROUND = {
+  asphalt: { base: [72, 74, 78] as RGB },
+  cycle: { base: [150, 66, 58] as RGB },
+  klinker: { base: [128, 82, 66] as RGB, joint: '#5a463d' },
+  pavement: { base: [174, 162, 152] as RGB, joint: '#7f756b' },
+  kerb: '#cfcac0',
+  paint: '#f2f0ea',
+  rail: '#6c6e72',
+  bollard: '#5a2a26',
+} as const;

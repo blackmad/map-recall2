@@ -62,6 +62,8 @@ export interface PaintLine { offset: number; width: number; dash: [number, numbe
 export interface CrossSection {
   bands: Band[];
   paint: PaintLine[];
+  /** Tram track centre offsets (OSM `embedded_rails=tram`); each track is two rails at standard gauge. */
+  rails: number[];
   /** Half the carriageway (or the path itself) — junction discs and trims use it. */
   coreHalfWidth: number;
   /** Outermost extent either side. */
@@ -192,7 +194,9 @@ export function crossSection(tags: Record<string, string>, bw?: BgtWidthDm): Cro
       const e = Math.max(0.6, Math.min(width, 4) / 2 - 0.2);
       paint.push({ offset: e, width: 0.4, dash: [0.4, 0.4] }, { offset: -e, width: 0.4, dash: [0.4, 0.4] });
     }
-    return { bands: [band], paint, coreHalfWidth: width / 2, halfWidth: width / 2, source: { width: bgtWidth ? 'bgt' : tagWidth ? 'tag' : 'prior', sidewalk: 'prior', cycleway: 'prior' } };
+    // A separated cycle path: a clean white edge line either side (not on crossings or narrow paths).
+    if (kind === 'cycleway' && !crossing && width >= 1.5) paint.push({ offset: width / 2 - 0.15, width: 0.08, dash: null }, { offset: -(width / 2 - 0.15), width: 0.08, dash: null });
+    return { bands: [band], paint, rails: [], coreHalfWidth: width / 2, halfWidth: width / 2, source: { width: bgtWidth ? 'bgt' : tagWidth ? 'tag' : 'prior', sidewalk: 'prior', cycleway: 'prior' } };
   }
   const style = CARRIAGEWAY[hw];
   if (!style) return null;
@@ -218,6 +222,8 @@ export function crossSection(tags: Record<string, string>, bw?: BgtWidthDm): Cro
     } else if (kind === 'track') {
       const track = bgtCycle ?? TRACK_M;
       bands.push({ kind: 'cycle_track', surface: 'cycle', offset: s * (edge[side] + 0.4 + track / 2), width: track + 0.8, raised: 0.04, kerb: side });
+      const mid = s * (edge[side] + 0.4 + track / 2);
+      paint.push({ offset: mid + track / 2 - 0.1, width: 0.08, dash: null }, { offset: mid - track / 2 + 0.1, width: 0.08, dash: null });
       edge[side] += track + 0.8;
     }
   }
@@ -235,5 +241,11 @@ export function crossSection(tags: Record<string, string>, bw?: BgtWidthDm): Cro
   if (hw.startsWith('primary') || hw.startsWith('secondary') || hw.startsWith('trunk')) {
     paint.push({ offset: half - 0.3, width: 0.12, dash: null }, { offset: -(half - 0.3), width: 0.12, dash: null });
   }
-  return { bands, paint, coreHalfWidth: half, halfWidth: Math.max(edge.left, edge.right), source: { width: widthSource, sidewalk: bgtSidewalk && sw.sides.length ? 'bgt' : sw.source, cycleway: bgtCycle && (cyc.left === 'track' || cyc.right === 'track') ? 'bgt' : cyc.source, sidewalkSides: sw.source } };
+  // Tram tracks in the street: two-way (or two-way for buses and trams) streets carry a track each way, 3 m apart.
+  const rails: number[] = [];
+  if ((tags.embedded_rails ?? '').split(';').includes('tram')) {
+    const both = !oneway || tags['oneway:bus'] === 'no' || tags['oneway:psv'] === 'no';
+    if (both && carriage >= 5.5) rails.push(1.5, -1.5); else rails.push(0);
+  }
+  return { bands, paint, rails, coreHalfWidth: half, halfWidth: Math.max(edge.left, edge.right), source: { width: widthSource, sidewalk: bgtSidewalk && sw.sides.length ? 'bgt' : sw.source, cycleway: bgtCycle && (cyc.left === 'track' || cyc.right === 'track') ? 'bgt' : cyc.source, sidewalkSides: sw.source } };
 }
