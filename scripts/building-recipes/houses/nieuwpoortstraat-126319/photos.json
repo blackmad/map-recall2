@@ -1,0 +1,34 @@
+[
+ {
+  "front": "wall-nieuwpoortstraat",
+  "panoId": "TMX7316010203-002058_pano_0000_000862",
+  "timestamp": "2021-03-24T10:32:48.168520Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/03/24/TMX7316010203-002058/pano_0000_000862/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   118962.39969145018,
+   488602.2035752247
+  ],
+  "headingDeg": 0.9432288808442308,
+  "fovDeg": 110,
+  "pitchDeg": 30.096317598919484,
+  "distanceM": 11.15443623559254,
+  "image": "artifacts/building-recipes/nieuwpoortstraat-126319/photo-wall-nieuwpoortstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-den-brielstraat",
+  "panoId": "TMX7316010203-001131_pano_0000_001735",
+  "timestamp": "2019-04-16T12:03:57.443560Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/04/16/TMX7316010203-001131/pano_0000_001735/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   119008.4745657066,
+   488634.8409579169
+  ],
+  "headingDeg": 267.7898109309387,
+  "fovDeg": 110,
+  "pitchDeg": 47.96260209372365,
+  "distanceM": 5.846102274084001,
+  "image": "artifacts/building-recipes/nieuwpoortstraat-126319/photo-wall-den-brielstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

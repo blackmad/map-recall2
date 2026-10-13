@@ -24,6 +24,8 @@ export interface ComposeOptions {
   sealSlivers?: boolean;
   /** large tier (opt-in): wall-mounted boxes (sills, heads, surrounds) get a back face, so a box on a 3DBAG wall that sits a few cm off the panel's reference plane has no open edge. Default off: installed block-kit output is byte-identical. */
   closedBoxes?: boolean;
+  /** large tier (opt-in): bands (string courses, cornices, fascias) are closed solids (back face, and end caps at mitred joints), so they leave no open edge where 3DBAG faces stand a few cm off the panel plane or the next panel's band stops short. Default off: earlier large recipes stay byte-identical. */
+  closedBands?: boolean;
   /** Walls (indices into `set.walls`) with different keys never merge into one panel (large-tier wall groups). */
   mergeKey?: (wall: number) => number;
   /** Host wall slot per panel (recess mode only, where walls are emitted after the facade systems). */
@@ -51,6 +53,8 @@ class Ctx {
   stats = { recessed: 0, proud: 0 };
   /** `ComposeOptions.closedBoxes` */
   closedBoxes = false;
+  /** `ComposeOptions.closedBands` (recess mode only) */
+  closedBands = false;
   constructor(public mesh: MeshBuilder, public p: Panel, public panels: Panel[]) {}
   /**
    * Cut a rectangular opening into one member wall when it lies inside it with 3 cm to spare and clear of other holes.
@@ -69,6 +73,15 @@ class Ctx {
   cutOutline(u0: number, u1: number, v0: number, v1: number, outline: [number, number][]): ((u: number, v: number) => V3) | null {
     const k = this.claim(u0, u1, v0, v1, outline);
     return k < 0 ? null : this.onMember(k);
+  }
+  /**
+   * A point `d` in front of the wall face actually emitted at (u, v): the member wall containing (u, v), projected along
+   * the panel normal (3DBAG faces merged into one panel can sit a few cm off its reference plane). Falls back to the
+   * panel plane outside every member and in the original (non-recess) path.
+   */
+  onWallAt(u: number, v: number, d = 0): V3 {
+    const m = this.p.members, k = m ? m.findIndex(x => insidePoly([u, v], x.poly)) : -1;
+    return k < 0 ? this.P(u, v, d) : add(this.onMember(k)(u, v), scale(this.p.n, d));
   }
   /** (u, v) onto member wall k's own plane, along the panel normal. */
   private onMember(k: number): (u: number, v: number) => V3 {
@@ -471,10 +484,12 @@ function stripBox(c: Ctx, slot: Slot, a: number, b: number, v0: number, v1: numb
   const A0 = c.P(a, v0, 0), B0 = c.P(b, v0, 0), A1 = c.P(a, v1, 0), B1 = c.P(b, v1, 0);
   const oA0 = add(A0, mA), oB0 = add(B0, mB), oA1 = add(A1, mA), oB1 = add(B1, mB);
   mesh.quad(slot, oA0, oB0, oB1, oA1, part, p.n);
+  if (c.closedBands) mesh.quad(slot, A0, B0, B1, A1, part, scale(p.n, -1));
   mesh.quad(slot, A1, B1, oB1, oA1, part, UP);
   mesh.quad(slot, A0, B0, oB0, oA0, part, DOWN);
-  if (!joinA) mesh.quad(slot, A0, oA0, oA1, A1, part, scale(p.r, -1));
-  if (!joinB) mesh.quad(slot, B0, oB0, oB1, B1, part, p.r);
+  // closed bands cap mitred ends too: the neighbouring panel's band may stop short of the joint (an opening, another group)
+  if (!joinA || c.closedBands) mesh.quad(slot, A0, oA0, oA1, A1, part, scale(p.r, -1));
+  if (!joinB || c.closedBands) mesh.quad(slot, B0, oB0, oB1, B1, part, p.r);
 }
 
 function drawBands(c: Ctx, bands: Band[], levels: number[], sys: System) {
@@ -519,6 +534,7 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
     assignment.push({ panel: p.index, system: sysName, width: W, centre });
     const c = new Ctx(mesh, p, panels);
     c.closedBoxes = !!opts.closedBoxes;
+    c.closedBands = recess > 0 && !!opts.closedBands;
     c.recess = recess; c.wallSlot = recess > 0 ? opts.wallSlotFor?.(p) ?? wallSlot : wallSlot;
     const cells: Cell[] = [];
     const finish = (levels: number[]) => {

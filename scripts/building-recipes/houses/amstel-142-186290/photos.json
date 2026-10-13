@@ -1,0 +1,34 @@
+[
+ {
+  "front": "wall-amstel",
+  "panoId": "TMX7316010203-002925_pano_0000_000056",
+  "timestamp": "2023-01-11T11:36:11.679030Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2022/12/31/TMX7316010203-002925/pano_0000_000056/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   121743.03299132732,
+   486673.00957296154
+  ],
+  "headingDeg": 181.22441868777508,
+  "fovDeg": 110,
+  "pitchDeg": 50.886901114953744,
+  "distanceM": 5.720629168278892,
+  "image": "artifacts/building-recipes/amstel-142-186290/photo-wall-amstel.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-amstelstraat",
+  "panoId": "b_20241211_0954_Track19_Sphere_00127",
+  "timestamp": "2024-12-11T11:01:48Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241211_0954_Track19_Sphere_00127/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   121708.71782994262,
+   486592.4473042976
+  ],
+  "headingDeg": 13.335156869259947,
+  "fovDeg": 110,
+  "pitchDeg": 45.79877237264887,
+  "distanceM": 7.725751030120066,
+  "image": "artifacts/building-recipes/amstel-142-186290/photo-wall-amstelstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

@@ -167,7 +167,7 @@ const GOLDEN = ['917:8dbd6058b4374935', '917:5ca94ea4d624d34f', '917:784723b7dcf
 // --- large tier: arches, portals, loading axes, name boards ---
 const HOUSES = 'scripts/building-recipes/houses';
 const rawIntent = (id: string) => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/intent.json`, 'utf8'));
-const ARCHED_LARGE = ['entrepotdok-164981'];
+const ARCHED_LARGE = ['entrepotdok-164981', 'overtoom-283-084999', 'amstel-142-186290', 'nieuwpoortstraat-126319', 'ledenberch-38-243844'];
 
 test('large intent: arches, hoist and name boards are validated', () => {
   const base = rawIntent('entrepotdok-164981'), w0 = base.walls[0];
@@ -181,7 +181,7 @@ test('large intent: arches, hoist and name boards are validated', () => {
   assert.throws(() => validateLargeIntent(bad({system: 'ribbon-windows', arches: {windows: 'round'}})), /brick-bay-grid/);
 });
 
-test('arched large recipes pass the large-tier gates within the 12k budget', async () => {
+test('this lane\'s large recipes (Entrepotdok and the four probes) pass the large-tier gates within the 12k budget', async () => {
   for (const id of ARCHED_LARGE) {
     const intent = validateLargeIntent(rawIntent(id)), facts = JSON.parse(fs.readFileSync(`${HOUSES}/${id}/facts.json`, 'utf8'));
     const built = compileBuilding(intent, facts) as CompiledLargeBuilding;

@@ -1,0 +1,18 @@
+[
+ {
+  "front": "wall-overtoom",
+  "panoId": "b_20241129_0829_Track01_Sphere_00210",
+  "timestamp": "2024-11-29T07:55:59Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241129_0829_Track01_Sphere_00210/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   119598.48792525163,
+   485993.5322911881
+  ],
+  "headingDeg": 159.71995338630313,
+  "fovDeg": 85.43560511967362,
+  "pitchDeg": 36.76782926502213,
+  "distanceM": 9.828833538926917,
+  "image": "artifacts/building-recipes/overtoom-283-084999/photo-wall-overtoom.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

@@ -1,0 +1,103 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "nieuwpoortstraat-126319",
+ "pandId": "0363100012126319",
+ "address": "Nieuwpoortstraat 80-98 / Den Brielstraat 2-6, Amsterdam: housing block over shops (BAG 1991; 150 dwellings, shops and offices on the ground floor)",
+ "sources": [
+  {
+   "id": "pano-2025-09-26-nieuwpoortstraat",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_26_07_01_39_00283/",
+   "image": "staging/pand-reference-walls/0363100012126319/w03-179.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-top",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_26_07_01_39_00283/",
+   "image": "staging/pand-reference-walls/0363100012126319/w03-179.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-26-nieuwpoortstraat-east",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-26",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_26_07_01_39_00283/",
+   "image": "staging/pand-reference-walls/0363100012126319/w03-179.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    138,
+    42,
+    87,
+    332,
+    124,
+    333,
+    335,
+    310,
+    119,
+    317,
+    270
+   ],
+   "system": "plinth-shopfronts",
+   "storeys": 4,
+   "baysPerStorey": 13,
+   "sills": false,
+   "signage": {
+    "text": "ACTION",
+    "colour": "#1d5aa8",
+    "mount": "fascia"
+   },
+   "palette": {
+    "frame": "#4b4b4d",
+    "stone": "#8f8a84"
+   }
+  },
+  {
+   "wallSurfaces": [
+    354
+   ],
+   "system": "ribbon-windows",
+   "storeys": 1,
+   "palette": {
+    "brick": "#4a4a4c",
+    "frame": "#3a3a3c"
+   }
+  },
+  {
+   "wallSurfaces": [
+    133
+   ],
+   "system": "plinth-shopfronts",
+   "baysPerStorey": 4,
+   "sills": false,
+   "palette": {
+    "frame": "#4b4b4d",
+    "stone": "#8f8a84"
+   },
+   "alignWith": 0
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#a59d92",
+  "frame": "#4b4b4d",
+  "door": "#2a2a2a",
+  "stone": "#8f8a84"
+ },
+ "notes": [
+  "South front on Nieuwpoortstraat (panels 115, 38, 75, 103, 268 at bearing 179) from the rectified 2025-09-26 panorama, the curved south-east corner (panels 100, 218) and the east end on Den Brielstraat (panel 252) from the 2025-09-26 and 2021-02-24 panoramas: grey-beige brick, a glazed shop plinth between concrete piers under a brick band, three upper storeys of punched windows on a 3.4 m axis, each window set in a dark grey panel stack, and a set-back top storey clad dark grey with a band of windows (walls[1], 3DBAG panel 285 at 16.4-19.0 m).",
+  "Signs: ACTION (blue on white over the shop entrance of the discount store) is lettered on the plinth fascia, centred on the long front (the shop is off-centre in the photo). Also on the plinth: DE MAKELAARS with an orange location-pin logo (estate agent, south-east corner) and GOD IS LIEFDE posters in the east-end windows: not modelled.",
+  "Not modelled: the dark grey panels above and below each window (the kit has no spandrel panel per opening), the brick bands at each floor, the concrete piers of the plinth, the steel railings of the roof terrace and the roof-edge posts, two sectional glazed garage doors in the corner plinth. The north side (Den Brielstraat courtyard, 120 m) and the west end have no panorama within 35 m and are blank."
+ ],
+ "closedBands": true
+}
