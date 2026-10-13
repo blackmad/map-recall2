@@ -56,29 +56,34 @@ Pure. It sees the ride clock and one candidate name event and answers
   declined review simply stays due and is asked on a later street.
 - `recordAsk` records an ask the game actually opened.
 
-## How a question behaves while riding: `ridingPrompt.ts`
+## How a question behaves: it blocks, and the budget keeps the ride flowing
 
-Only multiple-choice route questions ride (`promptModeFor`). Typed answers need
-the keyboard, and bridge-arrival, water-crossing and transit questions are
-about the place being passed right now, so they keep the freeze
-(`questionFreezesRide`). `game.ridingPrompts = false` restores blocking for
-everything.
+Every question stops the vehicle until it is answered (user decision
+2026-10-13: the non-blocking "riding" question, options in the bottom band
+while moving, was tried and retired; a question you can ride away from
+teaches less than one you have to answer). What keeps the centre from
+stopping the bike every block is the budget above, not a moving card.
 
-Options sit in the bottom band; keys 1 to 4 or a tap answer while moving. A
-question ends one of three ways:
-
-- answered: graded right, wrong or no idea as usual;
-- expired: `RIDING_PROMPT_TIMEOUT_SECONDS = 12` with no answer. Graded
-  `passed`; the card hides, the name stays hidden because the rider is still on
-  the street;
-- left: the vehicle was on another road for an unbroken
-  `RIDING_LEAVE_STREET_SECONDS = 1.2` (long enough to ignore a junction
-  crossing or a bridge-end wobble). Graded `passed` and the name is shown in
-  a one-line reveal. Leaving wins over timing out.
+A name the budget declines is a **silent pass** (`silentPass.ts`): the HUD
+withholds it while the rider is on the street (`? ? ?` on the plaque, no
+label on the map), and once the vehicle has been on another road for an
+unbroken `LEAVE_STREET_SECONDS = 1.2` (long enough to ignore a junction
+crossing or a bridge-end wobble) the name is said in one line, "That was
+Singel", and graded `passed`.
 
 `passed` is a grade of its own: no attempt, no points, the streak is kept and
 the name is revealed, and it counts as exposure for spaced repetition, never as
-a miss. Penalising a rider for riding well would teach them to stop.
+a miss.
+
+**Bridge names** are not asked below hard difficulty unless the bridge is
+famous (`notableBridges.ts`: the Magere Brug, Blauwbrug, Torensluis, Hoge
+Sluis, Berlagebrug, Nesciobrug and a handful more). Amsterdam has a named
+bridge every hundred metres and most names are a number or a councillor;
+on easy and medium they were noise beside the street names. This applies
+both to the route question on a named bridge way ("Which bridge are you
+on?", the name simply shows as the road instead) and to the crossing
+question (`crossingQuestionKind`, the water under it is still taught). Hard
+and expert ask every bridge; `custom` follows the answer mode.
 
 ## Everything else that talks: `teachingPacer.ts`
 
@@ -107,13 +112,12 @@ out and, through the one-card rule, blocked every card until the next question.
 
 ## Where the code connects
 
-- `game.js` `_quizFreezesRide()` is the frame-loop hook; the page's
-  `hookInstalled` flag tells the typed module whether the page honours riding
-  mode.
-- The riding band is covered by `ridingPromptBand.ts` in the bottom-HUD check
-  and six Storybook states (desktop, portrait, stacked notices, small phone,
-  landscape, with postcard). `tests/e2e/riding-pacing.spec.ts` rides the seeded
-  route and asserts the budget and zero frozen seconds.
+- `game.js` `_quizFreezesRide()` is the frame-loop hook: true for every open
+  question, false for a silent pass (a withheld name with no card).
+- `tests/e2e/question-budget.spec.ts` rides the seeded route twice
+  (ask-everything, then the budget) and asserts at most two asks a rolling
+  minute, a zeroed speed at every question, no early reveal, and at least
+  one silent-pass reveal.
 - Spaced repetition itself and the review-ride planner live outside
   `game/`. `tests/e2e/review-ride.spec.ts` (seeded origin, mulberry32) pins
   that a due street off every landmark line is ridden as a via: the planner
@@ -130,13 +134,9 @@ out and, through the one-card rule, blocked every card until the next question.
   options and the live settings panel, persisted as `maxAsksPerMinute`;
   `_askBudgetPerMinute()` reads it, an explicit `game.maxAsksPerMinute` still
   wins as a test hook.
-- The riding-prompt CSS lives in `ridingPromptStyles.ts` and is pasted into
-  `index.html` as `<style id="canal-riding-prompt-styles">`;
-  `ridingPromptStyles.test.ts` fails if the pasted block drifts, and the
-  runtime injects the rules only while the block is absent.
-- On a ferry `_updateQuizOnFerry` keeps the feedback timeout and an open
-  riding prompt ticking, so a prompt opened at boarding expires at 12 s with
-  its name hidden instead of hanging until the ferry ends.
+- On a ferry `_updateQuizOnFerry` keeps the feedback timeout and a silent
+  pass ticking, so a name withheld at boarding is said once the ferry has
+  left its street instead of hanging until the crossing ends.
 
 ## Open questions
 

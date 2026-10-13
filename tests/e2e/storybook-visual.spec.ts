@@ -53,12 +53,6 @@ const STORIES: Array<[string, number, number]> = [
   ['canal-recall-route-setup--portrait-route-setup', 414, 896],
   ['canal-recall-route-setup--portrait-route-setup-here', 414, 896],
   ['canal-recall-route-setup--portrait-knowledge-review', 414, 896],
-  ['canal-recall-route-setup--riding-prompt', 1280, 800],
-  ['canal-recall-route-setup--riding-prompt-with-postcard', 1280, 800],
-  ['canal-recall-route-setup--portrait-riding-prompt', 414, 896],
-  ['canal-recall-route-setup--portrait-riding-prompt-stacked', 414, 896],
-  ['canal-recall-route-setup--portrait-riding-prompt-small-phone', 320, 568],
-  ['canal-recall-route-setup--landscape-riding-prompt', 896, 414],
 ];
 
 for (const [id, width, height] of STORIES) {

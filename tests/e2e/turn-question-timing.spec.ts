@@ -40,7 +40,6 @@ test('the route question opens a few metres onto the Noordsche Compagniebrug, no
     };
     game.state = 6; // PAUSED: this test steps the simulation itself
     // Ask-timing is the subject here, not rationing: ask on every street.
-    game.ridingPrompts = false;
     const player = game.player;
     player.handleInput = () => {};
     game._updateLandmarks = () => {};

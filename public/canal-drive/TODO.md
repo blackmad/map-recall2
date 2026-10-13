@@ -1108,7 +1108,16 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
-
+- **Stipple on zoom out (user 2026-10-13, aerial over the Singelgracht)**: at
+  camera heights of a few hundred metres every generic facade and roof shows
+  a field of white dots — the window cells of the bay texture minifying
+  without a far tier. Fix in the distance tiers of the facade/roof cells
+  (`look/slotCells.ts`, `bayTextures.ts`, `threeBuildingMesh.ts`): far tier
+  samples a flat wall colour (mean of the cell), mid tier a mipmapped cell,
+  near tier the full cell; same for the roof cells. The roofs-and-sheds lane
+  (2026-10-13) owns the roof cell scale by distance; the facade half is the
+  same change. Acceptance: the Singelgracht aerial shot at 300 m shows no
+  dots, the Bilderdijkstraat saddle shot is unchanged.
 **New-build stand-ins in the building tiles.** 3,671 OSM footprints started
 2015+ now fill holes the 3DBAG `v20250903` snapshot leaves (see HISTORY,
 2026-10-03). They are tier 4 with estimated heights: 1,995 kiosk/shed-sized at

@@ -40,15 +40,12 @@ assert.equal(canShowDriveByCard('desktop', idle), true, 'desktop still gets driv
 assert.equal(canShowDriveByCard('compact', idle), false, 'the phone layout does not (user request 2026-09-28)');
 assert.equal(canShowDriveByCard('desktop', quiz), false, 'and never under a quiz');
 
-// A riding (non-blocking) question owns the trivia slot, not the postcard's corner.
-const riding = { quizOpen: true, feedbackVisible: false, promptVisible: true, utilityOpen: false, ridingPromptOpen: true };
-assert.equal(canShowTeachingCard(riding), false, 'no museum card under a riding question');
-assert.equal(canShowDriveByCard('desktop', riding), false);
-assert.equal(canShowPostcard('desktop', riding), true, 'the postcard shares the band on a desktop');
-assert.equal(canShowPostcard('compact', riding), false, 'on a phone the postcard waits');
-assert.equal(canShowPostcard('desktop', { ...riding, feedbackVisible: true }), false, 'lingering feedback still blocks it');
-assert.equal(canShowPostcard('desktop', { ...riding, utilityOpen: true }), false);
-assert.equal(canShowPostcard('desktop', quiz), false, 'a blocking question still hides it');
+// The postcard waits for a question like every other card (riding questions
+// were retired 2026-10-13: every question blocks).
+assert.equal(canShowPostcard('desktop', quiz), false, 'a question hides it');
+assert.equal(canShowPostcard('compact', quiz), false);
+assert.equal(canShowPostcard('desktop', { ...idle, feedbackVisible: true }), false, 'lingering feedback blocks it');
+assert.equal(canShowPostcard('desktop', { ...idle, utilityOpen: true }), false);
 assert.equal(canShowPostcard('desktop', idle), true);
 
-console.log('teaching surface: 28 checks passed');
+console.log('teaching surface: 25 checks passed');

@@ -51,17 +51,14 @@ import { ROTATION_STORAGE_KEY } from '../facts/factStore';
 import { ANSWERED_STREET_SECONDS } from '../streetOverlayStyle';
 import { feedbackExpired, gapElapsed, streetClearOfStop } from './teachingPacer';
 import { decideQuestion, EMPTY_BUDGET, recordAsk, type BudgetDecision, type NameEvent } from './questionBudget';
-import {
-  advanceRidingPrompt, openRidingPrompt, promptModeFor, questionFreezesRide, type PromptMode,
-} from './ridingPrompt';
-import { installRidingPromptStyles } from './ridingPromptStyles';
-import { ridingPromptCss, ridingPromptRect, ridingPromptSize } from '../ridingPromptBand';
+import { advanceSilentPass, beginSilentPass, questionFreezesRide } from './silentPass';
+import { bridgeNameAskable } from './notableBridges';
 import { nearestRouteIndex } from './routeSelection';
 
 /** How many wrong answers a multiple-choice question offers. */
 const DISTRACTOR_COUNT = 3;
 /** px — a street within this of the planned route is one the ride is teaching. */
-const RIDING_ON_ROUTE_PX = 90;
+const BUDGET_ON_ROUTE_PX = 90;
 /** px — how far from the vehicle a nearby name may be and still be offered as
  *  a plausible wrong answer. */
 const CHOICE_POOL_RADIUS = 1500;
@@ -355,17 +352,17 @@ export class GameRecallRuntime {
   _updateQuizOnFerry(dt: number): void {
     if (!this.player) return;
     this._tickFeedbackTimeout();
-    if (this.quizPromptName && this._ridingState) this._updateRidingPrompt(dt);
+    if (this.quizPromptName && this._silentPass) this._updateSilentPass(dt);
   }
 
   _updateCanalQuiz(dt: number): void {
     if (!this.player) return;
     this._tickFeedbackTimeout();
-    if (!this.quizPromptName && this._ridingState) this._ridingState = null;
+    if (!this.quizPromptName && this._silentPass) this._silentPass = null;
     if (this.quizPromptName) {
-      // A question is already open (a riding one, or a bridge question opened
-      // earlier this frame): nothing else may ask until it is settled.
-      this._updateRidingPrompt(dt);
+      // A question is open (or a name is being withheld on a silent pass):
+      // nothing else may ask until it is settled.
+      this._updateSilentPass(dt);
       return;
     }
     if (this._tryColdOpenReview()) return;
@@ -471,11 +468,16 @@ export class GameRecallRuntime {
         shuffle,
       )
       : [];
-    // Riding mode rations route questions (see questionBudget.ts). The old
-    // ask-everything behaviour stays for typed answers, transit and a page
-    // that does not honour riding mode.
-    const mode = this._routePromptMode(lineChoices !== null);
-    if (mode === 'riding') {
+    // Below hard, a bridge's name is only asked when the bridge is famous
+    // (notableBridges.ts); otherwise the name simply shows as the road.
+    if (routeBridge && !bridgeNameAskable(this.routeDifficulty, decision.name, this.routeOptions.answerMode)) {
+      this.quizCurrentName = decision.name;
+      return;
+    }
+    // Route questions are rationed (questionBudget.ts) in every answer mode;
+    // transit keeps its own stop and line cooldowns. A declined new name is
+    // ridden past silently and said once the street is left.
+    if (lineChoices === null) {
       const verdict = this._budgetForRouteName(decision.name);
       if (verdict.action !== 'ask') {
         this.quizCurrentName = decision.name;
@@ -485,7 +487,6 @@ export class GameRecallRuntime {
       this._questionBudget = recordAsk(this._questionBudget || EMPTY_BUDGET, this.raceTime);
     }
     this._openQuizPrompt({
-      mode,
       kind: 'route',
       name: decision.name,
       subject: routeBridge ? 'bridge' : profile.quizRouteSubject,
@@ -833,9 +834,7 @@ export class GameRecallRuntime {
    * as a question about the bridge. The question is the headline now and the
    * situation is the caption under it.
    */
-  _openQuizPrompt({ mode = 'blocking', kind, name, subject, question, context, choices = null, segmentIndex = -1, pointIndex = 0 }: {
-    /** `riding` leaves the vehicle moving; see ridingPrompt.ts. */
-    mode?: PromptMode;
+  _openQuizPrompt({ kind, name, subject, question, context, choices = null, segmentIndex = -1, pointIndex = 0 }: {
     kind: QuizPromptKind;
     name: string;
     subject: QuizSubject;
@@ -861,21 +860,16 @@ export class GameRecallRuntime {
     document.getElementById('canal-card')?.classList.remove('answered');
     if (this._promptFeedback) this._promptFeedback.textContent = '';
     this._clearLandmarkNotice();
-    // A riding question leaves the postcard's corner alone on a desktop.
-    if (!(mode === 'riding' && this.viewport?.mode !== 'compact')) {
-      this._neighborhoodNotice = null;
-      this._neighborhoodNoticeTimer = 0;
-    }
+    this._neighborhoodNotice = null;
+    this._neighborhoodNoticeTimer = 0;
     const speedBefore = this.player.speed;
-    this.quizPromptMode = mode;
-    this._ridingState = mode === 'riding' ? openRidingPrompt(name) : null;
-    this._ridingSilent = false;
-    if (mode !== 'riding') {
-      this.player.speed = 0;
-      this.player.vx = 0;
-      this.player.vy = 0;
-    }
-    this._logPrompt({ name, kind, mode, speedBefore });
+    // Every question holds the vehicle until it is answered (user decision
+    // 2026-10-13); the budget, not a moving card, keeps the ride flowing.
+    this._silentPass = null;
+    this.player.speed = 0;
+    this.player.vx = 0;
+    this.player.vy = 0;
+    this._logPrompt({ name, kind, speedBefore });
     const chip = QUIZ_SUBJECTS[subject] || QUIZ_SUBJECTS.water;
     this._promptKind.dataset.kind = chip.kind;
     (this._promptKind.firstElementChild as HTMLElement).innerHTML = chip.icon;
@@ -884,8 +878,6 @@ export class GameRecallRuntime {
     this._promptQuestion.textContent = context;
     this._promptInput.setAttribute('aria-label', `${chip.label} name`);
     this._promptInput.placeholder = chip.placeholder;
-    this._prompt.classList.toggle('riding', mode === 'riding');
-    if (mode === 'riding') this._positionRidingPrompt();
     this._prompt.style.display = 'flex';
     const playerScreen = this.camera.worldToScreen(this.player.x, this.player.y);
     this._prompt.classList.toggle('dock-left', playerScreen.x > CANVAS_W / 2);
@@ -905,38 +897,12 @@ export class GameRecallRuntime {
     }
   }
 
-  // ---- Riding (non-blocking) questions ----
+  // ---- The question budget and the silent pass ----
 
-  /**
-   * The one thing `game.js` asks: must the frame loop hold the vehicle for the
-   * open question? Riding questions say no. `_updateRacing` calls this in place
-   * of testing `quizPromptName` directly.
-   */
+  /** The frame-loop hook (`game.js` `_updateRacing`): every open question
+   *  holds the vehicle; a silent pass only withholds a name. */
   _quizFreezesRide(): boolean {
-    return questionFreezesRide(!!this.quizPromptName, this.quizPromptMode || 'blocking');
-  }
-
-  /** True when this page's frame loop honours riding questions. Detected from
-   *  the loop itself, so this module can ship before `game.js` is edited and
-   *  riding mode switches on by itself when it is. `ridingPrompts = false`
-   *  turns it off. */
-  _ridingPromptsReady(): boolean {
-    if (this.ridingPrompts === false) return false;
-    if (this._frameLoopHonoursRiding === undefined) {
-      this._frameLoopHonoursRiding = typeof this._updateRacing === 'function'
-        && String(this._updateRacing).includes('_quizFreezesRide');
-    }
-    return this._frameLoopHonoursRiding;
-  }
-
-  _routePromptMode(choicesAreLines: boolean): PromptMode {
-    return promptModeFor({
-      hookInstalled: this._ridingPromptsReady(),
-      enabled: this.ridingPrompts,
-      answerMode: this.routeOptions.answerMode,
-      kind: 'route',
-      transit: isTransit(this.travelMode) || choicesAreLines,
-    });
+    return questionFreezesRide(!!this.quizPromptName, !!this._silentPass);
   }
 
   /** Route questions per minute: an explicit `game.maxAsksPerMinute` (tests,
@@ -953,7 +919,7 @@ export class GameRecallRuntime {
     const due = !!this._routeReviewDue?.[key];
     const route = this._liveRoutePath;
     const onRoute = !route || route.length < 2 || !this.player
-      || nearestRouteIndex(route, this.player).distance <= RIDING_ON_ROUTE_PX;
+      || nearestRouteIndex(route, this.player).distance <= BUDGET_ON_ROUTE_PX;
     const event: NameEvent = {
       name,
       kind: due ? 'due-review' : 'new-unlearned',
@@ -969,62 +935,24 @@ export class GameRecallRuntime {
   _beginSilentPass(name: string): void {
     this.quizPromptName = name;
     this.quizPromptKind = 'route';
-    this.quizPromptMode = 'riding';
-    this._ridingState = { ...openRidingPrompt(name), expired: true };
-    this._ridingSilent = true;
+    this._silentPass = beginSilentPass(name);
   }
 
-  /** Place the strip from the HUD layout so it clears every other HUD card. */
-  _positionRidingPrompt(): void {
-    installRidingPromptStyles();
-    const viewport = this.viewport;
-    if (!viewport || !this._prompt) return;
-    const rect = ridingPromptRect({
-      viewport,
-      postcardVisible: !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0),
-      neighborhoodVisible: !!this.currentNeighborhood,
-      minimapVisible: this.showMiniMap,
-      zoomVisible: this._zoomBadgeTimer > 0,
-      controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION,
-    });
-    const css = ridingPromptCss(rect, viewport);
-    const style = this._prompt.style;
-    style.setProperty('--riding-left', `${css.left}px`);
-    style.setProperty('--riding-bottom', `${css.bottom}px`);
-    style.setProperty('--riding-width', `${css.width}px`);
-    this._prompt.classList.toggle('riding-narrow', ridingPromptSize(viewport).columns === 2);
-  }
-
-  /** Per frame while a question is open: time it out, notice the street being left. */
-  _updateRidingPrompt(dt: number): void {
-    const state = this._ridingState;
+  /** Per frame while a name is withheld: notice the street being left. */
+  _updateSilentPass(dt: number): void {
+    const state = this._silentPass;
     if (!state || !this.player) return;
     const roadName = this.track.getRoadName(this.player.x, this.player.y, this.player.angle) || '';
-    const step = advanceRidingPrompt(state, { dt, roadName });
-    this._ridingState = step.state;
-    if (step.event === 'leave') {
-      this._finishRidingPass();
-    } else if (step.event === 'expire') {
-      // Out of time but still on the street: the card goes, the name stays
-      // hidden until the street is left.
-      this._prompt.style.display = 'none';
-      this._prompt.classList.remove('riding');
-      this.quizCurrentName = state.name;
-      this.quizCandidateName = '';
-      this.quizCandidateTimer = 0;
-      this.quizCandidateMetres = 0;
-      this._logPrompt({ name: state.name, kind: 'route', mode: 'riding', event: 'expired' });
-    } else if (!state.expired) {
-      this._positionRidingPrompt();
-    }
+    const step = advanceSilentPass(state, { dt, roadName });
+    this._silentPass = step.state;
+    if (step.left) this._finishSilentPass();
   }
 
-  /** The rider left the street without answering: grade `passed`, reveal. */
-  _finishRidingPass(): void {
-    const state = this._ridingState;
+  /** The rider left the withheld street: grade `passed` (exposure), reveal. */
+  _finishSilentPass(): void {
+    const state = this._silentPass;
     if (!state || !this.player) return;
     const name = state.name;
-    const silent = !!this._ridingSilent;
     const recallFeature = this._recallFeatureAt(name, this.player.x, this.player.y, this.quizPromptSubject === 'bridge' ? 'bridge' : '');
     const result = CanalRecallAnswerPath.submitAnswer({
       correctName: name,
@@ -1040,9 +968,9 @@ export class GameRecallRuntime {
       recallStore: this.recall,
       revealName: (revealed: string) => this._revealName(revealed),
     });
-    this.quizFeedback = silent ? `That was ${name}` : result.feedback;
-    this._ridingState = null;
-    this._ridingSilent = false;
+    void result;
+    this.quizFeedback = `That was ${name}`;
+    this._silentPass = null;
     this.quizCurrentName = name;
     this.quizCandidateName = '';
     this.quizCandidateTimer = 0;
@@ -1051,10 +979,8 @@ export class GameRecallRuntime {
     this.quizPromptSubject = '';
     this.quizPromptSegmentIndex = -1;
     this.quizPromptPointIndex = 0;
-    this.quizPromptMode = 'blocking';
     this._prompt.style.display = 'none';
-    this._prompt.classList.remove('riding');
-    this._logPrompt({ name, kind: 'route', mode: 'riding', event: silent ? 'revealed' : 'passed' });
+    this._logPrompt({ name, kind: 'route', event: 'revealed' });
   }
 
   /** Plaque feedback is a line, not a state: it goes after FEEDBACK_TIMEOUT_SECONDS. */
@@ -1078,7 +1004,7 @@ export class GameRecallRuntime {
 
   /** What was asked, when, and whether the vehicle was stopped for it. Kept for
    *  the pacing e2e and for diagnosing "it keeps asking me" reports. */
-  _logPrompt(entry: { name: string; kind: string; mode: PromptMode; speedBefore?: number; event?: string }): void {
+  _logPrompt(entry: { name: string; kind: string; speedBefore?: number; event?: string }): void {
     const log = this._promptLog || (this._promptLog = []);
     log.push({
       at: this.raceTime, ...entry,
@@ -1136,6 +1062,7 @@ export class GameRecallRuntime {
       waterKnownHere: !!water && !!this.recall && this.recall.isKnownHere(water),
       waterSuppressedHere: !!water && !!this.recall && this.recall.isSuppressedHere(water),
       bridgeSuppressedHere: !!this.recall && this.recall.isSuppressedHere(bridgeFeature),
+      bridgeAskable: bridgeNameAskable(this.routeDifficulty, closest.name, this.routeOptions.answerMode),
       currentRoadName: this.track.getRoadName(this.player.x, this.player.y, this.player.angle),
       quizCurrentName: this.quizCurrentName,
     });
@@ -1217,8 +1144,8 @@ export class GameRecallRuntime {
    *  mouse; 0 says so when you do not know it, which is a real answer of its
    *  own. */
   _handleChoiceShortcut(): void {
-    // An expired riding question has no card: its keys are free again.
-    if (!this.quizPromptName || this._ridingState?.expired) return;
+    // A silent pass has no card: its keys are free.
+    if (!this.quizPromptName || this._silentPass) return;
     if (this.input.wasPressed('Digit0') || this.input.wasPressed('Numpad0')) {
       this._submitCanalAnswer(null, true);
       return;
@@ -1251,9 +1178,8 @@ export class GameRecallRuntime {
    * review schedule.
    */
   _submitCanalAnswer(selectedAnswer: string | null, noIdea = false): void {
-    if (!this.quizPromptName || !this.player || this._ridingState?.expired) return;
-    this._ridingState = null;
-    this.quizPromptMode = 'blocking';
+    if (!this.quizPromptName || !this.player || this._silentPass) return;
+    this._silentPass = null;
     const correctName = this.quizPromptName;
     const answer = selectedAnswer == null ? this._promptInput.value : selectedAnswer;
     // A crossing answer belongs to the crossing, not to wherever the vehicle
