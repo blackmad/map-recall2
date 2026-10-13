@@ -1558,5 +1558,11 @@
   "buildVersion": 2,
   "bytes": 41464,
   "triangles": 1384
+ },
+ "de-duif": {
+  "sourceHash": "bedb87e5d5f4c1c6",
+  "buildVersion": 2,
+  "bytes": 36568,
+  "triangles": 1244
  }
 }
