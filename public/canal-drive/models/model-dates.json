@@ -557,9 +557,9 @@
       "dateSource": "asset-update"
     },
     "de-dokwerker": {
-      "updatedAt": "2026-10-04T03:57:56+02:00",
-      "version": "82ce929da58ab5aa",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-13T22:03:46.980Z",
+      "version": "f227d40654e3828c",
+      "dateSource": "asset-update"
     },
     "de-dolphijn": {
       "updatedAt": "2026-10-04T04:54:22+02:00",
@@ -2952,13 +2952,13 @@
       "dateSource": "asset-update"
     },
     "rembrandtmonument": {
-      "updatedAt": "2026-10-13T21:57:40.210Z",
-      "version": "872c2e51a599c19a",
+      "updatedAt": "2026-10-13T22:04:17.336Z",
+      "version": "789043ca1e977063",
       "dateSource": "asset-update"
     },
     "vondelmonument": {
-      "updatedAt": "2026-10-13T22:00:36.847Z",
-      "version": "6b0fbe12dd0a0e54",
+      "updatedAt": "2026-10-13T22:04:18.378Z",
+      "version": "6ac87d4c2310cfcf",
       "dateSource": "asset-update"
     },
     "begijnhof": {
@@ -2972,8 +2972,23 @@
       "dateSource": "asset-update"
     },
     "slavernijmonument": {
-      "updatedAt": "2026-10-13T22:02:37.627Z",
-      "version": "79f6f502beedd6a2",
+      "updatedAt": "2026-10-13T22:04:19.458Z",
+      "version": "876f3d4dfca9523a",
+      "dateSource": "asset-update"
+    },
+    "rembrandtmonument.lod1": {
+      "updatedAt": "2026-10-13T21:57:49.295Z",
+      "version": "abb36e8431fa3ee7",
+      "dateSource": "asset-update"
+    },
+    "slavernijmonument.lod1": {
+      "updatedAt": "2026-10-13T22:02:44.652Z",
+      "version": "b27530a154eb1a88",
+      "dateSource": "asset-update"
+    },
+    "vondelmonument.lod1": {
+      "updatedAt": "2026-10-13T22:00:42.600Z",
+      "version": "281d548344fd1363",
       "dateSource": "asset-update"
     }
   }

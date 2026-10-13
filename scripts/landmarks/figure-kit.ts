@@ -22,7 +22,7 @@ export interface Pose {
   height?: number;
   /** Pelvis height above the placement origin; omitted: the lowest foot rests on the origin. */
   pelvisY?: number;
-  /** Torso lean forward (pitch), sideways bend (roll) and twist (yaw about the spine). */
+  /** Torso lean forward (positive = bends forward), sideways bend (roll) and twist (yaw about the spine); head pitch positive = nods down. */
   lean?: number; bendSide?: number; twist?: number;
   /** Whole-body yaw about y. */
   turn?: number;
@@ -34,6 +34,8 @@ export interface Pose {
   skirt?: {len: number; flare?: number};
   /** Sleeve/limb thickness factor (default 1). */
   stout?: number;
+  /** Trunk width factor (default 1): a loose work shirt or heavy coat. */
+  chest?: number;
 }
 
 /** Fractions of standing height. */
@@ -101,15 +103,15 @@ export function buildFigure(pose: Pose, colour: Colour, accent: Colour = colour)
       if (side > 0) { out.kneeL = p(knee); out.footL = p(ankle); } else { out.kneeR = p(knee); out.footR = p(ankle); }
     }
     // pelvis and trunk
-    const spine = M(root, rx(-(pose.lean ?? 0)), rz(pose.bendSide ?? 0), ry(pose.twist ?? 0));
-    const pelvisR = P.hipHalf * H * 1.12;
+    const spine = M(root, rx(pose.lean ?? 0), rz(pose.bendSide ?? 0), ry(pose.twist ?? 0));
+    const pelvisR = P.hipHalf * H * 1.12 * (pose.chest ?? 1);
     const pg = dropCap(new T.CylinderGeometry(pelvisR * 0.95, pelvisR, 0.1 * H, 6), 1); pg.scale(1, 1, 0.62);
     add(pg, M(root, tr(0, 0.02 * H, 0)), accent === colour ? colour : accent);
     if (pose.skirt && pose.skirt.len > 0) {
       const sk = new T.CylinderGeometry(pelvisR * 1.05, pelvisR * (pose.skirt.flare ?? 1.35), pose.skirt.len, 6, 1, true); sk.scale(1, 1, 0.8);
       add(sk, M(spine, tr(0, 0.02 * H - pose.skirt.len / 2, 0)));
     }
-    const chestW = P.shoulderHalf * H * 1.05;
+    const chestW = P.shoulderHalf * H * 1.05 * (pose.chest ?? 1);
     const tg = new T.CylinderGeometry(chestW, pelvisR * 0.92, P.trunk * H, 6); tg.scale(1, 1, 0.58);
     add(tg, M(spine, tr(0, P.trunk * H / 2 + 0.01 * H, 0)));
     const neckM = M(spine, tr(0, P.trunk * H + 0.01 * H, 0));
@@ -126,7 +128,7 @@ export function buildFigure(pose: Pose, colour: Colour, accent: Colour = colour)
       if (side > 0) { out.elbowL = p(elbow); out.handL = p(hand); out.frameHandL = hand; } else { out.elbowR = p(elbow); out.handR = p(hand); out.frameHandR = hand; }
     }
     // head
-    const head = M(neckM, tr(0, P.neck * H, 0), ry(pose.head?.yaw ?? 0), rx(-(pose.head?.pitch ?? 0)), rz(pose.head?.roll ?? 0));
+    const head = M(neckM, tr(0, P.neck * H, 0), ry(pose.head?.yaw ?? 0), rx(pose.head?.pitch ?? 0), rz(pose.head?.roll ?? 0));
     const hg = new T.SphereGeometry(P.head * H * 0.42, 6, 3); hg.scale(0.85, 1.2, 1.0);
     add(hg, M(head, tr(0, P.head * H * 0.5, 0)));
     const hatTop = P.head * H;
