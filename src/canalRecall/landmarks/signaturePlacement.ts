@@ -76,11 +76,13 @@ export interface SignatureModelSpec {
   readonly surveyed?: SurveyedAnchor;
   /** Stable id for this placement, used in the manifest and in tests. */
   readonly id: string;
-  readonly assetKind?: 'building' | 'memorial' | 'ordinary-building' | 'landscape';
+  readonly assetKind?: 'building' | 'memorial' | 'ordinary-building' | 'landscape' | 'standalone-structure';
   /** Exact native plan for ordinary replacement picking, including courtyard holes. */
   readonly buildingFootprint?: { readonly type: 'Polygon' | 'MultiPolygon'; readonly coordinates: unknown };
   /** Source-supported per-model palette overrides; decals retain their original colors. */
   readonly materialOverrides?: Readonly<Record<string, string>>;
+  /** Export culling for source-owned single-sided surfaces; existing defaults remain double-sided. */
+  readonly doubleSided?: boolean;
   /** Human name, shown in the attribution panel. */
   readonly name: string;
   /** The landmark extract entry this model represents, so the existing card,
@@ -92,6 +94,8 @@ export interface SignatureModelSpec {
   readonly destinationLandmarkIds?: readonly string[];
   /** Keep graphics and their support positions exact while compressing ordinary geometry. */
   readonly preservePositionPrecision?: boolean;
+  /** Preserve all surveyed positions when quantization breaks thin walls or courtyard boundaries. */
+  readonly preserveAllPositionPrecision?: boolean;
   /** Runtime GLB, relative to the Canal Recall page. */
   readonly modelUrl: string;
   /** Building identities: OSM `w`/`r` ids and, where needed, BAG pand ids.

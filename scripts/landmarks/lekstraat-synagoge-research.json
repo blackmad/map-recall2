@@ -1,0 +1,479 @@
+{
+  "id": "lekstraat-synagoge",
+  "status": "source-supported-original-draft-CPU-only-unaccepted",
+  "retrievedAt": "2026-10-08",
+  "identity": {
+    "poiId": "extract_landmarks_665340356",
+    "bagId": "0363100012104516",
+    "osmId": "w277300134",
+    "monumentId": "526707",
+    "addresses": [
+      "Lekstraat61",
+      "Lekstraat63"
+    ],
+    "registeredYear": 1937,
+    "status": "Pand in gebruik",
+    "vboCount": 5,
+    "functions": [
+      "bijeenkomstfunctie",
+      "woonfunctie"
+    ],
+    "scope": "Exactcurrent BAG complex; mainhall, smallsynagogue, linkedresidence, laterlowrearannex. Smallrearannex notRCEprotected butcurrentPandcontainsit. Neighborparents kept; noforecourtparcelinclusion. Extractnumeral665340356 is not anOSM objectnumeral: rawunrelatednode/way attempts retained as failedidentityevidence."
+  },
+  "criticalRecognition": [
+    "Stone-faced tall flat-roof hall",
+    "Five square Lekstraat ground windows around recessed canopy entrance",
+    "Seven paired tall upper side windows and seven square ground windows",
+    "Lower yellow-brick secondary synagogue with setback residence and oval glazed terrace bay",
+    "No roof over open front gardens; exact BAG footprint only"
+  ],
+  "assertions": [
+    {
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/526707",
+      "rawFile": "artifacts/lekstraat-synagoge/raw/register.pdf",
+      "processedFile": "artifacts/lekstraat-synagoge/register-description.txt",
+      "part": "wholecomplexandnamedwings",
+      "date": "fullregisterPDFread2026-10-08",
+      "confidence": "high-source-description",
+      "features": "Two rectangular volumes withlink; irregularUplan;2\u20133storeys flatroofs/copperoverhangs. Stonefacedmainhall:5squarefrontwindows,7squareground/7tallpairedsidewindows,NEverticalwindowstrip; Hebrewmetalinscription. Yellowbricksmallhall/residence: separatecanopiedmen/womenentry,windowstrips,setbackresidencewithovalglassbayandtwoflankingwindowseachside,cylindricalstair,dakterras/railings,roundlanternpipe,broadrearwindowstripandfullwidthbalcony. Lowrearadditionexcludedfromdesignation."
+    },
+    {
+      "source": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012104516",
+      "rawFile": "artifacts/lekstraat-synagoge/raw/3dbag.json",
+      "part": "roof/terrain",
+      "date": "currentAPIretrieval2026-10-08; AHN5 dates preservedraw",
+      "confidence": "surveyMassing",
+      "features": "AHN-derived absolute roof levels rebased by0.339m ground. Main hall flat roof14.87m; terrace8.96m; residence12.30m. Roof69/73/77 fits near junctions and small rooftop forms cannot establish whole-building roof silhouettes. Source-supported circular stair/oval glazed bay modeled explicitly."
+    },
+    {
+      "source": "https://www.nihs.nl/synagoges/lekstraat/",
+      "rawFile": "artifacts/lekstraat-synagoge/raw/nihs.html",
+      "part": "historicidentity/sign",
+      "date": "2026-10-08 retrieval",
+      "confidence": "operatorhistory",
+      "features": "ModernistElzas1937,LeCorbusierinfluence,1Kings6:13actualfacadequotation; mainhalllatermuseum/auctionhouse. Currentoperatorstatusof63notassumed:2026municipalbrochurecachedwebtool saysnewtenantselection,originalURL404."
+    }
+  ],
+  "referenceViews": [
+    {
+      "rawPhoto": "artifacts/lekstraat-synagoge/raw/overall.jpg",
+      "catalogue": "artifacts/lekstraat-synagoge/raw/commons.json",
+      "role": "Mainhallfront+SWside,2013 metadata"
+    },
+    {
+      "rawPhoto": "artifacts/lekstraat-synagoge/raw/other.jpg",
+      "catalogue": "artifacts/lekstraat-synagoge/raw/commons.json",
+      "role": "Smallwingfront+terrace/residencebay/pipe,2013metadata"
+    },
+    {
+      "rawPhoto": "artifacts/lekstraat-synagoge/raw/side.jpg",
+      "catalogue": "artifacts/lekstraat-synagoge/raw/commons.json",
+      "role": "SmallwingNEsideentrance/blankwall,2010uploaddate"
+    },
+    {
+      "rawPhoto": "artifacts/lekstraat-synagoge/raw/front.jpg",
+      "catalogue": "artifacts/lekstraat-synagoge/raw/commons.json",
+      "role": "ActualHebrewmetalletteringandentrance,2010uploaddate"
+    },
+    {
+      "rawPhoto": "artifacts/lekstraat-synagoge/raw/archive-1938.jpg",
+      "catalogue": "artifacts/lekstraat-synagoge/raw/commons.json",
+      "role": "Historicstreetcomposition/opencornergardens,1938"
+    },
+    {
+      "rawPhoto": "artifacts/lekstraat-synagoge/raw/drawing.jpg",
+      "catalogue": "artifacts/lekstraat-synagoge/raw/commons.json",
+      "role": "RCE1973reproductionof1938floorplan,usedforrelativescopeonly"
+    },
+    {
+      "rawPhoto": "artifacts/lekstraat-synagoge/raw/recording_2025-07-14_11-54-16_00451.jpg",
+      "rawMetadata": "artifacts/lekstraat-synagoge/raw/recording_2025-07-14_11-54-16_00451.jpg.provenance.json",
+      "derivedPhoto": "artifacts/lekstraat-synagoge/processed/recording_2025-07-14_11-54-16_00451.jpg",
+      "derivedSettings": "artifacts/lekstraat-synagoge/processed/recording_2025-07-14_11-54-16_00451.json",
+      "panoId": "recording_2025-07-14_11-54-16_00451",
+      "capturedAt": "2025-07-14T12:04:46Z",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-14_11-54-16_00451/",
+      "viewerUrl": "https://data.amsterdam.nl/data/?lagen=panorama&zoom=20&lat=52.34425&lng=4.90275",
+      "settings": {
+        "heading": 138.01018869684754,
+        "width": 1200,
+        "height": 950,
+        "fov": 90,
+        "pitch": 12
+      },
+      "occlusion": "2025 summer trees occlude terrace/residence and much of lowerwing;2023leaf-off clarifies facade. Parked cars partially obscure pavement; dated2013oblique view supplements upperresidence details. Actualpixeldate via timestamp, missionyear notauthority.",
+      "observations": "Five front squares runlevel; central square aligns directly above central doors/canopy. Two lowerwing windowgroups/wood doors; terracebay/pipe preserved butpartlyhidden. Hebrewmetalletters/copperoverhang remain; auctionbusiness name not included."
+    },
+    {
+      "rawPhoto": "artifacts/lekstraat-synagoge/raw/TMX7316010203-002914_pano_0010_000101.jpg",
+      "rawMetadata": "artifacts/lekstraat-synagoge/raw/TMX7316010203-002914_pano_0010_000101.jpg.provenance.json",
+      "derivedPhoto": "artifacts/lekstraat-synagoge/processed/TMX7316010203-002914_pano_0010_000101.jpg",
+      "derivedSettings": "artifacts/lekstraat-synagoge/processed/TMX7316010203-002914_pano_0010_000101.json",
+      "panoId": "TMX7316010203-002914_pano_0010_000101",
+      "capturedAt": "2023-01-03T12:05:06.167030Z",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002914_pano_0010_000101/",
+      "viewerUrl": "https://data.amsterdam.nl/data/?lagen=panorama&zoom=20&lat=52.34425&lng=4.90275",
+      "settings": {
+        "heading": 138.32723213604828,
+        "width": 1200,
+        "height": 950,
+        "fov": 90,
+        "pitch": 12
+      },
+      "occlusion": "2025 summer trees occlude terrace/residence and much of lowerwing;2023leaf-off clarifies facade. Parked cars partially obscure pavement; dated2013oblique view supplements upperresidence details. Actualpixeldate via timestamp, missionyear notauthority.",
+      "observations": "Five front squares runlevel; central square aligns directly above central doors/canopy. Two lowerwing windowgroups/wood doors; terracebay/pipe preserved butpartlyhidden. Hebrewmetalletters/copperoverhang remain; auctionbusiness name not included."
+    }
+  ],
+  "archiveSearch": {
+    "address": "Lekstraat63",
+    "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Lekstraat%2063",
+    "rawFile": "artifacts/lekstraat-synagoge/raw/beeldbank-address.html",
+    "access": "JavaScriptviewer shell; not inspectedresults. Addressbasedboundedsearchperformedearly. Useful1938BeeldbankPRKBB00120000004originalandRCE20013959drawingreproduction subsequentlyrecoveredviaCommons withcatalogue/rightsmetadata."
+  },
+  "accessGaps": [
+    {
+      "url": "https://assets.amsterdam.nl/publish/pages/1079752/20260115_brochure_openbare_selectieprocedure_lekstraat_63_.pdf",
+      "state": "Currentoriginal404afterboundedretries; webtoolcachedtextreadwasnotoriginaldownload. Do notclaiminspectedcurrentPDFdrawings."
+    },
+    {
+      "source": "DataAmsterdamBouwdossiers1905\u20132010",
+      "state": "Noinspecteddossiersheets; official1938planreproductionavailable. Remaininginterior/ovaltopcurvedgeometrycanuseusefulsectionifrequested; noemailrequestneededforcurrentboundedexternalmodel."
+    }
+  ],
+  "decodedGeometry": {
+    "input": "artifacts/lekstraat-synagoge/lekstraat-synagoge.glb",
+    "sha256": "209977298a1d6702159badc5ccabd5d32bf48de45510a50fdcdef9ff4a1ec294",
+    "bytes": 187848,
+    "triangles": 13844,
+    "bounds": {
+      "min": [
+        -20.092735290527344,
+        -0.001223581986607769,
+        -19.103490384449287
+      ],
+      "max": [
+        21.58052635192871,
+        14.94122291059989,
+        21.272529157032295
+      ]
+    },
+    "roofUpArea": 824.7700235489222,
+    "roofDownArea": 0,
+    "glassProbes": 272,
+    "roofProbes": 69,
+    "roofFirstHitObstructions": [
+      {
+        "roof": 68,
+        "expected": 8.956537948608398,
+        "first": "stone",
+        "actual": 11.410054045380136,
+        "x": 7.740900675455729,
+        "z": -14.749351501464844,
+        "note": "Source67curvedbay intentionally occupies this terrace part; verify native"
+      },
+      {
+        "roof": 77,
+        "expected": 5.221524940490722,
+        "first": "stone",
+        "actual": 11.48890608440972,
+        "x": 14.550012906392414,
+        "z": -3.1599334478378296,
+        "note": "Upper residence facade trim near roofedge; verify native"
+      }
+    ],
+    "failures": [],
+    "scope": "Decoded mesh/source surface checks only; nativeGPU/gallery/game/neighbor/route/pin/card/performance pending"
+  },
+  "failuresPreserved": [
+    {
+      "hash": "75b69b778d0a35d72f5b8617cde353eacc68cf74eac8664c69c19ce5d61903ee",
+      "issue": "Independentreviewfoundmissingresidencewindowsflankingovalbay; source-backed4upperpanesaddedand32fractionalglassprobesadded. Failedmesh/report/imagepreservedartifacts/lekstraat-synagoge/failed-residence-75b69b*."
+    },
+    {
+      "issue": "Firstmodelhadwholewidthsmallwingwindowbands/angularbay; replacedwithtwoseparatedwindowgroupsandroundedsourcebay. CPUfailedfirstviewsretained."
+    },
+    {
+      "hash": "3941f33266de6cdfbb37406286fc8bd6ad43b706d6c1aa465ece16eb7a589cee",
+      "issue": "Official2023/2025sourcecomparison caught incorrectcentralfrontsquarewindow-to-dooralignment. Correctedfiveevenlyspacedsquares/centralentry. Failedmesh/imagepreserved asfailed-front-layout-3941f3*. EarlierindependentCPU PASS is tiedto3941f3, latest209977requiresboundedre-review."
+    }
+  ],
+  "pending": [
+    "Root independent source/renderdecision",
+    "Nativegallery default andfourlowangles",
+    "Livegame bothstreets, exactsuppressionandretainedneighbors",
+    "Actualpointerclickedmeaningfulcard and destination/pinlabel/routechosenfinish",
+    "Sourcepackcommit/pushbeforemodelcommit",
+    "Gameplayperformancecheck"
+  ],
+  "sourceArchive": {
+    "status": "Raworiginalsstagedinworkeronly; rootaloneownsprivatearchive/index/push",
+    "staging": "artifacts/lekstraat-synagoge/raw",
+    "manifest": "artifacts/lekstraat-synagoge/raw/manifest.json",
+    "canonicalPath": "models/lekstraat-synagoge",
+    "sourceCommit": null
+  },
+  "typecheck": {
+    "ownCode": "Pass targeted TypeScript check",
+    "repository": "Existing unrelated baseline errors; see artifacts/lekstraat-synagoge/typecheck.txt"
+  },
+  "independentReview": {
+    "reportPath": "/Users/blackmad/Code/map-recall2/artifacts/lekstraat-independent-20261008/review.json",
+    "reviewedHash": "3941f33266de6cdfbb37406286fc8bd6ad43b706d6c1aa465ece16eb7a589cee",
+    "result": "Scoped CPU PASS before latestfrontalignmentrepair; no nativeacceptance",
+    "evidence": "200exterior broad-face samples192glass8deliberatedarkmullions0masonry.2080denserroofgrid0missing/wrongheights.Zero downwardslate. Original generic10stonehitsclassified pane-boxshortcaps enclosedbyperimeterframes, preserved. Missingresidencefrontwindowscaught/corrected.",
+    "latestHash": "209977298a1d6702159badc5ccabd5d32bf48de45510a50fdcdef9ff4a1ec294",
+    "latestStatus": "Bounded latestfrontalignmentre-reviewpending"
+  },
+  "rawSources": [
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/register.pdf",
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/pdf/526707",
+      "access": "success",
+      "sha256": "0f69bc7abcdf27e1c511fdcd970b1ebc62ed33313b0afe59b55dad4d16653f82",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/municipal-brochure.pdf",
+      "url": "https://assets.amsterdam.nl/publish/pages/1079752/20260115_brochure_openbare_selectieprocedure_lekstraat_63_.pdf",
+      "access": "failed",
+      "sha256": null,
+      "rights": null,
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/nihs.html",
+      "url": "https://www.nihs.nl/synagoges/lekstraat/",
+      "access": "success",
+      "sha256": "3f26f684c56b2ff6bcac0f736152490afcbf32bbb16486b9b331afad62bc1ca3",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/operator.html",
+      "url": "https://lekstraatsynagoge.nl/about-us/",
+      "access": "success",
+      "sha256": "09d6aae7867a577821104dfba8c471e361839926e54f693824845227487723fc",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/beeldbank-address.html",
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Lekstraat%2063",
+      "access": "success",
+      "sha256": "a3a9cab666f2b112b5b20f34758b266b9dcd126d19ef631eb6a8d8910de85fea",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/commons.json",
+      "url": "https://commons.wikimedia.org/w/api.php?action=query&generator=categorymembers&gcmtitle=Category:Lekstraatsynagoge_(Amsterdam)&gcmtype=file&gcmlimit=50&prop=imageinfo&iiprop=url%7Cextmetadata&format=json",
+      "access": "success",
+      "sha256": "1c86b4c75d8b0b48f6dcd8f3baaadeb3ff13f9f29a96309b36f0781c383f998c",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/bag.json",
+      "url": "https://api.pdok.nl/lv/bag/ogc/v1/collections/pand/items/0363100012104516?f=json",
+      "access": "failed",
+      "sha256": null,
+      "rights": null,
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012104516",
+      "access": "success",
+      "sha256": "c874ce40d1700e0aa946f4f47dc41267da3612c9a86af3ed9a28c10a2f393ddf",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/archive-1938.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Stadsarchief_Amsterdam%2C_Afb_PRKBB00120000004.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "access": "success",
+      "sha256": "3190f06347a85fc24c5775ef98bc39a33b4dfb1ad5a8495b2637e8cf50fa20fe",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/poi-node.xml",
+      "url": "https://www.openstreetmap.org/api/0.6/node/665340356",
+      "access": "success",
+      "sha256": "9cada8d91f730bab6fd74c2ddb54536c2f4684e0ed102ac47c3b8906c97c2fe3",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/context-osm.xml",
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=4.9022,52.3437,4.9036,52.3448",
+      "access": "success",
+      "sha256": "7732cf0564965ef8d2c999469cb546213620190a3e1f795f24fbc5e68e25f724",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/side.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Zijaanzicht_Synagoge_Lekstraat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "access": "success",
+      "sha256": "466f6ad84dfd29276b3179f6c00e2cd7c27dc4981f19ea70148503ec13cc78c3",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/vbo-1.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/05efc44d-efa1-5bd0-a28c-4072dc2a8996?f=json",
+      "access": "success",
+      "sha256": "6a6b76ca071b2ee95d20da5c0d7c078f76d9898c219f9433e9fd33023de2d80c",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/overall.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Lekstraat_Synagoge.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "access": "success",
+      "sha256": "a3019be8bd57b6ce38065ce69bb7749a54ead4883b7aa9fcb49457deb622ca69",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/drawing.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Reproductie_van_tekening_uit_bouwkundig_Weekblad_Architectura_nr._50_-_Amsterdam_-_20013959_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "access": "success",
+      "sha256": "11d0828d681cc8542068b97ccc9fe3266e66830bcc233a5d760f7ab70c90b621",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/vbo-0.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/fc31f81b-130f-563f-b679-8fedf5e45acd?f=json",
+      "access": "success",
+      "sha256": "4008b126a683943329cb1dd93b5a37eb50123e1fc4afb8eb14d808dca3601227",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/bag-query.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012104516&f=json",
+      "access": "success",
+      "sha256": "1e64dd86d8d8730681f506e15363592189e32b5683b141448187d072c94fc72f",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/other.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/31/Lekstraatsynagoge.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "access": "success",
+      "sha256": "3514dc3b49ec4d549fa9082e82e98015f150b184c244cd84ce6f2c674cd4bd8c",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/vbo-3.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/0c4e12ed-f7fd-5446-897f-8de0555d01bd?f=json",
+      "access": "success",
+      "sha256": "ca95e939f895afbba7cc3cd78d929760f2468bf7bf8fa0725e583833efebb0d5",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/vbo-2.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/ff0faec0-d175-5417-b760-7047711de840?f=json",
+      "access": "success",
+      "sha256": "18afd371c4802937927bd92d1ef42d61bb3e3f69fd5a982a668aa7d57d2f86d6",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/context-bag.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.9022,52.3437,4.9036,52.3448&limit=100&f=json",
+      "access": "success",
+      "sha256": "07eff5527225369b9b9eb242992d0fd068e4475395d8f737e0aa0ba0888866ae",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/osm.xml",
+      "url": "https://www.openstreetmap.org/api/0.6/way/665340356/full",
+      "access": "success",
+      "sha256": "6c478a6978af5711c70952dfb4bd8ddf9a3de3d3d1ee10ab129b4852ae3b6d0f",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/front.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/71/Amsterdam_Synagoge_LekstraatDSC_4016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "access": "success",
+      "sha256": "193ba9bcc363f95f6f2c91d130f075473c5454382371c9eb0c10db616702492d",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/vbo-4.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/caf60a52-a13b-519b-bed6-7de9da0e9599?f=json",
+      "access": "success",
+      "sha256": "201f3e79094d1a50c9118779aa029f8c8691aa64d623915685c8ac1a0f6f1af7",
+      "rights": "Reference only; rights unspecified unless explicit metadata below.",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/panoramas.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.90275,52.34425&radius=70&page_size=100",
+      "access": "success",
+      "sha256": "e90bbd0382d59ed0826749d45a2e46c3f4497539908f0c45ead5ec1cdaf60be8",
+      "rights": "Gemeente Amsterdam CC BY4.0; original API body",
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/TMX7316010203-002914_pano_0010_000101.jpg.provenance.json",
+      "url": null,
+      "access": "success",
+      "sha256": "7150ae4ca82dd99f4da638d92460bacfa71d5dda8fbfa559992a0be3b2749b45",
+      "rights": null,
+      "metadataFile": null
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/recording_2025-07-14_11-54-16_00451.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-14_11-54-16_00451/equirectangular/panorama_8000.jpg",
+      "access": "success",
+      "sha256": "35088ddfb9f3edfdbb0b241abce930551c299f94e3ae8190f876254a434c7cd3",
+      "rights": "GemeenteAmsterdam CC BY4.0",
+      "metadataFile": "recording_2025-07-14_11-54-16_00451.jpg.provenance.json"
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/TMX7316010203-002914_pano_0010_000101.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2023/01/03/TMX7316010203-002914/pano_0010_000101/equirectangular/panorama_8000.jpg",
+      "access": "success",
+      "sha256": "52e390597426a47cf7c3e92d927ea3c1669b4ab0eb81a39c8fa6837d3b088df2",
+      "rights": "GemeenteAmsterdam CC BY4.0",
+      "metadataFile": "TMX7316010203-002914_pano_0010_000101.jpg.provenance.json"
+    },
+    {
+      "rawFile": "artifacts/lekstraat-synagoge/raw/recording_2025-07-14_11-54-16_00451.jpg.provenance.json",
+      "url": null,
+      "access": "success",
+      "sha256": "138f3467b0178ce9224b4aec3c59f505b7225a2de90a3827b308a00aa73b193f",
+      "rights": null,
+      "metadataFile": null
+    }
+  ],
+  "processedSources": [
+    {
+      "file": "artifacts/lekstraat-synagoge/register-description.txt",
+      "original": "artifacts/lekstraat-synagoge/raw/register.pdf"
+    },
+    {
+      "file": "artifacts/lekstraat-synagoge/processed/TMX7316010203-002914_pano_0010_000101.json"
+    },
+    {
+      "file": "artifacts/lekstraat-synagoge/processed/recording_2025-07-14_11-54-16_00451.json"
+    },
+    {
+      "file": "artifacts/lekstraat-synagoge/processed/recording_2025-07-14_11-54-16_00451.jpg"
+    },
+    {
+      "file": "artifacts/lekstraat-synagoge/processed/TMX7316010203-002914_pano_0010_000101.jpg"
+    }
+  ]
+}

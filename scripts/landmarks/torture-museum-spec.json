@@ -1,0 +1,52 @@
+{
+  "id": "torture-museum",
+  "name": "Torture Museum",
+  "landmarkId": "extract_landmarks_417591223",
+  "modelUrl": "./models/torture-museum.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012175875"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.890626502630156,
+      52.36734342255553
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 12.869042092312569,
+    "widthMetres": 16.135513371615104
+  },
+  "surveyed": {
+    "anchor": [
+      4.890626502630156,
+      52.36734342255553
+    ],
+    "northOffsetDegrees": 0
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Torture Museum Singel449",
+    "author": "Map Recall",
+    "sourceUrl": "https://torturemuseum.org/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native BAG building. Gray upper roof and neutral gray upper walls; source-supported glass pergola with five narrow crossbars. Cladding and canopy lift are photo-guided approximations; draft still awaits gallery/game acceptance."
+  },
+  "materialOverrides": {
+    "brick": "#796c59",
+    "stone": "#a3a391",
+    "slate": "#655f57",
+    "white": "#e5e2cf",
+    "glass": "#789391",
+    "dark": "#303b43",
+    "frame": "#4f5b58",
+    "bronze": "#3d5148",
+    "copper": "#7da599",
+    "ochre": "#e1c229",
+    "concrete": "#b9bcb7",
+    "greyBrick": "#959a97",
+    "blue": "#b5c8c6"
+  },
+  "doubleSided": false
+}

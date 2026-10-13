@@ -1,0 +1,36 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+import versions from '../../src/canalRecall/landmarks/modelAssetVersions.json';
+import {NodeIO} from '@gltf-transform/core';
+import {ALL_EXTENSIONS} from '@gltf-transform/extensions';
+import {MeshoptDecoder} from 'meshoptimizer';
+import {MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
+import {placementFor} from '../../src/canalRecall/landmarks/signaturePlacement';
+const scope=new Set(['keizersgrachtkerk','gerard-dou-synagogue','lekstraat-synagoge','ruysdael-petrus-pauluskerk','torture-museum','max-euwe-centrum','holocaust-namenmonument','voormalige-schouwburgpoort','academie-theater-dans']);
+await MeshoptDecoder.ready;
+for(const spec of MANUAL_LANDMARKS.filter(spec=>scope.has(spec.id))){
+  const expected=createHash('sha256').update(fs.readFileSync(`public/canal-drive/models/${spec.id}.glb`)).digest('hex').slice(0,16);
+  assert.equal((versions as Record<string,string>)[spec.id],expected,`${spec.id}: stale model cache fingerprint`);
+}
+// A surveyed standalone landscape adds geometry without replacing buildings.
+// It must never fall back to rectangular building suppression to satisfy admission.
+for (const spec of MANUAL_LANDMARKS.filter(spec => spec.assetKind === 'landscape')) {
+  assert.equal(spec.spatialSuppression, false, `${spec.id}: landscape must retain surrounding building layers`);
+  assert.equal(spec.suppressOsmIds.length, 0, `${spec.id}: landscape may not suppress building identities`);
+  assert.ok(spec.surveyed && spec.surveyed.anchor.every(Number.isFinite), `${spec.id}: native surveyed landscape anchor required`);
+  assert.ok(spec.landmarkId, `${spec.id}: landscape needs its genuine requested POI identity`);
+}
+// A surviving gate is an architectural structure, with no invented building parent.
+for (const spec of MANUAL_LANDMARKS.filter(spec => spec.assetKind === 'standalone-structure')) {
+ assert.equal(spec.spatialSuppression,false,`${spec.id}: standalone structure retains building layers`);
+ assert.equal(spec.suppressOsmIds.length,0,`${spec.id}: standalone structure has no replaced building identity`);
+ assert.ok(spec.surveyed && spec.surveyed.anchor.every(Number.isFinite),`${spec.id}: source-located native anchor required`);
+ assert.ok(/^extract_landmarks_[0-9]+$/.test(spec.landmarkId),`${spec.id}: genuine extract identity required`);
+ assert.ok(spec.attribution.sourceUrl.startsWith('https://'),`${spec.id}: meaningful physical source required`);
+}
+const io=new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.decoder':MeshoptDecoder});
+const manifest=JSON.parse(fs.readFileSync('public/canal-drive/models/signature-landmarks.json','utf8'));
+for(const spec of MANUAL_LANDMARKS.filter(spec=>scope.has(spec.id))){let model=manifest.models[spec.id];assert.ok(model);assert.equal(model.bytes,fs.statSync(`public/canal-drive/models/${spec.id}.glb`).size,`${spec.id}: stale asset byte count`);assert.ok(model.bytes<500000);assert.ok(model.triangles>=(spec.assetKind==='memorial'?12:250)&&model.triangles<40000);assert.ok(spec.suppressOsmIds.length || spec.hostWallOpenings?.length || ['landscape','standalone-structure'].includes(spec.assetKind??''), `${spec.id}: exact replacement, bounded host opening or native standalone landscape required`);assert.ok(Math.abs(placementFor(spec,model.bounds).scale-1)<0.3);let document=await io.read(`public/canal-drive/models/${spec.id}.glb`);assert.equal(document.getRoot().listTextures().length,0);const triangles=document.getRoot().listMeshes().flatMap(mesh=>mesh.listPrimitives()).reduce((count,primitive)=>count+(primitive.getIndices()?.getCount()??primitive.getAttribute('POSITION')!.getCount())/3,0);assert.equal(model.triangles,triangles,`${spec.id}: stale asset triangle count`);for(let material of document.getRoot().listMaterials())assert.equal(material.getMetallicFactor(),0);for(let accessor of document.getRoot().listAccessors()){let array=accessor.getArray();if(array)assert.ok(Array.from(array).every(Number.isFinite));}}
+assert.ok(MANUAL_LANDMARKS.find(s=>s.id==='muziekgebouw-bimhuis')?.relatedLandmarkIds?.includes('extract_landmarks_1651446989'));
+console.log(`${scope.size} staged candidate landmarks: finite geometry, life-size placement, compression budget, materials, suppression and shared Bimhuis identity passed.`);
