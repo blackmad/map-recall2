@@ -355,6 +355,26 @@ test('prior sidewalks are dropped where another mapped way lies (split carriagew
   assert.deepEqual(sides(3).sort(), [-1, 1], 'tagged sidewalks stay');
 });
 
+test('street vocabulary: tram rails, cycle-path edge lines, kerb line, Amsterdammertjes on canal-side pavements', () => {
+  const flat = () => 0;
+  const ll = (p: Vec2): [number, number] => p as [number, number];
+  const ways = prepareWays([
+    { id: 1, tags: { highway: 'tertiary', embedded_rails: 'tram', sidewalk: 'both' }, g: [[0, 0], [100, 0]] },
+    { id: 2, tags: { highway: 'cycleway', width: '2.5' }, g: [[0, 30], [100, 30]] },
+  ], p => ll(p as Vec2));
+  // Water north of y = 6 (the left pavement's kerb at y ≈ 3 is canal-side; the right one is not).
+  const s = buildStreets(ways, flat, { canalSide: (_x, y) => y > 0 && y < 8 });
+  const rails = faces(s.tram);
+  const ys = [...new Set(rails.map(f => Math.round(f.c[1] * 10) / 10))].sort((a, b) => a - b);
+  assert.deepEqual(ys, [-2.2, -0.8, 0.8, 2.2], 'two tracks 3 m apart, rails at standard gauge (1.435 m)');
+  assert.ok(faces(s.paint).some(f => Math.abs(f.c[1] - (30 + 1.1)) < 0.05) && faces(s.paint).some(f => Math.abs(f.c[1] - (30 - 1.1)) < 0.05), 'white edge lines on the cycle path');
+  const kerbTop = faces(s.kerb).filter(f => Math.abs(f.n[2]) > 0.9 * Math.hypot(...f.n));
+  assert.ok(kerbTop.some(f => f.c[1] > 0) && kerbTop.some(f => f.c[1] < 0), 'kerb line on both pavements');
+  const posts = faces(s.bollard);
+  assert.ok(posts.length > 0 && posts.every(f => f.c[1] > 0), 'bollards only on the canal-side pavement');
+  assert.ok(Math.max(...posts.map(f => f.c[2])) > 0.8, 'posts stand ~0.8 m');
+});
+
 test('BGT widths read inside a junction are capped by class and lanes', () => {
   assert.equal(crossSection({ highway: 'tertiary', lanes: '1', oneway: 'yes' }, [213, 0, 0])!.bands[0].width, 5.25);
   assert.equal(crossSection({ highway: 'cycleway', oneway: 'yes' }, [142, 0, 0])!.bands[0].width, 4.5);

@@ -28,10 +28,10 @@ import type { Rect } from './groundStore.js';
 
 export type GroundLayer =
   | 'land' | 'park' | 'wood' | 'square' | 'parking'
-  | 'asphalt' | 'klinker' | 'cycle' | 'paving' | 'gravel' | 'kerb' | 'paint' | 'tram'
+  | 'asphalt' | 'klinker' | 'cycle' | 'paving' | 'gravel' | 'kerb' | 'paint' | 'tram' | 'bollard'
   | 'water' | 'quay' | 'deckBody' | 'deckTop';
 
-export const GROUND_LAYERS: readonly GroundLayer[] = ['land', 'park', 'wood', 'square', 'parking', 'asphalt', 'klinker', 'cycle', 'paving', 'gravel', 'kerb', 'paint', 'tram', 'water', 'quay', 'deckBody', 'deckTop'];
+export const GROUND_LAYERS: readonly GroundLayer[] = ['land', 'park', 'wood', 'square', 'parking', 'asphalt', 'klinker', 'cycle', 'paving', 'gravel', 'kerb', 'paint', 'tram', 'bollard', 'water', 'quay', 'deckBody', 'deckTop'];
 
 /** Transferable mesh arrays. Colours are sRGB 0..1 when present. */
 export interface PackedMesh { positions: Float32Array; normals: Float32Array; uvs: Float32Array; indices: Uint32Array; colors?: Float32Array }
@@ -116,7 +116,7 @@ export function cellTransferables(cell: BuiltCell): ArrayBuffer[] {
  */
 function farSection(w: LocalWay): LocalWay {
   const bands = w.section.bands.map(b => (b.raised ? { ...b, raised: 0, kerb: 'none' as const } : b));
-  return { ...w, section: { ...w.section, bands, paint: [] } };
+  return { ...w, section: { ...w.section, bands, paint: [], rails: [] } };
 }
 
 export function buildCell(input: CellInput): BuiltCell {
@@ -184,10 +184,12 @@ export function buildCell(input: CellInput): BuiltCell {
 
   // Streets: bridge ways sampled finer (decks hump over metres).
   const only = (bridge: boolean) => (w: LocalWay) => own.has(w.id) && isBridgeWay(w) === bridge;
-  const streets = buildStreets(ways, onLand, { step: lod === 0 ? 3 : 6, only: only(false) });
+  // Canal-side pavements (kerb within 3.8 m of water; the mask saturates at MASK_RANGE_M) get Amsterdammertjes, near ring only.
+  const canalSide = lod === 0 && mask ? (x: number, y: number) => { const d = maskDistance(mask, x, y); return d > 0 && d < MASK_RANGE_M - 0.2; } : undefined;
+  const streets = buildStreets(ways, onLand, { step: lod === 0 ? 3 : 6, only: only(false), canalSide });
   // Bridge ways follow the measured deck exactly (no land under a deck over water to poke through).
   const onBridges = buildStreets(ways, surface.height, { step: lod === 0 ? 1.5 : 3, only: only(true) });
-  for (const s of ['paving', 'klinker', 'asphalt', 'cycle', 'gravel', 'kerb', 'paint'] as const) { add(s, streets[s]); add(s, onBridges[s]); }
+  for (const s of ['paving', 'klinker', 'asphalt', 'cycle', 'gravel', 'kerb', 'paint', 'tram', 'bollard'] as const) { add(s, streets[s]); add(s, onBridges[s]); }
 
   // Water, quays, decks.
   if (input.water) {
@@ -225,9 +227,9 @@ export function buildCell(input: CellInput): BuiltCell {
 }
 
 /** Polygon-offset rank of coplanar layers (gameGround.ts OFFSET): later wins a tie. */
-const DRAW_RANK: Partial<Record<GroundLayer, number>> = { park: 1, wood: 1, square: 1, parking: 1, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4 };
+const DRAW_RANK: Partial<Record<GroundLayer, number>> = { park: 1, wood: 1, square: 1, parking: 1, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
 /** Mask channel that cuts a layer (gameGround.ts CUT): 0 = R (water), 1 = G (water minus decks). */
-const CUT_CHANNEL: Partial<Record<GroundLayer, 0 | 1>> = { land: 0, park: 0, wood: 0, square: 0, parking: 0, asphalt: 1, klinker: 1, cycle: 1, paving: 1, gravel: 1, kerb: 1, paint: 1 };
+const CUT_CHANNEL: Partial<Record<GroundLayer, 0 | 1>> = { land: 0, park: 0, wood: 0, square: 0, parking: 0, asphalt: 1, klinker: 1, cycle: 1, paving: 1, gravel: 1, kerb: 1, paint: 1, tram: 1, bollard: 1 };
 
 /**
  * What a camera straight above sees at (x, y) in one built cell: every

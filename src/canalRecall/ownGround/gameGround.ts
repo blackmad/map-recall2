@@ -24,6 +24,7 @@ import { footprintBase } from './placement.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
+import { STREET_GROUND } from '../look/palette.js';
 
 export interface GroundHost {
   /** Ask for another frame. */
@@ -53,10 +54,10 @@ const RESIDENCY_STEP_M = 60;
 /** Which mask channel cuts a layer: R = water (land, parks), G = water minus decks (street bands). */
 const CUT: Partial<Record<GroundLayer, 'r' | 'g'>> = {
   land: 'r', park: 'r', wood: 'r', square: 'r', parking: 'r',
-  asphalt: 'g', klinker: 'g', cycle: 'g', paving: 'g', gravel: 'g', kerb: 'g', paint: 'g',
+  asphalt: 'g', klinker: 'g', cycle: 'g', paving: 'g', gravel: 'g', kerb: 'g', paint: 'g', tram: 'g', bollard: 'g',
 };
 /** Polygon-offset rank of coplanar ground layers (later wins), as the prototype. */
-const OFFSET: Partial<Record<GroundLayer, number>> = { park: 1, wood: 1, square: 1, parking: 1, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4 };
+const OFFSET: Partial<Record<GroundLayer, number>> = { park: 1, wood: 1, square: 1, parking: 1, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
 
 export class OwnGround {
   readonly root: any;
@@ -293,13 +294,16 @@ export class OwnGround {
     const std = (o: Record<string, unknown>) => new THREE.MeshStandardMaterial({ roughness: 0.95, metalness: 0, ...o });
     const M: Record<string, any> = {
       land: std({ map: pavers([150, 142, 130], '#6f675d', 3, 0.3, 0.3) }),
-      klinker: std({ map: pavers([128, 82, 66], '#5a463d', 2, 0.2, 0.1), roughness: 0.9 }),
-      asphalt: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [72, 74, 78], 18)) }),
-      cycle: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [146, 70, 62], 18)), roughness: 0.85 }),
-      paving: std({ map: pavers([168, 160, 148], '#7d756a', 3, 0.3, 0.3) }),
+      klinker: std({ map: pavers([...STREET_GROUND.klinker.base], STREET_GROUND.klinker.joint, 2, 0.2, 0.1), roughness: 0.9 }),
+      asphalt: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [...STREET_GROUND.asphalt.base], 18)) }),
+      cycle: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [...STREET_GROUND.cycle.base], 18)), roughness: 0.85 }),
+      // Pavements: grey-rose klinkers in stretcher bond (Amsterdam's gebakken klinker trottoir).
+      paving: std({ map: pavers([...STREET_GROUND.pavement.base], STREET_GROUND.pavement.joint, 2.1, 0.21, 0.105) }),
       gravel: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [170, 156, 128], 30, 2)) }),
-      kerb: std({ color: '#9b958b', roughness: 0.9 }),
-      paint: std({ color: '#f2f0ea', roughness: 0.6 }),
+      kerb: std({ color: STREET_GROUND.kerb, roughness: 0.9 }),
+      paint: std({ color: STREET_GROUND.paint, roughness: 0.6 }),
+      tram: std({ color: STREET_GROUND.rail, roughness: 0.45, metalness: 0.6 }),
+      bollard: std({ color: STREET_GROUND.bollard, roughness: 0.7 }),
       park: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, [92, 122, 66], 30, 3)), roughness: 1 }),
       wood: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, [70, 96, 52], 34, 3)), roughness: 1 }),
       square: std({ map: pavers([176, 166, 150], '#857c70', 4, 0.6, 0.6) }),

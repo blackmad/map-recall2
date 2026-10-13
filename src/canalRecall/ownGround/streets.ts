@@ -35,7 +35,7 @@ export const LIFT = {
   route: 0.07,
 } as const;
 
-export type StreetLayer = Surface | 'paint' | 'kerb' | 'tram';
+export type StreetLayer = Surface | 'paint' | 'kerb' | 'tram' | 'bollard';
 export type StreetMeshes = Record<StreetLayer, MeshArrays> & {
   stats: { ways: number; bands: number; metres: number; widthFromTags: number; sidewalkFromTags: number; trims: number; junctions: number; corners: number };
 };
@@ -326,9 +326,9 @@ function pathCuts(w: LocalWay, nodes: Map<string, Node>, st: readonly number[]):
  * `only` limits which ways emit geometry while the junction graph still sees
  * all of them (the prototype builds bridge ways separately, uncut by the water mask).
  */
-export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: { step?: number; only?: (w: LocalWay) => boolean } = {}): StreetMeshes {
+export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: { step?: number; only?: (w: LocalWay) => boolean; canalSide?: (x: number, y: number) => boolean } = {}): StreetMeshes {
   const step = opts.step ?? 3;
-  const out = { asphalt: emptyMesh(), klinker: emptyMesh(), cycle: emptyMesh(), paving: emptyMesh(), gravel: emptyMesh(), paint: emptyMesh(), kerb: emptyMesh(), tram: emptyMesh(), stats: { ways: 0, bands: 0, metres: 0, widthFromTags: 0, sidewalkFromTags: 0, trims: 0, junctions: 0, corners: 0 } } as StreetMeshes;
+  const out = { asphalt: emptyMesh(), klinker: emptyMesh(), cycle: emptyMesh(), paving: emptyMesh(), gravel: emptyMesh(), paint: emptyMesh(), kerb: emptyMesh(), tram: emptyMesh(), bollard: emptyMesh(), stats: { ways: 0, bands: 0, metres: 0, widthFromTags: 0, sidewalkFromTags: 0, trims: 0, junctions: 0, corners: 0 } } as StreetMeshes;
   const nodes = junctionGeometry(ways);
   const byId = new Map(ways.map(w => [w.id, w]));
   const discDone = new Set<string>();
@@ -364,6 +364,12 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
             edgeWall(out.kerb, piece, band.width / 2, height, top, 0, 1, { step });
             edgeWall(out.kerb, piece, -band.width / 2, height, top, 0, -1, { step });
           } else edgeWall(out.kerb, piece, inner, height, top, 0, band.offset > 0 ? -1 : 1, { step });
+          // The kerb line: a pale granite strip along the top of each kerb face.
+          const into = Math.sign(band.offset || 1);
+          if (band.kerb === 'both') { ribbon(out.kerb, piece, band.width / 2 - 0.075, 0.15, height, top + 0.002, { step }); ribbon(out.kerb, piece, -band.width / 2 + 0.075, 0.15, height, top + 0.002, { step }); }
+          else if (band.kerb !== 'none') ribbon(out.kerb, piece, inner + into * 0.075, 0.15, height, top + 0.002, { step });
+          // Amsterdammertjes along a canal-side pavement's kerb, every 1.6 m.
+          if (opts.canalSide && band.kind === 'sidewalk' && band.kerb !== 'none') bollards(out.bollard, piece, band.kerb === 'both' ? band.width / 2 - 0.3 : inner + into * 0.3, height, top, opts.canalSide);
           const n = piece.length, d0 = dirOf(piece[0], piece[1]), d1 = dirOf(piece[n - 2], piece[n - 1]);
           endCap(out.kerb, piece[0], d0, band.offset, band.width, height, top, 0, false);
           endCap(out.kerb, piece[n - 1], d1, band.offset, band.width, height, top, 0, true);
@@ -385,10 +391,15 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
       }
     }
     for (const line of w.section.paint) {
-      // Paint stops at the junction edge, with the road band it lies on.
-      const pieces = crossing ? [w.points] : cutIntervals(w.points, road.map(([a, b]) => [a - 0.3, b + 0.3] as [number, number]));
-      for (const piece of pieces) if (piece.length >= 2) dashed(out.paint, piece, line.offset, line.width, line.dash, height, LIFT.paint);
+      // Paint lies on a band and stops where that band stops (road paint at the junction edge).
+      const host = w.section.bands.find(b => Math.abs(line.offset - b.offset) <= b.width / 2 + 0.01) ?? w.section.bands[0];
+      const onRoad = host.kind === 'carriageway' || host.kind === 'cycle_lane';
+      const cuts = crossing ? [] : !carriage ? path : onRoad ? road.map(([a, b]) => [a - 0.3, b + 0.3] as [number, number]) : sides[host.offset > 0 ? 1 : -1];
+      const lift = onRoad || crossing ? LIFT.paint : (host.raised > 0 ? LIFT.raisedBase + host.raised : LIFT.path) + 0.006;
+      for (const piece of cuts.length ? cutIntervals(w.points, cuts) : [w.points]) if (piece.length >= 2) dashed(out.paint, piece, line.offset, line.width, line.dash, height, lift);
     }
+    // Tram rails: two per track at standard gauge, through junctions (the tracks do not stop there).
+    for (const o of w.section.rails ?? []) for (const r of [-0.7175, 0.7175]) ribbon(out.tram, w.points, o + r, 0.07, height, LIFT.rail, { step });
   }
   // Junction fills and kerb corners: emitted once, by the node's owner way.
   for (const n of nodes.values()) {
@@ -446,6 +457,26 @@ function cornerPatches(out: StreetMeshes, n: Node, c: Corner, height: HeightFn, 
   return count;
 }
 
+/** Amsterdammertjes: small oxblood posts (0.1 m square, 0.8 m tall, a cap) every 1.6 m where `where` holds. */
+function bollards(m: MeshArrays, pts: readonly Vec2[], offset: number, height: HeightFn, base: number, where: (x: number, y: number) => boolean): void {
+  const st = stations(pts), total = st[st.length - 1];
+  for (let s = 0.8; s < total - 0.4; s += 1.6) {
+    const p = pointAt(pts, st, s), q = pointAt(pts, st, Math.min(total, s + 0.3));
+    const d = dirOf(p, q), n = leftOf(d), x = p[0] + n[0] * offset, y = p[1] + n[1] * offset;
+    if (!where(x, y)) continue;
+    const z0 = height(x, y) + base, z1 = z0 + 0.8, h = 0.05;
+    const c: Vec2[] = [[x - d[0] * h - n[0] * h, y - d[1] * h - n[1] * h], [x + d[0] * h - n[0] * h, y + d[1] * h - n[1] * h], [x + d[0] * h + n[0] * h, y + d[1] * h + n[1] * h], [x - d[0] * h + n[0] * h, y - d[1] * h + n[1] * h]];
+    const i0 = m.positions.length / 3;
+    for (const [cx, cy] of c) { m.positions.push(cx, cy, z0, cx, cy, z1); m.uvs.push(cx, cy, cx, cy); }
+    const top = m.positions.length / 3;
+    m.positions.push(x, y, z1 + 0.06); m.uvs.push(x, y);
+    for (let k = 0; k < 4; k++) {
+      const a = i0 + k * 2, b = i0 + ((k + 1) % 4) * 2;
+      m.indices.push(a, b, b + 1, a, b + 1, a + 1, a + 1, b + 1, top);
+    }
+  }
+}
+
 const dirOf = (a: Vec2, b: Vec2): Vec2 => { const dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1; return [dx / l, dy / l]; };
 
 /** Dashes (or a solid line when `dash` is null) along a polyline. */
@@ -464,6 +495,6 @@ export function routeRibbon(pts: readonly Vec2[], height: HeightFn, width = 1.4,
   return m;
 }
 
-export const streetTriangles = (s: StreetMeshes) => (['asphalt', 'klinker', 'cycle', 'paving', 'gravel', 'paint', 'kerb', 'tram'] as const).reduce((n, k) => n + triangleCount(s[k]), 0);
+export const streetTriangles = (s: StreetMeshes) => (['asphalt', 'klinker', 'cycle', 'paving', 'gravel', 'paint', 'kerb', 'tram', 'bollard'] as const).reduce((n, k) => n + triangleCount(s[k]), 0);
 
 export { pointAt };
