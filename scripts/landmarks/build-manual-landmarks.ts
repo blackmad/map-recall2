@@ -259,6 +259,10 @@ import {buildObrechtkerk} from './obrechtkerk-builder';
 import {buildDeDuif} from './de-duif-builder';
 import {buildMozesEnAaronkerk} from './mozes-en-aaronkerk-builder';
 import {buildOosterkerk} from './oosterkerk-builder';
+import {buildMaxEuwe} from './max-euwe-centrum-builder';
+import {buildHolocaustNamenmonument} from './holocaust-namenmonument-builder';
+import {buildSchouwburgpoort} from './voormalige-schouwburgpoort-builder';
+import {buildAcademieTheaterDans} from './academie-theater-dans-builder';
 import hospitals from './hospital-footprints.json';
 import {ALL_MANUAL_LANDMARKS as MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
@@ -407,7 +411,7 @@ async function save(id:string){
   await quantizeOrdinaryMesh(doc,mesh,ordinaryNode);
   await doc.transform(quantize({pattern:/^(?!POSITION$).+/,patternTargets:/^(?!POSITION$).+/}));
   doc.createExtension(EXTMeshoptCompression).setRequired(true).setEncoderOptions({method:EXTMeshoptCompression.EncoderMethod.QUANTIZE});
- }else await doc.transform(meshopt({encoder:MeshoptEncoder,level:'medium',...(['electric-ladyland','westerkerk','cafe-kobalt','collectie-six','hoofdbureau-elandsgracht'].includes(id)?{quantizePosition:16}:{})}));
+ }else await doc.transform(meshopt({encoder:MeshoptEncoder,level:'medium',...(['electric-ladyland','westerkerk','cafe-kobalt','collectie-six','hoofdbureau-elandsgracht','voormalige-schouwburgpoort'].includes(id)?{quantizePosition:16}:{})}));
  await new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.encoder':MeshoptEncoder}).write(dest,doc);
  const bounds={min:[Infinity,Infinity,Infinity],max:[-Infinity,-Infinity,-Infinity]};
  for(let i=0;i<all.length;i++){const axis=i%3;bounds.min[axis]=Math.min(bounds.min[axis],all[i]);bounds.max[axis]=Math.max(bounds.max[axis],all[i]);}
@@ -690,6 +694,10 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='de-duif')buildDeDuif(w,d,helpers);
     else if(id==='obrechtkerk')buildObrechtkerk(w,d,helpers);
     else if(id==='opstandingskerk')buildOpstandingskerk(w,d,helpers);
+    else if(id==='max-euwe-centrum')buildMaxEuwe(helpers);
+    else if(id==='holocaust-namenmonument')buildHolocaustNamenmonument(w,d,helpers);
+    else if(id==='voormalige-schouwburgpoort')buildSchouwburgpoort(helpers);
+    else if(id==='academie-theater-dans')buildAcademieTheaterDans(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   {const lod1=manifest.models[id]?.lod1;manifest.models[id]=await save(id);if(lod1)manifest.models[id].lod1=lod1;}// keep the lod1 record; build:landmark-lods / check:landmark-lods catch it going stale
