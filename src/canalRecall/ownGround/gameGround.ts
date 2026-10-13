@@ -56,7 +56,7 @@ const CUT: Partial<Record<GroundLayer, 'r' | 'g'>> = {
   asphalt: 'g', klinker: 'g', cycle: 'g', paving: 'g', gravel: 'g', kerb: 'g', paint: 'g',
 };
 /** Polygon-offset rank of coplanar ground layers (later wins), as the prototype. */
-const OFFSET: Partial<Record<GroundLayer, number>> = { park: 1, wood: 1, square: 1, parking: 1, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4 };
+const OFFSET: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4 };
 
 export class OwnGround {
   readonly root: any;
