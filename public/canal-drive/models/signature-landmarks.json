@@ -42156,7 +42156,7 @@
         ],
         "max": [
           10.231802940368652,
-          22.5,
+          27.200000762939453,
           10.317420959472656
         ]
       },
@@ -42172,18 +42172,18 @@
       },
       "extent": {
         "widthMetres": 30.661897659301758,
-        "heightMetres": 22.50000000953674,
+        "heightMetres": 27.200000772476194,
         "depthMetres": 26.20040798187256,
         "depthCoverage": 1.1536947592193993
       },
-      "triangles": 7519,
-      "bytes": 93620,
+      "triangles": 8294,
+      "bytes": 101620,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "4fbe37245ce94965",
+        "sourceHash": "e4eba8602f334d72",
         "buildVersion": 2,
-        "bytes": 42032,
-        "triangles": 1549
+        "bytes": 45492,
+        "triangles": 1762
       }
     },
     "oosterkerk": {
