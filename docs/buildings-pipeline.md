@@ -795,3 +795,44 @@ Remaining errors (on the strip sheets, listed as `schemaLimits` in the types): t
 dormers with a gap at the party wall (a dormer reaching the party wall fails the library's footprint check), white
 stucco top storeys and tympana are not modelled, the tower-dormers have no light, De Clercqstraat corbel tables are a
 bracketed cornice, D dormers are centred on the BAG front rather than the visual module.
+
+## Recipe tiles (migration step 3, `?recipeTiles=1`, 2026-10-13)
+
+Plan: `docs/plans/digital-twin-direction-20261013.md` §2; handoff `docs/handoffs/lane-recipe-tiles-20261013.md`.
+Code: `src/canalRecall/tileBuildings/` (schema, tile math, soups, writer, runtime), compiler
+`scripts/building-tiles/compile-recipes.ts`, staging `artifacts/recipe-tiles/`.
+
+### Data model (`tileBuildings/schema.ts`)
+
+`building-recipes/14/x/y.json`, generated, never hand-edited:
+
+```json
+{"version": 1, "z": 14, "x": 8413, "y": 5384, "sources": {"faces": "<sha>", "types": "<sha>", "catalogue": "<sha>"},
+ "pands": {"0363100012081118": {"kind": "canal-house", "intent": "face:bilder-081118-155417/0",
+   "fitted": {"eavesM": 14.2, "storeyHeightsM": [4.1, 3.4, 3.3, 3.4], "frontWidthM": 6.1, "roofMaxM": 17.1, "triangles": 2481},
+   "mid": [2, 5, 3, 142, 171, 1894, 1, 3, 1, 8, 1], "covers": ["NL.IMBAG.Pand.0363100012081118"], "mesh": [33654, 21538]}}}
+```
+
+Decisions (each one changes the schema, so the reason is kept here):
+
+- **`intent` is a one-string reference** (`face:<faceId>/<house>`, `house:<recipeId>`, `type:<unit>`, `kit:<id>`,
+  `model:<specId>`), not a copy of the intent. Faces, house recipes, types and the landmark catalogue stay the
+  authoring units; copying them into tiles would make the tile a second place to edit. The validator ties each
+  scheme to the kinds it may carry (`face:` only `canal-house`, `model:` only `glb`, ...).
+- **`sameAs` + `overrides` mirror the block-face house fields** (`blockFace/intent.ts`), one hop only, same kind. A
+  face house written `sameAs` in its face intent is `sameAs` in the tile; it does not get a second `intent`.
+- **`mid` is the facts sidecar's seven integers plus four the recipe knows** (bays, wall slot, gable, shop):
+  `[archetype, storeys, roof, eavesDm, ridgeDm, year, terraced, bays, wall, gable, shop]`, ~35 bytes. Reusing the
+  sidecar order (`bagTiles.ts MidDescriptor`) means the mid tier (step 4) reads one shape for every pand, recipe or
+  not; the recipe-only fields are 0 = unknown, so a generic pand's descriptor is the sidecar row padded with zeros.
+- **`fitted` is compiler output** (eaves, storey heights, front width, roof max, triangles; placement for placed
+  kinds). It is written by the mesh stage into its per-tile report and folded into the recipe tile by the
+  `assemble` stage, because one process per z16 tile cannot safely write a shared z14 file. `--strict` validation
+  requires it.
+- **Keys are 16-digit pand ids**; a model standing on no pand (a monument on a square) is `m:<specId>`. A model
+  covering several pands is one entry under its primary pand and lists the others in `covers` (no stub entries for
+  the others: the inverse "who covers pand X" is computed on load).
+- **`covers` replaces `suppressOsmIds`**: full `NL.IMBAG.Pand.*` ids plus OSM-only ids, taken from
+  `public/canal-drive/models/covers.json` for installed models and from the pand itself for recipes and types.
+- **`mesh` names the z16 tile that draws the pand** (by the pand's anchor), so a reader of a z14 tile knows which
+  mesh tile to fetch without recomputing anchors.
