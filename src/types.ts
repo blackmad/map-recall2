@@ -246,6 +246,7 @@ export interface RoundResult {
   isCorrect?: boolean; // for guess_name mode
   pointsEarned: number;
   timeSpentMs: number;
+  hintsUsed?: number; // hints revealed this round (caps the score and the review rating)
 }
 
 export interface GameState {
