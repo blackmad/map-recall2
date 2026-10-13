@@ -26,6 +26,9 @@ export interface ComposeOptions {
   closedBoxes?: boolean;
   /** large tier (opt-in): bands (string courses, cornices, fascias) are closed solids (back face, and end caps at mitred joints), so they leave no open edge where 3DBAG faces stand a few cm off the panel plane or the next panel's band stops short. Default off: earlier large recipes stay byte-identical. */
   closedBands?: boolean;
+  /** recess mode (opt-in): glazing bars and doors stand this far in front of the glass (default 0.015). The 1.5 cm default is
+   *  inside the audit's 2 cm coplanar band (bars z-fight with the glass at range); 0.05 clears it. Unset: output byte-identical. */
+  barOffsetM?: number;
   /** Walls (indices into `set.walls`) with different keys never merge into one panel (large-tier wall groups). */
   mergeKey?: (wall: number) => number;
   /** Host wall slot per panel (recess mode only, where walls are emitted after the facade systems). */
@@ -55,6 +58,8 @@ class Ctx {
   closedBoxes = false;
   /** `ComposeOptions.closedBands` (recess mode only) */
   closedBands = false;
+  /** `ComposeOptions.barOffsetM` */
+  barOut = 0.015;
   constructor(public mesh: MeshBuilder, public p: Panel, public panels: Panel[]) {}
   /**
    * Cut a rectangular opening into one member wall when it lies inside it with 3 cm to spare and clear of other holes.
@@ -134,6 +139,20 @@ class Ctx {
 }
 
 export interface Cell { u0: number; u1: number; v0: number; v1: number; bay: number; floor: number; bays: number }
+/**
+ * A glazing bar, door leaf or stile in front of the glass. With the default 1.5 cm offset it is one quad (its edges lie
+ * within the 2 cm the open-edge gate treats as touching the glass). With `barOffsetM` set (opt-in) it is a box standing on
+ * the glass plane `d0` out to `d1`: far enough to clear the coplanar z-fight band, and still closed (no open edges).
+ */
+export function barQuad(c: Ctx, slot: Slot, Q: (u: number, v: number, d: number) => V3, a: number, b: number, lo: number, hi: number, d0: number, d1: number, part: number) {
+  const { mesh, p } = c;
+  mesh.quad(slot, Q(a, lo, d1), Q(b, lo, d1), Q(b, hi, d1), Q(a, hi, d1), part, p.n);
+  if (c.barOut === 0.015) return;
+  mesh.quad(slot, Q(a, hi, d0), Q(b, hi, d0), Q(b, hi, d1), Q(a, hi, d1), part, UP);
+  mesh.quad(slot, Q(a, lo, d0), Q(b, lo, d0), Q(b, lo, d1), Q(a, lo, d1), part, DOWN);
+  mesh.quad(slot, Q(a, lo, d0), Q(a, hi, d0), Q(a, hi, d1), Q(a, lo, d1), part, scale(p.r, -1));
+  mesh.quad(slot, Q(b, lo, d0), Q(b, hi, d0), Q(b, hi, d1), Q(b, lo, d1), part, p.r);
+}
 export { Ctx as PanelCtx, drawOpening, stripBox, intervals };
 const frac = (x: number | undefined, total: number, dflt: number) => { const v = x ?? dflt; return v <= 1 ? v * total : v; };
 
@@ -228,8 +247,8 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
   if (mulls.length || rows.length || w.transom) {
     // frameW 0 (no frame ring: the glass fills the opening) still takes 6 cm glazing bars
     const bars = c.part(), bw = fw > 0 ? fw : 0.06;
-    for (const f of mulls) { const u = u0 + (u1 - u0) * f; g(u - bw / 2, u + bw / 2, v0 + fw, v1 - fw, frameSlot, 0.015, bars); }
-    for (const f of [...rows, ...(w.transom ? [w.transom] : [])]) { const v = v0 + (v1 - v0) * f; g(u0 + fw, u1 - fw, v - bw / 2, v + bw / 2, frameSlot, 0.015, bars); }
+    for (const f of mulls) { const u = u0 + (u1 - u0) * f; barQuad(c, frameSlot, Q, u - bw / 2, u + bw / 2, v0 + fw, v1 - fw, 0, c.barOut, bars); }
+    for (const f of [...rows, ...(w.transom ? [w.transom] : [])]) { const v = v0 + (v1 - v0) * f; barQuad(c, frameSlot, Q, u0 + fw, u1 - fw, v - bw / 2, v + bw / 2, 0, c.barOut, bars); }
   }
   if (w.surround) {
     const t = w.surround.t, out = w.surround.out ?? 0.06, sp = c.part();
@@ -286,7 +305,7 @@ function drawRow(c: Ctx, row: Row, cell: Cell, seed: number) {
       const back = drawOpening(c, a, b, lo, hi, w, seed);
       if (door) {
         const dw = door.w ?? 1.1, dh = door.h ?? 2.3, uc = (a + b) / 2, part = c.part();
-        if (fitsPanel(c.p, rectPoly(uc - dw / 2, uc + dw / 2, lo, lo + dh))) c.quad(door.slot ?? 'door', uc - dw / 2, lo, uc + dw / 2, lo + dh, c.recess > 0 && back !== null ? back + 0.015 : 0.045, part);
+        if (fitsPanel(c.p, rectPoly(uc - dw / 2, uc + dw / 2, lo, lo + dh))) c.quad(door.slot ?? 'door', uc - dw / 2, lo, uc + dw / 2, lo + dh, c.recess > 0 && back !== null ? back + c.barOut : 0.045, part);
       }
       return;
     }
@@ -534,6 +553,7 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
     assignment.push({ panel: p.index, system: sysName, width: W, centre });
     const c = new Ctx(mesh, p, panels);
     c.closedBoxes = !!opts.closedBoxes;
+    if (opts.barOffsetM !== undefined) c.barOut = opts.barOffsetM;
     c.closedBands = recess > 0 && !!opts.closedBands;
     c.recess = recess; c.wallSlot = recess > 0 ? opts.wallSlotFor?.(p) ?? wallSlot : wallSlot;
     const cells: Cell[] = [];
