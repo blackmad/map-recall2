@@ -42,7 +42,7 @@ export interface EntranceResult { u0: number; u1: number; v0: number; doorTop: n
  * Recessed entrance in a cell span: a glazed door pair with side lights and a transom light, 0.6 m deep. A span of
  * several storeys (`hall`) becomes one tall glazed entrance hall with a transom bar at every storey line.
  */
-export function drawEntrance(c: PanelCtx, span: { u0: number; u1: number; v0: number; v1: number }, levels: number[], slots: EntranceSlots, hall: boolean): EntranceResult | null {
+export function drawEntrance(c: PanelCtx, span: { u0: number; u1: number; v0: number; v1: number }, levels: number[], slots: EntranceSlots, hall: boolean, barD = 0.015): EntranceResult | null {
   const cw = span.u1 - span.u0, w = hall ? cw - 0.3 : Math.min(cw - (cw < 2 ? 0.3 : 0.5), 3.0), uc = (span.u0 + span.u1) / 2;
   const v0 = Math.max(span.v0, c.p.vMin) + 0.05, top = hall ? span.v1 - 0.3 : Math.min(v0 + 3.0, span.v1 - 0.45);
   if (w < 0.9 || top - v0 < 2.2) return null;
@@ -50,10 +50,17 @@ export function drawEntrance(c: PanelCtx, span: { u0: number; u1: number; v0: nu
   // The recess is closed by the glass itself; frame, door stiles and push bars sit 1.5 cm in front of it.
   const r = recess(c, u0, u1, v0, top, 0.6, slots.glass);
   if (!r) return null;
-  const g = r.back, bar = r.back + 0.015, fw = 0.08;
+  const g = r.back, bar = r.back + barD, fw = 0.08;
   // Under 1.6 m: one door filling the opening; wider: a door pair in the middle with side lights either side.
   const single = w < 1.6, dw = single ? w : Math.min(2.0, w * 0.5), d0 = uc - dw / 2, d1 = uc + dw / 2, bars = c.part();
-  const qb = (a: number, b: number, lo: number, hi: number, slot: Slot = slots.frame) => c.mesh.quad(slot, r.Q(a, lo, bar), r.Q(b, lo, bar), r.Q(b, hi, bar), r.Q(a, hi, bar), bars, c.p.n);
+  const qb = (a: number, b: number, lo: number, hi: number, slot: Slot = slots.frame) => {
+    c.mesh.quad(slot, r.Q(a, lo, bar), r.Q(b, lo, bar), r.Q(b, hi, bar), r.Q(a, hi, bar), bars, c.p.n);
+    // deep bars (>= 3 cm, clear of the z-fight audit's band) are closed solids: four sides down to the glass
+    if (barD >= 0.03) {
+      const side = (p0: [number, number], p1: [number, number], facing: [number, number, number]) => c.mesh.quad(slot, r.Q(p0[0], p0[1], g), r.Q(p1[0], p1[1], g), r.Q(p1[0], p1[1], bar), r.Q(p0[0], p0[1], bar), bars, facing);
+      side([a, lo], [b, lo], [0, -1, 0]); side([a, hi], [b, hi], [0, 1, 0]); side([a, lo], [a, hi], [-c.p.r[0], -c.p.r[1], -c.p.r[2]]); side([b, lo], [b, hi], [c.p.r[0], c.p.r[1], c.p.r[2]]);
+    }
+  };
   // outer frame ring and the transom bar over the door(s)
   qb(u0, u1, v0, v0 + fw); qb(u0, u1, top - fw, top); qb(u0, u0 + fw, v0 + fw, top - fw); qb(u1 - fw, u1, v0 + fw, top - fw);
   if (single) {
