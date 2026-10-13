@@ -15,7 +15,9 @@ import {
   measureLargeLetterPostcard,
   measurePaintedFaceBounds,
   measurePaintedLetterBounds,
+  type OtFont,
 } from '../src/canalRecall/largeLetterPostcard.ts';
+import opentype from 'opentype.js';
 import {
   LINEN_ARCH,
   POSTCARD_STYLES,
@@ -35,6 +37,7 @@ const MIN_BOTTOM_MARGIN = 28;
 const MAX_SKEW_ABS = 0.22; // |c| in transform(a,b,c,d,e,f) we allow in paint
 const MIN_BILLBOARD_FONT_FRAC = 0.28;
 const MIN_FACE_FILL_FRAC = 0.50;
+const TWO_LINE_TOP_CLEAR = 18;
 
 {
   // Place-true fixtures must be real JPEGs (not the old HTML error bodies).
@@ -196,6 +199,27 @@ const MIN_FACE_FILL_FRAC = 0.50;
     depth <= LARGE_LETTER_HEIGHT * 0.12,
     `OUD WEST extrusion ${depth.toFixed(1)}px too deep for two-line (invades lower line)`,
   );
+}
+
+{
+  // Review 2026-10-13: HOOFDDORPPLEINBUURT wrapped to two lines and each line's face dropped to 0.55
+  // of a one-line name's. Two-line faces keep ≥ 0.62 (face = font × vertical pull × paint scale).
+  // Measured with the outline font the game draws with (Anton), not the fillText stub.
+  const buffer = readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../public/canal-drive/fonts/Anton-Regular.ttf'));
+  const font = opentype.parse(buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength)) as unknown as OtFont;
+  const face = (name: string) => {
+    const card = measureLargeLetterPostcard({ name, cityName: 'Amsterdam', imageCount: 8 }, stub, { font, pathWarp: true });
+    return { card, h: card.nameFontSize * card.facePullY * card.paintScaleY };
+  };
+  const one = face('Jordaan').h;
+  for (const name of ['Hoofddorppleinbuurt', 'Overtoomse Veld', 'Da Costabuurt', 'Helmersbuurt']) {
+    const { card, h } = face(name);
+    assert.equal(card.nameLines.length, 2, `${name} should stack`);
+    assert.ok(h / one >= 0.62, `${name}: two-line face ${(h / one).toFixed(3)} of one-line, want ≥ 0.62`);
+    const faces = measurePaintedFaceBounds(card);
+    assert.ok(faces.minY >= card.borderInset + TWO_LINE_TOP_CLEAR, `${name}: crest ${faces.minY.toFixed(0)} too high`);
+    assert.ok(faces.maxY <= card.captionY, `${name}: faces run under the caption`);
+  }
 }
 
 {
