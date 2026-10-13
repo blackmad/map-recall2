@@ -1,0 +1,389 @@
+{
+ "generatedAt": "2026-10-13",
+ "source": "OSM amenity=police (Overpass), PDOK Locatieserver + BAG WFS",
+ "stations": [
+  {
+   "name": "Politiebureau Lijnbaansgracht",
+   "address": "Lijnbaansgracht 219, Amsterdam",
+   "osm": "node/103116500",
+   "osmLatLng": [
+    52.3651723,
+    4.8814
+   ],
+   "pandIds": [
+    "0363100012169471"
+   ],
+   "verblijfsobject": "0363010000724204",
+   "bagAddress": "Lijnbaansgracht 219, 1017PH Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 1977,
+   "osmToAddressM": 2,
+   "panoramaYears": [
+    2021,
+    2022
+   ],
+   "referenceStatus": "ok",
+   "signatureElements": null
+  },
+  {
+   "name": "Politiebureau IJ-tunnel",
+   "address": "IJ-tunnel 2, Amsterdam",
+   "osm": "node/252147577",
+   "osmLatLng": [
+    52.370002,
+    4.909157
+   ],
+   "pandIds": [
+    "0363100012165618"
+   ],
+   "verblijfsobject": "0363010000892233",
+   "bagAddress": "IJ-tunnel 2, 1011TA Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 1972,
+   "osmToAddressM": 6,
+   "panoramaYears": [
+    2021,
+    2022
+   ],
+   "referenceStatus": "ok",
+   "signatureElements": null
+  },
+  {
+   "name": "Politiebureau Meer en Vaart",
+   "address": "Meer en Vaart 284, Amsterdam",
+   "osm": "node/506260014",
+   "osmLatLng": [
+    52.3626004,
+    4.8051041
+   ],
+   "pandIds": [
+    "0363100012089344"
+   ],
+   "verblijfsobject": "0363010000740028",
+   "bagAddress": "Meer en Vaart 284, 1068LE Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 1982,
+   "osmToAddressM": 7,
+   "panoramaYears": [
+    2024,
+    2021
+   ],
+   "referenceStatus": "ok",
+   "signatureElements": null
+  },
+  {
+   "name": "Politiebureau Van Leijenberghlaan",
+   "address": "Van Leijenberghlaan 15, Amsterdam",
+   "osm": "node/552549675",
+   "osmLatLng": [
+    52.3309676,
+    4.8798024
+   ],
+   "pandIds": [
+    "0363100012102565"
+   ],
+   "verblijfsobject": "0363010000841617",
+   "bagAddress": "Van Leijenberghlaan 15, 1082GC Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 1976,
+   "osmToAddressM": 8,
+   "panoramaYears": [],
+   "signatureElements": null
+  },
+  {
+   "name": "Politiebureau Oost Watergraafsmeer",
+   "address": "Linnaeusstraat 111, Amsterdam",
+   "osm": "node/1941435771",
+   "osmLatLng": [
+    52.3574732,
+    4.9272946
+   ],
+   "pandIds": [
+    "0363100012131469"
+   ],
+   "verblijfsobject": "0363010001007600",
+   "bagAddress": "Linnaeusstraat 111, 1093EN Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 2003,
+   "osmToAddressM": 7,
+   "panoramaYears": [
+    2025,
+    2024
+   ],
+   "referenceStatus": "ok",
+   "signatureElements": null
+  },
+  {
+   "name": "Politiebureau West Overtoomsesluis",
+   "address": "Hoofdweg 785, Amsterdam",
+   "osm": "node/1941488431",
+   "osmLatLng": [
+    52.3767444,
+    4.8463635
+   ],
+   "pandIds": [
+    "0363100012080943"
+   ],
+   "verblijfsobject": "0363010001981872",
+   "bagAddress": "Hoofdweg 785, 1055SC Amsterdam",
+   "gebruiksdoel": "winkelfunctie",
+   "bouwjaar": 2009,
+   "osmToAddressM": 9,
+   "panoramaYears": [
+    2019
+   ],
+   "referenceStatus": "ok",
+   "signatureElements": null
+  },
+  {
+   "name": "Politiebureau Flierbosdreef",
+   "address": "Flierbosdreef 15, Amsterdam",
+   "osm": "node/1941488433",
+   "osmLatLng": [
+    52.3146991,
+    4.9576489
+   ],
+   "pandIds": [
+    "0363100012143903"
+   ],
+   "verblijfsobject": "0363010011873109",
+   "bagAddress": "Flierbosdreef 15, 1102BV Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 1985,
+   "osmToAddressM": 0,
+   "panoramaYears": [
+    2025,
+    2024
+   ],
+   "referenceStatus": "washed-out",
+   "signatureElements": null
+  },
+  {
+   "name": "Politiebureau Houtmankade",
+   "address": "Houtmankade 34, Amsterdam",
+   "osm": "node/1941488434",
+   "osmLatLng": [
+    52.3890874,
+    4.8841855
+   ],
+   "pandIds": [
+    "0363100012083091"
+   ],
+   "verblijfsobject": "0363010000940579",
+   "bagAddress": "Houtmankade 34, 1013MX Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 1993,
+   "osmToAddressM": 6,
+   "panoramaYears": [
+    2016,
+    2025
+   ],
+   "referenceStatus": "ok",
+   "signatureElements": null
+  },
+  {
+   "name": "Politiebureau Zuid-De Pijp",
+   "address": "President Kennedylaan 11, Amsterdam",
+   "osm": "node/1941488437",
+   "osmLatLng": [
+    52.339985,
+    4.9022223
+   ],
+   "pandIds": [
+    "0363100012142138"
+   ],
+   "verblijfsobject": "0363010012119625",
+   "bagAddress": "President Kennedylaan 11, 1079MB Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 1995,
+   "osmToAddressM": 7,
+   "panoramaYears": [],
+   "referenceStatus": "no-wall",
+   "signatureElements": null
+  },
+  {
+   "name": "Politiebureau Boven-IJ",
+   "address": "Rode Kruisstraat 79, Amsterdam",
+   "osm": "node/1941488438",
+   "osmLatLng": [
+    52.3950272,
+    4.9278251
+   ],
+   "pandIds": [
+    "0363100012115571"
+   ],
+   "verblijfsobject": "0363010000794551",
+   "bagAddress": "Rode Kruisstraat 79, 1025KM Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 1978,
+   "osmToAddressM": 0,
+   "panoramaYears": [
+    2021,
+    2024
+   ],
+   "referenceStatus": "foliage",
+   "signatureElements": null
+  },
+  {
+   "name": "Politiepost IJburg",
+   "address": "IJburglaan 1397, Amsterdam",
+   "osm": "node/1941488442",
+   "osmLatLng": [
+    52.3527822,
+    5.0003628
+   ],
+   "pandIds": [
+    "0363100012127406"
+   ],
+   "verblijfsobject": "0363010001023945",
+   "bagAddress": "IJburglaan 1397, 1087KH Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 2004,
+   "osmToAddressM": 17,
+   "panoramaYears": [
+    2021,
+    2017
+   ],
+   "referenceStatus": "ok",
+   "signatureElements": null
+  },
+  {
+   "name": "Politiebureau Nieuwezijds Voorburgwal",
+   "address": "Nieuwezijds Voorburgwal 35, Amsterdam",
+   "osm": "node/2721772264",
+   "osmLatLng": [
+    52.37645,
+    4.8943726
+   ],
+   "pandIds": [
+    "0363100012171032"
+   ],
+   "verblijfsobject": "0363010012097422",
+   "bagAddress": "Nieuwezijds Voorburgwal 35, 1012RD Amsterdam",
+   "gebruiksdoel": "celfunctie,kantoorfunctie",
+   "bouwjaar": 1996,
+   "osmToAddressM": 0,
+   "panoramaYears": [
+    2024,
+    2022
+   ],
+   "referenceStatus": "ok",
+   "signatureElements": null
+  },
+  {
+   "name": "Politiebureau Postjesweg",
+   "address": "Postjesweg 179B, Amsterdam",
+   "osm": "node/2795227031",
+   "osmLatLng": [
+    52.3637482,
+    4.8386946
+   ],
+   "pandIds": [
+    "0363100012092810"
+   ],
+   "verblijfsobject": "0363010001023725",
+   "bagAddress": "Postjesweg 179B, 1062JN Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 2004,
+   "osmToAddressM": 0,
+   "panoramaYears": [
+    2022,
+    2016
+   ],
+   "referenceStatus": "ok",
+   "signatureElements": null
+  },
+  {
+   "name": "Politie Amsterdam",
+   "address": "Johan Huizingalaan 757, Amsterdam",
+   "osm": "node/2808423606",
+   "osmLatLng": [
+    52.3463543,
+    4.8281428
+   ],
+   "pandIds": [
+    "0363100012116154"
+   ],
+   "verblijfsobject": "0363010000692656",
+   "bagAddress": "Johan Huizingalaan 757, 1066VH Amsterdam",
+   "gebruiksdoel": "bijeenkomstfunctie",
+   "bouwjaar": 1959,
+   "osmToAddressM": 3,
+   "panoramaYears": [
+    2020,
+    2022
+   ],
+   "referenceStatus": "ok",
+   "signatureElements": null
+  },
+  {
+   "name": "Politiebureau Zuidoost Gaasperdam",
+   "address": "Remmerdenplein 102, Amsterdam",
+   "osm": "node/2862330114",
+   "osmLatLng": [
+    52.2973303,
+    4.9740741
+   ],
+   "pandIds": [
+    "0363100012064423"
+   ],
+   "verblijfsobject": "0363010000955731",
+   "bagAddress": "Remmerdenplein 102, 1106AK Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 1996,
+   "osmToAddressM": 0,
+   "panoramaYears": [
+    2022,
+    2021
+   ],
+   "referenceStatus": "ok",
+   "signatureElements": null
+  },
+  {
+   "name": "Politiebureau Oost Zeeburg",
+   "address": "Atje Keulen-Deelstrastraat 2, Amsterdam",
+   "osm": "node/8980903821",
+   "osmLatLng": [
+    52.3689778,
+    4.9714104
+   ],
+   "pandIds": [
+    "0363100012253728"
+   ],
+   "verblijfsobject": "0363010012155987",
+   "bagAddress": "Atje Keulen-Deelstrastraat 2, 1095NA Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 2022,
+   "osmToAddressM": 0,
+   "panoramaYears": [
+    2022,
+    2025
+   ],
+   "referenceStatus": "ok",
+   "signatureElements": null
+  },
+  {
+   "name": "Hoofdbureau van Politie",
+   "address": "Elandsgracht 117, Amsterdam",
+   "osm": "node/11117002807",
+   "osmLatLng": [
+    52.3683866,
+    4.8780116
+   ],
+   "pandIds": [
+    "0363100012169550"
+   ],
+   "verblijfsobject": "0363010000631019",
+   "bagAddress": "Elandsgracht 117, 1016TT Amsterdam",
+   "gebruiksdoel": "kantoorfunctie",
+   "bouwjaar": 1941,
+   "osmToAddressM": 39,
+   "panoramaYears": [
+    2020,
+    2024
+   ],
+   "referenceStatus": "ok",
+   "signatureElements": null
+  }
+ ]
+}
