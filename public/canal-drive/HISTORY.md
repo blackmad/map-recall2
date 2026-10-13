@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+## Landmark queue, batch 7: five memorials (2026-10-14, night)
+
+Lane `landmarks/queue-7-20261014`. The lane checked the backlog's
+"pending" flags against the catalogue first: the Lutherse kerken, Nieuwe
+Kerk, Montelbaanstoren, Munttoren, Amstelhof, Felix Meritis, Bartolotti,
+Trippenhuis, Pintohuis, Scheepvaartshuis, Stadsschouwburg, Carré, Amstel
+Hotel, Paradiso, Melkweg and Concertgebouw all already exist, so it took
+the best-known unmodelled statues: the Multatuli bust on the Torensluis
+(1.4k tris, red granite block lettered MULTATULI), Het Lieverdje on the
+Spui (0.6k, hands on hips, cap, faceted column), Anne Frank on the
+Merwedeplein (1.6k, girl with two bags, ANNE FRANK / 1929 - 1945), the
+Walraven van Hall monument (4.1k, fallen bronze tree on a brick circle with
+kerb and wall, stump, lettered plaque; lod1 1.2k) and the Auschwitz
+monument in the Wertheimpark (1.5k, NOOIT MEER AUSCHWITZ pane over
+shattered mirror plates in steel trays). All pass `audit:glb` at slots
+100 %. New `memorial-frame.ts`; `landmark-strip.ts` no longer clamps the
+camera to 8 m for small subjects. Integrator review at gallery size sent
+two back before merging: the Multatuli head carried a cone (now a low
+swept hair mass) and the Walraven tree read as a centipede (now a tapered
+trunk with five thick forking branches). Facings are visual estimates;
+the Wertheimpark monument is hidden from every panorama so its pane and
+plate sizes come from Commons photos; figures have no faces.
+
+
 ## Parks from the BGT survey (2026-10-14, night)
 
 Lane `ground/parks-20261013` (user, Cremerplein: "try to model the parks
