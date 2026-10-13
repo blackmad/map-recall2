@@ -17,7 +17,11 @@ export type MaterialSoup = {
   indices: Uint32Array | number[];
   /** One material index per triangle. */
   triMaterial: Uint16Array | number[];
-  materials: {name: string; rgb: [number, number, number]}[];
+  materials: {name: string; rgb: [number, number, number];
+    /** glTF extras: the shared-look slot (look/palette.ts MaterialSlot), its tint, and `inferred` when not authored. */
+    materialSlot?: string; tint?: string; materialSlotSource?: string;
+    /** KHR_materials_unlit (decals, printed signs): exempt from slot coverage. */
+    unlit?: boolean}[];
 };
 
 export type FacadeInventory = {
