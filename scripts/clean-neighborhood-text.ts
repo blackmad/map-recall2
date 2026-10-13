@@ -63,7 +63,7 @@ for (const city of cities) {
       for (const change of result.changes) {
         pending++;
         if (change.kind === 'artefact') artefacts++;
-        if (change.kind === 'borrowed') relabelled.push(`${entry.name} -> ${change.borrowedFrom}`);
+        if (change.kind === 'borrowed') relabelled.push(`${entry.name} [${change.field}] -> ${change.borrowedFrom}`);
         for (const reason of change.droppedReasons ?? []) droppedByReason.set(reason, (droppedByReason.get(reason) ?? 0) + 1);
         if (check) printChange(city, entry.name, change);
       }
