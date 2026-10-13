@@ -18,6 +18,7 @@ import {buildTransportedEnvelopeChunk,diagnosticEnvelopeTransport,EMPTY_ENVELOPE
 
 import { CELL_LAYER_COUNT, CELL_PX, STYLE_DIMS, cellLayer, CELL_KINDS, CELL_VARIANTS, paintCell, paintFatihMasonryCell } from './facadeCells.js';
 import { ROOF_CELL_M, paintRoofLayers } from './roofCells.js';
+import { ROOF_LAYERS_OFF, ROOF_TIER_GLSL, roofTierUniform } from './roofTier.js';
 import { withMonumentGable } from './monumentGables.js';
 import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, FATIH_MASONRY_LAYER, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
@@ -74,11 +75,14 @@ out vec3 vTint;
 out vec3 vAccent;
 out float vShade;
 flat out float vHighlight;
+out float vDist;
 void main() {
   vUv = uv; vLayer = layer; vTint = tint.rgb; vAccent = accent.rgb; vShade = tint.a;
   // hidden: 0 drawn, 1 hidden, 2 the highlighted answer (drawn plain yellow).
   vHighlight = hidden > 1.5 ? 1.0 : 0.0;
-  gl_Position = hidden > 0.5 && hidden < 1.5 ? vec4(2.0, 2.0, 2.0, 1.0) : projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  vec4 viewPosition = modelViewMatrix * vec4(position, 1.0);
+  vDist = length(viewPosition.xyz);
+  gl_Position = hidden > 0.5 && hidden < 1.5 ? vec4(2.0, 2.0, 2.0, 1.0) : projectionMatrix * viewPosition;
 }`;
 
 export const FRAGMENT = /* glsl */ `
@@ -90,19 +94,21 @@ uniform float bands;
 // Untextured: the vertex colour alone, no brick, tile or grain from any cell.
 uniform float flatColour;
 uniform float cityFade;
+${ROOF_TIER_GLSL}
 in vec2 vUv;
 flat in float vLayer;
 in vec3 vTint;
 in vec3 vAccent;
 in float vShade;
 flat in float vHighlight;
+in float vDist;
 out vec4 fragColor;
 void main() {
   // Screen-door coverage keeps depth writes correct while the city emerges from the overview.
   if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;
   if (vHighlight > 0.5) { fragColor = vec4(vec3(1.0, 0.824, 0.122) * vShade, 1.0); return; }
   vec3 p = vec3(vUv, vLayer);
-  vec3 c = texture(cells, p).rgb;
+  vec3 c = roofTierColour(texture(cells, p).rgb, vUv, vLayer, vDist);
   vec2 m = texture(masks, p).rg;
   c *= mix(vec3(1.0), vTint, m.r) * mix(vec3(1.0), vAccent, m.g);
   if (flatColour > 0.5) c = vTint;
@@ -1085,15 +1091,19 @@ export class ThreeBuildings {
 
   private newMaterial(): any {
     const THREE = this.THREE;
+    // The pantile and slate cells (the planned roofs' slope layers) coarsen with distance; every other layer is left alone.
+    const roofBase = cellSetOf(this.look) === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT;
+    const roofLayers = this.look === 'untextured' ? ROOF_LAYERS_OFF : [roofBase, roofBase + 2];
     if (this.cityLook) {
       // One shader for every building mesh (look/cityLook.ts); chunks keep their own uniforms per look.
       const variant = LOOK_VARIANTS[this.look];
       return createCityLookMaterial(THREE, { lit: this.lit, kind: 'chunk', side: THREE.FrontSide }, createCityUniforms(THREE, {
         bands: { value: variant.shadeBands }, flatColour: { value: variant.flatColour ? 1 : 0 }, wallGain: { value: variant.litWallGain },
+        roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() },
       }));
     }
     if (this.lit) {
-      const material = createLitFacadeMaterial(THREE);
+      const material = createLitFacadeMaterial(THREE, { roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() } });
       material.uniforms.bands.value = LOOK_VARIANTS[this.look].shadeBands;
       material.uniforms.flatColour.value = LOOK_VARIANTS[this.look].flatColour ? 1 : 0;
       if (material.uniforms.wallGain) material.uniforms.wallGain.value = LOOK_VARIANTS[this.look].litWallGain;
@@ -1101,7 +1111,7 @@ export class ThreeBuildings {
     }
     return new THREE.RawShaderMaterial({
       glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
-      uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: LOOK_VARIANTS[this.look].shadeBands }, flatColour: { value: LOOK_VARIANTS[this.look].flatColour ? 1 : 0 }, cityFade: { value: 1 } }, side: THREE.FrontSide,
+      uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: LOOK_VARIANTS[this.look].shadeBands }, flatColour: { value: LOOK_VARIANTS[this.look].flatColour ? 1 : 0 }, cityFade: { value: 1 }, roofLayers: { value: roofLayers }, roofTier: { value: roofTierUniform() } }, side: THREE.FrontSide,
     });
   }
 

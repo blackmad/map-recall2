@@ -50,6 +50,16 @@ and the look-consistency lane (2026-10-13). Code owners: `src/canalRecall/look/p
   iron) never lift, so windows read (`LOOK_VARIANTS[*].tone`).
 - Roofs: one table (`ROOF_TONES`, `FLAT_ROOF_GREYS`); pantile reds and slate
   greys; flat roofs bitumen/gravel greys, never a wall colour.
+- **Roof texture, by distance** (`roofTier.ts`, user 2026-10-13 "this roof
+  texture is too busy"): the pantile and slate cells are 1.2 m wide with 5-6
+  courses, which reads as noise from a chase camera. The roof band is a cell
+  luminance standard deviation of **at most 0.06** (`ROOF_CELL_SD_MAX`; the
+  cells were 0.098 / 0.093, the flat cell is 0.023); the mean is untouched, so
+  roof luma and the parity rule do not move. The facade shaders then take the
+  cell **1x within 70 m, 0.5x (tiles twice as large) from 70 m, and its mean
+  colour (the last mip) from 190 m**, crossfading over 30 m and 80 m; the
+  crossfade samples both cells rather than warping the UVs, so a long roof
+  never swims. Slot-material meshes (recipe houses, landmarks) are not touched.
 
 ## Parity (the "is this building really this dark?" rule)
 

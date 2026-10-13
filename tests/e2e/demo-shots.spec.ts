@@ -49,8 +49,11 @@ const SPOTS: Spot[] = [
   { name: 'street-politie-postjesweg', centre: [4.8387086, 52.363678], standDeg: 135, standM: 45, view: 'cockpit' },
   { name: 'roofs-bonboon-rozenstraat', centre: [4.88216, 52.37317], standDeg: 200, standM: 40 },
   { name: 'roofs-bonboon-street', centre: [4.88216, 52.37317], standDeg: 200, standM: 40, view: 'cockpit' },
-  { name: 'sheds-willem-de-zwijgerlaan', centre: [4.8628, 52.3773], standDeg: 180, standM: 35 },
-  { name: 'sheds-willem-de-zwijgerlaan-rear', centre: [4.8623, 52.3773], standDeg: 270, standM: 30 },
+  { name: 'sheds-willem-de-zwijgerlaan', centre: [4.8610, 52.3795], standDeg: 135, standM: 55 },
+  { name: 'sheds-willem-de-zwijgerlaan-b', centre: [4.86188, 52.37650], standDeg: 90, standM: 50 },
+  { name: 'sheds-willem-de-zwijgerlaan-c', centre: [4.85658, 52.38221], standDeg: 90, standM: 50 },
+  { name: 'allotments-nut-en-genoegen', centre: [4.85995, 52.38705], standDeg: 180, standM: 70 },
+  { name: 'allotments-sloterdijkermeer', centre: [4.85119, 52.38726], standDeg: 180, standM: 70 },
   { name: 'roofs-bilderdijkstraat', centre: [4.871021, 52.372319], standDeg: 250, standM: 40 },
   { name: 'roofs-nieuw-west', centre: [4.8130, 52.3600], standDeg: 150, standM: 45 },
 ];

@@ -12,11 +12,30 @@ import { CELL_PX } from './facadeCells.js';
 export type RoofCellKind = 'tile' | 'slate' | 'dormer' | 'flat';
 export const ROOF_CELL_KINDS: readonly RoofCellKind[] = ['tile', 'slate', 'dormer', 'flat'];
 export const ROOF_CELL_M = 1.2;
+/**
+ * The roof band (LOOK.md "Roofs"): the standard deviation of a pantile or slate cell's luminance stays at or below
+ * this, 0..1. The cells were painted at 0.098 / 0.093 and read as noise from a chase camera; the painted courses
+ * keep their shape and the deviation around the cell's mean is scaled by `ROOF_CELL_CONTRAST`. Cartoon cells keep
+ * their drawn ink lines.
+ */
+export const ROOF_CELL_SD_MAX = 0.06;
+export const ROOF_CELL_CONTRAST = 0.6;
 
 function hash2(a: number, b: number, seed: number): number {
   let h = Math.imul(a | 0, 374761393) ^ Math.imul(b | 0, 668265263) ^ Math.imul(seed | 0, 2246822519);
   h = Math.imul(h ^ (h >>> 13), 1274126177);
   return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
+}
+
+/** Scale a grey cell's deviation from its own mean by `contrast`, keeping the mean (the tint weight in alpha is untouched). */
+function flattenRoofCell(data: Uint8ClampedArray, contrast: number): void {
+  let sum = 0;
+  for (let i = 0; i < data.length; i += 4) sum += data[i];
+  const mean = sum / (data.length / 4);
+  for (let i = 0; i < data.length; i += 4) {
+    const v = Math.round(Math.max(0, Math.min(255, mean + (data[i] - mean) * contrast)));
+    data[i] = data[i + 1] = data[i + 2] = v;
+  }
 }
 
 export function paintRoofCell(kind: RoofCellKind, toon: boolean): Uint8ClampedArray {
@@ -42,6 +61,7 @@ export function paintRoofCell(kind: RoofCellKind, toon: boolean): Uint8ClampedAr
       const line = toon ? (fy < 0.07 || fx < 0.035 || fx > 0.965) : false;
       put(x, y, Math.round(Math.max(0, Math.min(1, line ? 0.28 : v)) * 255), 255);
     }
+    if (!toon) flattenRoofCell(data, ROOF_CELL_CONTRAST);
   } else if (kind === 'slate') {
     const rows = 11, cols = 6, rowH = CELL_PX / rows, colW = CELL_PX / cols;
     for (let y = 0; y < CELL_PX; y++) for (let x = 0; x < CELL_PX; x++) {
@@ -53,6 +73,7 @@ export function paintRoofCell(kind: RoofCellKind, toon: boolean): Uint8ClampedAr
       if (joint) v = toon ? 0.3 : v * 0.7;
       put(x, y, Math.round(Math.max(0, Math.min(1, v)) * 255), 255);
     }
+    if (!toon) flattenRoofCell(data, ROOF_CELL_CONTRAST);
   } else {
     // Dormer face: tinted wall around a white-framed window, fixed colours for the window itself.
     const wx0 = 0.2, wx1 = 0.8, wy0 = 0.2, wy1 = 0.82;
