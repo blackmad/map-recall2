@@ -335,7 +335,7 @@ for (const id of [...new Set(pins.map(p => p.id))]) {
     for (const pin of pins.filter(p => p.id === id)) {
       let found: boolean;
       if (pin.kind.startsWith('opening-')) found = r.openings.issues.some(i => `opening-${i.kind}` === pin.kind && (i.kind === 'buried' || i.severity === 'fail') && inBox(i.centre, pin.box!));
-      else if (pin.kind === 'zfight') found = r.zfight.patches.filter(p => !p.near && (!pin.orientation || p.orientation === pin.orientation) && inBox(p.centre, pin.box!)).reduce((t, p) => t + p.area, 0) >= (pin.minArea ?? 0.25);
+      else if (pin.kind === 'zfight' || pin.kind === 'zfight-tight') found = r.zfight.patches.filter(p => (pin.kind === 'zfight' ? !p.near : (!p.near || p.tight) && !p.sameMaterial) && (!pin.orientation || p.orientation === pin.orientation) && inBox(p.centre, pin.box!)).reduce((t, p) => t + p.area, 0) >= (pin.minArea ?? 0.25);
       else {
         const f = r.rhythm.find(x => x.name === pin.facade);
         assert.ok(f, `facade ${pin.facade} measured`);
