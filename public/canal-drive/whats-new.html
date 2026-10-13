@@ -154,7 +154,7 @@ function dayLabel(key) {
 }
 const gameUrl = (lng, lat) => {
   const f = n => n.toFixed(4);
-  return `./index.html#race=${f(lat)},${f(lng)},${f(lat)},${f(lng)},${f(lat + 0.004)},${f(lng)}`;
+  return `./index.html?travel=car#race=${f(lat)},${f(lng)},${f(lat)},${f(lng)},${f(lat + 0.004)},${f(lng)}`;
 };
 const fetchJson = u => fetch(u).then(r => { if (!r.ok) throw new Error(`${u} ${r.status}`); return r.json(); });
 

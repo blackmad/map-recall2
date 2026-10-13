@@ -180,7 +180,7 @@ function gameLink(chunk) {
     return [lat + north / 111320, lng + east / (111320 * Math.cos(lat * Math.PI / 180))];
   };
   const [sLat, sLng] = at(-half, road), [fLat, fLng] = at(half, road);
-  return `./index.html#race=${[lat, lng, sLat, sLng, fLat, fLng].map((v) => v.toFixed(6)).join(',')}`;
+  return `./index.html?travel=car#race=${[lat, lng, sLat, sLng, fLat, fLng].map((v) => v.toFixed(6)).join(',')}`;
 }
 
 async function build(chunk, report, gates, catalogue) {

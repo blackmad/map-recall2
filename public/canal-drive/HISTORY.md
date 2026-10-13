@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## "See it in the game" opens the ride instead of the menu (2026-10-13)
+
+User report: the What's New links did nothing visible. The `#race=` share link
+loaded the ride, but `_checkShareLink` never closed route setup, so the ride sat
+hidden behind the setup rail and its hero photo. (The review scripts had been
+calling `setSetupOpen(false)` themselves, which hid the problem.) Share links now
+close setup the way a launch from setup does. The links on What's New and Street
+chunks now add `?travel=car`, so they open the street ride: a boat can't reach most
+buildings. `travel=car|boat` is applied to the saved preferences the same way the
+F3 ferry preview link does it. Checked on the Waag link: the rider spawns about
+30 m from the anchor, with the model in view.
+
 ## Large tier, second customers: Kattenburg quadrangle and Heinekenplein block; courtyard footprints, sealed slivers, closed boxes (2026-10-13)
 
 Lane `lane/dominant-large-20261013` (Sonnet) after the elevation-skeleton
