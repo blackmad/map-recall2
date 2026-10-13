@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-11",
+ "generated": "2026-10-13",
  "note": "Existing geometry-audit offenders (src/canalRecall/landmarks/geometryAudit.ts). audit:glb fails a model only when a gated count (opening-floating-fail, opening-overhang-fail, zfight-m2, and since 2026-10-11 window-rhythm-fail / window-mismatch-spec / window-missing-spec on photo-spec facades) grows past its entry. Lower an entry when you fix a model; never raise one to pass. The window-rhythm keys were recorded for every model with an <id>-elevations.json on 2026-10-11 (lane fix/american-hotel-windows-20261011); american-hotel has no allowance (0 failing facades).",
  "reasons": {
   "blankenstraat-15": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
@@ -11,7 +11,12 @@
   "overtoom-197": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
   "shell-technology-centre": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
   "voc-kade-600": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
-  "willem-de-zwijgerlaan-350": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry."
+  "willem-de-zwijgerlaan-350": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
+  "oosterkerk": "First record (2026-10-13, feat/kit-only-churches-20261011 merge): hand-built church landed with window-rhythm mismatches against its photo spec (Opstandingskerk east gable 37 of 46 openings off-size); fix the builder and lower the entry.",
+  "de-duif": "First record (2026-10-13, feat/kit-only-churches-20261011 merge): hand-built church landed with window-rhythm mismatches against its photo spec (Opstandingskerk east gable 37 of 46 openings off-size); fix the builder and lower the entry.",
+  "obrechtkerk": "First record (2026-10-13, feat/kit-only-churches-20261011 merge): hand-built church landed with window-rhythm mismatches against its photo spec (Opstandingskerk east gable 37 of 46 openings off-size); fix the builder and lower the entry.",
+  "opstandingskerk": "First record (2026-10-13, feat/kit-only-churches-20261011 merge): hand-built church landed with window-rhythm mismatches against its photo spec (Opstandingskerk east gable 37 of 46 openings off-size); fix the builder and lower the entry.",
+  "mozes-en-aaronkerk": "First record (2026-10-13, feat/kit-only-churches-20261011 merge): hand-built church landed with window-rhythm mismatches against its photo spec (Opstandingskerk east gable 37 of 46 openings off-size); fix the builder and lower the entry."
  },
  "models": {
   "adam-tower": {
@@ -754,6 +759,21 @@
    "window-mismatch": 1,
    "window-missing": 6,
    "window-misaligned": 0
+  },
+  "de-duif": {
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
+   "opening-overhang": 0,
+   "opening-overhang-fail": 0,
+   "opening-buried": 0,
+   "zfight-m2": 0,
+   "zfight-near-m2": 0.1,
+   "window-mismatch": 1,
+   "window-missing": 0,
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 1,
+   "window-missing-spec": 0
   },
   "de-gooyer": {
    "opening-floating": 6,
@@ -2301,6 +2321,21 @@
    "window-missing": 0,
    "window-misaligned": 0
   },
+  "mozes-en-aaronkerk": {
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
+   "opening-overhang": 0,
+   "opening-overhang-fail": 0,
+   "opening-buried": 0,
+   "zfight-m2": 0.1,
+   "zfight-near-m2": 0,
+   "window-mismatch": 0,
+   "window-missing": 0,
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 0,
+   "window-missing-spec": 0
+  },
   "muiderkerk": {
    "opening-floating": 0,
    "opening-floating-fail": 0,
@@ -2553,6 +2588,21 @@
    "window-missing": 0,
    "window-misaligned": 0
   },
+  "obrechtkerk": {
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
+   "opening-overhang": 0,
+   "opening-overhang-fail": 0,
+   "opening-buried": 0,
+   "zfight-m2": 0.1,
+   "zfight-near-m2": 0.9,
+   "window-mismatch": 1,
+   "window-missing": 0,
+   "window-misaligned": 0,
+   "window-rhythm-fail": 0,
+   "window-mismatch-spec": 1,
+   "window-missing-spec": 0
+  },
   "occii": {
    "opening-floating": 7,
    "opening-floating-fail": 3,
@@ -2643,6 +2693,21 @@
    "window-mismatch-spec": 142,
    "window-missing-spec": 16
   },
+  "oosterkerk": {
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
+   "opening-overhang": 0,
+   "opening-overhang-fail": 0,
+   "opening-buried": 5,
+   "zfight-m2": 0.2,
+   "zfight-near-m2": 0,
+   "window-mismatch": 7,
+   "window-missing": 0,
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 7,
+   "window-missing-spec": 0
+  },
   "oosterparkkerk": {
    "opening-floating": 3,
    "opening-floating-fail": 0,
@@ -2654,6 +2719,21 @@
    "window-mismatch": 5,
    "window-missing": 0,
    "window-misaligned": 0
+  },
+  "opstandingskerk": {
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
+   "opening-overhang": 0,
+   "opening-overhang-fail": 0,
+   "opening-buried": 0,
+   "zfight-m2": 0,
+   "zfight-near-m2": 0,
+   "window-mismatch": 37,
+   "window-missing": 0,
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 37,
+   "window-missing-spec": 0
   },
   "orgelpark": {
    "opening-floating": 17,

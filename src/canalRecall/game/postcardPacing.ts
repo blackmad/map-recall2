@@ -16,46 +16,14 @@
 //     the current neighbourhood's postcard back, so a quiet ride still says
 //     where it is.
 
-/** Entries to a neighbourhood that always get the postcard. */
-export const POSTCARD_FIRST_VISITS = 3;
-/** Seconds without a new trivia card for a familiar neighbourhood's entry to
- *  get the postcard anyway. */
-export const POSTCARD_QUIET_SECONDS = 45;
-/** Seconds between postcards that are not first visits. */
-export const POSTCARD_MIN_GAP_SECONDS = 120;
-/** Seconds of riding inside one neighbourhood with no trivia card before its
- *  postcard comes back. */
-export const POSTCARD_LULL_SECONDS = 90;
-/** Seconds between lull postcards. */
-export const POSTCARD_LULL_GAP_SECONDS = 180;
-
-export interface PostcardPacingInput {
-  /** `raceTime`. */
-  now: number;
-  /** Entries to this neighbourhood before the current one, across rides. */
-  priorEntries: number;
-  /** `raceTime` when a trivia (landmark/street) card last opened. */
-  lastTriviaAt: number | null;
-  /** `raceTime` when a postcard last opened. */
-  lastPostcardAt: number | null;
-}
-
-// A time later than now is from an earlier ride (`raceTime` restarts at 0).
-const since = (now: number, at: number | null) => (at == null || at > now ? Infinity : now - at);
-
-/** Whether an entry to a neighbourhood is worth its postcard. */
-export function postcardOnEntry(input: PostcardPacingInput): boolean {
-  if (input.priorEntries < POSTCARD_FIRST_VISITS) return true;
-  return since(input.now, input.lastTriviaAt) >= POSTCARD_QUIET_SECONDS
-    && since(input.now, input.lastPostcardAt) >= POSTCARD_MIN_GAP_SECONDS;
-}
-
-/** Whether a quiet stretch inside the current neighbourhood brings its postcard back. */
-export function postcardForLull(input: Omit<PostcardPacingInput, 'priorEntries'> & { enteredAt: number }): boolean {
-  const trivia = input.lastTriviaAt != null && input.lastTriviaAt <= input.now ? input.lastTriviaAt : -Infinity;
-  return since(input.now, Math.max(input.enteredAt, trivia)) >= POSTCARD_LULL_SECONDS
-    && since(input.now, input.lastPostcardAt) >= POSTCARD_LULL_GAP_SECONDS;
-}
+// The numbers and the two decisions live in `teachingPacer`, beside every
+// other pacing rule; they are re-exported so imports and checks keep working.
+export {
+  POSTCARD_FIRST_VISITS, POSTCARD_QUIET_SECONDS, POSTCARD_MIN_GAP_SECONDS,
+  POSTCARD_LULL_SECONDS, POSTCARD_LULL_GAP_SECONDS,
+  postcardOnEntry, postcardForLull,
+} from './teachingPacer';
+export type { PostcardPacingInput } from './teachingPacer';
 
 type StorageLike = Pick<Storage, 'getItem' | 'setItem'>;
 const storageKey = (cityId: string) => `canalRecall.neighborhoodEntries.${cityId}`;

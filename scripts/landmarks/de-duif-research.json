@@ -1,0 +1,87 @@
+{
+  "canonicalModelId": "de-duif",
+  "researchedOn": "2026-10-13",
+  "state": "built-2026-10-13 (replaces the procedural kit in src/canalRecall/landmarkKits.ts via suppressOsmIds)",
+  "destination": {
+    "name": "De Duif",
+    "address": "Prinsengracht 756, Amsterdam",
+    "bagPand": "NL.IMBAG.Pand.0363100012171729",
+    "landmarkId": "extract_landmarks_1054259843"
+  },
+  "survey": {
+    "bag": "artifacts/landmark-lanes/de-duif/raw/bag-pand.json",
+    "3dbag": "artifacts/landmark-lanes/de-duif/raw/3dbag.json",
+    "roofHeightmap": "artifacts/landmark-lanes/de-duif/roof-heightmap.png",
+    "readings": "Axis 287.2 degrees counter-clockwise from east (front to the canal, north-north-east). Front 18.6 m wide; nave 11.2 m (eaves 22 m, ridge 25.6 m), aisles to 14.6-16.2 m, a transept of the nave's height crossing at 4.5 m behind the middle, a low lantern over the crossing (27.2 m), back annexes 8-12 m. 3DBAG front top 27.3 m."
+  },
+  "photos": [
+    {
+      "file": "artifacts/landmark-lanes/de-duif/commons/Duif0201.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Duif0201.jpg",
+      "licence": "Attribution",
+      "use": "front head-on across the canal (proportions, pediment, scrolls, obelisks)"
+    },
+    {
+      "file": "artifacts/landmark-lanes/de-duif/commons/RM4658_Prinsengracht_756.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:RM4658_Prinsengracht_756.jpg",
+      "licence": "CC BY 3.0",
+      "use": "front close (pilasters, doors, niches, tympanum mosaic, blue tablet, scroll), colour"
+    },
+    {
+      "file": "artifacts/landmark-lanes/de-duif/commons/Voorgevel_-_Amsterdam_-_20013590_-_RCE.jpg",
+      "licence": "CC BY-SA 4.0 (RCE, 1977)",
+      "use": "front orthographic-ish (bay widths, pilaster pairs, door heights)"
+    },
+    {
+      "file": "artifacts/landmark-lanes/de-duif/commons/Exterieur_achterzijde_-_Amsterdam_-_20013585_-_RCE.jpg",
+      "licence": "CC BY-SA 4.0 (RCE, 1970)",
+      "use": "Kerkstraat back: tall brick end with corner strips and a high window, lower building with arched ground windows"
+    },
+    {
+      "file": "artifacts/landmark-lanes/de-duif/commons/Exterieur_-_Amsterdam_-_20013586_-_RCE.jpg",
+      "licence": "CC BY-SA 4.0 (RCE, 1970)",
+      "use": "front in its row from the Reguliersgracht bridge"
+    },
+    {
+      "file": "artifacts/landmark-lanes/de-duif/commons/De_Duif_Prinsengracht_Amsterdam_-_20013589_-_RCE.jpg",
+      "licence": "CC BY-SA 4.0 (RCE)",
+      "use": "context"
+    },
+    {
+      "file": "artifacts/landmark-lanes/de-duif/commons/Duif0211.jpg",
+      "licence": "Attribution",
+      "use": "interior (clerestory and crossing lantern windows)"
+    },
+    {
+      "file": "artifacts/landmark-lanes/de-duif/commons/Duif0222.jpg",
+      "licence": "Attribution",
+      "use": "interior (choir, dome)"
+    },
+    {
+      "file": "artifacts/landmark-lanes/de-duif/commons/Amsterdamdeduif.jpg",
+      "licence": "CC BY-SA 3.0",
+      "use": "front, colour"
+    },
+    {
+      "file": "artifacts/landmark-lanes/de-duif/commons/Prinsengracht_754_and_756_detail.jpg",
+      "licence": "CC BY-SA 3.0",
+      "use": "context (tile plaque)"
+    }
+  ],
+  "facadeRhythm": {
+    "north front (Prinsengracht)": "Symmetric, grey sandstone. Lower storey (to 12.6 m): three bays; single pilasters at the ends, paired pilasters either side of the centre bay. Centre: the great door, an arched tympanum with the gold mosaic, the blue inscription tablet (IN LOCO ISTO DABO PACEM). Side bays: a small door under a pediment hood, a round-headed niche with a statue above it. Entablature, then an attic band to 15.8 m with obelisks at the ends. Raised centre of nave width: paired pilasters at each edge, one tall round-arched window, entablature and a pediment to 27.3 m with a cross; concave scrolls join it to the attic ends.",
+    "flanks": "Party walls against the neighbouring canal houses up to the aisle eaves (no openings); above them the nave clerestory and the transept ends. Inferred, not photographed from outside: three round-arched clerestory windows a side, one large arched window over a smaller one at each transept end (the interior photos show arched clerestory and transept windows).",
+    "south back (Kerkstraat)": "Brick nave end with corner pilaster strips and a tall round-arched window high up; lower brick annexes either side with two rows of windows (RCE 1970; counts on the annexes are approximate).",
+    "roofs": "Pitched slate roofs of a low pitch on the nave and the transept (crossing at right angles), lean-to aisle roofs, a small lead octagonal lantern with a low cap over the crossing, near-flat roofs on the back annexes. Nothing from the 3DBAG roof meshes."
+  },
+  "colours": {
+    "sampled": "RM4658 (overcast, 2012): sandstone lit #b6b1b0, shaded #7d7978, upper #9a8f86; doors #60615d. Duif0201 is backlit (#565646) and not used for colour.",
+    "chosen": "stone #c9c4bc (the front faces north-north-east and is always in the game's shade; first try #b3ada6 rendered #5a5c5c, too dark against the photo), plinth #9d9993, brick #7c6256, slate #5e6168, mosaic #c49a4a, tablet #2f4f86, lead #9aa3ac."
+  },
+  "decisions": [
+    "Plan and heights from BAG/3DBAG; all roofs and facades from intent and photographs.",
+    "Flank and transept windows are inferred (the church is built in between canal houses; no outside photos of them).",
+    "The crossing lantern is a low lead octagon as 3DBAG shows (1.6 m above the ridges); its exact form is not photographed.",
+    "The first build mirrored the plan across the church axis (plan readings take b to the left of the axis, the kit's local z runs to the right); scripts/landmarks/footprint-fit.ts caught it (77% -> 99% of the BAG footprint covered) and the builder now uses localB."
+  ]
+}

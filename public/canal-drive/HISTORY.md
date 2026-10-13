@@ -1,5 +1,89 @@
 # Canal Recall — what is built
 
+## Five hand-built churches replace their procedural kits (2026-10-13)
+
+`feat/kit-only-churches-20261011` (killed mid-lane 2026-10-13, salvaged and
+merged by the integrator): Oosterkerk (16.8k tris), Mozes en Aaronkerk (7.7k),
+De Duif (7.3k), Obrechtkerk (43k) and Opstandingskerk (5.7k) as
+`scripts/landmarks/*-builder.ts` with specs, footprints and `church-kit.ts`
+helpers; `add-church-catalogue-entry.mjs`, `commons-fetch.mjs`,
+`crop-image.mjs` and `detached-parts.ts` tooling. Reviewed at review-sheet
+size against camera-matched panoramas: Oosterkerk and Mozes en Aaronkerk match
+closely, De Duif's Prinsengracht front matches with plain party-wall sides,
+Obrechtkerk's twin-tower front is plausible with inferred sides. `audit:glb`:
+Mozes en Aaronkerk PASS; the other four fail only window-rhythm against their
+photo specs, so they got first-record entries in
+`geometry-audit-baseline.json` (lower, never raise) and the cleanup lane owns
+the fixes. Merge resolution took main for the shared registry/catalogue/LOD
+files and re-added the five entries; the manifest and
+`signature-placement.bundle.js` were regenerated.
+
+
+## Own ground: per-polder water, BGT widths per way, 202 more measured bridges (2026-10-13)
+
+Lane `ground/data-20261013` (Sonnet, `docs/handoffs/lane-ground-data-20261013.md`),
+the three data blockers for own-ground default-on. **Water levels**: AGV/Waternet
+"Peilgebieden Vigerend" (DAMO register, ArcGIS FeatureServer; the Rijkswaterstaat
+national WFS has geometry but null levels for Amsterdam) → `elevation-v1/water-levels.json`
+(+10 KB gz), NAP level per water polygon and shore (majority peilgebied; fixed
+levels as is, seasonal/flexible at the band midpoint; 705/707 parsed; 5,818 of
+12,777 polygons and 45% of shores joined, open water stays −0.40 m NAP).
+`groundStore`, `water.ts`, `groundCell` read it; new `GroundStore.waterZ` and
+`GameGround.waterLevelAt`; integrator wired the boat and ferry to
+`waterLevelAt` in `vector-map.js`. Named regression Osdorpplein: ground −2.11,
+water −3.47 (VP −2.17 m NAP); Herengracht cell uniformly −1.77. **Widths**: BGT
+`wegdeel` (PDOK OGC API, CC0, 1,164 tiles cached) sampled by cross-lines at
+25/50/75% of each way, own surface run within 2.5 m, footpath and cycle path
+summed per side, median over stations; dual carriageways measure to the near
+edge twice; bridge ways prefer `relatieve_hoogteligging ≥ 1`. 71,703 of 97,372
+drawable ways (73.6%) get `OsmWay.bw = [width, sidewalk, cycle]` in decimetres
+(+0.44 MB gz over the cells); `crossSection` prefers it, subtracting painted
+cycle lanes; `bgt-width-by-class.json` (median/p10/p90 per OSM class) for the
+2D physics reader, not yet wired. Where OSM `width` tags exist BGT differs by
+0.8 m (cycleway) to 3.7 m (secondary) on average. **Bridges**: the
+`feat/measured-bridges` AHN method on the 891 fallback footprints
+(`scripts/elevation/build-bridge-surfaces-v2.ts`, extractor `--extra-profiles`;
+cells byte-identical, only `bridges.json` changed, +79 KB gz): 202 non-movable
+decks measured (129 humped over 0.3 m, max 1.82 m; 113 concrete, 44 wooden,
+40 steel, 5 masonry arch) → 931 measured, 689 fallback. 39 movable bridges were
+measurable but are kept flat by design. Not measured: 127 without an OSM road
+through the footprint, 111 under 2 m wide, 100 viaduct-like, 29 over 65 m, 128
+AHN gaps, 25 unnumbered rows. Checks: own-ground 33, elevation 11, 294 cells
+fully measured, own-ground-game e2e 8/8 (lane) and 4/4 desktop (integrator),
+lint. Raw inputs archived to `map-recall2-source-data/datasets/own-ground-20261013/`.
+`docs/elevation.md` updated.
+
+
+## Route questions no longer freeze the rider; spaced repetition budgets them (2026-10-13)
+
+Assessment finding: every route question zeroed the bike's speed and `game.js`
+returned early each frame until it was answered, after 0.65 s on every new
+unlearned name, a stop every block in the centre; SRS never chose questions.
+Lane `gameplay/riding-prompts-20261013` (Sonnet, from
+`docs/handoffs/lane-gameplay-pacing-20261013.md`): `questionBudget.ts`
+(default 2 asks/min, 15 s minimum gap, last slot reserved for due reviews and
+teaching streets; everything else revealed only after the rider has left the
+street), a riding prompt (`ridingPrompt.ts`, bottom band, keys 1–4/tap,
+12 s timeout or 1.2 s off the street → new `passed` grade: no attempt, no
+points, streak kept, name revealed), one `teachingPacer.ts` holding the
+drive-by, postcard, bridge and transit cooldowns plus a 6 s plaque-feedback
+timeout (values unchanged), drive-by and street cards fold to a title line
+after 8 s, six Storybook states, `ridingPromptBand.ts` in the bottom-HUD
+check, `tests/e2e/riding-pacing.spec.ts`. Integrator flipped the hook:
+`game.js:462` `if (this.quizPromptName)` → `if (this._quizFreezesRide())`
+(typed mode, bridge/crossing and transit questions keep the freeze;
+`game.ridingPrompts = false` restores the old behaviour). Measured on the
+seeded Anne Frank → Rijksmuseum ride (autopilot 80 px/s, 3 s answers):
+10 prompts / 125.7 s / 4.8 per min / 30.3 s frozen before; 3 prompts / 93.2 s
+/ 1.9 per min / 0 s frozen after, max 2 in any minute. Checks: lint, 27 game
+unit tests, notice cards, answer path (`passed` case), bottom HUD (544
+scenarios), Storybook build, canal-car, reachability, riding-pacing / quiz /
+turn-question-timing e2e. Also 2026-10-13 (user): no cap on bespoke landmark
+builders (the "~100 icons" tiering is dropped); desktop performance outranks
+iPhone ~10x, iPhone measurements come later; the integrator merges on its own
+judgement.
+
+
 ## Housekeeping sweep: worktrees, caches, source archive (2026-10-13)
 
 User: "clean up git worktrees", "symlink node_modules/python env between

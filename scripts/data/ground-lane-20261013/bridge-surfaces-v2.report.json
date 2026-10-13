@@ -1,0 +1,4836 @@
+{
+ "sources": {
+  "ahn": "https://service.pdok.nl/rws/ahn/wcs/v1_0 (AHN4 dsm_05m/dtm_05m, CC0)",
+  "footprints": "scripts/data/amsterdam-bridge-register.json (Gemeente Amsterdam)",
+  "alignment": "own-ground-osm-v1 (OSM, ODbL)"
+ },
+ "footprints": 891,
+ "byStatus": {
+  "ok": 202,
+  "coverage": 128,
+  "gap": 51,
+  "ok (movable)": 39,
+  "too-long": 29,
+  "too-long (movable)": 12,
+  "width": 111,
+  "short": 9,
+  "coverage (movable)": 29,
+  "limits": 100,
+  "no-road": 127,
+  "limits (movable)": 4,
+  "gap (movable)": 10,
+  "no-road (movable)": 10,
+  "width (movable)": 5,
+  "unnumbered (movable)": 1,
+  "unnumbered": 24
+ },
+ "measuredWritten": 202,
+ "humpOver0_3m": 129,
+ "humpOver1m": 23,
+ "humpMedianM": 0.415,
+ "humpMaxM": 1.82,
+ "movableMeasuredButKeptFlat": 39,
+ "movableHumpOver0_3m": 30,
+ "families": {
+  "steel-deck": 40,
+  "masonry-arch": 5,
+  "wooden-deck": 44,
+  "concrete-deck": 113
+ },
+ "bytes": 1348427,
+ "gzipBytes": 233898,
+ "rejected": [
+  {
+   "id": "BRU0009",
+   "name": "Torensluis",
+   "status": "coverage",
+   "reason": "5/47 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0010",
+   "name": "Lijnbaansbrug",
+   "status": "coverage",
+   "reason": "7/48 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0013",
+   "name": "Bridge 0013",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0020",
+   "name": "Anton Jolingbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0023",
+   "name": "Bridge 0023",
+   "status": "coverage",
+   "reason": "9/42 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0036",
+   "name": "Lucas Jansz. Sinckbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0078",
+   "name": "Bridge 0078",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0079",
+   "name": "Brandweerbrug",
+   "status": "coverage",
+   "reason": "9/39 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0095",
+   "name": "Bridge 0095",
+   "status": "too-long",
+   "reason": "deck 100 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0101",
+   "name": "Nieuwe Amstelbrug",
+   "status": "too-long",
+   "reason": "deck 94 m",
+   "movable": true
+  },
+  {
+   "id": "BRU0105",
+   "name": "Makelaarsbruggetje",
+   "status": "width",
+   "reason": "footprint width 1.8 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0116",
+   "name": "Ceintuurbrug",
+   "status": "coverage",
+   "reason": "9/40 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0129",
+   "name": "Groentepraambrug",
+   "status": "coverage",
+   "reason": "2/20 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0130",
+   "name": "Bridge 0130",
+   "status": "short",
+   "reason": "alignment only 12 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0137",
+   "name": "Diamantbrug",
+   "status": "coverage",
+   "reason": "8/39 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0143",
+   "name": "Korrelbrug",
+   "status": "coverage",
+   "reason": "11/39 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0145",
+   "name": "Cornelis Ritterbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0151",
+   "name": "Willemsbrug",
+   "status": "coverage",
+   "reason": "13/41 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0155",
+   "name": "Kattenslootbrug",
+   "status": "coverage",
+   "reason": "11/41 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0156",
+   "name": "Groentemarktbrug",
+   "status": "coverage",
+   "reason": "12/40 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0159",
+   "name": "Leonard Springerbrug",
+   "status": "limits",
+   "reason": "hump 7.35 m, grade 2.19",
+   "movable": false
+  },
+  {
+   "id": "BRU0165",
+   "name": "Raampoort",
+   "status": "coverage",
+   "reason": "10/40 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0169",
+   "name": "Oude Kinkerbrug",
+   "status": "coverage",
+   "reason": "11/43 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0171",
+   "name": "Bridge 0171",
+   "status": "coverage",
+   "reason": "12/41 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0172",
+   "name": "Liefdesbruggetje",
+   "status": "coverage",
+   "reason": "25/36 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0173",
+   "name": "Wiegbrug",
+   "status": "coverage",
+   "reason": "12/41 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0177",
+   "name": "Wasknijper",
+   "status": "coverage",
+   "reason": "20/42 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0182",
+   "name": "Bridge 0182",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0183",
+   "name": "Bridge 0183",
+   "status": "coverage",
+   "reason": "13/40 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0195",
+   "name": "Henrietta Leavittbrug",
+   "status": "limits",
+   "reason": "hump 2.10 m, grade 0.28",
+   "movable": false
+  },
+  {
+   "id": "BRU0196",
+   "name": "Titaantjesbrug",
+   "status": "limits",
+   "reason": "hump 3.86 m, grade 1.24",
+   "movable": false
+  },
+  {
+   "id": "BRU0203",
+   "name": "Lommertbrug",
+   "status": "coverage",
+   "reason": "1/31 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0207",
+   "name": "Liesdelsluis",
+   "status": "coverage",
+   "reason": "10/39 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0209",
+   "name": "Vredenburgerbrug",
+   "status": "coverage",
+   "reason": "18/38 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0210",
+   "name": "Bet van Beerenbrug",
+   "status": "coverage",
+   "reason": "21/37 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0211",
+   "name": "Majoor Bosshardtbrug",
+   "status": "coverage",
+   "reason": "18/37 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0214",
+   "name": "Stoofbrug",
+   "status": "coverage",
+   "reason": "12/39 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0217",
+   "name": "Frankendaelbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0221",
+   "name": "Halvemaansbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0222",
+   "name": "Aluminiumbrug",
+   "status": "coverage",
+   "reason": "8/38 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0229",
+   "name": "Ir. B. Bijvoetbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0232",
+   "name": "Bridge 0232",
+   "status": "limits",
+   "reason": "hump 2.37 m, grade 1.01",
+   "movable": false
+  },
+  {
+   "id": "BRU0238",
+   "name": "M.S. Vaz Diasbrug",
+   "status": "coverage",
+   "reason": "9/40 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0239",
+   "name": "Hortusbrug",
+   "status": "coverage",
+   "reason": "14/40 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0242",
+   "name": "Magere Brug",
+   "status": "limits",
+   "reason": "hump 3.11 m, grade 1.05",
+   "movable": true
+  },
+  {
+   "id": "BRU0243",
+   "name": "Bridge 0243",
+   "status": "coverage",
+   "reason": "8/38 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0245",
+   "name": "Rinus Michelsbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0246",
+   "name": "Hogesluis",
+   "status": "too-long",
+   "reason": "deck 83 m",
+   "movable": true
+  },
+  {
+   "id": "BRU0248",
+   "name": "Paleis voor Volksvlijtbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0249",
+   "name": "Auke Bijlsmabrug",
+   "status": "limits",
+   "reason": "hump 1.32 m, grade 0.41",
+   "movable": false
+  },
+  {
+   "id": "BRU0255",
+   "name": "Tulpbrug",
+   "status": "limits",
+   "reason": "hump 4.40 m, grade 1.45",
+   "movable": false
+  },
+  {
+   "id": "BRU0256",
+   "name": "Kaap de Goede Hoopbrug",
+   "status": "coverage",
+   "reason": "16/46 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0263",
+   "name": "Weesperpoort",
+   "status": "coverage",
+   "reason": "5/51 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0267",
+   "name": "Bridge 0267",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0270",
+   "name": "Kippebrug",
+   "status": "limits",
+   "reason": "hump 1.41 m, grade 0.28",
+   "movable": false
+  },
+  {
+   "id": "BRU0271",
+   "name": "Bridge 0271",
+   "status": "coverage",
+   "reason": "9/38 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0272",
+   "name": "Mariniersbrug",
+   "status": "too-long",
+   "reason": "deck 69 m",
+   "movable": true
+  },
+  {
+   "id": "BRU0273",
+   "name": "Bridge 0273",
+   "status": "short",
+   "reason": "alignment only 9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0274",
+   "name": "Kattenburgerbrug",
+   "status": "coverage",
+   "reason": "17/73 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0275",
+   "name": "Bridge 0275",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0279",
+   "name": "Kikkerbilssluis",
+   "status": "coverage",
+   "reason": "25/39 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0281",
+   "name": "Peperbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": true
+  },
+  {
+   "id": "BRU0298",
+   "name": "Bantammerbrug",
+   "status": "coverage",
+   "reason": "4/48 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0306",
+   "name": "Sint Nicolaasbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0307",
+   "name": "Bridge 0307",
+   "status": "coverage",
+   "reason": "12/49 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0310",
+   "name": "Bridge 0310",
+   "status": "limits",
+   "reason": "hump 2.74 m, grade 0.56",
+   "movable": false
+  },
+  {
+   "id": "BRU0312",
+   "name": "Bridge 0312",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0314",
+   "name": "Westerdoksluis",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": true
+  },
+  {
+   "id": "BRU0318",
+   "name": "Zoutkeetsbrug",
+   "status": "coverage",
+   "reason": "13/41 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0320",
+   "name": "Drieharingenbrug",
+   "status": "coverage",
+   "reason": "17/48 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0321",
+   "name": "Sloterdijkerbrug",
+   "status": "limits",
+   "reason": "hump 3.10 m, grade 1.16",
+   "movable": true
+  },
+  {
+   "id": "BRU0322",
+   "name": "Camera Obscurabrug",
+   "status": "coverage",
+   "reason": "13/52 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0323",
+   "name": "Bridge 0323",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0327",
+   "name": "Armand Sunierbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": true
+  },
+  {
+   "id": "BRU0328",
+   "name": "Bridge 0328",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0332",
+   "name": "Bridge 0332",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0333",
+   "name": "Bridge 0333",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0336",
+   "name": "Hans Lipperheybrug",
+   "status": "coverage",
+   "reason": "12/35 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0341",
+   "name": "Fré Cohenbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0344",
+   "name": "Bridge 0344",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": true
+  },
+  {
+   "id": "BRU0345",
+   "name": "Bridge 0345",
+   "status": "coverage",
+   "reason": "14/41 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0348",
+   "name": "Zeilstraatbrug",
+   "status": "coverage",
+   "reason": "10/41 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0349",
+   "name": "Cor Thesingbrug",
+   "status": "coverage",
+   "reason": "10/41 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0350",
+   "name": "Torontobrug",
+   "status": "too-long",
+   "reason": "deck 119 m",
+   "movable": true
+  },
+  {
+   "id": "BRU0356",
+   "name": "NSM-brug",
+   "status": "too-long",
+   "reason": "deck 142 m",
+   "movable": true
+  },
+  {
+   "id": "BRU0359",
+   "name": "Molenslootbrug",
+   "status": "coverage",
+   "reason": "11/47 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0360",
+   "name": "Kabouterbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": true
+  },
+  {
+   "id": "BRU0362",
+   "name": "Zosenerdambrug",
+   "status": "width",
+   "reason": "footprint width 2.0 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0364",
+   "name": "Buiksloter Kerkepadbrug",
+   "status": "limits",
+   "reason": "hump 1.13 m, grade 0.60",
+   "movable": false
+  },
+  {
+   "id": "BRU0365",
+   "name": "Bridge 0365",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0366",
+   "name": "Bridge 0366",
+   "status": "width",
+   "reason": "footprint width 1.6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0367",
+   "name": "Bridge 0367",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0372",
+   "name": "Bridge 0372",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0374",
+   "name": "Los Postje",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0377",
+   "name": "Schellingwouder Kerkepadsbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0386",
+   "name": "Ahmed Zianibrug",
+   "status": "coverage",
+   "reason": "21/66 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0387",
+   "name": "Bridge 0387",
+   "status": "coverage",
+   "reason": "12/60 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0388",
+   "name": "Bridge 0388",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0389",
+   "name": "Zebrabrug",
+   "status": "limits",
+   "reason": "hump 1.69 m, grade 0.28",
+   "movable": false
+  },
+  {
+   "id": "BRU0390",
+   "name": "Bridge 0390",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0391",
+   "name": "Bridge 0391",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0392",
+   "name": "Bridge 0392",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0393",
+   "name": "Wil de Graaffbrug",
+   "status": "limits",
+   "reason": "hump 0.81 m, grade 0.31",
+   "movable": false
+  },
+  {
+   "id": "BRU0395",
+   "name": "Geert Geertsenbrug",
+   "status": "limits",
+   "reason": "hump 4.79 m, grade 1.53",
+   "movable": false
+  },
+  {
+   "id": "BRU0398",
+   "name": "Bridge 0398",
+   "status": "width",
+   "reason": "footprint width 1.5 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0414",
+   "name": "Bridge 0414",
+   "status": "coverage",
+   "reason": "12/42 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0415",
+   "name": "Dick Smullbrug",
+   "status": "coverage",
+   "reason": "18/52 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0417",
+   "name": "Joep Langebrug",
+   "status": "coverage",
+   "reason": "12/52 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0421",
+   "name": "Bridge 0421",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0423",
+   "name": "Berlagebrug",
+   "status": "too-long",
+   "reason": "deck 73 m",
+   "movable": true
+  },
+  {
+   "id": "BRU0427",
+   "name": "Bridge 0427",
+   "status": "coverage",
+   "reason": "15/39 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0429",
+   "name": "Omvalbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": true
+  },
+  {
+   "id": "BRU0431",
+   "name": "Aron Wolff Berlijnbrug",
+   "status": "coverage",
+   "reason": "10/44 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0439",
+   "name": "Utrechtsebrug",
+   "status": "too-long",
+   "reason": "deck 177 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0440",
+   "name": "Bridge 0440",
+   "status": "limits",
+   "reason": "hump 2.23 m, grade 0.81",
+   "movable": false
+  },
+  {
+   "id": "BRU0443",
+   "name": "Bridge 0443",
+   "status": "limits",
+   "reason": "hump 2.57 m, grade 0.64",
+   "movable": false
+  },
+  {
+   "id": "BRU0449",
+   "name": "Gustav Leonardbrug",
+   "status": "limits",
+   "reason": "hump 2.90 m, grade 1.06",
+   "movable": false
+  },
+  {
+   "id": "BRU0450",
+   "name": "Pater van Kilsdonkbrug",
+   "status": "coverage",
+   "reason": "2/24 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0451",
+   "name": "Bridge 0451",
+   "status": "width",
+   "reason": "footprint width 1.4 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0452",
+   "name": "C.V. Gerritsenbrug",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0453",
+   "name": "Norbert Eliasbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0455",
+   "name": "Brandbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0463",
+   "name": "Bridge 0463",
+   "status": "coverage",
+   "reason": "10/37 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0474",
+   "name": "Bridge 0474",
+   "status": "coverage",
+   "reason": "8/37 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0475",
+   "name": "Bridge 0475",
+   "status": "limits",
+   "reason": "hump 5.34 m, grade 1.53",
+   "movable": false
+  },
+  {
+   "id": "BRU0476",
+   "name": "Bridge 0476",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0478",
+   "name": "Bridge 0478",
+   "status": "coverage",
+   "reason": "8/38 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0482",
+   "name": "Bridge 0482",
+   "status": "width",
+   "reason": "footprint width 1.2 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0485",
+   "name": "Dees Postmabrug",
+   "status": "coverage",
+   "reason": "32/68 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0491",
+   "name": "Bridge 0491",
+   "status": "coverage",
+   "reason": "12/48 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0501",
+   "name": "Bridge 0501",
+   "status": "coverage",
+   "reason": "13/37 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0504",
+   "name": "Bridge 0504",
+   "status": "limits",
+   "reason": "hump 1.12 m, grade 0.37",
+   "movable": true
+  },
+  {
+   "id": "BRU0505",
+   "name": "Bridge 0505",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0511",
+   "name": "Bridge 0511",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0512",
+   "name": "Bridge 0512",
+   "status": "limits",
+   "reason": "hump 5.88 m, grade 1.59",
+   "movable": false
+  },
+  {
+   "id": "BRU0514",
+   "name": "Bridge 0514",
+   "status": "limits",
+   "reason": "hump 0.79 m, grade 0.40",
+   "movable": false
+  },
+  {
+   "id": "BRU0515",
+   "name": "Bridge 0515",
+   "status": "limits",
+   "reason": "hump 5.47 m, grade 2.13",
+   "movable": false
+  },
+  {
+   "id": "BRU0518",
+   "name": "Bridge 0518",
+   "status": "limits",
+   "reason": "hump 8.22 m, grade 2.17",
+   "movable": false
+  },
+  {
+   "id": "BRU0519",
+   "name": "Ballenbrug",
+   "status": "width",
+   "reason": "footprint width 1.5 m",
+   "movable": true
+  },
+  {
+   "id": "BRU0520",
+   "name": "Ballenbrug",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": true
+  },
+  {
+   "id": "BRU0522",
+   "name": "Bridge 0522",
+   "status": "limits",
+   "reason": "hump 9.05 m, grade 1.75",
+   "movable": false
+  },
+  {
+   "id": "BRU0523",
+   "name": "Bridge 0523",
+   "status": "limits",
+   "reason": "hump 6.45 m, grade 1.96",
+   "movable": false
+  },
+  {
+   "id": "BRU0525",
+   "name": "Bridge 0525",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0526",
+   "name": "Bridge 0526",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0527",
+   "name": "Duizendmeterbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0528",
+   "name": "Bridge 0528",
+   "status": "limits",
+   "reason": "hump 3.02 m, grade 0.77",
+   "movable": false
+  },
+  {
+   "id": "BRU0530",
+   "name": "Ballenbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": true
+  },
+  {
+   "id": "BRU0531",
+   "name": "Ballenbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": true
+  },
+  {
+   "id": "BRU0533",
+   "name": "Bridge 0533",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0534",
+   "name": "Bridge 0534",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0535",
+   "name": "Bridge 0535",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0538",
+   "name": "Bridge 0538",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": true
+  },
+  {
+   "id": "BRU0539",
+   "name": "Bruinebrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0540",
+   "name": "Blauwebrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0541",
+   "name": "Bridge 0541",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0542",
+   "name": "Bridge 0542",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0543",
+   "name": "Vierwindenbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0544",
+   "name": "Bibbertjesbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0546",
+   "name": "Klimopbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0547",
+   "name": "Bridge 0547",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0548",
+   "name": "Ballenbrug",
+   "status": "width",
+   "reason": "footprint width 2.0 m",
+   "movable": true
+  },
+  {
+   "id": "BRU0550",
+   "name": "Bridge 0550",
+   "status": "width",
+   "reason": "footprint width 1.8 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0552",
+   "name": "Bridge 0552",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0553",
+   "name": "Brug van Broerse",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0554",
+   "name": "Bridge 0554",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0555",
+   "name": "Bridge 0555",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0556",
+   "name": "Hoedbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0557",
+   "name": "Stenenbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0558",
+   "name": "Volendammerbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0559",
+   "name": "Volendammerbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0560",
+   "name": "Bridge 0560",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0561",
+   "name": "Bridge 0561",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0562",
+   "name": "Bridge 0562",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0563",
+   "name": "Bridge 0563",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0564",
+   "name": "Bridge 0564",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0565",
+   "name": "Bridge 0565",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0566",
+   "name": "Boogbrug",
+   "status": "limits",
+   "reason": "hump 10.61 m, grade 2.60",
+   "movable": false
+  },
+  {
+   "id": "BRU0571",
+   "name": "Bridge 0571",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0572",
+   "name": "Bridge 0572",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0575",
+   "name": "Bridge 0575",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0580",
+   "name": "Bridge 0580",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0582",
+   "name": "Bridge 0582",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0583",
+   "name": "Bridge 0583",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0584",
+   "name": "Bridge 0584",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0586",
+   "name": "Bridge 0586",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0587",
+   "name": "Bridge 0587",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0592",
+   "name": "Bridge 0592",
+   "status": "limits",
+   "reason": "hump 2.12 m, grade 0.56",
+   "movable": true
+  },
+  {
+   "id": "BRU0594",
+   "name": "Bridge 0594",
+   "status": "limits",
+   "reason": "hump 4.11 m, grade 1.33",
+   "movable": false
+  },
+  {
+   "id": "BRU0600",
+   "name": "Frieda Belinfantebrug",
+   "status": "coverage",
+   "reason": "11/36 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0602",
+   "name": "Jacoba van Tongerenbrug",
+   "status": "coverage",
+   "reason": "15/36 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0603",
+   "name": "Mientje ten Dambrug",
+   "status": "coverage",
+   "reason": "8/38 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0607",
+   "name": "Conny van Rietschotenbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0609",
+   "name": "Ina Boudier- Bakkerbrug",
+   "status": "coverage",
+   "reason": "12/51 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0610",
+   "name": "Bridge 0610",
+   "status": "coverage",
+   "reason": "12/42 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0611",
+   "name": "Tineke Guilonardbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0616",
+   "name": "Ferdinand Bordewijkbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0626",
+   "name": "Bridge 0626",
+   "status": "coverage",
+   "reason": "8/36 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0630",
+   "name": "Mary Wollstonecraftbrug",
+   "status": "coverage",
+   "reason": "11/41 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0633",
+   "name": "Bridge 0633",
+   "status": "coverage",
+   "reason": "4/22 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0634",
+   "name": "Bridge 0634",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0651",
+   "name": "Bridge 0651",
+   "status": "coverage",
+   "reason": "11/47 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0668",
+   "name": "Charlotte van Pallandtbrug",
+   "status": "coverage",
+   "reason": "10/35 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0669",
+   "name": "Karel Glastra van Loonbrug",
+   "status": "limits",
+   "reason": "hump 1.69 m, grade 0.47",
+   "movable": false
+  },
+  {
+   "id": "BRU0675",
+   "name": "Bridge 0675",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0676",
+   "name": "Karel van het Revebrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0682",
+   "name": "Bridge 0682",
+   "status": "coverage",
+   "reason": "13/53 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0683",
+   "name": "Bridge 0683",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0684",
+   "name": "Duizendste Brug",
+   "status": "coverage",
+   "reason": "12/53 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0690",
+   "name": "Bridge 0690",
+   "status": "coverage",
+   "reason": "19/36 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0696",
+   "name": "Na Druk Gelukbrug",
+   "status": "too-long",
+   "reason": "deck 70 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0699",
+   "name": "Michel Foucaultbrug",
+   "status": "width",
+   "reason": "footprint width 1.8 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0706",
+   "name": "Bridge 0706",
+   "status": "coverage",
+   "reason": "14/35 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0707",
+   "name": "Bridge 0707",
+   "status": "coverage",
+   "reason": "15/36 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0713",
+   "name": "Corry Tendeloobrug",
+   "status": "coverage",
+   "reason": "11/35 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0716",
+   "name": "Hans Kressebrug",
+   "status": "coverage",
+   "reason": "13/47 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0721",
+   "name": "Bridge 0721",
+   "status": "limits",
+   "reason": "hump 1.82 m, grade 0.30",
+   "movable": false
+  },
+  {
+   "id": "BRU0725",
+   "name": "Bridge 0725",
+   "status": "width",
+   "reason": "footprint width 1.3 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0726",
+   "name": "Bridge 0726",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0729",
+   "name": "Bridge 0729",
+   "status": "coverage",
+   "reason": "13/41 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0735",
+   "name": "Bridge 0735",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0736",
+   "name": "Bridge 0736",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0743",
+   "name": "Bridge 0743",
+   "status": "limits",
+   "reason": "hump 2.44 m, grade 0.99",
+   "movable": false
+  },
+  {
+   "id": "BRU0746",
+   "name": "Bridge 0746",
+   "status": "limits",
+   "reason": "hump 1.06 m, grade 0.36",
+   "movable": false
+  },
+  {
+   "id": "BRU0747",
+   "name": "Bridge 0747",
+   "status": "limits",
+   "reason": "hump 1.06 m, grade 0.49",
+   "movable": false
+  },
+  {
+   "id": "BRU0751",
+   "name": "Bridge 0751",
+   "status": "coverage",
+   "reason": "11/50 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0753",
+   "name": "Bridge 0753",
+   "status": "coverage",
+   "reason": "13/52 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0755",
+   "name": "Bridge 0755",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0762",
+   "name": "Bridge 0762",
+   "status": "limits",
+   "reason": "hump 4.40 m, grade 1.43",
+   "movable": false
+  },
+  {
+   "id": "BRU0763",
+   "name": "Bridge 0763",
+   "status": "coverage",
+   "reason": "10/47 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0764",
+   "name": "Bridge 0764",
+   "status": "coverage",
+   "reason": "14/50 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0765",
+   "name": "Jan Brouwerbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0767",
+   "name": "Bridge 0767",
+   "status": "coverage",
+   "reason": "11/37 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0774",
+   "name": "Prinses Amaliabrug",
+   "status": "limits",
+   "reason": "hump 0.76 m, grade 0.31",
+   "movable": false
+  },
+  {
+   "id": "BRU0778",
+   "name": "Bridge 0778",
+   "status": "limits",
+   "reason": "hump 1.47 m, grade 0.56",
+   "movable": false
+  },
+  {
+   "id": "BRU0781",
+   "name": "Bridge 0781",
+   "status": "limits",
+   "reason": "hump 8.19 m, grade 1.87",
+   "movable": false
+  },
+  {
+   "id": "BRU0801",
+   "name": "Bridge 0801",
+   "status": "coverage",
+   "reason": "23/36 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0802",
+   "name": "Bridge 0802",
+   "status": "coverage",
+   "reason": "21/36 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0822",
+   "name": "Bridge 0822",
+   "status": "limits",
+   "reason": "hump 2.89 m, grade 1.24",
+   "movable": false
+  },
+  {
+   "id": "BRU0827",
+   "name": "Bridge 0827",
+   "status": "limits",
+   "reason": "hump 7.36 m, grade 2.78",
+   "movable": false
+  },
+  {
+   "id": "BRU0831",
+   "name": "Bridge 0831",
+   "status": "limits",
+   "reason": "hump 1.85 m, grade 0.67",
+   "movable": false
+  },
+  {
+   "id": "BRU0835",
+   "name": "Bridge 0835",
+   "status": "limits",
+   "reason": "hump 0.85 m, grade 0.31",
+   "movable": false
+  },
+  {
+   "id": "BRU0836",
+   "name": "Rode brug",
+   "status": "width",
+   "reason": "footprint width 1.7 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0839",
+   "name": "Bridge 0839",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0840",
+   "name": "Bridge 0840",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0845",
+   "name": "Bridge 0845",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0848",
+   "name": "Bridge 0848",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU0850",
+   "name": "Bridge 0850",
+   "status": "width",
+   "reason": "footprint width 1.6 m",
+   "movable": true
+  },
+  {
+   "id": "BRU0854",
+   "name": "Bridge 0854",
+   "status": "too-long",
+   "reason": "deck 88 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0870",
+   "name": "Bridge 0870",
+   "status": "limits",
+   "reason": "hump 2.19 m, grade 0.74",
+   "movable": false
+  },
+  {
+   "id": "BRU0875",
+   "name": "Bridge 0875",
+   "status": "limits",
+   "reason": "hump 7.30 m, grade 2.30",
+   "movable": false
+  },
+  {
+   "id": "BRU0880",
+   "name": "Bridge 0880",
+   "status": "width",
+   "reason": "footprint width 1.0 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0891",
+   "name": "Bridge 0891",
+   "status": "limits",
+   "reason": "hump 1.30 m, grade 0.33",
+   "movable": false
+  },
+  {
+   "id": "BRU0904",
+   "name": "Bridge 0904",
+   "status": "coverage",
+   "reason": "14/39 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0905",
+   "name": "Bridge 0905",
+   "status": "coverage",
+   "reason": "14/39 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0906",
+   "name": "Bridge 0906",
+   "status": "coverage",
+   "reason": "13/39 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0915",
+   "name": "Bridge 0915",
+   "status": "width",
+   "reason": "footprint width 1.5 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0916",
+   "name": "Bridge 0916",
+   "status": "width",
+   "reason": "footprint width 1.4 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0918",
+   "name": "Bridge 0918",
+   "status": "width",
+   "reason": "footprint width 1.1 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0919",
+   "name": "Bridge 0919",
+   "status": "width",
+   "reason": "footprint width 1.4 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0924",
+   "name": "Banne Buikslootlaanbrug",
+   "status": "coverage",
+   "reason": "6/50 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0938",
+   "name": "Bridge 0938",
+   "status": "width",
+   "reason": "footprint width 1.3 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0945",
+   "name": "Bridge 0945",
+   "status": "coverage",
+   "reason": "11/42 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0947",
+   "name": "Bridge 0947",
+   "status": "coverage",
+   "reason": "9/43 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0950",
+   "name": "Bridge 0950",
+   "status": "coverage",
+   "reason": "12/44 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0951",
+   "name": "Bridge 0951",
+   "status": "coverage",
+   "reason": "11/44 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0952",
+   "name": "Jan Vlietmanbrug",
+   "status": "coverage",
+   "reason": "11/44 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0955",
+   "name": "Bridge 0955",
+   "status": "width",
+   "reason": "footprint width 1.2 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0968",
+   "name": "Jip Golsteijnbrug",
+   "status": "coverage",
+   "reason": "16/51 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU0970",
+   "name": "Bridge 0970",
+   "status": "too-long",
+   "reason": "deck 82 m",
+   "movable": true
+  },
+  {
+   "id": "BRU0978",
+   "name": "Bridge 0978",
+   "status": "limits",
+   "reason": "hump 1.68 m, grade 0.37",
+   "movable": false
+  },
+  {
+   "id": "BRU0979",
+   "name": "Bridge 0979",
+   "status": "limits",
+   "reason": "hump 1.54 m, grade 0.41",
+   "movable": false
+  },
+  {
+   "id": "BRU0980",
+   "name": "Bridge 0980",
+   "status": "coverage",
+   "reason": "14/46 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0986",
+   "name": "Bridge 0986",
+   "status": "coverage",
+   "reason": "13/46 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0987",
+   "name": "Bridge 0987",
+   "status": "coverage",
+   "reason": "12/47 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU0994",
+   "name": "Bridge 0994",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0996",
+   "name": "Bridge 0996",
+   "status": "width",
+   "reason": "footprint width 2.0 m",
+   "movable": false
+  },
+  {
+   "id": "BRU0997",
+   "name": "Eva Schalkbrug",
+   "status": "too-long",
+   "reason": "deck 150 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1047",
+   "name": "Bridge 1047",
+   "status": "short",
+   "reason": "alignment only 14 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1094",
+   "name": "Bridge 1094",
+   "status": "limits",
+   "reason": "hump 0.56 m, grade 0.28",
+   "movable": false
+  },
+  {
+   "id": "BRU1107",
+   "name": "Bridge 1107",
+   "status": "limits",
+   "reason": "hump 1.13 m, grade 0.38",
+   "movable": false
+  },
+  {
+   "id": "BRU1119",
+   "name": "Maria Aletta Hulshoffbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1120",
+   "name": "Bridge 1120",
+   "status": "coverage",
+   "reason": "34/40 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1122",
+   "name": "Bridge 1122",
+   "status": "limits",
+   "reason": "hump 6.09 m, grade 1.39",
+   "movable": false
+  },
+  {
+   "id": "BRU1144",
+   "name": "Bridge 1144",
+   "status": "limits",
+   "reason": "hump 4.14 m, grade 1.44",
+   "movable": false
+  },
+  {
+   "id": "BRU1154",
+   "name": "Bridge 1154",
+   "status": "coverage",
+   "reason": "9/42 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1175",
+   "name": "Bridge 1175",
+   "status": "limits",
+   "reason": "hump 0.82 m, grade 0.40",
+   "movable": false
+  },
+  {
+   "id": "BRU1184",
+   "name": "Gierzwaluwbrug",
+   "status": "limits",
+   "reason": "hump 7.12 m, grade 2.19",
+   "movable": false
+  },
+  {
+   "id": "BRU1189",
+   "name": "Goudvinkbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1192",
+   "name": "Bridge 1192",
+   "status": "limits",
+   "reason": "hump 0.61 m, grade 0.23",
+   "movable": false
+  },
+  {
+   "id": "BRU1195",
+   "name": "Bridge 1195",
+   "status": "limits",
+   "reason": "hump 3.01 m, grade 0.79",
+   "movable": false
+  },
+  {
+   "id": "BRU1197",
+   "name": "Bridge 1197",
+   "status": "limits",
+   "reason": "hump 2.86 m, grade 1.02",
+   "movable": false
+  },
+  {
+   "id": "BRU1199",
+   "name": "Bridge 1199",
+   "status": "limits",
+   "reason": "hump 1.11 m, grade 0.32",
+   "movable": false
+  },
+  {
+   "id": "BRU1221",
+   "name": "Bridge 1221",
+   "status": "limits",
+   "reason": "hump 2.00 m, grade 0.89",
+   "movable": false
+  },
+  {
+   "id": "BRU1223",
+   "name": "Bridge 1223",
+   "status": "too-long",
+   "reason": "deck 133 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1237",
+   "name": "Bridge 1237",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1247",
+   "name": "Bridge 1247",
+   "status": "limits",
+   "reason": "hump 2.81 m, grade 1.07",
+   "movable": false
+  },
+  {
+   "id": "BRU1249",
+   "name": "Yaa Adu-Ampomabrug",
+   "status": "too-long",
+   "reason": "deck 122 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1250",
+   "name": "Bridge 1250",
+   "status": "limits",
+   "reason": "hump 0.69 m, grade 0.39",
+   "movable": false
+  },
+  {
+   "id": "BRU1265",
+   "name": "Havankbrug",
+   "status": "limits",
+   "reason": "hump 6.82 m, grade 2.32",
+   "movable": false
+  },
+  {
+   "id": "BRU1267",
+   "name": "Duivendrechtsebrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": true
+  },
+  {
+   "id": "BRU1269",
+   "name": "Bridge 1269",
+   "status": "too-long",
+   "reason": "deck 73 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1319",
+   "name": "Bridge 1319",
+   "status": "width",
+   "reason": "footprint width 1.6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1320",
+   "name": "Bridge 1320",
+   "status": "limits",
+   "reason": "hump 4.58 m, grade 1.53",
+   "movable": false
+  },
+  {
+   "id": "BRU1321",
+   "name": "Bridge 1321",
+   "status": "limits",
+   "reason": "hump 1.67 m, grade 0.39",
+   "movable": false
+  },
+  {
+   "id": "BRU1323",
+   "name": "Bridge 1323",
+   "status": "width",
+   "reason": "footprint width 1.7 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1324",
+   "name": "Bridge 1324",
+   "status": "width",
+   "reason": "footprint width 1.7 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1325",
+   "name": "Bridge 1325",
+   "status": "limits",
+   "reason": "hump 1.08 m, grade 0.22",
+   "movable": false
+  },
+  {
+   "id": "BRU1326",
+   "name": "Bridge 1326",
+   "status": "width",
+   "reason": "footprint width 1.2 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1328",
+   "name": "Bridge 1328",
+   "status": "width",
+   "reason": "footprint width 1.4 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1329",
+   "name": "Bridge 1329",
+   "status": "limits",
+   "reason": "hump 7.80 m, grade 2.60",
+   "movable": false
+  },
+  {
+   "id": "BRU1333",
+   "name": "Bridge 1333",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1334",
+   "name": "Bridge 1334",
+   "status": "limits",
+   "reason": "hump 3.27 m, grade 0.95",
+   "movable": false
+  },
+  {
+   "id": "BRU1336",
+   "name": "Bridge 1336",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1338",
+   "name": "Bridge 1338",
+   "status": "width",
+   "reason": "footprint width 2.0 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1341",
+   "name": "Bridge 1341",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1342",
+   "name": "Bridge 1342",
+   "status": "width",
+   "reason": "footprint width 2.0 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1357",
+   "name": "Bridge 1357",
+   "status": "limits",
+   "reason": "hump 1.07 m, grade 0.28",
+   "movable": false
+  },
+  {
+   "id": "BRU1365",
+   "name": "Bridge 1365",
+   "status": "limits",
+   "reason": "hump 0.85 m, grade 0.28",
+   "movable": false
+  },
+  {
+   "id": "BRU1383",
+   "name": "Bridge 1383",
+   "status": "coverage",
+   "reason": "2/42 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1391",
+   "name": "Bridge 1391",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1427",
+   "name": "Bridge 1427",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1428",
+   "name": "Bridge 1428",
+   "status": "width",
+   "reason": "footprint width 1.2 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1448",
+   "name": "Bridge 1448",
+   "status": "limits",
+   "reason": "hump 0.82 m, grade 0.23",
+   "movable": false
+  },
+  {
+   "id": "BRU1456",
+   "name": "Bridge 1456",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1457",
+   "name": "Bridge 1457",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1458",
+   "name": "Bridge 1458",
+   "status": "limits",
+   "reason": "hump 0.84 m, grade 0.34",
+   "movable": false
+  },
+  {
+   "id": "BRU1459",
+   "name": "Bridge 1459",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1466",
+   "name": "Bridge 1466",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1473",
+   "name": "Bridge 1473",
+   "status": "width",
+   "reason": "footprint width 1.5 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1482",
+   "name": "Jos Gemmekebrug",
+   "status": "limits",
+   "reason": "hump 3.46 m, grade 1.12",
+   "movable": false
+  },
+  {
+   "id": "BRU1490",
+   "name": "Wilhelminabrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1500",
+   "name": "Bridge 1500",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1502",
+   "name": "Bridge 1502",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1503",
+   "name": "Bridge 1503",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1506",
+   "name": "Bridge 1506",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1507",
+   "name": "Bridge 1507",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1508",
+   "name": "Bridge 1508",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1509",
+   "name": "Bridge 1509",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1514",
+   "name": "Bridge 1514",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1516",
+   "name": "Bridge 1516",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1517",
+   "name": "Bridge 1517",
+   "status": "limits",
+   "reason": "hump 2.29 m, grade 0.84",
+   "movable": false
+  },
+  {
+   "id": "BRU1519",
+   "name": "Bridge 1519",
+   "status": "limits",
+   "reason": "hump 4.46 m, grade 1.60",
+   "movable": false
+  },
+  {
+   "id": "BRU1524",
+   "name": "Bridge 1524",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1525",
+   "name": "Bridge 1525",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1542",
+   "name": "Bridge 1542",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1544",
+   "name": "Bridge 1544",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1546",
+   "name": "Bridge 1546",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1551",
+   "name": "Bridge 1551",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1553",
+   "name": "Bridge 1553",
+   "status": "limits",
+   "reason": "hump 2.53 m, grade 0.82",
+   "movable": false
+  },
+  {
+   "id": "BRU1562",
+   "name": "Bridge 1562",
+   "status": "coverage",
+   "reason": "8/39 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1566",
+   "name": "Bridge 1566",
+   "status": "coverage",
+   "reason": "9/44 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1567",
+   "name": "Bridge 1567",
+   "status": "coverage",
+   "reason": "9/44 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1586",
+   "name": "Bridge 1586",
+   "status": "coverage",
+   "reason": "7/42 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1587",
+   "name": "Bridge 1587",
+   "status": "coverage",
+   "reason": "4/40 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1588",
+   "name": "Bridge 1588",
+   "status": "width",
+   "reason": "footprint width 1.1 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1589",
+   "name": "Bridge 1589",
+   "status": "width",
+   "reason": "footprint width 1.2 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1590",
+   "name": "Bridge 1590",
+   "status": "coverage",
+   "reason": "2/23 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1591",
+   "name": "Bridge 1591",
+   "status": "width",
+   "reason": "footprint width 1.1 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1592",
+   "name": "Bridge 1592",
+   "status": "width",
+   "reason": "footprint width 1.0 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1593",
+   "name": "Bridge 1593",
+   "status": "width",
+   "reason": "footprint width 1.0 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1594",
+   "name": "Bridge 1594",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1596",
+   "name": "Bridge 1596",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1614",
+   "name": "Bijlmerdreefmetrobrug",
+   "status": "width",
+   "reason": "footprint width 51.4 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1633",
+   "name": "Bridge 1633",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1634",
+   "name": "Bridge 1634",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1638",
+   "name": "Rozenoordbrug",
+   "status": "coverage",
+   "reason": "15/40 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1641",
+   "name": "Duivendrechtsevaartmetrobrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1647",
+   "name": "Schinkelmetrobrug",
+   "status": "coverage",
+   "reason": "18/39 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU1666",
+   "name": "Bridge 1666",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1667",
+   "name": "Bridge 1667",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1701",
+   "name": "Bridge 1701",
+   "status": "width",
+   "reason": "footprint width 1.3 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1702",
+   "name": "Bridge 1702",
+   "status": "width",
+   "reason": "footprint width 1.2 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1704",
+   "name": "Bridge 1704",
+   "status": "width",
+   "reason": "footprint width 1.3 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1705",
+   "name": "Bridge 1705",
+   "status": "coverage",
+   "reason": "7/36 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1706",
+   "name": "Bridge 1706",
+   "status": "coverage",
+   "reason": "8/30 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1707",
+   "name": "Bridge 1707",
+   "status": "width",
+   "reason": "footprint width 1.1 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1708",
+   "name": "Bridge 1708",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1710",
+   "name": "Bridge 1710",
+   "status": "coverage",
+   "reason": "25/40 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1715",
+   "name": "Bridge 1715",
+   "status": "width",
+   "reason": "footprint width 1.8 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1717",
+   "name": "Bridge 1717",
+   "status": "width",
+   "reason": "footprint width 1.8 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1718",
+   "name": "Bridge 1718",
+   "status": "width",
+   "reason": "footprint width 1.7 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1719",
+   "name": "Diekwakel",
+   "status": "short",
+   "reason": "alignment only 7 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1735",
+   "name": "Bridge 1735",
+   "status": "width",
+   "reason": "footprint width 1.5 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1736",
+   "name": "Bridge 1736",
+   "status": "width",
+   "reason": "footprint width 1.6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1737",
+   "name": "Bridge 1737",
+   "status": "coverage",
+   "reason": "2/30 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1738",
+   "name": "Bridge 1738",
+   "status": "coverage",
+   "reason": "1/30 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1739",
+   "name": "Bridge 1739",
+   "status": "coverage",
+   "reason": "1/30 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1741",
+   "name": "Bridge 1741",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1750",
+   "name": "Bridge 1750",
+   "status": "limits",
+   "reason": "hump 1.84 m, grade 0.28",
+   "movable": false
+  },
+  {
+   "id": "BRU1756",
+   "name": "Bridge 1756",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1774",
+   "name": "Bridge 1774",
+   "status": "too-long",
+   "reason": "deck 65 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1776",
+   "name": "Bridge 1776",
+   "status": "coverage",
+   "reason": "1/45 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1785",
+   "name": "Bridge 1785",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1786",
+   "name": "Bridge 1786",
+   "status": "width",
+   "reason": "footprint width 1.4 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1787",
+   "name": "Kadoelenbrug",
+   "status": "too-long",
+   "reason": "deck 109 m",
+   "movable": true
+  },
+  {
+   "id": "BRU1788",
+   "name": "Theo Fransmanbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": true
+  },
+  {
+   "id": "BRU1802",
+   "name": "Bridge 1802",
+   "status": "coverage",
+   "reason": "20/46 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1804",
+   "name": "Bridge 1804",
+   "status": "limits",
+   "reason": "hump 2.60 m, grade 0.92",
+   "movable": false
+  },
+  {
+   "id": "BRU1826",
+   "name": "Bridge 1826",
+   "status": "coverage",
+   "reason": "17/38 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1832",
+   "name": "Bridge 1832",
+   "status": "coverage",
+   "reason": "13/42 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1848",
+   "name": "Bridge 1848",
+   "status": "coverage",
+   "reason": "17/41 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1850",
+   "name": "Bridge 1850",
+   "status": "width",
+   "reason": "footprint width 1.7 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1851",
+   "name": "Bridge 1851",
+   "status": "coverage",
+   "reason": "3/36 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1852",
+   "name": "Bridge 1852",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1854",
+   "name": "Bridge 1854",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1856",
+   "name": "Bridge 1856",
+   "status": "limits",
+   "reason": "hump 0.94 m, grade 0.31",
+   "movable": false
+  },
+  {
+   "id": "BRU1857",
+   "name": "Bridge 1857",
+   "status": "width",
+   "reason": "footprint width 1.7 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1860",
+   "name": "Bridge 1860",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1864",
+   "name": "Oude Haagsebrug",
+   "status": "too-long",
+   "reason": "deck 98 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1873",
+   "name": "Bridge 1873",
+   "status": "coverage",
+   "reason": "3/39 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1875",
+   "name": "Bridge 1875",
+   "status": "width",
+   "reason": "footprint width 2.0 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1877",
+   "name": "Bridge 1877",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1878",
+   "name": "Bridge 1878",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1883",
+   "name": "Lirabrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1892",
+   "name": "Bridge 1892",
+   "status": "coverage",
+   "reason": "4/39 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1893",
+   "name": "Bridge 1893",
+   "status": "coverage",
+   "reason": "6/72 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1894",
+   "name": "Bridge 1894",
+   "status": "coverage",
+   "reason": "8/48 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1895",
+   "name": "Bridge 1895",
+   "status": "width",
+   "reason": "footprint width 1.6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1897",
+   "name": "Bridge 1897",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1899",
+   "name": "Bridge 1899",
+   "status": "limits",
+   "reason": "hump 1.95 m, grade 0.68",
+   "movable": false
+  },
+  {
+   "id": "BRU1901",
+   "name": "Bridge 1901",
+   "status": "too-long",
+   "reason": "deck 66 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1902",
+   "name": "Bridge 1902",
+   "status": "short",
+   "reason": "alignment only 17 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1907",
+   "name": "Nijlpaardenbrug",
+   "status": "coverage",
+   "reason": "17/40 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU1915",
+   "name": "Ad Grimmonbrug",
+   "status": "coverage",
+   "reason": "9/43 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1923",
+   "name": "Ketelhuisbrug",
+   "status": "short",
+   "reason": "alignment only 9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1925",
+   "name": "Klaartje de Zwarte - Walvischbrug",
+   "status": "limits",
+   "reason": "hump 1.38 m, grade 0.44",
+   "movable": false
+  },
+  {
+   "id": "BRU1926",
+   "name": "Jaap Kunstbrug",
+   "status": "limits",
+   "reason": "hump 5.25 m, grade 1.78",
+   "movable": false
+  },
+  {
+   "id": "BRU1927",
+   "name": "Vluchthavenbrug",
+   "status": "too-long",
+   "reason": "deck 104 m",
+   "movable": true
+  },
+  {
+   "id": "BRU1928",
+   "name": "Bridge 1928",
+   "status": "limits",
+   "reason": "hump 4.38 m, grade 1.30",
+   "movable": false
+  },
+  {
+   "id": "BRU1929",
+   "name": "Bridge 1929",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1930",
+   "name": "Bridge 1930",
+   "status": "width",
+   "reason": "footprint width 1.6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1932",
+   "name": "Bridge 1932",
+   "status": "width",
+   "reason": "footprint width 1.8 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1939",
+   "name": "Mr. J. J. van der Veldebrug",
+   "status": "too-long",
+   "reason": "deck 111 m",
+   "movable": true
+  },
+  {
+   "id": "BRU1944",
+   "name": "Mien Ruysbrug",
+   "status": "too-long",
+   "reason": "deck 84 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1962",
+   "name": "Korte Ouderkerkerbrug",
+   "status": "too-long",
+   "reason": "deck 121 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1967",
+   "name": "Bridge 1967",
+   "status": "width",
+   "reason": "footprint width 1.3 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1972",
+   "name": "Buysbrug",
+   "status": "too-long",
+   "reason": "deck 76 m",
+   "movable": true
+  },
+  {
+   "id": "BRU1976",
+   "name": "Bridge 1976",
+   "status": "coverage",
+   "reason": "20/53 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1980",
+   "name": "Bridge 1980",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1981",
+   "name": "Borneosteiger",
+   "status": "coverage",
+   "reason": "6/55 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU1982",
+   "name": "Bridge 1982",
+   "status": "coverage",
+   "reason": "8/56 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU1985",
+   "name": "Idee",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1988",
+   "name": "Licht",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1989",
+   "name": "Image",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU1997",
+   "name": "Lage brug",
+   "status": "too-long",
+   "reason": "deck 70 m",
+   "movable": false
+  },
+  {
+   "id": "BRU1998",
+   "name": "Hoge brug",
+   "status": "limits",
+   "reason": "hump 1.14 m, grade 0.22",
+   "movable": false
+  },
+  {
+   "id": "BRU2000",
+   "name": "Jan Schaeferbrug",
+   "status": "too-long",
+   "reason": "deck 250 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2001",
+   "name": "Enneüs Heermabrug",
+   "status": "too-long",
+   "reason": "deck 230 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2002",
+   "name": "Bridge 2002",
+   "status": "too-long",
+   "reason": "deck 102 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2005",
+   "name": "Benno Premselabrug",
+   "status": "too-long",
+   "reason": "deck 256 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2006",
+   "name": "Stellingbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2007",
+   "name": "Uyllanderbrug",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2011",
+   "name": "Bridge 2011",
+   "status": "too-long",
+   "reason": "deck 84 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2013",
+   "name": "Nesciobrug",
+   "status": "too-long",
+   "reason": "deck 356 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2014",
+   "name": "Bridge 2014",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2015",
+   "name": "Bridge 2015",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2018",
+   "name": "Bridge 2018",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2019",
+   "name": "Wubbo de Jongbrug",
+   "status": "coverage",
+   "reason": "14/51 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2021",
+   "name": "Philip Bloemendalbrug",
+   "status": "coverage",
+   "reason": "4/45 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2022",
+   "name": "Bridge 2022",
+   "status": "coverage",
+   "reason": "21/51 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2034",
+   "name": "Bridge 2034",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": true
+  },
+  {
+   "id": "BRU2035",
+   "name": "Bridge 2035",
+   "status": "coverage",
+   "reason": "32/56 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU2036",
+   "name": "Bridge 2036",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": true
+  },
+  {
+   "id": "BRU2037",
+   "name": "Bridge 2037",
+   "status": "too-long",
+   "reason": "deck 112 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2039",
+   "name": "Bridge 2039",
+   "status": "coverage",
+   "reason": "31/56 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU2044",
+   "name": "Bridge 2044",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2048",
+   "name": "Bridge 2048",
+   "status": "too-long",
+   "reason": "deck 91 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2050",
+   "name": "Bridge 2050",
+   "status": "coverage",
+   "reason": "21/28 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2051",
+   "name": "Bridge 2051",
+   "status": "too-long",
+   "reason": "deck 76 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2090",
+   "name": "Aandammerbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": true
+  },
+  {
+   "id": "BRU2092",
+   "name": "Bridge 2092",
+   "status": "width",
+   "reason": "footprint width 1.5 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2093",
+   "name": "Bridge 2093",
+   "status": "width",
+   "reason": "footprint width 1.4 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2094",
+   "name": "Bridge 2094",
+   "status": "too-long",
+   "reason": "deck 186 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2095",
+   "name": "Bridge 2095",
+   "status": "width",
+   "reason": "footprint width 1.8 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2100",
+   "name": "Bridge 2100",
+   "status": "width",
+   "reason": "footprint width 1.4 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2103",
+   "name": "Werkspoorbrug",
+   "status": "coverage",
+   "reason": "1/30 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU2119",
+   "name": "Sirkecibrug",
+   "status": "width",
+   "reason": "footprint width 1.8 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2128",
+   "name": "Bridge 2128",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2133",
+   "name": "Bridge 2133",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2137",
+   "name": "Bridge 2137",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2143",
+   "name": "Bridge 2143",
+   "status": "limits",
+   "reason": "hump 2.64 m, grade 0.92",
+   "movable": false
+  },
+  {
+   "id": "BRU2147",
+   "name": "Bridge 2147",
+   "status": "limits",
+   "reason": "hump 1.04 m, grade 0.50",
+   "movable": false
+  },
+  {
+   "id": "BRU2149",
+   "name": "Bridge 2149",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2150",
+   "name": "Bridge 2150",
+   "status": "width",
+   "reason": "footprint width 2.0 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2151",
+   "name": "Bridge 2151",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2152",
+   "name": "Bridge 2152",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2159",
+   "name": "Bridge 2159",
+   "status": "coverage",
+   "reason": "3/33 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2167",
+   "name": "Bridge 2167",
+   "status": "limits",
+   "reason": "hump 2.19 m, grade 0.90",
+   "movable": false
+  },
+  {
+   "id": "BRU2168",
+   "name": "Bridge 2168",
+   "status": "width",
+   "reason": "footprint width 2.0 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2169",
+   "name": "Bridge 2169",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2170",
+   "name": "Bridge 2170",
+   "status": "limits",
+   "reason": "hump 7.82 m, grade 3.06",
+   "movable": false
+  },
+  {
+   "id": "BRU2171",
+   "name": "Gerrit Molbrug",
+   "status": "width",
+   "reason": "footprint width 1.8 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2172",
+   "name": "Bridge 2172",
+   "status": "width",
+   "reason": "footprint width 1.6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2173",
+   "name": "Van de Sande Lacostebrug",
+   "status": "limits",
+   "reason": "hump 0.68 m, grade 0.40",
+   "movable": false
+  },
+  {
+   "id": "BRU2174",
+   "name": "Henk van de Laarbrug",
+   "status": "width",
+   "reason": "footprint width 1.6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2178",
+   "name": "Bridge 2178",
+   "status": "width",
+   "reason": "footprint width 1.7 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2180",
+   "name": "Bridge 2180",
+   "status": "limits",
+   "reason": "hump 11.38 m, grade 3.13",
+   "movable": false
+  },
+  {
+   "id": "BRU2181",
+   "name": "Bridge 2181",
+   "status": "width",
+   "reason": "footprint width 1.2 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2182",
+   "name": "Bridge 2182",
+   "status": "limits",
+   "reason": "hump 6.53 m, grade 1.57",
+   "movable": false
+  },
+  {
+   "id": "BRU2189",
+   "name": "Amstelstroombrug",
+   "status": "too-long",
+   "reason": "deck 100 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2197",
+   "name": "Bridge 2197",
+   "status": "coverage",
+   "reason": "3/57 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2198",
+   "name": "Bridge 2198",
+   "status": "coverage",
+   "reason": "3/49 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2199",
+   "name": "Bridge 2199",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": true
+  },
+  {
+   "id": "BRU2200",
+   "name": "Bridge 2200",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2201",
+   "name": "Bridge 2201",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2203",
+   "name": "Bridge 2203",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2204",
+   "name": "Bridge 2204",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2205",
+   "name": "Buiksloterdraaibrug",
+   "status": "coverage",
+   "reason": "12/44 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU2206",
+   "name": "Bridge 2206",
+   "status": "width",
+   "reason": "footprint width 1.6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2208",
+   "name": "Uiverbrug",
+   "status": "coverage",
+   "reason": "9/40 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU2209",
+   "name": "Simon Carmiggeltbrug",
+   "status": "width",
+   "reason": "footprint width 1.5 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2210",
+   "name": "Harry Banninkbrug",
+   "status": "coverage",
+   "reason": "16/55 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2211",
+   "name": "Willem Frederik Hermansbrug",
+   "status": "width",
+   "reason": "footprint width 1.5 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2212",
+   "name": "Annie M.G. Schmidtbrug",
+   "status": "width",
+   "reason": "footprint width 1.4 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2218",
+   "name": "Bridge 2218",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2219",
+   "name": "Bridge 2219",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2223",
+   "name": "Bridge 2223",
+   "status": "coverage",
+   "reason": "12/55 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2225",
+   "name": "Bridge 2225",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2230",
+   "name": "Bridge 2230",
+   "status": "coverage",
+   "reason": "3/27 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2232",
+   "name": "Ruud Krolbrug",
+   "status": "limits",
+   "reason": "hump 5.49 m, grade 1.29",
+   "movable": false
+  },
+  {
+   "id": "BRU2233",
+   "name": "Sjaak Swartbrug",
+   "status": "limits",
+   "reason": "hump 2.71 m, grade 0.98",
+   "movable": false
+  },
+  {
+   "id": "BRU2235",
+   "name": "Gerrie Mührenbrug",
+   "status": "coverage",
+   "reason": "10/50 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2244",
+   "name": "Bridge 2244",
+   "status": "coverage",
+   "reason": "9/48 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2245",
+   "name": "Bridge 2245",
+   "status": "short",
+   "reason": "alignment only 17 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2247",
+   "name": "Jan Wilsbrug",
+   "status": "too-long",
+   "reason": "deck 70 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2253",
+   "name": "Bridge 2253",
+   "status": "width",
+   "reason": "footprint width 1.5 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2254",
+   "name": "Bridge 2254",
+   "status": "width",
+   "reason": "footprint width 1.6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2255",
+   "name": "Bridge 2255",
+   "status": "coverage",
+   "reason": "1/28 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2257",
+   "name": "Bridge 2257",
+   "status": "width",
+   "reason": "footprint width 1.6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2258",
+   "name": "Bridge 2258",
+   "status": "too-long",
+   "reason": "deck 117 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2262",
+   "name": "Bridge 2262",
+   "status": "coverage",
+   "reason": "7/42 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2263",
+   "name": "Bridge 2263",
+   "status": "width",
+   "reason": "footprint width 1.5 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2264",
+   "name": "Bridge 2264",
+   "status": "limits",
+   "reason": "hump 0.85 m, grade 0.24",
+   "movable": false
+  },
+  {
+   "id": "BRU2270",
+   "name": "Oosterdoksdraaibrug",
+   "status": "too-long",
+   "reason": "deck 67 m",
+   "movable": true
+  },
+  {
+   "id": "BRU2274",
+   "name": "Bridge 2274",
+   "status": "coverage",
+   "reason": "43/55 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2281",
+   "name": "Bridge 2281",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2282",
+   "name": "Bridge 2282",
+   "status": "width",
+   "reason": "footprint width 2.0 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2285",
+   "name": "Bridge 2285",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2286",
+   "name": "Bridge 2286",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2287",
+   "name": "Bridge 2287",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2289",
+   "name": "Bridge 2289",
+   "status": "coverage",
+   "reason": "6/42 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2295",
+   "name": "Bridge 2295",
+   "status": "width",
+   "reason": "footprint width 1.4 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2296",
+   "name": "Elgar Vosbrug",
+   "status": "limits",
+   "reason": "hump 4.54 m, grade 1.62",
+   "movable": false
+  },
+  {
+   "id": "BRU2297",
+   "name": "Maria Sibylla Merianbrug",
+   "status": "limits",
+   "reason": "hump 1.22 m, grade 0.68",
+   "movable": false
+  },
+  {
+   "id": "BRU2298",
+   "name": "Bridge 2298",
+   "status": "width",
+   "reason": "footprint width 1.4 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2299",
+   "name": "Bridge 2299",
+   "status": "limits",
+   "reason": "hump 0.70 m, grade 0.31",
+   "movable": false
+  },
+  {
+   "id": "BRU2306",
+   "name": "Bridge 2306",
+   "status": "width",
+   "reason": "footprint width 1.8 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2307",
+   "name": "Bridge 2307",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2317",
+   "name": "Bridge 2317",
+   "status": "width",
+   "reason": "footprint width 1.7 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2319",
+   "name": "Bridge 2319",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2320",
+   "name": "Bridge 2320",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2326",
+   "name": "Willem Breukerbrug",
+   "status": "coverage",
+   "reason": "15/70 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2332",
+   "name": "Bridge 2332",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": true
+  },
+  {
+   "id": "BRU2333",
+   "name": "Bridge 2333",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": true
+  },
+  {
+   "id": "BRU2334",
+   "name": "Bridge 2334",
+   "status": "limits",
+   "reason": "hump 5.91 m, grade 2.05",
+   "movable": false
+  },
+  {
+   "id": "BRU2335",
+   "name": "Bridge 2335",
+   "status": "width",
+   "reason": "footprint width 1.7 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2338",
+   "name": "Bridge 2338",
+   "status": "width",
+   "reason": "footprint width 1.4 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2339",
+   "name": "Bridge 2339",
+   "status": "width",
+   "reason": "footprint width 1.4 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2353",
+   "name": "Bullebrug",
+   "status": "width",
+   "reason": "footprint width 1.7 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2356",
+   "name": "Bridge 2356",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2358",
+   "name": "ODEbrug",
+   "status": "too-long",
+   "reason": "deck 76 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2359",
+   "name": "Pier de Boerbrug",
+   "status": "limits",
+   "reason": "hump 2.93 m, grade 0.72",
+   "movable": false
+  },
+  {
+   "id": "BRU2362",
+   "name": "Maria Sklodowska-Curiebrug",
+   "status": "limits",
+   "reason": "hump 2.26 m, grade 0.24",
+   "movable": false
+  },
+  {
+   "id": "BRU2363",
+   "name": "Bridge 2363",
+   "status": "coverage",
+   "reason": "1/42 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2364",
+   "name": "Bridge 2364",
+   "status": "coverage",
+   "reason": "2/45 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2365",
+   "name": "Bridge 2365",
+   "status": "width",
+   "reason": "footprint width 1.7 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2366",
+   "name": "Bridge 2366",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2370",
+   "name": "Bridge 2370",
+   "status": "too-long",
+   "reason": "deck 68 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2373",
+   "name": "Bridge 2373",
+   "status": "limits",
+   "reason": "hump 2.73 m, grade 0.99",
+   "movable": false
+  },
+  {
+   "id": "BRU2382",
+   "name": "Bridge 2382",
+   "status": "width",
+   "reason": "footprint width 1.8 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2387",
+   "name": "Bridge 2387",
+   "status": "width",
+   "reason": "footprint width 1.5 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2390",
+   "name": "Bridge 2390",
+   "status": "width",
+   "reason": "footprint width 1.6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2410",
+   "name": "Bridge 2410",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": true
+  },
+  {
+   "id": "BRU2411",
+   "name": "Bridge 2411",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2412",
+   "name": "Bridge 2412",
+   "status": "width",
+   "reason": "footprint width 1.5 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2414",
+   "name": "Bridge 2414",
+   "status": "width",
+   "reason": "footprint width 1.9 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2430",
+   "name": "Gevlebrug",
+   "status": "coverage",
+   "reason": "24/52 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2432",
+   "name": "Kolbergbrug",
+   "status": "coverage",
+   "reason": "16/47 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2451",
+   "name": "Bridge 2451",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2452",
+   "name": "Bridge 2452",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2453",
+   "name": "Bridge 2453",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2454",
+   "name": "Bridge 2454",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2455",
+   "name": "Bridge 2455",
+   "status": "width",
+   "reason": "footprint width 1.2 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2456",
+   "name": "Bridge 2456",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2457",
+   "name": "Bridge 2457",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2459",
+   "name": "Bridge 2459",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2461",
+   "name": "Jacob Bordingbrug",
+   "status": "width",
+   "reason": "footprint width 2.0 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2470",
+   "name": "De Hollandse Iepbrug",
+   "status": "coverage",
+   "reason": "28/70 stations without AHN",
+   "movable": true
+  },
+  {
+   "id": "BRU2475",
+   "name": "Volewijckbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2476",
+   "name": "Galgenveldbrug",
+   "status": "coverage",
+   "reason": "8/55 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU2481",
+   "name": "Bridge 2481",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": true
+  },
+  {
+   "id": "BRU2482",
+   "name": "Bridge 2482",
+   "status": "width",
+   "reason": "footprint width 1.5 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2483",
+   "name": "Bridge 2483",
+   "status": "limits",
+   "reason": "hump 2.33 m, grade 0.46",
+   "movable": false
+  },
+  {
+   "id": "BRU2484",
+   "name": "Marie Thomas Tonnonbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2487",
+   "name": "Bridge 2487",
+   "status": "width",
+   "reason": "footprint width 0.7 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2488",
+   "name": "Bridge 2488",
+   "status": "width",
+   "reason": "footprint width 1.5 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2489",
+   "name": "Bridge 2489",
+   "status": "width",
+   "reason": "footprint width 1.1 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2490",
+   "name": "Bridge 2490",
+   "status": "width",
+   "reason": "footprint width 0.6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2491",
+   "name": "Bridge 2491",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2492",
+   "name": "Bridge 2492",
+   "status": "width",
+   "reason": "footprint width 1.1 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2493",
+   "name": "Bridge 2493",
+   "status": "width",
+   "reason": "footprint width 1.0 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2518",
+   "name": "Bridge 2518",
+   "status": "limits",
+   "reason": "hump 4.72 m, grade 1.69",
+   "movable": false
+  },
+  {
+   "id": "BRU2520",
+   "name": "Rita Vuykbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU2521",
+   "name": "Theodore Limpergbrug",
+   "status": "limits",
+   "reason": "hump 1.92 m, grade 0.25",
+   "movable": false
+  },
+  {
+   "id": "BRU2524",
+   "name": "Bridge 2524",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2551",
+   "name": "Bridge 2551",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2553",
+   "name": "Bridge 2553",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2554",
+   "name": "Bridge 2554",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2555",
+   "name": "Bridge 2555",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2556",
+   "name": "Bridge 2556",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU2557",
+   "name": "Bridge 2557",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU5003",
+   "name": "Bridge 5003",
+   "status": "width",
+   "reason": "footprint width 1.8 m",
+   "movable": false
+  },
+  {
+   "id": "BRU5004",
+   "name": "Bridge 5004",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU5005",
+   "name": "Bridge 5005",
+   "status": "no-road",
+   "reason": "no OSM way passes through the footprint",
+   "movable": false
+  },
+  {
+   "id": "BRU5006",
+   "name": "Bridge 5006",
+   "status": "width",
+   "reason": "footprint width 1.7 m",
+   "movable": false
+  },
+  {
+   "id": "BRU5008",
+   "name": "Bridge 5008",
+   "status": "width",
+   "reason": "footprint width 1.7 m",
+   "movable": false
+  },
+  {
+   "id": "BRU5010",
+   "name": "Bridge 5010",
+   "status": "limits",
+   "reason": "hump 3.23 m, grade 1.50",
+   "movable": false
+  },
+  {
+   "id": "BRU5018",
+   "name": "Bridge 5018",
+   "status": "short",
+   "reason": "alignment only 14 m",
+   "movable": false
+  },
+  {
+   "id": "BRU5024",
+   "name": "Groenebrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": true
+  },
+  {
+   "id": "BRU5027",
+   "name": "Bridge 5027",
+   "status": "coverage",
+   "reason": "2/18 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "BRU5033",
+   "name": "Bridge 5033",
+   "status": "short",
+   "reason": "alignment only 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU5042",
+   "name": "Bridge 5042",
+   "status": "limits",
+   "reason": "hump 1.67 m, grade 0.55",
+   "movable": false
+  },
+  {
+   "id": "BRU5043",
+   "name": "Lange vechtbrug",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": true
+  },
+  {
+   "id": "BRU5072",
+   "name": "Bridge 5072",
+   "status": "gap",
+   "reason": "profile gap > 6 m",
+   "movable": false
+  },
+  {
+   "id": "BRU5074",
+   "name": "Bridge 5074",
+   "status": "coverage",
+   "reason": "11/45 stations without AHN",
+   "movable": false
+  },
+  {
+   "id": "register-0",
+   "name": "Bridge register-0",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": true
+  },
+  {
+   "id": "register-1",
+   "name": "Bridge register-1",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-10",
+   "name": "Bridge register-10",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-11",
+   "name": "Bridge register-11",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-12",
+   "name": "Bridge register-12",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-13",
+   "name": "Bridge register-13",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-14",
+   "name": "Bridge register-14",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-15",
+   "name": "Bridge register-15",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-16",
+   "name": "Bridge register-16",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-17",
+   "name": "Bridge register-17",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-18",
+   "name": "Bridge register-18",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-19",
+   "name": "Bridge register-19",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-2",
+   "name": "Bridge register-2",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-20",
+   "name": "Bridge register-20",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-21",
+   "name": "Bridge register-21",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-22",
+   "name": "Bridge register-22",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-23",
+   "name": "Bridge register-23",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-24",
+   "name": "Bridge register-24",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-3",
+   "name": "Bridge register-3",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-4",
+   "name": "Bridge register-4",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-5",
+   "name": "Bridge register-5",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-6",
+   "name": "Bridge register-6",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-7",
+   "name": "Bridge register-7",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-8",
+   "name": "Bridge register-8",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  },
+  {
+   "id": "register-9",
+   "name": "Bridge register-9",
+   "status": "unnumbered",
+   "reason": "register row without an object number",
+   "movable": false
+  }
+ ],
+ "humps": [
+  {
+   "id": "BRU2202",
+   "name": "Han Lammersbrug",
+   "hump": 2.612,
+   "movable": true
+  },
+  {
+   "id": "BRU1093",
+   "name": "Bridge 1093",
+   "hump": 1.82,
+   "movable": false
+  },
+  {
+   "id": "BRU0028",
+   "name": "Vier Heemskinderensluis",
+   "hump": 1.745,
+   "movable": false
+  },
+  {
+   "id": "BRU0237",
+   "name": "Walter Süskindbrug",
+   "hump": 1.618,
+   "movable": true
+  },
+  {
+   "id": "BRU0208",
+   "name": "Armbrug",
+   "hump": 1.552,
+   "movable": false
+  },
+  {
+   "id": "BRU0060",
+   "name": "Prinsensluis",
+   "hump": 1.522,
+   "movable": false
+  },
+  {
+   "id": "BRU0507",
+   "name": "Bridge 0507",
+   "hump": 1.51,
+   "movable": true
+  },
+  {
+   "id": "BRU1904",
+   "name": "Ezelsbrug",
+   "hump": 1.493,
+   "movable": true
+  },
+  {
+   "id": "BRU0102",
+   "name": "Bridge 0102",
+   "hump": 1.46,
+   "movable": false
+  },
+  {
+   "id": "BRU0236",
+   "name": "Blauwbrug",
+   "hump": 1.383,
+   "movable": false
+  },
+  {
+   "id": "BRU2345",
+   "name": "Bridge 2345",
+   "hump": 1.38,
+   "movable": false
+  },
+  {
+   "id": "BRU0373",
+   "name": "Bridge 0373",
+   "hump": 1.34,
+   "movable": false
+  },
+  {
+   "id": "BRU2351",
+   "name": "Bridge 2351",
+   "hump": 1.297,
+   "movable": false
+  },
+  {
+   "id": "BRU0061",
+   "name": "Leliesluis",
+   "hump": 1.287,
+   "movable": false
+  },
+  {
+   "id": "BRU2433",
+   "name": "Pilaubrug",
+   "hump": 1.262,
+   "movable": false
+  },
+  {
+   "id": "BRU0148",
+   "name": "Bridge 0148",
+   "hump": 1.237,
+   "movable": true
+  },
+  {
+   "id": "BRU0029",
+   "name": "Koningssluis",
+   "hump": 1.234,
+   "movable": false
+  },
+  {
+   "id": "BRU2275",
+   "name": "Bridge 2275",
+   "hump": 1.215,
+   "movable": false
+  },
+  {
+   "id": "BRU2435",
+   "name": "Windaubrug",
+   "hump": 1.187,
+   "movable": false
+  },
+  {
+   "id": "BRU2434",
+   "name": "Wisbybrug",
+   "hump": 1.16,
+   "movable": false
+  },
+  {
+   "id": "BRU0146",
+   "name": "Oranjebrug",
+   "hump": 1.158,
+   "movable": true
+  },
+  {
+   "id": "BRU2485",
+   "name": "Bridge 2485",
+   "hump": 1.145,
+   "movable": false
+  },
+  {
+   "id": "BRU1729",
+   "name": "Bridge 1729",
+   "hump": 1.143,
+   "movable": false
+  },
+  {
+   "id": "BRU0346",
+   "name": "Westerkeersluis",
+   "hump": 1.141,
+   "movable": true
+  },
+  {
+   "id": "BRU1095",
+   "name": "Bridge 1095",
+   "hump": 1.125,
+   "movable": false
+  },
+  {
+   "id": "BRU2030",
+   "name": "Bridge 2030",
+   "hump": 1.086,
+   "movable": false
+  },
+  {
+   "id": "BRU0975",
+   "name": "Bridge 0975",
+   "hump": 1.061,
+   "movable": false
+  },
+  {
+   "id": "BRU2427",
+   "name": "Pernaubrug",
+   "hump": 1.058,
+   "movable": false
+  },
+  {
+   "id": "BRU0375",
+   "name": "Bakkersbrug",
+   "hump": 1.053,
+   "movable": true
+  },
+  {
+   "id": "BRU0351",
+   "name": "Postje van Gerrit Vreling",
+   "hump": 1.038,
+   "movable": true
+  },
+  {
+   "id": "BRU0806",
+   "name": "Prinses Irenebrug",
+   "hump": 1.015,
+   "movable": false
+  },
+  {
+   "id": "BRU2423",
+   "name": "Stralsundbrug",
+   "hump": 1.013,
+   "movable": false
+  },
+  {
+   "id": "BRU1797",
+   "name": "Bongerdbrug",
+   "hump": 1.005,
+   "movable": true
+  },
+  {
+   "id": "BRU1922",
+   "name": "Hein Donnerbrug",
+   "hump": 0.997,
+   "movable": false
+  },
+  {
+   "id": "BRU0311",
+   "name": "Zuidergasfabriekbrug",
+   "hump": 0.995,
+   "movable": true
+  },
+  {
+   "id": "BRU1940",
+   "name": "Magaret Staal-Krophollerbrug",
+   "hump": 0.989,
+   "movable": false
+  },
+  {
+   "id": "BRU1339",
+   "name": "Bridge 1339",
+   "hump": 0.981,
+   "movable": false
+  },
+  {
+   "id": "BRU2426",
+   "name": "Kronstadtbrug",
+   "hump": 0.968,
+   "movable": false
+  },
+  {
+   "id": "BRU1720",
+   "name": "Bridge 1720",
+   "hump": 0.963,
+   "movable": false
+  },
+  {
+   "id": "BRU2522",
+   "name": "Derkje Hazenwinkel-Suringabrug",
+   "hump": 0.962,
+   "movable": false
+  }
+ ]
+}

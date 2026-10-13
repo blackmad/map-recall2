@@ -599,6 +599,12 @@ Map source: ${osmUrl(places[i][0])}`);
   function canShowTeachingCard(input) {
     return !teachingOwnsBottom(input);
   }
+  function canShowPostcard(viewportMode, input) {
+    if (input.ridingPromptOpen && viewportMode !== "compact") {
+      return !input.feedbackVisible && !input.utilityOpen;
+    }
+    return canShowTeachingCard(input);
+  }
   function canShowDriveByCard(viewportMode, input) {
     return viewportMode !== "compact" && canShowTeachingCard(input);
   }
@@ -38032,21 +38038,33 @@ Map source: ${osmUrl(places[i][0])}`);
     return [...merged.values()];
   }
 
-  // src/canalRecall/game/postcardPacing.ts
+  // src/canalRecall/game/teachingPacer.ts
+  var PREEMPT_AFTER_SECONDS = 6;
+  var CLICK_PREEMPT_AFTER_SECONDS = 20;
+  var DRIVE_BY_MIN_GAP_SECONDS = 15;
   var POSTCARD_FIRST_VISITS = 3;
   var POSTCARD_QUIET_SECONDS = 45;
   var POSTCARD_MIN_GAP_SECONDS = 120;
   var POSTCARD_LULL_SECONDS = 90;
   var POSTCARD_LULL_GAP_SECONDS = 180;
-  var since = (now, at) => at == null || at > now ? Infinity : now - at;
+  var CARD_COLLAPSE_AFTER_SECONDS = 8;
+  function sinceEvent(now, at) {
+    return at == null || at > now ? Infinity : now - at;
+  }
   function postcardOnEntry(input) {
     if (input.priorEntries < POSTCARD_FIRST_VISITS) return true;
-    return since(input.now, input.lastTriviaAt) >= POSTCARD_QUIET_SECONDS && since(input.now, input.lastPostcardAt) >= POSTCARD_MIN_GAP_SECONDS;
+    return sinceEvent(input.now, input.lastTriviaAt) >= POSTCARD_QUIET_SECONDS && sinceEvent(input.now, input.lastPostcardAt) >= POSTCARD_MIN_GAP_SECONDS;
   }
   function postcardForLull(input) {
     const trivia = input.lastTriviaAt != null && input.lastTriviaAt <= input.now ? input.lastTriviaAt : -Infinity;
-    return since(input.now, Math.max(input.enteredAt, trivia)) >= POSTCARD_LULL_SECONDS && since(input.now, input.lastPostcardAt) >= POSTCARD_LULL_GAP_SECONDS;
+    return sinceEvent(input.now, Math.max(input.enteredAt, trivia)) >= POSTCARD_LULL_SECONDS && sinceEvent(input.now, input.lastPostcardAt) >= POSTCARD_LULL_GAP_SECONDS;
   }
+  function cardCollapsed(source, elapsed) {
+    if (source !== "street" && source !== "drive-by") return false;
+    return elapsed >= CARD_COLLAPSE_AFTER_SECONDS;
+  }
+
+  // src/canalRecall/game/postcardPacing.ts
   var storageKey = (cityId) => `canalRecall.neighborhoodEntries.${cityId}`;
   function loadEntryCounts(storage, cityId) {
     try {
@@ -38090,8 +38108,6 @@ Map source: ${osmUrl(places[i][0])}`);
   var DRIVE_BY_MIN_LOOKAHEAD = DRIVE_BY_RADIUS;
   var DRIVE_BY_ROUTE_TOLERANCE = 140;
   var DRIVE_BY_PASSED_BEHIND = 90;
-  var PREEMPT_AFTER_SECONDS = 6;
-  var DRIVE_BY_MIN_GAP_SECONDS = 15;
   function pathAhead(rider, route) {
     const reach = Math.max(DRIVE_BY_MIN_LOOKAHEAD, Math.abs(rider.speed) * DRIVE_BY_LOOKAHEAD_SECONDS);
     if (route && route.length >= 2) {
@@ -38151,14 +38167,13 @@ Map source: ${osmUrl(places[i][0])}`);
     }
     return chosen;
   }
-  var CLICK_PREEMPT_AFTER_SECONDS = 20;
   function mayReplaceNotice(source, hold, elapsed) {
     if (!source || !hold) return true;
     if (source === "arrival") return false;
     return elapsed >= (source === "click" ? CLICK_PREEMPT_AFTER_SECONDS : PREEMPT_AFTER_SECONDS);
   }
   function driveByGapElapsed(lastShownAt, now) {
-    return lastShownAt == null || lastShownAt > now || now - lastShownAt >= DRIVE_BY_MIN_GAP_SECONDS;
+    return sinceEvent(now, lastShownAt) >= DRIVE_BY_MIN_GAP_SECONDS;
   }
 
   // src/canalRecall/transit/corridorStreets.ts
@@ -38603,7 +38618,7 @@ Map source: ${osmUrl(places[i][0])}`);
       })) {
         this._postcardPending = this.currentNeighborhood;
       }
-      if (this._postcardPending && this._postcardPending === this.currentNeighborhood && canShowDriveByCard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+      if (this._postcardPending && this._postcardPending === this.currentNeighborhood && this.viewport?.mode !== "compact" && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
         this._postcardPending = null;
         this._lastPostcardAt = this.raceTime;
         if (hood) this._ensureNeighborhoodImage(hood);
@@ -38686,7 +38701,8 @@ Map source: ${osmUrl(places[i][0])}`);
       const ctx = this.ctx;
       const alpha = this._landmarkNoticeAlpha;
       if (alpha <= 0) return;
-      const img = this._landmarkImages && this._landmarkImages.get(lm.id);
+      const collapsed = cardCollapsed(this._landmarkNoticeSource, this._landmarkNoticeState.elapsed);
+      const img = collapsed ? null : this._landmarkImages && this._landmarkImages.get(lm.id);
       const hasImage = !!(img && img.complete && img.naturalWidth > 0);
       const cards = window.CanalRecallCards;
       const measure = (text, font) => {
@@ -38695,14 +38711,14 @@ Map source: ${osmUrl(places[i][0])}`);
       };
       const card = cards.measureLandmarkCard({
         name: lm.name,
-        body: lm.longDetail || lm.detail || cards.placeOnlyDetail(
+        body: collapsed ? "" : lm.longDetail || lm.detail || cards.placeOnlyDetail(
           lm.type,
           this.currentNeighborhood,
           this._cityDisplayName()
         ),
         category: lm.type ? lm.type.toUpperCase() : "",
-        factKind: lm.factKind,
-        extractLang: lm.extractLang,
+        factKind: collapsed ? void 0 : lm.factKind,
+        extractLang: collapsed ? void 0 : lm.extractLang,
         hasArticle: !!(lm.wikipediaUrl || lm.sourceUrl),
         articleLabel: lm.wikipediaUrl ? "W  WIKIPEDIA" : "W  SOURCE",
         hasImage
@@ -38800,7 +38816,7 @@ ${lm.researchDetail}` : originalBody;
     _renderNeighborhoodNotice() {
       const hood = this._neighborhoodNotice;
       if (!hood || this._neighborhoodNoticeTimer <= 0) return;
-      if (!canShowTeachingCard(this._teachingGate())) return;
+      if (!canShowPostcard(this.viewport?.mode, this._teachingGate())) return;
       const ctx = this.ctx;
       const duration = NEIGHBORHOOD_NOTICE_SECONDS;
       const alpha = Math.min(1, this._neighborhoodNoticeTimer * 2.5, (duration - this._neighborhoodNoticeTimer) * 2.5);

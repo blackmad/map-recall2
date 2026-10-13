@@ -18,7 +18,7 @@
 // (LOD 0) or 2 m (LOD 1).
 
 import earcut from 'earcut';
-import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMesh, type WaterGeometry } from './water.js';
+import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water.js';
 import { drapeTriangles, emptyMesh, merge, reliefGrid, type MeshArrays } from './drape.js';
 import { buildStreets, isBridgeWay, prepareWays, LIFT, type LocalWay } from './streets.js';
 import { flatDeckBody, measuredDeckBody } from './decks.js';
@@ -66,6 +66,8 @@ export interface CellInput {
 
 /** How far the mask may extend past the cell, metres. */
 const MASK_REACH_M = 150;
+/** Canal-belt water surface, scene z (−0.40 m NAP under the +1.37 m NAP datum): the default where no polder level is known. */
+export const CANAL_WATER_Z = -1.77;
 /** Signed-distance range of the water mask (texels saturate at ±this), metres. */
 export const MASK_RANGE_M = 4;
 /** Coping cap on every quay wall, reaching this far inland over the land's cut edge (water.ts). */
@@ -136,7 +138,7 @@ export function buildCell(input: CellInput): BuiltCell {
   for (const d of input.decks) { grow([d.profile.bbox[0], d.profile.bbox[1]]); grow([d.profile.bbox[2], d.profile.bbox[3]]); }
   mx0 = Math.max(mx0, x0 - MASK_REACH_M); my0 = Math.max(my0, y0 - MASK_REACH_M); mx1 = Math.min(mx1, x1 + MASK_REACH_M); my1 = Math.min(my1, y1 + MASK_REACH_M);
   const res = lod === 0 ? 1 : 2;
-  const geoAround: WaterGeometry = { polygons: input.waterAround.flatMap(g => g.polygons), shores: input.waterAround.flatMap(g => g.shores) };
+  const geoAround: WaterGeometry = { polygons: input.waterAround.flatMap(g => g.polygons), shores: input.waterAround.flatMap(g => g.shores), levels: input.waterAround.flatMap(g => g.levels ?? g.polygons.map(() => CANAL_WATER_Z)) };
   const hasWater = geoAround.polygons.length > 0;
   const mask = hasWater ? buildWaterMask(geoAround, mx0, my0, mx1, my1, res, MASK_RANGE_M, input.deckRingsAround) : null;
   const overWater = (x: number, y: number) => !!mask && maskDistance(mask, x, y) < 0;
@@ -173,10 +175,13 @@ export function buildCell(input: CellInput): BuiltCell {
 
   // Water, quays, decks.
   if (input.water) {
-    add('water', waterSurfaceMesh(input.water, -1.77));
-    add('quay', quayWallMesh({ polygons: [], shores: input.water.shores }, surface.height, -1.77, lod === 0 ? 4 : 8, QUAY_CAP_M));
+    add('water', waterSurfaceMesh(input.water, CANAL_WATER_Z));
+    add('quay', quayWallMesh({ polygons: [], shores: input.water.shores, shoreLevels: input.water.shoreLevels }, surface.height, CANAL_WATER_Z, lod === 0 ? 4 : 8, QUAY_CAP_M));
   }
-  for (const deck of input.decks) add('deckBody', measuredDeckBody(deck, surface.ground, overWater, -1.77));
+  for (const deck of input.decks) {
+    const xs = deck.profile.x, ys = deck.profile.y, mid = xs.length >> 1;
+    add('deckBody', measuredDeckBody(deck, surface.ground, overWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z)));
+  }
   for (const ring of input.flatDecks) {
     const { top, body } = flatDeckBody(ring, surface.height, overWater);
     add('deckTop', top); add('deckBody', body);
