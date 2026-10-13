@@ -93,7 +93,7 @@ export function buildMountainNetwork(_w:number,_d:number,{add,box}:BuildingTools
  // Projected climbing envelope: four broad pale translucent bays on the
  // photographed northern/front face, opaque side returns. The1.35m
  // overhang is photograph-guided; surveyed native roof remains behind the band.
- function wallPanel(a:T.Vector2,b:T.Vector2,y:number,h:number,c:Parameters<BuildingTools['add']>[1]){const d=b.clone().sub(a),mid=a.clone().add(b).multiplyScalar(.5);add(new T.PlaneGeometry(d.length(),h),c,mid.x,y+h/2,mid.y,Math.atan2(-d.y,d.x));}
+ function wallPanel(a:T.Vector2,b:T.Vector2,y:number,h:number,c:Parameters<BuildingTools['add']>[1]){const d=b.clone().sub(a),mid=a.clone().add(b).multiplyScalar(.5),len=d.length(),nx=-d.y/len,nz=d.x/len;add(new T.BoxGeometry(len,h,.06),c,mid.x-nx*.03,y+h/2,mid.y-nz*.03,Math.atan2(-d.y,d.x));} // thin boxes (front face on the old plane, back 6 cm behind it): closed shells, no open panel edges
  const towerA=new T.Vector2(33,-82.7),towerB=new T.Vector2(17.2,-86.8),towerDir=towerB.clone().sub(towerA).normalize(),towerNormal=new T.Vector2(-towerDir.y,towerDir.x),project=1.35;
  const projectedA=towerA.clone().addScaledVector(towerNormal,project),projectedB=towerB.clone().addScaledVector(towerNormal,project),towerWidth=towerA.distanceTo(towerB);
  wallPanel(projectedA,projectedB,7,28.1,'concrete');
@@ -107,8 +107,8 @@ export function buildMountainNetwork(_w:number,_d:number,{add,box}:BuildingTools
  const overhang=new T.Shape([towerA,projectedA,projectedB,towerB]);const cap=upwardRoofPlane(overhang);cap.translate(0,35.1,0);add(cap,'white');const soffit=upwardRoofPlane(overhang);soffit.scale(1,-1,1);soffit.translate(0,7,0);add(soffit,'slate');
  // Recessed front entrance in the photographed brick base; the projection is
  // above it, so panes/threshold remain visible beneath the dark soffit.
- const entryA=towerA.clone().addScaledVector(towerDir,2),entryB=towerB.clone().addScaledVector(towerDir,-2);wallPanel(entryA.clone().addScaledVector(towerNormal,.9),entryB.clone().addScaledVector(towerNormal,.9),.12,2.7,'glass');
- for(let i=0;i<=6;i++){const c=entryA.clone().lerp(entryB,i/6).addScaledVector(towerNormal,.95);wallPanel(c.clone().addScaledVector(towerDir,-.045),c.clone().addScaledVector(towerDir,.045),.12,2.7,'white');}
+ const entryA=towerA.clone().addScaledVector(towerDir,2),entryB=towerB.clone().addScaledVector(towerDir,-2);wallPanel(entryA.clone().addScaledVector(towerNormal,.2),entryB.clone().addScaledVector(towerNormal,.2),.12,2.7,'glass');
+ for(let i=0;i<=6;i++){const c=entryA.clone().lerp(entryB,i/6).addScaledVector(towerNormal,.25);wallPanel(c.clone().addScaledVector(towerDir,-.045),c.clone().addScaledVector(towerDir,.045),.12,2.7,'white');}
  // Continuous convex city-side balcony fronts over the hall. Native backing
  // chains retain the stepped/rounded corner; nine photo-guided floor bands
  // bulge3m outward rather than becoming isolated straight window strips.
