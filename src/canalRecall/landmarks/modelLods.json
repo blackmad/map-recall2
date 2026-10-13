@@ -1546,5 +1546,17 @@
   "buildVersion": 2,
   "bytes": 58424,
   "triangles": 4565
+ },
+ "scheepvaartmuseum": {
+  "sourceHash": "39047fe48d1074a1",
+  "buildVersion": 2,
+  "bytes": 66408,
+  "triangles": 3182
+ },
+ "waag": {
+  "sourceHash": "b1dc7d7e65793b2e",
+  "buildVersion": 2,
+  "bytes": 48000,
+  "triangles": 1829
  }
 }

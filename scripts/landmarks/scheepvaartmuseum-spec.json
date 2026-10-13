@@ -29,15 +29,15 @@
   "groundAltitudeMetres": 0,
   "facingOffsetDegrees": 0,
   "materialOverrides": {
-    "stone": "#d5cfbd",
+    "stone": "#e2ddcc",
     "slate": "#474c54",
     "glass": "#5e6f7a",
     "frame": "#ebe8de",
     "dark": "#2b2e32",
-    "white": "#ece9e0",
+    "white": "#f3f0e6",
     "concrete": "#8d8e8b",
     "gold": "#c9a24a",
-    "sandstone": "#a8a290"
+    "sandstone": "#b9b3a0"
   },
   "attribution": {
     "title": "Het Scheepvaartmuseum (’s Lands Zeemagazijn)",
