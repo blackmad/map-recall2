@@ -1703,6 +1703,22 @@
       "window-missing": 0,
       "window-misaligned": 0
     },
+    "hoofdbureau-elandsgracht": {
+      "material-slot-untagged-permille": 0,
+      "opening-floating": 0,
+      "opening-floating-fail": 0,
+      "opening-overhang": 0,
+      "opening-overhang-fail": 0,
+      "opening-buried": 0,
+      "zfight-m2": 0.2,
+      "zfight-near-m2": 12.6,
+      "window-mismatch": 19,
+      "window-missing": 6,
+      "window-misaligned": 0,
+      "window-rhythm-fail": 0,
+      "window-mismatch-spec": 0,
+      "window-missing-spec": 0
+    },
     "hortus-greenhouses": {
       "opening-floating": 0,
       "opening-floating-fail": 0,
