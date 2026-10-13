@@ -86,6 +86,12 @@ function fitAboveCard(map: L.Map, bounds: L.LatLngBounds, selector: string = RES
     // Phones keep room for the floating top controls; on a wide map they sit to the side.
     const top = size.x >= 640 ? 60 : 90;
     type Frame = { topLeft: [number, number]; bottomRight: [number, number] };
+    // Docked on a wide screen the card is a full-height right-hand column: pad on the right by its width.
+    const dock = dockWidthPx(map, selector);
+    if (dock > 0) {
+      map.fitBounds(bounds, { paddingTopLeft: [side, top], paddingBottomRight: [dock + 24, 40], maxZoom, animate: true });
+      return;
+    }
     const frames: Frame[] = [{ topLeft: [side, top], bottomRight: [side, cardPaddingPx(map, selector)] }];
     // On a wide map the card is a centred column with open map either side of it. A tall shape (the
     // Grachtengordel) can get a whole zoom level more there than squeezed above the card.
@@ -112,6 +118,21 @@ function fitAboveCard(map: L.Map, bounds: L.LatLngBounds, selector: string = RES
       animate: true,
     });
   });
+}
+
+/**
+ * Width of the map the docked quiz card covers, or 0 when the card sits at the bottom (phones,
+ * windows under 1100 px). Detected by the holder's box: a dock hugs the map's right edge and spans
+ * most of its height, a bottom card does not.
+ */
+function dockWidthPx(map: L.Map, selector: string): number {
+  const holder = cardHolder(selector);
+  const dock = holder?.closest<HTMLElement>('[data-quiz-dock]');
+  if (!dock) return 0;
+  const mapBox = map.getContainer().getBoundingClientRect();
+  const box = dock.getBoundingClientRect();
+  const docked = box.left > mapBox.left + mapBox.width * 0.4 && box.height >= mapBox.height * 0.9;
+  return docked ? Math.round(mapBox.right - box.left) : 0;
 }
 
 function cardHolder(selector: string): HTMLElement | null {
@@ -418,6 +439,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     tileLayerRef.current = L.tileLayer(tileUrl, {
       maxZoom: 19,
       subdomains: tileUrl.includes('{s}') ? subdomains : [],
+      className: 'paper-tiles',
     }).addTo(mapInstanceRef.current);
   }, [tileStyle, blindMapMode, BASEMAP_CONFIG_VERSION]);
 
@@ -888,7 +910,13 @@ export const MapComponent: React.FC<MapComponentProps> = ({
       timer = setTimeout(() => { if (revealBoundsRef.current) fitAboveCard(map, revealBoundsRef.current, fitSelectorRef.current); }, 120);
     });
     observer.observe(holder);
-    return () => { observer.disconnect(); clearTimeout(timer); };
+    // A window resize can cross the dock breakpoint (or move the dock's edge): fit again.
+    const onResize = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => { if (revealBoundsRef.current) fitAboveCard(map, revealBoundsRef.current, fitSelectorRef.current); }, 200);
+    };
+    window.addEventListener('resize', onResize);
+    return () => { observer.disconnect(); clearTimeout(timer); window.removeEventListener('resize', onResize); };
   }, [isRoundComplete, isGameOver, currentFeature, gameMode]);
 
   const handleLocateClick = () => {

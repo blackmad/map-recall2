@@ -5,6 +5,7 @@ import { neighborhoodFactForRound } from '../mapRecall/neighborhoodStories';
 import { triviaForRound } from '../mapRecall/localFacts';
 import { descriptionWithoutOrigin } from '../mapRecall/trivia';
 import { PostcardHeader } from './PostcardHeader';
+import { PostcardExport } from './PostcardExport';
 import { postcardCaptionFor, postcardPhotosFor } from '../mapRecall/postcardPhotos';
 import { historyHeading, ledeHeading, withNamedSubject } from '../mapRecall/answerText';
 import { whereItIs } from '../mapRecall/answerPlace';
@@ -93,7 +94,10 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
   const postcardPhotos = postcardPhotosFor(feature);
   const caption = hints ? postcardCaptionFor(feature, hints) : undefined;
   return <div className="answer-detail-card flex flex-col gap-2 p-3 text-left" data-testid="answer-trivia">
-    {feature.type === 'neighborhood' && hints && <PostcardHeader name={feature.name} cityName={caption} photos={postcardPhotos} className="mx-auto w-full max-w-[520px] rounded-lg shadow-md" />}
+    {feature.type === 'neighborhood' && hints && <>
+      <PostcardHeader name={feature.name} cityName={caption} photos={postcardPhotos} className="mx-auto w-full max-w-[520px] rounded-lg shadow-md" />
+      <PostcardExport name={feature.name} cityName={caption} photos={postcardPhotos} className="inline-flex min-h-[36px] items-center gap-1.5 rounded-md px-3 text-xs font-bold text-[#8a4a18] underline-offset-2 hover:underline disabled:opacity-60 cursor-pointer mx-auto" />
+    </>}
     <div className="flex gap-3">
     {feature.wikipediaImageUrl && postcardPhotos.length < 2 && <img src={feature.wikipediaImageUrl} referrerPolicy="no-referrer" alt="" className="h-12 w-16 flex-none rounded-md object-cover sm:h-16 sm:w-20" />}
     <div className="min-w-0 flex-1 space-y-1.5">
