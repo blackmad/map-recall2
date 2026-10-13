@@ -130,7 +130,8 @@ export function classifyRoof(raw: ArrayLike<number>, n: number, roofCode: number
   const white = share('white');
   if (white > 0.45) return finish('white-membrane', 'W', by.white, white);
   const brown = share('brown') + (pitched ? timber : 0);
-  if (brown > 0.3) return finish('pantile-dark', 'B', [...by.brown, ...(pitched ? by.timber : [])], brown);
+  // Warm brown on a sloped roof is glazed or weathered tile; on a flat roof it is felt or a deck, never a pantile.
+  if (brown > 0.3) return pitched ? finish('pantile-dark', 'B', [...by.brown, ...by.timber], brown) : finish(timber > 0.12 ? 'terrace' : 'bitumen-dark', 'B', [...by.brown, ...by.timber], brown, timber > 0.12);
   const clutter = !pitched && timber > 0.12 && share('neutral') < 0.75;
   if (!pitched && timber > 0.4) return finish('terrace', 'T', by.timber, timber, true);
   // Neutral greys (the rest, plus small minorities of anything else).
@@ -147,7 +148,7 @@ export function slotForFamily(family: RoofFamily, roofCode: number): RoofSlot | 
   const pitched = isPitchedCode(roofCode);
   switch (family) {
     case 'R': return 'pantile-red';
-    case 'B': return 'pantile-dark';
+    case 'B': return pitched ? 'pantile-dark' : 'bitumen-dark';
     case 'D': return pitched ? 'slate' : 'bitumen-dark';
     case 'M': return pitched ? 'slate' : 'gravel';
     case 'L': return pitched ? 'zinc' : 'bitumen-light';

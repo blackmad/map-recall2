@@ -50,6 +50,14 @@ and the look-consistency lane (2026-10-13). Code owners: `src/canalRecall/look/p
   iron) never lift, so windows read (`LOOK_VARIANTS[*].tone`).
 - Roofs: one table (`ROOF_TONES`, `FLAT_ROOF_GREYS`); pantile reds and slate
   greys; flat roofs bitumen/gravel greys, never a wall colour.
+- Measured roofs (2026-10-13): `ROOF_SLOT_TONES` holds twelve slots (gravel,
+  bitumen dark/light, white membrane, pantile red/dark, slate, zinc, sedum,
+  solar, terrace, glass), each with a base and an sRGB luma band. The
+  roof-facts sidecar (PDOK orthophoto, `scripts/roofs/`) picks the slot per
+  pand; `roofSlotHex` moves the base halfway to the measured colour, caps the
+  saturation at the base's + 0.12 and pulls it into the band. No slot is ever
+  drawn outside its band (`look/roofSlotBands.test.ts`). The slot lane decides
+  *which* slot; this table decides how a slot looks.
 
 ## Parity (the "is this building really this dark?" rule)
 
