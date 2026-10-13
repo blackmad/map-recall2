@@ -60,7 +60,9 @@ await page.evaluate(() => {
 await page.keyboard.down('ArrowUp');
 await page.waitForTimeout(Number(secs) * 1000);
 await page.keyboard.up('ArrowUp');
-const raw = await page.evaluate(() => { window.__stop = true; const m = performance.memory; const og = canalRecallGame.vectorMap._ownGround?.status(); return {ownGround: og ? {cells: og.cells, triangles: og.triangles, geometryMB: og.geometryMB, built: og.built, buildMsMedian: og.buildMsMedian, installMsMedian: og.installMsMedian, errors: og.errors} : null, redraws: canalRecallGame.vectorMap._sharedFrame ? canalRecallGame.vectorMap._sharedFrame.shadowRedraws - window.__perf.redraws0 : null, t: window.__perf, heapMB: m ? Math.round(m.usedJSHeapSize / 1048576) : null, end: {x: canalRecallGame.player.x, y: canalRecallGame.player.y}}; });
+const raw = await page.evaluate(() => { window.__stop = true; const m = performance.memory; const og = canalRecallGame.vectorMap._ownGround?.status();
+  // Building texture arrays: the facades' (bay cells, plus the slot layers under ?cityLook=1) and the city look's own slot-only array (legacy layers).
+  const tex = {facadeMB: +(canalRecallGame.vectorMap._threeBuildings?.stats?.().textureMB ?? 0).toFixed(2), cityLookOwnMB: +([...(window.__canalRecallCityLookShared?.values?.() ?? [])].reduce((s, l) => s + l.textureBytes(), 0) / 1048576).toFixed(2)}; return {tex, ownGround: og ? {cells: og.cells, triangles: og.triangles, geometryMB: og.geometryMB, built: og.built, buildMsMedian: og.buildMsMedian, installMsMedian: og.installMsMedian, errors: og.errors} : null, redraws: canalRecallGame.vectorMap._sharedFrame ? canalRecallGame.vectorMap._sharedFrame.shadowRedraws - window.__perf.redraws0 : null, t: window.__perf, heapMB: m ? Math.round(m.usedJSHeapSize / 1048576) : null, end: {x: canalRecallGame.player.x, y: canalRecallGame.player.y}}; });
 await cdp.send('Emulation.setCPUThrottlingRate', {rate: 1});
 const pick = (v, q) => { const s = [...v].sort((a, b) => a - b); return s[Math.min(s.length - 1, Math.floor(q * s.length))] ?? 0; };
 const sum = v => v.reduce((a, b) => a + b, 0);
@@ -69,7 +71,7 @@ const frames = raw.t.frame.slice(5);
 // threeLayers: the shared frame makes 2 calls per frame and the legacy path up to 9; report per-frame totals.
 const perFrameThree = raw.t.mapRender.length ? sum(raw.t.threeLayers) / raw.t.mapRender.length : 0;
 const result = {label, device, throttle, qs, frames: {...summ(frames), p99: +pick(frames, .99).toFixed(2), over50: frames.filter(f => f > 50).length, over100: frames.filter(f => f > 100).length},
-  mapRender: summ(raw.t.mapRender), threeLayersPerFrameMs: +perFrameThree.toFixed(2), drawCalls: summ(raw.t.calls.slice(5)), heapMB: raw.heapMB, shadowRedraws: raw.redraws, sigChanges: raw.t.sigChanges, boxMoves: raw.t.boxMoves, start: {x: Math.round(start.x), y: Math.round(start.y)}, end: {x: Math.round(raw.end.x), y: Math.round(raw.end.y)}, errors: errors.length, ownGround: raw.ownGround};
+  mapRender: summ(raw.t.mapRender), threeLayersPerFrameMs: +perFrameThree.toFixed(2), drawCalls: summ(raw.t.calls.slice(5)), heapMB: raw.heapMB, shadowRedraws: raw.redraws, sigChanges: raw.t.sigChanges, boxMoves: raw.t.boxMoves, start: {x: Math.round(start.x), y: Math.round(start.y)}, end: {x: Math.round(raw.end.x), y: Math.round(raw.end.y)}, errors: errors.length, textures: raw.tex, ownGround: raw.ownGround};
 console.log(JSON.stringify(result));
 fs.mkdirSync('artifacts/shared-frame/perf', {recursive: true});
 fs.appendFileSync('artifacts/shared-frame/perf/ride.jsonl', JSON.stringify(result) + '\n');

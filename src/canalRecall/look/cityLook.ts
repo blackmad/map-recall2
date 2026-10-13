@@ -445,7 +445,7 @@ export type CityLookOptions = {
   /** Decoded brick photo; undefined = load Bricks057, null = drawn bond. */
   brick?: CanvasImageSource | null;
   anisotropy?: number;
-  /** Side of the slot-only array (default 256). */
+  /** Side of the slot-only array (default 256; 128 on touch devices). */
   size?: number;
 };
 
@@ -490,7 +490,8 @@ export function getCityLook(THREE: any, options: CityLookOptions = {}): CityLook
 /** A fresh city look (tests and headless pages; the game uses `getCityLook`). */
 export function createCityLook(THREE: any, options: CityLookOptions = {}): CityLook {
   const doc = options.document ?? (globalThis as any).document as Document;
-  const size = options.size ?? 256;
+  // Touch devices draw the facades at half resolution (threeBuildingsBrowser.ts); the slot array follows.
+  const size = options.size ?? ((globalThis as any).matchMedia?.('(pointer: coarse)').matches ? 128 : 256);
   const uniforms = createCityUniforms(THREE);
   const materials = new Map<string, any>();
   let own: { colour: any; mask: any } | null = null;

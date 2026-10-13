@@ -507,7 +507,9 @@ export class ThreeBuildings {
 
   private async buildTextures(look: 'procedural' | Look): Promise<{ colour: any; mask: any; slotBase: number }> {
     const size = this.detailZoom === 17 ? CELL_PX / 2 : CELL_PX;
-    const slotLayers = this.cityLook ? paintSlotLayers(document, await loadCityBrick(document), size) : undefined;
+    // The slot layers join this array only in the shared frame, where slot meshes sample it (one renderer, one
+    // upload). Legacy layers each own a renderer, so there slot meshes keep the city look's small slot-only array.
+    const slotLayers = this.cityLook && this.sharedFrame ? paintSlotLayers(document, await loadCityBrick(document), size) : undefined;
     return buildLookTextures(this.THREE, look, Math.min(this.renderer.capabilities.getMaxAnisotropy(), this.detailZoom === 17 ? 4 : 16), size, { slotLayers });
   }
 
