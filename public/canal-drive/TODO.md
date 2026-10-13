@@ -1224,12 +1224,12 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   which is right). Quality: Beursplein 5 and Damrak 77 are too generic for
   their spot by the Beurs (stone pilasters, lantern, white bands missing);
   candidates for bespoke passes.
-- **Memorial figures are blocks** (2026-10-13): Rembrandtmonument and
-  Vondelmonument carry coarse blocky figures with no inscriptions or
-  attributes (lyre, mask), no carved post ornament, no terrace steps or
-  lawn at the Rembrandt; the Slavernijverleden figures are rough tapered
-  limbs; the sculpture splat/impostor track (TODO) or a hand pass should
-  take them. Begijnhof: the east and west rows miss court-facing windows
+- **Memorial figures, second pass** (2026-10-14): the figure kit covers
+  the four memorials (HISTORY); left: Night Watch plan from a measured
+  top-down source, the dog and the chicken, the Vondel lyre and wings,
+  Rembrandt's script inscription (block capitals now), the Slavernijverleden
+  platform heading and the giant's cast surface, the Rembrandt terrace
+  steps and lawn. `figure-kit-check.ts` is not in an npm script yet. Begijnhof: the east and west rows miss court-facing windows
   (openings blocked by neighbouring walls are skipped), the gable ornament
   and the real gable order per house are not modelled.
 - **Hoofdbureau leftovers** (2026-10-13): no columns on the w22 return;
