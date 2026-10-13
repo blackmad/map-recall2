@@ -9,6 +9,7 @@ const browser = await chromium.launch({headless: true, executablePath: '/Applica
 const page = await browser.newPage(device === 'touch' ? devices['iPhone 13'] : {viewport: {width: 1440, height: 900}});
 const errors = [];
 page.on('pageerror', e => errors.push(e.message));
+if (process.env.INIT_JS) await page.addInitScript(process.env.INIT_JS);
 if (process.env.BUNDLES_DIR) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
   const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
   return fs.existsSync(file) ? route.fulfill({path: file, contentType: 'application/javascript'}) : route.continue();
