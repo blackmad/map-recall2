@@ -1,5 +1,44 @@
 # Canal Recall — what is built
 
+## Hoofdbureau van Politie: ribbon fronts and the corner relief (2026-10-13)
+
+User report with a photo of the Marnixstraat/Elandsgracht corner: the model had
+key features missing. Three fronts used `brick-bay-grid` (tall punched windows)
+even though the intent's own notes and the panoramas showed white steel-window
+ribbons:
+- the north-west wall (group 0);
+- the 45 m Marnixstraat front of the north wing (group 3);
+- the low bridge wing on the Singelgracht (group 5, formerly 4).
+
+All three are `ribbon-windows` now. The north end wall of the Marnixstraat wing
+(3DBAG wall 190) is its own blank group. `addEndWallRelief` in the builder draws
+that wall by hand, from panorama `recording_2025-07-03_10-58-37_00361` and the
+user photo:
+- the ribbons wrapping round from the long front;
+- the Amsterdam arms relief: crowned shield with three saltires on a pale, two
+  rampant lions, a long banner;
+- three figures on brackets;
+- six round windows;
+- the open ground storey behind white columns.
+
+Inserting the group shifted the indices after it, and the intent notes were
+renumbered to match. Lesson: the per-wall review sheet (`review-sheet.ts`)
+already showed punched windows against ribbons on three walls; read its overlays
+before a large-tier landmark ships. The open-edge gate in
+`hoofdbureau-elandsgracht-check.ts` was already failing on `main` (108 edges,
+9.8 m) and is unchanged.
+
+## "See it in the game" opens the ride instead of the menu (2026-10-13)
+
+User report: the What's New links did nothing visible. The `#race=` share link
+loaded the ride, but `_checkShareLink` never closed route setup, so the ride sat
+hidden behind the setup rail and its hero photo. (The review scripts had been
+calling `setSetupOpen(false)` themselves, which hid the problem.) Share links now
+close setup the way a launch from setup does. The links on What's New and Street
+chunks now add `?travel=car`, so they open the street ride: a boat can't reach most
+buildings. `travel=car|boat` is applied to the saved preferences the same way the
+F3 ferry preview link does it. Checked on the Waag link: the rider spawns about
+30 m from the anchor, with the model in view.
 ## GLB cleanup batch 2: 20 of the 21 newly failing models pass the hard opening gates (2026-10-13)
 
 Lane `glb/cleanup-batch2-20261013` (Sonnet). Builder fixes: stadhuis z-fight
@@ -275,8 +314,6 @@ ways, three.js layers 0.64→0.86 ms, heap 640→790 MB, 26 shadow redraws per
 bundles, added `test:look` to `check:canal`; look-consistency and look-parity
 e2e pass on merged main, Storybook builds.
 
-
-# Canal Recall — what is built
 
 ## Large tier: `fitLarge()`, `kind: large` recipes, civic components, first police station (2026-10-13)
 
