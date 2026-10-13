@@ -34,6 +34,8 @@ export interface SystemFit {
   /** storeys (0 = ground) drawn as plain wall */
   blankStoreys?: number[];
   balconyRail?: 'glass' | 'bars' | 'solid';
+  /** balconies only in every `every`-th bay from `first`, or the listed bays (of `bays` per storey); default every bay */
+  balconyBays?: { every?: number; first?: number; bays?: number[] };
   /** slot names for this wall group (per-group palette overrides get their own slots) */
   slots: { frame: string; stone: string; glass: string; door: string; curtain: string; wall?: string; /** flush brick arch bands (a shade darker than the wall) */ arch?: string };
   /** arched heads (upper windows / ground openings) and the band around them */
@@ -52,6 +54,8 @@ export interface SystemFit {
   tilted?: TiltedBays | TiltedBays[];
   /** perforated-brick screen: the windows become scattered glass-block perforations (one bay in three, staggered per storey); the lattice is a component */
   screen?: boolean;
+  /** layered kit (intent `layeredKit`): a curtain wall is a glass skin (the group's wall) with a mullion grid component, no cut openings */
+  layered?: boolean;
 }
 
 /** Glass-block perforation in a screen cell: a small square opening with a cross of 3.5 cm closed bars, no frame ring or sill. */
@@ -95,7 +99,8 @@ function groundRow(f: SystemFit, upper: Row): Row {
     case 'glazed': return { kind: 'glazed', win: { w: 0.9, h: 0.86, sill: 0.1, mull: 1, transom: 0.82, ...(f.deepBars ? { barD: 0.035 } : {}), frame: s.frame, glass: s.glass } };
     // Shop windows down to a low stall riser, a transom light under the fascia (the fascia band is a component).
     case 'plinth-shopfronts': return { kind: 'glazed', win: { w: 0.86, h: 0.74, sill: 0.35, mull: 1, transom: 0.8, ...(f.deepBars ? { barD: 0.035 } : {}), frame: s.frame, glass: s.glass } };
-    default: return upper;
+    // A windowed ground with arched heads (`arches.ground` without portals): the upper storeys' window, arched.
+    default: return f.arches?.ground && upper.kind === 'punched' && upper.win ? { ...upper, win: { ...upper.win, ...archFor(f.arches.ground, f) } } : upper;
   }
 }
 
@@ -115,6 +120,8 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
       typical = { kind: 'ribbon', pier: 0.18, win: { h: 0.56, sill: 0.9, mull: 1, frame: s.frame, glass: s.glass, frameW: 0.06, ...(f.deepBars ? {barD: 0.035} : {}), ...g } };
       break;
     case 'curtain-wall':
+      // Layered kit: the wall is the glass skin and the grid a component (largeCompile `drawCurtainGrid`): nothing is cut.
+      if (f.layered) { typical = { kind: 'wall' }; break; }
       // Nearly full cells: the wall left between openings is the mullion/transom grid (the group's curtain slot).
       typical = { kind: 'punched', win: { w: 0.9, h: 0.88, sill: 0.12, frame: s.frame, glass: s.glass, frameW: 0.04, ...g } };
       break;
@@ -130,11 +137,14 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   const rowOverrides: Record<string, Row> = {};
   if (f.balconyStoreys?.length && name !== 'blank') {
     const balcony: Row = { kind: 'balcony', balcony: { depth: 1.2, slab: { h: 0.18, slot: s.stone }, rail: { kind: f.balconyRail ?? 'bars', h: 1.0, slot: s.frame, top: s.frame }, back: { w: 0.7, h: 0.72, sill: 0.25, frame: s.frame, glass: s.glass, mull: 1 } } };
-    for (const st of f.balconyStoreys) rowOverrides[String(st)] = balcony;
+    const sel = f.balconyBays, list = sel?.bays, every = list ? Math.max(1, f.bays ?? 1, ...list.map(b => b + 1)) : Math.max(1, sel?.every ?? 1), at = ((sel?.first ?? 0) % every + every) % every;
+    for (const st of f.balconyStoreys) rowOverrides[String(st)] = !sel ? balcony
+      : { kind: 'wall', cycle: Array.from({ length: every }, (_, k) => ((list ? list.includes(k) : k === at) ? balcony : typical)) };
   }
   // Storeys without openings (a blank storage floor over a shop, a plant floor): plain wall rows.
   for (const st of f.blankStoreys ?? []) rowOverrides[String(st)] = { kind: 'wall' };
-  let ground = groundRow({ ...f, ground: name === 'plinth-shopfronts' && f.ground === 'system' ? 'plinth-shopfronts' : f.ground }, typical);
+  let ground = name === 'curtain-wall' && f.layered && (f.ground === 'system' || f.ground === 'glazed') ? typical
+    : groundRow({ ...f, ground: name === 'plinth-shopfronts' && f.ground === 'system' ? 'plinth-shopfronts' : f.ground }, typical);
   // Loading-door axis: a cycle of rows per bay with the hoist row at `first` (cycle index = bay % every).
   if (f.hoist && name !== 'blank') {
     const list = f.hoist.bays, every = list ? Math.max(1, f.bays ?? 1, ...list.map(b => b + 1)) : Math.max(1, f.hoist.every ?? 1), at = ((f.hoist.first ?? 0) % every + every) % every, kind = f.hoist.arch;
