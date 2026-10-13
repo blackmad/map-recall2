@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## Coral highlight is the default (2026-10-13, evening)
+
+Lane `look/highlight-default-a-20261013`. `highlightStyle()` returns `a`
+when `?highlight` is unset; `?highlight=yellow` keeps the old fill for
+comparison. One accent everywhere: the HUD finish arrow and destination
+pin, the destination label's arrowhead and dot, the MapLibre locator dot
+and line all use `HIGHLIGHT_CORAL`. The outline is 2 px up to 100 m and
+rises to 3.5 px at 300 m, computed in the vertex shader from the camera
+distance (mean outline width at the chase distance 1.7 → 2.3 px; the 1 px
+quartile is gone). Bug fixed on the way: in the default frame the three.js
+city painted over the ground ring and beacon wherever a building stood
+behind them; the marker layer now moves above the last 3D layer on every
+highlight. Fallbacks: MapLibre extrusions get feature-state `accent` (no
++12 m yellow box), a 3 px coral footprint casing under the building
+layers, and the marker outlines an invisible footprint prism when nothing
+else outlines the building; 3DBAG detailed mode outlines the hit feature
+only. Desktop cost: +22–26 draw calls, MapLibre render within yellow's own
+spread. The known gap: a terrace house at chase distance reads 0.08 %
+accent pixels vs 0.55 % under yellow (on the board).
+
+
 ## Hoofdbureau rebuilt from measured facades; Maagdenhuis and two memorials (2026-10-13, evening)
 
 Lane `rework/hoofdbureau-20261013`: every street front of the Hoofdbureau
