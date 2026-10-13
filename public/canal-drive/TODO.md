@@ -747,12 +747,54 @@ weather/time mood. Cold-open is superseded by review rides (see HISTORY,
 2026-09-30).
 
 **Local-knowledge facts beyond Amsterdam (data lane).** Amsterdam's 57
-approved local facts are published (`localFact`, the card's lead line; see
-HISTORY). Open: run `npm run mine:area-facts -- --city utrecht|rotterdam|den-haag`,
-draft cited picks into `scripts/data/area-fact-review-<city>.json`, review,
-`publish`; 32 Amsterdam areas still have none (14 without any article); nine
-Amsterdam picks are boroughs/Gouden Bocht the quiz does not ask yet;
-`sentencesOf` splits after initials ("A.J. Ernststraat").
+approved local facts are published (`localFact`; see HISTORY), and since
+2026-10-13 every Amsterdam quiz area has a grounded story
+(`neighborhood-stories.json`, built by `scripts/build-neighborhood-stories.ts`
+from `scripts/data/neighborhood-stories-picks.json`; `npm run
+check:neighborhood-stories` gates it). Open: run `npm run mine:area-facts --
+--city utrecht|rotterdam|den-haag`, draft cited picks into
+`scripts/data/area-fact-review-<city>.json`, review, `publish`; thin Amsterdam
+stories (Westindische Buurt and IJselbuurt 1 top / 0 rotating; Gelderlandpleinbuurt,
+Molenwijkpark, Stadionbuurt, Willemspark 2 / 0; Duivelseiland, Hoofdweg e.o.,
+Buitenveldert-West 2 / 1) need more sourced material; nine Amsterdam picks are
+boroughs/Gouden Bocht the quiz does not ask yet; `sentencesOf` splits after
+initials ("A.J. Ernststraat").
+
+**Map Recall quiz pass, wave 2 (review 2026-10-13; wave 1 shipped, see
+HISTORY).** Still open from the review's longlist, in order:
+- *Question forms:* chains (the next question adjacent to the last answer),
+  relation questions ("which is further west: Keizersgracht or Prinsengracht?")
+  as the Guess Name form for obscure streets, a bonus pin after the reveal
+  ("and where is the Concertgebouw from here?" from `notablePlaces`), a daily
+  five near home with a date stamp and streak, and a seen-before chip on the
+  question card (last result and date from `ReviewState`).
+- *Desktop layout:* dock the quiz card beside the map on wide screens (the
+  card is a centred 36 rem column with dead map either side; MapComponent's
+  fit already measures the card holder, so pad right instead of bottom when
+  docked); a faint paper tint over the CARTO tiles; the "Canal Recall" button
+  under the phone map-review banner.
+- *Phone:* a ~10 km waterway cannot fit above the question card at minZoom 11,
+  so part of the line sits under the card; the e2e "label above card" check
+  measures `.custom-true-target-icon`, now a zero-size anchor for areas, and
+  should measure `.area-plaque`. `[iphone] guess-name neighborhoods offer
+  nearby areas as choices` and `card-gallery` time out under load (seen once
+  each in a full run, green on every re-run); pin a wait on the place labels.
+- *Data hygiene:* `area-photos.json` admits Commons photos that are not views
+  of the place (Helmersbuurt's RT run is `Toilet_(8801976568).jpg`); blacklist
+  by title/category at build and load. 35 first sentences of descriptions
+  still state a resident count or area ("Zuid is one of Utrecht's ten districts
+  (wijken), with 28,754 inhabitants (2025)"); strip the count clause rather
+  than the sentence. 57 descriptions and 91 histories are borrowed landmark
+  text (`borrowedFrom`); the card labels them, but an area's own lede would be
+  better where an article exists.
+- *Postcards:* the expanded card still prints the full name-origin paragraph
+  (Prinsengracht runs seven lines); on a desktop window under 800 px tall the
+  fold shows the strip, not the postcard (the result header plus MapComponent's
+  60% padding cap leave no room). `PostcardExport` (Save postcard PNG) exists
+  but is not mounted; Safari ignores canvas filters on export; OUD-WEST keeps a
+  gap where the undrawn hyphen sits.
+- *Guess Name:* overlapping areas as rival answers (below) and one
+  far-from-the-answer distractor per question (today all four are neighbours).
 
 **Neighbourhood trivia gaps (pipeline built 2026-10-02, data lane).**
 `npm run fill:neighborhood-gaps -- audit|offline|online|publish` fills missing
@@ -1056,8 +1098,8 @@ Rotterdam and Den Haag hints are unchecked.
 
 **Map Recall follow-ups.** 14 OSM neighbourhoods have no article in either
 language (Rijnbuurt, Scheldebuurt, Westindische Buurt, Van Galenbuurt, …);
-a street-named one could borrow its street's register origin, labelled as such.
-The city publishes ~480 official buurten / ~99 wijken with boundaries: a finer,
+their stories now borrow the street register and nearby landmark facts, labelled
+as such (`borrowedFrom`), but an article would still be better. The city publishes ~480 official buurten / ~99 wijken with boundaries: a finer,
 complete neighbourhood set than OSM's 85. Canal Recall shows a street card
 only after a correct answer; showing it for streets ridden (paced like
 landmark cards) is an open question for the user.
@@ -1921,9 +1963,12 @@ Craft board: [`LARGE_LETTER_CRAFT.md`](LARGE_LETTER_CRAFT.md). **Check loop:**
 `test:large-letter-craft` → `render:large-letter-craft -- --round=N` (gallery +
 pixel P0 on Jordaan: no top ink, cream ring ≤14px) → vision. Three themed
 rounds + a fill bump (span ~64%H), then the Spoon Graphics recipe pass
-(2026-10-03, HISTORY). Remaining: tighter greeting nest, place props, a
-converging (vanishing-point) block as an optional style (the recipe's own block
-is parallel), and the recipe colours for the non-default styles.
+(2026-10-03, HISTORY), then round 5 (2026-10-13: one photograph per run of
+2–4 letters, measured soft filter for brick and busy photos, taller two-line
+names). Remaining: tighter greeting nest, place props, a converging
+(vanishing-point) block as an optional style (the recipe's own block is
+parallel), the recipe colours for the non-default styles, and the export frame
+drawn at 640×400 and scaled (softer outlines than the 1280 px photos).
 
 **19. Structured Wikidata + city-hall advisor.** Assignments from mayors,
 architects, opening dates — without another card competing with the corridor.
@@ -1949,7 +1994,8 @@ Not milestones — standing obligations with live guards.
 - Keep rejecting distant or ambiguous home-address-to-waterway snaps.
 - Audit route topology at docks, broad water polygons, bridges, and split OSM
   fragments.
-- Tune neighborhood postcard scale and long-name typography on mobile.
+- Keep `npm run check:map-recall` green (lint, Map Recall unit tests, trivia,
+  postcard and neighbourhood text/story checks) alongside `check:canal`.
 
 - P2: Landmark fronts (Bijenkorf, Beurs hall, Royal Palace, Concertgebouw, Tuschinski) and kits (Westerkerk, Zuiderkerk, Montelbaanstoren, Noorderkerk, Royal Palace dome, Waag, Beurs, Centraal, Rijksmuseum, Sint-Nicolaas, Munttoren, Krijtberg) are in the game. Oude Kerk, Nieuwe Kerk and NEMO (colour only; its skillion roof terrace is still flat) are done too. Next: Stopera, Carré, Stadsschouwburg, Stedelijk, Scheepvaartmuseum; Centraal's long front and Rijksmuseum's gate front as fronts (references: `build-pano-facade.ts --toward=lng,lat --max-panos=3`; the Rijksmuseum pick lands inside the passage, so choose the Museumplein wall with `--wall`); Beurs Damrak front; Anne Frank House needs a reference (Mapillary token via env `MAPILLARY_TOKEN`, never committed). Front ids must be the game tiles' ids.
 - P2: Hand-modelled storefronts for notable businesses (Kema Vlees, 't Mandje, De Jaren, Winkel 43, Hoppe done). Next: Massimo Gelato branches (identify which shop in each panorama), Papeneiland, Café 't Smalle, Brouwerij Troost, Lastage/Vermeer etc. via their hotels; hotel facades (Amstel Hotel, Krasnapolsky, De L'Europe, Doelen, Pulitzer, Conservatorium). Reference: `build-pano-facade.ts --ids=<pand> --near=<poi lng,lat> --ppm=50 --min-standoff=2 --max-dist=40 --max-obl=60`.
