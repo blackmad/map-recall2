@@ -30056,6 +30056,214 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T21:35:54.752Z"
+    },
+    {
+      "id": "ordinary-0363100012104378",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012104378",
+      "name": "Stadsloket Noord, Buikslotermeerplein 2000, Amsterdam (1999 black-brick office tower with the three St Andrew's crosses)",
+      "hash": "e7d0853555c9d33700d3f30b8228b5eeace0bd21bf6221d266a428e9f56f687f",
+      "sha256": "e7d0853555c9d33700d3f30b8228b5eeace0bd21bf6221d266a428e9f56f687f",
+      "bytes": 254168,
+      "triangles": 3331,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -32.107,
+          0,
+          -43.4
+        ],
+        "max": [
+          26.968,
+          30.557,
+          33.863
+        ]
+      },
+      "anchor": [
+        4.9331994,
+        52.4010423
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9334173,
+              52.4011553
+            ],
+            [
+              4.9335928,
+              52.4013208
+            ],
+            [
+              4.933429,
+              52.4013864
+            ],
+            [
+              4.9334032,
+              52.401362
+            ],
+            [
+              4.9332554,
+              52.4014326
+            ],
+            [
+              4.9331054,
+              52.4013154
+            ],
+            [
+              4.9331682,
+              52.4012854
+            ],
+            [
+              4.9329502,
+              52.4011152
+            ],
+            [
+              4.9327549,
+              52.4009623
+            ],
+            [
+              4.9328466,
+              52.4009184
+            ],
+            [
+              4.9328489,
+              52.4009206
+            ],
+            [
+              4.9328616,
+              52.4009149
+            ],
+            [
+              4.9327286,
+              52.4008105
+            ],
+            [
+              4.9328827,
+              52.4007368
+            ],
+            [
+              4.9331211,
+              52.4009234
+            ],
+            [
+              4.933179,
+              52.4008958
+            ],
+            [
+              4.9331997,
+              52.4009043
+            ],
+            [
+              4.9332199,
+              52.4009133
+            ],
+            [
+              4.9332396,
+              52.4009227
+            ],
+            [
+              4.9332587,
+              52.4009326
+            ],
+            [
+              4.9332773,
+              52.4009429
+            ],
+            [
+              4.9332952,
+              52.4009535
+            ],
+            [
+              4.9333149,
+              52.4009663
+            ],
+            [
+              4.9333338,
+              52.4009795
+            ],
+            [
+              4.9333518,
+              52.4009932
+            ],
+            [
+              4.9333688,
+              52.4010074
+            ],
+            [
+              4.9333849,
+              52.401022
+            ],
+            [
+              4.9334,
+              52.401037
+            ],
+            [
+              4.9332981,
+              52.4010774
+            ],
+            [
+              4.9333356,
+              52.4011068
+            ],
+            [
+              4.9333565,
+              52.4010982
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 30.56,
+      "height": 30.56,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-stadsloket-noord.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012104378"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "stadsloket-noord",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012104378/w01-308.jpg",
+          "staging/pand-reference-walls/0363100012104378/w03-123.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 8st 5b",
+          "brick-bay-grid 8st 4b",
+          "brick-bay-grid 6st 6b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Signature: the three St Andrew's crosses MODELLED with a new kit component (`crosses`, `drawStAndrewsCross`: two diagonal closed prisms per cross, three crosses 3.2 m, pink-red, on the top-left of the main north-west panel); black brick MODELLED as the brick palette; low paired windows MODELLED (windows: low); glazed ground on round white piers MODELLED as ground glazed + piers (square projecting piers, not round columns: SIMPLIFIED); parking signs and the foot-of-wall bike park SKIPPED (temporary); the stadsloket entrance and signage are on the Buikslotermeerplein side which has no panorama in range (SKIPPED: not-visible); the stepped south-west block, the stair tower on the roof and the rear walls (surfaces 73/8/10/36/60/37/6/33/72/71/52/7) are one blank group (no panorama or closed seams)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012104378",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T21:41:18.388Z"
     }
   ]
 }

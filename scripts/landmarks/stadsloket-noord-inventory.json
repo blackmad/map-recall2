@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "stadsloket-noord",
+  "pand": "0363100012104378",
+  "signature": ["andrew-crosses", "black-brick-grid"],
+  "walls": [
+    {"tag": "w01-308", "bearing": 308, "lengthM": 45.7, "evidence": "photo", "panoId": "TMX7316010203-001255_pano_0002_000016", "capturedAt": "2019-06-27", "checked": true, "items": [
+      {"id": "andrew-crosses", "kind": "crest", "where": "top-left corner of the north-west wall, three red-pink St Andrew's crosses stacked down the first three storeys", "approxSizeM": [3, 11], "plan": "modelled", "how": "new kit component crosses (drawStAndrewsCross): closed diagonal prisms, three large crosses in pink-red on the main panel", "seenIn": "TMX7316010203-001255_pano_0002_000016"},
+      {"id": "black-brick-grid", "kind": "window-shape", "where": "whole wall, eight storeys of small paired windows in black brick", "approxSizeM": [40, 27], "plan": "modelled", "how": "brick-bay-grid, 8 storeys, low windows, black brick palette", "seenIn": "TMX7316010203-001255_pano_0002_000016"},
+      {"id": "parking-signs", "kind": "sign", "where": "foot of the wall, a row of blue P signs", "approxSizeM": [0.5, 0.5], "plan": "skipped", "skip": {"reason": "temporary", "note": "street furniture on poles in front of the wall"}, "seenIn": "TMX7316010203-001255_pano_0002_000016"}
+    ]},
+    {"tag": "w03-123", "bearing": 123, "lengthM": 22, "evidence": "photo", "panoId": "TMX7316010203-002184_pano_0000_005063", "capturedAt": "2021-06-17", "checked": true, "items": [
+      {"id": "glazed-ground-piers", "kind": "colonnade", "where": "ground storey, glazed hall behind round white piers", "approxSizeM": [20, 4], "plan": "simplified", "how": "ground glazed with square projecting piers instead of round columns", "seenIn": "TMX7316010203-002184_pano_0000_005063"}
+    ]}
+  ],
+  "sources": [{"name": "Gemeente Amsterdam panorama", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001255_pano_0002_000016/", "licence": "CC BY 4.0"}]
+}
