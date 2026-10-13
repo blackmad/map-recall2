@@ -11,7 +11,12 @@
   "overtoom-197": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
   "shell-technology-centre": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
   "voc-kade-600": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
-  "willem-de-zwijgerlaan-350": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry."
+  "willem-de-zwijgerlaan-350": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
+  "oosterkerk": "First record (2026-10-13, feat/kit-only-churches-20261011 merge): hand-built church landed with window-rhythm mismatches against its photo spec (Opstandingskerk east gable 37 of 46 openings off-size); fix the builder and lower the entry.",
+  "de-duif": "First record (2026-10-13, feat/kit-only-churches-20261011 merge): hand-built church landed with window-rhythm mismatches against its photo spec (Opstandingskerk east gable 37 of 46 openings off-size); fix the builder and lower the entry.",
+  "obrechtkerk": "First record (2026-10-13, feat/kit-only-churches-20261011 merge): hand-built church landed with window-rhythm mismatches against its photo spec (Opstandingskerk east gable 37 of 46 openings off-size); fix the builder and lower the entry.",
+  "opstandingskerk": "First record (2026-10-13, feat/kit-only-churches-20261011 merge): hand-built church landed with window-rhythm mismatches against its photo spec (Opstandingskerk east gable 37 of 46 openings off-size); fix the builder and lower the entry.",
+  "mozes-en-aaronkerk": "First record (2026-10-13, feat/kit-only-churches-20261011 merge): hand-built church landed with window-rhythm mismatches against its photo spec (Opstandingskerk east gable 37 of 46 openings off-size); fix the builder and lower the entry."
  },
  "models": {
   "adam-tower": {

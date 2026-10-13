@@ -371,8 +371,7 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   symlinked. After the 2026-10-13 sweep: 15 worktrees remain (11 unmerged
   lanes to review, 4 kept), 164 local branches (159 unmerged, mostly old
   lanes; triage them next), disk 148 GB free. Unmerged lanes awaiting
-  integrator review: `feat/kit-only-churches-20261011` (De Duif, Mozes en
-  Aaronkerk, Oosterkerk hand-built GLBs + Obrechtkerk WIP),
+  integrator review: (`feat/kit-only-churches-20261011` merged 2026-10-13),
   `feat/da-costakade-13-20261013`, `big/ordinary-a2-20261013` (Jodenbreestraat
   11), `qa/detached-openings-sweep-20261013` (+ Haparandaweg 8-338 rails),
   `fix/europe-window-grid-20261011`, `fix/felix-meritis-20261011`,
@@ -575,8 +574,11 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ## P1 — The learning model itself
 - Kit-only landmarks still without a GLB: Noorderkerk (main pand to
   identify: 0363100012177299 or ...177297) and Krijtberg (not started).
-  Another session is building Obrechtkerk, Oosterkerk, Mozes en Aäronkerk,
-  De Duif and Opstandingskerk. Scheepvaartmuseum and Waag done 2026-10-13.
+  Obrechtkerk, Oosterkerk, Mozes en Aäronkerk, De Duif and Opstandingskerk
+  landed 2026-10-13 as hand-built GLBs (first-record baseline entries for
+  their window-rhythm mismatches; Opstandingskerk's east gable has 37 of 46
+  openings off-size against the photo spec, Obrechtkerk is 43k tris — both
+  for the GLB cleanup lane). Scheepvaartmuseum and Waag done 2026-10-13.
 - Facade comparison now crops to the photo's span (alongM/heightM), skips
   null bands and counts ribbon glazing as one opening (2026-10-11): failing
   checks 45 -> 24 over the 7 newly released landmarks. Real model gaps it

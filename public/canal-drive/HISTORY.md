@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+## Five hand-built churches replace their procedural kits (2026-10-13)
+
+`feat/kit-only-churches-20261011` (killed mid-lane 2026-10-13, salvaged and
+merged by the integrator): Oosterkerk (16.8k tris), Mozes en Aaronkerk (7.7k),
+De Duif (7.3k), Obrechtkerk (43k) and Opstandingskerk (5.7k) as
+`scripts/landmarks/*-builder.ts` with specs, footprints and `church-kit.ts`
+helpers; `add-church-catalogue-entry.mjs`, `commons-fetch.mjs`,
+`crop-image.mjs` and `detached-parts.ts` tooling. Reviewed at review-sheet
+size against camera-matched panoramas: Oosterkerk and Mozes en Aaronkerk match
+closely, De Duif's Prinsengracht front matches with plain party-wall sides,
+Obrechtkerk's twin-tower front is plausible with inferred sides. `audit:glb`:
+Mozes en Aaronkerk PASS; the other four fail only window-rhythm against their
+photo specs, so they got first-record entries in
+`geometry-audit-baseline.json` (lower, never raise) and the cleanup lane owns
+the fixes. Merge resolution took main for the shared registry/catalogue/LOD
+files and re-added the five entries; the manifest and
+`signature-placement.bundle.js` were regenerated.
+
+
 ## Own ground: per-polder water, BGT widths per way, 202 more measured bridges (2026-10-13)
 
 Lane `ground/data-20261013` (Sonnet, `docs/handoffs/lane-ground-data-20261013.md`),
