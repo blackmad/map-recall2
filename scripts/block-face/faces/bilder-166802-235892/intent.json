@@ -420,6 +420,10 @@
    }
   ],
   "identical": [],
+  "roof": {
+   "source": "recipe",
+   "evidence": "strip.jpg: one continuous mansard attic with dormers; 3DBAG's uneven ridges and roof wedges are not on the photo (review 2026-10-11, strip.jpg vs ortho/street/overhead before-after)"
+  },
   "notes": [
    "Crisp 2024-11-29 capture, no occlusion; 166801 and 162836 are mirror twins (tower bays outward)."
   ]

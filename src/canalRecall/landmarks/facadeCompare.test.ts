@@ -72,3 +72,55 @@ test('gable peaks: five gables, ignoring a chimney', () => {
   assert.equal(countPeaks(h, cell, 1.5), 5);
   assert.equal(countPeaks(new Array(100).fill(10), cell, 1.5), 0);
 });
+
+test('alongM crops to the span the photo frames (Krasnapolsky Dam front, Maarten Lutherkerk tower)', () => {
+  // 30 m wall; the photo frames the 12 m at the west end (viewer facing north has east on the left) (3 windows x 3 storeys). The rest has 6 more columns.
+  const soup = wall(30, 10, grid([1, 4, 7, 14, 17, 20, 23, 26, 28.5], [1, 4, 7]));
+  const full = {name: 'n', bearing: 0, rows: [3, 3, 3]};
+  assert.equal(compare(full, measureFacade(soup, full)).every(c => c.pass), false);
+  const f = {...full, alongM: [18, 30] as [number, number], columns: 3};
+  const m = measureFacade(soup, f);
+  assert.deepEqual(m.rows, [3, 3, 3]);
+  assert.ok(Math.abs(m.width - 12) < 0.3, `width ${m.width}`);
+  assert.deepEqual(compare(f, m).filter(c => !c.pass), []);
+  assert.ok(m.crop && Math.abs(m.crop.t0 - 18) < 0.2 && Math.abs(m.crop.t1 - 30) < 0.2);
+});
+
+test('alongM centres symmetry on the crop, not the whole face', () => {
+  // Symmetric 12 m block on the left of a lopsided 30 m face.
+  const soup = wall(30, 10, [...grid([1, 4, 6.8, 9.8], [1, 4, 7]), ...grid([20], [1])]);
+  const f = {name: 'n', bearing: 0, symmetric: true};
+  assert.ok(measureFacade(soup, f).symmetry < 0.7);
+  assert.ok(measureFacade(soup, {...f, alongM: [19, 29] as [number, number]}).symmetry >= 0.7);
+});
+
+test('heightM crops off storeys below the photo frame (DNB tower above the podium)', () => {
+  const soup = wall(12, 20, grid([1, 4, 7, 10], [1, 4, 7, 10, 13, 16]));
+  const m = measureFacade(soup, {name: 'n', bearing: 0, heightM: [9, 20]});
+  assert.deepEqual(m.rows, [4, 4, 4]);
+  assert.ok(Math.abs(m.height - 11) < 0.3);
+});
+
+test('a ribbon window is one opening per storey band; panes split only by mullions do not multiply it', () => {
+  // 8 panes 1.4 m wide separated by 0.1 m mullions in each of 2 bands.
+  const panes = [1, 4].flatMap(y => Array.from({length: 8}, (_, i) => ({x: 1 + i * 1.5, y, w: 1.4, h: 1.6})));
+  const f = {name: 'n', bearing: 0, rows: [1, 1]};
+  const m = measureFacade(wall(14, 7, panes), f);
+  assert.deepEqual(m.rows, [1, 1]);
+  assert.deepEqual(compare(f, m).filter(c => !c.pass), []);
+  assert.equal(compare({...f, rows: [8, 8]}, m)[0].pass, false);
+});
+
+test('null rows are bands the photo cannot show and are skipped (Oudemanhuispoort cut-off top)', () => {
+  const soup = wall(12, 12, grid([1, 4, 7], [1, 4, 7, 10]));
+  const f = {name: 'n', bearing: 0, rows: [3, 3, 3, 3] as (number | null)[]};
+  const miss = {...f, rows: [3, 3, 3, 2]};
+  assert.equal(compare(miss, measureFacade(soup, miss))[0].pass, false);
+  const skip = {...f, rows: [3, 3, 3, null]};
+  assert.equal(compare(skip, measureFacade(soup, skip))[0].pass, true);
+  const skipMid = {...f, rows: [3, null, 3, 3]};
+  assert.equal(compare(skipMid, measureFacade(soup, skipMid))[0].pass, true);
+  // null does not excuse a missing band: the band count must still line up.
+  const short = {...f, rows: [3, 3, null]};
+  assert.equal(compare(short, measureFacade(soup, short))[0].pass, false);
+});

@@ -44,17 +44,18 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Review each in game. Also: kiosks under 14 m² draw as bare boxes (Westermarkt
   76/78/82); the Muziekgebouw model's Bimhuis box is half off its OSM part;
   Mövenpick could get an ordinary one-off later.
-- **Recipe roofs on the remaining faces**: `continuity.roof.source:
-  'recipe'` is on for bilder-081118-155417, bilder-233645-236975, marnix-124-138
-  and marnix-c (30°). Off again for bilder-161259-236206, -164451-156126,
-  -166802-235892, -233580-162444, -236189-166159: combined with the
-  Bilderdijkstraat towers/split gables they fail the GLB hole audit (26–57
-  open loops, up to 56 m; survey roofs pass). Not tried: utrechtse-48-76
-  (178705 over triangle budget), wallen-oza-41-57 (54 m open loops),
-  wallen-ozv-115-125 (171879 above 3DBAG max), bilder-080336-090492 (1920s
-  overhanging eave), the newer frontRoof and house-type faces. The 70° attic
-  comes from one strip; rear wings flattened to median 3DBAG are unchecked
-  against aerials; cornice groups use a 2 cm stagger workaround.
+- **Recipe roofs on the remaining faces**: on for 14 faces (all
+  Bilderdijkstraat faces but 080336-090492 and 159426-165632, both Marnix
+  rows). Not yet: clercq-236681 (only installs with recipe roofs, but its left
+  corner gains an attic the photo lacks — decide), nassau-162289 (10–12 m²
+  slate/brick wall z-fight with either roof), utrechtse-48-76 (178705 over
+  triangle budget), wallen-oza-41-57 (54 m open loops), wallen-ozv-115-125
+  (171879 above 3DBAG max), 159426-165632 (no gain, 14.6 m loop),
+  080336-090492 (1920s eave). Defects: stray brick block in Bilderdijkstraat
+  175's attic (133467) and its rounded mansard + dormer missing; tower rule
+  (eaves > 1 m over lowest front) from one pand; 70° attic from one strip;
+  cornice-group 2 cm stagger is a workaround. Per-house recipe GLBs with
+  fascia shops or steep dormers change on next rebuild (fit-golden re-recorded).
 - **Rosarium follow-ups**: low box hedges around each bed; check Noord
   "Rozentuin" (a36994921, ~1,500 bushes on 1,380 m², maybe over-planted) and
   a288299874 in game; park-landscape draws the paved centre hex green;
@@ -510,14 +511,20 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
-- Facade blind counts (haiku counter, 2026-10-11) for Krasnapolsky, Pakhuis
-  de Zwijger and DNB are recorded in their elevations.json but read as FAIL
-  in compare:facades for measurement reasons, not model errors: photos crop
-  part of an 88 m facade (Krasnapolsky), ribbon windows count as 1 per
-  storey in the model vs 8 in the counter (DNB tower), and totals were
-  given across blocks (Pakhuis: 3 per block in both). Integrator compared
-  the elevations to the photos by eye and installed all three. Improve:
-  crop the elevation to the photo's span; count ribbons as runs.
+- Facade comparison now crops to the photo's span (alongM/heightM), skips
+  null bands and counts ribbon glazing as one opening (2026-10-11): failing
+  checks 45 -> 24 over the 7 newly released landmarks. Real model gaps it
+  found, fixed 2026-10-13: Maarten Lutherkerk (door stile lost in the
+  raster; east front now passes), Pakhuis de Zwijger (east ground slits;
+  warm ochre brick #b69468 in a light concrete frame after the user asked
+  "is this building really this dark?"). Krasnapolsky re-held after the
+  user's "some incorrect windows": wing and old front are regular grids
+  now, but the red-brick middle, Dam-front rows and three blank 3DBAG
+  sides remain. Oudemanhuispoort and Petrus en Paulus are being redone by
+  another session. Metric limits still open: gable peaks count
+  roof steps/plateaus as peaks (DNB podium), row clustering splits
+  staggered stair windows (Petrus en Paulus), counters count panes in tall
+  strips (Pakhuis north).
   Petrus en Paulus, Maarten Lutherkerk, Oudemanhuispoort and the Torture
   Museum released 2026-10-11 (second held batch). Levend Paardenmuseum
   still held: gateway detailed, long walls plain 3DBAG massing (inferred

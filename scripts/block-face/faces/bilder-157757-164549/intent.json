@@ -213,6 +213,10 @@
   "streetLevel": "shared",
   "corniceGroups": [],
   "identical": [],
+  "roof": {
+   "source": "recipe",
+   "evidence": "strip.jpg: tiled roofs beside the gable; the dark 3DBAG roof spikes standing beside the gable are not on the photo (review 2026-10-11, strip.jpg vs ortho/street/overhead before-after)"
+  },
   "notes": [
    "2024-11-29 capture; 2023-01-12 ground floor of 133 read BOUWBAK.NL."
   ],
