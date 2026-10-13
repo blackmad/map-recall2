@@ -29808,18 +29808,18 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165051",
       "name": "Beursplein 5, Amsterdam: 1913 stone-and-brick bank block (Euronext), Warmoesstraat front",
-      "hash": "2d4c087da0a7806bd2fcb7ee57e6e11ae3adb4f97cbd5cd6a471bf22ccdb3683",
-      "sha256": "2d4c087da0a7806bd2fcb7ee57e6e11ae3adb4f97cbd5cd6a471bf22ccdb3683",
-      "bytes": 410556,
-      "triangles": 4829,
-      "materials": 10,
+      "hash": "3bb22922302a5add5117a44e71977ec31f34d72188697a213e4c0bc323b94d8c",
+      "sha256": "3bb22922302a5add5117a44e71977ec31f34d72188697a213e4c0bc323b94d8c",
+      "bytes": 671632,
+      "triangles": 8557,
+      "materials": 12,
       "textures": 0,
       "scale": 1,
       "bounds": {
         "min": [
           -49.46,
           0,
-          -50.727
+          -50.82
         ],
         "max": [
           44.234,
@@ -30519,14 +30519,15 @@
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
         "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Simplified: the rusticated stone bands (plain wall), the attic paired windows (one window per bay), the roof as the 3DBAG LoD2.2 massing. Not modelled: the carved corbels and tympanum relief, the planter balcony balustrade, the electronic ticker boards over the doors, the mansard dormers and roof cupola, the curved north corner. The SE, NE and court walls have no photograph (party or hidden) and stay blank."
+        "Simplified: the rusticated stone bands (plain wall), the attic paired windows (one window per bay), the roof as the 3DBAG LoD2.2 massing. Not modelled: the carved corbels and tympanum relief, the planter balcony balustrade, the electronic ticker boards over the doors, the mansard dormers and roof cupola, the curved north corner. The SE, NE and court walls have no photograph (party or hidden) and stay blank.",
+        "Components lane (2026-10-13): the street run (walls[0], [1], [3]; w03-314, w04-314, w01-309) now has the granite ground storey and the ashlar attic as stone-faced storeys (stoneStoreys 0 and 3), banded two-tone stone pilasters at both ends of every unit, cross windows with 3.5 cm bars, and the glazed roof lantern behind walls[0] (w03-314 shows it on the mansard ridge). walls[2] (Beursplein 5 front, w06-314) is granite (wallMaterial stone) with a carved portal round the entrance: stone jambs, an entablature lettered BEURSPLEIN 5, a pediment block with a crest. closedBands closes the cornices. Still simplified: the portal stands for the three granite portals and their carved roundels; the corbelled balcony, the attic pediment relief and the mansard dormers are not modelled; the pilaster banding is two-tone courses, not rustication."
       ],
       "reviewState": "large-recipe-gates-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165051",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:41:59.221Z"
+      "updatedAt": "2026-10-13T22:18:58.768Z"
     },
     {
       "id": "ordinary-0363100012165746",
