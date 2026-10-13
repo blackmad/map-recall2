@@ -168,14 +168,14 @@
         "depthMetres": 186.23273086547852,
         "depthCoverage": 6.023749797839424
       },
-      "triangles": 39408,
-      "bytes": 424436,
+      "triangles": 39532,
+      "bytes": 399604,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "12dd30b0b4f1cebf",
+        "sourceHash": "fcf68215e627041a",
         "buildVersion": 2,
-        "bytes": 104888,
-        "triangles": 6044
+        "bytes": 107788,
+        "triangles": 6246
       }
     },
     "de-beurs-van-berlage": {

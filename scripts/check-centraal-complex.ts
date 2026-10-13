@@ -12,7 +12,8 @@ const tools:BuildingTools={add,box(x,y,z,w,h,d,c,a=0){add(new T.BoxGeometry(w,h,
 buildCentraalComplex(tools);group.updateMatrixWorld(true);
 let triangles=0;
 for(const g of geometries){const p=g.getAttribute('position');assert.ok(Array.from(p.array).every(Number.isFinite));triangles+=(g.index?.count||p.count)/3;}
-assert.ok(triangles<10900,'complex stays within combined 40k Cuypers asset budget');
+// 10.9k until 2026-10-13; the arches became a material split of the roof sheet (no floating strips to z-fight), +7.3k triangles.
+assert.ok(triangles<18000,'complex stays within the Cuypers asset budget (whole GLB under 50k)');
 const bounds=new T.Box3().setFromObject(group);assert.ok(bounds.max.y>=23&&bounds.max.y<23.1,'published 23 m Zuidkap roof with thin outer steel strips');
 assert.equal(source.parts.find(p=>p.name==='Zuidkap')!.frames,50,'published 50 steel frames');
 assert.equal(source.parts.length,4);
