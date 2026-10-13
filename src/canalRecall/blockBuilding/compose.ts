@@ -9,6 +9,7 @@ import type { SurfaceSet } from './types.ts';
 import { MeshBuilder, type V3, cross, sub, add, scale, norm, dot } from './mesh.ts';
 import { buildHost, fitsPanel, rectPoly, pt, insidePoly, newell, triangulate3, type Panel } from './panels.ts';
 import type { BlockSpec, System, Row, WinParams, BalconyParams, Band, Slot, Sign, PanesParams } from './spec.ts';
+import { drawArchedOpening, drawArchedProud } from './arch.ts';
 
 export interface TextShaper { (text: string, font?: string): { shapes: T.Shape[]; width: number; ascent: number } }
 export interface ComposeOptions {
@@ -39,7 +40,8 @@ export interface ComposeResult { mesh: MeshBuilder; panels: Panel[]; stats: Reco
 const UP: V3 = [0, 1, 0], DOWN: V3 = [0, -1, 0];
 const rand = (a: number, b: number, c: number) => { let h = 2166136261 ^ (a * 73856093) ^ (b * 19349663) ^ (c * 83492791); h = Math.imul(h ^ (h >>> 15), 2246822519); h = Math.imul(h ^ (h >>> 13), 3266489917); return ((h ^ (h >>> 16)) >>> 0) / 4294967296; };
 
-export type HoleRect = [u0: number, u1: number, v0: number, v1: number];
+/** A cut opening: its bounding rectangle, plus the (u, v) outline when it is not that rectangle (arched openings). */
+export type HoleRect = [u0: number, u1: number, v0: number, v1: number, outline?: [number, number][]];
 class Ctx {
   /** recess depth (large tier); 0 = openings drawn proud as in the original block kit */
   recess = 0;
@@ -55,8 +57,28 @@ class Ctx {
    * Returns the corners on that wall's own plane (bottom-left, bottom-right, top-right, top-left), or null.
    */
   cut(u0: number, u1: number, v0: number, v1: number): V3[] | null {
+    const k = this.claim(u0, u1, v0, v1);
+    if (k < 0) return null;
+    const onWall = this.onMember(k);
+    return [[u0, v0], [u1, v0], [u1, v1], [u0, v1]].map(([u, v]) => onWall(u, v));
+  }
+  /**
+   * Cut a non-rectangular opening (convex `outline` inside the rectangle u0..u1 x v0..v1) into one member wall, on the
+   * same terms as `cut`. Returns a mapper from (u, v) onto that wall's own plane, or null.
+   */
+  cutOutline(u0: number, u1: number, v0: number, v1: number, outline: [number, number][]): ((u: number, v: number) => V3) | null {
+    const k = this.claim(u0, u1, v0, v1, outline);
+    return k < 0 ? null : this.onMember(k);
+  }
+  /** (u, v) onto member wall k's own plane, along the panel normal. */
+  private onMember(k: number): (u: number, v: number) => V3 {
+    const ring = this.p.members![k].rings[0], nm = norm(newell(ring)), q0 = ring[0], n = this.p.n, den = dot(nm, n);
+    return (u, v) => { const P = pt(this.p, u, v, 0), t = Math.abs(den) > 1e-6 ? dot(nm, sub(q0, P)) / den : 0; return add(P, scale(n, t)); };
+  }
+  /** Member wall that takes the rectangle as a hole (recorded), or -1. */
+  private claim(u0: number, u1: number, v0: number, v1: number, outline?: [number, number][]): number {
     const members = this.p.members;
-    if (!this.recess || !members) return null;
+    if (!this.recess || !members) return -1;
     const m = 0.03, a0 = u0 - m, a1 = u1 + m, b0 = v0 - m, b1 = v1 + m;
     const inRect = (q: [number, number]) => q[0] > a0 && q[0] < a1 && q[1] > b0 && q[1] < b1;
     const probe: [number, number][] = [[a0, b0], [a1, b0], [a1, b1], [a0, b1], [(a0 + a1) / 2, b0], [(a0 + a1) / 2, b1], [a0, (b0 + b1) / 2], [a1, (b0 + b1) / 2]];
@@ -72,11 +94,10 @@ class Ctx {
       if (rings.some(ring => ring.some(inRect) || ring.some((q, i) => rectEdges.some(([e0, e1]) => crosses(q, ring[(i + 1) % ring.length], e0, e1))))) continue;
       const list = this.holes.get(k) ?? [];
       if (list.some(h => h[0] < a1 && h[1] > a0 && h[2] < b1 && h[3] > b0)) continue;
-      list.push([u0, u1, v0, v1]); this.holes.set(k, list);
-      const ring = members[k].rings[0], nm = norm(newell(ring)), q0 = ring[0], n = this.p.n, den = dot(nm, n);
-      return [[u0, v0], [u1, v0], [u1, v1], [u0, v1]].map(([u, v]) => { const P = pt(this.p, u, v, 0), t = Math.abs(den) > 1e-6 ? dot(nm, sub(q0, P)) / den : 0; return add(P, scale(n, t)); });
+      list.push(outline ? [u0, u1, v0, v1, outline] : [u0, u1, v0, v1]); this.holes.set(k, list);
+      return k;
     }
-    return null;
+    return -1;
   }
   P(u: number, v: number, d = 0) { return pt(this.p, u, v, d); }
   part() { return this.mesh.newPart(); }
@@ -108,6 +129,7 @@ function drawOpening(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: 
   const frameSlot = w.frame ?? 'frame', glassSlot = w.glass ?? 'glass', fw = w.frameW ?? 0.07;
   if (u1 - u0 < 0.3 || v1 - v0 < 0.3) return null;
   if (!fitsPanel(c.p, rectPoly(u0 - (w.surround?.t ?? 0), u1 + (w.surround?.t ?? 0), v0 - (w.sillSlot ? (w.sillH ?? 0.05) : 0), v1 + (w.surround?.t ?? 0)))) return null;
+  if (w.arch) return drawArched(c, u0, u1, v0, v1, w);
   if (c.recess > 0) return drawRecessed(c, u0, u1, v0, v1, w);
   if (w.surround) {
     const t = w.surround.t, out = w.surround.out ?? 0.06, part = c.part();
@@ -204,6 +226,17 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
   }
   if (w.sillSlot) { const sp = c.part(), sh = w.sillH ?? 0.07; c.box(w.sillSlot, u0 - 0.08, u1 + 0.08, v0 - sh, v0, 0, w.sillOut ?? 0.12, sp); }
   if (w.headSlot) { const sp = c.part(); c.box(w.headSlot, u0 - 0.06, u1 + 0.06, v1, v1 + 0.12, 0, 0.08, sp); }
+  return back;
+}
+
+/** Arched opening (`WinParams.arch`): arch.ts cuts it (recess mode) or lays it proud; sill as for a rectangular one. */
+function drawArched(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: WinParams): number {
+  const a = { frame: w.frame ?? 'frame', glass: w.glass ?? 'glass', frameW: w.frameW ?? 0.07, arch: w.arch!,
+    mullAt: w.mullAt?.length ? w.mullAt : Array.from({ length: w.mull ?? 0 }, (_, k) => (k + 1) / ((w.mull ?? 0) + 1)),
+    rowsAt: [...(w.rowsAt?.length ? w.rowsAt : Array.from({ length: w.rows ?? 0 }, (_, k) => (k + 1) / ((w.rows ?? 0) + 1))), ...(w.transom ? [w.transom] : [])] };
+  let back = 0.035;
+  if (c.recess > 0) back = drawArchedOpening(c, u0, u1, v0, v1, a); else drawArchedProud(c, u0, u1, v0, v1, a);
+  if (w.sillSlot) { const sp = c.part(), sh = w.sillH ?? 0.07; c.box(w.sillSlot, u0 - 0.08, u1 + 0.08, v0 - sh, v0, 0, w.sillOut ?? 0.12, sp); }
   return back;
 }
 
@@ -539,7 +572,7 @@ function emitWalls(mesh: MeshBuilder, p: Panel, holes: Map<number, HoleRect[]>, 
     const rings3 = m.rings.map(clean), to2 = (q: V3) => new T.Vector2((q[0] - p.o[0]) * p.r[0] + (q[2] - p.o[2]) * p.r[2], q[1]);
     const nm = norm(newell(rings3[0])), q0 = rings3[0][0], den = dot(nm, p.n);
     const onWall = (u: number, v: number): V3 => { const P = pt(p, u, v, 0), t = Math.abs(den) > 1e-6 ? dot(nm, sub(q0, P)) / den : 0; return add(P, scale(p.n, t)); };
-    const rectRings = rects.map(([u0, u1, v0, v1]) => [onWall(u0, v0), onWall(u1, v0), onWall(u1, v1), onWall(u0, v1)]);
+    const rectRings = rects.map(([u0, u1, v0, v1, outline]) => outline ? outline.map(([u, v]) => onWall(u, v)) : [onWall(u0, v0), onWall(u1, v0), onWall(u1, v1), onWall(u0, v1)]);
     const all = [...rings3.flat(), ...rectRings.flat()];
     const faces = T.ShapeUtils.triangulateShape(rings3[0].map(to2), [...rings3.slice(1), ...rectRings].map(r => r.map(to2)));
     for (const f of faces) mesh.tri(wallSlot, all[f[0]], all[f[1]], all[f[2]], 0, p.n);
