@@ -1,0 +1,12 @@
+{
+ "note": "Statue feet (centre of the plinth top under the figure) and head top, read off gridded copies of the 1200 px cache images (pixels). Used by coverage.ts to test whether the COLMAP poses agree about where the statue is.",
+ "photos": {
+  "a001.jpg": { "feet": [425, 405], "head": [443, 118] },
+  "a002.jpg": { "feet": [365, 678], "head": [370, 435] },
+  "a003.jpg": { "feet": [150, 662], "head": [195, 295] },
+  "a021.jpg": { "feet": [990, 538], "head": [1020, 308] },
+  "a127.jpg": { "feet": [690, 445], "head": [715, 85] },
+  "b026.jpg": { "feet": [690, 605], "head": [680, 95] },
+  "b086.jpg": { "feet": [690, 530], "head": [712, 60] }
+ }
+}
