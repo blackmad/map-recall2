@@ -29,32 +29,33 @@ export function buildWalravenVanHall(_w: number, _d: number, b: BuildingTools) {
       box(Math.cos(a) * WR, 0, -Math.sin(a) * WR, len, 0.8 + jitter * 0.1, 0.46 + jitter * 0.05, 'concrete', Math.PI / 2 - a + 0.0 * jitter);
     }
   }
-  // ---- the fallen trunk: a bent run of five tapered segments lying 0.55 m off the ground, crown at -x, roots at +x
-  const trunk: [number, number, number, number][] = [[-3.7, 0.5, -1.35, 0.1], [-2.2, 0.55, -1.4, 0.2], [-0.5, 0.6, -1.3, 0.3], [1.2, 0.62, -1.4, 0.38], [2.9, 0.58, -1.2, 0.44]];
+  // ---- the fallen trunk: tapers from 0.9 m at the root end (+x) to 0.3 m at the top (-x), lying 0.4-0.6 m off the ground
+  const trunk: [number, number, number, number][] = [[-3.9, 0.42, -1.4, 0.15], [-2.2, 0.5, -1.45, 0.21], [-0.4, 0.55, -1.35, 0.3], [1.4, 0.58, -1.4, 0.38], [3.0, 0.55, -1.2, 0.45]];
   for (let i = 0; i + 1 < trunk.length; i++) {
     const a = trunk[i], c = trunk[i + 1];
-    limb([a[0], a[1], a[2]], [c[0], c[1], c[2]], a[3], c[3], 'bronze', 8);
+    limb([a[0], a[1], a[2]], [c[0], c[1], c[2]], a[3], c[3], 'bronze', 9);
   }
-  // main limbs: [x along the trunk, side (+1 toward the plaque), reach, droop, lift]
-  const limbs: [number, number, number, number, number][] = [
-    [-3.2, 1, 2.2, 0.0, 0.2], [-2.6, 1, 3.1, 0.1, 0.35], [-1.7, 1, 2.6, 0.0, 0.3], [-0.9, 1, 3.4, 0.15, 0.4], [0.0, 1, 2.2, 0.0, 0.5], [0.6, 1, 3.0, 0.1, 0.3],
-    [-2.9, -1, 0.9, 0.0, 0.5], [-1.4, -1, 1.0, 0.0, 0.6], [0.2, -1, 0.8, 0.0, 0.5],
+  // five thick branches that bend and fork once, irregularly placed; most lie near the ground, one rises. Each: knuckles and radii, then two fork tips.
+  type Branch = {pts: number[][]; r: number[]; forks: [number[], number][]};
+  const branches: Branch[] = [
+    {pts: [[-2.6, 0.5, -1.4], [-3.3, 0.4, -0.2], [-3.9, 0.25, 1.0]], r: [0.17, 0.13, 0.09], forks: [[[-4.6, 0.1, 2.0], 0.03], [[-3.4, 0.15, 2.2], 0.03]]},
+    {pts: [[-0.8, 0.58, -1.35], [-1.2, 0.6, -0.1], [-1.0, 0.35, 1.3]], r: [0.2, 0.15, 0.11], forks: [[[-1.8, 0.1, 2.4], 0.04], [[-0.4, 0.12, 2.5], 0.03]]},
+    {pts: [[0.9, 0.6, -1.4], [1.0, 1.2, -0.5], [0.6, 1.7, 0.3]], r: [0.22, 0.16, 0.1], forks: [[[0.2, 2.2, 0.9], 0.03], [[1.2, 1.9, 0.8], 0.03]]},
+    {pts: [[-1.8, 0.5, -1.45], [-2.2, 0.5, -2.2], [-3.0, 0.3, -2.9]], r: [0.15, 0.11, 0.08], forks: [[[-3.7, 0.1, -3.1], 0.03], [[-2.5, 0.15, -3.5], 0.03]]},
+    {pts: [[1.8, 0.55, -1.4], [2.2, 0.6, -2.2], [2.0, 0.35, -3.0]], r: [0.2, 0.14, 0.1], forks: [[[1.4, 0.1, -3.6], 0.03], [[2.7, 0.12, -3.5], 0.03]]},
   ];
-  limbs.forEach(([x, side, reach, droop, lift], n) => {
-    const z0 = -1.38, y0 = 0.58, r0 = 0.1 + 0.018 * reach, j = ((n * 53) % 7) / 7 - 0.5;   // j: a fixed per-limb wobble, the cast is not a comb
-    // branches sweep back toward the crown (-x) as they leave the trunk, like a tree fallen with its limbs laid over
-    const p1 = [x - 0.5 - j * 0.3, y0 + lift, z0 + side * reach * 0.35], p2 = [x - 1.5 + j * 0.4, y0 + lift * 0.3 - droop, z0 + side * reach * (0.7 + j * 0.2)], p3 = [x - 2.3 + j * 0.5, 0.07, z0 + side * reach];
-    limb([x, y0, z0], p1, r0, r0 * 0.7, 'bronze', 6);
-    limb(p1, p2, r0 * 0.7, r0 * 0.45, 'bronze', 6);
-    limb(p2, p3, r0 * 0.45, 0.03, 'bronze', 5);
-    limb(p2, [p2[0] - 0.7, 0.2, p2[2] + side * 0.5], 0.04, 0.015, 'bronze', 4);   // a twig off the second knuckle
-    limb(p1, [p1[0] + 0.5, 0.35, p1[2] + side * 0.7], 0.05, 0.015, 'bronze', 4);   // and a spur off the first
-  });
-  // root end: seven roots fanning up and out from the butt
-  for (let k = 0; k < 7; k++) {
-    const a = (k - 3) / 3 * 1.0, tip = [3.6 + Math.cos(a) * 0.6, 0.15 + 0.7 * Math.abs(Math.sin(a * 1.4)) + 0.2, -1.2 + Math.sin(a) * 1.9];
-    limb([2.85, 0.55, -1.2], [3.25, 0.6 + 0.2 * Math.cos(a), -1.2 + Math.sin(a) * 0.9], 0.2, 0.1, 'bronze', 6);
-    limb([3.25, 0.6 + 0.2 * Math.cos(a), -1.2 + Math.sin(a) * 0.9], tip, 0.1, 0.03, 'bronze', 5);
+  for (const br of branches) {
+    for (let i = 0; i + 1 < br.pts.length; i++) limb(br.pts[i], br.pts[i + 1], br.r[i], br.r[i + 1], 'bronze', 8);
+    const end = br.pts[br.pts.length - 1];
+    for (const [tip, r1] of br.forks) limb(end, tip, br.r[br.r.length - 1], r1, 'bronze', 6);
+  }
+  // short stubs where smaller limbs broke off
+  for (const [a, c] of [[[-1.5, 0.55, -1.4], [-1.6, 0.95, -1.3]], [[0.2, 0.58, -1.4], [0.2, 0.5, -0.7]], [[2.3, 0.6, -1.35], [2.4, 1.0, -1.3]], [[-0.3, 0.55, -1.4], [-0.2, 0.5, -2.0]]] as number[][][]) limb(a, c, 0.07, 0.03, 'bronze', 5);
+  // root end: five thick roots splaying up and out from the butt
+  for (let k = 0; k < 5; k++) {
+    const a = (k - 2) / 2 * 0.9, mid = [3.35, 0.6 + 0.2 * Math.cos(a), -1.2 + Math.sin(a) * 0.9], tip = [3.8 + Math.cos(a) * 0.5, 0.3 + 0.7 * Math.abs(Math.sin(a * 1.4)) + 0.2, -1.2 + Math.sin(a) * 1.9];
+    limb([3.0, 0.55, -1.2], mid, 0.24, 0.13, 'bronze', 7);
+    limb(mid, tip, 0.13, 0.04, 'bronze', 6);
   }
   // ---- the stump: a hollow-topped cut cylinder 1.2 m high with splintered crown, standing behind the root end
   { const g = new T.CylinderGeometry(0.5, 0.58, 1.2, 10); put(g, 3.9, 0.6, -2.4, 'bronze'); }

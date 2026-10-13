@@ -4,7 +4,7 @@ import {memorialFrame} from './memorial-frame';
 
 /**
  * Multatuli-standbeeld on the Torensluis (Hans Bayens, 1987): a bronze bust of Eduard Douwes Dekker ("Multatuli") that stops at the chest, left arm a
- * stump, hair swept up in a tuft, moustache, a bow tie at the collar, set on a block of polished red granite lettered Multatuli.
+ * stump, hair swept back and up in a soft mass, moustache, a bow tie at the collar, set on a block of polished red granite lettered Multatuli.
  * Original low-poly bust from the Commons photographs (FaceMePLS, CC BY 2.0; Paul van Galen / RCE, CC BY-SA 4.0) and Gemeente Amsterdam panorama
  * recording_2025-06-16_03-46-32_01395 (CC BY 4.0). Local frame: +z is the front (the lettered face), +x the bust's left. FACING is a visual estimate.
  */
@@ -28,13 +28,13 @@ export function buildMultatuliStandbeeld(_w: number, _d: number, b: BuildingTool
   ball(0.0, top + 1.08, 0.36, 0.05, 0.04, 0.03, 'bronze', 6);                                                                       // bow tie knot
   ball(-0.1, top + 1.09, 0.36, 0.07, 0.04, 0.02, 'bronze', 6); ball(0.1, top + 1.09, 0.36, 0.07, 0.04, 0.02, 'bronze', 6);        // bow wings
   limb([0, top + 1.2, 0], [0, top + 1.4, 0.04], 0.14, 0.12, 'bronze');                                                              // neck
-  // head: long face with a high forehead, heavy brow, nose, drooping moustache, swept-up hair tuft
+  // head: long face with a high forehead, heavy brow, nose, drooping moustache, hair swept back in a soft mass
   ball(0.0, top + 1.62, 0.04, 0.17, 0.24, 0.19, 'bronze', 12);
   box(0.0, top + 1.7, 0.2, 0.28, 0.05, 0.05, 'bronze');                                                                             // brow ridge
   box(0.0, top + 1.5, 0.22, 0.045, 0.14, 0.07, 'bronze');                                                                           // nose
   box(0.0, top + 1.46, 0.215, 0.2, 0.04, 0.05, 'bronze');                                                                           // moustache
   ball(0.0, top + 1.42, 0.17, 0.07, 0.08, 0.06, 'bronze', 6);                                                                       // chin
-  ball(0.0, top + 1.8, -0.02, 0.2, 0.1, 0.2, 'bronze', 8);                                                                          // hair mass
-  put(new T.ConeGeometry(0.07, 0.3, 5), -0.1, top + 2.0, 0.0, 'bronze');                                                           // upward tuft
+  ball(-0.02, top + 1.83, -0.03, 0.23, 0.085, 0.22, 'bronze', 10);                                                                   // hair: a broad soft mass, 7 cm over the crown
+  ball(-0.05, top + 1.8, -0.16, 0.17, 0.08, 0.13, 'bronze', 8);                                                                      // swept back over the nape
   ball(0.17, top + 1.62, 0.0, 0.03, 0.06, 0.04, 'bronze', 5); ball(-0.17, top + 1.62, 0.0, 0.03, 0.06, 0.04, 'bronze', 5);        // ears
 }

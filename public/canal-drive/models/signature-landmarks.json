@@ -48401,7 +48401,7 @@
         ],
         "max": [
           1.2048423290252686,
-          3.2799999713897705,
+          3.0450000762939453,
           0.8803784251213074
         ]
       },
@@ -48417,12 +48417,12 @@
       },
       "extent": {
         "widthMetres": 2.409684658050537,
-        "heightMetres": 3.279999970495701,
+        "heightMetres": 3.0450000753998756,
         "depthMetres": 1.7607568502426147,
         "depthCoverage": 0.9781982501347859
       },
-      "triangles": 1298,
-      "bytes": 17784,
+      "triangles": 1408,
+      "bytes": 18464,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "lieverdje": {
@@ -48618,11 +48618,11 @@
         "min": [
           -4.733333110809326,
           -2.3841858265427618e-08,
-          -5.824178218841553
+          -4.898322582244873
         ],
         "max": [
           5.705677032470703,
-          1.5800000429153442,
+          2.222099542617798,
           5.550080299377441
         ]
       },
@@ -48637,19 +48637,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 11.374258518218994,
-        "heightMetres": 1.5800000667572025,
+        "widthMetres": 10.448402881622314,
+        "heightMetres": 2.222099566459656,
         "depthMetres": 10.43901014328003,
         "depthCoverage": 0.9490009221163663
       },
-      "triangles": 4384,
-      "bytes": 62128,
+      "triangles": 4092,
+      "bytes": 58492,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "0185099c51e3a57a",
+        "sourceHash": "f8c7dbce34f4cc8e",
         "buildVersion": 2,
-        "bytes": 24964,
-        "triangles": 1136
+        "bytes": 26600,
+        "triangles": 1232
       }
     },
     "auschwitz-monument": {
