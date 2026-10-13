@@ -39,7 +39,23 @@ city-look brick luma sits above LOOK.md's target (117 vs 95–110 sun side)
 because slot tints pass through `cityTint`; one brick variant only; ~40
 draft export scripts do not tag slots and will fail the 100% gate; under
 `?cityLook=1` the landmark highlight is a flat unshaded yellow (the variant
-swap drops the shading the default highlight keeps — demo shots 2026-10-13);
+swap drops the shading the default highlight keeps — demo shots 2026-10-13;
+city-look review lane running). **Step 3 landed 2026-10-13 behind
+`?recipeTiles=1`** (HISTORY): recipe tiles, compiler, `TileBuildings` near
+tier, pilots published under `public/canal-drive/recipe-tiles/` (9.4 MB:
+3,151 pands, 66 z16 tiles, 8 large, 61 canal houses, 10 glb landmarks, 3,072
+types). Open before step 4: slot-level instancing found 0 repeats among 191
+street-side parts because fitted widths differ by centimetres — quantise
+widths in the fitter (e.g. 5 cm) so bodies/crowns share units; two
+Bilderdijkstraat chunks (`bilder-079721-x2`, `bilder-159426-165632`) are not
+byte-identical to the installed chunks (gates pass; newer source pack or
+readings, not investigated); bag-facts sidecar gives eaves 3.3 m for the
+5-storey pand 0363100012081118 (data bug); instanced-pand highlight not
+checked in the browser; no iPhone static spots; `recipe-tiles.spec.ts`
+"types" case took 16 min under machine load once (flaky under load, passes
+alone). Step 4 next: mid tier reads the `mid` descriptor, near hides mid
+ranges, suppression lists deleted, `largeBuildingTier.ts` overrides folded
+into `kind: large`;
 own-ground becomes the default after per-polder water levels, BGT width per
 way, AHN profiles for the 891 unmeasured bridges and a desktop measurement
 (user 2026-10-13: desktop is ~10x as important; iPhone numbers later); the gameplay loop no longer freezes the rider and spaced

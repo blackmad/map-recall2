@@ -1,5 +1,45 @@
 # Canal Recall — what is built
 
+## Migration step 3 behind `?recipeTiles=1`: recipe tiles, compiler, `TileBuildings` near tier (2026-10-13)
+
+Lane `tiles/recipe-tiles-20261013` (Opus). **Schema**
+(`src/canalRecall/tileBuildings/{schema,tiles,writeTile}.ts`, reasons in
+`docs/buildings-pipeline.md` "Recipe tiles"): z14 recipe tiles
+`{version, z, x, y, sources, pands: {<pand> | "m:<specId>": PandRecipe}}`,
+`PandRecipe = {kind: canal-house|type|large|kit|glb, intent | sameAs,
+overrides?, fitted?, mid, covers[], mesh}`, intents `face:<id>/<i>`,
+`house:<id>`, `type:<unit>`, `kit:<id>`, `model:<specId>`; `mid` is 11 ints
+(the bag-facts 7 plus bays, wall, gable, shop); `sameAs` one hop, same
+kind. z16 mesh tiles: one `uniques` primitive per tile with `_LAYER` u8,
+`_TINT` u8x4 and per-pand `pandRanges`, one `unit:<hash>` node per
+instanced unit (EXT_mesh_gpu_instancing, TRS + float32 `_PAND`), root
+extras `recipeTile = {pands, covers, specs, units, names}`; units keyed by a
+slot-level content hash (positions 1 mm, normals 1e-3). **Compiler**
+`scripts/building-tiles/compile-recipes.ts` (`--stage=recipes|mesh|assemble|
+all|review`; review emits a page only for pands whose triangle hash or gate
+numbers changed — the integrator used it on this merge: 10 changed pands,
+all large recipes and the Hoofdbureau, as main's `sealSlivers`/`closedBoxes`
+and the relief predict). **Runtime** `TileBuildings` behind `?recipeTiles=1`
+(forces the shared frame), 16 lines in `vector-map.js`, picking through
+`inspectBuilding`, highlight of instanced pands as a separate mesh. **Pilot
+numbers**: 3,151 pands, 66 z16 tiles, mesh 5.0 MB + units 4.7 MB, 1.44 M
+triangles drawn, 168 draws, 0 failed pands; 13 of 15 Bilderdijkstraat chunks
+byte-identical to the installed ones. Desktop ride Anne Frank → Rijksmuseum:
+map render 2.61 → 2.35 ms mean (p95 3.6 → 3.1), three layers 1.07 → 0.99 ms,
+draw calls 439 → 430, heap 639 → 601 MB; static spots within ±0.7 ms, draw
+calls at Bilderdijkstraat 301 → 144. iPhone 4× ride 7.11 → 6.73 ms. Pixel
+diffs off → on 0.7–45% (Nieuw-West: BAG blocks replaced by types; Dam: Palace
+shading; Rijksmuseum: brick now has UVs); inspected, nothing missing. Found
+and fixed: gltf-transform `prune()` dropped `TEXCOORD_0` from converted units
+(flat roofs, Palace shading) — units pruned with `keepAttributes`. Slot-level
+instancing found 0 repeats (fitted widths differ by centimetres). Tests: 18
+unit incl. a compiler golden (`pilot-golden.json`, updated by the integrator
+for the Hoofdbureau relief), `tests/e2e/recipe-tiles.spec.ts` off/on/types.
+Integrator: `tile-buildings.bundle.js` (34 KB), `test:tile-buildings` in
+`check:canal`, `build:canal-tile-buildings`, `build:recipe-tiles`, pilots
+recompiled from main and published to `public/canal-drive/recipe-tiles/`.
+
+
 ## Hoofdbureau van Politie: ribbon fronts and the corner relief (2026-10-13)
 
 User report with a photo of the Marnixstraat/Elandsgracht corner: the model had
