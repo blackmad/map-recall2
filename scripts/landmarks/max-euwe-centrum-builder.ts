@@ -50,12 +50,13 @@ export function buildMaxEuwe(b:BuildingTools){
  for(const u of[-7.8,-3.65,.65,4.85]){box(u,3.8,-23.95,.8,6.65,.5,'green');box(u,0,-24.02,1.05,.5,.6,'stone');}
  for(let u=-7.6;u<5.3;u+=.65){box(u,10.6,-24.12,.25,.35,.32,'stone');const p=world(u,-24.15);b.add(new T.CircleGeometry(.09,10),'dark',p[0],10.15,p[1],angle+Math.PI);}
  box(-1.45,10.85,-24.05,13.65,.25,.42,'ochre');box(-1.45,11.25,-24.02,13.4,2,.16,'glass');for(let u=-7.8;u<5.3;u+=1.1)box(u,11.25,-24.15,.08,2.1,.17,'frame');
+ // Ground-storey arches are skipped where the 3 m dark shop-door slabs of the two arms already stand (coplanar dark on dark).
  const segments:P[][]=[];for(let i=0;i<ring.length;i++){const a=ring[i],c=ring[(i+1)%ring.length];if(Math.hypot(c[0]-a[0],c[1]-a[1])>3)segments.push([a,c]);}
  for(const [a,c] of segments){
   const du=c[0]-a[0],dv=c[1]-a[1],len=Math.hypot(du,dv),nu=-dv/len,nv=du/len;const count=Math.max(1,Math.floor(len/3.3));
   const p1=world(a[0],a[1]),p2=world(c[0],c[1]);const faceAngle=Math.atan2(-(p2[1]-p1[1]),p2[0]-p1[0]);
   for(let j=0;j<count;j++){const f=(j+.5)/count,u=a[0]+du*f,v=a[1]+dv*f;
-   const roofAtFacade=sourceHeight(u-nu*.2,v-nv*.2);for(const y of [1.1,4.35,7.55]){if(y+1.9>roofAtFacade-.4)continue;if(v<-23)continue;if(y<3.8&&corridorCuts.some(cut=>inside(u-nu*.2,v-nv*.2,cut)||inside(u-nu*.2+du/len*.9,v-nv*.2+dv/len*.9,cut)||inside(u-nu*.2-du/len*.9,v-nv*.2-dv/len*.9,cut)))continue;if(u>2&&u<8&&v>2&&v<8)continue;const p=world(u+nu*.09,v+nv*.09);const arch=new T.Shape();arch.moveTo(-.65,0);arch.lineTo(.65,0);arch.lineTo(.65,1.65);arch.quadraticCurveTo(.65,1.9,0,1.9);arch.quadraticCurveTo(-.65,1.9,-.65,1.65);arch.closePath();b.add(new T.ExtrudeGeometry(arch,{depth:.06,bevelEnabled:false,curveSegments:5}),'dark',p[0],y,p[1],faceAngle);paneProbes.push({center:[p[0],y+.95,p[1]],normal:[...world(nu,nv)],tangent:[(p2[0]-p1[0])/len,(p2[1]-p1[1])/len],width:1.3,height:1.9,material:'dark'});b.box(p[0],y+.82,p[1],1.3,.075,.17,'frame',faceAngle);}
+   const roofAtFacade=sourceHeight(u-nu*.2,v-nv*.2);for(const y of [1.1,4.35,7.55]){if(y+1.9>roofAtFacade-.4)continue;if(v<-23)continue;if(y<3.8&&corridorCuts.some(cut=>inside(u-nu*.2,v-nv*.2,cut)||inside(u-nu*.2+du/len*.9,v-nv*.2+dv/len*.9,cut)||inside(u-nu*.2-du/len*.9,v-nv*.2-dv/len*.9,cut)))continue;if(u>2&&u<8&&v>2&&v<8)continue;if(y<2&&((Math.abs(v-5.65)<1.5&&u>9.5&&u<35.5)||(Math.abs(u-5.35)<1.5&&v>9.5&&v<41.5)))continue;const p=world(u+nu*.09,v+nv*.09);const arch=new T.Shape();arch.moveTo(-.65,0);arch.lineTo(.65,0);arch.lineTo(.65,1.65);arch.quadraticCurveTo(.65,1.9,0,1.9);arch.quadraticCurveTo(-.65,1.9,-.65,1.65);arch.closePath();b.add(new T.ExtrudeGeometry(arch,{depth:.06,bevelEnabled:false,curveSegments:5}),'dark',p[0],y,p[1],faceAngle);paneProbes.push({center:[p[0],y+.95,p[1]],normal:[...world(nu,nv)],tangent:[(p2[0]-p1[0])/len,(p2[1]-p1[1])/len],width:1.3,height:1.9,material:'dark'});b.box(p[0],y+.82,p[1],1.3,.075,.17,'frame',faceAngle);}
    if(roofAtFacade<11.4||v<-23)continue;const p=world(u+nu*.1,v+nv*.1);b.box(p[0],10.65,p[1],len/count-.16,1.15,.14,'glass',faceAngle);paneProbes.push({center:[p[0],11.225,p[1]],normal:[...world(nu,nv)],tangent:[(p2[0]-p1[0])/len,(p2[1]-p1[1])/len],width:len/count-.16,height:1.15,material:'glass'});
   }
   if([.03,.2,.5,.8,.97].some(f=>sourceHeight(a[0]+du*f-nu*.2,a[1]+dv*f-nv*.2)<11.4))continue;const p=world((a[0]+c[0])/2+nu*.08,(a[1]+c[1])/2+nv*.08);b.box(p[0],10.15,p[1],len,.25,.24,'ochre',faceAngle); // Surveyed roof edge owns its eave; omit unsupported generic slate overhang.
@@ -78,6 +79,7 @@ export function buildMaxEuwe(b:BuildingTools){
  // higher historic wing's four opening tiers; approximate six bay groups are
  // placed on the observed long side planes, not across each footprint tooth.
  for(const [u,normal,faceAngle]of[[5.48,1,angle+Math.PI/2],[-8.52,-1,angle-Math.PI/2]])for(const v of[-22,-19.2,-16.4,-13.6,-10.8,-8])for(const y of[1.1,4.35,7.55,10.75]){
+  if(y<2&&v<-21){if(v===-22)box(u,0,v,.3,3.2,2.4,'stone');continue;}
   const p=world(u,v),arch=new T.Shape();arch.moveTo(-.6,0);arch.lineTo(.6,0);arch.lineTo(.6,1.65);arch.quadraticCurveTo(.6,1.9,0,1.9);arch.quadraticCurveTo(-.6,1.9,-.6,1.65);arch.closePath();b.add(new T.ExtrudeGeometry(arch,{depth:.06,bevelEnabled:false,curveSegments:5}),'dark',p[0],y,p[1],faceAngle);paneProbes.push({center:[p[0],y+.95,p[1]],normal:world(normal,0),tangent:world(0,1),width:1.2,height:1.9,material:'dark'});
  }
  // Source courtyard is POSITIVEu/POSITIVEv of the cross in these axes. Photo2025 verifies
