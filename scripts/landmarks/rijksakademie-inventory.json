@@ -1,0 +1,107 @@
+{
+ "schemaVersion": 1,
+ "id": "rijksakademie",
+ "pand": "0363100012165748",
+ "signature": [
+  "arched-windows",
+  "south-range",
+  "north-range"
+ ],
+ "walls": [
+  {
+   "tag": "w02-162",
+   "bearing": 162,
+   "lengthM": 51.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001984_pano_0000_000252",
+   "capturedAt": "2021-01-26",
+   "checked": true,
+   "items": [
+    {
+     "id": "south-range",
+     "kind": "window-shape",
+     "where": "one tall storey of round-headed windows, mostly paired, some painted or bricked up, over a long brick wall with a tile roof",
+     "approxSizeM": [
+      50,
+      8
+     ],
+     "plan": "simplified",
+     "how": "brick-bay-grid 2 storeys x 14 bays, round arches with brick bands; even rhythm",
+     "seenIn": "TMX7316010203-001984_pano_0000_000252"
+    },
+    {
+     "id": "arched-windows",
+     "kind": "window-shape",
+     "where": "round-headed windows with brick rowlock heads",
+     "approxSizeM": [
+      2,
+      3
+     ],
+     "plan": "modelled",
+     "how": "arches.windows round, band brick",
+     "seenIn": "TMX7316010203-001984_pano_0000_000252"
+    },
+    {
+     "id": "painted-arches",
+     "kind": "other",
+     "where": "painted-white and bricked-up arch recesses between the windows",
+     "approxSizeM": [
+      2,
+      3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "differ from the brick by tint only, no relief"
+     },
+     "seenIn": "TMX7316010203-001984_pano_0000_000252"
+    }
+   ]
+  },
+  {
+   "tag": "w04-342",
+   "bearing": 342,
+   "lengthM": 34.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001675_pano_0000_006181",
+   "capturedAt": "2020-04-24",
+   "checked": true,
+   "items": [
+    {
+     "id": "north-range",
+     "kind": "window-shape",
+     "where": "two storeys of paired round-arched windows over a brick ground, fire stair at the left",
+     "approxSizeM": [
+      34,
+      11
+     ],
+     "plan": "simplified",
+     "how": "brick-bay-grid 2 storeys x 10 bays, round arches; pairs regularised",
+     "seenIn": "TMX7316010203-001675_pano_0000_006181"
+    },
+    {
+     "id": "fire-stair",
+     "kind": "balcony-ironwork",
+     "where": "steel fire stair and landing at the left end",
+     "approxSizeM": [
+      3,
+      6
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "open steel treads and rails"
+     },
+     "seenIn": "TMX7316010203-001675_pano_0000_006181"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panorama",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001984_pano_0000_000252/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
