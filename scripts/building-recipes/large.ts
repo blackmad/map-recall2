@@ -19,6 +19,7 @@ import {validateLargeIntent} from '../../src/canalRecall/buildingRecipe/largeInt
 import {evaluateLargeGates} from '../../src/canalRecall/buildingRecipe/largeGates.ts';
 import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
 import type {CompiledLargeBuilding} from '../../src/canalRecall/buildingRecipe/largeCompile.ts';
+import {bearingOfNormal} from '../../src/canalRecall/buildingRecipe/fitLarge.ts';
 import {decodeTriangles} from './compile.ts';
 import {closeRenderer, contactSheet, renderModels} from './render.ts';
 
@@ -40,6 +41,8 @@ export async function compileLargeHouse(id: string) {
   const r = built.recipe;
   await fs.writeFile(path.join(out, 'fitted-recipe.json'), JSON.stringify({kind: 'large', anchorRD: r.anchorRD, recessM: r.recessM, groups: r.groups, other: r.other, panelGroup: r.panelGroup, roofPlant: r.roofPlant, systems: r.spec.systems, palette: r.spec.palette}, null, 1) + '\n');
   const report = {id, kind: 'large', pandId: intent.pandId, anchorRD: built.anchorRD, fit: built.fit, components: built.components, compose: built.stats,
+    // Blank panels of 8 m or more that touch a taller neighbour are genuine party walls: audit-glb-quality exempts these bearings from its blank-wall check.
+    partyWallBearings: [...new Set(built.panels.filter(p => p.partyH > 0.5 && p.uMax - p.uMin >= 8 && r.panelGroup[p.index] < 0).map(p => Math.round(bearingOfNormal(p.n))))].sort((a, b) => a - b),
     triangles: glb.triangles, bytes: glb.bytes.length, materials: glb.materials, sha256: createHash('sha256').update(glb.bytes).digest('hex'),
     gates, topology: {components: topology.components, floating: topology.floating, openEdges: topology.openEdges, openEdgeLengthM: +topology.openEdgeLengthM.toFixed(2), openEdgeSamples: topology.openEdgeSamples},
     passed: gates.every(g => g.pass), timings: {fitCompileMs: +(t1 - t0).toFixed(1), exportGateMs: +(performance.now() - t1).toFixed(1)}};
