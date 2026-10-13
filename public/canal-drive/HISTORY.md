@@ -1,5 +1,33 @@
 # Canal Recall — what is built
 
+## Hoofdbureau van Politie: ribbon fronts and the corner relief (2026-10-13)
+
+User report with a photo of the Marnixstraat/Elandsgracht corner: the model had
+key features missing. Three fronts used `brick-bay-grid` (tall punched windows)
+even though the intent's own notes and the panoramas showed white steel-window
+ribbons:
+- the north-west wall (group 0);
+- the 45 m Marnixstraat front of the north wing (group 3);
+- the low bridge wing on the Singelgracht (group 5, formerly 4).
+
+All three are `ribbon-windows` now. The north end wall of the Marnixstraat wing
+(3DBAG wall 190) is its own blank group. `addEndWallRelief` in the builder draws
+that wall by hand, from panorama `recording_2025-07-03_10-58-37_00361` and the
+user photo:
+- the ribbons wrapping round from the long front;
+- the Amsterdam arms relief: crowned shield with three saltires on a pale, two
+  rampant lions, a long banner;
+- three figures on brackets;
+- six round windows;
+- the open ground storey behind white columns.
+
+Inserting the group shifted the indices after it, and the intent notes were
+renumbered to match. Lesson: the per-wall review sheet (`review-sheet.ts`)
+already showed punched windows against ribbons on three walls; read its overlays
+before a large-tier landmark ships. The open-edge gate in
+`hoofdbureau-elandsgracht-check.ts` was already failing on `main` (108 edges,
+9.8 m) and is unchanged.
+
 ## "See it in the game" opens the ride instead of the menu (2026-10-13)
 
 User report: the What's New links did nothing visible. The `#race=` share link
