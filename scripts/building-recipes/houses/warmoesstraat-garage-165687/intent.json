@@ -75,14 +75,14 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 7,
-   "baysPerStorey": 8,
+   "baysPerStorey": 32,
    "ground": "blank",
-   "windows": "low",
    "palette": {
     "brick": "#8a6a52",
     "frame": "#3a3835",
     "stone": "#8d8a82"
-   }
+   },
+   "screen": true
   },
   {
    "wallSurfaces": [
@@ -93,14 +93,14 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 7,
-   "baysPerStorey": 8,
+   "baysPerStorey": 10,
    "ground": "system",
-   "windows": "low",
    "palette": {
     "brick": "#8a6a52",
     "frame": "#3a3835",
     "stone": "#8d8a82"
-   }
+   },
+   "screen": true
   },
   {
    "wallSurfaces": [
@@ -114,14 +114,14 @@
    ],
    "system": "brick-bay-grid",
    "storeys": 4,
-   "baysPerStorey": 8,
+   "baysPerStorey": 18,
    "ground": "system",
-   "windows": "low",
    "palette": {
     "brick": "#8a6a52",
     "frame": "#3a3835",
     "stone": "#8d8a82"
-   }
+   },
+   "screen": true
   },
   {
    "wallSurfaces": [
@@ -155,6 +155,7 @@
  },
  "notes": [
   "Warmoesstraat 157-163 (BAG), built 1981: the Beurs-quarter car park. A 32 m block clad in a perforated brown brick screen (square grid of open and glass-block cells over bare concrete decks), curved on its Warmoesstraat end where a casino (PLAYERS) fills the glazed ground floor; a stone-based brick wing with tall timber windows closes the north-east end; a blue-glass cylinder stands behind (2025 panorama w02-130).",
-  "Modelled: the screen as brick-bay-grid with wide low windows (7 decks, 8 bays: the perforation grid reads as a window field, not as 1 m open cells), the SE podium (4 decks), the stone-and-brick wing with 4 storeys x 4 bays and a cornice. Walls without a photograph and the large NW party walls stay blank. The 49 m SE wall (panel 30) carries the blue-glass cylinder: its eaves (23.5 m) do not match the lower LoD2.2 roof behind it (19.3 m), so no group may own it and it stays blank. Not modelled: the PLAYERS lettering, the curved glazed casino ground floor, the car-park ramps and gate, the stone plinth of the wing."
+  "Modelled: the screen as brick-bay-grid with wide low windows (7 decks, 8 bays: the perforation grid reads as a window field, not as 1 m open cells), the SE podium (4 decks), the stone-and-brick wing with 4 storeys x 4 bays and a cornice. Walls without a photograph and the large NW party walls stay blank. The 49 m SE wall (panel 30) carries the blue-glass cylinder: its eaves (23.5 m) do not match the lower LoD2.2 roof behind it (19.3 m), so no group may own it and it stays blank. Not modelled: the PLAYERS lettering, the curved glazed casino ground floor, the car-park ramps and gate, the stone plinth of the wing.",
+  "Components lane (2026-10-13): walls[0]-[2] are now the perforated-brick screen (screen: true): a concrete lattice of posts at every bay joint and rails at every deck line (w01-136, w06-312: cells about 1.5 m wide, one deck tall), with glass-block perforations in one bay of three, staggered per deck. Bays re-counted to the lattice: 32 on walls[0], 10 on walls[1], 18 on walls[2]. Simplified: the glass-block clusters are scattered by a fixed stagger, not placed cell by cell from the photograph; the thin cross ribs inside each lattice cell are not modelled."
  ]
 }
