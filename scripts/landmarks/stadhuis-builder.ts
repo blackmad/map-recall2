@@ -33,7 +33,8 @@ export function buildStadhuis(_w:number,_d:number,b:BuildingTools){
     const count=Math.max(1,Math.floor(length/(part.osmId==='w751573304'?3.2:3.6)));
     for(let j=0;j<count;j++){const t=(j+.5)/count,xx=p0[0]+(p1[0]-p0[0])*t,zz=p0[1]+(p1[1]-p0[1])*t;
      for(let y=Math.max(base+.8,1.2);y<top-1.6;y+=3.4){if(parts.some(o=>o!==part&&occupies(o,xx+nx*.5,zz+nz*.5,y+1)))continue;
-      const foyer=part.osmId==='w751573304',h=foyer&&y<6?Math.min(4.8,top-y-1):1.9,w=Math.min(foyer?length/count*.77:2,length/count*.74),paneX=xx+nx*.16,paneZ=zz+nz*.16;
+      const foyer=part.osmId==='w751573304';if(foyer&&y>1.3&&y<6)continue; // the foyer's first pane is 4.8 m tall: a second pane from 4.6 m z-fought it
+      const h=foyer&&y<6?Math.min(4.8,top-y-1):1.9,w=Math.min(foyer?length/count*.77:2,length/count*.74),paneX=xx+nx*.16,paneZ=zz+nz*.16;
       box(paneX,y,paneZ,w,h,.13,'glass',a);if(foyer||colour==='glass'){box(xx+nx*.27,y,zz+nz*.27,.09,h,.12,'frame',a);box(xx+nx*.27,y+h*.55,zz+nz*.27,w,.09,.12,'frame',a);}
       if(foyer){box(xx+nx*.1,y-.15,zz+nz*.1,length/count*.94,.24,.2,'stone',a);}
      }
