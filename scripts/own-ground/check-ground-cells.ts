@@ -64,7 +64,12 @@ async function main(): Promise<void> {
     console.log(JSON.stringify({ cells: rows.length, fullyMeasured: [...store.osmCells].filter(k => store.fullyCovered(k)).length, extendedTiles: store.synthesised.size, trianglesPerCell: Math.round(t / rows.length), MBPerCell: +(mb / rows.length).toFixed(1), buildMsMedian: ms[ms.length >> 1], buildMsMax: ms[ms.length - 1] }));
     return;
   }
-  for (const [id, lng, lat, label] of [['BRU0166', 4.87445, 52.37286, 'Nassaukade / Bilderdijkgracht mouth'], ['BRU0044', 4.8875, 52.3665, 'Leidsegracht arch'], ['BRU0067', 4.882711, 52.366289, 'Angenietje Swarthofbrug, Leidsegracht / Prinsengracht']] as const) {
+  // Named bridges (lane bridges-elevation 2026-10-13): the user's Westerkerk bridge (Nieuwe-Wercksbrug, Rozengracht
+  // over the Prinsengracht), Rijckerbrug, the Blauwbrug, plus the earlier three. Crown rise over the approaches
+  // (our relief + the AHN profile, ±0.15 m), and the deck attached: its top fills the footprint out to the railings.
+  const RISE: Record<string, number> = { BRU0063: 0.75, BRU0167: 0.6, BRU0236: 1.21, BRU0166: 0.81, BRU0044: 1.51, BRU0067: 1.08 };
+  for (const [id, lng, lat, label] of [['BRU0166', 4.87445, 52.37286, 'Nassaukade / Bilderdijkgracht mouth'], ['BRU0044', 4.8875, 52.3665, 'Leidsegracht arch'], ['BRU0067', 4.882711, 52.366289, 'Angenietje Swarthofbrug, Leidsegracht / Prinsengracht'],
+    ['BRU0063', 4.88305, 52.374002, 'Nieuwe-Wercksbrug, Rozengracht / Prinsengracht (Westerkerk)'], ['BRU0167', 4.8745, 52.37187, 'Rijckerbrug, Singelgracht'], ['BRU0236', 4.90088, 52.36636, 'Blauwbrug, Amstel']] as const) {
     const [x, y] = toLocal(lng, lat), key = store.cellAt(x, y);
     // The deck may belong to a neighbour cell: find the cell whose build carries it.
     let near: BuiltCell | null = null, owner = '';
@@ -103,7 +108,8 @@ async function main(): Promise<void> {
     check(on.n >= Math.max(8, deck.span[1] - deck.span[0]) && on.worstBelow < 0.02, `${id}: ${on.n} street-band vertices on the ${(deck.span[1] - deck.span[0]).toFixed(1)} m deck span, worst ${on.worstBelow.toFixed(3)} m below the surface`);
     // What the rider sees on the deck top (BRU0067 read as deck grey): across the carriageway
     // (±2 m of the axis) at 30/50/70 % of the span, the topmost unmasked layer is a street band.
-    {
+    // (BRU0063 has a strip between its two carriageways where the deck top shows, as it should.)
+    if (['BRU0166', 'BRU0044', 'BRU0067'].includes(id)) {
       const built: BuiltCell[] = [];
       for (const k of GroundStore.neighbours(owner)) if (store.covers(k)) built.push(k === owner ? near : await build(k, 0));
       const bad: string[] = [];
@@ -121,9 +127,51 @@ async function main(): Promise<void> {
       }
       check(!bad.length, `${id}: deck top is a street band at ${probes - bad.length}/${probes} probes${bad.length ? ` (${bad.slice(0, 6).join(' ')})` : ''}`);
     }
+    const rise = crown - Math.max(deck.ends[0], deck.ends[1]);
+    if (RISE[id] !== undefined) check(Math.abs(rise - RISE[id]) < 0.15, `${id}: crown ${rise.toFixed(2)} m over the approaches (pinned ${RISE[id]} ± 0.15)`);
+    // Attachment: edge to edge across the deck (inside the railing plinths) at 25/50/75 % of the span,
+    // nothing shows water; the deck top is under every probe.
+    {
+      const bad: string[] = [];
+      let probes = 0;
+      for (const f of [0.25, 0.5, 0.75]) {
+        const i = p.s.findIndex(s => s >= p.deck[0] + (p.deck[1] - p.deck[0]) * f), a = Math.max(0, i - 1), b = Math.min(p.s.length - 1, i + 1);
+        const dx = p.x[b] - p.x[a], dy = p.y[b] - p.y[a], l = Math.hypot(dx, dy), hw = p.halfWidth[i] - 0.35;
+        for (let o = -hw; o <= hw + 1e-6; o += Math.max(0.25, hw / 8)) {
+          const qx = p.x[i] - dy / l * o, qy = p.y[i] + dx / l * o;
+          const r = layersAt(near, qx, qy);
+          probes++;
+          if (!r.hits.some(h => h.layer === 'deckTop') || r.top === 'water' || r.top === null) bad.push(`${f}/${o.toFixed(1)}:${r.top}`);
+        }
+      }
+      check(!bad.length, `${id}: deck top under ${probes - bad.length}/${probes} probes edge to edge${bad.length ? ` (${bad.slice(0, 6).join(' ')})` : ''}`);
+    }
+    {
+      const info = near.stats.bridges.decks.find(d => d.id === id);
+      const spanM = deck.span[1] - deck.span[0], wantPosts = 2 * Math.floor(spanM / 1.8 * 0.8);
+      check(!!info && info.railingPosts >= wantPosts, `${id}: railings on both edges (${info?.railingPosts} posts, want ≥ ${wantPosts})`);
+      check(!!info && info.abutments >= 2, `${id}: abutments at both banks (${info?.abutments})`);
+      const waterM = p.water ? p.water[1] - p.water[0] : 0;
+      check(!!info && (waterM > 13 ? info.piers >= 1 : waterM < 11 ? info.piers === 0 : true), `${id}: ${info?.piers} piers for ${waterM.toFixed(1)} m of water`);
+    }
     check(!!near.layers.deckBody && (near.layers.deckBody.indices.length > 0), `${id}: deck body built`);
     check(!!near.layers.quay && !!near.layers.water, `${id}: quay walls and water in the cell`);
     check(near.lod === 0 && far.stats.triangles < near.stats.triangles * 0.6, `${id}: LOD 1 is lighter (${far.stats.triangles} vs ${near.stats.triangles} triangles)`);
+  }
+  // Unmeasured (flat) decks: Raampoort (fixed, Singelgracht) and the Magere Brug (movable, Amstel, a double bascule).
+  for (const [id, lng, lat, frames] of [['BRU0165', 4.8755, 52.37408, 0], ['BRU0242', 4.90237, 52.36358, 2]] as const) {
+    const [x, y] = toLocal(lng, lat);
+    let owner = '';
+    for (const k of GroundStore.neighbours(store.cellAt(x, y))) if (store.flatDeckMeta(k).some(f => f.id === id)) { owner = k; break; }
+    check(!!owner, `${id}: flat deck in a streamed cell (${owner || 'none'})`);
+    if (!owner) continue;
+    const cell = await build(owner, 0);
+    const k = store.flatDeckMeta(owner).findIndex(f => f.id === id), ring = store.flatDecks(owner)[k];
+    const cx = ring.reduce((s, q) => s + q[0], 0) / ring.length, cy = ring.reduce((s, q) => s + q[1], 0) / ring.length;
+    const r = layersAt(cell, cx, cy), info = cell.stats.bridges.flat.find(f => f.id === id);
+    check(r.hits.some(h => h.layer === 'deckTop') && r.top !== 'water', `${id}: deck top at the footprint centre (top ${r.top})`);
+    check(!!info && info.railingPosts >= 8, `${id}: railings along the water (${info?.railingPosts} posts)`);
+    check(!!info && info.frames === frames, `${id}: ${info?.frames} movable-bridge frame units (want ${frames})`);
   }
   // Seams: two neighbouring cells' land grids meet at the same heights (one height function, shared grid lines).
   const [ax, ay] = toLocal(4.8875, 52.3665), a = store.cellAt(ax, ay), [cx, cy] = a.split('_').map(Number), b = `${cx + 1}_${cy}`;
