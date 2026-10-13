@@ -741,6 +741,20 @@ in-builder use of the `kind: large` facade systems once that lane lands, so
 only the signature parts are hand work. The 23 neighbourhood bureaus stay on
 the `large` recipe path.
 
+**Large tier landed 2026-10-13 (`fitLarge`, `kind: large`; HISTORY).** Open:
+`scripts/building-recipes/install.ts` cannot place a `large` recipe yet, so
+the four compiled customers (politie-van-leijenberghlaan 6.1k tris,
+leidsestraat-67-large 1.5k, de-balie-large 1.2k, social-history-large 2.8k;
+all gates + `audit:glb` PASS) are not in the game; the lane is adding install
+support and the two catalogue entries (police station new; Leidsestraat 67
+replaces the canal-house entry; De Balie and IISG keep their hand models).
+Then: the 23 matched police bureaus (staging `tmp/public`, not published)
+as `large` recipes with the police kit (stripe band, blue lamp, canopy,
+garage doors — only where the panorama shows them; Van Leijenberghlaan has
+none); Hendrik/Willem fire-station lanes are the photo template. Known gaps:
+curved fronts, arched portals, colonnades; 3DBAG surface indices shift if the
+extract is rebuilt; `compare:facades` needs rhythm specs for these.
+
 **Public buildings, next (after 2026-10-03, see HISTORY).** These are matched in staging but untreated: fire stations (19), police (23), hospitals (54) and civic offices (92). Red fire-station doors need a glass colour per window row in `KitWindows`. Big cinemas and theatres need a signage band, because plain brick boxes read as bare. The pitched-or-flat roof call on pre-1930 schools is a guess wherever the tile `roofShape` is missing.
 
 **Gallery upkeep.** Rerun `npx tsx scripts/build-kit-locations.ts --publish` whenever a hand kit is added; the check fails on a missing location. `kit-viewer.html` and `landmarkKitsViewer.ts` are unused now and can be deleted. The playground could load a real street graph so doors on real buildings face the street.
