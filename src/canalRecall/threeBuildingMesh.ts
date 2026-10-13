@@ -35,6 +35,8 @@ import { wordRuns } from './blockLetters.js';
 import earcut from 'earcut';
 import { ExtraSink, EXTRA_BUDGET, roofExtras, buildingWallExtras, type ExtraContext } from './facadeExtras.js';
 import { fitRect, roofTrianglesForOutline, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
+import { measuredRoofFurniture } from './roofs/roofFurniture.js';
+import type { FurnitureItem } from './roofs/roofSlots.js';
 
 export type MeshBuilding = {
   /** Diagnostic-only, already validated exact native parent/envelope binding. */
@@ -89,6 +91,11 @@ export type MeshBuilding = {
   parapetM?: number;
   /** A real roof for this building; its walls already stop at the eaves. */
   roof?: { plan: RoofPlan; layers: { slope: number; plain: number; dormer: number }; roofHex: string; dims: RoofDims };
+  /**
+   * Roof furniture measured from the orthophoto (roof-facts sidecar, roofs/roofFurniture.ts): drawn in
+   * the extras chunk on a flat roof instead of the guessed roof extras. Offsets are from the outline's first vertex.
+   */
+  measuredRoof?: { furniture: readonly FurnitureItem[]; terrace: boolean };
 };
 
 export type Origin = { lng: number; lat: number };
@@ -621,7 +628,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       if (!b.surveyedEnvelope && (!b.roof || b.roof.plan.kind === 'parapet')) {
         const outer = b.polygons[0]?.[0] ?? [];
         const rect = fitRect(outer.map(([lng, lat]) => [(lng - origin.lng) * kxLocal, (lat - origin.lat) * M_PER_DEG_LAT] as [number, number]), 40);
-        if (rect && rect.coverage > 0.75 && rect.len > 4 && rect.wid > 4) roofExtras({ id: b.id, style: b.style, rect, z: b.heightM, wallHex: b.wallHex }, extraSink);
+        // A roof read from the orthophoto gets what is on it; the guessed set only where nothing was measured.
+        if (b.measuredRoof && outer.length) measuredRoofFurniture(b.measuredRoof, [(outer[0][0] - origin.lng) * kxLocal, (outer[0][1] - origin.lat) * M_PER_DEG_LAT], b.heightM, rect, extraSink);
+        else if (rect && rect.coverage > 0.75 && rect.len > 4 && rect.wid > 4) roofExtras({ id: b.id, style: b.style, rect, z: b.heightM, wallHex: b.wallHex }, extraSink);
       }
       sign.push(...extraSink.tris);
     }
