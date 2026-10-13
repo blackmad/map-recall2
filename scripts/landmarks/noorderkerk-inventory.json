@@ -1,0 +1,72 @@
+{
+ "schemaVersion": 1,
+ "id": "noorderkerk",
+ "pand": "0363100012177304",
+ "signature": ["nk-gable-windows", "nk-roundel", "nk-turret", "nk-gable-top", "nk-scrolls", "nk-cross-plan", "nk-consistory"],
+ "walls": [
+  {
+   "tag": "e-76", "bearing": 76, "lengthM": 14.8, "centre": [4.88664, 52.37965],
+   "evidence": "photo", "panoId": "recording_2025-07-03_07-31-54_00473", "capturedAt": "2025-07-03", "checked": true,
+   "note": "East gable on the Noordermarkt (RCE 20013236 and 20013231, Commons CC BY-SA 4.0; Hnapel photograph CC BY-SA 4.0): the standard gable of all four arms. Panorama 00473 only shows the lean-to and its portal through trees.",
+   "items": [
+    {"id": "nk-gable-windows", "kind": "window-shape", "where": "two tall round-headed lights per gable, each a pair of lancets under a rosette head, in a cream arch ring, glazed with white transoms from 6 m up to the 14 m crest", "approxSizeM": [3.3, 8.2], "plan": "modelled",
+     "how": "builder: arch-outline ring with hole, arch glass, mullion, two lancet bars, transoms every 0.62 m, two half tori and one ring for the rosette head, on all four gables", "seenIn": "RCE 20013236 (Commons)"},
+    {"id": "nk-roundel", "kind": "window-shape", "where": "round quatrefoil window in a cream ring above the windows, centre 18.2 m, diameter 4.3 m", "approxSizeM": [4.3, 4.3], "plan": "modelled",
+     "how": "builder: cream ring, glass disc, four lobe tori, central ring and outer ring in white", "seenIn": "Hnapel Noorderkerk achterzijde (Commons, CC BY-SA 4.0)"},
+    {"id": "nk-scrolls", "kind": "other", "where": "scroll volutes on each gable shoulder either side of the roundel, cream raking coping along the shoulders", "approxSizeM": [1.0, 1.4], "plan": "simplified",
+     "how": "a torus per scroll on a short cream stem plus a straight raking coping box; the spiral is not carved", "seenIn": "RCE 20013231 (Commons)"},
+    {"id": "nk-gable-top", "kind": "other", "where": "gable crowned by a balustrade with ball urns and a segmental arched relief, a hipped peak rising behind", "approxSizeM": [7.6, 2.5], "plan": "modelled",
+     "how": "builder: base and top rail, balusters every 0.55 m, end piers with spheres, half-disc pediment, hip triangle from the 3DBAG gable top (22.0 m) to the ridge end", "seenIn": "RCE 20013222 (Commons, Kramer)"},
+    {"id": "nk-shoulder-piers", "kind": "other", "where": "stone shoulder piers with ball finials at both lower corners of the gable", "approxSizeM": [1.1, 2.4], "plan": "modelled", "how": "builder: pier box, cap and sphere on each gable shoulder", "seenIn": "RCE 20013231 (Commons)"},
+    {"id": "nk-basement", "kind": "other", "where": "dark brick base: two rows of small sash windows with cream surrounds, a plank door at the centre, a cream cornice at 5 m", "approxSizeM": [14.8, 5.4], "plan": "simplified",
+     "how": "six small windows and a door per gable plus the cornice band; the photographs show a different window count per arm", "seenIn": "Hnapel Noorderkerk achterzijde (Commons)"},
+    {"id": "nk-cross-plan", "kind": "other", "where": "Greek cross: four equal gabled arms 14.8 m wide round one crossing under hipped slate roofs (ridge 27.8 m)", "approxSizeM": [44.5, 27.8], "plan": "modelled",
+     "how": "builder: cross-shaped prism to the eaves from the BAG ring, four ridged arms clipped on the valley diagonals, dentil band at the eaves", "seenIn": "RCE 20013236 (Commons)"}
+   ]
+  },
+  {
+   "tag": "n-346", "bearing": 346, "lengthM": 14.8, "centre": [4.88641, 52.37982],
+   "evidence": "inferred", "capturedAt": null, "checked": true,
+   "note": "North gable: not in a panorama (market stalls, trees); same composition as the east gable by the cross plan (the RCE photographs show two gables with identical windows and roundel).",
+   "items": []
+  },
+  {
+   "tag": "w-256", "bearing": 256, "lengthM": 14.8, "centre": [4.88620, 52.37950],
+   "evidence": "inferred", "capturedAt": null, "checked": true,
+   "note": "West gable, Prinsengracht side: same composition by the cross plan.", "items": []
+  },
+  {
+   "tag": "s-166", "bearing": 166, "lengthM": 14.8, "centre": [4.88630, 52.37935],
+   "evidence": "photo", "panoId": "recording_2025-07-03_07-31-54_00466", "capturedAt": "2025-07-03", "checked": true,
+   "note": "South gable above the low flat-roofed annex and the south-west consistory (Hnapel photograph; RCE 20013222): the annex has the cream cornice, small windows and a lower arched door.",
+   "items": [
+    {"id": "nk-annex", "kind": "other", "where": "low brick annex with a flat roof at 5.2 m and a cream cornice, wrapping the south arm's foot", "approxSizeM": [14.8, 5.2], "plan": "modelled", "how": "builder: BAG-ring polygon extruded to 5.2 m with a stone cornice box along each edge", "seenIn": "Hnapel Noorderkerk achterzijde (Commons)"}
+   ]
+  },
+  {
+   "tag": "sw-211", "bearing": 211, "lengthM": 14, "centre": [4.88628, 52.37945],
+   "evidence": "photo", "panoId": "recording_2025-07-03_07-31-54_00470", "capturedAt": "2025-07-03", "checked": true,
+   "note": "Consistory lean-to in the south-west angle: arched portal with steps, shuttered sashes, a round oculus over the door, a dormer with the arms cartouche and red shutters (Marcelmulder68 photograph; panoramas 00466 and 00473).",
+   "items": [
+    {"id": "nk-consistory", "kind": "other", "where": "lean-to with a slate roof between two arms, brick walls 8.7 m high", "approxSizeM": [14, 8.7], "plan": "modelled", "how": "builder: ring polygon prism with a fan roof rising to the crossing walls", "seenIn": "recording_2025-07-03_07-31-54_00466"},
+    {"id": "nk-portal", "kind": "other", "where": "round-arched double doors in a cream surround with a flight of low steps, shuttered sash windows either side, round oculus above", "approxSizeM": [2.6, 3.3], "plan": "simplified", "how": "cream surround block, dark door slab, shuttered windows as cream and glass blocks, three steps; the arch head is a flat block and the oculus is omitted", "seenIn": "recording_2025-07-03_07-31-54_00466"},
+    {"id": "nk-dormer", "kind": "crest", "where": "dormer on the lean-to roof with a cartouche of arms and a red-shuttered window", "approxSizeM": [1.6, 2.3], "plan": "simplified", "how": "stone dormer body with a gable cap and a red shutter block; the cartouche carving is not modelled", "seenIn": "Marcelmulder68 Noorderkerk (Jordaan) (Commons, CC BY-SA 3.0 nl)"}
+   ]
+  },
+  {
+   "tag": "top-346", "bearing": 346, "lengthM": 4, "centre": [4.88648, 52.37962],
+   "evidence": "photo", "panoId": "recording_2025-07-03_07-31-54_00469", "capturedAt": "2025-07-03", "checked": true,
+   "note": "Bell turret on the crossing (RCE 20013222, 20013236, Hnapel): lead-grey square stage with four clock dials dated 1622, an open lantern with arched bell openings, a domed cap, gilt ball and weathercock.",
+   "items": [
+    {"id": "nk-turret", "kind": "tower", "where": "dakruiter on the crossing, 27 to 38.8 m: square clock stage, open bell lantern, dome, ball and weathercock", "approxSizeM": [4.2, 11.8], "plan": "modelled", "how": "builder: slate stage with cornice, four dial discs with gilt rings and hands, stone lantern with four dark openings and corner posts, hemispherical dome, gilt ball, spike and cock plate", "seenIn": "RCE 20013222 (Commons, Kramer)"},
+    {"id": "nk-clock", "kind": "clock", "where": "gilt-ringed black clock dial on each side of the square stage at about 29 m", "approxSizeM": [1.7, 1.7], "plan": "modelled", "how": "builder: disc, gilt torus ring, hand block on all four sides", "seenIn": "Hnapel Noorderkerk achterzijde (Commons)"}
+   ]
+  }
+ ],
+ "sources": [
+  {"name": "RCE Noorderkerk photographs 20013222, 20013231, 20013233, 20013236 (Han van Gool, W. Kramer)", "url": "https://commons.wikimedia.org/wiki/Category:Noorderkerk_(Amsterdam)", "licence": "CC BY-SA 4.0"},
+  {"name": "Hnapel, Amsterdam Noorderkerk achterzijde", "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_Noorderkerk_achterzijde.jpg", "licence": "CC BY-SA 4.0"},
+  {"name": "Marcelmulder68, Noorderkerk (Jordaan)", "url": "https://commons.wikimedia.org/wiki/File:Noorderkerk_(Jordaan).JPG", "licence": "CC BY-SA 3.0 nl"},
+  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/panoramas/", "licence": "CC BY 4.0"}
+ ]
+}
