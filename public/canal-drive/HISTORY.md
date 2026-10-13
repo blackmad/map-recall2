@@ -1,5 +1,34 @@
 # Canal Recall — what is built
 
+## A bridge kit by type (2026-10-14, night)
+
+Lane `ground/bridge-kit-20261013` (user: the canal bridges drew as chunky
+brown slabs; "implement a better renderer for this kind of bridge and
+use it where else it's needed"). `ownGround/bridgeKit.ts` draws four
+types on a spine of stations (Douglas-Peucker-simplified from the measured
+deck edges): **arch** for masonry and for pre-1940 canal-belt decks with a
+hump ≥ 0.45 m (one segmental arch under 12 m of water, three to 60 m with
+the middle widest, five beyond; brick spandrels, stone arch ring with
+keystone, a coping band 3 cm proud, stone pillars with an iron rail, lamp
+posts at the quarter points); **girder** (edge beam, soffit, piers in ~8 m
+bays); **footbridge** (posts on the edge beam, deck and rail one piece);
+**bascule** (the leaf as its own plate in the bridge's register colour,
+`movableFrame` as two portals with sloping balance beams and a
+counterweight 4 m apart, so the Magere Brug no longer reads as one
+gantry; timber bascules white, the rest Amsterdam green). The type comes
+from the extract family plus the municipal register via a generated
+`bridgeHints.ts` (`build-bridge-hints.ts --write`). `decks.ts` now only
+builds the spine; the across direction is averaged over ±4 stations (the
+Blauwbrug's edges zigzagged before); a humped deck with no mapped water
+under it is an opening, not a causeway (Melkmeisjesbrug). Measured tops
+and physics unchanged (`surface.ts` untouched, deck-top lift 0). Belt
+census, 296 bridges: none over 600 tris near or 60 far; bridge bodies
+447,714 → 124,050 near (−72 %), 120,768 → 12,608 far; whole cells −6 %.
+Named regressions: Reesluis and the West-Indische Huisbrug as arches, the
+Melkmeisjesbrug as a footbridge open under its middle, the Torensluis
+(masonry) and the Magere Brug (timber) typed by the register.
+
+
 ## Desktop ride profiled by owner; three fixes (2026-10-14, night)
 
 Lane `perf/desktop-ride-20261013` (user: "there's still perf work to do").
