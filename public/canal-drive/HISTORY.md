@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## Begijnhof and the Slavernijverleden memorial (2026-10-13, evening)
+
+Lane `landmarks/queue-5a-20261013`, continued. The Begijnhof is one
+landmark covering the 17 BAG pands of the ring of houses round the court
+(the Engelse Kerk, the Begijnhofkapel and the Houten Huys were already
+modelled): each house extruded from its BAG footprint to its 3DBAG ridge,
+with step, neck, bell and spout court gables cycling by pand order (not
+the photographed order; inventory says so), a window grid, stoop, picket
+fence, the lawn, the weeping beech and the Begijntje statue at life size
+(the first export had the beech as a 6 m cone). 9,972 tris; audit pass,
+slots 100 %. Facades come from Commons photos (CC BY-SA, recorded) because
+the gated court is not in the panoramas. The Nationaal monument
+Slavernijverleden (Oosterpark, 2,400 tris): the platform on its apron, the
+great leaning figure, the post figure with raised arms and twelve roped
+walkers, from CC0 and CC BY-SA photos; the figures are rough tapered limbs
+and the platform heading is a visual estimate.
+
+
 ## Dominant buildings, batch 2: ten large recipes installed (2026-10-13, evening)
 
 Lane `large/dominant-2-20261013`, ranked by footprint ÷ distance from the
