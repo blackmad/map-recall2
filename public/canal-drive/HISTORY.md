@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+## Police bureaus: 17 matched, two more large recipes installed (2026-10-13)
+
+Lane `content/police-bureaus-20261013` (Sonnet, `docs/handoffs/lane-police-bureaus-20261013.md`).
+`scripts/landmarks/police-stations-match.ts` matches OSM `amenity=police` in
+the Amsterdam bbox to BAG pands via the PDOK Locatieserver and BAG WFS: 17
+bureaus, all within 17 m of their BAG address point (Hoofdbureau 39 m), written
+to `police-stations.json` with panorama years and the signature elements seen
+at contact-sheet size (none shows a striped band or blue lamp).
+`build-poi-backlog.ts` tags them `publicBuilding: police`. Two `large`
+recipes passed all gates and `audit:glb`: Oost Zeeburg (2022, 1,746 tris,
+brick bay grid 3 st × 24 bays, blue POLITIE lettering, 2025 panorama) and
+Zuidoost Gaasperdam (1996, 321 tris, curtain wall 2 st × 5 bays, red entrance
+door, 2022 panorama); installed by the integrator with `install-large.ts`
+as `ordinary-0363100012253728` and `ordinary-0363100012064423`. Oost
+Watergraafsmeer was built and dropped: no panorama covers its 34 m east wall
+and the blank-wall gate fails. Checks: lint, building-recipes 74, fit-golden
+39 identical, osm-under-models 0 unsuppressed.
+
+
 ## GLB cleanup batch 1: hard attachment gates, snapOpenings, material slots, 15 worst offenders (2026-10-13)
 
 Lane `glb/cleanup-batch1-20261013` (Sonnet, `docs/handoffs/lane-glb-cleanup-20261013.md`),

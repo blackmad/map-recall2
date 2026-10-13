@@ -783,10 +783,24 @@ leidsestraat-67-large 1.5k, de-balie-large 1.2k, social-history-large 2.8k;
 all gates + `audit:glb` PASS) are not in the game; the lane is adding install
 support and the two catalogue entries (police station new; Leidsestraat 67
 replaces the canal-house entry; De Balie and IISG keep their hand models).
-Then: the 23 matched police bureaus (staging `tmp/public`, not published)
-as `large` recipes with the police kit (stripe band, blue lamp, canopy,
-garage doors — only where the panorama shows them; Van Leijenberghlaan has
-none); Hendrik/Willem fire-station lanes are the photo template. Known gaps:
+Police bureaus (lane 2026-10-13): `scripts/landmarks/police-stations.json`
+holds the 17 Amsterdam bureaus matched to BAG pands
+(`police-stations-match.ts`: OSM `amenity=police` → PDOK Locatieserver → BAG
+WFS; the old "23" counted Amstelveen/Diemen/Zaandam/Weesp/Halfweg,
+Marechaussee and Luchtvaartpolitie), tagged `publicBuilding: police` in
+`landmark-backlog.json` (`landmark-queue.html` filter not wired yet). No
+bureau shows a striped band or blue lamp in its panoramas; POLITIE lettering
+only at Oost Zeeburg and Van Leijenberghlaan. Installed as `large` recipes:
+Van Leijenberghlaan, Oost Zeeburg (1.7k tris; lettering sits at the left end
+because the kit centres it over the entrance, real one is at 55–70%), Zuidoost
+Gaasperdam (321 tris; red columns, roof overhang and brick plinth not
+modelled). Next candidates need a second photographed front, since a
+front-only recipe fails on its blank long wall: Oost Watergraafsmeer (W front
+done, 34 m E wall has no panorama), Lijnbaansgracht, IJ-tunnel, Meer en Vaart,
+West Overtoomsesluis, Flierbosdreef, Boven-IJ, IJburg, Nieuwezijds
+Voorburgwal, Postjesweg; Houtmankade needs per-wing grouping (256 wall
+surfaces); Zuid-De Pijp has no panorama; Johan Huizingalaan 757 may not be a
+public bureau. Hoofdbureau Elandsgracht stays a bespoke builder. Known gaps:
 curved fronts, arched portals, colonnades; 3DBAG surface indices shift if the
 extract is rebuilt; `compare:facades` needs rhythm specs for these.
 
