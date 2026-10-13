@@ -360,3 +360,83 @@ input {
   background: #0b3a8c; color: #fff; font: 800 14px/1.1 'Barlow Condensed', sans-serif;
   letter-spacing: 0.04em; text-transform: uppercase; box-shadow: 0 4px 12px rgb(0 0 0 / 0.35);
 }
+
+/* Paper tint: the CARTO light basemap is the greyest thing next to the paper chrome. Only the
+   base layer (className paper-tiles) is tinted; the reveal-labels layer, vectors and markers stay crisp. */
+.leaflet-layer.paper-tiles { filter: sepia(0.14) saturate(0.92) brightness(1.01); }
+
+/* ---- Docked quiz card (>= 1100 px wide) ----------------------------------
+ * The overlays' outer div carries data-quiz-dock. On wide screens it becomes a full-height right-hand
+ * column (26 rem, paper at 92%, hairline left edge, its own scroll) and the map fills the rest;
+ * MapComponent detects the dock by its box and pads fits on the right instead of the bottom.
+ * -------------------------------------------------------------------------- */
+@media (min-width: 1100px) {
+  [data-quiz-dock] {
+    left: auto !important;
+    width: 26rem;
+    padding: 0 !important;
+    justify-content: flex-start !important;
+    pointer-events: auto !important;
+    background: rgba(251, 248, 242, 0.92);
+    border-left: 1px solid var(--day-line-strong);
+    box-shadow: -8px 0 24px rgba(31, 28, 23, 0.08);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  [data-quiz-dock] > div {
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    padding: 0.75rem;
+  }
+  [data-quiz-dock] .quiz-card,
+  [data-quiz-dock] .quiz-result-card {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0.25rem;
+  }
+  /* Pinpoint question: the instruction gets its own full-width line, the buttons share the next. */
+  [data-quiz-dock] #pinpoint-bottom-card > .border-t { flex-direction: column; align-items: stretch; gap: 0.625rem; }
+  [data-quiz-dock] #pinpoint-bottom-card > .border-t .truncate { overflow: visible; text-overflow: clip; white-space: normal; }
+  [data-quiz-dock] #pinpoint-bottom-card > .border-t > div:last-child { width: 100%; }
+  [data-quiz-dock] #pinpoint-bottom-card > .border-t > div:last-child > button { flex: 1 1 0; }
+  [data-quiz-dock] #pinpoint-bottom-card > .flex.items-start { flex-wrap: wrap; }
+  /* Guess Name options: one column so whole names show, wrapping rather than ellipsising. */
+  [data-quiz-dock] #guess-bottom-card .grid { grid-template-columns: 1fr; }
+  [data-quiz-dock] #guess-bottom-card .grid .truncate { overflow: visible; text-overflow: clip; white-space: normal; }
+  /* Map furniture that sat on the right edge moves left of the dock. */
+  main:has([data-quiz-dock]) .leaflet-right { margin-right: 26rem; }
+  main:has([data-quiz-dock]) #map-locate-me-btn { right: calc(26rem + 0.625rem); }
+}
+
+/* ---- Question forms (wave 2, 2026-10-13): seen-before chip, bonus pin, relation choices, daily tile. ---- */
+.qf-seen-chip {
+  display: inline-flex; align-items: center; gap: 4px; padding: 1px 7px; border-radius: 999px;
+  border: 1px solid rgb(138 74 24 / 0.28); background: rgb(180 104 44 / 0.08);
+  color: #6b4a2c; font-size: 11px; font-weight: 600; line-height: 1.5; white-space: nowrap;
+}
+.qf-seen-chip.is-missed { border-color: rgb(168 50 31 / 0.35); background: rgb(168 50 31 / 0.07); color: #8c2d1c; }
+/* While the bonus waits for its tap, the reveal's place-name tiles would answer it. */
+.qf-bonus-armed .reveal-labels { visibility: hidden; }
+.qf-bonus-armed.leaflet-container,
+.qf-bonus-armed.leaflet-container .leaflet-interactive { cursor: crosshair; }
+.qf-bonus-guess {
+  position: absolute; left: 0; top: 0; width: 16px; height: 16px; transform: translate(-50%, -50%);
+  border: 2.5px solid #fff; border-radius: 999px; background: #c75f43; box-shadow: 0 1px 4px rgb(0 0 0 / 0.45);
+}
+.qf-bonus-line {
+  display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 10px; row-gap: 2px; margin-top: 3px;
+  font-size: 12px; line-height: 1.35;
+}
+.qf-bonus-start {
+  text-align: left; color: var(--color-white); font-weight: 600;
+  text-decoration: underline dotted rgb(138 74 24 / 0.6); text-underline-offset: 3px;
+}
+.qf-bonus-start:hover { text-decoration-style: solid; }
+.qf-bonus-skip { font-weight: 600; }
+.qf-relation-choice { min-height: 44px; }
+.qf-daily-tile { border-color: rgb(138 74 24 / 0.45); }
+.qf-daily-tile[aria-disabled='true'] { cursor: default; opacity: 0.85; }

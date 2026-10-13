@@ -34,7 +34,7 @@ export interface EntryChange {
   after: string;
   reason: string;
   /** Kind of change, for summaries. */
-  kind: 'artefact' | 'drop' | 'borrowed';
+  kind: 'artefact' | 'drop' | 'borrowed' | 'count';
   /** One entry per dropped sentence: its reason (statistics or area). */
   droppedReasons?: string[];
   borrowedFrom?: string;
@@ -149,22 +149,71 @@ export function normalizeArtifacts(text: string): string {
   return out.trim();
 }
 
+const COUNT_NOUN = '(?:inhabitants?|residents?|people|persons|inwoners|habitants)';
+const QUALIFIER = '(?:about |approximately |roughly |around |some |over |nearly |more than |almost |just over |c\\. )*';
+const NUMBER = '\\d[\\d,]*(?:\\.\\d+)?';
+const COUNT = `${QUALIFIER}${NUMBER}\\s+${COUNT_NOUN}`;
+const AREA = '\\d[\\d.,]*\\s*(?:km²|km2|hectares?|ha)(?![a-zA-Z])';
+const DATE_TAIL = '(?:\\s+(?:on|in|as of|by)\\s+[^,;.()]{0,30}?\\d{4})?';
+// A clause ends at punctuation or "and", never where a list goes on (", with 4,943 residents, and ...").
+const CLAUSE_END = '(?=\\s*[,.;)]|\\s+and\\b|$)(?!,\\s*(?:and|or)\\b)';
+const POPULATION_OF = `a population of\\s+${QUALIFIER}${NUMBER}`;
+const COUNT_CLAUSE = new RegExp(
+  `(?:,\\s*(?:which has|which had|that has|home to)\\s+|,?\\s+with\\s+)(?:${POPULATION_OF}|${COUNT})${DATE_TAIL}`
+  + `(?:\\s+and\\s+an?\\s+area\\s+of\\s+${AREA})?(?:\\s*\\([^()]*\\))?${CLAUSE_END}`,
+  'i',
+);
+const AREA_CLAUSE = new RegExp(`,?\\s+(?:with|and)\\s+an?\\s+area\\s+of\\s+${AREA}${CLAUSE_END}`, 'i');
+const SEMICOLON_COUNT = new RegExp(`;\\s*it\\s+(?:has|had)\\s+${COUNT}${DATE_TAIL}${CLAUSE_END}`, 'i');
+const POPULATION_PAREN = /\s*\(population\s+[\d,.]+\)/i;
+const HECTARE_MODIFIER = /\b(is|are|was) (?:a|an) \d[\d.,]*[- ](?:hectare|km²|km2)\b-?\s*/i;
+// The clause must follow a subject and verb, so "The district has 10,000 inhabitants." is never emptied.
+const PREDICATE = /\b(is|are|was|were|be|forms?|formed|lies?|became|remains?|has|had|covers?|stands?|consists?|includes?|comprises?|borders?|belongs?|counts?)\b/i;
+
 /**
- * Drops statistic sentences from a lede or history. The first sentence is
- * always kept. Each dropped sentence is reported as "<reason>: <sentence>"; the
- * text is left byte-identical when nothing is dropped.
+ * Removes count and area clauses from one sentence, keeping it grammatical:
+ * ", with 19,745 inhabitants on 1 January 2023 and an area of 15.8 km²" goes
+ * entirely; "(population 300)" goes; "a 31.7-hectare wijk" becomes "a wijk".
+ * Returns the sentence unchanged when there is nothing safe to remove.
  */
-export function cleanDescription(text: string): { text: string; dropped: string[] } {
+export function stripCountClauses(sentence: string): string {
+  let out = sentence;
+  const clause = [COUNT_CLAUSE, AREA_CLAUSE, SEMICOLON_COUNT].map(re => re.exec(out)).find(Boolean);
+  if (clause && PREDICATE.test(out.slice(0, clause.index))) {
+    out = out.slice(0, clause.index) + out.slice(clause.index + clause[0].length);
+  }
+  out = out.replace(POPULATION_PAREN, '');
+  out = out.replace(HECTARE_MODIFIER, (_match, verb: string) => `${verb} a `);
+  if (out === sentence) return sentence;
+  const cleaned = normalizeArtifacts(out);
+  // Never leave a fragment: a sentence cut down to a few words is kept as it was.
+  return cleaned.split(/\s+/).length >= 4 ? cleaned : sentence;
+}
+
+/**
+ * Drops statistic sentences from a lede or history, and removes count and area
+ * clauses from the first sentence (kept, so the lede still says what the place
+ * is). Each dropped sentence is reported as "<reason>: <sentence>". The text is
+ * left byte-identical when nothing changes.
+ */
+export function cleanDescription(text: string): {
+  text: string;
+  dropped: string[];
+  countStripped?: { before: string; after: string };
+} {
   const sentences = splitSentences(text);
-  if (sentences.length <= 1) return { text, dropped: [] };
-  const kept = [sentences[0]];
+  if (!sentences.length) return { text, dropped: [] };
+  const first = stripCountClauses(sentences[0]);
+  const countStripped = first !== sentences[0] ? { before: sentences[0], after: first } : undefined;
+  const kept = [first];
   const dropped: string[] = [];
   for (const sentence of sentences.slice(1)) {
     const reason = statisticReason(sentence);
     if (reason) dropped.push(`${reason}: ${sentence}`);
     else kept.push(sentence);
   }
-  return dropped.length ? { text: kept.join(' '), dropped } : { text, dropped };
+  if (!dropped.length && !countStripped) return { text, dropped };
+  return { text: kept.join(' '), dropped, countStripped };
 }
 
 /** "Schinkel (waterway here): A dam blocked..." -> the dam sentence with borrowedFrom "Schinkel (waterway)". Used for description and history. */
@@ -203,11 +252,14 @@ export function cleanEntry<T extends { name: string } & Partial<Record<EntryText
     }
     if ((DROP_FIELDS as readonly string[]).includes(field)) {
       const cleaned = cleanDescription(en);
-      if (cleaned.dropped.length) {
+      if (cleaned.dropped.length || cleaned.countStripped) {
         const droppedReasons = cleaned.dropped.map(d => d.slice(0, d.indexOf(':')));
+        const parts = [];
+        if (droppedReasons.length) parts.push(`dropped ${droppedReasons.length} sentence(s): ${[...new Set(droppedReasons)].join(', ')}`);
+        if (cleaned.countStripped) parts.push('count or area clause removed from the first sentence');
         changes.push({
-          field: `${field}.en`, before: en, after: cleaned.text, kind: 'drop', droppedReasons,
-          reason: `dropped ${droppedReasons.length} sentence(s): ${[...new Set(droppedReasons)].join(', ')}`,
+          field: `${field}.en`, before: en, after: cleaned.text, kind: cleaned.dropped.length ? 'drop' : 'count', droppedReasons,
+          reason: parts.join('; '),
         });
         en = cleaned.text;
       }

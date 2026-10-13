@@ -10,6 +10,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { AnswerDetails, usePreparePostcard } from './AnswerDetails';
+import { SeenBeforeChip } from './SeenBeforeChip';
 import { fetchHintReferences } from '../dataSources/featureProvider';
 import { buildLocateHints } from '../mapRecall/locateHints';
 import { applyHintCeiling, applyHintCeilingToAccuracy, describeHintCap, scoreCeiling } from '../mapRecall/hintCost';
@@ -31,6 +32,12 @@ interface PinpointModeOverlayProps {
   totalRounds: number;
   factSeed: number;
   searchCenter: [number, number];
+  /** "Seen 3 days ago · missed before" (src/mapRecall/progress.ts seenBeforeLabel). */
+  seenBefore?: string | null;
+  /** The next question is adjacent to this answer (src/mapRecall/questionPlan.ts); only said after the reveal. */
+  nextNearby?: boolean;
+  /** The bonus pin row (BonusPinPanel), shown on the answer card. */
+  bonusSlot?: React.ReactNode;
 }
 
 // One chip style for every kind. Per-type pastel tints (sky-700 on cobalt,
@@ -77,6 +84,9 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
   totalRounds,
   factSeed,
   searchCenter,
+  seenBefore,
+  nextNearby,
+  bonusSlot,
 }) => {
   const [showClues, setShowClues] = useState(false);
   const [revealedClueIndex, setRevealedClueIndex] = useState(1);
@@ -161,7 +171,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
   }, [isRoundComplete, onNextRound, onConfirmGuess, userPinnedLocation]);
 
   return (
-    <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 pb-3 sm:p-4 z-20">
+    <div data-quiz-dock className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 pb-3 sm:p-4 z-20">
       {/* UNIFIED BOTTOM CARD: QUESTION + CLUES + PIN STATUS + SUBMIT CTA */}
       <div ref={scrollerRef} className={`pointer-events-auto w-full max-w-xl mx-auto max-h-[42dvh] ${isRoundComplete ? 'sm:max-h-[55dvh]' : 'sm:max-h-full'} overflow-y-auto overscroll-contain`}>
         {!isRoundComplete ? (
@@ -181,6 +191,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   <span className="hidden sm:inline text-xs text-white/70 font-semibold uppercase tracking-wider">
                     Locate on map
                   </span>
+                  <SeenBeforeChip label={seenBefore} />
                 </div>
 
                 <h1
@@ -336,6 +347,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                         {describeHintCap(hintsUsed)}
                       </p>
                     )}
+                    {bonusSlot}
                   </div>
                 </div>
 
@@ -351,9 +363,9 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   <button
                     id="next-round-btn"
                     onClick={onNextRound}
-                    className="button-primary px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm flex items-center gap-1.5 transition cursor-pointer"
+                    className="button-primary px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm flex items-center gap-1.5 transition cursor-pointer whitespace-nowrap"
                   >
-                    <span>{isLastRound ? 'See score' : 'Next'}</span>
+                    <span>{isLastRound ? 'See score' : nextNearby ? 'Next · nearby' : 'Next'}</span>
                   </button>
                 </div>
               </div>

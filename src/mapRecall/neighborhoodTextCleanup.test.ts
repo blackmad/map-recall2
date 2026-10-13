@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {
   cleanDescription,
+  stripCountClauses,
   cleanEntry,
   extractBorrowedHistory,
   normalizeArtifacts,
@@ -35,11 +36,11 @@ import {
   assert.deepEqual(extractBorrowedHistory('A dam blocked the river.'), { text: 'A dam blocked the river.' });
 }
 
-// Keep the first sentence even when it carries a statistic; drop the rest.
+// The first sentence is kept, but its count clause goes; later statistic sentences are dropped.
 {
   const text = 'Overschie is a district of Rotterdam, with 19,745 inhabitants on 1 January 2023. Residents were moved out in 1950. The population was 300 in 1795.';
   const cleaned = cleanDescription(text);
-  assert.equal(cleaned.text, 'Overschie is a district of Rotterdam, with 19,745 inhabitants on 1 January 2023. Residents were moved out in 1950.');
+  assert.equal(cleaned.text, 'Overschie is a district of Rotterdam. Residents were moved out in 1950.');
   assert.equal(cleaned.dropped.length, 1);
   const onlyFirst = cleanDescription('Fascinatio is a wijk. It had about 3,000 inhabitants on 1 January 2018.');
   assert.equal(onlyFirst.text, 'Fascinatio is a wijk.');
@@ -112,4 +113,52 @@ import {
   assert.deepEqual(cleanEntry(first.entry).changes, []);
 }
 
-console.log('Neighborhood text cleanup: statistics, artefacts, borrowed histories, abbreviations and no-op passes checked.');
+// First sentences: the count or area clause goes, the sentence stays grammatical.
+{
+  assert.equal(
+    stripCountClauses("Zuid is one of Utrecht's ten districts (wijken), with 28,754 inhabitants (2025)."),
+    "Zuid is one of Utrecht's ten districts (wijken).",
+  );
+  assert.equal(
+    stripCountClauses('Overschie is a wijk and district of Rotterdam, with 19,745 inhabitants on 1 January 2023 and an area of 15.8 km².'),
+    'Overschie is a wijk and district of Rotterdam.',
+  );
+  assert.equal(
+    stripCountClauses('Lunetten is a neighbourhood in the southeastern part of the city of Utrecht, which has approximately 12,000 inhabitants.'),
+    'Lunetten is a neighbourhood in the southeastern part of the city of Utrecht.',
+  );
+  // A mid-sentence clause keeps the comma that follows it.
+  assert.equal(
+    stripCountClauses('Spangen is a neighbourhood in the west of Rotterdam with about 10,000 inhabitants, reached from the centre over the Mathenesserbrug.'),
+    'Spangen is a neighbourhood in the west of Rotterdam, reached from the centre over the Mathenesserbrug.',
+  );
+  assert.equal(
+    stripCountClauses('Amsterdam-Noord (English: North Amsterdam) is a borough of Amsterdam, Netherlands with a population of about 90,000.'),
+    'Amsterdam-Noord (English: North Amsterdam) is a borough of Amsterdam, Netherlands.',
+  );
+  assert.equal(
+    stripCountClauses('Hillegersberg-Schiebroek is a borough in northern Rotterdam with 40,846 inhabitants (January 2008).'),
+    'Hillegersberg-Schiebroek is a borough in northern Rotterdam.',
+  );
+  assert.equal(stripCountClauses('Overschie is a district (population 300) of Rotterdam.'), 'Overschie is a district of Rotterdam.');
+  assert.equal(stripCountClauses('The Rivium is a 31.7-hectare wijk in Capelle aan den IJssel.'), 'The Rivium is a wijk in Capelle aan den IJssel.');
+  // Whole predicates are never emptied: a count that is the verb phrase stays.
+  assert.equal(stripCountClauses('The district has 10,000 inhabitants.'), 'The district has 10,000 inhabitants.');
+  assert.equal(stripCountClauses('The district, with 10,000 inhabitants.'), 'The district, with 10,000 inhabitants.');
+  // A list ("Terwijde-West, with 4,943 residents, and ...") and a count followed by more predicate are left alone.
+  const list = 'Terwijde is split into Terwijde-West, with 4,943 residents, and Terwijde-Oost, with 3,665, on 1 January 2018.';
+  assert.equal(stripCountClauses(list), list);
+  const predicate = "Vleuten-De Meern is one of Utrecht's ten districts, made up of Vleuten; with over 51,200 inhabitants in 2024 it is the most populous.";
+  assert.equal(stripCountClauses(predicate), predicate);
+  // A sentence without a clause is returned byte-identical, even with odd spacing.
+  assert.equal(stripCountClauses('Jordaan  is a neighbourhood of Amsterdam  .'), 'Jordaan  is a neighbourhood of Amsterdam  .');
+  assert.equal(stripCountClauses('Bergpolder is a neighbourhood in Rotterdam-Noord with 8,205 inhabitants  (2021).'), 'Bergpolder is a neighbourhood in Rotterdam-Noord.');
+  // cleanDescription applies it to the first sentence, also when the text is a single sentence.
+  assert.equal(cleanDescription("Zuid is one of Utrecht's ten districts (wijken), with 28,754 inhabitants (2025).").countStripped?.after, "Zuid is one of Utrecht's ten districts (wijken).");
+  assert.deepEqual(cleanDescription('The district has 10,000 inhabitants.'), { text: 'The district has 10,000 inhabitants.', dropped: [] });
+  const second = cleanDescription('Zuid is a district. It had 28,754 inhabitants in 2025.');
+  assert.equal(second.text, 'Zuid is a district.');
+  assert.equal(second.dropped.length, 1);
+}
+
+console.log('Neighborhood text cleanup: statistics, count clauses, artefacts, borrowed histories, abbreviations and no-op passes checked.');
