@@ -1,69 +1,128 @@
 {
  "id": "american-hotel",
- "source": "Facade rhythm spec written 2026-10-11 from municipal panoramas b_20250129_0912_Track04_Sphere_00043 / b_20241217_0841_Track38_Sphere_00010 (Leidseplein, leaf-off), TMX7316010203-000199_pano_0002_000294 (2017, Leidsekade from across the canal, square-on), b_20241211_0954_Track09_Sphere_00113 (ref-ne.jpg) and the 2007 Commons photo (Marnixstraat corner). Each elevation is split into its architectural sections (alongM, metres from the elevation's left silhouette edge) because the sections have their own storey heights: one rhythm per section, never mixed.",
+ "source": "Rhythm spec rewritten 2026-10-13 (american-hotel rework lane) from the measured facades in american-hotel-facades.json: rectified crops of landmark-brief.ts (Gemeente Amsterdam panoramas CC BY 4.0) read on the metre grid of elevation-grid.ts. Each elevation is split into its architectural sections (alongM = metres along the audit's facade frame, from the elevation's left silhouette edge, which the tower drum and the east wing push 4-9 m left of the photographed wall corner) because the sections have their own storey heights: one rhythm per section, never mixed.",
  "facades": [
   {
    "name": "Leidseplein front: tower and Bar Americain wing (SE)",
    "bearing": 142.5,
-   "alongM": [3.5, 13.45],
-   "photo": "artifacts/landmark-lanes/american-hotel/refs/se-2024-12-17-32m.jpg",
-   "note": "Tower: one narrow window per storey on the wing's sills, paired belfry openings under the clock. Wing (3 axes): shopfront x5 under the canopy, 5 small round-headed windows, then 4 storeys on 3 axes; the small dormer gable (3 + 2 windows). Partly occluded by a tree: the axis count of the wing is approximate."
+   "alongM": [
+    0,
+    15.0
+   ],
+   "photo": "artifacts/landmark-briefs/american-hotel/w01-143.alt.jpg",
+   "note": "Shopfront under the BAR AMERICAIN canopy, five small round-headed windows (s 1.5-10.1), a storey on three axes (s 3, 6, 9), two upper storeys on the same three axes; the tower drum's windows at the left."
   },
   {
-   "name": "Leidseplein front: entrance bay and cafe (SE)",
+   "name": "Leidseplein front: entrance bay (SE)",
    "bearing": 142.5,
-   "alongM": [13.45, 40],
-   "photo": "artifacts/landmark-lanes/american-hotel/refs/se-2025-01-29-49m.jpg",
-   "note": "4 bays (entrance + 3 cafe arches). Ground: entrance arch + 3 cafe arches. Loggia: 3 equal windows per bay (12). Two storeys of 7 equal round-headed windows (bay centres and midway). Dormer storey: 4 stepped gables x 3 equal windows, 2 small windows in each gable."
+   "alongM": [
+    15.0,
+    21.55
+   ],
+   "photo": "artifacts/landmark-briefs/american-hotel/w01-143.alt.jpg",
+   "note": "Entrance arch (s 12.0-17.1) with the door and two side lights; three loggia windows; upper axis s 14.5."
   },
   {
-   "name": "Marnixstraat corner pavilion and loggia wing (NE)",
+   "name": "Leidseplein front: cafe (SE)",
+   "bearing": 142.5,
+   "alongM": [
+    21.55,
+    45
+   ],
+   "photo": "artifacts/landmark-briefs/american-hotel/w01-143.alt.jpg",
+   "note": "Three segmental cafe windows on a 6.05 m pitch (s 20.6, 26.6, 32.6); three loggia windows per arch; two storeys on axes every 3.02 m; dormer windows."
+  },
+  {
+   "name": "Marnixstraat corner pavilion, left bay (NE)",
    "bearing": 52.5,
-   "alongM": [0, 15],
-   "photo": "artifacts/landmark-lanes/american-hotel/refs/ref-commons-americain.jpg",
-   "note": "Pavilion under the big pointed gable: 2 axes, round-headed pair on every storey; loggia wing: 3 tall arched ground windows and 3 loggia openings. Oblique evidence only (ref-ne.jpg, Commons 2007)."
+   "alongM": [
+    3.6,
+    6.5
+   ],
+   "photo": "artifacts/landmark-briefs/american-hotel/w02-53.jpg",
+   "note": "One axis: round-headed ground window, four narrow lights, three windows."
+  },
+  {
+   "name": "Marnixstraat corner pavilion, centre bay (NE)",
+   "bearing": 52.5,
+   "alongM": [
+    6.5,
+    14.9
+   ],
+   "photo": "artifacts/landmark-briefs/american-hotel/w02-53.jpg",
+   "note": "Three-light arched window two storeys tall, three loggia windows, two storeys on three axes, six small arched windows, the gable lunette.",
+   "staggered": true
+  },
+  {
+   "name": "Marnixstraat corner pavilion, right bay (NE)",
+   "bearing": 52.5,
+   "alongM": [
+    14.9,
+    18.1
+   ],
+   "photo": "artifacts/landmark-briefs/american-hotel/w02-53.jpg",
+   "note": "One axis: round-headed ground window, five narrow lights, three windows."
   },
   {
    "name": "Marnixstraat staircase tower (NE)",
    "bearing": 52.5,
-   "alongM": [15, 21],
-   "photo": "artifacts/landmark-lanes/american-hotel/refs/ref-ne.jpg",
-   "note": "One arched window per landing (5)."
+   "alongM": [
+    18.1,
+    21
+   ],
+   "photo": "artifacts/landmark-briefs/american-hotel/w02-53.jpg",
+   "note": "Door bay and the staircase tower: one arched window per landing, the canted oriel."
   },
   {
    "name": "Marnixstraat main block (NE)",
    "bearing": 52.5,
-   "alongM": [21, 35.5],
-   "photo": "artifacts/landmark-lanes/american-hotel/refs/ref-ne.jpg",
+   "alongM": [
+    21,
+    35.5
+   ],
+   "photo": "artifacts/landmark-briefs/american-hotel/w04-53.jpg",
    "note": "4 double-height ground windows, 4 fan-tracery windows over them, 2 storeys on 7 axes over the stone cornice."
   },
   {
    "name": "Marnixstraat recessed bays (NE)",
    "bearing": 52.5,
-   "alongM": [35.5, 45],
-   "photo": "artifacts/landmark-lanes/american-hotel/refs/ref-ne.jpg",
+   "alongM": [
+    35.5,
+    45
+   ],
+   "photo": "artifacts/landmark-briefs/american-hotel/w07-53.jpg",
    "note": "Fifth fan window; 3 tall arched windows on corbelled piers over panels / the door."
   },
   {
    "name": "Leidsekade canal block, 1927 (SW, curved)",
    "bearing": 232.5,
-   "alongM": [0, 28.35],
-   "photo": "artifacts/landmark-lanes/american-hotel/refs/sw-2017-03-10-33m.jpg",
-   "note": "10 pilaster bays: 9 segmental ground windows + door bay, 20 arcade lights (2 per bay); 6 canted three-light oriels on 3 storeys; 6 hooded attic windows."
+   "alongM": [
+    0,
+    25.1
+   ],
+   "photo": "artifacts/landmark-briefs/american-hotel/w03-220.jpg",
+   "note": "Ten bays on a 2.34 m pitch: barred basement windows, nine segmental ground windows + the door bay, twenty arcade windows (2 per bay); six canted three-light oriels on 3 storeys."
   },
   {
    "name": "Leidsekade Jugendstil gable front (SW)",
    "bearing": 232.5,
-   "alongM": [28.35, 38.2],
-   "photo": "artifacts/landmark-lanes/american-hotel/refs/c-sw17-gable.png",
-   "note": "Gable front (4 axes below, A r A r A above) plus the narrow bay by the tower: arched entrance + 3 stone-framed windows + bay door; storey of 4 rectangular windows + bay window; 4-arch tracery arcade + bay window; 2 storeys alternating round-headed / narrow square-headed windows; 6-light gallery under the gable."
+   "alongM": [
+    25.1,
+    35.5
+   ],
+   "photo": "artifacts/landmark-briefs/american-hotel/w06-234.jpg",
+   "note": "Five bays (edges 38 + 39): ground windows, paired lights with fanlights, the five-arch arcade, two storeys alternating arched / narrow, four dormer windows, the lunette.",
+   "staggered": true
   },
   {
-   "name": "Leidsekade tower face (SW)",
+   "name": "Leidsekade corner bay and tower (SW)",
    "bearing": 232.5,
-   "alongM": [38.2, 44],
-   "photo": "artifacts/landmark-lanes/american-hotel/refs/sw-2017-03-10-33m.jpg",
-   "note": "One narrow window per storey, paired belfry openings under the clock."
+   "alongM": [
+    35.5,
+    46
+   ],
+   "photo": "artifacts/landmark-briefs/american-hotel/w08-233.jpg",
+   "note": "Entrance, arched windows over the pierced balustrade; the tower drum's window groups."
   }
  ]
 }
