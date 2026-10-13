@@ -1,0 +1,117 @@
+{
+ "schemaVersion": 1,
+ "id": "walraven-van-hall",
+ "signature": [
+  "wh-tree",
+  "wh-stump",
+  "wh-plaque"
+ ],
+ "walls": [
+  {
+   "tag": "w-280",
+   "bearing": 280,
+   "lengthM": 7.0,
+   "centre": [
+    4.8996307,
+    52.359946
+   ],
+   "evidence": "photo",
+   "panoId": "Ceescamel Walraven van Hall, zijaanzicht1.jpg",
+   "capturedAt": "2018",
+   "checked": true,
+   "note": "Plaque side: the fallen tree against the rubble wall, branches reaching to the paving (Commons, Ceescamel).",
+   "items": [
+    {
+     "id": "wh-tree",
+     "kind": "sculpture",
+     "where": "bronze cast of a felled tree lying on the paving: bent trunk about 7 m, a dozen branches sweeping down to the ground, splayed roots at the right end",
+     "approxSizeM": [
+      7.5,
+      2.0
+     ],
+     "plan": "simplified",
+     "how": "builder: five tapered trunk segments, nine main limbs with three knuckles and a twig each, seven roots; the branching is procedural, not a scan",
+     "seenIn": "Ceescamel zijaanzicht1"
+    },
+    {
+     "id": "wh-stump",
+     "kind": "sculpture",
+     "where": "separate bronze stump about 1.2 m high with a splintered crown behind the root end",
+     "approxSizeM": [
+      1.1,
+      1.4
+     ],
+     "plan": "simplified",
+     "how": "builder: tapered cylinder with six cone splinters",
+     "seenIn": "Ceescamel achteraanzicht"
+    },
+    {
+     "id": "wh-plaque",
+     "kind": "lettering",
+     "where": "bronze plaque cast as weathered boards in the paving: WALRAVEN VAN HALL / BANKIER VAN HET VERZET / 1906 - 1945 (and a web address, omitted)",
+     "approxSizeM": [
+      1.5,
+      0.75
+     ],
+     "plan": "simplified",
+     "how": "builder: bronze slab with three lines of raised stroke-font capitals laid for the reader; the web address line is omitted, the board grain is not carved",
+     "seenIn": "Ceescamel plaat"
+    },
+    {
+     "id": "wh-wall",
+     "kind": "other",
+     "where": "curved rubble-stone wall about 0.85 m high behind the tree, brick circle with a stone kerb",
+     "approxSizeM": [
+      10.0,
+      0.9
+     ],
+     "plan": "simplified",
+     "how": "builder: 34 irregular wall blocks on an arc, 32 kerb stones, brick disc",
+     "seenIn": "Ceescamel zijaanzicht1"
+    }
+   ]
+  },
+  {
+   "tag": "e-10",
+   "bearing": 10,
+   "lengthM": 7.0,
+   "centre": [
+    4.8996307,
+    52.359946
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_04-38-42_02947",
+   "capturedAt": "2025-06-19",
+   "checked": true,
+   "note": "Side: the circle seen through the park trees (panorama 02947).",
+   "items": []
+  },
+  {
+   "tag": "n-100",
+   "bearing": 100,
+   "lengthM": 7.0,
+   "centre": [
+    4.8996307,
+    52.359946
+   ],
+   "evidence": "photo",
+   "panoId": "Ceescamel Walraven van Hall, achteraanzicht.jpg",
+   "capturedAt": "2018",
+   "checked": true,
+   "note": "Back: stump and the wall from outside.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Ceescamel, Walraven van Hall (zijaanzicht1, zijaanzicht2, achteraanzicht, detail1, plaat)",
+   "url": "https://commons.wikimedia.org/wiki/Category:Monument_Walraven_van_Hall",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

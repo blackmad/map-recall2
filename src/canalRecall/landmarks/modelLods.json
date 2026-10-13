@@ -1690,5 +1690,11 @@
     "buildVersion": 2,
     "bytes": 31568,
     "triangles": 1478
+  },
+  "walraven-van-hall": {
+    "sourceHash": "0185099c51e3a57a",
+    "buildVersion": 2,
+    "bytes": 24964,
+    "triangles": 1136
   }
 }
