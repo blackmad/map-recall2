@@ -34689,6 +34689,98 @@
           ]
         ]
       }
+    },
+    {
+      id: "da-costakade-13",
+      name: "Da Costakade 13",
+      landmarkId: "da-costakade-13",
+      modelUrl: "./models/da-costakade-13.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012166570"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.873669215756019,
+          52.37278390846556
+        ],
+        headingDegrees: 132.5,
+        lengthMetres: 11.15,
+        widthMetres: 9.84
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.8736735064516035,
+          52.372784346431544
+        ],
+        northOffsetDegrees: 0,
+        source: "PDOK BAG 0363100012166570 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      materialOverrides: {
+        brick: "#9a7666",
+        stone: "#b8b2a4",
+        white: "#ece8df",
+        concrete: "#e6e2d8",
+        glass: "#3a4950",
+        dark: "#22262a",
+        bronze: "#26292b",
+        red: "#842629",
+        slate: "#5a5e60",
+        green: "#44705a"
+      },
+      preservePositionPrecision: true,
+      attribution: {
+        title: "Da Costakade 13 original architecture",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012166570",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native metre geometry on the BAG footprint with 3DBAG eave/ridge heights; roof modelled from intent (mansard plus gable saddle), facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.873696382023926,
+              52.37282862672355
+            ],
+            [
+              4.8736293134885385,
+              52.37281251744883
+            ],
+            [
+              4.873559878854225,
+              52.37278516322131
+            ],
+            [
+              4.873673284177957,
+              52.37272834941839
+            ],
+            [
+              4.873680861157177,
+              52.372724562498966
+            ],
+            [
+              4.873778443435477,
+              52.3727825789862
+            ],
+            [
+              4.873696382023926,
+              52.37282862672355
+            ]
+          ]
+        ]
+      },
+      partyWallBearings: [
+        219
+      ],
+      galleryView: {
+        theta: 3.75,
+        phi: 1.08
+      }
     }
   ];
 
@@ -39843,6 +39935,19 @@
       additionalSources: [
         "https://www.wikidata.org/wiki/Q2466999",
         "https://en.wikipedia.org/wiki/De_Waag"
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "da-costakade-13",
+      landmarkId: "da-costakade-13",
+      name: "Da Costakade 13",
+      description: "Da Costakade 13 is the corner building that heads a curved row of houses on the Da Costakade in Oud-West. The national building register (BAG) dates it to 1904 and records it as a head building (kopgebouw) holding five homes; the 3D building survey counts five storeys. Its two street fronts are dark brown brick picked out with green glazed brick: a pointed gable over two bays of French windows with stone balconies, and beside it the entrance, a red double door under a round stone arch. The end wall facing the garden has no windows. It is not a listed monument.",
+      funFact: "The building is the head of its block, so its garden side stands free: from the street you can see the blank end wall and the steep slate roof rising behind the gable.",
+      sourceUrl: "https://api.data.amsterdam.nl/v1/bag/panden/0363100012166570/?_format=json",
+      additionalSources: [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012166570",
+        "https://api.data.amsterdam.nl/v1/monumenten/monumenten/?betreftBagPand.identificatie=0363100012166570&_format=json"
       ],
       preferDescription: true
     }

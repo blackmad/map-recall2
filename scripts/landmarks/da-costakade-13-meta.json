@@ -1,0 +1,9 @@
+{
+  "name": "Da Costakade 13",
+  "landmarkId": "da-costakade-13",
+  "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012166570/?_format=json",
+  "suppressOsmIds": ["NL.IMBAG.Pand.0363100012166570"],
+  "pandId": "0363100012166570",
+  "surveySource": "BAG 0363100012166570 footprint; 3DBAG LoD2.2 eave and ridge heights only, roof modelled from intent; native east/south metres from the footprint vertex mean.",
+  "modifications": "Original texture-free geometry; facade rhythm counted by eye from municipal panoramas (2020-2024), no pixels or meshes imported."
+}
