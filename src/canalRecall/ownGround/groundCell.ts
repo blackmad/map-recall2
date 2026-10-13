@@ -23,7 +23,7 @@ import { drapeTriangles, emptyMesh, gridHeight, merge, reliefGrid, type MeshArra
 import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, type LocalWay } from './streets.js';
 import { flatDeckBody, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, pointInRing, type DeckBuildInfo } from './decks.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
-import { buildParks, type ParkBuildStats, type ParksCell } from './parks.js';
+import { buildParks, drapeBisect, type ParkBuildStats, type ParksCell } from './parks.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
 import type { Rect } from './groundStore.js';
 
@@ -189,7 +189,8 @@ export function buildCell(input: CellInput): BuiltCell {
       const pts = r.slice(0, -1).map(input.project);
       if (pts.length < 3) continue;
       const flat = pts.flatMap(p => [p[0], p[1]]);
-      drapeTriangles(m, flat, earcut(flat), onLand, LIFT.area + (layer === 'square' ? 0.004 : 0), lod === 0 ? 8 : 16);
+      // Longest-edge bisection (parks.ts): the n² split cost Westerpark's cell 159k triangles of park fill on earcut slivers.
+      drapeBisect(m, flat, earcut(flat), onLand, LIFT.area + (layer === 'square' ? 0.004 : 0), lod === 0 ? 8 : 16);
     }
     add(layer, m);
   }
