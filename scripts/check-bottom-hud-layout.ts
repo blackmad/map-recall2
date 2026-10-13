@@ -107,5 +107,22 @@ for (const tripWidth of TRIP_WIDTHS) {
   );
 }
 
+// 2026-10-13 HUD reduction: the desktop compass shrank to a 32 px rose that
+// still sits under the destination card and clear of it; the phone's 40 px
+// compass is untouched.
+{
+  const desktop = hudLayout({
+    viewport: resolveViewport({ windowWidth: 1440, windowHeight: 900, devicePixelRatio: 1 }),
+    tripWidth: 150,
+  });
+  assert.ok(desktop.compass.width <= 32, `desktop compass is small: ${desktop.compass.width}`);
+  assert.equal(rectsIntersect(desktop.compass, desktop.destination), false, 'the compass clears the destination card');
+  assert.equal(desktop.compass.x + desktop.compass.width, desktop.destination.x + desktop.destination.width, 'and stays right-aligned under it');
+  const phone = hudLayout({
+    viewport: resolveViewport({ windowWidth: 390, windowHeight: 844, devicePixelRatio: 3, touch: true }),
+    tripWidth: 150,
+  });
+  assert.equal(phone.compass.width, 40, 'the phone compass is unchanged');
+}
 
 process.stdout.write(`Bottom HUD layout checks passed (${scenarios} scenarios).\n`);
