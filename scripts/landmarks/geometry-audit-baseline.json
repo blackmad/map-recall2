@@ -668,6 +668,21 @@
    "window-mismatch-spec": 21,
    "window-missing-spec": 4
   },
+  "da-costakade-13": {
+   "opening-floating": 0,
+   "opening-floating-fail": 0,
+   "opening-overhang": 0,
+   "opening-overhang-fail": 0,
+   "opening-buried": 0,
+   "zfight-m2": 0,
+   "zfight-near-m2": 1,
+   "window-mismatch": 3,
+   "window-missing": 0,
+   "window-misaligned": 0,
+   "window-rhythm-fail": 1,
+   "window-mismatch-spec": 3,
+   "window-missing-spec": 0
+  },
   "dageraad": {
    "opening-floating": 18,
    "opening-floating-fail": 12,
