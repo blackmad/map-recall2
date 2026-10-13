@@ -253,11 +253,34 @@ export function wallProbe(shell: T.BufferGeometry[]) {
 }
 
 /** Rectangular sash windows: white frame, glazing bars, pale sill and an optional flat lintel. */
-export function sashWindows(b: BuildingTools, f: Frame, ts: number[], o: {y: number; w: number; h: number; cols?: number; rows?: number; sill?: Col; lintel?: Col; frame?: Col; glass?: Col; snap?: (f: Frame, t: number, y: number) => Frame | null}) {
+/** Front-facing quad at `out` (2 triangles): for glass panes and thin bars whose sides and back are never seen. */
+export function facePanel(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, colour: Col, out = 0) {
+  put(b, f, new T.PlaneGeometry(w, h).translate(0, h / 2, out), t, y, 0, colour);
+}
+/** Slab without its back and bottom faces (they sit in the wall or on the sill): 8 triangles instead of 12. */
+export function leanSlab(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, d: number, colour: Col, out = 0) {
+  const k = sinkNext(), g = new T.BoxGeometry(w, h, d + k).translate(0, h / 2, (d + k) / 2);
+  const idx = g.getIndex()!.array as ArrayLike<number>, keep: number[] = [];
+  // BoxGeometry face order: +x, -x, +y, -y, +z, -z (6 indices each)
+  for (let face = 0; face < 6; face++) if (face !== 3 && face !== 5) for (let i = 0; i < 6; i++) keep.push(idx[face * 6 + i]);
+  g.setIndex(keep);
+  put(b, f, g, t, y, out - k, colour);
+}
+export function sashWindows(b: BuildingTools, f: Frame, ts: number[], o: {lean?: boolean; y: number; w: number; h: number; cols?: number; rows?: number; sill?: Col; lintel?: Col; frame?: Col; glass?: Col; snap?: (f: Frame, t: number, y: number) => Frame | null}) {
   const frame = o.frame ?? 'white', cols = o.cols ?? 2, rows = o.rows ?? 3;
   for (const t of ts) {
     const g = o.snap ? o.snap(f, t, o.y + o.h / 2) : f;
     if (!g) continue;
+    if (o.lean) {
+      // Lean variant (opt-in, keeps every other model's geometry): glass and bars are single quads, frame and sill drop their hidden faces.
+      leanSlab(b, g, t, o.y - 0.06, o.w + 0.26, o.h + 0.12, 0.07, frame);
+      facePanel(b, g, t, o.y, o.w, o.h, o.glass ?? 'glass', 0.1);
+      for (let k = 1; k < cols; k++) facePanel(b, g, t - o.w / 2 + o.w * k / cols, o.y, 0.045, o.h, frame, 0.13);
+      for (let r = 1; r < rows; r++) facePanel(b, g, t, o.y + o.h * r / rows - 0.02, o.w, 0.045, frame, 0.13);
+      if (o.sill) leanSlab(b, g, t, o.y - 0.17, o.w + 0.5, 0.1, 0.2, o.sill);
+      if (o.lintel) leanSlab(b, g, t, o.y + o.h + 0.06, o.w + 0.4, 0.14, 0.14, o.lintel);
+      continue;
+    }
     slab(b, g, t, o.y - 0.06, o.w + 0.26, o.h + 0.12, 0.07, frame);
     slab(b, g, t, o.y, o.w, o.h, 0.1, o.glass ?? 'glass');
     for (let k = 1; k < cols; k++) slab(b, g, t - o.w / 2 + o.w * k / cols, o.y, 0.045, o.h, 0.13, frame);
