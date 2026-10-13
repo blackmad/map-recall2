@@ -18,14 +18,19 @@
    "gebruiksdoel": "kantoorfunctie",
    "bouwjaar": 1964,
    "osmToAddressM": 0,
-   "signatureElements": [],
+   "signatureElements": [
+    "three red crosses",
+    "ribbon windows",
+    "vertical fins"
+   ],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "large-installed",
    "panoramaYears": [
     2022,
     2020
    ],
-   "referenceStatus": "ok"
+   "referenceStatus": "ok",
+   "recipe": "stadsdeel-nieuw-west"
   },
   {
    "name": "Stadsloket Centrum",
@@ -44,8 +49,8 @@
    "bouwjaar": 1985,
    "osmToAddressM": 0,
    "signatureElements": [],
-   "sharedWith": "",
-   "modelStatus": "pending",
+   "sharedWith": "inside the Stopera (catalogue id stadhuis, pand 0363100012186092); the first locatieserver match (679 m away) was wrong and is replaced by the pand under the OSM point",
+   "modelStatus": "skipped-modelled-elsewhere",
    "panoramaYears": [],
    "referenceStatus": "no-wall"
   },
@@ -66,8 +71,8 @@
    "bouwjaar": 2022,
    "osmToAddressM": 6,
    "signatureElements": [],
-   "sharedWith": "",
-   "modelStatus": "pending",
+   "sharedWith": "ground-floor unit of the Osdorpplein shopping-centre rebuild (382 wall surfaces, housing over shops, no sign photographed)",
+   "modelStatus": "skipped",
    "panoramaYears": [
     2017,
     2016
@@ -90,14 +95,18 @@
    "gebruiksdoel": "kantoorfunctie",
    "bouwjaar": 1999,
    "osmToAddressM": 11,
-   "signatureElements": [],
+   "signatureElements": [
+    "three St Andrews crosses",
+    "black brick grid"
+   ],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "large-installed",
    "panoramaYears": [
     2024,
     2025
    ],
-   "referenceStatus": "ok"
+   "referenceStatus": "ok",
+   "recipe": "stadsloket-noord"
   },
   {
    "name": "Stadsloket Oost",
@@ -115,14 +124,18 @@
    "gebruiksdoel": "bijeenkomstfunctie,kantoorfunctie",
    "bouwjaar": 2008,
    "osmToAddressM": 0,
-   "signatureElements": [],
+   "signatureElements": [
+    "south front grid",
+    "glazed ground"
+   ],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "large-installed",
    "panoramaYears": [
     2020,
     2022
    ],
-   "referenceStatus": "ok"
+   "referenceStatus": "ok",
+   "recipe": "stadsloket-oost"
   },
   {
    "name": "Stadsloket West",
@@ -140,11 +153,16 @@
    "gebruiksdoel": "kantoorfunctie",
    "bouwjaar": 2003,
    "osmToAddressM": 17,
-   "signatureElements": [],
-   "sharedWith": "",
-   "modelStatus": "pending",
+   "signatureElements": [
+    "three red crosses",
+    "balcony galleries",
+    "red window wall"
+   ],
+   "sharedWith": "shops and housing in one pand",
+   "modelStatus": "large-installed",
    "panoramaYears": [],
-   "referenceStatus": "no-panorama"
+   "referenceStatus": "no-panorama",
+   "recipe": "stadsloket-west"
   },
   {
    "name": "Stadsloket Zuid",
@@ -163,8 +181,8 @@
    "bouwjaar": 2008,
    "osmToAddressM": 0,
    "signatureElements": [],
-   "sharedWith": "",
-   "modelStatus": "pending",
+   "sharedWith": "pand 0363100012090647 is not in the building tiles, so no panorama reference can be produced",
+   "modelStatus": "skipped",
    "panoramaYears": [],
    "referenceStatus": "no-wall"
   },
@@ -184,14 +202,19 @@
    "gebruiksdoel": "kantoorfunctie",
    "bouwjaar": 2006,
    "osmToAddressM": 0,
-   "signatureElements": [],
+   "signatureElements": [
+    "Stadsloket lettering",
+    "glazed arcade",
+    "entrance hall"
+   ],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "large-installed",
    "panoramaYears": [
     2025,
     2016
    ],
-   "referenceStatus": "ok"
+   "referenceStatus": "ok",
+   "recipe": "stadsloket-zuidoost"
   }
  ]
 }
