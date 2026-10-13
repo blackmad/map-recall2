@@ -1,6 +1,6 @@
 "use strict";
 (() => {
-  // node_modules/three/build/three.core.js
+  // ../../map-recall2/node_modules/three/build/three.core.js
   var REVISION = "185";
   var CullFaceNone = 0;
   var CullFaceBack = 1;
@@ -15919,7 +15919,7 @@
     }
   }
 
-  // node_modules/three/build/three.module.js
+  // ../../map-recall2/node_modules/three/build/three.module.js
   function WebGLAnimation() {
     let context = null;
     let isAnimating = false;
@@ -27425,6 +27425,98 @@ void main() {
     return { bays, bayWidthM: lengthM / bays, storeys, storeyHeightM, groundHeightM, doorBays, plain };
   }
 
+  // src/canalRecall/look/palette.ts
+  var PHOTO_WALL_CELL_MEAN = 225;
+  var OUTLINE_INK = "#3b2a2a";
+  var PHOTO_CALM = { wallPull: 0.7, glassLift: 0.5, liftBrick: true };
+  var DRAWN_CALM = { wallPull: 0.35, glassLift: 0.25, liftBrick: false };
+  var LOOK_VARIANTS = {
+    photo: { cells: "photo", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 255 / PHOTO_WALL_CELL_MEAN },
+    procedural: { cells: "procedural", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
+    untextured: { cells: "procedural", shadeBands: 0, flatColour: true, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
+    // Storybook warms and lifts the natural palette a little, as an illustrator would.
+    storybook: {
+      cells: "storybook",
+      shadeBands: 0,
+      flatColour: false,
+      ...DRAWN_CALM,
+      cartoonRoofCells: false,
+      outline: true,
+      litWallGain: 1,
+      tone: { hueShift: -4, satMul: 1.15, satAdd: 0, keepDarkBelow: 0, lightMul: 1, lightAdd: 0.03, lightMax: 0.9 }
+    },
+    // Cartoon: punchy but not neon; darks (glass, iron) stay dark so windows still read.
+    cartoon: {
+      cells: "cartoon",
+      shadeBands: 3,
+      flatColour: false,
+      ...DRAWN_CALM,
+      cartoonRoofCells: true,
+      outline: true,
+      litWallGain: 1,
+      tone: { hueShift: 0, satMul: 1.7, satAdd: 0.08, keepDarkBelow: 0.35, lightMul: 1.08, lightAdd: 0, lightMax: 0.85 }
+    }
+  };
+  var PERIOD_FROM = { canal: -Infinity, c19: 1860, school: 1915, modern: 1945 };
+  function periodForYear(year) {
+    return year < PERIOD_FROM.c19 ? "canal" : year < PERIOD_FROM.school ? "c19" : year < PERIOD_FROM.modern ? "school" : "modern";
+  }
+  var ROOF_TONES = {
+    procedural: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: ["#4b525c", "#3f464f", "#5a6068"] },
+    untextured: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: ["#4b525c", "#3f464f", "#5a6068"] },
+    photo: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: ["#4b525c", "#3f464f", "#5a6068"] },
+    storybook: { tile: ["#b9553a", "#a94a33", "#c46a45"], slate: ["#556070", "#4a5666", "#657282"] },
+    cartoon: { tile: ["#e85a3c", "#f08a2b", "#d94a3a"], slate: ["#3f5f8f", "#2f4a78", "#4f7bb0"] }
+  };
+  var FLAT_ROOF_GREYS = ["#8f8a83", "#9a958c", "#85817c", "#a09789"];
+  var CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS };
+  var ILLUSTRATED_WALLS = ["#d9674a", "#e58a5c", "#eab85f", "#f0dfb8", "#e5a396", "#9dbb9b", "#7ea3c2", "#c9714a", "#f2c14e", "#b9a1c9"];
+  var ILLUSTRATED_ACCENTS = ["#2a8c8c", "#e0a526", "#d9453d", "#2c4a7c", "#7a3b6e", "#2f6b45", "#4aa3d9"];
+  var ILLUSTRATED = {
+    canal: { walls: ILLUSTRATED_WALLS, accents: ILLUSTRATED_ACCENTS },
+    c19: { walls: ILLUSTRATED_WALLS, accents: ILLUSTRATED_ACCENTS },
+    school: { walls: ["#9c5a42", "#8a4b3a", "#a8664c", "#7a4a40"], accents: ["#2c4a7c", "#2a8c8c", "#e0a526"] },
+    modern: { walls: ["#f4efe6", "#dcdcd6", "#e9d9c0", "#b9c4cc", "#f0c9a9"], accents: ["#2a8c8c", "#d9453d", "#2c4a7c", "#e0a526"] }
+  };
+  var PHOTO_PASTEL = ["#ffffff", "#f2d9c8", "#d9b9a4", "#e6c9b0", "#c9a38c", "#f0e4d2", "#ffd9b0", "#e8c0b0", "#d0c8c0"];
+  var PHOTO_DARK_ACCENTS = ["#243a2f", "#1f2a3a", "#3a1f1c", "#222222", "#2f4a3c", "#6b2b2b", "#2c3e50"];
+  var PALETTES = {
+    cartoon: ILLUSTRATED,
+    storybook: ILLUSTRATED,
+    photo: {
+      canal: { walls: PHOTO_PASTEL, accents: PHOTO_DARK_ACCENTS },
+      c19: { walls: PHOTO_PASTEL, accents: PHOTO_DARK_ACCENTS },
+      school: { walls: ["#b89080", "#a88070", "#9c7868"], accents: ["#1f2a3a", "#243a2f", "#3a1f1c"] },
+      modern: { walls: ["#f2f2ee", "#d8d8d2", "#e8dcc8", "#c8d0d4"], accents: ["#2c3e50", "#6b2b2b", "#243a2f"] }
+    }
+  };
+  var PERIOD_WALLS = {
+    photo: {
+      canal: ["#7a3b2c", "#7a3b2c", "#6b3428", "#8c4632", "#9a5846", "#b05a40", "#4a2e26", "#2e2a27", "#3e4a40", "#5d605a", "#e4ddcd"],
+      c19: ["#b05a40", "#b05a40", "#bd6a45", "#a24d38", "#c58b5e", "#d3b184", "#e2d5ba", "#e2d5ba", "#d9c5a4", "#9a5846"],
+      school: ["#8c4a38", "#7a4535", "#9a5240", "#6e3d33", "#a85a3c", "#5e3a32", "#b0603f"],
+      modern: ["#c9b79a", "#b9ad9a", "#a8a49c", "#d3c6ad", "#8f8a82", "#bfb3a0", "#9c7a62", "#b05a40"]
+    },
+    storybook: {
+      canal: ["#b9583f", "#9a4a38", "#7a4a3c", "#4a5048", "#3f4a5a", "#ead9b0", "#c8664a"],
+      c19: ["#c8664a", "#d98b5f", "#e0b36a", "#ead9b0", "#d9b995", "#c9a08c", "#c8664a"],
+      school: ["#a8553f", "#9a5a48", "#b87a5c", "#c8664a", "#8a4e40"],
+      modern: null
+    },
+    cartoon: {
+      canal: ["#d9453d", "#a8433a", "#3b3b4a", "#2a9d8f", "#4672b0", "#fffaf0", "#e8573d"],
+      c19: ["#e8573d", "#ee7f2c", "#f2b92e", "#f3e6c8", "#d96a4d", "#f2b92e"],
+      school: ["#d96a4d", "#e8573d", "#b9583f", "#ee7f2c"],
+      modern: null
+    }
+  };
+  var PERIOD_PRIORS = {
+    canal: { label: "canal-house centre (before 1860)", wall: PERIOD_WALLS.photo.canal[0], roof: ROOF_TONES.photo.tile[0] },
+    c19: { label: "19th-century ring (1860-1914)", wall: PERIOD_WALLS.photo.c19[0], roof: ROOF_TONES.photo.tile[1] },
+    school: { label: "Amsterdamse School (1915-1944)", wall: PERIOD_WALLS.photo.school[0], roof: ROOF_TONES.photo.slate[0] },
+    modern: { label: "post-war and contemporary (1945+)", wall: PERIOD_WALLS.photo.modern[0], roof: FLAT_ROOF_GREYS[0] }
+  };
+
   // src/canalRecall/bayTextures.ts
   var BAY_PX = 520;
   var STOREY_PX = 310;
@@ -27445,54 +27537,16 @@ void main() {
       shop: (h >>> 13) % 4 === 0
     };
   }
-  var PALETTES = {
-    cartoon: {
-      canal: {
-        walls: ["#d9674a", "#e58a5c", "#eab85f", "#f0dfb8", "#e5a396", "#9dbb9b", "#7ea3c2", "#c9714a", "#f2c14e", "#b9a1c9"],
-        accents: ["#2a8c8c", "#e0a526", "#d9453d", "#2c4a7c", "#7a3b6e", "#2f6b45", "#4aa3d9"]
-      },
-      c19: {
-        walls: ["#d9674a", "#e58a5c", "#eab85f", "#f0dfb8", "#e5a396", "#9dbb9b", "#7ea3c2", "#c9714a", "#f2c14e", "#b9a1c9"],
-        accents: ["#2a8c8c", "#e0a526", "#d9453d", "#2c4a7c", "#7a3b6e", "#2f6b45", "#4aa3d9"]
-      },
-      school: { walls: ["#9c5a42", "#8a4b3a", "#a8664c", "#7a4a40"], accents: ["#2c4a7c", "#2a8c8c", "#e0a526"] },
-      modern: { walls: ["#f4efe6", "#dcdcd6", "#e9d9c0", "#b9c4cc", "#f0c9a9"], accents: ["#2a8c8c", "#d9453d", "#2c4a7c", "#e0a526"] }
-    },
-    storybook: {
-      canal: {
-        walls: ["#d9674a", "#e58a5c", "#eab85f", "#f0dfb8", "#e5a396", "#9dbb9b", "#7ea3c2", "#c9714a", "#f2c14e", "#b9a1c9"],
-        accents: ["#2a8c8c", "#e0a526", "#d9453d", "#2c4a7c", "#7a3b6e", "#2f6b45", "#4aa3d9"]
-      },
-      c19: {
-        walls: ["#d9674a", "#e58a5c", "#eab85f", "#f0dfb8", "#e5a396", "#9dbb9b", "#7ea3c2", "#c9714a", "#f2c14e", "#b9a1c9"],
-        accents: ["#2a8c8c", "#e0a526", "#d9453d", "#2c4a7c", "#7a3b6e", "#2f6b45", "#4aa3d9"]
-      },
-      school: { walls: ["#9c5a42", "#8a4b3a", "#a8664c", "#7a4a40"], accents: ["#2c4a7c", "#2a8c8c", "#e0a526"] },
-      modern: { walls: ["#f4efe6", "#dcdcd6", "#e9d9c0", "#b9c4cc", "#f0c9a9"], accents: ["#2a8c8c", "#d9453d", "#2c4a7c", "#e0a526"] }
-    },
-    photo: {
-      canal: {
-        walls: ["#ffffff", "#f2d9c8", "#d9b9a4", "#e6c9b0", "#c9a38c", "#f0e4d2", "#ffd9b0", "#e8c0b0", "#d0c8c0"],
-        accents: ["#243a2f", "#1f2a3a", "#3a1f1c", "#222222", "#2f4a3c", "#6b2b2b", "#2c3e50"]
-      },
-      c19: {
-        walls: ["#ffffff", "#f2d9c8", "#d9b9a4", "#e6c9b0", "#c9a38c", "#f0e4d2", "#ffd9b0", "#e8c0b0", "#d0c8c0"],
-        accents: ["#243a2f", "#1f2a3a", "#3a1f1c", "#222222", "#2f4a3c", "#6b2b2b", "#2c3e50"]
-      },
-      school: { walls: ["#b89080", "#a88070", "#9c7868"], accents: ["#1f2a3a", "#243a2f", "#3a1f1c"] },
-      modern: { walls: ["#f2f2ee", "#d8d8d2", "#e8dcc8", "#c8d0d4"], accents: ["#2c3e50", "#6b2b2b", "#243a2f"] }
-    }
-  };
   function paletteFor(seed, archetype, look2) {
     const h = hashSeed(seed), p = PALETTES[look2][archetype];
     return { wall: p.walls[h % p.walls.length], accent: p.accents[(h >>> 5) % p.accents.length] };
   }
   function archetypeFor(_seed, year, heightM) {
-    if (year !== null && year > 1500 && year < 2100) return year < 1860 ? "canal" : year < 1915 ? "c19" : year < 1945 ? "school" : "modern";
+    if (year !== null && year > 1500 && year < 2100) return periodForYear(year);
     if (heightM >= 28) return "modern";
     return "c19";
   }
-  var OUTLINE = "#3b2a2a";
+  var OUTLINE = OUTLINE_INK;
   var cache = /* @__PURE__ */ new Map();
   var Painter = class {
     constructor(ctx, pass, look2) {
@@ -27502,7 +27556,7 @@ void main() {
     }
     /** Both illustrated looks draw outlined, flat-filled shapes; `toon` is the bolder of the two. */
     get cartoon() {
-      return this.look !== "photo";
+      return LOOK_VARIANTS[this.look].outline;
     }
     get toon() {
       return this.look === "cartoon";

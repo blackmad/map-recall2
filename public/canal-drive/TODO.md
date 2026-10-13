@@ -32,8 +32,18 @@ added to the to-build list), the GLB cleanup pass (attached windows, material
 coverage, no holes) and the sculpture splat track. Freeze: no new per-house
 GLBs into `catalogue.json` and no new one-off ordinary builders; new builders
 tag every material with `materialSlot` + `tint`. Order: housekeeping (done
-2026-10-13) → gameplay loop (done 2026-10-13) → shared frame + palette →
-ground → recipe tiles. Integrator merges on its own judgement (user).
+2026-10-13) → gameplay loop (done 2026-10-13) → shared frame + palette (one
+palette module and one rig landed 2026-10-13 behind `?sharedFrame=1`; the
+default flip waits on a desktop ride-perf decision: +0.2 ms/frame three.js,
++100–180 MB heap, shaded walls ~70 luma vs 96–123 baked — see `docs/LOOK.md`)
+→ ground → recipe tiles. Open from the look lane: 3DBAG detailed buildings
+never stream (3d-tiles-renderer root tileset only loads on the first
+`update()`, the old layer never calls it before ready; in the shared frame it
+loads but traverses zero tiles — LOD camera in the shared world); the 40
+`storybook-visual` baselines are stale on main (Feedback button and
+attribution text, 37 fail on `640675c2` too); `check-three-buildings` fails on
+"canal houses have flat lintels" on main; `?buildingTypes=1` under the shared
+frame skips that runtime's merged recipe shader. Integrator merges on its own judgement (user).
 Open after the gameplay merge: `RecallStore.expose()` so a passed name is
 scheduled instead of re-asked; a settings control for `maxAsksPerMinute`
 (field on the game today); fold `ridingPromptStyles.ts` into `index.html`;

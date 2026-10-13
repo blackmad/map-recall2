@@ -4117,12 +4117,13 @@ varying vec3 vAccent;
 flat varying float vHighlight;`,DS=`
 vFacUv = uv; vLayer = layer; vTint = tint.rgb; vAccent = accent.rgb;
 vHighlight = hidden > 1.5 ? 1.0 : 0.0;`,gb=`
-if (hidden > 0.5 && hidden < 1.5) gl_Position = vec4(2.0, 2.0, 2.0, 1.0);`;function bb(r,e){let t={cells:e?.cells??{value:null},masks:e?.masks??{value:null},bands:e?.bands??{value:0},flatColour:e?.flatColour??{value:0},cityFade:e?.cityFade??{value:1}},n=new r.MeshStandardMaterial({roughness:.9,metalness:0,side:r.FrontSide,flatShading:!0});return n.onBeforeCompile=i=>{i.uniforms.cells=t.cells,i.uniforms.masks=t.masks,i.uniforms.flatColour=t.flatColour,i.uniforms.cityFade=t.cityFade,i.vertexShader=i.vertexShader.replace("#include <common>",`#include <common>${LS}`).replace("#include <begin_vertex>",`#include <begin_vertex>${DS}`).replace("#include <project_vertex>",`#include <project_vertex>${gb}`),i.fragmentShader=i.fragmentShader.replace("#include <common>",`#include <common>
+if (hidden > 0.5 && hidden < 1.5) gl_Position = vec4(2.0, 2.0, 2.0, 1.0);`;function bb(r,e){let t={cells:e?.cells??{value:null},masks:e?.masks??{value:null},bands:e?.bands??{value:0},flatColour:e?.flatColour??{value:0},cityFade:e?.cityFade??{value:1},wallGain:e?.wallGain??{value:1}},n=new r.MeshStandardMaterial({roughness:.9,metalness:0,side:r.FrontSide,flatShading:!0});return n.onBeforeCompile=i=>{i.uniforms.cells=t.cells,i.uniforms.masks=t.masks,i.uniforms.flatColour=t.flatColour,i.uniforms.cityFade=t.cityFade,i.uniforms.wallGain=t.wallGain,i.vertexShader=i.vertexShader.replace("#include <common>",`#include <common>${LS}`).replace("#include <begin_vertex>",`#include <begin_vertex>${DS}`).replace("#include <project_vertex>",`#include <project_vertex>${gb}`),i.fragmentShader=i.fragmentShader.replace("#include <common>",`#include <common>
 precision highp sampler2DArray;
 uniform sampler2DArray cells;
 uniform sampler2DArray masks;
 uniform float flatColour;
 uniform float cityFade;
+uniform float wallGain;
 varying vec2 vFacUv;
 flat varying float vLayer;
 varying vec3 vTint;
@@ -4134,11 +4135,12 @@ vec3 fp = vec3(vFacUv, vLayer);
 vec3 fc = texture(cells, fp).rgb;
 vec2 fm = texture(masks, fp).rg;
 fc *= mix(vec3(1.0), vTint, fm.r) * mix(vec3(1.0), vAccent, fm.g);
+fc *= mix(1.0, wallGain, fm.r);
 if (flatColour > 0.5) fc = vTint;
 facadeLuma = dot(fc, vec3(0.299, 0.587, 0.114));
 diffuseColor.rgb *= vHighlight > 0.5 ? vec3(${mb.join(", ")}) : pow(fc, vec3(2.2));`).replace("#include <roughnessmap_fragment>",`#include <roughnessmap_fragment>
 roughnessFactor = mix(0.32, 0.92, smoothstep(0.06, 0.2, facadeLuma));`).replace("#include <emissivemap_fragment>",`#include <emissivemap_fragment>
-if (vHighlight > 0.5) totalEmissiveRadiance += vec3(${mb.join(", ")}) * 0.45;`)},n.customProgramCacheKey=()=>"shared-frame-facade-v1",n.uniforms=t,n.userData.litFacade=!0,n}function xb(r){let e=new r.MeshDepthMaterial;return e.onBeforeCompile=t=>{t.vertexShader=t.vertexShader.replace("#include <common>",`#include <common>
+if (vHighlight > 0.5) totalEmissiveRadiance += vec3(${mb.join(", ")}) * 0.45;`)},n.customProgramCacheKey=()=>"shared-frame-facade-v2",n.uniforms=t,n.userData.litFacade=!0,n}function xb(r){let e=new r.MeshDepthMaterial;return e.onBeforeCompile=t=>{t.vertexShader=t.vertexShader.replace("#include <common>",`#include <common>
 attribute float hidden;`).replace("#include <project_vertex>",`#include <project_vertex>${gb}`)},e.customProgramCacheKey=()=>"shared-frame-facade-depth-v1",e}return Pb(FS);})();
 /*! Bundled license information:
 

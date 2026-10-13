@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+## One palette, one rig: look consistency behind the shared frame (2026-10-13)
+
+Lane `look/consistency-20261013` (Opus, `docs/handoffs/lane-look-consistency-20261013.md`).
+`src/canalRecall/look/palette.ts` now holds the single era scheme
+(1860/1915/1945), every wall palette per look and period, ground paints,
+accents, unmeasured priors, the material colour table, roof tones, the
+`materialSlot` → cell/tint/tile mapping and the five looks as parameter sets;
+14 consumers ported, `cityAppearancePalette.ts` and `AMSTERDAM_ERAS` deleted.
+Default render proven unchanged: 76,193 palette-derived outputs byte-identical
+and fixed-camera shots of four blocks (Westerkerk, Bilderdijkstraat, De Pijp,
+Dam) differ only by streaming-edge noise that the unchanged code also shows
+(`tests/e2e/look-consistency.spec.ts`, `scripts/compare-look-shots.mjs`).
+Under `?sharedFrame=1` every layer now takes the one rig: recipe houses switch
+to lit Lambert (`createRecipeLook({lit:true})`), generic facades get a wall
+gain so a tint reads like a landmark's brick, 3DBAG detailed buildings drop
+their private AmbientLight, and the spec asserts the scene holds only the
+rig's sun and sky. `tests/e2e/look-parity.spec.ts` renders a #808080 brick
+wall through the generic, recipe and landmark pipelines: luma spread 4.3–5.8%
+(was 72% on north walls with unlit recipes). `docs/LOOK.md` is the art
+direction page. Ride perf, desktop 1440×900 (primary): 16.7 ms median both
+ways, three.js layers 0.64→0.86 ms, heap 640→790 MB, 26 shadow redraws per
+12 s; iPhone 4× profile (secondary) p99 16.8→33.3 ms. Integrator rebuilt 13
+bundles, added `test:look` to `check:canal`; look-consistency and look-parity
+e2e pass on merged main, Storybook builds.
+
+
 # Canal Recall — what is built
 
 ## Large tier: `fitLarge()`, `kind: large` recipes, civic components, first police station (2026-10-13)
