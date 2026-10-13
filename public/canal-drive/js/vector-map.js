@@ -95,6 +95,8 @@ class VectorBasemap {
     // ?recipeTiles=1: the recipe-tile near tier (src/canalRecall/tileBuildings/) is a shared-frame participant.
     this._recipeTilesEnabled = canalRecallLookFlag('recipeTiles', '__canalRecallRecipeTiles', false);
     if (this._recipeTilesEnabled) this._sharedFrameEnabled = true;
+    this._sculpturesEnabled = canalRecallLookFlag('sculptures', '__canalRecallSculptures', false);
+    if (this._sculpturesEnabled) this._sharedFrameEnabled = true;
     this._ownGround = null;
     this._sharedFrame = null;
     this._elevation = null;
@@ -236,6 +238,7 @@ class VectorBasemap {
       // Own ground retires the stencil elevation layer: one ground, one water.
       if (this._ownGroundEnabled) void this._ensureOwnGround();
       else if (this._elevationEnabled) void this._ensureElevation();
+      if (this._sculpturesEnabled) void this._ensureSculptures();
       if (window.CanalRecallInventoryTrees && this._trees3dEnabled) {
         this._inventoryTrees = new window.CanalRecallInventoryTrees.InventoryTrees(this.map, maplibregl, () => this._syncTreeVisibility(), this._sharedFrame ? { sharedFrame: this._sharedFrame } : {});
         this._inventoryTrees.setEnabled(this._treesVisible);
@@ -275,6 +278,17 @@ class VectorBasemap {
     this._sharedFrame.attach();
     this.map._canalSharedFrame = this._sharedFrame;
     return this._sharedFrame;
+  }
+
+  /** `?sculptures=1`: photo impostors / splats near the eye, hand models beyond (src/canalRecall/sculptures, docs/sculptures.md). */
+  async _ensureSculptures() {
+    const frame = this._ensureSharedFrame(), THREE = window.CanalRecallThree && window.CanalRecallThree.THREE;
+    if (!frame || !THREE) return;
+    try {
+      if (!window.CanalRecallSculptures) await new Promise((resolve, reject) => { const s = document.createElement('script'); s.src = 'sculptures/sculptures.bundle.js'; s.onload = resolve; s.onerror = reject; document.head.appendChild(s); });
+      const api = window.CanalRecallSculptures;
+      this._sculptures = await api.mountSculptures(THREE, frame, { manifestUrl: new URL('sculptures/manifest.json', window.location.href).href, host: api.landmarkHost(this._signatureLandmarks) });
+    } catch (error) { console.warn('Sculptures unavailable; the hand-built models stay.', error); }
   }
 
   /** Point building / tile fetches at the active city's extract root. */
