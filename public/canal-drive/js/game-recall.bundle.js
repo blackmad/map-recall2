@@ -849,7 +849,6 @@
       landmarkId: "extract_landmarks_2070637412",
       modelUrl: "./models/van-gogh-museum.glb",
       suppressOsmIds: [
-        "r6577680",
         "w754324680",
         "w754324683",
         "w754324685",
@@ -881,7 +880,6 @@
       landmarkId: "extract_landmarks_1719479765",
       modelUrl: "./models/stedelijk-museum.glb",
       suppressOsmIds: [
-        "w44508819",
         "w754299889",
         "w754299890",
         "w754299892",
@@ -918,7 +916,6 @@
       landmarkId: "adam-tower",
       modelUrl: "./models/adam-tower.glb",
       suppressOsmIds: [
-        "w44824385",
         "w593068473",
         "w593068474",
         "w750257534",
@@ -954,7 +951,6 @@
       landmarkId: "pontsteiger",
       modelUrl: "./models/pontsteiger.glb",
       suppressOsmIds: [
-        "r13123696",
         "w995816139",
         "w1509448156",
         "w995816140",
@@ -1621,7 +1617,6 @@
         "w274040276",
         "w274040281",
         "w274040284",
-        "w274040290",
         "w274040293",
         "w274040296",
         "w274040305",
@@ -1841,7 +1836,6 @@
       landmarkId: "de-bijenkorf",
       modelUrl: "./models/de-bijenkorf.glb",
       suppressOsmIds: [
-        "w23582490",
         "w751128372",
         "w751128373",
         "w751128376",
@@ -1862,7 +1856,6 @@
         "w751235778",
         "w751235779",
         "w751235780",
-        "NL.IMBAG.Pand.0363100012168052",
         "w751128374",
         "w751128375"
       ],
@@ -1901,7 +1894,6 @@
       landmarkId: "gashouder",
       modelUrl: "./models/gashouder.glb",
       suppressOsmIds: [
-        "w57865152",
         "w1488057568",
         "w1488057569",
         "w1488057570",
@@ -2052,7 +2044,6 @@
       landmarkId: "extract_landmarks_1522513904",
       modelUrl: "./models/oude-kerk.glb",
       suppressOsmIds: [
-        "w57857592",
         "w747868970",
         "w747868971",
         "w747868972",
@@ -2127,7 +2118,6 @@
       landmarkId: "extract_landmarks_239964759",
       modelUrl: "./models/nieuwe-kerk.glb",
       suppressOsmIds: [
-        "w220749328",
         "w174987150",
         "w747911435",
         "w747911436",
@@ -2147,7 +2137,6 @@
         "w747924626",
         "w748997143",
         "w748997144",
-        "NL.IMBAG.Pand.0363100012169079",
         "w748997142"
       ],
       spatialSuppression: false,
@@ -2628,9 +2617,7 @@
       assetKind: "memorial",
       landmarkId: "extract_landmarks_7630368",
       modelUrl: "./models/homomonument.glb",
-      suppressOsmIds: [
-        "w37737807"
-      ],
+      suppressOsmIds: [],
       spatialSuppression: false,
       footprint: {
         centre: [
@@ -3181,7 +3168,6 @@
       landmarkId: "extract_landmarks_754896207",
       modelUrl: "./models/wereldmuseum-amsterdam.glb",
       suppressOsmIds: [
-        "r3697339",
         "w750932737",
         "w750932738",
         "w750932739",
@@ -3219,8 +3205,7 @@
         "w751004894",
         "w751004895",
         "w751004896",
-        "w751004897",
-        "NL.IMBAG.Pand.0363100012237251"
+        "w751004897"
       ],
       spatialSuppression: false,
       footprint: {
@@ -3333,8 +3318,6 @@
       landmarkId: "extract_landmarks_1569842434",
       modelUrl: "./models/dominicuskerk.glb",
       suppressOsmIds: [
-        "w266621545",
-        "NL.IMBAG.Pand.0363100012171033",
         "w749287651",
         "w749287652",
         "w749287653",
@@ -3376,8 +3359,6 @@
       landmarkId: "extract_landmarks_77247220",
       modelUrl: "./models/vredeskerk.glb",
       suppressOsmIds: [
-        "w44451461",
-        "NL.IMBAG.Pand.0363100012107328",
         "w995323510",
         "w995323511",
         "w995323512"
@@ -3496,7 +3477,6 @@
       modelUrl: "./models/studiok.glb",
       suppressOsmIds: [
         "r3699016",
-        "NL.IMBAG.Pand.0363100012237325",
         "w278379946"
       ],
       footprint: {
@@ -3610,9 +3590,7 @@
       assetKind: "memorial",
       landmarkId: "extract_landmarks_1098130181",
       modelUrl: "./models/de-dokwerker.glb",
-      suppressOsmIds: [
-        "n34051159"
-      ],
+      suppressOsmIds: [],
       spatialSuppression: false,
       footprint: {
         centre: [
@@ -4273,8 +4251,7 @@
       landmarkId: "extract_landmarks_707691223",
       modelUrl: "./models/theater-amsterdam.glb",
       suppressOsmIds: [
-        "w265853828",
-        "NL.IMBAG.Pand.0363100012242100"
+        "w265853828"
       ],
       footprint: {
         centre: [
@@ -4732,8 +4709,6 @@
       landmarkId: "extract_landmarks_56521997",
       modelUrl: "./models/walloon-church.glb",
       suppressOsmIds: [
-        "w158206091",
-        "NL.IMBAG.Pand.0363100012171206",
         "w749356521",
         "w749356522",
         "w749356523",
@@ -4855,8 +4830,7 @@
       suppressOsmIds: [
         "NL.IMBAG.Pand.0363100012237838",
         "w127505497",
-        "w1206726812",
-        "w1207014127"
+        "w1206726812"
       ],
       spatialSuppression: false,
       footprint: {
@@ -4933,8 +4907,6 @@
       landmarkId: "extract_landmarks_1272308587",
       modelUrl: "./models/sint-nicolaas.glb",
       suppressOsmIds: [
-        "w174996833",
-        "NL.IMBAG.Pand.0363100012165691",
         "w645534930",
         "w645534931",
         "w749289632",
@@ -4983,7 +4955,6 @@
       landmarkId: "extract_landmarks_512243549",
       modelUrl: "./models/rijksmuseum.glb",
       suppressOsmIds: [
-        "w431070185",
         "w431070791",
         "w431070942",
         "w517791046",
@@ -5051,8 +5022,6 @@
       landmarkId: "silodam",
       modelUrl: "./models/silodam.glb",
       suppressOsmIds: [
-        "w57864184",
-        "NL.IMBAG.Pand.0363100012149391",
         "w1038324509",
         "w1038324510",
         "w1038324511"
@@ -5091,7 +5060,6 @@
       landmarkId: "extract_landmarks_1692085215",
       modelUrl: "./models/westerkerk.glb",
       suppressOsmIds: [
-        "w99203577",
         "w99205257",
         "w749268115",
         "w749268116",
@@ -5103,7 +5071,6 @@
         "w751083597",
         "w751083598",
         "w751083599",
-        "NL.IMBAG.Pand.0363100012174221",
         "NL.IMBAG.Pand.0363100012164998"
       ],
       spatialSuppression: false,
@@ -5296,12 +5263,10 @@
       landmarkId: "extract_landmarks_1027016792",
       modelUrl: "./models/montelbaanstoren-amsterdam.glb",
       suppressOsmIds: [
-        "w57864086",
         "w751647817",
         "w751647818",
         "w751647819",
-        "w751647820",
-        "NL.IMBAG.Pand.0363100012181906"
+        "w751647820"
       ],
       spatialSuppression: false,
       footprint: {
@@ -5338,7 +5303,6 @@
       landmarkId: "extract_landmarks_1375175685",
       modelUrl: "./models/munttoren-amsterdam.glb",
       suppressOsmIds: [
-        "w57862728",
         "w751683816",
         "w751683817",
         "w751683818",
@@ -5346,8 +5310,7 @@
         "w751683820",
         "w751698382",
         "w751698383",
-        "w751698384",
-        "NL.IMBAG.Pand.0363100012168045"
+        "w751698384"
       ],
       spatialSuppression: false,
       footprint: {
@@ -5385,11 +5348,6 @@
       landmarkId: "extract_landmarks_720777797",
       modelUrl: "./models/national-monument-on-the-dam.glb",
       suppressOsmIds: [
-        "w168680619",
-        "n5413222221",
-        "n5413222222",
-        "w940729263",
-        "w1320477257",
         "r18117445",
         "w1320477258",
         "w1320477259",
@@ -5431,7 +5389,6 @@
       landmarkId: "extract_landmarks_1104215352",
       modelUrl: "./models/de-beurs-van-berlage.glb",
       suppressOsmIds: [
-        "w57858502",
         "w749918629",
         "w749918630",
         "w749918631",
@@ -5471,8 +5428,7 @@
         "w750166476",
         "w750166477",
         "w750166478",
-        "w750166479",
-        "NL.IMBAG.Pand.0363100012171966"
+        "w750166479"
       ],
       spatialSuppression: false,
       footprint: {
@@ -5547,8 +5503,6 @@
       landmarkId: "osm_building_44451577",
       modelUrl: "./models/rembrandt-tower.glb",
       suppressOsmIds: [
-        "w44451577",
-        "NL.IMBAG.Pand.0363100012113758",
         "w754399963",
         "w754399964",
         "w754399965",
@@ -5596,8 +5550,6 @@
       landmarkId: "osm_building_279841030",
       modelUrl: "./models/breitner-tower.glb",
       suppressOsmIds: [
-        "w279841030",
-        "NL.IMBAG.Pand.0363100012070861",
         "w754399978",
         "w463020446",
         "w754399974",
@@ -5605,8 +5557,7 @@
         "w754399976",
         "w754399977",
         "w754399979",
-        "w754399980",
-        "r10396839"
+        "w754399980"
       ],
       footprint: {
         centre: [
@@ -5643,8 +5594,6 @@
       landmarkId: "osm_building_279842059",
       modelUrl: "./models/mondriaan-tower.glb",
       suppressOsmIds: [
-        "w279842059",
-        "NL.IMBAG.Pand.0363100012097541",
         "w754399954",
         "w754399955",
         "w754399956",
@@ -5652,8 +5601,7 @@
         "w754399958",
         "w754399959",
         "w754399960",
-        "w754399961",
-        "r10396838"
+        "w754399961"
       ],
       footprint: {
         centre: [
@@ -5690,8 +5638,6 @@
       landmarkId: "osm_building_276272893",
       modelUrl: "./models/de-piramides.glb",
       suppressOsmIds: [
-        "w276272893",
-        "NL.IMBAG.Pand.0363100012110293",
         "w1080809439",
         "w1080809440",
         "w1080809441",
@@ -5908,7 +5854,6 @@
       landmarkId: "extract_landmarks_1875483593",
       modelUrl: "./models/nemo.glb",
       suppressOsmIds: [
-        "w57856769",
         "w1390692763",
         "w1390692764",
         "w1390692765",
@@ -5918,8 +5863,7 @@
         "w1390692769",
         "w1390692770",
         "w1390692771",
-        "w1390692772",
-        "NL.IMBAG.Pand.0363100012164988"
+        "w1390692772"
       ],
       spatialSuppression: false,
       footprint: {
@@ -5955,10 +5899,7 @@
       name: "Amsterdam Sloterdijk Station",
       landmarkId: "osm_building_268460687",
       modelUrl: "./models/sloterdijk-station.glb",
-      suppressOsmIds: [
-        "w268460687",
-        "NL.IMBAG.Pand.0363100012120833"
-      ],
+      suppressOsmIds: [],
       footprint: {
         centre: [
           4.838214466204455,
@@ -6033,7 +5974,6 @@
       landmarkId: "extract_landmarks_342809743",
       modelUrl: "./models/palace-on-the-dam.glb",
       suppressOsmIds: [
-        "r3580875",
         "w748659170",
         "w748659171",
         "w748659172",
@@ -6051,9 +5991,7 @@
         "w748659184",
         "w748659185",
         "w748659186",
-        "w748659187",
-        "w57856712",
-        "NL.IMBAG.Pand.0363100012167579"
+        "w748659187"
       ],
       spatialSuppression: false,
       footprint: {
@@ -6204,8 +6142,6 @@
       landmarkId: "extract_landmarks_626684803",
       modelUrl: "./models/concertgebouw.glb",
       suppressOsmIds: [
-        "w46696080",
-        "NL.IMBAG.Pand.0363100012233435",
         "w754269603",
         "w754269604",
         "w754269605",
@@ -6254,8 +6190,6 @@
       landmarkId: "extract_landmarks_1919682395",
       modelUrl: "./models/stadhuis.glb",
       suppressOsmIds: [
-        "w268782345",
-        "w751591420",
         "w751559653",
         "w751559654",
         "w751559655",
@@ -6278,8 +6212,7 @@
         "w751591419",
         "w751612860",
         "w751612861",
-        "w751612862",
-        "NL.IMBAG.Pand.0363100012186092"
+        "w751612862"
       ],
       spatialSuppression: false,
       footprint: {
@@ -7791,18 +7724,13 @@
       landmarkId: "n2817982961",
       modelUrl: "./models/rai-amsterdam.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012093034",
         "w806950194",
         "w806950195",
         "w806950196",
         "w806950197",
-        "w43783760",
-        "NL.IMBAG.Pand.0363100012093905",
-        "w277270903",
         "w461439852",
         "NL.IMBAG.Pand.0363100012218586",
         "w277270901",
-        "w1238963818",
         "w807090339",
         "w807204806",
         "w807204801",
@@ -8127,7 +8055,6 @@
         "w717022792",
         "NL.IMBAG.Pand.0363100012252491",
         "w717022783",
-        "NL.IMBAG.Pand.0363100012252492",
         "w717022804",
         "NL.IMBAG.Pand.0363100012252493"
       ],
@@ -8206,8 +8133,6 @@
       landmarkId: "manual_centrale_markthal",
       modelUrl: "./models/centrale-markthal.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012210502",
-        "w276272968",
         "w1080812379",
         "w1080812380",
         "w1080812381",
@@ -8383,12 +8308,10 @@
       landmarkId: "osm_building_27653949",
       modelUrl: "./models/vinoly.glb",
       suppressOsmIds: [
-        "w27653949",
         "w754894011",
         "w754894012",
         "w754894013",
-        "w754894014",
-        "NL.IMBAG.Pand.0363100012107681"
+        "w754894014"
       ],
       spatialSuppression: false,
       footprint: {
@@ -11829,8 +11752,7 @@
       modelUrl: "./models/luther-museum.glb",
       suppressOsmIds: [
         "NL.IMBAG.Pand.0363100012164939",
-        "r3604195",
-        "w269000350"
+        "r3604195"
       ],
       spatialSuppression: false,
       footprint: {
@@ -11876,11 +11798,7 @@
       modelUrl: "./models/huize-frankendael.glb",
       suppressOsmIds: [
         "w44980011",
-        "NL.IMBAG.Pand.0363100012162192",
-        "w1562613213",
-        "w1562613214",
-        "w1562613215",
-        "w1562613216"
+        "NL.IMBAG.Pand.0363100012162192"
       ],
       spatialSuppression: false,
       footprint: {
@@ -12334,8 +12252,6 @@
       landmarkId: "extract_landmarks_213091641",
       modelUrl: "./models/posthoornkerk.glb",
       suppressOsmIds: [
-        "w43040630",
-        "NL.IMBAG.Pand.0363100012167529",
         "w750036045",
         "w750036049",
         "w750036051",
@@ -14049,9 +13965,7 @@
       name: "Houseboat Museum (Hendrika Maria)",
       landmarkId: "extract_landmarks_941219842",
       modelUrl: "./models/houseboat-museum.glb",
-      suppressOsmIds: [
-        "w174999382"
-      ],
+      suppressOsmIds: [],
       spatialSuppression: false,
       footprint: {
         centre: [
@@ -17662,8 +17576,7 @@
       suppressOsmIds: [
         "w749385556",
         "w749385557",
-        "w749385558",
-        "NL.IMBAG.Pand.0363100012171559"
+        "w749385558"
       ],
       spatialSuppression: false,
       footprint: {
@@ -18930,8 +18843,7 @@
         "w985991444",
         "w985991445",
         "w985991446",
-        "w985991447",
-        "NL.IMBAG.Pand.0363100012128931"
+        "w985991447"
       ],
       spatialSuppression: false,
       footprint: {
@@ -19042,8 +18954,7 @@
         "w755504259",
         "w755504260",
         "w755504261",
-        "w755504262",
-        "NL.IMBAG.Pand.0363100012090447"
+        "w755504262"
       ],
       spatialSuppression: false,
       footprint: {
@@ -19428,9 +19339,7 @@
       name: "Sea Palace",
       landmarkId: "n13404202880",
       modelUrl: "./models/sea-palace.glb",
-      suppressOsmIds: [
-        "w454006714"
-      ],
+      suppressOsmIds: [],
       spatialSuppression: false,
       footprint: {
         centre: [
@@ -22142,7 +22051,6 @@
       landmarkId: "requested-ronde-lutherse-kerk",
       modelUrl: "./models/ronde-lutherse-kerk.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012179368",
         "w749586949",
         "w749586950",
         "w749586951",
@@ -23037,7 +22945,6 @@
       landmarkId: "n2817713466",
       modelUrl: "./models/hotel-okura.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012150422",
         "w753577527",
         "w753577528",
         "w753577537",
@@ -25404,7 +25311,6 @@
       landmarkId: "n6933045932",
       modelUrl: "./models/pakhuis-de-zwijger.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012088034",
         "w1533880135",
         "w1533880136",
         "w1533880137"
@@ -26447,7 +26353,6 @@
       landmarkId: "de-nederlandsche-bank",
       modelUrl: "./models/de-nederlandsche-bank.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012165684",
         "w1533847438"
       ],
       spatialSuppression: false,
@@ -26680,9 +26585,7 @@
       name: "Odessa",
       landmarkId: "n4594648817",
       modelUrl: "./models/odessa.glb",
-      suppressOsmIds: [
-        "w277087161"
-      ],
+      suppressOsmIds: [],
       spatialSuppression: false,
       footprint: {
         centre: [
@@ -29875,7 +29778,6 @@
       landmarkId: "kohnstammhuis",
       modelUrl: "./models/kohnstammhuis.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012125963",
         "w742039458",
         "w754512898",
         "w754512899",
@@ -30399,7 +30301,6 @@
       category: "ordinary",
       modelUrl: "./models/hva-wibautstraat-3.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012241500",
         "w754512892",
         "w754512893",
         "w754512894",
@@ -31386,7 +31287,6 @@
       category: "ordinary",
       modelUrl: "./models/bercylaan-801-855.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012250610",
         "w1212855770",
         "w1244980639"
       ],
@@ -31476,7 +31376,6 @@
       landmarkId: "vriesseveem-9",
       modelUrl: "./models/vriesseveem-9.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012239869",
         "w755510627",
         "w755510628",
         "w755510629",
@@ -31641,7 +31540,6 @@
       landmarkId: "extract_landmarks_961954901",
       modelUrl: "./models/scheepvaartmuseum.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012170236",
         "r3604837",
         "w269078550"
       ],
@@ -31794,7 +31692,6 @@
       landmarkId: "extract_landmarks_1875747488",
       modelUrl: "./models/waag.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012171850",
         "w749066938",
         "w749066939",
         "w749066940",
@@ -35415,6 +35312,1348 @@
         ]
       },
       bagYear: 1941
+    },
+    {
+      id: "jodenbreestraat-11",
+      name: "Jodenbreestraat 11 block",
+      category: "ordinary",
+      modelUrl: "./models/jodenbreestraat-11.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012185418"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.903560954873132,
+          52.369005715765255
+        ],
+        headingDegrees: 124,
+        lengthMetres: 127.24,
+        widthMetres: 45.68
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.9037612811248446,
+          52.368944543683675
+        ],
+        northOffsetDegrees: 0,
+        source: "PDOK BAG 0363100012185418 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
+      },
+      materialOverrides: {
+        brick: "#9a5a47",
+        red: "#7f4a3c",
+        stone: "#3f4246",
+        concrete: "#b4a999",
+        white: "#c9c2b6",
+        slate: "#454848",
+        dark: "#2c3236",
+        glass: "#6a7d8a",
+        frame: "#4a5358"
+      },
+      preservePositionPrecision: true,
+      attribution: {
+        title: "Jodenbreestraat 11 block original architecture",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012185418",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native metre geometry on the 3DBAG LoD2.2 massing; facade rhythm counted by eye from municipal panoramas, no pixels or meshes imported. Ordinary large building, no POI or route destination."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.902961087171866,
+              52.36948307634946
+            ],
+            [
+              4.9029418804547324,
+              52.36946566949272
+            ],
+            [
+              4.902938274657654,
+              52.3694624011943
+            ],
+            [
+              4.902937065181168,
+              52.36946289955914
+            ],
+            [
+              4.902927803537656,
+              52.369454503108926
+            ],
+            [
+              4.902928777011454,
+              52.36945410264367
+            ],
+            [
+              4.902939691859164,
+              52.36944959950561
+            ],
+            [
+              4.902919867215963,
+              52.36943230695797
+            ],
+            [
+              4.902909453839059,
+              52.36943660542806
+            ],
+            [
+              4.902908480365473,
+              52.36943700589319
+            ],
+            [
+              4.902899436814696,
+              52.369428808062324
+            ],
+            [
+              4.90290077725757,
+              52.36942841808604
+            ],
+            [
+              4.9026390845270225,
+              52.36919103353787
+            ],
+            [
+              4.902637889639046,
+              52.36919154094715
+            ],
+            [
+              4.902629048996128,
+              52.36918359558122
+            ],
+            [
+              4.902642279482457,
+              52.369178140262655
+            ],
+            [
+              4.902643020933279,
+              52.369178817375285
+            ],
+            [
+              4.902666531925274,
+              52.369169125977386
+            ],
+            [
+              4.902667215136678,
+              52.369169757913006
+            ],
+            [
+              4.902704694058087,
+              52.3691543086204
+            ],
+            [
+              4.902704010846386,
+              52.36915367668499
+            ],
+            [
+              4.902710559763767,
+              52.36915097121956
+            ],
+            [
+              4.902714078110218,
+              52.36915417625346
+            ],
+            [
+              4.90275152753881,
+              52.36913873581304
+            ],
+            [
+              4.902748009190871,
+              52.369135530780305
+            ],
+            [
+              4.902771416966242,
+              52.36912587489012
+            ],
+            [
+              4.9027706754162,
+              52.36912520676556
+            ],
+            [
+              4.902776692414961,
+              52.36912280470231
+            ],
+            [
+              4.902748093327153,
+              52.36909690194882
+            ],
+            [
+              4.9027461305125195,
+              52.36909512333881
+            ],
+            [
+              4.902816413555015,
+              52.36906605703498
+            ],
+            [
+              4.902818420124532,
+              52.36906786278596
+            ],
+            [
+              4.9028190016379405,
+              52.36906839543983
+            ],
+            [
+              4.903119033419939,
+              52.36894375862853
+            ],
+            [
+              4.903116677993402,
+              52.368941627898714
+            ],
+            [
+              4.903130822783864,
+              52.36893579878005
+            ],
+            [
+              4.903174358617027,
+              52.36891828895361
+            ],
+            [
+              4.903176350610002,
+              52.36892008565126
+            ],
+            [
+              4.903176946710254,
+              52.36892062735076
+            ],
+            [
+              4.903475939795839,
+              52.36879680327203
+            ],
+            [
+              4.903475634403465,
+              52.36879653239303
+            ],
+            [
+              4.903473351694029,
+              52.368794464881354
+            ],
+            [
+              4.903531775567797,
+              52.3687702569912
+            ],
+            [
+              4.9035341311032195,
+              52.36877237872551
+            ],
+            [
+              4.903534363671283,
+              52.36877259538056
+            ],
+            [
+              4.903831151312239,
+              52.36865020841843
+            ],
+            [
+              4.9038454579256605,
+              52.36866320013943
+            ],
+            [
+              4.903853363263649,
+              52.36865996987354
+            ],
+            [
+              4.903861704177874,
+              52.36865719077076
+            ],
+            [
+              4.903870421840809,
+              52.368654871578556
+            ],
+            [
+              4.903879427962165,
+              52.368653029911876
+            ],
+            [
+              4.903888678201119,
+              52.368651692552774
+            ],
+            [
+              4.903898084463295,
+              52.36865085914152
+            ],
+            [
+              4.9039075731409625,
+              52.36865054735313
+            ],
+            [
+              4.903917070920141,
+              52.36865074790061
+            ],
+            [
+              4.903926489608587,
+              52.368651469411645
+            ],
+            [
+              4.903935785355102,
+              52.36865269373184
+            ],
+            [
+              4.903944855382868,
+              52.36865442044178
+            ],
+            [
+              4.903949366317403,
+              52.36865547244011
+            ],
+            [
+              4.903956129537826,
+              52.36865734252489
+            ],
+            [
+              4.903962639632828,
+              52.36865953513367
+            ],
+            [
+              4.9039688527509675,
+              52.36866203211217
+            ],
+            [
+              4.903976052839082,
+              52.36865479942889
+            ],
+            [
+              4.903970903316617,
+              52.368653061759325
+            ],
+            [
+              4.903974811986149,
+              52.36864874563593
+            ],
+            [
+              4.903975525456285,
+              52.368647948641645
+            ],
+            [
+              4.903978348888794,
+              52.36864890387451
+            ],
+            [
+              4.9039792245510245,
+              52.36864804462824
+            ],
+            [
+              4.903987968920899,
+              52.36865136083038
+            ],
+            [
+              4.903987197014835,
+              52.36865213062307
+            ],
+            [
+              4.9040202586442865,
+              52.36866469555324
+            ],
+            [
+              4.904021015867548,
+              52.368663925700375
+            ],
+            [
+              4.904030374361561,
+              52.36866747808603
+            ],
+            [
+              4.904029602553835,
+              52.3686682388917
+            ],
+            [
+              4.904032102876999,
+              52.368669201792414
+            ],
+            [
+              4.904031331069273,
+              52.36866996259809
+            ],
+            [
+              4.904097454496449,
+              52.36869508343715
+            ],
+            [
+              4.904098226303479,
+              52.36869432263106
+            ],
+            [
+              4.904101341139732,
+              52.36869548576725
+            ],
+            [
+              4.904102112946706,
+              52.368694724961166
+            ],
+            [
+              4.904110038444779,
+              52.36869773223082
+            ],
+            [
+              4.904109266637891,
+              52.368698493037044
+            ],
+            [
+              4.904113375477967,
+              52.368700064675615
+            ],
+            [
+              4.904114147284814,
+              52.36869930386939
+            ],
+            [
+              4.9041220727845225,
+              52.36870231113829
+            ],
+            [
+              4.904121300879894,
+              52.36870308093183
+            ],
+            [
+              4.904124415521634,
+              52.36870426204209
+            ],
+            [
+              4.904123658299476,
+              52.3687050318956
+            ],
+            [
+              4.904189138444661,
+              52.36872990739016
+            ],
+            [
+              4.904189910348584,
+              52.368729137596155
+            ],
+            [
+              4.9041930395786055,
+              52.36873032775178
+            ],
+            [
+              4.904193811384616,
+              52.368729566945056
+            ],
+            [
+              4.904201751479768,
+              52.36873258325583
+            ],
+            [
+              4.904200979673841,
+              52.36873334406261
+            ],
+            [
+              4.904205088520403,
+              52.36873491569799
+            ],
+            [
+              4.904205860326285,
+              52.368734154891186
+            ],
+            [
+              4.904213771253831,
+              52.36873715310672
+            ],
+            [
+              4.904212999448033,
+              52.368737913913584
+            ],
+            [
+              4.904216113996821,
+              52.368739104008704
+            ],
+            [
+              4.904215342191026,
+              52.368739864815595
+            ],
+            [
+              4.904280851804141,
+              52.36876474037916
+            ],
+            [
+              4.904281608926762,
+              52.36876397951198
+            ],
+            [
+              4.904284738259544,
+              52.36876516067791
+            ],
+            [
+              4.904285510064589,
+              52.36876439987055
+            ],
+            [
+              4.90429342080726,
+              52.36876741605541
+            ],
+            [
+              4.904292648904463,
+              52.368768185850094
+            ],
+            [
+              4.904296787318143,
+              52.368769739627446
+            ],
+            [
+              4.904297559220893,
+              52.36876896983274
+            ],
+            [
+              4.904305469965202,
+              52.368771986016775
+            ],
+            [
+              4.904304698062533,
+              52.36877275581151
+            ],
+            [
+              4.904307812714062,
+              52.36877393691695
+            ],
+            [
+              4.904307040909235,
+              52.368774697724405
+            ],
+            [
+              4.904372535845029,
+              52.368799582164606
+            ],
+            [
+              4.904373292771043,
+              52.36879883927147
+            ],
+            [
+              4.904376422304363,
+              52.368800002460304
+            ],
+            [
+              4.904377208986572,
+              52.36879922373769
+            ],
+            [
+              4.9043851344242,
+              52.36880223997624
+            ],
+            [
+              4.9043843478398905,
+              52.368803009711655
+            ],
+            [
+              4.904388456699417,
+              52.36880458134067
+            ],
+            [
+              4.904389243283682,
+              52.36880381160522
+            ],
+            [
+              4.904397154138266,
+              52.3688068187958
+            ],
+            [
+              4.904396382236579,
+              52.36880758859118
+            ],
+            [
+              4.9043994969908145,
+              52.368808760706855
+            ],
+            [
+              4.904398725089136,
+              52.368809530502205
+            ],
+            [
+              4.904464234810427,
+              52.36883441495153
+            ],
+            [
+              4.9044650066136075,
+              52.368833654143025
+            ],
+            [
+              4.904468121273694,
+              52.3688348352442
+            ],
+            [
+              4.904468907759321,
+              52.36883407449556
+            ],
+            [
+              4.9044769941302295,
+              52.368837145310316
+            ],
+            [
+              4.904476236911905,
+              52.36883791516607
+            ],
+            [
+              4.904508655330709,
+              52.36885024365567
+            ],
+            [
+              4.904509427231195,
+              52.368849473859584
+            ],
+            [
+              4.9045230702759355,
+              52.36885465247305
+            ],
+            [
+              4.904509809871789,
+              52.36886018876867
+            ],
+            [
+              4.904508980987177,
+              52.36885944839738
+            ],
+            [
+              4.904443079844496,
+              52.36888671805284
+            ],
+            [
+              4.904443908728515,
+              52.36888745842461
+            ],
+            [
+              4.904430663574052,
+              52.368892940847346
+            ],
+            [
+              4.904422448637949,
+              52.36888549249095
+            ],
+            [
+              4.904393244607917,
+              52.36889756074008
+            ],
+            [
+              4.904401459541337,
+              52.368905009098484
+            ],
+            [
+              4.904388288180307,
+              52.368910455866555
+            ],
+            [
+              4.9043872413085525,
+              52.368909507888155
+            ],
+            [
+              4.904282213091146,
+              52.368952616015896
+            ],
+            [
+              4.9042824746375615,
+              52.36895286873855
+            ],
+            [
+              4.904187796624266,
+              52.368992046430485
+            ],
+            [
+              4.9041494328019875,
+              52.369007915003436
+            ],
+            [
+              4.904150261487629,
+              52.36900867335188
+            ],
+            [
+              4.90413705981909,
+              52.36901420085776
+            ],
+            [
+              4.90412884490997,
+              52.36900675248123
+            ],
+            [
+              4.904094788036395,
+              52.36902083207933
+            ],
+            [
+              4.90399782392742,
+              52.369060917037984
+            ],
+            [
+              4.9039935022545675,
+              52.369062705930176
+            ],
+            [
+              4.903967011922313,
+              52.369073652698034
+            ],
+            [
+              4.90397521223188,
+              52.3690810920385
+            ],
+            [
+              4.903961952377047,
+              52.36908656536118
+            ],
+            [
+              4.903961138082063,
+              52.369085834033264
+            ],
+            [
+              4.903802668151518,
+              52.36915128275532
+            ],
+            [
+              4.90380352600325,
+              52.369152059200694
+            ],
+            [
+              4.903790266008104,
+              52.36915754149132
+            ],
+            [
+              4.903782065715508,
+              52.36915010213818
+            ],
+            [
+              4.903620231682434,
+              52.369217001877644
+            ],
+            [
+              4.903628432058148,
+              52.36922443225456
+            ],
+            [
+              4.903615157337122,
+              52.36922991446548
+            ],
+            [
+              4.903614343143211,
+              52.369229174147904
+            ],
+            [
+              4.9034559450147235,
+              52.369294676626254
+            ],
+            [
+              4.903456744720537,
+              52.3692953989103
+            ],
+            [
+              4.903443484639731,
+              52.369300881161834
+            ],
+            [
+              4.9034352842809525,
+              52.369293450772254
+            ],
+            [
+              4.903273449202463,
+              52.36936035003432
+            ],
+            [
+              4.903281634961783,
+              52.36936777138771
+            ],
+            [
+              4.903268374837727,
+              52.36937325361946
+            ],
+            [
+              4.90326756064699,
+              52.36937251329952
+            ],
+            [
+              4.902985336615143,
+              52.3694891433622
+            ],
+            [
+              4.902986165387918,
+              52.369489892731416
+            ],
+            [
+              4.902982345199454,
+              52.3694914679326
+            ],
+            [
+              4.902976268253598,
+              52.36949397761361
+            ],
+            [
+              4.902972890508155,
+              52.36949537486983
+            ],
+            [
+              4.902963905173944,
+              52.369487222220684
+            ],
+            [
+              4.9029651146507955,
+              52.369486723855495
+            ],
+            [
+              4.902961087171866,
+              52.36948307634946
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "max-euwe-centrum",
+      name: "Max Euwe Centrum \u2014 retained prison Kruisgebouw",
+      landmarkId: "extract_landmarks_1145162580",
+      modelUrl: "./models/max-euwe-centrum.glb",
+      suppressOsmIds: [
+        "w267565647",
+        "NL.IMBAG.Pand.0363100012168688"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.88297,
+          52.36265
+        ],
+        headingDegrees: 90,
+        lengthMetres: 73.49299621582031,
+        widthMetres: 68.2602424621582
+      },
+      surveyed: {
+        anchor: [
+          4.88297,
+          52.36265
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG0363100012168688 exact native outline and48 source roof domains; source original assemblies and official operator entrance under mapped Leidseplein\u2013MaxEuweplein covered passage. NorthOffset0: builder already encodes geographic east/south coordinates."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        green: "#a0aea0",
+        dark: "#35443e",
+        glass: "#7b9caa",
+        frame: "#45534f",
+        ochre: "#b4a983",
+        slate: "#535d63",
+        white: "#dfe5e1",
+        stone: "#bbc4b7"
+      },
+      attribution: {
+        title: "Max Euwe Centrum \u2014 original Kruisgebouw",
+        author: "Map Recall",
+        sourceUrl: "https://maxeuwe.nl/geschiedenis/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native-scale texture-free surveyed Kruisgebouw with source-supported roof families, recessed courtyard clerestories, glazed central pyramid, portico, shop canopies and mapped covered passages. Simplified interior framing and uncertain localized pyramid crest retained in source record; native acceptance pending."
+      }
+    },
+    {
+      id: "holocaust-namenmonument",
+      name: "Nationaal Holocaust Namenmonument",
+      assetKind: "memorial",
+      landmarkId: "extract_landmarks_1974741421",
+      modelUrl: "./models/holocaust-namenmonument.glb",
+      suppressOsmIds: [
+        "r13236148",
+        "r13236149",
+        "r13236150",
+        "r13236507",
+        "w984818187",
+        "w984815753",
+        "w984816579",
+        "w984816676"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.904975,
+          52.3657056
+        ],
+        headingDegrees: 0,
+        lengthMetres: 90,
+        widthMetres: 50
+      },
+      surveyed: {
+        anchor: [
+          4.904975,
+          52.3657056
+        ],
+        northOffsetDegrees: -90,
+        source: "OSM current surveyed steel-letter multipolygons; native x east / z south"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        stone: "#c5beb0",
+        ochre: "#b48a4e",
+        frame: "#b9c3c9",
+        dark: "#37393b",
+        bronze: "#5c4938"
+      },
+      attribution: {
+        title: "Nationaal Holocaust Namenmonument \u2014 original native memorial geometry",
+        author: "Map Recall; memorial architecture Daniel Libeskind / Rijnboutt",
+        sourceUrl: "https://libeskind.com/work/names-monument/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free four current surveyed hollow steel-letter volumes, native thin paving and source-plan traced discontinuous brick walls. Steel taper directions checked againstengineeringdrawings/current2021photos; wall endpoints and central-north crest approximate. No imported mesh/photo pixels; no invented inscriptions."
+      },
+      geometryExport: {
+        positionPrecision: "FLOAT32 preserved, meshopt compression without quantized positions",
+        reason: "Thin sourcehole boundary failed14/16bitpositions; preserve exactsourceouter/inner topology."
+      },
+      doubleSided: false,
+      preserveAllPositionPrecision: true
+    },
+    {
+      id: "voormalige-schouwburgpoort",
+      name: "Voormalige Schouwburgpoort",
+      assetKind: "standalone-structure",
+      landmarkId: "extract_landmarks_604950476",
+      modelUrl: "./models/voormalige-schouwburgpoort.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      surveyed: {
+        anchor: [
+          4.88423070093718,
+          52.36927737255137
+        ],
+        northOffsetDegrees: 0,
+        source: "Baked east/south native axes. Current official BAG neighbor corner gap; front 92.45823764540219 degrees. Gate height/depth are photo estimates, not BAG measurements."
+      },
+      footprint: {
+        centre: [
+          4.88423070093718,
+          52.36927737255137
+        ],
+        headingDegrees: 0,
+        lengthMetres: 7.8345600221156095,
+        widthMetres: 0.66
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 92.45823764540219,
+      doubleSided: false,
+      materialOverrides: {
+        white: "#dedad1",
+        stone: "#a99d85",
+        greyBrick: "#8c806d",
+        dark: "#313b39",
+        gold: "#c9ae72"
+      },
+      routeCenter: [
+        52.36927695643142,
+        4.884246575995003
+      ],
+      heightMetres: 6.493314883882176,
+      attribution: {
+        title: "Voormalige Schouwburgpoort \u2014 original surviving gate geometry",
+        author: "Canal Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/2587",
+        licence: "Original project geometry",
+        licenceUrl: "./LICENSE",
+        modifications: "Native original gate with three arches, side grilles, source-supported Vondel Roman-serif inscription and carved scrolls. Body width reconciled to adjoining official BAG corners; gate pose, height/depth are source/photo inferences. All neighboring buildings retained; no replacement identity invented."
+      }
+    },
+    {
+      id: "academie-theater-dans",
+      name: "Academie voor Theater en Dans",
+      landmarkId: "extract_landmarks_968719411",
+      modelUrl: "./models/academie-theater-dans.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012185844",
+        "0363100012185844",
+        "w268782517"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9020093656704535,
+          52.369651498023075
+        ],
+        headingDegrees: 0,
+        lengthMetres: 84.15264922816195,
+        widthMetres: 73.72219068591846
+      },
+      surveyed: {
+        anchor: [
+          4.9020093656704535,
+          52.369651498023075
+        ],
+        northOffsetDegrees: 0,
+        source: "Current exact PDOK BAG parent/OSMway268782517; original AHN5 LoD2.2 roof regions; native east/south metres"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        white: "#d7d3c6",
+        brick: "#884c32",
+        glass: "#7598a6",
+        stone: "#bcbfb9",
+        frame: "#424743",
+        blue: "#253b50",
+        dark: "#3b4141",
+        bronze: "#95532e",
+        ochre: "#a97451",
+        slate: "#514f48"
+      },
+      attribution: {
+        title: "Academie voor Theater en Dans native1996 building",
+        author: "Map Recall",
+        sourceUrl: "https://www.atd.ahk.nl/de-atd/voorzieningen/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free current native BAG perimeter and roof regions. Source-guided differentiated curtainwall/ribbon windows, recessed curved two-level foyer, open terrace/glazed pavilion, local tall white corner brow, supported rooftop equipment and current-aerial solar field. Independent source/CPU review c0d686cd passes; actual native/game/POI/performance pending. No imported mesh or photo pixels."
+      },
+      relatedLandmarkIds: [
+        "extract_landmarks_1383482004"
+      ],
+      destinationLandmarkIds: [
+        "extract_landmarks_968719411",
+        "extract_landmarks_1383482004"
+      ],
+      doubleSided: false,
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.9015993624274845,
+              52.369649703776986
+            ],
+            [
+              4.901598951605038,
+              52.36964967512892
+            ],
+            [
+              4.9015946474394605,
+              52.36964716788048
+            ],
+            [
+              4.901590698120415,
+              52.36964443739454
+            ],
+            [
+              4.9015871472042845,
+              52.369641528788314
+            ],
+            [
+              4.901584009472177,
+              52.36963843313472
+            ],
+            [
+              4.901581299114893,
+              52.36963519543059
+            ],
+            [
+              4.901579060082274,
+              52.36963182484391
+            ],
+            [
+              4.901577277396311,
+              52.36962834827636
+            ],
+            [
+              4.90157599471165,
+              52.369624801857924
+            ],
+            [
+              4.901575197247033,
+              52.36962119451564
+            ],
+            [
+              4.901574899389946,
+              52.36961755327165
+            ],
+            [
+              4.901575100648335,
+              52.36961392306257
+            ],
+            [
+              4.9015758010220765,
+              52.3696103038883
+            ],
+            [
+              4.901577000019121,
+              52.369606740685406
+            ],
+            [
+              4.901578786129429,
+              52.36960319786601
+            ],
+            [
+              4.901581055589735,
+              52.36959976488154
+            ],
+            [
+              4.901583822885922,
+              52.36959645976684
+            ],
+            [
+              4.901587028893359,
+              52.36959331823016
+            ],
+            [
+              4.90159067351361,
+              52.369590349258836
+            ],
+            [
+              4.901594726889214,
+              52.369587597668875
+            ],
+            [
+              4.901599159654658,
+              52.36958506333982
+            ],
+            [
+              4.901603927466552,
+              52.36958277305289
+            ],
+            [
+              4.901604505111152,
+              52.3695823170488
+            ],
+            [
+              4.90160515597272,
+              52.369581879320464
+            ],
+            [
+              4.901605347930631,
+              52.369581781242914
+            ],
+            [
+              4.901605865073371,
+              52.369581486769434
+            ],
+            [
+              4.901904631579412,
+              52.36945771066055
+            ],
+            [
+              4.9018980304230055,
+              52.36945176070316
+            ],
+            [
+              4.901896894119092,
+              52.369450938164064
+            ],
+            [
+              4.902016914906092,
+              52.3694013595205
+            ],
+            [
+              4.902263712262542,
+              52.36929930853373
+            ],
+            [
+              4.9022686410518865,
+              52.369303777636944
+            ],
+            [
+              4.902309202456211,
+              52.36928710079026
+            ],
+            [
+              4.902304273664618,
+              52.3692826316887
+            ],
+            [
+              4.902440710837025,
+              52.36922620829846
+            ],
+            [
+              4.902467433935294,
+              52.36925044071923
+            ],
+            [
+              4.902605426349886,
+              52.369375557260334
+            ],
+            [
+              4.902651923224559,
+              52.369417711170385
+            ],
+            [
+              4.902813019778217,
+              52.369563782484725
+            ],
+            [
+              4.9028113529734805,
+              52.36956447670692
+            ],
+            [
+              4.90280526122708,
+              52.36956699530632
+            ],
+            [
+              4.902801101752185,
+              52.36956871291697
+            ],
+            [
+              4.902798397454925,
+              52.36956625719636
+            ],
+            [
+              4.90265549997314,
+              52.3696252789695
+            ],
+            [
+              4.902658204266069,
+              52.36962773469334
+            ],
+            [
+              4.902646286205665,
+              52.3696326651099
+            ],
+            [
+              4.902643581913098,
+              52.369630209385754
+            ],
+            [
+              4.902500698702315,
+              52.36968923103084
+            ],
+            [
+              4.902503402990543,
+              52.36969168675818
+            ],
+            [
+              4.902491484895772,
+              52.36969661715905
+            ],
+            [
+              4.9024887806079,
+              52.36969416143142
+            ],
+            [
+              4.902345882204329,
+              52.36975319181552
+            ],
+            [
+              4.902348586487864,
+              52.369755647546405
+            ],
+            [
+              4.902336668358717,
+              52.36976057793152
+            ],
+            [
+              4.902333964075543,
+              52.369758122200416
+            ],
+            [
+              4.902191080041208,
+              52.3698171434692
+            ],
+            [
+              4.902193784320049,
+              52.36981959920356
+            ],
+            [
+              4.902181866156532,
+              52.36982452957302
+            ],
+            [
+              4.902179161878054,
+              52.36982207383838
+            ],
+            [
+              4.902036277530262,
+              52.36988108593169
+            ],
+            [
+              4.902038981804407,
+              52.36988354166956
+            ],
+            [
+              4.9020270490219655,
+              52.36988846297584
+            ],
+            [
+              4.902014486599265,
+              52.369877113948206
+            ],
+            [
+              4.902011738573225,
+              52.36987463106738
+            ],
+            [
+              4.902013552918663,
+              52.36987387454704
+            ],
+            [
+              4.902012186099706,
+              52.369872646617644
+            ],
+            [
+              4.901993662406443,
+              52.3698559074972
+            ],
+            [
+              4.901991848159705,
+              52.369856655029935
+            ],
+            [
+              4.9019819610513595,
+              52.36984772566812
+            ],
+            [
+              4.901983790079037,
+              52.3698469692084
+            ],
+            [
+              4.901963885104709,
+              52.369828984118676
+            ],
+            [
+              4.901962070760266,
+              52.36982974063829
+            ],
+            [
+              4.901951980168828,
+              52.36982062169805
+            ],
+            [
+              4.901953794414758,
+              52.369819874165906
+            ],
+            [
+              4.9019340495010715,
+              52.369802024542636
+            ],
+            [
+              4.901932220572717,
+              52.36980277201429
+            ],
+            [
+              4.901921097639976,
+              52.369792723106265
+            ],
+            [
+              4.901892218894725,
+              52.36980446851546
+            ],
+            [
+              4.901871938712918,
+              52.369785888683275
+            ],
+            [
+              4.901852399996642,
+              52.36976798596507
+            ],
+            [
+              4.901602091184187,
+              52.36965126085452
+            ],
+            [
+              4.90160067502259,
+              52.369650518054215
+            ],
+            [
+              4.901600398017554,
+              52.36965033716395
+            ],
+            [
+              4.9015993624274845,
+              52.369649703776986
+            ]
+          ]
+        ]
+      },
+      preserveAllPositionPrecision: true
     }
   ];
 
@@ -37893,6 +39132,7 @@
 
   // src/canalRecall/landmarks/manualModels.ts
   var ownAttribution = (title, sourceUrl) => ({ title, author: "Map Recall", sourceUrl, licence: "Original project asset", licenceUrl: "./LICENSE", modifications: "Original low-poly reconstruction; reference used for silhouette only. Flat materials, no imported model geometry or image textures. Hospital footprints from OpenStreetMap (ODbL); heights and architectural details are approximate." });
+  var OLVG_STALE_SUPPRESS = /* @__PURE__ */ new Set(["w274704704", "NL.IMBAG.Pand.0363100012186327", "w1837609", "w12206467"]);
   var ALL_MANUAL_LANDMARKS = [
     {
       id: "centraal-station",
@@ -37900,20 +39140,12 @@
       landmarkId: "extract_landmarks_332626598",
       modelUrl: "./models/centraal-station.glb",
       suppressOsmIds: [
-        "w332626598",
-        "w57856845",
         "w1239767708",
         "w1239767706",
         "w451533145",
         "w451533147",
         "w451533149",
         "w506192827",
-        "NL.IMBAG.Pand.0363100012185598",
-        "NL.IMBAG.Pand.0363100012242112",
-        "NL.IMBAG.Pand.0363100012240304",
-        "NL.IMBAG.Pand.0363100012245758",
-        "NL.IMBAG.Pand.0363100012245759",
-        "NL.IMBAG.Pand.0363100012246251",
         // 2026-10-11 check:osm-under-models: building:part ways of the train-shed roofs and station wings under the model (>=80% of their area)
         "w269124500",
         "w424523117",
@@ -37983,7 +39215,7 @@
     },
     // `category` in the JSON (absent = landmark) becomes the spec's `buildingCategory` (buildingCategory.ts).
     ...manualCatalogue_default.map((entry) => ({ ...entry, buildingCategory: manualEntryCategory(entry) })),
-    ...hospital_footprints_default.sites.map((s) => ({ id: s.id, name: s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", landmarkId: s.id, modelUrl: `./models/${s.id}.glb`, suppressOsmIds: s.buildings.filter((f) => f.properties.building !== "construction").flatMap((f) => [f.id, ...f.properties["ref:bag"] ? [`NL.IMBAG.Pand.${f.properties["ref:bag"]}`] : []]), spatialSuppression: false, groundAltitudeMetres: 0, facingOffsetDegrees: 0, surveyed: { anchor: s.id === "olvg-west" ? [4.8397, 52.37115] : [4.9153, 52.3582], northOffsetDegrees: 0, source: "OSM building rings; local east/south metres" }, attribution: ownAttribution(s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", "https://www.olvg.nl/over-olvg/") }))
+    ...hospital_footprints_default.sites.map((s) => ({ id: s.id, name: s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", landmarkId: s.id, modelUrl: `./models/${s.id}.glb`, suppressOsmIds: s.buildings.filter((f) => f.properties.building !== "construction").flatMap((f) => [f.id, ...f.properties["ref:bag"] ? [`NL.IMBAG.Pand.${f.properties["ref:bag"]}`] : []]).filter((id) => !OLVG_STALE_SUPPRESS.has(id)), spatialSuppression: false, groundAltitudeMetres: 0, facingOffsetDegrees: 0, surveyed: { anchor: s.id === "olvg-west" ? [4.8397, 52.37115] : [4.9153, 52.3582], northOffsetDegrees: 0, source: "OSM building rings; local east/south metres" }, attribution: ownAttribution(s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", "https://www.olvg.nl/over-olvg/") }))
   ];
   var MANUAL_LANDMARKS = ALL_MANUAL_LANDMARKS.filter((model) => model.status !== "held");
   var MANUAL_ORDINARY_BUILDINGS = MANUAL_LANDMARKS.filter((model) => model.buildingCategory === "ordinary");
@@ -40597,6 +41829,65 @@
         "https://nl.wikipedia.org/wiki/Elandsgracht"
       ],
       preferDescription: true
+    },
+    {
+      modelId: "max-euwe-centrum",
+      name: "Max Euwe Centrum",
+      description: "The Max Euwe Centrum preserves the memory and work of the Netherlands\u2019 only world chess champion, Max Euwe, who won the title in 1935. Its museum and chess library have occupied the Max Euweplein since December 1991, inside the retained cross-shaped former prison building.",
+      sourceUrl: "https://maxeuwe.nl/geschiedenis/",
+      destinations: [
+        {
+          landmarkId: "extract_landmarks_1145162580",
+          name: "Max Euwe Centrum",
+          center: [
+            52.3628148,
+            4.883196
+          ],
+          destinationOverride: {
+            center: [
+              52.3628148,
+              4.883196
+            ]
+          },
+          description: "The Max Euwe Centrum preserves the memory and work of the Netherlands\u2019 only world chess champion, Max Euwe, who won the title in 1935. Its museum and chess library have occupied the Max Euweplein since December 1991, inside the retained cross-shaped former prison building.",
+          funFact: "The centre occupies the first floor of the former prison\u2019s retained cross-shaped building. Its public entrance is under the covered passage linking Leidseplein with Max Euweplein.",
+          sourceUrl: "https://maxeuwe.nl/route-parkeren/"
+        }
+      ]
+    },
+    {
+      modelId: "holocaust-namenmonument",
+      name: "Nationaal Holocaust Namenmonument",
+      description: "Opened on 19 September 2021, Daniel Libeskind\u2019s memorial commemorates Holocaust victims who have no known grave. Four mirror-steel volumes form the Hebrew word \u05DC\u05D6\u05DB\u05E8, meaning \u201CIn memory of\u201D, above a labyrinth of brick walls bearing individual names.",
+      sourceUrl: "https://libeskind.com/work/names-monument/"
+    },
+    {
+      modelId: "voormalige-schouwburgpoort",
+      name: "Voormalige Schouwburgpoort",
+      description: "This sandstone gateway is the surviving entrance to Jacob van Campen\u2019s theatre, opened in1638. Its three arches echo a Roman triumphal arch. The theatre burned in1772; the separate1773 Armenkantoor stands beyond the open forecourt. The gateway still bears Vondel\u2019s verse comparing the world to a stage.",
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/2587"
+    },
+    {
+      modelId: "academie-theater-dans",
+      name: "Academie voor Theater en Dans",
+      description: "The Academy for Theatre and Dance brings its bachelor programmes together at Jodenbreestraat 3. Students make around 400 dance and theatre productions a year, using professional studios, a black-box theatre, dance theatre and costume and scenery workshops. Its 1996 building was designed by Teun Koolhaas/TKA on the site of the demolished Maupoleum.",
+      sourceUrl: "https://www.atd.ahk.nl/de-atd/voorzieningen/",
+      destinations: [
+        {
+          landmarkId: "extract_landmarks_968719411",
+          name: "Academie voor Theater en Dans",
+          description: "The Academy for Theatre and Dance brings its bachelor programmes together at Jodenbreestraat 3. Students make around 400 dance and theatre productions a year, using professional studios, a black-box theatre, dance theatre and costume and scenery workshops. Its 1996 building was designed by Teun Koolhaas/TKA on the site of the demolished Maupoleum.",
+          sourceUrl: "https://www.atd.ahk.nl/de-atd/voorzieningen/",
+          preferDescription: true
+        },
+        {
+          landmarkId: "extract_landmarks_1383482004",
+          name: "Amsterdamse Hogeschool voor de Kunsten",
+          description: "Amsterdam University of the Arts teaches through specialist arts academies across the city. Its central student administration, executive board and Servicebureau share Jodenbreestraat 3 with the Academy for Theatre and Dance; this destination identifies the university administration within that genuine shared building. The academy studios and theatres occupy the same compact 1996 complex.",
+          sourceUrl: "https://www.ahk.nl/contact/",
+          preferDescription: true
+        }
+      ]
     }
   ];
 
