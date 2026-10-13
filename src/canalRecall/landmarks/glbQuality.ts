@@ -310,7 +310,32 @@ class TriGrid {
       const ix0 = Math.floor((x0 - expand) / cell), ix1 = Math.floor((x1 + expand) / cell);
       const iy0 = Math.floor((y0 - expand) / cell), iy1 = Math.floor((y1 + expand) / cell);
       const iz0 = Math.floor((z0 - expand) / cell), iz1 = Math.floor((z1 + expand) / cell);
-      if ((ix1 - ix0 + 1) * (iy1 - iy0 + 1) * (iz1 - iz0 + 1) > 120000) continue; // giant ground plane: skip (a 90 m x 28 m wall triangle spans ~46k cells and must stay in the grid)
+      if ((ix1 - ix0 + 1) * (iy1 - iy0 + 1) * (iz1 - iz0 + 1) > 120000) {
+        // A big roof or a long diagonal wall: bin only the cells its plane crosses (one column of cells per grid square of the plane's two
+        // flattest axes) instead of its whole box, so it stays in the grid without millions of entries. Ground-sized triangles still skip.
+        const a = vert(soup, soup.indices[t * 3]), b = vert(soup, soup.indices[t * 3 + 1]), c = vert(soup, soup.indices[t * 3 + 2]);
+        const e1 = [b[0] - a[0], b[1] - a[1], b[2] - a[2]], e2 = [c[0] - a[0], c[1] - a[1], c[2] - a[2]];
+        const nrm = [e1[1] * e2[2] - e1[2] * e2[1], e1[2] * e2[0] - e1[0] * e2[2], e1[0] * e2[1] - e1[1] * e2[0]];
+        const ax = Math.abs(nrm[0]) >= Math.abs(nrm[1]) && Math.abs(nrm[0]) >= Math.abs(nrm[2]) ? 0 : Math.abs(nrm[1]) >= Math.abs(nrm[2]) ? 1 : 2;
+        const [u, w] = ax === 0 ? [1, 2] : ax === 1 ? [0, 2] : [0, 1];
+        const lo = [ix0, iy0, iz0], hi = [ix1, iy1, iz1];
+        if ((hi[u] - lo[u] + 1) * (hi[w] - lo[w] + 1) > 600000 || Math.abs(nrm[ax]) < 1e-9) { if (process.env.GRID_DEBUG) console.log('SKIP-BIG', cell); continue; }
+        const slopeU = -nrm[u] / nrm[ax], slopeW = -nrm[w] / nrm[ax];
+        const off = a[ax] + (nrm[u] * a[u] + nrm[w] * a[w]) / nrm[ax];
+        for (let iu = lo[u]; iu <= hi[u]; iu++) for (let iw = lo[w]; iw <= hi[w]; iw++) {
+          const u0 = iu * cell - expand, u1 = (iu + 1) * cell + expand, w0 = iw * cell - expand, w1 = (iw + 1) * cell + expand;
+          const e = [slopeU * u0 + slopeW * w0, slopeU * u0 + slopeW * w1, slopeU * u1 + slopeW * w0, slopeU * u1 + slopeW * w1].map(v => v + off);
+          const k0 = Math.max(lo[ax], Math.floor((Math.min(...e) - expand) / cell)), k1 = Math.min(hi[ax], Math.floor((Math.max(...e) + expand) / cell));
+          for (let k = k0; k <= k1; k++) {
+            const idx = [0, 0, 0]; idx[u] = iu; idx[w] = iw; idx[ax] = k;
+            const key = this.key(idx[0], idx[1], idx[2]);
+            let list = this.cells.get(key);
+            if (!list) this.cells.set(key, (list = []));
+            list.push(t);
+          }
+        }
+        continue;
+      }
       for (let ix = ix0; ix <= ix1; ix++) for (let iy = iy0; iy <= iy1; iy++) for (let iz = iz0; iz <= iz1; iz++) {
         const key = this.key(ix, iy, iz);
         let list = this.cells.get(key);
