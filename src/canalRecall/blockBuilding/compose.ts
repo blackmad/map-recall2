@@ -175,6 +175,32 @@ export function barQuad(c: Ctx, slot: Slot, Q: (u: number, v: number, d: number)
   mesh.quad(slot, Q(a, lo, d0), Q(a, hi, d0), Q(a, hi, d1), Q(a, lo, d1), part, scale(p.r, -1));
   mesh.quad(slot, Q(b, lo, d0), Q(b, hi, d0), Q(b, hi, d1), Q(b, lo, d1), part, p.r);
 }
+/**
+ * A closed hexahedron: `Q(i, j, k)` is the corner on u side i, v side j and depth side k (0 = at the wall, 1 = out).
+ * Six quads, each facing away from the centre, so a solid with a tilted or tapered face still has no open edge.
+ */
+export function solid(c: Ctx, slot: Slot, Q: (i: number, j: number, k: number) => V3, part: number) {
+  const all: V3[] = []; for (const i of [0, 1]) for (const j of [0, 1]) for (const k of [0, 1]) all.push(Q(i, j, k));
+  const ctr = scale(all.reduce((s, q) => add(s, q), [0, 0, 0] as V3), 1 / 8);
+  const face = (f: (a: number, b: number) => V3) => {
+    const q = [f(0, 0), f(1, 0), f(1, 1), f(0, 1)], fc = scale(q.reduce((s, x) => add(s, x), [0, 0, 0] as V3), 0.25);
+    c.mesh.quad(slot, q[0], q[1], q[2], q[3], part, sub(fc, ctr));
+  };
+  for (const k of [0, 1]) face((a, b) => Q(a, b, k));
+  for (const j of [0, 1]) face((a, b) => Q(a, j, b));
+  for (const i of [0, 1]) face((a, b) => Q(i, a, b));
+}
+
+/** Tilted bay (box) window frame (`WinParams.tilt`): sill, head and two cheeks as closed solids whose front leans from `outBottom` to `outTop`. */
+function drawTilt(c: Ctx, u0: number, u1: number, v0: number, v1: number, tilt: NonNullable<WinParams['tilt']>) {
+  const t = tilt.t, vb = v0 - t, vt = v1 + t;
+  if (!fitsPanel(c.p, rectPoly(u0 - t, u1 + t, vb, vt))) return;
+  const D = (v: number) => tilt.outBottom + (tilt.outTop - tilt.outBottom) * (v - vb) / (vt - vb), part = c.part();
+  for (const [a, b, lo, hi] of [[u0 - t, u1 + t, vb, v0], [u0 - t, u1 + t, v1, vt], [u0 - t, u0, v0, v1], [u1, u1 + t, v0, v1]]) {
+    const us = [a, b], vs = [lo, hi];
+    solid(c, tilt.slot, (i, j, k) => c.P(us[i], vs[j], k ? D(vs[j]) : 0), part);
+  }
+}
 export { Ctx as PanelCtx, drawOpening, stripBox, intervals };
 const frac = (x: number | undefined, total: number, dflt: number) => { const v = x ?? dflt; return v <= 1 ? v * total : v; };
 
@@ -286,6 +312,7 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
     c.box(w.sillSlot, u0 - 0.08, u1 + 0.08, v0 - sh, v0, 0, w.sillOut ?? 0.12, sp, shift);
   }
   if (w.headSlot) { const sp = c.part(); c.box(w.headSlot, u0 - 0.06, u1 + 0.06, v1, v1 + 0.12, 0, 0.08, sp); }
+  if (w.tilt) drawTilt(c, u0, u1, v0, v1, w.tilt);
   return back;
 }
 
@@ -594,7 +621,7 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
     const levels: number[] = lineSet ? lineSet.slice(0, -1).filter((L, i) => i === 0 || L < p.vMax - 0.8) : [0, g];
     if (!lineSet) for (let L = g + s; L < p.vMax - 1.0; L += s) levels.push(L);
     levels.push(Math.max(p.vMax, levels[levels.length - 1] + 0.01));
-    const floors = levels.length - 1, nb = Math.max(1, Math.round(W / sys.pitch)), nbays = sys.bays ? sys.bays.count : nb;
+    const floors = levels.length - 1, nb = Math.max(1, Math.round(W / sys.pitch)), nbays = sys.bays ? sys.bays.centres?.length ?? sys.bays.count : nb;
     for (let f = 0; f < floors; f++) {
       const v0 = levels[f], v1 = levels[f + 1];
       if (v1 <= p.vMin + 0.5 || v0 < p.partyH - 0.3) continue;
@@ -603,7 +630,9 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
       const row = sys.rowOverrides?.[String(f)] ?? (f === 0 ? sys.ground : topRow ? sys.top! : sys.typical);
       for (let b = 0; b < nbays; b++) {
         const lay = sys.bays;
-        const cell: Cell = lay
+        const cell: Cell = lay?.centres
+          ? { u0: p.uMin + lay.centres[b] - lay.pitch / 2, u1: p.uMin + lay.centres[b] + lay.pitch / 2, v0: Math.max(v0, p.vMin), v1, bay: b, floor: f, bays: nbays }
+          : lay
           ? { u0: p.uMin + lay.first + lay.pitch * (b - 0.5) - (b === 0 ? lay.reach?.[0] ?? 0 : 0), u1: p.uMin + lay.first + lay.pitch * (b + 0.5) + (b === nbays - 1 ? lay.reach?.[1] ?? 0 : 0), v0: Math.max(v0, p.vMin), v1, bay: b, floor: f, bays: nbays }
           : { u0: p.uMin + W * b / nb, u1: p.uMin + W * (b + 1) / nb, v0: Math.max(v0, p.vMin), v1, bay: b, floor: f, bays: nb };
         cells.push(cell);

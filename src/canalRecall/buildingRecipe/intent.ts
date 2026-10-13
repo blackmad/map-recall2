@@ -295,6 +295,12 @@ export interface PaletteIntent {
   wallMaterial?: typeof WALL_MATERIALS[number];
 }
 export const WALL_MATERIALS = ['brick', 'stucco'] as const;
+/**
+ * Large-tier wall group material (`walls[].wallMaterial`): the recipe material slot its wall (and flush arch bands)
+ * export with, tinted by the group's `palette.brick`: `brick`, `stucco` (plaster), `stone` (ashlar, granite) or
+ * `render` (smooth white render: the stucco slot, white unless the group's palette says otherwise).
+ */
+export const GROUP_WALL_MATERIALS = ['brick', 'stucco', 'stone', 'render'] as const;
 
 /** Ordinary canal house: crown/gable family plus a regular bay grid per front. */
 export interface CanalHouseIntent {
@@ -319,6 +325,7 @@ export interface CanalHouseIntent {
  * windows into the exact walls. Validated by `validateLargeIntent` (largeIntent.ts); list a house's surfaces with
  * `scripts/building-recipes/walls.ts`.
  */
+export interface TiltedBaysIntent {every?: number; first?: number; bays?: number[]; storeys?: number[]}
 export interface LargeWallIntent {
   /** 3DBAG LoD2.2 WallSurface indices (shell boundary index) of this wall group. */
   wallSurfaces: number[];
@@ -335,9 +342,9 @@ export interface LargeWallIntent {
   ground?: LargeGround;
   windows?: LargeWindow;
   /** Recessed entrance on the widest panel: `bay` from the viewer's left (default the middle), `storeys` > 1 = a glazed entrance hall that tall, `canopy` = a cantilevered slab over it. */
-  entrance?: boolean | {bay?: number; storeys?: number; canopy?: boolean};
-  /** Stroke-font lettering: over the entrance (`fascia`, default), on the wall above the ground floor (`wall`), on the entrance-hall glass (`glazing`) or the canopy edge (`canopy`). */
-  signage?: string | {text: string; colour?: string; mount?: 'fascia' | 'wall' | 'glazing' | 'canopy'};
+  entrance?: boolean | {bay?: number; storeys?: number; canopy?: boolean; /** carved stone portal: jambs, entablature, a pediment block with a crest (single-storey entrances) */ portal?: boolean};
+  /** Stroke-font lettering: over the entrance (`fascia`, default; on the frieze of a portal), on the wall above the ground floor (`wall`), on the entrance-hall glass (`glazing`), the canopy edge (`canopy`) or a name band under the cornice (`cornice`, on the widest panel). */
+  signage?: string | {text: string; colour?: string; mount?: 'fascia' | 'wall' | 'glazing' | 'canopy' | 'cornice'};
   /** Recessed sectional garage doors in the ground storey, from the right end of the widest panel. */
   garageDoors?: number;
   stringCourses?: boolean;
@@ -351,6 +358,8 @@ export interface LargeWallIntent {
   blankStoreys?: number[];
   /** Police signature components: blue-and-white striped POLITIE band over the ground floor, blue lamp beside the entrance. */
   police?: {stripe?: boolean; lamp?: boolean};
+  /** What this group's wall is made of when it differs from the house (`palette.wallMaterial`); see GROUP_WALL_MATERIALS. */
+  wallMaterial?: typeof GROUP_WALL_MATERIALS[number];
   /** Group colours when they differ from the house palette (`brick` = this group's wall). */
   palette?: Partial<Pick<PaletteIntent, 'brick' | 'frame' | 'stone'>>;
   /**
@@ -367,6 +376,26 @@ export interface LargeWallIntent {
   frames?: boolean;
   /** true = glazing bars 3.5 cm proud of the glass (large tier; ribbons with a mullion otherwise sit in the audit's z-fight band) */
   deepBars?: boolean;
+  /**
+   * Tilted bay (box) windows: a projecting stone frame leaning out towards the sill round the windows of every `every`-th
+   * bay from `first`, or the listed `bays` of the widest panel, on the listed `storeys` (0 = ground; default every upper storey).
+   * A list gives each storey its own pattern (the storeys of the entries must not overlap).
+   */
+  tiltedBays?: TiltedBaysIntent | TiltedBaysIntent[];
+  /** Storeys (0 = ground) faced in the group's stone over the wall (a granite base, an ashlar attic), round their openings. */
+  stoneStoreys?: number[];
+  /** Banded stone pilasters at both ends of every panel of the group (two-tone courses). */
+  pilasters?: boolean;
+  /** A glazed roof lantern on the highest roof point behind the group's widest panel. */
+  lantern?: boolean;
+  /** Perforated-brick screen (car parks): a concrete lattice of posts and rails over the wall, glass-block perforations in one bay of three; brick-bay-grid only. */
+  screen?: boolean;
+  /**
+   * true = the group's 3DBAG facets that link end to end (a curved front kept as a chain of narrow planes) carry one
+   * bay rhythm along their arc length, `baysPerStorey`'s pitch continuing round the curve (curve.ts); default: each
+   * facet restarts its own grid.
+   */
+  curve?: boolean;
   /** Name boards (white plates, lettered) over the ground portals of the hoist bays on the widest panel, left to right; "" leaves a hoist bay without a board. */
   nameBoards?: string[];
   /**

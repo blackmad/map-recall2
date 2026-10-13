@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+## Large-tier components the batches kept asking for (2026-10-14, night)
+
+Lane `large/components-20261014`. Ten components, each with a test in
+`largeTier.test.ts`, default compose byte-identical (80 fit-golden houses,
+block kit, the 32 large meshes not re-authored): `curve` (linked 3DBAG
+facets carry one window rhythm along the arc; windows never bend over a
+joint), per-group `wallMaterial` (brick, stucco, stone, render),
+`tiltedBays` (a leaning box frame of four closed solids, 42 → 12 cm off
+the wall), `screen` (perforated-brick lattice as closed posts and rails
+with glass-block bays), `entrance.portal` (stone jambs, entablature with
+the lettering, pediment, lozenge crest), `signage.mount: cornice`,
+`stoneStoreys` (stone facing on the 9 cm layer; 4.5 cm z-fought the brick
+by 13 m²), banded `pilasters`, a glazed roof `lantern`, and closed bands
+(the Beursplein cornices and Damrak's string-course ends no longer leave
+open edges). Six batch-2 houses re-authored and re-installed: Beursplein 5
+(stone ground and attic storeys, pilasters, lantern, granite portal
+lettered BEURSPLEIN 5, cross windows; 4.8k → 8.6k tris), the Warmoesstraat
+garage (screens), Engelsesteeg (box windows per storey from the photo, five
+storeys), Damrak 77 (white string courses), Oude Turfmarkt (UNIVERSITEIT
+VAN AMSTERDAM on the cornice, white courtyard block), Westerdok 536 (curve
+on the 65 m east front). OZ Achterburgwal 233 not re-authored: its curve
+is a 3.1 m ground wall in 3DBAG and the baroque gateway sits on a panel
+marked party wall (needs a per-group override). `install-large.ts`
+replaces a catalogue entry in place. `large-mesh-golden.json` was stale
+since the frame-sheet merge (22 of 38 hashes) and is re-recorded.
+
+
 ## Small targets under the coral highlight (2026-10-14, night)
 
 Lane `look/highlight-small-target-20261014`. When the lit building's
