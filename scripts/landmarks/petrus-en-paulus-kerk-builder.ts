@@ -150,10 +150,13 @@ function build(b: BuildingTools) {
   for (const dt of [-0.55, 0.55]) slab(b, G, -RIDGE_A + dt, 13.1, 0.24, 0.32, 0.08, 'stone');
   slab(b, G, -RIDGE_A, 13.4, 1.25, 0.16, 0.06, 'greyBrick');
   // Twin tall lights between the turret and the porch (ref-pano-0).
-  for (const dt of [-0.22, 0.22]) slab(b, G, 1.15 + dt, 1.8, 0.32, 1.7, 0.06, 'glass');
-  slab(b, G, 1.15, 1.8, 0.12, 1.7, 0.1, 'stone');
-  slab(b, G, 1.15, 1.58, 1.0, 0.22, 0.18, 'stone');
-  slab(b, G, 1.15, 3.5, 1.0, 0.24, 0.1, 'stone');
+  // The same pair stands mirrored on the other side of the porch (t 3.9 is the porch axis; rectified pano, 2026-10-13).
+  for (const tc of [1.15, 6.65]) {
+    for (const dt of [-0.22, 0.22]) slab(b, G, tc + dt, 1.8, 0.32, 1.7, 0.06, 'glass');
+    slab(b, G, tc, 1.8, 0.12, 1.7, 0.1, 'stone');
+    slab(b, G, tc, 1.58, 1.0, 0.22, 0.18, 'stone');
+    slab(b, G, tc, 3.5, 1.0, 0.24, 0.1, 'stone');
+  }
 
   // ---------------------------------------------------------------- porch
   {
@@ -331,20 +334,24 @@ function build(b: BuildingTools) {
       slab(b, f, c, S0 + 1.5, w + 2 * O, S1 - S0 - 1.5, O, 'brick');
     }
     // louvred twin openings and a narrow light on the north face; louvres and twin lights on west and south
-    const louvres = (f: Frame, c: number) => {
+    const louvres = (f: Frame, c: number, y0 = 11.0) => {
       for (const dt of [-0.33, 0.33]) {
-        slab(b, f, c + dt, 11.0, 0.46, 2.0, 0.03, 'dark');
-        for (let k = 0; k < 8; k++) slab(b, f, c + dt, 11.12 + k * 0.24, 0.46, 0.05, 0.08, 'frame');
+        slab(b, f, c + dt, y0, 0.46, 2.0, 0.03, 'dark');
+        for (let k = 0; k < 8; k++) slab(b, f, c + dt, y0 + 0.12 + k * 0.24, 0.46, 0.05, 0.08, 'frame');
       }
-      slab(b, f, c, 10.82, 1.5, 0.18, 0.14, 'stone');
-      slab(b, f, c, 11.0, 0.2, 2.0, 0.06, 'stone');
-      for (const s of [-1, 1]) for (const y of [11.0, 12.7]) slab(b, f, c + s * 0.68, y, 0.22, 0.3, 0.06, 'stone');
+      slab(b, f, c, y0 - 0.18, 1.5, 0.18, 0.14, 'stone');
+      slab(b, f, c, y0, 0.2, 2.0, 0.06, 'stone');
+      for (const s of [-1, 1]) for (const y of [y0, y0 + 1.7]) slab(b, f, c + s * 0.68, y, 0.22, 0.3, 0.06, 'stone');
     };
     const nf = north(TF1), wf = west(TA0);
     louvres(nf, mid(nf)); louvres(wf, mid(wf));
-    slab(b, nf, mid(nf), 7.9, 0.45, 1.8, 0.05, 'glass');
-    slab(b, nf, mid(nf), 7.72, 0.8, 0.18, 0.14, 'stone');
-    slab(b, nf, mid(nf), 9.7, 0.8, 0.22, 0.08, 'stone');
+    // Rectified pano of the street face (2026-10-13): a louvred twin low down (4.4-6.4 m), a glazed twin window with a stone
+    // sill and head above it (8.4-10.1 m), then the louvred twin under the corbels.
+    louvres(nf, mid(nf), 4.4);
+    for (const dt of [-0.24, 0.24]) slab(b, nf, mid(nf) + dt, 8.4, 0.4, 1.7, 0.05, 'glass');
+    slab(b, nf, mid(nf), 8.4, 0.1, 1.7, 0.08, 'stone');
+    slab(b, nf, mid(nf), 8.22, 1.2, 0.18, 0.14, 'stone');
+    slab(b, nf, mid(nf), 10.1, 1.2, 0.22, 0.08, 'stone');
     // west face: twin narrow lights low down and a grey brick plinth (ref-pano-4)
     for (const dt of [-0.36, 0.36]) slab(b, wf, mid(wf) + dt, 2.6, 0.5, 1.9, 0.05, 'glass');
     slab(b, wf, mid(wf), 2.6, 0.22, 1.9, 0.09, 'stone');
@@ -372,7 +379,7 @@ function build(b: BuildingTools) {
   const nw = west(NAVE_W);
   slab(b, nw, 5.3, 0, 21.2, 2.7, 0.05, 'greyBrick');
   slab(b, west(-10.45), -6.55, 0, 2.6, 2.7, 0.05, 'greyBrick');
-  for (const f of [1.6, -3.0, -7.6, -12.2]) naveWindow(nw, -f, 2.9, 4.0);
+  for (const f of [0.7, -3.1, -7.0, -10.8, -14.6]) naveWindow(nw, -f, 2.9, 4.0);   // five bays at 3.8 m on the rectified pano (wall 253 deg), not four at 4.6
   const ne = east(NAVE_E + 0.14);
   for (const f of [-8.3, -12.9]) naveWindow(ne, f, 2.9, 4.0); // inferred
   // rear nave gable over the schoolroom roof (inferred)

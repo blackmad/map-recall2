@@ -2990,12 +2990,13 @@
       "window-misaligned": 0
     },
     "petrus-en-paulus-kerk": {
+      "material-slot-untagged-permille": 0,
       "opening-floating": 0,
       "opening-floating-fail": 0,
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
-      "opening-buried": 4,
-      "zfight-m2": 3,
+      "opening-buried": 0,
+      "zfight-m2": 2.3,
       "zfight-near-m2": 18.9,
       "window-mismatch": 0,
       "window-missing": 0,
