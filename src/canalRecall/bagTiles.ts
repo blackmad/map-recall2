@@ -256,17 +256,23 @@ export type CoversFile = {
 };
 export const COVERS_VERSION = 1;
 
+/** A drawn model as the signature-landmark source knows it. */
+export type ShownModel = { id: string; suppressOsmIds: readonly string[] };
+
 /**
  * Feature ids to hide for the models currently drawn.
  *
  * This replaces the union of every shown model's `suppressOsmIds`: the ids are
- * pands (what the base tiles are keyed by) plus the OSM-only leftovers.
+ * pands (what the base tiles are keyed by) plus the OSM-only leftovers. A model
+ * `covers.json` does not know (the building-types instancing spec, anything
+ * installed after the join was last built) keeps its own list, so a stale
+ * covers file can only under-hide to the legacy behaviour, never past it.
  */
-export function hiddenIdsFor(covers: CoversFile, shownModelIds: Iterable<string>): string[] {
+export function hiddenIdsFor(covers: CoversFile, shown: Iterable<ShownModel>): string[] {
   const out = new Set<string>();
-  for (const id of shownModelIds) {
-    const entry = covers.models[id];
-    if (!entry) continue;
+  for (const model of shown) {
+    const entry = covers.models[model.id];
+    if (!entry) { for (const id of model.suppressOsmIds) out.add(String(id)); continue; }
     for (const pand of entry.p) out.add(fullPandId(pand));
     for (const osm of entry.o ?? []) out.add(osm);
   }
@@ -278,7 +284,3 @@ export function bagTilesEnabled(search: string): boolean {
   const value = new URLSearchParams(search).get('bagTiles');
   return value === '1' || value === 'true';
 }
-
-/** Where a BAG tile lives, beside the legacy `building-tiles`. */
-export const bagTileUrl = (tile: { z: number; x: number; y: number }, base: string): string =>
-  `${base.replace(/\/$/, '')}/bag-tiles/${tile.z}/${tile.x}/${tile.y}.geojson.gz`;

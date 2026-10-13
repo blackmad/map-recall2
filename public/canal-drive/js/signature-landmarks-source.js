@@ -398,6 +398,13 @@ export class SignatureLandmarks {
     return (this._entries || []).flatMap(entry => [...entry.spec.suppressOsmIds]);
   }
 
+  /** The same models as shownSuppressOsmIds, with their ids: `?bagTiles=1` swaps each
+   *  model's suppress list for the pands covers.json says it stands on. */
+  shownSuppressModels() {
+    if (!this.enabled || !this.suppressing) return [];
+    return (this._entries || []).map(entry => ({ id: entry.spec.id, suppressOsmIds: [...entry.spec.suppressOsmIds] }));
+  }
+
   /** Footprints of every currently drawn model, for spatial suppression of the
    *  coloured extract (which names buildings the landmark id does not). */
   shownFootprints() {

@@ -23,8 +23,9 @@
 import { dropNestedDuplicates } from './buildingNesting.js';
 import {
   BuildingTileCache, BUILDING_TILE_ZOOM, buildingForLandmark, planTiles, planSourceDiff, tileUrl,
-  type BuildingFeature, type Bounds, type LandmarkBuildingQuery
+  type BuildingFeature, type Bounds, type LandmarkBuildingQuery, type TileSetDir
 } from './buildingTileSource.js';
+import { bagTilesEnabled, hiddenIdsFor, type CoversFile } from './bagTiles.js';
 import { tileFor, tileKey, tilesCovering } from './slippyTiles.js';
 import { introLandingArea } from './game/introFlight.js';
 import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior, materialWallDisplayPrior } from './look/palette.js';
@@ -102,7 +103,29 @@ export type TileEnricher = (tile: { z: number; x: number; y: number }, signal: A
 const BUILDING_TILE_TIMEOUT_MS = 20_000;
 const BUILDING_TILE_MAX_RETRIES = 4;
 
+export { bagTilesEnabled, hiddenIdsFor };
+
+/**
+ * `covers.json` (installed model -> the pands it stands on), for `?bagTiles=1`.
+ * Resolves null when it is not published or is not the covers file (a host that
+ * answers unknown paths with the app page), so the caller keeps `suppressOsmIds`.
+ */
+export async function loadBagCovers(url: string, fetcher: typeof fetch = fetch): Promise<CoversFile | null> {
+  try {
+    const response = await fetcher(url);
+    if (!response.ok) return null;
+    const value = (await response.json()) as Partial<CoversFile>;
+    return value && value.version === 1 && value.models && typeof value.models === 'object' && Array.isArray(value.buildingTypes)
+      ? (value as CoversFile) : null;
+  } catch {
+    return null;
+  }
+}
+
 export class BuildingTileStreamer {
+  /** Which published tile set this streamer reads; 'bag-tiles' only after a successful bag probe under `?bagTiles=1`. */
+  private tileDir: TileSetDir = 'building-tiles';
+  get usingBagTiles(): boolean { return this.tileDir === 'bag-tiles'; }
   private readonly cache = new BuildingTileCache();
   /** Tiles that returned nothing. Remembered so a gap is not refetched forever. */
   private readonly empty = new Set<string>();
@@ -153,8 +176,19 @@ export class BuildingTileStreamer {
    */
   async probe(): Promise<boolean> {
     this.available = false;
+    this.tileDir = 'building-tiles';
+    // `?bagTiles=1` prefers the BAG-keyed tiles and falls back to today's when
+    // they are not published, so the flag can never blank the city.
+    const search = typeof location === 'undefined' ? '' : location.search;
+    if (bagTilesEnabled(search) && await this.probeDir('bag-tiles')) this.tileDir = 'bag-tiles';
+    else await this.probeDir('building-tiles');
+    return this.available;
+  }
+
+  private async probeDir(dir: TileSetDir): Promise<boolean> {
+    this.available = false;
     try {
-      const response = await fetch(`${this.baseUrl.replace(/\/$/, '')}/building-tiles/index-z${this.zoom}.json`);
+      const response = await fetch(`${this.baseUrl.replace(/\/$/, '')}/${dir}/index-z${this.zoom}.json`);
       if (!response.ok) return false;
       const index = (await response.json()) as { zoom?: number; tileList?: unknown };
       this.available = index.zoom === this.zoom && Array.isArray(index.tileList) && index.tileList.length > 0;
@@ -370,7 +404,7 @@ export class BuildingTileStreamer {
       : undefined;
     let retry = false;
     try {
-      const response = await fetch(tileUrl(tile, this.baseUrl), { signal: controller.signal });
+      const response = await fetch(tileUrl(tile, this.baseUrl, this.tileDir), { signal: controller.signal });
       if (!response.ok) {
         // 404 is ordinary: most of the 382 tiles cover water, parks or the edge
         // of the region. Server trouble is not, and must not blank a city tile.
