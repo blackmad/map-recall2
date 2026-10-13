@@ -15,10 +15,15 @@ export const LOD1_MAX_TEXTURE_SIZE = 256;
 /** Models at or under this many triangles are not worth a second level. */
 export const LOD1_MIN_SOURCE_TRIANGLES = 3000;
 
-/** Footprint radius in pixels above which the full model replaces lod1. */
-export const LOD_UPGRADE_RADIUS_PX = 45;
+/** Footprint radius in pixels above which the full model replaces lod1.
+ *  Was 45 px: in the chase view a 15 m-radius landmark is ~30 px, so every
+ *  modelled house along the route showed its lod1 (user 2026-10-13 "LOD
+ *  cutoff is too low, at this zoom they should be full rez"). 30 px keeps
+ *  the chase view full and leaves lod1 to the aerial views (a 40 m landmark
+ *  is 14 px at zoom 15). */
+export const LOD_UPGRADE_RADIUS_PX = 30;
 /** ...and below which a full model may drop back to lod1 (hysteresis gap). */
-export const LOD_DOWNGRADE_RADIUS_PX = 30;
+export const LOD_DOWNGRADE_RADIUS_PX = 20;
 
 export interface LandmarkLodRecord {
   /** Fingerprint of the source GLB this lod1 was built from. */
