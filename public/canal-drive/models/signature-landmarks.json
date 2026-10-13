@@ -48351,6 +48351,382 @@
         "bytes": 31568,
         "triangles": 1478
       }
+    },
+    "multatuli-standbeeld": {
+      "id": "multatuli-standbeeld",
+      "name": "Multatuli statue (Torensluis)",
+      "landmarkId": "extract_landmarks_1627709377",
+      "modelUrl": "./models/multatuli-standbeeld.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8894308,
+          52.3747139
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 2.4,
+        "widthMetres": 1.8
+      },
+      "surveyed": {
+        "anchor": [
+          4.8894308,
+          52.3747139
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Backlog destination point (OSM memorial) on the Torensluis; statue position and facing read from Gemeente Amsterdam panorama recording_2025-06-16_03-46-32_01395; the facing is a visual estimate"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "bronze": "#2d2f2b",
+        "concrete": "#8e8b86",
+        "sandstone": "#7a3535",
+        "white": "#d8d0bc"
+      },
+      "attribution": {
+        "title": "Multatuli statue - original low-poly reconstruction",
+        "author": "Map Recall; commemorated bust by Hans Bayens (1987)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Multatuli_statue,_Torensluis,_Amsterdam",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly bust and granite block. Form and proportions from Commons photographs (FaceMePLS CC BY 2.0; Paul van Galen / RCE CC BY-SA 4.0) and a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or third-party meshes imported."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -1.2048423290252686,
+          8.940696516468449e-10,
+          -0.8803784251213074
+        ],
+        "max": [
+          1.2048423290252686,
+          3.0450000762939453,
+          0.8803784251213074
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8894308,
+          52.3747139
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 2.409684658050537,
+        "heightMetres": 3.0450000753998756,
+        "depthMetres": 1.7607568502426147,
+        "depthCoverage": 0.9781982501347859
+      },
+      "triangles": 1408,
+      "bytes": 18464,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "lieverdje": {
+      "id": "lieverdje",
+      "name": "Het Lieverdje (Spui)",
+      "landmarkId": "osm_node_3975877474",
+      "modelUrl": "./models/lieverdje.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8890267,
+          52.3687772
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 1.4,
+        "widthMetres": 1.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.8890267,
+          52.3687772
+        ],
+        "northOffsetDegrees": 0,
+        "source": "OSM artwork node 3975877474 (tourism=artwork, Carel Kneulman) on the Spui; facing is a visual estimate from panorama recording_2025-06-16_04-42-37_01351"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "bronze": "#3a3d38",
+        "concrete": "#8c8d8a",
+        "greyBrick": "#6e706f"
+      },
+      "attribution": {
+        "title": "Het Lieverdje - original low-poly reconstruction",
+        "author": "Map Recall; commemorated sculpture by Carel Kneulman (1960)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Het_Lieverdje",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly figure and column. Pose and costume from Commons photographs (Anefo CC0, FaceMePLS CC BY 2.0) and a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or third-party meshes imported."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -0.6830127239227295,
+          -7.450580707946131e-10,
+          -0.6830127239227295
+        ],
+        "max": [
+          0.6830127239227295,
+          2.6660983562469482,
+          0.6830127239227295
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8890267,
+          52.3687772
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 1.366025447845459,
+        "heightMetres": 2.6660983569920065,
+        "depthMetres": 1.366025447845459,
+        "depthCoverage": 0.9757324627467565
+      },
+      "triangles": 636,
+      "bytes": 11024,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "anne-frank-merwedeplein": {
+      "id": "anne-frank-merwedeplein",
+      "name": "Anne Frank statue (Merwedeplein)",
+      "landmarkId": "extract_landmarks_95134534",
+      "modelUrl": "./models/anne-frank-merwedeplein.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9002337,
+          52.3455675
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 1.4,
+        "widthMetres": 1.4
+      },
+      "surveyed": {
+        "anchor": [
+          4.9002337,
+          52.3455675
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Backlog destination point (OSM memorial) on the Merwedeplein; facing is a visual estimate from panorama recording_2025-07-15_08-32-06_02007"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "bronze": "#2e312d",
+        "concrete": "#8e8f8c",
+        "sandstone": "#8a3a36",
+        "white": "#e2dccb"
+      },
+      "attribution": {
+        "title": "Anne Frank statue, Merwedeplein - original low-poly reconstruction",
+        "author": "Map Recall; commemorated sculpture by Mari Andriessen (1977)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Anne_Frank_statue,_Merwedeplein,_Amsterdam",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly figure and granite block. Pose, coat and bags from Commons photographs (CC BY-SA 4.0, 3.0, 2.0) and a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or third-party meshes imported."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -0.6408563852310181,
+          6.705522803684971e-10,
+          -0.6408563852310181
+        ],
+        "max": [
+          0.6408563852310181,
+          2.9884774684906006,
+          0.6408563852310181
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9002337,
+          52.3455675
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 1.2817127704620361,
+        "heightMetres": 2.988477467820048,
+        "depthMetres": 1.2817127704620361,
+        "depthCoverage": 0.9155091217585973
+      },
+      "triangles": 1604,
+      "bytes": 26796,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "walraven-van-hall": {
+      "id": "walraven-van-hall",
+      "name": "Monument Walraven van Hall",
+      "landmarkId": "extract_landmarks_2141455457",
+      "modelUrl": "./models/walraven-van-hall.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8996307,
+          52.359946
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 11,
+        "widthMetres": 11
+      },
+      "surveyed": {
+        "anchor": [
+          4.8996307,
+          52.359946
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Backlog destination point (OSM memorial) in the Frederiksplein park; orientation read from Gemeente Amsterdam panoramas recording_2025-06-19_04-38-42_02947 and recording_2025-07-14_06-43-08_01048; the facing is a visual estimate"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "bronze": "#37403f",
+        "brick": "#8a4b40",
+        "concrete": "#8f8c75",
+        "gold": "#9aa39a"
+      },
+      "attribution": {
+        "title": "Monument Walraven van Hall - original low-poly reconstruction",
+        "author": "Map Recall; commemorated sculpture by Fernando Sanchez Castillo (2010)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Monument_Walraven_van_Hall",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly fallen tree, stump, paving, wall and plaque. Layout and proportions from Commons photographs (CC BY-SA 4.0) and Gemeente Amsterdam panoramas (CC BY 4.0); the branch pattern is procedural. No pixels or third-party meshes imported."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -4.733333110809326,
+          -2.3841858265427618e-08,
+          -4.898322582244873
+        ],
+        "max": [
+          5.705677032470703,
+          2.222099542617798,
+          5.550080299377441
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8996307,
+          52.359946
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 10.448402881622314,
+        "heightMetres": 2.222099566459656,
+        "depthMetres": 10.43901014328003,
+        "depthCoverage": 0.9490009221163663
+      },
+      "triangles": 4092,
+      "bytes": 58492,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "f8c7dbce34f4cc8e",
+        "buildVersion": 2,
+        "bytes": 26600,
+        "triangles": 1232
+      }
+    },
+    "auschwitz-monument": {
+      "id": "auschwitz-monument",
+      "name": "Auschwitzmonument (Wertheimpark)",
+      "landmarkId": "extract_landmarks_856768624",
+      "modelUrl": "./models/auschwitz-monument.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9092058,
+          52.3679407
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 6.6,
+        "widthMetres": 4.2
+      },
+      "surveyed": {
+        "anchor": [
+          4.9092058,
+          52.3679407
+        ],
+        "northOffsetDegrees": 0,
+        "source": "OSM artwork node 440085927 (Auschwitzmonument) in the Wertheimpark; the facing and the dimensions are visual estimates"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "concrete": "#b9b4a6",
+        "glass": "#9cc7c2",
+        "frame": "#6f757a",
+        "white": "#e7efee",
+        "dark": "#2f3a3d"
+      },
+      "attribution": {
+        "title": "Auschwitzmonument - original low-poly reconstruction",
+        "author": "Map Recall; commemorated work by Jan Wolkers (1993)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Auschwitz_Monument,_Wertheimpark,_Amsterdam",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly glass pane, mirror plates and gravel bed. Layout and lettering from Commons photographs (CC BY 2.0, CC BY-SA 3.0 nl); dimensions estimated; the monument is hidden by the planting from the street panoramas. No pixels or third-party meshes imported."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -3.819227933883667,
+          -3.7252903539730653e-10,
+          -3.1020209789276123
+        ],
+        "max": [
+          3.819227933883667,
+          1.899999976158142,
+          3.1020209789276123
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9092058,
+          52.3679407
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 7.638455867767334,
+        "heightMetres": 1.8999999765306712,
+        "depthMetres": 6.204041957855225,
+        "depthCoverage": 1.4771528471083868
+      },
+      "triangles": 1488,
+      "bytes": 29484,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

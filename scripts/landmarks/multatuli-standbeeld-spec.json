@@ -1,0 +1,42 @@
+{
+  "id": "multatuli-standbeeld",
+  "name": "Multatuli statue (Torensluis)",
+  "landmarkId": "extract_landmarks_1627709377",
+  "modelUrl": "./models/multatuli-standbeeld.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8894308,
+      52.3747139
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 2.4,
+    "widthMetres": 1.8
+  },
+  "surveyed": {
+    "anchor": [
+      4.8894308,
+      52.3747139
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Backlog destination point (OSM memorial) on the Torensluis; statue position and facing read from Gemeente Amsterdam panorama recording_2025-06-16_03-46-32_01395; the facing is a visual estimate"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "assetKind": "memorial",
+  "materialOverrides": {
+    "bronze": "#2d2f2b",
+    "concrete": "#8e8b86",
+    "sandstone": "#7a3535",
+    "white": "#d8d0bc"
+  },
+  "attribution": {
+    "title": "Multatuli statue - original low-poly reconstruction",
+    "author": "Map Recall; commemorated bust by Hans Bayens (1987)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Multatuli_statue,_Torensluis,_Amsterdam",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free low-poly bust and granite block. Form and proportions from Commons photographs (FaceMePLS CC BY 2.0; Paul van Galen / RCE CC BY-SA 4.0) and a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or third-party meshes imported."
+  }
+}

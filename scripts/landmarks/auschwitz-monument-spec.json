@@ -1,0 +1,43 @@
+{
+  "id": "auschwitz-monument",
+  "name": "Auschwitzmonument (Wertheimpark)",
+  "landmarkId": "extract_landmarks_856768624",
+  "modelUrl": "./models/auschwitz-monument.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.9092058,
+      52.3679407
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 6.6,
+    "widthMetres": 4.2
+  },
+  "surveyed": {
+    "anchor": [
+      4.9092058,
+      52.3679407
+    ],
+    "northOffsetDegrees": 0,
+    "source": "OSM artwork node 440085927 (Auschwitzmonument) in the Wertheimpark; the facing and the dimensions are visual estimates"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "assetKind": "memorial",
+  "materialOverrides": {
+    "concrete": "#b9b4a6",
+    "glass": "#9cc7c2",
+    "frame": "#6f757a",
+    "white": "#e7efee",
+    "dark": "#2f3a3d"
+  },
+  "attribution": {
+    "title": "Auschwitzmonument - original low-poly reconstruction",
+    "author": "Map Recall; commemorated work by Jan Wolkers (1993)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Auschwitz_Monument,_Wertheimpark,_Amsterdam",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free low-poly glass pane, mirror plates and gravel bed. Layout and lettering from Commons photographs (CC BY 2.0, CC BY-SA 3.0 nl); dimensions estimated; the monument is hidden by the planting from the street panoramas. No pixels or third-party meshes imported."
+  }
+}
