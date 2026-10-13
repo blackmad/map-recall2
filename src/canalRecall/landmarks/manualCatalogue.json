@@ -24275,11 +24275,11 @@
     "groundAltitudeMetres": 0,
     "facingOffsetDegrees": 0,
     "materialOverrides": {
-      "brick": "#4b483c",
-      "stone": "#6e6c62",
-      "concrete": "#5e5c53",
-      "greyBrick": "#3b392f",
-      "red": "#8f5535",
+      "brick": "#b69468",
+      "stone": "#c9c5ba",
+      "concrete": "#b7b3a8",
+      "greyBrick": "#9a8160",
+      "red": "#c4673a",
       "glass": "#3d4a54",
       "bronze": "#2c2e30"
     },
