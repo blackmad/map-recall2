@@ -7,7 +7,12 @@
 
 export type LngLat = [number, number];
 
-export interface OsmWay { id: number; tags: Record<string, string>; g: LngLat[] }
+/**
+ * `bw`: widths measured on BGT road surfaces at build time (bgtWidth.ts), in
+ * decimetres: [own surface, footpath per side, cycle path per side], 0 = none found.
+ */
+export type BgtWidthDm = [number, number, number];
+export interface OsmWay { id: number; tags: Record<string, string>; g: LngLat[]; bw?: BgtWidthDm }
 export type AreaKind = 'park' | 'grass' | 'wood' | 'square' | 'paved' | 'parking';
 export interface OsmArea { id: string; kind: AreaKind; name?: string; rings: LngLat[][] }
 export interface OsmGroundExtract {
@@ -61,7 +66,7 @@ export interface CrossSection {
   coreHalfWidth: number;
   /** Outermost extent either side. */
   halfWidth: number;
-  source: { width: 'tag' | 'lanes' | 'prior'; sidewalk: 'tag' | 'prior'; cycleway: 'tag' | 'prior' };
+  source: { width: 'bgt' | 'tag' | 'lanes' | 'prior'; sidewalk: 'bgt' | 'tag' | 'prior'; cycleway: 'bgt' | 'tag' | 'prior' };
 }
 
 const KERB_M = 0.11;
@@ -149,13 +154,17 @@ function cyclewaySides(tags: Record<string, string>): { left: string | null; rig
 }
 
 /** The bands of one way, or null when it should not be drawn on the ground (tunnels, platforms, areas). */
-export function crossSection(tags: Record<string, string>): CrossSection | null {
+export function crossSection(tags: Record<string, string>, bw?: BgtWidthDm): CrossSection | null {
   const hw = tags.highway;
   if (!hw || SKIPPED_HIGHWAYS.has(hw) || tags.area === 'yes') return null;
   if (tags.tunnel && tags.tunnel !== 'no' && tags.tunnel !== 'building_passage') return null;
   if (Number(tags.layer) < 0 && !tags.bridge) return null;
   if (tags.level && Number(tags.level) !== 0 && !tags.bridge) return null;
   const tagWidth = parseMetres(tags.width) ?? parseMetres(tags.est_width);
+  // Measured BGT widths win over tags and priors (survey polygons, not guesses).
+  const bgtWidth = bw && bw[0] >= 8 ? bw[0] / 10 : null;
+  const bgtSidewalk = bw && bw[1] >= 5 ? Math.min(bw[1] / 10, 6) : null;
+  const bgtCycle = bw && bw[2] >= 10 ? Math.max(1.2, Math.min(bw[2] / 10, 4)) : null;
   const path = PATHS[hw];
   if (path) {
     let kind = path.kind, surface = path.surface;
@@ -165,25 +174,27 @@ export function crossSection(tags: Record<string, string>): CrossSection | null 
     const crossing = tags.footway === 'crossing' || tags.cycleway === 'crossing';
     surface = surfaceOf(tags.surface, surface, sidewalk);
     if (kind === 'cycleway' && tags.surface && tags.surface !== 'asphalt' && surface !== 'gravel') surface = 'cycle';
-    const width = tagWidth ?? (hw === 'cycleway' && tags.oneway === 'yes' ? 2.1 : path.width);
+    const width = bgtWidth ? Math.min(bgtWidth, 30) : tagWidth ?? (hw === 'cycleway' && tags.oneway === 'yes' ? 2.1 : path.width);
     const band: Band = { kind: sidewalk ? 'sidewalk' : kind, surface, offset: 0, width, raised: sidewalk ? KERB_M : 0, kerb: sidewalk ? 'both' : 'none' };
     const marked = ['zebra', 'marked', 'uncontrolled'].includes(tags.crossing) || (!!tags['crossing:markings'] && tags['crossing:markings'] !== 'no');
     const paint: PaintLine[] = crossing && marked && !sidewalk && kind === 'footway' ? [{ offset: 0, width: Math.min(width, 3), dash: [0.5, 0.5] }] : [];
-    return { bands: [band], paint, coreHalfWidth: width / 2, halfWidth: width / 2, source: { width: tagWidth ? 'tag' : 'prior', sidewalk: 'prior', cycleway: 'prior' } };
+    return { bands: [band], paint, coreHalfWidth: width / 2, halfWidth: width / 2, source: { width: bgtWidth ? 'bgt' : tagWidth ? 'tag' : 'prior', sidewalk: 'prior', cycleway: 'prior' } };
   }
   const style = CARRIAGEWAY[hw];
   if (!style) return null;
   const oneway = tags.oneway === 'yes' || tags.junction === 'roundabout';
   const lanes = Number(tags.lanes);
-  const widthSource: CrossSection['source']['width'] = tagWidth ? 'tag' : lanes > 0 ? 'lanes' : 'prior';
-  let carriage = tagWidth ?? (lanes > 0 ? lanes * style.laneM : oneway ? style.oneway : style.width);
-  if (tags.service === 'alley' || tags.service === 'driveway') carriage = Math.min(carriage, 3);
+  const cyc = cyclewaySides(tags);
+  // BGT's rijbaan includes painted cycle lanes (they are markings, not polygons): take them off.
+  const laneSides = (cyc.left === 'lane' ? 1 : 0) + (cyc.right === 'lane' ? 1 : 0);
+  const widthSource: CrossSection['source']['width'] = bgtWidth ? 'bgt' : tagWidth ? 'tag' : lanes > 0 ? 'lanes' : 'prior';
+  let carriage = bgtWidth ? bgtWidth - laneSides * LANE_M : tagWidth ?? (lanes > 0 ? lanes * style.laneM : oneway ? style.oneway : style.width);
+  if (!bgtWidth && (tags.service === 'alley' || tags.service === 'driveway')) carriage = Math.min(carriage, 3);
   carriage = Math.max(2.4, Math.min(30, carriage));
   const bands: Band[] = [{ kind: 'carriageway', surface: surfaceOf(tags.surface, style.surface, false), offset: 0, width: carriage, raised: 0, kerb: 'none' }];
   const paint: PaintLine[] = [];
   const half = carriage / 2;
   const edge = { left: half, right: half };
-  const cyc = cyclewaySides(tags);
   for (const side of ['left', 'right'] as const) {
     const s = side === 'left' ? 1 : -1, kind = cyc[side];
     if (kind === 'lane') {
@@ -191,14 +202,15 @@ export function crossSection(tags: Record<string, string>): CrossSection | null 
       paint.push({ offset: s * edge[side], width: 0.1, dash: [1, 1] });
       edge[side] += LANE_M;
     } else if (kind === 'track') {
-      bands.push({ kind: 'cycle_track', surface: 'cycle', offset: s * (edge[side] + 0.4 + TRACK_M / 2), width: TRACK_M + 0.8, raised: 0.04, kerb: side });
-      edge[side] += TRACK_M + 0.8;
+      const track = bgtCycle ?? TRACK_M;
+      bands.push({ kind: 'cycle_track', surface: 'cycle', offset: s * (edge[side] + 0.4 + track / 2), width: track + 0.8, raised: 0.04, kerb: side });
+      edge[side] += track + 0.8;
     }
   }
   const sw = sidewalkSides(tags, style.sidewalks);
   for (const side of sw.sides) {
     const s = side === 'left' ? 1 : -1;
-    const w = parseMetres(tags[`sidewalk:${side}:width`]) ?? parseMetres(tags['sidewalk:both:width']) ?? parseMetres(tags['sidewalk:width']) ?? SIDEWALK_M;
+    const w = bgtSidewalk ?? parseMetres(tags[`sidewalk:${side}:width`]) ?? parseMetres(tags['sidewalk:both:width']) ?? parseMetres(tags['sidewalk:width']) ?? SIDEWALK_M;
     bands.push({ kind: 'sidewalk', surface: 'paving', offset: s * (edge[side] + w / 2), width: w, raised: KERB_M, kerb: side });
     edge[side] += w;
   }
@@ -207,5 +219,5 @@ export function crossSection(tags: Record<string, string>): CrossSection | null 
   if (hw.startsWith('primary') || hw.startsWith('secondary') || hw.startsWith('trunk')) {
     paint.push({ offset: half - 0.3, width: 0.12, dash: null }, { offset: -(half - 0.3), width: 0.12, dash: null });
   }
-  return { bands, paint, coreHalfWidth: half, halfWidth: Math.max(edge.left, edge.right), source: { width: widthSource, sidewalk: sw.source, cycleway: cyc.source } };
+  return { bands, paint, coreHalfWidth: half, halfWidth: Math.max(edge.left, edge.right), source: { width: widthSource, sidewalk: bgtSidewalk && sw.sides.length ? 'bgt' : sw.source, cycleway: bgtCycle && (cyc.left === 'track' || cyc.right === 'track') ? 'bgt' : cyc.source } };
 }

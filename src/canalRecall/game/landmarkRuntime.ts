@@ -44,11 +44,12 @@ import type { FactChoice } from '../facts/factRotation';
 import type { LandmarkHost } from './host';
 import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
 import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge, streetCardText, type StreetNameOrigin } from './routeKnowledge';
-import { canShowDriveByCard, canShowMiniMap, canShowTeachingCard } from './teachingSurface';
+import { canShowDriveByCard, canShowMiniMap, canShowPostcard, canShowTeachingCard } from './teachingSurface';
 import { isTransit } from './modes';
 import { BuildingFactStore, describeBuilding } from '../buildingFacts';
 import { manualPoiBuildingIds, mergeManualPoiFeatures } from './manualPoiCatalog';
 import type { BridgeRegisterFile } from '../bridgeRegister';
+import { cardCollapsed } from './teachingPacer';
 import { loadEntryCounts, postcardForLull, postcardOnEntry, recordEntry } from './postcardPacing';
 import { DRIVE_BY_RADIUS, driveByGapElapsed, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
 import {
@@ -522,7 +523,7 @@ export class GameLandmarkRuntime {
       this._postcardPending = this.currentNeighborhood;
     }
     if (this._postcardPending && this._postcardPending === this.currentNeighborhood
-      && canShowDriveByCard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+      && this.viewport?.mode !== 'compact' && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
       this._postcardPending = null;
       this._lastPostcardAt = this.raceTime;
       if (hood) this._ensureNeighborhoodImage(hood);
@@ -623,20 +624,25 @@ export class GameLandmarkRuntime {
     const alpha = this._landmarkNoticeAlpha;
     if (alpha <= 0) return;
 
-    const img = this._landmarkImages && this._landmarkImages.get(lm.id);
+    // A card that opened by itself folds to its title line after a while, so
+    // it stops competing with the corridor. Presentation only: the notice
+    // keeps its full text for the expanded panel, and a card the rider
+    // clicked open never folds (see teachingPacer.cardCollapsed).
+    const collapsed = cardCollapsed(this._landmarkNoticeSource, this._landmarkNoticeState.elapsed);
+    const img = collapsed ? null : this._landmarkImages && this._landmarkImages.get(lm.id);
     const hasImage = !!(img && img.complete && img.naturalWidth > 0);
     const cards = window.CanalRecallCards;
     const measure = (text: string, font: string): number => { ctx.font = font; return ctx.measureText(text).width; };
     const card = cards.measureLandmarkCard({
       name: lm.name,
-      body: lm.longDetail || lm.detail || cards.placeOnlyDetail(
+      body: collapsed ? '' : lm.longDetail || lm.detail || cards.placeOnlyDetail(
         lm.type,
         this.currentNeighborhood,
         this._cityDisplayName(),
       ),
       category: lm.type ? lm.type.toUpperCase() : '',
-      factKind: lm.factKind,
-      extractLang: lm.extractLang,
+      factKind: collapsed ? undefined : lm.factKind,
+      extractLang: collapsed ? undefined : lm.extractLang,
       hasArticle: !!(lm.wikipediaUrl || lm.sourceUrl),
       articleLabel: lm.wikipediaUrl ? 'W  WIKIPEDIA' : 'W  SOURCE',
       hasImage,
@@ -755,7 +761,7 @@ export class GameLandmarkRuntime {
   _renderNeighborhoodNotice(): void {
     const hood = this._neighborhoodNotice;
     if (!hood || this._neighborhoodNoticeTimer <= 0) return;
-    if (!canShowTeachingCard(this._teachingGate())) return;
+    if (!canShowPostcard(this.viewport?.mode, this._teachingGate())) return;
     const ctx = this.ctx;
     const duration = NEIGHBORHOOD_NOTICE_SECONDS;
     const alpha = Math.min(1, this._neighborhoodNoticeTimer * 2.5, (duration - this._neighborhoodNoticeTimer) * 2.5);

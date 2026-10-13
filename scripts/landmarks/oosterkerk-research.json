@@ -1,0 +1,51 @@
+{
+  "canonicalModelId": "oosterkerk",
+  "researchedOn": "2026-10-13",
+  "state": "built-2026-10-13 (replaces the procedural kit in src/canalRecall/landmarkKits.ts via suppressOsmIds)",
+  "destination": {"name": "Oosterkerk", "address": "Wittenburgergracht 25, Amsterdam", "bagPand": "NL.IMBAG.Pand.0363100012170274", "landmarkId": "extract_landmarks_1925449487"},
+  "survey": {
+    "bag": "artifacts/landmark-lanes/oosterkerk/raw/bag-pand.json",
+    "3dbag": "artifacts/landmark-lanes/oosterkerk/raw/3dbag.json",
+    "roofHeightmap": "scripts/landmarks/roof-heightmap.mjs oosterkerk (artifacts/landmark-lanes/oosterkerk/roof-heightmap.png)",
+    "readings": "Square 29.6 x 29.9 m on a 45 degree grid; porch block 4.5 x 14 m on the south-west, annex 5.1 x 14 m on the north-east. 3DBAG: arm eaves 22.2-22.6 m, arm hip ridges meeting at 31.7 m, corner roofs from 14.1 m at the outer eaves rising about 0.9 m per m into the arm walls, porch flat roof 13.8 m, annex lean-to 8.1-9.9 m, lantern dome 42-43.8 m. Ground 1.87 m NAP."
+  },
+  "wikipedia": "artifacts/landmark-lanes/oosterkerk/raw/nlwiki.json",
+  "photos": [
+    {"file": "artifacts/landmark-lanes/oosterkerk/commons/Overzicht_westgevel_-_Amsterdam_-_20013327_-_RCE.jpg", "source": "https://commons.wikimedia.org/wiki/File:Overzicht_westgevel_-_Amsterdam_-_20013327_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "south-west front head-on (porch bays, balustrade, upper arm windows, tower)"},
+    {"file": "artifacts/landmark-lanes/oosterkerk/commons/Oosterkerk_back_20201107_140456.jpg", "source": "https://commons.wikimedia.org/wiki/File:Oosterkerk_back_20201107_140456.jpg", "licence": "CC BY-SA 4.0", "use": "north-east back head-on (annex, corner windows, over-annex windows)"},
+    {"file": "artifacts/landmark-lanes/oosterkerk/commons/Exterieur_-_Amsterdam_-_20013333_-_RCE.jpg", "source": "https://commons.wikimedia.org/wiki/File:Exterieur_-_Amsterdam_-_20013333_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE, 1965)", "use": "south corner, porch flank and front, south-east side"},
+    {"file": "artifacts/landmark-lanes/oosterkerk/pano/TMX7316010203-000220_pano_0001_001177.jpg", "source": "Amsterdam panorama TMX7316010203-000220_pano_0001_001177 (2017-03-23), meta beside it", "licence": "CC BY 4.0, Gemeente Amsterdam", "use": "camera-matched south view (one window per corner face)"},
+    {"file": "artifacts/landmark-lanes/oosterkerk/commons/Oosterkerk_Wittenburgergracht_hoeh_Kleine_Wittenburgerstraat.jpg", "source": "https://commons.wikimedia.org/wiki/File:Oosterkerk,_Wittenburgergracht_hoeh_Kleine_Wittenburgerstraat.JPG", "licence": "Public domain", "use": "colour (2017, sunlit), gallery-card angle"},
+    {"file": "artifacts/landmark-lanes/oosterkerk/commons/Oosterkerk_Wittenburgergracht_.jpg", "source": "https://commons.wikimedia.org/wiki/File:Oosterkerk,_Wittenburgergracht_.JPG", "licence": "Public domain", "use": "south-west front, roofs and tower (2017)"},
+    {"file": "artifacts/landmark-lanes/oosterkerk/commons/Oosterkerk_Amsterdam_vanaf_de_Wittenburgergracht.jpg", "source": "https://commons.wikimedia.org/wiki/File:Oosterkerk_Amsterdam_vanaf_de_Wittenburgergracht.jpg", "licence": "CC BY-SA 4.0", "use": "corner roofs, dormers, belfry"},
+    {"file": "artifacts/landmark-lanes/oosterkerk/commons/Amsterdam_Oosterkerk_Exterior_8843.jpg", "source": "https://commons.wikimedia.org/wiki/File:Amsterdam,_Oosterkerk_Exterior_8843.jpg", "licence": "CC BY-SA 4.0", "use": "lantern tower close-up (belfry arches, clocks on the diagonal faces, ogee dome, small lantern)"},
+    {"file": "artifacts/landmark-lanes/oosterkerk/commons/Overzicht_hervormde_kerk_vanuit_het_zuidwesten_-_Amsterdam_-_20319714_-_RCE.jpg", "source": "https://commons.wikimedia.org/wiki/File:Overzicht_hervormde_kerk_vanuit_het_zuidwesten_-_Amsterdam_-_20319714_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "porch front bays, north-west side (oblique)"},
+    {"file": "artifacts/landmark-lanes/oosterkerk/commons/Oostgevel_-_Amsterdam_-_20115842_-_RCE.jpg", "source": "https://commons.wikimedia.org/wiki/File:Oostgevel_-_Amsterdam_-_20115842_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE, 1984)", "use": "north-east back (annex)"},
+    {"file": "artifacts/landmark-lanes/oosterkerk/commons/Overzicht_-_Amsterdam_-_20115840_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "context"},
+    {"file": "artifacts/landmark-lanes/oosterkerk/commons/Overzicht_-_Amsterdam_-_20115841_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "context"},
+    {"file": "artifacts/landmark-lanes/oosterkerk/commons/Overzicht_-_Amsterdam_-_20013328_-_RCE.jpg", "licence": "CC BY-SA 4.0 (RCE)", "use": "context, from the water"},
+    {"file": "artifacts/landmark-lanes/oosterkerk/commons/Oosterkerk-amsterdam-wittenburg.jpg", "licence": "CC BY 4.0", "use": "context"},
+    {"file": "artifacts/landmark-lanes/oosterkerk/commons/Oosterkerk.jpg", "licence": "CC BY-SA 4.0", "use": "context"},
+    {"file": "artifacts/landmark-lanes/oosterkerk/commons/Oosterkerk_Amsterdam_seen_from_Pelikaanbrug_.jpg", "licence": "CC BY 4.0", "use": "context"},
+    {"file": "artifacts/landmark-lanes/oosterkerk/commons/Oosterkerk_gezien_vanaf_Wittenburg.jpg", "licence": "CC BY-SA 4.0", "use": "context"}
+  ],
+  "facadeRhythm": {
+    "common": "Brown-purple brick; cream stone cornices at 14 m (corner blocks, L-shaped, two outer faces only) and 22.5 m (round the whole cross); pilaster strips at the arm edges and outer corners with curved, flared footings (BAG ring bumps, visible in every street photo). Window shapes: tall round-arched, about 2.2 m wide; low rectangular windows under the corner and arm windows; small-paned glazing with light bars; no stone surrounds (brick arches).",
+    "south-west front (Wittenburgergracht)": "Symmetric. Porch block (14 m wide, 4.5 m deep) in three bays between brick pilasters: centre bay tall arched window over the 1671 doorway (stone doorcase, fanlight, CIOIOCLXXI tablet); side bays blind arches over low rectangular windows. Porch cornice ~14.9 m with a balustrade (end dies) on three sides; porch flanks one tall window over a low one each. Arm above: three tall arched windows standing on the balustrade, aligned over the porch bays, cornice 22.5 m, hipped slate end with one dormer. Corner faces either side: one tall arched window over one low rectangle, centred. (RCE 20013327, 20319714; 1965 RCE 20013333)",
+    "north-east back": "Symmetric. Single-storey annex across the arm (eaves 7.3 m, hipped lean-to to 9.6 m, one dormer): two sash windows over two low cellar doors, central doorway with fanlight. Arm over the annex roof: three shorter arched windows; above the corner cornice three tall arched windows; hipped end with one dormer. Corner faces: one tall arched window over one low rectangle (here at 3.5-5.3 m, higher than elsewhere, level with the annex sashes). (Commons back 2020, RCE 20115842)",
+    "south-east side": "Symmetric, five axes: corner face one tall arched + low window, arm end three tall arched + three low windows, corner face one + one; above the 14 m corner cornices three tall arched windows on the arm end, hipped end with dormer. (RCE 20013333 1965, panorama 001177 2017, Commons 2017)",
+    "north-west side": "inferred: mirror of the south-east side (only an oblique view, RCE 20319714, which shows the same tall/low window pairs).",
+    "roofs": "Equal-armed cross of hipped slate roofs (one pitch, ridges meeting at 31.7 m at the crossing); lower corner roofs of two planes each, leaning into the arm walls; porch flat (lead) behind its balustrade; annex hipped lean-to. Corner-roof dormers seen in some photos are left out (not consistently evidenced on every corner).",
+    "tower": "On the crossing: lead-clad square base, an octagonal open belfry with an arched opening on every face, four gilt clock faces on the diagonal faces at the belfry's base, an entablature, an ogee lead dome, a small octagonal lantern with arches, a small dome, a ball and a cross vane (Commons Exterior 8843; 3DBAG dome 42-43.8 m; vane modelled to 47.6 m)."
+  },
+  "colours": {
+    "sampled": "Commons 2017 (sunlit): brick #816c62 / #7c6e65; slate #85878f in sun; lead #a2aebc; cream balustrade in shade #a99c89. Pano 2017 (golden sun) brick reads warmer tan-brown.",
+    "chosen": "brick #88705f (grey-brown, not orange), stone #e6dfcf, slate #60656c, lead (bronze slot) #9aa3ac, glass #1f2428, bars #c9c3b5; checked in the gallery shading and in the game's Lambert shading (artifacts/landmark-lanes/oosterkerk/renders/gallery-card.png, game-card.png)."
+  },
+  "decisions": [
+    "Roofs from intent: the two arm roofs are full-length hipped roofs of one pitch (rise 9.2 m over the 7 m half width), crossing at the centre; the corner roofs are two exact planes from the outer eaves; nothing is taken from the 3DBAG roof meshes.",
+    "Camera-matched check against panorama TMX7316010203-000220_pano_0001_001177 (the API thumbnail fov is vertical: rendered with a horizontal fov of 81 for fov=60 at aspect 1.5). It showed one window per corner face, not two as first read from a Commons photo; corrected.",
+    "The porch top was first 13.8 m (3DBAG flat roof behind the balustrade); the head-on RCE photo puts the porch cornice ~1 m above the corner cornices and the upper arm windows standing on the balustrade, so the porch walls rise to 14.9 m with the balustrade to 16 m.",
+    "Bell-tower openings are dark panels, not real holes (no bells modelled)."
+  ]
+}

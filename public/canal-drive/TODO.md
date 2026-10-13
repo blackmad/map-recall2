@@ -20,18 +20,24 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 `docs/plans/digital-twin-direction-20261013.md` is the assessment and plan the
 user approved on 2026-10-13. Short form: open NL/Amsterdam data only; buildings
 move from one GLB per building to **recipe tiles** (per-pand recipe data
-compiled into per-z16-tile meshes + instance tables, GLB only for ~100 icons);
+compiled into per-z16-tile meshes + instance tables; bespoke landmark GLB
+builders stay, 300+ today, no cap);
 own-ground becomes the default after per-polder water levels, BGT width per
-way, AHN profiles for the 891 unmeasured bridges and a real-iPhone GPU
-measurement; the gameplay loop stops freezing the rider and lets spaced
-repetition budget the questions; one light rig, one palette, one material
+way, AHN profiles for the 891 unmeasured bridges and a desktop measurement
+(user 2026-10-13: desktop is ~10x as important; iPhone numbers later); the gameplay loop no longer freezes the rider and spaced
+repetition budgets the questions (landed 2026-10-13, see HISTORY); one light rig, one palette, one material
 atlas and a written `docs/LOOK.md`. Content lanes continue: icon builders,
 kits, building types, block faces, `kind: large` recipes (police stations
 added to the to-build list), the GLB cleanup pass (attached windows, material
 coverage, no holes) and the sculpture splat track. Freeze: no new per-house
 GLBs into `catalogue.json` and no new one-off ordinary builders; new builders
 tag every material with `materialSlot` + `tint`. Order: housekeeping (done
-2026-10-13) → gameplay loop → shared frame + palette → ground → recipe tiles.
+2026-10-13) → gameplay loop (done 2026-10-13) → shared frame + palette →
+ground → recipe tiles. Integrator merges on its own judgement (user).
+Open after the gameplay merge: `RecallStore.expose()` so a passed name is
+scheduled instead of re-asked; a settings control for `maxAsksPerMinute`
+(field on the game today); fold `ridingPromptStyles.ts` into `index.html`;
+a prompt opened just before a ferry does not time out until the ferry ends.
 
 ## Takeover board (2026-10-09) — active
 
@@ -365,8 +371,7 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   symlinked. After the 2026-10-13 sweep: 15 worktrees remain (11 unmerged
   lanes to review, 4 kept), 164 local branches (159 unmerged, mostly old
   lanes; triage them next), disk 148 GB free. Unmerged lanes awaiting
-  integrator review: `feat/kit-only-churches-20261011` (De Duif, Mozes en
-  Aaronkerk, Oosterkerk hand-built GLBs + Obrechtkerk WIP),
+  integrator review: (`feat/kit-only-churches-20261011` merged 2026-10-13),
   `feat/da-costakade-13-20261013`, `big/ordinary-a2-20261013` (Jodenbreestraat
   11), `qa/detached-openings-sweep-20261013` (+ Haparandaweg 8-338 rails),
   `fix/europe-window-grid-20261011`, `fix/felix-meritis-20261011`,
@@ -374,7 +379,22 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   (footprints only), `rework/booking-hq-20261011` (held),
   `exp/photo-colors-20261011`, `render/drop-maplibre-step1-20261010`; plus
   five `wip/recovery-*-20261013` branches with author iterations recovered
-  from the 2026-10-08 clones (nieuwespiegel555, kerk136, prinsen211/215).
+  from the 2026-10-08 clones (nieuwespiegel555, kerk136, prinsen211/215), and
+  `wip/recovery-landmark-integration-20261009` holding **five landmark models
+  that never reached main**: Academie voor Theater en Dans, Holocaust
+  Namenmonument, Max Euwe Centrum, Ruysdael Petrus-Pauluskerk, Voormalige
+  Schouwburgpoort (builders, specs, catalogue entries). Status 2026-10-13:
+  branch merged with main (`bab86d13`), GLBs re-exported from the builders
+  (the clone's sparse checkout had dropped the binaries), Ruysdael
+  Petrus-Pauluskerk dropped as a duplicate of `petrus-en-paulus-kerk`.
+  `audit:glb`: Voormalige Schouwburgpoort PASS (16.6k tris) — review its
+  sheet and install; Academie voor Theater en Dans FAIL (666 open loops, 19
+  detached parts, 979 m² blank SE wall), Holocaust Namenmonument FAIL (2
+  openings off the wall), Max Euwe Centrum FAIL (see-through 4/151, 80
+  floating openings) — hand to the GLB cleanup lane. Review sheets for these
+  and for the kit-only churches (Oosterkerk, Mozes en Aaronkerk, De Duif,
+  Obrechtkerk WIP; all four PASS with warnings) are in
+  `map-recall2-worktrees/integrator/artifacts/review-20261013/`.
 - **Perf findings (2026-10-09 baseline, `tests/e2e/ride-perf.spec.ts`,
   iphone 4x throttle):** steady ride holds 16.7 ms median, p99 33 ms. Landmark
   layer costs only 0.1–0.8 ms/frame even with 250 models resident. The game
@@ -497,18 +517,26 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   tram, footways, landuse, piers missing from extracts; Utrecht/Rotterdam/Den
   Haag need extracts; footprint tiles to a worker; the Leaflet map picker
   (`map-picker.js:243`) also loads live OSM tiles — replace it too.
-- **Own ground in game behind `?ownGround=1`** (city-wide, 294 cells, 29.1 MB
-  gzip): blockers for default-on — per-polder water levels (Osdorp land −2.17 m
-  under water at −1.77 m); GPU time on a real iPhone (1.35M tris resident);
-  labels still MapLibre symbol layers; road widths from OSM (BGT: store one
-  measured width per way offline, not polygons). Recommendation: default-on in
-  the canal belt first after a real-iPhone measurement. Per-building chunk
-  bases verified only on flat streets. Size cuts if needed: 4 m relief
+- **Own ground in game behind `?ownGround=1`** (city-wide, 294 cells, 29.6 MB
+  gzip after 2026-10-13). Data blockers cleared 2026-10-13 (HISTORY): per-polder
+  water levels, BGT width per way (73.6% of drawable ways), 931 measured
+  bridges. Remaining before default-on: a desktop ride-perf measurement with
+  `?ownGround=1&sharedFrame=1` (iPhone later; desktop outranks it ~10x, user);
+  labels still MapLibre symbol layers; hosting quota (+0.53 MB more). Then
+  default-on in the canal belt. Follow-ups from the lane: wire
+  `bgt-width-by-class.json` into the 2D `ROAD_WIDTHS` reader so the corridor
+  felt matches the road seen (medians: residential 5.0 m vs prior 5.2,
+  tertiary 6.6 vs 4.5, secondary 7.2 vs 6.2, cycleway 3.0 vs 2.5, footway 2.8
+  vs 2.0); houseboats still take one city-wide level (`setWaterLevel`); the
+  per-way `bgt-way-widths.json` (311 KB gz) is staged, not published; 25
+  unnumbered bridge-register rows were skipped because their positional ids
+  shift; 118 movable bridges stay flat by design. Per-building chunk bases
+  verified only on flat streets. Size cuts if needed: 4 m relief
   everywhere (−4 MB), drop pad tiles. Firebase deploy grows ~24.6 MB net —
   hosting storage is already over quota.
 - **Elevation follow-ups** (`?elevation=1`, `docs/elevation.md`): no AHN
-  ground relief; one water level everywhere (polders, IJ shore get the same
-  quay wall); route line hidden on humped decks and ramps paint over ~20 m of
+  ground relief (own ground has it); water level is per polder since
+  2026-10-13 but every shore gets the same quay wall; route line hidden on humped decks and ramps paint over ~20 m of
   street; boats below street level not clipped at steep angles (boat mode not
   reviewed); relies on MapLibre private stencil fields; no settings toggle —
   decide default-on after a review drive.
@@ -546,8 +574,11 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ## P1 — The learning model itself
 - Kit-only landmarks still without a GLB: Noorderkerk (main pand to
   identify: 0363100012177299 or ...177297) and Krijtberg (not started).
-  Another session is building Obrechtkerk, Oosterkerk, Mozes en Aäronkerk,
-  De Duif and Opstandingskerk. Scheepvaartmuseum and Waag done 2026-10-13.
+  Obrechtkerk, Oosterkerk, Mozes en Aäronkerk, De Duif and Opstandingskerk
+  landed 2026-10-13 as hand-built GLBs (first-record baseline entries for
+  their window-rhythm mismatches; Opstandingskerk's east gable has 37 of 46
+  openings off-size against the photo spec, Obrechtkerk is 43k tris — both
+  for the GLB cleanup lane). Scheepvaartmuseum and Waag done 2026-10-13.
 - Facade comparison now crops to the photo's span (alongM/heightM), skips
   null bands and counts ribbon glazing as one opening (2026-10-11): failing
   checks 45 -> 24 over the 7 newly released landmarks. Real model gaps it
@@ -700,6 +731,15 @@ Reformed Church, He Hua Temple and Amstelkerk now have original models reviewed
 on the map. Taibah and Augustinuskerk still need a 3DBAG check. Dominicuskerk
 and Vredeskerk now include their naves and actual tower silhouettes.
 
+
+**Police headquarters, Elandsgracht 117 (user, 2026-10-13): bespoke builder.**
+The 1930s brick Hoofdbureau with its corner tower and carved stone entrance is
+a landmark destination, so it gets a hand builder (massing from 3DBAG LoD2.2;
+portal, tower crown and lettering modelled by hand; panoramas CC BY 4.0 and
+Beeldbank for references). Its long regular wings should be the first
+in-builder use of the `kind: large` facade systems once that lane lands, so
+only the signature parts are hand work. The 23 neighbourhood bureaus stay on
+the `large` recipe path.
 
 **Public buildings, next (after 2026-10-03, see HISTORY).** These are matched in staging but untreated: fire stations (19), police (23), hospitals (54) and civic offices (92). Red fire-station doors need a glass colour per window row in `KitWindows`. Big cinemas and theatres need a signage band, because plain brick boxes read as bare. The pitched-or-flat roof call on pre-1930 schools is a guess wherever the tile `roofShape` is missing.
 
