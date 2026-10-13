@@ -29,6 +29,8 @@ export type FacadeUniforms = {
   wallGain: { value: number };
 };
 
+import { HIGHLIGHT_GLSL, highlightDefines } from '../look/highlight.js';
+
 export const HIGHLIGHT_LINEAR = [1.0, 0.637, 0.0137] as const; // #ffd21f in linear
 
 const VERTEX_DECLS = /* glsl */ `
@@ -40,11 +42,12 @@ varying vec2 vFacUv;
 flat varying float vLayer;
 varying vec3 vTint;
 varying vec3 vAccent;
-flat varying float vHighlight;`;
+flat varying float vHighlight;
+${HIGHLIGHT_GLSL}`;
 
 const VERTEX_BODY = /* glsl */ `
 vFacUv = uv; vLayer = layer; vTint = tint.rgb; vAccent = accent.rgb;
-vHighlight = hidden > 1.5 ? 1.0 : 0.0;`;
+vHighlight = hlState(hidden);`;
 
 /** Moves a suppressed vertex outside the clip volume (same trick as the unlit shader). */
 const VERTEX_HIDE = /* glsl */ `
@@ -83,6 +86,7 @@ flat varying float vLayer;
 varying vec3 vTint;
 varying vec3 vAccent;
 flat varying float vHighlight;
+${HIGHLIGHT_GLSL}
 float facadeLuma;`)
       .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>
 if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;`)
@@ -94,12 +98,13 @@ fc *= mix(vec3(1.0), vTint, fm.r) * mix(vec3(1.0), vAccent, fm.g);
 fc *= mix(1.0, wallGain, fm.r);
 if (flatColour > 0.5) fc = vTint;
 facadeLuma = dot(fc, vec3(0.299, 0.587, 0.114));
-diffuseColor.rgb *= vHighlight > 0.5 ? vec3(${HIGHLIGHT_LINEAR.join(', ')}) : pow(fc, vec3(2.2));`)
+diffuseColor.rgb *= HL_PAINT(vHighlight) ? vec3(${HIGHLIGHT_LINEAR.join(', ')}) : pow(hlDesat(fc, vHighlight), vec3(2.2));`)
       .replace('#include <roughnessmap_fragment>', `#include <roughnessmap_fragment>
 roughnessFactor = mix(0.32, 0.92, smoothstep(0.06, 0.2, facadeLuma));`)
       .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
-if (vHighlight > 0.5) totalEmissiveRadiance += vec3(${HIGHLIGHT_LINEAR.join(', ')}) * 0.45;`);
+if (HL_PAINT(vHighlight)) totalEmissiveRadiance += vec3(${HIGHLIGHT_LINEAR.join(', ')}) * 0.45;`);
   };
+  material.defines = { ...(material.defines ?? {}), ...highlightDefines() };
   material.customProgramCacheKey = () => 'shared-frame-facade-v2';
   // The facade layer reads and writes these like a ShaderMaterial's uniforms.
   material.uniforms = shared;

@@ -40,6 +40,7 @@
 import { CITY_BRICK_LIGHTNESS, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLOT_CELL, SLOT_TILE_M, cityTint, hexToRgb, hslToRgb, rgbToHex, rgbToHsl, type MaterialSlot, type SlotCell } from './palette.ts';
 import { inferMaterialSlot, isMaterialSlot, isWhiteWord, INFERRED_SLOT_SOURCE } from './materialSlotInference.ts';
 import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
+import { HIGHLIGHT_GLSL, highlightDefines } from './highlight.ts';
 
 // ---------------------------------------------------------------------------
 // Flag
@@ -286,11 +287,13 @@ export type CityVariant = {
   uv?: 'uv' | 'box';
   /** Drawn in highlight yellow (the active landmark); a variant, because slot materials are shared. */
   highlight?: boolean;
+  /** Desaturated neighbour of the highlight (`?highlight=c`, look/highlight.ts). */
+  dim?: boolean;
   /** three.js side (FrontSide 0, BackSide 1, DoubleSide 2). */
   side?: number;
 };
 
-export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : '-'}|${v.side ?? 0}`;
+export const variantKey = (v: CityVariant) => `${v.lit ? 'lit' : 'unlit'}|${v.kind}|${v.kind === 'slot' ? v.uv ?? 'uv' : '-'}|${v.highlight ? 'hl' : v.dim ? 'dim' : '-'}|${v.side ?? 0}`;
 
 /** Shader defines for a variant (also what the program cache key is built from). */
 export function variantDefines(v: CityVariant): Record<string, string> {
@@ -298,7 +301,8 @@ export function variantDefines(v: CityVariant): Record<string, string> {
   if (v.kind === 'slot') d.CITY_SLOT = '';
   if (v.kind === 'slot' && v.uv === 'box') d.CITY_BOX_UV = '';
   if (v.highlight) d.CITY_HIGHLIGHT = '';
-  return d;
+  else if (v.dim) d.CITY_DIM = '';
+  return { ...d, ...highlightDefines() };
 }
 
 const HIGHLIGHT_SRGB = 'vec3(1.0, 0.824, 0.122)';
@@ -341,7 +345,8 @@ flat varying float vLayer;
 flat varying vec4 vSlot;
 varying vec3 vTint;
 varying vec3 vAccent;
-flat varying float vHighlight;`;
+flat varying float vHighlight;
+${HIGHLIGHT_GLSL}`;
 
 /**
  * Shared vertex body: layer, UVs, tint, highlight. Box projection works in the
@@ -350,9 +355,12 @@ flat varying float vHighlight;`;
  */
 const VERTEX_BODY = /* glsl */ `
 vTint = tint.rgb; vAccent = accent.rgb;
-vHighlight = hidden > 1.5 ? 1.0 : 0.0;
+vHighlight = hlState(hidden);
 #ifdef CITY_HIGHLIGHT
 vHighlight = 1.0;
+#endif
+#ifdef CITY_DIM
+vHighlight = 2.0;
 #endif
 #ifdef CITY_SLOT
   int cityS = int(clamp(layer + 0.5, 0.0, float(CITY_SLOT_COUNT - 1)));
@@ -391,7 +399,8 @@ flat varying vec4 vSlot;
 varying vec3 vTint;
 varying vec3 vAccent;
 flat varying float vHighlight;
-${HIGHLIGHT_GRAIN_GLSL}`;
+${HIGHLIGHT_GRAIN_GLSL}
+${HIGHLIGHT_GLSL}`;
 
 const FRAGMENT_FADE = /* glsl */ `
 if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;`;
@@ -439,12 +448,13 @@ varying float vShade;
 void main() {
 ${FRAGMENT_FADE}
 ${FRAGMENT_CELL}
-  if (vHighlight > 0.5) {
+  if (HL_PAINT(vHighlight)) {
     float hlShade = clamp(1.0 - (1.0 - vShade) * ${glslFloat(HIGHLIGHT_SHADE_GAIN)}, 0.6, 1.0);
     gl_FragColor = vec4(${HIGHLIGHT_SRGB} * (flatColour > 0.5 ? 1.0 : cityG) * hlShade, 1.0);
     return;
   }
   if (flatColour > 0.5) cityC = vTint;
+  cityC = hlDesat(cityC, vHighlight);
   float shade = bands > 0.5 ? floor(vShade * bands + 0.5) / bands : vShade;
   gl_FragColor = vec4(cityC * shade, 1.0);
 }`;
@@ -516,9 +526,9 @@ cityC *= mix(1.0, wallGain * ${glslFloat(CITY_LIT_LEVEL)}, cityM.r);
 #endif
 if (flatColour > 0.5) cityC = vTint;
 cityLuma = dot(cityC, vec3(0.299, 0.587, 0.114));
-diffuseColor.rgb *= vHighlight > 0.5 ? ${HIGHLIGHT_LINEAR} * ${glslFloat(HIGHLIGHT_ALBEDO)} * pow(flatColour > 0.5 ? 1.0 : cityG, 2.2) : pow(cityC, vec3(2.2));`)
+diffuseColor.rgb *= HL_PAINT(vHighlight) ? ${HIGHLIGHT_LINEAR} * ${glslFloat(HIGHLIGHT_ALBEDO)} * pow(flatColour > 0.5 ? 1.0 : cityG, 2.2) : pow(hlDesat(cityC, vHighlight), vec3(2.2));`)
         .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
-if (vHighlight > 0.5) totalEmissiveRadiance += ${HIGHLIGHT_LINEAR} * ${glslFloat(HIGHLIGHT_GLOW)};
+if (HL_PAINT(vHighlight)) totalEmissiveRadiance += ${HIGHLIGHT_LINEAR} * ${glslFloat(HIGHLIGHT_GLOW)};
 #ifdef CITY_SLOT
 else totalEmissiveRadiance += ${SKY_TINT} * vSlot.w;
 #else
@@ -603,6 +613,8 @@ export interface CityLook {
   dress(root: any, options: { lit: boolean; infer?: boolean; year?: number | null }): number;
   /** The same mesh's material with the highlight on or off. */
   highlighted(material: any, on: boolean): any;
+  /** The same mesh's material desaturated (style c's neighbours) or not. */
+  dimmed(material: any, on: boolean): any;
   /**
    * Shared frame: sample the facades' array (bay cells + slot layers starting
    * at `slotBase`) instead of the slot-only one. `null` returns to the own one.
@@ -689,7 +701,12 @@ export function createCityLook(THREE: any, options: CityLookOptions = {}): CityL
     highlighted(current, on) {
       const v = current?.userData?.cityVariant as CityVariant | undefined;
       if (!v) return current;
-      return material({ ...v, highlight: on });
+      return material({ ...v, highlight: on, dim: false });
+    },
+    dimmed(current, on) {
+      const v = current?.userData?.cityVariant as CityVariant | undefined;
+      if (!v) return current;
+      return material({ ...v, highlight: false, dim: on });
     },
     bindAtlas(atlas) {
       bound = !!atlas;
