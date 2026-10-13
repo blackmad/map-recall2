@@ -35576,6 +35576,308 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T23:06:20.615Z"
+    },
+    {
+      "id": "ordinary-0363100012096365",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012096365",
+      "name": "Vossius Gymnasium, Messchaertstraat 1, Amsterdam (1930 brick school, three wings, tiled roofs with dormer bands)",
+      "hash": "fd8239b261203ccd7bc4a13fe7536af3e0fb3eee047354523b23744eba4aaecd",
+      "sha256": "fd8239b261203ccd7bc4a13fe7536af3e0fb3eee047354523b23744eba4aaecd",
+      "bytes": 404676,
+      "triangles": 5381,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -34.643,
+          -0.001,
+          -33.134
+        ],
+        "max": [
+          45.707,
+          32.899,
+          32.896
+        ]
+      },
+      "anchor": [
+        4.8842385,
+        52.345814
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8848888,
+              52.345729
+            ],
+            [
+              4.8848904,
+              52.3457403
+            ],
+            [
+              4.884873,
+              52.3457412
+            ],
+            [
+              4.8849068,
+              52.3459913
+            ],
+            [
+              4.8847485,
+              52.3459994
+            ],
+            [
+              4.8847221,
+              52.3458054
+            ],
+            [
+              4.8846739,
+              52.3458078
+            ],
+            [
+              4.8846683,
+              52.3457664
+            ],
+            [
+              4.8845575,
+              52.3457718
+            ],
+            [
+              4.8845552,
+              52.3457553
+            ],
+            [
+              4.8841415,
+              52.3457764
+            ],
+            [
+              4.8841437,
+              52.3457929
+            ],
+            [
+              4.8840402,
+              52.3457984
+            ],
+            [
+              4.884046,
+              52.3458398
+            ],
+            [
+              4.8840005,
+              52.3458422
+            ],
+            [
+              4.8840043,
+              52.3458702
+            ],
+            [
+              4.8839949,
+              52.3458771
+            ],
+            [
+              4.8840121,
+              52.3460028
+            ],
+            [
+              4.8840508,
+              52.3460008
+            ],
+            [
+              4.8840617,
+              52.3460785
+            ],
+            [
+              4.8840594,
+              52.3460786
+            ],
+            [
+              4.8840623,
+              52.3460996
+            ],
+            [
+              4.8840198,
+              52.3461018
+            ],
+            [
+              4.8840192,
+              52.3460971
+            ],
+            [
+              4.8839889,
+              52.3460987
+            ],
+            [
+              4.8839895,
+              52.3461033
+            ],
+            [
+              4.8838585,
+              52.3461101
+            ],
+            [
+              4.8838579,
+              52.3461055
+            ],
+            [
+              4.883822,
+              52.3461074
+            ],
+            [
+              4.8838198,
+              52.346091
+            ],
+            [
+              4.8838082,
+              52.3460916
+            ],
+            [
+              4.8837677,
+              52.3457976
+            ],
+            [
+              4.8837476,
+              52.3457986
+            ],
+            [
+              4.8837316,
+              52.345684
+            ],
+            [
+              4.8837384,
+              52.3456837
+            ],
+            [
+              4.8837409,
+              52.345677
+            ],
+            [
+              4.8837465,
+              52.3456767
+            ],
+            [
+              4.8837509,
+              52.345683
+            ],
+            [
+              4.8838348,
+              52.3456786
+            ],
+            [
+              4.8838333,
+              52.3456679
+            ],
+            [
+              4.8838863,
+              52.3456654
+            ],
+            [
+              4.883888,
+              52.3456775
+            ],
+            [
+              4.8839522,
+              52.3456742
+            ],
+            [
+              4.8839536,
+              52.3456844
+            ],
+            [
+              4.8847321,
+              52.3456447
+            ],
+            [
+              4.8847175,
+              52.3455371
+            ],
+            [
+              4.8847322,
+              52.3455364
+            ],
+            [
+              4.8847306,
+              52.3455248
+            ],
+            [
+              4.8848129,
+              52.3455207
+            ],
+            [
+              4.8848145,
+              52.3455322
+            ],
+            [
+              4.8848288,
+              52.3455314
+            ],
+            [
+              4.8848435,
+              52.3456391
+            ],
+            [
+              4.8848969,
+              52.3456363
+            ],
+            [
+              4.8849099,
+              52.3457279
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 32.9,
+      "height": 32.9,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-vossius.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012096365"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "vossius",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012096365/w01-185.jpg",
+          "staging/pand-reference-walls/0363100012096365/w02-275.jpg",
+          "staging/pand-reference-walls/0363100012096365/w04-95.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 3st 19b",
+          "brick-bay-grid 2st 8b",
+          "brick-bay-grid 2st 9b",
+          "brick-bay-grid 3st 11b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012096365",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T23:10:51.128Z"
     }
   ]
 }
