@@ -55,6 +55,7 @@ test('pinpoint neighbourhoods show their places only after the guess', async ({ 
 });
 
 test('guess-name neighborhoods offer nearby areas as choices', async ({ page }) => {
+  test.slow();
   await quietExternalRequests(page);
   await page.goto('/?city=amsterdam&mode=guess_name&category=neighborhoods&radius=4500&map=light_nolabels&labels=off&rounds=5');
   const choices = page.locator('[id^="guess-option-"]');
@@ -63,6 +64,12 @@ test('guess-name neighborhoods offer nearby areas as choices', async ({ page }) 
   // Its best-known places are clues, and none names an offered answer.
   const labels = page.locator('.notable-place-label');
   await expect(labels.first()).toBeVisible({ timeout: 30_000 });
+  // Under load the labels arrive in batches as the map settles: read them once the set stops growing.
+  await expect.poll(async () => {
+    const count = await labels.count();
+    await page.waitForTimeout(500);
+    return count > 0 && count === (await labels.count());
+  }, { timeout: 30_000 }).toBe(true);
   const placeNames = (await labels.allTextContents()).map((name) => name.toLowerCase());
   await expect(page.locator('.leaflet-zoom-anim')).toHaveCount(0);
   await page.waitForTimeout(400);
@@ -149,11 +156,14 @@ test('a neighbourhood answer opens folded, its postcard ready, above the outline
   const viewport = page.viewportSize()!;
   const card = (await page.locator('[data-result-card]').boundingBox())!;
   expect(card.height, 'the folded answer card leaves most of the map visible').toBeLessThan(viewport.height * 0.5);
-  // The revealed area is fitted above the card, not under it.
+  // The revealed area is fitted clear of the card, not under it: above a bottom card, or beside a docked one.
+  // An area's name is its plaque (the marker anchor is zero-size); lines and points use the marker.
+  const docked = card.x > viewport.width / 2;
   await expect.poll(async () => {
-    const label = (await page.locator('.custom-true-target-icon').boundingBox())!;
-    return label.y + label.height < card.y;
-  }, { timeout: 5_000 }).toBe(true);
+    const plaque = page.locator('.area-plaque');
+    const label = (await ((await plaque.count()) ? plaque : page.locator('.custom-true-target-icon')).first().boundingBox())!;
+    return docked ? label.x + label.width < card.x : label.y + label.height < card.y;
+  }, { timeout: 8_000 }).toBe(true);
   await page.getByTestId('answer-details').click();
   const postcard = page.locator('[data-testid="answer-postcard"]');
   await expect(postcard).toHaveAttribute('data-painted', 'yes');
@@ -212,4 +222,29 @@ test('water quizzes start with the core canals', async ({ page }) => {
   await page.goto('/?city=amsterdam&mode=pinpoint&category=water&radius=4500&rounds=5');
   await expect(page.locator('#target-feature-name')).toHaveText(/^(Amstel|Herengracht|Keizersgracht|Prinsengracht|Singel|Singelgracht|IJ|Oudezijds Voorburgwal|Oudezijds Achterburgwal)$/);
   expect(new URL(page.url()).searchParams.get('waters')).toBe('important');
+});
+
+// Desktop review 2026-10-13: on a wide window the card was a centred column over the reveal. From 1100 px
+// it docks as a right-hand column and the map fits the rest.
+test('wide windows dock the answer card beside the map', async ({ page, viewport }) => {
+  test.skip(!viewport || viewport.width < 1100, 'docking starts at 1100 px');
+  await quietExternalRequests(page);
+  await page.goto('/?city=amsterdam&mode=pinpoint&category=neighborhoods&radius=4500&map=light_nolabels&labels=off&rounds=10');
+  await expect(page.locator('#target-feature-name')).toBeVisible();
+  const questionDock = (await page.locator('[data-quiz-dock]').boundingBox())!;
+  const width = viewport!.width;
+  expect(questionDock.x, 'the dock hugs the right edge').toBeGreaterThan(width - 26 * 16 - 8);
+  expect(questionDock.width).toBeLessThanOrEqual(26 * 16 + 1);
+  const rounds = await skipUntil(page, '[data-testid="answer-postcard"]');
+  expect(rounds, 'a neighbourhood with a full postcard within ten rounds').toBeGreaterThan(0);
+  const card = (await page.locator('[data-result-card]').boundingBox())!;
+  const dock = (await page.locator('[data-quiz-dock]').boundingBox())!;
+  expect(card.x, 'the card is right of the map').toBeGreaterThan(width / 2);
+  expect(dock.height, 'the dock runs the map height').toBeGreaterThan(viewport!.height * 0.7);
+  // The reveal label sits inside the map area, left of the dock.
+  await expect.poll(async () => {
+    const label = (await page.locator('.area-plaque').first().boundingBox())!;
+    return label.x >= 0 && label.x + label.width < dock.x;
+  }, { timeout: 8_000 }).toBe(true);
+  await expect(page.locator('[data-testid="answer-postcard"]')).toBeVisible();
 });

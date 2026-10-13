@@ -38,19 +38,25 @@ const MIN_WIDE_WINDOW_HEIGHT = 800;
  * the card (MapComponent caps its padding at 60% of the map). At 900 px tall that is ~410 px wide.
  */
 const FOLDED_POSTCARD_WIDTH = 'min(520px, calc((50dvh - 195px) * 1.6))';
-function useWideCard(ref: React.RefObject<HTMLDivElement | null>): boolean {
-  const [wide, setWide] = useState(true);
+/** The docked quiz card (index.css, >= 1100 px viewport): height is no longer the constraint. */
+const DOCK_MIN_VIEWPORT = 1100;
+function useWideCard(ref: React.RefObject<HTMLDivElement | null>): { wide: boolean; docked: boolean } {
+  const [state, setState] = useState({ wide: true, docked: false });
   useLayoutEffect(() => {
     const element = ref.current;
     if (!element) return;
-    const check = () => setWide(element.clientWidth >= MIN_WIDE_CARD && window.innerHeight >= MIN_WIDE_WINDOW_HEIGHT);
+    const check = () => {
+      const docked = window.innerWidth >= DOCK_MIN_VIEWPORT && !!element.closest('[data-quiz-dock]');
+      const wide = docked || (element.clientWidth >= MIN_WIDE_CARD && window.innerHeight >= MIN_WIDE_WINDOW_HEIGHT);
+      setState((previous) => (previous.wide === wide && previous.docked === docked ? previous : { wide, docked }));
+    };
     check();
     const observer = new ResizeObserver(check);
     observer.observe(element);
     window.addEventListener('resize', check);
     return () => { observer.disconnect(); window.removeEventListener('resize', check); };
   });
-  return wide;
+  return state;
 }
 
 /**
@@ -83,7 +89,7 @@ export const AnswerDetails: React.FC<{ feature: StreetFeature; factSeed: number;
   const [expanded, setExpanded] = useState(false);
   useEffect(() => setExpanded(false), [feature.id]);
   const foldRef = useRef<HTMLDivElement>(null);
-  const wide = useWideCard(foldRef);
+  const { wide, docked } = useWideCard(foldRef);
   const hints = useAnswerHints(feature);
 
   const teaser = answerTeaser(feature, factSeed, roundIndex);
@@ -108,7 +114,7 @@ export const AnswerDetails: React.FC<{ feature: StreetFeature; factSeed: number;
   return <div ref={foldRef} className="space-y-2">
     {isNeighborhood && (wide
       // The caption names the district, so the card waits for the (cached) hints rather than repaint.
-      ? hints && <div role="presentation" onClick={() => setExpanded(true)} className="mx-auto w-full cursor-pointer" style={{ maxWidth: FOLDED_POSTCARD_WIDTH }}>
+      ? hints && <div role="presentation" onClick={() => setExpanded(true)} className="mx-auto w-full cursor-pointer" style={{ maxWidth: docked ? undefined : FOLDED_POSTCARD_WIDTH }}>
         <PostcardHeader name={feature.name} cityName={postcardCaptionFor(feature, hints)} photos={postcardPhotos} className="w-full rounded-lg shadow-md" />
       </div>
       : <PostcardStrip name={feature.name} photo={postcardPhotos[0]} onOpen={() => setExpanded(true)} />)}
