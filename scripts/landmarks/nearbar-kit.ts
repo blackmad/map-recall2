@@ -36,20 +36,20 @@ export function slab(b: BuildingTools, f: Frame, t: number, y: number, w: number
   const k = sinkNext();
   put(b, f, new T.BoxGeometry(w, h, d + k).translate(0, h / 2, (d + k) / 2), t, y, out - k, colour);
 }
-/** Round-headed slab (rectangle plus half-disc), bottom at y. */
-export function archSlab(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, d: number, colour: Col, out = 0) {
+/** Round-headed slab (rectangle plus half-disc), bottom at y. `segments` is the curve resolution of the half-disc (8 default; small blind arches need 3-4). */
+export function archSlab(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, d: number, colour: Col, out = 0, segments = 8) {
   const s = new T.Shape(), r = w / 2;
   s.moveTo(-r, 0); s.lineTo(r, 0); s.lineTo(r, h - r); s.absarc(0, h - r, r, 0, Math.PI, false); s.lineTo(-r, 0);
   const k = sinkNext();
-  put(b, f, new T.ExtrudeGeometry(s, {depth: d + k, bevelEnabled: false, curveSegments: 8}), t, y, out - k, colour);
+  put(b, f, new T.ExtrudeGeometry(s, {depth: d + k, bevelEnabled: false, curveSegments: segments}), t, y, out - k, colour);
 }
 /** Arched band (round-headed outline of thickness `th`, open at the bottom). */
-export function archBand(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, th: number, d: number, colour: Col, out = 0) {
+export function archBand(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, th: number, d: number, colour: Col, out = 0, segments = 8) {
   const r = w / 2, ri = r - th, s = new T.Shape();
   s.moveTo(-r, 0); s.lineTo(-r, h - r); s.absarc(0, h - r, r, Math.PI, 0, true); s.lineTo(r, 0);
   s.lineTo(ri, 0); s.lineTo(ri, h - r); s.absarc(0, h - r, ri, 0, Math.PI, false); s.lineTo(-ri, 0); s.lineTo(-r, 0);
   const k = sinkNext();
-  put(b, f, new T.ExtrudeGeometry(s, {depth: d + k, bevelEnabled: false, curveSegments: 8}), t, y, out - k, colour);
+  put(b, f, new T.ExtrudeGeometry(s, {depth: d + k, bevelEnabled: false, curveSegments: segments}), t, y, out - k, colour);
 }
 /** Flat-topped solid polygon in (x,y), extruded outward from the wall. */
 export function poly(b: BuildingTools, f: Frame, t: number, y: number, pts: [number, number][], d: number, colour: Col, out = 0) {
@@ -62,10 +62,10 @@ export function disc(b: BuildingTools, f: Frame, t: number, y: number, r: number
   put(b, f, new T.CylinderGeometry(r, r, d, 20).rotateX(Math.PI / 2).translate(0, 0, d / 2), t, y, out, colour);
 }
 /** Ring (annulus) facing out of the wall, centre height y. */
-export function ringSlab(b: BuildingTools, f: Frame, t: number, y: number, r0: number, r1: number, d: number, colour: Col, out = 0) {
+export function ringSlab(b: BuildingTools, f: Frame, t: number, y: number, r0: number, r1: number, d: number, colour: Col, out = 0, segments = 20) {
   const s = new T.Shape(); s.absarc(0, 0, r1, 0, Math.PI * 2, false);
   const hole = new T.Path(); hole.absarc(0, 0, r0, 0, Math.PI * 2, true); s.holes.push(hole);
-  put(b, f, new T.ExtrudeGeometry(s, {depth: d, bevelEnabled: false, curveSegments: 20}), t, y, out, colour);
+  put(b, f, new T.ExtrudeGeometry(s, {depth: d, bevelEnabled: false, curveSegments: segments}), t, y, out, colour);
 }
 /** Segmental arch band (flat-ish arc of chord W and rise `rise`) with its springing at y. */
 export function segBand(b: BuildingTools, f: Frame, t: number, y: number, W: number, rise: number, th: number, d: number, colour: Col, out = 0) {
