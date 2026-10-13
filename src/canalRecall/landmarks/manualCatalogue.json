@@ -36114,5 +36114,89 @@
         ]
       ]
     }
+  },
+  {
+    "id": "rembrandtmonument",
+    "name": "Rembrandtmonument",
+    "assetKind": "memorial",
+    "landmarkId": "extract_landmarks_202176253",
+    "modelUrl": "./models/rembrandtmonument.glb",
+    "suppressOsmIds": [],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8965948,
+        52.3660041
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 11.3,
+      "widthMetres": 6.8
+    },
+    "surveyed": {
+      "anchor": [
+        4.8965948,
+        52.3660041
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Backlog destination point (OSM memorial); statue position and facing read from Gemeente Amsterdam panoramas (2025-06-19); the facing is a visual estimate, not a surveyed bearing"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "materialOverrides": {
+      "concrete": "#8c8e90",
+      "greyBrick": "#3d3f42",
+      "bronze": "#a3a49f",
+      "gold": "#9b8348"
+    },
+    "attribution": {
+      "title": "Rembrandtmonument - original low-poly interpretation",
+      "author": "Map Recall; commemorated sculpture by Louis Royer (1852)",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Standbeeld_van_Rembrandt_Harmensz._van_Rijn_op_het_Rembrandtplein_te_Amsterdam,_RP-P-1933-342.jpg",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free geometric figure and terrace. Pose and costume from the Rijksmuseum print RP-P-1933-342 (CC0) and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated from the panoramas. No pixels or third-party meshes imported."
+    }
+  },
+  {
+    "id": "vondelmonument",
+    "name": "Vondelmonument",
+    "assetKind": "memorial",
+    "landmarkId": "extract_landmarks_1159979789",
+    "modelUrl": "./models/vondelmonument.glb",
+    "suppressOsmIds": [],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.874086,
+        52.360017
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 13.4,
+      "widthMetres": 13.4
+    },
+    "surveyed": {
+      "anchor": [
+        4.874086,
+        52.360017
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Backlog destination point (OSM memorial); statue facing read from Gemeente Amsterdam panoramas (2017-04-13) - a visual estimate, not a surveyed bearing"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "materialOverrides": {
+      "sandstone": "#c9b98f",
+      "stone": "#d9ceb0",
+      "bronze": "#34382f",
+      "dark": "#2c2e30"
+    },
+    "attribution": {
+      "title": "Vondelmonument - original low-poly interpretation",
+      "author": "Map Recall; commemorated sculpture by Louis Royer (1867)",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam,_Vondelpark_monument_of_Joost_van_den_Vondel.jpg",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free geometric figures, pedestal and kerb. Proportions and pose from Gemeente Amsterdam panoramas (CC BY 4.0), Commons photograph by Dguendel (CC BY 4.0) and Rijksmuseum RP-F-F01187-BS (CC0); dimensions estimated. No pixels or third-party meshes imported."
+    }
   }
 ]

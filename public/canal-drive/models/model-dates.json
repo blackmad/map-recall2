@@ -2945,6 +2945,21 @@
       "updatedAt": "2026-10-13T20:55:41.236Z",
       "version": "7eb5f89887c7f195",
       "dateSource": "asset-update"
+    },
+    "maagdenhuis.lod1": {
+      "updatedAt": "2026-10-13T20:57:07.932Z",
+      "version": "6b0d10ba62f954f0",
+      "dateSource": "asset-update"
+    },
+    "rembrandtmonument": {
+      "updatedAt": "2026-10-13T21:06:39.065Z",
+      "version": "b5d4cf0883ae7bf8",
+      "dateSource": "asset-update"
+    },
+    "vondelmonument": {
+      "updatedAt": "2026-10-13T21:08:18.982Z",
+      "version": "6de315572f2680e0",
+      "dateSource": "asset-update"
     }
   }
 }

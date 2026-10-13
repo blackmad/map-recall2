@@ -21,9 +21,14 @@ if (opt('near')) {
   for (const r of rows.slice(0, 40)) console.log(`${r.id}  ${r.date}  ${r.dist} m  heading-to-point ${r.heading}`);
   process.exit(0);
 }
-const url = `https://api.data.amsterdam.nl/panorama/thumbnail/${opt('pano')}/?width=${opt('width', '1400')}&aspect=${opt('aspect', '1.4')}&fov=${opt('fov', '60')}&heading=${opt('heading', '0')}&pitch=${opt('pitch', '0')}`;
+// --shots=panoId:heading:name,panoId:heading:name writes <dir>/<name>.jpg for each (with --dir=<dir>)
+const shots = opt('shots') ? opt('shots').split(',').map(x => x.split(':')) : [[opt('pano'), opt('heading', '0'), null]];
+for (const [pano, heading, name] of shots) {
+const url = `https://api.data.amsterdam.nl/panorama/thumbnail/${pano}/?width=${opt('width', '1400')}&aspect=${opt('aspect', '1.4')}&fov=${opt('fov', '60')}&heading=${heading}&pitch=${opt('pitch', '0')}`;
 const r = await fetch(url, {headers: {'User-Agent': UA}});
-if (!r.ok) { console.error('failed', r.status, url); process.exit(1); }
-fs.mkdirSync(path.dirname(opt('out')), {recursive: true});
-fs.writeFileSync(opt('out'), Buffer.from(await r.arrayBuffer()));
-console.log('wrote', opt('out'), url);
+if (!r.ok) { console.error('failed', r.status, url); continue; }
+const dest = name ? path.join(opt('dir', '.'), `${name}.jpg`) : opt('out');
+fs.mkdirSync(path.dirname(dest), {recursive: true});
+fs.writeFileSync(dest, Buffer.from(await r.arrayBuffer()));
+console.log('wrote', dest, url);
+}
