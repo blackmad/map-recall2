@@ -76,7 +76,17 @@ function facadeAttributes(g: THREE.BufferGeometry, hex: string, layer: number, s
   g.setAttribute('hidden', new THREE.BufferAttribute(new Uint8Array(n), 1, false));
 }
 
-export type ParityOptions = { hex?: string; brickUrl?: string; pipelines?: readonly ParityPipeline[] };
+export type ParityOptions = {
+  hex?: string; brickUrl?: string; pipelines?: readonly ParityPipeline[];
+  /**
+   * Shadows on (docs/LOOK.md §Light "Shadow fill"): the rig's sun casts, and
+   * with `caster` an invisible slab between the wall and the sun puts the
+   * whole wall in cast shadow. `shadowIntensity` overrides the rig's.
+   * Chunk walls (generic, city-generic) lose their normal attribute, as the
+   * game's facade chunks have none.
+   */
+  shadow?: { caster: boolean; shadowIntensity?: number };
+};
 
 /** Render each pipeline's wall for each face under the shared rig; mean sRGB luma (0..255) of the wall. */
 export async function runLookParity(options: ParityOptions = {}): Promise<ParityResult> {
@@ -89,6 +99,7 @@ export async function runLookParity(options: ParityOptions = {}): Promise<Parity
   renderer.setSize(SIZE, SIZE, false);
   // Same output as the shared frame's renderer: sRGB, no tone mapping.
   renderer.toneMapping = THREE.NoToneMapping;
+  if (options.shadow) { renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFShadowMap; }
 
   let brick: HTMLImageElement | null = null;
   if (options.brickUrl) {
@@ -111,14 +122,27 @@ export async function runLookParity(options: ParityOptions = {}): Promise<Parity
     city.uniforms.enuFromWorld.value.identity();
   }
 
-  const out: ParityResult = { hex, rig: { ...DEFAULT_LIGHT_RIG, shadows: false }, walls: {} };
+  const shadow = options.shadow;
+  const out: ParityResult = { hex, rig: { ...DEFAULT_LIGHT_RIG, shadows: !!shadow, ...(shadow?.shadowIntensity !== undefined ? { shadowIntensity: shadow.shadowIntensity } : {}) }, walls: {} };
   const pixels = new Uint8Array(SIZE * SIZE * 4);
   for (const face of PARITY_FACES) {
     const normal = faceNormal(face);
     for (const pipeline of pipelines) {
       const scene = new THREE.Scene();
-      const rig = createLightRig(THREE, { shadows: false });
+      const rig = createLightRig(THREE, shadow ? { shadows: true, ...(shadow.shadowIntensity !== undefined ? { shadowIntensity: shadow.shadowIntensity } : {}) } : { shadows: false });
       for (const o of rig.objects) scene.add(o);
+      if (shadow) {
+        rig.follow([0, 0, 0], 18, abs => abs);
+        if (shadow.caster) {
+          // A 40 m slab across the sun's ray, 20 m out from the wall: it writes only to the shadow map.
+          const caster = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false, side: THREE.DoubleSide }));
+          const toSun = new THREE.Vector3(...rig.toSun);
+          caster.position.copy(toSun).multiplyScalar(20);
+          caster.lookAt(toSun.clone().multiplyScalar(40));
+          caster.castShadow = true;
+          scene.add(caster);
+        }
+      }
       let mesh: THREE.Mesh;
       if (pipeline === 'generic' || pipeline === 'generic-unlit') {
         // Chunk UVs: one cell per 5 m along, one per storey up; the plain brick cell, the city tint, its baked shade.
@@ -175,6 +199,10 @@ export async function runLookParity(options: ParityOptions = {}): Promise<Parity
         // Landmark GLB: flat authored colour, normalised to diffuse-only like the game does.
         mesh = new THREE.Mesh(wallGeometry(normal, 1), new THREE.MeshStandardMaterial({ color: hex, roughness: 0.9, metalness: 0 }));
         normaliseLandmarkMaterials(THREE, mesh);
+      }
+      if (shadow) {
+        mesh.receiveShadow = true;
+        if (pipeline.endsWith('generic') || pipeline.endsWith('generic-unlit')) mesh.geometry.deleteAttribute('normal');
       }
       scene.add(mesh);
       // Straight-on orthographic view from outside the wall.
