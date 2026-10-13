@@ -1,5 +1,40 @@
 # Canal Recall — what is built
 
+## Own ground: per-polder water, BGT widths per way, 202 more measured bridges (2026-10-13)
+
+Lane `ground/data-20261013` (Sonnet, `docs/handoffs/lane-ground-data-20261013.md`),
+the three data blockers for own-ground default-on. **Water levels**: AGV/Waternet
+"Peilgebieden Vigerend" (DAMO register, ArcGIS FeatureServer; the Rijkswaterstaat
+national WFS has geometry but null levels for Amsterdam) → `elevation-v1/water-levels.json`
+(+10 KB gz), NAP level per water polygon and shore (majority peilgebied; fixed
+levels as is, seasonal/flexible at the band midpoint; 705/707 parsed; 5,818 of
+12,777 polygons and 45% of shores joined, open water stays −0.40 m NAP).
+`groundStore`, `water.ts`, `groundCell` read it; new `GroundStore.waterZ` and
+`GameGround.waterLevelAt`; integrator wired the boat and ferry to
+`waterLevelAt` in `vector-map.js`. Named regression Osdorpplein: ground −2.11,
+water −3.47 (VP −2.17 m NAP); Herengracht cell uniformly −1.77. **Widths**: BGT
+`wegdeel` (PDOK OGC API, CC0, 1,164 tiles cached) sampled by cross-lines at
+25/50/75% of each way, own surface run within 2.5 m, footpath and cycle path
+summed per side, median over stations; dual carriageways measure to the near
+edge twice; bridge ways prefer `relatieve_hoogteligging ≥ 1`. 71,703 of 97,372
+drawable ways (73.6%) get `OsmWay.bw = [width, sidewalk, cycle]` in decimetres
+(+0.44 MB gz over the cells); `crossSection` prefers it, subtracting painted
+cycle lanes; `bgt-width-by-class.json` (median/p10/p90 per OSM class) for the
+2D physics reader, not yet wired. Where OSM `width` tags exist BGT differs by
+0.8 m (cycleway) to 3.7 m (secondary) on average. **Bridges**: the
+`feat/measured-bridges` AHN method on the 891 fallback footprints
+(`scripts/elevation/build-bridge-surfaces-v2.ts`, extractor `--extra-profiles`;
+cells byte-identical, only `bridges.json` changed, +79 KB gz): 202 non-movable
+decks measured (129 humped over 0.3 m, max 1.82 m; 113 concrete, 44 wooden,
+40 steel, 5 masonry arch) → 931 measured, 689 fallback. 39 movable bridges were
+measurable but are kept flat by design. Not measured: 127 without an OSM road
+through the footprint, 111 under 2 m wide, 100 viaduct-like, 29 over 65 m, 128
+AHN gaps, 25 unnumbered rows. Checks: own-ground 33, elevation 11, 294 cells
+fully measured, own-ground-game e2e 8/8 (lane) and 4/4 desktop (integrator),
+lint. Raw inputs archived to `map-recall2-source-data/datasets/own-ground-20261013/`.
+`docs/elevation.md` updated.
+
+
 ## Route questions no longer freeze the rider; spaced repetition budgets them (2026-10-13)
 
 Assessment finding: every route question zeroed the bike's speed and `game.js`

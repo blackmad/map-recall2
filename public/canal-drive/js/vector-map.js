@@ -2135,7 +2135,9 @@ class VectorBasemap {
     if (!this._playerBoat || !player || !loader) return;
     const surface = this._riderSurface();
     if (surface && visible && typeof this._playerBoat.setAltitude === 'function') {
-      this._playerBoat.setAltitude(this._easeRiderSurface(surface.waterLevelM()) + 0.22);
+      // Per-polder water (own ground): the boat floats at the level of the water it is on, not one city-wide plane.
+      const water = typeof surface.waterLevelAt === 'function' ? surface.waterLevelAt(this.worldToLngLat(player.x, player.y, loader)) : surface.waterLevelM();
+      this._playerBoat.setAltitude(this._easeRiderSurface(water) + 0.22);
     }
     this._playerBoat.update(
       this.worldToLngLat(player.x, player.y, loader), player.angle, visible,
@@ -2170,7 +2172,7 @@ class VectorBasemap {
   setPlayerFerry(player, loader, visible) {
     // Own ground: the ferry floats on the sunken water like the boat, not at street level.
     const surface = this._ownGround && this._ownGround.ready ? this._ownGround : null;
-    if (this._playerFerry && typeof this._playerFerry.setAltitude === 'function') this._playerFerry.setAltitude(surface ? surface.waterLevelM() + 0.22 : 0.22);
+    if (this._playerFerry && typeof this._playerFerry.setAltitude === 'function') this._playerFerry.setAltitude(surface ? surface.waterLevelAt(this.worldToLngLat(player.x, player.y, loader)) + 0.22 : 0.22);
     this._playerFerry?.update(this.worldToLngLat(player.x, player.y, loader), player.angle, visible);
   }
 
