@@ -1,0 +1,1635 @@
+{
+  "schemaVersion": 1,
+  "id": "tropenmuseum",
+  "pand": "0363100012237251",
+  "brief": "scripts/landmarks/tropenmuseum-brief.md",
+  "signature": [
+    "portal-entrance",
+    "portal-pediment-figures",
+    "gable-statues",
+    "np-onion-helmet",
+    "np-relief-friezes",
+    "sp-clock-onion"
+  ],
+  "walls": [
+    {
+      "tag": "w01-331",
+      "bearing": 331,
+      "lengthM": 35.3,
+      "centre": [
+        4.9221697,
+        52.3628337
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001674_pano_0000_003613",
+      "capturedAt": "2020-04-24",
+      "checked": true,
+      "items": [
+        {
+          "id": "museum-long-wall-arches",
+          "kind": "window-shape",
+          "where": "nine bays of round-arched nine-pane windows on the long Mauritskade wing, three floors",
+          "approxSizeM": [
+            31,
+            14
+          ],
+          "plan": "modelled",
+          "how": "compileLargeBuilding round-arch window system (kit arches), 9-pane look reduced to a two-light frame",
+          "seenIn": "TMX7316010203-001674_pano_0000_003613"
+        },
+        {
+          "id": "long-wall-cornice",
+          "kind": "other",
+          "where": "dentil cornice and plain string courses under the eaves",
+          "approxSizeM": [
+            35,
+            0.5
+          ],
+          "plan": "simplified",
+          "how": "kit stone band at the eaves; dentils not drawn",
+          "seenIn": "TMX7316010203-001674_pano_0000_003613"
+        }
+      ]
+    },
+    {
+      "tag": "w02-241",
+      "bearing": 241,
+      "lengthM": 35.2,
+      "centre": [
+        4.9217745,
+        52.3624883
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w03-151",
+      "bearing": 151,
+      "lengthM": 31.3,
+      "centre": [
+        4.9210976,
+        52.3626425
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w04-331",
+      "bearing": 331,
+      "lengthM": 31.1,
+      "centre": [
+        4.9209709,
+        52.3627801
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2024-09-16_07-18-19_01098",
+      "capturedAt": "2024-09-16",
+      "checked": true,
+      "items": [
+        {
+          "id": "mauritskade-wing-arches",
+          "kind": "window-shape",
+          "where": "round-arched windows on the Mauritskade wing behind the trees",
+          "approxSizeM": [
+            28,
+            12
+          ],
+          "plan": "modelled",
+          "how": "compileLargeBuilding round-arch window system (kit arches), 9-pane look reduced to a two-light frame",
+          "seenIn": "recording_2024-09-16_07-18-19_01098"
+        }
+      ]
+    },
+    {
+      "tag": "w05-151",
+      "bearing": 151,
+      "lengthM": 16.4,
+      "centre": [
+        4.9215253,
+        52.36256
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w06-241",
+      "bearing": 241,
+      "lengthM": 14.5,
+      "centre": [
+        4.9213506,
+        52.3626546
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w07-331",
+      "bearing": 331,
+      "lengthM": 14.1,
+      "centre": [
+        4.9204514,
+        52.3625909
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001674_pano_0000_003589",
+      "capturedAt": "2020-04-24",
+      "checked": true,
+      "items": [
+        {
+          "id": "instituut-gable-crown",
+          "kind": "sculpture",
+          "where": "gabled end of the Instituutsgebouw seen from the Mauritskade with towers either side",
+          "approxSizeM": [
+            5,
+            3
+          ],
+          "plan": "simplified",
+          "how": "gableCrown: piers, balls and apex finial on the 3DBAG gable",
+          "seenIn": "TMX7316010203-001674_pano_0000_003589"
+        },
+        {
+          "id": "instituut-banners",
+          "kind": "sign",
+          "where": "banners at the entrance",
+          "approxSizeM": [
+            3,
+            8
+          ],
+          "plan": "skipped",
+          "skip": {
+            "reason": "temporary",
+            "note": "red exhibition banners hung on the facade in 2020-2025 panoramas, not part of the building"
+          },
+          "seenIn": "TMX7316010203-001674_pano_0000_003589"
+        }
+      ]
+    },
+    {
+      "tag": "w08-331",
+      "bearing": 331,
+      "lengthM": 13.6,
+      "centre": [
+        4.9212377,
+        52.3628991
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2024-09-16_07-18-19_01103",
+      "capturedAt": "2024-09-16",
+      "checked": true,
+      "items": [
+        {
+          "id": "mauritskade-gable-statues",
+          "kind": "sculpture",
+          "where": "curved Mauritskade pavilion gable: statues and finial on the crown",
+          "approxSizeM": [
+            3,
+            2
+          ],
+          "plan": "simplified",
+          "how": "gableCrown: ball piers and a figure() statue on the apex of the 3DBAG gable",
+          "seenIn": "recording_2024-09-16_07-18-19_01103"
+        },
+        {
+          "id": "mauritskade-window-bands",
+          "kind": "window-shape",
+          "where": "bay windows in rounded stair tower, floors 1-5",
+          "approxSizeM": [
+            10,
+            18
+          ],
+          "plan": "modelled",
+          "how": "compileLargeBuilding round-arch window system (kit arches), 9-pane look reduced to a two-light frame",
+          "seenIn": "recording_2024-09-16_07-18-19_01103"
+        }
+      ]
+    },
+    {
+      "tag": "w09-61",
+      "bearing": 61,
+      "lengthM": 12.6,
+      "centre": [
+        4.92297,
+        52.3622946
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w10-61",
+      "bearing": 61,
+      "lengthM": 12.1,
+      "centre": [
+        4.9225866,
+        52.3629191
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002310_pano_0001_001995",
+      "capturedAt": "2021-09-15",
+      "checked": true,
+      "items": [
+        {
+          "id": "np-relief-friezes-ne",
+          "kind": "relief",
+          "where": "Linnaeusstraat face of the north pavilion: relief friezes under the windows of floors 1-2",
+          "approxSizeM": [
+            2.6,
+            0.9
+          ],
+          "plan": "simplified",
+          "how": "pavilionOrnaments, same frieze as the Mauritskade face",
+          "seenIn": "TMX7316010203-002310_pano_0001_001995"
+        },
+        {
+          "id": "np-clock-dial-ne",
+          "kind": "clock",
+          "where": "dormer clock on the tent roof",
+          "approxSizeM": [
+            1.4,
+            1.4
+          ],
+          "plan": "simplified",
+          "how": "pavilionOrnaments dial",
+          "seenIn": "TMX7316010203-002310_pano_0001_001995"
+        },
+        {
+          "id": "np-arched-windows",
+          "kind": "window-shape",
+          "where": "round-arched triple window high in the pavilion and souterrain arches",
+          "approxSizeM": [
+            3,
+            3
+          ],
+          "plan": "modelled",
+          "how": "compileLargeBuilding round-arch window system (kit arches), 9-pane look reduced to a two-light frame",
+          "seenIn": "TMX7316010203-002310_pano_0001_001995"
+        }
+      ]
+    },
+    {
+      "tag": "w11-61",
+      "bearing": 61,
+      "lengthM": 12.1,
+      "centre": [
+        4.9228432,
+        52.3626404
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001674_pano_0000_003626",
+      "capturedAt": "2020-04-24",
+      "checked": true,
+      "items": [
+        {
+          "id": "risalit-statues",
+          "kind": "sculpture",
+          "where": "three-bay risalit gable on the Linnaeusstraat front: statues on pedestals at the crown",
+          "approxSizeM": [
+            3,
+            2
+          ],
+          "plan": "simplified",
+          "how": "gableCrown with statue on the risalit gable (panels 151/154)",
+          "seenIn": "TMX7316010203-001674_pano_0000_003626"
+        },
+        {
+          "id": "risalit-lettering",
+          "kind": "lettering",
+          "where": "TROPENMUSEUM lettering on the street railing",
+          "approxSizeM": [
+            4,
+            0.5
+          ],
+          "plan": "skipped",
+          "skip": {
+            "reason": "too-small",
+            "note": "painted sign board at fence level, about 0.5 m high, unreadable at riding distance"
+          },
+          "seenIn": "TMX7316010203-001674_pano_0000_003626"
+        },
+        {
+          "id": "risalit-banners",
+          "kind": "sign",
+          "where": "banner on the risalit",
+          "approxSizeM": [
+            3,
+            8
+          ],
+          "plan": "skipped",
+          "skip": {
+            "reason": "temporary",
+            "note": "red exhibition banners hung on the facade in 2020-2025 panoramas, not part of the building"
+          },
+          "seenIn": "TMX7316010203-001674_pano_0000_003626"
+        }
+      ]
+    },
+    {
+      "tag": "w12-331",
+      "bearing": 331,
+      "lengthM": 11.8,
+      "centre": [
+        4.9224676,
+        52.3629407
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2025-09-30_11-08-39_00754",
+      "capturedAt": "2025-09-30",
+      "checked": true,
+      "items": [
+        {
+          "id": "np-relief-friezes",
+          "kind": "relief",
+          "where": "under the centre windows of floors 1-2 of the north pavilion: friezes of the four religions and four crops",
+          "approxSizeM": [
+            2.6,
+            0.9
+          ],
+          "plan": "simplified",
+          "how": "pavilionOrnaments: stone frieze panels with four relief figure stubs; no iconography",
+          "seenIn": "recording_2025-09-30_11-08-39_00754"
+        },
+        {
+          "id": "np-clock-dial",
+          "kind": "clock",
+          "where": "dormer kapel in the tent roof with a clock dial",
+          "approxSizeM": [
+            1.4,
+            1.4
+          ],
+          "plan": "simplified",
+          "how": "pavilionOrnaments: dial disc, ring and two hands where the wall rises over the eaves",
+          "seenIn": "recording_2025-09-30_11-08-39_00754"
+        },
+        {
+          "id": "np-onion-helmet",
+          "kind": "dome",
+          "where": "copper onion helmet with lantern, spire and vane on the tent roof",
+          "approxSizeM": [
+            1.7,
+            4.5
+          ],
+          "plan": "modelled",
+          "how": "helmet() in tropenmuseum-builder.ts: stone lantern, copper onion, spire, gold ball and vane",
+          "seenIn": "recording_2025-09-30_11-08-39_00754"
+        },
+        {
+          "id": "np-anchors",
+          "kind": "balcony-ironwork",
+          "where": "iron anchors between bays",
+          "approxSizeM": [
+            0.3,
+            0.9
+          ],
+          "plan": "modelled",
+          "how": "anchorIron on alternate floors",
+          "seenIn": "recording_2025-09-30_11-08-39_00754"
+        }
+      ]
+    },
+    {
+      "tag": "w13-61",
+      "bearing": 61,
+      "lengthM": 10.4,
+      "centre": [
+        4.9229198,
+        52.3623956
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w14-241",
+      "bearing": 241,
+      "lengthM": 10.4,
+      "centre": [
+        4.92073,
+        52.3624604
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w15-61",
+      "bearing": 61,
+      "lengthM": 10.3,
+      "centre": [
+        4.9209071,
+        52.3625204
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001674_pano_0000_003598",
+      "capturedAt": "2020-04-24",
+      "checked": true,
+      "items": [
+        {
+          "id": "np-banner",
+          "kind": "sign",
+          "where": "red banner on the pavilion",
+          "approxSizeM": [
+            3,
+            8
+          ],
+          "plan": "skipped",
+          "skip": {
+            "reason": "temporary",
+            "note": "red exhibition banners hung on the facade in 2020-2025 panoramas, not part of the building"
+          },
+          "seenIn": "TMX7316010203-001674_pano_0000_003598"
+        }
+      ]
+    },
+    {
+      "tag": "w16-61",
+      "bearing": 61,
+      "lengthM": 10.1,
+      "centre": [
+        4.9227728,
+        52.3627996
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001674_pano_0000_003626",
+      "capturedAt": "2020-04-24",
+      "checked": true,
+      "items": [
+        {
+          "id": "sp-clock-onion",
+          "kind": "dome",
+          "where": "south corner pavilion: tent roof with clock dormer and copper onion helmet",
+          "approxSizeM": [
+            2,
+            5
+          ],
+          "plan": "modelled",
+          "how": "helmet() and pavilionOrnaments dial on surfaces 168/606",
+          "seenIn": "TMX7316010203-001674_pano_0000_003626"
+        },
+        {
+          "id": "sp-relief-friezes",
+          "kind": "relief",
+          "where": "friezes under the pavilion windows",
+          "approxSizeM": [
+            2.6,
+            0.9
+          ],
+          "plan": "simplified",
+          "how": "pavilionOrnaments frieze",
+          "seenIn": "TMX7316010203-001674_pano_0000_003626"
+        }
+      ]
+    },
+    {
+      "tag": "w17-331",
+      "bearing": 331,
+      "lengthM": 9.4,
+      "centre": [
+        4.920604,
+        52.3627228
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2024-09-16_07-18-19_01094",
+      "capturedAt": "2024-09-16",
+      "checked": true,
+      "items": [
+        {
+          "id": "portal-entrance",
+          "kind": "colonnade",
+          "where": "ground floor centre: tripartite sandstone portal, pilasters, archivolt, arched door with iron fanlight",
+          "approxSizeM": [
+            4.2,
+            6.5
+          ],
+          "plan": "modelled",
+          "how": "portalFront in tropenmuseum-portal.ts, measured on the 50 px/m crop",
+          "seenIn": "recording_2024-09-16_07-18-19_01094"
+        },
+        {
+          "id": "portal-pediment-figures",
+          "kind": "sculpture",
+          "where": "segmental pediment over the portal with two reclining figures and a shield",
+          "approxSizeM": [
+            3.6,
+            1.6
+          ],
+          "plan": "modelled",
+          "how": "portalFront: reclining() figures, shield and keystone medallion",
+          "seenIn": "recording_2024-09-16_07-18-19_01094"
+        },
+        {
+          "id": "portal-keystone-coen",
+          "kind": "relief",
+          "where": "keystone medallion over the arch (Coen)",
+          "approxSizeM": [
+            0.6,
+            0.8
+          ],
+          "plan": "simplified",
+          "how": "round medallion disc on the keystone; no portrait",
+          "seenIn": "recording_2024-09-16_07-18-19_01094"
+        },
+        {
+          "id": "gable-statues",
+          "kind": "sculpture",
+          "where": "free-standing statues on pedestals at both sides and on the apex of the central gable",
+          "approxSizeM": [
+            0.8,
+            1.8
+          ],
+          "plan": "modelled",
+          "how": "portalGable: three figure() statues on stone pedestals",
+          "seenIn": "recording_2024-09-16_07-18-19_01094"
+        },
+        {
+          "id": "gable-oculus",
+          "kind": "window-shape",
+          "where": "round window with ring in the gable",
+          "approxSizeM": [
+            1.8,
+            1.8
+          ],
+          "plan": "modelled",
+          "how": "portalGable oculus with ear arches",
+          "seenIn": "recording_2024-09-16_07-18-19_01094"
+        },
+        {
+          "id": "side-oculus-door",
+          "kind": "window-shape",
+          "where": "right of the portal: oculus over a small arched door with a ten-step stair",
+          "approxSizeM": [
+            1.8,
+            4.5
+          ],
+          "plan": "modelled",
+          "how": "portalFront oculus, side door and stair",
+          "seenIn": "recording_2024-09-16_07-18-19_01094"
+        },
+        {
+          "id": "portal-fence-globes",
+          "kind": "other",
+          "where": "Muiderhek fence of 1770 with globe posts at the stair",
+          "approxSizeM": [
+            6,
+            1.4
+          ],
+          "plan": "simplified",
+          "how": "two stone globe posts and the stair flanks; fence bars not drawn (open railing at street level)",
+          "seenIn": "recording_2024-09-16_07-18-19_01094"
+        },
+        {
+          "id": "wall-anchors",
+          "kind": "balcony-ironwork",
+          "where": "wrought-iron wall anchors between window bays",
+          "approxSizeM": [
+            0.3,
+            0.9
+          ],
+          "plan": "modelled",
+          "how": "anchorIron on the portal front",
+          "seenIn": "recording_2024-09-16_07-18-19_01094"
+        },
+        {
+          "id": "portal-banners",
+          "kind": "sign",
+          "where": "banners at the portal",
+          "approxSizeM": [
+            3,
+            8
+          ],
+          "plan": "skipped",
+          "skip": {
+            "reason": "temporary",
+            "note": "red exhibition banners hung on the facade in 2020-2025 panoramas, not part of the building"
+          },
+          "seenIn": "recording_2024-09-16_07-18-19_01094"
+        }
+      ]
+    },
+    {
+      "tag": "w18-218",
+      "bearing": 218,
+      "lengthM": 9.4,
+      "centre": [
+        4.9224391,
+        52.362315
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w19-61",
+      "bearing": 61,
+      "lengthM": 9.3,
+      "centre": [
+        4.9219105,
+        52.3627923
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001674_pano_0000_003615",
+      "capturedAt": "2020-04-24",
+      "checked": true,
+      "items": [
+        {
+          "id": "linnaeus-wing-windows",
+          "kind": "window-shape",
+          "where": "long Linnaeusstraat wing windows",
+          "approxSizeM": [
+            28,
+            10
+          ],
+          "plan": "modelled",
+          "how": "compileLargeBuilding round-arch window system (kit arches), 9-pane look reduced to a two-light frame",
+          "seenIn": "TMX7316010203-001674_pano_0000_003615"
+        }
+      ]
+    },
+    {
+      "tag": "w20-241",
+      "bearing": 241,
+      "lengthM": 9.1,
+      "centre": [
+        4.9225535,
+        52.3622631
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w21-151",
+      "bearing": 151,
+      "lengthM": 8.9,
+      "centre": [
+        4.9205263,
+        52.362299
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001675_pano_0000_001817",
+      "capturedAt": "2020-04-24",
+      "checked": true,
+      "items": [
+        {
+          "id": "oosterpark-wing",
+          "kind": "other",
+          "where": "Oosterpark side wing behind trees: plain brick windows, no ornament visible",
+          "approxSizeM": [
+            9,
+            12
+          ],
+          "plan": "simplified",
+          "how": "kit plain windows, blank where enclosed",
+          "note": "screened by tree canopy in the panorama",
+          "seenIn": "TMX7316010203-001675_pano_0000_001817"
+        }
+      ]
+    },
+    {
+      "tag": "w22-241",
+      "bearing": 241,
+      "lengthM": 8.7,
+      "centre": [
+        4.9227662,
+        52.3622442
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w23-151",
+      "bearing": 151,
+      "lengthM": 8.6,
+      "centre": [
+        4.92296,
+        52.3622264
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w24-241",
+      "bearing": 241,
+      "lengthM": 8.1,
+      "centre": [
+        4.9223552,
+        52.3623724
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w25-241",
+      "bearing": 241,
+      "lengthM": 7.6,
+      "centre": [
+        4.9204419,
+        52.3623093
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2024-10-02_09-25-01_02772",
+      "capturedAt": "2024-10-02",
+      "checked": true,
+      "items": [
+        {
+          "id": "rear-wing-plain",
+          "kind": "other",
+          "where": "rear wing, plain windows",
+          "approxSizeM": [
+            8,
+            12
+          ],
+          "plan": "simplified",
+          "how": "kit plain windows",
+          "seenIn": "recording_2024-10-02_09-25-01_02772"
+        }
+      ]
+    },
+    {
+      "tag": "w26-241",
+      "bearing": 241,
+      "lengthM": 7.6,
+      "centre": [
+        4.9205089,
+        52.3626549
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001674_pano_0000_003586",
+      "capturedAt": "2020-04-24",
+      "checked": true,
+      "items": [
+        {
+          "id": "rear-banners",
+          "kind": "sign",
+          "where": "banners at the entrance",
+          "approxSizeM": [
+            3,
+            8
+          ],
+          "plan": "skipped",
+          "skip": {
+            "reason": "temporary",
+            "note": "red exhibition banners hung on the facade in 2020-2025 panoramas, not part of the building"
+          },
+          "seenIn": "TMX7316010203-001674_pano_0000_003586"
+        }
+      ]
+    },
+    {
+      "tag": "w27-151",
+      "bearing": 151,
+      "lengthM": 7.4,
+      "centre": [
+        4.9211122,
+        52.3621711
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002468_pano_0001_000388",
+      "capturedAt": "2022-03-23",
+      "checked": true,
+      "items": [
+        {
+          "id": "gable-with-turrets",
+          "kind": "tower",
+          "where": "Instituut gable with two turrets with pointed roofs flanking a stepped gable",
+          "approxSizeM": [
+            9,
+            14
+          ],
+          "plan": "simplified",
+          "how": "turret and gable massing from 3DBAG; gableCrown on the gable",
+          "seenIn": "TMX7316010203-002468_pano_0001_000388"
+        }
+      ]
+    },
+    {
+      "tag": "w28-331",
+      "bearing": 331,
+      "lengthM": 7.4,
+      "centre": [
+        4.9202954,
+        52.3625071
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001674_pano_0000_003586",
+      "capturedAt": "2020-04-24",
+      "checked": true,
+      "items": [
+        {
+          "id": "w28-trees",
+          "kind": "other",
+          "where": "wall screened by trees; plain windows",
+          "approxSizeM": [
+            7.4,
+            12
+          ],
+          "plan": "simplified",
+          "how": "kit windows",
+          "seenIn": "TMX7316010203-001674_pano_0000_003586"
+        }
+      ]
+    },
+    {
+      "tag": "w29-61",
+      "bearing": 61,
+      "lengthM": 7.1,
+      "centre": [
+        4.9207466,
+        52.3627394
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001674_pano_0000_003598",
+      "capturedAt": "2020-04-24",
+      "checked": true,
+      "items": [
+        {
+          "id": "w29-banner",
+          "kind": "sign",
+          "where": "banners",
+          "approxSizeM": [
+            3,
+            8
+          ],
+          "plan": "skipped",
+          "skip": {
+            "reason": "temporary",
+            "note": "red exhibition banners hung on the facade in 2020-2025 panoramas, not part of the building"
+          },
+          "seenIn": "TMX7316010203-001674_pano_0000_003598"
+        }
+      ]
+    },
+    {
+      "tag": "w30-241",
+      "bearing": 241,
+      "lengthM": 6.9,
+      "centre": [
+        4.9203656,
+        52.3623927
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2024-10-02_09-25-01_02770",
+      "capturedAt": "2024-10-02",
+      "checked": true,
+      "items": [
+        {
+          "id": "w30-trees",
+          "kind": "other",
+          "where": "wall screened by trees; plain windows",
+          "approxSizeM": [
+            7,
+            12
+          ],
+          "plan": "simplified",
+          "how": "kit plain windows",
+          "seenIn": "recording_2024-10-02_09-25-01_02770"
+        }
+      ]
+    },
+    {
+      "tag": "w31-61",
+      "bearing": 61,
+      "lengthM": 6.4,
+      "centre": [
+        4.9228272,
+        52.3624505
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w32-151",
+      "bearing": 151,
+      "lengthM": 6.2,
+      "centre": [
+        4.9228374,
+        52.3622239
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w33-151",
+      "bearing": 151,
+      "lengthM": 5.6,
+      "centre": [
+        4.922699,
+        52.362266
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w34-61",
+      "bearing": 61,
+      "lengthM": 5.6,
+      "centre": [
+        4.9205213,
+        52.3623853
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w35-21",
+      "bearing": 21,
+      "lengthM": 5.5,
+      "centre": [
+        4.921667,
+        52.3629125
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002138_pano_0000_003535",
+      "capturedAt": "2021-05-12",
+      "checked": true,
+      "items": [
+        {
+          "id": "w35-turret-gable",
+          "kind": "tower",
+          "where": "gable flanked by two round turrets with conical roofs; arched entrance and gate",
+          "approxSizeM": [
+            5.5,
+            13
+          ],
+          "plan": "simplified",
+          "how": "3DBAG turret roofs; gableCrown; entrance from kit round arch; wrought-iron gate not drawn",
+          "seenIn": "TMX7316010203-002138_pano_0000_003535"
+        },
+        {
+          "id": "w35-gate",
+          "kind": "balcony-ironwork",
+          "where": "curved wrought-iron fence in front",
+          "approxSizeM": [
+            10,
+            1.6
+          ],
+          "plan": "skipped",
+          "skip": {
+            "reason": "too-small",
+            "note": "open railing at street level, fence bars thinner than 2 cm"
+          },
+          "seenIn": "TMX7316010203-002138_pano_0000_003535"
+        }
+      ]
+    },
+    {
+      "tag": "w36-61",
+      "bearing": 61,
+      "lengthM": 5.4,
+      "centre": [
+        4.9226441,
+        52.3628487
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001674_pano_0000_003623",
+      "capturedAt": "2020-04-24",
+      "checked": true,
+      "items": [
+        {
+          "id": "w36-tower",
+          "kind": "tower",
+          "where": "six-storey tower seen along Linnaeusstraat",
+          "approxSizeM": [
+            5,
+            25
+          ],
+          "plan": "simplified",
+          "how": "3DBAG tower massing with kit arched windows",
+          "seenIn": "TMX7316010203-001674_pano_0000_003623"
+        }
+      ]
+    },
+    {
+      "tag": "w37-61",
+      "bearing": 61,
+      "lengthM": 5.4,
+      "centre": [
+        4.9227745,
+        52.362707
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001674_pano_0000_003624",
+      "capturedAt": "2020-04-24",
+      "checked": true,
+      "items": [
+        {
+          "id": "w37-wing",
+          "kind": "other",
+          "where": "plain wing, no ornament",
+          "approxSizeM": [
+            5,
+            12
+          ],
+          "plan": "simplified",
+          "how": "kit windows",
+          "seenIn": "TMX7316010203-001674_pano_0000_003624"
+        }
+      ]
+    },
+    {
+      "tag": "w38-61",
+      "bearing": 61,
+      "lengthM": 5.1,
+      "centre": [
+        4.9211993,
+        52.362215
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002468_pano_0001_000381",
+      "capturedAt": "2022-03-23",
+      "checked": true,
+      "items": [
+        {
+          "id": "w38-turret",
+          "kind": "tower",
+          "where": "round turret with conical roof, tree-screened",
+          "approxSizeM": [
+            4,
+            14
+          ],
+          "plan": "simplified",
+          "how": "3DBAG turret roof",
+          "seenIn": "TMX7316010203-002468_pano_0001_000381"
+        }
+      ]
+    },
+    {
+      "tag": "w39-239",
+      "bearing": 239,
+      "lengthM": 5,
+      "centre": [
+        4.9210045,
+        52.3621477
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2025-06-20_10-43-25_02668",
+      "capturedAt": "2025-06-20",
+      "checked": true,
+      "items": [
+        {
+          "id": "w39-trees",
+          "kind": "other",
+          "where": "wall of the separate Oosterpark building cluster, tree-screened",
+          "approxSizeM": [
+            5,
+            10
+          ],
+          "plan": "simplified",
+          "how": "kit windows",
+          "seenIn": "recording_2025-06-20_10-43-25_02668"
+        }
+      ]
+    },
+    {
+      "tag": "w40-61",
+      "bearing": 61,
+      "lengthM": 5,
+      "centre": [
+        4.9228143,
+        52.3625055
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w41-11",
+      "bearing": 11,
+      "lengthM": 4.9,
+      "centre": [
+        4.9215936,
+        52.3629252
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2025-09-30_11-08-39_00744",
+      "capturedAt": "2025-09-30",
+      "checked": true,
+      "items": [
+        {
+          "id": "kwadrant-entrance",
+          "kind": "colonnade",
+          "where": "curved Kwadrant wing: arched entrance up a stair, with lanterns and a balustrade",
+          "approxSizeM": [
+            6,
+            5
+          ],
+          "plan": "simplified",
+          "how": "kit round-arch ground floor and 3DBAG stair massing; balustrade and lanterns not drawn",
+          "seenIn": "recording_2025-09-30_11-08-39_00744"
+        },
+        {
+          "id": "kwadrant-lanterns",
+          "kind": "lamp",
+          "where": "lanterns flanking the Kwadrant entrance",
+          "approxSizeM": [
+            0.4,
+            1.2
+          ],
+          "plan": "skipped",
+          "skip": {
+            "reason": "too-small",
+            "note": "lamps about 0.4 m wide, smaller than a gallery pixel at riding distance"
+          },
+          "seenIn": "recording_2025-09-30_11-08-39_00744"
+        }
+      ]
+    },
+    {
+      "tag": "w42-358",
+      "bearing": 358,
+      "lengthM": 4.8,
+      "centre": [
+        4.9215217,
+        52.3629188
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002138_pano_0000_003532",
+      "capturedAt": "2021-05-12",
+      "checked": true,
+      "items": [
+        {
+          "id": "kwadrant-windows-1",
+          "kind": "window-shape",
+          "where": "quarter-round office wing, two floors of windows",
+          "approxSizeM": [
+            5,
+            8
+          ],
+          "plan": "modelled",
+          "how": "compileLargeBuilding round-arch window system (kit arches), 9-pane look reduced to a two-light frame",
+          "seenIn": "TMX7316010203-002138_pano_0000_003532"
+        }
+      ]
+    },
+    {
+      "tag": "w43-241",
+      "bearing": 241,
+      "lengthM": 4.7,
+      "centre": [
+        4.9213465,
+        52.3625535
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w44-337",
+      "bearing": 337,
+      "lengthM": 4.7,
+      "centre": [
+        4.9213898,
+        52.362901
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002138_pano_0000_003529",
+      "capturedAt": "2021-05-12",
+      "checked": true,
+      "items": [
+        {
+          "id": "kwadrant-windows-2",
+          "kind": "window-shape",
+          "where": "quarter-round office wing",
+          "approxSizeM": [
+            5,
+            8
+          ],
+          "plan": "modelled",
+          "how": "compileLargeBuilding round-arch window system (kit arches), 9-pane look reduced to a two-light frame",
+          "seenIn": "TMX7316010203-002138_pano_0000_003529"
+        }
+      ]
+    },
+    {
+      "tag": "w45-331",
+      "bearing": 331,
+      "lengthM": 4.7,
+      "centre": [
+        4.9205115,
+        52.3626947
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001674_pano_0000_003591",
+      "capturedAt": "2020-04-24",
+      "checked": true,
+      "items": [
+        {
+          "id": "w45-pavilion",
+          "kind": "tower",
+          "where": "corner pavilion with pointed roof beyond the crossing",
+          "approxSizeM": [
+            5,
+            14
+          ],
+          "plan": "simplified",
+          "how": "3DBAG pavilion roof with kit windows",
+          "seenIn": "TMX7316010203-001674_pano_0000_003591"
+        }
+      ]
+    },
+    {
+      "tag": "w46-331",
+      "bearing": 331,
+      "lengthM": 4.7,
+      "centre": [
+        4.9206913,
+        52.3627568
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001527_pano_0000_001730",
+      "capturedAt": "2019-12-19",
+      "checked": true,
+      "items": [
+        {
+          "id": "w46-pavilion-crossing",
+          "kind": "tower",
+          "where": "museum pavilion with pointed roof at the Mauritskade crossing, gable with statues",
+          "approxSizeM": [
+            5,
+            20
+          ],
+          "plan": "simplified",
+          "how": "helmet on the tent roof, gableCrown on the gable",
+          "seenIn": "TMX7316010203-001527_pano_0000_001730"
+        }
+      ]
+    },
+    {
+      "tag": "w47-61",
+      "bearing": 61,
+      "lengthM": 4.6,
+      "centre": [
+        4.9213413,
+        52.3629109
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2025-09-30_11-08-39_00744",
+      "capturedAt": "2025-09-30",
+      "checked": true,
+      "items": [
+        {
+          "id": "kwadrant-windows-3",
+          "kind": "window-shape",
+          "where": "quarter-round office wing",
+          "approxSizeM": [
+            4.6,
+            8
+          ],
+          "plan": "modelled",
+          "how": "compileLargeBuilding round-arch window system (kit arches), 9-pane look reduced to a two-light frame",
+          "seenIn": "recording_2025-09-30_11-08-39_00744"
+        }
+      ]
+    },
+    {
+      "tag": "w48-348",
+      "bearing": 348,
+      "lengthM": 4.5,
+      "centre": [
+        4.921454,
+        52.3629136
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2025-09-30_11-08-39_00741",
+      "capturedAt": "2025-09-30",
+      "checked": true,
+      "items": [
+        {
+          "id": "kwadrant-windows-4",
+          "kind": "window-shape",
+          "where": "quarter-round office wing",
+          "approxSizeM": [
+            4.5,
+            8
+          ],
+          "plan": "modelled",
+          "how": "compileLargeBuilding round-arch window system (kit arches), 9-pane look reduced to a two-light frame",
+          "seenIn": "recording_2025-09-30_11-08-39_00741"
+        }
+      ]
+    },
+    {
+      "tag": "w49-53",
+      "bearing": 53,
+      "lengthM": 4.4,
+      "centre": [
+        4.9218204,
+        52.3628317
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001674_pano_0000_003611",
+      "capturedAt": "2020-04-24",
+      "checked": true,
+      "items": [
+        {
+          "id": "w49-trees",
+          "kind": "other",
+          "where": "wall screened by trees",
+          "approxSizeM": [
+            4.4,
+            10
+          ],
+          "plan": "simplified",
+          "how": "kit windows",
+          "seenIn": "TMX7316010203-001674_pano_0000_003611"
+        }
+      ]
+    },
+    {
+      "tag": "w50-32",
+      "bearing": 32,
+      "lengthM": 4.4,
+      "centre": [
+        4.9217255,
+        52.3628847
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002138_pano_0000_003537",
+      "capturedAt": "2021-05-12",
+      "checked": true,
+      "items": [
+        {
+          "id": "w50-trees",
+          "kind": "other",
+          "where": "wall screened by trees",
+          "approxSizeM": [
+            4.4,
+            10
+          ],
+          "plan": "simplified",
+          "how": "kit windows",
+          "seenIn": "TMX7316010203-002138_pano_0000_003537"
+        }
+      ]
+    },
+    {
+      "tag": "w51-43",
+      "bearing": 43,
+      "lengthM": 4.4,
+      "centre": [
+        4.9217769,
+        52.3628609
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-002138_pano_0000_003538",
+      "capturedAt": "2021-05-12",
+      "checked": true,
+      "items": [
+        {
+          "id": "w51-trees",
+          "kind": "other",
+          "where": "wall screened by trees",
+          "approxSizeM": [
+            4.4,
+            10
+          ],
+          "plan": "simplified",
+          "how": "kit windows",
+          "seenIn": "TMX7316010203-002138_pano_0000_003538"
+        }
+      ]
+    },
+    {
+      "tag": "w52-241",
+      "bearing": 241,
+      "lengthM": 4.1,
+      "centre": [
+        4.9202467,
+        52.3624391
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2025-06-20_10-43-25_02640",
+      "capturedAt": "2025-06-20",
+      "checked": true,
+      "items": [
+        {
+          "id": "w52-trees",
+          "kind": "other",
+          "where": "wall screened by trees",
+          "approxSizeM": [
+            4.1,
+            10
+          ],
+          "plan": "simplified",
+          "how": "kit windows",
+          "seenIn": "recording_2025-06-20_10-43-25_02640"
+        }
+      ]
+    },
+    {
+      "tag": "w53-196",
+      "bearing": 196,
+      "lengthM": 4.1,
+      "centre": [
+        4.920291,
+        52.3624178
+      ],
+      "evidence": "photo",
+      "panoId": "recording_2025-06-20_10-43-25_02637",
+      "capturedAt": "2025-06-20",
+      "checked": true,
+      "items": [
+        {
+          "id": "w53-trees",
+          "kind": "other",
+          "where": "wall screened by trees",
+          "approxSizeM": [
+            4.1,
+            10
+          ],
+          "plan": "simplified",
+          "how": "kit windows",
+          "seenIn": "recording_2025-06-20_10-43-25_02637"
+        }
+      ]
+    },
+    {
+      "tag": "w54-286",
+      "bearing": 286,
+      "lengthM": 4.1,
+      "centre": [
+        4.92024,
+        52.362473
+      ],
+      "evidence": "photo",
+      "panoId": "TMX7316010203-001675_pano_0000_001828",
+      "capturedAt": "2020-04-24",
+      "checked": true,
+      "items": [
+        {
+          "id": "w54-trees",
+          "kind": "other",
+          "where": "wall screened by trees",
+          "approxSizeM": [
+            4.1,
+            10
+          ],
+          "plan": "simplified",
+          "how": "kit windows",
+          "seenIn": "TMX7316010203-001675_pano_0000_001828"
+        }
+      ]
+    },
+    {
+      "tag": "w55-151",
+      "bearing": 151,
+      "lengthM": 3.8,
+      "centre": [
+        4.9222514,
+        52.3623784
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w56-61",
+      "bearing": 61,
+      "lengthM": 3.7,
+      "centre": [
+        4.9205698,
+        52.3623333
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w57-61",
+      "bearing": 61,
+      "lengthM": 3.6,
+      "centre": [
+        4.9228214,
+        52.3625521
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w58-151",
+      "bearing": 151,
+      "lengthM": 3.5,
+      "centre": [
+        4.9226526,
+        52.3622335
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w59-61",
+      "bearing": 61,
+      "lengthM": 3.2,
+      "centre": [
+        4.9211462,
+        52.3622845
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    },
+    {
+      "tag": "w60-241",
+      "bearing": 241,
+      "lengthM": 3.2,
+      "centre": [
+        4.9209361,
+        52.3622126
+      ],
+      "evidence": "inferred",
+      "panoId": null,
+      "capturedAt": null,
+      "checked": true,
+      "items": [],
+      "note": "inferred from 3DBAG; no panorama of this wall, so no ornament inventoried"
+    }
+  ],
+  "sources": [
+    {
+      "name": "Gemeente Amsterdam panoramas",
+      "url": "https://api.data.amsterdam.nl/panorama/",
+      "licence": "CC BY 4.0"
+    }
+  ]
+}
