@@ -1,0 +1,151 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "westerdok-748-186003",
+ "pandId": "0363100012186003",
+ "address": "Westerdok 748, Amsterdam (Westerdokseiland): 2008 red-brick courtyard apartment block of 232 homes, stepped from 11 m to 35 m with a passage arch",
+ "sources": [
+  {
+   "id": "pano-2022-04-21-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002532_pano_0000_000133/",
+   "image": "staging/pand-reference-walls/0363100012186003/w01-275.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-21-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002532_pano_0000_000133/",
+   "image": "staging/pand-reference-walls/0363100012186003/w01-275.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-21-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002532_pano_0000_000133/",
+   "image": "staging/pand-reference-walls/0363100012186003/w01-275.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-05-02-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2018-05-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000703_pano_0000_001100/",
+   "image": "staging/pand-reference-walls/0363100012186003/w02-185.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-05-02-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2018-05-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000703_pano_0000_000707/",
+   "image": "staging/pand-reference-walls/0363100012186003/w03-5.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-05-02-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2018-05-02",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000703_pano_0000_000707/",
+   "image": "staging/pand-reference-walls/0363100012186003/w03-5.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    112
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 6,
+   "ground": "glazed",
+   "deepBars": true,
+   "sills": false,
+   "windows": "plain"
+  },
+  {
+   "wallSurfaces": [
+    96,
+    193,
+    235,
+    448
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 5,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "windows": "plain"
+  },
+  {
+   "wallSurfaces": [
+    449
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 10,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "windows": "plain"
+  },
+  {
+   "wallSurfaces": [
+    5,
+    72
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 10,
+   "baysPerStorey": 11,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "windows": "plain"
+  },
+  {
+   "wallSurfaces": [
+    109
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 10,
+   "baysPerStorey": 4,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "windows": "plain"
+  },
+  {
+   "wallSurfaces": [
+    110
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "windows": "plain"
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#7a3a2e",
+  "frame": "#3a3a3e",
+  "door": "#2a2a2a",
+  "stone": "#b0aca4"
+ },
+ "notes": [
+  "Westerdok 748 (BAG: built 2008; 192 dwellings, 34 other-use, five offices; 5,306 m2 footprint, 38 m): the brick courtyard block on the Westerdokseiland north of the Westerdoksdijk. The west front (w01-275, panorama 2022-04-21) is a three-storey base with a central passage arch under a brick tower of ten floors of square deep-set windows and flanking blocks stepping up to eight floors; the south front (w02-185, 2018-05-02) shows the curved tower of ten floors; the north front (w03-5, 2018-05-02) the balconied stair of the base.",
+  "Modelled: wall groups split by the height steps of the 3DBAG walls (surface lists, because panels 89, 112 and 102 each hold two or three heights): the west front as a 3-storey base (surface 112), a 6-storey part (surfaces 96, 193, 235, 448) and the 10-storey tower wing (surface 449); the south front tower (panel 4, 10 storeys); the north front tower wing (surface 109, 10 storeys) and the 6-storey part (110). Red-brown brick, deep-reveal square windows, the closed 3DBAG roofs.",
+  "Simplified: the passage arch under the west tower is a plain ground storey (the 3DBAG walls close it as a wall), the balcony recesses and the glazed corner loggias are plain windows, the ground shop glazing is the same window row. Not modelled: the court walls, the east side stepped stair wings (no clear panorama) and the north-west annex."
+ ],
+ "closedBands": true
+}

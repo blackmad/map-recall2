@@ -1,0 +1,121 @@
+{
+ "schemaVersion": 1,
+ "id": "cgm-114-202381",
+ "pand": "0363100012202381",
+ "signature": [
+  "canopy-sign-fascia",
+  "market-hall-length"
+ ],
+ "walls": [
+  {
+   "tag": "w02-258",
+   "bearing": 258,
+   "lengthM": 81.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002552_pano_0002_000081",
+   "capturedAt": "2022-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "canopy-sign-fascia",
+     "kind": "sign",
+     "where": "deep sign fascia over the roller doors (Arie Rustenburg Groenten & Fruit)",
+     "approxSizeM": [
+      80,
+      1.5
+     ],
+     "plan": "simplified",
+     "how": "closed fascia storey with a cornice band lettered ARIE RUSTENBURG GROENTEN & FRUIT; no projecting canopy",
+     "seenIn": "TMX7316010203-002552_pano_0002_000081"
+    },
+    {
+     "id": "roller-door-row",
+     "kind": "window-shape",
+     "where": "ground: green roller doors between concrete columns",
+     "approxSizeM": [
+      80,
+      4
+     ],
+     "plan": "simplified",
+     "how": "glazed ground row in the group; no door rails",
+     "seenIn": "TMX7316010203-002552_pano_0002_000081"
+    }
+   ]
+  },
+  {
+   "tag": "w01-78",
+   "bearing": 78,
+   "lengthM": 191.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001952_pano_0000_000151",
+   "capturedAt": "2021-01-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "market-hall-length",
+     "kind": "other",
+     "where": "east wall: 190 m of blank curved concrete",
+     "approxSizeM": [
+      191,
+      6.5
+     ],
+     "plan": "modelled",
+     "how": "blank wall group in concrete grey along the whole 191 m of panel 9",
+     "seenIn": "TMX7316010203-001952_pano_0000_000151"
+    }
+   ]
+  },
+  {
+   "tag": "w04-204",
+   "bearing": 204,
+   "lengthM": 72.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002552_pano_0002_000054",
+   "capturedAt": "2022-04-29",
+   "checked": true,
+   "items": [
+    {
+     "id": "clad-end-wall",
+     "kind": "window-shape",
+     "where": "south-west end: buff brick base, brown corrugated cladding above, two roller doors",
+     "approxSizeM": [
+      72,
+      7
+     ],
+     "plan": "simplified",
+     "how": "blank wall group in cladding brown; brick base and doors not drawn",
+     "seenIn": "TMX7316010203-002552_pano_0002_000054"
+    }
+   ]
+  },
+  {
+   "tag": "w03-258",
+   "bearing": 258,
+   "lengthM": 72.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001040_pano_0006_000079",
+   "capturedAt": "2019-01-07",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  },
+  {
+   "tag": "w05-25",
+   "bearing": 25,
+   "lengthM": 49.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000790_pano_0000_005678",
+   "capturedAt": "2018-06-13",
+   "checked": true,
+   "note": "not cited by this recipe; nothing notable beyond the wall systems drawn",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
