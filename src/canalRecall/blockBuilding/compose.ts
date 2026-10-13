@@ -9,6 +9,7 @@ import type { SurfaceSet } from './types.ts';
 import { MeshBuilder, type V3, cross, sub, add, scale, norm, dot } from './mesh.ts';
 import { buildHost, fitsPanel, rectPoly, pt, insidePoly, newell, triangulate3, type Panel } from './panels.ts';
 import type { BlockSpec, System, Row, WinParams, BalconyParams, Band, Slot, Sign, PanesParams } from './spec.ts';
+import { drawArchedOpening, drawArchedProud } from './arch.ts';
 
 export interface TextShaper { (text: string, font?: string): { shapes: T.Shape[]; width: number; ascent: number } }
 export interface ComposeOptions {
@@ -23,6 +24,8 @@ export interface ComposeOptions {
   sealSlivers?: boolean;
   /** large tier (opt-in): wall-mounted boxes (sills, heads, surrounds) get a back face, so a box on a 3DBAG wall that sits a few cm off the panel's reference plane has no open edge. Default off: installed block-kit output is byte-identical. */
   closedBoxes?: boolean;
+  /** large tier (opt-in): bands (string courses, cornices, fascias) are closed solids (back face, and end caps at mitred joints), so they leave no open edge where 3DBAG faces stand a few cm off the panel plane or the next panel's band stops short. Default off: earlier large recipes stay byte-identical. */
+  closedBands?: boolean;
   /** Walls (indices into `set.walls`) with different keys never merge into one panel (large-tier wall groups). */
   mergeKey?: (wall: number) => number;
   /** Host wall slot per panel (recess mode only, where walls are emitted after the facade systems). */
@@ -39,7 +42,8 @@ export interface ComposeResult { mesh: MeshBuilder; panels: Panel[]; stats: Reco
 const UP: V3 = [0, 1, 0], DOWN: V3 = [0, -1, 0];
 const rand = (a: number, b: number, c: number) => { let h = 2166136261 ^ (a * 73856093) ^ (b * 19349663) ^ (c * 83492791); h = Math.imul(h ^ (h >>> 15), 2246822519); h = Math.imul(h ^ (h >>> 13), 3266489917); return ((h ^ (h >>> 16)) >>> 0) / 4294967296; };
 
-export type HoleRect = [u0: number, u1: number, v0: number, v1: number];
+/** A cut opening: its bounding rectangle, plus the (u, v) outline when it is not that rectangle (arched openings). */
+export type HoleRect = [u0: number, u1: number, v0: number, v1: number, outline?: [number, number][]];
 class Ctx {
   /** recess depth (large tier); 0 = openings drawn proud as in the original block kit */
   recess = 0;
@@ -49,14 +53,45 @@ class Ctx {
   stats = { recessed: 0, proud: 0 };
   /** `ComposeOptions.closedBoxes` */
   closedBoxes = false;
+  /** `ComposeOptions.closedBands` (recess mode only) */
+  closedBands = false;
   constructor(public mesh: MeshBuilder, public p: Panel, public panels: Panel[]) {}
   /**
    * Cut a rectangular opening into one member wall when it lies inside it with 3 cm to spare and clear of other holes.
    * Returns the corners on that wall's own plane (bottom-left, bottom-right, top-right, top-left), or null.
    */
   cut(u0: number, u1: number, v0: number, v1: number): V3[] | null {
+    const k = this.claim(u0, u1, v0, v1);
+    if (k < 0) return null;
+    const onWall = this.onMember(k);
+    return [[u0, v0], [u1, v0], [u1, v1], [u0, v1]].map(([u, v]) => onWall(u, v));
+  }
+  /**
+   * Cut a non-rectangular opening (convex `outline` inside the rectangle u0..u1 x v0..v1) into one member wall, on the
+   * same terms as `cut`. Returns a mapper from (u, v) onto that wall's own plane, or null.
+   */
+  cutOutline(u0: number, u1: number, v0: number, v1: number, outline: [number, number][]): ((u: number, v: number) => V3) | null {
+    const k = this.claim(u0, u1, v0, v1, outline);
+    return k < 0 ? null : this.onMember(k);
+  }
+  /**
+   * A point `d` in front of the wall face actually emitted at (u, v): the member wall containing (u, v), projected along
+   * the panel normal (3DBAG faces merged into one panel can sit a few cm off its reference plane). Falls back to the
+   * panel plane outside every member and in the original (non-recess) path.
+   */
+  onWallAt(u: number, v: number, d = 0): V3 {
+    const m = this.p.members, k = m ? m.findIndex(x => insidePoly([u, v], x.poly)) : -1;
+    return k < 0 ? this.P(u, v, d) : add(this.onMember(k)(u, v), scale(this.p.n, d));
+  }
+  /** (u, v) onto member wall k's own plane, along the panel normal. */
+  private onMember(k: number): (u: number, v: number) => V3 {
+    const ring = this.p.members![k].rings[0], nm = norm(newell(ring)), q0 = ring[0], n = this.p.n, den = dot(nm, n);
+    return (u, v) => { const P = pt(this.p, u, v, 0), t = Math.abs(den) > 1e-6 ? dot(nm, sub(q0, P)) / den : 0; return add(P, scale(n, t)); };
+  }
+  /** Member wall that takes the rectangle as a hole (recorded), or -1. */
+  private claim(u0: number, u1: number, v0: number, v1: number, outline?: [number, number][]): number {
     const members = this.p.members;
-    if (!this.recess || !members) return null;
+    if (!this.recess || !members) return -1;
     const m = 0.03, a0 = u0 - m, a1 = u1 + m, b0 = v0 - m, b1 = v1 + m;
     const inRect = (q: [number, number]) => q[0] > a0 && q[0] < a1 && q[1] > b0 && q[1] < b1;
     const probe: [number, number][] = [[a0, b0], [a1, b0], [a1, b1], [a0, b1], [(a0 + a1) / 2, b0], [(a0 + a1) / 2, b1], [a0, (b0 + b1) / 2], [a1, (b0 + b1) / 2]];
@@ -72,11 +107,10 @@ class Ctx {
       if (rings.some(ring => ring.some(inRect) || ring.some((q, i) => rectEdges.some(([e0, e1]) => crosses(q, ring[(i + 1) % ring.length], e0, e1))))) continue;
       const list = this.holes.get(k) ?? [];
       if (list.some(h => h[0] < a1 && h[1] > a0 && h[2] < b1 && h[3] > b0)) continue;
-      list.push([u0, u1, v0, v1]); this.holes.set(k, list);
-      const ring = members[k].rings[0], nm = norm(newell(ring)), q0 = ring[0], n = this.p.n, den = dot(nm, n);
-      return [[u0, v0], [u1, v0], [u1, v1], [u0, v1]].map(([u, v]) => { const P = pt(this.p, u, v, 0), t = Math.abs(den) > 1e-6 ? dot(nm, sub(q0, P)) / den : 0; return add(P, scale(n, t)); });
+      list.push(outline ? [u0, u1, v0, v1, outline] : [u0, u1, v0, v1]); this.holes.set(k, list);
+      return k;
     }
-    return null;
+    return -1;
   }
   P(u: number, v: number, d = 0) { return pt(this.p, u, v, d); }
   part() { return this.mesh.newPart(); }
@@ -88,8 +122,8 @@ class Ctx {
     for (const f of faces) this.mesh.tri(slot, this.P(...pts[f[0]], d), this.P(...pts[f[1]], d), this.P(...pts[f[2]], d), part, this.p.n);
   }
   /** Box on the wall: faces front, top, bottom, left, right (back omitted: it sits on the wall). */
-  box(slot: Slot, u0: number, u1: number, v0: number, v1: number, d0: number, d1: number, part: number) {
-    const { mesh, p } = this, P = (u: number, v: number, d: number) => this.P(u, v, d);
+  box(slot: Slot, u0: number, u1: number, v0: number, v1: number, d0: number, d1: number, part: number, shift?: V3) {
+    const { mesh, p } = this, P = shift ? (u: number, v: number, d: number) => add(this.P(u, v, d), shift) : (u: number, v: number, d: number) => this.P(u, v, d);
     mesh.quad(slot, P(u0, v0, d1), P(u1, v0, d1), P(u1, v1, d1), P(u0, v1, d1), part, p.n);
     mesh.quad(slot, P(u0, v1, d0), P(u1, v1, d0), P(u1, v1, d1), P(u0, v1, d1), part, UP);
     mesh.quad(slot, P(u0, v0, d0), P(u1, v0, d0), P(u1, v0, d1), P(u0, v0, d1), part, DOWN);
@@ -108,6 +142,7 @@ function drawOpening(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: 
   const frameSlot = w.frame ?? 'frame', glassSlot = w.glass ?? 'glass', fw = w.frameW ?? 0.07;
   if (u1 - u0 < 0.3 || v1 - v0 < 0.3) return null;
   if (!fitsPanel(c.p, rectPoly(u0 - (w.surround?.t ?? 0), u1 + (w.surround?.t ?? 0), v0 - (w.sillSlot ? (w.sillH ?? 0.05) : 0), v1 + (w.surround?.t ?? 0)))) return null;
+  if (w.arch) return drawArched(c, u0, u1, v0, v1, w);
   if (c.recess > 0) return drawRecessed(c, u0, u1, v0, v1, w);
   if (w.surround) {
     const t = w.surround.t, out = w.surround.out ?? 0.06, part = c.part();
@@ -191,9 +226,10 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
   const mulls = w.mullAt?.length ? w.mullAt : Array.from({ length: w.mull ?? 0 }, (_, k) => (k + 1) / ((w.mull ?? 0) + 1));
   const rows = w.rowsAt?.length ? w.rowsAt : Array.from({ length: w.rows ?? 0 }, (_, k) => (k + 1) / ((w.rows ?? 0) + 1));
   if (mulls.length || rows.length || w.transom) {
-    const bars = c.part();
-    for (const f of mulls) { const u = u0 + (u1 - u0) * f; g(u - fw / 2, u + fw / 2, v0 + fw, v1 - fw, frameSlot, 0.015, bars); }
-    for (const f of [...rows, ...(w.transom ? [w.transom] : [])]) { const v = v0 + (v1 - v0) * f; g(u0 + fw, u1 - fw, v - fw / 2, v + fw / 2, frameSlot, 0.015, bars); }
+    // frameW 0 (no frame ring: the glass fills the opening) still takes 6 cm glazing bars
+    const bars = c.part(), bw = fw > 0 ? fw : 0.06;
+    for (const f of mulls) { const u = u0 + (u1 - u0) * f; g(u - bw / 2, u + bw / 2, v0 + fw, v1 - fw, frameSlot, 0.015, bars); }
+    for (const f of [...rows, ...(w.transom ? [w.transom] : [])]) { const v = v0 + (v1 - v0) * f; g(u0 + fw, u1 - fw, v - bw / 2, v + bw / 2, frameSlot, 0.015, bars); }
   }
   if (w.surround) {
     const t = w.surround.t, out = w.surround.out ?? 0.06, sp = c.part();
@@ -202,8 +238,24 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
     c.box(w.surround.slot, u0, u1, v1, v1 + t, 0, out, sp);
     c.box(w.surround.slot, u0, u1, v0 - t, v0, 0, out, sp);
   }
-  if (w.sillSlot) { const sp = c.part(), sh = w.sillH ?? 0.07; c.box(w.sillSlot, u0 - 0.08, u1 + 0.08, v0 - sh, v0, 0, w.sillOut ?? 0.12, sp); }
+  if (w.sillSlot) {
+    const sp = c.part(), sh = w.sillH ?? 0.07;
+    const shift = w.sillOnWall && corners ? scale(corners.reduce((s, q, i) => add(s, sub(q, c.P(i === 0 || i === 3 ? u0 : u1, i < 2 ? v0 : v1, 0))), [0, 0, 0] as V3), 0.25) : undefined;
+    c.box(w.sillSlot, u0 - 0.08, u1 + 0.08, v0 - sh, v0, 0, w.sillOut ?? 0.12, sp, shift);
+  }
   if (w.headSlot) { const sp = c.part(); c.box(w.headSlot, u0 - 0.06, u1 + 0.06, v1, v1 + 0.12, 0, 0.08, sp); }
+  return back;
+}
+
+/** Arched opening (`WinParams.arch`): arch.ts cuts it (recess mode) or lays it proud; sill as for a rectangular one. */
+function drawArched(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: WinParams): number {
+  const a = { frame: w.frame ?? 'frame', glass: w.glass ?? 'glass', frameW: w.frameW ?? 0.07, arch: w.arch!,
+    mullAt: w.mullAt?.length ? w.mullAt : Array.from({ length: w.mull ?? 0 }, (_, k) => (k + 1) / ((w.mull ?? 0) + 1)),
+    rowsAt: [...(w.rowsAt?.length ? w.rowsAt : Array.from({ length: w.rows ?? 0 }, (_, k) => (k + 1) / ((w.rows ?? 0) + 1))), ...(w.transom ? [w.transom] : [])] };
+  let back = 0.035, shift: V3 | null = null;
+  if (c.recess > 0) ({ back, shift } = drawArchedOpening(c, u0, u1, v0, v1, a)); else drawArchedProud(c, u0, u1, v0, v1, a);
+  // the sill stands on the cut wall (arched openings always; the panel plane otherwise)
+  if (w.sillSlot) { const sp = c.part(), sh = w.sillH ?? 0.07; c.box(w.sillSlot, u0 - 0.08, u1 + 0.08, v0 - sh, v0, 0, w.sillOut ?? 0.12, sp, shift ?? undefined); }
   return back;
 }
 
@@ -432,10 +484,12 @@ function stripBox(c: Ctx, slot: Slot, a: number, b: number, v0: number, v1: numb
   const A0 = c.P(a, v0, 0), B0 = c.P(b, v0, 0), A1 = c.P(a, v1, 0), B1 = c.P(b, v1, 0);
   const oA0 = add(A0, mA), oB0 = add(B0, mB), oA1 = add(A1, mA), oB1 = add(B1, mB);
   mesh.quad(slot, oA0, oB0, oB1, oA1, part, p.n);
+  if (c.closedBands) mesh.quad(slot, A0, B0, B1, A1, part, scale(p.n, -1));
   mesh.quad(slot, A1, B1, oB1, oA1, part, UP);
   mesh.quad(slot, A0, B0, oB0, oA0, part, DOWN);
-  if (!joinA) mesh.quad(slot, A0, oA0, oA1, A1, part, scale(p.r, -1));
-  if (!joinB) mesh.quad(slot, B0, oB0, oB1, B1, part, p.r);
+  // closed bands cap mitred ends too: the neighbouring panel's band may stop short of the joint (an opening, another group)
+  if (!joinA || c.closedBands) mesh.quad(slot, A0, oA0, oA1, A1, part, scale(p.r, -1));
+  if (!joinB || c.closedBands) mesh.quad(slot, B0, oB0, oB1, B1, part, p.r);
 }
 
 function drawBands(c: Ctx, bands: Band[], levels: number[], sys: System) {
@@ -480,6 +534,7 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
     assignment.push({ panel: p.index, system: sysName, width: W, centre });
     const c = new Ctx(mesh, p, panels);
     c.closedBoxes = !!opts.closedBoxes;
+    c.closedBands = recess > 0 && !!opts.closedBands;
     c.recess = recess; c.wallSlot = recess > 0 ? opts.wallSlotFor?.(p) ?? wallSlot : wallSlot;
     const cells: Cell[] = [];
     const finish = (levels: number[]) => {
@@ -539,7 +594,7 @@ function emitWalls(mesh: MeshBuilder, p: Panel, holes: Map<number, HoleRect[]>, 
     const rings3 = m.rings.map(clean), to2 = (q: V3) => new T.Vector2((q[0] - p.o[0]) * p.r[0] + (q[2] - p.o[2]) * p.r[2], q[1]);
     const nm = norm(newell(rings3[0])), q0 = rings3[0][0], den = dot(nm, p.n);
     const onWall = (u: number, v: number): V3 => { const P = pt(p, u, v, 0), t = Math.abs(den) > 1e-6 ? dot(nm, sub(q0, P)) / den : 0; return add(P, scale(p.n, t)); };
-    const rectRings = rects.map(([u0, u1, v0, v1]) => [onWall(u0, v0), onWall(u1, v0), onWall(u1, v1), onWall(u0, v1)]);
+    const rectRings = rects.map(([u0, u1, v0, v1, outline]) => outline ? outline.map(([u, v]) => onWall(u, v)) : [onWall(u0, v0), onWall(u1, v0), onWall(u1, v1), onWall(u0, v1)]);
     const all = [...rings3.flat(), ...rectRings.flat()];
     const faces = T.ShapeUtils.triangulateShape(rings3[0].map(to2), [...rings3.slice(1), ...rectRings].map(r => r.map(to2)));
     for (const f of faces) mesh.tri(wallSlot, all[f[0]], all[f[1]], all[f[2]], 0, p.n);

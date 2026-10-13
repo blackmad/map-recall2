@@ -355,11 +355,24 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   the centre until a better "most seen" score exists. Shell probes that
   passed baseline but are not authored yet: 084999 (pastel stucco,
   rounded corner), 186290, 126319, 243844; 165427 hidden by scaffolding.
-  Bespoke-builder candidates found: Entrepotdok warehouses 164981 (arched
-  portals and windows; the large tier cuts rectangles only — an arched
-  cutter in `dissolve.ts`/`compose.ts` would unlock it), Houthaven block
-  186086 (curved walls, perforated brick), OBA Staatsliedenbuurt 069991
-  (striped bands, glazed balcony towers). Tall civic storeys fail the
+  Arched openings landed 2026-10-13 (HISTORY): Entrepotdok 164981, Reade
+  Overtoom 283 (084999), Eden Hotel Amstel 144 (186290) and Nieuwpoortstraat
+  80-98 (126319) installed. Gillis van Ledenberchstraat 38 (243844, 324
+  tris) was authored but **not installed**: `check:osm-under-models` reports
+  the 2010 pand 0363100012238383 (982 m²) and five OSM ways "100% inside"
+  its plan and `covers.json` claims six pands for it, so its placement or
+  footprint is wrong (the lane saw `all-walls.ts` return walls of a much
+  larger neighbouring footprint for this pand — a building-tile footprint
+  mismatch to investigate before re-installing; recipe stays in
+  `scripts/building-recipes/houses/ledenberch-38-243844/`). Still bespoke
+  candidates: Houthaven block 186086 (curved walls, perforated brick), OBA
+  Staatsliedenbuurt 069991 (striped bands, glazed balcony towers). Kit gaps
+  the lane listed: curved corners (3DBAG gives facets; Eden Hotel and Reade
+  read straight), stucco bands and diamond panels, canopies need 0.6 m of
+  wall each side of the entrance, flush brick bands sit 1.2 cm proud and
+  trip `zfight-near`, no "|" glyph in `signage.ts`, Entrepotdok's rear and
+  courtyard mostly blank under the 12k budget (a bespoke budget override is
+  the integrator's call), a second Entrepotdok board (EDAM?) unread. Tall civic storeys fail the
   storey-height gate on 186003, 118320, 137990, 135250, 236799, 169214. Heineken Experience fails
   window-rhythm (2 predicted missing) and is a batch-2 candidate. `check-manual-landmarks.ts`
   status is in the Direction block above (2026-10-13).

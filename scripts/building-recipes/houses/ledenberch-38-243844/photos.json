@@ -1,0 +1,18 @@
+[
+ {
+  "front": "wall-gillis-van-ledenberchstraat",
+  "panoId": "TMX7316010203-002055_pano_0000_000639",
+  "timestamp": "2021-03-22T11:17:19.266290Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/03/22/TMX7316010203-002055/pano_0000_000639/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   119942.20617990475,
+   487791.64998179633
+  ],
+  "headingDeg": 299.26136102786006,
+  "fovDeg": 69.06599861828282,
+  "pitchDeg": 25.29254790465252,
+  "distanceM": 10.319307847525023,
+  "image": "artifacts/building-recipes/ledenberch-38-243844/photo-wall-gillis-van-ledenberchstraat.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

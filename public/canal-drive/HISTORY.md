@@ -1,5 +1,36 @@
 # Canal Recall — what is built
 
+## Large tier: arched openings; Entrepotdok, Reade, Eden Hotel, Nieuwpoortstraat (2026-10-13)
+
+Lane `large/arches-entrepotdok-20261013` (Opus). `src/canalRecall/blockBuilding/arch.ts`:
+`WinParams.arch = {kind: round|segmental|pointed, segments?, rise?,
+springBar?, band?}`; outline = rectangle + convex polygonal head (4–10
+segments by width, exact springing and apex, heads over 75 % of the opening
+squashed to an ellipse); `PanelCtx.cutOutline` cuts it into one 3DBAG wall
+face and the wall is triangulated round the arch; one reveal quad per
+outline edge, frame ring and glass at the back, mullions stop under the
+head; flush-cut fallback 1.5 cm proud; bands flush (1.2 cm, a shade darker)
+or projecting stone, optional impost blocks and keystone, drawn only where
+one wall face has 4 cm to spare. Large-tier schema per group: `arches
+{windows, ground, band}`, `ground: "portals"`, `hoist`, `nameBoards`,
+`sills: false`, `frames: false`, `windows: "narrow"`; top level
+`closedBands` (opt-in, earlier recipes byte-identical — new
+`scripts/building-recipes/large-mesh-hashes.ts` + `large-mesh-golden.json`
+prove it; the integrator recorded the 13 police meshes, 26 identical).
+Tests `archOpenings.test.ts` (7): outline/head area, no open edges after
+T-junction splitting, wall + opening area = 108 m², reveal area = perimeter
+× 0.18 m, closed bands, golden per arch kind. Installed: Entrepotdok
+warehouses (1750; 11,156 tris; round-arched portals with brick bands and
+white springers, arched loading-door stacks, EINDHOVEN name board; rear
+and courtyard mostly blank under budget), Reade Overtoom 283 (1992; 5,404;
+READE lettering; curved corner straight), Eden Hotel Amstel 144 (4,049;
+EDEN HOTEL fascia; curved corner and stucco bands missing),
+Nieuwpoortstraat 80-98 (7,198; ACTION lettered). Gillis van
+Ledenberchstraat 38 authored but not installed (placement/footprint
+inconsistent with the tiles, see board). `fit-golden` 59 identical,
+`block-kit-installed` identical, `building-recipes` 84.
+
+
 ## Bespoke landmark process: photo-first brief, signature inventory gate; six ornament retro-fits (2026-10-13)
 
 User 2026-10-13, after the Hoofdbureau shipped without its Amsterdam-arms
