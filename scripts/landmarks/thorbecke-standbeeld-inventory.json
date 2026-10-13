@@ -1,0 +1,36 @@
+{
+ "schemaVersion": 1,
+ "id": "thorbecke-standbeeld",
+ "signature": ["tb-figure", "tb-pedestal-text", "tb-stump", "tb-railing"],
+ "walls": [
+  {
+   "tag": "s-200", "bearing": 200, "lengthM": 1.9, "centre": [4.8958484, 52.3650534],
+   "evidence": "photo", "panoId": "Commons Thorbecke statue Amsterdam.jpg (CC BY-SA 3.0)", "capturedAt": "2007", "checked": true,
+   "note": "Front (figure's face and the THORBECKE die): Commons photographs; panoramas 01760 and 01761 show the rear and the OPTIMO CIVI side panel through the trees.",
+   "items": [
+    {"id": "tb-figure", "kind": "sculpture", "where": "standing bronze statesman in a frock coat, left hand holding a rolled document at the chest, weight on one leg, 2.35 m", "approxSizeM": [0.8, 2.4], "plan": "simplified",
+     "how": "builder: tapered limbs and cylinders for legs, coat skirts and torso, shoulder ellipsoid, lapel strip, folded forearm, rolled document cylinder, head with hair; no facial modelling or coat folds", "seenIn": "Commons Thorbecke statue Amsterdam.jpg"},
+    {"id": "tb-stump", "kind": "sculpture", "where": "fluted column stump at his right with a cloth thrown over the top and a scroll under the right hand", "approxSizeM": [0.7, 1.3], "plan": "simplified", "how": "builder: tapered drum with five flute bars, capital disc, cloth slab and scroll cylinder; the drape folds are not carved", "seenIn": "Commons Thorbecke statue Amsterdam.jpg"},
+    {"id": "tb-pedestal-text", "kind": "lettering", "where": "THORBECKE in gilt capitals on the front die panel, OPTIMO CIVI / CIVES on the side panel, framed panels", "approxSizeM": [1.35, 1.0], "plan": "modelled",
+     "how": "builder: raised frames on three faces and 5x7 block lettering as gold run boxes (pixel-font.ts) for THORBECKE, OPTIMO CIVI and CIVES; the smaller dedication text on the third face is left blank", "seenIn": "recording_2025-06-19_03-28-47_01761"},
+    {"id": "tb-pedestal", "kind": "other", "where": "grey granite pedestal: two steps, base block, moulded neck and cornice, black bronze plate, 3.4 m to the plate", "approxSizeM": [2.4, 3.4], "plan": "modelled", "how": "builder: stacked boxes at the photographed proportions", "seenIn": "Commons Thorbecke statue Amsterdam.jpg"},
+    {"id": "tb-railing", "kind": "other", "where": "black iron railing with spear finials round the steps, taller corner posts with larger spears", "approxSizeM": [5.2, 1.0], "plan": "simplified", "how": "builder: square railing of thin bars with cone spears and three rails, corner posts; the ring scrolls between the bars are omitted", "seenIn": "recording_2025-06-19_03-28-47_01760"}
+   ]
+  },
+  {
+   "tag": "e-110", "bearing": 110, "lengthM": 1.9, "centre": [4.8958584, 52.3650584],
+   "evidence": "photo", "panoId": "recording_2025-06-19_03-28-47_01761", "capturedAt": "2025-06-19", "checked": true,
+   "note": "East face: the OPTIMO CIVI / CIVES panel (panorama 01761).", "items": []
+  },
+  {
+   "tag": "n-20", "bearing": 20, "lengthM": 1.9, "centre": [4.8958584, 52.3650634],
+   "evidence": "photo", "panoId": "recording_2025-06-19_03-28-47_01760", "capturedAt": "2025-06-19", "checked": true,
+   "note": "Back: the figure from behind with the stump (panorama 01760).", "items": []
+  }
+ ],
+ "sources": [
+  {"name": "Maarten Benschop, Standbeeld Thorbecke; Andries Jager, Het standbeeld van J.R. Thorbecke", "url": "https://commons.wikimedia.org/wiki/Category:Statue_of_Johan_Rudolph_Thorbecke,_Amsterdam", "licence": "Public domain"},
+  {"name": "Thorbecke statue Amsterdam.jpg", "url": "https://commons.wikimedia.org/wiki/File:Thorbecke_statue_Amsterdam.jpg", "licence": "CC BY-SA 3.0"},
+  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/panoramas/", "licence": "CC BY 4.0"}
+ ]
+}
