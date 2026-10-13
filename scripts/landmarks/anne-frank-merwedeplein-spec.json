@@ -1,0 +1,42 @@
+{
+  "id": "anne-frank-merwedeplein",
+  "name": "Anne Frank statue (Merwedeplein)",
+  "landmarkId": "extract_landmarks_95134534",
+  "modelUrl": "./models/anne-frank-merwedeplein.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.9002337,
+      52.3455675
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 1.4,
+    "widthMetres": 1.4
+  },
+  "surveyed": {
+    "anchor": [
+      4.9002337,
+      52.3455675
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Backlog destination point (OSM memorial) on the Merwedeplein; facing is a visual estimate from panorama recording_2025-07-15_08-32-06_02007"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "assetKind": "memorial",
+  "materialOverrides": {
+    "bronze": "#2e312d",
+    "concrete": "#8e8f8c",
+    "sandstone": "#8a3a36",
+    "white": "#e2dccb"
+  },
+  "attribution": {
+    "title": "Anne Frank statue, Merwedeplein - original low-poly reconstruction",
+    "author": "Map Recall; commemorated sculpture by Mari Andriessen (1977)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Anne_Frank_statue,_Merwedeplein,_Amsterdam",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free low-poly figure and granite block. Pose, coat and bags from Commons photographs (CC BY-SA 4.0, 3.0, 2.0) and a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or third-party meshes imported."
+  }
+}

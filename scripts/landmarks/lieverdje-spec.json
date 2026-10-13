@@ -1,0 +1,41 @@
+{
+  "id": "lieverdje",
+  "name": "Het Lieverdje (Spui)",
+  "landmarkId": "osm_node_3975877474",
+  "modelUrl": "./models/lieverdje.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8890267,
+      52.3687772
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 1.4,
+    "widthMetres": 1.4
+  },
+  "surveyed": {
+    "anchor": [
+      4.8890267,
+      52.3687772
+    ],
+    "northOffsetDegrees": 0,
+    "source": "OSM artwork node 3975877474 (tourism=artwork, Carel Kneulman) on the Spui; facing is a visual estimate from panorama recording_2025-06-16_04-42-37_01351"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "assetKind": "memorial",
+  "materialOverrides": {
+    "bronze": "#3a3d38",
+    "concrete": "#8c8d8a",
+    "greyBrick": "#6e706f"
+  },
+  "attribution": {
+    "title": "Het Lieverdje - original low-poly reconstruction",
+    "author": "Map Recall; commemorated sculpture by Carel Kneulman (1960)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Het_Lieverdje",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free low-poly figure and column. Pose and costume from Commons photographs (Anefo CC0, FaceMePLS CC BY 2.0) and a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or third-party meshes imported."
+  }
+}

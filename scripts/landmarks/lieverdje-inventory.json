@@ -1,0 +1,113 @@
+{
+ "schemaVersion": 1,
+ "id": "lieverdje",
+ "signature": [
+  "li-boy",
+  "li-plaque"
+ ],
+ "walls": [
+  {
+   "tag": "n-330",
+   "bearing": 330,
+   "lengthM": 1.0,
+   "centre": [
+    4.8890267,
+    52.3687772
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_04-42-37_01351",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "note": "Front: the grinning boy, hands on hips, and the faceted column with its plaque (Anefo 918-6782 and 932-2062; FaceMePLS 6944003989).",
+   "items": [
+    {
+     "id": "li-boy",
+     "kind": "sculpture",
+     "where": "bronze street urchin about 1.4 m: cap pushed back, grin, hands on hips, rolled sleeves, belted shorts, wrinkled knee socks, legs apart",
+     "approxSizeM": [
+      0.7,
+      1.45
+     ],
+     "plan": "simplified",
+     "how": "builder: figure kit pose (arms back and out, forearms in to the hips), cap hat, thickened thighs for the shorts, waistband, sock bunches, cuff balls; no face or fabric creasing",
+     "seenIn": "Anefo 918-6782"
+    },
+    {
+     "id": "li-column",
+     "kind": "other",
+     "where": "square column of rough-faceted granite on a base slab, 1.25 m to the bronze foot plate",
+     "approxSizeM": [
+      0.9,
+      1.25
+     ],
+     "plan": "simplified",
+     "how": "builder: base slab, two courses with a step and a cap slab; the diamond faceting of the faces is not carved",
+     "seenIn": "FaceMePLS 6944003989"
+    },
+    {
+     "id": "li-plaque",
+     "kind": "sign",
+     "where": "small bronze plaque on the front of the column",
+     "approxSizeM": [
+      0.34,
+      0.14
+     ],
+     "plan": "simplified",
+     "how": "builder: bronze plate box; its text is unreadable in every available photo, so none is invented",
+     "seenIn": "FaceMePLS 6944003989"
+    }
+   ]
+  },
+  {
+   "tag": "e-60",
+   "bearing": 60,
+   "lengthM": 1.0,
+   "centre": [
+    4.8890267,
+    52.3687772
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-16_04-42-37_01351",
+   "capturedAt": "2025-06-16",
+   "checked": true,
+   "note": "Side: boy in profile on the column (panorama 01351).",
+   "items": []
+  },
+  {
+   "tag": "s-150",
+   "bearing": 150,
+   "lengthM": 1.0,
+   "centre": [
+    4.8890267,
+    52.3687772
+   ],
+   "evidence": "inferred",
+   "capturedAt": null,
+   "checked": true,
+   "note": "Back: column and the boy from behind; not photographed.",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Joost Evers / Anefo, Het Lieverdje op het Spui (918-6782)",
+   "url": "https://commons.wikimedia.org/wiki/File:Het_Lieverdje_op_het_Spui,_Bestanddeelnr_918-6782.jpg",
+   "licence": "CC0"
+  },
+  {
+   "name": "Marcel Antonisse / Anefo (932-2062)",
+   "url": "https://commons.wikimedia.org/wiki/File:Kunstwerken_in_Amsterdam_het_%27Lieverdje%27_op_het_Spui,_Bestanddeelnr_932-2062.jpg",
+   "licence": "CC0"
+  },
+  {
+   "name": "FaceMePLS, 'Het Lieverdje' Spui Amsterdam (6944003989)",
+   "url": "https://commons.wikimedia.org/wiki/File:%27Het_Lieverdje%27_Spui_Amsterdam_(6944003989).jpg",
+   "licence": "CC BY 2.0"
+  },
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
