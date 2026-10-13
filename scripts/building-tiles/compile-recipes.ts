@@ -68,7 +68,7 @@ const PILOT = {
 /** A repeated part becomes an instanced unit only if it saves at least this many triangles in its tile (a draw call is not free). */
 const INSTANCE_MIN_SAVED_TRIANGLES = Number(arg('min-saved') ?? 1000);
 /** Bumped when the unit conversion changes, so content-addressed units of installed GLBs are rebuilt. */
-const CONVERTER_VERSION = 'unit-v1';
+const CONVERTER_VERSION = 'unit-v3';
 
 const readJson = async (f: string) => JSON.parse(await fs.readFile(f, 'utf8'));
 const sha = (b: Uint8Array | string) => createHash('sha256').update(b).digest('hex');
