@@ -12,7 +12,7 @@ export function buildWesterkerk(_w:number,_d:number,b:BuildingTools){
  function segment(a:number[],q:number[],y:number,h:number,d:number,c:Colour){const dx=q[0]-a[0],dz=q[1]-a[1];box((a[0]+q[0])/2,y,(a[1]+q[1])/2,Math.hypot(dx,dz),h,d,c,-Math.atan2(dz,dx));}
  function arch(x:number,y:number,z:number,w:number,h:number,a:number,c:Colour,depth=.12){const s=new T.Shape();s.moveTo(-w/2,0);s.lineTo(w/2,0);s.lineTo(w/2,h-w/2);s.absarc(0,h-w/2,w/2,0,Math.PI,false);s.closePath();add(new T.ExtrudeGeometry(s,{depth,bevelEnabled:false,curveSegments:6}),c,x,y,z,a);}
  function window(x:number,y:number,z:number,w:number,h:number,a:number,open=false){
-  const nx=Math.sin(a),nz=Math.cos(a);arch(x,y,z,w+.35,h+.3,a,'stone');arch(x+nx*.15,y+.14,z+nz*.15,w,h,a,open?'dark':'glass');
+  const nx=Math.sin(a),nz=Math.cos(a);arch(x,y,z,w+.35,h+.3,a,'stone');arch(x+nx*.14,y+.14,z+nz*.14,w,h,a,open?'dark':'glass');
   const px=x+nx*.36,pz=z+nz*.36;box(px,y+.2,pz,.13,h-w*.42,.11,'white',a);
   if(!open){for(const u of [-w*.27,w*.27])box(px+Math.cos(a)*u,y+.2,pz-Math.sin(a)*u,.09,h-w*.53,.11,'white',a);for(let v=y+1.3;v<y+h-w*.55;v+=1.65)box(px,v,pz,w,.09,.12,'white',a);}
  }

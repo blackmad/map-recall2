@@ -50,7 +50,7 @@ export function buildCentraleMarkthal(_w:number,_d:number,b:BuildingTools):void{
   const count=side<0?46:43;for(let i=0;i<count;i++){const z=-46+i*97/(count-1);for(const y of[10.7,13.4]){b.box(office+side*.08,y,z,.15,1.75,1.13,'dark');b.box(office+side*.17,y+.08,z,.10,1.58,.97,'glass');b.box(office+side*.24,y+.07,z,.045,1.58,.055,'frame');for(const t of[.4,.8,1.2])b.box(office+side*.24,y+t,z,.045,.045,.97,'frame')}}
   for(let i=0;i<14;i++){const z=-44+i*6.9;
    b.box(outer+side*.1,.12,z,.16,2.8,2.45,'white');b.box(outer+side*.21,.15,z,.1,2.7,2.25,'dark');
-   b.box(office+side*.1,4.4,z,.15,2.8,1.42,'white');for(const dz of[-1.68,1.68])b.box(outer+side*.18,5.05,z+dz,.10,1.0,1.48,'glass');
+   b.box(office+side*.1,4.4,z,.15,2.8,1.42,'white');for(const dz of[-1.68,1.68])b.box(outer+side*.09,5.05,z+dz,.10,1.0,1.48,'glass');// on the wall face (outer+.03); at .18 they floated 10-14 cm off it (geometry audit 2026-10-13)
    b.box(office+side*.65,7.4,z,1.5,.19,.22,'stone');for(const dy of[.55,1.1,1.65,2.2])b.box(outer+side*.27,dy,z,.03,.035,2.22,'frame');
   }
  }

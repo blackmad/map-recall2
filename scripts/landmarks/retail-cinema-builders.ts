@@ -97,7 +97,9 @@ function buildBijenkorfNative(b:BuildingTools){
  function front(cx:number,cz:number,angle:number,width:number,count:number,raised:boolean){
   const ca=Math.cos(angle),sa=Math.sin(angle);
   const local=(x:number,z:number):P=>angle===0?[cx+x,frontZ(cx+x)+.03+z]:[cx+x*ca+z*sa,cz-x*sa+z*ca];
-  const fb=(x:number,y:number,z:number,w:number,hh:number,dd:number,c:C)=>{const p=local(x,z);box(p[0],y,p[1],w,hh,dd,c,angle);};
+  // Every facade part reaches back into the wall (the ring wall is local z -0.03): surrounds, sills and pilasters used to stand 10-13 cm off it
+  // and read as detached parts.
+  const fb=(x:number,y:number,z:number,w:number,hh:number,dd:number,c:C)=>{const back=z-dd/2,reach=-.07;if(back>reach&&back-reach<=.35){dd+=back-reach;z-=(back-reach)/2;}const p=local(x,z);box(p[0],y,p[1],w,hh,dd,c,angle);};
   const glyph=(text:string,x:number,y:number,z:number,pixel:number,c:C)=>{if(angle===0){b.sign(text,cx+x,y,cz+z,pixel,c);return;} // Sign letters are authored in the same local plane, never image textures.
    const alphabet:Record<string,string[]>={D:['110','101','101','101','110'],E:['111','100','110','100','111'],B:['110','101','110','101','110'],I:['111','010','010','010','111'],J:['001','001','001','101','010'],N:['101','111','111','111','101'],K:['101','101','110','101','101'],O:['010','101','101','101','010'],R:['110','101','110','101','101'],F:['111','100','110','100','100']};let u=x-text.length*4*pixel/2;for(const ch of text){const rows=alphabet[ch];if(rows)for(let j=0;j<5;j++)for(let k=0;k<3;k++)if(rows[j][k]==='1')fb(u+k*pixel,y+(4-j)*pixel,z,pixel*.8,pixel*.8,.06,c);u+=4*pixel;}
   };
@@ -110,13 +112,13 @@ function buildBijenkorfNative(b:BuildingTools){
   // from the ordinary roof windows. Their walls begin above the main body.
   if(raised){
    fb(0,21.6,-.8,width,4.2,1.8,'stone');for(let i=0;i<count;i++){const x=-width/2+pitch*(i+.5);paired(x,22.15,pitch*.65,2.7,.34);fb(x-pitch/2,21.6,.37,.67,4.3,.57,'stone');}
-   fb(0,25.65,.45,width+.45,.36,1.22,'stone');
+   fb(0,25.65,.45,width+.45,.36,1.22,'stone');fb(0,24.85,.43,width*.72,1.1,1.08,'stone'); // name band: the lettering stands on a stone fascia instead of floating before the coping and cartouche base
    const shape=new T.Shape();shape.moveTo(-width/2,0);shape.lineTo(width/2,0);shape.quadraticCurveTo(width*.38,3.95,0,4.2);shape.quadraticCurveTo(-width*.38,3.95,-width/2,0);shape.closePath();
    const g=new T.ExtrudeGeometry(shape,{depth:1.05,bevelEnabled:false,curveSegments:10});g.rotateY(angle);const p=local(0,.18);b.add(g,'stone',p[0],25.9,p[1]);
    const oval=new T.CylinderGeometry(1,1,.14,18);oval.rotateX(Math.PI/2);oval.scale(1.0,1.35,1);oval.rotateY(angle);const o=local(0,1.31);b.add(oval,'white',o[0],28.0,o[1]);
    const inset=new T.CylinderGeometry(1,1,.15,18);inset.rotateX(Math.PI/2);inset.scale(.64,.9,1);inset.rotateY(angle);const oo=local(0,1.42);b.add(inset,'dark',oo[0],28.0,oo[1]);
    for(const side of [-1,1]){fb(side*2.15,27.0,1.32,1.4,.35,.18,'white');fb(side*3.18,26.55,1.32,.38,1.2,.18,'white');fb(side*(width/2-.35),25.85,.95,.56,.62,.5,'white');}
-   glyph('DE BIJENKORF',0,24.9,1.36,.24,'white');
+   glyph('DE BIJENKORF',0,24.9,1.01,.15,'white');
    for(const y of [10.0,15.0]){const bw=width*.34;fb(0,y,.75,bw,.25,1.7,'stone');fb(0,y+1.05,1.57,bw,.11,.13,'frame');for(let x=-bw/2;x<=bw/2;x+=.5)fb(x,y+.22,1.57,.065,.8,.1,'frame');}
   }
  }
@@ -143,8 +145,10 @@ function buildBijenkorfNative(b:BuildingTools){
  box(3,36.65,10.35,3.1,5.65,3.1,'stone');box(3,42.3,10.35,3.6,.35,3.6,'slate');
  for(const angle of [0,Math.PI/2,Math.PI,Math.PI*1.5]){box(3+1.6*Math.sin(angle),37.3,10.35+1.6*Math.cos(angle),1.45,4.4,.14,'dark',angle);for(const x of [-1.3,1.3])box(3+x*Math.cos(angle)+1.7*Math.sin(angle),36.7,10.35-x*Math.sin(angle)+1.7*Math.cos(angle),.24,5.55,.24,'slate',angle);}
  const dome=new T.SphereGeometry(1,16,8,0,Math.PI*2,0,Math.PI/2);dome.scale(1.85,2.78,1.85);b.add(dome,'slate',3,42.65,10.35);
- for(const x of [-48,-31,39,54]){box(x,30.3,3.6,1.3,6.3,1.3,'slate');box(x,36.6,3.6,1.6,.55,1.6,'stone');}
+ for(const x of [-48,-31,39,54]){box(x,28.8,3.6,1.3,7.8,1.3,'slate');box(x,36.6,3.6,1.6,.55,1.6,'stone');} // stacks start below the mansard slope they rise from
  // Rear service elevations are restrained, distinct from the historic
  // storefront and clipped to the actual parent boundary.
- for(let x=-49;x<56;x+=5.6){const z=-20.35;for(const y of [5.8,11.05,16.1]){if(region(x-1.2,x+1.2,z-.1,z+.1).length>=3)box(x,y,z-.09,2.5,2.75,.17,'dark');}}
+ // The rear wall is wherever the surveyed ring puts it at this x (it steps), not a fixed z.
+ const rearZ=(x:number)=>{const hits:number[]=[];for(let i=0;i<ring.length;i++){const a=ring[i],q=ring[(i+1)%ring.length];if(((a[0]<=x&&q[0]>=x)||(a[0]>=x&&q[0]<=x))&&Math.abs(q[0]-a[0])>.001)hits.push(a[1]+(x-a[0])*(q[1]-a[1])/(q[0]-a[0]));}return Math.min(...hits);};
+ for(let x=-49;x<56;x+=5.6){const z=rearZ(x);if(!Number.isFinite(z))continue;for(const y of [5.8,11.05,16.1]){if(region(x-1.2,x+1.2,z-.1,z+.1).length>=3)box(x,y,z-.09,2.5,2.75,.17,'dark');}}
 }

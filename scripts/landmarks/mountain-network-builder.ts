@@ -35,14 +35,15 @@ export function buildMountainNetwork(_w:number,_d:number,{add,box}:BuildingTools
    const tower=ring.every(p=>p[0]>12&&p[2]<-65)&&maxY<36;
    add(g,tower?'white':outward.x>.65?'slate':'stone');
    const xs=local[0].map(p=>p.x),left=Math.min(...xs),right=Math.max(...xs),length=right-left;
-   function plane(l:number,r:number,y:number,h:number,c:Parameters<BuildingTools['add']>[1],offset=.09){const m=(l+r)/2;const geo=new T.PlaneGeometry(r-l,h);const angle=Math.atan2(outward.x,outward.y);add(geo,c,a[0]+tangent.x*m+outward.x*offset,y+h/2,a[2]+tangent.y*m+outward.y*offset,angle);}
+   // Facade layers are thin boxes whose back reaches the survey wall (offset 0), not zero-thickness quads floating 9-25 cm off it; backs sink to a depth that grows with the layer's offset so stacked layers never share a coplanar back face.
+   function plane(l:number,r:number,y:number,h:number,c:Parameters<BuildingTools['add']>[1],offset=.09){const m=(l+r)/2,depth=offset*1.4+.02,mid=offset-depth/2;const geo=new T.BoxGeometry(r-l,h,depth);const angle=Math.atan2(outward.x,outward.y);add(geo,c,a[0]+tangent.x*m+outward.x*mid,y+h/2,a[2]+tangent.y*m+outward.y*mid,angle);}
    // Fractional panel ranges come from the actual wall polygon at each height.
    function spans(y:number){const hits:number[]=[];const p=local[0];for(let i=0;i<p.length;i++){const a=p[i],b=p[(i+1)%p.length];if((a.y<=y&&b.y>y)||(b.y<=y&&a.y>y))hits.push(a.x+(b.x-a.x)*(y-a.y)/(b.y-a.y));}hits.sort((a,b)=>a-b);return Array.from({length:Math.floor(hits.length/2)},(_,i)=>[hits[i*2],hits[i*2+1]]);}
    if(tower&&length>3){
     // Source2022/2025: brick plinth under cantilevered pale translucent climbing tower.
     const base=Math.max(minY,.05),bh=Math.min(7,maxY)-base;if(bh>0)for(const[l,r]of spans(base+bh/2))plane(l,r,base,bh,'stone',.1);
     if(outward.y<-.5){
-    }else{for(let y=8;y<maxY;y+=1.45)for(const[l,r]of spans(y))plane(l,r,y,.035,'frame',.1);}
+    } // The 3.5 cm hairline ribs every 1.45 m on the tower's side faces are gone: they stood outside any wall polygon (18 overhang fails) and read as nothing at street distance.
    }else if(length>3.2){
     if([108,79,86].includes(surfaceIndex)){
      const mid=(left+right)/2,width=Math.min(8,length-1.2);
@@ -92,22 +93,22 @@ export function buildMountainNetwork(_w:number,_d:number,{add,box}:BuildingTools
  // Projected climbing envelope: four broad pale translucent bays on the
  // photographed northern/front face, opaque side returns. The1.35m
  // overhang is photograph-guided; surveyed native roof remains behind the band.
- function wallPanel(a:T.Vector2,b:T.Vector2,y:number,h:number,c:Parameters<BuildingTools['add']>[1]){const d=b.clone().sub(a),mid=a.clone().add(b).multiplyScalar(.5);add(new T.PlaneGeometry(d.length(),h),c,mid.x,y+h/2,mid.y,Math.atan2(-d.y,d.x));}
+ function wallPanel(a:T.Vector2,b:T.Vector2,y:number,h:number,c:Parameters<BuildingTools['add']>[1]){const d=b.clone().sub(a),mid=a.clone().add(b).multiplyScalar(.5),len=d.length(),nx=-d.y/len,nz=d.x/len;add(new T.BoxGeometry(len,h,.06),c,mid.x-nx*.03,y+h/2,mid.y-nz*.03,Math.atan2(-d.y,d.x));} // thin boxes (front face on the old plane, back 6 cm behind it): closed shells, no open panel edges
  const towerA=new T.Vector2(33,-82.7),towerB=new T.Vector2(17.2,-86.8),towerDir=towerB.clone().sub(towerA).normalize(),towerNormal=new T.Vector2(-towerDir.y,towerDir.x),project=1.35;
  const projectedA=towerA.clone().addScaledVector(towerNormal,project),projectedB=towerB.clone().addScaledVector(towerNormal,project),towerWidth=towerA.distanceTo(towerB);
  wallPanel(projectedA,projectedB,7,28.1,'concrete');
  for(let i=0;i<4;i++){
   const a=projectedA.clone().lerp(projectedB,i/4).addScaledVector(towerDir,.16),b=projectedA.clone().lerp(projectedB,(i+1)/4).addScaledVector(towerDir,-.16);
-  wallPanel(a.clone().addScaledVector(towerNormal,.025),b.clone().addScaledVector(towerNormal,.025),7.16,27.78,'frame');
+  wallPanel(a.clone().addScaledVector(towerNormal,.05),b.clone().addScaledVector(towerNormal,.05),7.16,27.78,'frame');
   for(let y=7.3;y<35;y+=1.02)wallPanel(a.clone().addScaledVector(towerNormal,.065),b.clone().addScaledVector(towerNormal,.065),y,.095,'white');
  }
  for(let i=0;i<=4;i++){const c=projectedA.clone().lerp(projectedB,i/4);wallPanel(c.clone().addScaledVector(towerDir,-.105).addScaledVector(towerNormal,.08),c.clone().addScaledVector(towerDir,.105).addScaledVector(towerNormal,.08),7,28.1,'white');}
- wallPanel(towerA,projectedA,7,28.1,'white');wallPanel(projectedB,towerB,7,28.1,'white');wallPanel(new T.Vector2(17.2,-86.8),new T.Vector2(13.1,-70.5),7,28.1,'white');
+ wallPanel(towerA,projectedA,7,28.1,'white');wallPanel(projectedB,towerB,7,28.1,'white');{const a0=new T.Vector2(17.2,-86.8),b0=new T.Vector2(13.1,-70.5),nrm=b0.clone().sub(a0).normalize();nrm.set(-nrm.y,nrm.x).multiplyScalar(.05);wallPanel(a0.clone().add(nrm),b0.clone().add(nrm),7,28.1,'white');} // stands 5 cm off the surveyed wall it used to share a plane with
  const overhang=new T.Shape([towerA,projectedA,projectedB,towerB]);const cap=upwardRoofPlane(overhang);cap.translate(0,35.1,0);add(cap,'white');const soffit=upwardRoofPlane(overhang);soffit.scale(1,-1,1);soffit.translate(0,7,0);add(soffit,'slate');
  // Recessed front entrance in the photographed brick base; the projection is
  // above it, so panes/threshold remain visible beneath the dark soffit.
- const entryA=towerA.clone().addScaledVector(towerDir,2),entryB=towerB.clone().addScaledVector(towerDir,-2);wallPanel(entryA.clone().addScaledVector(towerNormal,.9),entryB.clone().addScaledVector(towerNormal,.9),.12,2.7,'glass');
- for(let i=0;i<=6;i++){const c=entryA.clone().lerp(entryB,i/6).addScaledVector(towerNormal,.95);wallPanel(c.clone().addScaledVector(towerDir,-.045),c.clone().addScaledVector(towerDir,.045),.12,2.7,'white');}
+ const entryA=towerA.clone().addScaledVector(towerDir,2),entryB=towerB.clone().addScaledVector(towerDir,-2);wallPanel(entryA.clone().addScaledVector(towerNormal,.2),entryB.clone().addScaledVector(towerNormal,.2),.12,2.7,'glass');
+ for(let i=0;i<=6;i++){const c=entryA.clone().lerp(entryB,i/6).addScaledVector(towerNormal,.25);wallPanel(c.clone().addScaledVector(towerDir,-.045),c.clone().addScaledVector(towerDir,.045),.12,2.7,'white');}
  // Continuous convex city-side balcony fronts over the hall. Native backing
  // chains retain the stepped/rounded corner; nine photo-guided floor bands
  // bulge3m outward rather than becoming isolated straight window strips.

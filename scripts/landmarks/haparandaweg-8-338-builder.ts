@@ -10,7 +10,9 @@ export function buildHaparandaweg8338(_w:number,_d:number,b:BuildingTools){
   const panel=(u:number,y:number,w:number,h:number,d:number,col:C,out=.14)=>add(new T.BoxGeometry(w,h,d),col,a[0]+ux*u+nx*out,y+h/2,a[1]+uz*u+nz*out,angle);
   const plane=(u:number,y:number,w:number,h:number,col:C,out=.24)=>add(new T.PlaneGeometry(w,h),col,a[0]+ux*u+nx*out,y+h/2,a[1]+uz*u+nz*out,angle);
   const frame=(u:number,y:number,w:number,h:number,col:C,glazedWidth=w)=>{plane(u,y,glazedWidth,h,'glass');for(const s of[-1,1])plane(u+s*(w/2-.045),y,.09,h,col,.29);for(const yy of[y,y+h-.09])plane(u,yy,w,.09,col,.295);if(style==='ochre'){plane(u,y,.065,h,col,.30);plane(u,y+h*.36,w,.065,col,.30);plane(u-w*.28,y,.065,h,col,.30);plane(u+w*.28,y,.065,h,col,.30);}else if(style==='gallery')plane(u,y,.065,h,col,.30);};
-  const rail=(u:number,y:number,w:number,col:C)=>{plane(u,y,w,.055,col,.635);plane(u,y+1,w,.055,col,.635);for(let t=-w/2;t<=w/2+.01;t+=.19)plane(u+t,y,.035,1,col,.635);};
+  // French-balcony rails stand 0.43 m proud of the wall plane; a short bracket at each end of the top rail carries it back to the wall
+  // (geometry audit 2026-10-13: without them every rail floated 16-19 cm in front of the piers).
+  const rail=(u:number,y:number,w:number,col:C)=>{plane(u,y,w,.055,col,.635);plane(u,y+1,w,.055,col,.635);for(let t=-w/2;t<=w/2+.01;t+=.19)plane(u+t,y,.035,1,col,.635);for(const s of[-1,1])add(new T.PlaneGeometry(.43,.055),col,a[0]+ux*(u+s*w/2)+nx*.42,y+1.0275,a[1]+uz*(u+s*w/2)+nz*.42,angle+Math.PI/2);};
   plane(L/2,base,L,top-base,c,.205);
   // The source lower khaki level is a continuous curtain wall; only slender
   // white mullions interrupt glazing, with no residential masonry piers.
