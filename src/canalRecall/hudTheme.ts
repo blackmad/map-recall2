@@ -15,6 +15,7 @@
  * `enamelCssVariables()` into `src/theme/enamel-tokens.css` and
  * `public/canal-drive/css/enamel.css`. Edit values here, then publish.
  */
+import { HIGHLIGHT_CORAL } from './look/palette';
 
 /** Cobalt plaque fills and accents used by stop surfaces (setup, dialogs). */
 export const enamelTheme = {
@@ -114,8 +115,9 @@ export const hudSurface = {
   ink: daylightTheme.ink,
   inkMuted: daylightTheme.inkMuted,
   accent: daylightTheme.accentInk,
-  /** Only the finish arrow is copper-bright, so it reads as "go there". */
-  arrow: daylightTheme.accent,
+  /** The destination's one accent in the world: the finish arrow and pin wear the landmark highlight's coral
+   *  (look/highlight.ts, LOOK §Highlight), so "go there" on the HUD and the lit building on the map match. */
+  arrow: HIGHLIGHT_CORAL,
   fontPlaque: enamelTheme.fontPlaque,
   /** A loaded face first: canvas ignores `ui-monospace`, so HUD numerals fell
    *  through to Courier/Menlo. index.html loads JetBrains Mono. */

@@ -52,9 +52,9 @@ export function labelCss(tone: LabelTone): string {
     `${root} .l.destination .n{background:rgba(251,248,242,0.95);color:${LABEL_INK.ink};text-shadow:none;padding:3px 8px 2px 7px;`
       + `border-radius:6px;border:1px solid rgba(180,104,44,0.6);box-shadow:0 1px 4px rgba(31,28,23,0.22);display:flex;align-items:center;gap:5px}`,
     `${root} .l.destination .n::before{content:"";width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;`
-      + `border-top:8px solid ${LABEL_INK.copper}}`,
-    `${root} .l.destination .s{background:${LABEL_INK.copper};opacity:1;height:7px}`,
-    `${root} .l.destination .d{background:${LABEL_INK.copper}}`,
+      + `border-top:8px solid ${LABEL_INK.destination}}`,
+    `${root} .l.destination .s{background:${LABEL_INK.destination};opacity:1;height:7px}`,
+    `${root} .l.destination .d{background:${LABEL_INK.destination}}`,
   ];
   for (const [cls, t] of Object.entries(LABEL_TYPE)) {
     rules.push(`${root} .l.${cls} .n{font:${t.weight} ${t.size}px ${t.font};letter-spacing:${t.tracking}em;${t.caps ? 'text-transform:uppercase;' : ''}}`);

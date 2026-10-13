@@ -205,6 +205,7 @@ class VectorBasemap {
           if (!landmark || landmark !== this._activeLandmark) return;
           const source = this.map.getSource('active-landmark');
           if (source) source.setData({ type: 'FeatureCollection', features: [] });
+          this._highlightMarker?.set(this._threeBuildings?.highlightFootprint?.(landmark.buildingIds || []) || { lngLat: landmark.lngLat });
         };
         this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
       }
@@ -611,6 +612,7 @@ class VectorBasemap {
         'fill-extrusion-opacity': BUILDING_FADE_IN
       }
     });
+    this.map.addLayer({ id: 'osm-building-highlight-casing', type: 'line', source: 'osm-building-appearance', minzoom: 14, paint: { 'line-color': window.CanalRecallThree?.highlightAccent?.() || '#ff8033', 'line-width': 3, 'line-opacity': ['case', ['boolean', ['feature-state', 'accent'], false], 1, 0] } }, 'osm-colored-building-ground-floors'); // the highlight's footprint casing (look/highlight.ts)
     // Prefer streamed LoD1 tiles when published; only then fall back to the
     // 5.6 MB static extract (and its basemap de-dupe work). Running both used
     // to hitch the first turn: parse + setData the extract, install a 10k-id
@@ -1432,7 +1434,7 @@ class VectorBasemap {
    * before anything has been highlighted, so nothing is lost with it.
    */
   _recreateBuildingSourceWithStableIds() {
-    const layers = ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-facades', 'osm-colored-building-roofs']
+    const layers = ['osm-building-highlight-casing', 'osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-facades', 'osm-colored-building-roofs']
       .map(id => this.map.getLayer(id) && this.map.getStyle().layers.find(layer => layer.id === id))
       .filter(Boolean)
       .map(layer => JSON.parse(JSON.stringify(layer)));
@@ -2478,8 +2480,8 @@ class VectorBasemap {
   _ensureLandmarkLayers() {
     if (this.map.getSource('active-landmark')) return;
     this.map.addSource('active-landmark', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
-    this.map.addLayer({ id: 'active-landmark-line', type: 'line', source: 'active-landmark', filter: ['==', '$type', 'LineString'], paint: { 'line-color': '#FACC15', 'line-width': 6, 'line-opacity': 0.95 } });
-    this.map.addLayer({ id: 'active-landmark-point', type: 'circle', source: 'active-landmark', filter: ['==', '$type', 'Point'], paint: { 'circle-radius': 16, 'circle-color': '#FACC15', 'circle-opacity': 0.72, 'circle-stroke-color': '#FFFFFF', 'circle-stroke-width': 3 } });
+    this.map.addLayer({ id: 'active-landmark-line', type: 'line', source: 'active-landmark', filter: ['==', '$type', 'LineString'], paint: { 'line-color': window.CanalRecallThree?.highlightAccent?.() || '#FACC15', 'line-width': 6, 'line-opacity': 0.95 } });
+    this.map.addLayer({ id: 'active-landmark-point', type: 'circle', source: 'active-landmark', filter: ['==', '$type', 'Point'], paint: { 'circle-radius': 16, 'circle-color': window.CanalRecallThree?.highlightAccent?.() || '#FACC15', 'circle-opacity': 0.72, 'circle-stroke-color': '#FFFFFF', 'circle-stroke-width': 3 } });
   }
 
   setActiveLandmark(landmark) {
@@ -2488,7 +2490,7 @@ class VectorBasemap {
     const source = this.map.getSource('active-landmark');
     if (!source) return;
     for (const previous of this._highlightedBuildings || []) {
-      try { this.map.setFeatureState(previous, { highlighted: false }); } catch (_) {}
+      try { this.map.setFeatureState(previous, { highlighted: false, accent: false }); } catch (_) {}
     }
     this._highlightedBuildings = [];
     this._highlightedBuilding = null;
@@ -2526,7 +2528,7 @@ class VectorBasemap {
     if (!detailed) {
       for (const target of targets) {
         try {
-          this.map.setFeatureState(target, { highlighted: true });
+          this.map.setFeatureState(target, { highlighted: !this._highlightMarker, accent: !!this._highlightMarker }); // yellow fill only under ?highlight=yellow
           this._highlightedBuildings.push(target);
         } catch (_) {}
       }
@@ -2556,7 +2558,8 @@ class VectorBasemap {
       ? [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: landmark.lngLat } }]
       : [];
     source.setData({ type: 'FeatureCollection', features: point });
-    this._highlightMarker?.set((threeHighlight.length || modelLit) && focus ? (this._threeBuildings?.highlightFootprint?.(threeHighlight) || focus) : null);
+    const casingBelow = this.map.getLayer('osm-building-highlight-casing') && this.map.getLayersOrder?.().find(id => id !== 'osm-building-highlight-casing' && /^osm-colored-building|^building-3d|^three-building|^shared-frame|detailed|signature/.test(id)); if (casingBelow) this.map.moveLayer('osm-building-highlight-casing', casingBelow); // under every building: walls hide it
+    this._highlightMarker?.set((threeHighlight.length || modelLit) && focus ? { ...(this._threeBuildings?.highlightFootprint?.(threeHighlight) || focus), hull: !modelLit && !this._threeOwnsTops() && !this._tileBuildings } : null); // hull: the marker outlines MapLibre's fallback extrusion
   }
 
   /** Landmark-kit prisms stay drawn for the answer building. Only a change

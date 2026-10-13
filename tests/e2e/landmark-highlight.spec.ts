@@ -24,9 +24,11 @@ test('drive-by landmark cards light up their building', async ({ page }, testInf
     const loaded = game.landmarks.filter((landmark: any) => landmark.lngLat
       && landmark.lngLat[0] > minX && landmark.lngLat[0] < maxX && landmark.lngLat[1] > minY && landmark.lngLat[1] < maxY);
     let highlighted = 0;
+    // Lit: `accent` under the default highlight (outline, look/highlight.ts), `highlighted` under ?highlight=yellow.
+    const lit = (target: any) => { const s = map.map.getFeatureState(target); return !!(s.highlighted || s.accent); };
     for (const landmark of loaded) {
       map.setActiveLandmark(landmark);
-      if (map._highlightedBuilding && map.map.getFeatureState(map._highlightedBuilding).highlighted) highlighted++;
+      if (map._highlightedBuilding && lit(map._highlightedBuilding)) highlighted++;
     }
     map.setActiveLandmark(null);
     return { loaded: loaded.length, highlighted };
@@ -46,18 +48,21 @@ test('closing a landmark card any way clears its building', async ({ page }, tes
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._completeCityHasBuildings), { timeout: 60000 }).toBe(true);
   const result = await page.evaluate(() => {
     const game = (window as any).canalRecallGame, map = game.vectorMap;
+    // Lit: `accent` under the default highlight (outline, look/highlight.ts), `highlighted` under ?highlight=yellow.
+    const lit = (target: any) => { const s = map.map.getFeatureState(target); return !!(s.highlighted || s.accent); };
     for (const landmark of game.landmarks) {
       map.setActiveLandmark(landmark);
       const target = map._highlightedBuilding;
-      if (!target || !map.map.getFeatureState(target).highlighted) continue;
+      if (!target || !lit(target)) continue;
       game._landmarkNotice = { ...landmark };
       game._clearLandmarkNotice();
-      return { found: true, still: Boolean(map.map.getFeatureState(target).highlighted), target: map._highlightedBuilding };
+      return { found: true, still: lit(target), target: map._highlightedBuilding, marker: !!map._highlightMarker?.status().anchor };
     }
     return { found: false };
   });
   expect(result.found, 'a landmark with a streamed building').toBe(true);
   expect(result.still, JSON.stringify(result)).toBe(false);
+  expect(result.marker, 'the ring and beacon go with the card').toBe(false);
 });
 
 // Named regression (user reports 2026-09-29, "I can't see where on the map

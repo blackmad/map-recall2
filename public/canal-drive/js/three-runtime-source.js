@@ -23,6 +23,7 @@ export { createLitFacadeMaterial, createFacadeDepthMaterial } from '../../../src
 export { withinView } from '../../../src/canalRecall/rendererShared/residency.ts';
 export { PARTICIPANT_ORDER } from '../../../src/canalRecall/rendererShared/layerRegistry.ts';
 
-// The landmark highlight candidates (`?highlight=a|b|c`): the page's ground ring / beacon, and the style.
+// The landmark highlight (default a; `?highlight=yellow|b|c`): the page's ground ring / beacon, the style and its
+// accent, and the per-feature outline for 3DBAG detailed mode (detailed-buildings-source.js).
 export { HighlightMarker } from '../../../src/canalRecall/look/highlightMarker.ts';
-export { highlightStyle } from '../../../src/canalRecall/look/highlight.ts';
+export { highlightStyle, highlightAccent, highlightFeature, detachHighlightPasses } from '../../../src/canalRecall/look/highlight.ts';
