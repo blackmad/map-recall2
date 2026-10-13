@@ -25,7 +25,9 @@ for(const mesh of kriterion.filter(m=>m.name==='dark')){
   const points=[0,1,2].map(k=>new T.Vector3().fromBufferAttribute(p,ix?ix.getX(i+k):i+k).applyMatrix4(mesh.matrixWorld));
   const normal=points[1].clone().sub(points[0]).cross(points[2].clone().sub(points[0])).normalize();
   const target=points[0].clone().multiplyScalar(.2).addScaledVector(points[1],.3).addScaledVector(points[2],.5);
-  if(normal.z<.98||target.y<5)continue;
+  // Frontage only (z≈15.5). The eastern rear bay (kriterion-rear-native.ts, z≈-1.9) has four more exposed
+  // windows facing +Z, which are real and not what this check counts.
+  if(normal.z<.98||target.y<5||target.z<10)continue;
   const hits=new T.Raycaster(target.clone().addScaledVector(normal,50),normal.clone().negate()).intersectObjects(kriterion);
   assert(['dark','white'].includes(hits[0]?.object.name??''),`Kriterion pane buried at ${target.toArray()}: first material ${hits[0]?.object.name}`);panes++;
  }
