@@ -2,6 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 import { AnswerDetails, usePreparePostcard } from './AnswerDetails';
 import { StreetFeature } from '../types';
 import { CheckCircle2, XCircle } from 'lucide-react';
+import { SeenBeforeChip } from './SeenBeforeChip';
 
 interface GuessNameModeOverlayProps {
   currentFeature: StreetFeature;
@@ -15,6 +16,12 @@ interface GuessNameModeOverlayProps {
   roundNumber: number;
   totalRounds: number;
   factSeed: number;
+  /** "Seen 3 days ago · missed before" (src/mapRecall/progress.ts seenBeforeLabel). */
+  seenBefore?: string | null;
+  /** The next question is adjacent to this answer (src/mapRecall/questionPlan.ts); only said after the reveal. */
+  nextNearby?: boolean;
+  /** The bonus pin row (BonusPinPanel), shown on the answer card. */
+  bonusSlot?: React.ReactNode;
 }
 
 // One chip style for every kind; see PinpointModeOverlay for why.
@@ -55,6 +62,9 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
   roundNumber,
   totalRounds,
   factSeed,
+  seenBefore,
+  nextNearby,
+  bonusSlot,
 }) => {
   // Generate randomized 4 options: 1 correct + 3 distractors
   const options = useMemo(() => {
@@ -96,7 +106,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
             {/* Top Prompt Header */}
             <div className="flex items-start justify-between gap-2">
               <div className="space-y-0.5 sm:space-y-1 min-w-0">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
                   <span className="enamel-chip px-2 py-0.5 text-xs font-bold uppercase tracking-wider flex items-center gap-1">
                     <span className="text-[#8a4a18]">{badge.icon}</span>
                     <span>{badge.label}</span>
@@ -104,6 +114,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                   <span className="hidden sm:inline text-xs text-white/70 font-semibold uppercase tracking-wider">
                     Highlighted on the map
                   </span>
+                  <SeenBeforeChip label={seenBefore} />
                 </div>
 
                 <h1 className="enamel-brand text-base sm:text-xl text-white leading-snug">
@@ -176,6 +187,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                   <p className="text-xs sm:text-sm text-white/80 font-bold truncate">
                     It's <span className="text-white underline">{currentFeature.name}</span>
                   </p>
+                  {bonusSlot}
                 </div>
               </div>
 
@@ -191,9 +203,9 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                 <button
                   id="guess-next-round-btn"
                   onClick={onNextRound}
-                  className="button-primary px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm flex items-center gap-1.5 transition cursor-pointer"
+                  className="button-primary px-4 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm flex items-center gap-1.5 transition cursor-pointer whitespace-nowrap"
                 >
-                  <span>{isLastRound ? 'See score' : 'Next'}</span>
+                  <span>{isLastRound ? 'See score' : nextNearby ? 'Next · nearby' : 'Next'}</span>
                 </button>
               </div>
             </div>

@@ -175,3 +175,33 @@ export function newlyEarned(results: readonly RoundResult[], statesBefore: reado
       return true;
     });
 }
+
+/**
+ * "today", "yesterday", "3 days ago", "2 weeks ago", "3 months ago", by local
+ * calendar day (a review at 23:50 is "yesterday" at 00:10).
+ */
+export function formatDaysAgo(then: number, now = Date.now()): string {
+  const days = Math.round((startOfDay(now) - startOfDay(then)) / 86_400_000);
+  if (days <= 0) return 'today';
+  if (days === 1) return 'yesterday';
+  if (days < 14) return `${days} days ago`;
+  if (days < 60) return `${Math.round(days / 7)} weeks ago`;
+  if (days < 365) return `${Math.round(days / 30)} months ago`;
+  const years = Math.round(days / 365);
+  return years === 1 ? 'a year ago' : `${years} years ago`;
+}
+
+/** The question card's seen-before chip, or null for a first sight. Never says where. */
+export function seenBeforeLabel(
+  states: readonly ReviewState[],
+  feature: StreetFeature,
+  mode: GameMode,
+  now = Date.now(),
+): string | null {
+  const state = indexStates(states).get(stateKey(getFeatureKey(feature), mode));
+  if (!state || !Number.isFinite(state.lastReviewedAt)) return null;
+  const parts = [`Seen ${formatDaysAgo(state.lastReviewedAt, now)}`];
+  if (state.lapses > 0) parts.push('missed before');
+  else if (state.repetitions >= 2) parts.push(`known · ${state.repetitions} reviews`);
+  return parts.join(' · ');
+}
