@@ -12,6 +12,7 @@ import { extractCityFor, type ExtractCity } from '../mapRecall/cityExtracts';
 import { hintReferencesFrom, type HintReference } from '../mapRecall/locateHints';
 import { isUnsuitableAreaPhoto } from '../mapRecall/photoBlacklist';
 import { attachWaterImportance } from '../mapRecall/waterImportance';
+import { centreIsOff, centreOnPaths, dropOutlyingPaths } from '../mapRecall/pathClusters';
 
 interface FeatureRequest {
   cityId: string;
@@ -83,7 +84,18 @@ async function loadExtract(city: ExtractCity, category: FeatureCategory): Promis
     .then(async (response) => response.ok ? response.json() as Promise<FactsFile> : null)
     .catch(() => null));
   const origins = await cached(originsPromises, city.id, () => optionalJson(`${city.id}/street-name-origins.json`));
-  return attachNameOrigins(attachLocalFacts(features, facts, city.id), origins?.origins);
+  return attachNameOrigins(attachLocalFacts(features.map(trimStrayPieces), facts, city.id), origins?.origins);
+}
+
+// Same-name ways far from the feature (the Weesp "Singel" inside Amsterdam's
+// Singel, a second Dorpskerk) are dropped so the fit frames the place asked
+// about; a box centre left between the pieces is moved onto what remains.
+function trimStrayPieces(feature: StreetFeature): StreetFeature {
+  if (!feature.paths || feature.paths.length < 2) return feature;
+  const trimmed = dropOutlyingPaths(feature.paths, { linkMetres: 1000, farMetres: 3000 });
+  if (!trimmed.dropped) return feature;
+  const center = centreIsOff(feature.center, trimmed.paths) ? centreOnPaths(trimmed.paths) ?? feature.center : feature.center;
+  return { ...feature, paths: trimmed.paths, center };
 }
 
 function pointInRing([lat, lon]: [number, number], ring: [number, number][]): boolean {
