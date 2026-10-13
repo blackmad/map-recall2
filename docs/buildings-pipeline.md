@@ -898,3 +898,31 @@ The two Bilderdijkstraat tiles (61 canal houses, 1 landmark) take 3–5 s each, 
 widths of neighbouring houses differ by centimetres, so no two bodies are identical at 1 mm. Reuse there needs
 type-level authoring (the face `types` / `sameAs` with one fitted width) or a tolerance-snapping fit, not a
 hash; the machinery is in place and tested (`compiler.test.ts` instances two equal bodies).
+
+### Runtime (`tileBuildings/runtime.ts`, `?recipeTiles=1`)
+
+`TileBuildings` is one participant (`recipe-tiles`, order 21, after the landmarks) in the shared frame.
+
+- **`?recipeTiles=1` implies `?sharedFrame=1`**, as `?ownGround=1` does: the near tier is a frame participant, not a
+  fourth custom layer with its own renderer. It draws lit (Lambert under the frame's rig) with the city look's
+  slot material (`look/cityLook.ts getCityLook`), whatever `?cityLook` says: the tiles carry slot attributes only.
+- **Residency**: the 2×2 block of z16 tiles nearest the camera centre, held by a quarter-tile hysteresis, checked
+  at most 4×/s from the frame's `beforeRender`. Tiles that leave the block are dropped only once every wanted
+  tile is drawn, so moving never opens a hole.
+- **A tile counts once its units are in.** Only then are its pands' `covers` hidden in the mid/far layers
+  (`ThreeBuildings.setHidden('recipe-tiles', ids)` → the facade shaders' `hidden = 1`; pyramidal roofs by the
+  same reason) and its `specs` withheld from the landmark loader (its `canShowModel`, asked per frame, is wrapped
+  once). Until then the stub boxes draw and the legacy specs stay. When a tile leaves, both are given back. No
+  suppression list is involved.
+- **Units are refcounted** across tiles (`RefCache`): one decode per unit, InstancedMeshes share its geometry and
+  material, freed when the last tile releases it.
+- **Picking**: `inspectAtScreen` raycasts the root with the frame's `clipFromWorld`; merged meshes resolve the face
+  through `pandRanges`, instances through `_PAND`. `vectorMap.inspectBuilding` takes the nearest of landmark,
+  facade and recipe-tile hits.
+- **Highlight** (the quiz answer, `setHighlighted` next to the facade layer's): merged pands set `hidden = 2` on their
+  own vertices (the city-look shader's highlight); an instanced pand is collapsed and drawn once more with the
+  highlight variant. An answer pand is never left hidden in both tiers.
+- Integrator: bundle `src/canalRecall/tileBuildings/browser.ts` to `public/canal-drive/js/tile-buildings.bundle.js`
+  (IIFE, global `CanalRecallTileBuildings`; THREE comes from `CanalRecallThree`), publish `artifacts/recipe-tiles/`
+  `{index.json, building-mesh/, units/}` to `public/canal-drive/recipe-tiles/` after review. Without the bundle or
+  the data the flag logs one warning and nothing changes.
