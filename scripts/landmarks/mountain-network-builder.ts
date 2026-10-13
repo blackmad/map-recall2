@@ -99,11 +99,11 @@ export function buildMountainNetwork(_w:number,_d:number,{add,box}:BuildingTools
  wallPanel(projectedA,projectedB,7,28.1,'concrete');
  for(let i=0;i<4;i++){
   const a=projectedA.clone().lerp(projectedB,i/4).addScaledVector(towerDir,.16),b=projectedA.clone().lerp(projectedB,(i+1)/4).addScaledVector(towerDir,-.16);
-  wallPanel(a.clone().addScaledVector(towerNormal,.025),b.clone().addScaledVector(towerNormal,.025),7.16,27.78,'frame');
+  wallPanel(a.clone().addScaledVector(towerNormal,.05),b.clone().addScaledVector(towerNormal,.05),7.16,27.78,'frame');
   for(let y=7.3;y<35;y+=1.02)wallPanel(a.clone().addScaledVector(towerNormal,.065),b.clone().addScaledVector(towerNormal,.065),y,.095,'white');
  }
  for(let i=0;i<=4;i++){const c=projectedA.clone().lerp(projectedB,i/4);wallPanel(c.clone().addScaledVector(towerDir,-.105).addScaledVector(towerNormal,.08),c.clone().addScaledVector(towerDir,.105).addScaledVector(towerNormal,.08),7,28.1,'white');}
- wallPanel(towerA,projectedA,7,28.1,'white');wallPanel(projectedB,towerB,7,28.1,'white');wallPanel(new T.Vector2(17.2,-86.8),new T.Vector2(13.1,-70.5),7,28.1,'white');
+ wallPanel(towerA,projectedA,7,28.1,'white');wallPanel(projectedB,towerB,7,28.1,'white');{const a0=new T.Vector2(17.2,-86.8),b0=new T.Vector2(13.1,-70.5),nrm=b0.clone().sub(a0).normalize();nrm.set(-nrm.y,nrm.x).multiplyScalar(.05);wallPanel(a0.clone().add(nrm),b0.clone().add(nrm),7,28.1,'white');} // stands 5 cm off the surveyed wall it used to share a plane with
  const overhang=new T.Shape([towerA,projectedA,projectedB,towerB]);const cap=upwardRoofPlane(overhang);cap.translate(0,35.1,0);add(cap,'white');const soffit=upwardRoofPlane(overhang);soffit.scale(1,-1,1);soffit.translate(0,7,0);add(soffit,'slate');
  // Recessed front entrance in the photographed brick base; the projection is
  // above it, so panes/threshold remain visible beneath the dark soffit.

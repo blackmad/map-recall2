@@ -55,7 +55,7 @@ export interface SnapReport {
 }
 
 export function snapOpenings(soup: MaterialSoup, opts: SnapOptions = {}): SnapReport {
-  const {maxFloat = 0.6, maxBuried = 0.6, embed = 0.02, clearMargin = 0.08, dropOverhang, passes = 4, sheetThickness = 0.02, sheetRest = 0.02, th: thOpt = GEOMETRY_THRESHOLDS} = opts;
+  const {maxFloat = 0.6, maxBuried = 0.6, embed = 0.02, clearMargin = 0.03, dropOverhang, passes = 4, sheetThickness = 0.02, sheetRest = 0.02, th: thOpt = GEOMETRY_THRESHOLDS} = opts;
   const th = thOpt;
   const P = soup.positions, I = soup.indices;
   const report: SnapReport = {passes: 0, floatingMoved: 0, buriedMoved: 0, reverted: 0, skipped: {floating: 0, buried: 0, overhang: 0}, dropped: [], droppedAt: []};
