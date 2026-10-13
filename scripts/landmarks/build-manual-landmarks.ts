@@ -267,7 +267,11 @@ function addDecal(g:T.BufferGeometry,hex:string,unlit=true){
  if(!/^#[a-f0-9]{6}$/i.test(hex))throw Error(`Invalid decal color: ${hex}`);
  parts.push({g,c:'white',hex:hex.toLowerCase(),unlit});
 }
-function add(g:T.BufferGeometry,c:Colour,x=0,y=0,z=0,angle=0){g.rotateY(angle);g.translate(x,y,z);parts.push({g,c});}
+function add(g:T.BufferGeometry,c:Colour,x=0,y=0,z=0,angle=0){g.rotateY(angle);g.translate(x,y,z);parts.push({g,c});if(process.env.TRIACCT)triAccount(g);}
+// TRIACCT=1 node --import tsx scripts/landmarks/build-manual-landmarks.ts --only=<id>: prints triangles per builder source line (where a model's budget goes).
+const triLines=new Map<string,number>();
+function triAccount(g:T.BufferGeometry){const t=(g.index?g.index.count:g.getAttribute('position').count)/3;const frames=(new Error().stack??'').split('\n').slice(2);const f=frames.find(l=>/-builders?\.ts/.test(l)&&!/build-manual-landmarks/.test(l))??frames[0]??'?';const m=f.match(/([\w.-]+\.ts:\d+)/);const k=m?m[1]:'?';triLines.set(k,(triLines.get(k)??0)+t);}
+function triReport(id:string){if(!process.env.TRIACCT)return;const rows=[...triLines.entries()].sort((a,b)=>b[1]-a[1]).slice(0,25);console.log(id,'triangles by source line (top 25):');for(const [k,v] of rows)console.log('  ',String(Math.round(v)).padStart(7),k);triLines.clear();}
 function box(x:number,y:number,z:number,w:number,h:number,d:number,c:Colour,angle=0){add(new T.BoxGeometry(w,h,d),c,x,y+h/2,z,angle);}
 function prism(x:number,y:number,z:number,w:number,d:number,h:number,c:Colour){let shape=new T.Shape();shape.moveTo(-w/2,0);shape.lineTo(w/2,0);shape.lineTo(0,h);shape.closePath();add(new T.ExtrudeGeometry(shape,{depth:d,bevelEnabled:false,steps:1}),c,x,y,z-d/2);}
 function gableRoof(x:number,y:number,z:number,w:number,d:number,h:number,c:Colour){
@@ -349,6 +353,7 @@ function snapPartOpenings(id:string){
  console.log(id,'snapOpenings',JSON.stringify({detached,...report,dropped:report.dropped.length,slivers,droppedAt:undefined}));
 }
 async function save(id:string){
+ triReport(id);
  snapPartOpenings(id);
  const spec=MANUAL_LANDMARKS.find(s=>s.id===id)!;
  for(const [name,hex]of Object.entries(spec.materialOverrides??{})){

@@ -183,7 +183,7 @@ const S = 0.04; // every wall solid sinks this far behind its plane
 /** Box on a wall: back face S behind the plane, front `d` proud. */
 export const onWall = (k: Kit, f: Frame, t: number, y: number, w: number, h: number, d: number, c: Col, out = 0) => slab(k, f, t, y, w, h, d + S, c, out - S);
 
-export type Win = {w: number; y0: number; y1: number; head?: 'round' | 'flat' | 'segment'; bars?: number; rowM?: number; surround?: Col; sill?: Col; glass?: Col; bar?: Col; blind?: boolean; fill?: Col};
+export type Win = {w: number; y0: number; y1: number; head?: 'round' | 'flat' | 'segment'; bars?: number; rowM?: number; surround?: Col; sill?: Col; glass?: Col; bar?: Col; blind?: boolean; seg?: number; fill?: Col};
 /**
  * A window on a wall frame at t: glass pane (front 0.06 proud), a surround band 0.22 wide (front 0.14), glazing bars
  * (horizontal front 0.10, vertical 0.14, never coplanar) and a sill. Round heads are semicircles. `blind` draws only the surround and a brick panel (a blind arch).
@@ -191,8 +191,8 @@ export type Win = {w: number; y0: number; y1: number; head?: 'round' | 'flat' | 
 export function win(k: Kit, f: Frame, t: number, o: Win) {
   const h = o.y1 - o.y0, head = o.head ?? 'round', surround = o.surround ?? 'stone', glass = o.glass ?? 'glass', bar = o.bar ?? 'frame';
   if (head === 'round') {
-    archBand(k, f, t, o.y0, o.w + 0.44, h + 0.22, 0.22, 0.14 + S, surround, -S);
-    if (!o.blind) archSlab(k, f, t, o.y0, o.w, h, 0.06 + S, glass, -S);
+    archBand(k, f, t, o.y0, o.w + 0.44, h + 0.22, 0.22, 0.14 + S, surround, -S, o.seg ?? 8);
+    if (!o.blind) archSlab(k, f, t, o.y0, o.w, h, 0.06 + S, glass, -S, o.seg ?? 8);
   } else {
     for (const s of [-1, 1]) onWall(k, f, t + s * (o.w / 2 + 0.11), o.y0, 0.22, h, 0.14, surround);
     onWall(k, f, t, o.y1, o.w + 0.44, 0.22, 0.14, surround);

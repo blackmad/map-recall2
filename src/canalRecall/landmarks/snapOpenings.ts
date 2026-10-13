@@ -136,7 +136,6 @@ export function snapOpenings(soup: MaterialSoup, opts: SnapOptions = {}): SnapRe
   if (dropOverhang || dropBuried) {
     for (const i of auditOpenings(soup, th).issues) {
       if (dropBuried && i.kind === 'buried' && i.buried >= dropBuried.minHidden && Math.max(i.max[0] - i.min[0], i.max[1] - i.min[1], i.max[2] - i.min[2]) <= dropBuried.maxExtent) { report.dropped.push(...i.triangles); report.droppedAt.push(i.centre); continue; }
-      if (process.env.SNAPDBG && i.kind === 'overhang') console.log('overhang', i.centre.map(c => +c.toFixed(1)), 'outside', +i.outside.toFixed(2), 'extent', +Math.max(i.max[0] - i.min[0], i.max[1] - i.min[1], i.max[2] - i.min[2]).toFixed(1), i.materials.join('+'));
       if (!dropOverhang) continue;
       const extent = Math.max(i.max[0] - i.min[0], i.max[1] - i.min[1], i.max[2] - i.min[2]);
       if (i.kind === 'overhang' && i.outside >= dropOverhang.minOutside && extent <= dropOverhang.maxExtent) { report.dropped.push(...i.triangles); report.droppedAt.push(i.centre); }
