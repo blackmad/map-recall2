@@ -3561,7 +3561,7 @@
       "bounds": {
         "min": [
           -19.2172908782959,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -13.932360649108887
         ],
         "max": [
@@ -9241,7 +9241,7 @@
       "bounds": {
         "min": [
           -19.893112182617188,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -17.881860733032227
         ],
         "max": [
@@ -9906,7 +9906,7 @@
       "bounds": {
         "min": [
           -17.276670455932617,
-          -5.2452087118126656e-08,
+          -5.2452087118126656e-8,
           -19.4085750579834
         ],
         "max": [
@@ -19659,7 +19659,7 @@
       "bounds": {
         "min": [
           -14.545639991760254,
-          9.536743306171047e-08,
+          9.536743306171047e-8,
           -16.488889694213867
         ],
         "max": [
@@ -19757,7 +19757,7 @@
       "bounds": {
         "min": [
           -19.340869903564453,
-          -1.9073486612342094e-07,
+          -1.9073486612342094e-7,
           -29.3840274810791
         ],
         "max": [
@@ -19993,7 +19993,7 @@
       "bounds": {
         "min": [
           -22.37699317932129,
-          -1.9073486612342094e-07,
+          -1.9073486612342094e-7,
           -50.65300750732422
         ],
         "max": [
@@ -20209,7 +20209,7 @@
       "bounds": {
         "min": [
           -23.991369247436523,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -15.057171821594238
         ],
         "max": [
@@ -20323,7 +20323,7 @@
       "bounds": {
         "min": [
           -14.917290687561035,
-          -3.814697322468419e-07,
+          -3.814697322468419e-7,
           -12.036028861999512
         ],
         "max": [
@@ -20428,7 +20428,7 @@
       "bounds": {
         "min": [
           -22.194652557373047,
-          -4.7683716530855236e-08,
+          -4.7683716530855236e-8,
           -8.861071586608887
         ],
         "max": [
@@ -24242,6 +24242,331 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T11:15:15.627Z"
+    },
+    {
+      "id": "ordinary-0363100012253728",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012253728",
+      "name": "Politiebureau Oost Zeeburg, Atje Keulen-Deelstrastraat 2, Amsterdam (IJburg/Zeeburgereiland)",
+      "hash": "5d373f9b64a3da532139a1608dc0a4b56dec318f93f13ba1230284f5a80643bd",
+      "sha256": "5d373f9b64a3da532139a1608dc0a4b56dec318f93f13ba1230284f5a80643bd",
+      "bytes": 135816,
+      "triangles": 1746,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -21.454,
+          0.001,
+          -22.908
+        ],
+        "max": [
+          20.35,
+          13.512,
+          22.193
+        ]
+      },
+      "anchor": [
+        4.9715896,
+        52.3690872
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9712757,
+              52.3689619
+            ],
+            [
+              4.9712788,
+              52.3689558
+            ],
+            [
+              4.9712846,
+              52.3689506
+            ],
+            [
+              4.9713923,
+              52.3688934
+            ],
+            [
+              4.9714001,
+              52.3688897
+            ],
+            [
+              4.9714092,
+              52.3688875
+            ],
+            [
+              4.971419,
+              52.3688871
+            ],
+            [
+              4.9714286,
+              52.3688884
+            ],
+            [
+              4.9714372,
+              52.3688914
+            ],
+            [
+              4.971444,
+              52.3688957
+            ],
+            [
+              4.9716885,
+              52.369068
+            ],
+            [
+              4.9718769,
+              52.369201
+            ],
+            [
+              4.9718829,
+              52.3692057
+            ],
+            [
+              4.9718864,
+              52.3692113
+            ],
+            [
+              4.9718872,
+              52.3692173
+            ],
+            [
+              4.9718851,
+              52.3692231
+            ],
+            [
+              4.9718803,
+              52.3692283
+            ],
+            [
+              4.9718733,
+              52.3692325
+            ],
+            [
+              4.9717656,
+              52.3692897
+            ],
+            [
+              4.9717561,
+              52.3692926
+            ],
+            [
+              4.9717456,
+              52.3692936
+            ],
+            [
+              4.9717352,
+              52.3692926
+            ],
+            [
+              4.9717258,
+              52.3692896
+            ],
+            [
+              4.9717183,
+              52.369285
+            ],
+            [
+              4.9712853,
+              52.3689794
+            ],
+            [
+              4.9712792,
+              52.3689743
+            ],
+            [
+              4.9712759,
+              52.3689683
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 13.51,
+      "height": 13.51,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-politie-oost-zeeburg.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012253728"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "politie-oost-zeeburg",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference/0363100012253728/front-alt.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 3st 24b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "2022 police bureau, a 45 m long rounded block (3DBAG panels 14 and 27) with a recessed upper level. Only the south-east long front (panel 14, surfaces 15 and 17) is described, from the 2025-09-25 panorama (front-alt.jpg) and the 2022 panorama thumbnail: light grey-brown brick, three storeys, white string courses, an upper band of tall windows, a middle band of small windows, and POLITIE lettered in blue on the wall (gold flame emblem not modelled). The lettering sits at about 55-70 % of the front in the panorama; the kit centres wall lettering over the entrance, so in the model it is above the glazed left-hand entrance end instead (position deviation, kept so the kit is exercised on a real wall).",
+        "The ground storey of this front is mostly a dark green ivy-clad wall (blank), with glazing only at the south-west curved end and tall glazed slots rising through the lower two storeys near the middle; the slots and the entrance end are not modelled (flat bay grid), so the ground is left blank.",
+        "No striped band, blue lamp, canopy or garage doors are visible on this front; police components are not used.",
+        "The north-west long wall (panel 27), the curved ends and the recessed upper level (panels 9, 13) have no panorama in the cache and are left to otherWalls (blank)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012253728",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T12:55:29.980Z"
+    },
+    {
+      "id": "ordinary-0363100012064423",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012064423",
+      "name": "Politiebureau Zuidoost Gaasperdam, Remmerdenplein 102, Amsterdam (Gaasperdam)",
+      "hash": "c2fdf68cb34e58be93b4835bb37c17b210c3746f463899e9e68b86e5fd96edb7",
+      "sha256": "c2fdf68cb34e58be93b4835bb37c17b210c3746f463899e9e68b86e5fd96edb7",
+      "bytes": 31288,
+      "triangles": 321,
+      "materials": 7,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -11.961,
+          0.001,
+          -20.911
+        ],
+        "max": [
+          11.542,
+          7.574,
+          14.78
+        ]
+      },
+      "anchor": [
+        4.9741204,
+        52.2971764
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9742272,
+              52.2972304
+            ],
+            [
+              4.9741679,
+              52.2973646
+            ],
+            [
+              4.9741447,
+              52.2973611
+            ],
+            [
+              4.9741443,
+              52.2973619
+            ],
+            [
+              4.9739435,
+              52.297338
+            ],
+            [
+              4.9739878,
+              52.297239
+            ],
+            [
+              4.974003,
+              52.2972416
+            ],
+            [
+              4.9740825,
+              52.2970635
+            ],
+            [
+              4.974111,
+              52.2970685
+            ],
+            [
+              4.9741118,
+              52.2970677
+            ],
+            [
+              4.9741128,
+              52.2970681
+            ],
+            [
+              4.9741318,
+              52.2970436
+            ],
+            [
+              4.974173,
+              52.2970555
+            ],
+            [
+              4.9741736,
+              52.2970549
+            ],
+            [
+              4.9742904,
+              52.2970887
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 7.57,
+      "height": 7.57,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-politie-zuidoost-gaasperdam.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012064423"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "politie-zuidoost-gaasperdam",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference/0363100012064423/front.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "curtain-wall+entrance 2st 5b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Not modelled: the red columns and the full-width red roof overhang (no component for either; entrance.canopy is a single-entrance canopy and would not match), the grey spandrel panels (modelled as one curtain wall).",
+        "No striped band, blue lamp, POLITIE lettering or garage doors are visible on this front, so police components and signage are not used.",
+        "Other walls (north, east, south and the small wings) have no panorama in the cache and are left to otherWalls (blank)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012064423",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T12:55:30.511Z"
     }
   ]
 }
