@@ -175,6 +175,17 @@ test('a review ride plans its runners-up and rides the one past the due street',
 test('a due street off every landmark line is ridden as a via', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'desktop', 'route choice; one project is enough');
   test.setTimeout(150000);
+  // Pin Math.random so the surprise origin stops varying between runs (the
+  // planner must hold for any origin; this keeps a failure reproducible).
+  await page.addInitScript(() => {
+    let a = 0x2f6e2b1;
+    Math.random = () => {
+      a = (a + 0x6d2b79f5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  });
   await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
   await page.goto('/canal-drive/');
   await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame))).toBe(true);

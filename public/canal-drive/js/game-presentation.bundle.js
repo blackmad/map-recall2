@@ -34781,6 +34781,370 @@
         theta: 3.75,
         phi: 1.08
       }
+    },
+    {
+      id: "hoofdbureau-elandsgracht",
+      name: "Hoofdbureau van Politie",
+      landmarkId: "n11117002807",
+      modelUrl: "./models/hoofdbureau-elandsgracht.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012169550"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.87779,
+          52.3677401
+        ],
+        headingDegrees: 0,
+        lengthMetres: 163.7,
+        widthMetres: 82.7
+      },
+      surveyed: {
+        anchor: [
+          4.87779,
+          52.3677401
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012169550 footprint centroid and 3DBAG LoD2.2 walls and roofs verbatim; native east/south metres from the anchor (the large-tier frame, origin = BAG footprint centroid)."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#7d5446",
+        stone: "#e6e0d2",
+        frame: "#f0ece2",
+        glass: "#5f7886",
+        dark: "#2b2e33",
+        slate: "#5a5651",
+        blue: "#1f4e9c",
+        white: "#ebe8df",
+        red: "#a77b6a",
+        gold: "#d9a521"
+      },
+      attribution: {
+        title: "Hoofdbureau van Politie, Elandsgracht 117",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169550",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) with block-kit facade systems cut into the wall groups, plus hand-modelled window hoods, entrance canopy and signage plate read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.877829,
+              52.3672126
+            ],
+            [
+              4.8781811,
+              52.3673047
+            ],
+            [
+              4.8781329,
+              52.3673739
+            ],
+            [
+              4.8780511,
+              52.3673508
+            ],
+            [
+              4.8780406,
+              52.3673658
+            ],
+            [
+              4.8780434,
+              52.3673668
+            ],
+            [
+              4.878047,
+              52.3673689
+            ],
+            [
+              4.8780488,
+              52.3673705
+            ],
+            [
+              4.8780502,
+              52.3673723
+            ],
+            [
+              4.8780511,
+              52.3673742
+            ],
+            [
+              4.8780514,
+              52.3673762
+            ],
+            [
+              4.8780512,
+              52.3673781
+            ],
+            [
+              4.8780499,
+              52.367381
+            ],
+            [
+              4.8780482,
+              52.3673828
+            ],
+            [
+              4.8780461,
+              52.3673845
+            ],
+            [
+              4.8780435,
+              52.3673858
+            ],
+            [
+              4.8780406,
+              52.3673869
+            ],
+            [
+              4.8780374,
+              52.3673877
+            ],
+            [
+              4.878034,
+              52.367388
+            ],
+            [
+              4.8780306,
+              52.367388
+            ],
+            [
+              4.8780289,
+              52.3673879
+            ],
+            [
+              4.8780256,
+              52.3673873
+            ],
+            [
+              4.878016,
+              52.3674008
+            ],
+            [
+              4.8780207,
+              52.367402
+            ],
+            [
+              4.8780199,
+              52.3674031
+            ],
+            [
+              4.8780201,
+              52.3674032
+            ],
+            [
+              4.877991,
+              52.3674445
+            ],
+            [
+              4.8777303,
+              52.3678183
+            ],
+            [
+              4.8776542,
+              52.3677984
+            ],
+            [
+              4.8775858,
+              52.3678963
+            ],
+            [
+              4.8778599,
+              52.3679679
+            ],
+            [
+              4.8778892,
+              52.3679258
+            ],
+            [
+              4.8783686,
+              52.3680509
+            ],
+            [
+              4.8782886,
+              52.3681655
+            ],
+            [
+              4.8782591,
+              52.3681578
+            ],
+            [
+              4.8780007,
+              52.3685286
+            ],
+            [
+              4.8779356,
+              52.3686215
+            ],
+            [
+              4.8777484,
+              52.3685722
+            ],
+            [
+              4.8777981,
+              52.3685051
+            ],
+            [
+              4.8771583,
+              52.3683381
+            ],
+            [
+              4.8771579,
+              52.368339
+            ],
+            [
+              4.877151,
+              52.3683373
+            ],
+            [
+              4.8772322,
+              52.3682214
+            ],
+            [
+              4.877878,
+              52.3683902
+            ],
+            [
+              4.8778868,
+              52.3683776
+            ],
+            [
+              4.8778848,
+              52.3683771
+            ],
+            [
+              4.8780624,
+              52.3681224
+            ],
+            [
+              4.8780661,
+              52.3681234
+            ],
+            [
+              4.8780751,
+              52.3681105
+            ],
+            [
+              4.8777033,
+              52.3680136
+            ],
+            [
+              4.8775353,
+              52.3679696
+            ],
+            [
+              4.8775032,
+              52.3680155
+            ],
+            [
+              4.8775505,
+              52.3680278
+            ],
+            [
+              4.877519,
+              52.368073
+            ],
+            [
+              4.8774717,
+              52.3680607
+            ],
+            [
+              4.8774407,
+              52.3681052
+            ],
+            [
+              4.8773851,
+              52.3680906
+            ],
+            [
+              4.8773642,
+              52.3681206
+            ],
+            [
+              4.8773138,
+              52.3681074
+            ],
+            [
+              4.8773347,
+              52.3680775
+            ],
+            [
+              4.8773002,
+              52.3680685
+            ],
+            [
+              4.8773951,
+              52.3679322
+            ],
+            [
+              4.8773889,
+              52.3679306
+            ],
+            [
+              4.8774391,
+              52.3678587
+            ],
+            [
+              4.8774492,
+              52.3678614
+            ],
+            [
+              4.8777174,
+              52.3674772
+            ],
+            [
+              4.8777925,
+              52.3673687
+            ],
+            [
+              4.8777312,
+              52.3673526
+            ],
+            [
+              4.8776267,
+              52.3675028
+            ],
+            [
+              4.8774888,
+              52.3674669
+            ],
+            [
+              4.8774886,
+              52.3674667
+            ],
+            [
+              4.8776446,
+              52.3672437
+            ],
+            [
+              4.8776214,
+              52.367238
+            ],
+            [
+              4.8776671,
+              52.3671706
+            ],
+            [
+              4.8776918,
+              52.3671767
+            ],
+            [
+              4.8777111,
+              52.3671496
+            ],
+            [
+              4.8778478,
+              52.3671854
+            ]
+          ]
+        ]
+      }
     }
   ];
 
@@ -39948,6 +40312,19 @@
       additionalSources: [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012166570",
         "https://api.data.amsterdam.nl/v1/monumenten/monumenten/?betreftBagPand.identificatie=0363100012166570&_format=json"
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "hoofdbureau-elandsgracht",
+      landmarkId: "n11117002807",
+      name: "Hoofdbureau van Politie",
+      description: "The Amsterdam police headquarters at Elandsgracht 117, on the corner of Marnixstraat in the Jordaan, is not one building but a Z-shaped chain of five- and six-storey wings built round courtyards, first raised in 1941 and extended since. Walk round it and the facades change: dark brick with long white window ribbons on the Marnixstraat side, brick with heavy white stone window hoods on the south-east fronts, and a pink stone wing with yellow window frames on the Singelgracht.",
+      funFact: "The complex measures about 164 by 83 metres; the municipal 3D survey counts 237 separate wall surfaces around its courtyards.",
+      sourceUrl: "https://api.data.amsterdam.nl/v1/bag/panden/0363100012169550/?_format=json",
+      additionalSources: [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169550",
+        "https://nl.wikipedia.org/wiki/Elandsgracht"
       ],
       preferDescription: true
     }

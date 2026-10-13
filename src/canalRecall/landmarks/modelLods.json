@@ -60,10 +60,10 @@
   "triangles": 7231
  },
  "heineken-experience-amsterdam": {
-  "sourceHash": "a3682e71bdb96b27",
+  "sourceHash": "93457013a1c6da55",
   "buildVersion": 2,
-  "bytes": 50104,
-  "triangles": 2654
+  "bytes": 53268,
+  "triangles": 2766
  },
  "montelbaanstoren-amsterdam": {
   "sourceHash": "cd253f9546f3b5fb",
@@ -144,10 +144,10 @@
   "triangles": 4292
  },
  "felix-meritis": {
-  "sourceHash": "dcb8aed0db97ae12",
+  "sourceHash": "7a4836fe2ff5c3cf",
   "buildVersion": 2,
-  "bytes": 16104,
-  "triangles": 650
+  "bytes": 16548,
+  "triangles": 662
  },
  "kleine-komedie": {
   "sourceHash": "4b55df2562dcf809",
@@ -186,9 +186,9 @@
   "triangles": 1235
  },
  "haarlemmerpoort": {
-  "sourceHash": "895a02057078f6ae",
+  "sourceHash": "a752d934308ad681",
   "buildVersion": 2,
-  "bytes": 16140,
+  "bytes": 16144,
   "triangles": 564
  },
  "scheepvaarthuis": {
@@ -276,10 +276,10 @@
   "triangles": 5398
  },
  "amsterdam-museum": {
-  "sourceHash": "596fb2b7f0c9ed4c",
+  "sourceHash": "05c96fc51d0946ad",
   "buildVersion": 2,
-  "bytes": 87964,
-  "triangles": 5224
+  "bytes": 88332,
+  "triangles": 5225
  },
  "national-holocaust-museum": {
   "sourceHash": "206a3b7910093d22",
@@ -402,9 +402,9 @@
   "triangles": 1519
  },
  "cinecenter": {
-  "sourceHash": "5a100909943d2d2d",
+  "sourceHash": "e2e24c0dbc8affc5",
   "buildVersion": 2,
-  "bytes": 39792,
+  "bytes": 40524,
   "triangles": 1631
  },
  "studiok": {
@@ -486,10 +486,10 @@
   "triangles": 1980
  },
  "orgelpark": {
-  "sourceHash": "c606c20d2d637ebd",
+  "sourceHash": "a4661cf39a58c0b3",
   "buildVersion": 2,
-  "bytes": 28416,
-  "triangles": 1244
+  "bytes": 29392,
+  "triangles": 1243
  },
  "huis-aan-drie-grachten": {
   "sourceHash": "ef516639b168b53b",
@@ -504,10 +504,10 @@
   "triangles": 1216
  },
  "rode-hoed": {
-  "sourceHash": "0f01b478009b89df",
+  "sourceHash": "95fd84e044a6f3cb",
   "buildVersion": 2,
-  "bytes": 31560,
-  "triangles": 1486
+  "bytes": 31960,
+  "triangles": 1485
  },
  "theater-amsterdam": {
   "sourceHash": "ee5101d708768c42",
@@ -606,9 +606,9 @@
   "triangles": 906
  },
  "oude-lutherse-kerk": {
-  "sourceHash": "ba8b2d615e38f26b",
+  "sourceHash": "a5c34f691a47ce7b",
   "buildVersion": 2,
-  "bytes": 45480,
+  "bytes": 45784,
   "triangles": 2162
  },
  "kattenkabinet": {
@@ -732,10 +732,10 @@
   "triangles": 657
  },
  "dageraad": {
-  "sourceHash": "42d83ce27bf06493",
+  "sourceHash": "3f80603b4bb4280e",
   "buildVersion": 2,
-  "bytes": 19192,
-  "triangles": 767
+  "bytes": 20008,
+  "triangles": 788
  },
  "canals-museum": {
   "sourceHash": "a3e41a96d5fbca7f",
@@ -924,7 +924,7 @@
   "triangles": 3306
  },
  "centrale-markthal": {
-  "sourceHash": "6f4927d135dfb1ab",
+  "sourceHash": "601426edc9fd13bc",
   "buildVersion": 2,
   "bytes": 67336,
   "triangles": 4055
@@ -978,10 +978,10 @@
   "triangles": 4290
  },
  "haparandaweg-8-338": {
-  "sourceHash": "824920011fa98d29",
+  "sourceHash": "da9f5fecd5d2cec8",
   "buildVersion": 2,
-  "bytes": 83588,
-  "triangles": 5402
+  "bytes": 91288,
+  "triangles": 5829
  },
  "electric-ladyland": {
   "sourceHash": "05312522c406fec6",
@@ -1176,9 +1176,9 @@
   "triangles": 1912
  },
  "maarten-lutherkerk": {
-  "sourceHash": "7a5661827df4e183",
+  "sourceHash": "6bb66c5c5cce6b14",
   "buildVersion": 2,
-  "bytes": 28348,
+  "bytes": 28804,
   "triangles": 938
  },
  "oudemanhuispoort": {
@@ -1284,9 +1284,9 @@
   "triangles": 4223
  },
  "ij-toren": {
-  "sourceHash": "550d685262ff3fff",
+  "sourceHash": "728bf0de828caf5e",
   "buildVersion": 2,
-  "bytes": 55456,
+  "bytes": 55916,
   "triangles": 2682
  },
  "sea-palace": {
@@ -1332,9 +1332,9 @@
   "triangles": 4228
  },
  "ronde-lutherse-kerk": {
-  "sourceHash": "fb13e6a62773960d",
+  "sourceHash": "2b779030928e6b45",
   "buildVersion": 2,
-  "bytes": 52972,
+  "bytes": 53536,
   "triangles": 2164
  },
  "american-hotel": {
@@ -1344,10 +1344,10 @@
   "triangles": 6503
  },
  "hotel-de-l-europe": {
-  "sourceHash": "6b8c2170785da848",
+  "sourceHash": "acdc894d4fd84547",
   "buildVersion": 2,
-  "bytes": 101840,
-  "triangles": 4920
+  "bytes": 174412,
+  "triangles": 9093
  },
  "trippenhuis": {
   "sourceHash": "a3cad0e513c251a5",
@@ -1392,9 +1392,9 @@
   "triangles": 3088
  },
  "pakhuis-de-zwijger": {
-  "sourceHash": "c47b70cf06cc4b34",
+  "sourceHash": "3122ba9d61070550",
   "buildVersion": 2,
-  "bytes": 41780,
+  "bytes": 42184,
   "triangles": 2194
  },
  "victoria-hotel": {
@@ -1428,21 +1428,21 @@
   "triangles": 808
  },
  "voc-kade-600": {
-  "sourceHash": "23b757af2a281f1d",
+  "sourceHash": "d7c538aafed11c25",
   "buildVersion": 2,
-  "bytes": 92720,
+  "bytes": 93024,
   "triangles": 4885
  },
  "motorkade-1": {
-  "sourceHash": "30128676467fbadf",
+  "sourceHash": "213f6500739ce2f7",
   "buildVersion": 2,
-  "bytes": 91056,
+  "bytes": 91260,
   "triangles": 4431
  },
  "de-bazel": {
-  "sourceHash": "e3a97cb04ce0442c",
+  "sourceHash": "8ce75ddeb0bc34f9",
   "buildVersion": 2,
-  "bytes": 108120,
+  "bytes": 108528,
   "triangles": 5537
  },
  "overtoom-197": {
@@ -1452,21 +1452,21 @@
   "triangles": 2199
  },
  "willem-de-zwijgerlaan-350": {
-  "sourceHash": "7116e7361e525bb9",
+  "sourceHash": "b11c74bb4ead86f8",
   "buildVersion": 2,
-  "bytes": 50620,
+  "bytes": 50980,
   "triangles": 2251
  },
  "grasweg-116": {
-  "sourceHash": "5b5303419e95eefa",
+  "sourceHash": "e12cd75c5c4da676",
   "buildVersion": 2,
-  "bytes": 131652,
+  "bytes": 132012,
   "triangles": 6205
  },
  "oostenburgermiddenstraat-228": {
-  "sourceHash": "524d87730f1f030c",
+  "sourceHash": "b44bb44386406812",
   "buildVersion": 2,
-  "bytes": 76556,
+  "bytes": 77116,
   "triangles": 3408
  },
  "ceramiquelaan-437": {
@@ -1482,21 +1482,21 @@
   "triangles": 2656
  },
  "bogortuin-101": {
-  "sourceHash": "fb8d21c3d5082054",
+  "sourceHash": "82c5783376a6297d",
   "buildVersion": 2,
-  "bytes": 78792,
+  "bytes": 79096,
   "triangles": 4010
  },
  "blankenstraat-15": {
-  "sourceHash": "cf4be22be39b1679",
+  "sourceHash": "3479cb03fc4540d8",
   "buildVersion": 2,
-  "bytes": 65444,
+  "bytes": 65748,
   "triangles": 3196
  },
  "hilton-amsterdam": {
-  "sourceHash": "5c1e6fdba923f39f",
+  "sourceHash": "60ad2f4cd2d91089",
   "buildVersion": 2,
-  "bytes": 85068,
+  "bytes": 85424,
   "triangles": 4229
  },
  "booking-hq": {
@@ -1558,5 +1558,47 @@
   "buildVersion": 2,
   "bytes": 45492,
   "triangles": 1762
+ },
+ "oosterkerk": {
+  "sourceHash": "75c95d3a8d162feb",
+  "buildVersion": 2,
+  "bytes": 56252,
+  "triangles": 2567
+ },
+ "mozes-en-aaronkerk": {
+  "sourceHash": "93dd16804fae9219",
+  "buildVersion": 2,
+  "bytes": 41464,
+  "triangles": 1384
+ },
+ "de-duif": {
+  "sourceHash": "6840e55193fbcf90",
+  "buildVersion": 2,
+  "bytes": 36760,
+  "triangles": 1248
+ },
+ "obrechtkerk": {
+  "sourceHash": "750277800f2895c4",
+  "buildVersion": 2,
+  "bytes": 130264,
+  "triangles": 6519
+ },
+ "opstandingskerk": {
+  "sourceHash": "6a8a533200b8ad96",
+  "buildVersion": 2,
+  "bytes": 28756,
+  "triangles": 1107
+ },
+ "da-costakade-13": {
+  "sourceHash": "d1522f9fab5d9f9d",
+  "buildVersion": 2,
+  "bytes": 43812,
+  "triangles": 1747
+ },
+ "hoofdbureau-elandsgracht": {
+  "sourceHash": "2be8617b69f2c08d",
+  "buildVersion": 2,
+  "bytes": 142824,
+  "triangles": 8709
  }
 }

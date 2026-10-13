@@ -21,7 +21,25 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 user approved on 2026-10-13. Short form: open NL/Amsterdam data only; buildings
 move from one GLB per building to **recipe tiles** (per-pand recipe data
 compiled into per-z16-tile meshes + instance tables; bespoke landmark GLB
-builders stay, 300+ today, no cap);
+builders stay, 300+ today, no cap). Steps 1 and 2 landed 2026-10-13 behind
+flags: `?bagTiles=1` (BAG tiles with 3DBAG facts, facts sidecar,
+`covers.json`; correction: the shipped tiles were already BAG-keyed for 335k
+of 347k features, what was missing was facts, OSM aliases and the join) and
+`?cityLook=1` (one texture array, `layer/tint/accent/hidden` attributes, two
+shader variants, slot inference for the 310 legacy GLBs at load). Before the
+flips: review the 15 "hidden bug" pands that covers will newly hide
+(`npm run check:covers --strict` lists them: the-movies, delamar ×2,
+kleine-komedie, he-hua-temple, oude-kerk, hortus-greenhouses,
+walloon-church, rijksmuseum, westerkerk ×5, sexmuseum-venustempel), prune
+the 114 stale suppress ids, fix the 5 building-type instance pands missing
+from the tiles; gallery-size review of all landmarks under `?cityLook=1`
+(ambiguous inferred slots: `white`→stucco 241 models, `dark`→frame 272,
+`ochre`→brick 38, `red`→brick 104; slate roofs come out darker); the
+city-look brick luma sits above LOOK.md's target (117 vs 95–110 sun side)
+because slot tints pass through `cityTint`; one brick variant only; ~40
+draft export scripts do not tag slots and will fail the 100% gate; under
+`?cityLook=1` the landmark highlight is a flat unshaded yellow (the variant
+swap drops the shading the default highlight keeps — demo shots 2026-10-13);
 own-ground becomes the default after per-polder water levels, BGT width per
 way, AHN profiles for the 891 unmeasured bridges and a desktop measurement
 (user 2026-10-13: desktop is ~10x as important; iPhone numbers later); the gameplay loop no longer freezes the rider and spaced
@@ -39,11 +57,22 @@ default flip waits on a desktop ride-perf decision: +0.2 ms/frame three.js,
 → ground → recipe tiles. Open from the look lane: 3DBAG detailed buildings
 never stream (3d-tiles-renderer root tileset only loads on the first
 `update()`, the old layer never calls it before ready; in the shared frame it
-loads but traverses zero tiles — LOD camera in the shared world); the 40
-`storybook-visual` baselines are stale on main (Feedback button and
-attribution text, 37 fail on `640675c2` too); `check-three-buildings` fails on
-"canal houses have flat lintels" on main; `?buildingTypes=1` under the shared
-frame skips that runtime's merged recipe shader. Integrator merges on its own judgement (user).
+loads but traverses zero tiles — LOD camera in the shared world);
+`?buildingTypes=1` under the shared frame skips that runtime's merged recipe
+shader. Checks lane 2026-10-13: the 37 `storybook-visual` baselines were
+re-recorded (diffs were compact cards with MORE/close, the redesigned
+portrait settings panel, the Feedback button and the attribution line — not
+only the last two), `check-three-buildings` passes again (the stale "flat
+lintels" rule now allows segmental heads, which `635fc6a1` added on purpose;
+`kit-locations.json` republished with 246 ids). To look at: the
+`portrait-finish-card` baseline (414×896) shows a translucent ghost of a
+second card behind the finish card — stable across runs, likely a
+presentation bug, recorded as is. `check-manual-landmarks` still fails on its
+500 KB budget: royal-palace 637 KB, mountain-network 649 KB (47k tris),
+american-hotel 504 KB, hotel-de-l-europe 725 KB (52k tris); and eight
+Haparandaweg block-face entries carry no `bytes` (they are not built by
+`build-manual-landmarks`). Decide whether the budget is right or shrink those
+models (cleanup batch 2 has american-hotel). Integrator merges on its own judgement (user).
 Open after the gameplay merge: `RecallStore.expose()` so a passed name is
 scheduled instead of re-asked; a settings control for `maxAsksPerMinute`
 (field on the game today); fold `ridingPromptStyles.ts` into `index.html`;
@@ -299,8 +328,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Elevation skeletons with photos exist for 25 landmarks
   (`scripts/landmarks/*-elevations.json`, photos in `artifacts/landmark-lanes/`);
   counts are not filled: Haiku blind counts were too noisy — use a stronger
-  counter or rectified `pand-reference` crops. `check-manual-landmarks.ts`
-  fails on main: eight Haparandaweg manifest entries have no `bytes`.
+  counter or rectified `pand-reference` crops. Correction 2026-10-13: all 25
+  are rhythm specs for models that already exist on main (24 hand
+  builders/specs plus the bilder-087959 recipe), so they are not large-tier
+  inputs; the large-tier customer list is `dominant-building-backlog.json`
+  (1,828 mid-sized pands), filtered to unmodelled, central, two-front
+  candidates (lane running 2026-10-13). Heineken Experience fails
+  window-rhythm (2 predicted missing) and is a batch-2 candidate. `check-manual-landmarks.ts`
+  status is in the Direction block above (2026-10-13).
   Lane runs of `archive-model-sources.py` into the private repo are sometimes
   denied by the auto-mode classifier; refs for vrijburg, van-gendt-hallen and
   the 25 elevation photos are not archived yet.
@@ -320,8 +355,6 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   settle because the pitched chase view's bounds reach the horizon — cap
   `_nearby` by distance or make it pitch-aware. `setActiveLandmark(null)` fires
   ~every 100 ms while riding, each with a GeoJSON `setData` — find the caller.
-  `scripts/check-building-look-transition.ts` fails on main
-  (`chunks.get(first.key).mesh` undefined) and is not in check:canal.
 - **Shared material textures (user, 2026-10-09)**: models are flat-shaded
   colour only, so brick and roofs read as plastic. Add one shared tiling set
   (brick bonds, roof tile, slate, stone, timber, glass) at 256–512 px with
@@ -370,8 +403,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   photos + panorama crops; render the splat only within ~50 m and a baked
   8–16-view impostor beyond. Start from `docs/landmark-splat-reference-pilot.md`.
 - **Docs compaction**: ~135 markdown files across root, `docs/` and here.
-- `scripts/check-cinema-facade-surfaces.ts` fails on main (32 front pane
-  triangles, expects 24); not in `check:canal`.
+- `scripts/check-cinema-facade-surfaces.ts`: the Kriterion half is fixed
+  (count restricted to the frontage, z ≥ 10; the extra 8 panes were the real
+  rear east bay). The Rialto half fails on a genuine model defect: at
+  y = 14.04 the slate roof and the cream wall share the plane x = 12.30
+  (`rialto.glb` unchanged since 2026-10-04) — a landmark lane fixes the
+  builder, then the check can join `check:canal`.
 - Street-appearance fingerprints (`public/data/street-appearance/*.json`)
   hash an older `signature-landmarks.json`; re-bake rather than hand-edit.
 - **Worktree hygiene (recurring)**: run `scripts/worktrees/triage.sh` before
@@ -433,8 +470,9 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   no longer converges, but cross-device memory would still help.
 - **Failing e2e on main**: `review-ride.spec.ts` "a due street off every
   landmark line is ridden as a via" (Avenhornstraat) fails on main before the
-  2026-10-10 home-picker change: surprise ride Artis Bibliotheek → Kazerne
-  Zebra with `dueOnPath: []`, no via. Investigate the via/stop planner.
+  2026-10-10 home-picker change; on 2026-10-13 the seeded origin was Fo Guang
+  Shan He Hua Tempel → Kazerne Zebra, again `dueOnPath: []`, detour 0, no via,
+  so the origin varies between runs. Investigate the via/stop planner.
 - **Renderer: give three.js the frame** (`docs/research/own-renderer-spike-20261009.md`,
   `renderer-spike.html`): spike shows lighting is the visible gap — shadows,
   sky, fog, tone mapping, sunken water — at ~2.6 ms CPU per throttled phone
@@ -742,6 +780,18 @@ on the map. Taibah and Augustinuskerk still need a 3DBAG check. Dominicuskerk
 and Vredeskerk now include their naves and actual tower silhouettes.
 
 
+**Police headquarters, Elandsgracht 117: landed 2026-10-13 (HISTORY).** The
+brief was wrong: it is a Z-shaped 1941+ complex round courtyards (164 × 83 m,
+237 wall surfaces), not a tower-and-portal block. Hybrid builder: 3DBAG
+massing, 15 wall groups through the large-tier facade systems, hand-modelled
+stone hoods, canopy and POLITIE plate; 26.6k tris, all gates and `audit:glb`
+PASS, slots 100%. Open: about a quarter of the walls (courtyards, groups 1,
+3–5, 9, 12–14) are inferred; the NW ribbons became a 12-window bay grid
+because ribbon glazing bars z-fight after quantization; no curved glazed
+storey, chequer bands, sculpture group or gated vehicle entrance; roof colour
+unknown; Beeldbank returned 403 to automated fetch, so no archive image or
+architect is cited (lead: "dienst PW (E. Messer), 1941", unverified).
+
 **Police headquarters, Elandsgracht 117 (user, 2026-10-13): bespoke builder.**
 The 1930s brick Hoofdbureau with its corner tower and carved stone entrance is
 a landmark destination, so it gets a hand builder (massing from 3DBAG LoD2.2;
@@ -800,7 +850,11 @@ done, 34 m E wall has no panorama), Lijnbaansgracht, IJ-tunnel, Meer en Vaart,
 West Overtoomsesluis, Flierbosdreef, Boven-IJ, IJburg, Nieuwezijds
 Voorburgwal, Postjesweg; Houtmankade needs per-wing grouping (256 wall
 surfaces); Zuid-De Pijp has no panorama; Johan Huizingalaan 757 may not be a
-public bureau. Hoofdbureau Elandsgracht stays a bespoke builder. Known gaps:
+public bureau. Hoofdbureau Elandsgracht stays a bespoke builder (lane running 2026-10-13).
+Note: `install-large.ts --install` writes the catalogue, but the game reads
+the ordinary catalogue from `signature-placement.bundle.js`, so run
+`npm run build:canal-signature-landmarks` after every install or the model
+is invisible in the game (caught by the demo shots 2026-10-13). Known gaps:
 curved fronts, arched portals, colonnades; 3DBAG surface indices shift if the
 extract is rebuilt; `compare:facades` needs rhythm specs for these.
 

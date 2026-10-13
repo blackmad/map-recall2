@@ -1119,6 +1119,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original manual facade details and regional massing. AHN5 2023 roof-plane samples calibrate rebuilt roof patch surfaces; no imported asset mesh. Current single BAG parent encloses three surviving historic fronts and low museum wings; surrounding 1990s residences/retail stay outside exact suppression. BAG nominal 1886 does not date all present parts: RCE identifies 1911–13/1925/1933–34."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -47.375,
@@ -1147,14 +1148,14 @@
         "depthMetres": 45.31700897216797,
         "depthCoverage": 1.0136715152560851
       },
-      "triangles": 15537,
-      "bytes": 184764,
+      "triangles": 16277,
+      "bytes": 195148,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "a3682e71bdb96b27",
+        "sourceHash": "93457013a1c6da55",
         "buildVersion": 2,
-        "bytes": 50104,
-        "triangles": 2654
+        "bytes": 53268,
+        "triangles": 2766
       }
     },
     "montelbaanstoren-amsterdam": {
@@ -2435,7 +2436,10 @@
       "landmarkId": "extract_landmarks_2044416411",
       "modelUrl": "./models/felix-meritis.glb",
       "suppressOsmIds": [
-        "w30044304"
+        "w30044304",
+        "NL.IMBAG.Pand.0363100012174401",
+        "NL.IMBAG.Pand.0363100012174322",
+        "NL.IMBAG.Pand.0363100012168556"
       ],
       "footprint": {
         "centre": [
@@ -2456,6 +2460,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -43.009124755859375,
@@ -2484,14 +2489,14 @@
         "depthMetres": 23.9237117767334,
         "depthCoverage": 1.0436229096037688
       },
-      "triangles": 3460,
-      "bytes": 43712,
+      "triangles": 3472,
+      "bytes": 43440,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "dcb8aed0db97ae12",
+        "sourceHash": "7a4836fe2ff5c3cf",
         "buildVersion": 2,
-        "bytes": 16104,
-        "triangles": 650
+        "bytes": 16548,
+        "triangles": 662
       }
     },
     "kleine-komedie": {
@@ -3093,9 +3098,9 @@
       "bytes": 57008,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "895a02057078f6ae",
+        "sourceHash": "a752d934308ad681",
         "buildVersion": 2,
-        "bytes": 16140,
+        "bytes": 16144,
         "triangles": 564
       }
     },
@@ -4400,9 +4405,10 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -36.064090728759766,
+          -35.8714485168457,
           -3.814697322468419e-7,
           -60.470542907714844
         ],
@@ -4425,17 +4431,17 @@
       "extent": {
         "widthMetres": 121.00810241699219,
         "heightMetres": 17.150000000000006,
-        "depthMetres": 71.9101676940918,
-        "depthCoverage": 1.0026452462363464
+        "depthMetres": 71.71752548217773,
+        "depthCoverage": 0.9999592311122855
       },
       "triangles": 29329,
-      "bytes": 433620,
+      "bytes": 433816,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "596fb2b7f0c9ed4c",
+        "sourceHash": "05c96fc51d0946ad",
         "buildVersion": 2,
-        "bytes": 87964,
-        "triangles": 5224
+        "bytes": 88332,
+        "triangles": 5225
       }
     },
     "national-holocaust-museum": {
@@ -6389,6 +6395,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -13.420000076293945,
@@ -6418,12 +6425,12 @@
         "depthCoverage": 1.0372643267328723
       },
       "triangles": 8549,
-      "bytes": 116836,
+      "bytes": 120460,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "5a100909943d2d2d",
+        "sourceHash": "e2e24c0dbc8affc5",
         "buildVersion": 2,
-        "bytes": 39792,
+        "bytes": 40524,
         "triangles": 1631
       }
     },
@@ -7509,6 +7516,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -10.342130661010742,
@@ -7516,7 +7524,7 @@
           -18.772754669189453
         ],
         "max": [
-          15.864999771118164,
+          15.83517074584961,
           36,
           17.524999618530273
         ]
@@ -7534,17 +7542,17 @@
       "extent": {
         "widthMetres": 36.29775428771973,
         "heightMetres": 36.000000190734866,
-        "depthMetres": 26.207130432128906,
-        "depthCoverage": 1.0039375088766307
+        "depthMetres": 26.17730140686035,
+        "depthCoverage": 1.002794824545056
       },
       "triangles": 6149,
-      "bytes": 77892,
+      "bytes": 79916,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "c606c20d2d637ebd",
+        "sourceHash": "a4661cf39a58c0b3",
         "buildVersion": 2,
-        "bytes": 28416,
-        "triangles": 1244
+        "bytes": 29392,
+        "triangles": 1243
       }
     },
     "houten-huys": {
@@ -7870,6 +7878,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original flat-palette low-poly geometry; no imported meshes or texture images. Exact mapped scope with neighboring houses, courtyard recesses and park grounds retained."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -19.5936222076416,
@@ -7899,13 +7908,13 @@
         "depthCoverage": 1.013291901717075
       },
       "triangles": 4773,
-      "bytes": 57204,
+      "bytes": 57492,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "0f01b478009b89df",
+        "sourceHash": "95fd84e044a6f3cb",
         "buildVersion": 2,
-        "bytes": 31560,
-        "triangles": 1486
+        "bytes": 31960,
+        "triangles": 1485
       }
     },
     "theater-amsterdam": {
@@ -9370,7 +9379,7 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -18.2007999420166,
+          -18.234539031982422,
           -3.814697322468419e-7,
           -26.324113845825195
         ],
@@ -9393,16 +9402,16 @@
       "extent": {
         "widthMetres": 57.282352447509766,
         "heightMetres": 22.45999946594239,
-        "depthMetres": 40.98081588745117,
-        "depthCoverage": 1.0027890118547893
+        "depthMetres": 41.01455497741699,
+        "depthCoverage": 1.0036145978748583
       },
       "triangles": 13430,
-      "bytes": 162248,
+      "bytes": 162612,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "ba8b2d615e38f26b",
+        "sourceHash": "a5c34f691a47ce7b",
         "buildVersion": 2,
-        "bytes": 45480,
+        "bytes": 45784,
         "triangles": 2162
       }
     },
@@ -11000,14 +11009,15 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free low-poly corner parent only, with rounded stepped brickwork, scalloped narrow tower crown, horizontal white window rods and green shop entrances. Native survey17.56m main roof and21.34m narrow tower. Museum-name lettering omitted. Operator/heritage photographs guide geometry; no imported mesh or photo pixels. Adjoining estate parents and court remain."
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
           -6.970600128173828,
           0,
-          -6.641991138458252
+          -6.641499996185303
         ],
         "max": [
-          8.024500846862793,
+          7.958399772644043,
           21.899999618530273,
           8.209500312805176
         ]
@@ -11023,19 +11033,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 14.995100975036621,
+        "widthMetres": 14.928999900817871,
         "heightMetres": 21.899999618530273,
-        "depthMetres": 14.851491451263428,
-        "depthCoverage": 1.0000330921327472
+        "depthMetres": 14.851000308990479,
+        "depthCoverage": 1.0000000208060387
       },
-      "triangles": 4725,
-      "bytes": 64196,
+      "triangles": 4865,
+      "bytes": 66724,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "42d83ce27bf06493",
+        "sourceHash": "3f80603b4bb4280e",
         "buildVersion": 2,
-        "bytes": 19192,
-        "triangles": 767
+        "bytes": 20008,
+        "triangles": 788
       }
     },
     "canals-museum": {
@@ -13730,7 +13740,7 @@
       "bytes": 300692,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "6f4927d135dfb1ab",
+        "sourceHash": "601426edc9fd13bc",
         "buildVersion": 2,
         "bytes": 67336,
         "triangles": 4055
@@ -14636,10 +14646,10 @@
       "bytes": 316556,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "824920011fa98d29",
+        "sourceHash": "da9f5fecd5d2cec8",
         "buildVersion": 2,
-        "bytes": 83588,
-        "triangles": 5402
+        "bytes": 91288,
+        "triangles": 5829
       },
       "category": "ordinary"
     },
@@ -20154,12 +20164,12 @@
         "depthCoverage": 0.9943512344360351
       },
       "triangles": 4840,
-      "bytes": 79228,
+      "bytes": 79692,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "7a5661827df4e183",
+        "sourceHash": "6bb66c5c5cce6b14",
         "buildVersion": 2,
-        "bytes": 28348,
+        "bytes": 28804,
         "triangles": 938
       }
     },
@@ -27169,7 +27179,7 @@
         "min": [
           -105.21570587158203,
           -9.536743306171047e-8,
-          -59.957000732421875
+          -59.98585510253906
         ],
         "max": [
           176.552001953125,
@@ -27190,16 +27200,16 @@
       "extent": {
         "widthMetres": 281.76770782470703,
         "heightMetres": 95.09999856948852,
-        "depthMetres": 92.90999984741211,
-        "depthCoverage": 0.8523853197010285
+        "depthMetres": 92.9388542175293,
+        "depthCoverage": 0.8526500386929293
       },
-      "triangles": 16729,
-      "bytes": 229588,
+      "triangles": 16645,
+      "bytes": 229624,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "550d685262ff3fff",
+        "sourceHash": "728bf0de828caf5e",
         "buildVersion": 2,
-        "bytes": 55456,
+        "bytes": 55916,
         "triangles": 2682
       }
     },
@@ -29154,7 +29164,11 @@
       "landmarkId": "requested-ronde-lutherse-kerk",
       "modelUrl": "./models/ronde-lutherse-kerk.glb",
       "suppressOsmIds": [
-        "NL.IMBAG.Pand.0363100012179368"
+        "NL.IMBAG.Pand.0363100012179368",
+        "w749586949",
+        "w749586950",
+        "w749586951",
+        "w749586952"
       ],
       "spatialSuppression": false,
       "footprint": {
@@ -30068,12 +30082,12 @@
         "depthCoverage": 0.8519148725144406
       },
       "triangles": 13242,
-      "bytes": 175336,
+      "bytes": 176940,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "fb13e6a62773960d",
+        "sourceHash": "2b779030928e6b45",
         "buildVersion": 2,
-        "bytes": 52972,
+        "bytes": 53536,
         "triangles": 2164
       }
     },
@@ -31057,10 +31071,10 @@
       "bytes": 724856,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "6b8c2170785da848",
+        "sourceHash": "acdc894d4fd84547",
         "buildVersion": 2,
-        "bytes": 101840,
-        "triangles": 4920
+        "bytes": 174412,
+        "triangles": 9093
       }
     },
     "trippenhuis": {
@@ -33788,7 +33802,10 @@
       "landmarkId": "n6933045932",
       "modelUrl": "./models/pakhuis-de-zwijger.glb",
       "suppressOsmIds": [
-        "NL.IMBAG.Pand.0363100012088034"
+        "NL.IMBAG.Pand.0363100012088034",
+        "w1533880135",
+        "w1533880136",
+        "w1533880137"
       ],
       "spatialSuppression": false,
       "footprint": {
@@ -33835,11 +33852,11 @@
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "materialOverrides": {
-        "brick": "#4b483c",
-        "stone": "#6e6c62",
-        "concrete": "#5e5c53",
-        "greyBrick": "#3b392f",
-        "red": "#8f5535",
+        "brick": "#b69468",
+        "stone": "#c9c5ba",
+        "concrete": "#b7b3a8",
+        "greyBrick": "#9a8160",
+        "red": "#c4673a",
         "glass": "#3d4a54",
         "bronze": "#2c2e30"
       },
@@ -33935,13 +33952,13 @@
         "depthMetres": 37.6841926574707,
         "depthCoverage": 1.3084789117177327
       },
-      "triangles": 4517,
-      "bytes": 72512,
+      "triangles": 4601,
+      "bytes": 74112,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "c47b70cf06cc4b34",
+        "sourceHash": "3122ba9d61070550",
         "buildVersion": 2,
-        "bytes": 41780,
+        "bytes": 42184,
         "triangles": 2194
       }
     },
@@ -35444,8 +35461,8 @@
       "bounds": {
         "min": [
           -29.656076431274414,
-          -7.629394644936838e-7,
-          -24.105697631835938
+          0,
+          -24.119794845581055
         ],
         "max": [
           29.35300064086914,
@@ -35464,18 +35481,18 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 59.447696685791016,
-        "heightMetres": 53.4420021057129,
+        "widthMetres": 59.46179389953613,
+        "heightMetres": 53.44200134277344,
         "depthMetres": 59.009077072143555,
         "depthCoverage": 1.5064865221379513
       },
       "triangles": 23960,
-      "bytes": 362156,
+      "bytes": 362696,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "23b757af2a281f1d",
+        "sourceHash": "d7c538aafed11c25",
         "buildVersion": 2,
-        "bytes": 92720,
+        "bytes": 93024,
         "triangles": 4885
       }
     },
@@ -35625,12 +35642,12 @@
         "min": [
           -17.60099983215332,
           -0.0010000000474974513,
-          -22.670949935913086
+          -22.642404556274414
         ],
         "max": [
-          38.506168365478516,
+          38.55649948120117,
           48.483001708984375,
-          31.010995864868164
+          31.002153396606445
         ]
       },
       "placement": {
@@ -35644,18 +35661,18 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 56.107168197631836,
+        "widthMetres": 56.15749931335449,
         "heightMetres": 48.48400170903187,
-        "depthMetres": 53.68194580078125,
-        "depthCoverage": 1.2150734676500963
+        "depthMetres": 53.64455795288086,
+        "depthCoverage": 1.214227205814415
       },
       "triangles": 22696,
-      "bytes": 338096,
+      "bytes": 338992,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "30128676467fbadf",
+        "sourceHash": "213f6500739ce2f7",
         "buildVersion": 2,
-        "bytes": 91056,
+        "bytes": 91260,
         "triangles": 4431
       }
     },
@@ -35851,12 +35868,12 @@
         "depthCoverage": 1.5672094725606736
       },
       "triangles": 34679,
-      "bytes": 496580,
+      "bytes": 497280,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "e3a97cb04ce0442c",
+        "sourceHash": "8ce75ddeb0bc34f9",
         "buildVersion": 2,
-        "bytes": 108120,
+        "bytes": 108528,
         "triangles": 5537
       }
     },
@@ -36176,13 +36193,13 @@
         "depthMetres": 74.37885665893555,
         "depthCoverage": 1.6528634813096788
       },
-      "triangles": 13581,
-      "bytes": 208788,
+      "triangles": 13613,
+      "bytes": 209416,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "7116e7361e525bb9",
+        "sourceHash": "b11c74bb4ead86f8",
         "buildVersion": 2,
-        "bytes": 50620,
+        "bytes": 50980,
         "triangles": 2251
       }
     },
@@ -36316,12 +36333,12 @@
         "min": [
           -12.871000289916992,
           0,
-          -25.53338623046875
+          -25.508041381835938
         ],
         "max": [
           39.375,
           49.97200012207031,
-          27.790353775024414
+          27.766874313354492
         ]
       },
       "placement": {
@@ -36335,18 +36352,18 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 53.323740005493164,
+        "widthMetres": 53.27491569519043,
         "heightMetres": 49.97200012207031,
         "depthMetres": 52.24600028991699,
         "depthCoverage": 1.567066595378434
       },
       "triangles": 21307,
-      "bytes": 333400,
+      "bytes": 333564,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "5b5303419e95eefa",
+        "sourceHash": "e12cd75c5c4da676",
         "buildVersion": 2,
-        "bytes": 131652,
+        "bytes": 132012,
         "triangles": 6205
       }
     },
@@ -36645,12 +36662,12 @@
         "depthCoverage": 1.659693775893807
       },
       "triangles": 14041,
-      "bytes": 230124,
+      "bytes": 230684,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "524d87730f1f030c",
+        "sourceHash": "b44bb44386406812",
         "buildVersion": 2,
-        "bytes": 76556,
+        "bytes": 77116,
         "triangles": 3408
       }
     },
@@ -37226,12 +37243,12 @@
         "depthCoverage": 1.2976872401875392
       },
       "triangles": 25868,
-      "bytes": 370532,
+      "bytes": 370820,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "fb8d21c3d5082054",
+        "sourceHash": "82c5783376a6297d",
         "buildVersion": 2,
-        "bytes": 78792,
+        "bytes": 79096,
         "triangles": 4010
       }
     },
@@ -37352,13 +37369,13 @@
         "depthMetres": 113.86700057983398,
         "depthCoverage": 4.647632676727918
       },
-      "triangles": 18079,
-      "bytes": 265580,
+      "triangles": 17887,
+      "bytes": 263100,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "cf4be22be39b1679",
+        "sourceHash": "3479cb03fc4540d8",
         "buildVersion": 2,
-        "bytes": 65444,
+        "bytes": 65748,
         "triangles": 3196
       }
     },
@@ -37739,12 +37756,12 @@
         "depthCoverage": 1.0408229584726425
       },
       "triangles": 20997,
-      "bytes": 303204,
+      "bytes": 302724,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "5c1e6fdba923f39f",
+        "sourceHash": "60ad2f4cd2d91089",
         "buildVersion": 2,
-        "bytes": 85068,
+        "bytes": 85424,
         "triangles": 4229
       }
     },
@@ -42599,7 +42616,13 @@
       },
       "triangles": 16812,
       "bytes": 216708,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "75c95d3a8d162feb",
+        "buildVersion": 2,
+        "bytes": 56252,
+        "triangles": 2567
+      }
     },
     "mozes-en-aaronkerk": {
       "id": "mozes-en-aaronkerk",
@@ -42926,7 +42949,13 @@
       },
       "triangles": 7734,
       "bytes": 110604,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "93dd16804fae9219",
+        "buildVersion": 2,
+        "bytes": 41464,
+        "triangles": 1384
+      }
     },
     "de-duif": {
       "id": "de-duif",
@@ -43200,7 +43229,13 @@
       },
       "triangles": 7336,
       "bytes": 100888,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "6840e55193fbcf90",
+        "buildVersion": 2,
+        "bytes": 36760,
+        "triangles": 1248
+      }
     },
     "obrechtkerk": {
       "id": "obrechtkerk",
@@ -43967,7 +44002,13 @@
       },
       "triangles": 43043,
       "bytes": 474456,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "750277800f2895c4",
+        "buildVersion": 2,
+        "bytes": 130264,
+        "triangles": 6519
+      }
     },
     "opstandingskerk": {
       "id": "opstandingskerk",
@@ -44550,7 +44591,13 @@
       },
       "triangles": 5681,
       "bytes": 84472,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "6a8a533200b8ad96",
+        "buildVersion": 2,
+        "bytes": 28756,
+        "triangles": 1107
+      }
     },
     "da-costakade-13": {
       "id": "da-costakade-13",
@@ -44674,7 +44721,415 @@
       },
       "triangles": 11041,
       "bytes": 157144,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "d1522f9fab5d9f9d",
+        "buildVersion": 2,
+        "bytes": 43812,
+        "triangles": 1747
+      }
+    },
+    "hoofdbureau-elandsgracht": {
+      "id": "hoofdbureau-elandsgracht",
+      "name": "Hoofdbureau van Politie",
+      "landmarkId": "n11117002807",
+      "modelUrl": "./models/hoofdbureau-elandsgracht.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012169550"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87779,
+          52.3677401
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 163.7,
+        "widthMetres": 82.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.87779,
+          52.3677401
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012169550 footprint centroid and 3DBAG LoD2.2 walls and roofs verbatim; native east/south metres from the anchor (the large-tier frame, origin = BAG footprint centroid)."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#7d5446",
+        "stone": "#e6e0d2",
+        "frame": "#f0ece2",
+        "glass": "#5f7886",
+        "dark": "#2b2e33",
+        "slate": "#5a5651",
+        "blue": "#1f4e9c",
+        "white": "#ebe8df",
+        "red": "#a77b6a",
+        "gold": "#d9a521"
+      },
+      "attribution": {
+        "title": "Hoofdbureau van Politie, Elandsgracht 117",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169550",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) with block-kit facade systems cut into the wall groups, plus hand-modelled window hoods, entrance canopy and signage plate read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877829,
+              52.3672126
+            ],
+            [
+              4.8781811,
+              52.3673047
+            ],
+            [
+              4.8781329,
+              52.3673739
+            ],
+            [
+              4.8780511,
+              52.3673508
+            ],
+            [
+              4.8780406,
+              52.3673658
+            ],
+            [
+              4.8780434,
+              52.3673668
+            ],
+            [
+              4.878047,
+              52.3673689
+            ],
+            [
+              4.8780488,
+              52.3673705
+            ],
+            [
+              4.8780502,
+              52.3673723
+            ],
+            [
+              4.8780511,
+              52.3673742
+            ],
+            [
+              4.8780514,
+              52.3673762
+            ],
+            [
+              4.8780512,
+              52.3673781
+            ],
+            [
+              4.8780499,
+              52.367381
+            ],
+            [
+              4.8780482,
+              52.3673828
+            ],
+            [
+              4.8780461,
+              52.3673845
+            ],
+            [
+              4.8780435,
+              52.3673858
+            ],
+            [
+              4.8780406,
+              52.3673869
+            ],
+            [
+              4.8780374,
+              52.3673877
+            ],
+            [
+              4.878034,
+              52.367388
+            ],
+            [
+              4.8780306,
+              52.367388
+            ],
+            [
+              4.8780289,
+              52.3673879
+            ],
+            [
+              4.8780256,
+              52.3673873
+            ],
+            [
+              4.878016,
+              52.3674008
+            ],
+            [
+              4.8780207,
+              52.367402
+            ],
+            [
+              4.8780199,
+              52.3674031
+            ],
+            [
+              4.8780201,
+              52.3674032
+            ],
+            [
+              4.877991,
+              52.3674445
+            ],
+            [
+              4.8777303,
+              52.3678183
+            ],
+            [
+              4.8776542,
+              52.3677984
+            ],
+            [
+              4.8775858,
+              52.3678963
+            ],
+            [
+              4.8778599,
+              52.3679679
+            ],
+            [
+              4.8778892,
+              52.3679258
+            ],
+            [
+              4.8783686,
+              52.3680509
+            ],
+            [
+              4.8782886,
+              52.3681655
+            ],
+            [
+              4.8782591,
+              52.3681578
+            ],
+            [
+              4.8780007,
+              52.3685286
+            ],
+            [
+              4.8779356,
+              52.3686215
+            ],
+            [
+              4.8777484,
+              52.3685722
+            ],
+            [
+              4.8777981,
+              52.3685051
+            ],
+            [
+              4.8771583,
+              52.3683381
+            ],
+            [
+              4.8771579,
+              52.368339
+            ],
+            [
+              4.877151,
+              52.3683373
+            ],
+            [
+              4.8772322,
+              52.3682214
+            ],
+            [
+              4.877878,
+              52.3683902
+            ],
+            [
+              4.8778868,
+              52.3683776
+            ],
+            [
+              4.8778848,
+              52.3683771
+            ],
+            [
+              4.8780624,
+              52.3681224
+            ],
+            [
+              4.8780661,
+              52.3681234
+            ],
+            [
+              4.8780751,
+              52.3681105
+            ],
+            [
+              4.8777033,
+              52.3680136
+            ],
+            [
+              4.8775353,
+              52.3679696
+            ],
+            [
+              4.8775032,
+              52.3680155
+            ],
+            [
+              4.8775505,
+              52.3680278
+            ],
+            [
+              4.877519,
+              52.368073
+            ],
+            [
+              4.8774717,
+              52.3680607
+            ],
+            [
+              4.8774407,
+              52.3681052
+            ],
+            [
+              4.8773851,
+              52.3680906
+            ],
+            [
+              4.8773642,
+              52.3681206
+            ],
+            [
+              4.8773138,
+              52.3681074
+            ],
+            [
+              4.8773347,
+              52.3680775
+            ],
+            [
+              4.8773002,
+              52.3680685
+            ],
+            [
+              4.8773951,
+              52.3679322
+            ],
+            [
+              4.8773889,
+              52.3679306
+            ],
+            [
+              4.8774391,
+              52.3678587
+            ],
+            [
+              4.8774492,
+              52.3678614
+            ],
+            [
+              4.8777174,
+              52.3674772
+            ],
+            [
+              4.8777925,
+              52.3673687
+            ],
+            [
+              4.8777312,
+              52.3673526
+            ],
+            [
+              4.8776267,
+              52.3675028
+            ],
+            [
+              4.8774888,
+              52.3674669
+            ],
+            [
+              4.8774886,
+              52.3674667
+            ],
+            [
+              4.8776446,
+              52.3672437
+            ],
+            [
+              4.8776214,
+              52.367238
+            ],
+            [
+              4.8776671,
+              52.3671706
+            ],
+            [
+              4.8776918,
+              52.3671767
+            ],
+            [
+              4.8777111,
+              52.3671496
+            ],
+            [
+              4.8778478,
+              52.3671854
+            ]
+          ]
+        ]
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -43.04899978637695,
+          0,
+          -97.97599792480469
+        ],
+        "max": [
+          39.652000427246094,
+          24.826000213623047,
+          65.65899658203125
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87779,
+          52.3677401
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 163.63499450683594,
+        "heightMetres": 24.826000213623047,
+        "depthMetres": 82.70100021362305,
+        "depthCoverage": 1.0000120944815363
+      },
+      "triangles": 26552,
+      "bytes": 340764,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "2be8617b69f2c08d",
+        "buildVersion": 2,
+        "bytes": 142824,
+        "triangles": 8709
+      }
     }
   }
 }
