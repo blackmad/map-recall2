@@ -1,0 +1,28 @@
+{
+ "version": 1,
+ "note": "Sculptures drawn in the shared frame behind ?sculptures=1 (src/canalRecall/sculptures, docs/sculptures.md). Near LOD within nearM of the eye; the hand-built landmark model (handModelId) is the far LOD.",
+ "sculptures": [
+  {
+   "id": "de-dokwerker",
+   "name": "De Dokwerker",
+   "landmarkId": "extract_landmarks_1098130181",
+   "handModelId": "de-dokwerker",
+   "anchor": [4.9050146, 52.3671957],
+   "facingDeg": 252,
+   "reconstruction": { "kind": "impostor", "atlasUrl": "dokwerker-impostor.webp", "metaUrl": "dokwerker-impostor.json", "band": 0.12 },
+   "plinth": { "widthM": 1.1, "depthM": 1.2, "heightM": 1.55, "color": "#55534f" },
+   "nearM": 50,
+   "hysteresisM": 5,
+   "attribution": "Figure: Mari Andriessen, De Dokwerker (1952), reproduced from photographs of the work in its public place. Impostor views from Wikimedia Commons: A.A.W.J. Rietman, 'Amsterdam, De dokwerker 07' and '02' (2013, CC BY-SA 4.0); Anefo / Nationaal Archief photographs by Hugo van Gelderen (1961), Joop van Bilsen (1964), Jack de Nijs (1968) and Bert Verhoeff (1972) (CC0). The atlas dokwerker-impostor.webp is a derivative and is licensed CC BY-SA 4.0.",
+   "credits": [
+    { "view": 0, "title": "Amsterdam, De dokwerker 07.JPG", "author": "A.A.W.J. Rietman", "licence": "CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Amsterdam,_De_dokwerker_07.JPG" },
+    { "view": 45, "title": "Amsterdam, De dokwerker 02.JPG", "author": "A.A.W.J. Rietman", "licence": "CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Amsterdam,_De_dokwerker_02.JPG" },
+    { "view": 90, "title": "Herdenking februaristaking vlag halfstok bij dokwerken, Bestanddeelnr 925-4107.jpg", "author": "Bert Verhoeff for Anefo", "licence": "CC0", "url": "https://commons.wikimedia.org/wiki/File:Herdenking_februaristaking_vlag_halfstok_bij_dokwerken,_Bestanddeelnr_925-4107.jpg" },
+    { "view": 135, "title": "Herdenking februari-staking, Bestanddeelnr 921-1102.jpg", "author": "Jack de Nijs for Anefo", "licence": "CC0", "url": "https://commons.wikimedia.org/wiki/File:Herdenking_februari-staking,_Bestanddeelnr_921-1102.jpg" },
+    { "view": 180, "title": "Herdenking februaristaking 1941 op Jonas Daniel Meijerplein Na de kranslegging , Bestanddeelnr 916-0908.jpg", "author": "Joop van Bilsen for Anefo", "licence": "CC0", "url": "https://commons.wikimedia.org/wiki/File:Herdenking_februaristaking_1941_op_Jonas_Daniel_Meijerplein_Na_de_kranslegging_,_Bestanddeelnr_916-0908.jpg" },
+    { "view": -90, "title": "Herdenking februaristaking 1941 op het J D Meyerplein het standbeeld De Dokwe, Bestanddeelnr 912-1300.jpg", "author": "Hugo van Gelderen / Anefo", "licence": "CC0", "url": "https://commons.wikimedia.org/wiki/File:Herdenking_februaristaking_1941_op_het_J_D_Meyerplein_het_standbeeld_De_Dokwe,_Bestanddeelnr_912-1300.jpg" },
+    { "view": -45, "title": "Herdenking februaristaking 1941 op het J D Meyerplein het standbeeld De Dokwe, Bestanddeelnr 912-1298.jpg", "author": "Hugo van Gelderen / Anefo", "licence": "CC0", "url": "https://commons.wikimedia.org/wiki/File:Herdenking_februaristaking_1941_op_het_J_D_Meyerplein_het_standbeeld_De_Dokwe,_Bestanddeelnr_912-1298.jpg" }
+   ]
+  }
+ ]
+}
