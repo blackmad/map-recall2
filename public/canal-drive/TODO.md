@@ -37,7 +37,9 @@ from the tiles; gallery-size review of all landmarks under `?cityLook=1`
 `ochre`→brick 38, `red`→brick 104; slate roofs come out darker); the
 city-look brick luma sits above LOOK.md's target (117 vs 95–110 sun side)
 because slot tints pass through `cityTint`; one brick variant only; ~40
-draft export scripts do not tag slots and will fail the 100% gate;
+draft export scripts do not tag slots and will fail the 100% gate; under
+`?cityLook=1` the landmark highlight is a flat unshaded yellow (the variant
+swap drops the shading the default highlight keeps — demo shots 2026-10-13);
 own-ground becomes the default after per-polder water levels, BGT width per
 way, AHN profiles for the 891 unmeasured bridges and a desktop measurement
 (user 2026-10-13: desktop is ~10x as important; iPhone numbers later); the gameplay loop no longer freezes the rider and spaced
