@@ -836,3 +836,65 @@ Decisions (each one changes the schema, so the reason is kept here):
   `public/canal-drive/models/covers.json` for installed models and from the pand itself for recipes and types.
 - **`mesh` names the z16 tile that draws the pand** (by the pand's anchor), so a reader of a z14 tile knows which
   mesh tile to fetch without recomputing anchors.
+
+### Compiler (`scripts/building-tiles/compile-recipes.ts`)
+
+```sh
+node --import tsx scripts/building-tiles/compile-recipes.ts --stage=all --jobs=8      # recipes → mesh (one process per z16) → assemble
+node --import tsx scripts/building-tiles/compile-recipes.ts --stage=mesh --tile=16/33654/21538
+node --import tsx scripts/building-tiles/compile-recipes.ts --stage=review --before=artifacts/recipe-tiles-before
+node --import tsx --test src/canalRecall/tileBuildings/*.test.ts
+```
+
+Stages: `recipes` (authoring → z14 recipe tiles), `mesh` (one z16 tile per process: compile, split, hash, write,
+gate), `assemble` (folds `fitted` into the recipe tiles, writes `index.json` and `summary.json`), `review` (a sheet
+of only the pands whose triangle hash or gate numbers changed between two outputs, with before/after elevations).
+Faces go through `blockFace/compile.ts` → `compileChunk.ts` unchanged (13 of 15 Bilderdijkstraat chunks come out
+byte-identical to the installed `chunk-*.glb`; `bilder-079721-x2` and `bilder-159426-165632` differ from their
+installed copies, i.e. the installed files predate a library change: exactly what the review stage is for). House
+recipes no face covers are grouped with `groupBlockFaces` and compiled with `compileChunk`, as
+`scripts/street-chunks/build.ts` does; large recipes through `compileBuilding`; types and installed GLBs go straight
+to the unit table. Faces with `continuity.crownFromPhoto` need their strip photos (`staging/block-face/<face>/strip.jpg`
+or `BLOCK_FACE_SOURCE_PACK`, default the `map-recall2-source-data` archive).
+
+Decisions:
+
+- **Groups are atomic.** Every pand of a face, a house-recipe chunk or a multi-pand model is drawn by the z16 tile
+  containing the group's mean anchor. A face never straddles two mesh tiles, so while that tile is resident the
+  near tier replaces the whole chunk/landmark spec, and when it is not the legacy spec draws the whole thing.
+  The alternative (each pand in its own tile) leaves half a face double-drawn at a tile boundary.
+- **Roles by rule, in the source frame** (`soup.ts splitRoles`, +x along the street, +z towards it): signage
+  (`sign` surface), roof (roof slots), party (wall faces along the street within 0.3 m of the pand's ends), rear
+  (> 1.5 m behind the front plane), then ground / body / crown by the fitted ground-storey top and eaves. Only
+  ground, body, crown (and `whole` for large recipes) may instance; the classification only decides reuse,
+  never correctness, because every part is reassembled exactly.
+- **Hash = canonical geometry** (positions relative to the part's x/z minimum at 1 mm, normals at 1e-3, sorted by
+  colour+slot). UVs are excluded: metre box UVs follow absolute position, so an instance keeps its master's brick
+  phase. Units of installed GLBs are addressed by sha256(converter version + file bytes).
+- **Instancing is tile-local and thresholded:** a hash instances when it repeats inside the z16 tile and saves
+  ≥ 1,000 triangles (`--min-saved`). Tile-local keeps one process per tile deterministic; the threshold keeps
+  tiny repeated parts from costing a draw each. Units are still global content-addressed files, refcounted across
+  tiles at runtime.
+- **Tile positions stay float32**; a 16-bit grid over a 373 m tile is 6 mm, coarser than the library's 5 mm
+  insets. Units (≤ ~100 m) quantize positions to 16 bits and normals to 8. gltf-transform's `meshopt()` is not
+  used because it re-quantizes positions to 14 bits and folds that into instance TRS; the writer reorders and
+  enables `EXT_meshopt_compression` itself.
+- **Instance nodes carry a stub** (the unit's 12-triangle box): `EXT_mesh_gpu_instancing` needs a mesh; it is added
+  after quantization so instance TRS are the true unit → tile matrices. `_PAND` is float32 (a 2-byte stride breaks
+  the meshopt vertex codec).
+- **One city-look primitive per tile for uniques**: slot and tint are vertex attributes (`_LAYER` u8, `_TINT`
+  u8x4), so every material of every unique pand is one draw. Vertices are welded per pand only, so a pand can be
+  hidden or highlighted through its own vertices.
+- **Gates per pand**: the face gates and interference (faces), `evaluateGates` on the house compiled alone (house
+  recipes), `evaluateLargeGates` (large), geometry-audit counts (recipe pands; recorded, not gating), unit conversion
+  counts (models), and **instanced ≡ merged**: the written tile and units are decoded exactly as the runtime draws
+  them and every source triangle must find its decoded twin within 4 mm with the same slot ordinal, one to one.
+
+Measured (2026-10-13, M-series Mac, `--jobs=8`): 3,149 pands (61 canal-house, 6 large, 3,072 types, 10 models)
+in 17 z14 recipe tiles and 64 z16 mesh tiles, 10 s wall clock for everything; 4.4 MB tiles + 2.8 MB units
+(1.43 M triangles drawn, 137 k of them merged uniques), 166 draws for all 64 tiles; every pand passes every gate.
+The two Bilderdijkstraat tiles (61 canal houses, 1 landmark) take 3–5 s each, mostly the face compile.
+**Instancing found nothing to share on Bilderdijkstraat**: 189 street-side parts, 0 exact repeats. The fitted
+widths of neighbouring houses differ by centimetres, so no two bodies are identical at 1 mm. Reuse there needs
+type-level authoring (the face `types` / `sameAs` with one fitted width) or a tolerance-snapping fit, not a
+hash; the machinery is in place and tested (`compiler.test.ts` instances two equal bodies).
