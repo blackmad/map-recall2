@@ -36760,6 +36760,202 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T22:59:06.457Z"
+    },
+    {
+      "id": "ordinary-0363100012169214",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012169214",
+      "name": "Utrechtsestraat 15 / Rembrandtplein, Amsterdam (Booking.com HQ): 1932 Amsterdam School office block, brick with granite base, stepped to 36 m",
+      "hash": "bbf0c3d4845c60a588cafd3f7d189717b0a74ef3a036caffdc46c280ffd3232d",
+      "sha256": "bbf0c3d4845c60a588cafd3f7d189717b0a74ef3a036caffdc46c280ffd3232d",
+      "bytes": 699508,
+      "triangles": 8911,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -27.24,
+          0,
+          -55.262
+        ],
+        "max": [
+          24.984,
+          40.718,
+          38.289
+        ]
+      },
+      "anchor": [
+        4.8980379,
+        52.365697
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8976557,
+              52.3658561
+            ],
+            [
+              4.8978513,
+              52.3653527
+            ],
+            [
+              4.8979172,
+              52.3653651
+            ],
+            [
+              4.8979163,
+              52.365367
+            ],
+            [
+              4.8980171,
+              52.3653862
+            ],
+            [
+              4.8980183,
+              52.3653839
+            ],
+            [
+              4.8980542,
+              52.3653906
+            ],
+            [
+              4.898053,
+              52.365393
+            ],
+            [
+              4.8981952,
+              52.3654199
+            ],
+            [
+              4.8981964,
+              52.3654175
+            ],
+            [
+              4.8982323,
+              52.3654243
+            ],
+            [
+              4.8982311,
+              52.3654267
+            ],
+            [
+              4.8984045,
+              52.3654588
+            ],
+            [
+              4.8984041,
+              52.3654596
+            ],
+            [
+              4.8984073,
+              52.3654602
+            ],
+            [
+              4.8982777,
+              52.3657176
+            ],
+            [
+              4.8982479,
+              52.3657131
+            ],
+            [
+              4.8981675,
+              52.3659156
+            ],
+            [
+              4.8982071,
+              52.3659213
+            ],
+            [
+              4.8982127,
+              52.3659601
+            ],
+            [
+              4.8981822,
+              52.3660075
+            ],
+            [
+              4.8981976,
+              52.3661736
+            ],
+            [
+              4.8976853,
+              52.3661897
+            ],
+            [
+              4.8976733,
+              52.3661832
+            ],
+            [
+              4.8976667,
+              52.3661085
+            ],
+            [
+              4.8976404,
+              52.3661046
+            ],
+            [
+              4.8976317,
+              52.3660962
+            ],
+            [
+              4.8977162,
+              52.3658653
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 40.72,
+      "height": 40.72,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-utrechtsestraat-15-169214.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012169214"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "utrechtsestraat-15-169214",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012169214/w01-257.jpg",
+          "staging/pand-reference-walls/0363100012169214/w03-258.jpg",
+          "staging/pand-reference-walls/0363100012169214/w02-3.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 6st 6b",
+          "brick-bay-grid 7st 9b",
+          "brick-bay-grid 5st 11b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Simplified: the triple windows are one wide window per 1.7 bays, the open loggia arcade under copper canopies is a plain ground row, the glass roof pavilion over the west front and the recessed attic floors are the 3DBAG roof/wall geometry only, the copper trim is not coloured. Not modelled: the upper west panels 525, 205, 415, 89 (stepped tower floors, no frontal photograph) and the east side (w04-77, party/courtyard)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169214",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T23:00:48.635Z"
     }
   ]
 }
