@@ -13258,7 +13258,8 @@
       landmarkId: "extract_landmarks_1122909064",
       modelUrl: "./models/oudemanhuispoort.glb",
       suppressOsmIds: [
-        "NL.IMBAG.Pand.0363100012180206"
+        "NL.IMBAG.Pand.0363100012180206",
+        "NL.IMBAG.Pand.0363100012179854"
       ],
       spatialSuppression: false,
       footprint: {
@@ -13276,18 +13277,21 @@
           52.36937
         ],
         northOffsetDegrees: 0,
-        source: "BAG pand 0363100012180206 (gate-house at the Oudezijds Achterburgwal end of the Oudemanhuispoort passage): exact ring and 3DBAG LoD2.2 solid (about 17 m above ground) in local east/south metres. Anchor is the ring bounding-box centre."
+        source: "BAG pand 0363100012180206 (Oudezijds Achterburgwal 229, holding the portal south pier) and BAG pand 0363100012179854 (Oudemanhuispoort 1A, holding the north pier): exact rings and 3DBAG LoD2.2 solids in local east/south metres. Anchor is the 229 ring bounding-box centre."
       },
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#8a5642",
-        slate: "#585b61",
-        white: "#e9e6dc",
-        stone: "#a7a59d",
-        dark: "#2e2a28",
-        ochre: "#4a3a2b",
-        glass: "#6f858f"
+        brick: "#86503d",
+        red: "#a5573c",
+        slate: "#5d6066",
+        white: "#ece9e0",
+        stone: "#a19d92",
+        dark: "#24221f",
+        glass: "#6f858f",
+        greyBrick: "#6a3d2f",
+        concrete: "#d9dcd8",
+        bronze: "#2b2a28"
       },
       attribution: {
         title: "Oudemanhuispoort",
@@ -13295,90 +13299,204 @@
         sourceUrl: "https://nl.wikipedia.org/wiki/Oudemanhuispoort",
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
-        modifications: "Original texture-free native-scale model of the gate-house on the exact BAG footprint and 3DBAG LoD2.2 solid, with a sandstone portal from one 2025 municipal panorama. The surrounding university complex is not modelled. No imported mesh or photograph pixels."
+        modifications: "Original texture-free native-scale model of the Oudemanhuispoort gate on the Oudezijds Achterburgwal with the two houses that hold its piers (nos. 229 and Oudemanhuispoort 1A) on their BAG footprints and 3DBAG LoD2.2 solids; portal, windows, roof and chimneys from 2025 municipal panoramas. The alley behind the gate and the university complex are left to the city layer. No imported mesh or photograph pixels."
       },
       buildingFootprint: {
-        type: "Polygon",
+        type: "MultiPolygon",
         coordinates: [
           [
             [
-              4.89518,
-              52.369408
-            ],
+              [
+                4.89518,
+                52.369408
+              ],
+              [
+                4.895178,
+                52.369407
+              ],
+              [
+                4.895175,
+                52.369408
+              ],
+              [
+                4.895171,
+                52.369403
+              ],
+              [
+                4.895174,
+                52.369402
+              ],
+              [
+                4.895132,
+                52.369352
+              ],
+              [
+                4.895283,
+                52.369332
+              ],
+              [
+                4.895301,
+                52.369385
+              ],
+              [
+                4.895194,
+                52.369398
+              ],
+              [
+                4.895195,
+                52.3694
+              ],
+              [
+                4.895191,
+                52.369401
+              ],
+              [
+                4.895192,
+                52.369403
+              ],
+              [
+                4.895191,
+                52.369403
+              ],
+              [
+                4.895191,
+                52.369405
+              ],
+              [
+                4.895191,
+                52.369406
+              ],
+              [
+                4.895192,
+                52.369407
+              ],
+              [
+                4.895188,
+                52.369408
+              ],
+              [
+                4.895181,
+                52.369407
+              ],
+              [
+                4.89518,
+                52.369408
+              ]
+            ]
+          ],
+          [
             [
-              4.895178,
-              52.369407
-            ],
-            [
-              4.895175,
-              52.369408
-            ],
-            [
-              4.895171,
-              52.369403
-            ],
-            [
-              4.895174,
-              52.369402
-            ],
-            [
-              4.895132,
-              52.369352
-            ],
-            [
-              4.895283,
-              52.369332
-            ],
-            [
-              4.895301,
-              52.369385
-            ],
-            [
-              4.895194,
-              52.369398
-            ],
-            [
-              4.895195,
-              52.3694
-            ],
-            [
-              4.895191,
-              52.369401
-            ],
-            [
-              4.895192,
-              52.369403
-            ],
-            [
-              4.895191,
-              52.369403
-            ],
-            [
-              4.895191,
-              52.369405
-            ],
-            [
-              4.895191,
-              52.369406
-            ],
-            [
-              4.895192,
-              52.369407
-            ],
-            [
-              4.895188,
-              52.369408
-            ],
-            [
-              4.895181,
-              52.369407
-            ],
-            [
-              4.89518,
-              52.369408
+              [
+                4.895244,
+                52.36948
+              ],
+              [
+                4.895205,
+                52.369439
+              ],
+              [
+                4.895204,
+                52.369438
+              ],
+              [
+                4.895201,
+                52.369439
+              ],
+              [
+                4.895197,
+                52.369434
+              ],
+              [
+                4.8952,
+                52.369433
+              ],
+              [
+                4.8952,
+                52.369432
+              ],
+              [
+                4.895201,
+                52.369432
+              ],
+              [
+                4.895203,
+                52.369428
+              ],
+              [
+                4.895205,
+                52.369427
+              ],
+              [
+                4.895207,
+                52.369426
+              ],
+              [
+                4.895208,
+                52.369428
+              ],
+              [
+                4.89521,
+                52.369428
+              ],
+              [
+                4.895211,
+                52.36943
+              ],
+              [
+                4.895213,
+                52.369429
+              ],
+              [
+                4.895217,
+                52.369433
+              ],
+              [
+                4.895217,
+                52.369433
+              ],
+              [
+                4.895219,
+                52.369437
+              ],
+              [
+                4.895299,
+                52.369424
+              ],
+              [
+                4.895299,
+                52.369425
+              ],
+              [
+                4.89535,
+                52.369418
+              ],
+              [
+                4.895361,
+                52.369431
+              ],
+              [
+                4.895369,
+                52.36943
+              ],
+              [
+                4.895327,
+                52.369445
+              ],
+              [
+                4.895333,
+                52.369452
+              ],
+              [
+                4.895244,
+                52.36948
+              ]
             ]
           ]
         ]
+      },
+      galleryView: {
+        theta: -2.45,
+        phi: 1.2
       }
     },
     {
