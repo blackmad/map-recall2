@@ -30410,6 +30410,146 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T21:43:12.310Z"
+    },
+    {
+      "id": "ordinary-0363100012076903",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012076903",
+      "name": "Stadsdeelkantoor Nieuw-West, Plein '40-'45 1, Amsterdam (1964 ten-storey slab with vertical fins on a glazed podium)",
+      "hash": "f1612c19e93e24a14d500a691f6908fe2f2e262d09dba7c0ce70d072432c59e3",
+      "sha256": "f1612c19e93e24a14d500a691f6908fe2f2e262d09dba7c0ce70d072432c59e3",
+      "bytes": 755144,
+      "triangles": 10200,
+      "materials": 7,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -28.763,
+          0,
+          -18.785
+        ],
+        "max": [
+          28.768,
+          43.723,
+          18.784
+        ]
+      },
+      "anchor": [
+        4.8211067,
+        52.3790093
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8215291,
+              52.3790174
+            ],
+            [
+              4.8214604,
+              52.3790282
+            ],
+            [
+              4.8214801,
+              52.3790752
+            ],
+            [
+              4.8208309,
+              52.3791768
+            ],
+            [
+              4.8208113,
+              52.3791298
+            ],
+            [
+              4.8207426,
+              52.3791405
+            ],
+            [
+              4.8206844,
+              52.3790012
+            ],
+            [
+              4.8207531,
+              52.3789904
+            ],
+            [
+              4.8207335,
+              52.3789434
+            ],
+            [
+              4.8213826,
+              52.3788418
+            ],
+            [
+              4.8214022,
+              52.3788888
+            ],
+            [
+              4.8214709,
+              52.3788781
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 43.72,
+      "height": 43.72,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-stadsdeel-nieuw-west.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012076903"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "stadsdeel-nieuw-west",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012076903/w01-15.jpg",
+          "staging/pand-reference-walls/0363100012076903/w04-285.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "storey-height/walls[4]:pass",
+          "eaves-vs-3dbag/walls[5]:pass",
+          "storey-height/walls[5]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "ribbon-windows 7st 17b",
+          "ribbon-windows 7st 17b",
+          "ribbon-windows 10st 6b",
+          "ribbon-windows 10st 6b",
+          "ribbon-windows 10st 17b",
+          "ribbon-windows 7st 11b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "The south wall (surfaces 90 and 67) and the east end (56) have no panorama (candidates 0); they carry an INFERRED ribbon-window grid so the audit blank-wall gate passes, matching the west end. Colours: pale grey concrete is the wall palette, dark glass frames."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012076903",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T21:45:25.346Z"
     }
   ]
 }
