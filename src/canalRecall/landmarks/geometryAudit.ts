@@ -1071,7 +1071,7 @@ export interface NormalAudit {
 
 /**
  * Face normals that point into the model, and vertex normals that disagree with their face normal by more than 90 degrees.
- * Inward test (closed edge-connected shells only, `shellsOf`; an open shell cannot say inside from outside): a ray from just outside the face (centre + 2 mm along the face normal) along the normal crosses the model's
+ * Inward test (closed edge-connected shells only, `shellsOf`; an open shell cannot say inside from outside; a face resting flat against an opposite-facing face of a neighbouring solid is a hidden interface and not counted): a ray from just outside the face (centre + 2 mm along the face normal) along the normal crosses the model's
  * surface an odd number of times when that point is inside the solid, i.e. the face looks inward. Open shells make parity
  * approximate, so it is a ranking signal (warn), not a proof. About `maxSamples` triangles are tested, split across materials by area and taken at an even
  * stride of each material's area-sorted order so large and small faces both appear; each sample stands for the area it represents.
@@ -1120,7 +1120,7 @@ export function auditNormals(s: MaterialSoup, maxSamples = 1200): NormalAudit {
     // Barycentre nudged off the exact centre: a centre ray often runs along a quad's diagonal on the opposite face and double-counts.
     const ox = 0.41 * P[a] + 0.33 * P[b] + 0.26 * P[c] + nx[t] * eps, oy = 0.41 * P[a + 1] + 0.33 * P[b + 1] + 0.26 * P[c + 1] + ny[t] * eps, oz = 0.41 * P[a + 2] + 0.33 * P[b + 2] + 0.26 * P[c + 2] + nz[t] * eps;
     const dx = nx[t], dy = ny[t], dz = nz[t];
-    let hits = 0;
+    let hits = 0, interfaceFace = false;
     for (const u of trisOfPart.get(part[t])!) {
       if (u === t) continue;
       const i = I[u * 3] * 3, j = I[u * 3 + 1] * 3, k = I[u * 3 + 2] * 3;
@@ -1134,10 +1134,13 @@ export function auditNormals(s: MaterialSoup, maxSamples = 1200): NormalAudit {
       const qx = sy * e1z - sz * e1y, qy = sz * e1x - sx * e1z, qz = sx * e1y - sy * e1x;
       const vv = (dx * qx + dy * qy + dz * qz) * inv;
       if (vv < 0 || uu + vv > 1) continue;
-      if ((e2x * qx + e2y * qy + e2z * qz) * inv > 1e-6) hits++;
+      const tHit = (e2x * qx + e2y * qy + e2z * qz) * inv;
+      if (tHit > 1e-6) hits++;
+      // The face just behind the sample, looking the other way: two solids resting on each other (a roof's base on the box beneath it). That interface is hidden, not an inward-facing surface.
+      else if (tHit > -0.005 && nx[u] * dx + ny[u] * dy + nz[u] * dz < -0.99) interfaceFace = true;
     }
     sampled[m]++;
-    if (hits % 2 === 1) { inward[m] += group; if (inwardTriangles.length < 400) inwardTriangles.push(t); }
+    if (hits % 2 === 1 && !interfaceFace) { inward[m] += group; if (inwardTriangles.length < 400) inwardTriangles.push(t); }
   }
   const sum = (a: Float64Array) => a.reduce((x, y) => x + y, 0);
   const total = sum(area);
