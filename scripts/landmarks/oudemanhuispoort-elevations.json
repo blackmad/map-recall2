@@ -1,25 +1,32 @@
 {
   "id": "oudemanhuispoort",
-  "countedBy": "pending blind count",
+  "countedBy": "counted from the across-canal panorama b_20250108_1349_Track16_Sphere_00088 (2025-01-08) before modelling, 2026-10-13",
   "facades": [
     {
-      "name": "canal front with portal",
+      "name": "229 canal front",
       "bearing": 297,
-      "photo": "artifacts/landmark-lanes/oudemanhuispoort/ref-canal-front.jpg",
+      "photo": "ref-across-canal.jpg (source pack)",
       "depthBand": 14,
-      "rows": [
-        3,
-        3,
-        null
-      ],
-      "columns": 4,
+      "alongM": [10.1, 16.2],
+      "heightM": [0.1, 11.4],
+      "rows": [2, 3, 3, 3],
+      "columns": 3,
       "symmetric": false,
       "gables": 0,
-      "countedBy": "blind haiku counter 2026-10-11",
-      "heightM": [
-        1.5,
-        11
-      ]
+      "countedBy": "lane 2026-10-13: three axes; basement lights under the two north axes (stoop under the door); bel-etage two tall windows plus the door with fanlight on the south axis; second and top floors three windows each"
+    },
+    {
+      "name": "1A canal front",
+      "bearing": 297,
+      "photo": "ref-across-canal.jpg (source pack)",
+      "depthBand": 14,
+      "alongM": [0, 5.5],
+      "heightM": [0, 7.9],
+      "rows": [3, 3, 3],
+      "columns": 3,
+      "symmetric": false,
+      "gables": 0,
+      "countedBy": "lane 2026-10-13: three axes; ground floor two shop windows and the shop door on the south axis; two upper floors of three sashes"
     }
   ]
 }
