@@ -1696,5 +1696,11 @@
     "buildVersion": 2,
     "bytes": 26600,
     "triangles": 1232
+  },
+  "tropenmuseum": {
+    "sourceHash": "b335bc329a2ce906",
+    "buildVersion": 2,
+    "bytes": 124360,
+    "triangles": 7037
   }
 }

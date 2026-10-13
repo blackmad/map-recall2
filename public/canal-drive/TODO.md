@@ -1250,10 +1250,11 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   upper tower moves ~1.3 m south against the pitched views; inventory
   `sheetBox` crops; `meta.json`/`research.json` sources; 3 of 30 gable-front
   openings flagged off-size.
-- **Tropenmuseum survey** (2026-10-14): the BAG pand 0363100012082861 is
-  a 4-vertex rhombus, the museum exists as ~25 OSM stand-in ways with rough
-  heights and the 3DBAG facts are unusable; a survey lane must build the
-  footprint from BGT/BAG outlines and the panoramas before a builder.
+- **Tropenmuseum, second pass** (2026-10-14, HISTORY "Tropenmuseum
+  surveyed and built"): east-front pavilions and risalit gable from the
+  photos (round-arched triple windows, souterrain arches, relief panels,
+  dentil cornice); Mauritskade corner sheet; a measured `-spec.json` so
+  blank-wall exemptions are declared; add to `SNAP_OPENING_IDS`.
   Landmark backlog "pending" flags are stale for many ids (Munttoren,
   Schreierstoren, Amstelkerk, Zuiderkerk, Waag, Posthoornkerk, Hortus, the
   Lutherse kerken, Trippenhuis, Carré, Concertgebouw…): regenerate from

@@ -2,7 +2,7 @@
  * Photo-first brief for a bespoke landmark lane: no brief is written from memory.
  *
  *   node --import tsx scripts/landmarks/landmark-brief.ts --pand=<BAG pand id> [--id=<slug>] [--min-len=4] [--max=30]
- *        [--wiki=nl:Elandsgracht_117,en:...] [--address="Elandsgracht 117"] [--force-skeleton] [--offline]
+ *        [--height=<m>] [--wiki=nl:Elandsgracht_117,en:...] [--address="Elandsgracht 117"] [--force-skeleton] [--offline]
  *
  * Writes
  *  - artifacts/landmark-briefs/<id>/w<NN>-<bearing>.jpg (+ .alt.jpg from another year, .thumb.jpg aimed view) and
@@ -53,8 +53,16 @@ const bearingOf = (w: Wall) => Math.round((Math.atan2(w.nx, w.ny) * 180 / Math.P
 const compass = (b: number) => ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'][Math.round(b / 45) % 8];
 
 // ---- geometry and walls ---------------------------------------------------------------------------------------------
-const fp = (await findPands([pand])).get(pand);
-if (!fp) throw new Error(`pand not in building tiles: ${pand}`);
+let fp = (await findPands([pand])).get(pand);
+if (!fp) {
+  // Not in the building tiles (the Tropenmuseum's 321-vertex pand is missing from them): take the BAG outline from PDOK WFS (CC0).
+  const wfs = await cachedJson(`https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeName=bag:pand&outputFormat=application/json&srsName=urn:ogc:def:crs:EPSG::28992&count=1&filter=${encodeURIComponent(`<Filter><PropertyIsEqualTo><PropertyName>identificatie</PropertyName><Literal>${bag}</Literal></PropertyIsEqualTo></Filter>`)}`).catch(() => null);
+  const g = wfs?.features?.[0]?.geometry;
+  if (!g) throw new Error(`pand not in building tiles and not in PDOK BAG: ${pand}`);
+  const ring = (g.type === 'Polygon' ? g.coordinates[0] : g.coordinates[0][0]).map((p: number[]) => ({x: p[0], y: p[1]}));
+  fp = {id: pand, ring, height: Number(arg('height', '20'))};
+  console.log(`  ${pand}: BAG outline from PDOK WFS (${ring.length - 1} vertices)`);
+}
 const centre = {x: fp.ring.reduce((s, p) => s + p.x, 0) / fp.ring.length, y: fp.ring.reduce((s, p) => s + p.y, 0) / fp.ring.length};
 const allWalls = exposedWalls(fp, await neighbourhood(centre)).sort((a, b) => b.len - a.len);
 const walls = allWalls.filter(w => w.len >= minLen).slice(0, maxWalls);

@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+## Tropenmuseum surveyed and built (2026-10-14, night)
+
+Lane `landmarks/tropenmuseum-20261014`. The whole complex is BAG pand
+0363100012237251 (1926, 321 vertices, ~7,977 m², BGT IoU 0.998), which
+the city building tiles were missing: that is why earlier lanes saw ~38
+OSM stand-in ways and "unusable 3DBAG facts" (the stale
+`houses/tropenmuseum/3dbag.json` held the 4-vertex rhombus
+0363100012082861, a separate modern glass building in the Oosterpark).
+3DBAG LoD2.2 gives 1,221 walls, 216 roof planes, max 45.3 m; the
+catalogue entry suppresses 39 OSM ids. Bespoke model, 28.4k tris, 433 KB
+(lod1 7.0k): the Instituutsgebouw portal measured on a 50 px/m panorama
+crop (tripartite stone portal, arched door with iron fanlight, segmental
+pediment with two reclining figures, oculi, ten-step stair, globe posts),
+its gable with piers, scroll panels, oculus and three statues, round-arch
+windows on the museum wings, the pavilion copper helmets (lantern, onion,
+spire, ball, vane) set over 3DBAG's spike tips because removing them
+opened shell holes, a fan cap closing two open loops in the 3DBAG shell.
+`audit:glb` passes (slots 100 %, inventory 57 items: 18 modelled, 30
+simplified, 9 skipped) with warnings (2 see-through rays, 6 minor
+detached parts, 1 inverted roof triangle, ~20 m² near z-fight). Second
+pass needed: the east-front pavilions and the risalit gable carry only
+generic windows and rule-based ornament where the photos show round-arched
+triple windows, souterrain arches, relief panels and a dentil cornice;
+812 of 908 panels are blank; the Mauritskade corner has no dedicated
+sheet; no `tropenmuseum-spec.json`; not in `SNAP_OPENING_IDS`.
+
+
 ## Inward-facing normals: the Palace and the shared hip() helper (2026-10-14, night)
 
 Lane `glb/normals-20261014`, from the shadow lane's side finding that the
