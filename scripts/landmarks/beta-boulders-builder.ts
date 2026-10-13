@@ -20,9 +20,10 @@ export function buildBetaBoulders(_w:number,_d:number,b:BuildingTools):void{
  // Close only the low roof hole with transparent-atrium geometry at roof datum;
  // no opaque raised plate covers the surveyed upper atrium opening.
  for(const ring of base.rings.slice(1))b.add(upwardRoofPlane(makeShape([ring]),15.02),'glass');
- function panel(p:T.Vector2,q:T.Vector2,y:number,h:number,c:C,offset=.12){const tangent=q.clone().sub(p).normalize(),normal=new T.Vector2(-tangent.y,tangent.x),mid=p.clone().add(q).multiplyScalar(.5).addScaledVector(normal,offset);b.add(new T.PlaneGeometry(p.distanceTo(q),h),c,mid.x,y+h/2,mid.y,Math.atan2(-tangent.y,tangent.x))}
+ // Facade layers are thin boxes whose back reaches into the wall (BAG ring wall at offset 0), not floating zero-thickness quads 12-31 cm off it.
+ function panel(p:T.Vector2,q:T.Vector2,y:number,h:number,c:C,offset=.12,depth=offset+.03,inset=0){const tangent=q.clone().sub(p).normalize(),normal=new T.Vector2(-tangent.y,tangent.x),mid=p.clone().add(q).multiplyScalar(.5).addScaledVector(normal,offset-depth/2);b.box(mid.x,y,mid.y,p.distanceTo(q)-2*inset,h,depth,c,Math.atan2(-tangent.y,tangent.x))}
  function portalSolid(p:T.Vector2,q:T.Vector2,y:number,h:number){const t=q.clone().sub(p).normalize(),n=new T.Vector2(-t.y,t.x),m=p.clone().add(q).multiplyScalar(.5).addScaledVector(n,.4);b.box(m.x,y,m.y,p.distanceTo(q),h,.6,'dark',Math.atan2(-t.y,t.x))}
- function ribbon(p:T.Vector2,q:T.Vector2,y:number,h:number,c:C='white',offset=.12){panel(p,q,y-.13,h+.26,c,offset);panel(p,q,y,h,'glass',offset+.045);const l=p.distanceTo(q),n=Math.ceil(l/1.9);for(let i=0;i<=n;i++){const t=q.clone().sub(p).normalize(),normal=new T.Vector2(-t.y,t.x),m=p.clone().lerp(q,i/n).addScaledVector(normal,offset+.08);b.box(m.x,y,m.y,.075,h,.075,'frame')}panel(p,q,y+h*.48,.07,'frame',offset+.085)}
+ function ribbon(p:T.Vector2,q:T.Vector2,y:number,h:number,c:C='white',offset=.12){panel(p,q,y-.13,h+.26,c,offset);panel(p,q,y,h,'glass',offset+.045,.075,.02);const l=p.distanceTo(q),n=Math.ceil(l/1.9);for(let i=0;i<=n;i++){const t=q.clone().sub(p).normalize(),normal=new T.Vector2(-t.y,t.x),m=p.clone().lerp(q,i/n).addScaledVector(normal,offset+.08);b.box(m.x,y,m.y,.075,h,.075,'frame')}panel(p,q,y+h*.48,.07,'frame',offset+.085,.1,.04)}
  // BAG ring is clockwise in east/south coordinates: left normals face outside.
  const ring=data.facadePerimeter;
  const se=new T.Vector2(...ring[1] as [number,number]),ne=new T.Vector2(...ring[30] as [number,number]),frontAxis=ne.clone().sub(se),frontLength=frontAxis.length();frontAxis.normalize();
@@ -39,14 +40,14 @@ export function buildBetaBoulders(_w:number,_d:number,b:BuildingTools):void{
    // Source entrance occupies the SE end. Dark projecting cheeks/head make
    // glass visibly recessed within the frame, without moving native wall scope.
    for(const [lo,hi] of[[.026,.366],[.39,.985]]){const c=frontageClip(p,q,lo,hi);if(c&&c[0].distanceTo(c[1])>.3)ribbon(c[0],c[1],.45,3.85,'concrete',.12)}
-   const portal=frontageClip(p,q,.01,.39);if(portal)portalSolid(portal[0],portal[1],4.3,.92);
+   const portal=frontageClip(p,q,.012,.388); // head sits just inside the cheeks' outer faces (no coplanar end caps)if(portal)portalSolid(portal[0],portal[1],4.3,.92);
    for(const [lo,hi] of[[.01,.026],[.366,.39]]){const c=frontageClip(p,q,lo,hi);if(c)portalSolid(c[0],c[1],.08,4.65)}
    // Real entrance doors remain distinguishable inside the broad glazed portal.
    const door=frontageClip(p,q,.17,.225);if(door){ribbon(door[0],door[1],.18,3.5,'dark',.21);panel(door[0],door[1],3.72,.14,'dark',.31)}
   }else if(front)ribbon(p.clone().lerp(q,.018),q.clone().lerp(p,.018),.45,4.1,'concrete');else ribbon(p.clone().lerp(q,.04),q.clone().lerp(p,.04),1.1,2.6,'concrete');
   panel(p,q,5.22,.28,'white',.18);panel(p,q,10.25,.65,'white',.18);panel(p,q,14.55,.5,'white',.18);
   // Slim actual roof guard rails retain the industrial terrace silhouette.
-  panel(p,q,15.18,.075,'dark',.2);panel(p,q,15.57,.06,'dark',.2);for(let k=0;k<=Math.ceil(length/3);k++){const t=q.clone().sub(p).normalize(),n=new T.Vector2(-t.y,t.x),m=p.clone().lerp(q,k/Math.ceil(length/3)).addScaledVector(n,.2);b.box(m.x,15.1,m.y,.05,.53,.05,'dark')}
+  panel(p,q,15.18,.075,'dark',.2,.04);panel(p,q,15.57,.06,'dark',.2,.04);for(let k=0;k<=Math.ceil(length/3);k++){const t=q.clone().sub(p).normalize(),n=new T.Vector2(-t.y,t.x),m=p.clone().lerp(q,k/Math.ceil(length/3)).addScaledVector(n,.2);b.box(m.x,15.1,m.y,.05,.53,.05,'dark')}
  }
  // Upper office addition follows its surveyed irregular outline and atrium.
  for(const roof of data.roofs.filter(r=>[168,179].includes(r.index)))for(const ring of roof.rings){for(let i=0;i<ring.length;i++){const p=new T.Vector2(ring[i][0],ring[i][1]),q=new T.Vector2(ring[(i+1)%ring.length][0],ring[(i+1)%ring.length][1]);if(p.distanceTo(q)>4)ribbon(p.clone().lerp(q,.04),q.clone().lerp(p,.04),15.4,2.65,'dark',.14)}}

@@ -31,6 +31,8 @@ export function buildFireStationWillem(_w:number,_d:number,b:BuildingTools){
  function glazedRoof(index:number){const part=source.surveyRoofParts.find(r=>r.index===index)!,ps=part.rings[0],ring=ps.map(p=>new T.Vector2(p[0],p[2])),tri=T.ShapeUtils.triangulateShape(ring,[]),values:number[]=[];
   for(const t of tri){let vs=t.map(i=>new T.Vector3(ps[i][0],ps[i][1]+.035,ps[i][2]));if(vs[1].clone().sub(vs[0]).cross(vs[2].clone().sub(vs[0])).y<0)vs=[vs[0],vs[2],vs[1]];for(const v of vs)values.push(v.x,v.y,v.z);}
   const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(values,3));g.computeVertexNormals();const cleaned=cleanRoof(g);cleaned.userData={tag:'roof',rooflight:index};b.add(cleaned,'glass');
+  // Upstand skirt: the slab is cut open under the rooflight, so close the rim up to the glazing's edge (sunk 5 mm into the slab) instead of leaving a boundary loop around every rooflight.
+  for(let i=0;i<ps.length;i++){const p=ps[i],q=ps[(i+1)%ps.length],hp=Math.max(p[1]+.035,17.9),hq=Math.max(q[1]+.035,17.9);if(Math.hypot(q[0]-p[0],q[2]-p[2])<.05)continue;const v=[p[0],17.885,p[2],q[0],17.885,q[2],q[0],hq,q[2],p[0],17.885,p[2],q[0],hq,q[2],p[0],hp,p[2]];const sg=new T.BufferGeometry();sg.setAttribute('position',new T.Float32BufferAttribute(v,3));sg.computeVertexNormals();b.add(sg,'white');}
   for(let i=0;i<ps.length;i++){const p=ps[i],q=ps[(i+1)%ps.length],P=new T.Vector3(p[0],p[1]+.09,p[2]),Q=new T.Vector3(q[0],q[1]+.09,q[2]);if(P.distanceTo(Q)>.65)beam(P,Q,.08,'white');}
   // Repeated cross-bars on the actual triangle planes, clipped to their polygons.
   // A vertical first-hit intersection finds the precise supported height.
