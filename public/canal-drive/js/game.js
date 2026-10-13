@@ -576,6 +576,8 @@ class Game {
     if (!this.player.ferryOrigin) {
       this._updateBridgeQuiz(previousPlayerPosition);
       this._updateCanalQuiz(dt);
+    } else {
+      this._updateQuizOnFerry(dt);
     }
 
     this._updateLandmarks(dt);

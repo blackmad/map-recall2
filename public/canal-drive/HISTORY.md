@@ -1,5 +1,58 @@
 # Canal Recall — what is built
 
+## Gameplay follow-ups: review-ride planner, exposure scheduling, questions-a-minute setting, finish-card story, ferry prompts (2026-10-13)
+
+Lane `gameplay/followups-20261013` (Sonnet), merged with the `game.js` ferry
+branch and the `index.html` style block added by the integrator.
+
+**Review-ride planner, two independent bugs.** (1) `pickReviewRoute` treats a
+due name within 0.2 km of the landmark line as "covered" and only uncovered
+names get a via; Avenhornstraat sits within 0.2 km of the line to Kazerne
+Zebra, so every pick was "covered" with no via and no runner-up, and
+`game-route.js` only plans when there are alternatives, a via or a stop. The
+chosen pair is now also offered as runner-ups with each grazed name as a via
+(`REVIEW_MISSED_VIA_TRIES = 2`), dropped when the direct ride already passes
+every name; `_reviewRoute` is replaced when the via name changes. (2)
+`planLearningRoadRoute` rejected any via path with a repeated position; two
+graph nodes can share a position (a bridge ramp meeting its deck), so every
+stretch of Avenhornstraat failed whatever the via. Consecutive equal
+positions now count once in `roadGraph.ts`; turn-back, lollipop and dead-end
+rejections unchanged. The spec seeds `Math.random` (mulberry32) so the origin
+is stable; no assertion weakened; `check-play-delight.ts` allows a runner-up
+that is the pick's own pair with a via.
+
+**Exposure.** `RecallStore.expose()` (`recallExposure.ts`) parks a shown-but-
+not-asked name: 30 min first, doubling per repeat, capped at a day; not a
+review event; `ReviewState` gained optional `exposures`/`lastExposedAt`;
+`buildKnowledgeReview` skips exposure-only states. `answerPath.ts` already
+called it.
+
+**Setting.** `maxAsksPerMinute` 1/2/3/0, default 2, persisted; hidden
+`<select id="max-asks-per-minute">` plus a "Questions a minute" strip row in
+`OverlayApp.tsx`; Storybook `AdvancedOptionsQuestionsOffPhone`; e2e checks
+the choice reaches the budget and survives a reload.
+
+**Finish-card ghost was the story, not the runtime**: the finish story drew
+`_renderFinish()` twice (once at mount, again when the photo loaded) on a
+canvas it never cleared, so the translucent plaque showed the first draw
+through, and on desktop the scrim was applied twice (old desktop baselines
+were darker than the game). The story now repaints the map before each draw;
+five baselines re-recorded (`finish-card`, `-calm-mode`, `-bike`, `-transit`,
+`portrait-finish-card`).
+
+**Styles and ferry.** `ridingPromptStyleBlock()` emits the exact
+`<style id="canal-riding-prompt-styles">` pasted into `index.html`, with the
+runtime injection kept as a fallback and a drift test. `_updateQuizOnFerry`
+ticks the feedback timeout and an open riding prompt on ferry frames
+(`ferryPrompt.test.ts`); `game.js` calls it in the ferry branch of
+`_updateRacing`.
+
+Checks: lint, 42 game unit tests, answer-path, bottom-HUD (160 + 384
+scenarios), route-selection, road-graph, preferences, play-delight,
+road-name-heading, Storybook build, `riding-pacing`/`review-ride`/
+`storybook-visual` e2e (54): all pass.
+
+
 ## Migration steps 1 and 2 behind flags: BAG tiles + covers, cityLook atlas; Hoofdbureau van Politie (2026-10-13)
 
 **BAG tiles** (lane `tiles/bag-base-20261013`, Sonnet): correction to the plan —
