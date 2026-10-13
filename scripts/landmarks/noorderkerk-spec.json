@@ -4,7 +4,14 @@
   "landmarkId": "extract_landmarks_433737872",
   "modelUrl": "./models/noorderkerk.glb",
   "suppressOsmIds": [
-    "NL.IMBAG.Pand.0363100012177304"
+    "NL.IMBAG.Pand.0363100012177304",
+    "w749871262",
+    "w749871263",
+    "w749871271",
+    "w749871272",
+    "w749269859",
+    "w749269858",
+    "w749871267"
   ],
   "spatialSuppression": false,
   "footprint": {
