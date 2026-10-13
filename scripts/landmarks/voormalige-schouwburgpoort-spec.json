@@ -1,0 +1,49 @@
+{
+  "id": "voormalige-schouwburgpoort",
+  "name": "Voormalige Schouwburgpoort",
+  "assetKind": "standalone-structure",
+  "landmarkId": "extract_landmarks_604950476",
+  "modelUrl": "./models/voormalige-schouwburgpoort.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "surveyed": {
+    "anchor": [
+      4.88423070093718,
+      52.36927737255137
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Baked east/south native axes. Current official BAG neighbor corner gap; front 92.45823764540219 degrees. Gate height/depth are photo estimates, not BAG measurements."
+  },
+  "footprint": {
+    "centre": [
+      4.88423070093718,
+      52.36927737255137
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 7.8345600221156095,
+    "widthMetres": 0.66
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 92.45823764540219,
+  "doubleSided": false,
+  "materialOverrides": {
+    "white": "#dedad1",
+    "stone": "#a99d85",
+    "greyBrick": "#8c806d",
+    "dark": "#313b39",
+    "gold": "#c9ae72"
+  },
+  "routeCenter": [
+    52.36927695643142,
+    4.884246575995003
+  ],
+  "heightMetres": 6.493314883882176,
+  "attribution": {
+    "title": "Voormalige Schouwburgpoort — original surviving gate geometry",
+    "author": "Canal Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/2587",
+    "licence": "Original project geometry",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Native original gate with three arches, side grilles, source-supported Vondel Roman-serif inscription and carved scrolls. Body width reconciled to adjoining official BAG corners; gate pose, height/depth are source/photo inferences. All neighboring buildings retained; no replacement identity invented."
+  }
+}

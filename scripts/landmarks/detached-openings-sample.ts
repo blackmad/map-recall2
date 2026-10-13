@@ -3,7 +3,7 @@
  * a list of landmark GLBs (deterministic, spread over each model), render each in context, square-on and grazing with
  * the flagged assembly boxed, and write a contact sheet plus a JSON list to classify by eye.
  *
- *   npx tsx scripts/landmarks/detached-openings-sample.ts --ids=a,b,c [--per=2] [--kind=floating|overhang] [--out=dir] [--all]
+ *   npx tsx scripts/landmarks/detached-openings-sample.ts --ids=a,b,c [--per=2] [--kind=floating|overhang|buried] [--severity=any] [--out=dir] [--all]
  *   --glb-dir=dir   read <id>.glb from another directory (before/after comparisons)
  *   --at=x,y,z      only issues whose box contains/near this point (before/after of one spot)
  */
@@ -44,7 +44,7 @@ async function main() {
   for (const id of ids) {
     const file = path.join(glbDir, `${id}.glb`);
     const s = await loadMaterialSoup(file);
-    let issues = auditOpenings(s).issues.filter(i => i.severity === 'fail' && (!kind || i.kind === kind));
+    let issues = auditOpenings(s).issues.filter(i => (arg('severity') === 'any' || i.severity === 'fail') && (!kind || i.kind === kind));
     if (at) issues = issues.filter(i => [0, 1, 2].every(k => at[k] >= i.min[k] - 1 && at[k] <= i.max[k] + 1));
     // Spread: every n-th issue in a stable order (by position), not just the worst.
     issues.sort((a, b) => a.centre[0] - b.centre[0] || a.centre[2] - b.centre[2] || a.centre[1] - b.centre[1]);

@@ -73,9 +73,9 @@
       2.6,
       0.6
      ],
-     "plan": "open",
+     "plan": "modelled",
      "seenIn": "b_20241216_0911_Track03_Sphere_00008",
-     "note": "cheap: signage.ts stroke font plus a flat emblem slab; the builder has only a blank blue plate on a bracket at the end block. For the builder lane."
+     "how": "hoofdbureauHooks: POLITIE in 3x5 block letters (0.1 m pixels, 2.7 m wide) on the wall over the entrance canopy, centred on the entrance bay (no emblem)"
     },
     {
      "id": "e-entrance-canopy",
@@ -257,9 +257,10 @@
       1.5,
       2
      ],
-     "plan": "open",
+     "plan": "simplified",
      "seenIn": "TMX7316010203-001979_pano_0001_000176",
-     "note": "not identified in the sources found; intent notes: not modelled. Check the Beeldbank and the Krop catalogue"
+     "note": "not identified in the sources found; intent notes: not modelled. Check the Beeldbank and the Krop catalogue",
+     "how": "hoofdbureauHooks: stone console at 11.3 m, u 3.9 on the 27 m quay wall, two blocky standing figures (legs, torso, head) 2.5 m tall; maker and attributes not identified"
     },
     {
      "id": "sw-glazed-bay",
@@ -454,7 +455,7 @@
       5
      ],
      "plan": "modelled",
-     "how": "addEndWallRelief: shield with a pale and three saltires under an imperial crown, two extruded rampant lions",
+     "how": "addEndWallRelief: shield with a pale and three saltires under an imperial crown, two extruded rampant lions; re-registered 2026-10-13 on the rectified 2022 pano: arms centre s 6.6, banner band 11.8-11.9 m with both curls, figures on 1.2 m consoles (heads 10.3 m), round windows at 7.2 m on a 2.26 m pitch, 5 m ground storey on four columns; left of the wall is plain brick",
      "seenIn": "TMX7316010203-002553_pano_0000_001265",
      "note": "Wapen van Amsterdam with keizerskroon and two lions (nl.wikipedia Elandsgracht 117, Beeldhouwwerken)",
      "sheetBox": [
@@ -473,7 +474,7 @@
       2.5
      ],
      "plan": "modelled",
-     "how": "addEndWallRelief banner ribbon",
+     "how": "addEndWallRelief banner ribbon; re-registered 2026-10-13 on the rectified 2022 pano: arms centre s 6.6, banner band 11.8-11.9 m with both curls, figures on 1.2 m consoles (heads 10.3 m), round windows at 7.2 m on a 2.26 m pitch, 5 m ground storey on four columns; left of the wall is plain brick",
      "seenIn": "TMX7316010203-002553_pano_0000_001265",
      "sheetBox": [
       0.2,
@@ -507,7 +508,7 @@
       2.4
      ],
      "plan": "simplified",
-     "how": "turned robe/torso, sphere head and box arms on stone brackets; the attributes (boy and dragon, lion on a cog-ship shield, winged wheel) are not modelled",
+     "how": "turned robe/torso, sphere head and box arms on stone brackets; the attributes (boy and dragon, lion on a cog-ship shield, winged wheel) are not modelled; re-registered 2026-10-13 on the rectified 2022 pano: arms centre s 6.6, banner band 11.8-11.9 m with both curls, figures on 1.2 m consoles (heads 10.3 m), round windows at 7.2 m on a 2.26 m pitch, 5 m ground storey on four columns; left of the wall is plain brick",
      "seenIn": "TMX7316010203-002553_pano_0000_001265",
      "note": "Hildo Krop: De kinderpolitie, Het gezag, De verkeerspolitie (travertine; replicas by Ton Mooy 1996/97; nl.wikipedia Elandsgracht 117)",
      "sheetBox": [
@@ -526,7 +527,7 @@
       0.7
      ],
      "plan": "modelled",
-     "how": "addEndWallRelief round windows",
+     "how": "addEndWallRelief round windows; re-registered 2026-10-13 on the rectified 2022 pano: arms centre s 6.6, banner band 11.8-11.9 m with both curls, figures on 1.2 m consoles (heads 10.3 m), round windows at 7.2 m on a 2.26 m pitch, 5 m ground storey on four columns; left of the wall is plain brick",
      "seenIn": "TMX7316010203-002553_pano_0000_001265",
      "sheetBox": [
       0.22,
@@ -544,7 +545,7 @@
       3.5
      ],
      "plan": "modelled",
-     "how": "addEndWallRelief recess, lintel and columns",
+     "how": "addEndWallRelief recess, lintel and columns; re-registered 2026-10-13 on the rectified 2022 pano: arms centre s 6.6, banner band 11.8-11.9 m with both curls, figures on 1.2 m consoles (heads 10.3 m), round windows at 7.2 m on a 2.26 m pitch, 5 m ground storey on four columns; left of the wall is plain brick",
      "seenIn": "TMX7316010203-002553_pano_0000_001265",
      "sheetBox": [
       0.18,

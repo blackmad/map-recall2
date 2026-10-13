@@ -100,17 +100,19 @@ export function buildOpstandingskerk(_w: number, _d: number, b: BuildingTools) {
     onWall(k, f, s * 0.36, y0, 0.42, (westEnd ? 15.0 : 14.3) - y0, 0.06, 'glass');
   }
   // East gable (RCE 20357069): a diamond lattice of 43 small square windows in nine staggered columns (4, 5 x 7, 4)
-  // centred at 10.8 m; three entrance doors at the head of the steps under a name board; a plain brick pier rising
+  // centred at 9.1 m; three entrance doors at the head of the steps under a name board; a plain brick pier rising
   // behind the south corner.
   {
     const L = Math.hypot(E2[0] - E1[0], E2[1] - E1[1]), d: V2 = [(E2[0] - E1[0]) / L, (E2[1] - E1[1]) / L], n: V2 = [-d[1], d[0]];
     const f = frame(E1, n), s = f.tangent[0] * d[0] + f.tangent[1] * d[1] > 0 ? 1 : -1;
     for (let c = -4; c <= 4; c++) {
-      const count = Math.abs(c) === 4 ? 4 : 5, lift = c % 2 ? 0.275 : -0.275;
-      for (let j = 0; j < count; j++) onWall(k, f, s * (L / 2 + c * 0.8), 10.8 + lift + (j - (count - 1) / 2) * 1.1 - 0.22, 0.4, 0.45, 0.08, 'glass');
+      // Rectified pano (TMX7316010203-000293_pano_0000_004613, 50 px/m, 2026-10-13): column pitch 0.84 m, vertical pitch 1.24 m
+      // with a half-pitch stagger, window 0.44 m, lattice centre 9.1 m above the landmark ground (it was drawn 1.7 m too high).
+      const count = Math.abs(c) === 4 ? 4 : 5, lift = c % 2 ? 0.31 : -0.31;
+      for (let j = 0; j < count; j++) onWall(k, f, s * (L / 2 + c * 0.84), 9.1 + lift + (j - (count - 1) / 2) * 1.24 - 0.22, 0.4, 0.45, 0.08, 'glass');
     }
-    for (const c of [-1.6, 0, 1.6]) onWall(k, f, s * (L / 2 + c), 1.2, 1.1, 2.6, 0.08, 'dark');
-    onWall(k, f, s * L / 2, 5.6, 3.8, 0.6, 0.1, 'white');
+    for (const c of [-1.6, 0, 1.6]) onWall(k, f, s * (L / 2 + c), 1.2, 1.1, 2.2, 0.08, 'dark');
+    onWall(k, f, s * L / 2, 4.3, 3.8, 0.6, 0.1, 'white');
   }
   extrude(k, [[15.6, -6.2], [17.1, -6.2], [17.1, -7.6], [15.6, -7.6]], 0, 19.0, 'brick');
 
