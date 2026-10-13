@@ -1,0 +1,22 @@
+{
+  "id": "hoofdbureau-elandsgracht",
+  "bagPand": "NL.IMBAG.Pand.0363100012169550",
+  "address": "Elandsgracht 117, 1016 TT Amsterdam (corner of Marnixstraat 260-262)",
+  "summary": "A 164 x 83 m (native extent), Z-shaped complex of 5-6 storey wings round courtyards, one BAG pand, built 1941 (BAG) and extended later. 3DBAG LoD2.2 gives 237 wall surfaces and a roof max of 24.8 m. The brief assumed a single 1930s traditionalist block with a carved portal and a crowned corner tower; the panoramas and 3DBAG show a composite of at least four facade types and no tower or carved portal.",
+  "findings": [
+    {"wall": "NW, 47.4 m (3DBAG panel 80), bearing 337", "evidence": "pano 2016-08-17 TMX7316010203-000076_pano_0000_006599, 2025-06-30 recording_2025-06-30_05-16-46_00546", "reads": "dark brick, three storeys of white steel-window ribbons (~14 bays) under a recessed white top ribbon, glazed ground ribbon right, gated vehicle entrance left, round (porthole) windows on the end pier; trees in front"},
+    {"wall": "SW, 27 m (panel 3), bearing 247, on the Singelgracht", "evidence": "pano 2021-01-25 TMX7316010203-001979_pano_0001_000176, 2017-03-10 TMX7316010203-000199_pano_0002_000242", "reads": "pinkish stone cladding with square yellow-framed windows (3 rows of ~11), yellow-framed top ribbon, tall yellow-framed glazed bay at ground, stone sculpture group on a bracket, brick quay base; a later wing, not the 1941 brick"},
+    {"wall": "SW, 60 m (panel 29), bearing 247, raised ground 8.6 m", "evidence": "review sheet 2021 pano", "reads": "white steel-window ribbon wing of two storeys over a brick base, a bridge-like upper wing"},
+    {"wall": "SE, 35 m (panel 7), bearing 157", "evidence": "pano 2025-07-03 recording_2025-07-03_10-31-52_00292, 2021-09-09 TMX7316010203-002306_pano_0000_000273", "reads": "1941 brick: sash windows with heavy white stone hoods and sills, chequer brick bands between window rows, barred basement windows"},
+    {"wall": "NE, 13.9 m end block (panel 19)", "evidence": "pano 2020-08-31 TMX7316010203-001900_pano_0004_000544, 2024-12-16 b_20241216_0911_Track03_Sphere_00015", "reads": "Marnixstraat end block: brick, ribbon windows on the middle floors, glazed ground floor with a stair, flat canopy on one post, small blue POLITIE sign on a bracket, curved glazed top storey under an overhanging roof, a balcony at first floor; 3DBAG has it as a plain box with a chimney"}
+  ],
+  "notSupportedByEvidence": ["corner tower with crown", "carved stone entrance portal with lettering", "steep tiled roofs with dormers (3DBAG roofs are mostly low-slope or flat; no panorama sees the roofs)"],
+  "sources": [
+    {"name": "3DBAG LoD2.2 (item NL.IMBAG.Pand.0363100012169550)", "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169550", "licence": "CC BY 4.0"},
+    {"name": "BAG (footprint, 1941, kantoorfunctie)", "url": "https://bag.basisregistraties.overheid.nl/", "licence": "CC0 / open data"},
+    {"name": "Gemeente Amsterdam panoramas (ids above)", "url": "https://api.data.amsterdam.nl/panorama/", "licence": "CC BY 4.0, faces and plates blurred by the publisher"},
+    {"name": "Wikipedia, Elandsgracht", "url": "https://en.wikipedia.org/wiki/Elandsgracht", "licence": "CC BY-SA 4.0", "used": "only the location: Police Headquarters at Elandsgracht 117 / corner of Marnixstraat 260-262"},
+    {"name": "Amsterdam municipal heritage appendix (search snippet)", "url": "https://www.ruimtelijkeplannen.nl/documents/NL.IMRO.0363.A1102BPSTD-VG01/tb_NL.IMRO.0363.A1102BPSTD-VG01_5.pdf", "licence": "public document", "used": "'Marnixstraat 260 Hoofdkantoor politie, dienst PW (E. Messer), 1941, orde 2' as quoted by a web search; the PDF itself was not opened, so the architect is a lead, not a verified fact"}
+  ],
+  "beeldbank": "Stadsarchief Amsterdam Beeldbank (archief.amsterdam/beeldbank) returned HTTP 403 to the automated fetch in this session; no 1930s drawing or photograph was used and no per-record rights were recorded. Search 'Hoofdbureau van Politie Elandsgracht 117' by hand before any claim about the original design."
+}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "hoofdbureau-elandsgracht",
+  "pandId": "0363100012169550",
+  "address": "Hoofdbureau van Politie, Elandsgracht 117, Amsterdam (Jordaan, corner of Marnixstraat)",
+  "sources": [
+    {"id": "pano-2025-06-30-nw", "kind": "street-panorama", "capturedAt": "2025-06-30", "image": "staging/pand-reference/0363100012169550/front-alt.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-30_05-16-46_00546/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+    {"id": "pano-2025-07-03-se", "kind": "street-panorama", "capturedAt": "2025-07-03", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-03_10-31-52_00292/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+    {"id": "pano-2021-01-25-sw", "kind": "street-panorama", "capturedAt": "2021-01-25", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001979_pano_0001_000176/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+    {"id": "pano-2020-08-31-ne", "kind": "street-panorama", "capturedAt": "2020-08-31", "image": "staging/pand-reference/0363100012169550/thumb.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001900_pano_0004_000544/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
+  ],
+  "walls": [
+    {"wallSurfaces": [27, 36, 177, 10], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 12, "windows": "plain", "ground": "system"},
+    {"wallSurfaces": [7, 54, 48, 58, 16, 75, 166, 13], "system": "brick-bay-grid", "storeys": 5, "windows": "plain", "ground": "system"},
+    {"wallSurfaces": [4], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 22, "windows": "plain", "ground": "system", "palette": {"brick": "#a77b6a", "frame": "#d9a521"}},
+    {"wallSurfaces": [233, 190, 72, 167, 87, 102], "system": "brick-bay-grid", "storeys": 4, "windows": "plain", "ground": "system"},
+    {"wallSurfaces": [171, 113], "system": "brick-bay-grid", "storeys": 2, "windows": "plain", "ground": "system"},
+    {"wallSurfaces": [2, 104], "system": "brick-bay-grid", "storeys": 3, "windows": "plain", "ground": "system"},
+    {"wallSurfaces": [38, 121], "system": "ribbon-windows", "storeys": 5, "windows": "two-light", "ground": "glazed", "entrance": {"bay": 4, "storeys": 1, "canopy": true}, "signage": {"text": "POLITIE", "mount": "canopy"}},
+    {"wallSurfaces": [3], "system": "brick-bay-grid", "storeys": 6, "windows": "plain", "ground": "system"},
+    {"wallSurfaces": [53, 155], "system": "brick-bay-grid", "storeys": 3, "windows": "plain", "ground": "system"},
+    {"wallSurfaces": [220, 46], "system": "brick-bay-grid", "storeys": 3, "windows": "plain", "ground": "system"},
+    {"wallSurfaces": [41, 8], "system": "brick-bay-grid", "storeys": 5, "windows": "plain", "ground": "system"},
+    {"wallSurfaces": [216, 76], "system": "brick-bay-grid", "storeys": 3, "windows": "plain", "ground": "system"},
+    {"wallSurfaces": [89, 44, 174, 119], "system": "brick-bay-grid", "storeys": 4, "windows": "plain", "ground": "system"},
+    {"wallSurfaces": [231, 164, 228, 9, 105, 193], "system": "brick-bay-grid", "storeys": 3, "windows": "plain", "ground": "system"},
+    {"wallSurfaces": [30], "system": "brick-bay-grid", "storeys": 3, "windows": "plain", "ground": "system"}
+  ],
+  "otherWalls": "blank",
+  "roof": {"material": "red-tile"},
+  "palette": {"brick": "#6a4036", "frame": "#e8e4da", "door": "#3a3a3a", "stone": "#e2dccd", "wallMaterial": "brick"},
+  "notes": [
+    "walls[0] (3DBAG panels 80, 26, 9): the long north-west wall on the street (panorama 2025-06-30, 2016-08-17) is dark brick with white steel-window ribbons, about 14 bays on three storeys under a recessed white top ribbon; ground floor has a glazed ribbon on the right and a gated vehicle entrance on the left (not modelled). The courtyard-side walls of the same wing (panel 26) are assumed the same (inferred).",
+    "walls[2] (panel 3, surface 4): the south-west wall on the Singelgracht (panorama 2021-01-25) is NOT brick: pinkish stone cladding with square yellow-framed windows in three rows of ~11, a yellow-framed top ribbon, a large yellow-framed glazed bay at ground and a stone sculpture group on a bracket at the left. Modelled as a bay grid with a stone-pink wall and yellow frames; the sculpture and the glazed bay are not modelled.",
+    "walls[8], [10], [11] (panels 48, 7, 13: the 157 deg south-east fronts): 1941 brick with sash windows and heavy white stone hoods and sills, brick chequer bands between the window rows (panorama 2025-07-03, 2021-09-09). The hoods are hand-modelled by the builder; the chequer bands and barred basement windows are not.",
+    "walls[6] (panel 19, surfaces 38 and 121): the Marnixstraat end block (panorama 2020-08-31, 2024-12-16): brick with a ribbon of two-light windows on the middle floors and a glazed ground floor with a stair and a flat canopy on one post. 3DBAG gives it a plain flat top; the curved glazed top storey with its overhanging roof is not modelled.",
+    "Walls of groups [1], [3]-[5], [9], [12]-[14] are inferred from the eaves height and the neighbouring walls: no panorama reaches them; windows follow the default bay pitch.",
+    "walls[7] and walls[14] stand on raised ground in 3DBAG (16.9 m and 8.6 m): the fit counts storeys from the 3DBAG ground, so windows start at the first storey line above the raised ground. Surfaces with a sliver width (3DBAG strips under 0.5 m) are left out of the groups: they break the block kit's attachment gate."
+  ]
+}
