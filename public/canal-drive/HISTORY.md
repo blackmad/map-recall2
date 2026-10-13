@@ -1,5 +1,42 @@
 # Canal Recall — what is built
 
+## Roofs read from the orthophoto: slots, furniture, dormers (2026-10-13)
+
+User: "many of these roofs have decks, HVAC equipment, etc., could look at
+aerial imagery" and "so much grey" (Kinkerbuurt aerial).
+`roofs/orthophoto-slots-20261013` (Opus) samples PDOK `Actueel_ortho25`
+(CC BY 4.0, open data) on the RD grid inside each pand's outline eroded
+0.5 m, removes the mosaic's measured colour cast, and classifies every roof
+into twelve slots (`ROOF_SLOT_TONES` in `palette.ts`: gravel, bitumen
+dark/light, white membrane, pantile red/dark, slate, zinc, sedum, solar,
+terrace, glass), each with a display base and an sRGB luma band a measured
+tint is pulled into but never outside. Hand-labelled 100 roofs in
+`scripts/roofs/fixtures`: 75/100 slot agreement (tuning half 76 %, held-out
+74 %); brown on a flat roof is felt or a deck, so pantile-dark is kept for
+sloped roofs only. Extract: 333,695 roofs read, 320,601 stored at
+confidence ≥ 0.35, 1.61 MB over 272 z14 tiles
+(`public/data/extracts/amsterdam/roof-facts/`). The city is slate 54.5 %,
+dark bitumen 18.5 %, gravel 11.5 %, pantile red 8.9 %, white membrane
+1.8 %, pantile dark 1.5 %, sedum 1.1 %: the grey is real, but it is now
+the right greys in the right places, and the reds land where the pantiles
+are. Pitched mid-grey concrete tile used to draw near-black in the old
+62–104 slate band; the band is 62–140 now. Roof furniture
+(`detectFurniture.ts`): 16,089 roofs carry 39,767 measured units (plant,
+lift houses, chimneys as boxes, 10 triangles each) replacing the guessed
+roof extras. 3DBAG attributes (`bag3d-roof-attributes.mts`): 50,637 of
+221,172 slanted pands carry flat roof parts that are dormers' tops, 635
+are glass roofs; planned dormers follow the flag instead of a hash. The
+generic tier reads the sidecar through a tile enricher composed with the
+construction-year enricher (five lines in `vector-map.js`; `?roofFacts=0`
+turns it off). Cost on the fixed desktop route: map render 2.02 → 2.07 ms,
+three.js layers 0.76 → 0.76 ms, draw calls unchanged.
+`tests/e2e/roof-facts-shots.spec.ts` takes before/after views and the
+building layer's per-frame cost; `contact-sheet.mts` draws the ortho crop
+beside the top-down render for review. Two flat-roof tables now coexist
+(`FLAT_ROOF_TONES` from the mood pass for unmeasured roofs, slot tones for
+measured ones); reconciling them is on the board.
+
+
 ## Z-fighting found by audit, not by eye (2026-10-13)
 
 User: "is it possible to automatically find instances of texture fighting
