@@ -93,6 +93,26 @@ const GREETING_BAND_FRAC = 0.055;
 const MIN_FACE_FILL_FRAC = 0.60;
 /** Cap so short names keep a little air without a mid-card strip. */
 const MAX_FACE_FILL_FRAC = 0.78;
+/**
+ * Two-line names (HOOFDDORP-/PLEINBUURT). Review 2026-10-13: each line's face was 0.55 of a
+ * one-line name's, a third of the card at quiz sizes. The stack now nests tighter under a smaller
+ * greeting band, pulls faces like a one-line name and may fill more of the card, so each line keeps
+ * ≥ 0.62 of the one-line face (pinned in test:large-letter-craft).
+ */
+const TWO_LINE = {
+  fontFrac: 0.40,
+  reserveFrac: 0.46,
+  maxPullY: 1.25,
+  /**
+   * Extra air between the first line's feet and the second line's crest, in em, on top of the
+   * layout's 0.72 cap estimate (Anton's real cap is 0.688 em after LARGE_LETTER_FONT_EM_SCALE, so
+   * -0.01 still leaves ~0.02 em × pull, about 4 px, of clear air).
+   */
+  lineAir: -0.01,
+  greetingBandFrac: 0.06,
+  topNeedFrac: 0.035,
+  maxFill: 0.85,
+} as const;
 /** Side air inside the paper clip (faces + outline). */
 const SIDE_INK_CLEAR = 6;
 
@@ -797,8 +817,8 @@ export function measureLargeLetterPostcard(
       ...fittedRaw,
       fontSize: Math.min(
         fittedRaw.fontSize,
-        Math.round(height * 0.34),
-        Math.round((height - greetingReserve - captionReserve) * 0.42),
+        Math.round(height * TWO_LINE.fontFrac),
+        Math.round((height - greetingReserve - captionReserve) * TWO_LINE.reserveFrac),
       ),
     }
     : fittedRaw;
@@ -848,6 +868,7 @@ export function measureLargeLetterPostcard(
   const nameBaselineYs = fitted.lines.map((_, i) => firstBaseline + i * lineGap);
   const idealCenterX = width / 2 - (style.extrusionSteps * extrusionDx) * 0.35;
   const glyphs: GlyphLayout[] = [];
+  const glyphLine: number[] = [];
   for (let li = 0; li < fitted.lines.length; li++) {
     const line = fitted.lines[li];
     const rawSpan = measureLineWidth(
@@ -884,6 +905,7 @@ export function measureLargeLetterPostcard(
         pathWarp,
       ),
     );
+    while (glyphLine.length < glyphs.length) glyphLine.push(li);
   }
 
   const city = props.cityName || 'Amsterdam';
@@ -896,11 +918,11 @@ export function measureLargeLetterPostcard(
     5,
     Math.max(2.8, Math.round(fitted.fontSize * 0.016), style.outlineWidth * 0.85),
   );
-  const greetingBand = borderInset + Math.round(height * (lineCount > 1 ? 0.12 : GREETING_BAND_FRAC));
+  const greetingBand = borderInset + Math.round(height * (lineCount > 1 ? TWO_LINE.greetingBandFrac : GREETING_BAND_FRAC));
   const frame: Bounds = {
     minX: borderInset + FRAME_SAFE_PAD + SIDE_INK_CLEAR,
     // Greeting nests into crests — only a small paper-safe band above the word.
-    minY: greetingBand + (lineCount > 1 ? 14 : 8),
+    minY: greetingBand + 8,
     maxX: width - borderInset - FRAME_SAFE_PAD - SIDE_INK_CLEAR,
     // Keep caption/bike, but don't leave a dead linen void under the word.
     maxY: captionY - 8,
@@ -913,10 +935,18 @@ export function measureLargeLetterPostcard(
       - style.extrusionSteps * Math.abs(extrusionDy) * 0.12,
   );
   const facePullY = Math.min(
-    lineCount > 1 ? 1.15 : MAX_FACE_PULL_Y,
+    lineCount > 1 ? TWO_LINE.maxPullY : MAX_FACE_PULL_Y,
     Math.max(1, targetFaceH / Math.max(1, naturalFaceH)),
   );
   const facePullX = 1;
+  const maxFill = lineCount > 1 ? TWO_LINE.maxFill : MAX_FACE_FILL_FRAC;
+  // Two-line: set the stack's gap from the final pull — the pulled cap height plus a little air.
+  if (lineCount > 1) {
+    const gap = fitted.fontSize * (0.72 * facePullY + TWO_LINE.lineAir);
+    const shift = gap - lineGap;
+    glyphs.forEach((g, i) => { g.baselineY += glyphLine[i] * shift; });
+    for (let i = 1; i < nameBaselineYs.length; i++) nameBaselineYs[i] += i * shift;
+  }
 
   // Re-anchor baselines so pulled faces sit in the vertical frame (not above it).
   // Otherwise paintScaleY collapses the billboard to keep tops on-card.
@@ -1018,7 +1048,7 @@ export function measureLargeLetterPostcard(
         && faces.maxY <= frame.maxY + 4
         && faces.minX >= frame.minX - 8
         && faces.maxX <= frame.maxX + 8
-        && fill <= MAX_FACE_FILL_FRAC;
+        && fill <= maxFill;
       if (ok) lo = mid;
       else hi = mid;
     }
@@ -1043,20 +1073,20 @@ export function measureLargeLetterPostcard(
             && faces.maxY <= frame.maxY + 2
             && faces.minX >= frame.minX - 14
             && faces.maxX <= frame.maxX + 14
-            && fill <= MAX_FACE_FILL_FRAC;
+            && fill <= maxFill;
           if (ok) growLo = mid;
           else growHi = mid;
         }
         scaleY = growLo;
-      } else if (fill0 > MAX_FACE_FILL_FRAC) {
+      } else if (fill0 > maxFill) {
         // Shrink oversized short names back into the comfort band.
-        let lo = Math.max(0.72, scaleY * (MAX_FACE_FILL_FRAC / fill0) * 0.92);
+        let lo = Math.max(0.72, scaleY * (maxFill / fill0) * 0.92);
         let hi = scaleY;
         for (let i = 0; i < 12; i++) {
           const mid = (lo + hi) / 2;
           const faces = measurePaintedFaceBounds(trial(scaleX, mid));
           const fill = (faces.maxY - faces.minY) / height;
-          if (fill > MAX_FACE_FILL_FRAC) hi = mid;
+          if (fill > maxFill) hi = mid;
           else lo = mid;
         }
         scaleY = lo;
@@ -1160,7 +1190,7 @@ export function measureLargeLetterPostcard(
       const fill = (faces.maxY - faces.minY) / height;
       const bottomSpill = painted.maxY - (height - borderInset - 6);
       let factor = 1;
-      if (fill > MAX_FACE_FILL_FRAC) factor = Math.min(factor, MAX_FACE_FILL_FRAC / fill);
+      if (fill > maxFill) factor = Math.min(factor, maxFill / fill);
       if (bottomSpill > 0) {
         factor = Math.min(
           factor,
@@ -1195,7 +1225,7 @@ export function measureLargeLetterPostcard(
       const leftNeed = borderInset + SIDE_INK_CLEAR;
       const rightNeed = width - borderInset - SIDE_INK_CLEAR;
       const topNeed = borderInset + TOP_INK_CLEAR
-        + Math.round(height * (lineCount > 1 ? 0.06 : 0.02));
+        + Math.round(height * (lineCount > 1 ? TWO_LINE.topNeedFrac : 0.02));
       let moved = false;
       if (leftEdge < leftNeed) {
         const dx = leftNeed - leftEdge;
@@ -1865,6 +1895,226 @@ export const POSTCARD_PAINT_FILTER_SVG = `<filter id="${POSTCARD_PAINT_FILTER_ID
   + '<feFuncG type="discrete" tableValues="0 .14 .28 .42 .56 .7 .84 1"/><feFuncB type="discrete" tableValues="0 .14 .28 .42 .56 .7 .84 1"/></feComponentTransfer>'
   + '</filter>';
 const LAYERED_PHOTO_FILTER = `url(#${POSTCARD_PAINT_FILTER_ID}) saturate(1.6) contrast(1.2) brightness(1.08)`;
+/**
+ * Busy or brick-heavy photographs: no posterise and only a light colour lift. The full litho boost
+ * turned Helmersbuurt's brick façades and shopfronts into psychedelic noise (review 2026-10-13).
+ */
+const GLYPH_PHOTO_FILTER_SOFT = 'saturate(1.12) contrast(1.12) brightness(1.06)';
+const LAYERED_PHOTO_FILTER_SOFT = 'saturate(1.08) contrast(1.1) brightness(1.05)';
+
+/** How a letter photograph is coloured: the full litho poster, or a soft lift for busy/brick images. */
+export type PhotoFilterMode = 'poster' | 'soft';
+
+/** A photograph's colour and texture, from a small sample grid (`measurePhotoTone`). */
+export interface PhotoTone {
+  /** Mean HSV saturation, 0..1. */
+  saturation: number;
+  /** Mean hue of the saturated pixels in degrees (0..360), or -1 when the image is near grey. */
+  hue: number;
+  /** Share of pixels that read as brick / terracotta (red-orange, mid saturation and value). */
+  brick: number;
+  /** Mean neighbour luminance step, 0..1: high for façades, shop windows and foliage. */
+  busy: number;
+}
+
+/** The sample grid edge for `measurePhotoTone`. */
+export const PHOTO_TONE_GRID = 32;
+
+/** Tone from RGBA pixels (any size; callers pass a small downsampled grid). */
+export function photoToneFromPixels(data: ArrayLike<number>, width: number, height: number): PhotoTone {
+  let satSum = 0, hx = 0, hy = 0, hueN = 0, brick = 0, busySum = 0, busyN = 0;
+  const lum = new Float32Array(width * height);
+  for (let i = 0; i < width * height; i++) {
+    const r = data[i * 4] / 255, g = data[i * 4 + 1] / 255, b = data[i * 4 + 2] / 255;
+    const max = Math.max(r, g, b), min = Math.min(r, g, b), v = max;
+    const s = max > 0 ? (max - min) / max : 0;
+    lum[i] = 0.299 * r + 0.587 * g + 0.114 * b;
+    satSum += s;
+    if (s > 0.15 && max - min > 0.04) {
+      let h = 0;
+      if (max === r) h = ((g - b) / (max - min)) % 6;
+      else if (max === g) h = (b - r) / (max - min) + 2;
+      else h = (r - g) / (max - min) + 4;
+      const deg = (h * 60 + 360) % 360;
+      hx += Math.cos((deg * Math.PI) / 180) * s;
+      hy += Math.sin((deg * Math.PI) / 180) * s;
+      hueN += 1;
+      if ((deg <= 38 || deg >= 345) && s >= 0.22 && s <= 0.85 && v >= 0.18 && v <= 0.85) brick += 1;
+    }
+  }
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const i = y * width + x;
+      if (x + 1 < width) { busySum += Math.abs(lum[i] - lum[i + 1]); busyN += 1; }
+      if (y + 1 < height) { busySum += Math.abs(lum[i] - lum[i + width]); busyN += 1; }
+    }
+  }
+  const n = Math.max(1, width * height);
+  return {
+    saturation: satSum / n,
+    hue: hueN > n * 0.05 ? (Math.atan2(hy, hx) * 180 / Math.PI + 360) % 360 : -1,
+    brick: brick / n,
+    busy: busyN ? busySum / busyN : 0,
+  };
+}
+
+/**
+ * Sample a loaded photograph on a PHOTO_TONE_GRID² canvas. Null when it cannot be read: a
+ * cross-origin image without CORS taints the canvas (load with `crossOrigin = 'anonymous'`;
+ * Commons thumbnails send `Access-Control-Allow-Origin: *`).
+ */
+export function measurePhotoTone(image: CanvasImageSource): PhotoTone | null {
+  const { w, h } = imageSize(image);
+  if (!w || !h) return null;
+  try {
+    const n = PHOTO_TONE_GRID;
+    const layer = makeLayer(n, n);
+    layer.ctx.drawImage(image, 0, 0, n, n);
+    return photoToneFromPixels(layer.ctx.getImageData(0, 0, n, n).data, n, n);
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Poster or soft. Measured on 32 Commons photographs of Helmersbuurt, Da Costabuurt,
+ * Hoofddorppleinbuurt and Marineterrein (LARGE_LETTER_CRAFT.md, round 5): brick walls and
+ * façades read brick 0.30-0.93 (canals and sky ≤ 0.25); the souvenir shopfront reads busy 0.105-0.106
+ * (quiet streets and canals ≤ 0.09); the rainbow parking garage, red ivy and green-lawn shots read saturation
+ * ≥ 0.39 (a blue canal sky 0.37). Above any of these the 1.6x saturation and posterise go psychedelic.
+ */
+export const PHOTO_FILTER_THRESHOLDS = { brick: 0.3, busy: 0.1, saturation: 0.39 } as const;
+
+export function photoFilterMode(tone: PhotoTone | null | undefined): PhotoFilterMode {
+  if (!tone) return 'poster';
+  const t = PHOTO_FILTER_THRESHOLDS;
+  return tone.brick >= t.brick || tone.busy >= t.busy || tone.saturation >= t.saturation ? 'soft' : 'poster';
+}
+
+/** The CSS filter a layered card puts on a photo window in this mode (references POSTCARD_PAINT_FILTER_SVG). */
+export function layeredPhotoFilter(mode: PhotoFilterMode): string {
+  return mode === 'soft' ? LAYERED_PHOTO_FILTER_SOFT : LAYERED_PHOTO_FILTER;
+}
+
+const toneCache = new WeakMap<object, PhotoTone | null>();
+function cachedTone(image: CanvasImageSource): PhotoTone | null {
+  const key = image as unknown as object;
+  if (!toneCache.has(key)) toneCache.set(key, measurePhotoTone(image));
+  return toneCache.get(key) ?? null;
+}
+
+/** One photograph per letter (the original card), or one photograph across a run of 2–4 letters. */
+export type WindowsPerPhoto = 'letter' | 'run';
+/** Runs aim for at least this many photographs, and use at most RUN_MAX_PHOTOS distinct ones. */
+const RUN_MIN_PHOTOS = 3;
+const RUN_MAX_PHOTOS = 5;
+const RUN_MAX_LETTERS = 4;
+
+/** Which photograph, crop and box fill a group of letters. */
+export interface LetterPhotoRun {
+  /** Letter indices (non-space glyphs, name order). */
+  letters: number[];
+  /** Index into the card's photographs (the caller's list; photograph 0 is the backdrop). */
+  imageIndex: number;
+  focusX: number;
+  focusY: number;
+  box: { x: number; y: number; w: number; h: number };
+}
+
+/** The letter faces' photographs in the caller's order: photograph 0 is the backdrop, so faces start at 1. */
+function faceImageOrder(imageCount: number): number[] {
+  if (imageCount <= 0) return [];
+  if (imageCount === 1) return [0];
+  return [...Array.from({ length: imageCount - 1 }, (_, i) => i + 1), 0];
+}
+
+/**
+ * Split each word (letters between spaces, hyphens and line ends) into runs of 2–4 letters, adding
+ * runs until there are RUN_MIN_PHOTOS when the words allow. Returns run sizes in letter order.
+ */
+export function letterRunSizes(words: number[]): number[] {
+  const runs = words.map((n) => (n <= 0 ? 0 : Math.max(1, Math.ceil(n / RUN_MAX_LETTERS))));
+  const maxRuns = (n: number) => Math.max(1, Math.floor(n / 2));
+  for (;;) {
+    const total = runs.reduce((a, b) => a + b, 0);
+    if (total >= RUN_MIN_PHOTOS) break;
+    let best = -1;
+    for (let i = 0; i < words.length; i++) {
+      if (runs[i] >= maxRuns(words[i])) continue;
+      if (best < 0 || words[i] / runs[i] > words[best] / runs[best]) best = i;
+    }
+    if (best < 0) break;
+    runs[best] += 1;
+  }
+  return words.flatMap((n, i) => {
+    const r = runs[i];
+    if (!r) return [];
+    const base = Math.floor(n / r);
+    const extra = n % r;
+    return Array.from({ length: r }, (_, k) => base + (k < extra ? 1 : 0));
+  });
+}
+
+/**
+ * Where each letter's photograph comes from. `letter`: the original one photograph per letter,
+ * cycling the list. `run`: one photograph across each run of 2–4 adjacent letters on a line, one
+ * cover crop over the run's combined box, 3–5 distinct photographs whatever the list's length.
+ */
+export function letterPhotoRuns(
+  layout: LargeLetterPostcardLayout,
+  imageCount: number,
+  mode: WindowsPerPhoto = 'run',
+): LetterPhotoRun[] {
+  const letterGlyphs = layout.glyphs.filter((g) => g.char !== ' ' && g.char !== '-');
+  const order = faceImageOrder(imageCount);
+  if (mode === 'letter') {
+    return letterGlyphs.map((g, i) => ({
+      letters: [i],
+      imageIndex: order.length ? order[i % order.length] : -1,
+      focusX: letterGlyphs.length <= 1 ? 0.5 : i / Math.max(1, letterGlyphs.length - 1),
+      focusY: 0.35 + (i % 3) * 0.12,
+      box: glyphPhotoBox(layout, g),
+    }));
+  }
+  const ys = layout.nameBaselineYs.length ? layout.nameBaselineYs : [0];
+  const lineOf = (g: GlyphLayout) => ys.reduce((best, y, i) => (
+    Math.abs(y - g.baselineY) < Math.abs(ys[best] - g.baselineY) ? i : best), 0);
+  const words: number[] = [];
+  let current = 0;
+  let line = -1;
+  for (const g of layout.glyphs) {
+    if (g.char === ' ' || g.char === '-') {
+      if (current) words.push(current);
+      current = 0;
+      continue;
+    }
+    const l = lineOf(g);
+    if (l !== line && current) { words.push(current); current = 0; }
+    line = l;
+    current += 1;
+  }
+  if (current) words.push(current);
+  const pool = order.slice(0, RUN_MAX_PHOTOS);
+  const runs: LetterPhotoRun[] = [];
+  let next = 0;
+  letterRunSizes(words).forEach((size, k) => {
+    const letters = Array.from({ length: size }, (_, j) => next + j);
+    next += size;
+    const boxes = letters.map((i) => glyphPhotoBox(layout, letterGlyphs[i]));
+    const x0 = Math.min(...boxes.map((b) => b.x)), y0 = Math.min(...boxes.map((b) => b.y));
+    const x1 = Math.max(...boxes.map((b) => b.x + b.w)), y1 = Math.max(...boxes.map((b) => b.y + b.h));
+    // A photograph used a second time (more runs than photographs) pans to another part of it.
+    const reuse = pool.length ? Math.floor(k / pool.length) : 0;
+    runs.push({
+      letters,
+      imageIndex: pool.length ? pool[k % pool.length] : -1,
+      focusX: reuse === 0 ? 0.5 : reuse % 2 ? 0.12 : 0.88,
+      focusY: 0.45,
+      box: { x: x0, y: y0, w: x1 - x0, h: y1 - y0 },
+    });
+  });
+  return runs;
+}
 
 /** The box a letter's photograph is cover-cropped into. */
 function glyphPhotoBox(layout: LargeLetterPostcardLayout, g: GlyphLayout): { x: number; y: number; w: number; h: number } {
@@ -1894,6 +2144,7 @@ function drawGlyphPhoto(
   img: CanvasImageSource | null,
   focusX: number,
   focusY: number,
+  box: { x: number; y: number; w: number; h: number } = glyphPhotoBox(layout, g),
 ): void {
   if (g.char === ' ' || g.char === '-') return;
   const { width, height } = layout;
@@ -1905,10 +2156,9 @@ function drawGlyphPhoto(
   if (img) {
     const { w: nw, h: nh } = imageSize(img);
     if (nw && nh) {
-      gLayer.ctx.filter = GLYPH_PHOTO_FILTER;
-      const { x: bx, y: by, w: bw, h: bh } = glyphPhotoBox(layout, g);
-      const crop = coverCropFocus(nw, nh, bw, bh, focusX, focusY);
-      gLayer.ctx.drawImage(img, crop.sx, crop.sy, crop.sw, crop.sh, bx, by, bw, bh);
+      gLayer.ctx.filter = photoFilterMode(cachedTone(img)) === 'soft' ? GLYPH_PHOTO_FILTER_SOFT : GLYPH_PHOTO_FILTER;
+      const crop = coverCropFocus(nw, nh, box.w, box.h, focusX, focusY);
+      gLayer.ctx.drawImage(img, crop.sx, crop.sy, crop.sw, crop.sh, box.x, box.y, box.w, box.h);
       gLayer.ctx.filter = 'none';
     } else {
       gLayer.ctx.fillStyle = layout.fallbackFill;
@@ -1974,6 +2224,7 @@ function drawPerspectiveLetterBlock(
   ctx: CanvasCtx,
   layout: LargeLetterPostcardLayout,
   images: CanvasImageSource[],
+  windowsPerPhoto: WindowsPerPhoto = 'run',
 ): void {
   const block = makeLayer(layout.width, layout.height);
   const letterGlyphs = layout.glyphs.filter((g) => g.char !== ' ' && g.char !== '-');
@@ -1987,8 +2238,9 @@ function drawPerspectiveLetterBlock(
     .map((g, i) => ({ g, i }))
     .filter(({ g }) => Math.abs(g.baselineY - y) < lineTol));
 
-  // Stable image index by original glyph order.
-  const imgFor = (i: number) => (images.length ? images[i % images.length] : null);
+  // Each letter's photograph, crop and box (shared across a run), by original glyph order.
+  const runOf: LetterPhotoRun[] = [];
+  for (const run of letterPhotoRuns(layout, images.length, windowsPerPhoto)) for (const i of run.letters) runOf[i] = run;
 
   for (const line of lines) {
     const ordered = shelfRight ? line : [...line].reverse();
@@ -2001,10 +2253,9 @@ function drawPerspectiveLetterBlock(
       }
     }
     for (const { g, i } of ordered) {
-      const focusX = letterGlyphs.length <= 1 ? 0.5 : i / Math.max(1, letterGlyphs.length - 1);
-      const focusY = 0.35 + (i % 3) * 0.12;
+      const run = runOf[i];
       if (recipe) drawGlyphRims(block.ctx, layout, g);
-      drawGlyphPhoto(block.ctx, layout, g, imgFor(i), focusX, focusY);
+      drawGlyphPhoto(block.ctx, layout, g, run && run.imageIndex >= 0 ? images[run.imageIndex] ?? null : null, run?.focusX ?? 0.5, run?.focusY ?? 0.4, run?.box);
       if (!recipe) drawGlyphOutlines(block.ctx, layout, g);
     }
   }
@@ -2172,6 +2423,13 @@ function placeGreetingAboveName(args: {
   // Nest onto the left crest (Waterloo) — baseline sits in the letter tops.
   const nestBaseline = faces.minY + greetingSize * 0.24;
   let greetingY = Math.max(minBaseline, nestBaseline);
+  // A short top line over a long one (DA / COSTABUURT) leaves open paper beside it: the script sits
+  // there, beside the crest, instead of over the short word's faces (the taller two-line stack,
+  // 2026-10-13, left no air above it).
+  if (args.nameBaselineYs.length > 1 && wordFaces.minX - args.borderInset - 16 >= scriptWidth) {
+    greetingX = Math.max(args.borderInset + 10, wordFaces.minX - scriptWidth - 14);
+    greetingY = Math.max(minBaseline, wordFaces.minY + greetingSize * 1.25);
+  }
   let top = estimateGreetingTop(greetingX, greetingY, greetingSize, greetingTiltDeg, args.greeting.length);
   if (top < args.borderInset + 4) {
     greetingY += (args.borderInset + 4) - top;
@@ -2377,6 +2635,8 @@ export function drawLargeLetterPostcard(
      * when given, is still the faded backdrop. Needs `font` (the windows are its outlines).
      */
     photoWindows?: boolean;
+    /** One photograph per letter, or one across each run of 2–4 letters (default; see `letterPhotoRuns`). */
+    windowsPerPhoto?: WindowsPerPhoto;
   },
 ): void {
   const prevFont = paintOtFont;
@@ -2387,10 +2647,8 @@ export function drawLargeLetterPostcard(
     drawPaper(ctx, layout);
     drawFadedBackground(ctx, layout, images[0] ?? null);
     drawLinenTexture(ctx, layout);
-    const faceImages = windows ? []
-      : images.length >= 2
-        ? [...images.slice(1), images[0]]
-        : images;
+    // Letter photographs index the caller's list (photograph 0 is also the backdrop; see letterPhotoRuns).
+    const faceImages = windows ? [] : images;
     ctx.save();
     // Rectangular clip — rounded clip left cream corner mats that read as a fat border.
     ctx.beginPath();
@@ -2401,7 +2659,7 @@ export function drawLargeLetterPostcard(
       layout.height - Math.max(2, (layout.borderInset - 1) * 2),
     );
     ctx.clip();
-    drawPerspectiveLetterBlock(ctx, layout, faceImages);
+    drawPerspectiveLetterBlock(ctx, layout, faceImages, opts?.windowsPerPhoto ?? 'run');
     if (windows) cutPhotoWindows(ctx, layout);
     ctx.globalAlpha = 0.045;
     ctx.globalCompositeOperation = 'multiply';
@@ -2501,15 +2759,23 @@ function cutPhotoWindows(ctx: CanvasCtx, layout: LargeLetterPostcardLayout): voi
 }
 
 export interface LargeLetterPhotoWindow {
-  /** The letter's face as SVG path data relative to `box` (for CSS `clip-path: path()` on the photo). */
+  /**
+   * The window's letter faces as SVG path data relative to `box` (for CSS `clip-path: path()` on the
+   * photo). In run mode it holds every letter of the run, one subpath set per letter (nonzero fill).
+   */
   d: string;
   /** The photograph's box in block coordinates; the photo is cover-cropped into it at `focus`. */
   box: { x: number; y: number; width: number; height: number };
   /** Cover-crop focus, 0..1 on each axis (CSS `object-position` percentages). */
   focusX: number;
   focusY: number;
-  /** Which of the postcard's photographs fills this letter (index into the `images` list). */
+  /** Which of the postcard's photographs fills this window (index into the `images` list). */
   imageIndex: number;
+  /** The letters this window shows (indices of the name's letters, spaces and hyphens skipped). */
+  letters: number[];
+  /** This window's CSS filter: the poster boost, or the soft lift for busy/brick photographs. */
+  filter: string;
+  filterMode: PhotoFilterMode;
 }
 
 export interface LargeLetterPhotoWindows {
@@ -2519,43 +2785,68 @@ export interface LargeLetterPhotoWindows {
   clip: { x: number; y: number; width: number; height: number };
   /** Bottom to top, in paint order. */
   windows: LargeLetterPhotoWindow[];
-  /** The colour-boost the canvas applies to letter photographs, as a CSS filter. */
+  /** The poster colour-boost (the default per-window filter before a photograph is measured). */
   filter: string;
   /** What an empty window shows until its photograph arrives. */
   fallbackFill: string;
+}
+
+export interface LargeLetterPhotoWindowOptions {
+  /** 'run' (default): one photograph across 2–4 letters; 'letter': the original one per letter. */
+  windowsPerPhoto?: WindowsPerPhoto;
+  /**
+   * Measured tones of the photographs (`measurePhotoTone`), by index; a missing entry keeps the
+   * poster filter. Decides each window's `filter`.
+   */
+  photoTones?: ReadonlyArray<PhotoTone | null | undefined>;
 }
 
 /**
  * Where each photograph goes when the card is drawn with `photoWindows`: the same boxes, crops and
  * letter shapes `drawGlyphPhoto` uses, so a page can lay plain images behind the card and the
  * browser loads them in its own time. `imageCount` is how many photographs the card was given.
+ * The canvas cuts every letter face out whichever mode is used, so a run's single image shows
+ * through exactly its letters; neighbours' rims and later lines' extrusion stay painted over it.
  */
 export function largeLetterPhotoWindows(
   layout: LargeLetterPostcardLayout,
   imageCount: number,
   font: OtFont,
+  opts?: LargeLetterPhotoWindowOptions,
 ): LargeLetterPhotoWindows {
-  const letterCount = layout.glyphs.filter((g) => g.char !== ' ' && g.char !== '-').length;
-  // drawLargeLetterPostcard rotates the list so the first photograph (the backdrop) comes last.
-  const faceIndex = (i: number) => {
-    if (!imageCount) return -1;
-    const slot = i % imageCount;
-    return imageCount >= 2 ? (slot + 1) % imageCount : slot;
-  };
-  const windows = blockPaintOrder(layout).flatMap(({ g, i }) => {
-    const cmds = glyphFaceCommands(layout, g, 0, 0, font);
-    if (!cmds) return [];
-    const box = glyphPhotoBox(layout, g);
+  const letterGlyphs = layout.glyphs.filter((g) => g.char !== ' ' && g.char !== '-');
+  const runs = letterPhotoRuns(layout, imageCount, opts?.windowsPerPhoto ?? 'run');
+  const runOf: number[] = [];
+  runs.forEach((run, r) => run.letters.forEach((i) => { runOf[i] = r; }));
+  // Windows in the block's paint order (a run sits where its first painted letter does).
+  const seen = new Set<number>();
+  const runOrder: number[] = [];
+  for (const { i } of blockPaintOrder(layout)) {
+    const r = runOf[i];
+    if (r != null && !seen.has(r)) { seen.add(r); runOrder.push(r); }
+  }
+  const windows = runOrder.flatMap((r): LargeLetterPhotoWindow[] => {
+    const run = runs[r];
+    const box = run.box;
     const shift = (v: number | undefined, by: number) => (v == null ? v : v - by);
-    const inBox = cmds.map((c) => ({
-      ...c, x: shift(c.x, box.x), y: shift(c.y, box.y), x1: shift(c.x1, box.x), y1: shift(c.y1, box.y), x2: shift(c.x2, box.x), y2: shift(c.y2, box.y),
-    }));
+    const parts = run.letters.flatMap((i) => {
+      const cmds = glyphFaceCommands(layout, letterGlyphs[i], 0, 0, font);
+      if (!cmds) return [];
+      return [pathCommandsToSvgD(cmds.map((c) => ({
+        ...c, x: shift(c.x, box.x), y: shift(c.y, box.y), x1: shift(c.x1, box.x), y1: shift(c.y1, box.y), x2: shift(c.x2, box.x), y2: shift(c.y2, box.y),
+      })))];
+    });
+    if (!parts.length) return [];
+    const filterMode = photoFilterMode(run.imageIndex >= 0 ? opts?.photoTones?.[run.imageIndex] : null);
     return [{
-      d: pathCommandsToSvgD(inBox),
+      d: parts.join(' '),
       box: { x: box.x, y: box.y, width: box.w, height: box.h },
-      focusX: letterCount <= 1 ? 0.5 : i / Math.max(1, letterCount - 1),
-      focusY: 0.35 + (i % 3) * 0.12,
-      imageIndex: faceIndex(i),
+      focusX: run.focusX,
+      focusY: run.focusY,
+      imageIndex: run.imageIndex,
+      letters: run.letters,
+      filter: layeredPhotoFilter(filterMode),
+      filterMode,
     }];
   });
   const { paintPivotX: px, paintPivotY: py, paintScaleX: sx, paintScaleY: sy } = layout;
