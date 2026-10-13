@@ -1,0 +1,113 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "hotel-arena-236788",
+ "pandId": "0363100012236788",
+ "address": "'s-Gravesandestraat 55 (Hotel Arena), Amsterdam-Oost: 1890 former orphanage (Roman Catholic Burgerweeshuis) with 2000s hotel wings, red brick with a glazed pavilion",
+ "sources": [
+  {
+   "id": "pano-2020-04-24-w04",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001674_pano_0000_003516/",
+   "image": "staging/pand-reference-walls/0363100012236788/w04-341.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-05-12-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2021-05-12",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002138_pano_0000_000140/",
+   "image": "staging/pand-reference-walls/0363100012236788/w03-162.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-03-23-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2022-03-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002468_pano_0001_001067/",
+   "image": "staging/pand-reference-walls/0363100012236788/w01-161.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    59,
+    199,
+    244,
+    277,
+    374,
+    464,
+    672,
+    788
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 7,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "windows": "cross",
+   "stringCourses": true
+  },
+  {
+   "wallSurfaces": [
+    3,
+    479
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 6,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "windows": "plain",
+   "palette": {
+    "brick": "#c9a27a",
+    "frame": "#3a3a3a",
+    "stone": "#d8c8aa"
+   }
+  },
+  {
+   "wallSurfaces": [
+    1,
+    186,
+    345,
+    395,
+    597,
+    641,
+    723,
+    750
+   ],
+   "system": "ribbon-windows",
+   "storeys": 3,
+   "baysPerStorey": 7,
+   "ground": "glazed",
+   "deepBars": true,
+   "sills": false,
+   "palette": {
+    "brick": "#9a5a40",
+    "frame": "#2a2e30",
+    "stone": "#2a2e30"
+   },
+   "windows": "low"
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#9a5a40",
+  "frame": "#efece4",
+  "door": "#2a2a2a",
+  "stone": "#cfc6b2"
+ },
+ "notes": [
+  "Hotel Arena, 's-Gravesandestraat 55 / Sint Jansstraat (BAG pand 0363100012236788: built 1890; 38 dwellings, a hotel, an assembly and an office unit; 4,757 m2): the former Roman Catholic orphanage on the Oosterpark, converted to the Hotel Arena in 2000 and extended on the south side in the 2010s. Three walls are photographed: the old north wings (w04-341, panorama 2020-04-24: red brick, ground floor of segmental-arched cross windows in white frames, upper floor of tall white-surrounded windows, pale stone string courses), the new hotel wing (w03-162, 2021-05-12: buff horizontally-ribbed brick, deep-reveal dark window openings, a glazed curtain-wall attic, the Hotel Arena entrance gate wall in front) and the glazed garden pavilion on the south (w01-161, 2022-03-23: a glass ground floor under a thin projecting roof with a glass box above and the old slate roof with a timber gable behind).",
+  "Modelled: the old north wings (panels 210, 232, 56, all 3 storeys, red brick, cross windows with white frames, stone string courses; the segmental arches over the ground windows are not drawn because arched openings with frames leave coplanar frame/glass overlap here) as one group; the new wing (panels 2 and 373: 4 storeys, buff brick, plain deep-reveal windows) and the garden pavilion (panels 0 and 314) as a curtain-wall group. Roofs and every unlisted wall are the 3DBAG LoD2.2 shell in the old-brick colour.",
+  "Simplified: the new wing's glass attic is the same window grid as the floors below (the kit has no per-storey system switch), the ribbed buff brick is plain wall colour, the pavilion's thin roof plate and the timber gable are 3DBAG roof geometry only. Not drawn: the entrance gate wall with HOTEL ARENA lettering (a free-standing wall outside the pand), the cast-iron fence on the north side, the round chapel apse (curved wall facets keep the 3DBAG shell)."
+ ],
+ "closedBands": true
+}
