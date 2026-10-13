@@ -218,6 +218,10 @@
   "streetLevel": "shared",
   "corniceGroups": [],
   "identical": [],
+  "roof": {
+   "source": "recipe",
+   "evidence": "strip.jpg: a flat mansard with dormers; 3DBAG's brick-streaked ridge wedges are not on the photo (review 2026-10-11, strip.jpg vs ortho/street/overhead before-after)"
+  },
   "notes": [
    "Leaf-off capture 2023-01-12: the 2024-11-29 strip is hidden behind a plane tree.",
    "Joined to 157757 by a ~0.65 m gap/jog (no shared party wall), so the odd side is two faces here.",

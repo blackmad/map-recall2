@@ -362,8 +362,12 @@ export async function compileBlockFace(face: BlockFaceIntent, factsByPand: Map<s
     if (roofSource !== 'recipe') return plan;
     const make = (i: number, ridgeCapM?: number) => {
       const f = plan.facts[i], fit = fitIntent(intents[i], f), f0 = fit.report.fronts[0];
-      const pitch = face.continuity.roof?.pitchDeg;
-      return recipeRoofFacts(fit.facts, {eavesM: f0.eavesM, storeyHeightsM: f0.storeyHeightsM, street: intents[i].fronts[0].street, ridgeCapM,
+      const pitch = face.continuity.roof?.pitchDeg, street = intents[i].fronts[0].street;
+      // Several fronts on the street (two houses in one pand, tower bays): each keeps its eaves (fit's own split).
+      const same = intents[i].fronts.filter(fr => fr.street === street), ff = fit.facts.fronts.find(x => x.street === street);
+      const ends = same.length > 1 && ff ? splitChain(ff, (() => { const sh = same.map(fr => fr.share ?? 1 / same.length), t = sh.reduce((a, b) => a + b, 0); return sh.map(x => x / t); })()).pairs : null;
+      const fronts = ends ? same.map((fr, k) => ({id: fr.id, eavesM: fit.report.fronts.find(r => r.id === fr.id)!.eavesM, endpointsRD: ends[k]})) : undefined;
+      return recipeRoofFacts(fit.facts, {eavesM: f0.eavesM, storeyHeightsM: f0.storeyHeightsM, street, ridgeCapM, fronts,
         // Dormers stand 0.35 m behind the frontage (fit.ts): the attic face starts behind them, not through them.
         faceSetbackM: intents[i].fronts.some(fr => fr.street === intents[i].fronts[0].street && fr.dormers && fr.roofFront !== 'mansard') ? 0.4 : 0}, pitch ? {frontPitchDeg: pitch} : {});
     };

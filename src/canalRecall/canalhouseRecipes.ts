@@ -12,7 +12,7 @@ import { openTopPrism, upwardRoofPlane } from '../../scripts/landmarks/house-geo
 import { auditHouse, type CanalHouse, type GableType } from './facade/houseRecord.ts';
 import { auditFields, type Measured, type Observation } from './facade/evidence.ts';
 
-export const CANALHOUSE_COMPONENT_VERSIONS = Object.freeze({ shell: '3', roof: '11', frontage: '4', opening: '19', glazedBay: '1', facadeDetail: '11', ornament: '2', dormer: '6', nativeAperture: '1', cornice: '6', crown: '5', entrance: '9', hoist: '1' });
+export const CANALHOUSE_COMPONENT_VERSIONS = Object.freeze({ shell: '3', roof: '11', frontage: '4', opening: '19', glazedBay: '1', facadeDetail: '11', ornament: '2', dormer: '7', nativeAperture: '1', cornice: '6', crown: '5', entrance: '9', hoist: '1' });
 export type CanalhousePoint = [number, number];
 export interface CanalhousePolygon { outer: CanalhousePoint[]; holes: CanalhousePoint[][] }
 export interface CanalhouseDoorPanel {
@@ -755,8 +755,11 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
           quad([x0,top,overhang],[mid,top+d.roofRiseM,overhang],[mid,top+d.roofRiseM,-d.depthM],[x0,top,-d.depthM]);
           quad([mid,top+d.roofRiseM,overhang],[x1,top,overhang],[x1,top,-d.depthM],[mid,top+d.roofRiseM,-d.depthM]);
           // Roof owns the top: solid gable ends sit just below its planes,
-          // avoiding coplanar pale wedges at the rear cap join.
-          const capClearance=.005;
+          // avoiding coplanar pale wedges at the rear cap join. 1.5 cm measured
+          // along the roof normal (5 mm vertical was within the geometry audit's
+          // 1 cm coplanar tolerance on steep dormer roofs and counted as z-fight,
+          // bilder-166802-235892: 1.1 m2 over ten dormers).
+          const capClearance=Math.max(.005,.015*Math.hypot(d.widthM/2,d.roofRiseM)/(d.widthM/2));
           const gable=new T.Shape([new T.Vector2(x0,top-capClearance),new T.Vector2(x1,top-capClearance),new T.Vector2(mid,top+d.roofRiseM-capClearance)]);
           const g=new T.ExtrudeGeometry(gable,{depth:wall,bevelEnabled:false});g.translate(0,0,overhang-wall);add(g,wallSurface,`${label}/front-gable`,facade);
           const back=g.clone();back.translate(0,0,-d.depthM+wall-overhang);add(back,wallSurface,`${label}/back-gable`,facade);
