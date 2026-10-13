@@ -47,6 +47,12 @@ const SPOTS: Spot[] = [
   { name: 'entrepotdok-aerial', centre: [4.9131356, 52.3693617], standDeg: 30, standM: 120 },
   { name: 'street-politie-watergraafsmeer', centre: [4.9272823, 52.3575278], standDeg: 69, standM: 45, view: 'cockpit' },
   { name: 'street-politie-postjesweg', centre: [4.8387086, 52.363678], standDeg: 135, standM: 45, view: 'cockpit' },
+  { name: 'roofs-bonboon-rozenstraat', centre: [4.88216, 52.37317], standDeg: 200, standM: 40 },
+  { name: 'roofs-bonboon-street', centre: [4.88216, 52.37317], standDeg: 200, standM: 40, view: 'cockpit' },
+  { name: 'sheds-willem-de-zwijgerlaan', centre: [4.8628, 52.3773], standDeg: 180, standM: 35 },
+  { name: 'sheds-willem-de-zwijgerlaan-rear', centre: [4.8623, 52.3773], standDeg: 270, standM: 30 },
+  { name: 'roofs-bilderdijkstraat', centre: [4.871021, 52.372319], standDeg: 250, standM: 40 },
+  { name: 'roofs-nieuw-west', centre: [4.8130, 52.3600], standDeg: 150, standM: 45 },
 ];
 
 const OUT = process.env.DEMO_OUT ?? 'artifacts/demo';
