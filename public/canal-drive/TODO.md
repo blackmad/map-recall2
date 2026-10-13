@@ -820,6 +820,23 @@ storey, chequer bands, sculpture group or gated vehicle entrance; roof colour
 unknown; Beeldbank returned 403 to automated fetch, so no archive image or
 architect is cited (lead: "dienst PW (E. Messer), 1941", unverified).
 
+**Police bureaus pass 2 landed 2026-10-13 (HISTORY):** 12 of the 17 listed
+bureaus are now in the game as large recipes (plus Van Leijenberghlaan, Oost
+Zeeburg, Gaasperdam and the bespoke Hoofdbureau = 16). Open: West
+Overtoomsesluis (0363100012080943) fails footprint IoU 0.749 because the open
+pilotis storey has no 3DBAG ground surface — needs a `largeCompile` hook
+that adds the missing ground or a gate exemption for pilotis; Oost
+Watergraafsmeer's front has wide windows on thin brick piers (photo) where
+the recipe has 11 punched bays; Nieuwezijds Voorburgwal's finned curtain
+wall is a plain grid (a 2-storey hall at the end bay and a glazed-ground
+`curtain-wall` both fail `parts-attached` — kit limits to lift); POLITIE
+letters sit ~3 m low at Zuid-De Pijp and Postjesweg (kit lettering has one
+height); the kit lamp stands in for blue blade signs; a per-storey colour
+split is unavailable (Zuid-De Pijp dark ground + cream uppers render as one);
+ten bureaus are outside the building-tile extract so `all-walls.ts` needs
+the facts-based footprint variant the lane kept in scratch — port it;
+inferred walls are marked INFERRED in each `intent.json`.
+
 **Signature ornaments (user, 2026-10-13):** the Hoofdbureau shipped without
 its Amsterdam-arms relief (lion, banner, three figures) on the Marnixstraat
 end wall; another session added it (32k tris) and the model now fails
