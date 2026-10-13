@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { GameMode, RoundResult, City, DistanceUnit, FeatureCategory, FEATURE_CATEGORIES } from '../types';
 import { formatDistance } from '../utils/geo';
 import confetti from 'canvas-confetti';
@@ -13,6 +13,11 @@ import {
   Layers,
 } from 'lucide-react';
 import { sounds } from '../utils/audio';
+import type { ReviewState } from '../spacedRepetition';
+import { loadLocalReviewStates } from '../progressRepository';
+import { newlyEarned, sessionGroups } from '../mapRecall/progress';
+import { PostcardHeader } from './PostcardHeader';
+import { postcardCityName, postcardPhotosFor } from '../mapRecall/postcardPhotos';
 
 interface GameOverSummaryProps {
   currentCity: City;
@@ -26,7 +31,19 @@ interface GameOverSummaryProps {
   onSwitchMode: (newMode: GameMode) => void;
   onChangeCity: (cityId: string) => void;
   allCities: City[];
+  /** Review states as they were when the session started (App's `reviewStates`, loaded by resetGame). */
+  reviewStatesBefore?: ReviewState[];
+  /** After the session; defaults to the local store, which recordReview has updated. */
+  reviewStatesAfter?: ReviewState[];
+  /** Clock for "today"/"tomorrow" (Storybook). */
+  now?: number;
 }
+
+const GROUPS = [
+  { id: 'known', title: 'Known', hint: 'answered well again' },
+  { id: 'shaky', title: 'Still shaky', hint: 'back soon' },
+  { id: 'fresh', title: 'New', hint: 'first time right' },
+] as const;
 
 export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
   currentCity,
@@ -38,7 +55,19 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
   unit,
   onPlayAgain,
   onSwitchMode,
+  reviewStatesBefore = [],
+  reviewStatesAfter,
+  now,
 }) => {
+  const [sessionNow] = useState(() => now ?? Date.now());
+  const [statesAfter] = useState(() => reviewStatesAfter ?? loadLocalReviewStates());
+  const groups = useMemo(
+    () => sessionGroups(roundResults, reviewStatesBefore, statesAfter, sessionNow),
+    [roundResults, reviewStatesBefore, statesAfter, sessionNow],
+  );
+  const earnedThisSession = useMemo(() => newlyEarned(roundResults, reviewStatesBefore), [roundResults, reviewStatesBefore]);
+  const hero = earnedThisSession[0];
+  const roundIndex = useMemo(() => new globalThis.Map(roundResults.map((result, index) => [result, index + 1])), [roundResults]);
   const [isMapInspectMode, setIsMapInspectMode] = useState(false);
   useEffect(() => {
     const restart = (event: KeyboardEvent) => {
@@ -55,6 +84,11 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
 
   const activeCategoryInfo =
     FEATURE_CATEGORIES.find((c) => c.id === selectedCategory) || FEATURE_CATEGORIES[0];
+  const subtitle = [
+    `${roundResults.length} ${roundResults.length === 1 ? 'round' : 'rounds'}`,
+    currentCity.name,
+    selectedCategory === 'all' ? 'Mixed' : activeCategoryInfo.shortLabel,
+  ].join(' · ');
 
   // Trigger celebration confetti. The ref keeps the fanfare to one play per
   // summary: this effect is re-invoked on every remount, and React StrictMode
@@ -103,26 +137,19 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
 
   return (
     <>
-      {/* Floating Toggle to Switch Between Full Modal and Map Inspection */}
-      <div className="fixed bottom-3 left-1/2 -translate-x-1/2 z-40">
-        <button
-          id="toggle-map-inspect-btn"
-          onClick={() => setIsMapInspectMode(!isMapInspectMode)}
-          className="enamel-float px-4 py-2 text-xs sm:text-sm font-semibold flex items-center gap-2 transition cursor-pointer"
-        >
-          {isMapInspectMode ? (
-            <>
-              <Layers className="w-4 h-4 text-[#8a4a18]" />
-              <span>Show Results Summary</span>
-            </>
-          ) : (
-            <>
-              <Map className="w-4 h-4 text-[#8a4a18]" />
-              <span>Review guesses on map</span>
-            </>
-          )}
-        </button>
-      </div>
+      {/* While inspecting the map, a floating pill returns to the summary. */}
+      {isMapInspectMode && (
+        <div className="fixed bottom-3 left-1/2 -translate-x-1/2 z-40">
+          <button
+            id="show-summary-btn"
+            onClick={() => setIsMapInspectMode(false)}
+            className="enamel-float px-4 py-2 text-xs sm:text-sm font-semibold flex items-center gap-2 transition cursor-pointer"
+          >
+            <Layers className="w-4 h-4 text-[#8a4a18]" />
+            <span>Show Results Summary</span>
+          </button>
+        </div>
+      )}
 
       {/* Floating Top Banner when Inspecting Map */}
       {isMapInspectMode && (
@@ -144,24 +171,33 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
             id="game-over-modal"
             className="app-dialog w-full max-w-lg p-4 sm:p-6 my-auto space-y-4 max-h-[88dvh] overflow-y-auto"
           >
-            {/* Header Ribbon */}
-            <div className="text-center space-y-1">
-              <div className="inline-flex items-center justify-center w-11 h-11 rounded-md border border-white/40 bg-white/10 text-[#8a4a18] mb-1">
-                <Trophy className="w-6 h-6" />
-              </div>
-              <h2 className="enamel-brand text-2xl sm:text-3xl text-white">Round complete</h2>
-              <div className={`text-sm sm:text-base font-bold ${rankColor}`}>{rankTitle}</div>
-              <div className="flex items-center justify-center gap-2 pt-1">
-                <span className="enamel-chip px-2.5 py-0.5 text-xs font-semibold">
-                  📍 {currentCity.name}
+            {/* Header: the session's new postcard, or the trophy. */}
+            {hero ? (
+              <div className="relative" data-testid="game-over-postcard">
+                <div className="relative w-full overflow-hidden rounded-lg bg-[#efe7d8]" style={{ aspectRatio: '640 / 400' }}>
+                  <div className="absolute inset-0">
+                    <PostcardHeader
+                      name={hero.feature.name}
+                      cityName={postcardCityName(hero.feature.cityId) ?? currentCity.name}
+                      photos={postcardPhotosFor(hero.feature)}
+                      className="h-full w-full rounded-lg shadow-md"
+                    />
+                  </div>
+                </div>
+                <span className="button-primary absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-0.5 text-xs font-bold shadow">
+                  New postcard{earnedThisSession.length > 1 ? ` · ${earnedThisSession.length}` : ''}
                 </span>
-                {selectedCategory !== 'all' && (
-                  <span className="enamel-chip active px-2.5 py-0.5 text-xs font-semibold flex items-center gap-1">
-                    <span>{activeCategoryInfo.icon}</span>
-                    <span>{activeCategoryInfo.label}</span>
-                  </span>
-                )}
               </div>
+            ) : null}
+            <div className="text-center space-y-1">
+              {!hero && (
+                <div className="inline-flex items-center justify-center w-11 h-11 rounded-md border border-white/40 bg-white/10 text-[#8a4a18] mb-1">
+                  <Trophy className="w-6 h-6" />
+                </div>
+              )}
+              <h2 className="enamel-brand text-2xl sm:text-3xl text-white">Session complete</h2>
+              <p className="text-xs sm:text-sm text-white/60" data-testid="game-over-subtitle">{subtitle}</p>
+              <div className={`text-sm sm:text-base font-bold ${rankColor}`}>{rankTitle}</div>
             </div>
 
             {/* Stats Row */}
@@ -197,59 +233,44 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
               </div>
             </div>
 
-            {/* Round by Round Breakdown */}
-            <div className="space-y-1.5">
-              <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-white/70 px-1">
-                <span>Round Breakdown</span>
-                <button
-                  onClick={() => setIsMapInspectMode(true)}
-                  className="text-[#8a4a18] hover:text-white capitalize text-xs underline flex items-center gap-1 cursor-pointer"
-                >
-                  <Map className="w-3 h-3" />
-                  <span>View Map</span>
-                </button>
-              </div>
-              <div className="enamel-chip overflow-hidden divide-y divide-white/10 max-h-48 overflow-y-auto">
-                {roundResults.map((result, idx) => (
-                  <div key={idx} className="p-2 sm:px-3 flex items-center justify-between text-xs gap-2">
-                    <div className="flex items-center gap-2 min-w-0">
-                      <span className="w-5 h-5 rounded-full border border-white/30 bg-white/10 text-white/80 font-bold text-xs flex items-center justify-center flex-shrink-0">
-                        {idx + 1}
-                      </span>
-                      <div className="truncate">
-                        <div className="font-bold text-white truncate">{result.feature.name}</div>
-                        <div className="text-xs text-white/60 capitalize">{result.feature.type}</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-2 text-right flex-shrink-0">
-                      {result.gameMode === 'pinpoint' ? (
-                        <div className="text-xs font-mono text-white/80">
-                          {result.distanceErrorMeters !== undefined
-                            ? formatDistance(result.distanceErrorMeters, unit)
-                            : '-'}
-                        </div>
-                      ) : (
-                        <div>
-                          {result.isCorrect ? (
-                            <span className="text-[#8a4a18] text-xs font-semibold flex items-center gap-0.5">
-                              <CheckCircle2 className="w-3 h-3" /> Correct
-                            </span>
-                          ) : (
-                            <span className="text-white/70 text-xs font-semibold flex items-center gap-0.5">
-                              <XCircle className="w-3 h-3" /> Missed
-                            </span>
-                          )}
-                        </div>
-                      )}
-
-                      <div className="font-mono font-bold text-[#8a4a18] min-w-[55px] text-right text-xs">
-                        +{result.pointsEarned.toLocaleString()}
-                      </div>
-                    </div>
+            {/* Session groups: what is known, what is still shaky, what is new. */}
+            <div className="space-y-3" data-testid="session-groups">
+              {GROUPS.map(({ id, title, hint }) => groups[id].length > 0 && (
+                <section key={id} className="space-y-1.5" data-testid={`session-group-${id}`}>
+                  <div className="flex items-baseline justify-between gap-2 px-1">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-white/70">
+                      {title} <span className="text-white/45">{groups[id].length}</span>
+                    </h3>
+                    <span className="text-xs text-white/45">{hint}</span>
                   </div>
-                ))}
-              </div>
+                  <ul className="enamel-chip divide-y divide-white/10 overflow-hidden">
+                    {groups[id].map((item) => (
+                      <li key={`${item.featureKey}-${item.result.roundNumber}`} className="flex items-center justify-between gap-2 p-2 text-xs sm:px-3">
+                        <div className="min-w-0">
+                          <div className="truncate font-bold text-white">{item.name}</div>
+                          <div className="flex flex-wrap items-center gap-x-1.5 text-xs text-white/60">
+                            <span className="capitalize">{item.type}</span>
+                            <span aria-hidden="true">·</span>
+                            <span>Round {roundIndex.get(item.result) ?? item.result.roundNumber}</span>
+                            <span aria-hidden="true">·</span>
+                            {item.result.distanceErrorMeters !== undefined ? (
+                              <span className="font-mono">{formatDistance(item.result.distanceErrorMeters, unit)}</span>
+                            ) : item.result.isCorrect ? (
+                              <span className="flex items-center gap-0.5 font-semibold text-[#8a4a18]"><CheckCircle2 className="h-3 w-3" /> Correct</span>
+                            ) : (
+                              <span className="flex items-center gap-0.5 font-semibold"><XCircle className="h-3 w-3" /> Missed</span>
+                            )}
+                          </div>
+                        </div>
+                        <div className="shrink-0 text-right">
+                          <div className="font-mono font-bold text-[#8a4a18]">+{item.result.pointsEarned.toLocaleString()}</div>
+                          <div className="text-xs text-white/60">next <span className="font-semibold text-white">{item.nextReview}</span></div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
             </div>
 
             {/* Actions Footer */}
@@ -270,6 +291,15 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
               >
                 {gameMode === 'pinpoint' ? <Target className="w-3.5 h-3.5 text-[#8a4a18]" /> : <MapPin className="w-3.5 h-3.5 text-[#8a4a18]" />}
                 <span>Try {gameMode === 'pinpoint' ? 'Guess Name' : 'Pinpoint'}</span>
+              </button>
+
+              <button
+                id="toggle-map-inspect-btn"
+                onClick={() => setIsMapInspectMode(true)}
+                className="button-secondary w-full sm:flex-1 py-2.5 font-semibold text-xs flex items-center justify-center gap-1.5 transition cursor-pointer"
+              >
+                <Map className="w-3.5 h-3.5 text-[#8a4a18]" />
+                <span>Review on map</span>
               </button>
             </div>
           </div>
