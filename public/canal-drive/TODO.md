@@ -1241,8 +1241,10 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   heights and the 3DBAG facts are unusable; a survey lane must build the
   footprint from BGT/BAG outlines and the panoramas before a builder.
   Landmark backlog "pending" flags are stale for many ids (Munttoren,
-  Schreierstoren, Amstelkerk, Zuiderkerk, Waag, Posthoornkerk, Hortus):
-  regenerate from the catalogue.
+  Schreierstoren, Amstelkerk, Zuiderkerk, Waag, Posthoornkerk, Hortus, the
+  Lutherse kerken, Trippenhuis, Carré, Concertgebouw…): regenerate from
+  the catalogue before the next queue lane; the remaining gaps are mostly
+  statues and memorials.
 - **Large tier after the components lane** (2026-10-14): OZ Achterburgwal
   233 needs a per-group party-wall override to place its baroque gateway
   (panel 266 hits a neighbour on one of three probes); Engelsesteeg's
