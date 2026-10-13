@@ -14,6 +14,7 @@ import {
 } from './types';
 import { CITIES } from './data/cities';
 import { calculateShortestDistanceToFeature, calculatePinpointScore } from './utils/geo';
+import { applyHintCeiling, applyHintCeilingToAccuracy } from './mapRecall/hintCost';
 import { reverseGeocodeLocation, fetchContainingAdministrativeAreas, geocodeLocationSearch } from './utils/osm';
 import { fetchQuizAreas, fetchQuizFeatures } from './dataSources/featureProvider';
 import { sounds } from './utils/audio';
@@ -24,6 +25,8 @@ import { MapComponent } from './components/MapComponent';
 import { PinpointModeOverlay } from './components/PinpointModeOverlay';
 import { GuessNameModeOverlay } from './components/GuessNameModeOverlay';
 import { GameOverSummary } from './components/GameOverSummary';
+import { PostcardRack } from './components/PostcardRack';
+import { ProgressLine } from './components/ProgressLine';
 import { LoadingProgressModal } from './components/LoadingProgressModal';
 import { useAuth } from './AuthContext';
 import { loadLocalReviewStates, recordReview, syncProgress } from './progressRepository';
@@ -715,12 +718,22 @@ export default function App() {
     });
   };
 
+  // Hints revealed this round; the overlay resets it to 0 for each new feature.
+  const hintsUsedRef = useRef(0);
+  const handleHintsUsed = useCallback((count: number) => { hintsUsedRef.current = count; }, []);
+
   // Confirm guess in Pinpoint Mode
   const handleConfirmPinpoint = () => {
     if (!currentFeature || !userPinnedLocation || isRoundComplete) return;
 
     const distMeters = distanceToQuizFeature(userPinnedLocation, currentFeature);
-    const scoreResult = calculatePinpointScore(distMeters);
+    const rawScore = calculatePinpointScore(distMeters);
+    const hintsUsed = hintsUsedRef.current;
+    const scoreResult = {
+      ...rawScore,
+      score: applyHintCeiling(rawScore.score, hintsUsed),
+      accuracyPercentage: applyHintCeilingToAccuracy(rawScore.accuracyPercentage, hintsUsed),
+    };
     const timeSpent = Date.now() - timeRoundStarted;
 
     if (distMeters <= 80) {
@@ -745,6 +758,7 @@ export default function App() {
       accuracyPercentage: scoreResult.accuracyPercentage,
       pointsEarned: scoreResult.score,
       timeSpentMs: timeSpent,
+      hintsUsed,
     };
 
     setRoundResults((prev) => [...prev, result]);
@@ -762,6 +776,7 @@ export default function App() {
       gameMode,
       pointsEarned: 0,
       timeSpentMs: Date.now() - timeRoundStarted,
+      ...(gameMode === 'guess_name' ? {} : { hintsUsed: hintsUsedRef.current }),
     };
     setRoundResults((previous) => [...previous, result]);
     persistResult(result);
@@ -963,9 +978,7 @@ export default function App() {
                 <h1 className="enamel-plaque enamel-framed enamel-brand px-4 py-3 text-center text-xl sm:text-2xl text-white">
                   Map Recall
                 </h1>
-                <p className="text-xs text-white/65 text-center leading-relaxed">
-                  Learn {currentCity.name} · {(searchRadiusMeters / 1000).toFixed(1)} km
-                </p>
+                <ProgressLine states={reviewStates} mode={gameMode} cityId={currentCityId} />
               </div>
 
               <div className="space-y-2">
@@ -989,6 +1002,8 @@ export default function App() {
                   ))}
                 </div>
               </div>
+
+              <PostcardRack placement="rail" cityId={currentCityId} cityCenter={currentCity.center} states={reviewStates} />
 
               <div className="space-y-2 pt-1">
                 <p className="text-xs font-bold uppercase tracking-wider text-white/45">Also</p>
@@ -1066,8 +1081,9 @@ export default function App() {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
-              aria-hidden="true"
-            />
+            >
+              <PostcardRack placement="vista" cityId={currentCityId} cityCenter={currentCity.center} states={reviewStates} />
+            </div>
           </div>
         )}
 
@@ -1078,6 +1094,7 @@ export default function App() {
             userPinnedLocation={userPinnedLocation}
             onConfirmGuess={handleConfirmPinpoint}
             onNoIdea={handleNoIdea}
+            onHintsUsed={handleHintsUsed}
             wasSkipped={wasRoundSkipped}
             isRoundComplete={isRoundComplete}
             distanceErrorMeters={currentDistanceError}
@@ -1122,6 +1139,7 @@ export default function App() {
             onSwitchMode={(newMode) => resetGame(undefined, newMode)}
             onChangeCity={(cityId) => resetGame(cityId, gameMode)}
             allCities={CITIES}
+            reviewStatesBefore={reviewStates}
           />
         )}
 

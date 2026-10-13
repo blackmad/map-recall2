@@ -68,6 +68,8 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
 
   const isCorrect = selectedGuessName === currentFeature.name;
   const badge = getFeatureTypeBadge(currentFeature.type);
+  // The containing area is safe context for any question except a neighbourhood one.
+  const context = currentFeature.type !== 'neighborhood' ? currentFeature.neighborhood?.trim() : undefined;
 
   usePreparePostcard(currentFeature);
 
@@ -107,6 +109,11 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                 <h1 className="enamel-brand text-base sm:text-xl text-white leading-snug">
                   Which {badge.label.toLowerCase()} is this?
                 </h1>
+                {context && (
+                  <p data-testid="guess-context" className="text-xs sm:text-sm text-white/80 font-semibold">
+                    In {context}
+                  </p>
+                )}
               </div>
 
               {/* Round counter */}

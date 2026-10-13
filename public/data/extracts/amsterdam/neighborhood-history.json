@@ -16,11 +16,12 @@
     "original": "De buurt is vernoemd naar Toren Overhoeks, die in 2016 de nieuwe naam A'DAM Toren kreeg. De meeste straten en pleinen in de wijk zijn vernoemd naar stedelijke waterfrontontwikkelingen van over de hele wereld: Badhuiskade; dit was voorheen Badhuisweg, vernoemd naar het voormalige zwembad op de huidige locatie van de A'DAM Toren."
    },
    "history": {
-    "en": "Eye Filmmuseum (landmark here): A focus on experimental cinema traces back to weekly screenings held at the Stedelijk Museum in the 1950s.",
+    "en": "A focus on experimental cinema traces back to weekly screenings held at the Stedelijk Museum in the 1950s.",
     "sourceUrl": "https://en.wikipedia.org/wiki/EYE_Film_Institute_Netherlands",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Eye Filmmuseum (landmark)"
    },
    "localFact": {
     "en": "Thousands of Amsterdammers first set foot in the Buiksloterham in 1913, when the First Dutch Shipping Exhibition was held here.",
@@ -68,18 +69,20 @@
     "kind": "derived"
    },
    "description": {
-    "en": "Samen Spelen Samen Leven (landmark here): Neighbors and local groups funded the artwork after a two-year creation process.",
+    "en": "Neighbors and local groups funded the artwork after a two-year creation process.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Kindermonument_Markt_voor_Joden",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Samen Spelen Samen Leven (landmark)"
    },
    "history": {
-    "en": "Samen Spelen Samen Leven (landmark here): On November 3, 1941, German occupiers seized this playground for a Jewish-only market.",
+    "en": "On November 3, 1941, German occupiers seized this playground for a Jewish-only market.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Kindermonument_Markt_voor_Joden",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Samen Spelen Samen Leven (landmark)"
    }
   },
   {
@@ -92,18 +95,20 @@
     "kind": "derived"
    },
    "description": {
-    "en": "LJG (landmark here): The group manages the Gan Hasjalom cemetery located in Hoofddorp and Amstelveen.",
+    "en": "The group manages the Gan Hasjalom cemetery located in Hoofddorp and Amstelveen.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Liberaal_Joodse_Gemeente_Amsterdam",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "LJG (landmark)"
    },
    "history": {
-    "en": "Lekstraatsynagoge (landmark here): The synagogue was inaugurated on November 30, 1937 after plans were completed in 1932.",
+    "en": "The synagogue was inaugurated on November 30, 1937 after plans were completed in 1932.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Lekstraatsynagoge",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Lekstraatsynagoge (landmark)"
    }
   },
   {
@@ -124,11 +129,12 @@
     "lang": "en"
    },
    "history": {
-    "en": "Middenweg (street here): In 1907, AFC Ajax began play on a field along this road before moving to De Meer stadium in 1934.",
+    "en": "In 1907, AFC Ajax began play on a field along this road before moving to De Meer stadium in 1934.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Middenweg_(Amsterdam)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Middenweg (street)"
    },
    "localFact": {
     "en": "Johan Cruyff was born and raised in Betondorp, across the road from Ajax's De Meer stadium, which opened in 1934. The writer Gerard Reve also grew up here, in the Ploegstraat.",
@@ -198,11 +204,12 @@
     "lang": "en"
    },
    "history": {
-    "en": "Han van Zomerenbrug (bridge here): Residents largely financed the original footbridge built here in 1927 to connect new southern housing.",
+    "en": "Residents largely financed the original footbridge built here in 1927 to connect new southern housing.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Han_van_Zomerenbrug",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Han van Zomerenbrug (bridge)"
    },
    "localFact": {
     "en": "Many diamond cutters once lived here. At one end of the Diamantstraat stands the Asscher diamond works, where the Cullinan, the largest diamond in the world, was cut.",
@@ -236,7 +243,7 @@
   {
    "name": "Grachtengordel",
    "description": {
-    "en": "The Grachtengordel (, lit. 'canal belt/girdle'), known in English as the Canal District, is a neighborhood in Amsterdam, Netherlands located in the Centrum district. The seventeenth-century canals of Amsterdam, located in the center of Amsterdam, were added to the UNESCO World Heritage List in August 2010.",
+    "en": "The Grachtengordel (lit. 'canal belt/girdle'), known in English as the Canal District, is a neighborhood in Amsterdam, Netherlands located in the Centrum district. The seventeenth-century canals of Amsterdam, located in the center of Amsterdam, were added to the UNESCO World Heritage List in August 2010.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Grachtengordel",
     "lang": "en"
    },
@@ -319,7 +326,7 @@
   {
    "name": "Rivierenbuurt",
    "description": {
-    "en": "Rivierenbuurt is a neighbourhood of Amsterdam, Netherlands. The neighbourhood is situated in the eastern part of the Amsterdam borough of Amsterdam-Zuid, bordered by the river Amstel to the east, the Boerenwetering canal in the west, the Amstelkanaal in the north and the A10 motorway in the south. In 2013, the Rivierenbuurt had approximately 28,400 residents.",
+    "en": "Rivierenbuurt is a neighbourhood of Amsterdam, Netherlands. The neighbourhood is situated in the eastern part of the Amsterdam borough of Amsterdam-Zuid, bordered by the river Amstel to the east, the Boerenwetering canal in the west, the Amstelkanaal in the north and the A10 motorway in the south.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Rivierenbuurt",
     "lang": "en"
    },
@@ -365,16 +372,17 @@
   {
    "name": "Oude Pijp",
    "description": {
-    "en": "Oude Pijp (Dutch for \"Old Pipe\"), also known as Noord-Pijp (Dutch for \"North-Pipe\") is a neighbourhood of Amsterdam, Netherlands located in an urbanised part of the Zuid borough. It had a population of 14,102 in 2011 and an area of 68 hectares. Together with Nieuwe Pijp, Oude Pijp forms De Pijp.",
+    "en": "Oude Pijp (Dutch for \"Old Pipe\"), also known as Noord-Pijp (Dutch for \"North-Pipe\") is a neighbourhood of Amsterdam, Netherlands located in an urbanised part of the Zuid borough. Together with Nieuwe Pijp, Oude Pijp forms De Pijp.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Oude_Pijp",
     "lang": "en"
    },
    "history": {
-    "en": "Heineken Experience (landmark here): A larger modern facility replaced it on the city outskirts in 1988.",
+    "en": "A larger modern facility replaced it on the city outskirts in 1988.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Heineken_Experience",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Heineken Experience (landmark)"
    },
    "localFact": {
     "en": "The old part of De Pijp is known as Amsterdam's Quartier Latin, after the Paris district, and several novels are set here around 1900, such as Jacob Israël de Haan's Pijpelijntjes (1904).",
@@ -444,11 +452,12 @@
     "kind": "derived"
    },
    "description": {
-    "en": "Jeruzalemkerk (landmark here): Planners originally intended to call it Nieuwe Westerkerk before choosing its final name.",
+    "en": "Planners originally intended to call it Nieuwe Westerkerk before choosing its final name.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Jeruzalemkerk_(Amsterdam)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Jeruzalemkerk (landmark)"
    }
   },
   {
@@ -538,11 +547,12 @@
     "original": "De Amsterdamse wijk Tuindorp Nieuwendam (3418 inwoners in 2012) ontleent zijn naam aan het gelijknamige dijkdorp."
    },
    "history": {
-    "en": "Nieuwendammerkerk (landmark here): Construction took place between 1848 and 1849 to replace an older, smaller church.",
+    "en": "Construction took place between 1848 and 1849 to replace an older, smaller church.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Nieuwendammerkerk",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Nieuwendammerkerk (landmark)"
    },
    "localFact": {
     "en": "Its houses are a high point of the rural variant of the Amsterdam School, and it was considered one of the most beautiful garden villages of its day.",
@@ -566,11 +576,12 @@
     "original": "De naam komt van een voormalige boerderij aan de Haarlemmerweg. Dit kreeg de naam Plan Landlust en betrof echter een groter gebied, namelijk de strook vanaf de Wiegbrug naar het noorden, tussen de Kostverlorenvaart en de Admiraal de Ruijterweg, tot aan de Haarlemmerweg."
    },
    "history": {
-    "en": "Solebayplein (square here): The residential block forming the square's south side was constructed in 1934 and 1935.",
+    "en": "The residential block forming the square's south side was constructed in 1934 and 1935.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Solebayplein",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Solebayplein (square)"
    },
    "localFact": {
     "en": "Landlust was the first Amsterdam neighbourhood to use open rows of strip housing alongside the usual closed blocks, with the architect Ben Merkelbach among the pioneers.",
@@ -583,18 +594,20 @@
   {
    "name": "Molenwijkpark",
    "description": {
-    "en": "Molenaarsweg (street here): A unique corridor flat tower houses 160 apartments across 16 living floors plus storage.",
+    "en": "A unique corridor flat tower houses 160 apartments across 16 living floors plus storage.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Stellingweg",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Molenaarsweg (street)"
    },
    "history": {
-    "en": "Molenaarsweg (street here): House numbers were absent until the street received them in 1974.",
+    "en": "House numbers were absent until the street received them in 1974.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Stellingweg",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Molenaarsweg (street)"
    }
   },
   {
@@ -778,11 +791,12 @@
     "original": "De naam IJburg sloot aan bij die van oudere Amsterdamse eilanden als Kattenburg, Wittenburg, Oostenburg, Sporenburg en Zeeburg. De gemeente bereidt onder de naam Cruciale Mijl een herinrichting voor van het ongeveer twee kilometer lange traject tussen de Piet Heintunnel en Steigereiland."
    },
    "history": {
-    "en": "Groene Tunnel (waterway here): Construction of the first bridge on this route was completed in 2003.",
+    "en": "Construction of the first bridge on this route was completed in 2003.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Groene_Tunnel",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Groene Tunnel (waterway)"
    },
    "localFact": {
     "en": "IJburg is reached over bridges such as the Nescio Bridge, named after the writer Nescio, and Nicholas Grimshaw's bridge of 2000, with two 75-metre spans, one of the biggest bridges in Amsterdam.",
@@ -892,7 +906,7 @@
   {
    "name": "Rapenburg",
    "description": {
-    "en": "Rapenburg is a neighbourhood in Amsterdam, Netherlands. The main street is also called Rapenburg. Rapenburg is located in the centre of Amsterdam, on the northeastern side, close to the IJ. As of the year 2022, its population was 990. Rapenburg was first built in the 1590s and was home to many shipmakers, due to its location near to the IJ and the River Amstel.",
+    "en": "Rapenburg is a neighbourhood in Amsterdam, Netherlands. The main street is also called Rapenburg. Rapenburg is located in the centre of Amsterdam, on the northeastern side, close to the IJ. Rapenburg was first built in the 1590s and was home to many shipmakers, due to its location near to the IJ and the River Amstel.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Rapenburg",
     "lang": "en"
    },
@@ -932,11 +946,12 @@
     "kind": "derived"
    },
    "history": {
-    "en": "Van Gendt Hallen (landmark here): Halls four and five partially burned down in 1922 before being restored to their original design.",
+    "en": "Halls four and five partially burned down in 1922 before being restored to their original design.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Hallen_van_Stork",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Van Gendt Hallen (landmark)"
    },
    "localFact": {
     "en": "In 1910 the Vulcanus, the world's first diesel-powered tanker, was built at the NSM yard on Oostenburg.",
@@ -1119,7 +1134,7 @@
   {
    "name": "Plantage",
    "description": {
-    "en": "Plantage is a neighbourhood of Amsterdam, Netherlands located in its Centrum borough. It is bordered by the Entrepotdok to the north, Plantage Muidergracht to the east and south and Nieuwe Herengracht to the west. In the centre of the neighbourhood lies the Natura Artis Magistra zoo. It had a population of 1,980 in 2017.",
+    "en": "Plantage is a neighbourhood of Amsterdam, Netherlands located in its Centrum borough. It is bordered by the Entrepotdok to the north, Plantage Muidergracht to the east and south and Nieuwe Herengracht to the west. In the centre of the neighbourhood lies the Natura Artis Magistra zoo.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Plantage",
     "lang": "en"
    },
@@ -1236,11 +1251,12 @@
     "original": "Het ontleent zijn naam aan de Borneokade die over de gehele lengte aan de zuidzijde van west naar oost loopt. Deze kade werd in 1917 vernoemd naar het Oost-Indische eiland Borneo."
    },
    "history": {
-    "en": "Entrepothaven (waterway here): The harbor was excavated directly into a swamp area known as the City Reedlands.",
+    "en": "The harbor was excavated directly into a swamp area known as the City Reedlands.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Entrepothaven_(Amsterdam)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Entrepothaven (waterway)"
    },
    "localFact": {
     "en": "On the Scheepstimmermanstraat stand 60 houses each by a different architect, among them Herman Hertzberger, MVRDV and Koen van Velsen.",
@@ -1397,11 +1413,12 @@
     "original": "De buurt is vernoemd naar de Da Costagracht en Da Costastraat, die vernoemd zijn naar Isaäc da Costa (Amsterdam, 14 januari 1798 – aldaar, 28 april 1860) een Amsterdams dichter en historicus."
    },
    "history": {
-    "en": "Bilderdijkpark (park here): The land was purchased in 1912 from the former De Liefde cemetery.",
+    "en": "The land was purchased in 1912 from the former De Liefde cemetery.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Bilderdijkpark",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Bilderdijkpark (park)"
    }
   },
   {
@@ -1427,7 +1444,7 @@
   {
    "name": "Weesp",
    "description": {
-    "en": "Weesp is a city and an urban area in the municipality of Amsterdam in the province of North Holland, Netherlands. It had a population of 20,445 in 2021. It lies on the river Vecht and next to the Amsterdam–Rhine Canal in an area called the Vechtstreek. The former municipality of Weesp merged with Amsterdam on 24 March 2022.",
+    "en": "Weesp is a city and an urban area in the municipality of Amsterdam in the province of North Holland, Netherlands. It lies on the river Vecht and next to the Amsterdam–Rhine Canal in an area called the Vechtstreek. The former municipality of Weesp merged with Amsterdam on 24 March 2022.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Weesp",
     "lang": "en"
    },
@@ -1453,7 +1470,7 @@
   {
    "name": "Nieuw-West",
    "description": {
-    "en": "Amsterdam Nieuw-West is a borough (Dutch: stadsdeel) comprising the westernmost neighbourhoods of the city of Amsterdam, Netherlands. It was created in 2010 after a merger of the former boroughs Osdorp, Geuzenveld-Slotermeer and Slotervaart. In 2017, the borough had almost 150,000 inhabitants.",
+    "en": "Amsterdam Nieuw-West is a borough (Dutch: stadsdeel) comprising the westernmost neighbourhoods of the city of Amsterdam, Netherlands. It was created in 2010 after a merger of the former boroughs Osdorp, Geuzenveld-Slotermeer and Slotervaart.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam_Nieuw-West",
     "lang": "en"
    },
@@ -1501,11 +1518,12 @@
   {
    "name": "VU-kwartier",
    "description": {
-    "en": "Vrije Universiteit Amsterdam (landmark here): Computer scientist Henri Bal and student John Romein wrote a program that solves the ancient game of Oware.",
+    "en": "Computer scientist Henri Bal and student John Romein wrote a program that solves the ancient game of Oware.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Vrije_Universiteit_Amsterdam",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Vrije Universiteit Amsterdam (landmark)"
    },
    "history": {
     "en": "ACTA was founded in 1985 to merge two separate faculties due to a national oversupply of dentists.",
@@ -1518,18 +1536,20 @@
   {
    "name": "Gelderlandpleinbuurt",
    "description": {
-    "en": "Gwijde van Henegouwenbrug (bridge here): Architect Dirk Sterenberg designed the bridge while working for the Department of Public Works.",
+    "en": "Architect Dirk Sterenberg designed the bridge while working for the Department of Public Works.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Gwijde_van_Henegouwenbrug",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Gwijde van Henegouwenbrug (bridge)"
    },
    "history": {
-    "en": "Gwijde van Henegouwenbrug (bridge here): A tram line was installed in the center of the bridge between 1989 and 1990.",
+    "en": "A tram line was installed in the center of the bridge between 1989 and 1990.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Gwijde_van_Henegouwenbrug",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Gwijde van Henegouwenbrug (bridge)"
    }
   },
   {
@@ -1598,11 +1618,12 @@
     "original": "Het gebied heette oorspronkelijk Drentepark, vernoemd naar de Drentestraat die op 14 juni 1961 door een raadsbesluit werd vernoemd naar de provincie Drenthe."
    },
    "history": {
-    "en": "AFC (landmark here): The club was officially established on January 18, 1895.",
+    "en": "The club was officially established on January 18, 1895.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdamsche_FC",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "AFC (landmark)"
    },
    "localFact": {
     "en": "One of the first buildings here was the Esso Motor Hotel, opened on 26 February 1969; it is now a Holiday Inn.",
@@ -1670,18 +1691,20 @@
   {
    "name": "Buitenveldert-West",
    "description": {
-    "en": "Gijsbrecht van Aemstelpark (park here): Elevated rope bridges let red squirrels cross roads between the Amsterdamse Bos and Amstelpark.",
+    "en": "Elevated rope bridges let red squirrels cross roads between the Amsterdamse Bos and Amstelpark.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Gijsbrecht_van_Aemstelpark",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Gijsbrecht van Aemstelpark (park)"
    },
    "history": {
-    "en": "Amsterdamse Bos (park here): The city council officially approved the park's creation in 1928.",
+    "en": "The city council officially approved the park's creation in 1928.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdamse_Bos",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Amsterdamse Bos (park)"
    }
   },
   {
@@ -1699,11 +1722,12 @@
     "original": "De buurt is vernoemd naar de Van Lennepstraat, die vernoemd is naar de schrijver, taalkundige en politicus Jacob van Lennep (1802-1868). De straten zijn vernoemd naar Nederlandse schrijvers uit de 19e eeuw."
    },
    "history": {
-    "en": "Abdellah Zakibrug (bridge here): A British stray bullet hit a building on the northeastern slope during World War II in 1940.",
+    "en": "A British stray bullet hit a building on the northeastern slope during World War II in 1940.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Abdellah_Zakibrug",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Abdellah Zakibrug (bridge)"
    },
    "localFact": {
     "en": "In December 1876 the Jacob van Lennepstraat was laid out across the 'landje van Mina', where horses had grazed. Until the bridge to the Kinkerstraat opened in 1880, residents crossed by ferry.",
@@ -1716,7 +1740,7 @@
   {
    "name": "Hoofddorppleinbuurt",
    "description": {
-    "en": "Hoofddorppleinbuurt is a neighborhood of Amsterdam, Netherlands, part of the borough of Amsterdam-Zuid. The district had 10,771 inhabitants as of 1 January 2005. The total area is 96.71 hectares. Hoofddorppleinbuurt was built in the 1920s. Since 1927 the neighborhood through the Zeilbrug has been connected to Amstelveenseweg.",
+    "en": "Hoofddorppleinbuurt is a neighborhood of Amsterdam, Netherlands, part of the borough of Amsterdam-Zuid. Hoofddorppleinbuurt was built in the 1920s. Since 1927 the neighborhood through the Zeilbrug has been connected to Amstelveenseweg.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Hoofddorppleinbuurt",
     "lang": "en"
    },
@@ -1727,11 +1751,12 @@
     "original": "De straatnamen zijn genoemd naar 19e-eeuwse schilders en plaatsen ten zuidwesten van Amsterdam."
    },
    "history": {
-    "en": "Schinkel (waterway here): A dam blocked the river in 1434 to stop shipping, forcing vessels to take a long detour via Spaarndam.",
+    "en": "A dam blocked the river in 1434 to stop shipping, forcing vessels to take a long detour via Spaarndam.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Schinkel_(rivier)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Schinkel (waterway)"
    }
   },
   {
@@ -1788,11 +1813,12 @@
     "lang": "en"
    },
    "history": {
-    "en": "Theater Amsterdam (landmark here): The venue opened on May 8, 2014 with a performance based on Anne Frank's diary.",
+    "en": "The venue opened on May 8, 2014 with a performance based on Anne Frank's diary.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Theater_Amsterdam",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Theater Amsterdam (landmark)"
    },
    "localFact": {
     "en": "Westpoort is the largest continuous industrial estate in the Netherlands. In 2008 about 45,000 people commuted here, making it the largest commuter destination within the city.",
@@ -1837,11 +1863,12 @@
     "kind": "derived"
    },
    "history": {
-    "en": "Orgelpark (landmark here): The venue officially opened its doors on January 20, 2007.",
+    "en": "The venue officially opened its doors on January 20, 2007.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Orgelpark",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Orgelpark (landmark)"
    },
    "localFact": {
     "en": "The Hollandsche Manege, between the Overtoom and the Vondelstraat, is the oldest riding school in the Netherlands.",
@@ -1854,7 +1881,7 @@
   {
    "name": "Oud-Zuid",
    "description": {
-    "en": "Oud-Zuid (Dutch for \"Old South\") is an area of Amsterdam in the borough of Zuid. In the city's present-day administrative geography, Oud-Zuid is one of the areas used for area-based municipal administration and has the code GK11. It had 43,905 inhabitants on 1 January 2026.",
+    "en": "Oud-Zuid (Dutch for \"Old South\") is an area of Amsterdam in the borough of Zuid. In the city's present-day administrative geography, Oud-Zuid is one of the areas used for area-based municipal administration and has the code GK11.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam_Oud-Zuid",
     "lang": "en"
    },
@@ -1880,7 +1907,7 @@
   {
    "name": "Zuid",
    "description": {
-    "en": "Amsterdam-Zuid (Amsterdam South) is a borough (stadsdeel) of Amsterdam, Netherlands. The borough was formed in 2010 as a merger of the former boroughs Oud-Zuid and Zuideramstel. The borough has almost 138,000 inhabitants (2013). With 8,500 homes per square kilometer, it is one of the most densely populated boroughs of Amsterdam. It has the highest income per household of all boroughs in Amsterdam.",
+    "en": "Amsterdam-Zuid (Amsterdam South) is a borough (stadsdeel) of Amsterdam, Netherlands. The borough was formed in 2010 as a merger of the former boroughs Oud-Zuid and Zuideramstel. It has the highest income per household of all boroughs in Amsterdam.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam-Zuid",
     "lang": "en"
    },
@@ -1900,7 +1927,7 @@
   {
    "name": "KNSM-eiland",
    "description": {
-    "en": "The KNSM-eiland is a peninsula in the IJ, one of eleven neighbourhoods in the Eastern Docklands. Of its 86 hectares, 74 are water; about 2,300 people live there.",
+    "en": "The KNSM-eiland is a peninsula in the IJ, one of eleven neighbourhoods in the Eastern Docklands.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/KNSM-eiland",
     "lang": "nl",
     "original": "Het KNSM-eiland is een schiereiland in het IJ in Amsterdam. Het is tevens een van de elf buurten in de wijk Oostelijk Havengebied, die weer onderdeel is van het stadsdeel Amsterdam-Oost. De buurt heeft een totale oppervlakte van 86 hectare, waarvan echter 74 hectare uit water bestaat. Er wonen ongeveer 2300 mensen."
@@ -1935,11 +1962,12 @@
     "original": "Het Oostelijk Havengebied is een woonwijk in de Nederlandse stad Amsterdam. Het is tevens een van de vijftien wijken binnen het stadsdeel Amsterdam-Oost. Eind negentiende eeuw werd dit gebied, gelegen aan de zuidzijde van het IJ en dicht bij de Zuiderzee, bestemd voor de uitbreiding van de haven van Amsterdam."
    },
    "history": {
-    "en": "Bimhuis (landmark here): The venue opened its doors on October 1, 1974 after being founded the previous year.",
+    "en": "The venue opened its doors on October 1, 1974 after being founded the previous year.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Bimhuis",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Bimhuis (landmark)"
    },
    "localFact": {
     "en": "Loods 6 (1922), the only harbour shed preserved in full, now houses more than a hundred artists.",
@@ -1952,7 +1980,7 @@
   {
    "name": "West",
    "description": {
-    "en": "Amsterdam-West is a borough (Dutch: stadsdeel) of Amsterdam, Netherlands, to the west of the centre of the city. This borough was formed in 2010 through the merging of four former boroughs Oud West, Westerpark, De Baarsjes and Bos en Lommer. This part of Amsterdam was built roughly between the end of the 19th century and 1960. In 2013, the borough had approximately 142,700 inhabitants.",
+    "en": "Amsterdam-West is a borough (Dutch: stadsdeel) of Amsterdam, Netherlands, to the west of the centre of the city. This borough was formed in 2010 through the merging of four former boroughs Oud West, Westerpark, De Baarsjes and Bos en Lommer. This part of Amsterdam was built roughly between the end of the 19th century and 1960.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam-West",
     "lang": "en"
    },
@@ -1972,7 +2000,7 @@
   {
    "name": "Centrum",
    "description": {
-    "en": "Amsterdam-Centrum is the inner-most borough and historical city centre of Amsterdam, Netherlands, containing the majority of the city's landmarks. Established in 2002, Amsterdam-Centrum was the last area in the city to be granted the status of self-governing borough. The borough is 8.04 km2 and covers the UNESCO-listed Amsterdam canal belt.",
+    "en": "Amsterdam-Centrum is the inner-most borough and historical city centre of Amsterdam, Netherlands, containing the majority of the city's landmarks. Established in 2002, Amsterdam-Centrum was the last area in the city to be granted the status of self-governing borough.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam-Centrum",
     "lang": "en"
    },
@@ -1987,7 +2015,7 @@
   {
    "name": "Oost",
    "description": {
-    "en": "Amsterdam-Oost is a borough of Amsterdam, Netherlands, established in May 2010 after a merger of the former boroughs of Zeeburg and Oost-Watergraafsmeer. In 2013, the borough had almost 123,000 inhabitants.",
+    "en": "Amsterdam-Oost is a borough of Amsterdam, Netherlands, established in May 2010 after a merger of the former boroughs of Zeeburg and Oost-Watergraafsmeer.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam-Oost",
     "lang": "en"
    },

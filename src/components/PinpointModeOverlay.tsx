@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { StreetFeature, DistanceUnit } from '../types';
 import { calculateHaversineDistanceMeters, calculatePinpointScore, formatDistance } from '../utils/geo';
 import {
@@ -12,12 +12,15 @@ import {
 import { AnswerDetails, usePreparePostcard } from './AnswerDetails';
 import { fetchHintReferences } from '../dataSources/featureProvider';
 import { buildLocateHints } from '../mapRecall/locateHints';
+import { applyHintCeiling, applyHintCeilingToAccuracy, describeHintCap, scoreCeiling } from '../mapRecall/hintCost';
 
 interface PinpointModeOverlayProps {
   currentFeature: StreetFeature;
   userPinnedLocation: [number, number] | null;
   onConfirmGuess: () => void;
   onNoIdea: () => void;
+  /** Hints revealed so far this round (0 until the drawer is opened). */
+  onHintsUsed?: (count: number) => void;
   wasSkipped: boolean;
   isRoundComplete: boolean;
   distanceErrorMeters?: number;
@@ -63,6 +66,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
   userPinnedLocation,
   onConfirmGuess,
   onNoIdea,
+  onHintsUsed,
   wasSkipped,
   isRoundComplete,
   distanceErrorMeters = 0,
@@ -77,7 +81,9 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
   const [showClues, setShowClues] = useState(false);
   const [revealedClueIndex, setRevealedClueIndex] = useState(1);
 
-  const scoreResult = isRoundComplete ? calculatePinpointScore(distanceErrorMeters) : null;
+  const [hintsOpened, setHintsOpened] = useState(false);
+  const scrollerRef = useRef<HTMLDivElement>(null);
+
   const badge = getFeatureTypeBadge(currentFeature.type);
   // Hints that name places come first; bearings from the search centre fill in
   // when the extract has too little nearby to name (src/mapRecall/locateHints.ts).
@@ -115,12 +121,34 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
     return [...named, ...bearingHints.slice(bearingHints.length - needed)];
   }, [placeHints, currentFeature.id, bearingHints]);
 
+  // Hints actually revealed: none until the drawer has been opened.
+  const hintsUsed = hintsOpened ? Math.min(revealedClueIndex, Math.max(1, spatialHints.length)) : 0;
+  const hintCeiling = scoreCeiling(hintsUsed);
+  const rawScore = isRoundComplete ? calculatePinpointScore(distanceErrorMeters) : null;
+  const scoreResult = rawScore && {
+    ...rawScore,
+    score: applyHintCeiling(rawScore.score, hintsUsed),
+    accuracyPercentage: applyHintCeilingToAccuracy(rawScore.accuracyPercentage, hintsUsed),
+  };
+  const capApplied = !!rawScore && !!scoreResult && !wasSkipped && scoreResult.score < rawScore.score;
+  const hasPin = !!userPinnedLocation && !wasSkipped;
+
   usePreparePostcard(currentFeature);
 
   useEffect(() => {
     setShowClues(false);
     setRevealedClueIndex(1);
+    setHintsOpened(false);
   }, [currentFeature.id]);
+
+  // The question and the answer share one scroller; start each from its top.
+  useEffect(() => {
+    scrollerRef.current?.scrollTo({ top: 0 });
+  }, [isRoundComplete, currentFeature.id]);
+
+  useEffect(() => {
+    onHintsUsed?.(hintsUsed);
+  }, [hintsUsed, onHintsUsed]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -135,7 +163,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
   return (
     <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 pb-3 sm:p-4 z-20">
       {/* UNIFIED BOTTOM CARD: QUESTION + CLUES + PIN STATUS + SUBMIT CTA */}
-      <div className={`pointer-events-auto w-full max-w-xl mx-auto max-h-[42dvh] ${isRoundComplete ? 'sm:max-h-[55dvh]' : 'sm:max-h-full'} overflow-y-auto overscroll-contain`}>
+      <div ref={scrollerRef} className={`pointer-events-auto w-full max-w-xl mx-auto max-h-[42dvh] ${isRoundComplete ? 'sm:max-h-[55dvh]' : 'sm:max-h-full'} overflow-y-auto overscroll-contain`}>
         {!isRoundComplete ? (
           /* ACTIVE QUESTION & ACTION CARD */
           <div
@@ -168,12 +196,17 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
               <div className="flex items-center gap-1.5 flex-shrink-0 pt-0.5">
                 <button
                   id="hint-toggle-btn"
-                  onClick={() => setShowClues(!showClues)}
+                  onClick={() => {
+                    if (!showClues) setHintsOpened(true);
+                    setShowClues(!showClues);
+                  }}
                   aria-label={showClues ? 'Hide hint' : 'Show hint'}
                   className={`enamel-chip ${showClues ? 'active' : ''} flex items-center gap-1 text-xs font-bold px-2 py-1 sm:px-2.5 transition cursor-pointer`}
                 >
                   <HelpCircle className="w-3.5 h-3.5 text-[#8a4a18]" />
-                  <span className="hidden sm:inline">{showClues ? 'Hide hint' : 'Hint'}</span>
+                  <span className="hidden sm:inline">
+                    {hintsOpened ? `Hint · up to ${hintCeiling.toLocaleString('en-US')}` : 'Hint'}
+                  </span>
                 </button>
 
                 <span className="enamel-chip px-2 py-1 text-xs font-bold font-mono whitespace-nowrap sm:px-2.5">
@@ -188,6 +221,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                 <div className="text-[#8a4a18] font-bold flex items-center justify-between">
                   <span className="flex items-center gap-1.5 text-xs">
                     <Sparkles className="w-3.5 h-3.5" /> Map hints
+                    <span className="font-normal text-white/70" data-testid="hint-ceiling">· round worth up to {hintCeiling.toLocaleString('en-US')}</span>
                   </span>
                   <button
                     onClick={() => setShowClues(false)}
@@ -282,21 +316,26 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
               {/* Target & Accuracy Header */}
               <div className="flex items-center justify-between gap-2 pb-2 border-b border-white/15">
                 <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="w-10 h-10 rounded-lg bg-white/10 border border-white/25 flex items-center justify-center text-[#8a4a18] flex-shrink-0">
+                  <div className="hidden sm:flex w-10 h-10 rounded-lg bg-white/10 border border-white/25 items-center justify-center text-[#8a4a18] flex-shrink-0">
                     <Award className="w-5 h-5" />
                   </div>
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
-                      <h2 className="enamel-brand text-base sm:text-lg text-white truncate">
+                      <h2 className="enamel-brand text-sm sm:text-lg text-white leading-tight whitespace-nowrap">
                         {wasSkipped ? 'Skipped' : scoreResult.tierLabel}
                       </h2>
-                      <span className="enamel-chip text-xs px-2 py-0.5 font-mono font-bold">
+                      <span className="enamel-chip hidden sm:inline-flex text-xs px-2 py-0.5 font-mono font-bold">
                         {wasSkipped ? '0' : scoreResult.accuracyPercentage}%
                       </span>
                     </div>
                     <p className="text-xs text-[#8a4a18] font-mono font-bold">
-                      {wasSkipped ? 'Answer revealed' : `Off by ${formatDistance(distanceErrorMeters, unit)}`}
+                      {currentFeature.name} · {wasSkipped ? 'answer revealed' : `off by ${formatDistance(distanceErrorMeters, unit)}`}
                     </p>
+                    {capApplied && (
+                      <p data-testid="hint-cap-line" className="text-xs text-white/70">
+                        {describeHintCap(hintsUsed)}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -319,15 +358,9 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                 </div>
               </div>
 
-              {/* Target Name Reference */}
-              <div className="flex items-center justify-between text-xs text-white/75">
-                <span>
-                  Target: <strong className="text-white">{currentFeature.name}</strong>
-                </span>
-                <span className="text-xs text-white/60 italic hidden sm:inline">
-                  Dashed line shows distance on map
-                </span>
-              </div>
+              {hasPin && (
+                <p className="text-xs text-white/60 italic hidden sm:block">Dashed line shows distance on map</p>
+              )}
               <AnswerDetails feature={currentFeature} factSeed={factSeed} roundIndex={roundNumber - 1} />
             </div>
           )
