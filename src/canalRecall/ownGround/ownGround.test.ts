@@ -8,7 +8,7 @@ import { readGeoTiff, undoFloatPredictor } from './geotiff';
 import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extendTile, readGroundTile, upsampleTile, fitLocalToRd, GroundField, NODATA, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
 import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose, type Vec2 } from './surface';
 import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, reliefGrid, ribbon, type MeshArrays } from './drape';
-import { bandCoverage, DE_CLERCQSTRAAT } from './roadRegressions';
+import { bandCoverage, deckStreetTop, DE_CLERCQSTRAAT, RAIL_ON_BAND_M } from './roadRegressions';
 import { crossSection, parseMetres, areaKind, pavedAreaSurface } from './osmGround';
 import { RADIUS_STEP_M, residentRadius, viewReachM } from './residency';
 import { basemapGroundPatches } from './basemapPalette';
@@ -934,4 +934,22 @@ test('parks: surfaces drape between the OSM areas and the street bands; furnitur
   const far = buildParks(cell, ground, 1);
   assert.ok(far.layers.lawn && far.layers.hedge && !far.layers.furniture, 'far ring: surfaces and hedges, no furniture');
   assert.ok(far.layers.lawn!.indices.length < lawn.indices.length);
+});
+
+test('belt audit deck top: a tram rail lying on a street band is street, over the deck top it is not (BRU0030, 2026-10-14)', () => {
+  assert.equal(deckStreetTop([{ layer: 'tram', z: 1.134 }, { layer: 'asphalt', z: 1.114 }, { layer: 'deckTop', z: 1.084 }]), true);
+  assert.equal(deckStreetTop([{ layer: 'tram', z: 1.134 }, { layer: 'deckTop', z: 1.114 }]), false);
+  assert.equal(deckStreetTop([{ layer: 'tram', z: 1.2 }, { layer: 'asphalt', z: 1.2 - RAIL_ON_BAND_M - 0.01 }]), false);
+  assert.equal(deckStreetTop([{ layer: 'deckBody', z: 2.517 }, { layer: 'cycle', z: 2.422 }]), false);
+  assert.equal(deckStreetTop([]), false);
+});
+
+test('bridge bands carry vertices across: a 5 m band over a 4.2 m deck follows it instead of sagging under it (BRU0292)', () => {
+  // The Schottenburchsbrug: the deck rises 0.35 m over the relief beside it, the mapped carriageway is wider than the deck.
+  const height = (_x: number, y: number) => (Math.abs(y) <= 2.1 ? 1.06 : 0.71);
+  const ways = prepareWays([{ id: 1, tags: { highway: 'residential', bridge: 'yes', width: '5', sidewalk: 'no', surface: 'asphalt' }, g: [[0, 0], [12, 0]] }], p => p as [number, number]);
+  const centre = (acrossStep?: number) => faces(buildStreets(ways, height, { step: 0.75, acrossStep }).asphalt).filter(f => Math.abs(f.c[1]) < 1).map(f => f.c[2]);
+  const before = centre(), after = centre(2);
+  assert.ok(before.length && Math.min(...before) < 1.06 - 0.05, `edges-only band sags under the deck (${Math.min(...before).toFixed(3)})`);
+  assert.ok(after.length && Math.min(...after) >= 1.06 + LIFT.carriageway - 1e-6, `band on the deck (${Math.min(...after).toFixed(3)})`);
 });

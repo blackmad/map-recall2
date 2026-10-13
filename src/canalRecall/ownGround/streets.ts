@@ -383,8 +383,12 @@ export function shadowedWays(ways: readonly LocalWay[]): Set<number> {
  * `only` limits which ways emit geometry while the junction graph still sees
  * all of them (the prototype builds bridge ways separately, uncut by the water mask).
  */
-export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: { step?: number; only?: (w: LocalWay) => boolean; canalSide?: (x: number, y: number) => boolean } = {}): StreetMeshes {
+export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: { step?: number; only?: (w: LocalWay) => boolean; canalSide?: (x: number, y: number) => boolean; acrossStep?: number } = {}): StreetMeshes {
   const step = opts.step ?? 3;
+  // Vertices across a band (bridge bands: the deck is often narrower than the mapped carriageway, so a band with
+  // vertices only on its two edges spans from the relief beside the deck to the relief beside it and sags under the
+  // deck top in the middle; BRU0292 Schottenburchsbrug sat 0.15 m under it).
+  const acrossOf = (width: number) => (opts.acrossStep ? Math.max(width > 7 ? 2 : 1, Math.ceil(width / opts.acrossStep)) : undefined);
   const out = { asphalt: emptyMesh(), klinker: emptyMesh(), cycle: emptyMesh(), paving: emptyMesh(), gravel: emptyMesh(), paint: emptyMesh(), kerb: emptyMesh(), tram: emptyMesh(), bollard: emptyMesh(), stats: { ways: 0, bands: 0, metres: 0, widthFromTags: 0, sidewalkFromTags: 0, trims: 0, junctions: 0, corners: 0 } } as StreetMeshes;
   const nodes = junctionGeometry(ways);
   const byId = new Map(ways.map(w => [w.id, w]));
@@ -416,7 +420,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
         const top = LIFT.raisedBase + band.raised;
         for (const piece of pieces) {
           if (piece.length < 2) continue;
-          ribbon(m, piece, band.offset, band.width, height, top, { step });
+          ribbon(m, piece, band.offset, band.width, height, top, { step, across: acrossOf(band.width) });
           // Kerb face toward the carriageway (both sides for a mapped sidewalk).
           const inner = band.offset - Math.sign(band.offset || 1) * band.width / 2;
           if (band.kerb === 'both') {
@@ -436,7 +440,7 @@ export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: 
         continue;
       }
       const lift = band.kind === 'carriageway' ? LIFT.carriageway : band.kind === 'cycle_lane' ? LIFT.cycleLane : LIFT.path;
-      for (const piece of pieces) if (piece.length >= 2) ribbon(m, piece, band.offset, band.width, height, lift, { step });
+      for (const piece of pieces) if (piece.length >= 2) ribbon(m, piece, band.offset, band.width, height, lift, { step, across: acrossOf(band.width) });
       // Paths meeting only paths join with a small round fill (no junction polygon is built for them).
       if (!carriage && band.offset === 0) {
         for (const p of [w.points[0], w.points[w.points.length - 1], ...w.points]) {

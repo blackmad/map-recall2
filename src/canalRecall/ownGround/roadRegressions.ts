@@ -12,6 +12,26 @@ import type { LocalWay } from './streets.js';
 
 export const STREET_TOPS: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['asphalt', 'klinker', 'cycle', 'paving', 'gravel', 'paint', 'kerb', 'tram']);
 
+/** Street bands a rider should see on a deck (belt audit's deck-top probe). */
+const DECK_STREET: ReadonlySet<string> = new Set(['asphalt', 'klinker', 'paving', 'cycle', 'paint', 'kerb']);
+/** Embedded tram rails (LIFT.rail) sit 2 cm over the carriageway (LIFT.carriageway); over a band within this they are street vocabulary. */
+export const RAIL_ON_BAND_M = 0.035;
+
+/**
+ * Is the topmost hit (sorted by `compareHits`) a street band, or a tram rail lying on one?
+ * On 2026-10-14 15 of the belt audit's 18 deck-top findings were rails on the asphalt or
+ * klinker of a tram bridge (BRU0030, BRU0041, BRU0001…); a rail over a deck top or the
+ * deck body still fails.
+ */
+export function deckStreetTop(hits: readonly { layer: string; z: number }[]): boolean {
+  const top = hits[0];
+  if (!top) return false;
+  if (DECK_STREET.has(top.layer)) return true;
+  if (top.layer !== 'tram') return false;
+  const under = hits.find(h => h.layer !== 'tram');
+  return !!under && DECK_STREET.has(under.layer) && top.z - under.z <= RAIL_ON_BAND_M;
+}
+
 export interface RoadRegression {
   id: string;
   label: string;
