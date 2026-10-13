@@ -37,7 +37,7 @@
  *
  * Flag off, nothing here runs: every adapter keeps its previous code path.
  */
-import { SLOT_CELL, SLOT_TILE_M, cityTint, hexToRgb, type MaterialSlot, type SlotCell } from './palette.ts';
+import { PHOTO_WALL_CELL_MEAN, SLOT_CELL, SLOT_TILE_M, cityTint, hexToRgb, type MaterialSlot, type SlotCell } from './palette.ts';
 import { inferMaterialSlot, isMaterialSlot, INFERRED_SLOT_SOURCE } from './materialSlotInference.ts';
 import { paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, roofCanvas } from './slotCells.ts';
 
@@ -195,6 +195,29 @@ const HIGHLIGHT_SRGB = 'vec3(1.0, 0.824, 0.122)';
 const HIGHLIGHT_LINEAR = 'vec3(1.0, 0.637, 0.0137)';
 const SKY_TINT = 'vec3(0.035, 0.05, 0.07)';
 
+/**
+ * The highlight keeps the light and the grain (review 2026-10-13: the first
+ * variant drew a flat yellow, while the default highlight keeps each model's
+ * own shading and adds a yellow glow). The yellow replaces the tint, not the
+ * cell: brick courses, stucco, glazing (dark: windows stay readable) show
+ * through at `HIGHLIGHT_GRAIN`, and the light does the rest.
+ *  - lit: yellow albedo at `HIGHLIGHT_ALBEDO`
+ *    plus a small glow `HIGHLIGHT_GLOW` (was 0.45, which flattened the shade side);
+ *  - unlit: the baked shade's contrast is widened (`HIGHLIGHT_SHADE_GAIN`:
+ *    walls 0.8–1.0 become 0.64–1.0, roofs floor at 0.6), so the faces of a yellow model separate.
+ */
+export const HIGHLIGHT_ALBEDO = 1.0;
+export const HIGHLIGHT_GLOW = 0.2;
+export const HIGHLIGHT_GRAIN = 0.75;
+export const HIGHLIGHT_SHADE_GAIN = 1.8;
+const glslFloat = (v: number) => (Number.isInteger(v) ? v.toFixed(1) : String(v));
+/** Grain of the highlighted cell: the cell's own luminance against the lifted brick mean, softened. */
+const HIGHLIGHT_GRAIN_GLSL = /* glsl */ `
+float cityGrain(vec3 cell) {
+  float g = clamp(dot(cell, vec3(0.299, 0.587, 0.114)) / ${glslFloat(PHOTO_WALL_CELL_MEAN / 255)}, 0.45, 1.1);
+  return mix(1.0, g, ${glslFloat(HIGHLIGHT_GRAIN)});
+}`;
+
 /** Shared vertex declarations (both variants). */
 const VERTEX_DECLS = /* glsl */ `
 attribute float layer;
@@ -257,7 +280,8 @@ flat varying float vLayer;
 flat varying vec4 vSlot;
 varying vec3 vTint;
 varying vec3 vAccent;
-flat varying float vHighlight;`;
+flat varying float vHighlight;
+${HIGHLIGHT_GRAIN_GLSL}`;
 
 const FRAGMENT_FADE = /* glsl */ `
 if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;`;
@@ -268,6 +292,7 @@ vec2 cityUv = vSlot.y > 0.5 ? clamp(vFacUv, 0.0, 1.0) : vFacUv;
 vec3 cityP = vec3(cityUv, vLayer);
 vec3 cityC = texture(cells, cityP).rgb;
 vec2 cityM = texture(masks, cityP).rg;
+float cityG = cityGrain(cityC);
 cityC *= mix(vec3(1.0), vTint, cityM.r) * mix(vec3(1.0), vAccent, cityM.g);`;
 
 const UNLIT_VERTEX = /* glsl */ `
@@ -303,8 +328,12 @@ ${FRAGMENT_DECLS}
 varying float vShade;
 void main() {
 ${FRAGMENT_FADE}
-  if (vHighlight > 0.5) { gl_FragColor = vec4(${HIGHLIGHT_SRGB} * vShade, 1.0); return; }
 ${FRAGMENT_CELL}
+  if (vHighlight > 0.5) {
+    float hlShade = clamp(1.0 - (1.0 - vShade) * ${glslFloat(HIGHLIGHT_SHADE_GAIN)}, 0.6, 1.0);
+    gl_FragColor = vec4(${HIGHLIGHT_SRGB} * (flatColour > 0.5 ? 1.0 : cityG) * hlShade, 1.0);
+    return;
+  }
   if (flatColour > 0.5) cityC = vTint;
   float shade = bands > 0.5 ? floor(vShade * bands + 0.5) / bands : vShade;
   gl_FragColor = vec4(cityC * shade, 1.0);
@@ -377,9 +406,9 @@ cityC *= mix(1.0, wallGain, cityM.r);
 #endif
 if (flatColour > 0.5) cityC = vTint;
 cityLuma = dot(cityC, vec3(0.299, 0.587, 0.114));
-diffuseColor.rgb *= vHighlight > 0.5 ? ${HIGHLIGHT_LINEAR} : pow(cityC, vec3(2.2));`)
+diffuseColor.rgb *= vHighlight > 0.5 ? ${HIGHLIGHT_LINEAR} * ${glslFloat(HIGHLIGHT_ALBEDO)} * pow(flatColour > 0.5 ? 1.0 : cityG, 2.2) : pow(cityC, vec3(2.2));`)
         .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
-if (vHighlight > 0.5) totalEmissiveRadiance += ${HIGHLIGHT_LINEAR} * 0.45;
+if (vHighlight > 0.5) totalEmissiveRadiance += ${HIGHLIGHT_LINEAR} * ${glslFloat(HIGHLIGHT_GLOW)};
 #ifdef CITY_SLOT
 else totalEmissiveRadiance += ${SKY_TINT} * vSlot.w;
 #else
@@ -387,7 +416,7 @@ else totalEmissiveRadiance += ${SKY_TINT} * vSlot.w;
 else totalEmissiveRadiance += ${SKY_TINT} * (1.0 - smoothstep(0.06, 0.2, cityLuma)) * (1.0 - cityM.r);
 #endif`);
     };
-    material.customProgramCacheKey = () => `city-look-v1|${variantKey({ ...variant, side: 0 })}`;
+    material.customProgramCacheKey = () => `city-look-v2|${variantKey({ ...variant, side: 0 })}`;
     // ThreeBuildings reads and writes these like a ShaderMaterial's uniforms.
     material.uniforms = uniforms;
   }
