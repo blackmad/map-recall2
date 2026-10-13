@@ -1,0 +1,53 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "distelweg-88-114605",
+ "pandId": "0363100012114605",
+ "address": "Distelweg 88, Amsterdam-Noord: 1948 distribution warehouse clad in grey sandwich panels on the Buiksloterkanaal side (BAG: one industrial unit)",
+ "sources": [
+  {
+   "id": "pano-2017-07-05-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2017-07-05",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000353_pano_0000_000760/",
+   "image": "staging/pand-reference-walls/0363100012114605/w03-33.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    1,
+    2,
+    88,
+    90,
+    121
+   ],
+   "system": "blank",
+   "storeys": 2,
+   "baysPerStorey": 20,
+   "ground": "system",
+   "deepBars": true,
+   "signage": {
+    "text": "K",
+    "colour": "#2a4a40",
+    "mount": "wall"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "zinc"
+ },
+ "palette": {
+  "brick": "#a3a29c",
+  "frame": "#4a5a62",
+  "door": "#3a4a52",
+  "stone": "#a0a4a2"
+ },
+ "notes": [
+  "Distelweg 88 (BAG: built 1948, one industrial unit, 12,545 m2 footprint, 8.3 m eaves): a single-storey distribution hall. The only panorama within 35 m is across the canal on the north-east front (w03-33, 2017-07-05): a continuous wall of grey vertical-ribbed sandwich panels with no windows, a low parapet, a pedestrian door at ground level and a round blue company emblem with a letter K high on the wall.",
+  "Modelled: the north-east front (panels 0 and 71) as a blank wall group in the cladding grey with the K lettered high on the wall; the same grey is the house wall colour for every other wall (they are not photographed, but the cladding wraps the whole hall as far as the aerial shows) and the zinc-grey roof as surveyed by 3DBAG LoD2.2.",
+  "Simplified: the vertical rib pattern of the cladding is a plain wall colour; the blue round emblem is not drawn; the pedestrian door and the bank-side fence are not drawn. Not modelled: loading docks and doors on the other fronts (no panorama within 35 m)."
+ ]
+}
