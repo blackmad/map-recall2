@@ -27,6 +27,8 @@ import {
   type WorldOrigin,
 } from '../src/canalRecall/game/recallRules';
 import type { WorldPoint } from '../src/canalRecall/game/worldTypes';
+import { buildSpoilerIndex } from '../src/canalRecall/orientationPois';
+import { labelAllowed, labelBudget, planLabels, VENUE_RADIUS_M, type LabelRules, type ScreenCandidate } from '../src/canalRecall/labels/labelPlan';
 
 const checks: string[] = [];
 function check(name: string, run: () => void): void {
@@ -398,6 +400,64 @@ check('the HUD never prints an unanswered name, however the bike is turned', () 
   assert.equal(hudWithholdsRouteName({ ...base, currentName: 'Egelantiersgracht', candidateName: 'Tuinstraat', learned: true }), true,
     'a settling candidate is withheld');
   assert.equal(hudWithholdsRouteName({ ...base, roadName: '' }), false);
+});
+
+// ---- Map labels never reveal the question (lane 2026-10-13) ----
+
+const labelRules = (over: Partial<LabelRules> = {}): LabelRules => ({
+  labelsOff: false, hiddenName: '', spoilerIndex: null, quizQuiet: false, isLabelled: () => false, ...over,
+});
+const screenLabel = (name: string, over: Partial<ScreenCandidate> = {}): ScreenCandidate => ({
+  id: name, name, lng: 4.894, lat: 52.374, heightM: 13, cls: 'culture', rank: 50,
+  x: 700, y: 450, width: 90, height: 24, distM: 200, riderDistM: 30, occluded: false, ...over,
+});
+
+check('a POI label that names the asked street is hidden while it is asked', () => {
+  // "Hotel Damrak 1" on the Damrak answers "which street is this?" (handoff 2026-10-13).
+  const asking = labelRules({ hiddenName: 'Damrak' });
+  assert.equal(labelAllowed(asking, 'venue', 'Hotel Damrak 1'), false);
+  assert.equal(labelAllowed(asking, 'culture', 'Damrak'), false, 'a POI named exactly the street');
+  // Dutch compounds: word n-grams miss them, the prefix rule does not.
+  assert.equal(labelAllowed(labelRules({ hiddenName: 'Keizersgracht' }), 'culture', 'Keizersgrachtkerk'), false);
+  assert.equal(labelAllowed(labelRules({ hiddenName: 'Prins Hendrikkade' }), 'venue', 'Prinshendrikkadecafé'), false);
+  // Not asked: the same names are ordinary cues (the all-names index aside).
+  assert.equal(labelAllowed(labelRules(), 'venue', 'Hotel Damrak 1'), true);
+  assert.equal(labelAllowed(labelRules({ hiddenName: 'Damrak' }), 'culture', 'Beurs van Berlage'), true);
+});
+
+check('quiz-eligible names and the quiet map hold for the label overlay too', () => {
+  const index = buildSpoilerIndex(['Nassaukade', 'Majoor Bosshardtbrug']);
+  assert.equal(labelAllowed(labelRules({ spoilerIndex: index }), 'venue', 'Tramhalte Nassaukade'), false);
+  assert.equal(labelAllowed(labelRules({ quizQuiet: true }), 'landmark', 'Westerkerk'), false, 'nothing during a quiz');
+  // The destination survives the quiet map (the HUD card names it) but never the asked name.
+  assert.equal(labelAllowed(labelRules({ quizQuiet: true }), 'destination', 'Westerkerk'), true);
+  assert.equal(labelAllowed(labelRules({ hiddenName: 'Keizersgracht' }), 'destination', 'Keizersgrachtkerk'), false);
+});
+
+check('the planner drops a spoiling label even when it is the best on screen', () => {
+  const plan = planLabels({
+    candidates: [screenLabel('Hotel Damrak 1', { rank: 999, cls: 'landmark' }), screenLabel('Beurs van Berlage', { x: 400 })],
+    rules: labelRules({ hiddenName: 'Damrak' }), cameraHeightM: 250, viewport: { width: 1440, height: 900 }, hud: [],
+  });
+  assert.deepEqual(plan.map(p => p.id), ['Beurs van Berlage']);
+});
+
+check('labels stay within the budget, clear of the HUD, and venues stay near the rider', () => {
+  assert.equal(labelBudget(250), 12, 'the Damrak viewpoint budget');
+  assert.ok(labelBudget(1.7) <= 6 && labelBudget(1.7) >= 4, 'a rider\'s eye reads a street, not a directory');
+  assert.ok(labelBudget(250, 390 * 844) < 12, 'a phone gets fewer');
+  const many = Array.from({ length: 60 }, (_, i) => screenLabel(`Venue ${i}`, { cls: 'civic', x: 60 + (i % 10) * 130, y: 120 + Math.floor(i / 10) * 120 }));
+  const plaque = { x: 0, y: 0, width: 360, height: 130 };
+  const plan = planLabels({ candidates: many, rules: labelRules(), cameraHeightM: 250, viewport: { width: 1440, height: 900 }, hud: [plaque] });
+  assert.equal(plan.length, 12);
+  for (const p of plan) {
+    const c = many.find(m => m.id === p.id)!;
+    assert.ok(!(c.x - c.width / 2 < plaque.width + 6 && c.y + 3 - c.height < plaque.height + 6), `${c.name} sits on the plaque`);
+  }
+  const far = planLabels({ candidates: [screenLabel('Café', { cls: 'venue', riderDistM: VENUE_RADIUS_M + 1 })], rules: labelRules(), cameraHeightM: 250, viewport: { width: 1440, height: 900 }, hud: [] });
+  assert.equal(far.length, 0, 'a café beyond 80 m of the rider is not a cue');
+  const hidden = planLabels({ candidates: [screenLabel('Westerkerk', { cls: 'landmark', occluded: true })], rules: labelRules(), cameraHeightM: 2, viewport: { width: 1440, height: 900 }, hud: [] });
+  assert.equal(hidden.length, 0, 'a label whose anchor a building hides is not drawn');
 });
 
 console.log(`Recall rules OK: ${checks.length} checks.`);
