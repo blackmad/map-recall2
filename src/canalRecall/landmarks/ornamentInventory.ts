@@ -51,6 +51,8 @@ export interface InventoryItem {
   note?: string;
   /** Optional box in the review sheet's camera-matched photo tile, fractions [x0, y0, x1, y1] (review-sheet --inventory). */
   sheetBox?: [number, number, number, number];
+  /** Who resolved a retro-fit miss and where the before/after proof is. */
+  fixed?: string;
 }
 
 export interface InventoryWall {

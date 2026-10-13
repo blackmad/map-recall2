@@ -140,14 +140,15 @@
       {
        "id": "s-lettering",
        "kind": "lettering",
-       "where": "GEMEENTE RADHUIS on the fascia board under the eaves",
+       "where": "GEMEENTE BADHUIS name board under the eaves",
        "approxSizeM": [
         3.5,
         0.3
        ],
-       "plan": "open",
-       "note": "cheap: stroke-font lettering on the fascia",
-       "seenIn": "recording_2025-09-22_10-53-43_00828"
+       "plan": "modelled",
+       "seenIn": "recording_2025-09-22_10-53-43_00828",
+       "how": "GEMEENTE BADHUIS in raised stroke-font letters on a dark green board (museum-amsterdam-noord-builder.ts)",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/museum-amsterdam-noord/strip.png"
       },
       {
        "id": "pyramid-roof",
@@ -180,9 +181,10 @@
         4,
         0.3
        ],
-       "plan": "open",
-       "note": "cheap: stroke-font lettering",
-       "seenIn": "recording_2025-09-22_10-53-43_00760"
+       "plan": "modelled",
+       "seenIn": "recording_2025-09-22_10-53-43_00760",
+       "how": "raised stroke-font letters on a dark green board",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/museum-amsterdam-noord/strip.png"
       },
       {
        "id": "n-hoarding",
@@ -228,9 +230,10 @@
         4,
         0.3
        ],
-       "plan": "open",
-       "note": "cheap: stroke-font lettering",
-       "seenIn": "recording_2025-09-22_10-53-43_00842"
+       "plan": "modelled",
+       "seenIn": "recording_2025-09-22_10-53-43_00842",
+       "how": "raised stroke-font letters on a dark green board",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/museum-amsterdam-noord/strip.png"
       }
      ]
     }
@@ -482,9 +485,10 @@
         2.6,
         0.35
        ],
-       "plan": "open",
-       "note": "cheap: stroke-font lettering",
-       "seenIn": "recording_2024-09-11_11-32-11_00979"
+       "plan": "modelled",
+       "seenIn": "recording_2024-09-11_11-32-11_00979",
+       "how": "dark raised stroke-font letters on the brick, replacing the blank band",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/nassaukerk/strip.png"
       },
       {
        "id": "arched-windows",
@@ -752,9 +756,10 @@
         2,
         0.8
        ],
-       "plan": "simplified",
-       "how": "blank dark plaque without letters; add stroke-font letters",
-       "seenIn": "b_20241105_1332_Track11_Sphere_00007"
+       "plan": "modelled",
+       "how": "green-blue plate with WILLEM DE ZWIJGER over KERK in cream raised letters",
+       "seenIn": "b_20241105_1332_Track11_Sphere_00007",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/willem-de-zwijgerkerk/strip.png"
       },
       {
        "id": "se-noticeboard",
@@ -1308,9 +1313,10 @@
         2.2,
         0.9
        ],
-       "plan": "open",
-       "note": "cheap: stroke-font letters on the parapet",
-       "seenIn": "b_20241217_0841_Track76_Sphere_00307"
+       "plan": "modelled",
+       "seenIn": "b_20241217_0841_Track76_Sphere_00307",
+       "how": "LTS in 0.95 m standing raised letters on the wing roof edge over the porch (blue; the photo is purple-blue)",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/de-school/strip.png"
       }
      ]
     },
@@ -1579,9 +1585,10 @@
         3,
         0.5
        ],
-       "plan": "open",
-       "note": "cheap: stroke-font lettering",
-       "seenIn": "TMX7316010203-001178_pano_0001_003767"
+       "plan": "modelled",
+       "seenIn": "TMX7316010203-001178_pano_0001_003767",
+       "how": "AMERICAN in 0.55 m standing letters on the Bar Americain canopy",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/american-hotel/strip.png"
       },
       {
        "id": "se-awnings",
@@ -1591,9 +1598,10 @@
         4,
         1.2
        ],
-       "plan": "open",
-       "note": "cheap: sloped slabs; they define the Leidseplein cafe front",
-       "seenIn": "TMX7316010203-001178_pano_0001_003767"
+       "plan": "modelled",
+       "seenIn": "TMX7316010203-001178_pano_0001_003767",
+       "how": "eight alternating ochre/cream sloping strips per cafe arch",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/american-hotel/strip.png"
       },
       {
        "id": "tower",
@@ -1695,14 +1703,15 @@
       {
        "id": "tower-clock",
        "kind": "clock",
-       "where": "gilded clock face on the crossing tower",
+       "where": "gilded clock faces on the four cardinal faces of the crossing-tower belfry",
        "approxSizeM": [
         1.5,
         1.5
        ],
-       "plan": "open",
-       "note": "cheap: disc + hands, helpers.clock",
-       "seenIn": "TMX7316010203-001502_pano_0000_000006"
+       "plan": "modelled",
+       "seenIn": "TMX7316010203-001502_pano_0000_000006",
+       "how": "gilt faces (already there) plus gilt hands, ornament-kit clockHands",
+       "fixed": "2026-10-13 ornament-inventory lane; strip artifacts/ornament-inventory/vondelkerk/strip.png"
       }
      ]
     },
@@ -3946,7 +3955,7 @@
         3.5
        ],
        "plan": "open",
-       "note": "the model entrance is a plain pale block; figure primitives like the Hoofdbureau Krop figures would read",
+       "note": "the model entrance is a plain pale block; figure primitives like the Hoofdbureau Krop figures would read Retro-fit attempted 2026-10-13 (two primitive figures + raised-letter panel, +600 tris); reverted: either part flips the de-bazel window-rhythm audit to FAIL (east and south elevations, predicted-missing rows), so the fix needs an audit-aware placement.",
        "seenIn": "TMX7316010203-002925_pano_0001_000012"
       },
       {
@@ -3958,7 +3967,7 @@
         1
        ],
        "plan": "open",
-       "note": "cheap: stone slab with stroke-font text",
+       "note": "cheap: stone slab with stroke-font text Retro-fit attempted 2026-10-13 (two primitive figures + raised-letter panel, +600 tris); reverted: either part flips the de-bazel window-rhythm audit to FAIL (east and south elevations, predicted-missing rows), so the fix needs an audit-aware placement.",
        "seenIn": "TMX7316010203-002925_pano_0001_000012"
       },
       {

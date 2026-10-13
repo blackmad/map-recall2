@@ -4,6 +4,7 @@
  *   node --import tsx scripts/landmarks/ornament-inventory.ts --select [--top=60]        # writes artifacts/ornament-inventory/targets.json
  *   node --import tsx scripts/landmarks/ornament-inventory.ts --render [--ids=a,b] [--walls=4] [--concurrency=3]
  *   node --import tsx scripts/landmarks/ornament-inventory.ts --table                    # ranked miss table from ornament-inventory.json
+ *   node --import tsx scripts/landmarks/ornament-inventory.ts --strip --ids=<id>          # after a builder fix: before/after strip
  *
  * --select: the manual-catalogue landmarks whose POI card cites Wikipedia (the destinations riders read about), topped up
  * to --top with the most recently first-exported landmarks; landmarks owned by other lanes (EXCLUDE) are left out.
@@ -15,6 +16,8 @@
  * be `skipped` with `needs-modeller`, the splat/impostor track).
  * --table: the misses (open, or skipped needs-modeller) ranked by `missScore` (size, kind, signature), as markdown in
  * artifacts/ornament-inventory/misses.md.
+ * --strip: re-renders the review sheet from the rebuilt GLB into <id>/after/ and writes <id>/strip.png, one row per wall:
+ * panorama | render before (the --render sheet) | render after, all from the panorama's own camera.
  */
 import {spawn} from 'node:child_process';
 import fs from 'node:fs';
@@ -73,6 +76,27 @@ async function render() {
   await Promise.all(Array.from({length: Number(arg('concurrency', '3'))}, worker));
 }
 
+async function strip() {
+  for (const id of arg('ids').split(',').filter(Boolean)) {
+    const dir = path.join(OUT, id), before = path.join(dir, 'sheet'), after = path.join(dir, 'after');
+    const meta = JSON.parse(fs.readFileSync(path.join(before, 'meta.json'), 'utf8')) as {bag: string; walls: {bearing: number; lengthM: number; photo: boolean}[]};
+    const code = await run('node', ['--import', 'tsx', 'scripts/landmarks/review-sheet.ts', `--id=${id}`, `--bag=${meta.bag}`, '--no-game', `--walls=${meta.walls.length}`, `--out=${path.relative(ROOT, after)}`]);
+    if (code) { console.log(`${id}: after sheet failed`); continue; }
+    const T = 520, H = 544, rows: Buffer[] = [];
+    for (const w of meta.walls.filter(w => w.photo)) {
+      const name = `wall-${w.bearing}-${Math.round(w.lengthM)}m.png`;
+      if (!fs.existsSync(path.join(before, name)) || !fs.existsSync(path.join(after, name))) continue;
+      const b = sharp(path.join(before, name)), a = sharp(path.join(after, name));
+      const tiles = [await b.clone().extract({left: 0, top: 0, width: T, height: H}).toBuffer(), await b.clone().extract({left: T, top: 0, width: T, height: H}).toBuffer(), await a.clone().extract({left: T, top: 0, width: T, height: H}).toBuffer()];
+      const labels = ['', 'BEFORE', 'AFTER'];
+      rows.push(await sharp({create: {width: T * 3, height: H, channels: 3, background: '#fff'}}).composite(tiles.flatMap((input, k) => [{input, left: k * T, top: 0}, ...(labels[k] ? [{input: Buffer.from(`<svg width="120" height="24"><rect width="120" height="24" fill="${k === 2 ? '#060' : '#600'}"/><text x="6" y="17" font-size="14" fill="#fff" font-family="sans-serif">${labels[k]}</text></svg>`), left: k * T + T - 120, top: 0}] : [])])).png().toBuffer());
+    }
+    if (!rows.length) { console.log(`${id}: no photographed wall in both sheets`); continue; }
+    await sharp({create: {width: T * 3, height: H * rows.length, channels: 3, background: '#fff'}}).composite(rows.map((input, k) => ({input, left: 0, top: k * H}))).png().toFile(path.join(dir, 'strip.png'));
+    console.log(`${id}: ${path.relative(ROOT, path.join(dir, 'strip.png'))}`);
+  }
+}
+
 function table() {
   const doc = JSON.parse(fs.readFileSync(SURVEY, 'utf8')) as {landmarks: Record<string, LandmarkInventory>};
   const rows: {score: number; id: string; wall: string; item: string; kind: string; size: string; status: string; note: string; sig: boolean}[] = [];
@@ -97,4 +121,5 @@ function table() {
 if (flag('select')) select(Number(arg('top', '60')));
 else if (flag('render')) await render();
 else if (flag('table')) table();
-else { console.error('one of --select, --render, --table'); process.exit(2); }
+else if (flag('strip')) await strip();
+else { console.error('one of --select, --render, --table, --strip'); process.exit(2); }

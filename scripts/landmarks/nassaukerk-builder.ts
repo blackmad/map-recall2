@@ -4,6 +4,7 @@ import {addShell} from './worship-shell';
 import {archWindow, wallBetween, wallPoint} from './worship-kit';
 import {onWall, type Wall} from './worship-walls';
 import source from './nassaukerk-footprints.json';
+import {raisedLettering} from './ornament-kit';
 
 /**
  * Nassaukerk, De Wittenkade 111 (H.G. Krijgsman, 1925-26, Amsterdam School). Greek-cross plan, rotated about 45 degrees on
@@ -39,7 +40,12 @@ function addNassaukerkWindows(b: BuildingTools, front: Wall, mid: number) {
   // street front, right of the entrance and below the bay roof
   squareWindow(b, front, mid - 3.0, 1.7, 1.1, 1.1);
   squareWindow(b, front, mid + 4.0, 1.7, 1.7, 1.2);
-  onWall(b, front, mid + 9.3, 2.95, 3.6, 0.5, 0.06, 'dark', 0.01); // NASSAUKERK name band
+  // NASSAUKERK in dark raised letters on the brick (panorama 2024; was a blank dark band until the ornament inventory, 2026-10-13).
+  {
+    const {geometry} = raisedLettering({text: 'NASSAUKERK', heightM: 0.42, maxWidthM: 3.4, depthM: 0.04});
+    const q = wallPoint(front, mid + 9.3, 0);
+    b.add(geometry, 'dark', q[0], 3.2, q[1], Math.atan2(front.n[0], front.n[1]));
+  }
   for (const dt of [10.7, 12.1]) squareWindow(b, front, mid + dt, 1.75, 0.5, 0.5);
   for (let k = 0; k < 5; k++) squareWindow(b, front, mid + 8.0 + k * 1.05, 4.75, 0.8, 1.05);
   onWall(b, front, mid + 10.1, 6.0, 5.6, 0.32, 0.22, 'stone', 0); // cream fascia of the bay
