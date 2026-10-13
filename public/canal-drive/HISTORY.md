@@ -56,6 +56,16 @@ covered BAG panden. Instancing vs merged geometry: 78 KB vs 626 KB for 24
 type-1 blocks; ~35 vs ~1.5k draw calls for the whole 427-pand set. iPhone
 4x-throttle frame time unchanged at the pilot views. Off by default.
 
+## Hendrik fire station: identical engine doors from a measured panorama (2026-10-13)
+
+User: "mismatched fire doors". Doors were 5.1 m wide on 6.4 m centres (about 1.5×
+too wide), pushing door 5 across the entrance block's 1 m projection, where it
+stuck out at another size. Rays cast from the 2025-07-03 panorama onto the surveyed
+front line give five identical 3.30 × 4.50 m doors on 1.26 m piers (4.56 m centres),
+one window centred over each, one straight entrance oriel with the flame, and the
+right wing on its photographed grid. The two solar arrays hovered 0.45/1.30 m off
+the roof (the real detached-parts fail); they now sit on their roof planes.
+
 ## Recipe roofs with towers and split fronts; z-fight causes in the library (2026-10-11)
 
 Five Bilderdijkstraat faces were held off recipe roofs. Most failed install on the
