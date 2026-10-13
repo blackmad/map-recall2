@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## Landmark queue, batch 6 (2026-10-14, night)
+
+Lane `landmarks/queue-6-20261014`. Noorderkerk (16.2k tris: the Greek
+cross on 3DBAG massing, four gables each with two tall arched mullioned
+windows, a quatrefoil roundel, scrolls, balustrade with urns, shoulder
+piers; bell turret with four clock dials; annex and consistory lean-to; it
+was a procedural-kit entry), De Krijtberg (7.4k: nave 33.5 m, aisles,
+transepts, apse, twin towers with spires at 53 and 56 m read from photos
+because 3DBAG truncates them), the Wilhelmina equestrian statue on the
+Rokin (3.7k: side-saddle rider, walking horse, gilt WILHELMINA 1880-1962),
+the Sarphatimonument (13.6k: eight red granite columns over the bust,
+basins, frogs, dome with gilt crown, lobed pool, SARPHATI frieze) and the
+Thorbecke statue (6.3k: gilt THORBECKE, OPTIMO CIVI, CIVES; spear-topped
+railing). All pass `audit:glb` at slots 100 %. A new `pixel-font.ts` does
+5×7 block lettering. Stale "pending" in the backlog: Munttoren,
+Schreierstoren, Amstelkerk, Zuiderkerk, Waag, Posthoornkerk and the Hortus
+greenhouses already exist. The Tropenmuseum needs its own survey lane: its
+BAG pand is a 4-vertex rhombus and the rest is ~25 OSM stand-in ways.
+Statue facings are visual estimates; figures have no faces or drapery;
+the Noorderkerk's unphotographed gables are inferred.
+
+
 ## Large-tier components the batches kept asking for (2026-10-14, night)
 
 Lane `large/components-20261014`. Ten components, each with a test in

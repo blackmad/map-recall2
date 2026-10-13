@@ -2990,6 +2990,56 @@
       "updatedAt": "2026-10-13T22:00:42.600Z",
       "version": "281d548344fd1363",
       "dateSource": "asset-update"
+    },
+    "noorderkerk": {
+      "updatedAt": "2026-10-13T22:05:49.322Z",
+      "version": "93f7f58651032213",
+      "dateSource": "asset-update"
+    },
+    "noorderkerk.lod1": {
+      "updatedAt": "2026-10-13T22:05:50.032Z",
+      "version": "11fb085d8b766695",
+      "dateSource": "asset-update"
+    },
+    "krijtberg": {
+      "updatedAt": "2026-10-13T22:13:25.022Z",
+      "version": "0c77e3b173b19e93",
+      "dateSource": "asset-update"
+    },
+    "krijtberg.lod1": {
+      "updatedAt": "2026-10-13T22:13:32.875Z",
+      "version": "eb8f65848adfa228",
+      "dateSource": "asset-update"
+    },
+    "wilhelmina-ruiterstandbeeld": {
+      "updatedAt": "2026-10-13T22:20:20.393Z",
+      "version": "ce5ceee85bd19387",
+      "dateSource": "asset-update"
+    },
+    "wilhelmina-ruiterstandbeeld.lod1": {
+      "updatedAt": "2026-10-13T22:19:47.254Z",
+      "version": "2183d5769f1e2c38",
+      "dateSource": "asset-update"
+    },
+    "sarphatimonument": {
+      "updatedAt": "2026-10-13T22:27:21.651Z",
+      "version": "2ebf7005547722f2",
+      "dateSource": "asset-update"
+    },
+    "sarphatimonument.lod1": {
+      "updatedAt": "2026-10-13T22:27:09.967Z",
+      "version": "2b52b54544b24886",
+      "dateSource": "asset-update"
+    },
+    "thorbecke-standbeeld": {
+      "updatedAt": "2026-10-13T22:29:50.892Z",
+      "version": "41535bb315fa8feb",
+      "dateSource": "asset-update"
+    },
+    "thorbecke-standbeeld.lod1": {
+      "updatedAt": "2026-10-13T22:29:38.213Z",
+      "version": "5ba60ec746f77050",
+      "dateSource": "asset-update"
     }
   }
 }

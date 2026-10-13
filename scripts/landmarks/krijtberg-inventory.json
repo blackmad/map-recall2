@@ -1,0 +1,52 @@
+{
+ "schemaVersion": 1,
+ "id": "krijtberg",
+ "pand": "0363100012185920",
+ "signature": ["kb-spires", "kb-towers", "kb-front-windows", "kb-portals", "kb-centre-gable", "kb-cross-plan"],
+ "walls": [
+  {
+   "tag": "front-50", "bearing": 50, "lengthM": 17, "centre": [4.88838, 52.36795],
+   "evidence": "photo", "panoId": "b_20250120_0926_Track17_Sphere_00023", "capturedAt": "2025-01-20", "checked": true,
+   "note": "Singel front (Commons: Zairon Fassade 1 and 3, CC BY-SA 4.0; Alf van Beem, CC0): two buttressed brick towers either side of a centre bay with two tall pointed three-light windows over two pointed portals, a small gable with louvres and a cross between the towers. Panorama 00023 shows the portal in close-up.",
+   "items": [
+    {"id": "kb-spires", "kind": "tower", "where": "two slender octagonal slate spires with four gablets and corner pinnacles each, gilt cross finials; the right spire a little taller", "approxSizeM": [4.4, 25], "plan": "simplified",
+     "how": "builder: octagonal cone from 34.5 m to 53 / 56 m, four triangular brick gablets and four stone pinnacles round the base, gold cross; heights from photographs because 3DBAG cuts the spires, the pair is not exactly equal in the photos either", "seenIn": "Commons De Krijtberg Singel (Alf van Beem, CC0)"},
+    {"id": "kb-towers", "kind": "tower", "where": "two square brick towers 4.2 m wide to 33 m: buttressed corners, string courses, a lancet window mid-height, paired louvred belfry lancets", "approxSizeM": [4.2, 33], "plan": "modelled",
+     "how": "builder: tower prisms with string courses at 8, 15, 24.5 and 33 m, corner buttress piers on the front, pointed window ring and paired dark lancets on three faces", "seenIn": "RCE 20369642 (Commons)"},
+    {"id": "kb-front-windows", "kind": "window-shape", "where": "two very tall pointed windows with three lights and a traceried head in the centre bay (10.5 to 20 m)", "approxSizeM": [2.9, 9.7], "plan": "modelled",
+     "how": "builder: pointed outline ring, glass, two mullions and transoms every 0.9 m; the tracery head is left plain", "seenIn": "Commons Amsterdam De Krijtberg Fassade 3 (Zairon)"},
+    {"id": "kb-portals", "kind": "other", "where": "two deep pointed portals with stepped brick and stone mouldings, plank leaves behind black iron gates with a gilt cross above (centre bay) and two smaller doors at the tower feet", "approxSizeM": [4.0, 6.0], "plan": "modelled",
+     "how": "builder: three stepped arch rings, dark leaf slab, five iron bars and two rails, gold cross; the gate scrollwork is not modelled", "seenIn": "b_20250120_0926_Track17_Sphere_00023"},
+    {"id": "kb-centre-gable", "kind": "other", "where": "small brick gable between the towers (25 to 36 m) with three louvre lancets, stone raking copings and a stone pinnacle with a gilt cross", "approxSizeM": [8.4, 11], "plan": "modelled", "how": "builder: brick triangle, three dark lancets, two coping boxes, pinnacle and cross", "seenIn": "Commons Amsterdam De Krijtberg Fassade 3 (Zairon)"},
+    {"id": "kb-cross-plan", "kind": "other", "where": "cross basilica: nave under a 33.5 m ridge, aisles at 15 m, transepts with gables, polygonal apse", "approxSizeM": [56, 33.5], "plan": "modelled", "how": "builder: cross prism to 25.8 m with ridged arms clipped on valley diagonals, aisle lean-to roofs, apse fan roof", "seenIn": "RCE 20369642 (Commons)"}
+   ]
+  },
+  {
+   "tag": "side-320", "bearing": 320, "lengthM": 31, "centre": [4.88740, 52.36745],
+   "evidence": "photo", "panoId": "b_20250120_0926_Track17_Sphere_00022", "capturedAt": "2025-01-20", "checked": true,
+   "note": "Long flanks (RCE 20369642): aisle wall with tall pointed windows and clerestory lancets above, buttressed; windows are placed on a regular pitch, the photographed bay count is not counted exactly.",
+   "items": [
+    {"id": "kb-flank-windows", "kind": "window-shape", "where": "lancet windows in the aisle walls and the clerestory, seven bays per side", "approxSizeM": [1.4, 4.5], "plan": "simplified", "how": "builder: pointed windows at a regular 3.8 m pitch on both aisle and clerestory walls; buttresses are omitted on the flanks", "seenIn": "RCE 20369642 (Commons)"}
+   ]
+  },
+  {
+   "tag": "transept-N-140", "bearing": 140, "lengthM": 9.5, "centre": [4.88800, 52.36765],
+   "evidence": "inferred", "capturedAt": null, "checked": true,
+   "note": "Transept gables are hidden by the Singel houses and presbytery; by the cross-basilica plan they carry the same window language as the front (RCE 20369642 shows the roofs only).",
+   "items": [
+    {"id": "kb-transept-gables", "kind": "window-shape", "where": "transept gables with a tall pointed window, two small lancets and a roundel", "approxSizeM": [9.5, 20], "plan": "simplified", "how": "builder: window ring, two lancets, stone-ringed round window and rake copings, composition inferred", "seenIn": "inferred from the front"}
+   ]
+  },
+  {
+   "tag": "apse-230", "bearing": 230, "lengthM": 9.5, "centre": [4.88720, 52.36735],
+   "evidence": "inferred", "capturedAt": null, "checked": true,
+   "note": "Apse and choir are behind the block of houses; massing from BAG and 3DBAG roof planes only.", "items": []
+  }
+ ],
+ "sources": [
+  {"name": "Zairon, Amsterdam De Krijtberg Fassade 1 and 3", "url": "https://commons.wikimedia.org/wiki/Category:De_Krijtberg", "licence": "CC BY-SA 4.0"},
+  {"name": "Alf van Beem, De Krijtberg, Singel", "url": "https://commons.wikimedia.org/wiki/File:De_Krijtberg,_Singel.JPG", "licence": "CC0"},
+  {"name": "RCE 20369642 Overzicht neogotische kruisbasiliek", "url": "https://commons.wikimedia.org/wiki/File:Overzicht_neogotische_kruisbasiliek_-_Amsterdam_-_20369642_-_RCE.jpg", "licence": "CC BY-SA 4.0"},
+  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/panoramas/", "licence": "CC BY 4.0"}
+ ]
+}

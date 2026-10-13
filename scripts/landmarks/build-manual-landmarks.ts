@@ -269,6 +269,11 @@ import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signat
 // Landmark queue lane 5 (2026-10-13)
 import {buildSlavernijmonument} from './slavernijmonument-builder';
 import {buildBegijnhof} from './begijnhof-builder';
+import {buildNoorderkerk} from './noorderkerk-builder';
+import {buildKrijtberg} from './krijtberg-builder';
+import {buildThorbeckeStandbeeld} from './thorbecke-standbeeld-builder';
+import {buildSarphatimonument} from './sarphatimonument-builder';
+import {buildWilhelminaRuiterstandbeeld} from './wilhelmina-ruiterstandbeeld-builder';
 import {buildVondelmonument} from './vondelmonument-builder';
 import {buildRembrandtmonument} from './rembrandtmonument-builder';
 import {buildMaagdenhuis} from './maagdenhuis-builder';
@@ -711,6 +716,11 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='rembrandtmonument')buildRembrandtmonument(w,d,helpers);
     else if(id==='vondelmonument')buildVondelmonument(w,d,helpers);
     else if(id==='begijnhof')buildBegijnhof(w,d,helpers);
+    else if(id==='noorderkerk')buildNoorderkerk(w,d,helpers);
+    else if(id==='krijtberg')buildKrijtberg(w,d,helpers);
+    else if(id==='thorbecke-standbeeld')buildThorbeckeStandbeeld(w,d,helpers);
+    else if(id==='sarphatimonument')buildSarphatimonument(w,d,helpers);
+    else if(id==='wilhelmina-ruiterstandbeeld')buildWilhelminaRuiterstandbeeld(w,d,helpers);
     else if(id==='slavernijmonument')buildSlavernijmonument(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
