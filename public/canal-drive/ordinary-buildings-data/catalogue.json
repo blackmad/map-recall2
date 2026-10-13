@@ -30866,18 +30866,18 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165687",
       "name": "Warmoesstraat 157-163, Amsterdam: 1981 perforated-brick car park with a stone-and-brick wing at its north end",
-      "hash": "22c300d59d9d1da9fa43c84bc92bf3b9233d7b50375e10b8a3fafb414fb79833",
-      "sha256": "22c300d59d9d1da9fa43c84bc92bf3b9233d7b50375e10b8a3fafb414fb79833",
-      "bytes": 618564,
-      "triangles": 8161,
-      "materials": 10,
+      "hash": "ded9c4ae97b627a02b2cf68bb11b03e6e25413735174224ac6dfd53a737c2bec",
+      "sha256": "ded9c4ae97b627a02b2cf68bb11b03e6e25413735174224ac6dfd53a737c2bec",
+      "bytes": 635096,
+      "triangles": 8623,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
         "min": [
           -57.16,
           -0.001,
-          -54.226
+          -54.286
         ],
         "max": [
           43.146,
@@ -31063,23 +31063,24 @@
           "parts-attached:pass"
         ],
         "wallGroups": [
-          "brick-bay-grid 7st 8b",
-          "brick-bay-grid 7st 8b",
-          "brick-bay-grid 4st 8b",
+          "brick-bay-grid 7st 32b",
+          "brick-bay-grid 7st 10b",
+          "brick-bay-grid 4st 18b",
           "brick-bay-grid 4st 4b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
         "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Modelled: the screen as brick-bay-grid with wide low windows (7 decks, 8 bays: the perforation grid reads as a window field, not as 1 m open cells), the SE podium (4 decks), the stone-and-brick wing with 4 storeys x 4 bays and a cornice. Walls without a photograph and the large NW party walls stay blank. The 49 m SE wall (panel 30) carries the blue-glass cylinder: its eaves (23.5 m) do not match the lower LoD2.2 roof behind it (19.3 m), so no group may own it and it stays blank. Not modelled: the PLAYERS lettering, the curved glazed casino ground floor, the car-park ramps and gate, the stone plinth of the wing."
+        "Modelled: the screen as brick-bay-grid with wide low windows (7 decks, 8 bays: the perforation grid reads as a window field, not as 1 m open cells), the SE podium (4 decks), the stone-and-brick wing with 4 storeys x 4 bays and a cornice. Walls without a photograph and the large NW party walls stay blank. The 49 m SE wall (panel 30) carries the blue-glass cylinder: its eaves (23.5 m) do not match the lower LoD2.2 roof behind it (19.3 m), so no group may own it and it stays blank. Not modelled: the PLAYERS lettering, the curved glazed casino ground floor, the car-park ramps and gate, the stone plinth of the wing.",
+        "Components lane (2026-10-13): walls[0]-[2] are now the perforated-brick screen (screen: true): a concrete lattice of posts at every bay joint and rails at every deck line (w01-136, w06-312: cells about 1.5 m wide, one deck tall), with glass-block perforations in one bay of three, staggered per deck. Bays re-counted to the lattice: 32 on walls[0], 10 on walls[1], 18 on walls[2]. Simplified: the glass-block clusters are scattered by a fixed stagger, not placed cell by cell from the photograph; the thin cross ribs inside each lattice cell are not modelled."
       ],
       "reviewState": "large-recipe-gates-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165687",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:42:00.372Z"
+      "updatedAt": "2026-10-13T22:19:44.283Z"
     },
     {
       "id": "ordinary-0363100012165098",
