@@ -48150,6 +48150,90 @@
         "bytes": 27580,
         "triangles": 1206
       }
+    },
+    "sarphatimonument": {
+      "id": "sarphatimonument",
+      "name": "Sarphatimonument",
+      "landmarkId": "extract_landmarks_174768079",
+      "modelUrl": "./models/sarphatimonument.glb",
+      "suppressOsmIds": [],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8955726,
+          52.3544625
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 26,
+        "widthMetres": 26
+      },
+      "surveyed": {
+        "anchor": [
+          4.8955726,
+          52.3544625
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Backlog destination point (OSM memorial) in the Sarphatipark; monument axes, pool outline and facing read from Commons photographs, the facing is a visual estimate, not a surveyed bearing"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "assetKind": "memorial",
+      "materialOverrides": {
+        "stone": "#a9a08e",
+        "concrete": "#8e8f8c",
+        "greyBrick": "#4f5457",
+        "red": "#8c4e45",
+        "bronze": "#2f332e",
+        "copper": "#5f8f78",
+        "gold": "#c4a24a",
+        "dark": "#1f2326"
+      },
+      "attribution": {
+        "title": "Sarphatimonument - original low-poly reconstruction",
+        "author": "Map Recall; commemorated monument of 1886 (bust by Jacques de Braekeleer)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/Category:Sarphati_monument",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly monument. Layout and proportions measured from Commons photographs by Ceescamel (CC BY-SA 4.0) and SanderK (CC BY-SA 2.5); no pixels or third-party meshes imported."
+      },
+      "buildingCategory": "landmark",
+      "bounds": {
+        "min": [
+          -11.649999618530273,
+          -1.1920929132713809e-8,
+          -11.649999618530273
+        ],
+        "max": [
+          11.649999618530273,
+          11.5600004196167,
+          11.649999618530273
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8955726,
+          52.3544625
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 23.299999237060547,
+        "heightMetres": 11.560000431537627,
+        "depthMetres": 23.299999237060547,
+        "depthCoverage": 0.896153816810021
+      },
+      "triangles": 13632,
+      "bytes": 149352,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "2ebf7005547722f2",
+        "buildVersion": 2,
+        "bytes": 63920,
+        "triangles": 3215
+      }
     }
   }
 }

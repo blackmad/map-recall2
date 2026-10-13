@@ -1,0 +1,34 @@
+{
+ "schemaVersion": 1,
+ "id": "sarphatimonument",
+ "signature": ["sp-baldachin", "sp-bust", "sp-dome-crown", "sp-basins", "sp-pool"],
+ "walls": [
+  {
+   "tag": "s-180", "bearing": 180, "lengthM": 6, "centre": [4.8955726, 52.3544575],
+   "evidence": "photo", "panoId": "Commons 2021 Sarphatimonument-overzicht (Ceescamel, CC BY-SA 4.0)", "capturedAt": "2021", "checked": true,
+   "note": "Front (bust side) from the Commons photographs: a baldachin of red granite column pairs over the bronze bust, dome with a copper cartouche, gilt crown, shell basins, frogs, lobed pool and black hooped fence. The park is only partly covered by panoramas; the Commons photographs are the evidence.",
+   "items": [
+    {"id": "sp-baldachin", "kind": "colonnade", "where": "eight red polished granite columns with bronze bases and capitals in pairs at the four corners, an arch over each opening, cornice with a segmental pediment on every face", "approxSizeM": [5.2, 4.5], "plan": "modelled",
+     "how": "builder: eight cylinders with bronze base/capital blocks, a stone arch ring and jambs per face, cornice slab, dentil-line box and segmental pediment with an inset panel on each of the four faces", "seenIn": "Commons Sarphati_monument.JPG (SanderK, CC BY-SA 2.5)"},
+    {"id": "sp-bust", "kind": "sculpture", "where": "bronze bust of Dr Samuel Sarphati on a bronze pedestal in the arched opening", "approxSizeM": [0.9, 1.9], "plan": "simplified",
+     "how": "builder: pedestal box, ellipsoid shoulders and head; no facial features, drapery or inscription", "seenIn": "Commons Sarphati_monument.JPG (SanderK)"},
+    {"id": "sp-dome-crown", "kind": "dome", "where": "scaled copper-green dome on a drum with oval cartouches and four urns, a vase finial and a gilt crown with a gull on top", "approxSizeM": [3.3, 4.3], "plan": "simplified",
+     "how": "builder: square drum, hemisphere (the fish-scale pattern is not modelled), copper ellipsoid cartouche per face, four urns, two stone vase stages, an open gold crown ring with eight prongs", "seenIn": "Commons Sarphati_monument.JPG (SanderK)"},
+    {"id": "sp-basins", "kind": "other", "where": "four scalloped shell basins with fountain jets on the scaled battered base, bronze frogs at the corners, a lion-head roundel on each dado face", "approxSizeM": [6.9, 2.2], "plan": "simplified",
+     "how": "builder: tapered bowl per face on a stone bracket with a glass water disc, spout sphere, two frogs per face, dado block with red panels and a bronze roundel; water jets, the scale pattern and carved brackets are left out", "seenIn": "Commons 2021 Sarphatimonument-overzicht (Ceescamel)"},
+    {"id": "sp-pool", "kind": "other", "where": "lobed stone-rimmed pool about 20 m across inside a black hooped railing, four satellite fountain cups", "approxSizeM": [20, 0.7], "plan": "simplified",
+     "how": "builder: rim and coping rings on a four-lobe outline r(th) = 9.0 + 1.1 cos 4th, a dark floor, a fence of 96 posts and bars; the satellite jets are omitted", "seenIn": "Commons Sarphati_monument.JPG (SanderK)"},
+    {"id": "sp-lettering", "kind": "lettering", "where": "SARPHATI in gilt capitals on the front frieze under the pediment", "approxSizeM": [2.4, 0.35], "plan": "modelled", "how": "builder: 5x7 block letters as gold run boxes (pixel-font.ts) on the south entablature", "seenIn": "Commons Sarphati_monument.JPG (SanderK)"}
+   ]
+  },
+  {
+   "tag": "n-0", "bearing": 0, "lengthM": 6, "centre": [4.8955726, 52.3544675],
+   "evidence": "inferred", "capturedAt": null, "checked": true,
+   "note": "Back, east and west faces repeat the basin and dado composition by the four-fold plan (the 2021 photograph shows the west and east basins in profile); the bust faces one side only.", "items": []
+  }
+ ],
+ "sources": [
+  {"name": "Ceescamel, Sarphatimonument overzicht and plaquette (2021)", "url": "https://commons.wikimedia.org/wiki/Category:Sarphati_monument", "licence": "CC BY-SA 4.0"},
+  {"name": "SanderK, Sarphati monument", "url": "https://commons.wikimedia.org/wiki/File:Sarphati_monument.JPG", "licence": "CC BY-SA 2.5"}
+ ]
+}
