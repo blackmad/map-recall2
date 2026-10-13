@@ -29,7 +29,7 @@ export function buildTheaterLandmark(id:string,w:number,d:number,b:BuildingTools
   const gardenFrom=hallZ-hallRz,gardenRear=-front,gardenZ=(gardenFrom+gardenRear)/2,gardenLen=gardenFrom-gardenRear;
   box(0,0,gardenZ,width*.94,.12,gardenLen,'green');
   for(const zz of [gardenFrom-.4,gardenRear+.4])box(0,.12,zz,width*.94,.45,.5,'green');
-  for(const xx of [-width*.46,width*.46])box(xx,.12,gardenZ,.5,.45,gardenLen,'green');
+  for(const xx of [-width*.46,width*.46])box(xx,.12,gardenZ,.5,.5,gardenLen,'green');
   const z=front+.06;box(0,0,z,width,23,.4,'stone');for(const y of [.2,5.8,21.7,23])box(0,y,z+.3,width+.5,.4,.6,'white');
   for(let i=0;i<5;i++){let x=(i-2)*width*.185;win(x,.8,z+.26,width*.14,4.1);win(x,6.5,z+.26,width*.14,7,true);win(x,16,z+.26,width*.14,3.3);}
   for(const x of [-width*.29,-width*.1,width*.1,width*.29]){cylinder(x,5.8,z+.58,.45,15.8,'stone');box(x,5.7,z+.58,1.25,.35,1.25,'white');box(x,21.1,z+.58,1.35,.6,1.35,'white');}
