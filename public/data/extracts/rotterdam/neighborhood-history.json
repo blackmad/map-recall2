@@ -63,11 +63,12 @@
   {
    "name": "De Vlieger",
    "description": {
-    "en": "Bevrijdingsmonument Vreewijk (landmark here): Artists Joan Bakker and J. Poot created the column featuring dancing figures and a lion.",
+    "en": "Artists Joan Bakker and J. Poot created the column featuring dancing figures and a lion.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Bevrijdingsmonument_Vreewijk",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Bevrijdingsmonument Vreewijk (landmark)"
    }
   },
   {
@@ -414,18 +415,20 @@
   {
    "name": "Oud-Crooswijk",
    "description": {
-    "en": "Boezemsingelkerk (landmark here): Gerrit Hendrik Kersten served as predecessor here during two separate periods between 1906 and 1948.",
+    "en": "Gerrit Hendrik Kersten served as predecessor here during two separate periods between 1906 and 1948.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Boezemsingelkerk",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Boezemsingelkerk (landmark)"
    },
    "history": {
-    "en": "Boezemsingelkerk (landmark here): The original church opened on March 31, 1901 before being demolished in 2018.",
+    "en": "The original church opened on March 31, 1901 before being demolished in 2018.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Boezemsingelkerk",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Boezemsingelkerk (landmark)"
    }
   },
   {
@@ -451,18 +454,20 @@
   {
    "name": "Kralingen-West",
    "description": {
-    "en": "Botanische Tuin Kralingen (park here): Visitors can explore distinct sections dedicated to medicinal plants, ferns, and roses.",
+    "en": "Visitors can explore distinct sections dedicated to medicinal plants, ferns, and roses.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Botanische_Tuin_Rotterdam_Kralingen",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Botanische Tuin Kralingen (park)"
    },
    "history": {
-    "en": "Botanische Tuin Kralingen (park here): Public access began in 1984, shifting the focus from education to recreation.",
+    "en": "Public access began in 1984, shifting the focus from education to recreation.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Botanische_Tuin_Rotterdam_Kralingen",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Botanische Tuin Kralingen (park)"
    }
   },
   {
@@ -493,7 +498,7 @@
   {
    "name": "Blijdorp",
    "description": {
-    "en": "Blijdorp is a neighbourhood in northern Rotterdam and is part of the borough Noord. The neighbourhood has around 9500 inhabitants.",
+    "en": "Blijdorp is a neighbourhood in northern Rotterdam and is part of the borough Noord.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Blijdorp_(district)",
     "lang": "en"
    },
@@ -746,7 +751,7 @@
   {
    "name": "IJsselmonde",
    "description": {
-    "en": "IJsselmonde is a borough in the southeastern corner of the city of Rotterdam, Netherlands. As of 2023 it has 61,920 inhabitants. The name IJsselmonde is also used to denote the island in the Rhine–Meuse–Scheldt delta bordered by the Nieuwe Maas to the north, the Oude Maas to the south, and the Noord to the east. The borough is in the island.",
+    "en": "IJsselmonde is a borough in the southeastern corner of the city of Rotterdam, Netherlands. The name IJsselmonde is also used to denote the island in the Rhine–Meuse–Scheldt delta bordered by the Nieuwe Maas to the north, the Oude Maas to the south, and the Noord to the east. The borough is in the island.",
     "sourceUrl": "https://en.wikipedia.org/wiki/IJsselmonde%2C_Rotterdam",
     "lang": "en"
    },
@@ -802,7 +807,7 @@
   {
    "name": "Katendrecht",
    "description": {
-    "en": "Katendrecht is a neighbourhood of Rotterdam, on the south bank of the Nieuwe Maas. It is located between the Rijnhaven and the Maashaven. Katendrecht was a separate municipality from 1817 to 1874, when it merged with Charlois. The neighbourhood covers an area of 1,18 km² with 4,760 inhabitants.",
+    "en": "Katendrecht is a neighbourhood of Rotterdam, on the south bank of the Nieuwe Maas. It is located between the Rijnhaven and the Maashaven. Katendrecht was a separate municipality from 1817 to 1874, when it merged with Charlois.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Katendrecht",
     "lang": "en"
    },
@@ -862,7 +867,7 @@
   {
    "name": "Carnisse",
    "description": {
-    "en": "Carnisserbuurt is a neighborhood of Rotterdam, Netherlands. As of 2025, it has a population of 11,285.",
+    "en": "Carnisserbuurt is a neighborhood of Rotterdam, Netherlands.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Carnisserbuurt",
     "lang": "en"
    }
@@ -897,24 +902,26 @@
   {
    "name": "Kleinpolder-West",
    "description": {
-    "en": "O.L.V. Altijddurende Bijstand (landmark here): After closing in 2019, the former church was converted into an apartment complex.",
+    "en": "After closing in 2019, the former church was converted into an apartment complex.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Onze-Lieve-Vrouw_van_Altijddurende_Bijstandkerk_(Overschie)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "O.L.V. Altijddurende Bijstand (landmark)"
    },
    "history": {
-    "en": "O.L.V. Altijddurende Bijstand (landmark here): Construction plans began in 1950 to replace a smaller church that could not serve the growing community.",
+    "en": "Construction plans began in 1950 to replace a smaller church that could not serve the growing community.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Onze-Lieve-Vrouw_van_Altijddurende_Bijstandkerk_(Overschie)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "O.L.V. Altijddurende Bijstand (landmark)"
    }
   },
   {
    "name": "Oud-Charlois",
    "description": {
-    "en": "Oud-Charlois is a neighborhood of Rotterdam, Netherlands. It features a charming village center with authentic houses and streets. As of 2025, the population of Oud-Charlois is 13,860.",
+    "en": "Oud-Charlois is a neighborhood of Rotterdam, Netherlands. It features a charming village center with authentic houses and streets.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Oud-Charlois",
     "lang": "en"
    },
@@ -953,7 +960,7 @@
     "lang": "en"
    },
    "history": {
-    "en": "The manor of Pendrecht, south of today's wijk, was almost deserted by the end of the 18th century (18 inhabitants in 1795) and in the French period was joined to Rhoon. After the war Rotterdam was desperately short of housing: the bombing of 14 May 1940 had destroyed 25,000 homes and left 80,000 people homeless, and rapid population growth was expected, so new wijken had to be built.",
+    "en": "The manor of Pendrecht, south of today's wijk, was almost deserted by the end of the 18th century (18 inhabitants in 1795) and in the French period was joined to Rhoon.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Pendrecht",
     "lang": "nl",
     "original": "Pendrecht is genoemd naar een ambacht op het eiland IJsselmonde, ten zuiden van de huidige wijk. Het ambacht Pendrecht was tegen het eind van de achttiende eeuw bijna ontvolkt geraakt (18 inwoners in 1795) en werd in de Franse tijd bij Rhoon gevoegd. Na de oorlog was er een groot gebrek aan woonruimte in Rotterdam. Bij het bombardement op 14 mei 1940 gingen 25.000 woningen verloren en werden 80.000 mensen dakloos. Tevens had men de verwachting dat de bevolking explosief zou gaan groeien. De opgave was dus nieuwe wijken te bouwen met genoeg woningen voor de toekomst."
@@ -1001,7 +1008,7 @@
   {
    "name": "Ommoord",
    "description": {
-    "en": "Ommoord is a neighbourhood in the borough Prins Alexander, part of the municipality of Rotterdam, South Holland, the Netherlands. Ommoord is surrounded by the neighbourhoods Zevenkamp, Het Lage Land and Terbregge. It has around 25,000 inhabitants across 12,500 households. Ommoord shares postal codes 3068 (south of metro line) and 3069 (north of metro line) with Zevenkamp.",
+    "en": "Ommoord is a neighbourhood in the borough Prins Alexander, part of the municipality of Rotterdam, South Holland, the Netherlands. Ommoord is surrounded by the neighbourhoods Zevenkamp, Het Lage Land and Terbregge. Ommoord shares postal codes 3068 (south of metro line) and 3069 (north of metro line) with Zevenkamp.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Ommoord",
     "lang": "en"
    },
@@ -1077,18 +1084,20 @@
   {
    "name": "Kralingen-Oost",
    "description": {
-    "en": "Erasmus Universiteit Rotterdam (landmark here): Antoine van Agtmael, an alumnus, coined the term emerging markets while working as a World Bank economist.",
+    "en": "Antoine van Agtmael, an alumnus, coined the term emerging markets while working as a World Bank economist.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Erasmus_University_Rotterdam",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Erasmus Universiteit Rotterdam (landmark)"
    },
    "history": {
-    "en": "Erasmus Universiteit Rotterdam (landmark here): The institution began as the private Netherlands School of Commerce in 1913 before gaining university status in 1937.",
+    "en": "The institution began as the private Netherlands School of Commerce in 1913 before gaining university status in 1937.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Erasmus_University_Rotterdam",
     "lang": "en",
     "sourceLabel": "Wikipedia",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Erasmus Universiteit Rotterdam (landmark)"
    }
   },
   {
@@ -1144,18 +1153,20 @@
   {
    "name": "Kop van Zuid-Entrepot",
    "description": {
-    "en": "Villa Zebra (landmark here): Children aged two to six focus on sensory discovery and play rather than traditional art instruction.",
+    "en": "Children aged two to six focus on sensory discovery and play rather than traditional art instruction.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Villa_Zebra",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Villa Zebra (landmark)"
    },
    "history": {
-    "en": "Joods Kindermonument (landmark here): Six hundred eighty-six children aged one month to twelve years were deported from Loods 24.",
+    "en": "Six hundred eighty-six children aged one month to twelve years were deported from Loods 24.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Joods_Kindermonument_(Rotterdam)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Joods Kindermonument (landmark)"
    }
   },
   {
@@ -1191,7 +1202,7 @@
   {
    "name": "110-Morgen",
    "description": {
-    "en": "110-Morgen, or Honderd en Tien Morgen, is a wijk in Rotterdam's Hillegersberg-Schiebroek district, in the De Honderdtien Morgen polder north of the village centre of Hillegersberg. The polder, about 85 hectares, was drained in 1772.",
+    "en": "110-Morgen, or Honderd en Tien Morgen, is a wijk in Rotterdam's Hillegersberg-Schiebroek district, in the De Honderdtien Morgen polder north of the village centre of Hillegersberg.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/110-Morgen",
     "lang": "nl",
     "original": "110-Morgen of Honderd en Tien Morgen is een wijk in het Rotterdamse stadsdeel Hillegersberg-Schiebroek. De wijk ligt in de polder De Honderdtien Morgen aan de noordzijde van de dorpskern van Hillegersberg. Honderdentienmorgen is een polder van ca. 85 ha, die in 1772 is drooggemaakt. De naam refereert aan de oppervlakte van de polder."
@@ -1432,7 +1443,7 @@
   {
    "name": "Prins Alexander",
    "description": {
-    "en": "Prins Alexander is a borough in the northeast of Rotterdam, Netherlands. As of 2023, it had 96,452 inhabitants, making it the most populated borough in the city. Prins Alexander has 7 neighbourhoods: Het Lage Land Kralingseveer Nesselande Ommoord Oosterflank Prinsenland Zevenkamp",
+    "en": "Prins Alexander is a borough in the northeast of Rotterdam, Netherlands. Prins Alexander has 7 neighbourhoods: Het Lage Land Kralingseveer Nesselande Ommoord Oosterflank Prinsenland Zevenkamp",
     "sourceUrl": "https://en.wikipedia.org/wiki/Prins_Alexander",
     "lang": "en"
    },
@@ -1480,7 +1491,7 @@
     "original": "Fascinatio is een wijk in de gemeente Capelle aan den IJssel, in de Nederlandse provincie Zuid-Holland."
    },
    "history": {
-    "en": "Fascinatio is Capelle aan den IJssel's newest wijk, developed for extra housing and a modern live-work environment, with a mix of homes, offices and amenities. It dates from 2001 and had about 3,000 inhabitants on 1 January 2018.",
+    "en": "Fascinatio is Capelle aan den IJssel's newest wijk, developed for extra housing and a modern live-work environment, with a mix of homes, offices and amenities.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Fascinatio",
     "lang": "nl",
     "original": "Fascinatio is de jongste wijk van Capelle aan den IJssel. De wijk werd ontwikkeld om te voorzien in extra woonruimte en een moderne woon-werkomgeving. De gemeente had weinig uitbreidingsmogelijkheden binnen de bestaande bebouwing, dus er werd gekozen voor een nieuw stedelijk gebied met een mix van woningen, kantoren en voorzieningen. Het initiatief kwam vanuit de gemeente in samenwerking met projectontwikkelaars en woningcorporaties. De wijk bestaat sinds 2001 en telde op 1 januari 2018 circa 3.000 inwoners."
@@ -1549,37 +1560,39 @@
   {
    "name": "Kralingen-Crooswijk",
    "description": {
-    "en": "Kralingen-Crooswijk is a township of the city of Rotterdam, Netherlands. It is located at the immediate east of the city's centre. As of 2005 it has about 52,379 inhabitants and has a territory of about 1,286 ha. It consists of the two boroughs Kralingen and Crooswijk, the former being a village itself until it was incorporated in the city of Rotterdam in the late 19th century.",
+    "en": "Kralingen-Crooswijk is a township of the city of Rotterdam, Netherlands. It is located at the immediate east of the city's centre. It consists of the two boroughs Kralingen and Crooswijk, the former being a village itself until it was incorporated in the city of Rotterdam in the late 19th century.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Kralingen-Crooswijk",
     "lang": "en"
    },
    "history": {
-    "en": "Boezemsingelkerk (landmark here): The original church opened on March 31, 1901 before being demolished in 2018.",
+    "en": "The original church opened on March 31, 1901 before being demolished in 2018.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Boezemsingelkerk",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Boezemsingelkerk (landmark)"
    }
   },
   {
    "name": "Centrum",
    "description": {
-    "en": "Rotterdam Centrum (English: Rotterdam Center/ Center of Rotterdam) is a borough of Rotterdam. It was established on March 3, 2010. The center has 33,983 inhabitants (as of January 1, 2017).",
+    "en": "Rotterdam Centrum (English: Rotterdam Center/ Center of Rotterdam) is a borough of Rotterdam. It was established on March 3, 2010.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Rotterdam_Centrum",
     "lang": "en"
    },
    "history": {
-    "en": "Alexander Nevskikerk (landmark here): Construction began in September 2002 when the first post was driven into the ground.",
+    "en": "Construction began in September 2002 when the first post was driven into the ground.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Alexander_Nevskikerk_(Rotterdam)",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Alexander Nevskikerk (landmark)"
    }
   },
   {
    "name": "Oude Noorden",
    "description": {
-    "en": "Oude Noorden (Old North) is an area of north Rotterdam, Netherlands and is part of the borough Noord. It has approximately 18,000 inhabitants. The district has much pre World War I and World War II architecture still in existence. It has a vibrant though somewhat discreet artistic community.",
+    "en": "Oude Noorden (Old North) is an area of north Rotterdam, Netherlands and is part of the borough Noord. The district has much pre World War I and World War II architecture still in existence. It has a vibrant though somewhat discreet artistic community.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Oude_Noorden",
     "lang": "en"
    },
@@ -1613,7 +1626,7 @@
   {
    "name": "Noord",
    "description": {
-    "en": "Noord (English: Rotterdam-North) is a borough of Rotterdam. The municipal portion is formed by the Delfshavense Schie, the Highway 20 (A20), the Rotte and the rails. The borough had 51,796 inhabitants in 2017.",
+    "en": "Noord (English: Rotterdam-North) is a borough of Rotterdam. The municipal portion is formed by the Delfshavense Schie, the Highway 20 (A20), the Rotte and the rails.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Noord%2C_Rotterdam",
     "lang": "en"
    },
@@ -1627,11 +1640,12 @@
   {
    "name": "Laurenskwartier",
    "description": {
-    "en": "Centrale Bibliotheek (landmark here): Eero Aarnio's iconic Bubble Chair was displayed here in 2006.",
+    "en": "Eero Aarnio's iconic Bubble Chair was displayed here in 2006.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Centrale_Bibliotheek_Rotterdam",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "Centrale Bibliotheek (landmark)"
    },
    "history": {
     "en": "Bibliotheektheater Rotterdam opened its doors in 1983.",
@@ -1644,18 +1658,20 @@
   {
    "name": "Maasvlakte 1",
    "description": {
-    "en": "6e Petroleumhaven (waterway here): Annual throughput exceeds 23 million cubic meters, ranking it among Europe's largest refineries.",
+    "en": "Annual throughput exceeds 23 million cubic meters, ranking it among Europe's largest refineries.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Zesde_Petroleumhaven",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "6e Petroleumhaven (waterway)"
    },
    "history": {
-    "en": "8e Petroleumhaven (waterway here): A container ship collided with a pier in January 2007, requiring a 20 million euro rebuild.",
+    "en": "A container ship collided with a pier in January 2007, requiring a 20 million euro rebuild.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Achtste_Petroleumhaven",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
-    "kind": "derived"
+    "kind": "derived",
+    "borrowedFrom": "8e Petroleumhaven (waterway)"
    }
   },
   {
@@ -1672,7 +1688,7 @@
   {
    "name": "Maasvlakte 2",
    "description": {
-    "en": "Maasvlakte 2 (popularly the Tweede Maasvlakte) is the extension of the port of Rotterdam west of the first Maasvlakte. This new land of 2,000 hectares, built in the sea, made the port 20% larger; with it the port of Rotterdam covers 12,000 hectares in all.",
+    "en": "Maasvlakte 2 (popularly the Tweede Maasvlakte) is the extension of the port of Rotterdam west of the first Maasvlakte.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Maasvlakte_2",
     "lang": "nl",
     "sourceLabel": "Wikipedia",
