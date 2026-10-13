@@ -847,3 +847,172 @@ Remaining errors (on the strip sheets, listed as `schemaLimits` in the types): t
 dormers with a gap at the party wall (a dormer reaching the party wall fails the library's footprint check), white
 stucco top storeys and tympana are not modelled, the tower-dormers have no light, De Clercqstraat corbel tables are a
 bracketed cornice, D dormers are centred on the BAG front rather than the visual module.
+
+## Recipe tiles (migration step 3, `?recipeTiles=1`, 2026-10-13)
+
+Plan: `docs/plans/digital-twin-direction-20261013.md` §2; handoff `docs/handoffs/lane-recipe-tiles-20261013.md`.
+Code: `src/canalRecall/tileBuildings/` (schema, tile math, soups, writer, runtime), compiler
+`scripts/building-tiles/compile-recipes.ts`, staging `artifacts/recipe-tiles/`.
+
+### Data model (`tileBuildings/schema.ts`)
+
+`building-recipes/14/x/y.json`, generated, never hand-edited:
+
+```json
+{"version": 1, "z": 14, "x": 8413, "y": 5384, "sources": {"faces": "<sha>", "types": "<sha>", "catalogue": "<sha>"},
+ "pands": {"0363100012081118": {"kind": "canal-house", "intent": "face:bilder-081118-155417/0",
+   "fitted": {"eavesM": 14.2, "storeyHeightsM": [4.1, 3.4, 3.3, 3.4], "frontWidthM": 6.1, "roofMaxM": 17.1, "triangles": 2481},
+   "mid": [2, 5, 3, 33, 0, 1909, 1, 4, 1, 7, 1], "covers": ["NL.IMBAG.Pand.0363100012081118"], "mesh": [33654, 21538]}}}
+```
+
+Decisions (each one changes the schema, so the reason is kept here):
+
+- **`intent` is a one-string reference** (`face:<faceId>/<house>`, `house:<recipeId>`, `type:<unit>`, `kit:<id>`,
+  `model:<specId>`), not a copy of the intent. Faces, house recipes, types and the landmark catalogue stay the
+  authoring units; copying them into tiles would make the tile a second place to edit. The validator ties each
+  scheme to the kinds it may carry (`face:` only `canal-house`, `model:` only `glb`, ...).
+- **`sameAs` + `overrides` mirror the block-face house fields** (`blockFace/intent.ts`), one hop only, same kind. A
+  face house written `sameAs` in its face intent is `sameAs` in the tile; it does not get a second `intent`.
+- **`mid` is the facts sidecar's seven integers plus four the recipe knows** (bays, wall slot, gable, shop):
+  `[archetype, storeys, roof, eavesDm, ridgeDm, year, terraced, bays, wall, gable, shop]`, ~35 bytes. Reusing the
+  sidecar order (`bagTiles.ts MidDescriptor`) means the mid tier (step 4) reads one shape for every pand, recipe or
+  not; the recipe-only fields are 0 = unknown, so a generic pand's descriptor is the sidecar row padded with zeros.
+- **`fitted` is compiler output** (eaves, storey heights, front width, roof max, triangles; placement for placed
+  kinds). It is written by the mesh stage into its per-tile report and folded into the recipe tile by the
+  `assemble` stage, because one process per z16 tile cannot safely write a shared z14 file. `--strict` validation
+  requires it.
+- **Keys are 16-digit pand ids**; a model standing on no pand (a monument on a square) is `m:<specId>`. A model
+  covering several pands is one entry under its primary pand and lists the others in `covers` (no stub entries for
+  the others: the inverse "who covers pand X" is computed on load).
+- **`covers` replaces `suppressOsmIds`**: full `NL.IMBAG.Pand.*` ids plus OSM-only ids, taken from
+  `public/canal-drive/models/covers.json` for installed models and from the pand itself for recipes and types.
+- **`mesh` names the z16 tile that draws the pand** (by the pand's anchor), so a reader of a z14 tile knows which
+  mesh tile to fetch without recomputing anchors.
+
+### Compiler (`scripts/building-tiles/compile-recipes.ts`)
+
+```sh
+node --import tsx scripts/building-tiles/compile-recipes.ts --stage=all --jobs=8      # recipes → mesh (one process per z16) → assemble
+node --import tsx scripts/building-tiles/compile-recipes.ts --stage=mesh --tile=16/33654/21538
+node --import tsx scripts/building-tiles/compile-recipes.ts --stage=review --before=artifacts/recipe-tiles-before
+node --import tsx --test src/canalRecall/tileBuildings/*.test.ts
+```
+
+Stages: `recipes` (authoring → z14 recipe tiles), `mesh` (one z16 tile per process: compile, split, hash, write,
+gate), `assemble` (folds `fitted` into the recipe tiles, writes `index.json` and `summary.json`), `review` (a sheet
+of only the pands whose triangle hash or gate numbers changed between two outputs, with before/after elevations).
+Faces go through `blockFace/compile.ts` → `compileChunk.ts` unchanged (13 of 15 Bilderdijkstraat chunks come out
+byte-identical to the installed `chunk-*.glb`; `bilder-079721-x2` and `bilder-159426-165632` differ from their
+installed copies, i.e. the installed files predate a library change: exactly what the review stage is for). House
+recipes no face covers are grouped with `groupBlockFaces` and compiled with `compileChunk`, as
+`scripts/street-chunks/build.ts` does; large recipes through `compileBuilding`; types and installed GLBs go straight
+to the unit table. Faces with `continuity.crownFromPhoto` need their strip photos (`staging/block-face/<face>/strip.jpg`
+or `BLOCK_FACE_SOURCE_PACK`, default the `map-recall2-source-data` archive).
+
+Decisions:
+
+- **Groups are atomic.** Every pand of a face, a house-recipe chunk or a multi-pand model is drawn by the z16 tile
+  containing the group's mean anchor. A face never straddles two mesh tiles, so while that tile is resident the
+  near tier replaces the whole chunk/landmark spec, and when it is not the legacy spec draws the whole thing.
+  The alternative (each pand in its own tile) leaves half a face double-drawn at a tile boundary.
+- **Roles by rule, in the source frame** (`soup.ts splitRoles`, +x along the street, +z towards it): signage
+  (`sign` surface), roof (roof slots), party (wall faces along the street within 0.3 m of the pand's ends), rear
+  (> 1.5 m behind the front plane), then ground / body / crown by the fitted ground-storey top and eaves. Only
+  ground, body, crown (and `whole` for large recipes) may instance; the classification only decides reuse,
+  never correctness, because every part is reassembled exactly.
+- **Hash = canonical geometry** (positions relative to the part's x/z minimum at 1 mm, normals at 1e-3, sorted by
+  colour+slot). UVs are excluded: metre box UVs follow absolute position, so an instance keeps its master's brick
+  phase. Units of installed GLBs are addressed by sha256(converter version + file bytes).
+- **Instancing is tile-local and thresholded:** a hash instances when it repeats inside the z16 tile and saves
+  ≥ 1,000 triangles (`--min-saved`). Tile-local keeps one process per tile deterministic; the threshold keeps
+  tiny repeated parts from costing a draw each. Units are still global content-addressed files, refcounted across
+  tiles at runtime.
+- **Tile positions stay float32**; a 16-bit grid over a 373 m tile is 6 mm, coarser than the library's 5 mm
+  insets. Units (≤ ~100 m) quantize positions to 16 bits and normals to 8. gltf-transform's `meshopt()` is not
+  used because it re-quantizes positions to 14 bits and folds that into instance TRS; the writer reorders and
+  enables `EXT_meshopt_compression` itself.
+- **Instance nodes carry a stub** (the unit's 12-triangle box): `EXT_mesh_gpu_instancing` needs a mesh; it is added
+  after quantization so instance TRS are the true unit → tile matrices. `_PAND` is float32 (a 2-byte stride breaks
+  the meshopt vertex codec).
+- **One city-look primitive per tile for uniques**: slot and tint are vertex attributes (`_LAYER` u8, `_TINT`
+  u8x4), so every material of every unique pand is one draw. Vertices are welded per pand only, so a pand can be
+  hidden or highlighted through its own vertices.
+- **Gates per pand**: the face gates and interference (faces), `evaluateGates` on the house compiled alone (house
+  recipes), `evaluateLargeGates` (large), geometry-audit counts (recipe pands; recorded, not gating), unit conversion
+  counts (models), and **instanced ≡ merged**: the written tile and units are decoded exactly as the runtime draws
+  them and every source triangle must find its decoded twin within 4 mm with the same slot ordinal, one to one.
+
+Measured (2026-10-13, M-series Mac, `--jobs=8`): 3,149 pands (61 canal-house, 6 large, 3,072 types, 10 models)
+in 17 z14 recipe tiles and 64 z16 mesh tiles, 10 s wall clock for everything; 4.4 MB tiles + 2.8 MB units
+(1.43 M triangles drawn, 137 k of them merged uniques), 166 draws for all 64 tiles; every pand passes every gate.
+The two Bilderdijkstraat tiles (61 canal houses, 1 landmark) take 3–5 s each, mostly the face compile.
+**Instancing found nothing to share on Bilderdijkstraat**: 189 street-side parts, 0 exact repeats. The fitted
+widths of neighbouring houses differ by centimetres, so no two bodies are identical at 1 mm. Reuse there needs
+type-level authoring (the face `types` / `sameAs` with one fitted width) or a tolerance-snapping fit, not a
+hash; the machinery is in place and tested (`compiler.test.ts` instances two equal bodies).
+
+### Runtime (`tileBuildings/runtime.ts`, `?recipeTiles=1`)
+
+`TileBuildings` is one participant (`recipe-tiles`, order 21, after the landmarks) in the shared frame.
+
+- **`?recipeTiles=1` implies `?sharedFrame=1`**, as `?ownGround=1` does: the near tier is a frame participant, not a
+  fourth custom layer with its own renderer. It draws lit (Lambert under the frame's rig) with the city look's
+  slot material (`look/cityLook.ts getCityLook`), whatever `?cityLook` says: the tiles carry slot attributes only.
+- **Residency**: the 2×2 block of z16 tiles nearest the camera centre, held by a quarter-tile hysteresis, checked
+  at most 4×/s from the frame's `beforeRender`. Tiles that leave the block are dropped only once every wanted
+  tile is drawn, so moving never opens a hole.
+- **A tile counts once its units are in.** Only then are its pands' `covers` hidden in the mid/far layers
+  (`ThreeBuildings.setHidden('recipe-tiles', ids)` → the facade shaders' `hidden = 1`; pyramidal roofs by the
+  same reason) and its `specs` withheld from the landmark loader (its `canShowModel`, asked per frame, is wrapped
+  once). Until then the stub boxes draw and the legacy specs stay. When a tile leaves, both are given back. No
+  suppression list is involved.
+- **Units are refcounted** across tiles (`RefCache`): one decode per unit, InstancedMeshes share its geometry and
+  material, freed when the last tile releases it.
+- **Picking**: `inspectAtScreen` raycasts the root with the frame's `clipFromWorld`; merged meshes resolve the face
+  through `pandRanges`, instances through `_PAND`. `vectorMap.inspectBuilding` takes the nearest of landmark,
+  facade and recipe-tile hits.
+- **Highlight** (the quiz answer, `setHighlighted` next to the facade layer's): merged pands set `hidden = 2` on their
+  own vertices (the city-look shader's highlight); an instanced pand is collapsed and drawn once more with the
+  highlight variant. An answer pand is never left hidden in both tiers.
+- Integrator: bundle `src/canalRecall/tileBuildings/browser.ts` to `public/canal-drive/js/tile-buildings.bundle.js`
+  (IIFE, global `CanalRecallTileBuildings`; THREE comes from `CanalRecallThree`), publish `artifacts/recipe-tiles/`
+  `{index.json, building-mesh/, units/}` to `public/canal-drive/recipe-tiles/` after review. Without the bundle or
+  the data the flag logs one warning and nothing changes.
+
+### Pilots and measurements (desktop 1280×800, Chrome, 2026-10-13)
+
+Staging: 3,149 pands (61 canal-house faces/houses on Bilderdijkstraat, 6 large recipes, 3,072 Nieuw-West type
+instances, 10 landmarks as `kind: glb`) in 17 z14 recipe tiles (1.7 MB JSON) and 64 z16 mesh tiles (4.49 MB) plus
+units (4.72 MB; landmark units keep float positions where box-projected, see below). 0 failed pands; 13/15
+Bilderdijkstraat chunks byte-identical to the installed ones. Golden: `golden.test.ts` recompiles four tiles
+(211 pands, every kind) and compares per-pand triangle hashes with `pilot-golden.json`.
+
+Static spots (`tests/e2e/recipe-tiles.spec.ts`, look-consistency camera, 6 s of forced repaints, means). Off is
+`?sharedFrame=1&cityLook=1`, on adds `&recipeTiles=1`, types is `&buildingTypes=1`. "ms" is the CPU time of the
+shared frame's main pass; frames are vsync-bound (16.67 ms) in every mode.
+
+| spot | main pass ms off / on / types | draw calls off / on / types | triangles k off / on | recipe-tile meshes | px differ off→on |
+|---|---|---|---|---|---|
+| bilderdijk | 0.74 / 0.69 / 0.68 | 301 / 144 / 277 | 2057 / 2127 | 4 | 2.5% |
+| bilderdijk-north | 0.97 / 0.89 / 1.48 | 425 / 226 / 428 | 3626 / 3436 | 5 | 3.4% |
+| nieuw-west | 0.50 / 0.54 / 0.74 | 66 / 63 / 98 | 2344 / 2423 | 3 | 44.9% (types replace the BAG blocks; 31.8% vs types) |
+| slotermeer | 0.47 / 0.54 / 0.68 | 53 / 64 / 87 | 2338 / 2415 | 23 | 16.2% |
+| dam | 2.63 / 2.73 / 2.77 | 403 / 385 / 404 | 2564 / 2560 | 4 | 25.3% (shading of the Palace) |
+| westerkerk | 0.96 / 1.07 / 1.06 | 218 / 198 / 219 | 2572 / 2569 | 3 | 6.6% |
+| rijksmuseum | 3.27 / 3.94 / 3.55 | 932 / 925 / 924 | 5100 / 4886 | 1 | 16.4% (UV'd brick; shadow edges) |
+| politie-leijenbergh | 0.68 / 0.75 / 0.81 | 35 / 25 / 35 | 2907 / 2907 | 1 | 0.7% |
+| leidsestraat-67 | 2.28 / 2.94 / 2.46 | 199 / 182 / 191 | 2754 / 2226 | 2 | 2.7% |
+
+Ride (`scripts/ride-perf-fixed-route.mjs`, Anne Frank Huis → Rijksmuseum, `RECIPE_TILES_DIR=artifacts/recipe-tiles`):
+desktop 20 s, off / on / off again: map render mean 2.61 / 2.35 / 2.72 ms (p95 3.6 / 3.1 / 4.0), three layers per
+frame 1.07 / 0.99 / 1.10 ms, draw calls mean 439 / 430 / 439, heap 639 / 601 / 658 MB. iPhone 13 at 4× throttle,
+12 s, off / on: map render 7.11 / 6.73 ms, three layers 3.08 / 2.92 ms, draw calls 320 / 311.
+
+Findings that shaped the code:
+- gltf-transform `prune()` drops `TEXCOORD_0` when no texture reads it; the city-look shader does. Units are pruned
+  with `keepAttributes: true`, and the converter refuses a `uv` material without UVs.
+- Box-projected primitives derive UVs from `position` in the shader; quantized positions would move the scale
+  into the instance matrix and lay the brick out in normalised units, so units with a `box` material keep float
+  positions (+0.7 MB over the pilots).
+- The draw-call win is where the legacy loaders draw many small meshes (Bilderdijkstraat block faces: 301 → 144);
+  landmark-heavy spots are dominated by landmarks outside the pilot list, so they barely move.
