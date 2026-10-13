@@ -151,6 +151,8 @@ export interface GeometryAuditReport {
   rhythm: RhythmFacade[];
   /** Share of visible surface area with `materialSlot` + `tint` (see `materialSlotCoverage`). */
   materialSlots: MaterialSlotCoverage;
+  /** Inward-facing faces and vertex normals that disagree with their face (`auditNormals`). */
+  normals: NormalAudit;
   /** Per-kind counts used by the baseline gate. */
   counts: Record<string, number>;
   findings: GeometryFinding[];
@@ -1028,6 +1030,126 @@ export function auditRhythm(s: MaterialSoup, facades: FacadeInventory[], fromSpe
 
 // ---------------------------------------------------------------------------------------------------------------
 
+/**
+ * Edge-connected shells: triangles joined only through a welded edge they share. Unlike `partsOf` (any shared vertex) two boxes
+ * that merely touch stay separate shells, so a face resting against a neighbour is not mistaken for an inward one.
+ * `closed` marks shells whose every edge is shared an even number of times.
+ */
+export function shellsOf(s: MaterialSoup, weld = 0.001): {shell: Int32Array; closed: Set<number>} {
+  const nTri = s.indices.length / 3;
+  const {vid} = weldIds(s, weld);
+  const parent = new Int32Array(nTri).map((_, i) => i);
+  const find = (a: number): number => { while (parent[a] !== a) { parent[a] = parent[parent[a]]; a = parent[a]; } return a; };
+  const first = new Map<number, number>(), count = new Map<number, number>();
+  const edgeKey = (a: number, b: number) => Math.min(a, b) * 4194304 + Math.max(a, b);
+  for (let t = 0; t < nTri; t++) for (let k = 0; k < 3; k++) {
+    const a = vid[s.indices[t * 3 + k]], b = vid[s.indices[t * 3 + (k + 1) % 3]];
+    if (a === b) continue;
+    const key = edgeKey(a, b), f = first.get(key);
+    count.set(key, (count.get(key) ?? 0) + 1);
+    if (f === undefined) first.set(key, t); else parent[find(t)] = find(f);
+  }
+  const shell = new Int32Array(nTri), open = new Set<number>();
+  for (let t = 0; t < nTri; t++) shell[t] = find(t);
+  for (const [key, t] of first) if ((count.get(key) ?? 0) % 2) open.add(shell[t]);
+  return {shell, closed: new Set([...new Set(shell)].filter(x => !open.has(x)))};
+}
+
+export const NORMAL_WARN = 0.02;
+export interface NormalAudit {
+  /** Share of triangle area whose face normal points into the model (ray parity from just outside the face), over sampled triangles. */
+  inwardShare: number;
+  /** Area-weighted share of vertex normals more than 90 degrees from their face normal; 0 when the soup has no normals. */
+  badNormalShare: number;
+  /** Share of area in shells that are not closed solids (parity cannot judge them; not counted in `inwardShare`). */
+  openShare: number;
+  hasNormals: boolean;
+  /** Sampled triangles judged inward (first 400, largest material groups first come by order of testing): evidence for builders. */
+  inwardTriangles: number[];
+  materials: {name: string; area: number; inwardArea: number; openArea: number; inwardShare: number; badNormalShare: number; sampled: number}[];
+}
+
+/**
+ * Face normals that point into the model, and vertex normals that disagree with their face normal by more than 90 degrees.
+ * Inward test (closed edge-connected shells only, `shellsOf`; an open shell cannot say inside from outside; a face resting flat against an opposite-facing face of a neighbouring solid is a hidden interface and not counted): a ray from just outside the face (centre + 2 mm along the face normal) along the normal crosses the model's
+ * surface an odd number of times when that point is inside the solid, i.e. the face looks inward. Open shells make parity
+ * approximate, so it is a ranking signal (warn), not a proof. About `maxSamples` triangles are tested, split across materials by area and taken at an even
+ * stride of each material's area-sorted order so large and small faces both appear; each sample stands for the area it represents.
+ * Vertex normals are checked on every triangle (cheap).
+ */
+export function auditNormals(s: MaterialSoup, maxSamples = 1200): NormalAudit {
+  const P = s.positions, I = s.indices, nTri = I.length / 3, N = s.normals;
+  const nMat = s.materials.length;
+  const area = new Float64Array(nMat), inward = new Float64Array(nMat), bad = new Float64Array(nMat), sampled = new Int32Array(nMat), open = new Float64Array(nMat);
+  const nx = new Float64Array(nTri), ny = new Float64Array(nTri), nz = new Float64Array(nTri), ar = new Float64Array(nTri);
+  for (let t = 0; t < nTri; t++) {
+    const a = I[t * 3] * 3, b = I[t * 3 + 1] * 3, c = I[t * 3 + 2] * 3;
+    const ux = P[b] - P[a], uy = P[b + 1] - P[a + 1], uz = P[b + 2] - P[a + 2], vx = P[c] - P[a], vy = P[c + 1] - P[a + 1], vz = P[c + 2] - P[a + 2];
+    const x = uy * vz - uz * vy, y = uz * vx - ux * vz, z = ux * vy - uy * vx, l = Math.hypot(x, y, z);
+    if (!(l > 1e-9)) continue;
+    nx[t] = x / l; ny[t] = y / l; nz[t] = z / l; ar[t] = l / 2;
+    const m = s.triMaterial[t] ?? 0;
+    area[m] += ar[t];
+    if (N) {
+      let k = 0;
+      for (const v of [a, b, c]) if (N[v] * nx[t] + N[v + 1] * ny[t] + N[v + 2] * nz[t] < 0) k++;
+      bad[m] += ar[t] * k / 3;
+    }
+  }
+  const {shell: part, closed} = shellsOf(s);
+  const trisOfPart = new Map<number, number[]>();
+  for (let t = 0; t < nTri; t++) if (ar[t] > 0) { const l = trisOfPart.get(part[t]); if (l) l.push(t); else trisOfPart.set(part[t], [t]); }
+  const total0 = area.reduce((x, y) => x + y, 0);
+  const byMat: number[][] = Array.from({length: nMat}, () => []);
+  for (let t = 0; t < nTri; t++) if (ar[t] > 0 && closed.has(part[t])) byMat[s.triMaterial[t] ?? 0].push(t);
+  for (let t = 0; t < nTri; t++) if (ar[t] > 0 && !closed.has(part[t])) open[s.triMaterial[t] ?? 0] += ar[t];
+  const eps = 0.002;
+  const inwardTriangles: number[] = [];
+  const work: {t: number; group: number; m: number}[] = [];
+  byMat.forEach((order, m) => {
+    order.sort((p, q) => ar[p] - ar[q]);
+    const stride = Math.max(1, Math.ceil(order.length / Math.max(20, Math.min(600, Math.ceil(maxSamples * area[m] / (total0 || 1))))));
+    for (let o = 0; o < order.length; o += stride) {
+      let group = 0;
+      for (let g = o; g < Math.min(order.length, o + stride); g++) group += ar[order[g]];
+      work.push({t: order[o], group, m});
+    }
+  });
+  for (const {t, group, m} of work) {
+    const a = I[t * 3] * 3, b = I[t * 3 + 1] * 3, c = I[t * 3 + 2] * 3;
+    // Barycentre nudged off the exact centre: a centre ray often runs along a quad's diagonal on the opposite face and double-counts.
+    const ox = 0.41 * P[a] + 0.33 * P[b] + 0.26 * P[c] + nx[t] * eps, oy = 0.41 * P[a + 1] + 0.33 * P[b + 1] + 0.26 * P[c + 1] + ny[t] * eps, oz = 0.41 * P[a + 2] + 0.33 * P[b + 2] + 0.26 * P[c + 2] + nz[t] * eps;
+    const dx = nx[t], dy = ny[t], dz = nz[t];
+    let hits = 0, interfaceFace = false;
+    for (const u of trisOfPart.get(part[t])!) {
+      if (u === t) continue;
+      const i = I[u * 3] * 3, j = I[u * 3 + 1] * 3, k = I[u * 3 + 2] * 3;
+      const e1x = P[j] - P[i], e1y = P[j + 1] - P[i + 1], e1z = P[j + 2] - P[i + 2], e2x = P[k] - P[i], e2y = P[k + 1] - P[i + 1], e2z = P[k + 2] - P[i + 2];
+      const hx = dy * e2z - dz * e2y, hy = dz * e2x - dx * e2z, hz = dx * e2y - dy * e2x;
+      const det = e1x * hx + e1y * hy + e1z * hz;
+      if (Math.abs(det) < 1e-12) continue;
+      const inv = 1 / det, sx = ox - P[i], sy = oy - P[i + 1], sz = oz - P[i + 2];
+      const uu = (sx * hx + sy * hy + sz * hz) * inv;
+      if (uu < 0 || uu > 1) continue;
+      const qx = sy * e1z - sz * e1y, qy = sz * e1x - sx * e1z, qz = sx * e1y - sy * e1x;
+      const vv = (dx * qx + dy * qy + dz * qz) * inv;
+      if (vv < 0 || uu + vv > 1) continue;
+      const tHit = (e2x * qx + e2y * qy + e2z * qz) * inv;
+      if (tHit > 1e-6) hits++;
+      // The face just behind the sample, looking the other way: two solids resting on each other (a roof's base on the box beneath it). That interface is hidden, not an inward-facing surface.
+      else if (tHit > -0.005 && nx[u] * dx + ny[u] * dy + nz[u] * dz < -0.99) interfaceFace = true;
+    }
+    sampled[m]++;
+    if (hits % 2 === 1 && !interfaceFace) { inward[m] += group; if (inwardTriangles.length < 400) inwardTriangles.push(t); }
+  }
+  const sum = (a: Float64Array) => a.reduce((x, y) => x + y, 0);
+  const total = sum(area);
+  return {
+    inwardShare: total - sum(open) > 0 ? sum(inward) / (total - sum(open)) : 0, openShare: total > 0 ? sum(open) / total : 0, badNormalShare: total > 0 ? sum(bad) / total : 0, hasNormals: !!N, inwardTriangles,
+    materials: s.materials.map((m, i) => ({name: m.name, area: +area[i].toFixed(2), inwardArea: +inward[i].toFixed(2), openArea: +open[i].toFixed(2), inwardShare: area[i] - open[i] > 0 ? Math.min(1, inward[i] / (area[i] - open[i])) : 0, badNormalShare: area[i] > 0 ? bad[i] / area[i] : 0, sampled: sampled[i]})).filter(m => m.area > 0),
+  };
+}
+
 export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[]; th?: Partial<GeometryAuditThresholds>; skipRhythm?: boolean} = {}): GeometryAuditReport {
   const th = {...GEOMETRY_THRESHOLDS, ...opts.th};
   const part = partsOf(s, th.weld);
@@ -1067,7 +1189,12 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
   if (slots.ratio < 1) {
     findings.push({kind: 'material-slot-coverage', severity: 'warn', message: `${(slots.ratio * 100).toFixed(1)}% of ${slots.area} m2 visible surface carries materialSlot+tint; untagged: ${slots.untagged.slice(0, 4).map(u => `${u.material} ${u.area} m2`).join(', ')}`});
   }
+  const normals = auditNormals(s);
+  for (const m of normals.materials.filter(m => m.area >= 1 && (m.inwardShare >= NORMAL_WARN || m.badNormalShare >= NORMAL_WARN)).sort((a, b) => b.inwardArea - a.inwardArea).slice(0, 4)) {
+    findings.push({kind: 'normals', severity: 'warn', message: `material ${m.name}: ${(m.inwardShare * 100).toFixed(1)}% of ${m.area.toFixed(0)} m2 faces point into the model (ray parity, ${m.sampled} sampled), ${(m.badNormalShare * 100).toFixed(1)}% of vertex normals disagree with their face by more than 90 degrees`});
+  }
   const counts: Record<string, number> = {
+    'normals-inward-permille': Math.round(normals.inwardShare * 1000), 'normals-bad-permille': Math.round(normals.badNormalShare * 1000),
     // Share of visible surface WITHOUT a materialSlot+tint, in tenths of a percent (0 = fully tagged). Gated only for new exports and recorded models.
     'material-slot-untagged-permille': Math.round((1 - slots.ratio) * 1000),
     'opening-floating': byKind('floating').length, 'opening-floating-fail': byKind('floating').filter(i => i.severity === 'fail').length,
@@ -1087,7 +1214,7 @@ export function geometryAudit(s: MaterialSoup, opts: {facades?: FacadeInventory[
     'window-missing-spec': rhythm.filter(f => f.fromSpec).reduce((t, f) => t + f.missing.length, 0),
   };
   const score = openings.issues.reduce((t, i) => t + issueWeight(i), 0) + Math.min(zfight.area, 100) * 2 + Math.min(zfight.tightArea, 100) * 1 + Math.min(zfight.nearArea, 100) * 0.3 + counts['window-mismatch'] * 0.5 + counts['window-missing'] + counts['window-misaligned'] * 0.3;
-  return {openings, zfight, rhythm, materialSlots: slots, counts, findings, score: +score.toFixed(1)};
+  return {openings, zfight, rhythm, materialSlots: slots, normals, counts, findings, score: +score.toFixed(1)};
 }
 
 export interface MaterialSlotCoverage {

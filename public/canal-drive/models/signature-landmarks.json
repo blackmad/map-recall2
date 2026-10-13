@@ -654,12 +654,12 @@
         "depthCoverage": 0.8180758572061129
       },
       "triangles": 30372,
-      "bytes": 424916,
+      "bytes": 425540,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "479ec38799977a3a",
+        "sourceHash": "0b3213c7240b8985",
         "buildVersion": 2,
-        "bytes": 94104,
+        "bytes": 94660,
         "triangles": 4749
       }
     },
@@ -2834,12 +2834,12 @@
         "depthCoverage": 1.2024937732170768
       },
       "triangles": 3366,
-      "bytes": 49640,
+      "bytes": 50136,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "58c8b2145a387663",
+        "sourceHash": "e969f768f954c70c",
         "buildVersion": 2,
-        "bytes": 18240,
+        "bytes": 18744,
         "triangles": 652
       }
     },
@@ -2907,7 +2907,7 @@
         "depthCoverage": 0.6548679010285186
       },
       "triangles": 2258,
-      "bytes": 38840,
+      "bytes": 39416,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "amstelkerk": {
@@ -3685,12 +3685,12 @@
         "depthCoverage": 0.5176113858416661
       },
       "triangles": 7630,
-      "bytes": 94248,
+      "bytes": 94820,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "f950482a184edc53",
+        "sourceHash": "7f98a62276012210",
         "buildVersion": 2,
-        "bytes": 29656,
+        "bytes": 30284,
         "triangles": 1354
       }
     },
@@ -10769,13 +10769,13 @@
         "depthCoverage": 0.9920040266568806
       },
       "triangles": 26416,
-      "bytes": 246012,
+      "bytes": 246628,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "411fcd990d5e838a",
+        "sourceHash": "2effacb22193ad48",
         "buildVersion": 2,
-        "bytes": 42180,
-        "triangles": 2112
+        "bytes": 42696,
+        "triangles": 2100
       }
     },
     "muiderpoort": {

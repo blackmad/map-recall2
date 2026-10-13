@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import {GEOMETRY_THRESHOLDS, analyseRhythm, auditOpenings, auditZFight, coplanarOverlap, geometryAudit, materialSlotCoverage, nonOpeningShape, regressions, rhythmVerdict, RHYTHM_FAIL} from './geometryAudit';
+import {GEOMETRY_THRESHOLDS, analyseRhythm, auditNormals, auditOpenings, auditZFight, coplanarOverlap, geometryAudit, materialSlotCoverage, nonOpeningShape, regressions, rhythmVerdict, RHYTHM_FAIL} from './geometryAudit';
 import type {MaterialSoup, Opening} from './facadeCompare';
 import {zFightArea} from '../blockFace/compile';
 
@@ -534,4 +534,35 @@ test('a window across two facets of a curved drum is on the wall', () => {
   // 24-gon drum r = 10 (facets 2.6 m wide, 15 degrees apart); a 1.6 m pane across the vertex at angle 0, touching it (its ends stand 10 cm off the facets).
   const r = auditOpenings(merge(drum(24, 10, 9), boxes({min: [9.99, 3, -0.8] as V3, max: [10.05, 5, 0.8] as V3, mat: 'glass'})));
   assert.deepEqual(r.issues.filter(i => i.kind === 'overhang'), []);
+});
+
+// Normals audit: face normals pointing into the solid, vertex normals disagreeing with their face.
+test('auditNormals: an outward cube is clean, a flipped cube is all inward', () => {
+  const cube = boxes({min: [0, 0, 0], max: [4, 4, 4], mat: 'stone'}, {min: [10, 0, 0], max: [14, 4, 4], mat: 'brick'});
+  const clean = auditNormals(cube);
+  assert.equal(clean.inwardShare, 0);
+  assert.equal(clean.hasNormals, false);
+  // Flip only the brick cube's winding.
+  const idx = Array.from(cube.indices);
+  for (let t = 12; t < 24; t++) [idx[t * 3 + 1], idx[t * 3 + 2]] = [idx[t * 3 + 2], idx[t * 3 + 1]];
+  const r = auditNormals({...cube, indices: idx});
+  const by = Object.fromEntries(r.materials.map(m => [m.name, m]));
+  assert.equal(by.stone.inwardShare, 0);
+  assert.ok(by.brick.inwardShare > 0.99, `brick inward ${by.brick.inwardShare}`);
+  assert.ok(Math.abs(r.inwardShare - 0.5) < 0.01);
+});
+
+test('auditNormals: vertex normals more than 90 degrees from the face are counted', () => {
+  const cube = boxes({min: [0, 0, 0], max: [4, 4, 4], mat: 'stone'});
+  const tri = (t: number) => { const a = cube.indices[t * 3] as number * 3, b = cube.indices[t * 3 + 1] as number * 3, c = cube.indices[t * 3 + 2] as number * 3; const P = cube.positions;
+    const u = [P[b] - P[a], P[b + 1] - P[a + 1], P[b + 2] - P[a + 2]], v = [P[c] - P[a], P[c + 1] - P[a + 1], P[c + 2] - P[a + 2]];
+    const n = [u[1] * v[2] - u[2] * v[1], u[2] * v[0] - u[0] * v[2], u[0] * v[1] - u[1] * v[0]], l = Math.hypot(...n); return n.map(x => x / l); };
+  const normals = new Array(cube.positions.length).fill(0);
+  for (let t = 0; t < 12; t++) for (let k = 0; k < 3; k++) { const n = tri(t), v = cube.indices[t * 3 + k] as number; normals.splice(v * 3, 3, ...n); }
+  assert.equal(auditNormals({...cube, normals}).badNormalShare, 0);
+  const inverted = normals.map(x => -x);
+  const r = auditNormals({...cube, normals: inverted});
+  assert.equal(r.hasNormals, true);
+  assert.ok(Math.abs(r.badNormalShare - 1) < 1e-9);
+  assert.equal(r.inwardShare, 0, 'winding is still outward');
 });
