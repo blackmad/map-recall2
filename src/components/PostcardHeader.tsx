@@ -32,6 +32,7 @@ export const PostcardHeader: React.FC<{
   const [card, setCard] = useState<PreparedPostcard | null>(null);
   const [scale, setScale] = useState(0);
   const [loaded, setLoaded] = useState(0);
+  const [, setRevision] = useState(0);
   const holderRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const grainRef = useRef<HTMLCanvasElement>(null);
@@ -59,7 +60,8 @@ export const PostcardHeader: React.FC<{
     copy();
     ensurePaintFilter(card.paintFilterSvg);
     grainRef.current?.getContext('2d')?.drawImage(card.grain, 0, 0);
-    return card.onRepaint(copy);
+    // A repaint may also bring re-measured windows (per-photo filters): render them.
+    return card.onRepaint(() => { copy(); setRevision((n) => n + 1); });
   }, [card]);
 
   useLayoutEffect(() => {
@@ -99,6 +101,7 @@ export const PostcardHeader: React.FC<{
               src={src}
               alt=""
               referrerPolicy="no-referrer"
+              crossOrigin="anonymous"
               decoding="async"
               draggable={false}
               onLoad={(event) => { event.currentTarget.style.opacity = '1'; setLoaded((count) => count + 1); }}
@@ -111,7 +114,8 @@ export const PostcardHeader: React.FC<{
                 objectFit: 'cover',
                 objectPosition: `${window.focusX * 100}% ${window.focusY * 100}%`,
                 clipPath: `path('${window.d}')`,
-                filter: windows.filter,
+                // Per window once the compositor measures each photograph; the card-wide filter before.
+                filter: (window as { filter?: string }).filter ?? windows.filter,
                 opacity: 0,
               }}
             />;
