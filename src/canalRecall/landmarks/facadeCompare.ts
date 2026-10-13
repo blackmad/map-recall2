@@ -58,6 +58,8 @@ export type FacadeInventory = {
   heightM?: [number, number];
   /** Only geometry within this many metres of the facade's front-most plane counts (default 10). */
   depthBand?: number;
+  /** The openings form a deliberately staggered pattern (a diamond lattice): the rhythm audit then checks sizes only, not levels, missing columns or alignment. */
+  staggered?: boolean;
   /** Allowed per-row count difference (default 0; rows with ≥ 12 openings allow 1). */
   tolerance?: number;
   photo?: string;

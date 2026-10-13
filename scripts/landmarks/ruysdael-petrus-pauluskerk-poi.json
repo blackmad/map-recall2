@@ -1,0 +1,12 @@
+{
+  "modelId": "ruysdael-petrus-pauluskerk",
+  "landmarkId": "extract_landmarks_1828911806",
+  "name": "Sint-Petrus-en-Pauluskerk",
+  "description": "This Old Catholic church, parsonage and teaching room were built in 1913–1914 to Johan W.F. Hartkamp’s design. The church continued the congregation of De Ooievaar in the Barndesteeg. Its rationalist brick architecture includes a neo-Romanesque entrance and a chamfered clock tower; inside, eighteenth-century furnishings from Amsterdam’s earlier hidden churches survive, including the rotating tabernacle and carved pulpit.",
+  "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/complexen/504680",
+  "additionalSources": [
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/504689",
+    "https://amsterdam.oudkatholiek.nl/contact/"
+  ],
+  "integrationNote": "Keep Q17301706/extract_landmarks_1828911806 distinct from De Papegaai. Reuse genuine identity for the three physical parts, without separate alias destinations. Preserve existing researched facts. Whole complex is current BAG0363100012097854; exact source entrance Ruysdaelstraat39. Route/pin/card/native visual checks pending."
+}

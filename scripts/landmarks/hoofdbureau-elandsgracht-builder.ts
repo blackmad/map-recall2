@@ -43,6 +43,17 @@ export function hoofdbureauHooks(stats: HoofdbureauStats): LargeCompileHooks {
     panelHook: (c, info, g) => {
       if (!g) return;
       const s = g.slots, p = c.p;
+      if (g.surfaces.includes(4)) {
+        // sw-sculpture-group (simplified): the stone pair on a console high on the left of the quay front (wall 247, 27 m; pano 2021): console 1.2 m wide
+        // at 11.3 m, two blocky standing figures (legs, torso, head) 2.5 m tall, 1.5 m across. The Krop/Beeldbank attribution is not found, so no details.
+        const part = c.part(), u = 3.9;
+        c.box(s.stone, u - 0.75, u + 0.75, 11.3, 11.9, 0, 0.9, part);
+        for (const du of [-0.38, 0.38]) {
+          c.box(s.stone, u + du - 0.17, u + du + 0.17, 11.9, 12.7, 0.25, 0.6, part);
+          c.box(s.stone, u + du - 0.22, u + du + 0.22, 12.7, 13.5, 0.28, 0.58, part);
+          c.box(s.stone, u + du - 0.11, u + du + 0.11, 13.5, 13.8, 0.33, 0.53, part);
+        }
+      }
       if (HOOD_SURFACES.some(w => g.surfaces.includes(w))) {
         // Heavy white stone hood over every sash window, a little wider than the opening (panorama 2025, west wing).
         for (const [k, list] of c.holes) {
@@ -72,6 +83,22 @@ export function hoofdbureauHooks(stats: HoofdbureauStats): LargeCompileHooks {
           solid(c, s.frame, u0 - 1.35, u0 - 1.3, v0 + 0.1, v0 + 1.3, 0, 0.35, plate);
           solid(c, s.sign, u0 - 1.65, u0 - 1.35, v0 + 0.55, v0 + 1.25, 0.3, 0.36, plate);
           stats.plate = true;
+          // POLITIE word mark on the wall over the canopy (e-politie-lettering): 3x5 block letters, 0.1 m pixels, 2.7 m wide, centred on the entrance bay.
+          const FONT: Record<string, string[]> = {P: ['111', '101', '111', '100', '100'], O: ['111', '101', '101', '101', '111'], L: ['100', '100', '100', '100', '111'],
+            I: ['111', '010', '010', '010', '111'], T: ['111', '010', '010', '010', '010'], E: ['111', '100', '111', '100', '111']};
+          const px = 0.1, word = 'POLITIE', wordW = word.length * 3 * px + (word.length - 1) * px, lp = c.part();
+          let x = (u0 + u1) / 2 - wordW / 2;
+          for (const ch of word) {
+            FONT[ch].forEach((row, j) => {
+              for (let k = 0; k < 3;) {
+                if (row[k] !== '1') { k++; continue; }
+                let m = k; while (m < 3 && row[m] === '1') m++;
+                c.box(s.stucco ?? s.stone, x + k * px, x + m * px, v0 + 0.45 + (4 - j) * px, v0 + 0.45 + (5 - j) * px, 0, 0.04, lp);
+                k = m;
+              }
+            });
+            x += 4 * px;
+          }
         }
       }
     },
@@ -108,50 +135,53 @@ export function addEndWallRelief(b: BuildingTools) {
     put(new T.BoxGeometry(w, h, d), s, y + h / 2, o + d / 2, colour);
   const extrude = (shape: T.Shape, depth: number) => new T.ExtrudeGeometry(shape, {depth, bevelEnabled: false, curveSegments: 10});
 
-  // Open ground storey: the shadowed recess, the stone lintel over it and the white columns standing in front.
-  const H0 = END_WALL.storey - 0.25;
+  // Registration from the rectified 2022 pano (wall 337, 13.9 m; 42 px/m, ground at the column bases): the open ground storey is 5.0 m tall
+  // on four columns, the six round windows sit at 7.2 m on a 2.26 m pitch across the whole width, the figures stand on 1.2 m consoles
+  // (heads at 10.3 m), the arms centre on s 6.6 with the banner band at 12.7 m, and the left of the wall is plain brick (the ribbons
+  // of the long front stop at the corner; an earlier pass wrapped four of them round the left 5 m).
+  const H0 = 4.75;
   box(len / 2, 0, 0, len - 0.3, H0, 0.04, 'dark');
   box(len / 2, H0, 0, len, 0.32, 0.9, 'stone');
-  for (const s of [0.45, 3.6, 6.8, 10.0, 13.2]) put(new T.CylinderGeometry(0.24, 0.24, H0, 16), s, H0 / 2, 0.6, 'white');
+  for (const s of [1.4, 4.1, 8.8, 13.4]) put(new T.CylinderGeometry(0.24, 0.24, H0, 16), s, H0 / 2, 0.6, 'concrete');   // structural columns: concrete, not opening trim
 
-  // White steel ribbons wrapping round from the Marnixstraat front, storeys 1-4, on the first 5.4 m from the corner.
-  for (let k = 1; k <= 4; k++) {
-    const y0 = k * END_WALL.storey + 0.95, h = END_WALL.storey * 0.56;
-    box(2.9, y0 - 0.06, 0, 5.2, h + 0.12, 0.05, 'white');
-    box(2.9, y0, 0.02, 5.0, h, 0.05, 'glass');
-    for (let m = 0; m <= 4; m++) box(0.4 + m * 1.25, y0, 0.05, 0.07, h, 0.05, 'white');
-    box(2.9, y0 + h * 0.62, 0.05, 5.0, 0.06, 0.05, 'white');
-  }
-
+  // Two 5 cm glass anchors inside the brick (invisible) keep the glass primitive's position range what it was when the left ribbons stood here:
+  // the GLB quantises positions per primitive, and with a narrower range the kit windows' 1.5 cm bar-to-glass gaps round to under the audit's
+  // 1 cm coplanar tolerance (3.4 m2 of z-fight on 36 windows elsewhere in the building). Root cause is the 1.5 cm bar offset in blockBuilding/compose.ts.
+  box(0.4, 4.3, -0.03, 0.05, 0.05, 0.05, 'glass'); box(5.3, 14, -0.03, 0.05, 0.05, 0.05, 'glass');
   // Six round windows in a row over the colonnade.
   for (let k = 0; k < 6; k++) {
-    const s = 6.6 + k * 1.15, y = END_WALL.storey + 1.1;
+    const s = 0.9 + k * 2.26, y = 7.2;
     put(new T.TorusGeometry(0.28, 0.07, 6, 18), s, y, 0.04, 'white');
     put(new T.CircleGeometry(0.26, 18), s, y, 0.03, 'dark');
   }
 
-  // Three standing figures on stone brackets.
-  for (const s of [8.5, 9.75, 11.0]) {
-    const y = 6.2;
-    box(s, y - 0.35, 0, 0.9, 0.35, 0.75, 'stone');
+  // Three standing figures on tall stone consoles (Hildo Krop).
+  for (const s of [4.8, 6.6, 8.3]) {
+    const y = 8.2;
+    box(s, y - 1.2, 0, 0.9, 1.2, 0.75, 'stone');
     put(new T.CylinderGeometry(0.24, 0.3, 1.2, 10), s, y + 0.6, 0.38, 'white');              // robe
     put(new T.CylinderGeometry(0.3, 0.24, 0.5, 10), s, y + 1.45, 0.38, 'white');             // chest and shoulders
     for (const side of [-1, 1]) put(new T.BoxGeometry(0.12, 0.8, 0.14), s + side * 0.33, y + 1.2, 0.42, 'white');   // arms
     put(new T.SphereGeometry(0.15, 10, 8), s, y + 1.86, 0.38, 'white');                       // head
   }
 
-  // The arms: a shield with a raised pale and three saltires, under an imperial crown.
+  // The arms group is authored in its original frame (shield centre s 9.75, banner band y 9.65) and mapped onto the photo: centre
+  // s 6.6, banner band 11.8 m, scale 0.85 (lion tops 14.8 m; checked against the camera-matched overlay).
+  const K = 0.85, mapS = (s: number) => 6.6 + (s - 9.75) * K, mapY = (y: number) => 11.8 + (y - 9.65) * K;
+  const putA = (g: T.BufferGeometry, s: number, y: number, o: number, colour: Parameters<BuildingTools['add']>[1]) => { g.scale(K, K, K); put(g, mapS(s), mapY(y), o * K, colour); };
+  const boxA = (s: number, y: number, o: number, w: number, h: number, d: number, colour: Parameters<BuildingTools['add']>[1]) =>
+    putA(new T.BoxGeometry(w, h, d), s, y + h / 2, o + d / 2, colour);
   const SC = 9.75, SY = 11.6;
   const shield = new T.Shape();
   shield.moveTo(-0.85, 1.05); shield.lineTo(0.85, 1.05); shield.lineTo(0.85, -0.2);
   shield.quadraticCurveTo(0.85, -0.95, 0, -1.25); shield.quadraticCurveTo(-0.85, -0.95, -0.85, -0.2); shield.lineTo(-0.85, 1.05);
-  put(extrude(shield, 0.22), SC, SY, 0, 'white');
-  box(SC, SY - 1.15, 0.22, 0.5, 2.15, 0.06, 'stone');
+  putA(extrude(shield, 0.22), SC, SY, 0, 'white');
+  boxA(SC, SY - 1.15, 0.22, 0.5, 2.15, 0.06, 'stone');
   for (const dy of [0.62, 0, -0.62]) for (const r of [Math.PI / 4, -Math.PI / 4])
-    put(new T.BoxGeometry(0.46, 0.09, 0.05).rotateZ(r), SC, SY + dy, 0.3, 'white');
-  put(new T.CylinderGeometry(0.62, 0.62, 0.22, 16), SC, SY + 1.3, 0.3, 'white');                // crown band
-  put(new T.SphereGeometry(0.58, 14, 8, 0, Math.PI * 2, 0, Math.PI / 2), SC, SY + 1.4, 0.3, 'white');
-  box(SC, SY + 1.95, 0.25, 0.09, 0.45, 0.09, 'white'); box(SC, SY + 2.15, 0.25, 0.3, 0.09, 0.09, 'white');
+    putA(new T.BoxGeometry(0.46, 0.09, 0.05).rotateZ(r), SC, SY + dy, 0.3, 'white');
+  putA(new T.CylinderGeometry(0.62, 0.62, 0.22, 16), SC, SY + 1.3, 0.3, 'white');                // crown band
+  putA(new T.SphereGeometry(0.58, 14, 8, 0, Math.PI * 2, 0, Math.PI / 2), SC, SY + 1.4, 0.3, 'white');
+  boxA(SC, SY + 1.95, 0.25, 0.09, 0.45, 0.09, 'white'); boxA(SC, SY + 2.15, 0.25, 0.3, 0.09, 0.09, 'white');
 
   // Two rampant lions holding the shield, mirrored: an extruded silhouette (rear paws on the banner, fore paws on the shield).
   const lion = new T.Shape();
@@ -167,16 +197,17 @@ export function addEndWallRelief(b: BuildingTools) {
       for (let i = 0; i < a.count; i += 3) for (let k = 0; k < 3; k++) { const v = a.getComponent(i + 1, k); a.setComponent(i + 1, k, a.getComponent(i + 2, k)); a.setComponent(i + 2, k, v); }
       g.computeVertexNormals();
     }
-    put(g, SC + side * 2.55, SY - 1.55, 0, 'white');
+    putA(g, SC + side * 2.55, SY - 1.55, 0, 'white');
   }
 
-  // The banner: a flat ribbon under the arms, curling up at the right and sweeping far down to the left.
-  const curve = new T.CatmullRomCurve3([[13.0, 10.9], [12.4, 10.1], [11.2, 9.75], [9.75, 9.65], [8.2, 9.75], [7.0, 10.3], [6.4, 11.2], [6.1, 10.2], [6.4, 9.2]]
+  // The banner (absolute wall coordinates, rectified pano): a ribbon 0.8 m wide, flat across the middle at 11.9 m from s 3.3 to 9.9, then
+  // sweeping down on both sides into a curl: left tail ends at s 0.4-2 (10.1-11.6 m), right tail at s 11.2-12.8 (10.2-11.1 m).
+  const curve = new T.CatmullRomCurve3([[1.5, 9.6], [0.6, 9.3], [0.4, 10.0], [1.2, 10.7], [2.3, 11.2], [3.4, 11.7], [4.8, 11.85], [6.6, 11.9], [8.4, 11.85], [9.8, 11.6], [10.8, 10.9], [11.6, 10.1], [12.4, 9.7], [12.8, 9.3], [12.3, 9.1], [11.9, 9.5]]
     .map(([s, y]) => new T.Vector3(s, y, 0)));
-  const pts = curve.getPoints(40);
+  const pts = curve.getPoints(60);
   for (let i = 0; i + 1 < pts.length; i++) {
     const p = pts[i], q = pts[i + 1], dx = q.x - p.x, dy = q.y - p.y, l = Math.hypot(dx, dy);
-    put(new T.BoxGeometry(l + 0.03, 0.55, 0.12).rotateZ(-Math.atan2(dy, dx)), (p.x + q.x) / 2, (p.y + q.y) / 2, 0.06, 'white');
+    put(new T.BoxGeometry(l + 0.03, 0.95, 0.12).rotateZ(-Math.atan2(dy, dx)), (p.x + q.x) / 2, (p.y + q.y) / 2, 0.06 + 0.015 * (i % 5), 'white');   // the curls overlap themselves: stagger the depth 2 cm so no two faces share a plane
   }
 }
 

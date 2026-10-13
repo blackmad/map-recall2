@@ -2,7 +2,7 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {addShell} from './worship-shell';
 import {wallsOf} from './worship-walls';
-import {archBand, archSlab, archWindows, awning, disc, letters, poly, put, ringFrame, sashWindows, setSink, slab} from './nearbar-kit';
+import {archBand, archSlab, archWindows, awning, disc, letters, poly, put, ringFrame, sashWindows, ledgeStrip, setSink, slab} from './nearbar-kit';
 import type {Frame} from './nearbar-kit';
 import source from './hotel-de-l-europe-footprints.json';
 
@@ -159,7 +159,7 @@ export function buildHotelDeLEurope(_w: number, _d: number, b: BuildingTools & {
     const s = surf(F, u);
     if (s.top < r[1] + 0.15) return false;
     const lift = (s.wallTop < r[1] + 0.15 ? EXT : 0) + (o.lift ?? 0);
-    sashWindows(b, shift(s.g, lift), [s.t], {y: r[0], w, h: r[1] - r[0], cols: o.cols ?? 2, rows: o.rows ?? 3, sill: 'stone'});
+    sashWindows(b, shift(s.g, lift), [s.t], {lean: true, y: r[0], w, h: r[1] - r[0], cols: o.cols ?? 2, rows: o.rows ?? 3, sill: 'stone'});
     return true;
   };
   /** Horizontal band across [u0,u1] wherever a wall (or extension) stands above it. */
@@ -167,7 +167,8 @@ export function buildHotelDeLEurope(_w: number, _d: number, b: BuildingTools & {
     for (const [a, c] of F.chunks(u0, u1, 1.5)) {
       const m = (a + c) / 2, s = surf(F, m);
       if (s.top < y + h) continue;
-      slab(b, shift(s.g, s.wallTop < y + h ? EXT : 0), s.t, y, c - a, h, d, mat, out);
+      if (d <= 0.04) ledgeStrip(b, shift(s.g, s.wallTop < y + h ? EXT : 0), s.t, y, c - a, h, d, mat, out);
+      else slab(b, shift(s.g, s.wallTop < y + h ? EXT : 0), s.t, y, c - a, h, d, mat, out);
     }
   };
   /** Skin from y0 up to the wall top over [u0,u1] (cladding/overlay colour), d proud of the wall. */
@@ -257,7 +258,7 @@ export function buildHotelDeLEurope(_w: number, _d: number, b: BuildingTools & {
     const s = surf(F, uc);
     if (shape === 'round') { archSlab(b, s.g, s.t, y, w + 0.3, h + 0.15, 0.32, 'stone'); archSlab(b, s.g, s.t, y, w, h, 0.4, mat); }
     else { poly(b, s.g, s.t, y, [[-w / 2 - 0.2, 0], [w / 2 + 0.2, 0], [0, h + 0.25]], 0.32, 'stone'); poly(b, s.g, s.t, y, [[-w / 2, 0], [w / 2, 0], [0, h]], 0.4, mat); }
-    if (win1) sashWindows(b, shift(s.g, 0.4), [s.t], {y: win1[0], w: Math.min(1.1, w - 0.6), h: win1[1] - win1[0], cols: 2, rows: 2, sill: 'stone'});
+    if (win1) sashWindows(b, shift(s.g, 0.4), [s.t], {lean: true, y: win1[0], w: Math.min(1.1, w - 0.6), h: win1[1] - win1[0], cols: 2, rows: 2, sill: 'stone'});
     put(b, s.g, new T.SphereGeometry(0.18, 8, 6), s.t, y + h + 0.3, 0.2, 'stone');
   };
   /** Roof lettering on a dark bar standing on the wall top (posts down to it). */
@@ -383,7 +384,7 @@ export function buildHotelDeLEurope(_w: number, _d: number, b: BuildingTools & {
     for (const u of [2.45, 11.4]) gable(F, u, CORNICE, 2.0, 3.5, 'tri', OLD_ATTIC, 'stone');
     gable(F, S.M.axes[0], CORNICE, 1.9, 3.3, 'tri', OLD_ATTIC, 'stone');
     gable(F, 21.5, CORNICE, 3.0, 3.8, 'round', OLD_ATTIC);
-    for (const u of [4.7, 9.15]) { const s = surf(F, u); if (s.wallTop > 21.2) { slab(b, s.g, s.t, 20.0, 1.2, 1.2, 0.45, 'stone'); sashWindows(b, shift(s.g, 0.45), [s.t], {y: 20.15, w: 0.8, h: 0.85, cols: 2, rows: 2}); } }
+    for (const u of [4.7, 9.15]) { const s = surf(F, u); if (s.wallTop > 21.2) { slab(b, s.g, s.t, 20.0, 1.2, 1.2, 0.45, 'stone'); sashWindows(b, shift(s.g, 0.45), [s.t], {lean: true, y: 20.15, w: 0.8, h: 0.85, cols: 2, rows: 2}); } }
     roofSign(F, 5.3, 12.5, "DE L'EUROPE", 1.1, 0.3, 1.5);   // just behind the facade, its foot hidden by the centre gable as in the photos
   }
 
@@ -420,7 +421,7 @@ export function buildHotelDeLEurope(_w: number, _d: number, b: BuildingTools & {
       slab(b, f, 0, BAND, w, BAL - BAND, 0.55, 'stone');                    // balcony band (Amstel front level)
       slab(b, f, 0, BAL, w, 0.12, 0.25, 'stone', 0.3); slab(b, f, 0, BAL + 0.85, w, 0.12, 0.22, 'stone', 0.3);
       for (const [y0, y1] of rows) if (top > y1 + 0.3) { slab(b, f, 0, y0 - 0.32, w, 0.16, 0.1, 'stone'); slab(b, f, 0, y1 + 0.07, w, 0.22, 0.12, 'stone'); }
-      for (let y = BAL + 0.4; y < Math.min(top - 0.7, CORN - 0.2); y += 0.6) slab(b, f, 0, y, w, 0.18, 0.035, 'stone');
+      for (let y = BAL + 0.4; y < Math.min(top - 0.7, CORN - 0.2); y += 0.6) ledgeStrip(b, f, 0, y, w, 0.18, 0.035, 'stone');
       if (top > 12) slab(b, f, 0, Math.min(top - 0.65, CORN), w, 0.65, 0.38, 'stone');   // cornice
     }
     // three window axes, paired sashes in stone surrounds
@@ -432,7 +433,7 @@ export function buildHotelDeLEurope(_w: number, _d: number, b: BuildingTools & {
       const f = cf(th), top = topNear(th), live = rows.filter(r => top > r[1] + 0.3);
       if (!live.length) continue;
       slab(b, f, 0, BAL + 0.2, 1.75, live[live.length - 1][1] + 0.3 - BAL - 0.2, 0.02, 'brick');
-      for (const r of live) sashWindows(b, shift(f, 0.02), [0], {y: r[0], w: 1.2, h: r[1] - r[0], cols: 2, rows: 3, sill: 'stone'});
+      for (const r of live) sashWindows(b, shift(f, 0.02), [0], {lean: true, y: r[0], w: 1.2, h: r[1] - r[0], cols: 2, rows: 3, sill: 'stone'});
     }
     setSink(0.5, true);
     // three brick gables with stone coping, finial and a window (the central one a small stone-framed dormer)
@@ -482,7 +483,7 @@ export function buildHotelDeLEurope(_w: number, _d: number, b: BuildingTools & {
       if ('attic' in sec) win(F, u, sec.attic, u === 17.14 ? 0.8 : sec.w);
     }
     // N1: main entrance under the white canopy
-    { const s = surf(F, 21.6); slab(b, s.g, s.t, 0, 3.8, 3.7, 0.08, 'stone'); sashWindows(b, shift(s.g, 0.08), [s.t], {y: 0.05, w: 3.0, h: 3.3, cols: 3, rows: 2}); awning(b, s.g, s.t, 3.75, 5.6, 1.1, 2.6, 'sandstone'); }
+    { const s = surf(F, 21.6); slab(b, s.g, s.t, 0, 3.8, 3.7, 0.08, 'stone'); sashWindows(b, shift(s.g, 0.08), [s.t], {lean: true, y: 0.05, w: 3.0, h: 3.3, cols: 3, rows: 2}); awning(b, s.g, s.t, 3.75, 5.6, 1.1, 2.6, 'sandstone'); }
     win(F, 17.14, [1.6, 4.4], 0.8, {rows: 2});
     // N2: canted oriel through storeys 1-2 on corbels, balcony on top; round-headed ground windows; N3 axis 31.39
     oriel(F, S.N2.oriel, 3.0, 0.9, [[5.8, 8.0, 'white'], [8.0, 10.4, 'glass'], [10.4, 11.4, 'white']]);

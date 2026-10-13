@@ -79,6 +79,7 @@ import {buildHaparandaweg13} from './haparandaweg-13-builder';
 import {buildHaparandaweg11} from './haparandaweg-11-builder';
 import {buildHaparandaweg9} from './haparandaweg-9-builder';
 import {buildDaCostakade13} from './da-costakade-13-builder';
+import {buildJodenbreestraat11} from './jodenbreestraat-11-builder';
 import {buildVriesseveem9} from './vriesseveem-9-builder';
 import {buildBercylaan801855} from './bercylaan-801-855-builder';
 import {buildJacobBontiusplaats9} from './jacob-bontiusplaats-9-builder';
@@ -258,6 +259,10 @@ import {buildObrechtkerk} from './obrechtkerk-builder';
 import {buildDeDuif} from './de-duif-builder';
 import {buildMozesEnAaronkerk} from './mozes-en-aaronkerk-builder';
 import {buildOosterkerk} from './oosterkerk-builder';
+import {buildMaxEuwe} from './max-euwe-centrum-builder';
+import {buildHolocaustNamenmonument} from './holocaust-namenmonument-builder';
+import {buildSchouwburgpoort} from './voormalige-schouwburgpoort-builder';
+import {buildAcademieTheaterDans} from './academie-theater-dans-builder';
 import hospitals from './hospital-footprints.json';
 import {ALL_MANUAL_LANDMARKS as MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
@@ -327,10 +332,10 @@ function hospital(id:string){let s=hospitals.sites.find(s=>s.id===id)!;let spec=
 // Landmarks whose window/door assemblies are snapped onto their walls before export (src/canalRecall/landmarks/snapOpenings.ts): builder-time,
 // on the builder's own geometry. Batch 1 of the GLB cleanup pass (2026-10-13); extend as further batches are audited.
 // Windows placed across a wall step/corner of the survey outline are dropped for these (see snapOpenings dropOverhang); listed so the removals are deliberate.
-const DROP_OVERHANG_IDS=new Map<string,number>([['fire-station-willem',4],['mountain-network',14],['valley',16],['rai-amsterdam',13],['beta-boulders',5],['stadhuis',6],['straat-museum',8],['hilton-amsterdam',5]]); // id -> largest assembly (m) that may be dropped
-const DROP_MIN_OUTSIDE=new Map<string,number>([['beta-boulders',.25],['mountain-network',.15],['rai-amsterdam',.3]]); // default .35
-const SNAP_OPTS=new Map<string,{embed?:number;maxBuried?:number;maxFloat?:number;clearMargin?:number;keepLiftOverhang?:boolean;dropBuried?:{minHidden:number;maxExtent:number}}>([['oudemanhuispoort',{clearMargin:.08}],['haparandaweg-2-4',{maxBuried:1.2,keepLiftOverhang:true}],['american-hotel',{clearMargin:.08,keepLiftOverhang:true,dropBuried:{minHidden:.95,maxExtent:4}}],['hilton-amsterdam',{maxBuried:1.5,keepLiftOverhang:true}]]); // per-model snapOpenings overrides
-const SNAP_OPENING_IDS=new Set(['hoofdbureau-elandsgracht','de-bijenkorf','oude-kerk','beta-boulders','fire-station-willem','mountain-network','centraal-station','rai-amsterdam','westerkerk','valley','lab111','vredeskerk','scheepvaarthuis','dominicuskerk','magna-plaza','madame-tussauds','stadhuis','heineken-experience-amsterdam','nieuwe-kerk','jewish-museum','dutch-resistance-museum','allard-pierson','cinecenter','straat-museum','haparandaweg-2-4','fire-station-hendrik','fire-station-zebra','this-is-holland','posthoornkerk','petrus-en-paulus-kerk','oudemanhuispoort','american-hotel','krasnapolsky','hilton-amsterdam','booking-hq','scheepvaartmuseum','waag']);
+const DROP_OVERHANG_IDS=new Map<string,number>([['fire-station-willem',4],['mountain-network',14],['valley',16],['rai-amsterdam',13],['beta-boulders',5],['stadhuis',6],['straat-museum',8],['hilton-amsterdam',5],['max-euwe-centrum',4]]); // id -> largest assembly (m) that may be dropped
+const DROP_MIN_OUTSIDE=new Map<string,number>([['beta-boulders',.25],['mountain-network',.15],['rai-amsterdam',.3],['max-euwe-centrum',.2]]); // default .35
+const SNAP_OPTS=new Map<string,{embed?:number;maxBuried?:number;maxFloat?:number;clearMargin?:number;keepLiftOverhang?:boolean;dropBuried?:{minHidden:number;maxExtent:number}}>([['oudemanhuispoort',{clearMargin:.08}],['haparandaweg-2-4',{maxBuried:1.2,keepLiftOverhang:true}],['american-hotel',{clearMargin:.08,keepLiftOverhang:true,dropBuried:{minHidden:.95,maxExtent:4}}],['hilton-amsterdam',{maxBuried:1.5,keepLiftOverhang:true}],['valley',{dropBuried:{minHidden:.95,maxExtent:14}}]]); // per-model snapOpenings overrides
+const SNAP_OPENING_IDS=new Set(['hoofdbureau-elandsgracht','hotel-de-l-europe','max-euwe-centrum','academie-theater-dans','de-bijenkorf','oude-kerk','beta-boulders','fire-station-willem','mountain-network','centraal-station','rai-amsterdam','westerkerk','valley','lab111','vredeskerk','scheepvaarthuis','dominicuskerk','magna-plaza','madame-tussauds','stadhuis','heineken-experience-amsterdam','nieuwe-kerk','jewish-museum','dutch-resistance-museum','allard-pierson','cinecenter','straat-museum','haparandaweg-2-4','fire-station-hendrik','fire-station-zebra','this-is-holland','posthoornkerk','petrus-en-paulus-kerk','oudemanhuispoort','american-hotel','krasnapolsky','hilton-amsterdam','booking-hq','scheepvaartmuseum','waag']);
 function snapPartOpenings(id:string){
  if(!SNAP_OPENING_IDS.has(id)||process.env.SNAP_SKIP===id)return;
  const positions:number[]=[],indices:number[]=[],triMaterial:number[]=[],names:string[]=[],spans:{g:T.BufferGeometry;from:number}[]=[];
@@ -343,6 +348,8 @@ function snapPartOpenings(id:string){
  }
  const soup={positions,indices,triMaterial,materials:names.map(name=>({name,rgb:[128,128,128] as [number,number,number]}))};
  const detached=process.env.SNAP_NO_DETACHED?{moved:0,skipped:0}:snapDetachedParts(soup,{maxGap:id==='rai-amsterdam'?1.5:undefined}),report=snapOpenings(soup,{...SNAP_OPTS.get(id),clearMargin:id==='dominicuskerk'?.08:SNAP_OPTS.get(id)?.clearMargin,dropOverhang:DROP_OVERHANG_IDS.has(id)?{minOutside:DROP_MIN_OUTSIDE.get(id)??.35,maxExtent:DROP_OVERHANG_IDS.get(id)!}:undefined});
+ // Valley: the opening pass moves hundreds of panes, which leaves a few large panes hovering; close them once more.
+ if(id==='valley'&&!process.env.SNAP_NO_DETACHED){detached.moved+=snapDetachedParts(soup,{}).moved;const r2=snapOpenings(soup,{dropBuried:{minHidden:.95,maxExtent:14},passes:0});report.dropped.push(...r2.dropped);}
  const dropped=new Set(report.dropped);
  // Zero-area slivers (collinear extrusion points, collapsed fans) add nothing to the render and fail the shell audit as degenerate.
  let slivers=0;
@@ -404,7 +411,7 @@ async function save(id:string){
   await quantizeOrdinaryMesh(doc,mesh,ordinaryNode);
   await doc.transform(quantize({pattern:/^(?!POSITION$).+/,patternTargets:/^(?!POSITION$).+/}));
   doc.createExtension(EXTMeshoptCompression).setRequired(true).setEncoderOptions({method:EXTMeshoptCompression.EncoderMethod.QUANTIZE});
- }else await doc.transform(meshopt({encoder:MeshoptEncoder,level:'medium',...(['electric-ladyland','westerkerk','cafe-kobalt','collectie-six','hoofdbureau-elandsgracht'].includes(id)?{quantizePosition:16}:{})}));
+ }else await doc.transform(meshopt({encoder:MeshoptEncoder,level:'medium',...(['electric-ladyland','westerkerk','cafe-kobalt','collectie-six','hoofdbureau-elandsgracht','voormalige-schouwburgpoort'].includes(id)?{quantizePosition:16}:{})}));
  await new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.encoder':MeshoptEncoder}).write(dest,doc);
  const bounds={min:[Infinity,Infinity,Infinity],max:[-Infinity,-Infinity,-Infinity]};
  for(let i=0;i<all.length;i++){const axis=i%3;bounds.min[axis]=Math.min(bounds.min[axis],all[i]);bounds.max[axis]=Math.max(bounds.max[axis],all[i]);}
@@ -654,6 +661,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='haparandaweg-8-338')buildHaparandaweg8338(w,d,helpers);
     else if(id==='haparandaweg-9')buildHaparandaweg9(w,d,helpers);
     else if(id==='da-costakade-13')buildDaCostakade13(w,d,helpers);
+    else if(id==='jodenbreestraat-11')buildJodenbreestraat11(w,d,helpers);
     else if(id==='vriesseveem-9')buildVriesseveem9(w,d,helpers);
     else if(id==='bercylaan-801-855')buildBercylaan801855(w,d,helpers);
     else if(id==='jacob-bontiusplaats-9')buildJacobBontiusplaats9(w,d,helpers);
@@ -686,6 +694,10 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='de-duif')buildDeDuif(w,d,helpers);
     else if(id==='obrechtkerk')buildObrechtkerk(w,d,helpers);
     else if(id==='opstandingskerk')buildOpstandingskerk(w,d,helpers);
+    else if(id==='max-euwe-centrum')buildMaxEuwe(helpers);
+    else if(id==='holocaust-namenmonument')buildHolocaustNamenmonument(w,d,helpers);
+    else if(id==='voormalige-schouwburgpoort')buildSchouwburgpoort(helpers);
+    else if(id==='academie-theater-dans')buildAcademieTheaterDans(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   {const lod1=manifest.models[id]?.lod1;manifest.models[id]=await save(id);if(lod1)manifest.models[id].lod1=lod1;}// keep the lod1 record; build:landmark-lods / check:landmark-lods catch it going stale
