@@ -164,6 +164,10 @@ export interface LargeCompileHooks {
   afterCompose?: (mesh: MeshBuilder, recipe: LargeBuildingRecipe, panels: Panel[]) => void;
   /** triangle budget for the block-kit gate (default 12000, the large-tier budget) */
   budget?: number;
+  /** glazing-bar standoff in recessed openings (compose `barOffsetM`; default 0.015) */
+  barOffsetM?: number;
+  /** glass setback behind the frame ring in recessed openings (compose `glassBackM`; default 0) */
+  glassBackM?: number;
 }
 
 export function compileLargeBuilding(intent: LargeBuildingIntent, facts: BuildingFacts, hooks: LargeCompileHooks = {}): CompiledLargeBuilding {
@@ -175,6 +179,8 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, facts: Buildin
     sealSlivers: true,
     closedBoxes: true,
     closedBands: !!intent.closedBands,
+    barOffsetM: hooks.barOffsetM,
+    glassBackM: hooks.glassBackM,
     mergeKey: wi => recipe.wallGroup[wi],
     systemFor: p => groupOf(p.index)?.specSystem ?? recipe.other.specSystem,
     wallSlotFor: p => { const g = groupOf(p.index); return !g ? 'wall' : g.system === 'curtain-wall' ? g.slots.curtain : g.slots.wall; },

@@ -1630,5 +1630,11 @@
   "buildVersion": 2,
   "bytes": 24380,
   "triangles": 911
+ },
+ "maagdenhuis": {
+  "sourceHash": "7eb5f89887c7f195",
+  "buildVersion": 2,
+  "bytes": 67904,
+  "triangles": 3299
  }
 }
