@@ -1,0 +1,36 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "ledenberch-38-243844",
+ "pandId": "0363100012243844",
+ "address": "Gillis van Ledenberchstraat 38, Amsterdam: 1932 brick walk-up, three flats over a workshop (BAG: 3 dwellings, 1 industrial unit)",
+ "sources": [
+  {
+   "id": "pano-2021-03-22-street",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002055_pano_0000_000639/",
+   "image": "artifacts/building-recipes/ledenberch-38-243844/photo-wall-gillis-van-ledenberchstraat.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [3],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "ground": "glazed",
+   "windows": "transom",
+   "sills": false
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {"material": "bitumen"},
+ "palette": {"brick": "#8b4b37", "frame": "#f1efe6", "door": "#1e1e1e", "stone": "#efede6"},
+ "notes": [
+  "Front (east, 6.2 m, the only free wall; the other three adjoin taller neighbours) from the 2021-03-22 panorama picked by facts.ts: red-brown brick, three storeys of three white-framed windows with top lights and a low guard bar, a white coping at the eaves, and a full-width glazed workshop door with small panes under a white canopy band on the ground floor.",
+  "all-walls.ts returned 60 m and 48 m walls for this pand (a canal-side rendered block and a courtyard block with a concrete frame); they belong to a much larger neighbouring footprint in the building tiles, not to this 6.2 x 11.3 m pand, so they are not cited.",
+  "Not modelled: the white canopy band over the ground floor and the white coping at the eaves (the kit cornice only covers part of this 3DBAG wall top, under the pitched roof, so it is left off), the guard bars across the window bottoms, the small-pane division of the workshop door (one transom and one mullion), the house-number plate, doorbells and the roof hatch. Name not established: OSM (Overpass) was unavailable during authoring and Nominatim lists only the address."
+ ]
+}

@@ -87,6 +87,13 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
     drawPoliceStripe(c, v0, height, plateAt, {white: 'police-white', blue: 'police-blue'}, hall ? [[entrance.u0 - 0.3, entrance.u1 + 0.3]] : []);
     counts.policeStripes++;
   }
+  // Wall lettering on a group without an entrance: centred on the widest panel, in the wall strip between the first
+  // storey's window heads and the second storey's sills.
+  if (!g.entrance && g.signage?.mount === 'wall' && g.mainPanel === p.index && levels.length > 2) {
+    const holes = [...c.holes.values()].flat(), below = Math.max(levels[1], ...holes.filter(h => h[3] <= levels[2] + 0.01).map(h => h[3]));
+    const above = Math.min(levels[2] + 1, lowestHoleAbove(c, levels[2])), hgt = Math.min(0.6, above - below - 0.2), v = (below + above) / 2, W = p.uMax - p.uMin;
+    if (hgt >= 0.3 && fitsPanel(p, rectPoly(p.uMin + W * 0.2, p.uMax - W * 0.2, v - hgt / 2, v + hgt / 2))) counts.letters += drawLettering(c, g.signage.text, (p.uMin + p.uMax) / 2, v, 0.012, hgt, W * 0.6, s.sign, (u, vv, d) => c.onWallAt(u, vv, d));
+  }
   if (g.hoist && g.nameBoards?.length && g.mainPanel === p.index) counts.nameBoards += drawNameBoards(c, info.cells, g);
   if (g.police?.lamp && entrance && drawBlueLamp(c, Math.min(p.uMax - 0.4, entrance.u1 + 0.55), Math.min(entrance.doorTop + 0.9, groundTop - 0.2), {bracket: s.frame, lamp: 'police-blue', cap: 'police-white'})) counts.lamps++;
 }
@@ -167,6 +174,7 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, facts: Buildin
     recessM: recipe.recessM,
     sealSlivers: true,
     closedBoxes: true,
+    closedBands: !!intent.closedBands,
     mergeKey: wi => recipe.wallGroup[wi],
     systemFor: p => groupOf(p.index)?.specSystem ?? recipe.other.specSystem,
     wallSlotFor: p => { const g = groupOf(p.index); return !g ? 'wall' : g.system === 'curtain-wall' ? g.slots.curtain : g.slots.wall; },

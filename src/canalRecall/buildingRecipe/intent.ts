@@ -381,6 +381,8 @@ export interface LargeBuildingIntent {
   roofPlant?: boolean;
   roof?: {material: typeof ROOF_MATERIALS[number]};
   palette: PaletteIntent;
+  /** Close string courses, cornices and fascias (back face and end caps): for walls whose 3DBAG faces stand a few cm out of one plane (opt-in; earlier recipes stay byte-identical). */
+  closedBands?: boolean;
   notes?: string[];
 }
 
