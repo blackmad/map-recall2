@@ -18,6 +18,7 @@ import { cityLookEnabled } from '../../../src/canalRecall/look/cityLook.ts';
 import { INFERRED_SLOT_SOURCE } from '../../../src/canalRecall/look/materialSlotInference.ts';
 import { landmarkHighlightStates } from '../../../src/canalRecall/look/highlightLandmarks.ts';
 import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landmarks/pickBvh.ts';
+import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticMatrices.ts';
 import { applyMeshHighlight, highlightRecipe } from '../../../src/canalRecall/look/highlight.ts';
 import { enuDirectionInLocal, SUN_DIRECTION, sunDirection, DEFAULT_LIGHT_RIG } from '../../../src/canalRecall/rendererShared/lightRig.ts';
 
@@ -303,6 +304,11 @@ export class SignatureLandmarks {
     return result;
   }
 
+  /** A legacy model scene skips three's per-render matrix walk; refresh it after its contents change. */
+  _refreshSceneMatrices(entry) {
+    entry.scene?.updateMatrixWorld();
+  }
+
   /** Build the pick BVHs of a model that picks reach, in idle time, a mesh at a time. */
   _queuePickBvh(entry) {
     (this._pickBvhQueue ||= new Set()).add(entry);
@@ -413,6 +419,8 @@ export class SignatureLandmarks {
       entry.highlightState = state;
       entry.highlighted = state === 'highlight';
       applyMeshHighlight(THREE, entry.group, state, { cityVariant: (m, s) => city ? city.dimmed(m, s === 'dim') : m });
+      // Highlight passes are new children: give them world matrices (legacy scenes no longer auto-update).
+      this._refreshSceneMatrices(entry);
     }
     for (const area of Object.values(window.__canalRecallBuildingTypes || {})) area.setHighlighted?.(ids, focus);
     this.map.triggerRepaint();
@@ -936,6 +944,11 @@ export class SignatureLandmarks {
       holder.matrixWorldNeedsUpdate = true;
       this._sharedRoot.add(holder);
     }
+    // Placed models never move: compose their local matrices once instead of every frame (lights included).
+    // A legacy model scene also stops walking itself per render; whatever later adds to or moves inside it
+    // (a level swap, highlight passes) updates it there (`_refreshSceneMatrices`).
+    freezeStaticMatrices(modelScene || group);
+    if (modelScene) { modelScene.updateMatrixWorld(true); modelScene.matrixWorldAutoUpdate = false; }
     const size = bounds.getSize(new THREE.Vector3());
     const entry = { spec, group, scene: modelScene, holder, transform, units, groundBase: 0, highlighted: false, placement, url, enuFromWorld,
       // Level of detail: `level` is what `group` holds now; `spare` is the other level once loaded (detached, kept for reuse).
@@ -1011,8 +1024,12 @@ export class SignatureLandmarks {
     const outgoing = entry.imported;
     // Same normalisation as the first level, so the two overlay exactly.
     incoming.position.copy(outgoing.position);
+    // A spare level was frozen when it was first drawn: recompose it at its (re)placed position.
+    incoming.updateMatrix();
+    freezeStaticMatrices(incoming);
     entry.group.add(incoming);
     entry.group.remove(outgoing);
+    this._refreshSceneMatrices(entry);
     entry.imported = incoming;
     entry.pickBox = null;
     entry.spare = outgoing; entry.spareLevel = entry.level;
