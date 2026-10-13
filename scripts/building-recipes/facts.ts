@@ -4,12 +4,13 @@
  * panorama crop per front as the reference photo.
  *
  *   node --import tsx scripts/building-recipes/facts.ts --house=bloemgracht-80 [--pand=0363...] [--street=Bloemgracht] [--refresh] [--no-photo]
+ *   node --import tsx scripts/building-recipes/facts.ts --house=<id> --pand=0363... --large [--street=A|B]   # kind: large (walls + neighbours)
  *
  * Without an intent.json, --pand and --street seed a new house directory.
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import {buildFacts, type BuildingFacts, type CityJsonItem, type RD, type StreetPath} from '../../src/canalRecall/buildingRecipe/facts.ts';
+import {buildFacts, decodeThreeDBag, type BuildingFacts, type CityJsonItem, type RD, type StreetPath} from '../../src/canalRecall/buildingRecipe/facts.ts';
 import {lngLatToRd, rdToLngLat} from '../../src/canalRecall/facade/rdNew.ts';
 import {perspectiveCrop} from '../street-appearance/perspective.ts';
 import {loadIntent} from './compile.ts';
@@ -72,25 +73,39 @@ export async function fetchPanorama(id: string, front: BuildingFacts['fronts'][n
   return null;
 }
 
-export async function prepareFacts(id: string, options: {pand?: string; streets?: string[]; refresh?: boolean; photo?: boolean} = {}) {
+/** Neighbouring footprints from the building-tile extract (party walls for the large tier), RD rings. */
+async function neighboursRD(pandId: string, item: CityJsonItem): Promise<NonNullable<BuildingFacts['neighboursRD']>> {
+  const {neighbourhood} = await import('../pand-reference/core.ts');
+  const lod0 = decodeThreeDBag(item).bag.flat(), centre = {x: lod0.reduce((s, p) => s + p[0], 0) / lod0.length, y: lod0.reduce((s, p) => s + p[1], 0) / lod0.length};
+  return (await neighbourhood(centre)).filter(f => !f.id.endsWith(pandId)).filter(f => {
+    const c = {x: f.ring.reduce((s, p) => s + p.x, 0) / f.ring.length, y: f.ring.reduce((s, p) => s + p.y, 0) / f.ring.length};
+    return Math.hypot(c.x - centre.x, c.y - centre.y) <= 90;
+  }).map(f => ({id: f.id, heightM: f.height, ringRD: f.ring.map(p => [+p.x.toFixed(3), +p.y.toFixed(3)] as RD)}));
+}
+
+export async function prepareFacts(id: string, options: {pand?: string; streets?: string[]; refresh?: boolean; photo?: boolean; large?: boolean} = {}) {
   const dir = path.join(HOUSES, id);
   await fs.mkdir(dir, {recursive: true});
   let intent = await json<any>(path.join(dir, 'intent.json'));
+  const large = options.large || intent?.kind === 'large';
   if (intent?.sameAs) intent = (await loadIntent(id)).intent;
   const pandId: string = options.pand ?? intent?.pandId;
-  const frontStreets: string[] = options.streets ?? intent?.fronts?.map((f: any) => f.street);
-  if (!/^\d{16}$/.test(pandId ?? '') || !frontStreets?.length) throw Error(`${id}: need intent.json or --pand/--street`);
+  // Large recipes: streets are optional (walls are addressed by 3DBAG surface); a wall group may name its street.
+  const frontStreets: string[] = options.streets ?? (large ? [...new Set<string>((intent?.walls ?? []).map((w: any) => w.street).filter(Boolean))] : intent?.fronts?.map((f: any) => f.street));
+  if (!/^\d{16}$/.test(pandId ?? '') || !frontStreets || (!large && !frontStreets.length)) throw Error(`${id}: need intent.json or --pand/--street`);
   const rawFile = path.join(dir, '3dbag.json'), url = `https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.${pandId}`;
   let raw = options.refresh ? null : await json<CityJsonItem & {fetchedAt?: string}>(rawFile);
   if (!raw) {
     raw = {...JSON.parse((await fetchBytes(url)).toString()), fetchedAt: new Date().toISOString().slice(0, 10)};
     await fs.writeFile(rawFile, JSON.stringify(raw) + '\n');
   }
-  const facts = buildFacts(pandId, raw!, await streets(), frontStreets, toRD, {threeDBag: url, fetchedAt: (raw as any).fetchedAt ?? 'unknown', streets: 'public/data/extracts/amsterdam/streets-routing.json'});
+  const facts = buildFacts(pandId, raw!, await streets(), frontStreets, toRD, {threeDBag: url, fetchedAt: (raw as any).fetchedAt ?? 'unknown', streets: 'public/data/extracts/amsterdam/streets-routing.json'}, {walls: large});
+  if (large) facts.neighboursRD = await neighboursRD(pandId, raw!);
   await fs.writeFile(path.join(dir, 'facts.json'), JSON.stringify(facts, null, 1) + '\n');
   const photos: PanoramaReference[] = [];
   if (options.photo !== false) {
     const frontIds: string[] = intent?.fronts?.map((f: any) => f.id) ?? frontStreets.map((_, i) => `front${i}`);
+    if (large) frontStreets.forEach((s, i) => { frontIds[i] = `wall-${s.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`; });
     for (const [i, front] of facts.fronts.entries()) {
       const ref = await fetchPanorama(id, front, frontIds[frontStreets.indexOf(front.street)] ?? `front${i}`);
       if (ref) photos.push(ref);
@@ -105,7 +120,7 @@ if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith
   if (!ids.length) throw Error('Use --house=<id>[,<id>...]');
   for (const id of ids) {
     const started = performance.now();
-    const {facts, photos} = await prepareFacts(id, {pand: arg('pand'), streets: arg('street')?.split('|'), refresh: process.argv.includes('--refresh'), photo: !process.argv.includes('--no-photo')});
+    const {facts, photos} = await prepareFacts(id, {pand: arg('pand'), streets: arg('street')?.split('|'), refresh: process.argv.includes('--refresh'), photo: !process.argv.includes('--no-photo'), large: process.argv.includes('--large')});
     console.log(JSON.stringify({id, seconds: +((performance.now() - started) / 1000).toFixed(2), fronts: facts.fronts.map(f => ({street: f.street, widthM: +f.widthM.toFixed(2), eavesM: +f.eavesM.toFixed(2), topM: +f.topM.toFixed(2), uncertainty: f.uncertainty.length})), ridgeM: +facts.heights.ridgeM.toFixed(2), photos: photos.map(p => `${p.timestamp.slice(0, 10)} ${p.distanceM.toFixed(1)}m`)}));
   }
 }

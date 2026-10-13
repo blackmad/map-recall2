@@ -1,0 +1,18 @@
+[
+ {
+  "front": "wall-cruquiusweg",
+  "panoId": "TMX7316010203-001475_pano_0003_000887",
+  "timestamp": "2019-11-29T11:26:11.207740Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2019/11/29/TMX7316010203-001475/pano_0003_000887/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   124487.85988625526,
+   486836.41746551206
+  ],
+  "headingDeg": 358.39343754403063,
+  "fovDeg": 48.31283437503946,
+  "pitchDeg": 15.36717411126232,
+  "distanceM": 40.39916497795004,
+  "image": "artifacts/building-recipes/social-history-large/photo-wall-cruquiusweg.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

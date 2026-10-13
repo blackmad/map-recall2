@@ -18,7 +18,7 @@ test('intent schema rejects coordinates, unknown components and the unbuilt larg
   assert.throws(() => validateIntent({...base, fronts: [{...base.fronts[0], widthM: 5.7}]}), /coordinate\/metric field/);
   assert.throws(() => validateIntent({...base, fronts: [{...base.fronts[0], gable: 'baroque'}]}), /gable/);
   assert.throws(() => validateIntent({...base, fronts: [{...base.fronts[0], doorBay: 7}]}), /doorBay/);
-  assert.throws(() => validateIntent({...base, kind: 'large'}), /planned but not implemented/);
+  assert.throws(() => validateIntent({...base, kind: 'large'}), /validateLargeIntent/);
 });
 
 test('sameAs recipes inherit the neighbour and keep their own identity; equal designs share a key', () => {

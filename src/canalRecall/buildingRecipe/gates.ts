@@ -12,7 +12,7 @@ export interface Gate { id: string; pass: boolean; value: unknown; limit: string
 
 export const BUDGET_TRIANGLES = 3000;
 
-function footprintIoU(facts: BuildingFacts, modelRingsLocal: number[][][], anchorRD: [number, number]) {
+export function footprintIoU(facts: BuildingFacts, modelRingsLocal: number[][][], anchorRD: [number, number]) {
   // Raster IoU on a 10 cm grid in RD, model rings converted back from local (x east, z south).
   const model = modelRingsLocal.map(r => r.map(([x, z]) => [x + anchorRD[0], anchorRD[1] - z]));
   const bag = facts.bagFootprintRD;
@@ -55,7 +55,7 @@ export function pointTriangleDistance(p: number[], t: {a: number[]; b: number[];
 }
 
 /** Weld at 1 cm, split into connected components, and find components not resting on ground or another component. */
-function topology(tris: Tri[]) {
+export function topology(tris: Tri[]) {
   const key = (p: number[]) => p.map(v => Math.round(v * 100)).join(',');
   const ids = new Map<string, number>(), parent: number[] = [];
   const vid = (p: number[]) => { const k = key(p); if (!ids.has(k)) { ids.set(k, parent.length); parent.push(parent.length); } return ids.get(k)!; };
@@ -88,16 +88,25 @@ function topology(tris: Tri[]) {
   // A once-used edge whose midpoint and quarter points lie on another triangle is a
   // T-junction seam (e.g. roof closure meeting the shell top), not a hole.
   let openLength = 0, openCount = 0;
+  const openSamples: {mid: number[]; lengthM: number; surface: string}[] = [];
+  // Spatial hash (1 m cells, triangles inflated by the 2 cm tolerance) so large models stay fast; same result as a full scan.
+  const cell = 1, grid = new Map<string, number[]>(), big: number[] = [];
+  tris.forEach((t, ti) => {
+    const lo = [0, 1, 2].map(i => Math.floor((Math.min(t.a[i], t.b[i], t.c[i]) - 0.02) / cell)), hi = [0, 1, 2].map(i => Math.floor((Math.max(t.a[i], t.b[i], t.c[i]) + 0.02) / cell));
+    if ((hi[0] - lo[0] + 1) * (hi[1] - lo[1] + 1) * (hi[2] - lo[2] + 1) > 2000) { big.push(ti); return; }
+    for (let x = lo[0]; x <= hi[0]; x++) for (let y = lo[1]; y <= hi[1]; y++) for (let z = lo[2]; z <= hi[2]; z++) { const k = `${x},${y},${z}`; const l = grid.get(k); if (l) l.push(ti); else grid.set(k, [ti]); }
+  });
+  const near = (q: number[]) => [...(grid.get(q.map(v => Math.floor(v / cell)).join(',')) ?? []), ...big];
   for (const e of edges.values()) {
     if (e.n !== 1 || Math.max(e.a[1], e.b[1]) <= 0.05) continue;
     const samples = [0.25, 0.5, 0.75].map(t => e.a.map((v, i) => v + (e.b[i] - v) * t));
-    const covered = samples.every(q => tris.some((t, ti) => {
-      return ti !== e.tri && pointTriangleDistance(q, t) < 0.02;
-    }));
+    const covered = samples.every(q => near(q).some(ti => ti !== e.tri && pointTriangleDistance(q, tris[ti]) < 0.02));
     if (covered) continue;
-    openCount++; openLength += Math.hypot(e.a[0] - e.b[0], e.a[1] - e.b[1], e.a[2] - e.b[2]);
+    const length = Math.hypot(e.a[0] - e.b[0], e.a[1] - e.b[1], e.a[2] - e.b[2]);
+    openCount++; openLength += length;
+    if (openSamples.length < 16) openSamples.push({mid: e.a.map((v, i) => +((v + e.b[i]) / 2).toFixed(2)), lengthM: +length.toFixed(2), surface: tris[e.tri].surface});
   }
-  return {components: boxes.length, floating: floating.map(f => ({triangles: f.count, min: f.min.map(v => +v.toFixed(2)), max: f.max.map(v => +v.toFixed(2))})), openEdges: openCount, openEdgeLengthM: openLength};
+  return {components: boxes.length, floating: floating.map(f => ({triangles: f.count, min: f.min.map(v => +v.toFixed(2)), max: f.max.map(v => +v.toFixed(2))})), openEdges: openCount, openEdgeLengthM: openLength, openEdgeSamples: openSamples};
 }
 
 export function evaluateGates(tris: Tri[], facts: BuildingFacts, fit: FitReport, modelRingsLocal: number[][][], anchorRD: [number, number]): {gates: Gate[]; topology: ReturnType<typeof topology>} {

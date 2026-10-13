@@ -36,7 +36,7 @@ export function slotFor(intent: CanalHouseIntent) {
   };
 }
 
-async function decodeTriangles(bytes: Uint8Array): Promise<Tri[]> {
+export async function decodeTriangles(bytes: Uint8Array): Promise<Tri[]> {
   const doc = await new NodeIO().registerExtensions([KHRMeshQuantization]).readBinary(bytes);
   const tris: Tri[] = [];
   for (const mesh of doc.getRoot().listMeshes()) for (const prim of mesh.listPrimitives()) {
