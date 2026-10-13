@@ -31,8 +31,14 @@ test.skip(!process.env.PERF_RIDE, 'set PERF_RIDE=1 to measure');
  * `getStyle()`; the worst-frame bound is a gross guard only (this chase route
  * never had the 40 ms plans the aerial hold had; those are measured with
  * scripts/ride-perf-owners.mjs).
+ *
+ * Tightened 2026-10-14 (docs/performance/desktop-20261014.md) after the bike's
+ * single render and the landmark pick BVH: map render median 1.8-1.9 ms, p95
+ * 2.6-2.9; label overlay mean 0.15-0.16 ms, worst 5.6-6.2 ms. Median and label
+ * bounds keep ~2x over the loaded-machine numbers of 2026-10-13; p95 keeps
+ * room for a tile batch.
  */
-const DESKTOP_BUDGET = { mapRenderMedianMs: 6, mapRenderP95Ms: 12, labelFrameMeanMs: 0.6, labelFrameMaxMs: 30, framesOver100: 2 };
+const DESKTOP_BUDGET = { mapRenderMedianMs: 4, mapRenderP95Ms: 10, labelFrameMeanMs: 0.4, labelFrameMaxMs: 20, framesOver100: 2 };
 
 type Variant = { label: string; landmarks: 'default' | 'off' | 'all' };
 const variants: Variant[] = [
