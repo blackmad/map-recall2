@@ -35582,10 +35582,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012096365",
       "name": "Vossius Gymnasium, Messchaertstraat 1, Amsterdam (1930 brick school, three wings, tiled roofs with dormer bands)",
-      "hash": "fd8239b261203ccd7bc4a13fe7536af3e0fb3eee047354523b23744eba4aaecd",
-      "sha256": "fd8239b261203ccd7bc4a13fe7536af3e0fb3eee047354523b23744eba4aaecd",
-      "bytes": 404676,
-      "triangles": 5381,
+      "hash": "61c93a0902d3deaf95113ac320f61b943da33a4a8d4df2396d1cc03b02b7d95c",
+      "sha256": "61c93a0902d3deaf95113ac320f61b943da33a4a8d4df2396d1cc03b02b7d95c",
+      "bytes": 409152,
+      "triangles": 5445,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -35877,7 +35877,267 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012096365",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:10:51.128Z"
+      "updatedAt": "2026-10-13T23:12:42.550Z"
+    },
+    {
+      "id": "ordinary-0363100012127997",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012127997",
+      "name": "Berlage Lyceum, Pieter Lodewijk Takstraat 33, Amsterdam (1924 Amsterdam School school in yellow brick)",
+      "hash": "7fd20944d96477684258014c18a73d3ec7ff6e913afdb5d95fb32d1782f6f6ac",
+      "sha256": "7fd20944d96477684258014c18a73d3ec7ff6e913afdb5d95fb32d1782f6f6ac",
+      "bytes": 211832,
+      "triangles": 2776,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -37.12,
+          -0.001,
+          -32.537
+        ],
+        "max": [
+          32.96,
+          20.073,
+          20.148
+        ]
+      },
+      "anchor": [
+        4.9003971,
+        52.3489523
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.899884,
+              52.3488575
+            ],
+            [
+              4.8998777,
+              52.3488502
+            ],
+            [
+              4.8998886,
+              52.3488453
+            ],
+            [
+              4.8999126,
+              52.3487804
+            ],
+            [
+              4.8999142,
+              52.3487807
+            ],
+            [
+              4.8999184,
+              52.3487692
+            ],
+            [
+              4.8999359,
+              52.3487717
+            ],
+            [
+              4.8999362,
+              52.3487707
+            ],
+            [
+              4.9003066,
+              52.348823
+            ],
+            [
+              4.9003132,
+              52.3488052
+            ],
+            [
+              4.9003192,
+              52.348806
+            ],
+            [
+              4.9003206,
+              52.3488022
+            ],
+            [
+              4.9003472,
+              52.3488059
+            ],
+            [
+              4.9003458,
+              52.3488097
+            ],
+            [
+              4.9004684,
+              52.3488267
+            ],
+            [
+              4.9004698,
+              52.3488229
+            ],
+            [
+              4.9004964,
+              52.3488266
+            ],
+            [
+              4.900495,
+              52.3488303
+            ],
+            [
+              4.9005011,
+              52.3488312
+            ],
+            [
+              4.9004946,
+              52.348849
+            ],
+            [
+              4.9008645,
+              52.3489004
+            ],
+            [
+              4.9008643,
+              52.3489011
+            ],
+            [
+              4.9008814,
+              52.3489036
+            ],
+            [
+              4.9008775,
+              52.3489141
+            ],
+            [
+              4.9008795,
+              52.3489144
+            ],
+            [
+              4.9007576,
+              52.3492391
+            ],
+            [
+              4.9007605,
+              52.3492417
+            ],
+            [
+              4.9007497,
+              52.3492462
+            ],
+            [
+              4.9007468,
+              52.3492436
+            ],
+            [
+              4.9005974,
+              52.3492225
+            ],
+            [
+              4.9005989,
+              52.3492182
+            ],
+            [
+              4.9005415,
+              52.3492102
+            ],
+            [
+              4.9005413,
+              52.3492106
+            ],
+            [
+              4.9005313,
+              52.3492092
+            ],
+            [
+              4.9005478,
+              52.3491648
+            ],
+            [
+              4.9006173,
+              52.3491744
+            ],
+            [
+              4.9006797,
+              52.3490062
+            ],
+            [
+              4.9004767,
+              52.348978
+            ],
+            [
+              4.9004675,
+              52.3490029
+            ],
+            [
+              4.9002219,
+              52.3489687
+            ],
+            [
+              4.9002312,
+              52.3489437
+            ],
+            [
+              4.9000288,
+              52.3489155
+            ],
+            [
+              4.9000105,
+              52.3489648
+            ],
+            [
+              4.8998524,
+              52.3489428
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 20.07,
+      "height": 20.07,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-berlage-lyceum.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012127997"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "berlage-lyceum",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012127997/w03-167.jpg",
+          "staging/pand-reference-walls/0363100012127997/w02-167.jpg",
+          "staging/pand-reference-walls/0363100012127997/w01-77.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 3st 3b",
+          "brick-bay-grid+entrance 3st 3b",
+          "brick-bay-grid 3st 7b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "MODELLED: three yellow-brick storeys, the south bays on the 8.6 m rhythm with a multi-light window each (new `wide` preset: four lights and a transom), stone piers, the entrance with a stone portal, the east front as seven wide windows per storey. SIMPLIFIED: the side lights and recessed stone surrounds of each group are one window; the east front's ground band, upper groups and small square lights are regularised to seven equal bays; cornice dentils are not drawn. SKIPPED: the area railing (too thin), awnings and sun blinds (temporary), the north, west and courtyard walls (no panorama within range: blank), the carved relief at the south-east corner (not resolvable)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012127997",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T23:12:42.390Z"
     }
   ]
 }
