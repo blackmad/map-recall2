@@ -221,6 +221,29 @@ export function reliefGrid(x0: number, y0: number, x1: number, y1: number, step:
   return m;
 }
 
+/**
+ * The relief grid's own surface: the piecewise-planar interpolation of
+ * `reliefGrid(…, step, height)` on global multiples of `step` (its triangles
+ * a-b-c and a-c-d per quad). Bands draped on this instead of the true field
+ * sit exactly `lift` over the land at every vertex, so a coarse land grid
+ * cannot poke through a street between the street's own vertices (it did at
+ * LOD 1: a 10 m grid over a 6 m drape hid half of De Clercqstraat).
+ */
+export function gridHeight(height: HeightFn, step: number): HeightFn {
+  const cache = new Map<number, number>();
+  const at = (i: number, j: number): number => {
+    const k = i * 1_048_576 + j;
+    let z = cache.get(k);
+    if (z === undefined) { z = height(i * step, j * step); cache.set(k, z); }
+    return z;
+  };
+  return (x, y) => {
+    const fi = x / step, fj = y / step, i = Math.floor(fi), j = Math.floor(fj), u = fi - i, v = fj - j;
+    const za = at(i, j), zb = at(i + 1, j), zc = at(i + 1, j + 1), zd = at(i, j + 1);
+    return u >= v ? za + u * (zb - za) + v * (zc - zb) : za + v * (zd - za) + u * (zc - zd);
+  };
+}
+
 /** Concatenate meshes. */
 export function merge(meshes: readonly MeshArrays[]): MeshArrays {
   const out = emptyMesh(meshes.some(m => m.colors));

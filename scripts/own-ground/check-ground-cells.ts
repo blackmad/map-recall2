@@ -12,6 +12,8 @@ import { join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { buildCell, layersAt, type BuiltCell } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { GroundSurface } from '../../src/canalRecall/ownGround/surface.ts';
+import { prepareWays } from '../../src/canalRecall/ownGround/streets.ts';
+import { bandCoverage, DE_CLERCQSTRAAT } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 
 const ROOT = 'public/data/extracts/amsterdam';
 const store = new GroundStore(async path => {
@@ -124,6 +126,21 @@ async function main(): Promise<void> {
     check(!!near.layers.deckBody && (near.layers.deckBody.indices.length > 0), `${id}: deck body built`);
     check(!!near.layers.quay && !!near.layers.water, `${id}: quay walls and water in the cell`);
     check(near.lod === 0 && far.stats.triangles < near.stats.triangles * 0.6, `${id}: LOD 1 is lighter (${far.stats.triangles} vs ${near.stats.triangles} triangles)`);
+  }
+  // Named road regressions: every band of the listed ways reads as street at both LODs.
+  for (const reg of [DE_CLERCQSTRAAT]) {
+    const [x, y] = toLocal(reg.at[0], reg.at[1]), key = store.cellAt(x, y);
+    const keys = GroundStore.neighbours(key).filter(k => store.covers(k));
+    const input = await store.cellInput(key, 0);
+    const ids = new Set(reg.ways), seen = new Set<number>();
+    const ways = [input.osm, ...input.osmAround].flatMap(e => (e ? prepareWays(e.ways, input.project) : [])).filter(w => ids.has(w.id) && !seen.has(w.id) && seen.add(w.id));
+    check(ways.length === reg.ways.length, `${reg.id}: ${ways.length}/${reg.ways.length} ways found`);
+    for (const lod of [0, 1] as const) {
+      const cells: BuiltCell[] = [];
+      for (const k of keys) cells.push(await build(k, lod));
+      const r = bandCoverage(cells, ways, reg.fractions);
+      check(r.share >= reg.minShare, `${reg.id} LOD ${lod}: ${r.street}/${r.probes} band probes read as street (${(100 * r.share).toFixed(1)} %)${r.misses.length ? ` misses ${JSON.stringify(r.misses.slice(0, 4))}` : ''}`);
+    }
   }
   // Seams: two neighbouring cells' land grids meet at the same heights (one height function, shared grid lines).
   const [ax, ay] = toLocal(4.8875, 52.3665), a = store.cellAt(ax, ay), [cx, cy] = a.split('_').map(Number), b = `${cx + 1}_${cy}`;
