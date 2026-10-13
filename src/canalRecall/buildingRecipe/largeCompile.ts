@@ -164,6 +164,10 @@ export interface LargeCompileHooks {
   afterCompose?: (mesh: MeshBuilder, recipe: LargeBuildingRecipe, panels: Panel[]) => void;
   /** triangle budget for the block-kit gate (default 12000, the large-tier budget) */
   budget?: number;
+  /** glazing bars and doors this far in front of the glass (`ComposeOptions.barOffsetM`; default 0.015, unchanged output) */
+  barOffsetM?: number;
+  /** leave a fitted cell empty (after the entrance/garage rule) so the bespoke builder can draw that part of the wall itself */
+  skipCell?: (p: Panel, floor: number, bay: number, bays: number, group: LargeGroupFit | undefined) => boolean;
 }
 
 export function compileLargeBuilding(intent: LargeBuildingIntent, facts: BuildingFacts, hooks: LargeCompileHooks = {}): CompiledLargeBuilding {
@@ -175,11 +179,14 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, facts: Buildin
     sealSlivers: true,
     closedBoxes: true,
     closedBands: !!intent.closedBands,
+    ...(hooks.barOffsetM !== undefined ? {barOffsetM: hooks.barOffsetM} : {}),
     mergeKey: wi => recipe.wallGroup[wi],
     systemFor: p => groupOf(p.index)?.specSystem ?? recipe.other.specSystem,
     wallSlotFor: p => { const g = groupOf(p.index); return !g ? 'wall' : g.system === 'curtain-wall' ? g.slots.curtain : g.slots.wall; },
-    skipCell: (p, floor, bay) => {
-      const g = groupOf(p.index); if (!g) return false;
+    skipCell: (p, floor, bay, bays) => {
+      const g = groupOf(p.index);
+      if (hooks.skipCell?.(p, floor, bay, bays, g)) return true;
+      if (!g) return false;
       if (g.entrance?.panel === p.index && bay === g.entrance.bay && floor < g.entrance.storeys) return true;
       return !!(g.garage?.panel === p.index && floor === 0 && g.garage.bays.includes(bay));
     },

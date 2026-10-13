@@ -4,7 +4,7 @@
  * (blue-and-white striped POLITIE band, blue lamp), plus roof plant boxes on the roof. Every part is built on or
  * cut into the exact wall plane, so attachment holds by construction (block-kit gates check it).
  */
-import { type PanelCtx, type Cell, stripBox, intervals } from './compose.ts';
+import { type PanelCtx, type Cell, stripBox, intervals, barQuad } from './compose.ts';
 import { fitsPanel, rectPoly } from './panels.ts';
 import { MeshBuilder, type V3, add, scale, sub } from './mesh.ts';
 import { letteringGeometry } from '../buildingRecipe/signage.ts';
@@ -50,10 +50,10 @@ export function drawEntrance(c: PanelCtx, span: { u0: number; u1: number; v0: nu
   // The recess is closed by the glass itself; frame, door stiles and push bars sit 1.5 cm in front of it.
   const r = recess(c, u0, u1, v0, top, 0.6, slots.glass);
   if (!r) return null;
-  const g = r.back, bar = r.back + 0.015, fw = 0.08;
+  const g = r.back, bar = r.back + c.barOut, fw = 0.08;
   // Under 1.6 m: one door filling the opening; wider: a door pair in the middle with side lights either side.
   const single = w < 1.6, dw = single ? w : Math.min(2.0, w * 0.5), d0 = uc - dw / 2, d1 = uc + dw / 2, bars = c.part();
-  const qb = (a: number, b: number, lo: number, hi: number, slot: Slot = slots.frame) => c.mesh.quad(slot, r.Q(a, lo, bar), r.Q(b, lo, bar), r.Q(b, hi, bar), r.Q(a, hi, bar), bars, c.p.n);
+  const qb = (a: number, b: number, lo: number, hi: number, slot: Slot = slots.frame) => barQuad(c, slot, r.Q, a, b, lo, hi, g, bar, bars);
   // outer frame ring and the transom bar over the door(s)
   qb(u0, u1, v0, v0 + fw); qb(u0, u1, top - fw, top); qb(u0, u0 + fw, v0 + fw, top - fw); qb(u1 - fw, u1, v0 + fw, top - fw);
   if (single) {
@@ -89,8 +89,8 @@ export function drawGarageDoor(c: PanelCtx, cell: Cell, slots: { door: Slot; fra
   if (w < 2.2 || h < 2.2) return false;
   const r = recess(c, uc - w / 2, uc + w / 2, v0, v0 + h, 0.25, slots.door);
   if (!r) return false;
-  const part = c.part(), d = r.back + 0.015;
-  for (let v = v0 + 0.5; v < v0 + h - 0.2; v += 0.5) c.mesh.quad(slots.frame, r.Q(uc - w / 2 + 0.05, v - 0.025, d), r.Q(uc + w / 2 - 0.05, v - 0.025, d), r.Q(uc + w / 2 - 0.05, v + 0.025, d), r.Q(uc - w / 2 + 0.05, v + 0.025, d), part, c.p.n);
+  const part = c.part(), d = r.back + c.barOut;
+  for (let v = v0 + 0.5; v < v0 + h - 0.2; v += 0.5) barQuad(c, slots.frame, r.Q, uc - w / 2 + 0.05, uc + w / 2 - 0.05, v - 0.025, v + 0.025, r.back, d, part);
   return true;
 }
 
