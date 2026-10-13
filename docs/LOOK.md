@@ -259,6 +259,44 @@ Known gaps: MapLibre's fallback extrusion layers (only when three.js does not ow
 city) and 3DBAG detailed mode keep yellow; the outline is subtle at chase distance on
 an ordinary terrace house (the beacon carries it there).
 
+## Labels (POI names, `src/canalRecall/labels/`, 2026-10-13)
+
+- **One layer, the HUD's language.** POI names are a DOM layer over the map
+  (above the game canvas, below DOM cards), not MapLibre symbols: MapLibre's
+  glyphs cannot set the plaque face. Ink from `LABEL_INK` (`look/palette.ts`):
+  the plaque's warm dark `#1f1c17` on a thin paper halo (default), or paper on
+  an ink halo (`?labelTone=paper`, kept for comparison; heavier on brick).
+  `?labels=maplibre` restores the old symbol layers.
+- **Type by class:** landmark 15 px Barlow Condensed 700, uppercase, tracked
+  0.06 em (only landmarks and the destination are set in caps); museum/church
+  14 px 600; civic 13 px 600; hotel/shop/café 11 px UI face, muted ink. A
+  stem and a leader dot mark the POI. The destination is a paper chip with a
+  copper arrowhead (the destination card in miniature).
+- **Budget** (`labelBudget`): 6 at a rider's eye rising to **12 at 250 m**,
+  scaled by √(screen area / 1440×900), never below 4. Priority: destination,
+  game landmarks, museums and churches, civic, then venues; shops, cafés and
+  hotels only within **80 m** of the rider.
+- **Fade** (`distanceFade`): full to max(160 m, 2.2 × camera height), gone at
+  2.5× that.
+- **Occlusion:** a label is hidden when the first building surface on the ray
+  to its anchor (three.js city, signature landmarks, tile buildings: the same
+  pickers as a click) stands clearly in front of it on the ground — the
+  pickers' depths are in different clip spaces, so the test compares the
+  camera's ground distance to the hit footprint with the anchor's. A POI's own
+  building (footprint, landmark id, or within its reach) never hides it.
+  Two consecutive verdicts change a label's state (no flicker).
+- **HUD:** no label box within 6 px of the plaque, destination card, compass,
+  trip, minimap, controls hint, d-pad, an open landmark card, the question
+  prompt or the landmark panel.
+- **Never the question:** the shared POI rule (no quiz-eligible name, nothing
+  during a quiz) plus the asked name as a word or a compound prefix
+  ("Keizersgrachtkerk" while the Keizersgracht is asked); the destination is
+  the only label left during a quiz, masked as the HUD card is
+  (`scripts/check-recall-rules.ts`).
+- Measured (`tests/e2e/labels.spec.ts`, desktop 1440×900): Damrak at 250 m
+  **132 → 10** labels, 17 → 0 over the HUD; Dam from the air 6 MapLibre
+  (brand icons only) → 12; Nieuw-West 21 → 3; Westerkerk at 1.7 m 9 → 1.
+
 ## How reviews cite this
 
 - Gallery and release reviews look at gallery-size renders from all sides,

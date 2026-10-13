@@ -131,6 +131,15 @@ test('rhythm: a skipped column and an odd-sized window are flagged', () => {
   assert.equal(analyseRhythm(odd).mismatched.length, 1);
 });
 
+test('rhythm: a staggered lattice is judged on size only', () => {
+  // Nine columns of 0.4 m windows, every other column lifted half a pitch: single-linkage rows merge them into one band.
+  const lattice: Opening[] = [];
+  for (let c = 0; c < 9; c++) for (let j = 0; j < 5; j++) { const y = 8 + j * 1.1 + (c % 2 ? 0.55 : 0); lattice.push({t0: c * 0.8, t1: c * 0.8 + 0.4, y0: y, y1: y + 0.45, area: 0.18}); }
+  assert.ok(analyseRhythm(lattice).mismatched.length > 10, 'level checks misread the lattice');
+  assert.equal(analyseRhythm(lattice, {staggered: true}).mismatched.length, 0);
+  assert.equal(analyseRhythm([...lattice, {t0: 3, t1: 4.5, y0: 9, y1: 10.5, area: 2}], {staggered: true}).mismatched.length, 1, 'an odd-sized window still counts');
+});
+
 test('baseline gate: only growth past the recorded counts fails', () => {
   assert.deepEqual(regressions({'opening-floating-fail': 2, 'zfight-m2': 30}, {'opening-floating-fail': 2, 'zfight-m2': 30}), []);
   assert.equal(regressions({'opening-floating-fail': 3, 'zfight-m2': 30}, {'opening-floating-fail': 2, 'zfight-m2': 30}).length, 1);

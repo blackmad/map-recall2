@@ -1061,6 +1061,7 @@
       "window-missing-spec": 4
     },
     "felix-meritis": {
+      "material-slot-untagged-permille": 0,
       "opening-floating": 0,
       "opening-floating-fail": 0,
       "opening-overhang": 0,
@@ -1396,16 +1397,20 @@
       "window-misaligned": 0
     },
     "haparandaweg-2-4": {
+      "material-slot-untagged-permille": 0,
       "opening-floating": 0,
       "opening-floating-fail": 0,
-      "opening-overhang": 36,
-      "opening-overhang-fail": 34,
-      "opening-buried": 1,
-      "zfight-m2": 19.2,
-      "zfight-near-m2": 2.8,
+      "opening-overhang": 35,
+      "opening-overhang-fail": 33,
+      "opening-buried": 0,
+      "zfight-m2": 19,
+      "zfight-near-m2": 2.7,
       "window-mismatch": 5,
-      "window-missing": 4,
-      "window-misaligned": 0
+      "window-missing": 1,
+      "window-misaligned": 0,
+      "window-rhythm-fail": 0,
+      "window-mismatch-spec": 0,
+      "window-missing-spec": 0
     },
     "haparandaweg-57": {
       "opening-floating": 6,
@@ -1691,6 +1696,22 @@
       "window-missing": 0,
       "window-misaligned": 0
     },
+    "holocaust-namenmonument": {
+      "material-slot-untagged-permille": 0,
+      "opening-floating": 0,
+      "opening-floating-fail": 0,
+      "opening-overhang": 0,
+      "opening-overhang-fail": 0,
+      "opening-buried": 0,
+      "zfight-m2": 0.2,
+      "zfight-near-m2": 0,
+      "window-mismatch": 0,
+      "window-missing": 0,
+      "window-misaligned": 0,
+      "window-rhythm-fail": 0,
+      "window-mismatch-spec": 0,
+      "window-missing-spec": 0
+    },
     "homomonument": {
       "opening-floating": 0,
       "opening-floating-fail": 0,
@@ -1702,6 +1723,22 @@
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0
+    },
+    "hoofdbureau-elandsgracht": {
+      "material-slot-untagged-permille": 0,
+      "opening-floating": 0,
+      "opening-floating-fail": 0,
+      "opening-overhang": 0,
+      "opening-overhang-fail": 0,
+      "opening-buried": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 12.6,
+      "window-mismatch": 19,
+      "window-missing": 6,
+      "window-misaligned": 0,
+      "window-rhythm-fail": 0,
+      "window-mismatch-spec": 0,
+      "window-missing-spec": 0
     },
     "hortus-greenhouses": {
       "opening-floating": 0,
@@ -1716,19 +1753,20 @@
       "window-misaligned": 0
     },
     "hotel-de-l-europe": {
+      "material-slot-untagged-permille": 0,
       "opening-floating": 0,
       "opening-floating-fail": 0,
-      "opening-overhang": 4,
-      "opening-overhang-fail": 2,
-      "opening-buried": 8,
-      "zfight-m2": 33.2,
+      "opening-overhang": 0,
+      "opening-overhang-fail": 0,
+      "opening-buried": 2,
+      "zfight-m2": 7.7,
       "zfight-near-m2": 7.4,
-      "window-mismatch": 13,
-      "window-missing": 3,
+      "window-mismatch": 0,
+      "window-missing": 0,
       "window-misaligned": 0,
-      "window-rhythm-fail": 3,
-      "window-mismatch-spec": 48,
-      "window-missing-spec": 8
+      "window-rhythm-fail": 0,
+      "window-mismatch-spec": 0,
+      "window-missing-spec": 0
     },
     "hotel-jakarta": {
       "opening-floating": 0,
@@ -2246,6 +2284,22 @@
       "window-missing": 4,
       "window-misaligned": 0,
       "material-slot-untagged-permille": 0,
+      "window-rhythm-fail": 0,
+      "window-mismatch-spec": 0,
+      "window-missing-spec": 0
+    },
+    "max-euwe-centrum": {
+      "material-slot-untagged-permille": 0,
+      "opening-floating": 0,
+      "opening-floating-fail": 0,
+      "opening-overhang": 0,
+      "opening-overhang-fail": 0,
+      "opening-buried": 0,
+      "zfight-m2": 0.1,
+      "zfight-near-m2": 0,
+      "window-mismatch": 0,
+      "window-missing": 0,
+      "window-misaligned": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
       "window-missing-spec": 0
@@ -2803,6 +2857,7 @@
       "window-misaligned": 0
     },
     "opstandingskerk": {
+      "material-slot-untagged-permille": 0,
       "opening-floating": 0,
       "opening-floating-fail": 0,
       "opening-overhang": 0,
@@ -2810,11 +2865,11 @@
       "opening-buried": 0,
       "zfight-m2": 0,
       "zfight-near-m2": 0,
-      "window-mismatch": 37,
+      "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0,
-      "window-rhythm-fail": 1,
-      "window-mismatch-spec": 37,
+      "window-rhythm-fail": 0,
+      "window-mismatch-spec": 0,
       "window-missing-spec": 0
     },
     "orgelpark": {
@@ -2970,12 +3025,13 @@
       "window-misaligned": 0
     },
     "petrus-en-paulus-kerk": {
+      "material-slot-untagged-permille": 0,
       "opening-floating": 0,
       "opening-floating-fail": 0,
       "opening-overhang": 0,
       "opening-overhang-fail": 0,
-      "opening-buried": 4,
-      "zfight-m2": 3,
+      "opening-buried": 0,
+      "zfight-m2": 2.3,
       "zfight-near-m2": 18.9,
       "window-mismatch": 0,
       "window-missing": 0,
@@ -3164,16 +3220,20 @@
       "window-misaligned": 0
     },
     "rialto": {
+      "material-slot-untagged-permille": 0,
       "opening-floating": 3,
       "opening-floating-fail": 0,
-      "opening-overhang": 1,
-      "opening-overhang-fail": 1,
+      "opening-overhang": 0,
+      "opening-overhang-fail": 0,
       "opening-buried": 0,
-      "zfight-m2": 3.9,
+      "zfight-m2": 0,
       "zfight-near-m2": 0,
       "window-mismatch": 0,
       "window-missing": 0,
-      "window-misaligned": 0
+      "window-misaligned": 0,
+      "window-rhythm-fail": 0,
+      "window-mismatch-spec": 0,
+      "window-missing-spec": 0
     },
     "rijksmuseum": {
       "opening-floating": 0,
@@ -3670,17 +3730,17 @@
       "window-misaligned": 0
     },
     "valley": {
-      "opening-floating": 266,
+      "material-slot-untagged-permille": 0,
+      "opening-floating": 250,
       "opening-floating-fail": 0,
-      "opening-overhang": 7,
-      "opening-overhang-fail": 2,
+      "opening-overhang": 6,
+      "opening-overhang-fail": 1,
       "opening-buried": 22,
-      "zfight-m2": 18.5,
+      "zfight-m2": 18,
       "zfight-near-m2": 0,
       "window-mismatch": 30,
       "window-missing": 1,
       "window-misaligned": 0,
-      "material-slot-untagged-permille": 0,
       "window-rhythm-fail": 0,
       "window-mismatch-spec": 0,
       "window-missing-spec": 0
@@ -3804,6 +3864,22 @@
       "window-mismatch": 0,
       "window-missing": 0,
       "window-misaligned": 0
+    },
+    "voormalige-schouwburgpoort": {
+      "material-slot-untagged-permille": 0,
+      "opening-floating": 0,
+      "opening-floating-fail": 0,
+      "opening-overhang": 0,
+      "opening-overhang-fail": 0,
+      "opening-buried": 0,
+      "zfight-m2": 0,
+      "zfight-near-m2": 0.1,
+      "window-mismatch": 0,
+      "window-missing": 0,
+      "window-misaligned": 0,
+      "window-rhythm-fail": 0,
+      "window-mismatch-spec": 0,
+      "window-missing-spec": 0
     },
     "vredeskerk": {
       "opening-floating": 0,

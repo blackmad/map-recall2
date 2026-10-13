@@ -1,6 +1,16 @@
 {
   "description": "Model asset update dates, not historical building construction dates.",
   "models": {
+    "academie-theater-dans": {
+      "updatedAt": "2026-10-13T19:25:19.694Z",
+      "version": "1411874136611a3a",
+      "dateSource": "asset-update"
+    },
+    "academie-theater-dans.lod1": {
+      "updatedAt": "2026-10-13T19:30:13.158Z",
+      "version": "0dc98b1948162a60",
+      "dateSource": "asset-update"
+    },
     "adam-tower": {
       "updatedAt": "2026-10-03T23:34:10+02:00",
       "version": "b6bc30564fde16c9",
@@ -742,13 +752,13 @@
       "dateSource": "asset-update"
     },
     "felix-meritis": {
-      "updatedAt": "2026-10-13T13:04:33.029Z",
-      "version": "7a4836fe2ff5c3cf",
+      "updatedAt": "2026-10-13T19:27:09.913Z",
+      "version": "d128fa40815d1320",
       "dateSource": "asset-update"
     },
     "felix-meritis.lod1": {
-      "updatedAt": "2026-10-13T13:20:19.936Z",
-      "version": "854941d2c47a9f24",
+      "updatedAt": "2026-10-13T19:25:19.695Z",
+      "version": "fc138847b8c90c46",
       "dateSource": "asset-update"
     },
     "fire-station-anton": {
@@ -992,13 +1002,13 @@
       "dateSource": "asset-update"
     },
     "haparandaweg-2-4": {
-      "updatedAt": "2026-10-13T14:30:04.716Z",
-      "version": "90673fb9e2f51ce1",
+      "updatedAt": "2026-10-13T19:25:19.696Z",
+      "version": "a93042826f85b8a2",
       "dateSource": "asset-update"
     },
     "haparandaweg-2-4.lod1": {
-      "updatedAt": "2026-10-13T14:30:59.953Z",
-      "version": "64906ac471c5f521",
+      "updatedAt": "2026-10-13T19:25:19.697Z",
+      "version": "c76d021364e30a7a",
       "dateSource": "asset-update"
     },
     "haparandaweg-57": {
@@ -1042,13 +1052,13 @@
       "dateSource": "asset-update"
     },
     "haparandaweg-8-338": {
-      "updatedAt": "2026-10-13T12:50:18.197Z",
-      "version": "da9f5fecd5d2cec8",
+      "updatedAt": "2026-10-13T19:30:11.060Z",
+      "version": "2fe8cb2613c8fecd",
       "dateSource": "asset-update"
     },
     "haparandaweg-8-338.lod1": {
-      "updatedAt": "2026-10-13T12:50:18.197Z",
-      "version": "17be45b1ddd0f01e",
+      "updatedAt": "2026-10-13T19:30:12.969Z",
+      "version": "ebf032b78420b169",
       "dateSource": "asset-update"
     },
     "haparandaweg-870-900": {
@@ -1186,19 +1196,29 @@
       "version": "b9b211eabf05d627",
       "dateSource": "asset-update"
     },
+    "holocaust-namenmonument": {
+      "updatedAt": "2026-10-13T19:25:19.697Z",
+      "version": "ddea9d3aa42a5ad8",
+      "dateSource": "asset-update"
+    },
+    "holocaust-namenmonument.lod1": {
+      "updatedAt": "2026-10-13T19:25:19.698Z",
+      "version": "88df5ff9744c6be3",
+      "dateSource": "asset-update"
+    },
     "homomonument": {
       "updatedAt": "2026-10-04T10:58:02+02:00",
       "version": "42ddfb9e300078c0",
       "dateSource": "git-history"
     },
     "hoofdbureau-elandsgracht": {
-      "updatedAt": "2026-10-13T14:37:11.898Z",
-      "version": "aadf1d3a0dfbf858",
+      "updatedAt": "2026-10-13T19:25:19.699Z",
+      "version": "b0980c2e59b574fb",
       "dateSource": "asset-update"
     },
     "hoofdbureau-elandsgracht.lod1": {
-      "updatedAt": "2026-10-13T14:39:44.764Z",
-      "version": "2558009f161d6d0f",
+      "updatedAt": "2026-10-13T19:25:19.699Z",
+      "version": "afec3c67eb7bca2b",
       "dateSource": "asset-update"
     },
     "hortus-greenhouses": {
@@ -1212,13 +1232,13 @@
       "dateSource": "asset-update"
     },
     "hotel-de-l-europe": {
-      "updatedAt": "2026-10-13T08:59:51.289Z",
-      "version": "acdc894d4fd84547",
+      "updatedAt": "2026-10-13T19:25:19.701Z",
+      "version": "5c2e96291bc54893",
       "dateSource": "asset-update"
     },
     "hotel-de-l-europe.lod1": {
-      "updatedAt": "2026-10-13T10:56:57.096Z",
-      "version": "d60f33a2e98e5aba",
+      "updatedAt": "2026-10-13T19:25:19.702Z",
+      "version": "192c88a63b7aea59",
       "dateSource": "asset-update"
     },
     "hotel-jakarta": {
@@ -1389,6 +1409,16 @@
     "jewish-museum.lod1": {
       "updatedAt": "2026-10-13T14:30:59.850Z",
       "version": "709d43746082f19c",
+      "dateSource": "asset-update"
+    },
+    "jodenbreestraat-11": {
+      "updatedAt": "2026-10-13T19:28:26.635Z",
+      "version": "6c8879c04805bbcc",
+      "dateSource": "asset-update"
+    },
+    "jodenbreestraat-11.lod1": {
+      "updatedAt": "2026-10-13T19:30:13.167Z",
+      "version": "c81a62055f3830b3",
       "dateSource": "asset-update"
     },
     "kattenkabinet": {
@@ -1614,6 +1644,16 @@
     "magna-plaza.lod1": {
       "updatedAt": "2026-10-13T12:50:18.201Z",
       "version": "1bf3ef77285fa430",
+      "dateSource": "asset-update"
+    },
+    "max-euwe-centrum": {
+      "updatedAt": "2026-10-13T19:25:19.703Z",
+      "version": "9ad6641533f310c2",
+      "dateSource": "asset-update"
+    },
+    "max-euwe-centrum.lod1": {
+      "updatedAt": "2026-10-13T19:25:19.703Z",
+      "version": "3a72259613b678f6",
       "dateSource": "asset-update"
     },
     "mediamatic": {
@@ -2012,13 +2052,13 @@
       "dateSource": "asset-update"
     },
     "opstandingskerk": {
-      "updatedAt": "2026-10-13T09:53:39.487Z",
-      "version": "6a8a533200b8ad96",
+      "updatedAt": "2026-10-13T19:31:46.555Z",
+      "version": "8b74b85c47bfecdb",
       "dateSource": "asset-update"
     },
     "opstandingskerk.lod1": {
-      "updatedAt": "2026-10-13T10:49:08.208Z",
-      "version": "7017d07d58d53cd4",
+      "updatedAt": "2026-10-13T19:25:19.704Z",
+      "version": "10a1e1e7e2a00b98",
       "dateSource": "asset-update"
     },
     "orgelpark": {
@@ -2127,13 +2167,13 @@
       "dateSource": "asset-update"
     },
     "petrus-en-paulus-kerk": {
-      "updatedAt": "2026-10-13T14:30:43.112Z",
-      "version": "3b1df740845f6a42",
+      "updatedAt": "2026-10-13T19:25:19.705Z",
+      "version": "e845396407e19e33",
       "dateSource": "asset-update"
     },
     "petrus-en-paulus-kerk.lod1": {
-      "updatedAt": "2026-10-13T14:31:00.026Z",
-      "version": "e382bb8b39c70302",
+      "updatedAt": "2026-10-13T19:25:19.706Z",
+      "version": "4cccb7e119aa1684",
       "dateSource": "asset-update"
     },
     "petruskerk": {
@@ -2277,9 +2317,9 @@
       "dateSource": "asset-update"
     },
     "rialto": {
-      "updatedAt": "2026-10-04T00:35:10+02:00",
-      "version": "be9d5e860f1ae8b0",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-13T19:25:19.706Z",
+      "version": "956f5bc48609ca1a",
+      "dateSource": "asset-update"
     },
     "rijksmuseum": {
       "updatedAt": "2026-10-04T09:03:59+02:00",
@@ -2632,13 +2672,13 @@
       "dateSource": "asset-update"
     },
     "valley": {
-      "updatedAt": "2026-10-13T12:52:23.693Z",
-      "version": "2240d34322fcfb60",
+      "updatedAt": "2026-10-13T19:25:19.711Z",
+      "version": "bb854051eaaa72ac",
       "dateSource": "asset-update"
     },
     "valley.lod1": {
-      "updatedAt": "2026-10-13T12:50:18.214Z",
-      "version": "ca0feab54adce5a3",
+      "updatedAt": "2026-10-13T19:25:19.712Z",
+      "version": "ca8a4f918089ddbc",
       "dateSource": "asset-update"
     },
     "van-gendt-hallen": {
@@ -2692,8 +2732,8 @@
       "dateSource": "asset-update"
     },
     "vondelkerk.lod1": {
-      "updatedAt": "2026-10-13T15:41:07.778Z",
-      "version": "6eb89ab78e325d9c",
+      "updatedAt": "2026-10-13T15:44:17.261Z",
+      "version": "04a0a8638ae575b4",
       "dateSource": "asset-update"
     },
     "vondelpark-bandstand": {
@@ -2714,6 +2754,16 @@
     "vondeltuin": {
       "updatedAt": "2026-10-06T21:05:23.959Z",
       "version": "cc3f4c61eef67258",
+      "dateSource": "asset-update"
+    },
+    "voormalige-schouwburgpoort": {
+      "updatedAt": "2026-10-13T19:25:19.713Z",
+      "version": "8ca58ce3f25edaa3",
+      "dateSource": "asset-update"
+    },
+    "voormalige-schouwburgpoort.lod1": {
+      "updatedAt": "2026-10-13T19:25:19.713Z",
+      "version": "64057d50cbc2980b",
       "dateSource": "asset-update"
     },
     "vredeskerk": {
