@@ -62,7 +62,7 @@
       14
      ],
      "plan": "modelled",
-     "how": "block kit ribbon-windows system (intent walls[3])",
+     "how": "block kit ribbon-windows (intent walls[3]), four storeys as measured (ground ribbon 2.1-4.3 m, ribbons at 6.0, 9.7 and 13.3 m; it was five)",
      "seenIn": "b_20241216_0911_Track03_Sphere_00008"
     },
     {
@@ -75,21 +75,34 @@
      ],
      "plan": "modelled",
      "seenIn": "b_20241216_0911_Track03_Sphere_00008",
-     "how": "hoofdbureauHooks: POLITIE in 3x5 block letters (0.1 m pixels, 2.7 m wide) on the wall over the entrance canopy, centred on the entrance bay (no emblem)"
+     "how": "hoofdbureauHooks marnixFront: POLITIE in closed stroke letters 0.45 m tall, police blue, s 34.8-38.0 at 4.85-5.3 m, with the police emblem (blue shield, white flame) over the O; measured in hoofdbureau-elandsgracht-facades.json"
     },
     {
      "id": "e-entrance-canopy",
      "kind": "canopy",
-     "where": "flat canopy over the glazed entrance, right of centre",
+     "where": "white stone lintel band over the recessed glazed entrance and its side light, right of centre",
      "approxSizeM": [
       5,
       0.3
      ],
      "plan": "modelled",
-     "how": "hoofdbureauHooks entrance canopy (stone slab on one post)",
+     "how": "hoofdbureauHooks marnixFront: recessed glazed door pair s 34.3-38.3 (0.6 m deep), side light, white lintel band s 34.3-41.5 at 3.9-4.3 m, 0.25 m proud; the photo has a band, not a projecting canopy on a post (the old one stood on the wrong wall); measured in hoofdbureau-elandsgracht-facades.json",
+     "seenIn": "b_20241216_0911_Track03_Sphere_00008"
+    },
+    {
+     "id": "e-open-corner",
+     "kind": "colonnade",
+     "where": "open ground storey on round columns from s 41.5 to the Elandsgracht corner, continuing round it under the end wall (w16) and its return (w22)",
+     "approxSizeM": [
+      14.5,
+      4.4
+     ],
+     "plan": "modelled",
+     "how": "hoofdbureauHooks: a 2 m recess cut into the 3DBAG walls 233/72/167/190 up to the measured soffit (4.4 / 4.5 m), slab edge, white columns at s 46.1 and 53.9 here and four on w16; depth inferred; measured in hoofdbureau-elandsgracht-facades.json",
      "seenIn": "b_20241216_0911_Track03_Sphere_00008"
     }
-   ]
+   ],
+   "note": "Measured (rework 2026-10-13): hoofdbureau-elandsgracht-facades.json walls.w02-67."
   },
   {
    "tag": "w03-67",
@@ -140,9 +153,9 @@
       1,
       7
      ],
-     "plan": "open",
-     "seenIn": "TMX7316010203-000076_pano_0000_006599",
-     "note": "intent notes: not modelled"
+     "plan": "modelled",
+     "seenIn": "recording_2025-06-30_05-16-46_00546",
+     "how": "hoofdbureauHooks elandsgrachtWall: two rows of four round windows (0.6 m, stone ring, dark glass) at 6.2 and 10.0 m, s 39.7-42.1, kit ribbons stopped clear of the pier; measured in hoofdbureau-elandsgracht-facades.json (2025 view)"
     },
     {
      "id": "nw-vehicle-gate",
@@ -152,11 +165,12 @@
       5,
       4
      ],
-     "plan": "open",
+     "plan": "modelled",
      "seenIn": "TMX7316010203-000076_pano_0000_006599",
-     "note": "intent notes: not modelled"
+     "how": "hoofdbureauHooks elandsgrachtWall: 0.4 m recess s 0.2-4.3, 4 m tall, white bars on a 0.2 m pitch with a mid rail; measured in hoofdbureau-elandsgracht-facades.json"
     }
-   ]
+   ],
+   "note": "Measured (rework 2026-10-13): hoofdbureau-elandsgracht-facades.json walls.w05-337."
   },
   {
    "tag": "w06-337",
@@ -205,9 +219,9 @@
       35,
       0.6
      ],
-     "plan": "open",
+     "plan": "simplified",
      "seenIn": "recording_2025-07-03_10-31-52_00292",
-     "note": "intent notes: not modelled; one dark-brick relief strip per storey would read"
+     "how": "hoofdbureauHooks: a raised panel of alternate brick blocks (3 rows x 4, 6 cm proud, 1.6 x 0.9 m) between neighbouring windows of each row, on the photographed wing (intent walls[11]) only; the brick bond pattern itself is not modelled"
     },
     {
      "id": "se-barred-basement",
@@ -217,8 +231,9 @@
       1.4,
       1.2
      ],
-     "plan": "open",
-     "seenIn": "recording_2025-07-03_10-31-52_00292"
+     "plan": "simplified",
+     "seenIn": "recording_2025-07-03_10-31-52_00292",
+     "how": "hoofdbureauHooks: the wing's ground storey is blank brick (intent walls[11] ground blank); barred basement windows 1.2 m wide at 0.3-1.1 m with four bars under the lowest window row where the 3DBAG wall takes them"
     }
    ]
   },
@@ -260,7 +275,7 @@
      "plan": "simplified",
      "seenIn": "TMX7316010203-001979_pano_0001_000176",
      "note": "not identified in the sources found; intent notes: not modelled. Check the Beeldbank and the Krop catalogue",
-     "how": "hoofdbureauHooks: stone console at 11.3 m, u 3.9 on the 27 m quay wall, two blocky standing figures (legs, torso, head) 2.5 m tall; maker and attributes not identified"
+     "how": "hoofdbureauHooks quayFront: half-round stone console s 2.67-4.8 at 10.55-11.5 m (1 m deep), two standing figures 2.1 m tall, turned bodies with arms and heads; maker and attributes not identified; measured in hoofdbureau-elandsgracht-facades.json"
     },
     {
      "id": "sw-glazed-bay",
@@ -270,9 +285,9 @@
       5,
       8
      ],
-     "plan": "open",
+     "plan": "modelled",
      "seenIn": "TMX7316010203-001979_pano_0001_000176",
-     "note": "intent notes: not modelled"
+     "how": "hoofdbureauHooks quayFront: yellow-framed glazed opening s 5.5-10.9, 1.8-8.9 m, three columns by six rows; drawn flush (its projection over the quay is not modelled); measured in hoofdbureau-elandsgracht-facades.json"
     },
     {
      "id": "sw-yellow-frames",
@@ -283,10 +298,11 @@
       1
      ],
      "plan": "modelled",
-     "how": "bay grid with pink wall and gold frame palette (intent walls[2])",
+     "how": "hoofdbureauHooks quayFront: square windows 1.15 m on the measured 1.85 m pitch in three rows (11, 11, 7), low ribbon and top ribbon, gold frames on the pink wall (intent walls[2] blank); measured in hoofdbureau-elandsgracht-facades.json",
      "seenIn": "TMX7316010203-001979_pano_0001_000176"
     }
-   ]
+   ],
+   "note": "Measured (rework 2026-10-13): hoofdbureau-elandsgracht-facades.json walls.w09-247."
   },
   {
    "tag": "w10-157",
@@ -378,10 +394,12 @@
       2,
       1
      ],
-     "plan": "open",
-     "seenIn": "TMX7316010203-001967_pano_0000_001027"
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001967_pano_0000_001027",
+     "how": "hoofdbureauHooks towerEnd: four French windows s 6.25-7.8 at the measured heights, each on a half-round stone slab 2.45 m wide, 0.85 m deep (inferred), with a white rail 1 m high; the wall is blank brick (intent walls[16]); measured in hoofdbureau-elandsgracht-facades.json"
     }
-   ]
+   ],
+   "note": "Measured (rework 2026-10-13): hoofdbureau-elandsgracht-facades.json walls.w14-247."
   },
   {
    "tag": "w15-67",
@@ -405,7 +423,7 @@
       0.8
      ],
      "plan": "simplified",
-     "how": "blue plate on a frame bracket, no lettering",
+     "how": "hoofdbureauHooks cornerBlock: blue diamond plate on a stone bracket at the corner, turned to the street, at 5.3-6.1 m; no lettering",
      "seenIn": "TMX7316010203-001900_pano_0004_000544"
     },
     {
@@ -416,9 +434,9 @@
       13,
       3
      ],
-     "plan": "open",
+     "plan": "simplified",
      "seenIn": "TMX7316010203-001900_pano_0004_000544",
-     "note": "intent notes: not modelled; 3DBAG gives a flat top"
+     "how": "hoofdbureauHooks cornerBlock: two glazed storeys s 0.65-12.8 at 13.9-17.95 m cut into the wall (white spandrel 15.2-16.95, posts at the measured pitch), stone ledge at 13.7 m, white fascia, and a roof slab bowing 1.2 m out over the street in plan; the glazing itself is drawn flat on the wall plane; measured in hoofdbureau-elandsgracht-facades.json"
     },
     {
      "id": "ne-balcony",
@@ -428,10 +446,24 @@
       4,
       1.1
      ],
-     "plan": "open",
-     "seenIn": "TMX7316010203-001900_pano_0004_000544"
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-001900_pano_0004_000544",
+     "how": "hoofdbureauHooks cornerBlock: stone slab apron s 4.2-7.35 at 8.96-9.82 m, 1.2 m deep (inferred), white rail 1.17 m high on three sides, in front of the two-storey white window block; measured in hoofdbureau-elandsgracht-facades.json"
+    },
+    {
+     "id": "ne-ground-hall",
+     "kind": "colonnade",
+     "where": "glazed ground hall with the entrance stair, set back behind a round column under the corner pier",
+     "approxSizeM": [
+      8.3,
+      4.8
+     ],
+     "plan": "modelled",
+     "how": "hoofdbureauHooks cornerBlock: 1.2 m recess s 4.8-13.15 to 4.8 m with glass, transom, door pair and the white corner column at s 12.95; measured in hoofdbureau-elandsgracht-facades.json",
+     "seenIn": "b_20241216_0911_Track03_Sphere_00015"
     }
-   ]
+   ],
+   "note": "Measured (rework 2026-10-13): hoofdbureau-elandsgracht-facades.json walls.w15-67."
   },
   {
    "tag": "w16-337",
@@ -455,7 +487,7 @@
       5
      ],
      "plan": "modelled",
-     "how": "addEndWallRelief: shield with a pale and three saltires under an imperial crown, two extruded rampant lions; re-registered 2026-10-13 on the rectified 2022 pano: arms centre s 6.6, banner band 11.8-11.9 m with both curls, figures on 1.2 m consoles (heads 10.3 m), round windows at 7.2 m on a 2.26 m pitch, 5 m ground storey on four columns; left of the wall is plain brick",
+     "how": "hoofdbureauHooks endWall: shield with a pale and three saltires under an imperial crown, two extruded rampant lions; drawn in the 3DBAG wall's own frame since the rework, measured in hoofdbureau-elandsgracht-facades.json (2022 crop: arms centre s 6.9, lions 3.5-6.0 / 7.8-10.3 up to 15.4 m, banner band 11.33-12.25 m, figures on 0.6 m consoles 7.17-8.25 m at s 5.25/6.9/8.63, round windows at 6.5 m on s 1.5-12.25, columns at s 2.17/4.75/8.95/13.05 under a 4.5 m soffit)",
      "seenIn": "TMX7316010203-002553_pano_0000_001265",
      "note": "Wapen van Amsterdam with keizerskroon and two lions (nl.wikipedia Elandsgracht 117, Beeldhouwwerken)",
      "sheetBox": [
@@ -474,7 +506,7 @@
       2.5
      ],
      "plan": "modelled",
-     "how": "addEndWallRelief banner ribbon; re-registered 2026-10-13 on the rectified 2022 pano: arms centre s 6.6, banner band 11.8-11.9 m with both curls, figures on 1.2 m consoles (heads 10.3 m), round windows at 7.2 m on a 2.26 m pitch, 5 m ground storey on four columns; left of the wall is plain brick",
+     "how": "hoofdbureauHooks endWall banner ribbon; drawn in the 3DBAG wall's own frame since the rework, measured in hoofdbureau-elandsgracht-facades.json (2022 crop: arms centre s 6.9, lions 3.5-6.0 / 7.8-10.3 up to 15.4 m, banner band 11.33-12.25 m, figures on 0.6 m consoles 7.17-8.25 m at s 5.25/6.9/8.63, round windows at 6.5 m on s 1.5-12.25, columns at s 2.17/4.75/8.95/13.05 under a 4.5 m soffit)",
      "seenIn": "TMX7316010203-002553_pano_0000_001265",
      "sheetBox": [
       0.2,
@@ -508,7 +540,7 @@
       2.4
      ],
      "plan": "simplified",
-     "how": "turned robe/torso, sphere head and box arms on stone brackets; the attributes (boy and dragon, lion on a cog-ship shield, winged wheel) are not modelled; re-registered 2026-10-13 on the rectified 2022 pano: arms centre s 6.6, banner band 11.8-11.9 m with both curls, figures on 1.2 m consoles (heads 10.3 m), round windows at 7.2 m on a 2.26 m pitch, 5 m ground storey on four columns; left of the wall is plain brick",
+     "how": "turned robe/torso, sphere head and box arms on stone brackets; drawn in the 3DBAG wall's own frame since the rework, measured in hoofdbureau-elandsgracht-facades.json (2022 crop: arms centre s 6.9, lions 3.5-6.0 / 7.8-10.3 up to 15.4 m, banner band 11.33-12.25 m, figures on 0.6 m consoles 7.17-8.25 m at s 5.25/6.9/8.63, round windows at 6.5 m on s 1.5-12.25, columns at s 2.17/4.75/8.95/13.05 under a 4.5 m soffit)",
      "seenIn": "TMX7316010203-002553_pano_0000_001265",
      "note": "Hildo Krop: De kinderpolitie, Het gezag, De verkeerspolitie (travertine; replicas by Ton Mooy 1996/97; nl.wikipedia Elandsgracht 117)",
      "sheetBox": [
@@ -527,7 +559,7 @@
       0.7
      ],
      "plan": "modelled",
-     "how": "addEndWallRelief round windows; re-registered 2026-10-13 on the rectified 2022 pano: arms centre s 6.6, banner band 11.8-11.9 m with both curls, figures on 1.2 m consoles (heads 10.3 m), round windows at 7.2 m on a 2.26 m pitch, 5 m ground storey on four columns; left of the wall is plain brick",
+     "how": "hoofdbureauHooks endWall round windows; drawn in the 3DBAG wall's own frame since the rework, measured in hoofdbureau-elandsgracht-facades.json (2022 crop: arms centre s 6.9, lions 3.5-6.0 / 7.8-10.3 up to 15.4 m, banner band 11.33-12.25 m, figures on 0.6 m consoles 7.17-8.25 m at s 5.25/6.9/8.63, round windows at 6.5 m on s 1.5-12.25, columns at s 2.17/4.75/8.95/13.05 under a 4.5 m soffit)",
      "seenIn": "TMX7316010203-002553_pano_0000_001265",
      "sheetBox": [
       0.22,
@@ -545,7 +577,7 @@
       3.5
      ],
      "plan": "modelled",
-     "how": "addEndWallRelief recess, lintel and columns; re-registered 2026-10-13 on the rectified 2022 pano: arms centre s 6.6, banner band 11.8-11.9 m with both curls, figures on 1.2 m consoles (heads 10.3 m), round windows at 7.2 m on a 2.26 m pitch, 5 m ground storey on four columns; left of the wall is plain brick",
+     "how": "hoofdbureauHooks endWall open ground storey cut 2 m deep into the wall, slab edge and four white columns; drawn in the 3DBAG wall's own frame since the rework, measured in hoofdbureau-elandsgracht-facades.json (2022 crop: arms centre s 6.9, lions 3.5-6.0 / 7.8-10.3 up to 15.4 m, banner band 11.33-12.25 m, figures on 0.6 m consoles 7.17-8.25 m at s 5.25/6.9/8.63, round windows at 6.5 m on s 1.5-12.25, columns at s 2.17/4.75/8.95/13.05 under a 4.5 m soffit)",
      "seenIn": "TMX7316010203-002553_pano_0000_001265",
      "sheetBox": [
       0.18,
@@ -555,7 +587,7 @@
      ]
     }
    ],
-   "note": "The wall the stock all-walls.ts (--min-len=14, --max=8) and review-sheet (--walls=6) never showed: 13.9 m. The 2020 second view is clearer of the tree. review-sheet --inventory (2026-10-13): in the photo the left of this wall is blank brick and the arms sit about one storey higher and larger than the model's; the model wraps four ribbon windows round the left 5 m and adds a raised block on top. For the builder lane."
+   "note": "Measured on the rectified 2022 crop with the metre grid (elevation-grid.ts); the relief is drawn in the 3DBAG wall's own frame. Left of the wall is plain brick."
   },
   {
    "tag": "w17-67",
@@ -621,8 +653,9 @@
       6,
       7
      ],
-     "plan": "open",
-     "seenIn": "TMX7316010203-000199_pano_0002_000236"
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000199_pano_0002_000236",
+     "how": "hoofdbureauHooks singelBays: dark steel body s 0.45-8.2, 4.1-12.5 m, 0.6 m out (inferred), three glazed bands with mullions (intent walls[17] blank); measured in hoofdbureau-elandsgracht-facades.json"
     },
     {
      "id": "sw-round-window",
@@ -632,10 +665,15 @@
       1,
       1
      ],
-     "plan": "open",
-     "seenIn": "TMX7316010203-000199_pano_0002_000236"
+     "plan": "skipped",
+     "seenIn": "TMX7316010203-000199_pano_0002_000236",
+     "skip": {
+      "reason": "not-visible",
+      "note": "in the 2017 aimed view it stands just right of the bay, outside this wall's rectified crop (the bay fills the whole 8.7 m wall), and no other crop shows it: its wall and height are unknown"
+     }
     }
-   ]
+   ],
+   "note": "Measured (rework 2026-10-13): hoofdbureau-elandsgracht-facades.json walls.w20-247."
   },
   {
    "tag": "w21-67",
@@ -672,9 +710,9 @@
       2.5,
       2
      ],
-     "plan": "open",
+     "plan": "modelled",
      "seenIn": "TMX7316010203-000705_pano_0000_002623",
-     "note": "text not legible in the 2018 crop; check the 2024 second view"
+     "how": "not lettering: it is the left curl of the w16 banner relief seen obliquely from the south-west (2018 and 2024 crops); modelled as part of n-banner"
     },
     {
      "id": "w-pier-portholes",
@@ -684,10 +722,12 @@
       0.6,
       5
      ],
-     "plan": "open",
-     "seenIn": "TMX7316010203-000705_pano_0000_002623"
+     "plan": "modelled",
+     "seenIn": "TMX7316010203-000705_pano_0000_002623",
+     "how": "not a column of windows on a pier: it is the w16 row of six round windows seen edge-on from the south-west; modelled as n-round-windows"
     }
-   ]
+   ],
+   "note": "Measured (rework 2026-10-13): hoofdbureau-elandsgracht-facades.json walls.w22-246."
   },
   {
    "tag": "w23-248",
@@ -710,10 +750,12 @@
       7,
       5
      ],
-     "plan": "open",
-     "seenIn": "TMX7316010203-000199_pano_0002_000244"
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-000199_pano_0002_000244",
+     "how": "hoofdbureauHooks singelBays: dark stone frame (0.4 m border, 0.35 m proud) and a gold-framed glazed bay up to the 11.56 m top of the lower 3DBAG face, plus the low ribbon under it; the top 1.3 m of the frame on the overhanging upper face is not drawn; measured in hoofdbureau-elandsgracht-facades.json"
     }
-   ]
+   ],
+   "note": "Measured (rework 2026-10-13): hoofdbureau-elandsgracht-facades.json walls.w23-248."
   },
   {
    "tag": "w24-336",
@@ -820,8 +862,9 @@
       8,
       6
      ],
-     "plan": "open",
-     "seenIn": "TMX7316010203-001979_pano_0001_000178"
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001979_pano_0001_000178",
+     "how": "hoofdbureauHooks singelBays: gold-framed glazed opening across the 4.5 m wall at 2.5-9.5 m, 3 x 4 lights; heights read from the 42 deg oblique 2021 view, not measured"
     }
    ]
   }
