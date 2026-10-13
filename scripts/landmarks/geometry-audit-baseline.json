@@ -1396,16 +1396,20 @@
       "window-misaligned": 0
     },
     "haparandaweg-2-4": {
+      "material-slot-untagged-permille": 0,
       "opening-floating": 0,
       "opening-floating-fail": 0,
-      "opening-overhang": 36,
-      "opening-overhang-fail": 34,
-      "opening-buried": 1,
-      "zfight-m2": 19.2,
-      "zfight-near-m2": 2.8,
+      "opening-overhang": 35,
+      "opening-overhang-fail": 33,
+      "opening-buried": 0,
+      "zfight-m2": 19,
+      "zfight-near-m2": 2.7,
       "window-mismatch": 5,
-      "window-missing": 4,
-      "window-misaligned": 0
+      "window-missing": 1,
+      "window-misaligned": 0,
+      "window-rhythm-fail": 0,
+      "window-mismatch-spec": 0,
+      "window-missing-spec": 0
     },
     "haparandaweg-57": {
       "opening-floating": 6,
