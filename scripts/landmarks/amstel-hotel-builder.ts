@@ -59,8 +59,8 @@ export function buildAmstelHotel(_id: string, _w: number, _d: number, b: Buildin
  }
  function window(x: number, y: number, z: number, w: number, h: number, rot = 0, arch = false) {
   const nx = Math.sin(rot), nz = Math.cos(rot);
-  plane(x, y, z, w + .30, h + .22, 'stone', rot); plane(x + nx * .025, y + .10, z + nz * .025, w, h, 'dark', rot); plane(x + nx * .05, y + .16, z + nz * .05, w - .16, h - .13, 'glass', rot);
-  b.box(x + nx * .075, y + .12, z + nz * .075, .075, h, .085, 'white', rot); b.box(x + nx * .075, y + h * .71, z + nz * .075, w, .075, .085, 'white', rot);
+  plane(x, y, z, w + .30, h + .22, 'stone', rot); plane(x + nx * .05, y + .10, z + nz * .05, w, h, 'dark', rot); plane(x + nx * .10, y + .16, z + nz * .10, w - .16, h - .13, 'glass', rot); // layers 5 cm apart: 2.5 cm bled the dark reveal through the glass at 900 m+
+  b.box(x + nx * .14, y + .12, z + nz * .14, .075, h, .085, 'white', rot); b.box(x + nx * .14, y + h * .71, z + nz * .14, w, .075, .085, 'white', rot);
   b.box(x, y - .14, z, w + .46, .17, .35, 'stone', rot);
   if (arch) { const s = new T.Shape(), radius = w / 2 + .17; s.moveTo(-radius, 0); for (let i = 0; i <= 12; i++) { const a = Math.PI - i * Math.PI / 12; s.lineTo(radius * Math.cos(a), radius * Math.sin(a)); } s.closePath(); b.add(new T.ShapeGeometry(s), 'stone', x, y + h + .08, z, rot); }
  }
@@ -84,7 +84,7 @@ export function buildAmstelHotel(_id: string, _w: number, _d: number, b: Buildin
  }
  b.clock(1, 28.1, 4.08);
  // End facades keep the same four-floor masonry/window hierarchy.
- for (const side of [-1, 1]) for (const z of [-9.2, -5.1, -.9, 3.1]) { const x = side < 0 ? -39.21 : 39.21, rot = side < 0 ? -Math.PI / 2 : Math.PI / 2; for (const y of [4.55, 10.18, 14.20, 19.03]) window(x, y, z, 1.4, 2.8, rot, y < 5); }
+ for (const side of [-1, 1]) for (const z of [-9.2, -5.1, -.9, 3.1]) { const x = side < 0 ? -39.24 : 39.24, rot = side < 0 ? -Math.PI / 2 : Math.PI / 2; for (const y of [4.55, 10.18, 14.20, 19.03]) window(x, y, z, 1.4, 2.8, rot, y < 5); }
  for (const side of [-1, 1]) {
   const z = side < 0 ? -12.95 : 6.3, rot = side < 0 ? Math.PI : 0;
   for (const [x, width, top] of [[-34.1, 6.0, 28.35], [1.0, 6.2, 29.54], [35.5, 5.8, 28.35]]) {

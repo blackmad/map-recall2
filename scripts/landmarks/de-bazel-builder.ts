@@ -38,18 +38,18 @@ export function buildDeBazel(_w: number, _d: number, b: BuildingTools & {mark?: 
       const segs: [number, number][] = [];
       for (const c of cuts) { if (c[0] > a) segs.push([a, c[0]]); a = Math.max(a, c[1]); }
       if (a < t1) segs.push([a, t1]);
-      for (const [s0, s1] of segs) if (s1 - s0 > 0.3) slab(b, w.f, (s0 + s1) / 2, y, s1 - s0, 0.32, 0.03, 'sandstone');
+      for (const [s0, s1] of segs) if (s1 - s0 > 0.3) slab(b, w.f, (s0 + s1) / 2, y, s1 - s0, 0.32, 0.05, 'sandstone');
     }
   };
 
   const window1 = (w: W, t: number, y: number, ww: number, h: number) => {
     if (t - ww / 2 < 0.15 || t + ww / 2 > w.len - 0.15) return false;
     if (Math.min(topOf(w, t - ww / 2), topOf(w, t + ww / 2)) < y + h + 0.25) return false;
-    if (ww > 0.5 && !process.env.NOSILL) slab(b, w.f, t, y - 0.12, ww + 0.3, 0.14, 0.07, 'sandstone');
-    slab(b, w.f, t, y, ww + 0.14, h + 0.1, 0.07, 'frame', -0.04);              // reveal frame (front 3 cm proud of the wall plane, never coplanar with it)
-    slab(b, w.f, t, y + 0.06, ww - 0.04, h - 0.04, 0.09, 'glass', -0.04);
-    if (ww > 0.8) slab(b, w.f, t, y + 0.06, 0.05, h - 0.04, 0.12, 'frame');
-    if (ww > 0.8) slab(b, w.f, t, y + h * 0.62, ww - 0.04, 0.05, 0.12, 'frame');
+    if (ww > 0.5 && !process.env.NOSILL) slab(b, w.f, t, y - 0.12, ww + 0.3, 0.14, 0.1, 'sandstone');
+    slab(b, w.f, t, y, ww + 0.14, h + 0.1, 0.09, 'frame', -0.04);              // reveal frame: front 5 cm proud of the wall plane, glass front 10 cm (z-fight clearance, >= 4.5 cm between layers)
+    slab(b, w.f, t, y + 0.06, ww - 0.04, h - 0.04, 0.14, 'glass', -0.04);
+    if (ww > 0.8) slab(b, w.f, t, y + 0.06, 0.05, h - 0.04, 0.16, 'frame');
+    if (ww > 0.8) slab(b, w.f, t, y + h * 0.62, ww - 0.04, 0.05, 0.16, 'frame');
     return true;
   };
 
@@ -73,7 +73,7 @@ export function buildDeBazel(_w: number, _d: number, b: BuildingTools & {mark?: 
     }
     if (g[0] > 80 || g.length < 3 || process.env.NOBAND) continue;
     const t0 = g[0], t1 = g[g.length - 1];
-    for (const y of ROWS_E.slice(1)) slab(b, E.f, (t0 + t1) / 2, y - 1.15, t1 - t0 + 1.2, 0.8, 0.07, 'ochre');   // relief panel band under the windows
+    for (const y of ROWS_E.slice(1)) slab(b, E.f, (t0 + t1) / 2, y - 1.15, t1 - t0 + 1.2, 0.8, 0.09, 'ochre');   // relief panel band under the windows
   }
   for (const t of slits) for (const y of ROWS_E) window1(E, t, y, 0.35, 2.3);
   for (const t of [14.4, 15.75, 17.1, 18.4]) window1(E, t, 21.6, 0.95, 1.5);

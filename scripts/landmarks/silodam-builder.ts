@@ -2,7 +2,8 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import data from './silodam-footprints.json';
 type Colour=Parameters<BuildingTools['add']>[1];
-/** Original native-scale collage, rebuilt from MVRDV exterior photographs.
+/** Layers stand >= 4 cm apart (patch .05, window frame .10, glass .15, strip glass .13, bars from .20 up): 2-3 cm bled the white wall through glass at 900 m+.
+ * Original native-scale collage, rebuilt from MVRDV exterior photographs.
  * The imported SketchUp thumbnail is a reference only; no model is imported. */
 export function buildSilodam(_w:number,_d:number,{add,box}:BuildingTools){
  const a=data.authorHeadingDegrees*Math.PI/180;
@@ -17,10 +18,10 @@ export function buildSilodam(_w:number,_d:number,{add,box}:BuildingTools){
  function elevation(x:number,z:number,angle:number){
   const tx=Math.cos(angle),tz=-Math.sin(angle),nx=Math.sin(angle),nz=Math.cos(angle);
   const p=(u:number,off=0)=>({x:x+u*tx+nx*off,z:z+u*tz+nz*off});
-  function panel(u:number,y:number,w:number,h:number,c:Colour,off=.07){const q=p(u,off);add(new T.PlaneGeometry(w,h),c,q.x,y+h/2,q.z,angle);}
+  function panel(u:number,y:number,w:number,h:number,c:Colour,off=.05){const q=p(u,off);add(new T.PlaneGeometry(w,h),c,q.x,y+h/2,q.z,angle);}
   function bar(u:number,y:number,w:number,h:number,c:Colour='white',off=.14){const q=p(u,off);box(q.x,y,q.z,w,h,.13,c,angle);}
-  function window(u:number,y:number,w:number,h:number,double=false,frame:Colour='white'){panel(u,y-.10,w+.20,h+.20,frame,.12);panel(u,y,w,h,'glass',.15);bar(u,y,.075,h,frame,.22);if(double)bar(u,y+h*.50,w,.075,frame,.23);bar(u,y+.85,w,.045,'frame',.25);}
-  function strip(l:number,r:number,y:number,h:number,frame:Colour='dark',railing=false){panel((l+r)/2,y,r-l,h,'glass',.13);bar((l+r)/2,y-.08,r-l,.13,frame,.21);bar((l+r)/2,y+h-.04,r-l,.13,frame,.21);for(let u=l;u<r+.01;u+=1.64)bar(u,y,.085,h,frame,.23);if(railing){bar((l+r)/2,y+.93,r-l,.065,'frame',.44);for(let u=l;u<r;u+=1.64)bar(u,y,.045,.97,'frame',.44);}}
+  function window(u:number,y:number,w:number,h:number,double=false,frame:Colour='white'){panel(u,y-.10,w+.20,h+.20,frame,.10);panel(u,y,w,h,'glass',.15);bar(u,y,.075,h,frame,.22);if(double)bar(u,y+h*.50,w,.075,frame,.27);bar(u,y+.85,w,.045,'frame',.25);}
+  function strip(l:number,r:number,y:number,h:number,frame:Colour='dark',railing=false){panel((l+r)/2,y,r-l,h,'glass',.13);bar((l+r)/2,y-.08,r-l,.13,frame,.21);bar((l+r)/2,y+h-.04,r-l,.13,frame,.21);for(let u=l;u<r+.01;u+=1.64)bar(u,y,.085,h,frame,.27);if(railing){bar((l+r)/2,y+.93,r-l,.065,'frame',.44);for(let u=l;u<r;u+=1.64)bar(u,y,.045,.97,'frame',.44);}}
   function patch(l:number,r:number,y:number,h:number,c:Colour,mode:'pair'|'tall'|'gallery'|'grid'|'metal'='pair'){
    panel((l+r)/2,y,r-l,h,c);
    if(mode==='metal'){for(let u=l+.20;u<r;u+=.35)panel(u,y,.035,h,c,.15);return;}
@@ -28,7 +29,7 @@ export function buildSilodam(_w:number,_d:number,{add,box}:BuildingTools){
    if(mode==='grid'){strip(l+.08,r-.08,y+.12,h-.24,'white');for(let v=y+1.35;v<y+h;v+=1.35)bar((l+r)/2,v,r-l,.08);return;}
    const step=mode==='tall'?4.0:4.25,rows=mode==='tall'?5.40:2.70,winHeight=mode==='tall'?4.52:Math.min(1.76,h-.70);
    for(let v=y+.55;v+winHeight<y+h+.02;v+=rows)for(let u=l+step/2;u<r-step*.30;u+=step)window(u,v,mode==='tall'?3.32:2.48,winHeight,mode==='tall');
-   if(c==='frame'||c==='stone')for(let v=y+.20;v<y+h;v+=.31)panel((l+r)/2,v,r-l,.025,'white',.085);
+   if(c==='frame'||c==='stone')for(let v=y+.20;v<y+h;v+=.31)panel((l+r)/2,v,r-l,.025,'white',.10);
   }
   return{patch,window,strip,bar,panel};
  }
@@ -49,7 +50,7 @@ export function buildSilodam(_w:number,_d:number,{add,box}:BuildingTools){
  east.patch(16.4,32.75,2,3.15,'gold','metal');east.strip(17.2,31.8,2.65,1.90,'dark');east.patch(16.4,32.75,5.15,8.15,'white','grid');east.patch(16.4,32.75,13.3,8.05,'red','gallery');east.patch(16.4,32.75,21.35,5.4,'dark','gallery');east.patch(16.4,32.75,26.75,2.25,'frame');
  // Both short ends retain the characteristic orange base, white lower glass,
  // corrugated middle and two red continuous window bands (not random floors).
- for(const [x,angle]of [[32.72,Math.PI/2],[-32.80,-Math.PI/2]]){const f=elevation(x,10.0,angle);f.patch(-10.0,10.0,2,3.15,'gold','metal');for(const u of [-5.5,5.5])f.window(u,2.65,4.2,1.9,false,'dark');f.patch(-10,10,5.15,2.7,'white');f.patch(-10,10,7.85,2.7,'white','grid');f.patch(-10,10,10.55,5.4,'white','tall');f.patch(-10,10,15.95,5.4,'frame');f.patch(-10,10,21.35,5.4,'red','gallery');f.patch(-10,10,26.75,2.25,'stone');}
+ for(const [x,angle]of [[32.72,Math.PI/2],[-32.85,-Math.PI/2]]){const f=elevation(x,10.0,angle);f.patch(-10.0,10.0,2,3.15,'gold','metal');for(const u of [-5.5,5.5])f.window(u,2.65,4.2,1.9,false,'dark');f.patch(-10,10,5.15,2.7,'white');f.patch(-10,10,7.85,2.7,'white','grid');f.patch(-10,10,10.55,5.4,'white','tall');f.patch(-10,10,15.95,5.4,'frame');f.patch(-10,10,21.35,5.4,'red','gallery');f.patch(-10,10,26.75,2.25,'stone');}
  // Original piles and public office/balcony stand within their mapped parts.
  for(let x=-31.8;x<32.8;x+=5.4)for(const z of [1.0,19.0])box(x,0,z,.62,2,.62,'stone');
  for(let x=1.3;x<32.8;x+=5.5)for(const z of [-19.2,-1.0])box(x,0,z,.46,3,.46,'frame');
