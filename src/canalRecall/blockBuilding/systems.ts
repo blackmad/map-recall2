@@ -46,6 +46,8 @@ export interface SystemFit {
   sills?: boolean;
   /** false = no frame ring around the glass (dark frames that read as glass; saves triangles); glazing bars stay */
   frames?: boolean;
+  /** true = glazing bars 3.5 cm proud of the glass (clears the z-fight audit's under-3 cm band) */
+  deepBars?: boolean;
 }
 
 /** Arch params for a head of this kind with the group's band (brick bands are drawn in the wall slot). */
@@ -94,11 +96,11 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
   switch (name) {
     case 'brick-bay-grid':
       // Narrow bays (canal-house rhythm, < 2 m) take proportionally wider windows than civic 3 m bays.
-      typical = { kind: 'punched', win: { w: f.pitchM < 2 ? 0.66 : 0.48, h: 0.6, sill: 0.85, frame: s.frame, glass: s.glass, sillSlot: f.sills === false ? null : s.stone, sillH: 0.08, sillOut: 0.1, frameW: f.frames === false ? 0 : 0.07, ...g, ...archFor(f.arches?.windows, f) } };
+      typical = { kind: 'punched', win: { w: f.pitchM < 2 ? 0.66 : 0.48, h: 0.6, sill: 0.85, frame: s.frame, glass: s.glass, sillSlot: f.sills === false ? null : s.stone, sillH: 0.08, sillOut: 0.1, frameW: f.frames === false ? 0 : 0.07, ...(f.deepBars ? {barD: 0.035} : {}), ...g, ...archFor(f.arches?.windows, f) } };
       break;
     case 'ribbon-windows':
       // One opening per bay per storey with a slim pier between bays: reads as a continuous band of glazing.
-      typical = { kind: 'ribbon', pier: 0.18, win: { h: 0.56, sill: 0.9, mull: 1, frame: s.frame, glass: s.glass, frameW: 0.06, ...g } };
+      typical = { kind: 'ribbon', pier: 0.18, win: { h: 0.56, sill: 0.9, mull: 1, frame: s.frame, glass: s.glass, frameW: 0.06, ...(f.deepBars ? {barD: 0.035} : {}), ...g } };
       break;
     case 'curtain-wall':
       // Nearly full cells: the wall left between openings is the mullion/transom grid (the group's curtain slot).

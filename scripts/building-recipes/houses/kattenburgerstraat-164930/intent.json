@@ -1,0 +1,87 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "kattenburgerstraat-164930",
+ "pandId": "0363100012164930",
+ "address": "Kattenburgerstraat 206-266, Amsterdam (Kattenburg): 1976 brown concrete-and-brick gallery-access housing slab",
+ "sources": [
+  {
+   "id": "pano-2025-01-30-nw",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250130_0915_Track06_Sphere_00064/",
+   "image": "staging/pand-reference-walls/0363100012164930/w02-315.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2019-05-21-se",
+   "kind": "street-panorama",
+   "capturedAt": "2019-05-21",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001195_pano_0000_003797/",
+   "image": "staging/pand-reference-walls/0363100012164930/w05-135.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    241,
+    97,
+    927,
+    392,
+    932,
+    7,
+    36,
+    297,
+    298
+   ],
+   "system": "ribbon-windows",
+   "storeys": 4,
+   "baysPerStorey": 12,
+   "deepBars": true,
+   "ground": "blank",
+   "windows": "low",
+   "palette": {
+    "brick": "dark-brown",
+    "frame": "#2f3236",
+    "stone": "#6d6258"
+   }
+  },
+  {
+   "wallSurfaces": [
+    91,
+    562,
+    215,
+    342,
+    242,
+    318
+   ],
+   "system": "ribbon-windows",
+   "storeys": 4,
+   "baysPerStorey": 12,
+   "deepBars": true,
+   "ground": "blank",
+   "windows": "low",
+   "palette": {
+    "brick": "dark-brown",
+    "frame": "#2f3236",
+    "stone": "#6d6258"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "dark-brown",
+  "frame": "#2f3236",
+  "door": "#4a7a3a",
+  "stone": "grey-painted"
+ },
+ "notes": [
+  "Kattenburgerstraat 206-266 (BAG), built 1976: a four-level brown concrete-and-brick gallery-access housing slab, two parallel ranges with a stepped 19 m top storey. Both long fronts read the same in the 2025-01-30 (NW, w02-315) and 2019-05-21 (SE, w05-135) panoramas: a brown brick base with green doors, then three levels of deep access galleries (concrete slab edge, dark railing, recessed continuous glazing) under a ribbon-glazed top storey.",
+  "Modelled as ribbon-windows (windows: low, 12 bays per storey, 3.5 cm proud bars) on both long fronts; the ground storey is blank brick. Simplified: the galleries are drawn as the recessed ribbon bands, not as slabs with railings. Not modelled: the green ground-floor doors, the gallery stair cores, the wavy underside of the SE gallery slabs, shop signs on the corner units. Courtyard and gable walls have no usable photograph and stay blank.",
+  "Gate note: ribbon mullions at the default 1.5 cm sit in the audit's z-fight band; this recipe uses the new `deepBars` group option (3.5 cm closed bars)."
+ ]
+}

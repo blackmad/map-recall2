@@ -1,0 +1,88 @@
+{
+ "schemaVersion": 1,
+ "id": "kattenburgerstraat-164930",
+ "pand": "0363100012164930",
+ "signature": [
+  "gallery-bands"
+ ],
+ "walls": [
+  {
+   "tag": "w02-315",
+   "bearing": 315,
+   "lengthM": 81.9,
+   "evidence": "photo",
+   "panoId": "b_20250130_0915_Track06_Sphere_00064",
+   "capturedAt": "2025-01-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "gallery-bands",
+     "kind": "window-shape",
+     "where": "NW front, three upper levels",
+     "approxSizeM": [
+      80,
+      10
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250130_0915_Track06_Sphere_00064",
+     "how": "recessed continuous ribbon glazing per storey with 12 bays; slabs and railings not drawn"
+    },
+    {
+     "id": "green-doors",
+     "kind": "other",
+     "where": "NW ground floor, along the base",
+     "approxSizeM": [
+      1.0,
+      2.2
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250130_0915_Track06_Sphere_00064",
+     "skip": {
+      "reason": "too-small",
+      "note": "dozens of 1 m doors in a brick base; the ground storey is drawn blank"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-135",
+   "bearing": 135,
+   "lengthM": 61.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001195_pano_0000_003797",
+   "capturedAt": "2019-05-21",
+   "checked": true,
+   "items": [
+    {
+     "id": "curved-gallery-slabs",
+     "kind": "balcony-ironwork",
+     "where": "SE front, gallery undersides",
+     "approxSizeM": [
+      60,
+      1.0
+     ],
+     "plan": "simplified",
+     "seenIn": "TMX7316010203-001195_pano_0000_003797",
+     "how": "the same recessed ribbon bands; the wavy slab undersides are not drawn"
+    }
+   ]
+  },
+  {
+   "tag": "w01-315",
+   "bearing": 315,
+   "lengthM": 83.9,
+   "evidence": "photo",
+   "panoId": "recording_2024-10-23_12-42-53_03347",
+   "capturedAt": "2024-10-23",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
