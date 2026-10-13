@@ -51,8 +51,10 @@ test('variants: one program per (lit, kind, uv, highlight); side does not split 
     for (const uv of ['uv', 'box'] as const) all.push({ lit, kind: 'slot', uv, highlight });
   }
   assert.equal(new Set(all.map(variantKey)).size, all.length);
-  assert.deepEqual(Object.keys(variantDefines({ lit: true, kind: 'slot', uv: 'box', highlight: true })).sort(), ['CITY_BOX_UV', 'CITY_HIGHLIGHT', 'CITY_SLOT', 'CITY_SLOT_COUNT']);
-  assert.deepEqual(Object.keys(variantDefines({ lit: false, kind: 'chunk' })), ['CITY_SLOT_COUNT']);
+  // HL_* defines follow the page's highlight style (look/highlight.ts; default a adds HL_KEEP), not the variant.
+  const own = (v: CityVariant) => Object.keys(variantDefines(v)).filter(k => !k.startsWith('HL_')).sort();
+  assert.deepEqual(own({ lit: true, kind: 'slot', uv: 'box', highlight: true }), ['CITY_BOX_UV', 'CITY_HIGHLIGHT', 'CITY_SLOT', 'CITY_SLOT_COUNT']);
+  assert.deepEqual(own({ lit: false, kind: 'chunk' }), ['CITY_SLOT_COUNT']);
 });
 
 test('dress: a legacy landmark mesh (no UVs, untagged "brick") takes the brick slot, box UVs and attributes', () => {

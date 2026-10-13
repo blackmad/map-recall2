@@ -15,11 +15,12 @@ const SPOTS: Spot[] = [
   { name: 'westerkerk', landmarkId: 'extract_landmarks_1692085215', centre: [4.8838960, 52.3744999], standDeg: 140, standM: 72 },
   { name: 'dam-royal-palace', landmarkId: 'extract_landmarks_342809743', centre: [4.891409, 52.373196], standDeg: 345, standM: 105 },
 ];
+// The yellow under review: `?highlight=yellow` (the default highlight is the outline since 2026-10-13, highlight.spec.ts).
 const FLAGS = [
-  { name: 'default', query: '' },
-  { name: 'shared-frame', query: '?sharedFrame=1' },
-  { name: 'citylook', query: '?cityLook=1' },
-  { name: 'citylook-shared-frame', query: '?cityLook=1&sharedFrame=1' },
+  { name: 'default', query: '?highlight=yellow' },
+  { name: 'shared-frame', query: '?highlight=yellow&sharedFrame=1' },
+  { name: 'citylook', query: '?highlight=yellow&cityLook=1' },
+  { name: 'citylook-shared-frame', query: '?highlight=yellow&cityLook=1&sharedFrame=1' },
 ];
 const OUT = process.env.HIGHLIGHT_OUT ?? 'artifacts/citylook-review/highlight';
 const only = process.env.HIGHLIGHT_FLAGS?.split(',').filter(Boolean);

@@ -7,12 +7,14 @@ import {
 import { HighlightMarker } from '../../src/canalRecall/look/highlightMarker';
 
 /**
- * The landmark highlight (`?highlight=a|b|c`, src/canalRecall/look/highlight.ts) on a deterministic canal row:
- * the real pass materials, material variants and ground ring / beacon, outside MapLibre. One house is the
- * destination; the card sits at the bottom, compact, as in the game. The game itself is exercised by
+ * The landmark highlight (default a; `?highlight=yellow|b|c`, src/canalRecall/look/highlight.ts) on a deterministic
+ * canal row: the real pass materials, material variants and ground ring / beacon, outside MapLibre. One house is the
+ * destination; the card sits at the bottom, compact, as in the game. `far` puts the chase camera ~250 m out, where
+ * the outline widens (outlineWidthPx); `fallback` draws it as MapLibre's fallback extrusions get it (the marker's
+ * hull round the footprint prism, the house itself untouched). The game itself is exercised by
  * tests/e2e/highlight.spec.ts and the shots of tests/e2e/highlight-shots.spec.ts.
  */
-type Args = { style: HighlightStyle; view: 'chase' | 'saddle'; name: string; longName?: boolean };
+type Args = { style: HighlightStyle; view: 'chase' | 'saddle'; name: string; longName?: boolean; far?: boolean; fallback?: boolean };
 
 const ORIGIN: [number, number] = [4.8838, 52.3750];
 const M_LAT = 110_540, M_LNG = 111_320 * Math.cos(ORIGIN[1] * Math.PI / 180);
@@ -38,7 +40,7 @@ function house(width: number, depth: number, height: number, colour: number): TH
   return g;
 }
 
-function HighlightScene({ style, view, name, longName }: Args) {
+function HighlightScene({ style, view, name, longName, far, fallback }: Args) {
   const host = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = host.current!;
@@ -70,9 +72,13 @@ function HighlightScene({ style, view, name, longName }: Args) {
       scene.add(g); rows.push({ group: g, at: [g.position.x, -62] });
     }
     const target = rows[4];
+    // Fallback: MapLibre's extrusion is a flat prism (no gable), the shape the hull is built from.
+    if (fallback) for (const child of [...target.group.children]) if ((child as THREE.Mesh).geometry instanceof THREE.ExtrudeGeometry) target.group.remove(child);
     // The style's whole-mesh states: the destination keeps its materials (+ passes) or turns yellow; style c dims neighbours.
     for (const r of rows) {
       const state = r === target ? 'highlight' : withinDesaturation(lngLat(...target.at), lngLat(...r.at)) ? 'dim' : 'plain';
+      // Fallback: MapLibre draws the house in its own colours; the outline comes from the marker's hull below.
+      if (fallback && r === target) continue;
       applyMeshHighlight(THREE, r.group, style === 'yellow' && state === 'dim' ? 'plain' : state, { style });
     }
     // Ground ring and beacon: the game's marker, mounted on a stand-in frame (its local space is metres about the footprint).
@@ -82,12 +88,13 @@ function HighlightScene({ style, view, name, longName }: Args) {
     const marker = new HighlightMarker(THREE, { triggerRepaint: () => {} }, { sharedFrame: frame, style });
     const box = new THREE.Box3().setFromObject(target.group);
     const fp = [[box.min.x, box.min.y], [box.max.x, box.min.y], [box.max.x, box.max.y], [box.min.x, box.max.y], [box.min.x, box.min.y]].map(([px, py]) => lngLat(px, py));
-    marker.set({ lngLat: lngLat(...target.at), polygons: [[fp]], heightM: box.max.z });
+    marker.set({ lngLat: lngLat(...target.at), polygons: [[fp]], heightM: box.max.z, hull: !!fallback });
     const centre = new THREE.Vector3(); box.getCenter(centre);
     wrapper.position.set(centre.x, centre.y, 0);
     const camera = new THREE.PerspectiveCamera(view === 'saddle' ? 60 : 45, el.clientWidth / el.clientHeight, 0.5, 2000);
     camera.up.set(0, 0, 1);
     if (view === 'saddle') { camera.position.set(target.at[0] + 28, -30, 2.2); camera.lookAt(target.at[0] - 4, 0, 9); }
+    else if (far) { camera.position.set(target.at[0] + 95, -230, 120); camera.lookAt(target.at[0], 0, 6); }
     else { camera.position.set(target.at[0] + 45, -110, 70); camera.lookAt(target.at[0], 0, 6); }
     let raf = 0;
     const tick = () => { renderer.render(scene, camera); raf = requestAnimationFrame(tick); };
@@ -95,7 +102,7 @@ function HighlightScene({ style, view, name, longName }: Args) {
     const resize = () => { renderer.setSize(el.clientWidth, el.clientHeight); camera.aspect = el.clientWidth / el.clientHeight; camera.updateProjectionMatrix(); };
     window.addEventListener('resize', resize);
     return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); marker.dispose(); renderer.dispose(); el.removeChild(renderer.domElement); };
-  }, [style, view]);
+  }, [style, view, far, fallback]);
   const accent = highlightAccent(style, '');
   return <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden', fontFamily: '"Barlow Condensed", Helvetica, sans-serif' }}>
     <div ref={host} data-testid="highlight-scene" style={{ position: 'absolute', inset: 0 }} />
@@ -120,13 +127,19 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 const phone = { viewport: { defaultViewport: 'mobile1' } };
 
-/** The recommendation (see docs/LOOK.md §Highlight): outline + ground ring + beacon. */
+/** The default (docs/LOOK.md §Highlight): outline + ground ring + beacon. */
 export const OutlineRingBeacon: Story = { args: { style: 'a' } };
 export const OutlineRingBeaconPhone: Story = { args: { style: 'a' }, parameters: phone };
 export const OutlineRingBeaconSaddle: Story = { args: { style: 'a', view: 'saddle' } };
 export const OutlineRingBeaconSaddlePhone: Story = { args: { style: 'a', view: 'saddle' }, parameters: phone };
 export const OutlineRingBeaconLongNamePhone: Story = { args: { style: 'a', longName: true }, parameters: phone };
-/** Today's yellow, and the other two candidates, for comparison. */
-export const TodayYellow: Story = { args: { style: 'yellow' } };
+/** Chase distance (~250 m): the outline widens toward 3.5 px so a 6 m house still reads. */
+export const OutlineFarChase: Story = { args: { style: 'a', far: true } };
+export const OutlineFarChasePhone: Story = { args: { style: 'a', far: true }, parameters: phone };
+/** MapLibre's fallback extrusions (three.js does not own the city): the marker's hull carries the outline. */
+export const FallbackHull: Story = { args: { style: 'a', fallback: true } };
+export const FallbackHullPhone: Story = { args: { style: 'a', fallback: true }, parameters: phone };
+/** The old yellow (`?highlight=yellow`), and the other two candidates, for comparison. */
+export const TodayYellow: Story = { name: 'Yellow (comparison)', args: { style: 'yellow' } };
 export const RimPulse: Story = { args: { style: 'b' } };
 export const DesaturateRest: Story = { args: { style: 'c' } };

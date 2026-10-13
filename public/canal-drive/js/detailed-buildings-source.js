@@ -60,6 +60,12 @@ export class DetailedBuildings {
   _clearHighlight() {
     const mesh = this._highlightedMesh;
     if (!mesh) return;
+    if (mesh.userData.canalRecallFeatureHighlight) {
+      window.CanalRecallThree.detachHighlightPasses(mesh);
+      delete mesh.userData.canalRecallFeatureHighlight;
+      this._highlightedMesh = null;
+      return;
+    }
     const highlighted = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
     mesh.material = mesh.userData.canalRecallOriginalMaterial;
     for (const material of highlighted) material.dispose();
@@ -105,6 +111,15 @@ export class DetailedBuildings {
 
     const attributeName = `_feature_id_${infos[featureIndex].attribute}`;
     if (!geometry.getAttribute(attributeName)) return;
+    // The default highlight (look/highlight.ts, style a): the building keeps its 3DBAG faces and gets the accent
+    // outline, restricted to this feature of the batched tile; `?highlight=yellow` keeps the yellow tint below.
+    const { highlightFeature } = window.CanalRecallThree;
+    if (highlightFeature && highlightFeature(THREE, mesh, { attribute: attributeName, id: featureId })) {
+      mesh.userData.canalRecallFeatureHighlight = true;
+      this._highlightedMesh = mesh;
+      if (typeof this.onLandmarkHighlighted === 'function') this.onLandmarkHighlighted(this.activeLandmark);
+      return;
+    }
     const tint = material => {
       const highlighted = material.clone();
       highlighted.onBeforeCompile = shader => {

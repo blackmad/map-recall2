@@ -1,0 +1,16 @@
+{"device":"desktop","frame":"default","style":"yellow","spot":"westermarkt","highlight":false,"n":360,"renderMedian":5,"renderP95":15.4,"threeMedian":0.3,"callsMedian":1222,"at":"2026-10-13T21:14:08.613Z"}
+{"device":"desktop","frame":"default","style":"yellow","spot":"westermarkt","highlight":true,"n":360,"renderMedian":4.8,"renderP95":15,"threeMedian":0.2,"callsMedian":1222,"at":"2026-10-13T21:14:16.134Z"}
+{"device":"desktop","frame":"default","style":"yellow","spot":"westerkerk","highlight":false,"n":360,"renderMedian":3.9,"renderP95":14.7,"threeMedian":0.2,"callsMedian":892,"at":"2026-10-13T21:14:33.758Z"}
+{"device":"desktop","frame":"default","style":"yellow","spot":"westerkerk","highlight":true,"n":360,"renderMedian":3.9,"renderP95":15.7,"threeMedian":0.2,"callsMedian":892,"at":"2026-10-13T21:14:41.291Z"}
+{"device":"desktop","frame":"default","style":"a","spot":"westermarkt","highlight":false,"n":360,"renderMedian":3.3,"renderP95":9.8,"threeMedian":0.2,"callsMedian":1222,"at":"2026-10-13T21:15:15.036Z"}
+{"device":"desktop","frame":"default","style":"a","spot":"westermarkt","highlight":true,"n":360,"renderMedian":3.8,"renderP95":12,"threeMedian":0.2,"callsMedian":1248,"at":"2026-10-13T21:15:22.556Z"}
+{"device":"desktop","frame":"default","style":"a","spot":"westerkerk","highlight":false,"n":360,"renderMedian":4,"renderP95":14.8,"threeMedian":0.2,"callsMedian":892,"at":"2026-10-13T21:15:40.101Z"}
+{"device":"desktop","frame":"default","style":"a","spot":"westerkerk","highlight":true,"n":360,"renderMedian":3.9,"renderP95":14.1,"threeMedian":0.2,"callsMedian":914,"at":"2026-10-13T21:15:47.623Z"}
+{"device":"desktop","frame":"shared","style":"yellow","spot":"westermarkt","highlight":false,"n":360,"renderMedian":4.7,"renderP95":13.7,"threeMedian":0.8,"callsMedian":1222,"at":"2026-10-13T21:16:15.857Z"}
+{"device":"desktop","frame":"shared","style":"yellow","spot":"westermarkt","highlight":true,"n":360,"renderMedian":5,"renderP95":14.1,"threeMedian":0.8,"callsMedian":1222,"at":"2026-10-13T21:16:23.373Z"}
+{"device":"desktop","frame":"shared","style":"yellow","spot":"westerkerk","highlight":false,"n":360,"renderMedian":3,"renderP95":9.8,"threeMedian":0.5,"callsMedian":892,"at":"2026-10-13T21:16:40.903Z"}
+{"device":"desktop","frame":"shared","style":"yellow","spot":"westerkerk","highlight":true,"n":360,"renderMedian":4,"renderP95":14.4,"threeMedian":0.7,"callsMedian":892,"at":"2026-10-13T21:16:48.408Z"}
+{"device":"desktop","frame":"shared","style":"a","spot":"westermarkt","highlight":false,"n":360,"renderMedian":3.6,"renderP95":10.3,"threeMedian":0.6,"callsMedian":1208,"at":"2026-10-13T21:17:22.608Z"}
+{"device":"desktop","frame":"shared","style":"a","spot":"westermarkt","highlight":true,"n":360,"renderMedian":4.4,"renderP95":12.4,"threeMedian":0.8,"callsMedian":1234,"at":"2026-10-13T21:17:30.220Z"}
+{"device":"desktop","frame":"shared","style":"a","spot":"westerkerk","highlight":false,"n":360,"renderMedian":4.5,"renderP95":16.6,"threeMedian":0.8,"callsMedian":878,"at":"2026-10-13T21:17:47.760Z"}
+{"device":"desktop","frame":"shared","style":"a","spot":"westerkerk","highlight":true,"n":360,"renderMedian":3.5,"renderP95":11.2,"threeMedian":0.6,"callsMedian":900,"at":"2026-10-13T21:17:55.270Z"}

@@ -1,5 +1,5 @@
 /**
- * Highlight candidates (`?highlight=a|b|c`, look/highlight.ts) against today's yellow: shots for the contact sheet,
+ * Highlight styles (default a; `?highlight=yellow|b|c`, look/highlight.ts) against the old yellow: shots for the contact sheet,
  * not a gate. Four spots (the Westermarkt block, the Westerkerk, the Rijksmuseum, a terrace house in Oud-West) from
  * the chase view and from the saddle (cockpit), in the default frame and the shared frame, at the game's fixed day.
  *
@@ -98,7 +98,7 @@ for (const frame of FRAMES) for (const style of STYLES) {
       return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
     });
     const [base, accent] = style.split('-');
-    const query = [frame.query, base === 'yellow' ? '' : `highlight=${base}`, accent ? `highlightAccent=${accent}` : ''].filter(Boolean).join('&');
+    const query = [frame.query, `highlight=${base}`, accent ? `highlightAccent=${accent}` : ''].filter(Boolean).join('&');
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: query ? `?${query}` : '', abortHeavyTiles: true });
     mkdirSync(OUT, { recursive: true });
     const records: any[] = [];
