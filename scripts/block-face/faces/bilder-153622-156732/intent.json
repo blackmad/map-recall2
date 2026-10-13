@@ -392,6 +392,10 @@
    }
   ],
   "identical": [],
+  "roof": {
+   "source": "recipe",
+   "evidence": "strip.jpg: flat roof behind the corner cornice and low mansards behind the others; the 3DBAG pyramid on the corner is not on the photo (review 2026-10-11, strip.jpg vs ortho/street/overhead before-after)"
+  },
   "notes": [
    "2024-11-29 capture. Folds the standalone recipe bilder-153622 and the street chunk chunk-bilder-152363-x2 (152363 + 156732) into one face with 201 (161613), which had no model."
   ],

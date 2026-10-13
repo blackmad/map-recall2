@@ -56,6 +56,16 @@ covered BAG panden. Instancing vs merged geometry: 78 KB vs 626 KB for 24
 type-1 blocks; ~35 vs ~1.5k draw calls for the whole 427-pand set. iPhone
 4x-throttle frame time unchanged at the pilot views. Off by default.
 
+## Recipe roofs with towers and split fronts; z-fight causes in the library (2026-10-11)
+
+Five Bilderdijkstraat faces were held off recipe roofs. Most failed install on the
+geometry audit's z-fight limit even with 3DBAG roofs: dormer gable caps sat 5 mm
+over steep dormer roofs (now 1.5 cm along the slope, dormer component v7) and
+shopfront piers ran into the fascia (now stop under it; 17 per-house fits change,
+fit-golden re-recorded). Recipe roofs now cut a multi-front pand into bands at the
+fit's split points, each from its own eaves; tower bays (eaves > 1 m over the lowest
+front) take the neighbour's roof. 14 faces now carry recipe roofs.
+
 ## Recipe roofs on block faces (2026-10-10)
 
 The user, comparing bilder-081118-155417 with its strip: "we need to discard a
