@@ -38,6 +38,7 @@ import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
 import { travelProfile } from './travelProfile';
 import { hudWithholdsRouteName } from './recallRules';
+import { StreetLabelCandidates } from './streetLabelCandidates';
 import type { PresentationHost, Vehicle } from './host';
 import type { Landmark } from './worldTypes';
 import { canShowMiniMap, canShowPoiLabels, type TeachingGateInput } from './teachingSurface';
@@ -655,7 +656,9 @@ export class GamePresentationRuntime {
     // the Kinkerbuurt end that has never been asked.
     this.track.drawLabels(ctx, this.camera,
       (text, x, y) => this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y),
-      this.quizPromptName || this.quizCandidateName, player);
+      this.quizPromptName || this.quizCandidateName, player,
+      (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates())
+        .candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach));
 
     // Results replace the live HUD rather than competing with it.
     if (this.state === GameState.FINISHED) { this._renderFinish(); return; }

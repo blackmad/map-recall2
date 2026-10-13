@@ -1,5 +1,37 @@
 # Canal Recall — what is built
 
+## Desktop perf, second pass (2026-10-14, night)
+
+Lane `perf/desktop-two-20261014`, four fixes that change nothing on
+screen (pixel checks across frozen frames) and a tighter budget.
+(1) HUD street names: `game/streetLabelCandidates.ts` keeps a candidate
+list per 256-unit camera cell in anchor order and skips the walk for a
+guest with no learned names; `road-network.js drawLabels` takes it as an
+optional sixth argument; 0.51 → 0.01 ms per frame. (2) Landmark picks: a
+bounding-box pre-test per model plus a per-mesh BVH (`landmarks/pickBvh.ts`)
+built in idle time (forced after 250 ms, ≤ 3 ms per build); same hit as
+three's `intersectObject` over 2,400 test rays; 0.17–0.21 → 0.013–0.022
+ms per pick, the worst aerial call 6–7 → 1 ms. (3) Static matrices
+(`landmarks/staticMatrices.ts`): placed models and swapped levels get
+`matrixAutoUpdate = false` and legacy scenes stop the per-render
+`updateMatrixWorld` walk (refreshed on level swap and when highlight
+passes are added); 129 → 46 µs per chase frame. (4) Bike drawn once: the
+x-ray was a second full `renderer.render` with a transparent double-sided
+override that three split into back and front draws; now each mesh has
+an x-ray twin sharing geometry and material in the opaque list with
+straight-alpha CustomBlending, sorted ahead by `renderOrder`; 0.27 → 0.07
+ms, 466 → 448 draw calls. Frame median/p95/p99: default chase 3.1/4.7/7.5
+→ 2.5/3.8/4.6, aerial 300 m 5.6/11.7/17.1 → 4.4/6.6/11.9 (full tables in
+`docs/performance/desktop-20261014.md`). `DESKTOP_BUDGET` is now map
+render median ≤ 4 ms (was 6), p95 ≤ 10, label overlay mean ≤ 0.4, worst
+≤ 20; measured 1.8–2.0 / 2.6–2.9 / 0.15 / 5.6–6.9. The budget fails
+against stale bundles, so rebuild before running `ride-perf`. Left:
+MapLibre's own render (1.0–1.9 ms) is now the largest owner; the legacy
+signature-landmarks layer renders once per model (0.30 chase / 0.73
+aerial); the shared frame still draws the bike x-ray as a second pass;
+city prism picks 0.07–0.10 ms; iPhone unmeasured.
+
+
 ## Dominant buildings, batch 3 (2026-10-14, night)
 
 Lane `large/dominant-3-20261014`. Twelve more `kind: large` recipes by

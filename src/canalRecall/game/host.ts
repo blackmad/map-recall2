@@ -25,6 +25,7 @@ import type { NoticeHold, NoticeState } from './landmarkNotice';
 import type { FactIndex } from '../facts/factStore';
 import type { RotationState } from '../facts/factRotation';
 import type { LatLon } from './recallRules';
+import type { StreetLabelAnchor, StreetLabelCandidates } from './streetLabelCandidates';
 
 export type { RecallFeature };
 import type { Bridge, BridgeCrossing, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
@@ -412,6 +413,9 @@ export interface PresentationHost extends GameCoreHost {
   /** Names already shown to the player; the HUD may print them. */
   revealedNames: Set<string>;
   _mapLabelNames: Set<string>;
+  _knownPlaces: Map<string, WorldPoint[]>;
+  /** Per-cell street-name candidates for `drawLabels`, made on first use. */
+  _streetLabelCandidates?: StreetLabelCandidates<StreetLabelAnchor>;
   _visitedNeighborhoods: Set<string>;
   _seenLandmarkNames: Set<string>;
 

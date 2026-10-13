@@ -467,6 +467,99 @@
     return !input.revealed && !input.learned;
   }
 
+  // src/canalRecall/game/streetLabelCandidates.ts
+  var LABEL_CELL_SIZE = 256;
+  var REACH_BUCKET_STEP = 1.25;
+  var EMPTY = Object.freeze([]);
+  var StreetLabelCandidates = class {
+    constructor(cellSize = LABEL_CELL_SIZE) {
+      this.cellSize = cellSize;
+    }
+    labels = null;
+    labelCount = -1;
+    /** Name -> ascending anchor indices, built once per anchor array. */
+    byName = /* @__PURE__ */ new Map();
+    names = { set: null, setSize: -1, places: null, placesSize: -1 };
+    /** Ascending indices of every anchor whose name could pass the knowledge test. */
+    named = new Int32Array(0);
+    namedVersion = 0;
+    cellKey = "";
+    cell = EMPTY;
+    /** Rebuilds of the per-cell list, for tests and the profiler. */
+    rebuilds = 0;
+    /**
+     * The anchors `drawLabels` must test this frame: every anchor that could pass
+     * both `|x - cx| <= reach && |y - cy| <= reach` and the knowledge test, in
+     * the order of `labels`.
+     */
+    candidates(labels, knowledge, cx, cy, reach) {
+      if (!labels || !labels.length) return EMPTY;
+      const { mapLabelNames, knownPlaces } = knowledge;
+      if (!mapLabelNames.size && !knownPlaces.size) return EMPTY;
+      if (labels !== this.labels || labels.length !== this.labelCount) this.indexLabels(labels);
+      this.refreshNamed(mapLabelNames, knownPlaces);
+      if (!this.named.length) return EMPTY;
+      const size = this.cellSize;
+      const ix = Math.floor(cx / size), iy = Math.floor(cy / size);
+      const bucket = reachBucket(reach);
+      const key = `${this.namedVersion}:${ix}:${iy}:${bucket}`;
+      if (key !== this.cellKey) {
+        this.cellKey = key;
+        this.cell = this.collect(ix, iy, bucket);
+        this.rebuilds++;
+      }
+      return this.cell;
+    }
+    indexLabels(labels) {
+      this.labels = labels;
+      this.labelCount = labels.length;
+      this.byName = /* @__PURE__ */ new Map();
+      for (let i = 0; i < labels.length; i++) {
+        const text = labels[i].text;
+        const list = this.byName.get(text);
+        if (list) list.push(i);
+        else this.byName.set(text, [i]);
+      }
+      this.names = { set: null, setSize: -1, places: null, placesSize: -1 };
+      this.cellKey = "";
+    }
+    refreshNamed(set, places) {
+      const n = this.names;
+      if (n.set === set && n.setSize === set.size && n.places === places && n.placesSize === places.size) return;
+      this.names = { set, setSize: set.size, places, placesSize: places.size };
+      const picked = [];
+      for (const name of set) {
+        const list = this.byName.get(name);
+        if (list) for (const i of list) picked.push(i);
+      }
+      for (const name of places.keys()) {
+        if (set.has(name)) continue;
+        const list = this.byName.get(name);
+        if (list) for (const i of list) picked.push(i);
+      }
+      this.named = Int32Array.from(picked).sort();
+      this.namedVersion++;
+      this.cellKey = "";
+    }
+    collect(ix, iy, reach) {
+      const labels = this.labels;
+      const half = this.cellSize / 2;
+      const mx = (ix + 0.5) * this.cellSize, my = (iy + 0.5) * this.cellSize;
+      const r = reach + half;
+      const out = [];
+      for (const i of this.named) {
+        const label = labels[i];
+        if (Math.abs(label.x - mx) <= r && Math.abs(label.y - my) <= r) out.push(label);
+      }
+      return out;
+    }
+  };
+  function reachBucket(reach) {
+    if (!(reach > 0)) return 0;
+    const b = REACH_BUCKET_STEP ** Math.ceil(Math.log(reach) / Math.log(REACH_BUCKET_STEP));
+    return b >= reach ? b : b * REACH_BUCKET_STEP;
+  }
+
   // src/canalRecall/game/teachingSurface.ts
   function canShowMiniMap(enabled, input) {
     return enabled && !input.utilityOpen;
@@ -43958,7 +44051,8 @@
         this.camera,
         (text, x, y) => this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y),
         this.quizPromptName || this.quizCandidateName,
-        player
+        player,
+        (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates()).candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach)
       );
       if (this.state === GameState.FINISHED) {
         this._renderFinish();

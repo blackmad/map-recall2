@@ -17,6 +17,8 @@ import { normaliseLandmarkMaterials } from '../../../src/canalRecall/landmarks/l
 import { cityLookEnabled } from '../../../src/canalRecall/look/cityLook.ts';
 import { INFERRED_SLOT_SOURCE } from '../../../src/canalRecall/look/materialSlotInference.ts';
 import { landmarkHighlightStates } from '../../../src/canalRecall/look/highlightLandmarks.ts';
+import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landmarks/pickBvh.ts';
+import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticMatrices.ts';
 import { applyMeshHighlight, highlightRecipe } from '../../../src/canalRecall/look/highlight.ts';
 import { enuDirectionInLocal, SUN_DIRECTION, sunDirection, DEFAULT_LIGHT_RIG } from '../../../src/canalRecall/rendererShared/lightRig.ts';
 
@@ -272,14 +274,27 @@ export class SignatureLandmarks {
     if (!this.enabled || !width || !height) return null;
     const nx = x / width * 2 - 1, ny = 1 - y / height * 2;
     let result = null;
+    const local = new THREE.Ray(), toLocal = new THREE.Matrix4();
     for (const entry of this._entries || []) {
       if (!this.canShowModel(entry.spec) || !entry.pickProjection || !this._nearby(entry.spec, entry.placement.anchor)) continue;
       const inverse = entry.pickProjection.clone().invert();
       const near = new THREE.Vector3(nx, ny, -1).applyMatrix4(inverse);
       const far = new THREE.Vector3(nx, ny, 1).applyMatrix4(inverse);
+      // Bounding-box pre-test in the group's own space (matrixWorld as last drawn, like pickProjection):
+      // a model the ray misses costs one box test instead of a matrix walk and a mesh-by-mesh raycast.
+      const box = this._pickBox(entry);
+      if (box) {
+        local.origin.copy(near); local.direction.copy(far).sub(near);
+        local.applyMatrix4(toLocal.copy(entry.group.matrixWorld).invert());
+        if (!local.intersectsBox(box)) continue;
+      }
       entry.group.updateWorldMatrix(true, true);
       const ray = new THREE.Raycaster(near, far.sub(near).normalize());
-      const hit = ray.intersectObject(entry.group, true).find(hit => hit.object.visible);
+      // Same hit as `ray.intersectObject(entry.group, true).find(hit => hit.object.visible)`, through a per-mesh
+      // BVH once one is built; the first pick that reaches a model queues its build for idle time.
+      const unbuilt = { count: 0 };
+      const hit = nearestVisibleHit(entry.group, ray, unbuilt);
+      if (unbuilt.count) this._queuePickBvh(entry);
       if (!hit) continue;
       const depth = hit.point.clone().applyMatrix4(entry.pickProjection).z;
       if (depth < -1 || depth > 1 || result && depth >= result.depth) continue;
@@ -293,6 +308,53 @@ export class SignatureLandmarks {
           : entry.spec.buildingFootprint ? { footprint: entry.spec.buildingFootprint, height: entry.spec.heightMetres } : {}) };
     }
     return result;
+  }
+
+  /** A legacy model scene skips three's per-render matrix walk; refresh it after its contents change. */
+  _refreshSceneMatrices(entry) {
+    entry.scene?.updateMatrixWorld();
+  }
+
+  /** Build the pick BVHs of a model that picks reach, in idle time, a mesh at a time. */
+  _queuePickBvh(entry) {
+    (this._pickBvhQueue ||= new Set()).add(entry);
+    if (this._pickBvhIdle) return;
+    const idle = window.requestIdleCallback || (fn => setTimeout(() => fn({ timeRemaining: () => 4, didTimeout: false }), 100));
+    // Idle time when there is some; an uncapped or busy frame loop leaves none, so after 250 ms a
+    // callback runs anyway and builds for up to 3 ms (a mesh is built whole: ~1-2 ms per 5k triangles).
+    const step = deadline => {
+      this._pickBvhIdle = null;
+      const start = performance.now();
+      const left = () => deadline.didTimeout ? 3 - (performance.now() - start) : deadline.timeRemaining() - 2;
+      for (const queued of this._pickBvhQueue) {
+        if (this._removed || !this._entries.includes(queued)) { this._pickBvhQueue.delete(queued); continue; }
+        if (buildPickBvhs(queued.group, Math.max(0, left()))) this._pickBvhQueue.delete(queued);
+        if (left() <= 0) break;
+      }
+      if (this._pickBvhQueue.size) this._pickBvhIdle = idle(step, { timeout: 250 });
+    };
+    this._pickBvhIdle = idle(step, { timeout: 250 });
+  }
+
+  /** The drawn level's bounds in `entry.group`'s own space, padded; cached until the level or its geometry changes. */
+  _pickBox(entry) {
+    if (entry.pickBox !== undefined && entry.pickBox !== null) return entry.pickBox || null;
+    const group = entry.group, box = new THREE.Box3(), part = new THREE.Box3(), m = new THREE.Matrix4();
+    group.updateWorldMatrix(true, true);
+    const inverse = new THREE.Matrix4().copy(group.matrixWorld).invert();
+    // Lines, points and sprites are picked with a distance threshold, not their bounds: no pre-test then.
+    let thresholded = false;
+    group.traverse(object => {
+      if (object.isLine || object.isPoints || object.isSprite) thresholded = true;
+      if (!object.isMesh || !object.geometry) return;
+      let bounds;
+      if (object.isInstancedMesh) { if (!object.boundingBox) object.computeBoundingBox(); bounds = object.boundingBox; }
+      else { if (!object.geometry.boundingBox) object.geometry.computeBoundingBox(); bounds = object.geometry.boundingBox; }
+      if (bounds && !bounds.isEmpty()) box.union(part.copy(bounds).applyMatrix4(m.multiplyMatrices(inverse, object.matrixWorld)));
+    });
+    if (thresholded || box.isEmpty()) { entry.pickBox = false; return null; }
+    // Pad by 1 % of the diagonal plus a hair: the pre-test must never reject what the raycast would hit.
+    return (entry.pickBox = box.expandByScalar(box.getSize(part.min).length() * 0.01 + 1e-6));
   }
 
   /** Hosts drawing the complete city already remove basemap geometry. The
@@ -363,6 +425,8 @@ export class SignatureLandmarks {
       entry.highlightState = state;
       entry.highlighted = state === 'highlight';
       applyMeshHighlight(THREE, entry.group, state, { cityVariant: (m, s) => city ? city.dimmed(m, s === 'dim') : m, up: [0, 1, 0] }); // glTF: +y up
+      // Highlight passes are new children: give them world matrices (legacy scenes no longer auto-update).
+      this._refreshSceneMatrices(entry);
     }
     for (const area of Object.values(window.__canalRecallBuildingTypes || {})) area.setHighlighted?.(ids, focus);
     this.map.triggerRepaint();
@@ -794,6 +858,7 @@ export class SignatureLandmarks {
       m.geometry.computeBoundingBox();
     }
     entry.pandBases = Object.fromEntries(bases);
+    entry.pickBox = null;
     return true;
   }
 
@@ -885,6 +950,11 @@ export class SignatureLandmarks {
       holder.matrixWorldNeedsUpdate = true;
       this._sharedRoot.add(holder);
     }
+    // Placed models never move: compose their local matrices once instead of every frame (lights included).
+    // A legacy model scene also stops walking itself per render; whatever later adds to or moves inside it
+    // (a level swap, highlight passes) updates it there (`_refreshSceneMatrices`).
+    freezeStaticMatrices(modelScene || group);
+    if (modelScene) { modelScene.updateMatrixWorld(true); modelScene.matrixWorldAutoUpdate = false; }
     const size = bounds.getSize(new THREE.Vector3());
     const entry = { spec, group, scene: modelScene, holder, transform, units, groundBase: 0, highlighted: false, placement, url, enuFromWorld,
       // Level of detail: `level` is what `group` holds now; `spare` is the other level once loaded (detached, kept for reuse).
@@ -960,9 +1030,14 @@ export class SignatureLandmarks {
     const outgoing = entry.imported;
     // Same normalisation as the first level, so the two overlay exactly.
     incoming.position.copy(outgoing.position);
+    // A spare level was frozen when it was first drawn: recompose it at its (re)placed position.
+    incoming.updateMatrix();
+    freezeStaticMatrices(incoming);
     entry.group.add(incoming);
     entry.group.remove(outgoing);
+    this._refreshSceneMatrices(entry);
     entry.imported = incoming;
+    entry.pickBox = null;
     entry.spare = outgoing; entry.spareLevel = entry.level;
     entry.level = level;
     // Highlight, depth bias and shadows are per material: reapply to the new level.
