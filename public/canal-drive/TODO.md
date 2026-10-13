@@ -660,12 +660,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 ---
 
 ## P0 — Red, or actively teaching something false
-- **Live site is stale: every deploy since 14:27 2026-10-13 fails on the
-  Hosting storage quota (HISTORY)**. Run `npm run hosting:prune` (dry run),
-  then `npm run hosting:prune -- --apply` (or the manual "Prune Firebase
-  Hosting versions" workflow), then re-run the latest failed deploy and
-  check `<site>/deployment.json` shows the pushed SHA. Longer term: fewer
-  deploys (schedule or manual) or the Blaze plan.
+- **Hosting quota will hit again within a day of pushes.** Deploys failed
+  with HTTP 429 from 14:27 to ~19:45 on 2026-10-13 and recovered without
+  the integrator pruning; the dry run afterwards still listed 374 deletable
+  canalrecall versions (40 GB) against a 10 GB quota. Run `npm run
+  hosting:prune` then `-- --apply` (or the manual "Prune Firebase Hosting
+  versions" workflow) now, and when a push does not reach
+  `<site>/deployment.json`. Longer term: fewer deploys (schedule or manual)
+  or the Blaze plan.
 *Anything that makes the game teach something false, or traps the rider,
 belongs here before anything below it.*
 

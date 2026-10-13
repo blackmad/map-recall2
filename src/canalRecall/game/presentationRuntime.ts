@@ -771,8 +771,10 @@ export class GamePresentationRuntime {
     }
     // The home radius is fixed for the ride and the setup screen already says
     // it, so on desktop the plaque's fourth line is left to quiz feedback.
+    // Read the viewport, not _hudRects(): _syncHudLayout calls this to size
+    // the plaque, so asking for the layout here recursed without end.
     const homeLearningNote = this.routePattern === 'home'
-      && this._hudRects().mode === 'compact'
+      && this.viewport.mode === 'compact'
       && Number.isFinite(this._homeLearningRadiusKm)
       && this._homeLearningRadiusKm > 0
       ? `Learning near home · ~${this._homeLearningRadiusKm.toFixed(1)} km`
