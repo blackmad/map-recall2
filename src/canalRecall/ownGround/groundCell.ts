@@ -20,7 +20,7 @@
 import earcut from 'earcut';
 import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water.js';
 import { drapeTriangles, emptyMesh, gridHeight, merge, reliefGrid, type MeshArrays } from './drape.js';
-import { buildStreets, isBridgeWay, prepareWays, LIFT, type LocalWay } from './streets.js';
+import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, type LocalWay } from './streets.js';
 import { flatDeckBody, measuredDeckBody } from './decks.js';
 import type { OsmGroundExtract } from './osmGround.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
@@ -133,7 +133,8 @@ export function buildCell(input: CellInput): BuiltCell {
     seen.add(w.id); all.push(w);
   }
   for (const w of input.osm?.ways ?? []) own.add(w.id);
-  const ways = lod === 0 ? all : all.map(farSection);
+  const resolved = resolvePriorSidewalks(all);
+  const ways = lod === 0 ? resolved : resolved.map(farSection);
   const areas = input.osm?.areas ?? [];
 
   // Mask extent: the cell plus what its ways and areas reach (capped).

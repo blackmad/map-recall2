@@ -67,3 +67,26 @@ export function bandCoverage(cells: readonly BuiltCell[], ways: readonly LocalWa
   out.share = out.probes ? out.street / out.probes : 0;
   return out;
 }
+
+/** A junction whose interior must read as one road surface (no red or pale blobs, no land). */
+export interface JunctionRegression { id: string; label: string; at: [number, number]; radiusM: number; surface: GroundLayer; minShare: number }
+
+/** De Clercqstraat × Bilderdijkstraat (and the tram junction): user shots of red smears and grey patches. */
+export const JUNCTIONS: JunctionRegression[] = [
+  { id: 'bilderdijkstraat-de-clercqstraat', label: 'Bilderdijkstraat × De Clercqstraat', at: [4.870286, 52.370936], radiusM: 4, surface: 'asphalt', minShare: 0.9 },
+  { id: 'nassaukade-de-clercqstraat', label: 'Nassaukade × De Clercqstraat / Rozengracht (Rijckerbrug)', at: [4.874103, 52.371797], radiusM: 4, surface: 'asphalt', minShare: 0.9 },
+];
+
+/** Share of probes on a disc around a junction node whose top layer is the road surface (plus paint on it). */
+export function junctionCoverage(cells: readonly BuiltCell[], centre: [number, number], radiusM: number, surface: GroundLayer): { probes: number; ok: number; share: number; tops: Record<string, number> } {
+  const tops: Record<string, number> = {};
+  let probes = 0, ok = 0;
+  for (let r = 0; r <= radiusM; r += 1) for (let k = 0; k < (r ? 12 : 1); k++) {
+    const a = (k / 12) * Math.PI * 2, x = centre[0] + Math.cos(a) * r, y = centre[1] + Math.sin(a) * r;
+    const top = cells.map(c => layersAt(c, x, y)).filter(h => h.hits.length).map(h => h.top).find(Boolean) ?? 'none';
+    tops[top] = (tops[top] ?? 0) + 1;
+    probes++;
+    if (top === surface || top === 'paint' || top === 'tram') ok++;
+  }
+  return { probes, ok, share: ok / probes, tops };
+}

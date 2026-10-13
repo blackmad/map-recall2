@@ -78,7 +78,9 @@ async function main(): Promise<void> {
   // Every cell whose ways can reach the view (a way lives in the cell of its midpoint).
   const keys = new Set<string>();
   const pad = half + 150;
-  for (let dx = -pad; dx <= pad; dx += 100) for (let dy = -pad; dy <= pad; dy += 100) keys.add(store.cellAt(x + dx, y + dy));
+  for (let dx = -pad; dx <= pad; dx += 50) for (let dy = -pad; dy <= pad; dy += 50) keys.add(store.cellAt(x + dx, y + dy));
+  // A way reaching into the view may belong to a cell whose rectangle does not: take the centre cell's neighbours too.
+  for (const k of GroundStore.neighbours(store.cellAt(x, y))) keys.add(k);
   const cells: BuiltCell[] = [];
   for (const k of keys) if (store.covers(k)) cells.push(buildCell(await store.cellInput(k, lod as 0 | 1)));
   const w = Math.round(2 * half / res), h = w;

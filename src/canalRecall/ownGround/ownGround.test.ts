@@ -11,7 +11,7 @@ import { cutIntervals, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, 
 import { bandCoverage, DE_CLERCQSTRAAT } from './roadRegressions';
 import { crossSection, parseMetres, areaKind } from './osmGround';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
-import { buildStreets, prepareWays, routeRibbon, LIFT } from './streets';
+import { buildStreets, prepareWays, resolvePriorSidewalks, routeRibbon, LIFT } from './streets';
 import { buildWaterMask, maskDistance, quayWallMesh, waterSurfaceMesh, waterZAt } from './water';
 import { flatDeckBody, measuredDeckBody } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
@@ -315,6 +315,52 @@ test('raised sidewalks stop at a side street on their side only; bands drape ont
   assert.ok(Math.max(...faces(route).map(f => f.c[2])) > 1.2, 'route ribbon rides over the hump');
 });
 
+test('junctions: one fill from the incoming cross-sections; lanes, paint and paths stop at its edge', () => {
+  const flat = () => 0;
+  const ll = (p: Vec2): [number, number] => p as [number, number];
+  const ways = prepareWays([
+    { id: 1, tags: { highway: 'tertiary', 'cycleway:both': 'lane', sidewalk: 'both' }, g: [[-60, 0], [0, 0], [60, 0]] },
+    { id: 2, tags: { highway: 'residential', sidewalk: 'both' }, g: [[0, 0], [0, 60]] },
+    { id: 3, tags: { highway: 'residential', sidewalk: 'both' }, g: [[0, -60], [0, 0]] },
+    { id: 4, tags: { highway: 'cycleway' }, g: [[40, 40], [0, 0]] }, // a cycle path ending at the junction node
+  ], p => ll(p as Vec2));
+  const s = buildStreets(ways, flat);
+  assert.equal(s.stats.junctions, 1);
+  assert.equal(s.stats.corners, 4, 'four kerb corners');
+  const inside = (m: MeshArrays, r: number) => faces(m).filter(f => Math.abs(f.c[0]) < r && Math.abs(f.c[1]) < r);
+  // The junction box: tertiary road half (3 + 1.6 lanes) one way, residential half 2.6 the other.
+  assert.equal(inside(s.cycle, 2.4).length, 0, 'no red in the junction: lanes and the cycle path end at its edge');
+  assert.equal(inside(s.paint, 2.4).length, 0, 'no paint across the junction');
+  assert.equal(inside(s.paving, 4.4).length, 0, 'sidewalks stop at the kerb corners');
+  assert.ok(inside(s.asphalt, 2).length > 0, 'the junction is filled with the main road\'s asphalt');
+  // Corner patches at kerb height join the two sidewalks at each corner.
+  const corner = faces(s.paving).filter(f => f.c[0] > 2.6 && f.c[0] < 4.4 && f.c[1] > 4.6 && f.c[1] < 6.4);
+  assert.ok(corner.length > 0 && corner.every(f => Math.abs(f.c[2] - (LIFT.raisedBase + 0.11)) < 1e-6), 'corner patch at kerb height');
+  // A one-way fietsstraat has no centre line.
+  assert.ok(!crossSection({ highway: 'residential', lanes: '2', cyclestreet: 'yes' })!.paint.some(p => p.offset === 0));
+  assert.ok(crossSection({ highway: 'residential', lanes: '2' })!.paint.some(p => p.offset === 0));
+});
+
+test('prior sidewalks are dropped where another mapped way lies (split carriageways, separate cycle paths)', () => {
+  const ll = (p: Vec2): [number, number] => p as [number, number];
+  const ways = resolvePriorSidewalks(prepareWays([
+    { id: 1, tags: { highway: 'tertiary', oneway: 'yes' }, g: [[-50, 3.5], [50, 3.5]] },
+    { id: 2, tags: { highway: 'tertiary', oneway: 'yes' }, g: [[50, -3.5], [-50, -3.5]] },
+    { id: 3, tags: { highway: 'tertiary', oneway: 'yes', sidewalk: 'both' }, g: [[-50, 40], [50, 40]] },
+    { id: 4, tags: { highway: 'tertiary', oneway: 'yes', sidewalk: 'both' }, g: [[50, 33], [-50, 33]] },
+  ], p => ll(p as Vec2)));
+  const sides = (id: number) => ways.find(w => w.id === id)!.section.bands.filter(b => b.kind === 'sidewalk').map(b => Math.sign(b.offset));
+  assert.deepEqual(sides(1), [1], 'way 1 keeps only its outer (left, north) sidewalk');
+  assert.deepEqual(sides(2), [1], 'way 2 (westbound) keeps its left (south) sidewalk');
+  assert.deepEqual(sides(3).sort(), [-1, 1], 'tagged sidewalks stay');
+});
+
+test('BGT widths read inside a junction are capped by class and lanes', () => {
+  assert.equal(crossSection({ highway: 'tertiary', lanes: '1', oneway: 'yes' }, [213, 0, 0])!.bands[0].width, 5.25);
+  assert.equal(crossSection({ highway: 'cycleway', oneway: 'yes' }, [142, 0, 0])!.bands[0].width, 4.5);
+  assert.equal(crossSection({ highway: 'cycleway', width: '1.8' }, [40, 0, 0])!.source.width, 'tag', 'a tagged path width wins over a BGT reading 1.8× wider');
+});
+
 test('routeAhead leaves along the facing direction and prefers the named street', () => {
   const ways = prepareWays([
     { id: 1, tags: { highway: 'residential', name: 'A' }, g: [[0, 0], [50, 0], [100, 0]] },
@@ -533,7 +579,7 @@ test('regression (streamed cells): De Clercqstraat Bilderdijkstraat → Kostverl
   await store.init();
   const [x, y] = storeToLocal(DE_CLERCQSTRAAT.at[0], DE_CLERCQSTRAAT.at[1]), key = store.cellAt(x, y);
   const input = await store.cellInput(key, 0), ids = new Set(DE_CLERCQSTRAAT.ways), seen = new Set<number>();
-  const ways = [input.osm, ...input.osmAround].flatMap(e => (e ? prepareWays(e.ways, input.project) : [])).filter(w => ids.has(w.id) && !seen.has(w.id) && seen.add(w.id));
+  const ways = resolvePriorSidewalks([input.osm, ...input.osmAround].flatMap(e => (e ? prepareWays(e.ways, input.project) : [])).filter(w => !seen.has(w.id) && seen.add(w.id))).filter(w => ids.has(w.id));
   assert.equal(ways.length, DE_CLERCQSTRAAT.ways.length);
   // The block sits on the seam with the next cell east: build both, as the game does.
   const keys = [key, ...GroundStore.neighbours(key).filter(k => k !== key && store.covers(k) && store.cellRect(k)[0] > store.cellRect(key)[0] && store.cellRect(k)[1] === store.cellRect(key)[1])];
