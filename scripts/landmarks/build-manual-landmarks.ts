@@ -251,6 +251,7 @@ import {buildObaOosterdok} from './oba-oosterdok-builder';
 import {buildSintAgneskerk} from './sint-agneskerk-builder';
 import {buildPetruskerk} from './petruskerk-builder';
 import {buildBoomkerk} from './boomkerk-builder';
+import {buildHoofdbureauElandsgracht} from './hoofdbureau-elandsgracht-builder';
 import {buildOpstandingskerk} from './opstandingskerk-builder';
 import {buildObrechtkerk} from './obrechtkerk-builder';
 import {buildDeDuif} from './de-duif-builder';
@@ -323,7 +324,7 @@ function hospital(id:string){let s=hospitals.sites.find(s=>s.id===id)!;let spec=
 // Windows placed across a wall step/corner of the survey outline are dropped for these (see snapOpenings dropOverhang); listed so the removals are deliberate.
 const DROP_OVERHANG_IDS=new Map<string,number>([['fire-station-willem',4],['mountain-network',14],['valley',16],['rai-amsterdam',13],['beta-boulders',5]]); // id -> largest assembly (m) that may be dropped
 const DROP_MIN_OUTSIDE=new Map<string,number>([['beta-boulders',.25],['mountain-network',.15],['rai-amsterdam',.3]]); // default .35
-const SNAP_OPENING_IDS=new Set(['de-bijenkorf','oude-kerk','beta-boulders','fire-station-willem','mountain-network','centraal-station','rai-amsterdam','westerkerk','valley','lab111','vredeskerk','scheepvaarthuis','dominicuskerk','magna-plaza','madame-tussauds']);
+const SNAP_OPENING_IDS=new Set(['hoofdbureau-elandsgracht', 'de-bijenkorf','oude-kerk','beta-boulders','fire-station-willem','mountain-network','centraal-station','rai-amsterdam','westerkerk','valley','lab111','vredeskerk','scheepvaarthuis','dominicuskerk','magna-plaza','madame-tussauds']);
 function snapPartOpenings(id:string){
  if(!SNAP_OPENING_IDS.has(id))return;
  const positions:number[]=[],indices:number[]=[],triMaterial:number[]=[],names:string[]=[],spans:{g:T.BufferGeometry;from:number}[]=[];
@@ -396,7 +397,7 @@ async function save(id:string){
   await quantizeOrdinaryMesh(doc,mesh,ordinaryNode);
   await doc.transform(quantize({pattern:/^(?!POSITION$).+/,patternTargets:/^(?!POSITION$).+/}));
   doc.createExtension(EXTMeshoptCompression).setRequired(true).setEncoderOptions({method:EXTMeshoptCompression.EncoderMethod.QUANTIZE});
- }else await doc.transform(meshopt({encoder:MeshoptEncoder,level:'medium',...(['electric-ladyland','westerkerk','cafe-kobalt','collectie-six'].includes(id)?{quantizePosition:16}:{})}));
+ }else await doc.transform(meshopt({encoder:MeshoptEncoder,level:'medium',...(['electric-ladyland','westerkerk','cafe-kobalt','collectie-six','hoofdbureau-elandsgracht'].includes(id)?{quantizePosition:16}:{})}));
  await new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.encoder':MeshoptEncoder}).write(dest,doc);
  const bounds={min:[Infinity,Infinity,Infinity],max:[-Infinity,-Infinity,-Infinity]};
  for(let i=0;i<all.length;i++){const axis=i%3;bounds.min[axis]=Math.min(bounds.min[axis],all[i]);bounds.max[axis]=Math.max(bounds.max[axis],all[i]);}
@@ -670,6 +671,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='haparandaweg-13')buildHaparandaweg13(w,d,helpers);
     else if(id==='valley')buildValley(w,d,helpers);
     else if(id==='ndsm-warehouse-complex')buildNdsmWarehouseComplex(w,d,helpers);
+    else if(id==='hoofdbureau-elandsgracht')buildHoofdbureauElandsgracht(w,d,helpers);
     else if(id==='oosterkerk')buildOosterkerk(w,d,helpers);
     else if(id==='mozes-en-aaronkerk')buildMozesEnAaronkerk(w,d,helpers);
     else if(id==='de-duif')buildDeDuif(w,d,helpers);

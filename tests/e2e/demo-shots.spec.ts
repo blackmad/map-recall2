@@ -33,6 +33,11 @@ const SPOTS: Spot[] = [
   { name: 'street-osdorp-sloterplas-own-ground', centre: [4.8130, 52.3600], standDeg: 0, standM: 0, faceDeg: 300, view: 'cockpit', query: '?ownGround=1' },
   { name: 'street-politie-oost-zeeburg', centre: [4.9715896, 52.3690872], standDeg: 131, standM: 70 },
   { name: 'street-politie-zuidoost-gaasperdam', centre: [4.9741204, 52.2971764], standDeg: 255, standM: 55 },
+  { name: 'hoofdbureau-elandsgracht', centre: [4.87779, 52.3677401], standDeg: 205, standM: 95 },
+  { name: 'street-hoofdbureau-marnixstraat', centre: [4.87779, 52.3677401], standDeg: 300, standM: 70, view: 'cockpit' },
+  { name: 'street-westerkerk-citylook', centre: [4.8838960, 52.3744999], standDeg: 140, standM: 60, view: 'cockpit', query: '?sharedFrame=1&cityLook=1' },
+  { name: 'street-dam-citylook', centre: [4.8926, 52.3731], standDeg: 180, standM: 60, view: 'cockpit', query: '?sharedFrame=1&cityLook=1' },
+  { name: 'street-dam-default', centre: [4.8926, 52.3731], standDeg: 180, standM: 60, view: 'cockpit' },
 ];
 
 const OUT = process.env.DEMO_OUT ?? 'artifacts/demo';
