@@ -109,8 +109,8 @@ class Ctx {
     for (const f of faces) this.mesh.tri(slot, this.P(...pts[f[0]], d), this.P(...pts[f[1]], d), this.P(...pts[f[2]], d), part, this.p.n);
   }
   /** Box on the wall: faces front, top, bottom, left, right (back omitted: it sits on the wall). */
-  box(slot: Slot, u0: number, u1: number, v0: number, v1: number, d0: number, d1: number, part: number) {
-    const { mesh, p } = this, P = (u: number, v: number, d: number) => this.P(u, v, d);
+  box(slot: Slot, u0: number, u1: number, v0: number, v1: number, d0: number, d1: number, part: number, shift?: V3) {
+    const { mesh, p } = this, P = shift ? (u: number, v: number, d: number) => add(this.P(u, v, d), shift) : (u: number, v: number, d: number) => this.P(u, v, d);
     mesh.quad(slot, P(u0, v0, d1), P(u1, v0, d1), P(u1, v1, d1), P(u0, v1, d1), part, p.n);
     mesh.quad(slot, P(u0, v1, d0), P(u1, v1, d0), P(u1, v1, d1), P(u0, v1, d1), part, UP);
     mesh.quad(slot, P(u0, v0, d0), P(u1, v0, d0), P(u1, v0, d1), P(u0, v0, d1), part, DOWN);
@@ -213,9 +213,10 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
   const mulls = w.mullAt?.length ? w.mullAt : Array.from({ length: w.mull ?? 0 }, (_, k) => (k + 1) / ((w.mull ?? 0) + 1));
   const rows = w.rowsAt?.length ? w.rowsAt : Array.from({ length: w.rows ?? 0 }, (_, k) => (k + 1) / ((w.rows ?? 0) + 1));
   if (mulls.length || rows.length || w.transom) {
-    const bars = c.part();
-    for (const f of mulls) { const u = u0 + (u1 - u0) * f; g(u - fw / 2, u + fw / 2, v0 + fw, v1 - fw, frameSlot, 0.015, bars); }
-    for (const f of [...rows, ...(w.transom ? [w.transom] : [])]) { const v = v0 + (v1 - v0) * f; g(u0 + fw, u1 - fw, v - fw / 2, v + fw / 2, frameSlot, 0.015, bars); }
+    // frameW 0 (no frame ring: the glass fills the opening) still takes 6 cm glazing bars
+    const bars = c.part(), bw = fw > 0 ? fw : 0.06;
+    for (const f of mulls) { const u = u0 + (u1 - u0) * f; g(u - bw / 2, u + bw / 2, v0 + fw, v1 - fw, frameSlot, 0.015, bars); }
+    for (const f of [...rows, ...(w.transom ? [w.transom] : [])]) { const v = v0 + (v1 - v0) * f; g(u0 + fw, u1 - fw, v - bw / 2, v + bw / 2, frameSlot, 0.015, bars); }
   }
   if (w.surround) {
     const t = w.surround.t, out = w.surround.out ?? 0.06, sp = c.part();
@@ -224,7 +225,11 @@ function drawRecessed(c: Ctx, u0: number, u1: number, v0: number, v1: number, w:
     c.box(w.surround.slot, u0, u1, v1, v1 + t, 0, out, sp);
     c.box(w.surround.slot, u0, u1, v0 - t, v0, 0, out, sp);
   }
-  if (w.sillSlot) { const sp = c.part(), sh = w.sillH ?? 0.07; c.box(w.sillSlot, u0 - 0.08, u1 + 0.08, v0 - sh, v0, 0, w.sillOut ?? 0.12, sp); }
+  if (w.sillSlot) {
+    const sp = c.part(), sh = w.sillH ?? 0.07;
+    const shift = w.sillOnWall && corners ? scale(corners.reduce((s, q, i) => add(s, sub(q, c.P(i === 0 || i === 3 ? u0 : u1, i < 2 ? v0 : v1, 0))), [0, 0, 0] as V3), 0.25) : undefined;
+    c.box(w.sillSlot, u0 - 0.08, u1 + 0.08, v0 - sh, v0, 0, w.sillOut ?? 0.12, sp, shift);
+  }
   if (w.headSlot) { const sp = c.part(); c.box(w.headSlot, u0 - 0.06, u1 + 0.06, v1, v1 + 0.12, 0, 0.08, sp); }
   return back;
 }
@@ -234,9 +239,10 @@ function drawArched(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: W
   const a = { frame: w.frame ?? 'frame', glass: w.glass ?? 'glass', frameW: w.frameW ?? 0.07, arch: w.arch!,
     mullAt: w.mullAt?.length ? w.mullAt : Array.from({ length: w.mull ?? 0 }, (_, k) => (k + 1) / ((w.mull ?? 0) + 1)),
     rowsAt: [...(w.rowsAt?.length ? w.rowsAt : Array.from({ length: w.rows ?? 0 }, (_, k) => (k + 1) / ((w.rows ?? 0) + 1))), ...(w.transom ? [w.transom] : [])] };
-  let back = 0.035;
-  if (c.recess > 0) back = drawArchedOpening(c, u0, u1, v0, v1, a); else drawArchedProud(c, u0, u1, v0, v1, a);
-  if (w.sillSlot) { const sp = c.part(), sh = w.sillH ?? 0.07; c.box(w.sillSlot, u0 - 0.08, u1 + 0.08, v0 - sh, v0, 0, w.sillOut ?? 0.12, sp); }
+  let back = 0.035, shift: V3 | null = null;
+  if (c.recess > 0) ({ back, shift } = drawArchedOpening(c, u0, u1, v0, v1, a)); else drawArchedProud(c, u0, u1, v0, v1, a);
+  // the sill stands on the cut wall (arched openings always; the panel plane otherwise)
+  if (w.sillSlot) { const sp = c.part(), sh = w.sillH ?? 0.07; c.box(w.sillSlot, u0 - 0.08, u1 + 0.08, v0 - sh, v0, 0, w.sillOut ?? 0.12, sp, shift ?? undefined); }
   return back;
 }
 

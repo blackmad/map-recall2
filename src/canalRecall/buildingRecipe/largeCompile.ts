@@ -9,13 +9,13 @@ import {compose, type Cell, type PanelCtx} from '../blockBuilding/compose.ts';
 import {runGates, type GateReport} from '../blockBuilding/gates.ts';
 import {cellSpan, drawBand, drawBlueLamp, drawCanopy, drawEntrance, drawGarageDoor, drawLettering, drawPoliceStripe, drawRoofBoxes, lowestHoleAbove} from '../blockBuilding/components.ts';
 import type {MeshBuilder} from '../blockBuilding/mesh.ts';
-import type {Panel} from '../blockBuilding/panels.ts';
+import {fitsPanel, rectPoly, type Panel} from '../blockBuilding/panels.ts';
 import type {BuildingFacts} from './facts.ts';
 import type {LargeBuildingIntent} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit} from './fitLarge.ts';
 
-export interface LargeComponentCounts { entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
+export interface LargeComponentCounts { nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
 export interface CompiledLargeBuilding {
   kind: 'large'; group: T.Group; recipe: LargeBuildingRecipe; fit: LargeFitReport; anchorRD: [number, number]; facts: BuildingFacts;
   stats: Record<string, number>; components: LargeComponentCounts; blockGates: GateReport;
@@ -27,13 +27,14 @@ export interface CompiledLargeBuilding {
 export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe, 'wallMaterial'>): {materialSlot: string; surface: string} {
   const base = slot.split('@')[0];
   switch (base) {
-    case 'wall': return {materialSlot: recipe.wallMaterial, surface: 'wall'};
+    case 'wall': case 'arch': return {materialSlot: recipe.wallMaterial, surface: 'wall'};
     case 'curtain': return {materialSlot: 'frame', surface: 'wall'};
     case 'glass': return {materialSlot: 'glass', surface: 'glass'};
     case 'frame': case 'rail': return {materialSlot: 'frame', surface: 'joinery'};
     case 'door': return {materialSlot: 'door', surface: 'door'};
     case 'stone': case 'slab': return {materialSlot: 'stone', surface: 'stone'};
-    case 'police-white': return {materialSlot: 'stucco', surface: 'sign'};
+    case 'police-white': case 'board': return {materialSlot: 'stucco', surface: 'sign'};
+    case 'board-text': return {materialSlot: 'accent', surface: 'sign'};
     case 'police-blue': case 'sign': return {materialSlot: 'accent', surface: 'sign'};
     case 'plant': return {materialSlot: 'stone', surface: 'plant'};
     default: throw Error(`large tier: block-kit slot "${slot}" has no recipe material slot`);
@@ -86,7 +87,31 @@ function decorate(c: PanelCtx, info: {levels: number[]; cells: Cell[]}, g: Large
     drawPoliceStripe(c, v0, height, plateAt, {white: 'police-white', blue: 'police-blue'}, hall ? [[entrance.u0 - 0.3, entrance.u1 + 0.3]] : []);
     counts.policeStripes++;
   }
+  if (g.hoist && g.nameBoards?.length && g.mainPanel === p.index) counts.nameBoards += drawNameBoards(c, info.cells, g);
   if (g.police?.lamp && entrance && drawBlueLamp(c, Math.min(p.uMax - 0.4, entrance.u1 + 0.55), Math.min(entrance.doorTop + 0.9, groundTop - 0.2), {bracket: s.frame, lamp: 'police-blue', cap: 'police-white'})) counts.lamps++;
+}
+
+/**
+ * Name boards (white plates with black lettering) over the ground portals of the hoist bays, left to right: the
+ * warehouses' painted town names. Each sits over its portal's arch band and under the opening above it.
+ */
+function drawNameBoards(c: PanelCtx, cells: Cell[], g: LargeGroupFit): number {
+  const h = g.hoist!, isHoist = (b: number) => ('bays' in h ? h.bays.includes(b) : b % h.every === h.first);
+  const bays = cells.filter(x => x.floor === 0 && isHoist(x.bay)).sort((a, b) => a.u0 - b.u0);
+  const holes = [...c.holes.values()].flat();
+  let n = 0;
+  bays.forEach((cell, k) => {
+    const text = g.nameBoards![k];
+    if (!text) return;
+    const uc = (cell.u0 + cell.u1) / 2, portal = holes.find(h => h[0] < uc && h[1] > uc && h[2] < cell.v0 + 0.5);
+    if (!portal) return;
+    const bw = Math.min(cell.u1 - cell.u0 - 0.2, 0.3 + 0.13 * text.length), bh = 0.24, v0 = portal[3] + 0.26, v1 = v0 + bh;
+    if (v1 > lowestHoleAbove(c, portal[3] + 0.05) - 0.12 || !fitsPanel(c.p, rectPoly(uc - bw / 2, uc + bw / 2, v0, v1))) return;
+    c.box('board', uc - bw / 2, uc + bw / 2, v0, v1, 0, 0.03, c.part());
+    drawLettering(c, text, uc, (v0 + v1) / 2, 0.042, 0.13, bw - 0.12, 'board-text');
+    n++;
+  });
+  return n;
 }
 
 function slopeClass(a: number[], b: number[], c: number[]): 'steep' | 'low' | 'flat' {
@@ -137,7 +162,7 @@ export interface LargeCompileHooks {
 export function compileLargeBuilding(intent: LargeBuildingIntent, facts: BuildingFacts, hooks: LargeCompileHooks = {}): CompiledLargeBuilding {
   const {recipe, report} = fitLarge(intent, facts);
   const groupOf = (index: number) => recipe.groups[recipe.panelGroup[index]];
-  const counts: LargeComponentCounts = {entrances: 0, halls: 0, canopies: 0, garageDoors: 0, letters: 0, cornices: 0, fascias: 0, policeStripes: 0, lamps: 0, roofPlant: recipe.roofPlant.length};
+  const counts: LargeComponentCounts = {nameBoards: 0, entrances: 0, halls: 0, canopies: 0, garageDoors: 0, letters: 0, cornices: 0, fascias: 0, policeStripes: 0, lamps: 0, roofPlant: recipe.roofPlant.length};
   const res = compose(recipe.set, recipe.spec, {
     recessM: recipe.recessM,
     sealSlivers: true,

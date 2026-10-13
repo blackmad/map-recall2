@@ -1,0 +1,178 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "entrepotdok-164981",
+ "pandId": "0363100012164981",
+ "address": "Entrepotdok 13-37 / Binnenkadijk / Laagte Kadijk, Amsterdam: the Entrepotdok warehouses, converted to housing in the 1980s",
+ "sources": [
+  {
+   "id": "pano-2022-04-25-canal",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002541_pano_0001_000675/",
+   "image": "staging/pand-reference-walls/0363100012164981/w01-210.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-25-canal-nw",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002541_pano_0001_000675/",
+   "image": "staging/pand-reference-walls/0363100012164981/w01-210.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-25-canal-converted",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002541_pano_0001_000675/",
+   "image": "staging/pand-reference-walls/0363100012164981/w01-210.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2017-03-23-rear",
+   "kind": "street-panorama",
+   "capturedAt": "2017-03-23",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000220_pano_0001_000566/",
+   "image": "staging/pand-reference-walls/0363100012164981/w02-30.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    2,
+    145,
+    235,
+    146,
+    142,
+    207,
+    206,
+    97
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 14,
+   "ground": "portals",
+   "windows": "narrow",
+   "sills": false,
+   "frames": false,
+   "arches": {
+    "ground": "round",
+    "band": "brick"
+   },
+   "hoist": {
+    "bays": [
+     4,
+     9,
+     12
+    ],
+    "arch": "round"
+   },
+   "nameBoards": [
+    "",
+    "",
+    "Eindhoven"
+   ]
+  },
+  {
+   "wallSurfaces": [
+    3
+   ],
+   "system": "brick-bay-grid",
+   "alignWith": 0,
+   "baysPerStorey": 5,
+   "ground": "portals",
+   "windows": "narrow",
+   "sills": false,
+   "frames": false,
+   "arches": {
+    "ground": "round",
+    "band": "brick"
+   },
+   "hoist": {
+    "bays": [
+     2
+    ],
+    "arch": "round"
+   }
+  },
+  {
+   "wallSurfaces": [
+    198,
+    197,
+    77,
+    136,
+    107,
+    226,
+    162,
+    161,
+    178,
+    74,
+    4,
+    174,
+    175,
+    72,
+    47,
+    191,
+    98,
+    56,
+    180,
+    143,
+    166,
+    215,
+    167,
+    108,
+    230,
+    231,
+    120,
+    102,
+    103,
+    171
+   ],
+   "system": "brick-bay-grid",
+   "alignWith": 0,
+   "baysPerStorey": 33,
+   "windows": "narrow",
+   "sills": false,
+   "frames": false,
+   "hoist": {
+    "every": 3,
+    "first": 1
+   }
+  },
+  {
+   "wallSurfaces": [
+    134,
+    135,
+    151
+   ],
+   "system": "brick-bay-grid",
+   "alignWith": 0,
+   "baysPerStorey": 13,
+   "windows": "narrow",
+   "sills": false,
+   "frames": false,
+   "arches": {
+    "windows": "segmental",
+    "band": "brick"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#6e4636",
+  "frame": "#2b2b2b",
+  "door": "#1b1b1b",
+  "stone": "#d9d4c6"
+ },
+ "notes": [
+  "Canal front (bearing 210, 156.5 m along Entrepotdok) from the 2022-04-25 panorama (w01-210 rectified, and aimed 25-degree thumbnails from the same panorama). Bay rhythm about 2 m. Between 47.7 and 84.8 m from the north-west end (surfaces 3, 2..97) the warehouses keep their original fronts: round-arched ground portals in every bay (wide ones under the loading axes) with brick rowlock arches and white stone springer blocks, a stack of round-arched loading doors with French-balcony railings on each loading axis, tall single-light windows with flat brick heads and no stone sills. Loading axes measured on the rectified crop at 52.5, 65.4, 74.8 and 81.3 m: surface 3 bay 2, then bays 4, 9, 12 of the 14-bay panel. The name board EINDHOVEN (black on white, read on the 2022 panorama, heading 27) hangs over the wide portal of Entrepotdok 26, the third loading axis (the ray from the camera meets the wall at about 82 m).",
+  "The rest of the canal front (0-47.7 m and 84.8-156.5 m, walls[2]) was converted with rectangular glazed loading stacks and white slab sills; modelled as a 33-bay grid with a rectangular loading door on a stone sill every third bay (the real stacks are irregular, two per warehouse in places). Its ground floor is drawn as windows; the photos show garden doors, a few small arched doors, and the board ELBURG over a rectangular door near 87 m (not modelled: that door is in the rectangular-hoist group, whose ground has no portals).",
+  "Rear (Laagte Kadijk side, the panel of surfaces 134/135/151) from the 2017-03-23 panorama: windows with segmental brick heads, modelled as narrow segmental-arched windows on 13 bays. The other rear and courtyard walls, the SE modern rendered block (light render in the 2021 photo w04-120) and the NW end are blank: the 12k triangle budget is spent on the canal front (11,156 triangles).",
+  "Not modelled (the photos show them): the French-balcony railings of the arched loading doors; the blind mezzanine panels with segmental relieving arches over the small portals; wall anchors and downpipes; the hoist beams at the gable tops; white stone corbels at the gable feet; gable stones in the gables (illegible at panorama resolution); a second name board over the wide portal of the second loading axis (four letters at low resolution, probably EDAM; not confirmed, so left out); the balconies and white slabs of the converted stacks; the raised gable copings (3DBAG gives the gable outline, not the coping)."
+ ]
+}

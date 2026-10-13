@@ -10,7 +10,7 @@
  */
 import * as T from 'three';
 import type { PanelCtx } from './compose.ts';
-import { fitsPanel, rectPoly } from './panels.ts';
+import { fitsPanel, insidePoly, rectPoly } from './panels.ts';
 import { add, scale, type V3 } from './mesh.ts';
 import type { Slot } from './spec.ts';
 
@@ -18,7 +18,7 @@ export type ArchKind = 'round' | 'segmental' | 'pointed';
 export const ARCH_KINDS: readonly ArchKind[] = ['round', 'segmental', 'pointed'];
 export type UV = [number, number];
 
-/** Arch band on the wall face around the head: `t` wide (m), projecting `out` (m). */
+/** Arch band on the wall face around the head: `t` wide (m), projecting `out` (m); `out: 0` = a flush band (one face 1.2 cm off the wall, as cladding). */
 export interface ArchBand {
   slot: Slot; t: number; out?: number;
   /** stone blocks at the springing points, beside the band */
@@ -28,7 +28,7 @@ export interface ArchBand {
 }
 export interface ArchParams {
   kind: ArchKind;
-  /** head segments (default 10; clamped 4..16; pointed rounds up to even) */
+  /** head segments (default by width: 4 under 1.25 m, 6 to 1.75 m, then 8, 10; clamped 4..16; pointed rounds up to even) */
   segments?: number;
   /** segmental arch rise as a fraction of the opening width (default 0.18) */
   rise?: number;
@@ -37,7 +37,7 @@ export interface ArchParams {
   band?: ArchBand;
 }
 
-const segs = (a: ArchParams) => { const n = Math.max(4, Math.min(16, Math.round(a.segments ?? 10))); return a.kind === 'pointed' && n % 2 ? n + 1 : n; };
+const segs = (a: ArchParams, w: number) => { const n = Math.max(4, Math.min(16, Math.round(a.segments ?? 2 * Math.max(2, Math.min(5, Math.round(w * 2)))))); return a.kind === 'pointed' && n % 2 ? n + 1 : n; };
 
 /** Natural rise of the head for an opening `w` wide. */
 export function naturalRise(w: number, a: ArchParams): number {
@@ -51,7 +51,7 @@ export function archRise(w: number, h: number, a: ArchParams): number {
 
 /** Head points from the right springing point to the left one (both included), apex v = v1. */
 export function archHead(u0: number, u1: number, v0: number, v1: number, a: ArchParams): UV[] {
-  const w = u1 - u0, uc = (u0 + u1) / 2, nat = naturalRise(w, a), rise = archRise(w, v1 - v0, a), s = v1 - rise, sy = rise / nat, n = segs(a);
+  const w = u1 - u0, uc = (u0 + u1) / 2, nat = naturalRise(w, a), rise = archRise(w, v1 - v0, a), s = v1 - rise, sy = rise / nat, n = segs(a, w);
   const pts: UV[] = [];
   if (a.kind === 'round') {
     const R = w / 2;
@@ -119,7 +119,36 @@ export function spanAt(outline: UV[], v: number): [number, number] | null {
   return lo < hi ? [lo, hi] : null;
 }
 
+/** Bands and their blocks keep this clear of the wall outline (3DBAG members have slanted and notched edges). */
+const FIT_MARGIN = 0.04;
+/** The rectangle (grown by FIT_MARGIN) lies on the panel and, in recess mode, on the walls actually emitted (dissolved members). */
+function fits(c: PanelCtx, a0: number, a1: number, b0: number, b1: number): boolean {
+  if (!fitsPanel(c.p, rectPoly(a0, a1, b0, b1), -FIT_MARGIN)) return false;
+  const m = c.p.members;
+  if (!c.recess || !m) return true;
+  const e = FIT_MARGIN, us = [a0 - e, (a0 + a1) / 2, a1 + e], vs = [b0 - e, (b0 + b1) / 2, b1 + e];
+  // one member: neighbouring 3DBAG faces of a panel can sit a few cm off each other's plane
+  return m.some(k => us.every(u => vs.every(v => insidePoly([u, v], k.poly))));
+}
 const UP: V3 = [0, 1, 0];
+
+/** Flush band: the ring and its imposts/keystone as single faces 1.2-1.5 cm off the wall (cheap; open edges lie on the wall). */
+function drawFlushBand(c: PanelCtx, u0: number, u1: number, v0: number, v1: number, head: UV[], outer: UV[], band: ArchBand, M: (u: number, v: number, d: number) => V3, part: number): boolean {
+  const n = c.p.n, P = (q: UV, d: number) => M(q[0], q[1], d);
+  for (let i = 0; i + 1 < head.length; i++) c.mesh.quad(band.slot, P(head[i], 0.012), P(head[i + 1], 0.012), P(outer[i + 1], 0.012), P(outer[i], 0.012), part, n);
+  const s = head[0][1], t = band.t, quads: [number, number, number, number, Slot][] = [];
+  if (band.imposts) { const ih = Math.min(0.24, (s - v0) * 0.5), iw = t + 0.08; if (ih > 0.05) quads.push([u0 - iw, u0, s - ih, s, band.imposts], [u1, u1 + iw, s - ih, s, band.imposts]); }
+  if (band.keystone) { const uc = (u0 + u1) / 2, kw = Math.max(0.18, t * 0.9), top = Math.max(...outer.map(q => q[1])); quads.push([uc - kw / 2, uc + kw / 2, v1, top + 0.06, band.keystone]); }
+  // Blocks are double-sided (front and back share every edge): a dissolved 3DBAG face is not exactly planar, and a
+  // single-sided block beside the opening can stand more than the open-edge gate's 2 cm off the real wall.
+  for (const [a0, a1, b0, b1, slot] of quads) {
+    if (!fits(c, a0, a1, b0, b1)) continue;
+    const q = [M(a0, b0, 0.015), M(a1, b0, 0.015), M(a1, b1, 0.015), M(a0, b1, 0.015)], bp = c.part();
+    c.mesh.quad(slot, q[0], q[1], q[2], q[3], bp, n);
+    c.mesh.quad(slot, q[0], q[1], q[2], q[3], bp, scale(n, -1));
+  }
+  return true;
+}
 /** 3D facing for the inward (left) normal of the outline edge a->b. */
 const inward = (c: PanelCtx, a: UV, b: UV): V3 => { const dx = b[0] - a[0], dy = b[1] - a[1]; return add(scale(c.p.r, -dy), scale(UP, dx)); };
 
@@ -137,9 +166,9 @@ export interface ArchedWin {
  * Arched opening in the large tier: cut into one member wall `c.recess` deep with a reveal quad per outline edge, a
  * frame ring and glass in one plane at the back, glazing bars 1.5 cm in front of it (mullions stop under the head),
  * and the arch band on the wall face. Where the opening cannot be cut, the frame and glass are laid 1.5 cm proud.
- * Returns the depth of the glass plane.
+ * Returns the depth of the glass plane and, when cut, the offset of the cut wall from the panel plane (for sills).
  */
-export function drawArchedOpening(c: PanelCtx, u0: number, u1: number, v0: number, v1: number, w: ArchedWin): number {
+export function drawArchedOpening(c: PanelCtx, u0: number, u1: number, v0: number, v1: number, w: ArchedWin): { back: number; shift: V3 | null } {
   const outline = archOutline(u0, u1, v0, v1, w.arch), n = c.p.n;
   const onWall = c.cutOutline(u0, u1, v0, v1, outline);
   const part = c.part();
@@ -158,37 +187,41 @@ export function drawArchedOpening(c: PanelCtx, u0: number, u1: number, v0: numbe
     Q = (u, v, d) => c.P(u, v, d + 0.015);
     back = 0.015;
   }
-  const fw = Math.min(w.frameW, (u1 - u0) / 4, (v1 - v0) / 4), inner = insetConvex(outline, fw);
-  triPoly(c, w.frame, outline, [inner], (u, v) => Q(u, v, 0), part);
+  // frameW 0: no frame ring, the glass (or door leaf) fills the opening
+  const fw = Math.max(0, Math.min(w.frameW, (u1 - u0) / 4, (v1 - v0) / 4)), inner = fw > 0 ? insetConvex(outline, fw) : outline;
+  if (fw > 0) triPoly(c, w.frame, outline, [inner], (u, v) => Q(u, v, 0), part);
   triPoly(c, w.glass, inner, [], (u, v) => Q(u, v, 0), part);
+  const bw = fw > 0 ? fw : 0.06;
   const s = v1 - archRise(u1 - u0, v1 - v0, w.arch);
   const rows = [...w.rowsAt.map(f => v0 + (v1 - v0) * f).filter(v => v < s - fw), ...(w.arch.springBar ? [s] : [])];
   if (w.mullAt.length || rows.length) {
-    const bars = c.part(), g = (a: number, b: number, lo: number, hi: number) => c.mesh.quad(w.frame, Q(a, lo, 0.015), Q(b, lo, 0.015), Q(b, hi, 0.015), Q(a, hi, 0.015), bars, n);
+    const bars = c.part(), fw = bw, g = (a: number, b: number, lo: number, hi: number) => c.mesh.quad(w.frame, Q(a, lo, 0.015), Q(b, lo, 0.015), Q(b, hi, 0.015), Q(a, hi, 0.015), bars, n);
     for (const f of w.mullAt) {
       const u = u0 + (u1 - u0) * f, top = Math.min(topAt(inner, u - fw / 2), topAt(inner, u + fw / 2));
       if (top > v0 + fw + 0.1) g(u - fw / 2, u + fw / 2, v0 + fw, top);
     }
     for (const v of rows) { const sp = spanAt(inner, v); if (sp && sp[1] - sp[0] > 0.1) g(sp[0], sp[1], v - fw / 2, v + fw / 2); }
   }
-  if (w.arch.band) drawArchBand(c, u0, u1, v0, v1, w.arch, w.arch.band);
-  return back;
+  if (w.arch.band) drawArchBand(c, u0, u1, v0, v1, w.arch, w.arch.band, onWall ? (u, v, d) => add(onWall(u, v), scale(n, d)) : undefined);
+  const mid = (u0 + u1) / 2, at = onWall?.(mid, v0), P0 = c.P(mid, v0, 0);
+  return { back, shift: at ? [at[0] - P0[0], at[1] - P0[1], at[2] - P0[2]] : null };
 }
 
 /** Proud arched opening for the original block-kit path (no recess): frame outline at 2 cm, glass at 3.5 cm. */
 export function drawArchedProud(c: PanelCtx, u0: number, u1: number, v0: number, v1: number, w: ArchedWin) {
-  const outline = archOutline(u0, u1, v0, v1, w.arch), fw = Math.min(w.frameW, (u1 - u0) / 4, (v1 - v0) / 4);
-  triPoly(c, w.frame, outline, [], (u, v) => c.P(u, v, 0.02), c.part());
-  triPoly(c, w.glass, insetConvex(outline, fw), [], (u, v) => c.P(u, v, 0.035), c.part());
+  const outline = archOutline(u0, u1, v0, v1, w.arch), fw = Math.max(0, Math.min(w.frameW, (u1 - u0) / 4, (v1 - v0) / 4));
+  if (fw > 0) triPoly(c, w.frame, outline, [], (u, v) => c.P(u, v, 0.02), c.part());
+  triPoly(c, w.glass, fw > 0 ? insetConvex(outline, fw) : outline, [], (u, v) => c.P(u, v, 0.035), c.part());
   if (w.arch.band) drawArchBand(c, u0, u1, v0, v1, w.arch, w.arch.band);
 }
 
 /**
- * Arch band: a ring `t` wide around the head on the wall face, projecting `out`, closed (front, both edges, end caps,
- * and a back face when `c.closedBoxes`), plus impost blocks at the springing points and a keystone. Skipped where
- * the band would leave the wall.
+ * Arch band: a ring `t` wide around the head on the wall face, projecting `out` (front, both edges, end caps), plus
+ * impost blocks at the springing points and a keystone. With `onWall` (the opening was cut) every part stands on the
+ * cut wall's own plane, so its back edges are seams on the wall; otherwise it stands on the panel plane and is closed
+ * at the back when `c.closedBoxes`. Skipped where the band would leave the wall.
  */
-export function drawArchBand(c: PanelCtx, u0: number, u1: number, v0: number, v1: number, a: ArchParams, band: ArchBand): boolean {
+export function drawArchBand(c: PanelCtx, u0: number, u1: number, v0: number, v1: number, a: ArchParams, band: ArchBand, onWall?: (u: number, v: number, d: number) => V3): boolean {
   const head = archHead(u0, u1, v0, v1, a), t = band.t, out = band.out ?? 0.03, n = c.p.n;
   // outward offset of each head vertex: mitred normals; the springing points move straight out sideways
   const normalOf = (i: number): UV => { const p = head[Math.max(0, i - 1)], q = head[Math.min(head.length - 1, i + 1)], dx = q[0] - p[0], dy = q[1] - p[1], l = Math.hypot(dx, dy) || 1; return [dy / l, -dx / l]; };
@@ -199,11 +232,13 @@ export function drawArchBand(c: PanelCtx, u0: number, u1: number, v0: number, v1
   });
   const ring: UV[] = [...head, ...[...outer].reverse()];
   const xs = ring.map(q => q[0]), ys = ring.map(q => q[1]);
-  if (!fitsPanel(c.p, rectPoly(Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)))) return false;
-  const part = c.part(), P = (q: UV, d: number) => c.P(q[0], q[1], d);
+  if (!fits(c, Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys))) return false;
+  const M = onWall ?? ((u: number, v: number, d: number) => c.P(u, v, d)), back = !onWall && c.closedBoxes;
+  const part = c.part(), P = (q: UV, d: number) => M(q[0], q[1], d);
+  if (out <= 0) return drawFlushBand(c, u0, u1, v0, v1, head, outer, band, M, part);
   for (let i = 0; i + 1 < head.length; i++) {
     c.mesh.quad(band.slot, P(head[i], out), P(head[i + 1], out), P(outer[i + 1], out), P(outer[i], out), part, n);
-    if (c.closedBoxes) c.mesh.quad(band.slot, P(head[i], 0), P(head[i + 1], 0), P(outer[i + 1], 0), P(outer[i], 0), part, scale(n, -1));
+    if (back) c.mesh.quad(band.slot, P(head[i], 0), P(head[i + 1], 0), P(outer[i + 1], 0), P(outer[i], 0), part, scale(n, -1));
     // soffit over the opening (faces into it) and the outer edge (faces away)
     c.mesh.quad(band.slot, P(head[i], 0), P(head[i + 1], 0), P(head[i + 1], out), P(head[i], out), part, inward(c, head[i], head[i + 1]));
     c.mesh.quad(band.slot, P(outer[i], 0), P(outer[i + 1], 0), P(outer[i + 1], out), P(outer[i], out), part, scale(inward(c, outer[i], outer[i + 1]), -1));
@@ -220,6 +255,16 @@ export function drawArchBand(c: PanelCtx, u0: number, u1: number, v0: number, v1
     const uc = (u0 + u1) / 2, kw = Math.max(0.18, t * 0.9), top = Math.max(...outer.map(q => q[1]));
     blocks.push([uc - kw / 2, uc + kw / 2, v1, top + 0.06, band.keystone]);
   }
-  for (const [a0, a1, b0, b1, slot] of blocks) if (fitsPanel(c.p, rectPoly(a0, a1, b0, b1))) c.box(slot, a0, a1, b0, b1, 0, out + 0.03, c.part());
+  for (const [a0, a1, b0, b1, slot] of blocks) {
+    if (!fits(c, a0, a1, b0, b1)) continue;
+    if (!onWall) { c.box(slot, a0, a1, b0, b1, 0, out + 0.03, c.part()); continue; }
+    // five faces on the cut wall's plane (the back is the wall)
+    const bp = c.part(), d1 = out + 0.03, Q = (u: number, v: number, d: number) => M(u, v, d), r = c.p.r;
+    c.mesh.quad(slot, Q(a0, b0, d1), Q(a1, b0, d1), Q(a1, b1, d1), Q(a0, b1, d1), bp, n);
+    c.mesh.quad(slot, Q(a0, b1, 0), Q(a1, b1, 0), Q(a1, b1, d1), Q(a0, b1, d1), bp, UP);
+    c.mesh.quad(slot, Q(a0, b0, 0), Q(a1, b0, 0), Q(a1, b0, d1), Q(a0, b0, d1), bp, DOWN);
+    c.mesh.quad(slot, Q(a0, b0, 0), Q(a0, b1, 0), Q(a0, b1, d1), Q(a0, b0, d1), bp, scale(r, -1));
+    c.mesh.quad(slot, Q(a1, b0, 0), Q(a1, b1, 0), Q(a1, b1, d1), Q(a1, b0, d1), bp, r);
+  }
   return true;
 }

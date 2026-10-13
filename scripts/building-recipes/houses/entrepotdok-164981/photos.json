@@ -1,0 +1,50 @@
+[
+ {
+  "front": "wall-entrepotdok",
+  "panoId": "TMX7316010203-001975_pano_0000_000743",
+  "timestamp": "2021-01-22T11:56:49.110120Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/01/22/TMX7316010203-001975/pano_0000_000743/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122707.34989189995,
+   486883.62085962994
+  ],
+  "headingDeg": 21.878671055226846,
+  "fovDeg": 96.68482624327594,
+  "pitchDeg": 12.280625456829203,
+  "distanceM": 33.33536905424299,
+  "image": "artifacts/building-recipes/entrepotdok-164981/photo-wall-entrepotdok.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-laagte-kadijk",
+  "panoId": "b_20241210_1246_Track09_Sphere_00104",
+  "timestamp": "2024-12-10T12:18:29Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track09_Sphere_00104/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122807.18578157872,
+   486940.77931119787
+  ],
+  "headingDeg": 235.97525986514665,
+  "fovDeg": 76.77925005202007,
+  "pitchDeg": 10.95212747199155,
+  "distanceM": 37.45157755574411,
+  "image": "artifacts/building-recipes/entrepotdok-164981/photo-wall-laagte-kadijk.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ },
+ {
+  "front": "wall-binnenkadijk",
+  "panoId": "TMX7316010203-002047_pano_0000_002763",
+  "timestamp": "2021-03-18T10:40:27.564050Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2021/03/18/TMX7316010203-002047/pano_0000_002763/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   122799.2392940155,
+   486887.28771528596
+  ],
+  "headingDeg": 296.7737069487823,
+  "fovDeg": 110,
+  "pitchDeg": 50.7675900055037,
+  "distanceM": 5.567621568119159,
+  "image": "artifacts/building-recipes/entrepotdok-164981/photo-wall-binnenkadijk.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]
