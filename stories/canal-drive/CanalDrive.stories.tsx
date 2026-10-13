@@ -27,11 +27,7 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   | 'stacked-notices-touch' | 'neighborhood-fallback-touch'
   // Aboard a cycling IJ ferry: the departure/destination notice under the plaque.
   | 'hud-ferry' | 'touch-hud-ferry'
-  // The non-blocking route question: options in the bottom band while riding.
-  // `stacked` adds the other notices that can share the band with it: the
-  // neighbourhood postcard on a desktop, the "Passed - that was ..." reveal
-  // line on a phone (the postcard yields there).
-  | 'riding-prompt' | 'riding-prompt-stacked' | 'riding-prompt-touch' | 'riding-prompt-stacked-touch';
+;
 
 function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
   const configure = useCallback((frame: HTMLIFrameElement) => {
@@ -123,7 +119,6 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       || scenario === 'neighborhood-fallback-touch'
       || scenario.startsWith('finish')
       || scenario.startsWith('landmark') || scenario.startsWith('touch-hud')
-      || scenario.startsWith('riding-prompt')
       || scenario === 'touch-prompt' || scenario === 'touch-settings') {
       overlay?.store.setSetupOpen(false);
       const drawWhenReady = () => {
@@ -346,18 +341,14 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           frameMath.random = random;
           return;
         }
-        if (scenario === 'hud' || scenario === 'hud-ferry' || scenario.startsWith('touch-hud') || scenario.startsWith('riding-prompt')) {
+        if (scenario === 'hud' || scenario === 'hud-ferry' || scenario.startsWith('touch-hud')) {
           const ferry = scenario.endsWith('-ferry');
-          const riding = scenario.startsWith('riding-prompt');
-          const asking = scenario === 'touch-hud-question' || ferry || riding;
+          const asking = scenario === 'touch-hud-question' || ferry;
           const long = scenario === 'touch-hud-long';
           const hood = long ? 'Van Lennepbuurt en Kinkerbuurt-Noord' : 'Jordaan';
           const destinationName = long ? 'Rijksmuseum en Museumplein (hoofdingang)' : 'Westerkerk';
           game.currentNeighborhood = hood;
           game.quizFeedback = asking ? '' : 'Correct — Singel';
-          // Phone, stacked: the reveal line of an earlier pass is still up
-          // under the plaque while the next question rides in.
-          if (scenario === 'riding-prompt-stacked-touch') game.quizFeedback = 'Passed — that was Singel';
           game.showMiniMap = true;
           game.routeTo = { id: 'westerkerk', name: 'Westerkerk' };
           // Place the whole HUD from the live viewport, exactly as a frame
@@ -393,29 +384,6 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
             game.hud.drawStick(ctx, null);
           }
           if (scenario === 'touch-hud') game.hud.drawTouchHint(ctx, 'relative');
-          if (riding) {
-            game.routeOptions.answerMode = 'multiple';
-            game.player = game.player || { x: 0, y: 0, angle: 0, speed: 120, vx: 0, vy: 0 };
-            if (scenario === 'riding-prompt-stacked') {
-              game._neighborhoodImages = new Map();
-              game._neighborhoodNotice = { name: 'Jordaan', kind: 'neighborhood' };
-              game._neighborhoodNoticeTimer = 4;
-              game._syncHudLayout?.();
-              game._renderNeighborhoodNotice();
-            }
-            const frameMath = (frame.contentWindow as unknown as { Math: Math }).Math;
-            const random = frameMath.random;
-            frameMath.random = () => 0.42;
-            game._openQuizPrompt({
-              mode: 'riding',
-              kind: 'route', name: 'Prinsengracht', subject: 'water',
-              question: 'Which canal are you on?',
-              context: 'You made a turn',
-              choices: ['Prinsengracht', 'Keizersgracht', 'Herengracht', 'Brouwersgracht'],
-            });
-            frameMath.random = random;
-            return;
-          }
           if (ferry) {
             game._renderFerryNotice({
               ferryOrigin: { id: '3980940', name: 'Centraal Station', x: 0, y: 0, land: { x: 0, y: 0 } },
@@ -600,36 +568,6 @@ export const LandscapeHud: Story = {
 export const PortraitRecallPrompt: Story = {
   args: { scenario: 'touch-prompt' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
-};
-
-/** The route question while riding: four options in the bottom band, the
- *  vehicle keeps moving, and the corridor above stays clear. */
-export const RidingPrompt: Story = { args: { scenario: 'riding-prompt' } };
-
-/** Riding question beside the neighbourhood postcard: the strip shifts left to
- *  clear it and neither covers the trip readout. */
-export const RidingPromptWithPostcard: Story = { args: { scenario: 'riding-prompt-stacked' } };
-
-export const PortraitRidingPrompt: Story = {
-  args: { scenario: 'riding-prompt-touch' },
-  parameters: { viewport: { defaultViewport: 'mobile2' } },
-};
-
-/** Phone, stacked: the reveal line of the last pass in the plaque, the next
- *  question in the band above the d-pad. */
-export const PortraitRidingPromptStacked: Story = {
-  args: { scenario: 'riding-prompt-stacked-touch' },
-  parameters: { viewport: { defaultViewport: 'mobile2' } },
-};
-
-export const PortraitRidingPromptSmallPhone: Story = {
-  args: { scenario: 'riding-prompt-touch' },
-  parameters: { viewport: { defaultViewport: 'mobile1' } },
-};
-
-export const LandscapeRidingPrompt: Story = {
-  args: { scenario: 'riding-prompt-touch' },
-  parameters: { viewport: { defaultViewport: 'mobile2', defaultOrientation: 'landscape' } },
 };
 
 /** The arrival card: paper, wrapped stats, and buttons instead of the ENTER /

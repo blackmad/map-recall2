@@ -14,7 +14,6 @@ import assert from 'node:assert/strict';
 import { bottomHudLayout, rectsIntersect, type Rect } from '../src/canalRecall/bottomHudLayout.ts';
 import { hudLayout } from '../src/canalRecall/hudLayout.ts';
 import { resolveViewport } from '../src/canalRecall/viewport.ts';
-import { postcardYieldsToRidingPrompt, ridingPromptRect, ridingPromptSize } from '../src/canalRecall/ridingPromptBand.ts';
 
 const CANVAS_W = 1280;
 const CANVAS_H = 720;
@@ -108,67 +107,5 @@ for (const tripWidth of TRIP_WIDTHS) {
   );
 }
 
-
-// --- The riding prompt band --------------------------------------------------
-//
-// The non-blocking route question sits in the trivia card's slot. Whatever else
-// is on screen with it — trip readout, overview, postcard, zoom badge, controls
-// hint, the phone's d-pad — it must clear all of it, stay on screen, and stay
-// out of the middle of the screen where the vehicle is driving.
-{
-  const viewports: Array<[string, ReturnType<typeof resolveViewport>]> = [
-    ['desktop 1440x900', resolveViewport({ windowWidth: 1440, windowHeight: 900, devicePixelRatio: 1 })],
-    ['desktop 1920x1080', resolveViewport({ windowWidth: 1920, windowHeight: 1080, devicePixelRatio: 1 })],
-    ['phone portrait 390x844', resolveViewport({ windowWidth: 390, windowHeight: 844, devicePixelRatio: 3, touch: true })],
-    ['phone portrait 360x640', resolveViewport({ windowWidth: 360, windowHeight: 640, devicePixelRatio: 3, touch: true })],
-    ['phone landscape 844x390', resolveViewport({ windowWidth: 844, windowHeight: 390, devicePixelRatio: 3, touch: true })],
-  ];
-  let riding = 0;
-  for (const [label, viewport] of viewports) {
-    for (const postcardVisible of [false, true]) {
-      for (const minimapVisible of [false, true]) {
-        for (const zoomVisible of [false, true]) {
-          for (const controlsVisible of [false, true]) {
-            for (const feedbackVisible of [false, true]) {
-              const input = { viewport, postcardVisible, minimapVisible, zoomVisible, controlsVisible, feedbackVisible, neighborhoodVisible: true };
-              const rect = ridingPromptRect(input);
-              const size = ridingPromptSize(viewport);
-              const layout = hudLayout({ viewport, tripWidth: 180, ...input, postcardVisible: postcardVisible && !postcardYieldsToRidingPrompt(viewport), landmarkWidth: size.width, landmarkHeight: size.height });
-              const name = `${label}${postcardVisible ? '+postcard' : ''}${minimapVisible ? '+minimap' : ''}${zoomVisible ? '+zoom' : ''}${controlsVisible ? '+controls' : ''}${feedbackVisible ? '+feedback' : ''}`;
-              assert.ok(
-                rect.x >= 0 && rect.y >= 0 && rect.x + rect.width <= viewport.width && rect.y + rect.height <= viewport.height,
-                `riding prompt is off screen in ${name}: ${JSON.stringify(rect)}`,
-              );
-              assert.ok(rect.width >= 270, `riding prompt too narrow in ${name}: ${rect.width}`);
-              const others: Array<[string, Rect]> = [['trip', layout.trip]];
-              // Trip is folded into the recall plaque on a phone, which sits at the top.
-              if (minimapVisible) others.push(['minimap', layout.minimap]);
-              if (postcardVisible && !postcardYieldsToRidingPrompt(viewport)) others.push(['postcard', layout.postcard]);
-              if (zoomVisible) others.push(['zoom', layout.zoomBadge]);
-              if (controlsVisible && viewport.mode === 'desktop') others.push(['controls', layout.controlsHint]);
-              if (layout.dpad) others.push(['dpad', layout.dpad.bounds]);
-              if (viewport.mode === 'compact') others.push(['recall', layout.recall], ['compass', layout.compass]);
-              for (const [other, otherRect] of others) {
-                assert.equal(
-                  rectsIntersect(rect, otherRect), false,
-                  `riding prompt overlaps ${other} in ${name}: ${JSON.stringify(rect)} vs ${JSON.stringify(otherRect)}`,
-                );
-              }
-              // The vehicle drives at the centre of the screen. The strip stays
-              // in the lower part of it, never across the middle.
-              const centreY = viewport.height / 2;
-              assert.ok(
-                rect.y >= centreY + (viewport.mode === 'desktop' ? 120 : 8),
-                `riding prompt reaches the driving corridor in ${name}: y=${rect.y}, centre=${centreY}`,
-              );
-              riding++;
-            }
-          }
-        }
-      }
-    }
-  }
-  process.stdout.write(`Riding prompt band checks passed (${riding} scenarios).\n`);
-}
 
 process.stdout.write(`Bottom HUD layout checks passed (${scenarios} scenarios).\n`);

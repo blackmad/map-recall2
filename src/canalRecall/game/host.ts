@@ -240,17 +240,9 @@ export interface RecallHost extends GameCoreHost {
   _updateRacing(dt: number): void;
   _liveRoutePath: WorldPoint[] | null;
   showMiniMap: boolean;
-  /** How the open question holds the vehicle: `riding` leaves it moving. */
-  quizPromptMode?: import('./ridingPrompt').PromptMode;
-  /** Timing of the open riding question; `expired` once its card is gone but
-   *  the street has not been left (name still withheld). */
-  _ridingState?: import('./ridingPrompt').RidingPromptState | null;
-  /** The riding state is a budget-declined name with no question behind it. */
-  _ridingSilent?: boolean;
-  /** `false` turns riding questions off; otherwise they follow the page. */
-  ridingPrompts?: boolean;
-  /** Cached: does the frame loop call `_quizFreezesRide`? */
-  _frameLoopHonoursRiding?: boolean;
+  /** A budget-declined name being withheld until its street is left
+   *  (`silentPass.ts`); no question is open while it is set. */
+  _silentPass?: import('./silentPass').SilentPassState | null;
   /** Route asks per rolling minute (default 2; Infinity = ask everything). */
   maxAsksPerMinute?: number;
   _questionBudget?: import('./questionBudget').QuestionBudgetState;
@@ -258,7 +250,7 @@ export interface RecallHost extends GameCoreHost {
   _feedbackText?: string;
   _feedbackSince?: number | null;
   _promptLog?: Array<{
-    at: number; name: string; kind: string; mode: import('./ridingPrompt').PromptMode;
+    at: number; name: string; kind: string;
     speedBefore?: number; speedAfter?: number; event?: string;
   }>;
 
@@ -396,7 +388,7 @@ export interface PresentationHost extends GameCoreHost {
   quizCurrentName: string;
   quizCandidateName: string;
   quizPromptSubject: string;
-  _ridingState?: import('./ridingPrompt').RidingPromptState | null;
+  _silentPass?: import('./silentPass').SilentPassState | null;
   _activeTransitLine: string;
   _transitLineStickyAt: number | null;
   quizPromptSegmentIndex: number;

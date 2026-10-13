@@ -169,6 +169,14 @@ check('a name is never asked twice in two guises', () => {
   })), null, 'or the name the route quiz already owns');
 });
 
+check('below hard a bridge is only asked when it is famous', () => {
+  assert.equal(crossingQuestionKind(crossing({ hasWater: false, bridgeAskable: false })), null,
+    'Brug 117 at medium: no bridge question');
+  assert.equal(crossingQuestionKind(crossing({ bridgeAskable: false })), 'water',
+    'the water under it is still taught');
+  assert.equal(crossingQuestionKind(crossing({ hasWater: false, bridgeAskable: true })), 'bridge');
+});
+
 check('suppression and repeats silence a crossing', () => {
   assert.equal(crossingQuestionKind(crossing({ waterSuppressedHere: true })), null);
   assert.equal(crossingQuestionKind(crossing({ hasWater: false, bridgeSuppressedHere: true })), null);

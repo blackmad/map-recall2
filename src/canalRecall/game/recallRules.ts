@@ -142,6 +142,9 @@ export interface CrossingQuestionInput {
   waterSuppressedHere: boolean;
   /** Same, for the bridge itself. */
   bridgeSuppressedHere: boolean;
+  /** Below hard difficulty only famous bridges are asked (notableBridges.ts);
+   *  undefined means askable. */
+  bridgeAskable?: boolean;
   /** The road the vehicle is on, and the name the route quiz already owns. */
   currentRoadName: string;
   quizCurrentName: string;
@@ -170,6 +173,7 @@ export function crossingQuestionKind(input: CrossingQuestionInput): CrossingQues
   if (input.bridgeName === input.currentRoadName) return null;
   if (input.bridgeName === input.quizCurrentName) return null;
   if (input.bridgeSuppressedHere) return null;
+  if (input.bridgeAskable === false) return null;
   return 'bridge';
 }
 

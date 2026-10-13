@@ -1,5 +1,38 @@
 # Canal Recall — what is built
 
+## Questions block again; the budget stays; bridge names leave medium (2026-10-13)
+
+User: "the non-blocking questions were a bad idea, questions should be
+blocking, but we should keep a max/cooldown, also bridge names should not
+be in medium difficulty unless they are somehow incredibly notable." The
+riding question (options in the bottom band while moving, 12 s timeout,
+`passed` on leaving the street; HISTORY 2026-10-12) is retired: every
+question zeroes the speed and the frame loop waits, as before it. What stays
+is the per-minute budget (`questionBudget.ts`, two asks a rolling minute,
+the "Questions a minute" setting), now applied in every answer mode, not
+only riding; transit keeps its own cooldowns. A declined new name is a
+**silent pass** (`silentPass.ts`, the surviving half of `ridingPrompt.ts`):
+withheld on the plaque while the rider is on the street, said in one line
+("That was Singel") once they have been off it for 1.2 s, graded `passed`
+as exposure. `game.js` keeps calling `_quizFreezesRide()`, which is now
+"a question is open and it is not a silent pass". Deleted: `ridingPrompt.ts`,
+`ridingPromptStyles.ts` + the pasted `<style id="canal-riding-prompt-styles">`,
+`ridingPromptBand.ts` and its 384-scenario band check, six Storybook riding
+states and their baselines, `game.ridingPrompts`, `quizPromptMode`.
+`tests/e2e/riding-pacing.spec.ts` → `question-budget.spec.ts`: on the
+seeded Anne Frank → Rijksmuseum ride, ask-everything asked 9 (max 6 in a
+minute, 27 s frozen); the budget asked 3 (2.0/min, max 2, 9 s frozen, two
+silent-pass reveals), every question with speed 0. Bridge names
+(`notableBridges.ts`): below hard only eleven famous bridges are asked
+(Magere Brug, Blauwbrug, Torensluis, Hoge Sluis, Berlagebrug, Nesciobrug,
+Jan Schaeferbrug, Enneüs Heermabrug, Schellingwouderbrug, Halvemaansbrug,
+Haarlemmersluis; a test pins each to `bridges.json`), for both the route
+question on a bridge way (the name then simply shows as the road) and the
+crossing question (`crossingQuestionKind.bridgeAskable`, the water under it
+is still taught); hard and expert ask every bridge, custom follows the
+answer mode. `docs/gameplay/loop.md` rewritten accordingly.
+
+
 ## `check:signature-fallback` back in the gate (2026-10-13)
 
 `scripts/check-signature-fallback-refresh.mjs` had crashed since the recipe

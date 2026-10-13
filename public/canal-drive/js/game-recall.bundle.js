@@ -62,6 +62,7 @@
     if (input.bridgeName === input.currentRoadName) return null;
     if (input.bridgeName === input.quizCurrentName) return null;
     if (input.bridgeSuppressedHere) return null;
+    if (input.bridgeAskable === false) return null;
     return "bridge";
   }
   function pickDistractors(pool, answer, limit, shuffle2) {
@@ -522,414 +523,43 @@
     return { asks: [...recentAsks(state, now), now] };
   }
 
-  // src/canalRecall/game/ridingPrompt.ts
-  var RIDING_PROMPT_TIMEOUT_SECONDS = 12;
-  var RIDING_LEAVE_STREET_SECONDS = 1.2;
-  function openRidingPrompt(name) {
-    return { name, elapsed: 0, offStreetSeconds: 0, expired: false };
+  // src/canalRecall/game/silentPass.ts
+  var LEAVE_STREET_SECONDS = 1.2;
+  function beginSilentPass(name) {
+    return { name, offStreetSeconds: 0 };
   }
-  function advanceRidingPrompt(state, input) {
-    const elapsed = state.elapsed + input.dt;
+  function advanceSilentPass(state, input) {
     const offStreetSeconds = input.roadName === state.name ? 0 : state.offStreetSeconds + input.dt;
-    if (offStreetSeconds >= RIDING_LEAVE_STREET_SECONDS) {
-      return { state: { ...state, elapsed, offStreetSeconds }, event: "leave" };
-    }
-    if (!state.expired && elapsed >= RIDING_PROMPT_TIMEOUT_SECONDS) {
-      return { state: { ...state, elapsed, offStreetSeconds, expired: true }, event: "expire" };
-    }
-    return { state: { ...state, elapsed, offStreetSeconds }, event: "none" };
+    return { state: { ...state, offStreetSeconds }, left: offStreetSeconds >= LEAVE_STREET_SECONDS };
   }
-  function promptModeFor(input) {
-    if (!input.hookInstalled || input.enabled === false) return "blocking";
-    if (input.answerMode !== "multiple" || input.kind !== "route" || input.transit) return "blocking";
-    return "riding";
-  }
-  function questionFreezesRide(open, mode) {
-    return open && mode !== "riding";
+  function questionFreezesRide(open, silent) {
+    return open && !silent;
   }
 
-  // src/canalRecall/game/ridingPromptStyles.ts
-  var RIDING_PROMPT_STYLE_ID = "canal-riding-prompt-styles";
-  var RIDING_PROMPT_CSS = `
-html #canal-prompt.riding, html #canal-prompt.riding.dock-left {
-  inset: auto; left: var(--riding-left, 50%); bottom: var(--riding-bottom, 30px);
-  width: var(--riding-width, 560px); padding: 0; background: none;
-  align-items: flex-end; justify-content: stretch;
-}
-html #canal-prompt.riding #canal-card {
-  width: 100%; max-height: none; overflow: visible; padding: 8px 10px 10px;
-  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 6px 10px;
-}
-#canal-prompt.riding .prompt-kind { grid-column: 1; grid-row: 1; margin: 0; padding: 3px 8px 3px 6px; font-size: 11px; }
-#canal-prompt.riding #canal-card h2 { grid-column: 2; grid-row: 1; margin: 0; font-size: 14px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-#canal-prompt.riding #canal-card p,
-#canal-prompt.riding #canal-answer,
-#canal-prompt.riding #canal-submit { display: none !important; }
-#canal-prompt.riding #canal-no-idea { grid-column: 3; grid-row: 1; width: auto; margin: 0; min-height: 0; padding: 5px 9px; font-size: 12px; white-space: nowrap; }
-#canal-prompt.riding #canal-feedback { grid-column: 1 / -1; grid-row: 2; margin: 0; font-size: 13px; }
-/* On a narrow strip the question gets the room the kind chip took. */
-#canal-prompt.riding.riding-narrow .prompt-kind { display: none; }
-#canal-prompt.riding.riding-narrow #canal-card { grid-template-columns: minmax(0, 1fr) auto; }
-#canal-prompt.riding.riding-narrow #canal-card h2 { grid-column: 1; }
-#canal-prompt.riding.riding-narrow #canal-no-idea { grid-column: 2; }
-#canal-prompt.riding #canal-choices { grid-column: 1 / -1; grid-row: 3; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin: 0; }
-#canal-prompt.riding.riding-narrow #canal-choices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-#canal-prompt.riding .canal-choice { min-width: 0; min-height: 38px; padding: 6px 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
-#canal-prompt.riding .canal-choice-key { flex: none; margin-right: 6px; }
-#canal-prompt.riding #canal-card.answered #canal-choices { opacity: .9; }
-`;
-  function installRidingPromptStyles(doc = document) {
-    if (doc.getElementById(RIDING_PROMPT_STYLE_ID)) return;
-    const style = doc.createElement("style");
-    style.id = RIDING_PROMPT_STYLE_ID;
-    style.textContent = RIDING_PROMPT_CSS;
-    doc.head.appendChild(style);
+  // src/canalRecall/game/notableBridges.ts
+  var NOTABLE_BRIDGES = /* @__PURE__ */ new Set([
+    "Magere Brug",
+    "Blauwbrug",
+    "Torensluis",
+    "Hoge Sluis",
+    "Berlagebrug",
+    "Nesciobrug",
+    "Jan Schaeferbrug",
+    "Enne\xFCs Heermabrug",
+    "Schellingwouderbrug",
+    "Halvemaansbrug",
+    "Haarlemmersluis"
+  ]);
+  function normalise(name) {
+    return name.trim().toLowerCase().replace(/\s+/g, " ");
   }
-
-  // src/canalRecall/viewport.ts
-  var DESIGN_WIDTH = 1280;
-  var HUD_MAX_WIDTH_DESKTOP = DESIGN_WIDTH;
-  var HUD_MAX_WIDTH_COMPACT = 900;
-
-  // src/canalRecall/touchControls.ts
-  var PAD_FRACTION = 0.42;
-  var PAD_MIN = 132;
-  var PAD_MAX = 190;
-  var PAD_MARGIN = 16;
-  function chromeBand(viewport) {
-    const maxWidth = viewport.mode === "compact" ? HUD_MAX_WIDTH_COMPACT : HUD_MAX_WIDTH_DESKTOP;
-    const width = Math.min(viewport.width, maxWidth);
-    return {
-      x: Math.round((viewport.width - width) / 2),
-      width,
-      height: viewport.height
-    };
+  var NOTABLE_KEYS = new Set([...NOTABLE_BRIDGES].map(normalise));
+  function isNotableBridge(name) {
+    return NOTABLE_KEYS.has(normalise(name));
   }
-  function dpadLayout(viewport, band = chromeBand(viewport)) {
-    if (!viewport.touch || viewport.mode !== "compact") return null;
-    const size = Math.round(
-      Math.min(PAD_MAX, Math.max(PAD_MIN, Math.min(band.width, band.height) * PAD_FRACTION))
-    );
-    const cx = viewport.orientation === "portrait" ? Math.round(band.x + band.width / 2) : Math.round(band.x + PAD_MARGIN + size / 2);
-    const cy = Math.round(band.height - viewport.safeBottom - PAD_MARGIN - size / 2);
-    return {
-      bounds: { x: cx - size / 2, y: cy - size / 2, width: size, height: size },
-      cx,
-      cy,
-      cell: size / 3
-    };
-  }
-  var ROAD_ASSIST_TOLERANCE = 55 * Math.PI / 180;
-
-  // src/canalRecall/compass.ts
-  var COMPASS_SIZE_DESKTOP = 44;
-  var COMPASS_SIZE_COMPACT = 40;
-
-  // src/canalRecall/hudLayout.ts
-  var MARGIN = 12;
-  var GAP = 8;
-  var COMPACT_RECALL_H = 40;
-  var COMPACT_RECALL_FEEDBACK_H = 58;
-  var COMPACT_LOCATION_H = 46;
-  var COMPACT_LOCATION_PLAIN_H = 34;
-  var COMPACT_DESTINATION_H = 36;
-  var COMPACT_MINIMAP_W = 124;
-  var COMPACT_MINIMAP_H = 96;
-  var COMPACT_ZOOM_H = 22;
-  var PORTRAIT_PLAQUE_H = 56;
-  var PORTRAIT_PLAQUE_LINE_H = 15;
-  var PORTRAIT_MINIMAP_W = 100;
-  var PORTRAIT_MINIMAP_H = 76;
-  function hudBand(viewport) {
-    const maxWidth = viewport.mode === "compact" ? HUD_MAX_WIDTH_COMPACT : HUD_MAX_WIDTH_DESKTOP;
-    const width = Math.min(viewport.width, maxWidth);
-    return {
-      x: Math.round((viewport.width - width) / 2),
-      width,
-      height: viewport.height
-    };
-  }
-  function offsetRect(rect, dx) {
-    return dx === 0 ? rect : { ...rect, x: rect.x + dx };
-  }
-  function compactLandscapeCardWidth(band, dpad) {
-    const padRight = dpad ? dpad.bounds.x - band.x + dpad.bounds.width + GAP : 0;
-    return Math.max(160, band.width - MARGIN * 2 - padRight);
-  }
-  function landmarkCardWidth(viewport, desired = 480) {
-    if (viewport.mode !== "compact") return desired;
-    const band = hudBand(viewport);
-    if (viewport.orientation === "portrait") {
-      return Math.min(desired, band.width - MARGIN * 2);
-    }
-    return Math.min(desired, compactLandscapeCardWidth(band, dpadLayout(viewport, band)));
-  }
-  function postcardWidth(viewport, desired = 390) {
-    if (viewport.mode !== "compact") return desired;
-    const band = hudBand(viewport);
-    if (viewport.orientation === "portrait") return Math.min(desired, band.width - MARGIN * 2);
-    return Math.min(desired, compactLandscapeCardWidth(band, dpadLayout(viewport, band)));
-  }
-  function clampHeight(wanted, available) {
-    return Math.max(0, Math.min(wanted, Math.floor(available)));
-  }
-  function hudLayout({
-    viewport,
-    tripWidth,
-    postcardVisible = false,
-    landmarkWidth = 480,
-    landmarkHeight = 130,
-    zoomVisible = false,
-    controlsVisible = false,
-    feedbackVisible = false,
-    postcardHeight = 104,
-    neighborhoodVisible = false,
-    minimapVisible = true,
-    plaqueExtraLines = feedbackVisible ? 1 : 0
-  }) {
-    const band = hudBand(viewport);
-    const width = band.width;
-    const height = band.height;
-    const left = band.x;
-    if (viewport.mode === "compact") {
-      const dpad = dpadLayout(viewport, band);
-      const controlsTop = dpad ? dpad.bounds.y : height - viewport.safeBottom;
-      if (viewport.orientation === "portrait") {
-        const rowWidth = width - MARGIN * 2;
-        const extraLines = Math.max(0, Math.min(2, Math.round(plaqueExtraLines)));
-        const recall3 = offsetRect({
-          x: MARGIN,
-          y: viewport.safeTop + MARGIN,
-          width: rowWidth,
-          height: PORTRAIT_PLAQUE_H + extraLines * PORTRAIT_PLAQUE_LINE_H
-        }, left);
-        const topBottom = recall3.y + recall3.height;
-        const compass3 = offsetRect({
-          x: width - MARGIN - COMPASS_SIZE_COMPACT,
-          y: topBottom + GAP,
-          width: COMPASS_SIZE_COMPACT,
-          height: COMPASS_SIZE_COMPACT
-        }, left);
-        const minimap3 = offsetRect({
-          x: MARGIN,
-          y: topBottom + GAP,
-          width: PORTRAIT_MINIMAP_W,
-          height: PORTRAIT_MINIMAP_H
-        }, left);
-        const upperBottom = Math.max(
-          compass3.y + compass3.height,
-          minimapVisible ? minimap3.y + minimap3.height : 0
-        );
-        const cardHeight2 = clampHeight(landmarkHeight, controlsTop - GAP - (upperBottom + GAP));
-        const cardWidth2 = Math.min(landmarkWidth, rowWidth);
-        const landmark3 = offsetRect(
-          { x: MARGIN, y: controlsTop - GAP - cardHeight2, width: cardWidth2, height: cardHeight2 },
-          left
-        );
-        const postcardH2 = clampHeight(postcardHeight, controlsTop - GAP - (upperBottom + GAP));
-        const postcard3 = offsetRect({
-          x: MARGIN,
-          y: controlsTop - GAP - postcardH2,
-          width: Math.min(postcardWidth(viewport), rowWidth),
-          height: postcardH2
-        }, left);
-        const zoomBadge3 = {
-          x: Math.round(left + width / 2 - 35),
-          y: landmark3.y - GAP - COMPACT_ZOOM_H,
-          width: 70,
-          height: COMPACT_ZOOM_H
-        };
-        return {
-          recall: recall3,
-          location: recall3,
-          destination: recall3,
-          compass: compass3,
-          trip: recall3,
-          postcard: postcard3,
-          landmark: landmark3,
-          minimap: minimap3,
-          zoomBadge: zoomBadge3,
-          controlsHint: { x: Math.round(left + width / 2 - 177), y: zoomBadge3.y, width: 354, height: 12 },
-          dpad,
-          tripInRecall: true,
-          destinationInRecall: true,
-          mode: viewport.mode,
-          band
-        };
-      }
-      const columnWidth = Math.min(300, Math.round((width - MARGIN * 3) / 2));
-      const recall2 = offsetRect({
-        x: MARGIN,
-        y: viewport.safeTop + MARGIN,
-        width: columnWidth,
-        height: feedbackVisible ? COMPACT_RECALL_FEEDBACK_H : COMPACT_RECALL_H
-      }, left);
-      const location2 = offsetRect({
-        x: MARGIN,
-        y: recall2.y + recall2.height + GAP,
-        width: columnWidth,
-        height: neighborhoodVisible ? COMPACT_LOCATION_H : COMPACT_LOCATION_PLAIN_H
-      }, left);
-      const destination2 = offsetRect({
-        x: width - MARGIN - columnWidth,
-        y: viewport.safeTop + MARGIN,
-        width: columnWidth,
-        height: COMPACT_DESTINATION_H
-      }, left);
-      const compass2 = {
-        x: destination2.x + destination2.width - COMPASS_SIZE_COMPACT,
-        y: destination2.y + destination2.height + GAP,
-        width: COMPASS_SIZE_COMPACT,
-        height: COMPASS_SIZE_COMPACT
-      };
-      const cardWidth = Math.min(landmarkWidth, compactLandscapeCardWidth(band, dpad));
-      const cardTop = destination2.y + destination2.height + GAP + (minimapVisible ? COMPACT_MINIMAP_H + GAP : 0);
-      const cardHeight = clampHeight(landmarkHeight, height - viewport.safeBottom - MARGIN - cardTop);
-      const landmark2 = offsetRect({
-        x: width - MARGIN - cardWidth,
-        y: height - viewport.safeBottom - MARGIN - cardHeight,
-        width: cardWidth,
-        height: cardHeight
-      }, left);
-      const minimap2 = offsetRect({
-        x: width - MARGIN - COMPACT_MINIMAP_W,
-        y: landmark2.y - GAP - COMPACT_MINIMAP_H,
-        width: COMPACT_MINIMAP_W,
-        height: COMPACT_MINIMAP_H
-      }, left);
-      const postcardH = clampHeight(postcardHeight, height - viewport.safeBottom - MARGIN - cardTop);
-      const postcardW = Math.min(postcardWidth(viewport), cardWidth);
-      const postcard2 = offsetRect({
-        x: width - MARGIN - postcardW,
-        y: height - viewport.safeBottom - MARGIN - postcardH,
-        width: postcardW,
-        height: postcardH
-      }, left);
-      const zoomBadge2 = {
-        x: Math.round(left + width / 2 - 35),
-        y: landmark2.y - GAP - COMPACT_ZOOM_H,
-        width: 70,
-        height: COMPACT_ZOOM_H
-      };
-      return {
-        recall: recall2,
-        location: location2,
-        destination: destination2,
-        compass: compass2,
-        trip: recall2,
-        postcard: postcard2,
-        landmark: landmark2,
-        minimap: minimap2,
-        zoomBadge: zoomBadge2,
-        controlsHint: { x: Math.round(left + width / 2 - 177), y: zoomBadge2.y, width: 354, height: 12 },
-        dpad,
-        tripInRecall: true,
-        destinationInRecall: false,
-        mode: viewport.mode,
-        band
-      };
-    }
-    const recall = offsetRect(
-      { x: 15, y: 15, width: 310, height: feedbackVisible ? 62 : 43 },
-      left
-    );
-    const location = offsetRect(
-      { x: 15, y: 84, width: 310, height: neighborhoodVisible ? 55 : 38 },
-      left
-    );
-    const destination = offsetRect(
-      { x: width - 350, y: 15, width: 335, height: 48 },
-      left
-    );
-    const compass = {
-      x: destination.x + destination.width - COMPASS_SIZE_DESKTOP,
-      y: destination.y + destination.height + GAP,
-      width: COMPASS_SIZE_DESKTOP,
-      height: COMPASS_SIZE_DESKTOP
-    };
-    const trip = offsetRect(
-      { x: width - tripWidth - 16, y: height - 98, width: tripWidth, height: 26 },
-      left
-    );
-    const postcard = offsetRect(
-      { x: width - 410, y: trip.y - 118, width: 390, height: 104 },
-      left
-    );
-    const minimap = offsetRect(
-      { x: 15, y: height - 215, width: 260, height: 200 },
-      left
-    );
-    const zoomBadge = {
-      x: left + width / 2 - 35,
-      y: height - 35,
-      width: 70,
-      height: 22
-    };
-    const controlsHint = {
-      x: left + width / 2 - 177,
-      y: zoomVisible ? zoomBadge.y - 26 : height - 32,
-      width: 354,
-      height: 12
-    };
-    const centeredLandmarkX = left + width / 2 - landmarkWidth / 2;
-    const footerTop = controlsVisible ? controlsHint.y : zoomVisible ? zoomBadge.y : height;
-    const landmark = {
-      x: postcardVisible ? Math.min(centeredLandmarkX, postcard.x - 14 - landmarkWidth) : centeredLandmarkX,
-      y: Math.min(height - landmarkHeight - 30, footerTop - 14 - landmarkHeight),
-      width: landmarkWidth,
-      height: landmarkHeight
-    };
-    return {
-      recall,
-      location,
-      destination,
-      compass,
-      trip,
-      postcard,
-      landmark,
-      minimap,
-      zoomBadge,
-      controlsHint,
-      dpad: null,
-      tripInRecall: false,
-      destinationInRecall: false,
-      mode: viewport.mode,
-      band
-    };
-  }
-
-  // src/canalRecall/ridingPromptBand.ts
-  var RIDING_PROMPT_MAX_WIDTH = 560;
-  var RIDING_PROMPT_NARROW_WIDTH = 480;
-  var RIDING_PROMPT_HEIGHT = 92;
-  var RIDING_PROMPT_NARROW_HEIGHT = 128;
-  function ridingPromptSize(viewport) {
-    const scale = viewport.scale || 1;
-    const cssWidth = Math.min(RIDING_PROMPT_MAX_WIDTH, landmarkCardWidth(viewport, RIDING_PROMPT_MAX_WIDTH / scale) * scale);
-    const columns = cssWidth < RIDING_PROMPT_NARROW_WIDTH ? 2 : 4;
-    const cssHeight = columns === 4 ? RIDING_PROMPT_HEIGHT : RIDING_PROMPT_NARROW_HEIGHT;
-    return { width: cssWidth / scale, height: cssHeight / scale, cssWidth, cssHeight, columns };
-  }
-  function postcardYieldsToRidingPrompt(viewport) {
-    return viewport.mode === "compact";
-  }
-  function ridingPromptRect(input) {
-    const size = ridingPromptSize(input.viewport);
-    return hudLayout({
-      ...input,
-      postcardVisible: !!input.postcardVisible && !postcardYieldsToRidingPrompt(input.viewport),
-      tripWidth: input.tripWidth ?? 180,
-      landmarkWidth: size.width,
-      landmarkHeight: size.height
-    }).landmark;
-  }
-  function ridingPromptCss(rect, viewport) {
-    const scale = viewport.scale || 1;
-    return {
-      left: Math.round(rect.x * scale),
-      bottom: Math.round((viewport.height - (rect.y + rect.height)) * scale),
-      width: Math.round(rect.width * scale)
-    };
+  function bridgeNameAskable(difficulty, name, answerMode) {
+    const hardTier = difficulty === "hard" || difficulty === "expert" || difficulty === "custom" && answerMode === "typing";
+    return hardTier || isNotableBridge(name);
   }
 
   // src/canalRecall/landmarks/surveyedLandmarks.json
@@ -1435,7 +1065,8 @@ html #canal-prompt.riding #canal-card {
         northOffsetDegrees: 50.856118282596185,
         source: "Existing native OSM w169906479 footprint centre and heading; current ref:bag 0363100012238479 verified 2026-10-06. Stair appendages do not rescale the platform."
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 2012
     },
     {
       id: "paradiso",
@@ -1464,7 +1095,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
-      }
+      },
+      bagYear: 1880
     },
     {
       id: "melkweg",
@@ -1494,7 +1126,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
-      }
+      },
+      bagYear: 1905
     },
     {
       id: "embassy-free-mind",
@@ -1527,7 +1160,8 @@ html #canal-prompt.riding #canal-card {
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1622
     },
     {
       id: "the-movies",
@@ -1557,7 +1191,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 1956
     },
     {
       id: "delamar",
@@ -1589,7 +1224,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 2010
     },
     {
       id: "magna-plaza",
@@ -1619,7 +1255,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 1899
     },
     {
       id: "felix-meritis",
@@ -1650,7 +1287,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 1788
     },
     {
       id: "kleine-komedie",
@@ -1684,7 +1322,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 1788
     },
     {
       id: "de-balie",
@@ -1713,7 +1352,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 1936
     },
     {
       id: "anne-frank-house",
@@ -1750,7 +1390,8 @@ html #canal-prompt.riding #canal-card {
         ],
         northOffsetDegrees: 119.51208512104333
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1635
     },
     {
       id: "rembrandt-house",
@@ -1788,7 +1429,8 @@ html #canal-prompt.riding #canal-card {
         ],
         northOffsetDegrees: 214.19839036962065
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1607
     },
     {
       id: "moco-museum",
@@ -1825,7 +1467,8 @@ html #canal-prompt.riding #canal-card {
         ],
         northOffsetDegrees: 59.387481311342526
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1906
     },
     {
       id: "museum-van-loon",
@@ -1862,7 +1505,8 @@ html #canal-prompt.riding #canal-card {
         ],
         northOffsetDegrees: 192.3449814578558
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1671
     },
     {
       id: "amstelkerk",
@@ -1891,7 +1535,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 1668
     },
     {
       id: "he-hua-temple",
@@ -1921,7 +1566,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 2e3
     },
     {
       id: "haarlemmerpoort",
@@ -1950,7 +1596,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-      }
+      },
+      bagYear: 1840
     },
     {
       id: "het-schip",
@@ -2064,7 +1711,8 @@ html #canal-prompt.riding #canal-card {
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly architectural reconstruction. Exact OpenStreetMap building polygons retain courtyards and offsets; heights and sculptural details are approximated from building tags and photographs."
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1920
     },
     {
       id: "scheepvaarthuis",
@@ -2101,7 +1749,8 @@ html #canal-prompt.riding #canal-card {
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly architectural reconstruction. Exact OpenStreetMap building polygons retain courtyards and offsets; heights and sculptural details are approximated from building tags and photographs."
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1916
     },
     {
       id: "rialto",
@@ -2139,7 +1788,8 @@ html #canal-prompt.riding #canal-card {
         northOffsetDegrees: 257.64151226366334,
         source: "OSM building w277244583 footprint, short north-facing Ceintuurbaan facade"
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1920
     },
     {
       id: "kriterion",
@@ -2182,7 +1832,8 @@ html #canal-prompt.riding #canal-card {
       materialOverrides: {
         greyBrick: "#756b5c",
         concrete: "#8c918a"
-      }
+      },
+      bagYear: 1899
     },
     {
       id: "de-bijenkorf",
@@ -2322,7 +1973,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-colour low-poly reconstruction using museum and venue photographs for architectural silhouette and OpenStreetMap polygons for placement. Includes the full mapped venue footprint; dimensions and roof ornament are approximate."
-      }
+      },
+      bagYear: 1894
     },
     {
       id: "tuschinski",
@@ -2360,7 +2012,8 @@ html #canal-prompt.riding #canal-card {
         northOffsetDegrees: 0,
         source: "OSM w267116768 outline and repository measured Reguliersbreestraat front; local east/south metres"
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1922
     },
     {
       id: "pathe-city",
@@ -2390,7 +2043,8 @@ html #canal-prompt.riding #canal-card {
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      bagYear: 1935
     },
     {
       id: "oude-kerk",
@@ -2464,7 +2118,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free Gothic reconstruction using museum photographic references and actual OpenStreetMap church/chapel/tower polygons. Surveyed placement in metres; decorative tracery and roof details are approximate."
-      }
+      },
+      bagYear: 1646
     },
     {
       id: "nieuwe-kerk",
@@ -2560,7 +2215,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
-      }
+      },
+      bagYear: 1609
     },
     {
       id: "english-reformed-church",
@@ -2599,7 +2255,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
-      }
+      },
+      bagYear: 1665
     },
     {
       id: "de-papegaai",
@@ -2637,7 +2294,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
-      }
+      },
+      bagYear: 1848
     },
     {
       id: "de-hallen",
@@ -2679,7 +2337,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official architectural imagery, with surveyed OpenStreetMap contours; no imported mesh or image textures."
-      }
+      },
+      bagYear: 1906
     },
     {
       id: "huis-bartolotti",
@@ -2719,7 +2378,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by official architectural imagery, with surveyed OpenStreetMap contours; no imported mesh or image textures."
-      }
+      },
+      bagYear: 1622
     },
     {
       id: "hart-museum",
@@ -2756,7 +2416,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
-      }
+      },
+      bagYear: 1681
     },
     {
       id: "amsterdam-museum",
@@ -2793,7 +2454,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
-      }
+      },
+      bagYear: 1696
     },
     {
       id: "national-holocaust-museum",
@@ -2832,7 +2494,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by Office Winhov and museum official imagery; current BAG contours fetched 2026-10-04, no imported meshes/textures."
-      }
+      },
+      bagYear: 1932
     },
     {
       id: "hollandsche-schouwburg",
@@ -2870,7 +2533,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction guided by Office Winhov and museum official imagery; current BAG contours fetched 2026-10-04, no imported meshes/textures."
-      }
+      },
+      bagYear: 1892
     },
     {
       id: "jewish-museum",
@@ -2909,7 +2573,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of the surveyed historic synagogue complex from actual OpenStreetMap polygons and official Jewish Cultural Quarter exterior photographs. Separate historic roof volumes, arched windows, classical stone cornices and entrance details; Esnoga courtyard kept open. Heights and ornament approximate."
-      }
+      },
+      bagYear: 1671
     },
     {
       id: "portuguese-synagogue",
@@ -2954,7 +2619,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of the surveyed historic synagogue complex from actual OpenStreetMap polygons and official Jewish Cultural Quarter exterior photographs. Separate historic roof volumes, arched windows, classical stone cornices and entrance details; Esnoga courtyard kept open. Heights and ornament approximate."
-      }
+      },
+      bagYear: 1675
     },
     {
       id: "homomonument",
@@ -3030,7 +2696,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction; no imported meshes or textures. Individual footprints preserve public Artisplein and neighboring Groote Museum."
-      }
+      },
+      bagYear: 1838
     },
     {
       id: "artis-entrance",
@@ -3111,7 +2778,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of three separate surveyed buildings with no garden parcel fill: the 1911 Palm House circular dome/perpendicular wings, 2025 Climate House ETFE canopy and retained external steel cable skeleton, and historic orangery. Actual OpenStreetMap building outlines; official Hortus aerial photography and ZJA 2025 architect plan/section references. Heights and ornamental details approximate."
-      }
+      },
+      bagYear: 1992
     },
     {
       id: "arcam",
@@ -3149,7 +2817,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original simplified curved shell and window reconstruction. Footprint and height sourced; folds, seams and glass-opening contours approximate. No imported mesh or photo texture."
-      }
+      },
+      bagYear: 1996
     },
     {
       id: "brakke-grond",
@@ -3187,7 +2856,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
-      }
+      },
+      bagYear: 1880
     },
     {
       id: "frascati",
@@ -3225,7 +2895,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
-      }
+      },
+      bagYear: 1817
     },
     {
       id: "boom-chicago",
@@ -3263,7 +2934,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
-      }
+      },
+      bagYear: 1913
     },
     {
       id: "foam",
@@ -3304,7 +2976,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
-      }
+      },
+      bagYear: 1861
     },
     {
       id: "huis-marseille",
@@ -3343,7 +3016,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
-      }
+      },
+      bagYear: 1905
     },
     {
       id: "agnietenkapel",
@@ -3381,7 +3055,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Exact mapped chapel plan and courtyard wall; roof divisions, tracery and carved gate details approximate. Reference photos guide geometry only."
-      }
+      },
+      bagYear: 1470
     },
     {
       id: "lab111",
@@ -3419,7 +3094,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
-      }
+      },
+      bagYear: 1928
     },
     {
       id: "occii",
@@ -3457,7 +3133,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
-      }
+      },
+      bagYear: 1884
     },
     {
       id: "ketelhuis",
@@ -3495,7 +3172,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
-      }
+      },
+      bagYear: 1885
     },
     {
       id: "wereldmuseum-amsterdam",
@@ -3608,7 +3286,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Exact OpenStreetMap parent/parts polygons cross-checked against current PDOK BAG footprints; original texture-free meshes informed by primary architecture photographs. Whole actual cadastral building is represented with separate measured roof/body portions, preserving genuine open courts."
-      }
+      },
+      bagYear: 1876
     },
     {
       id: "allard-pierson",
@@ -3645,7 +3324,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Exact OpenStreetMap parent/parts polygons cross-checked against current PDOK BAG footprints; original texture-free meshes informed by primary architecture photographs. Whole actual cadastral building is represented with separate measured roof/body portions, preserving genuine open courts."
-      }
+      },
+      bagYear: 1870
     },
     {
       id: "dominicuskerk",
@@ -3767,7 +3447,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
-      }
+      },
+      bagYear: 1922
     },
     {
       id: "cinecenter",
@@ -3805,7 +3486,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
-      }
+      },
+      bagYear: 1981
     },
     {
       id: "studiok",
@@ -3881,7 +3563,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction of the exact mapped individual ARTIS building, cross-checked against current PDOK BAG and primary museum/architect imagery. Actual historic permanent roof silhouette retained; dates follow documented architecture history, and temporary works or unconfirmed solar-panel layout are not represented."
-      }
+      },
+      bagYear: 1855
     },
     {
       id: "artis-library",
@@ -3918,7 +3601,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction of the exact mapped individual ARTIS building, cross-checked against current PDOK BAG and primary museum/architect imagery. Actual historic permanent roof silhouette retained; dates follow documented architecture history, and temporary works or unconfirmed solar-panel layout are not represented."
-      }
+      },
+      bagYear: 1956
     },
     {
       id: "de-dokwerker",
@@ -3993,7 +3677,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly museum reconstruction from primary museum photographs and exact OSM/current PDOK BAG building outlines. Willet-Holthuysen\u2019s open French garden and the Pipe Museum\u2019s central courtyard notch are retained; adjacent canal houses are outside the model and suppression scope."
-      }
+      },
+      bagYear: 1687
     },
     {
       id: "amsterdam-pipe-museum",
@@ -4030,7 +3715,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly museum reconstruction from primary museum photographs and exact OSM/current PDOK BAG building outlines. Willet-Holthuysen\u2019s open French garden and the Pipe Museum\u2019s central courtyard notch are retained; adjacent canal houses are outside the model and suppression scope."
-      }
+      },
+      bagYear: 1710
     },
     {
       id: "athenaeum",
@@ -4071,7 +3757,8 @@ html #canal-prompt.riding #canal-card {
       },
       relatedLandmarkIds: [
         "osm_shop_3868737201"
-      ]
+      ],
+      bagYear: 1884
     },
     {
       id: "scheltema",
@@ -4109,7 +3796,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
-      }
+      },
+      bagYear: 1830
     },
     {
       id: "haarlemmermeerstation",
@@ -4147,7 +3835,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
-      }
+      },
+      bagYear: 1915
     },
     {
       id: "begijnhofkapel",
@@ -4185,7 +3874,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction. Exact sharedBAG plan, two bent three-bay fronts, Empire windows and projecting stone portal. Authored simplified rear roof/wall divisions within current3DBAG height; church has no spire. EnglishReformedChurch and neighboring houses retained."
-      }
+      },
+      bagYear: 1671
     },
     {
       id: "huis-de-pinto",
@@ -4222,7 +3912,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction of the exact mapped museum/cultural-house building, cross-checked against current PDOK BAG. Pinto\u2019s twin historic roofs remain behind the monumental parapet; the Tulip Museum occupies the actual combined 1927 Prinsengracht116\u2013118 apartment/shop block with straight brick cornice. Neighboring buildings and any open rear spaces are retained."
-      }
+      },
+      bagYear: 1680
     },
     {
       id: "amsterdam-tulip-museum",
@@ -4259,7 +3950,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction of the exact mapped museum/cultural-house building, cross-checked against current PDOK BAG. Pinto\u2019s twin historic roofs remain behind the monumental parapet; the Tulip Museum occupies the actual combined 1927 Prinsengracht116\u2013118 apartment/shop block with straight brick cornice. Neighboring buildings and any open rear spaces are retained."
-      }
+      },
+      bagYear: 1927
     },
     {
       id: "ot301",
@@ -4297,7 +3989,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
-      }
+      },
+      bagYear: 1896
     },
     {
       id: "cavia",
@@ -4339,7 +4032,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
-      }
+      },
+      bagYear: 1913
     },
     {
       id: "orgelpark",
@@ -4377,7 +4071,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
-      }
+      },
+      bagYear: 1924
     },
     {
       id: "houten-huys",
@@ -4415,7 +4110,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly model: narrow black timber gables, overhanging upper front, white masonry base and leaded windows. Exact BAG plan and current3DBAG height; side/rear details and roof are simplified. No photograph pixels or downloaded mesh geometry. Courtyard statue, trees, fences and neighboring houses retained."
-      }
+      },
+      bagYear: 1455
     },
     {
       id: "herepoort-bergpoort",
@@ -4453,7 +4149,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly reconstruction of pairedmuseumgardenfacades: openarch passage, sandstoneHerepoort with pairedcolumns/niches and brick/stoneBergpoort reverse. Surveyedparent and publisheddimensions; carvedreliefs, roof and archproportions simplified from photos. No downloadedmesh geometry or referenceimage pixels. Othermuseumgarden objects retained."
-      }
+      },
+      bagYear: 1885
     },
     {
       id: "huis-aan-drie-grachten",
@@ -4490,7 +4187,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction from primary monument descriptions and original photographer references, scoped to current PDOK BAG. Huis aan de Drie Grachten retains three stepped gables and transverse tiled roofs; De Dolphijn models both current restored Renaissance facade halves within ONE actual parent whose VBO addresses are Singel140 and142. Adjacent Singel138/BAG0363100012167969 and house247/BAG0363100012179859 are retained. Current photographic silhouette takes priority over older register wording about incomplete/restored tops."
-      }
+      },
+      bagYear: 1610
     },
     {
       id: "de-dolphijn",
@@ -4527,7 +4225,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction from primary monument descriptions and original photographer references, scoped to current PDOK BAG. Huis aan de Drie Grachten retains three stepped gables and transverse tiled roofs; De Dolphijn models both current restored Renaissance facade halves within ONE actual parent whose VBO addresses are Singel140 and142. Adjacent Singel138/BAG0363100012167969 and house247/BAG0363100012179859 are retained. Current photographic silhouette takes priority over older register wording about incomplete/restored tops."
-      }
+      },
+      bagYear: 1605
     },
     {
       id: "rode-hoed",
@@ -4565,7 +4264,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-palette low-poly geometry; no imported meshes or texture images. Exact mapped scope with neighboring houses, courtyard recesses and park grounds retained."
-      }
+      },
+      bagYear: 1630
     },
     {
       id: "theater-amsterdam",
@@ -4714,7 +4414,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of the current Oost-Indisch Huis/Bushuis university complex from exact mapped geometry and original primary photographer references, cross-checked against current PDOK BAG and its Kloveniersburgwal48 onderwijsfunctie VBO. Height references measured from 3DBAG AHN5 LoD2.2 planes (NAP ground0.834; Bushuis roof about14.2\u201321.7m relative, historic courtyard wings about10.3\u201317.1m); mesh uses original authored simplified roofs and details, no imported source triangles. The single actual courtyard hole and west perimeter notches remain open; adjoining Waalse Kerk and neighboring houses are retained. The historical courtyard Renaissance gable and separate 1890/1891 Peters Bushuis23-bay Neo-Renaissance canal facade have distinct silhouettes."
-      }
+      },
+      bagYear: 1606
     },
     {
       id: "het-veem",
@@ -4752,7 +4453,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
-      }
+      },
+      bagYear: 1900
     },
     {
       id: "tobacco-theater",
@@ -4790,7 +4492,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
-      }
+      },
+      bagYear: 1905
     },
     {
       id: "plein-theater",
@@ -4828,7 +4531,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
-      }
+      },
+      bagYear: 1989
     },
     {
       id: "hash-marihuana-hemp-museum",
@@ -4865,7 +4569,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of the actual narrow red-brick three-bay Oudezijds Achterburgwal148 house, cross-checked against the museum owner\u2019s original frontage photographs and current148H VBO/Pand records. The adjoining black Sensi Seeds146 house is retained. Exact mapped rear recesses remain open. Height references use 3DBAG AHN5 relative roofmax16.672m; simplified roof and facade meshes are authored originally, with no imported source faces or textures."
-      }
+      },
+      bagYear: 1757
     },
     {
       id: "hemp-gallery",
@@ -4902,7 +4607,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of the single actual five-bay Oudezijds Achterburgwal128\u2013132 block containing Hemp Gallery130, verified against RCE518459, the museum owner and current original photographer reference. Rademaker\u2019s1879\u20131881 neo-Renaissance facade has a rusticated ground floor, three full upper floors and mezzanine, with white pilasters and projecting cornices. The OSM1993 date is a register mismatch, not the architectural date. Exact rear return remains scoped to the actual building; adjoining houses remain unsuppressed. Roof reference measured from3DBAG AHN5 maxrelative19.311m; all asset meshes are original simplified geometry."
-      }
+      },
+      bagYear: 1993
     },
     {
       id: "madame-tussauds",
@@ -4939,7 +4645,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of Joling\u2019s1914\u20131917 Peek & Cloppenburg department-store building occupied in part by Madame Tussauds. RCE518421 and original photographer frontage guide the stone11-bay Dam facade,9-bay Rokin facade,colossal pilasters,open balconies,rose-window central gable,dormers and decorative roof vents. CurrentPDOK confirms single actualBAG2175378 with Dam20,Rokin6,Kromelleboogsteeg2 VBOs; mapped1900 date is not the architecturaldate. ExactL-shaped parent outline and rear recesses are retained. Original simplified roof regions follow AHN5 approximate21.8m eaves,31.3m mainhips,33.9m vents, and lower innerrear rooms13.85/17.3m. No imported source faces or textures; exact-only suppression retains all neighboring buildings."
-      }
+      },
+      bagYear: 1900
     },
     {
       id: "amsterdam-dungeon",
@@ -4978,7 +4685,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free model scoped to the two actual buildings used by Amsterdam Dungeon: currentPDOK Rokin78 bijeenkomstfunctie1277m\xB2 VBO0363010003702386 is linked to both BAG2168346 (chapel/side rooms) and2175269 (entrance wing). Other RCE518455 compound buildings including Rokin80/82 BAG2175268 andKalverstraat81/87 BAG2168348 remain visible and unsuppressed. PrimaryArcam exterior confirms two gabled venue wings and portal; the neighboring streetcorner dome is outside model scope. Original octagonal chapel,tent roof/open lantern,sculpted brick gables,stone bands and measured lower wings refer to Posthumus Meyjes\u20191908\u20131912 architecture. Heights approximate13.3\u201317.8m front,7\u201316m side rooms,18m chapel eaves,24.7m truncated tent roof and29m lantern: AHN5 raw height26.9m and reconstructedplanepeaks29.1m differ; OSM32.3m is not used as a flat mass. Exact mapped recesses retained; no imported mesh faces or textures."
-      }
+      },
+      bagYear: 1707
     },
     {
       id: "sint-jorishof",
@@ -5097,7 +4805,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
-      }
+      },
+      bagYear: 1480
     },
     {
       id: "huize-lydia",
@@ -5135,7 +4844,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
-      }
+      },
+      bagYear: 1927
     },
     {
       id: "eye-filmmuseum",
@@ -5175,7 +4885,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free folded-shell reconstruction. Current BAG parent scope, recorded lower-level outline and approximate roof heights constrain original rounded control points. White inclined panels, southern glass ribbon, recessed lower storey and eastern cantilever are interpreted from architect photographs and the supplied Warehouse viewer. Individual roof folds, glazing contours, mullion spacing and stairs remain approximations. No imported Warehouse or survey mesh geometry; no photo pixels. The extract teaching ID681957397 is retained only as teaching identity, not suppressed as a current OSM way: current OSM way681957397 is in another country. Only verified EYE parent/levels are suppressed; A\u2019DAM, promenade and park remain separate."
-      }
+      },
+      bagYear: 2011
     },
     {
       id: "royal-theater-carre",
@@ -5213,7 +4924,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly theatre, facade and ornament geometry. No imported mesh or image; exact current parent replacement preserves neighboring Amstel houses and Onbekendegracht."
-      }
+      },
+      bagYear: 1887
     },
     {
       id: "sint-nicolaas",
@@ -5330,7 +5042,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free shared-palette reconstruction of Cuypers museum from official exterior imagery and exact current OpenStreetMap polygons/heights. Open central bicycle passage, hollow roofed atria, tall paired towers and Philips wing retained. Warehouse reference viewed only; no imported geometry or photo textures."
-      }
+      },
+      bagYear: 1885
     },
     {
       id: "silodam",
@@ -5420,7 +5133,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free shared-palette reconstruction from current mapped church/tower polygons and official church/municipal exterior references. Double-cross roof plan, Renaissance arched windows/pilasters, stone clock tiers and blue-gold imperial crown. No imported geometry or reference pixels. Ornamental details approximate; exact source grounds and neighboring buildings retained."
-      }
+      },
+      bagYear: 1631
     },
     {
       id: "sexmuseum-venustempel",
@@ -5458,7 +5172,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free architectural reconstruction; no imported mesh or photograph. Exact current parent scope, neighboring narrow houses and mapped courts preserved."
-      }
+      },
+      bagYear: 1725
     },
     {
       id: "oude-lutherse-kerk",
@@ -5496,7 +5211,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free architectural reconstruction; no imported mesh or photograph. Exact current parent scope, neighboring narrow houses and mapped courts preserved."
-      }
+      },
+      bagYear: 1633
     },
     {
       id: "kattenkabinet",
@@ -5533,7 +5249,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original low-poly reconstruction of Herengracht497: exact currentBAG parent, six-bay doublehouse with central classicalpediment, nineteenth-centuryT-windows, currentground-levelentrance and hippedroof withtwo dormers/twochimneys. Historicaldouble stoopremoved1837 is not invented; neighboringHerengracht495/499 remain. Native roofenvelope calibrated to AHN5 approximate13.86m eaves/19.53m ridge andlower rearreturns, sourceimages visualreference only, no imported mesh/texture."
-      }
+      },
+      bagYear: 1667
     },
     {
       id: "pianola-museum",
@@ -5570,7 +5287,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original low-poly reconstruction of the1905former police stationWesterstraat106/currentPianolaMuseum parent: exactcurrentBAGplan with projectingoriel, asymmetricfivebaystreetfront, centralcrenellatedtower, round-head dormers, reddishtile roof andlowerrearflatwings. Actual3DBAGapprox12.84m eaves/16.37m ridge, currentmuseumground-levelentrance; adjacentparents retained. Sourcesvisualreferenceonly; no importedmesh/texture."
-      }
+      },
+      bagYear: 1905
     },
     {
       id: "montelbaanstoren-amsterdam",
@@ -5820,7 +5538,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original low-poly reconstruction of actual1966 nursing-home parent with1969 operation recorded separately: six occupied facade rows, recessed brick-column ground storey, ochre-panel glass room strips, projecting front bays, rooftop ribbon/setback, actual14.1m rear wing and23.65/27.75m main roofs. Small service structure reaches31.7m; whole footprint is not extruded to the old31.7m OSM maximum. Official facade imagery is visual reference only, no imported mesh or photo texture. CurrentBAG and AHN5 survey calibrate native massing; attached neighboring residential/school parents and courtyard void remain. Front glazing follows the owner facade photograph; rear/side window rhythm is inferred rather than measured. Explicit roof panels own upward caps to avoid coplanar flicker."
-      }
+      },
+      bagYear: 1966
     },
     {
       id: "rembrandt-tower",
@@ -6080,7 +5799,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
-      }
+      },
+      bagYear: 1885
     },
     {
       id: "amsterdam-in-motion",
@@ -6131,7 +5851,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
-      }
+      },
+      bagYear: 1885
     },
     {
       id: "de-krakeling",
@@ -6178,7 +5899,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
-      }
+      },
+      bagYear: 1885
     },
     {
       id: "nemo",
@@ -6302,7 +6024,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original white pronged office block, curved glazing, exposed escape stairs and measured roof plant. Former FNV/ArboNed labels are historical occupants, not additional destinations or exterior architect attribution."
-      }
+      },
+      bagYear: 1992
     },
     {
       id: "palace-on-the-dam",
@@ -6396,7 +6119,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly architecture. Exact current BAG/OSM outline and AHN5/3DBAG roof envelope guide manually authored walls and unequal roof levels; primary owner photographs and RCE descriptions guide original arched windows, masonry bands and current entrance. Window ornament is approximate. Machinegebouw retains two parallel unequal ridges at 12.8 and 10.15 metres; De Wester retains the 15.33-metre main hall and separate low western entrance roof. No imported mesh or textures, no vanished chimney or roof ventilator. Exact-only parent replacement preserves adjacent WestWeelde and all other Westergas buildings."
-      }
+      },
+      bagYear: 1885
     },
     {
       id: "de-wester",
@@ -6433,7 +6157,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly architecture. Exact current BAG/OSM outline and AHN5/3DBAG roof envelope guide manually authored walls and unequal roof levels; primary owner photographs and RCE descriptions guide original arched windows, masonry bands and current entrance. Window ornament is approximate. Machinegebouw retains two parallel unequal ridges at 12.8 and 10.15 metres; De Wester retains the 15.33-metre main hall and separate low western entrance roof. No imported mesh or textures, no vanished chimney or roof ventilator. Exact-only parent replacement preserves adjacent WestWeelde and all other Westergas buildings."
-      }
+      },
+      bagYear: 1904
     },
     {
       id: "amstel-hotel",
@@ -6470,7 +6195,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly architecture calibrated to the current canonical PDOK parent and large AHN5/3DBAG roof levels. Principal mansard roofs25.3\u201327.1m, end pavilions28.35m and central pavilion29.54m retain low3.5m terrace and8.5\u201311.5m river conservatory. Primary hotel/Intercontinental photos guide original masonry/window/dormer rhythm and simplified corner lion sculptures. Ornament and turrets approximate from photographs; no imported mesh or texture and no neighboring suppression."
-      }
+      },
+      bagYear: 1867
     },
     {
       id: "concertgebouw",
@@ -6619,7 +6345,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original manual facade details and regional massing. AHN5 2023 roof-plane samples calibrate rebuilt roof patch surfaces; no imported asset mesh. Current single BAG parent encloses three surviving historic fronts and low museum wings; surrounding 1990s residences/retail stay outside exact suppression. BAG nominal 1886 does not date all present parts: RCE identifies 1911\u201313/1925/1933\u201334."
-      }
+      },
+      bagYear: 1886
     },
     {
       id: "faralda-crane-hotel",
@@ -6657,7 +6384,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original project-native open steel crane, red hotel suites/lifts, yellow lattice boom and counterweight. No imported meshes/textures."
-      }
+      },
+      bagYear: 2014
     },
     {
       id: "ing-house",
@@ -6695,7 +6423,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free flat-color glass/aluminium wedge, rounded auditorium nose, 16steel supports, double-skin facade and ground lobby. Exact surveyed BAG boundary, open undercroft. Heights use real roof planes;equipment peaks excluded. No imported third-party meshes or image pixels."
-      }
+      },
+      bagYear: 2002
     },
     {
       id: "muiderpoort",
@@ -6733,7 +6462,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original surveyedtexture-free citygate with openarchedpassage, sandstoneDoricorders, heraldicpediments, brickwings, offsetoctagonal dome and clocklantern. Photos guideoriginalgeometry only; no downloadedmeshes or photopixels. Carvings/vault simplified; stageheights estimated."
-      }
+      },
+      bagYear: 1770
     },
     {
       id: "idfa-pavilion",
@@ -6771,7 +6501,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free plaster/brick pavilion with exposed arched loggias, balustrades, corner domes, central classical facade and native surveyed roof contours. No imported mesh or photo pixels."
-      }
+      },
+      bagYear: 1881
     },
     {
       id: "social-history",
@@ -6809,7 +6540,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of the1961 concrete cocoa warehouse transformed by AtelierPRO in1989; off-white vertical ribs, blind archives, raised entrance, library cantilever, tall harbour atrium and rounded glass pavilion. No imported meshes or image pixels. Exact BAG/OSM suppression preserves the adjacent historic warehouse and waterfront."
-      }
+      },
+      bagYear: 1905
     },
     {
       id: "dageraad",
@@ -6846,7 +6578,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly corner parent only, with rounded stepped brickwork, scalloped narrow tower crown, horizontal white window rods and green shop entrances. Native survey17.56m main roof and21.34m narrow tower. Museum-name lettering omitted. Operator/heritage photographs guide geometry; no imported mesh or photo pixels. Adjoining estate parents and court remain."
-      }
+      },
+      bagYear: 1923
     },
     {
       id: "ons-lieve-heer-op-solder",
@@ -6888,7 +6621,8 @@ html #canal-prompt.riding #canal-card {
       },
       relatedLandmarkIds: [
         "extract_landmarks_769225968"
-      ]
+      ],
+      bagYear: 1630
     },
     {
       id: "canals-museum",
@@ -6924,7 +6658,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG footprint model; source-supported pilaster facade and central pediment. Dimensions/ornament approximate. Current facade checked against operator photo; removed inter-pilaster festoons omitted."
-      }
+      },
+      bagYear: 1663
     },
     {
       id: "niod",
@@ -6961,7 +6696,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free sandstone French neo-Renaissance double house. Exact BAG perimeter at scale1 with separately low middle/rear roof zones. Salm1888drawing resolves window groups, carriage entry, dormer assemblies;2016municipalphoto overrides obsolete standing ridge figures and small dormers. AHN5roof levels guide heights; carved reliefs and skylight are visual approximations. No imported mesh or reference-photo pixels."
-      }
+      },
+      bagYear: 1889
     },
     {
       id: "multatuli",
@@ -6998,7 +6734,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native current BAG house, restrained bell gable and cream timber pui after2022facade photos. Coherent main gable and lower rear extensions informed by AHN5survey; facade details and fine ornament approximate. No photo pixels or third-party mesh."
-      }
+      },
+      bagYear: 1749
     },
     {
       id: "singelkerk",
@@ -7038,7 +6775,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free hidden church and domestic Singel 452 frontage, sourced straight cornices, round-head tracery, open forecourt, iron rail and surveyed intersecting hipped roofs. No imported render meshes or photo pixels. Tiny reliefs and roof details simplified; source pack archived privately."
-      }
+      },
+      bagYear: 1639
     },
     {
       id: "sint-agneskerk",
@@ -7078,7 +6816,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original native-scale texture-free geometry using current BAG plan, researched neo-Romanesque basilica and detached open campanile. Pastorie and neighboring school preserved; no photo pixels or downloaded meshes."
-      }
+      },
+      bagYear: 1914
     },
     {
       id: "petruskerk",
@@ -7117,7 +6856,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free geometry from native BAG footprint, operator facade photographs and roof survey. Separate houses, tomb parents and open churchyard preserved."
-      }
+      },
+      bagYear: 1850
     },
     {
       id: "boomkerk",
@@ -7155,7 +6895,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG church reconstruction; separate presbytery and school retained. Roof heights from AHN5/3DBAG, architectural detail from RCE and reference photographs."
-      }
+      },
+      bagYear: 1911
     },
     {
       id: "w139",
@@ -7199,7 +6940,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native current BAG complex with interpreted AHN5 bounded roof surfaces; restored four-storey plaster three-bay front, low bent-cornice entrance wing, red deep-house roof and low rear theatre. Fine facade detail approximate. No imported mesh or photo pixels."
-      }
+      },
+      bagYear: 2007
     },
     {
       id: "conservatorium",
@@ -7236,7 +6978,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free flat-color architecture built at native surveyed BAG scope and scale1 with coherent footprint-clipped gable, hip and flattened-tent roofs calibrated to major AHN5 measurements, exposed arches and dormers, pale stone main gable, open polygonal corner turret and transparent courtyard frame. Thin ornament heights/spacing approximate from source photos. No neighboring rectangular suppression."
-      }
+      },
+      bagYear: 1902
     },
     {
       id: "kinderkookkafe",
@@ -7276,7 +7019,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native survey reconstruction. No reference pixels or downloaded meshes. Gable/entrance relief and pane divisions photographic approximations."
-      }
+      },
+      bagYear: 1992
     },
     {
       id: "beta-boulders",
@@ -7313,7 +7057,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original native texture-free surveyed shared building and photo-guided curtain walls. No imported mesh/photo pixels. Exact BAG parent only; other tenants retained."
-      }
+      },
+      bagYear: 1964
     },
     {
       id: "beest-boulders",
@@ -7358,7 +7103,8 @@ html #canal-prompt.riding #canal-card {
         "n8805218642",
         "n3974788355"
       ],
-      preservePositionPrecision: true
+      preservePositionPrecision: true,
+      bagYear: 1959
     },
     {
       id: "klimmuur-centraal",
@@ -7396,7 +7142,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original house-style geometry; no photo textures or imported asset mesh. Only exact BAG host replaced."
-      }
+      },
+      bagYear: 2005
     },
     {
       id: "mountain-network",
@@ -7433,7 +7180,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free house-style reconstruction of surveyed full host; no source photo pixels or third-party artistic mesh."
-      }
+      },
+      bagYear: 2011
     },
     {
       id: "keith-haring-mural",
@@ -7474,7 +7222,8 @@ html #canal-prompt.riding #canal-card {
       galleryView: {
         theta: -1.3,
         phi: 1.15
-      }
+      },
+      bagYear: 1935
     },
     {
       id: "valley",
@@ -7512,7 +7261,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free house-style reconstruction; surveyed tier contours and photo-guided stone/glass assemblies. No downloaded render mesh or photograph pixels."
-      }
+      },
+      bagYear: 2021
     },
     {
       id: "ndsm-warehouse-complex",
@@ -7550,7 +7300,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-color native shipbuilding warehouse; survey-derived six-bay rooflights, high transverse mallenzolder and low attached halls. Brick/steel grid, tall glazed groups and blue doors, physical open entry. Independent shipyard buildings and existing Faralda/Treehouse retained; no downloaded mesh or photo pixels."
-      }
+      },
+      bagYear: 1900
     },
     {
       id: "midwest",
@@ -7588,7 +7339,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native scale school reconstruction, surveyed stepped roofs, twin open-headed towers and facade rhythms from archived references."
-      }
+      },
+      bagYear: 1927
     },
     {
       id: "nikolaas-myrakerk",
@@ -7626,7 +7378,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free surveyed church and former monastery, grouped round-headed windows, oculus, open slate bell lantern, courtyard and iron entrance. Photographic proportions approximate small details. No source mesh or photo pixels."
-      }
+      },
+      bagYear: 1912
     },
     {
       id: "naco-house",
@@ -7664,7 +7417,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free timber office on five concrete supports, open ground-floor passage, orange curved-gable/hip roof, white glazing and sawtooth trims. No third-party pixels/meshes."
-      }
+      },
+      bagYear: 2022
     },
     {
       id: "jeruzalemkerk",
@@ -7703,7 +7457,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-color native surveyed church and corner residences, stepped cubic masses, projecting brick window piers, stained glazing, three entrances and squat open bell tower. No imported meshes/photo pixels; lettering omitted."
-      }
+      },
+      bagYear: 1929
     },
     {
       id: "blauwe-theehuis",
@@ -7741,7 +7496,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free geometry. Exact BAG ground core and OSM terrace; upper dodecagon/window partitions/vertical tiers estimated from register/photo ratios under surveyed overall height."
-      }
+      },
+      bagYear: 1937
     },
     {
       id: "groot-melkhuis",
@@ -7779,7 +7535,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction with exact BAG ground footprint, photo-backed hipped upper house/veranda/awnings. Roof surface simplified from photo with survey envelope; no imported mesh or pixels."
-      }
+      },
+      bagYear: 1949
     },
     {
       id: "beest-het-lab",
@@ -7816,7 +7573,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free geometry based on survey polygons and municipal panorama observations; exact source suppression preserves adjacent east warehouse."
-      }
+      },
+      bagYear: 1964
     },
     {
       id: "kesbeke",
@@ -7857,7 +7615,8 @@ html #canal-prompt.riding #canal-card {
       materialOverrides: {
         brick: "#8a7159",
         gold: "#f4c400"
-      }
+      },
+      bagYear: 1948
     },
     {
       id: "kesbeke-shop",
@@ -7898,7 +7657,8 @@ html #canal-prompt.riding #canal-card {
       materialOverrides: {
         brick: "#8a7159",
         gold: "#f4c400"
-      }
+      },
+      bagYear: 1934
     },
     {
       id: "ndsm-container-arch",
@@ -7980,7 +7740,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free flat-colour house style; actual BAG holed plan and variable measured roof regions constrain newly generated geometry. Principal facade follows actual northeast13.856m street boundary0\u21929 with source-supported six sash groups, three reconstructed neck tops, sober block ornament and right-half1633 Saint Urbanus portal. Thin front masonry support stays on true perimeter. No neighboring buildings or source pixels/lettering/imported mesh. Superseded partywall9\u219210 and rear10\u219214 facade placements failed native acceptance."
-      }
+      },
+      bagYear: 1611
     },
     {
       id: "the-rock",
@@ -8021,7 +7782,8 @@ html #canal-prompt.riding #canal-card {
       },
       materialOverrides: {
         greyBrick: "#4b4a44"
-      }
+      },
+      bagYear: 2009
     },
     {
       id: "rai-amsterdam",
@@ -8086,7 +7848,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original native flat-color texture-free Elicium, Europacomplex barrel and surrounding halls,1963 Westhal,1969 Amstelhal and Signaal. Source-supported exact named hall/strip outlines; OSM heights and repeated glazing approximate. Full RAI coverage including separate Amtrium/Hollandcomplex/Congress Centre pending. Broad partially owned compoundw807090334 remains unsuppressed."
-      }
+      },
+      bagYear: 2009
     },
     {
       id: "pulitzer-amsterdam",
@@ -8124,7 +7887,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free flat-color connected historic canal houses. Native currentBAG exteriors; original shells constructed from clipped survey roof-plane regions, four preserved sourcecourts, independently authored street elevations/windows/entries/plinths/crowns. Modern2016black entrance; diverse tuit/hals/klok/lijst family mixture; Saxenburg four-bay sandstonefront with attiek; Jansz corner/Reestraat row. Tinycarvedrelief and joinery spacing photo-guided; retiredaddress fuzzyfallbacks rejected. No downloadedmesh or photo pixels."
-      }
+      },
+      bagYear: 1625
     },
     {
       id: "de-gooyer",
@@ -8162,7 +7926,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native-scale square brick base, thatched octagons, open gallery, rounded cap, old-Dutch lattice sails; no imported meshes or photo pixels."
-      }
+      },
+      bagYear: 1725
     },
     {
       id: "nieuw-dakota",
@@ -8200,7 +7965,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free reconstruction of measured twin-gabled host, pale metal corrugation, blue front and green glazing; preserves northern tenant front and low extension. No copied source pixels or meshes; painted name words omitted."
-      }
+      },
+      bagYear: 1989
     },
     {
       id: "pllek",
@@ -8238,7 +8004,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-color container restaurant compound with two red barrelvaults and waterfront glass,source-supported tall yellowtower; nativeplan/exactIDs retain Treehouse,NDSMbeach and shipyardneighbors. No photo textures or copiedmeshes."
-      }
+      },
+      bagYear: 2014
     },
     {
       id: "monk-amsterdam",
@@ -8283,7 +8050,8 @@ html #canal-prompt.riding #canal-card {
         tenantVbo: "0363010012074249",
         tenantCount: 14,
         labelPolicy: "Monk labels the venue destination; whole shared factory not renamed or assigned exclusive tenant ownership."
-      }
+      },
+      bagYear: 1948
     },
     {
       id: "straat-museum",
@@ -8321,7 +8089,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-color reconstruction using survey dimensions and primary current photographs. Four flattened roof lights, brick walls, annex glazing and restrained original geometric mural interpretation; no copied mesh or photo pixels."
-      }
+      },
+      bagYear: 1900
     },
     {
       id: "treehouse-ndsm",
@@ -8389,7 +8158,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free studio/container village;16nativeseparatefootprints,sourcewhitepitchedcabinsandlargeworkhalls,observedcoloredcorrugationandnorthblackslats. Source-derivedroofplanes,notimportedmesh. Courtyards/alleys/Pllekneighbors retained."
-      }
+      },
+      bagYear: 2020
     },
     {
       id: "vondeltuin",
@@ -8427,7 +8197,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-color reconstruction of surveyed shell and source-backed glazing/shingle/sunshade assemblies. No copied reference pixels or third-party mesh. Fine pane/slat divisions photographic approximations."
-      }
+      },
+      bagYear: 2020
     },
     {
       id: "centrale-markthal",
@@ -8603,7 +8374,8 @@ html #canal-prompt.riding #canal-card {
         commit: "b48b9e9e33a15680e2cccacc02cacae5b2305604",
         rawSourceCommit: "b9ecc5f2",
         acceptedCheckpointCommit: "b48b9e9e33a15680e2cccacc02cacae5b2305604"
-      }
+      },
+      bagYear: 1905
     },
     {
       id: "vinoly",
@@ -8690,7 +8462,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-color native reconstruction, survey bounded stepped roofs and photographed factory cornice and opening assemblies. No third-party pixels or meshes."
-      }
+      },
+      bagYear: 1914
     },
     {
       id: "haparandaweg-2-4",
@@ -8744,7 +8517,8 @@ html #canal-prompt.riding #canal-card {
         modifications: "Original texture-free metre geometry; architectural references guide geometry only. Requested Haparandaweg2/4 share single BAGparent."
       },
       preservePositionPrecision: true,
-      landmarkId: "n4337412612"
+      landmarkId: "n4337412612",
+      bagYear: 2015
     },
     {
       id: "afrikahuis",
@@ -8782,7 +8556,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native reconstruction of raised octagonal church, limestone facades, glazed stairs and taller presbytery. Source archive c3ffff8f22f2261b6869975cf8453ba11eecaa5f models/afrikahuis. Photo-guided undercroft supports and seven-riser fan stairs; no third-party meshes or pixels."
-      }
+      },
+      bagYear: 1968
     },
     {
       id: "haparandaweg-8-338",
@@ -9266,7 +9041,8 @@ html #canal-prompt.riding #canal-card {
           ]
         ]
       },
-      heightMetres: 31.5
+      heightMetres: 31.5,
+      bagYear: 2022
     },
     {
       id: "haparandaweg-9",
@@ -9364,7 +9140,8 @@ html #canal-prompt.riding #canal-card {
           ]
         ]
       },
-      heightMetres: 7.28
+      heightMetres: 7.28,
+      bagYear: 2002
     },
     {
       id: "haparandaweg-11",
@@ -9454,7 +9231,8 @@ html #canal-prompt.riding #canal-card {
           ]
         ]
       },
-      heightMetres: 7.187
+      heightMetres: 7.187,
+      bagYear: 2002
     },
     {
       id: "haparandaweg-13",
@@ -9540,7 +9318,8 @@ html #canal-prompt.riding #canal-card {
           ]
         ]
       },
-      heightMetres: 7.15
+      heightMetres: 7.15,
+      bagYear: 2002
     },
     {
       id: "electric-ladyland",
@@ -9588,7 +9367,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native two-parent ensemble, interpreted from BAG/3DBAG, municipal monument212005 and dated references. Museum occupancy only number5; dimensions/joinery approximate."
-      }
+      },
+      bagYear: 1905
     },
     {
       id: "cafe-kobalt",
@@ -9639,7 +9419,8 @@ html #canal-prompt.riding #canal-card {
         slate: "#4a525d",
         bronze: "#8a624b"
       },
-      landmarkId: "osm_node_539179321"
+      landmarkId: "osm_node_539179321",
+      bagYear: 1610
     },
     {
       id: "podium-mozaiek",
@@ -9692,7 +9473,8 @@ html #canal-prompt.riding #canal-card {
         slate: "#655348",
         frame: "#b8bcb2",
         dark: "#343b36"
-      }
+      },
+      bagYear: 1954
     },
     {
       id: "dorus-theus-brug",
@@ -9798,7 +9580,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native interpretation of source footprint/roof planes, current facade photos and municipal/register description; joinery/stoop/dormer proportions approximate. No photo pixels or third-party mesh imported."
-      }
+      },
+      bagYear: 1668
     },
     {
       id: "oosterparkkerk",
@@ -9850,7 +9633,8 @@ html #canal-prompt.riding #canal-card {
       routeCenter: [
         4.915873654538593,
         52.36005012574633
-      ]
+      ],
+      bagYear: 1904
     },
     {
       id: "mediamatic",
@@ -9900,7 +9684,8 @@ html #canal-prompt.riding #canal-card {
         white: "#d3d4cb",
         frame: "#9ca7a6",
         dark: "#404946"
-      }
+      },
+      bagYear: 1957
     },
     {
       id: "fire-station-hendrik",
@@ -10269,7 +10054,8 @@ html #canal-prompt.riding #canal-card {
         slate: "#4b5053",
         glass: "#415763",
         blue: "#263e53"
-      }
+      },
+      bagYear: 1900
     },
     {
       id: "fire-station-dirk",
@@ -10319,7 +10105,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG reconstruction;2025 panorama-backed front arches/stepped gables/divided windows and roof families. Roof and ornament geometry approximated; no third-party pixels or mesh imported."
-      }
+      },
+      bagYear: 1896
     },
     {
       id: "fire-station-nico",
@@ -10525,7 +10312,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1972
     },
     {
       id: "fire-station-osdorp",
@@ -10575,7 +10363,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG geometry; curved sedum-roof glass hall, glazing connector, dark-brick open terrace accommodation block. No third-party mesh or pixels."
-      }
+      },
+      bagYear: 2005
     },
     {
       id: "fire-station-teunis",
@@ -10625,7 +10414,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native surveyed footprint; recessed three-bay hall, red soffits and open upper terrace. No third-party mesh or pixels."
-      }
+      },
+      bagYear: 2013
     },
     {
       id: "fire-station-victor",
@@ -10723,7 +10513,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1911
     },
     {
       id: "fire-station-willem",
@@ -11416,7 +11207,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1984
     },
     {
       id: "fire-station-ijsbrand",
@@ -11574,7 +11366,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2001
     },
     {
       id: "fire-station-pieter",
@@ -11727,7 +11520,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1973
     },
     {
       id: "fire-station-zebra",
@@ -11777,7 +11571,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG brick station, three red truck doors, gray metal office bay and ribbon clerestory, offset hose tower. No third-party meshes or photo pixels."
-      }
+      },
+      bagYear: 1973
     },
     {
       id: "fire-station-weesp",
@@ -11827,7 +11622,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native surveyed geometry and source-observed curved garage frontage and trapezoidal upper glazing; no imported mesh or pixels."
-      }
+      },
+      bagYear: 2010
     },
     {
       id: "fire-station-driemond",
@@ -11914,7 +11710,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1934
     },
     {
       id: "fire-station-anton",
@@ -11967,7 +11764,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free BAG reconstruction; source-guided gray bands, timber terrace, red/white bays and entrance overhang. No reference pixels or third-party mesh imported."
-      }
+      },
+      bagYear: 2016
     },
     {
       id: "this-is-holland",
@@ -12021,7 +11819,8 @@ html #canal-prompt.riding #canal-card {
       },
       materialOpacity: {
         glass: 0.3
-      }
+      },
+      bagYear: 2018
     },
     {
       id: "luther-museum",
@@ -12067,7 +11866,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG parent with two courtyards and later wing; surveyed supported roof domains, photo-guided original apertures and stone entrances. Scale1. Window dimensions and trim depths approximate; no imported mesh or photo textures."
-      }
+      },
+      bagYear: 1771
     },
     {
       id: "huize-frankendael",
@@ -12119,7 +11919,8 @@ html #canal-prompt.riding #canal-card {
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG brick pavilion, coach-house wings, truncated grey hip roofs, rear polygonal projection, pale rococo surrounds, balustrade, dormers and entrance steps. No imported meshes or photo pixels."
-      }
+      },
+      bagYear: 1700
     },
     {
       id: "uilenburger-synagoge",
@@ -12210,7 +12011,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1766
     },
     {
       id: "nieuwendammerkerk",
@@ -12328,7 +12130,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1849
     },
     {
       id: "meerpadkerk",
@@ -12417,7 +12220,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1924
     },
     {
       id: "hannekes-boom",
@@ -12521,7 +12325,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2011
     },
     {
       id: "posthoornkerk",
@@ -12661,7 +12466,8 @@ html #canal-prompt.riding #canal-card {
           ]
         ]
       },
-      heightMetres: 8.27
+      heightMetres: 8.27,
+      bagYear: 1979
     },
     {
       id: "keizersgrachtkerk",
@@ -12753,7 +12559,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1888
     },
     {
       id: "gerard-dou-synagogue",
@@ -12847,7 +12654,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1892
     },
     {
       id: "lekstraat-synagoge",
@@ -13011,7 +12819,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1937
     },
     {
       id: "petrus-en-paulus-kerk",
@@ -13213,7 +13022,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1914
     },
     {
       id: "maarten-lutherkerk",
@@ -13449,7 +13259,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1937
     },
     {
       id: "museum-amsterdam-noord",
@@ -13523,7 +13334,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1918
     },
     {
       id: "levend-paardenmuseum",
@@ -13901,7 +13713,8 @@ html #canal-prompt.riding #canal-card {
       galleryView: {
         theta: -2.45,
         phi: 1.2
-      }
+      },
+      bagYear: 1775
     },
     {
       id: "torture-museum",
@@ -13979,7 +13792,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1815
     },
     {
       id: "theo-thijssen-museum",
@@ -14064,7 +13878,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1994
     },
     {
       id: "pathe-de-munt",
@@ -14621,7 +14436,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1440
     },
     {
       id: "koningskerk",
@@ -15056,7 +14872,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1926
     },
     {
       id: "club-panama",
@@ -15185,7 +15002,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1885
     },
     {
       id: "compagnietheater",
@@ -15555,7 +15373,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1617
     },
     {
       id: "haparandaweg-902-950",
@@ -15719,7 +15538,8 @@ html #canal-prompt.riding #canal-card {
           ]
         ]
       },
-      heightMetres: 30.25
+      heightMetres: 30.25,
+      bagYear: 2015
     },
     {
       id: "haparandaweg-650-706",
@@ -16481,7 +16301,8 @@ html #canal-prompt.riding #canal-card {
           ]
         ]
       },
-      heightMetres: 31.88
+      heightMetres: 31.88,
+      bagYear: 2016
     },
     {
       id: "haparandaweg-952-1002",
@@ -17228,7 +17049,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1966
     },
     {
       id: "willem-de-zwijgerkerk",
@@ -17462,7 +17284,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1931
     },
     {
       id: "vrijburg",
@@ -17720,7 +17543,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1933
     },
     {
       id: "van-gendt-hallen",
@@ -17827,7 +17651,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1900
     },
     {
       id: "zuiderkerk",
@@ -18350,7 +18175,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1996
     },
     {
       id: "aron-schuster-synagoge",
@@ -18530,7 +18356,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1928
     },
     {
       id: "zevenlandenhuizen",
@@ -18949,7 +18776,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1894
     },
     {
       id: "klimhal",
@@ -19078,7 +18906,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1996
     },
     {
       id: "symphony",
@@ -19859,7 +19688,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1966
     },
     {
       id: "west-indisch-pakhuis",
@@ -20033,7 +19863,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1642
     },
     {
       id: "christ-church-groenburgwal",
@@ -20205,7 +20036,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1829
     },
     {
       id: "ljg-synagoge",
@@ -20286,7 +20118,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2010
     },
     {
       id: "trippenhuis",
@@ -20394,7 +20227,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1662
     },
     {
       id: "american-hotel",
@@ -20739,7 +20573,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1900
     },
     {
       id: "hotel-de-l-europe",
@@ -21304,7 +21139,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1896
     },
     {
       id: "vondelkerk",
@@ -22063,7 +21899,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1880
     },
     {
       id: "lloyd-hotel",
@@ -22296,7 +22133,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1918
     },
     {
       id: "ronde-lutherse-kerk",
@@ -23728,7 +23566,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1624
     },
     {
       id: "artis-aquarium",
@@ -24317,7 +24156,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1746
     },
     {
       id: "krasnapolsky",
@@ -25248,7 +25088,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1886
     },
     {
       id: "chassekerk",
@@ -25554,7 +25395,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1927
     },
     {
       id: "pakhuis-de-zwijger",
@@ -26186,7 +26028,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1890
     },
     {
       id: "woongebouw-wladiwostok",
@@ -26595,7 +26438,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1995
     },
     {
       id: "de-nederlandsche-bank",
@@ -26828,7 +26672,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2018
     },
     {
       id: "odessa",
@@ -26993,7 +26838,8 @@ html #canal-prompt.riding #canal-card {
           ]
         ]
       },
-      category: "ordinary"
+      category: "ordinary",
+      bagYear: 2021
     },
     {
       id: "motorkade-1",
@@ -27135,7 +26981,8 @@ html #canal-prompt.riding #canal-card {
           ]
         ]
       },
-      category: "ordinary"
+      category: "ordinary",
+      bagYear: 2020
     },
     {
       id: "de-bazel",
@@ -27298,7 +27145,8 @@ html #canal-prompt.riding #canal-card {
           ]
         ]
       },
-      category: "ordinary"
+      category: "ordinary",
+      bagYear: 1924
     },
     {
       id: "overtoom-197",
@@ -27452,7 +27300,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1925
     },
     {
       id: "willem-de-zwijgerlaan-350",
@@ -27548,7 +27397,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1949
     },
     {
       id: "grasweg-116",
@@ -27674,7 +27524,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2022
     },
     {
       id: "asterweg-23",
@@ -27798,7 +27649,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1923
     },
     {
       id: "oostenburgermiddenstraat-228",
@@ -27908,7 +27760,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2023
     },
     {
       id: "ceramiquelaan-437",
@@ -28111,7 +27964,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2021
     },
     {
       id: "haarlemmerweg-333",
@@ -28222,7 +28076,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2001
     },
     {
       id: "bogortuin-101",
@@ -28375,7 +28230,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2001
     },
     {
       id: "blankenstraat-15",
@@ -28464,7 +28320,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2011
     },
     {
       id: "hilton-amsterdam",
@@ -28812,7 +28669,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1962
     },
     {
       id: "booking-hq",
@@ -30008,7 +29866,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2009
     },
     {
       id: "kohnstammhuis",
@@ -31368,7 +31227,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2023
     },
     {
       id: "jacob-bontiusplaats-9",
@@ -31517,7 +31377,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 2005
     },
     {
       id: "bercylaan-801-855",
@@ -33267,7 +33128,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1905
     },
     {
       id: "mozes-en-aaronkerk",
@@ -33562,7 +33424,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1841
     },
     {
       id: "de-duif",
@@ -33804,7 +33667,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1890
     },
     {
       id: "obrechtkerk",
@@ -34539,7 +34403,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1910
     },
     {
       id: "opstandingskerk",
@@ -35090,7 +34955,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1955
     },
     {
       id: "da-costakade-13",
@@ -35182,7 +35048,8 @@ html #canal-prompt.riding #canal-card {
       galleryView: {
         theta: 3.75,
         phi: 1.08
-      }
+      },
+      bagYear: 1904
     },
     {
       id: "hoofdbureau-elandsgracht",
@@ -35546,7 +35413,8 @@ html #canal-prompt.riding #canal-card {
             ]
           ]
         ]
-      }
+      },
+      bagYear: 1941
     }
   ];
 
@@ -40762,7 +40630,7 @@ html #canal-prompt.riding #canal-card {
 
   // src/canalRecall/game/recallRuntime.ts
   var DISTRACTOR_COUNT = 3;
-  var RIDING_ON_ROUTE_PX = 90;
+  var BUDGET_ON_ROUTE_PX = 90;
   var CHOICE_POOL_RADIUS = 1500;
   function shuffle(items) {
     return items.sort(() => Math.random() - 0.5);
@@ -41025,14 +40893,14 @@ Learned names, exploration collection, personal bests, route settings and the ho
     _updateQuizOnFerry(dt) {
       if (!this.player) return;
       this._tickFeedbackTimeout();
-      if (this.quizPromptName && this._ridingState) this._updateRidingPrompt(dt);
+      if (this.quizPromptName && this._silentPass) this._updateSilentPass(dt);
     }
     _updateCanalQuiz(dt) {
       if (!this.player) return;
       this._tickFeedbackTimeout();
-      if (!this.quizPromptName && this._ridingState) this._ridingState = null;
+      if (!this.quizPromptName && this._silentPass) this._silentPass = null;
       if (this.quizPromptName) {
-        this._updateRidingPrompt(dt);
+        this._updateSilentPass(dt);
         return;
       }
       if (this._tryColdOpenReview()) return;
@@ -41117,8 +40985,11 @@ Learned names, exploration collection, personal bests, route settings and the ho
         DISTRACTOR_COUNT,
         shuffle
       ) : [];
-      const mode = this._routePromptMode(lineChoices !== null);
-      if (mode === "riding") {
+      if (routeBridge && !bridgeNameAskable(this.routeDifficulty, decision.name, this.routeOptions.answerMode)) {
+        this.quizCurrentName = decision.name;
+        return;
+      }
+      if (lineChoices === null) {
         const verdict = this._budgetForRouteName(decision.name);
         if (verdict.action !== "ask") {
           this.quizCurrentName = decision.name;
@@ -41128,7 +40999,6 @@ Learned names, exploration collection, personal bests, route settings and the ho
         this._questionBudget = recordAsk(this._questionBudget || EMPTY_BUDGET, this.raceTime);
       }
       this._openQuizPrompt({
-        mode,
         kind: "route",
         name: decision.name,
         subject: routeBridge ? "bridge" : profile.quizRouteSubject,
@@ -41434,7 +41304,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
      * as a question about the bridge. The question is the headline now and the
      * situation is the caption under it.
      */
-    _openQuizPrompt({ mode = "blocking", kind, name, subject, question, context, choices = null, segmentIndex = -1, pointIndex = 0 }) {
+    _openQuizPrompt({ kind, name, subject, question, context, choices = null, segmentIndex = -1, pointIndex = 0 }) {
       if (!this.player) return;
       this._answerHoldToken = (this._answerHoldToken || 0) + 1;
       this._pendingCrossing = null;
@@ -41448,20 +41318,14 @@ Learned names, exploration collection, personal bests, route settings and the ho
       document.getElementById("canal-card")?.classList.remove("answered");
       if (this._promptFeedback) this._promptFeedback.textContent = "";
       this._clearLandmarkNotice();
-      if (!(mode === "riding" && this.viewport?.mode !== "compact")) {
-        this._neighborhoodNotice = null;
-        this._neighborhoodNoticeTimer = 0;
-      }
+      this._neighborhoodNotice = null;
+      this._neighborhoodNoticeTimer = 0;
       const speedBefore = this.player.speed;
-      this.quizPromptMode = mode;
-      this._ridingState = mode === "riding" ? openRidingPrompt(name) : null;
-      this._ridingSilent = false;
-      if (mode !== "riding") {
-        this.player.speed = 0;
-        this.player.vx = 0;
-        this.player.vy = 0;
-      }
-      this._logPrompt({ name, kind, mode, speedBefore });
+      this._silentPass = null;
+      this.player.speed = 0;
+      this.player.vx = 0;
+      this.player.vy = 0;
+      this._logPrompt({ name, kind, speedBefore });
       const chip = QUIZ_SUBJECTS[subject] || QUIZ_SUBJECTS.water;
       this._promptKind.dataset.kind = chip.kind;
       this._promptKind.firstElementChild.innerHTML = chip.icon;
@@ -41470,8 +41334,6 @@ Learned names, exploration collection, personal bests, route settings and the ho
       this._promptQuestion.textContent = context;
       this._promptInput.setAttribute("aria-label", `${chip.label} name`);
       this._promptInput.placeholder = chip.placeholder;
-      this._prompt.classList.toggle("riding", mode === "riding");
-      if (mode === "riding") this._positionRidingPrompt();
       this._prompt.style.display = "flex";
       const playerScreen = this.camera.worldToScreen(this.player.x, this.player.y);
       this._prompt.classList.toggle("dock-left", playerScreen.x > CANVAS_W / 2);
@@ -41490,34 +41352,11 @@ Learned names, exploration collection, personal bests, route settings and the ho
         requestAnimationFrame(() => this._promptInput.focus());
       }
     }
-    // ---- Riding (non-blocking) questions ----
-    /**
-     * The one thing `game.js` asks: must the frame loop hold the vehicle for the
-     * open question? Riding questions say no. `_updateRacing` calls this in place
-     * of testing `quizPromptName` directly.
-     */
+    // ---- The question budget and the silent pass ----
+    /** The frame-loop hook (`game.js` `_updateRacing`): every open question
+     *  holds the vehicle; a silent pass only withholds a name. */
     _quizFreezesRide() {
-      return questionFreezesRide(!!this.quizPromptName, this.quizPromptMode || "blocking");
-    }
-    /** True when this page's frame loop honours riding questions. Detected from
-     *  the loop itself, so this module can ship before `game.js` is edited and
-     *  riding mode switches on by itself when it is. `ridingPrompts = false`
-     *  turns it off. */
-    _ridingPromptsReady() {
-      if (this.ridingPrompts === false) return false;
-      if (this._frameLoopHonoursRiding === void 0) {
-        this._frameLoopHonoursRiding = typeof this._updateRacing === "function" && String(this._updateRacing).includes("_quizFreezesRide");
-      }
-      return this._frameLoopHonoursRiding;
-    }
-    _routePromptMode(choicesAreLines) {
-      return promptModeFor({
-        hookInstalled: this._ridingPromptsReady(),
-        enabled: this.ridingPrompts,
-        answerMode: this.routeOptions.answerMode,
-        kind: "route",
-        transit: isTransit(this.travelMode) || choicesAreLines
-      });
+      return questionFreezesRide(!!this.quizPromptName, !!this._silentPass);
     }
     /** Route questions per minute: an explicit `game.maxAsksPerMinute` (tests,
      *  experiments) wins, then the rider's setting, then the default. */
@@ -41531,7 +41370,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
       const key = this._normaliseCanalName(name);
       const due = !!this._routeReviewDue?.[key];
       const route = this._liveRoutePath;
-      const onRoute = !route || route.length < 2 || !this.player || nearestRouteIndex(route, this.player).distance <= RIDING_ON_ROUTE_PX;
+      const onRoute = !route || route.length < 2 || !this.player || nearestRouteIndex(route, this.player).distance <= BUDGET_ON_ROUTE_PX;
       const event = {
         name,
         kind: due ? "due-review" : "new-unlearned",
@@ -41546,57 +41385,22 @@ Learned names, exploration collection, personal bests, route settings and the ho
     _beginSilentPass(name) {
       this.quizPromptName = name;
       this.quizPromptKind = "route";
-      this.quizPromptMode = "riding";
-      this._ridingState = { ...openRidingPrompt(name), expired: true };
-      this._ridingSilent = true;
+      this._silentPass = beginSilentPass(name);
     }
-    /** Place the strip from the HUD layout so it clears every other HUD card. */
-    _positionRidingPrompt() {
-      installRidingPromptStyles();
-      const viewport = this.viewport;
-      if (!viewport || !this._prompt) return;
-      const rect = ridingPromptRect({
-        viewport,
-        postcardVisible: !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0),
-        neighborhoodVisible: !!this.currentNeighborhood,
-        minimapVisible: this.showMiniMap,
-        zoomVisible: this._zoomBadgeTimer > 0,
-        controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION
-      });
-      const css = ridingPromptCss(rect, viewport);
-      const style = this._prompt.style;
-      style.setProperty("--riding-left", `${css.left}px`);
-      style.setProperty("--riding-bottom", `${css.bottom}px`);
-      style.setProperty("--riding-width", `${css.width}px`);
-      this._prompt.classList.toggle("riding-narrow", ridingPromptSize(viewport).columns === 2);
-    }
-    /** Per frame while a question is open: time it out, notice the street being left. */
-    _updateRidingPrompt(dt) {
-      const state = this._ridingState;
+    /** Per frame while a name is withheld: notice the street being left. */
+    _updateSilentPass(dt) {
+      const state = this._silentPass;
       if (!state || !this.player) return;
       const roadName = this.track.getRoadName(this.player.x, this.player.y, this.player.angle) || "";
-      const step = advanceRidingPrompt(state, { dt, roadName });
-      this._ridingState = step.state;
-      if (step.event === "leave") {
-        this._finishRidingPass();
-      } else if (step.event === "expire") {
-        this._prompt.style.display = "none";
-        this._prompt.classList.remove("riding");
-        this.quizCurrentName = state.name;
-        this.quizCandidateName = "";
-        this.quizCandidateTimer = 0;
-        this.quizCandidateMetres = 0;
-        this._logPrompt({ name: state.name, kind: "route", mode: "riding", event: "expired" });
-      } else if (!state.expired) {
-        this._positionRidingPrompt();
-      }
+      const step = advanceSilentPass(state, { dt, roadName });
+      this._silentPass = step.state;
+      if (step.left) this._finishSilentPass();
     }
-    /** The rider left the street without answering: grade `passed`, reveal. */
-    _finishRidingPass() {
-      const state = this._ridingState;
+    /** The rider left the withheld street: grade `passed` (exposure), reveal. */
+    _finishSilentPass() {
+      const state = this._silentPass;
       if (!state || !this.player) return;
       const name = state.name;
-      const silent = !!this._ridingSilent;
       const recallFeature = this._recallFeatureAt(name, this.player.x, this.player.y, this.quizPromptSubject === "bridge" ? "bridge" : "");
       const result = CanalRecallAnswerPath.submitAnswer({
         correctName: name,
@@ -41615,9 +41419,9 @@ Learned names, exploration collection, personal bests, route settings and the ho
         recallStore: this.recall,
         revealName: (revealed) => this._revealName(revealed)
       });
-      this.quizFeedback = silent ? `That was ${name}` : result.feedback;
-      this._ridingState = null;
-      this._ridingSilent = false;
+      void result;
+      this.quizFeedback = `That was ${name}`;
+      this._silentPass = null;
       this.quizCurrentName = name;
       this.quizCandidateName = "";
       this.quizCandidateTimer = 0;
@@ -41626,10 +41430,8 @@ Learned names, exploration collection, personal bests, route settings and the ho
       this.quizPromptSubject = "";
       this.quizPromptSegmentIndex = -1;
       this.quizPromptPointIndex = 0;
-      this.quizPromptMode = "blocking";
       this._prompt.style.display = "none";
-      this._prompt.classList.remove("riding");
-      this._logPrompt({ name, kind: "route", mode: "riding", event: silent ? "revealed" : "passed" });
+      this._logPrompt({ name, kind: "route", event: "revealed" });
     }
     /** Plaque feedback is a line, not a state: it goes after FEEDBACK_TIMEOUT_SECONDS. */
     _tickFeedbackTimeout() {
@@ -41710,6 +41512,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         waterKnownHere: !!water && !!this.recall && this.recall.isKnownHere(water),
         waterSuppressedHere: !!water && !!this.recall && this.recall.isSuppressedHere(water),
         bridgeSuppressedHere: !!this.recall && this.recall.isSuppressedHere(bridgeFeature),
+        bridgeAskable: bridgeNameAskable(this.routeDifficulty, closest.name, this.routeOptions.answerMode),
         currentRoadName: this.track.getRoadName(this.player.x, this.player.y, this.player.angle),
         quizCurrentName: this.quizCurrentName
       });
@@ -41764,20 +41567,20 @@ Learned names, exploration collection, personal bests, route settings and the ho
       const card = document.getElementById("canal-card");
       if (card) card.classList.add("answered");
       if (!this._promptChoices) return;
-      const normalise = (value) => (value || "").trim().toLowerCase();
+      const normalise2 = (value) => (value || "").trim().toLowerCase();
       for (const node of Array.from(this._promptChoices.children)) {
         const button = node;
         const name = button.dataset.name || "";
         button.disabled = true;
         button.classList.toggle("is-correct", name === correctName);
-        button.classList.toggle("is-wrong", !correct && !!answer && normalise(name) === normalise(answer) && name !== correctName);
+        button.classList.toggle("is-wrong", !correct && !!answer && normalise2(name) === normalise2(answer) && name !== correctName);
       }
     }
     /** 1-4 answer the open multiple-choice question without reaching for the
      *  mouse; 0 says so when you do not know it, which is a real answer of its
      *  own. */
     _handleChoiceShortcut() {
-      if (!this.quizPromptName || this._ridingState?.expired) return;
+      if (!this.quizPromptName || this._silentPass) return;
       if (this.input.wasPressed("Digit0") || this.input.wasPressed("Numpad0")) {
         this._submitCanalAnswer(null, true);
         return;
@@ -41807,9 +41610,8 @@ Learned names, exploration collection, personal bests, route settings and the ho
      * review schedule.
      */
     _submitCanalAnswer(selectedAnswer, noIdea = false) {
-      if (!this.quizPromptName || !this.player || this._ridingState?.expired) return;
-      this._ridingState = null;
-      this.quizPromptMode = "blocking";
+      if (!this.quizPromptName || !this.player || this._silentPass) return;
+      this._silentPass = null;
       const correctName = this.quizPromptName;
       const answer = selectedAnswer == null ? this._promptInput.value : selectedAnswer;
       const pending = this._pendingCrossing;

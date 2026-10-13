@@ -3,18 +3,13 @@ import { openRoute } from './helpers';
 
 // The ride is the lesson; the question is the check. Seeded ride, Anne Frank
 // House to the Rijksmuseum, driven by the harness autopilot with the game's own
-// physics (see turn-question-timing.spec.ts). Two rides over the same route:
+// physics (see turn-question-timing.spec.ts). Every question blocks the ride
+// (user decision 2026-10-13); what keeps the centre from stopping the bike
+// every block is the per-minute budget (questionBudget.ts): at most two route
+// questions a rolling minute, the rest of the new names ridden past silently
+// and said once the street is left.
 //
-//   legacy   riding questions off: every new street asks and freezes the
-//            vehicle until it is answered (3 s of "thinking" each);
-//   riding   questions are rationed to two a minute, keep the vehicle moving,
-//            and are answered while riding (or passed).
-//
-// The riding half needs `game.js` to call `_quizFreezesRide()` in
-// `_updateRacing`; until the integrator makes that one-line change the spec
-// serves a patched copy of `game.js` that has it.
-//
-// Run: PW_PORT=4421 npx playwright test tests/e2e/riding-pacing.spec.ts --project=desktop
+// Run: PW_PORT=4421 npx playwright test tests/e2e/question-budget.spec.ts --project=desktop
 
 const ANNE_FRANK_HOUSE: [number, number] = [52.37526, 4.88397];
 const RIJKSMUSEUM: [number, number] = [52.36001, 4.88522];
@@ -29,37 +24,19 @@ const CRUISE_SPEED = 80;
 type Ride = {
   arrived: boolean;
   seconds: number;
-  prompts: Array<{ at: number; name: string; mode: string; speedBefore: number; speedAfter: number }>;
+  prompts: Array<{ at: number; name: string; speedBefore: number; speedAfter: number }>;
   events: Array<{ at: number; name: string; event: string }>;
-  /** Frames where a route question was open in riding mode and the vehicle was not moving. */
-  stoppedFramesInRidingPrompt: number;
-  /** Frames where an unanswered riding question's street name was already revealed. */
+  /** Frames where a route question was open and the vehicle was moving. */
+  movingFramesInQuestion: number;
+  /** Frames where an unanswered question's street name was already revealed. */
   earlyReveals: string[];
   frozenSeconds: number;
   maxAsksInAMinute: number;
-  honoursRiding: boolean;
   errors: string[];
 };
 
-/**
- * Until the integrator edits `game.js`, serve it with the one-line change the
- * handoff describes, so this spec exercises riding mode before and after the
- * real edit (`if (this.quizPromptName) {` becomes
- * `if (this._quizFreezesRide()) {` at the top of `_updateRacing`'s question
- * hold). A `game.js` that already has the change is served untouched.
- */
-async function simulateIntegratorChange(page: Page): Promise<void> {
-  await page.route(/\/canal-drive\/js\/game\.js/, async (route) => {
-    const response = await route.fetch();
-    const body = await response.text();
-    const hold = /if \(this\.quizPromptName\) \{(\s*\n\s*\/\/ The bike waits for the answer)/;
-    const patched = body.includes('_quizFreezesRide') ? body : body.replace(hold, 'if (this._quizFreezesRide()) {$1');
-    await route.fulfill({ response, body: patched });
-  });
-}
-
-async function ride(page: Page, riding: boolean): Promise<Ride> {
-  return page.evaluate(({ waypoints, riding, think, cruiseSpeed }) => {
+async function ride(page: Page, budget: number): Promise<Ride> {
+  return page.evaluate(({ waypoints, budget, think, cruiseSpeed }) => {
     const game = (window as any).canalRecallGame;
     const loader = game.osmLoader;
     const perLat = 111320 * 3, perLng = 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180) * 3;
@@ -77,8 +54,7 @@ async function ride(page: Page, riding: boolean): Promise<Ride> {
       }
       return best;
     };
-    const honoursRiding = String(game._updateRacing).includes('_quizFreezesRide');
-    game.ridingPrompts = riding;
+    game.maxAsksPerMinute = budget;
     game.routeOptions.answerMode = 'multiple';
     game.state = 6; // PAUSED: this test steps the simulation itself
     const player = game.player;
@@ -96,14 +72,14 @@ async function ride(page: Page, riding: boolean): Promise<Ride> {
     game.raceTime = 0;
     game._promptLog = [];
     game._questionBudget = { asks: [] };
-    game._ridingState = null;
+    game._silentPass = null;
     game.quizPromptName = '';
     game.quizCurrentName = game.track.getRoadName(player.x, player.y, player.angle);
     game.quizCandidateName = '';
     game.quizCandidateTimer = 0;
     game.quizCandidateMetres = 0;
 
-    let index = 1, arrived = false, openedAt = -1, answeredPrompts = 0, frozenSeconds = 0, stoppedFrames = 0;
+    let index = 1, arrived = false, openedAt = -1, frozenSeconds = 0, movingFrames = 0;
     let wasRevealed = false;
     const earlyReveals: string[] = [];
     const errors: string[] = [];
@@ -148,18 +124,14 @@ async function ride(page: Page, riding: boolean): Promise<Ride> {
         if (roadName === game.quizPromptName && !wasRevealed && game.revealedNames.has(game.quizPromptName)) {
           earlyReveals.push(game.quizPromptName);
         }
-        const open = game._ridingState && !game._ridingState.expired;
-        if (game.quizPromptMode === 'riding' && open && player.throttle > 0 && player.speed < 1 && game.raceTime > 5) stoppedFrames++;
-        // The simulated rider answers after a few seconds. Every third riding
-        // question is left to time out so the pass path is exercised too.
+        const open = !game._silentPass;
+        if (open && Math.abs(player.speed) > 1) movingFrames++;
+        // The simulated rider answers after a few seconds; a silent pass has
+        // nothing to answer and ends when the street is left.
         const waited = game.raceTime - openedAt;
-        const letPass = riding && seenPrompts % 3 === 0;
-        if (open && waited >= think && !letPass) {
+        if (open && waited >= think) {
           try { game._submitCanalAnswer(game.quizPromptName); } catch (error) { errors.push(String((error as Error).stack)); break; }
-          answeredPrompts++;
         }
-        // Blocking questions (typed, legacy, bridge and water crossings) hold the ride until answered.
-        if (!game._ridingState && waited >= think) game._submitCanalAnswer(game.quizPromptName);
       }
       if (Math.hypot(b.x - player.x, b.y - player.y) < 30) {
         leg++;
@@ -174,7 +146,7 @@ async function ride(page: Page, riding: boolean): Promise<Ride> {
     game.state = 4;
 
     const prompts = game._promptLog.filter((entry: any) => !entry.event && entry.kind === 'route')
-      .map((entry: any) => ({ at: entry.at, name: entry.name, mode: entry.mode, speedBefore: entry.speedBefore ?? 0, speedAfter: entry.speedAfter ?? 0 }));
+      .map((entry: any) => ({ at: entry.at, name: entry.name, speedBefore: entry.speedBefore ?? 0, speedAfter: entry.speedAfter ?? 0 }));
     const events = game._promptLog.filter((entry: any) => entry.event)
       .map((entry: any) => ({ at: entry.at, name: entry.name, event: entry.event }));
     let maxAsksInAMinute = 0;
@@ -182,55 +154,46 @@ async function ride(page: Page, riding: boolean): Promise<Ride> {
       maxAsksInAMinute = Math.max(maxAsksInAMinute, prompts.filter((other: any) => other.at >= prompt.at && other.at < prompt.at + 60).length);
     }
     return {
-      arrived, seconds: game.raceTime, prompts, events, stoppedFramesInRidingPrompt: stoppedFrames,
-      earlyReveals, frozenSeconds, maxAsksInAMinute, honoursRiding, errors,
+      arrived, seconds: game.raceTime, prompts, events, movingFramesInQuestion: movingFrames,
+      earlyReveals, frozenSeconds, maxAsksInAMinute, errors,
     };
-  }, { waypoints: [ANNE_FRANK_HOUSE, RIJKSMUSEUM], riding, think: THINK_SECONDS, cruiseSpeed: CRUISE_SPEED });
+  }, { waypoints: [ANNE_FRANK_HOUSE, RIJKSMUSEUM], budget, think: THINK_SECONDS, cruiseSpeed: CRUISE_SPEED });
 }
 
-test('route questions are rationed and never stop the rider (Anne Frank House to the Rijksmuseum)', async ({ page }, testInfo) => {
+test('route questions are rationed to the budget and each one holds the bike (Anne Frank House to the Rijksmuseum)', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'desktop', 'pure simulation; one project is enough');
   test.setTimeout(300_000);
-  await simulateIntegratorChange(page);
   await openRoute(page, { travelMode: 'car', viewMode: 'north', playerTimeoutMs: 90_000 });
 
-  const legacy = await ride(page, false);
-  const legacyRate = legacy.prompts.length / (legacy.seconds / 60);
-  console.log(`legacy: ${legacy.prompts.length} prompts in ${legacy.seconds.toFixed(1)} s = ${legacyRate.toFixed(1)}/min, `
-    + `frozen ${legacy.frozenSeconds.toFixed(1)} s, max in a minute ${legacy.maxAsksInAMinute}`);
-  expect(legacy.arrived, JSON.stringify(legacy)).toBe(true);
-
-  test.skip(!legacy.honoursRiding, 'game.js does not call _quizFreezesRide() yet (integrator one-line change)');
+  const everything = await ride(page, Infinity);
+  console.log(`ask-everything: ${everything.prompts.length} prompts in ${everything.seconds.toFixed(1)} s, `
+    + `frozen ${everything.frozenSeconds.toFixed(1)} s, max in a minute ${everything.maxAsksInAMinute}`);
+  expect(everything.arrived, JSON.stringify(everything)).toBe(true);
 
   // A fresh profile for the second ride: the first one's answers must not
   // make this one's streets "known".
   await page.evaluate(() => localStorage.clear());
   await openRoute(page, { travelMode: 'car', viewMode: 'north', playerTimeoutMs: 90_000 });
-  const riding = await ride(page, true);
-  const rate = riding.prompts.length / (riding.seconds / 60);
-  console.log(`riding: ${riding.prompts.length} prompts in ${riding.seconds.toFixed(1)} s = ${rate.toFixed(1)}/min, `
-    + `frozen ${riding.frozenSeconds.toFixed(1)} s, max in a minute ${riding.maxAsksInAMinute}, `
-    + `events ${riding.events.map(e => e.event).join(',')}`);
-  expect(riding.arrived, JSON.stringify(riding)).toBe(true);
+  const budgeted = await ride(page, MAX_ASKS_PER_MINUTE);
+  const rate = budgeted.prompts.length / (budgeted.seconds / 60);
+  console.log(`budgeted: ${budgeted.prompts.length} prompts in ${budgeted.seconds.toFixed(1)} s = ${rate.toFixed(1)}/min, `
+    + `frozen ${budgeted.frozenSeconds.toFixed(1)} s, max in a minute ${budgeted.maxAsksInAMinute}, `
+    + `events ${budgeted.events.map(e => e.event).join(',')}`);
+  expect(budgeted.arrived, JSON.stringify(budgeted)).toBe(true);
+  expect(budgeted.errors).toEqual([]);
 
-  // Rationed: never more than the budget in any rolling minute, and fewer than before.
-  expect(riding.maxAsksInAMinute, JSON.stringify(riding.prompts)).toBeLessThanOrEqual(MAX_ASKS_PER_MINUTE);
-  // The mean over a ride a little over a minute long may round up to one extra ask.
+  // Rationed: never more than the budget in any rolling minute, and fewer than ask-everything.
+  expect(budgeted.maxAsksInAMinute, JSON.stringify(budgeted.prompts)).toBeLessThanOrEqual(MAX_ASKS_PER_MINUTE);
   expect(rate, `${rate.toFixed(2)} prompts/min`).toBeLessThanOrEqual(MAX_ASKS_PER_MINUTE * 1.25);
-  expect(riding.prompts.length).toBeLessThan(legacy.prompts.length);
-  // A route question never forces the speed to zero, and the frame loop never holds the ride for one.
-  for (const prompt of riding.prompts) {
-    expect(prompt.mode).toBe('riding');
-    if (prompt.speedBefore > 5) expect(prompt.speedAfter, JSON.stringify(prompt)).toBeGreaterThan(0);
-  }
-  expect(riding.frozenSeconds).toBe(0);
-  expect(riding.stoppedFramesInRidingPrompt).toBe(0);
-  // The street under question is not revealed before it is answered or left.
-  expect(riding.earlyReveals).toEqual([]);
+  expect(budgeted.prompts.length).toBeLessThan(everything.prompts.length);
+  // Every question holds the bike: speed is zeroed when it opens and the frame loop waits.
+  for (const prompt of budgeted.prompts) expect(prompt.speedAfter, JSON.stringify(prompt)).toBe(0);
+  expect(budgeted.movingFramesInQuestion).toBe(0);
+  expect(budgeted.frozenSeconds).toBeGreaterThan(0);
+  // The street under question is not revealed before it is answered.
+  expect(budgeted.earlyReveals).toEqual([]);
   // The ride still teaches: names that were not asked are revealed after the rider leaves the street.
-  expect(riding.events.length).toBeGreaterThan(0);
-  // The legacy ride really did stop (proves the measurement can see a freeze).
-  expect(legacy.frozenSeconds).toBeGreaterThan(0);
+  expect(budgeted.events.filter(e => e.event === 'revealed').length).toBeGreaterThan(0);
 });
 
 // The per-minute budget is a rider setting (1 / 2 / 3 / off). It is chosen on
