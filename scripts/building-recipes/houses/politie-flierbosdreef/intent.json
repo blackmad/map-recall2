@@ -5,25 +5,129 @@
   "pandId": "0363100012143903",
   "address": "Politiebureau Flierbosdreef, Flierbosdreef 15, Amsterdam (1985; a large industrial-looking complex with metal cladding)",
   "sources": [
-    {"id": "pano-2024-09-13-se", "kind": "street-panorama", "capturedAt": "2024-09-13", "image": "staging/pand-reference-walls/0363100012143903/w02-151.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-13_10-26-45_00493/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2024-09-13-se-upper", "kind": "street-panorama", "capturedAt": "2024-09-13", "image": "staging/pand-reference-walls/0363100012143903/w02-151.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-13_10-26-45_00493/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2025-09-01-sw-black", "kind": "street-panorama", "capturedAt": "2025-09-01", "image": "staging/pand-reference-walls/0363100012143903/w01-241.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-01_11-37-05_02371/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2025-09-01-sw-low", "kind": "street-panorama", "capturedAt": "2025-09-01", "image": "staging/pand-reference-walls/0363100012143903/w01-241.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-01_11-37-05_02371/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
-    {"id": "pano-2025-09-01-sw-grey", "kind": "street-panorama", "capturedAt": "2025-09-01", "image": "staging/pand-reference-walls/0363100012143903/w01-241.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-01_11-37-05_02371/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
+    {
+      "id": "pano-2024-09-13-se",
+      "kind": "street-panorama",
+      "capturedAt": "2024-09-13",
+      "image": "staging/pand-reference-walls/0363100012143903/w02-151.jpg",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-13_10-26-45_00493/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2024-09-13-se-upper",
+      "kind": "street-panorama",
+      "capturedAt": "2024-09-13",
+      "image": "staging/pand-reference-walls/0363100012143903/w02-151.jpg",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-09-13_10-26-45_00493/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2025-09-01-sw-black",
+      "kind": "street-panorama",
+      "capturedAt": "2025-09-01",
+      "image": "staging/pand-reference-walls/0363100012143903/w01-241.jpg",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-01_11-37-05_02371/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2025-09-01-sw-low",
+      "kind": "street-panorama",
+      "capturedAt": "2025-09-01",
+      "image": "staging/pand-reference-walls/0363100012143903/w01-241.jpg",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-01_11-37-05_02371/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    },
+    {
+      "id": "pano-2025-09-01-sw-grey",
+      "kind": "street-panorama",
+      "capturedAt": "2025-09-01",
+      "image": "staging/pand-reference-walls/0363100012143903/w01-241.jpg",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-01_11-37-05_02371/",
+      "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+    }
   ],
   "walls": [
-    {"wallSurfaces": [13, 17], "system": "blank", "storeys": 2, "baysPerStorey": 1},
-    {"wallSurfaces": [51, 110], "system": "ribbon-windows", "storeys": 4, "baysPerStorey": 10, "ground": "blank", "windows": "plain", "blankStoreys": [0, 1, 2], "palette": {"brick": "#454a4e"}},
-    {"wallSurfaces": [46], "system": "blank", "storeys": 4, "baysPerStorey": 1, "palette": {"brick": "#222427"}},
-    {"wallSurfaces": [19], "system": "ribbon-windows", "storeys": 1, "baysPerStorey": 6, "ground": "system", "windows": "plain"},
-    {"wallSurfaces": [20, 21], "system": "blank", "storeys": 2, "baysPerStorey": 1}
+    {
+      "wallSurfaces": [
+        13,
+        17
+      ],
+      "system": "blank",
+      "storeys": 2,
+      "baysPerStorey": 1
+    },
+    {
+      "wallSurfaces": [
+        51,
+        110
+      ],
+      "system": "ribbon-windows",
+      "storeys": 4,
+      "baysPerStorey": 10,
+      "ground": "blank",
+      "windows": "plain",
+      "blankStoreys": [
+        0,
+        1,
+        2
+      ],
+      "palette": {
+        "brick": "#454a4e"
+      }
+    },
+    {
+      "wallSurfaces": [
+        46
+      ],
+      "system": "blank",
+      "storeys": 4,
+      "baysPerStorey": 1,
+      "palette": {
+        "brick": "#222427"
+      }
+    },
+    {
+      "wallSurfaces": [
+        19
+      ],
+      "system": "ribbon-windows",
+      "storeys": 1,
+      "baysPerStorey": 6,
+      "ground": "system",
+      "windows": "plain"
+    },
+    {
+      "wallSurfaces": [
+        20,
+        21
+      ],
+      "system": "blank",
+      "storeys": 2,
+      "baysPerStorey": 1
+    },
+    {
+      "wallSurfaces": [
+        105
+      ],
+      "system": "blank",
+      "storeys": 2,
+      "baysPerStorey": 1
+    }
   ],
   "otherWalls": "blank",
-  "roof": {"material": "bitumen"},
-  "palette": {"brick": "#b9bcbb", "frame": "#3a3f44", "door": "#3a3a3a", "stone": "#9a9c9a", "wallMaterial": "stucco"},
+  "roof": {
+    "material": "bitumen"
+  },
+  "palette": {
+    "brick": "#b9bcbb",
+    "frame": "#3a3f44",
+    "door": "#3a3a3a",
+    "stone": "#9a9c9a",
+    "wallMaterial": "stucco"
+  },
   "notes": [
     "1985 police complex at Flierbosdreef: a low, long horizontally corrugated metal-clad base (SE wall panel 12, 42 m, 7.9 m; 2024-09-13 w02-151, the sky is blown out by the capture) under a darker curved upper glazed band (panel 41, 150 deg, 16.1 m); at the south-west a black clad blank box (panel 37, surface 46, 16 m, 16.1 m high, 2025-09-01 w01-241, behind a cement mixer) over grey corrugated lower walls, and a low glazed wing (surface 19, 4.7 m). 132 wall surfaces: the NW, NE courtyard walls and further volumes are not photographed (candidates 0) and stay blank.",
     "Ornaments: no POLITIE lettering, blue lamp, striped band, canopy, crest or entrance is visible on any photographed wall (the SW low wing's glazed band could hold the public entrance, but no door is legible at 1 m/px in the washed-out 2025 capture), so none is modelled: not present in the evidence, not skipped. SIMPLIFIED: the corrugated cladding (horizontal ribs 0.1 m, below the grain: modelled as a flat grey stucco wall), the black cladding panel joints (flat dark wall), the curved ribbon (straight ribbon, 3DBAG walls are flat), the radio mast and the aerials on the roof (SKIPPED: slender, not part of the 3DBAG volume).",
-    "BLOCKED, do not install: gate open-edges fails (1 edge, 13.9 m, roof surface, samples mid at local x -6.6, y 4.9, z -37.1; limit 2 m) with every wall group blank or windowed alike. It is a seam in the 3DBAG LoD2.2 shell itself (a roof edge 0.1 m off the base of the 14 m wall surface above it, wall surface 4 at NAP 2.2 against roof at NAP 2.1), not something the intent controls; a largeCompile hook that welds the seam or a measured gate exemption is the fix. Everything else passes (868 tris). The upper band blankStoreys [0] keeps the lower storey of the 8.3-16.1 m panel blank, since the window band only occupies the top of the wall in the photograph."
+    "3DBAG seam: the 14 m wall surface 105 (NAP 2.1 to 6.3 m) sits on the plinth surface 104 with a 0.1 m offset and left a 13.9 m open roof edge in the bare shell (gate open-edges, limit 2 m). Assigning 105 to its own blank wall group welds it; nothing is drawn on it (system blank)."
   ]
 }
