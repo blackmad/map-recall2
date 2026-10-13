@@ -1,5 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { openRoute } from './helpers';
 
 // Riding frame-cost baseline (2026-10-09 perf cycle).
@@ -13,7 +14,25 @@ import { openRoute } from './helpers';
 // timers around the map render, the signature-landmark layer and every
 // `moveend` dispatch (the game calls `jumpTo` each frame, so `moveend` fires
 // each frame too). Results go to artifacts/perf/ride-perf-<project>.json.
+//
+// Desktop budget (2026-10-13, docs/performance/desktop-20261013.md): the
+// `default` variants on the desktop project must stay inside DESKTOP_BUDGET.
+// The budget is in main-thread ms, not frame intervals, because the frame
+// interval is the display cadence (16.7 or 33.3 ms depending on the machine
+// and whether its display is awake) whenever the frame fits. BUNDLES_DIR=<dir>
+// serves *.bundle.js from a local build (measure before the integrator rebuilds).
 test.skip(!process.env.PERF_RIDE, 'set PERF_RIDE=1 to measure');
+
+/**
+ * Pinned at the 2026-10-13 desktop numbers after the label and landmark
+ * fixes, with slack for a loaded machine (after: map render median 2.2-3.1 ms,
+ * p95 3.6-7.2; label overlay mean 0.26-0.42 ms, worst 9.9-17.6 ms; before:
+ * label overlay mean 0.91-1.23 ms). The mean catches a return of the per-frame
+ * `getStyle()`; the worst-frame bound is a gross guard only (this chase route
+ * never had the 40 ms plans the aerial hold had; those are measured with
+ * scripts/ride-perf-owners.mjs).
+ */
+const DESKTOP_BUDGET = { mapRenderMedianMs: 6, mapRenderP95Ms: 12, labelFrameMeanMs: 0.6, labelFrameMaxMs: 30, framesOver100: 2 };
 
 type Variant = { label: string; landmarks: 'default' | 'off' | 'all' };
 const variants: Variant[] = [
@@ -35,13 +54,15 @@ async function instrument(page: Page) {
     const w = window as any;
     const vm = w.canalRecallGame.vectorMap;
     const map = vm.map;
-    const t: Record<string, number[]> = { frame: [], mapRender: [], landmarkRender: [], threeLayers: [], moveend: [], move: [] };
+    const t: Record<string, number[]> = { frame: [], mapRender: [], landmarkRender: [], threeLayers: [], moveend: [], move: [], labelFrame: [] };
     w.__perf = t;
     const wrap = (obj: any, key: string, bucket: string) => {
       const original = obj[key].bind(obj);
       obj[key] = (...args: unknown[]) => { const s = performance.now(); try { return original(...args); } finally { t[bucket].push(performance.now() - s); } };
     };
     wrap(map, '_render', 'mapRender');
+    // The POI label overlay's per-frame handler (plan, occlusion picks, placement).
+    if (vm._labelOverlay?.frame) wrap(vm._labelOverlay, 'frame', 'labelFrame');
     const layer = vm._signatureLandmarks?.layer;
     if (layer?.render && !vm._sharedFrame) wrap(layer, 'render', 'landmarkRender');
     // All of our three.js drawing, either as the legacy per-feature layers or
@@ -73,6 +94,11 @@ for (const variant of variants) {
     // SHARED_FRAME=1|0 forces the shared three.js frame (rendererShared/) on or off; SHADOWS=0 drops its sun shadows.
     if (process.env.SHARED_FRAME) await page.addInitScript((on: boolean) => { (window as any).__canalRecallSharedFrame = on; }, process.env.SHARED_FRAME === '1');
     if (process.env.SHADOWS) await page.addInitScript((on: boolean) => { (window as any).__canalRecallShadows = on; }, process.env.SHADOWS === '1');
+    const bundles = process.env.BUNDLES_DIR;
+    if (bundles) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+      const file = join(bundles, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]);
+      return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
+    });
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
     await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 });
     await page.evaluate(async (mode) => {
@@ -121,6 +147,7 @@ for (const variant of variants) {
       label: variant.label, project: info.project.name, throttle,
       frames: { ...summary(frames), p99: +pick(frames, 0.99).toFixed(2), over50: frames.filter((f: number) => f > 50).length, over100: frames.filter((f: number) => f > 100).length },
       mapRender: summary(raw.t.mapRender), landmarkRender: summary(raw.t.landmarkRender), threeLayers: summary(raw.t.threeLayers),
+      labelFrame: { ...summary(raw.t.labelFrame), maxMs: +Math.max(0, ...raw.t.labelFrame).toFixed(1) },
       moveend: summary(raw.t.moveend), move: summary(raw.t.move),
       landmarksShown: raw.shown, heapMB: raw.heapMB, threeBuildings: raw.three, hot,
     };
@@ -129,5 +156,15 @@ for (const variant of variants) {
     mkdirSync('artifacts/perf', { recursive: true });
     writeFileSync(`artifacts/perf/ride-perf-${info.project.name}${process.env.CANAL_ELEVATION ? `-elevation${process.env.CANAL_ELEVATION}` : ''}${process.env.SHARED_FRAME ? `-shared${process.env.SHARED_FRAME}` : ''}${process.env.SHADOWS ? `-shadows${process.env.SHADOWS}` : ''}.json`, JSON.stringify(results, null, 2));
     expect(frames.length).toBeGreaterThan(20);
+    if (info.project.name === 'desktop' && variant.landmarks === 'default' && !process.env.SHARED_FRAME && !process.env.CANAL_ELEVATION) {
+      expect(sample.mapRender.median, 'map render median (ms)').toBeLessThanOrEqual(DESKTOP_BUDGET.mapRenderMedianMs);
+      expect(sample.mapRender.p95, 'map render p95 (ms)').toBeLessThanOrEqual(DESKTOP_BUDGET.mapRenderP95Ms);
+      if (raw.t.labelFrame.length) {
+        // Mean, not p95: the occlusion picks run up to 3 ms in a few frames of every plan by design.
+        expect(sample.labelFrame.totalMs / Math.max(1, sample.labelFrame.n), 'label overlay mean (ms)').toBeLessThanOrEqual(DESKTOP_BUDGET.labelFrameMeanMs);
+        expect(sample.labelFrame.maxMs, 'label overlay worst frame (ms)').toBeLessThanOrEqual(DESKTOP_BUDGET.labelFrameMaxMs);
+      }
+      expect(sample.frames.over100, 'frames over 100 ms').toBeLessThanOrEqual(DESKTOP_BUDGET.framesOver100);
+    }
   });
 }
