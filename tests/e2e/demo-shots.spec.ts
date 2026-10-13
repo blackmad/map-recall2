@@ -38,6 +38,8 @@ const SPOTS: Spot[] = [
   { name: 'street-westerkerk-citylook', centre: [4.8838960, 52.3744999], standDeg: 140, standM: 60, view: 'cockpit', query: '?sharedFrame=1&cityLook=1' },
   { name: 'street-dam-citylook', centre: [4.8926, 52.3731], standDeg: 180, standM: 60, view: 'cockpit', query: '?sharedFrame=1&cityLook=1' },
   { name: 'street-dam-default', centre: [4.8926, 52.3731], standDeg: 180, standM: 60, view: 'cockpit' },
+  { name: 'kattenburg-quadrangle', centre: [4.9099367, 52.3645834], standDeg: 160, standM: 110 },
+  { name: 'street-heinekenplein-block', centre: [4.8924996, 52.3575303], standDeg: 95, standM: 60, view: 'cockpit' },
 ];
 
 const OUT = process.env.DEMO_OUT ?? 'artifacts/demo';
