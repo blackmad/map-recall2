@@ -14,7 +14,8 @@ export type LngLat = [number, number];
 export type BgtWidthDm = [number, number, number];
 export interface OsmWay { id: number; tags: Record<string, string>; g: LngLat[]; bw?: BgtWidthDm }
 export type AreaKind = 'park' | 'grass' | 'wood' | 'square' | 'paved' | 'parking';
-export interface OsmArea { id: string; kind: AreaKind; name?: string; rings: LngLat[][] }
+/** `hw`: the `area:highway` value (or `highway` of an `area=yes` way) of a `paved` area; `surface`: its OSM surface tag. */
+export interface OsmArea { id: string; kind: AreaKind; name?: string; rings: LngLat[][]; hw?: string; surface?: string }
 export interface OsmGroundExtract {
   version: 1;
   box: string;
@@ -40,6 +41,26 @@ export function areaKind(tags: Record<string, string>): AreaKind | null {
   if (tags.natural === 'grass') return 'grass';
   if (tags.natural === 'scrub' || tags.natural === 'wood') return 'wood';
   return null;
+}
+
+/**
+ * The ground surface of a `paved` area by what OSM says it is: a carriageway area
+ * (`area:highway=residential`, `tertiary`, ...) is asphalt (klinker when its surface
+ * is brick or sett), a cycleway area is red cycle asphalt, platforms, traffic islands,
+ * footways and steps are pavement tiles, a verge is grass, a parking space is parking,
+ * and an area with no `hw` (or an unknown one) is square paving.
+ */
+export function pavedAreaSurface(a: Pick<OsmArea, 'hw' | 'surface'>): 'asphalt' | 'klinker' | 'cycle' | 'paving' | 'park' | 'parking' | 'square' {
+  const hw = a.hw ?? '';
+  if (hw === 'cycleway') return 'cycle';
+  if (['footway', 'path', 'steps', 'platform', 'traffic_island', 'central_island', 'elevator'].includes(hw)) return 'paving';
+  if (hw === 'verge') return 'park';
+  if (hw === 'parking_space') return 'parking';
+  const base = hw.replace(/_link$/, '');
+  if (['motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential', 'living_street', 'service', 'busway', 'road', 'driveway', 'crossing', 'bus_bay', 'bus_stop', 'marking', 'emergency', 'prohibited'].includes(base)) {
+    return a.surface && ['paving_stones', 'sett', 'bricks', 'brick', 'cobblestone', 'unhewn_cobblestone'].includes(a.surface) ? 'klinker' : 'asphalt';
+  }
+  return 'square';
 }
 
 export type Surface = 'asphalt' | 'klinker' | 'cycle' | 'paving' | 'gravel';

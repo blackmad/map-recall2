@@ -22,7 +22,7 @@ import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMes
 import { drapeTriangles, emptyMesh, gridHeight, merge, reliefGrid, type MeshArrays } from './drape.js';
 import { buildStreets, isBridgeWay, prepareWays, resolvePriorSidewalks, LIFT, type LocalWay } from './streets.js';
 import { flatDeckBody, footprintAxis, measuredDeckBody, measuredDeckTop, movableFrame, pointInRing, type DeckBuildInfo } from './decks.js';
-import type { OsmGroundExtract } from './osmGround.js';
+import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
 import type { Rect } from './groundStore.js';
 
@@ -175,7 +175,7 @@ export function buildCell(input: CellInput): BuiltCell {
   // Areas.
   const areaLayer: Record<string, GroundLayer> = { park: 'park', grass: 'park', wood: 'wood', square: 'square', paved: 'square', parking: 'parking' };
   for (const a of areas) {
-    const layer = areaLayer[a.kind];
+    const layer = a.kind === 'paved' ? pavedAreaSurface(a) : areaLayer[a.kind];
     if (!layer) continue;
     const m = emptyMesh();
     for (const r of a.rings) {
