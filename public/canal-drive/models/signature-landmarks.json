@@ -13323,6 +13323,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original native flat-color texture-free Elicium, Europacomplex barrel and surrounding halls,1963 Westhal,1969 Amstelhal and Signaal. Source-supported exact named hall/strip outlines; OSM heights and repeated glazing approximate. Full RAI coverage including separate Amtrium/Hollandcomplex/Congress Centre pending. Broad partially owned compoundw807090334 remains unsuppressed."
       },
+      "bagYear": 2009,
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
@@ -13356,7 +13357,7 @@
       "bytes": 251832,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "82512e854a36c780",
+        "sourceHash": "3b9f218afb3be951",
         "buildVersion": 2,
         "bytes": 82028,
         "triangles": 5101
