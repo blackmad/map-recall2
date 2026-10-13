@@ -687,6 +687,16 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Highlight: pick one (user decision)**. Three candidates are live behind
+  `?highlight=a|b|c` with sheets in `docs/reports/highlight-redesign-20261013/`;
+  the lane recommends a (outline + ground ring + beacon). Open: the outline
+  is subtle at chase distance on a terrace house (the beacon carries it), the
+  MapLibre fallback extrusions and 3DBAG detailed mode keep yellow, and the
+  default is still yellow until the user chooses.
+- **Roofs after the attachment fix**: a corner block that cannot be roofed
+  from its box (bare deck < 15 %) stays flat (the Bonboon corner on the
+  Rozengracht reads as a flat grey block now); the aerial-roof lane will give
+  it the real roof slot. Pitched-vs-flat split pands still follow one plan.
 - **Own ground after the 2026-10-13 lanes (HISTORY)**: still open before a
   desktop default-on in the belt: the junction red cycle-lane smear and brown
   holes at Rozengracht/Marnixstraat (cycle bands at lift 0.036 over
@@ -698,7 +708,7 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   `riderPose().pitch`; hosting quota for 29.6 MB gz; iPhone ride-perf;
   BRU0077's suspect 1.7 m hump and the five flooded spots in the belt audit.
   A separate lane traces the user's "bouncy second route line" at the
-  Kostverlorenvaart (`docs/handoffs/lane-route-line-bounce-20261013.md`).
+  Kostverlorenvaart: fixed 2026-10-13 (HISTORY, the boat's canvas question band).
 - **`?bagTiles=1` default flip**: recommended by the default-on review
   (perf-neutral, `check:covers --strict` green, 0 without footprint);
   prerequisites done except `check:canal` on the flipped default and the

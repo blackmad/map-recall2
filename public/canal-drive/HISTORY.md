@@ -1,5 +1,92 @@
 # Canal Recall — what is built
 
+## Six lanes merged: highlight candidates, roofs and sheds, HUD tuck, POI labels, route-line bounce, GLB cleanup batch 3 (2026-10-13)
+
+**Highlight** (`look/highlight-redesign-20261013`, Opus): three candidates
+behind `?highlight=a|b|c` in every building pipeline and both frames
+(`look/highlight.ts`, `highlightMarker.ts`): a) materials kept, a 2-px
+inverted-hull outline in the accent, a soft ground band round the footprint
+and a beacon over the roof; b) additive fresnel rim pulsing over 2.4 s; c)
+neighbours within 60 m lose 40 % saturation. Accent `#ff8033` (orange-coral)
+chosen by a Machado colour-blind ΔE check against brick, pantile, slate,
+stucco, street, canal, sky and trees (min ΔE 40 normal / 24 tritan; the HUD
+copper fails at 6.5 against pantile). Contact sheets in
+`docs/reports/highlight-redesign-20261013/` (Westermarkt, Westerkerk,
+Rijksmuseum, an Oud-West terrace; chase and saddle; default and shared
+frame). Cost: a adds 22–26 draw calls and no per-frame work (first highlight
+20 ms, later 4 ms); b redraws every frame while shown (2.5–4.4 ms CPU per
+vsync); c costs a 27–37 ms hitch building a prism index. Recommendation in
+LOOK.md: ship a with the shared-frame flip. Default is still today's yellow.
+Storybook `Highlight.stories.tsx`, `tests/e2e/highlight.spec.ts` (the
+destination found by its accent in both frames). `three.bundle.js` carries
+`HighlightMarker` (rebuilt by the integrator).
+
+**Roofs and sheds** (`roofs/attachment-sheds-20261013`, Sonnet): the
+detached roof was `planBuildingRoof` fitting a bounding box (coverage
+≥ 0.88, up to 1 m off the walls) or an inscribed rectangle as small as half
+the plan and roofing that rectangle, never the walls; `clipToOutline` now
+cuts the slopes at the walls and closes the cut faces, a plan with a bare
+deck ≥ 15 % is roofed from its box and cut, and `scripts/check-roof-attachment.ts`
+measures all 136,823 generated roofs. Roof texture by distance
+(`roofTier.ts`): cells 1× within 70 m, 0.5× from 70 m, the mean colour from
+190 m, crossfaded over 30/80 m, cell luminance SD capped at 0.06 (was
+0.098/0.093). The facade cells share the tiers (hardware trilinear within
+140 m, a fixed mip from 140 m, the mean from 300 m): the white stipple from
+the air is gone. Garden sheds (`check-garden-sheds.ts`): 105,646 pands
+(30.4 %) classified `shed` (small, not street-facing; 8,774 small
+street-facing pands stay buildings), drawn as muted flat boxes at their own
+3DBAG height (median 6.4–8 m², 2.5–2.7 m: the tile height already was the
+3DBAG height; the 5 m storey default applied only where facts were missing)
+and dropped beyond the near tier. Willem de Zwijgerlaan: 85 houses, 250
+sheds within 90 m, 71 % of houses have a shed within 25 m, so the user's
+"does every house have one" is mostly yes. Allotment huts: every OSM
+`landuse=allotments` polygon (172) fetched; huts inside are sheds.
+
+**HUD tuck** (`hud/tuck-20261013`, Sonnet): on desktop the whole bottom-right
+corner (Feedback, settings, help, build stamp) fades 3 s into the ride and
+3 s after the mouse last moved; a 2 px wiggle or any non-steering key brings
+it back (`presentationRuntime.ts`, `tucked-all`; the CSS in `index.html`).
+Calmer plaque (fourth line left to quiz feedback), hover-only "% new" badge,
+smaller compass. Storybook live-hud idle/wiggle states, `hud-utilities-tuck.spec.ts`.
+Phone unchanged.
+
+**POI labels** (`look/poi-labels-20261013`, Opus): labels are a budgeted DOM
+layer (`src/canalRecall/labels/`, mounted from `vector-map.js`, ships in
+`orientation-pois.bundle.js`) instead of MapLibre symbols: the plaque face,
+warm ink on a thin paper halo (`LABEL_INK` in `palette.ts`;
+`?labelTone=paper` for the inverse, `?labels=maplibre` for the old layers),
+sizes by class, caps only for landmarks, a stem and leader dot, the
+destination as a paper chip with a copper arrowhead. Budget 6 at eye height
+to 12 at 250 m; fade beyond max(160 m, 2.2× camera height); occlusion by
+the same pickers a click uses; no label within 6 px of a HUD card; never the
+asked street (as a word or compound prefix; `check-recall-rules`). Damrak at
+250 m 132 → 10 labels and 17 → 0 over the HUD; Westerkerk at 1.7 m 9 → 1.
+
+**Route-line bounce** (`ground/route-line-bounce-20261013`, Sonnet): in boat
+mode `presentationRuntime` skipped the draped street highlight and drew the
+2D canvas question band (yellow/white/blue, projected at z = 0, a frame
+behind the map) over the draped route ribbon, so the two drifted against
+each other. One draped highlight in every travel mode now; spec over the
+Kostverlorenvaart counts one band in two orbiting frames.
+
+**GLB cleanup batch 3** (`glb/cleanup-batch3-20261013`, Sonnet): Hoofdbureau
+van Politie's Marnixstraat end wall re-registered on the rectified pano
+(arms, banner, console figures, round windows, open ground storey on four
+columns; opening-overhang 1 → 0, 393 KB); Hotel de l'Europe 52.0k → 34.4k
+triangles and 725 → 498 KB under the 500 KB budget (lean sash windows,
+course strips with a sunk top face); Valley's longest open loop 110.6 →
+24.5 m; Max Euwe Centrum floating openings 80 → 0, door-slab z-fight
+7.9 → 0; Rialto roof slab z-fight 3.9 → 0 m²; Felix Meritis rebuilt as a
+cluster at the canal with a garden parterre (it had spanned the whole 86 m
+plot); Opstandingskerk and Petrus en Paulus fronts re-measured on panos;
+Haparandaweg fins off the pane edge. The lane also recovered the 2026-10-09
+landmark integration that a sparse clone had lost (five re-exported GLBs,
+Keizersgrachtkerk, Lekstraat synagoge, Torture Museum, Gerard Dou) and
+Jodenbreestraat 11; catalogue 307 → 312 entries, merged by id. Integrator:
+fingerprints and manifests refreshed, covers rebuilt, `check:covers` and
+`check:osm-under-models` clean, `check:landmark-inventory` 312/0 fail.
+
+
 ## Hosting: deploys failing on the storage quota again (2026-10-13)
 
 Every "Deploy to Firebase Hosting" run since 14:27 (the push after 922de98,

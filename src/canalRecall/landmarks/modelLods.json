@@ -144,10 +144,10 @@
   "triangles": 4292
  },
  "felix-meritis": {
-  "sourceHash": "7a4836fe2ff5c3cf",
+  "sourceHash": "d128fa40815d1320",
   "buildVersion": 2,
-  "bytes": 16548,
-  "triangles": 662
+  "bytes": 18696,
+  "triangles": 708
  },
  "kleine-komedie": {
   "sourceHash": "4b55df2562dcf809",
@@ -822,10 +822,10 @@
   "triangles": 877
  },
  "valley": {
-  "sourceHash": "2240d34322fcfb60",
+  "sourceHash": "bb854051eaaa72ac",
   "buildVersion": 2,
-  "bytes": 149492,
-  "triangles": 11331
+  "bytes": 153008,
+  "triangles": 11624
  },
  "ndsm-warehouse-complex": {
   "sourceHash": "ebf02ab7f8d789da",
@@ -966,9 +966,9 @@
   "triangles": 1132
  },
  "haparandaweg-2-4": {
-  "sourceHash": "90673fb9e2f51ce1",
+  "sourceHash": "a93042826f85b8a2",
   "buildVersion": 2,
-  "bytes": 93820,
+  "bytes": 93792,
   "triangles": 4501
  },
  "afrikahuis": {
@@ -978,9 +978,9 @@
   "triangles": 4290
  },
  "haparandaweg-8-338": {
-  "sourceHash": "da9f5fecd5d2cec8",
+  "sourceHash": "2fe8cb2613c8fecd",
   "buildVersion": 2,
-  "bytes": 91288,
+  "bytes": 92368,
   "triangles": 5829
  },
  "electric-ladyland": {
@@ -1170,10 +1170,10 @@
   "triangles": 2255
  },
  "petrus-en-paulus-kerk": {
-  "sourceHash": "3b1df740845f6a42",
+  "sourceHash": "e845396407e19e33",
   "buildVersion": 2,
-  "bytes": 49768,
-  "triangles": 1912
+  "bytes": 51524,
+  "triangles": 2008
  },
  "maarten-lutherkerk": {
   "sourceHash": "6bb66c5c5cce6b14",
@@ -1344,10 +1344,10 @@
   "triangles": 6447
  },
  "hotel-de-l-europe": {
-  "sourceHash": "acdc894d4fd84547",
+  "sourceHash": "5c2e96291bc54893",
   "buildVersion": 2,
-  "bytes": 174412,
-  "triangles": 9093
+  "bytes": 128920,
+  "triangles": 6935
  },
  "trippenhuis": {
   "sourceHash": "a3cad0e513c251a5",
@@ -1584,9 +1584,9 @@
   "triangles": 3543
  },
  "opstandingskerk": {
-  "sourceHash": "6a8a533200b8ad96",
+  "sourceHash": "176000923ff7a24b",
   "buildVersion": 2,
-  "bytes": 28756,
+  "bytes": 29420,
   "triangles": 1107
  },
  "da-costakade-13": {
@@ -1596,9 +1596,39 @@
   "triangles": 1747
  },
  "hoofdbureau-elandsgracht": {
-  "sourceHash": "aadf1d3a0dfbf858",
+  "sourceHash": "b0980c2e59b574fb",
   "buildVersion": 2,
-  "bytes": 156420,
-  "triangles": 9888
+  "bytes": 158772,
+  "triangles": 9968
+ },
+ "max-euwe-centrum": {
+  "sourceHash": "9ad6641533f310c2",
+  "buildVersion": 2,
+  "bytes": 92504,
+  "triangles": 5010
+ },
+ "holocaust-namenmonument": {
+  "sourceHash": "ddea9d3aa42a5ad8",
+  "buildVersion": 2,
+  "bytes": 26072,
+  "triangles": 1327
+ },
+ "voormalige-schouwburgpoort": {
+  "sourceHash": "8ca58ce3f25edaa3",
+  "buildVersion": 2,
+  "bytes": 47752,
+  "triangles": 2565
+ },
+ "academie-theater-dans": {
+  "sourceHash": "1411874136611a3a",
+  "buildVersion": 2,
+  "bytes": 64396,
+  "triangles": 3349
+ },
+ "jodenbreestraat-11": {
+  "sourceHash": "6c8879c04805bbcc",
+  "buildVersion": 2,
+  "bytes": 24380,
+  "triangles": 911
  }
 }
