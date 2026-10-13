@@ -35,6 +35,11 @@ export type BagBuilding = {
   groundNapM: number | null;
   /** Ridge above ground: roof geometry for later phases, never the extrusion. */
   ridgeM: number | null;
+  /**
+   * Lowest roof point above ground (`b3_h_dak_min`): the eave line of a pitched
+   * roof, and simply the roof height of a flat one. Null when 3DBAG measured none.
+   */
+  eavesM: number | null;
   roofType: string | null;
   constructionYear: number | null;
   storeys: number | null;
@@ -159,6 +164,7 @@ export function readBagBuildings(city: CityJson): BagBuilding[] {
     const ground = number(attributes.b3_h_maaiveld);
     const ridge = number(attributes.b3_h_nok);
     const { heightM, source } = bagHeightM(attributes);
+    const roofMin = number(attributes.b3_h_dak_min);
     buildings.push({
       bagId,
       rings,
@@ -166,6 +172,7 @@ export function readBagBuildings(city: CityJson): BagBuilding[] {
       heightSource: source,
       groundNapM: ground,
       ridgeM: ridge !== null && ground !== null && ridge - ground > 0 ? ridge - ground : null,
+      eavesM: roofMin !== null && ground !== null && roofMin - ground > 0 ? roofMin - ground : null,
       roofType: text(attributes.b3_dak_type),
       constructionYear: number(attributes.oorspronkelijkbouwjaar),
       storeys: number(attributes.b3_bouwlagen),

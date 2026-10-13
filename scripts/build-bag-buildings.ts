@@ -14,9 +14,17 @@
  * extract by this script. It reports coverage and the diff against what ships
  * today so that promotion is a decision someone makes, not a side effect.
  *
+ * `--tiles` (migration step 1, docs/handoffs/lane-bag-base-tiles-20261013.md)
+ * writes the BAG-keyed base tiles instead: the shipped z14 `building-tiles`
+ * features plus the 3DBAG eave/ridge/roof/year facts and the OSM ids that
+ * overlap each pand (>= 60%), a per-tile facts sidecar with the mid-tier
+ * descriptor, and a coverage report, all under `artifacts/bag-tiles/`.
+ *
  * Usage:
  *   npm run build:bag-buildings                 # amsterdam, from the cache
  *   npm run build:bag-buildings -- --limit=20   # first 20 tiles, for a quick look
+ *   node --max-old-space-size=8192 --import tsx scripts/build-bag-buildings.ts --tiles \
+ *     [--osm=.cache/osm-source/derived/amsterdam-buildings.geojsonseq] [--out=artifacts/bag-tiles]
  */
 
 import { createWriteStream } from 'node:fs';
@@ -26,12 +34,17 @@ import path from 'node:path';
 import { gunzipSync } from 'node:zlib';
 import { BAG3D_VERSION } from '../src/canalRecall/bag3dTiles.js';
 import { readBagBuildings, type BagBuilding, type BagHeightSource, type CityJson } from '../src/canalRecall/bag3dCityJson.js';
+import type { PandFacts } from '../src/canalRecall/bagTiles.js';
+import { readOsmBuildings, writeBagTiles } from './lib/bagTileBuild.js';
 
 const flag = (name: string): string | undefined =>
   process.argv.find(value => value.startsWith(`--${name}=`))?.slice(name.length + 3);
 
 const city = flag('city') ?? 'amsterdam';
 const limit = Number(flag('limit') ?? Infinity);
+const tilesMode = process.argv.includes('--tiles');
+const osmSeq = flag('osm') ?? path.join('.cache', 'osm-source', 'derived', 'amsterdam-buildings.geojsonseq');
+const tilesOutDir = flag('out') ?? path.join('artifacts', 'bag-tiles');
 const cacheDir = path.join('.cache', '3dbag', BAG3D_VERSION, 'tiles');
 const stagingDir = path.join('public', 'data', 'extracts', city, 'staging');
 const outputFile = path.join(stagingDir, 'bag-buildings.geojson');
@@ -47,11 +60,13 @@ if (tiles.length === 0) {
   process.exit(1);
 }
 
-await mkdir(stagingDir, { recursive: true });
-const output = createWriteStream(outputFile);
+// `--tiles` keeps the table in memory for the tile writer and writes nothing to the versioned extract's staging.
+if (!tilesMode) await mkdir(stagingDir, { recursive: true });
+const output = tilesMode ? null : createWriteStream(outputFile);
 const write = async (chunk: string): Promise<void> => {
-  if (!output.write(chunk)) await once(output, 'drain');
+  if (output && !output.write(chunk)) await once(output, 'drain');
 };
+const pandFacts = new Map<string, PandFacts>();
 
 // --- tallies -----------------------------------------------------------------
 const seen = new Set<string>();
@@ -117,15 +132,40 @@ for (const name of tiles.slice(0, Number.isFinite(limit) ? limit : undefined)) {
     if (building.constructionYear !== null) withYear++;
     if (building.rmseLod22 !== null) withRmse++;
 
-    await write(`${written === 0 ? '' : ',\n'}${asFeature(building)}`);
+    if (tilesMode) {
+      pandFacts.set(building.bagId, {
+        heightM: building.heightM, eavesM: building.eavesM, ridgeM: building.ridgeM, roofType: building.roofType,
+        year: building.constructionYear, storeys: building.storeys, groundAreaM2: building.groundAreaM2,
+        partyWallAreaM2: building.partyWallAreaM2,
+      });
+    } else {
+      await write(`${written === 0 ? '' : ',\n'}${asFeature(building)}`);
+    }
     written++;
   }
   tileNumber++;
   if (tileNumber % 25 === 0) process.stdout.write(`  ${tileNumber}/${tiles.length} tiles, ${written} buildings\n`);
 }
-await write('\n]}\n');
-output.end();
-await once(output, 'finish');
+if (output) {
+  await write('\n]}\n');
+  output.end();
+  await once(output, 'finish');
+}
+
+if (tilesMode) {
+  process.stdout.write(`reading OSM buildings from ${osmSeq}\n`);
+  const osm = await readOsmBuildings(osmSeq);
+  process.stdout.write(`  ${osm.length} OSM buildings and parts; matching ${pandFacts.size} pands\n`);
+  const tileReport = await writeBagTiles({
+    facts: pandFacts, osm, zoom: 14, outDir: tilesOutDir,
+    baseDir: path.join('public', 'data', 'extracts', city, 'building-tiles', '14'),
+  });
+  const report = { version: BAG3D_VERSION, city, generatedAt: new Date().toISOString(), cityJsonTiles: tileNumber, cityJsonPands: written, duplicates, withoutFootprint: noFootprint, osmBuildings: osm.length, ...tileReport };
+  await mkdir(tilesOutDir, { recursive: true });
+  await import('node:fs/promises').then(fs => fs.writeFile(path.join(tilesOutDir, 'bag-tiles.report.json'), `${JSON.stringify(report, null, 2)}\n`));
+  process.stdout.write(`${JSON.stringify(report, null, 2)}\nStaging only (${tilesOutDir}). Publish after review.\n`);
+  process.exit(0);
+}
 
 // --- what shipped before -----------------------------------------------------
 const shippedFile = path.join('public', 'data', 'extracts', city, 'buildings-colored.geojson');
