@@ -30534,10 +30534,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165746",
       "name": "Damrak 77, Amsterdam: 1893 red-brick block with white bands, Damrak front with the Beurspassage arch",
-      "hash": "656a1332bc97cf562bda2aa6df1004eeb755591cc73aa4cf035ec5302c48df3a",
-      "sha256": "656a1332bc97cf562bda2aa6df1004eeb755591cc73aa4cf035ec5302c48df3a",
-      "bytes": 238260,
-      "triangles": 2952,
+      "hash": "e1e38bc430833dee3b6b011454ffe8aed334f3b3167567681843e4a07651aa2a",
+      "sha256": "e1e38bc430833dee3b6b011454ffe8aed334f3b3167567681843e4a07651aa2a",
+      "bytes": 242880,
+      "triangles": 3018,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -30859,7 +30859,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165746",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T21:41:59.891Z"
+      "updatedAt": "2026-10-13T22:22:38.631Z"
     },
     {
       "id": "ordinary-0363100012165687",
