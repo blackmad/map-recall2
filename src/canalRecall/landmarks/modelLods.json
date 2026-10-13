@@ -1642,5 +1642,11 @@
   "buildVersion": 2,
   "bytes": 42680,
   "triangles": 1788
+ },
+ "noorderkerk": {
+  "sourceHash": "93f7f58651032213",
+  "buildVersion": 2,
+  "bytes": 51948,
+  "triangles": 2204
  }
 }
