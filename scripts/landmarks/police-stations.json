@@ -23,7 +23,8 @@
     2022
    ],
    "referenceStatus": "ok",
-   "signatureElements": null
+   "signatureElements": [],
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   },
   {
    "name": "Politiebureau IJ-tunnel",
@@ -46,7 +47,8 @@
     2022
    ],
    "referenceStatus": "ok",
-   "signatureElements": null
+   "signatureElements": [],
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   },
   {
    "name": "Politiebureau Meer en Vaart",
@@ -69,7 +71,8 @@
     2021
    ],
    "referenceStatus": "ok",
-   "signatureElements": null
+   "signatureElements": [],
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   },
   {
    "name": "Politiebureau Van Leijenberghlaan",
@@ -87,8 +90,17 @@
    "gebruiksdoel": "kantoorfunctie",
    "bouwjaar": 1976,
    "osmToAddressM": 8,
-   "panoramaYears": [],
-   "signatureElements": null
+   "panoramaYears": [
+    2016,
+    2019,
+    2025
+   ],
+   "signatureElements": [
+    "lettering (on glazing)"
+   ],
+   "recipe": "politie-van-leijenberghlaan",
+   "installed": true,
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   },
   {
    "name": "Politiebureau Oost Watergraafsmeer",
@@ -111,7 +123,9 @@
     2024
    ],
    "referenceStatus": "ok",
-   "signatureElements": null
+   "signatureElements": [],
+   "reviewNote": "recipe drafted for the west front but audit:glb FAILs on the unphotographed 34 m east wall; not committed",
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   },
   {
    "name": "Politiebureau West Overtoomsesluis",
@@ -133,7 +147,8 @@
     2019
    ],
    "referenceStatus": "ok",
-   "signatureElements": null
+   "signatureElements": [],
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   },
   {
    "name": "Politiebureau Flierbosdreef",
@@ -156,7 +171,8 @@
     2024
    ],
    "referenceStatus": "washed-out",
-   "signatureElements": null
+   "signatureElements": [],
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   },
   {
    "name": "Politiebureau Houtmankade",
@@ -179,7 +195,9 @@
     2025
    ],
    "referenceStatus": "ok",
-   "signatureElements": null
+   "signatureElements": [],
+   "reviewNote": "256 wall surfaces, rounded complex: needs per-wing grouping, not attempted",
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   },
   {
    "name": "Politiebureau Zuid-De Pijp",
@@ -199,7 +217,9 @@
    "osmToAddressM": 7,
    "panoramaYears": [],
    "referenceStatus": "no-wall",
-   "signatureElements": null
+   "signatureElements": null,
+   "reviewNote": "no panorama selected (no-wall: no street-facing exposed wall found)",
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   },
   {
    "name": "Politiebureau Boven-IJ",
@@ -222,7 +242,8 @@
     2024
    ],
    "referenceStatus": "foliage",
-   "signatureElements": null
+   "signatureElements": [],
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   },
   {
    "name": "Politiepost IJburg",
@@ -245,7 +266,8 @@
     2017
    ],
    "referenceStatus": "ok",
-   "signatureElements": null
+   "signatureElements": [],
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   },
   {
    "name": "Politiebureau Nieuwezijds Voorburgwal",
@@ -268,7 +290,8 @@
     2022
    ],
    "referenceStatus": "ok",
-   "signatureElements": null
+   "signatureElements": [],
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   },
   {
    "name": "Politiebureau Postjesweg",
@@ -291,7 +314,8 @@
     2016
    ],
    "referenceStatus": "ok",
-   "signatureElements": null
+   "signatureElements": [],
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   },
   {
    "name": "Politie Amsterdam",
@@ -314,7 +338,8 @@
     2022
    ],
    "referenceStatus": "ok",
-   "signatureElements": null
+   "signatureElements": [],
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   },
   {
    "name": "Politiebureau Zuidoost Gaasperdam",
@@ -337,7 +362,9 @@
     2021
    ],
    "referenceStatus": "ok",
-   "signatureElements": null
+   "signatureElements": [],
+   "recipe": "politie-zuidoost-gaasperdam",
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   },
   {
    "name": "Politiebureau Oost Zeeburg",
@@ -360,7 +387,11 @@
     2025
    ],
    "referenceStatus": "ok",
-   "signatureElements": null
+   "signatureElements": [
+    "lettering"
+   ],
+   "recipe": "politie-oost-zeeburg",
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   },
   {
    "name": "Hoofdbureau van Politie",
@@ -383,7 +414,10 @@
     2024
    ],
    "referenceStatus": "ok",
-   "signatureElements": null
+   "signatureElements": null,
+   "reviewNote": "Elandsgracht headquarters: bespoke-builder item, skipped",
+   "signatureElementsNote": "reviewed from the pand-reference thumbnails and fronts at contact-sheet size; striped band and blue lamp not seen on any bureau"
   }
- ]
+ ],
+ "matchQuality": "17 OSM Amsterdam bureaus/posts matched to a BAG pand by address (PDOK Locatieserver -> BAG verblijfsobject -> pand); all OSM nodes lie within 17 m of the address point except Hoofdbureau (39 m). Excluded: Amstelveen, Diemen, Zaandam, Weesp, Halfweg, Marechaussee, Luchtvaartpolitie. Johan Huizingalaan 757 is BAG use bijeenkomstfunctie (1959): low confidence it is a public bureau."
 }
