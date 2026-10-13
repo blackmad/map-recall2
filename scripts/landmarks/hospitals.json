@@ -3,7 +3,7 @@
  "source": "OSM amenity=hospital (Overpass), PDOK Locatieserver + BAG WFS, pand-reference panoramas (CC BY 4.0)",
  "hospitals": [
   {
-   "name": "Amsterdam UMC",
+   "name": "Amsterdam UMC - locatie VUMC",
    "address": "De Boelelaan 1117, Amsterdam",
    "osm": "way/25723907",
    "osmLatLng": [
@@ -20,7 +20,7 @@
    "osmToAddressM": 11,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "pending-no-usable-panorama",
    "panoramaYears": [],
    "referenceStatus": "no-wall"
   },
@@ -40,7 +40,7 @@
    "osmToAddressM": 0,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "pending-no-usable-panorama",
    "panoramaYears": [],
    "referenceStatus": "no-pand"
   },
@@ -62,7 +62,7 @@
    "osmToAddressM": 78,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "pending-no-usable-panorama",
    "panoramaYears": [],
    "referenceStatus": "no-wall"
   },
@@ -84,7 +84,7 @@
    "osmToAddressM": 29,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "pending-no-usable-panorama",
    "panoramaYears": [],
    "referenceStatus": "no-panorama"
   },
@@ -105,8 +105,8 @@
    "bouwjaar": 1966,
    "osmToAddressM": 46,
    "signatureElements": [],
-   "sharedWith": "",
-   "modelStatus": "pending",
+   "sharedWith": "bespoke campus model olvg-oost/olvg-west (OSM building rings, manualCatalogue); the entrance pand is inside it",
+   "modelStatus": "modelled-before-this-lane",
    "panoramaYears": [
     2025,
     2022
@@ -130,8 +130,8 @@
    "bouwjaar": 1900,
    "osmToAddressM": 0,
    "signatureElements": [],
-   "sharedWith": "",
-   "modelStatus": "pending",
+   "sharedWith": "bespoke campus model olvg-oost/olvg-west (OSM building rings, manualCatalogue); the entrance pand is inside it",
+   "modelStatus": "modelled-before-this-lane",
    "panoramaYears": [
     2019,
     2024
@@ -156,34 +156,12 @@
    "osmToAddressM": 0,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "large-installed",
    "panoramaYears": [
     2022,
     2018
    ],
    "referenceStatus": "ok"
-  },
-  {
-   "name": "Ziekenhuis Amstelland",
-   "address": "Laan van de Helende Meesters 8, Amsterdam",
-   "osm": "way/673001166",
-   "osmLatLng": [
-    52.2939938,
-    4.8740027
-   ],
-   "pandIds": [
-    "0362100001109767"
-   ],
-   "verblijfsobject": "0362010002017996",
-   "bagAddress": "Laan van de Helende Meesters 8, 1186AM Amstelveen",
-   "gebruiksdoel": "gezondheidszorgfunctie",
-   "bouwjaar": 1966,
-   "osmToAddressM": 72,
-   "signatureElements": [],
-   "sharedWith": "",
-   "modelStatus": "pending",
-   "panoramaYears": [],
-   "referenceStatus": "no-panorama"
   }
  ]
 }
