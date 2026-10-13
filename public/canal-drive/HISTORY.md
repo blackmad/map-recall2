@@ -56,6 +56,16 @@ covered BAG panden. Instancing vs merged geometry: 78 KB vs 626 KB for 24
 type-1 blocks; ~35 vs ~1.5k draw calls for the whole 427-pand set. iPhone
 4x-throttle frame time unchanged at the pilot views. Off by default.
 
+## Sint-Petrus-en-Pauluskerk rebuilt from intent (2026-10-13)
+
+User on the gallery card: "looks awful". The 2026-10-11 rework kept the raw 3DBAG
+shell, so jagged roof pyramids, a stray roof slab beside the gable and a plain box
+tower showed. The builder now draws from a written facade spec: one clean brick
+gable with stone coping, kneelers and cross; a tiled gabled porch with a deep
+round-arched entrance; the tower's corbel band, stone clock stage and saddleback
+cap; the parsonage (no. 37) with its own front gable; colours re-sampled from the
+photos. 3DBAG supplies only footprint and heights.
+
 ## Oudemanhuispoort: the gate between its two houses (2026-10-13)
 
 User on the gallery card: "why this door without a building?" The portal has no BAG
