@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "oba-javaplein",
+  "pand": "0363100012238726",
+  "signature": ["entrance-hall", "oba-lettering"],
+  "walls": [
+    {"tag": "w03-179", "bearing": 179, "lengthM": 41.7, "evidence": "photo", "panoId": "TMX7316010203-000242_pano_0000_005276", "capturedAt": "2017-04-04", "checked": true, "items": [
+      {"id": "entrance-hall", "kind": "window-shape", "where": "centre of the south front, double-height glazed bay with an orange wooden door", "approxSizeM": [3.5, 8], "plan": "modelled", "how": "entrance with storeys 2 and canopy; door colour orange", "seenIn": "TMX7316010203-000242_pano_0000_005276"},
+      {"id": "oba-lettering", "kind": "lettering", "where": "over the entrance canopy", "approxSizeM": [2, 0.5], "plan": "simplified", "how": "kit canopy lettering OBA in red; no sign is visible in the 2017 panorama", "seenIn": "TMX7316010203-000242_pano_0000_005276"},
+      {"id": "arcade-piers", "kind": "colonnade", "where": "ground storey, grey brick piers between shopfront bays", "approxSizeM": [1, 5], "plan": "modelled", "how": "piers: true", "seenIn": "TMX7316010203-000242_pano_0000_005276"},
+      {"id": "lintels-rails", "kind": "balcony-ironwork", "where": "every window of the upper storeys", "approxSizeM": [1.2, 1.5], "plan": "skipped", "skip": {"reason": "too-small", "note": "lintels and rails about 3 cm deep; windows keep reveals and frames"}, "seenIn": "TMX7316010203-000242_pano_0000_005276"}
+    ]},
+    {"tag": "w01-359", "bearing": 359, "lengthM": 97.6, "evidence": "photo", "panoId": "TMX7316010203-001910_pano_0001_000444", "capturedAt": "2020-09-08", "checked": true, "items": [
+      {"id": "shop-plinth", "kind": "other", "where": "ground storey of the north front", "approxSizeM": [40, 4], "plan": "modelled", "how": "plinth-shopfronts ground", "seenIn": "TMX7316010203-001910_pano_0001_000444"},
+      {"id": "dormers", "kind": "window-shape", "where": "roof storey, north front", "approxSizeM": [30, 2], "plan": "skipped", "skip": {"reason": "too-small", "note": "dormers sit inside the 3DBAG roof and are not resolved by LoD2.2 faces"}, "seenIn": "TMX7316010203-001910_pano_0001_000444"}
+    ]}
+  ],
+  "sources": [{"name": "Gemeente Amsterdam panorama", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000242_pano_0000_005276/", "licence": "CC BY 4.0"}]
+}
