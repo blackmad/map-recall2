@@ -13,7 +13,7 @@ export const LARGE_SYSTEMS = ['brick-bay-grid', 'ribbon-windows', 'curtain-wall'
 export type LargeSystemName = typeof LARGE_SYSTEMS[number];
 export const LARGE_GROUNDS = ['system', 'plinth-shopfronts', 'glazed', 'blank', 'portals'] as const;
 export type LargeGround = typeof LARGE_GROUNDS[number];
-export const LARGE_WINDOWS = ['plain', 'two-light', 'cross', 'transom', 'low', 'narrow'] as const;
+export const LARGE_WINDOWS = ['plain', 'two-light', 'cross', 'transom', 'low', 'narrow', 'wide'] as const;
 export type LargeWindow = typeof LARGE_WINDOWS[number];
 
 /** Default bay pitch (m) per system when the intent gives no bay count. */
@@ -84,6 +84,8 @@ const glazing = (w: LargeWindow | undefined): Partial<WinParams> => {
     case 'low': return { w: 0.62, h: 0.4, sill: 1.05 };
     // Tall single-light windows about half the bay wide (warehouse fronts on a 2 m bay rhythm).
     case 'narrow': return { w: 0.46, h: 0.56, sill: 0.95 };
+    // Wide multi-light school windows two thirds of the bay: four lights and a transom (Amsterdam School classrooms).
+    case 'wide': return { w: 0.68, h: 0.58, sill: 0.8, mull: 3, transom: 0.72 };
     default: return {};
   }
 };

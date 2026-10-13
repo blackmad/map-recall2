@@ -1,0 +1,107 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "berlage-lyceum",
+ "pandId": "0363100012127997",
+ "address": "Berlage Lyceum, Pieter Lodewijk Takstraat 33, Amsterdam (1924 Amsterdam School school in yellow brick)",
+ "sources": [
+  {
+   "id": "pano-2019-05-08-south",
+   "kind": "street-panorama",
+   "capturedAt": "2019-05-08",
+   "image": "staging/pand-reference-walls/0363100012127997/w03-167.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001168_pano_0000_005034/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-29-south-entrance",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-29",
+   "image": "staging/pand-reference-walls/0363100012127997/w02-167.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-29_06-29-19_00389/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-09-29-east",
+   "kind": "street-panorama",
+   "capturedAt": "2025-09-29",
+   "image": "staging/pand-reference-walls/0363100012127997/w01-77.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-29_06-46-33_01090/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    70,
+    72,
+    40,
+    103
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "wide",
+   "piers": true,
+   "frames": true,
+   "sills": true,
+   "palette": {
+    "stone": "#a8a090"
+   }
+  },
+  {
+   "wallSurfaces": [
+    35,
+    101
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "wide",
+   "entrance": {
+    "portal": true
+   },
+   "piers": true,
+   "frames": true,
+   "sills": true,
+   "palette": {
+    "stone": "#a8a090"
+   }
+  },
+  {
+   "wallSurfaces": [
+    21,
+    69
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 7,
+   "ground": "system",
+   "windows": "wide",
+   "stringCourses": true,
+   "frames": true,
+   "sills": true,
+   "palette": {
+    "stone": "#a8a090"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "closedBands": true,
+ "roof": {
+  "material": "zinc"
+ },
+ "palette": {
+  "brick": "#c4b07c",
+  "frame": "#ece9e0",
+  "door": "#3a3d40",
+  "stone": "#a8a090",
+  "wallMaterial": "brick"
+ },
+ "notes": [
+  "Berlage Lyceum, Pieter Lodewijk Takstraat 33 (pand 0363100012127997, 1924, 107 LoD2.2 surfaces, roof max 20.1 m). Photographed: the south front (2019-05-08 w03-167 and 2025-09-29 w02-167, surfaces 70/72/40/103 and the central entrance panel 35/101: pale yellow brick, three storeys, three window groups per storey, each a wide multi-light window with a side light either side set in a stone surround, a dentil cornice under a flat roof, a railing at the foot) and the 37 m east front (2025-09-29 w01-77, surfaces 21/69: a wide window band at ground, two rows of grouped windows above, small square lights at the ends).",
+  "MODELLED: three yellow-brick storeys, the south bays on the 8.6 m rhythm with a multi-light window each (new `wide` preset: four lights and a transom), stone piers, the entrance with a stone portal, the east front as seven wide windows per storey. SIMPLIFIED: the side lights and recessed stone surrounds of each group are one window; the east front's ground band, upper groups and small square lights are regularised to seven equal bays; cornice dentils are not drawn. SKIPPED: the area railing (too thin), awnings and sun blinds (temporary), the north, west and courtyard walls (no panorama within range: blank), the carved relief at the south-east corner (not resolvable)."
+ ]
+}

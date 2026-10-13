@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "berlage-lyceum",
+  "pand": "0363100012127997",
+  "signature": ["window-groups", "stone-surrounds", "yellow-brick", "east-band"],
+  "walls": [
+    {"tag": "w03-167", "bearing": 167, "lengthM": 25.9, "evidence": "photo", "panoId": "TMX7316010203-001168_pano_0000_005034", "capturedAt": "2019-05-08", "checked": true, "items": [
+      {"id": "window-groups", "kind": "window-shape", "where": "three groups per storey: a wide multi-light window with a tall side light each side, 3 storeys", "approxSizeM": [24, 14], "plan": "simplified", "how": "brick-bay-grid, 3 bays x 3 storeys, windows wide (four lights and a transom); side lights folded into the one window", "seenIn": "TMX7316010203-001168_pano_0000_005034"},
+      {"id": "stone-surrounds", "kind": "other", "where": "stone surround with square pier heads round each window group", "approxSizeM": [24, 14], "plan": "simplified", "how": "piers true (projecting light stone piers), no continuous surround", "seenIn": "TMX7316010203-001168_pano_0000_005034"},
+      {"id": "yellow-brick", "kind": "other", "where": "pale yellow brick wall under a dentil cornice", "approxSizeM": [25, 16], "plan": "modelled", "how": "palette brick #c4b07c; cornice dentils not drawn", "seenIn": "TMX7316010203-001168_pano_0000_005034"},
+      {"id": "area-railing", "kind": "balcony-ironwork", "where": "green railing along the foot of the wall", "approxSizeM": [26, 1], "plan": "skipped", "skip": {"reason": "too-small", "note": "bars about 2 cm"}, "seenIn": "TMX7316010203-001168_pano_0000_005034"}
+    ]},
+    {"tag": "w02-167", "bearing": 167, "lengthM": 27.1, "evidence": "photo", "panoId": "recording_2025-09-29_06-29-19_00389", "capturedAt": "2025-09-29", "checked": true, "items": [
+      {"id": "entrance", "kind": "window-shape", "where": "central entrance bay of the south front", "approxSizeM": [3, 4], "plan": "modelled", "how": "entrance.portal on the 8.6 m centre panel", "seenIn": "recording_2025-09-29_06-29-19_00389"}
+    ]},
+    {"tag": "w01-77", "bearing": 77, "lengthM": 37.1, "evidence": "photo", "panoId": "recording_2025-09-29_06-46-33_01090", "capturedAt": "2025-09-29", "checked": true, "items": [
+      {"id": "east-band", "kind": "window-shape", "where": "a ground-floor band of seven grouped windows, two grouped windows per upper storey, small square lights at the ends", "approxSizeM": [34, 14], "plan": "simplified", "how": "brick-bay-grid, 7 bays x 3 storeys, windows wide; the irregular upper groups and end lights regularised", "seenIn": "recording_2025-09-29_06-46-33_01090"},
+      {"id": "corner-relief", "kind": "relief", "where": "carved relief panel at the south-east corner", "approxSizeM": [2, 4], "plan": "skipped", "skip": {"reason": "not-visible", "note": "mostly outside the crop and cut by a tree"}, "seenIn": "recording_2025-09-29_06-46-33_01090"}
+    ]}
+  ],
+  "sources": [{"name": "Gemeente Amsterdam panorama", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001168_pano_0000_005034/", "licence": "CC BY 4.0"}]
+}

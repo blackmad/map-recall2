@@ -53,7 +53,7 @@
    "storeys": 2,
    "baysPerStorey": 8,
    "ground": "system",
-   "windows": "cross",
+   "windows": "wide",
    "piers": true,
    "palette": {
     "stone": "#a9a49a"
@@ -101,6 +101,6 @@
  },
  "notes": [
   "Vossius Gymnasium, Messchaertstraat 1 (pand 0363100012096365, 1930, 163 LoD2.2 surfaces, roof max 32.9 m for the chimney tower). Four exposed fronts photographed: the 53 m south front (2019-05-06, surface 163: three brick storeys of paired sash windows with hooded cream heads, a tiled roof with four dormer bands, awnings at the east end), the west wing (2021-04-23, surfaces 44/65: two storeys of wide four-light windows between grey stone piers over a raised ground with basement grilles, a bay window at the south end), the east wing (2022-09-05, surface 158: two storeys, a window band under the tile eaves) and the north courtyard front (surface 20, same brick and sashes, no photograph of its own so it follows the south front).",
-  "MODELLED: three brick storeys on 19 bays, string courses, cream-framed cross windows, the wing groups at their own eaves, black tile roof. SIMPLIFIED: the wing windows are single cross windows, not four-light bands filling the bay; piers on the west wing are the kit's projecting piers in light stone, not the pilaster strips between lights; the hooded window heads are plain. SKIPPED: the four roof dormer bands (3DBAG's roof is verbatim, dormers are not in it), awnings (temporary), basement grilles (too small), the west bay window (a 3DBAG panel offset the kit cannot reproduce), the chimney tower detailing (no panorama in range)."
+  "MODELLED: three brick storeys on 19 bays, string courses, cream-framed cross windows, the wing groups at their own eaves, black tile roof. SIMPLIFIED: the west wing windows use the new `wide` preset (four lights and a transom, 68 % of the bay) rather than the measured grouped bands; piers on the west wing are the kit's projecting piers in light stone, not the pilaster strips between lights; the hooded window heads are plain. SKIPPED: the four roof dormer bands (3DBAG's roof is verbatim, dormers are not in it), awnings (temporary), basement grilles (too small), the west bay window (a 3DBAG panel offset the kit cannot reproduce), the chimney tower detailing (no panorama in range)."
  ]
 }

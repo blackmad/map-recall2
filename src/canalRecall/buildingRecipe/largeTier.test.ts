@@ -350,3 +350,13 @@ test('arches.storeys and balconies.bays: round heads only on the listed storeys,
   const {gates} = await gatesOf(intent, f);
   assert.deepEqual(gates.filter(x => !x.pass).map(x => x.id), []);
 });
+
+test('windows: wide draws a four-light window with a transom two thirds of the bay (school classrooms); others unchanged', async () => {
+  const {largeSystem, LARGE_WINDOWS} = await import('../blockBuilding/systems.ts');
+  assert.ok(LARGE_WINDOWS.includes('wide'));
+  const slots = {frame: 'f', stone: 's', glass: 'g', door: 'd', curtain: 'c'};
+  const wide = largeSystem('brick-bay-grid', {pitchM: 8, lines: [0, 5, 10], ground: 'system', windows: 'wide', slots} as never).typical.win!;
+  assert.equal(wide.mull, 3); assert.ok(wide.w! > 0.6 && wide.w! < 0.75 && wide.transom);
+  const plain = largeSystem('brick-bay-grid', {pitchM: 8, lines: [0, 5, 10], ground: 'system', slots} as never).typical.win!;
+  assert.equal(plain.mull, undefined);
+});
