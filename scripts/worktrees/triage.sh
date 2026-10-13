@@ -36,6 +36,9 @@ $G worktree list --porcelain | awk '/^worktree /{w=$2} /^branch /{print w"\t"$2}
     table) printf "%s|%s|%s|dirty:%s|%s|nm:%s|%sM\n" "${w#$ROOT/}" "$b" "$date" "$dirty" "$merged" "$nm" "$(( $(sizek "$w") / 1024 ))" ;;
     --remove-merged-clean)
       keep "$w" && continue
+      # An agent worktree keeps its auto name until the integrator renames the branch at merge time; a merged+clean one
+      # with the auto name is a lane that has not committed yet (2026-10-13: a fresh lane was removed under its agent).
+      case "$b" in worktree-agent-*) echo "  keep $w ($b): unrenamed agent branch, lane may be running"; continue ;; esac
       [ "$merged" = merged ] && [ "$dirty" = 0 ] && { if live "$w"; then echo "  keep $w ($b): a running process uses it"; else echo "remove $w ($b)"; $G worktree remove --force "$w"; fi; } ;;
     --archive-dirty)
       keep "$w" && continue

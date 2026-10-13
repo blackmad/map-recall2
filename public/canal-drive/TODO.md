@@ -682,6 +682,23 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Own ground after the 2026-10-13 lanes (HISTORY)**: still open before a
+  desktop default-on in the belt: the junction red cycle-lane smear and brown
+  holes at Rozengracht/Marnixstraat (cycle bands at lift 0.036 over
+  carriageway 0.03, coplanar); De Clercqstraat's `area:highway` polygons
+  drawn as square paving (keep the value, draw carriageway areas as asphalt);
+  far-ring cells pop in with no fade; the Magere Brug's two movable frames
+  read as one white gantry (and railings are always green: `bridge:movable`
+  and `colour` need a refetch); slope physics in `game.js` from
+  `riderPose().pitch`; hosting quota for 29.6 MB gz; iPhone ride-perf;
+  BRU0077's suspect 1.7 m hump and the five flooded spots in the belt audit.
+  A separate lane traces the user's "bouncy second route line" at the
+  Kostverlorenvaart (`docs/handoffs/lane-route-line-bounce-20261013.md`).
+- **`?bagTiles=1` default flip**: recommended by the default-on review
+  (perf-neutral, `check:covers --strict` green, 0 without footprint);
+  prerequisites done except `check:canal` on the flipped default and the
+  iPhone number. Flip with the shared frame and city look together (sun fix
+  first; the user's look decision).
 - Kit-only landmarks still without a GLB: Noorderkerk (main pand to
   identify: 0363100012177299 or ...177297) and Krijtberg (not started).
   Obrechtkerk, Oosterkerk, Mozes en Aäronkerk, De Duif and Opstandingskerk

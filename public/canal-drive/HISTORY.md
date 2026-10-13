@@ -1,5 +1,83 @@
 # Canal Recall — what is built
 
+## Own ground: bridges with real elevation, the belt reviewed, roads redrawn (2026-10-13)
+
+Three lanes merged behind `?ownGround=1`, own-ground bundles rebuilt.
+
+**Bridges** (`ground/bridges-elevation-20261013`, Opus): humps were already
+measured; `clampDeckGrade` puts a 1:8 lower envelope over each deck span
+(13 of 931 decks move > 2 cm, no crown lowered > 5 cm) and bridge bands
+sample at 0.75 m at LOD 0 so they follow the hump. `measuredDeckTop` fills
+the footprint out to the railings (the Westerkerk complaint: water showed
+between carriageway, sidewalk and parapet); abutments at every land/water
+change down past the water; plinth plus post-and-rail railings every 1.8 m
+in Amsterdam green (wood on wooden decks), LOD 0 only; piers in ~8 m bays
+where the water span exceeds 12 m, one vault per bay on masonry arches;
+flat footprints get railings only on water edges along the crossing axis
+(a first version fenced the road at Raampoort); the 110 movable footprints
+get a shared counterweight-frame unit (two over 24 m). Eight bridges pinned
+in `check:own-ground-cells` (crown rise ± 0.15 m, deck top under every
+probe, railings both sides, abutments ≥ 2, pier rule): Westerkerk BRU0063
+0.75 m, Rijckerbrug 0.60 m, Blauwbrug 1.21 m with 3 piers, BRU0166 0.81 m,
+BRU0044 1.51 m with an arch, BRU0067 1.08 m, Raampoort and the Magere Brug
+flat with deck tops. `tests/e2e/own-ground-bridges.spec.ts` shoots them and
+measures a fixed ride. Perf: desktop 16.7 ms median/p95 unchanged; resident
+triangles +2.8…4.1 %; LOD 0 cell 254.6k → 283.8k. Open: frame side and
+railing colour (no `bridge:movable`/`colour` in the extract), the Magere
+Brug's two units read as one gantry, no slope physics in `game.js`
+(suggested: `speed -= 9.81·sin(pitch)·0.35·dt` from `riderPose().pitch`).
+
+**Default-on review** (`ground/default-on-20261013`, Opus): desktop ride-perf
+table for `none / ownGround / bagTiles / both` on the fixed route and four
+places (frame median pinned to display cadence everywhere; map render
+2.2–8.3 ms, three.js 0.8–5.1 ms; own ground 1.3–1.4 M triangles, 51–65 MB):
+`bagTiles` perf-neutral, recommended default; own ground supported for
+desktop in the belt, Jordaan and Oud-West, 0.3–2 ms CPU, no frame-rate cost,
+iPhone unmeasured. The 15 "hidden bug" covers decided from footprint plots
+(`scripts/covers-review.json`: 6 hide, 9 keep); 109 stale `suppressOsmIds`
+pruned (`check:covers` 114 → 0 stale); the 5 Nieuw-West building-type
+stand-ins re-keyed to their pands (`reconcile-building-type-pands.ts`,
+`check:osm-under-models` 0 without footprint). Ground: junction discs grow
+rings where the surface is not planar (56 of 365 deck ends tore 0.10–0.29 m
+→ 19, worst 0.25; +16 % triangles, build time unchanged); 152 allotment
+areas (310 ha) added to 84 cells from the cached extract (the Westerpark
+and Sloterdijkermeer volkstuinen are gardens now); MapLibre fills kept
+beyond the resident cells (bare white before; +30 draw calls); cell-load
+latency 1.0–2.2 s typical. Belt audit `check:own-ground-belt` (22 cells,
+183 decks, 24,340 shore samples; 8 reviewed findings: BRU0077's 1.7 m hump
+over 6.7 m is a likely DSM artefact, five spots with ground below their
+water plane, 25 steep steel/wood humps). Open: the junction red cycle-lane
+smear and brown holes at Rozengracht/Marnixstraat; De Clercqstraat's
+`area:highway` polygons drawn as paving.
+
+**Roads** (`ground/roads-drawing-20261013`, Opus): De Clercqstraat's
+"missing block" was the far ring: west of the cell edge at the
+Bilderdijkstraat junction the cell was LOD 1, which drew carriageways only
+and let the 10 m ground mesh poke through (35.6 % of band probes read as
+street); the far ring now keeps every band flat on the ground surface
+(100 % at both LODs), junction-measured widths are capped and guessed
+sidewalks dropped beside mapped ways; pinned as `DE_CLERCQSTRAAT`
+(`roadRegressions.ts`). Junctions are one polygon from the incoming
+cross-sections filled with the main road's surface (Bilderdijkstraat ×
+De Clercqstraat 23/49 → 47/49 asphalt probes); cycle lanes, paint and
+centre lines stop at the junction edge; sidewalks stop at their kerb corner;
+no centre line on fietsstraten (needs a refetch for the tags); cycle
+crossings red only where tagged. Vocabulary on by default: tram rails from
+`embedded_rails=tram` (two per track, through junctions), white edge lines
+on red cycle paths, grey-rose klinker pavements with a granite kerb line,
+Amsterdammertjes within 3.8 m of water (near ring). Perf: frame unchanged,
+draw calls +51, resident ground +18 % (1.64 M tris), worker build 124–213 →
+235–363 ms (loaded machine). Open: tiled bike-lane ends and bollard
+positions (no data), far-ring cells pop in without a fade.
+
+**Integrator**: water material from roughness 0.1 / envMapIntensity 2.2 to
+0.65 / 0.5 (user: "do not need this reflection", a blown-out sun disc on
+every canal); `check:own-ground-belt` script; `docs/elevation.md` known gaps
+updated; `scripts/worktrees/triage.sh` no longer removes a merged-clean
+worktree whose branch still carries the agent auto-name (a fresh lane was
+removed under its agent; the directory survived because the process held it).
+
+
 ## A stopped boat turns on the spot promptly (2026-10-13)
 
 User: "boat needs to be able to do a stopped turn when up against a wall
