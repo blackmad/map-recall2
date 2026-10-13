@@ -10,7 +10,10 @@ export function buildCommunityMusicLandmark(id:string,_w:number,_d:number,b:Buil
  const clip=(r:T.Vector2[],axis:'x'|'y',v:number,more:boolean)=>{const out:T.Vector2[]=[];for(let i=0;i<r.length;i++){const p=r[i],q=r[(i+1)%r.length],pi=more?p[axis]>=v:p[axis]<=v,qi=more?q[axis]>=v:q[axis]<=v;if(pi)out.push(p.clone());if(pi!==qi)out.push(p.clone().lerp(q,(v-p[axis])/(q[axis]-p[axis])));}return out;};
  const region=(x0:number,x1:number,z0:number,z1:number)=>clip(clip(clip(clip(rings[0],'x',x0,true),'x',x1,false),'y',z0,true),'y',z1,false);
  const shape=(rs:T.Vector2[][])=>{const sh=new T.Shape(rs[0]);for(const r of rs.slice(1))sh.holes.push(new T.Path(r));return sh;};
- const body=(rs:T.Vector2[][],hh:number,c:C='brick')=>{if(rs[0].length<3)return;const g=new T.ExtrudeGeometry(shape(rs),{depth:hh,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,hh,0);add(g,c);};
+ const openTop=(g:T.BufferGeometry,hh:number)=>{const s=g.index?g.toNonIndexed():g,p=s.getAttribute('position'),keep:number[]=[];for(let i=0;i<p.count;i+=3){const ys=[p.getY(i),p.getY(i+1),p.getY(i+2)];if(ys.every(y=>Math.abs(y-hh)<1e-4))continue;for(let k=0;k<3;k++)keep.push(p.getX(i+k),p.getY(i+k),p.getZ(i+k));}const o=new T.BufferGeometry();o.setAttribute('position',new T.Float32BufferAttribute(keep,3));o.computeVertexNormals();return o;};
+ // `open`: no top cap, the slate roof sheet laid at hh is the top (a separate sheet 3 cm over the brick cap z-fought from the air,
+ // lane zfight-audit 2026-10-13).
+ const body=(rs:T.Vector2[][],hh:number,c:C='brick',open=false)=>{if(rs[0].length<3)return;const g=new T.ExtrudeGeometry(shape(rs),{depth:hh,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,hh,0);add(open?openTop(g,hh):g,c);};
  const plane=(rs:T.Vector2[][],y:number,c:C='slate')=>{if(rs[0].length<3)return;const g=new T.ShapeGeometry(shape(rs));g.rotateX(-Math.PI/2);g.scale(1,1,-1);const idx=g.getIndex()!;for(let i=0;i<idx.count;i+=3){const n=idx.getX(i);idx.setX(i,idx.getX(i+2));idx.setX(i+2,n);}g.computeVertexNormals();add(g,c,0,y,0);};
  const sash=(x:number,y:number,z:number,w:number,hh:number,angle=0)=>{box(x,y,z,w+.18,hh+.18,.13,'white',angle);const dx=Math.sin(angle),dz=Math.cos(angle);box(x+dx*.1,y+.09,z+dz*.1,w,hh,.07,'glass',angle);box(x+dx*.15,y+.09,z+dz*.15,.05,hh,.05,'frame',angle);for(const yy of [y+.8,y+hh*.72])box(x+dx*.15,yy,z+dz*.15,w,.05,.05,'frame',angle);box(x,y+hh+.2,z,w+.36,.15,.25,'stone',angle);};
  const arch=(x:number,y:number,z:number,w:number,hh:number,c:C,angle=0)=>{const r=w/2,sh=new T.Shape();sh.moveTo(-r,0);sh.lineTo(r,0);sh.lineTo(r,hh-r);sh.absarc(0,hh-r,r,0,Math.PI,false);sh.closePath();const g=new T.ShapeGeometry(sh);g.rotateY(angle);add(g,c,x,y,z);};
@@ -20,9 +23,9 @@ export function buildCommunityMusicLandmark(id:string,_w:number,_d:number,b:Buil
  const crop=(r:T.Vector2[],x0:number,x1:number,z0:number,z1:number)=>clip(clip(clip(clip(r,'x',x0,true),'x',x1,false),'y',z0,true),'y',z1,false);
  if(id==='ot301'){
   // Individual AHN roof surfaces substantiate these unequal heights; seven mapped levels are not applied uniformly.
-  body(rings,4.4);plane(rings,4.43);const tall=region(-20,-.3,-7,11),entry=region(-.3,5.96,-1.25,11),side=region(5.96,11,-2.45,11);
-  body([tall],21.3);plane([tall],21.33);body([entry],14.4);plane([entry],14.43);body([side],13.0);plane([side],13.03);
-  const back=region(5.96,11,-3.8,-2.45);body([back],10.4);plane([back],10.43);
+  body(rings,4.4,'brick',true);plane(rings,4.4);const tall=region(-20,-.3,-7,11),entry=region(-.3,5.96,-1.25,11),side=region(5.96,11,-2.45,11);
+  body([tall],21.3,'brick',true);plane([tall],21.3);body([entry],14.4,'brick',true);plane([entry],14.4);body([side],13.0,'brick',true);plane([side],13.0);
+  const back=region(5.96,11,-3.8,-2.45);body([back],10.4,'brick',true);plane([back],10.4);
   // Rooftop service room is visible in the primary current height data; modest flat parapets preserve the silhouette.
   box(-9.7,21.3,.3,4.0,2.95,9.1,'brick');box(-9.7,24.25,.3,4.15,.13,9.25,'stone');
   for(let x=-18;x<-.7;x+=2.4)for(const yy of [1.0,5.0,9.0,13.0,17.0])sash(x,yy,10.46,1.65,2.65);
@@ -38,9 +41,9 @@ export function buildCommunityMusicLandmark(id:string,_w:number,_d:number,b:Buil
   // Low irregular rear recess remains a separate volume, rather than a filled24m box.
  }else if(id==='cavia'){
   // Registered1913 twin schools and shared gym/service wing, all three actual BAG parents.
-  body(allRings[0],13.55);plane(allRings[0],13.58);body(allRings[1],14.92);plane(allRings[1],14.95);body(allRings[2],10.12);plane(allRings[2],10.15);
+  body(allRings[0],13.55,'brick',true);plane(allRings[0],13.55);body(allRings[1],14.92,'brick',true);plane(allRings[1],14.92);body(allRings[2],10.12,'brick',true);plane(allRings[2],10.12);
   // Higher narrow classroom wings flank mapped rear recesses; original courtyards stay unbuilt.
-  for(const rr of [crop(allRings[2][0],-33,-23,-31,-5),crop(allRings[2][0],4.3,14,-31,-5)]){body([rr],13.65);plane([rr],13.68);}
+  for(const rr of [crop(allRings[2][0],-33,-23,-31,-5),crop(allRings[2][0],4.3,14,-31,-5)]){body([rr],13.65,'brick',true);plane([rr],13.65);}
   // Public Works1913 elevation: tall paired classroom sashes and central door piers.
   const fronts=[{min:-30.6,max:-13.6,top:14.92},{min:-11.7,max:12.7,top:13.55}];
   for(const f of fronts){for(let x=f.min+.9;x<f.max;x+=3.4)for(const yy of [.75,4.95,9.05])sash(x,yy,11.68,2.2,3.15);box((f.min+f.max)/2,f.top-.28,11.65,f.max-f.min+1.9,.23,.42,'white');for(let x=f.min;x<f.max;x+=2.45)box(x,f.top-.72,11.67,.12,.35,.38,'stone');}
@@ -56,8 +59,8 @@ export function buildCommunityMusicLandmark(id:string,_w:number,_d:number,b:Buil
   box(-28.4,14.93,7.0,.75,1.36,.86,'brick');box(-28.4,16.29,7.0,.95,.14,1.0,'stone');
  }else if(id==='orgelpark'){
   // As-built stepped periphery includes the sexton's house; the original central square church sits behind its recessed front.
-  body(rings,8.65);plane(rings,8.68);const main=region(-9.94,15.57,-15.4,12.26);body([main],12.3);
-  const house=region(11.1,16,12.24,17.3);body([house],11.5);plane([house],11.53);const hr=new T.BufferGeometry();hr.setAttribute('position',new T.Float32BufferAttribute([11,11.5,12.21,15.8,11.5,12.21,15.8,11.5,17.31,11,11.5,17.31,13.4,15.6,12.21,13.4,15.6,17.31],3));hr.setIndex([0,3,5,0,5,4,1,4,5,1,5,2,0,4,1,3,2,5]);hr.computeVertexNormals();add(hr,'slate');gable(13.4,11.5,17.4,4.8,4.1,'brick');
+  body(rings,8.65,'brick',true);plane(rings,8.65);const main=region(-9.94,15.57,-15.4,12.26);body([main],12.3);
+  const house=region(11.1,16,12.24,17.3);body([house],11.5,'brick',true);plane([house],11.5);const hr=new T.BufferGeometry();hr.setAttribute('position',new T.Float32BufferAttribute([11,11.5,12.21,15.8,11.5,12.21,15.8,11.5,17.31,11,11.5,17.31,13.4,15.6,12.21,13.4,15.6,17.31],3));hr.setIndex([0,3,5,0,5,4,1,4,5,1,5,2,0,4,1,3,2,5]);hr.computeVertexNormals();add(hr,'slate');gable(13.4,11.5,17.4,4.8,4.1,'brick');
   // The steep main roof and detached slender spire are verified by detailed LoD2.2 vertices, not the misleading global max-height summary.
   const gg=new T.BufferGeometry();gg.setAttribute('position',new T.Float32BufferAttribute([-9.94,12.3,-15.55,15.7,12.3,-15.55,15.7,12.3,12.46,-9.94,12.3,12.46,4.1,26.85,-1.7],3));gg.setIndex([0,4,1,1,4,2,2,4,3,3,4,0]);gg.computeVertexNormals();add(gg,'slate');
   add(new T.CylinderGeometry(1.15,1.65,1.2,8),'slate',4.1,27.45,-1.7);add(new T.CylinderGeometry(1.13,1.13,2.15,8),'dark',4.1,29.10,-1.7);

@@ -26,6 +26,8 @@ export function buildGrasweg116(_w: number, _d: number, b: BuildingTools & {mark
   const wall = (i: number) => rawWall(source as never, i);
 
   type Face = {ref: number; walls: number[]; ground: [number, number][]};
+  /** Tone panels stand 5.5 cm proud of the wall: at 3 cm they read as a z-fight from a distance (zfight-audit 2026-10-13, 1,452 m2). */
+  const TONE = 0.055;
   /** Brick tone steps: each zone is [tRef, yMid, yLight]; dark brick (the shell colour) below yMid, grey-brown to yLight, tan above. */
   const tones = (face: Face, zones: [number, number, number][], endT: number) => {
     const ref = wall(face.ref);
@@ -37,15 +39,15 @@ export function buildGrasweg116(_w: number, _d: number, b: BuildingTools & {mark
         const a = Math.max(t0 - shift, 0.05), c = Math.min(t1 - shift, w.len - 0.05);   // end faces stay 5 cm off the neighbouring wall's plane
         if (c - a < 0.2) return;
         const top = topOf(w, (a + c) / 2);
-        if (Math.min(yL, top) - yM > 0.3) slab(b, w.f, (a + c) / 2, yM, c - a, Math.min(yL, top) - yM - (top <= yL ? 0.05 : 0), 0.03, 'brick');
-        if (top - yL > 0.3) slab(b, w.f, (a + c) / 2, yL, c - a, top - yL - 0.05, 0.03, 'ochre');   // top 5 cm under the roof plane
+        if (Math.min(yL, top) - yM > 0.3) slab(b, w.f, (a + c) / 2, yM, c - a, Math.min(yL, top) - yM - (top <= yL ? 0.05 : 0), TONE, 'brick');
+        if (top - yL > 0.3) slab(b, w.f, (a + c) / 2, yL, c - a, top - yL - 0.05, TONE, 'ochre');   // top 5 cm under the roof plane
       });
     }
   };
   let sillOn = true;
   const win = (f: Parameters<typeof slab>[1], t: number, y: number) => {
     slab(b, f, t, y - WH / 2, WW + 0.14, WH + 0.14, 0.1, 'frame');
-    slab(b, f, t, y - WH / 2 + 0.07, WW - 0.06, WH - 0.0, 0.13, 'glass');
+    slab(b, f, t, y - WH / 2 + 0.07, WW - 0.06, WH - 0.0, 0.15, 'glass'); // 5 cm before the frame face (3 cm z-fought at distance)
     if (sillOn) slab(b, f, t, y - WH / 2 - 0.07, WW + 0.3, 0.1, 0.16, 'concrete');
   };
   /** Columns are spread evenly over the 3DBAG wall (the measured pitch is 2.9 m; the stepped SW planes show two columns per plane, 5.0-5.6 m long). */

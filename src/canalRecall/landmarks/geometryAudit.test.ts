@@ -143,7 +143,7 @@ test('rhythm: a staggered lattice is judged on size only', () => {
 test('baseline gate: only growth past the recorded counts fails', () => {
   assert.deepEqual(regressions({'opening-floating-fail': 2, 'zfight-m2': 30}, {'opening-floating-fail': 2, 'zfight-m2': 30}), []);
   assert.equal(regressions({'opening-floating-fail': 3, 'zfight-m2': 30}, {'opening-floating-fail': 2, 'zfight-m2': 30}).length, 1);
-  assert.equal(regressions({'zfight-m2': 0.5}, undefined).length, 1, 'a new model with visible z-fighting fails');
+  assert.equal(regressions({'zfight-m2': 0.6}, undefined).length, 1, 'a new model with visible z-fighting fails');
   assert.deepEqual(regressions({'window-missing': 9, 'window-misaligned': 4}, undefined), [], 'warn-level counts are never gated');
 });
 
@@ -235,6 +235,98 @@ test('rhythm fail is a fail finding on a photo-spec facade and a gated count; in
 });
 
 // ---------------------------------------------------------------------------------------------------------------
+// Coplanar overlap (lane zfight-audit 2026-10-13): Centraal Station's glazing strips floating a few cm over the shed roof.
+
+/** Quads (two triangles each, each its own part): corners in order, one material. */
+function quads(...qs: {p: V3[]; mat: string}[]): MaterialSoup {
+  const positions: number[] = [], indices: number[] = [], triMaterial: number[] = [];
+  for (const q of qs) {
+    const base = positions.length / 3;
+    for (const v of q.p) positions.push(...v);
+    indices.push(base, base + 1, base + 2, base, base + 2, base + 3);
+    triMaterial.push(MATS.indexOf(q.mat), MATS.indexOf(q.mat));
+  }
+  return {positions, indices, triMaterial, materials: MATS.map(name => ({name, rgb: [128, 128, 128] as [number, number, number]}))};
+}
+/** Upward-facing horizontal quad (counter-clockwise seen from above: x east, z south). */
+const flat = (x0: number, z0: number, x1: number, z1: number, y: number, mat: string) => ({p: [[x0, y, z1], [x1, y, z1], [x1, y, z0], [x0, y, z0]] as V3[], mat});
+
+test('coplanarOverlap metric: a strip 1.5 cm over a roof is coplanar, 2.5 cm tight, 3 and 7 cm near, 12 cm clear', () => {
+  // 20 x 10 m roof sheet at y = 20 with a 0.4 m wide, 10 m long glazing strip over it (4 m2, 3.8 after the 5 mm abutment shrink).
+  for (const [lift, flush, near, tight] of [[0.03, 0, 3.8, 0], [0.025, 0, 3.8, 3.8], [0.015, 3.8, 0, 0], [0.12, 0, 0, 0], [0.07, 0, 3.8, 0]] as const) {
+    const z = auditZFight(quads(flat(0, 0, 20, 10, 20, 'slate'), flat(5, 0, 5.4, 10, 20 + lift, 'glass')));
+    assert.ok(Math.abs(z.area - flush) < 0.1, `lift ${lift}: flush ${z.area}`);
+    assert.ok(Math.abs(z.nearArea - near) < 0.1, `lift ${lift}: near ${z.nearArea}`);
+    assert.ok(Math.abs(z.tightArea - tight) < 0.1, `lift ${lift}: tight ${z.tightArea}`);
+    if (near) {
+      const p = z.patches[0];
+      assert.deepEqual(p.materials, ['glass', 'slate']);
+      assert.equal(p.orientation, 'roof');
+      assert.ok(Math.abs(p.gap - lift) < 0.002, `gap ${p.gap}`);
+      assert.ok(p.pairs >= 2 && z.nearPairs === p.pairs);
+      assert.ok(Math.abs(p.centre[0] - 5.2) < 0.05 && Math.abs(p.centre[2] - 5) < 0.05, `worst spot ${p.centre}`);
+    }
+  }
+});
+
+test('coplanarOverlap metric: two near-parallel planes far from the origin still meet in the spatial hash', () => {
+  // 1 degree apart, 300 m east of the origin: their origin offsets differ by ~5 m, the cell-centre offsets by millimetres.
+  const tilt = Math.tan(Math.PI / 180), y = (x: number) => 20 + (x - 300) * tilt;
+  const sheet = {p: [[290, 20, 10], [310, 20, 10], [310, 20, 0], [290, 20, 0]] as V3[], mat: 'slate'};
+  const strip = {p: [[299.5, y(299.5) + 0.03, 6], [300.5, y(300.5) + 0.03, 6], [300.5, y(300.5) + 0.03, 4], [299.5, y(299.5) + 0.03, 4]] as V3[], mat: 'glass'};
+  const z = auditZFight(quads(sheet, strip));
+  assert.ok(z.nearArea > 1.5 && z.nearArea < 2.5, `near ${z.nearArea}`);
+});
+
+test('coplanarOverlap metric: a doubled face counts within one part and material; the two triangles of a quad do not', () => {
+  assert.equal(auditZFight(quads(flat(0, 0, 4, 4, 10, 'slate'))).patches.length, 0, 'adjacent triangles share an edge, no overlap');
+  const doubled = auditZFight(quads(flat(0, 0, 4, 4, 10, 'slate'), flat(0, 0, 4, 4, 10, 'slate')));
+  assert.ok(doubled.sameArea > 15, `doubled ${doubled.sameArea}`);
+  assert.equal(doubled.area, 0, 'a material overlapping itself draws one colour: reported as sameArea, not area');
+  assert.ok(auditZFight(quads(flat(0, 0, 4, 4, 10, 'slate'), flat(0, 0, 4, 4, 10, 'stone'))).area > 15, 'two materials do fight');
+});
+
+test('coplanarOverlap metric: slivers under 0.05 m2 are dropped', () => {
+  // 0.2 x 0.2 m = 0.04 m2 tile flush on a roof.
+  assert.equal(auditZFight(quads(flat(0, 0, 10, 10, 5, 'slate'), flat(3, 3, 3.2, 3.2, 5, 'stone'))).area, 0);
+  assert.ok(auditZFight(quads(flat(0, 0, 10, 10, 5, 'slate'), flat(3, 3, 3.3, 3.3, 5, 'stone'))).area > 0.05);
+});
+
+test('coplanarOverlap metric: a down-facing double-sided roof sheet fights where it is seen from above', () => {
+  // Centraal's shed cells face down (ShapeGeometry mapped from XY to XZ flips the winding) on double-sided materials.
+  const down = (x0: number, z0: number, x1: number, z1: number, y: number, mat: string) => ({p: [[x0, y, z0], [x1, y, z0], [x1, y, z1], [x0, y, z1]] as V3[], mat});
+  const soup = quads(down(0, 0, 20, 10, 20, 'slate'), down(5, 0, 5.4, 10, 20.022, 'glass'));
+  // Single-sided: the pair is only drawn from below, where every probe reaches the ground first. Never seen.
+  assert.equal(auditZFight(soup).nearArea, 0);
+  soup.materials = soup.materials.map(m => ({...m, doubleSided: true}));
+  const z = auditZFight(soup);
+  assert.ok(Math.abs(z.nearArea - 3.8) < 0.1, `double-sided near ${z.nearArea}`);
+  assert.equal(z.patches[0].orientation, 'underside');
+});
+
+test('coplanarOverlap gate: new exports fail above 0.5 m2 under 3 cm apart; recorded models may not grow', () => {
+  assert.deepEqual(regressions({'zfight-m2': 0.2, 'zfight-tight-m2': 0.3, 'zfight-near-m2': 40}, undefined), [], '3-8 cm is reported, not failed, on a new export');
+  assert.equal(regressions({'zfight-m2': 0.2, 'zfight-tight-m2': 0.4, 'zfight-near-m2': 0.4}, undefined).length, 1, 'combined 0.6 m2 on a new export');
+  assert.equal(regressions({'zfight-tight-m2': 3}, {'zfight-tight-m2': 2}).length, 1, 'tight overlap grew past the entry');
+  assert.deepEqual(regressions({'zfight-near-m2': 400}, {'zfight-near-m2': 40}), [], 'near (3-8 cm) is reported, never gated: lifting a 2-3 cm overlay to 5 cm moves it there');
+  assert.deepEqual(regressions({'zfight-tight-m2': 5}, {'zfight-m2': 0}), [], 'an entry recorded before the tight gate');
+});
+
+test('coplanarOverlap metric: 200k-triangle models finish in seconds', () => {
+  // A 150 x 100 m roof in 0.5 m cells (60k triangles) with 2,000 strips over it, plus 120k triangles of facade grid.
+  const qs: {p: V3[]; mat: string}[] = [];
+  for (let i = 0; i < 300; i++) for (let j = 0; j < 100; j++) qs.push(flat(i * 0.5, j, i * 0.5 + 0.5, j + 1, 20, 'slate'));
+  for (let i = 0; i < 2000; i++) qs.push(flat((i % 100) * 1.5, Math.floor(i / 100) * 5, (i % 100) * 1.5 + 0.2, Math.floor(i / 100) * 5 + 4, 20.03, 'glass'));
+  for (let i = 0; i < 300; i++) for (let j = 0; j < 200; j++) qs.push({p: [[i * 0.5, j * 0.1, 0], [i * 0.5 + 0.5, j * 0.1, 0], [i * 0.5 + 0.5, j * 0.1 + 0.1, 0], [i * 0.5, j * 0.1 + 0.1, 0]] as V3[], mat: 'brick'});
+  const soup = quads(...qs), t0 = Date.now();
+  const z = auditZFight(soup);
+  const ms = Date.now() - t0;
+  assert.ok(soup.indices.length / 3 > 180000);
+  assert.ok(z.nearArea > 1300, `near ${z.nearArea}`);
+  assert.ok(ms < 30000, `${ms} ms`);
+});
+
+// ---------------------------------------------------------------------------------------------------------------
 // Named regressions on real models (scripts/landmarks/geometry-audit-pins.json).
 
 const ROOT = path.resolve(import.meta.dirname, '../../..');
@@ -251,7 +343,7 @@ for (const id of [...new Set(pins.map(p => p.id))]) {
     for (const pin of pins.filter(p => p.id === id)) {
       let found: boolean;
       if (pin.kind.startsWith('opening-')) found = r.openings.issues.some(i => `opening-${i.kind}` === pin.kind && (i.kind === 'buried' || i.severity === 'fail') && inBox(i.centre, pin.box!));
-      else if (pin.kind === 'zfight') found = r.zfight.patches.filter(p => !p.near && (!pin.orientation || p.orientation === pin.orientation) && inBox(p.centre, pin.box!)).reduce((t, p) => t + p.area, 0) >= (pin.minArea ?? 0.25);
+      else if (pin.kind === 'zfight' || pin.kind === 'zfight-tight') found = r.zfight.patches.filter(p => (pin.kind === 'zfight' ? !p.near : (!p.near || p.tight) && !p.sameMaterial) && (!pin.orientation || p.orientation === pin.orientation) && inBox(p.centre, pin.box!)).reduce((t, p) => t + p.area, 0) >= (pin.minArea ?? 0.25);
       else {
         const f = r.rhythm.find(x => x.name === pin.facade);
         assert.ok(f, `facade ${pin.facade} measured`);

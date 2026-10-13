@@ -17,7 +17,8 @@ export async function loadMaterialSoup(file: string): Promise<MaterialSoup> {
       ...(slot ? {slot, materialSlot: slot} : {}),
       ...(tint ? {tint} : {}),
       ...(typeof extras.materialSlotSource === 'string' ? {materialSlotSource: extras.materialSlotSource} : {}),
-      ...(m.getExtension('KHR_materials_unlit') ? {unlit: true} : {})};
+      ...(m.getExtension('KHR_materials_unlit') ? {unlit: true} : {}),
+      ...(m.getDoubleSided() ? {doubleSided: true} : {})};
   });
   const positions: number[] = [], indices: number[] = [], triMaterial: number[] = [];
   for (const node of doc.getRoot().listNodes()) {

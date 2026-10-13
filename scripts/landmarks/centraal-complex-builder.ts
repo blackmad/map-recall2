@@ -52,25 +52,35 @@ export function buildCentraalComplex(b:BuildingTools){
    }
   }
   // The sheds are closed slabs, not single-sided sheets: an underside and skirts close every edge (the audit read 800 m of open roof perimeter).
-  function slab(sink:number[],d:number,c:Colour){if(!sink.length)return;const bottom:number[]=[];for(let j=0;j<segments;j++)panel(x0,z0+span*j/segments,x1,z0+span*(j+1)/segments,c,-d,bottom,false);const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(thickenSheet(sink,d,{vertical:true,bottom}),3));g.computeVertexNormals();add(g,c);}
+  // Skirts follow a coarse copy of the sheet (one panel per segment): the same outline without a vertex at every arch, so the eaves are
+  // not cut into 20 cm skirt pieces (the fine sheet's eave edges lie on these skirts, within the shell audit's 3 cm).
+  function slab(sink:number[],d:number,c:Colour){if(!sink.length)return;const bottom:number[]=[],top:number[]=[];for(let j=0;j<segments;j++){panel(x0,z0+span*j/segments,x1,z0+span*(j+1)/segments,c,-d,bottom,false);panel(x0,z0+span*j/segments,x1,z0+span*(j+1)/segments,c,0,top,false);}const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(thickenSheet(top,d,{vertical:true,bottom}),3));g.computeVertexNormals();add(g,c);}
   const roofSink:number[]=[];
-  for(let i=0;i<columns;i++)for(let j=0;j<segments;j++){
-   let c:Colour=part.glass?'glass':'slate';
-   // Letter colors belong to existing glass panels, not pasted text geometry.
-   if(part.glass){const u=columns-1-i,glyph=Math.floor((u-3)/6),col=(u-3)%6,row=8-j,word='AMSTERDAM';
-    if(glyph>=0&&glyph<word.length&&col>=0&&col<5&&row>=0&&row<7&&letters[word[glyph]][row][col]==='1')c=(i+j)%3===0?'gold':'red';
-   }else if(j===7||j===8)c='glass';
-   panel(x0+(x1-x0)*i/columns,z0+span*j/segments,x0+(x1-x0)*(i+1)/columns,z0+span*(j+1)/segments,c,0,roofSink);
+  // The steel arches are a material split of the roof sheet: 20 cm 'frame' bands between the panels, in the sheet's own plane.
+  // They used to be separate strips floating 2.2 cm over the cells (and 1.6 cm purlins across them), which z-fought from
+  // the air (lane zfight-audit 2026-10-13: 1,166 m2 of overlap under 3 cm). The purlin strips are gone; the glazed
+  // bands at rows 7-8 already mark the ridge.
+  const frameX=part.glass?[]:Array.from({length:part.frames},(_,i)=>x0+.3+(x1-x0-.6)*i/(part.frames-1));
+  const cuts=[x0,x1,...Array.from({length:columns-1},(_,i)=>x0+(x1-x0)*(i+1)/columns),...frameX.flatMap(x=>[x-.1,x+.1])].filter(x=>x>=x0&&x<=x1).sort((a,b)=>a-b);
+  const strips=cuts.slice(1).map((xb,k)=>({xa:cuts[k],xb})).filter(s=>s.xb-s.xa>=1e-4).map(s=>{
+   const mid=(s.xa+s.xb)/2;return {...s,arch:frameX.some(x=>Math.abs(mid-x)<.1),i:Math.min(columns-1,Math.floor((mid-x0)/(x1-x0)*columns))};
+  });
+  for(let j=0;j<segments;j++){
+   const colour=(s:typeof strips[number]):Colour=>{
+    if(s.arch)return 'frame';
+    // Letter colors belong to existing glass panels, not pasted text geometry.
+    if(part.glass){const u=columns-1-s.i,glyph=Math.floor((u-3)/6),col=(u-3)%6,row=8-j,word='AMSTERDAM';
+     return glyph>=0&&glyph<word.length&&col>=0&&col<5&&row>=0&&row<7&&letters[word[glyph]][row][col]==='1'?((s.i+j)%3===0?'gold':'red'):'glass';
+    }
+    return j===7||j===8?'glass':'slate';
+   };
+   // Neighbouring strips of one colour in one segment are coplanar: one panel (keeps the GLB under its 500 kB budget).
+   for(let k=0;k<strips.length;){
+    const c=colour(strips[k]);let e=k;while(e+1<strips.length&&colour(strips[e+1])===c)e++;
+    panel(strips[k].xa,z0+span*j/segments,strips[e].xb,z0+span*(j+1)/segments,c,0,roofSink);k=e+1;
+   }
   }
   slab(roofSink,.14,'slate');
-  // Thin double-sided strips keep the repeated steel arches inexpensive.
-  for(let i=0;i<part.frames;i++){
-   const x=x0+.3+(x1-x0-.6)*i/(part.frames-1);
-   for(let j=0;j<segments;j++)panel(x-.1,z0+span*j/segments,x+.1,z0+span*(j+1)/segments,'frame',.022);
-  }
-  for(const j of [0,4,8,12,16]){
-   const z=z0+span*j/segments;panel(x0,z-.055,x1,z+.055,'frame',.016);
-  }
   // Open supports. No filled ground-level station or bike-path slab.
   for(let i=0;i<8;i++)for(const z of [z0+.4,z1-.4]){
    const x=x0+4+(x1-x0-8)*i/7;
