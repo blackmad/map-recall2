@@ -1477,8 +1477,8 @@
       "dateSource": "asset-update"
     },
     "krasnapolsky.lod1": {
-      "updatedAt": "2026-10-11T05:03:07.743Z",
-      "version": "be5e84af838ef427",
+      "updatedAt": "2026-10-13T08:36:15.936Z",
+      "version": "46b96dd79096be2c",
       "dateSource": "asset-update"
     },
     "kriterion": {
@@ -2017,8 +2017,8 @@
       "dateSource": "asset-update"
     },
     "pakhuis-de-zwijger.lod1": {
-      "updatedAt": "2026-10-11T05:03:07.743Z",
-      "version": "62e9558c146487e4",
+      "updatedAt": "2026-10-13T08:36:15.939Z",
+      "version": "07ecb271aeb92863",
       "dateSource": "asset-update"
     },
     "palace-on-the-dam": {
@@ -2259,6 +2259,16 @@
     "scheepvaarthuis.lod1": {
       "updatedAt": "2026-10-10T13:42:20.478Z",
       "version": "78420f025fbc2806",
+      "dateSource": "asset-update"
+    },
+    "scheepvaartmuseum": {
+      "updatedAt": "2026-10-13T08:55:55.479Z",
+      "version": "39047fe48d1074a1",
+      "dateSource": "asset-update"
+    },
+    "scheepvaartmuseum.lod1": {
+      "updatedAt": "2026-10-13T08:55:44.060Z",
+      "version": "3f954524a7aa2360",
       "dateSource": "asset-update"
     },
     "scheltema": {
@@ -2674,6 +2684,16 @@
     "w139.lod1": {
       "updatedAt": "2026-10-10T13:42:20.712Z",
       "version": "09d4131e5d2c978f",
+      "dateSource": "asset-update"
+    },
+    "waag": {
+      "updatedAt": "2026-10-13T08:55:55.506Z",
+      "version": "4fbe37245ce94965",
+      "dateSource": "asset-update"
+    },
+    "waag.lod1": {
+      "updatedAt": "2026-10-13T08:55:44.061Z",
+      "version": "8c008829870ec9af",
       "dateSource": "asset-update"
     },
     "walloon-church": {

@@ -513,6 +513,10 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- Kit-only landmarks still without a GLB: Noorderkerk (main pand to
+  identify: 0363100012177299 or ...177297) and Krijtberg (not started).
+  Another session is building Obrechtkerk, Oosterkerk, Mozes en Aäronkerk,
+  De Duif and Opstandingskerk. Scheepvaartmuseum and Waag done 2026-10-13.
 - Facade comparison now crops to the photo's span (alongM/heightM), skips
   null bands and counts ribbon glazing as one opening (2026-10-11): failing
   checks 45 -> 24 over the 7 newly released landmarks. Real model gaps it
