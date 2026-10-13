@@ -30,6 +30,8 @@ function pointTri(p: V3, a: V3, b: V3, c: V3): number {
   return len(sub(p, [a[0] + ab[0] * v + ac[0] * w, a[1] + ab[1] * v + ac[1] * w, a[2] + ab[2] * v + ac[2] * w]));
 }
 
+/** A part touches another within this distance (m). 0.10: wall sheets stand on layers 4.5 cm apart (compose.ts liftSheet), so a stack link or a lone pane can be up to 9 cm off its neighbour; it was 5 cm while sheets were 2-7.5 cm proud. */
+const SHEET_STACK_TOL = 0.10;
 export function runGates(mesh: MeshBuilder, set: SurfaceSet, opts: { budget?: number } = {}): GateReport {
   const budget = opts.budget ?? 30000;
   interface Tri { a: V3; b: V3; c: V3; part: number; slot: string }
@@ -71,7 +73,7 @@ export function runGates(mesh: MeshBuilder, set: SurfaceSet, opts: { budget?: nu
       }
     }
     let host = best.get(0) ?? Infinity, near = Infinity;
-    for (const [other, d] of best) { if (d <= 0.05) edges.push([part, other]); near = Math.min(near, d); }
+    for (const [other, d] of best) { if (d <= SHEET_STACK_TOL) edges.push([part, other]); near = Math.min(near, d); }
     partMin.set(part, Math.min(host, near));
   }
   // connectivity to the host
@@ -86,7 +88,7 @@ export function runGates(mesh: MeshBuilder, set: SurfaceSet, opts: { budget?: nu
   void worst;
   // host normals: every on-edge wall triangle should face away from the ground solid (done at build: count inward as 0 here by dot with centroid vector)
   const heightM = maxY, h3 = set.heightMax;
-  const gapOk = maxGap <= 0.05, floatOk = floating.length === 0;
+  const gapOk = maxGap <= SHEET_STACK_TOL, floatOk = floating.length === 0;
   const rep: GateReport = {
     triangles: tris.length, budget, budgetOk: tris.length <= budget,
     heightM: +heightM.toFixed(2), bag3dHeightM: +h3.toFixed(2), heightDeltaM: +(heightM - h3).toFixed(2), heightOk: Math.abs(heightM - h3) <= 0.5,
