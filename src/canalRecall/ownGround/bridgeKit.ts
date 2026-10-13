@@ -331,7 +331,7 @@ function buildAt(input: KitInput, lv: Level, level: number): { mesh: MeshArrays;
         const R = (half * half + rise * rise) / (2 * rise);
         arches.push({ s0, s1, spring, crown, R, mid });
       }
-    } else if (span > PIER_SPAN_M) {
+    } else if (span > (kind === 'footbridge' ? 20 : PIER_SPAN_M)) { // a light footbridge spans a canal-belt canal in one
       const nb = Math.max(2, Math.min(7, Math.round(span / BAY_M)));
       for (let j = 1; j < nb; j++) piers.push(w0 + span * j / nb);
     }
@@ -481,7 +481,14 @@ function parapet(m: MeshArrays, input: KitInput, lv: Level, st: readonly number[
       posts.push({ c, z: zt(r), u: [o[1], -o[0]] });
       // Footbridge posts hang down the edge beam's face: deck and railing are one piece.
       const z0 = kind === 'footbridge' ? zt(r) - 0.25 : zt(r) + style.plinth - 0.02;
-      box(m, c, [o[1], -o[0]], style.post, style.post, z0, zt(r) + style.postTop, style.postCol, kind === 'arch'); // an iron post's 7 cm top is never seen
+      if (kind === 'arch') box(m, c, [o[1], -o[0]], style.post, style.post, z0, zt(r) + style.postTop, style.postCol);
+      else {
+        // An iron or timber post is a flat bar facing the water and the road (4 triangles; its 7 cm edge and top are never seen).
+        const u: Vec2 = [o[1], -o[0]], h = style.post, z1 = zt(r) + style.postTop;
+        const a: Vec2 = [c[0] - u[0] * h, c[1] - u[1] * h], b: Vec2 = [c[0] + u[0] * h, c[1] + u[1] * h];
+        face(m, [[a[0], a[1], z0], [b[0], b[1], z0], [b[0], b[1], z1], [a[0], a[1], z1]], style.postCol, [o[0], o[1], 0]);
+        face(m, [[a[0], a[1], z0], [b[0], b[1], z0], [b[0], b[1], z1], [a[0], a[1], z1]], style.postCol, [-o[0], -o[1], 0]);
+      }
       info.railingPosts++;
     }
     const levels = kind === 'arch' ? [RAILING.height - 0.08] : [RAILING.height, ...(lv.midRail || kind === 'footbridge' ? [0.55] : [])];
