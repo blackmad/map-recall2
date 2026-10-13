@@ -40,7 +40,19 @@ because slot tints pass through `cityTint`; one brick variant only; ~40
 draft export scripts do not tag slots and will fail the 100% gate; under
 `?cityLook=1` the landmark highlight is a flat unshaded yellow (the variant
 swap drops the shading the default highlight keeps — demo shots 2026-10-13;
-city-look review lane running). **Step 3 landed 2026-10-13 behind
+fixed by the city-look review 2026-10-13, HISTORY). **Flip evidence (lane
+recommendation, written in `docs/LOOK.md`): flip `sharedFrame` and
+`cityLook` together, desktop first; frame median/p99 16.7/16.8 ms in every
+mode, three.js layers 0.74 → 0.89 ms, +5.5 MB textures, flag-off
+pixel-identical. Not flipped yet: the user called the shared-frame default a
+look decision for them, and the user's 2026-10-13 notes ("the sun moves
+with me", "the whole city is a little dark/dour") go to the lighting lane
+first, so the flip lands on a frame whose sun is fixed. Still open from the
+review: three builder re-tags (Uilenburger synagoge and Podium Mozaïek
+roofs → `roofTile`, American Hotel sandstone), 57 covered models without a
+BAG year, Hemp Gallery (1993) and Theo Thijssen Museum (1994) carry rebuild
+years without a sourced construction year, iPhone 4× unmeasured (touch
+texture +1.4 MB computed). **Step 3 landed 2026-10-13 behind
 `?recipeTiles=1`** (HISTORY): recipe tiles, compiler, `TileBuildings` near
 tier, pilots published under `public/canal-drive/recipe-tiles/` (9.4 MB:
 3,151 pands, 66 z16 tiles, 8 large, 61 canal houses, 10 glb landmarks, 3,072
