@@ -38479,6 +38479,148 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T23:10:37.724Z"
+    },
+    {
+      "id": "ordinary-0363100012202381",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012202381",
+      "name": "Centrale Groothandelsmarkt 114, Amsterdam (Food Center, Jan van Galenstraat): 1935 single-storey wholesale market hall of 13 trading units under a deep sign canopy",
+      "hash": "ae29886e60e92e64e04d15f66ff063e53adea5d5bba04c148a929e1ac35b981e",
+      "sha256": "ae29886e60e92e64e04d15f66ff063e53adea5d5bba04c148a929e1ac35b981e",
+      "bytes": 124756,
+      "triangles": 1581,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -42.99,
+          -0.001,
+          -84.753
+        ],
+        "max": [
+          62.359,
+          7.753,
+          107.063
+        ]
+      },
+      "anchor": [
+        4.8683582,
+        52.3775147
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8686632,
+              52.3782777
+            ],
+            [
+              4.8683288,
+              52.3782314
+            ],
+            [
+              4.8685648,
+              52.377594
+            ],
+            [
+              4.8685391,
+              52.3775593
+            ],
+            [
+              4.867874,
+              52.377741
+            ],
+            [
+              4.8678521,
+              52.3777111
+            ],
+            [
+              4.867846,
+              52.3777127
+            ],
+            [
+              4.8678331,
+              52.3776951
+            ],
+            [
+              4.8678391,
+              52.3776935
+            ],
+            [
+              4.8677255,
+              52.3775381
+            ],
+            [
+              4.8686932,
+              52.3772737
+            ],
+            [
+              4.8686905,
+              52.3772696
+            ],
+            [
+              4.8686868,
+              52.3772691
+            ],
+            [
+              4.8689518,
+              52.3765533
+            ],
+            [
+              4.8692847,
+              52.3765994
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 7.75,
+      "height": 7.75,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-cgm-114-202381.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012202381"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "cgm-114-202381",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012202381/w02-258.jpg",
+          "staging/pand-reference-walls/0363100012202381/w01-78.jpg",
+          "staging/pand-reference-walls/0363100012202381/w04-204.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 2st 14b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Centrale Groothandelsmarkt 114 (BAG: built 1935; 13 shop units, 5,998 m2 footprint, 7.4 m roof): a long single-storey market hall of the wholesale fruit-and-vegetable market. Three walls are photographed: the west front (w02-258, panorama 2022-04-29: concrete columns carrying a deep canopy and sign fascia over green roller doors, signs Arie Rustenburg Groenten & Fruit, Food Destination, R. van Mourik), the east wall (w01-78, 2021-01-14: a long curved concrete wall, blank) and the south-west end wall (w04-204, 2022-04-29: buff brick base under brown corrugated cladding with two roller doors).",
+        "Modelled: the west front (panels 13 and 31) as a two-storey group with a glazed ground floor under a closed fascia storey and a cornice carrying the name ARIE RUSTENBURG GROENTEN & FRUIT; the 191 m east wall (panel 9) as a blank concrete wall; the south-west end (panel 34) as a blank brown-clad wall. Roof is the 3DBAG LoD2.2 shell.",
+        "Simplified: the roller doors are one glazed ground row (the kit's garage doors and portals left z-fight at this size), the canopy is the cornice band, the sign boards other than the first are not drawn, the buff brick base of the south-west wall is the cladding brown. Not modelled: the north and south ends and the short canopy returns (no useful view)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012202381",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T23:11:29.475Z"
     }
   ]
 }

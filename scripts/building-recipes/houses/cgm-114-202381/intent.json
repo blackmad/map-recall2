@@ -1,0 +1,105 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "cgm-114-202381",
+ "pandId": "0363100012202381",
+ "address": "Centrale Groothandelsmarkt 114, Amsterdam (Food Center, Jan van Galenstraat): 1935 single-storey wholesale market hall of 13 trading units under a deep sign canopy",
+ "sources": [
+  {
+   "id": "pano-2022-04-29-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002552_pano_0002_000081/",
+   "image": "staging/pand-reference-walls/0363100012202381/w02-258.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-01-14-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-14",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001952_pano_0000_000151/",
+   "image": "staging/pand-reference-walls/0363100012202381/w01-78.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-29-w04",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002552_pano_0002_000054/",
+   "image": "staging/pand-reference-walls/0363100012202381/w04-204.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    14,
+    34
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 14,
+   "ground": "glazed",
+   "deepBars": true,
+   "sills": false,
+   "windows": "plain",
+   "blankStoreys": [
+    1
+   ],
+   "cornice": true,
+   "signage": {
+    "text": "ARIE RUSTENBURG GROENTEN & FRUIT",
+    "colour": "#8a2a22",
+    "mount": "cornice"
+   }
+  },
+  {
+   "wallSurfaces": [
+    10
+   ],
+   "system": "blank",
+   "storeys": 2,
+   "baysPerStorey": 32,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "palette": {
+    "brick": "#b2ada2",
+    "frame": "#3a4a46",
+    "stone": "#b0aca4"
+   }
+  },
+  {
+   "wallSurfaces": [
+    38
+   ],
+   "system": "blank",
+   "storeys": 2,
+   "baysPerStorey": 12,
+   "ground": "system",
+   "deepBars": true,
+   "sills": false,
+   "palette": {
+    "brick": "#7a3e32",
+    "frame": "#3a4a46",
+    "stone": "#b0aca4"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#b9b5aa",
+  "frame": "#3a4a46",
+  "door": "#2f4a3a",
+  "stone": "#b0aca4"
+ },
+ "notes": [
+  "Centrale Groothandelsmarkt 114 (BAG: built 1935; 13 shop units, 5,998 m2 footprint, 7.4 m roof): a long single-storey market hall of the wholesale fruit-and-vegetable market. Three walls are photographed: the west front (w02-258, panorama 2022-04-29: concrete columns carrying a deep canopy and sign fascia over green roller doors, signs Arie Rustenburg Groenten & Fruit, Food Destination, R. van Mourik), the east wall (w01-78, 2021-01-14: a long curved concrete wall, blank) and the south-west end wall (w04-204, 2022-04-29: buff brick base under brown corrugated cladding with two roller doors).",
+  "Modelled: the west front (panels 13 and 31) as a two-storey group with a glazed ground floor under a closed fascia storey and a cornice carrying the name ARIE RUSTENBURG GROENTEN & FRUIT; the 191 m east wall (panel 9) as a blank concrete wall; the south-west end (panel 34) as a blank brown-clad wall. Roof is the 3DBAG LoD2.2 shell.",
+  "Simplified: the roller doors are one glazed ground row (the kit's garage doors and portals left z-fight at this size), the canopy is the cornice band, the sign boards other than the first are not drawn, the buff brick base of the south-west wall is the cladding brown. Not modelled: the north and south ends and the short canopy returns (no useful view)."
+ ],
+ "closedBands": true
+}
