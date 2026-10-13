@@ -1,0 +1,137 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "passeerdersstraat-242951",
+ "pandId": "0363100012242951",
+ "address": "de Makron, Nieuwe Passeerdersstraat 278 (BAG), Amsterdam: 2015 brick block with slate-clad entrance tower, set-back yellow top storey, canal-side balconies",
+ "sources": [
+  {
+   "id": "pano-2023-03-06-se",
+   "kind": "street-panorama",
+   "capturedAt": "2023-03-06",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002989_pano_0008_000045/",
+   "image": "staging/pand-reference-walls/0363100012242951/w01-155.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2017-03-10-sw",
+   "kind": "street-panorama",
+   "capturedAt": "2017-03-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000199_pano_0002_000334/",
+   "image": "staging/pand-reference-walls/0363100012242951/w04-240.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    4,
+    52,
+    127,
+    330,
+    332
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "baysPerStorey": 16,
+   "ground": "system",
+   "windows": "plain",
+   "palette": {
+    "brick": "#8d4a38",
+    "frame": "#e8e6df",
+    "stone": "#6e6a66"
+   },
+   "sills": false,
+   "frames": false,
+   "deepBars": true,
+   "blankStoreys": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "wallSurfaces": [
+    22,
+    217,
+    218,
+    14,
+    106,
+    135,
+    329,
+    334
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 18,
+   "ground": "system",
+   "windows": "plain",
+   "palette": {
+    "brick": "#8d4a38",
+    "frame": "#e8e6df",
+    "stone": "#6e6a66"
+   },
+   "sills": false,
+   "frames": false
+  },
+  {
+   "wallSurfaces": [
+    23,
+    79,
+    328,
+    93,
+    463,
+    305
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 10,
+   "ground": "system",
+   "windows": "plain",
+   "palette": {
+    "brick": "#8d4a38",
+    "frame": "#e8e6df",
+    "stone": "#6e6a66"
+   },
+   "sills": false,
+   "frames": false
+  },
+  {
+   "wallSurfaces": [
+    304,
+    387
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "baysPerStorey": 12,
+   "ground": "system",
+   "windows": "plain",
+   "palette": {
+    "brick": "#8d4a38",
+    "frame": "#e8e6df",
+    "stone": "#6e6a66"
+   },
+   "sills": false,
+   "frames": false
+  }
+ ],
+ "otherWalls": "blank",
+ "palette": {
+  "brick": "#8d4a38",
+  "frame": "#e8e6df",
+  "door": "#2a2a2a",
+  "stone": "#6e6a66"
+ },
+ "roof": {
+  "material": "bitumen"
+ },
+ "notes": [
+  "De Makron, Nieuwe Passeerdersstraat 278 (BAG), built 2015: a U-shaped residential block. SE front (w01-155, 2023-03-06): shops on a plinth, four brick storeys with French balconies, a set-back yellow-brick top storey, a slate-clad central tower over a metal entrance canopy lettered de MAKRON. SW canal front (w04-240, 2017-03-10): same grammar over the Nieuwe Passeerdersstraat canal. NW and NE walls have no usable photograph (candidates 0 for w03-335, w05-65).",
+  "Modelled: a one-storey ground row of recessed shop windows on the SE front (deepBars) and punched-window groups on the set-back upper walls (SE and SW). The 3DBAG LoD2.2 front wall has its eaves at 5 m (roof inside is low), so the group is one storey and the upper brick floors are blank wall (blankStoreys), which hides the real four balconied floors. Not drawn: the recessed entrance, the canopy and the DE MAKRON lettering. They were authored (entrance + canopy + signage) but the entrance component's glazing bars sit 1.5 cm proud of the glass and add 1.3 m2 of coplanar overlap, over the 0.5 m2 gate for a new export; it needs a deepBars path in blockBuilding/components.ts. Also not drawn: the slate tower, French balconies, awnings.",
+  "Known gate false negative: footprint-vs-bag 0.674 (survey ground 4,219 m2 vs BAG LoD0 6,262 m2: the BAG ring spans the courtyard and set-backs). Every other gate passes.",
+  "GATE STATUS: authored but NOT installable. `footprint-vs-bag` fails at IoU 0.674: the 3DBAG LoD2.2 ground (4,219 m2, one ring, no courtyard) lies wholly inside the BAG/LoD0 outline (6,262 m2), so the shell itself omits a third of the BAG footprint. Needs a decision on which footprint is right before install."
+ ]
+}
