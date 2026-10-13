@@ -271,6 +271,7 @@ import {buildSlavernijmonument} from './slavernijmonument-builder';
 import {buildBegijnhof} from './begijnhof-builder';
 import {buildNoorderkerk} from './noorderkerk-builder';
 import {buildKrijtberg} from './krijtberg-builder';
+import {buildWilhelminaRuiterstandbeeld} from './wilhelmina-ruiterstandbeeld-builder';
 import {buildVondelmonument} from './vondelmonument-builder';
 import {buildRembrandtmonument} from './rembrandtmonument-builder';
 import {buildMaagdenhuis} from './maagdenhuis-builder';
@@ -715,6 +716,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='begijnhof')buildBegijnhof(w,d,helpers);
     else if(id==='noorderkerk')buildNoorderkerk(w,d,helpers);
     else if(id==='krijtberg')buildKrijtberg(w,d,helpers);
+    else if(id==='wilhelmina-ruiterstandbeeld')buildWilhelminaRuiterstandbeeld(w,d,helpers);
     else if(id==='slavernijmonument')buildSlavernijmonument(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }

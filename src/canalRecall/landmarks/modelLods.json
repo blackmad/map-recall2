@@ -1654,5 +1654,11 @@
   "buildVersion": 2,
   "bytes": 33260,
   "triangles": 1316
+ },
+ "wilhelmina-ruiterstandbeeld": {
+  "sourceHash": "ce5ceee85bd19387",
+  "buildVersion": 2,
+  "bytes": 27580,
+  "triangles": 1206
  }
 }

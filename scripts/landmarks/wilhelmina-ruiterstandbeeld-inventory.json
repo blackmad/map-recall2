@@ -1,0 +1,41 @@
+{
+ "schemaVersion": 1,
+ "id": "wilhelmina-ruiterstandbeeld",
+ "signature": ["w-rider", "w-horse", "w-funnel", "w-lettering"],
+ "walls": [
+  {
+   "tag": "s-175", "bearing": 175, "lengthM": 3.6, "centre": [4.8923071, 52.3691751],
+   "evidence": "photo", "panoId": "recording_2025-06-30_05-16-46_01193", "capturedAt": "2025-06-30", "checked": true,
+   "note": "Horse's left side with the lettered funnel face (RCE 20362367, Loek Tangel, Commons CC BY-SA 4.0; panoramas 01193 and 01192).",
+   "items": [
+    {"id": "w-rider", "kind": "sculpture", "where": "Queen Wilhelmina seated side-saddle in a long riding habit and a brimmed hat, holding the reins low, bronze, about 1.7 m", "approxSizeM": [0.9, 1.9], "plan": "simplified",
+     "how": "builder: habit skirt as an open cone over the horse's left flank, torso cylinder, shoulders, head ball, hat brim and crown, two arms to the hands; no face or cuffs", "seenIn": "recording_2025-06-30_05-16-46_01193"},
+    {"id": "w-horse", "kind": "sculpture", "where": "bronze horse in a walking dressage step: arched neck, head tucked, near foreleg raised and folded, plumed tail", "approxSizeM": [3.3, 3.1], "plan": "simplified",
+     "how": "builder: ellipsoid barrel, croup and chest, tapered neck and head, four tapered legs (near fore raised, off hind a step back), tail limb, ears, saddle pad, bridle straps and reins; no musculature or mane texture", "seenIn": "Close-up RCE 20362368 (Commons, CC BY-SA 4.0)"},
+    {"id": "w-funnel", "kind": "other", "where": "tall bronze pedestal shaped as an inverted pyramid (3.6 m long at the top, 1.2 m at the foot) over a stone pier on the bridge parapet", "approxSizeM": [3.6, 3.4], "plan": "modelled",
+     "how": "builder: lofted four-sided frustum with a slab top, stone pier and moulded cap below", "seenIn": "recording_2025-06-30_05-16-46_01193"},
+    {"id": "w-lettering", "kind": "lettering", "where": "WILHELMINA and 1880-1962 incised on the upper left face of the funnel", "approxSizeM": [0.9, 0.2], "plan": "modelled",
+     "how": "builder: 5x7 block letters as gilt run boxes on the leaning face (pixel-font.ts); the real lettering is incised thin capitals", "seenIn": "RCE 20362367 (Commons)"}
+   ]
+  },
+  {
+   "tag": "n-355", "bearing": 355, "lengthM": 3.6, "centre": [4.8923071, 52.3691801],
+   "evidence": "photo", "panoId": "b_20250120_0926_Track05_Sphere_00003", "capturedAt": "2025-01-20", "checked": true,
+   "note": "Horse's right side with the rider's back and the funnel's plain face (panorama Track05 00003).", "items": []
+  },
+  {
+   "tag": "e-85", "bearing": 85, "lengthM": 2.1, "centre": [4.8923121, 52.3691751],
+   "evidence": "inferred", "capturedAt": null, "checked": true, "note": "Tail end: plain funnel face; same bronze funnel and pier.", "items": []
+  },
+  {
+   "tag": "w-265", "bearing": 265, "lengthM": 2.1, "centre": [4.8923021, 52.3691751],
+   "evidence": "photo", "panoId": "recording_2025-06-30_05-16-46_01192", "capturedAt": "2025-06-30", "checked": true,
+   "note": "Head end: the horse's chest and the raised near foreleg with the rider seen from the front-left.", "items": []
+  }
+ ],
+ "sources": [
+  {"name": "RCE 20362367, 20362368, 20362369 Ruiterstandbeeld van koningin Wilhelmina (Loek Tangel)", "url": "https://commons.wikimedia.org/wiki/Category:Equestrian_statue_of_Wilhelmina,_Rokin_(Amsterdam)", "licence": "CC BY-SA 4.0"},
+  {"name": "FaceMePLS, Wilhelmina Rokin Amsterdam", "url": "https://commons.wikimedia.org/wiki/File:%27Wilhelmina%27_Rokin_Amsterdam_(6025300073).jpg", "licence": "CC BY 2.0"},
+  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/panoramas/", "licence": "CC BY 4.0"}
+ ]
+}
