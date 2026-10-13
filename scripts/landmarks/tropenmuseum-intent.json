@@ -1,0 +1,348 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "tropenmuseum",
+ "pandId": "0363100012237251",
+ "address": "Koninklijk Instituut voor de Tropen / Tropenmuseum, Linnaeusstraat 2, Amsterdam",
+ "sources": [
+  {
+   "id": "pano-2020-04-24",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-24",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001674_pano_0000_003613/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    284
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "windows": "plain",
+   "ground": "system",
+   "frames": false,
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    168,
+    379,
+    381,
+    606,
+    1064,
+    1065,
+    1143
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 7,
+   "windows": "two-light",
+   "ground": "system",
+   "frames": false,
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    388,
+    813,
+    835,
+    1085,
+    1088,
+    1218,
+    1219
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 6,
+   "windows": "two-light",
+   "ground": "system",
+   "frames": false,
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    337,
+    346,
+    900,
+    1034
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "windows": "plain",
+   "ground": "system",
+   "frames": false,
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    159,
+    218,
+    242,
+    254,
+    285,
+    507,
+    823,
+    883
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "windows": "two-light",
+   "ground": "system",
+   "frames": false,
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    17,
+    62,
+    158,
+    473,
+    668,
+    775,
+    1037
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "windows": "plain",
+   "ground": "system",
+   "frames": false,
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    170,
+    210,
+    283,
+    332,
+    587,
+    605,
+    871
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "windows": "two-light",
+   "ground": "system",
+   "frames": false,
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    831,
+    1101
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "windows": "plain",
+   "ground": "system",
+   "arches": {
+    "windows": "round",
+    "ground": "round",
+    "band": "none"
+   },
+   "frames": false,
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    2,
+    3,
+    52,
+    56,
+    60,
+    93,
+    111,
+    119,
+    140,
+    143,
+    148,
+    149,
+    233,
+    244,
+    276,
+    300,
+    321,
+    327,
+    334,
+    336,
+    367,
+    372,
+    461,
+    490,
+    544,
+    569,
+    590,
+    690,
+    730,
+    748,
+    749,
+    770,
+    776,
+    843,
+    891,
+    938,
+    939,
+    954,
+    967,
+    985,
+    987,
+    1135,
+    1158
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "windows": "plain",
+   "ground": "system",
+   "frames": false,
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    19,
+    21,
+    76,
+    85,
+    86,
+    92,
+    103,
+    129,
+    151,
+    154,
+    167,
+    172,
+    208,
+    209,
+    213,
+    236,
+    250,
+    259,
+    299,
+    301,
+    420,
+    422,
+    502,
+    503,
+    508,
+    566,
+    571,
+    595,
+    647,
+    674,
+    713,
+    715,
+    743,
+    752,
+    783,
+    784,
+    812,
+    865,
+    890,
+    892,
+    898,
+    966,
+    1058,
+    1070,
+    1190,
+    1196,
+    1198
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "windows": "two-light",
+   "ground": "system",
+   "frames": false,
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    68,
+    120,
+    180,
+    189,
+    257,
+    258,
+    432,
+    914,
+    1202
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "windows": "plain",
+   "ground": "system",
+   "frames": false,
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    113,
+    161,
+    186,
+    226,
+    281,
+    330,
+    672,
+    1042,
+    1043
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "windows": "two-light",
+   "ground": "system",
+   "frames": false,
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    116,
+    117,
+    123,
+    131,
+    135,
+    280,
+    291,
+    324,
+    325,
+    496,
+    527,
+    541,
+    542,
+    632,
+    652,
+    676,
+    704,
+    718,
+    719,
+    768
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "windows": "plain",
+   "ground": "system",
+   "frames": false,
+   "sills": false
+  },
+  {
+   "wallSurfaces": [
+    115,
+    1026
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "windows": "two-light",
+   "ground": "system",
+   "frames": false,
+   "sills": false
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#8a5a47",
+  "frame": "#e8e4d8",
+  "door": "#2f3b33",
+  "stone": "#d9cfb8"
+ },
+ "closedBands": true,
+ "notes": []
+}
