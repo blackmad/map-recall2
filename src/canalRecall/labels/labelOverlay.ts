@@ -326,10 +326,14 @@ export class LabelOverlay {
           if (r) add(new DOMRect(box.left + r.x * sx, box.top + r.y * sy, r.width * sx, r.height * sy));
         }
         if (layout.dpad?.bounds) { const r = layout.dpad.bounds; add(new DOMRect(box.left + r.x * sx, box.top + r.y * sy, r.width * sx, r.height * sy)); }
+        // The arrival card (user 2026-10-13: a label cut through the finish card).
+        const fin = game?._finishCardBounds;
+        const finished = (0, eval)('typeof GameState === "object" ? GameState.FINISHED : 5');
+        if (fin && game?.state === finished) add(new DOMRect(box.left + fin.x * sx, box.top + fin.y * sy, fin.w * sx, fin.h * sy));
       }
     } catch (_) { /* no HUD yet */ }
-    // DOM teaching surfaces: the question prompt and the landmark panel.
-    for (const el of [game?._prompt, document.getElementById('landmark-panel')] as HTMLElement[]) {
+    // DOM teaching surfaces: the question prompt, the landmark panel and the utility corner.
+    for (const el of [game?._prompt, document.getElementById('landmark-panel'), document.getElementById('utility-buttons')] as HTMLElement[]) {
       if (el && getComputedStyle(el).display !== 'none' && getComputedStyle(el).visibility !== 'hidden') add(el.getBoundingClientRect());
     }
     return rects;

@@ -1191,6 +1191,18 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+- **Parks modelled realistically** (user 2026-10-13, Cremerplein: one flat
+  green with a scatter of trees around a dark box). Real parks have paths,
+  lawns vs planting, hedges, playgrounds, benches, a pond; the sources are
+  BGT (`begroeidterreindeel`, `onbegroeidterreindeel` with `fysiekVoorkomen`
+  such as gras, bosschage, verharding; `wegdeel` voetpad), OSM
+  (`leisure=playground`, `natural=water`, `barrier=hedge`, benches, paths)
+  and the Gemeente tree inventory already used. Own-ground cells get park
+  surfaces (lawn, planting, path, play sand), hedges as low boxes along
+  `barrier=hedge`, playground kit, benches along paths; neighbourhood
+  centres and kiosks inside parks take their real footprint. Start with the
+  Vondelpark, Oosterpark, Westerpark, Sarphatipark and the squares
+  (Cremerplein, Bellamyplein).
 - **One flat-roof table**: `FLAT_ROOF_TONES` (mood pass: gravel `#9e9281`,
   membrane `#c3c1bb`, bitumen `#56585e`) and `ROOF_SLOT_TONES` (orthophoto
   slots: gravel `#8f8a83`, white membrane `#d9d9d3`, bitumen dark `#55585b`)
