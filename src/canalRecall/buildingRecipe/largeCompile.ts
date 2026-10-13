@@ -24,10 +24,10 @@ export interface CompiledLargeBuilding {
 }
 
 /** Block-kit slot → recipe material slot (recipeLook RECIPE_SLOTS) and surface. Roofs are split by slope separately. */
-export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe, 'wallMaterial'>): {materialSlot: string; surface: string} {
+export function largeMaterialSlot(slot: string, recipe: Pick<LargeBuildingRecipe, 'wallMaterial' | 'slotMaterial'>): {materialSlot: string; surface: string} {
   const base = slot.split('@')[0];
   switch (base) {
-    case 'wall': case 'arch': return {materialSlot: recipe.wallMaterial, surface: 'wall'};
+    case 'wall': case 'arch': return {materialSlot: recipe.slotMaterial?.[slot] ?? recipe.wallMaterial, surface: 'wall'};
     case 'curtain': return {materialSlot: 'frame', surface: 'wall'};
     case 'glass': return {materialSlot: 'glass', surface: 'glass'};
     case 'frame': case 'rail': return {materialSlot: 'frame', surface: 'joinery'};
@@ -184,7 +184,7 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, facts: Buildin
     ...(hooks.barOffsetM !== undefined ? {barOffsetM: hooks.barOffsetM} : {}),
     ...(hooks.glassBackM !== undefined ? {glassBackM: hooks.glassBackM} : {}),
     mergeKey: wi => recipe.wallGroup[wi],
-    systemFor: p => groupOf(p.index)?.specSystem ?? recipe.other.specSystem,
+    systemFor: p => recipe.panelSystem?.[p.index] ?? groupOf(p.index)?.specSystem ?? recipe.other.specSystem,
     wallSlotFor: p => { const g = groupOf(p.index); return !g ? 'wall' : g.system === 'curtain-wall' ? g.slots.curtain : g.slots.wall; },
     skipCell: (p, floor, bay, bays) => {
       const g = groupOf(p.index);

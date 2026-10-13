@@ -128,7 +128,8 @@ export interface Band { slot: Slot; h: number; out: number; skipGround?: boolean
 export interface System {
   pitch: number; minWidth?: number;
   /** explicit bay axes: first axis (m from the panel's left edge), pitch and count; otherwise bays tile the panel */
-  bays?: { first: number; pitch: number; count: number; /** widen the first cell leftwards / the last cell rightwards by these metres (opt-in) */ reach?: [number, number] };
+  bays?: { first: number; pitch: number; count: number; /** widen the first cell leftwards / the last cell rightwards by these metres (opt-in) */ reach?: [number, number];
+    /** explicit bay axes (m from the panel's left edge), each cell `pitch` wide; replaces first/count (curved runs, curve.ts; opt-in) */ centres?: number[] };
   ground: Row; typical: Row; top?: Row; topCount?: number;
   /** explicit floor lines for this system only (overrides levels.lines; opt-in) */
   lines?: number[];
