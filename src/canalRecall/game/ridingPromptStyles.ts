@@ -28,7 +28,7 @@ html #canal-prompt.riding #canal-card {
 #canal-prompt.riding #canal-feedback { grid-column: 1 / -1; margin: 0; font-size: 13px; }
 #canal-prompt.riding #canal-choices { grid-column: 1 / -1; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin: 0; }
 #canal-prompt.riding.riding-narrow #canal-choices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-#canal-prompt.riding .canal-choice { min-width: 0; min-height: 40px; padding: 6px 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
+#canal-prompt.riding .canal-choice { min-width: 0; min-height: 38px; padding: 6px 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
 #canal-prompt.riding .canal-choice-key { flex: none; margin-right: 6px; }
 #canal-prompt.riding #canal-card.answered #canal-choices { opacity: .9; }
 `;
