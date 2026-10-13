@@ -333,3 +333,20 @@ test('closed bands: Beursplein cornices and Damrak string-course ends leave no o
   assert.equal(after.topology.openEdges, 0);
   assert.deepEqual(after.gates.filter(x => !x.pass).map(x => x.id), []);
 });
+
+test('arches.storeys and balconies.bays: round heads only on the listed storeys, a balcony only over the listed bay (Barlaeus front)', async () => {
+  const base = raw('barlaeus'), f = facts('barlaeus');
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], arches: {windows: 'round', storeys: []}}, ...base.walls.slice(1)]}), /arches.storeys/);
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], balconies: {storeys: [1], bays: [7]}}, ...base.walls.slice(1)]}), /balconies.bays/);
+  const intent = validateLargeIntent(base);
+  const sys = Object.values(fitLarge(intent, f).recipe.spec.systems)[0];
+  assert.equal(sys.typical.win?.arch, undefined, 'the default storey is square-headed');
+  assert.ok(sys.rowOverrides?.['2']?.win?.arch, 'storey 2 is round-headed');
+  const bal = sys.rowOverrides?.['1'];
+  assert.ok(bal?.cycle?.[1]?.kind === 'balcony' && bal.cycle[0]?.kind !== 'balcony' && bal.cycle[0]?.win?.arch, 'bay 1 holds the balcony, the others the arched window');
+  // without storeys the arches are on every storey and the typical row carries them (default compose unchanged)
+  const all = validateLargeIntent({...base, walls: [{...base.walls[0], arches: {windows: 'round', band: 'voussoir'}, balconies: undefined}, ...base.walls.slice(1)]});
+  assert.ok(Object.values(fitLarge(all, f).recipe.spec.systems)[0].typical.win?.arch);
+  const {gates} = await gatesOf(intent, f);
+  assert.deepEqual(gates.filter(x => !x.pass).map(x => x.id), []);
+});

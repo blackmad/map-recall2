@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "barlaeus",
+  "pand": "0363100012169564",
+  "signature": ["voussoir-arches", "portal-lettering", "balcony", "stucco-ground", "canal-front"],
+  "walls": [
+    {"tag": "w02-218", "bearing": 218, "lengthM": 9.6, "evidence": "photo", "panoId": "TMX7316010203-002306_pano_0000_000433", "capturedAt": "2021-09-09", "checked": true, "items": [
+      {"id": "voussoir-arches", "kind": "window-shape", "where": "two middle storeys, round-headed windows under alternating brick and stone voussoirs with imposts and keystones", "approxSizeM": [8, 10], "plan": "modelled", "how": "arches.windows round, band voussoir, arches.storeys [1,2]", "seenIn": "TMX7316010203-002306_pano_0000_000433"},
+      {"id": "portal-lettering", "kind": "lettering", "where": "round-headed entrance with carved surround; BARLAEUS and GYMNASIUM in gilt capitals on the string course either side", "approxSizeM": [8, 0.5], "plan": "simplified", "how": "entrance.portal with BARLAEUS GYMNASIUM on the frieze; one line, not two words either side of the door", "seenIn": "TMX7316010203-002306_pano_0000_000433"},
+      {"id": "balcony", "kind": "balcony-ironwork", "where": "first floor over the entrance, a white turned balustrade on brackets with two pier finials", "approxSizeM": [3, 1.2], "plan": "modelled", "how": "balconies.storeys [1], bays [1], solid rail (turned balusters not drawn)", "seenIn": "TMX7316010203-002306_pano_0000_000433"},
+      {"id": "stucco-ground", "kind": "material", "where": "cream stucco ground storey with rusticated joints and square windows", "approxSizeM": [9.6, 4.5], "plan": "modelled", "how": "stoneStoreys [0]", "seenIn": "TMX7316010203-002306_pano_0000_000433"},
+      {"id": "attic-triples", "kind": "window-shape", "where": "attic: five white-framed lights in a stuccoed band under the cornice", "approxSizeM": [9, 3], "plan": "simplified", "how": "three plain windows per bay under the cornice", "seenIn": "TMX7316010203-002306_pano_0000_000433"},
+      {"id": "area-railings", "kind": "balcony-ironwork", "where": "wrought-iron fence and gate posts at the pavement", "approxSizeM": [9, 1.5], "plan": "skipped", "skip": {"reason": "too-small", "note": "bars about 2 cm"}, "seenIn": "TMX7316010203-002306_pano_0000_000433"}
+    ]},
+    {"tag": "w01-39", "bearing": 39, "lengthM": 27.4, "evidence": "photo", "panoId": "TMX7316010203-001974_pano_0000_001109", "capturedAt": "2021-01-22", "checked": true, "items": [
+      {"id": "canal-sashes", "kind": "window-shape", "where": "ten bays of white sash windows over four storeys", "approxSizeM": [26, 16], "plan": "modelled", "how": "brick-bay-grid, 5 storeys, 10 bays", "seenIn": "TMX7316010203-001974_pano_0000_001109"},
+      {"id": "canal-ground", "kind": "material", "where": "stucco ground storey with small barred windows above the quay", "approxSizeM": [27, 4], "plan": "modelled", "how": "stoneStoreys [0]", "seenIn": "TMX7316010203-001974_pano_0000_001109"},
+      {"id": "canal-attic", "kind": "window-shape", "where": "three white-framed triple-window bays in the attic", "approxSizeM": [24, 4], "plan": "simplified", "how": "plain window row; the framed bays and mansard slate are not drawn", "seenIn": "TMX7316010203-001974_pano_0000_001109"}
+    ]}
+  ],
+  "sources": [{"name": "Gemeente Amsterdam panorama", "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002306_pano_0000_000433/", "licence": "CC BY 4.0"}]
+}

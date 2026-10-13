@@ -1,0 +1,135 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "barlaeus",
+ "pandId": "0363100012169564",
+ "address": "Barlaeus Gymnasium, Weteringschans 31, Amsterdam (1866 Neo-Renaissance school, Singelgracht side behind)",
+ "sources": [
+  {
+   "id": "pano-2021-09-09-front",
+   "kind": "street-panorama",
+   "capturedAt": "2021-09-09",
+   "image": "staging/pand-reference-walls/0363100012169564/w02-218.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002306_pano_0000_000433/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2025-07-14-wing",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-14",
+   "image": "staging/pand-reference-walls/0363100012169564/w04-218.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-14_05-25-22_02128/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-01-22-canal",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "image": "staging/pand-reference-walls/0363100012169564/w01-39.jpg",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001974_pano_0000_001109/",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    31
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "plain",
+   "arches": {
+    "windows": "round",
+    "band": "voussoir",
+    "storeys": [
+     1,
+     2
+    ]
+   },
+   "entrance": {
+    "bay": 1,
+    "portal": true
+   },
+   "signage": {
+    "text": "BARLAEUS GYMNASIUM",
+    "colour": "#c8a24a",
+    "mount": "fascia"
+   },
+   "balconies": {
+    "storeys": [
+     1
+    ],
+    "rail": "solid",
+    "bays": [
+     1
+    ]
+   },
+   "frames": true,
+   "sills": true,
+   "stoneStoreys": [
+    0
+   ],
+   "cornice": true
+  },
+  {
+   "wallSurfaces": [
+    29,
+    44
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 3,
+   "ground": "system",
+   "windows": "plain",
+   "arches": {
+    "windows": "round",
+    "band": "voussoir",
+    "storeys": [
+     1,
+     2
+    ]
+   },
+   "frames": true,
+   "sills": true,
+   "stoneStoreys": [
+    0
+   ],
+   "cornice": true
+  },
+  {
+   "wallSurfaces": [
+    48,
+    55
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 5,
+   "baysPerStorey": 10,
+   "ground": "system",
+   "windows": "plain",
+   "frames": true,
+   "sills": true,
+   "stoneStoreys": [
+    0
+   ],
+   "cornice": true
+  }
+ ],
+ "otherWalls": "blank",
+ "closedBands": true,
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#7a4a3a",
+  "frame": "#e6e2d8",
+  "door": "#2a2a2a",
+  "stone": "#e0d8c4",
+  "wallMaterial": "brick"
+ },
+ "notes": [
+  "Barlaeus Gymnasium, Weteringschans 31 (pand 0363100012169564, built 1866, 65 LoD2.2 surfaces, roof max 25.4 m). Street front (SW, surfaces 31 centre, 29 and 44 wings; 2021-09-09 and 2025-07-14 panoramas): stucco ground storey, two round-headed storeys with polychrome (brick and stone alternating) voussoir arches, a square-headed attic storey of triple windows; centre bay has a round-headed portal, a first-floor balcony with a white balustrade and BARLAEUS / GYMNASIUM in gilt capitals either side of the door. Canal front (NE, surfaces 48/55; 2021-01-22): ten bays, stucco ground with small windows, three brick storeys of sashes, an attic row of triple windows in white-framed bays.",
+  "MODELLED: stucco ground (stoneStoreys [0]), round-headed windows on storeys 1 and 2 only (new arches.storeys), voussoir arch bands, balcony over the centre bay only (new balconies.bays), stone portal with the lettering on its frieze, cornice. SIMPLIFIED: BARLAEUS GYMNASIUM is one lettering on the portal frieze, not two words either side of the door; the attic triple windows are three single windows per bay; the canal front is plain sashes; the 3DBAG roof is flat bitumen over the mansard slate. SKIPPED: wrought-iron area railings and street furniture (temporary / too thin), polychrome string bands between the arched storeys (below the component), the unphotographed courtyard and rear walls (blank otherWalls)."
+ ]
+}
