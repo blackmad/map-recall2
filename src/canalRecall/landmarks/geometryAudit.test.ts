@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import {analyseRhythm, auditOpenings, auditZFight, coplanarOverlap, geometryAudit, regressions} from './geometryAudit';
+import {analyseRhythm, auditOpenings, auditZFight, coplanarOverlap, geometryAudit, nonOpeningShape, regressions} from './geometryAudit';
 import type {MaterialSoup, Opening} from './facadeCompare';
 import {zFightArea} from '../blockFace/compile';
 
@@ -214,6 +214,19 @@ test('railing posts on a parapet, a fence past the wall end and a frame-clad col
   // A 0.5 m square frame-clad column past the wall end, carrying a deck that oversails it.
   const deck = {min: [0, 3.3, 8] as V3, max: [14, 3.6, 10] as V3, mat: 'stone'};
   assert.deepEqual(auditOpenings(boxes(block, deck, {min: [12.2, 0.01, 8], max: [12.7, 3.3, 8.5], mat: 'white'})).issues, []);
+});
+
+test('shape classes: a handrail or beam is not an opening, a loose sill or a window is', () => {
+  const tris = (s: MaterialSoup) => Array.from({length: s.indices.length / 3}, (_, i) => i);
+  const beam = boxes({min: [0, 9, 7.85], max: [8, 9.08, 7.95], mat: 'frame'});
+  assert.equal(nonOpeningShape(beam, tris(beam), [0, 1]), 'post');
+  // Treehouse NDSM: the same beam rotated 11 degrees (its axis-aligned box is 1.1 x 4.9 m) is still a beam.
+  const skew = rotY(boxes({min: [0, 6.34, 0], max: [0.1, 6.42, 4.9], mat: 'frame'}), 11, 0, 0);
+  assert.equal(nonOpeningShape(skew, tris(skew), [Math.cos(11 * Math.PI / 180), Math.sin(11 * Math.PI / 180)]), 'post');
+  const sill = boxes({min: [0, 3, 8], max: [1.2, 3.1, 8.15], mat: 'white'});
+  assert.equal(nonOpeningShape(sill, tris(sill), [0, 1]), undefined);
+  const win = boxes({min: [0, 3, 8], max: [1.2, 5, 8.1], mat: 'glass'});
+  assert.equal(nonOpeningShape(win, tris(win), [0, 1]), undefined);
 });
 
 test('a window on a 45-degree wall is not mistaken for a column; one floating off it still fails', () => {

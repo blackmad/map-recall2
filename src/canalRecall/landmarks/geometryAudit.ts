@@ -295,8 +295,9 @@ function solidAt(w: WallRaster, u: number, v: number): boolean {
  *  - 'not-vertical': under 40% of its face area is vertical (tilted less than ~9 degrees), or it is a thin plate at least
  *    0.5 m deep both ways: roof glazing, skylight ribs, sawtooth lights, glass canopies, slabs and floor plates modelled in
  *    frame/glass. The check is about openings in walls.
- *  - 'post': a slender vertical bar (both plan dimensions <= 25 cm, at least 3x as tall) or a square-ish column
- *    (<= 0.8 m, plan aspect >= 0.6, at least 2x as tall): balusters, railing posts, fence pickets, pilotis. No window is that shape.
+ *  - 'post': a slender vertical bar (both plan dimensions <= 25 cm, at least 3x as tall), a square-ish column
+ *    (<= 0.8 m, plan aspect >= 0.6, at least 2x as tall) or a horizontal rail/beam (section <= 20 cm, >= 2 m long):
+ *    balusters, railing posts, fence pickets, pilotis, handrails. No window is that shape.
  * Plan dimensions are measured along the assembly's facing axis and across it, so a window on a 45-degree wall is not
  * mistaken for a square column.
  */
@@ -315,6 +316,8 @@ export function nonOpeningShape(s: MaterialSoup, tris: number[], axis: [number, 
   const dy = y1 - y0, hi = Math.max(a1 - a0, t1 - t0), lo = Math.min(a1 - a0, t1 - t0);
   if (hi <= 0.25 && dy >= 3 * hi) return 'post';
   if (hi <= 0.8 && lo >= 0.6 * hi && dy >= 2 * hi) return 'post';
+  // A handrail or beam: at most 20 cm in section and at least 2 m long (a loose sill is shorter and stays judged).
+  if (dy <= 0.2 && lo <= 0.2 && hi >= 2) return 'post';
   if (total > 0 && vert < 0.4 * total) return 'not-vertical';
   // A thin plate at least 0.5 m deep both ways (a roof-edge fascia plate, a canopy): a sill is shallower.
   if (dy <= 0.2 && lo >= 0.5) return 'not-vertical';
