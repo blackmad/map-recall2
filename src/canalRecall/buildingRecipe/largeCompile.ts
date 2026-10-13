@@ -140,6 +140,8 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, facts: Buildin
   const counts: LargeComponentCounts = {entrances: 0, halls: 0, canopies: 0, garageDoors: 0, letters: 0, cornices: 0, fascias: 0, policeStripes: 0, lamps: 0, roofPlant: recipe.roofPlant.length};
   const res = compose(recipe.set, recipe.spec, {
     recessM: recipe.recessM,
+    sealSlivers: true,
+    closedBoxes: true,
     mergeKey: wi => recipe.wallGroup[wi],
     systemFor: p => groupOf(p.index)?.specSystem ?? recipe.other.specSystem,
     wallSlotFor: p => { const g = groupOf(p.index); return !g ? 'wall' : g.system === 'curtain-wall' ? g.slots.curtain : g.slots.wall; },

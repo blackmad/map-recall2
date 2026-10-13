@@ -87,7 +87,12 @@ export async function auditFile(file: string, th: Partial<Thresholds> = {}): Pro
 }
 
 /** Per-model thresholds: a model spec may list `partyWallBearings` (compass degrees) of walls that adjoin neighbouring buildings and are genuinely blind. */
-function modelThresholds(id: string): Partial<Thresholds> {
+function modelThresholds(id: string, file?: string): Partial<Thresholds> {
+  // Large-tier recipes (`scripts/building-recipes/large.ts`) write `report.json` next to model.glb with the bearings of their party walls.
+  if (file) try {
+    const rep = JSON.parse(fs.readFileSync(path.join(path.dirname(file), 'report.json'), 'utf8'));
+    if (rep.kind === 'large' && Array.isArray(rep.partyWallBearings)) return {blankWallExemptBearings: rep.partyWallBearings};
+  } catch { /* no report next to the file */ }
   try {
     const spec = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/landmarks', `${id}-spec.json`), 'utf8'));
     const out: Partial<Thresholds> = {};
@@ -243,7 +248,7 @@ async function main(): Promise<void> {
     let report: QualityReport;
     try {
       // --only-geometry: skip the shell checks (fast baseline / ranking runs of the geometry audit alone).
-      report = flag('only-geometry') ? analyseSoup({positions: new Float32Array(0), indices: new Uint32Array(0)}) : await auditFile(t.file, modelThresholds(t.id));
+      report = flag('only-geometry') ? analyseSoup({positions: new Float32Array(0), indices: new Uint32Array(0)}) : await auditFile(t.file, modelThresholds(t.id, t.file));
       if (flag('only-geometry')) { report.findings = []; report.pass = true; }
     } catch (e) {
       report = analyseSoup({positions: new Float32Array(0), indices: new Uint32Array(0)});
