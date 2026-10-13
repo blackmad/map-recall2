@@ -134,14 +134,8 @@ one of them? answer with sameAs + overrides", drafting from scratch only when
 not. `repeat` covers one BAG parent carrying N identical modules (19th-century
 rows, double fronts); modules are laid out in one elevation today.
 
-**Large tier (planned, typed, rejected by the validator).** `kind: "large"`
-keeps the 3DBAG LoD2.2 massing as-is and selects a facade *system* per wall,
-addressed by 3DBAG wall-surface index (`walls[].wallSurfaces`): brick-bay-grid,
-ribbon-windows, curtain-wall, plinth-shopfronts, blank, plus entrance/signage
-and `roofPlant`; budget ~12k tris. To add it: `facts.ts` already decodes walls
-via `extractFacadeWallPlanes`; add `fitLarge()` emitting one library elevation
-per wall group (footprint/roof stay the survey path) and dispatch on `kind` in
-`compileBuilding`. Leidsestraat 67's ribbon-window front is the first customer.
+**Large tier.** `kind: "large"` is a separate schema and pipeline; see
+[Large tier](#large-tier-kind-large-2026-10-13) below.
 
 ## Fit rules (deterministic)
 
@@ -209,6 +203,105 @@ roof-tile trials (untracked, `artifacts/building-recipes/textures/`);
 `render.ts --textures` multiplies them under the tint. At street distance the
 brick reads as faint coursing; the roof tile reads well on steep red roofs.
 
+## Large tier (`kind: "large"`, 2026-10-13)
+
+Schools, blocks, offices, police stations, civic buildings and most landmarks:
+the 3DBAG LoD2.2 massing stays exactly as surveyed (walls and roofs), and each
+*wall group* gets a facade system and components cut into it. Budget 12k
+triangles. Code: `src/canalRecall/buildingRecipe/{intent,largeIntent,fitLarge,largeCompile,largeGates}.ts`
+on the block kit (`src/canalRecall/blockBuilding/{compose,panels,dissolve,systems,components}.ts`).
+
+```sh
+# 1. facts with LoD2.2 wall surfaces and neighbours (pand-reference cache; open data only)
+node --import tsx scripts/building-recipes/facts.ts --house=<id> --pand=<16 digits> --large
+# 2. which surfaces form which wall: table (bearing, width, eaves, top, ground, party) + plan PNG
+node --import tsx scripts/building-recipes/walls.ts --house=<id> [--min-width=2] [--detail]
+# 3. write houses/<id>/intent.json, then GLB + gates + contact sheets (photo | front-on | 3/4, + aerials)
+node --import tsx scripts/building-recipes/large.ts --house=<id>[,<id>] [--strict] [--no-render]
+npm run audit:glb -- --file=artifacts/building-recipes/<id>/model.glb
+```
+
+### Schema
+
+`walls[]` is a list of wall groups; each names the 3DBAG wall surfaces it
+owns (`wallSurfaces`, indices from `walls.ts`, never coordinates) and:
+
+| Field | Values |
+| --- | --- |
+| `system` | `brick-bay-grid` (punched windows), `ribbon-windows`, `curtain-wall`, `plinth-shopfronts`, `blank` |
+| `storeys` / `alignWith` | storey count under the group's eaves, or share an earlier group's storey lines (wings lining up with a centre block) |
+| `baysPerStorey` | bays on the group's widest panel (default: the system pitch) |
+| `ground` | `system`, `plinth-shopfronts`, `glazed`, `blank` |
+| `windows` | `plain`, `two-light`, `cross`, `transom` |
+| `blankStoreys` | storeys with no openings (a blank floor over a shop, a closed upper mass) |
+| `entrance` | `true` or `{bay, storeys, canopy}`: recessed glazed entrance; `storeys > 1` = an entrance hall |
+| `signage` | text (A–Z, 0–9, `&'-.`, ≤ 60) or `{text, colour, mount}` with mount `fascia`, `wall`, `glazing` or `canopy` |
+| `garageDoors`, `stringCourses`, `cornice`, `piers`, `balconies` | components |
+| `police` | `{stripe, lamp}`: white fascia band with diagonal blue stripes and a POLITIE plate; blue lamp by the entrance (needs an entrance) |
+| `palette` | per-group `brick`/`frame`/`stone` overrides |
+
+Top level: `otherWalls` (system for walls in no group, normally `blank`),
+`roof.material`, `roofPlant`, `palette` (`brick`, `frame`, `door`, `stone`,
+`wallMaterial`), `sources[]` (one per wall group, in order, for the contact
+sheets), `notes[]` (evidence: what each group is, what was left out and why).
+
+### Fit rules
+
+- Panels are coplanar, edge-connected LoD2.2 walls; walls of different groups
+  never merge (`mergeKey`), so one 3DBAG plane can carry a ribbon front, a stair
+  tower and a punched part side by side (Leidsestraat 67, surfaces 15/28/48).
+  In recess mode a panel's strips are dissolved into whole faces so an opening
+  may straddle 3DBAG's vertical strip seams.
+- A panel belongs to the group holding most of its area; the group's main
+  panel is its widest ground-touching panel (entrance, garage doors, bays).
+- Eaves per panel: the height reached over ≥ 85 % of its width. Storey lines
+  divide eaves minus a parapet (0.5 m flat, 0.15 m pitched); the ground storey
+  is 1.25× for shop/glazed grounds, 1.15× before 1945. Storeys above the eaves
+  (gables, towers) continue at the same height while they fit.
+- Openings are cut 0.18 m into the wall (reveals; glass and frame ring on the
+  back plane; bars 1.5 cm in front). Openings that do not fit a member face
+  fall back to flush (counted in the report).
+- Entrance: the middle bay unless `bay` is given; < 1.6 m wide openings get a
+  single door. Garage doors take bays from the right and need ≥ 2.8 m bays.
+
+### Gates (`largeGates.ts`, on the decoded GLB)
+
+≤ 12,000 triangles; finite and non-metallic; footprint IoU ≥ 0.90 against BAG
+LoD0; roof max within 0.30 m of the LoD2.2 roof max; per wall group, eaves within
+0.30 m of the LoD2.2 roof 8 cm inside the wall (p10 of 24 samples), and
+non-blank groups' storeys ground ≥ 2.3 m, upper 2.3–6.2 m (civic storeys run
+taller than houses); no floating components; ≤ 2 m genuine open edge; every
+block-kit part within 5 cm of the shell or an attached part. Then `audit:glb`
+(z-fight, see-through, holes, blank walls) on the GLB. Bands skip cut openings,
+and stand-off boxes (lamp, roof plant) are closed solids, so the components add
+no open edges. `fit-golden` covers the fitted groups of every large house.
+
+### Measured (2026-10-13)
+
+| House | Pand | Tris | Openings | Gates | `audit:glb` |
+| --- | --- | --- | --- | --- | --- |
+| `politie-van-leijenberghlaan` | 0363100012102565 | 6,123 | 240 recessed | pass (IoU 0.94, ridge Δ 0.00) | PASS 3.3 |
+| `leidsestraat-67-large` | 0363100012172459 | 1,487 | 33 recessed | pass | PASS 10.7 |
+| `de-balie-large` | 0363100012168684 | 1,178 | 13 recessed | pass | PASS 22.8 |
+| `social-history-large` | 0363100012164130 | 2,801 | 73 recessed | pass | PASS 88.6 (blank-wall warnings: the IISG really is blank) |
+
+Leidsestraat 67 was 4,324 triangles as a canal-house intent and could not show
+its ribbons; the large tier draws it in 1,487. The police station has no
+stripe, lamp, canopy or garage doors in its 2016/2019/2025 panoramas, so its
+intent does not use them; the police kit is exercised on that massing in
+`largeTier.test.ts` (and rendered at `artifacts/building-recipes/police-kit-demo/`).
+Fit/compile takes 50–170 ms per building.
+
+### Known gaps
+
+- Curved fronts (De Balie's bow, the IISG's curve) are straight in 3DBAG.
+- Arched portals, pediments, basement windows, colonnades and masts are below
+  the component grain; notes say so per house.
+- Wall groups are authored by surface index; `walls.ts` lists them, but a
+  re-extracted 3DBAG item renumbers surfaces (re-run `walls.ts`, fit-golden
+  catches the change).
+- Not installed anywhere: large recipes are not in the catalogues yet.
+
 ## Known gaps
 
 - Facade proportions are rules, not rectified measurements: window sizes,
@@ -216,8 +309,8 @@ brick reads as faint coursing; the roof tile reads well on steep red roofs.
   (pilasters, festoons, claw pieces, finials), loggias, ribbon windows and
   roller shutters are outside the canal-house schema.
 - Large/complex owners blow the 3k budget (Keizersgracht 8.5k, Leidsestraat
-  4.3k): tall 3DBAG roofs with many partitions plus ~20 bays. They need the
-  large tier or a per-kind budget.
+  4.3k): tall 3DBAG roofs with many partitions plus ~20 bays. They belong on
+  the large tier (Leidsestraat 67: 1,487 tris as `leidsestraat-67-large`).
 - The 3DBAG roof is honest but not pretty: complex partitions show as faceted
   dark planes; gable silhouettes come from the crown profile, so a 3DBAG
   ridge running parallel to the street behind a "point" gable intent gives a

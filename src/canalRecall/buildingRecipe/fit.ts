@@ -764,3 +764,6 @@ export function paletteFor(intent: CanalHouseIntent, front?: FrontIntent) {
   return {wall: swatch(p.brick), roof: roof.steep, trim: swatch(p.frame), glass: GLASS, door: swatch(p.door), stone: swatch(p.stone ?? 'sandstone'), joinery: swatch(p.frame),
     ...(p.band ? {accent: swatch(p.band)} : {}), ...(shop ? {shop: swatch(shop)} : {}), ...(awning ? {awning: swatch(awning)} : {})};
 }
+
+/** `kind: large` fit (3DBAG walls → facade systems per wall group); lives in fitLarge.ts. */
+export {fitLarge, type LargeBuildingRecipe, type LargeFitReport} from './fitLarge.ts';

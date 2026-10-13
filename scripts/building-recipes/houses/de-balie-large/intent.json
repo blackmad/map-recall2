@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "de-balie-large",
+  "pandId": "0363100012168684",
+  "address": "De Balie, Kleine-Gartmanplantsoen 10",
+  "sources": [
+    {"id": "pano-2025-07-14-02056", "kind": "street-panorama", "capturedAt": "2025-07-14", "image": "artifacts/landmark-lanes/de-balie/ref-e.jpg", "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-14_05-25-22_02056/?width=1600&fov=58&heading=243&pitch=8", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+    {"id": "pano-2025-07-14-02056-wings", "kind": "street-panorama", "capturedAt": "2025-07-14", "image": "artifacts/landmark-lanes/de-balie/ref-e.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
+  ],
+  "walls": [
+    {"wallSurfaces": [111, 6], "street": "Kleine-Gartmanplantsoen", "system": "brick-bay-grid", "storeys": 2, "baysPerStorey": 5, "windows": "cross", "entrance": {"bay": 2}, "signage": {"text": "DE BALIE", "colour": "#2e2a26"}, "stringCourses": true, "cornice": true},
+    {"wallSurfaces": [38, 54, 30, 37], "system": "brick-bay-grid", "alignWith": 0, "baysPerStorey": 1, "windows": "cross", "stringCourses": true, "cornice": true}
+  ],
+  "otherWalls": "blank",
+  "roof": {"material": "slate"},
+  "palette": {"brick": "sandstone", "frame": "white-painted", "door": "#3b2f28", "stone": "cream-painted", "wallMaterial": "stucco"},
+  "notes": [
+    "Rhythm (scripts/landmarks/de-balie-elevations.json skeleton + research rework 2026-10-10): pale sandstone, two tall storeys over a barred basement, seven window axes: a wide mullioned bay in each stepped-gable wing (surfaces 30/37 and 38/54, 6.3 m) and five bays in the centre (surface 111, 18.8 m) with the arched portal in the middle bay, string course between the storeys, crowning cornice.",
+    "Gables, dormers and the steep slate hip roof are the 3DBAG LoD2.2 massing; the wing gables' upper floor lines reach into the gable outline, so an attic window appears where it fits (one per gable in the photo).",
+    "The front is slightly bowed in reality; the 3DBAG walls are straight. The basement windows and the portal's pediment are below the component library's grain (portal = recessed entrance with a DE BALIE fascia board as on the photo).",
+    "Other walls (Leidseplein side, rear) are blank: no reference photo of them in the skeleton."
+  ]
+}
