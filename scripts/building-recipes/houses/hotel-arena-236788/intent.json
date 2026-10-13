@@ -49,7 +49,11 @@
    "deepBars": true,
    "sills": false,
    "windows": "cross",
-   "stringCourses": true
+   "stringCourses": true,
+   "arches": {
+    "ground": "segmental",
+    "band": "brick"
+   }
   },
   {
    "wallSurfaces": [
@@ -80,7 +84,7 @@
     723,
     750
    ],
-   "system": "ribbon-windows",
+   "system": "curtain-wall",
    "storeys": 3,
    "baysPerStorey": 7,
    "ground": "glazed",
@@ -90,8 +94,7 @@
     "brick": "#9a5a40",
     "frame": "#2a2e30",
     "stone": "#2a2e30"
-   },
-   "windows": "low"
+   }
   }
  ],
  "otherWalls": "blank",
@@ -106,8 +109,9 @@
  },
  "notes": [
   "Hotel Arena, 's-Gravesandestraat 55 / Sint Jansstraat (BAG pand 0363100012236788: built 1890; 38 dwellings, a hotel, an assembly and an office unit; 4,757 m2): the former Roman Catholic orphanage on the Oosterpark, converted to the Hotel Arena in 2000 and extended on the south side in the 2010s. Three walls are photographed: the old north wings (w04-341, panorama 2020-04-24: red brick, ground floor of segmental-arched cross windows in white frames, upper floor of tall white-surrounded windows, pale stone string courses), the new hotel wing (w03-162, 2021-05-12: buff horizontally-ribbed brick, deep-reveal dark window openings, a glazed curtain-wall attic, the Hotel Arena entrance gate wall in front) and the glazed garden pavilion on the south (w01-161, 2022-03-23: a glass ground floor under a thin projecting roof with a glass box above and the old slate roof with a timber gable behind).",
-  "Modelled: the old north wings (panels 210, 232, 56, all 3 storeys, red brick, cross windows with white frames, stone string courses; the segmental arches over the ground windows are not drawn because arched openings with frames leave coplanar frame/glass overlap here) as one group; the new wing (panels 2 and 373: 4 storeys, buff brick, plain deep-reveal windows) and the garden pavilion (panels 0 and 314) as a curtain-wall group. Roofs and every unlisted wall are the 3DBAG LoD2.2 shell in the old-brick colour.",
+  "Modelled: the old north wings (panels 210, 232, 56, all 3 storeys, red brick, cross windows with white frames, stone string courses; segmental-arched ground windows under a brick arch band with stone imposts (layered kit); the photographed relieving arches have a brick tympanum over a flat-headed window and a stone keystone, drawn as glazed segmental heads) as one group; the new wing (panels 2 and 373: 4 storeys, buff brick, plain deep-reveal windows) and the garden pavilion (panels 0 and 314) as a curtain-wall group. Roofs and every unlisted wall are the 3DBAG LoD2.2 shell in the old-brick colour.",
   "Simplified: the new wing's glass attic is the same window grid as the floors below (the kit has no per-storey system switch), the ribbed buff brick is plain wall colour, the pavilion's thin roof plate and the timber gable are 3DBAG roof geometry only. Not drawn: the entrance gate wall with HOTEL ARENA lettering (a free-standing wall outside the pand), the cast-iron fence on the north side, the round chapel apse (curved wall facets keep the 3DBAG shell)."
  ],
- "closedBands": true
+ "closedBands": true,
+ "layeredKit": true
 }

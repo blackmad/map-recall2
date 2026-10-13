@@ -35740,11 +35740,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012202277",
       "name": "Centrale Groothandelsmarkt 190, Amsterdam (Food Center, Jan van Galenstraat): 1935 wholesale market hall with loading docks (Miedema AGF, Gebr. de Mooij)",
-      "hash": "6a796c7985ef82e7d65a20a6d1bc1cc59194365ae3d83da0ca3316e43d4fc66e",
-      "sha256": "6a796c7985ef82e7d65a20a6d1bc1cc59194365ae3d83da0ca3316e43d4fc66e",
-      "bytes": 205024,
-      "triangles": 2544,
-      "materials": 13,
+      "hash": "67e6266b1607f2921326e4d516fdbf2b0883546819e2bcdd7b38c4df4ec37daa",
+      "sha256": "67e6266b1607f2921326e4d516fdbf2b0883546819e2bcdd7b38c4df4ec37daa",
+      "bytes": 231240,
+      "triangles": 2916,
+      "materials": 14,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -35952,26 +35952,26 @@
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
         "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Modelled: west dock front as two groups: the two-storey office block (surfaces 9, 10, 49 of panel 7 and panel 0) with blue-framed two-light windows, and the single-storey dock block (surface 13 of panel 7, 5.5 m) of six tall yellow-framed transom openings with the name MIEDEMA AGF; east arcade front (panels 65, 63, 18) as a pale concrete face with a glazed ground floor, a closed upper storey and the Gebr. de Mooij lettering on the cornice; east gable (panel 33) as a blank white wall.",
-        "Simplified: the yellow roller doors are tall transom openings with yellow frames (the kit's garage doors and portals left 2.4-7 m2 of coplanar frame/door overlap in this wall, so they are not used), the blue office window blocks and the corner-cut canopy are plain window rows, the shop signs along the arcade are not drawn (only the largest name), the yellow canopy struts are not drawn. Not modelled: the north and south walls and the long west wall behind the dock block (no panorama, or hidden by the dock block), roof plant and the brick tower."
+        "Modelled: west dock front as two groups: the two-storey office block (surfaces 9, 10, 49 of panel 7 and panel 0) with blue-framed two-light windows, and the single-storey dock block (surface 13 of panel 7, 5.5 m) of six yellow sectional dock doors with the name MIEDEMA AGF; east arcade front (panels 65, 63, 18) as a pale concrete face with a glazed ground floor, a closed upper storey and the Gebr. de Mooij lettering on the cornice; east gable (panel 33) as a blank white wall.",
+        "Simplified: the yellow roller doors are recessed sectional garage doors (layered kit: leaf, ribs and frame on separate sheet layers), the blue office window blocks and the corner-cut canopy are plain window rows, the shop signs along the arcade are not drawn (only the largest name), the yellow canopy struts are not drawn. Not modelled: the north and south walls and the long west wall behind the dock block (no panorama, or hidden by the dock block), roof plant and the brick tower."
       ],
       "reviewState": "large-recipe-gates-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012202277",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T22:55:36.566Z"
+      "updatedAt": "2026-10-13T23:40:57.424Z"
     },
     {
       "id": "ordinary-0363100012236788",
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012236788",
       "name": "'s-Gravesandestraat 55 (Hotel Arena), Amsterdam-Oost: 1890 former orphanage (Roman Catholic Burgerweeshuis) with 2000s hotel wings, red brick with a glazed pavilion",
-      "hash": "292d366148a074fae392cd6d35faa797498c99cfebd4c57f53a4465f08f3e74d",
-      "sha256": "292d366148a074fae392cd6d35faa797498c99cfebd4c57f53a4465f08f3e74d",
-      "bytes": 637100,
-      "triangles": 7846,
-      "materials": 10,
+      "hash": "3250eb3b48cbd7ecd64b33ad4c8b03d07547fdb54604620baf318d60d9aade6c",
+      "sha256": "3250eb3b48cbd7ecd64b33ad4c8b03d07547fdb54604620baf318d60d9aade6c",
+      "bytes": 668184,
+      "triangles": 8000,
+      "materials": 11,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -36747,7 +36747,7 @@
         "wallGroups": [
           "brick-bay-grid 3st 7b",
           "brick-bay-grid 4st 6b",
-          "ribbon-windows 3st 7b"
+          "curtain-wall 3st 7b"
         ]
       },
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
@@ -36759,7 +36759,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236788",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T22:59:06.457Z"
+      "updatedAt": "2026-10-13T23:40:56.038Z"
     },
     {
       "id": "ordinary-0363100012169214",
@@ -38079,10 +38079,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012186093",
       "name": "Plantage Middenlaan 52, Amsterdam (Plantage, former Artis-side block): 2022 courtyard housing block of 294 homes, brick piers with stone balcony slabs and a zinc mansard",
-      "hash": "220ae7c6b84b7c70831414ffa8b8551bdd4a50532741dd69e1502038c95ae3ba",
-      "sha256": "220ae7c6b84b7c70831414ffa8b8551bdd4a50532741dd69e1502038c95ae3ba",
-      "bytes": 768004,
-      "triangles": 10533,
+      "hash": "598c0e67434e31af46e8d1be847bf1a0b87a9cf1e8bdfc865e6b5f411413d228",
+      "sha256": "598c0e67434e31af46e8d1be847bf1a0b87a9cf1e8bdfc865e6b5f411413d228",
+      "bytes": 872116,
+      "triangles": 11997,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -38090,7 +38090,7 @@
         "min": [
           -64.61,
           -9.032,
-          -54.986
+          -55.819
         ],
         "max": [
           75.266,
@@ -38205,14 +38205,14 @@
       "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
       "limitations": [
         "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
-        "Simplified: the moulded stone slab edges are plain balcony slabs, the cantilevered stone balcony slabs are not drawn (balconies stacked 21k triangles and left 20 m2 of frame/glass z-fight at the 12k budget), the stone belt course over the ground floor is not drawn (the kit only offers a course on every storey line, which reads as a grid), the ground-floor double doors and recessed loggias are plain ground windows, the dormers are the 3DBAG roof geometry. Not modelled: the south-west and south-east walls and the inner courtyard walls other than panel 98 (no current photograph)."
+        "Simplified: the moulded stone slab edges are plain balcony slabs, balconies (layered kit: one slab, rail and pair of cheeks per balcony) are drawn on the street front only, in every third bay on storeys 2-4 as in w02-30; the courtyard and north-west balconies would exceed the 12k budget (11,997 triangles with the street front alone), the stone belt course over the ground floor is not drawn (the kit only offers a course on every storey line, which reads as a grid), the ground-floor double doors and recessed loggias are plain ground windows, the dormers are the 3DBAG roof geometry. Not modelled: the south-west and south-east walls and the inner courtyard walls other than panel 98 (no current photograph)."
       ],
       "reviewState": "large-recipe-gates-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012186093",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:09:40.061Z"
+      "updatedAt": "2026-10-13T23:40:57.765Z"
     },
     {
       "id": "ordinary-0363100012186003",
@@ -38489,11 +38489,11 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012202381",
       "name": "Centrale Groothandelsmarkt 114, Amsterdam (Food Center, Jan van Galenstraat): 1935 single-storey wholesale market hall of 13 trading units under a deep sign canopy",
-      "hash": "ae29886e60e92e64e04d15f66ff063e53adea5d5bba04c148a929e1ac35b981e",
-      "sha256": "ae29886e60e92e64e04d15f66ff063e53adea5d5bba04c148a929e1ac35b981e",
-      "bytes": 124756,
-      "triangles": 1581,
-      "materials": 8,
+      "hash": "caa364e6857776ca526b20348d9b96be337aa6ded7b54635c738bb20e8dae883",
+      "sha256": "caa364e6857776ca526b20348d9b96be337aa6ded7b54635c738bb20e8dae883",
+      "bytes": 139944,
+      "triangles": 1791,
+      "materials": 9,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -38617,14 +38617,14 @@
         "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
         "Centrale Groothandelsmarkt 114 (BAG: built 1935; 13 shop units, 5,998 m2 footprint, 7.4 m roof): a long single-storey market hall of the wholesale fruit-and-vegetable market. Three walls are photographed: the west front (w02-258, panorama 2022-04-29: concrete columns carrying a deep canopy and sign fascia over green roller doors, signs Arie Rustenburg Groenten & Fruit, Food Destination, R. van Mourik), the east wall (w01-78, 2021-01-14: a long curved concrete wall, blank) and the south-west end wall (w04-204, 2022-04-29: buff brick base under brown corrugated cladding with two roller doors).",
         "Modelled: the west front (panels 13 and 31) as a two-storey group with a glazed ground floor under a closed fascia storey and a cornice carrying the name ARIE RUSTENBURG GROENTEN & FRUIT; the 191 m east wall (panel 9) as a blank concrete wall; the south-west end (panel 34) as a blank brown-clad wall. Roof is the 3DBAG LoD2.2 shell.",
-        "Simplified: the roller doors are one glazed ground row (the kit's garage doors and portals left z-fight at this size), the canopy is the cornice band, the sign boards other than the first are not drawn, the buff brick base of the south-west wall is the cladding brown. Not modelled: the north and south ends and the short canopy returns (no useful view)."
+        "Simplified: four of the roller doors are recessed garage doors at the right end of the arcade and the rest of the ground storey is one glazed row (door positions not counted from the photograph), the canopy is the cornice band, the sign boards other than the first are not drawn, the buff brick base of the south-west wall is the cladding brown. Not modelled: the north and south ends and the short canopy returns (no useful view)."
       ],
       "reviewState": "large-recipe-gates-pass",
       "sourceUrls": [
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012202381",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:11:29.475Z"
+      "updatedAt": "2026-10-13T23:40:57.191Z"
     },
     {
       "id": "ordinary-0363100012100112",
