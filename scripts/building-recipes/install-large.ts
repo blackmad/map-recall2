@@ -73,7 +73,9 @@ if (process.argv[1]?.endsWith('install-large.ts')) {
       if (install) {
         await fs.mkdir(MODELS, {recursive: true});
         await fs.copyFile(glbPath, path.join(MODELS, `recipe-large-${id}.glb`));
-        catalogue.models = [...catalogue.models.filter((m: any) => m.id !== entry.id), entry];
+        // replace in place (a re-install keeps the catalogue order, so its diff is the one entry), else append
+        const at = catalogue.models.findIndex((m: any) => m.id === entry.id);
+        if (at >= 0) catalogue.models[at] = entry; else catalogue.models.push(entry);
       }
       console.log(`${id}: ${entry.id} ${entry.triangles} tris, anchor ${entry.anchor.join(',')}, ${replaced ? `replaces ${replaced.id} (${replaced.modelUrl}, ${replaced.triangles} tris)` : 'new entry'} -> ${path.join(ARTIFACTS, id, 'catalogue-entry.json')}`);
     }
