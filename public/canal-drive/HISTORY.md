@@ -1,5 +1,42 @@
 # Canal Recall — what is built
 
+## Z-fighting found by audit, not by eye (2026-10-13)
+
+User: "is it possible to automatically find instances of texture fighting
+in our custom GLBs like this?" (Centraal Station's shed roofs). Yes
+(`glb/zfight-audit-20261013`, Opus): `geometryAudit.ts` gains a
+coplanar-overlap metric that measures the smaller face's corners against
+the larger face's plane and hashes by quantised normal, 2 m cell and
+offset, in bands: coplanar (< 2 cm, `zfight-m2`), tight (2–3 cm,
+`zfight-tight-m2`, the band that bleeds at distance), near (2–8 cm,
+`zfight-near-m2`, informational) and same-material doubled faces. It
+labels a patch by its material pair and reports the worst spot, so a
+builder fix is a coordinate, not a hunt. Gate: a new export fails above
+0.5 m² of coplanar + tight overlap; recorded models may not grow.
+`scripts/landmarks/zfight-survey.ts` ranks all 390 models (311 landmarks,
+79 ordinary) into `artifacts/zfight-audit/report.md`: 314 have visible
+fighting, 286 above the new-export gate; the worst class is "window frame
+2 cm proud of an unholed wall" (Vriesseveem 9 11,962 m², HvA Wibautstraat
+10,420 m², Kohnstammhuis 6,703 m²). `zfight-validate.ts` renders a model
+with MapLibre's projection (near = distance / 75) and measures how much of
+the rear face bleeds through; calibration: 2 cm bleeds 9–17 % at 900–1800 m,
+3 cm and more not until ~2.7 km. So 3 cm is the minimum clearance; 5 cm is
+what the snapper now uses (`snapDetachedParts` rests sheets 5 cm off their
+host, was 2.5 cm).
+
+Fixed in this lane: Centraal Station (1,834 → 2.2 m²; the shed arches are a
+material split of the roof sheet, gable prisms end inside the outer one,
+hip bases face down, north windows un-mirrored), the venue/music/cinema
+builders (22 brick-cap-plus-slate-sheet pairs: Studio K 2,297 → 39 m²,
+LAB111 574 → 3, OT301 472 → 0.6, OCCII, Cavia, Badhuistheater), RAI (3,694
+→ 1.4), De Piramides (710 → 0), Grasweg 116 (1,452 → 0), Stadhuis (328 →
+28). Integrator: the baseline merged three ways with batch 3 (disjoint GLB
+sets); the 14 batch-3 models were re-baselined under the new metric. The
+rest of the ranked list is a board item: the "frame 2 cm proud" class is a
+builder-library fix (hole the wall or lift the frame 3 cm), not per-model
+work.
+
+
 ## One world-fixed sun and the mood pass (2026-10-13)
 
 User: "sun should be fixed, and the city is dour". Cause of the moving sun

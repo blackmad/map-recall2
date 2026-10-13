@@ -687,6 +687,15 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Z-fight survey backlog** (`artifacts/zfight-audit/report.md` in the lane,
+  regenerate with `scripts/landmarks/zfight-survey.ts`): 286 of 390 models
+  above the 0.5 m² new-export gate. Top class is "window frame 2 cm proud of
+  an unholed wall" (Vriesseveem 9, HvA Wibautstraat, Kohnstammhuis, HvA
+  Rhijnspoorplein, Conservatorium, De Bazel, Amstel Hotel, Allard Pierson):
+  fix once in the shared window/frame helper (lift 3 cm or hole the wall),
+  re-export, lower baselines. Then "flush cladding band on a wall" (Jacob
+  Bontiusplaats 9, Valley, the Haparandaweg blocks, Pllek, Frascati's
+  doubled brick face).
 - **Highlight: pick one (user decision)**. Three candidates are live behind
   `?highlight=a|b|c` with sheets in `docs/reports/highlight-redesign-20261013/`;
   the lane recommends a (outline + ground ring + beacon). Open: the outline
