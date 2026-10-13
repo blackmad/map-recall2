@@ -112,7 +112,7 @@ export function addEndWallRelief(b: BuildingTools) {
   const H0 = END_WALL.storey - 0.25;
   box(len / 2, 0, 0, len - 0.3, H0, 0.04, 'dark');
   box(len / 2, H0, 0, len, 0.32, 0.9, 'stone');
-  for (const s of [0.45, 3.6, 6.8, 10.0, 13.2]) put(new T.CylinderGeometry(0.24, 0.24, H0, 16), s, H0 / 2, 0.6, 'white');
+  for (const s of [0.45, 3.6, 6.8, 10.0, 13.2]) put(new T.CylinderGeometry(0.24, 0.24, H0, 16), s, H0 / 2, 0.6, 'concrete');   // structural columns: concrete, not opening trim
 
   // White steel ribbons wrapping round from the Marnixstraat front, storeys 1-4, on the first 5.4 m from the corner.
   for (let k = 1; k <= 4; k++) {
