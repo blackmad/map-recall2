@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-11",
+ "generated": "2026-10-13",
  "note": "Existing geometry-audit offenders (src/canalRecall/landmarks/geometryAudit.ts). audit:glb fails a model only when a gated count (opening-floating-fail, opening-overhang-fail, zfight-m2) grows past its entry. Lower an entry when you fix a model; never raise one to pass.",
  "reasons": {
   "blankenstraat-15": "First record: model landed after the 2026-10-10 baseline with these defects present (no earlier count to regress from); fix the model and lower the entry.",
@@ -1311,11 +1311,11 @@
    "window-misaligned": 0
   },
   "haparandaweg-8-338": {
-   "opening-floating": 428,
-   "opening-floating-fail": 378,
-   "opening-overhang": 137,
-   "opening-overhang-fail": 137,
-   "opening-buried": 9,
+   "opening-floating": 50,
+   "opening-floating-fail": 0,
+   "opening-overhang": 0,
+   "opening-overhang-fail": 0,
+   "opening-buried": 0,
    "zfight-m2": 30.7,
    "zfight-near-m2": 34.1,
    "window-mismatch": 294,
