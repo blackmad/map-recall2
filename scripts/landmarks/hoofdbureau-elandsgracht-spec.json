@@ -1,0 +1,43 @@
+{
+  "id": "hoofdbureau-elandsgracht",
+  "name": "Hoofdbureau van Politie",
+  "landmarkId": "n11117002807",
+  "modelUrl": "./models/hoofdbureau-elandsgracht.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012169550"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [4.87779, 52.3677401],
+    "headingDegrees": 0,
+    "lengthMetres": 163.7,
+    "widthMetres": 82.7
+  },
+  "surveyed": {
+    "anchor": [4.87779, 52.3677401],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012169550 footprint centroid and 3DBAG LoD2.2 walls and roofs verbatim; native east/south metres from the anchor (the large-tier frame, origin = BAG footprint centroid)."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#7d5446",
+    "stone": "#e6e0d2",
+    "frame": "#f0ece2",
+    "glass": "#5f7886",
+    "dark": "#2b2e33",
+    "slate": "#5a5651",
+    "blue": "#1f4e9c",
+    "white": "#ebe8df",
+    "red": "#a77b6a",
+    "gold": "#d9a521"
+  },
+  "attribution": {
+    "title": "Hoofdbureau van Politie, Elandsgracht 117",
+    "author": "Map Recall",
+    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169550",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry: 3DBAG LoD2.2 walls and roofs (CC BY 4.0) with block-kit facade systems cut into the wall groups, plus hand-modelled window hoods, entrance canopy and signage plate read from Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or meshes imported."
+  }
+}
