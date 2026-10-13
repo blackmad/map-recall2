@@ -331,6 +331,44 @@ recipe's mesh with `large-mesh-golden.json` (fit-golden covers only the fit).
 The Entrepotdok wall is 156 m: at 12k triangles only its canal front and one
 rear panel get openings; the rest is blank (notes list what the photos show).
 
+### Components the dominant batches asked for (2026-10-13)
+
+All opt-in per wall group; default compose output is byte-identical (fit-golden, block-kit-installed, every
+large mesh not re-authored). Every new solid stands on the sheet layers (`SHEET_PITCH` 4.5 cm: facings 9 cm,
+pilasters 13.5, their bands 18) or is a closed solid (`solid()` in compose.ts for tilted/tapered hexahedra);
+lettering keeps the kit's 1.2 cm standoff (`LETTER_STANDOFF`) so its edges stay inside the open-edge gate.
+
+| Intent | What it draws | Code |
+| --- | --- | --- |
+| `curve: true` | the group's facets linked end to end (a curve 3DBAG keeps as narrow planes) carry one bay rhythm along the arc; axes nudged into a facet, phase chosen for least nudging | `blockBuilding/curve.ts`, `System.bays.centres` |
+| `wallMaterial` | the group's wall exported as `brick`, `stucco`, `stone` or `render` (stucco slot, white unless the group's `palette.brick` says otherwise) | `fitLarge` `slotMaterial` |
+| `tiltedBays` | box windows: sill, head and cheeks as closed solids leaning from 42 cm off the wall at the sill to 12 cm at the head; `{every, first}` / `{bays}` per `storeys`, or a list (one pattern per storey) | `WinParams.tilt`, `TILT_FRAME` |
+| `screen: true` | perforated-brick screen: lattice posts (13.5 cm) at bay joints and rails (9 cm) at deck lines, glass-block perforations in one bay of three | `drawScreen`, `SCREEN` |
+| `entrance.portal` | carved portal: jambs, entablature (lettered with the signage), pediment block (tympanum), lozenge crest in a darker stone | `drawPortal`, `PORTAL` |
+| `signage.mount: "cornice"` | the name on the cornice face (or a frieze board where there is no cornice) | `drawNameBand` |
+| `stoneStoreys` | storeys faced in the group's stone round their openings (granite base, ashlar attic); not with `stringCourses` | `drawStoneStorey`, `FACING_OUT` |
+| `pilasters: true` | banded two-tone stone pilasters at both ends of every panel | `drawPilasters` |
+| `lantern: true` | glazed roof lantern seated on the highest roof point behind the main panel | `placeLantern`, `drawLantern` |
+
+Top-level `closedBands: true` also closes string-course ends where a band stops (Damrak 77 at the Beurspassage
+arch: 2.0 m open edge before). Tools: `runs.ts --house=<id>` lists curved runs and BAG LoD0 arcs (tells a curve
+3DBAG keeps from one it straightens), `party.ts --house=<id> --panel=<n>` shows why a panel counts as party wall,
+`closeup.ts --house=<id> --group=<n> [--at --span --panel --v]` renders a wall group close-up.
+
+| House | Tris before → after | Components used | Gates | `audit:glb --file` |
+| --- | --- | --- | --- | --- |
+| `beursplein-5-165051` | 4,829 → 8,557 | stoneStoreys, pilasters, lantern, portal (lettered), wallMaterial stone, closedBands, cross windows | pass | PASS (zfight-near only) |
+| `warmoesstraat-garage-165687` | 8,161 → 8,623 | screen on three groups, bays re-counted to the 1.5 m lattice | pass | PASS |
+| `engelsesteeg-165098` | 6,760 → 7,624 | tiltedBays per storey from w02-272, 5 storeys, stone plinth | pass | PASS (zfight-near 2.3 m², unchanged) |
+| `damrak-77-165746` | 2,952 → 3,018 | stringCourses + closedBands | pass | PASS (zfight-near: 5 cm courses) |
+| `oude-turfmarkt-168172` | 9,362 → 9,552 | name on the cornice, wallMaterial render | pass | PASS |
+| `westerdok-186086` | 11,434 → 11,434 | curve on the east front (11 facets, 65 m) | pass | PASS |
+
+Not applicable: Oudezijds Achterburgwal 233's curve is only a 3.1 m ground wall in 3DBAG (the upper wing is one
+straight plane) and its baroque gateway lies on panel 266, which one probe marks party wall (neighbour
+0363100012180206 at 15 % of its width), so no group can carry the portal there; Engelsesteeg's curved corner is
+straight in 3DBAG.
+
 ### BAG tiles (`?bagTiles=1`): review and default-on recommendation (2026-10-13)
 
 State after the ground-default lane: **recommend default-on for desktop and
@@ -435,7 +473,7 @@ before the bundles are rebuilt. iPhone measurement is still pending.
   (`roofSlots.ts` leaves them unmeasured below a confidence floor). Flat vs
   pitched comes from 3DBAG, not the photo, so a pitched roof re-tiled flat
   since the lidar keeps its pitch.
-- Curved fronts (De Balie's bow, the IISG's curve) are straight in 3DBAG.
+- Curved fronts (De Balie's bow, the IISG's curve) are straight in 3DBAG; where 3DBAG keeps a curve as facets, `curve: true` carries the rhythm round it (Westerdok 536).
 - Pediments, basement windows, colonnades and masts are below the component
   grain; notes say so per house. Arched openings: see above.
 - Wall groups are authored by surface index; `walls.ts` lists them, but a
