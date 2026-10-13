@@ -37,9 +37,9 @@
  *
  * Flag off, nothing here runs: every adapter keeps its previous code path.
  */
-import { SLOT_CELL, SLOT_TILE_M, cityTint, hexToRgb, type MaterialSlot, type SlotCell } from './palette.ts';
-import { inferMaterialSlot, isMaterialSlot, INFERRED_SLOT_SOURCE } from './materialSlotInference.ts';
-import { paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, roofCanvas } from './slotCells.ts';
+import { CITY_BRICK_LIGHTNESS, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLOT_CELL, SLOT_TILE_M, cityTint, hexToRgb, hslToRgb, rgbToHex, rgbToHsl, type MaterialSlot, type SlotCell } from './palette.ts';
+import { inferMaterialSlot, isMaterialSlot, isWhiteWord, INFERRED_SLOT_SOURCE } from './materialSlotInference.ts';
+import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
 
 // ---------------------------------------------------------------------------
 // Flag
@@ -60,8 +60,11 @@ export function cityLookEnabled(search?: string): boolean {
 // The slot table: which layer each slot samples, at what scale and gain
 // ---------------------------------------------------------------------------
 
+/** Cells only the city look paints: the 20th-century brick and the smooth white render (variants, chosen per mesh). */
+export type SlotVariantCell = 'brick20' | 'whiteStucco';
+
 export type SlotLayer = {
-  cell: SlotCell | 'white';
+  cell: SlotCell | 'white' | SlotVariantCell;
   /** Texture repeat in metres (glass: 0..1 per pane on authored UVs). */
   tileM: number;
   /** Clamp authored UVs to one tile (glass panes); box-projected UVs repeat. */
@@ -76,25 +79,66 @@ export type SlotLayer = {
   skyTint: boolean;
 };
 
+/**
+ * Lit city look only: the level of tinted walls and roofs under the shared rig.
+ * Slot tints pass through `cityTint`, which lifts a mid-grey `#808080` brick to
+ * the city's brick lightness (L 0.57), and the lifted cell is gained back to a
+ * mean of 1 (`litWallGain`), so the reference brick read 117 / 107 / 78 (south /
+ * west / north), above docs/LOOK.md's 95–110 sun-side band. 0.9 on the cell (sRGB,
+ * before linearisation) lands it at ~105 / 97 / 70. Applied to the facade
+ * chunks' tinted texels (walls and roofs: `wallGain × level`) and to the slot
+ * layers they correspond to (brick, stucco, stone, roofs), so parity holds;
+ * frames, paint, doors and glass (untinted in the bay cells) keep their level.
+ * The unlit (default frame) variant is the city's baked look and is unchanged.
+ */
+export const CITY_LIT_LEVEL = 0.9;
+/** The photo look's chunk wall gain (palette.ts `litWallGain`): roof slots follow the chunk roofs, which take it too. */
+const LIFT = 255 / PHOTO_WALL_CELL_MEAN;
+/**
+ * Lit, every wall cell is gained to a mean of 1 so the wall shows its tint, as
+ * the brick cell is (gallery review 2026-10-13: stone at its cell mean 228/255
+ * and the level read 17–20 % under flag off on stone gates and fronts:
+ * Rasphuispoort, Haarlemmerpoort, Scheepvaartmuseum). Means of the painted
+ * cells in slotCells.ts.
+ */
+const STONE_GAIN = 255 / 228, STUCCO_GAIN = 255 / 243, WHITE_STUCCO_GAIN = 255 / 246;
+
 /** Layer order after the bay cells. Append only: the ordinal is written into slot meshes. */
 export const SLOT_LAYERS: readonly SlotLayer[] = [
-  { cell: 'brick', tileM: SLOT_TILE_M.brick, clampUv: false, litGain: 255 / 225, skyTint: false },
-  { cell: 'stucco', tileM: SLOT_TILE_M.stucco, clampUv: false, litGain: 1, skyTint: false },
-  { cell: 'stone', tileM: SLOT_TILE_M.stone, clampUv: false, litGain: 1, skyTint: false },
+  { cell: 'brick', tileM: SLOT_TILE_M.brick, clampUv: false, litGain: LIFT * CITY_LIT_LEVEL, skyTint: false },
+  { cell: 'stucco', tileM: SLOT_TILE_M.stucco, clampUv: false, litGain: STUCCO_GAIN * CITY_LIT_LEVEL, skyTint: false },
+  { cell: 'stone', tileM: SLOT_TILE_M.stone, clampUv: false, litGain: STONE_GAIN * CITY_LIT_LEVEL, skyTint: false },
   { cell: 'white', tileM: 1, clampUv: false, litGain: 1, skyTint: false },
   { cell: 'door', tileM: SLOT_TILE_M.door, clampUv: false, litGain: 1, skyTint: false },
   { cell: 'glass', tileM: SLOT_TILE_M.glass, clampUv: true, litGain: 1, skyTint: true },
-  { cell: 'tile', tileM: SLOT_TILE_M.roofTile, clampUv: false, litGain: 1, skyTint: false },
-  { cell: 'slate', tileM: SLOT_TILE_M.slate, clampUv: false, litGain: 1, skyTint: false },
-  { cell: 'flat', tileM: SLOT_TILE_M.bitumen, clampUv: false, litGain: 1, skyTint: false },
+  { cell: 'tile', tileM: SLOT_TILE_M.roofTile, clampUv: false, litGain: LIFT * CITY_LIT_LEVEL, skyTint: false },
+  { cell: 'slate', tileM: SLOT_TILE_M.slate, clampUv: false, litGain: LIFT * CITY_LIT_LEVEL, skyTint: false },
+  { cell: 'flat', tileM: SLOT_TILE_M.bitumen, clampUv: false, litGain: LIFT * CITY_LIT_LEVEL, skyTint: false },
+  // 2026-10-13 review: variants. The 20th-century brick is painted lighter (mean BRICK20_CELL_MEAN) and keeps the
+  // canal brick's gain, so it renders lighter by that ratio; the white render is gained to its mean like stucco.
+  { cell: 'brick20', tileM: SLOT_TILE_M.brick, clampUv: false, litGain: LIFT * CITY_LIT_LEVEL, skyTint: false },
+  { cell: 'whiteStucco', tileM: SLOT_TILE_M.stucco, clampUv: false, litGain: WHITE_STUCCO_GAIN * CITY_LIT_LEVEL, skyTint: false },
 ];
 export const SLOT_LAYER_COUNT = SLOT_LAYERS.length;
 
-const CELL_ORDINAL: Readonly<Record<SlotCell | 'white', number>> = Object.fromEntries(SLOT_LAYERS.map((l, i) => [l.cell, i])) as any;
+const CELL_ORDINAL: Readonly<Record<SlotLayer['cell'], number>> = Object.fromEntries(SLOT_LAYERS.map((l, i) => [l.cell, i])) as any;
+
+/** What picks a slot's variant layer. */
+export type SlotVariantHints = {
+  /** BAG construction year of the building: brick from PERIOD_FROM.school (1915, docs/LOOK.md era scheme) on is the 20th-century brick. */
+  year?: number | null;
+  /** The material is named for white (`white`, `cream`, `ivory`): the smooth white render rather than the grained stucco. */
+  white?: boolean;
+};
+
+/** Brick from this year on samples the 20th-century brick (docs/LOOK.md "One era scheme"). */
+export const BRICK20_FROM = PERIOD_FROM.school;
 
 /** The slot layer (ordinal after the bay cells) a material slot samples. Frame and paint read plain white. */
-export function slotLayerOf(slot: MaterialSlot): number {
+export function slotLayerOf(slot: MaterialSlot, hints: SlotVariantHints = {}): number {
   const cell = SLOT_CELL[slot];
+  if (cell === 'brick' && typeof hints.year === 'number' && hints.year >= BRICK20_FROM) return CELL_ORDINAL.brick20;
+  if (cell === 'stucco' && hints.white) return CELL_ORDINAL.whiteStucco;
   return cell === 'frame' ? CELL_ORDINAL.white : CELL_ORDINAL[cell];
 }
 
@@ -108,9 +152,73 @@ export function slotLayerBytes(size: number): number {
   return Math.round(SLOT_LAYER_COUNT * size * size * 6 * 4 / 3);
 }
 
+/**
+ * Light slate keeps its lightness (gallery review 2026-10-13). `cityRoofTint`
+ * maps every slate onto three city tones, the lightest L 0.38 (#5a6068), and the
+ * slate cell darkens by its mean (~0.8). Landmark builders paint lead, zinc and
+ * pale slate roofs L 0.45–0.58 (Keizersgrachtkerk #707e86, Koningskerk #7a7d7f,
+ * Van Gendt Hallen #6f7478, fire station IJsbrand #8f9698, …): they came out
+ * 15–25 % darker than flag off, roof-dominated models most. Above the city
+ * tones' range the authored grey stays, divided by the cell mean so cell × tint
+ * lands on the authored lightness; at or below it the city tones apply as before.
+ */
+export const SLATE_KEEP_FROM_L = 0.38;
+const SLATE_CELL_MEAN = 0.8;
+/**
+ * Mid-grey joinery keeps its colour (gallery review 2026-10-13). `cityFrameTint`
+ * pulls every frame with L ≥ 0.5 75 % towards the city's cream frame. That is
+ * right for white window frames, but 122 legacy landmark models paint `frame`
+ * the builders' default grey-green #9daaa8 (L 0.64), on mullions and on whole
+ * claddings (ARCAM, the Faralda crane, Nieuw Dakota, the NDSM warehouse turned
+ * cream, 15–25 % lighter). Only near-white frames (L ≥ 0.75) take the cream.
+ */
+export const FRAME_CREAM_FROM_L = 0.75;
+/**
+ * Dark stone keeps its lightness (gallery review 2026-10-13). `cityStoneTint`
+ * floors stone at L 0.62 and mixes it 45 % into the city's pale stone: right for
+ * sandstone dressings, wrong for the dark stone of 7 models (the Trippenhuis'
+ * dark sandstone front #7c7870 read +19 %; Electric Ladyland, Overtoom 197, the
+ * Haparandaweg blocks' dark stone bases). Below this lightness the authored
+ * colour stays (the lit stone cell is gained to a mean of 1, so it shows as authored).
+ */
+export const STONE_KEEP_BELOW_L = 0.5;
+/**
+ * Grey brick stays grey (gallery review 2026-10-13). `cityWallTint` floors
+ * brick saturation at 0.12 (panorama samples are hazy), which gives a neutral
+ * brick whatever hue its last bits carry: 47 models' `greyBrick` #7d7871 went
+ * beige, fire station IJsbrand's #696a65 olive, Anton's #525255 violet, Dirk's
+ * #a4afad teal. Below this saturation the authored saturation stays; the
+ * lightness lift into the city brick range still applies.
+ */
+export const GREY_BRICK_BELOW_S = 0.12;
+/**
+ * A red or brown roof named slate is a tiled or copper roof (gallery review
+ * 2026-10-13: the American Hotel, Christ Church Groenburgwal, fire station
+ * Dirk, Petrus en Paulus, the Ronde Lutherse Kerk dome came out slate grey).
+ * Brick hue with saturation ≥ 0.2 takes the pantile
+ * tint instead of a slate tone (0.15 also caught Podium Mozaïek's brown-grey
+ * #655348 slate and turned it red: 0.2 keeps it slate).
+ */
+const isRedRoof = (h: number, s: number) => (h < 45 || h > 340) && s >= 0.2;
+
+/**
+ * The city look's tint for a slot: `cityTint` (the one palette mapping, shared
+ * with the legacy recipe look) with the review corrections above. Flag off
+ * never calls this.
+ */
+export function cityLookTint(slot: MaterialSlot, hex: string): string {
+  const rgb = hexToRgb(hex), [h, s, l] = rgbToHsl(rgb);
+  if (slot === 'slate' && isRedRoof(h, s)) return cityTint('roofTile', hex);
+  if ((slot === 'brick' || slot === 'accent') && s < GREY_BRICK_BELOW_S) return rgbToHex(hslToRgb([h, s, Math.min(CITY_BRICK_LIGHTNESS[1], Math.max(CITY_BRICK_LIGHTNESS[0], 0.12 + l * 0.9))]));
+  if (slot === 'slate' && l > SLATE_KEEP_FROM_L) return rgbToHex(hslToRgb([h, Math.min(s, 0.12), Math.min(0.72, l / SLATE_CELL_MEAN)]));
+  if (slot === 'frame' && l >= 0.5 && l < FRAME_CREAM_FROM_L) return rgbToHex(rgb);
+  if (slot === 'stone' && l < STONE_KEEP_BELOW_L) return rgbToHex(rgb);
+  return cityTint(slot, hex);
+}
+
 /** A slot mesh's `tint` attribute value: the slot colour mapped into the city range, sRGB bytes. */
 export function slotTintBytes(slot: MaterialSlot, hex: string): [number, number, number, number] {
-  const [r, g, b] = hexToRgb(cityTint(slot, hex));
+  const [r, g, b] = hexToRgb(cityLookTint(slot, hex));
   return [r, g, b, 255];
 }
 
@@ -121,7 +229,9 @@ export function slotTintBytes(slot: MaterialSlot, hex: string): [number, number,
 function slotCanvas(doc: Document, cell: SlotLayer['cell'], brick: CanvasImageSource | null): HTMLCanvasElement {
   switch (cell) {
     case 'brick': return paintBrickCanvas(doc, brick);
+    case 'brick20': return paintBrick20Canvas(doc, brick);
     case 'stucco': return paintStuccoCanvas(doc);
+    case 'whiteStucco': return paintWhiteStuccoCanvas(doc);
     case 'stone': return paintStoneCanvas(doc);
     case 'white': case 'frame': return paintWhiteCanvas(doc);
     case 'door': return paintDoorCanvas(doc);
@@ -195,6 +305,29 @@ const HIGHLIGHT_SRGB = 'vec3(1.0, 0.824, 0.122)';
 const HIGHLIGHT_LINEAR = 'vec3(1.0, 0.637, 0.0137)';
 const SKY_TINT = 'vec3(0.035, 0.05, 0.07)';
 
+/**
+ * The highlight keeps the light and the grain (review 2026-10-13: the first
+ * variant drew a flat yellow, while the default highlight keeps each model's
+ * own shading and adds a yellow glow). The yellow replaces the tint, not the
+ * cell: brick courses, stucco, glazing (dark: windows stay readable) show
+ * through at `HIGHLIGHT_GRAIN`, and the light does the rest.
+ *  - lit: yellow albedo at `HIGHLIGHT_ALBEDO`
+ *    plus a small glow `HIGHLIGHT_GLOW` (was 0.45, which flattened the shade side);
+ *  - unlit: the baked shade's contrast is widened (`HIGHLIGHT_SHADE_GAIN`:
+ *    walls 0.8–1.0 become 0.64–1.0, roofs floor at 0.6), so the faces of a yellow model separate.
+ */
+export const HIGHLIGHT_ALBEDO = 1.0;
+export const HIGHLIGHT_GLOW = 0.2;
+export const HIGHLIGHT_GRAIN = 0.75;
+export const HIGHLIGHT_SHADE_GAIN = 1.8;
+const glslFloat = (v: number) => (Number.isInteger(v) ? v.toFixed(1) : String(v));
+/** Grain of the highlighted cell: the cell's own luminance against the lifted brick mean, softened. */
+const HIGHLIGHT_GRAIN_GLSL = /* glsl */ `
+float cityGrain(vec3 cell) {
+  float g = clamp(dot(cell, vec3(0.299, 0.587, 0.114)) / ${glslFloat(PHOTO_WALL_CELL_MEAN / 255)}, 0.45, 1.1);
+  return mix(1.0, g, ${glslFloat(HIGHLIGHT_GRAIN)});
+}`;
+
 /** Shared vertex declarations (both variants). */
 const VERTEX_DECLS = /* glsl */ `
 attribute float layer;
@@ -257,7 +390,8 @@ flat varying float vLayer;
 flat varying vec4 vSlot;
 varying vec3 vTint;
 varying vec3 vAccent;
-flat varying float vHighlight;`;
+flat varying float vHighlight;
+${HIGHLIGHT_GRAIN_GLSL}`;
 
 const FRAGMENT_FADE = /* glsl */ `
 if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;`;
@@ -268,6 +402,7 @@ vec2 cityUv = vSlot.y > 0.5 ? clamp(vFacUv, 0.0, 1.0) : vFacUv;
 vec3 cityP = vec3(cityUv, vLayer);
 vec3 cityC = texture(cells, cityP).rgb;
 vec2 cityM = texture(masks, cityP).rg;
+float cityG = cityGrain(cityC);
 cityC *= mix(vec3(1.0), vTint, cityM.r) * mix(vec3(1.0), vAccent, cityM.g);`;
 
 const UNLIT_VERTEX = /* glsl */ `
@@ -303,8 +438,12 @@ ${FRAGMENT_DECLS}
 varying float vShade;
 void main() {
 ${FRAGMENT_FADE}
-  if (vHighlight > 0.5) { gl_FragColor = vec4(${HIGHLIGHT_SRGB} * vShade, 1.0); return; }
 ${FRAGMENT_CELL}
+  if (vHighlight > 0.5) {
+    float hlShade = clamp(1.0 - (1.0 - vShade) * ${glslFloat(HIGHLIGHT_SHADE_GAIN)}, 0.6, 1.0);
+    gl_FragColor = vec4(${HIGHLIGHT_SRGB} * (flatColour > 0.5 ? 1.0 : cityG) * hlShade, 1.0);
+    return;
+  }
   if (flatColour > 0.5) cityC = vTint;
   float shade = bands > 0.5 ? floor(vShade * bands + 0.5) / bands : vShade;
   gl_FragColor = vec4(cityC * shade, 1.0);
@@ -373,13 +512,13 @@ float cityLuma;`)
 #ifdef CITY_SLOT
 cityC *= vSlot.z;
 #else
-cityC *= mix(1.0, wallGain, cityM.r);
+cityC *= mix(1.0, wallGain * ${glslFloat(CITY_LIT_LEVEL)}, cityM.r);
 #endif
 if (flatColour > 0.5) cityC = vTint;
 cityLuma = dot(cityC, vec3(0.299, 0.587, 0.114));
-diffuseColor.rgb *= vHighlight > 0.5 ? ${HIGHLIGHT_LINEAR} : pow(cityC, vec3(2.2));`)
+diffuseColor.rgb *= vHighlight > 0.5 ? ${HIGHLIGHT_LINEAR} * ${glslFloat(HIGHLIGHT_ALBEDO)} * pow(flatColour > 0.5 ? 1.0 : cityG, 2.2) : pow(cityC, vec3(2.2));`)
         .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
-if (vHighlight > 0.5) totalEmissiveRadiance += ${HIGHLIGHT_LINEAR} * 0.45;
+if (vHighlight > 0.5) totalEmissiveRadiance += ${HIGHLIGHT_LINEAR} * ${glslFloat(HIGHLIGHT_GLOW)};
 #ifdef CITY_SLOT
 else totalEmissiveRadiance += ${SKY_TINT} * vSlot.w;
 #else
@@ -387,7 +526,7 @@ else totalEmissiveRadiance += ${SKY_TINT} * vSlot.w;
 else totalEmissiveRadiance += ${SKY_TINT} * (1.0 - smoothstep(0.06, 0.2, cityLuma)) * (1.0 - cityM.r);
 #endif`);
     };
-    material.customProgramCacheKey = () => `city-look-v1|${variantKey({ ...variant, side: 0 })}`;
+    material.customProgramCacheKey = () => `city-look-v3|${variantKey({ ...variant, side: 0 })}`;
     // ThreeBuildings reads and writes these like a ShaderMaterial's uniforms.
     material.uniforms = uniforms;
   }
@@ -425,9 +564,9 @@ export function slotForMaterial(material: any, infer: boolean): { slot: Material
 }
 
 /** Write `layer` (slot ordinal) and `tint` on a geometry; false when it already carries different ones. */
-export function setSlotAttributes(THREE: any, geometry: any, slot: MaterialSlot, hex: string): boolean {
+export function setSlotAttributes(THREE: any, geometry: any, slot: MaterialSlot, hex: string, hints: SlotVariantHints = {}): boolean {
   const n = geometry.getAttribute('position')?.count ?? 0;
-  const layer = slotLayerOf(slot), tint = slotTintBytes(slot, hex);
+  const layer = slotLayerOf(slot, hints), tint = slotTintBytes(slot, hex);
   const prior = geometry.getAttribute('layer'), priorTint = geometry.getAttribute('tint');
   if (prior && priorTint) {
     const same = prior.getX(0) === layer && Math.round(priorTint.getX(0) * 255) === tint[0] && Math.round(priorTint.getY(0) * 255) === tint[1] && Math.round(priorTint.getZ(0) * 255) === tint[2];
@@ -461,7 +600,7 @@ export interface CityLook {
    * landmark materials take the slot their name and colour say). Returns the
    * number of meshes changed.
    */
-  dress(root: any, options: { lit: boolean; infer?: boolean }): number;
+  dress(root: any, options: { lit: boolean; infer?: boolean; year?: number | null }): number;
   /** The same mesh's material with the highlight on or off. */
   highlighted(material: any, on: boolean): any;
   /**
@@ -521,7 +660,7 @@ export function createCityLook(THREE: any, options: CityLookOptions = {}): CityL
     uniforms,
     ready,
     material,
-    dress(root, { lit, infer = false }) {
+    dress(root, { lit, infer = false, year = null }) {
       let changed = 0;
       root.traverse((o: any) => {
         if (!o.isMesh || Array.isArray(o.material) || o.material?.userData?.cityLook) return;
@@ -531,15 +670,17 @@ export function createCityLook(THREE: any, options: CityLookOptions = {}): CityL
         if (!geometry?.getAttribute('position')) return;
         const hasUv = !!geometry.getAttribute('uv');
         if (!hasUv && !geometry.getAttribute('normal')) geometry.computeVertexNormals();
-        if (!setSlotAttributes(THREE, geometry, found.slot, found.tint)) {
+        // Variants: the BAG year picks the brick; an inferred white material takes the smooth render.
+        const hints: SlotVariantHints = { year, white: found.inferred && isWhiteWord(o.material.name) };
+        if (!setSlotAttributes(THREE, geometry, found.slot, found.tint, hints)) {
           // A geometry shared with another material: give this mesh its own attributes.
           geometry = o.geometry = geometry.clone();
           geometry.deleteAttribute('layer'); geometry.deleteAttribute('tint');
-          setSlotAttributes(THREE, geometry, found.slot, found.tint);
+          setSlotAttributes(THREE, geometry, found.slot, found.tint, hints);
         }
         const previous = o.material;
         o.material = material({ lit, kind: 'slot', uv: hasUv ? 'uv' : 'box', side: previous.side });
-        o.userData.citySlot = { slot: found.slot, tint: found.tint, inferred: found.inferred, from: previous.name };
+        o.userData.citySlot = { slot: found.slot, tint: found.tint, inferred: found.inferred, from: previous.name, layer: slotLayerOf(found.slot, hints) };
         if (!previous.userData?.[CITY_LOOK_SHARED]) previous.dispose();
         changed++;
       });
