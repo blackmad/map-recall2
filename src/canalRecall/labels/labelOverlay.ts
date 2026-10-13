@@ -112,6 +112,17 @@ export function footprintContains(geometry: any, lng: number, lat: number): bool
   return polygons.some((rings: number[][][]) => rings[0] && pointInRing(lng, lat, rings[0]));
 }
 
+/**
+ * Whether the map has a loaded style, without `map.getStyle()`: that
+ * serializes (deep-copies) the whole style, which every frame cost ~0.8 ms of
+ * main thread and its garbage on the desktop ride (2026-10-13 profile).
+ */
+export function styleReady(map: AnyMap): boolean {
+  const style = map?.style;
+  if (!style) return false;
+  return typeof style._loaded === 'boolean' ? style._loaded : !!map.getStyle();
+}
+
 export class LabelOverlay {
   readonly root: HTMLDivElement;
   private readonly elements = new Map<string, HTMLDivElement>();
@@ -172,7 +183,7 @@ export class LabelOverlay {
 
   private frame(): void {
     const map: AnyMap = this.vm.map;
-    if (!map || !map.getStyle()) return;
+    if (!map || !styleReady(map)) return;
     this.hideReplacedLayers(map);
     const now = performance.now();
     if (now - this.lastPlan >= PLAN_INTERVAL_MS) {
