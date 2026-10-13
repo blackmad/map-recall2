@@ -702,10 +702,8 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   is subtle at chase distance on a terrace house (the beacon carries it), the
   MapLibre fallback extrusions and 3DBAG detailed mode keep yellow, and the
   default is still yellow until the user chooses.
-- **Roofs after the attachment fix**: a corner block that cannot be roofed
-  from its box (bare deck < 15 %) stays flat (the Bonboon corner on the
-  Rozengracht reads as a flat grey block now); the aerial-roof lane will give
-  it the real roof slot. Pitched-vs-flat split pands still follow one plan.
+- **Roofs after the attachment fix**: pitched-vs-flat split pands still
+  follow one plan (the roof-facts slot now colours the lid; the shape is one).
 - **Own ground after the 2026-10-13 lanes (HISTORY)**: still open before a
   desktop default-on in the belt: the junction red cycle-lane smear and brown
   holes at Rozengracht/Marnixstraat (cycle bands at lift 0.036 over
@@ -1191,6 +1189,14 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+- **One flat-roof table**: `FLAT_ROOF_TONES` (mood pass: gravel `#9e9281`,
+  membrane `#c3c1bb`, bitumen `#56585e`) and `ROOF_SLOT_TONES` (orthophoto
+  slots: gravel `#8f8a83`, white membrane `#d9d9d3`, bitumen dark `#55585b`)
+  disagree by a few points; make the unmeasured fallback pick from the slot
+  table so a measured and an unmeasured gravel roof match side by side.
+- **Roof slots: the Bonboon-class corner** (flat block after the attachment
+  fix) can take its real slot and furniture now; check the Rozengracht corner
+  reads as a roof, not a grey lid.
 - **`check-manual-landmarks` fails on `homomonument`** ("exact replacement,
   bounded host opening or native standalone landscape required"), already on
   main before the 2026-10-13 merges (94e7780f). The check is not in

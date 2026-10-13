@@ -1,0 +1,42 @@
+{
+ "pands": 333695,
+ "confident": 320601,
+ "sidecarBytes": 1609516,
+ "terraces": 103,
+ "withFurniture": 16089,
+ "furniture": {
+  "chimney": 1316,
+  "vent": 817,
+  "skylight": 31300,
+  "hvac": 3744,
+  "overrun": 763,
+  "solar": 1827
+ },
+ "city": {
+  "gravel": "37019 (11.5 %)",
+  "bitumen-dark": "59388 (18.5 %)",
+  "bitumen-light": "2862 (0.9 %)",
+  "white-membrane": "5661 (1.8 %)",
+  "pantile-red": "28553 (8.9 %)",
+  "pantile-dark": "4907 (1.5 %)",
+  "slate": "174801 (54.5 %)",
+  "zinc": "2168 (0.7 %)",
+  "sedum": "3606 (1.1 %)",
+  "solar": "1183 (0.4 %)",
+  "terrace": "29 (0.0 %)",
+  "glass": "424 (0.1 %)"
+ },
+ "kinkerbuurt": {
+  "gravel": "52 (2.1 %)",
+  "bitumen-dark": "191 (7.5 %)",
+  "bitumen-light": "6 (0.2 %)",
+  "white-membrane": "13 (0.5 %)",
+  "pantile-red": "72 (2.8 %)",
+  "pantile-dark": "18 (0.7 %)",
+  "slate": "2104 (83.1 %)",
+  "zinc": "18 (0.7 %)",
+  "sedum": "56 (2.2 %)",
+  "solar": "1 (0.0 %)"
+ },
+ "kinkerbuurtPands": 2584
+}
