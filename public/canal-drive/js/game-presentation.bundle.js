@@ -42616,7 +42616,7 @@
           }) || "No cycling in real life";
         }
       }
-      const homeLearningNote = this.routePattern === "home" && this._hudRects().mode === "compact" && Number.isFinite(this._homeLearningRadiusKm) && this._homeLearningRadiusKm > 0 ? `Learning near home \xB7 ~${this._homeLearningRadiusKm.toFixed(1)} km` : "";
+      const homeLearningNote = this.routePattern === "home" && this.viewport.mode === "compact" && Number.isFinite(this._homeLearningRadiusKm) && this._homeLearningRadiusKm > 0 ? `Learning near home \xB7 ~${this._homeLearningRadiusKm.toFixed(1)} km` : "";
       return { feedback: this.quizFeedback || homeLearningNote, restrictionNote };
     }
     /** Place the whole HUD for this frame. One call, so every card agrees about
