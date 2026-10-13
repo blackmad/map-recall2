@@ -38,7 +38,7 @@ await new NodeIO().write(plain, doc);
 const size = {width: 900, height: 620};
 const aerial = (name: string, az: number) => {
   const a = az * Math.PI / 180;
-  return {name, view: {eye: [cx + Math.sin(a) * dist, Math.max(8, height * 0.55 + dist * 0.45), cz - Math.cos(a) * dist], target: [cx, height * 0.35, cz], fov, ...size}};
+  return {name, view: {eye: [cx + Math.sin(a) * dist, Math.max(Math.min(8, dist * 0.5), height * 0.55 + dist * 0.45), cz - Math.cos(a) * dist], target: [cx, height * 0.35, cz], fov, ...size}};
 };
 // Compass bearing of the camera from the model centre (x east, z south): the strip reads SE, SW, NW, NE.
 const views = [aerial('from south-east', 135), aerial('from south-west', 225), aerial('from north-west', 315), aerial('from north-east', 45)];
