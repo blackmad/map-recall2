@@ -10,7 +10,7 @@ import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose,
 import { cutIntervals, disc, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, reliefGrid, ribbon, type MeshArrays } from './drape';
 import { bandCoverage, DE_CLERCQSTRAAT } from './roadRegressions';
 import { crossSection, parseMetres, areaKind, pavedAreaSurface } from './osmGround';
-import { AERIAL_ZOOM, RADIUS_STEP_M, residentRadius } from './residency';
+import { RADIUS_STEP_M, residentRadius, viewReachM } from './residency';
 import { basemapGroundPatches } from './basemapPalette';
 import { GROUND_TONES, STREET_GROUND } from '../look/palette';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
@@ -446,14 +446,18 @@ test('area:highway areas draw as what they are: carriageway asphalt, red cyclewa
   assert.equal(pavedAreaSurface({ hw: 'something_new' }), 'square');
 });
 
-test('resident radius grows as the zoom falls below the aerial zoom, in steps, capped', () => {
-  assert.equal(residentRadius(17.5, 1400, 2600, 15), 1400);
-  assert.equal(residentRadius(AERIAL_ZOOM, 1400, 2600, 15), 1400);
-  assert.equal(residentRadius(15, 1400, 2600, 15), 2600);
-  assert.equal(residentRadius(12, 1400, 2600, 15), 2600);
-  const mid = residentRadius(15.7, 1400, 2600, 15);
+test('resident radius follows what the camera sees: chase stays on the base ring, the user\'s aerial shot grows, capped', () => {
+  const chase = viewReachM(17, 60, 52.37);
+  assert.ok(chase > 500 && chase < 1100, `chase reach ${chase.toFixed(0)} m`);
+  assert.equal(residentRadius(chase, 1400, 2600), 1400);
+  // zoom 15.8, pitch 76: ~285 m up, the top of the screen ~2.9 km past the rider.
+  const aerial = viewReachM(15.8, 76, 52.37);
+  assert.ok(aerial > 2500 && aerial < 3300, `aerial reach ${aerial.toFixed(0)} m`);
+  assert.equal(residentRadius(aerial, 1400, 2600), 2600, 'capped');
+  const mid = residentRadius(1900, 1400, 2600);
   assert.ok(mid > 1400 && mid < 2600 && (mid - 1400) % RADIUS_STEP_M === 0, `${mid}`);
-  assert.equal(residentRadius(15, 1400, 1400, 15), 1400, 'no growth when the cap equals the base');
+  assert.equal(residentRadius(5000, 1400, 1400), 1400, 'no growth when the cap equals the base');
+  assert.ok(viewReachM(15.8, 76, 52.37) > viewReachM(15.8, 60, 52.37), 'a steeper pitch sees further');
 });
 
 test('basemap ground layers take the own ground palette; buildings and labels are left alone', () => {
