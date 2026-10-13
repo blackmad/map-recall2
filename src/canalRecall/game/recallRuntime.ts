@@ -344,6 +344,20 @@ export class GameRecallRuntime {
 
   // ---- The route question ----
 
+  /**
+   * The part of the question loop that must run on every racing frame, ferry
+   * or not. `game.js` skips `_updateCanalQuiz` while the rider is aboard an IJ
+   * ferry (nothing new may be asked mid-crossing), which also stopped the
+   * clocks of a question opened just before boarding: its 12 s never counted,
+   * and the "Passed" reveal waited for the ferry to end. A ferry frame now
+   * ticks only what is already open.
+   */
+  _updateQuizOnFerry(dt: number): void {
+    if (!this.player) return;
+    this._tickFeedbackTimeout();
+    if (this.quizPromptName && this._ridingState) this._updateRidingPrompt(dt);
+  }
+
   _updateCanalQuiz(dt: number): void {
     if (!this.player) return;
     this._tickFeedbackTimeout();
