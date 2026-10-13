@@ -1,0 +1,92 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "heinekenplein-130580",
+ "pandId": "0363100012130580",
+ "address": "Heinekenplein block, Amsterdam (De Pijp): 1995 brick block with a 32 m tower at its north end",
+ "sources": [
+  {
+   "id": "pano-2020-07-07-e",
+   "kind": "street-panorama",
+   "capturedAt": "2020-07-07",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001793_pano_0000_007313/",
+   "image": "staging/pand-reference-walls/0363100012130580/w01-96.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-07-29-s",
+   "kind": "street-panorama",
+   "capturedAt": "2018-07-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000879_pano_0000_000629/",
+   "image": "staging/pand-reference-walls/0363100012130580/w05-186.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    1,
+    80,
+    102,
+    21
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 26,
+   "ground": "system",
+   "windows": "low",
+   "palette": {
+    "brick": "orange-brick",
+    "frame": "#2f3236",
+    "stone": "#9a9a94"
+   }
+  },
+  {
+   "wallSurfaces": [
+    7,
+    121,
+    122,
+    126
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 22,
+   "ground": "system",
+   "windows": "low",
+   "palette": {
+    "brick": "orange-brick",
+    "frame": "#2f3236",
+    "stone": "#9a9a94"
+   }
+  },
+  {
+   "wallSurfaces": [
+    58
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 10,
+   "ground": "system",
+   "windows": "low",
+   "palette": {
+    "brick": "orange-brick",
+    "frame": "#2f3236",
+    "stone": "#9a9a94"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "orange-brick",
+  "frame": "#2f3236",
+  "door": "#2a2a2a",
+  "stone": "grey-painted"
+ },
+ "notes": [
+  "East front (surfaces 1, 80, 102, 21; panels 0, 68, 20 of walls.ts), from the 2020-07-07 and 2022-01-11 panoramas (w01-96 and w02-96, rectified; CC BY 4.0): four storeys of orange-brown brick; the upper floors carry two rows of small low windows at about 1.5 m spacing (26 axes on the 41.6 m panel, `windows: low`) under a top row of paired horizontal ribbons, which the kit draws as the same low windows (no per-storey window style). The ground floor is a brick base with a drive-through gateway (left and centre) and a four-pane shop window at the right; the recipe draws small windows on the whole ground row instead of that mix. The curved plan is straight in 3DBAG (known gap). The gateway, the beer-brand lettering and the shop fascia are not modelled.",
+  "South end (surfaces 7, 121, 122, 126 and the taller 58) from the 2018-07-29 thumbnail only (w05-186: brick with three window rows over a car-park entrance); the car-park opening is not modelled. The 32 m tower at the north end, the west back walls and the roof terrace have no photograph in the cache and stay blank. The 2024-11-21 panorama (w04-6) shows the stone-clad north face of a different rounded block and is not used."
+ ]
+}

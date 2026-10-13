@@ -14,7 +14,7 @@ import {dissolveFaces} from '../blockBuilding/dissolve.ts';
 const HOUSES = 'scripts/building-recipes/houses';
 const raw = (id: string) => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/intent.json`, 'utf8'));
 const facts = (id: string): BuildingFacts => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/facts.json`, 'utf8'));
-const LARGE = ['politie-van-leijenberghlaan', 'leidsestraat-67-large', 'de-balie-large', 'social-history-large'];
+const LARGE = ['politie-van-leijenberghlaan', 'leidsestraat-67-large', 'de-balie-large', 'social-history-large', 'kattenburg-wings-164938', 'heinekenplein-130580'];
 
 async function gatesOf(intent: LargeBuildingIntent, f: BuildingFacts) {
   const built = compileBuilding(intent, f);
@@ -81,4 +81,19 @@ test('dissolveFaces merges two coplanar strips into one face and keeps the origi
   const us = faces[0].poly.outer.map(p => p[0]).sort((x, y) => x - y);
   assert.equal(us[0], 0); assert.equal(us[us.length - 1], 2);
   assert.ok(!faces[0].poly.outer.some(p => p[0] === 1 && p[1] === 1), 'the T-junction vertex on the cancelled edge is dropped');
+});
+
+test('windows: low draws wide low windows set high in the storey (1990s office blocks)', async () => {
+  const {largeSystem} = await import('../blockBuilding/systems.ts');
+  const fit = {pitchM: 1.6, lines: [0, 4, 7.5, 11], ground: 'system' as const, slots: {frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: 'frame'}};
+  const plain = largeSystem('brick-bay-grid', fit).typical.win!, low = largeSystem('brick-bay-grid', {...fit, windows: 'low'}).typical.win!;
+  assert.ok(low.h! < plain.h! && low.sill! > plain.sill!, 'lower and higher than the plain window');
+});
+
+test('large-tier compile seals tiny 3DBAG wall slivers and closes wall-mounted boxes (courtyard complex, no open shell edge)', async () => {
+  const intent = validateLargeIntent(raw('kattenburg-wings-164938'));
+  const {gates} = await gatesOf(intent, facts('kattenburg-wings-164938'));
+  const open = gates.find(g => g.id === 'open-edges')!;
+  assert.ok(open.pass, JSON.stringify(open.value));
+  assert.ok(gates.find(g => g.id === 'footprint-vs-bag')!.pass, 'courtyard holes are part of the BAG footprint');
 });
