@@ -7,7 +7,7 @@ export interface SurfaceSet {
   groundNap: number;
   heightMax: number;
   constructionYear: number | null;
-  walls: { rings: Ring3[]; onFootprintEdge: boolean }[];
+  walls: { rings: Ring3[]; onFootprintEdge: boolean; /** 3DBAG LoD2.2 shell boundary index (large-tier recipes address walls by it) */ surface?: number }[];
   roofs: { rings: Ring3[]; slopeDeg: number }[];
   ground: { rings: Ring3[] }[];
   neighbours: { id: string; height: number; ring: [number, number][] }[];

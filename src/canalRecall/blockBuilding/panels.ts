@@ -7,6 +7,7 @@
 import * as T from 'three';
 import type { SurfaceSet } from './types.ts';
 import { MeshBuilder, type V3, cross, sub, norm, dot } from './mesh.ts';
+import { dissolveFaces } from './dissolve.ts';
 
 export type Poly2 = { outer: [number, number][]; holes: [number, number][][] };
 export interface Panel {
@@ -20,10 +21,14 @@ export interface Panel {
   onEdge: boolean;
   prev: number; next: number; // run links (panel index or -1)
   area: number;
+  /** indices into `SurfaceSet.walls` merged into this panel */
+  walls: number[];
+  /** deferred host walls (buildHost `deferWalls`): 3D rings and their (u, v) polygon per member wall (`wall` -1 = a face dissolved from several), for cutting openings */
+  members?: { wall: number; rings: V3[][]; poly: Poly2 }[];
 }
 export const pt = (p: Panel, u: number, v: number, d = 0): V3 => [p.o[0] + p.r[0] * u + p.n[0] * d, v + p.n[1] * d, p.o[2] + p.r[2] * u + p.n[2] * d];
 
-function newell(r: V3[]): V3 {
+export function newell(r: V3[]): V3 {
   let x = 0, y = 0, z = 0;
   for (let i = 0; i < r.length; i++) {
     const a = r[i], b = r[(i + 1) % r.length];
@@ -57,7 +62,7 @@ export const rectPoly = (u0: number, u1: number, v0: number, v1: number): [numbe
 
 export interface BuildResult { panels: Panel[]; stats: { walls: number; slanted: number; slivers: number; flipped: number; inwardEdge: number } }
 
-export function buildHost(set: SurfaceSet, mesh: MeshBuilder, roofSlot: string, wallSlot: string): BuildResult {
+export function buildHost(set: SurfaceSet, mesh: MeshBuilder, roofSlot: string, wallSlot: string, opts: { deferWalls?: boolean; /** walls with different keys never merge into one panel (large-tier wall groups) */ mergeKey?: (wall: number) => number; /** deferred walls: dissolve each panel's coplanar surfaces into whole faces (dissolve.ts) */ dissolve?: boolean } = {}): BuildResult {
   // ground solid (outer rings minus holes) for orientation sanity checks
   const groundOuter: [number, number][][] = [], groundHoles: [number, number][][] = [];
   for (const g of set.ground) g.rings.forEach((r, i) => (i === 0 ? groundOuter : groundHoles).push(r.map(p => [p[0], p[2]] as [number, number])));
@@ -105,6 +110,7 @@ export function buildHost(set: SurfaceSet, mesh: MeshBuilder, roofSlot: string, 
     if (dot(ca.n, cb.n) < Math.cos(1.2 * Math.PI / 180)) continue;
     const d = Math.abs(dot(ca.n, sub(cb.ring[0], ca.ring[0])));
     if (d > 0.02) continue;
+    if (opts.mergeKey && opts.mergeKey(ca.i) !== opts.mergeKey(cb.i)) continue;
     parent[find(a)] = find(b);
   }
   const groups = new Map<number, number[]>();
@@ -116,7 +122,7 @@ export function buildHost(set: SurfaceSet, mesh: MeshBuilder, roofSlot: string, 
     const n = first.n, r: V3 = [n[2], 0, -n[0]];
     const ref = first.ring[0];
     const o: V3 = [ref[0], 0, ref[2]];
-    const polys: Poly2[] = [];
+    const polys: Poly2[] = [], deferred: NonNullable<Panel['members']> = [];
     let uMin = Infinity, uMax = -Infinity, vMin = Infinity, vMax = -Infinity, area = 0, edge = false;
     for (const ci of members) {
       const c = cands[ci];
@@ -127,11 +133,17 @@ export function buildHost(set: SurfaceSet, mesh: MeshBuilder, roofSlot: string, 
       const clean = (q: [number, number][]) => q.filter((p, i) => { const nx = q[(i + 1) % q.length]; return Math.hypot(p[0] - nx[0], p[1] - nx[1]) > 1e-4; });
       const outer = clean(rings2[0]), holes = rings2.slice(1).map(clean);
       polys.push({ outer, holes });
+      if (opts.deferWalls) deferred.push({ wall: c.i, rings: c.rings, poly: { outer, holes } });
       for (const p of outer) { uMin = Math.min(uMin, p[0]); uMax = Math.max(uMax, p[0]); vMin = Math.min(vMin, p[1]); vMax = Math.max(vMax, p[1]); }
       let a = 0; for (let i = 0; i < outer.length; i++) { const p = outer[i], q = outer[(i + 1) % outer.length]; a += p[0] * q[1] - q[0] * p[1]; } area += Math.abs(a) / 2;
-      triangulate3(mesh, wallSlot, c.rings, n, 0);
+      if (!opts.deferWalls) triangulate3(mesh, wallSlot, c.rings, n, 0);
     }
-    panels.push({ index: panels.length, n, r, o, polys, uMin, uMax, vMin, vMax, partyH: 0, onEdge: edge, prev: -1, next: -1, area });
+    panels.push({ index: panels.length, n, r, o, polys, uMin, uMax, vMin, vMax, partyH: 0, onEdge: edge, prev: -1, next: -1, area, walls: members.map(ci => cands[ci].i), ...(opts.deferWalls ? { members: deferred } : {}) });
+    if (opts.dissolve && deferred.length > 1) {
+      const to2 = (q: V3): [number, number] => [(q[0] - o[0]) * r[0] + (q[2] - o[2]) * r[2], q[1]];
+      const faces = dissolveFaces(deferred, to2);
+      if (faces) panels[panels.length - 1].members = faces.map(f => ({ wall: -1, ...f }));
+    }
   }
   // party heights from neighbouring footprints
   for (const p of panels) {
