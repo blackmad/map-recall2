@@ -11,6 +11,8 @@
 # (branch keeps it); untracked files that are not scratch and not evidence JSON block removal and are listed.
 set -u
 G=/usr/bin/git
+# A worktree another session is working in: some process has it as cwd or on its command line.
+live(){ lsof -d cwd -F n 2>/dev/null | grep -q -F "n$1" && return 0; ps -eo command | grep -v grep | grep -q -F "$1"; }
 ROOT=${MAP_RECALL2_ROOT:-/Users/blackmad/Code/map-recall2}
 KEEP=(integrator source-archive block-face facade-compare backlog-20261011 drop-maplibre)
 MODE=${1:-table}
@@ -34,7 +36,7 @@ $G worktree list --porcelain | awk '/^worktree /{w=$2} /^branch /{print w"\t"$2}
     table) printf "%s|%s|%s|dirty:%s|%s|nm:%s|%sM\n" "${w#$ROOT/}" "$b" "$date" "$dirty" "$merged" "$nm" "$(( $(sizek "$w") / 1024 ))" ;;
     --remove-merged-clean)
       keep "$w" && continue
-      [ "$merged" = merged ] && [ "$dirty" = 0 ] && { echo "remove $w ($b)"; $G worktree remove --force "$w"; } ;;
+      [ "$merged" = merged ] && [ "$dirty" = 0 ] && { if live "$w"; then echo "  keep $w ($b): a running process uses it"; else echo "remove $w ($b)"; $G worktree remove --force "$w"; fi; } ;;
     --archive-dirty)
       keep "$w" && continue
       [ "$merged" = merged ] && [ "$dirty" != 0 ] || continue
@@ -54,7 +56,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"; echo "  kept $f" ;;
           *) echo "  BLOCK $b: untracked $f" ;;
         esac
       done
-      if [ "$($G -C "$w" status --porcelain | wc -l | tr -d ' ')" = 0 ]; then echo "remove $w ($b)"; $G worktree remove --force "$w"; else echo "  left $w (untracked files above)"; fi ;;
+      if live "$w"; then echo "  keep $w ($b): a running process uses it"; elif [ "$($G -C "$w" status --porcelain | wc -l | tr -d ' ')" = 0 ]; then echo "remove $w ($b)"; $G worktree remove --force "$w"; else echo "  left $w (untracked files above)"; fi ;;
   esac
 done
 [ "$MODE" != table ] && $G worktree prune && echo "pruned; $($G worktree list | wc -l | tr -d ' ') worktrees remain"
