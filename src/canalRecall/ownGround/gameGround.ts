@@ -92,7 +92,9 @@ export class OwnGround {
   private destination: Vec2 | null = null;
   private overlayRevision = -1;
   private overlayDirty = true;
-  readonly stats = { cellsBuilt: 0, buildMs: [] as number[], installMs: [] as number[], errors: [] as string[], lastBuild: null as null | Record<string, unknown> };
+  /** When each pending build was asked for (cell load latency: request → installed). */
+  private readonly requestedAt = new Map<string, number>();
+  readonly stats = { cellsBuilt: 0, buildMs: [] as number[], installMs: [] as number[], latencyMs: [] as number[], errors: [] as string[], lastBuild: null as null | Record<string, unknown> };
 
   constructor(THREE: any, frame: any, host: GroundHost, options: OwnGroundOptions) {
     this.THREE = THREE;
@@ -224,6 +226,7 @@ export class OwnGround {
       const have = this.resident.get(w.key)?.lod, asked = this.pending.get(w.key);
       if (have === w.lod || asked === w.lod) continue;
       this.pending.set(w.key, w.lod);
+      this.requestedAt.set(`${w.key}:${w.lod}`, performance.now());
       this.worker?.postMessage({ type: 'build', key: w.key, lod: w.lod, gen: this.gen });
     }
     // Relief far behind is dropped on both sides (decks keep their placed heights).
@@ -397,6 +400,8 @@ export class OwnGround {
     this.root.add(group);
     this.resident.set(cell.key, { key: cell.key, lod: cell.lod, group, materials, textures, triangles, bytes, maskInfo: cell.mask ? { x0: cell.mask.x0, y0: cell.mask.y0, res: cell.mask.res } : null });
     this.stats.installMs.push(performance.now() - t0);
+    const asked = this.requestedAt.get(`${cell.key}:${cell.lod}`);
+    if (asked !== undefined) { this.stats.latencyMs.push(performance.now() - asked); this.requestedAt.delete(`${cell.key}:${cell.lod}`); }
     this.frame.invalidateShadows?.();
     this.host.repaint();
   }
@@ -613,7 +618,8 @@ export class OwnGround {
       enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), basemapHidden: this.basemapHidden,
       cells, pending: Object.fromEntries(this.pending), queued: this.installQueue.length, triangles, geometryMB: +(bytes / 1048576).toFixed(1),
       reliefTiles: this.store.reliefTileCount, decks: this.ready ? this.store.surface.decks.length : 0, surfaceRevision: this.surfaceRevision,
-      built: this.stats.cellsBuilt, buildMsMedian: median(this.stats.buildMs), installMsMedian: median(this.stats.installMs), lastBuild: this.stats.lastBuild,
+      built: this.stats.cellsBuilt, buildMsMedian: median(this.stats.buildMs), installMsMedian: median(this.stats.installMs),
+      latencyMsMedian: median(this.stats.latencyMs), latencyMsMax: this.stats.latencyMs.length ? Math.round(Math.max(...this.stats.latencyMs)) : null, lastBuild: this.stats.lastBuild,
       downloadedKB: Object.fromEntries(Object.entries(this.store.loadedBytes).map(([k, v]) => [k, Math.round(v / 1024)])),
       overlays: Object.fromEntries(Object.entries(this.overlays).map(([k, m]) => [k, m ? m.geometry.index.count / 3 : 0])),
       errors: this.stats.errors.slice(-5),

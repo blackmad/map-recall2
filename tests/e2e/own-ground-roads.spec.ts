@@ -24,11 +24,11 @@ export const ROAD_SPOTS: [string, Place][] = [
   ['BRU0067', { lng: 4.882711, lat: 52.366289, bearing: 0 }],
 ];
 
-async function boot(page: Page): Promise<string[]> {
+async function boot(page: Page, viewMode = 'chase'): Promise<string[]> {
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(String(e)));
   await page.addInitScript(() => { (window as any).__canalRecallOwnGround = true; });
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
+  await openRoute(page, { travelMode: 'car', viewMode, abortHeavyTiles: false, enterRacing: false });
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
   return errors;
 }
@@ -71,5 +71,38 @@ test('roads: shots at the user spots and the deck regressions', async ({ page },
     expect(s.errors, `${name}: ${JSON.stringify(s.errors)}`).toEqual([]);
   }
   writeFileSync(`${OUT}/${info.project.name}-roads.json`, JSON.stringify(report, null, 2));
+  expect(errors).toEqual([]);
+});
+
+/** Jan Evertsenstraat looking west past the Chassébuurt (user shot 2026-10-13): beyond the resident cells the ground was bare. */
+const FAR_FIELD: Place = { lng: 4.8575, lat: 52.37125, bearing: 263 };
+
+test('far field: shots with the basemap ground hidden and shown under own ground', async ({ page }, info) => {
+  test.setTimeout(900_000);
+  mkdirSync(OUT, { recursive: true });
+  const errors = await boot(page);
+  await teleport(page, FAR_FIELD);
+  const s = await settle(page);
+  // Look out toward the horizon from above the rider (pitch 76°, zoom 16.2), as in the user's shot:
+  // the view then reaches past the resident cells (1.4 km).
+  await page.evaluate(() => {
+    const m = (window as any).canalRecallGame.vectorMap.map, jump = m.jumpTo.bind(m);
+    m.jumpTo = (o: any) => jump({ ...o, pitch: 76, zoom: 16.2 });
+  });
+  await page.waitForTimeout(4000);
+  await page.screenshot({ path: `${OUT}/${info.project.name}-far-field.png` });
+  const probe = await page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap;
+    const order = vm.map.getLayersOrder ? vm.map.getLayersOrder() : vm.map.getStyle().layers.map((l: any) => l.id);
+    const style = vm.map.getStyle().layers;
+    const first3d = style.findIndex((l: any) => l.type === 'fill-extrusion' || (l.type === 'custom' && l.renderingMode === '3d') || l.type === 'custom');
+    return { basemapHidden: vm._basemapGroundHidden, first3d: style[first3d]?.id, first3dIndex: first3d, transport: style.findIndex((l: any) => l['source-layer'] === 'transportation'), count: order.length };
+  });
+  writeFileSync(`${OUT}/${info.project.name}-far-field.json`, JSON.stringify({ status: s, probe }, null, 2));
+  if (process.env.FAR_FIELD_TOGGLE) {
+    await page.evaluate(() => (window as any).canalRecallGame.vectorMap._setBasemapGroundHidden(false));
+    await page.waitForTimeout(1500);
+    await page.screenshot({ path: `${OUT}/${info.project.name}-far-field-shown.png` });
+  }
   expect(errors).toEqual([]);
 });

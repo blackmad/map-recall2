@@ -40,11 +40,12 @@ const SHARED_FRAME_DEFAULT = false;
 const OWN_GROUND_DEFAULT = false;
 const OWN_GROUND_BUNDLE = 'js/own-ground-game.bundle.js';
 const OWN_GROUND_WORKER = 'js/own-ground-worker.bundle.js';
-// Basemap ground the own ground replaces while it covers the rider: fills and
-// lines of these OpenMapTiles source layers. Water stays (isWater() queries
-// its rendered fill, and it is the flat horizon beyond the streamed radius);
-// labels (symbol layers) are never touched.
-const OWN_GROUND_HIDDEN_SOURCE_LAYERS = ['transportation', 'landuse', 'landcover', 'park', 'aeroway', 'waterway'];
+// Basemap ground the own ground hides while it covers the rider: none. The
+// basemap's fills and lines sit below the first 3D layer, so MapLibre draws
+// them at the back of the depth range and the own ground covers them wherever
+// it is resident (the near field is pixel-identical either way, measured);
+// beyond the resident cells they are the far field (hidden, it was bare white).
+const OWN_GROUND_HIDDEN_SOURCE_LAYERS = [];
 // The game's own flat overlays that the draped ribbons replace.
 const OWN_GROUND_HIDDEN_OVERLAYS = ['navigation-route-casing', 'navigation-route-line', 'active-street-line', 'cycle-tracks'];
 function canalRecallLookFlag(param, global, fallback) {
