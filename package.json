@@ -472,7 +472,9 @@
     "test:tile-buildings": "node --import tsx --test src/canalRecall/tileBuildings/*.test.ts",
     "build:canal-tile-buildings": "esbuild src/canalRecall/tileBuildings/browser.ts --bundle --format=iife --global-name=CanalRecallTileBuildings --outfile=public/canal-drive/js/tile-buildings.bundle.js --minify",
     "build:recipe-tiles": "node --max-old-space-size=8192 --import tsx scripts/building-tiles/compile-recipes.ts",
-    "check:landmark-inventory": "node --import tsx scripts/landmarks/check-landmark-inventory.ts"
+    "check:landmark-inventory": "node --import tsx scripts/landmarks/check-landmark-inventory.ts",
+    "build:canal-sculptures": "node scripts/sculptures/build-bundle.mjs",
+    "test:sculptures": "node --import tsx --test src/canalRecall/sculptures/*.test.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

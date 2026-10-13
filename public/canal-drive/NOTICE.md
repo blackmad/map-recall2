@@ -189,3 +189,14 @@ Park boundaries, lawns, woodland, ponds, paths and bench locations derive from
 OpenStreetMap contributors under [ODbL](https://www.openstreetmap.org/copyright).
 `scripts/build-park-landscape.mjs` rebuilds the mapped park/site overlays and optional Amsterdamse Bos chunk from the
 cached source extract. No synthetic ponds, tree positions or paths are added.
+
+## De Dokwerker impostor (`sculptures/dokwerker-impostor.webp`)
+
+The seven-view photo impostor of De Dokwerker (Mari Andriessen, 1952) is
+baked from Wikimedia Commons photographs: Rietman 2013 (CC BY-SA 4.0, the
+0° and +45° views) and Anefo / Nationaal Archief 1961–72 (CC0). Because
+two inputs are CC BY-SA 4.0 the atlas is licensed CC BY-SA 4.0; per-view
+credits are in `sculptures/manifest.json` and the full photo list with
+licences in `scripts/sculptures/dokwerker/sources.json`. The statue itself
+is in copyright (Andriessen d. 1979); it is shown under the Dutch freedom
+of panorama (Auteurswet art. 18), see `docs/sculptures.md`.
