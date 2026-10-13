@@ -19,7 +19,7 @@
    "bouwjaar": 2013,
    "osmToAddressM": 41,
    "signatureElements": [],
-   "sharedWith": "",
+   "sharedWith": "no-wall in pand-reference",
    "modelStatus": "pending",
    "panoramaYears": [],
    "referenceStatus": "no-wall"
@@ -135,8 +135,8 @@
    "bouwjaar": 1906,
    "osmToAddressM": 29,
    "signatureElements": [],
-   "sharedWith": "",
-   "modelStatus": "pending",
+   "sharedWith": "inside De Hallen (catalogue id de-hallen, same pand)",
+   "modelStatus": "skipped-modelled-elsewhere",
    "panoramaYears": [
     2022,
     2018
@@ -231,14 +231,19 @@
    "gebruiksdoel": "bijeenkomstfunctie",
    "bouwjaar": 2011,
    "osmToAddressM": 6,
-   "signatureElements": [],
-   "sharedWith": "",
-   "modelStatus": "pending",
+   "signatureElements": [
+    "entrance hall",
+    "OBA lettering (simplified)",
+    "shop plinth"
+   ],
+   "sharedWith": "housing perimeter block (whole pand modelled)",
+   "modelStatus": "large-installed",
    "panoramaYears": [
     2020,
     2024
    ],
-   "referenceStatus": "ok"
+   "referenceStatus": "ok",
+   "recipe": "oba-javaplein"
   },
   {
    "name": "OBA Linnaeus",
@@ -256,14 +261,19 @@
    "gebruiksdoel": "bijeenkomstfunctie,winkelfunctie,woonfunctie",
    "bouwjaar": 1916,
    "osmToAddressM": 0,
-   "signatureElements": [],
-   "sharedWith": "",
-   "modelStatus": "pending",
+   "signatureElements": [
+    "reversed-alphabet red fascia band",
+    "red oba logos",
+    "ribbon windows"
+   ],
+   "sharedWith": "two 1916 houses attached",
+   "modelStatus": "large-installed",
    "panoramaYears": [
     2021,
     2018
    ],
-   "referenceStatus": "ok"
+   "referenceStatus": "ok",
+   "recipe": "oba-linnaeus"
   },
   {
    "name": "OBA Mercatorplein",
@@ -281,14 +291,19 @@
    "gebruiksdoel": "bijeenkomstfunctie",
    "bouwjaar": 1927,
    "osmToAddressM": 11,
-   "signatureElements": [],
-   "sharedWith": "",
-   "modelStatus": "pending",
+   "signatureElements": [
+    "balcony decks",
+    "red oba logo",
+    "shop arcade"
+   ],
+   "sharedWith": "Amsterdam School housing block",
+   "modelStatus": "large-installed",
    "panoramaYears": [
     2024,
     2019
    ],
-   "referenceStatus": "washed-out"
+   "referenceStatus": "washed-out",
+   "recipe": "oba-mercatorplein"
   },
   {
    "name": "OBA Molenwijk",
@@ -351,14 +366,19 @@
    "gebruiksdoel": "bijeenkomstfunctie",
    "bouwjaar": 2005,
    "osmToAddressM": 0,
-   "signatureElements": [],
-   "sharedWith": "",
-   "modelStatus": "pending",
+   "signatureElements": [
+    "shop plinth",
+    "string courses",
+    "OBA lettering (simplified)"
+   ],
+   "sharedWith": "housing courtyard block (whole pand modelled)",
+   "modelStatus": "large-installed",
    "panoramaYears": [
     2019,
     2021
    ],
-   "referenceStatus": "ok"
+   "referenceStatus": "ok",
+   "recipe": "oba-olympisch-kwartier"
   },
   {
    "name": "OBA Oosterdok",
@@ -378,9 +398,10 @@
    "osmToAddressM": 48,
    "signatureElements": [],
    "sharedWith": "",
-   "modelStatus": "pending",
+   "modelStatus": "modelled-before-this-lane",
    "panoramaYears": [],
-   "referenceStatus": "no-wall"
+   "referenceStatus": "no-wall",
+   "recipe": "oba-oosterdok"
   },
   {
    "name": "OBA Osdorp",
@@ -499,8 +520,8 @@
    "bouwjaar": 2013,
    "osmToAddressM": 75,
    "signatureElements": [],
-   "sharedWith": "",
-   "modelStatus": "pending",
+   "sharedWith": "identity unverified: the OSM point sits 75 m from the address match, and the panoramas of the matched 2013 pand show no OBA sign",
+   "modelStatus": "skipped",
    "panoramaYears": [
     2018,
     2022
@@ -599,8 +620,8 @@
    "bouwjaar": 2013,
    "osmToAddressM": 1,
    "signatureElements": [],
-   "sharedWith": "",
-   "modelStatus": "pending",
+   "sharedWith": "pand 0363100012239985 is not in the building tiles (no panoramas) and is a 66 m tower complex with 259 surfaces",
+   "modelStatus": "skipped",
    "panoramaYears": [],
    "referenceStatus": "no-wall"
   }

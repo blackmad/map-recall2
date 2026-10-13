@@ -89,6 +89,20 @@ if(fs.existsSync('scripts/landmarks/police-stations.json')){
       taskNote:'Large-tier recipe candidate (houses/<id>/intent.json, kind: large); see scripts/landmarks/police-stations.json.'} as any);
   }
 }
+// OBA libraries and civic offices (scripts/landmarks/libraries-match.ts, civic-offices-match.ts): same tagging as the police bureaus.
+for(const [file,key,tag,origin,note] of [
+  ['libraries.json','libraries','library','OBA libraries','Large-tier recipe candidate; see scripts/landmarks/libraries.json.'],
+  ['civic-offices.json','offices','civic','Civic offices','Large-tier recipe candidate; see scripts/landmarks/civic-offices.json.'],
+] as const){
+  const path=`scripts/landmarks/${file}`;
+  if(!fs.existsSync(path))continue;
+  for(const st of JSON.parse(fs.readFileSync(path,'utf8'))[key] as any[]){
+    const nk=normaliseAnswer(st.name),have=destinations.find(p=>normaliseAnswer(p.name)===nk);
+    if(have){Object.assign(have,{publicBuilding:tag,pandIds:st.pandIds});continue;}
+    destinations.push({id:`${tag}-${nk.replaceAll(' ','-')}`,name:st.name,lat:st.osmLatLng[0],lng:st.osmLatLng[1],queueRank:destinations.length+1,
+      origin,status:'pending',publicBuilding:tag,pandIds:st.pandIds,osm:st.osm,address:st.address,taskNote:note} as any);
+  }
+}
 // A destination can describe a whole district, a complex or a small memorial.
 // Keep its teaching identity while making the asset task explicit for reviewers.
 const treatments:Record<string,{kind:string;note:string}>={

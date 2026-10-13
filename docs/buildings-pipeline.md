@@ -238,6 +238,7 @@ owns (`wallSurfaces`, indices from `walls.ts`, never coordinates) and:
 | `signage` | text (A–Z, 0–9, `&'-.`, ≤ 60) or `{text, colour, mount}` with mount `fascia`, `wall`, `glazing` or `canopy` |
 | `garageDoors`, `stringCourses`, `cornice`, `piers`, `balconies` | components |
 | `police` | `{stripe, lamp}`: white fascia band with diagonal blue stripes and a POLITIE plate; blue lamp by the entrance (needs an entrance) |
+| `crosses` | `{count, size: small\|medium\|large, colour, side: left\|right}`: St Andrew's crosses (Amsterdam's three-cross emblem) stacked down a top corner of the widest panel, each two closed diagonal prisms (`drawStAndrewsCross`; flat glyphs counted as open edges). Used by Stadsloket Noord/West and Stadsdeel Nieuw-West |
 | `palette` | per-group `brick`/`frame`/`stone` overrides |
 
 Top level: `otherWalls` (system for walls in no group, normally `blank`),
