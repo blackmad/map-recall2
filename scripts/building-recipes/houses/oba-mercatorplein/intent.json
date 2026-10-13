@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "oba-mercatorplein",
+  "pandId": "0363100012151434",
+  "address": "OBA Mercatorplein, Mercatorplein 103, Amsterdam (1927 Amsterdam School block; library under the glazed canopy at the ground floor)",
+  "sources": [
+    {"id": "pano-2025-09-25-e", "kind": "street-panorama", "capturedAt": "2025-09-25", "image": "staging/pand-reference-walls/0363100012151434/w01-75.jpg", "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_25_07_44_15_00751/", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
+  ],
+  "walls": [
+    {"wallSurfaces": [19], "system": "brick-bay-grid", "storeys": 5, "baysPerStorey": 14, "ground": "system", "windows": "two-light", "balconies": {"storeys": [1, 2, 3], "rail": "bars"}, "stringCourses": true},
+    {"wallSurfaces": [1, 2], "system": "brick-bay-grid", "storeys": 1, "baysPerStorey": 14, "ground": "plinth-shopfronts", "windows": "plain", "signage": {"text": "OBA", "colour": "#e2231a", "mount": "fascia"}, "entrance": {"bay": 12, "storeys": 1}}
+    ,{"wallSurfaces": [9], "system": "brick-bay-grid", "storeys": 4, "baysPerStorey": 12, "ground": "system", "windows": "plain", "frames": false}
+  ],
+  "otherWalls": "blank",
+  "closedBands": true,
+  "roof": {"material": "bitumen"},
+  "palette": {"brick": "#a98163", "frame": "#e8e2d0", "door": "#8b4a22", "stone": "#9a958c", "wallMaterial": "stucco"},
+  "notes": [
+    "1927 Amsterdam School block (pand 0363100012151434, 40 LoD2.2 surfaces; the fronts are only 5 to 6 surface groups so the walls table is short) on Mercatorplein, 2025-09-25 panorama w01-75 (20 m, 0.8 deg obliquity, sharp). The east front: warm brown brick, three storeys of continuous balcony galleries with iron railings (each balcony a long deck with bars), small pointed and rectangular attic windows under the roof edge with iron hooks (tram wire brackets), a green-roofed glazed canopy over the shopfront arcade with the red 'oba' logo at the right end.",
+    "Ornaments: continuous balcony decks with bar rails MODELLED (balconies on storeys 1 to 3, rail bars; the iron curlicue detail of the rails SIMPLIFIED to straight bars); string courses MODELLED; shopfront arcade MODELLED as plinth-shopfronts; red OBA logo SIMPLIFIED (kit fascia lettering OBA in logo red on the canopy-line fascia, not at the photographed far right; the glazed canopy slab itself SKIPPED: it is a thin projecting glass roof inside the 3DBAG ground band); pointed attic windows SIMPLIFIED (rectangular two-light windows; the lancet shape has no component); tram-wire hooks SKIPPED (too-small); the carved stone head at the left pier SKIPPED (too-small); left red brick block with bay windows: the pand has no wall panel group for it in the photographed range, so it stays as 3DBAG shell.",
+    "Only the east front (surface 19, 41.7 m, and the low ground band 1/2) is described: the west, courtyard and north walls have no usable panorama (w02-255 has no candidates), so they are blank walls, except the 42 m west wall (surface 9), which has an INFERRED plain window grid (4 storeys, 12 bays; no photograph, the style follows the east front) because a 600 m2 blank wall fails the audit:glb blank-wall gate. The pand-reference run flagged the 2019 capture washed-out; the 2025 capture is used."
+  ]
+}

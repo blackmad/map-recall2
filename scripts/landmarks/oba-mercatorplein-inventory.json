@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "oba-mercatorplein",
+  "pand": "0363100012151434",
+  "signature": ["balcony-decks", "oba-logo", "shop-arcade"],
+  "walls": [
+    {"tag": "w01-75", "bearing": 75, "lengthM": 60, "evidence": "photo", "panoId": "2025_09_25_07_44_15_00751", "capturedAt": "2025-09-25", "checked": true, "items": [
+      {"id": "balcony-decks", "kind": "balcony-ironwork", "where": "three storeys of continuous balcony galleries with iron rails across the whole east front", "approxSizeM": [42, 3], "plan": "modelled", "how": "balconies storeys 1-3 with bar rails; curlicue ironwork reduced to straight bars", "seenIn": "2025_09_25_07_44_15_00751"},
+      {"id": "oba-logo", "kind": "sign", "where": "red oba logo on the canopy fascia at the right end", "approxSizeM": [2, 0.8], "plan": "simplified", "how": "kit fascia lettering OBA in red on the shopfront group; position near the entrance bay, not the far right", "seenIn": "2025_09_25_07_44_15_00751"},
+      {"id": "shop-arcade", "kind": "colonnade", "where": "ground storey, shopfront arcade under a glazed canopy", "approxSizeM": [42, 4], "plan": "modelled", "how": "plinth-shopfronts ground", "seenIn": "2025_09_25_07_44_15_00751"},
+      {"id": "attic-windows", "kind": "window-shape", "where": "attic row, small pointed lancet and rectangular windows in pairs", "approxSizeM": [40, 1], "plan": "simplified", "how": "rectangular two-light windows in the attic storey", "seenIn": "2025_09_25_07_44_15_00751"},
+      {"id": "wire-hooks", "kind": "other", "where": "roof edge, iron tram-wire brackets", "approxSizeM": [0.5, 0.5], "plan": "skipped", "skip": {"reason": "too-small", "note": "wrought hooks 20 to 40 cm"}, "seenIn": "2025_09_25_07_44_15_00751"}
+    ]}
+  ],
+  "sources": [{"name": "Gemeente Amsterdam panorama", "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_25_07_44_15_00751/", "licence": "CC BY 4.0"}]
+}

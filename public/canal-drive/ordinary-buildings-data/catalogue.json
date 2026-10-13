@@ -29503,6 +29503,124 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T21:31:37.473Z"
+    },
+    {
+      "id": "ordinary-0363100012151434",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012151434",
+      "name": "OBA Mercatorplein, Mercatorplein 103, Amsterdam (1927 Amsterdam School block; library under the glazed canopy at the ground floor)",
+      "hash": "9282667efd3fb1db3c6ba5c3290b8a824439dd0a87940d9033fb4157a521741c",
+      "sha256": "9282667efd3fb1db3c6ba5c3290b8a824439dd0a87940d9033fb4157a521741c",
+      "bytes": 397812,
+      "triangles": 5670,
+      "materials": 9,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -13.23,
+          0.001,
+          -41.201
+        ],
+        "max": [
+          17.187,
+          16.892,
+          20.643
+        ]
+      },
+      "anchor": [
+        4.850261,
+        52.3692204
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8502753,
+              52.3695908
+            ],
+            [
+              4.8500627,
+              52.369554
+            ],
+            [
+              4.8502302,
+              52.3691916
+            ],
+            [
+              4.8500952,
+              52.3691682
+            ],
+            [
+              4.8501433,
+              52.3690626
+            ],
+            [
+              4.850279,
+              52.3690861
+            ],
+            [
+              4.8503026,
+              52.3690351
+            ],
+            [
+              4.8505151,
+              52.3690719
+            ],
+            [
+              4.8504455,
+              52.3692234
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 16.89,
+      "height": 16.89,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-oba-mercatorplein.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012151434"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "oba-mercatorplein",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012151434/w01-75.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 5st 14b",
+          "brick-bay-grid+entrance 1st 14b",
+          "brick-bay-grid 4st 12b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Only the east front (surface 19, 41.7 m, and the low ground band 1/2) is described: the west, courtyard and north walls have no usable panorama (w02-255 has no candidates), so they are blank walls, except the 42 m west wall (surface 9), which has an INFERRED plain window grid (4 storeys, 12 bays; no photograph, the style follows the east front) because a 600 m2 blank wall fails the audit:glb blank-wall gate. The pand-reference run flagged the 2019 capture washed-out; the 2025 capture is used."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012151434",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T21:33:56.938Z"
     }
   ]
 }
