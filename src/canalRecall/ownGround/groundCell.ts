@@ -21,7 +21,7 @@ import earcut from 'earcut';
 import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water.js';
 import { drapeTriangles, emptyMesh, merge, reliefGrid, type MeshArrays } from './drape.js';
 import { buildStreets, isBridgeWay, prepareWays, LIFT, type LocalWay } from './streets.js';
-import { flatDeckBody, measuredDeckBody } from './decks.js';
+import { flatDeckBody, footprintAxis, measuredDeckBody, measuredDeckTop, pointInRing, type DeckBuildInfo } from './decks.js';
 import type { OsmGroundExtract } from './osmGround.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
 import type { Rect } from './groundStore.js';
@@ -44,8 +44,11 @@ export interface BuiltCell {
   rect: Rect;
   layers: Partial<Record<GroundLayer, PackedMesh>>;
   mask: GroundMask | null;
-  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number };
+  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats };
 }
+
+/** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
+export interface BridgeStats { tops: number; railed: number; railingPosts: number; piers: number; arches: number; abutments: number; frames: number; decks: DeckBuildInfo[]; flat: { id: string; railingPosts: number; frames: number }[] }
 
 export interface CellInput {
   key: string;
@@ -170,7 +173,7 @@ export function buildCell(input: CellInput): BuiltCell {
   // Streets: bridge ways sampled finer (decks hump over metres).
   const only = (bridge: boolean) => (w: LocalWay) => own.has(w.id) && isBridgeWay(w) === bridge;
   const streets = buildStreets(ways, surface.height, { step: lod === 0 ? 3 : 6, only: only(false) });
-  // 0.5 m at LOD 0: on a hump a 1.5 m chord sags (~9 cm on a masonry arch); the bands follow the measured profile closer.
+  // 0.5 m at LOD 0: on a masonry hump a 1.5 m chord sags ~9 cm, under the deck top drawn beneath the bands.
   const onBridges = buildStreets(ways, surface.height, { step: lod === 0 ? 0.5 : 3, only: only(true) });
   for (const s of ['paving', 'klinker', 'asphalt', 'cycle', 'gravel', 'kerb', 'paint'] as const) { add(s, streets[s]); add(s, onBridges[s]); }
 
@@ -179,14 +182,23 @@ export function buildCell(input: CellInput): BuiltCell {
     add('water', waterSurfaceMesh(input.water, CANAL_WATER_Z));
     add('quay', quayWallMesh({ polygons: [], shores: input.water.shores, shoreLevels: input.water.shoreLevels }, surface.height, CANAL_WATER_Z, lod === 0 ? 4 : 8, QUAY_CAP_M));
   }
+  const bridges: BridgeStats = { tops: 0, railed: 0, railingPosts: 0, piers: 0, arches: 0, abutments: 0, frames: 0, decks: [], flat: [] };
   for (const deck of input.decks) {
     const xs = deck.profile.x, ys = deck.profile.y, mid = xs.length >> 1;
-    add('deckBody', measuredDeckBody(deck, surface.ground, overWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z)));
+    add('deckBody', measuredDeckBody(deck, surface.ground, overWater, waterZAt(input.waterAround, xs[mid], ys[mid], CANAL_WATER_Z), surface.height, bridges.decks));
+    const top = measuredDeckTop(deck, surface.height, lod === 0 ? 6 : 2);
+    if (top.indices.length) { add('deckTop', top); bridges.tops++; }
   }
-  for (const ring of input.flatDecks) {
-    const { top, body } = flatDeckBody(ring, surface.height, overWater);
+  for (const d of bridges.decks) { bridges.railingPosts += d.railingPosts; bridges.piers += d.piers; bridges.arches += d.arches; bridges.abutments += d.abutments; if (d.railingPosts) bridges.railed++; }
+  // Bridge ways through the flat footprints give their crossing axis (railings run along it).
+  const bridgeLines = ways.filter(isBridgeWay).map(w => w.points);
+  input.flatDecks.forEach((ring, k) => {
+    const through = bridgeLines.filter(l => l.some(q => pointInRing(ring, q[0], q[1])) || l.some((q, i) => i > 0 && pointInRing(ring, (q[0] + l[i - 1][0]) / 2, (q[1] + l[i - 1][1]) / 2)));
+    const { top, body, railingPosts } = flatDeckBody(ring, surface.height, overWater, 0.02, 0.45, { railings: lod === 0, axis: footprintAxis(ring, through).u });
     add('deckTop', top); add('deckBody', body);
-  }
+    bridges.tops++; bridges.railingPosts += railingPosts; if (railingPosts) bridges.railed++;
+    bridges.flat.push({ id: String(k), railingPosts, frames: 0 });
+  });
 
   const packed: Partial<Record<GroundLayer, PackedMesh>> = {};
   const byLayer: Record<string, number> = {};
@@ -205,12 +217,12 @@ export function buildCell(input: CellInput): BuiltCell {
   if (maskOut) bytes += maskOut.texels.byteLength;
   return {
     key, lod, rect, layers: packed, mask: maskOut,
-    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes },
+    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges },
   };
 }
 
 /** Polygon-offset rank of coplanar layers (gameGround.ts OFFSET): later wins a tie. */
-const DRAW_RANK: Partial<Record<GroundLayer, number>> = { park: 1, wood: 1, square: 1, parking: 1, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4 };
+const DRAW_RANK: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, klinker: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4 };
 /** Mask channel that cuts a layer (gameGround.ts CUT): 0 = R (water), 1 = G (water minus decks). */
 const CUT_CHANNEL: Partial<Record<GroundLayer, 0 | 1>> = { land: 0, park: 0, wood: 0, square: 0, parking: 0, asphalt: 1, klinker: 1, cycle: 1, paving: 1, gravel: 1, kerb: 1, paint: 1 };
 

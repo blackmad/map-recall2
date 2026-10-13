@@ -12,7 +12,7 @@ import { crossSection, parseMetres, areaKind } from './osmGround';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
 import { buildStreets, prepareWays, routeRibbon, LIFT } from './streets';
 import { buildWaterMask, maskDistance, quayWallMesh, waterSurfaceMesh, waterZAt } from './water';
-import { flatDeckBody, measuredDeckBody } from './decks';
+import { DECK_TOP_LIFT, RAILING, flatDeckBody, measuredDeckBody, measuredDeckTop, type DeckBuildInfo } from './decks';
 import { binByBase, footprintBase, liftRanges } from './placement';
 import { routeAhead } from './route';
 import type { DeckProfile } from '../elevation/bridgeDeck';
@@ -226,14 +226,57 @@ test('measured deck body: outward side faces, a soffit/vault over water, abutmen
   const f = faces(body);
   assert.ok(f.length > 100);
   for (const { n, c } of f) {
-    if (Math.abs(n[2]) > Math.hypot(n[0], n[1])) continue; // tops / soffits
-    if (Math.abs(c[1]) > 3.9) assert.ok(Math.sign(n[1]) === Math.sign(c[1]), `side face at y=${c[1].toFixed(2)} faces outward`);
-    else if (Math.abs(c[1]) > 3.7) assert.ok(Math.sign(n[1]) === -Math.sign(c[1]), `parapet inner face at y=${c[1].toFixed(2)} faces the road`);
+    if (Math.abs(n[2]) > Math.hypot(n[0], n[1]) || Math.abs(n[1]) < Math.abs(n[0])) continue; // tops / soffits / post sides
+    // The deck edge (side faces, the plinth's outer face) faces out; the plinth's inner face (RAILING.plinthWidth in) faces the road.
+    if (Math.abs(c[1]) > 3.99) assert.ok(Math.sign(n[1]) === Math.sign(c[1]), `side face at y=${c[1].toFixed(2)} faces outward`);
+    else if (Math.abs(Math.abs(c[1]) - (4 - RAILING.plinthWidth)) < 0.01) assert.ok(Math.sign(n[1]) === -Math.sign(c[1]), `parapet inner face at y=${c[1].toFixed(2)} faces the road`);
   }
   let lowest = Infinity;
   for (let i = 0; i < body.positions.length; i += 3) if (!water(body.positions[i])) lowest = Math.min(lowest, body.positions[i + 2]);
   assert.ok(lowest <= -0.39, `land abutments go below the relief (${lowest})`);
   assert.ok(f.some(x => water(x.c[0]) && x.n[2] < 0), 'downward faces over water');
+});
+
+test('measured deck: the top fills the footprint, railings on both edges, abutments at the water, piers only over long spans', () => {
+  const field = flatField(() => 1, 2, 100, [[-1, -1], [0, -1], [-1, 0], [0, 0]]);
+  const s = new GroundSurface(field, IDENTITY, 1);
+  const deck = s.addDeck(syntheticDeck());
+  const water = (x: number) => x > 12 && x < 28;
+  const top = measuredDeckTop(deck, s.height);
+  const tf = faces(top);
+  assert.ok(tf.length > 0 && tf.every(x => x.n[2] > 0), 'deck top faces up');
+  // Every point of the deck span, edge to edge, is under the top (no water between road and railing).
+  for (const x of [9, 14, 20, 26, 31]) for (const y of [-3.9, -2, 0, 2, 3.9]) {
+    const hit = tf.some(t => Math.abs(t.c[0] - x) < 0.5 && Math.abs(t.c[1] - y) < 0.8);
+    assert.ok(hit, `deck top covers (${x}, ${y})`);
+  }
+  for (const t of tf) assert.ok(Math.abs(t.c[2] - s.height(t.c[0], t.c[1]) - DECK_TOP_LIFT) < 0.05, 'top drapes on the surface');
+  const info: DeckBuildInfo[] = [];
+  const body = measuredDeckBody(deck, s.ground, x => water(x), -1.77, s.height, info);
+  assert.equal(info.length, 1);
+  // 24 m deck span, a post every ~1.8 m on each side.
+  assert.ok(info[0].railingPosts >= 2 * 13 && info[0].railingPosts <= 2 * 16, `posts ${info[0].railingPosts}`);
+  const f = faces(body);
+  const railTop = f.filter(x => x.n[2] > 0 && Math.abs(x.c[0] - 20) < 1 && Math.abs(x.c[1]) > 3.5);
+  assert.ok(railTop.some(x => x.c[2] > s.height(20, 0) + RAILING.height - 0.1), 'rails stand a railing height over the crown');
+  assert.equal(info[0].abutments, 2, 'one abutment at each bank');
+  const abut = f.filter(x => Math.abs(x.n[2]) < 1e-6 && Math.abs(x.c[1]) < 3 && Math.abs(x.n[0]) > Math.abs(x.n[1]) * 10 && (Math.abs(x.c[0] - 12) < 0.6 || Math.abs(x.c[0] - 28) < 0.6));
+  assert.ok(abut.length >= 2 && abut.every(x => Math.sign(x.n[0]) === (x.c[0] < 20 ? 1 : -1)), 'abutments face the water');
+  let lowest = Infinity; for (let i = 0; i < body.positions.length; i += 3) if (Math.abs(body.positions[i] - 12) < 0.6) lowest = Math.min(lowest, body.positions[i + 2]);
+  assert.ok(lowest <= -1.77 - 0.3, `abutment reaches below the water (${lowest})`);
+  // 16 m of measured water (over PIER_SPAN_M): two masonry bays on one pier.
+  assert.equal(info[0].piers, 1);
+  assert.equal(info[0].arches, 2);
+  const narrow = syntheticDeck(); narrow.water = [15, 25];
+  const short: DeckBuildInfo[] = [];
+  measuredDeckBody(s.addDeck(narrow), s.ground, x => x > 15 && x < 25, -1.77, s.height, short);
+  assert.deepEqual([short[0].piers, short[0].arches], [0, 1], '10 m of water: one arch, no piers');
+  // A 30 m span gets piers and (masonry) one arch per bay.
+  const long = syntheticDeck(); long.water = [5, 35]; long.deck = [4, 36];
+  const wide = (x: number) => x > 5 && x < 35;
+  const info2: DeckBuildInfo[] = [];
+  measuredDeckBody(s.addDeck(long), s.ground, x => wide(x), -1.77, s.height, info2);
+  assert.ok(info2[0].piers >= 2 && info2[0].arches === info2[0].piers + 1, JSON.stringify(info2[0]));
 });
 
 test('deck grade clamp: spikes over 1:8 come out, the crown stays', () => {
@@ -249,9 +292,13 @@ test('flat deck: draped top, fascia only over water', () => {
   const ring: Vec2[] = [[0, -4], [20, -4], [20, 4], [0, 4]];
   const { top, body } = flatDeckBody(ring, () => 0.5, (x) => x > 5 && x < 15);
   for (const { n, c } of faces(top)) { assert.ok(n[2] > 0); assert.ok(Math.abs(c[2] - 0.52) < 1e-6); }
-  const sides = faces(body).filter(x => Math.abs(x.n[2]) < 1e-9);
+  const sides = faces(body).filter(x => Math.abs(x.n[2]) < 1e-9 && Math.abs(Math.abs(x.c[1]) - 4) < 1e-6);
   assert.ok(sides.length > 0 && sides.every(x => x.c[0] > 4 && x.c[0] < 16), 'fascia only along the water');
   for (const x of sides) assert.ok(Math.sign(x.n[1]) === Math.sign(x.c[1]), 'fascia faces out');
+  // Railings along the water edges only, posts inside the footprint.
+  const { railingPosts } = flatDeckBody(ring, () => 0.5, (x) => x > 5 && x < 15);
+  assert.ok(railingPosts >= 2 * 5 && railingPosts <= 2 * 8, `posts ${railingPosts}`);
+  for (let i = 0; i < body.positions.length; i += 3) if (body.positions[i + 2] > 0.6) assert.ok(body.positions[i] > 4 && body.positions[i] < 16 && Math.abs(body.positions[i + 1]) <= 4 + 1e-6, 'railing parts stay on the water edges');
 });
 
 // ------------------------------------------------------------- drape
