@@ -36994,7 +36994,8 @@
         concrete: "#8c8e90",
         greyBrick: "#3d3f42",
         bronze: "#a3a49f",
-        gold: "#9b8348"
+        gold: "#9b8348",
+        copper: "#4a524c"
       },
       attribution: {
         title: "Rembrandtmonument - original low-poly interpretation",
@@ -37168,6 +37169,716 @@
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free geometric figures and platform. Composition read from CC0 photographs by RoMaVo and Ceescamel, a CC BY-SA 4.0 photograph by Arthena and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated. No pixels or third-party meshes imported."
+      }
+    },
+    {
+      id: "noorderkerk",
+      name: "Noorderkerk",
+      landmarkId: "extract_landmarks_433737872",
+      modelUrl: "./models/noorderkerk.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012177304",
+        "w749871262",
+        "w749871263",
+        "w749871271",
+        "w749871272",
+        "w749269859",
+        "w749269858",
+        "w749871267"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.886410612252116,
+          52.37960207395543
+        ],
+        headingDegrees: 346,
+        lengthMetres: 44.5,
+        widthMetres: 38
+      },
+      surveyed: {
+        anchor: [
+          4.886410612252116,
+          52.37960207395543
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG pand 0363100012177304 and 3DBAG LoD2.2, native east/south metres from the anchor (eaves 15.0 m, gable tops 22.0 m, ridge 27.8 m, turret 38.8 m)"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.886722785840835,
+              52.37964145107595
+            ],
+            [
+              4.8866700606823015,
+              52.37977154987507
+            ],
+            [
+              4.886509227160011,
+              52.379746693042364
+            ],
+            [
+              4.886467631144163,
+              52.37984711648335
+            ],
+            [
+              4.886257223951708,
+              52.37981364617685
+            ],
+            [
+              4.886298710638572,
+              52.37971253928017
+            ],
+            [
+              4.886132626934587,
+              52.37968703957486
+            ],
+            [
+              4.886152206714869,
+              52.37963743841563
+            ],
+            [
+              4.886153143955434,
+              52.379635078616104
+            ],
+            [
+              4.8861870749805245,
+              52.37955666967922
+            ],
+            [
+              4.886241432540962,
+              52.37953699189166
+            ],
+            [
+              4.886250531580041,
+              52.37953368695966
+            ],
+            [
+              4.886273817140137,
+              52.37952525613608
+            ],
+            [
+              4.886309342734082,
+              52.37951239221977
+            ],
+            [
+              4.886393223965058,
+              52.379482000073544
+            ],
+            [
+              4.8864051688093655,
+              52.3794529843666
+            ],
+            [
+              4.886435832130492,
+              52.3794310941737
+            ],
+            [
+              4.886627015878022,
+              52.37946038451951
+            ],
+            [
+              4.886659028976037,
+              52.37949195881569
+            ],
+            [
+              4.886603371373603,
+              52.37951233233934
+            ],
+            [
+              4.886561226574913,
+              52.37961587222872
+            ],
+            [
+              4.886722785840835,
+              52.37964145107595
+            ]
+          ]
+        ]
+      },
+      materialOverrides: {
+        stone: "#d8cfae",
+        brick: "#7d5a48",
+        slate: "#4a4f57"
+      },
+      attribution: {
+        title: "Noorderkerk - original low-poly reconstruction",
+        author: "Map Recall; church by Hendrick de Keyser (1620-1623)",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Noorderkerk_(Amsterdam)",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original geometry from the BAG/3DBAG massing and measurements read from RCE photographs (Commons, CC BY-SA 4.0, Han van Gool and W. Kramer), Hnapel and Marcelmulder68 photographs (CC BY-SA) and Gemeente Amsterdam panoramas (CC BY 4.0). No pixels or third-party meshes imported."
+      }
+    },
+    {
+      id: "krijtberg",
+      name: "De Krijtberg",
+      landmarkId: "krijtberg",
+      modelUrl: "./models/krijtberg.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012185920",
+        "w751713218",
+        "w751713219",
+        "w751713221",
+        "w751713222",
+        "w751713223",
+        "w751905303",
+        "w751979070",
+        "w751713220",
+        "w751905304",
+        "w751905305"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.888002067535053,
+          52.367751423106036
+        ],
+        headingDegrees: 50,
+        lengthMetres: 56,
+        widthMetres: 34
+      },
+      surveyed: {
+        anchor: [
+          4.888002067535053,
+          52.367751423106036
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG pand 0363100012185920 and 3DBAG LoD2.2 walls and roofs, native east/south metres from the anchor (nave ridge 33.5 m, clerestory 25.8 m, aisles 15 m); spire heights read from photographs because 3DBAG truncates them"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.888269462732171,
+              52.36779950703787
+            ],
+            [
+              4.888424505410364,
+              52.36787988138009
+            ],
+            [
+              4.888425214024362,
+              52.36788084605138
+            ],
+            [
+              4.888420032827925,
+              52.36788459906657
+            ],
+            [
+              4.888418865328181,
+              52.3678839650077
+            ],
+            [
+              4.8883905960382315,
+              52.36790397840406
+            ],
+            [
+              4.888391910359793,
+              52.36790461308178
+            ],
+            [
+              4.888385546499751,
+              52.36790908013043
+            ],
+            [
+              4.88838072967868,
+              52.367906543274884
+            ],
+            [
+              4.888343977130178,
+              52.36793277637186
+            ],
+            [
+              4.88834504246125,
+              52.36793335607466
+            ],
+            [
+              4.888344854203857,
+              52.367937040246744
+            ],
+            [
+              4.888343375879543,
+              52.367937932789914
+            ],
+            [
+              4.888337936398222,
+              52.367938539011156
+            ],
+            [
+              4.888336768898238,
+              52.367937904951475
+            ],
+            [
+              4.8882997642747865,
+              52.36796435267786
+            ],
+            [
+              4.888304727919384,
+              52.367966890155316
+            ],
+            [
+              4.8882983630309,
+              52.36797144707217
+            ],
+            [
+              4.888297048708703,
+              52.36797081239343
+            ],
+            [
+              4.888268925119586,
+              52.36799091625185
+            ],
+            [
+              4.888270239441974,
+              52.3679915509309
+            ],
+            [
+              4.888265355502306,
+              52.36799498163408
+            ],
+            [
+              4.888264911397484,
+              52.367995303320484
+            ],
+            [
+              4.888264035519465,
+              52.36799485024341
+            ],
+            [
+              4.888217284936389,
+              52.367971375026016
+            ],
+            [
+              4.888220825899398,
+              52.36796724661038
+            ],
+            [
+              4.888157663057647,
+              52.36793435496947
+            ],
+            [
+              4.888116188368815,
+              52.36791177375831
+            ],
+            [
+              4.888032095243253,
+              52.36786779284865
+            ],
+            [
+              4.888012760414867,
+              52.36785713278251
+            ],
+            [
+              4.88799065213643,
+              52.36787242654373
+            ],
+            [
+              4.887981235784778,
+              52.36787805809149
+            ],
+            [
+              4.887881887818553,
+              52.36782621140923
+            ],
+            [
+              4.88778664511051,
+              52.36777491223466
+            ],
+            [
+              4.887774030893166,
+              52.36776984387676
+            ],
+            [
+              4.887769188726427,
+              52.36776956280716
+            ],
+            [
+              4.887767025227109,
+              52.367762192737416
+            ],
+            [
+              4.887737997568431,
+              52.36775043118671
+            ],
+            [
+              4.887725063452279,
+              52.3677529111596
+            ],
+            [
+              4.887721859058533,
+              52.36774670510148
+            ],
+            [
+              4.887732866284582,
+              52.367745834789886
+            ],
+            [
+              4.8877375006298225,
+              52.36772805865296
+            ],
+            [
+              4.8877275347862215,
+              52.36772381035729
+            ],
+            [
+              4.887730643821452,
+              52.3677202283849
+            ],
+            [
+              4.887742089501162,
+              52.367722146115646
+            ],
+            [
+              4.887751538600785,
+              52.367709693044695
+            ],
+            [
+              4.8877547964561225,
+              52.36770332550597
+            ],
+            [
+              4.8877557041627355,
+              52.36769703793039
+            ],
+            [
+              4.88775396101854,
+              52.36769406462911
+            ],
+            [
+              4.887747681873387,
+              52.367685787412746
+            ],
+            [
+              4.887753426183202,
+              52.367681578428446
+            ],
+            [
+              4.8877372614471986,
+              52.36766192599288
+            ],
+            [
+              4.88772595269774,
+              52.36766219285548
+            ],
+            [
+              4.887724755627376,
+              52.367658970201234
+            ],
+            [
+              4.887735734165457,
+              52.367656733634824
+            ],
+            [
+              4.887736975725279,
+              52.367639051037386
+            ],
+            [
+              4.887730129706894,
+              52.36763678421397
+            ],
+            [
+              4.887729991476831,
+              52.367634716455
+            ],
+            [
+              4.887725166011058,
+              52.36763164926041
+            ],
+            [
+              4.887727975428447,
+              52.367628596299596
+            ],
+            [
+              4.8877386405162015,
+              52.36763202966256
+            ],
+            [
+              4.887764313841126,
+              52.36761307500854
+            ],
+            [
+              4.887758827446956,
+              52.367606113344046
+            ],
+            [
+              4.887763627146289,
+              52.367603643992354
+            ],
+            [
+              4.8877718235409455,
+              52.36760986211975
+            ],
+            [
+              4.887806201213168,
+              52.36760547731902
+            ],
+            [
+              4.887808589257617,
+              52.36759811746054
+            ],
+            [
+              4.887814900624317,
+              52.367598314848415
+            ],
+            [
+              4.887814708618894,
+              52.36760624120857
+            ],
+            [
+              4.887845968155453,
+              52.367615378752134
+            ],
+            [
+              4.887858477327371,
+              52.36761020964528
+            ],
+            [
+              4.887865071831004,
+              52.36761264616721
+            ],
+            [
+              4.887874604671931,
+              52.36761492431433
+            ],
+            [
+              4.887877413976827,
+              52.36761188033723
+            ],
+            [
+              4.887887374231517,
+              52.36761531970196
+            ],
+            [
+              4.8879094703802215,
+              52.36760109544712
+            ],
+            [
+              4.887907737313833,
+              52.36759461697933
+            ],
+            [
+              4.887913034995557,
+              52.36759356079387
+            ],
+            [
+              4.8879174615569045,
+              52.367599457430735
+            ],
+            [
+              4.88795134522453,
+              52.36759852178954
+            ],
+            [
+              4.887955495092342,
+              52.367591169357375
+            ],
+            [
+              4.887961258671058,
+              52.36759176887504
+            ],
+            [
+              4.887959894958288,
+              52.36759943863842
+            ],
+            [
+              4.887987852219596,
+              52.36761237301331
+            ],
+            [
+              4.887993882047935,
+              52.3676088842389
+            ],
+            [
+              4.8880122036638305,
+              52.36761693359797
+            ],
+            [
+              4.8880601569062785,
+              52.36758176010279
+            ],
+            [
+              4.888085887781939,
+              52.36756289549919
+            ],
+            [
+              4.888178507253018,
+              52.36760852111474
+            ],
+            [
+              4.888307236433584,
+              52.367673325825635
+            ],
+            [
+              4.888337677800952,
+              52.367688643342966
+            ],
+            [
+              4.888269319948503,
+              52.36773778775921
+            ],
+            [
+              4.888219642828565,
+              52.36777349333593
+            ],
+            [
+              4.888269462732171,
+              52.36779950703787
+            ]
+          ]
+        ]
+      },
+      materialOverrides: {
+        stone: "#b9a98f",
+        brick: "#6e4a3d",
+        slate: "#4b4e55"
+      },
+      attribution: {
+        title: "De Krijtberg - original low-poly reconstruction",
+        author: "Map Recall; church by Alfred Tepe (1881-1883)",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Krijtberg",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original geometry from the BAG/3DBAG massing and measurements read from Commons photographs (Zairon, CC BY-SA 4.0; Alf van Beem, CC0; RCE 20369642, CC BY-SA 4.0) and a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or third-party meshes imported."
+      }
+    },
+    {
+      id: "wilhelmina-ruiterstandbeeld",
+      name: "Ruiterstandbeeld Wilhelmina",
+      landmarkId: "extract_landmarks_1386134518",
+      modelUrl: "./models/wilhelmina-ruiterstandbeeld.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8923071,
+          52.3691751
+        ],
+        headingDegrees: 0,
+        lengthMetres: 3.8,
+        widthMetres: 2.8
+      },
+      surveyed: {
+        anchor: [
+          4.8923071,
+          52.3691751
+        ],
+        northOffsetDegrees: 0,
+        source: "Backlog destination point (OSM memorial); statue position and facing read from Gemeente Amsterdam panoramas (2025-06-30, 2025-01-20); the facing is a visual estimate, not a surveyed bearing"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#3b3f3a",
+        concrete: "#8f9091",
+        greyBrick: "#6e7073",
+        gold: "#a38d4d"
+      },
+      attribution: {
+        title: "Ruiterstandbeeld Wilhelmina - original low-poly reconstruction",
+        author: "Map Recall; commemorated sculpture by Theresia van der Pant (1960)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/Category:Equestrian_statue_of_Wilhelmina,_Rokin_(Amsterdam)",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly figure and pedestal. Pose and proportions from RCE photographs by Loek Tangel (CC BY-SA 4.0), a FaceMePLS photograph (CC BY 2.0) and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated from the photographs. No pixels or third-party meshes imported."
+      }
+    },
+    {
+      id: "sarphatimonument",
+      name: "Sarphatimonument",
+      landmarkId: "extract_landmarks_174768079",
+      modelUrl: "./models/sarphatimonument.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8955726,
+          52.3544625
+        ],
+        headingDegrees: 0,
+        lengthMetres: 26,
+        widthMetres: 26
+      },
+      surveyed: {
+        anchor: [
+          4.8955726,
+          52.3544625
+        ],
+        northOffsetDegrees: 0,
+        source: "Backlog destination point (OSM memorial) in the Sarphatipark; monument axes, pool outline and facing read from Commons photographs, the facing is a visual estimate, not a surveyed bearing"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        stone: "#a9a08e",
+        concrete: "#8e8f8c",
+        greyBrick: "#4f5457",
+        red: "#8c4e45",
+        bronze: "#2f332e",
+        copper: "#5f8f78",
+        gold: "#c4a24a",
+        dark: "#1f2326"
+      },
+      attribution: {
+        title: "Sarphatimonument - original low-poly reconstruction",
+        author: "Map Recall; commemorated monument of 1886 (bust by Jacques de Braekeleer)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/Category:Sarphati_monument",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly monument. Layout and proportions measured from Commons photographs by Ceescamel (CC BY-SA 4.0) and SanderK (CC BY-SA 2.5); no pixels or third-party meshes imported."
+      }
+    },
+    {
+      id: "thorbecke-standbeeld",
+      name: "Thorbecke statue",
+      landmarkId: "extract_landmarks_251933681",
+      modelUrl: "./models/thorbecke-standbeeld.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8958534,
+          52.3650584
+        ],
+        headingDegrees: 0,
+        lengthMetres: 6,
+        widthMetres: 6
+      },
+      surveyed: {
+        anchor: [
+          4.8958534,
+          52.3650584
+        ],
+        northOffsetDegrees: 0,
+        source: "Backlog destination point (OSM memorial) on the Thorbeckeplein; statue position and facing read from Gemeente Amsterdam panoramas (2025-06-19); the facing is a visual estimate, not a surveyed bearing"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#33372f",
+        concrete: "#9a9c9a",
+        greyBrick: "#6b6e6f",
+        gold: "#b59a4e",
+        dark: "#1c1f22"
+      },
+      attribution: {
+        title: "Thorbecke statue - original low-poly reconstruction",
+        author: "Map Recall; commemorated sculpture by Ferdinand Leenhoff (1876)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/Category:Statue_of_Johan_Rudolph_Thorbecke,_Amsterdam",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly figure, pedestal and railing. Pose and costume from Commons photographs (public domain; CC BY-SA 3.0) and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated from the photographs. No pixels or third-party meshes imported."
       }
     }
   ];

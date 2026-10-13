@@ -1230,6 +1230,12 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+- **American Hotel leftovers** (2026-10-14): the tower drum (R 1.75 at
+  [-7.6, 18.3]) stands inside the 3DBAG tower block below 28 m while the
+  footprint's bulge fits a circle at (-7.66, 19.59); decide whether the
+  upper tower moves ~1.3 m south against the pitched views; inventory
+  `sheetBox` crops; `meta.json`/`research.json` sources; 3 of 30 gable-front
+  openings flagged off-size.
 - **Tropenmuseum survey** (2026-10-14): the BAG pand 0363100012082861 is
   a 4-vertex rhombus, the museum exists as ~25 OSM stand-in ways with rough
   heights and the 3DBAG facts are unusable; a survey lane must build the

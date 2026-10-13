@@ -1,5 +1,25 @@
 # Canal Recall — what is built
 
+## American Hotel rebuilt from measured facades (2026-10-14, night)
+
+Lane `rework/american-hotel-20261014`. The user's "poor reconstruction"
+and "weird use of kit" sheets were this model, not the Hoofdbureau. Five
+fronts measured on rectified panorama crops (`american-hotel-facades.json`,
+`-walls.ts`): the tower now has its stages, belfry, clock stage with four
+dials, cap and cone; the curved corner follows the 2.34 m bay with
+caryatid piers, the corbel table, striped hoods, paired windows, six
+oriels and the rooftop AMERICAN HOTEL sign; the café front's arches sit on
+the measured 6.05 m pitch with the loggia awnings and the BAR AMERICAIN
+canopy; the Marnixstraat pavilion has its three-light arch, loggia on
+columns, disc balustrade, gables and star gablets. 37,319 tris, 499 KB
+(trimmed to the budget by fewer segments on the curved parts), z-fight
+0.27 m², slots 100 %, inventory 45 items (28 modelled, 14 simplified, 3
+skipped). Inferred: tower stage heights (±0.4 m from pitched views), the
+Marnixstraat main block, loggia depths. Open: the tower drum sits ~1.3 m
+north of the footprint's bulge below 28 m, so the faceted shell shows
+there; inventory items have no `sheetBox`.
+
+
 ## Landmark queue, batch 6 (2026-10-14, night)
 
 Lane `landmarks/queue-6-20261014`. Noorderkerk (16.2k tris: the Greek
