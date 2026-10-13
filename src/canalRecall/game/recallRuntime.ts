@@ -925,6 +925,14 @@ export class GameRecallRuntime {
     });
   }
 
+  /** Route questions per minute: an explicit `game.maxAsksPerMinute` (tests,
+   *  experiments) wins, then the rider's setting, then the default. */
+  _askBudgetPerMinute(): number | undefined {
+    if (typeof this.maxAsksPerMinute === 'number') return this.maxAsksPerMinute;
+    const prefs = (this._overlay ?? window.CanalRecallOverlay?.getOverlay?.())?.store.getState().prefs;
+    return prefs?.maxAsksPerMinute;
+  }
+
   /** Classify the name under the vehicle for the question budget. */
   _budgetForRouteName(name: string): BudgetDecision {
     const key = this._normaliseCanalName(name);
@@ -938,7 +946,7 @@ export class GameRecallRuntime {
       teachingStreet: onRoute,
     };
     return decideQuestion(this._questionBudget || EMPTY_BUDGET, event, this.raceTime, {
-      maxAsksPerMinute: this.maxAsksPerMinute,
+      maxAsksPerMinute: this._askBudgetPerMinute(),
     });
   }
 
