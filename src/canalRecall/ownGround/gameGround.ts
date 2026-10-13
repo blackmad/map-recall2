@@ -363,7 +363,7 @@ export class OwnGround {
       deckTop: std({ vertexColors: true, roughness: 0.85 }),
       // Matte water (user 2026-10-13 'do not need this reflection'); the mood pass's bluer tone (GROUND_TONES.water).
       water: std({ color: G.water, roughness: 0.65, envMapIntensity: 0.5 }),
-      // Parks (parks.ts): textured surfaces, ponds like the canals but greener, one vertex-coloured mesh each for hedges and furniture.
+      // Parks (parks.ts): textured surfaces, ponds like the canals, one vertex-coloured mesh each for hedges and furniture.
       lawn: std({ map: this.canvasTexture(256, 5, (g, s) => { noise(g, s, G.lawn, 18, 2); stripes(g, s); }), roughness: 1 }),
       bed: std({ map: this.canvasTexture(256, 3, (g, s) => { noise(g, s, G.bed.soil, 24, 2); dabs(g, s, G.bed.leaf, 260, 3, 7); }), roughness: 1 }),
       shrub: std({ map: this.canvasTexture(256, 6, (g, s) => { noise(g, s, G.shrub.base, 22, 3); dabs(g, s, G.shrub.leaf, 160, 6, 14); }), roughness: 1 }),

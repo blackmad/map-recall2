@@ -268,3 +268,57 @@ under "named locations"; `BUNDLES_DIR` serves bundles built with
    ring is resident): 0.15-2.3 s, typically 1.0-2.2 s, a cell builds in 80 ms
    median and installs in 3 ms (one per frame); the basemap fills now cover
    that interval.
+
+## Own ground: parks (`parks-v1`, 2026-10-13)
+
+User (Cremerplein screenshot): a park was one flat green with trees around a
+dark box. `ownGround/parks.ts` now draws, inside OSM `leisure=park`, public
+`leisure=garden` (municipal, public, community, street-side, open or named;
+never back gardens or roofs) and `leisure=playground`, what the city surveyed:
+
+- **Surfaces** (BGT, a polygon is kept when its interior point lies in a park):
+  lawn (`gras- en kruidachtigen`, untyped `groenvoorziening`), planting beds
+  (planten, struikrozen, bodembedekkers), shrub planting (heesters,
+  bosplantsoen, bos), bark, play sand (`zand`), gravel (`half verhard`,
+  `onverhard`), asphalt paths and plazas (`gesloten verharding`), paving, red
+  cycle paths (`fietspad`), ponds (`waterdeel`; skipped where the canal water
+  already draws it). Each has its own `GROUND_TONES` colour and a lift between
+  the OSM area fill (0.015) and the street bands (0.03+), so a street always
+  wins; draw ranks 1.2-1.7 in `PARK_RANK`. `erf` (yards) stays the park fill.
+- **Furniture**: BGT `haag` polygons extruded 1.05 m and OSM hedges as 0.8 m
+  boxes; BGT `scheiding` hek/muur and OSM fences/walls not within 1 m of a BGT
+  line (post-and-rail fences, 0.75 m walls); BGT light masts (real positions);
+  OSM benches turned to the nearest path; OSM `playground=*` pieces. By rule
+  (`gen: 1`): benches in parks that map none, along their paths at the
+  measured spacing (path length per bench over 100 parks: median 158 m, p25
+  67, p75 289), and a sandpit ring, swing and slide in playgrounds that map no
+  equipment (deepest points, ≥ 6 m apart, clear of paths and buildings).
+  Lamps are not invented: a park without BGT masts is unlit. Near ring only;
+  the far ring keeps surfaces (coarser) and hedges.
+- **Paths**: an OSM path way that a BGT path polygon covers (≥ 80 % of 2 m
+  samples, inside a park) is not drawn as a band (3,713 ways); the surveyed
+  width and surface replace it.
+- **Buildings** keep their BAG footprints (bag-tiles); the BGT partition
+  never paints over a `pand`, and placed furniture keeps 1 m from one. The
+  Cremerplein buurtcentrum (BAG 0363100012215668) is a named regression.
+
+Data: `scripts/own-ground/fetch-bgt-parks.ts` (osmium on the cached OSM pbf,
+PDOK BGT OGC API per park cell, cached under `artifacts/own-ground/raw/`),
+staged to `artifacts/own-ground/staging/parks-v1` with `report.json`, then
+copied to `public/data/extracts/amsterdam/parks-v1/` (193 cells, 2.1 MB gz,
+geometry as delta-encoded decimetres in the game frame). Coverage: 325 parks
+(303 with BGT polygons, median 96 % of the park area surveyed), 496 public
+gardens (271), 1,137 playgrounds (1,027). Off: `?parks=0` or
+`window.__canalRecallParks = false`.
+
+Checks: park unit tests in `test:own-ground`; `check:own-ground-cells`
+(Cremerplein, Bellamyplein, Sarphatipark: every street probe unchanged, the
+flat park fill replaced at ≥ 60-70 % of its probes, the buurtcentrum
+footprint clear); shots and cost per park cell:
+`OWN_GROUND=1 PW_PORT=4471 SHOT_TAG=after npx playwright test own-ground-parks --project=desktop`
+(`PARKS=0` for the baseline) into `artifacts/own-ground-parks/`.
+
+Known gaps: lawn, bed and shrub are flat textures (no shrub volume beyond
+hedges); BGT `muur` heights are unknown (all 0.75 m); the playground kit and
+generated benches are rule-placed; the OSM park fill under the BGT surfaces is
+still drawn (hidden; 20-160k triangles per park cell).

@@ -620,13 +620,13 @@ export const GROUND_TONES = {
   water: '#46707c',
   // Parks (parks-v1, ownGround/parks.ts, 2026-10-13): mown lawn fresher than the park fill under it, planting beds
   // as soil with green dabs, shrub planting darker and clumped, bark mulch, play sand, shell/half-paved paths lighter
-  // than street gravel, park asphalt lighter than the road's, ponds a little greener than the canals.
+  // than street gravel, park asphalt lighter than the road's, ponds the canal tone (a greener one read as a shadow).
   lawn: [110, 154, 74] as RGB,
   bed: { soil: [98, 80, 60] as RGB, leaf: [84, 122, 58] as RGB },
   shrub: { base: [56, 92, 46] as RGB, leaf: [76, 116, 56] as RGB },
   bark: [118, 84, 58] as RGB,
   sand: [212, 194, 150] as RGB,
   parkGravel: [198, 184, 152] as RGB,
-  parkPath: [98, 100, 104] as RGB,
-  pond: '#4a6e68',
+  parkPath: [110, 110, 112] as RGB,
+  pond: '#46707c',
 } as const;
