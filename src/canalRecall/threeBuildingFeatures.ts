@@ -149,6 +149,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
       const dims = STYLE_DIMS[layout];
       // A measured pitched slot picks the cell (pantile or slate) and the tint; other slots keep the planned tone.
       if (measured?.cell && measured.cell !== 'flat') plan = { ...plan, material: measured.cell };
+      // Where dormers are a choice (not a mansard's or a school roof's own), 3DBAG's roof parts decide, not the dice.
+      if (typeof p.roofDormer === 'boolean' && (plan.kind === 'pitched' || plan.kind === 'hipped' || plan.kind === 'gable' || plan.kind === 'halfHipped')) plan = { ...plan, dormers: p.roofDormer };
       building.roof = { plan, roofHex: measured?.cell && measured.cell !== 'flat' ? measured.hex : roofHexFor(look, plan), dims: { bayM: dims.bay, storeyM: dims.storey, cellM: ROOF_CELL_M },
         layers: { slope: roofBase + (plan.material === 'tile' ? 0 : 1), plain, dormer: roofBase + 2 } };
       if(plan.repeatedTerrace){

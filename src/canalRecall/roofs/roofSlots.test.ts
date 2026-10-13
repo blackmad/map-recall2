@@ -118,3 +118,14 @@ test('furniture units stay within 60 triangles each and the measured set is boun
   assert.equal(sink.tris.length, (16 + 5) * UNIT_TRIANGLES);
   assert.ok(sink.tris.every(t => t.p.every(v => v[2] >= 10 - 1e-9)), 'nothing below the roof');
 });
+
+test('3DBAG dormer flags round-trip and decide the planned dormers; tiles without them keep the dice', () => {
+  const tile = encodeRoofFactTile([['0363100012000001', fact({ slot: 'slate', dormer: true })], ['0363100012000002', fact({ slot: 'slate', dormer: false })]], 'CC BY 4.0', 'test');
+  const back = decodeRoofFactTile(JSON.parse(JSON.stringify(tile)));
+  assert.equal(back.get('0363100012000001')!.dormer, true);
+  assert.equal(back.get('0363100012000002')!.dormer, false);
+  assert.equal(decodeRoofFactTile({ ...tile, dormer: undefined }).get('0363100012000001')!.dormer, undefined);
+  const p: Record<string, unknown> = {};
+  applyRoofFact(p, back.get('0363100012000002')!);
+  assert.equal(p.roofDormer, false);
+});

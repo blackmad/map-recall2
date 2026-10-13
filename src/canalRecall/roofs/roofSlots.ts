@@ -221,6 +221,8 @@ export type RoofFactTile = {
   solar: number[];
   /** Rows with a roof terrace. */
   terrace: number[];
+  /** Rows whose 3DBAG roof has dormers (flat tops inside a sloped roof, `bag3d-roof-attributes.mts`). */
+  dormer?: number[];
   /** Sparse: [row, itemCount, ...items (6 numbers each, `encodeFurniture`)]. */
   furniture: number[];
 };
@@ -242,14 +244,14 @@ export function decodeFurniture(flat: readonly number[] | undefined, from = 0, c
   return out;
 }
 
-export type RoofFact = { slot: RoofSlot; rgb: RGB; confidence: number; solarShare: number; terrace: boolean; furniture: FurnitureItem[] };
+export type RoofFact = { slot: RoofSlot; rgb: RGB; confidence: number; solarShare: number; terrace: boolean; furniture: FurnitureItem[]; dormer?: boolean };
 
 const q5 = (v: number) => Math.max(0, Math.min(31, Math.round(v / 255 * 31)));
 const d5 = (v: number) => Math.round(v * 255 / 31);
 
 export function encodeRoofFactTile(entries: ReadonlyArray<[string, RoofFact]>, licence: string, imagery: string, minConfidence = MIN_CONFIDENCE): RoofFactTile {
   const kept = entries.filter(([, f]) => f.confidence >= minConfidence).sort((a, b) => Number(a[0]) - Number(b[0]));
-  const tile: RoofFactTile = { version: 1, licence, imagery, slots: ROOF_SLOTS, read: entries.length, ids: [], slot: [], rgb: [], conf: [], solar: [], terrace: [], furniture: [] };
+  const tile: RoofFactTile = { version: 1, licence, imagery, slots: ROOF_SLOTS, read: entries.length, ids: [], slot: [], rgb: [], conf: [], solar: [], terrace: [], dormer: [], furniture: [] };
   let prev = 0;
   kept.forEach(([id, f], row) => {
     const v = Number(id); tile.ids.push(v - prev); prev = v;
@@ -259,6 +261,7 @@ export function encodeRoofFactTile(entries: ReadonlyArray<[string, RoofFact]>, l
     const solar = Math.round(f.solarShare * 10);
     if (solar > 0) tile.solar.push(row, solar);
     if (f.terrace) tile.terrace.push(row);
+    if (f.dormer) tile.dormer!.push(row);
     if (f.furniture.length) tile.furniture.push(row, f.furniture.length, ...encodeFurniture(f.furniture));
   });
   return tile;
@@ -268,7 +271,7 @@ export function encodeRoofFactTile(entries: ReadonlyArray<[string, RoofFact]>, l
 export function decodeRoofFactTile(tile: RoofFactTile): Map<string, RoofFact> {
   const out = new Map<string, RoofFact>();
   if (!tile || tile.version !== 1 || !Array.isArray(tile.ids) || !Array.isArray(tile.slot) || tile.ids.length !== tile.slot.length) return out;
-  const solar = new Map<number, number>(), terrace = new Set(tile.terrace ?? []), furniture = new Map<number, FurnitureItem[]>();
+  const solar = new Map<number, number>(), terrace = new Set(tile.terrace ?? []), dormer = new Set(tile.dormer ?? []), furniture = new Map<number, FurnitureItem[]>();
   for (let i = 0; i + 1 < (tile.solar ?? []).length; i += 2) solar.set(tile.solar[i], tile.solar[i + 1] / 10);
   for (let i = 0; i + 1 < (tile.furniture ?? []).length;) {
     const row = tile.furniture[i], count = tile.furniture[i + 1];
@@ -281,7 +284,7 @@ export function decodeRoofFactTile(tile: RoofFactTile): Map<string, RoofFact> {
     const slot = (tile.slots ?? ROOF_SLOTS)[tile.slot[row]];
     if (!slot || !(ROOF_SLOTS as readonly string[]).includes(slot)) continue;
     const c = tile.rgb[row] ?? 0;
-    out.set(String(id).padStart(16, '0'), { slot, rgb: [d5((c >> 10) & 31), d5((c >> 5) & 31), d5(c & 31)], confidence: (tile.conf[row] ?? 0) / 10, solarShare: solar.get(row) ?? 0, terrace: terrace.has(row), furniture: furniture.get(row) ?? [] });
+    out.set(String(id).padStart(16, '0'), { slot, rgb: [d5((c >> 10) & 31), d5((c >> 5) & 31), d5(c & 31)], confidence: (tile.conf[row] ?? 0) / 10, solarShare: solar.get(row) ?? 0, terrace: terrace.has(row), furniture: furniture.get(row) ?? [], dormer: tile.dormer ? dormer.has(row) : undefined });
   }
   return out;
 }

@@ -7,6 +7,7 @@
  *   roofMeasured    the measured colour, cast removed ('#rrggbb')
  *   roofSolar       solar share 0..1 (only when > 0)
  *   roofTerrace     true for a roof terrace
+ *   roofDormer      3DBAG says the sloped roof has (true) or lacks (false) dormers
  *   roofFurniture   encoded placements (`encodeFurniture`, comma-joined), offsets from the outline's first vertex
  *
  * `?roofFacts=0` turns it off. A missing or unreadable tile leaves the priors in place.
@@ -38,6 +39,7 @@ export function applyRoofFact(properties: Record<string, unknown>, fact: RoofFac
   properties.roofMeasured = rgbToHex(fact.rgb);
   if (fact.solarShare > 0) properties.roofSolar = fact.solarShare;
   if (fact.terrace) properties.roofTerrace = true;
+  if (fact.dormer !== undefined) properties.roofDormer = fact.dormer;
   // A string, not an array: the same properties go into the MapLibre source, which wants primitives.
   if (fact.furniture.length) properties.roofFurniture = encodeFurniture(fact.furniture).join(',');
 }
