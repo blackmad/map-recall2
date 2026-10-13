@@ -491,19 +491,19 @@
     4.8199166
    ],
    "pandIds": [
-    "0363100012083385"
+    "0363100012241007"
    ],
-   "verblijfsobject": "",
-   "bagAddress": "(pand under the OSM point; address geocode was far away)",
-   "gebruiksdoel": "onderwijsfunctie",
-   "bouwjaar": 1977,
-   "osmToAddressM": 0,
+   "verblijfsobject": "0363010012073107",
+   "bagAddress": "Slotermeerlaan 103L-42, Amsterdam",
+   "gebruiksdoel": "overige gebruiksfunctie",
+   "bouwjaar": 2013,
+   "osmToAddressM": 75,
    "signatureElements": [],
    "sharedWith": "",
    "modelStatus": "pending",
    "panoramaYears": [
-    2022,
-    2025
+    2018,
+    2022
    ],
    "referenceStatus": "ok"
   },
