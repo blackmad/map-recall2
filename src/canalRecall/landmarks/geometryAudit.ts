@@ -36,7 +36,7 @@ export interface GeometryAuditThresholds {
    *  stand 4.5 cm (frame), 9 cm (glass) and 13.5 cm (bars) proud of an unholed wall on purpose (z-fight clearance, `zTightTol`), so a frame or a
    *  lone pane resting there is mounted, not detached. */
   floatTol: number;
-  /** Distance (m) within which opening parts join into one assembly: just over the 4.5 cm layer pitch (touchTol is 3 cm). */
+  /** Distance (m) within which opening parts join into one assembly: 10 cm for the layered-sheet models (sheets stack 4.5 cm apart up to 13.5 cm), else touchTol. */
   joinTol: number;
   /** Floating gap (m) beyond which a detached opening is a hard problem (visible shadow line / halo). */
   floatFail: number;
