@@ -766,7 +766,10 @@ for (const c of [0.64, 1.4]) {
   assert.equal(archetypeFor('x', 1890, 15), 'c19');
   assert.equal(archetypeFor('x', 1925, 15), 'school');
   assert.equal(archetypeFor('x', 1965, 15), 'modern');
-  assert.ok(BAY_STYLES.canal.every(s => s.shape === 'rect'), 'canal houses have flat lintels; arched hoods are 19th century');
+  // 635fc6a1 gave canal houses shallow segmental heads (Amsterdam 17th-18th century masonry), so the rule is
+  // "no semicircular arch or rounded head", not "only rect". The segmental variants must exist and stay shallow.
+  assert.ok(BAY_STYLES.canal.every(s => s.shape === 'rect' || s.shape === 'segmental'), 'canal houses have flat or segmental heads; semicircular arches and round heads are 19th century');
+  assert.ok(BAY_STYLES.canal.some(s => s.shape === 'segmental'), 'canal houses keep their segmental-head variants');
   assert.ok(BAY_LAYER_COUNT < 200, 'bay layers fit the byte layer index with room for roofs');
   // A plain bay is bare wall at every archetype (user report 2026-10-04: a modern gable face drew a
   // ribbon window band). `draw` branches on `isBareBay` first, so this guards the regression.
