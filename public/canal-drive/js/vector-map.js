@@ -2145,6 +2145,11 @@ class VectorBasemap {
     return this._elevation ? this._elevation.stats() : { enabled: false, ready: false };
   }
 
+  /** True while the own ground drapes the route and highlight, so the canvas must not draw its flat copies. */
+  ownGroundDrapesOverlays() {
+    return !!(this._ownGround && this._ownGround.drapesOverlays && this._ownGround.drapesOverlays());
+  }
+
   ownGroundStatus() {
     return this._ownGround ? this._ownGround.status() : { enabled: !!this._ownGroundEnabled, ready: false };
   }

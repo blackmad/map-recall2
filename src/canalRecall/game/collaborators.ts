@@ -240,6 +240,8 @@ export interface VectorMap {
   ): void;
   /** Paint the just-answered street's name on the road; null clears it. */
   setAnsweredStreetName?(track: Track, loader: OsmLoader, stamp: { name: string; segmentIndex: number; correct: boolean } | null, rider?: Readonly<{ x: number; y: number; angle: number }>): void;
+  /** The own ground drapes the route and question highlight; the canvas must not draw flat copies. */
+  ownGroundDrapesOverlays?(): boolean;
   isWater(x: number, y: number, loader: OsmLoader): boolean;
   inspectBuilding(cssX: number, cssY: number, canvasRect: DOMRect): BuildingHit | null;
   setActiveLandmark(landmark: LandmarkNotice | null): void;
