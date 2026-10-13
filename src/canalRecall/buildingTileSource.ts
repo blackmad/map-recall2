@@ -111,9 +111,12 @@ export function planTiles(
   return { load, evict, wanted };
 }
 
+/** The two tile sets: today's OSM/BAG-mixed tiles and the BAG-keyed ones (`?bagTiles=1`, bagTiles.ts). */
+export type TileSetDir = 'building-tiles' | 'bag-tiles';
+
 /** Where a tile lives, relative to the extract directory. */
-export const tileUrl = (tile: TileId, base: string): string =>
-  `${base.replace(/\/$/, '')}/building-tiles/${tile.z}/${tile.x}/${tile.y}.geojson.gz`;
+export const tileUrl = (tile: TileId, base: string, dir: TileSetDir = 'building-tiles'): string =>
+  `${base.replace(/\/$/, '')}/${dir}/${tile.z}/${tile.x}/${tile.y}.geojson.gz`;
 
 export type BuildingFeature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
 
