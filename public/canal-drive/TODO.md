@@ -735,9 +735,13 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 - **Roofs after the attachment fix**: pitched-vs-flat split pands still
   follow one plan (the roof-facts slot now colours the lid; the shape is one).
 - **Own ground after the 2026-10-13 lanes (HISTORY)**: still open before a
-  desktop default-on in the belt: the Magere Brug's two movable frames and
-  the slab-like canal bridges (bridge-kit lane running; `bridge:movable` and
-  `colour` need a refetch); the belt audit's 18 tram-rail-tops-the-street
+  desktop default-on in the belt: bridge-kit leftovers (the Blauwbrug and
+  BRU0063 hit the 600-tri budget so their arches are 4–5 segments and have
+  no lamps; the Magere Brug railing is sparse at ~9 m posts; the Torensluis'
+  42 m-wide footprint reads oddly from the water; flat-footprint water level
+  is a heuristic, lowest top − 1.8 m; the Melkmeisjesbrug's water polygon
+  stops at the bridge so a quay wall and land strip cross under it, a data
+  fix for the water layer); the belt audit's 18 tram-rail-tops-the-street
   findings on bridges (BRU0030, BRU0041, BRU0001…; pre-existing, the audit
   needs `tram` counted as a street surface or the rails lowered); land at
   Rozengracht corners with no mapped sidewalk; a coarse far ring beyond the
