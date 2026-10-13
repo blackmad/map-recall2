@@ -26,10 +26,13 @@ export const DEFAULT_LIGHT_RIG: Required<LightRigOptions> = {
   // canal-side facades that face the street on the main belt stay mostly lit.
   sunAzimuthDeg: 215,
   sunElevationDeg: 40,
-  sunColour: '#fff1dc',
-  sunIntensity: 2.1,
-  skyColour: '#dbe8ff',
-  groundColour: '#8d8270',
+  // Mood pass (2026-10-13): a warmer afternoon sun (was #fff1dc), a less blue
+  // sky and a lighter, warmer street bounce (were #dbe8ff over #8d8270), so
+  // shade sides read as daylight rather than dusk. Bands: docs/LOOK.md §Parity.
+  sunColour: '#ffe9cc',
+  sunIntensity: 2.15,
+  skyColour: '#e3ebf6',
+  groundColour: '#998a72',
   skyIntensity: 1.75,
   shadows: true,
   shadowMapSize: 2048,
@@ -67,9 +70,16 @@ export const SUN_HORIZONTAL: [number, number] = (() => {
  */
 export const BAKED_FACE_LIGHT: Vec3 = [SUN_HORIZONTAL[0] * 0.6, SUN_HORIZONTAL[1] * 0.6, 0.8];
 
-/** Baked shade of a wall facing (nx, ny) (ENU, horizontal unit): 0.8 facing away from the sun, 1.0 facing it. */
+/**
+ * The darkest baked wall (facing straight away from the sun). Was 0.8; 0.84
+ * since the mood pass (2026-10-13): shade sides read as daylight, not dusk,
+ * and the sun side stays at 1.0.
+ */
+export const BAKED_WALL_MIN = 0.84;
+
+/** Baked shade of a wall facing (nx, ny) (ENU, horizontal unit): BAKED_WALL_MIN facing away from the sun, 1.0 facing it. */
 export function bakedWallShade(nx: number, ny: number): number {
-  return 0.8 + 0.2 * (0.5 + 0.5 * (nx * SUN_HORIZONTAL[0] + ny * SUN_HORIZONTAL[1]));
+  return BAKED_WALL_MIN + (1 - BAKED_WALL_MIN) * (0.5 + 0.5 * (nx * SUN_HORIZONTAL[0] + ny * SUN_HORIZONTAL[1]));
 }
 
 /** Baked shade of any face from its ENU unit normal (roofs, kits): 0.5–1. */
@@ -89,7 +99,7 @@ const glslFloat = (v: number) => (Number.isInteger(v) ? v.toFixed(1) : String(+v
  */
 export const BAKED_SHADE_GLSL = `
   float shade;
-  if (abs(n.z) < 0.5) { vec2 h = normalize(n.xy + vec2(1e-6, 0.0)); shade = 0.8 + 0.2 * (0.5 + 0.5 * dot(h, vec2(${glslFloat(SUN_HORIZONTAL[0])}, ${glslFloat(SUN_HORIZONTAL[1])}))); }
+  if (abs(n.z) < 0.5) { vec2 h = normalize(n.xy + vec2(1e-6, 0.0)); shade = ${glslFloat(BAKED_WALL_MIN)} + ${glslFloat(1 - BAKED_WALL_MIN)} * (0.5 + 0.5 * dot(h, vec2(${glslFloat(SUN_HORIZONTAL[0])}, ${glslFloat(SUN_HORIZONTAL[1])}))); }
   else if (n.z < 0.0) shade = 0.5;
   else shade = clamp(0.58 + 0.42 * max(0.0, dot(n, vec3(${BAKED_FACE_LIGHT.map(glslFloat).join(', ')}))), 0.5, 1.0);`;
 

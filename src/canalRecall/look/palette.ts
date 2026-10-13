@@ -197,8 +197,16 @@ export const ROOF_TONES: Record<BuildingLook, { tile: readonly string[]; slate: 
   storybook: { tile: ['#b9553a', '#a94a33', '#c46a45'], slate: ['#556070', '#4a5666', '#657282'] },
   cartoon: { tile: ['#e85a3c', '#f08a2b', '#d94a3a'], slate: ['#3f5f8f', '#2f4a78', '#4f7bb0'] },
 };
-/** Bitumen and gravel flat roofs. */
-export const FLAT_ROOF_GREYS: readonly string[] = ['#8f8a83', '#9a958c', '#85817c', '#a09789'];
+/**
+ * Flat roofs: three kinds a reader can tell apart from 200 m, not one mid-grey
+ * (user, Kinkerbuurt aerial 2026-10-13: "so much grey"). Warm buff gravel,
+ * pale membrane (EPDM/PVC, light-coloured), dark cool bitumen. Index 0 is the
+ * light default and index 2 the dark one (`cityRoofTint`'s bitumen slot); which
+ * kind a roof is belongs to the roof-slot lane (orthophoto), not to this table.
+ * Were #8f8a83 #9a958c #85817c #a09789 (one grey band, L 0.5–0.58).
+ */
+export const FLAT_ROOF_TONES = { gravel: '#9e9281', membrane: '#c3c1bb', bitumen: '#56585e', pebble: '#a99b84' } as const;
+export const FLAT_ROOF_GREYS: readonly string[] = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
 /** The photo look's roofs, as one table (recipe houses map onto it). */
 export const CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS } as const;
 
@@ -309,7 +317,11 @@ export const CONTEXTUAL_BUILDING_COLOURS = {
   // green joins, and flat caps mix bitumen, terracotta, slate and gravel.
   priorBrickRed: '#a4523b', priorBrickBrown: '#84503a', priorBrickDark: '#6a3b2e', priorBrickBuff: '#c49a5c',
   priorPlaster: '#d3c3a0', priorModernLight: '#c2bdb2', priorModernGrey: '#7a8a94', priorCanalGreen: '#557260',
-  roof: '#7c8080', priorRoofWarm: '#9a5e48', priorRoofDark: '#56606a', priorRoofGravel: '#a59e8f',
+  // Mood pass (2026-10-13, "the whole city is a little dark/dour"; were #7c8080, #56606a, #a59e8f):
+  // seen from the chase the caps are most of the frame.
+  // Later the same day ("so much grey"): the caps follow FLAT_ROOF_TONES' three kinds
+  // (pale membrane, dark bitumen, warm gravel) instead of three greys.
+  roof: '#c3c1bb', priorRoofWarm: '#9a5e48', priorRoofDark: '#56585e', priorRoofGravel: '#a99b84',
 } as const;
 export type ContextualBuildingColour = keyof typeof CONTEXTUAL_BUILDING_COLOURS;
 
@@ -481,3 +493,37 @@ export function cityTint(slot: MaterialSlot, hex: string): string {
     default: return cityRoofTint(slot, hex);
   }
 }
+
+/**
+ * Foliage display tone (LOOK §Mood, 2026-10-13): the species priors in
+ * tree-typology.js are photo-sampled summer greens that read olive under the
+ * game's light. Yellow-greens (hue 60–125°) turn +8° toward green and gain
+ * 10 % saturation; purple and red-leaved cultivars, blue-green evergreens and
+ * bark keep their colour. A display prior, never evidence.
+ */
+export function foliageDisplayHex(hex: string): string {
+  const [h, s, l] = rgbToHsl(hexToRgb(hex));
+  if (h < 60 || h > 125 || s < 0.12) return hex;
+  return rgbToHex(hslToRgb([Math.min(125, h + 8), Math.min(0.75, s * 1.1), l]));
+}
+
+/**
+ * Own-ground surface albedos (ownGround/gameGround.ts), one table. Raised
+ * 2026-10-13: the grey pavers read as wet concrete and the canal as
+ * teal-black. RGB 0–255 for the canvas pavers/noise; hex for flat colours.
+ */
+export const GROUND_TONES = {
+  land: { base: [168, 158, 142] as RGB, joint: '#857b6d' },
+  paving: { base: [184, 174, 158] as RGB, joint: '#8f8577' },
+  square: { base: [190, 179, 161] as RGB, joint: '#958a7c' },
+  // Klinker warm grey-rose, asphalt darker and cooler than it ("so much grey": they shared one band).
+  klinker: { base: [158, 124, 114] as RGB, joint: '#7a6660' },
+  asphalt: [68, 72, 80] as RGB,
+  cycle: [156, 76, 66] as RGB,
+  gravel: [180, 166, 136] as RGB,
+  park: [96, 140, 70] as RGB,
+  wood: [70, 112, 58] as RGB,
+  parking: [102, 102, 105] as RGB,
+  kerb: '#aaa498',
+  water: '#46707c',
+} as const;

@@ -24,6 +24,7 @@ import { footprintBase } from './placement.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
+import { GROUND_TONES as G } from '../look/palette.js';
 
 export interface GroundHost {
   /** Ask for another frame. */
@@ -275,13 +276,13 @@ export class OwnGround {
     const THREE = this.THREE;
     let seed = 99;
     const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
-    const noise = (g: CanvasRenderingContext2D, s: number, base: [number, number, number], spread: number, grain = 2) => {
+    const noise = (g: CanvasRenderingContext2D, s: number, base: readonly number[], spread: number, grain = 2) => {
       for (let y = 0; y < s; y += grain) for (let x = 0; x < s; x += grain) {
         const v = (rnd() - 0.5) * spread;
         g.fillStyle = `rgb(${base[0] + v},${base[1] + v},${base[2] + v})`; g.fillRect(x, y, grain, grain);
       }
     };
-    const pavers = (base: [number, number, number], joint: string, metres: number, w: number, h: number) => this.canvasTexture(512, metres, (g, s) => {
+    const pavers = (base: readonly number[], joint: string, metres: number, w: number, h: number) => this.canvasTexture(512, metres, (g, s) => {
       g.fillStyle = joint; g.fillRect(0, 0, s, s);
       const pw = s * w / metres, ph = s * h / metres;
       for (let row = 0, y = 0; y < s; row++, y += ph) for (let x = row % 2 ? -pw / 2 : 0; x < s; x += pw) {
@@ -292,22 +293,22 @@ export class OwnGround {
     });
     const std = (o: Record<string, unknown>) => new THREE.MeshStandardMaterial({ roughness: 0.95, metalness: 0, ...o });
     const M: Record<string, any> = {
-      land: std({ map: pavers([150, 142, 130], '#6f675d', 3, 0.3, 0.3) }),
-      klinker: std({ map: pavers([128, 82, 66], '#5a463d', 2, 0.2, 0.1), roughness: 0.9 }),
-      asphalt: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [72, 74, 78], 18)) }),
-      cycle: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [146, 70, 62], 18)), roughness: 0.85 }),
-      paving: std({ map: pavers([168, 160, 148], '#7d756a', 3, 0.3, 0.3) }),
-      gravel: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [170, 156, 128], 30, 2)) }),
-      kerb: std({ color: '#9b958b', roughness: 0.9 }),
+      land: std({ map: pavers(G.land.base, G.land.joint, 3, 0.3, 0.3) }),
+      klinker: std({ map: pavers(G.klinker.base, G.klinker.joint, 2, 0.2, 0.1), roughness: 0.9 }),
+      asphalt: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, G.asphalt, 18)) }),
+      cycle: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, G.cycle, 18)), roughness: 0.85 }),
+      paving: std({ map: pavers(G.paving.base, G.paving.joint, 3, 0.3, 0.3) }),
+      gravel: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, G.gravel, 30, 2)) }),
+      kerb: std({ color: G.kerb, roughness: 0.9 }),
       paint: std({ color: '#f2f0ea', roughness: 0.6 }),
-      park: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, [92, 122, 66], 30, 3)), roughness: 1 }),
-      wood: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, [70, 96, 52], 34, 3)), roughness: 1 }),
-      square: std({ map: pavers([176, 166, 150], '#857c70', 4, 0.6, 0.6) }),
-      parking: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [92, 92, 96], 16)) }),
+      park: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, G.park, 30, 3)), roughness: 1 }),
+      wood: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, G.wood, 34, 3)), roughness: 1 }),
+      square: std({ map: pavers(G.square.base, G.square.joint, 4, 0.6, 0.6) }),
+      parking: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, G.parking, 16)) }),
       quay: std({ vertexColors: true }),
       deckBody: std({ vertexColors: true, roughness: 0.85 }),
       deckTop: std({ vertexColors: true, roughness: 0.85 }),
-      water: std({ color: '#304b4d', roughness: 0.1, envMapIntensity: 2.2 }),
+      water: std({ color: G.water, roughness: 0.1, envMapIntensity: 2.2 }),
     };
     for (const [layer, k] of Object.entries(OFFSET)) Object.assign(M[layer], { polygonOffset: true, polygonOffsetFactor: -k!, polygonOffsetUnits: -2 * k! });
     // Overlays: the game's own route / active-street colours (vector-map.js), draped.
