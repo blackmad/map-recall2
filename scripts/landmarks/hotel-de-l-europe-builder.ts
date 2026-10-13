@@ -2,7 +2,7 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {addShell} from './worship-shell';
 import {wallsOf} from './worship-walls';
-import {archBand, archSlab, archWindows, awning, disc, letters, poly, put, ringFrame, sashWindows, facePanel, setSink, slab} from './nearbar-kit';
+import {archBand, archSlab, archWindows, awning, disc, letters, poly, put, ringFrame, sashWindows, ledgeStrip, setSink, slab} from './nearbar-kit';
 import type {Frame} from './nearbar-kit';
 import source from './hotel-de-l-europe-footprints.json';
 
@@ -167,7 +167,7 @@ export function buildHotelDeLEurope(_w: number, _d: number, b: BuildingTools & {
     for (const [a, c] of F.chunks(u0, u1, 1.5)) {
       const m = (a + c) / 2, s = surf(F, m);
       if (s.top < y + h) continue;
-      if (d <= 0.04) facePanel(b, shift(s.g, s.wallTop < y + h ? EXT : 0), s.t, y, c - a, h, mat, out + d);
+      if (d <= 0.04) ledgeStrip(b, shift(s.g, s.wallTop < y + h ? EXT : 0), s.t, y, c - a, h, d, mat, out);
       else slab(b, shift(s.g, s.wallTop < y + h ? EXT : 0), s.t, y, c - a, h, d, mat, out);
     }
   };
@@ -421,7 +421,7 @@ export function buildHotelDeLEurope(_w: number, _d: number, b: BuildingTools & {
       slab(b, f, 0, BAND, w, BAL - BAND, 0.55, 'stone');                    // balcony band (Amstel front level)
       slab(b, f, 0, BAL, w, 0.12, 0.25, 'stone', 0.3); slab(b, f, 0, BAL + 0.85, w, 0.12, 0.22, 'stone', 0.3);
       for (const [y0, y1] of rows) if (top > y1 + 0.3) { slab(b, f, 0, y0 - 0.32, w, 0.16, 0.1, 'stone'); slab(b, f, 0, y1 + 0.07, w, 0.22, 0.12, 'stone'); }
-      for (let y = BAL + 0.4; y < Math.min(top - 0.7, CORN - 0.2); y += 0.6) facePanel(b, f, 0, y, w, 0.18, 'stone', 0.035);
+      for (let y = BAL + 0.4; y < Math.min(top - 0.7, CORN - 0.2); y += 0.6) ledgeStrip(b, f, 0, y, w, 0.18, 0.035, 'stone');
       if (top > 12) slab(b, f, 0, Math.min(top - 0.65, CORN), w, 0.65, 0.38, 'stone');   // cornice
     }
     // three window axes, paired sashes in stone surrounds

@@ -36,6 +36,15 @@ export function slab(b: BuildingTools, f: Frame, t: number, y: number, w: number
   const k = sinkNext();
   put(b, f, new T.BoxGeometry(w, h, d + k).translate(0, h / 2, (d + k) / 2), t, y, out - k, colour);
 }
+/** Thin projecting strip (courses of a few cm): front and top faces only, 4 triangles instead of 12; the top runs back into the wall (sunk like `slab`) so the strip stays attached. */
+export function ledgeStrip(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, d: number, colour: Col, out = 0) {
+  const k = sinkNext(), g = new T.BoxGeometry(w, h, d + k).translate(0, h / 2, (d + k) / 2);
+  const idx = g.getIndex()!.array as ArrayLike<number>, keep: number[] = [];
+  // BoxGeometry face order: +x, -x, +y, -y, +z, -z
+  for (const face of [2, 4]) for (let i = 0; i < 6; i++) keep.push(idx[face * 6 + i]);
+  g.setIndex(keep);
+  put(b, f, g, t, y, out - k, colour);
+}
 /** Round-headed slab (rectangle plus half-disc), bottom at y. `segments` is the curve resolution of the half-disc (8 default; small blind arches need 3-4). */
 export function archSlab(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, d: number, colour: Col, out = 0, segments = 8) {
   const s = new T.Shape(), r = w / 2;
@@ -277,7 +286,7 @@ export function sashWindows(b: BuildingTools, f: Frame, ts: number[], o: {lean?:
       facePanel(b, g, t, o.y, o.w, o.h, o.glass ?? 'glass', 0.1);
       for (let k = 1; k < cols; k++) facePanel(b, g, t - o.w / 2 + o.w * k / cols, o.y, 0.045, o.h, frame, 0.13);
       for (let r = 1; r < rows; r++) facePanel(b, g, t, o.y + o.h * r / rows - 0.02, o.w, 0.045, frame, 0.13);
-      if (o.sill) leanSlab(b, g, t, o.y - 0.17, o.w + 0.5, 0.1, 0.2, o.sill);
+      if (o.sill) ledgeStrip(b, g, t, o.y - 0.17, o.w + 0.5, 0.1, 0.2, o.sill);
       if (o.lintel) leanSlab(b, g, t, o.y + o.h + 0.06, o.w + 0.4, 0.14, 0.14, o.lintel);
       continue;
     }
