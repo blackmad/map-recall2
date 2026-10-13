@@ -1,49 +1,180 @@
 {
  "schemaVersion": 1,
  "id": "rembrandtmonument",
- "signature": ["r-figure", "r-cloak", "r-pedestal"],
+ "signature": [
+  "r-figure",
+  "r-nightwatch",
+  "r-cloak",
+  "r-pedestal"
+ ],
  "walls": [
   {
-   "tag": "s-180", "bearing": 180, "lengthM": 1.9, "centre": [4.8965948, 52.3659941],
-   "evidence": "photo", "panoId": "recording_2025-06-19_03-28-47_01666", "capturedAt": "2025-06-19", "checked": true,
+   "tag": "s-180",
+   "bearing": 180,
+   "lengthM": 1.9,
+   "centre": [
+    4.8965948,
+    52.3659941
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_03-28-47_01666",
+   "capturedAt": "2025-06-19",
+   "checked": true,
    "note": "Pedestal south face and the figure in profile (aimed view artifacts/landmark-refs/rembrandtmonument/pano-a.jpg); pose and costume from Rijksmuseum print RP-P-1933-342 (CC0).",
    "items": [
-    {"id": "r-figure", "kind": "sculpture", "where": "standing bronze/iron figure of Rembrandt in 17th-century dress on the pedestal cap, weight on one leg, right foot forward", "approxSizeM": [1.1, 2.9], "plan": "simplified",
-     "how": "builder: tapered cylinders and boxes for legs, breeches, doublet with six buttons, collar, arms, head with beard and a wide soft beret; no facial modelling", "seenIn": "recording_2025-06-19_03-28-47_01666"},
-    {"id": "r-cloak", "kind": "sculpture", "where": "heavy cloak over the left shoulder falling across the body and over the left forearm", "approxSizeM": [1.1, 1.5], "plan": "simplified",
-     "how": "one extruded cloak silhouette plus a forearm bulge; folds are not modelled", "seenIn": "recording_2025-06-19_03-28-47_01666"},
-    {"id": "r-palette-stump", "kind": "sculpture", "where": "tree stump behind the left leg carrying the painter's palette, a portfolio and a scroll", "approxSizeM": [0.9, 1.3], "plan": "simplified",
-     "how": "builder: stump box with a tilted disc palette, a flat portfolio slab and a cylinder scroll", "seenIn": "RP-P-1933-342 (Rijksmuseum, CC0)"},
-    {"id": "r-pedestal", "kind": "other", "where": "square grey granite pedestal: stepped plinth, die, moulded cap, about 3.1 m high", "approxSizeM": [2.7, 3.1], "plan": "modelled",
-     "how": "builder: four stacked boxes plus cap, edges at the panorama-measured proportions", "seenIn": "recording_2025-06-19_03-28-47_01666"},
-    {"id": "r-plaques", "kind": "sign", "where": "a dark inscription plaque on the die of each face", "approxSizeM": [1.1, 1.0], "plan": "simplified",
-     "how": "dark plates set 6 cm proud of the die; the inscriptions are not legible in the panoramas and are left out", "seenIn": "recording_2025-06-19_03-28-47_01668"}
+    {
+     "id": "r-figure",
+     "kind": "sculpture",
+     "where": "standing bronze/iron figure of Rembrandt in 17th-century dress on the pedestal cap, weight on one leg, right foot forward",
+     "approxSizeM": [
+      1.1,
+      2.9
+     ],
+     "plan": "modelled",
+     "how": "figure kit (figure-kit.ts): standing pose, weight on the right leg and left foot forward, hands crossed at the belt, beret, doublet skirt and six gilt buttons, 2.8 m figure; no facial modelling",
+     "seenIn": "recording_2025-06-19_03-28-47_01666"
+    },
+    {
+     "id": "r-cloak",
+     "kind": "sculpture",
+     "where": "heavy cloak over the left shoulder falling across the body and over the left forearm",
+     "approxSizeM": [
+      1.1,
+      1.5
+     ],
+     "plan": "simplified",
+     "how": "one extruded cloak silhouette on the left shoulder beside the figure; folds are not modelled",
+     "seenIn": "recording_2025-06-19_03-28-47_01666"
+    },
+    {
+     "id": "r-palette-stump",
+     "kind": "sculpture",
+     "where": "tree stump behind the left leg carrying the painter's palette, a portfolio and a scroll",
+     "approxSizeM": [
+      0.9,
+      1.3
+     ],
+     "plan": "simplified",
+     "how": "builder: stump box with a tilted disc palette, a flat portfolio slab and a cylinder scroll",
+     "seenIn": "RP-P-1933-342 (Rijksmuseum, CC0)"
+    },
+    {
+     "id": "r-pedestal",
+     "kind": "other",
+     "where": "square grey granite pedestal: stepped plinth, die, moulded cap, about 3.1 m high",
+     "approxSizeM": [
+      2.7,
+      3.1
+     ],
+     "plan": "modelled",
+     "how": "builder: four stacked boxes plus cap, edges at the panorama-measured proportions",
+     "seenIn": "recording_2025-06-19_03-28-47_01666"
+    },
+    {
+     "id": "r-plaques",
+     "kind": "sign",
+     "where": "a dark inscription plaque on the die of each face",
+     "approxSizeM": [
+      1.1,
+      1.0
+     ],
+     "plan": "simplified",
+     "how": "dark plates set 6 cm proud of the die; the front plate carries REMBRANDT in raised stroke lettering (the photographs show a script signature)",
+     "seenIn": "recording_2025-06-19_03-28-47_01668"
+    },
+    {
+     "id": "r-nightwatch",
+     "kind": "sculpture",
+     "where": "the Night Watch bronze group (Dronov and Taratynov, 2006-2012): 22 life-size figures after the painting on individual steel plates on the plaza in front of the statue",
+     "approxSizeM": [
+      8.5,
+      6
+     ],
+     "plan": "simplified",
+     "how": "22 figures from the kit in their plan positions (captain and lieutenant stepping out, ensign with the flag, two girls, boy, drummer, loaders, pikemen, halberdier, sword-raiser), props as rods; plan read from Commons photographs (Txllxt CC BY-SA 4.0, Hippolyte CC BY-SA 3.0); faces and costume detail are not modelled",
+     "seenIn": "Commons: Rembrandt Monument ... 3D Night Watch ... 1.jpg; Nachtwacht-in-3D.jpg"
+    }
    ]
   },
   {
-   "tag": "n-0", "bearing": 0, "lengthM": 1.9, "centre": [4.8965948, 52.3660141],
-   "evidence": "photo", "panoId": "recording_2025-06-19_03-28-47_01638", "capturedAt": "2025-06-19", "checked": true,
+   "tag": "n-0",
+   "bearing": 0,
+   "lengthM": 1.9,
+   "centre": [
+    4.8965948,
+    52.3660141
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_03-28-47_01638",
+   "capturedAt": "2025-06-19",
+   "checked": true,
    "note": "Seen from the north through the bus shelter: figure from behind, the same pedestal die with plaque.",
    "items": [
-    {"id": "r-terrace", "kind": "other", "where": "low granite platform with a black-stone coping around the statue, grass lawn before it, a flight of shallow steps on the east side", "approxSizeM": [11, 0.6], "plan": "simplified",
-     "how": "one 11 x 6.5 m platform slab with a dark coping band; the shallow steps (0.15 m risers) and the lawn are omitted", "seenIn": "recording_2025-06-19_03-28-47_01664"}
+    {
+     "id": "r-terrace",
+     "kind": "other",
+     "where": "low granite platform with a black-stone coping around the statue, grass lawn before it, a flight of shallow steps on the east side",
+     "approxSizeM": [
+      11,
+      0.6
+     ],
+     "plan": "simplified",
+     "how": "one 11 x 6.5 m platform slab with a dark coping band; the shallow steps (0.15 m risers) and the lawn are omitted",
+     "seenIn": "recording_2025-06-19_03-28-47_01664"
+    }
    ]
   },
   {
-   "tag": "e-90", "bearing": 90, "lengthM": 1.9, "centre": [4.8966048, 52.3660041],
-   "evidence": "photo", "panoId": "recording_2025-06-19_03-28-47_01664", "capturedAt": "2025-06-19", "checked": true,
+   "tag": "e-90",
+   "bearing": 90,
+   "lengthM": 1.9,
+   "centre": [
+    4.8966048,
+    52.3660041
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_03-28-47_01664",
+   "capturedAt": "2025-06-19",
+   "checked": true,
    "note": "East side from the south-east: the figure from the rear left, the steps of the terrace.",
    "items": []
   },
   {
-   "tag": "w-270", "bearing": 270, "lengthM": 1.9, "centre": [4.8965848, 52.3660041],
-   "evidence": "photo", "panoId": "recording_2025-06-19_03-28-47_01668", "capturedAt": "2025-06-19", "checked": true,
+   "tag": "w-270",
+   "bearing": 270,
+   "lengthM": 1.9,
+   "centre": [
+    4.8965848,
+    52.3660041
+   ],
+   "evidence": "photo",
+   "panoId": "recording_2025-06-19_03-28-47_01668",
+   "capturedAt": "2025-06-19",
+   "checked": true,
    "note": "West side from the south-west: the figure seen from the front-left with the stump at its left.",
    "items": []
   }
  ],
  "sources": [
-  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/panoramas/", "licence": "CC BY 4.0"},
-  {"name": "Rijksmuseum RP-P-1933-342 Standbeeld van Rembrandt (L. Royer, print)", "url": "https://commons.wikimedia.org/wiki/File:Standbeeld_van_Rembrandt_Harmensz._van_Rijn_op_het_Rembrandtplein_te_Amsterdam,_RP-P-1933-342.jpg", "licence": "CC0"}
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "name": "Rijksmuseum RP-P-1933-342 Standbeeld van Rembrandt (L. Royer, print)",
+   "url": "https://commons.wikimedia.org/wiki/File:Standbeeld_van_Rembrandt_Harmensz._van_Rijn_op_het_Rembrandtplein_te_Amsterdam,_RP-P-1933-342.jpg",
+   "licence": "CC0"
+  },
+  {
+   "name": "Rembrandtplein Rembrandt Monument + Night Watch (Txllxt)",
+   "url": "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Rembrandtplein_-_Rembrandt_Monument_1852_by_Louis_Royer_%2B_3D_Night_Watch_by_Alexander_Taratynov_%26_Mikhail_Dronov_1.jpg",
+   "licence": "CC BY-SA 4.0"
+  },
+  {
+   "name": "Nachtwacht in 3D (Hippolyte at nl.wikipedia)",
+   "url": "https://commons.wikimedia.org/wiki/File:Nachtwacht-in-3D.jpg",
+   "licence": "CC BY-SA 3.0"
+  }
  ]
 }

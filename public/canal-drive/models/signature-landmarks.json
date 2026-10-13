@@ -47123,7 +47123,8 @@
         "concrete": "#8c8e90",
         "greyBrick": "#3d3f42",
         "bronze": "#a3a49f",
-        "gold": "#9b8348"
+        "gold": "#9b8348",
+        "copper": "#4a524c"
       },
       "attribution": {
         "title": "Rembrandtmonument - original low-poly interpretation",
@@ -47136,14 +47137,14 @@
       "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -5.650000095367432,
+          -11.242998123168945,
           0,
           -3.4000000953674316
         ],
         "max": [
           5.650000095367432,
-          6.769999980926514,
-          3.4000000953674316
+          6.5916852951049805,
+          11.242998123168945
         ]
       },
       "placement": {
@@ -47157,14 +47158,20 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 11.300000190734863,
-        "heightMetres": 6.769999980926514,
-        "depthMetres": 6.800000190734863,
-        "depthCoverage": 1.0000000280492447
+        "widthMetres": 16.892998218536377,
+        "heightMetres": 6.5916852951049805,
+        "depthMetres": 14.642998218536377,
+        "depthCoverage": 2.153382090961232
       },
-      "triangles": 1852,
-      "bytes": 21288,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 8142,
+      "bytes": 95572,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "lod1": {
+        "sourceHash": "872c2e51a599c19a",
+        "buildVersion": 2,
+        "bytes": 37984,
+        "triangles": 1668
+      }
     },
     "vondelmonument": {
       "id": "vondelmonument",
