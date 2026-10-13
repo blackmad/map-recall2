@@ -1,0 +1,143 @@
+# docs/ index
+
+Start here. About 135 files live under `docs/`; four of them are living
+documents, the rest are plans, lane handoffs, or dated research. Nothing here
+is archived or moved yet: the "Superseded" marks below tell the integrator what
+can be moved to an archive folder later without losing anything a living
+document does not already say.
+
+Other places to look first: `CLAUDE.md` (working agreement),
+`public/canal-drive/TODO.md` (unfinished work, ordered P0 to P3) and
+`public/canal-drive/HISTORY.md` (why a thing is the way it is).
+
+## 1. Living documents (keep current, edit in the change that alters the thing)
+
+| Doc | Covers |
+| --- | --- |
+| `docs/buildings-pipeline.md` | intent recipes to GLB, the component library, `kind: large` recipes, gates |
+| `docs/elevation.md` | opt-in canal elevation: water levels, bridges, relief |
+| `docs/LOOK.md` | art direction for the 3D view: one palette, era scheme, one light rig |
+| `docs/gameplay/loop.md` | how a ride teaches: question budget, riding prompt, pacing numbers |
+
+Sibling gameplay note: `docs/gameplay/bike-ferry-crossings.md` (one feature,
+kept as its own page).
+
+## 2. The plan
+
+- `docs/plans/digital-twin-direction-20261013.md`: where the digital-twin
+  approach falls short and what changes (sections: gameplay R1, buildings,
+  look, ground, landmarks, process R5). This is the current direction; the
+  other files in `docs/plans/` are older (section 4).
+
+## 3. Handoffs
+
+Lane briefs: the prompt a leaf agent works from, written by the integrator.
+
+2026-10-13 lanes (current round):
+`lane-gameplay-pacing`, `lane-look-consistency`, `lane-large-tier`,
+`lane-ground-data`, `lane-glb-cleanup`, `lane-bag-base-tiles`,
+`lane-citylook-atlas`, `lane-police-bureaus`, `lane-checks-and-docs`, all in
+`docs/handoffs/` with the suffix `-20261013.md`. `lane-gameplay-pacing`, `lane-look-consistency`, `lane-large-tier` and
+`lane-ground-data` have HISTORY entries; treat the others as open or
+unconfirmed until TODO says otherwise.
+
+Older preservation handoffs in `docs/handoffs/` (2026-10-05 to 2026-10-09):
+`building-backlog-2026-10-06`, `canalhouse-recipes-20261008`,
+`feedback-account-ui-20261008`, `landmark-drafts-20261008`,
+`marnixstraat-repeated-row-20261008`, `street-rendering-20261008`,
+`street-rendering-core-20261008`, `street-rhythm-2026-10-05`. Read them only
+when resuming exactly that lane.
+
+Handoffs that sit at the `docs/` root (a lane that predates `docs/handoffs/`):
+`feedback-polling-handoff.md` (Firebase polling), `feedback-work-queue.md`,
+`rasphuispoort-host-opening-handoff.md`, `landmark-backlog-handoff-20261007.md`,
+`landmark-finish-nine-handoff-20261006.md`, `landmark-managed-resume-20261008.md`,
+`landmark-deepseek-handoff.md`, `amsterdam-panorama-building-treatment-handoff.md`.
+
+## 4. Research and spikes (dated; read for evidence, not for instructions)
+
+"Superseded" means a living document now carries the conclusion; the file can
+be archived once the integrator agrees.
+
+### Direction, rendering and data (docs/research and docs/plans)
+
+- `research/amsterdam-open-sources-20261009.md` (2026-10-09): verified open
+  imagery and data sources for building recipes. Still the source list.
+- `research/own-ground-20261009.md` (2026-10-09): own ground on AHN relief.
+  Partly superseded by `elevation.md`; the AHN method detail is not copied.
+- `research/own-renderer-spike-20261009.md` (2026-10-09): renderer spike, shows
+  lighting is the visible gap. Superseded by `LOOK.md` plus plan section on the
+  shared frame.
+- `research/drop-maplibre-20261010.md` (2026-10-10): inventory of what dropping
+  MapLibre means, with a proof. Open; not superseded.
+- `research/sol-canalhouse-salvage-20261010.md` (2026-10-10): what to keep of
+  Sol's canal-house work and how to reuse house types along a street.
+  Superseded by `buildings-pipeline.md` for the pipeline parts.
+- `plans/appearance-programme.md`: appearance architect plan. Superseded by
+  `LOOK.md` and `buildings-pipeline.md`.
+- `plans/citywide-wall-colour-texture-rollout.md`,
+  `plans/wall-material-colour-diagnosis.md`, `plans/wall-material-demo.md`,
+  `plans/material-demo-contextual-facade-issue.md`: wall colour and material
+  experiments. Superseded by `LOOK.md` (one palette module, era scheme).
+- `plans/district-rectification-expansion.md`,
+  `plans/district-rectification-gaps.md`: Jordaan and Da Costabuurt rectification
+  before wider colour rollout. Not superseded; no living equivalent.
+
+### Buildings and landmarks (docs root)
+
+- `landmark-building-recipe.md`: the recipe for a landmark building. Superseded
+  by `buildings-pipeline.md`.
+- `landmark-signage-audit.md` (2026-10-04): lettering audit. Not superseded.
+- `landmark-splat-reference-pilot.md`: reconstruction as a reference, bounded
+  pilot. Not superseded (sculpture splat track in TODO).
+- `landmark-magna-plaza-overlap-review-20261007.md`: Magna Plaza suppression
+  repair. Historical.
+- `building-coplanar-audit.md`: face overlap audit. Historical; the gate lives
+  in `buildings-pipeline.md`.
+- `amsterdam-street-name-register-errors.md`: errors found in the BAG
+  `beschrijvingNaam` register. Evidence for the translation policy; keep.
+- `branch-organization-20261008.md` (2026-10-08): branch layout at that date.
+  Stale; the worktree and branch triage in TODO replaces it.
+
+### Per-landmark closeouts (docs/landmarks, 29 files, 2026-10-06 to 2026-10-08)
+
+One acceptance or hosted-closeout note per landmark: Afrikahuis (3), Cafe
+Kobalt (2), El Tawheed, Electric Ladyland, Haparandaweg 2-4, 8-338, 9, 11-13
+(7), Haring and Klimmuur (2), Mountain Network, OCCII, Pulitzer, RAI (2),
+Rasphuispoort, Beest and Kesbeke, the 2026-10-06 reviewed checkpoint, and five
+Vinoly notes. All are historical records of accepted releases; the decisions
+live in the landmark catalogue and HISTORY. Archive as a group.
+
+### Per-landmark references (docs/references, about 45 folders)
+
+Source summaries and draft handoffs for individual buildings (fire stations,
+churches, Huize Frankendael, Posthoornkerk, Uilenburger Synagoge, this-is-holland
+and others) plus JSON review inputs. Provenance, not instructions; keep with the
+model they belong to.
+
+### Performance, 2026-10-06 (docs/performance/2026-10-06, about a dozen files)
+
+Stationary-camera and city-building performance work: `README.md`,
+`road-setup.md`, `stalls-and-fade.md`, the canal-belt journal and two
+handoffs, and six ordinary-building pilot and review notes, with desktop and
+touch baseline JSON. The ordinary-building notes are superseded by
+`buildings-pipeline.md`; the rest are dated measurements (the method for
+profiling lives in the auto-memory note "Perf profiling method").
+
+### Root and canal-drive notes (outside docs/)
+
+About 40 markdown files at the repository root and in `public/canal-drive/`
+(for example `DESIGN.md`, `PRODUCT.md`, `DEPLOY.md`, and the 2026-09 experiment
+and self-review files). Not part of this lane's move list; flagged here so the
+next compaction pass knows they exist. `README.md` in `public/canal-drive/` and
+`CLAUDE.md` stay.
+
+## 5. Conventions
+
+- A living document states its source of truth (the typed module or script) at
+  the top and is edited in the same change as the code it describes.
+- A lane handoff names what the lane owns and which files it must not edit.
+- Research files carry a date in the name or heading and are never edited to
+  change a conclusion; write a new file or update a living document.
+- Screenshots and street names that report a failure are pinned as regression
+  locations, not left in prose (see `CLAUDE.md`, Verification).
