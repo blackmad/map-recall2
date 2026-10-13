@@ -804,6 +804,15 @@ storey, chequer bands, sculpture group or gated vehicle entrance; roof colour
 unknown; Beeldbank returned 403 to automated fetch, so no archive image or
 architect is cited (lead: "dienst PW (E. Messer), 1941", unverified).
 
+**Signature ornaments (user, 2026-10-13):** the Hoofdbureau shipped without
+its Amsterdam-arms relief (lion, banner, three figures) on the Marnixstraat
+end wall; another session added it (32k tris) and the model now fails
+`opening-overhang` once (66% of a face off the wall at (4.2, 1.6, -95.3)) and
+the 500 KB manifest budget — batch 3 fixes it. Rule for every hand-modelled
+building from now on: inventory the ornaments, reliefs, sculpture, lettering
+and signs from the panoramas and model them; "no component" is not a reason
+to skip (`docs/handoffs/lane-ornament-inventory-20261013.md`, lane running).
+
 **Police headquarters, Elandsgracht 117 (user, 2026-10-13): bespoke builder.**
 The 1930s brick Hoofdbureau with its corner tower and carved stone entrance is
 a landmark destination, so it gets a hand builder (massing from 3DBAG LoD2.2;
