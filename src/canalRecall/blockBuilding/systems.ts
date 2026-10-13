@@ -12,7 +12,7 @@ export const LARGE_SYSTEMS = ['brick-bay-grid', 'ribbon-windows', 'curtain-wall'
 export type LargeSystemName = typeof LARGE_SYSTEMS[number];
 export const LARGE_GROUNDS = ['system', 'plinth-shopfronts', 'glazed', 'blank'] as const;
 export type LargeGround = typeof LARGE_GROUNDS[number];
-export const LARGE_WINDOWS = ['plain', 'two-light', 'cross', 'transom'] as const;
+export const LARGE_WINDOWS = ['plain', 'two-light', 'cross', 'transom', 'low'] as const;
 export type LargeWindow = typeof LARGE_WINDOWS[number];
 
 /** Default bay pitch (m) per system when the intent gives no bay count. */
@@ -42,6 +42,8 @@ const glazing = (w: LargeWindow | undefined): Partial<WinParams> => {
     case 'two-light': return { mull: 1 };
     case 'cross': return { mull: 1, transom: 0.7 };
     case 'transom': return { transom: 0.78 };
+    // Wide, low office windows set high in the storey (1990s brick blocks: two rows of small horizontal windows per floor).
+    case 'low': return { w: 0.62, h: 0.4, sill: 1.05 };
     default: return {};
   }
 };

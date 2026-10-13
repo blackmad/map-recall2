@@ -232,7 +232,7 @@ owns (`wallSurfaces`, indices from `walls.ts`, never coordinates) and:
 | `storeys` / `alignWith` | storey count under the group's eaves, or share an earlier group's storey lines (wings lining up with a centre block) |
 | `baysPerStorey` | bays on the group's widest panel (default: the system pitch) |
 | `ground` | `system`, `plinth-shopfronts`, `glazed`, `blank` |
-| `windows` | `plain`, `two-light`, `cross`, `transom` |
+| `windows` | `plain`, `two-light`, `cross`, `transom`, `low` (wide low windows set high in the storey) |
 | `blankStoreys` | storeys with no openings (a blank floor over a shop, a closed upper mass) |
 | `entrance` | `true` or `{bay, storeys, canopy}`: recessed glazed entrance; `storeys > 1` = an entrance hall |
 | `signage` | text (A–Z, 0–9, `&'-.`, ≤ 60) or `{text, colour, mount}` with mount `fascia`, `wall`, `glazing` or `canopy` |

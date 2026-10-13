@@ -62,7 +62,7 @@ export const rectPoly = (u0: number, u1: number, v0: number, v1: number): [numbe
 
 export interface BuildResult { panels: Panel[]; stats: { walls: number; slanted: number; slivers: number; flipped: number; inwardEdge: number } }
 
-export function buildHost(set: SurfaceSet, mesh: MeshBuilder, roofSlot: string, wallSlot: string, opts: { deferWalls?: boolean; /** walls with different keys never merge into one panel (large-tier wall groups) */ mergeKey?: (wall: number) => number; /** deferred walls: dissolve each panel's coplanar surfaces into whole faces (dissolve.ts) */ dissolve?: boolean } = {}): BuildResult {
+export function buildHost(set: SurfaceSet, mesh: MeshBuilder, roofSlot: string, wallSlot: string, opts: { deferWalls?: boolean; /** walls with different keys never merge into one panel (large-tier wall groups) */ mergeKey?: (wall: number) => number; /** deferred walls: dissolve each panel's coplanar surfaces into whole faces (dissolve.ts) */ dissolve?: boolean; /** keep wall surfaces smaller than 1 cm2 (3DBAG step slivers beside roof offsets) as plain wall triangles instead of dropping them, which left 0.1-0.4 m open shell edges on big complexes */ sealSlivers?: boolean } = {}): BuildResult {
   // ground solid (outer rings minus holes) for orientation sanity checks
   const groundOuter: [number, number][][] = [], groundHoles: [number, number][][] = [];
   for (const g of set.ground) g.rings.forEach((r, i) => (i === 0 ? groundOuter : groundHoles).push(r.map(p => [p[0], p[2]] as [number, number])));
@@ -81,7 +81,7 @@ export function buildHost(set: SurfaceSet, mesh: MeshBuilder, roofSlot: string, 
   set.walls.forEach((w, i) => {
     const ring = w.rings[0];
     const nw = newell(ring), l = Math.hypot(...nw);
-    if (l < 0.02) { stats.slivers++; return; }
+    if (l < 0.02) { stats.slivers++; if (opts.sealSlivers && l > 1e-6) triangulate3(mesh, wallSlot, w.rings, norm(nw), 0); return; }
     const n0 = norm(nw);
     if (Math.abs(n0[1]) > 0.25) { stats.slanted++; triangulate3(mesh, roofSlot, w.rings, n0[1] > 0 ? n0 : [-n0[0], -n0[1], -n0[2]], 0); return; }
     let n = norm([n0[0], 0, n0[2]]);
