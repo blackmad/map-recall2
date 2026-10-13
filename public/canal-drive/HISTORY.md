@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## `check:signature-fallback` back in the gate (2026-10-13)
+
+`scripts/check-signature-fallback-refresh.mjs` had crashed since the recipe
+street landed (0b4fbded): the composer now constructs
+`window.CanalRecallSignatureLandmarks.SharedAssetCache`, and the check's stub
+global only carried `SIGNATURE_MODELS`. The check now loads
+`signature-placement.bundle.js` (the real global) first and overlays the empty
+model list. It was wired to nothing; it is now `npm run check:signature-fallback`
+and the last step of `check:canal` (streamed/static/no-style masks,
+unload/reload, neighbours, basemap composition; < 2 s).
+
+
 ## Sculptures: De Dokwerker as a seven-view photo impostor behind `?sculptures=1` (2026-10-13)
 
 Lane `sculptures/dokwerker-impostor-20261013` (Opus). Photo set: Commons

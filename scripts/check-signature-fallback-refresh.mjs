@@ -8,10 +8,13 @@ import * as THREE from 'three';
 const context = vm.createContext({
   window: {
     CanalRecallThree: { THREE },
-    CanalRecallSignatureLandmarks: { SIGNATURE_MODELS: [] },
   },
   console,
 });
+// The placement bundle defines the CanalRecallSignatureLandmarks global (SharedAssetCache, placement); the browser
+// composer constructs SharedAssetCache from it, so it has to load first with an empty model list.
+vm.runInContext(fs.readFileSync('public/canal-drive/js/signature-placement.bundle.js', 'utf8'), context, { filename: 'signature-placement.bundle.js' });
+context.window.CanalRecallSignatureLandmarks = Object.assign({}, context.CanalRecallSignatureLandmarks, { SIGNATURE_MODELS: [] });
 for (const file of ['building-style.bundle.js', 'three-buildings.bundle.js', 'signature-landmarks.bundle.js']) {
   vm.runInContext(fs.readFileSync(`public/canal-drive/js/${file}`, 'utf8'), context, { filename: file });
 }
