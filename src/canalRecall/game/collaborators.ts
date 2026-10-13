@@ -6,6 +6,7 @@
 
 import type { LandmarkCardLayout, PostcardLayout } from '../noticeCards';
 import type { BuildingHit, LandmarkNotice, WorldPoint } from './worldTypes';
+import type { StreetLabelAnchor } from './streetLabelCandidates';
 
 export interface Camera {
   worldToScreen(worldX: number, worldY: number): WorldPoint;
@@ -115,6 +116,8 @@ export interface NearestRoad {
 }
 
 export interface Track {
+  /** Street-name anchors along the network, in draw order. */
+  labels?: StreetLabelAnchor[];
   segments: RoadSegment[];
   startPoint: WorldPoint;
   finishPoint: WorldPoint;
@@ -137,6 +140,8 @@ export interface Track {
     isKnown: (text: string, x: number, y: number) => boolean,
     withheld: string,
     player: WorldPoint | null,
+    /** Anchors that could pass the reach box and `isKnown`, in label order. */
+    candidatesFor?: (labels: StreetLabelAnchor[] | undefined, cx: number, cy: number, reach: number) => readonly StreetLabelAnchor[],
   ): void;
 }
 

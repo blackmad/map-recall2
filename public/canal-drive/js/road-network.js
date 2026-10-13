@@ -605,7 +605,11 @@ class RoadNetwork {
   // `isLabelled(text, worldX, worldY)` rather than a name set: a long street can
   // be known at one end and unlearned at the other, and writing the name across
   // the unlearned end would hand the player the answer before the question.
-  drawLabels(ctx, camera, isLabelled, hiddenName = '', player = null) {
+  // `candidatesFor(labels, cx, cy, reach)`, when given, returns the anchors that
+  // could pass the reach box and `isLabelled`, in `labels` order (the game's
+  // per-cell index, src/canalRecall/game/streetLabelCandidates.ts): the walk
+  // below still applies every test, so the result is unchanged.
+  drawLabels(ctx, camera, isLabelled, hiddenName = '', player = null, candidatesFor = null) {
     const z = camera.zoom || 1;
     const fontSize = Math.max(8, Math.round(9 * z));
     ctx.font = `bold ${fontSize}px Arial, sans-serif`;
@@ -625,8 +629,9 @@ class RoadNetwork {
     const reach = Math.hypot(halfW, halfH) * (camera.projector ? 4 : 1.2);
     const cx = camera.x, cy = camera.y;
 
-    if (this.labels && this.labels.length > 0) {
-      for (const lbl of this.labels) {
+    const labels = candidatesFor ? candidatesFor(this.labels, cx, cy, reach) : this.labels;
+    if (labels && labels.length > 0) {
+      for (const lbl of labels) {
         if (Math.abs(lbl.x - cx) > reach || Math.abs(lbl.y - cy) > reach) continue;
         if (isLabelled && !isLabelled(lbl.text, lbl.x, lbl.y)) continue;
         if (hiddenName && lbl.text === hiddenName) continue;

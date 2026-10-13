@@ -467,6 +467,99 @@
     return !input.revealed && !input.learned;
   }
 
+  // src/canalRecall/game/streetLabelCandidates.ts
+  var LABEL_CELL_SIZE = 256;
+  var REACH_BUCKET_STEP = 1.25;
+  var EMPTY = Object.freeze([]);
+  var StreetLabelCandidates = class {
+    constructor(cellSize = LABEL_CELL_SIZE) {
+      this.cellSize = cellSize;
+    }
+    labels = null;
+    labelCount = -1;
+    /** Name -> ascending anchor indices, built once per anchor array. */
+    byName = /* @__PURE__ */ new Map();
+    names = { set: null, setSize: -1, places: null, placesSize: -1 };
+    /** Ascending indices of every anchor whose name could pass the knowledge test. */
+    named = new Int32Array(0);
+    namedVersion = 0;
+    cellKey = "";
+    cell = EMPTY;
+    /** Rebuilds of the per-cell list, for tests and the profiler. */
+    rebuilds = 0;
+    /**
+     * The anchors `drawLabels` must test this frame: every anchor that could pass
+     * both `|x - cx| <= reach && |y - cy| <= reach` and the knowledge test, in
+     * the order of `labels`.
+     */
+    candidates(labels, knowledge, cx, cy, reach) {
+      if (!labels || !labels.length) return EMPTY;
+      const { mapLabelNames, knownPlaces } = knowledge;
+      if (!mapLabelNames.size && !knownPlaces.size) return EMPTY;
+      if (labels !== this.labels || labels.length !== this.labelCount) this.indexLabels(labels);
+      this.refreshNamed(mapLabelNames, knownPlaces);
+      if (!this.named.length) return EMPTY;
+      const size = this.cellSize;
+      const ix = Math.floor(cx / size), iy = Math.floor(cy / size);
+      const bucket = reachBucket(reach);
+      const key = `${this.namedVersion}:${ix}:${iy}:${bucket}`;
+      if (key !== this.cellKey) {
+        this.cellKey = key;
+        this.cell = this.collect(ix, iy, bucket);
+        this.rebuilds++;
+      }
+      return this.cell;
+    }
+    indexLabels(labels) {
+      this.labels = labels;
+      this.labelCount = labels.length;
+      this.byName = /* @__PURE__ */ new Map();
+      for (let i = 0; i < labels.length; i++) {
+        const text = labels[i].text;
+        const list = this.byName.get(text);
+        if (list) list.push(i);
+        else this.byName.set(text, [i]);
+      }
+      this.names = { set: null, setSize: -1, places: null, placesSize: -1 };
+      this.cellKey = "";
+    }
+    refreshNamed(set, places) {
+      const n = this.names;
+      if (n.set === set && n.setSize === set.size && n.places === places && n.placesSize === places.size) return;
+      this.names = { set, setSize: set.size, places, placesSize: places.size };
+      const picked = [];
+      for (const name of set) {
+        const list = this.byName.get(name);
+        if (list) for (const i of list) picked.push(i);
+      }
+      for (const name of places.keys()) {
+        if (set.has(name)) continue;
+        const list = this.byName.get(name);
+        if (list) for (const i of list) picked.push(i);
+      }
+      this.named = Int32Array.from(picked).sort();
+      this.namedVersion++;
+      this.cellKey = "";
+    }
+    collect(ix, iy, reach) {
+      const labels = this.labels;
+      const half = this.cellSize / 2;
+      const mx = (ix + 0.5) * this.cellSize, my = (iy + 0.5) * this.cellSize;
+      const r = reach + half;
+      const out = [];
+      for (const i of this.named) {
+        const label = labels[i];
+        if (Math.abs(label.x - mx) <= r && Math.abs(label.y - my) <= r) out.push(label);
+      }
+      return out;
+    }
+  };
+  function reachBucket(reach) {
+    if (!(reach > 0)) return 0;
+    const b = REACH_BUCKET_STEP ** Math.ceil(Math.log(reach) / Math.log(REACH_BUCKET_STEP));
+    return b >= reach ? b : b * REACH_BUCKET_STEP;
+  }
+
   // src/canalRecall/game/teachingSurface.ts
   function canShowMiniMap(enabled, input) {
     return enabled && !input.utilityOpen;
@@ -37930,6 +38023,216 @@
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free low-poly figure, pedestal and railing. Pose and costume from Commons photographs (public domain; CC BY-SA 3.0) and Gemeente Amsterdam panoramas (CC BY 4.0); dimensions estimated from the photographs. No pixels or third-party meshes imported."
       }
+    },
+    {
+      id: "multatuli-standbeeld",
+      name: "Multatuli statue (Torensluis)",
+      landmarkId: "extract_landmarks_1627709377",
+      modelUrl: "./models/multatuli-standbeeld.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8894308,
+          52.3747139
+        ],
+        headingDegrees: 0,
+        lengthMetres: 2.4,
+        widthMetres: 1.8
+      },
+      surveyed: {
+        anchor: [
+          4.8894308,
+          52.3747139
+        ],
+        northOffsetDegrees: 0,
+        source: "Backlog destination point (OSM memorial) on the Torensluis; statue position and facing read from Gemeente Amsterdam panorama recording_2025-06-16_03-46-32_01395; the facing is a visual estimate"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#2d2f2b",
+        concrete: "#8e8b86",
+        sandstone: "#7a3535",
+        white: "#d8d0bc"
+      },
+      attribution: {
+        title: "Multatuli statue - original low-poly reconstruction",
+        author: "Map Recall; commemorated bust by Hans Bayens (1987)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/Category:Multatuli_statue,_Torensluis,_Amsterdam",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly bust and granite block. Form and proportions from Commons photographs (FaceMePLS CC BY 2.0; Paul van Galen / RCE CC BY-SA 4.0) and a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or third-party meshes imported."
+      }
+    },
+    {
+      id: "lieverdje",
+      name: "Het Lieverdje (Spui)",
+      landmarkId: "osm_node_3975877474",
+      modelUrl: "./models/lieverdje.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8890267,
+          52.3687772
+        ],
+        headingDegrees: 0,
+        lengthMetres: 1.4,
+        widthMetres: 1.4
+      },
+      surveyed: {
+        anchor: [
+          4.8890267,
+          52.3687772
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM artwork node 3975877474 (tourism=artwork, Carel Kneulman) on the Spui; facing is a visual estimate from panorama recording_2025-06-16_04-42-37_01351"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#3a3d38",
+        concrete: "#8c8d8a",
+        greyBrick: "#6e706f"
+      },
+      attribution: {
+        title: "Het Lieverdje - original low-poly reconstruction",
+        author: "Map Recall; commemorated sculpture by Carel Kneulman (1960)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/Category:Het_Lieverdje",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly figure and column. Pose and costume from Commons photographs (Anefo CC0, FaceMePLS CC BY 2.0) and a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or third-party meshes imported."
+      }
+    },
+    {
+      id: "anne-frank-merwedeplein",
+      name: "Anne Frank statue (Merwedeplein)",
+      landmarkId: "extract_landmarks_95134534",
+      modelUrl: "./models/anne-frank-merwedeplein.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9002337,
+          52.3455675
+        ],
+        headingDegrees: 0,
+        lengthMetres: 1.4,
+        widthMetres: 1.4
+      },
+      surveyed: {
+        anchor: [
+          4.9002337,
+          52.3455675
+        ],
+        northOffsetDegrees: 0,
+        source: "Backlog destination point (OSM memorial) on the Merwedeplein; facing is a visual estimate from panorama recording_2025-07-15_08-32-06_02007"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#2e312d",
+        concrete: "#8e8f8c",
+        sandstone: "#8a3a36",
+        white: "#e2dccb"
+      },
+      attribution: {
+        title: "Anne Frank statue, Merwedeplein - original low-poly reconstruction",
+        author: "Map Recall; commemorated sculpture by Mari Andriessen (1977)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/Category:Anne_Frank_statue,_Merwedeplein,_Amsterdam",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly figure and granite block. Pose, coat and bags from Commons photographs (CC BY-SA 4.0, 3.0, 2.0) and a Gemeente Amsterdam panorama (CC BY 4.0). No pixels or third-party meshes imported."
+      }
+    },
+    {
+      id: "walraven-van-hall",
+      name: "Monument Walraven van Hall",
+      landmarkId: "extract_landmarks_2141455457",
+      modelUrl: "./models/walraven-van-hall.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8996307,
+          52.359946
+        ],
+        headingDegrees: 0,
+        lengthMetres: 11,
+        widthMetres: 11
+      },
+      surveyed: {
+        anchor: [
+          4.8996307,
+          52.359946
+        ],
+        northOffsetDegrees: 0,
+        source: "Backlog destination point (OSM memorial) in the Frederiksplein park; orientation read from Gemeente Amsterdam panoramas recording_2025-06-19_04-38-42_02947 and recording_2025-07-14_06-43-08_01048; the facing is a visual estimate"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        bronze: "#37403f",
+        brick: "#8a4b40",
+        concrete: "#8f8c75",
+        gold: "#9aa39a"
+      },
+      attribution: {
+        title: "Monument Walraven van Hall - original low-poly reconstruction",
+        author: "Map Recall; commemorated sculpture by Fernando Sanchez Castillo (2010)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/Category:Monument_Walraven_van_Hall",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly fallen tree, stump, paving, wall and plaque. Layout and proportions from Commons photographs (CC BY-SA 4.0) and Gemeente Amsterdam panoramas (CC BY 4.0); the branch pattern is procedural. No pixels or third-party meshes imported."
+      }
+    },
+    {
+      id: "auschwitz-monument",
+      name: "Auschwitzmonument (Wertheimpark)",
+      landmarkId: "extract_landmarks_856768624",
+      modelUrl: "./models/auschwitz-monument.glb",
+      suppressOsmIds: [],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9092058,
+          52.3679407
+        ],
+        headingDegrees: 0,
+        lengthMetres: 6.6,
+        widthMetres: 4.2
+      },
+      surveyed: {
+        anchor: [
+          4.9092058,
+          52.3679407
+        ],
+        northOffsetDegrees: 0,
+        source: "OSM artwork node 440085927 (Auschwitzmonument) in the Wertheimpark; the facing and the dimensions are visual estimates"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      assetKind: "memorial",
+      materialOverrides: {
+        concrete: "#b9b4a6",
+        glass: "#9cc7c2",
+        frame: "#6f757a",
+        white: "#e7efee",
+        dark: "#2f3a3d"
+      },
+      attribution: {
+        title: "Auschwitzmonument - original low-poly reconstruction",
+        author: "Map Recall; commemorated work by Jan Wolkers (1993)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/Category:Auschwitz_Monument,_Wertheimpark,_Amsterdam",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly glass pane, mirror plates and gravel bed. Layout and lettering from Commons photographs (CC BY 2.0, CC BY-SA 3.0 nl); dimensions estimated; the monument is hidden by the planting from the street panoramas. No pixels or third-party meshes imported."
+      }
     }
   ];
 
@@ -43748,7 +44051,8 @@
         this.camera,
         (text, x, y) => this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y),
         this.quizPromptName || this.quizCandidateName,
-        player
+        player,
+        (labels, cx, cy, reach) => (this._streetLabelCandidates ||= new StreetLabelCandidates()).candidates(labels, { mapLabelNames: this._mapLabelNames, knownPlaces: this._knownPlaces }, cx, cy, reach)
       );
       if (this.state === GameState.FINISHED) {
         this._renderFinish();

@@ -693,15 +693,13 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
   Royal Palace GLB gets worse with normal bias ≥ 0.5 (inward-facing
   normals?); recipe-tile default under the shared frame still to decide;
   iPhone shots of the shadow spots unmeasured.
-- **Desktop perf, next** (profile 2026-10-14, `scripts/ride-perf-owners.mjs`,
-  `docs/performance/desktop-20261013.md`): the HUD street-name pass
-  (`drawLabels`) walks all 28,931 label anchors every frame and runs the
-  knowledge test on 4,239 to draw none for a guest (0.4–1.3 ms; a grid
-  index was no faster, worse aerial; try a per-cell precomputed candidate
-  list keyed by camera cell); landmark ray picks need a bounding-box
-  pre-test or BVH; static landmark scenes update matrices every frame; the
-  bike draws twice per frame (0.4 ms); the one remaining long frame is a
-  MapLibre tile batch (20–26 texture uploads). iPhone profile pending.
+- **Desktop perf, third pass** (2026-10-14, HISTORY "Desktop perf, second
+  pass"): MapLibre's own render is the largest owner (1.0–1.9 ms); the
+  legacy signature-landmarks layer does one `renderer.render` per model
+  (0.30 ms chase, 0.73 aerial), fold into one scene; the shared frame's
+  overlay pass still draws the bike x-ray twice; city prism picks
+  0.07–0.10 ms; the one long frame left is a MapLibre tile batch; iPhone
+  profile pending.
 - **Models in the game that fail the hard gates** (lane reports 2026-10-13):
   `jodenbreestraat-11` (holes 116 loops, largest 53.7 m; z-fight 118 m²;
   28 buried openings; 0 % material slots), `academie-theater-dans` (607
