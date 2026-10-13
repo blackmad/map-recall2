@@ -41,6 +41,7 @@ import { CITY_BRICK_LIGHTNESS, PERIOD_FROM, PHOTO_WALL_CELL_MEAN, SLOT_CELL, SLO
 import { inferMaterialSlot, isMaterialSlot, isWhiteWord, INFERRED_SLOT_SOURCE } from './materialSlotInference.ts';
 import { paintBrick20Canvas, paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, paintWhiteStuccoCanvas, roofCanvas } from './slotCells.ts';
 import { HIGHLIGHT_GLSL, highlightDefines } from './highlight.ts';
+import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, roofTierUniform } from '../roofTier.ts';
 
 // ---------------------------------------------------------------------------
 // Flag
@@ -346,6 +347,7 @@ flat varying vec4 vSlot;
 varying vec3 vTint;
 varying vec3 vAccent;
 flat varying float vHighlight;
+varying float vFacDist;
 ${HIGHLIGHT_GLSL}`;
 
 /**
@@ -383,6 +385,7 @@ vHighlight = 2.0;
 
 /** Suppressed vertex (hidden = 1: a landmark replaces this facade) leaves the clip volume. */
 const VERTEX_HIDE = /* glsl */ `
+vFacDist = length((modelViewMatrix * vec4(position, 1.0)).xyz);
 if (hidden > 0.5 && hidden < 1.5) gl_Position = vec4(2.0, 2.0, 2.0, 1.0);`;
 
 const FRAGMENT_DECLS = /* glsl */ `
@@ -393,12 +396,15 @@ uniform float bands;
 uniform float flatColour;
 uniform float cityFade;
 uniform float wallGain;
+${ROOF_TIER_GLSL}
+${FACADE_TIER_GLSL}
 varying vec2 vFacUv;
 flat varying float vLayer;
 flat varying vec4 vSlot;
 varying vec3 vTint;
 varying vec3 vAccent;
 flat varying float vHighlight;
+varying float vFacDist;
 ${HIGHLIGHT_GRAIN_GLSL}
 ${HIGHLIGHT_GLSL}`;
 
@@ -409,8 +415,13 @@ if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.5698
 const FRAGMENT_CELL = /* glsl */ `
 vec2 cityUv = vSlot.y > 0.5 ? clamp(vFacUv, 0.0, 1.0) : vFacUv;
 vec3 cityP = vec3(cityUv, vLayer);
-vec3 cityC = texture(cells, cityP).rgb;
-vec2 cityM = texture(masks, cityP).rg;
+vec3 cityC; vec2 cityM;
+#ifdef CITY_SLOT
+cityC = texture(cells, cityP).rgb; cityM = texture(masks, cityP).rg;
+#else
+cellTierSample(cityP, vFacDist, cityC, cityM);
+cityC = roofTierColour(cityC, cityUv, vLayer, vFacDist);
+#endif
 float cityG = cityGrain(cityC);
 cityC *= mix(vec3(1.0), vTint, cityM.r) * mix(vec3(1.0), vAccent, cityM.g);`;
 
@@ -470,6 +481,10 @@ export type CityLookUniforms = {
   cityFade: { value: number };
   /** Lit chunks: gain on wall-masked bay texels (look/palette.ts `litWallGain`). */
   wallGain: { value: number };
+  /** `[lo, hi)` layers of the pantile and slate cells of the chunk atlas (roofTier.ts); lo < 0 = off. Slot meshes never set it. */
+  roofLayers: { value: number[] };
+  roofTier: { value: number[] };
+  cellTier: { value: number[] };
   /** Unlit slot meshes: world → east/north/up for the baked shade (set per model in the legacy layers). */
   enuFromWorld: { value: any };
 };
@@ -484,6 +499,9 @@ export function createCityUniforms(THREE: any, init: Partial<CityLookUniforms> =
     flatColour: init.flatColour ?? { value: 0 },
     cityFade: init.cityFade ?? { value: 1 },
     wallGain: init.wallGain ?? { value: 1 },
+    roofLayers: init.roofLayers ?? { value: ROOF_LAYERS_OFF },
+    roofTier: init.roofTier ?? { value: roofTierUniform() },
+    cellTier: init.cellTier ?? { value: FACADE_TIER_OFF },
     enuFromWorld: init.enuFromWorld ?? { value: new THREE.Matrix3() },
   };
 }

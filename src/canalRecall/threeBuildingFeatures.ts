@@ -20,6 +20,8 @@ import { bayVariantOpenings, proceduralOpenings } from './facadeOpenings.js';
 import type { StreetAppearanceProfile } from './streetAppearance.js';
 import { SUPERMARKET_CHAINS } from './shopfronts.js';
 import { appendAllotmentHouses, isAllotmentHouse } from './allotmentHouses.js';
+import { SHED_LID_HEX, isGardenShed, shedHeightM, shedWallHex } from './gardenSheds.js';
+import { SegmentGrid } from './streetFronts.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -120,6 +122,11 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   // colour (or a neutral bitumen/gravel grey when the roof colour just repeats the wall's).
   const mapped = typeof p.roofColour === 'string' && p.roofColour !== p.colour ? p.roofColour : null;
   building.lid = { hex: mapped ?? FLAT_ROOF_GREYS[lookVariant(id) % FLAT_ROOF_GREYS.length], flatLayer: roofBase + 3 };
+  if (p.gardenShed) {
+    // A back-garden shed (gardenSheds.ts): bare walls in a weathered muted colour, a tarred flat lid, nothing else.
+    building.bare = true; building.wallHex = shedWallHex(id); building.lid = { hex: SHED_LID_HEX, flatLayer: roofBase + 3 };
+    building.shop = false; building.shopfront = false; building.signature = undefined; building.chain = undefined;
+  }
   if (p.kitWall) {
     // A landmark kit's walls: its own stone or brick colour, bare or in a window grid.
     building.wallHex = String(p.kitWallHex ?? building.wallHex);
@@ -158,7 +165,11 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
 /** `streets`: flat street segments near the chunk, metres from ORIGIN (streetFronts.ts); doors then go only on the street side. */
 export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' | 'coarse' = 'walls', streets?: Float32Array, profiles: readonly StreetAppearanceProfile[] = [], contextFeatures: readonly Feature[] = [], hostOpenings: readonly ChunkHostOpeningConfig[] = [], surveyedEnvelopes: ReadonlyMap<string,SurveyedMeshBinding> = new Map()): Chunk {
   const garden = features.filter(isAllotmentHouse);
-  const chunk = buildChunk(features.filter(f => !isAllotmentHouse(f)).map(f => {
+  // Garden sheds draw as low muted boxes in the near tier and not at all beyond it (gardenSheds.ts). Without the
+  // chunk's streets nothing is classified, so a street kiosk is never dropped for want of a street file.
+  const shedStreets = streets?.length ? new SegmentGrid(streets) : null;
+  const marked = features.filter(f => !isAllotmentHouse(f)).map(f => isGardenShed(f, shedStreets, ORIGIN) ? { ...f, properties: { ...f.properties, gardenShed: true, height: shedHeightM(f.properties) } } : f);
+  const chunk = buildChunk(marked.filter(f => !(mode === 'coarse' && f.properties.gardenShed)).map(f => {
     const visualRoof = mode !== 'coarse' && profiles.length ? sourceVisualRoof(f, profiles) : undefined;
     const building = meshBuildingFor(visualRoof?.feature ?? f, look, mode === 'coarse', visualRoof?.plan);
     if(building){
@@ -176,7 +187,7 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
       // Continue into local facade context below: coarse LOD drops relief and
       // shaped roofs, while its existing cheap window cells keep the street rhythm.
     }
-    if (building && profiles.length && look !== 'untextured' && !f.properties.kitWall && !f.properties.frontCarrier && !f.properties.largeTier) {
+    if (building && profiles.length && look !== 'untextured' && !f.properties.kitWall && !f.properties.frontCarrier && !f.properties.largeTier && !f.properties.gardenShed) {
       const localProfiles = profilesNearBuilding(profiles, building.polygons);
       if (!localProfiles.length) return building;
       const p = f.properties;

@@ -7,7 +7,7 @@ import { test, type Page } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 import { openRoute } from './helpers';
 
-type Spot = { name: string; centre: [number, number]; standDeg: number; standM: number; query?: string; faceDeg?: number; view?: 'chase' | 'cockpit' };
+type Spot = { name: string; centre: [number, number]; standDeg: number; standM: number; query?: string; faceDeg?: number; view?: 'chase' | 'cockpit'; camZoom?: number };
 
 const SPOTS: Spot[] = [
   { name: 'police-van-leijenberghlaan', centre: [4.8799828, 52.3311922], standDeg: 262, standM: 48 },
@@ -47,6 +47,17 @@ const SPOTS: Spot[] = [
   { name: 'entrepotdok-aerial', centre: [4.9131356, 52.3693617], standDeg: 30, standM: 120 },
   { name: 'street-politie-watergraafsmeer', centre: [4.9272823, 52.3575278], standDeg: 69, standM: 45, view: 'cockpit' },
   { name: 'street-politie-postjesweg', centre: [4.8387086, 52.363678], standDeg: 135, standM: 45, view: 'cockpit' },
+  { name: 'roofs-bonboon-rozenstraat', centre: [4.88216, 52.37317], standDeg: 200, standM: 40 },
+  { name: 'roofs-bonboon-street', centre: [4.88216, 52.37317], standDeg: 200, standM: 40, view: 'cockpit' },
+  { name: 'roofs-hang-rozenstraat', centre: [4.88255, 52.37274], standDeg: 270, standM: 40 },
+  { name: 'roofs-bilderdijkstraat', centre: [4.871021, 52.372319], standDeg: 250, standM: 40 },
+  { name: 'roofs-bilderdijkstraat-saddle', centre: [4.871021, 52.372319], standDeg: 250, standM: 40, view: 'cockpit' },
+  { name: 'roofs-nieuw-west', centre: [4.8130, 52.3600], standDeg: 150, standM: 45 },
+  { name: 'sheds-willem-de-zwijgerlaan', centre: [4.86188, 52.37650], standDeg: 90, standM: 50 },
+  { name: 'allotments-nut-en-genoegen', centre: [4.85995, 52.38705], standDeg: 180, standM: 70 },
+  { name: 'allotments-sloterdijkermeer', centre: [4.85119, 52.38726], standDeg: 180, standM: 70 },
+  { name: 'aerial-singelgracht', centre: [4.8795, 52.3715], standDeg: 0, standM: 0, faceDeg: 20, camZoom: 0.16 },
+  { name: 'aerial-westerdok', centre: [4.8860, 52.3840], standDeg: 0, standM: 0, faceDeg: 20, camZoom: 0.16 },
 ];
 
 const OUT = process.env.DEMO_OUT ?? 'artifacts/demo';
@@ -86,6 +97,7 @@ for (const spot of SPOTS) {
     await teleport(page, p);
     await page.waitForTimeout(2500);
     await teleport(page, p); // the game re-routes after the first jump; pin the spot again
+    if (spot.camZoom) await page.evaluate(z => { (window as any).canalRecallGame.camera.zoom = z; }, spot.camZoom);
     await page.waitForTimeout(Number(process.env.DEMO_WAIT ?? 6000));
     mkdirSync(OUT, { recursive: true });
     await page.screenshot({ path: `${OUT}/${spot.name}.png` });

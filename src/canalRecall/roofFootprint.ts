@@ -204,3 +204,64 @@ export function perimeterRoofInset(ring: readonly Vec2[], widthM: number): numbe
   }
   return null;
 }
+
+/**
+ * How far the eave line of a roof over `rect` (outset by `overhang`) runs past the footprint's walls, metres:
+ * the largest distance from a point on that outline to the footprint when the point lies outside it.
+ * A fitted box over a footprint with a cut corner or a skewed party wall hangs over empty air here.
+ * `ends: false` measures the two long sides only (gable ends are warped onto their walls by the mesh).
+ */
+export function rectHangM(rect: { cx: number; cy: number; ux: number; uy: number; len: number; wid: number }, ring: readonly Vec2[], overhang = 0.3, ends = true): number {
+  const pts = openRing(ring), n = pts.length;
+  if (n < 3) return 0;
+  const hl = rect.len / 2 + overhang, hw = rect.wid / 2 + overhang;
+  const at = (u: number, v: number): Vec2 => [rect.cx + u * rect.ux - v * rect.uy, rect.cy + u * rect.uy + v * rect.ux];
+  const inside = ([x, y]: Vec2): boolean => {
+    let c = false;
+    for (let i = 0, j = n - 1; i < n; j = i++) {
+      const [xi, yi] = pts[i], [xj, yj] = pts[j];
+      if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) c = !c;
+    }
+    return c;
+  };
+  const dist = ([x, y]: Vec2): number => {
+    let best = Infinity;
+    for (let i = 0; i < n; i++) {
+      const [ax, ay] = pts[i], [bx, by] = pts[(i + 1) % n];
+      const dx = bx - ax, dy = by - ay, l2 = dx * dx + dy * dy, t = l2 ? Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / l2)) : 0;
+      best = Math.min(best, Math.hypot(x - ax - t * dx, y - ay - t * dy));
+    }
+    return best;
+  };
+  let hang = 0;
+  const steps = 16;
+  for (let k = 0; k <= steps; k++) {
+    const f = -1 + (2 * k) / steps;
+    for (const p of ends ? [at(f * hl, hw), at(f * hl, -hw), at(hl, f * hw), at(-hl, f * hw)] : [at(f * hl, hw), at(f * hl, -hw)]) if (!inside(p)) hang = Math.max(hang, dist(p));
+  }
+  return hang;
+}
+
+/** Area of a ring, metres squared. */
+export const ringAreaM2 = (ring: readonly Vec2[]): number => Math.abs(signedArea(openRing(ring)));
+
+/** The share (0..1) of the footprint that lies under none of the given roof rectangles, sampled on a grid. */
+export function uncoveredShare(ring: readonly Vec2[], rects: ReadonlyArray<{ cx: number; cy: number; ux: number; uy: number; len: number; wid: number }>, grid = 28): number {
+  const pts = openRing(ring), n = pts.length;
+  if (n < 3) return 0;
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  for (const [x, y] of pts) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+  let total = 0, bare = 0;
+  for (let i = 0; i < grid; i++) for (let j = 0; j < grid; j++) {
+    const x = x0 + ((i + 0.5) / grid) * (x1 - x0), y = y0 + ((j + 0.5) / grid) * (y1 - y0);
+    let c = false;
+    for (let a = 0, b = n - 1; a < n; b = a++) {
+      const [xa, ya] = pts[a], [xb, yb] = pts[b];
+      if ((ya > y) !== (yb > y) && x < ((xb - xa) * (y - ya)) / (yb - ya) + xa) c = !c;
+    }
+    if (!c) continue;
+    total++;
+    if (!rects.some(r => Math.abs((x - r.cx) * r.ux + (y - r.cy) * r.uy) <= r.len / 2 && Math.abs(-(x - r.cx) * r.uy + (y - r.cy) * r.ux) <= r.wid / 2)) bare++;
+  }
+  return total ? bare / total : 0;
+}

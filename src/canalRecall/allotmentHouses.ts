@@ -1,11 +1,14 @@
-/** Small garden houses: approximate single-storey architecture on mapped footprints.
- * Colours, openings and heights are display priors, not individual-house surveys.
- * Geometry lives in the walls chunk at both LODs, so camera pans keep the windows.
+/** Allotment huts: low flat-roofed boxes on mapped footprints, in the muted colours of garden sheds.
+ * User 2026-10-13 (Sloterdijkermeer, Nut & Genoegen): hundreds of huts read as small houses with pitched roofs.
+ * They are sheds: a box, a flat tarred lid, no windows, no trim, no door. The tile height is a display prior
+ * (these huts are OSM-only, tier 4: no BAG pand, so no 3DBAG height exists), 2.2-2.5 m to the roof deck.
+ * Geometry lives in the walls chunk at both LODs.
  */
 import earcut from 'earcut';
 import { allotmentGardenTriangles } from './allotmentGardens.js';
 import { ExtraSink, hash01, type FlatTri, type V3, type WallFrame } from './facadeExtraCore.js';
 import { fitRect } from './roofMesh.js';
+import { SHED_WALL_HEXES } from './gardenSheds.js';
 import type { Chunk } from './threeBuildingMesh.js';
 
 type Feature = { properties: Record<string, unknown>; geometry: unknown };
@@ -16,8 +19,11 @@ export const isAllotmentHouse = (f: Feature): boolean => {
   const polygons = g?.type === 'Polygon' ? [g.coordinates as number[][][]] : g?.type === 'MultiPolygon' ? g.coordinates as number[][][][] : [];
   return !!polygons?.length && polygons.every(p => p.length === 1 && p[0].length >= 4);
 };
-const WALLS = ['#385342', '#6d5845', '#6f2522', '#ddd7c5', '#45535b', '#34433a'];
-const ROOFS = ['#555755', '#614d44', '#9a583f', '#474b50'];
+/** The shed palette (gardenSheds.ts), so a hut and a back-garden shed read as the same kind of thing. */
+export const HUT_WALLS = SHED_WALL_HEXES;
+export const HUT_ROOFS = ['#4d4f4f', '#52504c', '#4a4d50'];
+/** A flat deck at this height: eaves 2.25-2.5 m. */
+export const HUT_MIN_HEIGHT_M = 2.25, HUT_MAX_HEIGHT_M = 2.5;
 const rgb = (hex: string): number[] => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
 
 /** Clip one triangulated footprint face at the ridge: each half has a planar roof. */
@@ -46,11 +52,12 @@ export function allotmentHouseTriangles(feature: Feature, origin: { lng: number;
   const rect = fitRect(ring, 80);
   if (!rect || rect.wid < 1 || rect.len < 1) return [];
   const id = String(feature.properties.id), seed = hash01(id);
-  const eaves = 2.25 + seed * .25, rise = .65 + hash01(`${id}:roof`) * .35;
-  const wall = WALLS[Math.floor(seed * WALLS.length)], roof = ROOFS[Math.floor(hash01(`${id}:roof-tone`) * ROOFS.length)];
-  const flat = feature.properties.roofShape === 'flat';
+  const eaves = HUT_MIN_HEIGHT_M + seed * (HUT_MAX_HEIGHT_M - HUT_MIN_HEIGHT_M);
+  const wall = HUT_WALLS[Math.floor(seed * HUT_WALLS.length)], roof = HUT_ROOFS[Math.floor(hash01(`${id}:roof-tone`) * HUT_ROOFS.length)];
+  // Always a flat deck: the tile's `roofShape: gabled` is the old prior and is not drawn.
+  const flat = true;
   const v = ([x, y]: Point) => -(x - rect.cx) * rect.uy + (y - rect.cy) * rect.ux;
-  const roofZ = (p: Point) => eaves + (flat ? 0 : rise * Math.max(0, 1 - Math.abs(v(p)) / (rect.wid / 2)));
+  const roofZ = (_p: Point) => eaves;
   const sink = new ExtraSink(10000);
   const face = (p: V3[], hex: string, n: V3) => {
     for (let i = 1; i + 1 < p.length; i++) {
@@ -78,22 +85,6 @@ export function allotmentHouseTriangles(feature: Feature, origin: { lng: number;
     let top: Point[] = [a, b];
     if (!flat && v(a) * v(b) < 0) { const t = v(a) / (v(a) - v(b)); top = [a, [a[0] + t * (b[0] - a[0]), a[1] + t * (b[1] - a[1])], b]; }
     for (let k = 0; k + 1 < top.length; k++) face([[...top[k], eaves], [...top[k + 1], eaves], [...top[k + 1], roofZ(top[k + 1])], [...top[k], roofZ(top[k])]], wall, [f.nx, f.ny, 0]);
-    if (f.len < 2.1) continue;
-    panel(f, 0, f.len, eaves - .09, eaves, '#e6e1d2', .025);
-    const door = i === front && f.len > 3;
-    if (door) {
-      const center = f.len * .25, width = .8;
-      panel(f, center - width / 2 - .06, center + width / 2 + .06, .04, 2.08, '#e6e1d2', .03);
-      panel(f, center - width / 2, center + width / 2, .06, 2.02, '#3e4840', .045);
-      panel(f, center - .23, center + .23, 1.15, 1.87, '#526b76', .055);
-    }
-    const centers = door ? [f.len * .68] : f.len > 5.3 ? [f.len * .3, f.len * .7] : [f.len * .5];
-    for (const center of centers) {
-      const width = Math.min(1.25, f.len * .28);
-      panel(f, center - width / 2 - .055, center + width / 2 + .055, .86, 1.99, '#e6e1d2', .03);
-      panel(f, center - width / 2, center + width / 2, .92, 1.93, '#526b76', .045);
-      if (!coarse) panel(f, center - .025, center + .025, .92, 1.93, '#e6e1d2', .055);
-    }
   }
   const indices = earcut(ring.flat());
   for (let i = 0; i < indices.length; i += 3) {
