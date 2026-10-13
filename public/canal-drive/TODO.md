@@ -689,6 +689,15 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 ---
 
 ## P1 — The learning model itself
+- **Desktop perf, next** (profile 2026-10-14, `scripts/ride-perf-owners.mjs`,
+  `docs/performance/desktop-20261013.md`): the HUD street-name pass
+  (`drawLabels`) walks all 28,931 label anchors every frame and runs the
+  knowledge test on 4,239 to draw none for a guest (0.4–1.3 ms; a grid
+  index was no faster, worse aerial; try a per-cell precomputed candidate
+  list keyed by camera cell); landmark ray picks need a bounding-box
+  pre-test or BVH; static landmark scenes update matrices every frame; the
+  bike draws twice per frame (0.4 ms); the one remaining long frame is a
+  MapLibre tile batch (20–26 texture uploads). iPhone profile pending.
 - **Models in the game that fail the hard gates** (lane reports 2026-10-13):
   `jodenbreestraat-11` (holes 116 loops, largest 53.7 m; z-fight 118 m²;
   28 buried openings; 0 % material slots), `academie-theater-dans` (607

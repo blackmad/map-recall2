@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+## Desktop ride profiled by owner; three fixes (2026-10-14, night)
+
+Lane `perf/desktop-ride-20261013` (user: "there's still perf work to do").
+`scripts/ride-perf-owners.mjs` reports ms per frame by owner (self time),
+GL work, long frames with their owners and GC, frames uncapped so an
+interval is the frame's cost. Chase ride on the fixed route, 1440×900:
+median 5.3 → 3.4 ms, p95 7.2 → 5.0. Every frame over 33 ms in every
+configuration was a label plan running its 40 occlusion picks at once
+(landmark ray picks ~20 ms against every visible mesh, city picks ~7 ms,
+the plan ~7 ms; 47 such frames per 12 s on the aerial hold). Fixes: the
+label overlay stops deep-copying the MapLibre style every frame
+(`styleReady()`; 1.18 → 0.09 ms), occlusion picks run a few per frame
+within a 3 ms budget against the current camera (aerial frames over 33 ms
+49 → 2, p99 42 → 16 ms; verdicts and label counts identical), and the
+signature landmarks cache the view bounds until the camera moves
+(`getBounds()` ran per model per frame; 0.48 → 0.16 ms). `ride-perf.spec`
+pins the desktop budget (map render median ≤ 6 ms, label overlay mean
+≤ 0.6 ms, ≤ 2 frames over 100 ms). `docs/performance/desktop-20261013.md`
+has the table per flag: own ground adds ~0.6 ms of three.js, 50 draw
+calls and 0.9 M drawn triangles; the shared frame redraws shadows 27 times
+in 12 s. Remaining: the HUD street-name pass walks 28,931 anchors per
+frame (0.4–1.3 ms; a grid index was no faster), landmark ray picks need a
+bounds pre-test, static landmark scenes update matrices per frame, the
+bike is drawn twice (0.4 ms); the iPhone profile is still pending.
+
+
 ## A figure kit, and four memorials with real figures (2026-10-14, night)
 
 Lane `landmarks/memorial-figures-20261013`. `scripts/landmarks/figure-kit.ts`
