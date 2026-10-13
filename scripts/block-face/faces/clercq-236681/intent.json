@@ -801,6 +801,7 @@
   }
  ],
  "continuity": {
+  "roof": {"source": "recipe"},
   "streetLevel": "shared",
   "corniceGroups": [],
   "identical": [],

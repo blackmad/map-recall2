@@ -46,8 +46,10 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Mövenpick could get an ordinary one-off later.
 - **Recipe roofs on the remaining faces**: on for 14 faces (all
   Bilderdijkstraat faces but 080336-090492 and 159426-165632, both Marnix
-  rows). Not yet: clercq-236681 (only installs with recipe roofs, but its left
-  corner gains an attic the photo lacks — decide), nassau-162289 (10–12 m²
+  rows). clercq-236681 now on recipe roofs (fixes 2.8 m² of wall/roof flicker), but
+  its Nassaukade corner (116526) gains an attic the photo lacks; keeping that
+  pand on 3DBAG (`keepSurvey`) fails z-fight at 0.4 m² — fix the corner's
+  overlap, then keepSurvey it. Not yet: nassau-162289 (10–12 m²
   slate/brick wall z-fight with either roof), utrechtse-48-76 (178705 over
   triangle budget), wallen-oza-41-57 (54 m open loops), wallen-ozv-115-125
   (171879 above 3DBAG max), 159426-165632 (no gain, 14.6 m loop),
