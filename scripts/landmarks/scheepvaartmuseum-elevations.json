@@ -1,0 +1,9 @@
+{
+  "id": "scheepvaartmuseum",
+  "facades": [
+    {"name": "NW (Oosterdok quay)", "bearing": 332.5, "photo": "artifacts/landmark-lanes/scheepvaartmuseum/ref-nw.jpg"},
+    {"name": "SE (Kattenburgerplein entrance)", "bearing": 152.5, "photo": "artifacts/landmark-lanes/scheepvaartmuseum/ref-se.jpg"},
+    {"name": "NE (Kattenburgergracht)", "bearing": 62.5, "photo": "artifacts/landmark-lanes/scheepvaartmuseum/ref-ne.jpg"},
+    {"name": "SW (water gate)", "bearing": 242.5, "photo": "artifacts/landmark-lanes/scheepvaartmuseum/ref-sw.jpg"}
+  ]
+}
