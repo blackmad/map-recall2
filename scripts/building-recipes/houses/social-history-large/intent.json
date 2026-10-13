@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "kind": "large",
+  "id": "social-history-large",
+  "pandId": "0363100012164130",
+  "address": "IISG, Cruquiusweg 31",
+  "sources": [
+    {"id": "pano-2025-06-16-00567", "kind": "street-panorama", "capturedAt": "2025-06-16", "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_11-43-26_00567/?width=1600&fov=88&heading=2&pitch=10", "image": "artifacts/landmark-lanes/social-history/ref-s.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+    {"id": "pano-2025-06-16-00567-east", "kind": "street-panorama", "capturedAt": "2025-06-16", "image": "artifacts/landmark-lanes/social-history/ref-s.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+    {"id": "pano-2017-07-05-000084", "kind": "street-panorama", "capturedAt": "2017-07-05", "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-000353_pano_0004_000084/?width=1600&fov=105&heading=187&pitch=13", "image": "artifacts/landmark-lanes/social-history/ref-n.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
+  ],
+  "walls": [
+    {"wallSurfaces": [17], "street": "Cruquiusweg", "system": "brick-bay-grid", "storeys": 7, "baysPerStorey": 10, "ground": "glazed", "blankStoreys": [3, 4, 5, 6], "windows": "plain", "entrance": {"bay": 8}, "signage": {"text": "INTERNATIONAAL INSTITUUT VOOR SOCIALE GESCHIEDENIS", "colour": "#8a8c8e"}, "palette": {"brick": "#ecebe6", "frame": "#5d6166"}},
+    {"wallSurfaces": [28], "system": "brick-bay-grid", "alignWith": 0, "baysPerStorey": 10, "ground": "blank", "blankStoreys": [3, 4, 5, 6], "windows": "plain", "palette": {"brick": "#ecebe6", "frame": "#5d6166"}},
+    {"wallSurfaces": [23], "street": "Nieuwe Vaart", "system": "ribbon-windows", "storeys": 3, "ground": "blank", "windows": "plain", "palette": {"brick": "#d9d7cf", "frame": "#4a4d52"}}
+  ],
+  "otherWalls": "blank",
+  "roof": {"material": "bitumen"},
+  "palette": {"brick": "#e3e1da", "frame": "#5d6166", "door": "#3a3a3a", "stone": "grey-painted", "wallMaterial": "stucco"},
+  "notes": [
+    "South front on Cruquiusweg (surfaces 17 and 28, split by a notch in the 3DBAG footprint): a white rendered mass, blank above the second floor, two rows of square punched windows at floors 1-2, a glazed recessed ground floor behind columns with the INTERNATIONAAL INSTITUUT VOOR SOCIALE GESCHIEDENIS fascia, entrance at the top of the steps left of centre (ref-s).",
+    "North (Nieuwe Vaart, surface 23, 10.4 m): the lower block's ribbon window band; the curved upper mass above (surfaces 67/68) is blank, as in ref-n. The glazed corner stair and the curved roof edge are below the component grain; 3DBAG straightens the curve.",
+    "The colonnade, the steel light masts and the rooftop antennas are not modelled."
+  ]
+}
