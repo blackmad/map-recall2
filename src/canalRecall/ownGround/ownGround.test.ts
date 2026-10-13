@@ -6,7 +6,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { deflateSync, gunzipSync, inflateSync } from 'node:zlib';
 import { readGeoTiff, undoFloatPredictor } from './geotiff';
 import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extendTile, readGroundTile, upsampleTile, fitLocalToRd, GroundField, NODATA, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
-import { DECK_BLEND_M, GroundSurface, riderPose, type Vec2 } from './surface';
+import { DECK_BLEND_M, DECK_MAX_GRADE, GroundSurface, clampDeckGrade, riderPose, type Vec2 } from './surface';
 import { cutIntervals, drapeTriangles, edgeWall, emptyMesh, endCap, reliefGrid, ribbon, type MeshArrays } from './drape';
 import { crossSection, parseMetres, areaKind } from './osmGround';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
@@ -234,6 +234,15 @@ test('measured deck body: outward side faces, a soffit/vault over water, abutmen
   for (let i = 0; i < body.positions.length; i += 3) if (!water(body.positions[i])) lowest = Math.min(lowest, body.positions[i + 2]);
   assert.ok(lowest <= -0.39, `land abutments go below the relief (${lowest})`);
   assert.ok(f.some(x => water(x.c[0]) && x.n[2] < 0), 'downward faces over water');
+});
+
+test('deck grade clamp: spikes over 1:8 come out, the crown stays', () => {
+  const s = Float64Array.from({ length: 41 }, (_, i) => i * 0.5), h = Float64Array.from(s, v => 1 - Math.abs(v - 10) * 0.05);
+  h[10] += 0.4; // a parked van on the DSM
+  const out = clampDeckGrade(s, h, [2, 18], DECK_MAX_GRADE);
+  assert.ok(out[10] < h[10] - 0.3, 'the spike is gone');
+  assert.ok(Math.abs(Math.max(...out) - 1) < 1e-9, 'the crown is kept');
+  assert.equal(out[0], h[0], 'outside the deck span untouched');
 });
 
 test('flat deck: draped top, fascia only over water', () => {
