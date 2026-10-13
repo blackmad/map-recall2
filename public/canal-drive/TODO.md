@@ -374,7 +374,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   (footprints only), `rework/booking-hq-20261011` (held),
   `exp/photo-colors-20261011`, `render/drop-maplibre-step1-20261010`; plus
   five `wip/recovery-*-20261013` branches with author iterations recovered
-  from the 2026-10-08 clones (nieuwespiegel555, kerk136, prinsen211/215).
+  from the 2026-10-08 clones (nieuwespiegel555, kerk136, prinsen211/215), and
+  `wip/recovery-landmark-integration-20261009` holding **five landmark models
+  that never reached main**: Academie voor Theater en Dans, Holocaust
+  Namenmonument, Max Euwe Centrum, Ruysdael Petrus-Pauluskerk, Voormalige
+  Schouwburgpoort (builders, GLBs, catalogue entries; audit and review them
+  at gallery size before installing).
 - **Perf findings (2026-10-09 baseline, `tests/e2e/ride-perf.spec.ts`,
   iphone 4x throttle):** steady ride holds 16.7 ms median, p99 33 ms. Landmark
   layer costs only 0.1–0.8 ms/frame even with 250 models resident. The game
