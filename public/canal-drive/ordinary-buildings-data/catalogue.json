@@ -29621,6 +29621,441 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T21:33:56.938Z"
+    },
+    {
+      "id": "ordinary-0363100012233553",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012233553",
+      "name": "Stadsloket Oost, Oranje-Vrijstaatplein 2, Amsterdam (2008 office block, 81 m long; stadsloket and municipal offices)",
+      "hash": "02790dbf931ac010ed219d2dc4ece81d30d84d2e5ee139d03ca1479eb5aa5e81",
+      "sha256": "02790dbf931ac010ed219d2dc4ece81d30d84d2e5ee139d03ca1479eb5aa5e81",
+      "bytes": 330948,
+      "triangles": 4262,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -70.617,
+          0.001,
+          -92.218
+        ],
+        "max": [
+          51.887,
+          21.596,
+          34.374
+        ]
+      },
+      "anchor": [
+        4.931693,
+        52.3567897
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9324376,
+              52.3568461
+            ],
+            [
+              4.9324406,
+              52.3568468
+            ],
+            [
+              4.9324316,
+              52.3568617
+            ],
+            [
+              4.9324285,
+              52.356861
+            ],
+            [
+              4.9324067,
+              52.3568991
+            ],
+            [
+              4.9324098,
+              52.3568998
+            ],
+            [
+              4.9324011,
+              52.3569148
+            ],
+            [
+              4.9323981,
+              52.3569141
+            ],
+            [
+              4.9323759,
+              52.3569527
+            ],
+            [
+              4.9323789,
+              52.3569533
+            ],
+            [
+              4.9323703,
+              52.3569684
+            ],
+            [
+              4.9323672,
+              52.3569677
+            ],
+            [
+              4.9323459,
+              52.3570046
+            ],
+            [
+              4.932349,
+              52.3570053
+            ],
+            [
+              4.9323403,
+              52.3570203
+            ],
+            [
+              4.9323373,
+              52.3570196
+            ],
+            [
+              4.9323153,
+              52.3570577
+            ],
+            [
+              4.9323185,
+              52.3570584
+            ],
+            [
+              4.9323098,
+              52.3570733
+            ],
+            [
+              4.9323068,
+              52.3570726
+            ],
+            [
+              4.9322851,
+              52.3571102
+            ],
+            [
+              4.9322881,
+              52.3571108
+            ],
+            [
+              4.9322789,
+              52.3571267
+            ],
+            [
+              4.9318977,
+              52.3570432
+            ],
+            [
+              4.9318842,
+              52.3570404
+            ],
+            [
+              4.9318845,
+              52.3570398
+            ],
+            [
+              4.9314033,
+              52.3569358
+            ],
+            [
+              4.9313683,
+              52.3569959
+            ],
+            [
+              4.9318474,
+              52.3570994
+            ],
+            [
+              4.9318478,
+              52.3570988
+            ],
+            [
+              4.9322467,
+              52.357185
+            ],
+            [
+              4.931996,
+              52.3576197
+            ],
+            [
+              4.9312366,
+              52.3574559
+            ],
+            [
+              4.931348,
+              52.3572653
+            ],
+            [
+              4.9314171,
+              52.3571454
+            ],
+            [
+              4.9306544,
+              52.3569808
+            ],
+            [
+              4.9307894,
+              52.3567463
+            ],
+            [
+              4.9308146,
+              52.356752
+            ],
+            [
+              4.9308633,
+              52.3566665
+            ],
+            [
+              4.9308021,
+              52.3566532
+            ],
+            [
+              4.9308941,
+              52.3564931
+            ],
+            [
+              4.9308954,
+              52.3564913
+            ],
+            [
+              4.9308969,
+              52.3564895
+            ],
+            [
+              4.9309007,
+              52.3564862
+            ],
+            [
+              4.9309029,
+              52.3564847
+            ],
+            [
+              4.9309079,
+              52.3564821
+            ],
+            [
+              4.9309135,
+              52.35648
+            ],
+            [
+              4.9309165,
+              52.3564792
+            ],
+            [
+              4.9309229,
+              52.3564781
+            ],
+            [
+              4.9309261,
+              52.3564779
+            ],
+            [
+              4.9309327,
+              52.3564778
+            ],
+            [
+              4.930936,
+              52.356478
+            ],
+            [
+              4.9309424,
+              52.3564791
+            ],
+            [
+              4.9309454,
+              52.3564798
+            ],
+            [
+              4.9309484,
+              52.3564807
+            ],
+            [
+              4.9309538,
+              52.356483
+            ],
+            [
+              4.9309585,
+              52.3564859
+            ],
+            [
+              4.9309605,
+              52.3564874
+            ],
+            [
+              4.9309637,
+              52.3564909
+            ],
+            [
+              4.930966,
+              52.3564946
+            ],
+            [
+              4.9309668,
+              52.3564965
+            ],
+            [
+              4.9309673,
+              52.3564985
+            ],
+            [
+              4.9309674,
+              52.3565026
+            ],
+            [
+              4.9309663,
+              52.3565067
+            ],
+            [
+              4.9309654,
+              52.3565087
+            ],
+            [
+              4.9316409,
+              52.3566545
+            ],
+            [
+              4.9316403,
+              52.3566557
+            ],
+            [
+              4.931665,
+              52.356661
+            ],
+            [
+              4.9316672,
+              52.3566573
+            ],
+            [
+              4.9316885,
+              52.3566619
+            ],
+            [
+              4.9316871,
+              52.3566643
+            ],
+            [
+              4.9318408,
+              52.356698
+            ],
+            [
+              4.9318422,
+              52.3566956
+            ],
+            [
+              4.9318603,
+              52.3566996
+            ],
+            [
+              4.9318589,
+              52.3567019
+            ],
+            [
+              4.932051,
+              52.356743
+            ],
+            [
+              4.9320524,
+              52.3567406
+            ],
+            [
+              4.9320705,
+              52.3567445
+            ],
+            [
+              4.9320692,
+              52.3567469
+            ],
+            [
+              4.9322611,
+              52.3567884
+            ],
+            [
+              4.9322625,
+              52.356786
+            ],
+            [
+              4.9322807,
+              52.3567899
+            ],
+            [
+              4.9322793,
+              52.3567923
+            ],
+            [
+              4.9324333,
+              52.3568256
+            ],
+            [
+              4.9324347,
+              52.3568232
+            ],
+            [
+              4.9324542,
+              52.3568274
+            ],
+            [
+              4.9324499,
+              52.3568347
+            ],
+            [
+              4.9324451,
+              52.3568337
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 21.6,
+      "height": 21.6,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-stadsloket-oost.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012233553"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "stadsloket-oost",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012233553/w03-161.jpg",
+          "staging/pand-reference-walls/0363100012233553/w01-341.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 3st 14b",
+          "brick-bay-grid 2st 14b",
+          "brick-bay-grid 2st 14b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Ornaments: no Stadsloket/Gemeente Amsterdam sign, logo band or crest is legible in the 2018/2019/2020 panoramas of these fronts, so no signage is modelled (SKIPPED: not-visible; the stadsloket entrance on the Oranje-Vrijstaatplein side has no panorama in range). Glazed door entrance MODELLED as one recessed glazed entrance at bay 6 of the south front; string courses MODELLED; the dark steel window frames MODELLED as the frame colour; the slot-window ribbon of the low wings SIMPLIFIED to low wide windows (two storeys, 14 bays, no concrete surround); the glass oriel on the south front SKIPPED (too-small); the stepped taller south wings (surfaces 36/65/157) and the courtyard walls have no panorama and stay blank; the saw-tooth roofs are kept as surveyed by 3DBAG."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012233553",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T21:35:54.752Z"
     }
   ]
 }
