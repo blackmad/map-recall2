@@ -1,0 +1,104 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "nieuwe-achtergracht-253754",
+ "pandId": "0363100012253754",
+ "address": "Nieuwe Achtergracht 127 (BAG), Amsterdam: UvA Roeterseiland, 1932 brick wing on the Nieuwe Achtergracht / Nieuwe Prinsengracht",
+ "sources": [
+  {
+   "id": "pano-2021-01-22-s",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001975_pano_0000_000883/",
+   "image": "staging/pand-reference-walls/0363100012253754/w03-163.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-01-22-ne",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001975_pano_0000_001010/",
+   "image": "staging/pand-reference-walls/0363100012253754/w05-30.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2020-04-29-w",
+   "kind": "street-panorama",
+   "capturedAt": "2020-04-29",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001681_pano_0000_003275/",
+   "image": "staging/pand-reference-walls/0363100012253754/w01-280.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    213,
+    272,
+    67
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 13,
+   "ground": "system",
+   "windows": "two-light",
+   "palette": {
+    "brick": "#7a5a48",
+    "frame": "#e8e6df",
+    "stone": "#c9bda8"
+   },
+   "cornice": true,
+   "deepBars": true
+  },
+  {
+   "wallSurfaces": [
+    26,
+    158
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 12,
+   "ground": "system",
+   "windows": "two-light",
+   "palette": {
+    "brick": "#7a5a48",
+    "frame": "#e8e6df",
+    "stone": "#c9bda8"
+   },
+   "cornice": true,
+   "deepBars": true
+  },
+  {
+   "wallSurfaces": [
+    184,
+    290
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 10,
+   "ground": "system",
+   "windows": "plain",
+   "palette": {
+    "brick": "#7a5a48",
+    "frame": "#e8e6df",
+    "stone": "#c9bda8"
+   },
+   "cornice": true
+  }
+ ],
+ "otherWalls": "blank",
+ "palette": {
+  "brick": "#7a5a48",
+  "frame": "#e8e6df",
+  "door": "#2a2a2a",
+  "stone": "#c9bda8"
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "notes": [
+  "Nieuwe Achtergracht 127 (BAG; UvA Roeterseiland), built 1932: a brown-brick teaching wing with a curved NE end. South front on the canal (w03-163, 2021-01-22): four levels (a low ground row of small windows, three storeys of paired windows with red roller shutters, a roof-edge row of small gabled dormers). NE front (w05-30, 2021-01-22): three storeys of wide multi-pane windows in a brick grid under a steep slate roof, a brick chimney and a glazed stair tower at its east end. West end (w01-280, 2020-04-29): a tan rendered rounded block with glass-block panels and a wide curved roof.",
+  "Modelled: brick-bay-grid with two-light windows (3.5 cm proud bars) and a cornice on the S and NE fronts (4 storeys, 13 and 12 bays), plain windows on the N and W end walls. Simplified: the low ground row is a full window storey; the red shutters, dormers and the glass stair tower are not drawn. The west block is brick-coloured although the photo shows tan render with glass blocks.",
+  "The dark glass-based cantilevered tower on this footprint (twin footprint, pand 0363100012185420, 39 m) is a separate pand and not part of this recipe; panels 62/141 to the west and the east block (w02-253, w06-73) show it."
+ ]
+}
