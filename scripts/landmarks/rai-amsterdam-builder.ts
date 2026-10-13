@@ -118,8 +118,19 @@ export function buildRaiAmsterdam(_w:number,_d:number,b:BuildingTools):void {
   }
   meshTriangles(glass,'glass','native-end-glass');meshTriangles(sideWalls,'concrete','native-side-wall');
   // Rim owns a thin exposed plane, leaving the surveyed assembly itself at the source boundary.
-  const rimGeometry=new T.BufferGeometry();rimGeometry.setAttribute('position',new T.Float32BufferAttribute(rim,3));rimGeometry.computeVertexNormals();
-  const rp=rimGeometry.getAttribute('position');for(let i=0;i<rp.count;i++)rp.setZ(i,rp.getZ(i)+(rp.getZ(i)>0?.035:-.035));add(rimGeometry,'concrete');
+  // The rim bands are a closed 4 cm slab on the glass, not single-sided strips: the back plane stays 3.5 cm off the glass as before (clear of the
+  // coplanar band), the front plane is 4 cm further out, skirts close every edge. Open strips were 100+ m of open boundary in the shell audit.
+  const thickenZ=(v:number[],d:number):number[]=>{
+    const out=v.slice(),at=(i:number)=>[v[i*3],v[i*3+1],v[i*3+2]],off=(i:number)=>[v[i*3],v[i*3+1],v[i*3+2]+(v[i*3+2]>0?d:-d)];
+    const key=(i:number)=>at(i).map(c=>Math.round(c*1e4)).join(',');
+    const edges=new Map<string,{n:number;a:number;b:number}>();
+    for(let t=0;t<v.length/9;t++)for(let k=0;k<3;k++){const a=t*3+k,b=t*3+(k+1)%3,ka=key(a),kb=key(b);if(ka===kb)continue;const e=ka<kb?ka+'|'+kb:kb+'|'+ka,cur=edges.get(e);if(cur)cur.n++;else edges.set(e,{n:1,a,b});}
+    for(let t=0;t<v.length/9;t++)for(const k of [0,2,1])out.push(...off(t*3+k).map((c,j)=>j===2?c:c));
+    for(const e of edges.values()){if(e.n!==1)continue;out.push(...at(e.b),...at(e.a),...off(e.a),...at(e.b),...off(e.a),...off(e.b));}
+    return out;
+  };
+  const rimShifted=rim.slice();for(let i=2;i<rimShifted.length;i+=3)rimShifted[i]+=rimShifted[i]>0?.035:-.035;
+  const rimGeometry=new T.BufferGeometry();rimGeometry.setAttribute('position',new T.Float32BufferAttribute(thickenZ(rimShifted,.04),3));rimGeometry.computeVertexNormals();add(rimGeometry,'concrete');
   function endZ(x:number,side:number):number {
     const zs:number[]=[];
     for(let i=0;i<nativeRing.length;i++){const a=nativeRing[i],q=nativeRing[(i+1)%nativeRing.length];if(x>=Math.min(a.x,q.x)&&x<=Math.max(a.x,q.x)&&Math.abs(q.x-a.x)>1e-8)zs.push(a.y+(q.y-a.y)*(x-a.x)/(q.x-a.x))}
@@ -176,6 +187,7 @@ export function buildRaiAmsterdam(_w:number,_d:number,b:BuildingTools):void {
   const concourseShape=new T.Shape(concourseRing);
   add(openTopPrism(concourseShape,concoursePart.properties.minHeight,7.7),'glass','native-concourse-shell');
   add(upwardRoofPlane(concourseShape,concoursePart.properties.minHeight),'concrete','native-concourse-floor');
+  add(upwardRoofPlane(concourseShape,7.7),'concrete','native-concourse-roof'); // the concourse's top edge ran 53 m past the slab on its east side with nothing over it
   for(let i=0;i<concourseRing.length;i++) {
     const a=concourseRing[i],q=concourseRing[(i+1)%concourseRing.length],length=a.distanceTo(q),count=Math.floor(length/3.2);
     for(let k=1;k<=count;k++) {

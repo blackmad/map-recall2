@@ -42,6 +42,11 @@ export interface SnapOptions {
    * reads better than a window half inside the masonry.
    */
   keepLiftOverhang?: boolean;
+  /**
+   * Opt-in: an assembly that is still `minHidden` (fraction of its face) or more behind solid wall after the lifts, and no larger than
+   * `maxExtent` m, is invisible anyway (a window row left inside a roof mass or a thick parapet): it is dropped, like `dropOverhang`.
+   */
+  dropBuried?: {minHidden: number; maxExtent: number};
   passes?: number;
   th?: GeometryAuditThresholds;
 }
@@ -61,7 +66,7 @@ export interface SnapReport {
 }
 
 export function snapOpenings(soup: MaterialSoup, opts: SnapOptions = {}): SnapReport {
-  const {maxFloat = 0.6, maxBuried = 0.6, embed = 0.02, clearMargin = 0.03, dropOverhang, keepLiftOverhang = false, passes = 4, sheetThickness = 0.02, sheetRest = 0.02, th: thOpt = GEOMETRY_THRESHOLDS} = opts;
+  const {maxFloat = 0.6, maxBuried = 0.6, embed = 0.02, clearMargin = 0.03, dropOverhang, dropBuried, keepLiftOverhang = false, passes = 4, sheetThickness = 0.02, sheetRest = 0.02, th: thOpt = GEOMETRY_THRESHOLDS} = opts;
   const th = thOpt;
   const P = soup.positions, I = soup.indices;
   const report: SnapReport = {passes: 0, floatingMoved: 0, buriedMoved: 0, reverted: 0, skipped: {floating: 0, buried: 0, overhang: 0}, dropped: [], droppedAt: []};
@@ -128,8 +133,11 @@ export function snapOpenings(soup: MaterialSoup, opts: SnapOptions = {}): SnapRe
     for (const m of moves) translate(m.tris, m.d, 1);
     last = moves;
   }
-  if (dropOverhang) {
+  if (dropOverhang || dropBuried) {
     for (const i of auditOpenings(soup, th).issues) {
+      if (dropBuried && i.kind === 'buried' && i.buried >= dropBuried.minHidden && Math.max(i.max[0] - i.min[0], i.max[1] - i.min[1], i.max[2] - i.min[2]) <= dropBuried.maxExtent) { report.dropped.push(...i.triangles); report.droppedAt.push(i.centre); continue; }
+      if (process.env.SNAPDBG && i.kind === 'overhang') console.log('overhang', i.centre.map(c => +c.toFixed(1)), 'outside', +i.outside.toFixed(2), 'extent', +Math.max(i.max[0] - i.min[0], i.max[1] - i.min[1], i.max[2] - i.min[2]).toFixed(1), i.materials.join('+'));
+      if (!dropOverhang) continue;
       const extent = Math.max(i.max[0] - i.min[0], i.max[1] - i.min[1], i.max[2] - i.min[2]);
       if (i.kind === 'overhang' && i.outside >= dropOverhang.minOutside && extent <= dropOverhang.maxExtent) { report.dropped.push(...i.triangles); report.droppedAt.push(i.centre); }
     }

@@ -19,5 +19,5 @@ if (mode === 'z' || mode === 'all') {
   for (const p of r.zfight.patches.filter(p => !p.near && !p.hidden).slice(0, 30)) console.log('Z', p.area.toFixed(2), p.orientation, p.materials.join('/'), 'c', f2(p.centre), 'min', f2(p.min), 'max', f2(p.max));
 }
 if (mode === 'o' || mode === 'all') {
-  for (const i of r.openings.issues.filter(i => i.severity === 'fail' || mode === 'all').slice(0, 40)) console.log('O', i.kind, i.severity, i.materials.join('+'), 'c', f2(i.centre), 'gap', i.gap?.toFixed(2), 'out', i.outside?.toFixed(2), 'bur', i.buried?.toFixed(2), 'n', i.wallNormal ? f2(i.wallNormal) : '');
+  for (const i of r.openings.issues.filter(i => i.severity === 'fail' || mode === 'all').slice(0, 40)) console.log('O', i.kind, i.severity, i.materials.join('+'), 'c', f2(i.centre), 'gap', i.gap?.toFixed(2), 'out', i.outside?.toFixed(2), 'bur', i.buried?.toFixed(2), 'n', i.wallNormal ? f2(i.wallNormal) : '', 'min', f2(i.min), 'max', f2(i.max));
 }

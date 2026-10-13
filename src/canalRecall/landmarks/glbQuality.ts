@@ -694,7 +694,7 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
     undersideLoops,
     flatComponents,
     points: holeLoops.slice(0, 20).map(([r]) => loopPoint.get(r)!),
-    details: holeLoops.slice(0, 10).map(([r, perimeter]) => ({perimeter, min: loopBox.get(r)!.min, max: loopBox.get(r)!.max, facesAbove: (loopSide.get(r) ?? 0) > 0})),
+    details: holeLoops.slice(0, 60).map(([r, perimeter]) => ({perimeter, min: loopBox.get(r)!.min, max: loopBox.get(r)!.max, facesAbove: (loopSide.get(r) ?? 0) > 0})),
   };
 
   // --- proximity clustering of components (touching boxes form one body) ---
