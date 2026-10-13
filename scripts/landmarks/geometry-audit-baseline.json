@@ -521,8 +521,8 @@
   "cinecenter": {
    "opening-floating": 86,
    "opening-floating-fail": 1,
-   "opening-overhang": 13,
-   "opening-overhang-fail": 7,
+   "opening-overhang": 6,
+   "opening-overhang-fail": 0,
    "opening-buried": 31,
    "zfight-m2": 3.3,
    "zfight-near-m2": 3.3,
