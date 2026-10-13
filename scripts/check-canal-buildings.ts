@@ -22,7 +22,8 @@ assert.match(clean, /#DED9D0/);
 assert.match(clean, /#AAA095/);
 assert.doesNotMatch(clean, /null/);
 assert.equal(buildingColorExpression('cyberpunk'), '#25114D');
-assert.deepEqual(buildingLight('clean'), { anchor:'map', color:'#fff7ea', intensity:.5, position:[1.25,210,42] });
+// The rig's sun: azimuth 215°, elevation 40° (polar 50° from the zenith), anchored to the map.
+assert.deepEqual(buildingLight('clean'), { anchor:'map', color:'#fff7ea', intensity:.5, position:[1.25,215,50] });
 assert.deepEqual(buildingLight('not-a-theme'), buildingLight('clean'));
 assert.equal(buildingLight('cyberpunk').color, '#79dfff');
 assert.equal(buildingOpacity('cyberpunk'), 0.98);

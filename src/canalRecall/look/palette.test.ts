@@ -1,7 +1,7 @@
 // node --import tsx --test src/canalRecall/look/*.test.ts
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { BUILDING_LOOKS, CITY_ROOF, FLAT_ROOF_GREYS, LOOK_VARIANTS, PERIOD_FROM, PERIOD_PRIORS, PERIODS, PHOTO_WALL_CELL_MEAN, ROOF_TONES, cellSetOf, lookHex, periodForYear, roofTone } from './palette.ts';
+import { BUILDING_LOOKS, CITY_ROOF, FLAT_ROOF_GREYS, LOOK_VARIANTS, PERIOD_FROM, PERIOD_PRIORS, PERIODS, PHOTO_WALL_CELL_MEAN, ROOF_TONES, cellSetOf, foliageDisplayHex, GROUND_TONES, hexToRgb, lookHex, periodForYear, rgbToHsl, roofTone } from './palette.ts';
 import { PARITY_TOLERANCE, faceNormal, lumaSpread, meanLuma } from './lookParityMath.ts';
 
 test('one era scheme: 1860 / 1915 / 1945, a boundary belongs to the period it opens', () => {
@@ -46,4 +46,18 @@ test('parity maths: magenta clear is excluded, spread is relative to the mean', 
   const s = lumaSpread(r, ['a', 'b', 'c'], 'south');
   assert.ok(Math.abs(s.spread - 0.1) < 1e-9);
   assert.ok(PARITY_TOLERANCE > 0 && PARITY_TOLERANCE < 0.2);
+});
+
+test('mood: foliage turns from olive toward green, purple leaves and bark keep their colour', () => {
+  const tilia = rgbToHsl(hexToRgb('#789655')), shown = rgbToHsl(hexToRgb(foliageDisplayHex('#789655')));
+  assert.ok(shown[0] > tilia[0] + 6 && shown[1] > tilia[1], 'greener and a little richer');
+  assert.ok(Math.abs(shown[2] - tilia[2]) < 0.01, 'same lightness');
+  assert.equal(foliageDisplayHex('#694653'), '#694653', 'prunus nigra stays purple');
+  assert.equal(foliageDisplayHex('#665741'), '#665741', 'bark is not foliage');
+});
+
+test('mood: own-ground water is no longer teal-black, pavers are lighter than wet concrete', () => {
+  assert.ok(rgbToHsl(hexToRgb(GROUND_TONES.water))[2] > 0.3, 'water lightness');
+  const luma = ([r, g, b]: readonly number[]) => 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  assert.ok(luma(GROUND_TONES.land.base) > 150 && luma(GROUND_TONES.paving.base) > luma(GROUND_TONES.land.base));
 });

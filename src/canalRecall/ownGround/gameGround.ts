@@ -24,7 +24,7 @@ import { footprintBase } from './placement.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
-import { STREET_GROUND } from '../look/palette.js';
+import { GROUND_TONES as G, STREET_GROUND } from '../look/palette.js';
 
 export interface GroundHost {
   /** Ask for another frame. */
@@ -285,13 +285,13 @@ export class OwnGround {
     const THREE = this.THREE;
     let seed = 99;
     const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
-    const noise = (g: CanvasRenderingContext2D, s: number, base: [number, number, number], spread: number, grain = 2) => {
+    const noise = (g: CanvasRenderingContext2D, s: number, base: readonly number[], spread: number, grain = 2) => {
       for (let y = 0; y < s; y += grain) for (let x = 0; x < s; x += grain) {
         const v = (rnd() - 0.5) * spread;
         g.fillStyle = `rgb(${base[0] + v},${base[1] + v},${base[2] + v})`; g.fillRect(x, y, grain, grain);
       }
     };
-    const pavers = (base: [number, number, number], joint: string, metres: number, w: number, h: number) => this.canvasTexture(512, metres, (g, s) => {
+    const pavers = (base: readonly number[], joint: string, metres: number, w: number, h: number) => this.canvasTexture(512, metres, (g, s) => {
       g.fillStyle = joint; g.fillRect(0, 0, s, s);
       const pw = s * w / metres, ph = s * h / metres;
       for (let row = 0, y = 0; y < s; row++, y += ph) for (let x = row % 2 ? -pw / 2 : 0; x < s; x += pw) {
@@ -302,26 +302,26 @@ export class OwnGround {
     });
     const std = (o: Record<string, unknown>) => new THREE.MeshStandardMaterial({ roughness: 0.95, metalness: 0, ...o });
     const M: Record<string, any> = {
-      land: std({ map: pavers([150, 142, 130], '#6f675d', 3, 0.3, 0.3) }),
+      land: std({ map: pavers(G.land.base, G.land.joint, 3, 0.3, 0.3) }),
       klinker: std({ map: pavers([...STREET_GROUND.klinker.base], STREET_GROUND.klinker.joint, 2, 0.2, 0.1), roughness: 0.9 }),
       asphalt: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [...STREET_GROUND.asphalt.base], 18)) }),
       cycle: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [...STREET_GROUND.cycle.base], 18)), roughness: 0.85 }),
       // Pavements: grey-rose klinkers in stretcher bond (Amsterdam's gebakken klinker trottoir).
       paving: std({ map: pavers([...STREET_GROUND.pavement.base], STREET_GROUND.pavement.joint, 2.1, 0.21, 0.105) }),
-      gravel: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [170, 156, 128], 30, 2)) }),
+      gravel: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, G.gravel, 30, 2)) }),
       kerb: std({ color: STREET_GROUND.kerb, roughness: 0.9 }),
       paint: std({ color: STREET_GROUND.paint, roughness: 0.6 }),
       tram: std({ color: STREET_GROUND.rail, roughness: 0.45, metalness: 0.6 }),
       bollard: std({ color: STREET_GROUND.bollard, roughness: 0.7 }),
-      park: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, [92, 122, 66], 30, 3)), roughness: 1 }),
-      wood: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, [70, 96, 52], 34, 3)), roughness: 1 }),
-      square: std({ map: pavers([176, 166, 150], '#857c70', 4, 0.6, 0.6) }),
-      parking: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, [92, 92, 96], 16)) }),
+      park: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, G.park, 30, 3)), roughness: 1 }),
+      wood: std({ map: this.canvasTexture(256, 6, (g, s) => noise(g, s, G.wood, 34, 3)), roughness: 1 }),
+      square: std({ map: pavers(G.square.base, G.square.joint, 4, 0.6, 0.6) }),
+      parking: std({ map: this.canvasTexture(256, 4, (g, s) => noise(g, s, G.parking, 16)) }),
       quay: std({ vertexColors: true }),
       deckBody: std({ vertexColors: true, roughness: 0.85 }),
       deckTop: std({ vertexColors: true, roughness: 0.85 }),
-      // Matte water: the 0.1 / 2.2 pair put a blown-out sun disc on every canal (user 2026-10-13 "do not need this reflection").
-      water: std({ color: '#304b4d', roughness: 0.65, envMapIntensity: 0.5 }),
+      // Matte water (user 2026-10-13 'do not need this reflection'); the mood pass's bluer tone (GROUND_TONES.water).
+      water: std({ color: G.water, roughness: 0.65, envMapIntensity: 0.5 }),
     };
     for (const [layer, k] of Object.entries(OFFSET)) Object.assign(M[layer], { polygonOffset: true, polygonOffsetFactor: -k!, polygonOffsetUnits: -2 * k! });
     // Overlays: the game's own route / active-street colours (vector-map.js), draped.

@@ -23,6 +23,7 @@
  * headless sheet renderer use the identical code path.
  */
 import {paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, roofCanvas} from '../look/slotCells.ts';
+import {BAKED_SHADE_GLSL, bakedFaceShade, bakedWallShade} from '../rendererShared/lightRig.ts';
 export {paintBrickCanvas, paintGlassCanvas, paintStuccoCanvas};
 import {cityLookEnabled, getCityLook, type CityLook} from '../look/cityLook.ts';
 import {INFERRED_SLOT_SOURCE} from '../look/materialSlotInference.ts';
@@ -38,10 +39,10 @@ type RGB = [number, number, number];
 export function cityShade([e, n, u]: RGB): number {
   if (Math.abs(u) < 0.5) {
     const len = Math.hypot(e, n) || 1;
-    return 0.8 + 0.2 * (0.5 + 0.5 * ((e / len) * -0.45 + (n / len) * 0.89));
+    return bakedWallShade(e / len, n / len);
   }
   if (u < 0) return 0.5;
-  return clamp(0.58 + 0.42 * Math.max(0, e * -0.35 + n * 0.5 + u * 0.8), 0.5, 1);
+  return bakedFaceShade([e, n, u]);
 }
 
 const VERTEX = /* glsl */ `
@@ -52,10 +53,7 @@ varying float vShade;
 void main() {
   vUv = uv * uvScale;
   vec3 n = normalize(enuFromWorld * (mat3(modelMatrix) * normal));
-  float shade;
-  if (abs(n.z) < 0.5) { vec2 h = normalize(n.xy + vec2(1e-6, 0.0)); shade = 0.8 + 0.2 * (0.5 + 0.5 * (h.x * -0.45 + h.y * 0.89)); }
-  else if (n.z < 0.0) shade = 0.5;
-  else shade = clamp(0.58 + 0.42 * max(0.0, n.x * -0.35 + n.y * 0.5 + n.z * 0.8), 0.5, 1.0);
+${BAKED_SHADE_GLSL}
   vShade = shade;
   gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }`;

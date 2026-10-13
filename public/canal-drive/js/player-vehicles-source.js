@@ -1,4 +1,6 @@
 // three.js is shared across the 3D bundles — see three-runtime-source.js.
+import { enuDirectionInLocal, SUN_DIRECTION } from '../../../src/canalRecall/rendererShared/lightRig.ts';
+
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 
 const assetUrl = path => new URL(path, window.location.href).href;
@@ -17,6 +19,8 @@ const TRANSIT_MODEL_URL = assetUrl('./gvb-metro-51-runtime.glb');
  * piece rather than reverting to a screen-space icon. The boat is a far bigger
  * object seen over open water, so it needs much less exaggeration.
  */
+/** Legacy-layer key light. Was 4.2 while it sat under the model; from above, 4.2 burns the saddle and frame white. */
+const VEHICLE_SUN_INTENSITY = 1.6;
 const BIKE_GAME_SCALE = 4.5;
 /**
  * A world-space piece draws at one CSS size on every screen, so a bike that
@@ -307,7 +311,7 @@ class Vehicle3D {
   _makeLayer() {
     const owner = this;
     const { id, modelUrl, label } = this.options;
-    let camera, renderer, occlusionMaterial;
+    let camera, renderer, occlusionMaterial, sun, sky;
     return {
       id,
       type: 'custom',
@@ -315,9 +319,13 @@ class Vehicle3D {
       onAdd(map, gl) {
         camera = new THREE.Camera();
         owner._scene = new THREE.Scene();
-        owner._scene.add(new THREE.HemisphereLight(0xffffff, 0x59636a, 3.2));
-        const sun = new THREE.DirectionalLight(0xffffff, 4.2);
-        sun.position.set(-3, -4, 8);
+        // The heading is folded into the camera (`_transform`), so these lights
+        // live in the model's frame; `render` re-aims them from the rig's world
+        // sun every frame. Before 2026-10-13 they were fixed in model space: the
+        // sun turned with the bike ("the sun moves with me"), and sat below it.
+        sky = new THREE.HemisphereLight(0xffffff, 0x59636a, 3.2);
+        owner._scene.add(sky);
+        sun = new THREE.DirectionalLight(0xffffff, VEHICLE_SUN_INTENSITY);
         owner._scene.add(sun);
         occlusionMaterial = owner._makeOcclusionMaterial();
         renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
@@ -332,6 +340,8 @@ class Vehicle3D {
         owner._pose(owner._modelRoot);
         const transform = owner._transform();
         camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(transform);
+        sun.position.fromArray(enuDirectionInLocal(transform.elements, SUN_DIRECTION));
+        sky.position.fromArray(enuDirectionInLocal(transform.elements, [0, 0, 1]));
         renderer.resetState();
         // X-ray first, against the map's depth alone: it paints only where
         // nearer map geometry covers the model. Drawn after the normal pass it

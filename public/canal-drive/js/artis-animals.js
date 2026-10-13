@@ -13,7 +13,9 @@
       if (!this.sharedFrame) {
         this.scene.add(new THREE.HemisphereLight(0xffffff, 0x657054, 2.1));
         const sun = new THREE.DirectionalLight(0xffefd9, 2);
-        sun.position.set(-50, 80, 30); this.scene.add(sun);
+        // Y-up model frame (x east, y up, z south): the rig's sun, fixed in the world.
+        const toSun = window.CanalRecallThree.SUN_DIRECTION || [-0.44, -0.63, 0.64];
+        sun.position.set(toSun[0], toSun[2], -toSun[1]); this.scene.add(sun);
       }
       this.origin = maplibregl.MercatorCoordinate.fromLngLat([4.915,52.366], .12);
       this.unit = this.origin.meterInMercatorCoordinateUnits();
