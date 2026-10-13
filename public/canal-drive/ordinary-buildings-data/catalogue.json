@@ -38209,6 +38209,276 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-13T23:09:40.061Z"
+    },
+    {
+      "id": "ordinary-0363100012186003",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012186003",
+      "name": "Westerdok 748, Amsterdam (Westerdokseiland): 2008 red-brick courtyard apartment block of 232 homes, stepped from 11 m to 35 m with a passage arch",
+      "hash": "e2a40a2d94a4365944d9fb7d05210b79a9ca8a76b76f0cb05b71237e1eeedba8",
+      "sha256": "e2a40a2d94a4365944d9fb7d05210b79a9ca8a76b76f0cb05b71237e1eeedba8",
+      "bytes": 647708,
+      "triangles": 8388,
+      "materials": 6,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -41,
+          -0.001,
+          -63.764
+        ],
+        "max": [
+          43.956,
+          37.987,
+          56.684
+        ]
+      },
+      "anchor": [
+        4.8923472,
+        52.3860095
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8917845,
+              52.3858486
+            ],
+            [
+              4.8917741,
+              52.3857586
+            ],
+            [
+              4.89175,
+              52.385559
+            ],
+            [
+              4.8929985,
+              52.3855028
+            ],
+            [
+              4.8929186,
+              52.3857069
+            ],
+            [
+              4.8928118,
+              52.3857117
+            ],
+            [
+              4.8928235,
+              52.3858016
+            ],
+            [
+              4.892878,
+              52.3857991
+            ],
+            [
+              4.8927868,
+              52.3860051
+            ],
+            [
+              4.8926874,
+              52.3860096
+            ],
+            [
+              4.8926981,
+              52.3860994
+            ],
+            [
+              4.892747,
+              52.3860972
+            ],
+            [
+              4.8926561,
+              52.3863024
+            ],
+            [
+              4.8925658,
+              52.3863063
+            ],
+            [
+              4.892577,
+              52.3863969
+            ],
+            [
+              4.8926155,
+              52.3863952
+            ],
+            [
+              4.8925476,
+              52.3865498
+            ],
+            [
+              4.8922391,
+              52.3865641
+            ],
+            [
+              4.8918734,
+              52.3865806
+            ],
+            [
+              4.8918206,
+              52.3861391
+            ],
+            [
+              4.8918085,
+              52.3860492
+            ]
+          ],
+          [
+            [
+              4.8923854,
+              52.3862173
+            ],
+            [
+              4.8920002,
+              52.3862347
+            ],
+            [
+              4.8920154,
+              52.3863615
+            ],
+            [
+              4.8922136,
+              52.3863523
+            ],
+            [
+              4.8922207,
+              52.3864131
+            ],
+            [
+              4.8924085,
+              52.3864046
+            ]
+          ],
+          [
+            [
+              4.8925318,
+              52.3861069
+            ],
+            [
+              4.8925094,
+              52.3859191
+            ],
+            [
+              4.8919636,
+              52.3859437
+            ],
+            [
+              4.8919756,
+              52.3860417
+            ],
+            [
+              4.8919877,
+              52.3861315
+            ]
+          ],
+          [
+            [
+              4.8919516,
+              52.385841
+            ],
+            [
+              4.8926553,
+              52.3858092
+            ],
+            [
+              4.8926311,
+              52.3856226
+            ],
+            [
+              4.8924046,
+              52.3856329
+            ],
+            [
+              4.8924105,
+              52.3856811
+            ],
+            [
+              4.892419,
+              52.3857538
+            ],
+            [
+              4.8922109,
+              52.3857631
+            ],
+            [
+              4.8922022,
+              52.3856906
+            ],
+            [
+              4.8921961,
+              52.3856426
+            ],
+            [
+              4.8919304,
+              52.3856543
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 37.99,
+      "height": 37.99,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-westerdok-748-186003.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012186003"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "westerdok-748-186003",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012186003/w01-275.jpg",
+          "staging/pand-reference-walls/0363100012186003/w01-275.jpg",
+          "staging/pand-reference-walls/0363100012186003/w01-275.jpg",
+          "staging/pand-reference-walls/0363100012186003/w02-185.jpg",
+          "staging/pand-reference-walls/0363100012186003/w03-5.jpg",
+          "staging/pand-reference-walls/0363100012186003/w03-5.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "eaves-vs-3dbag/walls[4]:pass",
+          "storey-height/walls[4]:pass",
+          "eaves-vs-3dbag/walls[5]:pass",
+          "storey-height/walls[5]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 3st 6b",
+          "brick-bay-grid 6st 5b",
+          "brick-bay-grid 10st 3b",
+          "brick-bay-grid 10st 11b",
+          "brick-bay-grid 10st 4b",
+          "brick-bay-grid 6st 3b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Simplified: the passage arch under the west tower is a plain ground storey (the 3DBAG walls close it as a wall), the balcony recesses and the glazed corner loggias are plain windows, the ground shop glazing is the same window row. Not modelled: the court walls, the east side stepped stair wings (no clear panorama) and the north-west annex."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012186003",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-13T23:10:37.724Z"
     }
   ]
 }
