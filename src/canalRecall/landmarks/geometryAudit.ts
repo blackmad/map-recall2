@@ -451,7 +451,9 @@ export function auditOpenings(s: MaterialSoup, th: GeometryAuditThresholds = GEO
       if (Math.max(...us) < w.uMin - 0.3 || Math.min(...us) > w.uMax + 0.3 || bb.max[1] < w.vMin - 0.3 || bb.min[1] > w.vMax + 0.3) continue;
       // Prefer a plane the opening stands on or in front of; a plane it lies wholly behind is usually the inner face of a
       // thin shell (a drum, a tower wall) and only wins when nothing better exists.
-      any.push({w, sd: Math.max(0, lo, -hi) + (hi < 0.02 ? 5 : 0), close: lo <= 0.8, axisOk});
+      // Between two planes the assembly touches, prefer the one it stands wholly in front of over one it straddles (the back
+      // face of a pier or band beside a window is not the wall the window is on; sweep 2026-10-13, Rode Hoed).
+      any.push({w, sd: Math.max(0, lo, -hi) + (hi < 0.02 ? 5 : 0) + (lo < -0.03 ? 0.05 : 0), close: lo <= 0.8, axisOk});
     }
     any.sort((p, q) => p.sd - q.sd);
     const cands = any.filter(x => x.close && x.axisOk);

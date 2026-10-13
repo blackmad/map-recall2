@@ -246,6 +246,14 @@ test('sawtooth roof glazing leaning 25 degrees is not a wall opening; a roof-onl
   assert.deepEqual(rib.map(i => [i.kind, i.severity]), [['floating', 'warn']]);
 });
 
+test('a window beside a projecting band is judged against the wall it stands on, not the band\'s back face', () => {
+  // A 1.2 m stone band 13-33 cm proud of the south face; its back face (z = 8.13, facing north) is a wall-sized plane the
+  // window straddles. The window (z 8.01-8.2) stands on the brick face below the band.
+  const band = {min: [0, 6, 8.13] as V3, max: [12, 7.2, 8.33] as V3, mat: 'stone'};
+  const win = [{min: [2, 3.7, 8.01] as V3, max: [3.5, 6.0, 8.15] as V3, mat: 'white'}, {min: [2.1, 3.8, 8.15] as V3, max: [3.4, 5.9, 8.2] as V3, mat: 'glass'}];
+  assert.deepEqual(auditOpenings(boxes(block, band, ...win)).issues.filter(i => i.severity === 'fail'), []);
+});
+
 /** U-shaped plan: two brick masses 6 m apart, a recessed brick mass between them, glass spanning the gap flush with the front. */
 const uMasses = [
   {min: [0, 0, 0] as V3, max: [2, 9, 8.5] as V3, mat: 'brick'}, {min: [8, 0, 0] as V3, max: [10, 9, 8.5] as V3, mat: 'brick'},
