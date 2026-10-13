@@ -128,7 +128,7 @@ export class GroundSurface {
   }
 
   /** Where (x, y) sits relative to a deck: station index/fraction, lateral distance, deck z there. */
-  static locate(deck: DeckSurface, x: number, y: number): { d: number; z: number; halfWidth: number; s: number } {
+  static locate(deck: DeckSurface, x: number, y: number): { d: number; z: number; halfWidth: number; s: number; lateral: number } {
     const p = deck.profile, n = p.x.length;
     let best = Infinity, bi = 0, bt = 0;
     for (let i = 0; i + 1 < n; i++) {
@@ -141,7 +141,7 @@ export class GroundSurface {
     const s = lerp(p.s);
     // Only the deck span lifts the surface; the approaches are relief.
     const off = s <= deck.span[0] || s >= deck.span[1];
-    return { d: off ? Infinity : Math.sqrt(best), z: lerp(deck.z), halfWidth: lerp(p.halfWidth), s };
+    return { d: off ? Infinity : Math.sqrt(best), z: lerp(deck.z), halfWidth: lerp(p.halfWidth), s, lateral: Math.sqrt(best) };
   }
 
   /** Riding-surface z: relief, lifted onto any measured deck within its width (blended over DECK_BLEND_M). */
@@ -166,6 +166,21 @@ export class GroundSurface {
       z = Math.max(z, g + w * (top - g));
     }
     return z;
+  };
+
+  /** 1 within a measured deck span's footprint (+1 m past each span end), fading to 0 over DECK_BLEND_M beside it (0 off every deck). */
+  deckWeight = (x: number, y: number): number => {
+    const list = this.buckets.get(`${Math.floor(x / BUCKET_M)}:${Math.floor(y / BUCKET_M)}`);
+    if (!list) return 0;
+    let best = 0;
+    for (const deck of list) {
+      const [x0, y0, x1, y1] = deck.profile.bbox;
+      if (x < x0 - DECK_BLEND_M || x > x1 + DECK_BLEND_M || y < y0 - DECK_BLEND_M || y > y1 + DECK_BLEND_M) continue;
+      const at = GroundSurface.locate(deck, x, y);
+      if (at.s < deck.span[0] - 1 || at.s > deck.span[1] + 1) continue;
+      best = Math.max(best, 1 - smoothstep((at.lateral - at.halfWidth) / DECK_BLEND_M));
+    }
+    return best;
   };
 
   /** Surface normal by central differences (scene metres). */

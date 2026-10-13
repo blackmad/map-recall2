@@ -19,7 +19,7 @@
 
 import earcut from 'earcut';
 import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMesh, waterZAt, type WaterGeometry } from './water.js';
-import { drapeTriangles, emptyMesh, merge, reliefGrid, type MeshArrays } from './drape.js';
+import { drapeTriangles, emptyMesh, gridHeight, merge, reliefGrid, type MeshArrays } from './drape.js';
 import { buildStreets, isBridgeWay, prepareWays, LIFT, type LocalWay } from './streets.js';
 import { flatDeckBody, measuredDeckBody } from './decks.js';
 import type { OsmGroundExtract } from './osmGround.js';
@@ -28,10 +28,10 @@ import type { Rect } from './groundStore.js';
 
 export type GroundLayer =
   | 'land' | 'park' | 'wood' | 'square' | 'parking'
-  | 'asphalt' | 'klinker' | 'cycle' | 'paving' | 'gravel' | 'kerb' | 'paint'
+  | 'asphalt' | 'klinker' | 'cycle' | 'paving' | 'gravel' | 'kerb' | 'paint' | 'tram'
   | 'water' | 'quay' | 'deckBody' | 'deckTop';
 
-export const GROUND_LAYERS: readonly GroundLayer[] = ['land', 'park', 'wood', 'square', 'parking', 'asphalt', 'klinker', 'cycle', 'paving', 'gravel', 'kerb', 'paint', 'water', 'quay', 'deckBody', 'deckTop'];
+export const GROUND_LAYERS: readonly GroundLayer[] = ['land', 'park', 'wood', 'square', 'parking', 'asphalt', 'klinker', 'cycle', 'paving', 'gravel', 'kerb', 'paint', 'tram', 'water', 'quay', 'deckBody', 'deckTop'];
 
 /** Transferable mesh arrays. Colours are sRGB 0..1 when present. */
 export interface PackedMesh { positions: Float32Array; normals: Float32Array; uvs: Float32Array; indices: Uint32Array; colors?: Float32Array }
@@ -106,10 +106,16 @@ export function cellTransferables(cell: BuiltCell): ArrayBuffer[] {
   return out;
 }
 
-/** Carriageways only, no paint: the far ring's cross-section. */
-function farSection(w: LocalWay): LocalWay | null {
-  const bands = w.section.bands.filter(b => b.kind === 'carriageway');
-  if (!bands.length) return null;
+/**
+ * The far ring's cross-section: every band, flat (no kerbs), no paint. It
+ * used to keep carriageways only, so beyond 350 m a street's cycle tracks,
+ * sidewalks and separate cycle paths vanished into the land's paving: the
+ * De Clercqstraat block past the Bilderdijkstraat cell seam read as an open
+ * grey plaza with a ragged strip of asphalt (named regression in
+ * check-ground-cells.ts).
+ */
+function farSection(w: LocalWay): LocalWay {
+  const bands = w.section.bands.map(b => (b.raised ? { ...b, raised: 0, kerb: 'none' as const } : b));
   return { ...w, section: { ...w.section, bands, paint: [] } };
 }
 
@@ -127,7 +133,7 @@ export function buildCell(input: CellInput): BuiltCell {
     seen.add(w.id); all.push(w);
   }
   for (const w of input.osm?.ways ?? []) own.add(w.id);
-  const ways = lod === 0 ? all : all.map(farSection).filter((w): w is LocalWay => !!w);
+  const ways = lod === 0 ? all : all.map(farSection);
   const areas = input.osm?.areas ?? [];
 
   // Mask extent: the cell plus what its ways and areas reach (capped).
@@ -142,9 +148,17 @@ export function buildCell(input: CellInput): BuiltCell {
   const hasWater = geoAround.polygons.length > 0;
   const mask = hasWater ? buildWaterMask(geoAround, mx0, my0, mx1, my1, res, MASK_RANGE_M, input.deckRingsAround) : null;
   const overWater = (x: number, y: number) => !!mask && maskDistance(mask, x, y) < 0;
+  const step = lod === 0 ? 5 : 10;
+  // Everything flat on the land (areas, street bands) drapes on the land grid's own surface plus
+  // the decks' lift, so the grid never pokes through between their vertices.
+  const landZ = gridHeight(surface.ground, step);
+  // On a deck the measured surface wins (blended over the deck's lateral blend).
+  const onLand = (x: number, y: number) => {
+    const h = surface.height(x, y), w = surface.deckWeight(x, y);
+    return w >= 1 ? h : h * w + (landZ(x, y) + h - surface.ground(x, y)) * (1 - w);
+  };
 
   // Land: the relief grid over the rectangle; quads deep inside a canal skipped.
-  const step = lod === 0 ? 5 : 10;
   const gx0 = Math.floor(x0 / step) * step, gy0 = Math.floor(y0 / step) * step;
   // Grid on global multiples of the step, clipped to the cell by whole quads
   // whose centre is inside, so two cells never both draw a quad.
@@ -162,14 +176,15 @@ export function buildCell(input: CellInput): BuiltCell {
       const pts = r.slice(0, -1).map(input.project);
       if (pts.length < 3) continue;
       const flat = pts.flatMap(p => [p[0], p[1]]);
-      drapeTriangles(m, flat, earcut(flat), surface.height, LIFT.area + (layer === 'square' ? 0.004 : 0), lod === 0 ? 8 : 16);
+      drapeTriangles(m, flat, earcut(flat), onLand, LIFT.area + (layer === 'square' ? 0.004 : 0), lod === 0 ? 8 : 16);
     }
     add(layer, m);
   }
 
   // Streets: bridge ways sampled finer (decks hump over metres).
   const only = (bridge: boolean) => (w: LocalWay) => own.has(w.id) && isBridgeWay(w) === bridge;
-  const streets = buildStreets(ways, surface.height, { step: lod === 0 ? 3 : 6, only: only(false) });
+  const streets = buildStreets(ways, onLand, { step: lod === 0 ? 3 : 6, only: only(false) });
+  // Bridge ways follow the measured deck exactly (no land under a deck over water to poke through).
   const onBridges = buildStreets(ways, surface.height, { step: lod === 0 ? 1.5 : 3, only: only(true) });
   for (const s of ['paving', 'klinker', 'asphalt', 'cycle', 'gravel', 'kerb', 'paint'] as const) { add(s, streets[s]); add(s, onBridges[s]); }
 

@@ -7,7 +7,8 @@ import { deflateSync, gunzipSync, inflateSync } from 'node:zlib';
 import { readGeoTiff, undoFloatPredictor } from './geotiff';
 import { applyLocalToRd, coarsenTile, decodeTile, downsample, encodeTile, extendTile, readGroundTile, upsampleTile, fitLocalToRd, GroundField, NODATA, pullPushFill, type GroundIndex, type LocalToRd } from './heightField';
 import { DECK_BLEND_M, GroundSurface, riderPose, type Vec2 } from './surface';
-import { cutIntervals, drapeTriangles, edgeWall, emptyMesh, endCap, reliefGrid, ribbon, type MeshArrays } from './drape';
+import { cutIntervals, drapeTriangles, edgeWall, emptyMesh, endCap, gridHeight, reliefGrid, ribbon, type MeshArrays } from './drape';
+import { bandCoverage, DE_CLERCQSTRAAT } from './roadRegressions';
 import { crossSection, parseMetres, areaKind } from './osmGround';
 import { BgtIndex, classOf, polygonBox, sectionWidths, toDm, wayWidths, type BgtPolygon, type SurfaceClass } from './bgtWidth';
 import { buildStreets, prepareWays, routeRibbon, LIFT } from './streets';
@@ -526,6 +527,36 @@ for (const [id, lng, lat] of [['BRU0166', 4.87445, 52.37286], ['BRU0044', 4.8875
     assert.ok(far.stats.triangles < cell.stats.triangles * 0.6, 'LOD 1 lighter');
   });
 }
+
+test('regression (streamed cells): De Clercqstraat Bilderdijkstraat → Kostverlorenvaart reads as street at both LODs', { skip: !haveCells }, async () => {
+  const store = fsStore();
+  await store.init();
+  const [x, y] = storeToLocal(DE_CLERCQSTRAAT.at[0], DE_CLERCQSTRAAT.at[1]), key = store.cellAt(x, y);
+  const input = await store.cellInput(key, 0), ids = new Set(DE_CLERCQSTRAAT.ways), seen = new Set<number>();
+  const ways = [input.osm, ...input.osmAround].flatMap(e => (e ? prepareWays(e.ways, input.project) : [])).filter(w => ids.has(w.id) && !seen.has(w.id) && seen.add(w.id));
+  assert.equal(ways.length, DE_CLERCQSTRAAT.ways.length);
+  // The block sits on the seam with the next cell east: build both, as the game does.
+  const keys = [key, ...GroundStore.neighbours(key).filter(k => k !== key && store.covers(k) && store.cellRect(k)[0] > store.cellRect(key)[0] && store.cellRect(k)[1] === store.cellRect(key)[1])];
+  for (const lod of [0, 1] as const) {
+    const cells = [];
+    for (const k of keys) cells.push(buildCell(await store.cellInput(k, lod)));
+    const r = bandCoverage(cells, ways);
+    assert.ok(r.share >= DE_CLERCQSTRAAT.minShare, `LOD ${lod}: ${(100 * r.share).toFixed(1)} % street, misses ${JSON.stringify(r.misses.slice(0, 5))}`);
+  }
+});
+
+test('gridHeight is the relief grid\'s own surface (its vertices and its two triangles per quad)', () => {
+  const h = (x: number, y: number) => Math.sin(x * 0.3) * 2 + Math.cos(y * 0.2) * 1.5 + x * y * 0.001;
+  const g = gridHeight(h, 5);
+  assert.ok(Math.abs(g(10, 15) - h(10, 15)) < 1e-12 && Math.abs(g(-35, 20) - h(-35, 20)) < 1e-12, 'exact at grid vertices');
+  const grid = reliefGrid(0, 0, 10, 10, 5, h);
+  // Centroid of every grid triangle sits on gridHeight.
+  for (let t = 0; t < grid.indices.length; t += 3) {
+    const [a, b, c] = [grid.indices[t] * 3, grid.indices[t + 1] * 3, grid.indices[t + 2] * 3], p = grid.positions;
+    const cx = (p[a] + p[b] + p[c]) / 3, cy = (p[a + 1] + p[b + 1] + p[c + 1]) / 3, cz = (p[a + 2] + p[b + 2] + p[c + 2]) / 3;
+    assert.ok(Math.abs(g(cx, cy) - cz) < 1e-9, `triangle ${t / 3}`);
+  }
+});
 
 // ------------------------------------------------------------- per-polder water levels
 test('water levels: each polygon sits at its own level, each shore wall measures from its own', () => {
