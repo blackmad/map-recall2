@@ -21,7 +21,7 @@ import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type Rect } from './grou
 import { GROUND_LAYERS, type BuiltCell, type GroundLayer, type PackedMesh } from './groundCell.js';
 import { groundParticipant, GROUND_ORDER, ndcOf } from './sharedFrameGround.js';
 import { footprintBase } from './placement.js';
-import { residentRadius } from './residency.js';
+import { residentRadius, viewReachM } from './residency.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
@@ -38,8 +38,10 @@ export interface OwnGroundOptions {
   workerUrl: string;
   /** Resident radius from the rider to a cell's nearest edge, metres. */
   radiusM?: number;
-  /** Largest resident radius from the air (zoomed out), metres: the radius grows from `radiusM` as the zoom falls below residency.ts AERIAL_ZOOM. */
+  /** Largest resident radius from the air (zoomed out), metres: the radius grows from `radiusM` as the view reaches further (residency.ts viewReachM). */
   aerialRadiusM?: number;
+  /** Arrival dissolve of a new cell, ms (0 = pop in). */
+  fadeMs?: number;
   /** LOD 0 within this distance of a cell's nearest edge. */
   nearM?: number;
   /** Below this map zoom the ground is not drawn (overview, minimap: flat cartography). */
@@ -48,10 +50,14 @@ export interface OwnGroundOptions {
 
 type LngLat = [number, number];
 
-interface Resident { key: string; lod: 0 | 1; group: any; materials: any[]; textures: any[]; triangles: number; bytes: number; maskInfo: { x0: number; y0: number; res: number } | null }
+/** `fade`: a cell that just arrived dissolves in over FADE_MS (screen-door dither on per-cell material clones); the clones go when it ends. */
+interface Fade { start: number; uniform: { value: number }; meshes: { mesh: any; original: any; clone: any }[] }
+interface Resident { key: string; lod: 0 | 1; group: any; materials: any[]; textures: any[]; triangles: number; bytes: number; maskInfo: { x0: number; y0: number; res: number } | null; fade?: Fade }
 
 const RADIUS_M = 1400;
-const AERIAL_RADIUS_M = 2600;
+const AERIAL_RADIUS_M = 2000;
+/** A cell arriving in the ring (not an LOD swap of a resident one) dissolves in over this long. */
+export const FADE_MS = 400;
 const NEAR_M = 350;
 const RESIDENCY_STEP_M = 60;
 
@@ -78,6 +84,8 @@ export class OwnGround {
   private workerReady = false;
   private readonly base: Record<string, any> = {};
   private readonly resident = new Map<string, Resident>();
+  /** Keys of resident cells still dissolving in (empty when idle: no per-frame work). */
+  private readonly fading = new Set<string>();
   private readonly pending = new Map<string, 0 | 1>();
   private readonly installQueue: BuiltCell[] = [];
   private readonly prepared = new Set<string>();
@@ -106,7 +114,7 @@ export class OwnGround {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, nearM: NEAR_M, minZoom: 15, ...options };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, ...options };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -161,10 +169,10 @@ export class OwnGround {
   }
 
   /** The rider's position (lng/lat) and the map zoom; call once per camera sync. */
-  update(lngLat: LngLat, zoom: number): void {
+  update(lngLat: LngLat, zoom: number, pitchDeg = 60): void {
     this.zoom = zoom;
     this.centre = toLocal(lngLat[0], lngLat[1]);
-    const radius = residentRadius(zoom, this.opts.radiusM, this.opts.aerialRadiusM, this.opts.minZoom);
+    const radius = residentRadius(viewReachM(zoom, pitchDeg, lngLat[1]), this.opts.radiusM, this.opts.aerialRadiusM);
     if (radius !== this.radiusM) { this.radiusM = radius; this.residencyAt = null; }
     if (!this.ready) return;
     if (!this.residencyAt || Math.hypot(this.centre[0] - this.residencyAt[0], this.centre[1] - this.residencyAt[1]) >= RESIDENCY_STEP_M) this.updateResidency();
@@ -179,6 +187,7 @@ export class OwnGround {
     // One cell per frame: geometry upload is the cost, not the build (that is in the worker).
     const next = this.installQueue.shift();
     if (next) { this.install(next); if (this.installQueue.length) this.host.repaint(); }
+    this.tickFades();
     if (visible && (this.overlayDirty || this.overlayRevision !== this.surfaceRevision)) this.rebuildOverlays();
     this.setBasemapHidden(visible && this.coversRider());
     return visible && this.resident.size > 0;
@@ -363,6 +372,41 @@ export class OwnGround {
     return m;
   }
 
+  /**
+   * A per-cell clone of `source` that dissolves by `fade.value` (0 → 1): a screen-door dither discard, so no blending
+   * (no sorting against the map's own layers) and no change to the depth buffer. Chains the source's own shader edits.
+   */
+  private fadeMaterial(source: any, fade: { value: number }): any {
+    const m = source.clone();
+    m.onBeforeCompile = (shader: any, renderer: any) => {
+      source.onBeforeCompile?.(shader, renderer);
+      shader.uniforms.ownFade = fade;
+      shader.fragmentShader = shader.fragmentShader.replace('#include <common>', '#include <common>\nuniform float ownFade;')
+        .replace('#include <clipping_planes_fragment>', '#include <clipping_planes_fragment>\nif (ownFade < 1.0 && fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453) > ownFade) discard;');
+    };
+    const key = source.customProgramCacheKey ? source.customProgramCacheKey() : `base-${source.type}`;
+    m.customProgramCacheKey = () => `${key}-ownFade`;
+    return m;
+  }
+
+  /** Advance the dissolve of arriving cells; nothing runs (and nothing repaints) when no cell is fading. */
+  private tickFades(): void {
+    if (!this.fading.size) return;
+    const now = performance.now();
+    for (const key of [...this.fading]) {
+      const r = this.resident.get(key), f = r?.fade;
+      if (!r || !f) { this.fading.delete(key); continue; }
+      const t = Math.min(1, (now - f.start) / this.opts.fadeMs);
+      f.uniform.value = t;
+      if (t >= 1) {
+        for (const { mesh, original, clone } of f.meshes) { mesh.material = original; clone.dispose(); }
+        r.fade = undefined;
+        this.fading.delete(key);
+      }
+    }
+    this.host.repaint();
+  }
+
   private geometry(p: PackedMesh): any {
     const THREE = this.THREE;
     const g = new THREE.BufferGeometry();
@@ -384,6 +428,8 @@ export class OwnGround {
     if (!this.wantedCells().some(w => w.key === cell.key && w.lod === cell.lod)) return;
     const t0 = performance.now();
     const THREE = this.THREE;
+    // A cell swapping its LOD keeps the picture (same colours): only a cell new to the ring fades in.
+    const arriving = !this.resident.has(cell.key) && this.opts.fadeMs > 0;
     this.drop(cell.key);
     const group = new THREE.Group();
     group.name = `own-ground/${cell.key}/lod${cell.lod}`;
@@ -396,12 +442,16 @@ export class OwnGround {
       uniforms = { waterMask: { value: tex }, maskOrigin: { value: new THREE.Vector2(cell.mask.x0, cell.mask.y0) }, maskSize: { value: new THREE.Vector2(cell.mask.width * cell.mask.res, cell.mask.height * cell.mask.res) } };
     }
     let triangles = 0, bytes = 0;
+    const fade: Fade | undefined = arriving ? { start: performance.now(), uniform: { value: 0 }, meshes: [] } : undefined;
     for (const layer of GROUND_LAYERS) {
       const p = cell.layers[layer];
       if (!p) continue;
       let material = this.base[layer];
       if (uniforms && CUT[layer]) { material = this.cutMaterial(layer, uniforms); materials.push(material); }
+      const original = material;
+      if (fade) material = this.fadeMaterial(original, fade.uniform);
       const mesh = new THREE.Mesh(this.geometry(p), material);
+      if (fade) fade.meshes.push({ mesh, original, clone: material });
       mesh.name = layer;
       mesh.matrixAutoUpdate = false;
       mesh.receiveShadow = true;
@@ -414,7 +464,8 @@ export class OwnGround {
     }
     group.matrixAutoUpdate = false;
     this.root.add(group);
-    this.resident.set(cell.key, { key: cell.key, lod: cell.lod, group, materials, textures, triangles, bytes, maskInfo: cell.mask ? { x0: cell.mask.x0, y0: cell.mask.y0, res: cell.mask.res } : null });
+    this.resident.set(cell.key, { key: cell.key, lod: cell.lod, group, materials, textures, triangles, bytes, maskInfo: cell.mask ? { x0: cell.mask.x0, y0: cell.mask.y0, res: cell.mask.res } : null, fade });
+    if (fade) this.fading.add(cell.key);
     this.stats.installMs.push(performance.now() - t0);
     const asked = this.requestedAt.get(`${cell.key}:${cell.lod}`);
     if (asked !== undefined) { this.stats.latencyMs.push(performance.now() - asked); this.requestedAt.delete(`${cell.key}:${cell.lod}`); }
@@ -426,6 +477,8 @@ export class OwnGround {
     const r = this.resident.get(key);
     if (!r) return;
     this.root.remove(r.group);
+    this.fading.delete(key);
+    for (const f of r.fade?.meshes ?? []) f.clone.dispose();
     r.group.traverse((o: any) => { if (o.isMesh) o.geometry.dispose(); });
     for (const m of r.materials) m.dispose();
     for (const t of r.textures) t.dispose();
