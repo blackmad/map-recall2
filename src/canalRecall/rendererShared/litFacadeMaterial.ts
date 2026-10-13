@@ -19,7 +19,7 @@
 // THREE is injected (the page's shared copy) so bundles that use this do not
 // carry their own three.js.
 
-import { ROOF_LAYERS_OFF, ROOF_TIER_GLSL, roofTierUniform } from '../roofTier.js';
+import { FACADE_TIER_GLSL, FACADE_TIER_OFF, ROOF_LAYERS_OFF, ROOF_TIER_GLSL, roofTierUniform } from '../roofTier.js';
 
 export type FacadeUniforms = {
   cells: { value: any };
@@ -32,6 +32,8 @@ export type FacadeUniforms = {
   /** `[lo, hi)` layers of the pantile and slate cells (roofTier.ts); lo < 0 turns the distance tiers off. */
   roofLayers: { value: number[] };
   roofTier: { value: number[] };
+  /** `[mid, far]` metres of the facade cell tiers (roofTier.ts); x < 0 turns them off. */
+  cellTier: { value: number[] };
 };
 
 export const HIGHLIGHT_LINEAR = [1.0, 0.637, 0.0137] as const; // #ffd21f in linear
@@ -66,6 +68,7 @@ export function createLitFacadeMaterial(THREE: any, uniforms?: Partial<FacadeUni
     wallGain: uniforms?.wallGain ?? { value: 1 },
     roofLayers: uniforms?.roofLayers ?? { value: ROOF_LAYERS_OFF },
     roofTier: uniforms?.roofTier ?? { value: roofTierUniform() },
+    cellTier: uniforms?.cellTier ?? { value: FACADE_TIER_OFF },
   };
   const material = new THREE.MeshStandardMaterial({ roughness: 0.9, metalness: 0, side: THREE.FrontSide, flatShading: true });
   material.onBeforeCompile = (shader: any) => {
@@ -76,6 +79,7 @@ export function createLitFacadeMaterial(THREE: any, uniforms?: Partial<FacadeUni
     shader.uniforms.wallGain = shared.wallGain;
     shader.uniforms.roofLayers = shared.roofLayers;
     shader.uniforms.roofTier = shared.roofTier;
+    shader.uniforms.cellTier = shared.cellTier;
     shader.vertexShader = shader.vertexShader
       .replace('#include <common>', `#include <common>${VERTEX_DECLS}`)
       .replace('#include <begin_vertex>', `#include <begin_vertex>${VERTEX_BODY}`)
@@ -90,6 +94,7 @@ uniform float flatColour;
 uniform float cityFade;
 uniform float wallGain;
 ${ROOF_TIER_GLSL}
+${FACADE_TIER_GLSL}
 varying vec2 vFacUv;
 flat varying float vLayer;
 varying vec3 vTint;
@@ -101,8 +106,9 @@ float facadeLuma;`)
 if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;`)
       .replace('#include <map_fragment>', `
 vec3 fp = vec3(vFacUv, vLayer);
-vec3 fc = roofTierColour(texture(cells, fp).rgb, vFacUv, vLayer, vFacDist);
-vec2 fm = texture(masks, fp).rg;
+vec3 fc; vec2 fm;
+cellTierSample(fp, vFacDist, fc, fm);
+fc = roofTierColour(fc, vFacUv, vLayer, vFacDist);
 fc *= mix(vec3(1.0), vTint, fm.r) * mix(vec3(1.0), vAccent, fm.g);
 fc *= mix(1.0, wallGain, fm.r);
 if (flatColour > 0.5) fc = vTint;
@@ -113,7 +119,7 @@ roughnessFactor = mix(0.32, 0.92, smoothstep(0.06, 0.2, facadeLuma));`)
       .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
 if (vHighlight > 0.5) totalEmissiveRadiance += vec3(${HIGHLIGHT_LINEAR.join(', ')}) * 0.45;`);
   };
-  material.customProgramCacheKey = () => 'shared-frame-facade-v3';
+  material.customProgramCacheKey = () => 'shared-frame-facade-v4';
   // The facade layer reads and writes these like a ShaderMaterial's uniforms.
   material.uniforms = shared;
   material.userData.litFacade = true;
