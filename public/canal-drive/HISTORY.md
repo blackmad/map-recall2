@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+## Own ground: junction strays, area:highway, dissolve, the edge from the air (2026-10-13, evening)
+
+Lane `ground/own-ground-defects-20261013`. The Rozengracht × Marnixstraat
+smear was a 2.4 m klinker stub of De Clercqstraat lying on the Rozengracht
+asphalt plus cycleway slivers left by the junction cuts: `shadowedWays()`
+in `streets.ts` drops carriageways ≤ 30 m that lie ≥ 80 % inside a wider
+one, and path pieces under 3 m (6 m between two cuts) go with their paint;
+pinned as `STRAYS` probes in `roadRegressions.ts`. De Clercqstraat's
+`area:highway` polygons are tram/bus platforms, so they stay paving: the
+1,312 paved areas now carry `hw` and `surface` (`patch-osm-tags.ts`,
+Overpass, 83 cells changed) and `pavedAreaSurface()` maps carriageway →
+asphalt/klinker, cycleway → red, platform/island/footway → paving, verge →
+grass, parking_space → parking. Far-ring cells dissolve in over 400 ms by a
+dither discard on per-cell material clones (ride perf unchanged at 16.7 ms
+median). The hard own-ground edge seen from 285 m up (user) is gone two
+ways: `basemapPalette.ts` recolours the MapLibre background, water, park,
+landcover and road layers to the own-ground palette while own ground is on,
+and `residency.ts` grows the resident radius with the view's reach (1,400 m
+chase, up to a 2,000 m cap in 400 m steps; frame time flat across the sweep,
+memory 69 → 124 MB). New e2e `own-ground-defects.spec.ts` with the aerial
+pin; `vector-map.js` +10 lines (basemap patches, zoom passed to the
+residency update).
+
+
 ## Integrator pass after the nine merges (2026-10-13, evening)
 
 - **One flat-roof table**: `FLAT_ROOF_TONES` now derives from

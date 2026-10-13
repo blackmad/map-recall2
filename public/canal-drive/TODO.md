@@ -716,15 +716,19 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 - **Roofs after the attachment fix**: pitched-vs-flat split pands still
   follow one plan (the roof-facts slot now colours the lid; the shape is one).
 - **Own ground after the 2026-10-13 lanes (HISTORY)**: still open before a
-  desktop default-on in the belt: the junction red cycle-lane smear and brown
-  holes at Rozengracht/Marnixstraat (cycle bands at lift 0.036 over
-  carriageway 0.03, coplanar); De Clercqstraat's `area:highway` polygons
-  drawn as square paving (keep the value, draw carriageway areas as asphalt);
-  far-ring cells pop in with no fade; the Magere Brug's two movable frames
-  read as one white gantry (and railings are always green: `bridge:movable`
-  and `colour` need a refetch); slope physics in `game.js` from
-  `riderPose().pitch`; hosting quota for 29.6 MB gz; iPhone ride-perf;
-  BRU0077's suspect 1.7 m hump and the five flooded spots in the belt audit.
+  desktop default-on in the belt: the Magere Brug's two movable frames and
+  the slab-like canal bridges (bridge-kit lane running; `bridge:movable` and
+  `colour` need a refetch); the belt audit's 18 tram-rail-tops-the-street
+  findings on bridges (BRU0030, BRU0041, BRU0001…; pre-existing, the audit
+  needs `tram` counted as a street surface or the rails lowered); land at
+  Rozengracht corners with no mapped sidewalk; a coarse far ring beyond the
+  2,000 m resident cap (memory, not frame time, is the cost: 23 cells 124 MB
+  at 2,000 m vs 41 cells 204 MB at 3,000 m); slope physics in `game.js` from
+  `riderPose().pitch`; hosting quota for 29.6 MB gz; iPhone ride-perf, the
+  larger ring and the fade on the phone; BRU0077's suspect 1.7 m hump and
+  the five flooded spots in the belt audit. Closed 2026-10-13 evening: the
+  junction stubs and cycle slivers, `area:highway` surfaces, far-ring
+  pop-in, the hard own-ground edge from the air.
   A separate lane traces the user's "bouncy second route line" at the
   Kostverlorenvaart: fixed 2026-10-13 (HISTORY, the boat's canvas question band).
 - **`?bagTiles=1` default flip**: recommended by the default-on review
