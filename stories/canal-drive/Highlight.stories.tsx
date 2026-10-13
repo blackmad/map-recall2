@@ -11,10 +11,11 @@ import { HighlightMarker } from '../../src/canalRecall/look/highlightMarker';
  * canal row: the real pass materials, material variants and ground ring / beacon, outside MapLibre. One house is the
  * destination; the card sits at the bottom, compact, as in the game. `far` puts the chase camera ~250 m out, where
  * the outline widens (outlineWidthPx); `fallback` draws it as MapLibre's fallback extrusions get it (the marker's
- * hull round the footprint prism, the house itself untouched). The game itself is exercised by
+ * hull round the footprint prism, the house itself untouched). `small` puts the camera ~380 m out, where the 6 m house
+ * covers ~0.1 % of the frame: the small-target boost (roof wash, raised beacon) is full; at `far` it is partial. The game itself is exercised by
  * tests/e2e/highlight.spec.ts and the shots of tests/e2e/highlight-shots.spec.ts.
  */
-type Args = { style: HighlightStyle; view: 'chase' | 'saddle'; name: string; longName?: boolean; far?: boolean; fallback?: boolean };
+type Args = { style: HighlightStyle; view: 'chase' | 'saddle'; name: string; longName?: boolean; far?: boolean; small?: boolean; fallback?: boolean };
 
 const ORIGIN: [number, number] = [4.8838, 52.3750];
 const M_LAT = 110_540, M_LNG = 111_320 * Math.cos(ORIGIN[1] * Math.PI / 180);
@@ -40,7 +41,7 @@ function house(width: number, depth: number, height: number, colour: number): TH
   return g;
 }
 
-function HighlightScene({ style, view, name, longName, far, fallback }: Args) {
+function HighlightScene({ style, view, name, longName, far, small, fallback }: Args) {
   const host = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = host.current!;
@@ -94,6 +95,7 @@ function HighlightScene({ style, view, name, longName, far, fallback }: Args) {
     const camera = new THREE.PerspectiveCamera(view === 'saddle' ? 60 : 45, el.clientWidth / el.clientHeight, 0.5, 2000);
     camera.up.set(0, 0, 1);
     if (view === 'saddle') { camera.position.set(target.at[0] + 28, -30, 2.2); camera.lookAt(target.at[0] - 4, 0, 9); }
+    else if (small) { camera.position.set(target.at[0] + 140, -350, 150); camera.lookAt(target.at[0], 0, 6); }
     else if (far) { camera.position.set(target.at[0] + 95, -230, 120); camera.lookAt(target.at[0], 0, 6); }
     else { camera.position.set(target.at[0] + 45, -110, 70); camera.lookAt(target.at[0], 0, 6); }
     let raf = 0;
@@ -102,7 +104,7 @@ function HighlightScene({ style, view, name, longName, far, fallback }: Args) {
     const resize = () => { renderer.setSize(el.clientWidth, el.clientHeight); camera.aspect = el.clientWidth / el.clientHeight; camera.updateProjectionMatrix(); };
     window.addEventListener('resize', resize);
     return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); marker.dispose(); renderer.dispose(); el.removeChild(renderer.domElement); };
-  }, [style, view, far, fallback]);
+  }, [style, view, far, small, fallback]);
   const accent = highlightAccent(style, '');
   return <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden', fontFamily: '"Barlow Condensed", Helvetica, sans-serif' }}>
     <div ref={host} data-testid="highlight-scene" style={{ position: 'absolute', inset: 0 }} />
@@ -136,6 +138,15 @@ export const OutlineRingBeaconLongNamePhone: Story = { args: { style: 'a', longN
 /** Chase distance (~250 m): the outline widens toward 3.5 px so a 6 m house still reads. */
 export const OutlineFarChase: Story = { args: { style: 'a', far: true } };
 export const OutlineFarChasePhone: Story = { args: { style: 'a', far: true }, parameters: phone };
+/**
+ * Small target (~0.1 % of the frame): the coral roof wash on the house's roof planes and the beacon raised by the
+ * shortfall; the facade keeps its brick. Fallback: the wash on the top cap of the hull prism.
+ */
+export const SmallTargetWash: Story = { args: { style: 'a', small: true } };
+export const SmallTargetWashPhone: Story = { args: { style: 'a', small: true }, parameters: phone };
+export const SmallTargetFallback: Story = { args: { style: 'a', small: true, fallback: true } };
+export const SmallTargetFallbackPhone: Story = { args: { style: 'a', small: true, fallback: true }, parameters: phone };
+export const SmallTargetLongNamePhone: Story = { args: { style: 'a', small: true, longName: true }, parameters: phone };
 /** MapLibre's fallback extrusions (three.js does not own the city): the marker's hull carries the outline. */
 export const FallbackHull: Story = { args: { style: 'a', fallback: true } };
 export const FallbackHullPhone: Story = { args: { style: 'a', fallback: true }, parameters: phone };

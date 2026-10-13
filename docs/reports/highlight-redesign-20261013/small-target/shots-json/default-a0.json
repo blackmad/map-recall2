@@ -1,0 +1,253 @@
+{
+ "frame": "default",
+ "style": "a0",
+ "query": "highlight=a",
+ "records": [
+  {
+   "spot": "westermarkt",
+   "view": "chase",
+   "file": "/private/tmp/claude-501/-Users-blackmad-Code-map-recall2/7c6aa0e3-4257-489d-8e64-91e8e6721bbb/scratchpad/shots-before/default-a-westermarkt-chase.png",
+   "share": 0.0020390625,
+   "state": {
+    "models": [
+     "anne-frank-house"
+    ],
+    "extrusions": 4,
+    "marker": {
+     "style": "a",
+     "anchor": [
+      4.884166653846153,
+      52.37515715384614
+     ],
+     "ring": true,
+     "beacon": true,
+     "hull": false,
+     "distanceM": null
+    }
+   },
+   "landmark": {
+    "id": "extract_landmarks_614625734",
+    "name": "Anne Frank House",
+    "lngLat": [
+     4.883821,
+     52.375075
+    ]
+   }
+  },
+  {
+   "spot": "westermarkt",
+   "view": "saddle",
+   "file": "/private/tmp/claude-501/-Users-blackmad-Code-map-recall2/7c6aa0e3-4257-489d-8e64-91e8e6721bbb/scratchpad/shots-before/default-a-westermarkt-saddle.png",
+   "share": 0.007271484375,
+   "state": {
+    "models": [
+     "anne-frank-house"
+    ],
+    "extrusions": 4,
+    "marker": {
+     "style": "a",
+     "anchor": [
+      4.884166653846153,
+      52.37515715384614
+     ],
+     "ring": true,
+     "beacon": true,
+     "hull": false,
+     "distanceM": 212.02773227361868
+    }
+   },
+   "landmark": {
+    "id": "extract_landmarks_614625734",
+    "name": "Anne Frank House",
+    "lngLat": [
+     4.883821,
+     52.375075
+    ]
+   }
+  },
+  {
+   "spot": "westerkerk",
+   "view": "chase",
+   "file": "/private/tmp/claude-501/-Users-blackmad-Code-map-recall2/7c6aa0e3-4257-489d-8e64-91e8e6721bbb/scratchpad/shots-before/default-a-westerkerk-chase.png",
+   "share": 0.0020615234375,
+   "state": {
+    "models": [
+     "westerkerk"
+    ],
+    "extrusions": 12,
+    "marker": {
+     "style": "a",
+     "anchor": [
+      4.883698063095239,
+      52.37453130119047
+     ],
+     "ring": true,
+     "beacon": true,
+     "hull": false,
+     "distanceM": 85.4498212970166
+    }
+   },
+   "landmark": {
+    "id": "extract_landmarks_1692085215",
+    "name": "Westerkerk",
+    "lngLat": [
+     4.883614,
+     52.374392
+    ]
+   }
+  },
+  {
+   "spot": "westerkerk",
+   "view": "saddle",
+   "file": "/private/tmp/claude-501/-Users-blackmad-Code-map-recall2/7c6aa0e3-4257-489d-8e64-91e8e6721bbb/scratchpad/shots-before/default-a-westerkerk-saddle.png",
+   "share": 0.0069658203125,
+   "state": {
+    "models": [
+     "westerkerk"
+    ],
+    "extrusions": 12,
+    "marker": {
+     "style": "a",
+     "anchor": [
+      4.883698063095239,
+      52.37453130119047
+     ],
+     "ring": true,
+     "beacon": true,
+     "hull": false,
+     "distanceM": 200.27418772897764
+    }
+   },
+   "landmark": {
+    "id": "extract_landmarks_1692085215",
+    "name": "Westerkerk",
+    "lngLat": [
+     4.883614,
+     52.374392
+    ]
+   }
+  },
+  {
+   "spot": "rijksmuseum",
+   "view": "chase",
+   "file": "/private/tmp/claude-501/-Users-blackmad-Code-map-recall2/7c6aa0e3-4257-489d-8e64-91e8e6721bbb/scratchpad/shots-before/default-a-rijksmuseum-chase.png",
+   "share": 0.00563671875,
+   "state": {
+    "models": [
+     "herepoort-bergpoort",
+     "rijksmuseum"
+    ],
+    "extrusions": 35,
+    "marker": {
+     "style": "a",
+     "anchor": [
+      4.88493019008746,
+      52.35975093702622
+     ],
+     "ring": true,
+     "beacon": true,
+     "hull": false,
+     "distanceM": 116.6560510598295
+    }
+   },
+   "landmark": {
+    "id": "extract_landmarks_512243549",
+    "name": "Rijksmuseum",
+    "lngLat": [
+     4.88654,
+     52.360119
+    ]
+   }
+  },
+  {
+   "spot": "rijksmuseum",
+   "view": "saddle",
+   "file": "/private/tmp/claude-501/-Users-blackmad-Code-map-recall2/7c6aa0e3-4257-489d-8e64-91e8e6721bbb/scratchpad/shots-before/default-a-rijksmuseum-saddle.png",
+   "share": 0.008435546875,
+   "state": {
+    "models": [
+     "herepoort-bergpoort",
+     "rijksmuseum"
+    ],
+    "extrusions": 35,
+    "marker": {
+     "style": "a",
+     "anchor": [
+      4.88493019008746,
+      52.35975093702622
+     ],
+     "ring": true,
+     "beacon": true,
+     "hull": false,
+     "distanceM": 223.9885720060908
+    }
+   },
+   "landmark": {
+    "id": "extract_landmarks_512243549",
+    "name": "Rijksmuseum",
+    "lngLat": [
+     4.88654,
+     52.360119
+    ]
+   }
+  },
+  {
+   "spot": "oudwest-terrace",
+   "view": "chase",
+   "file": "/private/tmp/claude-501/-Users-blackmad-Code-map-recall2/7c6aa0e3-4257-489d-8e64-91e8e6721bbb/scratchpad/shots-before/default-a-oudwest-terrace-chase.png",
+   "share": 0.0008203125,
+   "state": {
+    "models": [],
+    "extrusions": 1,
+    "marker": {
+     "style": "a",
+     "anchor": [
+      4.871810384615385,
+      52.366905076923075
+     ],
+     "ring": true,
+     "beacon": true,
+     "hull": false,
+     "distanceM": 149.14110871848274
+    }
+   },
+   "landmark": {
+    "id": "tapped-NL.IMBAG.Pand.0363100012236453",
+    "name": "Terrace house",
+    "lngLat": [
+     4.87177,
+     52.36696
+    ]
+   }
+  },
+  {
+   "spot": "oudwest-terrace",
+   "view": "saddle",
+   "file": "/private/tmp/claude-501/-Users-blackmad-Code-map-recall2/7c6aa0e3-4257-489d-8e64-91e8e6721bbb/scratchpad/shots-before/default-a-oudwest-terrace-saddle.png",
+   "share": 0.002154296875,
+   "state": {
+    "models": [],
+    "extrusions": 1,
+    "marker": {
+     "style": "a",
+     "anchor": [
+      4.871810384615385,
+      52.366905076923075
+     ],
+     "ring": true,
+     "beacon": true,
+     "hull": false,
+     "distanceM": 213.30630353615203
+    }
+   },
+   "landmark": {
+    "id": "tapped-NL.IMBAG.Pand.0363100012236453",
+    "name": "Terrace house",
+    "lngLat": [
+     4.87177,
+     52.36696
+    ]
+   }
+  }
+ ]
+}

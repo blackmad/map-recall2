@@ -18,7 +18,7 @@ const styles = arg('styles', 'yellow,a,b,c').split(',');
 const width = Number(arg('width', 480)), height = Math.round(width * 800 / 1280), label = 26, header = 44, gutter = 8;
 const spots = ['westermarkt', 'westerkerk', 'rijksmuseum', 'oudwest-terrace'];
 const frames = ['default', 'shared'], views = ['chase', 'saddle'];
-const names = { yellow: 'yellow (comparison)', a: 'a) default: outline + ring + beacon', b: 'b) rim + pulse + ring', c: 'c) desaturate rest + ring', 'a-hud': 'a) with HUD accent' };
+const names = { yellow: 'yellow (comparison)', a0: 'a) before the small-target boost', a: 'a) default: outline + ring + beacon + small-target boost', b: 'b) rim + pulse + ring', c: 'c) desaturate rest + ring', 'a-hud': 'a) with HUD accent' };
 
 const text = (s, w, h, size = 18, weight = 600, fill = '#1d1d1d', bg = '#f4f1ea') => Buffer.from(
   `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="100%" height="100%" fill="${bg}"/><text x="8" y="${Math.round(h * 0.7)}" font-family="Helvetica, Arial, sans-serif" font-size="${size}" font-weight="${weight}" fill="${fill}">${s.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</text></svg>`);
