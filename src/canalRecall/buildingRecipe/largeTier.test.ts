@@ -145,3 +145,52 @@ test('deepBars reaches the entrance (closed 3.5 cm frame, no open edge) and the 
   const fp = wg.find(g => g.id === 'footprint-vs-bag')!;
   assert.ok(fp.pass && (fp.value as {courtyardsFromLod22: number}).courtyardsFromLod22 > 0, JSON.stringify(fp.value));
 });
+
+test('curve: linked 3DBAG facets carry one bay rhythm along the arc (Westerdok east front); default unchanged', async () => {
+  const {compileLargeBuilding} = await import('./largeCompile.ts');
+  const base = raw('westerdok-186086'), f = facts('westerdok-186086');
+  const flat = fitLarge(validateLargeIntent({...base, walls: base.walls.map((w: object, i: number) => (i === 3 ? {...w, curve: undefined} : w))}), f).recipe;
+  assert.equal(flat.panelSystem, undefined, 'no curve, no per-panel systems');
+  const intent = validateLargeIntent({...base, walls: base.walls.map((w: object, i: number) => (i === 3 ? {...w, curve: true} : w))});
+  const {recipe} = fitLarge(intent, f), g = recipe.groups[3];
+  assert.ok(g.curve && g.curve.length === 1, JSON.stringify(g.curve));
+  const run = g.curve![0];
+  assert.ok(run.panels.length >= 8 && Math.abs(run.turnDeg) >= 10, JSON.stringify(run));
+  // Bay axes measured along the arc: every gap is the run pitch, except where an axis was nudged inside its facet.
+  const panels = compileLargeBuilding(intent, f).panels, pitch = run.lengthM / run.bays;
+  let s0 = 0;
+  const arc: number[] = [];
+  for (const pi of run.panels) {
+    const sys = recipe.spec.systems[recipe.panelSystem![pi]];
+    assert.equal(sys.bays!.centres!.length, sys.bays!.count);
+    for (const u of sys.bays!.centres!) arc.push(s0 + u);
+    s0 += panels[pi].uMax - panels[pi].uMin;
+  }
+  assert.ok(arc.length >= run.bays - 2, `${arc.length} of ${run.bays} axes placed`);
+  const gaps = arc.slice(1).map((a, k) => a - arc[k]);
+  assert.ok(gaps.every(d => d > pitch * 0.4 && d < pitch * 2.1), JSON.stringify(gaps));
+  assert.ok(gaps.filter(d => Math.abs(d - pitch) < 0.01).length >= gaps.length / 2, `rhythm kept: ${JSON.stringify(gaps)}`);
+  const {gates} = await gatesOf(intent, f);
+  assert.deepEqual(gates.filter(x => !x.pass).map(x => x.id), []);
+});
+
+test('wallMaterial per group: render, stucco and stone groups export their own material slot; the house slot stays brick', async () => {
+  const {largeMaterialSlot} = await import('./largeCompile.ts');
+  const base = raw('oude-turfmarkt-168172'), f = facts('oude-turfmarkt-168172');
+  assert.throws(() => validateLargeIntent({...base, walls: [{...base.walls[0], wallMaterial: 'marble'}, base.walls[1]]}), /wallMaterial/);
+  const plain = fitLarge(validateLargeIntent({...base, walls: base.walls.map((w: object) => ({...w, wallMaterial: undefined}))}), f).recipe;
+  assert.equal(plain.slotMaterial, undefined);
+  const {palette: _p, ...rest} = base.walls[1];
+  const intent = validateLargeIntent({...base, walls: [{...base.walls[0], wallMaterial: 'stone'}, {...rest, wallMaterial: 'render'}]});
+  const {recipe} = fitLarge(intent, f), [g0, g1] = recipe.groups;
+  assert.equal(largeMaterialSlot(g0.slots.wall, recipe).materialSlot, 'stone');
+  assert.equal(largeMaterialSlot(g1.slots.wall, recipe).materialSlot, 'stucco');
+  assert.equal(recipe.spec.palette[g1.slots.wall], '#f1eee6', 'render without a group colour is white');
+  assert.equal(largeMaterialSlot('wall', recipe).materialSlot, 'brick');
+  const {built, gates} = await gatesOf(intent, f);
+  const slots = new Map<string, string>();
+  built.group.traverse(o => { if (o.userData.materialSlot) slots.set(o.name, o.userData.materialSlot); });
+  assert.equal(slots.get(`wall/${g1.slots.wall}`), 'stucco');
+  assert.equal(slots.get(`wall/${g0.slots.wall}`), 'stone');
+  assert.deepEqual(gates.filter(x => !x.pass).map(x => x.id), []);
+});

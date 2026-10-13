@@ -3,12 +3,12 @@
  * validator: names, counts and component switches only; no coordinate or metric field anywhere. Wall surfaces are
  * checked against the facts when the fit runs (`fitLarge`), not here.
  */
-import {ROOF_MATERIALS, SOURCE_KINDS, SWATCHES, WALL_MATERIALS, validateIntent, type BuildingIntent, type LargeBuildingIntent} from './intent.ts';
+import {GROUP_WALL_MATERIALS, ROOF_MATERIALS, SOURCE_KINDS, SWATCHES, WALL_MATERIALS, validateIntent, type BuildingIntent, type LargeBuildingIntent} from './intent.ts';
 import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/systems.ts';
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'curve', 'wallMaterial'];
 const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
@@ -116,7 +116,8 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       }
       if (w.hoist.arch !== undefined) oneOf(w.hoist.arch, ARCH_KINDS, `${at}.hoist.arch`);
     }
-    bool(w.sills, `${at}.sills`); bool(w.frames, `${at}.frames`); bool(w.deepBars, `${at}.deepBars`);
+    bool(w.sills, `${at}.sills`); bool(w.frames, `${at}.frames`); bool(w.deepBars, `${at}.deepBars`); bool(w.curve, `${at}.curve`);
+    if (w.wallMaterial !== undefined) oneOf(w.wallMaterial, GROUP_WALL_MATERIALS, `${at}.wallMaterial`);
     if (w.nameBoards !== undefined) {
       if (!Array.isArray(w.nameBoards) || !w.nameBoards.length) problems.push(`${at}.nameBoards: list of names (one per hoist bay, "" to skip)`);
       else w.nameBoards.forEach((n, k) => { if (typeof n !== 'string' || (n !== '' && !SIGN_TEXT.test(n)) || n.length > 24) problems.push(`${at}.nameBoards[${k}]: up to 24 of A-Z a-z 0-9 & ' - . space`); });

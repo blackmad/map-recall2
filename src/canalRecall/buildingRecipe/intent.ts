@@ -295,6 +295,12 @@ export interface PaletteIntent {
   wallMaterial?: typeof WALL_MATERIALS[number];
 }
 export const WALL_MATERIALS = ['brick', 'stucco'] as const;
+/**
+ * Large-tier wall group material (`walls[].wallMaterial`): the recipe material slot its wall (and flush arch bands)
+ * export with, tinted by the group's `palette.brick`: `brick`, `stucco` (plaster), `stone` (ashlar, granite) or
+ * `render` (smooth white render: the stucco slot, white unless the group's palette says otherwise).
+ */
+export const GROUP_WALL_MATERIALS = ['brick', 'stucco', 'stone', 'render'] as const;
 
 /** Ordinary canal house: crown/gable family plus a regular bay grid per front. */
 export interface CanalHouseIntent {
@@ -351,6 +357,8 @@ export interface LargeWallIntent {
   blankStoreys?: number[];
   /** Police signature components: blue-and-white striped POLITIE band over the ground floor, blue lamp beside the entrance. */
   police?: {stripe?: boolean; lamp?: boolean};
+  /** What this group's wall is made of when it differs from the house (`palette.wallMaterial`); see GROUP_WALL_MATERIALS. */
+  wallMaterial?: typeof GROUP_WALL_MATERIALS[number];
   /** Group colours when they differ from the house palette (`brick` = this group's wall). */
   palette?: Partial<Pick<PaletteIntent, 'brick' | 'frame' | 'stone'>>;
   /**
@@ -367,6 +375,12 @@ export interface LargeWallIntent {
   frames?: boolean;
   /** true = glazing bars 3.5 cm proud of the glass (large tier; ribbons with a mullion otherwise sit in the audit's z-fight band) */
   deepBars?: boolean;
+  /**
+   * true = the group's 3DBAG facets that link end to end (a curved front kept as a chain of narrow planes) carry one
+   * bay rhythm along their arc length, `baysPerStorey`'s pitch continuing round the curve (curve.ts); default: each
+   * facet restarts its own grid.
+   */
+  curve?: boolean;
   /** Name boards (white plates, lettered) over the ground portals of the hoist bays on the widest panel, left to right; "" leaves a hoist bay without a board. */
   nameBoards?: string[];
 }

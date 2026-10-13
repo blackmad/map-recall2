@@ -594,7 +594,7 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
     const levels: number[] = lineSet ? lineSet.slice(0, -1).filter((L, i) => i === 0 || L < p.vMax - 0.8) : [0, g];
     if (!lineSet) for (let L = g + s; L < p.vMax - 1.0; L += s) levels.push(L);
     levels.push(Math.max(p.vMax, levels[levels.length - 1] + 0.01));
-    const floors = levels.length - 1, nb = Math.max(1, Math.round(W / sys.pitch)), nbays = sys.bays ? sys.bays.count : nb;
+    const floors = levels.length - 1, nb = Math.max(1, Math.round(W / sys.pitch)), nbays = sys.bays ? sys.bays.centres?.length ?? sys.bays.count : nb;
     for (let f = 0; f < floors; f++) {
       const v0 = levels[f], v1 = levels[f + 1];
       if (v1 <= p.vMin + 0.5 || v0 < p.partyH - 0.3) continue;
@@ -603,7 +603,9 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
       const row = sys.rowOverrides?.[String(f)] ?? (f === 0 ? sys.ground : topRow ? sys.top! : sys.typical);
       for (let b = 0; b < nbays; b++) {
         const lay = sys.bays;
-        const cell: Cell = lay
+        const cell: Cell = lay?.centres
+          ? { u0: p.uMin + lay.centres[b] - lay.pitch / 2, u1: p.uMin + lay.centres[b] + lay.pitch / 2, v0: Math.max(v0, p.vMin), v1, bay: b, floor: f, bays: nbays }
+          : lay
           ? { u0: p.uMin + lay.first + lay.pitch * (b - 0.5) - (b === 0 ? lay.reach?.[0] ?? 0 : 0), u1: p.uMin + lay.first + lay.pitch * (b + 0.5) + (b === nbays - 1 ? lay.reach?.[1] ?? 0 : 0), v0: Math.max(v0, p.vMin), v1, bay: b, floor: f, bays: nbays }
           : { u0: p.uMin + W * b / nb, u1: p.uMin + W * (b + 1) / nb, v0: Math.max(v0, p.vMin), v1, bay: b, floor: f, bays: nb };
         cells.push(cell);

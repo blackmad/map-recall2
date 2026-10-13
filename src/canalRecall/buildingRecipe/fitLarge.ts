@@ -19,10 +19,13 @@ import {MeshBuilder} from '../blockBuilding/mesh.ts';
 import type {P3, SurfaceSet} from '../blockBuilding/types.ts';
 import type {BlockSpec, System} from '../blockBuilding/spec.ts';
 import {DEFAULT_PITCH_M, largeSystem, type LargeGround, type LargeSystemName} from '../blockBuilding/systems.ts';
+import {panelRuns, runBayAxes} from '../blockBuilding/curve.ts';
 
 /** Window reveal depth (m) for the large tier. */
 export const LARGE_RECESS_M = 0.18;
 export const CIVIC_STOREY_M = {pre1945: 4.2, post1945: 3.6};
+/** Default tint of a `render` wall group without its own palette colour. */
+export const RENDER_WHITE = '#f1eee6';
 
 export interface PlantBox { centre: [number, number]; baseY: number; size: [number, number, number]; angleRad: number; kind: 'lift-overrun' | 'plant' }
 export interface LargeGroupFit {
@@ -37,6 +40,8 @@ export interface LargeGroupFit {
   /** loading-door axis (bay % every === first) and the name boards over its ground portals on the main panel */
   hoist?: {every: number; first: number} | {bays: number[]};
   nameBoards?: string[];
+  /** `curve`: the linked facet runs carrying one bay rhythm (panel indices left to right, arc length, turn, bays) */
+  curve?: {panels: number[]; lengthM: number; turnDeg: number; bays: number}[];
   slots: {wall: string; frame: string; stone: string; glass: string; door: string; curtain: string; sign: string};
 }
 export interface LargeBuildingRecipe {
@@ -49,6 +54,10 @@ export interface LargeBuildingRecipe {
   roofPlant: PlantBox[]; recessM: number;
   roof: {material: NonNullable<LargeBuildingIntent['roof']>['material']};
   wallMaterial: 'brick' | 'stucco';
+  /** per-panel spec system replacing the group's (curved runs: bay axes along the arc); only present when a group opts in */
+  panelSystem?: Record<number, string>;
+  /** recipe material slot per block-kit wall slot of a group with its own `wallMaterial` (only present when a group sets one) */
+  slotMaterial?: Record<string, string>;
 }
 export interface LargeFitReport {
   groups: {index: number; system: string; panels: number; surfaces: number; widthM: number; eavesM: number; storeys: number; storeyHeightsM: number[]; bays: number; pitchM: number; entrance: boolean; garageDoors: number}[];
@@ -175,18 +184,24 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
     roof: '#555555', 'police-blue': '#1d3f8f', 'police-white': '#eeeeea', plant: '#8d8c88', sign: swatch(pal.frame),
   };
   if (intent.walls.some(w => w.nameBoards?.length)) Object.assign(palette, {board: '#ecebe4', 'board-text': '#1c1c1c'});
-  const aligned = new Map<number, ReturnType<typeof storeyLines>>();
+  const aligned = new Map<number, ReturnType<typeof storeyLines>>(), panelSystem: Record<number, string> = {}, slotMaterial: Record<string, string> = {};
   intent.walls.forEach((w: LargeWallIntent, gi) => {
     const own = panels.filter(p => panelGroup[p.index] === gi);
     const ground = w.ground ?? (w.system === 'plinth-shopfronts' ? 'plinth-shopfronts' : 'system');
     const slots = {wall: 'wall', frame: 'frame', stone: 'stone', glass: 'glass', door: 'door', curtain: `curtain@g${gi}`, sign: `sign@g${gi}`};
     if (w.palette?.brick) { slots.wall = `wall@g${gi}`; palette[slots.wall] = swatch(w.palette.brick); }
+    // Group wall material: its own wall slot, exported with that material slot (render: white unless the group says otherwise).
+    if (w.wallMaterial) {
+      if (slots.wall === 'wall') { slots.wall = `wall@g${gi}`; palette[slots.wall] = w.wallMaterial === 'render' ? RENDER_WHITE : palette.wall; }
+      slotMaterial[slots.wall] = w.wallMaterial === 'render' ? 'stucco' : w.wallMaterial;
+    }
     if (w.palette?.frame) { slots.frame = `frame@g${gi}`; palette[slots.frame] = swatch(w.palette.frame); }
     if (w.palette?.stone) { slots.stone = `stone@g${gi}`; palette[slots.stone] = swatch(w.palette.stone); }
     palette[slots.curtain] = palette[slots.frame];
     // Flush brick arch bands (arches / hoist): a shade darker than the group's brick.
     const arch = (w.arches || w.hoist) && (w.arches?.band ?? 'brick') === 'brick' ? `arch@g${gi}` : undefined;
     if (arch) palette[arch] = shade(palette[slots.wall], 0.82);
+    if (arch && slotMaterial[slots.wall]) slotMaterial[arch] = slotMaterial[slots.wall];
     const sign = w.signage === undefined ? null : typeof w.signage === 'string' ? {text: w.signage, colour: undefined, mount: undefined} : w.signage;
     palette[slots.sign] = swatch(sign?.colour ?? (w.police ? '#1d3f8f' : pal.frame));
     // Widest panel that reaches the ground carries the entrance, garage doors and the bay count.
@@ -216,10 +231,23 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
     const specSystem = SYSTEM_SLOT(gi);
     systems[specSystem] = largeSystem(w.system, {pitchM, lines: st.lines, ground, windows: w.windows, stringCourses: w.stringCourses, piers: w.piers, balconyStoreys: w.balconies?.storeys, balconyRail: w.balconies?.rail, blankStoreys: w.blankStoreys, slots: {...slots, ...(arch ? {arch} : {})},
       ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {})});
+    // Curved front: one bay rhythm along each run of linked facets (two or more panels of this group), at the group's pitch.
+    let curve: LargeGroupFit['curve'];
+    if (w.curve) {
+      const sys = systems[specSystem], ww = sys.typical.win?.w ?? 0.5, halfWin = (ww <= 1 ? ww * pitchM : ww) / 2;
+      curve = [];
+      for (const run of panelRuns(panels, p => panelGroup[p.index] === gi)) {
+        if (run.panels.length < 2) continue;
+        const nb = Math.max(1, Math.round(run.lengthM / pitchM)), axes = runBayAxes(panels, run, nb, halfWin, 0.12);
+        for (const [pi, centres] of axes) { const name = `${specSystem}c${pi}`; systems[name] = {...sys, minWidth: 0.5, bays: {first: 0, pitch: run.lengthM / nb, count: centres.length, centres}}; panelSystem[pi] = name; }
+        curve.push({panels: run.panels, lengthM: r3(run.lengthM), turnDeg: Math.round(run.turnDeg), bays: nb});
+      }
+      if (!curve.length) warnings.push(`walls[${gi}].curve: no two panels of this group link end to end`);
+    }
     groups.push({index: gi, system: w.system, specSystem, panels: own.map(p => p.index), surfaces: [...w.wallSurfaces], mainPanel: main?.index ?? null, bearingDeg: main ? Math.round(bearingOfNormal(main.n)) : null,
       widthM: r3(widthM), eavesM: r3(eaves), flatTop, storeys: st.storeys, storeyHeightsM: st.heights, lines: st.lines, bays, pitchM: r3(pitchM), ground, cornice: !!w.cornice,
       ...(w.deepBars ? {deepBars: true} : {}), entrance, garage, signage: sign ? {text: sign.text, colour: palette[slots.sign], mount: sign.mount ?? 'fascia'} : null, police: w.police ? {stripe: !!w.police.stripe, lamp: !!w.police.lamp} : null,
-      ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), slots});
+      ...(w.hoist ? {hoist: w.hoist.bays ? {bays: [...w.hoist.bays]} : {every: w.hoist.every!, first: w.hoist.first ?? 0}} : {}), ...(w.nameBoards?.length ? {nameBoards: w.nameBoards} : {}), ...(curve ? {curve} : {}), slots});
   });
   // Unlisted walls: one system at the civic storey height and the system's default pitch.
   const otherName = intent.otherWalls ?? 'blank', otherTop = Math.max(0, ...panels.map(p => p.vMax));
@@ -230,7 +258,7 @@ export function fitLarge(intent: LargeBuildingIntent, facts: BuildingFacts): {re
   const roofPlant = intent.roofPlant ? placeRoofPlant(set) : [];
   if (intent.roofPlant && !roofPlant.length) warnings.push('roofPlant: no flat roof of 40 m² with room for a lift overrun');
   const recipe: LargeBuildingRecipe = {id: intent.id, pandId: intent.pandId, anchorRD, set, spec, panelGroup, wallGroup, groups, other: {system: otherName, specSystem: 'other'}, roofPlant, recessM: LARGE_RECESS_M,
-    roof: {material: intent.roof?.material ?? 'bitumen'}, wallMaterial: pal.wallMaterial ?? 'brick'};
+    roof: {material: intent.roof?.material ?? 'bitumen'}, wallMaterial: pal.wallMaterial ?? 'brick', ...(Object.keys(panelSystem).length ? {panelSystem} : {}), ...(Object.keys(slotMaterial).length ? {slotMaterial} : {})};
   const report: LargeFitReport = {
     groups: groups.map(g => ({index: g.index, system: g.system, panels: g.panels.length, surfaces: g.surfaces.length, widthM: g.widthM, eavesM: g.eavesM, storeys: g.storeys, storeyHeightsM: g.storeyHeightsM, bays: g.bays, pitchM: g.pitchM, entrance: !!g.entrance, garageDoors: g.garage?.bays.length ?? 0})),
     panels: panels.map(p => ({index: p.index, group: panelGroup[p.index], system: panelGroup[p.index] >= 0 ? groups[panelGroup[p.index]].system : otherName, widthM: r3(p.uMax - p.uMin), heightM: r3(p.vMax), bearingDeg: Math.round(bearingOfNormal(p.n)), surfaces: p.walls.map(wi => set.walls[wi].surface!)})),
