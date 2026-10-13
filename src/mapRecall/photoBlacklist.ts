@@ -26,12 +26,26 @@ const SCREENSHOT = /\b(screenshots?|screen shots?|schermafbeelding)\b/i;
 const MAP_OR_MARK = /\b(maps?|kaarten?|plattegronden?|plattegrond|plans?|diagrams?|logos?|flags?|vlaggen?|vlag|wapens?|coat of arms|escutcheon|emblems?|crests?)\b|wapen/i;
 const DOCUMENT = /\b(documents?|documenten|scans?|scanned|brief|letters?|krant|newspapers?|archief|archives?|manuscripts?|handwritten|postzegels?|stamps?)\b/i;
 const INTERIOR = /\b(interieur|interiors?|binnenkant|display room|showroom)\b/i;
-const ADVERTISING = /advertentie|advertisement|reclame/i;
+const ADVERTISING = /advertentie|advertisement|reclamezuil/i;
 /** Press photographs and dashcam frames: "Anefo" (Nationaal Archief press archive), "Mapillary". */
 const SOURCE = /\b(mapillary|anefo)\b/i;
 /** Anefo file titles start with the date and a catalogue number: "03-22-1947 01334 Frits Sieger". */
 const ANEFO_TITLE = /^(?:File:)?\d\d-\d\d-\d{4} \d+/;
-const VEHICLE = /\b(trams?|sneltram|tramway|citadis|buses|bus|setra|qbuzz|ebusco|cars?|autos?|auto|mercedes|bmw|volkswagen|taxis?|trains?|trein|nightjet|locomotive|metro|trucks?|vrachtwagen|scooters?|motorcycles?|motorbikes?|bromfiets|tractor|bicycles?|bikes?|fiets|fietsen|waterbus|veerboot|ferry)\b/i;
+const BICYCLE = /\b(bicycles?|bikes?|fiets|fietsen)\b/i;
+/** Bicycle close-ups and objects: a rack, wheel or bag is the subject, not the street. */
+const BICYCLE_OBJECT = /\b(racks?|wheels?|bags?|dredged|still-life|close-up)\b/i;
+const MOTOR_VEHICLE = /\b(trams?|sneltram|tramway|citadis|buses|bus|setra|qbuzz|ebusco|cars?|autos?|auto|mercedes|bmw|volkswagen|taxis?|trains?|trein|nightjet|locomotive|metro|trucks?|vrachtwagen|scooters?|motorcycles?|motorbikes?|bromfiets|tractor|waterbus|veerboot|ferry)\b/i;
+/** Fleet photographs of buses: operator names, fleet numbers, registrations and service dates. */
+const FLEET = /\b(u-ov|qbuzz|transdev|pouw)\b|\b\d{2}-\d{2}-\d{4}\b|\b\d{2}-[a-z]{3}-\d\b/i;
+/** A place named in the title, matched inside words: a street, bridge, square, water, station or church (-straat, -dijk, -brug ...). */
+const PLACE_WORDS = /(straat|laan|weg|gracht|kade|plein|brug|bridge|park|dijk|singel|sluis|station|kanaal|canal|kerk|church|haven|markt|wijk|buurt|street|square|quay|harbour)/i;
+const CITY_NAMES = /\b(amsterdam|utrecht|rotterdam|den haag|the hague|netherlands|nederland)\b/i;
+/** Known area and water names that appear without a street word. */
+const KNOWN_AREAS = /\b(maas|ijssel|krimpen|schellingwoude|wijkergouw|gagelbos|abtshove|haagse hout|ij)\b/i;
+/** A vehicle or animal photo names a place when it has a street-type word, a known area or (for vehicles) a city. */
+function namesPlace(title: string, cities: boolean): boolean {
+  return PLACE_WORDS.test(title) || KNOWN_AREAS.test(title) || (cities && CITY_NAMES.test(title));
+}
 /** A place or landmark word: with one, a vehicle in the title is part of a street view, not the subject. */
 const PLACE = /\b(bridges?|brug|bruggen|canals?|kanaal|gracht|grachten|streets?|straat|squares?|plein|quays?|kade|parks?|church|kerk|stations?|halte|stops?|sluis|locks?|buildings?|gebouw|markets?|markt|harbou?rs?|haven|wharf|werf|docks?|dok|singel|laan|avenue|weg|roads?|dijk|wijk|buurt|hof|hofje|tunnel|viaduct|terminal|depot|remise)\b/i;
 const CITY = /\b(amsterdam|utrecht|rotterdam|den haag|the hague|netherlands|nederland)\b/i;
@@ -83,8 +97,12 @@ export function unsuitableAreaPhotoReason(photo: AreaPhotoCandidate): string | n
   if (DOCUMENT.test(title)) return 'document or scan';
   if (INTERIOR.test(title)) return 'interior';
   if (ADVERTISING.test(title)) return 'advertisement';
-  if (VEHICLE.test(title) && !PLACE.test(title)) return 'vehicle as the subject';
-  if (ANIMAL.test(title) && !ARTWORK.test(title) && !PLACE.test(title)) return 'animal';
+  if (BICYCLE.test(title)) {
+    if (BICYCLE_OBJECT.test(title)) return 'bicycle close-up or object';
+  } else if (MOTOR_VEHICLE.test(title) && (FLEET.test(title) || !namesPlace(title, true))) {
+    return 'vehicle as the subject';
+  }
+  if (ANIMAL.test(title) && !ARTWORK.test(title) && !namesPlace(title, false)) return 'animal';
   if (isPersonName(title)) return 'a person as the subject';
   return null;
 }
