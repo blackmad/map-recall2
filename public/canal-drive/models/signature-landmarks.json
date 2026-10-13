@@ -45161,10 +45161,10 @@
         "min": [
           -43.04899978637695,
           0,
-          -98.80918884277344
+          -98.13233184814453
         ],
         "max": [
-          39.652000427246094,
+          40.259986877441406,
           24.826000213623047,
           65.65899658203125
         ]
@@ -45180,19 +45180,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 164.4681854248047,
+        "widthMetres": 163.79132843017578,
         "heightMetres": 24.826000213623047,
-        "depthMetres": 82.70100021362305,
-        "depthCoverage": 1.0000120944815363
+        "depthMetres": 83.30898666381836,
+        "depthCoverage": 1.0073638048829305
       },
-      "triangles": 32421,
-      "bytes": 397568,
+      "triangles": 35530,
+      "bytes": 483728,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "b0980c2e59b574fb",
+        "sourceHash": "c7c97e9afe21948a",
         "buildVersion": 2,
-        "bytes": 158772,
-        "triangles": 9968
+        "bytes": 150568,
+        "triangles": 9230
       }
     },
     "max-euwe-centrum": {
