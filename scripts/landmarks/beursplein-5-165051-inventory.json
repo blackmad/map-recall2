@@ -1,0 +1,194 @@
+{
+ "schemaVersion": 1,
+ "id": "beursplein-5-165051",
+ "pand": "0363100012165051",
+ "signature": [
+  "stone-window-surrounds",
+  "beursplein-lettering"
+ ],
+ "walls": [
+  {
+   "tag": "w03-314",
+   "bearing": 314,
+   "lengthM": 12.6,
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track26_Sphere_00050",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "rusticated-base",
+     "kind": "other",
+     "where": "ground storey, full width",
+     "approxSizeM": [
+      12.6,
+      5
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250108_1349_Track26_Sphere_00050",
+     "how": "plain granite-coloured wall with barred windows cut per bay; rustication bands not drawn"
+    },
+    {
+     "id": "attic-cornice",
+     "kind": "other",
+     "where": "top, under the mansard",
+     "approxSizeM": [
+      12.6,
+      1.2
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track26_Sphere_00050",
+     "how": "cornice component on the group"
+    },
+    {
+     "id": "stone-window-surrounds",
+     "kind": "window-shape",
+     "where": "two brick floors, three bays",
+     "approxSizeM": [
+      12.6,
+      10
+     ],
+     "plan": "modelled",
+     "seenIn": "b_20250108_1349_Track26_Sphere_00050",
+     "how": "brick-bay-grid with stone surrounds and sills"
+    }
+   ]
+  },
+  {
+   "tag": "w06-314",
+   "bearing": 314,
+   "lengthM": 11.6,
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track28_Sphere_00013",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": [
+    {
+     "id": "beursplein-lettering",
+     "kind": "lettering",
+     "where": "fascia over the portals",
+     "approxSizeM": [
+      4,
+      0.6
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250108_1349_Track28_Sphere_00013",
+     "how": "not drawn yet: lettering is mounted by the entrance component, whose 1.5 cm frames fail the 0.5 m2 z-fight gate; plain portal windows stand in"
+    },
+    {
+     "id": "revolving-door-portal",
+     "kind": "other",
+     "where": "ground storey, left bay",
+     "approxSizeM": [
+      3,
+      3.5
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250108_1349_Track28_Sphere_00013",
+     "how": "ground-storey window in the bay; the recessed entrance is held back by the same z-fight gate"
+    },
+    {
+     "id": "balcony-canopy",
+     "kind": "canopy",
+     "where": "over the entrance, below first floor",
+     "approxSizeM": [
+      11,
+      1.5
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250108_1349_Track28_Sphere_00013",
+     "how": "string course only; the slab canopy rides on the entrance component"
+    },
+    {
+     "id": "carved-corbels",
+     "kind": "sculpture",
+     "where": "under the balcony slab, three brackets",
+     "approxSizeM": [
+      0.6,
+      2.0
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250108_1349_Track28_Sphere_00013",
+     "skip": {
+      "reason": "too-small",
+      "note": "three 60 cm foliage-carved corbels, below the size that reads at riding distance"
+     }
+    },
+    {
+     "id": "pediment-relief",
+     "kind": "relief",
+     "where": "attic tympanum",
+     "approxSizeM": [
+      8,
+      2.5
+     ],
+     "plan": "simplified",
+     "seenIn": "b_20250108_1349_Track28_Sphere_00013",
+     "how": "plain attic bay at the higher eaves; pediment relief and triangular gable not drawn"
+    },
+    {
+     "id": "ticker-boards",
+     "kind": "sign",
+     "where": "over the three doors",
+     "approxSizeM": [
+      2.5,
+      0.4
+     ],
+     "plan": "skipped",
+     "seenIn": "b_20250108_1349_Track28_Sphere_00013",
+     "skip": {
+      "reason": "temporary",
+      "note": "electronic ticker screens"
+     }
+    }
+   ]
+  },
+  {
+   "tag": "w05-312",
+   "bearing": 312,
+   "lengthM": 12.0,
+   "evidence": "photo",
+   "panoId": "b_20250108_1349_Track28_Sphere_00020",
+   "capturedAt": "2025-01-08",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w01-309",
+   "bearing": 309,
+   "lengthM": 13.5,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001054_pano_0000_000047",
+   "capturedAt": "2019-01-15",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w02-314",
+   "bearing": 314,
+   "lengthM": 13.0,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001054_pano_0000_000047",
+   "capturedAt": "2019-01-15",
+   "checked": true,
+   "items": []
+  },
+  {
+   "tag": "w04-314",
+   "bearing": 314,
+   "lengthM": 12.5,
+   "evidence": "photo",
+   "panoId": "recording_2025-07-03_03-29-47_02707",
+   "capturedAt": "2025-07-03",
+   "checked": true,
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
