@@ -1237,7 +1237,12 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   memorials; before any install decide bronze tint vs vertex colour and
   the freedom-of-panorama question (user); automate photo pick → cut-out
   (IS-Net fallback) → TripoSR → decimate → strip as one command (batch
-  lane running); Object Capture tried (HISTORY "Object Capture"): only a
+  lane running, now with TRELLIS.2 four-photo multidiffusion on the MLX
+  port for figures with side photos, HISTORY "Multi-view tools"); user
+  decisions open: install the Xcode Metal Toolchain for the ports' Metal
+  backends, and request official DINOv3 access on Hugging Face before any
+  TRELLIS.2 statue ships (the trial used timm's ungated copy); Object
+  Capture tried (HISTORY "Object Capture"): only a
   same-photographer Commons series gives a front half, panoramas resolve
   nothing, so it is a reference check, not a route; re-ask the city for
   the mobile-mapping cloud host; the backlog needs a pass that
@@ -1266,29 +1271,18 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   (give_way, stop, traffic_signals, crossing nodes) and `cyclestreet` tags
   so markings come from data, not priors; the tall grey box in the
   Singelgracht water at ~4.8789, 52.3797 and the mid-canal land blob on
-  the Westerkanaal at ~4.8839, 52.3876, both uninvestigated; (c) own-ground road paint is thinner than the
-  legacy ground's (centre/edge lines, zebras, stop lines, cycle symbols,
-  painted names; Singelgracht/Nassaukade junction as the regression);
-  (d) the scene reads too dark in own-ground mode (luminance table vs the
-  legacy ground, fix in the ground material or the look's shade); (e) quay
-  houses 30–60 m from the boat on the Singelgracht render as plain streamed
-  boxes (near-tier radius, recipe tiles default, or no faces authored:
-  name the streets); (f) one quay asphalt with a red lane, the facing quay
-  all red-brown (fietsstraat vs brick paving: tags, legend, regression);
-  (g) the Singelgracht bascule bridge at the Haarlemmerpoort draws as thin
-  green outlines on a bare deck with no abutments, railings or lamps;
-  (h) a footbridge in the Spaarndammerbuurt floats disconnected from both
-  banks (deck must overlap the abutments and meet the quay top; count
-  floating ends in the own-ground tests); (i) the own-ground quay and its
-  path band run over the houseboats on the west bank north of the
-  Haarlemmerpoort (land must follow the BGT waterdeel edge; count houseboat
-  footprints under land cells); (j) the Zoutkeetsgracht bascule: hollow
-  floating portal, slab deck narrower than the approaches with bare plank
-  edges, asphalt deck between brick approaches, abutments short of the
-  quay walls: the bascule type is a rebuild (pylons, beams, counterweight,
-  leaf with kerbs, width from BGT, abutments meeting the quay, railings
-  continuous, lamps). Each gets a before/after frame on the demo page
-  when it lands.
+  the Westerkanaal at ~4.8839, 52.3876, both uninvestigated;
+  (c)–(g) are DONE above as (c)–(g); still open: (h) the Singelgracht
+  bascule at the Haarlemmerpoort draws as thin green outlines on a bare
+  deck, no abutments, railings or lamps; (i) a Spaarndammerbuurt footbridge
+  floats disconnected from both banks (deck must overlap the abutments and
+  meet the quay top; count floating ends); (j) the Zoutkeetsgracht bascule:
+  hollow floating portal, slab deck narrower than the approaches, asphalt
+  deck between brick approaches, abutments short of the quay walls (the
+  bascule type is a rebuild: pylons, beams, counterweight, leaf with kerbs,
+  width from BGT, abutments meeting the quay, continuous railings, lamps);
+  all three in the bridges lane, each with a before/after frame on the
+  demo page when it lands.
 - **P0 Large tier: the photo-likeness plan** (user, 2026-10-14, HISTORY
   "User review"; `docs/plans/large-tier-likeness-and-streets-20261014.md`
   Part 1): lane A measurement and likeness tooling (crops archived to
