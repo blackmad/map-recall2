@@ -216,6 +216,7 @@ async function main(): Promise<void> {
   await deckTopRegressions();
   await pocketRegressions();
   await openingRegressions();
+  await parkFillRegressions();
   // Named road regressions: every band of the listed ways reads as street at both LODs.
   for (const reg of [DE_CLERCQSTRAAT]) {
     const [x, y] = toLocal(reg.at[0], reg.at[1]), key = store.cellAt(x, y);
@@ -366,6 +367,23 @@ async function openingRegressions(): Promise<void> {
     check(!on.bad.length && (store.openedDecks.get(owner) ?? [...store.openedDecks.values()].flat()).includes(id), `${id} (${label}): water opened under it, ${on.probes - on.bad.length}/${on.probes} probes free of land and quay walls${on.bad.length ? ` (${on.bad.slice(0, 4).join(' ')})` : ''}`);
     check(off.bad.length > 0, `${id}: without the opening ${off.bad.length}/${off.probes} probes hit land or a quay wall (the pin is live)`);
   }
+}
+
+/**
+ * The OSM park fill under the BGT surfaces (lane belt audit 2026-10-14): fill triangles and land quads wholly inside
+ * one surface are not drawn. Pinned: the Cremerplein and Vondelpark cells lose at least 10k triangles each, and a
+ * Vondelpark hollow where the 8 m lawn drape sags 3.6 cm under the 5 m land grid shows lawn, not land (it showed
+ * land when only the fill was culled).
+ */
+async function parkFillRegressions(): Promise<void> {
+  for (const [label, key, minCulled] of [['Cremerplein', '-3_-2', 10000], ['Vondelpark', '-2_-2', 10000]] as const) {
+    const c = buildCell({ ...(await store.cellInput(key, 0)), pockets: false }), p = c.stats.parks;
+    const saved = (p?.fillCulled ?? 0) + 2 * (p?.landCulled ?? 0);
+    check(saved >= minCulled, `park fill ${label} (${key}): ${p?.fillCulled} fill triangles and ${p?.landCulled} land quads under the BGT surfaces not drawn (${saved} triangles, want >= ${minCulled})`);
+  }
+  const [x, y] = toLocal(4.86793, 52.35712), cell = buildCell({ ...(await store.cellInput(store.cellAt(x, y), 0)), pockets: false });
+  const top = layersAt(cell, x, y).top;
+  check(top === 'lawn', `park fill Vondelpark hollow (4.86793,52.35712): top ${top} (want lawn: no land over the sagging lawn)`);
 }
 
 /**
