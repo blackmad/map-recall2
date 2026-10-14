@@ -1,0 +1,100 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "louise-wentstraat-230-165821",
+ "pandId": "0363100012165821",
+ "address": "Louise Wentstraat 230, Amsterdam-Oost (Weesperzijde / Amstelkade side of the Oosterpark district): 1992 housing complex of grey-brown brick with dark horizontal bands, four-storey street fronts under a stepped upper floor, curved ends and glazed stair-tower columns",
+ "sources": [
+  {
+   "id": "pano-2022-04-25-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002541_pano_0001_000946/",
+   "image": "staging/pand-reference-walls/0363100012165821/w01-315.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-04-25-w01-2",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-25",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002541_pano_0001_000946/",
+   "image": "staging/pand-reference-walls/0363100012165821/w01-315.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2021-03-18-w02",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-18",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002047_pano_0000_003474/",
+   "image": "staging/pand-reference-walls/0363100012165821/w02-45.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    36
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 18,
+   "ground": "system",
+   "windows": "wide",
+   "stringCourses": true,
+   "deepBars": true,
+   "palette": {
+    "brick": "#85705f",
+    "frame": "#e6e2d8",
+    "stone": "#5e4c42"
+   }
+  },
+  {
+   "wallSurfaces": [
+    10,
+    386
+   ],
+   "system": "ribbon-windows",
+   "storeys": 1,
+   "palette": {
+    "brick": "#85705f",
+    "frame": "#e6e2d8",
+    "stone": "#5e4c42"
+   }
+  },
+  {
+   "wallSurfaces": [
+    26,
+    116
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 4,
+   "baysPerStorey": 8,
+   "ground": "system",
+   "windows": "wide",
+   "stringCourses": true,
+   "deepBars": true,
+   "palette": {
+    "brick": "#85705f",
+    "frame": "#e6e2d8",
+    "stone": "#5e4c42"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "bitumen"
+ },
+ "palette": {
+  "brick": "#85705f",
+  "frame": "#e6e2d8",
+  "door": "#2a2a2a",
+  "stone": "#5e4c42"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Louise Wentstraat 230 (BAG pand 0363100012165821, built 1992, 386 3DBAG wall surfaces, roof max 27.0 m): a large 1990s housing complex on the east side of the city, 130 m long with a stepped upper floor, curved ends and brick towers up to 27 m. Photographed: the 88 m north-west street front (w01-315), the north-east end (w02-45), the south-west end (w03-225), the south-east courtyard fronts (w04-135 to w06-135) and the corner towers (w07-226, w08-45): grey-brown brick with dark horizontal bands at the floors, cream-framed windows in pairs and triples, vertical glazed stair-tower columns in dark frames, flat roofs with railings.",
+  "walls[0] = panel 31 (NW, 88 m, eaves 12.8; surface 36): 4 storeys x 18 bays with string courses. walls[1] = panels 8 and 293 (NW, 61 m and 34 m, eaves 15.5 over a 12.8 m base; surfaces 10, 386): the set-back top floor, one ribbon-window storey. walls[2] = panels 21 and 102 (NE end, 42 m and 31 m, eaves 12.8 and 15.5; surfaces 26, 116): 4 storeys x 8 bays with string courses. Simplified: the dark bands are string courses, window groups are evenly spaced wide windows; 18 bays instead of the photographed 20 to stay inside the triangle budget. Not drawn: the glazed stair-tower columns, the curved south end, the courtyard fronts and the 27 m corner towers (3DBAG massing in brick colour, left blank brick).",
+  "Everything not listed stays blank brick."
+ ]
+}
