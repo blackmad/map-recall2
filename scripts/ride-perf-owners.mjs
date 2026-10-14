@@ -1,6 +1,7 @@
 // Per-owner frame profile of the fixed ride (Anne Frank Huis -> Rijksmuseum), desktop first.
 //   PORT=4465 node scripts/ride-perf-owners.mjs <label> "<query>" [chase|aerial] [seconds] [desktop|touch]
-// e.g. "" / "?ownGround=1" / "?sharedFrame=1&cityLook=1", and `aerial` (camera held ~300 m up, rider stopped).
+// e.g. "" (own ground, the default since 2026-10-14) / "?ownGround=0" (the old flat default) /
+// "?sharedFrame=1&cityLook=1", and `aerial` (camera held ~300 m up, rider stopped).
 //
 // Same route and seeded Math.random as ride-perf-fixed-route.mjs. On top of its frame and map
 // timers it records, per rAF frame:

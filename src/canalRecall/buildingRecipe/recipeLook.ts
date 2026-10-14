@@ -22,7 +22,7 @@
  * the page's three.js namespace so the game (shared CanalRecallThree) and the
  * headless sheet renderer use the identical code path.
  */
-import {paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, roofCanvas} from '../look/slotCells.ts';
+import {paintBrickCanvas, paintDoorCanvas, paintGlassCanvas, paintGlassTintCanvas, paintStoneCanvas, paintStuccoCanvas, paintWhiteCanvas, roofCanvas} from '../look/slotCells.ts';
 import {BAKED_SHADE_GLSL, bakedFaceShade, bakedWallShade} from '../rendererShared/lightRig.ts';
 export {paintBrickCanvas, paintGlassCanvas, paintStuccoCanvas};
 import {cityLookEnabled, getCityLook, type CityLook} from '../look/cityLook.ts';
@@ -134,10 +134,14 @@ export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): R
     }
     return t;
   };
-  const slotTexture = (slot: RecipeSlot) => {
+  const slotTexture = (slot: RecipeSlot, source?: TintSource | null) => {
     switch (SLOT_CELL[slot]) {
       case 'brick': return texture('brick', () => paintBrickCanvas(doc, options.brick));
-      case 'glass': { const t = texture('glass', () => paintGlassCanvas(doc)); t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping; return t; }
+      case 'glass': {
+        // Measured glass: the grey pane, so the authored colour shows (look/palette.ts `cityMeasuredGlassTint`).
+        const t = source === 'measured' ? texture('glass-tint', () => paintGlassTintCanvas(doc)) : texture('glass', () => paintGlassCanvas(doc));
+        t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping; return t;
+      }
       case 'stucco': return texture('stucco', () => paintStuccoCanvas(doc));
       case 'door': return texture('door', () => paintDoorCanvas(doc));
       case 'stone': return texture('stone', () => paintStoneCanvas(doc));
@@ -149,13 +153,13 @@ export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): R
   };
   const materials = new Map<string, any>();
   const materialFor = (slot: RecipeSlot, tintHex: string, side: number, source?: TintSource | null) => {
-    const tint = cityTint(slot, tintHex, source), key = `${slot}|${tint}|${side}`;
+    const tint = cityTint(slot, tintHex, source), key = `${slot}|${tint}|${side}${source === 'measured' && slot === 'glass' ? '|measured' : ''}`;
     let m = materials.get(key);
     if (!m && lit) {
       // Same cell, same tint, same metre scale; the texture is decoded from
       // sRGB and the tint is linearised, so cell × tint matches the facades'
       // `pow(cell * tint, 2.2)` before the rig lights it.
-      const map = slotTexture(slot);
+      const map = slotTexture(slot, source);
       map.colorSpace = THREE.SRGBColorSpace;
       if (SLOT_CELL[slot] !== 'glass') map.repeat.set(1 / SLOT_TILE_M[slot], 1 / SLOT_TILE_M[slot]);
       m = new THREE.MeshLambertMaterial({map, color: new THREE.Color(tint), side});
@@ -166,7 +170,7 @@ export function createRecipeLook(THREE: any, options: RecipeLookOptions = {}): R
     if (!m) {
       const [r, g, b] = hexToRgb(tint).map(v => v / 255);
       m = new THREE.ShaderMaterial({
-        uniforms: {map: {value: slotTexture(slot)}, tint: {value: new THREE.Vector3(r, g, b)}, uvScale: {value: 1 / SLOT_TILE_M[slot]}, highlight: {value: 0}, enuFromWorld},
+        uniforms: {map: {value: slotTexture(slot, source)}, tint: {value: new THREE.Vector3(r, g, b)}, uvScale: {value: 1 / SLOT_TILE_M[slot]}, highlight: {value: 0}, enuFromWorld},
         vertexShader: VERTEX, fragmentShader: FRAGMENT, side,
       });
       m.name = `recipe-look/${slot}`;

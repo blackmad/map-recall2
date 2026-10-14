@@ -1,0 +1,18 @@
+[
+ {
+  "front": "front0",
+  "panoId": "TMX7316010203-002990_pano_0014_000113",
+  "timestamp": "2023-03-06T11:32:07.443560Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2023/03/06/TMX7316010203-002990/pano_0014_000113/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   120998.25110094051,
+   488151.60133296216
+  ],
+  "headingDeg": 300.04985074885036,
+  "fovDeg": 108.11836921752236,
+  "pitchDeg": 41.43979179125044,
+  "distanceM": 4.754171398568189,
+  "image": "artifacts/building-recipes/cw-prinsen-167765/photo-front0.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]

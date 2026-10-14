@@ -198,7 +198,7 @@ any change to sky intensity must be checked against this table.
 
 One texture array and one shader for every building mesh: the bay cells
 followed by the slot table (brick, stucco, stone, white, door, glass, pantile,
-slate, flat roof, then the variants **brick20** and **whiteStucco**),
+slate, flat roof, then the variants **brick20**, **whiteStucco** and **glassTint**),
 attributes `layer, tint, accent, hidden`, unlit (baked shade) and lit (Lambert
 under the rig) variants. Recipe houses, building types and landmarks go
 through it; the legacy landmark GLBs take the slot their material name says
@@ -234,6 +234,23 @@ brick-coloured slot is one rule in every pipeline (asserted ≤ 1 %).
 - **White render:** inferred materials named `white` / `cream` / `ivory`
   (224 models) sample `whiteStucco` (smooth, no specks), since the builders
   use `white` for walls and trim alike.
+- **Measured colours** (material extras `tintSource: 'measured'`, written by
+  the large-recipe fit for the wall, arch-ring and own glass slots of the
+  groups in `intent.measured`): brick/accent skip the city clamp
+  (`cityMeasuredWallTint`, authored hex ÷ the canal brick mean) and always
+  sample the canal brick, never `brick20`, whose lighter mean drew a measured
+  wall 0.02–0.03 L light. Glass samples the appended **glassTint** layer, the
+  pane's gradient and sky streak in grey (188–255, `glassTintCellValue`), with
+  `cityMeasuredGlassTint` (hex ÷ its mean); unmeasured glass keeps the
+  blue-grey pane and a white tint, so dark and reflective glass used to draw
+  the same pane. Proof: `scripts/look/measured-walls.ts` renders the three
+  measured pilots through both game looks and measures every measured
+  material (÷ the baked shade) against its hex: all within 0.02 L
+  (`docs/images/look/measured-pilots.jpg`, Playwright "re-fitted recipe GLB").
+  Sheets (`scripts/building-recipes/render.ts`) always draw through a game
+  look (`--city-look [--year=]` for this one); the `--textures` trial tiles,
+  which drew raw GLB colours under a PBR rig and showed dark measured walls
+  near-black, are retired.
 
 #### Gallery review (2026-10-13, all 311 GLBs, flag off beside flag on)
 
