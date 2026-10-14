@@ -1496,7 +1496,7 @@
       "status": "draft-comparison-source-game-review-pending",
       "requestedOn": "2026-10-05",
       "evidence": "../../docs/references/jan-evertsen-pilot/README.md",
-      "preview": "./jan-evertsen-pilot.html",
+      "preview": "./street-generator-demos.html",
       "nextAction": "65 official current physical buildings mapped across four Jan Evertsenstraat groups; sources synced to companion commit a558154. Glass-band capability reviewed on numbers 124 and 126. Full facade failed on window grouping/erkers/portico/roof; improve those defining assemblies before expansion. Native GLB drafts remain pending complete architecture review."
     },
     {
