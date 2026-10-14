@@ -1,0 +1,20 @@
+{
+  "note": "Per-statue defaults for scripts/sculptures/reconstruct.ts (batch 1, 2026-10-14). heightM and facingDeg come from the kit model (bounding-box height; FACING in its builder). plinthTopM is where the kit plinth ends: with --kit-plinth the figure is scaled to heightM - plinthTopM and stood on the kit's plinth triangles; otherwise triangles under plinthTopM get the stone slot. box is a crop x0,y0,x1,y1 in photo pixels at the downloaded width.",
+  "width": 2000,
+  "statues": {
+    "de-dokwerker": {"kit": "de-dokwerker", "title": "File:Amsterdam, De dokwerker 07.JPG", "heightM": 4.13, "facingDeg": 252, "plinthTopM": 1.675},
+    "gandhi-churchill-laan": {"kit": "gandhi-churchill-laan", "title": "File:Statue of Gandhi, Amsterdam.jpg", "heightM": 3.2, "facingDeg": 90, "plinthTopM": 0.85, "rembg": "isnet-general-use"},
+    "mama-baranka": {"kit": "mama-baranka", "title": "File:Mama Baranka in 2019 (1).jpg", "heightM": 2.05, "facingDeg": 200},
+    "waterdraagster-bellamyplein": {"kit": "waterdraagster-bellamyplein", "title": "File:2021 Waterdraagster met vissen-Waterdraagster (1).jpg", "heightM": 1.48, "facingDeg": 0},
+    "anne-frank-merwedeplein": {"kit": "anne-frank-merwedeplein", "title": "File:Standbeeld Anne Frank - Merwedeplein - Amsterdam.jpg", "heightM": 2.98, "facingDeg": 200, "plinthTopM": 1.41},
+    "multatuli-standbeeld": {"kit": "multatuli-standbeeld", "title": "File:Brug 9- Torensluis over het Singel - toeristen rond het standbeeld van Mutatuli (buste door Hans Bayens, 1987) - Amsterdam - 20536116 - RCE.jpg", "heightM": 3.05, "facingDeg": 350, "plinthTopM": 1.13},
+    "theo-thijssen-man": {"kit": "theo-thijssen-standbeeld", "title": "File:Lindengracht, Theo Thijssen beeld foto 1.jpg", "heightM": 1.75, "facingDeg": 0},
+    "theo-thijssen-boy": {"kit": "theo-thijssen-standbeeld", "title": "File:Lindengracht, Theo Thijssen beeld foto 1.jpg", "heightM": 1.25, "facingDeg": 0},
+    "carmiggelt-borstbeeld": {"kit": "carmiggelt-borstbeeld", "title": "File:Borstbeeld Simon Carmiggelt (Kronkel) onthuld in Amsterdam. Ton van Duinhoven, Bestanddeelnr 934-3463.jpg", "heightM": 1.97, "facingDeg": 150, "plinthTopM": 1.1},
+    "winkler-prins-monument": {"kit": "winkler-prins-monument", "title": "File:Monument Anthony Winkler Prins André Volten Frederiksplein.JPG", "heightM": 11, "facingDeg": 0},
+    "walraven-van-hall": {"kit": "walraven-van-hall", "title": "File:Walraven van Hall, vooraanzicht.jpg", "heightM": 2.22, "facingDeg": 280},
+    "spinoza-standbeeld": {"kit": "spinoza-standbeeld", "title": "File:Spinoza -.jpg", "heightM": 2.77, "facingDeg": 200},
+    "rembrandtmonument": {"kit": "rembrandtmonument", "title": "File:Standbeeld van Rembrandt op het Rembrandtplein, RP-P-2019-371.jpg", "heightM": 2.78, "facingDeg": 225},
+    "wilhelmina-ruiterstandbeeld": {"kit": "wilhelmina-ruiterstandbeeld", "title": "File:Ruiterstandbeeld van koningin Wilhelmina - Amsterdam - 20362367 - RCE.jpg", "heightM": 7.93, "facingDeg": 265}
+  }
+}
