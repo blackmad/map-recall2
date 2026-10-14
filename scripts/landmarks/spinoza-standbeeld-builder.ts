@@ -50,41 +50,57 @@ export function buildSpinozaStandbeeld(_w: number, _d: number, b: BuildingTools)
     g.computeBoundingBox(); const lowest = g.boundingBox!.min.y;
     put(g, 0.0, SH - lowest - 0.04, 1.5, 'dark');
   }
-  // ---- figure on the step: long cloak, narrow shoulders, curls
+  // ---- figure on the step: standing man in a long cloak that widens to the hem, shoulders and upper arms under it, wide flat collar, curls to the shoulders
   const base = SH + 0.1, FZ = -1.75, FX = 0.25;
+  const rx = (y: number) => 0.38 - 0.13 * (y / 1.5), rz = (y: number) => rx(y) * 0.62;       // cloak half-width and half-depth at height y
   {
-    const cloak = new T.CylinderGeometry(0.3, 0.44, 1.72, 12, 1, true); cloak.scale(1, 1, 0.72); cloak.translate(0, 0.86, 0);
+    const cloak = new T.CylinderGeometry(rx(1.5), rx(0), 1.5, 14, 1, true); cloak.scale(1, 1, 0.62); cloak.translate(0, 0.75, 0);
     put(cloak, FX, base, FZ, 'bronze');
-    const hem = new T.CylinderGeometry(0.46, 0.5, 0.06, 12); hem.scale(1, 1, 0.72);
-    put(hem, FX, base + 0.03, FZ, 'bronze');
-    const top = new T.SphereGeometry(1, 12, 6); top.scale(0.4, 0.17, 0.25);                                                 // shoulders
-    put(top, FX, base + 1.72, FZ, 'bronze');
-    // cloak folds: eight thin ribs down the front and sides, the back plain
-    for (let i = 0; i < 9; i++) {
-      const a = (i / 8 - 0.5) * 2.5, x = FX + Math.sin(a) * 0.42, z = FZ + Math.cos(a) * 0.3;
-      limb([x, base + 0.08, z], [FX + Math.sin(a) * 0.3, base + 1.74, FZ + Math.cos(a) * 0.215], 0.028, 0.02, 'bronze', 5);
+    const hem = new T.CylinderGeometry(rx(0) + 0.015, rx(0) + 0.02, 0.07, 14); hem.scale(1, 1, 0.62);
+    put(hem, FX, base + 0.035, FZ, 'bronze');
+    // shoes show under the hem at the front
+    box(FX - 0.13, base, FZ + 0.27, 0.13, 0.07, 0.24, 'bronze'); box(FX + 0.13, base, FZ + 0.27, 0.13, 0.07, 0.24, 'bronze');
+    // shoulders and upper arms read through the cloak
+    ball(FX, base + 1.46, FZ, 0.28, 0.11, 0.17, 'bronze', 12);
+    for (const sx of [-1, 1]) {                                                                                         // arms hang inside the cloak, wider than its hem line
+      limb([FX + sx * 0.26, base + 1.45, FZ + 0.01], [FX + sx * 0.36, base + 0.82, FZ + 0.05], 0.085, 0.07, 'bronze', 8);
+      ball(FX + sx * 0.36, base + 0.78, FZ + 0.06, 0.07, 0.08, 0.06, 'bronze', 7);
     }
-    // raised birds and leaves, flat little bodies on the cloak
-    const marks: [number, number, number][] = [[-0.5, 1.5, 0], [0.3, 1.3, 0.2], [-0.2, 1.05, -0.3], [0.7, 0.9, 0.5], [-0.9, 0.7, -0.2], [0.1, 0.55, 0.1], [0.9, 0.35, -0.3], [-0.6, 0.3, 0.4], [1.3, 1.45, 0.3], [-1.3, 1.15, 0.3], [-1.9, 0.9, 0.1], [1.9, 0.7, -0.2], [2.4, 0.4, 0.2], [-2.3, 0.45, -0.1]];
-    for (const [a, y, tilt] of marks) {
-      const x = FX + Math.sin(a) * (0.46 - y * 0.09), z = FZ + Math.cos(a) * (0.33 - y * 0.065);
-      const g = new T.SphereGeometry(1, 5, 4); g.scale(0.035, 0.09, 0.02); g.rotateZ(tilt); g.rotateY(a);
-      put(g, x + Math.sin(a) * 0.02, base + y, z + Math.cos(a) * 0.015, 'bronze');
+    // a few long vertical folds, fanning wider toward the hem
+    for (let i = 0; i < 7; i++) {
+      const a = (i / 6 - 0.5) * 2.7, th = 0.055;
+      const y0 = 0.06, y1 = 1.38, f = (y: number) => [FX + Math.sin(a) * (rx(y) + 0.008), FZ + Math.cos(a) * (rz(y) + 0.006)];
+      const [x0, z0] = f(y0), [x1, z1] = f(y1);
+      limb([x0, base + y0, z0], [x1, base + y1, z1], th, th * 0.5, 'bronze', 5);
     }
-    // neck, head, face
-    limb([FX, base + 1.9, FZ], [FX, base + 1.98, FZ + 0.02], 0.1, 0.09, 'bronze', 7);
-    const hy = base + 2.06, hz = FZ + 0.03;
-    ball(FX, hy, hz, 0.12, 0.16, 0.13, 'bronze', 10);                                                                   // skull
+    // wide flat collar and short neck
+    ball(FX, base + 1.58, FZ + 0.01, 0.27, 0.04, 0.19, 'bronze', 12);
+    limb([FX, base + 1.6, FZ + 0.01], [FX, base + 1.76, FZ + 0.02], 0.08, 0.075, 'bronze', 8);
+    // head and face
+    const hy = base + 1.98, hz = FZ + 0.03;
+    ball(FX, hy, hz, 0.125, 0.165, 0.135, 'bronze', 10);                                                                   // skull
     box(FX, hy + 0.05, hz + 0.115, 0.17, 0.025, 0.03, 'bronze');                                                         // brow
     box(FX, hy - 0.015, hz + 0.125, 0.03, 0.08, 0.04, 'bronze');                                                         // nose
     box(FX, hy - 0.075, hz + 0.115, 0.07, 0.02, 0.03, 'bronze');                                                         // mouth line
     ball(FX, hy - 0.115, hz + 0.08, 0.04, 0.035, 0.04, 'bronze', 6);                                                     // chin
-    // wig: curls in two rows at the sides and nape, falling to the shoulders (none over the face)
-    for (let i = 0; i < 9; i++) {
-      const a = (i / 8) * Math.PI, r = 0.135;
-      ball(FX + Math.cos(a) * r, hy - 0.02 - (i % 2) * 0.085, hz - Math.sin(a) * r * 1.0, 0.052, 0.07, 0.052, 'bronze', 6);
+    // shoulder-length curls: three heavy overlapping curls down each side, a mass across the nape (none over the face)
+    for (const sx of [-1, 1]) for (let k = 0; k < 3; k++) {
+      const y = hy - 0.02 - k * 0.1, r = 0.12 + k * 0.025;
+      ball(FX + sx * r, y, hz - 0.02 - k * 0.015, 0.075, 0.075, 0.08, 'bronze', 7);
     }
-    ball(FX, hy + 0.07, hz - 0.03, 0.13, 0.06, 0.13, 'bronze', 8);                                                      // crown
-    ball(FX - 0.13, hy - 0.2, hz - 0.03, 0.05, 0.07, 0.05, 'bronze', 6); ball(FX + 0.13, hy - 0.2, hz - 0.03, 0.05, 0.07, 0.05, 'bronze', 6);
+    for (let k = 0; k < 3; k++) ball(FX, hy - 0.02 - k * 0.1, hz - 0.115 - k * 0.02, 0.15, 0.07, 0.07, 'bronze', 8);
+    ball(FX, hy + 0.07, hz - 0.03, 0.13, 0.06, 0.13, 'bronze', 8);                                                      // crown curls
+    ball(FX, hy - 0.06, hz - 0.075, 0.15, 0.17, 0.1, 'bronze', 8);                                                      // hair mass behind the head
+  }
+  // ---- about a dozen small birds (parakeets and sparrows) perched on the cloak, mostly on the lower half: body, head, tail hanging down
+  const birds: [number, number, number][] = [[-0.4, 0.2, 1], [0.5, 0.28, 0.9], [-1.1, 0.4, 1], [1.3, 0.5, 1.1], [0.1, 0.62, 0.9], [-0.7, 0.75, 1], [2.1, 0.35, 1], [-2.0, 0.6, 0.9], [0.9, 0.95, 1], [-1.6, 1.05, 1.1], [1.7, 1.2, 0.9], [-0.1, 1.28, 1], [2.6, 0.7, 1], [-2.6, 0.25, 1]];
+  for (const [a, y, k] of birds) {
+    const px = FX + Math.sin(a) * (rx(y) + 0.03), pz = FZ + Math.cos(a) * (rz(y) + 0.025);
+    const body = new T.SphereGeometry(1, 6, 4); body.scale(0.034 * k, 0.05 * k, 0.034 * k); body.rotateX(-0.35); body.rotateY(a);
+    put(body, px, base + y, pz, 'bronze');
+    const head = new T.SphereGeometry(1, 5, 4); head.scale(0.022 * k, 0.022 * k, 0.022 * k); head.rotateY(a);
+    put(head, px + Math.sin(a) * 0.012, base + y + 0.06 * k, pz + Math.cos(a) * 0.01, 'bronze');
+    const tail = new T.BoxGeometry(0.02 * k, 0.07 * k, 0.012); tail.rotateX(0.35); tail.rotateY(a);
+    put(tail, px + Math.sin(a) * 0.012, base + y - 0.07 * k, pz + Math.cos(a) * 0.01, 'bronze');
   }
 }
