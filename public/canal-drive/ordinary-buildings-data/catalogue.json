@@ -41211,10 +41211,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012109375",
       "name": "Cygnus Gymnasium block, Vrolikstraat 8, Amsterdam (1956 concrete frame office slab on pilotis, a grid of square cells)",
-      "hash": "d4b4c49d8a3a6c0395ae5e6f458e49db751b03eeb9eaeb75d28ec1641aac8699",
-      "sha256": "d4b4c49d8a3a6c0395ae5e6f458e49db751b03eeb9eaeb75d28ec1641aac8699",
-      "bytes": 674804,
-      "triangles": 9103,
+      "hash": "25032942cbbb0f80e534b3c9c8889a4012aa5d39c86eee32d366b50caf2ab58c",
+      "sha256": "25032942cbbb0f80e534b3c9c8889a4012aa5d39c86eee32d366b50caf2ab58c",
+      "bytes": 674716,
+      "triangles": 9099,
       "materials": 7,
       "textures": 0,
       "scale": 1,
@@ -41457,7 +41457,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012109375",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:06:41.439Z"
+      "updatedAt": "2026-10-14T03:05:36.864Z"
     },
     {
       "id": "ordinary-0363100012137257",
