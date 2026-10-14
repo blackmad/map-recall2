@@ -1,0 +1,122 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T13:07:37.740Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012065375",
+   "addresses": [
+    "Jan Evertsenstraat 160"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 160-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000684595"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144634",
+   "addresses": [
+    "Jan Evertsenstraat 158"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 158-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000684591"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012112195",
+   "addresses": [
+    "Jan Evertsenstraat 156"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 156-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000684587"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012130972",
+   "addresses": [
+    "Jan Evertsenstraat 154"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 154-H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000684582"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113386",
+   "addresses": [
+    "Jan Evertsenstraat 152"
+   ],
+   "groundUnits": [
+    {
+     "address": "Orteliusstraat 193",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000764765"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 595264886,
+     "lngLat": [
+      4.8491284,
+      52.3699963
+     ],
+     "tags": {
+      "amenity": "cafe",
+      "check_date": "2009-12-17",
+      "cuisine": "coffee_shop",
+      "name": "Happiness"
+     },
+     "fetchedAt": "2026-10-14T13:07:37.740Z",
+     "match": "frontage",
+     "distanceM": 3
+    },
+    {
+     "type": "node",
+     "id": 10589198689,
+     "lngLat": [
+      4.8490682,
+      52.3699836
+     ],
+     "tags": {
+      "name": "Hunter's",
+      "shop": "cannabis"
+     },
+     "fetchedAt": "2026-10-14T13:07:37.740Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

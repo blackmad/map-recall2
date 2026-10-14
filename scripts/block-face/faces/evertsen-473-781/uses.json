@@ -1,0 +1,1792 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T13:54:17.374Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012134306",
+   "addresses": [
+    "Jan Evertsenstraat 473",
+    "Jan Evertsenstraat 475",
+    "Jan Evertsenstraat 477",
+    "Jan Evertsenstraat 479",
+    "Jan Evertsenstraat 481",
+    "Jan Evertsenstraat 483",
+    "Jan Evertsenstraat 485",
+    "Jan Evertsenstraat 487",
+    "Jan Evertsenstraat 489",
+    "Jan Evertsenstraat 491",
+    "Jan Evertsenstraat 493",
+    "Jan Evertsenstraat 495",
+    "Jan Evertsenstraat 497",
+    "Jan Evertsenstraat 499",
+    "Jan Evertsenstraat 501",
+    "Jan Evertsenstraat 503",
+    "Jan Evertsenstraat 505",
+    "Jan Evertsenstraat 507",
+    "Jan Evertsenstraat 509",
+    "Jan Evertsenstraat 511",
+    "Jan Evertsenstraat 513",
+    "Jan Evertsenstraat 515",
+    "Jan Evertsenstraat 517",
+    "Jan Evertsenstraat 519",
+    "Jan Evertsenstraat 521",
+    "Jan Evertsenstraat 523",
+    "Jan Evertsenstraat 525",
+    "Jan Evertsenstraat 527",
+    "Jan Evertsenstraat 529",
+    "Jan Evertsenstraat 531",
+    "Jan Evertsenstraat 533",
+    "Jan Evertsenstraat 535",
+    "Jan Evertsenstraat 537",
+    "Jan Evertsenstraat 539",
+    "Jan Evertsenstraat 541",
+    "Jan Evertsenstraat 543",
+    "Jan Evertsenstraat 545",
+    "Jan Evertsenstraat 547",
+    "Jan Evertsenstraat 549",
+    "Jan Evertsenstraat 551",
+    "Jan Evertsenstraat 553",
+    "Jan Evertsenstraat 555",
+    "Jan Evertsenstraat 557",
+    "Jan Evertsenstraat 559",
+    "Jan Evertsenstraat 561",
+    "Jan Evertsenstraat 563",
+    "Jan Evertsenstraat 565",
+    "Jan Evertsenstraat 567",
+    "Jan Evertsenstraat 569",
+    "Jan Evertsenstraat 571",
+    "Jan Evertsenstraat 573",
+    "Jan Evertsenstraat 575",
+    "Jan Evertsenstraat 577",
+    "Jan Evertsenstraat 579",
+    "Jan Evertsenstraat 581",
+    "Jan Evertsenstraat 583",
+    "Jan Evertsenstraat 585",
+    "Jan Evertsenstraat 587",
+    "Jan Evertsenstraat 589",
+    "Jan Evertsenstraat 591",
+    "Jan Evertsenstraat 593",
+    "Jan Evertsenstraat 595",
+    "Jan Evertsenstraat 597",
+    "Jan Evertsenstraat 599",
+    "Jan Evertsenstraat 601",
+    "Jan Evertsenstraat 603",
+    "Jan Evertsenstraat 605",
+    "Jan Evertsenstraat 607",
+    "Jan Evertsenstraat 609",
+    "Jan Evertsenstraat 611",
+    "Jan Evertsenstraat 613",
+    "Jan Evertsenstraat 615",
+    "Jan Evertsenstraat 617",
+    "Jan Evertsenstraat 619",
+    "Jan Evertsenstraat 621",
+    "Jan Evertsenstraat 623",
+    "Jan Evertsenstraat 625",
+    "Jan Evertsenstraat 627",
+    "Jan Evertsenstraat 629",
+    "Jan Evertsenstraat 631",
+    "Jan Evertsenstraat 633",
+    "Jan Evertsenstraat 635",
+    "Jan Evertsenstraat 637",
+    "Jan Evertsenstraat 639",
+    "Jan Evertsenstraat 641",
+    "Jan Evertsenstraat 643",
+    "Jan Evertsenstraat 645",
+    "Jan Evertsenstraat 647",
+    "Jan Evertsenstraat 649",
+    "Jan Evertsenstraat 651",
+    "Jan Evertsenstraat 653",
+    "Jan Evertsenstraat 655",
+    "Jan Evertsenstraat 657",
+    "Jan Evertsenstraat 659",
+    "Jan Evertsenstraat 661",
+    "Jan Evertsenstraat 663",
+    "Jan Evertsenstraat 665",
+    "Jan Evertsenstraat 667",
+    "Jan Evertsenstraat 669",
+    "Jan Evertsenstraat 671",
+    "Jan Evertsenstraat 673",
+    "Jan Evertsenstraat 675",
+    "Jan Evertsenstraat 677",
+    "Jan Evertsenstraat 679",
+    "Jan Evertsenstraat 681",
+    "Jan Evertsenstraat 683",
+    "Jan Evertsenstraat 685",
+    "Jan Evertsenstraat 687",
+    "Jan Evertsenstraat 689",
+    "Jan Evertsenstraat 691",
+    "Jan Evertsenstraat 693",
+    "Jan Evertsenstraat 695",
+    "Jan Evertsenstraat 697",
+    "Jan Evertsenstraat 699",
+    "Jan Evertsenstraat 701",
+    "Jan Evertsenstraat 703",
+    "Jan Evertsenstraat 705",
+    "Jan Evertsenstraat 707",
+    "Jan Evertsenstraat 709",
+    "Jan Evertsenstraat 711",
+    "Jan Evertsenstraat 713",
+    "Jan Evertsenstraat 715"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Tooropstraat 489",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163792"
+    },
+    {
+     "address": "Jan Tooropstraat 491",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163793"
+    },
+    {
+     "address": "Jan Tooropstraat 493",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163794"
+    },
+    {
+     "address": "Jan Tooropstraat 495",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163795"
+    },
+    {
+     "address": "Jan Tooropstraat 497",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163796"
+    },
+    {
+     "address": "Jan Tooropstraat 499",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163797"
+    },
+    {
+     "address": "Jan Tooropstraat 501",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163798"
+    },
+    {
+     "address": "Jan Tooropstraat 503",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163799"
+    },
+    {
+     "address": "Jan Tooropstraat 505",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163800"
+    },
+    {
+     "address": "Jan Tooropstraat 507",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163801"
+    },
+    {
+     "address": "Jan Tooropstraat 509",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163802"
+    },
+    {
+     "address": "Jan Tooropstraat 511",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163803"
+    },
+    {
+     "address": "Jan Tooropstraat 513",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163804"
+    },
+    {
+     "address": "Jan Tooropstraat 515",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163805"
+    },
+    {
+     "address": "Jan Tooropstraat 517",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163806"
+    },
+    {
+     "address": "Jan Tooropstraat 519",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163807"
+    },
+    {
+     "address": "Jan Tooropstraat 521",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163808"
+    },
+    {
+     "address": "Jan Tooropstraat 523",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163809"
+    },
+    {
+     "address": "Jan Tooropstraat 525",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163810"
+    },
+    {
+     "address": "Jan Tooropstraat 527",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163811"
+    },
+    {
+     "address": "Jan Tooropstraat 529",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163812"
+    },
+    {
+     "address": "Jan Tooropstraat 531",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163813"
+    },
+    {
+     "address": "Jan Tooropstraat 533",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163814"
+    },
+    {
+     "address": "Jan Tooropstraat 535",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163815"
+    },
+    {
+     "address": "Jan Tooropstraat 543",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163817"
+    },
+    {
+     "address": "Jan Tooropstraat 547",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010001163819"
+    },
+    {
+     "address": "Jan Tooropstraat 553",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010001163822"
+    },
+    {
+     "address": "Jan Tooropstraat 559",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010001163825"
+    },
+    {
+     "address": "Jan Tooropstraat 565",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010001163828"
+    },
+    {
+     "address": "Jan Tooropstraat 571",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010001163831"
+    },
+    {
+     "address": "Jan Tooropstraat 579",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163832"
+    },
+    {
+     "address": "Jan Tooropstraat 581",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163833"
+    },
+    {
+     "address": "Jan Tooropstraat 583",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163834"
+    },
+    {
+     "address": "Jan Tooropstraat 585",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163835"
+    },
+    {
+     "address": "Jan Tooropstraat 587",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163836"
+    },
+    {
+     "address": "Jan Tooropstraat 589",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163837"
+    },
+    {
+     "address": "Jan Tooropstraat 591",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163838"
+    },
+    {
+     "address": "Jan Tooropstraat 593",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163839"
+    },
+    {
+     "address": "Jan Tooropstraat 595",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163840"
+    },
+    {
+     "address": "Jan Tooropstraat 597",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163841"
+    },
+    {
+     "address": "Jan Tooropstraat 599",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163842"
+    },
+    {
+     "address": "Jan Tooropstraat 601",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163843"
+    },
+    {
+     "address": "Jan Tooropstraat 603",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163844"
+    },
+    {
+     "address": "Jan Tooropstraat 605",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163845"
+    },
+    {
+     "address": "Jan Tooropstraat 607",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163846"
+    },
+    {
+     "address": "Jan Tooropstraat 609",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163847"
+    },
+    {
+     "address": "Jan Tooropstraat 611",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163848"
+    },
+    {
+     "address": "Jan Tooropstraat 613",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163849"
+    },
+    {
+     "address": "Jan Tooropstraat 615",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163850"
+    },
+    {
+     "address": "Jan Tooropstraat 617",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163851"
+    },
+    {
+     "address": "Jan Tooropstraat 619",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163852"
+    },
+    {
+     "address": "Jan Tooropstraat 621",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163853"
+    },
+    {
+     "address": "Jan Tooropstraat 623",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001163854"
+    },
+    {
+     "address": "Jan Tooropstraat 625",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001163855"
+    },
+    {
+     "address": "Jan Tooropstraat 485",
+     "use": "winkelfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001163858"
+    },
+    {
+     "address": "Jan Tooropstraat 487",
+     "use": "winkelfunctie",
+     "areaM2": 93,
+     "bagId": "0363010001163859"
+    },
+    {
+     "address": "Jan Tooropstraat 537",
+     "use": "winkelfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001163860"
+    },
+    {
+     "address": "Jan Tooropstraat 539",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001163861"
+    },
+    {
+     "address": "Jan Tooropstraat 541",
+     "use": "winkelfunctie",
+     "areaM2": 99,
+     "bagId": "0363010001163862"
+    },
+    {
+     "address": "Jan Tooropstraat 573",
+     "use": "winkelfunctie",
+     "areaM2": 99,
+     "bagId": "0363010001163863"
+    },
+    {
+     "address": "Jan Tooropstraat 575",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001163864"
+    },
+    {
+     "address": "Jan Tooropstraat 577",
+     "use": "winkelfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001163865"
+    },
+    {
+     "address": "Jan Tooropstraat 627",
+     "use": "winkelfunctie",
+     "areaM2": 93,
+     "bagId": "0363010001163866"
+    },
+    {
+     "address": "Jan Tooropstraat 629",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001163867"
+    },
+    {
+     "address": "Jan Tooropstraat 631",
+     "use": "winkelfunctie",
+     "areaM2": 93,
+     "bagId": "0363010001163868"
+    },
+    {
+     "address": "Hendrik Werkmanstraat 1",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001955849"
+    },
+    {
+     "address": "Hendrik Werkmanstraat 3",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001955850"
+    },
+    {
+     "address": "Hendrik Werkmanstraat 5",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001955851"
+    },
+    {
+     "address": "Hendrik Werkmanstraat 7",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001955852"
+    },
+    {
+     "address": "Hendrik Werkmanstraat 9",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001955853"
+    },
+    {
+     "address": "Hendrik Werkmanstraat 11",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001955854"
+    },
+    {
+     "address": "Hendrik Werkmanstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001955855"
+    },
+    {
+     "address": "Hendrik Werkmanstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001955856"
+    },
+    {
+     "address": "Hendrik Werkmanstraat 17",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001955857"
+    },
+    {
+     "address": "Jan Evertsenstraat 665",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956696"
+    },
+    {
+     "address": "Jan Evertsenstraat 667",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956697"
+    },
+    {
+     "address": "Jan Evertsenstraat 669",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956698"
+    },
+    {
+     "address": "Jan Evertsenstraat 671",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956699"
+    },
+    {
+     "address": "Jan Evertsenstraat 673",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956700"
+    },
+    {
+     "address": "Jan Evertsenstraat 675",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956701"
+    },
+    {
+     "address": "Jan Evertsenstraat 677",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956702"
+    },
+    {
+     "address": "Jan Evertsenstraat 679",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956703"
+    },
+    {
+     "address": "Jan Evertsenstraat 681",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956704"
+    },
+    {
+     "address": "Jan Evertsenstraat 683",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956705"
+    },
+    {
+     "address": "Jan Evertsenstraat 685",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001956706"
+    },
+    {
+     "address": "Jan Evertsenstraat 687",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956707"
+    },
+    {
+     "address": "Jan Evertsenstraat 689",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956708"
+    },
+    {
+     "address": "Jan Evertsenstraat 691",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956709"
+    },
+    {
+     "address": "Jan Evertsenstraat 693",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956710"
+    },
+    {
+     "address": "Jan Evertsenstraat 695",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956711"
+    },
+    {
+     "address": "Jan Evertsenstraat 697",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001956712"
+    },
+    {
+     "address": "Jan Evertsenstraat 699",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956713"
+    },
+    {
+     "address": "Jan Evertsenstraat 701",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956714"
+    },
+    {
+     "address": "Jan Evertsenstraat 703",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956715"
+    },
+    {
+     "address": "Jan Evertsenstraat 705",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956716"
+    },
+    {
+     "address": "Jan Evertsenstraat 707",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956717"
+    },
+    {
+     "address": "Jan Evertsenstraat 709",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001956718"
+    },
+    {
+     "address": "Jan Evertsenstraat 711",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956719"
+    },
+    {
+     "address": "Jan Evertsenstraat 713",
+     "use": "winkelfunctie",
+     "areaM2": 112,
+     "bagId": "0363010001956720"
+    },
+    {
+     "address": "Jan Evertsenstraat 715",
+     "use": "winkelfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001956721"
+    },
+    {
+     "address": "Jan Evertsenstraat 473",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001956600"
+    },
+    {
+     "address": "Jan Evertsenstraat 475",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001956601"
+    },
+    {
+     "address": "Jan Evertsenstraat 477",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001956602"
+    },
+    {
+     "address": "Jan Evertsenstraat 479",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956603"
+    },
+    {
+     "address": "Jan Evertsenstraat 481",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956604"
+    },
+    {
+     "address": "Jan Evertsenstraat 483",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956605"
+    },
+    {
+     "address": "Jan Evertsenstraat 485",
+     "use": "winkelfunctie",
+     "areaM2": 103,
+     "bagId": "0363010001956606"
+    },
+    {
+     "address": "Jan Evertsenstraat 487",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001956607"
+    },
+    {
+     "address": "Jan Evertsenstraat 489",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010001956608"
+    },
+    {
+     "address": "Jan Evertsenstraat 491",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001956609"
+    },
+    {
+     "address": "Jan Evertsenstraat 493",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001956610"
+    },
+    {
+     "address": "Jan Evertsenstraat 495",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001956611"
+    },
+    {
+     "address": "Jan Evertsenstraat 497",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001956612"
+    },
+    {
+     "address": "Jan Evertsenstraat 499",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956613"
+    },
+    {
+     "address": "Jan Evertsenstraat 501",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956614"
+    },
+    {
+     "address": "Jan Evertsenstraat 503",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956615"
+    },
+    {
+     "address": "Jan Evertsenstraat 505",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001956616"
+    },
+    {
+     "address": "Jan Evertsenstraat 507",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001956617"
+    },
+    {
+     "address": "Jan Evertsenstraat 509",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001956618"
+    },
+    {
+     "address": "Jan Evertsenstraat 511",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956619"
+    },
+    {
+     "address": "Jan Evertsenstraat 513",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956620"
+    },
+    {
+     "address": "Jan Evertsenstraat 515",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956621"
+    },
+    {
+     "address": "Jan Evertsenstraat 517",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001956622"
+    },
+    {
+     "address": "Jan Evertsenstraat 519",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001956623"
+    },
+    {
+     "address": "Jan Evertsenstraat 521",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001956624"
+    },
+    {
+     "address": "Jan Evertsenstraat 523",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956625"
+    },
+    {
+     "address": "Jan Evertsenstraat 525",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956626"
+    },
+    {
+     "address": "Jan Evertsenstraat 527",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956627"
+    },
+    {
+     "address": "Jan Evertsenstraat 529",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001956628"
+    },
+    {
+     "address": "Jan Evertsenstraat 531",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001956629"
+    },
+    {
+     "address": "Jan Evertsenstraat 533",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001956630"
+    },
+    {
+     "address": "Jan Evertsenstraat 535",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956631"
+    },
+    {
+     "address": "Jan Evertsenstraat 537",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956632"
+    },
+    {
+     "address": "Jan Evertsenstraat 539",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956633"
+    },
+    {
+     "address": "Jan Evertsenstraat 541",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001956634"
+    },
+    {
+     "address": "Jan Evertsenstraat 543",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001956635"
+    },
+    {
+     "address": "Jan Evertsenstraat 545",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001956636"
+    },
+    {
+     "address": "Jan Evertsenstraat 547",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956637"
+    },
+    {
+     "address": "Jan Evertsenstraat 549",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956638"
+    },
+    {
+     "address": "Jan Evertsenstraat 551",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956639"
+    },
+    {
+     "address": "Jan Evertsenstraat 553",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001956640"
+    },
+    {
+     "address": "Jan Evertsenstraat 555",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001956641"
+    },
+    {
+     "address": "Jan Evertsenstraat 557",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956642"
+    },
+    {
+     "address": "Jan Evertsenstraat 559",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956643"
+    },
+    {
+     "address": "Jan Evertsenstraat 561",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956644"
+    },
+    {
+     "address": "Jan Evertsenstraat 563",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956645"
+    },
+    {
+     "address": "Jan Evertsenstraat 565",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956646"
+    },
+    {
+     "address": "Jan Evertsenstraat 567",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956647"
+    },
+    {
+     "address": "Jan Evertsenstraat 569",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956648"
+    },
+    {
+     "address": "Jan Evertsenstraat 571",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956649"
+    },
+    {
+     "address": "Jan Evertsenstraat 573",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956650"
+    },
+    {
+     "address": "Jan Evertsenstraat 575",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956651"
+    },
+    {
+     "address": "Jan Evertsenstraat 577",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010001956652"
+    },
+    {
+     "address": "Jan Evertsenstraat 579",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956653"
+    },
+    {
+     "address": "Jan Evertsenstraat 581",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956654"
+    },
+    {
+     "address": "Jan Evertsenstraat 583",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956655"
+    },
+    {
+     "address": "Jan Evertsenstraat 585",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956656"
+    },
+    {
+     "address": "Jan Evertsenstraat 587",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956657"
+    },
+    {
+     "address": "Jan Evertsenstraat 589",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001956658"
+    },
+    {
+     "address": "Jan Evertsenstraat 591",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956659"
+    },
+    {
+     "address": "Jan Evertsenstraat 593",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956660"
+    },
+    {
+     "address": "Jan Evertsenstraat 595",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956661"
+    },
+    {
+     "address": "Jan Evertsenstraat 597",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956662"
+    },
+    {
+     "address": "Jan Evertsenstraat 599",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956663"
+    },
+    {
+     "address": "Jan Evertsenstraat 601",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001956664"
+    },
+    {
+     "address": "Jan Evertsenstraat 603",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956665"
+    },
+    {
+     "address": "Jan Evertsenstraat 605",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956666"
+    },
+    {
+     "address": "Jan Evertsenstraat 607",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956667"
+    },
+    {
+     "address": "Jan Evertsenstraat 609",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956668"
+    },
+    {
+     "address": "Jan Evertsenstraat 611",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956669"
+    },
+    {
+     "address": "Jan Evertsenstraat 613",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001956670"
+    },
+    {
+     "address": "Jan Evertsenstraat 615",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956671"
+    },
+    {
+     "address": "Jan Evertsenstraat 617",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956672"
+    },
+    {
+     "address": "Jan Evertsenstraat 619",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956673"
+    },
+    {
+     "address": "Jan Evertsenstraat 621",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956674"
+    },
+    {
+     "address": "Jan Evertsenstraat 623",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956675"
+    },
+    {
+     "address": "Jan Evertsenstraat 625",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001956676"
+    },
+    {
+     "address": "Jan Evertsenstraat 627",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956677"
+    },
+    {
+     "address": "Jan Evertsenstraat 629",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001956678"
+    },
+    {
+     "address": "Jan Evertsenstraat 631",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956679"
+    },
+    {
+     "address": "Jan Evertsenstraat 633",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956680"
+    },
+    {
+     "address": "Jan Evertsenstraat 635",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956681"
+    },
+    {
+     "address": "Jan Evertsenstraat 637",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001956682"
+    },
+    {
+     "address": "Jan Evertsenstraat 639",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956683"
+    },
+    {
+     "address": "Jan Evertsenstraat 641",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956684"
+    },
+    {
+     "address": "Jan Evertsenstraat 643",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956685"
+    },
+    {
+     "address": "Jan Evertsenstraat 645",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956686"
+    },
+    {
+     "address": "Jan Evertsenstraat 647",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956687"
+    },
+    {
+     "address": "Jan Evertsenstraat 649",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001956688"
+    },
+    {
+     "address": "Jan Evertsenstraat 651",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956689"
+    },
+    {
+     "address": "Jan Evertsenstraat 653",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956690"
+    },
+    {
+     "address": "Jan Evertsenstraat 655",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001956691"
+    },
+    {
+     "address": "Jan Evertsenstraat 657",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956692"
+    },
+    {
+     "address": "Jan Evertsenstraat 659",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010001956693"
+    },
+    {
+     "address": "Jan Evertsenstraat 661",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001956694"
+    },
+    {
+     "address": "Jan Evertsenstraat 663",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001956695"
+    },
+    {
+     "address": "Hendrik Werkmanstraat 1A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 33,
+     "bagId": "0363010003684886"
+    },
+    {
+     "address": "Jan Tooropstraat 545",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010001163818"
+    },
+    {
+     "address": "Jan Tooropstraat 551",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001163821"
+    },
+    {
+     "address": "Jan Tooropstraat 557",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001163824"
+    },
+    {
+     "address": "Jan Tooropstraat 563",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001163827"
+    },
+    {
+     "address": "Jan Tooropstraat 569",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001163830"
+    },
+    {
+     "address": "Jan Tooropstraat 549",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010001163820"
+    },
+    {
+     "address": "Jan Tooropstraat 555",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010001163823"
+    },
+    {
+     "address": "Jan Tooropstraat 561",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010001163826"
+    },
+    {
+     "address": "Jan Tooropstraat 567",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010001163829"
+    }
+   ],
+   "units": 206,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2795238073,
+     "lngLat": [
+      4.8368751,
+      52.3693186
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "627",
+      "addr:postcode": "1061AE",
+      "addr:street": "Jan Tooropstraat",
+      "amenity": "doctors",
+      "healthcare": "doctor",
+      "healthcare:speciality": "psychiatry",
+      "name": "Terra",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:54:17.374Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2795238075,
+     "lngLat": [
+      4.8368812,
+      52.3693447
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "629",
+      "addr:postcode": "1061AE",
+      "addr:street": "Jan Tooropstraat",
+      "name": "Atalmedial",
+      "office": "company",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:54:17.374Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2795238097,
+     "lngLat": [
+      4.8368947,
+      52.3693919
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "631",
+      "addr:postcode": "1061AE",
+      "addr:street": "Jan Tooropstraat",
+      "name": "Meliténe",
+      "office": "insurance",
+      "panoramax": "db8f1f4c-7578-4c7d-8b1a-3945a32b0a69",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:54:17.374Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12915374612,
+     "lngLat": [
+      4.8366364,
+      52.3686996
+     ],
+     "tags": {
+      "name": "Kaftan a l'aise",
+      "panoramax": "869779c2-ad8c-4b96-9674-047c22c26ae6",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-14T13:54:17.374Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12915374616,
+     "lngLat": [
+      4.8366194,
+      52.3686516
+     ],
+     "tags": {
+      "name": "Beauty Field",
+      "opening_hours": "Mo,We,Fr 10:00-20:00; Tu,Th 10:00-21:00; Sa 08:00-17:00",
+      "panoramax": "c5604e4c-51be-400b-b56e-3f9eefb236d5",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-14T13:54:17.374Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12915374630,
+     "lngLat": [
+      4.8367006,
+      52.3688424
+     ],
+     "tags": {
+      "name": "MyHotelBike",
+      "shop": "bicycle"
+     },
+     "fetchedAt": "2026-10-14T13:54:17.374Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13037591486,
+     "lngLat": [
+      4.836269,
+      52.3695869
+     ],
+     "tags": {
+      "name": "Glamour Clinic",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-14T13:54:17.374Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012113136",
+   "addresses": [
+    "Jan Evertsenstraat 717",
+    "Jan Evertsenstraat 719",
+    "Jan Evertsenstraat 721",
+    "Jan Evertsenstraat 723",
+    "Jan Evertsenstraat 725",
+    "Jan Evertsenstraat 727",
+    "Jan Evertsenstraat 729",
+    "Jan Evertsenstraat 731",
+    "Jan Evertsenstraat 733",
+    "Jan Evertsenstraat 735",
+    "Jan Evertsenstraat 737",
+    "Jan Evertsenstraat 739",
+    "Jan Evertsenstraat 741",
+    "Jan Evertsenstraat 743",
+    "Jan Evertsenstraat 745",
+    "Jan Evertsenstraat 747",
+    "Jan Evertsenstraat 749",
+    "Jan Evertsenstraat 751",
+    "Jan Evertsenstraat 753",
+    "Jan Evertsenstraat 755",
+    "Jan Evertsenstraat 757",
+    "Jan Evertsenstraat 759",
+    "Jan Evertsenstraat 761",
+    "Jan Evertsenstraat 763",
+    "Jan Evertsenstraat 765",
+    "Jan Evertsenstraat 767",
+    "Jan Evertsenstraat 769",
+    "Jan Evertsenstraat 771",
+    "Jan Evertsenstraat 773",
+    "Jan Evertsenstraat 775",
+    "Jan Evertsenstraat 777",
+    "Jan Evertsenstraat 779",
+    "Jan Evertsenstraat 781"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 717",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 138,
+     "bagId": "0363010001165114"
+    },
+    {
+     "address": "Jan Evertsenstraat 719",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 159,
+     "bagId": "0363010001165115"
+    },
+    {
+     "address": "Jan Evertsenstraat 721",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 212,
+     "bagId": "0363010001165116"
+    },
+    {
+     "address": "Jan Evertsenstraat 723",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 180,
+     "bagId": "0363010001165117"
+    },
+    {
+     "address": "Jan Evertsenstraat 725",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 180,
+     "bagId": "0363010001165118"
+    },
+    {
+     "address": "Jan Evertsenstraat 727",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 180,
+     "bagId": "0363010001165119"
+    },
+    {
+     "address": "Jan Evertsenstraat 729",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 180,
+     "bagId": "0363010001165120"
+    },
+    {
+     "address": "Jan Evertsenstraat 731",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 180,
+     "bagId": "0363010001165121"
+    },
+    {
+     "address": "Jan Evertsenstraat 733",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 180,
+     "bagId": "0363010001165122"
+    },
+    {
+     "address": "Jan Evertsenstraat 735",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 180,
+     "bagId": "0363010001165123"
+    },
+    {
+     "address": "Jan Evertsenstraat 737",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001165124"
+    },
+    {
+     "address": "Jan Evertsenstraat 739",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001165125"
+    },
+    {
+     "address": "Jan Evertsenstraat 741",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001165126"
+    },
+    {
+     "address": "Jan Evertsenstraat 743",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001165127"
+    },
+    {
+     "address": "Jan Evertsenstraat 745",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001165128"
+    },
+    {
+     "address": "Jan Evertsenstraat 747",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001165129"
+    },
+    {
+     "address": "Jan Evertsenstraat 749",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 66,
+     "bagId": "0363010001165130"
+    },
+    {
+     "address": "Jan Evertsenstraat 751",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 116,
+     "bagId": "0363010001165131"
+    },
+    {
+     "address": "Jan Evertsenstraat 753",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 85,
+     "bagId": "0363010001165132"
+    },
+    {
+     "address": "Jan Evertsenstraat 755",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001165133"
+    },
+    {
+     "address": "Jan Evertsenstraat 757",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 66,
+     "bagId": "0363010001165134"
+    },
+    {
+     "address": "Jan Evertsenstraat 759",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 367,
+     "bagId": "0363010001165135"
+    },
+    {
+     "address": "Jan Evertsenstraat 761",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 357,
+     "bagId": "0363010001165136"
+    },
+    {
+     "address": "Jan Evertsenstraat 763",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 309,
+     "bagId": "0363010001165137"
+    },
+    {
+     "address": "Jan Evertsenstraat 765",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 97,
+     "bagId": "0363010001165138"
+    },
+    {
+     "address": "Jan Evertsenstraat 767",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 84,
+     "bagId": "0363010001165139"
+    },
+    {
+     "address": "Jan Evertsenstraat 769",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 114,
+     "bagId": "0363010001165140"
+    },
+    {
+     "address": "Jan Evertsenstraat 771",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 66,
+     "bagId": "0363010001165141"
+    },
+    {
+     "address": "Jan Evertsenstraat 773",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 66,
+     "bagId": "0363010001165142"
+    },
+    {
+     "address": "Jan Evertsenstraat 775",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 188,
+     "bagId": "0363010001165143"
+    },
+    {
+     "address": "Jan Evertsenstraat 777",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001165144"
+    },
+    {
+     "address": "Jan Evertsenstraat 779",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 152,
+     "bagId": "0363010001165145"
+    },
+    {
+     "address": "Jan Evertsenstraat 781",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 207,
+     "bagId": "0363010001165146"
+    }
+   ],
+   "units": 33,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2600978268,
+     "lngLat": [
+      4.8351996,
+      52.3697304
+     ],
+     "tags": {
+      "amenity": "nightclub",
+      "check_date": "2025-01-10",
+      "name": "Club Puck",
+      "opening_hours": "We,Fr 16:00-02:00, Sa,Su 13:00-02:00, Th 20:00-01:00",
+      "panoramax": "6afb8cac-6cdf-4eee-9240-ad8b03f0776d",
+      "website": "https://clubpuck.nl/"
+     },
+     "fetchedAt": "2026-10-14T13:54:17.374Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2795239284,
+     "lngLat": [
+      4.8359647,
+      52.3695506
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "759",
+      "addr:postcode": "1061XZ",
+      "addr:street": "Jan Evertsenstraat",
+      "email": "info@2theloo.com",
+      "name": "2theloo",
+      "office": "company",
+      "phone": "+31 85 0161222",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://2theloo.com/",
+      "wikidata": "Q124769436",
+      "wikimedia_commons": "Category:2theloo"
+     },
+     "fetchedAt": "2026-10-14T13:54:17.374Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

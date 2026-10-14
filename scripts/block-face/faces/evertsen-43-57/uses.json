@@ -1,0 +1,207 @@
+{
+ "street": "Jan Evertsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-14T13:14:53.387Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012091079",
+   "addresses": [
+    "Jan Evertsenstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 43",
+     "use": "winkelfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000684181"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012061604",
+   "addresses": [
+    "Jan Evertsenstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 45-H",
+     "use": "winkelfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000684185"
+    },
+    {
+     "address": "Jan Evertsenstraat 45-H",
+     "use": "winkelfunctie",
+     "areaM2": 132,
+     "bagId": "0363010012072629"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 920559183,
+     "lngLat": [
+      4.8560308,
+      52.3708351
+     ],
+     "tags": {
+      "name": "Lechkar Rijwielen",
+      "shop": "bicycle",
+      "url": "http://www.lechkar.nl"
+     },
+     "fetchedAt": "2026-10-14T13:14:53.387Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012094327",
+   "addresses": [
+    "Jan Evertsenstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 47-H",
+     "use": "winkelfunctie",
+     "areaM2": 132,
+     "bagId": "0363010012072630"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012127935",
+   "addresses": [
+    "Jan Evertsenstraat 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 49-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000684193"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814041466,
+     "lngLat": [
+      4.8558799,
+      52.3708474
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "49-H",
+      "addr:postcode": "1057BN",
+      "addr:street": "Jan Evertsenstraat",
+      "name": "Jean Barbershop",
+      "phone": "+31 6 14871713",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:14:53.387Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012087018",
+   "addresses": [
+    "Jan Evertsenstraat 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 51-H",
+     "use": "winkelfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000684197"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012079628",
+   "addresses": [
+    "Jan Evertsenstraat 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 53-H",
+     "use": "kantoorfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000684201"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012120095",
+   "addresses": [
+    "Jan Evertsenstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 55-H",
+     "use": "winkelfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000684208"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126620",
+   "addresses": [
+    "Jan Evertsenstraat 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan Evertsenstraat 57",
+     "use": "winkelfunctie",
+     "areaM2": 173,
+     "bagId": "0363010000684217"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2814043307,
+     "lngLat": [
+      4.8555381,
+      52.3707815
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "57",
+      "addr:postcode": "1057BN",
+      "addr:street": "Jan Evertsenstraat",
+      "clothes": "workwear",
+      "name": "Workshoes 4 Less",
+      "panoramax": "920cfb94-15ab-43c0-a3ae-5b351d014d2d",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-10-14T13:14:53.387Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

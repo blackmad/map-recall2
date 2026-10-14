@@ -34,9 +34,13 @@ async function resolveIds(): Promise<string[]> {
     keep = ({ x, y }) => x >= Math.min(p.x, q.x) && x <= Math.max(p.x, q.x) && y >= Math.min(p.y, q.y) && y <= Math.max(p.y, q.y);
   } else if (arg('street')) {
     const want = arg('street').toLowerCase(), segs: any[] = [];
-    const all = JSON.parse(await fs.readFile('public/data/extracts/amsterdam/streets.json', 'utf8'));
-    for (const s of all) if (String(s.name).toLowerCase() === want) for (const p of s.paths ?? [s.path]) for (let i = 0; i + 1 < p.length; i++) segs.push({ a: lngLatToRd([p[i][1], p[i][0]]), b: lngLatToRd([p[i + 1][1], p[i + 1][0]]) });
-    if (!segs.length) throw new Error(`street not found in streets.json: ${arg('street')}`);
+    // streets.json is the quiz subset; streets-routing.json has every named street (both are [lat, lng] paths).
+    for (const file of ['streets.json', 'streets-routing.json']) {
+      if (segs.length) break;
+      const all = JSON.parse(await fs.readFile(`public/data/extracts/amsterdam/${file}`, 'utf8'));
+      for (const s of all) if (String(s.name).toLowerCase() === want) for (const p of s.paths ?? [s.path]) for (let i = 0; i + 1 < p.length; i++) segs.push({ a: lngLatToRd([p[i][1], p[i][0]]), b: lngLatToRd([p[i + 1][1], p[i + 1][0]]) });
+    }
+    if (!segs.length) throw new Error(`street not found in streets.json or streets-routing.json: ${arg('street')}`);
     keep = c => segs.some(s => nearestOnSeg(c, s).d < 28);
   } else throw new Error('need --ids, --bbox or --street');
   await loadRoads();
