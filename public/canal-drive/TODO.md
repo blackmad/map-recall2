@@ -1226,6 +1226,14 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 ---
 
 ## P2 — Weight and reach
+
+- **Own ground after the belt lane** (2026-10-14, HISTORY "belt audit
+  clean, pockets…"): a BGT-driven sidewalk/road fill for land over BGT
+  road away from junctions (Oud-West 11.6k m² per 300 m window); pocket
+  fill costs 90–130 ms per LOD 0 cell; the far ring's contrast with the
+  recoloured basemap is subtle (consider dropping the basemap fills
+  inside the far radius); phone layout and iPhone measurement for the
+  far ring; 22 parks and 110 playgrounds without BGT polygons.
 - **Public buildings, next** (2026-10-14, HISTORY "Schools as large
   recipes"): re-install the eight schools with `layeredKit: true` and
   re-audit (1.5–51.9 m² glass/frame z-fight today); Roeterseiland REC-A
@@ -1285,9 +1293,7 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   the measured 2.1–4.3 m; the red lantern and the w13 glass-block ribbons
   are not modelled; walls with no photo stay inferred kit walls.
 - **Parks, next** (2026-10-14, HISTORY "Parks from the BGT survey"):
-  skip the OSM park fill where BGT surfaces cover it (20–160k tris per
-  park cell); lawn/bed/shrub as flat tones only (a stipple or relief
-  pass); BGT walls all at 0.75 m; 22 parks and 110 playgrounds without
+  lawn/bed/shrub as flat tones only (a stipple or relief pass); BGT walls all at 0.75 m; 22 parks and 110 playgrounds without
   BGT polygons; the raw BGT cache is archived in
   `map-recall2-source-data/datasets/bgt-parks-20261014`.
 - **Roof slots: the Bonboon-class corner** (flat block after the attachment
