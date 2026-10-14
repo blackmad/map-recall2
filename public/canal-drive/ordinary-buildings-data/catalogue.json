@@ -47105,6 +47105,170 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T02:21:38.673Z"
+    },
+    {
+      "id": "ordinary-0363100012112128",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012112128",
+      "name": "Gedempt Hamerkanaal 175, Amsterdam-Noord (Hamerkwartier): 1911 workshop complex on the former Hamerkanaal, a four-storey brick-and-teal ribbon-window block on the street front and small brick workshop and house ranges on the canal side",
+      "hash": "cb49c46e5c4bca6bc2553d3561cc6371cb11a3b05f10b1be77c6ce75d9fce0d8",
+      "sha256": "cb49c46e5c4bca6bc2553d3561cc6371cb11a3b05f10b1be77c6ce75d9fce0d8",
+      "bytes": 457344,
+      "triangles": 6084,
+      "materials": 12,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -26.138,
+          0,
+          -53.155
+        ],
+        "max": [
+          34.022,
+          15.551,
+          33.044
+        ]
+      },
+      "anchor": [
+        4.9216128,
+        52.3824926
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.9212395,
+              52.3826132
+            ],
+            [
+              4.9212902,
+              52.3826193
+            ],
+            [
+              4.9214268,
+              52.3821948
+            ],
+            [
+              4.9217395,
+              52.3822322
+            ],
+            [
+              4.9217392,
+              52.3822332
+            ],
+            [
+              4.9219501,
+              52.3822584
+            ],
+            [
+              4.9219504,
+              52.3822574
+            ],
+            [
+              4.9219764,
+              52.3822605
+            ],
+            [
+              4.9219789,
+              52.3822526
+            ],
+            [
+              4.9220308,
+              52.3822588
+            ],
+            [
+              4.9220283,
+              52.3822667
+            ],
+            [
+              4.9221147,
+              52.382277
+            ],
+            [
+              4.9218955,
+              52.3829714
+            ],
+            [
+              4.9213096,
+              52.3829005
+            ],
+            [
+              4.9212247,
+              52.382888
+            ],
+            [
+              4.921284,
+              52.3826997
+            ],
+            [
+              4.9212916,
+              52.3826765
+            ],
+            [
+              4.9212775,
+              52.3826748
+            ],
+            [
+              4.9212816,
+              52.3826619
+            ],
+            [
+              4.921226,
+              52.3826552
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 15.55,
+      "height": 15.55,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-hamerkanaal-175-112128.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012112128"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "hamerkanaal-175-112128",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012112128/w01-79.jpg",
+          "staging/pand-reference-walls/0363100012112128/w05-169.jpg",
+          "staging/pand-reference-walls/0363100012112128/w06-169.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 4st 16b",
+          "brick-bay-grid 2st 6b",
+          "brick-bay-grid 3st 5b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "Simplified: the teal top storey is brick-coloured (one palette per group), the ground shutters are plain window openings, the white window surrounds are the kit frames, the hipped and pitched roofs are the 3DBAG roofs. Not drawn: the west, north and south-west walls (no panorama within 35 m) and the stepped grey-clad upper block behind the house, which stay blank wall."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012112128",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T02:25:53.889Z"
     }
   ]
 }

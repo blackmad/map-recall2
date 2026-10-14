@@ -1,0 +1,99 @@
+{
+ "schemaVersion": 1,
+ "id": "hamerkanaal-175-112128",
+ "pand": "0363100012112128",
+ "signature": [
+  "ribbon-brick-street-front",
+  "dark-brick-canal-ranges"
+ ],
+ "walls": [
+  {
+   "tag": "w01-79",
+   "bearing": 79,
+   "lengthM": 78.8,
+   "evidence": "photo",
+   "panoId": "recording_2025-09-04_06-44-53_02763",
+   "capturedAt": "2025-09-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "ribbon-brick-street-front",
+     "kind": "window-shape",
+     "where": "four-storey brick front of paired white-framed windows under a teal-clad top storey over shuttered ground bays",
+     "approxSizeM": [
+      79,
+      14
+     ],
+     "plan": "simplified",
+     "how": "walls[0] brick-bay-grid 4 storeys x 16 bays with string courses; the teal top storey keeps the brick colour",
+     "seenIn": "recording_2025-09-04_06-44-53_02763"
+    }
+   ]
+  },
+  {
+   "tag": "w05-169",
+   "bearing": 169,
+   "lengthM": 21.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001587_pano_0000_002248",
+   "capturedAt": "2020-01-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "glazed-roller-door",
+     "kind": "other",
+     "where": "glazed sectional roller door in the low dark-brick range",
+     "approxSizeM": [
+      3.5,
+      3
+     ],
+     "plan": "simplified",
+     "how": "walls[1] garageDoors 1 at the end bay",
+     "seenIn": "TMX7316010203-001587_pano_0000_002248"
+    },
+    {
+     "id": "dark-brick-canal-ranges",
+     "kind": "window-shape",
+     "where": "two-storey dark brick range with white-framed windows beside the hipped-roof house",
+     "approxSizeM": [
+      21,
+      7
+     ],
+     "plan": "simplified",
+     "how": "walls[1] 2 storeys x 6 bays",
+     "seenIn": "TMX7316010203-001587_pano_0000_002248"
+    }
+   ]
+  },
+  {
+   "tag": "w06-169",
+   "bearing": 169,
+   "lengthM": 14.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001587_pano_0000_002247",
+   "capturedAt": "2020-01-23",
+   "checked": true,
+   "items": [
+    {
+     "id": "hipped-roof-house",
+     "kind": "window-shape",
+     "where": "three-storey dark brick house with a hipped roof, tall white-framed windows and a chimney",
+     "approxSizeM": [
+      10,
+      10
+     ],
+     "plan": "simplified",
+     "how": "walls[2] 3 storeys x 5 bays; roof and chimney are the 3DBAG roof",
+     "seenIn": "TMX7316010203-001587_pano_0000_002247"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
