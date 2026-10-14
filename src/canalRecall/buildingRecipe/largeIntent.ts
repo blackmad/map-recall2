@@ -8,8 +8,8 @@ import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/syst
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 
 const COORDINATE_KEYS = /^(x|y|z|left|right|top|bottom|width|height|depth|offset|position|coordinates|ring|vertices|plane)(M)?$|M$/;
-const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'windowShape', 'hand', 'hall', 'columns', 'wallSplit'];
-const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'measured', 'notes'];
+const WALL_KEYS = ['wallSurfaces', 'street', 'system', 'storeys', 'alignWith', 'baysPerStorey', 'ground', 'windows', 'entrance', 'signage', 'garageDoors', 'garageBays', 'stringCourses', 'cornice', 'piers', 'balconies', 'blankStoreys', 'glazedStoreys', 'police', 'palette', 'arches', 'hoist', 'sills', 'frames', 'deepBars', 'nameBoards', 'crosses', 'curve', 'wallMaterial', 'tiltedBays', 'screen', 'stoneStoreys', 'pilasters', 'lantern', 'gateways', 'hallDoors', 'windowShape', 'hand', 'hall', 'columns', 'wallSplit'];
+const HOUSE_KEYS = ['schemaVersion', 'kind', 'id', 'pandId', 'address', 'sources', 'walls', 'otherWalls', 'roofPlant', 'roof', 'palette', 'closedBands', 'layeredKit', 'shellRepair', 'footprint', 'groundClamp', 'measured', 'notes'];
 const SIGN_TEXT = /^[A-Za-z0-9&'. -]{1,60}$/;
 
 export function validateLargeIntent(input: unknown): LargeBuildingIntent {
@@ -55,6 +55,7 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
   if (intent?.otherWalls !== undefined) oneOf(intent.otherWalls, LARGE_SYSTEMS, 'otherWalls');
   bool(intent?.roofPlant, 'roofPlant'); bool(intent?.closedBands, 'closedBands'); bool(intent?.layeredKit, 'layeredKit'); bool(intent?.shellRepair, 'shellRepair');
   if (intent?.footprint !== undefined) oneOf(intent.footprint, ['lod22', 'bag'], 'footprint');
+  if (intent?.groundClamp !== undefined && typeof intent.groundClamp !== 'boolean') problems.push('groundClamp: boolean');
   if (intent?.roof !== undefined) oneOf(intent.roof?.material, ROOF_MATERIALS, 'roof.material');
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
   for (const k of ['shutters', 'stone', 'band', 'cornice', 'glass'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
@@ -134,6 +135,12 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if ((w.balconies.every !== undefined || w.balconies.bays !== undefined) && w.hoist) problems.push(`${at}.balconies: bay selection is not combined with hoist (both cycle the bays)`);
     }
     if (w.blankStoreys !== undefined) { if (!Array.isArray(w.blankStoreys) || !w.blankStoreys.length) problems.push(`${at}.blankStoreys: list of storeys (0 = ground)`); else w.blankStoreys.forEach(s => count(s, `${at}.blankStoreys`, 0, 39)); }
+    if (w.glazedStoreys !== undefined) {
+      if (!Array.isArray(w.glazedStoreys) || !w.glazedStoreys.length) problems.push(`${at}.glazedStoreys: list of upper storeys (1 = first floor)`);
+      else w.glazedStoreys.forEach(s => count(s, `${at}.glazedStoreys`, 1, 39));
+      if (w.blankStoreys?.some(s => w.glazedStoreys!.includes(s))) problems.push(`${at}.glazedStoreys: a storey is not both blank and glazed`);
+      if (!['brick-bay-grid', 'ribbon-windows', 'plinth-shopfronts'].includes(w.system)) problems.push(`${at}.glazedStoreys: needs brick-bay-grid, ribbon-windows or plinth-shopfronts`);
+    }
     if (w.police !== undefined) { bool(w.police.stripe, `${at}.police.stripe`); bool(w.police.lamp, `${at}.police.lamp`); if (w.police.lamp && !w.entrance) problems.push(`${at}.police.lamp: the lamp hangs beside an entrance; add entrance`); }
     if (w.arches !== undefined) {
       for (const k of Object.keys(w.arches)) if (!['windows', 'ground', 'band', 'storeys'].includes(k)) problems.push(`${at}.arches.${k}: unknown field (windows, ground, band, storeys)`);
@@ -151,6 +158,19 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
       if (w.gateways.arch !== undefined) oneOf(w.gateways.arch, ARCH_KINDS, `${at}.gateways.arch`);
       if (w.system !== 'brick-bay-grid') problems.push(`${at}.gateways: needs system brick-bay-grid`);
       if (w.hoist || w.entrance) problems.push(`${at}.gateways: not with hoist or entrance (both claim the ground storey)`);
+    }
+    if (w.hallDoors !== undefined) {
+      const hd = w.hallDoors;
+      for (const k of Object.keys(hd)) if (!['bays', 'arch', 'lights', 'rows', 'h'].includes(k)) problems.push(`${at}.hallDoors.${k}: unknown field (bays, arch, lights, rows, h)`);
+      if (!Array.isArray(hd.bays) || !hd.bays.length) problems.push(`${at}.hallDoors.bays: list of bay indices`);
+      else hd.bays.forEach(b => count(b, `${at}.hallDoors.bays`, 0, (w.baysPerStorey ?? 80) - 1));
+      if (w.baysPerStorey === undefined) problems.push(`${at}.hallDoors.bays needs baysPerStorey`);
+      if (hd.arch !== undefined) oneOf(hd.arch, ARCH_KINDS, `${at}.hallDoors.arch`);
+      if (hd.lights !== undefined) count(hd.lights, `${at}.hallDoors.lights`, 1, 6);
+      if (hd.rows !== undefined) count(hd.rows, `${at}.hallDoors.rows`, 1, 8);
+      if (hd.h !== undefined && !(typeof hd.h === 'number' && hd.h >= 0.3 && hd.h <= 0.95)) problems.push(`${at}.hallDoors.h: fraction of the ground storey 0.3..0.95`);
+      if (w.system !== 'brick-bay-grid') problems.push(`${at}.hallDoors: needs system brick-bay-grid`);
+      if (w.hoist || w.entrance || w.gateways) problems.push(`${at}.hallDoors: not with hoist, entrance or gateways (all claim the ground storey)`);
     }
     if (w.hoist !== undefined) {
       for (const k of Object.keys(w.hoist)) if (!['every', 'first', 'bays', 'arch'].includes(k)) problems.push(`${at}.hoist.${k}: unknown field (every, first, bays, arch)`);

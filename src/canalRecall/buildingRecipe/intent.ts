@@ -483,6 +483,8 @@ export interface LargeWallIntent {
   balconies?: {storeys: number[]; rail?: 'glass' | 'bars' | 'solid'; every?: number; first?: number; bays?: number[]};
   /** Storeys (0 = ground) with no openings (a blank floor over a shop, a plant floor). */
   blankStoreys?: number[];
+  /** Upper storeys (1 = first floor) glazed across every bay like a shop ground (a glazed mezzanine over the shops). */
+  glazedStoreys?: number[];
   /** Police signature components: blue-and-white striped POLITIE band over the ground floor, blue lamp beside the entrance. */
   police?: {stripe?: boolean; lamp?: boolean};
   /** What this group's wall is made of when it differs from the house (`palette.wallMaterial`); see GROUP_WALL_MATERIALS. */
@@ -529,6 +531,12 @@ export interface LargeWallIntent {
   hoist?: {every?: number; first?: number; bays?: number[]; arch?: ArchKind};
   /** A carriage gateway through the ground storey in the listed bays of the widest panel (dark arched openings 92 % of a bay wide, plain wall between); default none. */
   gateways?: {bays: number[]; arch?: ArchKind};
+  /**
+   * Glazed hall doors in the listed ground bays of the widest panel (De Hallen's tram-hall gables: a wide portal of
+   * white-framed glazed leaves between side windows): `h` of the ground storey (default 0.78), `lights` x `rows` panes
+   * per leaf (default 2 x 4), square-headed unless `arch`; the other ground bays keep the ground row. brick-bay-grid only.
+   */
+  hallDoors?: {bays: number[]; arch?: ArchKind; lights?: number; rows?: number; h?: number};
   /** false = no projecting stone sills under the punched windows (brick sills, flush heads). */
   sills?: boolean;
   /** false = no frame ring round the glass (dark frames that read as glass); glazing bars stay. */
@@ -597,6 +605,8 @@ export interface LargeBuildingIntent {
    * when the LoD2.2 ground has drifted from it (IoU < 0.90). Default `lod22`: the LoD2.2 shell verbatim.
    */
   footprint?: 'lod22' | 'bag';
+  /** Lift 3DBAG wall and roof vertices under the ground to it and drop faces left on the ground (opt-in; `largeSurfaceSet`). */
+  groundClamp?: boolean;
   /**
    * The intent carries values measured from the rectified photos (`measure.ts --write`, the evidence in
    * `houses/<id>/measured.json`): the date of that run and the wall groups it wrote.
