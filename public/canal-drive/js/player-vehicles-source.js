@@ -150,7 +150,9 @@ class Vehicle3D {
         return true;
       },
       mercatorFromLocal: () => this._transform().elements,
-      xrayMaterial: () => this._occlusionMaterial,
+      // The x-ray is drawn by twins in this root (see `addXrayTwins`): the overlay pass is one render. The frame's
+      // override pass (one more full render per vehicle) is kept only for the A/B switch `setXrayTwins(false)`.
+      xrayMaterial: () => (this._xrayTwins ? null : this._occlusionMaterial),
     }, { pass: 'overlay', order });
   }
 
@@ -261,8 +263,9 @@ class Vehicle3D {
     if (this._modelRoot && this._scene) {
       this._scene.remove(this._modelRoot);
     }
-    // Legacy layer: the x-ray as a twin of each mesh in the same scene, so one render draws both.
-    if (!this.sharedFrame && this._occlusionMaterial) addXrayTwins(imported, this._occlusionMaterial);
+    // The x-ray as a twin of each mesh in the same scene, so one render draws both (legacy layer and shared frame).
+    this._twins = this._occlusionMaterial ? addXrayTwins(imported, this._occlusionMaterial) : [];
+    this._xrayTwins = this._twins.length > 0;
     const model = new THREE.Group();
     model.add(imported);
     this._bind(imported);
@@ -289,6 +292,20 @@ class Vehicle3D {
       this._scene.overrideMaterial = null;
       console.warn('Could not precompile vehicle shaders', error);
     }
+  }
+
+  /**
+   * Diagnostics (A/B in one page): x-ray twins (default) or, in the shared frame, its override pass as before
+   * 2026-10-14 (transparent override material, one more render per vehicle). Returns the mode now in force.
+   */
+  setXrayTwins(on) {
+    const material = this._occlusionMaterial;
+    if (!material || !this._twins?.length) return false;
+    this._xrayTwins = !!on || !this.sharedFrame;
+    for (const twin of this._twins) twin.visible = this._xrayTwins;
+    xrayBlending(material, this._xrayTwins);
+    this.map.triggerRepaint();
+    return this._xrayTwins;
   }
 
   _loadModel(url) {
@@ -363,16 +380,9 @@ class Vehicle3D {
  * Children of their mesh: they follow its pose and its visibility.
  */
 function addXrayTwins(root, material) {
-  // In place: the legacy layer has no other use for it, and tests toggle it (bike-xray.spec colorWrite).
-  material.transparent = false;
-  material.blending = THREE.CustomBlending;
-  material.blendEquation = THREE.AddEquation;
-  material.blendSrc = THREE.SrcAlphaFactor;
-  material.blendDst = THREE.OneMinusSrcAlphaFactor;
-  material.blendEquationAlpha = THREE.AddEquation;
-  material.blendSrcAlpha = THREE.OneFactor;
-  material.blendDstAlpha = THREE.OneMinusSrcAlphaFactor;
-  material.needsUpdate = true;
+  // In place: nothing else uses it, and tests toggle it (bike-xray.spec colorWrite).
+  xrayBlending(material, true);
+  const twins = [];
   const meshes = [];
   root.traverse(child => { if (child.isMesh && !child.isSkinnedMesh) meshes.push(child); });
   for (const mesh of meshes) {
@@ -383,8 +393,22 @@ function addXrayTwins(root, material) {
     twin.castShadow = twin.receiveShadow = false;
     twin.raycast = () => {};
     mesh.add(twin);
+    twins.push(twin);
   }
-  return material;
+  return twins;
+}
+
+/** Twin (opaque list, straight-alpha CustomBlending) or override (transparent, NormalBlending) blending of the x-ray. */
+function xrayBlending(material, twin) {
+  material.transparent = !twin;
+  material.blending = twin ? THREE.CustomBlending : THREE.NormalBlending;
+  material.blendEquation = THREE.AddEquation;
+  material.blendSrc = THREE.SrcAlphaFactor;
+  material.blendDst = THREE.OneMinusSrcAlphaFactor;
+  material.blendEquationAlpha = twin ? THREE.AddEquation : null;
+  material.blendSrcAlpha = twin ? THREE.OneFactor : null;
+  material.blendDstAlpha = twin ? THREE.OneMinusSrcAlphaFactor : null;
+  material.needsUpdate = true;
 }
 
 export class PlayerBike3D extends Vehicle3D {
