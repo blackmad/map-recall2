@@ -105,16 +105,24 @@ const r3 = (v: number) => Math.round(v * 1000) / 1000;
 const shade = (hex: string, k: number) => '#' + [1, 3, 5].map(i => Math.round(Math.min(255, parseInt(hex.slice(i, i + 2), 16) * k)).toString(16).padStart(2, '0')).join('');
 export const bearingOfNormal = (n: number[]) => (Math.atan2(n[0], -n[2]) * 180 / Math.PI + 360) % 360;
 
-/** 3DBAG facts → block-kit surface set in local metres around the BAG footprint centroid. */
-export function largeSurfaceSet(facts: BuildingFacts): {set: SurfaceSet; anchorRD: [number, number]} {
+/**
+ * 3DBAG facts → block-kit surface set in local metres around the BAG footprint centroid. `groundClamp` (intent opt-in):
+ * wall and roof vertices under the 3DBAG ground are lifted to it and faces left lying on the ground dropped (De Hallen's
+ * LoD2.2 has a sunken ramp, roofs and walls 0.4-0.8 m into the ground, which the GLB audit fails as below-ground).
+ */
+export function largeSurfaceSet(facts: BuildingFacts, opts: {groundClamp?: boolean} = {}): {set: SurfaceSet; anchorRD: [number, number]} {
   if (!facts.wallsRD?.length) throw Error(`${facts.pandId}: facts have no wallsRD; rerun facts.ts with --large`);
   const all = facts.bagFootprintRD.flat(), g = facts.heights.groundNAP;
   const anchorRD: [number, number] = [Math.round(all.reduce((s, p) => s + p[0], 0) / all.length * 100) / 100, Math.round(all.reduce((s, p) => s + p[1], 0) / all.length * 100) / 100];
   const [ax, ay] = anchorRD, loc = (p: number[]): P3 => [r3(p[0] - ax), r3(p[2] - g), r3(ay - p[1])];
   const set: SurfaceSet = {
     pandId: facts.pandId, anchor: anchorRD, groundNap: g, heightMax: facts.heights.roofMaxM, constructionYear: facts.heights.builtYear,
-    walls: facts.wallsRD.map(w => ({rings: w.ringsRD.map(r => r.map(loc)), onFootprintEdge: w.onFootprintEdge, surface: w.surface})),
-    roofs: facts.roofsRD.map(r => ({rings: r.ringsRD.map(ring => ring.map(loc)), slopeDeg: r.slopeDeg})),
+    walls: !opts.groundClamp ? facts.wallsRD.map(w => ({rings: w.ringsRD.map(r => r.map(loc)), onFootprintEdge: w.onFootprintEdge, surface: w.surface}))
+      : facts.wallsRD.map(w => ({rings: w.ringsRD.map(r => r.map(loc).map(([x, y, z]): P3 => [x, Math.max(0, y), z])), onFootprintEdge: w.onFootprintEdge, surface: w.surface}))
+        .filter(w => w.rings[0].some(p => p[1] > 0.01)),
+    roofs: !opts.groundClamp ? facts.roofsRD.map(r => ({rings: r.ringsRD.map(ring => ring.map(loc)), slopeDeg: r.slopeDeg}))
+      : facts.roofsRD.map(r => ({rings: r.ringsRD.map(ring => ring.map(loc).map(([x, y, z]): P3 => [x, Math.max(0, y), z])), slopeDeg: r.slopeDeg}))
+        .filter(r => r.rings[0].some(p => p[1] > 0.01)),
     ground: facts.surveyFootprintPolygonsRD.map(poly => ({rings: poly.map(ring => ring.map(p => [r3(p[0] - ax), 0, r3(ay - p[1])] as P3))})),
     neighbours: (facts.neighboursRD ?? []).map(n => ({id: n.id, height: n.heightM, ring: n.ringRD.map(p => [r3(p[0] - ax), r3(ay - p[1])] as [number, number])})),
   };
@@ -215,7 +223,7 @@ export function largeShellFacts(intent: LargeBuildingIntent, facts: BuildingFact
 export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts): {recipe: LargeBuildingRecipe; report: LargeFitReport; facts: BuildingFacts} {
   const {facts, shell} = largeShellFacts(intent, inputFacts);
   const warnings: string[] = [];
-  const {set, anchorRD} = largeSurfaceSet(facts);
+  const {set, anchorRD} = largeSurfaceSet(facts, intent.groundClamp ? {groundClamp: true} : {});
   const known = new Set(set.walls.map(w => w.surface!));
   const groupOfSurface = new Map<number, number>();
   intent.walls.forEach((w, gi) => w.wallSurfaces.forEach(s => {
@@ -314,10 +322,10 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
       garage = {panel: main.index, bays: list.sort((a, b) => a - b)};
     }
     const specSystem = SYSTEM_SLOT(gi);
-    systems[specSystem] = largeSystem(w.system, {pitchM, lines: st.lines, ground, windows: w.windows, stringCourses: w.stringCourses, piers: w.piers, balconyStoreys: w.balconies?.storeys, balconyRail: w.balconies?.rail, ...(w.balconies && (w.balconies.every !== undefined || w.balconies.bays) ? {balconyBays: {every: w.balconies.every, first: w.balconies.first, bays: w.balconies.bays}, bays} : {}), blankStoreys: w.blankStoreys, slots: {...slots, ...(arch ? {arch} : {})},
+    systems[specSystem] = largeSystem(w.system, {pitchM, lines: st.lines, ground, windows: w.windows, stringCourses: w.stringCourses, piers: w.piers, balconyStoreys: w.balconies?.storeys, balconyRail: w.balconies?.rail, ...(w.balconies && (w.balconies.every !== undefined || w.balconies.bays) ? {balconyBays: {every: w.balconies.every, first: w.balconies.first, bays: w.balconies.bays}, bays} : {}), blankStoreys: w.blankStoreys, ...(w.glazedStoreys ? {glazedStoreys: w.glazedStoreys} : {}), slots: {...slots, ...(arch ? {arch} : {})},
       ...(w.columns ? {columnBays: w.columns.bays, bays} : {}),
       ...(w.windowShape ? {shape: {w: w.windowShape.w, h: w.windowShape.h, sillM: r3(w.windowShape.sill * (uppers[0] ?? st.heights[0]))}} : {}),
-      ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {})});
+      ...(w.arches ? {arches: w.arches} : {}), ...(w.hoist ? {hoist: w.hoist, bays} : {}), ...(w.gateways ? {gateways: w.gateways, bays} : {}), ...(w.hallDoors ? {hallDoors: w.hallDoors, bays} : {}), ...(w.sills === false ? {sills: false} : {}), ...(w.frames === false ? {frames: false} : {}), ...(w.deepBars ? {deepBars: true} : {}), ...(w.tiltedBays ? {tilted: w.tiltedBays, bays} : {}), ...(w.screen ? {screen: true} : {}), ...(intent.layeredKit !== false ? {layered: true} : {})});
     // Curved front: one bay rhythm along each run of linked facets (two or more panels of this group), at the group's pitch.
     let curve: LargeGroupFit['curve'];
     if (w.curve) {
