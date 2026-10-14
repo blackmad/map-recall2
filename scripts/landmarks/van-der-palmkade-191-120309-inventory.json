@@ -1,0 +1,146 @@
+{
+ "schemaVersion": 1,
+ "id": "van-der-palmkade-191-120309",
+ "pand": "0363100012120309",
+ "signature": [
+  "round-arched-loggias",
+  "cream-first-floor-band"
+ ],
+ "walls": [
+  {
+   "tag": "w01-149",
+   "bearing": 149,
+   "lengthM": 24.9,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w02-97",
+   "bearing": 97,
+   "lengthM": 24.4,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001951_pano_0000_000564",
+   "capturedAt": "2021-01-14",
+   "checked": true,
+   "items": [
+    {
+     "id": "round-arched-loggias",
+     "kind": "window-shape",
+     "where": "five round-arched loggia openings with glazed screens on the second storey, white keystone blocks",
+     "approxSizeM": [
+      24,
+      4
+     ],
+     "plan": "simplified",
+     "how": "walls[0] arches.windows round on storey 2 with the arched glazed window set in the wall; the loggia is not deep",
+     "seenIn": "TMX7316010203-001951_pano_0000_000564"
+    },
+    {
+     "id": "cream-first-floor-band",
+     "kind": "window-shape",
+     "where": "cream-rendered first-floor band with two windows per bay over the dark-brick shop base",
+     "approxSizeM": [
+      24,
+      3.2
+     ],
+     "plan": "modelled",
+     "how": "walls[0].stoneStoreys [1]",
+     "seenIn": "TMX7316010203-001951_pano_0000_000564"
+    },
+    {
+     "id": "terraced-attic-pergola",
+     "kind": "other",
+     "where": "stepped terraced attic storeys with a concrete pergola frame",
+     "approxSizeM": [
+      24,
+      4
+     ],
+     "plan": "simplified",
+     "how": "the 3DBAG roof as surveyed; the pergola beams are not drawn",
+     "seenIn": "TMX7316010203-001951_pano_0000_000564"
+    },
+    {
+     "id": "blue-infill-panels",
+     "kind": "other",
+     "where": "blue infill panels between the third-storey windows",
+     "approxSizeM": [
+      8,
+      1.2
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "a few narrow panels, a colour accent below the component grain"
+     },
+     "seenIn": "TMX7316010203-001951_pano_0000_000564"
+    }
+   ]
+  },
+  {
+   "tag": "w03-28",
+   "bearing": 28,
+   "lengthM": 21.1,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w04-278",
+   "bearing": 278,
+   "lengthM": 18.6,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w05-328",
+   "bearing": 328,
+   "lengthM": 15.9,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w06-29",
+   "bearing": 29,
+   "lengthM": 15.8,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  },
+  {
+   "tag": "w07-208",
+   "bearing": 208,
+   "lengthM": 15.6,
+   "evidence": "inferred",
+   "panoId": null,
+   "capturedAt": null,
+   "checked": true,
+   "note": "no panorama within 35 m; wall left blank",
+   "items": []
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
