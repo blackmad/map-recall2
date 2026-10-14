@@ -1265,9 +1265,11 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   ground on by default; the start faces the first leg");
   (c)–(g) DONE road paint at junctions, ground light, near facade detail,
   the brick quay legend, houseboat berths (HISTORY "Live play at the
-  Singelgracht"; frames on the demo page). Still open from those: own
-  ground sits ~60 luma below the legacy basemap and the gap is palette
-  (near-white streets, pale water `#46707c`), a look decision; recipe
+  Singelgracht"; frames on the demo page). Still open from those: the
+  ground look is `bright` since the orthophoto measurement (HISTORY
+  "Ground tones measured"; `?groundLook=default|measured|legacy-ish` to
+  compare); if the user wants lighter still, bright with the road at ~150
+  and a deeper cycle red is the next variant; recipe
   faces for the Singelgracht quays (Marnixkade 73 pands, Nassaukade 46)
   and the Frederik Hendrikbuurt / Jordaan edge; the `recipeTiles` default
   after a ride that crosses a pilot tile; a node-tag sidecar in the extract

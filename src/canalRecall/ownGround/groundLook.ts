@@ -35,12 +35,15 @@ type Widen<T> = T extends string ? string : T extends RGB ? RGB : { readonly [K 
 export type GroundTonesPalette = Widen<typeof GROUND_TONES>;
 export interface GroundPalette { street: StreetGroundPalette; tones: GroundTonesPalette }
 
-/** The look from the page: `?groundLook=` or `window.__canalRecallGroundLook`; anything else is `default`. */
+/** The look the game ships with (user 2026-10-14, "city too dark": `bright`); `?groundLook=default` gives the old palette. */
+export const GROUND_LOOK_DEFAULT: GroundLook = 'bright';
+
+/** The look from the page: `?groundLook=` or `window.__canalRecallGroundLook`; anything else is GROUND_LOOK_DEFAULT. */
 export function groundLookFrom(search?: string): GroundLook {
   const g = globalThis as { __canalRecallGroundLook?: string; location?: { search?: string } };
   const m = /[?&]groundLook=([\w-]+)/.exec(search ?? g.location?.search ?? '');
   const v = m?.[1] ?? g.__canalRecallGroundLook;
-  return (GROUND_LOOKS as readonly string[]).includes(v ?? '') ? v as GroundLook : 'default';
+  return (GROUND_LOOKS as readonly string[]).includes(v ?? '') ? v as GroundLook : GROUND_LOOK_DEFAULT;
 }
 
 const hex = (c: RGB) => '#' + c.map(v => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, '0')).join('');
