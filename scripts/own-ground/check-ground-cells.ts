@@ -29,6 +29,8 @@ const store = new GroundStore(readExtract);
 const noParks = new GroundStore(readExtract, { parks: false });
 /** The same ground without water opened under footbridges (the openings regressions show the pin is live). */
 const noOpenings = new GroundStore(readExtract, { openings: false });
+/** The same ground without the fixed spans beside movable leaves (the approaches regression shows the pin is live). */
+const noApproaches = new GroundStore(readExtract, { approaches: false });
 
 let failed = 0;
 const check = (ok: boolean, what: string) => { console.log(`${ok ? 'ok  ' : 'FAIL'} ${what}`); if (!ok) failed++; };
@@ -217,6 +219,7 @@ async function main(): Promise<void> {
   await deckTopRegressions();
   await pocketRegressions();
   await openingRegressions();
+  await approachRegressions();
   await parkFillRegressions();
   await farRingRegressions();
   // Named road regressions: every band of the listed ways reads as street at both LODs.
@@ -368,6 +371,35 @@ async function openingRegressions(): Promise<void> {
     const on = await under(store), off = await under(noOpenings);
     check(!on.bad.length && (store.openedDecks.get(owner) ?? [...store.openedDecks.values()].flat()).includes(id), `${id} (${label}): water opened under it, ${on.probes - on.bad.length}/${on.probes} probes free of land and quay walls${on.bad.length ? ` (${on.bad.slice(0, 4).join(' ')})` : ''}`);
     check(off.bad.length > 0, `${id}: without the opening ${off.bad.length}/${off.probes} probes hit land or a quay wall (the pin is live)`);
+  }
+}
+
+/**
+ * Fixed spans beside movable leaves (ride review 2026-10-14): the Nijlpaardenbrug's register footprint is its ~10 m
+ * leaf, its OSM way (31485502) runs 36 m quay to quay over the Entrepotdok, and the leaf floated mid-canal. On the
+ * way's axis between the leaf and each quay (0.2/0.3 and 0.7/0.8 of the way), a deck top is drawn and the cycleway's
+ * band is not cut away by the water; without the approaches neither holds.
+ */
+const APPROACHES: [string, number, number, number, number, string][] = [['BRU1907', 4.913675, 52.368474, 4.913939, 52.368754, 'Nijlpaardenbrug, Entrepotdok']];
+async function approachRegressions(): Promise<void> {
+  await noApproaches.init();
+  for (const [id, lng0, lat0, lng1, lat1, label] of APPROACHES) {
+    const [x0, y0] = toLocal(lng0, lat0), [x1, y1] = toLocal(lng1, lat1);
+    const probe = async (s: GroundStore) => {
+      const keys = GroundStore.neighbours(s.cellAt((x0 + x1) / 2, (y0 + y1) / 2)).filter(k => s.covers(k));
+      const cells: BuiltCell[] = [];
+      for (const k of keys) cells.push(buildCell(await s.cellInput(k, 0)));
+      const out: string[] = [];
+      for (const f of [0.2, 0.3, 0.7, 0.8]) {
+        const x = x0 + (x1 - x0) * f, y = y0 + (y1 - y0) * f, hits = cells.flatMap(c => layersAt(c, x, y).hits);
+        const deck = hits.some(h => h.layer === 'deckTop'), band = hits.some(h => h.layer === 'cycle' && !h.cut);
+        out.push(`${f}:${deck ? 'deck' : '-'}${band ? '+band' : ''}`);
+      }
+      return out;
+    };
+    const on = await probe(store), off = await probe(noApproaches);
+    check(on.every(p => p.endsWith('deck+band')), `${id} (${label}): deck top and cycle band from the leaf to both quays (${on.join(' ')})`);
+    check(off.filter(p => p.endsWith('deck+band')).length === 0, `${id}: without the approaches the leaf floats (${off.join(' ')}) (the pin is live)`);
   }
 }
 
