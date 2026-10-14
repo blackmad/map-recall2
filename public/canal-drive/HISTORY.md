@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+## UvA Roeterseiland REC-A surveyed and built (2026-10-14, night)
+
+Lane `landmarks/roeterseiland-20261014`. BAG records REC A/B/C/D and De
+Brug as one composite pand (0363100012185420: 672 3DBAG surfaces, the
+Law School tower to 59 m), so `roeterseiland-rec-a` models them
+together on the LoD2.2 shell kept verbatim: the tower with ribbon
+windows on a 4.45 m storey grid, the 12.3 m podium as a curtain-wall
+glass skin with closed mullion boxes, De Brug with flush window sheets
+at 1.83 m pitch and the glazed "city room" on storeys 4–5, the canal
+passage opened in the shell (38.3 × 19.4 × 15.2 m, soffit and glazed
+channel walls, declared as `throughPassages` in the spec), the SE brick
+wing, the Roetersstraat and north faces; Law School and UNIVERSITEIT VAN
+AMSTERDAM lettering, entrance columns, ABC and UVA TALEN signs
+(inventory 27 items over 40 walls). 27.8k tris, 351 KB, lod1 6.5k;
+`audit:glb` passes with holes, detached-minor, 9 inverted-roof tris,
+1.2 m² tight z-fight warnings; `LAYERED_SHEET_IDS` gained the id.
+Measured on the photographed walls; the SE tall block and north-mid are
+inferred from 3DBAG. Suppresses the pand, r3604223 and w269006492. The
+1932 wing (253754) was already a large recipe; CREA (164972) is a
+large-recipe candidate. Left blank to pass the audit: podium panels 49
+and 176, the east half of the long north wall (two 320 m² triangles
+defeat the wall raster), the west-beige top row, panels under 6 m; raked
+reveals, the diamond lattice and round-ended windows simplified; no
+four-side or street strips yet.
+
+
 ## Landmark queue, batch 8 (2026-10-14, night)
 
 Lane `landmarks/queue-8-20261014`. The Spinoza statue on the
