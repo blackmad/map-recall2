@@ -38212,10 +38212,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012186003",
       "name": "Westerdok 748, Amsterdam (Westerdokseiland): 2008 red-brick courtyard apartment block of 232 homes, stepped from 11 m to 35 m with a passage arch",
-      "hash": "e2a40a2d94a4365944d9fb7d05210b79a9ca8a76b76f0cb05b71237e1eeedba8",
-      "sha256": "e2a40a2d94a4365944d9fb7d05210b79a9ca8a76b76f0cb05b71237e1eeedba8",
-      "bytes": 647708,
-      "triangles": 8388,
+      "hash": "5f18ac7fe2faf6d12b8f15eab3da83fc872c534c19fc85484ff0835d24e1242e",
+      "sha256": "5f18ac7fe2faf6d12b8f15eab3da83fc872c534c19fc85484ff0835d24e1242e",
+      "bytes": 648780,
+      "triangles": 8401,
       "materials": 6,
       "textures": 0,
       "scale": 1,
@@ -38475,7 +38475,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012186003",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:10:37.724Z"
+      "updatedAt": "2026-10-14T03:15:27.206Z"
     },
     {
       "id": "ordinary-0363100012202381",
