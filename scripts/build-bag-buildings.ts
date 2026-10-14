@@ -24,7 +24,7 @@
  *   npm run build:bag-buildings                 # amsterdam, from the cache
  *   npm run build:bag-buildings -- --limit=20   # first 20 tiles, for a quick look
  *   node --max-old-space-size=8192 --import tsx scripts/build-bag-buildings.ts --tiles \
- *     [--osm=.cache/osm-source/derived/amsterdam-buildings.geojsonseq] [--out=artifacts/bag-tiles]
+ *     [--osm=.cache/osm-source/derived/amsterdam-buildings.geojsonseq] [--out=artifacts/bag-tiles] [--base=<z14 building-tiles dir>]
  */
 
 import { createWriteStream } from 'node:fs';
@@ -161,7 +161,7 @@ if (tilesMode) {
   process.stdout.write(`  ${osm.length} OSM buildings and parts; matching ${pandFacts.size} pands\n`);
   const tileReport = await writeBagTiles({
     facts: pandFacts, osm, zoom: 14, outDir: tilesOutDir,
-    baseDir: path.join('public', 'data', 'extracts', city, 'building-tiles', '14'),
+    baseDir: flag('base') ?? path.join('public', 'data', 'extracts', city, 'building-tiles', '14'),
   });
   const report = { version: BAG3D_VERSION, city, generatedAt: new Date().toISOString(), cityJsonTiles: tileNumber, cityJsonPands: written, duplicates, withoutFootprint: noFootprint, osmBuildings: osm.length, ...tileReport };
   await mkdir(tilesOutDir, { recursive: true });

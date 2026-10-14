@@ -12,6 +12,7 @@
  *      their street front faces the same way even when they turn the corner).
  * Members are ordered left to right as seen from the street.
  */
+import type {TerrainAt} from '../bag3dCityJson.ts';
 import {buildFacts, decodeThreeDBag, type BuildingFacts, type CityJsonItem, type RD, type StreetPath} from '../buildingRecipe/facts.ts';
 
 export interface DiscoveredPand { pandId: string; facts: BuildingFacts; item: CityJsonItem; alongM: number }
@@ -78,6 +79,8 @@ export interface DiscoverOptions {
   partyToleranceM?: number; minPartyM?: number; maxStreetDistanceM?: number;
   toRD: (ll: [number, number]) => RD;
   meta: (pandId: string) => BuildingFacts['source'];
+  /** AHN terrain (scripts/lib/terrainField.ts): facts stand on the trusted ground (`pandGroundNap`). */
+  terrainAt?: TerrainAt | null;
 }
 
 /** `pands` = the (optionally trimmed) face; `whole` = the full run between the breaks, for evidence that needs neighbours (business assignment). */
@@ -89,7 +92,7 @@ export function discoverBlockFace(items: CityJsonItem[], streets: StreetPath[], 
   const cands: {pandId: string; item: CityJsonItem; rings: RD[][]; facts: BuildingFacts}[] = [];
   for (const c of all) {
     let facts: BuildingFacts;
-    try { facts = buildFacts(c.pandId, c.item, streets, [o.street], o.toRD, o.meta(c.pandId)); } catch (e) { rejected.push({pandId: c.pandId, reason: `no frontage on ${o.street}: ${(e as Error).message.slice(0, 80)}`}); continue; }
+    try { facts = buildFacts(c.pandId, c.item, streets, [o.street], o.toRD, o.meta(c.pandId), {terrainAt: o.terrainAt}); } catch (e) { rejected.push({pandId: c.pandId, reason: `no frontage on ${o.street}: ${(e as Error).message.slice(0, 80)}`}); continue; }
     const f = facts.fronts[0], mid: RD = [(f.endpointsRD[0][0] + f.endpointsRD[1][0]) / 2, (f.endpointsRD[0][1] + f.endpointsRD[1][1]) / 2];
     const near = nearestOnStreet(streets, o.street, o.toRD, mid);
     if (!near || near.distance > maxDist) { rejected.push({pandId: c.pandId, reason: `frontage ${near?.distance.toFixed(1)} m from ${o.street}`}); continue; }
