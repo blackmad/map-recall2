@@ -51065,6 +51065,174 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T04:21:36.875Z"
+    },
+    {
+      "id": "ordinary-0363100012098847",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012098847",
+      "name": "Quellijnstraat 36, Amsterdam-Zuid (Weteringbuurt / Quellijnkwartier): 1927 brick block of the Amsterdam School period, a three- to five-storey north front with arched timber garage gates at ground level and a rounded corner, and a long three-storey canal front of small banded windows carrying the green Heineken name",
+      "hash": "4b44847c05de265a907f96e9ccc6c708f96ba040bff8d518cdb504162f4460b2",
+      "sha256": "4b44847c05de265a907f96e9ccc6c708f96ba040bff8d518cdb504162f4460b2",
+      "bytes": 432212,
+      "triangles": 5690,
+      "materials": 10,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -45.064,
+          0.002,
+          -31.514
+        ],
+        "max": [
+          35.196,
+          17.134,
+          23.84
+        ]
+      },
+      "anchor": [
+        4.8876363,
+        52.3566396
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.888126,
+              52.3566914
+            ],
+            [
+              4.8881505,
+              52.356854
+            ],
+            [
+              4.8880629,
+              52.356859
+            ],
+            [
+              4.8880474,
+              52.3567564
+            ],
+            [
+              4.8877502,
+              52.3566901
+            ],
+            [
+              4.887778,
+              52.3568748
+            ],
+            [
+              4.8869758,
+              52.3569196
+            ],
+            [
+              4.887012,
+              52.3564558
+            ],
+            [
+              4.8872641,
+              52.3564421
+            ],
+            [
+              4.8872821,
+              52.3565617
+            ],
+            [
+              4.8873235,
+              52.3565725
+            ],
+            [
+              4.8873287,
+              52.3566076
+            ],
+            [
+              4.8874343,
+              52.3566016
+            ],
+            [
+              4.8875307,
+              52.3566269
+            ],
+            [
+              4.8875009,
+              52.3564288
+            ],
+            [
+              4.8875663,
+              52.3564251
+            ],
+            [
+              4.8875918,
+              52.3565943
+            ],
+            [
+              4.8877136,
+              52.3565874
+            ],
+            [
+              4.8877978,
+              52.3566099
+            ],
+            [
+              4.8880562,
+              52.3565953
+            ],
+            [
+              4.8880686,
+              52.3566778
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 17.13,
+      "height": 17.13,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-quellijnstraat-36-098847.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012098847"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "quellijnstraat-36-098847",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012098847/w01-6.jpg",
+          "staging/pand-reference-walls/0363100012098847/w01-6.jpg",
+          "staging/pand-reference-walls/0363100012098847/w02-268.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 3st 6b",
+          "brick-bay-grid 4st 6b",
+          "brick-bay-grid 3st 13b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panel 42 (N, 27 m, eaves 11.6; surface 51): 3 storeys x 6 bays with string courses and three garage doors on the ground. walls[1] = panel 51 (N, 28 m, eaves 15.0; surfaces 60, 216): 4 storeys x 6 bays with string courses. walls[2] = panel 70 (W, 52 m, eaves 10.0; surfaces 90, 91): 3 storeys x 13 bays of small windows (storey 3, the strip of the 11.9 m gable above the 10.0 m eaves, is blank: a window there overlapped the wall) with string courses and the HEINEKEN name letters on a cornice band (in the photograph the name sits in the middle of the wall, not on a cornice). Simplified: the gates are plain tall doors without arched heads, the rounded corner is 3DBAG facets, the green door and the ground-floor playground are not modelled. Not drawn: the east wings with the corner details, the courtyard walls and the 17 m rear blocks (blank brick)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012098847",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T04:23:11.905Z"
     }
   ]
 }

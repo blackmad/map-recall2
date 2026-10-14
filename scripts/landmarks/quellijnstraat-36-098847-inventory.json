@@ -1,0 +1,88 @@
+{
+ "schemaVersion": 1,
+ "id": "quellijnstraat-36-098847",
+ "pand": "0363100012098847",
+ "signature": [
+  "arched-timber-garage-gates",
+  "heineken-name-letters"
+ ],
+ "walls": [
+  {
+   "tag": "w01-6",
+   "bearing": 6,
+   "lengthM": 54.9,
+   "evidence": "photo",
+   "panoId": "recording_2024-09-04_05-35-54_04632",
+   "capturedAt": "2024-09-04",
+   "checked": true,
+   "items": [
+    {
+     "id": "arched-timber-garage-gates",
+     "kind": "window-shape",
+     "where": "three tall arched timber garage gates in the ground storey under a rounded brick corner",
+     "approxSizeM": [
+      14,
+      4
+     ],
+     "plan": "simplified",
+     "how": "walls[0] three garage doors; heads are square, not arched",
+     "seenIn": "recording_2024-09-04_05-35-54_04632"
+    },
+    {
+     "id": "banded-brick-north-front",
+     "kind": "window-shape",
+     "where": "brick front with horizontal bands and window pairs",
+     "approxSizeM": [
+      55,
+      14
+     ],
+     "plan": "simplified",
+     "how": "walls[0] and walls[1] storeys x 6 bays with string courses",
+     "seenIn": "recording_2024-09-04_05-35-54_04632"
+    }
+   ]
+  },
+  {
+   "tag": "w02-268",
+   "bearing": 268,
+   "lengthM": 51.7,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-001967_pano_0000_000611",
+   "capturedAt": "2021-01-18",
+   "checked": true,
+   "items": [
+    {
+     "id": "heineken-name-letters",
+     "kind": "lettering",
+     "where": "green Heineken name on the brick canal front",
+     "approxSizeM": [
+      5,
+      1
+     ],
+     "plan": "simplified",
+     "how": "walls[2] HEINEKEN on a cornice band (the photographed position is mid-wall)",
+     "seenIn": "TMX7316010203-001967_pano_0000_000611"
+    },
+    {
+     "id": "small-window-bands",
+     "kind": "window-shape",
+     "where": "three storeys of small windows in brick bands",
+     "approxSizeM": [
+      52,
+      10
+     ],
+     "plan": "simplified",
+     "how": "walls[2] 3 storeys x 13 bays of plain windows",
+     "seenIn": "TMX7316010203-001967_pano_0000_000611"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}
