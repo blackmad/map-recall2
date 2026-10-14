@@ -10,7 +10,9 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.parse
+import urllib.error
 import urllib.request
 
 UA = {"User-Agent": "map-recall-sculpture-research/1.0 (open-data prototype)"}
@@ -18,10 +20,23 @@ out, width, titles = sys.argv[1], int(sys.argv[2]), sys.argv[3:]
 os.makedirs(out, exist_ok=True)
 strip = lambda s: re.sub(r"<[^>]+>", "", s or "").strip()
 records = []
+
+
+def fetch(url):
+    """GET with backoff: upload.wikimedia.org answers 429 to bursts and to non-standard thumbnail widths."""
+    for attempt in range(6):
+        try:
+            return urllib.request.urlopen(urllib.request.Request(url, headers=UA)).read()
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or attempt == 5:
+                raise
+            time.sleep(5 * 2 ** attempt)
+
+
 for title in titles:
     q = urllib.parse.urlencode({"action": "query", "titles": title, "prop": "imageinfo", "iiprop": "url|extmetadata|sha1|size",
                                 "iiurlwidth": width, "format": "json"})
-    data = json.load(urllib.request.urlopen(urllib.request.Request("https://commons.wikimedia.org/w/api.php?" + q, headers=UA)))
+    data = json.loads(fetch("https://commons.wikimedia.org/w/api.php?" + q))
     page = next(iter(data["query"]["pages"].values()))
     info = page["imageinfo"][0]
     meta = info["extmetadata"]
@@ -33,7 +48,8 @@ for title in titles:
            "downloadUrl": info.get("thumburl") or info["url"], "admitted": admitted}
     if admitted:
         name = re.sub(r"[^A-Za-z0-9._-]+", "_", page["title"][5:])
-        body = urllib.request.urlopen(urllib.request.Request(rec["downloadUrl"], headers=UA)).read()
+        time.sleep(1.5)
+        body = fetch(rec["downloadUrl"])
         with open(os.path.join(out, name), "wb") as f:
             f.write(body)
         rec["local"], rec["sha256"] = name, hashlib.sha256(body).hexdigest()
