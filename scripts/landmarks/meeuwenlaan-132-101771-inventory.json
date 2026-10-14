@@ -1,0 +1,163 @@
+{
+ "schemaVersion": 1,
+ "id": "meeuwenlaan-132-101771",
+ "pand": "0363100012101771",
+ "signature": [
+  "giant-grey-wing-lettering",
+  "bar-window-north-front"
+ ],
+ "walls": [
+  {
+   "tag": "w01-3",
+   "bearing": 3,
+   "lengthM": 68.1,
+   "evidence": "photo",
+   "panoId": "recording_2024-10-22_10-41-53_00306",
+   "capturedAt": "2024-10-22",
+   "checked": true,
+   "items": [
+    {
+     "id": "bar-window-north-front",
+     "kind": "window-shape",
+     "where": "two storeys of white-framed multi-pane windows in yellow-grey brick over a dark plinth, seven dormers in the dark-tile roof",
+     "approxSizeM": [
+      68,
+      9
+     ],
+     "plan": "simplified",
+     "how": "walls[0] 2 storeys x 17 bays of wide windows with deep bars; dormers are 3DBAG roof only",
+     "seenIn": "recording_2024-10-22_10-41-53_00306"
+    },
+    {
+     "id": "north-dormers",
+     "kind": "other",
+     "where": "seven small white dormers in the roof slope",
+     "approxSizeM": [
+      1.5,
+      1.5
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "1.5 m dormers in the roof, which is the 3DBAG roof shell"
+     },
+     "seenIn": "recording_2024-10-22_10-41-53_00306"
+    }
+   ]
+  },
+  {
+   "tag": "w07-93",
+   "bearing": 93,
+   "lengthM": 24.2,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000885_pano_0001_002685",
+   "capturedAt": "2018-07-30",
+   "checked": true,
+   "items": [
+    {
+     "id": "east-wing-end",
+     "kind": "window-shape",
+     "where": "two-storey brick end with white bar windows and a red entrance door",
+     "approxSizeM": [
+      24,
+      9
+     ],
+     "plan": "simplified",
+     "how": "walls[1] 2 storeys x 6 bays of wide windows",
+     "seenIn": "TMX7316010203-000885_pano_0001_002685"
+    }
+   ]
+  },
+  {
+   "tag": "w05-280",
+   "bearing": 280,
+   "lengthM": 30.8,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002572_pano_0000_002738",
+   "capturedAt": "2022-05-11",
+   "checked": true,
+   "items": [
+    {
+     "id": "west-brick-wing",
+     "kind": "window-shape",
+     "where": "three storeys of large white-framed windows in brick under a hipped roof",
+     "approxSizeM": [
+      24,
+      13
+     ],
+     "plan": "simplified",
+     "how": "walls[2] 3 storeys x 6 bays",
+     "seenIn": "TMX7316010203-002572_pano_0000_002738"
+    }
+   ]
+  },
+  {
+   "tag": "w04-286",
+   "bearing": 286,
+   "lengthM": 37,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002568_pano_0001_001190",
+   "capturedAt": "2022-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "giant-grey-wing-lettering",
+     "kind": "lettering",
+     "where": "BREDER... in giant grey letters across the translucent west wing",
+     "approxSizeM": [
+      34,
+      3
+     ],
+     "plan": "simplified",
+     "how": "walls[3] BREDERS in cornice-band letters (S inferred from the banner)",
+     "seenIn": "TMX7316010203-002568_pano_0001_001190"
+    }
+   ]
+  },
+  {
+   "tag": "w03-168",
+   "bearing": 168,
+   "lengthM": 42.9,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002568_pano_0001_001072",
+   "capturedAt": "2022-05-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "south-wing-lettering",
+     "kind": "lettering",
+     "where": "...LEGE in giant grey letters with round vents in the translucent south wing",
+     "approxSizeM": [
+      43,
+      3
+     ],
+     "plan": "simplified",
+     "how": "walls[4] COLLEGE in cornice-band letters, start inferred",
+     "seenIn": "TMX7316010203-002568_pano_0001_001072"
+    },
+    {
+     "id": "round-vents",
+     "kind": "other",
+     "where": "four round vents in the translucent wall",
+     "approxSizeM": [
+      0.3,
+      0.3
+     ],
+     "plan": "skipped",
+     "skip": {
+      "reason": "too-small",
+      "note": "30 cm vents"
+     },
+     "seenIn": "TMX7316010203-002568_pano_0001_001072"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Gemeente Amsterdam panoramas",
+   "url": "https://api.data.amsterdam.nl/panorama/",
+   "licence": "CC BY 4.0"
+  }
+ ]
+}

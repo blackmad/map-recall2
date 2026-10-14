@@ -1,0 +1,160 @@
+{
+ "schemaVersion": 1,
+ "kind": "large",
+ "id": "meeuwenlaan-132-101771",
+ "pandId": "0363100012101771",
+ "address": "Meeuwenlaan 132, Amsterdam-Noord (Van der Pekbuurt): 1936 school complex (Breders Beroepscollege), yellow-grey brick wings of two and three storeys with white-framed bar windows under hipped blue-tile roofs with dormers, and a low translucent-clad wing carrying giant grey letters",
+ "sources": [
+  {
+   "id": "pano-2024-10-22-w01",
+   "kind": "street-panorama",
+   "capturedAt": "2024-10-22",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-22_10-41-53_00306/",
+   "image": "staging/pand-reference-walls/0363100012101771/w01-3.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2018-07-30-w07",
+   "kind": "street-panorama",
+   "capturedAt": "2018-07-30",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-000885_pano_0001_002685/",
+   "image": "staging/pand-reference-walls/0363100012101771/w07-93.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-05-11-w05",
+   "kind": "street-panorama",
+   "capturedAt": "2022-05-11",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002572_pano_0000_002738/",
+   "image": "staging/pand-reference-walls/0363100012101771/w05-280.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-05-10-w04",
+   "kind": "street-panorama",
+   "capturedAt": "2022-05-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002568_pano_0001_001190/",
+   "image": "staging/pand-reference-walls/0363100012101771/w04-286.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  },
+  {
+   "id": "pano-2022-05-10-w03",
+   "kind": "street-panorama",
+   "capturedAt": "2022-05-10",
+   "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002568_pano_0001_001072/",
+   "image": "staging/pand-reference-walls/0363100012101771/w03-168.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "walls": [
+  {
+   "wallSurfaces": [
+    198
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 17,
+   "ground": "system",
+   "windows": "wide",
+   "deepBars": true,
+   "palette": {
+    "brick": "#c2b696",
+    "frame": "#f0eee6",
+    "stone": "#8a8a80"
+   }
+  },
+  {
+   "wallSurfaces": [
+    88,
+    106
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 2,
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "wide",
+   "deepBars": true,
+   "palette": {
+    "brick": "#bcb090",
+    "frame": "#f0eee6",
+    "stone": "#8a8a80"
+   }
+  },
+  {
+   "wallSurfaces": [
+    147,
+    7,
+    9
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 3,
+   "baysPerStorey": 6,
+   "ground": "system",
+   "windows": "wide",
+   "deepBars": true,
+   "palette": {
+    "brick": "#a8845e",
+    "frame": "#f0eee6",
+    "stone": "#8a8a80"
+   }
+  },
+  {
+   "wallSurfaces": [
+    146
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "cornice": true,
+   "signage": {
+    "text": "BREDERS",
+    "colour": "#7e8884",
+    "mount": "cornice"
+   },
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#c4ccc6",
+    "frame": "#7a8a86",
+    "stone": "#7e8884"
+   }
+  },
+  {
+   "wallSurfaces": [
+    133
+   ],
+   "system": "brick-bay-grid",
+   "storeys": 1,
+   "baysPerStorey": 8,
+   "ground": "glazed",
+   "cornice": true,
+   "signage": {
+    "text": "COLLEGE",
+    "colour": "#7e8884",
+    "mount": "cornice"
+   },
+   "wallMaterial": "render",
+   "palette": {
+    "brick": "#c4ccc6",
+    "frame": "#7a8a86",
+    "stone": "#7e8884"
+   }
+  }
+ ],
+ "otherWalls": "blank",
+ "roof": {
+  "material": "black-tile"
+ },
+ "palette": {
+  "brick": "#c2b696",
+  "frame": "#f0eee6",
+  "door": "#a82a1a",
+  "stone": "#8a8a80"
+ },
+ "closedBands": true,
+ "layeredKit": true,
+ "notes": [
+  "Meeuwenlaan 132 (BAG pand 0363100012101771, built 1936, 220 3DBAG wall surfaces, roof max 27.5 m): a 1930s school complex of the Van der Pekbuurt, today the Breders Beroepscollege (a banner on the site says so), about 100 m by 90 m round courtyards. Photographed: the 68 m north front (w01-3 2024: two storeys of white-framed bar windows in yellow-grey brick under a hipped dark-tile roof with seven dormers over a dark plinth), the east wing end (w07-93: red entrance door, 2 storeys), the west brick wing (w05-280: three storeys under a hipped slate roof), and the low translucent-clad wing on the west and south sides (w04-286, w03-168) carrying giant grey letters (BREDER... on the west, ...LEGE on the south). w02-183 and w06-78 have no panorama.",
+  "walls[0] = panel 157 (N, 68 m, eaves 9.6; surface 198): 2 storeys x 17 bays of wide bar windows. walls[1] = panel 79 (E, 24 m, eaves 9.7; surfaces 88, 106): 2 storeys x 6 bays. walls[2] = panels 122, 5, 7 (W, 8 m each, eaves 13.8; surfaces 147, 7, 9): 3 storeys x 6 bays. walls[3] = panel 121 (W low wing, 34 m, eaves 5.3; surface 146): glazed ground under a translucent upper band with the letters BREDERS on a cornice band (the photograph cuts the word at BREDER; the S comes from the Breders banner). walls[4] = panel 110 (S low wing, 43 m, eaves 6.6; surface 133): the same wing with COLLEGE, inferred from the visible ...LEGE ending in a blank panel. Simplified: the real letters are about 3 m tall and run straight across the translucent panels, here a cornice-band lettering; dormers, chimneys and the hipped roofs are the 3DBAG roof; the red entrance doors and the school banner are not modelled. Not drawn: the south and east courtyard fronts, the tower block (22.9 m) and the gym (no panorama), which stay blank brick."
+ ]
+}
