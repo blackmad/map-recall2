@@ -25510,10 +25510,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012142138",
       "name": "Politiebureau Zuid (De Pijp), President Kennedylaan 11, Amsterdam (1995)",
-      "hash": "8a4df383248e02e2f930355c63b5a9ee3bb1126c3063ef716d3c679a7c45c447",
-      "sha256": "8a4df383248e02e2f930355c63b5a9ee3bb1126c3063ef716d3c679a7c45c447",
-      "bytes": 73836,
-      "triangles": 840,
+      "hash": "fd6dc43e65780fec4009cdd8899227ee4a233177b4fba807d373f2b89913acdb",
+      "sha256": "fd6dc43e65780fec4009cdd8899227ee4a233177b4fba807d373f2b89913acdb",
+      "bytes": 106968,
+      "triangles": 1304,
       "materials": 11,
       "textures": 0,
       "scale": 1,
@@ -25586,12 +25586,7 @@
       "height": 13.78,
       "modelUrl": "./models/ordinary-buildings/recipe-large-politie-zuid-de-pijp.glb",
       "suppress": [
-        "NL.IMBAG.Pand.0363100012142138",
-        "w1267660411",
-        "w1267660412",
-        "w1267660413",
-        "w1267660414",
-        "w1267660415"
+        "NL.IMBAG.Pand.0363100012142138"
       ],
       "source": "building-recipes-large",
       "recipe": {
@@ -25634,7 +25629,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012142138",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:26.575Z",
+      "updatedAt": "2026-10-14T03:13:03.056Z",
       "aliases": [
         "w1267660411",
         "w1267660412",
