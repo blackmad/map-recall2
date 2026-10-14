@@ -1,0 +1,76 @@
+{
+ "schemaVersion": 1,
+ "id": "wg-plein-600-233657",
+ "pand": "0363100012233657",
+ "signature": [
+  "five-storey-brick-wing",
+  "canal-front"
+ ],
+ "walls": [
+  {
+   "tag": "w01-337",
+   "bearing": 337,
+   "lengthM": 93.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-000199_pano_0002_000384",
+   "capturedAt": "2017-03-10",
+   "checked": true,
+   "items": [
+    {
+     "id": "canal-front",
+     "kind": "window-shape",
+     "where": "long two-storey brick front over a basement on the canal, white cross windows",
+     "approxSizeM": [89, 11],
+     "plan": "simplified",
+     "how": "walls[1] 3 storeys with a blank basement, 18 bays of cross windows, cornice",
+     "seenIn": "TMX7316010203-000199_pano_0002_000384"
+    },
+    {
+     "id": "glazed-bay-windows",
+     "kind": "window-shape",
+     "where": "projecting glazed bay windows and glass rooftop boxes added on the canal front",
+     "approxSizeM": [8, 6],
+     "plan": "simplified",
+     "how": "the 3DBAG bay and rooftop masses in the wall brick, without glazing",
+     "seenIn": "TMX7316010203-000199_pano_0002_000384"
+    }
+   ]
+  },
+  {
+   "tag": "w02-157",
+   "bearing": 157,
+   "lengthM": 33.6,
+   "evidence": "photo",
+   "panoId": "TMX7316010203-002060_pano_0000_003787",
+   "capturedAt": "2021-03-25",
+   "checked": true,
+   "items": [
+    {
+     "id": "five-storey-brick-wing",
+     "kind": "window-shape",
+     "where": "five storeys of white cross windows in groups of three in dark-brown brick, flat cornice",
+     "approxSizeM": [34, 20],
+     "plan": "simplified",
+     "how": "walls[0] 5 storeys x 9 bays of cross windows on panels 10, 189 and 60, cornice",
+     "seenIn": "TMX7316010203-002060_pano_0000_003787"
+    },
+    {
+     "id": "balcony-stack",
+     "kind": "balcony-ironwork",
+     "where": "stacked concrete balconies on the left return",
+     "approxSizeM": [4, 18],
+     "plan": "skipped",
+     "skip": {"reason": "not-visible", "note": "on a return wall of the neighbouring wing, outside this pand's drawn fronts"},
+     "seenIn": "TMX7316010203-002060_pano_0000_003787"
+    }
+   ]
+  },
+  {"tag": "w03-157", "bearing": 157, "lengthM": 29.2, "evidence": "photo", "panoId": "TMX7316010203-002788_pano_0000_000359", "capturedAt": "2022-09-02", "checked": true, "note": "the same five-storey window system as w02-157 (walls[0])", "items": []},
+  {"tag": "w04-157", "bearing": 157, "lengthM": 28.1, "evidence": "photo", "panoId": "TMX7316060226-000477_pano_0001_000179", "capturedAt": "2019-11-11", "checked": true, "note": "the same five-storey window system as w02-157 (walls[0])", "items": []},
+  {"tag": "w05-157", "bearing": 157, "lengthM": 12.1, "evidence": "photo", "panoId": "TMX7316010203-000787_pano_0000_003161", "capturedAt": "2018-06-12", "checked": true, "note": "short end section; plain brick in this recipe", "items": []},
+  {"tag": "w06-337", "bearing": 337, "lengthM": 11.8, "evidence": "photo", "panoId": "b_20241129_0829_Track13_Sphere_00036", "capturedAt": "2024-11-29", "checked": true, "note": "short end section of the canal side; plain brick in this recipe", "items": []}
+ ],
+ "sources": [
+  {"name": "Gemeente Amsterdam panoramas", "url": "https://api.data.amsterdam.nl/panorama/", "licence": "CC BY 4.0"}
+ ]
+}

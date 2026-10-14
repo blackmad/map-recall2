@@ -3574,7 +3574,7 @@
       "bounds": {
         "min": [
           -19.2172908782959,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -13.932360649108887
         ],
         "max": [
@@ -9258,7 +9258,7 @@
       "bounds": {
         "min": [
           -19.893112182617188,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -17.881860733032227
         ],
         "max": [
@@ -9924,7 +9924,7 @@
       "bounds": {
         "min": [
           -17.276670455932617,
-          -5.2452087118126656e-08,
+          -5.2452087118126656e-8,
           -19.4085750579834
         ],
         "max": [
@@ -19687,7 +19687,7 @@
       "bounds": {
         "min": [
           -14.545639991760254,
-          9.536743306171047e-08,
+          9.536743306171047e-8,
           -16.488889694213867
         ],
         "max": [
@@ -19786,7 +19786,7 @@
       "bounds": {
         "min": [
           -19.340869903564453,
-          -1.9073486612342094e-07,
+          -1.9073486612342094e-7,
           -29.3840274810791
         ],
         "max": [
@@ -20023,7 +20023,7 @@
       "bounds": {
         "min": [
           -22.37699317932129,
-          -1.9073486612342094e-07,
+          -1.9073486612342094e-7,
           -50.65300750732422
         ],
         "max": [
@@ -20240,7 +20240,7 @@
       "bounds": {
         "min": [
           -23.991369247436523,
-          -9.536743306171047e-08,
+          -9.536743306171047e-8,
           -15.057171821594238
         ],
         "max": [
@@ -20355,7 +20355,7 @@
       "bounds": {
         "min": [
           -14.917290687561035,
-          -3.814697322468419e-07,
+          -3.814697322468419e-7,
           -12.036028861999512
         ],
         "max": [
@@ -20461,7 +20461,7 @@
       "bounds": {
         "min": [
           -22.194652557373047,
-          -4.7683716530855236e-08,
+          -4.7683716530855236e-8,
           -8.861071586608887
         ],
         "max": [
@@ -46429,6 +46429,1537 @@
         "https://api.data.amsterdam.nl/panorama/"
       ],
       "updatedAt": "2026-10-14T01:47:23.080Z"
+    },
+    {
+      "id": "ordinary-0363100012165086",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012165086",
+      "name": "Singel 457 / Kalverstraat (Kalverpassage), Amsterdam-Centrum: red-brick Singel range with white stone bands and a stepped centre gable, a pale stone curved corner block, and the grey-brick Kalverpassage entrance block on Kalverstraat",
+      "hash": "701229788c30066f6863567a068ce8b0b13eca47bd0393a489312582cbd42457",
+      "sha256": "701229788c30066f6863567a068ce8b0b13eca47bd0393a489312582cbd42457",
+      "bytes": 949656,
+      "triangles": 11809,
+      "materials": 15,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -59.115,
+          -2.564,
+          -39.046
+        ],
+        "max": [
+          71.249,
+          30.87,
+          35.502
+        ]
+      },
+      "anchor": [
+        4.8914715,
+        52.3674545
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8921521,
+              52.3676073
+            ],
+            [
+              4.8920286,
+              52.3675462
+            ],
+            [
+              4.8919793,
+              52.3675808
+            ],
+            [
+              4.8919318,
+              52.3675582
+            ],
+            [
+              4.8918082,
+              52.3676479
+            ],
+            [
+              4.891879,
+              52.3676794
+            ],
+            [
+              4.8918723,
+              52.3676851
+            ],
+            [
+              4.8919592,
+              52.3677238
+            ],
+            [
+              4.8919155,
+              52.3677499
+            ],
+            [
+              4.8918969,
+              52.3677615
+            ],
+            [
+              4.8918538,
+              52.3677881
+            ],
+            [
+              4.8917057,
+              52.3677223
+            ],
+            [
+              4.8916137,
+              52.3677891
+            ],
+            [
+              4.8915494,
+              52.3677559
+            ],
+            [
+              4.8914812,
+              52.3678055
+            ],
+            [
+              4.8912858,
+              52.367725
+            ],
+            [
+              4.8912949,
+              52.3677153
+            ],
+            [
+              4.8911604,
+              52.367668
+            ],
+            [
+              4.8910822,
+              52.3677512
+            ],
+            [
+              4.8910247,
+              52.3677305
+            ],
+            [
+              4.8910777,
+              52.3676739
+            ],
+            [
+              4.8910151,
+              52.3676513
+            ],
+            [
+              4.8910261,
+              52.3676396
+            ],
+            [
+              4.8909657,
+              52.3676177
+            ],
+            [
+              4.8910084,
+              52.3675736
+            ],
+            [
+              4.8909359,
+              52.3675473
+            ],
+            [
+              4.8909698,
+              52.3675126
+            ],
+            [
+              4.8908243,
+              52.3674582
+            ],
+            [
+              4.8908097,
+              52.3674731
+            ],
+            [
+              4.8907506,
+              52.3674523
+            ],
+            [
+              4.8907331,
+              52.367471
+            ],
+            [
+              4.8906507,
+              52.367442
+            ],
+            [
+              4.8906581,
+              52.3674342
+            ],
+            [
+              4.890604,
+              52.3674152
+            ],
+            [
+              4.8907127,
+              52.3672996
+            ],
+            [
+              4.8907025,
+              52.3672692
+            ],
+            [
+              4.8907032,
+              52.3672683
+            ],
+            [
+              4.8909183,
+              52.3672403
+            ],
+            [
+              4.8909186,
+              52.3672413
+            ],
+            [
+              4.8914022,
+              52.36718
+            ],
+            [
+              4.8914029,
+              52.3671822
+            ],
+            [
+              4.8914323,
+              52.3671773
+            ],
+            [
+              4.8916815,
+              52.3671485
+            ],
+            [
+              4.8917114,
+              52.3671467
+            ],
+            [
+              4.8917118,
+              52.3671496
+            ],
+            [
+              4.891744,
+              52.3671477
+            ],
+            [
+              4.8917436,
+              52.3671447
+            ],
+            [
+              4.8917642,
+              52.3671435
+            ],
+            [
+              4.8917719,
+              52.367145
+            ],
+            [
+              4.8917893,
+              52.3671437
+            ],
+            [
+              4.8917963,
+              52.3671416
+            ],
+            [
+              4.8918183,
+              52.3671402
+            ],
+            [
+              4.891821,
+              52.3671407
+            ],
+            [
+              4.8919071,
+              52.3671888
+            ],
+            [
+              4.8921684,
+              52.3673273
+            ],
+            [
+              4.8922372,
+              52.3672742
+            ],
+            [
+              4.8925183,
+              52.3673917
+            ],
+            [
+              4.8925135,
+              52.3673935
+            ],
+            [
+              4.8924263,
+              52.367435
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 30.87,
+      "height": 30.87,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-singel-457-165086.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012165086"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "singel-457-165086",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012165086/w01-192.jpg",
+          "staging/pand-reference-walls/0363100012165086/w02-46.jpg",
+          "staging/pand-reference-walls/0363100012165086/w03-190.jpg",
+          "staging/pand-reference-walls/0363100012165086/w04-192.jpg",
+          "staging/pand-reference-walls/0363100012165086/w05-45.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "shell-repair:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid+entrance 5st 10b",
+          "brick-bay-grid 5st 2b",
+          "brick-bay-grid 5st 4b",
+          "brick-bay-grid 6st 6b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = surfaces 340 + 238 (w01-192): the colonnade run and the east stepped gable of the red-brick Singel range. 3DBAG models the rooftop colonnade as solid wall to 17.4 m, so the range is drawn as 5 storeys with the top one blank (the colonnade zone). That gives 4 rows of white-framed cross windows under brick segmental arches with white stone bands, and the arched passage portal (KO) in bay 5. The gable takes the storey lines above (one window). Surfaces 532 and 123 at the east end stay blank: with them the 3DBAG eaves gate reads the roof behind them (14.7 m) and fails.",
+        "walls[1] = surface 19 (w04-192): the colonnade run west of the west gable, on walls[0]'s storey lines. The west stepped gable (296) and surface 115 are blank. With them in a group, the eaves gate reads the gable's mono-pitch roof from 14.4 m against a 16.4-17.2 m wall top and fails.",
+        "walls[3] = panel 45 (w02-46): the Kalverpassage entrance block on Kalverstraat in grey-brown brick. It has a glazed passage ground with a blank band over it, a glass-railed balcony run, and the vertical KALVERPASSAGE sign as wall lettering. 6 bays for the photographed 7 (triangle budget).",
+        "Simplified or not drawn: the Amsterdam arms over the west door, the cartouches and gable finials, the pergola and the glass pavilion roofs (the 3DBAG roof carries their mass), and the lattice ceiling and round piers of the passage. The dark glass corner on Kalverstraat (w05-45, 10 m) and the court walls are blank (otherWalls)."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165086",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T03:37:34.319Z"
+    },
+    {
+      "id": "ordinary-0363100012165488",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012165488",
+      "name": "Hirschpassage 2 (Hirsch building, Leidseplein), Amsterdam-Centrum: 1912 sandstone department-store block with a round-arched ground arcade, giant pilasters, iron balconies, a heavy cornice and a balustraded attic",
+      "hash": "1e9c3e9819ab3a36d22456c7a2bf3610336ac48da761cbe3f054747e5410569a",
+      "sha256": "1e9c3e9819ab3a36d22456c7a2bf3610336ac48da761cbe3f054747e5410569a",
+      "bytes": 794876,
+      "triangles": 10116,
+      "materials": 8,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -41.931,
+          0,
+          -23.835
+        ],
+        "max": [
+          31.79,
+          38.571,
+          47.593
+        ]
+      },
+      "anchor": [
+        4.8825409,
+        52.3634114
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8829458,
+              52.3633447
+            ],
+            [
+              4.8829522,
+              52.3633477
+            ],
+            [
+              4.8829383,
+              52.3633587
+            ],
+            [
+              4.8829319,
+              52.3633557
+            ],
+            [
+              4.8828933,
+              52.3633863
+            ],
+            [
+              4.8828997,
+              52.3633893
+            ],
+            [
+              4.8828858,
+              52.3634003
+            ],
+            [
+              4.8828794,
+              52.3633973
+            ],
+            [
+              4.8828408,
+              52.3634279
+            ],
+            [
+              4.8828472,
+              52.3634309
+            ],
+            [
+              4.8828436,
+              52.3634337
+            ],
+            [
+              4.88285,
+              52.3634368
+            ],
+            [
+              4.8827388,
+              52.3635249
+            ],
+            [
+              4.8827324,
+              52.3635219
+            ],
+            [
+              4.8827288,
+              52.3635246
+            ],
+            [
+              4.8827225,
+              52.3635216
+            ],
+            [
+              4.8826838,
+              52.3635523
+            ],
+            [
+              4.8826902,
+              52.3635553
+            ],
+            [
+              4.8826763,
+              52.3635663
+            ],
+            [
+              4.8826699,
+              52.3635633
+            ],
+            [
+              4.8826313,
+              52.3635939
+            ],
+            [
+              4.8826377,
+              52.3635969
+            ],
+            [
+              4.8826193,
+              52.3636115
+            ],
+            [
+              4.8826169,
+              52.3636104
+            ],
+            [
+              4.8826129,
+              52.3636136
+            ],
+            [
+              4.88261,
+              52.3636122
+            ],
+            [
+              4.8826058,
+              52.3636156
+            ],
+            [
+              4.8826029,
+              52.3636142
+            ],
+            [
+              4.8825962,
+              52.3636174
+            ],
+            [
+              4.8825951,
+              52.3636165
+            ],
+            [
+              4.8825894,
+              52.3636188
+            ],
+            [
+              4.8825834,
+              52.3636208
+            ],
+            [
+              4.8825772,
+              52.3636225
+            ],
+            [
+              4.8825707,
+              52.3636238
+            ],
+            [
+              4.8825641,
+              52.3636248
+            ],
+            [
+              4.8825574,
+              52.3636254
+            ],
+            [
+              4.8825504,
+              52.3636257
+            ],
+            [
+              4.8825434,
+              52.3636255
+            ],
+            [
+              4.8825365,
+              52.3636251
+            ],
+            [
+              4.8825296,
+              52.3636242
+            ],
+            [
+              4.882523,
+              52.363623
+            ],
+            [
+              4.8825165,
+              52.3636214
+            ],
+            [
+              4.8825161,
+              52.3636223
+            ],
+            [
+              4.8825071,
+              52.3636208
+            ],
+            [
+              4.8825052,
+              52.3636224
+            ],
+            [
+              4.8824999,
+              52.3636199
+            ],
+            [
+              4.8824985,
+              52.363621
+            ],
+            [
+              4.8824746,
+              52.3636097
+            ],
+            [
+              4.8824796,
+              52.3636058
+            ],
+            [
+              4.8824298,
+              52.3635823
+            ],
+            [
+              4.8824249,
+              52.3635862
+            ],
+            [
+              4.8824069,
+              52.3635777
+            ],
+            [
+              4.8824118,
+              52.3635738
+            ],
+            [
+              4.8823617,
+              52.36355
+            ],
+            [
+              4.8823567,
+              52.3635539
+            ],
+            [
+              4.8823389,
+              52.3635455
+            ],
+            [
+              4.8823438,
+              52.3635416
+            ],
+            [
+              4.8822938,
+              52.3635179
+            ],
+            [
+              4.8822888,
+              52.3635218
+            ],
+            [
+              4.8822708,
+              52.3635132
+            ],
+            [
+              4.8822757,
+              52.3635093
+            ],
+            [
+              4.8822257,
+              52.3634857
+            ],
+            [
+              4.8822207,
+              52.3634896
+            ],
+            [
+              4.8822028,
+              52.3634811
+            ],
+            [
+              4.8822077,
+              52.3634772
+            ],
+            [
+              4.8821576,
+              52.3634535
+            ],
+            [
+              4.8821527,
+              52.3634574
+            ],
+            [
+              4.8821347,
+              52.3634489
+            ],
+            [
+              4.8821397,
+              52.363445
+            ],
+            [
+              4.8820898,
+              52.3634214
+            ],
+            [
+              4.8820848,
+              52.3634253
+            ],
+            [
+              4.8820671,
+              52.3634168
+            ],
+            [
+              4.882072,
+              52.3634129
+            ],
+            [
+              4.8820219,
+              52.3633892
+            ],
+            [
+              4.8820169,
+              52.3633931
+            ],
+            [
+              4.8819989,
+              52.3633846
+            ],
+            [
+              4.8820039,
+              52.3633807
+            ],
+            [
+              4.8819539,
+              52.363357
+            ],
+            [
+              4.881949,
+              52.363361
+            ],
+            [
+              4.881926,
+              52.3633501
+            ],
+            [
+              4.8821074,
+              52.363208
+            ],
+            [
+              4.8820567,
+              52.3631838
+            ],
+            [
+              4.8822257,
+              52.3630503
+            ],
+            [
+              4.8822197,
+              52.3630474
+            ],
+            [
+              4.8822367,
+              52.363034
+            ],
+            [
+              4.8822427,
+              52.3630368
+            ],
+            [
+              4.8823112,
+              52.3629827
+            ],
+            [
+              4.8824348,
+              52.3630619
+            ],
+            [
+              4.8825485,
+              52.3631154
+            ],
+            [
+              4.8825724,
+              52.3630964
+            ],
+            [
+              4.8825955,
+              52.3631073
+            ],
+            [
+              4.8825906,
+              52.3631112
+            ],
+            [
+              4.8826406,
+              52.3631348
+            ],
+            [
+              4.8826455,
+              52.3631309
+            ],
+            [
+              4.8826636,
+              52.3631395
+            ],
+            [
+              4.8826587,
+              52.3631434
+            ],
+            [
+              4.8827088,
+              52.3631671
+            ],
+            [
+              4.8827137,
+              52.3631632
+            ],
+            [
+              4.8827317,
+              52.3631717
+            ],
+            [
+              4.8827268,
+              52.3631756
+            ],
+            [
+              4.8827767,
+              52.3631992
+            ],
+            [
+              4.8827817,
+              52.3631953
+            ],
+            [
+              4.8827997,
+              52.3632038
+            ],
+            [
+              4.8827947,
+              52.3632077
+            ],
+            [
+              4.8828448,
+              52.3632314
+            ],
+            [
+              4.8828498,
+              52.3632275
+            ],
+            [
+              4.8828677,
+              52.363236
+            ],
+            [
+              4.8828628,
+              52.3632399
+            ],
+            [
+              4.8829127,
+              52.3632636
+            ],
+            [
+              4.8829177,
+              52.3632597
+            ],
+            [
+              4.8829358,
+              52.3632682
+            ],
+            [
+              4.8829309,
+              52.3632721
+            ],
+            [
+              4.8829807,
+              52.3632957
+            ],
+            [
+              4.8829857,
+              52.3632918
+            ],
+            [
+              4.8830089,
+              52.3633028
+            ],
+            [
+              4.8829909,
+              52.3633171
+            ],
+            [
+              4.8829845,
+              52.363314
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 38.57,
+      "height": 38.57,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-hirschpassage-2-165488.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012165488"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "hirschpassage-2-165488",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls-short/0363100012165488/w16-322.jpg",
+          "staging/pand-reference-walls/0363100012165488/w02-52.jpg",
+          "staging/pand-reference-walls-short/0363100012165488/w19-142.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "shell-repair:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 5st 1b",
+          "brick-bay-grid 5st 3b",
+          "brick-bay-grid 5st 1b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = the ten Leidseplein bay facets (bearing 323, w16-322); walls[1] = the Leidsestraat bays and the 12.4 m facet before the curve (bearing 53, w02-52); walls[2] = the south-east bays (bearing 143, w19-142). All three share walls[0]'s storey lines: 5 storeys, the top one blank for the frieze. Each has one bay per pilaster facet (3 on the 12.4 m facet), a round-arched ground portal with a voussoir band, a wide window standing for the three windows of each bay, and iron balconies on storeys 1-3. The pilaster fronts and returns stay plain stone (otherWalls, house palette in the stone colour).",
+        "Simplified: the giant Corinthian pilasters (the 3DBAG facets give their depth, no capitals), the stone balustrades over the arcade and on the attic (balcony rails stand for the first), and the dome (3DBAG roof mass). The curved corner facets are blank. The brick house on the Hirschpassage side (w01-233) is a separate front and is left blank."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165488",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T03:37:35.435Z"
+    },
+    {
+      "id": "ordinary-0363100012233657",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012233657",
+      "name": "WG-plein 600 (former Wilhelmina Gasthuis pavilion), Amsterdam-West: 1931 dark-brown brick hospital wing, five storeys of grouped white windows on the WG-plein side and a two-storey canal front with glazed bay windows on the Kostverlorenvaart",
+      "hash": "77692193e2f41fb715a9b490592f503cc18b526bf3ee2745c987075b1f9bb6ca",
+      "sha256": "77692193e2f41fb715a9b490592f503cc18b526bf3ee2745c987075b1f9bb6ca",
+      "bytes": 868604,
+      "triangles": 11505,
+      "materials": 7,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -59.199,
+          0.001,
+          -39.671
+        ],
+        "max": [
+          52.5,
+          35.999,
+          40.264
+        ]
+      },
+      "anchor": [
+        4.871281,
+        52.3645522
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8706483,
+              52.3644029
+            ],
+            [
+              4.8706079,
+              52.3643924
+            ],
+            [
+              4.8706034,
+              52.3643985
+            ],
+            [
+              4.8705926,
+              52.3644012
+            ],
+            [
+              4.8705649,
+              52.3643937
+            ],
+            [
+              4.8705609,
+              52.3643864
+            ],
+            [
+              4.8705734,
+              52.3643679
+            ],
+            [
+              4.8704145,
+              52.3643263
+            ],
+            [
+              4.8704676,
+              52.3642502
+            ],
+            [
+              4.8706315,
+              52.3642929
+            ],
+            [
+              4.8706512,
+              52.3642646
+            ],
+            [
+              4.8706188,
+              52.3642562
+            ],
+            [
+              4.8706666,
+              52.3641876
+            ],
+            [
+              4.8711203,
+              52.3643064
+            ],
+            [
+              4.8710956,
+              52.364343
+            ],
+            [
+              4.8714749,
+              52.3644422
+            ],
+            [
+              4.8714998,
+              52.3644059
+            ],
+            [
+              4.8718934,
+              52.364509
+            ],
+            [
+              4.8718967,
+              52.3645043
+            ],
+            [
+              4.8719614,
+              52.3645213
+            ],
+            [
+              4.8719328,
+              52.3645622
+            ],
+            [
+              4.8719476,
+              52.3645661
+            ],
+            [
+              4.8719499,
+              52.3645627
+            ],
+            [
+              4.8720524,
+              52.3645896
+            ],
+            [
+              4.8720198,
+              52.3646365
+            ],
+            [
+              4.8720183,
+              52.3646361
+            ],
+            [
+              4.8720066,
+              52.3646529
+            ],
+            [
+              4.8720173,
+              52.3646557
+            ],
+            [
+              4.8719639,
+              52.3647322
+            ],
+            [
+              4.8718608,
+              52.3647052
+            ],
+            [
+              4.8718476,
+              52.3647233
+            ],
+            [
+              4.8717923,
+              52.3647089
+            ],
+            [
+              4.8717919,
+              52.3647094
+            ],
+            [
+              4.8717809,
+              52.364712
+            ],
+            [
+              4.8717518,
+              52.3647044
+            ],
+            [
+              4.8717478,
+              52.3646978
+            ],
+            [
+              4.8717523,
+              52.3646912
+            ],
+            [
+              4.871712,
+              52.3646811
+            ],
+            [
+              4.8716463,
+              52.3647744
+            ],
+            [
+              4.8716655,
+              52.3647797
+            ],
+            [
+              4.8716374,
+              52.3648197
+            ],
+            [
+              4.8717385,
+              52.3648462
+            ],
+            [
+              4.8717129,
+              52.3648824
+            ],
+            [
+              4.8717322,
+              52.3648875
+            ],
+            [
+              4.871716,
+              52.3649107
+            ],
+            [
+              4.8716965,
+              52.3649054
+            ],
+            [
+              4.8716943,
+              52.3649086
+            ],
+            [
+              4.8704305,
+              52.3645774
+            ],
+            [
+              4.8704538,
+              52.3645438
+            ],
+            [
+              4.8705164,
+              52.3645602
+            ],
+            [
+              4.8705642,
+              52.3644913
+            ],
+            [
+              4.8705827,
+              52.3644962
+            ]
+          ],
+          [
+            [
+              4.8716473,
+              52.3646636
+            ],
+            [
+              4.8716381,
+              52.3646614
+            ],
+            [
+              4.8716732,
+              52.364611
+            ],
+            [
+              4.8714743,
+              52.3645592
+            ],
+            [
+              4.8714641,
+              52.3645739
+            ],
+            [
+              4.8714053,
+              52.3645587
+            ],
+            [
+              4.8714065,
+              52.3645572
+            ],
+            [
+              4.871401,
+              52.3645557
+            ],
+            [
+              4.8713088,
+              52.3646863
+            ],
+            [
+              4.8715819,
+              52.3647576
+            ]
+          ],
+          [
+            [
+              4.8706482,
+              52.3645134
+            ],
+            [
+              4.8709209,
+              52.3645853
+            ],
+            [
+              4.8710123,
+              52.3644536
+            ],
+            [
+              4.8710066,
+              52.364452
+            ],
+            [
+              4.8710052,
+              52.3644536
+            ],
+            [
+              4.8709454,
+              52.3644378
+            ],
+            [
+              4.8709561,
+              52.3644236
+            ],
+            [
+              4.8708652,
+              52.3643994
+            ],
+            [
+              4.8708639,
+              52.3644014
+            ],
+            [
+              4.8708318,
+              52.364393
+            ],
+            [
+              4.8708332,
+              52.364391
+            ],
+            [
+              4.8707582,
+              52.3643713
+            ],
+            [
+              4.8707222,
+              52.3644227
+            ],
+            [
+              4.8707137,
+              52.3644203
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 36,
+      "height": 36,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-wg-plein-600-233657.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012233657"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "wg-plein-600-233657",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012233657/w02-157.jpg",
+          "staging/pand-reference-walls/0363100012233657/w01-337.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "shell-repair:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 5st 9b",
+          "brick-bay-grid 3st 18b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs.",
+        "walls[0] = panels 10, 189 and 60 (w02-157): the five-storey WG-plein fronts. 5 storeys x 9 bays of white cross windows (the photographed groups of three), with a cornice. The low end surfaces 60 and 447 (18.7 m tops) stay blank so that the eaves gate reads the main roof.",
+        "walls[1] = panel 18 (w01-337): the 89 m canal front. Two storeys of cross windows (18 bays) over a blank basement, with a cornice. Simplified: the projecting glazed bay windows and the rooftop glass boxes are the 3DBAG masses in the wall brick."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012233657",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T03:37:36.717Z"
+    },
+    {
+      "id": "ordinary-0363100012236799",
+      "category": "ordinary",
+      "buildingId": "NL.IMBAG.Pand.0363100012236799",
+      "name": "Da Costakade 146, Amsterdam-West: 1903 factory block, a yellow-brick front of large workshop windows on Da Costakade, a red-brick range with balconies beside it, and a red-brick back range with a lettered band on the street behind",
+      "hash": "7d905307de67c1c21766ee0917137be8b333a05d8d159f6387202819d103aba8",
+      "sha256": "7d905307de67c1c21766ee0917137be8b333a05d8d159f6387202819d103aba8",
+      "bytes": 902756,
+      "triangles": 11751,
+      "materials": 12,
+      "textures": 0,
+      "scale": 1,
+      "bounds": {
+        "min": [
+          -46.542,
+          0.001,
+          -32.183
+        ],
+        "max": [
+          36.09,
+          34.525,
+          62.079
+        ]
+      },
+      "anchor": [
+        4.872444,
+        52.36814
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8724756,
+              52.3681754
+            ],
+            [
+              4.8722725,
+              52.3681236
+            ],
+            [
+              4.8722669,
+              52.3681319
+            ],
+            [
+              4.8722465,
+              52.3681267
+            ],
+            [
+              4.8722157,
+              52.3681044
+            ],
+            [
+              4.8721476,
+              52.3680876
+            ],
+            [
+              4.8721503,
+              52.3680835
+            ],
+            [
+              4.8720821,
+              52.3680668
+            ],
+            [
+              4.8720467,
+              52.368121
+            ],
+            [
+              4.8719512,
+              52.3680976
+            ],
+            [
+              4.8718837,
+              52.3681955
+            ],
+            [
+              4.871761,
+              52.3681654
+            ],
+            [
+              4.8721642,
+              52.3675811
+            ],
+            [
+              4.8724777,
+              52.3676634
+            ],
+            [
+              4.8724785,
+              52.3676622
+            ],
+            [
+              4.8727759,
+              52.3677469
+            ],
+            [
+              4.8727793,
+              52.3677437
+            ],
+            [
+              4.8728347,
+              52.3677597
+            ],
+            [
+              4.872831,
+              52.3677642
+            ],
+            [
+              4.872974,
+              52.3678018
+            ],
+            [
+              4.8726793,
+              52.368228
+            ],
+            [
+              4.8726781,
+              52.3682277
+            ],
+            [
+              4.8726775,
+              52.3682285
+            ],
+            [
+              4.8726717,
+              52.368227
+            ],
+            [
+              4.8726509,
+              52.3682569
+            ],
+            [
+              4.8726479,
+              52.3682615
+            ],
+            [
+              4.8726509,
+              52.3682623
+            ],
+            [
+              4.872627,
+              52.368297
+            ],
+            [
+              4.87263,
+              52.3682978
+            ],
+            [
+              4.8725862,
+              52.3683614
+            ],
+            [
+              4.8725832,
+              52.3683606
+            ],
+            [
+              4.8725594,
+              52.3683953
+            ],
+            [
+              4.8725564,
+              52.3683945
+            ],
+            [
+              4.8725322,
+              52.3684296
+            ],
+            [
+              4.8723358,
+              52.3683784
+            ],
+            [
+              4.8723599,
+              52.3683434
+            ],
+            [
+              4.8723554,
+              52.3683423
+            ],
+            [
+              4.8723724,
+              52.3683178
+            ],
+            [
+              4.8723694,
+              52.368317
+            ],
+            [
+              4.8724269,
+              52.3682336
+            ],
+            [
+              4.8724299,
+              52.3682343
+            ],
+            [
+              4.8724468,
+              52.3682097
+            ],
+            [
+              4.8724513,
+              52.3682109
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 34.52,
+      "height": 34.52,
+      "modelUrl": "./models/ordinary-buildings/recipe-large-da-costakade-146-236799.glb",
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012236799"
+      ],
+      "source": "building-recipes-large",
+      "recipe": {
+        "id": "da-costakade-146-236799",
+        "kind": "large",
+        "intentSources": [
+          "staging/pand-reference-walls/0363100012236799/w01-248.jpg",
+          "staging/pand-reference-walls/0363100012236799/w02-67.jpg"
+        ],
+        "gates": [
+          "triangle-budget:pass",
+          "finite:pass",
+          "non-metallic:pass",
+          "footprint-vs-bag:pass",
+          "ridge-vs-3dbag:pass",
+          "eaves-vs-3dbag/walls[0]:pass",
+          "storey-height/walls[0]:pass",
+          "eaves-vs-3dbag/walls[1]:pass",
+          "storey-height/walls[1]:pass",
+          "eaves-vs-3dbag/walls[2]:pass",
+          "storey-height/walls[2]:pass",
+          "eaves-vs-3dbag/walls[3]:pass",
+          "storey-height/walls[3]:pass",
+          "no-floating-parts:pass",
+          "open-edges:pass",
+          "shell-repair:pass",
+          "parts-attached:pass"
+        ],
+        "wallGroups": [
+          "brick-bay-grid 4st 11b",
+          "brick-bay-grid 6st 7b",
+          "ribbon-windows 7st 9b",
+          "brick-bay-grid 5st 7b"
+        ]
+      },
+      "scope": "Large-tier recipe: 3DBAG LoD2.2 walls and roofs verbatim, a facade system and components per wall group read from municipal panoramas (CC BY 4.0); exact BAG host suppression.",
+      "limitations": [
+        "Facade systems are rule-fitted to the 3DBAG eaves and the counted storeys/bays, not rectified from the photographs."
+      ],
+      "reviewState": "large-recipe-gates-pass",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236799",
+        "https://api.data.amsterdam.nl/panorama/"
+      ],
+      "updatedAt": "2026-10-14T03:42:07.323Z"
     }
   ]
 }
