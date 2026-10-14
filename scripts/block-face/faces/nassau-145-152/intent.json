@@ -1,0 +1,447 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "nassau-145-152",
+ "street": "Nassaukade",
+ "sources": [
+  {
+   "id": "strip-2024-11-21",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "image": "staging/block-face/nassau-145-152/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude (nassaukade-506 kit lane)",
+  "passes": 2,
+  "note": "Nassaukade 152-145, west side, the row opposite houseboat berth Nassaukade 506 (De Clercqstraat corner to the bend at 145), 1898-1900. Measured on 80 px/m rectified crops of the 2024-11-21 panoramas with a metre ruler; wall colours are medians white-balanced (to a warm white #ebe5d5; the cast is golden-hour sun) against each front's own white dressings. Two oud-west library types (three-axis 148/147/146, two-axis balcony stack 149/145); 150 (stepped gable) and the corner 151-152 have their own designs."
+ },
+ "types": [
+  "nassau-1900-three-axis",
+  "nassau-1900-two-axis-balcony"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012116526",
+   "slug": "nassau-116526",
+   "address": "Nassaukade 151-152",
+   "design": {
+    "fronts": [
+     {
+      "id": "front",
+      "street": "Nassaukade",
+      "gable": "cornice",
+      "dormers": 2,
+      "dormerStyle": "pediment",
+      "dormerAt": [
+       {
+        "from": 0.24,
+        "to": 0.38
+       },
+       {
+        "from": 0.68,
+        "to": 0.82
+       }
+      ],
+      "storeys": 5,
+      "bays": 6,
+      "doorBay": 5,
+      "basement": "none",
+      "tallGround": true,
+      "cornice": "bracketed",
+      "windows": "two-light",
+      "windowSurround": "keystone",
+      "shopfront": {
+       "colour": "#1c1d1f",
+       "fascia": false,
+       "bays": [
+        0,
+        2
+       ],
+       "stallriser": "low",
+       "glazing": "transom",
+       "evidence": "strip.jpg 2024-11-21: black-framed bar front over the three left axes, a chalk board, no legible sign; BAG bijeenkomstfunctie, no OSM node"
+      },
+      "hoist": false
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#6b5947",
+     "frame": "white-painted",
+     "door": "#1f2324",
+     "stone": "white-painted",
+     "cornice": "white-painted"
+    },
+    "notes": [
+     "the De Clercqstraat corner block: on this face only its 12.8 m Nassaukade front (two 3-axis halves either side of a downpipe); the chamfer and the De Clercqstraat front are on clercq-236681"
+    ]
+   },
+   "groundFloor": {
+    "use": "bar",
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "black-framed bar/caf\u00e9 front over the left half, no legible name, no OSM node; residential door with a round fanlight on the right axis"
+   },
+   "rhythm": {
+    "bays": "6 axes in two halves of 3 either side of a downpipe",
+    "windowsPerStorey": "ground: bar front over 3 axes + 2 windows + door | 1: 6 | 2: 6 | 3: 6 | 4: 6 | dormers: 2",
+    "symmetry": "two equal halves",
+    "groundFloor": "bar front left, residential right",
+    "signage": "none legible",
+    "roofline": "bracketed white cornice (16.5 m), two pediment dormers",
+    "citation": "strip.jpg 2024-11-21 pand 1",
+    "photoRows": [
+     5,
+     6,
+     6,
+     6,
+     6,
+     2
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "three round wreath medallions (cartouches) on the left axis of storeys 2-4 are not modelled",
+     "the hood moulding over the bar front is not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012164843",
+   "slug": "nassau-164843",
+   "address": "Nassaukade 150",
+   "design": {
+    "fronts": [
+     {
+      "id": "front",
+      "street": "Nassaukade",
+      "gable": "step",
+      "crownSteps": 2,
+      "crownRise": 1.0,
+      "atticWindows": 1,
+      "storeys": 4,
+      "bays": 3,
+      "doorBay": 0,
+      "basement": "stoop-and-windows",
+      "souterrain": true,
+      "tallGround": false,
+      "cornice": "none",
+      "windows": "two-light",
+      "windowSurround": "keystone",
+      "windowSills": "consoles",
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ],
+       "style": "timber-bracketed",
+       "rail": "turned"
+      },
+      "hoist": false
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#524b3d",
+     "frame": "white-painted",
+     "door": "#1f2324",
+     "stone": "white-painted",
+     "wallMaterial": "painted-brick"
+    },
+    "notes": [
+     "near-black painted brick (white-balanced wall median #524b3d on the 2024-11-21 crop); granite souterrain front and the arched door portal read as the stone plinth/stoop"
+    ]
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "photo-only",
+    "note": "stoop to an arched door portal on the left axis, souterrain windows in a rusticated granite base"
+   },
+   "rhythm": {
+    "bays": "3 axes, the centre axis a stack of balcony doors",
+    "windowsPerStorey": "souterrain: 2 | bel-etage: door + 2 | 1: 3 | 2: 3 | 3: 3 | gable: 1",
+    "symmetry": "upper storeys symmetric about the balcony stack; door left",
+    "groundFloor": "residential: stoop to an arched portal, granite souterrain",
+    "signage": "none",
+    "roofline": "stepped gable (two steps a side and a raised top, 15.0-18.3 m) with one round-headed attic window",
+    "citation": "strip.jpg 2024-11-21 pand 2",
+    "photoRows": [
+     2,
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGroundRows": 2,
+    "photoGables": 1,
+    "schemaLimits": [
+     "the storey-3 windows sit under dark round tympana with white keystones (blind relieving arches): the canal-windows lane's windowHead \"relieving\" says it once merged",
+     "the rusticated granite souterrain front is the stone plinth colour only",
+     "no painted bands on this front (it is the odd one of the row)"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012161422",
+   "slug": "nassau-161422",
+   "address": "Nassaukade 149",
+   "type": {
+    "type": "nassau-1900-two-axis-balcony",
+    "crown": "pointed-dormer",
+    "ground": "door-left",
+    "palette": "grey-paint"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "photo-only",
+    "note": "door with fanlight left, wide window right"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-11-21 pand 3 (painted dark grey; white-balanced wall median #6a685d)"
+   }
+  },
+  {
+   "pandId": "0363100012157426",
+   "slug": "nassau-157426",
+   "address": "Nassaukade 148",
+   "type": {
+    "type": "nassau-1900-three-axis",
+    "crown": "pointed-dormer",
+    "ground": "door-left",
+    "palette": "dark-brown-brick",
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       3
+      ],
+      "bays": [
+       1
+      ],
+      "style": "timber-bracketed",
+      "rail": "iron",
+      "styleStoreys": [
+       1
+      ]
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "photo-only",
+    "note": "door with fanlight left, two windows"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-11-21 pand 4 (dark brown brick, #806e5e): storey-1 centre balcony on a white slab with brackets and an iron grille; storey-3 balconette"
+   }
+  },
+  {
+   "pandId": "0363100012160273",
+   "slug": "nassau-160273",
+   "address": "Nassaukade 147",
+   "type": {
+    "type": "nassau-1900-three-axis",
+    "crown": "mansard-dormer",
+    "ground": "door-left",
+    "palette": "black-paint",
+    "overrides": {
+     "balconies": {
+      "storeys": [
+       1,
+       2,
+       3
+      ],
+      "bays": [
+       1
+      ],
+      "storeyBays": {
+       "1": [
+        0,
+        1,
+        2
+       ]
+      },
+      "style": "timber-bracketed",
+      "rail": "iron",
+      "styleStoreys": [
+       1,
+       2
+      ]
+     },
+     "surroundStoreys": [
+      1,
+      2
+     ]
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "photo-only",
+    "note": "door left, two windows"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-11-21 pand 5 (painted near-black, #615a47): full-width iron balcony on a white bracketed slab on storey 1, centre ones on storeys 2 and 3",
+    "windowsPerStorey": "ground: door + 2 | 1: 3 | 2: 3 | 3: 3 | mansard dormer: 3 lights",
+    "schemaLimits": [
+     "the storey-3 windows have dark round tympana with keystones (relieving arches) instead of eared heads: windowHead \"relieving\" once the canal-windows lane is merged",
+     "the mansard's swept bell sides are a straight 72-degree face"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012160704",
+   "slug": "nassau-160704",
+   "address": "Nassaukade 146",
+   "type": {
+    "type": "nassau-1900-three-axis",
+    "crown": "pointed-dormer",
+    "ground": "door-left",
+    "palette": "tan-brick",
+    "overrides": {
+     "bayWindows": {
+      "bays": {
+       "from": 1,
+       "to": 2
+      },
+      "storeys": [
+       1
+      ],
+      "cap": "flat",
+      "finish": "painted"
+     }
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "photo-only",
+    "note": "door with fanlight left, two windows"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-11-21 pand 6 (tan-red brick, #a98f76): a one-storey white timber erker over the two right axes of storey 1; storey-3 balconette. BAG outline carries the erker: front rebuilt on the facade chord (intake --bay-outline)",
+    "windowsPerStorey": "ground: door + 2 | 1: 1 + erker | 2: 3 | 3: 3 | dormer: 1",
+    "photoRows": [
+     3,
+     2,
+     3,
+     3,
+     1
+    ],
+    "schemaLimits": [
+     "the erker projects about 0.85 m (BAG outline); the kit erker 0.55 m",
+     "the erker is canted in plan with glazed returns; the kit erker has 0.25 m returns"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012159694",
+   "slug": "nassau-159694",
+   "address": "Nassaukade 145",
+   "type": {
+    "type": "nassau-1900-two-axis-balcony",
+    "crown": "pointed-dormer",
+    "ground": "door-left",
+    "palette": "red-brick"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "photo-only",
+    "note": "door with fanlight left, wide window right"
+   },
+   "rhythm": {
+    "citation": "strip.jpg 2024-11-21 pand 7 (red brick, #b58c6f)"
+   }
+  }
+ ],
+ "continuity": {
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "the corner pand 116526's LoD2.2 shell leaves a 33 m open loop in the chunk (audit); the recipe roof (as on clercq-236681) closes it; pitch 30: the strip and the quay view show sky over the cornices, the roofs stay out of sight"
+  },
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "measuredEaves": [
+   {
+    "pand": "0363100012116526",
+    "stripRow": 158,
+    "frontRoof": {
+     "pitchDeg": 72
+    },
+    "evidence": "top of the bracketed white cornice (16.5 m on the ruler crop); 3DBAG carries the mansard top (17.5 m) to the facade, re-pitched from the cornice"
+   },
+   {
+    "pand": "0363100012164843",
+    "stripRow": 218,
+    "frontRoof": {
+     "pitchDeg": 72
+    },
+    "evidence": "foot of the stepped gable over the storey-3 tympana (15.0 m); 3DBAG carries the flat 18 m roof to the facade, re-pitched behind the gable"
+   },
+   {
+    "pand": "0363100012161422",
+    "stripRow": 202,
+    "evidence": "top of the heavy white cornice (15.4 m)"
+   },
+   {
+    "pand": "0363100012157426",
+    "stripRow": 202,
+    "evidence": "top of the heavy white cornice (15.4 m)"
+   },
+   {
+    "pand": "0363100012160273",
+    "stripRow": 234,
+    "evidence": "foot of the mansard over the top band (14.6 m)"
+   },
+   {
+    "pand": "0363100012160704",
+    "stripRow": 200,
+    "evidence": "top of the heavy white cornice (15.45 m)"
+   },
+   {
+    "pand": "0363100012159694",
+    "stripRow": 200,
+    "evidence": "top of the heavy white cornice (15.45 m)"
+   }
+  ]
+ }
+}

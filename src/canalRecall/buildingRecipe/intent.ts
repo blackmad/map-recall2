@@ -27,11 +27,7 @@ export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as co
  * enough for two such lights and a 0.16 m brick pier (cells of about 1.6 m and more) holds a PAIR of ladder lights, a
  * narrower bay one: the pairing follows the bay widths (`bayWidths`: wide entries pair, narrow ones stay single).
  */
-/**
- * `sash-1-bar` (1890s-1900s Oud-West rows, Nassaukade 145-150): a tall window with ONE horizontal bar at 0.7 of its
- * height (a fixed top light over the sash/casements) and no vertical bar; pane presets are named `sash-<n>-bar`.
- */
-export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-1-bar'] as const;
+export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder'] as const;
 export const WINDOW_PROPORTIONS = ['standard', 'tall'] as const;
 export const ATTIC_SHAPES = ['rectangular', 'round'] as const;
 export const ROOF_MATERIALS = ['slate', 'black-tile', 'red-tile', 'bitumen', 'zinc', 'copper'] as const;
@@ -40,8 +36,12 @@ export const ROOF_MATERIALS = ['slate', 'black-tile', 'red-tile', 'bitumen', 'zi
  * jambs, with raised ear blocks at both ends and keystone blocks between them (one per ~0.45 m of window width).
  */
 export const WINDOW_SURROUNDS = ['none', 'stone-lintel', 'full-frame', 'keystone', 'eared-keystone'] as const;
-/** `consoles`: a painted sill slab under each surround-storey window, carried on two small console blocks. */
-export const WINDOW_SILLS = ['plain', 'consoles'] as const;
+/**
+ * `consoles`: a painted sill slab under each surround-storey window, carried on two small console blocks. A separate key
+ * from `windowSurround` so it combines with a head surround (`eared-keystone`); a sill alone is the canal-windows lane's
+ * `windowSurround: "sill"`.
+ */
+export const WINDOW_SILLS = ['consoles'] as const;
 /** Balcony construction: the default iron/stone guard of the library, or a timber platform on carved brackets (`timber-bracketed`). */
 export const BALCONY_STYLES = ['guard', 'timber-bracketed'] as const;
 /** Guard of a timber balcony: white turned balusters under a handrail, or a wrought-iron grille. */
@@ -191,7 +191,11 @@ export interface FrontIntent {
      * balusters at ~0.13 m under a handrail (`rail: turned`, default) or a wrought-iron grille (`rail: iron`). Platform and
      * brackets take the trim colour (painted white), an iron rail the door colour.
      */
-    style?: typeof BALCONY_STYLES[number]; rail?: typeof BALCONY_RAILS[number] };
+    style?: typeof BALCONY_STYLES[number]; rail?: typeof BALCONY_RAILS[number];
+    /** Storeys (of `storeys`) built in `style`; the others keep the library guard (a balconette over a timber balcony, Nassaukade 148). Default every storey. */
+    styleStoreys?: number[];
+    /** Bays per storey where they differ from `bays` (key = storey index): a full-width balcony on storey 1 under centre ones (Nassaukade 147). */
+    storeyBays?: Record<string, number[]> };
   /**
    * Glazed bay windows (erkers). `bay`: the windows of these upper storeys in that bay become one projecting three-face
    * bay each. `bays` instead of `bay` (Amsterdam School multi-bay erker): ONE bay projecting 0.55 m over the span of the
@@ -213,15 +217,16 @@ export interface FrontIntent {
    */
   bands?: 'none' | 'storey' | 'lintel' | 'both' | 'courses' | 'painted';
   /**
-   * `bands: painted` (Nassaukade 145-150): two continuous painted stucco bands per storey across the whole front (stone
-   * colour), one under the window sills and one at the window heads, cut around the openings. Heights as fractions of the
-   * storey height: `sill` (default 0.04) and `head` (default 0.05), measured on the strip; 4 cm proud.
+   * `bands: painted` (Nassaukade 145-150): continuous painted stucco bands across the whole front (stone colour), cut
+   * around the openings, 4 cm proud, at the `bandLines` of every band storey: `sill` (its top on the window sills),
+   * `transom` (centred on the transom line, 0.78 of the window height: the impost band of T-windows) and/or `head` (its
+   * foot on the window heads); default sill + head. Band heights in metres (`bandHeights`, defaults sill 0.14, transom
+   * 0.10, head 0.17), measured on the strip.
    */
-  bandHeights?: {sill?: number; head?: number};
+  bandHeights?: {sill?: number; transom?: number; head?: number};
+  bandLines?: ('sill' | 'transom' | 'head')[];
   /** 0-based storeys carrying the painted bands (default every storey above the ground, and the ground when it has no shopfront). */
   bandStoreys?: number[];
-  /** Window height per storey (index from the ground) as a fraction of that storey's height (0.3..0.9), read off the strip: upper storeys diminish. Replaces the fitted proportion; sills stay at the fitted line unless the head would leave the storey. */
-  storeyWindowHeights?: number[];
   /** Sills under the surround-storey windows: `consoles` = a painted sill slab on two console blocks. */
   windowSills?: typeof WINDOW_SILLS[number];
   /** `bands: courses`: 0-based storeys laid whole in the band brick (ground = 0 only without a shopfront/ground front). */
@@ -639,6 +644,12 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       if (f.balconies.rail !== undefined) { oneOf(f.balconies.rail, BALCONY_RAILS, `${at}.balconies.rail`); if (f.balconies.style !== 'timber-bracketed') problems.push(`${at}.balconies.rail: only a timber-bracketed balcony has a rail choice`); }
       if (f.balconies.style === 'timber-bracketed' && f.balconies.projecting) problems.push(`${at}.balconies: timber-bracketed already projects; drop projecting`);
       if (f.balconies.style === 'timber-bracketed' && f.repeat) problems.push(`${at}.balconies.style: timber-bracketed not on a repeated front`);
+      const bs = f.balconies.styleStoreys;
+      if (bs !== undefined && (!f.balconies.style || !Array.isArray(bs) || !bs.length || bs.some(v => !f.balconies!.storeys.includes(v)))) problems.push(`${at}.balconies.styleStoreys: a style, and storeys from balconies.storeys`);
+      for (const [k, v] of Object.entries(f.balconies.storeyBays ?? {})) {
+        if (!f.balconies.storeys.includes(Number(k))) problems.push(`${at}.balconies.storeyBays.${k}: not one of balconies.storeys`);
+        if (!Array.isArray(v) || !v.length || v.some(b => !Number.isInteger(b) || b < 0 || b > 15)) problems.push(`${at}.balconies.storeyBays.${k}: bay indices 0..15`);
+      }
     }
     if (f.bayWindows) {
       if (f.bayWindows.bays === undefined) count(f.bayWindows.bay, `${at}.bayWindows.bay`, 0, 15);
@@ -799,23 +810,24 @@ function erkerProblems(f: FrontIntent, at: string): string[] {
   return p;
 }
 
-/** Problems with the Oud-West 1900 set: painted bands, storey window heights, sills (all optional). */
+/** Problems with the Oud-West 1900 set: painted bands and console sills (all optional). */
 function paintedProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed: readonly string[], where: string) => void): string[] {
   const p: string[] = [];
   const frac = (v: unknown, lo: number, hi: number) => typeof v === 'number' && v >= lo && v <= hi;
   if (f.bandHeights !== undefined) {
     const b = f.bandHeights as Record<string, unknown>;
     if (f.bands !== 'painted') p.push(`${at}.bandHeights: only with bands "painted"`);
-    if (!b || typeof b !== 'object' || Object.keys(b).some(k => k !== 'sill' && k !== 'head') || Object.values(b).some(v => !frac(v, 0.02, 0.12))) p.push(`${at}.bandHeights: {sill?, head?} fractions of the storey height, 0.02..0.12`);
+    if (!b || typeof b !== 'object' || Object.keys(b).some(k => !['sill', 'transom', 'head'].includes(k)) || Object.values(b).some(v => !frac(v, 0.04, 0.4))) p.push(`${at}.bandHeights: {sill?, transom?, head?} metres, 0.04..0.4`);
+  }
+  if (f.bandLines !== undefined) {
+    const l = f.bandLines;
+    if (f.bands !== 'painted') p.push(`${at}.bandLines: only with bands "painted"`);
+    if (!Array.isArray(l) || !l.length || l.some(v => !['sill', 'transom', 'head'].includes(v)) || new Set(l).size !== l.length) p.push(`${at}.bandLines: distinct "sill" | "transom" | "head"`);
   }
   if (f.bandStoreys !== undefined) {
     const l = f.bandStoreys;
     if (f.bands !== 'painted') p.push(`${at}.bandStoreys: only with bands "painted"`);
     if (!Array.isArray(l) || !l.length || l.some((s, i) => !Number.isInteger(s) || s < 0 || s >= f.storeys || (i > 0 && s <= l[i - 1]))) p.push(`${at}.bandStoreys: ascending storey indices within 0..${f.storeys - 1}`);
-  }
-  if (f.storeyWindowHeights !== undefined) {
-    const l = f.storeyWindowHeights;
-    if (!Array.isArray(l) || l.length !== f.storeys || l.some(v => !frac(v, 0.3, 0.9))) p.push(`${at}.storeyWindowHeights: one fraction per storey (${f.storeys}), each 0.3..0.9`);
   }
   if (f.windowSills !== undefined) oneOf(f.windowSills, WINDOW_SILLS, `${at}.windowSills`);
   return p;
