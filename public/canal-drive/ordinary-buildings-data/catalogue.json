@@ -41690,10 +41690,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165293",
       "name": "Pijlsteeg 31 / Warmoesstraat 173, Amsterdam: Grand Hotel Krasnapolsky block (stone-and-brick hotel front, 1970s concrete arcade wing, Damstraat corner fronts)",
-      "hash": "59f61cad0fdec57cdfb8e557c7afae4094b0db7e6ae43c4b46e767145723bc90",
-      "sha256": "59f61cad0fdec57cdfb8e557c7afae4094b0db7e6ae43c4b46e767145723bc90",
-      "bytes": 548520,
-      "triangles": 6807,
+      "hash": "ebd7fb76b396cab6c600526881367ca563b6fa866e285c7708b0a15448d6b664",
+      "sha256": "ebd7fb76b396cab6c600526881367ca563b6fa866e285c7708b0a15448d6b664",
+      "bytes": 547328,
+      "triangles": 6789,
       "materials": 15,
       "textures": 0,
       "scale": 1,
@@ -42246,7 +42246,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165293",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-14T01:11:33.396Z"
+      "updatedAt": "2026-10-14T03:10:47.755Z"
     },
     {
       "id": "ordinary-0363100012171179",
