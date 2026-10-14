@@ -37655,10 +37655,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012184743",
       "name": "Funenpark 427, Amsterdam (Funenpark / Oostelijke Handelskade side): 2002 curved apartment arcs of 273 homes with shops, brick west side, glazed and green-finned east side",
-      "hash": "ef85462ee9ba464f863df7cfd6a96ac27dbe3250aaa8ef7f79bedb052448ee30",
-      "sha256": "ef85462ee9ba464f863df7cfd6a96ac27dbe3250aaa8ef7f79bedb052448ee30",
-      "bytes": 787608,
-      "triangles": 10281,
+      "hash": "7d3d447b9869252e89c146db394456d5e15d95de3355c23217c9d3ae935268f5",
+      "sha256": "7d3d447b9869252e89c146db394456d5e15d95de3355c23217c9d3ae935268f5",
+      "bytes": 806324,
+      "triangles": 10519,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -38073,7 +38073,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012184743",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T23:05:25.512Z"
+      "updatedAt": "2026-10-14T03:07:31.184Z"
     },
     {
       "id": "ordinary-0363100012186093",
