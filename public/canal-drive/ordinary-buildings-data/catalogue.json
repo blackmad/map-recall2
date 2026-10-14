@@ -25650,10 +25650,10 @@
       "category": "ordinary",
       "buildingId": "NL.IMBAG.Pand.0363100012165618",
       "name": "Politiebureau IJ-tunnel / Brandweerkazerne Amsterdam-Amstelland, IJ-tunnel 2, Amsterdam (1972; one pand shared by fire station and police bureau)",
-      "hash": "301a3f198d0379a6986f6847c62a90c4951afbb7f9105e59e58f1d18e30aa3bb",
-      "sha256": "301a3f198d0379a6986f6847c62a90c4951afbb7f9105e59e58f1d18e30aa3bb",
-      "bytes": 191976,
-      "triangles": 2442,
+      "hash": "a9577eb1ddc61f7222b8087a743218906f0af1ca054e7ce5651532f62d194de0",
+      "sha256": "a9577eb1ddc61f7222b8087a743218906f0af1ca054e7ce5651532f62d194de0",
+      "bytes": 272728,
+      "triangles": 3610,
       "materials": 9,
       "textures": 0,
       "scale": 1,
@@ -25835,7 +25835,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165618",
         "https://api.data.amsterdam.nl/panorama/"
       ],
-      "updatedAt": "2026-10-13T15:36:27.083Z",
+      "updatedAt": "2026-10-14T01:08:22.966Z",
       "bagYear": 1972
     },
     {
