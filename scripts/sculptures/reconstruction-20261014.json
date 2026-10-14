@@ -1,0 +1,50 @@
+{
+ "note": "Inputs of the 2026-10-14 sculpture reconstruction prototype (docs/sculpture-reconstruction-20261014.md). Outputs live in artifacts/sculpture-reconstruction/<id>/ (gitignored). Heights are the current kit models' heights (plinth + figure), facings the kit specs' or impostor's estimates.",
+ "pointCloud": {
+  "municipal": {
+   "dataset": "Gemeente Amsterdam puntenwolk v2 (mobile mapping LiDAR, RGB from the panoramas)",
+   "catalogue": "https://api.data.amsterdam.nl/v1/puntenwolk/v2/metadata_2025?geometrie[contains]=<rdX>,<rdY> (header Accept-Crs: EPSG:28992)",
+   "licence": "openbaar (dataset page: 'Geen; dit is openbare data'), owner Directie Data, contact datateam.geo@amsterdam.nl",
+   "status": "BLOCKED 2026-10-14: every file URL is on files.lidar.data.amsterdam.nl, which is NXDOMAIN (also via 8.8.8.8); the 2024 table is empty"
+  },
+  "substitute": {
+   "dataset": "PDOK 3D Basisvoorziening 2025, digitaaloppervlaktemodel_8cm (dense-matching RGB DSM from aerial photos, exported as points)",
+   "licence": "CC BY 4.0 (Kadaster)",
+   "catalogue": "https://api.pdok.nl/kadaster/3d-basisvoorziening/ogc/v1/collections/digitaaloppervlaktemodel_8cm/items?bbox=...",
+   "captured": "2025 (jaargang_luchtfoto 2025, 2025-01-01..2025-12-31)"
+  }
+ },
+ "statues": [
+  {
+   "id": "de-dokwerker",
+   "rd": [122158.80, 486699.46],
+   "municipalTile": {"file": "184a02fb4072405298d637abf0a1d9f4_122100486600.laz", "points": 26213313, "sizeMb": 165.2, "captured": "2025"},
+   "dsmTile": "DSM_1220_4865",
+   "heightM": 4.13,
+   "facingDeg": 252,
+   "photo": {"title": "File:Amsterdam, De dokwerker 07.JPG", "author": "A.A.W.J. Rietman", "licence": "CC BY-SA 4.0", "date": "2013-08-16", "sha256": "e9203bf95740defdf0072ce5b7ca8b15cb4bccf67a8d1c7e5ca3dcbbabedd085"},
+   "rembg": "u2net"
+  },
+  {
+   "id": "theo-thijssen-standbeeld",
+   "rd": [120973.70, 488203.67],
+   "municipalTile": {"file": "778935f5d9b24b529f598a8a3a8bcfb3_120900488200.laz (+ 7be80cc59f85494a9ff95773b8d0fc9a_120900488200.laz)", "points": 29850763, "sizeMb": 182.8, "captured": "2025"},
+   "dsmTile": "DSM_1207_4880",
+   "heightM": 2.68,
+   "facingDeg": 0,
+   "photo": {"title": "File:Lindengracht, Theo Thijssen beeld foto 1.jpg", "author": "Alf van Beem", "licence": "Public domain", "date": "2017-03-12", "sha256": "871a8a6c26c3734f53a281797f3c3bdb44c4be0287a5a9d723aae678e6345be5"},
+   "rembg": "u2net"
+  },
+  {
+   "id": "gandhi-churchill-laan",
+   "rd": [121342.20, 484461.77],
+   "municipalTile": {"file": "631072dce9de4cc48240b7c33b5ddb9f_121300484400.laz", "points": 19349227, "sizeMb": 122.4, "captured": "2025"},
+   "dsmTile": "DSM_1212_4842",
+   "heightM": 3.2,
+   "facingDeg": 90,
+   "photo": {"title": "File:Statue of Gandhi, Amsterdam.jpg", "author": "Antony Antony", "licence": "CC BY 2.0", "date": "2007-01-30", "sha256": "b5814f631391b8f0c18c3de1e12269868ec5e3aae4b922c9e56821fcf9857cdd"},
+   "rembg": "isnet-general-use",
+   "rembgNote": "u2net dropped the pale limestone block and the staff; IS-Net keeps both (plus the flowers on the block and a strip of cobbles)"
+  }
+ ]
+}
