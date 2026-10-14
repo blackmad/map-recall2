@@ -1233,8 +1233,11 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   plinth for the ~6 groups, kit primitives for slab and lettered
   memorials; before any install decide bronze tint vs vertex colour and
   the freedom-of-panorama question (user); automate photo pick → cut-out
-  (IS-Net fallback) → TripoSR → decimate → strip as one command; re-ask
-  the city for the mobile-mapping cloud host; the backlog needs a pass that
+  (IS-Net fallback) → TripoSR → decimate → strip as one command (batch
+  lane running); Object Capture tried (HISTORY "Object Capture"): only a
+  same-photographer Commons series gives a front half, panoramas resolve
+  nothing, so it is a reference check, not a route; re-ask the city for
+  the mobile-mapping cloud host; the backlog needs a pass that
   marks built ids and location matches as done (Carmiggelt, Winkler Prins,
   Anne Frank, Walraven van Hall, Multatuli still read pending); dedupe the
   Thijssen/Jordaan lines in `build-manual-landmarks.ts`; left from the
@@ -1369,9 +1372,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   are not modelled; walls with no photo stay inferred kit walls.
 - **P1 Commercial streets: Kinkerstraat, then Jan Evertsenstraat** (plan
   Part 2, user 2026-10-14): shared type library DONE (`scripts/block-face/types/<district>/`,
-  `blockFace/typeLibrary.ts`); Kinkerstraat survey lane
-  (`street-pands.ts`, `pand-reference --street`, intake per face, ~209
-  pands: 1880s–1900s 161, 1910s 13, 1980s infill 31); Oud-West type
+  `blockFace/typeLibrary.ts`); Kinkerstraat survey DONE (HISTORY "Kinkerstraat surveyed": 217 pands,
+  28 faces with strips; large/bespoke candidates listed; `kinker-240-240`
+  no sightline; the two halls need another capture date); Oud-West type
   library (1890 brick-arched, 1900 stucco front, 1985 infill) with palettes
   from strip medians; face lanes of ~10 pands, never `compile.ts --install`;
   review lane with the camera-matched row, likeness and a verdict per pand,

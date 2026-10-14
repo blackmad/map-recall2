@@ -1,5 +1,56 @@
 # Canal Recall — what is built
 
+## Kinkerstraat surveyed (217 pands, 28 faces); Object Capture tried on the statues (2026-10-14)
+
+**Kinkerstraat** (`lane/kinkerstraat-survey-20261014`, plan Part 2 step 2):
+`scripts/street-surveys/streets/kinkerstraat.json` indexes all 217 BAG
+pands with a Kinkerstraat address: side, year and style group
+(revolutiebouw 1880–1909: 167; 1910s: 11; 1980s urban-renewal infill: 32;
+other 7), frontage width, 3DBAG eaves/ridge/storeys, BAG ground use with
+the OSM name and category, crop path, panorama ids and dates, washed-out
+fractions, flags, and the face id. Four scripts beside `street-pands.ts`
+(`commercial-faces.ts` proposes faces by cross street, `commercial-intake.ts`
+runs the intakes, `commercial-merge.ts` builds the index,
+`commercial-sheets.ts` the per-side contact sheets). 28 faces under
+`scripts/block-face/faces/kinker-*/` with discovery, strip and uses (odd
+1–29 … 363–371; even 2–30 … 392), strips fused from one capture day
+(2024-12-11, four faces 2024-11-29), coverage 1.0; the bend at 334–390
+split into four faces; `kinker-240-240` has no sightline (pand 160986 in
+front); nos. 118, 142, 180, 204 have the address but no wall on the
+street. 22 corner pands' cross-street crops were replaced by their
+Kinkerstraat wall (`crop.streetWall`). Ten fronts are washed out in both
+capture years (scaffolding or overexposure; the strip sidesteps most of
+it). Large-tier or bespoke candidates: the two halls 32–54 (1999, 59.6 m)
+and 89–105 (De Hallen, 65.7 m), the 1992 infill blocks 265–283 and
+293–313, the 2183 m² block behind 227–263, wide 1890s fronts 7–17 and
+126–138, the 1982 infill corners 189–207 and 213–225, and 125–149,
+173–177, 315–319, 109 (three fronts). Crops, strips and the per-pand
+references are in `map-recall2-source-data` (`pand-reference-walls/`,
+`block-face-strips/kinker-*/`, `pand-reference-kinkerstraat/`; commit
+1296fa70, not pushed). `run.ts --street` missed 10 of the 217 (centroid
+radius) and was topped up by `--ids`. No intents yet; the type-library
+lane takes it from here.
+
+**Object Capture** (`lane/objcap-20261014`, plan Part 4): Apple's
+PhotogrammetrySession runs on this Mac (`scripts/sculptures/objcap/`,
+Swift; `pano-views.ts` renders 40° pinhole views at the statue from every
+panorama in a radius; `objcap_post.py` aligns panorama sets to RD by the
+known view directions, crops, scales, decimates, exports a textured and a
+material-slot GLB in Blender; `objcap_summary.py` pins every run and
+licence in `multiview-20261014.json`). Thirteen runs: the panoramas never
+resolve a figure (135–200 px tall behind hedges and poles; a 4.2 m
+featureless column for De Dokwerker, a spike for Gandhi), mixed sets and
+the 274-photo archive fail with `processError` because the photos split
+into non-overlapping groups, and one set works: De Dokwerker from 16
+Commons photos by one photographer (Rietman 2013, CC BY-SA 4.0), a real
+textured front half with an open back. Verdict: not shippable; a
+front-half reference to check TripoSR against, and the panoramas give a
+cheap position and height check (column top 4.2–4.3 m vs the 4.13 m kit).
+TripoSR stays the route; a closed figure would need a dedicated walk-around
+capture of ~40 photos. Strips on the demo page and under
+`docs/images/sculptures/`.
+
+
 ## Amsterdam School components for block faces; the Street-View pilot retired (2026-10-14)
 
 Lane `lane/amsterdam-school-20261014` (plan Part 2 step 6). Eight
